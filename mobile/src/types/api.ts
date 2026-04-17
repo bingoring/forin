@@ -20,6 +20,7 @@ export interface UserInfo {
   id: string;
   email: string;
   display_name: string;
+  native_language: string;
   current_level: number;
   current_xp: number;
 }
@@ -32,6 +33,7 @@ export interface UserProfile {
   avatar_url: string | null;
   profession: { id: string; name: string; slug: string } | null;
   target_country: string | null;
+  native_language: string;
   language_level: string;
   daily_goal: string;
   current_xp: number;
