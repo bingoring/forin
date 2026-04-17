@@ -1,0 +1,2 @@
+ALTER TABLE users
+  ADD COLUMN native_language VARCHAR(8) NOT NULL DEFAULT 'ko';
