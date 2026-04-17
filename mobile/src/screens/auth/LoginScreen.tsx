@@ -11,6 +11,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Button, Input } from '../../components/common';
 import { useAuthStore } from '../../stores/authStore';
 import { colors, typography, spacing } from '../../theme';
+import { t } from '../../locales';
 import type { AuthStackParamList } from '../../navigation/types';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'Login'>;
@@ -27,8 +28,8 @@ export function LoginScreen({ navigation }: Props) {
     try {
       await login(email, password);
     } catch (err: any) {
-      const msg = err?.response?.data?.error?.message || 'Login failed';
-      Alert.alert('Error', msg);
+      const msg = err?.response?.data?.error?.message || t('auth.login.errors.generic');
+      Alert.alert(t('common.error'), msg);
     } finally {
       setLoading(false);
     }
@@ -40,29 +41,29 @@ export function LoginScreen({ navigation }: Props) {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <View style={styles.content}>
-        <Text style={styles.title}>forin</Text>
-        <Text style={styles.subtitle}>Healthcare English, made fun</Text>
+        <Text style={styles.title}>{t('auth.login.brand')}</Text>
+        <Text style={styles.subtitle}>{t('auth.login.tagline')}</Text>
 
         <View style={styles.form}>
           <Input
-            label="Email"
-            placeholder="you@example.com"
+            label={t('auth.login.emailLabel')}
+            placeholder={t('auth.login.emailPlaceholder')}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
           />
           <Input
-            label="Password"
-            placeholder="Enter your password"
+            label={t('auth.login.passwordLabel')}
+            placeholder={t('auth.login.passwordPlaceholder')}
             value={password}
             onChangeText={setPassword}
             secureTextEntry
           />
-          <Button title="Log In" onPress={handleLogin} loading={loading} />
+          <Button title={t('auth.login.submit')} onPress={handleLogin} loading={loading} />
         </View>
 
         <Button
-          title="Create Account"
+          title={t('auth.login.toRegister')}
           onPress={() => navigation.navigate('Register')}
           variant="outline"
           style={styles.registerBtn}
