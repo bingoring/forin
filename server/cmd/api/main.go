@@ -55,6 +55,7 @@ func main() {
 	learningRepo := repository.NewLearningRepository(db)
 	onboardingRepo := repository.NewOnboardingRepository(db)
 	gamificationRepo := repository.NewGamificationRepository(db)
+	notificationRepo := repository.NewNotificationRepository(db)
 
 	// AI client + evaluator registry
 	aiClient := ai.NewClaudeClient(cfg.AnthropicAPIKey)
@@ -67,6 +68,7 @@ func main() {
 	learningService := service.NewLearningService(learningRepo, curriculumRepo, evalRegistry, cfg)
 	onboardingService := service.NewOnboardingService(onboardingRepo, userProfileRepo, cfg)
 	gamificationService := service.NewGamificationService(gamificationRepo, cfg)
+	notificationService := service.NewNotificationService(notificationRepo, userProfileRepo, cfg)
 
 	// Handlers
 	authHandler := handler.NewAuthHandler(authService)
@@ -76,11 +78,12 @@ func main() {
 	learningHandler := handler.NewLearningHandler(learningService)
 	onboardingHandler := handler.NewOnboardingHandler(onboardingService)
 	gamificationHandler := handler.NewGamificationHandler(gamificationService)
+	notificationHandler := handler.NewNotificationHandler(notificationService)
 
 	// 6. Build router
 	engine := router.New(cfg, log, redis,
 		authHandler, healthHandler, userHandler, curriculumHandler, learningHandler,
-		onboardingHandler, gamificationHandler, authService,
+		onboardingHandler, gamificationHandler, notificationHandler, authService,
 	)
 
 	// 7. Start HTTP server

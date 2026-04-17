@@ -127,6 +127,9 @@ make dev      # 핫 리로드 (air)
 | `GET` | `/v1/users/me` | Bearer | 프로필 조회 (XP, 레벨, 하트, 스트릭 포함) |
 | `PATCH` | `/v1/users/me` | Bearer | 프로필 수정 |
 | `PUT` | `/v1/users/me/cat/equip` | Bearer | 고양이 아이템 장착/해제 |
+| `GET` | `/v1/users/me/notification-preferences` | Bearer | 알림 설정 조회 |
+| `PUT` | `/v1/users/me/notification-preferences` | Bearer | 알림 설정 수정 |
+| `GET` | `/v1/users/me/stats/weekly` | Bearer | 주간 학습 통계 |
 
 ### 커리큘럼
 

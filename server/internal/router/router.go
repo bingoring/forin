@@ -23,6 +23,7 @@ func New(
 	learningHandler *handler.LearningHandler,
 	onboardingHandler *handler.OnboardingHandler,
 	gamificationHandler *handler.GamificationHandler,
+	notificationHandler *handler.NotificationHandler,
 	authService handler.AuthService,
 ) *gin.Engine {
 	if cfg.Env == "production" {
@@ -78,6 +79,9 @@ func New(
 	users.GET("/me", userHandler.GetProfile)
 	users.PATCH("/me", userHandler.UpdateProfile)
 	users.PUT("/me/cat/equip", gamificationHandler.EquipCatItem)
+	users.GET("/me/notification-preferences", notificationHandler.GetPreferences)
+	users.PUT("/me/notification-preferences", notificationHandler.UpdatePreferences)
+	users.GET("/me/stats/weekly", notificationHandler.GetWeeklyStats)
 
 	// Curriculum
 	curriculum := protected.Group("/curriculum")

@@ -42,6 +42,13 @@ type OnboardingService interface {
 	SubmitAssessment(ctx context.Context, userID uuid.UUID, req dto.AssessmentSubmitRequest) (*dto.AssessmentSubmitResponse, error)
 }
 
+// NotificationService defines the business logic contract for notifications and stats.
+type NotificationService interface {
+	GetPreferences(ctx context.Context, userID uuid.UUID) (*dto.NotificationPrefsResponse, error)
+	UpdatePreferences(ctx context.Context, userID uuid.UUID, req dto.UpdateNotificationPrefsRequest) (*dto.NotificationPrefsResponse, error)
+	GetWeeklyStats(ctx context.Context, userID uuid.UUID) (*dto.WeeklyStatsResponse, error)
+}
+
 // GamificationService defines the business logic contract for gamification.
 type GamificationService interface {
 	GetInventory(ctx context.Context, userID uuid.UUID) (*dto.InventoryResponse, error)

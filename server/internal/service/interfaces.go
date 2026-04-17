@@ -87,3 +87,12 @@ type OnboardingRepository interface {
 	FindActiveProfessions(ctx context.Context) ([]model.Profession, error)
 	FindModulesByProfessionAndCountry(ctx context.Context, professionID uuid.UUID, country string) ([]model.CurriculumModule, error)
 }
+
+// NotificationRepository defines data access for notifications and stats.
+type NotificationRepository interface {
+	FindOrCreatePreferences(ctx context.Context, userID uuid.UUID) (*model.NotificationPreference, error)
+	UpdatePreferences(ctx context.Context, pref *model.NotificationPreference) error
+	CreateLog(ctx context.Context, log *model.NotificationLog) error
+	FindWeeklyActivity(ctx context.Context, userID uuid.UUID, from, to time.Time) ([]model.DailyActivityLog, error)
+	FindUsersWithPushToken(ctx context.Context) ([]model.User, error)
+}
