@@ -1,29 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useQuery } from '@tanstack/react-query';
 import { useAuthStore } from '../stores/authStore';
+import { userApi } from '../api';
 import { colors } from '../theme';
 
-// Auth screens
 import { LoginScreen } from '../screens/auth/LoginScreen';
 import { RegisterScreen } from '../screens/auth/RegisterScreen';
-
-// Home screens
+import { OnboardingScreen } from '../screens/onboarding/OnboardingScreen';
 import { HomeScreen } from '../screens/home/HomeScreen';
 import { StageIntroScreen } from '../screens/home/StageIntroScreen';
 import { ExerciseScreen } from '../screens/home/ExerciseScreen';
 import { StageCompleteScreen } from '../screens/home/StageCompleteScreen';
+import { CurriculumScreen } from '../screens/learn/CurriculumScreen';
+import { AchievementsScreen } from '../screens/achievements/AchievementsScreen';
+import { ProfileScreen } from '../screens/profile/ProfileScreen';
 
-// Placeholder screens
-import { PlaceholderScreen } from '../screens/PlaceholderScreen';
-
-import type {
-  AuthStackParamList,
-  HomeStackParamList,
-  TabParamList,
-} from './types';
+import type { AuthStackParamList, HomeStackParamList, TabParamList } from './types';
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -41,26 +37,10 @@ function AuthNavigator() {
 function HomeNavigator() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen
-        name="HomeMain"
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-      <HomeStack.Screen
-        name="StageIntro"
-        component={StageIntroScreen}
-        options={{ title: 'Stage' }}
-      />
-      <HomeStack.Screen
-        name="Exercise"
-        component={ExerciseScreen}
-        options={{ headerShown: false, gestureEnabled: false }}
-      />
-      <HomeStack.Screen
-        name="StageComplete"
-        component={StageCompleteScreen}
-        options={{ headerShown: false, gestureEnabled: false }}
-      />
+      <HomeStack.Screen name="HomeMain" component={HomeScreen} options={{ headerShown: false }} />
+      <HomeStack.Screen name="StageIntro" component={StageIntroScreen} options={{ title: 'Stage' }} />
+      <HomeStack.Screen name="Exercise" component={ExerciseScreen} options={{ headerShown: false, gestureEnabled: false }} />
+      <HomeStack.Screen name="StageComplete" component={StageCompleteScreen} options={{ headerShown: false, gestureEnabled: false }} />
     </HomeStack.Navigator>
   );
 }
@@ -72,30 +52,47 @@ function MainTabs() {
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
+        tabBarStyle: { paddingTop: 4, height: 56 },
       }}
     >
-      <Tab.Screen
-        name="HomeTab"
-        component={HomeNavigator}
-        options={{ tabBarLabel: 'Home', tabBarIcon: () => null }}
-      />
-      <Tab.Screen
-        name="LearnTab"
-        component={PlaceholderScreen}
-        options={{ tabBarLabel: 'Learn', tabBarIcon: () => null }}
-      />
-      <Tab.Screen
-        name="AchievementsTab"
-        component={PlaceholderScreen}
-        options={{ tabBarLabel: 'Achieve', tabBarIcon: () => null }}
-      />
-      <Tab.Screen
-        name="ProfileTab"
-        component={PlaceholderScreen}
-        options={{ tabBarLabel: 'Profile', tabBarIcon: () => null }}
-      />
+      <Tab.Screen name="HomeTab" component={HomeNavigator} options={{ tabBarLabel: 'Home' }} />
+      <Tab.Screen name="LearnTab" component={CurriculumScreen} options={{ tabBarLabel: 'Learn' }} />
+      <Tab.Screen name="AchievementsTab" component={AchievementsScreen} options={{ tabBarLabel: 'Achieve' }} />
+      <Tab.Screen name="ProfileTab" component={ProfileScreen} options={{ tabBarLabel: 'Profile' }} />
     </Tab.Navigator>
   );
+}
+
+function AuthenticatedApp() {
+  const [showOnboarding, setShowOnboarding] = useState<boolean | null>(null);
+
+  const { data: profile } = useQuery({
+    queryKey: ['profile'],
+    queryFn: async () => {
+      const { data } = await userApi.getProfile();
+      return data.data;
+    },
+  });
+
+  useEffect(() => {
+    if (profile) {
+      setShowOnboarding(!profile.profession);
+    }
+  }, [profile]);
+
+  if (showOnboarding === null) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color={colors.primary} />
+      </View>
+    );
+  }
+
+  if (showOnboarding) {
+    return <OnboardingScreen onComplete={() => setShowOnboarding(false)} />;
+  }
+
+  return <MainTabs />;
 }
 
 export function AppNavigator() {
@@ -115,7 +112,7 @@ export function AppNavigator() {
 
   return (
     <NavigationContainer>
-      {isAuthenticated ? <MainTabs /> : <AuthNavigator />}
+      {isAuthenticated ? <AuthenticatedApp /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }
