@@ -53,6 +53,56 @@ func TestRegister_Success(t *testing.T) {
 	assert.Equal(t, "Test User", resp.User.DisplayName)
 }
 
+func TestRegister_DefaultsNativeLanguage(t *testing.T) {
+	var created *model.User
+	mockRepo := &testutil.MockUserRepository{
+		FindByEmailFn: func(ctx context.Context, email string) (*model.User, error) {
+			return nil, gorm.ErrRecordNotFound
+		},
+		CreateFn: func(ctx context.Context, user *model.User) error {
+			user.ID = uuid.New()
+			created = user
+			return nil
+		},
+	}
+
+	svc := NewAuthService(mockRepo, testConfig())
+	resp, err := svc.Register(context.Background(), dto.RegisterRequest{
+		Email:       "new@example.com",
+		Password:    "password123",
+		DisplayName: "New",
+	})
+
+	require.NoError(t, err)
+	assert.Equal(t, "ko", created.NativeLanguage)
+	assert.Equal(t, "ko", resp.User.NativeLanguage)
+}
+
+func TestRegister_HonorsExplicitNativeLanguage(t *testing.T) {
+	var created *model.User
+	mockRepo := &testutil.MockUserRepository{
+		FindByEmailFn: func(ctx context.Context, email string) (*model.User, error) {
+			return nil, gorm.ErrRecordNotFound
+		},
+		CreateFn: func(ctx context.Context, user *model.User) error {
+			user.ID = uuid.New()
+			created = user
+			return nil
+		},
+	}
+
+	svc := NewAuthService(mockRepo, testConfig())
+	_, err := svc.Register(context.Background(), dto.RegisterRequest{
+		Email:          "k@example.com",
+		Password:       "password123",
+		DisplayName:    "K",
+		NativeLanguage: "ko",
+	})
+
+	require.NoError(t, err)
+	assert.Equal(t, "ko", created.NativeLanguage)
+}
+
 func TestRegister_EmailAlreadyExists(t *testing.T) {
 	mockRepo := &testutil.MockUserRepository{
 		FindByEmailFn: func(ctx context.Context, email string) (*model.User, error) {

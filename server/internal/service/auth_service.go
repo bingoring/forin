@@ -45,10 +45,16 @@ func (s *AuthService) Register(ctx context.Context, req dto.RegisterRequest) (*d
 	}
 	hashStr := string(hash)
 
+	nativeLang := req.NativeLanguage
+	if nativeLang == "" {
+		nativeLang = config.DefaultLocale
+	}
+
 	user := &model.User{
-		Email:        req.Email,
-		PasswordHash: &hashStr,
-		DisplayName:  req.DisplayName,
+		Email:          req.Email,
+		PasswordHash:   &hashStr,
+		DisplayName:    req.DisplayName,
+		NativeLanguage: nativeLang,
 	}
 	if err := s.userRepo.Create(ctx, user); err != nil {
 		return nil, fmt.Errorf("create user: %w", err)
@@ -120,11 +126,12 @@ func (s *AuthService) buildAuthResponse(user *model.User) (*dto.AuthResponse, er
 		RefreshToken: refreshToken,
 		ExpiresIn:    int(s.cfg.JWTAccessExpiry.Seconds()),
 		User: dto.UserInfo{
-			ID:           user.ID,
-			Email:        user.Email,
-			DisplayName:  user.DisplayName,
-			CurrentLevel: user.CurrentLevel,
-			CurrentXP:    user.CurrentXP,
+			ID:             user.ID,
+			Email:          user.Email,
+			DisplayName:    user.DisplayName,
+			NativeLanguage: user.NativeLanguage,
+			CurrentLevel:   user.CurrentLevel,
+			CurrentXP:      user.CurrentXP,
 		},
 	}, nil
 }
