@@ -84,6 +84,35 @@ func TestRegisterHandler_Success(t *testing.T) {
 	assert.Equal(t, "refresh-token", data["refresh_token"])
 }
 
+func TestRegisterHandler_IncludesNativeLanguage(t *testing.T) {
+	mockSvc := &testutil.MockAuthService{
+		RegisterFn: func(ctx context.Context, req dto.RegisterRequest) (*dto.AuthResponse, error) {
+			return &dto.AuthResponse{
+				AccessToken:  "a",
+				RefreshToken: "r",
+				ExpiresIn:    900,
+				User: dto.UserInfo{
+					ID:             uuid.New(),
+					Email:          req.Email,
+					DisplayName:    req.DisplayName,
+					NativeLanguage: "ko",
+				},
+			}, nil
+		},
+	}
+
+	h := NewAuthHandler(mockSvc)
+	r := setupRouter(h)
+	w := doRequest(r, "POST", "/auth/register", map[string]string{
+		"email":        "a@b.com",
+		"password":     "password123",
+		"display_name": "A",
+	})
+
+	require.Equal(t, http.StatusCreated, w.Code)
+	assert.Contains(t, w.Body.String(), `"native_language":"ko"`)
+}
+
 func TestRegisterHandler_ValidationError_MissingEmail(t *testing.T) {
 	mockSvc := &testutil.MockAuthService{}
 	h := NewAuthHandler(mockSvc)
