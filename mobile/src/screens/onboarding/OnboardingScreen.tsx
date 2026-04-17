@@ -4,6 +4,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { onboardingApi, userApi } from '../../api';
 import { Button } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
+import { t } from '../../locales';
 import type { Profession, Country } from '../../types/api';
 
 interface Props {
@@ -60,7 +61,7 @@ export function OnboardingScreen({ onComplete }: Props) {
       queryClient.invalidateQueries({ queryKey: ['curriculum'] });
       onComplete();
     } catch (err: any) {
-      Alert.alert('Error', 'Failed to complete onboarding');
+      Alert.alert(t('common.error'), t('onboarding.errors.generic'));
     } finally {
       setLoading(false);
     }
@@ -68,9 +69,9 @@ export function OnboardingScreen({ onComplete }: Props) {
 
   const professionIcons: Record<string, string> = { nurse: '👩‍⚕️', doctor: '🩺', pharmacist: '💊' };
   const goalOptions = [
-    { key: 'casual', label: 'Casual', desc: '1 stage/day (50 XP)' },
-    { key: 'regular', label: 'Regular', desc: '2 stages/day (100 XP)' },
-    { key: 'intensive', label: 'Intensive', desc: '4 stages/day (200 XP)' },
+    { key: 'casual', label: t('onboarding.goal.casual'), desc: t('onboarding.goal.casualDesc') },
+    { key: 'regular', label: t('onboarding.goal.regular'), desc: t('onboarding.goal.regularDesc') },
+    { key: 'intensive', label: t('onboarding.goal.intensive'), desc: t('onboarding.goal.intensiveDesc') },
   ];
 
   return (
@@ -78,7 +79,7 @@ export function OnboardingScreen({ onComplete }: Props) {
       {/* Step 1: Profession */}
       {step === 'profession' && (
         <View style={styles.stepContent}>
-          <Text style={styles.stepTitle}>What is your profession?</Text>
+          <Text style={styles.stepTitle}>{t('onboarding.profession.title')}</Text>
           <View style={styles.cardsRow}>
             {professions?.map((p) => (
               <TouchableOpacity
@@ -97,7 +98,7 @@ export function OnboardingScreen({ onComplete }: Props) {
       {/* Step 2: Country */}
       {step === 'country' && (
         <View style={styles.stepContent}>
-          <Text style={styles.stepTitle}>Where are you heading?</Text>
+          <Text style={styles.stepTitle}>{t('onboarding.country.title')}</Text>
           {countries?.map((c) => (
             <TouchableOpacity
               key={c.code}
@@ -114,7 +115,7 @@ export function OnboardingScreen({ onComplete }: Props) {
       {/* Step 3: Daily Goal */}
       {step === 'goal' && (
         <View style={styles.stepContent}>
-          <Text style={styles.stepTitle}>Set your daily goal</Text>
+          <Text style={styles.stepTitle}>{t('onboarding.goal.title')}</Text>
           {goalOptions.map((g) => (
             <TouchableOpacity
               key={g.key}
@@ -125,7 +126,7 @@ export function OnboardingScreen({ onComplete }: Props) {
               <Text style={styles.goalDesc}>{g.desc}</Text>
             </TouchableOpacity>
           ))}
-          <Button title="Next" onPress={() => setStep('catName')} style={styles.nextBtn} />
+          <Button title={t('onboarding.goal.next')} onPress={() => setStep('catName')} style={styles.nextBtn} />
         </View>
       )}
 
@@ -133,16 +134,16 @@ export function OnboardingScreen({ onComplete }: Props) {
       {step === 'catName' && (
         <View style={styles.stepContent}>
           <Text style={styles.catEmoji}>🐱</Text>
-          <Text style={styles.stepTitle}>Name your study buddy!</Text>
-          <Text style={styles.stepDesc}>This cat will accompany you on your learning journey</Text>
+          <Text style={styles.stepTitle}>{t('onboarding.catName.title')}</Text>
+          <Text style={styles.stepDesc}>{t('onboarding.catName.description')}</Text>
           <TextInput
             style={styles.nameInput}
             value={catName}
             onChangeText={setCatName}
-            placeholder="Enter a name"
+            placeholder={t('onboarding.catName.placeholder')}
             maxLength={20}
           />
-          <Button title="Start Learning!" onPress={handleFinish} loading={loading} />
+          <Button title={t('onboarding.catName.submit')} onPress={handleFinish} loading={loading} />
         </View>
       )}
     </View>
