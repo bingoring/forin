@@ -38,6 +38,8 @@ type DailyActivityLog struct {
 	User User `gorm:"foreignKey:UserID"`
 }
 
+func (DailyActivityLog) TableName() string { return "daily_activity_log" }
+
 func (d *DailyActivityLog) BeforeCreate(tx *gorm.DB) error {
 	if d.ID == uuid.Nil {
 		d.ID = uuid.New()

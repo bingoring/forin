@@ -43,6 +43,8 @@ type NotificationLog struct {
 	User User `gorm:"foreignKey:UserID"`
 }
 
+func (NotificationLog) TableName() string { return "notification_log" }
+
 func (n *NotificationLog) BeforeCreate(tx *gorm.DB) error {
 	if n.ID == uuid.Nil {
 		n.ID = uuid.New()

@@ -221,9 +221,12 @@ func (s *LearningService) CompleteAttempt(ctx context.Context, userID, attemptID
 			}
 		}
 
-		// Duration
-		now := time.Now()
-		duration := int(now.Sub(attempt.StartedAt).Seconds())
+		// Duration (use UTC to avoid timezone mismatch with DB timestamps)
+		now := time.Now().UTC()
+		duration := int(now.Sub(attempt.StartedAt.UTC()).Seconds())
+		if duration < 0 {
+			duration = 0
+		}
 
 		// Fetch stage for base XP and estimated duration
 		stage, err := s.curriculumRepo.FindStageByID(ctx, attempt.StageID)

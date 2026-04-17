@@ -23,6 +23,8 @@ type UserStageProgress struct {
 	Stage Stage `gorm:"foreignKey:StageID"`
 }
 
+func (UserStageProgress) TableName() string { return "user_stage_progress" }
+
 func (u *UserStageProgress) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == uuid.Nil {
 		u.ID = uuid.New()
@@ -89,6 +91,8 @@ type UserModuleProgress struct {
 	User   User             `gorm:"foreignKey:UserID"`
 	Module CurriculumModule `gorm:"foreignKey:ModuleID"`
 }
+
+func (UserModuleProgress) TableName() string { return "user_module_progress" }
 
 func (u *UserModuleProgress) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == uuid.Nil {

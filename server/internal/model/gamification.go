@@ -42,6 +42,8 @@ type UserInventory struct {
 	Item CatItem `gorm:"foreignKey:ItemID"`
 }
 
+func (UserInventory) TableName() string { return "user_inventory" }
+
 func (u *UserInventory) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == uuid.Nil {
 		u.ID = uuid.New()
