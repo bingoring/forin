@@ -53,6 +53,10 @@ type UserOAuthProvider struct {
 	User User `gorm:"foreignKey:UserID"`
 }
 
+func (UserOAuthProvider) TableName() string {
+	return "user_oauth_providers"
+}
+
 func (u *UserOAuthProvider) BeforeCreate(tx *gorm.DB) error {
 	if u.ID == uuid.Nil {
 		u.ID = uuid.New()

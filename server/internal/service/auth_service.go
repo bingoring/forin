@@ -9,7 +9,6 @@ import (
 	"github.com/forin/server/internal/config"
 	"github.com/forin/server/internal/dto"
 	"github.com/forin/server/internal/model"
-	"github.com/forin/server/internal/repository"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
@@ -23,11 +22,11 @@ var (
 )
 
 type AuthService struct {
-	userRepo *repository.UserRepository
+	userRepo UserRepository
 	cfg      *config.Config
 }
 
-func NewAuthService(userRepo *repository.UserRepository, cfg *config.Config) *AuthService {
+func NewAuthService(userRepo UserRepository, cfg *config.Config) *AuthService {
 	return &AuthService{userRepo: userRepo, cfg: cfg}
 }
 
