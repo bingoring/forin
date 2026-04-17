@@ -15,14 +15,19 @@ import { HomeScreen } from '../screens/home/HomeScreen';
 import { StageIntroScreen } from '../screens/home/StageIntroScreen';
 import { ExerciseScreen } from '../screens/home/ExerciseScreen';
 import { StageCompleteScreen } from '../screens/home/StageCompleteScreen';
+import { GiftBoxScreen } from '../screens/home/GiftBoxScreen';
 import { CurriculumScreen } from '../screens/learn/CurriculumScreen';
 import { AchievementsScreen } from '../screens/achievements/AchievementsScreen';
 import { ProfileScreen } from '../screens/profile/ProfileScreen';
+import { InventoryScreen } from '../screens/profile/InventoryScreen';
+import { ShopScreen } from '../screens/profile/ShopScreen';
+import { NotificationSettingsScreen } from '../screens/profile/NotificationSettingsScreen';
 
-import type { AuthStackParamList, HomeStackParamList, TabParamList } from './types';
+import type { AuthStackParamList, HomeStackParamList, ProfileStackParamList, TabParamList } from './types';
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+const ProfileStack = createNativeStackNavigator<ProfileStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
 
 function AuthNavigator() {
@@ -41,7 +46,19 @@ function HomeNavigator() {
       <HomeStack.Screen name="StageIntro" component={StageIntroScreen} options={{ title: 'Stage' }} />
       <HomeStack.Screen name="Exercise" component={ExerciseScreen} options={{ headerShown: false, gestureEnabled: false }} />
       <HomeStack.Screen name="StageComplete" component={StageCompleteScreen} options={{ headerShown: false, gestureEnabled: false }} />
+      <HomeStack.Screen name="GiftBox" component={GiftBoxScreen} options={{ title: 'Gift Box', presentation: 'modal' }} />
     </HomeStack.Navigator>
+  );
+}
+
+function ProfileNavigator() {
+  return (
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name="ProfileMain" component={ProfileScreen} options={{ headerShown: false }} />
+      <ProfileStack.Screen name="Inventory" component={InventoryScreen} options={{ title: 'Inventory' }} />
+      <ProfileStack.Screen name="Shop" component={ShopScreen} options={{ title: 'Cat Shop' }} />
+      <ProfileStack.Screen name="NotificationSettings" component={NotificationSettingsScreen} options={{ title: 'Notifications' }} />
+    </ProfileStack.Navigator>
   );
 }
 
@@ -58,7 +75,7 @@ function MainTabs() {
       <Tab.Screen name="HomeTab" component={HomeNavigator} options={{ tabBarLabel: 'Home' }} />
       <Tab.Screen name="LearnTab" component={CurriculumScreen} options={{ tabBarLabel: 'Learn' }} />
       <Tab.Screen name="AchievementsTab" component={AchievementsScreen} options={{ tabBarLabel: 'Achieve' }} />
-      <Tab.Screen name="ProfileTab" component={ProfileScreen} options={{ tabBarLabel: 'Profile' }} />
+      <Tab.Screen name="ProfileTab" component={ProfileNavigator} options={{ tabBarLabel: 'Profile' }} />
     </Tab.Navigator>
   );
 }

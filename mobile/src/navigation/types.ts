@@ -1,4 +1,5 @@
 import type { CompleteAttemptResponse } from '../types/api';
+import type { NavigatorScreenParams } from '@react-navigation/native';
 
 export type AuthStackParamList = {
   Login: undefined;
@@ -10,23 +11,19 @@ export type HomeStackParamList = {
   StageIntro: { stageId: string };
   Exercise: { stageId: string; attemptId: string };
   StageComplete: { result: CompleteAttemptResponse };
-};
-
-export type LearnStackParamList = {
-  CurriculumMap: undefined;
-};
-
-export type AchievementsStackParamList = {
-  AchievementList: undefined;
+  GiftBox: { boxId: string; boxType: string };
 };
 
 export type ProfileStackParamList = {
   ProfileMain: undefined;
+  Inventory: undefined;
+  Shop: undefined;
+  NotificationSettings: undefined;
 };
 
 export type TabParamList = {
-  HomeTab: undefined;
+  HomeTab: NavigatorScreenParams<HomeStackParamList>;
   LearnTab: undefined;
   AchievementsTab: undefined;
-  ProfileTab: undefined;
+  ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
 };

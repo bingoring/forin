@@ -6,7 +6,7 @@ import { useAuthStore } from '../../stores/authStore';
 import { Button } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 
-export function ProfileScreen() {
+export function ProfileScreen({ navigation }: any) {
   const logout = useAuthStore((s) => s.logout);
 
   const { data: profile } = useQuery({
@@ -60,12 +60,21 @@ export function ProfileScreen() {
         <Text style={styles.xpText}>{profile.xp_to_next_level} XP to next level</Text>
       </View>
 
-      {/* Inventory summary */}
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Inventory</Text>
-        <Text style={styles.cardBody}>
-          {inventory?.total_items || 0} items collected
-        </Text>
+      {/* Quick links */}
+      <View style={styles.linksRow}>
+        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('Inventory')}>
+          <Text style={styles.linkEmoji}>🎒</Text>
+          <Text style={styles.linkLabel}>Inventory</Text>
+          <Text style={styles.linkCount}>{inventory?.total_items || 0}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('Shop')}>
+          <Text style={styles.linkEmoji}>🛍️</Text>
+          <Text style={styles.linkLabel}>Shop</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('NotificationSettings')}>
+          <Text style={styles.linkEmoji}>🔔</Text>
+          <Text style={styles.linkLabel}>Alerts</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Settings */}
@@ -144,5 +153,18 @@ const styles = StyleSheet.create({
   },
   settingsLabel: { ...typography.body, color: colors.textSecondary },
   settingsValue: { ...typography.bodyBold, color: colors.textPrimary },
+  linksRow: { flexDirection: 'row', gap: spacing.sm, marginBottom: spacing.md },
+  linkCard: {
+    flex: 1,
+    backgroundColor: colors.white,
+    borderRadius: borderRadius.md,
+    padding: spacing.md,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  linkEmoji: { fontSize: 24, marginBottom: spacing.xs },
+  linkLabel: { ...typography.caption, color: colors.textPrimary, fontWeight: '600' },
+  linkCount: { ...typography.small, color: colors.textMuted },
   logoutBtn: { marginTop: spacing.md, marginBottom: spacing.xxl },
 });

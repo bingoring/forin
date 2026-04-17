@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Button } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
@@ -69,7 +69,13 @@ export function StageCompleteScreen({ route, navigation }: Props) {
 
       {/* Gift Box */}
       {result.gift_box && (
-        <Text style={styles.giftBoxText}>🎁 You earned a {result.gift_box.box_type} gift box!</Text>
+        <TouchableOpacity
+          style={styles.giftBoxCard}
+          onPress={() => navigation.navigate('GiftBox', { boxId: result.gift_box!.id, boxType: result.gift_box!.box_type })}
+        >
+          <Text style={styles.giftBoxEmoji}>🎁</Text>
+          <Text style={styles.giftBoxText}>Tap to open your {result.gift_box.box_type} gift box!</Text>
+        </TouchableOpacity>
       )}
 
       <Button title="Continue" onPress={handleContinue} style={styles.btn} />
@@ -124,6 +130,17 @@ const styles = StyleSheet.create({
   },
   achievementTitle: { ...typography.h3, color: colors.textPrimary, marginBottom: spacing.xs },
   achievementName: { ...typography.body, color: colors.textPrimary },
-  giftBoxText: { ...typography.bodyBold, color: colors.primary, marginBottom: spacing.lg },
+  giftBoxCard: {
+    width: '100%',
+    backgroundColor: colors.accent + '15',
+    borderRadius: borderRadius.md,
+    borderWidth: 2,
+    borderColor: colors.accent,
+    padding: spacing.md,
+    alignItems: 'center',
+    marginBottom: spacing.lg,
+  },
+  giftBoxEmoji: { fontSize: 32 },
+  giftBoxText: { ...typography.bodyBold, color: colors.accent, marginTop: spacing.xs },
   btn: { width: '100%' },
 });
