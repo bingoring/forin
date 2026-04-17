@@ -13,7 +13,10 @@ import (
 	"gorm.io/gorm"
 )
 
-var ErrUserNotFound = errors.New("user not found")
+var (
+	ErrUserNotFound      = errors.New("user not found")
+	ErrUnsupportedLocale = errors.New("unsupported native_language")
+)
 
 type UserService struct {
 	profileRepo UserProfileRepository
@@ -67,6 +70,12 @@ func (s *UserService) UpdateProfile(ctx context.Context, userID uuid.UUID, req d
 	if req.Timezone != nil {
 		user.Timezone = *req.Timezone
 	}
+	if req.NativeLanguage != nil {
+		if !config.IsSupported(*req.NativeLanguage) {
+			return nil, ErrUnsupportedLocale
+		}
+		user.NativeLanguage = config.NormalizeLocale(*req.NativeLanguage)
+	}
 
 	if err := s.profileRepo.Update(ctx, user); err != nil {
 		return nil, fmt.Errorf("update user: %w", err)
@@ -83,12 +92,13 @@ func buildProfileResponse(
 	daily *model.DailyActivityLog,
 ) *dto.UserProfileResponse {
 	resp := &dto.UserProfileResponse{
-		ID:            user.ID,
-		Email:         user.Email,
-		DisplayName:   user.DisplayName,
-		AvatarURL:     user.AvatarURL,
-		TargetCountry: user.TargetCountry,
-		LanguageLevel: user.LanguageLevel,
+		ID:             user.ID,
+		Email:          user.Email,
+		DisplayName:    user.DisplayName,
+		AvatarURL:      user.AvatarURL,
+		TargetCountry:  user.TargetCountry,
+		NativeLanguage: user.NativeLanguage,
+		LanguageLevel:  user.LanguageLevel,
 		DailyGoal:     user.DailyGoal,
 		CurrentXP:     user.CurrentXP,
 		TotalXP:       user.TotalXP,
