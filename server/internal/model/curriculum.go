@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/lib/pq"
 	"gorm.io/datatypes"
 	"gorm.io/gorm"
 )
@@ -73,16 +74,21 @@ func (u *Unit) BeforeCreate(tx *gorm.DB) error {
 }
 
 type Stage struct {
-	ID                        uuid.UUID `gorm:"type:uuid;primaryKey;default:gen_random_uuid()"`
-	UnitID                    uuid.UUID `gorm:"type:uuid;not null;index"`
-	Title                     string    `gorm:"not null"`
-	ScenarioDescription       string    `gorm:"not null"`
-	OrderIndex                int       `gorm:"not null"`
-	DifficultyLevel           int       `gorm:"check:difficulty_level >= 1 AND difficulty_level <= 5"`
-	EstimatedDurationSeconds  int       `gorm:"default:300"`
-	XPBase                    int       `gorm:"default:50"`
-	IsPublished               bool      `gorm:"default:false"`
-	CreatedAt                 time.Time
+	ID                       uuid.UUID      `gorm:"type:uuid;primaryKey;default:gen_random_uuid()"`
+	UnitID                   uuid.UUID      `gorm:"type:uuid;not null;index"`
+	Title                    string         `gorm:"not null"`
+	ScenarioDescription      string         `gorm:"not null"`
+	OrderIndex               int            `gorm:"not null"`
+	DifficultyLevel          int            `gorm:"check:difficulty_level >= 1 AND difficulty_level <= 5"`
+	EstimatedDurationSeconds int            `gorm:"default:300"`
+	XPBase                   int            `gorm:"default:50"`
+	IsPublished              bool           `gorm:"default:false"`
+	SceneOpenerMd            *string        `gorm:"column:scene_opener_md"`
+	SceneEndingMd            *string        `gorm:"column:scene_ending_md"`
+	SceneNPCKey              *string        `gorm:"column:scene_npc_key"`
+	TensionLevel             string         `gorm:"column:tension_level;not null;default:'calm'"`
+	NPCMood                  pq.StringArray `gorm:"column:npc_mood;type:text[];not null;default:'{}'"`
+	CreatedAt                time.Time
 
 	Unit      Unit       `gorm:"foreignKey:UnitID"`
 	Exercises []Exercise `gorm:"foreignKey:StageID"`

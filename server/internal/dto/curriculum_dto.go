@@ -46,7 +46,10 @@ type StageOverview struct {
 	Title                    string            `json:"title"`
 	OrderIndex               int               `json:"order_index"`
 	DifficultyLevel          int               `json:"difficulty_level"`
+	DifficultyBand           string            `json:"difficulty_band"`
 	EstimatedDurationSeconds int               `json:"estimated_duration_seconds"`
+	TensionLevel             string            `json:"tension_level"`
+	SceneNPCKey              *string           `json:"scene_npc_key"`
 	Progress                 *StageProgressDTO `json:"progress"`
 }
 
@@ -62,8 +65,14 @@ type StageDetailResponse struct {
 	Title                    string             `json:"title"`
 	ScenarioDescription      string             `json:"scenario_description"`
 	DifficultyLevel          int                `json:"difficulty_level"`
+	DifficultyBand           string             `json:"difficulty_band"`
 	EstimatedDurationSeconds int                `json:"estimated_duration_seconds"`
 	XPBase                   int                `json:"xp_base"`
+	SceneOpenerMd            *string            `json:"scene_opener_md"`
+	SceneEndingMd            *string            `json:"scene_ending_md"`
+	SceneNPCKey              *string            `json:"scene_npc_key"`
+	TensionLevel             string             `json:"tension_level"`
+	NPCMood                  []string           `json:"npc_mood"`
 	Exercises                []ExerciseResponse `json:"exercises"`
 	Progress                 *StageProgressDTO  `json:"progress"`
 }

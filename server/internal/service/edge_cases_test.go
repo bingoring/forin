@@ -12,6 +12,7 @@ import (
 	"github.com/forin/server/internal/model"
 	"github.com/forin/server/internal/testutil"
 	"github.com/google/uuid"
+	"github.com/lib/pq"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"gorm.io/datatypes"
@@ -439,4 +440,45 @@ func TestGetCurriculum_IncludesFloorAndLocationFields(t *testing.T) {
 	assert.Equal(t, "triage", resp.Modules[0].Units[0].LocationType)
 	assert.Equal(t, 30.0, resp.Modules[0].Units[0].MapX)
 	assert.Equal(t, 35.0, resp.Modules[0].Units[0].MapY)
+}
+
+func TestGetStageDetail_IncludesSceneFields(t *testing.T) {
+	userID := uuid.New()
+	stageID := uuid.New()
+	npcKey := "patient.johnson"
+	opener := "Mr. Johnson just returned from surgery."
+	ending := "He thanks you for explaining the plan."
+
+	currRepo := &testutil.MockCurriculumRepository{
+		FindStageByIDFn: func(ctx context.Context, id uuid.UUID) (*model.Stage, error) {
+			return &model.Stage{
+				ID:                  stageID,
+				Title:               "Post-op Check-in",
+				ScenarioDescription: "A patient wakes after surgery.",
+				DifficultyLevel:     2,
+				XPBase:              50,
+				SceneOpenerMd:       &opener,
+				SceneEndingMd:       &ending,
+				SceneNPCKey:         &npcKey,
+				TensionLevel:        "tense",
+				NPCMood:             pq.StringArray{"anxious", "grateful"},
+			}, nil
+		},
+		FindUserStageProgressFn: func(ctx context.Context, uid uuid.UUID, ids []uuid.UUID) ([]model.UserStageProgress, error) {
+			return nil, nil
+		},
+	}
+	userRepo := &testutil.MockUserProfileRepository{}
+	svc := NewCurriculumService(currRepo, userRepo, &config.Config{})
+
+	resp, err := svc.GetStageDetail(context.Background(), userID, stageID)
+
+	require.NoError(t, err)
+	assert.Equal(t, "pre_intermediate", resp.DifficultyBand)
+	assert.Equal(t, "tense", resp.TensionLevel)
+	assert.Equal(t, []string{"anxious", "grateful"}, resp.NPCMood)
+	require.NotNil(t, resp.SceneOpenerMd)
+	assert.Equal(t, opener, *resp.SceneOpenerMd)
+	require.NotNil(t, resp.SceneNPCKey)
+	assert.Equal(t, "patient.johnson", *resp.SceneNPCKey)
 }

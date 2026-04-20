@@ -15,6 +15,22 @@ import (
 
 var ErrStageNotFound = errors.New("stage not found")
 
+// difficultyBand maps the numeric 1–5 difficulty to the four-band string
+// the Spatial/Exercise design spec calls for. Level 5 collapses into
+// upper_intermediate since the spec caps at four named bands.
+func difficultyBand(level int) string {
+	switch {
+	case level <= 1:
+		return "beginner"
+	case level == 2:
+		return "pre_intermediate"
+	case level == 3:
+		return "intermediate"
+	default:
+		return "upper_intermediate"
+	}
+}
+
 type CurriculumService struct {
 	curriculumRepo CurriculumRepository
 	userRepo       UserProfileRepository
@@ -110,7 +126,10 @@ func (s *CurriculumService) GetCurriculum(ctx context.Context, userID uuid.UUID)
 					Title:                    st.Title,
 					OrderIndex:               st.OrderIndex,
 					DifficultyLevel:          st.DifficultyLevel,
+					DifficultyBand:           difficultyBand(st.DifficultyLevel),
 					EstimatedDurationSeconds: st.EstimatedDurationSeconds,
+					TensionLevel:             st.TensionLevel,
+					SceneNPCKey:              st.SceneNPCKey,
 				}
 				if sp, ok := stageProgressMap[st.ID]; ok {
 					so.Progress = &dto.StageProgressDTO{
@@ -146,8 +165,14 @@ func (s *CurriculumService) GetStageDetail(ctx context.Context, userID, stageID 
 		Title:                    stage.Title,
 		ScenarioDescription:      stage.ScenarioDescription,
 		DifficultyLevel:          stage.DifficultyLevel,
+		DifficultyBand:           difficultyBand(stage.DifficultyLevel),
 		EstimatedDurationSeconds: stage.EstimatedDurationSeconds,
 		XPBase:                   stage.XPBase,
+		SceneOpenerMd:            stage.SceneOpenerMd,
+		SceneEndingMd:            stage.SceneEndingMd,
+		SceneNPCKey:              stage.SceneNPCKey,
+		TensionLevel:             stage.TensionLevel,
+		NPCMood:                  []string(stage.NPCMood),
 	}
 
 	for _, ex := range stage.Exercises {
