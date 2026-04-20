@@ -5,9 +5,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, learningApi } from '../../api';
 import { Button } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
-import type { HomeStackParamList } from '../../navigation/types';
+import type { MapStackParamList } from '../../navigation/types';
 
-type Props = NativeStackScreenProps<HomeStackParamList, 'StageIntro'>;
+type Props = NativeStackScreenProps<MapStackParamList, 'StageIntro'>;
 
 export function StageIntroScreen({ route, navigation }: Props) {
   const { stageId } = route.params;

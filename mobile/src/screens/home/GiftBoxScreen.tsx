@@ -5,9 +5,9 @@ import { useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
 import { Button } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
-import type { HomeStackParamList } from '../../navigation/types';
+import type { MapStackParamList } from '../../navigation/types';
 
-type Props = NativeStackScreenProps<HomeStackParamList, 'GiftBox'>;
+type Props = NativeStackScreenProps<MapStackParamList, 'GiftBox'>;
 
 const rarityColors: Record<string, string> = {
   common: colors.rarityCommon,

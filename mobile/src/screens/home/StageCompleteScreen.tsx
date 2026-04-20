@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Button } from '../../components/common';
+import { CelebrationOverlay } from '../../components/celebration';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { useQueryClient } from '@tanstack/react-query';
-import type { HomeStackParamList } from '../../navigation/types';
+import { t } from '../../locales';
+import type { MapStackParamList } from '../../navigation/types';
 
-type Props = NativeStackScreenProps<HomeStackParamList, 'StageComplete'>;
+type Props = NativeStackScreenProps<MapStackParamList, 'StageComplete'>;
 
 export function StageCompleteScreen({ route, navigation }: Props) {
   const { result } = route.params;
   const queryClient = useQueryClient();
+  const [showFloorUnlock, setShowFloorUnlock] = useState<boolean>(
+    !!result.unlocked_module_id,
+  );
 
   const handleContinue = () => {
     queryClient.invalidateQueries({ queryKey: ['profile'] });
@@ -79,6 +84,13 @@ export function StageCompleteScreen({ route, navigation }: Props) {
       )}
 
       <Button title="Continue" onPress={handleContinue} style={styles.btn} />
+
+      <CelebrationOverlay
+        visible={showFloorUnlock}
+        title={t('map.celebration.floorUnlockedTitle')}
+        subtitle={t('map.celebration.floorUnlockedSubtitle')}
+        onDismiss={() => setShowFloorUnlock(false)}
+      />
     </View>
   );
 }

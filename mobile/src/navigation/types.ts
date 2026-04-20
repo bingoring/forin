@@ -14,13 +14,6 @@ export type MapStackParamList = {
   GiftBox: { boxId: string; boxType: string };
 };
 
-// Transitional alias — existing screens reference HomeStackParamList.
-// Task 21 removes HomeMain and the alias entirely when the tab navigator
-// is rewired to the new Map + Quests + Profile structure.
-export type HomeStackParamList = MapStackParamList & {
-  HomeMain: undefined;
-};
-
 export type QuestsStackParamList = {
   QuestsMain: undefined;
   StageIntro: { stageId: string };
@@ -41,8 +34,4 @@ export type TabParamList = {
   QuestsTab: NavigatorScreenParams<QuestsStackParamList>;
   AchievementsTab: undefined;
   ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
-  // Transitional — Task 21 swaps AppNavigator to the new tab set and
-  // removes these aliases.
-  HomeTab: NavigatorScreenParams<HomeStackParamList>;
-  LearnTab: undefined;
 };
