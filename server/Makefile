@@ -2,7 +2,7 @@ BINARY=forin-server
 MAIN=./cmd/api/main.go
 MIGRATE=migrate -path ./migrations -database "postgres://forin:forin@localhost:5432/forin?sslmode=disable"
 
-.PHONY: build run dev docker-up docker-down migrate-up migrate-down migrate-create seed tidy test test-unit test-integration test-coverage
+.PHONY: build run dev docker-up docker-down migrate-up migrate-down migrate-create seed content-import tidy test test-unit test-integration test-coverage
 
 build:
 	go build -o bin/$(BINARY) $(MAIN)
@@ -33,6 +33,9 @@ migrate-create:
 
 seed:
 	go run ./scripts/
+
+content-import:
+	go run ./scripts/import_scenes
 
 test:
 	go test ./... -count=1
