@@ -17,6 +17,13 @@ type UpdateProfileRequest struct {
 	NativeLanguage *string `json:"native_language" binding:"omitempty,max=8"`
 }
 
+type SetPushTokenRequest struct {
+	// PushToken is the ExponentPushToken[...] string emitted by
+	// expo-notifications on the device. Empty string clears the token
+	// (e.g. when the user revokes permission).
+	PushToken string `json:"push_token" binding:"max=500"`
+}
+
 // --- Responses ---
 
 type UserProfileResponse struct {

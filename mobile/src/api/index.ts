@@ -18,6 +18,8 @@ export const userApi = {
   getProfile: () => api.get<ApiResponse<UserProfile>>('/users/me'),
   updateProfile: (data: Partial<UserProfile>) =>
     api.patch<ApiResponse<UserProfile>>('/users/me', data),
+  setPushToken: (pushToken: string) =>
+    api.put<ApiResponse<{ ok: boolean }>>('/users/me/push-token', { push_token: pushToken }),
 };
 
 export const curriculumApi = {

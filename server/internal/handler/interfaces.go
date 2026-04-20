@@ -19,6 +19,7 @@ type AuthService interface {
 type UserService interface {
 	GetProfile(ctx context.Context, userID uuid.UUID) (*dto.UserProfileResponse, error)
 	UpdateProfile(ctx context.Context, userID uuid.UUID, req dto.UpdateProfileRequest) (*dto.UserProfileResponse, error)
+	SetPushToken(ctx context.Context, userID uuid.UUID, token string) error
 }
 
 // CurriculumService defines the business logic contract for curriculum.

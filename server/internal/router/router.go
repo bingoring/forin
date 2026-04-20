@@ -79,6 +79,7 @@ func New(
 	users := protected.Group("/users")
 	users.GET("/me", userHandler.GetProfile)
 	users.PATCH("/me", userHandler.UpdateProfile)
+	users.PUT("/me/push-token", userHandler.SetPushToken)
 	users.PUT("/me/cat/equip", gamificationHandler.EquipCatItem)
 	users.GET("/me/notification-preferences", notificationHandler.GetPreferences)
 	users.PUT("/me/notification-preferences", notificationHandler.UpdatePreferences)
