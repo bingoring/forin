@@ -13,6 +13,7 @@ type MockCurriculumRepository struct {
 	FindExerciseByIDFn                  func(ctx context.Context, exerciseID uuid.UUID) (*model.Exercise, error)
 	FindUserStageProgressFn             func(ctx context.Context, userID uuid.UUID, stageIDs []uuid.UUID) ([]model.UserStageProgress, error)
 	FindUserModuleProgressFn            func(ctx context.Context, userID uuid.UUID, moduleIDs []uuid.UUID) ([]model.UserModuleProgress, error)
+	FindModuleByIDFn                    func(ctx context.Context, moduleID uuid.UUID) (*model.CurriculumModule, error)
 }
 
 func (m *MockCurriculumRepository) FindModulesByProfessionAndCountry(ctx context.Context, professionID uuid.UUID, targetCountry string) ([]model.CurriculumModule, error) {
@@ -46,6 +47,13 @@ func (m *MockCurriculumRepository) FindUserStageProgress(ctx context.Context, us
 func (m *MockCurriculumRepository) FindUserModuleProgress(ctx context.Context, userID uuid.UUID, moduleIDs []uuid.UUID) ([]model.UserModuleProgress, error) {
 	if m.FindUserModuleProgressFn != nil {
 		return m.FindUserModuleProgressFn(ctx, userID, moduleIDs)
+	}
+	return nil, nil
+}
+
+func (m *MockCurriculumRepository) FindModuleByID(ctx context.Context, moduleID uuid.UUID) (*model.CurriculumModule, error) {
+	if m.FindModuleByIDFn != nil {
+		return m.FindModuleByIDFn(ctx, moduleID)
 	}
 	return nil, nil
 }

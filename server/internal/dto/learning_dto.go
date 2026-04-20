@@ -39,17 +39,18 @@ type SubmitExerciseResponse struct {
 }
 
 type CompleteAttemptResponse struct {
-	AttemptID       uuid.UUID             `json:"attempt_id"`
-	StageID         uuid.UUID             `json:"stage_id"`
-	TotalScore      int                   `json:"total_score"`
-	StarsEarned     int                   `json:"stars_earned"`
-	XPEarned        int                   `json:"xp_earned"`
-	MistakesCount   int                   `json:"mistakes_count"`
-	DurationSeconds int                   `json:"duration_seconds"`
-	LevelUp         *LevelUpResponse      `json:"level_up"`
-	StreakUpdate     *StreakUpdateResponse  `json:"streak_update"`
-	Achievements    []AchievementUnlocked `json:"achievements"`
-	GiftBox         *GiftBoxAwarded       `json:"gift_box"`
+	AttemptID        uuid.UUID             `json:"attempt_id"`
+	StageID          uuid.UUID             `json:"stage_id"`
+	TotalScore       int                   `json:"total_score"`
+	StarsEarned      int                   `json:"stars_earned"`
+	XPEarned         int                   `json:"xp_earned"`
+	MistakesCount    int                   `json:"mistakes_count"`
+	DurationSeconds  int                   `json:"duration_seconds"`
+	LevelUp          *LevelUpResponse      `json:"level_up"`
+	StreakUpdate     *StreakUpdateResponse `json:"streak_update"`
+	Achievements     []AchievementUnlocked `json:"achievements"`
+	GiftBox          *GiftBoxAwarded       `json:"gift_box"`
+	UnlockedModuleID *uuid.UUID            `json:"unlocked_module_id"`
 }
 
 type LevelUpResponse struct {

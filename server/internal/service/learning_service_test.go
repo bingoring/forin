@@ -269,3 +269,124 @@ func TestGetAttemptHistory_Success(t *testing.T) {
 	assert.Equal(t, int64(1), resp.TotalCount)
 	assert.Equal(t, "Test Stage", resp.Attempts[0].StageTitle)
 }
+
+// --- Floor unlock on CompleteAttempt ---
+
+func TestCompleteAttempt_UnlocksNextFloor(t *testing.T) {
+	userID := uuid.New()
+	stageID := uuid.New()
+	unitID := uuid.New()
+	currentModuleID := uuid.New()
+	nextModuleID := uuid.New()
+	attemptID := uuid.New()
+	profID := uuid.New()
+	country := "AU"
+
+	started := time.Now().Add(-5 * time.Minute)
+	var createdUnlock struct {
+		userID   uuid.UUID
+		moduleID uuid.UUID
+	}
+
+	lr := &testutil.MockLearningRepository{
+		FindAttemptByIDFn: func(_ context.Context, _ uuid.UUID) (*model.StageAttempt, error) {
+			return &model.StageAttempt{
+				ID:            attemptID,
+				UserID:        userID,
+				StageID:       stageID,
+				StartedAt:     started,
+				MistakesCount: 0,
+			}, nil
+		},
+		FindResponsesByAttemptIDFn: func(_ context.Context, _ uuid.UUID) ([]model.ExerciseResponse, error) {
+			return []model.ExerciseResponse{}, nil
+		},
+		FindUserByIDFn: func(_ context.Context, id uuid.UUID) (*model.User, error) {
+			return &model.User{
+				ID:            id,
+				Lives:         5,
+				CurrentLevel:  1,
+				DailyGoal:     "regular",
+				ProfessionID:  &profID,
+				TargetCountry: &country,
+			}, nil
+		},
+		FindUnitByStageIDFn: func(_ context.Context, _ uuid.UUID) (*model.Unit, error) {
+			return &model.Unit{ID: unitID, ModuleID: currentModuleID}, nil
+		},
+		CountUnitStagesCompletedFn: func(_ context.Context, _, _ uuid.UUID) (int64, error) { return 3, nil },
+		CountUnitStagesTotalFn:     func(_ context.Context, _ uuid.UUID) (int64, error) { return 3, nil },
+		FindNextFloorModuleFn: func(_ context.Context, _ uuid.UUID, _ string, floor int) (*model.CurriculumModule, error) {
+			return &model.CurriculumModule{ID: nextModuleID, FloorOrder: floor + 1}, nil
+		},
+		CreateUserUnlockedFloorFn: func(_ context.Context, uid, mid uuid.UUID) error {
+			createdUnlock.userID = uid
+			createdUnlock.moduleID = mid
+			return nil
+		},
+	}
+	cr := &testutil.MockCurriculumRepository{
+		FindStageByIDFn: func(_ context.Context, id uuid.UUID) (*model.Stage, error) {
+			return &model.Stage{ID: id, UnitID: unitID, XPBase: 50, EstimatedDurationSeconds: 300}, nil
+		},
+		FindModuleByIDFn: func(_ context.Context, _ uuid.UUID) (*model.CurriculumModule, error) {
+			return &model.CurriculumModule{ID: currentModuleID, FloorOrder: 1}, nil
+		},
+	}
+
+	svc := newLearningService(lr, cr)
+	resp, err := svc.CompleteAttempt(context.Background(), userID, attemptID)
+
+	require.NoError(t, err)
+	require.NotNil(t, resp.UnlockedModuleID)
+	assert.Equal(t, nextModuleID, *resp.UnlockedModuleID)
+	assert.Equal(t, userID, createdUnlock.userID)
+	assert.Equal(t, nextModuleID, createdUnlock.moduleID)
+}
+
+func TestCompleteAttempt_DoesNotUnlock_WhenUnitIncomplete(t *testing.T) {
+	userID := uuid.New()
+	stageID := uuid.New()
+	unitID := uuid.New()
+	attemptID := uuid.New()
+	profID := uuid.New()
+	country := "AU"
+
+	started := time.Now().Add(-5 * time.Minute)
+
+	lr := &testutil.MockLearningRepository{
+		FindAttemptByIDFn: func(_ context.Context, _ uuid.UUID) (*model.StageAttempt, error) {
+			return &model.StageAttempt{
+				ID:        attemptID,
+				UserID:    userID,
+				StageID:   stageID,
+				StartedAt: started,
+			}, nil
+		},
+		FindResponsesByAttemptIDFn: func(_ context.Context, _ uuid.UUID) ([]model.ExerciseResponse, error) {
+			return []model.ExerciseResponse{}, nil
+		},
+		FindUserByIDFn: func(_ context.Context, id uuid.UUID) (*model.User, error) {
+			return &model.User{
+				ID: id, Lives: 5, CurrentLevel: 1, DailyGoal: "regular",
+				ProfessionID: &profID, TargetCountry: &country,
+			}, nil
+		},
+		FindUnitByStageIDFn: func(_ context.Context, _ uuid.UUID) (*model.Unit, error) {
+			return &model.Unit{ID: unitID, ModuleID: uuid.New()}, nil
+		},
+		CountUnitStagesCompletedFn: func(_ context.Context, _, _ uuid.UUID) (int64, error) { return 2, nil },
+		CountUnitStagesTotalFn:     func(_ context.Context, _ uuid.UUID) (int64, error) { return 3, nil },
+	}
+	cr := &testutil.MockCurriculumRepository{
+		FindStageByIDFn: func(_ context.Context, id uuid.UUID) (*model.Stage, error) {
+			return &model.Stage{ID: id, UnitID: unitID, XPBase: 50, EstimatedDurationSeconds: 300}, nil
+		},
+	}
+
+	svc := newLearningService(lr, cr)
+	resp, err := svc.CompleteAttempt(context.Background(), userID, attemptID)
+
+	require.NoError(t, err)
+	assert.Nil(t, resp.UnlockedModuleID)
+}

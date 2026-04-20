@@ -189,6 +189,61 @@ func (r *LearningRepository) FindAttemptHistory(ctx context.Context, userID uuid
 	return attempts, total, nil
 }
 
+func (r *LearningRepository) FindUnitByStageID(ctx context.Context, stageID uuid.UUID) (*model.Unit, error) {
+	var unit model.Unit
+	err := r.db.WithContext(ctx).
+		Joins("JOIN stages ON stages.unit_id = units.id").
+		Where("stages.id = ?", stageID).
+		First(&unit).Error
+	if err != nil {
+		return nil, err
+	}
+	return &unit, nil
+}
+
+func (r *LearningRepository) CountUnitStagesCompleted(ctx context.Context, userID, unitID uuid.UUID) (int64, error) {
+	var n int64
+	err := r.db.WithContext(ctx).
+		Table("user_stage_progress AS p").
+		Joins("JOIN stages s ON s.id = p.stage_id").
+		Where("p.user_id = ? AND s.unit_id = ? AND p.status = ?", userID, unitID, "completed").
+		Count(&n).Error
+	return n, err
+}
+
+func (r *LearningRepository) CountUnitStagesTotal(ctx context.Context, unitID uuid.UUID) (int64, error) {
+	var n int64
+	err := r.db.WithContext(ctx).
+		Model(&model.Stage{}).
+		Where("unit_id = ? AND is_published = true", unitID).
+		Count(&n).Error
+	return n, err
+}
+
+func (r *LearningRepository) FindNextFloorModule(ctx context.Context, professionID uuid.UUID, targetCountry string, currentFloorOrder int) (*model.CurriculumModule, error) {
+	var m model.CurriculumModule
+	err := r.db.WithContext(ctx).
+		Where("profession_id = ? AND target_country = ? AND is_published = true AND floor_order > ?",
+			professionID, targetCountry, currentFloorOrder).
+		Order("floor_order ASC").
+		First(&m).Error
+	if err != nil {
+		return nil, err
+	}
+	return &m, nil
+}
+
+func (r *LearningRepository) CreateUserUnlockedFloor(ctx context.Context, userID, moduleID uuid.UUID) error {
+	row := &model.UserUnlockedFloor{
+		UserID:     userID,
+		ModuleID:   moduleID,
+		UnlockedAt: time.Now(),
+	}
+	return r.db.WithContext(ctx).
+		Clauses(clause.OnConflict{DoNothing: true}).
+		Create(row).Error
+}
+
 // WithTx executes fn within a database transaction.
 // A new LearningRepository scoped to the transaction is passed to fn.
 func (r *LearningRepository) WithTx(fn func(repo service.LearningRepository) error) error {
