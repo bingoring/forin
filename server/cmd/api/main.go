@@ -16,6 +16,7 @@ import (
 	"github.com/forin/server/internal/evaluator"
 	"github.com/forin/server/internal/handler"
 	"github.com/forin/server/internal/logger"
+	"github.com/forin/server/internal/observability"
 	"github.com/forin/server/internal/repository"
 	"github.com/forin/server/internal/router"
 	"github.com/forin/server/internal/service"
@@ -33,6 +34,11 @@ func main() {
 	// 2. Initialize logger
 	log := logger.Init(cfg.Env)
 	defer logger.Sync()
+
+	// 2b. Initialize Sentry. flushSentry is a no-op when SENTRY_DSN is
+	// unset, so dev-without-credentials stays clean.
+	flushSentry := observability.InitSentry(cfg, log)
+	defer flushSentry()
 
 	// 3. Connect to database
 	db, err := database.New(cfg, log)

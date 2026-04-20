@@ -7,6 +7,7 @@ import (
 	"github.com/forin/server/internal/config"
 	"github.com/forin/server/internal/handler"
 	"github.com/forin/server/internal/middleware"
+	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -36,6 +37,12 @@ func New(
 	// Global middleware (order matters)
 	engine.Use(middleware.Recovery(log))
 	engine.Use(middleware.RequestID())
+	// Sentry middleware captures panics and errors flushed via
+	// sentrygin.GetHubFromContext. When no DSN is configured the
+	// underlying hub is nil and this middleware is effectively a no-op.
+	if cfg.SentryDSN != "" {
+		engine.Use(sentrygin.New(sentrygin.Options{Repanic: true}))
+	}
 	engine.Use(middleware.Logger(log))
 	engine.Use(middleware.CORS(cfg))
 

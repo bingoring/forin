@@ -4,8 +4,23 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import * as Sentry from '@sentry/react-native';
 import './src/locales';
 import { AppNavigator } from './src/navigation/AppNavigator';
+
+// Initialise Sentry before anything else so early crashes are captured.
+// DSN is wired through EXPO_PUBLIC_SENTRY_DSN so it's baked into the
+// JS bundle at build time; missing DSN means the SDK no-ops.
+const sentryDsn = process.env.EXPO_PUBLIC_SENTRY_DSN;
+if (sentryDsn) {
+  Sentry.init({
+    dsn: sentryDsn,
+    environment: process.env.EXPO_PUBLIC_SENTRY_ENV ?? 'development',
+    // Trace sample rate is small to keep within the free Developer-plan
+    // budget; bump this when we switch to a paid plan.
+    tracesSampleRate: 0.05,
+  });
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,7 +31,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export default function App() {
+function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
@@ -30,3 +45,8 @@ export default function App() {
     </GestureHandlerRootView>
   );
 }
+
+// Sentry.wrap adds a crash boundary + native module wiring so unhandled
+// errors in the JS tree reach Sentry. It's a no-op when Sentry wasn't
+// initialised (empty DSN).
+export default Sentry.wrap(App);
