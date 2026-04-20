@@ -64,6 +64,10 @@ export interface CurriculumModule {
   description: string | null;
   order_index: number;
   min_level_required: number;
+  floor_order: number;
+  floor_label: string;
+  floor_icon: string;
+  map_asset_key: string;
   progress: { status: string; completion_percentage: number } | null;
   units: CurriculumUnit[];
 }
@@ -73,6 +77,10 @@ export interface CurriculumUnit {
   title: string;
   description: string | null;
   order_index: number;
+  location_type: string;
+  map_x: number;
+  map_y: number;
+  hotspot_label_override: string | null;
   stages: StageOverview[];
 }
 
@@ -136,6 +144,7 @@ export interface CompleteAttemptResponse {
   streak_update: { current_streak: number; was_extended: boolean; milestone_hit: number | null } | null;
   achievements: { id: string; slug: string; name: string }[];
   gift_box: { id: string; box_type: string } | null;
+  unlocked_module_id: string | null;
 }
 
 // Onboarding
