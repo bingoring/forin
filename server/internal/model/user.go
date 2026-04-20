@@ -12,6 +12,7 @@ type User struct {
 	Email          string     `gorm:"uniqueIndex;not null"`
 	PasswordHash   *string    `gorm:"column:password_hash"`
 	DisplayName    string     `gorm:"not null"`
+	NativeLanguage string     `gorm:"column:native_language;size:8;not null;default:'ko'"`
 	AvatarURL      *string
 	ProfessionID   *uuid.UUID
 	TargetCountry  *string    `gorm:"size:10"`

@@ -9,11 +9,12 @@ import (
 // --- Requests ---
 
 type UpdateProfileRequest struct {
-	DisplayName   *string `json:"display_name"   binding:"omitempty,min=1,max=100"`
-	CatName       *string `json:"cat_name"       binding:"omitempty,min=1,max=50"`
-	DailyGoal     *string `json:"daily_goal"     binding:"omitempty,oneof=casual regular intensive"`
-	TargetCountry *string `json:"target_country" binding:"omitempty,max=10"`
-	Timezone      *string `json:"timezone"       binding:"omitempty,max=100"`
+	DisplayName    *string `json:"display_name"    binding:"omitempty,min=1,max=100"`
+	CatName        *string `json:"cat_name"        binding:"omitempty,min=1,max=50"`
+	DailyGoal      *string `json:"daily_goal"      binding:"omitempty,oneof=casual regular intensive"`
+	TargetCountry  *string `json:"target_country"  binding:"omitempty,max=10"`
+	Timezone       *string `json:"timezone"        binding:"omitempty,max=100"`
+	NativeLanguage *string `json:"native_language" binding:"omitempty,max=8"`
 }
 
 // --- Responses ---
@@ -23,9 +24,10 @@ type UserProfileResponse struct {
 	Email         string                 `json:"email"`
 	DisplayName   string                 `json:"display_name"`
 	AvatarURL     *string                `json:"avatar_url"`
-	Profession    *ProfessionResponse    `json:"profession"`
-	TargetCountry *string                `json:"target_country"`
-	LanguageLevel string                 `json:"language_level"`
+	Profession     *ProfessionResponse    `json:"profession"`
+	TargetCountry  *string                `json:"target_country"`
+	NativeLanguage string                 `json:"native_language"`
+	LanguageLevel  string                 `json:"language_level"`
 	DailyGoal     string                 `json:"daily_goal"`
 	CurrentXP     int                    `json:"current_xp"`
 	XPToNextLevel int                    `json:"xp_to_next_level"`

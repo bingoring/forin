@@ -32,7 +32,7 @@ migrate-create:
 	migrate create -ext sql -dir ./migrations -seq $$name
 
 seed:
-	go run ./scripts/seed.go
+	go run ./scripts/
 
 test:
 	go test ./... -count=1

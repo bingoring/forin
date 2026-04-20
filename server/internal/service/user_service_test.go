@@ -102,3 +102,48 @@ func TestUpdateProfile_Success(t *testing.T) {
 	assert.Equal(t, "New Name", resp.DisplayName)
 	assert.Equal(t, "intensive", resp.DailyGoal)
 }
+
+func TestUpdateProfile_SetsNativeLanguage(t *testing.T) {
+	userID := uuid.New()
+	user := &model.User{ID: userID, NativeLanguage: "ko"}
+	var updated *model.User
+
+	repo := &testutil.MockUserProfileRepository{
+		FindByIDWithProfessionFn: func(ctx context.Context, id uuid.UUID) (*model.User, error) {
+			return user, nil
+		},
+		UpdateFn: func(ctx context.Context, u *model.User) error {
+			updated = u
+			return nil
+		},
+	}
+
+	svc := testUserService(repo)
+	locale := "ko-KR"
+	resp, err := svc.UpdateProfile(context.Background(), userID, dto.UpdateProfileRequest{
+		NativeLanguage: &locale,
+	})
+
+	require.NoError(t, err)
+	assert.Equal(t, "ko", updated.NativeLanguage) // normalized
+	assert.Equal(t, "ko", resp.NativeLanguage)
+}
+
+func TestUpdateProfile_RejectsUnsupportedLocale(t *testing.T) {
+	userID := uuid.New()
+	user := &model.User{ID: userID, NativeLanguage: "ko"}
+
+	repo := &testutil.MockUserProfileRepository{
+		FindByIDWithProfessionFn: func(ctx context.Context, id uuid.UUID) (*model.User, error) {
+			return user, nil
+		},
+	}
+
+	svc := testUserService(repo)
+	bogus := "de"
+	_, err := svc.UpdateProfile(context.Background(), userID, dto.UpdateProfileRequest{
+		NativeLanguage: &bogus,
+	})
+
+	assert.ErrorIs(t, err, ErrUnsupportedLocale)
+}

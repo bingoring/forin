@@ -10,7 +10,13 @@ interface AuthState {
 
   initialize: () => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string, displayName: string) => Promise<void>;
+  register: (
+    email: string,
+    password: string,
+    displayName: string,
+    nativeLanguage?: string,
+  ) => Promise<void>;
+  setUser: (user: UserInfo) => void;
   logout: () => Promise<void>;
 }
 
@@ -40,13 +46,15 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ isAuthenticated: true, user: tokens.user });
   },
 
-  register: async (email, password, displayName) => {
-    const { data } = await authApi.register(email, password, displayName);
+  register: async (email, password, displayName, nativeLanguage) => {
+    const { data } = await authApi.register(email, password, displayName, nativeLanguage);
     const tokens = data.data;
     await SecureStore.setItemAsync('access_token', tokens.access_token);
     await SecureStore.setItemAsync('refresh_token', tokens.refresh_token);
     set({ isAuthenticated: true, user: tokens.user });
   },
+
+  setUser: (user) => set({ user }),
 
   logout: async () => {
     try {

@@ -25,6 +25,9 @@ func main() {
 	fmt.Println("Seeding achievements...")
 	seedAchievements(db)
 
+	fmt.Println("Seeding vocabulary...")
+	seedVocabulary(db)
+
 	fmt.Println("Seed completed successfully.")
 }
 

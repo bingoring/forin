@@ -65,6 +65,7 @@ var errorMapping = map[string]*AppError{
 	"invalid or expired token":                    NewUnauthorized("Invalid or expired token"),
 	// User
 	"user not found":                              NewNotFound("User not found"),
+	"unsupported native_language":                 NewBadRequest("Unsupported native language"),
 	// Curriculum
 	"stage not found":                             NewNotFound("Stage not found"),
 	// Learning

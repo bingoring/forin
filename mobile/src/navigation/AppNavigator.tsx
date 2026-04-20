@@ -11,6 +11,8 @@ import { colors } from '../theme';
 import { LoginScreen } from '../screens/auth/LoginScreen';
 import { RegisterScreen } from '../screens/auth/RegisterScreen';
 import { OnboardingScreen } from '../screens/onboarding/OnboardingScreen';
+import { LanguageSelectScreen } from '../screens/onboarding/LanguageSelectScreen';
+import { setAppLocale } from '../locales';
 import { HomeScreen } from '../screens/home/HomeScreen';
 import { StageIntroScreen } from '../screens/home/StageIntroScreen';
 import { ExerciseScreen } from '../screens/home/ExerciseScreen';
@@ -80,8 +82,12 @@ function MainTabs() {
   );
 }
 
+type Stage = 'language' | 'onboarding' | 'main';
+
 function AuthenticatedApp() {
-  const [showOnboarding, setShowOnboarding] = useState<boolean | null>(null);
+  const [stage, setStage] = useState<Stage | null>(null);
+  const setUser = useAuthStore((s) => s.setUser);
+  const currentUser = useAuthStore((s) => s.user);
 
   const { data: profile } = useQuery({
     queryKey: ['profile'],
@@ -92,12 +98,27 @@ function AuthenticatedApp() {
   });
 
   useEffect(() => {
-    if (profile) {
-      setShowOnboarding(!profile.profession);
+    if (!profile) return;
+
+    // Keep authStore.user.native_language in sync so useLocale reacts.
+    if (profile.native_language) {
+      setAppLocale(profile.native_language);
+    }
+    if (currentUser && currentUser.native_language !== profile.native_language) {
+      setUser({ ...currentUser, native_language: profile.native_language });
+    }
+
+    if (profile.profession) {
+      setStage('main');
+    } else {
+      // A user with a profession has been through onboarding, so any future
+      // session skips both language + onboarding. First-time users go through
+      // LanguageSelect before the profession-country-goal-catName flow.
+      setStage('language');
     }
   }, [profile]);
 
-  if (showOnboarding === null) {
+  if (stage === null) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color={colors.primary} />
@@ -105,8 +126,12 @@ function AuthenticatedApp() {
     );
   }
 
-  if (showOnboarding) {
-    return <OnboardingScreen onComplete={() => setShowOnboarding(false)} />;
+  if (stage === 'language') {
+    return <LanguageSelectScreen onComplete={() => setStage('onboarding')} />;
+  }
+
+  if (stage === 'onboarding') {
+    return <OnboardingScreen onComplete={() => setStage('main')} />;
   }
 
   return <MainTabs />;
