@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import * as SecureStore from 'expo-secure-store';
 import { authApi } from '../api/auth';
+import { analytics } from '../analytics';
 import type { UserInfo } from '../types/api';
 
 interface AuthState {
@@ -44,6 +45,10 @@ export const useAuthStore = create<AuthState>((set) => ({
     await SecureStore.setItemAsync('access_token', tokens.access_token);
     await SecureStore.setItemAsync('refresh_token', tokens.refresh_token);
     set({ isAuthenticated: true, user: tokens.user });
+    analytics.identify(tokens.user.id, {
+      native_language: tokens.user.native_language,
+      current_level: tokens.user.current_level,
+    });
   },
 
   register: async (email, password, displayName, nativeLanguage) => {
@@ -52,6 +57,10 @@ export const useAuthStore = create<AuthState>((set) => ({
     await SecureStore.setItemAsync('access_token', tokens.access_token);
     await SecureStore.setItemAsync('refresh_token', tokens.refresh_token);
     set({ isAuthenticated: true, user: tokens.user });
+    analytics.identify(tokens.user.id, {
+      native_language: tokens.user.native_language,
+      current_level: tokens.user.current_level,
+    });
   },
 
   setUser: (user) => set({ user }),
@@ -63,5 +72,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     await SecureStore.deleteItemAsync('access_token');
     await SecureStore.deleteItemAsync('refresh_token');
     set({ isAuthenticated: false, user: null });
+    analytics.reset();
   },
 }));

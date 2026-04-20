@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Button, Icon } from '../../components/common';
@@ -7,6 +7,7 @@ import { Mascot } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { useQueryClient } from '@tanstack/react-query';
 import { t } from '../../locales';
+import { analytics } from '../../analytics';
 import type { MapStackParamList } from '../../navigation/types';
 
 type Props = NativeStackScreenProps<MapStackParamList, 'StageComplete'>;
@@ -17,6 +18,51 @@ export function StageCompleteScreen({ route, navigation }: Props) {
   const [showFloorUnlock, setShowFloorUnlock] = useState<boolean>(
     !!result.unlocked_module_id,
   );
+
+  // Fire analytics once on mount. Each sub-event is gated on the result
+  // so we only emit what actually happened in this completion.
+  useEffect(() => {
+    analytics.track({
+      name: 'stage_complete',
+      properties: {
+        stage_id: result.stage_id,
+        stars: result.stars_earned,
+        xp_earned: result.xp_earned,
+        mistakes: result.mistakes_count,
+        duration_seconds: result.duration_seconds,
+      },
+    });
+    if (result.level_up) {
+      analytics.track({
+        name: 'level_up',
+        properties: {
+          new_level: result.level_up.new_level,
+          new_title: result.level_up.new_title,
+        },
+      });
+    }
+    if (result.streak_update?.milestone_hit) {
+      analytics.track({
+        name: 'streak_milestone',
+        properties: { milestone: result.streak_update.milestone_hit },
+      });
+    }
+    if (result.streak_update?.shield_used) {
+      analytics.track({
+        name: 'shield_used',
+        properties: { current_streak: result.streak_update.current_streak },
+      });
+    }
+    if (result.streak_update?.shield_earned) {
+      analytics.track({
+        name: 'shield_earned',
+        properties: {
+          current_streak: result.streak_update.current_streak,
+          total_shields: result.streak_update.streak_shields,
+        },
+      });
+    }
+  }, []);
 
   const handleContinue = () => {
     queryClient.invalidateQueries({ queryKey: ['profile'] });

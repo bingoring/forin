@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -7,6 +7,20 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
 import './src/locales';
 import { AppNavigator } from './src/navigation/AppNavigator';
+import { analytics, setAnalytics } from './src/analytics';
+import { createPostHogAnalytics } from './src/analytics/posthog';
+
+// Analytics — vendor is swappable. If POSTHOG_KEY is missing, the noop
+// baseline set by src/analytics/index.ts stays active.
+const posthogKey = process.env.EXPO_PUBLIC_POSTHOG_KEY;
+if (posthogKey) {
+  setAnalytics(
+    createPostHogAnalytics({
+      apiKey: posthogKey,
+      host: process.env.EXPO_PUBLIC_POSTHOG_HOST,
+    }),
+  );
+}
 
 // Initialise Sentry before anything else so early crashes are captured.
 // DSN is wired through EXPO_PUBLIC_SENTRY_DSN so it's baked into the
@@ -32,6 +46,10 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  useEffect(() => {
+    analytics.track({ name: 'session_start' });
+  }, []);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
