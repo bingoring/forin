@@ -31,6 +31,9 @@ func main() {
 	fmt.Println("Seeding floor metadata...")
 	seedFloorMetadata(db)
 
+	fmt.Println("Seeding scenes...")
+	seedScenes(db)
+
 	fmt.Println("Seed completed successfully.")
 }
 

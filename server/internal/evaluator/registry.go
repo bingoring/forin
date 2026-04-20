@@ -13,8 +13,9 @@ func NewRegistry(aiClient AIClient) *Registry {
 		evaluators: map[string]Evaluator{
 			"sentence_arrangement": &SentenceArrangementEvaluator{},
 			"word_puzzle":          &WordPuzzleEvaluator{},
-			"meaning_match":       &MeaningMatchEvaluator{},
-			"conversation":        &ConversationEvaluator{aiClient: aiClient},
+			"meaning_match":        &MeaningMatchEvaluator{},
+			"conversation":         &ConversationEvaluator{aiClient: aiClient},
+			"synonym_match":        &SynonymMatchEvaluator{},
 		},
 	}
 }

@@ -24,6 +24,7 @@ func New(
 	onboardingHandler *handler.OnboardingHandler,
 	gamificationHandler *handler.GamificationHandler,
 	notificationHandler *handler.NotificationHandler,
+	vocabularyHandler *handler.VocabularyHandler,
 	authService handler.AuthService,
 ) *gin.Engine {
 	if cfg.Env == "production" {
@@ -97,6 +98,10 @@ func New(
 	)
 	learning.POST("/attempts/:attemptId/complete", learningHandler.CompleteAttempt)
 	learning.GET("/history", learningHandler.GetHistory)
+
+	// Vocabulary
+	vocabulary := protected.Group("/vocabulary")
+	vocabulary.POST("/lookup", vocabularyHandler.Lookup)
 
 	// Gamification
 	gamification := protected.Group("/gamification")

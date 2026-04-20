@@ -4,7 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, learningApi } from '../../api';
 import { Button } from '../../components/common';
+import { NPCAvatar } from '../../components/mascot';
+import { getNPC } from '../../data/npcs';
 import { colors, typography, spacing, borderRadius } from '../../theme';
+import { t } from '../../locales';
 import type { MapStackParamList } from '../../navigation/types';
 
 type Props = NativeStackScreenProps<MapStackParamList, 'StageIntro'>;
@@ -44,11 +47,23 @@ export function StageIntroScreen({ route, navigation }: Props) {
     );
   }
 
+  const npc = getNPC(stage.scene_npc_key ?? null);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>{stage.title}</Text>
         <Text style={styles.scenario}>{stage.scenario_description}</Text>
+
+        {npc ? (
+          <View style={styles.npcRow}>
+            <NPCAvatar category={npc.category} displayName={npc.displayName} size={72} />
+            <View style={styles.tensionPill}>
+              <Text style={styles.tensionLabel}>{t('scene.tagTension')}</Text>
+              <Text style={styles.tensionValue}>{stage.tension_level}</Text>
+            </View>
+          </View>
+        ) : null}
 
         <View style={styles.infoRow}>
           <InfoChip label="Exercises" value={`${stage.exercises.length}`} />
@@ -104,4 +119,19 @@ const styles = StyleSheet.create({
   },
   prevResultText: { ...typography.caption, color: colors.textPrimary, textAlign: 'center' },
   startBtn: { marginBottom: spacing.lg },
+  npcRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: spacing.md,
+  },
+  tensionPill: {
+    backgroundColor: colors.accent + '22',
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
+    borderRadius: borderRadius.md,
+    alignItems: 'center',
+  },
+  tensionLabel: { ...typography.small, color: colors.textSecondary, textTransform: 'uppercase' },
+  tensionValue: { ...typography.bodyBold, color: colors.textPrimary },
 });

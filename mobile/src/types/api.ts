@@ -89,7 +89,10 @@ export interface StageOverview {
   title: string;
   order_index: number;
   difficulty_level: number;
+  difficulty_band: string;
   estimated_duration_seconds: number;
+  tension_level: string;
+  scene_npc_key: string | null;
   progress: { status: string; stars: number; best_score: number; attempts: number } | null;
 }
 
@@ -98,20 +101,40 @@ export interface StageDetail {
   title: string;
   scenario_description: string;
   difficulty_level: number;
+  difficulty_band: string;
   estimated_duration_seconds: number;
   xp_base: number;
+  scene_opener_md: string | null;
+  scene_ending_md: string | null;
+  scene_npc_key: string | null;
+  tension_level: string;
+  npc_mood: string[];
   exercises: Exercise[];
   progress: { status: string; stars: number; best_score: number; attempts: number } | null;
 }
 
 export interface Exercise {
   id: string;
-  exercise_type: 'sentence_arrangement' | 'word_puzzle' | 'meaning_match' | 'conversation';
+  exercise_type:
+    | 'sentence_arrangement'
+    | 'word_puzzle'
+    | 'meaning_match'
+    | 'conversation'
+    | 'synonym_match';
   order_index: number;
   xp_reward: number;
   content: any;
   difficulty_level: number;
   audio_url: string | null;
+}
+
+export interface VocabularyItem {
+  id: string;
+  canonical_en: string;
+  translation: string;
+  locale: string;
+  part_of_speech: string;
+  domain: string;
 }
 
 // Learning
