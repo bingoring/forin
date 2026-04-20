@@ -3,9 +3,9 @@ import { View, StyleSheet, ActivityIndicator, Dimensions, Pressable } from 'reac
 import { useQuery } from '@tanstack/react-query';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { curriculumApi } from '../../api';
+import { curriculumApi, gamificationApi } from '../../api';
 import { FloorCanvas, HotspotSheet, FloorSwitcher } from '../../components/map';
-import { Mascot } from '../../components/mascot';
+import { MascotWithItems, type EquippedItem } from '../../components/mascot';
 import { colors, borderRadius } from '../../theme';
 import { t } from '../../locales';
 import type { MapStackParamList } from '../../navigation/types';
@@ -25,6 +25,18 @@ export function MapScreen({ navigation }: Props) {
       return res.data.data;
     },
   });
+
+  const { data: inventory } = useQuery({
+    queryKey: ['inventory'],
+    queryFn: async () => {
+      const res = await gamificationApi.getInventory();
+      return res.data.data;
+    },
+  });
+
+  const equippedItems: EquippedItem[] = ((inventory as any)?.items ?? [])
+    .filter((i: any) => i.is_equipped)
+    .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
 
   const modules = useMemo(() => {
     if (!data?.modules) return [];
@@ -99,7 +111,7 @@ export function MapScreen({ navigation }: Props) {
         );
       })}
 
-      {/* Moro at the current in-progress unit */}
+      {/* Moro at the current in-progress unit, wearing equipped items. */}
       {currentUnit ? (
         <View
           pointerEvents="none"
@@ -109,7 +121,7 @@ export function MapScreen({ navigation }: Props) {
             top: (currentUnit.map_y / 100) * CANVAS_H - 90,
           }}
         >
-          <Mascot pose="wave" size={80} />
+          <MascotWithItems pose="wave" size={80} items={equippedItems} />
         </View>
       ) : null}
 

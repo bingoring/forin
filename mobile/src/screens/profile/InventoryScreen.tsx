@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
+import { MascotWithItems, EquippedItem } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 
 const SLOTS = ['hat', 'outfit', 'accessory', 'background', 'expression'] as const;
@@ -27,6 +28,9 @@ export function InventoryScreen() {
   });
 
   const items = inventory?.items?.filter((i: any) => i.slot === activeSlot) || [];
+  const equippedItems: EquippedItem[] = (inventory?.items ?? [])
+    .filter((i: any) => i.is_equipped)
+    .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
 
   const handleEquip = async (itemId: string, isEquipped: boolean) => {
     try {
@@ -45,9 +49,9 @@ export function InventoryScreen() {
         {inventory?.total_items || 0} items collected
       </Text>
 
-      {/* Cat preview */}
+      {/* Moro preview with currently-equipped items layered on top. */}
       <View style={styles.catPreview}>
-        <Text style={styles.catEmoji}>🐱</Text>
+        <MascotWithItems pose="welcome" size={112} items={equippedItems} />
       </View>
 
       {/* Slot tabs */}
