@@ -442,6 +442,69 @@ func TestGetCurriculum_IncludesFloorAndLocationFields(t *testing.T) {
 	assert.Equal(t, 35.0, resp.Modules[0].Units[0].MapY)
 }
 
+func TestGetCurriculum_UnlockedModuleIDs_Floor1Baseline(t *testing.T) {
+	userID := uuid.New()
+	profID := uuid.New()
+	country := "AU"
+	floor1ID := uuid.New()
+	floor2ID := uuid.New()
+
+	userRepo := &testutil.MockUserProfileRepository{
+		FindByIDWithProfessionFn: func(ctx context.Context, id uuid.UUID) (*model.User, error) {
+			return &model.User{ID: userID, ProfessionID: &profID, TargetCountry: &country}, nil
+		},
+	}
+	currRepo := &testutil.MockCurriculumRepository{
+		FindModulesByProfessionAndCountryFn: func(ctx context.Context, pid uuid.UUID, c string) ([]model.CurriculumModule, error) {
+			return []model.CurriculumModule{
+				{ID: floor1ID, FloorOrder: 1},
+				{ID: floor2ID, FloorOrder: 2},
+			}, nil
+		},
+		// No explicit unlocks stored — floor 1 is the baseline.
+		FindUnlockedModuleIDsFn: func(ctx context.Context, uid uuid.UUID) ([]uuid.UUID, error) {
+			return nil, nil
+		},
+	}
+
+	svc := NewCurriculumService(currRepo, userRepo, &config.Config{})
+	resp, err := svc.GetCurriculum(context.Background(), userID)
+
+	require.NoError(t, err)
+	assert.ElementsMatch(t, []uuid.UUID{floor1ID}, resp.UnlockedModuleIDs)
+}
+
+func TestGetCurriculum_UnlockedModuleIDs_ExplicitUnlockUnion(t *testing.T) {
+	userID := uuid.New()
+	profID := uuid.New()
+	country := "AU"
+	floor1ID := uuid.New()
+	floor2ID := uuid.New()
+
+	userRepo := &testutil.MockUserProfileRepository{
+		FindByIDWithProfessionFn: func(ctx context.Context, id uuid.UUID) (*model.User, error) {
+			return &model.User{ID: userID, ProfessionID: &profID, TargetCountry: &country}, nil
+		},
+	}
+	currRepo := &testutil.MockCurriculumRepository{
+		FindModulesByProfessionAndCountryFn: func(ctx context.Context, pid uuid.UUID, c string) ([]model.CurriculumModule, error) {
+			return []model.CurriculumModule{
+				{ID: floor1ID, FloorOrder: 1},
+				{ID: floor2ID, FloorOrder: 2},
+			}, nil
+		},
+		FindUnlockedModuleIDsFn: func(ctx context.Context, uid uuid.UUID) ([]uuid.UUID, error) {
+			return []uuid.UUID{floor2ID}, nil
+		},
+	}
+
+	svc := NewCurriculumService(currRepo, userRepo, &config.Config{})
+	resp, err := svc.GetCurriculum(context.Background(), userID)
+
+	require.NoError(t, err)
+	assert.ElementsMatch(t, []uuid.UUID{floor1ID, floor2ID}, resp.UnlockedModuleIDs)
+}
+
 func TestGetStageDetail_IncludesSceneFields(t *testing.T) {
 	userID := uuid.New()
 	stageID := uuid.New()

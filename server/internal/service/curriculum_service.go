@@ -148,7 +148,33 @@ func (s *CurriculumService) GetCurriculum(ctx context.Context, userID uuid.UUID)
 		moduleResps = append(moduleResps, mr)
 	}
 
-	return &dto.CurriculumResponse{Modules: moduleResps}, nil
+	// Unlock state: floor 1 (lowest floor_order) is always unlocked; rows
+	// in user_unlocked_floors cover everything above that.
+	explicitUnlocks, _ := s.curriculumRepo.FindUnlockedModuleIDs(ctx, userID)
+	unlockedSet := map[uuid.UUID]struct{}{}
+	for _, id := range explicitUnlocks {
+		unlockedSet[id] = struct{}{}
+	}
+	var baselineFloorOrder int
+	var baselineModuleID uuid.UUID
+	for _, m := range modules {
+		if baselineFloorOrder == 0 || m.FloorOrder < baselineFloorOrder {
+			baselineFloorOrder = m.FloorOrder
+			baselineModuleID = m.ID
+		}
+	}
+	if baselineModuleID != uuid.Nil {
+		unlockedSet[baselineModuleID] = struct{}{}
+	}
+	unlockedIDs := make([]uuid.UUID, 0, len(unlockedSet))
+	for id := range unlockedSet {
+		unlockedIDs = append(unlockedIDs, id)
+	}
+
+	return &dto.CurriculumResponse{
+		Modules:           moduleResps,
+		UnlockedModuleIDs: unlockedIDs,
+	}, nil
 }
 
 func (s *CurriculumService) GetStageDetail(ctx context.Context, userID, stageID uuid.UUID) (*dto.StageDetailResponse, error) {

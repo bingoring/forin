@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Button } from '../../components/common';
+import { Button, Icon } from '../../components/common';
 import { CelebrationOverlay } from '../../components/celebration';
+import { Mascot } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { useQueryClient } from '@tanstack/react-query';
 import { t } from '../../locales';
@@ -25,7 +26,9 @@ export function StageCompleteScreen({ route, navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.emoji}>🎉</Text>
+      <View style={styles.mascotWrap}>
+        <Mascot pose="cheer" size={96} />
+      </View>
       <Text style={styles.title}>Stage Complete!</Text>
 
       {/* Stars */}
@@ -54,12 +57,15 @@ export function StageCompleteScreen({ route, navigation }: Props) {
 
       {/* Streak */}
       {result.streak_update?.was_extended && (
-        <Text style={styles.streakText}>
-          🔥 {result.streak_update.current_streak} day streak!
-          {result.streak_update.milestone_hit
-            ? ` ${result.streak_update.milestone_hit}-day milestone!`
-            : ''}
-        </Text>
+        <View style={styles.streakRow}>
+          <Icon name="streak" size={18} color={colors.streak} />
+          <Text style={styles.streakText}>
+            {' '}{result.streak_update.current_streak} day streak!
+            {result.streak_update.milestone_hit
+              ? ` ${result.streak_update.milestone_hit}-day milestone!`
+              : ''}
+          </Text>
+        </View>
       )}
 
       {/* Achievements */}
@@ -67,7 +73,10 @@ export function StageCompleteScreen({ route, navigation }: Props) {
         <View style={styles.achievementCard}>
           <Text style={styles.achievementTitle}>Achievement Unlocked!</Text>
           {result.achievements.map((a) => (
-            <Text key={a.id} style={styles.achievementName}>🏆 {a.name}</Text>
+            <View key={a.id} style={styles.achievementRow}>
+              <Icon name="xp" size={18} color={colors.accent} />
+              <Text style={styles.achievementName}> {a.name}</Text>
+            </View>
           ))}
         </View>
       )}
@@ -78,7 +87,7 @@ export function StageCompleteScreen({ route, navigation }: Props) {
           style={styles.giftBoxCard}
           onPress={() => navigation.navigate('GiftBox', { boxId: result.gift_box!.id, boxType: result.gift_box!.box_type })}
         >
-          <Text style={styles.giftBoxEmoji}>🎁</Text>
+          <Icon name="gift" size={32} color={colors.accent} />
           <Text style={styles.giftBoxText}>Tap to open your {result.gift_box.box_type} gift box!</Text>
         </TouchableOpacity>
       )}
@@ -106,7 +115,7 @@ function StatRow({ label, value, color }: { label: string; value: string; color:
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.background, padding: spacing.lg, justifyContent: 'center', alignItems: 'center' },
-  emoji: { fontSize: 64, marginBottom: spacing.sm },
+  mascotWrap: { marginBottom: spacing.sm, alignItems: 'center' },
   title: { ...typography.h1, color: colors.textPrimary, marginBottom: spacing.sm },
   stars: { fontSize: 40, color: colors.starFilled, marginBottom: spacing.lg },
   statsCard: {
@@ -132,7 +141,9 @@ const styles = StyleSheet.create({
   levelUpTitle: { ...typography.h3, color: colors.white },
   levelUpText: { ...typography.body, color: colors.white },
   levelUpNewTitle: { ...typography.h2, color: colors.white },
-  streakText: { ...typography.bodyBold, color: colors.streak, marginBottom: spacing.md },
+  streakRow: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.md },
+  streakText: { ...typography.bodyBold, color: colors.streak },
+  achievementRow: { flexDirection: 'row', alignItems: 'center', marginTop: 2 },
   achievementCard: {
     width: '100%',
     backgroundColor: colors.accentLight,
@@ -152,7 +163,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: spacing.lg,
   },
-  giftBoxEmoji: { fontSize: 32 },
   giftBoxText: { ...typography.bodyBold, color: colors.accent, marginTop: spacing.xs },
   btn: { width: '100%' },
 });

@@ -92,3 +92,20 @@ func (r *CurriculumRepository) FindModuleByID(ctx context.Context, moduleID uuid
 	}
 	return &m, nil
 }
+
+// FindUnlockedModuleIDs returns the ids of modules this user has unlocked
+// beyond the baseline floor. Floor 1 (floor_order=1) is implicitly unlocked
+// for every user and is NOT stored in user_unlocked_floors, so callers
+// should union this result with the floor-1 module id when computing what
+// the client sees as available.
+func (r *CurriculumRepository) FindUnlockedModuleIDs(ctx context.Context, userID uuid.UUID) ([]uuid.UUID, error) {
+	var ids []uuid.UUID
+	err := r.db.WithContext(ctx).
+		Model(&model.UserUnlockedFloor{}).
+		Where("user_id = ?", userID).
+		Pluck("module_id", &ids).Error
+	if err != nil {
+		return nil, err
+	}
+	return ids, nil
+}

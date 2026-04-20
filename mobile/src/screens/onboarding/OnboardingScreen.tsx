@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { onboardingApi, userApi } from '../../api';
-import { Button } from '../../components/common';
+import { Button, Icon, type HeroIconName } from '../../components/common';
+import { Mascot } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { t } from '../../locales';
 import type { Profession, Country } from '../../types/api';
@@ -67,7 +68,13 @@ export function OnboardingScreen({ onComplete }: Props) {
     }
   };
 
-  const professionIcons: Record<string, string> = { nurse: '👩‍⚕️', doctor: '🩺', pharmacist: '💊' };
+  // Profession slug → hero icon token from the Icon registry. Keeps the
+  // onboarding screen on the same icon system as the rest of the app.
+  const professionIcons: Record<string, HeroIconName> = {
+    nurse: 'nurse',
+    doctor: 'doctor',
+    pharmacist: 'pharmacist',
+  };
   const goalOptions = [
     { key: 'casual', label: t('onboarding.goal.casual'), desc: t('onboarding.goal.casualDesc') },
     { key: 'regular', label: t('onboarding.goal.regular'), desc: t('onboarding.goal.regularDesc') },
@@ -87,7 +94,13 @@ export function OnboardingScreen({ onComplete }: Props) {
                 style={styles.professionCard}
                 onPress={() => { setSelectedProfession(p); setStep('country'); }}
               >
-                <Text style={styles.professionIcon}>{professionIcons[p.slug] || '🏥'}</Text>
+                <View style={styles.professionIconBox}>
+                  <Icon
+                    name={professionIcons[p.slug] ?? 'pin'}
+                    size={48}
+                    color={colors.primary}
+                  />
+                </View>
                 <Text style={styles.professionName}>{p.name}</Text>
               </TouchableOpacity>
             ))}
@@ -133,7 +146,9 @@ export function OnboardingScreen({ onComplete }: Props) {
       {/* Step 4: Cat Name */}
       {step === 'catName' && (
         <View style={styles.stepContent}>
-          <Text style={styles.catEmoji}>🐱</Text>
+          <View style={styles.catEmojiRow}>
+            <Mascot pose="welcome" size={96} />
+          </View>
           <Text style={styles.stepTitle}>{t('onboarding.catName.title')}</Text>
           <Text style={styles.stepDesc}>{t('onboarding.catName.description')}</Text>
           <TextInput
@@ -164,7 +179,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
-  professionIcon: { fontSize: 48, marginBottom: spacing.sm },
+  professionIconBox: { marginBottom: spacing.sm, alignItems: 'center' },
   professionName: { ...typography.h3, color: colors.textPrimary },
   countryRow: {
     backgroundColor: colors.white,
@@ -190,7 +205,7 @@ const styles = StyleSheet.create({
   goalLabelSelected: { color: colors.primary },
   goalDesc: { ...typography.caption, color: colors.textSecondary },
   nextBtn: { marginTop: spacing.md },
-  catEmoji: { fontSize: 80, textAlign: 'center', marginBottom: spacing.md },
+  catEmojiRow: { alignItems: 'center', marginBottom: spacing.md },
   nameInput: {
     backgroundColor: colors.white,
     borderWidth: 1,

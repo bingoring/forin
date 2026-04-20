@@ -35,6 +35,7 @@ type CurriculumRepository interface {
 	FindUserStageProgress(ctx context.Context, userID uuid.UUID, stageIDs []uuid.UUID) ([]model.UserStageProgress, error)
 	FindUserModuleProgress(ctx context.Context, userID uuid.UUID, moduleIDs []uuid.UUID) ([]model.UserModuleProgress, error)
 	FindModuleByID(ctx context.Context, moduleID uuid.UUID) (*model.CurriculumModule, error)
+	FindUnlockedModuleIDs(ctx context.Context, userID uuid.UUID) ([]uuid.UUID, error)
 }
 
 // LearningRepository defines data access for the learning lifecycle.

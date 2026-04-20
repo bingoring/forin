@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
+import { MascotWithItems, EquippedItem } from '../../components/mascot';
+import { Icon, type HeroIconName } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
+
+// Per-slot icon token — no per-item art yet, so we show a slot glyph.
+const slotIcon: Record<string, HeroIconName> = {
+  hat: 'xp',
+  outfit: 'gift',
+  accessory: 'pin',
+  background: 'elevator',
+  expression: 'heart',
+};
 
 const SLOTS = ['hat', 'outfit', 'accessory', 'background', 'expression'] as const;
 
@@ -27,6 +38,9 @@ export function InventoryScreen() {
   });
 
   const items = inventory?.items?.filter((i: any) => i.slot === activeSlot) || [];
+  const equippedItems: EquippedItem[] = (inventory?.items ?? [])
+    .filter((i: any) => i.is_equipped)
+    .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
 
   const handleEquip = async (itemId: string, isEquipped: boolean) => {
     try {
@@ -45,9 +59,9 @@ export function InventoryScreen() {
         {inventory?.total_items || 0} items collected
       </Text>
 
-      {/* Cat preview */}
+      {/* Moro preview with currently-equipped items layered on top. */}
       <View style={styles.catPreview}>
-        <Text style={styles.catEmoji}>🐱</Text>
+        <MascotWithItems pose="welcome" size={112} items={equippedItems} />
       </View>
 
       {/* Slot tabs */}
@@ -79,7 +93,13 @@ export function InventoryScreen() {
             ]}
             onPress={() => handleEquip(item.id, item.is_equipped)}
           >
-            <Text style={styles.itemEmoji}>🎁</Text>
+            <View style={styles.itemIcon}>
+              <Icon
+                name={slotIcon[item.slot] ?? 'gift'}
+                size={32}
+                color={rarityColors[item.rarity] || colors.primary}
+              />
+            </View>
             <Text style={styles.itemName} numberOfLines={1}>{item.name}</Text>
             <Text style={[styles.itemRarity, { color: rarityColors[item.rarity] }]}>
               {item.rarity}
@@ -135,7 +155,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemCardEquipped: { backgroundColor: '#EEF2FF' },
-  itemEmoji: { fontSize: 32, marginBottom: spacing.xs },
+  itemIcon: { marginBottom: spacing.xs },
   itemName: { ...typography.caption, color: colors.textPrimary, fontWeight: '600' },
   itemRarity: { ...typography.small },
   equippedBadge: { ...typography.small, color: colors.primary, fontWeight: '700', marginTop: 2 },
