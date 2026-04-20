@@ -84,6 +84,29 @@ func (s *UserService) UpdateProfile(ctx context.Context, userID uuid.UUID, req d
 	return s.GetProfile(ctx, userID)
 }
 
+// SetPushToken saves or clears the Expo push token on the user record.
+// Passing an empty string clears the stored token (permission revoked
+// on device).
+func (s *UserService) SetPushToken(ctx context.Context, userID uuid.UUID, token string) error {
+	user, err := s.profileRepo.FindByIDWithProfession(ctx, userID)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return ErrUserNotFound
+		}
+		return fmt.Errorf("find user: %w", err)
+	}
+	if token == "" {
+		user.PushToken = nil
+	} else {
+		t := token
+		user.PushToken = &t
+	}
+	if err := s.profileRepo.Update(ctx, user); err != nil {
+		return fmt.Errorf("update push token: %w", err)
+	}
+	return nil
+}
+
 func buildProfileResponse(
 	user *model.User,
 	lives int,

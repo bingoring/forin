@@ -53,3 +53,24 @@ func (h *UserHandler) UpdateProfile(c *gin.Context) {
 
 	JSON(c, http.StatusOK, resp)
 }
+
+func (h *UserHandler) SetPushToken(c *gin.Context) {
+	userID, ok := middleware.GetUserID(c)
+	if !ok {
+		Error(c, errUnauthorized)
+		return
+	}
+
+	var req dto.SetPushTokenRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		HandleBindError(c, err)
+		return
+	}
+
+	if err := h.userService.SetPushToken(c.Request.Context(), userID, req.PushToken); err != nil {
+		Error(c, err)
+		return
+	}
+
+	JSON(c, http.StatusOK, gin.H{"ok": true})
+}

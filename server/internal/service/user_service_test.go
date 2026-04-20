@@ -147,3 +147,45 @@ func TestUpdateProfile_RejectsUnsupportedLocale(t *testing.T) {
 
 	assert.ErrorIs(t, err, ErrUnsupportedLocale)
 }
+
+func TestSetPushToken_Saves(t *testing.T) {
+	userID := uuid.New()
+	user := &model.User{ID: userID}
+	var updated *model.User
+	repo := &testutil.MockUserProfileRepository{
+		FindByIDWithProfessionFn: func(ctx context.Context, id uuid.UUID) (*model.User, error) {
+			return user, nil
+		},
+		UpdateFn: func(ctx context.Context, u *model.User) error {
+			updated = u
+			return nil
+		},
+	}
+	svc := testUserService(repo)
+
+	err := svc.SetPushToken(context.Background(), userID, "ExponentPushToken[abc]")
+	require.NoError(t, err)
+	require.NotNil(t, updated.PushToken)
+	assert.Equal(t, "ExponentPushToken[abc]", *updated.PushToken)
+}
+
+func TestSetPushToken_EmptyClears(t *testing.T) {
+	token := "ExponentPushToken[old]"
+	userID := uuid.New()
+	user := &model.User{ID: userID, PushToken: &token}
+	var updated *model.User
+	repo := &testutil.MockUserProfileRepository{
+		FindByIDWithProfessionFn: func(ctx context.Context, id uuid.UUID) (*model.User, error) {
+			return user, nil
+		},
+		UpdateFn: func(ctx context.Context, u *model.User) error {
+			updated = u
+			return nil
+		},
+	}
+	svc := testUserService(repo)
+
+	err := svc.SetPushToken(context.Background(), userID, "")
+	require.NoError(t, err)
+	assert.Nil(t, updated.PushToken)
+}
