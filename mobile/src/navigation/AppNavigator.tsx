@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useQuery } from '@tanstack/react-query';
 import { useAuthStore } from '../stores/authStore';
 import { userApi } from '../api';
+import { usePushRegistration } from '../hooks/usePushRegistration';
 import { colors } from '../theme';
 import { Icon } from '../components/common';
 
@@ -169,6 +170,7 @@ function AuthenticatedApp() {
   const [stage, setStage] = useState<Stage | null>(null);
   const setUser = useAuthStore((s) => s.setUser);
   const currentUser = useAuthStore((s) => s.user);
+  usePushRegistration();
 
   const { data: profile } = useQuery({
     queryKey: ['profile'],
