@@ -14,6 +14,7 @@ type MockCurriculumRepository struct {
 	FindUserStageProgressFn             func(ctx context.Context, userID uuid.UUID, stageIDs []uuid.UUID) ([]model.UserStageProgress, error)
 	FindUserModuleProgressFn            func(ctx context.Context, userID uuid.UUID, moduleIDs []uuid.UUID) ([]model.UserModuleProgress, error)
 	FindModuleByIDFn                    func(ctx context.Context, moduleID uuid.UUID) (*model.CurriculumModule, error)
+	FindUnlockedModuleIDsFn             func(ctx context.Context, userID uuid.UUID) ([]uuid.UUID, error)
 }
 
 func (m *MockCurriculumRepository) FindModulesByProfessionAndCountry(ctx context.Context, professionID uuid.UUID, targetCountry string) ([]model.CurriculumModule, error) {
@@ -54,6 +55,13 @@ func (m *MockCurriculumRepository) FindUserModuleProgress(ctx context.Context, u
 func (m *MockCurriculumRepository) FindModuleByID(ctx context.Context, moduleID uuid.UUID) (*model.CurriculumModule, error) {
 	if m.FindModuleByIDFn != nil {
 		return m.FindModuleByIDFn(ctx, moduleID)
+	}
+	return nil, nil
+}
+
+func (m *MockCurriculumRepository) FindUnlockedModuleIDs(ctx context.Context, userID uuid.UUID) ([]uuid.UUID, error) {
+	if m.FindUnlockedModuleIDsFn != nil {
+		return m.FindUnlockedModuleIDsFn(ctx, userID)
 	}
 	return nil, nil
 }

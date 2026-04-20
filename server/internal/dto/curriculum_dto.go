@@ -7,7 +7,8 @@ import (
 )
 
 type CurriculumResponse struct {
-	Modules []ModuleResponse `json:"modules"`
+	Modules            []ModuleResponse `json:"modules"`
+	UnlockedModuleIDs  []uuid.UUID      `json:"unlocked_module_ids"`
 }
 
 type ModuleResponse struct {
