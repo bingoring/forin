@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Alert } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, learningApi } from '../../api';
-import { SentenceArrangement, WordPuzzle, MeaningMatch, ConversationPractice } from '../../components/exercises';
+import { SentenceArrangement, WordPuzzle, MeaningMatch, ConversationPractice, SynonymMatch } from '../../components/exercises';
 import { colors, typography, spacing } from '../../theme';
 import type { MapStackParamList } from '../../navigation/types';
 import type { Exercise, SubmitExerciseResponse } from '../../types/api';
@@ -137,6 +137,8 @@ function renderExercise(exercise: Exercise, onSubmit: (response: any) => void) {
       return <MeaningMatch content={exercise.content} onSubmit={onSubmit} />;
     case 'conversation':
       return <ConversationPractice content={exercise.content} onSubmit={onSubmit} />;
+    case 'synonym_match':
+      return <SynonymMatch content={exercise.content} onSubmit={onSubmit} />;
     default:
       return <Text>Unknown exercise type</Text>;
   }
