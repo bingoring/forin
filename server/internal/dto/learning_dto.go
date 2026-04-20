@@ -63,6 +63,13 @@ type StreakUpdateResponse struct {
 	CurrentStreak int  `json:"current_streak"`
 	WasExtended   bool `json:"was_extended"`
 	MilestoneHit  *int `json:"milestone_hit,omitempty"`
+	// ShieldUsed is true when a streak shield was consumed on this
+	// update to preserve the streak across a missed day.
+	ShieldUsed bool `json:"shield_used"`
+	// ShieldEarned is true when hitting this milestone granted a shield.
+	ShieldEarned bool `json:"shield_earned"`
+	// StreakShields is the remaining shield balance after this update.
+	StreakShields int `json:"streak_shields"`
 }
 
 type AchievementUnlocked struct {

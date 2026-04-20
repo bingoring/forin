@@ -465,6 +465,9 @@ func (s *LearningService) GetAttemptHistory(ctx context.Context, userID uuid.UUI
 	}, nil
 }
 
+// MaxStreakShields caps how many shields a user can hold at once.
+const MaxStreakShields = 3
+
 func updateStreak(streak *model.UserStreak, today time.Time) *dto.StreakUpdateResponse {
 	resp := &dto.StreakUpdateResponse{}
 
@@ -488,8 +491,21 @@ func updateStreak(streak *model.UserStreak, today time.Time) *dto.StreakUpdateRe
 			streak.LastActivityDate = &today
 			resp.CurrentStreak = streak.CurrentStreak
 			resp.WasExtended = true
+		case diff < 3 && streak.StreakShields > 0:
+			// Missed exactly one day but has a shield — consume one and
+			// extend as if the user had been active yesterday. The streak
+			// grows by 1 (the gap day is treated as covered). Record
+			// ShieldUsedOn so a later notification surface can reference it.
+			streak.StreakShields--
+			yesterday := today.AddDate(0, 0, -1)
+			streak.ShieldUsedOn = &yesterday
+			streak.CurrentStreak++
+			streak.LastActivityDate = &today
+			resp.CurrentStreak = streak.CurrentStreak
+			resp.WasExtended = true
+			resp.ShieldUsed = true
 		default:
-			// Gap > 1 day, reset
+			// Gap > 1 day and no shield (or gap > 2 days) — reset.
 			streak.CurrentStreak = 1
 			streak.LastActivityDate = &today
 			resp.CurrentStreak = 1
@@ -501,14 +517,20 @@ func updateStreak(streak *model.UserStreak, today time.Time) *dto.StreakUpdateRe
 		streak.LongestStreak = streak.CurrentStreak
 	}
 
-	// Check milestones
+	// Check milestones. A new milestone hit grants one shield (capped at
+	// MaxStreakShields) so serious users build a buffer.
 	for _, milestone := range []int{7, 30, 100} {
 		if streak.CurrentStreak == milestone {
 			resp.MilestoneHit = &milestone
+			if streak.StreakShields < MaxStreakShields {
+				streak.StreakShields++
+				resp.ShieldEarned = true
+			}
 			break
 		}
 	}
 
+	resp.StreakShields = streak.StreakShields
 	return resp
 }
 
