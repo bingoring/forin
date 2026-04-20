@@ -62,6 +62,8 @@ are set.
 | `streak_milestone` | `StageCompleteScreen` | `milestone` (7/30/100) | Retention milestone |
 | `shield_used` | `StageCompleteScreen` | `current_streak` | Shield feature usage |
 | `shield_earned` | `StageCompleteScreen` | `current_streak`, `total_shields` | Shield economy |
+| `audio_play` | `AudioPlayer` first playback per mount | `exercise_id`, `was_autoplay`, `source: 'audio_url'\|'tts'\|'none'` | Audio reach per exercise + TTS vs file split |
+| `audio_replay_count` | `AudioPlayer` unmount | `exercise_id`, `count` | How many re-listens a learner needed |
 
 ## Identify / reset
 

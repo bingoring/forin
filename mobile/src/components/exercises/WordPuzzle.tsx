@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { AudioPlayer } from '../common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 
 interface Blank {
@@ -13,12 +14,25 @@ interface Props {
     dialogue_template: string;
     blanks: Blank[];
   };
+  audioUrl?: string | null;
+  exerciseId?: string;
   onSubmit: (response: { answers: { blank_index: number; selected_option: string }[] }) => void;
 }
 
-export function WordPuzzle({ content, onSubmit }: Props) {
+export function WordPuzzle({ content, audioUrl, exerciseId, onSubmit }: Props) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [activeBlank, setActiveBlank] = useState<number>(content.blanks[0]?.index ?? 0);
+
+  // Fully-resolved sentence for the TTS fallback — learners hear how
+  // the sentence is meant to sound with every blank filled in. When
+  // a real audio_url ships later, this is ignored.
+  const spokenText = useMemo(() => {
+    let text = content.dialogue_template;
+    content.blanks.forEach((b) => {
+      text = text.replace(`{{${b.index}}}`, b.correct_answer);
+    });
+    return text;
+  }, [content]);
 
   const allFilled = content.blanks.every((b) => answers[b.index] !== undefined);
 
@@ -93,6 +107,11 @@ export function WordPuzzle({ content, onSubmit }: Props) {
 
   return (
     <View style={styles.container}>
+      <AudioPlayer
+        audioUrl={audioUrl}
+        fallbackText={spokenText}
+        exerciseId={exerciseId}
+      />
       <Text style={styles.instruction}>Fill in the blanks with the correct words</Text>
 
       {/* Dialogue */}

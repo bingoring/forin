@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { colors, typography, spacing, borderRadius } from '../../theme';
-import { Button, Icon, type HeroIconName } from '../common';
+import { AudioPlayer, Button, Icon, type HeroIconName } from '../common';
 
 interface Props {
   content: {
@@ -11,6 +11,8 @@ interface Props {
     ideal_responses?: string[];
     min_passing_score?: number;
   };
+  audioUrl?: string | null;
+  exerciseId?: string;
   onSubmit: (response: { user_response_text: string }) => void;
 }
 
@@ -22,7 +24,7 @@ function characterIconFor(role: string): HeroIconName {
   return 'pin';
 }
 
-export function ConversationPractice({ content, onSubmit }: Props) {
+export function ConversationPractice({ content, audioUrl, exerciseId, onSubmit }: Props) {
   const [text, setText] = useState('');
 
   const handleSubmit = () => {
@@ -32,6 +34,11 @@ export function ConversationPractice({ content, onSubmit }: Props) {
 
   return (
     <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
+      <AudioPlayer
+        audioUrl={audioUrl}
+        fallbackText={content.opening_line}
+        exerciseId={exerciseId}
+      />
       <Text style={styles.instruction}>Respond to the patient appropriately</Text>
 
       {/* Character */}

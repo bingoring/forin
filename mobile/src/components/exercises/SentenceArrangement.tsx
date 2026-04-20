@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { AudioPlayer } from '../common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 
 interface Props {
@@ -8,10 +9,12 @@ interface Props {
     word_tiles: string[];
     distractor_indices: number[];
   };
+  audioUrl?: string | null;
+  exerciseId?: string;
   onSubmit: (response: { answer: string[] }) => void;
 }
 
-export function SentenceArrangement({ content, onSubmit }: Props) {
+export function SentenceArrangement({ content, audioUrl, exerciseId, onSubmit }: Props) {
   const [selected, setSelected] = useState<number[]>([]);
 
   const shuffledTiles = useMemo(() => {
@@ -41,6 +44,11 @@ export function SentenceArrangement({ content, onSubmit }: Props) {
 
   return (
     <View style={styles.container}>
+      <AudioPlayer
+        audioUrl={audioUrl}
+        fallbackText={content.target_sentence}
+        exerciseId={exerciseId}
+      />
       <Text style={styles.instruction}>Arrange the words to form a correct sentence</Text>
 
       {/* Answer area */}

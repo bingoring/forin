@@ -191,15 +191,42 @@ export function ExerciseScreen({ route, navigation }: Props) {
 }
 
 function renderExercise(exercise: Exercise, onSubmit: (response: any) => void) {
+  // audioUrl + exerciseId are threaded into the three exercise types
+  // that have a clear "one-liner to speak". MeaningMatch and
+  // SynonymMatch are multi-word card exercises — per-card playback
+  // is a later UX; skipping them keeps autoplay from spamming TTS.
+  const audioUrl = exercise.audio_url;
+  const exerciseId = exercise.id;
   switch (exercise.exercise_type) {
     case 'sentence_arrangement':
-      return <SentenceArrangement content={exercise.content} onSubmit={onSubmit} />;
+      return (
+        <SentenceArrangement
+          content={exercise.content}
+          audioUrl={audioUrl}
+          exerciseId={exerciseId}
+          onSubmit={onSubmit}
+        />
+      );
     case 'word_puzzle':
-      return <WordPuzzle content={exercise.content} onSubmit={onSubmit} />;
+      return (
+        <WordPuzzle
+          content={exercise.content}
+          audioUrl={audioUrl}
+          exerciseId={exerciseId}
+          onSubmit={onSubmit}
+        />
+      );
     case 'meaning_match':
       return <MeaningMatch content={exercise.content} onSubmit={onSubmit} />;
     case 'conversation':
-      return <ConversationPractice content={exercise.content} onSubmit={onSubmit} />;
+      return (
+        <ConversationPractice
+          content={exercise.content}
+          audioUrl={audioUrl}
+          exerciseId={exerciseId}
+          onSubmit={onSubmit}
+        />
+      );
     case 'synonym_match':
       return <SynonymMatch content={exercise.content} onSubmit={onSubmit} />;
     default:

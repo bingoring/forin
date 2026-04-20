@@ -27,7 +27,19 @@ export type AnalyticsEvent =
   | { name: 'gift_box_open'; properties: { box_type: string; item_rarity: string; was_duplicate: boolean } }
   | { name: 'streak_milestone'; properties: { milestone: number } }
   | { name: 'shield_used'; properties: { current_streak: number } }
-  | { name: 'shield_earned'; properties: { current_streak: number; total_shields: number } };
+  | { name: 'shield_earned'; properties: { current_streak: number; total_shields: number } }
+  | {
+      name: 'audio_play';
+      properties: {
+        exercise_id: string;
+        was_autoplay: boolean;
+        source: 'audio_url' | 'tts' | 'none';
+      };
+    }
+  | {
+      name: 'audio_replay_count';
+      properties: { exercise_id: string; count: number };
+    };
 
 // User traits attached on identify. Keep PII-free — internal ids and
 // enum-ish values only.
