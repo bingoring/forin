@@ -3,22 +3,15 @@ package repository
 import (
 	"context"
 
+	"github.com/forin/server/internal/service"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
 
-// VocabularyWithTranslation couples a vocabulary row with the best-available
-// translation for the requested locale, falling back to canonical English.
-type VocabularyWithTranslation struct {
-	ID           uuid.UUID
-	CanonicalEn  string
-	PartOfSpeech string
-	Domain       string
-	// Translation is the locale-specific word if present; otherwise CanonicalEn.
-	Translation string
-	// Locale is the locale actually served — requested locale on hit, "en" on fallback.
-	Locale string
-}
+// VocabularyWithTranslation is an alias for the service-side type. Keeping
+// the alias name here means existing callers in this package (and the
+// repository test) don't need to change.
+type VocabularyWithTranslation = service.VocabularyWithTranslation
 
 type VocabularyRepository struct {
 	db *gorm.DB
