@@ -9,6 +9,7 @@ import type {
   CompleteAttemptResponse,
   Profession,
   Country,
+  VocabularyItem,
 } from '../types/api';
 
 export { authApi } from './auth';
@@ -51,6 +52,11 @@ export const onboardingApi = {
     }),
   submitAssessment: (data: any) =>
     api.post('/onboarding/assessment/submit', data),
+};
+
+export const vocabularyApi = {
+  lookup: (ids: string[]) =>
+    api.post<ApiResponse<{ items: VocabularyItem[] }>>('/vocabulary/lookup', { ids }),
 };
 
 export const gamificationApi = {
