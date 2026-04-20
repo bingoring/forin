@@ -28,6 +28,9 @@ func main() {
 	fmt.Println("Seeding vocabulary...")
 	seedVocabulary(db)
 
+	fmt.Println("Seeding floor metadata...")
+	seedFloorMetadata(db)
+
 	fmt.Println("Seed completed successfully.")
 }
 
