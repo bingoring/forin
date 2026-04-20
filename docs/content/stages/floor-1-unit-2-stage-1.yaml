@@ -1,0 +1,24 @@
+locate:
+  floor_order: 1
+  unit_order_index: 2
+  stage_order_index: 1
+
+scene:
+  opener_md: |
+    Sarah waves you over at the nurses' station. Handover in five.
+  ending_md: |
+    Sarah nods — "Cleaner handover than my last shift. Nice."
+  npc_key: peer.sarah
+  tension_level: calm
+  npc_mood:
+    - calm
+
+exercises:
+  - type: synonym_match
+    direction: native_to_target
+    order_index: 99
+    pairs:
+      - pulse
+      - blood pressure
+      - temperature
+      - lungs

@@ -1,0 +1,36 @@
+# Stage content — one scene per file.
+#
+# `locate` identifies which stage this content overwrites. The triple
+# (floor_order, unit_order_index, stage_order_index) must match exactly
+# one row in the DB; writers do not need to care about UUIDs.
+locate:
+  floor_order: 1
+  unit_order_index: 1
+  stage_order_index: 1
+
+# All fields under `scene` are optional. Fields left out are not touched.
+scene:
+  opener_md: |
+    Mr. Johnson, 68, just returned from the OR. He looks groggy and
+    presses the call button.
+  ending_md: |
+    You explained the post-op pain plan clearly; Mr. Johnson relaxes
+    and thanks you.
+  npc_key: patient.johnson
+  tension_level: calm
+  npc_mood:
+    - grateful
+    - anxious
+
+# Exercises authored here are added to the stage. MVP supports
+# `synonym_match` only. `pairs` references vocabulary rows by
+# canonical_en; the importer resolves each to a UUID at run time.
+exercises:
+  - type: synonym_match
+    direction: native_to_target
+    order_index: 99
+    pairs:
+      - pain
+      - wound
+      - fever
+      - bleeding

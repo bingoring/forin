@@ -11,9 +11,12 @@ import (
 // inserts one synonym_match exercise per module. All writes are guarded
 // with IS NULL / NOT EXISTS so the function stays idempotent.
 //
-// Scene content is deliberately minimal — authors will replace it with
-// real openers/endings per the content track. The seed only exists so
-// the mobile flow has something to render end-to-end in dev.
+// Role boundary: this is a **bootstrap** seed. For real authoring, add
+// or edit a YAML file under docs/content/stages/ and run
+// `make content-import` — the importer overwrites whatever this seed
+// laid down. Keeping this function around means a fresh `make seed`
+// on a brand-new DB still produces a playable stage even before any
+// YAML exists.
 func seedScenes(db *gorm.DB) {
 	// 1. Scene metadata for the first stage of the first unit in each module.
 	//    We key off (unit.order_index=1, stage.order_index=1) so re-running
