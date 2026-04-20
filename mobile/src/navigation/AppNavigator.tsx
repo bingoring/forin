@@ -26,6 +26,7 @@ import { ProfileScreen } from '../screens/profile/ProfileScreen';
 import { InventoryScreen } from '../screens/profile/InventoryScreen';
 import { ShopScreen } from '../screens/profile/ShopScreen';
 import { NotificationSettingsScreen } from '../screens/profile/NotificationSettingsScreen';
+import { WeeklyStatsScreen } from '../screens/stats/WeeklyStatsScreen';
 
 import type {
   AuthStackParamList,
@@ -108,6 +109,11 @@ function ProfileNavigator() {
         name="NotificationSettings"
         component={NotificationSettingsScreen}
         options={{ title: 'Notifications' }}
+      />
+      <ProfileStack.Screen
+        name="WeeklyStats"
+        component={WeeklyStatsScreen}
+        options={{ title: 'Stats' }}
       />
     </ProfileStack.Navigator>
   );
