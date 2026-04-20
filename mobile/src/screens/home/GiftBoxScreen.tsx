@@ -5,6 +5,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
 import { Button, Icon } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
+import { analytics } from '../../analytics';
 import type { MapStackParamList } from '../../navigation/types';
 
 type Props = NativeStackScreenProps<MapStackParamList, 'GiftBox'>;
@@ -37,10 +38,19 @@ export function GiftBoxScreen({ route, navigation }: Props) {
     setLoading(true);
     try {
       const { data } = await gamificationApi.openGiftBox(boxId);
-      setResult(data.data);
+      const opened = data.data;
+      setResult(opened);
       setOpened(true);
       queryClient.invalidateQueries({ queryKey: ['inventory'] });
       queryClient.invalidateQueries({ queryKey: ['profile'] });
+      analytics.track({
+        name: 'gift_box_open',
+        properties: {
+          box_type: boxType,
+          item_rarity: opened.item?.rarity ?? 'unknown',
+          was_duplicate: !!opened.was_duplicate,
+        },
+      });
     } catch {
       alert('Failed to open gift box');
     } finally {
