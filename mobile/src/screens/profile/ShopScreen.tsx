@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
+import { Icon } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 
 const rarityColors: Record<string, string> = {
@@ -64,7 +65,10 @@ export function ShopScreen() {
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.header}>
         <Text style={styles.title}>Cat Shop</Text>
-        <Text style={styles.balance}>🌿 {profile?.catnip || 0} Catnip</Text>
+        <View style={styles.balanceRow}>
+          <Icon name="catnip" size={18} color={colors.catnip} />
+          <Text style={styles.balance}> {profile?.catnip || 0} Catnip</Text>
+        </View>
       </View>
 
       {/* Featured */}
@@ -74,12 +78,17 @@ export function ShopScreen() {
           onPress={() => handlePurchase(shop.featured_item!.id, shop.featured_item!.name, shop.featured_item!.shop_price_catnip)}
         >
           <Text style={styles.featuredLabel}>FEATURED</Text>
-          <Text style={styles.featuredEmoji}>⭐</Text>
+          <View style={styles.featuredIcon}>
+            <Icon name="xp" size={48} color={colors.accent} />
+          </View>
           <Text style={styles.featuredName}>{shop.featured_item.name}</Text>
           <Text style={[styles.featuredRarity, { color: rarityColors[shop.featured_item.rarity] }]}>
             {shop.featured_item.rarity} - {shop.featured_item.slot}
           </Text>
-          <Text style={styles.featuredPrice}>🌿 {shop.featured_item.shop_price_catnip}</Text>
+          <View style={styles.featuredPriceRow}>
+            <Icon name="catnip" size={20} color={colors.catnip} />
+            <Text style={styles.featuredPrice}> {shop.featured_item.shop_price_catnip}</Text>
+          </View>
         </TouchableOpacity>
       )}
 
@@ -98,12 +107,23 @@ export function ShopScreen() {
             }}
             disabled={item.user_owns}
           >
-            <Text style={styles.itemEmoji}>{item.user_owns ? '✅' : '🎁'}</Text>
+            <View style={styles.itemIcon}>
+              <Icon
+                name={item.user_owns ? 'check' : 'gift'}
+                size={28}
+                color={item.user_owns ? colors.success : rarityColors[item.rarity] || colors.primary}
+              />
+            </View>
             <Text style={styles.itemName} numberOfLines={1}>{item.name}</Text>
             <Text style={[styles.itemRarity, { color: rarityColors[item.rarity] }]}>{item.rarity}</Text>
-            <Text style={styles.itemPrice}>
-              {item.user_owns ? 'Owned' : `🌿 ${item.shop_price_catnip}`}
-            </Text>
+            {item.user_owns ? (
+              <Text style={styles.itemOwnedText}>Owned</Text>
+            ) : (
+              <View style={styles.itemPriceRow}>
+                <Icon name="catnip" size={14} color={colors.catnip} />
+                <Text style={styles.itemPrice}> {item.shop_price_catnip}</Text>
+              </View>
+            )}
           </TouchableOpacity>
         ))}
       </View>
@@ -116,6 +136,7 @@ const styles = StyleSheet.create({
   content: { padding: spacing.md },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.md },
   title: { ...typography.h1, color: colors.textPrimary },
+  balanceRow: { flexDirection: 'row', alignItems: 'center' },
   balance: { ...typography.bodyBold, color: colors.catnip },
   featuredCard: {
     backgroundColor: colors.accent + '15',
@@ -127,9 +148,10 @@ const styles = StyleSheet.create({
     marginBottom: spacing.lg,
   },
   featuredLabel: { ...typography.small, color: colors.accent, fontWeight: '700', letterSpacing: 2 },
-  featuredEmoji: { fontSize: 48, marginVertical: spacing.sm },
+  featuredIcon: { marginVertical: spacing.sm },
   featuredName: { ...typography.h2, color: colors.textPrimary },
   featuredRarity: { ...typography.caption, marginBottom: spacing.xs },
+  featuredPriceRow: { flexDirection: 'row', alignItems: 'center' },
   featuredPrice: { ...typography.h3, color: colors.catnip },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   itemCard: {
@@ -141,8 +163,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   itemOwned: { opacity: 0.5 },
-  itemEmoji: { fontSize: 28, marginBottom: spacing.xs },
+  itemIcon: { marginBottom: spacing.xs },
   itemName: { ...typography.caption, color: colors.textPrimary, fontWeight: '600' },
   itemRarity: { ...typography.small },
-  itemPrice: { ...typography.caption, color: colors.catnip, fontWeight: '600', marginTop: 2 },
+  itemPriceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 2 },
+  itemPrice: { ...typography.caption, color: colors.catnip, fontWeight: '600' },
+  itemOwnedText: { ...typography.caption, color: colors.success, fontWeight: '600', marginTop: 2 },
 });

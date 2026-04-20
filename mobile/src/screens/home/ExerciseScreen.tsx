@@ -5,6 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, learningApi } from '../../api';
 import { SentenceArrangement, WordPuzzle, MeaningMatch, ConversationPractice, SynonymMatch } from '../../components/exercises';
 import { SceneOpener, SceneEnding } from '../../components/scene';
+import { Icon } from '../../components/common';
 import { colors, typography, spacing } from '../../theme';
 import type { MapStackParamList } from '../../navigation/types';
 import type { Exercise, SubmitExerciseResponse } from '../../types/api';
@@ -108,12 +109,20 @@ export function ExerciseScreen({ route, navigation }: Props) {
 
   // Feedback overlay
   if (showFeedback && lastResult) {
+    const feedbackIcon =
+      lastResult.is_correct === true ? 'check'
+      : lastResult.is_correct === false ? 'x'
+      : 'menu'; // placeholder — AI-graded conversation has no clean hero match
+    const feedbackColor =
+      lastResult.is_correct === true ? colors.success
+      : lastResult.is_correct === false ? colors.error
+      : colors.primary;
     return (
       <View style={styles.feedbackContainer}>
         <View style={styles.feedbackCard}>
-          {lastResult.is_correct === true && <Text style={styles.feedbackEmoji}>✅</Text>}
-          {lastResult.is_correct === false && <Text style={styles.feedbackEmoji}>❌</Text>}
-          {lastResult.is_correct === null && <Text style={styles.feedbackEmoji}>💬</Text>}
+          <View style={styles.feedbackIcon}>
+            <Icon name={feedbackIcon} size={56} color={feedbackColor} />
+          </View>
 
           <Text style={styles.feedbackTitle}>
             {lastResult.is_correct === true ? 'Correct!' :
@@ -124,7 +133,12 @@ export function ExerciseScreen({ route, navigation }: Props) {
           <Text style={styles.feedbackXP}>+{lastResult.xp_earned} XP</Text>
 
           {lastResult.lives_lost > 0 && (
-            <Text style={styles.feedbackLives}>-{lastResult.lives_lost} ♥ (remaining: {lastResult.lives_after})</Text>
+            <View style={styles.feedbackLivesRow}>
+              <Icon name="heart" size={16} color={colors.error} />
+              <Text style={styles.feedbackLives}>
+                {' '}−{lastResult.lives_lost} (remaining: {lastResult.lives_after})
+              </Text>
+            </View>
           )}
 
           <View style={{ height: spacing.lg }} />
@@ -154,8 +168,14 @@ export function ExerciseScreen({ route, navigation }: Props) {
           ))}
         </View>
         <View style={styles.statsRow}>
-          <Text style={styles.livesText}>♥ {lives}</Text>
-          <Text style={styles.xpText}>⭐ {totalXP} XP</Text>
+          <View style={styles.statItem}>
+            <Icon name="heart" size={16} color={colors.heart} />
+            <Text style={styles.livesText}> {lives}</Text>
+          </View>
+          <View style={styles.statItem}>
+            <Icon name="xp" size={16} color={colors.xp} />
+            <Text style={styles.xpText}> {totalXP} XP</Text>
+          </View>
         </View>
       </View>
 
@@ -200,6 +220,7 @@ const styles = StyleSheet.create({
   progressDotDone: { backgroundColor: colors.success },
   progressDotActive: { backgroundColor: colors.primary },
   statsRow: { flexDirection: 'row', justifyContent: 'space-between' },
+  statItem: { flexDirection: 'row', alignItems: 'center' },
   livesText: { ...typography.bodyBold, color: colors.heart },
   xpText: { ...typography.bodyBold, color: colors.xp },
   typeLabel: {
@@ -222,10 +243,11 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 4,
   },
-  feedbackEmoji: { fontSize: 64, marginBottom: spacing.md },
+  feedbackIcon: { marginBottom: spacing.md },
+  feedbackLivesRow: { flexDirection: 'row', alignItems: 'center', marginTop: spacing.xs },
   feedbackTitle: { ...typography.h2, color: colors.textPrimary, marginBottom: spacing.sm },
   feedbackXP: { ...typography.h3, color: colors.xp },
-  feedbackLives: { ...typography.body, color: colors.error, marginTop: spacing.xs },
+  feedbackLives: { ...typography.body, color: colors.error },
   nextBtn: {
     ...typography.button,
     color: colors.white,

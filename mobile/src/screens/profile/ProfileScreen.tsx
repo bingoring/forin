@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { useQuery } from '@tanstack/react-query';
 import { userApi, gamificationApi } from '../../api';
 import { useAuthStore } from '../../stores/authStore';
-import { Button } from '../../components/common';
+import { Button, Icon } from '../../components/common';
+import { MascotWithItems, type EquippedItem } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 
 export function ProfileScreen({ navigation }: any) {
@@ -27,11 +28,15 @@ export function ProfileScreen({ navigation }: any) {
 
   if (!profile) return <View style={styles.loading}><Text>Loading...</Text></View>;
 
+  const equippedItems: EquippedItem[] = ((inventory as any)?.items ?? [])
+    .filter((i: any) => i.is_equipped)
+    .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       {/* Profile header */}
       <View style={styles.header}>
-        <Text style={styles.catEmoji}>🐱</Text>
+        <MascotWithItems pose="welcome" size={88} items={equippedItems} />
         <Text style={styles.catName}>{profile.cat_name}</Text>
         <Text style={styles.displayName}>{profile.display_name}</Text>
         <Text style={styles.levelBadge}>
@@ -63,16 +68,16 @@ export function ProfileScreen({ navigation }: any) {
       {/* Quick links */}
       <View style={styles.linksRow}>
         <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('Inventory')}>
-          <Text style={styles.linkEmoji}>🎒</Text>
+          <Icon name="gift" size={24} color={colors.primary} />
           <Text style={styles.linkLabel}>Inventory</Text>
           <Text style={styles.linkCount}>{inventory?.total_items || 0}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('Shop')}>
-          <Text style={styles.linkEmoji}>🛍️</Text>
+          <Icon name="catnip" size={24} color={colors.catnip} />
           <Text style={styles.linkLabel}>Shop</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('NotificationSettings')}>
-          <Text style={styles.linkEmoji}>🔔</Text>
+          <Icon name="settings" size={24} color={colors.primary} />
           <Text style={styles.linkLabel}>Alerts</Text>
         </TouchableOpacity>
       </View>
@@ -114,8 +119,7 @@ const styles = StyleSheet.create({
   content: { padding: spacing.md },
   loading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   header: { alignItems: 'center', marginBottom: spacing.lg, paddingTop: spacing.lg },
-  catEmoji: { fontSize: 64, marginBottom: spacing.xs },
-  catName: { ...typography.h3, color: colors.textPrimary },
+  catName: { ...typography.h3, color: colors.textPrimary, marginTop: spacing.xs },
   displayName: { ...typography.body, color: colors.textSecondary },
   levelBadge: { ...typography.caption, color: colors.xp, marginTop: spacing.xs },
   statsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginBottom: spacing.md },
@@ -163,8 +167,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
   },
-  linkEmoji: { fontSize: 24, marginBottom: spacing.xs },
-  linkLabel: { ...typography.caption, color: colors.textPrimary, fontWeight: '600' },
+  linkLabel: { ...typography.caption, color: colors.textPrimary, fontWeight: '600', marginTop: spacing.xs },
   linkCount: { ...typography.small, color: colors.textMuted },
   logoutBtn: { marginTop: spacing.md, marginBottom: spacing.xxl },
 });

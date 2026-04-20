@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
+import { Icon } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 
 export function AchievementsScreen() {
@@ -22,7 +23,11 @@ export function AchievementsScreen() {
       {data?.map((a: any) => (
         <View key={a.id} style={[styles.card, a.is_unlocked && styles.cardUnlocked]}>
           <View style={styles.iconContainer}>
-            <Text style={styles.icon}>{a.is_unlocked ? '🏆' : '🔒'}</Text>
+            <Icon
+              name={a.is_unlocked ? 'xp' : 'lock'}
+              size={28}
+              color={a.is_unlocked ? colors.accent : colors.textMuted}
+            />
           </View>
           <View style={styles.info}>
             <Text style={[styles.name, !a.is_unlocked && styles.nameLocked]}>{a.name}</Text>
@@ -59,7 +64,6 @@ const styles = StyleSheet.create({
   },
   cardUnlocked: { opacity: 1, borderColor: colors.accent },
   iconContainer: { width: 48, height: 48, justifyContent: 'center', alignItems: 'center' },
-  icon: { fontSize: 28 },
   info: { flex: 1, marginLeft: spacing.sm },
   name: { ...typography.bodyBold, color: colors.textPrimary },
   nameLocked: { color: colors.textMuted },

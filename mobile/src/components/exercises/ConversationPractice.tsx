@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { colors, typography, spacing, borderRadius } from '../../theme';
-import { Button } from '../common';
+import { Button, Icon, type HeroIconName } from '../common';
 
 interface Props {
   content: {
@@ -12,6 +12,14 @@ interface Props {
     min_passing_score?: number;
   };
   onSubmit: (response: { user_response_text: string }) => void;
+}
+
+function characterIconFor(role: string): HeroIconName {
+  const r = role.toLowerCase();
+  if (r.includes('patient')) return 'heart';
+  if (r.includes('doctor')) return 'doctor';
+  if (r.includes('nurse') || r.includes('peer')) return 'nurse';
+  return 'pin';
 }
 
 export function ConversationPractice({ content, onSubmit }: Props) {
@@ -29,9 +37,13 @@ export function ConversationPractice({ content, onSubmit }: Props) {
       {/* Character */}
       <View style={styles.characterCard}>
         <View style={styles.characterHeader}>
-          <Text style={styles.characterEmoji}>
-            {content.ai_character_role === 'patient' ? '🏥' : '👨‍⚕️'}
-          </Text>
+          <View style={styles.characterIcon}>
+            <Icon
+              name={characterIconFor(content.ai_character_role)}
+              size={36}
+              color={colors.primary}
+            />
+          </View>
           <View>
             <Text style={styles.characterName}>{content.ai_character_name}</Text>
             <Text style={styles.characterRole}>{content.ai_character_role}</Text>
@@ -79,7 +91,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   characterHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, marginBottom: spacing.sm },
-  characterEmoji: { fontSize: 32 },
+  characterIcon: { marginRight: spacing.sm },
   characterName: { ...typography.bodyBold, color: colors.textPrimary },
   characterRole: { ...typography.small, color: colors.textMuted, textTransform: 'capitalize' },
   speechBubble: {

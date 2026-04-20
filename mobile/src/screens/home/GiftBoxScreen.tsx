@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
-import { Button } from '../../components/common';
+import { Button, Icon } from '../../components/common';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import type { MapStackParamList } from '../../navigation/types';
 
@@ -17,12 +17,14 @@ const rarityColors: Record<string, string> = {
   legendary: colors.rarityLegendary,
 };
 
-const boxEmojis: Record<string, string> = {
-  basic: '📦',
-  silver: '🪙',
-  gold: '✨',
-  legendary: '💎',
-};
+function boxTypeColor(boxType: string): string {
+  switch (boxType) {
+    case 'silver': return colors.rarityRare;
+    case 'gold': return colors.accent;
+    case 'legendary': return colors.rarityLegendary;
+    default: return colors.primary;
+  }
+}
 
 export function GiftBoxScreen({ route, navigation }: Props) {
   const { boxId, boxType } = route.params;
@@ -49,7 +51,9 @@ export function GiftBoxScreen({ route, navigation }: Props) {
   if (!opened) {
     return (
       <View style={styles.container}>
-        <Text style={styles.boxEmoji}>{boxEmojis[boxType] || '📦'}</Text>
+        <View style={styles.boxIcon}>
+          <Icon name="gift" size={96} color={boxTypeColor(boxType)} />
+        </View>
         <Text style={styles.boxType}>{boxType.toUpperCase()} Gift Box</Text>
         <Text style={styles.hint}>Tap to discover what's inside!</Text>
         <Button title="Open" onPress={handleOpen} loading={loading} style={styles.openBtn} />
@@ -63,7 +67,7 @@ export function GiftBoxScreen({ route, navigation }: Props) {
   return (
     <View style={styles.container}>
       <View style={[styles.itemFrame, { borderColor: rarityColor }]}>
-        <Text style={styles.itemEmoji}>🎁</Text>
+        <Icon name="gift" size={56} color={rarityColor} />
       </View>
 
       <Text style={styles.itemName}>{item.name}</Text>
@@ -77,8 +81,9 @@ export function GiftBoxScreen({ route, navigation }: Props) {
 
       {result.was_duplicate && (
         <View style={styles.duplicateBanner}>
+          <Icon name="catnip" size={20} color={colors.catnip} />
           <Text style={styles.duplicateText}>
-            Already owned! Converted to {result.catnip_earned} Catnip 🌿
+            {' '}Already owned! Converted to {result.catnip_earned} Catnip
           </Text>
         </View>
       )}
@@ -100,7 +105,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: spacing.lg,
   },
-  boxEmoji: { fontSize: 96, marginBottom: spacing.md },
+  boxIcon: { marginBottom: spacing.md },
   boxType: { ...typography.h2, color: colors.textPrimary, marginBottom: spacing.xs },
   hint: { ...typography.body, color: colors.textMuted, marginBottom: spacing.xl },
   openBtn: { width: '100%' },
@@ -114,11 +119,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     marginBottom: spacing.md,
   },
-  itemEmoji: { fontSize: 56 },
   itemName: { ...typography.h2, color: colors.textPrimary, marginBottom: spacing.xs },
   itemRarity: { ...typography.bodyBold, marginBottom: spacing.sm },
   itemDesc: { ...typography.body, color: colors.textSecondary, textAlign: 'center', marginBottom: spacing.md },
   duplicateBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: colors.catnip + '20',
     borderRadius: borderRadius.sm,
     padding: spacing.md,
