@@ -31,6 +31,10 @@ type Config struct {
 	CloudfrontDomain  string
 
 	ExpoPushToken string
+
+	SentryDSN         string
+	SentryEnvironment string
+	SentryRelease     string
 }
 
 func Load() *Config {
@@ -74,5 +78,9 @@ func Load() *Config {
 		CloudfrontDomain: viper.GetString("CLOUDFRONT_DOMAIN"),
 
 		ExpoPushToken: viper.GetString("EXPO_PUSH_ACCESS_TOKEN"),
+
+		SentryDSN:         viper.GetString("SENTRY_DSN"),
+		SentryEnvironment: viper.GetString("SENTRY_ENVIRONMENT"),
+		SentryRelease:     viper.GetString("SENTRY_RELEASE"),
 	}
 }
