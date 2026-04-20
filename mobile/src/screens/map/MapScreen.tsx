@@ -31,8 +31,16 @@ export function MapScreen({ navigation }: Props) {
     return [...data.modules].sort((a, b) => a.floor_order - b.floor_order);
   }, [data]);
 
+  const unlockedSet = useMemo(() => {
+    return new Set(data?.unlocked_module_ids ?? []);
+  }, [data]);
+
   const [activeModuleId, setActiveModuleId] = useState<string | null>(null);
-  const activeModule = modules.find((m) => m.id === activeModuleId) ?? modules[0] ?? null;
+  // Default to the first unlocked module; fall back to the first module
+  // overall so we still render something during the initial render where
+  // `data` is undefined.
+  const defaultActive = modules.find((m) => unlockedSet.has(m.id)) ?? modules[0] ?? null;
+  const activeModule = modules.find((m) => m.id === activeModuleId) ?? defaultActive;
 
   const sheetRef = useRef<BottomSheetModal>(null);
   const [selectedUnit, setSelectedUnit] = useState<CurriculumUnit | null>(null);
@@ -50,15 +58,12 @@ export function MapScreen({ navigation }: Props) {
     activeModule.units.find((u) => u.stages.some((s) => s.progress?.status !== 'completed')) ??
     activeModule.units[0];
 
-  // Placeholder unlock state — all floors unlocked until the Quests/progress
-  // query adds a dedicated "unlocked modules" endpoint. The server-side
-  // unlock event already fires; surfacing it here is a Phase 2 refinement.
   const floorEntries = modules.map((m) => ({
     moduleId: m.id,
     floorOrder: m.floor_order,
     label: m.floor_label,
     icon: m.floor_icon,
-    unlocked: true,
+    unlocked: unlockedSet.has(m.id),
   }));
 
   const openHotspot = (unit: CurriculumUnit) => {

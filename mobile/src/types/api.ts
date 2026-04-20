@@ -58,6 +58,11 @@ export interface UserProfile {
 }
 
 // Curriculum
+export interface CurriculumResponse {
+  modules: CurriculumModule[];
+  unlocked_module_ids: string[];
+}
+
 export interface CurriculumModule {
   id: string;
   title: string;

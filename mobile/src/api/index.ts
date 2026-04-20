@@ -2,7 +2,7 @@ import { api } from './client';
 import type {
   ApiResponse,
   UserProfile,
-  CurriculumModule,
+  CurriculumResponse,
   StageDetail,
   StartStageResponse,
   SubmitExerciseResponse,
@@ -22,7 +22,7 @@ export const userApi = {
 
 export const curriculumApi = {
   getCurriculum: () =>
-    api.get<ApiResponse<{ modules: CurriculumModule[] }>>('/curriculum'),
+    api.get<ApiResponse<CurriculumResponse>>('/curriculum'),
   getStageDetail: (stageId: string) =>
     api.get<ApiResponse<StageDetail>>(`/curriculum/stages/${stageId}`),
 };
