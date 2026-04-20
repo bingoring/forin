@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, learningApi } from '../../api';
 import { SentenceArrangement, WordPuzzle, MeaningMatch, ConversationPractice, SynonymMatch } from '../../components/exercises';
+import { SceneOpener, SceneEnding } from '../../components/scene';
 import { colors, typography, spacing } from '../../theme';
 import type { MapStackParamList } from '../../navigation/types';
 import type { Exercise, SubmitExerciseResponse } from '../../types/api';
 
 type Props = NativeStackScreenProps<MapStackParamList, 'Exercise'>;
+
+type Phase = 'opener' | 'exercise' | 'ending';
 
 export function ExerciseScreen({ route, navigation }: Props) {
   const { stageId, attemptId } = route.params;
@@ -17,6 +20,7 @@ export function ExerciseScreen({ route, navigation }: Props) {
   const [lives, setLives] = useState(5);
   const [lastResult, setLastResult] = useState<SubmitExerciseResponse | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [phase, setPhase] = useState<Phase>('exercise');
 
   const { data: stage } = useQuery({
     queryKey: ['stage', stageId],
@@ -26,6 +30,13 @@ export function ExerciseScreen({ route, navigation }: Props) {
     },
   });
 
+  // Initial phase selection: show the opener first when the stage has one.
+  // Keyed off stage.id so retries / back-nav reset the gate consistently.
+  useEffect(() => {
+    if (!stage) return;
+    setPhase(stage.scene_opener_md ? 'opener' : 'exercise');
+  }, [stage?.id]);
+
   if (!stage) {
     return <View style={styles.loading}><Text>Loading...</Text></View>;
   }
@@ -33,6 +44,33 @@ export function ExerciseScreen({ route, navigation }: Props) {
   const exercises = stage.exercises;
   const current = exercises[currentIdx];
   const isLast = currentIdx >= exercises.length - 1;
+
+  if (phase === 'opener' && stage.scene_opener_md) {
+    return (
+      <SceneOpener
+        npcKey={stage.scene_npc_key}
+        openerMd={stage.scene_opener_md}
+        tensionLevel={stage.tension_level}
+        onContinue={() => setPhase('exercise')}
+      />
+    );
+  }
+
+  if (phase === 'ending' && stage.scene_ending_md) {
+    return (
+      <SceneEnding
+        endingMd={stage.scene_ending_md}
+        onContinue={async () => {
+          try {
+            const { data } = await learningApi.completeAttempt(attemptId);
+            navigation.replace('StageComplete', { result: data.data });
+          } catch (err: any) {
+            Alert.alert('Error', err?.response?.data?.error?.message || 'Completion failed');
+          }
+        }}
+      />
+    );
+  }
 
   const handleExerciseSubmit = async (response: any) => {
     try {
@@ -52,6 +90,11 @@ export function ExerciseScreen({ route, navigation }: Props) {
     setLastResult(null);
 
     if (isLast) {
+      // If the stage has a scene ending, route through it first.
+      if (stage.scene_ending_md && phase !== 'ending') {
+        setPhase('ending');
+        return;
+      }
       try {
         const { data } = await learningApi.completeAttempt(attemptId);
         navigation.replace('StageComplete', { result: data.data });
