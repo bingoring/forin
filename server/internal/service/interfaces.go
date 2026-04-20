@@ -34,6 +34,7 @@ type CurriculumRepository interface {
 	FindExerciseByID(ctx context.Context, exerciseID uuid.UUID) (*model.Exercise, error)
 	FindUserStageProgress(ctx context.Context, userID uuid.UUID, stageIDs []uuid.UUID) ([]model.UserStageProgress, error)
 	FindUserModuleProgress(ctx context.Context, userID uuid.UUID, moduleIDs []uuid.UUID) ([]model.UserModuleProgress, error)
+	FindModuleByID(ctx context.Context, moduleID uuid.UUID) (*model.CurriculumModule, error)
 }
 
 // LearningRepository defines data access for the learning lifecycle.
@@ -58,6 +59,11 @@ type LearningRepository interface {
 	CreateGiftBoxOpening(ctx context.Context, gbo *model.GiftBoxOpening) error
 	CountCompletedStages(ctx context.Context, userID uuid.UUID) (int64, error)
 	FindAttemptHistory(ctx context.Context, userID uuid.UUID, offset, limit int) ([]model.StageAttempt, int64, error)
+	FindUnitByStageID(ctx context.Context, stageID uuid.UUID) (*model.Unit, error)
+	CountUnitStagesCompleted(ctx context.Context, userID, unitID uuid.UUID) (int64, error)
+	CountUnitStagesTotal(ctx context.Context, unitID uuid.UUID) (int64, error)
+	FindNextFloorModule(ctx context.Context, professionID uuid.UUID, targetCountry string, currentFloorOrder int) (*model.CurriculumModule, error)
+	CreateUserUnlockedFloor(ctx context.Context, userID, moduleID uuid.UUID) error
 	WithTx(fn func(repo LearningRepository) error) error
 }
 

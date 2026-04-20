@@ -379,6 +379,42 @@ func (s *LearningService) CompleteAttempt(ctx context.Context, userID, attemptID
 		}
 		resp.Achievements = unlocked
 
+		// Floor unlock: if this stage completion finishes the last Unit on
+		// its floor, unlock the next module (floor) and surface the id.
+		unit, err := txRepo.FindUnitByStageID(ctx, attempt.StageID)
+		if err != nil {
+			return err
+		}
+		completedInUnit, err := txRepo.CountUnitStagesCompleted(ctx, userID, unit.ID)
+		if err != nil {
+			return err
+		}
+		totalInUnit, err := txRepo.CountUnitStagesTotal(ctx, unit.ID)
+		if err != nil {
+			return err
+		}
+		if totalInUnit > 0 && completedInUnit >= totalInUnit {
+			currentModule, err := s.curriculumRepo.FindModuleByID(ctx, unit.ModuleID)
+			if err != nil {
+				return err
+			}
+			if user.ProfessionID != nil && user.TargetCountry != nil {
+				nextModule, err := txRepo.FindNextFloorModule(
+					ctx, *user.ProfessionID, *user.TargetCountry, currentModule.FloorOrder,
+				)
+				if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
+					return err
+				}
+				if nextModule != nil {
+					if err := txRepo.CreateUserUnlockedFloor(ctx, userID, nextModule.ID); err != nil {
+						return err
+					}
+					nid := nextModule.ID
+					resp.UnlockedModuleID = &nid
+				}
+			}
+		}
+
 		return nil
 	})
 

@@ -7,28 +7,36 @@ import { useQuery } from '@tanstack/react-query';
 import { useAuthStore } from '../stores/authStore';
 import { userApi } from '../api';
 import { colors } from '../theme';
+import { Icon } from '../components/common';
 
 import { LoginScreen } from '../screens/auth/LoginScreen';
 import { RegisterScreen } from '../screens/auth/RegisterScreen';
 import { OnboardingScreen } from '../screens/onboarding/OnboardingScreen';
 import { LanguageSelectScreen } from '../screens/onboarding/LanguageSelectScreen';
 import { setAppLocale } from '../locales';
-import { HomeScreen } from '../screens/home/HomeScreen';
+import { MapScreen } from '../screens/map/MapScreen';
+import { QuestsScreen } from '../screens/quests/QuestsScreen';
 import { StageIntroScreen } from '../screens/home/StageIntroScreen';
 import { ExerciseScreen } from '../screens/home/ExerciseScreen';
 import { StageCompleteScreen } from '../screens/home/StageCompleteScreen';
 import { GiftBoxScreen } from '../screens/home/GiftBoxScreen';
-import { CurriculumScreen } from '../screens/learn/CurriculumScreen';
 import { AchievementsScreen } from '../screens/achievements/AchievementsScreen';
 import { ProfileScreen } from '../screens/profile/ProfileScreen';
 import { InventoryScreen } from '../screens/profile/InventoryScreen';
 import { ShopScreen } from '../screens/profile/ShopScreen';
 import { NotificationSettingsScreen } from '../screens/profile/NotificationSettingsScreen';
 
-import type { AuthStackParamList, HomeStackParamList, ProfileStackParamList, TabParamList } from './types';
+import type {
+  AuthStackParamList,
+  MapStackParamList,
+  QuestsStackParamList,
+  ProfileStackParamList,
+  TabParamList,
+} from './types';
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
-const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+const MapStack = createNativeStackNavigator<MapStackParamList>();
+const QuestsStack = createNativeStackNavigator<QuestsStackParamList>();
 const ProfileStack = createNativeStackNavigator<ProfileStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -41,15 +49,51 @@ function AuthNavigator() {
   );
 }
 
-function HomeNavigator() {
+function MapNavigator() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="HomeMain" component={HomeScreen} options={{ headerShown: false }} />
-      <HomeStack.Screen name="StageIntro" component={StageIntroScreen} options={{ title: 'Stage' }} />
-      <HomeStack.Screen name="Exercise" component={ExerciseScreen} options={{ headerShown: false, gestureEnabled: false }} />
-      <HomeStack.Screen name="StageComplete" component={StageCompleteScreen} options={{ headerShown: false, gestureEnabled: false }} />
-      <HomeStack.Screen name="GiftBox" component={GiftBoxScreen} options={{ title: 'Gift Box', presentation: 'modal' }} />
-    </HomeStack.Navigator>
+    <MapStack.Navigator>
+      <MapStack.Screen name="MapMain" component={MapScreen} options={{ headerShown: false }} />
+      <MapStack.Screen name="StageIntro" component={StageIntroScreen} options={{ title: 'Stage' }} />
+      <MapStack.Screen
+        name="Exercise"
+        component={ExerciseScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <MapStack.Screen
+        name="StageComplete"
+        component={StageCompleteScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <MapStack.Screen
+        name="GiftBox"
+        component={GiftBoxScreen}
+        options={{ title: 'Gift Box', presentation: 'modal' }}
+      />
+    </MapStack.Navigator>
+  );
+}
+
+function QuestsNavigator() {
+  return (
+    <QuestsStack.Navigator>
+      <QuestsStack.Screen name="QuestsMain" component={QuestsScreen} options={{ headerShown: false }} />
+      <QuestsStack.Screen name="StageIntro" component={StageIntroScreen} options={{ title: 'Stage' }} />
+      <QuestsStack.Screen
+        name="Exercise"
+        component={ExerciseScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <QuestsStack.Screen
+        name="StageComplete"
+        component={StageCompleteScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <QuestsStack.Screen
+        name="GiftBox"
+        component={GiftBoxScreen}
+        options={{ title: 'Gift Box', presentation: 'modal' }}
+      />
+    </QuestsStack.Navigator>
   );
 }
 
@@ -59,7 +103,11 @@ function ProfileNavigator() {
       <ProfileStack.Screen name="ProfileMain" component={ProfileScreen} options={{ headerShown: false }} />
       <ProfileStack.Screen name="Inventory" component={InventoryScreen} options={{ title: 'Inventory' }} />
       <ProfileStack.Screen name="Shop" component={ShopScreen} options={{ title: 'Cat Shop' }} />
-      <ProfileStack.Screen name="NotificationSettings" component={NotificationSettingsScreen} options={{ title: 'Notifications' }} />
+      <ProfileStack.Screen
+        name="NotificationSettings"
+        component={NotificationSettingsScreen}
+        options={{ title: 'Notifications' }}
+      />
     </ProfileStack.Navigator>
   );
 }
@@ -69,15 +117,48 @@ function MainTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.primary,
+        tabBarActiveTintColor: colors.accent,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarStyle: { paddingTop: 4, height: 56 },
+        tabBarStyle: {
+          paddingTop: 4,
+          height: 56,
+          backgroundColor: colors.white,
+          borderTopColor: colors.border,
+        },
       }}
     >
-      <Tab.Screen name="HomeTab" component={HomeNavigator} options={{ tabBarLabel: 'Home' }} />
-      <Tab.Screen name="LearnTab" component={CurriculumScreen} options={{ tabBarLabel: 'Learn' }} />
-      <Tab.Screen name="AchievementsTab" component={AchievementsScreen} options={{ tabBarLabel: 'Achieve' }} />
-      <Tab.Screen name="ProfileTab" component={ProfileNavigator} options={{ tabBarLabel: 'Profile' }} />
+      <Tab.Screen
+        name="MapTab"
+        component={MapNavigator}
+        options={{
+          tabBarLabel: 'Map',
+          tabBarIcon: ({ color, size }) => <Icon name="pin" size={size} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="QuestsTab"
+        component={QuestsNavigator}
+        options={{
+          tabBarLabel: 'Quests',
+          tabBarIcon: ({ color, size }) => <Icon name="check" size={size} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="AchievementsTab"
+        component={AchievementsScreen}
+        options={{
+          tabBarLabel: 'Achieve',
+          tabBarIcon: ({ color, size }) => <Icon name="xp" size={size} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="ProfileTab"
+        component={ProfileNavigator}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => <Icon name="nurse" size={size} color={color} />,
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -111,9 +192,6 @@ function AuthenticatedApp() {
     if (profile.profession) {
       setStage('main');
     } else {
-      // A user with a profession has been through onboarding, so any future
-      // session skips both language + onboarding. First-time users go through
-      // LanguageSelect before the profession-country-goal-catName flow.
       setStage('language');
     }
   }, [profile]);

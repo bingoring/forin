@@ -77,6 +77,10 @@ func (s *CurriculumService) GetCurriculum(ctx context.Context, userID uuid.UUID)
 			Description:      m.Description,
 			OrderIndex:       m.OrderIndex,
 			MinLevelRequired: m.MinLevelRequired,
+			FloorOrder:       m.FloorOrder,
+			FloorLabel:       m.FloorLabel,
+			FloorIcon:        m.FloorIcon,
+			MapAssetKey:      m.MapAssetKey,
 		}
 
 		if mp, ok := moduleProgressMap[m.ID]; ok {
@@ -89,10 +93,14 @@ func (s *CurriculumService) GetCurriculum(ctx context.Context, userID uuid.UUID)
 		var unitResps []dto.UnitResponse
 		for _, u := range m.Units {
 			ur := dto.UnitResponse{
-				ID:          u.ID,
-				Title:       u.Title,
-				Description: u.Description,
-				OrderIndex:  u.OrderIndex,
+				ID:                   u.ID,
+				Title:                u.Title,
+				Description:          u.Description,
+				OrderIndex:           u.OrderIndex,
+				LocationType:         u.LocationType,
+				MapX:                 u.MapX,
+				MapY:                 u.MapY,
+				HotspotLabelOverride: u.HotspotLabelOverride,
 			}
 
 			var stageResps []dto.StageOverview

@@ -5,10 +5,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, learningApi } from '../../api';
 import { SentenceArrangement, WordPuzzle, MeaningMatch, ConversationPractice } from '../../components/exercises';
 import { colors, typography, spacing } from '../../theme';
-import type { HomeStackParamList } from '../../navigation/types';
+import type { MapStackParamList } from '../../navigation/types';
 import type { Exercise, SubmitExerciseResponse } from '../../types/api';
 
-type Props = NativeStackScreenProps<HomeStackParamList, 'Exercise'>;
+type Props = NativeStackScreenProps<MapStackParamList, 'Exercise'>;
 
 export function ExerciseScreen({ route, navigation }: Props) {
   const { stageId, attemptId } = route.params;

@@ -6,8 +6,16 @@ export type AuthStackParamList = {
   Register: undefined;
 };
 
-export type HomeStackParamList = {
-  HomeMain: undefined;
+export type MapStackParamList = {
+  MapMain: undefined;
+  StageIntro: { stageId: string };
+  Exercise: { stageId: string; attemptId: string };
+  StageComplete: { result: CompleteAttemptResponse };
+  GiftBox: { boxId: string; boxType: string };
+};
+
+export type QuestsStackParamList = {
+  QuestsMain: undefined;
   StageIntro: { stageId: string };
   Exercise: { stageId: string; attemptId: string };
   StageComplete: { result: CompleteAttemptResponse };
@@ -22,8 +30,8 @@ export type ProfileStackParamList = {
 };
 
 export type TabParamList = {
-  HomeTab: NavigatorScreenParams<HomeStackParamList>;
-  LearnTab: undefined;
+  MapTab: NavigatorScreenParams<MapStackParamList>;
+  QuestsTab: NavigatorScreenParams<QuestsStackParamList>;
   AchievementsTab: undefined;
   ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
 };

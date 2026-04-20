@@ -16,6 +16,10 @@ type ModuleResponse struct {
 	Description      *string            `json:"description"`
 	OrderIndex       int                `json:"order_index"`
 	MinLevelRequired int                `json:"min_level_required"`
+	FloorOrder       int                `json:"floor_order"`
+	FloorLabel       string             `json:"floor_label"`
+	FloorIcon        string             `json:"floor_icon"`
+	MapAssetKey      string             `json:"map_asset_key"`
 	Progress         *ModuleProgressDTO `json:"progress"`
 	Units            []UnitResponse     `json:"units"`
 }
@@ -26,11 +30,15 @@ type ModuleProgressDTO struct {
 }
 
 type UnitResponse struct {
-	ID          uuid.UUID       `json:"id"`
-	Title       string          `json:"title"`
-	Description *string         `json:"description"`
-	OrderIndex  int             `json:"order_index"`
-	Stages      []StageOverview `json:"stages"`
+	ID                   uuid.UUID       `json:"id"`
+	Title                string          `json:"title"`
+	Description          *string         `json:"description"`
+	OrderIndex           int             `json:"order_index"`
+	LocationType         string          `json:"location_type"`
+	MapX                 float64         `json:"map_x"`
+	MapY                 float64         `json:"map_y"`
+	HotspotLabelOverride *string         `json:"hotspot_label_override"`
+	Stages               []StageOverview `json:"stages"`
 }
 
 type StageOverview struct {

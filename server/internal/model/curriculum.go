@@ -32,6 +32,10 @@ type CurriculumModule struct {
 	OrderIndex        int       `gorm:"not null"`
 	MinLevelRequired  int       `gorm:"default:1"`
 	IsPublished       bool      `gorm:"default:false"`
+	FloorOrder        int       `gorm:"column:floor_order;not null;default:1"`
+	FloorLabel        string    `gorm:"column:floor_label;not null;default:''"`
+	FloorIcon         string    `gorm:"column:floor_icon;not null;default:'triage'"`
+	MapAssetKey       string    `gorm:"column:map_asset_key;not null;default:''"`
 	CreatedAt         time.Time
 
 	Profession Profession `gorm:"foreignKey:ProfessionID"`
@@ -46,12 +50,16 @@ func (m *CurriculumModule) BeforeCreate(tx *gorm.DB) error {
 }
 
 type Unit struct {
-	ID          uuid.UUID `gorm:"type:uuid;primaryKey;default:gen_random_uuid()"`
-	ModuleID    uuid.UUID `gorm:"type:uuid;not null;index"`
-	Title       string    `gorm:"not null"`
-	Description *string
-	OrderIndex  int       `gorm:"not null"`
-	IsPublished bool      `gorm:"default:false"`
+	ID                   uuid.UUID `gorm:"type:uuid;primaryKey;default:gen_random_uuid()"`
+	ModuleID             uuid.UUID `gorm:"type:uuid;not null;index"`
+	Title                string    `gorm:"not null"`
+	Description          *string
+	OrderIndex           int     `gorm:"not null"`
+	IsPublished          bool    `gorm:"default:false"`
+	LocationType         string  `gorm:"column:location_type;not null;default:'generic'"`
+	MapX                 float64 `gorm:"column:map_x;type:numeric(5,2);not null;default:50.0"`
+	MapY                 float64 `gorm:"column:map_y;type:numeric(5,2);not null;default:50.0"`
+	HotspotLabelOverride *string `gorm:"column:hotspot_label_override"`
 
 	Module CurriculumModule `gorm:"foreignKey:ModuleID"`
 	Stages []Stage          `gorm:"foreignKey:UnitID"`

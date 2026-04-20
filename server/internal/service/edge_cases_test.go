@@ -389,3 +389,54 @@ func newLearningServiceForEdge(lr *testutil.MockLearningRepository, cr *testutil
 	reg := evaluator.NewRegistry(&stubAI{})
 	return NewLearningService(wrapped, cr, reg, &config.Config{})
 }
+
+func TestGetCurriculum_IncludesFloorAndLocationFields(t *testing.T) {
+	userID := uuid.New()
+	profID := uuid.New()
+	modID := uuid.New()
+	unitID := uuid.New()
+	country := "AU"
+
+	userRepo := &testutil.MockUserProfileRepository{
+		FindByIDWithProfessionFn: func(ctx context.Context, id uuid.UUID) (*model.User, error) {
+			return &model.User{
+				ID:            userID,
+				ProfessionID:  &profID,
+				TargetCountry: &country,
+			}, nil
+		},
+	}
+	currRepo := &testutil.MockCurriculumRepository{
+		FindModulesByProfessionAndCountryFn: func(ctx context.Context, pid uuid.UUID, c string) ([]model.CurriculumModule, error) {
+			return []model.CurriculumModule{{
+				ID:          modID,
+				Title:       "Floor 1",
+				FloorOrder:  1,
+				FloorLabel:  "Emergency Room",
+				FloorIcon:   "triage",
+				MapAssetKey: "floor-1-er",
+				Units: []model.Unit{{
+					ID:           unitID,
+					Title:        "Triage",
+					LocationType: "triage",
+					MapX:         30.0,
+					MapY:         35.0,
+				}},
+			}}, nil
+		},
+	}
+
+	svc := NewCurriculumService(currRepo, userRepo, &config.Config{})
+	resp, err := svc.GetCurriculum(context.Background(), userID)
+
+	require.NoError(t, err)
+	require.Len(t, resp.Modules, 1)
+	assert.Equal(t, 1, resp.Modules[0].FloorOrder)
+	assert.Equal(t, "Emergency Room", resp.Modules[0].FloorLabel)
+	assert.Equal(t, "triage", resp.Modules[0].FloorIcon)
+	assert.Equal(t, "floor-1-er", resp.Modules[0].MapAssetKey)
+	require.Len(t, resp.Modules[0].Units, 1)
+	assert.Equal(t, "triage", resp.Modules[0].Units[0].LocationType)
+	assert.Equal(t, 30.0, resp.Modules[0].Units[0].MapX)
+	assert.Equal(t, 35.0, resp.Modules[0].Units[0].MapY)
+}

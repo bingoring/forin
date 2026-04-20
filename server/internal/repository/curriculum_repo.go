@@ -83,3 +83,12 @@ func (r *CurriculumRepository) FindUserModuleProgress(ctx context.Context, userI
 	}
 	return progress, nil
 }
+
+func (r *CurriculumRepository) FindModuleByID(ctx context.Context, moduleID uuid.UUID) (*model.CurriculumModule, error) {
+	var m model.CurriculumModule
+	err := r.db.WithContext(ctx).Where("id = ?", moduleID).First(&m).Error
+	if err != nil {
+		return nil, err
+	}
+	return &m, nil
+}

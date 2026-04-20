@@ -1,42 +1,47 @@
+// Warm Cozy palette — derived from the mascot (Moro).
+// Token names are preserved from the prior Material-ish palette so every
+// consumer screen compiles unchanged. Hex values shift toward cream /
+// chocolate / amber / dusty-pink. See
+// docs/superpowers/specs/2026-04-17-spatial-ux-foundation-design.md §4.1.
 export const colors = {
   // Primary
-  primary: '#4F46E5',
-  primaryLight: '#818CF8',
-  primaryDark: '#3730A3',
+  primary: '#8B6F47',      // warm chocolate
+  primaryLight: '#B89878', // chocolate lightened
+  primaryDark: '#5C4A30',  // chocolate darkened
 
   // Accent
-  accent: '#F59E0B',
-  accentLight: '#FCD34D',
+  accent: '#E6B04A',       // golden amber
+  accentLight: '#F2C47A',  // amber lightened
 
-  // Feedback
-  success: '#10B981',
-  error: '#EF4444',
-  warning: '#F59E0B',
+  // Feedback — mapped into the warm palette
+  success: '#7FA070',      // sage green
+  error: '#D17B6B',        // warm coral
+  warning: '#E6B04A',      // amber (same as accent)
 
-  // Neutral
-  white: '#FFFFFF',
-  background: '#F9FAFB',
-  surface: '#FFFFFF',
-  border: '#E5E7EB',
-  textPrimary: '#111827',
-  textSecondary: '#6B7280',
-  textMuted: '#9CA3AF',
+  // Surfaces / text
+  white: '#FBF7EC',        // soft ivory (NOT pure white — warmer base)
+  background: '#FAF7F0',   // cream canvas
+  surface: '#FBF7EC',      // ivory — cards
+  border: '#E8D8B6',       // warm beige
+  textPrimary: '#3A2A24',  // deep brown ink
+  textSecondary: '#7A6852',// dusty brown
+  textMuted: '#9E8A72',    // dusty brown lightened
 
   // Gamification
-  xp: '#8B5CF6',
-  streak: '#F97316',
-  heart: '#EF4444',
-  gem: '#06B6D4',
-  catnip: '#84CC16',
+  xp: '#E6B04A',           // amber
+  streak: '#D17B6B',       // coral
+  heart: '#E8A8A0',        // dusty pink
+  gem: '#8BA8C4',          // soft slate-blue
+  catnip: '#A8B86F',       // muted sage
 
-  // Rarity
-  rarityCommon: '#9CA3AF',
-  rarityUncommon: '#10B981',
-  rarityRare: '#3B82F6',
-  rarityEpic: '#8B5CF6',
-  rarityLegendary: '#F59E0B',
+  // Rarity tiers — warm remap
+  rarityCommon: '#D6C7A1',     // muted ivory
+  rarityUncommon: '#A8B86F',   // sage
+  rarityRare: '#8BA8C4',       // slate blue
+  rarityEpic: '#9B7B9E',       // plum
+  rarityLegendary: '#E6B04A',  // deep amber
 
   // Stars
-  starFilled: '#FBBF24',
-  starEmpty: '#D1D5DB',
+  starFilled: '#E6B04A',   // amber
+  starEmpty: '#D6C7A1',    // muted ivory
 } as const;

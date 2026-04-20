@@ -33,6 +33,11 @@ type MockLearningRepository struct {
 	CreateGiftBoxOpeningFn     func(ctx context.Context, gbo *model.GiftBoxOpening) error
 	CountCompletedStagesFn     func(ctx context.Context, userID uuid.UUID) (int64, error)
 	FindAttemptHistoryFn       func(ctx context.Context, userID uuid.UUID, offset, limit int) ([]model.StageAttempt, int64, error)
+	FindUnitByStageIDFn        func(ctx context.Context, stageID uuid.UUID) (*model.Unit, error)
+	CountUnitStagesCompletedFn func(ctx context.Context, userID, unitID uuid.UUID) (int64, error)
+	CountUnitStagesTotalFn     func(ctx context.Context, unitID uuid.UUID) (int64, error)
+	FindNextFloorModuleFn      func(ctx context.Context, professionID uuid.UUID, targetCountry string, currentFloorOrder int) (*model.CurriculumModule, error)
+	CreateUserUnlockedFloorFn  func(ctx context.Context, userID, moduleID uuid.UUID) error
 }
 
 func (m *MockLearningRepository) CreateAttempt(ctx context.Context, attempt *model.StageAttempt) error {
@@ -116,4 +121,24 @@ func (m *MockLearningRepository) CountCompletedStages(ctx context.Context, userI
 func (m *MockLearningRepository) FindAttemptHistory(ctx context.Context, userID uuid.UUID, offset, limit int) ([]model.StageAttempt, int64, error) {
 	if m.FindAttemptHistoryFn != nil { return m.FindAttemptHistoryFn(ctx, userID, offset, limit) }
 	return nil, 0, nil
+}
+func (m *MockLearningRepository) FindUnitByStageID(ctx context.Context, stageID uuid.UUID) (*model.Unit, error) {
+	if m.FindUnitByStageIDFn != nil { return m.FindUnitByStageIDFn(ctx, stageID) }
+	return &model.Unit{ID: uuid.New()}, nil
+}
+func (m *MockLearningRepository) CountUnitStagesCompleted(ctx context.Context, userID, unitID uuid.UUID) (int64, error) {
+	if m.CountUnitStagesCompletedFn != nil { return m.CountUnitStagesCompletedFn(ctx, userID, unitID) }
+	return 0, nil
+}
+func (m *MockLearningRepository) CountUnitStagesTotal(ctx context.Context, unitID uuid.UUID) (int64, error) {
+	if m.CountUnitStagesTotalFn != nil { return m.CountUnitStagesTotalFn(ctx, unitID) }
+	return 0, nil
+}
+func (m *MockLearningRepository) FindNextFloorModule(ctx context.Context, professionID uuid.UUID, targetCountry string, currentFloorOrder int) (*model.CurriculumModule, error) {
+	if m.FindNextFloorModuleFn != nil { return m.FindNextFloorModuleFn(ctx, professionID, targetCountry, currentFloorOrder) }
+	return nil, nil
+}
+func (m *MockLearningRepository) CreateUserUnlockedFloor(ctx context.Context, userID, moduleID uuid.UUID) error {
+	if m.CreateUserUnlockedFloorFn != nil { return m.CreateUserUnlockedFloorFn(ctx, userID, moduleID) }
+	return nil
 }
