@@ -60,3 +60,35 @@ func (r *NotificationRepository) FindUsersWithPushToken(ctx context.Context) ([]
 		Find(&users).Error
 	return users, err
 }
+
+// LastSentAt returns the most recent sent_at for the given (user, type)
+// pair, or nil when nothing was ever sent. Used by the scheduler to
+// avoid re-sending the same reminder within a day.
+func (r *NotificationRepository) LastSentAt(ctx context.Context, userID uuid.UUID, notifType string) (*time.Time, error) {
+	var ts *time.Time
+	err := r.db.WithContext(ctx).
+		Table("notification_log").
+		Where("user_id = ? AND notification_type = ?", userID, notifType).
+		Select("MAX(sent_at)").
+		Row().Scan(&ts)
+	if err != nil {
+		return nil, err
+	}
+	return ts, nil
+}
+
+// FindDailyActivityForDate returns the user's activity log for a
+// specific date, or nil if no activity was recorded.
+func (r *NotificationRepository) FindDailyActivityForDate(ctx context.Context, userID uuid.UUID, date time.Time) (*model.DailyActivityLog, error) {
+	var log model.DailyActivityLog
+	err := r.db.WithContext(ctx).
+		Where("user_id = ? AND activity_date = ?", userID, date.Format("2006-01-02")).
+		First(&log).Error
+	if err != nil {
+		if err == gorm.ErrRecordNotFound {
+			return nil, nil
+		}
+		return nil, err
+	}
+	return &log, nil
+}

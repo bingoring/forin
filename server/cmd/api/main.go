@@ -71,6 +71,8 @@ func main() {
 	gamificationService := service.NewGamificationService(gamificationRepo, cfg)
 	notificationService := service.NewNotificationService(notificationRepo, userProfileRepo, cfg)
 	vocabularyService := service.NewVocabularyService(vocabularyRepo, userProfileRepo)
+	pushService := service.NewPushService(notificationRepo, cfg, log)
+	notifScheduler := service.NewNotificationScheduler(notificationRepo, userProfileRepo, pushService, log)
 
 	// Handlers
 	authHandler := handler.NewAuthHandler(authService)
@@ -105,10 +107,16 @@ func main() {
 		}
 	}()
 
+	// 7b. Start background notification scheduler. Cancelling schedulerCtx
+	// on shutdown stops the ticker.
+	schedulerCtx, cancelScheduler := context.WithCancel(context.Background())
+	go notifScheduler.Run(schedulerCtx)
+
 	// 8. Graceful shutdown
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	sig := <-quit
+	cancelScheduler()
 	log.Info("shutdown signal received", zap.String("signal", sig.String()))
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)

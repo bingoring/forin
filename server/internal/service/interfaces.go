@@ -102,4 +102,10 @@ type NotificationRepository interface {
 	CreateLog(ctx context.Context, log *model.NotificationLog) error
 	FindWeeklyActivity(ctx context.Context, userID uuid.UUID, from, to time.Time) ([]model.DailyActivityLog, error)
 	FindUsersWithPushToken(ctx context.Context) ([]model.User, error)
+	// LastSentAt returns the most recent sent_at for (userID, notifType),
+	// or nil if nothing was ever sent. Used by the scheduler to dedup.
+	LastSentAt(ctx context.Context, userID uuid.UUID, notifType string) (*time.Time, error)
+	// FindDailyActivityForDate returns a user's activity log for a specific
+	// date (or nil if no activity).
+	FindDailyActivityForDate(ctx context.Context, userID uuid.UUID, date time.Time) (*model.DailyActivityLog, error)
 }
