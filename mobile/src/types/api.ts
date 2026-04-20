@@ -169,7 +169,14 @@ export interface CompleteAttemptResponse {
   mistakes_count: number;
   duration_seconds: number;
   level_up: { previous_level: number; new_level: number; new_title: string } | null;
-  streak_update: { current_streak: number; was_extended: boolean; milestone_hit: number | null } | null;
+  streak_update: {
+    current_streak: number;
+    was_extended: boolean;
+    milestone_hit: number | null;
+    shield_used: boolean;
+    shield_earned: boolean;
+    streak_shields: number;
+  } | null;
   achievements: { id: string; slug: string; name: string }[];
   gift_box: { id: string; box_type: string } | null;
   unlocked_module_id: string | null;

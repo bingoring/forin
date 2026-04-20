@@ -68,6 +68,26 @@ export function StageCompleteScreen({ route, navigation }: Props) {
         </View>
       )}
 
+      {/* Shield used — the user missed yesterday but a shield saved the streak. */}
+      {result.streak_update?.shield_used ? (
+        <View style={styles.shieldCard}>
+          <Icon name="lock" size={20} color={colors.gem} />
+          <Text style={styles.shieldText}>
+            {' '}Streak shield used — your {result.streak_update.current_streak}-day streak is safe.
+          </Text>
+        </View>
+      ) : null}
+
+      {/* Shield earned — a milestone granted a new shield. */}
+      {result.streak_update?.shield_earned ? (
+        <View style={styles.shieldCard}>
+          <Icon name="lock" size={20} color={colors.gem} />
+          <Text style={styles.shieldText}>
+            {' '}New streak shield earned! ({result.streak_update.streak_shields} total)
+          </Text>
+        </View>
+      ) : null}
+
       {/* Achievements */}
       {result.achievements.length > 0 && (
         <View style={styles.achievementCard}>
@@ -143,6 +163,18 @@ const styles = StyleSheet.create({
   levelUpNewTitle: { ...typography.h2, color: colors.white },
   streakRow: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.md },
   streakText: { ...typography.bodyBold, color: colors.streak },
+  shieldCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: colors.gem + '15',
+    borderRadius: borderRadius.md,
+    borderWidth: 1,
+    borderColor: colors.gem,
+    padding: spacing.md,
+    marginBottom: spacing.md,
+  },
+  shieldText: { ...typography.bodyBold, color: colors.gem, flex: 1 },
   achievementRow: { flexDirection: 'row', alignItems: 'center', marginTop: 2 },
   achievementCard: {
     width: '100%',

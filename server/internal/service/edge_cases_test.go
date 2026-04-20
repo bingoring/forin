@@ -357,6 +357,57 @@ func TestUpdateStreak_Milestone7(t *testing.T) {
 	assert.Equal(t, 7, resp.CurrentStreak)
 	assert.NotNil(t, resp.MilestoneHit)
 	assert.Equal(t, 7, *resp.MilestoneHit)
+	assert.True(t, resp.ShieldEarned)
+	assert.Equal(t, 1, streak.StreakShields)
+}
+
+func TestUpdateStreak_MissedOneDay_ShieldConsumed(t *testing.T) {
+	twoDaysAgo := time.Now().AddDate(0, 0, -2).Truncate(24 * time.Hour)
+	today := time.Now().Truncate(24 * time.Hour)
+	streak := &model.UserStreak{
+		CurrentStreak:    10,
+		LongestStreak:    10,
+		LastActivityDate: &twoDaysAgo,
+		StreakShields:    1,
+	}
+
+	resp := updateStreak(streak, today)
+	assert.Equal(t, 11, resp.CurrentStreak) // preserved + extended
+	assert.True(t, resp.WasExtended)
+	assert.True(t, resp.ShieldUsed)
+	assert.Equal(t, 0, streak.StreakShields)
+	require.NotNil(t, streak.ShieldUsedOn)
+}
+
+func TestUpdateStreak_MissedOneDay_NoShield_Resets(t *testing.T) {
+	twoDaysAgo := time.Now().AddDate(0, 0, -2).Truncate(24 * time.Hour)
+	today := time.Now().Truncate(24 * time.Hour)
+	streak := &model.UserStreak{
+		CurrentStreak:    10,
+		LongestStreak:    10,
+		LastActivityDate: &twoDaysAgo,
+		StreakShields:    0,
+	}
+
+	resp := updateStreak(streak, today)
+	assert.Equal(t, 1, resp.CurrentStreak)
+	assert.False(t, resp.ShieldUsed)
+}
+
+func TestUpdateStreak_ShieldCap(t *testing.T) {
+	yesterday := time.Now().AddDate(0, 0, -1).Truncate(24 * time.Hour)
+	today := time.Now().Truncate(24 * time.Hour)
+	streak := &model.UserStreak{
+		CurrentStreak:    6,
+		LongestStreak:    6,
+		LastActivityDate: &yesterday,
+		StreakShields:    MaxStreakShields, // already full
+	}
+
+	resp := updateStreak(streak, today)
+	assert.Equal(t, 7, resp.CurrentStreak)
+	assert.False(t, resp.ShieldEarned) // cap respected
+	assert.Equal(t, MaxStreakShields, streak.StreakShields)
 }
 
 // --- Lives Edge Cases ---

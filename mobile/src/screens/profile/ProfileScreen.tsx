@@ -52,6 +52,18 @@ export function ProfileScreen({ navigation }: any) {
         <StatCard label="Catnip" value={`${profile.catnip}`} color={colors.catnip} />
       </View>
 
+      {/* Streak shields — surfaced separately so the icon can render via
+          the Icon component rather than an emoji in StatCard. */}
+      {profile.streak.streak_shields > 0 ? (
+        <View style={styles.shieldRow}>
+          <Icon name="lock" size={18} color={colors.gem} />
+          <Text style={styles.shieldRowText}>
+            {' '}{profile.streak.streak_shields} streak shield
+            {profile.streak.streak_shields > 1 ? 's' : ''} ready
+          </Text>
+        </View>
+      ) : null}
+
       {/* XP Progress */}
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Level Progress</Text>
@@ -123,6 +135,15 @@ const styles = StyleSheet.create({
   displayName: { ...typography.body, color: colors.textSecondary },
   levelBadge: { ...typography.caption, color: colors.xp, marginTop: spacing.xs },
   statsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginBottom: spacing.md },
+  shieldRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.gem + '15',
+    borderRadius: borderRadius.sm,
+    padding: spacing.sm,
+    marginBottom: spacing.md,
+  },
+  shieldRowText: { ...typography.bodyBold, color: colors.gem },
   statCard: {
     flex: 1,
     minWidth: '45%',
