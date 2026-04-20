@@ -133,6 +133,25 @@ export interface Exercise {
   audio_url: string | null;
 }
 
+export interface WeeklyStats {
+  week_start: string;            // ISO date string
+  week_end: string;
+  stages_completed: number;
+  total_xp_earned: number;
+  days_active: number;
+  daily_goals_met: number;
+  current_streak: number;
+  average_score: number;
+  daily_breakdown: DailyStatEntry[];
+}
+
+export interface DailyStatEntry {
+  date: string;                  // ISO date string
+  stages_completed: number;
+  xp_earned: number;
+  goal_met: boolean;
+}
+
 export interface VocabularyItem {
   id: string;
   canonical_en: string;

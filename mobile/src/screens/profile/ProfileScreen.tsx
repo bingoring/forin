@@ -6,6 +6,7 @@ import { useAuthStore } from '../../stores/authStore';
 import { Button, Icon } from '../../components/common';
 import { MascotWithItems, type EquippedItem } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
+import { t } from '../../locales';
 
 export function ProfileScreen({ navigation }: any) {
   const logout = useAuthStore((s) => s.logout);
@@ -91,6 +92,10 @@ export function ProfileScreen({ navigation }: any) {
         <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('NotificationSettings')}>
           <Icon name="settings" size={24} color={colors.primary} />
           <Text style={styles.linkLabel}>Alerts</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('WeeklyStats')}>
+          <Icon name="xp" size={24} color={colors.xp} />
+          <Text style={styles.linkLabel}>{t('stats.link')}</Text>
         </TouchableOpacity>
       </View>
 

@@ -27,6 +27,7 @@ export type ProfileStackParamList = {
   Inventory: undefined;
   Shop: undefined;
   NotificationSettings: undefined;
+  WeeklyStats: undefined;
 };
 
 export type TabParamList = {

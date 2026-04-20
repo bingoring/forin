@@ -10,6 +10,7 @@ import type {
   Profession,
   Country,
   VocabularyItem,
+  WeeklyStats,
 } from '../types/api';
 
 export { authApi } from './auth';
@@ -20,6 +21,8 @@ export const userApi = {
     api.patch<ApiResponse<UserProfile>>('/users/me', data),
   setPushToken: (pushToken: string) =>
     api.put<ApiResponse<{ ok: boolean }>>('/users/me/push-token', { push_token: pushToken }),
+  getWeeklyStats: () =>
+    api.get<ApiResponse<WeeklyStats>>('/users/me/stats/weekly'),
 };
 
 export const curriculumApi = {
