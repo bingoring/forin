@@ -7,8 +7,8 @@ import { useQuery } from '@tanstack/react-query';
 import { useAuthStore } from '../stores/authStore';
 import { userApi } from '../api';
 import { usePushRegistration } from '../hooks/usePushRegistration';
-import { colors } from '../theme';
-import { Icon } from '../components/common';
+import { color } from '../theme';
+import { Icon } from '../ui';
 
 import { LoginScreen } from '../screens/auth/LoginScreen';
 import { RegisterScreen } from '../screens/auth/RegisterScreen';
@@ -43,6 +43,20 @@ const QuestsStack = createNativeStackNavigator<QuestsStackParamList>();
 const ProfileStack = createNativeStackNavigator<ProfileStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
 
+// Shared header / scene styling for every native-stack navigator.
+// Keeps headers on the cream background, uses the display font for the
+// title, and tints the back button with the semantic ink colour.
+const stackOptions = {
+  headerStyle: { backgroundColor: color.cream },
+  headerShadowVisible: false,
+  headerTitleStyle: {
+    fontFamily: 'Nunito_800ExtraBold',
+    color: color.ink,
+  },
+  headerTintColor: color.ink,
+  contentStyle: { backgroundColor: color.cream },
+} as const;
+
 function AuthNavigator() {
   return (
     <AuthStack.Navigator screenOptions={{ headerShown: false }}>
@@ -54,7 +68,7 @@ function AuthNavigator() {
 
 function MapNavigator() {
   return (
-    <MapStack.Navigator>
+    <MapStack.Navigator screenOptions={stackOptions}>
       <MapStack.Screen name="MapMain" component={MapScreen} options={{ headerShown: false }} />
       <MapStack.Screen name="StageIntro" component={StageIntroScreen} options={{ title: 'Stage' }} />
       <MapStack.Screen
@@ -78,7 +92,7 @@ function MapNavigator() {
 
 function QuestsNavigator() {
   return (
-    <QuestsStack.Navigator>
+    <QuestsStack.Navigator screenOptions={stackOptions}>
       <QuestsStack.Screen name="QuestsMain" component={QuestsScreen} options={{ headerShown: false }} />
       <QuestsStack.Screen name="StageIntro" component={StageIntroScreen} options={{ title: 'Stage' }} />
       <QuestsStack.Screen
@@ -102,7 +116,7 @@ function QuestsNavigator() {
 
 function ProfileNavigator() {
   return (
-    <ProfileStack.Navigator>
+    <ProfileStack.Navigator screenOptions={stackOptions}>
       <ProfileStack.Screen name="ProfileMain" component={ProfileScreen} options={{ headerShown: false }} />
       <ProfileStack.Screen name="Inventory" component={InventoryScreen} options={{ title: 'Inventory' }} />
       <ProfileStack.Screen name="Shop" component={ShopScreen} options={{ title: 'Cat Shop' }} />
@@ -130,13 +144,14 @@ function MainTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.accent,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarActiveTintColor: color.primary,
+        tabBarInactiveTintColor: color.inkFaint,
+        tabBarLabelStyle: { fontFamily: 'Nunito_800ExtraBold', fontSize: 11 },
         tabBarStyle: {
-          paddingTop: 4,
-          height: 56,
-          backgroundColor: colors.white,
-          borderTopColor: colors.border,
+          paddingTop: 6,
+          height: 60,
+          backgroundColor: color.paper,
+          borderTopColor: color.hair,
         },
       }}
     >
@@ -145,7 +160,9 @@ function MainTabs() {
         component={MapNavigator}
         options={{
           tabBarLabel: 'Map',
-          tabBarIcon: ({ color, size }) => <Icon name="pin" size={size} color={color} />,
+          tabBarIcon: ({ color: tintColor, size }) => (
+            <Icon name="home" size={size} color={tintColor} />
+          ),
         }}
       />
       <Tab.Screen
@@ -153,7 +170,9 @@ function MainTabs() {
         component={QuestsNavigator}
         options={{
           tabBarLabel: 'Quests',
-          tabBarIcon: ({ color, size }) => <Icon name="check" size={size} color={color} />,
+          tabBarIcon: ({ color: tintColor, size }) => (
+            <Icon name="check" size={size} color={tintColor} />
+          ),
         }}
       />
       <Tab.Screen
@@ -161,7 +180,9 @@ function MainTabs() {
         component={AchievementsScreen}
         options={{
           tabBarLabel: 'Achieve',
-          tabBarIcon: ({ color, size }) => <Icon name="xp" size={size} color={color} />,
+          tabBarIcon: ({ color: tintColor, size }) => (
+            <Icon name="trophy" size={size} color={tintColor} />
+          ),
         }}
       />
       <Tab.Screen
@@ -169,7 +190,9 @@ function MainTabs() {
         component={ProfileNavigator}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({ color, size }) => <Icon name="nurse" size={size} color={color} />,
+          tabBarIcon: ({ color: tintColor, size }) => (
+            <Icon name="person" size={size} color={tintColor} />
+          ),
         }}
       />
     </Tab.Navigator>
@@ -213,7 +236,7 @@ function AuthenticatedApp() {
   if (stage === null) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color={colors.primary} />
+        <ActivityIndicator size="large" color={color.primary} />
       </View>
     );
   }
@@ -239,7 +262,7 @@ export function AppNavigator() {
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color={colors.primary} />
+        <ActivityIndicator size="large" color={color.primary} />
       </View>
     );
   }
