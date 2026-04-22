@@ -5,11 +5,15 @@ import {
   Button,
   Card,
   CoinChip,
+  Divider,
   Hearts,
   Icon,
   type IconName,
   ProgressBar,
   Pushable,
+  SectionHeader,
+  TextInput,
+  Toggle,
   XPBar,
 } from '../../ui';
 import { color, sp, text } from '../../theme';
@@ -28,6 +32,10 @@ const ICON_NAMES: IconName[] = [
 
 export function DesignPlaygroundScreen() {
   const [pressCount, setPressCount] = useState(0);
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('nurse@hospital.org');
+  const [toggle1, setToggle1] = useState(true);
+  const [toggle2, setToggle2] = useState(false);
 
   return (
     <ScrollView style={styles.root} contentContainerStyle={styles.content}>
@@ -138,6 +146,51 @@ export function DesignPlaygroundScreen() {
           <CoinChip amount={12} tone="gem" />
           <CoinChip amount={5} tone="heart" />
         </Row>
+      </Section>
+
+      <Section title="Inputs">
+        <TextInput
+          label="Email"
+          placeholder="you@hospital.org"
+          iconLeft="chat"
+          value={text1}
+          onChangeText={setText1}
+          hint="We never share it."
+        />
+        <TextInput
+          label="Password"
+          placeholder="••••••••"
+          value={text2}
+          onChangeText={setText2}
+          secureTextEntry
+          error="Must be at least 8 characters"
+        />
+      </Section>
+
+      <Section title="Toggle">
+        <Row>
+          <Toggle value={toggle1} onChange={setToggle1} />
+          <Text style={text.body}>Push reminders</Text>
+        </Row>
+        <Row>
+          <Toggle value={toggle2} onChange={setToggle2} color={color.accent} />
+          <Text style={text.body}>Weekly digest (coral tint)</Text>
+        </Row>
+        <Row>
+          <Toggle value={true} onChange={() => {}} disabled />
+          <Text style={text.body}>Disabled (locked on)</Text>
+        </Row>
+      </Section>
+
+      <Section title="Section headers & dividers">
+        <SectionHeader
+          eyebrow="Today"
+          title="Daily quests"
+          action={<Badge tone="sun">3 open</Badge>}
+        />
+        <Divider />
+        <SectionHeader title="No eyebrow" />
+        <Divider label="or" />
       </Section>
 
       <Section title="Pushable (raw)">

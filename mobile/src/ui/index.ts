@@ -28,3 +28,15 @@ export { Hearts } from './Hearts';
 
 export { CoinChip } from './CoinChip';
 export type { CoinChipTone } from './CoinChip';
+
+export { TextInput } from './TextInput';
+export type { TextInputProps } from './TextInput';
+
+export { Toggle } from './Toggle';
+export type { ToggleProps } from './Toggle';
+
+export { Divider } from './Divider';
+export type { DividerProps } from './Divider';
+
+export { SectionHeader } from './SectionHeader';
+export type { SectionHeaderProps } from './SectionHeader';
