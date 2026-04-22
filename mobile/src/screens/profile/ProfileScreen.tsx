@@ -110,6 +110,19 @@ export function ProfileScreen({ navigation }: any) {
       </View>
 
       <Button full size="lg" variant="secondary" onPress={logout} style={styles.logoutBtn}>Log Out</Button>
+
+      {/* Dev-only: design system playground. Remove the link before
+          shipping to production builds. */}
+      {__DEV__ ? (
+        <Button
+          full
+          size="md"
+          variant="ghost"
+          onPress={() => navigation.navigate('DesignPlayground')}
+        >
+          Open design playground
+        </Button>
+      ) : null}
     </ScrollView>
   );
 }
