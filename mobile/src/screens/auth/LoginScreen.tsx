@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
+  Alert,
   KeyboardAvoidingView,
   Platform,
-  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Input } from '../../components/common';
-import { Button } from '../../ui';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  Button,
+  Divider,
+  Hatto,
+  SpeechBubble,
+  TextInput,
+} from '../../ui';
 import { useAuthStore } from '../../stores/authStore';
-import { colors, typography, spacing } from '../../theme';
+import { color, sp, text } from '../../theme';
 import { t } from '../../locales';
 import type { AuthStackParamList } from '../../navigation/types';
 
@@ -37,58 +44,91 @@ export function LoginScreen({ navigation }: Props) {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
-      <View style={styles.content}>
-        <Text style={styles.title}>{t('auth.login.brand')}</Text>
-        <Text style={styles.subtitle}>{t('auth.login.tagline')}</Text>
-
-        <View style={styles.form}>
-          <Input
-            label={t('auth.login.emailLabel')}
-            placeholder={t('auth.login.emailPlaceholder')}
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-          />
-          <Input
-            label={t('auth.login.passwordLabel')}
-            placeholder={t('auth.login.passwordPlaceholder')}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
-          <Button full size="lg" onPress={handleLogin} loading={loading}>
-            {t('auth.login.submit')}
-          </Button>
-        </View>
-
-        <Button
-          full
-          size="lg"
-          variant="secondary"
-          onPress={() => navigation.navigate('Register')}
-          style={styles.registerBtn}
+    <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+        <ScrollView
+          contentContainerStyle={styles.content}
+          keyboardShouldPersistTaps="handled"
         >
-          {t('auth.login.toRegister')}
-        </Button>
-      </View>
-    </KeyboardAvoidingView>
+          <View style={styles.hero}>
+            <Hatto variant="face" size={120} />
+            <SpeechBubble style={styles.bubble}>
+              {t('auth.login.tagline')}
+            </SpeechBubble>
+          </View>
+
+          <Text style={[text.display, styles.brand]}>
+            {t('auth.login.brand')}
+          </Text>
+
+          <View style={styles.form}>
+            <TextInput
+              label={t('auth.login.emailLabel')}
+              placeholder={t('auth.login.emailPlaceholder')}
+              iconLeft="chat"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <TextInput
+              label={t('auth.login.passwordLabel')}
+              placeholder={t('auth.login.passwordPlaceholder')}
+              iconLeft="lock"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
+            <Button full size="lg" onPress={handleLogin} loading={loading}>
+              {t('auth.login.submit')}
+            </Button>
+          </View>
+
+          <Divider label={t('common.or')} style={styles.divider} />
+
+          <Button
+            full
+            size="lg"
+            variant="secondary"
+            onPress={() => navigation.navigate('Register')}
+          >
+            {t('auth.login.toRegister')}
+          </Button>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { flex: 1, justifyContent: 'center', padding: spacing.lg },
-  title: { ...typography.h1, color: colors.primary, textAlign: 'center', fontSize: 36 },
-  subtitle: {
-    ...typography.body,
-    color: colors.textSecondary,
-    textAlign: 'center',
-    marginBottom: spacing.xl,
+  root: { flex: 1, backgroundColor: color.cream },
+  flex: { flex: 1 },
+  content: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    paddingHorizontal: sp.s5,
+    paddingVertical: sp.s7,
+    gap: sp.s5,
   },
-  form: { gap: spacing.sm },
-  registerBtn: { marginTop: spacing.md },
+  hero: {
+    alignItems: 'center',
+    gap: sp.s3,
+  },
+  bubble: {
+    maxWidth: 280,
+  },
+  brand: {
+    textAlign: 'center',
+    color: color.primary,
+  },
+  form: {
+    gap: sp.s3,
+  },
+  divider: {
+    marginVertical: sp.s3,
+  },
 });
