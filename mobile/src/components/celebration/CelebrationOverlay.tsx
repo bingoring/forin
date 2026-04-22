@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import { Mascot } from '../mascot';
-import { Button } from '../common';
+import { Button } from '../../ui';
 import { colors, typography, spacing } from '../../theme';
 import { t } from '../../locales';
 
@@ -20,7 +20,7 @@ export function CelebrationOverlay({ visible, title, subtitle, onDismiss }: Prop
           <Mascot pose="cheer" size={160} />
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.subtitle}>{subtitle}</Text>
-          <Button title={t('common.continue')} onPress={onDismiss} style={styles.btn} />
+          <Button full size="lg" onPress={onDismiss} style={styles.btn}>{t('common.continue')}</Button>
         </View>
       </TouchableOpacity>
     </Modal>

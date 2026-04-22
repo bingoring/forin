@@ -15,6 +15,7 @@
     },
     "register": {
       "title": "계정 만들기",
+      "tagline": "당신에 대해 조금만 알려주세요 — 제가 잘 챙겨드릴게요.",
       "displayNameLabel": "표시 이름",
       "displayNamePlaceholder": "어떻게 불러드릴까요?",
       "emailLabel": "이메일",
@@ -68,7 +69,8 @@
     "ok": "확인",
     "save": "저장",
     "loading": "불러오는 중...",
-    "continue": "계속"
+    "continue": "계속",
+    "or": "또는"
   },
   "map": {
     "floorBadge": "{{order}}층",
@@ -97,10 +99,13 @@
   },
   "quests": {
     "title": "퀘스트",
+    "eyebrow": "오늘",
     "inProgress": "진행 중",
     "recommended": "추천",
-    "allClear": "모든 스테이지를 완료했어요. 새 내용을 기다려주세요!",
-    "cta": "이어서"
+    "allClear": "준비된 스테이지를 전부 깼어요 — 다음에 또 와주세요.",
+    "hattoHint": "{{count}}개의 스테이지가 기다리고 있어요. 첫번째부터 시작해보세요.",
+    "cta": "이어서",
+    "startTop": "맨 위 스테이지 시작"
   },
   "scene": {
     "openerBadge": "씬 시작",
@@ -121,5 +126,113 @@
     "breakdownTitle": "일별 요약",
     "empty": "아직 활동 내역이 없어요. 스테이지를 하나 클리어해보세요.",
     "link": "주간 통계"
+  },
+  "home": {
+    "stage": {
+      "eyebrow": "스테이지",
+      "start": "시작하기",
+      "noLives": "하트가 부족해요. 회복을 기다려주세요.",
+      "exercises": "문제 수",
+      "attempts": "시도 횟수",
+      "stars": "최고 기록",
+      "difficulty": "난이도",
+      "bestRecorded": "이 스테이지를 클리어한 적이 있어요 — 더 높은 점수에 도전할까요?"
+    },
+    "complete": {
+      "title": "스테이지 클리어!",
+      "xpEarned": "획득 XP",
+      "mistakes": "실수",
+      "duration": "소요 시간",
+      "levelUp": "레벨 업!",
+      "streak": "{{days}}일 연속",
+      "milestone": "{{milestone}}일 마일스톤!",
+      "shieldUsed": "스트릭 실드 사용 — {{days}}일 연속이 지켜졌어요.",
+      "shieldEarned": "스트릭 실드 획득 (총 {{total}}개).",
+      "achievementUnlocked": "업적 달성",
+      "giftPrompt": "{{type}} 기프트 박스를 열어보세요",
+      "continue": "계속하기"
+    },
+    "gift": {
+      "box": "{{type}} 기프트 박스",
+      "hint": "탭해서 안에 뭐가 있는지 확인해보세요.",
+      "open": "열기",
+      "continue": "계속하기",
+      "rarityLabel": "{{rarity}} • {{slot}}",
+      "duplicate": "이미 보유 중 — 캣닢 {{amount}}개로 교환됐어요.",
+      "openFailed": "기프트 박스를 열 수 없어요."
+    }
+  },
+  "exercise": {
+    "next": "다음",
+    "seeResults": "결과 보기",
+    "feedback": {
+      "correct": "정확해요!",
+      "wrong": "아쉽네요 — 다음 문제로 가볼까요?",
+      "graded": "점수: {{score}}/100",
+      "xp": "획득 XP",
+      "lives": "하트"
+    },
+    "errors": {
+      "submission": "답안을 제출할 수 없어요.",
+      "completion": "스테이지를 마칠 수 없어요."
+    }
+  },
+  "achievements": {
+    "title": "업적",
+    "hatto": "{{total}}개 중 {{count}}개 달성 — 다음 업적도 노려볼까요?",
+    "empty": "스테이지를 클리어하면 업적이 열려요.",
+    "unlockedAt": "{{date}} 달성",
+    "tabs": {
+      "all": "전체",
+      "done": "달성",
+      "locked": "미달성"
+    }
+  },
+  "inventory": {
+    "title": "인벤토리",
+    "total": "{{count}}개 수집 완료",
+    "empty": "아직 {{slot}} 아이템이 없어요",
+    "equipped": "착용 중",
+    "equipFailed": "아이템을 착용할 수 없어요."
+  },
+  "shop": {
+    "title": "고양이 상점",
+    "featured": "오늘의 추천",
+    "featuredOwned": "오늘의 추천 아이템을 이미 갖고 있어요!",
+    "buy": "구매",
+    "ownedShort": "보유 중",
+    "confirmTitle": "구매",
+    "confirmBody": "{{name}}을(를) 캣닢 {{price}}개로 구매할까요?",
+    "purchased": "구매 완료",
+    "purchasedBody": "{{name}}이(가) 인벤토리에 추가됐어요.",
+    "notEnough": "캣닢이 부족해요 — 기프트 박스로 더 모아보세요.",
+    "purchaseFailed": "구매에 실패했어요."
+  },
+  "profile": {
+    "levelProgress": "레벨 진행도",
+    "streakShields": "스트릭 실드 {{count}}개 보유",
+    "inventory": "인벤토리",
+    "inventoryHint": "{{count}}개 보유",
+    "shop": "상점",
+    "alerts": "알림 설정",
+    "settings": "계정",
+    "dailyGoal": "데일리 목표",
+    "timezone": "시간대",
+    "profession": "직업",
+    "country": "목표 국가",
+    "logout": "로그아웃",
+    "notifications": {
+      "eyebrow": "환경설정",
+      "title": "알림",
+      "save": "변경사항 저장",
+      "saved": "알림 설정이 저장됐어요.",
+      "saveFailed": "설정을 저장할 수 없어요.",
+      "daily":       { "label": "데일리 알림",       "desc": "매일 학습하도록 알려드려요" },
+      "streak":      { "label": "스트릭 경고",       "desc": "스트릭이 끊어질 것 같을 때 알려드려요" },
+      "achievement": { "label": "업적 알림",         "desc": "업적을 달성하면 알려드려요" },
+      "newContent":  { "label": "새 컨텐츠",         "desc": "새 스테이지가 열리면 알려드려요" },
+      "lives":       { "label": "하트 회복",         "desc": "하트가 전부 충전되면 알려드려요" },
+      "weekly":      { "label": "주간 리포트",       "desc": "주 1회 학습 리포트를 보내드려요" }
+    }
   }
 }

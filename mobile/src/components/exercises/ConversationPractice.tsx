@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { colors, typography, spacing, borderRadius } from '../../theme';
-import { Button, Icon, type HeroIconName } from '../common';
+import { Icon, type HeroIconName } from '../common';
+import { Button } from '../../ui';
 
 interface Props {
   content: {
@@ -71,10 +72,13 @@ export function ConversationPractice({ content, onSubmit }: Props) {
       </Text>
 
       <Button
-        title="Submit Response"
+        full
+        size="lg"
         onPress={handleSubmit}
         disabled={text.trim().length === 0}
-      />
+      >
+        Submit Response
+      </Button>
     </ScrollView>
   );
 }

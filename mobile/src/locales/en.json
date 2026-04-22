@@ -15,6 +15,7 @@
     },
     "register": {
       "title": "Create Account",
+      "tagline": "Tell me who you are — I'll keep it warm.",
       "displayNameLabel": "Display Name",
       "displayNamePlaceholder": "How should we call you?",
       "emailLabel": "Email",
@@ -68,7 +69,8 @@
     "ok": "OK",
     "save": "Save",
     "loading": "Loading...",
-    "continue": "Continue"
+    "continue": "Continue",
+    "or": "or"
   },
   "map": {
     "floorBadge": "Floor {{order}}",
@@ -97,10 +99,13 @@
   },
   "quests": {
     "title": "Quests",
+    "eyebrow": "Today",
     "inProgress": "In progress",
     "recommended": "Recommended",
-    "allClear": "You've cleared all available stages. Come back soon for more!",
-    "cta": "Resume"
+    "allClear": "You've cleared everything I have — come back soon.",
+    "hattoHint": "{{count}} stages ready for you. Start with the first one.",
+    "cta": "Resume",
+    "startTop": "Start the top one"
   },
   "scene": {
     "openerBadge": "Scene opening",
@@ -121,5 +126,113 @@
     "breakdownTitle": "Daily breakdown",
     "empty": "No activity yet — clear a stage to see it here.",
     "link": "Weekly stats"
+  },
+  "home": {
+    "stage": {
+      "eyebrow": "Stage",
+      "start": "Start Stage",
+      "noLives": "No lives remaining. Wait for refill.",
+      "exercises": "Exercises",
+      "attempts": "Attempts",
+      "stars": "Best",
+      "difficulty": "Difficulty",
+      "bestRecorded": "You've cleared this stage before — going for a higher score?"
+    },
+    "complete": {
+      "title": "Stage cleared!",
+      "xpEarned": "XP earned",
+      "mistakes": "Mistakes",
+      "duration": "Duration",
+      "levelUp": "Level up!",
+      "streak": "{{days}}-day streak",
+      "milestone": "{{milestone}}-day milestone!",
+      "shieldUsed": "Streak shield used — your {{days}}-day streak is safe.",
+      "shieldEarned": "New streak shield earned ({{total}} total).",
+      "achievementUnlocked": "Achievement unlocked",
+      "giftPrompt": "Tap to open your {{type}} gift box",
+      "continue": "Continue"
+    },
+    "gift": {
+      "box": "{{type}} Gift Box",
+      "hint": "Tap to discover what's inside.",
+      "open": "Open",
+      "continue": "Continue",
+      "rarityLabel": "{{rarity}} • {{slot}}",
+      "duplicate": "Already owned — converted to {{amount}} Catnip.",
+      "openFailed": "Couldn't open the gift box."
+    }
+  },
+  "exercise": {
+    "next": "Next",
+    "seeResults": "See results",
+    "feedback": {
+      "correct": "Nice — spot on.",
+      "wrong": "Not quite — let's try the next one.",
+      "graded": "Graded: {{score}}/100",
+      "xp": "XP earned",
+      "lives": "Lives"
+    },
+    "errors": {
+      "submission": "Couldn't submit your answer.",
+      "completion": "Couldn't finish the stage."
+    }
+  },
+  "achievements": {
+    "title": "Achievements",
+    "hatto": "{{count}} of {{total}} unlocked. Go get the next one!",
+    "empty": "Clear stages to start unlocking achievements.",
+    "unlockedAt": "Unlocked {{date}}",
+    "tabs": {
+      "all": "All",
+      "done": "Unlocked",
+      "locked": "Locked"
+    }
+  },
+  "inventory": {
+    "title": "Inventory",
+    "total": "{{count}} items collected",
+    "empty": "No {{slot}} items yet",
+    "equipped": "Equipped",
+    "equipFailed": "Couldn't equip this item."
+  },
+  "shop": {
+    "title": "Cat Shop",
+    "featured": "Featured",
+    "featuredOwned": "You already own today's featured item — nice!",
+    "buy": "Buy",
+    "ownedShort": "Owned",
+    "confirmTitle": "Purchase",
+    "confirmBody": "Buy {{name}} for {{price}} Catnip?",
+    "purchased": "Purchased",
+    "purchasedBody": "{{name}} has been added to your inventory.",
+    "notEnough": "Not enough Catnip — earn more by opening gift boxes.",
+    "purchaseFailed": "Purchase failed."
+  },
+  "profile": {
+    "levelProgress": "Level progress",
+    "streakShields": "{{count}} streak shield(s) ready",
+    "inventory": "Inventory",
+    "inventoryHint": "{{count}} items",
+    "shop": "Shop",
+    "alerts": "Notifications",
+    "settings": "Account",
+    "dailyGoal": "Daily goal",
+    "timezone": "Timezone",
+    "profession": "Profession",
+    "country": "Country",
+    "logout": "Log out",
+    "notifications": {
+      "eyebrow": "Preferences",
+      "title": "Notifications",
+      "save": "Save changes",
+      "saved": "Preferences updated.",
+      "saveFailed": "Couldn't save preferences.",
+      "daily":       { "label": "Daily reminder",   "desc": "Nudge me to study each day" },
+      "streak":      { "label": "Streak warning",   "desc": "Alert me when my streak is at risk" },
+      "achievement": { "label": "Achievements",     "desc": "Tell me when I unlock a new one" },
+      "newContent":  { "label": "New content",      "desc": "Ping me when new stages drop" },
+      "lives":       { "label": "Lives restored",   "desc": "Tell me when hearts are fully charged" },
+      "weekly":      { "label": "Weekly summary",   "desc": "Send me a weekly learning report" }
+    }
   }
 }

@@ -1,9 +1,28 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Switch, Alert } from 'react-native';
+import {
+  ActivityIndicator,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../../api/client';
-import { colors, typography, spacing, borderRadius } from '../../theme';
-import { Button } from '../../components/common';
+import { Button, Card, ListRow, SectionHeader, Toggle } from '../../ui';
+import { color, sp } from '../../theme';
+import { t } from '../../locales';
+
+type Prefs = {
+  daily_reminder_enabled: boolean;
+  streak_warning_enabled: boolean;
+  achievement_enabled: boolean;
+  new_content_enabled: boolean;
+  lives_restored_enabled: boolean;
+  weekly_summary_enabled: boolean;
+};
+
+type PrefKey = keyof Prefs;
 
 export function NotificationSettingsScreen() {
   const queryClient = useQueryClient();
@@ -12,15 +31,18 @@ export function NotificationSettingsScreen() {
   const { data: prefs, isLoading } = useQuery({
     queryKey: ['notification-prefs'],
     queryFn: async () => {
-      const { data } = await api.get('/users/me/notification-preferences');
+      const { data } = await api.get<{ data: Prefs }>(
+        '/users/me/notification-preferences',
+      );
       return data.data;
     },
   });
 
-  const [local, setLocal] = useState<any>(null);
+  const [local, setLocal] = useState<Prefs | null>(null);
   const current = local || prefs;
 
-  const toggle = (key: string) => {
+  const toggle = (key: PrefKey) => {
+    if (!current) return;
     setLocal({ ...current, [key]: !current[key] });
   };
 
@@ -30,111 +52,99 @@ export function NotificationSettingsScreen() {
     try {
       await api.put('/users/me/notification-preferences', local);
       queryClient.invalidateQueries({ queryKey: ['notification-prefs'] });
-      Alert.alert('Saved', 'Notification preferences updated.');
+      Alert.alert(t('common.save'), t('profile.notifications.saved'));
       setLocal(null);
     } catch {
-      Alert.alert('Error', 'Failed to save preferences.');
+      Alert.alert(t('common.error'), t('profile.notifications.saveFailed'));
     } finally {
       setSaving(false);
     }
   };
 
   if (isLoading || !current) {
-    return <View style={styles.loading}><Text>Loading...</Text></View>;
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator size="large" color={color.primary} />
+      </View>
+    );
   }
 
+  const items: Array<{ key: PrefKey; label: string; desc: string }> = [
+    {
+      key: 'daily_reminder_enabled',
+      label: t('profile.notifications.daily.label'),
+      desc: t('profile.notifications.daily.desc'),
+    },
+    {
+      key: 'streak_warning_enabled',
+      label: t('profile.notifications.streak.label'),
+      desc: t('profile.notifications.streak.desc'),
+    },
+    {
+      key: 'achievement_enabled',
+      label: t('profile.notifications.achievement.label'),
+      desc: t('profile.notifications.achievement.desc'),
+    },
+    {
+      key: 'new_content_enabled',
+      label: t('profile.notifications.newContent.label'),
+      desc: t('profile.notifications.newContent.desc'),
+    },
+    {
+      key: 'lives_restored_enabled',
+      label: t('profile.notifications.lives.label'),
+      desc: t('profile.notifications.lives.desc'),
+    },
+    {
+      key: 'weekly_summary_enabled',
+      label: t('profile.notifications.weekly.label'),
+      desc: t('profile.notifications.weekly.desc'),
+    },
+  ];
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>Notifications</Text>
+    <SafeAreaView style={styles.root} edges={['bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <SectionHeader
+          eyebrow={t('profile.notifications.eyebrow')}
+          title={t('profile.notifications.title')}
+        />
 
-      <View style={styles.card}>
-        <SettingRow
-          label="Daily Reminder"
-          desc="Get reminded to study each day"
-          value={current.daily_reminder_enabled}
-          onToggle={() => toggle('daily_reminder_enabled')}
-        />
-        <SettingRow
-          label="Streak Warning"
-          desc="Alert when your streak is at risk"
-          value={current.streak_warning_enabled}
-          onToggle={() => toggle('streak_warning_enabled')}
-        />
-        <SettingRow
-          label="Achievements"
-          desc="Notify when you unlock achievements"
-          value={current.achievement_enabled}
-          onToggle={() => toggle('achievement_enabled')}
-        />
-        <SettingRow
-          label="New Content"
-          desc="Alert when new stages are available"
-          value={current.new_content_enabled}
-          onToggle={() => toggle('new_content_enabled')}
-        />
-        <SettingRow
-          label="Lives Restored"
-          desc="Notify when hearts are fully charged"
-          value={current.lives_restored_enabled}
-          onToggle={() => toggle('lives_restored_enabled')}
-        />
-        <SettingRow
-          label="Weekly Summary"
-          desc="Receive a weekly learning report"
-          value={current.weekly_summary_enabled}
-          onToggle={() => toggle('weekly_summary_enabled')}
-        />
-      </View>
+        <Card variant="paper" padding={0} style={styles.list}>
+          {items.map((item, idx) => (
+            <ListRow
+              key={item.key}
+              title={item.label}
+              subtitle={item.desc}
+              trailing={
+                <Toggle
+                  value={current[item.key]}
+                  onChange={() => toggle(item.key)}
+                />
+              }
+              last={idx === items.length - 1}
+            />
+          ))}
+        </Card>
 
-      {local && (
-        <Button title="Save Changes" onPress={handleSave} loading={saving} />
-      )}
-    </ScrollView>
-  );
-}
-
-function SettingRow({
-  label, desc, value, onToggle,
-}: {
-  label: string; desc: string; value: boolean; onToggle: () => void;
-}) {
-  return (
-    <View style={styles.settingRow}>
-      <View style={styles.settingInfo}>
-        <Text style={styles.settingLabel}>{label}</Text>
-        <Text style={styles.settingDesc}>{desc}</Text>
-      </View>
-      <Switch
-        value={value}
-        onValueChange={onToggle}
-        trackColor={{ true: colors.primary, false: colors.border }}
-        thumbColor={colors.white}
-      />
-    </View>
+        {local && (
+          <Button full size="lg" onPress={handleSave} loading={saving}>
+            {t('profile.notifications.save')}
+          </Button>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.md },
-  loading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  title: { ...typography.h1, color: colors.textPrimary, marginBottom: spacing.lg },
-  card: {
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    borderWidth: 1,
-    borderColor: colors.border,
-    marginBottom: spacing.lg,
-  },
-  settingRow: {
-    flexDirection: 'row',
+  root: { flex: 1, backgroundColor: color.cream },
+  loading: {
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: spacing.md,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    justifyContent: 'center',
+    backgroundColor: color.cream,
   },
-  settingInfo: { flex: 1, marginRight: spacing.md },
-  settingLabel: { ...typography.bodyBold, color: colors.textPrimary },
-  settingDesc: { ...typography.small, color: colors.textMuted, marginTop: 2 },
+  content: { padding: sp.s5, gap: sp.s4, paddingBottom: sp.s8 },
+  list: { overflow: 'hidden' },
 });
