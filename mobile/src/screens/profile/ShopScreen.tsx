@@ -1,16 +1,35 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import {
+  Alert,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { gamificationApi } from '../../api';
-import { Icon } from '../../components/common';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import { gamificationApi, userApi } from '../../api';
+import {
+  Badge,
+  Card,
+  CoinChip,
+  Icon,
+  SectionHeader,
+  Toast,
+} from '../../ui';
+import { color, fontFamily, fontSize, sp, text } from '../../theme';
+import { t } from '../../locales';
 
-const rarityColors: Record<string, string> = {
-  common: colors.rarityCommon,
-  uncommon: colors.rarityUncommon,
-  rare: colors.rarityRare,
-  epic: colors.rarityEpic,
-  legendary: colors.rarityLegendary,
+const RARITY_TONE: Record<
+  string,
+  'sky' | 'mint' | 'coral' | 'lav' | 'sun'
+> = {
+  common: 'sky',
+  uncommon: 'mint',
+  rare: 'coral',
+  epic: 'lav',
+  legendary: 'sun',
 };
 
 export function ShopScreen() {
@@ -19,7 +38,7 @@ export function ShopScreen() {
   const { data: profile } = useQuery({
     queryKey: ['profile'],
     queryFn: async () => {
-      const { data } = await (await import('../../api')).userApi.getProfile();
+      const { data } = await userApi.getProfile();
       return data.data;
     },
   });
@@ -32,28 +51,36 @@ export function ShopScreen() {
     },
   });
 
-  const handlePurchase = async (itemId: string, itemName: string, price: number) => {
+  const handlePurchase = async (
+    itemId: string,
+    itemName: string,
+    price: number,
+  ) => {
     Alert.alert(
-      'Purchase',
-      `Buy ${itemName} for ${price} Catnip?`,
+      t('shop.confirmTitle'),
+      t('shop.confirmBody', { name: itemName, price }),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Buy',
+          text: t('shop.buy'),
           onPress: async () => {
             try {
               await gamificationApi.purchaseItem(itemId);
               queryClient.invalidateQueries({ queryKey: ['shop'] });
               queryClient.invalidateQueries({ queryKey: ['inventory'] });
               queryClient.invalidateQueries({ queryKey: ['profile'] });
-              Alert.alert('Purchased!', `${itemName} has been added to your inventory.`);
+              Alert.alert(
+                t('shop.purchased'),
+                t('shop.purchasedBody', { name: itemName }),
+              );
             } catch (err: any) {
               const code = err?.response?.data?.error?.code;
-              if (code === 'INSUFFICIENT_CATNIP') {
-                Alert.alert('Not enough Catnip', 'Earn more by opening gift boxes!');
-              } else {
-                Alert.alert('Error', 'Purchase failed');
-              }
+              Alert.alert(
+                t('common.error'),
+                code === 'INSUFFICIENT_CATNIP'
+                  ? t('shop.notEnough')
+                  : t('shop.purchaseFailed'),
+              );
             }
           },
         },
@@ -62,111 +89,158 @@ export function ShopScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Cat Shop</Text>
-        <View style={styles.balanceRow}>
-          <Icon name="catnip" size={18} color={colors.catnip} />
-          <Text style={styles.balance}> {profile?.catnip || 0} Catnip</Text>
+    <SafeAreaView style={styles.root} edges={['bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.header}>
+          <SectionHeader title={t('shop.title')} />
+          <CoinChip amount={profile?.catnip ?? 0} tone="heart" />
         </View>
-      </View>
 
-      {/* Featured */}
-      {shop?.featured_item && !shop.featured_item.user_owns && (
-        <TouchableOpacity
-          style={styles.featuredCard}
-          onPress={() => handlePurchase(shop.featured_item!.id, shop.featured_item!.name, shop.featured_item!.shop_price_catnip)}
-        >
-          <Text style={styles.featuredLabel}>FEATURED</Text>
-          <View style={styles.featuredIcon}>
-            <Icon name="xp" size={48} color={colors.accent} />
-          </View>
-          <Text style={styles.featuredName}>{shop.featured_item.name}</Text>
-          <Text style={[styles.featuredRarity, { color: rarityColors[shop.featured_item.rarity] }]}>
-            {shop.featured_item.rarity} - {shop.featured_item.slot}
-          </Text>
-          <View style={styles.featuredPriceRow}>
-            <Icon name="catnip" size={20} color={colors.catnip} />
-            <Text style={styles.featuredPrice}> {shop.featured_item.shop_price_catnip}</Text>
-          </View>
-        </TouchableOpacity>
-      )}
-
-      {/* All items */}
-      <View style={styles.grid}>
-        {shop?.items?.map((item: any) => (
-          <TouchableOpacity
-            key={item.id}
-            style={[
-              styles.itemCard,
-              { borderColor: rarityColors[item.rarity] || colors.border },
-              item.user_owns && styles.itemOwned,
-            ]}
-            onPress={() => {
-              if (!item.user_owns) handlePurchase(item.id, item.name, item.shop_price_catnip);
-            }}
-            disabled={item.user_owns}
+        {shop?.featured_item && !shop.featured_item.user_owns && (
+          <Card
+            variant="coral"
+            onPress={() =>
+              handlePurchase(
+                shop.featured_item!.id,
+                shop.featured_item!.name,
+                shop.featured_item!.shop_price_catnip,
+              )
+            }
           >
-            <View style={styles.itemIcon}>
-              <Icon
-                name={item.user_owns ? 'check' : 'gift'}
-                size={28}
-                color={item.user_owns ? colors.success : rarityColors[item.rarity] || colors.primary}
-              />
-            </View>
-            <Text style={styles.itemName} numberOfLines={1}>{item.name}</Text>
-            <Text style={[styles.itemRarity, { color: rarityColors[item.rarity] }]}>{item.rarity}</Text>
-            {item.user_owns ? (
-              <Text style={styles.itemOwnedText}>Owned</Text>
-            ) : (
-              <View style={styles.itemPriceRow}>
-                <Icon name="catnip" size={14} color={colors.catnip} />
-                <Text style={styles.itemPrice}> {item.shop_price_catnip}</Text>
+            <Badge tone="coral">{t('shop.featured')}</Badge>
+            <View style={styles.featuredBody}>
+              <View style={styles.featuredIcon}>
+                <Icon name="gift" size={56} color={color.accentDeep} />
               </View>
-            )}
-          </TouchableOpacity>
-        ))}
-      </View>
-    </ScrollView>
+              <Text style={[text.h2, styles.featuredName]}>
+                {shop.featured_item.name}
+              </Text>
+              <Badge
+                tone={RARITY_TONE[shop.featured_item.rarity] ?? 'sky'}
+              >
+                {shop.featured_item.rarity}
+              </Badge>
+              <View style={{ marginTop: sp.s2 }}>
+                <CoinChip
+                  amount={shop.featured_item.shop_price_catnip}
+                  tone="heart"
+                />
+              </View>
+            </View>
+          </Card>
+        )}
+
+        {shop?.featured_item?.user_owns && (
+          <Toast tone="success">{t('shop.featuredOwned')}</Toast>
+        )}
+
+        <View style={styles.grid}>
+          {shop?.items?.map((item: any) => {
+            const tone = RARITY_TONE[item.rarity] ?? 'sky';
+            return (
+              <Pressable
+                key={item.id}
+                onPress={() => {
+                  if (!item.user_owns) {
+                    handlePurchase(item.id, item.name, item.shop_price_catnip);
+                  }
+                }}
+                disabled={item.user_owns}
+                style={({ pressed }) => [
+                  styles.card,
+                  item.user_owns && styles.owned,
+                  pressed && styles.pressed,
+                ]}
+              >
+                <View style={styles.iconBubble}>
+                  <Icon
+                    name={item.user_owns ? 'check' : 'gift'}
+                    size={28}
+                    color={item.user_owns ? color.successDeep : color.ink}
+                  />
+                </View>
+                <Text style={styles.itemName} numberOfLines={1}>
+                  {item.name}
+                </Text>
+                <Badge tone={tone}>{item.rarity}</Badge>
+                {item.user_owns ? (
+                  <Text style={styles.ownedText}>{t('shop.ownedShort')}</Text>
+                ) : (
+                  <CoinChip
+                    amount={item.shop_price_catnip}
+                    tone="heart"
+                  />
+                )}
+              </Pressable>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.md },
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: spacing.md },
-  title: { ...typography.h1, color: colors.textPrimary },
-  balanceRow: { flexDirection: 'row', alignItems: 'center' },
-  balance: { ...typography.bodyBold, color: colors.catnip },
-  featuredCard: {
-    backgroundColor: colors.accent + '15',
-    borderRadius: borderRadius.lg,
-    borderWidth: 2,
-    borderColor: colors.accent,
-    padding: spacing.lg,
+  root: { flex: 1, backgroundColor: color.cream },
+  content: { padding: sp.s5, gap: sp.s4, paddingBottom: sp.s8 },
+  header: {
+    flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.lg,
+    justifyContent: 'space-between',
   },
-  featuredLabel: { ...typography.small, color: colors.accent, fontWeight: '700', letterSpacing: 2 },
-  featuredIcon: { marginVertical: spacing.sm },
-  featuredName: { ...typography.h2, color: colors.textPrimary },
-  featuredRarity: { ...typography.caption, marginBottom: spacing.xs },
-  featuredPriceRow: { flexDirection: 'row', alignItems: 'center' },
-  featuredPrice: { ...typography.h3, color: colors.catnip },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  itemCard: {
+  featuredBody: {
+    alignItems: 'center',
+    gap: sp.s2,
+    marginTop: sp.s3,
+  },
+  featuredIcon: {
+    width: 96,
+    height: 96,
+    borderRadius: 48,
+    backgroundColor: color.accentLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  featuredName: { color: color.ink, textAlign: 'center' },
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: sp.s3,
+  },
+  card: {
     width: '47%',
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    borderWidth: 2,
-    padding: spacing.sm,
+    backgroundColor: color.paper,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    borderColor: color.hair,
+    borderBottomWidth: 3,
+    borderBottomColor: color.hair,
+    padding: sp.s3,
     alignItems: 'center',
+    gap: sp.s1,
   },
-  itemOwned: { opacity: 0.5 },
-  itemIcon: { marginBottom: spacing.xs },
-  itemName: { ...typography.caption, color: colors.textPrimary, fontWeight: '600' },
-  itemRarity: { ...typography.small },
-  itemPriceRow: { flexDirection: 'row', alignItems: 'center', marginTop: 2 },
-  itemPrice: { ...typography.caption, color: colors.catnip, fontWeight: '600' },
-  itemOwnedText: { ...typography.caption, color: colors.success, fontWeight: '600', marginTop: 2 },
+  owned: { opacity: 0.6 },
+  pressed: { opacity: 0.8 },
+  iconBubble: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: color.cream,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: sp.s1,
+  },
+  itemName: {
+    fontFamily: fontFamily.heading,
+    fontSize: fontSize.caption,
+    color: color.ink,
+  },
+  ownedText: {
+    fontFamily: fontFamily.display,
+    fontSize: 10,
+    color: color.successDeep,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginTop: 2,
+  },
 });

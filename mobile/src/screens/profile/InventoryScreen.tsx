@@ -1,32 +1,59 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import {
+  Alert,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
-import { MascotWithItems, EquippedItem } from '../../components/mascot';
-import { Icon, type HeroIconName } from '../../components/common';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import {
+  Badge,
+  Card,
+  Hatto,
+  Icon,
+  SectionHeader,
+  Tabs,
+  type IconName,
+} from '../../ui';
+import { color, fontFamily, fontSize, sp, text } from '../../theme';
+import { t } from '../../locales';
 
-// Per-slot icon token — no per-item art yet, so we show a slot glyph.
-const slotIcon: Record<string, HeroIconName> = {
-  hat: 'xp',
+type Slot = 'hat' | 'outfit' | 'accessory' | 'background' | 'expression';
+
+const SLOTS: ReadonlyArray<{ value: Slot; label: string }> = [
+  { value: 'hat',        label: 'Hat' },
+  { value: 'outfit',     label: 'Outfit' },
+  { value: 'accessory',  label: 'Accessory' },
+  { value: 'background', label: 'Background' },
+  { value: 'expression', label: 'Expression' },
+];
+
+// Per-slot glyph from the DS Icon set — no per-item art yet.
+const SLOT_ICON: Record<Slot, IconName> = {
+  hat: 'star',
   outfit: 'gift',
-  accessory: 'pin',
-  background: 'elevator',
+  accessory: 'gem',
+  background: 'home',
   expression: 'heart',
 };
 
-const SLOTS = ['hat', 'outfit', 'accessory', 'background', 'expression'] as const;
-
-const rarityColors: Record<string, string> = {
-  common: colors.rarityCommon,
-  uncommon: colors.rarityUncommon,
-  rare: colors.rarityRare,
-  epic: colors.rarityEpic,
-  legendary: colors.rarityLegendary,
+const RARITY_TONE: Record<
+  string,
+  'sky' | 'mint' | 'coral' | 'lav' | 'sun'
+> = {
+  common: 'sky',
+  uncommon: 'mint',
+  rare: 'coral',
+  epic: 'lav',
+  legendary: 'sun',
 };
 
 export function InventoryScreen() {
-  const [activeSlot, setActiveSlot] = useState<string>('hat');
+  const [activeSlot, setActiveSlot] = useState<Slot>('hat');
   const queryClient = useQueryClient();
 
   const { data: inventory } = useQuery({
@@ -37,10 +64,7 @@ export function InventoryScreen() {
     },
   });
 
-  const items = inventory?.items?.filter((i: any) => i.slot === activeSlot) || [];
-  const equippedItems: EquippedItem[] = (inventory?.items ?? [])
-    .filter((i: any) => i.is_equipped)
-    .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
+  const items = (inventory?.items ?? []).filter((i: any) => i.slot === activeSlot);
 
   const handleEquip = async (itemId: string, isEquipped: boolean) => {
     try {
@@ -48,116 +72,130 @@ export function InventoryScreen() {
       queryClient.invalidateQueries({ queryKey: ['inventory'] });
       queryClient.invalidateQueries({ queryKey: ['profile'] });
     } catch {
-      Alert.alert('Error', 'Failed to equip item');
+      Alert.alert(t('common.error'), t('inventory.equipFailed'));
     }
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>Inventory</Text>
-      <Text style={styles.subtitle}>
-        {inventory?.total_items || 0} items collected
-      </Text>
+    <SafeAreaView style={styles.root} edges={['bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <Card variant="cream" style={styles.preview}>
+          <Hatto variant="face" size={112} />
+          <Text style={[text.captionBold, styles.previewText]}>
+            {t('inventory.total', { count: inventory?.total_items ?? 0 })}
+          </Text>
+        </Card>
 
-      {/* Moro preview with currently-equipped items layered on top. */}
-      <View style={styles.catPreview}>
-        <MascotWithItems pose="welcome" size={112} items={equippedItems} />
-      </View>
+        <SectionHeader title={t('inventory.title')} />
 
-      {/* Slot tabs */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tabsScroll}>
-        <View style={styles.tabs}>
-          {SLOTS.map((slot) => (
-            <TouchableOpacity
-              key={slot}
-              style={[styles.tab, activeSlot === slot && styles.tabActive]}
-              onPress={() => setActiveSlot(slot)}
-            >
-              <Text style={[styles.tabText, activeSlot === slot && styles.tabTextActive]}>
-                {slot.charAt(0).toUpperCase() + slot.slice(1)}
-              </Text>
-            </TouchableOpacity>
-          ))}
+        <Tabs<Slot> items={SLOTS} value={activeSlot} onChange={setActiveSlot} />
+
+        <View style={styles.grid}>
+          {items.map((item: any) => {
+            const tone = RARITY_TONE[item.rarity] ?? 'sky';
+            return (
+              <Pressable
+                key={item.id}
+                onPress={() => handleEquip(item.id, item.is_equipped)}
+                style={({ pressed }) => [
+                  styles.card,
+                  item.is_equipped && styles.cardEquipped,
+                  pressed && styles.pressed,
+                ]}
+              >
+                <View style={styles.iconBubble}>
+                  <Icon
+                    name={SLOT_ICON[activeSlot]}
+                    size={28}
+                    color={color.ink}
+                  />
+                </View>
+                <Text style={styles.itemName} numberOfLines={1}>
+                  {item.name}
+                </Text>
+                <Badge tone={tone}>{item.rarity}</Badge>
+                {item.is_equipped && (
+                  <Text style={styles.equipped}>
+                    {t('inventory.equipped')}
+                  </Text>
+                )}
+              </Pressable>
+            );
+          })}
+
+          {items.length === 0 && (
+            <Text style={styles.emptyText}>
+              {t('inventory.empty', { slot: activeSlot })}
+            </Text>
+          )}
         </View>
       </ScrollView>
-
-      {/* Items grid */}
-      <View style={styles.grid}>
-        {items.map((item: any) => (
-          <TouchableOpacity
-            key={item.id}
-            style={[
-              styles.itemCard,
-              { borderColor: rarityColors[item.rarity] || colors.border },
-              item.is_equipped && styles.itemCardEquipped,
-            ]}
-            onPress={() => handleEquip(item.id, item.is_equipped)}
-          >
-            <View style={styles.itemIcon}>
-              <Icon
-                name={slotIcon[item.slot] ?? 'gift'}
-                size={32}
-                color={rarityColors[item.rarity] || colors.primary}
-              />
-            </View>
-            <Text style={styles.itemName} numberOfLines={1}>{item.name}</Text>
-            <Text style={[styles.itemRarity, { color: rarityColors[item.rarity] }]}>
-              {item.rarity}
-            </Text>
-            {item.is_equipped && <Text style={styles.equippedBadge}>Equipped</Text>}
-          </TouchableOpacity>
-        ))}
-
-        {items.length === 0 && (
-          <Text style={styles.emptyText}>No {activeSlot} items yet</Text>
-        )}
-      </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.md },
-  title: { ...typography.h1, color: colors.textPrimary },
-  subtitle: { ...typography.caption, color: colors.textMuted, marginBottom: spacing.md },
-  catPreview: {
-    height: 120,
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.lg,
-    justifyContent: 'center',
+  root: { flex: 1, backgroundColor: color.cream },
+  content: { padding: sp.s5, gap: sp.s4, paddingBottom: sp.s8 },
+  preview: {
     alignItems: 'center',
-    marginBottom: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
+    gap: sp.s2,
   },
-  catEmoji: { fontSize: 64 },
-  tabsScroll: { marginBottom: spacing.md },
-  tabs: { flexDirection: 'row', gap: spacing.xs },
-  tab: {
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    borderRadius: borderRadius.full,
-    backgroundColor: colors.white,
-    borderWidth: 1,
-    borderColor: colors.border,
+  previewText: {
+    color: color.inkSoft,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
-  tabActive: { backgroundColor: colors.primary, borderColor: colors.primary },
-  tabText: { ...typography.caption, color: colors.textSecondary },
-  tabTextActive: { color: colors.white, fontWeight: '600' },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  itemCard: {
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: sp.s3,
+  },
+  card: {
     width: '47%',
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    borderWidth: 2,
-    padding: spacing.sm,
+    backgroundColor: color.paper,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    borderColor: color.hair,
+    borderBottomWidth: 3,
+    borderBottomColor: color.hair,
+    padding: sp.s3,
     alignItems: 'center',
+    gap: sp.s1,
   },
-  itemCardEquipped: { backgroundColor: '#EEF2FF' },
-  itemIcon: { marginBottom: spacing.xs },
-  itemName: { ...typography.caption, color: colors.textPrimary, fontWeight: '600' },
-  itemRarity: { ...typography.small },
-  equippedBadge: { ...typography.small, color: colors.primary, fontWeight: '700', marginTop: 2 },
-  emptyText: { ...typography.body, color: colors.textMuted, textAlign: 'center', width: '100%', marginTop: spacing.xl },
+  cardEquipped: {
+    borderColor: color.primary,
+    borderBottomColor: color.primaryDeep,
+    backgroundColor: color.primaryLight,
+  },
+  pressed: { opacity: 0.8 },
+  iconBubble: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: color.cream,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: sp.s1,
+  },
+  itemName: {
+    fontFamily: fontFamily.heading,
+    fontSize: fontSize.caption,
+    color: color.ink,
+  },
+  equipped: {
+    fontFamily: fontFamily.display,
+    fontSize: 10,
+    color: color.primaryDeep,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    marginTop: 2,
+  },
+  emptyText: {
+    ...text.body,
+    color: color.inkSoft,
+    textAlign: 'center',
+    width: '100%',
+    paddingVertical: sp.s7,
+  },
 });
