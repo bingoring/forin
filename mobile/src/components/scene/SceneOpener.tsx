@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Button } from '../common';
+import { Button } from '../../ui';
 import { NPCAvatar } from '../mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { getNPC } from '../../data/npcs';
@@ -29,7 +29,7 @@ export function SceneOpener({ npcKey, openerMd, tensionLevel, onContinue }: Prop
         </View>
         <Text style={styles.body}>{openerMd}</Text>
       </ScrollView>
-      <Button title={t('scene.continue')} onPress={onContinue} style={styles.btn} />
+      <Button full size="lg" onPress={onContinue} style={styles.btn}>{t('scene.continue')}</Button>
     </View>
   );
 }

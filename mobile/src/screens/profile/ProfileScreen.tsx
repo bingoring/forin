@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import { useQuery } from '@tanstack/react-query';
 import { userApi, gamificationApi } from '../../api';
 import { useAuthStore } from '../../stores/authStore';
-import { Button, Icon } from '../../components/common';
+import { Icon } from '../../components/common';
+import { Button } from '../../ui';
 import { MascotWithItems, type EquippedItem } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { t } from '../../locales';
@@ -108,7 +109,7 @@ export function ProfileScreen({ navigation }: any) {
         {profile.target_country && <SettingsRow label="Country" value={profile.target_country} />}
       </View>
 
-      <Button title="Log Out" onPress={logout} variant="outline" style={styles.logoutBtn} />
+      <Button full size="lg" variant="secondary" onPress={logout} style={styles.logoutBtn}>Log Out</Button>
     </ScrollView>
   );
 }

@@ -8,7 +8,8 @@ import {
   Alert,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Button, Input } from '../../components/common';
+import { Input } from '../../components/common';
+import { Button } from '../../ui';
 import { useAuthStore } from '../../stores/authStore';
 import { colors, typography, spacing } from '../../theme';
 import { t } from '../../locales';
@@ -59,15 +60,20 @@ export function LoginScreen({ navigation }: Props) {
             onChangeText={setPassword}
             secureTextEntry
           />
-          <Button title={t('auth.login.submit')} onPress={handleLogin} loading={loading} />
+          <Button full size="lg" onPress={handleLogin} loading={loading}>
+            {t('auth.login.submit')}
+          </Button>
         </View>
 
         <Button
-          title={t('auth.login.toRegister')}
+          full
+          size="lg"
+          variant="secondary"
           onPress={() => navigation.navigate('Register')}
-          variant="outline"
           style={styles.registerBtn}
-        />
+        >
+          {t('auth.login.toRegister')}
+        </Button>
       </View>
     </KeyboardAvoidingView>
   );

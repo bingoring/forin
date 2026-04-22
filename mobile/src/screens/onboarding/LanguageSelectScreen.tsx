@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { useQueryClient } from '@tanstack/react-query';
 import { userApi } from '../../api';
 import { useAuthStore } from '../../stores/authStore';
-import { Button } from '../../components/common';
+import { Button } from '../../ui';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { setAppLocale, t } from '../../locales';
 
@@ -79,11 +79,14 @@ export function LanguageSelectScreen({ onComplete }: Props) {
           ))}
         </View>
         <Button
-          title={t('onboarding.language.continue')}
+          full
+          size="lg"
           onPress={handleContinue}
           loading={loading}
           style={styles.continue}
-        />
+        >
+          {t('onboarding.language.continue')}
+        </Button>
       </View>
     </View>
   );

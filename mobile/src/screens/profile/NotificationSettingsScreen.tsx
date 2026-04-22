@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Switch, Alert } from 'react-native'
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../../api/client';
 import { colors, typography, spacing, borderRadius } from '../../theme';
-import { Button } from '../../components/common';
+import { Button } from '../../ui';
 
 export function NotificationSettingsScreen() {
   const queryClient = useQueryClient();
@@ -87,7 +87,7 @@ export function NotificationSettingsScreen() {
       </View>
 
       {local && (
-        <Button title="Save Changes" onPress={handleSave} loading={saving} />
+        <Button full size="lg" onPress={handleSave} loading={saving}>Save Changes</Button>
       )}
     </ScrollView>
   );

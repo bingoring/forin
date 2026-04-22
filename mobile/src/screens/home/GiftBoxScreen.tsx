@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useQueryClient } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
-import { Button, Icon } from '../../components/common';
+import { Icon } from '../../components/common';
+import { Button } from '../../ui';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { analytics } from '../../analytics';
 import type { MapStackParamList } from '../../navigation/types';
@@ -66,7 +67,7 @@ export function GiftBoxScreen({ route, navigation }: Props) {
         </View>
         <Text style={styles.boxType}>{boxType.toUpperCase()} Gift Box</Text>
         <Text style={styles.hint}>Tap to discover what's inside!</Text>
-        <Button title="Open" onPress={handleOpen} loading={loading} style={styles.openBtn} />
+        <Button full size="lg" onPress={handleOpen} loading={loading} style={styles.openBtn}>Open</Button>
       </View>
     );
   }
@@ -99,10 +100,13 @@ export function GiftBoxScreen({ route, navigation }: Props) {
       )}
 
       <Button
-        title="Continue"
+        full
+        size="lg"
         onPress={() => navigation.goBack()}
         style={styles.continueBtn}
-      />
+      >
+        Continue
+      </Button>
     </View>
   );
 }

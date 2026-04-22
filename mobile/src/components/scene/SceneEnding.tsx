@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Button } from '../common';
+import { Button } from '../../ui';
 import { Mascot } from '../mascot';
 import { colors, typography, spacing } from '../../theme';
 import { t } from '../../locales';
@@ -20,7 +20,7 @@ export function SceneEnding({ endingMd, onContinue }: Props) {
         </View>
         <Text style={styles.body}>{endingMd}</Text>
       </ScrollView>
-      <Button title={t('common.continue')} onPress={onContinue} style={styles.btn} />
+      <Button full size="lg" onPress={onContinue} style={styles.btn}>{t('common.continue')}</Button>
     </View>
   );
 }

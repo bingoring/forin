@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert, TextInput } from 'react-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { onboardingApi, userApi } from '../../api';
-import { Button, Icon, type HeroIconName } from '../../components/common';
+import { Icon, type HeroIconName } from '../../components/common';
+import { Button } from '../../ui';
 import { Mascot } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
 import { t } from '../../locales';
@@ -139,7 +140,7 @@ export function OnboardingScreen({ onComplete }: Props) {
               <Text style={styles.goalDesc}>{g.desc}</Text>
             </TouchableOpacity>
           ))}
-          <Button title={t('onboarding.goal.next')} onPress={() => setStep('catName')} style={styles.nextBtn} />
+          <Button full size="lg" onPress={() => setStep('catName')} style={styles.nextBtn}>{t('onboarding.goal.next')}</Button>
         </View>
       )}
 
@@ -158,7 +159,7 @@ export function OnboardingScreen({ onComplete }: Props) {
             placeholder={t('onboarding.catName.placeholder')}
             maxLength={20}
           />
-          <Button title={t('onboarding.catName.submit')} onPress={handleFinish} loading={loading} />
+          <Button full size="lg" onPress={handleFinish} loading={loading}>{t('onboarding.catName.submit')}</Button>
         </View>
       )}
     </View>

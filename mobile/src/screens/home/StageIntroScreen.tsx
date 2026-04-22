@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, learningApi } from '../../api';
-import { Button } from '../../components/common';
+import { Button } from '../../ui';
 import { NPCAvatar } from '../../components/mascot';
 import { getNPC } from '../../data/npcs';
 import { colors, typography, spacing, borderRadius } from '../../theme';
@@ -80,7 +80,7 @@ export function StageIntroScreen({ route, navigation }: Props) {
         )}
       </View>
 
-      <Button title="Start Stage" onPress={handleStart} style={styles.startBtn} />
+      <Button full size="lg" onPress={handleStart} style={styles.startBtn}>Start Stage</Button>
     </View>
   );
 }

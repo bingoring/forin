@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Button, Icon } from '../../components/common';
+import { Icon } from '../../components/common';
+import { Button } from '../../ui';
 import { CelebrationOverlay } from '../../components/celebration';
 import { Mascot } from '../../components/mascot';
 import { colors, typography, spacing, borderRadius } from '../../theme';
@@ -158,7 +159,7 @@ export function StageCompleteScreen({ route, navigation }: Props) {
         </TouchableOpacity>
       )}
 
-      <Button title="Continue" onPress={handleContinue} style={styles.btn} />
+      <Button full size="lg" onPress={handleContinue} style={styles.btn}>Continue</Button>
 
       <CelebrationOverlay
         visible={showFloorUnlock}
