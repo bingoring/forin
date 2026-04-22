@@ -18,3 +18,13 @@ export type { CardProps, CardVariant } from './Card';
 
 export { Badge } from './Badge';
 export type { BadgeProps, BadgeTone } from './Badge';
+
+export { ProgressBar } from './ProgressBar';
+export type { ProgressBarProps } from './ProgressBar';
+
+export { XPBar } from './XPBar';
+
+export { Hearts } from './Hearts';
+
+export { CoinChip } from './CoinChip';
+export type { CoinChipTone } from './CoinChip';
