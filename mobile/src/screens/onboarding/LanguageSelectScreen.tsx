@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQueryClient } from '@tanstack/react-query';
 import { userApi } from '../../api';
 import { useAuthStore } from '../../stores/authStore';
-import { Button } from '../../ui';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import { Button, Hatto, OptionCard, SectionHeader, SpeechBubble } from '../../ui';
+import { color, sp } from '../../theme';
 import { setAppLocale, t } from '../../locales';
 
 type LocaleOption = {
@@ -45,7 +46,8 @@ export function LanguageSelectScreen({ onComplete }: Props) {
       queryClient.invalidateQueries({ queryKey: ['profile'] });
       onComplete();
     } catch (err: any) {
-      const msg = err?.response?.data?.error?.message || t('onboarding.errors.generic');
+      const msg =
+        err?.response?.data?.error?.message || t('onboarding.errors.generic');
       Alert.alert(t('common.error'), msg);
     } finally {
       setLoading(false);
@@ -53,65 +55,69 @@ export function LanguageSelectScreen({ onComplete }: Props) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>{t('onboarding.language.title')}</Text>
-        <Text style={styles.subtitle}>{t('onboarding.language.subtitle')}</Text>
+    <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.hero}>
+          <Hatto variant="face" size={96} />
+          <SpeechBubble style={styles.bubble}>
+            {t('onboarding.language.subtitle')}
+          </SpeechBubble>
+        </View>
+
+        <SectionHeader title={t('onboarding.language.title')} />
+
         <View style={styles.list}>
           {OPTIONS.map((opt) => (
-            <TouchableOpacity
+            <OptionCard
               key={opt.code}
-              disabled={!opt.supported}
-              onPress={() => setSelected(opt.code)}
-              style={[
-                styles.card,
-                !opt.supported && styles.cardDisabled,
-                selected === opt.code && styles.cardSelected,
-              ]}
-            >
-              <Text style={[styles.label, !opt.supported && styles.labelDisabled]}>
-                {opt.label}
-              </Text>
-              {!opt.supported && (
-                <Text style={styles.badge}>{t('onboarding.language.comingSoonBadge')}</Text>
-              )}
-            </TouchableOpacity>
+              title={opt.label}
+              subtitle={
+                opt.supported
+                  ? undefined
+                  : t('onboarding.language.comingSoonBadge')
+              }
+              tone="sky"
+              state={selected === opt.code ? 'selected' : 'default'}
+              onPress={opt.supported ? () => setSelected(opt.code) : undefined}
+              style={!opt.supported ? styles.disabled : undefined}
+            />
           ))}
         </View>
-        <Button
-          full
-          size="lg"
-          onPress={handleContinue}
-          loading={loading}
-          style={styles.continue}
-        >
+      </ScrollView>
+
+      <View style={styles.footer}>
+        <Button full size="lg" onPress={handleContinue} loading={loading}>
           {t('onboarding.language.continue')}
         </Button>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { flex: 1, justifyContent: 'center', padding: spacing.lg },
-  title: { ...typography.h1, color: colors.textPrimary, textAlign: 'center', marginBottom: spacing.sm },
-  subtitle: { ...typography.body, color: colors.textSecondary, textAlign: 'center', marginBottom: spacing.lg },
-  list: { gap: spacing.sm, marginBottom: spacing.lg },
-  card: {
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    borderWidth: 2,
-    borderColor: colors.border,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  root: { flex: 1, backgroundColor: color.cream },
+  content: {
+    padding: sp.s5,
+    gap: sp.s5,
+    paddingBottom: sp.s8,
   },
-  cardSelected: { borderColor: colors.primary, backgroundColor: '#EEF2FF' },
-  cardDisabled: { opacity: 0.5 },
-  label: { ...typography.h3, color: colors.textPrimary },
-  labelDisabled: { color: colors.textMuted },
-  badge: { ...typography.caption, color: colors.textMuted },
-  continue: {},
+  hero: {
+    alignItems: 'center',
+    gap: sp.s3,
+  },
+  bubble: {
+    maxWidth: 280,
+  },
+  list: {
+    gap: sp.s3,
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+  footer: {
+    padding: sp.s5,
+    backgroundColor: color.cream,
+    borderTopWidth: 1,
+    borderTopColor: color.hair,
+  },
 });
