@@ -1,12 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery } from '@tanstack/react-query';
 import { userApi, gamificationApi } from '../../api';
 import { useAuthStore } from '../../stores/authStore';
-import { Icon } from '../../components/common';
-import { Button } from '../../ui';
-import { MascotWithItems, type EquippedItem } from '../../components/mascot';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import {
+  Badge,
+  Button,
+  Card,
+  CoinChip,
+  Hatto,
+  Icon,
+  ListRow,
+  ProgressBar,
+  SectionHeader,
+  Toast,
+} from '../../ui';
+import { color, fontFamily, fontSize, sp, text } from '../../theme';
 import { t } from '../../locales';
 
 export function ProfileScreen({ navigation }: any) {
@@ -28,186 +44,176 @@ export function ProfileScreen({ navigation }: any) {
     },
   });
 
-  if (!profile) return <View style={styles.loading}><Text>Loading...</Text></View>;
+  if (!profile) {
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator size="large" color={color.primary} />
+      </View>
+    );
+  }
 
-  const equippedItems: EquippedItem[] = ((inventory as any)?.items ?? [])
-    .filter((i: any) => i.is_equipped)
-    .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
+  const levelPct =
+    profile.xp_to_next_level > 0
+      ? Math.min(
+          100,
+          (profile.current_xp /
+            (profile.current_xp + profile.xp_to_next_level)) *
+            100,
+        )
+      : 100;
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      {/* Profile header */}
-      <View style={styles.header}>
-        <MascotWithItems pose="welcome" size={88} items={equippedItems} />
-        <Text style={styles.catName}>{profile.cat_name}</Text>
-        <Text style={styles.displayName}>{profile.display_name}</Text>
-        <Text style={styles.levelBadge}>
-          Lv.{profile.current_level} {profile.level_title}
-        </Text>
-      </View>
-
-      {/* Stats grid */}
-      <View style={styles.statsGrid}>
-        <StatCard label="Total XP" value={`${profile.total_xp}`} color={colors.xp} />
-        <StatCard label="Streak" value={`${profile.streak.current_streak}d`} color={colors.streak} />
-        <StatCard label="Gems" value={`${profile.gems}`} color={colors.gem} />
-        <StatCard label="Catnip" value={`${profile.catnip}`} color={colors.catnip} />
-      </View>
-
-      {/* Streak shields — surfaced separately so the icon can render via
-          the Icon component rather than an emoji in StatCard. */}
-      {profile.streak.streak_shields > 0 ? (
-        <View style={styles.shieldRow}>
-          <Icon name="lock" size={18} color={colors.gem} />
-          <Text style={styles.shieldRowText}>
-            {' '}{profile.streak.streak_shields} streak shield
-            {profile.streak.streak_shields > 1 ? 's' : ''} ready
-          </Text>
+    <SafeAreaView style={styles.root} edges={['top']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.header}>
+          <Hatto variant="face" size={96} />
+          <Text style={[text.h2, styles.catName]}>{profile.cat_name}</Text>
+          <Text style={styles.displayName}>{profile.display_name}</Text>
+          <Badge tone="sun">
+            Lv.{profile.current_level} · {profile.level_title}
+          </Badge>
         </View>
-      ) : null}
 
-      {/* XP Progress */}
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Level Progress</Text>
-        <View style={styles.xpBar}>
-          <View style={[styles.xpFill, {
-            width: `${profile.xp_to_next_level > 0
-              ? Math.min(100, (1 - profile.xp_to_next_level / (profile.xp_to_next_level + profile.current_xp)) * 100)
-              : 100}%`,
-          }]} />
+        <View style={styles.chipRow}>
+          <CoinChip amount={profile.total_xp} tone="gold" />
+          <CoinChip amount={profile.gems} tone="gem" />
+          <CoinChip amount={profile.catnip} tone="heart" />
         </View>
-        <Text style={styles.xpText}>{profile.xp_to_next_level} XP to next level</Text>
-      </View>
 
-      {/* Quick links */}
-      <View style={styles.linksRow}>
-        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('Inventory')}>
-          <Icon name="gift" size={24} color={colors.primary} />
-          <Text style={styles.linkLabel}>Inventory</Text>
-          <Text style={styles.linkCount}>{inventory?.total_items || 0}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('Shop')}>
-          <Icon name="catnip" size={24} color={colors.catnip} />
-          <Text style={styles.linkLabel}>Shop</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('NotificationSettings')}>
-          <Icon name="settings" size={24} color={colors.primary} />
-          <Text style={styles.linkLabel}>Alerts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.linkCard} onPress={() => navigation.navigate('WeeklyStats')}>
-          <Icon name="xp" size={24} color={colors.xp} />
-          <Text style={styles.linkLabel}>{t('stats.link')}</Text>
-        </TouchableOpacity>
-      </View>
+        <Card variant="paper">
+          <SectionHeader
+            title={t('profile.levelProgress')}
+            action={
+              <Text style={styles.smallCaption}>
+                {profile.xp_to_next_level} XP →
+              </Text>
+            }
+          />
+          <ProgressBar value={levelPct} showValue={false} color={color.xp} />
+        </Card>
 
-      {/* Settings */}
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Settings</Text>
-        <SettingsRow label="Daily Goal" value={profile.daily_goal} />
-        <SettingsRow label="Timezone" value={profile.timezone} />
-        {profile.profession && <SettingsRow label="Profession" value={profile.profession.name} />}
-        {profile.target_country && <SettingsRow label="Country" value={profile.target_country} />}
-      </View>
+        {profile.streak.streak_shields > 0 && (
+          <Toast tone="info" icon="lock">
+            {t('profile.streakShields', {
+              count: profile.streak.streak_shields,
+            })}
+          </Toast>
+        )}
 
-      <Button full size="lg" variant="secondary" onPress={logout} style={styles.logoutBtn}>Log Out</Button>
+        <Card variant="paper" padding={0} style={styles.list}>
+          <ListRow
+            leading={<Icon name="gift" size={20} color={color.primary} />}
+            title={t('profile.inventory')}
+            subtitle={t('profile.inventoryHint', {
+              count: inventory?.total_items ?? 0,
+            })}
+            onPress={() => navigation.navigate('Inventory')}
+          />
+          <ListRow
+            leading={<Icon name="shop" size={20} color={color.accent} />}
+            title={t('profile.shop')}
+            onPress={() => navigation.navigate('Shop')}
+          />
+          <ListRow
+            leading={<Icon name="chat" size={20} color={color.primary} />}
+            title={t('profile.alerts')}
+            onPress={() => navigation.navigate('NotificationSettings')}
+          />
+          <ListRow
+            leading={<Icon name="trophy" size={20} color={color.xp} />}
+            title={t('stats.link')}
+            onPress={() => navigation.navigate('WeeklyStats')}
+            last
+          />
+        </Card>
 
-      {/* Dev-only: design system playground. Remove the link before
-          shipping to production builds. */}
-      {__DEV__ ? (
-        <Button
-          full
-          size="md"
-          variant="ghost"
-          onPress={() => navigation.navigate('DesignPlayground')}
-        >
-          Open design playground
-        </Button>
-      ) : null}
-    </ScrollView>
+        <Card variant="cream">
+          <SectionHeader title={t('profile.settings')} />
+          <Row
+            label={t('profile.dailyGoal')}
+            value={profile.daily_goal}
+          />
+          <Row label={t('profile.timezone')} value={profile.timezone} />
+          {profile.profession && (
+            <Row
+              label={t('profile.profession')}
+              value={profile.profession.name}
+            />
+          )}
+          {profile.target_country && (
+            <Row
+              label={t('profile.country')}
+              value={profile.target_country}
+            />
+          )}
+        </Card>
+
+        <View style={styles.actions}>
+          <Button full size="lg" variant="secondary" onPress={logout}>
+            {t('profile.logout')}
+          </Button>
+          {__DEV__ && (
+            <Button
+              full
+              size="md"
+              variant="ghost"
+              onPress={() => navigation.navigate('DesignPlayground')}
+            >
+              Open design playground
+            </Button>
+          )}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: string; color: string }) {
+function Row({ label, value }: { label: string; value: string }) {
   return (
-    <View style={styles.statCard}>
-      <Text style={[styles.statValue, { color }]}>{value}</Text>
-      <Text style={styles.statLabel}>{label}</Text>
-    </View>
-  );
-}
-
-function SettingsRow({ label, value }: { label: string; value: string }) {
-  return (
-    <View style={styles.settingsRow}>
-      <Text style={styles.settingsLabel}>{label}</Text>
-      <Text style={styles.settingsValue}>{value}</Text>
+    <View style={styles.row}>
+      <Text style={styles.rowLabel}>{label}</Text>
+      <Text style={styles.rowValue}>{value}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.md },
-  loading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  header: { alignItems: 'center', marginBottom: spacing.lg, paddingTop: spacing.lg },
-  catName: { ...typography.h3, color: colors.textPrimary, marginTop: spacing.xs },
-  displayName: { ...typography.body, color: colors.textSecondary },
-  levelBadge: { ...typography.caption, color: colors.xp, marginTop: spacing.xs },
-  statsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginBottom: spacing.md },
-  shieldRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.gem + '15',
-    borderRadius: borderRadius.sm,
-    padding: spacing.sm,
-    marginBottom: spacing.md,
-  },
-  shieldRowText: { ...typography.bodyBold, color: colors.gem },
-  statCard: {
+  root: { flex: 1, backgroundColor: color.cream },
+  loading: {
     flex: 1,
-    minWidth: '45%',
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.border,
+    justifyContent: 'center',
+    backgroundColor: color.cream,
   },
-  statValue: { ...typography.h2 },
-  statLabel: { ...typography.small, color: colors.textMuted, marginTop: 2 },
-  card: {
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    marginBottom: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
+  content: { padding: sp.s5, paddingBottom: sp.s9, gap: sp.s4 },
+  header: {
+    alignItems: 'center',
+    gap: sp.s2,
+    paddingBottom: sp.s3,
   },
-  cardTitle: { ...typography.h3, color: colors.textPrimary, marginBottom: spacing.sm },
-  cardBody: { ...typography.body, color: colors.textSecondary },
-  xpBar: { height: 8, backgroundColor: colors.border, borderRadius: 4, marginBottom: spacing.xs },
-  xpFill: { height: 8, backgroundColor: colors.xp, borderRadius: 4 },
-  xpText: { ...typography.small, color: colors.textMuted },
-  settingsRow: {
+  catName: { color: color.ink, marginTop: sp.s2 },
+  displayName: { ...text.body, color: color.inkSoft },
+  chipRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: sp.s2,
+  },
+  list: { overflow: 'hidden' },
+  smallCaption: {
+    fontFamily: fontFamily.heading,
+    fontSize: fontSize.micro,
+    color: color.inkSoft,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: spacing.xs,
+    paddingVertical: sp.s2,
     borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    borderBottomColor: color.hair,
   },
-  settingsLabel: { ...typography.body, color: colors.textSecondary },
-  settingsValue: { ...typography.bodyBold, color: colors.textPrimary },
-  linksRow: { flexDirection: 'row', gap: spacing.sm, marginBottom: spacing.md },
-  linkCard: {
-    flex: 1,
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  linkLabel: { ...typography.caption, color: colors.textPrimary, fontWeight: '600', marginTop: spacing.xs },
-  linkCount: { ...typography.small, color: colors.textMuted },
-  logoutBtn: { marginTop: spacing.md, marginBottom: spacing.xxl },
+  rowLabel: { ...text.body, color: color.inkSoft },
+  rowValue: { ...text.bodyBold, color: color.ink },
+  actions: { gap: sp.s2, marginTop: sp.s3 },
 });
