@@ -5,8 +5,9 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { curriculumApi, gamificationApi } from '../../api';
 import { FloorCanvas, HotspotSheet, FloorSwitcher } from '../../components/map';
-import { MascotWithItems, type EquippedItem } from '../../components/mascot';
-import { colors, borderRadius } from '../../theme';
+import type { EquippedItem } from '../../components/mascot';
+import { Hatto } from '../../ui';
+import { color, radius } from '../../theme';
 import { t } from '../../locales';
 import type { MapStackParamList } from '../../navigation/types';
 import type { CurriculumUnit, StageOverview } from '../../types/api';
@@ -34,7 +35,10 @@ export function MapScreen({ navigation }: Props) {
     },
   });
 
-  const equippedItems: EquippedItem[] = ((inventory as any)?.items ?? [])
+  // Equipped items aren't rendered in Phase-5 Hatto yet — cosmetic overlay
+  // lands with the spatial-UX redesign (see docs/redesigns/spatial-ux.md).
+  // Keeping the fetch + shape so the upcoming work has working data.
+  const _equippedItems: EquippedItem[] = ((inventory as any)?.items ?? [])
     .filter((i: any) => i.is_equipped)
     .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
 
@@ -60,7 +64,7 @@ export function MapScreen({ navigation }: Props) {
   if (isLoading || !activeModule) {
     return (
       <View style={styles.loading}>
-        <ActivityIndicator color={colors.primary} size="large" />
+        <ActivityIndicator color={color.primary} size="large" />
       </View>
     );
   }
@@ -111,7 +115,7 @@ export function MapScreen({ navigation }: Props) {
         );
       })}
 
-      {/* Moro at the current in-progress unit, wearing equipped items. */}
+      {/* Hatto stands over the current in-progress unit. */}
       {currentUnit ? (
         <View
           pointerEvents="none"
@@ -121,7 +125,7 @@ export function MapScreen({ navigation }: Props) {
             top: (currentUnit.map_y / 100) * CANVAS_H - 90,
           }}
         >
-          <MascotWithItems pose="wave" size={80} items={equippedItems} />
+          <Hatto variant="face" size={80} />
         </View>
       ) : null}
 
@@ -137,10 +141,15 @@ export function MapScreen({ navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  loading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  container: { flex: 1, backgroundColor: color.cream },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: color.cream,
+  },
   hotspot: {
     position: 'absolute',
-    borderRadius: borderRadius.md,
+    borderRadius: radius.r2,
   },
 });
