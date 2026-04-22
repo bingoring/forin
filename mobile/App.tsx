@@ -5,6 +5,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import * as Sentry from '@sentry/react-native';
+import { useFonts } from 'expo-font';
+import {
+  Nunito_400Regular,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+  Nunito_900Black,
+} from '@expo-google-fonts/nunito';
 import './src/locales';
 import { AppNavigator } from './src/navigation/AppNavigator';
 import { analytics, setAnalytics } from './src/analytics';
@@ -46,9 +53,21 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  // Nunito is the brand face. We block the first render until the four
+  // weights we actually use are loaded; otherwise RN falls back to the
+  // system font for the initial frame and every heading flashes.
+  const [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+    Nunito_900Black,
+  });
+
   useEffect(() => {
     analytics.track({ name: 'session_start' });
   }, []);
+
+  if (!fontsLoaded) return null;
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
