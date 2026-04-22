@@ -64,3 +64,6 @@ export type { StageNodeProps, StageNodeState } from './StageNode';
 
 export { OptionCard } from './OptionCard';
 export type { OptionCardProps, OptionCardTone, OptionCardState } from './OptionCard';
+
+export { Hatto } from './Hatto';
+export type { HattoProps, HattoVariant } from './Hatto';

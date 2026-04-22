@@ -8,6 +8,7 @@ import {
   Chip,
   CoinChip,
   Divider,
+  Hatto,
   Hearts,
   Icon,
   type IconName,
@@ -275,6 +276,15 @@ export function DesignPlaygroundScreen() {
             onPress={() => {}}
           />
         </View>
+      </Section>
+
+      <Section title="Hatto (mascot)">
+        <Row>
+          <Hatto variant="face" size={64} />
+          <Hatto variant="face" size={96} />
+          <Hatto variant="face" size={128} />
+        </Row>
+        <Hatto variant="full" size={280} />
       </Section>
 
       <Section title="Speech bubbles">
