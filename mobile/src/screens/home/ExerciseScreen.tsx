@@ -1,17 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
+import {
+  ActivityIndicator,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useQuery } from '@tanstack/react-query';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { curriculumApi, learningApi } from '../../api';
-import { SentenceArrangement, WordPuzzle, MeaningMatch, ConversationPractice, SynonymMatch } from '../../components/exercises';
+import {
+  Button,
+  Card,
+  CoinChip,
+  Hatto,
+  Hearts,
+  Icon,
+  ProgressBar,
+  SpeechBubble,
+} from '../../ui';
+import {
+  SentenceArrangement,
+  WordPuzzle,
+  MeaningMatch,
+  ConversationPractice,
+  SynonymMatch,
+} from '../../components/exercises';
 import { SceneOpener, SceneEnding } from '../../components/scene';
-import { Icon } from '../../components/common';
-import { colors, typography, spacing } from '../../theme';
+import { color, sp, text } from '../../theme';
+import { t } from '../../locales';
 import type { MapStackParamList } from '../../navigation/types';
 import type { Exercise, SubmitExerciseResponse } from '../../types/api';
 
 type Props = NativeStackScreenProps<MapStackParamList, 'Exercise'>;
-
 type Phase = 'opener' | 'exercise' | 'ending';
 
 export function ExerciseScreen({ route, navigation }: Props) {
@@ -31,15 +54,17 @@ export function ExerciseScreen({ route, navigation }: Props) {
     },
   });
 
-  // Initial phase selection: show the opener first when the stage has one.
-  // Keyed off stage.id so retries / back-nav reset the gate consistently.
   useEffect(() => {
     if (!stage) return;
     setPhase(stage.scene_opener_md ? 'opener' : 'exercise');
   }, [stage?.id]);
 
   if (!stage) {
-    return <View style={styles.loading}><Text>Loading...</Text></View>;
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator size="large" color={color.primary} />
+      </View>
+    );
   }
 
   const exercises = stage.exercises;
@@ -66,7 +91,10 @@ export function ExerciseScreen({ route, navigation }: Props) {
             const { data } = await learningApi.completeAttempt(attemptId);
             navigation.replace('StageComplete', { result: data.data });
           } catch (err: any) {
-            Alert.alert('Error', err?.response?.data?.error?.message || 'Completion failed');
+            Alert.alert(
+              t('common.error'),
+              err?.response?.data?.error?.message ?? t('exercise.errors.completion'),
+            );
           }
         }}
       />
@@ -82,7 +110,10 @@ export function ExerciseScreen({ route, navigation }: Props) {
       setLastResult(result);
       setShowFeedback(true);
     } catch (err: any) {
-      Alert.alert('Error', err?.response?.data?.error?.message || 'Submission failed');
+      Alert.alert(
+        t('common.error'),
+        err?.response?.data?.error?.message ?? t('exercise.errors.submission'),
+      );
     }
   };
 
@@ -91,7 +122,6 @@ export function ExerciseScreen({ route, navigation }: Props) {
     setLastResult(null);
 
     if (isLast) {
-      // If the stage has a scene ending, route through it first.
       if (stage.scene_ending_md && phase !== 'ending') {
         setPhase('ending');
         return;
@@ -100,97 +130,98 @@ export function ExerciseScreen({ route, navigation }: Props) {
         const { data } = await learningApi.completeAttempt(attemptId);
         navigation.replace('StageComplete', { result: data.data });
       } catch (err: any) {
-        Alert.alert('Error', err?.response?.data?.error?.message || 'Completion failed');
+        Alert.alert(
+          t('common.error'),
+          err?.response?.data?.error?.message ?? t('exercise.errors.completion'),
+        );
       }
     } else {
       setCurrentIdx((prev) => prev + 1);
     }
   };
 
-  // Feedback overlay
   if (showFeedback && lastResult) {
-    const feedbackIcon =
-      lastResult.is_correct === true ? 'check'
-      : lastResult.is_correct === false ? 'x'
-      : 'menu'; // placeholder — AI-graded conversation has no clean hero match
-    const feedbackColor =
-      lastResult.is_correct === true ? colors.success
-      : lastResult.is_correct === false ? colors.error
-      : colors.primary;
+    const kind =
+      lastResult.is_correct === true ? 'correct'
+      : lastResult.is_correct === false ? 'wrong'
+      : 'graded';
+
+    const bubbleTone = kind === 'correct' ? 'sky' : kind === 'wrong' ? 'coral' : 'paper';
+    const headline =
+      kind === 'correct' ? t('exercise.feedback.correct')
+      : kind === 'wrong' ? t('exercise.feedback.wrong')
+      : t('exercise.feedback.graded', { score: lastResult.score });
+
     return (
-      <View style={styles.feedbackContainer}>
-        <View style={styles.feedbackCard}>
-          <View style={styles.feedbackIcon}>
-            <Icon name={feedbackIcon} size={56} color={feedbackColor} />
-          </View>
+      <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
+        <View style={styles.feedbackBody}>
+          <Hatto variant="face" size={128} />
+          <SpeechBubble tone={bubbleTone} style={styles.feedbackBubble}>
+            {headline}
+          </SpeechBubble>
 
-          <Text style={styles.feedbackTitle}>
-            {lastResult.is_correct === true ? 'Correct!' :
-             lastResult.is_correct === false ? 'Not quite...' :
-             `Score: ${lastResult.score}/100`}
-          </Text>
-
-          <Text style={styles.feedbackXP}>+{lastResult.xp_earned} XP</Text>
-
-          {lastResult.lives_lost > 0 && (
-            <View style={styles.feedbackLivesRow}>
-              <Icon name="heart" size={16} color={colors.error} />
-              <Text style={styles.feedbackLives}>
-                {' '}−{lastResult.lives_lost} (remaining: {lastResult.lives_after})
-              </Text>
+          <Card variant="paper" style={styles.feedbackCard}>
+            <View style={styles.feedbackRow}>
+              <Text style={text.body}>{t('exercise.feedback.xp')}</Text>
+              <CoinChip amount={`+${lastResult.xp_earned}`} tone="gold" />
             </View>
-          )}
-
-          <View style={{ height: spacing.lg }} />
-
-          <Text style={styles.nextBtn} onPress={handleNext}>
-            {isLast ? 'See Results' : 'Next Exercise'}
-          </Text>
+            {lastResult.lives_lost > 0 && (
+              <View style={styles.feedbackRow}>
+                <Text style={text.body}>{t('exercise.feedback.lives')}</Text>
+                <Hearts total={5} filled={lastResult.lives_after} />
+              </View>
+            )}
+          </Card>
         </View>
-      </View>
+
+        <View style={styles.footer}>
+          <Button
+            full
+            size="lg"
+            variant={kind === 'wrong' ? 'coral' : 'primary'}
+            onPress={handleNext}
+          >
+            {isLast ? t('exercise.seeResults') : t('exercise.next')}
+          </Button>
+        </View>
+      </SafeAreaView>
     );
   }
 
+  const progress = ((currentIdx) / exercises.length) * 100;
+
   return (
-    <View style={styles.container}>
-      {/* Progress bar */}
+    <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       <View style={styles.header}>
-        <View style={styles.progressRow}>
-          {exercises.map((_, i) => (
-            <View
-              key={i}
-              style={[
-                styles.progressDot,
-                i < currentIdx && styles.progressDotDone,
-                i === currentIdx && styles.progressDotActive,
-              ]}
-            />
-          ))}
+        <View style={styles.progressTop}>
+          <Icon name="arrow-left" size={22} color={color.inkSoft} />
+          <View style={styles.progressFill}>
+            <ProgressBar value={progress} showValue={false} color={color.accent} />
+          </View>
+          <Hearts total={5} filled={lives} size={18} />
         </View>
-        <View style={styles.statsRow}>
-          <View style={styles.statItem}>
-            <Icon name="heart" size={16} color={colors.heart} />
-            <Text style={styles.livesText}> {lives}</Text>
-          </View>
-          <View style={styles.statItem}>
-            <Icon name="xp" size={16} color={colors.xp} />
-            <Text style={styles.xpText}> {totalXP} XP</Text>
-          </View>
+        <View style={styles.xpChipRow}>
+          <CoinChip amount={`${totalXP} XP`} tone="gold" />
+          <Text style={styles.typeLabel}>
+            {formatType(current.exercise_type)}
+          </Text>
         </View>
       </View>
 
-      {/* Exercise type label */}
-      <Text style={styles.typeLabel}>{formatType(current.exercise_type)}</Text>
-
-      {/* Exercise component */}
-      <View style={styles.exerciseArea}>
+      <ScrollView
+        contentContainerStyle={styles.exerciseScroll}
+        keyboardShouldPersistTaps="handled"
+      >
         {renderExercise(current, handleExerciseSubmit)}
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-function renderExercise(exercise: Exercise, onSubmit: (response: any) => void) {
+function renderExercise(
+  exercise: Exercise,
+  onSubmit: (response: any) => void,
+) {
   switch (exercise.exercise_type) {
     case 'sentence_arrangement':
       return <SentenceArrangement content={exercise.content} onSubmit={onSubmit} />;
@@ -203,7 +234,7 @@ function renderExercise(exercise: Exercise, onSubmit: (response: any) => void) {
     case 'synonym_match':
       return <SynonymMatch content={exercise.content} onSubmit={onSubmit} />;
     default:
-      return <Text>Unknown exercise type</Text>;
+      return <Text style={text.body}>Unknown exercise type</Text>;
   }
 }
 
@@ -212,49 +243,56 @@ function formatType(type: string) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background, padding: spacing.md },
-  loading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  header: { marginBottom: spacing.md },
-  progressRow: { flexDirection: 'row', gap: 4, marginBottom: spacing.sm },
-  progressDot: { flex: 1, height: 4, borderRadius: 2, backgroundColor: colors.border },
-  progressDotDone: { backgroundColor: colors.success },
-  progressDotActive: { backgroundColor: colors.primary },
-  statsRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  statItem: { flexDirection: 'row', alignItems: 'center' },
-  livesText: { ...typography.bodyBold, color: colors.heart },
-  xpText: { ...typography.bodyBold, color: colors.xp },
+  root: { flex: 1, backgroundColor: color.cream },
+  loading: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: color.cream },
+  header: {
+    paddingHorizontal: sp.s5,
+    paddingTop: sp.s2,
+    paddingBottom: sp.s3,
+    gap: sp.s3,
+    borderBottomWidth: 1,
+    borderBottomColor: color.hair,
+  },
+  progressTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: sp.s3,
+  },
+  progressFill: { flex: 1 },
+  xpChipRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   typeLabel: {
-    ...typography.small,
-    color: colors.primary,
+    ...text.captionBold,
+    color: color.inkSoft,
     textTransform: 'uppercase',
     letterSpacing: 1,
-    marginBottom: spacing.sm,
   },
-  exerciseArea: { flex: 1 },
-  feedbackContainer: { flex: 1, backgroundColor: colors.background, justifyContent: 'center', padding: spacing.lg },
-  feedbackCard: {
-    backgroundColor: colors.white,
-    borderRadius: 20,
-    padding: spacing.xl,
+  exerciseScroll: {
+    flexGrow: 1,
+    padding: sp.s5,
+  },
+  feedbackBody: {
+    flex: 1,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 4,
+    justifyContent: 'center',
+    padding: sp.s5,
+    gap: sp.s4,
   },
-  feedbackIcon: { marginBottom: spacing.md },
-  feedbackLivesRow: { flexDirection: 'row', alignItems: 'center', marginTop: spacing.xs },
-  feedbackTitle: { ...typography.h2, color: colors.textPrimary, marginBottom: spacing.sm },
-  feedbackXP: { ...typography.h3, color: colors.xp },
-  feedbackLives: { ...typography.body, color: colors.error },
-  nextBtn: {
-    ...typography.button,
-    color: colors.white,
-    backgroundColor: colors.primary,
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.xl,
-    borderRadius: 12,
-    overflow: 'hidden',
+  feedbackBubble: { maxWidth: 320 },
+  feedbackCard: { width: '100%', gap: sp.s3 },
+  feedbackRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: sp.s2,
+  },
+  footer: {
+    padding: sp.s5,
+    borderTopWidth: 1,
+    borderTopColor: color.hair,
+    backgroundColor: color.cream,
   },
 });
