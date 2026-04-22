@@ -3,9 +3,8 @@ import { View, StyleSheet, ActivityIndicator, Dimensions, Pressable } from 'reac
 import { useQuery } from '@tanstack/react-query';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { curriculumApi, gamificationApi } from '../../api';
+import { curriculumApi } from '../../api';
 import { FloorCanvas, HotspotSheet, FloorSwitcher } from '../../components/map';
-import type { EquippedItem } from '../../components/mascot';
 import { Hatto } from '../../ui';
 import { color, radius } from '../../theme';
 import { t } from '../../locales';
@@ -26,21 +25,6 @@ export function MapScreen({ navigation }: Props) {
       return res.data.data;
     },
   });
-
-  const { data: inventory } = useQuery({
-    queryKey: ['inventory'],
-    queryFn: async () => {
-      const res = await gamificationApi.getInventory();
-      return res.data.data;
-    },
-  });
-
-  // Equipped items aren't rendered in Phase-5 Hatto yet — cosmetic overlay
-  // lands with the spatial-UX redesign (see docs/redesigns/spatial-ux.md).
-  // Keeping the fetch + shape so the upcoming work has working data.
-  const _equippedItems: EquippedItem[] = ((inventory as any)?.items ?? [])
-    .filter((i: any) => i.is_equipped)
-    .map((i: any) => ({ slot: i.slot, rarity: i.rarity, name: i.name }));
 
   const modules = useMemo(() => {
     if (!data?.modules) return [];
