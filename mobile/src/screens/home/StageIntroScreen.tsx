@@ -1,12 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
+import {
+  ActivityIndicator,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useQuery } from '@tanstack/react-query';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { curriculumApi, learningApi } from '../../api';
-import { Button } from '../../ui';
-import { NPCAvatar } from '../../components/mascot';
-import { getNPC } from '../../data/npcs';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import {
+  Badge,
+  Button,
+  Card,
+  Hatto,
+  Icon,
+  ProgressBar,
+  SectionHeader,
+  SpeechBubble,
+} from '../../ui';
+import { color, fontFamily, fontSize, sp, text } from '../../theme';
 import { t } from '../../locales';
 import type { MapStackParamList } from '../../navigation/types';
 
@@ -26,15 +41,14 @@ export function StageIntroScreen({ route, navigation }: Props) {
   const handleStart = async () => {
     try {
       const { data } = await learningApi.startStage(stageId);
-      const attempt = data.data;
       navigation.replace('Exercise', {
         stageId,
-        attemptId: attempt.attempt_id,
+        attemptId: data.data.attempt_id,
       });
     } catch (err: any) {
       const code = err?.response?.data?.error?.code;
       if (code === 'NO_LIVES') {
-        alert('No lives remaining. Wait for refill.');
+        Alert.alert(t('common.error'), t('home.stage.noLives'));
       }
     }
   };
@@ -42,96 +56,109 @@ export function StageIntroScreen({ route, navigation }: Props) {
   if (isLoading || !stage) {
     return (
       <View style={styles.loading}>
-        <Text>Loading...</Text>
+        <ActivityIndicator size="large" color={color.primary} />
       </View>
     );
   }
 
-  const npc = getNPC(stage.scene_npc_key ?? null);
+  const stars = stage.progress?.stars ?? 0;
+  const attempts = stage.progress?.attempts ?? 0;
+  const difficultyPct = (stage.difficulty_level / 5) * 100;
 
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Text style={styles.title}>{stage.title}</Text>
-        <Text style={styles.scenario}>{stage.scenario_description}</Text>
-
-        {npc ? (
-          <View style={styles.npcRow}>
-            <NPCAvatar category={npc.category} displayName={npc.displayName} size={72} />
-            <View style={styles.tensionPill}>
-              <Text style={styles.tensionLabel}>{t('scene.tagTension')}</Text>
-              <Text style={styles.tensionValue}>{stage.tension_level}</Text>
-            </View>
-          </View>
-        ) : null}
-
-        <View style={styles.infoRow}>
-          <InfoChip label="Exercises" value={`${stage.exercises.length}`} />
-          <InfoChip label="Difficulty" value={`${'★'.repeat(stage.difficulty_level)}${'☆'.repeat(5 - stage.difficulty_level)}`} />
-          <InfoChip label="XP" value={`${stage.xp_base}`} />
+    <SafeAreaView style={styles.root} edges={['bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.hero}>
+          <Hatto variant="face" size={96} />
+          <SpeechBubble style={styles.bubble}>
+            {stage.scenario_description}
+          </SpeechBubble>
         </View>
 
-        {stage.progress && stage.progress.status === 'completed' && (
-          <View style={styles.prevResult}>
-            <Text style={styles.prevResultText}>
-              Best: {'★'.repeat(stage.progress.stars)}{'☆'.repeat(3 - stage.progress.stars)} ({stage.progress.attempts} attempts)
-            </Text>
-          </View>
-        )}
-      </View>
+        <SectionHeader
+          eyebrow={t('home.stage.eyebrow')}
+          title={stage.title}
+          action={<Badge tone="sun">XP {stage.xp_base}</Badge>}
+        />
 
-      <Button full size="lg" onPress={handleStart} style={styles.startBtn}>Start Stage</Button>
-    </View>
+        <Card variant="paper">
+          <View style={styles.statRow}>
+            <Stat label={t('home.stage.exercises')} value={`${stage.exercises.length}`} />
+            <Stat label={t('home.stage.attempts')} value={`${attempts}`} />
+            <Stat label={t('home.stage.stars')} value={'★'.repeat(stars) + '☆'.repeat(3 - stars)} />
+          </View>
+          <View style={styles.diffRow}>
+            <Text style={styles.diffLabel}>{t('home.stage.difficulty')}</Text>
+            <ProgressBar value={difficultyPct} showValue={false} color={color.accent} />
+          </View>
+        </Card>
+
+        {stage.progress?.status === 'completed' && (
+          <Card variant="mint">
+            <View style={styles.prevRow}>
+              <Icon name="check" size={20} color={color.successDeep} />
+              <Text style={styles.prevText}>{t('home.stage.bestRecorded')}</Text>
+            </View>
+          </Card>
+        )}
+      </ScrollView>
+
+      <View style={styles.footer}>
+        <Button full size="lg" onPress={handleStart}>
+          {t('home.stage.start')}
+        </Button>
+      </View>
+    </SafeAreaView>
   );
 }
 
-function InfoChip({ label, value }: { label: string; value: string }) {
+function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <View style={styles.chip}>
-      <Text style={styles.chipLabel}>{label}</Text>
-      <Text style={styles.chipValue}>{value}</Text>
+    <View style={styles.stat}>
+      <Text style={styles.statLabel}>{label}</Text>
+      <Text style={styles.statValue}>{value}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background, padding: spacing.lg },
-  loading: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  content: { flex: 1 },
-  title: { ...typography.h1, color: colors.textPrimary, marginBottom: spacing.sm },
-  scenario: { ...typography.body, color: colors.textSecondary, marginBottom: spacing.lg },
-  infoRow: { flexDirection: 'row', gap: spacing.sm, marginBottom: spacing.lg },
-  chip: {
-    flex: 1,
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.sm,
-    padding: spacing.sm,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  chipLabel: { ...typography.small, color: colors.textMuted },
-  chipValue: { ...typography.bodyBold, color: colors.textPrimary, marginTop: 2 },
-  prevResult: {
-    backgroundColor: colors.accentLight,
-    borderRadius: borderRadius.sm,
-    padding: spacing.sm,
-  },
-  prevResultText: { ...typography.caption, color: colors.textPrimary, textAlign: 'center' },
-  startBtn: { marginBottom: spacing.lg },
-  npcRow: {
+  root: { flex: 1, backgroundColor: color.cream },
+  loading: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: color.cream },
+  content: { padding: sp.s5, paddingBottom: sp.s8, gap: sp.s5 },
+  hero: { alignItems: 'center', gap: sp.s3 },
+  bubble: { maxWidth: 300 },
+  statRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: spacing.md,
+    justifyContent: 'space-around',
+    paddingVertical: sp.s2,
   },
-  tensionPill: {
-    backgroundColor: colors.accent + '22',
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: borderRadius.md,
+  stat: {
     alignItems: 'center',
+    gap: 2,
   },
-  tensionLabel: { ...typography.small, color: colors.textSecondary, textTransform: 'uppercase' },
-  tensionValue: { ...typography.bodyBold, color: colors.textPrimary },
+  statLabel: {
+    fontFamily: fontFamily.heading,
+    fontSize: fontSize.micro,
+    color: color.inkSoft,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  statValue: {
+    fontFamily: fontFamily.display,
+    fontSize: fontSize.h3,
+    color: color.ink,
+  },
+  diffRow: { gap: sp.s2, marginTop: sp.s3 },
+  diffLabel: {
+    ...text.captionBold,
+    color: color.inkSoft,
+  },
+  prevRow: { flexDirection: 'row', alignItems: 'center', gap: sp.s2 },
+  prevText: { ...text.bodyBold, color: color.successDeep },
+  footer: {
+    padding: sp.s5,
+    borderTopWidth: 1,
+    borderTopColor: color.hair,
+    backgroundColor: color.cream,
+  },
 });

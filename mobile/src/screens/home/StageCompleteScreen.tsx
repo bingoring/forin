@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Icon } from '../../components/common';
-import { Button } from '../../ui';
-import { CelebrationOverlay } from '../../components/celebration';
-import { Mascot } from '../../components/mascot';
-import { colors, typography, spacing, borderRadius } from '../../theme';
 import { useQueryClient } from '@tanstack/react-query';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  Badge,
+  Button,
+  Card,
+  CoinChip,
+  Hatto,
+  Icon,
+  SpeechBubble,
+  Toast,
+  XPBar,
+} from '../../ui';
+import { CelebrationOverlay } from '../../components/celebration';
+import { color, sp, text } from '../../theme';
 import { t } from '../../locales';
 import { analytics } from '../../analytics';
 import type { MapStackParamList } from '../../navigation/types';
@@ -20,8 +29,6 @@ export function StageCompleteScreen({ route, navigation }: Props) {
     !!result.unlocked_module_id,
   );
 
-  // Fire analytics once on mount. Each sub-event is gated on the result
-  // so we only emit what actually happened in this completion.
   useEffect(() => {
     analytics.track({
       name: 'stage_complete',
@@ -71,95 +78,135 @@ export function StageCompleteScreen({ route, navigation }: Props) {
     navigation.popToTop();
   };
 
+  const minutes = Math.floor(result.duration_seconds / 60);
+  const seconds = result.duration_seconds % 60;
+
   return (
-    <View style={styles.container}>
-      <View style={styles.mascotWrap}>
-        <Mascot pose="cheer" size={96} />
-      </View>
-      <Text style={styles.title}>Stage Complete!</Text>
-
-      {/* Stars */}
-      <Text style={styles.stars}>
-        {'★'.repeat(result.stars_earned)}
-        {'☆'.repeat(3 - result.stars_earned)}
-      </Text>
-
-      {/* Stats */}
-      <View style={styles.statsCard}>
-        <StatRow label="XP Earned" value={`+${result.xp_earned}`} color={colors.xp} />
-        <StatRow label="Mistakes" value={`${result.mistakes_count}`} color={result.mistakes_count === 0 ? colors.success : colors.error} />
-        <StatRow label="Duration" value={`${Math.floor(result.duration_seconds / 60)}m ${result.duration_seconds % 60}s`} color={colors.textSecondary} />
-      </View>
-
-      {/* Level Up */}
-      {result.level_up && (
-        <View style={styles.levelUpCard}>
-          <Text style={styles.levelUpTitle}>Level Up!</Text>
-          <Text style={styles.levelUpText}>
-            Lv.{result.level_up.previous_level} → Lv.{result.level_up.new_level}
-          </Text>
-          <Text style={styles.levelUpNewTitle}>{result.level_up.new_title}</Text>
+    <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.hero}>
+          <Hatto variant="full" size={280} />
+          <SpeechBubble tone="sky" style={styles.bubble}>
+            {t('home.complete.title')}
+          </SpeechBubble>
         </View>
-      )}
 
-      {/* Streak */}
-      {result.streak_update?.was_extended && (
-        <View style={styles.streakRow}>
-          <Icon name="streak" size={18} color={colors.streak} />
-          <Text style={styles.streakText}>
-            {' '}{result.streak_update.current_streak} day streak!
-            {result.streak_update.milestone_hit
-              ? ` ${result.streak_update.milestone_hit}-day milestone!`
-              : ''}
-          </Text>
-        </View>
-      )}
-
-      {/* Shield used — the user missed yesterday but a shield saved the streak. */}
-      {result.streak_update?.shield_used ? (
-        <View style={styles.shieldCard}>
-          <Icon name="lock" size={20} color={colors.gem} />
-          <Text style={styles.shieldText}>
-            {' '}Streak shield used — your {result.streak_update.current_streak}-day streak is safe.
-          </Text>
-        </View>
-      ) : null}
-
-      {/* Shield earned — a milestone granted a new shield. */}
-      {result.streak_update?.shield_earned ? (
-        <View style={styles.shieldCard}>
-          <Icon name="lock" size={20} color={colors.gem} />
-          <Text style={styles.shieldText}>
-            {' '}New streak shield earned! ({result.streak_update.streak_shields} total)
-          </Text>
-        </View>
-      ) : null}
-
-      {/* Achievements */}
-      {result.achievements.length > 0 && (
-        <View style={styles.achievementCard}>
-          <Text style={styles.achievementTitle}>Achievement Unlocked!</Text>
-          {result.achievements.map((a) => (
-            <View key={a.id} style={styles.achievementRow}>
-              <Icon name="xp" size={18} color={colors.accent} />
-              <Text style={styles.achievementName}> {a.name}</Text>
-            </View>
+        <View style={styles.starsRow}>
+          {[0, 1, 2].map((i) => (
+            <Icon
+              key={i}
+              name="star"
+              size={40}
+              color={i < result.stars_earned ? color.xp : color.hair}
+            />
           ))}
         </View>
-      )}
 
-      {/* Gift Box */}
-      {result.gift_box && (
-        <TouchableOpacity
-          style={styles.giftBoxCard}
-          onPress={() => navigation.navigate('GiftBox', { boxId: result.gift_box!.id, boxType: result.gift_box!.box_type })}
-        >
-          <Icon name="gift" size={32} color={colors.accent} />
-          <Text style={styles.giftBoxText}>Tap to open your {result.gift_box.box_type} gift box!</Text>
-        </TouchableOpacity>
-      )}
+        <Card variant="paper">
+          <View style={styles.stat}>
+            <Text style={styles.statLabel}>{t('home.complete.xpEarned')}</Text>
+            <CoinChip amount={`+${result.xp_earned}`} tone="gold" />
+          </View>
+          <View style={styles.stat}>
+            <Text style={styles.statLabel}>{t('home.complete.mistakes')}</Text>
+            <Badge tone={result.mistakes_count === 0 ? 'mint' : 'rose'}>
+              {String(result.mistakes_count)}
+            </Badge>
+          </View>
+          <View style={styles.stat}>
+            <Text style={styles.statLabel}>{t('home.complete.duration')}</Text>
+            <Text style={styles.statValue}>
+              {minutes}m {seconds}s
+            </Text>
+          </View>
+        </Card>
 
-      <Button full size="lg" onPress={handleContinue} style={styles.btn}>Continue</Button>
+        {result.level_up && (
+          <Card variant="sun">
+            <Text style={[text.h3, styles.cardHeader]}>
+              {t('home.complete.levelUp')}
+            </Text>
+            <Text style={text.body}>
+              Lv.{result.level_up.previous_level} → Lv.{result.level_up.new_level}
+            </Text>
+            <Text style={[text.h2, styles.levelUpTitle]}>
+              {result.level_up.new_title}
+            </Text>
+            <XPBar segments={5} filled={5} />
+          </Card>
+        )}
+
+        {result.streak_update?.was_extended && (
+          <Toast tone="warn" icon="flame">
+            {t('home.complete.streak', {
+              days: result.streak_update.current_streak,
+            })}
+            {result.streak_update.milestone_hit
+              ? ' · ' +
+                t('home.complete.milestone', {
+                  milestone: result.streak_update.milestone_hit,
+                })
+              : ''}
+          </Toast>
+        )}
+
+        {result.streak_update?.shield_used && (
+          <Toast tone="info" icon="lock">
+            {t('home.complete.shieldUsed', {
+              days: result.streak_update.current_streak,
+            })}
+          </Toast>
+        )}
+
+        {result.streak_update?.shield_earned && (
+          <Toast tone="success" icon="lock">
+            {t('home.complete.shieldEarned', {
+              total: result.streak_update.streak_shields,
+            })}
+          </Toast>
+        )}
+
+        {result.achievements.length > 0 && (
+          <Card variant="coral">
+            <Text style={[text.h3, styles.cardHeader]}>
+              {t('home.complete.achievementUnlocked')}
+            </Text>
+            {result.achievements.map((a) => (
+              <View key={a.id} style={styles.achievementRow}>
+                <Icon name="trophy" size={18} color={color.accentDeep} />
+                <Text style={text.bodyBold}>{a.name}</Text>
+              </View>
+            ))}
+          </Card>
+        )}
+
+        {result.gift_box && (
+          <Card
+            variant="premium"
+            onPress={() =>
+              navigation.navigate('GiftBox', {
+                boxId: result.gift_box!.id,
+                boxType: result.gift_box!.box_type,
+              })
+            }
+          >
+            <View style={styles.giftRow}>
+              <Icon name="gift" size={32} color={color.premiumDeep} />
+              <Text style={[text.bodyBold, styles.giftText]}>
+                {t('home.complete.giftPrompt', {
+                  type: result.gift_box.box_type,
+                })}
+              </Text>
+            </View>
+          </Card>
+        )}
+      </ScrollView>
+
+      <View style={styles.footer}>
+        <Button full size="lg" onPress={handleContinue}>
+          {t('home.complete.continue')}
+        </Button>
+      </View>
 
       <CelebrationOverlay
         visible={showFloorUnlock}
@@ -167,81 +214,54 @@ export function StageCompleteScreen({ route, navigation }: Props) {
         subtitle={t('map.celebration.floorUnlockedSubtitle')}
         onDismiss={() => setShowFloorUnlock(false)}
       />
-    </View>
-  );
-}
-
-function StatRow({ label, value, color }: { label: string; value: string; color: string }) {
-  return (
-    <View style={styles.statRow}>
-      <Text style={styles.statLabel}>{label}</Text>
-      <Text style={[styles.statValue, { color }]}>{value}</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background, padding: spacing.lg, justifyContent: 'center', alignItems: 'center' },
-  mascotWrap: { marginBottom: spacing.sm, alignItems: 'center' },
-  title: { ...typography.h1, color: colors.textPrimary, marginBottom: spacing.sm },
-  stars: { fontSize: 40, color: colors.starFilled, marginBottom: spacing.lg },
-  statsCard: {
-    width: '100%',
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    marginBottom: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
+  root: { flex: 1, backgroundColor: color.cream },
+  content: {
+    padding: sp.s5,
+    paddingBottom: sp.s8,
+    gap: sp.s4,
   },
-  statRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: spacing.xs },
-  statLabel: { ...typography.body, color: colors.textSecondary },
-  statValue: { ...typography.bodyBold },
-  levelUpCard: {
-    width: '100%',
-    backgroundColor: colors.xp,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    marginBottom: spacing.md,
-    alignItems: 'center',
+  hero: { alignItems: 'center', gap: sp.s3 },
+  bubble: { maxWidth: 300 },
+  starsRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: sp.s3,
+    paddingVertical: sp.s2,
   },
-  levelUpTitle: { ...typography.h3, color: colors.white },
-  levelUpText: { ...typography.body, color: colors.white },
-  levelUpNewTitle: { ...typography.h2, color: colors.white },
-  streakRow: { flexDirection: 'row', alignItems: 'center', marginBottom: spacing.md },
-  streakText: { ...typography.bodyBold, color: colors.streak },
-  shieldCard: {
+  stat: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
-    backgroundColor: colors.gem + '15',
-    borderRadius: borderRadius.md,
-    borderWidth: 1,
-    borderColor: colors.gem,
-    padding: spacing.md,
-    marginBottom: spacing.md,
+    justifyContent: 'space-between',
+    paddingVertical: sp.s2,
   },
-  shieldText: { ...typography.bodyBold, color: colors.gem, flex: 1 },
-  achievementRow: { flexDirection: 'row', alignItems: 'center', marginTop: 2 },
-  achievementCard: {
-    width: '100%',
-    backgroundColor: colors.accentLight,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    marginBottom: spacing.md,
-  },
-  achievementTitle: { ...typography.h3, color: colors.textPrimary, marginBottom: spacing.xs },
-  achievementName: { ...typography.body, color: colors.textPrimary },
-  giftBoxCard: {
-    width: '100%',
-    backgroundColor: colors.accent + '15',
-    borderRadius: borderRadius.md,
-    borderWidth: 2,
-    borderColor: colors.accent,
-    padding: spacing.md,
+  statLabel: { ...text.body, color: color.inkSoft },
+  statValue: { ...text.bodyBold, color: color.ink },
+  cardHeader: { marginBottom: sp.s1 },
+  levelUpTitle: { marginTop: sp.s1, marginBottom: sp.s2, color: color.woodDark },
+  achievementRow: {
+    flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.lg,
+    gap: sp.s2,
+    marginTop: sp.s1,
   },
-  giftBoxText: { ...typography.bodyBold, color: colors.accent, marginTop: spacing.xs },
-  btn: { width: '100%' },
+  giftRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: sp.s3,
+  },
+  giftText: {
+    flex: 1,
+    color: color.premiumDeep,
+  },
+  footer: {
+    padding: sp.s5,
+    borderTopWidth: 1,
+    borderTopColor: color.hair,
+    backgroundColor: color.cream,
+  },
 });

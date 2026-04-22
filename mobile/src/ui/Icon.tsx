@@ -36,7 +36,9 @@ export type IconName =
   | 'arrow-left'
   | 'arrow-right'
   | 'plus'
-  | 'coin';
+  | 'coin'
+  | 'gift'
+  | 'clock';
 
 interface IconProps {
   name: IconName;
@@ -195,6 +197,24 @@ export function Icon({ name, size = 22, color = colors.ink }: IconProps) {
       return (
         <Svg width={size} height={size} viewBox="0 0 24 24">
           <Circle cx={12} cy={12} r={9} fill={color} />
+        </Svg>
+      );
+    case 'gift':
+      return (
+        <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <Rect x={3} y={9} width={18} height={12} rx={1.5} {...stroke} />
+          <Path d="M3 13h18M12 9v12" {...stroke} />
+          <Path
+            d="M12 9s-2-5-5-5a2.5 2.5 0 000 5h5zM12 9s2-5 5-5a2.5 2.5 0 010 5h-5z"
+            {...stroke}
+          />
+        </Svg>
+      );
+    case 'clock':
+      return (
+        <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <Circle cx={12} cy={12} r={9} {...stroke} />
+          <Path d="M12 7v5l3 3" {...stroke} />
         </Svg>
       );
   }

@@ -1,32 +1,43 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useQueryClient } from '@tanstack/react-query';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { gamificationApi } from '../../api';
-import { Icon } from '../../components/common';
-import { Button } from '../../ui';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import {
+  Badge,
+  Button,
+  Card,
+  Hatto,
+  Icon,
+  SpeechBubble,
+  Toast,
+} from '../../ui';
+import { color, sp, text } from '../../theme';
+import { t } from '../../locales';
 import { analytics } from '../../analytics';
 import type { MapStackParamList } from '../../navigation/types';
 
 type Props = NativeStackScreenProps<MapStackParamList, 'GiftBox'>;
 
-const rarityColors: Record<string, string> = {
-  common: colors.rarityCommon,
-  uncommon: colors.rarityUncommon,
-  rare: colors.rarityRare,
-  epic: colors.rarityEpic,
-  legendary: colors.rarityLegendary,
+// Box type → card variant. Tone is purely decorative; the rarity of
+// the item inside determines the Badge tone in the opened state.
+const BOX_VARIANT: Record<string, 'sky' | 'sun' | 'premium'> = {
+  silver: 'sky',
+  gold: 'sun',
+  legendary: 'premium',
 };
 
-function boxTypeColor(boxType: string): string {
-  switch (boxType) {
-    case 'silver': return colors.rarityRare;
-    case 'gold': return colors.accent;
-    case 'legendary': return colors.rarityLegendary;
-    default: return colors.primary;
-  }
-}
+const RARITY_TONE: Record<
+  string,
+  'sky' | 'mint' | 'coral' | 'lav' | 'sun'
+> = {
+  common: 'sky',
+  uncommon: 'mint',
+  rare: 'coral',
+  epic: 'lav',
+  legendary: 'sun',
+};
 
 export function GiftBoxScreen({ route, navigation }: Props) {
   const { boxId, boxType } = route.params;
@@ -39,8 +50,8 @@ export function GiftBoxScreen({ route, navigation }: Props) {
     setLoading(true);
     try {
       const { data } = await gamificationApi.openGiftBox(boxId);
-      const opened = data.data;
-      setResult(opened);
+      const openedResult = data.data;
+      setResult(openedResult);
       setOpened(true);
       queryClient.invalidateQueries({ queryKey: ['inventory'] });
       queryClient.invalidateQueries({ queryKey: ['profile'] });
@@ -48,102 +59,128 @@ export function GiftBoxScreen({ route, navigation }: Props) {
         name: 'gift_box_open',
         properties: {
           box_type: boxType,
-          item_rarity: opened.item?.rarity ?? 'unknown',
-          was_duplicate: !!opened.was_duplicate,
+          item_rarity: openedResult.item?.rarity ?? 'unknown',
+          was_duplicate: !!openedResult.was_duplicate,
         },
       });
     } catch {
-      alert('Failed to open gift box');
+      Alert.alert(t('common.error'), t('home.gift.openFailed'));
     } finally {
       setLoading(false);
     }
   };
 
+  const boxVariant = BOX_VARIANT[boxType] ?? 'sky';
+
   if (!opened) {
     return (
-      <View style={styles.container}>
-        <View style={styles.boxIcon}>
-          <Icon name="gift" size={96} color={boxTypeColor(boxType)} />
+      <SafeAreaView style={styles.root} edges={['bottom']}>
+        <View style={styles.content}>
+          <View style={styles.hero}>
+            <Hatto variant="face" size={96} />
+            <SpeechBubble style={styles.bubble}>
+              {t('home.gift.hint')}
+            </SpeechBubble>
+          </View>
+
+          <Card variant={boxVariant} style={styles.boxCard}>
+            <Icon name="gift" size={96} color={color.ink} />
+          </Card>
+
+          <Text style={[text.h1, styles.boxTitle]}>
+            {t('home.gift.box', { type: boxType.toUpperCase() })}
+          </Text>
         </View>
-        <Text style={styles.boxType}>{boxType.toUpperCase()} Gift Box</Text>
-        <Text style={styles.hint}>Tap to discover what's inside!</Text>
-        <Button full size="lg" onPress={handleOpen} loading={loading} style={styles.openBtn}>Open</Button>
-      </View>
+
+        <View style={styles.footer}>
+          <Button full size="lg" onPress={handleOpen} loading={loading}>
+            {t('home.gift.open')}
+          </Button>
+        </View>
+      </SafeAreaView>
     );
   }
 
   const item = result.item;
-  const rarityColor = rarityColors[item.rarity] || colors.textMuted;
+  const rarityTone = RARITY_TONE[item.rarity] ?? 'sky';
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.itemFrame, { borderColor: rarityColor }]}>
-        <Icon name="gift" size={56} color={rarityColor} />
-      </View>
-
-      <Text style={styles.itemName}>{item.name}</Text>
-      <Text style={[styles.itemRarity, { color: rarityColor }]}>
-        {item.rarity.toUpperCase()} - {item.slot}
-      </Text>
-
-      {item.description && (
-        <Text style={styles.itemDesc}>{item.description}</Text>
-      )}
-
-      {result.was_duplicate && (
-        <View style={styles.duplicateBanner}>
-          <Icon name="catnip" size={20} color={colors.catnip} />
-          <Text style={styles.duplicateText}>
-            {' '}Already owned! Converted to {result.catnip_earned} Catnip
-          </Text>
+    <SafeAreaView style={styles.root} edges={['bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.hero}>
+          <Hatto variant="face" size={96} />
+          <SpeechBubble tone="coral" style={styles.bubble}>
+            {item.name}
+          </SpeechBubble>
         </View>
-      )}
 
-      <Button
-        full
-        size="lg"
-        onPress={() => navigation.goBack()}
-        style={styles.continueBtn}
-      >
-        Continue
-      </Button>
-    </View>
+        <Card variant={boxVariant} style={styles.boxCard}>
+          <Icon name="gift" size={72} color={color.ink} />
+        </Card>
+
+        <View style={styles.info}>
+          <Text style={[text.h2, styles.itemName]}>{item.name}</Text>
+          <Badge tone={rarityTone}>
+            {t('home.gift.rarityLabel', {
+              rarity: item.rarity,
+              slot: item.slot,
+            })}
+          </Badge>
+          {item.description && (
+            <Text style={[text.body, styles.itemDesc]}>
+              {item.description}
+            </Text>
+          )}
+        </View>
+
+        {result.was_duplicate && (
+          <Toast tone="info">
+            {t('home.gift.duplicate', { amount: result.catnip_earned })}
+          </Toast>
+        )}
+      </ScrollView>
+
+      <View style={styles.footer}>
+        <Button full size="lg" onPress={() => navigation.goBack()}>
+          {t('home.gift.continue')}
+        </Button>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
+  root: { flex: 1, backgroundColor: color.cream },
+  content: {
+    flexGrow: 1,
+    padding: sp.s5,
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
-    padding: spacing.lg,
+    gap: sp.s5,
   },
-  boxIcon: { marginBottom: spacing.md },
-  boxType: { ...typography.h2, color: colors.textPrimary, marginBottom: spacing.xs },
-  hint: { ...typography.body, color: colors.textMuted, marginBottom: spacing.xl },
-  openBtn: { width: '100%' },
-  itemFrame: {
-    width: 120,
-    height: 120,
-    borderRadius: borderRadius.lg,
-    borderWidth: 3,
+  hero: { alignItems: 'center', gap: sp.s3 },
+  bubble: { maxWidth: 280 },
+  boxCard: {
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.white,
-    marginBottom: spacing.md,
+    paddingVertical: sp.s7,
+    width: '100%',
   },
-  itemName: { ...typography.h2, color: colors.textPrimary, marginBottom: spacing.xs },
-  itemRarity: { ...typography.bodyBold, marginBottom: spacing.sm },
-  itemDesc: { ...typography.body, color: colors.textSecondary, textAlign: 'center', marginBottom: spacing.md },
-  duplicateBanner: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.catnip + '20',
-    borderRadius: borderRadius.sm,
-    padding: spacing.md,
-    marginBottom: spacing.lg,
+  boxTitle: {
+    textAlign: 'center',
+    color: color.ink,
   },
-  duplicateText: { ...typography.bodyBold, color: colors.catnip, textAlign: 'center' },
-  continueBtn: { width: '100%', marginTop: spacing.lg },
+  info: {
+    alignItems: 'center',
+    gap: sp.s2,
+    paddingHorizontal: sp.s3,
+  },
+  itemName: { color: color.ink, textAlign: 'center' },
+  itemDesc: { color: color.inkSoft, textAlign: 'center', marginTop: sp.s2 },
+  footer: {
+    padding: sp.s5,
+    borderTopWidth: 1,
+    borderTopColor: color.hair,
+    backgroundColor: color.cream,
+  },
 });
