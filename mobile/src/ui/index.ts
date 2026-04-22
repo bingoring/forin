@@ -12,3 +12,9 @@ export type { ButtonProps, ButtonVariant } from './Button';
 
 export { Icon } from './Icon';
 export type { IconName } from './Icon';
+
+export { Card, isDarkCardVariant } from './Card';
+export type { CardProps, CardVariant } from './Card';
+
+export { Badge } from './Badge';
+export type { BadgeProps, BadgeTone } from './Badge';
