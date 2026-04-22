@@ -52,3 +52,15 @@ export type { AvatarProps } from './Avatar';
 
 export { ListRow } from './ListRow';
 export type { ListRowProps } from './ListRow';
+
+export { SpeechBubble } from './SpeechBubble';
+export type { SpeechBubbleProps, SpeechBubbleTone } from './SpeechBubble';
+
+export { Toast } from './Toast';
+export type { ToastProps, ToastTone } from './Toast';
+
+export { StageNode } from './StageNode';
+export type { StageNodeProps, StageNodeState } from './StageNode';
+
+export { OptionCard } from './OptionCard';
+export type { OptionCardProps, OptionCardTone, OptionCardState } from './OptionCard';

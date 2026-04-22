@@ -12,11 +12,15 @@ import {
   Icon,
   type IconName,
   ListRow,
+  OptionCard,
   ProgressBar,
   Pushable,
   SectionHeader,
+  SpeechBubble,
+  StageNode,
   Tabs,
   TextInput,
+  Toast,
   Toggle,
   XPBar,
 } from '../../ui';
@@ -271,6 +275,59 @@ export function DesignPlaygroundScreen() {
             onPress={() => {}}
           />
         </View>
+      </Section>
+
+      <Section title="Speech bubbles">
+        <SpeechBubble>Hi! I'm Hatto. Let's get started.</SpeechBubble>
+        <SpeechBubble tone="sky" tailSide="right">
+          Nice — you nailed the vitals handover.
+        </SpeechBubble>
+        <SpeechBubble tone="coral">
+          Careful! The patient's on fluid restriction.
+        </SpeechBubble>
+      </Section>
+
+      <Section title="Toasts">
+        <Toast tone="success">Saved. Your streak keeps growing.</Toast>
+        <Toast tone="info">Push reminders enabled at 8am.</Toast>
+        <Toast tone="warn">Heads up: 2 lessons queued offline.</Toast>
+        <Toast tone="error">We couldn't reach the server.</Toast>
+      </Section>
+
+      <Section title="Stage nodes">
+        <Row>
+          <StageNode state="locked" label="Locked" />
+          <StageNode state="active" label="Active" onPress={() => {}} />
+          <StageNode state="complete" label="Done" onPress={() => {}} />
+          <StageNode state="crown" label="Crown" icon="trophy" onPress={() => {}} />
+        </Row>
+      </Section>
+
+      <Section title="Option cards">
+        <OptionCard
+          icon="heart"
+          title="Vital signs handover"
+          subtitle="BP, HR, temp, SpO₂, pain"
+          onPress={() => {}}
+        />
+        <OptionCard
+          icon="mic"
+          title="Pain assessment"
+          subtitle="0–10 scale, PQRST"
+          state="selected"
+          tone="sky"
+        />
+        <OptionCard
+          icon="check"
+          title="Fluid balance chart"
+          state="correct"
+        />
+        <OptionCard
+          icon="x"
+          title="Transfusion witness"
+          subtitle="Wrong — needs two RNs"
+          state="wrong"
+        />
       </Section>
 
       <Section title="Pushable (raw)">
