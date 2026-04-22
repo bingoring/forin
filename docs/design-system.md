@@ -67,7 +67,7 @@ s1 = 4    s2 = 8    s3 = 12   s4 = 16   s5 = 20
 s6 = 24   s7 = 32   s8 = 40   s9 = 56   s10 = 72
 ```
 
-Legacy screens still import the older `spacing.xs..xl` aliases during the design-system migration. Migrated screens use `sp`.
+Every screen uses `sp.sN` directly. A few inner components under `src/components/` still import the older `spacing.xs..xl` aliases; those disappear alongside the components themselves during the exercise / scene redesigns.
 
 ### Shape
 
@@ -144,6 +144,7 @@ Everything in `mobile/src/ui/` is a Lego brick. Screens compose them; they don't
 | `Toast`       | Inline alert strip — success / info / warn / error.                           |
 | `StageNode`   | Circular pushable node for the learning-path map (4 states).                  |
 | `OptionCard`  | Multiple-choice answer card — default / selected / correct / wrong.            |
+| `Hatto`       | PNG-based mascot — `face` (chat) and `full` (celebration) variants.           |
 
 See [`DesignPlaygroundScreen`](../mobile/src/screens/dev/DesignPlaygroundScreen.tsx) for a live gallery — open it from `Profile → Open design playground` (shown only in `__DEV__`).
 
@@ -158,16 +159,22 @@ See [`DesignPlaygroundScreen`](../mobile/src/screens/dev/DesignPlaygroundScreen.
 
 ## Migration status (2026-04-17)
 
-Phases 1 and 2 are **done**. Every primitive the redesign needs lives under `mobile/src/ui/` and is exercised in the Design playground. Legacy components remain under `src/components/common/` until each screen is rebuilt in Phases 4–6.
+**All seven phases have shipped.** Every user-facing screen renders through the new DS; every primitive lives under `mobile/src/ui/` and is exercised in the Design playground.
 
-| Phase | Scope                                   | Status  |
-| ----- | --------------------------------------- | ------- |
-| 1     | Tokens, Button, Icon, Card, Badge, progress family, playground | done |
+| Phase | Scope                                                                | Status |
+| ----- | -------------------------------------------------------------------- | ------ |
+| 1     | Tokens, Button, Icon, Card, Badge, progress family, playground        | done   |
 | 2     | TextInput, Toggle, Tabs, Avatar, SectionHeader, ListRow, SpeechBubble, Toast, Divider, StageNode, OptionCard, Chip | done |
-| 3     | Hatto mascot (PNG-based), NPCAvatar swap                   | planned |
-| 4     | Auth + onboarding screens rebuilt                          | planned |
-| 5     | Learning loop screens rebuilt                              | planned |
-| 6     | Profile + misc screens rebuilt; legacy tokens deleted      | planned |
-| 7     | Cleanup, docs sweep, US locale scaffold                    | planned |
+| 3     | Hatto mascot (PNG-based)                                              | done   |
+| 4     | Auth + onboarding screens rebuilt                                     | done   |
+| 5     | Learning loop screens rebuilt (Map, Quests, Stage intro/complete, Exercise, Gift box) | done |
+| 6     | Profile + misc screens rebuilt (Profile, Notifications, Inventory, Shop, Achievements, Stats) + tab bar | done |
+| 7     | Dead-code prune + docs sweep                                          | done   |
 
-Each phase lands as its own PR. When the migration closes, `src/components/common/` goes away and `src/theme/colors.ts / typography.ts / spacing.ts` with it.
+### What still lives under the old surface
+
+- `src/components/common/Icon.tsx` — the legacy hero icon set is still used by `components/exercises/*`, `components/scene/*`, and `components/map/*`. Those inner components are the target of the **exercise redesign** initiative (see `docs/superpowers/specs/2026-04-17-exercise-redesign-design.md`).
+- `src/components/mascot/Mascot.tsx` + `NPCAvatar.tsx` — still imported by `scene/*` and `celebration/*`. Retiring them is tied to the same redesign wave.
+- Legacy theme bridges (`colors.ts`, `typography.ts`, `spacing.ts`) remain exported so the inner components above still compile. They're removed the day their last consumer goes away.
+
+None of the legacy surface leaks into a screen. If you're editing a screen and reach for `colors.*` or `typography.*`, that's a regression — switch to `color.*` / `text.*`.
