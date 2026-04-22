@@ -1,11 +1,31 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import {
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery } from '@tanstack/react-query';
 import { gamificationApi } from '../../api';
-import { Icon } from '../../components/common';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import {
+  Card,
+  Hatto,
+  Icon,
+  ListRow,
+  SectionHeader,
+  SpeechBubble,
+  Tabs,
+} from '../../ui';
+import { color, sp, text } from '../../theme';
+import { t } from '../../locales';
+
+type Filter = 'all' | 'unlocked' | 'locked';
 
 export function AchievementsScreen() {
+  const [filter, setFilter] = useState<Filter>('all');
+
   const { data, isLoading } = useQuery({
     queryKey: ['achievements'],
     queryFn: async () => {
@@ -14,60 +34,90 @@ export function AchievementsScreen() {
     },
   });
 
+  const filtered = useMemo(() => {
+    if (!data) return [];
+    if (filter === 'unlocked') return data.filter((a: any) => a.is_unlocked);
+    if (filter === 'locked') return data.filter((a: any) => !a.is_unlocked);
+    return data;
+  }, [data, filter]);
+
+  const unlockedCount = data?.filter((a: any) => a.is_unlocked).length ?? 0;
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>Achievements</Text>
-
-      {isLoading && <Text>Loading...</Text>}
-
-      {data?.map((a: any) => (
-        <View key={a.id} style={[styles.card, a.is_unlocked && styles.cardUnlocked]}>
-          <View style={styles.iconContainer}>
-            <Icon
-              name={a.is_unlocked ? 'xp' : 'lock'}
-              size={28}
-              color={a.is_unlocked ? colors.accent : colors.textMuted}
-            />
-          </View>
-          <View style={styles.info}>
-            <Text style={[styles.name, !a.is_unlocked && styles.nameLocked]}>{a.name}</Text>
-            <Text style={styles.description}>{a.description}</Text>
-            {a.is_unlocked && a.unlocked_at && (
-              <Text style={styles.date}>
-                Unlocked {new Date(a.unlocked_at).toLocaleDateString()}
-              </Text>
-            )}
-          </View>
+    <SafeAreaView style={styles.root} edges={['top']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <View style={styles.hero}>
+          <Hatto variant="face" size={80} />
+          <SpeechBubble tone="sky" style={styles.bubble}>
+            {t('achievements.hatto', {
+              count: unlockedCount,
+              total: data?.length ?? 0,
+            })}
+          </SpeechBubble>
         </View>
-      ))}
 
-      {data?.length === 0 && (
-        <Text style={styles.emptyText}>Complete stages to unlock achievements</Text>
-      )}
-    </ScrollView>
+        <SectionHeader title={t('achievements.title')} />
+
+        <Tabs<Filter>
+          items={[
+            { value: 'all',       label: t('achievements.tabs.all') },
+            { value: 'unlocked',  label: t('achievements.tabs.done') },
+            { value: 'locked',    label: t('achievements.tabs.locked') },
+          ]}
+          value={filter}
+          onChange={setFilter}
+        />
+
+        {isLoading && (
+          <View style={styles.loading}>
+            <ActivityIndicator color={color.primary} />
+          </View>
+        )}
+
+        {!isLoading && filtered.length === 0 && (
+          <Card variant="cream">
+            <Text style={[text.body, styles.emptyText]}>
+              {t('achievements.empty')}
+            </Text>
+          </Card>
+        )}
+
+        {filtered.length > 0 && (
+          <Card variant="paper" padding={0} style={styles.list}>
+            {filtered.map((a: any, idx: number) => (
+              <ListRow
+                key={a.id}
+                leading={
+                  <Icon
+                    name={a.is_unlocked ? 'trophy' : 'lock'}
+                    size={24}
+                    color={a.is_unlocked ? color.xp : color.inkFaint}
+                  />
+                }
+                title={a.name}
+                subtitle={
+                  a.is_unlocked && a.unlocked_at
+                    ? t('achievements.unlockedAt', {
+                        date: new Date(a.unlocked_at).toLocaleDateString(),
+                      })
+                    : a.description
+                }
+                last={idx === filtered.length - 1}
+              />
+            ))}
+          </Card>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.md },
-  title: { ...typography.h1, color: colors.textPrimary, marginBottom: spacing.lg },
-  card: {
-    flexDirection: 'row',
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    marginBottom: spacing.sm,
-    borderWidth: 1,
-    borderColor: colors.border,
-    opacity: 0.6,
-  },
-  cardUnlocked: { opacity: 1, borderColor: colors.accent },
-  iconContainer: { width: 48, height: 48, justifyContent: 'center', alignItems: 'center' },
-  info: { flex: 1, marginLeft: spacing.sm },
-  name: { ...typography.bodyBold, color: colors.textPrimary },
-  nameLocked: { color: colors.textMuted },
-  description: { ...typography.caption, color: colors.textSecondary },
-  date: { ...typography.small, color: colors.success, marginTop: 2 },
-  emptyText: { ...typography.body, color: colors.textMuted, textAlign: 'center', marginTop: spacing.xl },
+  root: { flex: 1, backgroundColor: color.cream },
+  content: { padding: sp.s5, gap: sp.s4, paddingBottom: sp.s8 },
+  hero: { alignItems: 'center', gap: sp.s3 },
+  bubble: { maxWidth: 280 },
+  loading: { paddingVertical: sp.s6, alignItems: 'center' },
+  list: { overflow: 'hidden' },
+  emptyText: { color: color.inkSoft, textAlign: 'center' },
 });

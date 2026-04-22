@@ -1,12 +1,20 @@
 import React, { useMemo } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Dimensions } from 'react-native';
-import Svg, { Rect, Line, Text as SvgText } from 'react-native-svg';
+import {
+  ActivityIndicator,
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import Svg, { Line, Rect, Text as SvgText } from 'react-native-svg';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery } from '@tanstack/react-query';
 import { userApi } from '../../api';
-import { Icon } from '../../components/common';
-import { colors, typography, spacing, borderRadius } from '../../theme';
+import { Card, Icon, SectionHeader } from '../../ui';
+import { color, fontFamily, fontSize, sp, text } from '../../theme';
 import { t } from '../../locales';
-import type { WeeklyStats, DailyStatEntry } from '../../types/api';
+import type { DailyStatEntry } from '../../types/api';
 
 const WEEKDAY_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -22,7 +30,7 @@ export function WeeklyStatsScreen() {
   if (isLoading) {
     return (
       <View style={styles.loading}>
-        <ActivityIndicator color={colors.primary} size="large" />
+        <ActivityIndicator color={color.primary} size="large" />
       </View>
     );
   }
@@ -30,7 +38,7 @@ export function WeeklyStatsScreen() {
   if (!data) {
     return (
       <View style={styles.loading}>
-        <Text style={typography.body}>{t('stats.empty')}</Text>
+        <Text style={text.body}>{t('stats.empty')}</Text>
       </View>
     );
   }
@@ -38,59 +46,96 @@ export function WeeklyStatsScreen() {
   const hasActivity = data.stages_completed > 0;
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Text style={styles.title}>{t('stats.title')}</Text>
+    <SafeAreaView style={styles.root} edges={['bottom']}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <SectionHeader title={t('stats.title')} />
 
-      {/* Headline stats */}
-      <View style={styles.grid}>
-        <StatCard icon="xp" iconColor={colors.xp} value={`${data.total_xp_earned}`} label={t('stats.totalXP')} />
-        <StatCard icon="check" iconColor={colors.success} value={`${data.stages_completed}`} label={t('stats.stagesCompleted')} />
-        <StatCard icon="streak" iconColor={colors.streak} value={`${data.current_streak}${t('stats.streakUnit')}`} label={t('stats.streak')} />
-        <StatCard icon="heart" iconColor={colors.heart} value={`${data.days_active}/7`} label={t('stats.daysActive')} />
-      </View>
+        <View style={styles.grid}>
+          <StatTile
+            icon="trophy"
+            tone={color.xp}
+            value={`${data.total_xp_earned}`}
+            label={t('stats.totalXP')}
+          />
+          <StatTile
+            icon="check"
+            tone={color.success}
+            value={`${data.stages_completed}`}
+            label={t('stats.stagesCompleted')}
+          />
+          <StatTile
+            icon="flame"
+            tone={color.accent}
+            value={`${data.current_streak}${t('stats.streakUnit')}`}
+            label={t('stats.streak')}
+          />
+          <StatTile
+            icon="heart"
+            tone={color.danger}
+            value={`${data.days_active}/7`}
+            label={t('stats.daysActive')}
+          />
+        </View>
 
-      {/* Bar chart */}
-      <View style={styles.chartCard}>
-        <Text style={styles.cardTitle}>{t('stats.breakdownTitle')}</Text>
-        {hasActivity ? (
-          <BarChart days={data.daily_breakdown} />
-        ) : (
-          <Text style={styles.emptyText}>{t('stats.empty')}</Text>
-        )}
-      </View>
+        <Card variant="paper">
+          <Text style={[text.h3, styles.cardTitle]}>
+            {t('stats.breakdownTitle')}
+          </Text>
+          {hasActivity ? (
+            <BarChart days={data.daily_breakdown} />
+          ) : (
+            <Text style={styles.emptyText}>{t('stats.empty')}</Text>
+          )}
+        </Card>
 
-      {/* Secondary stats */}
-      <View style={styles.secondaryCard}>
-        <SecondaryRow label={t('stats.goalMet')} value={`${data.daily_goals_met}/7`} />
-        <SecondaryRow label={t('stats.averageScore')} value={data.average_score > 0 ? `${Math.round(data.average_score)}` : '—'} />
-      </View>
-    </ScrollView>
+        <Card variant="cream">
+          <SecondaryRow label={t('stats.goalMet')} value={`${data.daily_goals_met}/7`} />
+          <SecondaryRow
+            label={t('stats.averageScore')}
+            value={
+              data.average_score > 0
+                ? `${Math.round(data.average_score)}`
+                : '—'
+            }
+            last
+          />
+        </Card>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-function StatCard({
+function StatTile({
   icon,
-  iconColor,
+  tone,
   value,
   label,
 }: {
-  icon: 'xp' | 'check' | 'streak' | 'heart';
-  iconColor: string;
+  icon: 'trophy' | 'check' | 'flame' | 'heart';
+  tone: string;
   value: string;
   label: string;
 }) {
   return (
-    <View style={styles.statCard}>
-      <Icon name={icon} size={22} color={iconColor} />
-      <Text style={styles.statValue}>{value}</Text>
-      <Text style={styles.statLabel}>{label}</Text>
+    <View style={styles.tile}>
+      <Icon name={icon} size={22} color={tone} />
+      <Text style={styles.tileValue}>{value}</Text>
+      <Text style={styles.tileLabel}>{label}</Text>
     </View>
   );
 }
 
-function SecondaryRow({ label, value }: { label: string; value: string }) {
+function SecondaryRow({
+  label,
+  value,
+  last,
+}: {
+  label: string;
+  value: string;
+  last?: boolean;
+}) {
   return (
-    <View style={styles.secondaryRow}>
+    <View style={[styles.secondaryRow, !last && styles.secondaryBorder]}>
       <Text style={styles.secondaryLabel}>{label}</Text>
       <Text style={styles.secondaryValue}>{value}</Text>
     </View>
@@ -98,17 +143,16 @@ function SecondaryRow({ label, value }: { label: string; value: string }) {
 }
 
 const SCREEN_W = Dimensions.get('window').width;
-const CHART_W = SCREEN_W - spacing.md * 2 - spacing.md * 2; // outer padding + card padding
+const CHART_W = SCREEN_W - sp.s5 * 2 - sp.s4 * 2; // outer padding + card padding
 const CHART_H = 180;
 const CHART_BAR_AREA_H = 130;
 const CHART_LABEL_H = 20;
 
 function BarChart({ days }: { days: DailyStatEntry[] }) {
-  // Normalize to exactly 7 days ordered by date ascending. The backend
-  // returns up to 7 rows; fill missing days with zeroes so the chart
-  // shape is stable.
   const sorted = useMemo(() => {
-    return [...days].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    return [...days].sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
   }, [days]);
 
   const maxXP = Math.max(1, ...sorted.map((d) => d.xp_earned));
@@ -118,20 +162,19 @@ function BarChart({ days }: { days: DailyStatEntry[] }) {
 
   return (
     <Svg width={CHART_W} height={CHART_H}>
-      {/* Baseline */}
       <Line
         x1={0}
         y1={CHART_BAR_AREA_H}
         x2={CHART_W}
         y2={CHART_BAR_AREA_H}
-        stroke={colors.border}
+        stroke={color.hair}
         strokeWidth={1}
       />
       {sorted.map((d, i) => {
         const h = (d.xp_earned / maxXP) * (CHART_BAR_AREA_H - 16);
         const x = i * slotW + (slotW - barW) / 2;
         const y = CHART_BAR_AREA_H - h;
-        const fill = d.goal_met ? colors.accent : colors.primaryLight;
+        const fill = d.goal_met ? color.accent : color.primaryLight;
         const weekday = WEEKDAY_SHORT[new Date(d.date).getDay()];
         return (
           <React.Fragment key={d.date}>
@@ -141,9 +184,9 @@ function BarChart({ days }: { days: DailyStatEntry[] }) {
                 x={x + barW / 2}
                 y={y - 4}
                 fontSize={10}
-                fontWeight="600"
+                fontWeight="700"
                 textAnchor="middle"
-                fill={colors.textSecondary}
+                fill={color.inkSoft}
               >
                 {d.xp_earned}
               </SvgText>
@@ -153,7 +196,7 @@ function BarChart({ days }: { days: DailyStatEntry[] }) {
               y={CHART_BAR_AREA_H + CHART_LABEL_H - 4}
               fontSize={11}
               textAnchor="middle"
-              fill={colors.textSecondary}
+              fill={color.inkSoft}
             >
               {weekday}
             </SvgText>
@@ -165,47 +208,58 @@ function BarChart({ days }: { days: DailyStatEntry[] }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.md },
-  loading: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: spacing.lg },
-  title: { ...typography.h1, color: colors.textPrimary, marginBottom: spacing.md },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, marginBottom: spacing.md },
-  statCard: {
+  root: { flex: 1, backgroundColor: color.cream },
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: color.cream,
+  },
+  content: { padding: sp.s5, gap: sp.s4, paddingBottom: sp.s8 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: sp.s3 },
+  tile: {
     flex: 1,
     minWidth: '45%',
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
+    backgroundColor: color.paper,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    borderColor: color.hair,
+    borderBottomWidth: 3,
+    borderBottomColor: color.hair,
+    padding: sp.s3,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.border,
+    gap: 2,
   },
-  statValue: { ...typography.h2, color: colors.textPrimary, marginTop: spacing.xs },
-  statLabel: { ...typography.small, color: colors.textMuted, marginTop: 2, textAlign: 'center' },
-  chartCard: {
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    marginBottom: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
+  tileValue: {
+    fontFamily: fontFamily.display,
+    fontSize: fontSize.h2,
+    color: color.ink,
+    marginTop: sp.s1,
   },
-  cardTitle: { ...typography.h3, color: colors.textPrimary, marginBottom: spacing.sm },
-  emptyText: { ...typography.body, color: colors.textMuted, textAlign: 'center', paddingVertical: spacing.lg },
-  secondaryCard: {
-    backgroundColor: colors.white,
-    borderRadius: borderRadius.md,
-    padding: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
+  tileLabel: {
+    fontFamily: fontFamily.heading,
+    fontSize: fontSize.micro,
+    color: color.inkSoft,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    textAlign: 'center',
+  },
+  cardTitle: { marginBottom: sp.s2 },
+  emptyText: {
+    ...text.body,
+    color: color.inkSoft,
+    textAlign: 'center',
+    paddingVertical: sp.s5,
   },
   secondaryRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: spacing.xs,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    paddingVertical: sp.s2,
   },
-  secondaryLabel: { ...typography.body, color: colors.textSecondary },
-  secondaryValue: { ...typography.bodyBold, color: colors.textPrimary },
+  secondaryBorder: {
+    borderBottomWidth: 1,
+    borderBottomColor: color.hair,
+  },
+  secondaryLabel: { ...text.body, color: color.inkSoft },
+  secondaryValue: { ...text.bodyBold, color: color.ink },
 });
