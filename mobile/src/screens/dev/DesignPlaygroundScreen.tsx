@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
+  Avatar,
   Badge,
   Button,
   Card,
+  Chip,
   CoinChip,
   Divider,
   Hearts,
   Icon,
   type IconName,
+  ListRow,
   ProgressBar,
   Pushable,
   SectionHeader,
+  Tabs,
   TextInput,
   Toggle,
   XPBar,
@@ -36,6 +40,8 @@ export function DesignPlaygroundScreen() {
   const [text2, setText2] = useState('nurse@hospital.org');
   const [toggle1, setToggle1] = useState(true);
   const [toggle2, setToggle2] = useState(false);
+  const [tab, setTab] = useState<'daily' | 'weekly' | 'all'>('daily');
+  const [chips, setChips] = useState({ vitals: true, charting: false, handover: false });
 
   return (
     <ScrollView style={styles.root} contentContainerStyle={styles.content}>
@@ -193,6 +199,80 @@ export function DesignPlaygroundScreen() {
         <Divider label="or" />
       </Section>
 
+      <Section title="Tabs">
+        <Tabs
+          items={[
+            { value: 'daily', label: 'Daily' },
+            { value: 'weekly', label: 'Weekly' },
+            { value: 'all', label: 'All-time' },
+          ]}
+          value={tab}
+          onChange={setTab}
+        />
+      </Section>
+
+      <Section title="Chips">
+        <Row>
+          <Chip
+            tone="sky"
+            icon="check"
+            selected={chips.vitals}
+            onPress={() => setChips((p) => ({ ...p, vitals: !p.vitals }))}
+          >
+            Vitals
+          </Chip>
+          <Chip
+            tone="coral"
+            selected={chips.charting}
+            onPress={() => setChips((p) => ({ ...p, charting: !p.charting }))}
+          >
+            Charting
+          </Chip>
+          <Chip
+            tone="mint"
+            selected={chips.handover}
+            onPress={() => setChips((p) => ({ ...p, handover: !p.handover }))}
+          >
+            Handover
+          </Chip>
+          <Chip tone="sky">Static</Chip>
+        </Row>
+      </Section>
+
+      <Section title="Avatars">
+        <Row>
+          <Avatar initials="YW" />
+          <Avatar initials="YW" ring />
+          <Avatar initials="YW" badge={3} />
+          <Avatar size={64} initials="AU" ring badge="!" />
+        </Row>
+      </Section>
+
+      <Section title="List rows">
+        <View style={styles.listCard}>
+          <ListRow
+            leading={<Icon name="heart" size={20} color={color.danger} />}
+            title="Lives"
+            subtitle="Regenerate in 28 min"
+            trailing={<Badge tone="rose">3</Badge>}
+            onPress={() => {}}
+          />
+          <ListRow
+            leading={<Icon name="gem" size={20} color={color.primary} />}
+            title="Gems"
+            subtitle="Buy more in the shop"
+            trailing={<CoinChip amount={12} tone="gem" />}
+            onPress={() => {}}
+          />
+          <ListRow
+            leading={<Icon name="settings" size={20} color={color.inkSoft} />}
+            title="Settings"
+            last
+            onPress={() => {}}
+          />
+        </View>
+      </Section>
+
       <Section title="Pushable (raw)">
         <Pushable size="md" shadowColor={color.primaryDeep} onPress={() => {}}>
           <View style={styles.rawPush}>
@@ -244,4 +324,11 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   rawPushText: { color: color.paper, fontSize: 15 },
+  listCard: {
+    borderWidth: 1.5,
+    borderColor: color.hair,
+    borderRadius: 16,
+    overflow: 'hidden',
+    backgroundColor: color.paper,
+  },
 });

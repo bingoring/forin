@@ -40,3 +40,15 @@ export type { DividerProps } from './Divider';
 
 export { SectionHeader } from './SectionHeader';
 export type { SectionHeaderProps } from './SectionHeader';
+
+export { Tabs } from './Tabs';
+export type { TabsProps, TabItem } from './Tabs';
+
+export { Chip } from './Chip';
+export type { ChipProps, ChipTone } from './Chip';
+
+export { Avatar } from './Avatar';
+export type { AvatarProps } from './Avatar';
+
+export { ListRow } from './ListRow';
+export type { ListRowProps } from './ListRow';
