@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+
+# Original design handoff kept locally; canonical copy committed in
+# docs/dlc/projects/forin/inputs/design-handoff (waypoint submodule)
+/design_handoff_forin/
+
+# Node / Expo (mobile)
+node_modules/
+.expo/
+dist/
+web-build/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.env
+.env.*
+!.env.example
+
+# Go (server)
+/server/bin/
+/server/tmp/
+*.test
+*.out
+
+# Generated contract artifacts (regenerated via codegen)
+# (keep openapi.yaml + generated client committed; ignore tool caches)
+.swag/
+
+# Editors
+.idea/
+.vscode/
+*.swp
