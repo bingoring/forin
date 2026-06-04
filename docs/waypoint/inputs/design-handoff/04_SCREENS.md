@@ -173,10 +173,44 @@ interaction; styling follows the shared QuizCard + token system.
 
 ---
 
-## ⑨ Growth & Career  (`screens-progress.jsx`)
-### Daily Growth Report (ScreenGrowth)
-- End-of-day report: stats, phrases learned, encouragement.
-### Profile · Career · Review Lab (ScreenProfile)
-- Player profile: job/level, badges, certification progress, sticker board,
-  career track. The **리뷰랩 (Review Lab)** bottom-nav tab links here / to a
-  saved-mistakes review (full Review Lab screen not yet designed — product TODO).
+## ⑨ Growth & Career  (`screens-progress.jsx`) + Review Lab (`screens-review-lab.jsx`)
+
+### Bottom-nav IA (decided — Option A)
+The bottom nav has 4 tabs: **캠퍼스 / 상황판 / 리뷰랩 / 나**.
+- **나 (me) tab → Profile is the HOME** (`ScreenProfile`, `active="me"`). It is
+  what appears first when the user taps 나.
+- **Daily Growth Report (`ScreenGrowth`) is a PUSHED sub-view of the 나 tab** —
+  NOT its own tab. Entered two ways: (a) tapping the mint **"오늘의 성장 리포트"**
+  row on the Profile (📊 + "시나리오 N 완료 · +XP · 🔥 streak" + ▶), or
+  (b) auto-shown when a day/scenario ends. Its TopBar **‹** returns to Profile.
+  In the prototype this is a `view` state inside `ScreenProfile`
+  (`'profile' | 'report'`); in RN use a stack push.
+- **리뷰랩 (lab) tab → Review Lab** (`ScreenReviewLab`, `active="lab"`) is its
+  own tab. The Profile also has a small "리뷰랩 열기 ▶" teaser that deep-links
+  into the same Review Lab.
+
+### Profile (ScreenProfile) — 나 tab home
+Player ID card (Derp portrait, rank/level, XP bar, EN level chips), reputation
+bars (환자 만족도/동료 신뢰도/응급 대응력), the "오늘의 성장 리포트" entry row,
+CAREER PATH stepper (Learner→Junior(here)→Senior→Head Nurse), 커리어 뱃지 grid,
+and a Review Lab teaser card.
+
+### Daily Growth Report (ScreenGrowth) — pushed from Profile
+End-of-day report: hero "오늘 N명의 환자에게 미소를 주었습니다" card, 이번 주
+출석 streak (7-day grid), stat tiles (시나리오/새 표현/환자 만족/대화 시간),
+칭찬 스티커 보드 (collectible grid → unlocks certs). `onBack` → Profile.
+
+### Review Lab (ScreenReviewLab) — 리뷰랩 tab
+The "오답노트 / speak-like-a-local" review system. AI-corrected sentences from
+scenarios become spaced-repetition phrase cards.
+- **Daily review hero** (lilac): "N개 카드 복습할 시간이에요" + **▶ 오늘의 복습
+  시작** (enters a spaced-repetition session).
+- **Stats**: 저장된 카드 / 마스터 / 복습 대기.
+- **Category filter** (scrollable chips): 전체 / 복습 / 통증 / SBAR / 표현, each
+  with a count badge.
+- **PhraseCard** (the core unit): source dept + 복습/tag badges; ✕ original line
+  (strikethrough) → ✓ corrected line (highlighted) + 🔊 TTS; a **"왜?"** note box
+  explaining why the native phrasing is better; a 3-pip **mastery** meter; and
+  actions **🎤 따라 말하기** (record & compare) + **★** favorite.
+- RN: store cards from scenario corrections; schedule reviews (SM-2-style);
+  🔊 via expo-speech / TTS, 🎤 via expo-av + pronunciation check.

@@ -54,6 +54,45 @@ SVG icons. Heart props: `size=12`, `filled=true`, `color='#EF4444'`. Star props:
 Small SVG pixel flags for the language/destination picker. `size` prop.
 `PixelFlag` takes a `stripes` array for custom flags. Port to RN SVG.
 
+## StatBar
+HP/EXP-style progress bar. Props: `label`, `value`, `max=100`, `color=mint`, `w=120`,
+`labelW`, `showPct`. Two readouts: `value/max` (default) or `NN%` when `showPct`
+(with a fixed-width `labelW` label column — this replaced the old `RepRow`).
+Look: cream track, `2px ink` border, colored fill (`transition width .3s`).
+
+## StatTile / MiniStat / BadgeTile (data display)
+- **StatTile** — large metric block: `label` (small), big `value`, `sub`, and a
+  top-right `color` accent square. Used in Daily Growth Report.
+- **MiniStat** — compact metric: big `value`, small `label`, a left `color`
+  accent bar. Used in Review Lab stats.
+- **BadgeTile** — collectible square (career badge / sticker slot). Props:
+  `emoji`, `label`, `got` (earned, else faded+grayscale), `special` (yellow
+  highlight), `tag` (corner ribbon e.g. "NEW").
+
+## Highlight (marker pen)
+Marker-pen text emphasis. Props: `color` (default yellow; mint etc.), `raised`
+(adds a hard ink shadow). Wrap any inline text: `<Highlight>5명</Highlight>`.
+
+## Badge
+Small square status pill. Props: `bg`, `color`, `border`. Used for `! 3`,
+`HERE`, `🔒 LOCKED`, `복습`, tag chips, `NEW`, etc. (8px DungGeunMo).
+
+## Pips
+n-of-m filled squares (difficulty / mastery meter). Props: `filled`, `total=3`,
+`color`, `label`, `size=9`. Difficulty stars and Review-Lab mastery both use it.
+
+## FilterTab
+Pill tab with optional count badge. Props: `label`, `count`, `active`, `color`,
+`onClick`. Active = `color` bg + ink text + shadow. Used by the Review Lab
+category filter. (NOTE: the Event Board's `DeptTab` is a **specialized variant**
+— icon + inverted white-on-dept-color active state for dark department colors —
+kept separate; the Event Board summary `Counter` is also its own compact form.)
+
+## PathStepper
+Horizontal step tracker. Props: `steps = [{ label, done, here }]`. Done steps =
+mint ✓, current = `here` (yellow shadow + "● HERE"), future = numbered. Used by
+the Profile career path; reuse for any multi-stage flow.
+
 ## ForinTopBar
 In-screen top app bar. Props: `title`, `left`, `right`, `bg=cream`.
 Look: sticky, `borderBottom: 3px ink`, **52px top padding** (status-bar space —
