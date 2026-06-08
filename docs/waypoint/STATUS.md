@@ -11,8 +11,8 @@
 
 | 스테이지 | 문서 | 상태 |
 |---------|------|------|
-| 1-1 Context Synthesis | [01-context-synthesis.md](01-inception/01-context-synthesis.md) | AI_PROPOSED |
-| 1-2 Domain Model | [02-domain-model.md](01-inception/02-domain-model.md) | PENDING |
+| 1-1 Context Synthesis | [01-context-synthesis.md](01-inception/01-context-synthesis.md) | HUMAN_APPROVED |
+| 1-2 Domain Model | [02-domain-model.md](01-inception/02-domain-model.md) | AI_PROPOSED |
 | 1-3 Architecture Decision ⚠️ | [03-architecture-decision.md](01-inception/03-architecture-decision.md) | PENDING |
 
 ## Phase 2 — Construction (How)
