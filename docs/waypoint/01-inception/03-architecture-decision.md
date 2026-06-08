@@ -31,7 +31,8 @@ updated: 2026-06-04
 - [ ] 호스팅: Docker 기반 dev=prod, 플랫폼 확정(Fly.io/Render vs ECS Fargate) + Cloudflare CDN
 - [ ] CI/CD: 모노레포 경로 필터, 코드젠 검증
 - [ ] 이벤트 전달: 메인 루트 + 일일 풀 + 보상형 광고 모델 확정, 300+ 작성 워크스트림 계획
-- [ ] (Patch 1 — MVP 게이트 범위 밖) 음성·LLM 레이어(자유 대화·STT/TTS·LLM 교정)는 다음 패치에서 별도 설계
+- [ ] **AI 레이어(MVP 핵심)**: LLM 대화·교정 모델 티어링·제공자, STT/TTS, **포트·어댑터 추상화**, 비용·지연·가드레일·캐싱
+- [ ] **대화 엔진 설계**: 시나리오 가드레일 ↔ LLM 자유 대화 ↔ 교정 파이프라인 경계·상태·확장성 패턴
 - [ ] 계약/코드젠 파이프라인 구체화 (swag → openapi.yaml → openapi-typescript)
 - [ ] Construction 스테이지 분해 및 STATUS.md 갱신
 

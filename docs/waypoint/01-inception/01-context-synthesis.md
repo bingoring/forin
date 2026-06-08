@@ -50,7 +50,8 @@ forin의 제품 기획서·디자인 핸드오프·기술 방향을 통합하여
 - **계정/사용자:** `User`, `AuthIdentity`(provider), `Profile`(job=nurse·nativeLang·destination·enLevel), `Settings`.
 - **진행/성장:** `XP`, `Level/Rank`(커리어 패스 Learner→Junior→Senior→Head Nurse), `Reputation`(환자만족도·동료신뢰도·응급대응력), `Certification`(진척), `StickerBoard`(칭찬 스티커→cert 언락), `Streak`(출석), `DailyGrowthReport`(집계 파생).
 - **저작 콘텐츠:** `Department`(ER/OR/ICU/Peds/Pharma + 캠퍼스 건물), `Interior`(regions·rooms·objects·hotspots), `Event`(상황·환자 이벤트, 300+, tier·category·tags·prerequisites·follow_ups·related·delivery), `Scenario`(event에 연결; briefing + dialogue 그래프 + quiz refs), `DialogueNode`(speaker·line·expression·branches·핵심표현), `Quiz`(8유형) + `QuizItem`(풀·태그·변형 변수), `Reward`/`EntryRequirement`, `NPC`(타일 해시 결정적).
-- **학습 세션(런타임):** `ScenarioAttempt`/`Clear`, `QuizAttempt`/`Score`, `MissionTracker`(N/total).
+- **학습 세션(런타임):** `ScenarioAttempt`/`Clear`, `QuizAttempt`/`Score`, `MissionTracker`(N/total), `ConversationSession`·`DialogueTurn`(user↔AI), `CorrectionResult`(→ ReviewCard).
+- **AI 레이어:** `LLMAdapter`·`ModelTier`(대화=고급/교정=저가), `Prompt`·`Guardrail`, `STTAdapter`·`TTSAdapter` — 포트/어댑터로 추상화(제공자 교체 가능).
 - **복습(MVP 텍스트):** `ReviewCard`(source dept·tag, original→corrected, "왜?" 노트, mastery 3-pip, favorite, SM-2 스케줄), `ReviewSession`.
 - **전달/경제:** `DailyEventSet`(00:00 리셋·가중 샘플링), `MainRoute`(커리큘럼 그래프), `RewardedAdGrant`(일일 상한).
 - enum류(`ward`·`category`·`tier`·`role`·`expression`·`urgency`·`quizType`)는 **코드측 허용집합**([[feedback_extensibility]]).
@@ -61,10 +62,14 @@ forin의 제품 기획서·디자인 핸드오프·기술 방향을 통합하여
 - **사용자 상태**(서버 영속): account·profile, progress(xp·level·reputation·certs·stickers·streak), attempts·clears, reviewCards+schedule, dailySet·adGrants.
 - **클라이언트 게임 상태**(휘발/로컬, Zustand): player 위치·region·카메라·충돌, mission tracker, UI 상태.
 
-### 4. 미확정 · 리스크 (1-2/1-3에서 해소)
+### 4. 주요 결정 · 미확정 리스크
 
-1. **⚠️ MVP 다이얼로그 모드** — 핸드오프상 다이얼로그 핵심은 "free-form 음성/타이핑 영어 대화"(Free 모드, 마이크)인데, 자유 발화 LLM 대화는 **Patch 1**로 분리됐다. 따라서 **MVP 다이얼로그는 힌트 모드(저작 `ChoiceRow` 선택지 분기) 중심**으로 운영해야 한다. → 콘텐츠 저작량·도메인(DialogueNode 분기)에 직접 영향. **사용자 확인 필요.**
-2. **리뷰랩 카드 소스(MVP)** — AI 교정이 Patch 1이므로 카드는 **퀴즈 오답 + 큐레이션된 시나리오 핵심 표현**에서 생성. 🎤/🔊/"왜?" 자동노트는 숨김/비활성. 큐레이션 표현 저작 필요.
+1. **[결정됨] MVP 다이얼로그 = AI(LLM) 자유 대화** — **AI와 대화하며 상황을 해결**하는 것이 forin의
+   핵심. 다이얼로그 Free 모드(LLM 대화) + **AI 문맥 교정** + 음성(🎤/🔊)을 **전부 MVP에 포함**한다.
+   시나리오는 목표·가드레일·핵심표현을 제공하고 LLM이 그 제약 안에서 대화. → 이 레이어는 **확장성
+   설계·디자인 패턴(포트/어댑터·모델 티어링)에 리소스를 집중**하는 핵심 영역.
+2. **[결정됨] 리뷰랩 카드 = AI 문맥 교정 결과** — 사용자 발화 교정에서 카드 생성(+ 퀴즈 오답 보조).
+   🎤 따라 말하기·🔊 TTS·"왜?" 노트 포함.
 3. **대규모 콘텐츠 워크스트림** — 이벤트 300+, 퀴즈 1000+(고다양성), 시나리오/다이얼로그 저작 = 조사·작성·임상 검수 필요. 별도 트랙·도구·일정.
 4. **비상 코드 지역차** — canonical 세트를 임상 레퍼런스로 검증(현재 카탈로그는 잠정).
 5. **Level 진단** — 문항·채점·시작 레벨 매핑 알고리즘 미정의.
@@ -79,7 +84,8 @@ forin의 제품 기획서·디자인 핸드오프·기술 방향을 통합하여
 ### 산출물
 
 위 컨텍스트 요약 + 도메인 명사 후보 + 콘텐츠/상태 경계 → **Stage 1-2 Domain Model**의 입력.
-가장 먼저 확정할 것은 위 리스크 #1(MVP 다이얼로그 모드)과 #2(리뷰랩 카드 소스).
+**AI 대화·문맥 교정이 핵심으로 확정**됐으므로, 1-2는 대화/교정/시나리오-가드레일 경계와
+확장성(포트·어댑터·모델 티어링)을 1급으로 다룬다.
 
 ## 검토 게이트 (Human Gate)
 
