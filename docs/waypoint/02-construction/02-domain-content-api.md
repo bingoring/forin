@@ -1,7 +1,7 @@
 ---
 phase: 02-construction
 stage: 02-domain-content-api
-status: AI_PROPOSED
+status: IN_PROGRESS
 updated: 2026-06-08
 ---
 
@@ -106,6 +106,19 @@ AI 대화·교정·음성(2-3), 모바일(2-4+), 경제 수치 튜닝(2-7).
 - **이펙트/연출:** scenario_steps + 선언적 디렉티브 + 클라 이펙트 레지스트리(화재 등) 접근이 맞는지.
 - **웹 CMS 시점:** MVP는 파일+git, 어드민 웹은 Patch로 미루는 게 맞는지(아니면 더 일찍?).
 - **시드 분량:** 직군=nurse, 병동당 이벤트 3~5개부터 → 스케일업.
+
+## 구현 증분 (Implementation Increments)
+
+큰 스테이지라 검증 가능한 증분으로 구현한다.
+
+- **증분 1 — ✅ 완료·검증**(forin 커밋, 2026-06-08): 콘텐츠 도메인 스키마(Go) + 검증
+  (참조 무결성·enum·슬러그, 단위테스트) + 마이그레이션 000002(content 테이블) + 파일 로더
+  + `cmd/seed`(검증→upsert) + **nurse 시드(화재 이펙트 포함)** + 콘텐츠 read API
+  (`/content/manifest`·`/events`·`/scenarios/{id}`·`/board/today`). docker로 마이그레이션·시드·조회까지
+  실 검증(화재 디렉티브 end-to-end 확인). 콘텐츠는 `server/content/`(go:embed 대신 파일 로드 — CMS/외부 소스 유연성).
+- **증분 2 — 예정**: 진행/성장 API(progress·attempts·review SM-2) + 진행 테이블 마이그레이션,
+  **sqlc 전환**, **계약 코드젠**(swag→openapi→openapi-typescript) + CI 게이트, 인테리어 테이블,
+  manifest 전체 저장(schemaVersion·professions).
 
 ## 검토 게이트 (Human Gate)
 
