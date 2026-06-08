@@ -27,6 +27,10 @@
 - 애니메이션: `react-native-reanimated`
 - 상태: Zustand (또는 Context)
 - 픽셀 박스/하드 섀도우 등 토큰은 `01_DESIGN_TOKENS.md` 기준.
+- **맵 / 이동 엔진 (중점 구현)** — 사용자가 캠퍼스·인테리어를 **자유롭게 돌아다니므로**,
+  타일 기반 이동, **사물 충돌(collision)**, **자연스러운 방·부서 전환**을 높은 완성도로 구현한다
+  (`05_MAP_AND_INTERIORS.md`의 `ITILE=16`·`ZOOM=2` 타일 그리드 기준). 부드러운 이동·카메라
+  팔로우는 `react-native-reanimated`로. 게임 상태(위치·충돌맵·전환)는 Zustand로 관리.
 
 ### 서버 스택 — Go (stdlib 우선, 프레임워크 없음)
 - 언어: Go. **웹 프레임워크 없이 `net/http`(stdlib) 기반**으로 구성한다.

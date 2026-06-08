@@ -1,8 +1,8 @@
 ---
 phase: 01-inception
 stage: 01-context-synthesis
-status: PENDING
-updated: 2026-06-04
+status: AI_PROPOSED
+updated: 2026-06-08
 ---
 
 # [Stage 1-1] Context Synthesis
@@ -32,7 +32,54 @@ forin의 제품 기획서·디자인 핸드오프·기술 방향을 통합하여
 
 > ⚠️ 이 섹션은 AI가 작성합니다. 사람이 직접 수정하지 마세요.
 
-*[AI가 분석 결과를 여기에 작성]*
+### 1. 제품 컨텍스트 요약
+
+미국 취업을 준비하는 한국 간호사를 위한 **모바일 게임형 임상 영어 학습 앱**. 픽셀아트가 아닌
+**"데르프(Derp)" 스무스 벡터** 감성의 코지 레트로 병원을 탐험하며, 비주얼 노벨 다이얼로그와
+미니 퀴즈로 실무 영어(통증 사정·SBAR·트리아지·투약 등)를 훈련한다.
+
+**핵심 루프:** 캠퍼스 자유 이동 → 부서 건물 진입 → 인테리어(룸마스크·이동·충돌) →
+`!` 핫스팟 → 브리핑 → VN 다이얼로그 ⇄ 미니 퀴즈 → 클리어(보상·컨페티) →
+성장(XP·평판·자격·스티커) + 리뷰랩 저장.
+
+**진입:** Splash↔Login(연속 카메라 팬, 소셜 원탭 — Google/Apple/Kakao) → Locale(언어/목적지)
+→ Job(MVP는 간호사만) → Level 진단. **탭(4):** 캠퍼스 / 상황판 / 리뷰랩 / 나(프로필 홈 + 성장 리포트 푸시).
+
+### 2. 핵심 도메인 명사 후보 (→ 1-2 도메인 모델 입력)
+
+- **계정/사용자:** `User`, `AuthIdentity`(provider), `Profile`(job=nurse·nativeLang·destination·enLevel), `Settings`.
+- **진행/성장:** `XP`, `Level/Rank`(커리어 패스 Learner→Junior→Senior→Head Nurse), `Reputation`(환자만족도·동료신뢰도·응급대응력), `Certification`(진척), `StickerBoard`(칭찬 스티커→cert 언락), `Streak`(출석), `DailyGrowthReport`(집계 파생).
+- **저작 콘텐츠:** `Department`(ER/OR/ICU/Peds/Pharma + 캠퍼스 건물), `Interior`(regions·rooms·objects·hotspots), `Event`(상황·환자 이벤트, 300+, tier·category·tags·prerequisites·follow_ups·related·delivery), `Scenario`(event에 연결; briefing + dialogue 그래프 + quiz refs), `DialogueNode`(speaker·line·expression·branches·핵심표현), `Quiz`(8유형) + `QuizItem`(풀·태그·변형 변수), `Reward`/`EntryRequirement`, `NPC`(타일 해시 결정적).
+- **학습 세션(런타임):** `ScenarioAttempt`/`Clear`, `QuizAttempt`/`Score`, `MissionTracker`(N/total).
+- **복습(MVP 텍스트):** `ReviewCard`(source dept·tag, original→corrected, "왜?" 노트, mastery 3-pip, favorite, SM-2 스케줄), `ReviewSession`.
+- **전달/경제:** `DailyEventSet`(00:00 리셋·가중 샘플링), `MainRoute`(커리큘럼 그래프), `RewardedAdGrant`(일일 상한).
+- enum류(`ward`·`category`·`tier`·`role`·`expression`·`urgency`·`quizType`)는 **코드측 허용집합**([[feedback_extensibility]]).
+
+### 3. 콘텐츠 ↔ 사용자 상태 경계
+
+- **저작 콘텐츠**(서버 fetch, 추후 CDN): departments·interiors·objects, events 카탈로그, scenarios·dialogue 그래프, quiz 풀, rewards·requirements.
+- **사용자 상태**(서버 영속): account·profile, progress(xp·level·reputation·certs·stickers·streak), attempts·clears, reviewCards+schedule, dailySet·adGrants.
+- **클라이언트 게임 상태**(휘발/로컬, Zustand): player 위치·region·카메라·충돌, mission tracker, UI 상태.
+
+### 4. 미확정 · 리스크 (1-2/1-3에서 해소)
+
+1. **⚠️ MVP 다이얼로그 모드** — 핸드오프상 다이얼로그 핵심은 "free-form 음성/타이핑 영어 대화"(Free 모드, 마이크)인데, 자유 발화 LLM 대화는 **Patch 1**로 분리됐다. 따라서 **MVP 다이얼로그는 힌트 모드(저작 `ChoiceRow` 선택지 분기) 중심**으로 운영해야 한다. → 콘텐츠 저작량·도메인(DialogueNode 분기)에 직접 영향. **사용자 확인 필요.**
+2. **리뷰랩 카드 소스(MVP)** — AI 교정이 Patch 1이므로 카드는 **퀴즈 오답 + 큐레이션된 시나리오 핵심 표현**에서 생성. 🎤/🔊/"왜?" 자동노트는 숨김/비활성. 큐레이션 표현 저작 필요.
+3. **대규모 콘텐츠 워크스트림** — 이벤트 300+, 퀴즈 1000+(고다양성), 시나리오/다이얼로그 저작 = 조사·작성·임상 검수 필요. 별도 트랙·도구·일정.
+4. **비상 코드 지역차** — canonical 세트를 임상 레퍼런스로 검증(현재 카탈로그는 잠정).
+5. **Level 진단** — 문항·채점·시작 레벨 매핑 알고리즘 미정의.
+6. **맵/이동 엔진** — 26×60 타일 성능, **충돌맵 데이터 소스**(저작 vs 자동), 이동 방식(D-pad/탭패스/스와이프). 룸마스크는 유지.
+7. **경제 밸런싱** — XP/평판/자격/스티커 수치·획득 규칙 미정의.
+
+### 5. 이전 자산 재활용 판단
+
+`archive/pre-waypoint`의 `docs/`(06_database_schema·07_api_spec·03_feature_spec·content/stages yaml)는
+새 방향(Go stdlib·이벤트 중심·MVP 경계 변경)과 부분 상충 가능. → **1-2에서 명사·스키마 참고용으로 재검토하되 그대로 채택하지 않음.** content/stages yaml은 콘텐츠 구조 참고로 활용.
+
+### 산출물
+
+위 컨텍스트 요약 + 도메인 명사 후보 + 콘텐츠/상태 경계 → **Stage 1-2 Domain Model**의 입력.
+가장 먼저 확정할 것은 위 리스크 #1(MVP 다이얼로그 모드)과 #2(리뷰랩 카드 소스).
 
 ## 검토 게이트 (Human Gate)
 
