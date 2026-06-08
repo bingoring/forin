@@ -1,5 +1,5 @@
 // Package http is the HTTP adapter: stdlib net/http router, middleware, handlers.
-package httpapi
+package http
 
 import (
 	"log/slog"

@@ -10,8 +10,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/bingoring/forin/server/internal/adapters/httpapi"
-	"github.com/bingoring/forin/server/internal/adapters/oidc"
+	authadapter "github.com/bingoring/forin/server/internal/adapters/auth"
+	httpadapter "github.com/bingoring/forin/server/internal/adapters/http"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
 	redisadapter "github.com/bingoring/forin/server/internal/adapters/redis"
 	"github.com/bingoring/forin/server/internal/config"
@@ -46,7 +46,7 @@ func main() {
 	defer rdb.Close()
 
 	tokens := auth.NewTokenService(cfg.JWTSigningKey, cfg.JWTIssuer, cfg.AccessTTL)
-	verifier := oidc.NewOIDCVerifier(map[user.Provider]string{
+	verifier := authadapter.NewOIDCVerifier(map[user.Provider]string{
 		user.ProviderGoogle: cfg.GoogleClientID,
 		user.ProviderApple:  cfg.AppleClientID,
 		user.ProviderKakao:  cfg.KakaoClientID,
@@ -55,7 +55,7 @@ func main() {
 	refreshStore := redisadapter.NewRefreshStore(rdb)
 	authSvc := auth.NewService(users, verifier, refreshStore, tokens, cfg.RefreshTTL)
 
-	handler := httpapi.NewRouter(httpapi.Deps{
+	handler := httpadapter.NewRouter(httpadapter.Deps{
 		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, PG: pool, Redis: rdb,
 	})
 
