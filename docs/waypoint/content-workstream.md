@@ -20,8 +20,8 @@
 ## 진료과(specialty) 범위
 
 진료과는 데이터(스키마 변경 없이 확장). 단 **탐험 인테리어는 디자인된 5개(ER/OR/ICU/Peds/Pharmacy)뿐** →
-신규 진료과 처리 3안(A: 5개 워드 내 300+ 집중 / B: 상황판 전용 / C: 신규 인테리어 art). 상세·분포는
-[`events-catalog.md`](events-catalog.md). **결정 대기 중.**
+**결정: A**(2026-06-08) — MVP는 디자인된 5개 워드(ER/OR/ICU/Peds/Pharmacy) 내 300+ 집중,
+신규 진료과는 로드맵(인테리어 art 준비 시). 상세·분포는 [`events-catalog.md`](events-catalog.md).
 
 ## 배치 작성 방식
 

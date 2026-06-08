@@ -116,9 +116,11 @@ AI 대화·교정·음성(2-3), 모바일(2-4+), 경제 수치 튜닝(2-7).
   + `cmd/seed`(검증→upsert) + **nurse 시드(화재 이펙트 포함)** + 콘텐츠 read API
   (`/content/manifest`·`/events`·`/scenarios/{id}`·`/board/today`). docker로 마이그레이션·시드·조회까지
   실 검증(화재 디렉티브 end-to-end 확인). 콘텐츠는 `server/content/`(go:embed 대신 파일 로드 — CMS/외부 소스 유연성).
-- **증분 2 — 예정**: 진행/성장 API(progress·attempts·review SM-2) + 진행 테이블 마이그레이션,
-  **sqlc 전환**, **계약 코드젠**(swag→openapi→openapi-typescript) + CI 게이트, 인테리어 테이블,
-  manifest 전체 저장(schemaVersion·professions).
+- **증분 2a — ✅ 계약 코드젠**(forin 커밋, 2026-06-08): Go 어노테이션 → `swag --v3.1`
+  → `packages/contract/openapi.yaml`(OpenAPI 3.1) → `openapi-typescript` → `types.ts`. `make contract`
+  타깃 + CI 드리프트 게이트(`.github/workflows/contract.yml`). 생성 파이프라인 동작 검증.
+- **증분 2b — 예정**: 진행/성장 API(progress·attempts·review SM-2) + 진행 테이블, **sqlc 전환**,
+  인테리어 테이블, manifest 전체 저장(schemaVersion·professions). 콘텐츠 어노테이션 보강(현재 일부 map 응답).
 
 ## 검토 게이트 (Human Gate)
 
