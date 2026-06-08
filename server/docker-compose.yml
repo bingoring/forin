@@ -1,0 +1,41 @@
+# Local dev stack: api + postgres + redis. `make docker-up`.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: forin
+      POSTGRES_PASSWORD: forin
+      POSTGRES_DB: forin
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forin"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    environment:
+      ENV: dev
+      PORT: "8080"
+      DATABASE_URL: postgres://forin:forin@postgres:5432/forin?sslmode=disable
+      REDIS_URL: redis://redis:6379/0
+      JWT_SIGNING_KEY: dev-only-change-me-please-0123456789
+      JWT_ISSUER: forin
+    ports: ["8080:8080"]
+
+volumes:
+  pgdata:

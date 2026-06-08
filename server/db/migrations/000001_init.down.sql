@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS profiles;
+DROP TABLE IF EXISTS auth_identities;
+DROP TABLE IF EXISTS users;

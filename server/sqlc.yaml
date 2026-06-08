@@ -1,0 +1,13 @@
+# sqlc scaffold — Stage 2-2 populates db/queries and generates type-safe Go.
+# Run: make sqlc  (requires sqlc installed)
+version: "2"
+sql:
+  - engine: "postgresql"
+    schema: "db/migrations"
+    queries: "db/queries"
+    gen:
+      go:
+        package: "sqlc"
+        out: "internal/adapters/postgres/sqlc"
+        sql_package: "pgx/v5"
+        emit_json_tags: true
