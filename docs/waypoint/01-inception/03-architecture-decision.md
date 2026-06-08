@@ -30,9 +30,8 @@ updated: 2026-06-04
 - [ ] 콘텐츠 전달: 서버 fetch + axios 래퍼 클라이언트, 상황판 일일 갱신·캐시 메커니즘
 - [ ] 호스팅: Docker 기반 dev=prod, 플랫폼 확정(Fly.io/Render vs ECS Fargate) + Cloudflare CDN
 - [ ] CI/CD: 모노레포 경로 필터, 코드젠 검증
-- [ ] LLM: 대화(고급)·교정(저가) 모델·제공자·비용·지연·프롬프트/캐싱
-- [ ] TTS / STT·발음비교: expo-speech/expo-av vs 클라우드, 오디오 MVP 구현
 - [ ] 이벤트 전달: 메인 루트 + 일일 풀 + 보상형 광고 모델 확정, 300+ 작성 워크스트림 계획
+- [ ] (Patch 1 — MVP 게이트 범위 밖) 음성·LLM 레이어(자유 대화·STT/TTS·LLM 교정)는 다음 패치에서 별도 설계
 - [ ] 계약/코드젠 파이프라인 구체화 (swag → openapi.yaml → openapi-typescript)
 - [ ] Construction 스테이지 분해 및 STATUS.md 갱신
 
