@@ -1,6 +1,6 @@
 // Package auth (adapter) verifies provider ID tokens via OIDC discovery + JWKS.
 // Google, Apple, and Kakao are all OIDC providers, so one adapter covers all three.
-package auth
+package oidc
 
 import (
 	"context"

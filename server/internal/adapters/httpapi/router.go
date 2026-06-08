@@ -1,5 +1,5 @@
 // Package http is the HTTP adapter: stdlib net/http router, middleware, handlers.
-package http
+package httpapi
 
 import (
 	"log/slog"
@@ -15,12 +15,12 @@ import (
 
 // Deps are the dependencies the HTTP layer needs (wired in main).
 type Deps struct {
-	Log      *slog.Logger
-	Tokens   *auth.TokenService
-	AuthSvc  *auth.Service
-	Users    ports.UserRepo
-	PG       *pgxpool.Pool
-	Redis    *redis.Client
+	Log     *slog.Logger
+	Tokens  *auth.TokenService
+	AuthSvc *auth.Service
+	Users   ports.UserRepo
+	PG      *pgxpool.Pool
+	Redis   *redis.Client
 }
 
 // NewRouter builds the application handler with global middleware and routes.
