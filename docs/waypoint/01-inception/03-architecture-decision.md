@@ -21,13 +21,18 @@ updated: 2026-06-04
 
 ## 결정 대상 (prd-tech.md 게이트 항목)
 
-- [ ] Go 웹 프레임워크 확정 (Echo / chi / Fiber)
-- [ ] 데이터베이스 (종류·쿼리 전략·마이그레이션)
-- [ ] 인증 제공자·토큰 전략 (소셜 원탭)
-- [ ] 콘텐츠 전달 방식 (번들 / 서버 fetch / CDN, 상황판 일일 갱신)
-- [ ] 호스팅·배포 타깃 (서버 + EAS 모바일, 환경 분리)
-- [ ] CI/CD (모노레포 경로 필터, 코드젠 검증)
-- [ ] STT 제공자 (MVP 스텁 여부 포함)
+> 서버 프레임워크(stdlib 확정)·콘텐츠 전달(서버 fetch)·오디오 MVP 포함 등 방향은
+> `prd-tech.md`에서 사용자 확정. 본 게이트는 그 **세부 구현·제공자·비용**을 비준한다.
+
+- [ ] 서버: stdlib `net/http` 위에 도입할 전문 라이브러리 선별(검증/미들웨어/라우팅 보강)
+- [ ] 데이터베이스: 쿼리 전략(sqlc/pgx 등)·마이그레이션 도구 + Redis 도입 범위
+- [ ] 인증·토큰 전략: 시중 사례 조사 → roll-own vs 매니지드(Clerk/Supabase/Auth0) 확정
+- [ ] 콘텐츠 전달: 서버 fetch + axios 래퍼 클라이언트, 상황판 일일 갱신·캐시 메커니즘
+- [ ] 호스팅: Docker 기반 dev=prod, 플랫폼 확정(Fly.io/Render vs ECS Fargate) + Cloudflare CDN
+- [ ] CI/CD: 모노레포 경로 필터, 코드젠 검증
+- [ ] LLM: 대화(고급)·교정(저가) 모델·제공자·비용·지연·프롬프트/캐싱
+- [ ] TTS / STT·발음비교: expo-speech/expo-av vs 클라우드, 오디오 MVP 구현
+- [ ] 이벤트 전달: 메인 루트 + 일일 풀 + 보상형 광고 모델 확정, 300+ 작성 워크스트림 계획
 - [ ] 계약/코드젠 파이프라인 구체화 (swag → openapi.yaml → openapi-typescript)
 - [ ] Construction 스테이지 분해 및 STATUS.md 갱신
 
