@@ -1,0 +1,25 @@
+id: SCN-ER-00001
+eventId: EVT-ER-00001
+title: "흉통 환자 트리아지"
+tagline: "가슴이 아파요…"
+goals:
+  - "통증 사정(OPQRST)"
+  - "SBAR로 보고"
+guardrails:
+  - "환자에게 공감하며 말하기"
+  - "의학용어 과용 금지"
+keyPhrases:
+  - "On a scale of 0 to 10"
+  - "Can you describe the pain?"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: pain, lineKo: "가슴이… 너무 아파요", lineEn: "My chest... it really hurts" }
+    next: s2
+  - id: s2
+    type: quiz
+    payload: { quizId: QZ-ER-00001 }
+    next: s3
+  - id: s3
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Can you describe the pain?" }

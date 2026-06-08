@@ -19,6 +19,7 @@ type Deps struct {
 	Tokens  *auth.TokenService
 	AuthSvc *auth.Service
 	Users   ports.UserRepo
+	Content ports.ContentReader
 	PG      *pgxpool.Pool
 	Redis   *redis.Client
 }
@@ -40,6 +41,13 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /auth/logout", auth(http.HandlerFunc(ah.logout)))
 	mh := &meHandler{users: d.Users}
 	mux.Handle("GET /me", auth(http.HandlerFunc(mh.me)))
+
+	// Content (public read).
+	ch := &contentHandler{content: d.Content}
+	mux.HandleFunc("GET /content/manifest", ch.manifest)
+	mux.HandleFunc("GET /events", ch.events)
+	mux.HandleFunc("GET /scenarios/{id}", ch.scenario)
+	mux.HandleFunc("GET /board/today", ch.board)
 
 	// Global middleware (outermost first).
 	return chain(mux,

@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS phrases;
+DROP TABLE IF EXISTS quizzes;
+DROP TABLE IF EXISTS scenarios;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS content_meta;

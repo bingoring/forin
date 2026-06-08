@@ -1,0 +1,24 @@
+id: SCN-GEN-00003
+eventId: EVT-GEN-00003
+title: "병동 화재 대응"
+tagline: "복도에서 연기가…"
+goals:
+  - "RACE 절차 수행"
+  - "환자에게 영어로 대피 안내"
+guardrails:
+  - "침착하게 지시"
+keyPhrases:
+  - "Please evacuate calmly"
+  - "Use the stairs, not the elevator"
+steps:
+  # 화재 연출: 선언적 디렉티브 → 클라이언트 이펙트 레지스트리가 해석
+  - id: s1
+    type: effect
+    effects:
+      - { type: screen_effect, payload: { effect: fire, intensity: high } }
+      - { type: sound, payload: { cue: fire_alarm } }
+      - { type: haptic, payload: { pattern: alert } }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Please evacuate calmly and use the stairs, not the elevator." }

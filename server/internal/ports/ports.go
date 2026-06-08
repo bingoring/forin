@@ -6,8 +6,22 @@ import (
 	"context"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/user"
 )
+
+// ContentReader serves authored content (read-only) to the domain/API.
+type ContentReader interface {
+	Manifest(ctx context.Context) (*content.Manifest, error)
+	ListEvents(ctx context.Context, profession string) ([]content.Event, error)
+	GetScenario(ctx context.Context, id string) (*content.Scenario, error)
+	TodaysBoard(ctx context.Context, profession string, limit int) ([]content.Event, error)
+}
+
+// ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).
+type ContentSeeder interface {
+	Seed(ctx context.Context, b *content.Bundle) error
+}
 
 // VerifiedIdentity is the result of validating a provider ID token.
 type VerifiedIdentity struct {

@@ -5,6 +5,9 @@ DATABASE_URL ?= postgres://forin:forin@localhost:5432/forin?sslmode=disable
 run:        ## run the API locally (needs postgres+redis)
 	go run ./cmd/api
 
+seed:       ## validate + load content/ into Postgres
+	go run ./cmd/seed
+
 build:
 	go build -o bin/api ./cmd/api
 
