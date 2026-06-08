@@ -14,7 +14,7 @@
 
 | 필드 | 설명 |
 |---|---|
-| `id` | 고유 ID. 예: `EVT-ER-001` (병동-순번) |
+| `id` | 고유 ID. 슬러그 + **최소 5자리 제로패딩**. 예: `EVT-ER-00001` (병동-순번) |
 | `title_ko` / `title_en` | 표시 제목(한/영) |
 | `ward` | `er` `or` `icu` `peds` `pharma` (+ `general`) |
 | `category` | `emergency_code` `clinical` `interpersonal` `facility_safety` `procedure` |
@@ -76,43 +76,43 @@
 > 전수 300+는 별도 워크스트림. 아래는 스키마·티어·관계를 보여주는 표본.
 
 ### ER (응급실)
-- `EVT-ER-001` **트리아지: 흉통 내원** · clinical · T1 · tags[triage,pain,sbar] · follow_ups[EVT-ER-002]
-- `EVT-ER-002` **STEMI 인지·코드 STEMI** · clinical · T2 · prereq[EVT-ER-001] · follow_ups[EVT-ER-003]
-- `EVT-ER-003` **Code Blue: 성인 심정지** · emergency_code · T3 · tags[airway,cpr,team]
-- `EVT-ER-004` **트리아지: 다수 동시 내원(MCI/Code Yellow)** · emergency_code · T4
-- `EVT-ER-005` **아나필락시스(에피네프린)** · clinical · T2 · tags[allergy,medication,airway]
-- `EVT-ER-006` **음주 외상 진상 환자** · interpersonal · T2 · tags[deescalation,safety]
-- `EVT-ER-007` **언어 장벽 환자(통역 요청)** · interpersonal · T1 · tags[interpreter,communication]
+- `EVT-ER-00001` **트리아지: 흉통 내원** · clinical · T1 · tags[triage,pain,sbar] · follow_ups[EVT-ER-00002]
+- `EVT-ER-00002` **STEMI 인지·코드 STEMI** · clinical · T2 · prereq[EVT-ER-00001] · follow_ups[EVT-ER-00003]
+- `EVT-ER-00003` **Code Blue: 성인 심정지** · emergency_code · T3 · tags[airway,cpr,team]
+- `EVT-ER-00004` **트리아지: 다수 동시 내원(MCI/Code Yellow)** · emergency_code · T4
+- `EVT-ER-00005` **아나필락시스(에피네프린)** · clinical · T2 · tags[allergy,medication,airway]
+- `EVT-ER-00006` **음주 외상 진상 환자** · interpersonal · T2 · tags[deescalation,safety]
+- `EVT-ER-00007` **언어 장벽 환자(통역 요청)** · interpersonal · T1 · tags[interpreter,communication]
 
 ### ICU (중환자실)
-- `EVT-ICU-001` **인공호흡기 환자 SBAR 인계** · procedure · T1 · tags[sbar,handoff,vent]
-- `EVT-ICU-002` **패혈증 번들·악화 인지** · clinical · T2 · tags[sepsis,vitals] · follow_ups[EVT-ICU-003]
-- `EVT-ICU-003` **승압제 적정·쇼크** · clinical · T3 · prereq[EVT-ICU-002]
-- `EVT-ICU-004` **임종/가족 면담(나쁜 소식 전달)** · interpersonal · T3 · tags[end_of_life,empathy]
-- `EVT-ICU-005` **수혈 반응** · clinical · T2 · tags[transfusion,reaction]
+- `EVT-ICU-00001` **인공호흡기 환자 SBAR 인계** · procedure · T1 · tags[sbar,handoff,vent]
+- `EVT-ICU-00002` **패혈증 번들·악화 인지** · clinical · T2 · tags[sepsis,vitals] · follow_ups[EVT-ICU-00003]
+- `EVT-ICU-00003` **승압제 적정·쇼크** · clinical · T3 · prereq[EVT-ICU-00002]
+- `EVT-ICU-00004` **임종/가족 면담(나쁜 소식 전달)** · interpersonal · T3 · tags[end_of_life,empathy]
+- `EVT-ICU-00005` **수혈 반응** · clinical · T2 · tags[transfusion,reaction]
 
 ### OR (수술실)
-- `EVT-OR-001` **수술 전 타임아웃·체크리스트** · procedure · T1 · tags[timeout,safety,checklist]
-- `EVT-OR-002` **수술 동의서 확인** · procedure · T1 · tags[consent,communication]
-- `EVT-OR-003` **마취 중 활력징후 급변** · clinical · T3 · tags[vitals,airway]
-- `EVT-OR-004` **수술 검체·표본 라벨링** · procedure · T2 · tags[specimen,labeling]
-- `EVT-OR-005` **진상 의사 갈등(지시 모호)** · interpersonal · T2 · tags[assertive,clarify]
+- `EVT-OR-00001` **수술 전 타임아웃·체크리스트** · procedure · T1 · tags[timeout,safety,checklist]
+- `EVT-OR-00002` **수술 동의서 확인** · procedure · T1 · tags[consent,communication]
+- `EVT-OR-00003` **마취 중 활력징후 급변** · clinical · T3 · tags[vitals,airway]
+- `EVT-OR-00004` **수술 검체·표본 라벨링** · procedure · T2 · tags[specimen,labeling]
+- `EVT-OR-00005` **진상 의사 갈등(지시 모호)** · interpersonal · T2 · tags[assertive,clarify]
 
 ### Peds (소아)
-- `EVT-PEDS-001` **소아 발열·보호자 안심** · clinical · T1 · tags[pediatric,fever,family]
-- `EVT-PEDS-002` **소아 체중 기반 투약 계산** · clinical · T2 · tags[medication,dosage,pediatric]
-- `EVT-PEDS-003` **Code Pink: 영아 납치 경보** · emergency_code · T4 · tags[security,protocol]
-- `EVT-PEDS-004` **보호자 갈등(불안한 부모)** · interpersonal · T2 · tags[deescalation,family]
-- `EVT-PEDS-005` **소아 호흡곤란(크룹/천식)** · clinical · T3 · tags[airway,pediatric]
+- `EVT-PEDS-00001` **소아 발열·보호자 안심** · clinical · T1 · tags[pediatric,fever,family]
+- `EVT-PEDS-00002` **소아 체중 기반 투약 계산** · clinical · T2 · tags[medication,dosage,pediatric]
+- `EVT-PEDS-00003` **Code Pink: 영아 납치 경보** · emergency_code · T4 · tags[security,protocol]
+- `EVT-PEDS-00004` **보호자 갈등(불안한 부모)** · interpersonal · T2 · tags[deescalation,family]
+- `EVT-PEDS-00005` **소아 호흡곤란(크룹/천식)** · clinical · T3 · tags[airway,pediatric]
 
 ### Pharmacy (약국)
-- `EVT-PHARMA-001` **투약 오류 발견·보고** · clinical · T2 · tags[medication,safety,reporting]
-- `EVT-PHARMA-002` **약물 상호작용 확인 문의** · procedure · T1 · tags[interaction,communication]
-- `EVT-PHARMA-003` **고위험 약물(헤파린 등) 이중확인** · procedure · T2 · tags[high_alert,double_check]
-- `EVT-PHARMA-004` **복약 지도(퇴원 교육)** · procedure · T1 · tags[discharge,teaching]
+- `EVT-PHARMA-00001` **투약 오류 발견·보고** · clinical · T2 · tags[medication,safety,reporting]
+- `EVT-PHARMA-00002` **약물 상호작용 확인 문의** · procedure · T1 · tags[interaction,communication]
+- `EVT-PHARMA-00003` **고위험 약물(헤파린 등) 이중확인** · procedure · T2 · tags[high_alert,double_check]
+- `EVT-PHARMA-00004` **복약 지도(퇴원 교육)** · procedure · T1 · tags[discharge,teaching]
 
 ### General / Facility
-- `EVT-GEN-001` **입원 수속·초기 사정** · procedure · T1 · tags[admission,assessment]
-- `EVT-GEN-002` **낙상 발생·사고 보고** · clinical · T2 · tags[fall,incident,report]
-- `EVT-GEN-003` **Code Red: 화재 대피** · facility_safety · T3 · tags[fire,evacuation,RACE]
-- `EVT-GEN-004` **정전/장비 고장 대응** · facility_safety · T3 · tags[power,equipment]
+- `EVT-GEN-00001` **입원 수속·초기 사정** · procedure · T1 · tags[admission,assessment]
+- `EVT-GEN-00002` **낙상 발생·사고 보고** · clinical · T2 · tags[fall,incident,report]
+- `EVT-GEN-00003` **Code Red: 화재 대피** · facility_safety · T3 · tags[fire,evacuation,RACE]
+- `EVT-GEN-00004` **정전/장비 고장 대응** · facility_safety · T3 · tags[power,equipment]
