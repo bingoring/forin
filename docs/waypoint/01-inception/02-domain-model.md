@@ -61,7 +61,9 @@ forin의 핵심 도메인을 엔티티·관계·상태·불변식으로 모델�
 | `Quiz` | id, type(**quizType** 8종), title, sub, config | N—N `Scenario` |
 | `QuizItem` | id, quizId, ward/topic/difficulty tags, **variationVars**(다양성 샘플링), payload | 풀(pool); 1 Quiz—N Item |
 | `Phrase` | id, ko, en, dept/topic tag, "왜?" note | 리뷰랩 큐레이션 표현 시드 |
-| `EntryRequirement` / `Reward` | 조건(레벨·선행 클리어 등) / 산출(xp·평판·자격진척·스티커) | Scenario에 임베드 |
+| `HiddenMission` | id, 은닉 조건, 보상refs, 힌트 | 탐험·도전 보상 |
+| `Title` | id, name, 획득조건(평판/자격/스티커/히든), **효과**(NPC 반응 가중치 등) | 칭호 |
+| `EntryRequirement` / `Reward` | 조건(레벨·선행 클리어·**보유 칭호/평판**) / 산출(xp·평판·자격진척·스티커·칭호) | Scenario에 임베드 |
 
 ### 2. 사용자 상태 (User State — 서버 영속)
 
@@ -86,6 +88,8 @@ forin의 핵심 도메인을 엔티티·관계·상태·불변식으로 모델�
 | `DailyEventSet` | userId, date, eventIds[], **resetsAt(00:00 local)** | 일일 풀 |
 | `RewardedAdGrant` | userId, date, count, cap | 광고 보상 |
 | `MainRouteProgress` | userId, currentNodeId, completed[] | 커리큘럼 위치 |
+| `UserTitle` | userId, titleId, equipped? | 보유·장착 칭호 |
+| `HiddenMissionProgress` | userId, missionId, state, foundAt? | 히든 미션 진행 |
 
 ### 3. 클라이언트 게임 상태 (휘발/로컬 — Zustand)
 
@@ -118,7 +122,17 @@ forin의 핵심 도메인을 엔티티·관계·상태·불변식으로 모델�
 `modelTier`(dialogue/correction) · `provider`(google/apple/kakao) · `careerStage`(learner/junior/senior/head_nurse) ·
 `attemptState` · `reviewGrade`(again/hard/good/easy).
 
-### 7. 1-3으로 넘길 결정
+### 7. 확장성 핵심 — 유기적 경제 · 콘텐츠 버전 · 탐험
+
+- **유기적 보상 경제** — 평판/자격/스티커/칭호/히든미션은 **데드엔드가 아니라 서로·게임플레이로 환류**된다:
+  좋은 `Reputation` → NPC 반응·대화 가드레일 가중, `Title`(칭호) 효과, `EntryRequirement`에 평판/칭호 사용,
+  `HiddenMission`으로 추가 획득. 보상 타입은 **코드측 허용집합**으로 다양화 가능(신규 보상·효과 추가 용이).
+- **콘텐츠 버전 관리(1급)** — 모든 콘텐츠 엔티티는 `contentVersion`. 사용자 진행도(Attempt 등)는 참조한
+  버전을 기록. 발행 파이프라인은 **마이그레이션·롤백**을 지원(콘텐츠가 계속 진화하므로). 저작 워크스트림과 결합.
+- **탐험 엔진(품질 축)** — 맵/이동·NPC·맵 간 전환의 자연스러움은 핵심 품질 축(1-1 #6). 게임 상태(위치·충돌·카메라)는
+  클라이언트, 콘텐츠(맵·오브젝트·NPC 배치)는 저작. 충돌맵 데이터 소스·이동 방식·성능은 1-3에서 확정.
+
+### 8. 1-3으로 넘길 결정
 
 저장 기술(Postgres 스키마·sqlc/pgx·마이그레이션), 콘텐츠 fetch/캐시·CDN, 충돌맵 데이터 소스(저작 vs 자동),
 Level 진단 알고리즘, 경제 밸런싱 수치, AI 제공자/모델·비용·지연·가드레일 구현, 대규모 콘텐츠 저작 워크스트림.
