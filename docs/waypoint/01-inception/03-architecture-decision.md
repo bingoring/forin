@@ -48,14 +48,14 @@ updated: 2026-06-08
 | 서버 아키텍처 | Go stdlib `net/http` + **헥사고날(포트/어댑터)** 레이어링 | 프레임워크(Echo/chi) — 사용자 stdlib 결정 |
 | DB 접근 | **PostgreSQL + pgx + sqlc**(타입세이프), 마이그레이션 **golang-migrate** | GORM/ent(ORM) — 제어·확장성 위배로 탈락 |
 | 캐시/상태 | **Redis**(일일 이벤트·00:00 리셋·레이트리밋·LLM 캐시) | DB-only — 리셋/캐시 부담 |
-| 인증 ⚠️ | **자체 발급**(Go) — 네이티브 provider 로그인 → ID토큰 검증 → 자체 JWT+refresh | Clerk(매니지드) — Kakao 1급 미지원 + 과금/락인 |
+| 인증 ✅ | **자체 발급**(Go) — 네이티브 provider 로그인 → ID토큰 검증 → 자체 JWT+refresh | Clerk(매니지드) — Kakao 1급 미지원 + 과금/락인 |
 | API 계약 | Go-first: swag → openapi.yaml → openapi-typescript | 수기 동기화 — 드리프트 |
 | 콘텐츠 전달 | 서버 fetch(axios 래퍼) + Redis/ETag 캐시, 추후 Cloudflare CDN | 번들 — 갱신 경직 |
-| LLM ⚠️ | **Claude** 티어링: 대화=Sonnet, 교정=Haiku (포트로 교체 가능) | OpenAI 등 — 어댑터로 대체 가능 |
+| LLM ✅ | **Claude** 티어링: 대화=Sonnet, 교정=Haiku (포트로 교체 가능) | OpenAI 등 — 어댑터로 대체 가능 |
 | STT | 대화 입력=**온디바이스**(`expo-speech-recognition`, 무과금) | 클라우드 STT — 비용↑(필요시 어댑터) |
-| 발음 평가 ⚠️ | **Azure Pronunciation Assessment**(점수·운율) | 온디바이스 STT는 점수 불가 |
+| 발음 평가 ✅ | **Azure Pronunciation Assessment**(점수·운율) | 온디바이스 STT는 점수 불가 |
 | TTS | **expo-speech**(온디바이스, MVP) → 포트로 클라우드 업그레이드 | ElevenLabs 즉시 도입 — 비용·과잉 |
-| 호스팅 ⚠️ | **Docker** + **Fly.io**(관리형 PG/Redis), 앞단 Cloudflare. 모바일 **EAS** | ECS Fargate — 솔로 운영부담↑ |
+| 호스팅 ✅ | **Docker** + **Fly.io**(관리형 PG/Redis), 모바일 **EAS**. **CDN 후순위**(해외 사용자 시 Cloudflare) | ECS Fargate — 솔로 운영부담↑ |
 | CI/CD | GitHub Actions, 모노레포 경로 필터 + 코드젠 검증 | — |
 
 ### A. 서버 아키텍처 (Go stdlib)
@@ -79,8 +79,7 @@ updated: 2026-06-08
   서버가 **access JWT(~15분) + refresh(회전)** 발급. refresh는 `expo-secure-store` 저장.
 - **이유:** ① **Kakao 1급 지원**(한국 간호사 핵심) — Clerk/Supabase는 Kakao 비표준. ② 이미 사용자
   데이터를 소유한 Go 백엔드가 세션을 발급해야 함(자연스러움). ③ **MAU 과금·벤더 락인 없음**. ④ 완전한 제어.
-- **트레이드오프:** 보안 책임·plumbing 증가(솔로). 빠른 출시를 더 원하면 **Clerk**(Apple/Google만)로
-  시작하고 Kakao만 커스텀하는 대안도 가능 — ⚠️ **사용자 확인 권장**.
+- **결정(승인):** 자체 발급으로 확정. 트레이드오프(보안 책임·plumbing)는 헥사고날 `auth` 어댑터로 격리해 관리.
 - 외부 의존성: Apple Developer(필수, Sign in with Apple), Google OAuth, Kakao Developers. 비용: 무료(과금 없음).
 
 ### D. API 계약 / 코드젠
@@ -91,7 +90,7 @@ updated: 2026-06-08
 ### E. 콘텐츠 전달 · 버전
 
 - 저작 콘텐츠는 **버전드 파일(YAML/JSON, 레포)** → 마이그레이션/시드로 Postgres 적재 → API로 서버 fetch.
-  (MVP는 CMS 없이 파일 기반; 저작 도구는 콘텐츠 워크스트림에서.) 캐시: Redis + HTTP ETag, 추후 Cloudflare CDN.
+  (MVP는 CMS 없이 파일 기반; 저작 도구는 콘텐츠 워크스트림에서.) 캐시: Redis + HTTP ETag. **CDN은 후순위(§G)**.
 - 모바일은 **axios 래퍼 클라이언트**(교체 가능). `contentVersion` 헤더로 캐시 무효화·호환성 관리.
 
 ### F. AI 레이어 ⚠️ (forin 핵심)
@@ -109,10 +108,14 @@ updated: 2026-06-08
 
 ### G. 호스팅 / 배포 ⚠️
 
-- **Docker**로 dev=prod 동일. **권고: Fly.io**(Docker 네이티브·글로벌·관리형 Fly Postgres + Upstash Redis·낮은 운영부담),
-  앞단 **Cloudflare**(DNS/CDN/엣지 캐시). 환경 분리 dev/staging/prod.
+- **Docker**로 dev=prod 동일. **Fly.io**(Docker 네이티브·관리형 Fly Postgres + Upstash Redis·낮은 운영부담). 환경 분리 dev/staging/prod.
 - 모바일 **EAS** Build/Submit + **EAS Update**(OTA). 대안 Render(유사), ECS Fargate(AWS 중심·운영부담↑).
-- 비용: Fly.io 사용량제(소규모 저렴), Cloudflare 무료 티어 가능.
+- **CDN은 후순위** — 현재 해외 사용자 없음. 글로벌 사용자가 생기면 Cloudflare 추가(아래). 비용: Fly.io 사용량제(소규모 저렴).
+
+**나중에 Cloudflare CDN 붙이는 법:** ① 도메인 네임서버를 Cloudflare로 변경(무료 플랜) → ② 트래픽이 Cloudflare
+프록시('orange cloud')를 경유 → ③ 정적 자산·미디어와 GET 콘텐츠 API 응답을 `Cache-Control`/`ETag`로 엣지 캐시
+(개인화/인증 응답은 캐시 우회). 대용량 미디어는 **Cloudflare R2**(오브젝트 스토리지)로 분리 가능. 모바일 앱이라
+웹 CDN 이득은 주로 **지리적으로 분산된 사용자의 콘텐츠/미디어 지연 단축** → 해외 확장 시점 도입이 합리적.
 
 ### H. CI/CD
 
