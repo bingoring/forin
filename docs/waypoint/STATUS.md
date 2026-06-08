@@ -21,7 +21,7 @@
 
 | 스테이지 | 문서 | 상태 |
 |---------|------|------|
-| 2-1 서버 기반 | [01-server-foundation.md](02-construction/01-server-foundation.md) | AI_PROPOSED |
+| 2-1 서버 기반 | [01-server-foundation.md](02-construction/01-server-foundation.md) | HUMAN_APPROVED |
 | 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | PENDING |
 | 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | PENDING |
 | 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | PENDING |
@@ -29,6 +29,8 @@
 | 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | PENDING |
 | 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | PENDING |
 | 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | PENDING |
+
+**병행 트랙:** [콘텐츠 워크스트림](content-workstream.md) — AI 작성(조사→초안→검수), **2-2 포맷 확정 후 본격 착수**. PENDING.
 
 ## Phase 3 — Operations (Ship)
 
