@@ -93,4 +93,5 @@ server/
 
 ## 다음 단계
 
-승인 후 → 구현 → `STATUS.md` 2-1 `HUMAN_APPROVED` → `02-domain-content-api.md`
+✅ **구현 완료**(`/server`, forin `b9ccd2f`) · `go build/vet/test` 통과 · `docker compose` 런타임
+`/healthz`·`/readyz` 200, 인증 미들웨어 negative-path 확인(2026-06-08). → `02-domain-content-api.md`
