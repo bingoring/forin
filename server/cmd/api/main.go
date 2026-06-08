@@ -20,6 +20,12 @@ import (
 	"github.com/bingoring/forin/server/internal/platform/log"
 )
 
+// @title                       forin API
+// @version                     0.1.0
+// @description                 forin server API — Go stdlib, hexagonal. Contract is Go-first (swag → openapi → openapi-typescript).
+// @securityDefinitions.apikey  Bearer
+// @in                          header
+// @name                        Authorization
 func main() {
 	cfg, err := config.Load()
 	logger := log.New(envOrDev(cfg))

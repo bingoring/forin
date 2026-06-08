@@ -1,0 +1,29 @@
+name: contract
+
+# Drift gate: regenerate the API contract from Go and fail if the committed
+# packages/contract files are out of sync with the server code.
+on:
+  push:
+    branches: [master]
+    paths: ['server/**', 'packages/contract/**', '.github/workflows/contract.yml']
+  pull_request:
+    paths: ['server/**', 'packages/contract/**', '.github/workflows/contract.yml']
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+          cache-dependency-path: server/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: go install github.com/swaggo/swag/v2/cmd/swag@latest
+      - name: Regenerate contract
+        working-directory: server
+        run: make contract
+      - name: Fail on drift
+        run: git diff --exit-code packages/contract

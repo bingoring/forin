@@ -1,0 +1,150 @@
+components:
+  schemas:
+    github_com_bingoring_forin_server_internal_domain_auth.TokenPair:
+      properties:
+        accessToken:
+          type: string
+        expiresIn:
+          description: access token seconds-to-live
+          type: integer
+        refreshToken:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_user.Profile:
+      properties:
+        destination:
+          description: e.g. "us"
+          type: string
+        enLevel:
+          description: e.g. "B1"
+          type: string
+        job:
+          description: 'MVP: "nurse"'
+          type: string
+        nativeLang:
+          description: e.g. "ko"
+          type: string
+        userId:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_user.User:
+      properties:
+        createdAt:
+          type: string
+        id:
+          description: UUID
+          type: string
+        status:
+          type: string
+      type: object
+    internal_adapters_http.loginResp:
+      properties:
+        tokens:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_auth.TokenPair'
+        user:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.User'
+      type: object
+    internal_adapters_http.meResp:
+      properties:
+        profile:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.Profile'
+        user:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.User'
+      type: object
+    internal_adapters_http.socialLoginReq:
+      properties:
+        idToken:
+          type: string
+        provider:
+          type: string
+      type: object
+  securitySchemes:
+    Bearer:
+      in: header
+      name: Authorization
+      type: apiKey
+externalDocs:
+  description: ""
+  url: ""
+info:
+  description: forin server API — Go stdlib, hexagonal. Contract is Go-first (swag
+    → openapi → openapi-typescript).
+  title: forin API
+  version: 0.1.0
+openapi: 3.1.0
+paths:
+  /auth/logout:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Logout (revoke refresh tokens)
+      tags:
+      - auth
+  /auth/refresh:
+    post:
+      responses: null
+      summary: Rotate refresh token
+      tags:
+      - auth
+  /auth/social:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - type: object
+              - $ref: '#/components/schemas/internal_adapters_http.socialLoginReq'
+                description: provider + ID token
+                summary: body
+        description: provider + ID token
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.loginResp'
+          description: OK
+      summary: Social login (Apple/Google/Kakao)
+      tags:
+      - auth
+  /board/today:
+    get:
+      responses: null
+      summary: Today's event board (daily pool)
+      tags:
+      - content
+  /content/manifest:
+    get:
+      responses: null
+      summary: Content manifest (version)
+      tags:
+      - content
+  /events:
+    get:
+      responses: null
+      summary: List events (optionally ?profession=nurse)
+      tags:
+      - content
+  /me:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.meResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Current user + profile
+      tags:
+      - user
+  /scenarios/{id}:
+    get:
+      responses: null
+      summary: Get a scenario (dialogue/quiz/effect steps)
+      tags:
+      - content
