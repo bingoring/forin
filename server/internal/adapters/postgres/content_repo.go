@@ -73,8 +73,8 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 		}
 	}
 	if _, err := tx.Exec(ctx,
-		`INSERT INTO content_meta (k, v) VALUES ('contentVersion', $1)
-		 ON CONFLICT (k) DO UPDATE SET v = EXCLUDED.v`, b.Manifest.ContentVersion); err != nil {
+		`INSERT INTO content_meta (k, v) VALUES ('manifest', $1)
+		 ON CONFLICT (k) DO UPDATE SET v = EXCLUDED.v`, string(jsonb(b.Manifest))); err != nil {
 		return err
 	}
 	return tx.Commit(ctx)
@@ -82,11 +82,16 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 
 func (r *ContentRepo) Manifest(ctx context.Context) (*content.Manifest, error) {
 	m := &content.Manifest{}
-	err := r.pool.QueryRow(ctx, `SELECT v FROM content_meta WHERE k = 'contentVersion'`).Scan(&m.ContentVersion)
+	var raw string
+	err := r.pool.QueryRow(ctx, `SELECT v FROM content_meta WHERE k = 'manifest'`).Scan(&raw)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return m, nil
 	}
-	return m, err
+	if err != nil {
+		return nil, err
+	}
+	unjson([]byte(raw), m)
+	return m, nil
 }
 
 func (r *ContentRepo) ListEvents(ctx context.Context, profession string) ([]content.Event, error) {

@@ -10,6 +10,25 @@ components:
         refreshToken:
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_progress.Progress:
+      properties:
+        emergencyResponse:
+          type: integer
+        level:
+          type: integer
+        patientSatisfaction:
+          type: integer
+        peerTrust:
+          type: integer
+        rank:
+          type: string
+        streakCurrent:
+          type: integer
+        streakLongest:
+          type: integer
+        xp:
+          type: integer
+      type: object
     github_com_bingoring_forin_server_internal_domain_user.Profile:
       properties:
         destination:
@@ -35,6 +54,18 @@ components:
           description: UUID
           type: string
         status:
+          type: string
+      type: object
+    internal_adapters_http.attemptReq:
+      properties:
+        scenarioId:
+          type: string
+        score:
+          type: integer
+      type: object
+    internal_adapters_http.gradeReq:
+      properties:
+        grade:
           type: string
       type: object
     internal_adapters_http.loginResp:
@@ -73,6 +104,29 @@ info:
   version: 0.1.0
 openapi: 3.1.0
 paths:
+  /attempts:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.attemptReq'
+              description: scenario clear
+              summary: body
+        description: scenario clear
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.Progress'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Record a cleared scenario (awards XP, advances streak)
+      tags:
+      - progress
   /auth/logout:
     post:
       responses: null
@@ -142,6 +196,45 @@ paths:
       summary: Current user + profile
       tags:
       - user
+  /me/progress:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.Progress'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Current user's growth
+      tags:
+      - progress
+  /me/review:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Review cards due today
+      tags:
+      - review
+  /me/review/{id}/grade:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.gradeReq'
+              description: 'grade: again|hard|good|easy'
+              summary: body
+        description: 'grade: again|hard|good|easy'
+        required: true
+      responses: null
+      security:
+      - Bearer: []
+      summary: Grade a review card (SM-2 spaced repetition)
+      tags:
+      - review
   /scenarios/{id}:
     get:
       responses: null

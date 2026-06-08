@@ -4,6 +4,47 @@
  */
 
 export interface paths {
+    "/attempts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Record a cleared scenario (awards XP, advances streak) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description scenario clear */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.attemptReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.Progress"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/logout": {
         parameters: {
             query?: never;
@@ -211,6 +252,99 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/progress": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Current user's growth */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.Progress"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Review cards due today */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/review/{id}/grade": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Grade a review card (SM-2 spaced repetition) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description grade: again|hard|good|easy */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.gradeReq"];
+                };
+            };
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/scenarios/{id}": {
         parameters: {
             query?: never;
@@ -247,6 +381,16 @@ export interface components {
             expiresIn?: number;
             refreshToken?: string;
         };
+        "github_com_bingoring_forin_server_internal_domain_progress.Progress": {
+            emergencyResponse?: number;
+            level?: number;
+            patientSatisfaction?: number;
+            peerTrust?: number;
+            rank?: string;
+            streakCurrent?: number;
+            streakLongest?: number;
+            xp?: number;
+        };
         "github_com_bingoring_forin_server_internal_domain_user.Profile": {
             /** @description e.g. "us" */
             destination?: string;
@@ -263,6 +407,13 @@ export interface components {
             /** @description UUID */
             id?: string;
             status?: string;
+        };
+        "internal_adapters_http.attemptReq": {
+            scenarioId?: string;
+            score?: number;
+        };
+        "internal_adapters_http.gradeReq": {
+            grade?: string;
         };
         "internal_adapters_http.loginResp": {
             tokens?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];

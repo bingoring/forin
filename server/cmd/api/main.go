@@ -59,11 +59,13 @@ func main() {
 	})
 	users := postgres.NewUserRepo(pool)
 	contentRepo := postgres.NewContentRepo(pool)
+	progressRepo := postgres.NewProgressRepo(pool)
 	refreshStore := redisadapter.NewRefreshStore(rdb)
 	authSvc := auth.NewService(users, verifier, refreshStore, tokens, cfg.RefreshTTL)
 
 	handler := httpadapter.NewRouter(httpadapter.Deps{
-		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo, PG: pool, Redis: rdb,
+		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
+		Progress: progressRepo, Review: progressRepo, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

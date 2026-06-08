@@ -15,13 +15,15 @@ import (
 
 // Deps are the dependencies the HTTP layer needs (wired in main).
 type Deps struct {
-	Log     *slog.Logger
-	Tokens  *auth.TokenService
-	AuthSvc *auth.Service
-	Users   ports.UserRepo
-	Content ports.ContentReader
-	PG      *pgxpool.Pool
-	Redis   *redis.Client
+	Log      *slog.Logger
+	Tokens   *auth.TokenService
+	AuthSvc  *auth.Service
+	Users    ports.UserRepo
+	Content  ports.ContentReader
+	Progress ports.ProgressRepo
+	Review   ports.ReviewRepo
+	PG       *pgxpool.Pool
+	Redis    *redis.Client
 }
 
 // NewRouter builds the application handler with global middleware and routes.
@@ -48,6 +50,13 @@ func NewRouter(d Deps) http.Handler {
 	mux.HandleFunc("GET /events", ch.events)
 	mux.HandleFunc("GET /scenarios/{id}", ch.scenario)
 	mux.HandleFunc("GET /board/today", ch.board)
+
+	// Progress + review (authenticated).
+	ph := &progressHandler{progress: d.Progress, review: d.Review}
+	mux.Handle("GET /me/progress", auth(http.HandlerFunc(ph.get)))
+	mux.Handle("POST /attempts", auth(http.HandlerFunc(ph.attempt)))
+	mux.Handle("GET /me/review", auth(http.HandlerFunc(ph.due)))
+	mux.Handle("POST /me/review/{id}/grade", auth(http.HandlerFunc(ph.grade)))
 
 	// Global middleware (outermost first).
 	return chain(mux,

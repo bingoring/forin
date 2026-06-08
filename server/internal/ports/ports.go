@@ -7,8 +7,23 @@ import (
 	"time"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/user"
 )
+
+// ProgressRepo reads/updates user growth.
+type ProgressRepo interface {
+	GetProgress(ctx context.Context, userID string) (*progress.Progress, error)
+	// RecordAttempt logs a cleared scenario, awards XP, updates streak, returns new progress.
+	RecordAttempt(ctx context.Context, userID, scenarioID string, score int) (*progress.Progress, error)
+}
+
+// ReviewRepo manages spaced-repetition cards.
+type ReviewRepo interface {
+	DueCards(ctx context.Context, userID string, today time.Time, limit int) ([]progress.ReviewCard, error)
+	GetCardForUser(ctx context.Context, userID, cardID string) (*progress.ReviewCard, error)
+	SaveSchedule(ctx context.Context, cardID string, s progress.Schedule, masteryPips int) error
+}
 
 // ContentReader serves authored content (read-only) to the domain/API.
 type ContentReader interface {
