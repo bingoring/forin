@@ -119,8 +119,11 @@ AI 대화·교정·음성(2-3), 모바일(2-4+), 경제 수치 튜닝(2-7).
 - **증분 2a — ✅ 계약 코드젠**(forin 커밋, 2026-06-08): Go 어노테이션 → `swag --v3.1`
   → `packages/contract/openapi.yaml`(OpenAPI 3.1) → `openapi-typescript` → `types.ts`. `make contract`
   타깃 + CI 드리프트 게이트(`.github/workflows/contract.yml`). 생성 파이프라인 동작 검증.
-- **증분 2b — 예정**: 진행/성장 API(progress·attempts·review SM-2) + 진행 테이블, **sqlc 전환**,
-  인테리어 테이블, manifest 전체 저장(schemaVersion·professions). 콘텐츠 어노테이션 보강(현재 일부 map 응답).
+- **증분 2b — ✅ 진행/복습**(forin 커밋, 2026-06-08): 진행 테이블(000003) + 진행/성장 API
+  (`/me/progress`·`/attempts`) + **SM-2 간격 반복**(`/me/review`·`/me/review/{id}/grade`, 단위테스트) +
+  manifest 전체 저장. docker로 진행·공격·복습·채점 플로우 실 검증(xp·streak·SM-2 due 전진). `cmd/devtoken`으로 인증 경로 검증.
+- **증분 2c — 예정(2-2 마무리)**: **sqlc 전환**(전 리포지토리 일괄), 인테리어 테이블·API,
+  콘텐츠 핸들러 어노테이션 보강. 완료 후 2-2 `HUMAN_APPROVED`.
 
 ## 검토 게이트 (Human Gate)
 
