@@ -17,12 +17,18 @@
 
 ## Phase 2 — Construction (How)
 
-> 스테이지는 1-3 Architecture Decision이 `HUMAN_APPROVED`된 후 확정한다.
-> 잠정 구성: 서버(Go) → 계약/코드젠 → 모바일(RN/Expo) 레이어.
+> 1-3 아키텍처 승인으로 확정(2026-06-08). + 콘텐츠 워크스트림 병행.
 
 | 스테이지 | 문서 | 상태 |
 |---------|------|------|
-| 2-1 (TBD: 아키텍처 승인 후 정의) | — | PENDING |
+| 2-1 서버 기반 | [01-server-foundation.md](02-construction/01-server-foundation.md) | AI_PROPOSED |
+| 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | PENDING |
+| 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | PENDING |
+| 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | PENDING |
+| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | PENDING |
+| 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | PENDING |
+| 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | PENDING |
+| 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | PENDING |
 
 ## Phase 3 — Operations (Ship)
 
