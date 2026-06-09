@@ -92,6 +92,17 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
 
 `.env`(`ANTHROPIC_API_KEY` 등)를 서버에 로드해 **실 호출**. 키 값은 env→서버로만 흐르며 코드·깃·로그에 남기지 않음.
 
+## 구현 증분 (Implementation Increments)
+
+- **3a — ✅ LLM 대화 + 교정 구현**(forin 커밋, 2026-06-09): config(ANTHROPIC_API_KEY/모델, ANTHROPIC_KEY도 허용)
+  · `LLMPort` + **anthropic 어댑터**(Messages API, stdlib) · **`DialogueStrategy`(Strategy 패턴) + SingleModel**
+  · **대화 엔진**(persona·goals·guardrails → 시스템 프롬프트, 세션/턴 영속) · **교정**(저가 모델 → CorrectionResult → ReviewCard)
+  · 마이그레이션 000006(conversation_sessions/dialogue_turns/correction_results) · 엔드포인트 4개 · sqlc · 계약 재생성.
+  - **검증:** `go build/vet/test` 통과. docker+`.env`로 기동 → 세션 생성·인증·DB 경로 OK.
+    실 Anthropic 호출은 **키 인증·요청 형식·모델 ID(claude-sonnet-4-6) 모두 유효 확인**,
+    단 **계정 크레딧 부족**으로 생성 거부(빌링 이슈, 코드 무관). 크레딧 충전 후 실 대화·교정 재검증 예정.
+- **3b — 예정**: Azure 발음 평가 어댑터·엔드포인트. **3c — 예정**: SSE 스트리밍.
+
 ## 검토 게이트 (Human Gate)
 
 - [ ] 대화·교정 품질과 확장성(어댑터 교체)이 확보되는가?
