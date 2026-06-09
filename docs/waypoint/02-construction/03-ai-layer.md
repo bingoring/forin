@@ -101,6 +101,10 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
   - **검증:** `go build/vet/test` 통과. docker+`.env`로 기동 → 세션 생성·인증·DB 경로 OK.
     실 Anthropic 호출은 **키 인증·요청 형식·모델 ID(claude-sonnet-4-6) 모두 유효 확인**,
     단 **계정 크레딧 부족**으로 생성 거부(빌링 이슈, 코드 무관). 크레딧 충전 후 실 대화·교정 재검증 예정.
+- **3a 보강 — ✅ 언어 비하드코딩**(사용자 지적, 2026-06-09): 대화·교정 프롬프트가 **사용자 프로필의
+  `nativeLang`+`targetLang`(+job)로 구동**된다(English/Korean 하드코딩 제거). Profile에 `target_lang` 추가,
+  `en_level`→`target_level` 일반화(마이그 000007). 프로필 없으면 출시 시장(Korean→English)으로만 폴백.
+  단위테스트로 "다른 언어 시 하드코딩 누출 없음" 고정. (참고: persona/goals 등 **콘텐츠 텍스트의 다국어화**는 별도 후속.)
 - **3b — 예정**: Azure 발음 평가 어댑터·엔드포인트. **3c — 예정**: SSE 스트리밍.
 
 ## 검토 게이트 (Human Gate)
