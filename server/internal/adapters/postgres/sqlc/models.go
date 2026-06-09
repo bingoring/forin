@@ -118,6 +118,7 @@ type Scenario struct {
 	Guardrails []byte `json:"guardrails"`
 	KeyPhrases []byte `json:"key_phrases"`
 	Steps      []byte `json:"steps"`
+	Persona    []byte `json:"persona"`
 }
 
 type ScenarioAttempt struct {

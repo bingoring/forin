@@ -99,19 +99,33 @@ func (q *Queries) GetInterior(ctx context.Context, id string) (Interior, error) 
 }
 
 const getScenario = `-- name: GetScenario :one
-SELECT id, profession, event_id, title, tagline, goals, guardrails, key_phrases, steps
+SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps
 FROM scenarios WHERE id = $1
 `
 
-func (q *Queries) GetScenario(ctx context.Context, id string) (Scenario, error) {
+type GetScenarioRow struct {
+	ID         string `json:"id"`
+	Profession string `json:"profession"`
+	EventID    string `json:"event_id"`
+	Title      string `json:"title"`
+	Tagline    string `json:"tagline"`
+	Persona    []byte `json:"persona"`
+	Goals      []byte `json:"goals"`
+	Guardrails []byte `json:"guardrails"`
+	KeyPhrases []byte `json:"key_phrases"`
+	Steps      []byte `json:"steps"`
+}
+
+func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, error) {
 	row := q.db.QueryRow(ctx, getScenario, id)
-	var i Scenario
+	var i GetScenarioRow
 	err := row.Scan(
 		&i.ID,
 		&i.Profession,
 		&i.EventID,
 		&i.Title,
 		&i.Tagline,
+		&i.Persona,
 		&i.Goals,
 		&i.Guardrails,
 		&i.KeyPhrases,
@@ -266,8 +280,8 @@ func (q *Queries) InsertQuiz(ctx context.Context, arg InsertQuizParams) error {
 }
 
 const insertScenario = `-- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, goals, guardrails, key_phrases, steps)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
 `
 
 type InsertScenarioParams struct {
@@ -276,6 +290,7 @@ type InsertScenarioParams struct {
 	EventID    string `json:"event_id"`
 	Title      string `json:"title"`
 	Tagline    string `json:"tagline"`
+	Persona    []byte `json:"persona"`
 	Goals      []byte `json:"goals"`
 	Guardrails []byte `json:"guardrails"`
 	KeyPhrases []byte `json:"key_phrases"`
@@ -289,6 +304,7 @@ func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) 
 		arg.EventID,
 		arg.Title,
 		arg.Tagline,
+		arg.Persona,
 		arg.Goals,
 		arg.Guardrails,
 		arg.KeyPhrases,

@@ -172,10 +172,22 @@ type Scenario struct {
 	EventID    string   `yaml:"eventId" json:"eventId"`
 	Title      string   `yaml:"title" json:"title"`
 	Tagline    string   `yaml:"tagline" json:"tagline"`
+	Persona    Persona  `yaml:"persona" json:"persona"`
 	Goals      []string `yaml:"goals" json:"goals"`
 	Guardrails []string `yaml:"guardrails" json:"guardrails"`
 	KeyPhrases []string `yaml:"keyPhrases" json:"keyPhrases"`
 	Steps      []Step   `yaml:"steps" json:"steps"`
+}
+
+// Persona describes the AI's conversation character for realistic role-play.
+// Injected into the dialogue system prompt (2-3). Authored as content.
+type Persona struct {
+	Name          string `yaml:"name" json:"name,omitempty"`
+	Role          string `yaml:"role" json:"role,omitempty"`         // patient, doctor, surgeon, parent...
+	AgeRange      string `yaml:"ageRange" json:"ageRange,omitempty"` // e.g. "60s"
+	Personality   string `yaml:"personality" json:"personality,omitempty"`
+	SpeakingStyle string `yaml:"speakingStyle" json:"speakingStyle,omitempty"`
+	Mood          string `yaml:"mood" json:"mood,omitempty"` // matches expression: pain, worried, panic...
 }
 
 type Quiz struct {

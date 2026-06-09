@@ -23,7 +23,7 @@ FROM events WHERE delivery IN ('daily_pool', 'both') AND ($1 = '' OR profession 
 ORDER BY tier, id LIMIT $2;
 
 -- name: GetScenario :one
-SELECT id, profession, event_id, title, tagline, goals, guardrails, key_phrases, steps
+SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps
 FROM scenarios WHERE id = $1;
 
 -- name: DeleteDepartments :exec
@@ -51,8 +51,8 @@ INSERT INTO events (id, profession, title, ward, category, tier, tags, delivery,
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 
 -- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, goals, guardrails, key_phrases, steps)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
 
 -- name: InsertQuiz :exec
 INSERT INTO quizzes (id, profession, type, title) VALUES ($1, $2, $3, $4);

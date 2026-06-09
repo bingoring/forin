@@ -63,7 +63,8 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 	for _, s := range b.Scenarios {
 		if err := q.InsertScenario(ctx, sqlc.InsertScenarioParams{
 			ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline,
-			Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails), KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps)}); err != nil {
+			Persona: jsonb(s.Persona), Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails),
+			KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps)}); err != nil {
 			return err
 		}
 	}
@@ -153,6 +154,7 @@ func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scen
 		return nil, err
 	}
 	out := &content.Scenario{ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline}
+	unjson(s.Persona, &out.Persona)
 	unjson(s.Goals, &out.Goals)
 	unjson(s.Guardrails, &out.Guardrails)
 	unjson(s.KeyPhrases, &out.KeyPhrases)
