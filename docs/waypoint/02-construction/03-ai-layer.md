@@ -53,8 +53,8 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
 - `Scenario`의 `goals`·`guardrails`·`keyPhrases`를 **시스템 프롬프트**로 조립 → LLM이 그 제약 안에서 대화.
 - **NPC 페르소나(현실성 — 사용자 강조):** 시나리오는 대화 상대의 `persona`(역할·**연령대**·**성격**·말투·현재 감정/expression)를
   가진다. 이를 시스템 프롬프트에 주입해 LLM이 **그 인물로 자연스럽게 롤플레이**한다
-  (예: 통증에 시달리는 60대 환자, 퉁명한 외과의). → `Scenario`에 `persona` 필드 추가(다중 NPC면 캐릭터별);
-  콘텐츠 워크스트림에서 작성하고 03_CHARACTERS의 role/expression과 정합.
+  (예: 통증에 시달리는 60대 환자, 퉁명한 외과의). → `Scenario.persona`(콘텐츠) **✅ 구현됨**(모델·스키마 000005·sqlc·시드, 2026-06-09);
+  콘텐츠 워크스트림의 모든 시나리오는 persona 포함, 03_CHARACTERS의 role/expression과 정합. (3a에서 시스템 프롬프트로 주입.)
 - 세션·턴 영속: `ConversationSession`, `DialogueTurn`(user/ai). 턴 상한·토큰 상한으로 비용 통제.
 - **교정 파이프라인:** 사용자 발화 → (저가 모델) 교정 → `CorrectionResult`(original→corrected + "왜?" note) → `ReviewCard` 생성(2-2 복습과 연결).
 
