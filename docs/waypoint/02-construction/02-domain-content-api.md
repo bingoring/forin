@@ -125,7 +125,11 @@ AI 대화·교정·음성(2-3), 모바일(2-4+), 경제 수치 튜닝(2-7).
 - **증분 2c — ✅ 인테리어**(forin 커밋, 2026-06-09): interiors 테이블(000004) + 콘텐츠 모델
   (Interior/Region/Room/MapObject/Hotspot) + 검증(deptId·hotspot→scenario 참조) + 로더 + nurse ER 인테리어 시드
   + API(`/departments`·`/interiors/{id}`). docker로 시드·조회 검증(타일맵·핫스팟→시나리오 연결).
-- **증분 2d — 예정(2-2 마무리)**: **sqlc 전환**(전 리포지토리 일괄 — 데이터 계층 리팩터). 완료 후 2-2 `HUMAN_APPROVED`.
+- **증분 2d — ✅ sqlc 전환**(forin 커밋, 2026-06-09): user·content·progress 리포지토리를 sqlc 생성
+  타입세이프 쿼리로 일괄 전환(`db/queries/*.sql`, `sqlc.yaml` 오버라이드: uuid→string·date→time.Time·int4→int·float4→float64).
+  헥사고날 ports는 불변, 어댑터 내부만 교체. docker로 전 엔드포인트 재검증(streak upsert·조인·jsonb 정상).
+
+**→ 2-2 구현 완료·런타임 검증 완료. 사용자 승인 시 `HUMAN_APPROVED`.**
 
 ## 검토 게이트 (Human Gate)
 
