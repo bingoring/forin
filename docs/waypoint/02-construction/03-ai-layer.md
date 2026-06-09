@@ -20,7 +20,7 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
 ## 체크리스트
 
 - [ ] `LLMPort` + Claude 어댑터, **모델 티어링**(대화=Sonnet/교정=Haiku), SSE 스트리밍
-- [ ] 대화 엔진: 시나리오 goals·guardrails·keyPhrases 주입 → DialogueTurn 기록
+- [ ] 대화 엔진: 시나리오 goals·guardrails·keyPhrases **+ NPC 페르소나(역할·연령대·성격·말투·감정)** 주입 → 현실적 롤플레이, DialogueTurn 기록
 - [ ] 교정 파이프라인(저가 모델) → CorrectionResult → ReviewCard
 - [ ] `STTPort`(온디바이스 expo-speech-recognition) · `TTSPort`(expo-speech) 어댑터
 - [ ] `PronunciationPort` → Azure Pronunciation Assessment 어댑터
@@ -51,6 +51,10 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
 ### 3. 대화 엔진 (도메인)
 
 - `Scenario`의 `goals`·`guardrails`·`keyPhrases`를 **시스템 프롬프트**로 조립 → LLM이 그 제약 안에서 대화.
+- **NPC 페르소나(현실성 — 사용자 강조):** 시나리오는 대화 상대의 `persona`(역할·**연령대**·**성격**·말투·현재 감정/expression)를
+  가진다. 이를 시스템 프롬프트에 주입해 LLM이 **그 인물로 자연스럽게 롤플레이**한다
+  (예: 통증에 시달리는 60대 환자, 퉁명한 외과의). → `Scenario`에 `persona` 필드 추가(다중 NPC면 캐릭터별);
+  콘텐츠 워크스트림에서 작성하고 03_CHARACTERS의 role/expression과 정합.
 - 세션·턴 영속: `ConversationSession`, `DialogueTurn`(user/ai). 턴 상한·토큰 상한으로 비용 통제.
 - **교정 파이프라인:** 사용자 발화 → (저가 모델) 교정 → `CorrectionResult`(original→corrected + "왜?" note) → `ReviewCard` 생성(2-2 복습과 연결).
 
@@ -73,9 +77,16 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
 - **3b — Azure 발음 평가**: PronunciationPort·azurespeech 어댑터·엔드포인트. (오디오 필요 — 가능 범위서 검증, 본격은 모바일 연동 시.)
 - **3c — 스트리밍(SSE)** 대화 응답.
 
-### 7. 비용·안전
+### 7. 비용·안전 · 모델 전략 (확장성 핵심 — 사용자 강조)
 
-모델 티어링·max_tokens·턴 상한·교정 캐시. 가드레일은 시스템 프롬프트 주입 + 서버 검증. 키 server-only.
+기본 대화 모델은 **Sonnet**. 단 **모델 교체·비용 최적화가 잦을 것**이므로 단일 1회 호출에 묶지 않고,
+**생성 전략(generation strategy)을 추상화**한다 — **Strategy 패턴 + LLMPort 어댑터**:
+- `DialogueStrategy` 인터페이스(컨텍스트 → 응답), 구현 교체 가능:
+  - `SingleModel`(기본: Sonnet 1회)
+  - `DraftRefine` / `CheapEnsemble`(**저가 모델 다회 호출 → 병합·정제**) — 저비용+고품질 가능성 실험 대상
+  - `Router`(난이도·턴별 모델 선택)
+- 전략·모델을 **설정으로 주입** → 운영 중 교체. "최고 UX + 서비스 존속(비용)"을 코드 구조로 보장.
+- 통제: 모델 티어링·max_tokens·턴 상한·교정 캐시. 가드레일은 시스템 프롬프트 주입 + 서버 검증. 키 server-only.
 
 ### 검증 방식
 
