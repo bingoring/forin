@@ -22,8 +22,8 @@
 | 스테이지 | 문서 | 상태 |
 |---------|------|------|
 | 2-1 서버 기반 | [01-server-foundation.md](02-construction/01-server-foundation.md) | HUMAN_APPROVED |
-| 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | IN_PROGRESS (구현 완료·검증, 승인 대기) |
-| 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | PENDING |
+| 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | HUMAN_APPROVED |
+| 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | AI_PROPOSED |
 | 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | PENDING |
 | 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | PENDING |
 | 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | PENDING |

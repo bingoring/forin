@@ -1,8 +1,8 @@
 ---
 phase: 02-construction
 stage: 02-domain-content-api
-status: IN_PROGRESS
-updated: 2026-06-08
+status: HUMAN_APPROVED
+updated: 2026-06-09
 ---
 
 # [Stage 2-2] 도메인·콘텐츠 API + 계약
