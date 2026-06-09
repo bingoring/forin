@@ -53,6 +53,11 @@ type LLMPort interface {
 	Complete(ctx context.Context, req LLMRequest) (string, error)
 }
 
+// ProfileReader exposes the user's language context for prompt building.
+type ProfileReader interface {
+	GetProfile(ctx context.Context, userID string) (*user.Profile, error)
+}
+
 // ConversationSession / Turn are persistence DTOs for dialogue.
 type ConversationSession struct{ ID, UserID, ScenarioID string }
 type ConversationTurn struct{ Role, Content string }

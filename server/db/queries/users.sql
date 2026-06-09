@@ -16,4 +16,4 @@ UPDATE auth_identities SET email = $3 WHERE provider = $1 AND subject_id = $2;
 SELECT id, status, created_at FROM users WHERE id = $1;
 
 -- name: GetProfile :one
-SELECT user_id, job, native_lang, destination, en_level FROM profiles WHERE user_id = $1;
+SELECT user_id, job, native_lang, target_lang, destination, target_level FROM profiles WHERE user_id = $1;

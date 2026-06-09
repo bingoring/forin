@@ -69,7 +69,7 @@ func main() {
 	// AI layer: Anthropic adapter behind LLMPort; SingleModel dialogue strategy.
 	llm := anthropic.New(cfg.AnthropicKey)
 	dialogue := conversation.SingleModel{LLM: llm, Model: cfg.DialogueModel, MaxTokens: 512}
-	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, llm, dialogue, cfg.CorrectionModel)
+	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, users, llm, dialogue, cfg.CorrectionModel)
 	if !llm.Configured() {
 		logger.Warn("ANTHROPIC_API_KEY not set — AI conversation/correction endpoints will return errors")
 	}

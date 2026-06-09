@@ -550,12 +550,14 @@ export interface components {
         "github_com_bingoring_forin_server_internal_domain_user.Profile": {
             /** @description e.g. "us" */
             destination?: string;
-            /** @description e.g. "B1" */
-            enLevel?: string;
             /** @description MVP: "nurse" */
             job?: string;
-            /** @description e.g. "ko" */
+            /** @description user's language, e.g. "ko" */
             nativeLang?: string;
+            /** @description language being learned, e.g. "en", "de" */
+            targetLang?: string;
+            /** @description level in TargetLang, e.g. "B1" */
+            targetLevel?: string;
             userId?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_user.User": {

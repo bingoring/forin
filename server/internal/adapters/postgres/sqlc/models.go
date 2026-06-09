@@ -100,8 +100,9 @@ type Profile struct {
 	Job         string             `json:"job"`
 	NativeLang  string             `json:"native_lang"`
 	Destination string             `json:"destination"`
-	EnLevel     string             `json:"en_level"`
+	TargetLevel string             `json:"target_level"`
 	UpdatedAt   pgtype.Timestamptz `json:"updated_at"`
+	TargetLang  string             `json:"target_lang"`
 }
 
 type Quiz struct {

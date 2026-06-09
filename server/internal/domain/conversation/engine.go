@@ -23,14 +23,67 @@ type Engine struct {
 	content         ports.ContentReader
 	convo           ports.ConversationRepo
 	review          ports.ReviewRepo
+	profiles        ports.ProfileReader
 	llm             ports.LLMPort
 	strategy        Strategy
 	correctionModel string
 }
 
 func NewEngine(c ports.ContentReader, convo ports.ConversationRepo, review ports.ReviewRepo,
-	llm ports.LLMPort, strategy Strategy, correctionModel string) *Engine {
-	return &Engine{content: c, convo: convo, review: review, llm: llm, strategy: strategy, correctionModel: correctionModel}
+	profiles ports.ProfileReader, llm ports.LLMPort, strategy Strategy, correctionModel string) *Engine {
+	return &Engine{content: c, convo: convo, review: review, profiles: profiles,
+		llm: llm, strategy: strategy, correctionModel: correctionModel}
+}
+
+// langContext is the user's language framing for prompts (never hardcoded).
+type langContext struct {
+	Native string // human name, e.g. "Korean"
+	Target string // human name, e.g. "English"
+	Job    string
+}
+
+// langName maps an ISO-ish code to a human language name for the prompt.
+func langName(code string) string {
+	switch code {
+	case "ko":
+		return "Korean"
+	case "en":
+		return "English"
+	case "de":
+		return "German"
+	case "ja":
+		return "Japanese"
+	case "zh":
+		return "Chinese"
+	case "es":
+		return "Spanish"
+	case "fr":
+		return "French"
+	case "":
+		return ""
+	default:
+		return code
+	}
+}
+
+// langFor loads the user's profile and derives native/target languages + job.
+// Falls back to the launch market (Korean→English nurse) only when the profile is absent.
+func (e *Engine) langFor(ctx context.Context, userID string) langContext {
+	lc := langContext{Native: "Korean", Target: "English", Job: "healthcare worker"}
+	p, err := e.profiles.GetProfile(ctx, userID)
+	if err != nil || p == nil {
+		return lc
+	}
+	if n := langName(p.NativeLang); n != "" {
+		lc.Native = n
+	}
+	if t := langName(p.TargetLang); t != "" {
+		lc.Target = t
+	}
+	if p.Job != "" {
+		lc.Job = p.Job
+	}
+	return lc
 }
 
 // StartSession validates the scenario and opens a conversation session.
@@ -73,7 +126,7 @@ func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string
 	for _, t := range hist {
 		msgs = append(msgs, ports.LLMMessage{Role: t.Role, Content: t.Content})
 	}
-	reply, err := e.strategy.Generate(ctx, buildSystemPrompt(sc), msgs)
+	reply, err := e.strategy.Generate(ctx, buildSystemPrompt(sc, e.langFor(ctx, userID)), msgs)
 	if err != nil {
 		return "", err
 	}
@@ -94,9 +147,11 @@ type Correction struct {
 
 // Correct fixes the utterance (cheaper model), stores it, and creates a review card.
 func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText string) (*Correction, error) {
-	sys := "You are an English coach for Korean healthcare workers. Correct the user's English to natural, " +
-		"clinically appropriate phrasing. Respond ONLY with JSON: {\"corrected\": string, \"note\": string}. " +
-		"\"note\" briefly explains in Korean why it is more natural. If already correct, return it unchanged with an encouraging note."
+	lc := e.langFor(ctx, userID)
+	sys := fmt.Sprintf("You are a %[1]s coach for %[2]s-speaking %[3]ss. Correct the user's %[1]s to natural, "+
+		"clinically appropriate phrasing. Respond ONLY with JSON: {\"corrected\": string, \"note\": string}. "+
+		"\"note\" briefly explains in %[2]s why it is more natural. If already correct, return it unchanged with an encouraging note.",
+		lc.Target, lc.Native, lc.Job)
 	user := utterance
 	if contextText != "" {
 		user = "Context: " + contextText + "\nUtterance: " + utterance
@@ -128,10 +183,12 @@ func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText str
 	return c, nil
 }
 
-// buildSystemPrompt composes the persona + scenario goals/guardrails into a role-play instruction.
-func buildSystemPrompt(sc *content.Scenario) string {
+// buildSystemPrompt composes the persona + scenario goals/guardrails into a role-play instruction,
+// framed by the user's native/target language (never hardcoded).
+func buildSystemPrompt(sc *content.Scenario, lc langContext) string {
 	var b strings.Builder
-	b.WriteString("You are role-playing a character in a clinical English practice scenario for a Korean nurse preparing to work abroad.\n")
+	b.WriteString(fmt.Sprintf("You are role-playing a character in a clinical %s-language practice scenario "+
+		"for a %s-speaking %s preparing to work abroad.\n", lc.Target, lc.Native, lc.Job))
 	b.WriteString(fmt.Sprintf("Scenario: %s — %s\n", sc.Title, sc.Tagline))
 	p := sc.Persona
 	b.WriteString("Your character:\n")
@@ -147,8 +204,8 @@ func buildSystemPrompt(sc *content.Scenario) string {
 	if len(sc.Guardrails) > 0 {
 		b.WriteString("Guardrails: " + strings.Join(sc.Guardrails, "; ") + "\n")
 	}
-	b.WriteString("Stay fully in character. Speak natural English a nurse would hear in a real hospital. " +
-		"Keep replies short (1-3 sentences). Never break character or add meta commentary.")
+	b.WriteString(fmt.Sprintf("Stay fully in character. Speak natural %s a %s would hear in a real hospital. "+
+		"Keep replies short (1-3 sentences). Never break character or add meta commentary.", lc.Target, lc.Job))
 	return b.String()
 }
 

@@ -37,11 +37,13 @@ type AuthIdentity struct {
 	Email     string   `json:"email,omitempty"`
 }
 
-// Profile is onboarding-derived user data.
+// Profile is onboarding-derived user data. Language is NOT English-specific:
+// NativeLang is the user's language, TargetLang is the language being learned.
 type Profile struct {
 	UserID      string `json:"userId"`
 	Job         string `json:"job"`         // MVP: "nurse"
-	NativeLang  string `json:"nativeLang"`  // e.g. "ko"
+	NativeLang  string `json:"nativeLang"`  // user's language, e.g. "ko"
+	TargetLang  string `json:"targetLang"`  // language being learned, e.g. "en", "de"
 	Destination string `json:"destination"` // e.g. "us"
-	ENLevel     string `json:"enLevel"`     // e.g. "B1"
+	TargetLevel string `json:"targetLevel"` // level in TargetLang, e.g. "B1"
 }

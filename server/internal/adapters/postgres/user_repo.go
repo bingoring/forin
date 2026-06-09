@@ -74,7 +74,7 @@ func (r *UserRepo) GetProfile(ctx context.Context, userID string) (*user.Profile
 		return nil, err
 	}
 	return &user.Profile{
-		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang,
-		Destination: p.Destination, ENLevel: p.EnLevel,
+		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
+		Destination: p.Destination, TargetLevel: p.TargetLevel,
 	}, nil
 }

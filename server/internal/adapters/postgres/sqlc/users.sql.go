@@ -42,15 +42,16 @@ func (q *Queries) CreateUser(ctx context.Context, status string) (User, error) {
 }
 
 const getProfile = `-- name: GetProfile :one
-SELECT user_id, job, native_lang, destination, en_level FROM profiles WHERE user_id = $1
+SELECT user_id, job, native_lang, target_lang, destination, target_level FROM profiles WHERE user_id = $1
 `
 
 type GetProfileRow struct {
 	UserID      string `json:"user_id"`
 	Job         string `json:"job"`
 	NativeLang  string `json:"native_lang"`
+	TargetLang  string `json:"target_lang"`
 	Destination string `json:"destination"`
-	EnLevel     string `json:"en_level"`
+	TargetLevel string `json:"target_level"`
 }
 
 func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow, error) {
@@ -60,8 +61,9 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 		&i.UserID,
 		&i.Job,
 		&i.NativeLang,
+		&i.TargetLang,
 		&i.Destination,
-		&i.EnLevel,
+		&i.TargetLevel,
 	)
 	return i, err
 }

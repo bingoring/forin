@@ -45,14 +45,17 @@ components:
         destination:
           description: e.g. "us"
           type: string
-        enLevel:
-          description: e.g. "B1"
-          type: string
         job:
           description: 'MVP: "nurse"'
           type: string
         nativeLang:
-          description: e.g. "ko"
+          description: user's language, e.g. "ko"
+          type: string
+        targetLang:
+          description: language being learned, e.g. "en", "de"
+          type: string
+        targetLevel:
+          description: level in TargetLang, e.g. "B1"
           type: string
         userId:
           type: string
