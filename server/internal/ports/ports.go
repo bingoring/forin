@@ -28,6 +28,8 @@ type ReviewRepo interface {
 // ContentReader serves authored content (read-only) to the domain/API.
 type ContentReader interface {
 	Manifest(ctx context.Context) (*content.Manifest, error)
+	ListDepartments(ctx context.Context, profession string) ([]content.Department, error)
+	GetInterior(ctx context.Context, id string) (*content.Interior, error)
 	ListEvents(ctx context.Context, profession string) ([]content.Event, error)
 	GetScenario(ctx context.Context, id string) (*content.Scenario, error)
 	TodaysBoard(ctx context.Context, profession string, limit int) ([]content.Event, error)

@@ -176,10 +176,22 @@ paths:
       summary: Content manifest (version)
       tags:
       - content
+  /departments:
+    get:
+      responses: null
+      summary: List departments (optionally ?profession=nurse)
+      tags:
+      - content
   /events:
     get:
       responses: null
       summary: List events (optionally ?profession=nurse)
+      tags:
+      - content
+  /interiors/{id}:
+    get:
+      responses: null
+      summary: 'Get a department interior (tile map: regions/rooms/objects/hotspots)'
       tags:
       - content
   /me:

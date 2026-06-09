@@ -28,7 +28,7 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 	}
 	defer tx.Rollback(ctx)
 
-	for _, t := range []string{"phrases", "quizzes", "scenarios", "events", "departments"} {
+	for _, t := range []string{"phrases", "quizzes", "scenarios", "events", "interiors", "departments"} {
 		if _, err := tx.Exec(ctx, "DELETE FROM "+t); err != nil {
 			return err
 		}
@@ -37,6 +37,15 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 		if _, err := tx.Exec(ctx,
 			`INSERT INTO departments (id, profession, ward, name_ko, name_en, color) VALUES ($1,$2,$3,$4,$5,$6)`,
 			d.ID, d.Profession, d.Ward, d.NameKo, d.NameEn, d.Color); err != nil {
+			return err
+		}
+	}
+	for _, in := range b.Interiors {
+		if _, err := tx.Exec(ctx,
+			`INSERT INTO interiors (id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots)
+			 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+			in.ID, in.Profession, in.DeptID, in.Cols, in.Rows, jsonb(in.PlayerStart), in.FloorTheme,
+			jsonb(in.Regions), jsonb(in.Rooms), jsonb(in.Objects), jsonb(in.Hotspots)); err != nil {
 			return err
 		}
 	}
@@ -92,6 +101,46 @@ func (r *ContentRepo) Manifest(ctx context.Context) (*content.Manifest, error) {
 	}
 	unjson([]byte(raw), m)
 	return m, nil
+}
+
+func (r *ContentRepo) ListDepartments(ctx context.Context, profession string) ([]content.Department, error) {
+	rows, err := r.pool.Query(ctx,
+		`SELECT id,profession,ward,name_ko,name_en,color FROM departments
+		 WHERE ($1 = '' OR profession = $1 OR profession = 'common') ORDER BY id`, profession)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []content.Department
+	for rows.Next() {
+		var d content.Department
+		if err := rows.Scan(&d.ID, &d.Profession, &d.Ward, &d.NameKo, &d.NameEn, &d.Color); err != nil {
+			return nil, err
+		}
+		out = append(out, d)
+	}
+	return out, rows.Err()
+}
+
+func (r *ContentRepo) GetInterior(ctx context.Context, id string) (*content.Interior, error) {
+	var in content.Interior
+	var ps, regions, rooms, objects, hotspots []byte
+	err := r.pool.QueryRow(ctx,
+		`SELECT id,profession,dept_id,cols,rows,player_start,floor_theme,regions,rooms,objects,hotspots
+		 FROM interiors WHERE id = $1`, id).
+		Scan(&in.ID, &in.Profession, &in.DeptID, &in.Cols, &in.Rows, &ps, &in.FloorTheme, &regions, &rooms, &objects, &hotspots)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	unjson(ps, &in.PlayerStart)
+	unjson(regions, &in.Regions)
+	unjson(rooms, &in.Rooms)
+	unjson(objects, &in.Objects)
+	unjson(hotspots, &in.Hotspots)
+	return &in, nil
 }
 
 func (r *ContentRepo) ListEvents(ctx context.Context, profession string) ([]content.Event, error) {

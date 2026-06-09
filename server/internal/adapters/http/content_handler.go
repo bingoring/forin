@@ -21,6 +21,34 @@ func (h *contentHandler) manifest(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, m)
 }
 
+// @Summary List departments (optionally ?profession=nurse)
+// @Tags content
+// @Router /departments [get]
+func (h *contentHandler) departments(w http.ResponseWriter, r *http.Request) {
+	depts, err := h.content.ListDepartments(r.Context(), r.URL.Query().Get("profession"))
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not list departments")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"departments": depts})
+}
+
+// @Summary Get a department interior (tile map: regions/rooms/objects/hotspots)
+// @Tags content
+// @Router /interiors/{id} [get]
+func (h *contentHandler) interior(w http.ResponseWriter, r *http.Request) {
+	in, err := h.content.GetInterior(r.Context(), r.PathValue("id"))
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	if in == nil {
+		httpx.Error(w, http.StatusNotFound, "interior not found")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, in)
+}
+
 // @Summary List events (optionally ?profession=nurse)
 // @Tags content
 // @Router /events [get]

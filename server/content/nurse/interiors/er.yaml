@@ -1,0 +1,24 @@
+id: INT-ER-00001
+deptId: DEPT-ER-00001
+cols: 24
+rows: 18
+floorTheme: clinical
+playerStart: { x: 12, y: 15 }
+regions:
+  - id: triage
+    name: 트리아지
+    icon: "🩺"
+    bounds: { x: 1, y: 1, w: 10, h: 8 }
+  - id: trauma
+    name: 트라우마 룸
+    icon: "🚑"
+    bounds: { x: 12, y: 1, w: 11, h: 8 }
+rooms:
+  - { id: triage, name: 트리아지, sub: 접수·사정, icon: "🩺", color: "#A7F3D0", x: 5, y: 4 }
+  - { id: trauma, name: 트라우마 룸, sub: 응급 처치, icon: "🚑", color: "#FCA5A5", x: 17, y: 4 }
+objects:
+  - { id: bed1, type: bed, x: 4, y: 3, props: { occupied: true } }
+  - { id: monitor1, type: monitor, x: 6, y: 3, props: { beep: true } }
+  - { id: reception, type: reception, x: 5, y: 7 }
+hotspots:
+  - { id: hs1, kind: quest, x: 4, y: 4, label: "흉통 환자", scenarioId: SCN-ER-00001 }

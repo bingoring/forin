@@ -47,6 +47,8 @@ func NewRouter(d Deps) http.Handler {
 	// Content (public read).
 	ch := &contentHandler{content: d.Content}
 	mux.HandleFunc("GET /content/manifest", ch.manifest)
+	mux.HandleFunc("GET /departments", ch.departments)
+	mux.HandleFunc("GET /interiors/{id}", ch.interior)
 	mux.HandleFunc("GET /events", ch.events)
 	mux.HandleFunc("GET /scenarios/{id}", ch.scenario)
 	mux.HandleFunc("GET /board/today", ch.board)

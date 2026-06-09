@@ -72,6 +72,69 @@ type Department struct {
 	Color      string `yaml:"color" json:"color"`
 }
 
+// Interior is one explorable department map (tile-based). Nested parts are
+// embedded (read as a whole by the client map engine).
+type Interior struct {
+	ID          string      `yaml:"id" json:"id"`
+	Profession  string      `yaml:"profession" json:"profession"`
+	DeptID      string      `yaml:"deptId" json:"deptId"`
+	Cols        int         `yaml:"cols" json:"cols"`
+	Rows        int         `yaml:"rows" json:"rows"`
+	PlayerStart Coord       `yaml:"playerStart" json:"playerStart"`
+	FloorTheme  string      `yaml:"floorTheme" json:"floorTheme"`
+	Regions     []Region    `yaml:"regions" json:"regions"`
+	Rooms       []Room      `yaml:"rooms" json:"rooms"`
+	Objects     []MapObject `yaml:"objects" json:"objects"`
+	Hotspots    []Hotspot   `yaml:"hotspots" json:"hotspots"`
+}
+
+type Coord struct {
+	X int `yaml:"x" json:"x"`
+	Y int `yaml:"y" json:"y"`
+}
+
+type Bounds struct {
+	X int `yaml:"x" json:"x"`
+	Y int `yaml:"y" json:"y"`
+	W int `yaml:"w" json:"w"`
+	H int `yaml:"h" json:"h"`
+}
+
+type Region struct {
+	ID     string `yaml:"id" json:"id"`
+	Name   string `yaml:"name" json:"name"`
+	Icon   string `yaml:"icon" json:"icon"`
+	Bounds Bounds `yaml:"bounds" json:"bounds"`
+}
+
+type Room struct {
+	ID     string `yaml:"id" json:"id"`
+	Name   string `yaml:"name" json:"name"`
+	Sub    string `yaml:"sub" json:"sub"`
+	Icon   string `yaml:"icon" json:"icon"`
+	Color  string `yaml:"color" json:"color"`
+	X      int    `yaml:"x" json:"x"`
+	Y      int    `yaml:"y" json:"y"`
+	Locked bool   `yaml:"locked" json:"locked"`
+}
+
+type MapObject struct {
+	ID    string         `yaml:"id" json:"id"`
+	Type  string         `yaml:"type" json:"type"`
+	X     int            `yaml:"x" json:"x"`
+	Y     int            `yaml:"y" json:"y"`
+	Props map[string]any `yaml:"props" json:"props,omitempty"`
+}
+
+type Hotspot struct {
+	ID         string `yaml:"id" json:"id"`
+	Kind       string `yaml:"kind" json:"kind"` // quest|urgent|info
+	X          int    `yaml:"x" json:"x"`
+	Y          int    `yaml:"y" json:"y"`
+	Label      string `yaml:"label" json:"label"`
+	ScenarioID string `yaml:"scenarioId" json:"scenarioId"`
+}
+
 type Event struct {
 	ID            string        `yaml:"id" json:"id"`
 	Profession    string        `yaml:"profession" json:"profession"`
@@ -135,6 +198,7 @@ type Phrase struct {
 type Bundle struct {
 	Manifest    Manifest
 	Departments []Department
+	Interiors   []Interior
 	Events      []Event
 	Scenarios   []Scenario
 	Quizzes     []Quiz

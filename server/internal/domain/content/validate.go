@@ -28,8 +28,13 @@ func (b *Bundle) Validate() []error {
 		ids[id] = kind
 	}
 
+	deptIDs := map[string]bool{}
 	for _, d := range b.Departments {
 		claim("department", d.ID)
+		deptIDs[d.ID] = true
+	}
+	for _, in := range b.Interiors {
+		claim("interior", in.ID)
 	}
 	scenarioIDs := map[string]bool{}
 	for _, s := range b.Scenarios {
@@ -84,6 +89,16 @@ func (b *Bundle) Validate() []error {
 				if !AllowedEffectTypes[eff.Type] {
 					add("scenario %s step %s: unknown effect type %q", s.ID, st.ID, eff.Type)
 				}
+			}
+		}
+	}
+	for _, in := range b.Interiors {
+		if !deptIDs[in.DeptID] {
+			add("interior %s: unknown deptId %q", in.ID, in.DeptID)
+		}
+		for _, hs := range in.Hotspots {
+			if hs.ScenarioID != "" && !scenarioIDs[hs.ScenarioID] {
+				add("interior %s hotspot %s: unknown scenario %q", in.ID, hs.ID, hs.ScenarioID)
 			}
 		}
 	}

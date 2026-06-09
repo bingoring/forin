@@ -35,6 +35,9 @@ func Load(dir string) (*content.Bundle, error) {
 		if err := loadType(pdir, "departments", prof, func(d content.Department) { b.Departments = append(b.Departments, d) }); err != nil {
 			return nil, err
 		}
+		if err := loadType(pdir, "interiors", prof, func(i content.Interior) { b.Interiors = append(b.Interiors, i) }); err != nil {
+			return nil, err
+		}
 		if err := loadType(pdir, "events", prof, func(e content.Event) { b.Events = append(b.Events, e) }); err != nil {
 			return nil, err
 		}
@@ -81,6 +84,10 @@ func readYAML(path string, dst any) error {
 func setProfessionIfEmpty(item any, prof string) {
 	switch v := item.(type) {
 	case *content.Department:
+		if v.Profession == "" {
+			v.Profession = prof
+		}
+	case *content.Interior:
 		if v.Profession == "" {
 			v.Profession = prof
 		}
