@@ -8,17 +8,19 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 
+	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/content"
 )
 
-// ContentRepo serves authored content and ingests bundles. Implements
-// ports.ContentReader and ports.ContentSeeder.
-//
-// NOTE: hand-written pgx for this increment; Stage 2-2 (next increment) moves
-// these queries to sqlc-generated code.
-type ContentRepo struct{ pool *pgxpool.Pool }
+// ContentRepo serves authored content and ingests bundles via sqlc.
+type ContentRepo struct {
+	pool *pgxpool.Pool
+	q    *sqlc.Queries
+}
 
-func NewContentRepo(pool *pgxpool.Pool) *ContentRepo { return &ContentRepo{pool: pool} }
+func NewContentRepo(pool *pgxpool.Pool) *ContentRepo {
+	return &ContentRepo{pool: pool, q: sqlc.New(pool)}
+}
 
 // Seed replaces all content in one transaction (file-sourced full replace).
 func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
@@ -27,178 +29,150 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 		return err
 	}
 	defer tx.Rollback(ctx)
+	q := r.q.WithTx(tx)
 
-	for _, t := range []string{"phrases", "quizzes", "scenarios", "events", "interiors", "departments"} {
-		if _, err := tx.Exec(ctx, "DELETE FROM "+t); err != nil {
+	for _, del := range []func(context.Context) error{
+		q.DeletePhrases, q.DeleteQuizzes, q.DeleteScenarios, q.DeleteEvents, q.DeleteInteriors, q.DeleteDepartments,
+	} {
+		if err := del(ctx); err != nil {
 			return err
 		}
 	}
 	for _, d := range b.Departments {
-		if _, err := tx.Exec(ctx,
-			`INSERT INTO departments (id, profession, ward, name_ko, name_en, color) VALUES ($1,$2,$3,$4,$5,$6)`,
-			d.ID, d.Profession, d.Ward, d.NameKo, d.NameEn, d.Color); err != nil {
+		if err := q.InsertDepartment(ctx, sqlc.InsertDepartmentParams{
+			ID: d.ID, Profession: d.Profession, Ward: d.Ward, NameKo: d.NameKo, NameEn: d.NameEn, Color: d.Color}); err != nil {
 			return err
 		}
 	}
 	for _, in := range b.Interiors {
-		if _, err := tx.Exec(ctx,
-			`INSERT INTO interiors (id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots)
-			 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
-			in.ID, in.Profession, in.DeptID, in.Cols, in.Rows, jsonb(in.PlayerStart), in.FloorTheme,
-			jsonb(in.Regions), jsonb(in.Rooms), jsonb(in.Objects), jsonb(in.Hotspots)); err != nil {
+		if err := q.InsertInterior(ctx, sqlc.InsertInteriorParams{
+			ID: in.ID, Profession: in.Profession, DeptID: in.DeptID, Cols: in.Cols, Rows: in.Rows,
+			PlayerStart: jsonb(in.PlayerStart), FloorTheme: in.FloorTheme,
+			Regions: jsonb(in.Regions), Rooms: jsonb(in.Rooms), Objects: jsonb(in.Objects), Hotspots: jsonb(in.Hotspots)}); err != nil {
 			return err
 		}
 	}
 	for _, e := range b.Events {
-		if _, err := tx.Exec(ctx,
-			`INSERT INTO events (id, profession, title, ward, category, tier, tags, delivery, prerequisites, follow_ups, related, scenarios)
-			 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
-			e.ID, e.Profession, e.Title, e.Ward, string(e.Category), e.Tier,
-			jsonb(e.Tags), string(e.Delivery), jsonb(e.Prerequisites), jsonb(e.FollowUps), jsonb(e.Related), jsonb(e.Scenarios)); err != nil {
+		if err := q.InsertEvent(ctx, sqlc.InsertEventParams{
+			ID: e.ID, Profession: e.Profession, Title: e.Title, Ward: e.Ward, Category: string(e.Category), Tier: e.Tier,
+			Tags: jsonb(e.Tags), Delivery: string(e.Delivery), Prerequisites: jsonb(e.Prerequisites),
+			FollowUps: jsonb(e.FollowUps), Related: jsonb(e.Related), Scenarios: jsonb(e.Scenarios)}); err != nil {
 			return err
 		}
 	}
 	for _, s := range b.Scenarios {
-		if _, err := tx.Exec(ctx,
-			`INSERT INTO scenarios (id, profession, event_id, title, tagline, goals, guardrails, key_phrases, steps)
-			 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)`,
-			s.ID, s.Profession, s.EventID, s.Title, s.Tagline,
-			jsonb(s.Goals), jsonb(s.Guardrails), jsonb(s.KeyPhrases), jsonb(s.Steps)); err != nil {
+		if err := q.InsertScenario(ctx, sqlc.InsertScenarioParams{
+			ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline,
+			Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails), KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps)}); err != nil {
 			return err
 		}
 	}
-	for _, q := range b.Quizzes {
-		if _, err := tx.Exec(ctx,
-			`INSERT INTO quizzes (id, profession, type, title) VALUES ($1,$2,$3,$4)`,
-			q.ID, q.Profession, q.Type, q.Title); err != nil {
+	for _, qz := range b.Quizzes {
+		if err := q.InsertQuiz(ctx, sqlc.InsertQuizParams{ID: qz.ID, Profession: qz.Profession, Type: qz.Type, Title: qz.Title}); err != nil {
 			return err
 		}
 	}
 	for _, p := range b.Phrases {
-		if _, err := tx.Exec(ctx,
-			`INSERT INTO phrases (id, profession, ko, en, note, tag) VALUES ($1,$2,$3,$4,$5,$6)`,
-			p.ID, p.Profession, p.Ko, p.En, p.Note, p.Tag); err != nil {
+		if err := q.InsertPhrase(ctx, sqlc.InsertPhraseParams{
+			ID: p.ID, Profession: p.Profession, Ko: p.Ko, En: p.En, Note: p.Note, Tag: p.Tag}); err != nil {
 			return err
 		}
 	}
-	if _, err := tx.Exec(ctx,
-		`INSERT INTO content_meta (k, v) VALUES ('manifest', $1)
-		 ON CONFLICT (k) DO UPDATE SET v = EXCLUDED.v`, string(jsonb(b.Manifest))); err != nil {
+	if err := q.UpsertContentMeta(ctx, sqlc.UpsertContentMetaParams{K: "manifest", V: string(jsonb(b.Manifest))}); err != nil {
 		return err
 	}
 	return tx.Commit(ctx)
 }
 
 func (r *ContentRepo) Manifest(ctx context.Context) (*content.Manifest, error) {
-	m := &content.Manifest{}
-	var raw string
-	err := r.pool.QueryRow(ctx, `SELECT v FROM content_meta WHERE k = 'manifest'`).Scan(&raw)
+	raw, err := r.q.GetContentMeta(ctx, "manifest")
 	if errors.Is(err, pgx.ErrNoRows) {
-		return m, nil
+		return &content.Manifest{}, nil
 	}
 	if err != nil {
 		return nil, err
 	}
+	m := &content.Manifest{}
 	unjson([]byte(raw), m)
 	return m, nil
 }
 
 func (r *ContentRepo) ListDepartments(ctx context.Context, profession string) ([]content.Department, error) {
-	rows, err := r.pool.Query(ctx,
-		`SELECT id,profession,ward,name_ko,name_en,color FROM departments
-		 WHERE ($1 = '' OR profession = $1 OR profession = 'common') ORDER BY id`, profession)
+	rows, err := r.q.ListDepartments(ctx, profession)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
-	var out []content.Department
-	for rows.Next() {
-		var d content.Department
-		if err := rows.Scan(&d.ID, &d.Profession, &d.Ward, &d.NameKo, &d.NameEn, &d.Color); err != nil {
-			return nil, err
-		}
-		out = append(out, d)
+	out := make([]content.Department, 0, len(rows))
+	for _, d := range rows {
+		out = append(out, content.Department{
+			ID: d.ID, Profession: d.Profession, Ward: d.Ward, NameKo: d.NameKo, NameEn: d.NameEn, Color: d.Color})
 	}
-	return out, rows.Err()
+	return out, nil
 }
 
 func (r *ContentRepo) GetInterior(ctx context.Context, id string) (*content.Interior, error) {
-	var in content.Interior
-	var ps, regions, rooms, objects, hotspots []byte
-	err := r.pool.QueryRow(ctx,
-		`SELECT id,profession,dept_id,cols,rows,player_start,floor_theme,regions,rooms,objects,hotspots
-		 FROM interiors WHERE id = $1`, id).
-		Scan(&in.ID, &in.Profession, &in.DeptID, &in.Cols, &in.Rows, &ps, &in.FloorTheme, &regions, &rooms, &objects, &hotspots)
+	in, err := r.q.GetInterior(ctx, id)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return nil, nil
 	}
 	if err != nil {
 		return nil, err
 	}
-	unjson(ps, &in.PlayerStart)
-	unjson(regions, &in.Regions)
-	unjson(rooms, &in.Rooms)
-	unjson(objects, &in.Objects)
-	unjson(hotspots, &in.Hotspots)
-	return &in, nil
+	out := &content.Interior{ID: in.ID, Profession: in.Profession, DeptID: in.DeptID,
+		Cols: in.Cols, Rows: in.Rows, FloorTheme: in.FloorTheme}
+	unjson(in.PlayerStart, &out.PlayerStart)
+	unjson(in.Regions, &out.Regions)
+	unjson(in.Rooms, &out.Rooms)
+	unjson(in.Objects, &out.Objects)
+	unjson(in.Hotspots, &out.Hotspots)
+	return out, nil
 }
 
 func (r *ContentRepo) ListEvents(ctx context.Context, profession string) ([]content.Event, error) {
-	return r.queryEvents(ctx,
-		`SELECT id,profession,title,ward,category,tier,tags,delivery,prerequisites,follow_ups,related,scenarios
-		 FROM events WHERE ($1 = '' OR profession = $1 OR profession = 'common') ORDER BY tier, id`, profession)
-}
-
-func (r *ContentRepo) TodaysBoard(ctx context.Context, profession string, limit int) ([]content.Event, error) {
-	return r.queryEvents(ctx,
-		`SELECT id,profession,title,ward,category,tier,tags,delivery,prerequisites,follow_ups,related,scenarios
-		 FROM events WHERE delivery IN ('daily_pool','both') AND ($1 = '' OR profession = $1 OR profession = 'common')
-		 ORDER BY tier, id LIMIT $2`, profession, limit)
-}
-
-func (r *ContentRepo) queryEvents(ctx context.Context, sql string, args ...any) ([]content.Event, error) {
-	rows, err := r.pool.Query(ctx, sql, args...)
+	rows, err := r.q.ListEvents(ctx, profession)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
-	var out []content.Event
-	for rows.Next() {
-		var e content.Event
-		var cat, del string
-		var tags, pre, fol, rel, scn []byte
-		if err := rows.Scan(&e.ID, &e.Profession, &e.Title, &e.Ward, &cat, &e.Tier,
-			&tags, &del, &pre, &fol, &rel, &scn); err != nil {
-			return nil, err
-		}
-		e.Category, e.Delivery = content.EventCategory(cat), content.Delivery(del)
-		unjson(tags, &e.Tags)
-		unjson(pre, &e.Prerequisites)
-		unjson(fol, &e.FollowUps)
-		unjson(rel, &e.Related)
-		unjson(scn, &e.Scenarios)
-		out = append(out, e)
+	return eventsFromModels(rows), nil
+}
+
+func (r *ContentRepo) TodaysBoard(ctx context.Context, profession string, limit int) ([]content.Event, error) {
+	rows, err := r.q.TodaysBoard(ctx, sqlc.TodaysBoardParams{Column1: profession, Limit: int32(limit)})
+	if err != nil {
+		return nil, err
 	}
-	return out, rows.Err()
+	return eventsFromModels(rows), nil
 }
 
 func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scenario, error) {
-	var s content.Scenario
-	var goals, guards, phrases, steps []byte
-	err := r.pool.QueryRow(ctx,
-		`SELECT id,profession,event_id,title,tagline,goals,guardrails,key_phrases,steps FROM scenarios WHERE id = $1`, id).
-		Scan(&s.ID, &s.Profession, &s.EventID, &s.Title, &s.Tagline, &goals, &guards, &phrases, &steps)
+	s, err := r.q.GetScenario(ctx, id)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return nil, nil
 	}
 	if err != nil {
 		return nil, err
 	}
-	unjson(goals, &s.Goals)
-	unjson(guards, &s.Guardrails)
-	unjson(phrases, &s.KeyPhrases)
-	unjson(steps, &s.Steps)
-	return &s, nil
+	out := &content.Scenario{ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline}
+	unjson(s.Goals, &out.Goals)
+	unjson(s.Guardrails, &out.Guardrails)
+	unjson(s.KeyPhrases, &out.KeyPhrases)
+	unjson(s.Steps, &out.Steps)
+	return out, nil
+}
+
+func eventsFromModels(rows []sqlc.Event) []content.Event {
+	out := make([]content.Event, 0, len(rows))
+	for _, e := range rows {
+		c := content.Event{ID: e.ID, Profession: e.Profession, Title: e.Title, Ward: e.Ward,
+			Category: content.EventCategory(e.Category), Tier: e.Tier, Delivery: content.Delivery(e.Delivery)}
+		unjson(e.Tags, &c.Tags)
+		unjson(e.Prerequisites, &c.Prerequisites)
+		unjson(e.FollowUps, &c.FollowUps)
+		unjson(e.Related, &c.Related)
+		unjson(e.Scenarios, &c.Scenarios)
+		out = append(out, c)
+	}
+	return out
 }
 
 func jsonb(v any) []byte {

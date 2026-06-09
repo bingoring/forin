@@ -1,5 +1,3 @@
-# sqlc scaffold — Stage 2-2 populates db/queries and generates type-safe Go.
-# Run: make sqlc  (requires sqlc installed)
 version: "2"
 sql:
   - engine: "postgresql"
@@ -11,3 +9,10 @@ sql:
         out: "internal/adapters/postgres/sqlc"
         sql_package: "pgx/v5"
         emit_json_tags: true
+        # Map DB types to our domain-friendly Go types.
+        overrides:
+          - { db_type: "uuid", go_type: "string" }
+          - { db_type: "pg_catalog.int4", go_type: "int" }
+          - { db_type: "pg_catalog.float4", go_type: "float64" }
+          - { db_type: "date", go_type: "time.Time" }
+          - { db_type: "pg_catalog.timestamptz", go_type: "time.Time" }
