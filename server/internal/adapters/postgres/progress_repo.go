@@ -11,6 +11,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/ports"
 )
 
 // ProgressRepo implements ports.ProgressRepo and ports.ReviewRepo via sqlc.
@@ -92,6 +93,29 @@ func (r *ProgressRepo) GetCardForUser(ctx context.Context, userID, cardID string
 		MasteryPips: d.MasteryPips, Favorite: d.Favorite,
 		Schedule: progress.Schedule{Ease: d.Ease, IntervalDays: d.IntervalDays, Reps: d.Reps, DueDate: d.DueDate},
 	}, nil
+}
+
+// CreateCard inserts a review card + its initial (due-today) schedule.
+func (r *ProgressRepo) CreateCard(ctx context.Context, c ports.NewReviewCard) (string, error) {
+	tx, err := r.pool.Begin(ctx)
+	if err != nil {
+		return "", err
+	}
+	defer tx.Rollback(ctx)
+	q := r.q.WithTx(tx)
+
+	id, err := q.InsertReviewCard(ctx, sqlc.InsertReviewCardParams{
+		UserID: c.UserID, Source: c.Source, Front: c.Front, Back: c.Back, Note: c.Note, TopicTag: c.TopicTag})
+	if err != nil {
+		return "", err
+	}
+	if err := q.InsertCardSchedule(ctx, id); err != nil {
+		return "", err
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return "", err
+	}
+	return id, nil
 }
 
 func (r *ProgressRepo) SaveSchedule(ctx context.Context, cardID string, s progress.Schedule, masteryPips int) error {

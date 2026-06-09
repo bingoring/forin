@@ -23,6 +23,47 @@ type ReviewRepo interface {
 	DueCards(ctx context.Context, userID string, today time.Time, limit int) ([]progress.ReviewCard, error)
 	GetCardForUser(ctx context.Context, userID, cardID string) (*progress.ReviewCard, error)
 	SaveSchedule(ctx context.Context, cardID string, s progress.Schedule, masteryPips int) error
+	// CreateCard inserts a card + its initial (due-today) schedule, returns the card id.
+	CreateCard(ctx context.Context, c NewReviewCard) (string, error)
+}
+
+// NewReviewCard is the input for creating a review card (e.g. from an AI correction).
+type NewReviewCard struct {
+	UserID, Source, Front, Back, Note, TopicTag string
+}
+
+// ---- AI / conversation ports ----
+
+// LLMMessage is one chat message (role: "user" | "assistant").
+type LLMMessage struct {
+	Role    string
+	Content string
+}
+
+// LLMRequest is a provider-agnostic completion request.
+type LLMRequest struct {
+	Model     string
+	System    string
+	Messages  []LLMMessage
+	MaxTokens int
+}
+
+// LLMPort is the low-level LLM adapter (Anthropic etc.). Strategies compose it.
+type LLMPort interface {
+	Complete(ctx context.Context, req LLMRequest) (string, error)
+}
+
+// ConversationSession / Turn are persistence DTOs for dialogue.
+type ConversationSession struct{ ID, UserID, ScenarioID string }
+type ConversationTurn struct{ Role, Content string }
+
+// ConversationRepo persists dialogue sessions and turns.
+type ConversationRepo interface {
+	CreateSession(ctx context.Context, userID, scenarioID string) (string, error)
+	GetSession(ctx context.Context, sessionID string) (*ConversationSession, error)
+	AppendTurn(ctx context.Context, sessionID, role, content string) error
+	History(ctx context.Context, sessionID string, limit int) ([]ConversationTurn, error)
+	SaveCorrection(ctx context.Context, userID, original, corrected, note, topicTag string) error
 }
 
 // ContentReader serves authored content (read-only) to the domain/API.

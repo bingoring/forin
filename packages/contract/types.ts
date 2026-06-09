@@ -190,6 +190,78 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/{sessionId}/message": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Send a message; NPC replies in persona (LLM) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description user message */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.messageReq"];
+                };
+            };
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/correct": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** AI-correct an English utterance (creates a review card) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description utterance to correct */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.correctReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Correction"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/departments": {
         parameters: {
             query?: never;
@@ -423,6 +495,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/scenarios/{id}/conversation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Start a persona-driven conversation for a scenario */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -432,6 +530,12 @@ export interface components {
             /** @description access token seconds-to-live */
             expiresIn?: number;
             refreshToken?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_conversation.Correction": {
+            cardId?: string;
+            corrected?: string;
+            note?: string;
+            original?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_progress.Progress": {
             emergencyResponse?: number;
@@ -464,6 +568,10 @@ export interface components {
             scenarioId?: string;
             score?: number;
         };
+        "internal_adapters_http.correctReq": {
+            context?: string;
+            text?: string;
+        };
         "internal_adapters_http.gradeReq": {
             grade?: string;
         };
@@ -474,6 +582,9 @@ export interface components {
         "internal_adapters_http.meResp": {
             profile?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
             user?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.User"];
+        };
+        "internal_adapters_http.messageReq": {
+            text?: string;
         };
         "internal_adapters_http.socialLoginReq": {
             idToken?: string;

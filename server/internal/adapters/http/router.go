@@ -10,6 +10,7 @@ import (
 	"golang.org/x/time/rate"
 
 	"github.com/bingoring/forin/server/internal/domain/auth"
+	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -22,6 +23,7 @@ type Deps struct {
 	Content  ports.ContentReader
 	Progress ports.ProgressRepo
 	Review   ports.ReviewRepo
+	Convo    *conversation.Engine
 	PG       *pgxpool.Pool
 	Redis    *redis.Client
 }
@@ -59,6 +61,12 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /attempts", auth(http.HandlerFunc(ph.attempt)))
 	mux.Handle("GET /me/review", auth(http.HandlerFunc(ph.due)))
 	mux.Handle("POST /me/review/{id}/grade", auth(http.HandlerFunc(ph.grade)))
+
+	// AI conversation + correction (authenticated).
+	conv := &conversationHandler{engine: d.Convo}
+	mux.Handle("POST /scenarios/{id}/conversation", auth(http.HandlerFunc(conv.start)))
+	mux.Handle("POST /conversation/{sessionId}/message", auth(http.HandlerFunc(conv.message)))
+	mux.Handle("POST /correct", auth(http.HandlerFunc(conv.correct)))
 
 	// Global middleware (outermost first).
 	return chain(mux,

@@ -23,6 +23,23 @@ type ContentMetum struct {
 	V string `json:"v"`
 }
 
+type ConversationSession struct {
+	ID         string             `json:"id"`
+	UserID     string             `json:"user_id"`
+	ScenarioID string             `json:"scenario_id"`
+	StartedAt  pgtype.Timestamptz `json:"started_at"`
+}
+
+type CorrectionResult struct {
+	ID        string             `json:"id"`
+	UserID    string             `json:"user_id"`
+	Original  string             `json:"original"`
+	Corrected string             `json:"corrected"`
+	Note      string             `json:"note"`
+	TopicTag  string             `json:"topic_tag"`
+	CreatedAt pgtype.Timestamptz `json:"created_at"`
+}
+
 type Department struct {
 	ID         string `json:"id"`
 	Profession string `json:"profession"`
@@ -30,6 +47,14 @@ type Department struct {
 	NameKo     string `json:"name_ko"`
 	NameEn     string `json:"name_en"`
 	Color      string `json:"color"`
+}
+
+type DialogueTurn struct {
+	ID        string             `json:"id"`
+	SessionID string             `json:"session_id"`
+	Role      string             `json:"role"`
+	Content   string             `json:"content"`
+	CreatedAt pgtype.Timestamptz `json:"created_at"`
 }
 
 type Event struct {

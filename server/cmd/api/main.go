@@ -10,12 +10,14 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/adapters/anthropic"
 	authadapter "github.com/bingoring/forin/server/internal/adapters/auth"
 	httpadapter "github.com/bingoring/forin/server/internal/adapters/http"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
 	redisadapter "github.com/bingoring/forin/server/internal/adapters/redis"
 	"github.com/bingoring/forin/server/internal/config"
 	"github.com/bingoring/forin/server/internal/domain/auth"
+	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/platform/log"
 )
@@ -60,12 +62,21 @@ func main() {
 	users := postgres.NewUserRepo(pool)
 	contentRepo := postgres.NewContentRepo(pool)
 	progressRepo := postgres.NewProgressRepo(pool)
+	convoRepo := postgres.NewConversationRepo(pool)
 	refreshStore := redisadapter.NewRefreshStore(rdb)
 	authSvc := auth.NewService(users, verifier, refreshStore, tokens, cfg.RefreshTTL)
 
+	// AI layer: Anthropic adapter behind LLMPort; SingleModel dialogue strategy.
+	llm := anthropic.New(cfg.AnthropicKey)
+	dialogue := conversation.SingleModel{LLM: llm, Model: cfg.DialogueModel, MaxTokens: 512}
+	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, llm, dialogue, cfg.CorrectionModel)
+	if !llm.Configured() {
+		logger.Warn("ANTHROPIC_API_KEY not set — AI conversation/correction endpoints will return errors")
+	}
+
 	handler := httpadapter.NewRouter(httpadapter.Deps{
 		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
-		Progress: progressRepo, Review: progressRepo, PG: pool, Redis: rdb,
+		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

@@ -23,22 +23,30 @@ type Config struct {
 	GoogleClientID string
 	AppleClientID  string
 	KakaoClientID  string
+
+	// AI (Anthropic). Empty key = AI endpoints disabled.
+	AnthropicKey    string
+	DialogueModel   string
+	CorrectionModel string
 }
 
 // Load reads configuration from environment variables and validates required fields.
 func Load() (*Config, error) {
 	c := &Config{
-		Env:            getenv("ENV", "dev"),
-		Port:           getenv("PORT", "8080"),
-		DatabaseURL:    os.Getenv("DATABASE_URL"),
-		RedisURL:       os.Getenv("REDIS_URL"),
-		JWTSigningKey:  []byte(os.Getenv("JWT_SIGNING_KEY")),
-		JWTIssuer:      getenv("JWT_ISSUER", "forin"),
-		AccessTTL:      getdur("ACCESS_TTL", 15*time.Minute),
-		RefreshTTL:     getdur("REFRESH_TTL", 30*24*time.Hour),
-		GoogleClientID: os.Getenv("GOOGLE_CLIENT_ID"),
-		AppleClientID:  os.Getenv("APPLE_CLIENT_ID"),
-		KakaoClientID:  os.Getenv("KAKAO_CLIENT_ID"),
+		Env:             getenv("ENV", "dev"),
+		Port:            getenv("PORT", "8080"),
+		DatabaseURL:     os.Getenv("DATABASE_URL"),
+		RedisURL:        os.Getenv("REDIS_URL"),
+		JWTSigningKey:   []byte(os.Getenv("JWT_SIGNING_KEY")),
+		JWTIssuer:       getenv("JWT_ISSUER", "forin"),
+		AccessTTL:       getdur("ACCESS_TTL", 15*time.Minute),
+		RefreshTTL:      getdur("REFRESH_TTL", 30*24*time.Hour),
+		GoogleClientID:  os.Getenv("GOOGLE_CLIENT_ID"),
+		AppleClientID:   os.Getenv("APPLE_CLIENT_ID"),
+		KakaoClientID:   os.Getenv("KAKAO_CLIENT_ID"),
+		AnthropicKey:    firstNonEmpty(os.Getenv("ANTHROPIC_API_KEY"), os.Getenv("ANTHROPIC_KEY")),
+		DialogueModel:   getenv("ANTHROPIC_DIALOGUE_MODEL", "claude-sonnet-4-6"),
+		CorrectionModel: getenv("ANTHROPIC_CORRECTION_MODEL", "claude-haiku-4-5-20251001"),
 	}
 
 	var missing []string
@@ -55,6 +63,15 @@ func Load() (*Config, error) {
 		return nil, fmt.Errorf("missing/invalid config: %s", strings.Join(missing, ", "))
 	}
 	return c, nil
+}
+
+func firstNonEmpty(vals ...string) string {
+	for _, v := range vals {
+		if v != "" {
+			return v
+		}
+	}
+	return ""
 }
 
 func getenv(k, def string) string {

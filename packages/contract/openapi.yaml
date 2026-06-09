@@ -10,6 +10,17 @@ components:
         refreshToken:
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_conversation.Correction:
+      properties:
+        cardId:
+          type: string
+        corrected:
+          type: string
+        note:
+          type: string
+        original:
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_domain_progress.Progress:
       properties:
         emergencyResponse:
@@ -63,6 +74,13 @@ components:
         score:
           type: integer
       type: object
+    internal_adapters_http.correctReq:
+      properties:
+        context:
+          type: string
+        text:
+          type: string
+      type: object
     internal_adapters_http.gradeReq:
       properties:
         grade:
@@ -81,6 +99,11 @@ components:
           $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.Profile'
         user:
           $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.User'
+      type: object
+    internal_adapters_http.messageReq:
+      properties:
+        text:
+          type: string
       type: object
     internal_adapters_http.socialLoginReq:
       properties:
@@ -176,6 +199,46 @@ paths:
       summary: Content manifest (version)
       tags:
       - content
+  /conversation/{sessionId}/message:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.messageReq'
+              description: user message
+              summary: body
+        description: user message
+        required: true
+      responses: null
+      security:
+      - Bearer: []
+      summary: Send a message; NPC replies in persona (LLM)
+      tags:
+      - conversation
+  /correct:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.correctReq'
+              description: utterance to correct
+              summary: body
+        description: utterance to correct
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_conversation.Correction'
+          description: OK
+      security:
+      - Bearer: []
+      summary: AI-correct an English utterance (creates a review card)
+      tags:
+      - conversation
   /departments:
     get:
       responses: null
@@ -253,3 +316,11 @@ paths:
       summary: Get a scenario (dialogue/quiz/effect steps)
       tags:
       - content
+  /scenarios/{id}/conversation:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Start a persona-driven conversation for a scenario
+      tags:
+      - conversation
