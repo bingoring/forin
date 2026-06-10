@@ -112,7 +112,11 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
   페르소나 대화(흉통 환자 김복순 롤플레이: "My chest... Feels tight. Like someone's sitting on me." / "It's an 8.")
   + AI 교정("My chest is hurt very much since one hour" → "My chest has been hurting a lot for the past hour." + 한국어 노트)
   → **리뷰 카드 자동 생성** 확인. 대화·교정·복습 연결 end-to-end 동작. **3a 완료.**
-- **3b — 예정**: Azure 발음 평가 어댑터·엔드포인트. **3c — 예정**: SSE 스트리밍.
+- **3c — ✅ SSE 스트리밍**(forin, 2026-06-10): `LLMPort.CompleteStream`(anthropic·openai 양 어댑터) +
+  `Strategy.GenerateStream`(SingleModel) + `Engine.SendMessageStream` + `POST /conversation/{sessionId}/stream`(SSE,
+  JSON 인코딩 청크). 실 OpenAI로 토큰 단위 스트리밍 검증(청크 수신·done 이벤트), 전체 응답은 턴으로 영속.
+  (로깅 미들웨어 래퍼에 Flush 통과 추가.)
+- **3b — 예정**: Azure 발음 평가 어댑터·엔드포인트(오디오 — 본격 검증은 모바일 연동 시).
 
 ## 검토 게이트 (Human Gate)
 
