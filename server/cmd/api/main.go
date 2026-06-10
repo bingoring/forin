@@ -13,6 +13,7 @@ import (
 	"github.com/bingoring/forin/server/internal/adapters/anthropic"
 	authadapter "github.com/bingoring/forin/server/internal/adapters/auth"
 	httpadapter "github.com/bingoring/forin/server/internal/adapters/http"
+	"github.com/bingoring/forin/server/internal/adapters/openai"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
 	redisadapter "github.com/bingoring/forin/server/internal/adapters/redis"
 	"github.com/bingoring/forin/server/internal/config"
@@ -20,6 +21,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/platform/log"
+	"github.com/bingoring/forin/server/internal/ports"
 )
 
 // @title                       forin API
@@ -66,12 +68,25 @@ func main() {
 	refreshStore := redisadapter.NewRefreshStore(rdb)
 	authSvc := auth.NewService(users, verifier, refreshStore, tokens, cfg.RefreshTTL)
 
-	// AI layer: Anthropic adapter behind LLMPort; SingleModel dialogue strategy.
-	llm := anthropic.New(cfg.AnthropicKey)
-	dialogue := conversation.SingleModel{LLM: llm, Model: cfg.DialogueModel, MaxTokens: 512}
-	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, users, llm, dialogue, cfg.CorrectionModel)
-	if !llm.Configured() {
-		logger.Warn("ANTHROPIC_API_KEY not set — AI conversation/correction endpoints will return errors")
+	// AI layer: select an LLMPort adapter by provider (anthropic | openai) — domain unchanged.
+	var llm ports.LLMPort
+	var dialogueModel, correctionModel string
+	var configured bool
+	switch cfg.ResolveProvider() {
+	case "openai":
+		oc := openai.New(cfg.OpenAIKey)
+		llm, configured = oc, oc.Configured()
+		dialogueModel, correctionModel = cfg.OpenAIDialogueModel, cfg.OpenAICorrectionModel
+	default:
+		ac := anthropic.New(cfg.AnthropicKey)
+		llm, configured = ac, ac.Configured()
+		dialogueModel, correctionModel = cfg.AnthropicDialogueModel, cfg.AnthropicCorrectionModel
+	}
+	dialogue := conversation.SingleModel{LLM: llm, Model: dialogueModel, MaxTokens: 512}
+	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, users, llm, dialogue, correctionModel)
+	logger.Info("llm provider", "provider", cfg.ResolveProvider(), "configured", configured)
+	if !configured {
+		logger.Warn("LLM API key not set — AI conversation/correction endpoints will return errors")
 	}
 
 	handler := httpadapter.NewRouter(httpadapter.Deps{
