@@ -107,7 +107,11 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
   단위테스트로 "다른 언어 시 하드코딩 누출 없음" 고정. (참고: persona/goals 등 **콘텐츠 텍스트의 다국어화**는 별도 후속.)
 - **3a 제공자 전환 — ✅ OpenAI 어댑터 추가**(forin, 2026-06-10): `LLMPort` 두 번째 구현(OpenAI Chat Completions) +
   `LLM_PROVIDER` 설정 분기(anthropic|openai|auto). **도메인·엔진·Strategy·핸들러 무수정** — 추상화 검증.
-  현재 OpenAI 사용(Anthropic 결제 이슈). provider 선택·세션 생성 확인, 실 호출은 OpenAI 키 정정 후 검증.
+  현재 OpenAI 사용(Anthropic 결제 이슈). provider 선택·세션 생성 확인.
+- **3a 실호출 — ✅ 검증 완료**(OpenAI, 2026-06-10): docker+`.env`로 실 LLM 호출 성공.
+  페르소나 대화(흉통 환자 김복순 롤플레이: "My chest... Feels tight. Like someone's sitting on me." / "It's an 8.")
+  + AI 교정("My chest is hurt very much since one hour" → "My chest has been hurting a lot for the past hour." + 한국어 노트)
+  → **리뷰 카드 자동 생성** 확인. 대화·교정·복습 연결 end-to-end 동작. **3a 완료.**
 - **3b — 예정**: Azure 발음 평가 어댑터·엔드포인트. **3c — 예정**: SSE 스트리밍.
 
 ## 검토 게이트 (Human Gate)
