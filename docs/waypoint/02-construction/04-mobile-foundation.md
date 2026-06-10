@@ -68,9 +68,13 @@ updated: 2026-06-10
 
 ### 6. 구현 증분
 
-- **4a — 스캐폴드+디자인+클라이언트**: Expo init·expo-router 골격·tokens·핵심 픽셀 컴포넌트·폰트·axios 타입 클라이언트.
-  검증: **typecheck(tsc) + `expo export`(번들 빌드)**. 시뮬레이터/Expo Go 실행은 사용자 환경.
-- **4b — 인증 플로우**: secure-store·authStore·소셜 로그인 배선·`/auth/social` 연동.
+- **4a — ✅ 스캐폴드+디자인+클라이언트**(forin 커밋, 2026-06-10): Expo SDK56 + expo-router(`src/app`) 골격
+  (온보딩 splash/login/locale/job/level + 4탭 campus/board/lab/me + interior/scenario 셸). 디자인 토큰
+  (`theme/tokens.ts`) + 픽셀 컴포넌트(PixelBox/Button/Chip — 하드 오프셋 섀도우). Zustand `authStore`.
+  **axios 래퍼 타입 클라이언트**(`@contract/types`·토큰 인터셉터·401 로그아웃), tsconfig `@contract` 경로.
+  폰트는 family명 + `assets/fonts/README`(실 .ttf 후속). **검증: `tsc --noEmit` 통과 + `expo-doctor` 21/21.**
+  시각 표시는 `npx expo start`(시뮬레이터/Expo Go, 사용자).
+- **4b — 예정**: 인증 플로우(소셜→`/auth/social`→JWT) + `expo-secure-store` 영속·refresh 회전.
 
 ### ⚠️ 검증 제약(정직)
 
