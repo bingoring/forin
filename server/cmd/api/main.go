@@ -12,6 +12,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/anthropic"
 	authadapter "github.com/bingoring/forin/server/internal/adapters/auth"
+	"github.com/bingoring/forin/server/internal/adapters/azurespeech"
 	httpadapter "github.com/bingoring/forin/server/internal/adapters/http"
 	"github.com/bingoring/forin/server/internal/adapters/openai"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
@@ -19,6 +20,7 @@ import (
 	"github.com/bingoring/forin/server/internal/config"
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
+	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/platform/log"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -89,9 +91,16 @@ func main() {
 		logger.Warn("LLM API key not set — AI conversation/correction endpoints will return errors")
 	}
 
+	// Pronunciation assessment (Azure) behind PronunciationPort.
+	speech := azurespeech.New(cfg.AzureSpeechKey, cfg.AzureSpeechRegion)
+	pronSvc := pronunciation.NewService(speech, users)
+	if !speech.Configured() {
+		logger.Warn("AZURE_SPEECH_KEY/REGION not set — /pronunciation will return errors")
+	}
+
 	handler := httpadapter.NewRouter(httpadapter.Deps{
 		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
-		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, PG: pool, Redis: rdb,
+		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

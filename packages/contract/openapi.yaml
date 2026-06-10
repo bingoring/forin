@@ -108,6 +108,13 @@ components:
         text:
           type: string
       type: object
+    internal_adapters_http.pronounceReq:
+      properties:
+        audioBase64:
+          type: string
+        referenceText:
+          type: string
+      type: object
     internal_adapters_http.socialLoginReq:
       properties:
         idToken:
@@ -219,6 +226,23 @@ paths:
       summary: Send a message; NPC replies in persona (LLM)
       tags:
       - conversation
+  /conversation/{sessionId}/stream:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.messageReq'
+              description: user message
+              summary: body
+        description: user message
+        required: true
+      responses: null
+      security:
+      - Bearer: []
+      summary: Send a message; NPC reply streamed as Server-Sent Events (LLM)
+      tags:
+      - conversation
   /correct:
     post:
       requestBody:
@@ -313,6 +337,23 @@ paths:
       summary: Grade a review card (SM-2 spaced repetition)
       tags:
       - review
+  /pronunciation:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.pronounceReq'
+              description: base64 WAV (16kHz mono PCM) + reference text
+              summary: body
+        description: base64 WAV (16kHz mono PCM) + reference text
+        required: true
+      responses: null
+      security:
+      - Bearer: []
+      summary: Assess pronunciation of recorded audio vs a reference phrase (Azure)
+      tags:
+      - pronunciation
   /scenarios/{id}:
     get:
       responses: null

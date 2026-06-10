@@ -221,6 +221,37 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/{sessionId}/stream": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Send a message; NPC reply streamed as Server-Sent Events (LLM) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description user message */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.messageReq"];
+                };
+            };
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/correct": {
         parameters: {
             query?: never;
@@ -469,6 +500,37 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/pronunciation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Assess pronunciation of recorded audio vs a reference phrase (Azure) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description base64 WAV (16kHz mono PCM) + reference text */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.pronounceReq"];
+                };
+            };
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/scenarios/{id}": {
         parameters: {
             query?: never;
@@ -587,6 +649,10 @@ export interface components {
         };
         "internal_adapters_http.messageReq": {
             text?: string;
+        };
+        "internal_adapters_http.pronounceReq": {
+            audioBase64?: string;
+            referenceText?: string;
         };
         "internal_adapters_http.socialLoginReq": {
             idToken?: string;

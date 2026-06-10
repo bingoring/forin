@@ -33,6 +33,10 @@ type Config struct {
 	AnthropicCorrectionModel string
 	OpenAIDialogueModel      string
 	OpenAICorrectionModel    string
+
+	// Azure Speech (pronunciation assessment). Empty = pronunciation endpoint disabled.
+	AzureSpeechKey    string
+	AzureSpeechRegion string
 }
 
 // ResolveProvider returns the effective LLM provider (explicit, else auto-detected).
@@ -67,6 +71,8 @@ func Load() (*Config, error) {
 		AnthropicCorrectionModel: getenv("ANTHROPIC_CORRECTION_MODEL", "claude-haiku-4-5-20251001"),
 		OpenAIDialogueModel:      getenv("OPENAI_DIALOGUE_MODEL", "gpt-4o"),
 		OpenAICorrectionModel:    getenv("OPENAI_CORRECTION_MODEL", "gpt-4o-mini"),
+		AzureSpeechKey:           firstNonEmpty(os.Getenv("AZURE_SPEECH_KEY"), os.Getenv("AZURE_SPEECH_REGION_KEY")),
+		AzureSpeechRegion:        os.Getenv("AZURE_SPEECH_REGION"),
 	}
 
 	var missing []string

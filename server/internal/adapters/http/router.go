@@ -11,6 +11,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
+	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -24,6 +25,7 @@ type Deps struct {
 	Progress ports.ProgressRepo
 	Review   ports.ReviewRepo
 	Convo    *conversation.Engine
+	Pron     *pronunciation.Service
 	PG       *pgxpool.Pool
 	Redis    *redis.Client
 }
@@ -68,6 +70,10 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /conversation/{sessionId}/message", auth(http.HandlerFunc(conv.message)))
 	mux.Handle("POST /conversation/{sessionId}/stream", auth(http.HandlerFunc(conv.stream)))
 	mux.Handle("POST /correct", auth(http.HandlerFunc(conv.correct)))
+
+	// Pronunciation assessment (authenticated).
+	pron := &pronunciationHandler{svc: d.Pron}
+	mux.Handle("POST /pronunciation", auth(http.HandlerFunc(pron.assess)))
 
 	// Global middleware (outermost first).
 	return chain(mux,

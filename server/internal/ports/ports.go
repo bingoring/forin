@@ -61,6 +61,28 @@ type ProfileReader interface {
 	GetProfile(ctx context.Context, userID string) (*user.Profile, error)
 }
 
+// WordScore is a per-word pronunciation result.
+type WordScore struct {
+	Word      string  `json:"word"`
+	Accuracy  float64 `json:"accuracy"`
+	ErrorType string  `json:"errorType,omitempty"`
+}
+
+// PronunciationResult is the assessment of a spoken utterance vs a reference text.
+type PronunciationResult struct {
+	Recognized   string      `json:"recognized"`
+	Accuracy     float64     `json:"accuracy"`
+	Fluency      float64     `json:"fluency"`
+	Completeness float64     `json:"completeness"`
+	Overall      float64     `json:"overall"`
+	Words        []WordScore `json:"words,omitempty"`
+}
+
+// PronunciationPort scores spoken audio against a reference (Azure etc.).
+type PronunciationPort interface {
+	Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*PronunciationResult, error)
+}
+
 // ConversationSession / Turn are persistence DTOs for dialogue.
 type ConversationSession struct{ ID, UserID, ScenarioID string }
 type ConversationTurn struct{ Role, Content string }
