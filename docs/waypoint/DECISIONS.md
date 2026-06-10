@@ -71,6 +71,15 @@
 - **상태:** 백로그(미착수). 비한국어 모국어 사용자 지원에 필요.
 - **결정자:** 사용자.
 
+## 2026-06-10 · LLM 제공자 전환 = OpenAI(설정 가능)
+- **결정:** LLM 제공자를 **설정으로 선택**(`LLM_PROVIDER`: anthropic|openai|auto). Anthropic 크레딧 결제가
+  막혀 **현재 OpenAI**(gpt-4o / gpt-4o-mini) 사용. Claude는 config 한 줄로 복귀 가능.
+- **근거(설계 검증):** `LLMPort` 포트/어댑터 추상화 덕분에 **OpenAI 어댑터 추가 + main 분기**만으로 전환 —
+  도메인·대화 엔진·Strategy·핸들러 **무수정**. 추상화 목적이 실제로 입증됨.
+- **상태:** provider=openai 자동 선택·세션 생성 확인. 단 현재 .env의 OpenAI 키가 `invalid_api_key`로 거부 →
+  키 재발급/정정 후 실 대화·교정 검증 예정.
+- **결정자:** 사용자.
+
 ## 2026-06-09 · 결정 로그 도입(본 문서)
 - **결정:** 큐레이션 ADR 스타일 결정 로그를 forin 프로젝트에 도입(append-only). 원시 트랜스크립트 미적재.
 - **근거:** AWS AI-DLC식 감사 추적 — "왜/대안" provenance 보존. 유용성 검증 후 waypoint 프레임워크 표준 승격 검토.

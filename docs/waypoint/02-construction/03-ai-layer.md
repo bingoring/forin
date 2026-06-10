@@ -105,6 +105,9 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
   `nativeLang`+`targetLang`(+job)로 구동**된다(English/Korean 하드코딩 제거). Profile에 `target_lang` 추가,
   `en_level`→`target_level` 일반화(마이그 000007). 프로필 없으면 출시 시장(Korean→English)으로만 폴백.
   단위테스트로 "다른 언어 시 하드코딩 누출 없음" 고정. (참고: persona/goals 등 **콘텐츠 텍스트의 다국어화**는 별도 후속.)
+- **3a 제공자 전환 — ✅ OpenAI 어댑터 추가**(forin, 2026-06-10): `LLMPort` 두 번째 구현(OpenAI Chat Completions) +
+  `LLM_PROVIDER` 설정 분기(anthropic|openai|auto). **도메인·엔진·Strategy·핸들러 무수정** — 추상화 검증.
+  현재 OpenAI 사용(Anthropic 결제 이슈). provider 선택·세션 생성 확인, 실 호출은 OpenAI 키 정정 후 검증.
 - **3b — 예정**: Azure 발음 평가 어댑터·엔드포인트. **3c — 예정**: SSE 스트리밍.
 
 ## 검토 게이트 (Human Gate)
