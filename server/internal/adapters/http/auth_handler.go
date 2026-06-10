@@ -38,6 +38,8 @@ func (h *authHandler) social(w http.ResponseWriter, r *http.Request) {
 
 // @Summary Rotate refresh token
 // @Tags auth
+// @Param body body refreshReq true "refresh token"
+// @Success 200 {object} auth.TokenPair
 // @Router /auth/refresh [post]
 func (h *authHandler) refresh(w http.ResponseWriter, r *http.Request) {
 	var req refreshReq

@@ -115,6 +115,11 @@ components:
         referenceText:
           type: string
       type: object
+    internal_adapters_http.refreshReq:
+      properties:
+        refreshToken:
+          type: string
+      type: object
     internal_adapters_http.socialLoginReq:
       properties:
         idToken:
@@ -170,7 +175,22 @@ paths:
       - auth
   /auth/refresh:
     post:
-      responses: null
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.refreshReq'
+              description: refresh token
+              summary: body
+        description: refresh token
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_auth.TokenPair'
+          description: OK
       summary: Rotate refresh token
       tags:
       - auth

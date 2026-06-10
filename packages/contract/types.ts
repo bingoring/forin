@@ -88,8 +88,23 @@ export interface paths {
                 path?: never;
                 cookie?: never;
             };
-            requestBody?: never;
-            responses: never;
+            /** @description refresh token */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.refreshReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];
+                    };
+                };
+            };
         };
         delete?: never;
         options?: never;
@@ -653,6 +668,9 @@ export interface components {
         "internal_adapters_http.pronounceReq": {
             audioBase64?: string;
             referenceText?: string;
+        };
+        "internal_adapters_http.refreshReq": {
+            refreshToken?: string;
         };
         "internal_adapters_http.socialLoginReq": {
             idToken?: string;
