@@ -1,8 +1,8 @@
 ---
 phase: 02-construction
 stage: 04-mobile-foundation
-status: PENDING
-updated: 2026-06-08
+status: AI_PROPOSED
+updated: 2026-06-10
 ---
 
 # [Stage 2-4] 모바일 기반 (Expo · 디자인 시스템)
@@ -29,7 +29,53 @@ updated: 2026-06-08
 
 > ⚠️ 이 섹션은 AI가 작성합니다. 사람이 직접 수정하지 마세요.
 
-*[승인 후 작성]*
+### 0. 목표
+
+`mobile/`에 RN+Expo 앱 토대 — expo-router 골격, 디자인 토큰·핵심 픽셀 컴포넌트, 폰트,
+상태(Zustand), **타입세이프 axios 래퍼 API 클라이언트**(생성된 계약 사용), 인증 플로우.
+화면 전체 구현은 2-6, 맵 엔진은 2-5.
+
+### 1. 앱 스캐폴드
+
+- **Expo(managed) + TypeScript + expo-router**. `mobile/`에 초기화.
+- **네비게이션 골격**(핸드오프 구조): `app/(onboarding)/{splash,login,locale,job,level}` ·
+  `app/(tabs)/{campus,board,lab,me}` · `app/interior/[dept]` · `app/scenario/[id]/...` — 라우트 셸만(내용은 2-6).
+- 디렉토리: `src/{theme,components,api,store,lib}` + `assets/fonts`.
+
+### 2. 디자인 시스템 (핸드오프 final)
+
+- `theme/tokens.ts` — `01_DESIGN_TOKENS`의 색·타이포·스페이싱·반경(0)·하드 섀도우 토큰.
+- **핵심 픽셀 컴포넌트**: `PixelBox`(하드 오프셋 섀도우=뒤에 ink 오프셋 View), `PixelButton`(press 시 섀도우로 dropping),
+  `PixelChip`, `TopBar`, `BottomNav` 셸. (전체 컴포넌트 인벤토리는 2-6에서 확장.)
+- **폰트**: `expo-font`로 DungGeunMo·Galmuri11 번들(`assets/fonts`), 폴백 모노스페이스.
+- SVG 캐릭터/맵은 2-5(맵 엔진)에서.
+
+### 3. API 클라이언트 (타입세이프 · 교체 가능)
+
+- `src/api/client.ts` — **axios 인스턴스를 감싼 요청 모듈**(직접 `fetch` 금지, 라이브러리 교체 가능하게 추상화 — 1-3 결정).
+- `packages/contract`의 **생성된 TS 타입**(`types.ts`) import → 엔드포인트 타입 안전.
+- 인터셉터: access JWT 자동 첨부, 401 시 refresh 회전 → 재시도, 실패 시 로그아웃.
+- 토큰 저장: `expo-secure-store`(Keychain/Keystore).
+
+### 4. 상태 (Zustand)
+
+`authStore`(토큰·사용자·로그인 상태), 게임/세션 스토어 placeholder. 휘발 게임 상태는 2-5에서.
+
+### 5. 인증 플로우
+
+소셜 로그인(`expo-apple-authentication`·`@react-native-google-signin`·Kakao SDK) → provider ID 토큰 →
+`POST /auth/social` → 서버 JWT 수신·저장 → authed. 2-4는 **클라이언트 측 배선 + 로그인 화면 동작**까지(전체 온보딩 UI는 2-6).
+
+### 6. 구현 증분
+
+- **4a — 스캐폴드+디자인+클라이언트**: Expo init·expo-router 골격·tokens·핵심 픽셀 컴포넌트·폰트·axios 타입 클라이언트.
+  검증: **typecheck(tsc) + `expo export`(번들 빌드)**. 시뮬레이터/Expo Go 실행은 사용자 환경.
+- **4b — 인증 플로우**: secure-store·authStore·소셜 로그인 배선·`/auth/social` 연동.
+
+### ⚠️ 검증 제약(정직)
+
+이 CLI 환경에선 **빌드/타입체크/번들(expo export)**까지 검증 가능하나, **화면 실표시는 iOS 시뮬레이터/기기/Expo Go**가 필요합니다
+(사용자가 `npx expo start`로 확인). 비주얼 픽셀 정합은 사용자 디바이스에서 확인.
 
 ## 검토 게이트 (Human Gate)
 

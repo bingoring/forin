@@ -1,8 +1,8 @@
 ---
 phase: 02-construction
 stage: 03-ai-layer
-status: AI_PROPOSED
-updated: 2026-06-09
+status: HUMAN_APPROVED
+updated: 2026-06-10
 ---
 
 # [Stage 2-3] AI 레이어 (대화·교정·음성)
