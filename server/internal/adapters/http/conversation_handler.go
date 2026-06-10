@@ -1,7 +1,9 @@
 package http
 
 import (
+	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 
 	"github.com/bingoring/forin/server/internal/domain/conversation"
@@ -71,6 +73,48 @@ func (h *conversationHandler) correct(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	httpx.JSON(w, http.StatusOK, c)
+}
+
+// @Summary Send a message; NPC reply streamed as Server-Sent Events (LLM)
+// @Tags conversation
+// @Security Bearer
+// @Param body body messageReq true "user message"
+// @Router /conversation/{sessionId}/stream [post]
+func (h *conversationHandler) stream(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	var req messageReq
+	if err := httpx.DecodeJSON(r, &req); err != nil || req.Text == "" {
+		httpx.Error(w, http.StatusBadRequest, "text is required")
+		return
+	}
+	flusher, ok := w.(http.Flusher)
+	if !ok {
+		httpx.Error(w, http.StatusInternalServerError, "streaming unsupported")
+		return
+	}
+	w.Header().Set("Content-Type", "text/event-stream")
+	w.Header().Set("Cache-Control", "no-cache")
+	w.Header().Set("Connection", "keep-alive")
+	w.WriteHeader(http.StatusOK)
+	flusher.Flush()
+
+	// Each chunk is JSON-encoded so newlines don't break SSE framing.
+	_, err := h.engine.SendMessageStream(r.Context(), uid, r.PathValue("sessionId"), req.Text, func(chunk string) error {
+		b, _ := json.Marshal(chunk)
+		if _, err := fmt.Fprintf(w, "data: %s\n\n", b); err != nil {
+			return err
+		}
+		flusher.Flush()
+		return nil
+	})
+	if err != nil {
+		// status already sent; signal via an SSE error event.
+		fmt.Fprint(w, "event: error\ndata: \"ai unavailable\"\n\n")
+		flusher.Flush()
+		return
+	}
+	fmt.Fprint(w, "event: done\ndata: \"[DONE]\"\n\n")
+	flusher.Flush()
 }
 
 type messageReq struct {

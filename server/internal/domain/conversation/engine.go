@@ -98,35 +98,61 @@ func (e *Engine) StartSession(ctx context.Context, userID, scenarioID string) (s
 	return e.convo.CreateSession(ctx, userID, scenarioID)
 }
 
-// SendMessage records the user's line, generates the NPC reply in persona, persists both.
-func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (string, error) {
+// prepare validates the session/scenario, records the user's line, and builds the
+// system prompt + message history for the LLM. Shared by SendMessage(+Stream).
+func (e *Engine) prepare(ctx context.Context, userID, sessionID, text string) (string, []ports.LLMMessage, error) {
 	sess, err := e.convo.GetSession(ctx, sessionID)
 	if err != nil {
-		return "", err
+		return "", nil, err
 	}
 	if sess == nil || sess.UserID != userID {
-		return "", ErrSessionNotFound
+		return "", nil, ErrSessionNotFound
 	}
 	sc, err := e.content.GetScenario(ctx, sess.ScenarioID)
 	if err != nil {
-		return "", err
+		return "", nil, err
 	}
 	if sc == nil {
-		return "", ErrScenarioNotFound
+		return "", nil, ErrScenarioNotFound
 	}
-
 	if err := e.convo.AppendTurn(ctx, sessionID, "user", text); err != nil {
-		return "", err
+		return "", nil, err
 	}
 	hist, err := e.convo.History(ctx, sessionID, historyLimit)
 	if err != nil {
-		return "", err
+		return "", nil, err
 	}
 	msgs := make([]ports.LLMMessage, 0, len(hist))
 	for _, t := range hist {
 		msgs = append(msgs, ports.LLMMessage{Role: t.Role, Content: t.Content})
 	}
-	reply, err := e.strategy.Generate(ctx, buildSystemPrompt(sc, e.langFor(ctx, userID)), msgs)
+	return buildSystemPrompt(sc, e.langFor(ctx, userID)), msgs, nil
+}
+
+// SendMessage records the user's line, generates the NPC reply in persona, persists both.
+func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (string, error) {
+	system, msgs, err := e.prepare(ctx, userID, sessionID, text)
+	if err != nil {
+		return "", err
+	}
+	reply, err := e.strategy.Generate(ctx, system, msgs)
+	if err != nil {
+		return "", err
+	}
+	reply = strings.TrimSpace(reply)
+	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply); err != nil {
+		return "", err
+	}
+	return reply, nil
+}
+
+// SendMessageStream streams the NPC reply (onDelta per chunk) and persists the full turn.
+func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text string, onDelta func(string) error) (string, error) {
+	system, msgs, err := e.prepare(ctx, userID, sessionID, text)
+	if err != nil {
+		return "", err
+	}
+	reply, err := e.strategy.GenerateStream(ctx, system, msgs, onDelta)
 	if err != nil {
 		return "", err
 	}

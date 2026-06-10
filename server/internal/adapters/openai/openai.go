@@ -3,6 +3,7 @@
 package openai
 
 import (
+	"bufio"
 	"bytes"
 	"context"
 	"encoding/json"
@@ -10,6 +11,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/ports"
@@ -37,6 +39,7 @@ type chatMessage struct {
 type reqBody struct {
 	Model     string        `json:"model"`
 	MaxTokens int           `json:"max_tokens,omitempty"`
+	Stream    bool          `json:"stream,omitempty"`
 	Messages  []chatMessage `json:"messages"`
 }
 
@@ -55,14 +58,7 @@ func (c *Client) Complete(ctx context.Context, r ports.LLMRequest) (string, erro
 	if c.key == "" {
 		return "", errors.New("openai: API key not configured")
 	}
-	msgs := make([]chatMessage, 0, len(r.Messages)+1)
-	if r.System != "" {
-		msgs = append(msgs, chatMessage{Role: "system", Content: r.System})
-	}
-	for _, m := range r.Messages {
-		msgs = append(msgs, chatMessage{Role: m.Role, Content: m.Content})
-	}
-	body, err := json.Marshal(reqBody{Model: r.Model, MaxTokens: r.MaxTokens, Messages: msgs})
+	body, err := json.Marshal(reqBody{Model: r.Model, MaxTokens: r.MaxTokens, Messages: toChat(r)})
 	if err != nil {
 		return "", err
 	}
@@ -95,6 +91,78 @@ func (c *Client) Complete(ctx context.Context, r ports.LLMRequest) (string, erro
 		return "", errors.New("openai: empty response")
 	}
 	return parsed.Choices[0].Message.Content, nil
+}
+
+// CompleteStream streams the chat completion, invoking onDelta per token chunk.
+func (c *Client) CompleteStream(ctx context.Context, r ports.LLMRequest, onDelta func(string) error) (string, error) {
+	if c.key == "" {
+		return "", errors.New("openai: API key not configured")
+	}
+	body, err := json.Marshal(reqBody{Model: r.Model, MaxTokens: r.MaxTokens, Stream: true, Messages: toChat(r)})
+	if err != nil {
+		return "", err
+	}
+	httpReq, err := http.NewRequestWithContext(ctx, http.MethodPost, endpoint, bytes.NewReader(body))
+	if err != nil {
+		return "", err
+	}
+	httpReq.Header.Set("content-type", "application/json")
+	httpReq.Header.Set("authorization", "Bearer "+c.key)
+
+	resp, err := c.http.Do(httpReq)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		raw, _ := io.ReadAll(resp.Body)
+		return "", fmt.Errorf("openai: status %d: %s", resp.StatusCode, truncate(raw))
+	}
+
+	var full strings.Builder
+	sc := bufio.NewScanner(resp.Body)
+	sc.Buffer(make([]byte, 0, 64*1024), 1024*1024)
+	for sc.Scan() {
+		line := sc.Text()
+		if !strings.HasPrefix(line, "data: ") {
+			continue
+		}
+		data := strings.TrimPrefix(line, "data: ")
+		if data == "[DONE]" {
+			break
+		}
+		var ev struct {
+			Choices []struct {
+				Delta struct {
+					Content string `json:"content"`
+				} `json:"delta"`
+			} `json:"choices"`
+		}
+		if json.Unmarshal([]byte(data), &ev) != nil {
+			continue
+		}
+		for _, ch := range ev.Choices {
+			if ch.Delta.Content == "" {
+				continue
+			}
+			if err := onDelta(ch.Delta.Content); err != nil {
+				return full.String(), err
+			}
+			full.WriteString(ch.Delta.Content)
+		}
+	}
+	return full.String(), sc.Err()
+}
+
+func toChat(r ports.LLMRequest) []chatMessage {
+	msgs := make([]chatMessage, 0, len(r.Messages)+1)
+	if r.System != "" {
+		msgs = append(msgs, chatMessage{Role: "system", Content: r.System})
+	}
+	for _, m := range r.Messages {
+		msgs = append(msgs, chatMessage{Role: m.Role, Content: m.Content})
+	}
+	return msgs
 }
 
 func truncate(b []byte) string {

@@ -48,9 +48,12 @@ type LLMRequest struct {
 	MaxTokens int
 }
 
-// LLMPort is the low-level LLM adapter (Anthropic etc.). Strategies compose it.
+// LLMPort is the low-level LLM adapter (Anthropic/OpenAI etc.). Strategies compose it.
 type LLMPort interface {
 	Complete(ctx context.Context, req LLMRequest) (string, error)
+	// CompleteStream streams the reply; onDelta is called per text chunk. Returns the full text.
+	// If onDelta returns an error (e.g. client disconnected), streaming stops.
+	CompleteStream(ctx context.Context, req LLMRequest, onDelta func(string) error) (string, error)
 }
 
 // ProfileReader exposes the user's language context for prompt building.

@@ -66,6 +66,7 @@ func NewRouter(d Deps) http.Handler {
 	conv := &conversationHandler{engine: d.Convo}
 	mux.Handle("POST /scenarios/{id}/conversation", auth(http.HandlerFunc(conv.start)))
 	mux.Handle("POST /conversation/{sessionId}/message", auth(http.HandlerFunc(conv.message)))
+	mux.Handle("POST /conversation/{sessionId}/stream", auth(http.HandlerFunc(conv.stream)))
 	mux.Handle("POST /correct", auth(http.HandlerFunc(conv.correct)))
 
 	// Global middleware (outermost first).
