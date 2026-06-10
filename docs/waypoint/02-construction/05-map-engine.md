@@ -1,8 +1,8 @@
 ---
 phase: 02-construction
 stage: 05-map-engine
-status: PENDING
-updated: 2026-06-08
+status: AI_PROPOSED
+updated: 2026-06-10
 ---
 
 # [Stage 2-5] 맵 / 탐험 엔진 (품질 축)
@@ -29,7 +29,50 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 > ⚠️ 이 섹션은 AI가 작성합니다. 사람이 직접 수정하지 마세요.
 
-*[승인 후 작성]*
+### 0. 목표·범위
+
+핸드오프 `05_MAP_AND_INTERIORS` 타일 엔진을 RN으로 포팅. forin 품질 3대 축 "탐험". 인테리어부터
+(캠퍼스 야외 맵은 5c/후속). `react-native-svg` 추가.
+
+### 1. 타일 엔진 (`src/map/`)
+
+- 좌표계: `ITILE=16`, `ZOOM=2` → 화면 32px/타일. 오브젝트는 `left:x*32, top:y*32`.
+- `TileFloor`: 부서 팔레트 2색 체커보드(성능: 바닥은 단일 프리베이크 레이어/단순 View 그리드, 가시 영역만).
+- `InteriorScreen` 셸: TopBar(부서·HP) · 미션 배너 · 스크롤 뷰포트(바닥+오브젝트+player+RoomMask) ·
+  리전 전환 오버레이("➜ 트라우마 룸") · 리전 배지 · HUD(ZONE·D-pad·A·빠른이동) · 빠른이동 모달.
+
+### 2. 이동·충돌·카메라
+
+- player `pos{x,y}`(타일). **D-pad**로 이동(경계+충돌 클램프) + **탭-투-패스**(reanimated). 스텝 bob.
+- **충돌**: 인테리어 콘텐츠에 **저작 collision 레이어**(blocked 타일/사각형) 추가 — 1-3 결정. 엔진은 blocked 집합으로 판정.
+  → Interior 콘텐츠에 `collision`(jsonb) 필드 추가(서버 마이그·시드 ER 갱신).
+- **카메라**: ScrollView/Animated가 player 중심 추적.
+- **룸마스크**: 현재 `region` 밖을 어둡게(4 패널) — 핸드오프 핵심 감성, 유지.
+- 핫스팟 타일 진입 → **브리핑/시나리오 진입**(브리핑 화면은 2-6; 5에선 라우트로 네비게이트).
+
+### 3. 캐릭터 (`src/characters/`, react-native-svg)
+
+- `Sprite`(전신 ~40–52px) + `Face`(초상 ~80px) — "Derp 스무스" 스타일(03_CHARACTERS), outline `#3A2E26`.
+- 역할 프리셋(player/nurse/doctor/patient…) + **12 표정** + **결정적 외형 해시**(hash(x,y,salt)).
+- 5b에서 SVG 패스 본격 포팅; 5a는 단순화된 Sprite로 파이프라인 확립.
+
+### 4. 인테리어 오브젝트
+
+`interior-shared`/부서별 오브젝트(bed·monitor·IV·reception 등)를 react-native-svg로 포팅(2.5D 평면 fill).
+5b에서 카탈로그 확장; 5a는 몇 개로 시작.
+
+### 5. 구현 증분
+
+- **5a — 엔진 코어**: react-native-svg 설치 · 타일 렌더러·뷰포트·카메라 · D-pad/탭 이동+충돌 · 룸마스크·리전 전환 ·
+  HUD·빠른이동 모달 · 핫스팟→네비. 콘텐츠 `collision` 필드(서버) + ER 시드. **단순 player 스프라이트**로 walkable 확인.
+- **5b — 캐릭터·오브젝트 SVG**: Derp Sprite/Face(역할·표정·해시) + 오브젝트 카탈로그 포팅.
+- **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
+
+### ⚠️ 검증 제약
+
+엔진은 매우 시각적입니다. CLI에선 **typecheck + expo-doctor**로 컴파일/구성만 검증 가능하고,
+**이동·룸마스크·비주얼 체감은 시뮬레이터/기기(`npx expo start`)에서 사용자 확인**이 필요합니다.
+가능하면 5a 후 한 번 디바이스에서 walkable을 확인하시길 권합니다.
 
 ## 검토 게이트 (Human Gate)
 
