@@ -1,0 +1,33 @@
+import { StyleSheet, Text, View } from 'react-native';
+import { PixelBox } from '@/components/PixelBox';
+import { PixelButton } from '@/components/PixelButton';
+import { PixelChip } from '@/components/PixelChip';
+import { colors, fonts, space, type as t } from '@/theme/tokens';
+
+// Placeholder screen demonstrating the design system. Full campus map = Stage 2-5.
+export default function Campus() {
+  return (
+    <View style={styles.screen}>
+      <Text style={styles.h}>캠퍼스</Text>
+      <PixelBox style={styles.card}>
+        <Text style={styles.title}>forin 병원</Text>
+        <Text style={styles.body}>픽셀 병원을 탐험하며 임상 영어를 연습하세요.</Text>
+        <View style={styles.row}>
+          <PixelChip label="ER" />
+          <PixelChip label="ICU" bg={colors.lilac} />
+          <PixelChip label="PEDS" bg={colors.pink} />
+        </View>
+      </PixelBox>
+      <PixelButton label="✈  여정 시작하기" onPress={() => {}} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  screen: { flex: 1, backgroundColor: colors.paper, padding: space.xl, gap: space.lg, justifyContent: 'center' },
+  h: { fontFamily: fonts.heading, fontSize: t.screenHeading, color: colors.ink },
+  card: { padding: space.lg, gap: space.sm, width: '100%' },
+  title: { fontFamily: fonts.heading, fontSize: t.section, color: colors.ink },
+  body: { fontFamily: fonts.body, fontSize: t.body, color: colors.text, lineHeight: 22 },
+  row: { flexDirection: 'row', gap: space.sm, marginTop: space.xs },
+});
