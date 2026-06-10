@@ -74,7 +74,12 @@ updated: 2026-06-10
   **axios 래퍼 타입 클라이언트**(`@contract/types`·토큰 인터셉터·401 로그아웃), tsconfig `@contract` 경로.
   폰트는 family명 + `assets/fonts/README`(실 .ttf 후속). **검증: `tsc --noEmit` 통과 + `expo-doctor` 21/21.**
   시각 표시는 `npx expo start`(시뮬레이터/Expo Go, 사용자).
-- **4b — 예정**: 인증 플로우(소셜→`/auth/social`→JWT) + `expo-secure-store` 영속·refresh 회전.
+- **4b — ✅ 인증 플로우**(forin 커밋, 2026-06-10): `expo-secure-store` 토큰 영속 + authStore 하이드레이션
+  (`restoreSession`→`/me`) + **client refresh 회전**(401→`/auth/refresh`→재시도, 실패 시 로그아웃) +
+  인덱스 게이팅(authed→탭 / 미인증→로그인) + 로그인 화면 배선(`signIn(provider)`). **Apple**은
+  `expo-apple-authentication`로 실구현; **Google/Kakao는 네이티브 SDK + provider 앱 등록 + dev build 필요**라
+  인터페이스 스텁(설정 시 점등). 계약에 `/auth/refresh` 응답 타입 보강. 검증: `tsc` + `expo-doctor` 21/21.
+  **2-4 구현 완료** — 실 소셜 로그인은 dev build/credential 준비 시점.
 
 ### ⚠️ 검증 제약(정직)
 
