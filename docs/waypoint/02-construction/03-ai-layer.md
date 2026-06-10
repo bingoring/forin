@@ -116,7 +116,12 @@ forin 핵심 — LLM 대화 엔진, 답안 교정 파이프라인, STT/TTS/발�
   `Strategy.GenerateStream`(SingleModel) + `Engine.SendMessageStream` + `POST /conversation/{sessionId}/stream`(SSE,
   JSON 인코딩 청크). 실 OpenAI로 토큰 단위 스트리밍 검증(청크 수신·done 이벤트), 전체 응답은 턴으로 영속.
   (로깅 미들웨어 래퍼에 Flush 통과 추가.)
-- **3b — 예정**: Azure 발음 평가 어댑터·엔드포인트(오디오 — 본격 검증은 모바일 연동 시).
+- **3b — ✅ Azure 발음 평가**(forin, 2026-06-10): `PronunciationPort` + azurespeech 어댑터(REST) +
+  `POST /pronunciation`(base64 WAV→점수). locale은 프로필 `targetLang` 기반. **실 Azure 검증 완료** —
+  macOS `say`로 생성한 음성을 16kHz mono WAV로 변환해 평가: recognized 정확, accuracy 91·fluency 96·
+  completeness 100·overall 93.8 + 단어별 점수. (응답 점수는 NBest/Word에 평면 필드.)
+
+**→ 2-3(3a 대화·교정 / 3c 스트리밍 / 3b 발음) 구현·실검증 완료. 사용자 승인 시 `HUMAN_APPROVED`.**
 
 ## 검토 게이트 (Human Gate)
 
