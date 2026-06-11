@@ -9,6 +9,7 @@ import { TILE, coordToPx, type Coord } from './coords';
 import { regionAt } from './regions';
 import { useMovement } from './useMovement';
 import { TileFloor } from './TileFloor';
+import { Walls } from './Walls';
 import { RoomMask } from './RoomMask';
 import { HUD } from './HUD';
 import { FastTravelModal } from './FastTravelModal';
@@ -76,6 +77,10 @@ export function InteriorScreen({
 
   const region = useMemo(() => regionAt(pos, interior.regions), [pos, interior.regions]);
   const npcs = useMemo(() => npcsFromObjects(interior.objects), [interior.objects]);
+  const objectTiles = useMemo(
+    () => new Set(interior.objects.map((o) => `${o.x},${o.y}`)),
+    [interior.objects],
+  );
 
   // Transient "➜ region" banner on region change.
   const [banner, setBanner] = useState<string | null>(null);
@@ -133,6 +138,7 @@ export function InteriorScreen({
             style={{ position: 'absolute', width: worldW, height: worldH, transform: [{ translateX: offX }, { translateY: offY }] }}
           >
             <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
+            <Walls collision={interior.collision} objectTiles={objectTiles} />
 
             {interior.objects.map((o: MapObject) => {
               const { left, top } = coordToPx(o);

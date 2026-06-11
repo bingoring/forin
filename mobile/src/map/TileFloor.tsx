@@ -6,10 +6,14 @@ import { memo, useMemo } from 'react';
 import { View } from 'react-native';
 import { TILE } from './coords';
 
+// Floor tile pairs [base, alt] — from the design-handoff interior palette (IP).
 const THEMES: Record<string, [string, string]> = {
-  clinical: ['#F4FAFB', '#E7F1F3'],
-  ward: ['#FBF7F0', '#F1EADD'],
-  default: ['#FFFBF0', '#F3EEDF'],
+  clinical: ['#E8E5D4', '#DAD6C2'], // off-white tile (general)
+  sterile: ['#D6E4EC', '#BFD4DE'], // blue-white (OR)
+  peds: ['#FDE6BB', '#FAD79A'], // warm yellow (Pediatrics)
+  icu: ['#E1E4EC', '#C8CEDA'], // cool gray (ICU)
+  pharma: ['#E9DEC0', '#D8C9A4'], // warm beige (Pharmacy)
+  default: ['#E8E5D4', '#DAD6C2'],
 };
 
 function TileFloorBase({
