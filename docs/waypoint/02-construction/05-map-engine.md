@@ -75,7 +75,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     레퍼런스 `forin-npcs-smooth.jsx`를 **1:1 포팅**(SmoothSprite, 헤어/모자 스타일, 역할 10종 ROLES,
     결정적 외형 해시, **12 표정**). `PlayerSprite`/`RoleSprite` export. InteriorScreen의 이모지 플레이어를
     실제 치비로 교체 + 시드 오브젝트에서 **NPC 파생**(reception→nurse, 점유 침대→patient). tsc 0·jest 14/14·doctor 21/21.
-  - **5b-ii 오브젝트 카탈로그**(다음): `interior-objects-er.jsx`/`interior-shared.jsx` → SVG 오브젝트(이모지 대체).
+  - **5b-ii 인테리어 구조·오브젝트**(진행 중): **벽 가시화 ✅** — `Walls.tsx`가 collision 레이어를 레퍼런스 `IWall`
+    스타일 청키 벽으로 렌더(문=개구부), `TileFloor` 바닥 팔레트를 레퍼런스 IP 색(clinical `#E8E5D4`/`#DAD6C2` 등)으로 교정.
+    (5a에선 collision이 비가시라 "안 보이는 벽"이었음 — 사용자 피드백 반영.) **다음**: 오브젝트 SVG(`interior-objects-er.jsx`/`interior-shared.jsx`)로 이모지 대체, 문 그래픽(IDoor).
   - **5b-iii Face 초상**(다음): `forin-faces.jsx` → `src/characters/Face.tsx`(2-6 대화/브리핑용).
 - **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
 
