@@ -1,8 +1,8 @@
 ---
 phase: 02-construction
 stage: 05-map-engine
-status: AI_PROPOSED
-updated: 2026-06-10
+status: IN_PROGRESS
+updated: 2026-06-11
 ---
 
 # [Stage 2-5] 맵 / 탐험 엔진 (품질 축)
@@ -63,9 +63,14 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ### 5. 구현 증분
 
-- **5a — 엔진 코어**: react-native-svg 설치 · 타일 렌더러·뷰포트·카메라 · D-pad/탭 이동+충돌 · 룸마스크·리전 전환 ·
-  HUD·빠른이동 모달 · 핫스팟→네비. 콘텐츠 `collision` 필드(서버) + ER 시드. **단순 player 스프라이트**로 walkable 확인.
-- **5b — 캐릭터·오브젝트 SVG**: Derp Sprite/Face(역할·표정·해시) + 오브젝트 카탈로그 포팅.
+- **5a — ✅ 엔진 코어**(2026-06-11): 타일 렌더러·뷰포트·카메라 팔로우 · D-pad/탭-투-워크(BFS)+충돌 · 룸마스크 ·
+  리전 전환 배너 · HUD(ZONE·D-pad·A) · 빠른이동 모달 · 핫스팟→시나리오 네비. 서버 콘텐츠 `collision`(jsonb)
+  필드 추가(마이그 000008 + sqlc 수동 갱신 + ER 시드: 외벽·트리아지↔트라우마 분리벽·룸/복도 도어웨이·오브젝트 타일).
+  player/오브젝트는 **단순 View+이모지**(SVG·`react-native-svg`는 실제 사용처인 5b로 이연), 카메라/스텝은 plain state
+  (reanimated 워클릿은 성능 패스에서). **검증: 순수 로직 jest 14/14**(coords·collision[BFS·도어웨이·미도달]·regions),
+  **tsc 0 · expo-doctor 21/21 · 서버 `go build` 0**. ⚠️ collision **jsonb 라이브 왕복**은 Docker 미가동으로 미검증
+  (동일 jsonb 패턴 기검증 + 빌드 통과 → 신뢰 높음). walkable·룸마스크·핫스팟 네비 **시각 확인은 사용자 `npx expo start`**.
+- **5b — 캐릭터·오브젝트 SVG**: react-native-svg 설치 · Derp Sprite/Face(역할·표정·해시) + 오브젝트 카탈로그 포팅.
 - **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
