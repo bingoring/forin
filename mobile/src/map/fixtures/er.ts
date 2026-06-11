@@ -21,9 +21,13 @@ export const ER_INTERIOR: Interior = {
   objects: [
     { id: 'bed1', type: 'bed', x: 4, y: 3, props: { occupied: true } },
     { id: 'monitor1', type: 'monitor', x: 6, y: 3, props: { beep: true } },
-    { id: 'reception', type: 'reception', x: 5, y: 7 },
+    { id: 'reception', type: 'reception', x: 5, y: 7, props: { w: 2, h: 1 } },
+    // doors are walkable openings (not in collision); the client draws an IDoor.
+    { id: 'door1', type: 'door', x: 12, y: 9, props: { kind: 'auto' } },
+    { id: 'door2', type: 'door', x: 11, y: 8, props: { kind: 'wood' } },
   ],
   hotspots: [{ id: 'hs1', kind: 'quest', x: 4, y: 4, label: '흉통 환자', scenarioId: 'SCN-ER-00001' }],
+  // Structural walls only; the engine adds bed/monitor/reception footprints.
   collision: [
     { x: 0, y: 0, w: 24, h: 1 },
     { x: 0, y: 0, w: 1, h: 18 },
@@ -32,9 +36,6 @@ export const ER_INTERIOR: Interior = {
     { x: 11, y: 1, w: 1, h: 7 },
     { x: 1, y: 9, w: 11, h: 1 },
     { x: 13, y: 9, w: 10, h: 1 },
-    { x: 4, y: 3, w: 1, h: 1 },
-    { x: 6, y: 3, w: 1, h: 1 },
-    { x: 5, y: 7, w: 1, h: 1 },
   ],
 };
 

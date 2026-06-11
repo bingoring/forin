@@ -19,11 +19,14 @@ rooms:
 objects:
   - { id: bed1, type: bed, x: 4, y: 3, props: { occupied: true } }
   - { id: monitor1, type: monitor, x: 6, y: 3, props: { beep: true } }
-  - { id: reception, type: reception, x: 5, y: 7 }
+  - { id: reception, type: reception, x: 5, y: 7, props: { w: 2, h: 1 } }
+  # doors are walkable openings (NOT in collision); the client draws an IDoor.
+  - { id: door1, type: door, x: 12, y: 9, props: { kind: auto } }   # room ↔ corridor
+  - { id: door2, type: door, x: 11, y: 8, props: { kind: wood } }   # triage ↔ trauma
 hotspots:
   - { id: hs1, kind: quest, x: 4, y: 4, label: "흉통 환자", scenarioId: SCN-ER-00001 }
-# collision: blocked tile rectangles (authored layer). The engine treats these
-# (plus the map border) as non-walkable. Doorways are gaps left in the walls.
+# collision: STRUCTURAL walls only (authored). The engine adds solid-object
+# footprints (bed/monitor/reception) on top. Doorways are gaps left in the walls.
 collision:
   - { x: 0, y: 0, w: 24, h: 1 }   # top wall
   - { x: 0, y: 0, w: 1, h: 18 }   # left wall
@@ -32,6 +35,3 @@ collision:
   - { x: 11, y: 1, w: 1, h: 7 }   # triage↔trauma divider (doorway at y=8)
   - { x: 1, y: 9, w: 11, h: 1 }   # room/corridor wall, left of door
   - { x: 13, y: 9, w: 10, h: 1 }  # room/corridor wall, right of door (door at x=12)
-  - { x: 4, y: 3, w: 1, h: 1 }    # bed1
-  - { x: 6, y: 3, w: 1, h: 1 }    # monitor1
-  - { x: 5, y: 7, w: 1, h: 1 }    # reception

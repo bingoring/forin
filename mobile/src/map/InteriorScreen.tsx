@@ -14,14 +14,8 @@ import { RoomMask } from './RoomMask';
 import { HUD } from './HUD';
 import { FastTravelModal } from './FastTravelModal';
 import { PlayerSprite, RoleSprite, type RoleKind } from '@/characters/Sprite';
+import { InteriorObjectView } from './objects';
 import type { Interior, MapObject, Hotspot } from './types';
-
-const OBJECT_GLYPH: Record<string, string> = {
-  bed: '🛏️',
-  monitor: '🖥️',
-  reception: '🛎️',
-  iv: '💧',
-};
 
 // Chibi sprites are taller than a tile (head sits above it). Width ≈ 2.2 tiles;
 // height = width*80/64. Feet are centered on the tile, head overhangs upward.
@@ -34,12 +28,12 @@ function seatSprite(x: number, y: number) {
 }
 
 // Derive ambient NPCs from authored objects so the room feels alive without a
-// separate content type yet: a nurse at reception, a patient on an occupied bed.
+// separate content type yet: a nurse standing behind the reception desk. (Beds
+// draw their own sleeping occupant, so no patient NPC is added there.)
 function npcsFromObjects(objects: MapObject[]): { id: string; x: number; y: number; kind: RoleKind }[] {
   const out: { id: string; x: number; y: number; kind: RoleKind }[] = [];
   for (const o of objects) {
     if (o.type === 'reception') out.push({ id: `npc-${o.id}`, x: o.x, y: o.y - 1, kind: 'nurse' });
-    else if (o.type === 'bed' && o.props?.occupied) out.push({ id: `npc-${o.id}`, x: o.x, y: o.y, kind: 'patient' });
   }
   return out;
 }
@@ -77,10 +71,6 @@ export function InteriorScreen({
 
   const region = useMemo(() => regionAt(pos, interior.regions), [pos, interior.regions]);
   const npcs = useMemo(() => npcsFromObjects(interior.objects), [interior.objects]);
-  const objectTiles = useMemo(
-    () => new Set(interior.objects.map((o) => `${o.x},${o.y}`)),
-    [interior.objects],
-  );
 
   // Transient "➜ region" banner on region change.
   const [banner, setBanner] = useState<string | null>(null);
@@ -138,20 +128,11 @@ export function InteriorScreen({
             style={{ position: 'absolute', width: worldW, height: worldH, transform: [{ translateX: offX }, { translateY: offY }] }}
           >
             <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
-            <Walls collision={interior.collision} objectTiles={objectTiles} />
+            <Walls collision={interior.collision} />
 
-            {interior.objects.map((o: MapObject) => {
-              const { left, top } = coordToPx(o);
-              return (
-                <View
-                  key={o.id}
-                  pointerEvents="none"
-                  style={{ position: 'absolute', left, top, width: TILE, height: TILE, alignItems: 'center', justifyContent: 'center' }}
-                >
-                  <Text style={{ fontSize: 22 }}>{OBJECT_GLYPH[o.type] ?? '⬛'}</Text>
-                </View>
-              );
-            })}
+            {interior.objects.map((o: MapObject) => (
+              <InteriorObjectView key={o.id} object={o} />
+            ))}
 
             {interior.hotspots.map((h) => {
               const { left, top } = coordToPx(h);

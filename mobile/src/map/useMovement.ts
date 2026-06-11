@@ -5,12 +5,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Coord, Dir, DIRS, dirBetween, step } from './coords';
 import { buildBlocked, canEnter, findPath } from './collision';
+import { objectCollision } from './objects';
 import type { Interior } from './types';
 
 const STEP_MS = 110; // tile cadence while auto-walking a path
 
 export function useMovement(interior: Interior) {
-  const blocked = useMemo(() => buildBlocked(interior), [interior]);
+  // Walkability = authored structural walls + solid-object footprints.
+  const blocked = useMemo(
+    () => buildBlocked({ ...interior, collision: [...interior.collision, ...objectCollision(interior.objects)] }),
+    [interior],
+  );
   const [pos, setPos] = useState<Coord>(interior.playerStart);
   const [facing, setFacing] = useState<Dir>('down');
   const [path, setPath] = useState<Coord[]>([]);
