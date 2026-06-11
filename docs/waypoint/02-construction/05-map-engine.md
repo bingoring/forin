@@ -75,9 +75,13 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     레퍼런스 `forin-npcs-smooth.jsx`를 **1:1 포팅**(SmoothSprite, 헤어/모자 스타일, 역할 10종 ROLES,
     결정적 외형 해시, **12 표정**). `PlayerSprite`/`RoleSprite` export. InteriorScreen의 이모지 플레이어를
     실제 치비로 교체 + 시드 오브젝트에서 **NPC 파생**(reception→nurse, 점유 침대→patient). tsc 0·jest 14/14·doctor 21/21.
-  - **5b-ii 인테리어 구조·오브젝트**(진행 중): **벽 가시화 ✅** — `Walls.tsx`가 collision 레이어를 레퍼런스 `IWall`
-    스타일 청키 벽으로 렌더(문=개구부), `TileFloor` 바닥 팔레트를 레퍼런스 IP 색(clinical `#E8E5D4`/`#DAD6C2` 등)으로 교정.
-    (5a에선 collision이 비가시라 "안 보이는 벽"이었음 — 사용자 피드백 반영.) **다음**: 오브젝트 SVG(`interior-objects-er.jsx`/`interior-shared.jsx`)로 이모지 대체, 문 그래픽(IDoor).
+  - **5b-ii 인테리어 구조·오브젝트 ✅**(2026-06-11): **벽 가시화** — `Walls.tsx`가 collision(구조 벽)을 레퍼런스 `IWall`
+    스타일 청키 벽으로 렌더, `TileFloor` 바닥 팔레트를 레퍼런스 IP 색(clinical `#E8E5D4`/`#DAD6C2` 등)으로 교정.
+    **오브젝트 SVG**(`src/map/objects/`) — IBed(2×3, 환자 포함)·EKG 모니터·IReception·IDoor를 react-native-svg로 1:1 포팅,
+    이모지 대체. **설계: 충돌=구조 벽만(collision 필드), 오브젝트는 타입별 footprint로 엔진이 차단**(`objectCollision`),
+    **문은 type:'door' 오브젝트(충돌 없음=통행)** → 서버 스키마 변경 0(기존 objects/collision 필드 재사용). bed는 자체 occupant를
+    그리므로 침대→환자 NPC 파생 제거(리셉션→간호사만). ER 시드/픽스처 갱신. **jest 18/18**(ER 레이아웃 도달성 4건 추가:
+    트리아지/트라우마 도달·문 통행·footprint 차단). tsc 0·doctor 21/21·서버 go build 0.
   - **5b-iii Face 초상**(다음): `forin-faces.jsx` → `src/characters/Face.tsx`(2-6 대화/브리핑용).
 - **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
 

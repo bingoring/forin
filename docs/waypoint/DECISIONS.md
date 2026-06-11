@@ -117,3 +117,13 @@
   CLI에서 정확성 보장(시각 의존 최소화). 의존성/최적화는 효과가 보이는 단계에서 추가(YAGNI).
 - **대안(탈락):** 5a부터 SVG·reanimated 전면 — 시각 검증 불가 환경에서 리스크·복잡도만 증가.
 - **결정자:** AI 제안(적응형 깊이 — 테스트 계획대로).
+
+## 2026-06-11 · 인테리어 충돌·오브젝트·문 모델 (5b-ii)
+- **결정:** `collision` 필드 = **구조 벽만**. 솔리드 오브젝트(bed/monitor/reception)는 **타입별 footprint**
+  (`OBJECT_FOOTPRINT`)로 엔진이 blocked 집합에 추가 → 아트 크기와 충돌이 항상 일치. **문은 type:'door' 오브젝트**
+  로 표현(충돌에 없음 = 통행 가능, 클라이언트가 `IDoor` 렌더). 벽 비주얼은 `Walls.tsx`가 collision을 IWall로 렌더.
+- **근거:** (1) 아트≠충돌 불일치(보이는 침대를 통과) 방지. (2) **서버 스키마 변경 0** — 기존 objects/collision 필드만으로
+  벽·오브젝트·문을 모두 표현(`doors` 필드 신설 불필요). (3) 오브젝트 타입은 화이트리스트 없는 자유 데이터([[feedback_extensibility]]).
+- **대안(탈락):** 오브젝트 footprint를 collision에 직접 박기(아트와 중복·드리프트), `doors` jsonb 필드 신설(마이그·sqlc churn).
+- **검증:** ER 픽스처 도달성 jest 4건(트리아지/트라우마 도달·문 통행·footprint 차단) 18/18.
+- **결정자:** AI 제안(5b-ii, 계획대로).
