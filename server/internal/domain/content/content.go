@@ -86,6 +86,7 @@ type Interior struct {
 	Rooms       []Room      `yaml:"rooms" json:"rooms"`
 	Objects     []MapObject `yaml:"objects" json:"objects"`
 	Hotspots    []Hotspot   `yaml:"hotspots" json:"hotspots"`
+	Collision   []Bounds    `yaml:"collision" json:"collision"` // blocked tile rectangles
 }
 
 type Coord struct {

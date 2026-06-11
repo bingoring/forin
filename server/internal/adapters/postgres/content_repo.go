@@ -48,7 +48,8 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 		if err := q.InsertInterior(ctx, sqlc.InsertInteriorParams{
 			ID: in.ID, Profession: in.Profession, DeptID: in.DeptID, Cols: in.Cols, Rows: in.Rows,
 			PlayerStart: jsonb(in.PlayerStart), FloorTheme: in.FloorTheme,
-			Regions: jsonb(in.Regions), Rooms: jsonb(in.Rooms), Objects: jsonb(in.Objects), Hotspots: jsonb(in.Hotspots)}); err != nil {
+			Regions: jsonb(in.Regions), Rooms: jsonb(in.Rooms), Objects: jsonb(in.Objects), Hotspots: jsonb(in.Hotspots),
+			Collision: jsonb(in.Collision)}); err != nil {
 			return err
 		}
 	}
@@ -126,6 +127,7 @@ func (r *ContentRepo) GetInterior(ctx context.Context, id string) (*content.Inte
 	unjson(in.Rooms, &out.Rooms)
 	unjson(in.Objects, &out.Objects)
 	unjson(in.Hotspots, &out.Hotspots)
+	unjson(in.Collision, &out.Collision)
 	return out, nil
 }
 

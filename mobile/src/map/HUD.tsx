@@ -1,0 +1,102 @@
+// On-screen controls: ZONE badge + fast-travel, a D-pad, and the A (action)
+// button. A is enabled only when the player is on/next to an interactable; its
+// label shows what A will do.
+import { Pressable, Text, View } from 'react-native';
+import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
+import type { Dir } from './coords';
+
+const PAD = 52; // D-pad button size
+
+function PadBtn({ glyph, onPress, col, row }: { glyph: string; onPress: () => void; col: number; row: number }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={{
+        position: 'absolute',
+        left: col * PAD,
+        top: row * PAD,
+        width: PAD,
+        height: PAD,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.cream,
+        borderColor: colors.ink,
+        borderWidth: border.card,
+      }}
+    >
+      <Text style={{ fontFamily: fonts.heading, fontSize: 20, color: colors.ink }}>{glyph}</Text>
+    </Pressable>
+  );
+}
+
+function Badge({ label, bg, onPress }: { label: string; bg: string; onPress?: () => void }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={{ backgroundColor: bg, borderColor: colors.ink, borderWidth: border.thin, paddingVertical: 4, paddingHorizontal: 10 }}
+    >
+      <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.caption, color: colors.ink, letterSpacing: 0.4 }}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
+export function HUD({
+  zoneName,
+  actionLabel,
+  onMove,
+  onAction,
+  onFastTravel,
+}: {
+  zoneName: string | null;
+  actionLabel: string | null;
+  onMove: (dir: Dir) => void;
+  onAction: () => void;
+  onFastTravel: () => void;
+}) {
+  const canAct = !!actionLabel;
+  return (
+    <View style={{ paddingHorizontal: 16, paddingBottom: 20, paddingTop: 10, gap: 12 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Badge label={`ZONE · ${zoneName ?? '복도'}`} bg={colors.mint} />
+        <Badge label="↟ 빠른이동" bg={colors.yellow} onPress={onFastTravel} />
+      </View>
+
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        {/* D-pad cross */}
+        <View style={{ width: PAD * 3, height: PAD * 3 }}>
+          <PadBtn glyph="▲" col={1} row={0} onPress={() => onMove('up')} />
+          <PadBtn glyph="◀" col={0} row={1} onPress={() => onMove('left')} />
+          <PadBtn glyph="▶" col={2} row={1} onPress={() => onMove('right')} />
+          <PadBtn glyph="▼" col={1} row={2} onPress={() => onMove('down')} />
+        </View>
+
+        {/* A button */}
+        <View style={{ alignItems: 'center', gap: 4 }}>
+          {canAct && (
+            <Text style={{ fontFamily: fonts.body, fontSize: typeScale.caption, color: colors.text }} numberOfLines={1}>
+              {actionLabel}
+            </Text>
+          )}
+          <Pressable
+            onPress={canAct ? onAction : undefined}
+            disabled={!canAct}
+            style={{
+              width: 66,
+              height: 66,
+              borderRadius: 33,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: canAct ? colors.peachDeep : colors.cream,
+              borderColor: canAct ? colors.ink : colors.textFaint,
+              borderWidth: border.card,
+            }}
+          >
+            <Text style={{ fontFamily: fonts.heading, fontSize: 24, color: canAct ? colors.ink : colors.textFaint }}>A</Text>
+          </Pressable>
+        </View>
+      </View>
+    </View>
+  );
+}

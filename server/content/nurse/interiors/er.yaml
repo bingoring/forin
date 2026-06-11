@@ -22,3 +22,16 @@ objects:
   - { id: reception, type: reception, x: 5, y: 7 }
 hotspots:
   - { id: hs1, kind: quest, x: 4, y: 4, label: "흉통 환자", scenarioId: SCN-ER-00001 }
+# collision: blocked tile rectangles (authored layer). The engine treats these
+# (plus the map border) as non-walkable. Doorways are gaps left in the walls.
+collision:
+  - { x: 0, y: 0, w: 24, h: 1 }   # top wall
+  - { x: 0, y: 0, w: 1, h: 18 }   # left wall
+  - { x: 23, y: 0, w: 1, h: 18 }  # right wall
+  - { x: 0, y: 17, w: 24, h: 1 }  # bottom wall
+  - { x: 11, y: 1, w: 1, h: 7 }   # triage↔trauma divider (doorway at y=8)
+  - { x: 1, y: 9, w: 11, h: 1 }   # room/corridor wall, left of door
+  - { x: 13, y: 9, w: 10, h: 1 }  # room/corridor wall, right of door (door at x=12)
+  - { x: 4, y: 3, w: 1, h: 1 }    # bed1
+  - { x: 6, y: 3, w: 1, h: 1 }    # monitor1
+  - { x: 5, y: 7, w: 1, h: 1 }    # reception

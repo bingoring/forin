@@ -1,0 +1,1 @@
+ALTER TABLE interiors DROP COLUMN IF EXISTS collision;

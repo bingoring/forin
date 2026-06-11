@@ -84,6 +84,7 @@ type Interior struct {
 	Rooms       []byte `json:"rooms"`
 	Objects     []byte `json:"objects"`
 	Hotspots    []byte `json:"hotspots"`
+	Collision   []byte `json:"collision"`
 }
 
 type Phrase struct {

@@ -1,11 +1,14 @@
+import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { PixelBox } from '@/components/PixelBox';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
-// Placeholder screen demonstrating the design system. Full campus map = Stage 2-5.
+// Campus hub. The outdoor campus map is 5c; for now this links into the ER
+// interior so the explore engine (2-5) is reachable.
 export default function Campus() {
+  const router = useRouter();
   return (
     <View style={styles.screen}>
       <Text style={styles.h}>캠퍼스</Text>
@@ -18,7 +21,7 @@ export default function Campus() {
           <PixelChip label="PEDS" bg={colors.pink} />
         </View>
       </PixelBox>
-      <PixelButton label="✈  여정 시작하기" onPress={() => {}} />
+      <PixelButton label="✈  응급실 입장" onPress={() => router.push('/interior/INT-ER-00001')} />
     </View>
   );
 }

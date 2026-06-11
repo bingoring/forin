@@ -75,7 +75,7 @@ func (q *Queries) GetContentMeta(ctx context.Context, k string) (string, error) 
 }
 
 const getInterior = `-- name: GetInterior :one
-SELECT id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots
+SELECT id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots, collision
 FROM interiors WHERE id = $1
 `
 
@@ -94,6 +94,7 @@ func (q *Queries) GetInterior(ctx context.Context, id string) (Interior, error) 
 		&i.Rooms,
 		&i.Objects,
 		&i.Hotspots,
+		&i.Collision,
 	)
 	return i, err
 }
@@ -198,8 +199,8 @@ func (q *Queries) InsertEvent(ctx context.Context, arg InsertEventParams) error 
 }
 
 const insertInterior = `-- name: InsertInterior :exec
-INSERT INTO interiors (id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+INSERT INTO interiors (id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots, collision)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
 `
 
 type InsertInteriorParams struct {
@@ -214,6 +215,7 @@ type InsertInteriorParams struct {
 	Rooms       []byte `json:"rooms"`
 	Objects     []byte `json:"objects"`
 	Hotspots    []byte `json:"hotspots"`
+	Collision   []byte `json:"collision"`
 }
 
 func (q *Queries) InsertInterior(ctx context.Context, arg InsertInteriorParams) error {
@@ -229,6 +231,7 @@ func (q *Queries) InsertInterior(ctx context.Context, arg InsertInteriorParams) 
 		arg.Rooms,
 		arg.Objects,
 		arg.Hotspots,
+		arg.Collision,
 	)
 	return err
 }

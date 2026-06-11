@@ -5,6 +5,7 @@ import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axio
 import { useAuthStore } from '@/store/authStore';
 import { saveTokens } from '@/lib/secureStore';
 import type { paths } from '@contract/types';
+import type { Interior } from '@/map/types';
 
 const baseURL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080';
 
@@ -85,5 +86,12 @@ export const api = {
   async manifest(): Promise<Manifest> {
     const { data } = await http.get('/content/manifest');
     return data as Manifest;
+  },
+
+  // The /interiors/{id} handler is untyped in the contract, so we assert the
+  // mobile-side Interior shape (src/map/types.ts mirrors the server json tags).
+  async interior(id: string): Promise<Interior> {
+    const { data } = await http.get(`/interiors/${id}`);
+    return data as Interior;
   },
 };

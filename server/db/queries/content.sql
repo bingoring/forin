@@ -10,7 +10,7 @@ SELECT id, profession, ward, name_ko, name_en, color FROM departments
 WHERE ($1 = '' OR profession = $1 OR profession = 'common') ORDER BY id;
 
 -- name: GetInterior :one
-SELECT id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots
+SELECT id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots, collision
 FROM interiors WHERE id = $1;
 
 -- name: ListEvents :many
@@ -43,8 +43,8 @@ DELETE FROM phrases;
 INSERT INTO departments (id, profession, ward, name_ko, name_en, color) VALUES ($1, $2, $3, $4, $5, $6);
 
 -- name: InsertInterior :exec
-INSERT INTO interiors (id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+INSERT INTO interiors (id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots, collision)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 
 -- name: InsertEvent :exec
 INSERT INTO events (id, profession, title, ward, category, tier, tags, delivery, prerequisites, follow_ups, related, scenarios)
