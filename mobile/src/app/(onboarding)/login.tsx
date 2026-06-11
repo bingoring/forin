@@ -3,12 +3,14 @@ import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { signIn, type Provider } from '@/lib/auth';
+import { useAuthStore } from '@/store/authStore';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 // Social one-tap sign-in → server /auth/social → JWT (secure-store), then enter the app.
 export default function Login() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
+  const devLogin = useAuthStore((s) => s.devLogin);
 
   async function onProvider(provider: Provider) {
     if (busy) return;
@@ -23,6 +25,11 @@ export default function Login() {
     }
   }
 
+  function onDevLogin() {
+    devLogin();
+    router.replace('/campus');
+  }
+
   return (
     <View style={styles.s}>
       <Text style={styles.logo}>forin</Text>
@@ -32,6 +39,15 @@ export default function Login() {
         <PixelButton label="Apple로 계속하기" bg={colors.ink} textColor={colors.cream} shadowColor={colors.text} disabled={busy} onPress={() => onProvider('apple')} style={styles.full} />
         <PixelButton label="카카오로 시작하기" bg={colors.yellow} shadowColor={colors.yellowShadow} disabled={busy} onPress={() => onProvider('kakao')} style={styles.full} />
       </View>
+
+      {/* Dev-only bypass: real provider sign-in needs a dev build + credentials,
+          so this lets you walk the UI/map in Expo Go. Stripped from production builds. */}
+      {__DEV__ && (
+        <View style={styles.dev}>
+          <Text style={styles.devNote}>개발 모드 · 소셜 로그인은 dev build 필요</Text>
+          <PixelButton label="🛠  개발자 로그인 (둘러보기)" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onDevLogin} style={styles.full} />
+        </View>
+      )}
     </View>
   );
 }
@@ -42,4 +58,6 @@ const styles = StyleSheet.create({
   tag: { fontFamily: fonts.body, fontSize: t.body, color: colors.textSoft, textAlign: 'center', lineHeight: 22 },
   btns: { alignSelf: 'stretch', gap: space.md, marginTop: space.xxl },
   full: { width: '100%' },
+  dev: { alignSelf: 'stretch', gap: space.sm, marginTop: space.xl, alignItems: 'center' },
+  devNote: { fontFamily: fonts.body, fontSize: t.caption, color: colors.textFaint },
 });
