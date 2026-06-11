@@ -82,7 +82,11 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     **문은 type:'door' 오브젝트(충돌 없음=통행)** → 서버 스키마 변경 0(기존 objects/collision 필드 재사용). bed는 자체 occupant를
     그리므로 침대→환자 NPC 파생 제거(리셉션→간호사만). ER 시드/픽스처 갱신. **jest 18/18**(ER 레이아웃 도달성 4건 추가:
     트리아지/트라우마 도달·문 통행·footprint 차단). tsc 0·doctor 21/21·서버 go build 0.
-  - **5b-iii Face 초상**(다음): `forin-faces.jsx` → `src/characters/Face.tsx`(2-6 대화/브리핑용).
+  - **5b-iii Face 초상 ✅**(2026-06-11): `forin-faces.jsx` → `src/characters/Face.tsx` 1:1 포팅 — 비주얼노블 스케일
+    초상(viewBox -1 -4 18 22), HairPlate 10종·**12 표정**·마스크·역할 프리셋(`RoleFace`/`FacePlayer`). Sprite와 동일
+    identity 어휘(Expression/HairStyle/RoleKind 타입 공유). 시나리오 브리핑 스텁에 환자 초상(pain) 미리보기 배선
+    (전체 대화 UI는 2-6). tsc 0·jest 18/18·doctor 21/21.
+  - **5b 전체 완료.**
 - **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
