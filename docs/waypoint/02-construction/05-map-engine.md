@@ -68,11 +68,37 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 - **5b — 캐릭터·오브젝트 SVG**: Derp Sprite/Face(역할·표정·해시) + 오브젝트 카탈로그 포팅.
 - **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
 
-### ⚠️ 검증 제약
+### 6. 컴포넌트/모듈 분해 (적응형 깊이)
 
-엔진은 매우 시각적입니다. CLI에선 **typecheck + expo-doctor**로 컴파일/구성만 검증 가능하고,
-**이동·룸마스크·비주얼 체감은 시뮬레이터/기기(`npx expo start`)에서 사용자 확인**이 필요합니다.
-가능하면 5a 후 한 번 디바이스에서 walkable을 확인하시길 권합니다.
+| 모듈 | 책임 |
+|---|---|
+| `src/map/coords.ts` | 타일↔px 변환(ITILE·ZOOM), 경계 클램프 — **순수** |
+| `src/map/collision.ts` | 인테리어 `collision`+경계로 blocked 타일 집합 구성, `canEnter(x,y)` — **순수** |
+| `src/map/regions.ts` | 좌표→현재 region 판정(bounds 내) — **순수** |
+| `src/map/useMovement.ts` | player pos 상태, D-pad/탭 핸들러, 스텝 bob, 카메라 오프셋(reanimated) |
+| `src/map/TileFloor.tsx` | 부서 팔레트 체커보드(가시영역/프리베이크) |
+| `src/map/RoomMask.tsx` | 현재 region 밖 4패널 어둡게 |
+| `src/map/HUD.tsx` · `FastTravelModal.tsx` | ZONE·D-pad·A·빠른이동 / 방 그리드 텔레포트 |
+| `src/map/InteriorScreen.tsx` | 위 조합 셸(인테리어 데이터 props) |
+| `src/characters/Sprite.tsx`·`Face.tsx` | 캐릭터(5b) |
+
+데이터: `api.interior(id)`(클라이언트 헬퍼 추가) → 콘텐츠. 충돌은 `interior.collision`.
+
+### 7. NFR · 성능 목표
+
+- **60fps** 이동/스크롤. 바닥은 **단일 프리베이크/단순 그리드 + 가시영역 컬링**(26×60 타일에 전 타일 View 금지).
+- 카메라 팔로우·스텝 bob은 **reanimated worklet(UI 스레드)** — JS 브리지 왕복 회피.
+- 결정적 외형/스프라이트는 **memoize**(리렌더 시 재셔플·재생성 금지).
+- 입력 지연 체감 최소(탭-투-패스는 경로를 미리 계산해 프레임마다 1스텝).
+- 의존성 추가는 `react-native-svg`만.
+
+### 8. 테스트·검증 계획
+
+- **순수 로직 단위테스트(CLI 검증 가능)**: `coords`(타일↔px·클램프), `collision`(blocked/경계로 canEnter),
+  `regions`(point-in-bounds) → **jest-expo** 도입 + 단위테스트. 충돌은 시각으로 못 잡으니 *반드시 테스트*.
+- **타입체크 + expo-doctor**: 컴파일·구성.
+- **시각·체감(시뮬레이터/기기)**: walkable·룸마스크·리전 전환·핫스팟 네비·fps — `npx expo start`로 **사용자 확인**.
+  → 5a 후 한 번 디바이스에서 walkable + 룸마스크 확인 권장(피드백 반영).
 
 ## 검토 게이트 (Human Gate)
 
