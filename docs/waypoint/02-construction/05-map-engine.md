@@ -70,7 +70,13 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   (reanimated 워클릿은 성능 패스에서). **검증: 순수 로직 jest 14/14**(coords·collision[BFS·도어웨이·미도달]·regions),
   **tsc 0 · expo-doctor 21/21 · 서버 `go build` 0**. ⚠️ collision **jsonb 라이브 왕복**은 Docker 미가동으로 미검증
   (동일 jsonb 패턴 기검증 + 빌드 통과 → 신뢰 높음). walkable·룸마스크·핫스팟 네비 **시각 확인은 사용자 `npx expo start`**.
-- **5b — 캐릭터·오브젝트 SVG**: react-native-svg 설치 · Derp Sprite/Face(역할·표정·해시) + 오브젝트 카탈로그 포팅.
+- **5b — 캐릭터·오브젝트 SVG** (진행 중):
+  - **5b-i ✅ 캐릭터 스프라이트**(2026-06-11): `react-native-svg` 설치 + `src/characters/Sprite.tsx` —
+    레퍼런스 `forin-npcs-smooth.jsx`를 **1:1 포팅**(SmoothSprite, 헤어/모자 스타일, 역할 10종 ROLES,
+    결정적 외형 해시, **12 표정**). `PlayerSprite`/`RoleSprite` export. InteriorScreen의 이모지 플레이어를
+    실제 치비로 교체 + 시드 오브젝트에서 **NPC 파생**(reception→nurse, 점유 침대→patient). tsc 0·jest 14/14·doctor 21/21.
+  - **5b-ii 오브젝트 카탈로그**(다음): `interior-objects-er.jsx`/`interior-shared.jsx` → SVG 오브젝트(이모지 대체).
+  - **5b-iii Face 초상**(다음): `forin-faces.jsx` → `src/characters/Face.tsx`(2-6 대화/브리핑용).
 - **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
