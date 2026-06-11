@@ -12,6 +12,7 @@ import { TileFloor } from './TileFloor';
 import { RoomMask } from './RoomMask';
 import { HUD } from './HUD';
 import { FastTravelModal } from './FastTravelModal';
+import { PlayerSprite, RoleSprite, type RoleKind } from '@/characters/Sprite';
 import type { Interior, MapObject, Hotspot } from './types';
 
 const OBJECT_GLYPH: Record<string, string> = {
@@ -20,6 +21,27 @@ const OBJECT_GLYPH: Record<string, string> = {
   reception: '🛎️',
   iv: '💧',
 };
+
+// Chibi sprites are taller than a tile (head sits above it). Width ≈ 2.2 tiles;
+// height = width*80/64. Feet are centered on the tile, head overhangs upward.
+const SPRITE_W = Math.round(TILE * 2.2);
+const SPRITE_H = (SPRITE_W * 80) / 64;
+
+/** Top-left px to seat a sprite's feet on the center-bottom of tile (x,y). */
+function seatSprite(x: number, y: number) {
+  return { left: (x + 0.5) * TILE - SPRITE_W / 2, top: (y + 1) * TILE - SPRITE_H };
+}
+
+// Derive ambient NPCs from authored objects so the room feels alive without a
+// separate content type yet: a nurse at reception, a patient on an occupied bed.
+function npcsFromObjects(objects: MapObject[]): { id: string; x: number; y: number; kind: RoleKind }[] {
+  const out: { id: string; x: number; y: number; kind: RoleKind }[] = [];
+  for (const o of objects) {
+    if (o.type === 'reception') out.push({ id: `npc-${o.id}`, x: o.x, y: o.y - 1, kind: 'nurse' });
+    else if (o.type === 'bed' && o.props?.occupied) out.push({ id: `npc-${o.id}`, x: o.x, y: o.y, kind: 'patient' });
+  }
+  return out;
+}
 
 function clamp(v: number, lo: number, hi: number) {
   return Math.max(lo, Math.min(hi, v));
@@ -53,6 +75,7 @@ export function InteriorScreen({
   const worldH = interior.rows * TILE;
 
   const region = useMemo(() => regionAt(pos, interior.regions), [pos, interior.regions]);
+  const npcs = useMemo(() => npcsFromObjects(interior.objects), [interior.objects]);
 
   // Transient "➜ region" banner on region change.
   const [banner, setBanner] = useState<string | null>(null);
@@ -149,23 +172,28 @@ export function InteriorScreen({
               );
             })}
 
+            {/* Ambient NPCs (derived from authored objects) */}
+            {npcs.map((n) => {
+              const { left, top } = seatSprite(n.x, n.y);
+              return (
+                <View key={n.id} pointerEvents="none" style={{ position: 'absolute', left, top, width: SPRITE_W, height: SPRITE_H }}>
+                  <RoleSprite kind={n.kind} x={n.x} y={n.y} size={SPRITE_W} />
+                </View>
+              );
+            })}
+
             {/* Player */}
             <View
               pointerEvents="none"
               style={{
                 position: 'absolute',
-                left: pos.x * TILE + 4,
-                top: pos.y * TILE - 4,
-                width: TILE - 8,
-                height: TILE + 4,
-                backgroundColor: colors.blue,
-                borderColor: colors.ink,
-                borderWidth: border.card,
-                alignItems: 'center',
-                justifyContent: 'center',
+                ...seatSprite(pos.x, pos.y),
+                width: SPRITE_W,
+                height: SPRITE_H,
+                transform: facing === 'left' ? [{ scaleX: -1 }] : undefined,
               }}
             >
-              <Text style={{ fontSize: 12 }}>{facing === 'up' ? '🙂' : facing === 'down' ? '🙂' : facing === 'left' ? '◀' : '▶'}</Text>
+              <PlayerSprite size={SPRITE_W} expression="neutral" />
             </View>
 
             <RoomMask bounds={region?.bounds ?? null} cols={interior.cols} rows={interior.rows} />
