@@ -56,6 +56,7 @@ StyleSheet. Exact token values are in `01_DESIGN_TOKENS.md`.
 | `03_CHARACTERS.md` | The character & face system (roles, hairstyles, expressions) |
 | `04_SCREENS.md` | Every screen: purpose, layout, components, copy, state |
 | `05_MAP_AND_INTERIORS.md` | The tile-based map/interior engine + object catalog |
+| `06_CHARACTER_MOTION.md` | Directional facing, walking, idle motion, ambient/patrol NPCs |
 | `reference/` | The runnable HTML prototype + all source JSX |
 
 To **see** the designs: open `reference/forin App Design.html` in a browser.
@@ -132,8 +133,11 @@ src/
 - **Quizzes** (`screens-quiz-*.jsx`) are 6 distinct interaction types
   (sentence build, matching, vitals labeling, triage, anatomy labeling, SBAR
   ordering, listen-and-type, dosage calc). Each is documented in `04_SCREENS.md`.
-- **Review Lab (리뷰랩)** tab exists in the bottom nav but has no dedicated
-  screen designed yet — flag for product decision.
+- **Review Lab (리뷰랩)** tab is designed (`screens-review-lab.jsx`) — the
+  오답노트 / spaced-repetition phrase-card review; see `04_SCREENS.md` ⑨.
+- **Character motion** (directional facing, walking, idle breathing/blink,
+  ambient patrol/wander NPCs with emotes) is specified in
+  `06_CHARACTER_MOTION.md` — apply it when building the map/interior sprites.
 - **Speech/mic input** is shown in dialogue (free-speak mode) but the actual
   STT integration is out of scope of the design — wire to your chosen provider.
 - The prototype's `tweaks-panel.jsx`, `design-canvas.jsx`, `ios-frame.jsx`,

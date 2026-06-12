@@ -16,6 +16,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 - 맵 엔진: [`../inputs/design-handoff/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff/05_MAP_AND_INTERIORS.md)
 - 캐릭터: [`../inputs/design-handoff/03_CHARACTERS.md`](../inputs/design-handoff/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff/06_CHARACTER_MOTION.md`](../inputs/design-handoff/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
@@ -24,6 +25,8 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 - [ ] 룸마스크("한 방만 밝게") + 리전 전환 오버레이, 카메라 팔로우
 - [ ] 캐릭터 `Sprite`/`Face`(react-native-svg) + 결정적 외형 해시
 - [ ] 인테리어 오브젝트 카탈로그 포팅, 핫스팟 → 브리핑 진입, fast-travel
+- [ ] **캐릭터 모션(06):** 방향 전환(dir front/back/left/right) · 걷기(다리/팔 스윙+bob) · 아이들(호흡·깜빡임) ·
+      앰비언트 NPC 엔진(patrol/wander·이모트·`useGridMover`) · **이동 정체성 고정 `seed`**
 
 ## AI 제안 (AI Proposal)
 
@@ -87,7 +90,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     identity 어휘(Expression/HairStyle/RoleKind 타입 공유). 시나리오 브리핑 스텁에 환자 초상(pain) 미리보기 배선
     (전체 대화 UI는 2-6). tsc 0·jest 18/18·doctor 21/21.
   - **5b 전체 완료.**
-- **5c — 캠퍼스 야외 맵**(후속): 건물·prop.
+- **5c — 캐릭터 모션 & 생명력**(신규, `06_CHARACTER_MOTION` 반영 — 미착수): §9 참조. 방향 전환·걷기·아이들·
+  앰비언트 NPC 엔진. 5d 캠퍼스가 이를 소비하므로 5c→5d 순서.
+- **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander NPC(5c 모션 사용).
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
 
@@ -120,6 +125,33 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 - **타입체크 + expo-doctor**: 컴파일·구성.
 - **시각·체감(시뮬레이터/기기)**: walkable·룸마스크·리전 전환·핫스팟 네비·fps — `npx expo start`로 **사용자 확인**.
   → 5a 후 한 번 디바이스에서 walkable + 룸마스크 확인 권장(피드백 반영).
+
+### 9. 캐릭터 모션 & 생명력 (5c — `06_CHARACTER_MOTION` 반영, 2026-06-12 신규)
+
+> 적응형 깊이(복잡·신규 축). 맵/인테리어 스프라이트 한정(Face 제외). 레퍼런스: `forin-npcs-smooth.jsx`(스프라이트),
+> `screens-explore-v2.jsx`(앰비언트 엔진). prototype 전용 lazy-mount/canvas 동작은 **무시**(명시됨).
+
+**9.1 방향 전환(`dir`)** — `Sprite`에 `dir: 'down'|'up'|'left'|'right'`(기본 down) 추가. 3개 그리기 경로 분기:
+- `down` 정면(현재 face), `up` 뒤통수(`backHead()` — 머리/모자 뒤, 얼굴·가슴마크 없음), `left`/`right` 3/4 측면
+  (`sideFace()` — 한쪽 눈 + 코 범프). `left`=`right`를 **SVG 그룹 내부에서 미러**(`translate(64,0) scale(-1,1)`).
+- ⚠️ **5a의 좌우반전 크래시 교훈 반영**: 미러는 **부모 View의 음수 scaleX가 아니라 `<Svg>` 그룹 transform**으로(레퍼런스대로). 이러면 안전.
+- `dir`은 이동 델타에서 결정(플레이어=D-pad 입력, NPC=스텝 방향).
+
+**9.2 걷기(`walking`)** — 다리 교차 스윙(±10°, 0.5s, 180° 위상차) + 팔 반대 스윙(±8°) + 몸통 수직 bob.
+RN: `react-native-reanimated` 공유 클럭. 한 스텝(~320ms) 동안 on, 위치는 타일 간 timing(~0.3–0.55s)으로 트윈.
+
+**9.3 아이들(서 있을 때 상시)** — 인스턴스별 랜덤 `seed`로 **desync**(군중 동시 펄스 방지). 호흡(수직 bob+~1% scale, 3.2s,
+랜덤 음수 delay) + 깜빡임(피부색 눈꺼풀 Rect 2개를 ~120ms 덮음, ~5.5s 랜덤; 정면 한정). `!walking`일 때.
+
+**9.4 앰비언트 NPC 엔진(캠퍼스, 5d에서 소비)** — `useGridMover({ mode, path|bound, tickMs, emoteChance })` →
+`{x,y,dir,walking,emote}`. `patrol`(웨이포인트 왕복) / `wander`(rect `bound` 내 랜덤 1타일, 이탈 금지). 틱마다 ~22% 멈춤+
+**이모트 말풍선**(💬😄🤔☕👍✨😮🩺📋❤️, pop-in). 케이던스 **1.8s**. 엔진은 **별도 컴포넌트로 격리**(틱마다 전체 맵 리렌더 금지).
+
+**9.5 이동 정체성 고정(중요)** — 외형 해시가 `(x,y)`에서 나오면 이동 시 색이 **깜빡이는 버그**. → 역할 컴포넌트에 **안정
+`seed` prop** 추가, 있으면 위치 대신 `seed`로 해시. 이동/앰비언트 NPC엔 **항상 고정 `seed`**. (정적 장식 NPC는 생략 가능.)
+
+**9.6 분해/검증**: `Sprite`에 dir/walking/seed 추가(3뷰 분기·애니), `useGridMover`(순수 로직→**jest** 가능: 경계 클램프·
+patrol 왕복·wander 이탈금지·seed 안정성), 플레이어 이동이 dir+walking 구동, 앰비언트 엔진 격리. 애니/비주얼은 시뮬레이터 사용자 확인.
 
 ## 검토 게이트 (Human Gate)
 

@@ -2,7 +2,7 @@
 phase: 02-construction
 stage: 07-growth-economy-review
 status: PENDING
-updated: 2026-06-08
+updated: 2026-06-12
 ---
 
 # [Stage 2-7] 성장 · 경제 · 복습 · 이벤트 전달
@@ -16,12 +16,14 @@ updated: 2026-06-08
 
 - 도메인 §진행/성장·복습·전달: [`../01-inception/02-domain-model.md`](../01-inception/02-domain-model.md)
 - 경제 §J·K, 이벤트 전달: [`../01-inception/03-architecture-decision.md`](../01-inception/03-architecture-decision.md)
+- **리뷰랩 화면 명세(설계 확정 2026-06-12):** [`../inputs/design-handoff/04_SCREENS.md`](../inputs/design-handoff/04_SCREENS.md) ⑨
 
 ## 체크리스트
 
 - [ ] XP/레벨/커리어 패스, 평판(→NPC 반응 가중), 자격·스티커·칭호·히든미션
 - [ ] **유기적 환류**(보상이 입장 조건·NPC 반응·칭호로 재사용), 보상 타입 코드측 허용집합
-- [ ] 리뷰랩 SM-2 스케줄·마스터리·복습 세션
+- [ ] 리뷰랩 SM-2 스케줄·마스터리·복습 세션 — **화면(`ScreenReviewLab`)은 2-6에서 빌드**, 2-7은 데이터·스케줄링
+      (서버 `/me/review` 기존). PhraseCard = 시나리오 AI 교정문 → 카드(원문→교정·"왜?"·마스터리·🎤). 카테고리 필터·복습 큐.
 - [ ] 이벤트 전달: 메인 루트 그래프, 일일 풀(00:00 리셋·가중 샘플링), 보상형 광고(+N·상한)
 - [ ] 경제 수치 설정 테이블(하드코딩 금지)
 

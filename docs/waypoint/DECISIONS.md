@@ -127,3 +127,15 @@
 - **대안(탈락):** 오브젝트 footprint를 collision에 직접 박기(아트와 중복·드리프트), `doors` jsonb 필드 신설(마이그·sqlc churn).
 - **검증:** ER 픽스처 도달성 jest 4건(트리아지/트라우마 도달·문 통행·footprint 차단) 18/18.
 - **결정자:** AI 제안(5b-ii, 계획대로).
+
+## 2026-06-12 · 디자인 핸드오프 v2 반영 (캐릭터 모션 + Review Lab)
+- **결정:** 핸드오프 추가분을 스테이지 문서에 반영하고 계획을 갱신.
+  (1) **`06_CHARACTER_MOTION.md`(신규)** → 2-5에 **5c 캐릭터 모션** 증분 신설(방향 전환 dir·걷기·아이들 호흡/깜빡임·
+  앰비언트 NPC 엔진 `useGridMover` patrol/wander+이모트·**이동 정체성 고정 seed**), 기존 캠퍼스는 **5d**로(모션 소비). 순서 5c→5d.
+  (2) **Review Lab 설계 확정**(04_SCREENS ⑨, 하단탭 IA **Option A**: 캠퍼스/상황판/리뷰랩/나, 나=Profile 홈, 성장리포트=푸시) →
+  2-6 체크리스트에 PhraseCard 명세 반영, 2-7은 SM-2 데이터/스케줄(서버 `/me/review` 기존)·화면은 2-6에서 빌드로 정리.
+- **방향 전환 재도입(5a 크래시 교훈):** 좌우 미러는 **부모 View 음수 scaleX(크래시) 금지**, 레퍼런스대로 **`<Svg>` 그룹 내부
+  transform**(`translate(64,0) scale(-1,1)`)으로. 5a에서 제거했던 좌우반전을 이 안전한 방식으로 복원(9536cb1 보완).
+- **주의(미해결):** README/04_SCREENS는 `screens-review-lab.jsx`를 가리키나 `reference/`에 **JSX 부재** — 명세만 존재.
+  구현은 04_SCREENS ⑨ 명세 기준, 필요 시 사용자에게 JSX 요청.
+- **결정자:** 사용자(핸드오프 추가) + AI(문서 반영·계획).
