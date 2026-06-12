@@ -139,3 +139,14 @@
 - **주의(미해결):** README/04_SCREENS는 `screens-review-lab.jsx`를 가리키나 `reference/`에 **JSX 부재** — 명세만 존재.
   구현은 04_SCREENS ⑨ 명세 기준, 필요 시 사용자에게 JSX 요청.
 - **결정자:** 사용자(핸드오프 추가) + AI(문서 반영·계획).
+
+## 2026-06-12 · 디자인 핸드오프 v2 채택 (design-handoff_v2)
+- **결정:** 사용자가 기존 `design-handoff/`는 그대로 두고 **`design-handoff_v2/`**(개정판)를 추가. **v2를 권위 소스로 채택** —
+  모든 스테이지/PRD/STATUS 문서의 핸드오프 링크를 `design-handoff/` → `design-handoff_v2/`로 일괄 재지정. 원본은 이력용 보존.
+- **v2 실질 변경:** (1) **외래 클리닉 엔진**(`interior-clinics.jsx`) — 내과/외과/정형외과/피부과를 config 기반 `ClinicInterior`로
+  생성(부서=데이터), IP에 부서별 바닥 톤 추가 → 04/05 명세 갱신, 디자인된 인테리어 5→9개(content-workstream 범위 확장).
+  (2) **`screens-review-lab.jsx` 추가** — 이전 "JSX 부재" 플래그 해소. (3) **디자인 시스템 `ds-*` 모듈 재편**
+  (ds-foundations/primitives/characters/faces/equipment/furniture) + HTML 분할(Screens / Design System) — 레퍼런스/내비.
+  (4) 스프라이트 엔진(`forin-npcs-smooth.jsx`) 갱신(06 모션 반영분) — 5c 구현 시 v2에서 포팅.
+- **불변:** 01/02/03/06 .md는 v2와 동일(내용 변경 없음). prototype 전용(design-canvas/ios-frame/tweaks-panel)은 무시.
+- **결정자:** 사용자(v2 제공) + AI(채택·재지정·반영).

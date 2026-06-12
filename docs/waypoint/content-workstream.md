@@ -20,9 +20,11 @@
 
 ## 진료과(specialty) 범위
 
-진료과는 데이터(스키마 변경 없이 확장). 단 **탐험 인테리어는 디자인된 5개(ER/OR/ICU/Peds/Pharmacy)뿐** →
-**결정: A**(2026-06-08) — MVP는 디자인된 5개 워드(ER/OR/ICU/Peds/Pharmacy) 내 300+ 집중,
-신규 진료과는 로드맵(인테리어 art 준비 시). 상세·분포는 [`events-catalog.md`](events-catalog.md).
+진료과는 데이터(스키마 변경 없이 확장). **결정: A**(2026-06-08) — MVP는 디자인된 워드 내 300+ 집중,
+신규 진료과는 로드맵(인테리어 art 준비 시).
+**확장(handoff v2, 2026-06-12):** 디자인된 인테리어가 **급성 5개(ER/OR/ICU/Peds/Pharmacy) + 외래 클리닉 4개
+(내과/외과/정형외과/피부과)** = 총 9개로 늘었다. 외래는 **config 기반 `ClinicInterior` 엔진**이라 진료과 추가가
+저렴(config 1개) → 콘텐츠 범위를 외래 4과까지 넓힐 수 있다. 상세·분포는 [`events-catalog.md`](events-catalog.md).
 
 ## 배치 작성 방식
 

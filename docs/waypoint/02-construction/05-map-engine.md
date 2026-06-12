@@ -14,9 +14,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ## 입력 (Inputs)
 
-- 맵 엔진: [`../inputs/design-handoff/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff/05_MAP_AND_INTERIORS.md)
-- 캐릭터: [`../inputs/design-handoff/03_CHARACTERS.md`](../inputs/design-handoff/03_CHARACTERS.md)
-- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff/06_CHARACTER_MOTION.md`](../inputs/design-handoff/06_CHARACTER_MOTION.md)
+- 맵 엔진: [`../inputs/design-handoff_v2/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v2/05_MAP_AND_INTERIORS.md)
+- 캐릭터: [`../inputs/design-handoff_v2/03_CHARACTERS.md`](../inputs/design-handoff_v2/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v2/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v2/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
@@ -35,7 +35,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 ### 0. 목표·범위
 
 핸드오프 `05_MAP_AND_INTERIORS` 타일 엔진을 RN으로 포팅. forin 품질 3대 축 "탐험". 인테리어부터
-(캠퍼스 야외 맵은 5c/후속). `react-native-svg` 추가.
+(캐릭터 모션 5c → 캠퍼스 야외 맵 5d/후속). `react-native-svg` 추가.
 
 ### 1. 타일 엔진 (`src/map/`)
 
@@ -92,7 +92,10 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   - **5b 전체 완료.**
 - **5c — 캐릭터 모션 & 생명력**(신규, `06_CHARACTER_MOTION` 반영 — 미착수): §9 참조. 방향 전환·걷기·아이들·
   앰비언트 NPC 엔진. 5d 캠퍼스가 이를 소비하므로 5c→5d 순서.
-- **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander NPC(5c 모션 사용).
+- **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
+  NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
+  내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
+  `floorInternal/Surgery/Ortho/Derm`(+Alt) 및 클리닉 장비(UltrasoundCart·XrayViewbox·CastCart·DermLamp 등) 추가.
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
 
