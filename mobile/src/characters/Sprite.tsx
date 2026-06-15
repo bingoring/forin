@@ -40,7 +40,13 @@ export interface SmoothSpriteProps {
   expression?: Expression;
   mask?: boolean;
   width?: number;
+  /** Facing — front(down)/back(up)/3-4 side(left|right). Left mirrors right. */
+  dir?: SpriteDir;
+  /** Walking gate (limb-swing/bob animation lands in 5c-ii). */
+  walking?: boolean;
 }
+
+export type SpriteDir = 'down' | 'up' | 'left' | 'right';
 
 function SmoothSpriteBase({
   hair = '#3C2A18',
@@ -57,7 +63,10 @@ function SmoothSpriteBase({
   expression = 'neutral',
   mask = false,
   width = 40,
+  dir = 'down',
 }: SmoothSpriteProps) {
+  const facingSide = dir === 'left' || dir === 'right';
+  const flip = dir === 'left';
   const H = hair;
   const HL = mix(hair, '#FFFFFF', 0.22);
   const HD = mix(hair, INK, 0.3);
@@ -300,60 +309,124 @@ function SmoothSpriteBase({
     );
   };
 
+  // Back-of-head (dir 'up') — hair/hat fills the crown, no face.
+  const backHead = () => {
+    if (hairStyle === 'cap' || hairStyle === 'peakedCap') {
+      return (
+        <G>
+          <Ellipse cx={HX} cy={HY - 2} rx={HRX - 1} ry={HRY - 1} fill={hatTone} />
+          {hairStyle === 'peakedCap' ? <Path d="M9 24 Q32 20 55 24 Q32 27 9 24 Z" fill={hatTone ? mix(hatTone, INK, 0.2) : INK} /> : null}
+          <Path d="M16 40 Q32 46 48 40 Q32 44 16 40 Z" fill={H} />
+        </G>
+      );
+    }
+    if (hairStyle === 'bald') {
+      return <Path d="M14 38 Q32 44 50 38 Q32 42 14 38 Z" fill={H} opacity={0.9} />;
+    }
+    return (
+      <G>
+        <Ellipse cx={HX} cy={HY - 1} rx={HRX - 1} ry={HRY - 1} fill={H} />
+        <Path d="M32 7 L32 42" stroke={HD} strokeWidth={1.2} opacity={0.5} />
+        <Path d="M18 14 Q32 8 46 14" fill="none" stroke={HL} strokeWidth={2.5} strokeLinecap="round" />
+        {hairStyle === 'bun' ? <Ellipse cx={32} cy={6} rx={7} ry={6} fill={H} /> : null}
+        {hairStyle === 'pigtails' ? (
+          <G>
+            <Ellipse cx={9} cy={34} rx={7} ry={9} fill={H} />
+            <Ellipse cx={55} cy={34} rx={7} ry={9} fill={H} />
+          </G>
+        ) : null}
+      </G>
+    );
+  };
+
+  // 3/4 side face (dir 'left'/'right') — drawn right-facing; 'left' mirrors the whole group.
+  const sideFace = () => {
+    const E = INK;
+    return (
+      <G>
+        <Path d="M53 25 Q57 27 53 29 Z" fill={skin} stroke={slo} strokeWidth={1} />
+        <Circle cx={42} cy={27} r={2} fill={E} />
+        {expression === 'happy' ? (
+          <Path d="M39 33 Q42 36 45 33" fill="none" stroke={E} strokeWidth={1.6} strokeLinecap="round" />
+        ) : (
+          <Path d="M40 34 Q42 33.4 44 34" fill="none" stroke={E} strokeWidth={1.6} strokeLinecap="round" />
+        )}
+        <Ellipse cx={44} cy={31} rx={2.6} ry={1.6} fill="#F9A8B4" opacity={0.4} />
+      </G>
+    );
+  };
+
   return (
     <Svg viewBox="0 0 64 80" width={width} height={height}>
-      {/* ground shadow */}
-      <Ellipse cx={32} cy={77} rx={15} ry={2.4} fill="#000" opacity={0.13} />
+      <G transform={flip ? 'translate(64,0) scale(-1,1)' : undefined}>
+        {/* ground shadow */}
+        <Ellipse cx={32} cy={77} rx={15} ry={2.4} fill="#000" opacity={0.13} />
 
-      {hairBack()}
+        {dir !== 'up' ? hairBack() : null}
 
-      {/* BODY (small, short) */}
-      <Path d="M20 52 Q20 47 32 47 Q44 47 44 52 L46 66 Q32 70 18 66 Z" fill={shirt} stroke={slo} strokeWidth={1.6} strokeLinejoin="round" />
-      <Path d="M38 49 Q44 50 44 53 L46 66 Q41 68 38 68 Z" fill={shirtDark} opacity={0.55} />
-      {/* arms */}
-      <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
-      <Path d="M44 52 Q50 56 49 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
-      <Path d="M20 52 Q14 56 15 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
-      <Path d="M44 52 Q50 56 49 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
-      {/* hands */}
-      <Circle cx={15} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
-      <Circle cx={49} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
-
-      {/* chest marker */}
-      {chestCross ? (
+        {/* ARMS (behind body) */}
         <G>
-          <Rect x={29} y={52} width={6} height={9} rx={1.5} fill="#EF4444" />
-          <Rect x={26.5} y={54.5} width={11} height={4} rx={1.5} fill="#EF4444" />
+          <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
+          <Path d="M20 52 Q14 56 15 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
+          <Circle cx={15} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
         </G>
-      ) : null}
-      {chestMark}
-
-      {/* LEGS (short) */}
-      <Rect x={24} y={65} width={6.5} height={9} rx={3} fill={leg} />
-      <Rect x={33.5} y={65} width={6.5} height={9} rx={3} fill={leg} />
-      <Rect x={27.5} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
-      <Rect x={37} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
-      {/* shoes */}
-      <Ellipse cx={27.2} cy={75} rx={4.4} ry={2.6} fill={shoe} />
-      <Ellipse cx={36.8} cy={75} rx={4.4} ry={2.6} fill={shoe} />
-
-      {/* HEAD */}
-      <Ellipse cx={HX} cy={HY} rx={HRX} ry={HRY} fill={skin} stroke={slo} strokeWidth={1.6} />
-      <Path d={`M${HX + 6} ${HY - HRY + 4} Q${HX + HRX} ${HY} ${HX + 6} ${HY + HRY - 4} Q${HX + HRX - 3} ${HY} ${HX + 6} ${HY - HRY + 4} Z`} fill={sh} opacity={0.4} />
-
-      {hairFront()}
-      {face()}
-
-      {/* surgical mask */}
-      {mask ? (
         <G>
-          <Path d="M18 30 Q32 28 46 30 L44 40 Q32 46 20 40 Z" fill="#FFFFFF" stroke={slo} strokeWidth={1.4} strokeLinejoin="round" />
-          <Path d="M20 33 Q32 32 44 33" fill="none" stroke="#D9DEE3" strokeWidth={1.2} />
-          <Path d="M20 36 Q32 35 44 36" fill="none" stroke="#D9DEE3" strokeWidth={1.2} />
-          <Path d="M18 31 Q12 33 14 39" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" />
-          <Path d="M46 31 Q52 33 50 39" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" />
+          <Path d="M44 52 Q50 56 49 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
+          <Path d="M44 52 Q50 56 49 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
+          <Circle cx={49} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
         </G>
-      ) : null}
+
+        {/* BODY (small, short) */}
+        <Path d="M20 52 Q20 47 32 47 Q44 47 44 52 L46 66 Q32 70 18 66 Z" fill={shirt} stroke={slo} strokeWidth={1.6} strokeLinejoin="round" />
+        <Path d="M38 49 Q44 50 44 53 L46 66 Q41 68 38 68 Z" fill={shirtDark} opacity={0.55} />
+
+        {/* chest marker — front & side only (not on the back) */}
+        {dir !== 'up' && chestCross ? (
+          <G>
+            <Rect x={29} y={52} width={6} height={9} rx={1.5} fill="#EF4444" />
+            <Rect x={26.5} y={54.5} width={11} height={4} rx={1.5} fill="#EF4444" />
+          </G>
+        ) : null}
+        {dir !== 'up' ? chestMark : null}
+
+        {/* LEGS (short) */}
+        <G>
+          <Rect x={24} y={65} width={6.5} height={9} rx={3} fill={leg} />
+          <Rect x={27.5} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
+          <Ellipse cx={27.2} cy={75} rx={4.4} ry={2.6} fill={shoe} />
+        </G>
+        <G>
+          <Rect x={33.5} y={65} width={6.5} height={9} rx={3} fill={leg} />
+          <Rect x={37} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
+          <Ellipse cx={36.8} cy={75} rx={4.4} ry={2.6} fill={shoe} />
+        </G>
+
+        {/* HEAD */}
+        <Ellipse cx={HX} cy={HY} rx={HRX} ry={HRY} fill={skin} stroke={slo} strokeWidth={1.6} />
+        {dir !== 'up' ? (
+          <Path d={`M${HX + 6} ${HY - HRY + 4} Q${HX + HRX} ${HY} ${HX + 6} ${HY + HRY - 4} Q${HX + HRX - 3} ${HY} ${HX + 6} ${HY - HRY + 4} Z`} fill={sh} opacity={0.4} />
+        ) : null}
+
+        {dir === 'up' ? (
+          backHead()
+        ) : (
+          <>
+            {hairFront()}
+            {facingSide ? sideFace() : face()}
+          </>
+        )}
+
+        {/* surgical mask (front & side) */}
+        {mask && dir !== 'up' ? (
+          <G>
+            <Path d="M18 30 Q32 28 46 30 L44 40 Q32 46 20 40 Z" fill="#FFFFFF" stroke={slo} strokeWidth={1.4} strokeLinejoin="round" />
+            <Path d="M20 33 Q32 32 44 33" fill="none" stroke="#D9DEE3" strokeWidth={1.2} />
+            <Path d="M20 36 Q32 35 44 36" fill="none" stroke="#D9DEE3" strokeWidth={1.2} />
+            <Path d="M18 31 Q12 33 14 39" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" />
+            <Path d="M46 31 Q52 33 50 39" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" />
+          </G>
+        ) : null}
+      </G>
     </Svg>
   );
 }
@@ -439,24 +512,29 @@ export interface RoleSpriteProps {
   kind: RoleKind;
   x?: number;
   y?: number;
+  /** Stable identity seed. When set, appearance is hashed from this (not x,y),
+   * so a moving/ambient NPC keeps its skin/hair/outfit instead of flickering. */
+  seed?: number;
   mood?: 'happy' | 'derp';
   hair?: string;
   shirt?: string;
   size?: number;
   expression?: Expression;
+  dir?: SpriteDir;
+  walking?: boolean;
 }
 
-/** A role NPC with deterministic per-(x,y) appearance. */
-export function RoleSprite({ kind, x = 0, y = 0, mood = 'happy', hair, shirt, size, expression }: RoleSpriteProps) {
-  const h = spriteHash(x, y, ROLE_SALT[kind]);
+/** A role NPC. Appearance is deterministic from `seed` (preferred) or tile (x,y). */
+export function RoleSprite({ kind, x = 0, y = 0, seed, mood = 'happy', hair, shirt, size, expression, dir, walking }: RoleSpriteProps) {
+  const h = seed != null ? spriteHash(seed, seed * 7 + 13, ROLE_SALT[kind]) : spriteHash(x, y, ROLE_SALT[kind]);
   const cfg = ROLES[kind](h, shirt);
   const sz = size || (kind === 'child' ? 34 : 40);
   const expr: Expression = expression || (mood === 'derp' ? 'neutral' : 'happy');
-  return <SmoothSprite width={sz} {...cfg} hair={hair || cfg.hair} expression={expr} />;
+  return <SmoothSprite width={sz} {...cfg} hair={hair || cfg.hair} expression={expr} dir={dir} walking={walking} />;
 }
 
 /** The player character (white cap + red cross, light skin). */
-export function PlayerSprite({ size = 40, expression = 'neutral' as Expression }: { size?: number; expression?: Expression }) {
+export function PlayerSprite({ size = 40, expression = 'neutral' as Expression, dir, walking }: { size?: number; expression?: Expression; dir?: SpriteDir; walking?: boolean }) {
   return (
     <SmoothSprite
       width={size}
@@ -471,6 +549,8 @@ export function PlayerSprite({ size = 40, expression = 'neutral' as Expression }
       shoe="#1F2937"
       chestCross
       expression={expression}
+      dir={dir}
+      walking={walking}
     />
   );
 }

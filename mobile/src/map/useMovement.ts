@@ -9,6 +9,7 @@ import { objectCollision } from './objects';
 import type { Interior } from './types';
 
 const STEP_MS = 110; // tile cadence while auto-walking a path
+const WALK_MS = 320; // how long the walking pose holds after a step (06_CHARACTER_MOTION)
 
 export function useMovement(interior: Interior) {
   // Walkability = authored structural walls + solid-object footprints.
@@ -18,10 +19,19 @@ export function useMovement(interior: Interior) {
   );
   const [pos, setPos] = useState<Coord>(interior.playerStart);
   const [facing, setFacing] = useState<Dir>('down');
+  const [walking, setWalking] = useState(false);
   const [path, setPath] = useState<Coord[]>([]);
 
   const posRef = useRef(pos);
   posRef.current = pos;
+  const walkTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Hold the walking pose briefly after each step; re-armed on every step.
+  const bumpWalking = useCallback(() => {
+    setWalking(true);
+    if (walkTimer.current) clearTimeout(walkTimer.current);
+    walkTimer.current = setTimeout(() => setWalking(false), WALK_MS);
+  }, []);
 
   // Reset when switching interiors (fast travel between maps is a future stage).
   useEffect(() => {
@@ -30,6 +40,8 @@ export function useMovement(interior: Interior) {
     setPath([]);
   }, [interior]);
 
+  useEffect(() => () => { if (walkTimer.current) clearTimeout(walkTimer.current); }, []);
+
   /** Single step from the D-pad; cancels any queued auto-walk. */
   const moveDir = useCallback(
     (dir: Dir) => {
@@ -37,10 +49,12 @@ export function useMovement(interior: Interior) {
       setFacing(dir);
       setPos((p) => {
         const next = step(p, DIRS[dir]);
-        return canEnter(next, interior, blocked) ? next : p;
+        if (!canEnter(next, interior, blocked)) return p; // blocked → no walk
+        bumpWalking();
+        return next;
       });
     },
-    [interior, blocked],
+    [interior, blocked, bumpWalking],
   );
 
   /** Tap-to-walk: queue the shortest path to a target tile. */
@@ -67,11 +81,12 @@ export function useMovement(interior: Interior) {
     const t = setTimeout(() => {
       const [next, ...rest] = path;
       setFacing(dirBetween(posRef.current, next));
+      bumpWalking();
       setPos(next);
       setPath(rest);
     }, STEP_MS);
     return () => clearTimeout(t);
-  }, [path]);
+  }, [path, bumpWalking]);
 
-  return { pos, facing, moving: path.length > 0, moveDir, moveTo, warpTo };
+  return { pos, facing, walking, moving: path.length > 0, moveDir, moveTo, warpTo };
 }

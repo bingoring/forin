@@ -62,7 +62,7 @@ export function InteriorScreen({
   onExit?: () => void;
   onEnterScenario?: (hotspot: Hotspot) => void;
 }) {
-  const { pos, moveDir, moveTo, warpTo } = useMovement(interior);
+  const { pos, facing, walking, moveDir, moveTo, warpTo } = useMovement(interior);
   const [vp, setVp] = useState({ w: 0, h: 0 });
   const [ftOpen, setFtOpen] = useState(false);
 
@@ -169,13 +169,13 @@ export function InteriorScreen({
               );
             })}
 
-            {/* Player. Always front-facing like the reference chibi (no flip —
-                a negatively-scaled parent breaks react-native-svg measurement). */}
+            {/* Player. Faces movement direction (dir); left mirrors inside the
+                SVG group — never a negatively-scaled parent (that crashed in 5a). */}
             <View
               pointerEvents="none"
               style={{ position: 'absolute', ...seatSprite(pos.x, pos.y), width: SPRITE_W, height: SPRITE_H }}
             >
-              <PlayerSprite size={SPRITE_W} expression="neutral" />
+              <PlayerSprite size={SPRITE_W} expression="neutral" dir={facing} walking={walking} />
             </View>
 
             <RoomMask bounds={region?.bounds ?? null} cols={interior.cols} rows={interior.rows} />
