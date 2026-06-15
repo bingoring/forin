@@ -356,6 +356,34 @@ function SmoothSpriteBase({
     );
   };
 
+  // Side-profile hat (cap / peakedCap) — designed right-facing. Visor/brim and
+  // the nurse cross / police badge sit toward the FRONT of the cap.
+  const hatSide = () => {
+    if (hairStyle === 'peakedCap') {
+      return (
+        <G>
+          <Path d="M11 21 Q9 2 35 1 Q56 3 55 21 Q34 25 11 21 Z" fill={hatTone} />
+          <Path d="M50 20 Q63 20 61 25 Q53 25 50 23 Z" fill={hatTone ? mix(hatTone, INK, 0.35) : INK} />
+          {hatTrim ? <Ellipse cx={49} cy={12} rx={3} ry={2.6} fill={hatTrim} /> : null}
+        </G>
+      );
+    }
+    return (
+      <G>
+        <Path d="M10 21 Q8 1 34 0 Q56 2 55 21 Q33 25 10 21 Z" fill={hatTone} />
+        <Path d="M14 11 Q31 4 49 12" fill="none" stroke={hatTone ? mix(hatTone, '#FFFFFF', 0.3) : '#FFF'} strokeWidth={2.5} strokeLinecap="round" />
+        {hatTrim ? <Path d="M10 21 Q33 25 55 21" fill="none" stroke={hatTrim} strokeWidth={3.5} strokeLinecap="round" /> : null}
+        {hatTrim === '#EF4444' ? (
+          <G>
+            <Rect x={46} y={5} width={4} height={9} rx={1} fill="#EF4444" />
+            <Rect x={44} y={7.5} width={8} height={4} rx={1} fill="#EF4444" />
+          </G>
+        ) : null}
+      </G>
+    );
+  };
+  const isHat = hairStyle === 'cap' || hairStyle === 'peakedCap';
+
   return (
     <Svg viewBox="0 0 64 80" width={width} height={height}>
       <G transform={flip ? 'translate(64,0) scale(-1,1)' : undefined}>
@@ -364,42 +392,71 @@ function SmoothSpriteBase({
 
         {dir !== 'up' ? hairBack() : null}
 
-        {/* ARMS (behind body) */}
-        <G>
-          <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
-          <Path d="M20 52 Q14 56 15 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
-          <Circle cx={15} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
-        </G>
-        <G>
-          <Path d="M44 52 Q50 56 49 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
-          <Path d="M44 52 Q50 56 49 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
-          <Circle cx={49} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
-        </G>
+        {/* ARMS — side view: one arm tucked along the narrow torso */}
+        {facingSide ? (
+          <G>
+            <Path d="M33 52 Q37 57 35 64" fill="none" stroke={shirt} strokeWidth={5} strokeLinecap="round" />
+            <Path d="M33 52 Q37 57 35 64" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" opacity={0.4} />
+            <Circle cx={35} cy={64} r={2.8} fill={skin} stroke={slo} strokeWidth={1.2} />
+          </G>
+        ) : (
+          <>
+            <G>
+              <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
+              <Path d="M20 52 Q14 56 15 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
+              <Circle cx={15} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
+            </G>
+            <G>
+              <Path d="M44 52 Q50 56 49 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
+              <Path d="M44 52 Q50 56 49 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
+              <Circle cx={49} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
+            </G>
+          </>
+        )}
 
-        {/* BODY (small, short) */}
-        <Path d="M20 52 Q20 47 32 47 Q44 47 44 52 L46 66 Q32 70 18 66 Z" fill={shirt} stroke={slo} strokeWidth={1.6} strokeLinejoin="round" />
-        <Path d="M38 49 Q44 50 44 53 L46 66 Q41 68 38 68 Z" fill={shirtDark} opacity={0.55} />
+        {/* BODY — side view: narrower profile with back-edge shading */}
+        {facingSide ? (
+          <>
+            <Path d="M26 52 Q26 47 32 47 Q39 47 39 52 L40 66 Q32 69 25 66 Z" fill={shirt} stroke={slo} strokeWidth={1.6} strokeLinejoin="round" />
+            <Path d="M26 50 Q26 48 28 47 L28 68 Q26 67 25 66 Z" fill={shirtDark} opacity={0.5} />
+          </>
+        ) : (
+          <>
+            <Path d="M20 52 Q20 47 32 47 Q44 47 44 52 L46 66 Q32 70 18 66 Z" fill={shirt} stroke={slo} strokeWidth={1.6} strokeLinejoin="round" />
+            <Path d="M38 49 Q44 50 44 53 L46 66 Q41 68 38 68 Z" fill={shirtDark} opacity={0.55} />
+          </>
+        )}
 
-        {/* chest marker — front & side only (not on the back) */}
-        {dir !== 'up' && chestCross ? (
+        {/* chest marker — FRONT only (hidden in side & back profile) */}
+        {!facingSide && dir !== 'up' && chestCross ? (
           <G>
             <Rect x={29} y={52} width={6} height={9} rx={1.5} fill="#EF4444" />
             <Rect x={26.5} y={54.5} width={11} height={4} rx={1.5} fill="#EF4444" />
           </G>
         ) : null}
-        {dir !== 'up' ? chestMark : null}
+        {!facingSide && dir !== 'up' ? chestMark : null}
 
-        {/* LEGS (short) */}
-        <G>
-          <Rect x={24} y={65} width={6.5} height={9} rx={3} fill={leg} />
-          <Rect x={27.5} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
-          <Ellipse cx={27.2} cy={75} rx={4.4} ry={2.6} fill={shoe} />
-        </G>
-        <G>
-          <Rect x={33.5} y={65} width={6.5} height={9} rx={3} fill={leg} />
-          <Rect x={37} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
-          <Ellipse cx={36.8} cy={75} rx={4.4} ry={2.6} fill={shoe} />
-        </G>
+        {/* LEGS — side view: legs overlap into a single centered leg */}
+        {facingSide ? (
+          <G>
+            <Rect x={28.75} y={65} width={6.5} height={9} rx={3} fill={leg} />
+            <Rect x={32.25} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
+            <Ellipse cx={33} cy={75} rx={5} ry={2.6} fill={shoe} />
+          </G>
+        ) : (
+          <>
+            <G>
+              <Rect x={24} y={65} width={6.5} height={9} rx={3} fill={leg} />
+              <Rect x={27.5} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
+              <Ellipse cx={27.2} cy={75} rx={4.4} ry={2.6} fill={shoe} />
+            </G>
+            <G>
+              <Rect x={33.5} y={65} width={6.5} height={9} rx={3} fill={leg} />
+              <Rect x={37} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
+              <Ellipse cx={36.8} cy={75} rx={4.4} ry={2.6} fill={shoe} />
+            </G>
+          </>
+        )}
 
         {/* HEAD */}
         <Ellipse cx={HX} cy={HY} rx={HRX} ry={HRY} fill={skin} stroke={slo} strokeWidth={1.6} />
@@ -411,7 +468,7 @@ function SmoothSpriteBase({
           backHead()
         ) : (
           <>
-            {hairFront()}
+            {facingSide && isHat ? hatSide() : hairFront()}
             {facingSide ? sideFace() : face()}
           </>
         )}
