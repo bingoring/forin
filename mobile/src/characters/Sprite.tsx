@@ -2,10 +2,52 @@
 // "Smooth Derp" chibi: a big round head over a small body + short legs (viewBox 64×80,
 // head fills the upper ~55%). Same role palette, deterministic x,y variation, and 12
 // expressions as the reference. Rendered with react-native-svg (rect/path/ellipse 1:1).
-import { memo } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect, Text as SvgText } from 'react-native-svg';
+import Animated, {
+  Easing,
+  useAnimatedProps,
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withRepeat,
+  withSequence,
+  withTiming,
+  type SharedValue,
+} from 'react-native-reanimated';
 
 const INK = '#3A2E26'; // soft dark-brown outline (not pure black)
+
+// Animated SVG group — limbs rotate around a hip/shoulder pivot when walking
+// (06_CHARACTER_MOTION §2). react-native-svg has no SMIL, so we drive rotation
+// on the UI thread via reanimated. `clock` ticks 0→1 every stride; `gate` is
+// 0/1 for walking so a single shared clock can run continuously.
+const AnimatedG = Animated.createAnimatedComponent(G);
+
+function SwingLimb({
+  clock,
+  gate,
+  amp,
+  phase,
+  pivotX,
+  pivotY,
+  children,
+}: {
+  clock: SharedValue<number>;
+  gate: SharedValue<number>;
+  amp: number;
+  phase: number;
+  pivotX: number;
+  pivotY: number;
+  children: React.ReactNode;
+}) {
+  const animatedProps = useAnimatedProps(() => {
+    'worklet';
+    const rot = Math.sin(clock.value * 2 * Math.PI + phase) * amp * gate.value;
+    return { rotation: rot, originX: pivotX, originY: pivotY };
+  });
+  return <AnimatedG animatedProps={animatedProps}>{children}</AnimatedG>;
+}
 
 function mix(a: string, b: string, t: number): string {
   const p = (h: string) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
@@ -64,9 +106,45 @@ function SmoothSpriteBase({
   mask = false,
   width = 40,
   dir = 'down',
+  walking = false,
 }: SmoothSpriteProps) {
   const facingSide = dir === 'left' || dir === 'right';
   const flip = dir === 'left';
+
+  // ── Motion (06_CHARACTER_MOTION §2-3), reanimated on the UI thread ──
+  // Per-instance random phase so a crowd's idle motions don't pulse in unison.
+  const phase = useMemo(() => Math.random(), []);
+  const stride = useSharedValue(phase); // 0→1 walking clock (limb swing + bob)
+  const breath = useSharedValue(phase); // 0→1 idle breathing clock
+  const gate = useSharedValue(0); // 0 standing / 1 walking
+  const blink = useSharedValue(0); // eyelid opacity pulse
+
+  useEffect(() => {
+    stride.value = withRepeat(withTiming(phase + 1, { duration: 500, easing: Easing.linear }), -1, false);
+    breath.value = withRepeat(withTiming(phase + 1, { duration: 3200, easing: Easing.inOut(Easing.sin) }), -1, true);
+    // Front-facing idle blink: closed ~120ms on a ~5.5s cycle, desynced.
+    blink.value = withDelay(
+      Math.round(phase * 5000),
+      withRepeat(withSequence(withTiming(0, { duration: 5380 }), withTiming(1, { duration: 60 }), withTiming(0, { duration: 60 })), -1, false),
+    );
+  }, [stride, breath, blink, phase]);
+
+  useEffect(() => {
+    gate.value = withTiming(walking ? 1 : 0, { duration: 120 });
+  }, [walking, gate]);
+
+  const bodyStyle = useAnimatedStyle(() => {
+    'worklet';
+    const wt = stride.value * 2 * Math.PI;
+    const walkBobY = -Math.abs(Math.sin(wt * 2)) * 1.5 * gate.value; // 2 bobs/stride
+    const bt = breath.value * Math.PI; // 0→π over the (reversing) cycle
+    const idle = 1 - gate.value;
+    const breatheY = -Math.sin(bt) * 1 * idle;
+    const scaleY = 1 + Math.sin(bt) * 0.012 * idle;
+    return { transform: [{ translateY: walkBobY + breatheY }, { scaleY }] };
+  });
+
+  const blinkProps = useAnimatedProps(() => ({ opacity: blink.value }));
   const H = hair;
   const HL = mix(hair, '#FFFFFF', 0.22);
   const HD = mix(hair, INK, 0.3);
@@ -385,6 +463,7 @@ function SmoothSpriteBase({
   const isHat = hairStyle === 'cap' || hairStyle === 'peakedCap';
 
   return (
+    <Animated.View style={[{ width, height }, bodyStyle]}>
     <Svg viewBox="0 0 64 80" width={width} height={height}>
       <G transform={flip ? 'translate(64,0) scale(-1,1)' : undefined}>
         {/* ground shadow */}
@@ -394,23 +473,23 @@ function SmoothSpriteBase({
 
         {/* ARMS — side view: one arm tucked along the narrow torso */}
         {facingSide ? (
-          <G>
+          <SwingLimb clock={stride} gate={gate} amp={12} phase={Math.PI} pivotX={33} pivotY={53}>
             <Path d="M33 52 Q37 57 35 64" fill="none" stroke={shirt} strokeWidth={5} strokeLinecap="round" />
             <Path d="M33 52 Q37 57 35 64" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" opacity={0.4} />
             <Circle cx={35} cy={64} r={2.8} fill={skin} stroke={slo} strokeWidth={1.2} />
-          </G>
+          </SwingLimb>
         ) : (
           <>
-            <G>
+            <SwingLimb clock={stride} gate={gate} amp={8} phase={Math.PI} pivotX={20} pivotY={52}>
               <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
               <Path d="M20 52 Q14 56 15 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
               <Circle cx={15} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
-            </G>
-            <G>
+            </SwingLimb>
+            <SwingLimb clock={stride} gate={gate} amp={8} phase={0} pivotX={44} pivotY={52}>
               <Path d="M44 52 Q50 56 49 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
               <Path d="M44 52 Q50 56 49 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
               <Circle cx={49} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
-            </G>
+            </SwingLimb>
           </>
         )}
 
@@ -438,23 +517,23 @@ function SmoothSpriteBase({
 
         {/* LEGS — side view: legs overlap into a single centered leg */}
         {facingSide ? (
-          <G>
+          <SwingLimb clock={stride} gate={gate} amp={12} phase={0} pivotX={32} pivotY={65}>
             <Rect x={28.75} y={65} width={6.5} height={9} rx={3} fill={leg} />
             <Rect x={32.25} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
             <Ellipse cx={33} cy={75} rx={5} ry={2.6} fill={shoe} />
-          </G>
+          </SwingLimb>
         ) : (
           <>
-            <G>
+            <SwingLimb clock={stride} gate={gate} amp={10} phase={0} pivotX={27} pivotY={65}>
               <Rect x={24} y={65} width={6.5} height={9} rx={3} fill={leg} />
               <Rect x={27.5} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
               <Ellipse cx={27.2} cy={75} rx={4.4} ry={2.6} fill={shoe} />
-            </G>
-            <G>
+            </SwingLimb>
+            <SwingLimb clock={stride} gate={gate} amp={10} phase={Math.PI} pivotX={37} pivotY={65}>
               <Rect x={33.5} y={65} width={6.5} height={9} rx={3} fill={leg} />
               <Rect x={37} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
               <Ellipse cx={36.8} cy={75} rx={4.4} ry={2.6} fill={shoe} />
-            </G>
+            </SwingLimb>
           </>
         )}
 
@@ -470,6 +549,13 @@ function SmoothSpriteBase({
           <>
             {facingSide && isHat ? hatSide() : hairFront()}
             {facingSide ? sideFace() : face()}
+            {/* idle blink — skin eyelids briefly cover the dot eyes (front only) */}
+            {!facingSide ? (
+              <AnimatedG animatedProps={blinkProps}>
+                <Rect x={20} y={24} width={6} height={5} rx={2} fill={skin} />
+                <Rect x={38} y={24} width={6} height={5} rx={2} fill={skin} />
+              </AnimatedG>
+            ) : null}
           </>
         )}
 
@@ -485,6 +571,7 @@ function SmoothSpriteBase({
         ) : null}
       </G>
     </Svg>
+    </Animated.View>
   );
 }
 
