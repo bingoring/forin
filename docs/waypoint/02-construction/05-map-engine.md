@@ -98,7 +98,12 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     **jest 24/24**(gridmover 6건 추가: patrol 핑퐁·길이1·wander 경계이탈 전수). tsc 0·doctor 21/21. 애니는 5c-ii.
     - **v3 측면 프로필 보강**(2026-06-15, handoff v3): 측면 뷰가 제대로 된 실루엣 — 측면 모자 `hatSide`(챙·간호 십자/배지가
       앞쪽), 좁은 측면 몸통+뒷면 음영, **가슴마크 숨김**, **팔 1개**(몸통에 붙임), **다리 1개**(겹쳐 중앙). `facingSide`로 분기. tsc 0·jest 24/24.
-  - **5c-ii 모션 애니**(다음, 시각 전용): 걷기 사지 스윙(reanimated, SMIL 미지원 대체)·몸통 bob·아이들 호흡·깜빡임.
+  - **5c-ii ✅ 모션 애니**(2026-06-15, reanimated): react-native-svg는 SMIL 미지원이라 **reanimated `useAnimatedProps`로
+    SVG 그룹 애니**. `SwingLimb`(AnimatedG, 힙/어깨 피벗 회전, walking 게이트)로 다리 ±10°/팔 ±8° 교차 스윙(측면은 단일
+    팔·다리 ±12°), `Animated.View`로 몸통 walk-bob + 아이들 호흡(translateY+scaleY), **깜빡임**(눈꺼풀 Rect opacity 펄스,
+    정면 한정), 모두 인스턴스별 랜덤 `phase`로 desync. babel: `babel-preset-expo`가 worklets 플러그인 자동 주입(확인). tsc 0·
+    jest 24/24·doctor 21/21. ⚠️ **애니는 시각 전용 — 디바이스 검증 필요**(여러 라운드 예상).
+  - **5c 전체 완료.**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
   내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
