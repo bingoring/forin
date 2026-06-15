@@ -150,3 +150,12 @@
   (4) 스프라이트 엔진(`forin-npcs-smooth.jsx`) 갱신(06 모션 반영분) — 5c 구현 시 v2에서 포팅.
 - **불변:** 01/02/03/06 .md는 v2와 동일(내용 변경 없음). prototype 전용(design-canvas/ios-frame/tweaks-panel)은 무시.
 - **결정자:** 사용자(v2 제공) + AI(채택·재지정·반영).
+
+## 2026-06-15 · 디자인 핸드오프 v3 (측면 프로필 보강)
+- **결정:** 사용자가 `design-handoff_v3/` 추가(v2 대비 **06_CHARACTER_MOTION.md + forin-npcs-smooth.jsx만** 변경 — 캐릭터
+  측면 뷰 보강). **v3를 권위 소스로 채택**, 스테이지/PRD/STATUS 링크 v2→v3 재지정(DECISIONS는 이력 보존). 원본·v2 유지.
+- **v3 변경:** 측면(left/right) 3/4 뷰가 제대로 된 실루엣 — `hatSide()`(측면 모자: 챙·간호 십자/경찰 배지가 앞쪽),
+  좁은 측면 몸통+뒷면 음영, **가슴마크 숨김**, **팔 1개**(몸통에 붙임)·**다리 1개**(겹쳐 중앙). 정면/뒤통수는 불변.
+- **구현 반영:** `Sprite.tsx`의 ARMS/BODY/LEGS/모자를 `facingSide` 분기로 갱신 + `hatSide()` 추가. 5c-i 범위 유지(정적).
+  걷기 사지 스윙(측면은 단일 팔·다리 피벗)은 5c-ii(reanimated). tsc 0·jest 24/24·doctor 21/21.
+- **결정자:** 사용자(v3 제공) + AI(채택·재지정·구현 반영).

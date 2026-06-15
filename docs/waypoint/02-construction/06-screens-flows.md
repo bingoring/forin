@@ -14,7 +14,7 @@ updated: 2026-06-12
 
 ## 입력 (Inputs)
 
-- 화면 명세: [`../inputs/design-handoff_v2/04_SCREENS.md`](../inputs/design-handoff_v2/04_SCREENS.md)
+- 화면 명세: [`../inputs/design-handoff_v3/04_SCREENS.md`](../inputs/design-handoff_v3/04_SCREENS.md)
 - 2-3 AI 레이어, 2-4 모바일 기반, 2-5 맵 엔진
 
 ## 하단 탭 IA (디자인 확정 — Option A, 2026-06-12)
@@ -34,7 +34,7 @@ updated: 2026-06-12
       **PhraseCard**(✕원문→✓교정+🔊 · "왜?" 노트 · 3핍 마스터리 · 🎤 따라말하기 · ★) — 2-7 SM-2/서버 `/me/review`와 연동
 - [ ] 화면-데이터 의존성 연동(API 클라이언트)
 
-> ✅ **레퍼런스 JSX 확보(handoff v2, 2026-06-12):** `screens-review-lab.jsx`가 `design-handoff_v2/reference/`에 추가됨
+> ✅ **레퍼런스 JSX 확보(handoff v2, 2026-06-12):** `screens-review-lab.jsx`가 `design-handoff_v3/reference/`에 추가됨
 > (이전 "부재" 플래그 해소). 구현은 이 JSX + 04_SCREENS ⑨ 명세 기준. 디자인 시스템은 v2에서 `ds-*` 모듈(`ds-foundations`/
 > `ds-primitives`/`ds-characters`/`ds-faces`/`ds-equipment`/`ds-furniture`)로 재편 — 컴포넌트 포팅 시 참조.
 

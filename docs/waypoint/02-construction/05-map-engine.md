@@ -14,9 +14,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ## 입력 (Inputs)
 
-- 맵 엔진: [`../inputs/design-handoff_v2/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v2/05_MAP_AND_INTERIORS.md)
-- 캐릭터: [`../inputs/design-handoff_v2/03_CHARACTERS.md`](../inputs/design-handoff_v2/03_CHARACTERS.md)
-- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v2/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v2/06_CHARACTER_MOTION.md)
+- 맵 엔진: [`../inputs/design-handoff_v3/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v3/05_MAP_AND_INTERIORS.md)
+- 캐릭터: [`../inputs/design-handoff_v3/03_CHARACTERS.md`](../inputs/design-handoff_v3/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v3/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v3/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
@@ -96,6 +96,8 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     (backHead/sideFace, dir별 게이팅). `RoleSprite`는 seed로 안정 해시. `useMovement`가 `dir`(facing)·`walking` 노출,
     플레이어가 이동 방향을 바라봄. **`gridmover.ts`(순수 patrol 핑퐁/wander 경계클램프) + `useGridMover` 훅(이모트·케이던스)**.
     **jest 24/24**(gridmover 6건 추가: patrol 핑퐁·길이1·wander 경계이탈 전수). tsc 0·doctor 21/21. 애니는 5c-ii.
+    - **v3 측면 프로필 보강**(2026-06-15, handoff v3): 측면 뷰가 제대로 된 실루엣 — 측면 모자 `hatSide`(챙·간호 십자/배지가
+      앞쪽), 좁은 측면 몸통+뒷면 음영, **가슴마크 숨김**, **팔 1개**(몸통에 붙임), **다리 1개**(겹쳐 중앙). `facingSide`로 분기. tsc 0·jest 24/24.
   - **5c-ii 모션 애니**(다음, 시각 전용): 걷기 사지 스윙(reanimated, SMIL 미지원 대체)·몸통 bob·아이들 호흡·깜빡임.
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
@@ -140,8 +142,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 > `screens-explore-v2.jsx`(앰비언트 엔진). prototype 전용 lazy-mount/canvas 동작은 **무시**(명시됨).
 
 **9.1 방향 전환(`dir`)** — `Sprite`에 `dir: 'down'|'up'|'left'|'right'`(기본 down) 추가. 3개 그리기 경로 분기:
-- `down` 정면(현재 face), `up` 뒤통수(`backHead()` — 머리/모자 뒤, 얼굴·가슴마크 없음), `left`/`right` 3/4 측면
-  (`sideFace()` — 한쪽 눈 + 코 범프). `left`=`right`를 **SVG 그룹 내부에서 미러**(`translate(64,0) scale(-1,1)`).
+- `down` 정면(현재 face), `up` 뒤통수(`backHead()` — 머리/모자 뒤, 얼굴·가슴마크 없음), `left`/`right` 3/4 측면.
+  **측면(v3): 제대로 된 프로필** — `sideFace()`(한쪽 눈+코) + `hatSide()`(측면 모자, 챙·십자/배지 앞쪽) + 좁은 측면
+  몸통(뒷면 음영) + **팔 1개·다리 1개**(겹침) + 가슴마크 숨김. `left`=`right`를 **SVG 그룹 내부에서 미러**(`translate(64,0) scale(-1,1)`).
 - ⚠️ **5a의 좌우반전 크래시 교훈 반영**: 미러는 **부모 View의 음수 scaleX가 아니라 `<Svg>` 그룹 transform**으로(레퍼런스대로). 이러면 안전.
 - `dir`은 이동 델타에서 결정(플레이어=D-pad 입력, NPC=스텝 방향).
 
