@@ -90,8 +90,13 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     identity 어휘(Expression/HairStyle/RoleKind 타입 공유). 시나리오 브리핑 스텁에 환자 초상(pain) 미리보기 배선
     (전체 대화 UI는 2-6). tsc 0·jest 18/18·doctor 21/21.
   - **5b 전체 완료.**
-- **5c — 캐릭터 모션 & 생명력**(신규, `06_CHARACTER_MOTION` 반영 — 미착수): §9 참조. 방향 전환·걷기·아이들·
-  앰비언트 NPC 엔진. 5d 캠퍼스가 이를 소비하므로 5c→5d 순서.
+- **5c — 캐릭터 모션 & 생명력**(신규, `06_CHARACTER_MOTION` 반영): §9 참조. 5d 캠퍼스가 소비하므로 5c→5d 순서.
+  - **5c-i ✅ 방향 전환 + 안정 seed + 그리드무버**(2026-06-15): `Sprite`에 `dir`(front/back/side, **left는 SVG 그룹 내부
+    미러** `translate(64,0) scale(-1,1)` — 5a 크래시 회피)·`seed`·`walking` prop 추가, v2 `forin-npcs-smooth` 구조로 포팅
+    (backHead/sideFace, dir별 게이팅). `RoleSprite`는 seed로 안정 해시. `useMovement`가 `dir`(facing)·`walking` 노출,
+    플레이어가 이동 방향을 바라봄. **`gridmover.ts`(순수 patrol 핑퐁/wander 경계클램프) + `useGridMover` 훅(이모트·케이던스)**.
+    **jest 24/24**(gridmover 6건 추가: patrol 핑퐁·길이1·wander 경계이탈 전수). tsc 0·doctor 21/21. 애니는 5c-ii.
+  - **5c-ii 모션 애니**(다음, 시각 전용): 걷기 사지 스윙(reanimated, SMIL 미지원 대체)·몸통 bob·아이들 호흡·깜빡임.
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
   내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
