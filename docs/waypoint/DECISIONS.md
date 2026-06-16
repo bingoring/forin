@@ -159,3 +159,11 @@
 - **구현 반영:** `Sprite.tsx`의 ARMS/BODY/LEGS/모자를 `facingSide` 분기로 갱신 + `hatSide()` 추가. 5c-i 범위 유지(정적).
   걷기 사지 스윙(측면은 단일 팔·다리 피벗)은 5c-ii(reanimated). tsc 0·jest 24/24·doctor 21/21.
 - **결정자:** 사용자(v3 제공) + AI(채택·재지정·구현 반영).
+
+## 2026-06-16 · 디자인 핸드오프 v4 + 5c 모션 피드백 R1
+- **결정:** `design-handoff_v4/` 채택(v3 대비 **06 + forin-npcs-smooth.jsx만** 변경 — 측면 다리 모션 개선). 링크 v3→v4 재지정(DECISIONS 이력 보존). 사용자 디바이스 피드백 3건 반영:
+  - **이동 속도 과도** → `useMovement` STEP_MS 110→330ms(한 보폭 ≈ 0.5s 스윙), WALK_MS 460ms.
+  - **우측 이동 시 좌향**(이슈) → 좌우 미러를 SVG 문자열 transform(`translate/scale(-1,1)`)에서 **origin-aware `originX=32`/`scaleX`** 숫자 prop으로 교체. (기하상 기존도 우향이 맞아야 하므로 문자열 파싱 차이를 유력 원인으로 보고 견고화. 재확인 후 여전하면 `flip` 조건 반전.)
+  - **측면 다리 부자연(v4)** → 단일 중앙 다리 → **2다리 ±22° 반대위상 교차**(먼 다리 어둡게=깊이) + 측면 팔 ±20°를 몸통 위로 분리. v4 `forin-npcs-smooth` 반영.
+- **검증 한계:** 애니/방향/속도는 **시각 전용** → CLI(tsc/jest/doctor) 불가, 디바이스 반복 검증(사용자). tsc 0·jest 24/24·doctor 21/21.
+- **결정자:** 사용자(v4 + 디바이스 피드백) + AI(반영).

@@ -14,9 +14,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ## 입력 (Inputs)
 
-- 맵 엔진: [`../inputs/design-handoff_v3/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v3/05_MAP_AND_INTERIORS.md)
-- 캐릭터: [`../inputs/design-handoff_v3/03_CHARACTERS.md`](../inputs/design-handoff_v3/03_CHARACTERS.md)
-- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v3/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v3/06_CHARACTER_MOTION.md)
+- 맵 엔진: [`../inputs/design-handoff_v4/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v4/05_MAP_AND_INTERIORS.md)
+- 캐릭터: [`../inputs/design-handoff_v4/03_CHARACTERS.md`](../inputs/design-handoff_v4/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v4/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v4/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
@@ -103,7 +103,12 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     팔·다리 ±12°), `Animated.View`로 몸통 walk-bob + 아이들 호흡(translateY+scaleY), **깜빡임**(눈꺼풀 Rect opacity 펄스,
     정면 한정), 모두 인스턴스별 랜덤 `phase`로 desync. babel: `babel-preset-expo`가 worklets 플러그인 자동 주입(확인). tsc 0·
     jest 24/24·doctor 21/21. ⚠️ **애니는 시각 전용 — 디바이스 검증 필요**(여러 라운드 예상).
-  - **5c 전체 완료.**
+  - **5c 피드백 반영 R1**(2026-06-16, handoff v4): ① **이동 속도** 과도 → `useMovement` 케이던스 110→330ms(한 보폭),
+    walking 유지 460ms. ② **좌우 미러**를 문자열 transform(`scale(-1,1)`)→**origin-aware `originX=32`/`scaleX`**로 교체
+    (react-native-svg 문자열 파싱 차이가 우측=좌향 의심 원인). ③ **측면 다리(v4)**: 단일 다리 → **중앙 2다리 ±22° 반대위상
+    교차**(먼 다리 어둡게) + 측면 팔(±20°)을 몸통 위로 분리 — `forin-npcs-smooth` v4 반영. tsc 0·jest 24/24·doctor 21/21.
+    ⚠️ ②는 기하상 기존도 맞아야 해 **디바이스 재확인 필요**(여전히 반대면 `flip` 조건 반전).
+  - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
   내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
