@@ -452,10 +452,11 @@ function SmoothSpriteBase({
       <G>
         <Path d="M53 25 Q57 27 53 29 Z" fill={skin} stroke={slo} strokeWidth={1} />
         <Circle cx={42} cy={27} r={2} fill={E} />
+        {/* mouth — hugs the FRONT edge of the face, just under the nose (handoff v5) */}
         {expression === 'happy' ? (
-          <Path d="M39 33 Q42 36 45 33" fill="none" stroke={E} strokeWidth={1.6} strokeLinecap="round" />
+          <Path d="M48 31 Q51 34 53 30" fill="none" stroke={E} strokeWidth={1.6} strokeLinecap="round" />
         ) : (
-          <Path d="M40 34 Q42 33.4 44 34" fill="none" stroke={E} strokeWidth={1.6} strokeLinecap="round" />
+          <Path d="M49 32 Q51 31.4 52.5 31.6" fill="none" stroke={E} strokeWidth={1.6} strokeLinecap="round" />
         )}
         <Ellipse cx={44} cy={31} rx={2.6} ry={1.6} fill="#F9A8B4" opacity={0.4} />
       </G>
