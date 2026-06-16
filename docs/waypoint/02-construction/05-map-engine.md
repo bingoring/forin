@@ -118,7 +118,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     않고 1에 고착**(이후 1→1=정지) → 호흡·스윙이 한 사이클 후 멈춤. **`reverse=true`(핑퐁 0↔1)** 로 교체해 연속화.
     호흡 진폭 1px→**2.5px+scaleY 0.02**(70px 스프라이트에서 보이도록), 정지 중 상시. `SwingLimb`는 핑퐁 클럭에 맞춰
     `dirSign`(anti-phase)으로 회전. tsc 0·jest 24/24·doctor 21/21. ⚠️ 이번 라운드로 호흡(View 애니)은 확실히 연속될 것.
-    스윙이 여전히 안 보이면 = react-native-svg `G`의 회전 animatedProps 미작동 → 다음 라운드에 limb을 transform 행렬 방식으로 교체.
+    **확인됨(호흡O·스윙X): `G`의 회전 animatedProps 미작동** → R4에서 limb 회전을 **transform 배열**(translate→rotate→translate)로 교체.
   - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
