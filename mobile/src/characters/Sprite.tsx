@@ -465,20 +465,17 @@ function SmoothSpriteBase({
   return (
     <Animated.View style={[{ width, height }, bodyStyle]}>
     <Svg viewBox="0 0 64 80" width={width} height={height}>
-      <G transform={flip ? 'translate(64,0) scale(-1,1)' : undefined}>
+      {/* left = the right-facing base mirrored around the viewBox center (x=32).
+          Origin-aware scaleX (not a transform string) — robust on react-native-svg. */}
+      <G originX={32} scaleX={flip ? -1 : 1}>
         {/* ground shadow */}
         <Ellipse cx={32} cy={77} rx={15} ry={2.4} fill="#000" opacity={0.13} />
 
         {dir !== 'up' ? hairBack() : null}
 
-        {/* ARMS — side view: one arm tucked along the narrow torso */}
-        {facingSide ? (
-          <SwingLimb clock={stride} gate={gate} amp={12} phase={Math.PI} pivotX={33} pivotY={53}>
-            <Path d="M33 52 Q37 57 35 64" fill="none" stroke={shirt} strokeWidth={5} strokeLinecap="round" />
-            <Path d="M33 52 Q37 57 35 64" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" opacity={0.4} />
-            <Circle cx={35} cy={64} r={2.8} fill={skin} stroke={slo} strokeWidth={1.2} />
-          </SwingLimb>
-        ) : (
+        {/* ARMS (front/back) — two swinging arms. Side view's single arm is drawn
+            ON TOP of the body, after the legs (see below). */}
+        {facingSide ? null : (
           <>
             <SwingLimb clock={stride} gate={gate} amp={8} phase={Math.PI} pivotX={20} pivotY={52}>
               <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
@@ -515,13 +512,22 @@ function SmoothSpriteBase({
         ) : null}
         {!facingSide && dir !== 'up' ? chestMark : null}
 
-        {/* LEGS — side view: legs overlap into a single centered leg */}
+        {/* LEGS — side view (v4): two legs at body center swinging in opposite
+            phase so they cross front↔back; the far leg is darker for depth. */}
         {facingSide ? (
-          <SwingLimb clock={stride} gate={gate} amp={12} phase={0} pivotX={32} pivotY={65}>
-            <Rect x={28.75} y={65} width={6.5} height={9} rx={3} fill={leg} />
-            <Rect x={32.25} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
-            <Ellipse cx={33} cy={75} rx={5} ry={2.6} fill={shoe} />
-          </SwingLimb>
+          <>
+            {/* far leg (behind, darker) */}
+            <SwingLimb clock={stride} gate={gate} amp={22} phase={0} pivotX={32} pivotY={64}>
+              <Rect x={29} y={65} width={6} height={9} rx={3} fill={legDk} />
+              <Ellipse cx={32} cy={75} rx={4.6} ry={2.6} fill={mix(shoe, INK, 0.25)} />
+            </SwingLimb>
+            {/* near leg (front) */}
+            <SwingLimb clock={stride} gate={gate} amp={22} phase={Math.PI} pivotX={32} pivotY={64}>
+              <Rect x={29} y={65} width={6} height={9} rx={3} fill={leg} />
+              <Rect x={32} y={65} width={2.4} height={9} rx={1.2} fill={legDk} opacity={0.5} />
+              <Ellipse cx={32} cy={75} rx={4.8} ry={2.6} fill={shoe} />
+            </SwingLimb>
+          </>
         ) : (
           <>
             <SwingLimb clock={stride} gate={gate} amp={10} phase={0} pivotX={27} pivotY={65}>
@@ -536,6 +542,15 @@ function SmoothSpriteBase({
             </SwingLimb>
           </>
         )}
+
+        {/* SIDE ARM (v4) — single arm tucked along the torso, drawn on top, swings */}
+        {facingSide ? (
+          <SwingLimb clock={stride} gate={gate} amp={20} phase={Math.PI} pivotX={34} pivotY={53}>
+            <Path d="M33 52 Q37 57 35 64" fill="none" stroke={shirt} strokeWidth={5} strokeLinecap="round" />
+            <Path d="M33 52 Q37 57 35 64" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" opacity={0.4} />
+            <Circle cx={35} cy={64} r={2.8} fill={skin} stroke={slo} strokeWidth={1.2} />
+          </SwingLimb>
+        ) : null}
 
         {/* HEAD */}
         <Ellipse cx={HX} cy={HY} rx={HRX} ry={HRY} fill={skin} stroke={slo} strokeWidth={1.6} />
