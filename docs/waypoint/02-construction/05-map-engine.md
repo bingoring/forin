@@ -108,6 +108,12 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     (react-native-svg 문자열 파싱 차이가 우측=좌향 의심 원인). ③ **측면 다리(v4)**: 단일 다리 → **중앙 2다리 ±22° 반대위상
     교차**(먼 다리 어둡게) + 측면 팔(±20°)을 몸통 위로 분리 — `forin-npcs-smooth` v4 반영. tsc 0·jest 24/24·doctor 21/21.
     ⚠️ ②는 기하상 기존도 맞아야 해 **디바이스 재확인 필요**(여전히 반대면 `flip` 조건 반전).
+  - **5c 피드백 반영 R2**(2026-06-16): 근본 원인 = **칸 이동이 글라이드가 아니라 즉시 점프**(레퍼런스는 left/top에
+    CSS `transition .3s`). ① **위치 글라이드**: InteriorScreen이 플레이어 픽셀 위치 + 카메라를 reanimated `withTiming`
+    300ms로 트윈(즉시 점프 제거) → 부드럽게 '이동'. ② 글라이드 동안 `walking`=true라 **사지 스윙이 실제로 보임**(기존엔
+    점프라 거의 안 켜짐). ③ **호흡**: 클럭을 연속 선형(0.5s/3.2s) + `gate`로 walk/idle 선택하도록 정리 → 정지 중 **상시
+    연속 호흡**(이전엔 잠깐만·속도 꼬임). 케이던스 STEP_MS 300·WALK 360. tsc 0·jest 24/24·doctor 21/21.
+    ⚠️ 사지 스윙은 reanimated `useAnimatedProps` 회전 — 여전히 안 보이면 animatedProps 회전 미작동이므로 transform 방식으로 교체.
   - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
