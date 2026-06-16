@@ -119,11 +119,20 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     호흡 진폭 1px→**2.5px+scaleY 0.02**(70px 스프라이트에서 보이도록), 정지 중 상시. `SwingLimb`는 핑퐁 클럭에 맞춰
     `dirSign`(anti-phase)으로 회전. tsc 0·jest 24/24·doctor 21/21. ⚠️ 이번 라운드로 호흡(View 애니)은 확실히 연속될 것.
     **확인됨(호흡O·스윙X): `G`의 회전 animatedProps 미작동** → R4에서 limb 회전을 **transform 배열**(translate→rotate→translate)로 교체.
+  - **5c 피드백 R5 — 스텝 동기 보행**(2026-06-16): 핸드오프 `forinWalkBob`(0.5s에 -1.5px **2번**=두 걸음)처럼, 한 칸
+    이동이 **정확히 2개의 포물선 hop + 2걸음(다리 교차)** 이 되도록 모션을 **스텝 진행도에 동기화**. InteriorScreen이
+    `walkClock`(0→1, 스텝마다 재발화)을 소유해 플레이어에 전달 → Sprite의 hop(`-|sin(step·2π)|·hopH`)·다리 스윙
+    (`sin(step·2π)`)이 이동과 맞물림. 자유 클럭(비동기) 제거. hop 높이는 크기 비례(width·0.05). 속도 300→**240ms**(요청).
+    Sprite `walkClock` prop은 NPC(useGridMover)도 쓸 엔진 인터페이스. tsc 0·jest 24/24·doctor 21/21.
   - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
   내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
   `floorInternal/Surgery/Ortho/Derm`(+Alt) 및 클리닉 장비(UltrasoundCart·XrayViewbox·CastCart·DermLamp 등) 추가.
+- **5e — 재사용 픽셀 게임 엔진 추출**(계획, 사용자 요청 2026-06-16): `src/map`(타일·충돌·이동·카메라·gridmover)+`src/characters`
+  (스프라이트·모션)를 forin 도메인과 분리해 **재사용 가능한 RN 픽셀게임 엔진 패키지**(예: `packages/pixel-engine`)로 추출.
+  다른 프로젝트에서도 쓸 수 있게 의존성 역전(콘텐츠 스키마·아트는 주입). 맵/모션이 안정화된 뒤(5d 후) 착수. 순수 모듈
+  (coords/collision/regions/gridmover)은 이미 forin 비의존이라 이전 쉬움. 인터페이스: `walkClock`/`dir`/`seed` 등 이미 엔진 지향.
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
 
