@@ -3,34 +3,46 @@
 // The useGridMover hook wraps these with a timer + Math.random.
 import { Bounds, Coord, Dir, DIRS, dirBetween, inBounds, step } from './coords';
 
-// ── patrol: ping-pong along an explicit waypoint path ──
+// ── patrol: walk ONE TILE per step toward the current waypoint; when reached,
+// advance to the next (ping-pong). Waypoints may be far apart — the agent walks
+// the route tile-by-tile (NOT teleporting waypoint→waypoint, which looked insanely fast). ──
 export interface PatrolState {
-  idx: number;
-  fwd: boolean;
+  target: number; // index of the waypoint currently being walked toward
+  fwd: boolean; // ping-pong direction along the path
 }
 
-/** Next index along a path of length `n`, bouncing at both ends. */
-export function patrolAdvance(s: PatrolState, n: number): PatrolState {
-  if (n <= 1) return { idx: 0, fwd: true };
+/** Advance the target waypoint index, bouncing at both ends. */
+export function advanceTarget(s: PatrolState, n: number): PatrolState {
+  if (n <= 1) return { target: 0, fwd: true };
   const dir = s.fwd ? 1 : -1;
-  let next = s.idx + dir;
+  let target = s.target + dir;
   let fwd = s.fwd;
-  if (next >= n) {
-    next = n - 2;
+  if (target >= n) {
+    target = n - 2;
     fwd = false;
-  } else if (next < 0) {
-    next = 1;
+  } else if (target < 0) {
+    target = 1;
     fwd = true;
   }
-  return { idx: next, fwd };
+  return { target, fwd };
 }
 
-/** A patrol step: advance the index and report the new tile + facing. */
-export function patrolStep(path: Coord[], s: PatrolState): { pos: Coord; dir: Dir; state: PatrolState } {
-  const next = patrolAdvance(s, path.length);
-  const from = path[s.idx] ?? path[0];
-  const to = path[next.idx] ?? from;
-  return { pos: to, dir: dirBetween(from, to), state: next };
+/** One patrol step: move a single tile from `pos` toward the target waypoint
+ * (x first, then y); if already there, advance to the next waypoint and step. */
+export function patrolStep(path: Coord[], pos: Coord, s: PatrolState): { pos: Coord; dir: Dir; state: PatrolState } {
+  if (path.length === 0) return { pos, dir: 'down', state: s };
+  let state = s;
+  let tgt = path[Math.min(state.target, path.length - 1)];
+  if (pos.x === tgt.x && pos.y === tgt.y) {
+    state = advanceTarget(state, path.length);
+    tgt = path[state.target];
+  }
+  let nx = pos.x;
+  let ny = pos.y;
+  if (pos.x !== tgt.x) nx += Math.sign(tgt.x - pos.x);
+  else if (pos.y !== tgt.y) ny += Math.sign(tgt.y - pos.y);
+  const next = { x: nx, y: ny };
+  return { pos: next, dir: dirBetween(pos, next), state };
 }
 
 // ── wander: random cardinal step, clamped to a rectangular bound ──

@@ -31,7 +31,7 @@ export function useGridMover(opts: GridMoverOpts): GridMoverState {
     mode === 'patrol' ? path?.[0] ?? { x: 0, y: 0 } : start ?? { x: bound?.x ?? 0, y: bound?.y ?? 0 };
 
   const [st, setSt] = useState<GridMoverState>({ x: initial.x, y: initial.y, dir: 'down', walking: false, emote: null });
-  const patrolRef = useRef<PatrolState>({ idx: 0, fwd: true });
+  const patrolRef = useRef<PatrolState>({ target: 0, fwd: true });
   const pauseRef = useRef(0);
   const walkClear = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -53,7 +53,7 @@ export function useGridMover(opts: GridMoverOpts): GridMoverState {
       // else take a step.
       setSt((s) => {
         if (mode === 'patrol' && path && path.length) {
-          const r = patrolStep(path, patrolRef.current);
+          const r = patrolStep(path, { x: s.x, y: s.y }, patrolRef.current);
           patrolRef.current = r.state;
           return { x: r.pos.x, y: r.pos.y, dir: r.dir, walking: true, emote: null };
         }

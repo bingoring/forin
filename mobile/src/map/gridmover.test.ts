@@ -1,34 +1,59 @@
-import { patrolAdvance, patrolStep, wanderStep, PatrolState } from './gridmover';
+import { advanceTarget, patrolStep, wanderStep, PatrolState } from './gridmover';
 import type { Coord, Bounds } from './coords';
 
 describe('patrol', () => {
-  test('ping-pongs along a path and never leaves [0, n-1]', () => {
+  test('advanceTarget ping-pongs the waypoint index within [0, n-1]', () => {
     const n = 3;
-    let s: PatrolState = { idx: 0, fwd: true };
-    const visited: number[] = [s.idx];
+    let s: PatrolState = { target: 0, fwd: true };
+    const visited: number[] = [s.target];
     for (let i = 0; i < 8; i++) {
-      s = patrolAdvance(s, n);
-      expect(s.idx).toBeGreaterThanOrEqual(0);
-      expect(s.idx).toBeLessThan(n);
-      visited.push(s.idx);
+      s = advanceTarget(s, n);
+      expect(s.target).toBeGreaterThanOrEqual(0);
+      expect(s.target).toBeLessThan(n);
+      visited.push(s.target);
     }
-    // 0,1,2,1,0,1,2,1,0
     expect(visited).toEqual([0, 1, 2, 1, 0, 1, 2, 1, 0]);
   });
 
-  test('handles a length-1 / empty path without crashing', () => {
-    expect(patrolAdvance({ idx: 0, fwd: true }, 1)).toEqual({ idx: 0, fwd: true });
-    expect(patrolAdvance({ idx: 0, fwd: true }, 0)).toEqual({ idx: 0, fwd: true });
-  });
-
-  test('patrolStep reports tile + facing from the path', () => {
+  test('moves ONE tile per step toward the waypoint (never teleports)', () => {
     const path: Coord[] = [
       { x: 2, y: 2 },
-      { x: 5, y: 2 },
+      { x: 5, y: 2 }, // 3 tiles to the right
     ];
-    const r = patrolStep(path, { idx: 0, fwd: true });
-    expect(r.pos).toEqual({ x: 5, y: 2 });
-    expect(r.dir).toBe('right');
+    let pos: Coord = { x: 2, y: 2 };
+    let s: PatrolState = { target: 0, fwd: true };
+    const xs: number[] = [];
+    for (let i = 0; i < 3; i++) {
+      const r = patrolStep(path, pos, s);
+      // each step advances at most one tile (Manhattan)
+      expect(Math.abs(r.pos.x - pos.x) + Math.abs(r.pos.y - pos.y)).toBe(1);
+      pos = r.pos;
+      s = r.state;
+      xs.push(pos.x);
+    }
+    expect(xs).toEqual([3, 4, 5]); // walks 2→3→4→5, not a jump to 5
+  });
+
+  test('walks the route tile-by-tile and ping-pongs at the ends', () => {
+    const path: Coord[] = [
+      { x: 0, y: 0 },
+      { x: 2, y: 0 },
+    ];
+    let pos: Coord = { x: 0, y: 0 };
+    let s: PatrolState = { target: 0, fwd: true };
+    const visited: string[] = [`${pos.x},${pos.y}`];
+    for (let i = 0; i < 6; i++) {
+      const r = patrolStep(path, pos, s);
+      pos = r.pos;
+      s = r.state;
+      visited.push(`${pos.x},${pos.y}`);
+    }
+    // 0→1→2 (reached end) →1→0 (reached start) →1→2
+    expect(visited).toEqual(['0,0', '1,0', '2,0', '1,0', '0,0', '1,0', '2,0']);
+  });
+
+  test('empty path does not crash', () => {
+    expect(patrolStep([], { x: 1, y: 1 }, { target: 0, fwd: true }).pos).toEqual({ x: 1, y: 1 });
   });
 });
 
