@@ -2,6 +2,7 @@
 // (server/content/nurse/interiors/er.yaml). Used as an offline fallback so the
 // explore engine is reachable in Expo Go without a running server (dev login).
 import type { Interior } from '../types';
+import { CAMPUS_INTERIOR } from './campus';
 
 export const ER_INTERIOR: Interior = {
   id: 'INT-ER-00001',
@@ -37,8 +38,14 @@ export const ER_INTERIOR: Interior = {
     { x: 1, y: 9, w: 11, h: 1 },
     { x: 13, y: 9, w: 10, h: 1 },
   ],
+  // Ambient life: a doctor patrols trauma, a patient wanders triage's open corner.
+  npcs: [
+    { id: 'er-doc', kind: 'doctor', mode: 'patrol', seed: 7, path: [{ x: 14, y: 3 }, { x: 20, y: 3 }, { x: 20, y: 6 }, { x: 14, y: 6 }] },
+    { id: 'er-pat', kind: 'patient', mode: 'wander', seed: 22, bound: { x: 7, y: 2, w: 3, h: 5 }, start: { x: 8, y: 4 } },
+  ],
 };
 
 export const FIXTURES: Record<string, Interior> = {
   [ER_INTERIOR.id]: ER_INTERIOR,
+  [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
 };

@@ -5,8 +5,23 @@
 
 import type { Coord, Bounds } from './coords';
 import type { RegionLike } from './regions';
+import type { RoleKind } from '@/characters/Sprite';
 
 export type Region = RegionLike;
+
+/** An ambient NPC that roams the map (06_CHARACTER_MOTION §4), driven by useGridMover. */
+export interface NpcSpec {
+  id: string;
+  kind: RoleKind;
+  mode: 'patrol' | 'wander';
+  path?: Coord[]; // patrol waypoints
+  bound?: Bounds; // wander rectangle
+  start?: Coord; // wander start tile
+  seed?: number; // stable identity (so it doesn't flicker while moving)
+  mood?: 'happy' | 'derp';
+  tickMs?: number;
+  emoteChance?: number;
+}
 
 export interface Room {
   id: string;
@@ -48,4 +63,5 @@ export interface Interior {
   objects: MapObject[];
   hotspots: Hotspot[];
   collision: Bounds[];
+  npcs?: NpcSpec[]; // ambient roaming NPCs (optional)
 }

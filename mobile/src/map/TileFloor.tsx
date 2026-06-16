@@ -13,6 +13,7 @@ const THEMES: Record<string, [string, string]> = {
   peds: ['#FDE6BB', '#FAD79A'], // warm yellow (Pediatrics)
   icu: ['#E1E4EC', '#C8CEDA'], // cool gray (ICU)
   pharma: ['#E9DEC0', '#D8C9A4'], // warm beige (Pharmacy)
+  grass: ['#CDE7A6', '#BCDF93'], // outdoor campus lawn
   default: ['#E8E5D4', '#DAD6C2'],
 };
 

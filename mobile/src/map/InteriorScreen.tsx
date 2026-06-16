@@ -15,6 +15,7 @@ import { RoomMask } from './RoomMask';
 import { HUD } from './HUD';
 import { FastTravelModal } from './FastTravelModal';
 import { PlayerSprite, RoleSprite, type RoleKind } from '@/characters/Sprite';
+import { AmbientNpc } from './AmbientNpc';
 import { InteriorObjectView } from './objects';
 import type { Interior, MapObject, Hotspot } from './types';
 
@@ -190,6 +191,11 @@ export function InteriorScreen({
                 </View>
               );
             })}
+
+            {/* Ambient roaming NPCs (useGridMover: patrol/wander + emotes) */}
+            {interior.npcs?.map((spec) => (
+              <AmbientNpc key={spec.id} spec={spec} size={SPRITE_W} />
+            ))}
 
             {/* Player. Glides between tiles (camera follows); faces movement
                 direction (dir); left mirrors inside the SVG group (not a
