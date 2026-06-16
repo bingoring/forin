@@ -128,10 +128,18 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
       진폭↑(정면 15°·측면 26°) → 앞·뒤 양방향(뒤는 약간). 다리는 대칭 유지. 사용자 확인 후 머지.
   - **옆모습 입 위치**(2026-06-16, handoff v5): 측면 입을 얼굴 중앙→**앞쪽 가장자리(코 아래)** 로 이동(부자연 교정). sideFace 입 경로만 변경.
   - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
-- **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
-  NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
-  내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
-  `floorInternal/Surgery/Ortho/Derm`(+Alt) 및 클리닉 장비(UltrasoundCart·XrayViewbox·CastCart·DermLamp 등) 추가.
+- **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**:
+  - **5d-i ✅ 앰비언트 NPC 엔진 + 이모트**(2026-06-16): `useGridMover`를 **`AmbientNpc`** 컴포넌트로 화면에 연결 —
+    patrol/wander NPC가 실제 이동(5c 보행: 글라이드+스텝 hop+사지 스윙)하고 **`EmoteBubble`**(머리 위 감정 이모지 pop)을 띄움.
+    NPC는 인스턴스별 격리(자체 mover/timer), 안정 `seed`로 외형 고정. Interior에 `npcs?` 필드 추가 → InteriorScreen 렌더.
+    **ER에 doctor patrol + patient wander**(즉시 확인), **캠퍼스 fixture 신설**(`grass` 바닥·건물 collision placeholder·
+    nurse/visitor/patient/child/doctor) + 캠퍼스 탭 "🗺 캠퍼스 둘러보기" 진입. ⚠️ NPC는 현재 **클라이언트 fixture**(서버
+    interior `npcs` 필드는 후속) · 건물 **placeholder 블록**(아트 5d-ii) · wander는 `bound`만 따름(open bound로 배치).
+    tsc 0·jest 24/24·doctor 21/21. 시각 = 디바이스.
+  - **5d-ii 캠퍼스 아트**(다음): `screens-explore-v2.jsx` 건물·경로·나무·prop 충실 포팅(placeholder 대체).
+  - **5d-iii 외래 클리닉 엔진**(v2 신규): `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
+    내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
+    `floorInternal/Surgery/Ortho/Derm`(+Alt) 및 클리닉 장비(UltrasoundCart·XrayViewbox·CastCart·DermLamp 등) 추가.
 - **5e — 재사용 픽셀 게임 엔진 추출**(계획, 사용자 요청 2026-06-16): `src/map`(타일·충돌·이동·카메라·gridmover)+`src/characters`
   (스프라이트·모션)를 forin 도메인과 분리해 **재사용 가능한 RN 픽셀게임 엔진 패키지**(예: `packages/pixel-engine`)로 추출.
   다른 프로젝트에서도 쓸 수 있게 의존성 역전(콘텐츠 스키마·아트는 주입). 맵/모션이 안정화된 뒤(5d 후) 착수. 순수 모듈

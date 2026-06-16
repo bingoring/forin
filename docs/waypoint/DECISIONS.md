@@ -182,3 +182,12 @@
 - **결정:** `design-handoff_v5/` 채택(v4 대비 **forin-npcs-smooth.jsx만** 변경 — sideFace 입 위치). 링크 v4→v5 재지정(DECISIONS 이력 보존).
 - **v5 변경:** 측면(3/4) 입을 얼굴 중앙(x39–45)에서 **앞쪽 가장자리·코 아래(x48–53)** 로 이동 — 기존 중앙 배치가 부자연스러웠던 것 교정. Sprite.tsx sideFace 입 경로 2줄만 반영. tsc 0·jest 24/24·doctor 21/21.
 - **결정자:** 사용자(v5 제공) + AI(반영).
+
+## 2026-06-16 · 앰비언트 NPC 엔진 화면 연결 (5d-i)
+- **결정:** `useGridMover`(순수 patrol/wander+이모트 로직)를 **`AmbientNpc` 컴포넌트**로 화면에 연결 — NPC가 실제 이동
+  (5c 보행 모션·글라이드 재사용)하고 `EmoteBubble`로 감정 이모지 표시. NPC는 인스턴스별 격리(자체 timer)로 틱마다 전체 맵
+  리렌더 방지. Interior에 `npcs?` 필드 추가, ER+캠퍼스 fixture에 배치, 캠퍼스 탭 진입 추가.
+- **임시(후속):** NPC 스펙은 **클라이언트 fixture**에 저작(서버 interior `npcs` jsonb 필드는 후속) · 캠퍼스 건물은 collision
+  placeholder 블록(아트 5d-ii) · wander는 `bound`만 따르고 인테리어 collision 미참조(open bound로 회피). 이유: 5d-i는
+  "움직이고 감정표현하는 NPC"를 빠르게 가시화·검증하는 게 목표(사용자 질문 대응). 서버 필드/아트/충돌연동은 증분 후속.
+- **결정자:** 사용자(진행) + AI.

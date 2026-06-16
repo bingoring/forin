@@ -26,7 +26,7 @@
 | 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | HUMAN_APPROVED |
 | 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | HUMAN_APPROVED |
 | 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | HUMAN_APPROVED |
-| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | IN_PROGRESS (5a·5b·5c ✅ · **5d 캠퍼스** 남음) |
+| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | IN_PROGRESS (5a·5b·5c·**5d-i** 앰비언트NPC ✅ · 5d-ii 캠퍼스아트·5d-iii 클리닉·5e 엔진추출 남음) |
 | 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | PENDING |
 | 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | PENDING |
 | 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | PENDING |
