@@ -124,6 +124,8 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     `walkClock`(0→1, 스텝마다 재발화)을 소유해 플레이어에 전달 → Sprite의 hop(`-|sin(step·2π)|·hopH`)·다리 스윙
     (`sin(step·2π)`)이 이동과 맞물림. 자유 클럭(비동기) 제거. hop 높이는 크기 비례(width·0.05). 속도 300→**240ms**(요청).
     Sprite `walkClock` prop은 NPC(useGridMover)도 쓸 엔진 인터페이스. tsc 0·jest 24/24·doctor 21/21.
+    - **팔 백스윙**(2026-06-16, `feat/arm-backswing`→master 머지): 팔 스윙에 `backRatio`(앞=풀, 뒤=0.45) 추가 +
+      진폭↑(정면 15°·측면 26°) → 앞·뒤 양방향(뒤는 약간). 다리는 대칭 유지. 사용자 확인 후 머지.
   - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
