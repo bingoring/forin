@@ -14,9 +14,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ## 입력 (Inputs)
 
-- 맵 엔진: [`../inputs/design-handoff_v4/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v4/05_MAP_AND_INTERIORS.md)
-- 캐릭터: [`../inputs/design-handoff_v4/03_CHARACTERS.md`](../inputs/design-handoff_v4/03_CHARACTERS.md)
-- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v4/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v4/06_CHARACTER_MOTION.md)
+- 맵 엔진: [`../inputs/design-handoff_v5/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v5/05_MAP_AND_INTERIORS.md)
+- 캐릭터: [`../inputs/design-handoff_v5/03_CHARACTERS.md`](../inputs/design-handoff_v5/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v5/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v5/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
@@ -126,6 +126,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     Sprite `walkClock` prop은 NPC(useGridMover)도 쓸 엔진 인터페이스. tsc 0·jest 24/24·doctor 21/21.
     - **팔 백스윙**(2026-06-16, `feat/arm-backswing`→master 머지): 팔 스윙에 `backRatio`(앞=풀, 뒤=0.45) 추가 +
       진폭↑(정면 15°·측면 26°) → 앞·뒤 양방향(뒤는 약간). 다리는 대칭 유지. 사용자 확인 후 머지.
+  - **옆모습 입 위치**(2026-06-16, handoff v5): 측면 입을 얼굴 중앙→**앞쪽 가장자리(코 아래)** 로 이동(부자연 교정). sideFace 입 경로만 변경.
   - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**(후속, 기존 5c): 건물·prop + `useGridMover` patrol/wander
   NPC(5c 모션 사용). **외래 클리닉 엔진(v2 신규):** `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —

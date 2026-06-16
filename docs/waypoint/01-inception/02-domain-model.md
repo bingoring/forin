@@ -17,9 +17,9 @@ forin의 핵심 도메인을 엔티티·관계·상태·불변식으로 모델�
 - 이전 스테이지: [`01-context-synthesis.md`](01-context-synthesis.md)
 - 제품 기획서: [`../prd.md`](../prd.md)
 - 디자인 핸드오프(특히 시나리오·퀴즈·맵/인테리어):
-  [`../inputs/design-handoff_v4/04_SCREENS.md`](../inputs/design-handoff_v4/04_SCREENS.md),
-  [`05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v4/05_MAP_AND_INTERIORS.md),
-  [`reference/scenarios-data.jsx`](../inputs/design-handoff_v4/reference/scenarios-data.jsx)
+  [`../inputs/design-handoff_v5/04_SCREENS.md`](../inputs/design-handoff_v5/04_SCREENS.md),
+  [`05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v5/05_MAP_AND_INTERIORS.md),
+  [`reference/scenarios-data.jsx`](../inputs/design-handoff_v5/reference/scenarios-data.jsx)
 
 ## 체크리스트
 

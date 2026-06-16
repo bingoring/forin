@@ -177,3 +177,8 @@
   (`walkClock`/`dir`/`seed`)도 엔진 지향으로 설계. 콘텐츠 스키마·아트는 주입(의존성 역전).
 - **검증 한계:** 보행 모션은 시각 전용(디바이스). reanimated 회전은 react-native-svg `transform` 배열로(=`rotation` prop no-op).
 - **결정자:** 사용자(요청) + AI(반영).
+
+## 2026-06-16 · 디자인 핸드오프 v5 (옆모습 입 위치)
+- **결정:** `design-handoff_v5/` 채택(v4 대비 **forin-npcs-smooth.jsx만** 변경 — sideFace 입 위치). 링크 v4→v5 재지정(DECISIONS 이력 보존).
+- **v5 변경:** 측면(3/4) 입을 얼굴 중앙(x39–45)에서 **앞쪽 가장자리·코 아래(x48–53)** 로 이동 — 기존 중앙 배치가 부자연스러웠던 것 교정. Sprite.tsx sideFace 입 경로 2줄만 반영. tsc 0·jest 24/24·doctor 21/21.
+- **결정자:** 사용자(v5 제공) + AI(반영).

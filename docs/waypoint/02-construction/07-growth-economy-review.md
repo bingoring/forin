@@ -16,7 +16,7 @@ updated: 2026-06-12
 
 - 도메인 §진행/성장·복습·전달: [`../01-inception/02-domain-model.md`](../01-inception/02-domain-model.md)
 - 경제 §J·K, 이벤트 전달: [`../01-inception/03-architecture-decision.md`](../01-inception/03-architecture-decision.md)
-- **리뷰랩 화면 명세(설계 확정 2026-06-12):** [`../inputs/design-handoff_v4/04_SCREENS.md`](../inputs/design-handoff_v4/04_SCREENS.md) ⑨
+- **리뷰랩 화면 명세(설계 확정 2026-06-12):** [`../inputs/design-handoff_v5/04_SCREENS.md`](../inputs/design-handoff_v5/04_SCREENS.md) ⑨
 
 ## 체크리스트
 
