@@ -31,14 +31,16 @@ function SwingLimb({
   dirSign,
   pivotX,
   pivotY,
+  backRatio = 1,
   children,
 }: {
   swing: SharedValue<number>; // ping-pongs 0↔1
   gate: SharedValue<number>; // 0 standing / 1 walking
-  amp: number; // peak rotation (deg)
+  amp: number; // peak FORWARD rotation (deg)
   dirSign: 1 | -1; // opposite limbs swing in anti-phase
   pivotX: number;
   pivotY: number;
+  backRatio?: number; // back-swing relative to forward (1 = symmetric; arms < 1)
   children: React.ReactNode;
 }) {
   // NOTE: react-native-svg's animated `rotation`/`originX`/`originY` props are a
@@ -48,8 +50,11 @@ function SwingLimb({
   const animatedProps = useAnimatedProps(() => {
     'worklet';
     // One full swing per tile step → 2 alternating footfalls (anti-phase via dirSign),
-    // synced to the 2 hops. sin peaks at 25%/75% of the step.
-    const rot = Math.sin(swing.value * 2 * Math.PI) * amp * dirSign * gate.value; // -amp..amp
+    // synced to the 2 hops. sin peaks at 25%/75% of the step. `v` is forward-signed
+    // for this limb; the back-swing (v<0) is scaled by backRatio (arms swing back less).
+    const v = Math.sin(swing.value * 2 * Math.PI) * dirSign; // >0 = forward
+    const eff = v >= 0 ? v : v * backRatio;
+    const rot = eff * amp * gate.value;
     return {
       transform: [
         { translateX: pivotX },
@@ -500,12 +505,12 @@ function SmoothSpriteBase({
             ON TOP of the body, after the legs (see below). */}
         {facingSide ? null : (
           <>
-            <SwingLimb swing={step} gate={gate} amp={8} dirSign={-1} pivotX={20} pivotY={52}>
+            <SwingLimb swing={step} gate={gate} amp={15} dirSign={-1} backRatio={0.45} pivotX={20} pivotY={52}>
               <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
               <Path d="M20 52 Q14 56 15 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
               <Circle cx={15} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
             </SwingLimb>
-            <SwingLimb swing={step} gate={gate} amp={8} dirSign={1} pivotX={44} pivotY={52}>
+            <SwingLimb swing={step} gate={gate} amp={15} dirSign={1} backRatio={0.45} pivotX={44} pivotY={52}>
               <Path d="M44 52 Q50 56 49 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
               <Path d="M44 52 Q50 56 49 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
               <Circle cx={49} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
@@ -568,7 +573,7 @@ function SmoothSpriteBase({
 
         {/* SIDE ARM (v4) — single arm tucked along the torso, drawn on top, swings */}
         {facingSide ? (
-          <SwingLimb swing={step} gate={gate} amp={20} dirSign={-1} pivotX={34} pivotY={53}>
+          <SwingLimb swing={step} gate={gate} amp={26} dirSign={-1} backRatio={0.45} pivotX={34} pivotY={53}>
             <Path d="M33 52 Q37 57 35 64" fill="none" stroke={shirt} strokeWidth={5} strokeLinecap="round" />
             <Path d="M33 52 Q37 57 35 64" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" opacity={0.4} />
             <Circle cx={35} cy={64} r={2.8} fill={skin} stroke={slo} strokeWidth={1.2} />
