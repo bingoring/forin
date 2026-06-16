@@ -129,7 +129,8 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   - **옆모습 입 위치**(2026-06-16, handoff v5): 측면 입을 얼굴 중앙→**앞쪽 가장자리(코 아래)** 로 이동(부자연 교정). sideFace 입 경로만 변경.
   - **5c 전체 완료(애니 디바이스 튜닝 반복 중).**
 - **5d — 캠퍼스 야외 맵 + 앰비언트 NPC 엔진 + 인테리어 확장**:
-  - **5d-i ✅ 앰비언트 NPC 엔진 + 이모트**(2026-06-16): `useGridMover`를 **`AmbientNpc`** 컴포넌트로 화면에 연결 —
+  - **5d-i patrol 속도 버그 수정**(2026-06-16): patrol이 웨이포인트를 "한 스텝"으로 점프(멀리 떨어진 점 사이를 한 틱에 글라이드 → 미친 속도) → **목표 웨이포인트로 한 칸씩** 이동하도록 수정(wander와 동일 속도). jest로 "한 틱=한 칸·ping-pong" 검증(25/25).
+- **5d-i ✅ 앰비언트 NPC 엔진 + 이모트**(2026-06-16): `useGridMover`를 **`AmbientNpc`** 컴포넌트로 화면에 연결 —
     patrol/wander NPC가 실제 이동(5c 보행: 글라이드+스텝 hop+사지 스윙)하고 **`EmoteBubble`**(머리 위 감정 이모지 pop)을 띄움.
     NPC는 인스턴스별 격리(자체 mover/timer), 안정 `seed`로 외형 고정. Interior에 `npcs?` 필드 추가 → InteriorScreen 렌더.
     **ER에 doctor patrol + patient wander**(즉시 확인), **캠퍼스 fixture 신설**(`grass` 바닥·건물 collision placeholder·
