@@ -33,7 +33,7 @@ function seatSprite(x: number, y: number) {
 // seat the sprite's feet on a tile whose top-left pixel is (px, py).
 const PLAYER_DX = TILE / 2 - SPRITE_W / 2;
 const PLAYER_DY = TILE - SPRITE_H;
-const GLIDE_MS = 300; // tile-to-tile glide (≈ the walk-cadence / stride)
+const GLIDE_MS = 240; // tile-to-tile glide; the walk hop/steps sync to this window
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -97,10 +97,13 @@ export function InteriorScreen({
   // from it so both ease together (no instant tile jumps).
   const pxX = useSharedValue(pos.x * TILE);
   const pyY = useSharedValue(pos.y * TILE);
+  const walkClock = useSharedValue(0); // re-fired 0→1 each step → 2 hops + 2 leg steps/tile
   useEffect(() => {
     pxX.value = withTiming(pos.x * TILE, { duration: GLIDE_MS, easing: Easing.linear });
     pyY.value = withTiming(pos.y * TILE, { duration: GLIDE_MS, easing: Easing.linear });
-  }, [pos.x, pos.y, pxX, pyY]);
+    walkClock.value = 0;
+    walkClock.value = withTiming(1, { duration: GLIDE_MS, easing: Easing.linear });
+  }, [pos.x, pos.y, pxX, pyY, walkClock]);
 
   const worldStyle = useAnimatedStyle(() => {
     'worklet';
@@ -195,7 +198,7 @@ export function InteriorScreen({
               pointerEvents="none"
               style={[{ position: 'absolute', left: 0, top: 0, width: SPRITE_W, height: SPRITE_H }, playerStyle]}
             >
-              <PlayerSprite size={SPRITE_W} expression="neutral" dir={facing} walking={walking} />
+              <PlayerSprite size={SPRITE_W} expression="neutral" dir={facing} walking={walking} walkClock={walkClock} />
             </Animated.View>
 
             <RoomMask bounds={region?.bounds ?? null} cols={interior.cols} rows={interior.rows} />

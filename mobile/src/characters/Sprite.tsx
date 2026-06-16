@@ -47,7 +47,9 @@ function SwingLimb({
   // actually applies under reanimated.
   const animatedProps = useAnimatedProps(() => {
     'worklet';
-    const rot = (swing.value * 2 - 1) * amp * dirSign * gate.value; // -amp..amp
+    // One full swing per tile step → 2 alternating footfalls (anti-phase via dirSign),
+    // synced to the 2 hops. sin peaks at 25%/75% of the step.
+    const rot = Math.sin(swing.value * 2 * Math.PI) * amp * dirSign * gate.value; // -amp..amp
     return {
       transform: [
         { translateX: pivotX },
@@ -96,8 +98,12 @@ export interface SmoothSpriteProps {
   width?: number;
   /** Facing — front(down)/back(up)/3-4 side(left|right). Left mirrors right. */
   dir?: SpriteDir;
-  /** Walking gate (limb-swing/bob animation lands in 5c-ii). */
+  /** True while a step is in flight — gates the walk hop + limb swing. */
   walking?: boolean;
+  /** Step progress 0→1, re-fired by the mover on each tile step. Drives the
+   * walk so the hop/limbs sync to the move: 2 parabolic hops + 2 alternating
+   * leg steps per tile (06_CHARACTER_MOTION forinWalkBob). Omit for static NPCs. */
+  walkClock?: SharedValue<number>;
 }
 
 export type SpriteDir = 'down' | 'up' | 'left' | 'right';
@@ -119,42 +125,45 @@ function SmoothSpriteBase({
   width = 40,
   dir = 'down',
   walking = false,
+  walkClock,
 }: SmoothSpriteProps) {
   const facingSide = dir === 'left' || dir === 'right';
   const flip = dir === 'left';
 
   // ── Motion (06_CHARACTER_MOTION §2-3), reanimated on the UI thread ──
-  // Continuous PING-PONG clocks (reverse=true). NOTE: withRepeat(withTiming(1),
-  // -1, false) does NOT loop a ramp — it sticks at 1 (1→1 each repeat), which
-  // froze the motion after one cycle. reverse=true gives a real 0↔1 oscillation.
-  // Per-instance random start `phase` desyncs a crowd without a dead delay.
+  // The WALK (hop + limb swing) is driven by `walkClock` (0→1 per tile step),
+  // so it syncs to the move: 2 parabolic hops + 2 alternating leg steps per tile.
+  // The IDLE breathing/blink run on internal continuous clocks (reverse=true
+  // ping-pong — note withRepeat(...,false) sticks at 1, so reverse must be true).
+  // `phase` desyncs a crowd's idle without a dead delay. HOP/breath scale with width.
   const phase = useMemo(() => Math.random(), []);
-  const swing = useSharedValue(phase); // 0↔1 every 0.5s — limb swing + walk bob
-  const breathe = useSharedValue(phase); // 0↔1 every ~3.2s — idle breathing
+  const fallbackClock = useSharedValue(0); // used when no walkClock is supplied
+  const step = walkClock ?? fallbackClock; // 0→1 per step
+  const breathe = useSharedValue(phase); // 0↔1 ~3.2s — idle breathing
   const gate = useSharedValue(0); // 0 standing / 1 walking
   const blink = useSharedValue(0); // eyelid opacity pulse (front idle)
+  const hopH = width * 0.05; // parabolic hop height (∝ size; ~3.5px at width 70)
 
   useEffect(() => {
-    swing.value = withRepeat(withTiming(1, { duration: 250, easing: Easing.linear }), -1, true);
     breathe.value = withRepeat(withTiming(1, { duration: 1600, easing: Easing.inOut(Easing.sin) }), -1, true);
-    // idle blink: closed ~120ms on a ~5.5s cycle, desynced.
     blink.value = withDelay(
       Math.round(phase * 5000),
       withRepeat(withSequence(withTiming(0, { duration: 5380 }), withTiming(1, { duration: 60 }), withTiming(0, { duration: 60 })), -1, false),
     );
-  }, [swing, breathe, blink, phase]);
+  }, [breathe, blink, phase]);
 
   useEffect(() => {
-    gate.value = withTiming(walking ? 1 : 0, { duration: 140 });
+    gate.value = withTiming(walking ? 1 : 0, { duration: 110 });
   }, [walking, gate]);
 
   const bodyStyle = useAnimatedStyle(() => {
     'worklet';
     const idle = 1 - gate.value;
-    const walkBobY = -Math.sin(swing.value * Math.PI) * 2 * gate.value; // 2 bobs/stride
-    const breatheY = -breathe.value * 2.5 * idle; // visible gentle rise (~2.5px)
+    // 2 parabolic hops over the step (peaks at 25% & 75%) — forinWalkBob.
+    const hopY = -Math.abs(Math.sin(step.value * 2 * Math.PI)) * hopH * gate.value;
+    const breatheY = -breathe.value * (hopH * 0.6) * idle; // gentle idle rise
     return {
-      transform: [{ translateY: walkBobY + breatheY }, { scaleY: 1 + breathe.value * 0.02 * idle }],
+      transform: [{ translateY: hopY + breatheY }, { scaleY: 1 + breathe.value * 0.018 * idle }],
     };
   });
 
@@ -491,12 +500,12 @@ function SmoothSpriteBase({
             ON TOP of the body, after the legs (see below). */}
         {facingSide ? null : (
           <>
-            <SwingLimb swing={swing} gate={gate} amp={8} dirSign={-1} pivotX={20} pivotY={52}>
+            <SwingLimb swing={step} gate={gate} amp={8} dirSign={-1} pivotX={20} pivotY={52}>
               <Path d="M20 52 Q14 56 15 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
               <Path d="M20 52 Q14 56 15 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
               <Circle cx={15} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
             </SwingLimb>
-            <SwingLimb swing={swing} gate={gate} amp={8} dirSign={1} pivotX={44} pivotY={52}>
+            <SwingLimb swing={step} gate={gate} amp={8} dirSign={1} pivotX={44} pivotY={52}>
               <Path d="M44 52 Q50 56 49 64" fill="none" stroke={shirt} strokeWidth={6} strokeLinecap="round" />
               <Path d="M44 52 Q50 56 49 64" fill="none" stroke={slo} strokeWidth={1.4} strokeLinecap="round" opacity={0.5} />
               <Circle cx={49} cy={64} r={3} fill={skin} stroke={slo} strokeWidth={1.2} />
@@ -531,12 +540,12 @@ function SmoothSpriteBase({
         {facingSide ? (
           <>
             {/* far leg (behind, darker) */}
-            <SwingLimb swing={swing} gate={gate} amp={22} dirSign={1} pivotX={32} pivotY={64}>
+            <SwingLimb swing={step} gate={gate} amp={22} dirSign={1} pivotX={32} pivotY={64}>
               <Rect x={29} y={65} width={6} height={9} rx={3} fill={legDk} />
               <Ellipse cx={32} cy={75} rx={4.6} ry={2.6} fill={mix(shoe, INK, 0.25)} />
             </SwingLimb>
             {/* near leg (front) */}
-            <SwingLimb swing={swing} gate={gate} amp={22} dirSign={-1} pivotX={32} pivotY={64}>
+            <SwingLimb swing={step} gate={gate} amp={22} dirSign={-1} pivotX={32} pivotY={64}>
               <Rect x={29} y={65} width={6} height={9} rx={3} fill={leg} />
               <Rect x={32} y={65} width={2.4} height={9} rx={1.2} fill={legDk} opacity={0.5} />
               <Ellipse cx={32} cy={75} rx={4.8} ry={2.6} fill={shoe} />
@@ -544,12 +553,12 @@ function SmoothSpriteBase({
           </>
         ) : (
           <>
-            <SwingLimb swing={swing} gate={gate} amp={10} dirSign={1} pivotX={27} pivotY={65}>
+            <SwingLimb swing={step} gate={gate} amp={10} dirSign={1} pivotX={27} pivotY={65}>
               <Rect x={24} y={65} width={6.5} height={9} rx={3} fill={leg} />
               <Rect x={27.5} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
               <Ellipse cx={27.2} cy={75} rx={4.4} ry={2.6} fill={shoe} />
             </SwingLimb>
-            <SwingLimb swing={swing} gate={gate} amp={10} dirSign={-1} pivotX={37} pivotY={65}>
+            <SwingLimb swing={step} gate={gate} amp={10} dirSign={-1} pivotX={37} pivotY={65}>
               <Rect x={33.5} y={65} width={6.5} height={9} rx={3} fill={leg} />
               <Rect x={37} y={65} width={2.6} height={9} rx={1.3} fill={legDk} opacity={0.5} />
               <Ellipse cx={36.8} cy={75} rx={4.4} ry={2.6} fill={shoe} />
@@ -559,7 +568,7 @@ function SmoothSpriteBase({
 
         {/* SIDE ARM (v4) — single arm tucked along the torso, drawn on top, swings */}
         {facingSide ? (
-          <SwingLimb swing={swing} gate={gate} amp={20} dirSign={-1} pivotX={34} pivotY={53}>
+          <SwingLimb swing={step} gate={gate} amp={20} dirSign={-1} pivotX={34} pivotY={53}>
             <Path d="M33 52 Q37 57 35 64" fill="none" stroke={shirt} strokeWidth={5} strokeLinecap="round" />
             <Path d="M33 52 Q37 57 35 64" fill="none" stroke={slo} strokeWidth={1.2} strokeLinecap="round" opacity={0.4} />
             <Circle cx={35} cy={64} r={2.8} fill={skin} stroke={slo} strokeWidth={1.2} />
@@ -695,19 +704,20 @@ export interface RoleSpriteProps {
   expression?: Expression;
   dir?: SpriteDir;
   walking?: boolean;
+  walkClock?: SharedValue<number>;
 }
 
 /** A role NPC. Appearance is deterministic from `seed` (preferred) or tile (x,y). */
-export function RoleSprite({ kind, x = 0, y = 0, seed, mood = 'happy', hair, shirt, size, expression, dir, walking }: RoleSpriteProps) {
+export function RoleSprite({ kind, x = 0, y = 0, seed, mood = 'happy', hair, shirt, size, expression, dir, walking, walkClock }: RoleSpriteProps) {
   const h = seed != null ? spriteHash(seed, seed * 7 + 13, ROLE_SALT[kind]) : spriteHash(x, y, ROLE_SALT[kind]);
   const cfg = ROLES[kind](h, shirt);
   const sz = size || (kind === 'child' ? 34 : 40);
   const expr: Expression = expression || (mood === 'derp' ? 'neutral' : 'happy');
-  return <SmoothSprite width={sz} {...cfg} hair={hair || cfg.hair} expression={expr} dir={dir} walking={walking} />;
+  return <SmoothSprite width={sz} {...cfg} hair={hair || cfg.hair} expression={expr} dir={dir} walking={walking} walkClock={walkClock} />;
 }
 
 /** The player character (white cap + red cross, light skin). */
-export function PlayerSprite({ size = 40, expression = 'neutral' as Expression, dir, walking }: { size?: number; expression?: Expression; dir?: SpriteDir; walking?: boolean }) {
+export function PlayerSprite({ size = 40, expression = 'neutral' as Expression, dir, walking, walkClock }: { size?: number; expression?: Expression; dir?: SpriteDir; walking?: boolean; walkClock?: SharedValue<number> }) {
   return (
     <SmoothSprite
       width={size}
@@ -724,6 +734,7 @@ export function PlayerSprite({ size = 40, expression = 'neutral' as Expression, 
       expression={expression}
       dir={dir}
       walking={walking}
+      walkClock={walkClock}
     />
   );
 }
