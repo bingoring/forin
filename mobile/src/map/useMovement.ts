@@ -8,8 +8,8 @@ import { buildBlocked, canEnter, findPath } from './collision';
 import { objectCollision } from './objects';
 import type { Interior } from './types';
 
-const STEP_MS = 330; // tile cadence while auto-walking a path (≈ one stride, 06_CHARACTER_MOTION)
-const WALK_MS = 460; // walking pose hold after a step; > STEP_MS so it stays on through a path
+const STEP_MS = 300; // tile cadence while auto-walking a path (≈ the render glide, 06_CHARACTER_MOTION)
+const WALK_MS = 360; // walking pose hold after a step; > STEP_MS so it stays on through a path
 
 export function useMovement(interior: Interior) {
   // Walkability = authored structural walls + solid-object footprints.

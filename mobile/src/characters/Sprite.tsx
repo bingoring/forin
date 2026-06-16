@@ -112,36 +112,37 @@ function SmoothSpriteBase({
   const flip = dir === 'left';
 
   // ── Motion (06_CHARACTER_MOTION §2-3), reanimated on the UI thread ──
-  // Per-instance random phase so a crowd's idle motions don't pulse in unison.
+  // Two continuous linear clocks (0→1 repeating); desynced per-instance via a
+  // random phase so a crowd doesn't pulse in unison. A `gate` (0/1) selects
+  // walking vs idle, so the clocks never start/stop (smooth, cheap).
   const phase = useMemo(() => Math.random(), []);
-  const stride = useSharedValue(phase); // 0→1 walking clock (limb swing + bob)
-  const breath = useSharedValue(phase); // 0→1 idle breathing clock
+  const stride = useSharedValue(0); // 0→1 every 0.5s — limb swing + walk bob
+  const breathe = useSharedValue(0); // 0→1 every 3.2s — idle breathing
   const gate = useSharedValue(0); // 0 standing / 1 walking
-  const blink = useSharedValue(0); // eyelid opacity pulse
+  const blink = useSharedValue(0); // eyelid opacity pulse (front idle)
 
   useEffect(() => {
-    stride.value = withRepeat(withTiming(phase + 1, { duration: 500, easing: Easing.linear }), -1, false);
-    breath.value = withRepeat(withTiming(phase + 1, { duration: 3200, easing: Easing.inOut(Easing.sin) }), -1, true);
-    // Front-facing idle blink: closed ~120ms on a ~5.5s cycle, desynced.
+    stride.value = withDelay(phase * 500, withRepeat(withTiming(1, { duration: 500, easing: Easing.linear }), -1, false));
+    breathe.value = withDelay(phase * 3200, withRepeat(withTiming(1, { duration: 3200, easing: Easing.linear }), -1, false));
+    // idle blink: closed ~120ms on a ~5.5s cycle, desynced.
     blink.value = withDelay(
       Math.round(phase * 5000),
       withRepeat(withSequence(withTiming(0, { duration: 5380 }), withTiming(1, { duration: 60 }), withTiming(0, { duration: 60 })), -1, false),
     );
-  }, [stride, breath, blink, phase]);
+  }, [stride, breathe, blink, phase]);
 
   useEffect(() => {
-    gate.value = withTiming(walking ? 1 : 0, { duration: 120 });
+    gate.value = withTiming(walking ? 1 : 0, { duration: 140 });
   }, [walking, gate]);
 
   const bodyStyle = useAnimatedStyle(() => {
     'worklet';
-    const wt = stride.value * 2 * Math.PI;
-    const walkBobY = -Math.abs(Math.sin(wt * 2)) * 1.5 * gate.value; // 2 bobs/stride
-    const bt = breath.value * Math.PI; // 0→π over the (reversing) cycle
+    const walkBobY = -Math.abs(Math.sin(stride.value * 2 * Math.PI)) * 1.5 * gate.value; // 2 bobs/stride
+    const s = Math.sin(breathe.value * Math.PI); // 0→1→0 over the 3.2s loop
     const idle = 1 - gate.value;
-    const breatheY = -Math.sin(bt) * 1 * idle;
-    const scaleY = 1 + Math.sin(bt) * 0.012 * idle;
-    return { transform: [{ translateY: walkBobY + breatheY }, { scaleY }] };
+    return {
+      transform: [{ translateY: walkBobY - s * idle }, { scaleY: 1 + s * 0.012 * idle }],
+    };
   });
 
   const blinkProps = useAnimatedProps(() => ({ opacity: blink.value }));

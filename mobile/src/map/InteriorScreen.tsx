@@ -3,6 +3,7 @@
 // HUD. Movement/walkability come from useMovement + the pure collision module.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, Text, View, type LayoutChangeEvent, type GestureResponderEvent } from 'react-native';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import { TILE, coordToPx, type Coord } from './coords';
@@ -27,6 +28,15 @@ function seatSprite(x: number, y: number) {
   return { left: (x + 0.5) * TILE - SPRITE_W / 2, top: (y + 1) * TILE - SPRITE_H };
 }
 
+// Player glides between tiles (06_CHARACTER_MOTION §2: ~0.3-0.55s tween) rather
+// than jumping; the camera follows the gliding position. Sub-tile offsets to
+// seat the sprite's feet on a tile whose top-left pixel is (px, py).
+const PLAYER_DX = TILE / 2 - SPRITE_W / 2;
+const PLAYER_DY = TILE - SPRITE_H;
+const GLIDE_MS = 300; // tile-to-tile glide (≈ the walk-cadence / stride)
+
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 // Derive ambient NPCs from authored objects so the room feels alive without a
 // separate content type yet: a nurse standing behind the reception desk. (Beds
 // draw their own sleeping occupant, so no patient NPC is added there.)
@@ -36,15 +46,6 @@ function npcsFromObjects(objects: MapObject[]): { id: string; x: number; y: numb
     if (o.type === 'reception') out.push({ id: `npc-${o.id}`, x: o.x, y: o.y - 1, kind: 'nurse' });
   }
   return out;
-}
-
-function clamp(v: number, lo: number, hi: number) {
-  return Math.max(lo, Math.min(hi, v));
-}
-
-function cameraOffset(playerPx: number, viewport: number, world: number): number {
-  if (world <= viewport) return (viewport - world) / 2; // smaller than screen → center
-  return clamp(viewport / 2 - playerPx, viewport - world, 0);
 }
 
 function manhattan(a: Coord, b: Coord) {
@@ -92,8 +93,26 @@ export function InteriorScreen({
     [pos, interior.hotspots],
   );
 
-  const offX = cameraOffset(pos.x * TILE + TILE / 2, vp.w, worldW);
-  const offY = cameraOffset(pos.y * TILE + TILE / 2, vp.h, worldH);
+  // Glide the player pixel position toward the current tile; the camera derives
+  // from it so both ease together (no instant tile jumps).
+  const pxX = useSharedValue(pos.x * TILE);
+  const pyY = useSharedValue(pos.y * TILE);
+  useEffect(() => {
+    pxX.value = withTiming(pos.x * TILE, { duration: GLIDE_MS, easing: Easing.linear });
+    pyY.value = withTiming(pos.y * TILE, { duration: GLIDE_MS, easing: Easing.linear });
+  }, [pos.x, pos.y, pxX, pyY]);
+
+  const worldStyle = useAnimatedStyle(() => {
+    'worklet';
+    const cx = pxX.value + TILE / 2;
+    const cy = pyY.value + TILE / 2;
+    const tx = worldW <= vp.w ? (vp.w - worldW) / 2 : Math.max(vp.w - worldW, Math.min(0, vp.w / 2 - cx));
+    const ty = worldH <= vp.h ? (vp.h - worldH) / 2 : Math.max(vp.h - worldH, Math.min(0, vp.h / 2 - cy));
+    return { transform: [{ translateX: tx }, { translateY: ty }] };
+  });
+  const playerStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: pxX.value + PLAYER_DX }, { translateY: pyY.value + PLAYER_DY }],
+  }));
 
   const onWorldPress = (e: GestureResponderEvent) => {
     const { locationX, locationY } = e.nativeEvent;
@@ -123,9 +142,9 @@ export function InteriorScreen({
       {/* Camera viewport */}
       <View onLayout={onLayout} style={{ flex: 1, overflow: 'hidden', backgroundColor: colors.ink }}>
         {vp.w > 0 && (
-          <Pressable
+          <AnimatedPressable
             onPress={onWorldPress}
-            style={{ position: 'absolute', width: worldW, height: worldH, transform: [{ translateX: offX }, { translateY: offY }] }}
+            style={[{ position: 'absolute', width: worldW, height: worldH }, worldStyle]}
           >
             <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
             <Walls collision={interior.collision} />
@@ -169,17 +188,18 @@ export function InteriorScreen({
               );
             })}
 
-            {/* Player. Faces movement direction (dir); left mirrors inside the
-                SVG group — never a negatively-scaled parent (that crashed in 5a). */}
-            <View
+            {/* Player. Glides between tiles (camera follows); faces movement
+                direction (dir); left mirrors inside the SVG group (not a
+                negatively-scaled parent — that crashed in 5a). */}
+            <Animated.View
               pointerEvents="none"
-              style={{ position: 'absolute', ...seatSprite(pos.x, pos.y), width: SPRITE_W, height: SPRITE_H }}
+              style={[{ position: 'absolute', left: 0, top: 0, width: SPRITE_W, height: SPRITE_H }, playerStyle]}
             >
               <PlayerSprite size={SPRITE_W} expression="neutral" dir={facing} walking={walking} />
-            </View>
+            </Animated.View>
 
             <RoomMask bounds={region?.bounds ?? null} cols={interior.cols} rows={interior.rows} />
-          </Pressable>
+          </AnimatedPressable>
         )}
 
         {/* Region transition banner */}
