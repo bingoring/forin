@@ -41,10 +41,22 @@ function SwingLimb({
   pivotY: number;
   children: React.ReactNode;
 }) {
+  // NOTE: react-native-svg's animated `rotation`/`originX`/`originY` props are a
+  // no-op here (verified on device), so rotate via the `transform` array instead
+  // — translate to the pivot, rotate, translate back. This react-native-svg path
+  // actually applies under reanimated.
   const animatedProps = useAnimatedProps(() => {
     'worklet';
     const rot = (swing.value * 2 - 1) * amp * dirSign * gate.value; // -amp..amp
-    return { rotation: rot, originX: pivotX, originY: pivotY };
+    return {
+      transform: [
+        { translateX: pivotX },
+        { translateY: pivotY },
+        { rotate: `${rot}deg` },
+        { translateX: -pivotX },
+        { translateY: -pivotY },
+      ],
+    };
   });
   return <AnimatedG animatedProps={animatedProps}>{children}</AnimatedG>;
 }
