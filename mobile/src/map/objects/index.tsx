@@ -202,8 +202,8 @@ const WALL_H = TILE * 1.5; // front wall face height
 // 2.5D building — roof top-face + front wall (windows + door), optional red cross / awning.
 // `roofPattern` is extensible: 'solid' (default) | 'grid' (shingle texture). Future
 // patterns (panels, tiles) or roof-top objects (helipad, AC) can be added here.
-function Building({ x, y, w = 4, h = 4, roofKey = 'blue', roofPattern = 'solid', label, redCross, mainEntrance, accent }: {
-  x: number; y: number; w?: number; h?: number; roofKey?: string; roofPattern?: 'solid' | 'grid'; label?: string; redCross?: boolean; mainEntrance?: boolean; accent?: string;
+function Building({ x, y, w = 4, h = 4, roofKey = 'blue', roofPattern = 'solid', label, redCross, emblem, mainEntrance, accent }: {
+  x: number; y: number; w?: number; h?: number; roofKey?: string; roofPattern?: 'solid' | 'grid'; label?: string; redCross?: boolean; emblem?: string; mainEntrance?: boolean; accent?: string;
 }) {
   const pw = w * TILE;
   const ph = h * TILE;
@@ -235,6 +235,10 @@ function Building({ x, y, w = 4, h = 4, roofKey = 'blue', roofPattern = 'solid',
             <View style={{ position: 'absolute', width: 4, height: 14, backgroundColor: CP.red }} />
             <View style={{ position: 'absolute', width: 14, height: 4, backgroundColor: CP.red }} />
           </View>
+        </View>
+      ) : emblem ? (
+        <View style={{ position: 'absolute', left: pw / 2 - 12, top: 6, width: 24, height: 24, backgroundColor: '#fff', borderWidth: 2, borderColor: INK, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 13, lineHeight: 16 }}>{emblem}</Text>
         </View>
       ) : null}
       {/* front wall */}
@@ -310,6 +314,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
           roofPattern={(props?.roofPattern as 'solid' | 'grid') ?? 'solid'}
           label={props?.label as string | undefined}
           redCross={!!props?.redCross}
+          emblem={props?.emblem as string | undefined}
           mainEntrance={!!props?.mainEntrance}
           accent={props?.accent as string | undefined}
         />
