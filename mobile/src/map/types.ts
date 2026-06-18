@@ -64,4 +64,5 @@ export interface Interior {
   hotspots: Hotspot[];
   collision: Bounds[];
   npcs?: NpcSpec[]; // ambient roaming NPCs (optional)
+  scale?: number; // camera zoom (5d-iv): <1 pulls the camera back (campus), default 1
 }

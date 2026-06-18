@@ -10,6 +10,7 @@ export const CAMPUS_INTERIOR: Interior = {
   cols: 28,
   rows: 20,
   floorTheme: 'grass',
+  scale: 0.7, // viewed from further back than interiors (handoff: campus objects look smaller)
   playerStart: { x: 14, y: 16 },
   regions: [],
   rooms: [],

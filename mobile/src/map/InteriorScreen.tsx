@@ -70,6 +70,10 @@ export function InteriorScreen({
 
   const worldW = interior.cols * TILE;
   const worldH = interior.rows * TILE;
+  // Camera zoom (5d-iv). transformOrigin is top-left so the world→screen map is
+  // linear: screen = translate + scale*world. The clamp below works in scaled px;
+  // tap locationX/Y stay in the world's untransformed local space (÷TILE unchanged).
+  const scale = interior.scale ?? 1;
 
   const region = useMemo(() => regionAt(pos, interior.regions), [pos, interior.regions]);
   const npcs = useMemo(() => npcsFromObjects(interior.objects), [interior.objects]);
@@ -108,11 +112,13 @@ export function InteriorScreen({
 
   const worldStyle = useAnimatedStyle(() => {
     'worklet';
-    const cx = pxX.value + TILE / 2;
-    const cy = pyY.value + TILE / 2;
-    const tx = worldW <= vp.w ? (vp.w - worldW) / 2 : Math.max(vp.w - worldW, Math.min(0, vp.w / 2 - cx));
-    const ty = worldH <= vp.h ? (vp.h - worldH) / 2 : Math.max(vp.h - worldH, Math.min(0, vp.h / 2 - cy));
-    return { transform: [{ translateX: tx }, { translateY: ty }] };
+    const sw = worldW * scale;
+    const sh = worldH * scale;
+    const cx = (pxX.value + TILE / 2) * scale; // player center in scaled px
+    const cy = (pyY.value + TILE / 2) * scale;
+    const tx = sw <= vp.w ? (vp.w - sw) / 2 : Math.max(vp.w - sw, Math.min(0, vp.w / 2 - cx));
+    const ty = sh <= vp.h ? (vp.h - sh) / 2 : Math.max(vp.h - sh, Math.min(0, vp.h / 2 - cy));
+    return { transform: [{ translateX: tx }, { translateY: ty }, { scale }] };
   });
   const playerStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: pxX.value + PLAYER_DX }, { translateY: pyY.value + PLAYER_DY }],
@@ -148,7 +154,7 @@ export function InteriorScreen({
         {vp.w > 0 && (
           <AnimatedPressable
             onPress={onWorldPress}
-            style={[{ position: 'absolute', width: worldW, height: worldH }, worldStyle]}
+            style={[{ position: 'absolute', width: worldW, height: worldH, transformOrigin: 'top left' }, worldStyle]}
           >
             <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
             <Walls collision={interior.collision} />
