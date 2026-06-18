@@ -191,3 +191,12 @@
   placeholder 블록(아트 5d-ii) · wander는 `bound`만 따르고 인테리어 collision 미참조(open bound로 회피). 이유: 5d-i는
   "움직이고 감정표현하는 NPC"를 빠르게 가시화·검증하는 게 목표(사용자 질문 대응). 서버 필드/아트/충돌연동은 증분 후속.
 - **결정자:** 사용자(진행) + AI.
+
+## 2026-06-18 · 디자인 핸드오프 v6 (캐릭터 머리 시스템 확장)
+- **결정:** `design-handoff_v6/` 채택(v5 대비 forin-npcs-smooth.jsx·ds-derp.jsx·screens-explore-v2.jsx + 03/06 md). 링크 v5→v6 재지정.
+- **v6 변경(머리 시스템):** hairStyle에 **`ponytail`·`balding`** 추가(8→10종 + 모자 2). 정면/측면/후면을 **각각 별도 플레이트**로 그림:
+  **`hairSide()` 신규**(스타일별 측면 머리 — 귀 노출 + 뒤로 스윕), `backHead()`를 공통 돔에서 **스타일별**(short 나페·bob blunt·long
+  시트·pigtails 묶음·curly 컬링·ponytail 꼬리 등)로 교체, hairBack은 정면(dir=down)에서만. 렌더: 측면 = `isHat?hatSide:hairSide`.
+- **반영 판단:** Sprite.tsx에 타입+hairBack/hairFront/hairSide/backHead 포팅. **ROLES 자동배정은 v6도 불변**(patient는 bald 유지) →
+  ponytail/balding은 "사용 가능한 스타일"로만 추가(명시 사용 시 노출). tsc 0·jest 25/25·doctor 21/21. 시각 = 디바이스.
+- **결정자:** 사용자(v6 제공) + AI(반영).

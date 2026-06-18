@@ -14,9 +14,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ## 입력 (Inputs)
 
-- 맵 엔진: [`../inputs/design-handoff_v5/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v5/05_MAP_AND_INTERIORS.md)
-- 캐릭터: [`../inputs/design-handoff_v5/03_CHARACTERS.md`](../inputs/design-handoff_v5/03_CHARACTERS.md)
-- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v5/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v5/06_CHARACTER_MOTION.md)
+- 맵 엔진: [`../inputs/design-handoff_v6/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v6/05_MAP_AND_INTERIORS.md)
+- 캐릭터: [`../inputs/design-handoff_v6/03_CHARACTERS.md`](../inputs/design-handoff_v6/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v6/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v6/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
@@ -89,6 +89,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     초상(viewBox -1 -4 18 22), HairPlate 10종·**12 표정**·마스크·역할 프리셋(`RoleFace`/`FacePlayer`). Sprite와 동일
     identity 어휘(Expression/HairStyle/RoleKind 타입 공유). 시나리오 브리핑 스텁에 환자 초상(pain) 미리보기 배선
     (전체 대화 UI는 2-6). tsc 0·jest 18/18·doctor 21/21.
+  - **5b 캐릭터 머리 시스템 v6 갱신**(2026-06-18, handoff v6): hairStyle에 `ponytail`(높은 빨간끈+S꼬리)·`balding`(휑한 정수리·귀위 패치) 추가. 정면/측면/후면을 **각각 별도 플레이트**로 — **`hairSide()` 신규**(스타일별 측면 머리: 귀 노출+뒤로 스윕), `backHead()`를 공통 돔→**스타일별**로 교체, hairBack은 정면(dir=down)만. 렌더: 측면=`hatSide`|`hairSide`. ROLES 자동배정은 불변(두 스타일은 명시 사용 시 노출). tsc 0·jest 25/25·doctor 21/21.
   - **5b 전체 완료.**
 - **5c — 캐릭터 모션 & 생명력**(신규, `06_CHARACTER_MOTION` 반영): §9 참조. 5d 캠퍼스가 소비하므로 5c→5d 순서.
   - **5c-i ✅ 방향 전환 + 안정 seed + 그리드무버**(2026-06-15): `Sprite`에 `dir`(front/back/side, **left는 SVG 그룹 내부

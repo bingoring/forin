@@ -1,7 +1,7 @@
 # forin — Product Brief (PRD)
 
 > 시드 제품 기획서. 상세 비주얼·화면·카피·상호작용의 단일 진실 공급원은
-> [`inputs/design-handoff_v5/`](inputs/design-handoff_v5/) 핸드오프 문서다.
+> [`inputs/design-handoff_v6/`](inputs/design-handoff_v6/) 핸드오프 문서다.
 > 본 문서는 Inception 스테이지의 제품 입력물 역할을 한다.
 
 ## 한 줄 정의
@@ -127,7 +127,7 @@ PhraseCard로 만들어 SM-2식 간격 반복으로 복습. 데일리 복습 허
 
 ## 참고 입력물
 
-- 디자인 핸드오프: [`inputs/design-handoff_v5/README.md`](inputs/design-handoff_v5/README.md)
+- 디자인 핸드오프: [`inputs/design-handoff_v6/README.md`](inputs/design-handoff_v6/README.md)
   및 동봉 문서(`01_DESIGN_TOKENS` ~ `05_MAP_AND_INTERIORS`), 런너블 HTML 프로토타입.
 - 이전 forin 기획 자산(DB 스키마·API 스펙·기능 명세·콘텐츠)은
   `forin` 레포의 `archive/pre-waypoint` 브랜치에 보관됨 — 필요 시 Inception 입력으로 재참조 가능.
