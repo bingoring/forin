@@ -3,9 +3,10 @@
 // Authored at ITILE=16; rendered at TILE px (SCALE = TILE/16). Each object is a
 // positioned 2.5D pixel sprite. Collision is a SEPARATE authored layer (walls);
 // objects contribute their footprint to the blocked set via objectCollision().
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '../coords';
+import { fonts } from '@/theme/tokens';
 import type { MapObject } from '../types';
 
 export { OBJECT_FOOTPRINT, objectCollision } from './footprint';
@@ -180,6 +181,99 @@ function Door({ x, y, w = 1, h = 1, kind = 'wood' }: { x: number; y: number; w?:
 }
 
 /** Render an authored object by type. Returns null for unknown types. */
+// ─── Campus outdoor art (5d-ii) — port of screens-explore-v2 ───
+const CP = {
+  wallA: '#E8DCC0',
+  door: '#5C3A1A',
+  window: '#9BC8E4',
+  windowFrame: '#3C2A18',
+  red: '#D14242',
+};
+const ROOFS: Record<string, { mid: string; dk: string; lt: string }> = {
+  blue: { mid: '#5C7AA8', dk: '#3C5380', lt: '#8AA8D0' },
+  red: { mid: '#B0524A', dk: '#7E342E', lt: '#D58074' },
+  green: { mid: '#6E9560', dk: '#4E6A42', lt: '#94BC85' },
+  teal: { mid: '#5E978A', dk: '#3E6E62', lt: '#7EB0A4' },
+  mauve: { mid: '#9573A0', dk: '#6E4F7C', lt: '#B89AC0' },
+  white: { mid: '#E8E2D2', dk: '#A8A292', lt: '#F4F0E4' },
+};
+const WALL_H = TILE * 1.5; // front wall face height
+
+// 2.5D building — roof top-face + front wall (windows + door), optional red cross / awning.
+function Building({ x, y, w = 4, h = 4, roofKey = 'blue', label, redCross, mainEntrance, accent }: {
+  x: number; y: number; w?: number; h?: number; roofKey?: string; label?: string; redCross?: boolean; mainEntrance?: boolean; accent?: string;
+}) {
+  const pw = w * TILE;
+  const ph = h * TILE;
+  const r = ROOFS[roofKey] ?? ROOFS.blue;
+  const winCount = Math.max(1, w - 2);
+  const centerIdx = Math.floor((w - 1) / 2) - 1;
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: x * TILE, top: y * TILE, width: pw, height: ph }}>
+      {/* roof top face */}
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: WALL_H, backgroundColor: r.mid, borderWidth: 2, borderColor: INK }} />
+      <View style={{ position: 'absolute', left: 2, right: 2, top: 2, height: 3, backgroundColor: r.lt }} />
+      <View style={{ position: 'absolute', right: 2, top: 2, bottom: WALL_H + 2, width: 3, backgroundColor: r.dk, opacity: 0.5 }} />
+      {/* eaves overhang */}
+      <View style={{ position: 'absolute', left: -2, right: -2, bottom: WALL_H - 2, height: 4, backgroundColor: r.dk, borderWidth: 1.5, borderColor: INK }} />
+      {/* roof emblem */}
+      {redCross ? (
+        <View style={{ position: 'absolute', left: pw / 2 - 11, top: 6, width: 22, height: 22, backgroundColor: '#fff', borderWidth: 2.5, borderColor: INK }}>
+          <View style={{ position: 'absolute', left: 8.5, top: 2, width: 5, height: 18, backgroundColor: CP.red }} />
+          <View style={{ position: 'absolute', left: 2, top: 8.5, width: 18, height: 5, backgroundColor: CP.red }} />
+        </View>
+      ) : null}
+      {/* front wall */}
+      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: WALL_H, backgroundColor: CP.wallA, borderLeftWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderColor: INK }}>
+        {Array.from({ length: winCount }).map((_, i) =>
+          i === centerIdx ? null : (
+            <View key={i} style={{ position: 'absolute', left: TILE * (i + 1) + 2, top: 5, width: TILE - 6, height: TILE - 6, backgroundColor: CP.window, borderWidth: 1.5, borderColor: CP.windowFrame }}>
+              <View style={{ position: 'absolute', left: 0, right: 0, top: '45%', height: 1, backgroundColor: CP.windowFrame }} />
+              <View style={{ position: 'absolute', left: '45%', top: 0, bottom: 0, width: 1, backgroundColor: CP.windowFrame }} />
+            </View>
+          ),
+        )}
+        {/* door */}
+        <View style={{ position: 'absolute', left: pw / 2 - TILE / 2, bottom: 0, width: TILE, height: TILE + 4, backgroundColor: accent ?? CP.door, borderWidth: 2, borderBottomWidth: 0, borderColor: INK }}>
+          <View style={{ position: 'absolute', right: 2, top: '60%', width: 2, height: 3, backgroundColor: '#E8C25A' }} />
+          {mainEntrance ? <View style={{ position: 'absolute', left: -3, right: -3, top: -10, height: 8, backgroundColor: CP.red, borderWidth: 1.5, borderColor: INK }} /> : null}
+        </View>
+      </View>
+      {label ? (
+        <View style={{ position: 'absolute', left: 0, right: 0, top: -16, alignItems: 'center' }}>
+          <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: INK, paddingHorizontal: 4, paddingVertical: 1 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: INK }}>{label}</Text>
+          </View>
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+// 2.5D tree — layered canopy + trunk (port of Tree v2).
+function Tree({ x, y, big }: { x: number; y: number; big?: boolean }) {
+  const s = big ? TILE * 2.2 : TILE * 1.7;
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: x * TILE - (big ? 6 : 4), top: y * TILE - (big ? 14 : 10), width: s, height: s + 6 }}>
+      <Svg viewBox="0 0 20 24" width={s} height={s + 6}>
+        <Ellipse cx={10} cy={22} rx={6} ry={1.5} fill="rgba(0,0,0,0.22)" />
+        <Rect x={8.5} y={17} width={3} height={5} fill="#5C3A1A" stroke={INK} strokeWidth={0.5} />
+        <Rect x={8.5} y={17} width={1} height={5} fill="#7B5A38" />
+        <Rect x={10.5} y={17} width={1} height={5} fill="#3F2A10" />
+        <Ellipse cx={10} cy={17} rx={2} ry={0.7} fill="#7B5A38" stroke={INK} strokeWidth={0.3} />
+        <Circle cx={10} cy={9} r={9} fill="#274422" stroke={INK} strokeWidth={0.5} />
+        <Circle cx={8.5} cy={8.5} r={7.5} fill="#3E6B3A" />
+        <Circle cx={11} cy={11} r={6} fill="#3E6B3A" />
+        <Circle cx={7.5} cy={7} r={4} fill="#5E9554" />
+        <Circle cx={12} cy={10} r={2.5} fill="#5E9554" />
+        <Path d="M 1 12 Q 10 18 19 12" fill="none" stroke={INK} strokeWidth={0.5} />
+        <Circle cx={13.5} cy={9} r={0.8} fill="#EF4444" />
+        <Circle cx={7} cy={11} r={0.7} fill="#EF4444" />
+      </Svg>
+    </View>
+  );
+}
+
 export function InteriorObjectView({ object }: { object: MapObject }) {
   const { type, x, y, props } = object;
   switch (type) {
@@ -191,6 +285,22 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
       return <Reception x={x} y={y} w={(props?.w as number) ?? 2} h={(props?.h as number) ?? 1} />;
     case 'door':
       return <Door x={x} y={y} w={(props?.w as number) ?? 1} h={(props?.h as number) ?? 1} kind={(props?.kind as string) ?? 'wood'} />;
+    case 'building':
+      return (
+        <Building
+          x={x}
+          y={y}
+          w={(props?.w as number) ?? 4}
+          h={(props?.h as number) ?? 4}
+          roofKey={(props?.roof as string) ?? 'blue'}
+          label={props?.label as string | undefined}
+          redCross={!!props?.redCross}
+          mainEntrance={!!props?.mainEntrance}
+          accent={props?.accent as string | undefined}
+        />
+      );
+    case 'tree':
+      return <Tree x={x} y={y} big={!!props?.big} />;
     default:
       return null;
   }
