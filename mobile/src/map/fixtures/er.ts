@@ -3,6 +3,7 @@
 // explore engine is reachable in Expo Go without a running server (dev login).
 import type { Interior } from '../types';
 import { CAMPUS_INTERIOR } from './campus';
+import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
   id: 'INT-ER-00001',
@@ -48,4 +49,8 @@ export const ER_INTERIOR: Interior = {
 export const FIXTURES: Record<string, Interior> = {
   [ER_INTERIOR.id]: ER_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
+  [INTERNAL.id]: INTERNAL,
+  [SURGERY.id]: SURGERY,
+  [ORTHO.id]: ORTHO,
+  [DERM.id]: DERM,
 };

@@ -14,6 +14,10 @@ const THEMES: Record<string, [string, string]> = {
   icu: ['#E1E4EC', '#C8CEDA'], // cool gray (ICU)
   pharma: ['#E9DEC0', '#D8C9A4'], // warm beige (Pharmacy)
   grass: ['#CDE7A6', '#BCDF93'], // outdoor campus lawn
+  internal: ['#D7E8D0', '#C6DDBB'], // 내과 sage
+  surgery: ['#D6E0EC', '#C2D0E0'], // 외과 steel
+  ortho: ['#EAE2CE', '#DCD2B8'], // 정형외과 bone
+  derm: ['#F2DCE6', '#E8C9D8'], // 피부과 rose
   default: ['#E8E5D4', '#DAD6C2'],
 };
 
