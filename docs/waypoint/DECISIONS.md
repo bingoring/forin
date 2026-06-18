@@ -208,3 +208,13 @@
   나무는 trunk(1×1)만 차단(캐노피 오버행 = 통행). Building은 CSS 그라데이션 대신 View 단색+엣지로 근사.
 - **후속:** 경로/플라자 바닥 타일·추가 prop(벤치·분수 등)·y기준 깊이정렬은 다음 증분.
 - **결정자:** 사용자(진행) + AI.
+
+## 2026-06-18 · 디자인 핸드오프 v7 (플래그십 랜드마크) — 경량 반영 + 베스포크 아트 계획
+- **결정:** `design-handoff_v7/` 채택(v6 대비 05_MAP + screens-explore-v2.jsx). 링크 v6→v7 재지정. v7은 캠퍼스 **4종 플래그십
+  랜드마크**(MedCenter 본관 / MedCenterH 외래 / MedCenterV 의과대 돔 / MedCenterC 암병원 곡면유리+접시) + `Building` `arch`
+  변형(pitched/flat/tower/glass)을 추가.
+- **반영 판단(경량 now + 베스포크 deferred):** 랜드마크는 **CSS 그라데이션·글로우·다중타워 합성**의 대형 정밀 아트이고, 캠퍼스
+  화면은 아직 엔진/통합 placeholder(전용 캠퍼스 화면=후속)라 **충실 포팅은 크고 손실↑·시기상조**. → (1) 캠퍼스 fixture에 4종을
+  **범용 `Building`으로 명명**(이름·지붕색·엠블럼 🎓🎗🩺, 본관=레드크로스+mainEntrance), `Building`에 `emblem` prop 추가.
+  (2) **베스포크 MedCenter*/arch 아트는 5d-v(전용 캠퍼스 화면)로 정식 계획.** 핸드오프 SoT는 v7로 동기화.
+- **결정자:** 사용자(v7 제공) + AI(경량 반영·계획 판단).

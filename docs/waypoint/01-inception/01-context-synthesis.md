@@ -16,7 +16,7 @@ forin의 제품 기획서·디자인 핸드오프·기술 방향을 통합하여
 
 - 제품 기획서: [`../prd.md`](../prd.md)
 - 기술 방향: [`../prd-tech.md`](../prd-tech.md)
-- 디자인 핸드오프: [`../inputs/design-handoff_v6/README.md`](../inputs/design-handoff_v6/README.md)
+- 디자인 핸드오프: [`../inputs/design-handoff_v7/README.md`](../inputs/design-handoff_v7/README.md)
   및 `01_DESIGN_TOKENS` ~ `05_MAP_AND_INTERIORS`, `reference/` 프로토타입
 - (선택) 보관된 이전 자산: `archive/pre-waypoint` 브랜치의 `docs/` 기획 세트
 
