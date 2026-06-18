@@ -218,3 +218,13 @@
   **범용 `Building`으로 명명**(이름·지붕색·엠블럼 🎓🎗🩺, 본관=레드크로스+mainEntrance), `Building`에 `emblem` prop 추가.
   (2) **베스포크 MedCenter*/arch 아트는 5d-v(전용 캠퍼스 화면)로 정식 계획.** 핸드오프 SoT는 v7로 동기화.
 - **결정자:** 사용자(v7 제공) + AI(경량 반영·계획 판단).
+
+## 2026-06-18 · 외래 클리닉 엔진 (5d-iii)
+- **결정:** `interior-clinics.jsx`를 **config 기반 생성기 `clinicInterior(cfg): Interior`**(src/map/clinic.ts)로 포팅 — 표준
+  평면(접수+대기 → 진료실 3 → 처치실)을 데이터로 생성, **부서 추가 = config 객체 1개**(내과/외과/정형외과/피부과 4과). 장비 13종을
+  `objects/clinicEquipment.tsx`로 포팅(Ultrasound/Xray/CastCart/Crutches/DermLamp/Laser/ExamStool/Shelf/BoneModel/ClinicReception/Cabinet/Chair/Plant),
+  InteriorObjectView가 위임. 신규 바닥 테마 internal/surgery/ortho/derm. FIXTURES 등록 + 캠퍼스 탭 진입 버튼.
+- **레이아웃 보정:** 레퍼런스의 y8 문이 분리벽 칼럼(x7/x14)에 있어 방 진입 불가 → **방마다 진입문(x3/x10/x17)** 으로 재배치(도달성 확보).
+  jest 28/28(클리닉 진료실·처치실 도달·문 통행 검증). 충돌=벽만, 장비는 footprint(props.w/h) 있는 것만 차단.
+- **임시:** NPC는 클라이언트 fixture·정적(1×1 wander로 제자리 호흡/이모트), 핫스팟 scenarioId는 placeholder.
+- **결정자:** 사용자(진행) + AI.
