@@ -84,7 +84,7 @@ export type Expression =
 
 export type HairStyle =
   | 'short' | 'long' | 'bob' | 'pigtails' | 'bun' | 'curly' | 'mohawk'
-  | 'bald' | 'cap' | 'peakedCap';
+  | 'ponytail' | 'balding' | 'bald' | 'cap' | 'peakedCap';
 
 export interface SmoothSpriteProps {
   hair?: string;
@@ -187,7 +187,9 @@ function SmoothSpriteBase({
   const hairBack = () => {
     switch (hairStyle) {
       case 'long':
-        return <Path d="M8 22 Q6 50 12 60 L18 58 Q15 38 17 24 Z M56 22 Q58 50 52 60 L46 58 Q49 38 47 24 Z" fill={HD} />;
+        return <Path d="M9 22 Q5 48 12 62 L20 60 Q17 40 19 26 Q26 22 32 22 Q38 22 45 26 Q47 40 44 60 L52 62 Q59 48 55 22 Q52 10 32 10 Q12 10 9 22 Z" fill={HD} />;
+      case 'ponytail':
+        return null; // tail is behind the head — not visible from the front
       case 'bob':
         return <Path d="M9 24 Q8 44 14 50 L18 48 Q15 34 16 24 Z M55 24 Q56 44 50 50 L46 48 Q49 34 48 24 Z" fill={HD} />;
       case 'pigtails':
@@ -279,6 +281,24 @@ function SmoothSpriteBase({
             <Path d="M50 24 Q51 18 44 15" fill="none" stroke={mix(skin, INK, 0.12)} strokeWidth={3} strokeLinecap="round" />
           </G>
         );
+      case 'ponytail':
+        // same front as bob (soft fringe); the length is pulled behind the head
+        return (
+          <G>
+            <Path d="M10 28 Q10 4 32 4 Q54 4 54 28 Q50 14 40 13 Q42 19 37 21 Q32 13 27 21 Q22 19 24 13 Q14 14 10 28 Z" fill={H} />
+            <Path d="M18 13 Q30 7 42 12" fill="none" stroke={HL} strokeWidth={2.5} strokeLinecap="round" />
+          </G>
+        );
+      case 'balding':
+        return (
+          <G>
+            {/* hair only at the temples (ear level); bare crown + comic combed strands */}
+            <Path d="M10 17 Q8 27 13 31 Q16 31 16 27 Q14 23 15 20 Q15 16 18 13 Q12 12 10 17 Z" fill={H} />
+            <Path d="M54 17 Q56 27 51 31 Q48 31 48 27 Q50 23 49 20 Q49 16 46 13 Q52 12 54 17 Z" fill={H} />
+            <Path d="M19 9 Q32 5 45 9" fill="none" stroke={H} strokeWidth={1.6} strokeLinecap="round" />
+            <Path d="M20 13 Q32 10 44 13" fill="none" stroke={H} strokeWidth={1.6} strokeLinecap="round" />
+          </G>
+        );
       case 'short':
       default:
         return (
@@ -287,6 +307,121 @@ function SmoothSpriteBase({
             <Path d="M18 13 Q30 7 43 13" fill="none" stroke={HL} strokeWidth={2.5} strokeLinecap="round" />
           </G>
         );
+    }
+  };
+
+  // Side-profile hair (dir left/right; designed right-facing). Head profile spans
+  // ~x10(back)–x53(front); hair sweeps back behind a visible ear. (handoff v6)
+  const hairSide = () => {
+    const back = mix(H, INK, 0.18);
+    const sideEar = (
+      <G>
+        <Path d="M25 28 Q31 27 31 34 Q30 37 26 35 Q23 31 25 28 Z" fill={skin} stroke={slo} strokeWidth={1.2} />
+        <Path d="M27 30 Q29 30 29 33" fill="none" stroke={slo} strokeWidth={0.8} opacity={0.55} />
+      </G>
+    );
+    const sideBang = <Path d="M47 7 Q56 9 55 20 Q54 25 52 24 Q52 16 48 13 Q47 8 47 7 Z" fill={H} />;
+    const sideStripe = <Path d="M45 11 Q28 1 6 19 Q15 10 28 8 Q40 8 45 12 Z" fill={HL} opacity={0.5} />;
+    const sideSheen = <Path d="M13 9 Q28 2 44 11" fill="none" stroke={HL} strokeWidth={1.8} strokeLinecap="round" />;
+    const sideCrown = <Path d="M46 11 Q47 2 27 1 Q5 3 6 22 Q6 31 12 33 Q21 31 28 28 Q34 22 38 14 Q43 12 46 11 Z" fill={H} />;
+    switch (hairStyle) {
+      case 'bald':
+        return <Path d="M14 26 Q13 19 19 16" fill="none" stroke={H} strokeWidth={3} strokeLinecap="round" />;
+      case 'balding':
+        return (
+          <G>
+            <Path d="M18 27 Q16 15 27 14 Q36 15 35 27 Q30 23 26 23 Q21 23 18 27 Z" fill={H} />
+            {sideEar}
+          </G>
+        );
+      case 'short':
+        return (
+          <G>
+            <Path d="M50 7 Q48 1 27 1 Q5 3 6 22 Q6 31 12 33 Q21 31 28 28 Q31 31 33 34 Q38 20 41 15 Q43 21 45 23 Q48 18 51 25 Q53 15 50 7 Z" fill={H} />
+            {sideSheen}
+            {sideEar}
+          </G>
+        );
+      case 'bob':
+        return (
+          <G>
+            <Path d="M46 11 Q47 2 27 1 Q6 3 6 27 Q4 42 12 50 Q18 53 22 46 Q26 42 28 34 Q30 22 38 15 Q43 12 46 11 Z" fill={H} />
+            {sideStripe}
+            {sideSheen}
+            {sideEar}
+            {sideBang}
+          </G>
+        );
+      case 'long':
+        return (
+          <G>
+            <Path d="M46 11 Q47 2 27 1 Q5 3 4 28 Q1 50 11 63 Q17 66 21 57 Q25 44 28 33 Q30 22 38 15 Q43 12 46 11 Z" fill={H} />
+            <Path d="M9 33 Q5 50 12 62 L18 60 Q14 46 15 34 Z" fill={back} opacity={0.4} />
+            {sideStripe}
+            {sideSheen}
+            {sideEar}
+            {sideBang}
+          </G>
+        );
+      case 'ponytail':
+        return (
+          <G>
+            <Path d="M12 19 Q2 7 0 13 Q-4 27 2 41 Q8 54 6 60 Q4 64 9 61 Q14 53 11 42 Q7 30 14 21 Q16 16 12 19 Z" fill={back} />
+            <Path d="M6 16 Q1 28 6 42 Q10 52 8 58" fill="none" stroke={mix(H, INK, 0.34)} strokeWidth={1.3} opacity={0.5} strokeLinecap="round" />
+            <Path d="M46 11 Q47 2 27 1 Q5 3 6 22 Q6 31 12 33 Q21 31 28 28 Q34 22 38 14 Q43 12 46 11 Z" fill={H} />
+            <Rect x={4} y={13} width={10} height={5} rx={2.5} fill="#EF4444" rotation={-26} originX={9} originY={15.5} />
+            {sideStripe}
+            {sideSheen}
+            {sideEar}
+            {sideBang}
+          </G>
+        );
+      case 'pigtails':
+        return (
+          <G>
+            <Ellipse cx={6} cy={19} rx={6.5} ry={7.5} fill={back} />
+            <Ellipse cx={4.5} cy={16} rx={2.2} ry={2.8} fill={HL} />
+            {sideCrown}
+            <Rect x={11} y={17} width={6.5} height={3.4} rx={1.7} fill="#EF4444" />
+            {sideStripe}
+            {sideSheen}
+            {sideEar}
+            {sideBang}
+          </G>
+        );
+      case 'bun':
+        return (
+          <G>
+            {sideCrown}
+            <Ellipse cx={10} cy={11} rx={6} ry={6} fill={H} />
+            <Ellipse cx={8} cy={9} rx={2.2} ry={1.8} fill={HL} />
+            {sideStripe}
+            {sideSheen}
+            {sideEar}
+            {sideBang}
+          </G>
+        );
+      case 'curly':
+        return (
+          <G>
+            <Path d="M51 12 Q51 1 27 1 Q3 3 5 25 Q5 34 14 35 Q24 34 28 27 Q31 15 46 14 Q50 13 51 12 Z" fill={H} />
+            {([[16, 10, 6.5], [26, 5, 7], [37, 6, 7], [46, 11, 6.5], [9, 16, 6], [8, 26, 6], [13, 33, 5.5], [21, 32, 5], [49, 18, 5.5]] as const).map((c, i) => (
+              <Circle key={i} cx={c[0]} cy={c[1]} r={c[2]} fill={H} />
+            ))}
+            {([[26, 5, 2.6], [37, 6, 2.6], [9, 16, 2.2]] as const).map((c, i) => (
+              <Circle key={'h' + i} cx={c[0]} cy={c[1]} r={c[2]} fill={HL} />
+            ))}
+          </G>
+        );
+      case 'mohawk':
+        return (
+          <G>
+            <Path d="M14 16 Q12 6 18 4 Q24 1 30 1 Q40 1 46 4 L44 9 Q34 6 24 8 Q17 11 16 18 Z" fill={H} />
+            <Path d="M22 5 Q30 2 40 5" fill="none" stroke={HL} strokeWidth={2.4} strokeLinecap="round" />
+          </G>
+        );
+      default:
+        return hairFront();
     }
   };
 
@@ -416,6 +551,7 @@ function SmoothSpriteBase({
   };
 
   // Back-of-head (dir 'up') — hair/hat fills the crown, no face.
+  // Back of head (dir 'up') — per-style (handoff v6), not a common dome.
   const backHead = () => {
     if (hairStyle === 'cap' || hairStyle === 'peakedCap') {
       return (
@@ -426,23 +562,99 @@ function SmoothSpriteBase({
         </G>
       );
     }
-    if (hairStyle === 'bald') {
-      return <Path d="M14 38 Q32 44 50 38 Q32 42 14 38 Z" fill={H} opacity={0.9} />;
-    }
-    return (
-      <G>
-        <Ellipse cx={HX} cy={HY - 1} rx={HRX - 1} ry={HRY - 1} fill={H} />
-        <Path d="M32 7 L32 42" stroke={HD} strokeWidth={1.2} opacity={0.5} />
-        <Path d="M18 14 Q32 8 46 14" fill="none" stroke={HL} strokeWidth={2.5} strokeLinecap="round" />
-        {hairStyle === 'bun' ? <Ellipse cx={32} cy={6} rx={7} ry={6} fill={H} /> : null}
-        {hairStyle === 'pigtails' ? (
+    if (hairStyle === 'bald') return null;
+
+    const back = mix(H, INK, 0.18);
+    const dome = <Ellipse cx={HX} cy={HY - 1} rx={HRX - 1} ry={HRY - 1} fill={H} />;
+    const part = <Path d="M32 7 L32 42" stroke={HD} strokeWidth={1.2} opacity={0.5} />;
+    const sheen = <Path d="M18 14 Q32 8 46 14" fill="none" stroke={HL} strokeWidth={2.5} strokeLinecap="round" />;
+
+    switch (hairStyle) {
+      case 'mohawk':
+        return (
           <G>
+            <Path d="M26 5 Q32 2 38 5 L37 27 Q32 29 27 27 Z" fill={H} />
+            <Path d="M30 6 Q32 4 34 6 L33 24 Q32 25 31 24 Z" fill={HL} opacity={0.7} />
+          </G>
+        );
+      case 'balding':
+        return (
+          <G>
+            <Path d="M9 17 Q7 27 13 31 Q16 31 16 27 Q15 23 15 20 Q15 16 18 14 Q11 13 9 17 Z" fill={H} />
+            <Path d="M55 17 Q57 27 51 31 Q48 31 48 27 Q49 23 49 20 Q49 16 46 14 Q53 13 55 17 Z" fill={H} />
+            <Path d="M20 9 Q32 6 44 9" fill="none" stroke={H} strokeWidth={1.6} strokeLinecap="round" />
+            <Path d="M21 13 Q32 10 43 13" fill="none" stroke={H} strokeWidth={1.6} strokeLinecap="round" />
+          </G>
+        );
+      case 'short':
+        return (
+          <G>
+            {dome}{part}{sheen}
+            <Path d="M19 41 Q32 50 45 41 Q39 47 32 47 Q25 47 19 41 Z" fill={H} />
+          </G>
+        );
+      case 'bob':
+        return (
+          <G>
+            <Path d="M11 24 Q11 52 20 55 Q32 58 44 55 Q53 52 53 24 Q53 10 32 10 Q11 10 11 24 Z" fill={H} />
+            {dome}{part}{sheen}
+          </G>
+        );
+      case 'long':
+        return (
+          <G>
+            {dome}
+            <Path d="M9 20 Q3 50 11 66 Q32 70 53 66 Q61 50 55 20 Q52 6 32 6 Q12 6 9 20 Z" fill={H} />
+            {part}{sheen}
+            <Path d="M32 12 L32 64" stroke={mix(H, INK, 0.12)} strokeWidth={1.2} opacity={0.5} />
+            <Path d="M19 24 Q15 46 20 64" fill="none" stroke={back} strokeWidth={1.3} opacity={0.45} />
+            <Path d="M45 24 Q49 46 44 64" fill="none" stroke={back} strokeWidth={1.3} opacity={0.45} />
+          </G>
+        );
+      case 'pigtails':
+        return (
+          <G>
+            {dome}{part}{sheen}
             <Ellipse cx={9} cy={34} rx={7} ry={9} fill={H} />
             <Ellipse cx={55} cy={34} rx={7} ry={9} fill={H} />
+            <Ellipse cx={8} cy={31} rx={2.4} ry={3} fill={HL} />
+            <Ellipse cx={54} cy={31} rx={2.4} ry={3} fill={HL} />
+            <Rect x={12} y={28} width={6} height={3.4} rx={1.7} fill="#EF4444" />
+            <Rect x={46} y={28} width={6} height={3.4} rx={1.7} fill="#EF4444" />
           </G>
-        ) : null}
-      </G>
-    );
+        );
+      case 'bun':
+        return (
+          <G>
+            {dome}{part}{sheen}
+            <Ellipse cx={32} cy={6} rx={7} ry={6} fill={H} />
+            <Ellipse cx={30} cy={4.5} rx={2.5} ry={2} fill={HL} />
+          </G>
+        );
+      case 'curly':
+        return (
+          <G>
+            {dome}
+            {([[32, 6], [42, 8], [49, 15], [52, 24], [49, 33], [42, 40], [32, 43], [22, 40], [15, 33], [12, 24], [15, 15], [22, 8], [26, 20], [38, 20], [32, 31]] as const).map((c, i) => (
+              <Circle key={i} cx={c[0]} cy={c[1]} r={6} fill={H} stroke={back} strokeWidth={0.8} />
+            ))}
+            {([[22, 8], [42, 8]] as const).map((c, i) => (
+              <Circle key={'h' + i} cx={c[0]} cy={c[1]} r={2.2} fill={HL} />
+            ))}
+          </G>
+        );
+      case 'ponytail':
+        return (
+          <G>
+            {dome}{part}{sheen}
+            <Path d="M27 16 Q22 42 28 68 Q32 72 36 68 Q42 42 37 16 Z" fill={H} />
+            <Path d="M30 24 Q27 46 31 65" fill="none" stroke={HD} strokeWidth={1.3} opacity={0.5} strokeLinecap="round" />
+            <Rect x={25} y={12} width={14} height={5.5} rx={2.7} fill="#EF4444" />
+          </G>
+        );
+      default:
+        return <G>{dome}{part}{sheen}</G>;
+    }
   };
 
   // 3/4 side face (dir 'left'/'right') — drawn right-facing; 'left' mirrors the whole group.
@@ -500,7 +712,8 @@ function SmoothSpriteBase({
         {/* ground shadow */}
         <Ellipse cx={32} cy={77} rx={15} ry={2.4} fill="#000" opacity={0.13} />
 
-        {dir !== 'up' ? hairBack() : null}
+        {/* back hair strands fall behind the body — FRONT view only (side has its own profile). */}
+        {dir === 'down' ? hairBack() : null}
 
         {/* ARMS (front/back) — two swinging arms. Side view's single arm is drawn
             ON TOP of the body, after the legs (see below). */}
@@ -591,7 +804,7 @@ function SmoothSpriteBase({
           backHead()
         ) : (
           <>
-            {facingSide && isHat ? hatSide() : hairFront()}
+            {facingSide ? (isHat ? hatSide() : hairSide()) : hairFront()}
             {facingSide ? sideFace() : face()}
             {/* idle blink — skin eyelids briefly cover the dot eyes (front only) */}
             {!facingSide ? (
