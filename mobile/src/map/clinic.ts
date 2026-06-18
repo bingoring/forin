@@ -3,9 +3,9 @@
 // Port of design-handoff interior-clinics.jsx ClinicInterior. Adding a department
 // = one config object (see the four at the bottom). Bespoke equipment lives in
 // objects/clinicEquipment; this file only lays out the floor plan as data.
-import type { Bounds } from './coords';
-import type { Interior, MapObject, NpcSpec, Region, Room, Hotspot } from './types';
-import type { RoleKind } from '@/characters/Sprite';
+import type { Bounds } from '@engine';
+import type { Interior, MapObject, NpcSpec, Region, Room, Hotspot } from '@engine';
+import type { RoleKind } from '@engine';
 
 interface ObjSpec {
   type: string;

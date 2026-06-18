@@ -6,7 +6,7 @@ import { api } from '@/api/client';
 import { colors, fonts, type as t } from '@/theme/tokens';
 import { InteriorScreen } from '@/map/InteriorScreen';
 import { FIXTURES } from '@/map/fixtures/er';
-import type { Interior } from '@/map/types';
+import type { Interior } from '@engine';
 
 export default function InteriorRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();

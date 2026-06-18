@@ -2,7 +2,7 @@
 // (roof + facade + windows + door) and trees, ported from screens-explore-v2.
 // Buildings/trees are OBJECTS (block via footprint from props.w/h); `collision`
 // is just the map perimeter. Roaming NPCs (useGridMover) amble the plaza.
-import type { Interior } from '../types';
+import type { Interior } from '@engine';
 
 export const CAMPUS_INTERIOR: Interior = {
   id: 'CAMPUS-00001',

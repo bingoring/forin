@@ -5,7 +5,7 @@ import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axio
 import { useAuthStore } from '@/store/authStore';
 import { saveTokens } from '@/lib/secureStore';
 import type { paths } from '@contract/types';
-import type { Interior } from '@/map/types';
+import type { Interior } from '@engine';
 
 const baseURL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080';
 

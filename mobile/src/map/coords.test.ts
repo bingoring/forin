@@ -7,7 +7,7 @@ import {
   dirBetween,
   DIRS,
   sameCoord,
-} from './coords';
+} from '@engine/coords';
 
 describe('coords', () => {
   test('coordToPx scales tiles to screen pixels', () => {

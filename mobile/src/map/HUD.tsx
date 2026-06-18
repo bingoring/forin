@@ -3,7 +3,7 @@
 // label shows what A will do.
 import { Pressable, Text, View } from 'react-native';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
-import type { Dir } from './coords';
+import type { Dir } from '@engine';
 
 const PAD = 52; // D-pad button size
 

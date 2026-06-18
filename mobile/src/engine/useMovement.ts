@@ -5,7 +5,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Coord, Dir, DIRS, dirBetween, step } from './coords';
 import { buildBlocked, canEnter, findPath } from './collision';
-import { objectCollision } from './objects';
+import { objectCollision } from './footprint';
 import type { Interior } from './types';
 
 const STEP_MS = 240; // tile cadence while auto-walking a path (matches the render glide GLIDE_MS)

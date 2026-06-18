@@ -1,5 +1,5 @@
-import { buildBlocked, canEnter, findPath, tileKey, GridLike } from './collision';
-import { Coord } from './coords';
+import { buildBlocked, canEnter, findPath, tileKey, GridLike } from '@engine/collision';
+import { Coord } from '@engine/coords';
 
 // 5x5 grid with a wall across y=2, leaving a doorway at x=4.
 const walled: GridLike = {

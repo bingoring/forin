@@ -1,7 +1,7 @@
 // Bundled ER interior — a verbatim mirror of the server seed
 // (server/content/nurse/interiors/er.yaml). Used as an offline fallback so the
 // explore engine is reachable in Expo Go without a running server (dev login).
-import type { Interior } from '../types';
+import type { Interior } from '@engine';
 import { CAMPUS_INTERIOR } from './campus';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 

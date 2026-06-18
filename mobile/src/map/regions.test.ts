@@ -1,4 +1,4 @@
-import { regionAt, RegionLike } from './regions';
+import { regionAt, RegionLike } from '@engine/regions';
 
 const regions: RegionLike[] = [
   { id: 'triage', name: '트리아지', bounds: { x: 1, y: 1, w: 10, h: 8 } },

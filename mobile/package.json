@@ -52,7 +52,11 @@
     "preset": "jest-expo",
     "testMatch": [
       "**/src/**/*.test.ts"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@engine$": "<rootDir>/src/engine/index.ts",
+      "^@engine/(.*)$": "<rootDir>/src/engine/$1"
+    }
   },
   "private": true
 }

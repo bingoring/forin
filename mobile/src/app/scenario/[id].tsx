@@ -4,7 +4,7 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelBox } from '@/components/PixelBox';
-import { RoleFace } from '@/characters/Face';
+import { RoleFace } from '@engine';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 export default function ScenarioRoute() {

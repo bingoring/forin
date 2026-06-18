@@ -1,7 +1,7 @@
 // Fast-travel: pick a room to warp the player to its anchor tile.
 import { Modal, Pressable, Text, View } from 'react-native';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
-import type { Room } from './types';
+import type { Room } from '@engine';
 
 export function FastTravelModal({
   visible,

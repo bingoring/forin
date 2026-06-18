@@ -8,9 +8,9 @@
 import type { ReactElement } from 'react';
 import { Text, View } from 'react-native';
 import Svg, { Defs, G, Path, Pattern, Rect } from 'react-native-svg';
-import { TILE } from '../coords';
+import { TILE } from '@engine';
 import { fonts } from '@/theme/tokens';
-import type { MapObject } from '../types';
+import type { MapObject } from '@engine';
 
 const INK = '#2A2522';
 const S = TILE / 16;

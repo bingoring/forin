@@ -5,13 +5,13 @@
 // objects contribute their footprint to the blocked set via objectCollision().
 import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
-import { TILE } from '../coords';
+import { TILE } from '@engine';
 import { fonts } from '@/theme/tokens';
 import { ClinicObjectView } from './clinicEquipment';
 import { LandmarkView } from './landmarks';
-import type { MapObject } from '../types';
+import type { MapObject } from '@engine';
 
-export { OBJECT_FOOTPRINT, objectCollision } from './footprint';
+export { OBJECT_FOOTPRINT, objectCollision } from '@engine';
 
 const INK = '#2A2522';
 const SCALE = TILE / 16;

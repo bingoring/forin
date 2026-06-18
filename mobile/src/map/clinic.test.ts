@@ -1,9 +1,9 @@
 // Guards the generated clinic layout: from the player start, every exam room
 // hotspot + the procedure room must be reachable, and section doors walkable.
 import { INTERNAL } from './clinic';
-import { buildBlocked, canEnter, findPath } from './collision';
-import { objectCollision } from './objects/footprint';
-import type { Coord } from './coords';
+import { buildBlocked, canEnter, findPath } from '@engine/collision';
+import { objectCollision } from '@engine/footprint';
+import type { Coord } from '@engine/coords';
 
 const grid = { ...INTERNAL, collision: [...INTERNAL.collision, ...objectCollision(INTERNAL.objects)] };
 const blocked = buildBlocked(grid);

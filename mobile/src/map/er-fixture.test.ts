@@ -2,9 +2,9 @@
 // player must still reach the key tiles, doors must stay walkable, and object
 // footprints must block. Collision bugs are invisible on screen, so test them.
 import { ER_INTERIOR } from './fixtures/er';
-import { buildBlocked, canEnter, findPath } from './collision';
-import { objectCollision } from './objects/footprint';
-import type { Coord } from './coords';
+import { buildBlocked, canEnter, findPath } from '@engine/collision';
+import { objectCollision } from '@engine/footprint';
+import type { Coord } from '@engine/coords';
 
 const grid = { ...ER_INTERIOR, collision: [...ER_INTERIOR.collision, ...objectCollision(ER_INTERIOR.objects)] };
 const blocked = buildBlocked(grid);

@@ -1,7 +1,7 @@
 // Object footprints — pure (no RN imports) so it's unit-testable and shared by
 // the engine (collision) and the renderer (art size).
-import type { Bounds } from '../coords';
-import type { MapObject } from '../types';
+import type { Bounds } from './coords';
+import type { MapObject } from './types';
 
 /** Default tile footprint per solid object type. Doors are walkable → omitted.
  * Buildings vary in size, so they take their footprint from props.w/h instead. */

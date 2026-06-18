@@ -8,7 +8,7 @@ import { View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { TILE } from './coords';
 import { useGridMover } from './useGridMover';
-import { RoleSprite } from '@/characters/Sprite';
+import { RoleSprite } from './Sprite';
 import { EmoteBubble } from './EmoteBubble';
 import type { NpcSpec } from './types';
 

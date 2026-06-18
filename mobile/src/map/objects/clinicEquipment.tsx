@@ -4,8 +4,8 @@
 // objectCollision footprints).
 import { View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
-import { TILE } from '../coords';
-import type { MapObject } from '../types';
+import { TILE } from '@engine';
+import type { MapObject } from '@engine';
 
 const C = '#2A2522';
 const S = TILE / 16; // ref px → screen px

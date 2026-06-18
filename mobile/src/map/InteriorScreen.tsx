@@ -6,18 +6,18 @@ import { Pressable, Text, View, type LayoutChangeEvent, type GestureResponderEve
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
-import { TILE, coordToPx, type Coord } from './coords';
-import { regionAt } from './regions';
-import { useMovement } from './useMovement';
-import { TileFloor } from './TileFloor';
-import { Walls } from './Walls';
-import { RoomMask } from './RoomMask';
+import { TILE, coordToPx, type Coord } from '@engine';
+import { regionAt } from '@engine';
+import { useMovement } from '@engine';
+import { TileFloor } from '@engine';
+import { Walls } from '@engine';
+import { RoomMask } from '@engine';
 import { HUD } from './HUD';
 import { FastTravelModal } from './FastTravelModal';
-import { PlayerSprite, RoleSprite, type RoleKind } from '@/characters/Sprite';
-import { AmbientNpc } from './AmbientNpc';
+import { PlayerSprite, RoleSprite, type RoleKind } from '@engine';
+import { AmbientNpc } from '@engine';
 import { InteriorObjectView } from './objects';
-import type { Interior, MapObject, Hotspot } from './types';
+import type { Interior, MapObject, Hotspot } from '@engine';
 
 // Chibi sprites are taller than a tile (head sits above it). Width ≈ 2.2 tiles;
 // height = width*80/64. Feet are centered on the tile, head overhangs upward.

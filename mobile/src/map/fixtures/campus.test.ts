@@ -1,9 +1,9 @@
 // Guards the campus layout: flagship landmark footprints must not overlap each
 // other, and the player start + plaza must stay reachable around them.
 import { CAMPUS_INTERIOR } from './campus';
-import { buildBlocked, canEnter, findPath } from '../collision';
-import { objectCollision } from '../objects/footprint';
-import type { Bounds } from '../coords';
+import { buildBlocked, canEnter, findPath } from '@engine/collision';
+import { objectCollision } from '@engine/footprint';
+import type { Bounds } from '@engine/coords';
 
 const grid = { ...CAMPUS_INTERIOR, collision: [...CAMPUS_INTERIOR.collision, ...objectCollision(CAMPUS_INTERIOR.objects)] };
 const blocked = buildBlocked(grid);

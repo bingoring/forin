@@ -1,5 +1,5 @@
-import { advanceTarget, patrolStep, wanderStep, PatrolState } from './gridmover';
-import type { Coord, Bounds } from './coords';
+import { advanceTarget, patrolStep, wanderStep, PatrolState } from '@engine/gridmover';
+import type { Coord, Bounds } from '@engine/coords';
 
 describe('patrol', () => {
   test('advanceTarget ping-pongs the waypoint index within [0, n-1]', () => {

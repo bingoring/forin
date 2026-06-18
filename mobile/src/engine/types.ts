@@ -5,7 +5,7 @@
 
 import type { Coord, Bounds } from './coords';
 import type { RegionLike } from './regions';
-import type { RoleKind } from '@/characters/Sprite';
+import type { RoleKind } from './Sprite';
 
 export type Region = RegionLike;
 
