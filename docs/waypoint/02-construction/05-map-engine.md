@@ -142,6 +142,11 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   - **5d-iii 외래 클리닉 엔진**(v2 신규): `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
     내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
     `floorInternal/Surgery/Ortho/Derm`(+Alt) 및 클리닉 장비(UltrasoundCart·XrayViewbox·CastCart·DermLamp 등) 추가.
+  - **5d-iv 화면별 줌/스케일**(계획, 사용자 요청 2026-06-18): 디자인상 **캠퍼스는 더 축소(멀리서, 사물 작게)**, 인테리어/대화는 더
+    가깝게 본다. 현재 엔진은 모든 화면이 동일 TILE(32px) → **엔진에 화면별 스케일 파라미터** 추가(월드 컨테이너 transform scale,
+    카메라 보정 포함). 본격 화면 개발 시 화면마다 스케일 지정(캠퍼스 작게). 별도 증분으로 구현(지금 미구현).
+  - **참고:** 캠퍼스 화면은 현재 인테리어 엔진(`InteriorScreen`) 재사용한 **통합/검증용**이며 전용 캠퍼스 화면 chrome은 본격 화면 개발(2-6/전용)에서.
+    Building 지붕은 **`roofPattern`(solid/grid…) 확장형**(추후 무늬·지붕 오브젝트 추가 가능), 모든 지붕 grid 강제 안 함.
 - **5e — 재사용 픽셀 게임 엔진 추출**(계획, 사용자 요청 2026-06-16): `src/map`(타일·충돌·이동·카메라·gridmover)+`src/characters`
   (스프라이트·모션)를 forin 도메인과 분리해 **재사용 가능한 RN 픽셀게임 엔진 패키지**(예: `packages/pixel-engine`)로 추출.
   다른 프로젝트에서도 쓸 수 있게 의존성 역전(콘텐츠 스키마·아트는 주입). 맵/모션이 안정화된 뒤(5d 후) 착수. 순수 모듈
