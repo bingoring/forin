@@ -241,3 +241,12 @@
   (솟은 파사드는 통행 무관). 레퍼런스 ~16px/타일 좌표를 S=TILE/16로 스케일.
 - **검증:** jest 30/30(campus.test.ts: 랜드마크 풋프린트 비중첩 + 회랑 x7/x13/x19 도달성 2건 추가). tsc 0·doctor 21/21.
 - **결정자:** 사용자(5d-v→5d-iv→5e 무허가 자율 진행 지시) + AI(렌더 충실도 판단).
+
+## 2026-06-18 · 화면별 줌/스케일 (5d-iv)
+- **결정:** `Interior.scale?`(기본 1)로 화면별 카메라 줌 지원. `InteriorScreen` 월드 컨테이너 transform에 `{scale}` 추가하고
+  **`transformOrigin:'top left'`** 로 월드→스크린을 선형 매핑(`screen = translate + scale·world`)해 클램프/탭 수식을 단순화.
+  카메라 중앙맞춤 클램프를 스케일드 px로 계산. 캠퍼스 `scale:0.7`(핸드오프: 캠퍼스는 멀리서·작게), 인테리어/클리닉/ER 기본 1.
+- **탭 처리:** transform된 Pressable에서도 `locationX/Y`는 뷰의 **비변환 로컬 좌표** 로 보고되므로 `floor(locationX/TILE)` 변경 없음.
+  ⚠️ 플랫폼별 locationX 좌표계 차이 가능성 → scale<1에서 탭 정합은 디바이스 검증 항목으로 표기.
+- **검증:** tsc 0·jest 30/30·doctor 21/21.
+- **결정자:** 사용자(5d-v→5d-iv→5e 자율 진행) + AI.
