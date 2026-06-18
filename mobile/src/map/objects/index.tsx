@@ -208,10 +208,19 @@ function Building({ x, y, w = 4, h = 4, roofKey = 'blue', label, redCross, mainE
   const r = ROOFS[roofKey] ?? ROOFS.blue;
   const winCount = Math.max(1, w - 2);
   const centerIdx = Math.floor((w - 1) / 2) - 1;
+  const roofH = ph - WALL_H;
+  const seams = Math.max(0, w - 1); // vertical shingle seams (every tile)
+  const rows = Math.max(0, Math.floor(roofH / (TILE / 2)) - 1); // horizontal courses
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: x * TILE, top: y * TILE, width: pw, height: ph }}>
-      {/* roof top face */}
+      {/* roof top face + shingle texture (vertical seams + horizontal courses) */}
       <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: WALL_H, backgroundColor: r.mid, borderWidth: 2, borderColor: INK }} />
+      {Array.from({ length: seams }).map((_, i) => (
+        <View key={`s${i}`} style={{ position: 'absolute', left: (i + 1) * TILE, top: 2, width: 2, height: roofH - 4, backgroundColor: r.dk, opacity: 0.55 }} />
+      ))}
+      {Array.from({ length: rows }).map((_, j) => (
+        <View key={`r${j}`} style={{ position: 'absolute', left: 2, right: 2, top: (j + 1) * (TILE / 2), height: 1, backgroundColor: r.dk, opacity: 0.4 }} />
+      ))}
       <View style={{ position: 'absolute', left: 2, right: 2, top: 2, height: 3, backgroundColor: r.lt }} />
       <View style={{ position: 'absolute', right: 2, top: 2, bottom: WALL_H + 2, width: 3, backgroundColor: r.dk, opacity: 0.5 }} />
       {/* eaves overhang */}
@@ -240,9 +249,9 @@ function Building({ x, y, w = 4, h = 4, roofKey = 'blue', label, redCross, mainE
         </View>
       </View>
       {label ? (
-        <View style={{ position: 'absolute', left: 0, right: 0, top: -16, alignItems: 'center' }}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: INK, paddingHorizontal: 4, paddingVertical: 1 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: INK }}>{label}</Text>
+        <View style={{ position: 'absolute', left: -20, right: -20, top: -22, alignItems: 'center' }}>
+          <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: INK, paddingHorizontal: 7, paddingVertical: 3 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: INK, letterSpacing: 0.3 }}>{label}</Text>
           </View>
         </View>
       ) : null}
