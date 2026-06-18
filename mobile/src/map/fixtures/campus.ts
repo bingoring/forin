@@ -15,9 +15,9 @@ export const CAMPUS_INTERIOR: Interior = {
   rooms: [],
   objects: [
     // buildings (block via props.w/h footprint)
-    { id: 'b-hospital', type: 'building', x: 11, y: 2, props: { w: 6, h: 5, roof: 'blue', label: '종합병원', redCross: true, mainEntrance: true } },
-    { id: 'b-clinic', type: 'building', x: 3, y: 3, props: { w: 6, h: 4, roof: 'green', label: '외래 클리닉' } },
-    { id: 'b-pharm', type: 'building', x: 19, y: 3, props: { w: 6, h: 4, roof: 'red', label: '약국' } },
+    { id: 'b-hospital', type: 'building', x: 11, y: 2, props: { w: 6, h: 5, roof: 'blue', roofPattern: 'grid', label: '종합병원', redCross: true, mainEntrance: true } },
+    { id: 'b-clinic', type: 'building', x: 3, y: 3, props: { w: 6, h: 4, roof: 'green', roofPattern: 'solid', label: '외래 클리닉' } },
+    { id: 'b-pharm', type: 'building', x: 19, y: 3, props: { w: 6, h: 4, roof: 'red', roofPattern: 'grid', label: '약국' } },
     // trees (trunk-only collision; canopy overhangs)
     { id: 't1', type: 'tree', x: 5, y: 11, props: { big: true } },
     { id: 't2', type: 'tree', x: 23, y: 10 },

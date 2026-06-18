@@ -200,8 +200,10 @@ const ROOFS: Record<string, { mid: string; dk: string; lt: string }> = {
 const WALL_H = TILE * 1.5; // front wall face height
 
 // 2.5D building — roof top-face + front wall (windows + door), optional red cross / awning.
-function Building({ x, y, w = 4, h = 4, roofKey = 'blue', label, redCross, mainEntrance, accent }: {
-  x: number; y: number; w?: number; h?: number; roofKey?: string; label?: string; redCross?: boolean; mainEntrance?: boolean; accent?: string;
+// `roofPattern` is extensible: 'solid' (default) | 'grid' (shingle texture). Future
+// patterns (panels, tiles) or roof-top objects (helipad, AC) can be added here.
+function Building({ x, y, w = 4, h = 4, roofKey = 'blue', roofPattern = 'solid', label, redCross, mainEntrance, accent }: {
+  x: number; y: number; w?: number; h?: number; roofKey?: string; roofPattern?: 'solid' | 'grid'; label?: string; redCross?: boolean; mainEntrance?: boolean; accent?: string;
 }) {
   const pw = w * TILE;
   const ph = h * TILE;
@@ -209,11 +211,11 @@ function Building({ x, y, w = 4, h = 4, roofKey = 'blue', label, redCross, mainE
   const winCount = Math.max(1, w - 2);
   const centerIdx = Math.floor((w - 1) / 2) - 1;
   const roofH = ph - WALL_H;
-  const seams = Math.max(0, w - 1); // vertical shingle seams (every tile)
-  const rows = Math.max(0, Math.floor(roofH / (TILE / 2)) - 1); // horizontal courses
+  const seams = roofPattern === 'grid' ? Math.max(0, w - 1) : 0;
+  const rows = roofPattern === 'grid' ? Math.max(0, Math.floor(roofH / (TILE / 2)) - 1) : 0;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: x * TILE, top: y * TILE, width: pw, height: ph }}>
-      {/* roof top face + shingle texture (vertical seams + horizontal courses) */}
+      {/* roof top face (+ optional shingle texture per roofPattern) */}
       <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: WALL_H, backgroundColor: r.mid, borderWidth: 2, borderColor: INK }} />
       {Array.from({ length: seams }).map((_, i) => (
         <View key={`s${i}`} style={{ position: 'absolute', left: (i + 1) * TILE, top: 2, width: 2, height: roofH - 4, backgroundColor: r.dk, opacity: 0.55 }} />
@@ -225,11 +227,14 @@ function Building({ x, y, w = 4, h = 4, roofKey = 'blue', label, redCross, mainE
       <View style={{ position: 'absolute', right: 2, top: 2, bottom: WALL_H + 2, width: 3, backgroundColor: r.dk, opacity: 0.5 }} />
       {/* eaves overhang */}
       <View style={{ position: 'absolute', left: -2, right: -2, bottom: WALL_H - 2, height: 4, backgroundColor: r.dk, borderWidth: 1.5, borderColor: INK }} />
-      {/* roof emblem */}
+      {/* roof emblem — red cross centered inside the white plaque (center the
+          bars via flex so the box border can't push them off-center). */}
       {redCross ? (
-        <View style={{ position: 'absolute', left: pw / 2 - 11, top: 6, width: 22, height: 22, backgroundColor: '#fff', borderWidth: 2.5, borderColor: INK }}>
-          <View style={{ position: 'absolute', left: 8.5, top: 2, width: 5, height: 18, backgroundColor: CP.red }} />
-          <View style={{ position: 'absolute', left: 2, top: 8.5, width: 18, height: 5, backgroundColor: CP.red }} />
+        <View style={{ position: 'absolute', left: pw / 2 - 12, top: 6, width: 24, height: 24, backgroundColor: '#fff', borderWidth: 2.5, borderColor: INK, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ width: 14, height: 14, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ position: 'absolute', width: 4, height: 14, backgroundColor: CP.red }} />
+            <View style={{ position: 'absolute', width: 14, height: 4, backgroundColor: CP.red }} />
+          </View>
         </View>
       ) : null}
       {/* front wall */}
@@ -302,6 +307,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
           w={(props?.w as number) ?? 4}
           h={(props?.h as number) ?? 4}
           roofKey={(props?.roof as string) ?? 'blue'}
+          roofPattern={(props?.roofPattern as 'solid' | 'grid') ?? 'solid'}
           label={props?.label as string | undefined}
           redCross={!!props?.redCross}
           mainEntrance={!!props?.mainEntrance}
