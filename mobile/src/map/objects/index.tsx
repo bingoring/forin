@@ -8,6 +8,7 @@ import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '../coords';
 import { fonts } from '@/theme/tokens';
 import { ClinicObjectView } from './clinicEquipment';
+import { LandmarkView } from './landmarks';
 import type { MapObject } from '../types';
 
 export { OBJECT_FOOTPRINT, objectCollision } from './footprint';
@@ -322,6 +323,8 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
       );
     case 'tree':
       return <Tree x={x} y={y} big={!!props?.big} />;
+    case 'landmark':
+      return <LandmarkView object={object} />;
     default:
       // outpatient-clinic equipment (5d-iii)
       return ClinicObjectView({ object });

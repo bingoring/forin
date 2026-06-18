@@ -14,13 +14,14 @@ export const CAMPUS_INTERIOR: Interior = {
   regions: [],
   rooms: [],
   objects: [
-    // Flagship landmark departments (handoff v7) — placeholder via the generic
-    // Building (distinct roof/label/emblem); bespoke MedCenter art = real-campus
-    // -screen increment. Footprint blocks via props.w/h.
-    { id: 'b-main', type: 'building', x: 1, y: 2, props: { w: 6, h: 5, roof: 'red', roofPattern: 'grid', label: '본관 · MAIN', redCross: true, mainEntrance: true } },
-    { id: 'b-medschool', type: 'building', x: 8, y: 3, props: { w: 5, h: 4, roof: 'mauve', roofPattern: 'solid', label: '의과대학', emblem: '🎓' } },
-    { id: 'b-cancer', type: 'building', x: 14, y: 3, props: { w: 5, h: 4, roof: 'teal', roofPattern: 'grid', label: '암병원', emblem: '🎗' } },
-    { id: 'b-opd', type: 'building', x: 20, y: 2, props: { w: 6, h: 5, roof: 'green', roofPattern: 'solid', label: '외래 클리닉', emblem: '🩺', mainEntrance: true } },
+    // Flagship landmarks (handoff v7) — bespoke MedCenter art (5d-v). `landmark`
+    // dispatches the facade: default=본관(multi-tower), victorian=의과대학(brick+dome),
+    // curved=암병원(curved glass+dish), horizontal=외래(sun-shade bands). Facades rise
+    // above the footprint; the footprint (props.w/h) is what blocks movement.
+    { id: 'b-main', type: 'landmark', x: 1, y: 3, props: { w: 6, h: 4, landmark: 'default', label: '본관 · MAIN', sign: '메디컬센터', signColor: '#B0524A' } },
+    { id: 'b-medschool', type: 'landmark', x: 8, y: 3, props: { w: 5, h: 4, landmark: 'victorian', label: '의과대학', sign: 'MEDICAL SCHOOL' } },
+    { id: 'b-cancer', type: 'landmark', x: 14, y: 3, props: { w: 5, h: 4, landmark: 'curved', label: '암병원', sign: 'CANCER CENTER' } },
+    { id: 'b-opd', type: 'landmark', x: 20, y: 3, props: { w: 6, h: 4, landmark: 'horizontal', label: '외래 클리닉', sign: 'OUTPATIENT' } },
     // trees (trunk-only collision; canopy overhangs)
     { id: 't1', type: 'tree', x: 5, y: 11, props: { big: true } },
     { id: 't2', type: 'tree', x: 23, y: 10 },
