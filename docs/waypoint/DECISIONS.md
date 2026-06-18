@@ -250,3 +250,17 @@
   ⚠️ 플랫폼별 locationX 좌표계 차이 가능성 → scale<1에서 탭 정합은 디바이스 검증 항목으로 표기.
 - **검증:** tsc 0·jest 30/30·doctor 21/21.
 - **결정자:** 사용자(5d-v→5d-iv→5e 자율 진행) + AI.
+
+## 2026-06-18 · 재사용 픽셀 엔진 추출 (5e)
+- **결정:** 제네릭 2.5D 타일맵/픽셀게임 커널을 **`mobile/src/engine/`** 로 추출하고 `@engine` 경로 alias(tsconfig paths + jest
+  moduleNameMapper; Expo Metro가 `@/`처럼 런타임 해소) 부여. 이전: 순수(coords/collision/regions/gridmover/footprint)+types+훅
+  (useMovement/useGridMover)+캐릭터(Sprite/Face)+무상태 레이어(TileFloor/Walls/RoomMask/AmbientNpc/EmoteBubble). forin 콘텐츠
+  (objects 렌더러·fixtures·clinic·HUD·FastTravelModal·InteriorScreen)는 앱 잔류.
+- **의존성 역전 = 합성:** 엔진은 forin을 import하지 않음(검증: src/engine 내 `@/`·상위상대 import 0). 앱 화면이 엔진 프리미티브 위에
+  자기 콘텐츠를 합성. 디커플 2건: useMovement가 objects 배럴→footprint 직접 참조, EmoteBubble가 앱 토큰→로컬 INK 상수.
+- **위치 결정(왜 `packages/pixel-engine`가 아닌가):** 레포에 루트 워크스페이스 부재·`node_modules`가 mobile/에 단 하나 → 런타임
+  패키지를 앱 루트 밖에 두면 tsc·Metro가 react/react-native 미해소(워크스페이스 툴링 필요). `packages/contract`는 type-only라 무료지만
+  엔진은 런타임. 시도했다가(packages/pixel-engine + metro watchFolders) tsc가 엔진 파일의 bare import를 해소 못 해 **`src/engine`으로
+  확정**(무설정, 동일 경계). packages/로 물리 승격은 npm workspaces+루트 node_modules 필요한 인프라 후속으로 명시.
+- **검증:** tsc 0·jest 30/30(순수 테스트는 deep `@engine/<mod>`로 RN 비적재)·`expo export` Metro 번들 성공(1601 modules)·doctor 21/21.
+- **결정자:** 사용자(5d-v→5d-iv→5e 자율 진행 지시) + AI(위치 트레이드오프 판단).

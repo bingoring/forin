@@ -149,10 +149,18 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   - **5d-v ✅ 플래그십 랜드마크 베스포크 아트**(2026-06-18, handoff v7): `screens-explore-v2`의 4종 랜드마크를 RN으로 포팅(`src/map/objects/landmarks.tsx`). **신규 오브젝트 타입 `landmark`** — `props.landmark`로 파사드 디스패치: `default`=**본관 MedCenter**(다크글래스+앰버 아트리움+화이트스톤 3타워+연결브리지+포디움), `victorian`=**의과대학 MedCenterV**(벽돌 `Pattern`+슬레이트 맨사드+도머창+모서리 터릿+구리 돔+랜턴, react-native-svg 직접 포팅), `curved`=**암병원 MedCenterC**(볼록 곡면유리 타워+지붕 접시 조형물+그린글래스 포디움), `horizontal`=**외래 MedCenterH**(다크글래스 리본창+화이트 차양핀 5층+옥상 파라펫+필로티). **그라데이션/글로우는 솔리드+레이어 근사**(MedCenter/H/C는 View 기반, MedCenterV만 SVG `Pattern`/`Path`로 직접 포팅). 파사드는 풋프린트 위로 솟음(overflow visible), **차단은 `props.w/h` 풋프린트만**. 캠퍼스 4동을 범용 Building→landmark로 교체. **jest 30/30**(캠퍼스 풋프린트 비중첩+회랑 도달성 2건 추가). tsc 0·doctor 21/21. ⚠️ CSS 선형그라데이션·box-shadow 글로우는 RN 미지원 → 솔리드 근사(시각 충실도 일부 손실), 추후 `expo-linear-gradient` 도입 시 고도화 가능.
   - **참고:** 캠퍼스 화면은 현재 인테리어 엔진(`InteriorScreen`) 재사용한 **통합/검증용**이며 전용 캠퍼스 화면 chrome은 본격 화면 개발(2-6/전용)에서.
     Building 지붕은 **`roofPattern`(solid/grid…) 확장형**(추후 무늬·지붕 오브젝트 추가 가능), 모든 지붕 grid 강제 안 함.
-- **5e — 재사용 픽셀 게임 엔진 추출**(계획, 사용자 요청 2026-06-16): `src/map`(타일·충돌·이동·카메라·gridmover)+`src/characters`
-  (스프라이트·모션)를 forin 도메인과 분리해 **재사용 가능한 RN 픽셀게임 엔진 패키지**(예: `packages/pixel-engine`)로 추출.
-  다른 프로젝트에서도 쓸 수 있게 의존성 역전(콘텐츠 스키마·아트는 주입). 맵/모션이 안정화된 뒤(5d 후) 착수. 순수 모듈
-  (coords/collision/regions/gridmover)은 이미 forin 비의존이라 이전 쉬움. 인터페이스: `walkClock`/`dir`/`seed` 등 이미 엔진 지향.
+- **5e ✅ 재사용 픽셀 게임 엔진 추출**(2026-06-18): 제네릭 커널을 **`mobile/src/engine/`** 로 추출(`@engine` alias). 이전 모듈: 순수
+  로직 `coords/collision/regions/gridmover/footprint` + 데이터 `types` + 훅 `useMovement/useGridMover` + 캐릭터 `Sprite/Face` +
+  무상태 레이어 `TileFloor/Walls/RoomMask/AmbientNpc/EmoteBubble`. **forin 콘텐츠는 앱 잔류**: 오브젝트 렌더러(`objects/*` 침대·
+  클리닉장비·랜드마크), 픽스처(`fixtures/*`,`clinic.ts`), 화면 chrome(`HUD`,`FastTravelModal`), 화면 합성(`InteriorScreen`). **의존성
+  역전은 합성(composition) 방식** — 엔진은 forin을 전혀 import하지 않고(검증: `src/engine`에 `@/`·상위상대 import 0), 앱이 엔진
+  프리미티브 위에 자기 콘텐츠를 얹음. 디커플 2건: `useMovement`가 `objects` 배럴 대신 `footprint` 직접 참조, `EmoteBubble`가 앱 토큰
+  대신 로컬 INK 상수. 배럴 `index.ts`(`export *`, 이름충돌 0) + 단위테스트는 deep import(`@engine/coords` 등, RN 컴포넌트 비적재).
+  **검증: tsc 0·jest 30/30·`expo export`(Metro 번들 1601모듈 성공)·doctor 21/21.**
+  - **위치 결정(`src/engine` vs `packages/`):** 레포에 루트 워크스페이스가 없고 `node_modules`가 `mobile/`에 단 하나라, 런타임 패키지를
+    앱 루트 밖에 두면 tsc·Metro가 `react`/`react-native`를 해소 못 함(워크스페이스 툴링 필요). `packages/contract`는 **type-only
+    aliased source**라 무료지만 엔진은 런타임 코드. → `src/engine`에 두어 무설정으로 동일한 forin-디커플·배럴 경계를 확보. `packages/
+    pixel-engine`으로의 물리 승격은 npm workspaces + 루트 node_modules가 필요한 **인프라 후속**(별도). 상세는 `src/engine/README.md`.
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
 
