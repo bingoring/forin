@@ -228,3 +228,16 @@
   jest 28/28(클리닉 진료실·처치실 도달·문 통행 검증). 충돌=벽만, 장비는 footprint(props.w/h) 있는 것만 차단.
 - **임시:** NPC는 클라이언트 fixture·정적(1×1 wander로 제자리 호흡/이모트), 핫스팟 scenarioId는 placeholder.
 - **결정자:** 사용자(진행) + AI.
+
+## 2026-06-18 · 플래그십 랜드마크 베스포크 아트 (5d-v)
+- **결정:** v7의 4종 랜드마크를 `src/map/objects/landmarks.tsx`로 포팅하고 **신규 오브젝트 타입 `landmark`** 추가. `props.landmark`로
+  파사드 디스패치(default=본관 MedCenter 다중타워 / victorian=의과대학 MedCenterV / curved=암병원 MedCenterC / horizontal=외래
+  MedCenterH). 캠퍼스 fixture 4동을 범용 Building→landmark로 교체(5d-v 계획대로 경량 Building 대체).
+- **렌더 충실도 트레이드오프:** RN View는 **CSS 선형그라데이션·box-shadow 글로우 미지원** → MedCenter/H/C는 View 기반에 **솔리드+밝은
+  코어 레이어로 그라데이션/글로우 근사**(실루엣·구성·창배치는 충실, 색 그라데이션 뉘앙스는 손실). 벽돌 `Pattern`+슬레이트 맨사드+구리
+  돔이 핵심 시그니처인 **의과대학(MedCenterV)만 react-native-svg(`Pattern`/`Path`/`G`)로 직접 포팅**. 추후 `expo-linear-gradient`
+  도입 시 고도화 여지.
+- **배치 모델:** 파사드는 풋프린트보다 높이 솟음(facadeH > h·TILE, overflow visible) — 레퍼런스 동일. **차단은 `props.w/h` 풋프린트만**
+  (솟은 파사드는 통행 무관). 레퍼런스 ~16px/타일 좌표를 S=TILE/16로 스케일.
+- **검증:** jest 30/30(campus.test.ts: 랜드마크 풋프린트 비중첩 + 회랑 x7/x13/x19 도달성 2건 추가). tsc 0·doctor 21/21.
+- **결정자:** 사용자(5d-v→5d-iv→5e 무허가 자율 진행 지시) + AI(렌더 충실도 판단).

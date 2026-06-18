@@ -144,7 +144,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   - **5d-iv 화면별 줌/스케일**(계획, 사용자 요청 2026-06-18): 디자인상 **캠퍼스는 더 축소(멀리서, 사물 작게)**, 인테리어/대화는 더
     가깝게 본다. 현재 엔진은 모든 화면이 동일 TILE(32px) → **엔진에 화면별 스케일 파라미터** 추가(월드 컨테이너 transform scale,
     카메라 보정 포함). 본격 화면 개발 시 화면마다 스케일 지정(캠퍼스 작게). 별도 증분으로 구현(지금 미구현).
-  - **5d-v 플래그십 랜드마크 베스포크 아트**(계획, handoff v7): `screens-explore-v2`의 MedCenter/H/V/C(다중타워·곡면유리·돔·글로우)를 RN으로 충실 포팅. 그라데이션/글로우는 RN 근사 필요 → 전용 캠퍼스 화면 개발과 함께. `arch`(flat/tower/glass) 변형도 이때.
+  - **5d-v ✅ 플래그십 랜드마크 베스포크 아트**(2026-06-18, handoff v7): `screens-explore-v2`의 4종 랜드마크를 RN으로 포팅(`src/map/objects/landmarks.tsx`). **신규 오브젝트 타입 `landmark`** — `props.landmark`로 파사드 디스패치: `default`=**본관 MedCenter**(다크글래스+앰버 아트리움+화이트스톤 3타워+연결브리지+포디움), `victorian`=**의과대학 MedCenterV**(벽돌 `Pattern`+슬레이트 맨사드+도머창+모서리 터릿+구리 돔+랜턴, react-native-svg 직접 포팅), `curved`=**암병원 MedCenterC**(볼록 곡면유리 타워+지붕 접시 조형물+그린글래스 포디움), `horizontal`=**외래 MedCenterH**(다크글래스 리본창+화이트 차양핀 5층+옥상 파라펫+필로티). **그라데이션/글로우는 솔리드+레이어 근사**(MedCenter/H/C는 View 기반, MedCenterV만 SVG `Pattern`/`Path`로 직접 포팅). 파사드는 풋프린트 위로 솟음(overflow visible), **차단은 `props.w/h` 풋프린트만**. 캠퍼스 4동을 범용 Building→landmark로 교체. **jest 30/30**(캠퍼스 풋프린트 비중첩+회랑 도달성 2건 추가). tsc 0·doctor 21/21. ⚠️ CSS 선형그라데이션·box-shadow 글로우는 RN 미지원 → 솔리드 근사(시각 충실도 일부 손실), 추후 `expo-linear-gradient` 도입 시 고도화 가능.
   - **참고:** 캠퍼스 화면은 현재 인테리어 엔진(`InteriorScreen`) 재사용한 **통합/검증용**이며 전용 캠퍼스 화면 chrome은 본격 화면 개발(2-6/전용)에서.
     Building 지붕은 **`roofPattern`(solid/grid…) 확장형**(추후 무늬·지붕 오브젝트 추가 가능), 모든 지붕 grid 강제 안 함.
 - **5e — 재사용 픽셀 게임 엔진 추출**(계획, 사용자 요청 2026-06-16): `src/map`(타일·충돌·이동·카메라·gridmover)+`src/characters`
