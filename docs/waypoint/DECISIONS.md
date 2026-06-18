@@ -200,3 +200,11 @@
 - **반영 판단:** Sprite.tsx에 타입+hairBack/hairFront/hairSide/backHead 포팅. **ROLES 자동배정은 v6도 불변**(patient는 bald 유지) →
   ponytail/balding은 "사용 가능한 스타일"로만 추가(명시 사용 시 노출). tsc 0·jest 25/25·doctor 21/21. 시각 = 디바이스.
 - **결정자:** 사용자(v6 제공) + AI(반영).
+
+## 2026-06-18 · 캠퍼스 아트 (5d-ii)
+- **결정:** `screens-explore-v2.jsx`의 **Building**(2.5D 지붕+벽+창+문, 파라메트릭 w/h/roof/label/redCross/mainEntrance)과
+  **Tree**(레이어 캐노피)를 오브젝트 타입(`building`/`tree`)으로 포팅. 캠퍼스 fixture를 placeholder 블록 → 실제 건물 3채(종합병원/
+  외래클리닉/약국) + 나무로 재작성. **오브젝트 충돌 footprint를 `props.w/h`로** 확장(건물 가변크기), `collision` 필드는 외곽선만.
+  나무는 trunk(1×1)만 차단(캐노피 오버행 = 통행). Building은 CSS 그라데이션 대신 View 단색+엣지로 근사.
+- **후속:** 경로/플라자 바닥 타일·추가 prop(벤치·분수 등)·y기준 깊이정렬은 다음 증분.
+- **결정자:** 사용자(진행) + AI.

@@ -138,7 +138,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     nurse/visitor/patient/child/doctor) + 캠퍼스 탭 "🗺 캠퍼스 둘러보기" 진입. ⚠️ NPC는 현재 **클라이언트 fixture**(서버
     interior `npcs` 필드는 후속) · 건물 **placeholder 블록**(아트 5d-ii) · wander는 `bound`만 따름(open bound로 배치).
     tsc 0·jest 24/24·doctor 21/21. 시각 = 디바이스.
-  - **5d-ii 캠퍼스 아트**(다음): `screens-explore-v2.jsx` 건물·경로·나무·prop 충실 포팅(placeholder 대체).
+  - **5d-ii ✅ 캠퍼스 아트**(2026-06-18): `screens-explore-v2.jsx`의 **Building**(지붕 top-face+벽+창+문+레드크로스·어닝, 파라메트릭 w/h/roof/label)·**Tree**(2.5D 캐노피)를 오브젝트로 포팅. 캠퍼스 fixture 재작성 — 종합병원/외래클리닉/약국 건물 + 나무 5그루(잔디 위), placeholder 블록 제거. **오브젝트 footprint를 props.w/h로**(건물 가변크기) 차단, `collision`은 외곽선만. 나무는 trunk(1×1)만 차단·캐노피 오버행. tsc 0·jest 25/25·doctor 21/21. ⚠️ 경로/플라자 바닥·prop(벤치 등) 추가·y-깊이정렬은 후속.
   - **5d-iii 외래 클리닉 엔진**(v2 신규): `interior-clinics.jsx`의 `ClinicInterior`를 config 기반으로 포팅 —
     내과/외과/정형외과/피부과를 표준 평면(접수+대기 → 진료실 3 → 처치실)에서 생성, 부서 추가 = config 1개. IP 바닥 톤
     `floorInternal/Surgery/Ortho/Derm`(+Alt) 및 클리닉 장비(UltrasoundCart·XrayViewbox·CastCart·DermLamp 등) 추가.
