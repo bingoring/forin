@@ -264,3 +264,12 @@
   확정**(무설정, 동일 경계). packages/로 물리 승격은 npm workspaces+루트 node_modules 필요한 인프라 후속으로 명시.
 - **검증:** tsc 0·jest 30/30(순수 테스트는 deep `@engine/<mod>`로 RN 비적재)·`expo export` Metro 번들 성공(1601 modules)·doctor 21/21.
 - **결정자:** 사용자(5d-v→5d-iv→5e 자율 진행 지시) + AI(위치 트레이드오프 판단).
+
+## 2026-06-19 · NPC idle 모드 (정지·정면 고정)
+- **문제(디바이스 피드백):** 클리닉의 제자리 의사/간호사 NPC가 `stand()`= **1×1 wander bound**로 만들어져, 이동은 막히지만
+  `wanderStep`이 매 틱 무작위 방향을 반환 → **보는 방향(facing)만 상하좌우로 계속 바뀜**(가만히 못 서 있음).
+- **결정:** 엔진에 **`NpcSpec.mode='idle'`** 추가 — 이동·방향전환 없이 정면(`dir:'down'`) 고정, 호흡/깜빡임·이따금 이모트는 유지
+  (살아있는 느낌). useGridMover의 step 분기는 idle에서 no-op이라 dir이 'down'으로 고정. `clinic.ts stand()`를 1×1 wander→idle로
+  전환. 캠퍼스/ER의 실제 bound wander(배회 NPC)는 그대로.
+- **검증:** tsc 0·jest 30/30·doctor 21/21. ⚠️ idle 정지·정면 고정은 디바이스 확인 항목. 완전 무이모트가 필요하면 per-NPC `emoteChance:0`.
+- **결정자:** 사용자(피드백) + AI.
