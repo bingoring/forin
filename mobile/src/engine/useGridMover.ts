@@ -9,10 +9,10 @@ import { PatrolState, patrolStep, wanderStep } from './gridmover';
 export const EMOTES = ['💬', '😄', '🤔', '☕', '👍', '✨', '😮', '🩺', '📋', '❤️'];
 
 export interface GridMoverOpts {
-  mode: 'patrol' | 'wander';
+  mode: 'patrol' | 'wander' | 'idle'; // idle = stand still, face front
   path?: Coord[]; // patrol waypoints
   bound?: Bounds; // wander rectangle
-  start?: Coord; // wander start tile
+  start?: Coord; // wander/idle start (stand) tile
   tickMs?: number; // cadence (default 1800 — calm/readable)
   emoteChance?: number; // chance per tick to pause & emote (default 0.22)
 }
@@ -29,6 +29,9 @@ export function useGridMover(opts: GridMoverOpts): GridMoverState {
   const { mode, path, bound, start, tickMs = 1800, emoteChance = 0.22 } = opts;
   const initial: Coord =
     mode === 'patrol' ? path?.[0] ?? { x: 0, y: 0 } : start ?? { x: bound?.x ?? 0, y: bound?.y ?? 0 };
+  // idle NPCs never move or turn — they just stand facing front (still breathe/
+  // blink + may emote). They keep the timer only so the emote bubble can fire;
+  // the step branch below is a no-op for idle, so `dir` stays 'down' forever.
 
   const [st, setSt] = useState<GridMoverState>({ x: initial.x, y: initial.y, dir: 'down', walking: false, emote: null });
   const patrolRef = useRef<PatrolState>({ target: 0, fwd: true });

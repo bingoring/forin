@@ -66,8 +66,9 @@ export function clinicInterior(cfg: ClinicCfg): Interior {
   const hotspots: Hotspot[] = [];
   let n = 0;
   const add = (s: ObjSpec) => objects.push({ id: `o${n++}`, type: s.type, x: s.x, y: s.y, props: s.props });
-  // a stationary NPC stands + breathes/emotes (1×1 wander bound = can't move)
-  const stand = (kind: RoleKind, x: number, y: number, seed: number) => npcs.push({ id: `npc${seed}`, kind, mode: 'wander', bound: { x, y, w: 1, h: 1 }, start: { x, y }, seed });
+  // a stationary NPC stands still facing front + breathes/blinks/emotes (idle =
+  // never moves or turns; the old 1×1-wander hack kept flipping facing each tick)
+  const stand = (kind: RoleKind, x: number, y: number, seed: number) => npcs.push({ id: `npc${seed}`, kind, mode: 'idle', start: { x, y }, seed });
 
   // doors (walkable openings): one into each exam room + procedure
   add({ type: 'door', x: 9, y: 0, props: { w: 2, kind: 'auto' } });

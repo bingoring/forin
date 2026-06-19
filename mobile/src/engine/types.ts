@@ -13,10 +13,10 @@ export type Region = RegionLike;
 export interface NpcSpec {
   id: string;
   kind: RoleKind;
-  mode: 'patrol' | 'wander';
+  mode: 'patrol' | 'wander' | 'idle'; // idle = stand still, face front (no movement/turning)
   path?: Coord[]; // patrol waypoints
   bound?: Bounds; // wander rectangle
-  start?: Coord; // wander start tile
+  start?: Coord; // wander (or idle) start/stand tile
   seed?: number; // stable identity (so it doesn't flicker while moving)
   mood?: 'happy' | 'derp';
   tickMs?: number;
