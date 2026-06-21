@@ -273,3 +273,18 @@
   전환. 캠퍼스/ER의 실제 bound wander(배회 NPC)는 그대로.
 - **검증:** tsc 0·jest 30/30·doctor 21/21. ⚠️ idle 정지·정면 고정은 디바이스 확인 항목. 완전 무이모트가 필요하면 per-NPC `emoteChance:0`.
 - **결정자:** 사용자(피드백) + AI.
+
+## 2026-06-21 · 독립 코드 리뷰 게이트 R-1 (2-5 맵 엔진, 스코프드)
+- **계기:** waypoint에 독립 코드 리뷰 게이트(Phase R) 신설. 2-5 맵 엔진(5d-v/iv/e+idle)은 AI가 자율 작성하며 "테스트 통과"를
+  자기보고만 한 영역이라 우선 스코프드 적용.
+- **실행:** 작성 세션과 **컨텍스트 분리된** 독립 서브에이전트 3개(엔진로직 / RN렌더·카메라 / 5e추출), refute 기본값 다관점 적대 리뷰.
+  findings 17건(CRITICAL 0, HIGH 1) → **각 검증 후 9 채택·8 반박**.
+- **채택(수정):** [HIGH] scale≠1 탭→타일 매핑 모호성 → InteriorScreen 구조 변경(Pressable=스케일드+translate만, 내부 wrapper=scale)로
+  `⌊loc/(TILE·scale)⌋` 결정론화. [MED×3] useGridMover walkClear 레이스·idle 불필요타이머·patrol 스펙변경 재시드. [LOW×3] patrolStep
+  post-advance 클램프·landmarks key·landmark w/h 가드. [NIT×2] 배럴/README 문구. + per-tick 결정을 순수 `moverStep`로 추출(idle/불변식
+  결정론 테스트, +6).
+- **반박(근거 기록):** 카메라=타일중심(의도)·오프스크린 컬링(기존·소규모라 보류)·gate 스냅(백로그)·memo 코어스의존(불변스펙)·moveDir
+  facing(의도)·locationX edge(canEnter 검사)·AmbientNpc 재발화(deps상 미발생). → 스테이지 문서에 상세.
+- **재검증:** tsc 0·jest 36/36·expo export 번들·doctor 21/21. 잔여: 캠퍼스 탭 시각정합 디바이스 확인 1건(게이트).
+- **교훈:** 같은 컨텍스트 self-review였다면 HIGH 탭버그를 "괜찮다"고 합리화했을 것(실제로 직전 내 주석이 그랬음). 독립=구조가 값을 증명.
+- **결정자:** 사용자(게이트 신설·2-5 적용 지시) + 독립 리뷰어 3 + AI(triage).

@@ -33,6 +33,14 @@
 
 **병행 트랙:** [콘텐츠 워크스트림](content-workstream.md) — AI 작성(조사→초안→검수), **2-2 포맷 확정 후 본격 착수**. PENDING.
 
+## Phase R — Independent Code Review 🔍 (Construction → Operations 게이트)
+
+> 작성자와 **컨텍스트가 분리된** 독립·적대적 리뷰어가 코드를 검토한다. FRAMEWORK "리뷰 게이트" 참조.
+
+| 스테이지 | 문서 | 상태 |
+|---------|------|------|
+| R-1 Independent Code Review (2-5 맵 엔진 스코프) | [01-independent-review.md](0R-review/01-independent-review.md) | AI_PROPOSED (HIGH 1·MEDIUM 3·LOW 3·NIT 2 채택·수정; +6 테스트) |
+
 ## Phase 3 — Operations (Ship)
 
 | 스테이지 | 문서 | 상태 |
