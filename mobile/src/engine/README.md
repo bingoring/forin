@@ -46,7 +46,10 @@ its own.
 This kernel lives at `mobile/src/engine/` rather than `packages/pixel-engine/`.
 The repo has no root workspace and a single `node_modules` (in `mobile/`), so a
 runtime package outside the app root can't resolve `react`/`react-native` for
-either `tsc` or Metro without workspace tooling. Keeping it under `src/` gives the
-clean, forin-decoupled, barrel-exported boundary with zero extra build config.
+either `tsc` or Metro without workspace tooling. (The existing `packages/contract`
+seems to contradict this, but it's a **types-only** package — consumed solely via
+`import type`, so it never needs to resolve a runtime dependency.) Keeping the
+engine under `src/` gives the clean, forin-decoupled, barrel-exported boundary
+with zero extra build config.
 Promoting it to a published `packages/pixel-engine` is a follow-up that requires
 npm workspaces + a root `node_modules` (or a built/published package).

@@ -4,7 +4,7 @@
 // give the sprite a stable `seed` so its identity doesn't flicker while moving.
 import { useEffect, useRef, useState } from 'react';
 import type { Bounds, Coord, Dir } from './coords';
-import { PatrolState, patrolStep, wanderStep } from './gridmover';
+import { PatrolState, moverStep } from './gridmover';
 
 export const EMOTES = ['💬', '😄', '🤔', '☕', '👍', '✨', '😮', '🩺', '📋', '❤️'];
 
@@ -37,6 +37,22 @@ export function useGridMover(opts: GridMoverOpts): GridMoverState {
   const patrolRef = useRef<PatrolState>({ target: 0, fwd: true });
   const pauseRef = useRef(0);
   const walkClear = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clearWalk = () => {
+    if (walkClear.current) {
+      clearTimeout(walkClear.current);
+      walkClear.current = null;
+    }
+  };
+
+  // Re-seed when the spec changes (new mode/path/bound/start): reset position AND
+  // patrolRef, else a new path would be walked from a stale target/pos and jump
+  // multiple tiles in one tick (breaks the 1-tile/tick invariant). Specs are
+  // module constants today, so this normally runs once.
+  useEffect(() => {
+    patrolRef.current = { target: 0, fwd: true };
+    setSt({ x: initial.x, y: initial.y, dir: 'down', walking: false, emote: null });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, path, bound, start?.x, start?.y]);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -46,34 +62,34 @@ export function useGridMover(opts: GridMoverOpts): GridMoverState {
         if (pauseRef.current === 0) setSt((s) => ({ ...s, emote: null }));
         return;
       }
-      // maybe stop and pop an emote (2–3 ticks).
+      // maybe stop and pop an emote (2–3 ticks). Clear any in-flight walk-pose
+      // timeout first so it can't later flip `walking` false mid-step.
       if (Math.random() < emoteChance) {
+        clearWalk();
         pauseRef.current = 1 + Math.floor(Math.random() * 2);
         const emote = EMOTES[Math.floor(Math.random() * EMOTES.length)];
         setSt((s) => ({ ...s, emote, walking: false }));
         return;
       }
-      // else take a step.
+      // else take a step (idle is a no-op that stays put facing front).
+      let walked = false;
       setSt((s) => {
-        if (mode === 'patrol' && path && path.length) {
-          const r = patrolStep(path, { x: s.x, y: s.y }, patrolRef.current);
-          patrolRef.current = r.state;
-          return { x: r.pos.x, y: r.pos.y, dir: r.dir, walking: true, emote: null };
-        }
-        if (mode === 'wander' && bound) {
-          const r = wanderStep({ x: s.x, y: s.y }, bound, Math.random());
-          return { x: r.pos.x, y: r.pos.y, dir: r.dir, walking: r.moved, emote: null };
-        }
-        return s;
+        const r = moverStep(mode, { x: s.x, y: s.y }, { path, bound }, patrolRef.current, Math.random());
+        patrolRef.current = r.state;
+        walked = r.walking;
+        return { x: r.pos.x, y: r.pos.y, dir: r.dir, walking: r.walking, emote: null };
       });
-      if (walkClear.current) clearTimeout(walkClear.current);
-      walkClear.current = setTimeout(() => setSt((s) => ({ ...s, walking: false })), Math.min(tickMs - 50, 340));
+      // only arm the walk-pose clear when a step actually set walking (never for idle).
+      if (walked) {
+        clearWalk();
+        walkClear.current = setTimeout(() => setSt((s) => ({ ...s, walking: false })), Math.min(tickMs - 50, 340));
+      }
     }, tickMs);
     return () => {
       clearInterval(id);
-      if (walkClear.current) clearTimeout(walkClear.current);
+      clearWalk();
     };
-  }, [mode, path, bound, tickMs, emoteChance]);
+  }, [mode, path, bound, start, tickMs, emoteChance]);
 
   return st;
 }

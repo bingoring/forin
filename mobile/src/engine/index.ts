@@ -10,8 +10,10 @@
 // of these primitives. Another project can depend on this package and supply
 // its own content the same way.
 //
-// Consumed via the `@engine` path alias (tsconfig paths + Metro watchFolders +
-// jest moduleNameMapper). See docs 02-construction/05-map-engine.md §5e.
+// Consumed via the `@engine` path alias — resolved by tsconfig `paths` (Expo
+// Metro reads tsconfig paths natively, the same mechanism as `@/`) and mirrored
+// in jest via `moduleNameMapper`. No metro.config / watchFolders needed since the
+// engine lives inside the app root. See docs 02-construction/05-map-engine.md §5e.
 
 // pure logic (no React) — unit-testable
 export * from './coords';

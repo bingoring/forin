@@ -1,4 +1,4 @@
-import { advanceTarget, patrolStep, wanderStep, PatrolState } from '@engine/gridmover';
+import { advanceTarget, patrolStep, wanderStep, moverStep, PatrolState } from '@engine/gridmover';
 import type { Coord, Bounds } from '@engine/coords';
 
 describe('patrol', () => {
@@ -54,6 +54,56 @@ describe('patrol', () => {
 
   test('empty path does not crash', () => {
     expect(patrolStep([], { x: 1, y: 1 }, { target: 0, fwd: true }).pos).toEqual({ x: 1, y: 1 });
+  });
+
+  test('out-of-range target index is clamped, never throws (R-1 #4)', () => {
+    const path: Coord[] = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
+    // a stale/overflowed target index must not read undefined → crash
+    expect(() => patrolStep(path, { x: 0, y: 0 }, { target: 99, fwd: true })).not.toThrow();
+    expect(() => patrolStep(path, { x: 1, y: 0 }, { target: -5, fwd: true })).not.toThrow();
+  });
+});
+
+// moverStep — the pure per-tick decision shared by useGridMover (R-1: idle had no test)
+describe('moverStep', () => {
+  const noState: PatrolState = { target: 0, fwd: true };
+
+  test('idle stands still facing front regardless of rng or repetition', () => {
+    let pos: Coord = { x: 4, y: 4 };
+    for (const rng of [0, 0.25, 0.5, 0.75, 0.999]) {
+      const r = moverStep('idle', pos, {}, noState, rng);
+      expect(r.pos).toEqual({ x: 4, y: 4 }); // never moves
+      expect(r.dir).toBe('down'); // never turns — always front
+      expect(r.walking).toBe(false);
+      pos = r.pos;
+    }
+  });
+
+  test('idle ignores any path/bound it happens to be given', () => {
+    const r = moverStep('idle', { x: 2, y: 2 }, { path: [{ x: 9, y: 9 }], bound: { x: 0, y: 0, w: 9, h: 9 } }, noState, 0);
+    expect(r.pos).toEqual({ x: 2, y: 2 });
+    expect(r.dir).toBe('down');
+  });
+
+  test('patrol delegates: one tile toward the waypoint, walking=true', () => {
+    const r = moverStep('patrol', { x: 2, y: 2 }, { path: [{ x: 2, y: 2 }, { x: 5, y: 2 }] }, noState, 0);
+    expect(Math.abs(r.pos.x - 2) + Math.abs(r.pos.y - 2)).toBe(1);
+    expect(r.walking).toBe(true);
+  });
+
+  test('wander delegates: stays in bound, walking reflects whether it moved', () => {
+    const bound: Bounds = { x: 1, y: 1, w: 3, h: 3 };
+    const moved = moverStep('wander', { x: 2, y: 2 }, { bound }, noState, 0); // up → in bound
+    expect(moved.walking).toBe(true);
+    const clamped = moverStep('wander', { x: 2, y: 1 }, { bound }, noState, 0); // up → out → clamp
+    expect(clamped.walking).toBe(false);
+    expect(clamped.pos).toEqual({ x: 2, y: 1 });
+  });
+
+  test('a misconfigured mover (no path/bound) falls back to idle, not a crash', () => {
+    const r = moverStep('patrol', { x: 1, y: 1 }, {}, noState, 0);
+    expect(r.pos).toEqual({ x: 1, y: 1 });
+    expect(r.walking).toBe(false);
   });
 });
 

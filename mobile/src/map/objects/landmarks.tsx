@@ -37,20 +37,20 @@ function MedCenter({ w, h, label, sign, signColor }: LMProps) {
   const pw = w * TILE;
   const ph = h * TILE;
   const L = (v: number) => v * S;
-  const win = (left: number, top: number, lit: boolean) => (
-    <View style={{ position: 'absolute', left: L(left), top: L(top), width: L(2.4), height: L(1.6), backgroundColor: lit ? '#FFE3A0' : '#1E2832' }} />
+  const win = (key: string, left: number, top: number, lit: boolean) => (
+    <View key={key} style={{ position: 'absolute', left: L(left), top: L(top), width: L(2.4), height: L(1.6), backgroundColor: lit ? '#FFE3A0' : '#1E2832' }} />
   );
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
       {/* left dark-glass tower */}
       <View style={{ position: 'absolute', left: L(0), width: L(38), bottom: L(16), height: L(146), backgroundColor: '#30414E', borderWidth: 2, borderColor: INK }}>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: L(4), backgroundColor: '#5E6C7A' }} />
-        {[0, 1, 2, 3, 4, 5].map((r) => [0, 1, 2].map((c) => win(4 + c * 11, 8 + r * 22, (c + r) % 2 === 0)))}
+        {[0, 1, 2, 3, 4, 5].map((r) => [0, 1, 2].map((c) => win(`l${r}-${c}`, 4 + c * 11, 8 + r * 22, (c + r) % 2 === 0)))}
       </View>
       {/* right white-stone tower */}
       <View style={{ position: 'absolute', left: L(60), width: L(38), bottom: L(16), height: L(118), backgroundColor: '#D8D1BE', borderWidth: 2, borderColor: INK }}>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: L(4), backgroundColor: '#F0EAD8' }} />
-        {[0, 1, 2, 3].map((r) => [0, 1, 2].map((c) => win(64 + c * 11, 8 + r * 24, (c + r) % 3 === 0)))}
+        {[0, 1, 2, 3].map((r) => [0, 1, 2].map((c) => win(`r${r}-${c}`, 64 + c * 11, 8 + r * 24, (c + r) % 3 === 0)))}
       </View>
       {/* connecting glass bridge */}
       <View style={{ position: 'absolute', left: L(56), width: L(12), bottom: L(72), height: L(22), backgroundColor: '#8FB8D2', borderWidth: 1.5, borderColor: INK }} />
@@ -239,9 +239,10 @@ interface LMProps {
 export function LandmarkView({ object }: { object: MapObject }): ReactElement | null {
   if (object.type !== 'landmark') return null;
   const p = object.props ?? {};
+  // guard against missing/degenerate authored sizes feeding layout math
   const props: LMProps = {
-    w: (p.w as number) ?? 6,
-    h: (p.h as number) ?? 5,
+    w: Math.max(1, (typeof p.w === 'number' ? p.w : 6)),
+    h: Math.max(1, (typeof p.h === 'number' ? p.h : 5)),
     label: p.label as string | undefined,
     sign: p.sign as string | undefined,
     signColor: p.signColor as string | undefined,
