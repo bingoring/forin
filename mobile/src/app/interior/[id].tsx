@@ -16,6 +16,9 @@ export default function InteriorRoute() {
   const [error, setError] = useState(false);
   const [revealDone, setRevealDone] = useState(false);
   const viaElevator = via === 'elevator';
+  // entering via the elevator: skip the route's sideways slide so only the
+  // DoorReveal plays (the slide + doors opening together looked awkward).
+  const enterAnim: 'none' | 'default' = viaElevator ? 'none' : 'default';
 
   useEffect(() => {
     let alive = true;
@@ -39,7 +42,7 @@ export default function InteriorRoute() {
 
   const center = (child: React.ReactNode) => (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cream, gap: 12 }}>
-      <Stack.Screen options={{ headerShown: false }} />
+      <Stack.Screen options={{ headerShown: false, animation: enterAnim }} />
       {child}
     </View>
   );
@@ -69,7 +72,7 @@ export default function InteriorRoute() {
 
   return (
     <>
-      <Stack.Screen options={{ headerShown: false }} />
+      <Stack.Screen options={{ headerShown: false, animation: enterAnim }} />
       <InteriorScreen
         interior={interior}
         onExit={() => router.back()}
