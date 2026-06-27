@@ -13,7 +13,7 @@
 // victorian=여성소아 · curved=암센터 · admin=행정(flat) · clock=시계탑.
 import type { ReactElement } from 'react';
 import { Text, View } from 'react-native';
-import Svg, { Circle, Defs, G, Path, Pattern, Rect } from 'react-native-svg';
+import Svg, { Circle, Defs, Ellipse, G, Line, Path, Pattern, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import { fonts } from '@/theme/tokens';
 import type { MapObject } from '@engine';
@@ -163,7 +163,7 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
   const ph = h * 16;
   const C = {
     brick: '#9E4A3C', brickDk: '#7E3A2E', stone: '#E0D4BB', stoneDk: '#BCA98A',
-    slate: '#3B414C', slateLt: '#535B68', copper: '#5E9486', copperLt: '#8FBCAE', glass: '#2E3A44', lit: '#ECC766', sash: '#E0D4BB',
+    slate: '#3B414C', slateLt: '#535B68', copper: '#5E9486', copperDk: '#3C6A5E', copperLt: '#8FBCAE', glass: '#2E3A44', lit: '#ECC766', sash: '#E0D4BB',
   };
   const winRow = (bx: number, bw: number, by: number, count: number, salt: number, key: string) => {
     const out: ReactElement[] = [];
@@ -230,12 +230,17 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
         {winRow(55, 34, 34, 4, 9, 'cT')}
         {winRow(55, 34, 48, 4, 2, 'cM')}
         <Path d="M64 80 L64 70 Q72 60 80 70 L80 80 Z" fill={C.glass} stroke={C.stone} strokeWidth={1.4} />
-        {/* low cupola */}
-        <Rect x={63} y={12} width={18} height={6} fill={C.stone} stroke={INK} strokeWidth={0.7} />
-        {[65.5, 70, 74.5, 79].map((wx, i) => <Rect key={i} x={wx} y={13.5} width={2} height={3.5} fill={C.glass} />)}
-        <Path d="M62 12 C62 5 67 2 72 2 C77 2 82 5 82 12 Z" fill={C.copper} stroke={INK} strokeWidth={0.8} />
-        <Path d="M66 10 C66 5 68 3 71 3" fill="none" stroke={C.copperLt} strokeWidth={1.2} strokeLinecap="round" />
-        <Circle cx={72} cy={-3} r={1.4} fill="#F0CC66" stroke={INK} strokeWidth={0.4} />
+        {/* central rotunda dome — drawn FROM ABOVE (concentric foreshortened
+            ellipses + radial ribs) so it reads from the same high-angle as the
+            flat roofs, not as a front-on dome arch. */}
+        <Ellipse cx={72} cy={16} rx={12} ry={7} fill={C.copper} stroke={INK} strokeWidth={0.8} />
+        {[[80.5, 21], [63.5, 21], [63.5, 11], [80.5, 11]].map(([x, y], i) => (
+          <Line key={i} x1={72} y1={14} x2={x} y2={y} stroke={C.copperDk} strokeWidth={0.5} opacity={0.6} />
+        ))}
+        <Ellipse cx={72} cy={14.5} rx={7.5} ry={4.2} fill={C.copperLt} />
+        <Ellipse cx={72} cy={13.6} rx={3.8} ry={2.1} fill={C.copper} />
+        <Ellipse cx={72} cy={13} rx={1.7} ry={1} fill={C.copperLt} />
+        <Circle cx={72} cy={12.6} r={1.2} fill="#F0CC66" stroke={INK} strokeWidth={0.4} />
       </Svg>
       </View>
       <Plaque sign={sign} signColor={signColor ?? '#C2487E'} label={label} />
