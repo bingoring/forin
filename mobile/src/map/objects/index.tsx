@@ -9,6 +9,7 @@ import { TILE } from '@engine';
 import { fonts } from '@/theme/tokens';
 import { ClinicObjectView } from './clinicEquipment';
 import { LandmarkView } from './landmarks';
+import { IThreshold, IGlass } from './structures';
 import type { MapObject } from '@engine';
 
 export { OBJECT_FOOTPRINT, objectCollision } from '@engine';
@@ -325,6 +326,10 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
       return <Tree x={x} y={y} big={!!props?.big} />;
     case 'landmark':
       return <LandmarkView object={object} />;
+    case 'threshold':
+      return <IThreshold x={x} y={y} w={(props?.w as number) ?? 1} h={(props?.h as number) ?? 1} tone={props?.tone as string | undefined} label={props?.label as string | undefined} />;
+    case 'glass':
+      return <IGlass x={x} y={y} w={(props?.w as number) ?? 1} h={(props?.h as number) ?? 1} />;
     default:
       // outpatient-clinic equipment (5d-iii)
       return ClinicObjectView({ object });

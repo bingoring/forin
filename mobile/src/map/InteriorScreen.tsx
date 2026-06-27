@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import { TILE, coordToPx, type Coord } from '@engine';
 import { regionAt } from '@engine';
+import { viewBounds, boxInView } from '@engine';
 import { useMovement } from '@engine';
 import { TileFloor } from '@engine';
 import { Walls } from '@engine';
@@ -17,6 +18,7 @@ import { FastTravelModal } from './FastTravelModal';
 import { PlayerSprite, RoleSprite, type RoleKind } from '@engine';
 import { AmbientNpc } from '@engine';
 import { InteriorObjectView } from './objects';
+import { Tint } from './objects/structures';
 import type { Interior, MapObject, Hotspot } from '@engine';
 
 // Chibi sprites are taller than a tile (head sits above it). Width ≈ 2.2 tiles;
@@ -77,6 +79,38 @@ export function InteriorScreen({
 
   const region = useMemo(() => regionAt(pos, interior.regions), [pos, interior.regions]);
   const npcs = useMemo(() => npcsFromObjects(interior.objects), [interior.objects]);
+
+  // Viewport culling (5f-iii): on large maps render only what's near the camera.
+  // Boxes get a top "rise" allowance so tall art (sprites, equipment, landmarks
+  // that overhang upward) isn't culled while its footprint is just off-screen.
+  const view = useMemo(
+    () => (vp.w > 0 ? viewBounds(pos.x + 0.5, pos.y + 0.5, vp.w, vp.h, scale, TILE, 4) : null),
+    [pos.x, pos.y, vp.w, vp.h, scale],
+  );
+  const visObjects = useMemo(() => {
+    if (!view) return interior.objects;
+    return interior.objects.filter((o) => {
+      const w = typeof o.props?.w === 'number' ? o.props.w : 2;
+      const h = typeof o.props?.h === 'number' ? o.props.h : 2;
+      const rise = o.type === 'landmark' ? 16 : 5;
+      return boxInView(o.x, o.y - rise, w, h + rise, view);
+    });
+  }, [view, interior.objects]);
+  const visHotspots = useMemo(() => (view ? interior.hotspots.filter((h) => boxInView(h.x, h.y, 1, 1, view)) : interior.hotspots), [view, interior.hotspots]);
+  const visNpcs = useMemo(() => (view ? npcs.filter((n) => boxInView(n.x, n.y - 2, 2, 4, view)) : npcs), [view, npcs]);
+  const visAmbient = useMemo(() => {
+    const list = interior.npcs ?? [];
+    if (!view) return list;
+    return list.filter((s) => {
+      let r = s.bound ?? (s.start ? { x: s.start.x, y: s.start.y, w: 1, h: 1 } : { x: 0, y: 0, w: 1, h: 1 });
+      if (s.path && s.path.length) {
+        const xs = s.path.map((p) => p.x);
+        const ys = s.path.map((p) => p.y);
+        r = { x: Math.min(...xs), y: Math.min(...ys), w: Math.max(...xs) - Math.min(...xs) + 1, h: Math.max(...ys) - Math.min(...ys) + 1 };
+      }
+      return boxInView(r.x, r.y - 4, r.w, r.h + 4, view);
+    });
+  }, [view, interior.npcs]);
 
   // Transient "➜ region" banner on region change.
   const [banner, setBanner] = useState<string | null>(null);
@@ -163,13 +197,19 @@ export function InteriorScreen({
           >
            <View style={{ position: 'absolute', left: 0, top: 0, width: worldW, height: worldH, transform: [{ scale }], transformOrigin: 'top left' }}>
             <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
+
+            {/* room tints sit above the floor, below walls/objects */}
+            {visObjects.filter((o) => o.type === 'tint').map((o) => (
+              <Tint key={o.id} x={o.x} y={o.y} w={(o.props?.w as number) ?? 1} h={(o.props?.h as number) ?? 1} color={o.props?.color as string | undefined} op={o.props?.op as number | undefined} />
+            ))}
+
             <Walls collision={interior.collision} />
 
-            {interior.objects.map((o: MapObject) => (
+            {visObjects.filter((o) => o.type !== 'tint').map((o: MapObject) => (
               <InteriorObjectView key={o.id} object={o} />
             ))}
 
-            {interior.hotspots.map((h) => {
+            {visHotspots.map((h) => {
               const { left, top } = coordToPx(h);
               return (
                 <View
@@ -195,7 +235,7 @@ export function InteriorScreen({
             })}
 
             {/* Ambient NPCs (derived from authored objects) */}
-            {npcs.map((n) => {
+            {visNpcs.map((n) => {
               const { left, top } = seatSprite(n.x, n.y);
               return (
                 <View key={n.id} pointerEvents="none" style={{ position: 'absolute', left, top, width: SPRITE_W, height: SPRITE_H }}>
@@ -205,7 +245,7 @@ export function InteriorScreen({
             })}
 
             {/* Ambient roaming NPCs (useGridMover: patrol/wander + emotes) */}
-            {interior.npcs?.map((spec) => (
+            {visAmbient.map((spec) => (
               <AmbientNpc key={spec.id} spec={spec} size={SPRITE_W} />
             ))}
 

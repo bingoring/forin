@@ -17,7 +17,8 @@ export const OBJECT_FOOTPRINT: Record<string, { w: number; h: number }> = {
 export function objectCollision(objects: MapObject[]): Bounds[] {
   const out: Bounds[] = [];
   for (const o of objects) {
-    if (o.type === 'door') continue;
+    // walkable / non-blocking types (open doorways + floor overlays)
+    if (o.type === 'door' || o.type === 'threshold' || o.type === 'tint') continue;
     const pw = o.props?.w;
     const ph = o.props?.h;
     if (typeof pw === 'number' && typeof ph === 'number') {
