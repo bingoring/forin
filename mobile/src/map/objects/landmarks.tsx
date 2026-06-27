@@ -32,8 +32,8 @@ function Block3D({
   const td = Math.round(d * 2.3); // visible roof depth (high POV)
   return (
     <View style={{ position: 'absolute', left, bottom, width: fw, height: fh }}>
-      {/* TOP face — rectangle */}
-      <View style={{ position: 'absolute', left: 0, top: -td, width: fw + 4, height: td + 2, backgroundColor: topInset ? (topRim ?? top) : top, borderLeftWidth: 2, borderRightWidth: 2, borderTopWidth: 2, borderColor: INK, borderTopLeftRadius: radius, borderTopRightRadius: radius }}>
+      {/* TOP face — rectangle, flush with the front face (no right overhang) */}
+      <View style={{ position: 'absolute', left: 0, top: -td, width: fw, height: td + 2, backgroundColor: topInset ? (topRim ?? top) : top, borderLeftWidth: 2, borderRightWidth: 2, borderTopWidth: 2, borderColor: INK, borderTopLeftRadius: radius, borderTopRightRadius: radius }}>
         {topInset ? <View style={{ position: 'absolute', left: 4, right: 4, top: 4, bottom: 4, backgroundColor: top, borderWidth: 2, borderColor: INK }} /> : null}
       </View>
       {/* FRONT face */}
@@ -181,10 +181,17 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
     }
     return out;
   };
+  // The brick building (viewBox 144×80, ~1.8:1) was being letterboxed into the
+  // footprint box (~1.17:1) → rendered small. Draw it ~1.5× at its natural aspect,
+  // bottom-anchored + centered so it rises above the footprint like the others.
+  const sw = pw * 1.5;
+  const sh = sw * (80 / 144);
+  const sx = (pw - sw) / 2;
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: ph - 6, backgroundColor: 'rgba(40,32,28,0.24)' }} />
-      <Svg viewBox="0 0 144 80" width={pw} height={ph}>
+      <View style={{ position: 'absolute', left: sx + sw, bottom: 0, width: 14, height: sh - 6, backgroundColor: 'rgba(40,32,28,0.24)' }} />
+      <View style={{ position: 'absolute', left: sx, bottom: 0, width: sw, height: sh }}>
+      <Svg viewBox="0 0 144 80" width={sw} height={sh}>
         <Defs>
           <Pattern id="brkV8" width={9} height={6} patternUnits="userSpaceOnUse">
             <Rect width={9} height={6} fill={C.brick} />
@@ -230,6 +237,7 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
         <Path d="M66 10 C66 5 68 3 71 3" fill="none" stroke={C.copperLt} strokeWidth={1.2} strokeLinecap="round" />
         <Circle cx={72} cy={-3} r={1.4} fill="#F0CC66" stroke={INK} strokeWidth={0.4} />
       </Svg>
+      </View>
       <Plaque sign={sign} signColor={signColor ?? '#C2487E'} label={label} />
     </View>
   );
