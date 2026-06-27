@@ -301,3 +301,9 @@
   7. **신규 오브젝트 수십 종:** er2/er3·or2·icu2·peds2·ward2·pharma2·surg2·ortho2·derm2(.jsx) — 부서별 임상 장비.
 - **스코프 영향(재계획):** v8 작업 대부분은 **신규 화면·콘텐츠(2-6)** + 대량 인테리어 저작 + 일부 엔진 추가(IThreshold/Tint/IGlass/엘리베이터 오버레이/빌딩 top-face/대형 맵). 2-5 엔진 자체는 유효하나 캠퍼스/랜드마크는 재작업 대상. **순서·클리닉엔진 처리·증분 분해는 사용자 결정 후 진행**(이번엔 문서 반영 + 링크 재지정까지).
 - **결정자:** 사용자(v8 제공) + AI(델타 분석·재계획 제안 대기).
+
+## 2026-06-27 · 5f-i 빌드 — 5-파빌리온 캠퍼스 + 2.5D top-face
+- `buildings-v2.jsx`(MedCenter2D/H2D/V2D/C2D/ClockTower2D) RN 포팅 → `landmarks.tsx` 전면 재작성. 신규 `Block3D`(front+직사각형 top
+  face)로 2.5D 규약 구현. 6 landmark kinds(main/horizontal/victorian/curved/admin/clock). 포팅: 레퍼런스 px로 그리고 부모 `scale(TILE/16)`.
+  그라데이션은 솔리드+레이어 근사(무신규의존). 캠퍼스 40×28 5-파빌리온+시계탑 재작성(scale 0.6). jest 36/36·tsc 0·expo export·doctor 21/21.
+- 클리닉 엔진 보존(미삭제) — 결정대로. 시각 충실도는 디바이스 확인. 다음: 5f-ii 엘리베이터.

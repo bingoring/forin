@@ -162,18 +162,22 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     aliased source**라 무료지만 엔진은 런타임 코드. → `src/engine`에 두어 무설정으로 동일한 forin-디커플·배럴 경계를 확보. `packages/
     pixel-engine`으로의 물리 승격은 npm workspaces + 루트 node_modules가 필요한 **인프라 후속**(별도). 상세는 `src/engine/README.md`.
 
-### 5v. v8 재설계 — 2-5 재오픈 (HUMAN_APPROVED 2026-06-27, 빌드 진행: 5f-i)
+### 5v. v8 재설계 — 2-5 재오픈 (HUMAN_APPROVED 2026-06-27, 5f-i ✅; 다음 5f-ii)
 
 > 핸드오프 v8(맵/화면 대규모 재설계) 반영 계획. 사용자 결정: **계획 먼저 수립→승인 후 빌드**, **클리닉 엔진(5d-iii)은
 > 보존·후일 은퇴**(bespoke 병동/센터가 대체하면 해당 캠퍼스 버튼/화면만 제거). 기존 5a~5e 엔진 코어는 유효 — 아래는 v8이
 > 추가/대체하는 부분. 적응형 깊이: 엔진 기반(5f) 상세, 반복적 인테리어(5g) 부서당 1증분으로 목록화(빌드 시 각 심화).
 
 **5f — 캠퍼스·엔진 델타 (engine/map)**
-- **5f-i 5-파빌리온 캠퍼스 + 2.5D 빌딩 top-face 규약.** 캠퍼스를 5개 랜드마크 파빌리온으로 재구성 — 본관 메인타워
-  `MedCenter`(베이스+3타워+EMERGENCY 사인+헬리패드), 여성소아 `MedCenterWomen`(신규, 라운드 파스텔), 암센터·재활
-  `MedCenterC`, 외래·진단 `MedCenterH`, 행정 `Building arch:flat`(신규) + 중앙 `ClockTower2D`(신규). **2.5D 규약**(~70°
-  카메라: 모든 오브젝트 front+직사각형 top face, 폭 flush) 문서화 + `landmarks.tsx` 확장. 캠퍼스 fixture 재작성(파빌리온
-  배치·헬리패드·치유정원). 위험: 중. 의존: 기존 landmarks/Building.
+- **5f-i ✅ 5-파빌리온 캠퍼스 + 2.5D 빌딩 top-face 규약**(2026-06-27): `buildings-v2.jsx`를 RN으로 포팅 — `landmarks.tsx`
+  전면 재작성. 핵심 신규 = **`Block3D`**(front face + 직사각형 TOP face 압출 = 2.5D 규약). 5종 빌딩 + 시계탑: `main` 본관(다크글래스/
+  화이트스톤/앰버아트리움 3타워+브리지+포디움) · `horizontal` 외래·진단(차양 리본 파사드+상단 루프) · `victorian` 여성소아(벽돌 SVG +
+  평지붕 슬래브 + 저층 큐폴라, 첨탑→평탑) · `curved` 암센터(에코타워: 크림 파사드+세로 그린 가든 리본+유리베이+우드 베이스+루프가든) ·
+  `admin` 행정(평탄 압출 블록) · `clock` 시계탑(목조 샤프트+덩굴+시계 헤드). **포팅 방식: 레퍼런스 px(TILE16)로 그리고 부모에서
+  `transform:scale(TILE/16)`**(L() 산재 제거). 그라데이션/글로우는 솔리드+레이어 근사(기존 패턴 일관·무신규의존; expo-linear-gradient
+  고도화는 후속 가능). 캠퍼스 fixture 40×28 재작성(본관 중앙·암센터 좌·여성소아 우·외래/행정 하단·시계탑 정원, scale 0.6). **jest 36/36**
+  (campus.test 6 랜드마크 비중첩+회랑 도달성 갱신). tsc 0·expo export 번들·doctor 21/21. ⚠️ 시각 충실도(2.5D top-face·그라데이션
+  근사·캠퍼스 배치)는 **디바이스 확인** 항목. 엘리베이터 진입은 5f-ii(현재 캠퍼스는 시각 탐험; 클리닉 버튼은 유지).
 - **5f-ii 엘리베이터 진입 모델.** 빌딩 탭→곧장 인테리어가 아니라 **엘리베이터**를 엶. `ScreenElevator`(건물 탭 5 · 픽셀 cab
   층표시/방향/도어 애니 · 층 디렉터리[층별 부서 + **실시간 상황칩 🔴/🟡/🟢**] · GO 바) + InteriorScreen **🛗 오버레이**(라우팅
   없음). 상황칩은 `getTodaysActiveScenarios()` — **상황판과 동일 소스**(엘리베이터/보드/인테리어 정합). `ELEVATOR_BUILDINGS`
