@@ -343,3 +343,11 @@
 - 정정: 5d-iv 원래 **단일 transform** 구조 복원(Pressable worldW×worldH + transform[translate,scale] origin TL, 탭 ÷TILE).
   locationX는 비변환 로컬 좌표라 ÷TILE이 정답. tsc 0·jest 47/47·expo export·doctor 21/21.
 - 교훈: 불확실한 런타임 동작(transform 하 locationX)은 speculative 코드 수정 대신 디바이스 검증으로 확정. 게이트의 디바이스 항목이 안전장치였음.
+
+## 2026-06-27 · 디바이스 피드백 3건 (빠른이동·HUD·엘리베이터)
+- **ER 트리아지 빠른이동 안 됨:** 룸 anchor(5,4)가 bed1 풋프린트 위라 warpTo의 canEnter가 막아 no-op. → collision에 `nearestOpen`
+  (막히면 바깥 링 탐색해 가장 가까운 통행 타일) 추가, warpTo가 사용. 모든 방에 견고.
+- **캠퍼스 HUD:** 방/리전 없는 캠퍼스에도 ZONE 배지·빠른이동 노출. → HUD `showZone`(regions>0)·`showFastTravel`(rooms>0)로 조건부 숨김.
+- **엘리베이터 시퀀스:** GO→ **문 닫힘(탑승)→탑승 중→문 열림(도착)** 풀 사이클(reanimated withSequence, rest=open). 라이드 중
+  `api.prefetchInterior`로 목적지 맵 프리로드(api에 interior 캐시 추가) → 문 열릴 때 즉시 진입. 그 외 층은 "준비 중".
+- 검증: tsc 0·jest 48/48(+nearestOpen)·expo export·doctor 21/21.
