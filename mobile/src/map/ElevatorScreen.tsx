@@ -229,7 +229,7 @@ export function ElevatorScreen({
           textColor="#fff"
           disabled={riding}
           onPress={ride}
-          style={{ width: '100%' }}
+          full
         />
       </View>
     </SafeAreaView>

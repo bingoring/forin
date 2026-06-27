@@ -21,8 +21,8 @@ export default function Campus() {
           <PixelChip label="PEDS" bg={colors.pink} />
         </View>
       </PixelBox>
-      <PixelButton label="🗺  캠퍼스 둘러보기" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.push('/interior/CAMPUS-00001')} style={styles.full} />
-      <PixelButton label="✈  응급실 입장" onPress={() => router.push('/interior/INT-ER-00001')} style={styles.full} />
+      <PixelButton label="🗺  캠퍼스 둘러보기" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.push('/interior/CAMPUS-00001')} full />
+      <PixelButton label="✈  응급실 입장" onPress={() => router.push('/interior/INT-ER-00001')} full />
       <Text style={[styles.body, { marginTop: space.sm }]}>외래 클리닉</Text>
       <View style={styles.clinics}>
         <PixelButton label="내과" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.push('/interior/CLINIC-IM-00001')} />
@@ -41,6 +41,5 @@ const styles = StyleSheet.create({
   title: { fontFamily: fonts.heading, fontSize: t.section, color: colors.ink },
   body: { fontFamily: fonts.body, fontSize: t.body, color: colors.text, lineHeight: 22 },
   row: { flexDirection: 'row', gap: space.sm, marginTop: space.xs },
-  full: { width: '100%' },
   clinics: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
 });
