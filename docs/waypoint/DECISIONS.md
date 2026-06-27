@@ -363,3 +363,10 @@
 - 증상: 병동 진입 시 native-stack 기본 **옆 슬라이드** + DoorReveal 문 열림이 겹쳐 어색.
 - 수정: 인테리어 라우트가 `via=elevator`면 `Stack.Screen animation:'none'`(그 외 진입은 기본 슬라이드 유지) → 슬라이드 없이 문 리빌만.
   부수효과로 닫힌 cab 문 → (즉시 컷) 풀스크린 닫힌 문으로 "문이 커지는" 느낌도 남(사용자가 언급한 효과). tsc 0·jest 48/48·expo export.
+
+## 2026-06-28 · 2.5D 깊이 정렬 (z-순서) — 캠퍼스 건물 뒤 캐릭터
+- 증상: 캠퍼스에서 player/NPC가 건물 뒤(북쪽)로 가도 건물 위에 보임(스프라이트를 항상 오브젝트 뒤에 그려서).
+- 수정: 모든 월드 요소에 **발/풋프린트-바닥 타일 y 기반 `zIndex`** 부여(`zFor(baseY)=round(baseY*10)+10`). 오브젝트=y+footprint.h,
+  스프라이트=feet y(player=pos.y+1, derived/ambient NPC=현재 y+1). 핫스팟 마커 z9000·RoomMask z99999(항상 위). 바닥/틴트/벽은 하위.
+  → base-y 큰 쪽이 앞(카메라 근처). 건물보다 북쪽이면 가려지고 남쪽이면 앞에 보임. AmbientNpc는 내부 y로 자기 zIndex 설정(이동 중에도 정렬).
+- 검증: tsc 0·jest 48/48·expo export·doctor 21/21. (인테리어에도 일반 적용 — 침대 등도 깊이 정렬.)
