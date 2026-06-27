@@ -144,11 +144,11 @@ export function InteriorScreen({
     walkClock.value = withTiming(1, { duration: GLIDE_MS, easing: Easing.linear });
   }, [pos.x, pos.y, pxX, pyY, walkClock]);
 
-  // Camera = a pure translate on the (already scaled-size) world Pressable; the
-  // zoom itself lives on an inner wrapper (scaleWrap below). Splitting them this
-  // way makes the tap mapping deterministic: locationX/Y land in the Pressable's
-  // own translated-but-unscaled box [0, worldW*scale], so tile = ⌊loc/(TILE·scale)⌋
-  // regardless of how RN reports coords for a scaled view (R-1 review HIGH fix).
+  // Camera: one transform on the world Pressable — translate (follow) then scale
+  // (zoom), with transformOrigin top-left so world→screen is linear and the
+  // Pressable's hit box == its content box (no oversized child to swallow taps,
+  // which broke campus tap-to-walk at scale<1). RN reports locationX/Y in the
+  // view's untransformed local space (0..worldW), so the tap math is ÷TILE.
   const worldStyle = useAnimatedStyle(() => {
     'worklet';
     const sw = worldW * scale;
@@ -157,7 +157,7 @@ export function InteriorScreen({
     const cy = (pyY.value + TILE / 2) * scale;
     const tx = sw <= vp.w ? (vp.w - sw) / 2 : Math.max(vp.w - sw, Math.min(0, vp.w / 2 - cx));
     const ty = sh <= vp.h ? (vp.h - sh) / 2 : Math.max(vp.h - sh, Math.min(0, vp.h / 2 - cy));
-    return { transform: [{ translateX: tx }, { translateY: ty }] };
+    return { transform: [{ translateX: tx }, { translateY: ty }, { scale }] };
   });
   const playerStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: pxX.value + PLAYER_DX }, { translateY: pyY.value + PLAYER_DY }],
@@ -165,7 +165,7 @@ export function InteriorScreen({
 
   const onWorldPress = (e: GestureResponderEvent) => {
     const { locationX, locationY } = e.nativeEvent;
-    moveTo({ x: Math.floor(locationX / (TILE * scale)), y: Math.floor(locationY / (TILE * scale)) });
+    moveTo({ x: Math.floor(locationX / TILE), y: Math.floor(locationY / TILE) });
   };
 
   const onLayout = (e: LayoutChangeEvent) => {
@@ -193,9 +193,8 @@ export function InteriorScreen({
         {vp.w > 0 && (
           <AnimatedPressable
             onPress={onWorldPress}
-            style={[{ position: 'absolute', width: worldW * scale, height: worldH * scale }, worldStyle]}
+            style={[{ position: 'absolute', width: worldW, height: worldH, transformOrigin: 'top left' }, worldStyle]}
           >
-           <View style={{ position: 'absolute', left: 0, top: 0, width: worldW, height: worldH, transform: [{ scale }], transformOrigin: 'top left' }}>
             <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
 
             {/* room tints sit above the floor, below walls/objects */}
@@ -260,7 +259,6 @@ export function InteriorScreen({
             </Animated.View>
 
             <RoomMask bounds={region?.bounds ?? null} cols={interior.cols} rows={interior.rows} />
-           </View>
           </AnimatedPressable>
         )}
 
