@@ -230,26 +230,33 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
         {winRow(55, 34, 34, 4, 9, 'cT')}
         {winRow(55, 34, 48, 4, 2, 'cM')}
         <Path d="M64 80 L64 70 Q72 60 80 70 L80 80 Z" fill={C.glass} stroke={C.stone} strokeWidth={1.4} />
-        {/* RAISED LANTERN: a short cylinder (drum) standing on the central flat
-            roof, capped by the rotunda dome — all read from the high-angle view.
-            The drum lifts the dome up off the roof. */}
-        {/* drum base — front lip / shadow where the cylinder meets the roof */}
-        <Ellipse cx={72} cy={20} rx={10} ry={4.5} fill={C.stoneDk} stroke={INK} strokeWidth={0.6} />
-        {/* drum cylinder wall (front) + right-side shading + lantern windows */}
-        <Rect x={62} y={9} width={20} height={11} fill={C.stone} />
-        <Rect x={78} y={9} width={4} height={11} fill={C.stoneDk} opacity={0.5} />
-        {[64, 68.5, 73, 77.5].map((wx, i) => <Rect key={i} x={wx} y={11} width={2} height={6} fill={C.glass} />)}
-        {/* drum top rim — the surface the dome sits on */}
-        <Ellipse cx={72} cy={9} rx={10} ry={4.5} fill={C.sash} stroke={INK} strokeWidth={0.6} />
+        {/* RAISED LANTERN: an opaque short cylinder (drum) standing centered on
+            the central flat roof, capped by the rotunda dome — all read from the
+            high-angle view. No shading; the rounded bottom matches the wall tone
+            so no back face shows through. */}
+        {/* rounded bottom (same tone as the wall) */}
+        <Ellipse cx={72} cy={24} rx={10} ry={4.5} fill={C.stone} />
+        {/* cylinder wall */}
+        <Rect x={62} y={14} width={20} height={10} fill={C.stone} />
+        {/* lantern windows — holes following the cylinder curve: lower at center,
+            rising toward the sides (center a touch wider) for a 3D read. */}
+        {[-7.5, -4, 0, 4, 7.5].map((dx, i) => {
+          const t = 1 - (dx / 9) ** 2;
+          const ww = 1.4 + 1.2 * t;
+          const top = 14 + 1.5 + 3 * t;
+          return <Rect key={i} x={72 + dx - ww / 2} y={top} width={ww} height={5} fill={C.glass} />;
+        })}
+        {/* top rim — the surface the dome sits on */}
+        <Ellipse cx={72} cy={14} rx={10} ry={4.5} fill={C.sash} stroke={INK} strokeWidth={0.6} />
         {/* rotunda dome on the rim, drawn from above */}
-        <Ellipse cx={72} cy={9} rx={10} ry={5} fill={C.copper} stroke={INK} strokeWidth={0.8} />
-        {[[79, 12.5], [65, 12.5], [65, 5.5], [79, 5.5]].map(([x, y], i) => (
-          <Line key={i} x1={72} y1={7} x2={x} y2={y} stroke={C.copperDk} strokeWidth={0.5} opacity={0.6} />
+        <Ellipse cx={72} cy={13} rx={10} ry={5} fill={C.copper} stroke={INK} strokeWidth={0.8} />
+        {[[79, 16.5], [65, 16.5], [65, 9.5], [79, 9.5]].map(([x, y], i) => (
+          <Line key={i} x1={72} y1={11} x2={x} y2={y} stroke={C.copperDk} strokeWidth={0.5} opacity={0.6} />
         ))}
-        <Ellipse cx={72} cy={7.5} rx={6.2} ry={3.4} fill={C.copperLt} />
-        <Ellipse cx={72} cy={6.7} rx={3.2} ry={1.8} fill={C.copper} />
-        <Ellipse cx={72} cy={6.2} rx={1.5} ry={0.9} fill={C.copperLt} />
-        <Circle cx={72} cy={5.8} r={1.1} fill="#F0CC66" stroke={INK} strokeWidth={0.4} />
+        <Ellipse cx={72} cy={11.5} rx={6.2} ry={3.4} fill={C.copperLt} />
+        <Ellipse cx={72} cy={10.7} rx={3.2} ry={1.8} fill={C.copper} />
+        <Ellipse cx={72} cy={10.2} rx={1.5} ry={0.9} fill={C.copperLt} />
+        <Circle cx={72} cy={9.8} r={1.1} fill="#F0CC66" stroke={INK} strokeWidth={0.4} />
       </Svg>
       </View>
       <Plaque sign={sign} signColor={signColor ?? '#C2487E'} label={label} />
