@@ -336,3 +336,10 @@
   objectCollision이 door/threshold/tint skip, glass/footprint 차단.
 - **가구 폴드:** NurseStationDesk/NurseDeskI/IReception 재정의는 5f-iii가 아니라 **5g-a(ER) 등 첫 사용처**에서 부서 장비와 함께 추가(적응형).
 - 검증: tsc 0·jest 47/47(+6)·expo export·doctor 21/21. **5f 완료.** 다음: 5g-a ER 마스터 블루프린트.
+
+## 2026-06-27 · 탭-투-워크 회귀 정정 (R-1 #1 되돌림)
+- 디바이스: 캠퍼스(scale 0.6) 탭 이동 안 됨. 원인 = R-1 #1 수정으로 만든 작은-Pressable+내부-scale-래퍼 구조에서 내부 콘텐츠가
+  Pressable을 넘쳐 터치 미수신. 리뷰어 HIGH는 **오탐**, 내 수정이 회귀 유발.
+- 정정: 5d-iv 원래 **단일 transform** 구조 복원(Pressable worldW×worldH + transform[translate,scale] origin TL, 탭 ÷TILE).
+  locationX는 비변환 로컬 좌표라 ÷TILE이 정답. tsc 0·jest 47/47·expo export·doctor 21/21.
+- 교훈: 불확실한 런타임 동작(transform 하 locationX)은 speculative 코드 수정 대신 디바이스 검증으로 확정. 게이트의 디바이스 항목이 안전장치였음.

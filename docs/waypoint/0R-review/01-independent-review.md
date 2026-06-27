@@ -89,3 +89,12 @@ scope: 2-5 맵/탐험 엔진 (mobile)
 ## 다음 단계
 
 승인 후 → `STATUS.md` 의 R-1 을 `HUMAN_APPROVED` 로. (Operations 진입 전 전체 Construction 대상 풀 게이트 별도.)
+
+## 사후 정정 (2026-06-27) — R-1 #1(탭-스케일)은 오탐 + 내 수정이 회귀 유발
+- 디바이스 확인 결과(게이트의 디바이스 항목) **캠퍼스(scale 0.6)에서 탭-투-워크가 동작 안 함**. 인테리어(scale 1)는 정상.
+- 원인: R-1 #1 "수정"으로 만든 구조(작은 Pressable=worldW·scale + 내부 scale 래퍼)가 **내부 콘텐츠 View(worldW)가 Pressable을
+  넘쳐 터치를 삼킴**. 즉 리뷰어의 HIGH(좌표 오매핑)는 **오탐**이었고(원래 단일 transform 구조가 맞았음), 내 과교정이 **진짜 버그**를 만듦.
+- 정정: **5d-iv 원래 단일 transform 구조로 복원**(Pressable=worldW×worldH, transform=[translate, scale] origin top-left, 탭=⌊loc/TILE⌋).
+  RN의 locationX는 뷰의 **비변환 로컬 좌표(0..worldW)** 라 ÷TILE이 맞음. tsc 0·jest 47/47·expo export.
+- **교훈: 게이트의 "디바이스 확인" 항목이 실제 안전장치였다.** 독립 리뷰의 speculative HIGH를 코드로 과교정하기보다, 불확실한
+  런타임 동작은 디바이스 검증으로 확정해야 함. (CLI로 확인 불가한 finding은 "수정"보다 "검증"이 우선.)
