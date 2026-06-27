@@ -1,8 +1,8 @@
-// PixelButton — forin's chunky pixel button. A 3px-outlined cap with a lit-from-
-// above bevel (bright top strip + shaded bottom strip) sitting on a HARD offset
-// shadow (forin's no-blur signature). Pressing drops the cap into its shadow
-// (translate by the offset → the shadow is covered), which IS the press action;
-// the bevel stays put as the cap's molding. One coherent press signal, not two.
+// PixelButton — forin's chunky pixel button. A 3px-outlined cap with a bright
+// top-edge highlight (light hitting the cap) sitting on a HARD offset shadow
+// (forin's no-blur signature). Pressing drops the cap into its shadow (translate
+// by the offset → the shadow is covered), which IS the press action. No inner
+// bottom shading: the back shadow already conveys depth, so it'd be redundant.
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { border, colors, fonts, radius, type as typeScale } from '@/theme/tokens';
@@ -42,7 +42,6 @@ export function PixelButton({
   const [pressed, setPressed] = useState(false);
   const dx = pressed && !disabled ? offset : 0; // drop into the shadow on press
   const lite = mix(bg, '#FFFFFF', 0.45); // lit top edge
-  const dark = mix(bg, colors.ink, 0.3); // shaded bottom edge
   return (
     <View style={[styles.wrap, full && styles.full, disabled && { opacity: 0.55 }]}>
       {/* hard offset shadow (solid, never blurred) — the cap drops into this */}
@@ -54,9 +53,9 @@ export function PixelButton({
         onPress={onPress}
         style={[styles.btn, full && styles.full, { backgroundColor: disabled ? colors.cream : bg, transform: [{ translateX: dx }, { translateY: dx }] }, style]}
       >
-        {/* lit-from-above bevel (static molding) */}
+        {/* top-edge highlight (light on the cap) — no bottom shade (the offset
+            shadow already conveys depth) */}
         <View pointerEvents="none" style={{ position: 'absolute', left: 4, right: 4, top: 3, height: 3, backgroundColor: lite }} />
-        <View pointerEvents="none" style={{ position: 'absolute', left: 4, right: 4, bottom: 3, height: 3, backgroundColor: dark }} />
         <Text style={[styles.label, { color: disabled ? colors.textFaint : textColor }]}>{label}</Text>
       </Pressable>
     </View>
