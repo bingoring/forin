@@ -86,7 +86,7 @@ function MedCenter({ w, h, label, sign, signColor }: LMProps) {
   const ph = h * 16;
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 16, height: ph - 4, backgroundColor: 'rgba(40,32,28,0.28)' }} />
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 16, height: 26, backgroundColor: 'rgba(40,32,28,0.28)' }} />
       {/* left dark-glass tower */}
       <Block3D left={24} bottom={16} fw={40} fh={150} d={11} front="#34414E" top="#4C5A68">
         {grid(4, 16, 0.45, 1, '#FFE3A0', '#1E2832')}
@@ -127,7 +127,7 @@ function MedCenterH({ w, h, label, sign, signColor }: LMProps) {
   const td = Math.round(14 * 2.3);
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: facadeH, backgroundColor: 'rgba(40,32,28,0.30)' }} />
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 16, height: td, backgroundColor: 'rgba(40,32,28,0.30)' }} />
       {/* top roof rectangle */}
       <View style={{ position: 'absolute', left: 0, top: ph - facadeH - td, width: pw, height: td + 2, backgroundColor: '#D2D7DB', borderLeftWidth: 2, borderRightWidth: 2, borderTopWidth: 2, borderColor: INK }} />
       {/* front facade */}
@@ -189,7 +189,7 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
   const sx = (pw - sw) / 2;
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      <View style={{ position: 'absolute', left: sx + sw, bottom: 0, width: 14, height: sh - 6, backgroundColor: 'rgba(40,32,28,0.24)' }} />
+      <View style={{ position: 'absolute', left: sx + sw, bottom: 0, width: 16, height: Math.round(sh * 0.22), backgroundColor: 'rgba(40,32,28,0.24)' }} />
       <View style={{ position: 'absolute', left: sx, bottom: 0, width: sw, height: sh }}>
       <Svg viewBox="0 0 144 80" width={sw} height={sh}>
         <Defs>
@@ -282,7 +282,7 @@ function MedCenterC({ w, h, label, sign, signColor }: LMProps) {
   const towerH = ph - podH - 4;
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: ph - 6, backgroundColor: 'rgba(40,32,28,0.22)' }} />
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 16, height: 30, backgroundColor: 'rgba(40,32,28,0.22)' }} />
       {/* tower with planted roof */}
       <Block3D left={6} bottom={podH} fw={pw - 12} fh={towerH} d={13} front={cream} top={roof} topInset topRim={creamDk}>
         {[0, 0.5, 1].map((f, i) => (
@@ -336,7 +336,7 @@ function MedCenterAdmin({ w, h, label, sign, signColor }: LMProps) {
   const floors = Math.max(3, h - 1);
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: ph - 4, backgroundColor: 'rgba(40,32,28,0.26)' }} />
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 16, height: td, backgroundColor: 'rgba(40,32,28,0.26)' }} />
       {/* rooftop mechanical/stair penthouse (rises above the roof, toward back) */}
       <View style={{ position: 'absolute', left: pw * 0.16, top: -(td + 13), width: pw * 0.34, height: 17, backgroundColor: concreteDk, borderWidth: 2, borderColor: INK }}>
         <View style={{ position: 'absolute', left: 3, top: 3, width: 6, height: 5, backgroundColor: glassOff }} />
@@ -400,7 +400,7 @@ function ClockTower({ ph }: { ph: number }) {
     <View style={{ position: 'absolute', left: 0, top: 0, width: 6 * 16, height: ph }}>
       {/* bottom-anchored, shrunk content (base stays on the footprint) */}
       <View style={{ position: 'absolute', left: 0, bottom: 0, width: 6 * 16, height: 300, transform: [{ scale: CLOCK_SCALE }], transformOrigin: 'bottom left' }}>
-      <View style={{ position: 'absolute', left: 84, bottom: 0, width: 14, height: 40, backgroundColor: 'rgba(40,32,28,0.26)' }} />
+      <View style={{ position: 'absolute', left: 94, bottom: 0, width: 16, height: 22, backgroundColor: 'rgba(40,32,28,0.26)' }} />
       {/* base plinth */}
       <Block3D left={2} bottom={0} fw={92} fh={40} d={9} front={woodLt} top={woodTop}>
         <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, backgroundColor: woodDk }} />
