@@ -307,3 +307,10 @@
   face)로 2.5D 규약 구현. 6 landmark kinds(main/horizontal/victorian/curved/admin/clock). 포팅: 레퍼런스 px로 그리고 부모 `scale(TILE/16)`.
   그라데이션은 솔리드+레이어 근사(무신규의존). 캠퍼스 40×28 5-파빌리온+시계탑 재작성(scale 0.6). jest 36/36·tsc 0·expo export·doctor 21/21.
 - 클리닉 엔진 보존(미삭제) — 결정대로. 시각 충실도는 디바이스 확인. 다음: 5f-ii 엘리베이터.
+
+## 2026-06-27 · 5f-ii 빌드 — 엘리베이터 진입 + 공유 시나리오 소스
+- `src/content/scenarios.ts`: 공유 시나리오 소스(`getTodaysActiveScenarios` 날짜시드 결정적 회전, 쿼터 6/일, 28 메타). 상황판/엘리베이터/
+  인테리어가 공유할 단일 진실원 — 현재 칩 구동, 풍부 콘텐츠는 2-6. `ElevatorScreen`(건물탭·픽셀cab·슬라이딩도어·층디렉터리+라이브칩·GO).
+- **라우팅 결정:** reference는 in-screen overlay지만 RN 관용상 **route `app/elevator/[building]`** + 캠퍼스 파빌리온 핫스팟
+  (kind:'elevator', Hotspot.building 추가)→push로 구현(동작 동등, 더 단순). 빌트 인테리어 층만 GO 이동, 나머지 "준비 중".
+- 검증: tsc 0·jest 41/41(+5)·expo export·doctor 21/21. 칩은 실제 today 기준. 다음: 5f-iii(IThreshold/Tint/IGlass + 대형맵 컬링).

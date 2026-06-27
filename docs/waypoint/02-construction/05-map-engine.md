@@ -178,10 +178,15 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   고도화는 후속 가능). 캠퍼스 fixture 40×28 재작성(본관 중앙·암센터 좌·여성소아 우·외래/행정 하단·시계탑 정원, scale 0.6). **jest 36/36**
   (campus.test 6 랜드마크 비중첩+회랑 도달성 갱신). tsc 0·expo export 번들·doctor 21/21. ⚠️ 시각 충실도(2.5D top-face·그라데이션
   근사·캠퍼스 배치)는 **디바이스 확인** 항목. 엘리베이터 진입은 5f-ii(현재 캠퍼스는 시각 탐험; 클리닉 버튼은 유지).
-- **5f-ii 엘리베이터 진입 모델.** 빌딩 탭→곧장 인테리어가 아니라 **엘리베이터**를 엶. `ScreenElevator`(건물 탭 5 · 픽셀 cab
-  층표시/방향/도어 애니 · 층 디렉터리[층별 부서 + **실시간 상황칩 🔴/🟡/🟢**] · GO 바) + InteriorScreen **🛗 오버레이**(라우팅
-  없음). 상황칩은 `getTodaysActiveScenarios()` — **상황판과 동일 소스**(엘리베이터/보드/인테리어 정합). `ELEVATOR_BUILDINGS`
-  층맵(타워 1F ER/약국…8F 병동). 위험: 중(공유 데이터 소스 설계). NFR: 상황칩이 상황판과 일관.
+- **5f-ii ✅ 엘리베이터 진입 모델**(2026-06-27): 파빌리온 진입이 곧장 인테리어가 아니라 **엘리베이터**를 엶.
+  `ElevatorScreen`(`src/map/ElevatorScreen.tsx`): 건물 탭 5 · 픽셀 cab(층 표시 + 방향 ▲▼ + reanimated 슬라이딩 도어) ·
+  층 디렉터리(층별 부서 + **실시간 상황칩 🔴긴급/🟡진행/🟢정상**) · GO 바. **공유 시나리오 소스** `src/content/scenarios.ts`
+  (`getTodaysActiveScenarios`: 날짜 시드 결정적 일일 회전, 쿼터 ER2/OR1/ICU1/PEDS1/PHARMA1 = 6/일; 28 시나리오 메타) —
+  **상황판과 동일 소스**가 될 단일 진실원(현재는 칩 구동; 풍부 콘텐츠는 2-6). `ELEVATOR_BUILDINGS` 5건물 층맵(타워 1F ER/약국…
+  8F 병동), 빌트 인테리어 있는 층만 `interior`(타워 1F→ER, 2F→내과외래), 나머지 GO→"준비 중". **라우팅으로 구현**(reference는
+  in-screen overlay였으나 RN 관용상 route `app/elevator/[building]` + 캠퍼스 파빌리온 핫스팟(kind:'elevator')→push; 동작 동등).
+  Hotspot 타입에 `building?` 추가. 캠퍼스 fixture에 5 파빌리온 엘리베이터 핫스팟. **jest 41/41**(+scenarios 4: 결정성·쿼터·deptCounts;
+  +campus 1: 핫스팟 도달성). tsc 0·expo export 번들·doctor 21/21. ⚠️ 칩은 실제 today 기준(reference는 데모 고정일). 화면 시각 확인은 디바이스.
 - **5f-iii 신규 프리미티브 + 대형맵 지원.** 엔진 프리미티브: `IThreshold`(문짝 없는 어두운 통로, 내부 존 경계; `tone:sterile`
   파랑) · `Tint`(반투명 바닥 오버레이, 특수실 조명) · `IGlass`(유리벽) · `NurseStationDesk`/`NurseDeskI`(허브 가구) ·
   `IReception` 재정의(의사 처방 데스크; 접수는 `ClinicReception`). **대형맵(최대 40×60) 성능: 가시 오브젝트 컬링 도입**
