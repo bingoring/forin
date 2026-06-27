@@ -1,48 +1,52 @@
-// Campus outdoor map (5d-ii) — faithful-ish art: grass lawn + 2.5D buildings
-// (roof + facade + windows + door) and trees, ported from screens-explore-v2.
-// Buildings/trees are OBJECTS (block via footprint from props.w/h); `collision`
-// is just the map perimeter. Roaming NPCs (useGridMover) amble the plaza.
+// Campus outdoor map — v8 rebuild (5f-i): five landmark pavilions + central
+// clock tower in a healing garden, on grass. Buildings are 2.5D `landmark`
+// objects (front + flat top face); their footprints (props.w/h) block movement
+// while the facades rise above. `collision` is just the map perimeter. Roaming
+// NPCs amble the lower plaza. Departments live INSIDE the pavilions; entry will
+// route through the Elevator (5f-ii) — for now the campus is visual exploration
+// (the clinic-tab buttons still open interiors directly while the clinic engine
+// is kept). Exact ground tiling/props are refinable later.
 import type { Interior } from '@engine';
 
 export const CAMPUS_INTERIOR: Interior = {
   id: 'CAMPUS-00001',
   deptId: 'CAMPUS',
-  cols: 28,
-  rows: 20,
+  cols: 40,
+  rows: 28,
   floorTheme: 'grass',
-  scale: 0.7, // viewed from further back than interiors (handoff: campus objects look smaller)
-  playerStart: { x: 14, y: 16 },
+  scale: 0.6, // viewed from further back than interiors (v8: campus zoomed out)
+  playerStart: { x: 20, y: 26 },
   regions: [],
   rooms: [],
   objects: [
-    // Flagship landmarks (handoff v7) — bespoke MedCenter art (5d-v). `landmark`
-    // dispatches the facade: default=본관(multi-tower), victorian=의과대학(brick+dome),
-    // curved=암병원(curved glass+dish), horizontal=외래(sun-shade bands). Facades rise
-    // above the footprint; the footprint (props.w/h) is what blocks movement.
-    { id: 'b-main', type: 'landmark', x: 1, y: 3, props: { w: 6, h: 4, landmark: 'default', label: '본관 · MAIN', sign: '메디컬센터', signColor: '#B0524A' } },
-    { id: 'b-medschool', type: 'landmark', x: 8, y: 3, props: { w: 5, h: 4, landmark: 'victorian', label: '의과대학', sign: 'MEDICAL SCHOOL' } },
-    { id: 'b-cancer', type: 'landmark', x: 14, y: 3, props: { w: 5, h: 4, landmark: 'curved', label: '암병원', sign: 'CANCER CENTER' } },
-    { id: 'b-opd', type: 'landmark', x: 20, y: 3, props: { w: 6, h: 4, landmark: 'horizontal', label: '외래 클리닉', sign: 'OUTPATIENT' } },
-    // trees (trunk-only collision; canopy overhangs)
-    { id: 't1', type: 'tree', x: 5, y: 11, props: { big: true } },
-    { id: 't2', type: 'tree', x: 23, y: 10 },
-    { id: 't3', type: 'tree', x: 2, y: 15 },
-    { id: 't4', type: 'tree', x: 25, y: 16, props: { big: true } },
-    { id: 't5', type: 'tree', x: 16, y: 18 },
+    // Five flagship pavilions (handoff v8). Footprints block; facades rise above.
+    { id: 'b-main', type: 'landmark', x: 15, y: 9, props: { w: 9, h: 8, landmark: 'main', label: '본관 · 메인 메디컬 타워', sign: '메디컬센터', signColor: '#B0524A' } },
+    { id: 'b-onco', type: 'landmark', x: 2, y: 10, props: { w: 8, h: 7, landmark: 'curved', label: '암센터 · 재활관', sign: 'CANCER · REHAB' } },
+    { id: 'b-women', type: 'landmark', x: 31, y: 10, props: { w: 7, h: 6, landmark: 'victorian', label: '여성소아 센터', sign: 'WOMEN · CHILDREN' } },
+    { id: 'b-opd', type: 'landmark', x: 3, y: 19, props: { w: 8, h: 5, landmark: 'horizontal', label: '외래 · 진단 지원동', sign: 'OUTPATIENT · DX' } },
+    { id: 'b-admin', type: 'landmark', x: 31, y: 19, props: { w: 6, h: 5, landmark: 'admin', label: '행정 · 지원동', sign: 'ADMIN' } },
+    // central clock tower in the healing garden (small footprint, tall facade)
+    { id: 'b-clock', type: 'landmark', x: 18, y: 19, props: { w: 4, h: 2, landmark: 'clock' } },
+    // garden trees around the plaza
+    { id: 't1', type: 'tree', x: 12, y: 18, props: { big: true } },
+    { id: 't2', type: 'tree', x: 27, y: 18 },
+    { id: 't3', type: 'tree', x: 6, y: 25 },
+    { id: 't4', type: 'tree', x: 34, y: 25, props: { big: true } },
+    { id: 't5', type: 'tree', x: 24, y: 24 },
   ],
   hotspots: [],
   collision: [
-    { x: 0, y: 0, w: 28, h: 1 },
-    { x: 0, y: 0, w: 1, h: 20 },
-    { x: 27, y: 0, w: 1, h: 20 },
-    { x: 0, y: 19, w: 28, h: 1 },
+    { x: 0, y: 0, w: 40, h: 1 },
+    { x: 0, y: 0, w: 1, h: 28 },
+    { x: 39, y: 0, w: 1, h: 28 },
+    { x: 0, y: 27, w: 40, h: 1 },
   ],
-  // Roaming campus life — nurses patrol the paths, visitors/patients/kids wander the plaza.
+  // Roaming campus life — nurses patrol the paths, visitors/patients/kids wander the lower plaza.
   npcs: [
-    { id: 'c-nurse', kind: 'nurse', mode: 'patrol', seed: 3, path: [{ x: 6, y: 12 }, { x: 22, y: 12 }, { x: 22, y: 15 }, { x: 6, y: 15 }] },
-    { id: 'c-visitor', kind: 'visitor', mode: 'wander', seed: 17, bound: { x: 3, y: 9, w: 9, h: 8 }, start: { x: 7, y: 12 } },
-    { id: 'c-patient', kind: 'patient', mode: 'wander', seed: 31, bound: { x: 16, y: 9, w: 9, h: 8 }, start: { x: 20, y: 12 } },
-    { id: 'c-child', kind: 'child', mode: 'wander', seed: 42, bound: { x: 10, y: 13, w: 9, h: 5 }, start: { x: 14, y: 14 }, tickMs: 1400 },
-    { id: 'c-doctor', kind: 'doctor', mode: 'patrol', seed: 9, path: [{ x: 13, y: 9 }, { x: 13, y: 17 }] },
+    { id: 'c-nurse', kind: 'nurse', mode: 'patrol', seed: 3, path: [{ x: 12, y: 22 }, { x: 28, y: 22 }, { x: 28, y: 25 }, { x: 12, y: 25 }] },
+    { id: 'c-visitor', kind: 'visitor', mode: 'wander', seed: 17, bound: { x: 3, y: 21, w: 12, h: 5 }, start: { x: 8, y: 23 } },
+    { id: 'c-patient', kind: 'patient', mode: 'wander', seed: 31, bound: { x: 25, y: 21, w: 12, h: 5 }, start: { x: 30, y: 23 } },
+    { id: 'c-child', kind: 'child', mode: 'wander', seed: 42, bound: { x: 16, y: 22, w: 9, h: 4 }, start: { x: 20, y: 24 }, tickMs: 1400 },
+    { id: 'c-doctor', kind: 'doctor', mode: 'patrol', seed: 9, path: [{ x: 20, y: 17 }, { x: 20, y: 25 }] },
   ],
 };

@@ -1,5 +1,6 @@
-// Guards the campus layout: flagship landmark footprints must not overlap each
-// other, and the player start + plaza must stay reachable around them.
+// Guards the v8 campus layout: the landmark footprints (5 pavilions + clock
+// tower) must not overlap each other, and the player start + plaza/garden gaps
+// must stay reachable around them.
 import { CAMPUS_INTERIOR } from './campus';
 import { buildBlocked, canEnter, findPath } from '@engine/collision';
 import { objectCollision } from '@engine/footprint';
@@ -12,12 +13,12 @@ const start = CAMPUS_INTERIOR.playerStart;
 const overlaps = (a: Bounds, b: Bounds) =>
   a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
 
-describe('campus layout', () => {
-  test('flagship landmark footprints do not overlap', () => {
+describe('campus layout (v8 — 5 pavilions + clock tower)', () => {
+  test('landmark footprints do not overlap', () => {
     const fps = CAMPUS_INTERIOR.objects
       .filter((o) => o.type === 'landmark')
       .map((o) => ({ x: o.x, y: o.y, w: o.props!.w as number, h: o.props!.h as number }));
-    expect(fps.length).toBe(4);
+    expect(fps.length).toBe(6); // 본관·암센터·여성소아·외래·행정 + 시계탑
     for (let i = 0; i < fps.length; i++) {
       for (let j = i + 1; j < fps.length; j++) {
         expect(overlaps(fps[i], fps[j])).toBe(false);
@@ -25,10 +26,10 @@ describe('campus layout', () => {
     }
   });
 
-  test('player start is open and the plaza corridors are reachable', () => {
+  test('player start is open and plaza/garden gaps are reachable', () => {
     expect(canEnter(start, grid, blocked)).toBe(true);
-    // each gap between adjacent landmarks (x7, x13, x19, row 6) stays walkable
-    for (const c of [{ x: 7, y: 4 }, { x: 13, y: 4 }, { x: 19, y: 4 }]) {
+    // open band above the lower buildings + gaps between the upper pavilions
+    for (const c of [{ x: 20, y: 17 }, { x: 13, y: 13 }, { x: 29, y: 13 }]) {
       expect(canEnter(c, grid, blocked)).toBe(true);
       expect(findPath(start, c, grid, blocked).length).toBeGreaterThan(0);
     }

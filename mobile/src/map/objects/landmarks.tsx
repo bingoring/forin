@@ -1,154 +1,169 @@
-// Flagship campus landmark buildings (5d-v) — ports of screens-explore-v2
-// MedCenter / MedCenterH / MedCenterV / MedCenterC. The reference uses CSS
-// gradients + glow; here MedCenter/H/C are View-based (gradients approximated
-// with layered solid fills), and MedCenterV is a direct react-native-svg port
-// (brick Pattern + slate mansard + copper dome). Authored at the reference's
-// ~16px/tile; scaled by S=TILE/16. Footprints block via props.w/h; the facades
-// rise above the footprint (overflow visible). Reserved for marquee departments.
+// Flagship campus landmark buildings — v8 2.5D rework (5f-i). Ports of
+// buildings-v2.jsx. The campus is viewed from a slightly-elevated diagonal, so
+// every landmark shows BOTH a front face AND a flat rectangular TOP face
+// (Block3D). Authored in the reference's px (TILE=16) and scaled to render px by
+// a single parent transform (RS = TILE/16) — no per-value scaling.
+//
+// CSS gradients/glow from the reference are approximated with solid fills + a
+// couple of accent layers (consistent with the existing pixel-object style; an
+// expo-linear-gradient upgrade is a possible later fidelity pass). The brick
+// 여성소아 building + cupola stay as a react-native-svg port.
+//
+// landmark kinds (props.landmark): main=본관 MedCenter · horizontal=외래·진단 ·
+// victorian=여성소아 · curved=암센터 · admin=행정(flat) · clock=시계탑.
 import type { ReactElement } from 'react';
 import { Text, View } from 'react-native';
-import Svg, { Defs, G, Path, Pattern, Rect } from 'react-native-svg';
+import Svg, { Circle, Defs, G, Path, Pattern, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import { fonts } from '@/theme/tokens';
 import type { MapObject } from '@engine';
 
 const INK = '#2A2522';
-const S = TILE / 16;
+const RS = TILE / 16; // reference px → render px
 
-function NameTag({ label, sign, signColor, topPx }: { label?: string; sign?: string; signColor?: string; topPx: number }) {
+// ── Block3D: front face + a big rectangular TOP face (the 2.5D extrusion). All
+// values in reference px. `front`/`top` are solid colors (gradient mids). ──
+function Block3D({
+  left = 0, bottom = 0, fw, fh, d = 14, front, top, radius = 0, topInset, topRim, glow, children,
+}: {
+  left?: number; bottom?: number; fw: number; fh: number; d?: number; front: string; top: string;
+  radius?: number; topInset?: boolean; topRim?: string; glow?: string; children?: React.ReactNode;
+}) {
+  const td = Math.round(d * 2.3); // visible roof depth (high POV)
   return (
-    <View style={{ position: 'absolute', left: 0, right: 0, top: topPx, alignItems: 'center' }}>
+    <View style={{ position: 'absolute', left, bottom, width: fw, height: fh }}>
+      {/* TOP face — rectangle */}
+      <View style={{ position: 'absolute', left: 0, top: -td, width: fw + 4, height: td + 2, backgroundColor: topInset ? (topRim ?? top) : top, borderLeftWidth: 2, borderRightWidth: 2, borderTopWidth: 2, borderColor: INK, borderTopLeftRadius: radius, borderTopRightRadius: radius }}>
+        {topInset ? <View style={{ position: 'absolute', left: 4, right: 4, top: 4, bottom: 4, backgroundColor: top, borderWidth: 2, borderColor: INK }} /> : null}
+      </View>
+      {/* FRONT face */}
+      <View style={{ position: 'absolute', left: 0, top: 0, width: fw, height: fh, backgroundColor: front, borderWidth: 2, borderColor: INK, overflow: 'hidden', borderTopLeftRadius: radius, borderTopRightRadius: radius }}>
+        {glow ? <View style={{ position: 'absolute', left: -2, right: -2, top: -2, height: 4, backgroundColor: glow }} /> : null}
+        {children}
+      </View>
+    </View>
+  );
+}
+
+// dusk-lit window grid for tower fronts (reference `grid`)
+function grid(cols: number, rows: number, litRatio: number, salt: number, on: string, off: string) {
+  const cells: ReactElement[] = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const lit = ((c * 7 + r * 13 + salt * 31) % 10) < litRatio * 10;
+      cells.push(
+        <View key={`${r}-${c}`} style={{ position: 'absolute', left: `${(c + 0.5) * (100 / cols)}%`, top: `${(r + 0.5) * (100 / rows)}%`, width: `${(100 / cols) * 0.62}%`, height: `${(100 / rows) * 0.5}%`, marginLeft: `${-(100 / cols) * 0.31}%`, marginTop: `${-(100 / rows) * 0.25}%`, backgroundColor: lit ? on : off }} />,
+      );
+    }
+  }
+  return cells;
+}
+
+function Plaque({ sign, signColor, label }: { sign?: string; signColor?: string; label?: string }) {
+  return (
+    <>
       {sign ? (
-        <View style={{ backgroundColor: signColor ?? '#3E6E62', borderWidth: 1.5, borderColor: INK, paddingHorizontal: 6, paddingVertical: 2, marginBottom: 2 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{sign}</Text>
+        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 27, alignItems: 'center' }}>
+          <View style={{ backgroundColor: signColor ?? '#D14B3D', borderWidth: 1.5, borderColor: INK, paddingHorizontal: 6, paddingVertical: 2 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{sign}</Text>
+          </View>
         </View>
       ) : null}
       {label ? (
-        <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: INK, paddingHorizontal: 6, paddingVertical: 2 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: INK }}>{label}</Text>
+        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 43, alignItems: 'center' }}>
+          <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: INK, paddingHorizontal: 4, paddingVertical: 1 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: INK }}>{label}</Text>
+          </View>
         </View>
       ) : null}
-    </View>
+    </>
   );
 }
 
-// ── 본관 MedCenter — dark-glass tower + glowing amber atrium + white-stone tower ──
+// ── 본관 · MAIN MEDICAL TOWER — 3 towers on a podium ──
 function MedCenter({ w, h, label, sign, signColor }: LMProps) {
-  const pw = w * TILE;
-  const ph = h * TILE;
-  const L = (v: number) => v * S;
-  const win = (key: string, left: number, top: number, lit: boolean) => (
-    <View key={key} style={{ position: 'absolute', left: L(left), top: L(top), width: L(2.4), height: L(1.6), backgroundColor: lit ? '#FFE3A0' : '#1E2832' }} />
-  );
+  const pw = w * 16;
+  const ph = h * 16;
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
+    <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 16, height: ph - 4, backgroundColor: 'rgba(40,32,28,0.28)' }} />
       {/* left dark-glass tower */}
-      <View style={{ position: 'absolute', left: L(0), width: L(38), bottom: L(16), height: L(146), backgroundColor: '#30414E', borderWidth: 2, borderColor: INK }}>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: L(4), backgroundColor: '#5E6C7A' }} />
-        {[0, 1, 2, 3, 4, 5].map((r) => [0, 1, 2].map((c) => win(`l${r}-${c}`, 4 + c * 11, 8 + r * 22, (c + r) % 2 === 0)))}
-      </View>
+      <Block3D left={24} bottom={16} fw={40} fh={150} d={11} front="#34414E" top="#4C5A68">
+        {grid(4, 16, 0.45, 1, '#FFE3A0', '#1E2832')}
+      </Block3D>
       {/* right white-stone tower */}
-      <View style={{ position: 'absolute', left: L(60), width: L(38), bottom: L(16), height: L(118), backgroundColor: '#D8D1BE', borderWidth: 2, borderColor: INK }}>
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: L(4), backgroundColor: '#F0EAD8' }} />
-        {[0, 1, 2, 3].map((r) => [0, 1, 2].map((c) => win(`r${r}-${c}`, 64 + c * 11, 8 + r * 24, (c + r) % 3 === 0)))}
-      </View>
-      {/* connecting glass bridge */}
-      <View style={{ position: 'absolute', left: L(56), width: L(12), bottom: L(72), height: L(22), backgroundColor: '#8FB8D2', borderWidth: 1.5, borderColor: INK }} />
-      {/* center amber atrium (glowing) */}
-      <View style={{ position: 'absolute', left: L(34), width: L(30), bottom: L(16), height: L(160), backgroundColor: '#EAA63C', borderWidth: 2, borderColor: INK, borderTopLeftRadius: L(9), borderTopRightRadius: L(9), alignItems: 'center' }}>
-        <View style={{ position: 'absolute', left: '16%', right: '16%', top: '9%', bottom: 0, backgroundColor: '#FBE3A0', opacity: 0.92 }} />
-      </View>
-      {/* center crown */}
-      <View style={{ position: 'absolute', left: L(37), width: L(24), bottom: L(176), height: L(8), backgroundColor: '#D89A38', borderWidth: 1.5, borderColor: INK, borderTopLeftRadius: L(7), borderTopRightRadius: L(7) }} />
+      <Block3D left={92} bottom={16} fw={40} fh={120} d={10} front="#D9D2C0" top="#EDE7D6">
+        {grid(4, 12, 0.28, 5, '#FFEDB0', '#A9B7C0')}
+      </Block3D>
+      {/* center amber atrium (showpiece, tallest) */}
+      <Block3D left={62} bottom={16} fw={32} fh={166} d={12} front="#F0B648" top="#F2C257" glow="#FFF0BE">
+        <View style={{ position: 'absolute', left: '14%', right: '14%', top: '8%', bottom: 0, backgroundColor: '#FCE39A', opacity: 0.9 }} />
+      </Block3D>
+      {/* glass bridge */}
+      <View style={{ position: 'absolute', left: 56, bottom: 78, width: 8, height: 20, backgroundColor: '#8FB8D2', borderWidth: 1.5, borderColor: INK }} />
       {/* podium + entrance */}
-      <View style={{ position: 'absolute', left: L(-4), right: L(-4), bottom: 0, height: L(24), backgroundColor: '#CFC8B6', borderWidth: 2, borderColor: INK }}>
-        <View style={{ position: 'absolute', left: L(4), right: L(4), top: L(6), height: L(6), backgroundColor: '#F4D27A' }} />
-        <View style={{ position: 'absolute', left: '50%', marginLeft: -L(17), bottom: 0, width: L(34), height: L(15), backgroundColor: '#28333D', borderWidth: 2, borderColor: INK }} />
-      </View>
-      <NameTag label={label} sign={sign} signColor={signColor} topPx={-L(34)} />
+      <Block3D left={-4} bottom={0} fw={pw + 8} fh={28} d={11} front="#CFC8B6" top="#E2DBC8">
+        <View style={{ position: 'absolute', left: 6, right: 6, top: 7, height: 6, backgroundColor: '#F4D27A' }} />
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -18, bottom: 0, width: 36, height: 18, backgroundColor: '#28333D', borderWidth: 2, borderBottomWidth: 0, borderColor: INK }}>
+          <View style={{ position: 'absolute', left: 2, right: 2, top: 2, height: 3, backgroundColor: '#FFE6A6' }} />
+        </View>
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -24, bottom: 16, width: 48, height: 5, backgroundColor: '#9FA8B0', borderWidth: 1.5, borderColor: INK }} />
+      </Block3D>
+      <Plaque sign={sign} signColor={signColor ?? '#D14B3D'} label={label} />
     </View>
   );
 }
 
-// ── 외래 MedCenterH — sun-shade bands over dark-glass ribbon windows ──
+// ── 외래·진단 · HORIZONTAL — sun-shade ribbon facade + flat top ──
 function MedCenterH({ w, h, label, sign, signColor }: LMProps) {
-  const pw = w * TILE;
-  const ph = h * TILE;
-  const L = (v: number) => v * S;
+  const pw = w * 16;
+  const ph = h * 16;
   const facadeH = 100;
   const floors = 5;
   const signH = 10;
   const groundH = 16;
   const floorH = (facadeH - signH - groundH) / floors;
   const cols = Math.max(3, w);
+  const td = Math.round(14 * 2.3);
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: L(facadeH), backgroundColor: '#E2E7EB', borderWidth: 2, borderColor: INK }}>
-        {/* rooftop parapet */}
-        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: L(signH), backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderColor: '#C6CCD2' }} />
-        {/* ribbon windows + sun-shade fins */}
+    <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: facadeH, backgroundColor: 'rgba(40,32,28,0.30)' }} />
+      {/* top roof rectangle */}
+      <View style={{ position: 'absolute', left: 0, top: ph - facadeH - td, width: pw, height: td + 2, backgroundColor: '#D2D7DB', borderLeftWidth: 2, borderRightWidth: 2, borderTopWidth: 2, borderColor: INK }} />
+      {/* front facade */}
+      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: facadeH, borderWidth: 2, borderColor: INK, backgroundColor: '#E2E7EB', overflow: 'hidden' }}>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: signH, backgroundColor: '#F6F8FA', borderBottomWidth: 1, borderColor: '#C6CCD2', flexDirection: 'row', alignItems: 'center', paddingLeft: 5 }}>
+          <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#E06A2C' }} />
+          <View style={{ width: '46%', height: 2, marginLeft: 2, backgroundColor: '#5A6E8C' }} />
+        </View>
         {Array.from({ length: floors }).map((_, i) => {
           const top = signH + i * floorH;
           return (
             <View key={i}>
-              <View style={{ position: 'absolute', left: L(3), right: L(9), top: L(top), height: L(floorH * 0.5), backgroundColor: '#7E97A6' }} />
-              <View style={{ position: 'absolute', left: 0, right: 0, top: L(top + floorH * 0.5), height: L(floorH * 0.5), backgroundColor: '#F2F4F6' }} />
+              <View style={{ position: 'absolute', left: 3, right: 9, top, height: floorH * 0.5, backgroundColor: '#8AA5B5' }} />
+              <View style={{ position: 'absolute', left: 0, right: 0, top: top + floorH * 0.5, height: floorH * 0.5, backgroundColor: '#F4F6F8', borderTopWidth: 1, borderColor: '#C6CCD2' }} />
             </View>
           );
         })}
-        {/* ground-floor recessed lobby + pilotis */}
-        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: L(groundH), backgroundColor: '#33414C' }}>
-          <View style={{ position: 'absolute', left: L(3), right: L(3), top: L(2), bottom: L(4), backgroundColor: '#6E90A2', opacity: 0.85 }} />
+        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: groundH, backgroundColor: '#33414C' }}>
+          <View style={{ position: 'absolute', left: 3, right: 3, top: 2, bottom: 4, backgroundColor: '#6E90A2', opacity: 0.85 }} />
           {Array.from({ length: cols }).map((_, i) => (
-            <View key={i} style={{ position: 'absolute', bottom: 0, left: `${((i + 0.5) * 100) / cols}%`, marginLeft: -L(1.5), width: L(3), height: L(groundH), backgroundColor: '#E8EBEE', borderWidth: 1, borderColor: INK }} />
+            <View key={i} style={{ position: 'absolute', bottom: 0, left: `${(i + 0.5) * (100 / cols)}%`, marginLeft: -1.5, width: 3, height: groundH, backgroundColor: '#E8EBEE', borderWidth: 1, borderColor: INK }} />
           ))}
         </View>
       </View>
-      <NameTag label={label} sign={sign} signColor={signColor ?? '#3E6E62'} topPx={-L(28)} />
+      <Plaque sign={sign} signColor={signColor ?? '#0E7490'} label={label} />
     </View>
   );
 }
 
-// ── 암병원 MedCenterC — convex curved-glass tower + roof dish + green podium ──
-function MedCenterC({ w, h, label, sign, signColor }: LMProps) {
-  const pw = w * TILE;
-  const ph = h * TILE;
-  const L = (v: number) => v * S;
-  const towerH = 96;
-  const podiumH = 16;
-  const bands = Math.floor(towerH / 11);
-  return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
-      {/* roof dish sculpture (signature) */}
-      <View style={{ position: 'absolute', left: L(6), bottom: L(podiumH + towerH + 1), width: L(15), height: L(7), backgroundColor: '#F4F6F8', borderWidth: 1.5, borderColor: INK, borderRadius: L(4), transform: [{ rotate: '-18deg' }] }} />
-      {/* curved glass tower */}
-      <View style={{ position: 'absolute', left: L(2), right: L(2), bottom: L(podiumH - 2), height: L(towerH), backgroundColor: '#9FC0D2', borderWidth: 2, borderColor: INK, borderTopLeftRadius: L(24), borderTopRightRadius: L(24), borderBottomLeftRadius: L(4), borderBottomRightRadius: L(4), overflow: 'hidden' }}>
-        {/* horizontal glass bands */}
-        {Array.from({ length: bands }).map((_, i) => (
-          <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: L(i * 11), height: L(7), backgroundColor: '#A8C6D6' }} />
-        ))}
-        {/* center-lit vertical sheen */}
-        <View style={{ position: 'absolute', left: '40%', right: '40%', top: 0, bottom: 0, backgroundColor: '#E9EFF3', opacity: 0.5 }} />
-        {/* rooftop sign band */}
-        <View style={{ position: 'absolute', left: L(10), right: L(10), top: L(7), height: L(6), backgroundColor: '#fff', borderWidth: 1, borderColor: INK }} />
-      </View>
-      {/* green-glass podium + entrance */}
-      <View style={{ position: 'absolute', left: L(-2), right: L(-2), bottom: 0, height: L(podiumH), backgroundColor: '#6E957F', borderWidth: 2, borderColor: INK }}>
-        <View style={{ position: 'absolute', left: '50%', marginLeft: -L(11), bottom: 0, width: L(22), height: L(11), backgroundColor: '#2E3A44', borderWidth: 2, borderColor: INK }} />
-      </View>
-      <NameTag label={label} sign={sign} signColor={signColor ?? '#1E6FA8'} topPx={-L(20)} />
-    </View>
-  );
-}
-
-// ── 의과대학 MedCenterV — brick + mansard + copper dome (direct SVG port) ──
+// ── 여성소아 센터 — brick facade + flat 2.5D roof slabs + low cupola (SVG) ──
 function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
-  const pw = w * TILE;
-  const ph = h * TILE;
+  const pw = w * 16;
+  const ph = h * 16;
   const C = {
     brick: '#9E4A3C', brickDk: '#7E3A2E', stone: '#E0D4BB', stoneDk: '#BCA98A',
-    slate: '#3B414C', slateLt: '#535B68', slateDk: '#2A2F38',
-    copper: '#5E9486', copperDk: '#3C6A5E', copperLt: '#8FBCAE', glass: '#2E3A44', lit: '#ECC766', sash: '#E0D4BB',
+    slate: '#3B414C', slateLt: '#535B68', copper: '#5E9486', copperLt: '#8FBCAE', glass: '#2E3A44', lit: '#ECC766', sash: '#E0D4BB',
   };
   const winRow = (bx: number, bw: number, by: number, count: number, salt: number, key: string) => {
     const out: ReactElement[] = [];
@@ -167,62 +182,181 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
     return out;
   };
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
+    <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: ph - 6, backgroundColor: 'rgba(40,32,28,0.24)' }} />
       <Svg viewBox="0 0 144 80" width={pw} height={ph}>
         <Defs>
-          <Pattern id="brkV" width={9} height={6} patternUnits="userSpaceOnUse">
+          <Pattern id="brkV8" width={9} height={6} patternUnits="userSpaceOnUse">
             <Rect width={9} height={6} fill={C.brick} />
             <Rect width={9} height={0.7} y={5.3} fill={C.brickDk} />
             <Rect width={0.7} height={3} x={0} fill={C.brickDk} />
             <Rect width={0.7} height={3} x={4.5} y={3} fill={C.brickDk} />
           </Pattern>
         </Defs>
-        {/* corner turrets */}
+        {/* corner turrets — flat-topped caps */}
         {[12, 132].map((cx, i) => (
           <G key={i}>
-            <Rect x={cx - 7} y={34} width={14} height={46} fill="url(#brkV)" stroke={INK} strokeWidth={0.8} />
-            <Path d={`M${cx - 9} 35 L${cx} 16 L${cx + 9} 35 Z`} fill={C.slate} stroke={INK} strokeWidth={0.8} />
-            <Rect x={cx - 1.6} y={32} width={3.2} height={5} fill={C.lit} stroke={C.sash} strokeWidth={0.5} />
+            <Rect x={cx - 7} y={30} width={14} height={50} fill="url(#brkV8)" stroke={INK} strokeWidth={0.8} />
+            <Rect x={cx - 8} y={24} width={16} height={8} fill={C.slateLt} stroke={INK} strokeWidth={0.8} />
+            <Rect x={cx - 5} y={26} width={10} height={4} fill={C.slate} />
+            <Rect x={cx - 1.6} y={33} width={3.2} height={5} fill={C.lit} stroke={C.sash} strokeWidth={0.5} />
           </G>
         ))}
-        {/* wings: brick body + mansard + dormers + windows */}
+        {/* wings — brick + flat roof slab */}
         {([[16, 52], [92, 128]] as const).map(([x0, x1], i) => (
           <G key={i}>
-            <Rect x={x0} y={40} width={x1 - x0} height={40} fill="url(#brkV)" stroke={INK} strokeWidth={0.8} />
-            <Path d={`M${x0 - 1} 41 L${x1 + 1} 41 L${x1 - 4} 27 L${x0 + 4} 27 Z`} fill={C.slate} stroke={INK} strokeWidth={0.8} />
-            {[0.28, 0.62].map((f, d) => {
-              const dx = x0 + (x1 - x0) * f;
-              return (
-                <G key={d}>
-                  <Path d={`M${dx - 3} 34 L${dx} 29 L${dx + 3} 34 Z`} fill={C.slateLt} stroke={INK} strokeWidth={0.5} />
-                  <Rect x={dx - 2} y={34} width={4} height={5} fill={C.lit} stroke={C.sash} strokeWidth={0.5} />
-                </G>
-              );
-            })}
+            <Rect x={x0 + 3} y={20} width={x1 - x0 - 6} height={20} fill={C.slateLt} stroke={INK} strokeWidth={0.8} />
+            <Rect x={x0 + 6} y={23} width={x1 - x0 - 12} height={14} fill={C.slate} />
+            <Rect x={x0} y={40} width={x1 - x0} height={40} fill="url(#brkV8)" stroke={INK} strokeWidth={0.8} />
             <Rect x={x0} y={47} width={x1 - x0} height={1.4} fill={C.stone} />
             {winRow(x0 + 2, x1 - x0 - 4, 51, 4, i + 1, `wA${i}`)}
             <Rect x={x0} y={62} width={x1 - x0} height={1.4} fill={C.stone} />
             {winRow(x0 + 2, x1 - x0 - 4, 66, 4, i + 3, `wB${i}`)}
           </G>
         ))}
-        {/* central pavilion */}
-        <Rect x={52} y={30} width={40} height={50} fill="url(#brkV)" stroke={INK} strokeWidth={0.9} />
+        {/* central pavilion + flat roof slab + low cupola */}
+        <Rect x={53} y={18} width={38} height={14} fill={C.slateLt} stroke={INK} strokeWidth={0.9} />
+        <Rect x={57} y={21} width={30} height={8} fill={C.slate} />
+        <Rect x={52} y={30} width={40} height={50} fill="url(#brkV8)" stroke={INK} strokeWidth={0.9} />
         <Rect x={52} y={30} width={40} height={2} fill={C.stone} />
         <Rect x={52} y={44} width={40} height={1.4} fill={C.stone} />
         {winRow(55, 34, 34, 4, 9, 'cT')}
         {winRow(55, 34, 48, 4, 2, 'cM')}
         <Path d="M64 80 L64 70 Q72 60 80 70 L80 80 Z" fill={C.glass} stroke={C.stone} strokeWidth={1.4} />
-        {/* stone drum + copper dome + lantern */}
-        <Rect x={60} y={18} width={24} height={13} rx={1} fill={C.stone} stroke={INK} strokeWidth={0.8} />
-        {[64, 70.5, 77].map((wx, i) => (
-          <Rect key={i} x={wx} y={21} width={3.2} height={7} fill={C.glass} />
-        ))}
-        <Rect x={59} y={17} width={26} height={1.6} fill={C.stoneDk} />
-        <Path d="M58 18 C58 8 63 5 72 5 C81 5 86 8 86 18 Z" fill={C.copper} stroke={INK} strokeWidth={0.9} />
-        <Path d="M63 16 C63 9 66 6 71 6" fill="none" stroke={C.copperLt} strokeWidth={1.4} strokeLinecap="round" />
-        <Rect x={68.5} y={1} width={7} height={6} rx={1} fill={C.stone} stroke={INK} strokeWidth={0.7} />
+        {/* low cupola */}
+        <Rect x={63} y={12} width={18} height={6} fill={C.stone} stroke={INK} strokeWidth={0.7} />
+        {[65.5, 70, 74.5, 79].map((wx, i) => <Rect key={i} x={wx} y={13.5} width={2} height={3.5} fill={C.glass} />)}
+        <Path d="M62 12 C62 5 67 2 72 2 C77 2 82 5 82 12 Z" fill={C.copper} stroke={INK} strokeWidth={0.8} />
+        <Path d="M66 10 C66 5 68 3 71 3" fill="none" stroke={C.copperLt} strokeWidth={1.2} strokeLinecap="round" />
+        <Circle cx={72} cy={-3} r={1.4} fill="#F0CC66" stroke={INK} strokeWidth={0.4} />
       </Svg>
-      <NameTag label={label} sign={sign} signColor={signColor ?? '#7E3A2E'} topPx={-14 * S} />
+      <Plaque sign={sign} signColor={signColor ?? '#C2487E'} label={label} />
+    </View>
+  );
+}
+
+// ── 암센터 — eco "healing" tower: cream facade + green vertical garden +
+//    glass bays + wood base + roof garden ──
+function MedCenterC({ w, h, label, sign, signColor }: LMProps) {
+  const pw = w * 16;
+  const ph = h * 16;
+  const cream = '#F3ECDD';
+  const creamDk = '#E0D6C0';
+  const warm = '#EAD9B8';
+  const glass = '#9FCEDD';
+  const green = '#5C9A52';
+  const greenDk = '#3E7338';
+  const greenLt = '#82BE6E';
+  const wood = '#A37945';
+  const woodDk = '#8E6638';
+  const roof = '#EDE6D6';
+  const sc = signColor ?? '#2E9E6E';
+  const podH = 26;
+  const towerH = ph - podH - 4;
+  return (
+    <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: ph - 6, backgroundColor: 'rgba(40,32,28,0.22)' }} />
+      {/* tower with planted roof */}
+      <Block3D left={6} bottom={podH} fw={pw - 12} fh={towerH} d={13} front={cream} top={roof} topInset topRim={creamDk}>
+        {[0, 0.5, 1].map((f, i) => (
+          <View key={`pl${i}`} style={{ position: 'absolute', left: `${f * 100}%`, marginLeft: -3, top: 0, bottom: 0, width: 6, backgroundColor: warm }} />
+        ))}
+        {[0.12, 0.62].map((f, i) => (
+          <View key={`gl${i}`} style={{ position: 'absolute', left: `${f * 100}%`, top: 8, bottom: 8, width: '26%', backgroundColor: glass, borderWidth: 1.5, borderColor: INK }}>
+            <View style={{ position: 'absolute', left: 1, top: 1, width: '40%', height: 4, backgroundColor: '#DCF1F6', opacity: 0.8 }} />
+          </View>
+        ))}
+        {/* living green garden ribbon (signature) */}
+        <View style={{ position: 'absolute', left: '44%', top: 2, bottom: 2, width: '12%', backgroundColor: green, borderWidth: 1.5, borderColor: INK, overflow: 'hidden' }}>
+          {[0.28, 0.55, 0.82].map((t, i) => (
+            <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: `${t * 100}%`, height: 5, backgroundColor: greenDk, opacity: 0.85 }} />
+          ))}
+          <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 6, backgroundColor: greenLt, opacity: 0.6 }} />
+        </View>
+        {/* sign band */}
+        <View style={{ position: 'absolute', left: '30%', top: 4, width: '40%', height: 5, backgroundColor: '#fff', borderWidth: 1, borderColor: INK }} />
+      </Block3D>
+      {/* roof garden: planters + slim tree */}
+      {[0.26, 0.5, 0.74].map((f, i) => (
+        <View key={`rp${i}`} style={{ position: 'absolute', left: 6 + f * (pw - 12) - 5, bottom: podH + towerH + 6, width: 10, height: 6, backgroundColor: green, borderWidth: 1.5, borderColor: INK }} />
+      ))}
+      <View style={{ position: 'absolute', left: '50%', marginLeft: -2, bottom: podH + towerH + 10, width: 4, height: 12, backgroundColor: woodDk }} />
+      <View style={{ position: 'absolute', left: '50%', marginLeft: -8, bottom: podH + towerH + 18, width: 16, height: 12, borderRadius: 8, backgroundColor: green, borderWidth: 1.5, borderColor: INK }} />
+      {/* wood base + glazed entrance */}
+      <View style={{ position: 'absolute', left: -2, right: -2, bottom: 0, height: podH, backgroundColor: wood, borderWidth: 2, borderColor: INK, overflow: 'hidden' }}>
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -(pw * 0.23), bottom: 0, width: '46%', height: 18, backgroundColor: glass, borderWidth: 2, borderBottomWidth: 0, borderColor: INK }}>
+          <View style={{ position: 'absolute', left: '42%', bottom: 0, width: '16%', height: 10, backgroundColor: '#2E5C52' }} />
+        </View>
+        <View style={{ position: 'absolute', left: 6, bottom: 2, width: 18, height: 7, backgroundColor: green, borderWidth: 1, borderColor: INK }} />
+        <View style={{ position: 'absolute', right: 6, bottom: 2, width: 18, height: 7, backgroundColor: green, borderWidth: 1, borderColor: INK }} />
+      </View>
+      <Plaque sign={sign} signColor={sc} label={label} />
+    </View>
+  );
+}
+
+// ── 행정·지원동 — plain flat extruded block (concrete/brick) ──
+function MedCenterAdmin({ w, h, label, sign, signColor }: LMProps) {
+  const pw = w * 16;
+  const ph = h * 16;
+  return (
+    <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
+      <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: ph - 4, backgroundColor: 'rgba(40,32,28,0.26)' }} />
+      <Block3D left={0} bottom={0} fw={pw} fh={ph} d={12} front="#C8BBA6" top="#D8CDBA">
+        {grid(Math.max(3, w), Math.max(3, h - 1), 0.3, 3, '#FBE7A8', '#8C9AA2')}
+        {/* entrance */}
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -10, bottom: 0, width: 20, height: 14, backgroundColor: '#5C4A33', borderWidth: 2, borderBottomWidth: 0, borderColor: INK }} />
+      </Block3D>
+      <Plaque sign={sign} signColor={signColor ?? '#6B5B45'} label={label} />
+    </View>
+  );
+}
+
+// ── 시계탑 — timber tower + clock head (central healing garden) ──
+function ClockTower() {
+  const wood = '#9C7A4A';
+  const woodLt = '#B89866';
+  const woodDk = '#6E5230';
+  const woodTop = '#C2A472';
+  const vine = '#5C8A3A';
+  const vineDk = '#3E6326';
+  const stone = '#C9CDD2';
+  const stoneDk = '#9AA0A8';
+  return (
+    <View style={{ position: 'absolute', left: 0, top: 0, width: 6 * 16, height: 300 }}>
+      <View style={{ position: 'absolute', left: 84, bottom: 0, width: 14, height: 40, backgroundColor: 'rgba(40,32,28,0.26)' }} />
+      {/* base plinth */}
+      <Block3D left={2} bottom={0} fw={92} fh={40} d={9} front={woodLt} top={woodTop}>
+        <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 6, backgroundColor: woodDk }} />
+        <View style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 6, backgroundColor: woodDk }} />
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -13, bottom: 0, width: 26, height: 26, backgroundColor: '#3A2C1C', borderTopLeftRadius: 13, borderTopRightRadius: 13, borderWidth: 2, borderColor: INK }} />
+        <View style={{ position: 'absolute', left: 9, bottom: 2, width: 8, height: 5, backgroundColor: vine, borderTopLeftRadius: 3, borderTopRightRadius: 3 }} />
+        <View style={{ position: 'absolute', right: 9, bottom: 2, width: 8, height: 5, backgroundColor: vine, borderTopLeftRadius: 3, borderTopRightRadius: 3 }} />
+      </Block3D>
+      {/* shaft */}
+      <Block3D left={16} bottom={40} fw={64} fh={150} d={10} front={wood} top={woodTop}>
+        <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 8, backgroundColor: woodDk }} />
+        <View style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 8, backgroundColor: woodDk }} />
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -3, top: 0, bottom: 0, width: 6, backgroundColor: woodDk }} />
+        {[0.27, 0.73].map((fx, i) => (
+          <View key={i} style={{ position: 'absolute', left: `${fx * 100}%`, marginLeft: -4.5, top: 6, bottom: 6, width: 9, backgroundColor: vine, borderWidth: 1, borderColor: vineDk }}>
+            <View style={{ position: 'absolute', left: 0, right: 0, top: '33%', height: 3, backgroundColor: vineDk }} />
+            <View style={{ position: 'absolute', left: 0, right: 0, top: '66%', height: 3, backgroundColor: vineDk }} />
+          </View>
+        ))}
+      </Block3D>
+      {/* clock head */}
+      <Block3D left={6} bottom={190} fw={84} fh={70} d={12} front={wood} top={woodTop} topInset topRim={woodDk}>
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, borderWidth: 7, borderColor: woodDk }} />
+        <View style={{ position: 'absolute', left: '50%', top: '50%', marginLeft: -25, marginTop: -25, width: 50, height: 50, borderRadius: 25, backgroundColor: stoneDk, borderWidth: 3, borderColor: INK, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, borderRadius: 20, backgroundColor: stone }} />
+          <View style={{ position: 'absolute', left: 9, top: 9, right: 9, bottom: 9, borderRadius: 16, backgroundColor: '#FBF8EE', borderWidth: 1, borderColor: stoneDk }} />
+          {/* hands */}
+          <View style={{ position: 'absolute', width: 2.4, height: 15, backgroundColor: '#7A4A2A', transform: [{ translateY: -7.5 }, { rotate: '18deg' }] }} />
+          <View style={{ position: 'absolute', width: 11, height: 2.4, backgroundColor: '#7A4A2A', transform: [{ translateX: 5.5 }, { rotate: '96deg' }] }} />
+          <View style={{ position: 'absolute', width: 4, height: 4, borderRadius: 2, backgroundColor: INK }} />
+        </View>
+      </Block3D>
     </View>
   );
 }
@@ -239,19 +373,20 @@ interface LMProps {
 export function LandmarkView({ object }: { object: MapObject }): ReactElement | null {
   if (object.type !== 'landmark') return null;
   const p = object.props ?? {};
-  // guard against missing/degenerate authored sizes feeding layout math
-  const props: LMProps = {
-    w: Math.max(1, (typeof p.w === 'number' ? p.w : 6)),
-    h: Math.max(1, (typeof p.h === 'number' ? p.h : 5)),
-    label: p.label as string | undefined,
-    sign: p.sign as string | undefined,
-    signColor: p.signColor as string | undefined,
-  };
-  const kind = (p.landmark as string) ?? 'default';
-  const Inner = kind === 'horizontal' ? MedCenterH : kind === 'victorian' ? MedCenterV : kind === 'curved' ? MedCenterC : MedCenter;
+  const w = Math.max(1, typeof p.w === 'number' ? p.w : 6);
+  const h = Math.max(1, typeof p.h === 'number' ? p.h : 5);
+  const props: LMProps = { w, h, label: p.label as string | undefined, sign: p.sign as string | undefined, signColor: p.signColor as string | undefined };
+  const kind = (p.landmark as string) ?? 'main';
+  let inner: ReactElement;
+  if (kind === 'clock') inner = <ClockTower />;
+  else if (kind === 'horizontal') inner = <MedCenterH {...props} />;
+  else if (kind === 'victorian') inner = <MedCenterV {...props} />;
+  else if (kind === 'curved') inner = <MedCenterC {...props} />;
+  else if (kind === 'admin') inner = <MedCenterAdmin {...props} />;
+  else inner = <MedCenter {...props} />;
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left: object.x * TILE, top: object.y * TILE, width: props.w * TILE, height: props.h * TILE }}>
-      <Inner {...props} />
+    <View pointerEvents="none" style={{ position: 'absolute', left: object.x * TILE, top: object.y * TILE, width: w * TILE, height: h * TILE }}>
+      <View style={{ position: 'absolute', left: 0, top: 0, transform: [{ scale: RS }], transformOrigin: 'top left' }}>{inner}</View>
     </View>
   );
 }
