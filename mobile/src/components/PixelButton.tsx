@@ -1,7 +1,8 @@
-// PixelButton — design-system pixel button (forin-ui PixelButton). A chunky
-// 3px-outlined cap with a hard offset shadow and a lit-from-above bevel: a
-// bright strip on the top edge + a shaded strip on the bottom edge. On press the
-// bevel SWAPS (top shaded / bottom lit) so the cap reads as recessed into a hole.
+// PixelButton — forin's chunky pixel button. A 3px-outlined cap with a lit-from-
+// above bevel (bright top strip + shaded bottom strip) sitting on a HARD offset
+// shadow (forin's no-blur signature). Pressing drops the cap into its shadow
+// (translate by the offset → the shadow is covered), which IS the press action;
+// the bevel stays put as the cap's molding. One coherent press signal, not two.
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { border, colors, fonts, radius, type as typeScale } from '@/theme/tokens';
@@ -18,7 +19,7 @@ type Props = {
   style?: ViewStyle;
 };
 
-// lerp two #rrggbb colors (the DS mixHex), for the bevel highlight/shade strips
+// lerp two #rrggbb colors (DS mixHex) for the bevel highlight/shade strips
 function mix(a: string, b: string, t: number): string {
   const p = (h: string) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
   const [ar, ag, ab] = p(a);
@@ -39,22 +40,23 @@ export function PixelButton({
   style,
 }: Props) {
   const [pressed, setPressed] = useState(false);
+  const dx = pressed && !disabled ? offset : 0; // drop into the shadow on press
   const lite = mix(bg, '#FFFFFF', 0.45); // lit top edge
   const dark = mix(bg, colors.ink, 0.3); // shaded bottom edge
   return (
     <View style={[styles.wrap, full && styles.full, disabled && { opacity: 0.55 }]}>
-      {/* hard offset shadow (solid layer, never blurred) */}
+      {/* hard offset shadow (solid, never blurred) — the cap drops into this */}
       <View style={{ position: 'absolute', left: offset, top: offset, width: '100%', height: '100%', backgroundColor: disabled ? colors.textFaint : shadowColor }} />
       <Pressable
         disabled={disabled}
         onPressIn={() => setPressed(true)}
         onPressOut={() => setPressed(false)}
         onPress={onPress}
-        style={[styles.btn, full && styles.full, { backgroundColor: disabled ? colors.cream : bg }, style]}
+        style={[styles.btn, full && styles.full, { backgroundColor: disabled ? colors.cream : bg, transform: [{ translateX: dx }, { translateY: dx }] }, style]}
       >
-        {/* lit-from-above bevel — swaps on press to read as recessed */}
-        <View pointerEvents="none" style={{ position: 'absolute', left: 4, right: 4, top: 3, height: 3, backgroundColor: pressed ? dark : lite }} />
-        <View pointerEvents="none" style={{ position: 'absolute', left: 4, right: 4, bottom: 3, height: 3, backgroundColor: pressed ? lite : dark }} />
+        {/* lit-from-above bevel (static molding) */}
+        <View pointerEvents="none" style={{ position: 'absolute', left: 4, right: 4, top: 3, height: 3, backgroundColor: lite }} />
+        <View pointerEvents="none" style={{ position: 'absolute', left: 4, right: 4, bottom: 3, height: 3, backgroundColor: dark }} />
         <Text style={[styles.label, { color: disabled ? colors.textFaint : textColor }]}>{label}</Text>
       </Pressable>
     </View>
