@@ -328,3 +328,11 @@
 - **최종: 평평한 3px 아웃라인 캡 + 하드 오프셋 섀도우 + 누름 드롭.** forin 플랫 픽셀 톤(PixelBox/Chip)과 일관. full prop.
   (핸드오프의 베벨/swap은 섀도우 없는 평면 버튼 전제였음 — forin은 섀도우를 유지하므로 드롭으로 누름을 표현하는 게 더 forin다움+명확.)
 - 검증: tsc 0·jest 41/41·expo export·doctor 21/21.
+
+## 2026-06-27 · 5f-iii 빌드 — 대형맵 컬링 + 구조 프리미티브
+- **컬링**(`src/engine/cull.ts` 순수): InteriorScreen이 플레이어+뷰포트+scale로 가시 윈도를 구해 objects/hotspots/NPC를 그 안만 렌더
+  (tall 아트 rise 여유 landmark16/기타5). R-1에서 이연했던 컬링을 v8 대형맵(40×60) 대비로 회수.
+- **구조 프리미티브**(`objects/structures.tsx`): threshold(IThreshold walkable)·glass(IGlass 차단)·tint(Tint non-blocking 오버레이).
+  objectCollision이 door/threshold/tint skip, glass/footprint 차단.
+- **가구 폴드:** NurseStationDesk/NurseDeskI/IReception 재정의는 5f-iii가 아니라 **5g-a(ER) 등 첫 사용처**에서 부서 장비와 함께 추가(적응형).
+- 검증: tsc 0·jest 47/47(+6)·expo export·doctor 21/21. **5f 완료.** 다음: 5g-a ER 마스터 블루프린트.

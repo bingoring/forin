@@ -187,10 +187,14 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
   in-screen overlay였으나 RN 관용상 route `app/elevator/[building]` + 캠퍼스 파빌리온 핫스팟(kind:'elevator')→push; 동작 동등).
   Hotspot 타입에 `building?` 추가. 캠퍼스 fixture에 5 파빌리온 엘리베이터 핫스팟. **jest 41/41**(+scenarios 4: 결정성·쿼터·deptCounts;
   +campus 1: 핫스팟 도달성). tsc 0·expo export 번들·doctor 21/21. ⚠️ 칩은 실제 today 기준(reference는 데모 고정일). 화면 시각 확인은 디바이스.
-- **5f-iii 신규 프리미티브 + 대형맵 지원.** 엔진 프리미티브: `IThreshold`(문짝 없는 어두운 통로, 내부 존 경계; `tone:sterile`
-  파랑) · `Tint`(반투명 바닥 오버레이, 특수실 조명) · `IGlass`(유리벽) · `NurseStationDesk`/`NurseDeskI`(허브 가구) ·
-  `IReception` 재정의(의사 처방 데스크; 접수는 `ClinicReception`). **대형맵(최대 40×60) 성능: 가시 오브젝트 컬링 도입**
-  (R-1 이연분 회수 — 기존 소형맵에선 보류했으나 v8 대형맵+다수 NPC로 필요해짐; 뷰포트 밖 스프라이트 idle 애니/렌더 컬). 위험: 중-고(성능).
+- **5f-iii ✅ 신규 프리미티브 + 대형맵 컬링**(2026-06-27): **가시 오브젝트 컬링**(`src/engine/cull.ts` 순수 `viewBounds`/`boxInView`)
+  — InteriorScreen이 플레이어+뷰포트+scale로 가시 타일 윈도를 구하고 objects/hotspots/derived·ambient NPC를 그 안의 것만 렌더
+  (tall 아트는 위로 솟는 `rise` 여유: landmark 16·기타 5타일; R-1 이연 컬링 회수, 40×60 대비). **구조 프리미티브**(`objects/structures.tsx`):
+  `threshold`(IThreshold — 문짝 없는 어두운 통로, `tone:sterile` 파랑, **walkable**) · `glass`(IGlass — 유리벽, **차단**) ·
+  `tint`(Tint — 반투명 바닥 오버레이, **non-blocking**, 바닥 위·오브젝트 아래 레이어). `objectCollision`이 door/threshold/tint
+  skip, glass·footprint 오브젝트 차단. **jest 47/47**(+cull 4·footprint 2). tsc 0·expo export·doctor 21/21.
+  ⚠️ **가구(NurseStationDesk/NurseDeskI/IReception 재정의)는 ER(5g-a) 등 첫 사용처에서 추가**(적응형 — 부서별 장비와 함께 포팅).
+  컬링 pop-in/시각은 디바이스 확인.
 
 **5g — 부서 인테리어 마스터 블루프린트 (콘텐츠 시리즈, 부서당 1증분)**
 각 증분 = 레이아웃(타일 블루프린트) + 부서 오브젝트 카탈로그 포팅 + NPC/핫스팟. 클리닉 엔진은 그대로 두고, bespoke가
