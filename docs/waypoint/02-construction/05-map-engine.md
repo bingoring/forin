@@ -162,7 +162,7 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     aliased source**라 무료지만 엔진은 런타임 코드. → `src/engine`에 두어 무설정으로 동일한 forin-디커플·배럴 경계를 확보. `packages/
     pixel-engine`으로의 물리 승격은 npm workspaces + 루트 node_modules가 필요한 **인프라 후속**(별도). 상세는 `src/engine/README.md`.
 
-### 5v. v8 재설계 — 2-5 재오픈 (AI_PROPOSED, 2026-06-27)
+### 5v. v8 재설계 — 2-5 재오픈 (HUMAN_APPROVED 2026-06-27, 빌드 진행: 5f-i)
 
 > 핸드오프 v8(맵/화면 대규모 재설계) 반영 계획. 사용자 결정: **계획 먼저 수립→승인 후 빌드**, **클리닉 엔진(5d-iii)은
 > 보존·후일 은퇴**(bespoke 병동/센터가 대체하면 해당 캠퍼스 버튼/화면만 제거). 기존 5a~5e 엔진 코어는 유효 — 아래는 v8이
