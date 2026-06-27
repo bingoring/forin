@@ -3,15 +3,18 @@
 // interior; floors without a built interior show a "준비 중" notice.
 import { Alert } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { ElevatorScreen, type ElevFloor } from '@/map/ElevatorScreen';
+import { ElevatorScreen, ELEVATOR_BUILDINGS, type ElevFloor } from '@/map/ElevatorScreen';
 
 export default function ElevatorRoute() {
   const { building } = useLocalSearchParams<{ building: string }>();
   const router = useRouter();
 
-  const onPickFloor = (_building: string, floor: ElevFloor) => {
+  const onPickFloor = (b: string, floor: ElevFloor) => {
     if (floor.interior) {
-      router.replace(`/interior/${floor.interior}`);
+      // ride in with the doors still shut; the interior continues the open via
+      // DoorReveal (?via=elevator), revealing the map once it loads.
+      const wall = ELEVATOR_BUILDINGS[b]?.wall ?? '#E8EAEC';
+      router.replace(`/interior/${floor.interior}?via=elevator&c=${encodeURIComponent(wall)}`);
     } else {
       Alert.alert(`${floor.f} · ${floor.depts[0]}`, '이 층은 곧 공개됩니다. (준비 중)');
     }

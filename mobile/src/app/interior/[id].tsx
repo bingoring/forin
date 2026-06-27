@@ -5,14 +5,17 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { api } from '@/api/client';
 import { colors, fonts, type as t } from '@/theme/tokens';
 import { InteriorScreen } from '@/map/InteriorScreen';
+import { DoorReveal } from '@/map/DoorReveal';
 import { FIXTURES } from '@/map/fixtures/er';
 import type { Interior } from '@engine';
 
 export default function InteriorRoute() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, via, c } = useLocalSearchParams<{ id: string; via?: string; c?: string }>();
   const router = useRouter();
   const [interior, setInterior] = useState<Interior | null>(null);
   const [error, setError] = useState(false);
+  const [revealDone, setRevealDone] = useState(false);
+  const viaElevator = via === 'elevator';
 
   useEffect(() => {
     let alive = true;
@@ -41,11 +44,27 @@ export default function InteriorRoute() {
     </View>
   );
 
+  // When entered via the elevator, a closed DoorReveal overlay sits on top while
+  // the map loads behind it, then slides apart to reveal the map.
+  const reveal = viaElevator && !revealDone ? (
+    <DoorReveal ready={!!interior || error} wall={typeof c === 'string' ? c : undefined} onDone={() => setRevealDone(true)} />
+  ) : null;
+
   if (error) {
-    return center(<Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.text }}>맵을 불러오지 못했습니다.</Text>);
+    return (
+      <>
+        {center(<Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.text }}>맵을 불러오지 못했습니다.</Text>)}
+        {reveal}
+      </>
+    );
   }
   if (!interior) {
-    return center(<ActivityIndicator color={colors.ink} />);
+    return (
+      <>
+        {center(<ActivityIndicator color={colors.ink} />)}
+        {reveal}
+      </>
+    );
   }
 
   return (
@@ -59,6 +78,7 @@ export default function InteriorRoute() {
           else if (h.scenarioId) router.push(`/scenario/${h.scenarioId}`);
         }}
       />
+      {reveal}
     </>
   );
 }

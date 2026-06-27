@@ -5,7 +5,7 @@
 // you pick a floor to ride to that floor's interior.
 import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withSequence, withTiming } from 'react-native-reanimated';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, fonts } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
@@ -139,17 +139,20 @@ export function ElevatorScreen({
     setRiding(true);
     // preload the destination map during the ride so it's ready when doors open
     if (floor.interior) api.prefetchInterior(floor.interior);
-    // doors CLOSE (board) → hold while riding → OPEN (arrive)
     const ease = Easing.inOut(Easing.ease);
-    door.value = withSequence(
-      withTiming(1, { duration: 450, easing: ease }),
-      withDelay(900, withTiming(0, { duration: 450, easing: ease })),
-    );
+    door.value = withTiming(1, { duration: 450, easing: ease }); // doors CLOSE (board)
     setTimeout(() => {
       setCur(sel);
+      onPickFloor?.(bk, floor);
+      if (floor.interior) {
+        // navigating away with the doors still shut — the destination screen
+        // continues the close→open via DoorReveal (opens once its map loads).
+        return;
+      }
+      // 준비 중 floor: stay; reopen the doors.
       setRiding(false);
-      onPickFloor?.(bk, floor); // navigate (or 준비 중) right as the doors finish opening
-    }, 1800);
+      door.value = withTiming(0, { duration: 450, easing: ease });
+    }, 1150);
   };
 
   return (
