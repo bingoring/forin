@@ -87,6 +87,14 @@ function MedCenter({ w, h, label, sign, signColor }: LMProps) {
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
       <View style={{ position: 'absolute', left: pw, bottom: 0, width: 16, height: 26, backgroundColor: 'rgba(40,32,28,0.28)' }} />
+      {/* podium + entrance — drawn FIRST so the towers standing on it occlude it */}
+      <Block3D left={-4} bottom={0} fw={pw + 8} fh={28} d={11} front="#CFC8B6" top="#E2DBC8">
+        <View style={{ position: 'absolute', left: 6, right: 6, top: 7, height: 6, backgroundColor: '#F4D27A' }} />
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -18, bottom: 0, width: 36, height: 18, backgroundColor: '#28333D', borderWidth: 2, borderBottomWidth: 0, borderColor: INK }}>
+          <View style={{ position: 'absolute', left: 2, right: 2, top: 2, height: 3, backgroundColor: '#FFE6A6' }} />
+        </View>
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -24, bottom: 16, width: 48, height: 5, backgroundColor: '#9FA8B0', borderWidth: 1.5, borderColor: INK }} />
+      </Block3D>
       {/* left dark-glass tower */}
       <Block3D left={24} bottom={16} fw={40} fh={150} d={11} front="#34414E" top="#4C5A68">
         {grid(4, 16, 0.45, 1, '#FFE3A0', '#1E2832')}
@@ -101,14 +109,6 @@ function MedCenter({ w, h, label, sign, signColor }: LMProps) {
       </Block3D>
       {/* glass bridge */}
       <View style={{ position: 'absolute', left: 56, bottom: 78, width: 8, height: 20, backgroundColor: '#8FB8D2', borderWidth: 1.5, borderColor: INK }} />
-      {/* podium + entrance */}
-      <Block3D left={-4} bottom={0} fw={pw + 8} fh={28} d={11} front="#CFC8B6" top="#E2DBC8">
-        <View style={{ position: 'absolute', left: 6, right: 6, top: 7, height: 6, backgroundColor: '#F4D27A' }} />
-        <View style={{ position: 'absolute', left: '50%', marginLeft: -18, bottom: 0, width: 36, height: 18, backgroundColor: '#28333D', borderWidth: 2, borderBottomWidth: 0, borderColor: INK }}>
-          <View style={{ position: 'absolute', left: 2, right: 2, top: 2, height: 3, backgroundColor: '#FFE6A6' }} />
-        </View>
-        <View style={{ position: 'absolute', left: '50%', marginLeft: -24, bottom: 16, width: 48, height: 5, backgroundColor: '#9FA8B0', borderWidth: 1.5, borderColor: INK }} />
-      </Block3D>
       <Plaque sign={sign} signColor={signColor ?? '#D14B3D'} label={label} />
     </View>
   );
