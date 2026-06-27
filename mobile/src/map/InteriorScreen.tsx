@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import { TILE, coordToPx, type Coord } from '@engine';
 import { regionAt } from '@engine';
-import { viewBounds, boxInView } from '@engine';
+import { viewBounds, boxInView, OBJECT_FOOTPRINT } from '@engine';
 import { useMovement } from '@engine';
 import { TileFloor } from '@engine';
 import { Walls } from '@engine';
@@ -30,6 +30,12 @@ const SPRITE_H = (SPRITE_W * 80) / 64;
 function seatSprite(x: number, y: number) {
   return { left: (x + 0.5) * TILE - SPRITE_W / 2, top: (y + 1) * TILE - SPRITE_H };
 }
+
+// 2.5D depth: everything composites by its base (feet / footprint-bottom) tile y
+// via zIndex, so a sprite north of (behind) a building is occluded by it and one
+// to the south is drawn in front. Larger base-y = nearer the camera = higher z.
+const zFor = (baseY: number) => Math.round(baseY * 10) + 10;
+const objBaseY = (o: MapObject) => o.y + (typeof o.props?.h === 'number' ? (o.props.h as number) : OBJECT_FOOTPRINT[o.type]?.h ?? 1);
 
 // Player glides between tiles (06_CHARACTER_MOTION §2: ~0.3-0.55s tween) rather
 // than jumping; the camera follows the gliding position. Sub-tile offsets to
@@ -205,7 +211,9 @@ export function InteriorScreen({
             <Walls collision={interior.collision} />
 
             {visObjects.filter((o) => o.type !== 'tint').map((o: MapObject) => (
-              <InteriorObjectView key={o.id} object={o} />
+              <View key={o.id} pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, zIndex: zFor(objBaseY(o)) }}>
+                <InteriorObjectView object={o} />
+              </View>
             ))}
 
             {visHotspots.map((h) => {
@@ -226,6 +234,7 @@ export function InteriorScreen({
                     borderWidth: 2,
                     alignItems: 'center',
                     justifyContent: 'center',
+                    zIndex: 9000, // markers float above the world (below the room mask)
                   }}
                 >
                   <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.ink }}>!</Text>
@@ -237,7 +246,7 @@ export function InteriorScreen({
             {visNpcs.map((n) => {
               const { left, top } = seatSprite(n.x, n.y);
               return (
-                <View key={n.id} pointerEvents="none" style={{ position: 'absolute', left, top, width: SPRITE_W, height: SPRITE_H }}>
+                <View key={n.id} pointerEvents="none" style={{ position: 'absolute', left, top, width: SPRITE_W, height: SPRITE_H, zIndex: zFor(n.y + 1) }}>
                   <RoleSprite kind={n.kind} x={n.x} y={n.y} size={SPRITE_W} />
                 </View>
               );
@@ -253,12 +262,14 @@ export function InteriorScreen({
                 negatively-scaled parent — that crashed in 5a). */}
             <Animated.View
               pointerEvents="none"
-              style={[{ position: 'absolute', left: 0, top: 0, width: SPRITE_W, height: SPRITE_H }, playerStyle]}
+              style={[{ position: 'absolute', left: 0, top: 0, width: SPRITE_W, height: SPRITE_H, zIndex: zFor(pos.y + 1) }, playerStyle]}
             >
               <PlayerSprite size={SPRITE_W} expression="neutral" dir={facing} walking={walking} walkClock={walkClock} />
             </Animated.View>
 
-            <RoomMask bounds={region?.bounds ?? null} cols={interior.cols} rows={interior.rows} />
+            <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, zIndex: 99999 }}>
+              <RoomMask bounds={region?.bounds ?? null} cols={interior.cols} rows={interior.rows} />
+            </View>
           </AnimatedPressable>
         )}
 

@@ -42,8 +42,10 @@ export function AmbientNpc({ spec, size }: { spec: NpcSpec; size: number }) {
     transform: [{ translateX: pxX.value + dx }, { translateY: pyY.value + dy }],
   }));
 
+  // depth-sort against buildings/other sprites by the NPC's current feet tile
+  const depthZ = Math.round((y + 1) * 10) + 10;
   return (
-    <Animated.View pointerEvents="none" style={[{ position: 'absolute', left: 0, top: 0, width: size, height: spriteH }, style]}>
+    <Animated.View pointerEvents="none" style={[{ position: 'absolute', left: 0, top: 0, width: size, height: spriteH, zIndex: depthZ }, style]}>
       {emote ? (
         <View style={{ position: 'absolute', top: -16, left: 0, right: 0, alignItems: 'center', zIndex: 5 }}>
           <EmoteBubble emote={emote} />
