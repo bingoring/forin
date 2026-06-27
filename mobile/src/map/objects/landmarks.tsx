@@ -11,7 +11,7 @@
 //
 // landmark kinds (props.landmark): main=본관 MedCenter · horizontal=외래·진단 ·
 // victorian=여성소아 · curved=암센터 · admin=행정(flat) · clock=시계탑.
-import type { ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import { Text, View } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, Line, Path, Pattern, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
@@ -373,8 +373,11 @@ function MedCenterAdmin({ w, h, label, sign, signColor }: LMProps) {
   );
 }
 
-// ── 시계탑 — timber tower + clock head (central healing garden) ──
-function ClockTower() {
+// ── 시계탑 — timber tower + clock head (central healing garden). Drawn at full
+//    size in a bottom-anchored box that's shrunk to ~60% (40% smaller) and sits
+//    on the footprint bottom, rising up. The clock shows the device's time. ──
+const CLOCK_SCALE = 0.6; // 40% smaller than the original
+function ClockTower({ ph }: { ph: number }) {
   const wood = '#9C7A4A';
   const woodLt = '#B89866';
   const woodDk = '#6E5230';
@@ -383,8 +386,18 @@ function ClockTower() {
   const vineDk = '#3E6326';
   const stone = '#C9CDD2';
   const stoneDk = '#9AA0A8';
+  // live device clock — snapshot on mount, then tick each half-minute
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 30000);
+    return () => clearInterval(id);
+  }, []);
+  const hourAngle = (now.getHours() % 12) * 30 + now.getMinutes() * 0.5;
+  const minAngle = now.getMinutes() * 6;
   return (
-    <View style={{ position: 'absolute', left: 0, top: 0, width: 6 * 16, height: 300 }}>
+    <View style={{ position: 'absolute', left: 0, top: 0, width: 6 * 16, height: ph }}>
+      {/* bottom-anchored, shrunk content (base stays on the footprint) */}
+      <View style={{ position: 'absolute', left: 0, bottom: 0, width: 6 * 16, height: 300, transform: [{ scale: CLOCK_SCALE }], transformOrigin: 'bottom left' }}>
       <View style={{ position: 'absolute', left: 84, bottom: 0, width: 14, height: 40, backgroundColor: 'rgba(40,32,28,0.26)' }} />
       {/* base plinth */}
       <Block3D left={2} bottom={0} fw={92} fh={40} d={9} front={woodLt} top={woodTop}>
@@ -412,12 +425,14 @@ function ClockTower() {
         <View style={{ position: 'absolute', left: '50%', top: '50%', marginLeft: -25, marginTop: -25, width: 50, height: 50, borderRadius: 25, backgroundColor: stoneDk, borderWidth: 3, borderColor: INK, alignItems: 'center', justifyContent: 'center' }}>
           <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, borderRadius: 20, backgroundColor: stone }} />
           <View style={{ position: 'absolute', left: 9, top: 9, right: 9, bottom: 9, borderRadius: 16, backgroundColor: '#FBF8EE', borderWidth: 1, borderColor: stoneDk }} />
-          {/* hands */}
-          <View style={{ position: 'absolute', width: 2.4, height: 15, backgroundColor: '#7A4A2A', transform: [{ translateY: -7.5 }, { rotate: '18deg' }] }} />
-          <View style={{ position: 'absolute', width: 11, height: 2.4, backgroundColor: '#7A4A2A', transform: [{ translateX: 5.5 }, { rotate: '96deg' }] }} />
+          {/* hands — pivot at the dial center (bottom-center origin), angles from
+              the device clock; 0° = 12 o'clock, rotating clockwise */}
+          <View style={{ position: 'absolute', bottom: '50%', left: '50%', marginLeft: -1.3, width: 2.6, height: 12, backgroundColor: '#5A3A1E', transformOrigin: '50% 100%', transform: [{ rotate: `${hourAngle}deg` }] }} />
+          <View style={{ position: 'absolute', bottom: '50%', left: '50%', marginLeft: -1, width: 2, height: 17, backgroundColor: '#7A4A2A', transformOrigin: '50% 100%', transform: [{ rotate: `${minAngle}deg` }] }} />
           <View style={{ position: 'absolute', width: 4, height: 4, borderRadius: 2, backgroundColor: INK }} />
         </View>
       </Block3D>
+      </View>
     </View>
   );
 }
@@ -439,7 +454,7 @@ export function LandmarkView({ object }: { object: MapObject }): ReactElement | 
   const props: LMProps = { w, h, label: p.label as string | undefined, sign: p.sign as string | undefined, signColor: p.signColor as string | undefined };
   const kind = (p.landmark as string) ?? 'main';
   let inner: ReactElement;
-  if (kind === 'clock') inner = <ClockTower />;
+  if (kind === 'clock') inner = <ClockTower ph={h * 16} />;
   else if (kind === 'horizontal') inner = <MedCenterH {...props} />;
   else if (kind === 'victorian') inner = <MedCenterV {...props} />;
   else if (kind === 'curved') inner = <MedCenterC {...props} />;
