@@ -314,3 +314,10 @@
 - **라우팅 결정:** reference는 in-screen overlay지만 RN 관용상 **route `app/elevator/[building]`** + 캠퍼스 파빌리온 핫스팟
   (kind:'elevator', Hotspot.building 추가)→push로 구현(동작 동등, 더 단순). 빌트 인테리어 층만 GO 이동, 나머지 "준비 중".
 - 검증: tsc 0·jest 41/41(+5)·expo export·doctor 21/21. 칩은 실제 today 기준. 다음: 5f-iii(IThreshold/Tint/IGlass + 대형맵 컬링).
+
+## 2026-06-27 · PixelButton 디자인시스템 정렬 (피드백)
+- 사용자 지적: 엘리베이터 GO 버튼/공용 버튼이 DS와 다름. 원인 = 2-4의 단순 PixelButton을 그대로 사용(의도 아님) — DS 버튼의
+  **lit-from-above 베벨**(윗변 하이라이트 mix(bg,#fff,.45) / 아랫변 음영 mix(bg,ink,.30))과 **누름 시 베벨 swap(recess)**, full-width 처리가 빠짐.
+- 수정: 공용 `components/PixelButton.tsx`를 DS(forin-ui PixelButton) 스펙으로 정렬 — 베벨 스트립 + press swap + `full` prop(정확한
+  전폭). border3/radius0/heading/13은 이미 일치. 콜러(elevator GO·campus·login) full prop으로 갱신. 앱 전체 버튼에 반영.
+- 검증: tsc 0·jest 41/41·expo export·doctor 21/21.
