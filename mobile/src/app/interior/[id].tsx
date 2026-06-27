@@ -54,7 +54,10 @@ export default function InteriorRoute() {
       <InteriorScreen
         interior={interior}
         onExit={() => router.back()}
-        onEnterScenario={(h) => h.scenarioId && router.push(`/scenario/${h.scenarioId}`)}
+        onEnterScenario={(h) => {
+          if (h.kind === 'elevator' && h.building) router.push(`/elevator/${h.building}`);
+          else if (h.scenarioId) router.push(`/scenario/${h.scenarioId}`);
+        }}
       />
     </>
   );

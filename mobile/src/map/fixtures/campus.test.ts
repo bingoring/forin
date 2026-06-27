@@ -34,4 +34,14 @@ describe('campus layout (v8 — 5 pavilions + clock tower)', () => {
       expect(findPath(start, c, grid, blocked).length).toBeGreaterThan(0);
     }
   });
+
+  test('every pavilion elevator hotspot is walkable + reachable', () => {
+    const spots = CAMPUS_INTERIOR.hotspots.filter((h) => h.kind === 'elevator');
+    expect(spots.length).toBe(5);
+    for (const h of spots) {
+      expect(h.building).toBeTruthy();
+      expect(canEnter({ x: h.x, y: h.y }, grid, blocked)).toBe(true);
+      expect(findPath(start, { x: h.x, y: h.y }, grid, blocked).length).toBeGreaterThan(0);
+    }
+  });
 });

@@ -34,7 +34,14 @@ export const CAMPUS_INTERIOR: Interior = {
     { id: 't4', type: 'tree', x: 34, y: 25, props: { big: true } },
     { id: 't5', type: 'tree', x: 24, y: 24 },
   ],
-  hotspots: [],
+  // tapping a pavilion's entrance (walk adjacent → A) opens that building's elevator
+  hotspots: [
+    { id: 'hs-main', kind: 'elevator', x: 19, y: 17, label: '본관', building: 'tower' },
+    { id: 'hs-onco', kind: 'elevator', x: 5, y: 17, label: '암센터', building: 'onco' },
+    { id: 'hs-women', kind: 'elevator', x: 34, y: 16, label: '여성소아', building: 'women' },
+    { id: 'hs-opd', kind: 'elevator', x: 6, y: 18, label: '외래·진단', building: 'dx' },
+    { id: 'hs-admin', kind: 'elevator', x: 33, y: 18, label: '행정', building: 'admin' },
+  ],
   collision: [
     { x: 0, y: 0, w: 40, h: 1 },
     { x: 0, y: 0, w: 1, h: 28 },

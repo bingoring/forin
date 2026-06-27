@@ -43,11 +43,12 @@ export interface MapObject {
 
 export interface Hotspot {
   id: string;
-  kind: string;
+  kind: string; // 'quest' | 'info' | 'elevator' | …
   x: number;
   y: number;
   label?: string;
-  scenarioId?: string;
+  scenarioId?: string; // kind 'quest' → scenario to launch
+  building?: string; // kind 'elevator' → building key to open
 }
 
 export interface Interior {
