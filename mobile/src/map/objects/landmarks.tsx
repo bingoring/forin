@@ -394,6 +394,8 @@ function ClockTower({ ph }: { ph: number }) {
   }, []);
   const hourAngle = (now.getHours() % 12) * 30 + now.getMinutes() * 0.5;
   const minAngle = now.getMinutes() * 6;
+  const hr = (hourAngle * Math.PI) / 180;
+  const mn = (minAngle * Math.PI) / 180;
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: 6 * 16, height: ph }}>
       {/* bottom-anchored, shrunk content (base stays on the footprint) */}
@@ -422,14 +424,21 @@ function ClockTower({ ph }: { ph: number }) {
       {/* clock head */}
       <Block3D left={6} bottom={190} fw={84} fh={70} d={12} front={wood} top={woodTop} topInset topRim={woodDk}>
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, borderWidth: 7, borderColor: woodDk }} />
-        <View style={{ position: 'absolute', left: '50%', top: '50%', marginLeft: -25, marginTop: -25, width: 50, height: 50, borderRadius: 25, backgroundColor: stoneDk, borderWidth: 3, borderColor: INK, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, borderRadius: 20, backgroundColor: stone }} />
-          <View style={{ position: 'absolute', left: 9, top: 9, right: 9, bottom: 9, borderRadius: 16, backgroundColor: '#FBF8EE', borderWidth: 1, borderColor: stoneDk }} />
-          {/* hands — pivot at the dial center (bottom-center origin), angles from
-              the device clock; 0° = 12 o'clock, rotating clockwise */}
-          <View style={{ position: 'absolute', bottom: '50%', left: '50%', marginLeft: -1.3, width: 2.6, height: 12, backgroundColor: '#5A3A1E', transformOrigin: '50% 100%', transform: [{ rotate: `${hourAngle}deg` }] }} />
-          <View style={{ position: 'absolute', bottom: '50%', left: '50%', marginLeft: -1, width: 2, height: 17, backgroundColor: '#7A4A2A', transformOrigin: '50% 100%', transform: [{ rotate: `${minAngle}deg` }] }} />
-          <View style={{ position: 'absolute', width: 4, height: 4, borderRadius: 2, backgroundColor: INK }} />
+        {/* dial + hands as vector SVG (crisp circles/lines at small size, unlike
+            View borderRadius). Hand endpoints from the device-clock angles —
+            0° = 12 o'clock, x=sin, y=-cos. */}
+        <View style={{ position: 'absolute', left: '50%', top: '50%', marginLeft: -25, marginTop: -25, width: 50, height: 50 }}>
+          <Svg viewBox="0 0 50 50" width={50} height={50}>
+            <Circle cx={25} cy={25} r={23.5} fill={stoneDk} stroke={INK} strokeWidth={2} />
+            <Circle cx={25} cy={25} r={19.5} fill={stone} />
+            <Circle cx={25} cy={25} r={16} fill="#FBF8EE" stroke={stoneDk} strokeWidth={0.8} />
+            {[[0, -1], [1, 0], [0, 1], [-1, 0]].map(([dx, dy], i) => (
+              <Circle key={i} cx={25 + dx * 13.5} cy={25 + dy * 13.5} r={1.1} fill={INK} />
+            ))}
+            <Line x1={25} y1={25} x2={25 + Math.sin(hr) * 8.5} y2={25 - Math.cos(hr) * 8.5} stroke="#5A3A1E" strokeWidth={2.2} strokeLinecap="round" />
+            <Line x1={25} y1={25} x2={25 + Math.sin(mn) * 12.5} y2={25 - Math.cos(mn) * 12.5} stroke="#7A4A2A" strokeWidth={1.6} strokeLinecap="round" />
+            <Circle cx={25} cy={25} r={2} fill={INK} />
+          </Svg>
         </View>
       </Block3D>
       </View>
