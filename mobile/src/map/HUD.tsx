@@ -48,20 +48,26 @@ export function HUD({
   onMove,
   onAction,
   onFastTravel,
+  showZone = true,
+  showFastTravel = true,
 }: {
   zoneName: string | null;
   actionLabel: string | null;
   onMove: (dir: Dir) => void;
   onAction: () => void;
   onFastTravel: () => void;
+  showZone?: boolean; // hide on outdoor maps with no regions (e.g. campus)
+  showFastTravel?: boolean; // hide on maps with no rooms (e.g. campus)
 }) {
   const canAct = !!actionLabel;
   return (
     <View style={{ paddingHorizontal: 16, paddingBottom: 20, paddingTop: 10, gap: 12 }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Badge label={`ZONE · ${zoneName ?? '복도'}`} bg={colors.mint} />
-        <Badge label="↟ 빠른이동" bg={colors.yellow} onPress={onFastTravel} />
-      </View>
+      {(showZone || showFastTravel) && (
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          {showZone ? <Badge label={`ZONE · ${zoneName ?? '복도'}`} bg={colors.mint} /> : <View />}
+          {showFastTravel ? <Badge label="↟ 빠른이동" bg={colors.yellow} onPress={onFastTravel} /> : <View />}
+        </View>
+      )}
 
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
         {/* D-pad cross */}

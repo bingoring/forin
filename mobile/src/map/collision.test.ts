@@ -1,4 +1,4 @@
-import { buildBlocked, canEnter, findPath, tileKey, GridLike } from '@engine/collision';
+import { buildBlocked, canEnter, findPath, nearestOpen, tileKey, GridLike } from '@engine/collision';
 import { Coord } from '@engine/coords';
 
 // 5x5 grid with a wall across y=2, leaving a doorway at x=4.
@@ -23,6 +23,15 @@ describe('collision', () => {
 
   test('buildBlocked tolerates missing collision', () => {
     expect(buildBlocked({ cols: 3, rows: 3 }).size).toBe(0);
+  });
+
+  test('nearestOpen returns the target when open, else the closest walkable tile', () => {
+    const blocked = buildBlocked(walled);
+    expect(nearestOpen({ x: 1, y: 0 }, walled, blocked)).toEqual({ x: 1, y: 0 }); // already open
+    // (2,2) is a wall → nearest open is one ring out and walkable
+    const near = nearestOpen({ x: 2, y: 2 }, walled, blocked)!;
+    expect(canEnter(near, walled, blocked)).toBe(true);
+    expect(Math.max(Math.abs(near.x - 2), Math.abs(near.y - 2))).toBe(1);
   });
 
   test('canEnter rejects out-of-bounds and blocked tiles', () => {

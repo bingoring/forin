@@ -5,11 +5,12 @@
 // you pick a floor to ride to that floor's interior.
 import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withSequence, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, fonts } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 import { deptCounts, type Dept } from '@/content/scenarios';
+import { api } from '@/api/client';
 
 export interface ElevFloor {
   f: string;
@@ -115,14 +116,14 @@ export function ElevatorScreen({
   const [cur, setCur] = useState(lobbyFloor(b).f); // where the cab is
   const [sel, setSel] = useState(lobbyFloor(b).f); // target floor
   const [riding, setRiding] = useState(false);
-  const door = useSharedValue(1); // 1 = closed, 0 = open
+  const door = useSharedValue(0); // 0 = open (boarding), 1 = closed (riding)
 
   useEffect(() => {
     const s = lobbyFloor(ELEVATOR_BUILDINGS[bk]).f;
     setCur(s);
     setSel(s);
     setRiding(false);
-    door.value = 1;
+    door.value = 0;
   }, [bk, door]);
 
   const idx = (x: string) => b.floors.findIndex((f) => f.f === x);
@@ -134,16 +135,21 @@ export function ElevatorScreen({
 
   const ride = () => {
     if (riding) return;
+    const floor = b.floors.find((f) => f.f === sel)!;
     setRiding(true);
-    door.value = withTiming(0, { duration: 800, easing: Easing.inOut(Easing.ease) });
+    // preload the destination map during the ride so it's ready when doors open
+    if (floor.interior) api.prefetchInterior(floor.interior);
+    // doors CLOSE (board) → hold while riding → OPEN (arrive)
+    const ease = Easing.inOut(Easing.ease);
+    door.value = withSequence(
+      withTiming(1, { duration: 450, easing: ease }),
+      withDelay(900, withTiming(0, { duration: 450, easing: ease })),
+    );
     setTimeout(() => {
-      const floor = b.floors.find((f) => f.f === sel)!;
       setCur(sel);
-      onPickFloor?.(bk, floor);
-      // reset so the cab is reusable if we didn't navigate away (e.g. 준비 중 floor)
       setRiding(false);
-      door.value = withTiming(1, { duration: 400, easing: Easing.inOut(Easing.ease) });
-    }, 1400);
+      onPickFloor?.(bk, floor); // navigate (or 준비 중) right as the doors finish opening
+    }, 1800);
   };
 
   return (

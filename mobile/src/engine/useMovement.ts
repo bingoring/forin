@@ -4,7 +4,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Coord, Dir, DIRS, dirBetween, step } from './coords';
-import { buildBlocked, canEnter, findPath } from './collision';
+import { buildBlocked, canEnter, findPath, nearestOpen } from './collision';
 import { objectCollision } from './footprint';
 import type { Interior } from './types';
 
@@ -69,7 +69,8 @@ export function useMovement(interior: Interior) {
   const warpTo = useCallback(
     (target: Coord) => {
       setPath([]);
-      if (canEnter(target, interior, blocked)) setPos(target);
+      const dest = nearestOpen(target, interior, blocked); // anchor may sit on furniture
+      if (dest) setPos(dest);
     },
     [interior, blocked],
   );

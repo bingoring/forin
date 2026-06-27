@@ -276,6 +276,8 @@ export function InteriorScreen({
         onMove={moveDir}
         onAction={() => actionable && onEnterScenario?.(actionable)}
         onFastTravel={() => setFtOpen(true)}
+        showZone={interior.regions.length > 0}
+        showFastTravel={interior.rooms.length > 0}
       />
 
       <FastTravelModal

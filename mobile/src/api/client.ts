@@ -90,8 +90,21 @@ export const api = {
 
   // The /interiors/{id} handler is untyped in the contract, so we assert the
   // mobile-side Interior shape (src/map/types.ts mirrors the server json tags).
+  // Cached so the elevator can prefetch a floor's map during the ride and the
+  // interior route then reads it instantly.
   async interior(id: string): Promise<Interior> {
+    const hit = interiorCache.get(id);
+    if (hit) return hit;
     const { data } = await http.get(`/interiors/${id}`);
+    interiorCache.set(id, data as Interior);
     return data as Interior;
   },
+
+  /** Warm the cache for an interior (fire-and-forget; errors swallowed). */
+  prefetchInterior(id: string): void {
+    if (interiorCache.has(id)) return;
+    this.interior(id).catch(() => {});
+  },
 };
+
+const interiorCache = new Map<string, Interior>();

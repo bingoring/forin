@@ -35,6 +35,23 @@ export function canEnter(c: Coord, grid: GridLike, blocked: Set<string>): boolea
   return !blocked.has(tileKey(c.x, c.y));
 }
 
+/** Nearest walkable tile to `target` (the target itself if open), searched in
+ * outward rings. Used by fast-travel so a room anchor that sits on furniture
+ * still lands the player on an adjacent open tile. Returns null if none within R. */
+export function nearestOpen(target: Coord, grid: GridLike, blocked: Set<string>, maxRadius = 6): Coord | null {
+  if (canEnter(target, grid, blocked)) return target;
+  for (let r = 1; r <= maxRadius; r++) {
+    for (let dy = -r; dy <= r; dy++) {
+      for (let dx = -r; dx <= r; dx++) {
+        if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue; // ring only
+        const c = { x: target.x + dx, y: target.y + dy };
+        if (canEnter(c, grid, blocked)) return c;
+      }
+    }
+  }
+  return null;
+}
+
 /**
  * Breadth-first shortest path on the 4-connected walkable grid.
  * Returns the steps from `from` (exclusive) to `to` (inclusive), or [] if `to`
