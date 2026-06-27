@@ -96,19 +96,19 @@ function MedCenter({ w, h, label, sign, signColor }: LMProps) {
         <View style={{ position: 'absolute', left: '50%', marginLeft: -24, bottom: 16, width: 48, height: 5, backgroundColor: '#9FA8B0', borderWidth: 1.5, borderColor: INK }} />
       </Block3D>
       {/* left dark-glass tower */}
-      <Block3D left={24} bottom={16} fw={40} fh={150} d={11} front="#34414E" top="#4C5A68">
+      <Block3D left={24} bottom={28} fw={40} fh={150} d={11} front="#34414E" top="#4C5A68">
         {grid(4, 16, 0.45, 1, '#FFE3A0', '#1E2832')}
       </Block3D>
       {/* right white-stone tower */}
-      <Block3D left={92} bottom={16} fw={40} fh={120} d={10} front="#D9D2C0" top="#EDE7D6">
+      <Block3D left={92} bottom={28} fw={40} fh={120} d={10} front="#D9D2C0" top="#EDE7D6">
         {grid(4, 12, 0.28, 5, '#FFEDB0', '#A9B7C0')}
       </Block3D>
       {/* center amber atrium (showpiece, tallest) */}
-      <Block3D left={62} bottom={16} fw={32} fh={166} d={12} front="#F0B648" top="#F2C257" glow="#FFF0BE">
+      <Block3D left={62} bottom={28} fw={32} fh={166} d={12} front="#F0B648" top="#F2C257" glow="#FFF0BE">
         <View style={{ position: 'absolute', left: '14%', right: '14%', top: '8%', bottom: 0, backgroundColor: '#FCE39A', opacity: 0.9 }} />
       </Block3D>
       {/* glass bridge */}
-      <View style={{ position: 'absolute', left: 56, bottom: 78, width: 8, height: 20, backgroundColor: '#8FB8D2', borderWidth: 1.5, borderColor: INK }} />
+      <View style={{ position: 'absolute', left: 56, bottom: 90, width: 8, height: 20, backgroundColor: '#8FB8D2', borderWidth: 1.5, borderColor: INK }} />
       <Plaque sign={sign} signColor={signColor ?? '#D14B3D'} label={label} />
     </View>
   );
