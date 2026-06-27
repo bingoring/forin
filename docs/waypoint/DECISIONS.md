@@ -351,3 +351,10 @@
 - **엘리베이터 시퀀스:** GO→ **문 닫힘(탑승)→탑승 중→문 열림(도착)** 풀 사이클(reanimated withSequence, rest=open). 라이드 중
   `api.prefetchInterior`로 목적지 맵 프리로드(api에 interior 캐시 추가) → 문 열릴 때 즉시 진입. 그 외 층은 "준비 중".
 - 검증: tsc 0·jest 48/48(+nearestOpen)·expo export·doctor 21/21.
+
+## 2026-06-27 · 엘리베이터→인테리어 도어 리빌 전환 (피드백)
+- 사용자 제안: 문 닫힌 채 이동→목적지 맵을 문 뒤에서 로드→문이 좌우로 열리며 맵을 드러냄.
+- 구현: 엘리베이터는 **문 닫고(보딩) 닫힌 채 navigate**(router.replace `?via=elevator&c=wall`). 인테리어 라우트는 **풀스크린 닫힌
+  `DoorReveal` 오버레이**를 띄우고 그 뒤에서 맵 로드(프리로드 캐시로 즉시) → 준비되면 문 좌우 슬라이드로 **맵을 리빌**. 닫힘=엘리베이터,
+  열림=인테리어 → 끊김 없는 한 사이클. (라우트 간 shared-element 모핑 없이 "둘 다 닫힌 픽셀 문"으로 연속감 확보.)
+- 검증: tsc 0·jest 48/48·expo export·doctor 21/21.
