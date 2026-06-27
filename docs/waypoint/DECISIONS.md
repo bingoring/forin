@@ -210,7 +210,7 @@
 - **결정자:** 사용자(진행) + AI.
 
 ## 2026-06-18 · 디자인 핸드오프 v7 (플래그십 랜드마크) — 경량 반영 + 베스포크 아트 계획
-- **결정:** `design-handoff_v7/` 채택(v6 대비 05_MAP + screens-explore-v2.jsx). 링크 v6→v7 재지정. v7은 캠퍼스 **4종 플래그십
+- **결정:** `design-handoff_v8/` 채택(v6 대비 05_MAP + screens-explore-v2.jsx). 링크 v6→v7 재지정. v7은 캠퍼스 **4종 플래그십
   랜드마크**(MedCenter 본관 / MedCenterH 외래 / MedCenterV 의과대 돔 / MedCenterC 암병원 곡면유리+접시) + `Building` `arch`
   변형(pitched/flat/tower/glass)을 추가.
 - **반영 판단(경량 now + 베스포크 deferred):** 랜드마크는 **CSS 그라데이션·글로우·다중타워 합성**의 대형 정밀 아트이고, 캠퍼스
@@ -288,3 +288,16 @@
 - **재검증:** tsc 0·jest 36/36·expo export 번들·doctor 21/21. 잔여: 캠퍼스 탭 시각정합 디바이스 확인 1건(게이트).
 - **교훈:** 같은 컨텍스트 self-review였다면 HIGH 탭버그를 "괜찮다"고 합리화했을 것(실제로 직전 내 주석이 그랬음). 독립=구조가 값을 증명.
 - **결정자:** 사용자(게이트 신설·2-5 적용 지시) + 독립 리뷰어 3 + AI(triage).
+
+## 2026-06-27 · 디자인 핸드오프 v8 (대규모 재설계) — 채택 + 재계획 필요
+- **채택:** `design-handoff_v8/` 카논. 전 문서 링크 v7→v8 재지정(10개). v8은 증분이 아니라 **맵/화면 대규모 재설계**.
+- **주요 델타:**
+  1. **캠퍼스 재구성:** 5개 랜드마크 파빌리온(본관 메인 메디컬 타워 `MedCenter` / 여성소아 `MedCenterWomen` / 암센터·재활 `MedCenterC`(=`MedCenterOnco`) / 외래·진단 `MedCenterH`(=`MedCenterDx`) / 행정 `Building flat`(=`MedCenterAdmin`)) + 중앙 시계탑 `ClockTower2D`. 빌딩 진입이 곧장 인테리어가 아니라 **엘리베이터**를 엶.
+  2. **엘리베이터 화면 신설**(`screen-elevator.jsx` ScreenElevator): 건물 탭 5 + 픽셀 cab(층 표시·방향·도어 애니) + 층 디렉터리(층별 부서 + **실시간 상황칩 🔴/🟡/🟢** `getTodaysActiveScenarios()` 상황판과 동일 소스) + GO 바. InteriorScreen 내 **오버레이**(라우팅 없음, 🛗 버튼).
+  3. **부서 인테리어 마스터 블루프린트 재구성:** ER 40×60·OR+PACU 40×52·ICU 34×44·Peds+NICU 34×48·Pharmacy 36×42 — 대형화 + 상세 존(3-stage zoning 등).
+  4. **입원 병동/센터 신설(bespoke 28×52):** 내과 병동 `interior-ward` · 외과 병동 `interior-surgward` · 정형 병동 `interior-orthoward` · 피부과 센터 `interior-dermcenter`.
+  5. **⚠️ 외래 클리닉 엔진(5d-iii) 폐기:** v8이 데이터구동 클리닉 화면(내·외·정형·피부 외래)을 "redundant"로 **제거**. 내가 5d-iii에서 만든 `clinicInterior`+4 config가 설계상 대체됨(병동/센터 bespoke로). → 코드 처리(삭제 vs 보존-후-은퇴)는 재계획 결정 사안.
+  6. **신규 엔진 프리미티브/규약:** `IThreshold`(문짝 없는 어두운 통로, 내부 존 경계용; sterile tone) · `Tint`(반투명 바닥 오버레이, 특수실 조명) · `IGlass`(유리벽) · `NurseStationDesk`/`NurseDeskI`(허브 가구) · `IReception` 재정의(리셉션 카운터 아님 → 의사 처방 데스크; 진짜 접수는 `ClinicReception`). **2.5D 규약 명문화**(~70° 카메라, 모든 오브젝트 front+top face; 빌딩 top face는 직사각형).
+  7. **신규 오브젝트 수십 종:** er2/er3·or2·icu2·peds2·ward2·pharma2·surg2·ortho2·derm2(.jsx) — 부서별 임상 장비.
+- **스코프 영향(재계획):** v8 작업 대부분은 **신규 화면·콘텐츠(2-6)** + 대량 인테리어 저작 + 일부 엔진 추가(IThreshold/Tint/IGlass/엘리베이터 오버레이/빌딩 top-face/대형 맵). 2-5 엔진 자체는 유효하나 캠퍼스/랜드마크는 재작업 대상. **순서·클리닉엔진 처리·증분 분해는 사용자 결정 후 진행**(이번엔 문서 반영 + 링크 재지정까지).
+- **결정자:** 사용자(v8 제공) + AI(델타 분석·재계획 제안 대기).

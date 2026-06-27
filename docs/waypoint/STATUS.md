@@ -2,9 +2,13 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v7/](inputs/design-handoff_v7/README.md)
+**Design handoff:** [inputs/design-handoff_v8/](inputs/design-handoff_v8/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-06-12
+**Last updated:** 2026-06-27
+
+> ⚠️ **Handoff v8 채택(2026-06-27) — 맵/화면 대규모 재설계, 재계획 대기.** 5개 파빌리온 캠퍼스 + 엘리베이터 화면 +
+> 부서 마스터 블루프린트(ER/OR/ICU/Peds/Pharma 대형화) + 입원 병동(내·외·정형)·피부과 센터 신설. **외래 클리닉 엔진(5d-iii)은 v8에서 폐기**(redundant).
+> 순서·클리닉엔진 처리·증분 분해는 사용자 결정 후. 상세: [DECISIONS](DECISIONS.md) 2026-06-27.
 
 ---
 
@@ -26,7 +30,7 @@
 | 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | HUMAN_APPROVED |
 | 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | HUMAN_APPROVED |
 | 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | HUMAN_APPROVED |
-| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | HUMAN_APPROVED 대기 (5a·5b·5c·5d-i~v·5e ✅ — 엔진 추출 완료; 화면별 본격 개발은 2-6) |
+| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | 재오픈 · v8 계획 AI_PROPOSED (5a~5e ✅ 엔진코어 · **5f 캠퍼스/엔진델타 + 5g 부서 마스터블루프린트 ×9** 승인 대기 — §5v) |
 | 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | PENDING |
 | 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | PENDING |
 | 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | PENDING |

@@ -14,7 +14,7 @@ updated: 2026-06-12
 
 ## 입력 (Inputs)
 
-- 화면 명세: [`../inputs/design-handoff_v7/04_SCREENS.md`](../inputs/design-handoff_v7/04_SCREENS.md)
+- 화면 명세: [`../inputs/design-handoff_v8/04_SCREENS.md`](../inputs/design-handoff_v8/04_SCREENS.md)
 - 2-3 AI 레이어, 2-4 모바일 기반, 2-5 맵 엔진
 
 ## 하단 탭 IA (디자인 확정 — Option A, 2026-06-12)
@@ -34,9 +34,14 @@ updated: 2026-06-12
       **PhraseCard**(✕원문→✓교정+🔊 · "왜?" 노트 · 3핍 마스터리 · 🎤 따라말하기 · ★) — 2-7 SM-2/서버 `/me/review`와 연동
 - [ ] 화면-데이터 의존성 연동(API 클라이언트)
 
-> ✅ **레퍼런스 JSX 확보(handoff v2, 2026-06-12):** `screens-review-lab.jsx`가 `design-handoff_v7/reference/`에 추가됨
+> ✅ **레퍼런스 JSX 확보(handoff v2, 2026-06-12):** `screens-review-lab.jsx`가 `design-handoff_v8/reference/`에 추가됨
 > (이전 "부재" 플래그 해소). 구현은 이 JSX + 04_SCREENS ⑨ 명세 기준. 디자인 시스템은 v2에서 `ds-*` 모듈(`ds-foundations`/
 > `ds-primitives`/`ds-characters`/`ds-faces`/`ds-equipment`/`ds-furniture`)로 재편 — 컴포넌트 포팅 시 참조.
+
+> **Handoff v8 영향(2026-06-27):** v8의 **엘리베이터 화면**(빌딩→층 선택, 상황칩) + **부서 마스터블루프린트 인테리어 9종**
+> (ER/OR/ICU/Peds/Pharma 재구성 + 내·외·정형 병동 + 피부과 센터)은 맵/인테리어 엔진+콘텐츠라 **2-5 재오픈(§5v 5f·5g)** 에서
+> 다룬다. 2-6은 이들을 **소비**하는 화면-플로우(온보딩·브리핑·다이얼로그·퀴즈·상황판·프로필·리뷰랩)에 집중. **외래 클리닉 엔진
+> (5d-iii)은 보존**(데이터구동 화면 유지) — bespoke 병동/센터가 대체하면 캠퍼스/엘리베이터 진입만 새 화면으로 전환.
 
 ## AI 제안 (AI Proposal)
 

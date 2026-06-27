@@ -14,9 +14,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ## 입력 (Inputs)
 
-- 맵 엔진: [`../inputs/design-handoff_v7/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v7/05_MAP_AND_INTERIORS.md)
-- 캐릭터: [`../inputs/design-handoff_v7/03_CHARACTERS.md`](../inputs/design-handoff_v7/03_CHARACTERS.md)
-- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v7/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v7/06_CHARACTER_MOTION.md)
+- 맵 엔진: [`../inputs/design-handoff_v8/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v8/05_MAP_AND_INTERIORS.md)
+- 캐릭터: [`../inputs/design-handoff_v8/03_CHARACTERS.md`](../inputs/design-handoff_v8/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v8/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v8/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
@@ -161,6 +161,43 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
     앱 루트 밖에 두면 tsc·Metro가 `react`/`react-native`를 해소 못 함(워크스페이스 툴링 필요). `packages/contract`는 **type-only
     aliased source**라 무료지만 엔진은 런타임 코드. → `src/engine`에 두어 무설정으로 동일한 forin-디커플·배럴 경계를 확보. `packages/
     pixel-engine`으로의 물리 승격은 npm workspaces + 루트 node_modules가 필요한 **인프라 후속**(별도). 상세는 `src/engine/README.md`.
+
+### 5v. v8 재설계 — 2-5 재오픈 (AI_PROPOSED, 2026-06-27)
+
+> 핸드오프 v8(맵/화면 대규모 재설계) 반영 계획. 사용자 결정: **계획 먼저 수립→승인 후 빌드**, **클리닉 엔진(5d-iii)은
+> 보존·후일 은퇴**(bespoke 병동/센터가 대체하면 해당 캠퍼스 버튼/화면만 제거). 기존 5a~5e 엔진 코어는 유효 — 아래는 v8이
+> 추가/대체하는 부분. 적응형 깊이: 엔진 기반(5f) 상세, 반복적 인테리어(5g) 부서당 1증분으로 목록화(빌드 시 각 심화).
+
+**5f — 캠퍼스·엔진 델타 (engine/map)**
+- **5f-i 5-파빌리온 캠퍼스 + 2.5D 빌딩 top-face 규약.** 캠퍼스를 5개 랜드마크 파빌리온으로 재구성 — 본관 메인타워
+  `MedCenter`(베이스+3타워+EMERGENCY 사인+헬리패드), 여성소아 `MedCenterWomen`(신규, 라운드 파스텔), 암센터·재활
+  `MedCenterC`, 외래·진단 `MedCenterH`, 행정 `Building arch:flat`(신규) + 중앙 `ClockTower2D`(신규). **2.5D 규약**(~70°
+  카메라: 모든 오브젝트 front+직사각형 top face, 폭 flush) 문서화 + `landmarks.tsx` 확장. 캠퍼스 fixture 재작성(파빌리온
+  배치·헬리패드·치유정원). 위험: 중. 의존: 기존 landmarks/Building.
+- **5f-ii 엘리베이터 진입 모델.** 빌딩 탭→곧장 인테리어가 아니라 **엘리베이터**를 엶. `ScreenElevator`(건물 탭 5 · 픽셀 cab
+  층표시/방향/도어 애니 · 층 디렉터리[층별 부서 + **실시간 상황칩 🔴/🟡/🟢**] · GO 바) + InteriorScreen **🛗 오버레이**(라우팅
+  없음). 상황칩은 `getTodaysActiveScenarios()` — **상황판과 동일 소스**(엘리베이터/보드/인테리어 정합). `ELEVATOR_BUILDINGS`
+  층맵(타워 1F ER/약국…8F 병동). 위험: 중(공유 데이터 소스 설계). NFR: 상황칩이 상황판과 일관.
+- **5f-iii 신규 프리미티브 + 대형맵 지원.** 엔진 프리미티브: `IThreshold`(문짝 없는 어두운 통로, 내부 존 경계; `tone:sterile`
+  파랑) · `Tint`(반투명 바닥 오버레이, 특수실 조명) · `IGlass`(유리벽) · `NurseStationDesk`/`NurseDeskI`(허브 가구) ·
+  `IReception` 재정의(의사 처방 데스크; 접수는 `ClinicReception`). **대형맵(최대 40×60) 성능: 가시 오브젝트 컬링 도입**
+  (R-1 이연분 회수 — 기존 소형맵에선 보류했으나 v8 대형맵+다수 NPC로 필요해짐; 뷰포트 밖 스프라이트 idle 애니/렌더 컬). 위험: 중-고(성능).
+
+**5g — 부서 인테리어 마스터 블루프린트 (콘텐츠 시리즈, 부서당 1증분)**
+각 증분 = 레이아웃(타일 블루프린트) + 부서 오브젝트 카탈로그 포팅 + NPC/핫스팟. 클리닉 엔진은 그대로 두고, bespoke가
+해당 부서를 대체하면 캠퍼스/엘리베이터의 클리닉 버튼만 새 화면으로 전환.
+- **5g-a ER** 재구성(40×60, 공공로비+3열 그리드: 소생/너스스테이션+Pyxis/진료, 음압격리·봉합·정신격리·임종·제염) — `er2`/`er3` 오브젝트 + `IThreshold` 내부 경계.
+- **5g-b OR+PACU**(40×52, 3-stage 존: 비제한/준제한/제한·양압, sterile threshold) — `or2`.
+- **5g-c ICU**(34×44, 유리벽 1인실 ×4 + 중앙 허브 + 면회/Dirty/Med) — `icu2`.
+- **5g-d Peds+NICU**(34×48, 외래·놀이·계측 → 진료 → 병동 → gowning→NICU) — `peds2`.
+- **5g-e Pharmacy**(36×42, 수령·기송관 → 조제실+마약금고 → gowning→무균 cleanroom) — `pharma2`.
+- **5g-f 내과 병동 ward**(28×52, 서비스 strip + 중앙 스테이션 + 4-bed 만성 + 1인/격리) — `ward2`. *(내과 외래 클리닉 은퇴 후보)*
+- **5g-g 외과 병동 surgward**(28×52, 드레싱룸 + 스테이션·보행로 + 4-bed 술후 + 대수술 1인) — `surg2`. *(외과 외래 은퇴 후보)*
+- **5g-h 정형 병동 orthoward**(28×52, 석고실 + DME bay + 견인/CPM 4-bed + 고관절 1인) — `ortho2`. *(정형 외래 은퇴 후보)*
+- **5g-i 피부과 센터 dermcenter**(28×52, 로비·접수 + 진료실 ×2 + 광선치료 + 레이저처치) — `derm2`. *(피부과 외래 은퇴 후보)*
+
+> **스테이지 귀속:** 5f·5g는 맵/인테리어 엔진+콘텐츠라 2-5에 둠. 엘리베이터/인테리어가 소비하는 **상황판·시나리오 진입 UI 본체**는
+> 2-6. 5g 각 부서의 시나리오 콘텐츠(대화/퀴즈)는 콘텐츠 워크스트림. 빌드 순서 제안: **5f-i → 5f-ii → 5f-iii → 5g-a..i**.
 
 ### 6. 컴포넌트/모듈 분해 (적응형 깊이)
 
