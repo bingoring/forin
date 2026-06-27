@@ -321,3 +321,10 @@
 - 수정: 공용 `components/PixelButton.tsx`를 DS(forin-ui PixelButton) 스펙으로 정렬 — 베벨 스트립 + press swap + `full` prop(정확한
   전폭). border3/radius0/heading/13은 이미 일치. 콜러(elevator GO·campus·login) full prop으로 갱신. 앱 전체 버튼에 반영.
 - 검증: tsc 0·jest 41/41·expo export·doctor 21/21.
+
+## 2026-06-27 · PixelButton 최종 — 플랫 캡 + 드롭 섀도우 (피드백 반복)
+- 위 "DS 정렬"(베벨+swap)은 뒤쪽 하드 섀도우와 신호가 충돌(섀도우 정지 + 베벨만 swap)해 어색. 반복 정리:
+  **누름 = 캡이 오프셋만큼 섀도우 속으로 내려앉기**(유일 신호) → 안쪽 베벨(음영) 중복이라 제거, 윗변 하이라이트도 사용자 선호로 제거.
+- **최종: 평평한 3px 아웃라인 캡 + 하드 오프셋 섀도우 + 누름 드롭.** forin 플랫 픽셀 톤(PixelBox/Chip)과 일관. full prop.
+  (핸드오프의 베벨/swap은 섀도우 없는 평면 버튼 전제였음 — forin은 섀도우를 유지하므로 드롭으로 누름을 표현하는 게 더 forin다움+명확.)
+- 검증: tsc 0·jest 41/41·expo export·doctor 21/21.
