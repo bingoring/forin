@@ -234,10 +234,8 @@ function MedCenterV({ w, h, label, sign, signColor }: LMProps) {
             the central flat roof, capped by the rotunda dome — all read from the
             high-angle view. No shading; the rounded bottom matches the wall tone
             so no back face shows through. */}
-        {/* rounded bottom (same tone as the wall) */}
-        <Ellipse cx={72} cy={24} rx={10} ry={4.5} fill={C.stone} />
-        {/* cylinder wall */}
-        <Rect x={62} y={14} width={20} height={10} fill={C.stone} />
+        {/* cylinder body — front wall + rounded bottom, as one outlined path */}
+        <Path d="M62 14 L62 24 A10 4.5 0 0 0 82 24 L82 14 Z" fill={C.stone} stroke={INK} strokeWidth={0.8} />
         {/* lantern windows — holes following the cylinder curve: lower at center,
             rising toward the sides (center a touch wider) for a 3D read. */}
         {[-7.5, -4, 0, 4, 7.5].map((dx, i) => {
@@ -324,17 +322,51 @@ function MedCenterC({ w, h, label, sign, signColor }: LMProps) {
   );
 }
 
-// ── 행정·지원동 — plain flat extruded block (concrete/brick) ──
+// ── 행정·지원동 — institutional concrete admin/support block: banded office
+//    facade + circulation core + glazed lobby & canopy + rooftop plant ──
 function MedCenterAdmin({ w, h, label, sign, signColor }: LMProps) {
   const pw = w * 16;
   const ph = h * 16;
+  const concrete = '#C8BBA6';
+  const concreteDk = '#A89A82';
+  const concreteLt = '#DDD3C1';
+  const glassOff = '#8AA0AE';
+  const glassLit = '#F2E2A8';
+  const td = Math.round(13 * 2.3);
+  const floors = Math.max(3, h - 1);
   return (
     <View style={{ position: 'absolute', left: 0, top: 0, width: pw, height: ph }}>
       <View style={{ position: 'absolute', left: pw, bottom: 0, width: 14, height: ph - 4, backgroundColor: 'rgba(40,32,28,0.26)' }} />
-      <Block3D left={0} bottom={0} fw={pw} fh={ph} d={12} front="#C8BBA6" top="#D8CDBA">
-        {grid(Math.max(3, w), Math.max(3, h - 1), 0.3, 3, '#FBE7A8', '#8C9AA2')}
-        {/* entrance */}
-        <View style={{ position: 'absolute', left: '50%', marginLeft: -10, bottom: 0, width: 20, height: 14, backgroundColor: '#5C4A33', borderWidth: 2, borderBottomWidth: 0, borderColor: INK }} />
+      {/* rooftop mechanical/stair penthouse (rises above the roof, toward back) */}
+      <View style={{ position: 'absolute', left: pw * 0.16, top: -(td + 13), width: pw * 0.34, height: 17, backgroundColor: concreteDk, borderWidth: 2, borderColor: INK }}>
+        <View style={{ position: 'absolute', left: 3, top: 3, width: 6, height: 5, backgroundColor: glassOff }} />
+      </View>
+      {/* rooftop HVAC units sitting on the top face */}
+      <View style={{ position: 'absolute', left: pw * 0.56, top: -(td - 3), width: 17, height: 10, backgroundColor: concreteLt, borderWidth: 1.5, borderColor: INK }}>
+        <View style={{ position: 'absolute', left: 2, top: 2.5, right: 2, height: 1.6, backgroundColor: concreteDk }} />
+        <View style={{ position: 'absolute', left: 2, top: 5.5, right: 2, height: 1.6, backgroundColor: concreteDk }} />
+      </View>
+      <View style={{ position: 'absolute', left: pw * 0.8, top: -(td - 6), width: 11, height: 7, backgroundColor: concreteLt, borderWidth: 1.5, borderColor: INK }} />
+      {/* main block */}
+      <Block3D left={0} bottom={0} fw={pw} fh={ph} d={13} front={concrete} top={concreteLt}>
+        {/* office window grid + floor slab bands */}
+        {grid(Math.max(4, w), floors, 0.22, 3, glassLit, glassOff)}
+        {Array.from({ length: floors - 1 }).map((_, i) => (
+          <View key={`fb${i}`} style={{ position: 'absolute', left: 0, right: 0, top: `${10 + ((i + 1) / floors) * 86}%`, height: 1.5, backgroundColor: concreteDk, opacity: 0.6 }} />
+        ))}
+        {/* vertical circulation core (stair/elevator) */}
+        <View style={{ position: 'absolute', left: '45%', top: 10, bottom: 0, width: '11%', backgroundColor: concreteDk }}>
+          <View style={{ position: 'absolute', left: '30%', top: 6, width: '40%', bottom: 8, backgroundColor: glassOff, opacity: 0.7 }} />
+        </View>
+        {/* top parapet + signage band */}
+        <View style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 10, backgroundColor: concreteLt, borderBottomWidth: 1.5, borderColor: concreteDk }} />
+        <View style={{ position: 'absolute', left: '24%', right: '24%', top: 2.5, height: 5, backgroundColor: '#fff', borderWidth: 1, borderColor: INK }} />
+        {/* ground-floor glazed lobby + flat entrance canopy */}
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -22, bottom: 0, width: 44, height: 16, backgroundColor: '#33414C' }}>
+          <View style={{ position: 'absolute', left: 2, top: 2, right: 2, bottom: 0, backgroundColor: glassOff, opacity: 0.85 }} />
+          <View style={{ position: 'absolute', left: '50%', marginLeft: -5, bottom: 0, width: 10, height: 12, backgroundColor: '#28333D', borderWidth: 1.5, borderBottomWidth: 0, borderColor: INK }} />
+        </View>
+        <View style={{ position: 'absolute', left: '50%', marginLeft: -27, bottom: 15, width: 54, height: 4, backgroundColor: concreteDk, borderWidth: 1.5, borderColor: INK }} />
       </Block3D>
       <Plaque sign={sign} signColor={signColor ?? '#6B5B45'} label={label} />
     </View>
