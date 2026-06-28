@@ -12,9 +12,11 @@ export default function ElevatorRoute() {
   const onPickFloor = (b: string, floor: ElevFloor) => {
     if (floor.interior) {
       // ride in with the doors still shut; the interior continues the open via
-      // DoorReveal (?via=elevator), revealing the map once it loads.
+      // DoorReveal (?via=elevator), revealing the map once it loads. `entry`
+      // spawns the player at the floor's doorway.
       const wall = ELEVATOR_BUILDINGS[b]?.wall ?? '#E8EAEC';
-      router.replace(`/interior/${floor.interior}?via=elevator&c=${encodeURIComponent(wall)}`);
+      const at = floor.entry ? `&ex=${floor.entry.x}&ey=${floor.entry.y}` : '';
+      router.replace(`/interior/${floor.interior}?via=elevator&c=${encodeURIComponent(wall)}${at}`);
     } else {
       Alert.alert(`${floor.f} · ${floor.depts[0]}`, '이 층은 곧 공개됩니다. (준비 중)');
     }

@@ -19,6 +19,7 @@ export interface ElevFloor {
   sdepts?: Dept[]; // scenario depts whose live count surfaces on this floor
   lobby?: boolean;
   interior?: string; // interior id to ride to (omitted = not built yet)
+  entry?: { x: number; y: number }; // spawn tile on arrival (else the map's default)
 }
 export interface ElevBuilding {
   name: string;
@@ -41,7 +42,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
       { f: '4F', depts: ['중앙 ICU', 'CCU · Neuro · TICU'], icon: '🫀', sdepts: ['ICU'] },
       { f: '3F', depts: ['수술실 OR', '회복실 PACU', '당일수술센터'], icon: '🔪', sdepts: ['OR'] },
       { f: '2F', depts: ['피부과 외래', '내과 · 외과 외래'], icon: '🩺', interior: 'CLINIC-IM-00001' },
-      { f: '1F', depts: ['응급의료센터 ER', '원내 약국', '메인 로비'], icon: '🚑', sdepts: ['ER', 'PHARMA'], lobby: true, interior: 'INT-ER-00001' },
+      { f: '1F', depts: ['응급의료센터 ER', '원내 약국', '메인 로비'], icon: '🚑', sdepts: ['ER', 'PHARMA'], lobby: true, interior: 'INT-ER-00001', entry: { x: 20, y: 11 } },
     ],
   },
   women: {

@@ -77,8 +77,8 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-tl-y', type: 'triageline', x: 14, y: 10, props: { w: 4, color: '#FACC15' } },
     { id: 'o-tl-g', type: 'triageline', x: 14, y: 11, props: { w: 4, color: '#22C55E' } },
     { id: 'o-wd', type: 'waitingdisplay', x: 22, y: 1, props: { w: 3 } },
-    { id: 'o-sofa1', type: 'sofa', x: 28, y: 9, props: { w: 3 } },
-    { id: 'o-sofa2', type: 'sofa', x: 33, y: 9, props: { w: 2, color: '#C4A98F' } },
+    { id: 'o-sofa1', type: 'sofa', x: 28, y: 9, props: { w: 3, h: 1 } },
+    { id: 'o-sofa2', type: 'sofa', x: 33, y: 9, props: { w: 2, color: '#C4A98F', h: 1 } },
     { id: 'o-wb1', type: 'wastebin', x: 37, y: 10 },
     // ── 소생실 (A1) ──
     { id: 'o-resbed', type: 'bed', x: 3, y: 16, props: { occupied: true } },
@@ -107,8 +107,8 @@ export const ER_INTERIOR: Interior = {
     // ── 정신과 안전 격리실 (A3) ──
     { id: 'o-psybed', type: 'boltedbed', x: 4, y: 49, props: { w: 2, h: 3, occupied: true } },
     // ── 가족 상담·임종실 (B3) ──
-    { id: 'o-famsofa1', type: 'sofa', x: 15, y: 50, props: { w: 3, color: '#A9B8C9' } },
-    { id: 'o-famsofa2', type: 'sofa', x: 20, y: 50, props: { w: 2, color: '#C4A98F' } },
+    { id: 'o-famsofa1', type: 'sofa', x: 15, y: 50, props: { w: 3, color: '#A9B8C9', h: 1 } },
+    { id: 'o-famsofa2', type: 'sofa', x: 20, y: 50, props: { w: 2, color: '#C4A98F', h: 1 } },
     { id: 'o-famplant', type: 'plant', x: 23, y: 46 },
     // ── 제염실 (C3) ──
     { id: 'o-decsh', type: 'deconshower', x: 30, y: 46 },

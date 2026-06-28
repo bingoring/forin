@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import { TILE, coordToPx, type Coord } from '@engine';
 import { regionAt } from '@engine';
-import { viewBounds, boxInView, OBJECT_FOOTPRINT } from '@engine';
+import { boxInView, OBJECT_FOOTPRINT } from '@engine';
 import { useMovement } from '@engine';
 import { TileFloor } from '@engine';
 import { Walls } from '@engine';
@@ -87,12 +87,27 @@ export function InteriorScreen({
   const npcs = useMemo(() => npcsFromObjects(interior.objects), [interior.objects]);
 
   // Viewport culling (5f-iii): on large maps render only what's near the camera.
-  // Boxes get a top "rise" allowance so tall art (sprites, equipment, landmarks
-  // that overhang upward) isn't culled while its footprint is just off-screen.
-  const view = useMemo(
-    () => (vp.w > 0 ? viewBounds(pos.x + 0.5, pos.y + 0.5, vp.w, vp.h, scale, TILE, 4) : null),
-    [pos.x, pos.y, vp.w, vp.h, scale],
-  );
+  // The window is derived from the *clamped camera* (mirroring the worldStyle
+  // transform), not just the player tile — otherwise near a map edge, where the
+  // camera stops following, visible objects toward the edge get wrongly culled
+  // (the "disappears when I get close" bug). Boxes get a "rise" allowance so tall
+  // art (sprites/equipment/landmarks overhanging upward) isn't culled early.
+  const view = useMemo(() => {
+    if (vp.w === 0) return null;
+    const sw = worldW * scale;
+    const sh = worldH * scale;
+    const cx = (pos.x + 0.5) * TILE * scale;
+    const cy = (pos.y + 0.5) * TILE * scale;
+    const tx = sw <= vp.w ? (vp.w - sw) / 2 : Math.max(vp.w - sw, Math.min(0, vp.w / 2 - cx));
+    const ty = sh <= vp.h ? (vp.h - sh) / 2 : Math.max(vp.h - sh, Math.min(0, vp.h / 2 - cy));
+    const m = 5; // tile margin
+    return {
+      x0: -tx / (TILE * scale) - m,
+      x1: (-tx + vp.w) / (TILE * scale) + m,
+      y0: -ty / (TILE * scale) - m,
+      y1: (-ty + vp.h) / (TILE * scale) + m,
+    };
+  }, [pos.x, pos.y, vp.w, vp.h, scale, worldW, worldH]);
   const visObjects = useMemo(() => {
     if (!view) return interior.objects;
     return interior.objects.filter((o) => {

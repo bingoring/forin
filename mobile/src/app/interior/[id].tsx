@@ -1,5 +1,5 @@
 // Interior route: loads the tile map for {id} and hands it to the explore engine.
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { api } from '@/api/client';
@@ -10,7 +10,7 @@ import { FIXTURES } from '@/map/fixtures/er';
 import type { Interior } from '@engine';
 
 export default function InteriorRoute() {
-  const { id, via, c } = useLocalSearchParams<{ id: string; via?: string; c?: string }>();
+  const { id, via, c, ex, ey } = useLocalSearchParams<{ id: string; via?: string; c?: string; ex?: string; ey?: string }>();
   const router = useRouter();
   const [interior, setInterior] = useState<Interior | null>(null);
   const [error, setError] = useState(false);
@@ -19,6 +19,15 @@ export default function InteriorRoute() {
   // entering via the elevator: skip the route's sideways slide so only the
   // DoorReveal plays (the slide + doors opening together looked awkward).
   const enterAnim: 'none' | 'default' = viaElevator ? 'none' : 'default';
+  // elevator arrival can spawn the player at the floor's doorway (?ex&ey)
+  const spawned = useMemo(() => {
+    if (!interior) return null;
+    const sx = Number(ex);
+    const sy = Number(ey);
+    return Number.isFinite(sx) && Number.isFinite(sy) && ex != null && ey != null
+      ? { ...interior, playerStart: { x: sx, y: sy } }
+      : interior;
+  }, [interior, ex, ey]);
 
   useEffect(() => {
     let alive = true;
@@ -74,7 +83,7 @@ export default function InteriorRoute() {
     <>
       <Stack.Screen options={{ headerShown: false, animation: enterAnim }} />
       <InteriorScreen
-        interior={interior}
+        interior={spawned ?? interior}
         onExit={() => router.back()}
         onEnterScenario={(h) => {
           if (h.kind === 'elevator' && h.building) router.push(`/elevator/${h.building}`);

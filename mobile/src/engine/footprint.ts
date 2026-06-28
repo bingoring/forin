@@ -10,6 +10,16 @@ export const OBJECT_FOOTPRINT: Record<string, { w: number; h: number }> = {
   monitor: { w: 1, h: 2 },
   reception: { w: 2, h: 1 },
   tree: { w: 1, h: 1 }, // trunk tile only; the canopy overhangs (walkable)
+  // ER/clinic floor equipment — solid, so they block their ground tile(s).
+  // (Walk-through gates, wall-mounted screens, floor lines/tints don't block.)
+  vitals: { w: 1, h: 1 },
+  ivpump: { w: 1, h: 1 },
+  dressing: { w: 2, h: 1 },
+  medfridge: { w: 1, h: 1 },
+  scanner: { w: 2, h: 1 },
+  chemdrum: { w: 1, h: 1 },
+  ppestand: { w: 1, h: 1 },
+  wastebin: { w: 1, h: 1 },
 };
 
 /** Blocked rectangles contributed by solid objects (doors are walkable → skipped).
