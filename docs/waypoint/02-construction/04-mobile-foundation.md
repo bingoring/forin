@@ -14,7 +14,7 @@ updated: 2026-06-10
 
 ## 입력 (Inputs)
 
-- 디자인 토큰/컴포넌트: [`../inputs/design-handoff_v8/01_DESIGN_TOKENS.md`](../inputs/design-handoff_v8/01_DESIGN_TOKENS.md), [`02_COMPONENTS.md`](../inputs/design-handoff_v8/02_COMPONENTS.md)
+- 디자인 토큰/컴포넌트: [`../inputs/design-handoff_v9/01_DESIGN_TOKENS.md`](../inputs/design-handoff_v9/01_DESIGN_TOKENS.md), [`02_COMPONENTS.md`](../inputs/design-handoff_v9/02_COMPONENTS.md)
 - 계약: `packages/contract` (2-2 산출)
 
 ## 체크리스트

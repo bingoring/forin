@@ -210,7 +210,7 @@
 - **결정자:** 사용자(진행) + AI.
 
 ## 2026-06-18 · 디자인 핸드오프 v7 (플래그십 랜드마크) — 경량 반영 + 베스포크 아트 계획
-- **결정:** `design-handoff_v8/` 채택(v6 대비 05_MAP + screens-explore-v2.jsx). 링크 v6→v7 재지정. v7은 캠퍼스 **4종 플래그십
+- **결정:** `design-handoff_v9/` 채택(v6 대비 05_MAP + screens-explore-v2.jsx). 링크 v6→v7 재지정. v7은 캠퍼스 **4종 플래그십
   랜드마크**(MedCenter 본관 / MedCenterH 외래 / MedCenterV 의과대 돔 / MedCenterC 암병원 곡면유리+접시) + `Building` `arch`
   변형(pitched/flat/tower/glass)을 추가.
 - **반영 판단(경량 now + 베스포크 deferred):** 랜드마크는 **CSS 그라데이션·글로우·다중타워 합성**의 대형 정밀 아트이고, 캠퍼스
@@ -290,7 +290,7 @@
 - **결정자:** 사용자(게이트 신설·2-5 적용 지시) + 독립 리뷰어 3 + AI(triage).
 
 ## 2026-06-27 · 디자인 핸드오프 v8 (대규모 재설계) — 채택 + 재계획 필요
-- **채택:** `design-handoff_v8/` 카논. 전 문서 링크 v7→v8 재지정(10개). v8은 증분이 아니라 **맵/화면 대규모 재설계**.
+- **채택:** `design-handoff_v9/` 카논. 전 문서 링크 v7→v8 재지정(10개). v8은 증분이 아니라 **맵/화면 대규모 재설계**.
 - **주요 델타:**
   1. **캠퍼스 재구성:** 5개 랜드마크 파빌리온(본관 메인 메디컬 타워 `MedCenter` / 여성소아 `MedCenterWomen` / 암센터·재활 `MedCenterC`(=`MedCenterOnco`) / 외래·진단 `MedCenterH`(=`MedCenterDx`) / 행정 `Building flat`(=`MedCenterAdmin`)) + 중앙 시계탑 `ClockTower2D`. 빌딩 진입이 곧장 인테리어가 아니라 **엘리베이터**를 엶.
   2. **엘리베이터 화면 신설**(`screen-elevator.jsx` ScreenElevator): 건물 탭 5 + 픽셀 cab(층 표시·방향·도어 애니) + 층 디렉터리(층별 부서 + **실시간 상황칩 🔴/🟡/🟢** `getTodaysActiveScenarios()` 상황판과 동일 소스) + GO 바. InteriorScreen 내 **오버레이**(라우팅 없음, 🛗 버튼).
@@ -392,3 +392,10 @@
 - **엘리베이터 진입 spawn:** ElevFloor.entry 추가 → 라우트가 `?ex&ey` 전달, 인테리어가 playerStart 오버라이드(메모이즈). 타워 1F→ER (20,11) 도어 앞.
 - **트리아지 바닥선(빨/노/초):** KTAS 중증도 안내선(실제 ER 요소) — 유지(필요시 제거/라벨).
 - 검증: tsc 0·jest 48/48·expo export·doctor 21/21.
+
+## 2026-06-28 · 디자인 핸드오프 v9 채택 (DS 카탈로그 갱신만)
+- `design-handoff_v9/` 카논. 전 문서 링크 v8→v9 재지정(9개). v9 = v8 + **DS 카탈로그 레퍼런스 3개 갱신만**(stale 동기화):
+  `ds-equipment.jsx`(+카탈로그 화면 3: ScreenDSEquipmentDerm/OrthoWard/SurgWard — 5g-g/h/i 부서 장비 쇼케이스), `ds-furniture.jsx`·
+  `app-ds.jsx`(사소). **스펙(.md)·인테리어/오브젝트 소스 변경 0** — surg2/ortho2/derm2 장비는 이미 v8에 존재(해당 병동 빌드 시 포팅).
+- 앱 반영 코드 없음(카탈로그는 디자인 레퍼런스 전용). 링크 재지정 + 기록만.
+- 결정자: 사용자(v9 제공·동기화) + AI(델타 무시-가능 판정).

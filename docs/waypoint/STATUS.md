@@ -2,7 +2,7 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v8/](inputs/design-handoff_v8/README.md)
+**Design handoff:** [inputs/design-handoff_v9/](inputs/design-handoff_v9/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-06-27
 

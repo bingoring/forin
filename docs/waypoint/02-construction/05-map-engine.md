@@ -14,9 +14,9 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 
 ## 입력 (Inputs)
 
-- 맵 엔진: [`../inputs/design-handoff_v8/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v8/05_MAP_AND_INTERIORS.md)
-- 캐릭터: [`../inputs/design-handoff_v8/03_CHARACTERS.md`](../inputs/design-handoff_v8/03_CHARACTERS.md)
-- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v8/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v8/06_CHARACTER_MOTION.md)
+- 맵 엔진: [`../inputs/design-handoff_v9/05_MAP_AND_INTERIORS.md`](../inputs/design-handoff_v9/05_MAP_AND_INTERIORS.md)
+- 캐릭터: [`../inputs/design-handoff_v9/03_CHARACTERS.md`](../inputs/design-handoff_v9/03_CHARACTERS.md)
+- **캐릭터 모션(신규 2026-06-12):** [`../inputs/design-handoff_v9/06_CHARACTER_MOTION.md`](../inputs/design-handoff_v9/06_CHARACTER_MOTION.md)
 
 ## 체크리스트
 
