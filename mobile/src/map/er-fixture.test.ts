@@ -1,8 +1,9 @@
-// Guards the authored ER layout: with structural walls + object footprints, the
-// player must still reach the key tiles, doors must stay walkable, and object
-// footprints must block. Collision bugs are invisible on screen, so test them.
+// Guards the authored ER master blueprint (5g-a): with structural walls + object
+// footprints, every room must be reachable from the lobby, thresholds must stay
+// walkable, and solid object footprints must block. Collision bugs are invisible
+// on screen, so test them.
 import { ER_INTERIOR } from './fixtures/er';
-import { buildBlocked, canEnter, findPath } from '@engine/collision';
+import { buildBlocked, canEnter, findPath, nearestOpen } from '@engine/collision';
 import { objectCollision } from '@engine/footprint';
 import type { Coord } from '@engine/coords';
 
@@ -10,30 +11,35 @@ const grid = { ...ER_INTERIOR, collision: [...ER_INTERIOR.collision, ...objectCo
 const blocked = buildBlocked(grid);
 const start: Coord = ER_INTERIOR.playerStart;
 
-const reachable = (c: Coord) => findPath(start, c, grid, blocked).length > 0;
+const reachable = (c: Coord) => (c.x === start.x && c.y === start.y) || findPath(start, c, grid, blocked).length > 0;
 
-describe('ER fixture layout', () => {
-  test('player can reach the chest-pain hotspot (via the adjacent open tile)', () => {
-    // hotspot is at (4,4) which sits under the bed footprint; the nurse stands
-    // at (3,4) to its left, which must be reachable.
-    expect(canEnter({ x: 3, y: 4 }, grid, blocked)).toBe(true);
-    expect(reachable({ x: 3, y: 4 })).toBe(true);
+describe('ER master blueprint', () => {
+  test('player start is open', () => {
+    expect(canEnter(start, grid, blocked)).toBe(true);
   });
 
-  test('player can cross from the corridor into trauma and triage', () => {
-    expect(reachable({ x: 17, y: 4 })).toBe(true); // trauma region
-    expect(reachable({ x: 3, y: 6 })).toBe(true); // triage region (past the divider door)
+  test('every room is reachable from the lobby (via an open tile near its anchor)', () => {
+    const bad = ER_INTERIOR.rooms
+      .map((r) => ({ r, open: nearestOpen({ x: r.x, y: r.y }, grid, blocked) }))
+      .filter(({ open }) => !open || !reachable(open))
+      .map(({ r }) => `${r.id}@${r.x},${r.y}`);
+    expect(bad).toEqual([]);
   });
 
-  test('doors are walkable openings', () => {
-    expect(canEnter({ x: 12, y: 9 }, grid, blocked)).toBe(true); // room↔corridor
-    expect(canEnter({ x: 11, y: 8 }, grid, blocked)).toBe(true); // triage↔trauma
+  test('every internal threshold is a walkable opening', () => {
+    const unreachable = ER_INTERIOR.objects
+      .filter((o) => o.type === 'threshold')
+      .filter((o) => !(canEnter({ x: o.x, y: o.y }, grid, blocked) && reachable({ x: o.x, y: o.y })))
+      .map((o) => `${o.id}@${o.x},${o.y}`);
+    expect(unreachable).toEqual([]);
   });
 
-  test('solid object footprints are blocked', () => {
-    expect(canEnter({ x: 4, y: 3 }, grid, blocked)).toBe(false); // bed
-    expect(canEnter({ x: 5, y: 5 }, grid, blocked)).toBe(false); // bed (2×3 footprint)
-    expect(canEnter({ x: 6, y: 4 }, grid, blocked)).toBe(false); // monitor (1×2)
-    expect(canEnter({ x: 6, y: 7 }, grid, blocked)).toBe(false); // reception (2×1)
+  test('thresholds and tints do not block; solid objects do', () => {
+    // bed footprint (2×3) blocks
+    expect(canEnter({ x: 3, y: 16 }, grid, blocked)).toBe(false);
+    // nurse station footprint blocks
+    expect(canEnter({ x: 18, y: 20 }, grid, blocked)).toBe(false);
+    // a tint tile stays walkable (decon room floor)
+    expect(canEnter({ x: 33, y: 52 }, grid, blocked)).toBe(true);
   });
 });

@@ -10,6 +10,7 @@ import { fonts } from '@/theme/tokens';
 import { ClinicObjectView } from './clinicEquipment';
 import { LandmarkView } from './landmarks';
 import { IThreshold, IGlass } from './structures';
+import { ErObjectView } from './erEquipment';
 import type { MapObject } from '@engine';
 
 export { OBJECT_FOOTPRINT, objectCollision } from '@engine';
@@ -331,7 +332,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
     case 'glass':
       return <IGlass x={x} y={y} w={(props?.w as number) ?? 1} h={(props?.h as number) ?? 1} />;
     default:
-      // outpatient-clinic equipment (5d-iii)
-      return ClinicObjectView({ object });
+      // ER master-blueprint equipment (5g-a), then outpatient-clinic equipment (5d-iii)
+      return ErObjectView({ object }) ?? ClinicObjectView({ object });
   }
 }
