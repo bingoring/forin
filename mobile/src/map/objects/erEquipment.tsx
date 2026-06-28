@@ -290,31 +290,79 @@ export function TriageLine({ x, y, w = 1, h = 1, color = '#EF4444' }: { x: numbe
   );
 }
 
-// ── Nurse station — big U/ㄷ open counter (monitor wall + quartz top) ──
+// ── Nurse station — ㄷ/U open desk: wood U body (top bar + two side legs, open
+//    well) + quartz tops + raised back ledge + monitor wall (1st=CT, rest=EMR +
+//    keyboards) + drawer pedestals at the front corners + side accessories.
+//    1:1 port of interior-objects-er3.jsx NurseStationDesk. ──
 export function NurseStationDesk({ x, y, w = 10, h = 6 }: { x: number; y: number; w?: number; h?: number }) {
   const W = w * 16;
   const HH = h * 16;
   const R = 10;
-  const body = '#E4E2D8';
-  const qz = '#ECEAE1';
-  const nMon = Math.max(2, w - 3);
+  const TH = HH + R;
+  const bar = 16;
+  const wood = '#E4E2D8';
+  const woodDk = '#BFBBAD';
+  const qz = '#EAE3D0';
+  const qzEdge = '#D2C9AE';
+  const qzHi = '#F4EFDF';
+  const nMon = Math.max(3, w - 4);
   const monXs: number[] = [];
-  for (let i = 0; i < nMon; i++) monXs.push(10 + (i + 0.5) * ((W - 20) / nMon));
+  for (let i = 0; i < nMon; i++) monXs.push(24 + (i + 0.5) * ((W - 48) / nMon));
   return (
-    <Box x={x} y={y} offY={-R} w={W} h={HH + R}>
-      <Svg viewBox={`0 0 ${W} ${HH + R}`} width={W * S} height={(HH + R) * S} preserveAspectRatio="none">
-        <Rect x={2} y={R} width={W - 4} height={HH - 2} fill={body} stroke={C} strokeWidth={0.7} />
-        <Rect x={2} y={R - 2} width={W - 4} height={12} fill={qz} stroke={C} strokeWidth={0.6} />
-        <Rect x={2} y={R - 4} width={W - 4} height={3} fill="#D2CDBE" stroke={C} strokeWidth={0.5} />
+    <Box x={x} y={y} offY={-R} w={W} h={TH}>
+      <Svg viewBox={`0 0 ${W} ${TH}`} width={W * S} height={TH * S}>
+        {/* wood U body: top run + left run + right run (open well in the middle) */}
+        <Rect x={4} y={R} width={W - 8} height={bar + 5} fill={wood} stroke={C} strokeWidth={0.7} />
+        <Rect x={4} y={R} width={bar + 4} height={HH - 6} fill={wood} stroke={C} strokeWidth={0.7} />
+        <Rect x={W - 4 - (bar + 4)} y={R} width={bar + 4} height={HH - 6} fill={wood} stroke={C} strokeWidth={0.7} />
+        {/* quartz tops on each run */}
+        <Rect x={4} y={R - 2} width={W - 8} height={bar} fill={qz} stroke={C} strokeWidth={0.6} />
+        <Rect x={4} y={R - 2} width={bar + 4} height={HH - 8} fill={qz} stroke={C} strokeWidth={0.6} />
+        <Rect x={W - 4 - (bar + 4)} y={R - 2} width={bar + 4} height={HH - 8} fill={qz} stroke={C} strokeWidth={0.6} />
+        {/* raised back ledge */}
+        <Rect x={4} y={R - 4} width={W - 8} height={4} fill={qzEdge} stroke={C} strokeWidth={0.6} />
+        <Rect x={5} y={R - 3.4} width={W - 10} height={1} fill={qzHi} />
+        {/* monitor wall on the back run */}
         {monXs.map((mx, i) => (
-          <G key={i}>
-            <Rect x={mx - 6} y={R - 6} width={12} height={12} fill="#1B2128" stroke={C} strokeWidth={0.5} />
-            <Rect x={mx - 4.8} y={R - 4.8} width={9.6} height={9} fill="#0F1A24" />
-            <Rect x={mx - 4} y={R - 3.6} width={8} height={1} fill="#2BB3C8" />
-            <Rect x={mx - 4} y={R - 0.2} width={8} height={0.9} fill="#E0A23A" />
-            <Rect x={mx - 5} y={R + 8} width={10} height={2.4} fill="#B7BEC6" stroke={C} strokeWidth={0.4} />
+          <G key={`m${i}`}>
+            <Rect x={mx - 1} y={R + bar - 6} width={2} height={3} fill="#3A4048" />
+            <Rect x={mx - 7} y={R - 6} width={14} height={bar - 1} fill="#1B2128" stroke={C} strokeWidth={0.5} />
+            <Rect x={mx - 5.6} y={R - 4.6} width={11.2} height={bar - 4} fill="#0F1A24" />
+            {i === 0 ? (
+              <G>
+                <Ellipse cx={mx} cy={R + 1} rx={3.4} ry={4} fill="#3A4A55" />
+                <Ellipse cx={mx - 1} cy={R + 1} rx={1} ry={1.4} fill="#0B1116" />
+                <Ellipse cx={mx + 1.2} cy={R + 1} rx={1} ry={1.4} fill="#0B1116" />
+              </G>
+            ) : (
+              <G>
+                <Rect x={mx - 4.6} y={R - 3.6} width={9} height={1.1} fill="#2BB3C8" />
+                <Rect x={mx - 4.6} y={R - 1.6} width={7} height={0.9} fill="#5A6B78" />
+                <Rect x={mx - 4.6} y={R} width={9} height={0.9} fill="#5A6B78" />
+                <Rect x={mx - 4.6} y={R + 1.6} width={6} height={0.9} fill="#E0A23A" />
+                <Rect x={mx - 4.6} y={R + 3.2} width={8} height={0.9} fill="#3FB07A" />
+              </G>
+            )}
+            <Rect x={mx - 5} y={R + bar - 2.5} width={10} height={3} fill="#B7BEC6" stroke={C} strokeWidth={0.4} />
           </G>
         ))}
+        {/* drawer pedestals at the two front corners */}
+        {[6, W - 6 - 16].map((dx, i) => (
+          <G key={`d${i}`}>
+            <Rect x={dx} y={R + HH - 28} width={16} height={22} fill={woodDk} stroke={C} strokeWidth={0.6} />
+            {[0, 1, 2].map((r) => (
+              <G key={r}>
+                <Rect x={dx + 1.5} y={R + HH - 26 + r * 7} width={13} height={5.5} fill={wood} stroke={C} strokeWidth={0.4} />
+                <Rect x={dx + 5} y={R + HH - 23.5 + r * 7} width={6} height={1.2} fill="#9AA1A8" />
+              </G>
+            ))}
+          </G>
+        ))}
+        {/* side-counter accessories: label printer (right), wire basket + pen caddy (left) */}
+        <Rect x={W - 4 - bar + 1} y={R + 2} width={12} height={9} fill="#F2EFE6" stroke={C} strokeWidth={0.5} />
+        <Rect x={W - 4 - bar + 2} y={R + 3} width={10} height={2.5} fill="#0F1A24" />
+        <Rect x={7} y={R + 3} width={11} height={7} fill="#F7F7F4" stroke={C} strokeWidth={0.5} />
+        <Rect x={8} y={R + 11} width={6} height={5} fill="#7E8893" stroke={C} strokeWidth={0.4} />
       </Svg>
     </Box>
   );
