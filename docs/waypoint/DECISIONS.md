@@ -399,3 +399,21 @@
   `app-ds.jsx`(사소). **스펙(.md)·인테리어/오브젝트 소스 변경 0** — surg2/ortho2/derm2 장비는 이미 v8에 존재(해당 병동 빌드 시 포팅).
 - 앱 반영 코드 없음(카탈로그는 디자인 레퍼런스 전용). 링크 재지정 + 기록만.
 - 결정자: 사용자(v9 제공·동기화) + AI(델타 무시-가능 판정).
+
+## 2026-06-28 · 5g-a ER — 전체 픽셀 1:1 재포팅 + 인테리어 블루프린트 1:1 재구성
+- **계기:** 사용자가 "정말 핸드오프와 동일하게 구현됐냐"고 질의 → ER이 구조충실하나 단순화본임을 인정.
+  너스스테이션 데스크 모양 지적("ㄷ자인데 너무 대충") 후 **"전체 픽셀 1:1 재포팅"** 선택.
+- **방법:** 감사 에이전트로 erEquipment 전 오브젝트를 레퍼런스(interior-objects-er/er2/er3) 대비 요소 단위 대조 →
+  배치 3건으로 누락/오류 채움. NurseStationDesk를 진짜 1:1(우드그레인·쿼츠엣지·모니터베이스+CT배경·키보드내부·
+  라벨프린터용지·바스켓점선·펜캐디·커피컵)로 완성. 누락 4종(EKG/Sink/Whiteboard/Scale) 신규 추가.
+- **Phase 2(인테리어 1:1):** `sharedEquipment.tsx` 신설 — interior-shared 프리미티브(IBed 3변형/IMonitor/IIV/
+  ICurtain/IReception/IChair 4방향/IPlant/ICabinet/ExamStool) + 타부서 오브젝트(SurgicalLight/InstrumentTray
+  /Ventilator/CrashCart/PyxisMachine/BankOfMonitors/XrayViewbox/CastCart) 충실 포팅. div 레퍼런스는 SVG로 재구성.
+  **회귀 회피:** `i*` 접두 신규 타입 + SharedObjectView로 분리 → 기존 clinic bed/monitor/reception 불변.
+- **ER_INTERIOR 재작성:** interior-er.jsx 1:1 — 40×60, y16/y33/y49 + x13/x26 그리드(밴드별 threshold 갭),
+  앰뷸런스/정문/캠퍼스/제염외부 도어, IGlass 분할(약품실·음압전실), 10존 전체 오브젝트 배치, ICurtain 베이 분할,
+  트리아지 바닥선, NPC ~40, 핫스팟 12, playerStart 19,28. floorTheme clinical.
+- **충돌:** 신규 솔리드 타입 footprint 추가; nursestation(ㄷ 빈 공간)·triageline·icurtain은 walkable 처리.
+- **근거:** 핸드오프 충실도가 제품 정체성. "안 보이던 오브젝트 다수"는 픽스처가 블루프린트의 일부만 배치한 탓 → 1:1 재구성으로 해소.
+- **검증:** tsc 0 · jest 48/48 · expo export. 커밋 5건(5376b58/da411ba/c59b0a6/+컴포넌트/73c1c30).
+- **결정자:** 사용자(1:1 재포팅 지시·"이대로 진행, 완료 후 보고") + AI(감사·배치 실행).
