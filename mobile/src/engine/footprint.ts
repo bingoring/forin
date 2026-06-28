@@ -27,6 +27,9 @@ export const OBJECT_FOOTPRINT: Record<string, { w: number; h: number }> = {
   suction: { w: 1, h: 1 },
   wheelchair: { w: 1, h: 2 },
   watercooler: { w: 1, h: 1 },
+  ekg: { w: 1, h: 2 },
+  sink: { w: 1, h: 1 },
+  scale: { w: 1, h: 1 },
 };
 
 /** Blocked rectangles contributed by solid objects (doors are walkable → skipped).

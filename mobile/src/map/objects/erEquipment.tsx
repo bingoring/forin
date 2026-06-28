@@ -434,22 +434,41 @@ export function Gurney({ x, y, occupied }: { x: number; y: number; occupied?: bo
   return (
     <Box x={x} y={y} offY={-4} w={32} h={56}>
       <Svg viewBox="0 0 32 56" width={32 * S} height={56 * S}>
+        {/* hand rails (top) */}
         <Rect x={3} y={1} width={26} height={2} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
+        <Rect x={3} y={1} width={2} height={9} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
+        <Rect x={27} y={1} width={2} height={9} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
+        {/* mattress TOP */}
         <Rect x={2} y={10} width={28} height={30} fill="#FFFFFF" stroke={C} strokeWidth={0.5} />
+        <Rect x={2.5} y={10.5} width={27} height={1.5} fill="#F3F4F6" />
+        {/* pillow */}
         <Rect x={8} y={13} width={16} height={4.5} fill="#F8FAFC" />
+        <Rect x={7.5} y={14} width={0.7} height={2.5} fill="#F8FAFC" />
+        <Rect x={23.8} y={14} width={0.7} height={2.5} fill="#F8FAFC" />
+        <Rect x={9} y={13.5} width={14} height={0.8} fill="#FFFFFF" />
+        <Rect x={8} y={16.3} width={16} height={1.2} fill="#E8ECF1" />
+        <Rect x={15.7} y={14} width={0.5} height={3} fill="#D8DEE6" opacity={0.55} />
+        {/* sheet folds */}
+        <Line x1={9} y1={19} x2={9} y2={38} stroke="#C4C4C4" strokeWidth={0.3} opacity={0.5} />
+        <Line x1={23} y1={19} x2={23} y2={38} stroke="#C4C4C4" strokeWidth={0.3} opacity={0.5} />
+        {/* mattress FRONT + frame */}
         <Rect x={2} y={40} width={28} height={3} fill="#E5E7EB" stroke={C} strokeWidth={0.5} />
         <Rect x={2} y={43} width={28} height={3} fill="#4B5563" stroke={C} strokeWidth={0.5} />
-        <Rect x={3} y={46} width={3} height={4} fill="#1F2937" />
-        <Rect x={26} y={46} width={3} height={4} fill="#1F2937" />
+        <Rect x={2.5} y={43.5} width={27} height={1} fill="#6B7280" />
+        {/* wheel posts */}
+        <Rect x={3} y={46} width={3} height={4} fill="#1F2937" stroke={C} strokeWidth={0.4} />
+        <Rect x={26} y={46} width={3} height={4} fill="#1F2937" stroke={C} strokeWidth={0.4} />
         <Ellipse cx={4.5} cy={52} rx={2.5} ry={2} fill={C} />
         <Ellipse cx={27.5} cy={52} rx={2.5} ry={2} fill={C} />
-        <Rect x={0} y={2} width={1.5} height={42} fill="#9CA3AF" />
+        {/* IV pole left */}
+        <Rect x={0} y={2} width={1.5} height={42} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
         <Rect x={-1} y={2} width={4} height={5} fill="#A8DCEC" stroke={C} strokeWidth={0.3} />
         {occupied ? (
           <G>
             <Ellipse cx={16} cy={17} rx={3.5} ry={3.5} fill="#FDE1C8" stroke={C} strokeWidth={0.5} />
             <Rect x={14} y={13.5} width={4} height={2} fill="#6B4423" />
             <Rect x={6} y={22} width={20} height={18} fill="#FED7AA" stroke={C} strokeWidth={0.4} />
+            <Line x1={6} y1={26} x2={26} y2={26} stroke="#E0A876" strokeWidth={0.5} />
           </G>
         ) : null}
       </Svg>
@@ -461,15 +480,27 @@ export function Defib({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} w={20} h={40}>
       <Svg viewBox="0 0 20 40" width={20 * S} height={40 * S}>
+        {/* paddles on top */}
         <Rect x={2} y={0} width={6} height={3} fill="#F59E0B" stroke={C} strokeWidth={0.4} />
+        <Rect x={3} y={0.5} width={4} height={1} fill="#FBBF24" />
         <Rect x={12} y={0} width={6} height={3} fill="#F59E0B" stroke={C} strokeWidth={0.4} />
+        <Rect x={13} y={0.5} width={4} height={1} fill="#FBBF24" />
+        {/* top face + body */}
         <Path d="M2 3 L18 3 L19 5 L1 5 Z" fill="#FACC15" stroke={C} strokeWidth={0.4} />
         <Rect x={1} y={5} width={18} height={15} fill="#FACC15" stroke={C} strokeWidth={0.5} />
+        <Rect x={1.5} y={5.5} width={17} height={1.5} fill="#FEF08A" />
+        {/* screen + waveform */}
         <Rect x={3} y={7} width={14} height={8} fill="#0F1A24" stroke={C} strokeWidth={0.4} />
         <Path d="M4 11 L6 11 L7 8 L8 14 L9 9 L10 11 L14 11" fill="none" stroke="#10B981" strokeWidth={0.7} />
-        <Rect x={8} y={16} width={4} height={2} fill="#DC2626" />
+        {/* buttons */}
+        <Rect x={3} y={16} width={4} height={2} fill="#1F2937" stroke={C} strokeWidth={0.3} />
+        <Rect x={8} y={16} width={4} height={2} fill="#DC2626" stroke={C} strokeWidth={0.3} />
+        <Rect x={13} y={16} width={4} height={2} fill="#10B981" stroke={C} strokeWidth={0.3} />
+        {/* cart bottom + drawers */}
         <Path d="M1 20 L19 20 L20 22 L0 22 Z" fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
         <Rect x={1} y={22} width={18} height={13} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
+        <Rect x={2} y={24} width={16} height={3} fill="#fff" stroke={C} strokeWidth={0.3} />
+        <Rect x={2} y={28} width={16} height={3} fill="#fff" stroke={C} strokeWidth={0.3} />
         <Ellipse cx={3} cy={38} rx={2} ry={1.5} fill={C} />
         <Ellipse cx={17} cy={38} rx={2} ry={1.5} fill={C} />
       </Svg>
@@ -481,11 +512,19 @@ export function OxygenTank({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={-2} w={12} h={20}>
       <Svg viewBox="0 0 12 20" width={12 * S} height={20 * S}>
+        {/* valve top */}
         <Rect x={4} y={0} width={4} height={2} fill="#94A3B8" stroke={C} strokeWidth={0.3} />
+        <Rect x={3} y={2} width={6} height={1} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        {/* top dome */}
         <Ellipse cx={6} cy={4} rx={4} ry={1.5} fill="#15803D" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={6} cy={3.5} rx={3} ry={1} fill="#22C55E" />
+        {/* body + O2 label */}
         <Rect x={2} y={4} width={8} height={13} fill="#16A34A" stroke={C} strokeWidth={0.4} />
         <Rect x={2.5} y={5} width={1.5} height={11} fill="#22C55E" />
         <Rect x={3} y={9} width={6} height={4} fill="#fff" stroke={C} strokeWidth={0.3} />
+        <Rect x={4} y={10.3} width={2} height={2} fill={C} />
+        <Rect x={6.5} y={10.6} width={1.5} height={1.5} fill={C} />
+        {/* base */}
         <Ellipse cx={6} cy={17} rx={4} ry={1.5} fill="#15803D" stroke={C} strokeWidth={0.4} />
       </Svg>
     </Box>
@@ -496,10 +535,17 @@ export function GloveDispenser({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={12} h={14}>
       <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        {/* top face */}
+        <Path d="M1 1 L11 1 L12 2.5 L0 2.5 Z" fill="#94A3B8" stroke={C} strokeWidth={0.3} />
+        {/* body */}
         <Rect x={1} y={2} width={10} height={9} fill="#fff" stroke={C} strokeWidth={0.4} />
         <Rect x={1} y={2} width={10} height={1.5} fill="#3B82F6" />
+        {/* glass window */}
         <Rect x={2} y={4} width={8} height={5} fill="#A8DCEC" stroke={C} strokeWidth={0.3} />
+        <Rect x={2.5} y={4.5} width={7} height={0.8} fill="#D4F0F8" />
+        {/* glove peeking out */}
         <Path d="M3.5 8 L8.5 8 L7.5 12 L4.5 12 Z" fill="#3B82F6" stroke={C} strokeWidth={0.3} />
+        <Rect x={3.5} y={11.5} width={5} height={0.8} fill="#1E40AF" />
       </Svg>
     </Box>
   );
@@ -524,10 +570,17 @@ export function HandSanitizer({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={4} w={8} h={12}>
       <Svg viewBox="0 0 8 12" width={8 * S} height={12 * S}>
+        {/* pump top */}
         <Rect x={3} y={0} width={2} height={2} fill="#fff" stroke={C} strokeWidth={0.3} />
-        <Rect x={2} y={2} width={4} height={1} fill="#9CA3AF" />
+        <Rect x={2} y={2} width={4} height={1} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        {/* top face */}
+        <Path d="M1 3 L7 3 L7.5 4 L0.5 4 Z" fill="#7DBFD9" stroke={C} strokeWidth={0.3} />
+        {/* bottle body */}
         <Rect x={1} y={4} width={6} height={7} fill="#A8DCEC" stroke={C} strokeWidth={0.3} />
+        <Rect x={1.5} y={4.5} width={1} height={6} fill="#D4F0F8" />
+        {/* fluid label */}
         <Rect x={2} y={7} width={4} height={2} fill="#fff" stroke={C} strokeWidth={0.2} />
+        <Line x1={2.5} y1={7.7} x2={5.5} y2={7.7} stroke={C} strokeWidth={0.2} />
       </Svg>
     </Box>
   );
@@ -537,13 +590,23 @@ export function CompCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={16} h={36}>
       <Svg viewBox="0 0 16 36" width={16 * S} height={36 * S}>
+        {/* monitor top + body */}
+        <Path d="M3 2 L13 2 L14 3 L2 3 Z" fill="#4B5563" stroke={C} strokeWidth={0.4} />
         <Rect x={2} y={3} width={12} height={10} fill="#1F2937" stroke={C} strokeWidth={0.4} />
         <Rect x={3} y={4} width={10} height={8} fill="#0F1A24" />
         <Rect x={4} y={5} width={8} height={1} fill="#22D3EE" />
         <Rect x={4} y={7} width={8} height={1} fill="#10B981" />
+        <Rect x={4} y={9} width={6} height={1} fill="#FACC15" />
+        {/* monitor neck */}
+        <Rect x={7} y={13} width={2} height={3} fill="#374151" />
+        {/* keyboard tray */}
         <Path d="M2 16 L14 16 L15 18 L1 18 Z" fill="#94A3B8" stroke={C} strokeWidth={0.4} />
         <Rect x={1} y={18} width={14} height={2} fill="#6B7280" stroke={C} strokeWidth={0.4} />
+        <Rect x={2.5} y={16.5} width={11} height={1.2} fill="#1F2937" />
+        {/* base column + drawers */}
         <Rect x={6} y={20} width={4} height={10} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        <Rect x={1} y={22} width={3} height={7} fill="#fff" stroke={C} strokeWidth={0.3} />
+        <Rect x={12} y={22} width={3} height={7} fill="#fff" stroke={C} strokeWidth={0.3} />
         <Ellipse cx={3} cy={33} rx={2} ry={1.5} fill={C} />
         <Ellipse cx={13} cy={33} rx={2} ry={1.5} fill={C} />
       </Svg>
@@ -555,11 +618,19 @@ export function BPCuff({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={12} h={14}>
       <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        {/* top face */}
+        <Path d="M1 0 L11 0 L12 1 L0 1 Z" fill="#374151" stroke={C} strokeWidth={0.3} />
+        {/* device body + screen */}
         <Rect x={1} y={1} width={10} height={6} fill="#1F2937" stroke={C} strokeWidth={0.4} />
         <Rect x={2} y={2} width={8} height={4} fill="#0F1A24" stroke={C} strokeWidth={0.3} />
         <Rect x={3} y={3} width={6} height={1} fill="#10B981" />
+        <Rect x={4} y={4.6} width={4} height={0.8} fill="#22D3EE" />
+        {/* cuff hanging */}
         <Path d="M2 7 L10 7 L9 12 L3 12 Z" fill="#1E40AF" stroke={C} strokeWidth={0.4} />
         <Rect x={2.5} y={7} width={7} height={1} fill="#3B82F6" />
+        <Rect x={3.5} y={9} width={5} height={0.6} fill="#1E3A8A" />
+        {/* hose */}
+        <Path d="M10 8 Q11 10 9 12" fill="none" stroke={C} strokeWidth={0.5} />
       </Svg>
     </Box>
   );
@@ -573,7 +644,10 @@ export function SuctionUnit({ x, y }: { x: number; y: number }) {
         <Rect x={1} y={3} width={12} height={10} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
         <Rect x={2} y={4} width={5} height={8} fill="#D4F0F8" stroke={C} strokeWidth={0.3} />
         <Rect x={2} y={9} width={5} height={3} fill="#FCA5A5" />
+        {/* gauge */}
         <Circle cx={10} cy={7} r={2.5} fill="#fff" stroke={C} strokeWidth={0.3} />
+        <Line x1={10} y1={7} x2={11.5} y2={5.5} stroke={C} strokeWidth={0.4} />
+        <Circle cx={10} cy={7} r={0.3} fill={C} />
       </Svg>
     </Box>
   );
@@ -583,15 +657,133 @@ export function Wheelchair({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} w={16} h={26}>
       <Svg viewBox="0 0 16 26" width={16 * S} height={26 * S}>
+        {/* push handles (top) */}
+        <Rect x={3} y={0} width={1} height={3} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        <Rect x={12} y={0} width={1} height={3} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        {/* backrest */}
         <Rect x={3} y={3} width={10} height={8} fill="#374151" stroke={C} strokeWidth={0.4} />
         <Rect x={4} y={4} width={8} height={6} fill="#4B5563" />
+        <Rect x={4} y={4} width={8} height={0.8} fill="#6B7280" />
+        {/* seat TOP + FRONT */}
         <Path d="M2 11 L14 11 L13 13 L3 13 Z" fill="#4B5563" stroke={C} strokeWidth={0.4} />
         <Rect x={3} y={13} width={10} height={2} fill="#1F2937" stroke={C} strokeWidth={0.3} />
+        {/* armrests */}
+        <Rect x={2} y={9} width={2} height={3} fill="#1F2937" stroke={C} strokeWidth={0.3} />
+        <Rect x={12} y={9} width={2} height={3} fill="#1F2937" stroke={C} strokeWidth={0.3} />
+        {/* big wheels */}
         <Circle cx={3} cy={18} r={4} fill="none" stroke={C} strokeWidth={0.6} />
         <Circle cx={13} cy={18} r={4} fill="none" stroke={C} strokeWidth={0.6} />
         <Circle cx={3} cy={18} r={1.5} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
         <Circle cx={13} cy={18} r={1.5} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        {/* spokes */}
+        <Line x1={3} y1={14} x2={3} y2={22} stroke={C} strokeWidth={0.3} />
+        <Line x1={-1} y1={18} x2={7} y2={18} stroke={C} strokeWidth={0.3} />
+        <Line x1={13} y1={14} x2={13} y2={22} stroke={C} strokeWidth={0.3} />
+        <Line x1={9} y1={18} x2={17} y2={18} stroke={C} strokeWidth={0.3} />
+        {/* footrest + casters */}
         <Rect x={5} y={22} width={6} height={2} fill="#94A3B8" stroke={C} strokeWidth={0.3} />
+        <Circle cx={5} cy={25} r={1} fill={C} />
+        <Circle cx={11} cy={25} r={1} fill={C} />
+      </Svg>
+    </Box>
+  );
+}
+
+export function EKG({ x, y }: { x: number; y: number }) {
+  return (
+    <Box x={x} y={y} offY={-2} w={16} h={36}>
+      <Svg viewBox="0 0 16 36" width={16 * S} height={36 * S}>
+        {/* top face + body */}
+        <Path d="M2 2 L14 2 L15 4 L1 4 Z" fill="#94A3B8" stroke={C} strokeWidth={0.4} />
+        <Rect x={1} y={4} width={14} height={14} fill="#E5E7EB" stroke={C} strokeWidth={0.5} />
+        {/* screen + ECG trace */}
+        <Rect x={2} y={5} width={12} height={6} fill="#0F1A24" stroke={C} strokeWidth={0.4} />
+        <Path d="M3 8 L5 8 L6 6 L7 10 L8 7 L9 8 L11 8 L12 6 L13 10" fill="none" stroke="#10B981" strokeWidth={0.5} />
+        {/* knobs */}
+        <Circle cx={3} cy={13} r={1} fill="#EF4444" stroke={C} strokeWidth={0.3} />
+        <Circle cx={6} cy={13} r={1} fill="#3B82F6" stroke={C} strokeWidth={0.3} />
+        <Circle cx={9} cy={13} r={1} fill="#10B981" stroke={C} strokeWidth={0.3} />
+        {/* printer slot */}
+        <Rect x={2} y={15} width={12} height={1.5} fill="#1F2937" />
+        <Rect x={2} y={16.5} width={12} height={1} fill="#fff" />
+        {/* cart + shelves */}
+        <Rect x={2} y={18} width={12} height={11} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        <Rect x={3} y={19} width={10} height={2.5} fill="#fff" stroke={C} strokeWidth={0.3} />
+        <Rect x={3} y={23} width={10} height={2.5} fill="#fff" stroke={C} strokeWidth={0.3} />
+        <Ellipse cx={3} cy={32} rx={2} ry={1.5} fill={C} />
+        <Ellipse cx={13} cy={32} rx={2} ry={1.5} fill={C} />
+      </Svg>
+    </Box>
+  );
+}
+
+export function Sink({ x, y }: { x: number; y: number }) {
+  return (
+    <Box x={x} y={y} w={16} h={14}>
+      <Svg viewBox="0 0 16 14" width={16 * S} height={14 * S}>
+        {/* faucet */}
+        <Rect x={7} y={0} width={2} height={3} fill="#94A3B8" stroke={C} strokeWidth={0.3} />
+        <Rect x={7} y={3} width={4} height={1.5} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        <Rect x={9} y={4.5} width={2} height={1.5} fill="#6B7280" />
+        <Rect x={9.5} y={6} width={1} height={2} fill="#7DD3FC" />
+        {/* knobs */}
+        <Circle cx={5} cy={2} r={0.8} fill="#3B82F6" stroke={C} strokeWidth={0.3} />
+        <Circle cx={11.5} cy={1.5} r={0.8} fill="#EF4444" stroke={C} strokeWidth={0.3} />
+        {/* basin rim TOP + water */}
+        <Ellipse cx={8} cy={7} rx={7} ry={2} fill="#E5E7EB" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={8} cy={6.5} rx={6} ry={1.3} fill="#F3F4F6" />
+        <Ellipse cx={8} cy={7.5} rx={5} ry={1} fill="#A8DCEC" />
+        {/* basin FRONT */}
+        <Path d="M1 7 L15 7 L14 12 L2 12 Z" fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        <Path d="M1 7 L2 7 L2 12 L1 12 Z" fill="#CBD5E1" />
+      </Svg>
+    </Box>
+  );
+}
+
+export function Whiteboard({ x, y, w = 3 }: { x: number; y: number; w?: number }) {
+  const W = w * 16;
+  return (
+    <Box x={x} y={y} w={W} h={12}>
+      <Svg viewBox={`0 0 ${W} 12`} width={W * S} height={12 * S} preserveAspectRatio="none">
+        {/* frame top face */}
+        <Path d={`M1 0.5 L${W - 1} 0.5 L${W - 1.5} 1.5 L1.5 1.5 Z`} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        {/* frame + surface */}
+        <Rect x={1} y={1} width={W - 2} height={10} fill="#E5E7EB" stroke={C} strokeWidth={0.4} />
+        <Rect x={2} y={2} width={W - 4} height={7} fill="#fff" stroke={C} strokeWidth={0.2} />
+        {/* notes */}
+        <Rect x={4} y={3} width={6} height={0.8} fill="#3B82F6" />
+        <Rect x={4} y={4.2} width={10} height={0.5} fill={C} />
+        <Rect x={4} y={5.4} width={8} height={0.5} fill={C} />
+        <Rect x={16} y={3} width={6} height={0.8} fill="#EF4444" />
+        <Rect x={16} y={4.2} width={10} height={0.5} fill={C} />
+        {/* marker tray + markers */}
+        <Rect x={1} y={9} width={W - 2} height={2} fill="#6B7280" stroke={C} strokeWidth={0.3} />
+        <Rect x={3} y={9.4} width={2} height={0.8} fill="#EF4444" />
+        <Rect x={6} y={9.4} width={2} height={0.8} fill="#3B82F6" />
+        <Rect x={9} y={9.4} width={2} height={0.8} fill="#10B981" />
+      </Svg>
+    </Box>
+  );
+}
+
+export function Scale({ x, y }: { x: number; y: number }) {
+  return (
+    <Box x={x} y={y} offX={2} w={12} h={14}>
+      <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        {/* display unit */}
+        <Rect x={3} y={0} width={6} height={4} fill="#1F2937" stroke={C} strokeWidth={0.3} />
+        <Rect x={4} y={0.5} width={4} height={3} fill="#0F1A24" />
+        <Rect x={5} y={1.5} width={2} height={1.2} fill="#10B981" />
+        {/* neck */}
+        <Rect x={5} y={4} width={2} height={2} fill="#4B5563" />
+        {/* platform TOP + FRONT */}
+        <Ellipse cx={6} cy={7} rx={5} ry={1.5} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={6} cy={6.5} rx={4} ry={1} fill="#CBD5E1" />
+        <Path d="M1 7 L11 7 L10 11 L2 11 Z" fill="#6B7280" stroke={C} strokeWidth={0.4} />
+        {/* feet */}
+        <Rect x={2} y={11} width={2} height={2} fill="#1F2937" />
+        <Rect x={8} y={11} width={2} height={2} fill="#1F2937" />
       </Svg>
     </Box>
   );
@@ -856,6 +1048,10 @@ export function ErObjectView({ object }: { object: MapObject }): ReactElement | 
     case 'bpcuff': return <BPCuff x={x} y={y} />;
     case 'suction': return <SuctionUnit x={x} y={y} />;
     case 'wheelchair': return <Wheelchair x={x} y={y} />;
+    case 'ekg': return <EKG x={x} y={y} />;
+    case 'sink': return <Sink x={x} y={y} />;
+    case 'whiteboard': return <Whiteboard x={x} y={y} w={n('w', 3)} />;
+    case 'scale': return <Scale x={x} y={y} />;
     case 'ticket': return <TicketDispenser x={x} y={y} />;
     case 'brochure': return <BrochureRack x={x} y={y} />;
     case 'phone': return <DeskPhone x={x} y={y} />;
