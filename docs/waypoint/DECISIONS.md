@@ -383,3 +383,12 @@
   (5f-iii에서 폴드했던 가구). NPC idle/배회 + 핫스팟 4(시나리오 연결). 캠퍼스/엘리베이터 진입 모두 INT-ER-00001로.
 - 검증: tsc 0·jest 48/48(ER 도달성/threshold/footprint)·expo export·doctor 21/21. ⚠️ 소품 ~15종 + 음압 IGlass 분할 + 제염 외부문은 폴리시 후속.
 - 다음: 5g-b OR(+PACU).
+
+## 2026-06-28 · 5g-a ER 피드백 3건 (컬링·충돌·엘리베이터 spawn)
+- **"가까이 가면 안 보임" = 컬링 버그:** 컬링 창을 플레이어 타일 기준으로 계산해, 맵 가장자리에서 카메라가 클램프되면 실제 가시 영역과
+  어긋나 가장자리 오브젝트가 사라짐. → InteriorScreen이 **클램프된 카메라 tx/ty**(worldStyle와 동일 식)로 가시 윈도를 도출하도록 수정.
+- **"그냥 통과" = 충돌 누락:** 솔리드 ER 장비에 footprint 부여(OBJECT_FOOTPRINT: vitals/ivpump/dressing/medfridge/scanner/chemdrum/
+  ppestand/wastebin) + 소파 props.h:1. (walk-through detector·벽걸이 display·바닥 triageline/tint는 비차단 유지.)
+- **엘리베이터 진입 spawn:** ElevFloor.entry 추가 → 라우트가 `?ex&ey` 전달, 인테리어가 playerStart 오버라이드(메모이즈). 타워 1F→ER (20,11) 도어 앞.
+- **트리아지 바닥선(빨/노/초):** KTAS 중증도 안내선(실제 ER 요소) — 유지(필요시 제거/라벨).
+- 검증: tsc 0·jest 48/48·expo export·doctor 21/21.
