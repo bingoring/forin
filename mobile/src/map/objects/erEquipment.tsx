@@ -29,8 +29,15 @@ export function VitalsCart({ x, y }: { x: number; y: number }) {
         <Rect x={3} y={5} width={4} height={2} fill="#22D3EE" />
         <Rect x={8} y={5} width={3} height={2} fill="#FACC15" />
         <Rect x={3} y={9} width={8} height={1} fill="#10B981" />
+        {/* SpO2 finger probe on a wire (hangs right) */}
+        <Path d="M13 6 q3 3 1 7" fill="none" stroke={C} strokeWidth={0.5} />
+        <Rect x={13} y={13} width={3} height={2.5} fill="#EF4444" stroke={C} strokeWidth={0.3} />
+        {/* pole */}
         <Rect x={6} y={13} width={2} height={9} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        {/* basket with thermometer */}
         <Rect x={2} y={20} width={10} height={4} fill="#CBD5E1" stroke={C} strokeWidth={0.4} />
+        <Rect x={3} y={20.5} width={5} height={1.4} fill="#fff" stroke={C} strokeWidth={0.3} />
+        <Rect x={3.4} y={20.7} width={1} height={1} fill="#EF4444" />
         <Rect x={3} y={24} width={8} height={3} fill="#6B7280" stroke={C} strokeWidth={0.4} />
         <Ellipse cx={4.5} cy={28} rx={2} ry={1.3} fill={C} />
         <Ellipse cx={9.5} cy={28} rx={2} ry={1.3} fill={C} />
@@ -43,17 +50,30 @@ export function IVPump({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-22} w={16} h={46}>
       <Svg viewBox="0 0 16 46" width={16 * S} height={46 * S}>
+        {/* hook */}
         <Rect x={6} y={0} width={5} height={2} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        <Rect x={6} y={0} width={2} height={4} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        {/* IV bag */}
         <Rect x={4} y={4} width={8} height={9} fill="#A8DCEC" stroke={C} strokeWidth={0.5} />
+        <Rect x={5} y={5} width={6} height={1} fill="#D4F0F8" />
         <Rect x={5} y={6.5} width={6} height={4} fill="#7DBFD9" />
+        <Rect x={5} y={11} width={6} height={1.5} fill="#fff" />
+        {/* pole */}
         <Rect x={7} y={13} width={2} height={9} fill="#CBD5E1" stroke={C} strokeWidth={0.4} />
+        {/* pump box */}
         <Rect x={2} y={22} width={12} height={9} fill="#475569" stroke={C} strokeWidth={0.6} />
         <Rect x={3} y={23} width={10} height={4} fill="#0F1A24" />
         <Rect x={4} y={24} width={5} height={1.2} fill="#22D3EE" />
-        <Rect x={3.5} y={28} width={2} height={2} fill="#10B981" />
-        <Rect x={6.5} y={28} width={2} height={2} fill="#EF4444" />
+        <Rect x={4} y={25.6} width={3} height={1} fill="#10B981" />
+        <Rect x={3.5} y={28} width={2} height={2} fill="#10B981" stroke={C} strokeWidth={0.3} />
+        <Rect x={6.5} y={28} width={2} height={2} fill="#EF4444" stroke={C} strokeWidth={0.3} />
+        <Rect x={9.5} y={28} width={2.5} height={2} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        {/* lower pole + spider base */}
         <Rect x={7} y={31} width={2} height={8} fill="#CBD5E1" stroke={C} strokeWidth={0.4} />
         <Ellipse cx={8} cy={40} rx={6} ry={2} fill="#6B7280" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={3} cy={42} rx={1.4} ry={1} fill={C} />
+        <Ellipse cx={13} cy={42} rx={1.4} ry={1} fill={C} />
+        <Ellipse cx={8} cy={43} rx={1.4} ry={1} fill={C} />
       </Svg>
     </Box>
   );
@@ -63,13 +83,26 @@ export function DressingCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={20} h={30}>
       <Svg viewBox="0 0 20 30" width={20 * S} height={30 * S}>
+        {/* top tray (foreshortened) */}
         <Path d="M2 4 L18 4 L19 7 L1 7 Z" fill="#CBD5E1" stroke={C} strokeWidth={0.5} />
+        <Path d="M3 4.5 L17 4.5 L17.5 6 L2.5 6 Z" fill="#E5E7EB" />
+        {/* betadine bottle */}
         <Rect x={3} y={1} width={3} height={4} fill="#92400E" stroke={C} strokeWidth={0.4} />
+        <Rect x={3.7} y={0.3} width={1.6} height={1} fill="#fff" />
+        {/* gauze stack */}
         <Rect x={8} y={2} width={4} height={3} fill="#fff" stroke={C} strokeWidth={0.4} />
+        <Rect x={8.5} y={2.6} width={3} height={0.5} fill="#E5E7EB" />
+        <Rect x={8.5} y={3.6} width={3} height={0.5} fill="#E5E7EB" />
+        {/* sterile glove pouch */}
         <Rect x={13} y={2} width={4} height={3} fill="#A5D8E8" stroke={C} strokeWidth={0.4} />
+        <Rect x={13.4} y={2.4} width={3.2} height={1} fill="#fff" opacity={0.6} />
+        {/* body + lower shelf */}
         <Rect x={2} y={7} width={16} height={3} fill="#94A3B8" stroke={C} strokeWidth={0.5} />
         <Rect x={3} y={11} width={14} height={3} fill="#CBD5E1" stroke={C} strokeWidth={0.4} />
+        {/* suture set: kidney dish + instrument */}
         <Ellipse cx={7} cy={12.5} rx={3} ry={1} fill="#E5E7EB" stroke={C} strokeWidth={0.3} />
+        <Rect x={11} y={11.5} width={4} height={1} fill="#9CA3AF" />
+        {/* legs + wheels */}
         <Rect x={3} y={14} width={2} height={11} fill="#6B7280" />
         <Rect x={15} y={14} width={2} height={11} fill="#6B7280" />
         <Ellipse cx={4} cy={26} rx={2} ry={1.4} fill={C} />
@@ -207,9 +240,11 @@ export function WaitingDisplay({ x, y, w = 2 }: { x: number; y: number; w?: numb
         <Rect x={0} y={0} width={W} height={14} fill="#1F2937" stroke={C} strokeWidth={0.6} />
         <Rect x={1.5} y={1.5} width={W - 3} height={11} fill="#0B2A3A" />
         <Rect x={1.5} y={1.5} width={W - 3} height={3} fill="#DC2626" />
+        <Rect x={3} y={2.3} width={10} height={1.4} fill="#fff" />
         <Rect x={3} y={6} width={7} height={5} fill="#FACC15" />
         <Rect x={W - 13} y={6} width={10} height={1.2} fill="#22D3EE" />
         <Rect x={W - 13} y={8} width={10} height={1.2} fill="#94A3B8" />
+        <Rect x={W - 13} y={10} width={7} height={1.2} fill="#94A3B8" />
       </Svg>
     </Box>
   );
@@ -218,14 +253,31 @@ export function WaitingDisplay({ x, y, w = 2 }: { x: number; y: number; w?: numb
 export function WasteBin({ x, y, tone = 'general' }: { x: number; y: number; tone?: string }) {
   const inf = tone === 'infectious';
   const body = inf ? '#FACC15' : '#CBD5E1';
+  const bodyDk = inf ? '#CA8A04' : '#94A3B8';
   const lid = inf ? '#EAB308' : '#9CA3AF';
   return (
     <Box x={x} y={y} offX={3} w={10} h={18}>
       <Svg viewBox="0 0 10 18" width={10 * S} height={18 * S}>
+        {/* pedal lid top */}
         <Ellipse cx={5} cy={3} rx={4.5} ry={1.6} fill={lid} stroke={C} strokeWidth={0.4} />
         <Rect x={0.5} y={3} width={9} height={2} fill={lid} />
+        {/* body + shaded side */}
         <Path d="M1 5 L9 5 L8.3 15 L1.7 15 Z" fill={body} stroke={C} strokeWidth={0.5} />
-        {inf ? null : <Rect x={3} y={8} width={4} height={3} fill="#fff" stroke={C} strokeWidth={0.3} />}
+        <Path d="M5.5 5 L9 5 L8.3 15 L5 15 Z" fill={bodyDk} opacity={0.4} />
+        {/* biohazard mark (infectious) / paper label (general) */}
+        {inf ? (
+          <>
+            <Circle cx={5} cy={9.5} r={1.6} fill="none" stroke={C} strokeWidth={0.5} />
+            <Circle cx={5} cy={9.5} r={0.6} fill={C} />
+            <Circle cx={5} cy={7.7} r={0.9} fill="none" stroke={C} strokeWidth={0.5} />
+            <Circle cx={3.5} cy={10.4} r={0.9} fill="none" stroke={C} strokeWidth={0.5} />
+            <Circle cx={6.5} cy={10.4} r={0.9} fill="none" stroke={C} strokeWidth={0.5} />
+          </>
+        ) : (
+          <Rect x={3} y={8} width={4} height={3} fill="#fff" stroke={C} strokeWidth={0.3} />
+        )}
+        {/* foot pedal */}
+        <Rect x={1} y={15.5} width={3} height={1.5} fill="#6B7280" stroke={C} strokeWidth={0.3} />
       </Svg>
     </Box>
   );
@@ -235,11 +287,20 @@ export function PPEStand({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-8} w={14} h={34}>
       <Svg viewBox="0 0 14 34" width={14 * S} height={34 * S}>
+        {/* rail top + post */}
         <Rect x={1} y={2} width={12} height={1.5} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        <Rect x={6.5} y={0} width={1} height={3} fill="#6B7280" />
+        {/* hanger + level-D coverall */}
+        <Rect x={6} y={3} width={2} height={1} fill="#374151" />
         <Path d="M3 4 L11 4 L12 8 L9.5 8 L9.5 20 L4.5 20 L4.5 8 L2 8 Z" fill="#FEFCE8" stroke={C} strokeWidth={0.5} />
+        {/* hood + zipper */}
         <Rect x={6} y={4} width={2} height={3} fill="#FEF9C3" stroke={C} strokeWidth={0.3} />
+        <Rect x={6.7} y={7} width={0.6} height={12} fill="#CA8A04" />
+        {/* mask/glove box at base */}
         <Rect x={2} y={22} width={10} height={6} fill="#3B82F6" stroke={C} strokeWidth={0.5} />
         <Rect x={3} y={23} width={8} height={2.5} fill="#fff" />
+        <Rect x={3.5} y={23.5} width={3} height={1.5} fill="#A5D8E8" />
+        {/* legs */}
         <Rect x={3} y={28} width={1.5} height={4} fill="#6B7280" />
         <Rect x={9.5} y={28} width={1.5} height={4} fill="#6B7280" />
       </Svg>
