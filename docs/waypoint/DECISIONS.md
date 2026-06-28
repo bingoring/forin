@@ -417,3 +417,19 @@
 - **근거:** 핸드오프 충실도가 제품 정체성. "안 보이던 오브젝트 다수"는 픽스처가 블루프린트의 일부만 배치한 탓 → 1:1 재구성으로 해소.
 - **검증:** tsc 0 · jest 48/48 · expo export. 커밋 5건(5376b58/da411ba/c59b0a6/+컴포넌트/73c1c30).
 - **결정자:** 사용자(1:1 재포팅 지시·"이대로 진행, 완료 후 보고") + AI(감사·배치 실행).
+
+## 2026-06-28 · 5g-b OR(+PACU) — 전체 블루프린트 1:1 구현 (원칙 확립)
+- **원칙 확립(사용자):** "엔진 데모는 일부 구현이 이해되지만, 이제 진짜 층별 병동을 구현하니 **블루프린트 전부** 구현. 앞으로도."
+  → 5g-* 부서/병동은 핸드오프 블루프린트를 전수 구현(오브젝트·NPC·핫스팟·파티션 전부), 데모 부분구현 금지.
+- **OR 오브젝트 전수 포팅:** `orEquipment.tsx` 신설 — interior-objects-or2 카탈로그 13종(BairHugger/Bovie/KickBucket/
+  TimeoutBoard/RoboticConsole/LapTower/CO2Insufflator/ScrubDispenser/ScrubTimer/ConsentClipboard/SoiledCart/
+  ORBoomMonitor/CArm) + OR-native AnesthesiaMachine/StatusBoard. div 레퍼런스는 SVG 재구성, text 글리프는 도형 대체.
+  공용 SinkOR·NurseDeskI는 sharedEquipment로(타부서 재사용). ICabinet 7변형 타일(supply/drug/linen/chart/sterile/
+  equipment/pharma) 충실화.
+- **OR_INTERIOR 1:1:** interior-or.jsx 전수 — 40×52, 3단 동선존(비제한/준제한/제한·양압), OR 진입은 sterile threshold,
+  9존 전체 오브젝트(보호자/락커/preop/clean/dirty/PACU/OR1/scrub/OR2), ICurtain, NPC ~24, 핫스팟 14(OR 시나리오 5종 연결),
+  playerStart 7,40. 타워 3F 엘리베이터 → INT-OR-00001(entry 18,1).
+- **디스패치:** Er→Or→Shared→Clinic. 신규 솔리드 footprint 추가, 벽/천장/탁상 피스는 walkable.
+- **검증:** tsc 0 · jest 52/52(OR 도달성·threshold·footprint 신규 4) · expo export. 커밋 b6602a0.
+- **다음:** 5g-c ICU.
+- **결정자:** 사용자(전수 구현 지시·"이대로 진행, 완료 후 보고") + AI(포팅·픽스처 실행).
