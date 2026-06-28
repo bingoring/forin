@@ -375,3 +375,11 @@
 - 증상: 캠퍼스 건물 우측 그림자가 건물 전체 높이만큼의 일자 스트립이라 부자연.
 - 수정(광원 좌상단 기준): 그림자 = 우측 **폭 1칸(16px) 고정** + **높이 = 평지붕(top face) 깊이 td** (건물 앞뒤 길이). 바닥 앵커.
   랜드마크별 td 적용(MedCenter 26·H 32·암센터/행정 30·여성소아 sh*0.22·시계탑 22). tsc 0·jest 48/48·expo export.
+
+## 2026-06-28 · 5g-a 빌드 — ER 마스터 블루프린트
+- 40×60 ER_INTERIOR 재작성: 공공 로비(상단 전폭) + 3열×3밴드 룸 그리드(소생/스테이션+Pyxis/진료 // 음압격리/봉합/진료 // 정신격리/임종/제염).
+  내부 경계=`threshold`(음압·제염 sterile tone), 외부만 auto `door`, 특수실 `tint`(정신 파랑/임종 웜/제염 wet). 컬럼당 lobby→band1→2→3 연결.
+- 장비 16종 컴팩트 포팅(`objects/erEquipment.tsx` + ErObjectView, InteriorObjectView default에서 Er→Clinic 순). NurseStationDesk 포함
+  (5f-iii에서 폴드했던 가구). NPC idle/배회 + 핫스팟 4(시나리오 연결). 캠퍼스/엘리베이터 진입 모두 INT-ER-00001로.
+- 검증: tsc 0·jest 48/48(ER 도달성/threshold/footprint)·expo export·doctor 21/21. ⚠️ 소품 ~15종 + 음압 IGlass 분할 + 제염 외부문은 폴리시 후속.
+- 다음: 5g-b OR(+PACU).

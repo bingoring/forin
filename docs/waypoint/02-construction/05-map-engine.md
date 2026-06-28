@@ -199,7 +199,16 @@ forin 품질 3대 축 중 하나(자연스러운 탐험).
 **5g — 부서 인테리어 마스터 블루프린트 (콘텐츠 시리즈, 부서당 1증분)**
 각 증분 = 레이아웃(타일 블루프린트) + 부서 오브젝트 카탈로그 포팅 + NPC/핫스팟. 클리닉 엔진은 그대로 두고, bespoke가
 해당 부서를 대체하면 캠퍼스/엘리베이터의 클리닉 버튼만 새 화면으로 전환.
-- **5g-a ER** 재구성(40×60, 공공로비+3열 그리드: 소생/너스스테이션+Pyxis/진료, 음압격리·봉합·정신격리·임종·제염) — `er2`/`er3` 오브젝트 + `IThreshold` 내부 경계.
+- **5g-a ✅ ER 마스터 블루프린트**(2026-06-28): 40×60 fixture(`fixtures/er.ts` ER_INTERIOR 재작성) — **공공 로비**(상단 전폭:
+  앰뷸런스/정문 auto 도어 + 보안검색 scanner/detector + 원무과 reception + KTAS 트리아지 vitals/triageline + 대기 sofa/display) +
+  **3열×3밴드 룸 그리드**(소생실 / 너스스테이션+Pyxis / 제1진료실 // 음압격리 / 소처치·봉합 / 제2진료실 // 정신격리 / 가족·임종 /
+  제염실). **내부 존 경계 = `threshold`**(음압/제염 입구 sterile tone), **외부만 auto `door`**. 정신/임종/제염에 `tint`(파랑/웜/wet).
+  **장비 16종 컴팩트 포팅**(`objects/erEquipment.tsx`): VitalsCart·IVPump·DressingCart·MedFridge·SecurityScanner·MetalDetector·
+  BoltedBed·DeconShower·Sofa·WaitingDisplay·WasteBin·PPEStand·FloorDrain·ChemDrum·TriageLine·**NurseStationDesk**. NPC(idle 의료진+
+  배회 환자/방문객)·핫스팟 4(시나리오 연결: er-hopkins-pain 등). 캠퍼스 "응급실 입장"·엘리베이터 타워 1F→INT-ER-00001 진입. **jest
+  48/48**(ER: 방 도달성·threshold 통행·footprint 차단). tsc 0·expo export·doctor 21/21. ⚠️ 소품 ~15종(TissueBox·DeskPhone·
+  ChartBinder·FramedPicture·FloorLamp·CoffeeTable·WaterCooler·BrochureRack·TicketDispenser·PressureGauge·Otoscope·AnatomyPoster·
+  BarcodePrinter·WallTV·CCTVCamera) + 음압 전실/본실 IGlass 분할 + 제염 외부문은 **폴리시 후속**(룸 정체성은 핵심 장비로 확보).
 - **5g-b OR+PACU**(40×52, 3-stage 존: 비제한/준제한/제한·양압, sterile threshold) — `or2`.
 - **5g-c ICU**(34×44, 유리벽 1인실 ×4 + 중앙 허브 + 면회/Dirty/Med) — `icu2`.
 - **5g-d Peds+NICU**(34×48, 외래·놀이·계측 → 진료 → 병동 → gowning→NICU) — `peds2`.
