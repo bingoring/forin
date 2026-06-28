@@ -44,6 +44,19 @@ export const OBJECT_FOOTPRINT: Record<string, { w: number; h: number }> = {
   pyxis: { w: 2, h: 2 },
   instrumenttray: { w: 2, h: 1 },
   castcart: { w: 1, h: 2 },
+  // OR-suite floor equipment (interior-objects-or2 + OR-native). Wall/ceiling/
+  // tabletop pieces (timeoutboard/orboommonitor/scrubdispenser/scrubtimer/
+  // consentclipboard/statusboard) are walkable → no footprint.
+  sinkor: { w: 2, h: 2 },
+  anesthesia: { w: 2, h: 2 },
+  bairhugger: { w: 1, h: 2 },
+  bovie: { w: 1, h: 2 },
+  kickbucket: { w: 1, h: 1 },
+  roboticconsole: { w: 2, h: 2 },
+  laptower: { w: 1, h: 2 },
+  co2insufflator: { w: 1, h: 2 },
+  soiledcart: { w: 1, h: 2 },
+  carm: { w: 2, h: 2 },
 };
 
 /** Blocked rectangles contributed by solid objects (doors are walkable → skipped).

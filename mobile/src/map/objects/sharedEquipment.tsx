@@ -569,29 +569,154 @@ export function ICabinet({ x, y, w = 2, h = 1, variant = 'supply' }: { x: number
         <Rect x={0} y={4} width={W} height={H} fill={v.frame} stroke={C} strokeWidth={2} />
         {/* category tag strip (left) */}
         <Rect x={0} y={4} width={3} height={H} fill={v.tag} />
-        {/* per-tile compartments */}
+        {/* per-tile compartments (variant-specific content) */}
         {Array.from({ length: w }).map((_, i) => {
           const cx0 = i * 16 + 3;
-          if (variant === 'drug') {
-            return (
-              <G key={i}>
-                <Rect x={cx0} y={7} width={10} height={H - 6} fill="#1F2937" stroke={C} strokeWidth={0.6} />
-                <Rect x={cx0 + 3} y={9} width={4} height={3} fill={['#F87171', '#FACC15', '#A7F3D0'][i % 3]} />
-                <Rect x={cx0 + 3.5} y={8} width={3} height={1.2} fill="#fff" />
-                <Rect x={cx0 + 4} y={H - 3} width={3} height={3} fill="#FACC15" stroke={C} strokeWidth={0.4} />
-              </G>
-            );
+          switch (variant) {
+            case 'drug':
+              return (
+                <G key={i}>
+                  <Rect x={cx0} y={7} width={10} height={H - 6} fill="#1F2937" stroke={C} strokeWidth={0.6} />
+                  <Rect x={cx0 + 3} y={9} width={4} height={3} fill={['#F87171', '#FACC15', '#A7F3D0'][i % 3]} />
+                  <Rect x={cx0 + 3.5} y={8} width={3} height={1.2} fill="#fff" />
+                  <Rect x={cx0 + 4} y={H - 3} width={3} height={3} fill="#FACC15" stroke={C} strokeWidth={0.4} />
+                </G>
+              );
+            case 'linen':
+              return (
+                <G key={i}>
+                  <Rect x={cx0} y={7} width={10} height={H - 6} fill="#fff" stroke={C} strokeWidth={0.6} />
+                  <Rect x={cx0 + 1} y={8} width={8} height={2} fill="#BAE6FD" />
+                  <Rect x={cx0 + 1} y={10.5} width={8} height={2} fill="#FBCFE8" />
+                  <Rect x={cx0 + 1} y={13} width={8} height={2} fill="#F3F4F6" stroke={C} strokeWidth={0.3} />
+                </G>
+              );
+            case 'chart':
+              return (
+                <G key={i}>
+                  <Rect x={cx0} y={7} width={10} height={H - 6} fill="#1F2937" stroke={C} strokeWidth={0.6} />
+                  {[0, 1, 2, 3].map((k) => (
+                    <Rect key={k} x={cx0 + 1.5 + k * 2} y={8} width={1.5} height={H - 12} fill={['#FCD34D', '#FB923C', '#A7F3D0', '#FBCFE8'][k]} />
+                  ))}
+                  <Rect x={cx0 + 4} y={H - 3} width={4} height={1.5} fill="#FACC15" />
+                </G>
+              );
+            case 'sterile':
+              return (
+                <G key={i}>
+                  <Rect x={cx0} y={7} width={10} height={H - 6} fill="#A5D8E8" stroke={C} strokeWidth={0.6} />
+                  <Rect x={cx0 + 2} y={8} width={6} height={2.5} fill="#fff" stroke={C} strokeWidth={0.3} />
+                  <Rect x={cx0 + 2} y={H - 4} width={6} height={2.5} fill="#fff" stroke={C} strokeWidth={0.3} />
+                  <Line x1={cx0 + 1} y1={12} x2={cx0 + 9} y2={11} stroke="#fff" strokeWidth={0.4} opacity={0.6} />
+                </G>
+              );
+            case 'equipment':
+              return (
+                <G key={i}>
+                  <Rect x={cx0} y={7} width={10} height={H - 6} fill="#1F2937" stroke={C} strokeWidth={0.6} />
+                  <Rect x={cx0 + 1.5} y={8} width={7} height={3} fill="#FACC15" stroke={C} strokeWidth={0.3} />
+                  <Rect x={cx0 + 1.5} y={12} width={7} height={1.5} fill="#9CA3AF" />
+                  <Rect x={cx0 + 1.5} y={H - 3} width={7} height={2} fill="#6B7280" />
+                </G>
+              );
+            case 'pharma':
+              return (
+                <G key={i}>
+                  <Rect x={cx0} y={7} width={10} height={H - 6} fill="#fff" stroke={C} strokeWidth={0.6} />
+                  <Rect x={cx0 + 1} y={8} width={8} height={2} fill="#F87171" />
+                  <Rect x={cx0 + 1} y={10.5} width={8} height={2} fill="#FACC15" />
+                  <Rect x={cx0 + 1} y={13} width={8} height={2} fill="#A7F3D0" />
+                </G>
+              );
+            default: // supply — gauze/bandage/syringe
+              return (
+                <G key={i}>
+                  <Rect x={cx0} y={7} width={10} height={H - 6} fill="#FFF8E7" stroke={C} strokeWidth={0.6} />
+                  <Rect x={cx0 + 4.5} y={8} width={1} height={4} fill="#DC2626" />
+                  <Rect x={cx0 + 3} y={9.5} width={4} height={1} fill="#DC2626" />
+                  <Rect x={cx0 + 1.5} y={13} width={7} height={1.5} fill="#FED7AA" stroke={C} strokeWidth={0.3} />
+                  <Rect x={cx0 + 1} y={H - 3} width={6} height={1.2} fill="#94A3B8" />
+                  <Rect x={cx0 + 6} y={H - 3} width={1} height={1.2} fill="#DC2626" />
+                </G>
+              );
           }
-          // generic supply-style compartment
-          return (
-            <G key={i}>
-              <Rect x={cx0} y={7} width={10} height={H - 6} fill="#FFF8E7" stroke={C} strokeWidth={0.6} />
-              <Rect x={cx0 + 4} y={8} width={1} height={4} fill={v.tag} />
-              <Rect x={cx0 + 3} y={9.5} width={3} height={1} fill={v.tag} />
-              <Rect x={cx0 + 2} y={H - 3} width={6} height={1.5} fill="#FED7AA" />
-            </G>
-          );
         })}
+      </Svg>
+    </Box>
+  );
+}
+
+// ─── SinkOR — OR-style scrub sink, basin + faucet + knee paddle (2×2) ─
+export function SinkOR({ x, y }: { x: number; y: number }) {
+  return (
+    <Box x={x} y={y} offY={-4} w={32} h={32}>
+      <Svg viewBox="0 0 32 32" width={32 * S} height={32 * S}>
+        {/* gooseneck faucet */}
+        <Rect x={15} y={0} width={2} height={6} fill={METAL} stroke={C} strokeWidth={0.4} />
+        <Rect x={15} y={6} width={6} height={2} fill={METAL} stroke={C} strokeWidth={0.4} />
+        <Rect x={19} y={8} width={2} height={3} fill="#6B7280" stroke={C} strokeWidth={0.4} />
+        <Rect x={19.5} y={11} width={1} height={4} fill="#7DD3FC" />
+        {/* knee/elbow paddles */}
+        <Circle cx={12} cy={4} r={1.5} fill="#3B82F6" stroke={C} strokeWidth={0.3} />
+        <Circle cx={24} cy={4} r={1.5} fill="#EF4444" stroke={C} strokeWidth={0.3} />
+        {/* basin rim + water */}
+        <Ellipse cx={16} cy={14} rx={12} ry={4} fill="#E5E7EB" stroke={C} strokeWidth={0.5} />
+        <Ellipse cx={16} cy={13} rx={11} ry={3} fill="#F3F4F6" />
+        <Ellipse cx={16} cy={15} rx={10} ry={2.5} fill="#A8DCEC" />
+        {/* basin front + drain + base */}
+        <Path d="M4 14 L28 14 L26 22 L6 22 Z" fill={METAL} stroke={C} strokeWidth={0.4} />
+        <Path d="M4 14 L6 14 L6 22 L4 22 Z" fill="#CBD5E1" />
+        <Rect x={14} y={22} width={4} height={3} fill="#6B7280" stroke={C} strokeWidth={0.4} />
+        <Rect x={6} y={25} width={20} height={3} fill={METAL} stroke={C} strokeWidth={0.4} />
+        <Rect x={7} y={25.5} width={18} height={1} fill="#CBD5E1" />
+        <Rect x={4} y={28} width={3} height={4} fill={METAL_DK} stroke={C} strokeWidth={0.3} />
+        <Rect x={25} y={28} width={3} height={4} fill={METAL_DK} stroke={C} strokeWidth={0.3} />
+      </Svg>
+    </Box>
+  );
+}
+
+// ─── NurseDeskI — straight I-bar charting station (w×h) ──────────────
+export function NurseDeskI({ x, y, w = 8, h = 2 }: { x: number; y: number; w?: number; h?: number }) {
+  const W = w * 16, HH = h * 16, R = 10, TH = HH + R;
+  const qz = '#ECEAE1', qzEdge = '#D2CDBE', qzHi = '#FAF8F2';
+  const body = '#E4E2D8', bodyDk = '#C6C2B6';
+  const nMon = Math.max(2, w - 3);
+  const monXs: number[] = [];
+  for (let i = 0; i < nMon; i++) monXs.push(10 + (i + 0.5) * ((W - 20) / nMon));
+  return (
+    <Box x={x} y={y} offY={-R} w={W} h={TH}>
+      <Svg viewBox={`0 0 ${W} ${TH}`} width={W * S} height={TH * S} preserveAspectRatio="none">
+        {/* counter body */}
+        <Rect x={2} y={R} width={W - 4} height={HH - 2} fill={body} stroke={C} strokeWidth={0.7} />
+        {/* quartz top + raised back ledge */}
+        <Rect x={2} y={R - 2} width={W - 4} height={12} fill={qz} stroke={C} strokeWidth={0.6} />
+        <Rect x={2} y={R - 4} width={W - 4} height={3} fill={qzEdge} stroke={C} strokeWidth={0.5} />
+        <Rect x={3} y={R - 3.4} width={W - 6} height={1} fill={qzHi} />
+        {/* monitor wall */}
+        {monXs.map((mx, i) => (
+          <G key={i}>
+            <Rect x={mx - 1} y={R + 5} width={2} height={2} fill="#3A4048" />
+            <Rect x={mx - 6} y={R - 6} width={12} height={12} fill="#1B2128" stroke={C} strokeWidth={0.5} />
+            <Rect x={mx - 4.8} y={R - 4.8} width={9.6} height={9} fill="#0F1A24" />
+            <Rect x={mx - 4} y={R - 3.6} width={8} height={1} fill="#2BB3C8" />
+            <Rect x={mx - 4} y={R - 1.8} width={6} height={0.9} fill="#5A6B78" />
+            <Rect x={mx - 4} y={R - 0.2} width={8} height={0.9} fill="#E0A23A" />
+            <Rect x={mx - 5} y={R + 8} width={10} height={2.4} fill="#B7BEC6" stroke={C} strokeWidth={0.4} />
+          </G>
+        ))}
+        {/* drawer pedestals at the ends */}
+        {[3, W - 3 - 14].map((dx, i) => (
+          <G key={`d${i}`}>
+            <Rect x={dx} y={R + HH - 18} width={14} height={14} fill={bodyDk} stroke={C} strokeWidth={0.5} />
+            {[0, 1].map((r) => (
+              <G key={r}>
+                <Rect x={dx + 1.5} y={R + HH - 16 + r * 6} width={11} height={4.6} fill={body} stroke={C} strokeWidth={0.4} />
+                <Rect x={dx + 5} y={R + HH - 14 + r * 6} width={4} height={1} fill="#9AA1A8" />
+              </G>
+            ))}
+          </G>
+        ))}
       </Svg>
     </Box>
   );
@@ -620,6 +745,8 @@ export function SharedObjectView({ object }: { object: MapObject }): ReactElemen
     case 'crashcart': return <CrashCart x={x} y={y} />;
     case 'pyxis': return <PyxisMachine x={x} y={y} />;
     case 'bankofmonitors': return <BankOfMonitors x={x} y={y} />;
+    case 'sinkor': return <SinkOR x={x} y={y} />;
+    case 'nursedeski': return <NurseDeskI x={x} y={y} w={n(props, 'w', 8)} h={n(props, 'h', 2)} />;
     default: return null;
   }
 }
