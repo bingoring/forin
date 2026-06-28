@@ -35,10 +35,12 @@ describe('ER master blueprint', () => {
   });
 
   test('thresholds and tints do not block; solid objects do', () => {
-    // bed footprint (2×3) blocks
-    expect(canEnter({ x: 3, y: 16 }, grid, blocked)).toBe(false);
-    // nurse station footprint blocks
-    expect(canEnter({ x: 18, y: 20 }, grid, blocked)).toBe(false);
+    // resus bed (ibed, 2×3 at x3,y18) footprint blocks
+    expect(canEnter({ x: 3, y: 19 }, grid, blocked)).toBe(false);
+    // pyxis machine (2×2 at x14,y18) footprint blocks
+    expect(canEnter({ x: 14, y: 18 }, grid, blocked)).toBe(false);
+    // the ㄷ nurse-station desk well stays walkable (player stands inside it)
+    expect(canEnter({ x: 19, y: 28 }, grid, blocked)).toBe(true);
     // a tint tile stays walkable (decon room floor)
     expect(canEnter({ x: 33, y: 52 }, grid, blocked)).toBe(true);
   });

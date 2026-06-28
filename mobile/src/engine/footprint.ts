@@ -30,6 +30,20 @@ export const OBJECT_FOOTPRINT: Record<string, { w: number; h: number }> = {
   ekg: { w: 1, h: 2 },
   sink: { w: 1, h: 1 },
   scale: { w: 1, h: 1 },
+  // shared / cross-dept primitives (interior-shared + OR/ICU/clinic catalog).
+  // Ceiling/wall-mounted ones (surgicallight/xrayviewbox/bankofmonitors) and the
+  // privacy drape (icurtain) are walkable → no footprint / skipped in collision.
+  boltedbed: { w: 2, h: 3 },
+  ibed: { w: 2, h: 3 },
+  imonitor: { w: 1, h: 1 },
+  iiv: { w: 1, h: 1 },
+  iplant: { w: 1, h: 1 },
+  examstool: { w: 1, h: 1 },
+  ventilator: { w: 1, h: 2 },
+  crashcart: { w: 1, h: 2 },
+  pyxis: { w: 2, h: 2 },
+  instrumenttray: { w: 2, h: 1 },
+  castcart: { w: 1, h: 2 },
 };
 
 /** Blocked rectangles contributed by solid objects (doors are walkable → skipped).
@@ -38,7 +52,12 @@ export function objectCollision(objects: MapObject[]): Bounds[] {
   const out: Bounds[] = [];
   for (const o of objects) {
     // walkable / non-blocking types (open doorways + floor overlays)
-    if (o.type === 'door' || o.type === 'threshold' || o.type === 'tint') continue;
+    // walkable / non-blocking: doorways, floor overlays, the privacy drape, the
+    // floor triage lines, and the ㄷ-desk (open well → players stand inside it).
+    if (
+      o.type === 'door' || o.type === 'threshold' || o.type === 'tint' ||
+      o.type === 'icurtain' || o.type === 'triageline' || o.type === 'nursestation'
+    ) continue;
     const pw = o.props?.w;
     const ph = o.props?.h;
     if (typeof pw === 'number' && typeof ph === 'number') {
