@@ -19,6 +19,9 @@ export const ER_INTERIOR: Interior = {
   cols: 40,
   rows: 60,
   floorTheme: 'clinical',
+  // dept wards are up to 14 tiles wide; <1 zoom so a whole room fits the viewport
+  // (at 1.0 a 14-wide room is clipped → objects look "missing").
+  scale: 0.85,
   playerStart: { x: 19, y: 28 },
   regions: [
     { id: 'lobby', name: '공공 로비 · 접수 · 트리아지', icon: '🚑', bounds: { x: 0, y: 0, w: 40, h: 17 } },

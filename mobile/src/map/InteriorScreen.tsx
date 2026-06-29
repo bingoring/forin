@@ -35,14 +35,15 @@ function seatSprite(x: number, y: number) {
 // ? (info) glyph + hard shadow, gently bobbing up/down (the handoff "forinBob").
 const HS_COLORS: Record<string, string> = { quest: '#FEF08A', urgent: '#EF4444', info: '#FFFFFF', police: '#1F2937' };
 const HS_SIZE = 24;
-function HotspotMarker({ h }: { h: Hotspot }) {
+type MarkerT = Hotspot & { dy?: number };
+function HotspotMarker({ h }: { h: MarkerT }) {
   const bob = useSharedValue(0);
   useEffect(() => {
     bob.value = withRepeat(withTiming(1, { duration: 700, easing: Easing.inOut(Easing.quad) }), -1, true);
   }, [bob]);
   const style = useAnimatedStyle(() => ({ transform: [{ translateY: -3 * bob.value }] }));
   const left = (h.x + 0.5) * TILE - HS_SIZE / 2;
-  const top = h.y * TILE - HS_SIZE - 2;
+  const top = h.y * TILE + (h.dy ?? -(HS_SIZE + 2));
   const bg = HS_COLORS[h.kind] ?? HS_COLORS.quest;
   const glyph = h.kind === 'info' ? '?' : '!';
   const fg = h.kind === 'police' ? '#FFFFFF' : colors.ink;
@@ -162,14 +163,16 @@ export function InteriorScreen({
   // Markers (!/?) belong to ENTITIES, not free map tiles: the authored hotspots
   // (e.g. elevators) plus any object/NPC carrying a `marker` prop. This keeps
   // markers anchored to a bed/desk/person instead of floating on empty floor.
-  const allMarkers = useMemo<Hotspot[]>(() => {
-    const out: Hotspot[] = [...interior.hotspots];
+  const allMarkers = useMemo<MarkerT[]>(() => {
+    const out: MarkerT[] = interior.hotspots.map((h) => ({ ...h, dy: -(HS_SIZE + 4) }));
     for (const o of interior.objects) {
       const m = o.props?.marker;
-      if (typeof m === 'string') out.push({ id: `m-${o.id}`, kind: m, x: o.x, y: o.y, label: o.props?.markerLabel as string | undefined, scenarioId: o.props?.scenarioId as string | undefined });
+      // floats above the object's art (beds/desks rise ~2 tiles) — clear of it
+      if (typeof m === 'string') out.push({ id: `m-${o.id}`, kind: m, x: o.x, y: o.y, label: o.props?.markerLabel as string | undefined, scenarioId: o.props?.scenarioId as string | undefined, dy: -(HS_SIZE + 30) });
     }
     for (const s of interior.npcs ?? []) {
-      if (typeof s.marker === 'string' && s.start) out.push({ id: `m-${s.id}`, kind: s.marker, x: s.start.x, y: s.start.y, label: s.markerLabel, scenarioId: s.scenarioId });
+      // chibi heads rise ~1.75 tiles above the foot tile → float well above them
+      if (typeof s.marker === 'string' && s.start) out.push({ id: `m-${s.id}`, kind: s.marker, x: s.start.x, y: s.start.y, label: s.markerLabel, scenarioId: s.scenarioId, dy: -(HS_SIZE + 62) });
     }
     return out;
   }, [interior.hotspots, interior.objects, interior.npcs]);
