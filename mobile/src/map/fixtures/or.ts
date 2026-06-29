@@ -98,7 +98,7 @@ export const OR_INTERIOR: Interior = {
 
     // ════════════ 탈의실 · 락커룸 (locker) ════════════
     { id: 'bl-lk', type: 'baylabel', x: 20, y: 1, props: { text: '탈의실 · LOCKER' } },
-    { id: 'o-lk-c1', type: 'icabinet', x: 21, y: 3, props: { w: 3, h: 1, variant: 'linen' } },
+    { id: 'o-lk-c1', type: 'icabinet', x: 21, y: 3, props: { w: 3, h: 1, variant: 'linen', label: 'GOWN' } },
     { id: 'o-lk-c2', type: 'icabinet', x: 25, y: 3, props: { w: 3, h: 1, variant: 'linen' } },
     { id: 'o-lk-c3', type: 'icabinet', x: 29, y: 3, props: { w: 3, h: 1, variant: 'linen' } },
     { id: 'o-lk-c4', type: 'icabinet', x: 33, y: 3, props: { w: 3, h: 1, variant: 'linen' } },
@@ -128,7 +128,7 @@ export const OR_INTERIOR: Interior = {
 
     // ════════════ CLEAN UTILITY (clean) ════════════
     { id: 'bl-clean', type: 'baylabel', x: 14, y: 15, props: { text: 'CLEAN UTILITY' } },
-    { id: 'o-cl-c1', type: 'icabinet', x: 14, y: 17, props: { w: 5, h: 1, variant: 'sterile' } },
+    { id: 'o-cl-c1', type: 'icabinet', x: 14, y: 17, props: { w: 5, h: 1, variant: 'sterile', label: 'STERILE' } },
     { id: 'o-cl-c2', type: 'icabinet', x: 14, y: 19, props: { w: 5, h: 1, variant: 'sterile' } },
     { id: 'o-cl-c3', type: 'icabinet', x: 14, y: 20, props: { w: 5, h: 1, variant: 'supply' } },
 
@@ -168,7 +168,7 @@ export const OR_INTERIOR: Interior = {
     { id: 'o-or1-bovie', type: 'bovie', x: 12, y: 38 },
     { id: 'o-or1-iv', type: 'iiv', x: 4, y: 41 },
     { id: 'o-or1-kick', type: 'kickbucket', x: 8, y: 41 },
-    { id: 'o-or1-cab1', type: 'icabinet', x: 1, y: 34, props: { w: 3, h: 1, variant: 'sterile' } },
+    { id: 'o-or1-cab1', type: 'icabinet', x: 1, y: 34, props: { w: 3, h: 1, variant: 'sterile', label: 'STERILE' } },
     { id: 'o-or1-cab2', type: 'icabinet', x: 1, y: 45, props: { w: 3, h: 1, variant: 'equipment' } },
     { id: 'o-or1-comp', type: 'compcart', x: 12, y: 42 },
     { id: 'o-or1-timeout', type: 'timeoutboard', x: 1, y: 48, props: { w: 3 } },
@@ -192,7 +192,7 @@ export const OR_INTERIOR: Interior = {
     { id: 'o-or2-co2', type: 'co2insufflator', x: 26, y: 41 },
     { id: 'o-or2-robot', type: 'roboticconsole', x: 33, y: 42 },
     { id: 'o-or2-comp', type: 'compcart', x: 37, y: 44 },
-    { id: 'o-or2-cab1', type: 'icabinet', x: 24, y: 34, props: { w: 3, h: 1, variant: 'sterile' } },
+    { id: 'o-or2-cab1', type: 'icabinet', x: 24, y: 34, props: { w: 3, h: 1, variant: 'sterile', label: 'STERILE' } },
     { id: 'o-or2-cab2', type: 'icabinet', x: 36, y: 34, props: { w: 3, h: 1, variant: 'drug' } },
     { id: 'o-or2-status', type: 'statusboard', x: 24, y: 49, props: { w: 6 } },
   ],

@@ -8,7 +8,7 @@
 // are reconstructed with SVG rects (1:1 element geometry). Used via SharedObjectView
 // with `i*`-prefixed types so the existing clinic bed/monitor/reception stay intact.
 import type { ReactElement } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import type { MapObject } from '@engine';
@@ -531,10 +531,13 @@ export function BankOfMonitors({ x, y }: { x: number; y: number }) {
           return (
             <G key={i}>
               <Rect x={px} y={2} width={panelW - 1} height={H - 4} fill="#0F1A24" stroke={C} strokeWidth={0.6} />
+              {/* channel label tag (R1..R4) */}
+              <Rect x={px + 2} y={3.5} width={5} height={2} fill="#94A3B8" />
               <Rect x={px + 2} y={9} width={panelW - 5} height={1} fill="#22D3EE" />
               <Rect x={px + 2} y={14} width={panelW - 5} height={1} fill="#F87171" />
               <Rect x={px + 2} y={20} width={panelW - 5} height={1} fill="#FACC15" />
-              {i % 2 === 0 ? <Circle cx={px + panelW - 4} cy={4} r={1.4} fill="#EF4444" /> : null}
+              {/* red alarm dot on panels 2 & 4 (odd 0-indexed) */}
+              {i % 2 === 1 ? <Circle cx={px + panelW - 4} cy={4} r={1.4} fill="#EF4444" /> : null}
             </G>
           );
         })}
@@ -544,16 +547,16 @@ export function BankOfMonitors({ x, y }: { x: number; y: number }) {
 }
 
 // ─── ICabinet — 2.5D wall cabinet (w×1), content variants ───────────
-const CABINET_VARIANTS: Record<string, { frame: string; top: string; tag: string }> = {
-  supply: { frame: '#D6CFB8', top: '#A89378', tag: '#DC2626' },
-  drug: { frame: '#94A3B8', top: '#6B7280', tag: '#FACC15' },
-  linen: { frame: '#E8DCC0', top: '#C8B68C', tag: '#3B82F6' },
-  chart: { frame: '#7C5A38', top: '#5C3A1A', tag: '#A88862' },
-  sterile: { frame: '#4F76A4', top: '#385878', tag: '#A5D8E8' },
-  equipment: { frame: '#475569', top: '#1F2937', tag: '#EF4444' },
-  pharma: { frame: '#D6CFB8', top: '#A89378', tag: '#16A34A' },
+const CABINET_VARIANTS: Record<string, { frame: string; top: string; topLight: string; tag: string; tagText: string }> = {
+  supply: { frame: '#D6CFB8', top: '#A89378', topLight: '#E8DCC0', tag: '#DC2626', tagText: '#fff' },
+  drug: { frame: '#94A3B8', top: '#6B7280', topLight: '#ffffff', tag: '#FACC15', tagText: '#1F2937' },
+  linen: { frame: '#E8DCC0', top: '#C8B68C', topLight: '#F2EAD6', tag: '#3B82F6', tagText: '#fff' },
+  chart: { frame: '#7C5A38', top: '#5C3A1A', topLight: '#8A6A44', tag: '#A88862', tagText: '#fff' },
+  sterile: { frame: '#4F76A4', top: '#385878', topLight: '#5A86B4', tag: '#A5D8E8', tagText: '#1F2937' },
+  equipment: { frame: '#475569', top: '#1F2937', topLight: '#3A4655', tag: '#EF4444', tagText: '#fff' },
+  pharma: { frame: '#D6CFB8', top: '#A89378', topLight: '#E8DCC0', tag: '#16A34A', tagText: '#fff' },
 };
-export function ICabinet({ x, y, w = 2, h = 1, variant = 'supply' }: { x: number; y: number; w?: number; h?: number; variant?: string }) {
+export function ICabinet({ x, y, w = 2, h = 1, variant = 'supply', label }: { x: number; y: number; w?: number; h?: number; variant?: string; label?: string }) {
   const v = CABINET_VARIANTS[variant] ?? CABINET_VARIANTS.supply;
   const W = w * 16;
   const H = h * 16;
@@ -562,7 +565,7 @@ export function ICabinet({ x, y, w = 2, h = 1, variant = 'supply' }: { x: number
       <Svg viewBox={`0 0 ${W + 4} ${H + 6}`} width={(W + 4) * S} height={(H + 6) * S}>
         {/* TOP face (above the body) */}
         <Rect x={3} y={0} width={W - 1} height={5} fill={v.top} stroke={C} strokeWidth={2} />
-        <Rect x={4} y={1} width={W - 3} height={1.5} fill="#ffffff" opacity={0.4} />
+        <Rect x={4} y={1} width={W - 3} height={1.5} fill={v.topLight} opacity={0.5} />
         {/* RIGHT side face */}
         <Rect x={W} y={4} width={4} height={H} fill={v.top} stroke={C} strokeWidth={1.5} />
         {/* FRONT body */}
@@ -641,7 +644,17 @@ export function ICabinet({ x, y, w = 2, h = 1, variant = 'supply' }: { x: number
               );
           }
         })}
+        {/* base shadow line (grounds the box) */}
+        <Rect x={0} y={H + 4} width={W + 4} height={1.5} fill={C} opacity={0.4} />
       </Svg>
+      {/* category label tag (above the cabinet) */}
+      {label ? (
+        <View style={{ position: 'absolute', left: 2 * S, top: -2 * S }}>
+          <View style={{ backgroundColor: v.tag, borderWidth: 1, borderColor: C, paddingHorizontal: 3 }}>
+            <Text style={{ fontFamily: 'DungGeunMo', fontSize: 7, color: v.tagText }}>{label}</Text>
+          </View>
+        </View>
+      ) : null}
     </Box>
   );
 }
@@ -736,7 +749,7 @@ export function SharedObjectView({ object }: { object: MapObject }): ReactElemen
     case 'ichair': return <IChair x={x} y={y} color={props?.color as string | undefined} facing={props?.facing as string | undefined} />;
     case 'iplant': return <IPlant x={x} y={y} />;
     case 'examstool': return <ExamStool x={x} y={y} color={props?.color as string | undefined} />;
-    case 'icabinet': return <ICabinet x={x} y={y} w={n(props, 'w', 2)} h={n(props, 'h', 1)} variant={props?.variant as string | undefined} />;
+    case 'icabinet': return <ICabinet x={x} y={y} w={n(props, 'w', 2)} h={n(props, 'h', 1)} variant={props?.variant as string | undefined} label={props?.label as string | undefined} />;
     case 'surgicallight': return <SurgicalLight x={x} y={y} />;
     case 'instrumenttray': return <InstrumentTray x={x} y={y} />;
     case 'xrayviewbox': return <XrayViewbox x={x} y={y} />;

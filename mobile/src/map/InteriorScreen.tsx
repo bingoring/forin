@@ -3,7 +3,7 @@
 // HUD. Movement/walkability come from useMovement + the pure collision module.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, Text, View, type LayoutChangeEvent, type GestureResponderEvent } from 'react-native';
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import { TILE, coordToPx, type Coord } from '@engine';
@@ -29,6 +29,44 @@ const SPRITE_H = (SPRITE_W * 80) / 64;
 /** Top-left px to seat a sprite's feet on the center-bottom of tile (x,y). */
 function seatSprite(x: number, y: number) {
   return { left: (x + 0.5) * TILE - SPRITE_W / 2, top: (y + 1) * TILE - SPRITE_H };
+}
+
+// Quest/info marker — faithful IHotspot: a pixel box with a ! (quest/urgent) or
+// ? (info) glyph + hard shadow, gently bobbing up/down (the handoff "forinBob").
+const HS_COLORS: Record<string, string> = { quest: '#FEF08A', urgent: '#EF4444', info: '#FFFFFF', police: '#1F2937' };
+const HS_SIZE = 24;
+function HotspotMarker({ h }: { h: Hotspot }) {
+  const bob = useSharedValue(0);
+  useEffect(() => {
+    bob.value = withRepeat(withTiming(1, { duration: 700, easing: Easing.inOut(Easing.quad) }), -1, true);
+  }, [bob]);
+  const style = useAnimatedStyle(() => ({ transform: [{ translateY: -3 * bob.value }] }));
+  const left = (h.x + 0.5) * TILE - HS_SIZE / 2;
+  const top = h.y * TILE - HS_SIZE - 2;
+  const bg = HS_COLORS[h.kind] ?? HS_COLORS.quest;
+  const glyph = h.kind === 'info' ? '?' : '!';
+  const fg = h.kind === 'police' ? '#FFFFFF' : colors.ink;
+  return (
+    <Animated.View pointerEvents="none" style={[{ position: 'absolute', left, top, zIndex: 9000 }, style]}>
+      <View
+        style={{
+          width: HS_SIZE,
+          height: HS_SIZE,
+          backgroundColor: bg,
+          borderWidth: 2.5,
+          borderColor: colors.ink,
+          alignItems: 'center',
+          justifyContent: 'center',
+          shadowColor: colors.ink,
+          shadowOffset: { width: 2.5, height: 2.5 },
+          shadowOpacity: 1,
+          shadowRadius: 0,
+        }}
+      >
+        <Text style={{ fontFamily: fonts.heading, fontSize: 15, lineHeight: 18, color: fg }}>{glyph}</Text>
+      </View>
+    </Animated.View>
+  );
 }
 
 // 2.5D depth: everything composites by its base (feet / footprint-bottom) tile y
@@ -235,31 +273,9 @@ export function InteriorScreen({
               </View>
             ))}
 
-            {visHotspots.map((h) => {
-              const { left, top } = coordToPx(h);
-              return (
-                <View
-                  key={h.id}
-                  pointerEvents="none"
-                  style={{
-                    position: 'absolute',
-                    left: left + TILE / 2 - 9,
-                    top: top - 6,
-                    width: 18,
-                    height: 18,
-                    borderRadius: 9,
-                    backgroundColor: colors.yellowDeep,
-                    borderColor: colors.ink,
-                    borderWidth: 2,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 9000, // markers float above the world (below the room mask)
-                  }}
-                >
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.ink }}>!</Text>
-                </View>
-              );
-            })}
+            {visHotspots.map((h) => (
+              <HotspotMarker key={h.id} h={h} />
+            ))}
 
             {/* Ambient NPCs (derived from authored objects) */}
             {visNpcs.map((n) => {

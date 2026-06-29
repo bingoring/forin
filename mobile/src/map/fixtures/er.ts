@@ -68,6 +68,9 @@ export const ER_INTERIOR: Interior = {
     { x: 26, y: 17, w: 1, h: 4 }, { x: 26, y: 24, w: 1, h: 9 },
     { x: 26, y: 34, w: 1, h: 4 }, { x: 26, y: 41, w: 1, h: 8 },
     { x: 26, y: 50, w: 1, h: 3 }, { x: 26, y: 56, w: 1, h: 3 },
+    // ── ㄷ nurse-station desk (x14-23,y23-28): back bar + two side arms block;
+    //    the open well (x16-21,y25-28) stays walkable so staff stand inside it ──
+    { x: 14, y: 23, w: 10, h: 2 }, { x: 14, y: 25, w: 2, h: 4 }, { x: 22, y: 25, w: 2, h: 4 },
   ],
   objects: [
     // ── special-room floor tints (drawn above floor, below objects; non-blocking) ──
@@ -98,8 +101,8 @@ export const ER_INTERIOR: Interior = {
 
     // ════════════ LOBBY ════════════
     { id: 'tl-r', type: 'triageline', x: 6, y: 13, props: { w: 1, h: 3, color: '#EF4444' } },
-    // yellow lane centered under the main entrance (door spans x18-21 → center x20)
-    { id: 'tl-y', type: 'triageline', x: 19, y: 13, props: { w: 2, h: 3, color: '#FACC15' } },
+    // yellow lane centered on the lobby→station threshold opening (x17-20 → center x19)
+    { id: 'tl-y', type: 'triageline', x: 18, y: 13, props: { w: 2, h: 3, color: '#FACC15' } },
     { id: 'tl-g', type: 'triageline', x: 32, y: 13, props: { w: 1, h: 3, color: '#16A34A' } },
     // ambulance intake
     { id: 'bl-amb', type: 'baylabel', x: 2, y: 1, props: { text: '🚑 AMBULANCE INTAKE', highlight: true } },
@@ -175,7 +178,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'bl-pyxis', type: 'baylabel', x: 14, y: 17, props: { text: '약품실 · PYXIS' } },
     { id: 'o-pyxis', type: 'pyxis', x: 14, y: 18 },
     { id: 'o-px-fridge', type: 'medfridge', x: 17, y: 18 },
-    { id: 'o-px-cab', type: 'icabinet', x: 14, y: 21, props: { w: 2, h: 1, variant: 'drug' } },
+    { id: 'o-px-cab', type: 'icabinet', x: 14, y: 21, props: { w: 2, h: 1, variant: 'drug', label: '마약 보관' } },
     { id: 'o-px-sharps', type: 'sharps', x: 18, y: 21 },
     { id: 'o-px-glass', type: 'glass', x: 19, y: 18, props: { w: 1, h: 4 } },
     // central nurse station

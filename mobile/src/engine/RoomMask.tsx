@@ -4,7 +4,9 @@
 import { View } from 'react-native';
 import { TILE, type Bounds } from './coords';
 
-const DIM = 'rgba(22,17,14,0.5)';
+// Light dim only — the current room is highlighted, but adjacent rooms stay
+// clearly readable (a heavy mask made the big blueprint wards look "empty").
+const DIM = 'rgba(22,17,14,0.28)';
 
 export function RoomMask({
   bounds,

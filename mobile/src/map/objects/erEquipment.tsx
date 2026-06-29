@@ -395,8 +395,8 @@ export function TriageLine({ x, y, w = 1, h = 1, color = '#EF4444' }: { x: numbe
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: x * TILE, top: y * TILE, width: w * TILE, height: h * TILE }}>
       <View style={horiz
-        ? { position: 'absolute', left: 4, right: 4, top: '50%', height: 4, marginTop: -2, backgroundColor: color }
-        : { position: 'absolute', top: 4, bottom: 4, left: '50%', width: 4, marginLeft: -2, backgroundColor: color }} />
+        ? { position: 'absolute', left: 4, right: 4, top: '50%', height: 8, marginTop: -4, backgroundColor: color }
+        : { position: 'absolute', top: 4, bottom: 4, left: '50%', width: 8, marginLeft: -4, backgroundColor: color }} />
     </View>
   );
 }
@@ -904,12 +904,19 @@ export function WaterCooler({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={3} offY={-8} w={10} h={26}>
       <Svg viewBox="0 0 10 26" width={10 * S} height={26 * S}>
+        {/* inverted water bottle + level + cap */}
         <Path d="M3 0 L7 0 L8 5 L2 5 Z" fill="#A8DCEC" stroke={C} strokeWidth={0.4} />
+        <Rect x={4} y={1} width={2} height={3} fill="#7DBFD9" />
         <Rect x={4} y={4.5} width={2} height={1.5} fill="#3B82F6" />
+        {/* body (funnel top + sides + right shadow) */}
+        <Path d="M1 6 L9 6 L9.5 7 L0.5 7 Z" fill="#E5E7EB" stroke={C} strokeWidth={0.4} />
         <Rect x={1} y={7} width={8} height={15} fill="#F3F4F6" stroke={C} strokeWidth={0.5} />
+        <Rect x={8} y={7} width={1} height={15} fill="#D1D5DB" />
+        {/* hot/cold taps + drip tray + cup */}
         <Rect x={3} y={11} width={1.5} height={2} fill="#EF4444" />
         <Rect x={5.5} y={11} width={1.5} height={2} fill="#3B82F6" />
         <Rect x={3} y={14} width={4} height={1.5} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        <Path d="M3.5 16 L6.5 16 L6 18.5 L4 18.5 Z" fill="#fff" stroke={C} strokeWidth={0.3} />
       </Svg>
     </Box>
   );
@@ -966,7 +973,15 @@ export function AnatomyPoster({ x, y }: { x: number; y: number }) {
         <Rect x={1} y={1} width={12} height={20} fill="#FDEBE0" />
         <Circle cx={7} cy={4.5} r={2} fill="#F4B89A" stroke={C} strokeWidth={0.3} />
         <Rect x={5} y={6.5} width={4} height={7} fill="#F4B89A" stroke={C} strokeWidth={0.3} />
+        {/* ribcage lines */}
+        <Rect x={5.5} y={7.5} width={3} height={0.5} fill="#C4705A" />
+        <Rect x={5.5} y={8.8} width={3} height={0.5} fill="#C4705A" />
+        <Rect x={5.5} y={10.1} width={3} height={0.5} fill="#C4705A" />
         <Rect x={6} y={8} width={1.2} height={1.2} fill="#DC2626" />
+        {/* arms */}
+        <Rect x={3} y={7} width={1.5} height={5} fill="#F4B89A" stroke={C} strokeWidth={0.3} />
+        <Rect x={9.5} y={7} width={1.5} height={5} fill="#F4B89A" stroke={C} strokeWidth={0.3} />
+        {/* legs */}
         <Rect x={5.2} y={13.5} width={1.5} height={6} fill="#F4B89A" stroke={C} strokeWidth={0.3} />
         <Rect x={7.3} y={13.5} width={1.5} height={6} fill="#F4B89A" stroke={C} strokeWidth={0.3} />
         <Rect x={1} y={20} width={12} height={1} fill="#3B82F6" />
@@ -996,8 +1011,16 @@ export function WallTV({ x, y, w = 2 }: { x: number; y: number; w?: number }) {
       <Svg viewBox={`0 0 ${W} 14`} width={W * S} height={14 * S} preserveAspectRatio="none">
         <Rect x={0} y={0} width={W} height={14} fill="#111827" stroke={C} strokeWidth={0.6} />
         <Rect x={1.5} y={1.5} width={W - 3} height={11} fill="#1E3A5F" />
+        {/* news scene + anchor */}
         <Rect x={2.5} y={2.5} width={W - 5} height={5} fill="#3B6CA8" />
+        <Rect x={3.5} y={3.5} width={4} height={3} fill="#FDE1C8" />
+        <Rect x={4} y={3.3} width={3} height={1} fill="#4B2E18" />
+        {/* lower-third banner */}
         <Rect x={2.5} y={8.5} width={W - 5} height={2} fill="#DC2626" />
+        <Rect x={3.2} y={9} width={w * 8} height={1} fill="#fff" />
+        {/* ticker */}
+        <Rect x={2.5} y={10.8} width={W - 5} height={1.4} fill="#0B2A3A" />
+        <Rect x={3.2} y={11.2} width={w * 10} height={0.7} fill="#FACC15" />
       </Svg>
     </Box>
   );

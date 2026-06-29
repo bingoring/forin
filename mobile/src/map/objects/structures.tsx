@@ -14,8 +14,18 @@ export function IThreshold({ x, y, w = 1, h = 1, tone, label }: { x: number; y: 
   const vertical = h > w;
   const fill = tone === 'sterile' ? '#16384A' : '#1A1712';
   const sill = tone === 'sterile' ? '#3E7C9A' : '#5C5648';
+  // grating stripes (every half-tile across the long axis) so the dark opening
+  // reads as a threshold passage rather than a flat black rect.
+  const stripeCount = Math.max(1, Math.round(((vertical ? h : w) * TILE) / (TILE / 2)));
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: x * TILE, top: y * TILE, width: w * TILE, height: h * TILE, backgroundColor: fill }}>
+      {Array.from({ length: stripeCount }).map((_, i) =>
+        vertical ? (
+          <View key={`s${i}`} style={{ position: 'absolute', left: 0, right: 0, top: i * (TILE / 2), height: 1, backgroundColor: '#000', opacity: 0.6 }} />
+        ) : (
+          <View key={`s${i}`} style={{ position: 'absolute', top: 0, bottom: 0, left: i * (TILE / 2), width: 1, backgroundColor: '#000', opacity: 0.6 }} />
+        ),
+      )}
       {/* jamb shadows on the two wall sides */}
       {vertical ? (
         <>
