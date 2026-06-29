@@ -98,7 +98,8 @@ export const ER_INTERIOR: Interior = {
 
     // ════════════ LOBBY ════════════
     { id: 'tl-r', type: 'triageline', x: 6, y: 13, props: { w: 1, h: 3, color: '#EF4444' } },
-    { id: 'tl-y', type: 'triageline', x: 19, y: 13, props: { w: 1, h: 3, color: '#FACC15' } },
+    // yellow lane centered under the main entrance (door spans x18-21 → center x20)
+    { id: 'tl-y', type: 'triageline', x: 19, y: 13, props: { w: 2, h: 3, color: '#FACC15' } },
     { id: 'tl-g', type: 'triageline', x: 32, y: 13, props: { w: 1, h: 3, color: '#16A34A' } },
     // ambulance intake
     { id: 'bl-amb', type: 'baylabel', x: 2, y: 1, props: { text: '🚑 AMBULANCE INTAKE', highlight: true } },
@@ -126,16 +127,21 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-tri-san', type: 'sanitizer', x: 1, y: 9 },
     { id: 'o-tri-wc1', type: 'wheelchair', x: 6, y: 10 },
     { id: 'o-tri-wc2', type: 'wheelchair', x: 7, y: 11 },
-    // waiting
+    // small triage waiting nook bridging triage ↔ central waiting (lobby polish)
+    { id: 'o-tri-w1', type: 'ichair', x: 9, y: 11, props: { color: '#FED7AA', facing: 'up' } },
+    { id: 'o-tri-w2', type: 'ichair', x: 11, y: 11, props: { color: '#FBCFE8', facing: 'up' } },
+    { id: 'o-tri-plant', type: 'iplant', x: 12, y: 8 },
+    { id: 'o-amb-plant', type: 'iplant', x: 10, y: 4 },
+    // waiting — two back-to-back rows (row A faces the entrance, row B the rooms)
     { id: 'bl-wait', type: 'baylabel', x: 14, y: 7, props: { text: 'WAITING · 대기' } },
     { id: 'o-wait-disp', type: 'waitingdisplay', x: 14, y: 8, props: { w: 3 } },
     { id: 'o-wait-tv', type: 'walltv', x: 22, y: 8, props: { w: 2 } },
     { id: 'o-wait-wcool', type: 'watercooler', x: 25, y: 9 },
-    { id: 'o-wait-ch-a0', type: 'ichair', x: 15, y: 11, props: { color: '#FED7AA', facing: 'up' } },
-    { id: 'o-wait-ch-a1', type: 'ichair', x: 17, y: 11, props: { color: '#FBCFE8', facing: 'up' } },
-    { id: 'o-wait-ch-a2', type: 'ichair', x: 19, y: 11, props: { color: '#FED7AA', facing: 'up' } },
-    { id: 'o-wait-ch-a3', type: 'ichair', x: 21, y: 11, props: { color: '#FBCFE8', facing: 'up' } },
-    { id: 'o-wait-ch-a4', type: 'ichair', x: 23, y: 11, props: { color: '#FED7AA', facing: 'up' } },
+    { id: 'o-wait-ch-a0', type: 'ichair', x: 15, y: 10, props: { color: '#FED7AA', facing: 'down' } },
+    { id: 'o-wait-ch-a1', type: 'ichair', x: 17, y: 10, props: { color: '#FBCFE8', facing: 'down' } },
+    { id: 'o-wait-ch-a2', type: 'ichair', x: 19, y: 10, props: { color: '#FED7AA', facing: 'down' } },
+    { id: 'o-wait-ch-a3', type: 'ichair', x: 21, y: 10, props: { color: '#FBCFE8', facing: 'down' } },
+    { id: 'o-wait-ch-a4', type: 'ichair', x: 23, y: 10, props: { color: '#FED7AA', facing: 'down' } },
     { id: 'o-wait-ch-b0', type: 'ichair', x: 15, y: 13, props: { color: '#FBCFE8', facing: 'up' } },
     { id: 'o-wait-ch-b1', type: 'ichair', x: 17, y: 13, props: { color: '#FED7AA', facing: 'up' } },
     { id: 'o-wait-ch-b2', type: 'ichair', x: 19, y: 13, props: { color: '#FBCFE8', facing: 'up' } },

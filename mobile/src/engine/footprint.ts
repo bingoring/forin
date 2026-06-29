@@ -65,11 +65,13 @@ export function objectCollision(objects: MapObject[]): Bounds[] {
   const out: Bounds[] = [];
   for (const o of objects) {
     // walkable / non-blocking types (open doorways + floor overlays)
-    // walkable / non-blocking: doorways, floor overlays, the privacy drape, the
-    // floor triage lines, and the ㄷ-desk (open well → players stand inside it).
+    // walkable / non-blocking: doorways, floor overlays, the floor triage lines,
+    // and the ㄷ-desk (open well → players stand inside it). The privacy curtain
+    // (icurtain) IS a solid divider — it blocks via its props.w/h rect, with the
+    // bay layout leaving an opening at its open end.
     if (
       o.type === 'door' || o.type === 'threshold' || o.type === 'tint' ||
-      o.type === 'icurtain' || o.type === 'triageline' || o.type === 'nursestation'
+      o.type === 'triageline' || o.type === 'nursestation'
     ) continue;
     const pw = o.props?.w;
     const ph = o.props?.h;
