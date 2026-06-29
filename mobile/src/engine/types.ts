@@ -21,6 +21,12 @@ export interface NpcSpec {
   mood?: 'happy' | 'derp';
   tickMs?: number;
   emoteChance?: number;
+  // optional quest/info marker floating above this NPC ('quest'|'urgent'|'info');
+  // makes the NPC an interaction target. Markers belong to entities, not free
+  // map tiles — see InteriorScreen marker unification.
+  marker?: string;
+  markerLabel?: string;
+  scenarioId?: string;
 }
 
 export interface Room {

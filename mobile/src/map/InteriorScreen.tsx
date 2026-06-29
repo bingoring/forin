@@ -159,7 +159,21 @@ export function InteriorScreen({
       return boxInView(o.x, o.y - rise, w, h + rise, view);
     });
   }, [view, interior.objects]);
-  const visHotspots = useMemo(() => (view ? interior.hotspots.filter((h) => boxInView(h.x, h.y, 1, 1, view)) : interior.hotspots), [view, interior.hotspots]);
+  // Markers (!/?) belong to ENTITIES, not free map tiles: the authored hotspots
+  // (e.g. elevators) plus any object/NPC carrying a `marker` prop. This keeps
+  // markers anchored to a bed/desk/person instead of floating on empty floor.
+  const allMarkers = useMemo<Hotspot[]>(() => {
+    const out: Hotspot[] = [...interior.hotspots];
+    for (const o of interior.objects) {
+      const m = o.props?.marker;
+      if (typeof m === 'string') out.push({ id: `m-${o.id}`, kind: m, x: o.x, y: o.y, label: o.props?.markerLabel as string | undefined, scenarioId: o.props?.scenarioId as string | undefined });
+    }
+    for (const s of interior.npcs ?? []) {
+      if (typeof s.marker === 'string' && s.start) out.push({ id: `m-${s.id}`, kind: s.marker, x: s.start.x, y: s.start.y, label: s.markerLabel, scenarioId: s.scenarioId });
+    }
+    return out;
+  }, [interior.hotspots, interior.objects, interior.npcs]);
+  const visHotspots = useMemo(() => (view ? allMarkers.filter((h) => boxInView(h.x, h.y - 2, 1, 3, view)) : allMarkers), [view, allMarkers]);
   const visNpcs = useMemo(() => (view ? npcs.filter((n) => boxInView(n.x, n.y - 2, 2, 4, view)) : npcs), [view, npcs]);
   const visAmbient = useMemo(() => {
     const list = interior.npcs ?? [];
@@ -189,10 +203,11 @@ export function InteriorScreen({
     prevRegion.current = id;
   }, [region]);
 
-  // Action target: a hotspot the player stands on or is adjacent to.
+  // Action target: a marker (hotspot / object / NPC) the player stands on or is
+  // adjacent to.
   const actionable = useMemo(
-    () => interior.hotspots.find((h) => manhattan(pos, { x: h.x, y: h.y }) <= 1) ?? null,
-    [pos, interior.hotspots],
+    () => allMarkers.find((h) => manhattan(pos, { x: h.x, y: h.y }) <= 1) ?? null,
+    [pos, allMarkers],
   );
 
   // Glide the player pixel position toward the current tile; the camera derives

@@ -106,7 +106,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'tl-g', type: 'triageline', x: 32, y: 13, props: { w: 1, h: 3, color: '#16A34A' } },
     // ambulance intake
     { id: 'bl-amb', type: 'baylabel', x: 2, y: 1, props: { text: '🚑 AMBULANCE INTAKE', highlight: true } },
-    { id: 'o-amb-gur', type: 'gurney', x: 4, y: 3, props: { occupied: true } },
+    { id: 'o-amb-gur', type: 'gurney', x: 4, y: 3, props: { occupied: true, marker: 'urgent', markerLabel: '핸드오프 SBAR' } },
     { id: 'o-amb-iv', type: 'ivpump', x: 7, y: 3 },
     { id: 'o-amb-ox', type: 'oxygen', x: 3, y: 3 },
     // security
@@ -115,7 +115,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-sec-scan', type: 'scanner', x: 21, y: 3 },
     // registration · 원무과
     { id: 'bl-reg', type: 'baylabel', x: 28, y: 1, props: { text: '원무과 REGISTER' } },
-    { id: 'o-reg-recep', type: 'ireception', x: 29, y: 4, props: { w: 4, h: 1 } },
+    { id: 'o-reg-recep', type: 'ireception', x: 29, y: 4, props: { w: 4, h: 1, marker: 'quest', markerLabel: '접수 등록' } },
     { id: 'o-reg-comp', type: 'compcart', x: 34, y: 3 },
     { id: 'o-reg-bc', type: 'barcodeprinter', x: 35, y: 6 },
     { id: 'o-reg-ticket', type: 'ticket', x: 37, y: 6 },
@@ -124,7 +124,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-reg-san', type: 'sanitizer', x: 37, y: 2 },
     // triage · KTAS
     { id: 'bl-tri', type: 'baylabel', x: 1, y: 6, props: { text: 'TRIAGE · KTAS', highlight: true } },
-    { id: 'o-tri-recep', type: 'ireception', x: 2, y: 8, props: { w: 3, h: 1 } },
+    { id: 'o-tri-recep', type: 'ireception', x: 2, y: 8, props: { w: 3, h: 1, marker: 'quest', markerLabel: 'KTAS 분류', scenarioId: 'er-hopkins-pain' } },
     { id: 'o-tri-vit', type: 'vitals', x: 6, y: 7 },
     { id: 'o-tri-bp', type: 'bpcuff', x: 1, y: 7 },
     { id: 'o-tri-san', type: 'sanitizer', x: 1, y: 9 },
@@ -156,7 +156,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'bl-resus', type: 'baylabel', x: 1, y: 17, props: { text: 'RESUS · 소생실', highlight: true } },
     // trauma bay 1
     { id: 'o-r1-light', type: 'surgicallight', x: 4, y: 17 },
-    { id: 'o-r1-bed', type: 'ibed', x: 3, y: 18, props: { variant: 'or', occupied: true } },
+    { id: 'o-r1-bed', type: 'ibed', x: 3, y: 18, props: { variant: 'or', occupied: true, marker: 'urgent', markerLabel: 'CODE', scenarioId: 'er-anaphylaxis' } },
     { id: 'o-r1-mon', type: 'imonitor', x: 1, y: 18, props: { beep: true } },
     { id: 'o-r1-vent', type: 'ventilator', x: 6, y: 18 },
     { id: 'o-r1-crash', type: 'crashcart', x: 8, y: 18 },
@@ -200,7 +200,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-e1-comp', type: 'compcart', x: 27, y: 19 },
     { id: 'o-e1-mon', type: 'imonitor', x: 31, y: 19 },
     { id: 'o-e1-stool', type: 'examstool', x: 30, y: 22 },
-    { id: 'o-e1-bed', type: 'ibed', x: 34, y: 20, props: { variant: 'ward', occupied: true } },
+    { id: 'o-e1-bed', type: 'ibed', x: 34, y: 20, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: '복통 문진', scenarioId: 'er-chest-pain' } },
     { id: 'o-e1-chair', type: 'ichair', x: 32, y: 24, props: { color: '#A8C7DC', facing: 'up' } },
     { id: 'o-e1-plant', type: 'iplant', x: 37, y: 30 },
 
@@ -216,7 +216,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-iso-glass2', type: 'glass', x: 7, y: 38, props: { w: 5, h: 1 } },
     // inner isolation room
     { id: 'bl-iso', type: 'baylabel', x: 1, y: 39, props: { text: '음압 격리실' } },
-    { id: 'o-iso-bed', type: 'ibed', x: 3, y: 41, props: { variant: 'ward', occupied: true } },
+    { id: 'o-iso-bed', type: 'ibed', x: 3, y: 41, props: { variant: 'ward', occupied: true, marker: 'info', markerLabel: '감염 관리' } },
     { id: 'o-iso-mon', type: 'imonitor', x: 1, y: 41, props: { beep: true } },
     { id: 'o-iso-iv', type: 'iiv', x: 6, y: 41 },
     { id: 'o-iso-dr', type: 'dressing', x: 8, y: 42 },
@@ -226,7 +226,7 @@ export const ER_INTERIOR: Interior = {
     // ════════════ SUTURE · 소처치·봉합 ════════════
     { id: 'bl-suture', type: 'baylabel', x: 14, y: 34, props: { text: '소처치 · 봉합실' } },
     { id: 'o-su-light', type: 'surgicallight', x: 18, y: 34 },
-    { id: 'o-su-bed', type: 'ibed', x: 17, y: 37, props: { variant: 'or', occupied: true } },
+    { id: 'o-su-bed', type: 'ibed', x: 17, y: 37, props: { variant: 'or', occupied: true, marker: 'quest', markerLabel: '봉합 처치' } },
     { id: 'o-su-dr', type: 'dressing', x: 14, y: 38 },
     { id: 'o-su-tray', type: 'instrumenttray', x: 21, y: 37 },
     { id: 'o-su-suction', type: 'suction', x: 23, y: 35 },
@@ -239,13 +239,13 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-e2-recep', type: 'ireception', x: 28, y: 37, props: { w: 3, h: 1 } },
     { id: 'o-e2-comp', type: 'compcart', x: 27, y: 36 },
     { id: 'o-e2-cast', type: 'castcart', x: 28, y: 40 },
-    { id: 'o-e2-bed', type: 'ibed', x: 34, y: 37, props: { variant: 'ward', occupied: true } },
+    { id: 'o-e2-bed', type: 'ibed', x: 34, y: 37, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: '부목 고정' } },
     { id: 'o-e2-stool', type: 'examstool', x: 32, y: 41 },
     { id: 'o-e2-plant', type: 'iplant', x: 37, y: 46 },
 
     // ════════════ PSYCH · 정신과 안전 격리실 ════════════
     { id: 'bl-psych', type: 'baylabel', x: 1, y: 50, props: { text: '정신과 안전 격리실' } },
-    { id: 'o-ps-bed', type: 'boltedbed', x: 4, y: 51, props: { occupied: true } },
+    { id: 'o-ps-bed', type: 'boltedbed', x: 4, y: 51, props: { occupied: true, marker: 'info', markerLabel: '1:1 관찰 (Sitter)' } },
     { id: 'o-ps-cctv', type: 'cctv', x: 10, y: 50 },
     { id: 'o-ps-chair', type: 'ichair', x: 2, y: 55, props: { color: '#94A3B8', facing: 'down' } },
 
@@ -268,20 +268,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-dec-chem1', type: 'chemdrum', x: 37, y: 51, props: { tone: 'chem' } },
     { id: 'o-dec-chem2', type: 'chemdrum', x: 37, y: 54, props: { tone: 'waste' } },
   ],
-  hotspots: [
-    { id: 'hs-amb', kind: 'urgent', x: 5, y: 5, label: '핸드오프 SBAR' },
-    { id: 'hs-reg', kind: 'quest', x: 31, y: 5, label: '접수 등록' },
-    { id: 'hs-triage', kind: 'quest', x: 4, y: 9, label: 'KTAS 분류', scenarioId: 'er-hopkins-pain' },
-    { id: 'hs-code', kind: 'urgent', x: 4, y: 18, label: 'CODE', scenarioId: 'er-anaphylaxis' },
-    { id: 'hs-patel', kind: 'urgent', x: 19, y: 25, label: 'Dr. Patel', scenarioId: 'er-mental-health' },
-    { id: 'hs-exam1', kind: 'quest', x: 34, y: 20, label: '복통 문진', scenarioId: 'er-chest-pain' },
-    { id: 'hs-iso', kind: 'info', x: 3, y: 41, label: '감염 관리' },
-    { id: 'hs-suture', kind: 'quest', x: 17, y: 36, label: '봉합 처치' },
-    { id: 'hs-exam2', kind: 'quest', x: 34, y: 37, label: '부목 고정' },
-    { id: 'hs-psych', kind: 'info', x: 5, y: 52, label: '1:1 관찰 (Sitter)' },
-    { id: 'hs-quiet', kind: 'info', x: 17, y: 53, label: '가족 상담' },
-    { id: 'hs-decon', kind: 'info', x: 31, y: 52, label: '제염 처치' },
-  ],
+  hotspots: [],
   npcs: [
     // lobby
     { id: 'er-amb-p1', kind: 'paramedic', mode: 'idle', seed: 41, start: { x: 3, y: 7 } },
@@ -308,7 +295,7 @@ export const ER_INTERIOR: Interior = {
     // nurse station + pyxis
     { id: 'er-px-n', kind: 'nurse', mode: 'idle', seed: 61, start: { x: 16, y: 20 } },
     { id: 'er-ns-n1', kind: 'nurse', mode: 'idle', seed: 62, start: { x: 16, y: 27 } },
-    { id: 'er-ns-d1', kind: 'doctor', mode: 'idle', seed: 63, start: { x: 18, y: 27 } },
+    { id: 'er-ns-d1', kind: 'doctor', mode: 'idle', seed: 63, start: { x: 18, y: 27 }, marker: 'urgent', markerLabel: 'Dr. Patel', scenarioId: 'er-mental-health' },
     { id: 'er-ns-n2', kind: 'nurse', mode: 'idle', seed: 64, start: { x: 20, y: 27 } },
     { id: 'er-ns-d2', kind: 'doctor', mode: 'idle', seed: 65, start: { x: 22, y: 27 } },
     // exam1
@@ -326,11 +313,11 @@ export const ER_INTERIOR: Interior = {
     { id: 'er-ps-pat', kind: 'patient', mode: 'idle', seed: 73, start: { x: 5, y: 55 } },
     { id: 'er-ps-vis', kind: 'visitor', mode: 'idle', seed: 74, start: { x: 2, y: 56 } },
     // quiet
-    { id: 'er-q-doc', kind: 'doctor', mode: 'idle', seed: 75, start: { x: 16, y: 54 } },
+    { id: 'er-q-doc', kind: 'doctor', mode: 'idle', seed: 75, start: { x: 16, y: 54 }, marker: 'info', markerLabel: '가족 상담' },
     { id: 'er-q-vis', kind: 'visitor', mode: 'idle', seed: 76, start: { x: 22, y: 56 } },
     { id: 'er-q-par', kind: 'parent', mode: 'idle', seed: 77, start: { x: 23, y: 56 } },
     // decon
-    { id: 'er-dec-p', kind: 'paramedic', mode: 'idle', seed: 78, start: { x: 31, y: 56 } },
+    { id: 'er-dec-p', kind: 'paramedic', mode: 'idle', seed: 78, start: { x: 31, y: 56 }, marker: 'info', markerLabel: '제염 처치' },
   ],
 };
 
