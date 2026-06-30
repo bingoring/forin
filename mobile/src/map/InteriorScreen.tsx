@@ -151,15 +151,11 @@ export function InteriorScreen({
       y1: (-ty + vp.h) / (TILE * scale) + m,
     };
   }, [pos.x, pos.y, vp.w, vp.h, scale, worldW, worldH]);
-  const visObjects = useMemo(() => {
-    if (!view) return interior.objects;
-    return interior.objects.filter((o) => {
-      const w = typeof o.props?.w === 'number' ? o.props.w : 2;
-      const h = typeof o.props?.h === 'number' ? o.props.h : 2;
-      const rise = o.type === 'landmark' ? 16 : 5;
-      return boxInView(o.x, o.y - rise, w, h + rise, view);
-    });
-  }, [view, interior.objects]);
+  // Objects are few (~100/floor) and structural pieces (thresholds/walls/doors)
+  // sit at ROOM EDGES — i.e. the viewport boundary — where view-culling was
+  // dropping them ("missing 가림막"). The floor renders every tile anyway, so the
+  // object cull saved little; render them all for correctness.
+  const visObjects = interior.objects;
   // Markers (!/?) belong to ENTITIES, not free map tiles: the authored hotspots
   // (e.g. elevators) plus any object/NPC carrying a `marker` prop. This keeps
   // markers anchored to a bed/desk/person instead of floating on empty floor.
