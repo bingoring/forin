@@ -75,10 +75,12 @@ function HotspotMarker({ h }: { h: MarkerT }) {
 // to the south is drawn in front. Larger base-y = nearer the camera = higher z.
 const zFor = (baseY: number) => Math.round(baseY * 10) + 10;
 const objBaseY = (o: MapObject) => o.y + (typeof o.props?.h === 'number' ? (o.props.h as number) : OBJECT_FOOTPRINT[o.type]?.h ?? 1);
-// Ceiling / wall-mounted backdrops hang behind the patients + equipment under
-// them, so they render at a fixed low z (above floor/tints, below all objects
-// and sprites) — otherwise a wide opaque surgical-light dome can hide its bed.
-const CEILING = new Set(['surgicallight', 'orboommonitor', 'bankofmonitors']);
+// OVERHEAD fixtures hang from the ceiling ABOVE everything (surgical light shining
+// down) → fixed high z, above objects + sprites but below markers/room-mask.
+const OVERHEAD = new Set(['surgicallight']);
+// Wall/ceiling backdrops sit BEHIND the equipment in front of them → low z.
+const CEILING = new Set(['orboommonitor', 'bankofmonitors']);
+const OVERHEAD_Z = 8000;
 
 // Player glides between tiles (06_CHARACTER_MOTION §2: ~0.3-0.55s tween) rather
 // than jumping; the camera follows the gliding position. Sub-tile offsets to
@@ -282,7 +284,7 @@ export function InteriorScreen({
             <Walls collision={interior.collision} />
 
             {visObjects.filter((o) => o.type !== 'tint').map((o: MapObject) => (
-              <View key={o.id} pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, zIndex: CEILING.has(o.type) ? 5 : zFor(objBaseY(o)) }}>
+              <View key={o.id} pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, zIndex: OVERHEAD.has(o.type) ? OVERHEAD_Z : CEILING.has(o.type) ? 5 : zFor(objBaseY(o)) }}>
                 <InteriorObjectView object={o} />
               </View>
             ))}

@@ -375,11 +375,11 @@ export function SurgicalLight({ x, y }: { x: number; y: number }) {
   for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2; bulbs.push([cx + Math.cos(a) * (rx - 5), cyUnder + Math.sin(a) * (ry - 3)]); }
   for (let i = 0; i < 4; i++) { const a = (i / 4) * Math.PI * 2 + 0.4; bulbs.push([cx + Math.cos(a) * (rx - 14), cyUnder + Math.sin(a) * (ry - 8)]); }
   return (
-    <Box x={x} y={y} offX={-16} offY={-12} w={64} h={48}>
-      <Svg viewBox="0 0 64 48" width={64 * S} height={48 * S}>
+    <Box x={x} y={y} offX={-6.4} offY={-4.8} w={44.8} h={33.6}>
+      <Svg viewBox="0 0 64 48" width={44.8 * S} height={33.6 * S}>
         {/* downward light beam (cone) + floor glow */}
-        <Path d="M14 30 L50 30 L58 46 L6 46 Z" fill="#FEF3C7" opacity={0.28} />
-        <Ellipse cx={cx} cy={45} rx={24} ry={3.5} fill="#FEF08A" opacity={0.3} />
+        <Path d="M14 30 L50 30 L58 46 L6 46 Z" fill="#FEF3C7" opacity={0.34} />
+        <Ellipse cx={cx} cy={45} rx={24} ry={3.5} fill="#FEF08A" opacity={0.4} />
         {/* suspension arm + ceiling mount */}
         <Rect x={30} y={0} width={4} height={3.5} rx={1} fill="#374151" stroke={C} strokeWidth={0.5} />
         <Rect x={31} y={3} width={2} height={7} fill={METAL} stroke={C} strokeWidth={0.4} />
