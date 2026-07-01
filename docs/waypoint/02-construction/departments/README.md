@@ -11,24 +11,26 @@ updated: 2026-07-01
 "handoff를 확실히 따른다"가 최우선 — 임의 단순화·창작 금지. (2-5 §5g의 상세 하위 문서)
 
 > 이 폴더는 waypoint **구현 스펙(Build Spec)** 메커니즘(`FRAMEWORK.md` "구현 스펙" · `_templates/build-spec/`)의
-> **콘텐츠-시리즈 압축형** 실사례다. Build Spec의 네 아티팩트를 부서당 1문서에 맵 도메인 섹션으로 접어 넣은 형태.
+> 실사례다. **부서마다 디렉토리**를 만들고 네 아티팩트(+인덱스)를 **각각 별도 파일**로 둔다(템플릿을 맵 도메인으로 인스턴스화).
 
-> **프로세스:** 부서 하나당 ① 이 폴더에 스펙 문서(레이아웃·오브젝트·NPC·마커를 핸드오프 라인 단위로 명시)를 먼저 쓰고 →
-> ② **스펙대로** 구현 → ③ 검증(§검증 프로토콜) → ④ 스펙 문서에 "구현 결과/편차" 기록. ER 문서가 상세도의 기준선.
+> **프로세스:** 부서 하나당 ① 이 폴더에 `<dept>/` 디렉토리를 만들고 **Build Spec 4 아티팩트 파일**(+ 인덱스)을
+> 핸드오프에서 유도해 먼저 쓰고 → ② **스펙대로** 구현 → ③ 검증(§검증 프로토콜) → ④ 인덱스에 "구현 결과/편차" 기록.
+> **`er/`가 상세도의 기준 인스턴스.**
 
 ## 인덱스
+> 각 부서 = 디렉토리(`<dept>/build-spec-index.md` + `domain-entities.md`·`business-rules.md`·`business-logic-model.md`·`frontend-components.md`).
 
-| 부서 | 문서 | 상태 | interior id | 핸드오프 소스 |
+| 부서 | 스펙 | 상태 | interior id | 핸드오프 소스 |
 |---|---|---|---|---|
-| ER 응급의료센터 | [er.md](er.md) | ✅ 구현 (**참고 기준**) | `INT-ER-00001` | `interior-er.jsx` + `interior-objects-er{,2,3}.jsx` |
-| OR 수술실+PACU | [or.md](or.md) | ✅ 구현 | `INT-OR-00001` | `interior-or.jsx` + `interior-objects-or2.jsx` |
-| ICU 중환자실 | [icu.md](icu.md) | ✅ 구현 | `INT-ICU-00001` | `interior-icu.jsx` + `interior-objects-icu2.jsx` |
-| Peds+NICU 소아 | peds.md | ⬜ 예정 (다음) | `INT-PEDS-00001` | `interior-peds.jsx` + `interior-objects-peds2.jsx` |
-| Pharmacy 약국 | pharma.md | ⬜ 예정 | `INT-PHARMA-00001` | `interior-pharma.jsx` + `interior-objects-pharma2.jsx` |
-| 내과 병동 | ward.md | ⬜ 예정 | `INT-WARD-00001` | `interior-ward.jsx` + `interior-objects-ward2.jsx` |
-| 외과 병동 | surgward.md | ⬜ 예정 | `INT-SURGWARD-00001` | `interior-surgward.jsx` + `interior-objects-surg2.jsx` |
-| 정형 병동 | orthoward.md | ⬜ 예정 | `INT-ORTHOWARD-00001` | `interior-orthoward.jsx` + `interior-objects-ortho2.jsx` |
-| 피부과 센터 | dermcenter.md | ⬜ 예정 | `INT-DERM-00001` | `interior-dermcenter.jsx` + `interior-objects-derm2.jsx` |
+| ER 응급의료센터 | [er/](er/build-spec-index.md) | ✅ 구현 (**참고 기준**) | `INT-ER-00001` | `interior-er.jsx` + `interior-objects-er{,2,3}.jsx` |
+| OR 수술실+PACU | [or/](or/build-spec-index.md) | ✅ 구현 | `INT-OR-00001` | `interior-or.jsx` + `interior-objects-or2.jsx` |
+| ICU 중환자실 | [icu/](icu/build-spec-index.md) | ✅ 구현 | `INT-ICU-00001` | `interior-icu.jsx` + `interior-objects-icu2.jsx` |
+| Peds+NICU 소아 | peds/ | ⬜ 예정 (다음) | `INT-PEDS-00001` | `interior-peds.jsx` + `interior-objects-peds2.jsx` |
+| Pharmacy 약국 | pharma/ | ⬜ 예정 | `INT-PHARMA-00001` | `interior-pharma.jsx` + `interior-objects-pharma2.jsx` |
+| 내과 병동 | ward/ | ⬜ 예정 | `INT-WARD-00001` | `interior-ward.jsx` + `interior-objects-ward2.jsx` |
+| 외과 병동 | surgward/ | ⬜ 예정 | `INT-SURGWARD-00001` | `interior-surgward.jsx` + `interior-objects-surg2.jsx` |
+| 정형 병동 | orthoward/ | ⬜ 예정 | `INT-ORTHOWARD-00001` | `interior-orthoward.jsx` + `interior-objects-ortho2.jsx` |
+| 피부과 센터 | dermcenter/ | ⬜ 예정 | `INT-DERM-00001` | `interior-dermcenter.jsx` + `interior-objects-derm2.jsx` |
 
 핸드오프 경로: `../../inputs/design-handoff_v10/reference/`.
 
@@ -88,16 +90,15 @@ updated: 2026-07-01
 
 ---
 
-## 부서 문서 템플릿 (각 `<dept>.md` — Build Spec 4 아티팩트 압축형)
-> 부서 맵은 콘텐츠 시리즈라 네 아티팩트를 **한 문서에 A/B/C/D 섹션**으로 접는다(`FRAMEWORK.md` "구현 스펙" 위치=압축).
-> `er.md`가 기준 인스턴스.
+## 부서 디렉토리 구조 (`<dept>/` — Build Spec 4 아티팩트 + 인덱스)
+> 부서마다 아래 5파일. 각 아티팩트 템플릿은 `_templates/build-spec/`. `er/`가 기준 인스턴스.
 ```
----frontmatter: build-spec/stage/status/depth: compressed/updated---
-# Build Spec — 5g-<x> · <부서명>   (메타 표: id·fixture·SoT·그리드·scale·playerStart)
-## 개요 & 범위 (Index)      — 존 다이어그램(SoT 주석 그대로)·구획 원칙·깊이
-## A. Domain & Entities      — regions[]·rooms[] · 오브젝트 배치(SoT 컴포넌트→type→좌표/props) · NPC 캐스트
-## B. Business Rules         — collision(벽·gap) · threshold/door/glass/tint 통행 규칙 · footprint(솔리드 차단)
-## C. Business Logic Model   — 엘리베이터/진입(entry) · 이동/카메라(공통 참조) · 시나리오 배선(마커→scenarioId 표)
-## D. Frontend Components    — <dept>Equipment.tsx 카탈로그 · 공용 프리미티브 · 렌더 z-order(OVERHEAD/CEILING/마커)
-## 검증 & 편차 (Index)       — tsc/jest/expo/시뮬 요약 · SoT 대비 의도적 편차
+<dept>/
+├── build-spec-index.md      — 메타 표(id·fixture·SoT·그리드·scale·playerStart) · 개요/존 다이어그램 ·
+│                              아티팩트 매니페스트 · 분해 · 미해결질문 · 체크리스트 · 검증 · 편차
+├── domain-entities.md       — regions[]·rooms[] · 오브젝트 배치(SoT 컴포넌트→type→좌표/props) · NPC 캐스트 · allowed-set
+├── business-rules.md        — collision(벽·gap) · threshold/door/glass/tint 통행 규칙 · footprint(솔리드 차단) · 엣지케이스
+├── business-logic-model.md  — 엘리베이터/진입(entry) · 이동/카메라(공통 참조) · 시나리오 배선(마커→scenarioId 표)
+└── frontend-components.md   — <dept>Equipment.tsx 카탈로그 · 공용 프리미티브 · 렌더 z-order(OVERHEAD/CEILING/마커)
 ```
+> 맵 도메인 매핑: 공통 규칙/파이프라인은 `er/`를 참조하고 부서 고유만 각 파일에 상세.
