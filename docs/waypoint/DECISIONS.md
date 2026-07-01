@@ -433,3 +433,13 @@
 - **검증:** tsc 0 · jest 52/52(OR 도달성·threshold·footprint 신규 4) · expo export. 커밋 b6602a0.
 - **다음:** 5g-c ICU.
 - **결정자:** 사용자(전수 구현 지시·"이대로 진행, 완료 후 보고") + AI(포팅·픽스처 실행).
+
+## 2026-07-01 · 디자인 핸드오프 v10 채택 (수술등 재디자인만)
+- `design-handoff_v10/` 카논. v9 전체 복사본(스펙 6 + reference 63) + **SurgicalLight 재디자인만** 델타.
+  전 문서 링크 v9→v10 재지정(prd·STATUS·01·02 스테이지 8개; DECISIONS는 이력 보존).
+- **SurgicalLight v10(interior-or.jsx):** 2.5D 사선-위 뷰 — **매끈한 상단 하우징(전구 없음)** + 그 아래 **기울어진 발광
+  언더사이드 밴드에 전구**(외곽 8 + 내부 4, cos/sin 배치) + **하향 원뿔형 빔(#FEF3C7) + 바닥 글로우(#FEF08A)**.
+  구버전(평면 돔 + 상단 전구 링)에서 교체.
+- 앱 반영: `sharedEquipment.tsx` SurgicalLight 재작성(viewBox 64×48, offY -12). ER 소생/봉합 + OR1/OR2에서 공용 사용.
+  시뮬레이터(ER 소생실)에서 렌더 확인 — 상단 매끈 돔 + 언더사이드 노란 전구. tsc 0·jest 52/52. 커밋 6e2e324.
+- 결정자: 사용자(v10 제공·조명 수정·reference 동기화) + AI(포팅·검증).
