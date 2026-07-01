@@ -48,7 +48,11 @@ fixtures/or.ts · objects/orEquipment.tsx · sharedEquipment.tsx · ElevatorScre
 - [x] 3단계 존 regions/collision · [x] sterile threshold · [x] 오브젝트 배치 · [x] NPC 23 · [x] 카탈로그 · [x] hotspots 시나리오 · [x] 엘리베이터 · [x] 테스트
 
 ## §5. 검증
-- `tsc` 0 · `jest`(or-fixture: room 도달·sterile threshold 통행·양압존 footprint) · `expo export` OK · 시뮬(3단계 존·파란 통로·수술등 overhead).
+- `tsc` 0 · `jest`(or-fixture: room 도달·sterile threshold 통행·양압존 footprint) · `expo export` OK.
+- **화면 단위 핸드오프 대조 (2026-07-01, 재검증):** 핸드오프 렌더 하네스(README §검증 프로토콜 4-b)로 OR ground truth 렌더 →
+  iOS 시뮬레이터에서 **전 8구역**(family·locker·preop·clean/dirty·PACU·OR1·OR2·scrub) 딥링크 스폰·캡처·대조.
+  **결과: 오브젝트 1:1 포팅·좌표·NPC·마커·바닥 팔레트(sterile #D6E4EC) 모두 핸드오프와 일치.** 편차 없음.
+  - 유일한 의도적 편차: 수술등 70% 크기(사용자 요청 유지, §7).
 
 ## §7. 편차 로그
 | SoT | 실제 | 사유 |

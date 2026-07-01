@@ -45,7 +45,10 @@ fixtures/icu.ts · objects/icuEquipment.tsx · sharedEquipment.tsx · ElevatorSc
 - [x] 유리벽 1인실 ×4 + auto door · [x] 중앙 허브 · [x] 지원 3실 · [x] 오브젝트 배치 · [x] NPC 11 · [x] 카탈로그(9 신규) · [x] 엔티티 마커 5 시나리오 · [x] 엘리베이터 · [x] 테스트
 
 ## §5. 검증
-- `tsc` 0 · `jest`(icu-fixture: 유리벽 차단 x8,8 · auto door 통행 x4,17 · ibed footprint x2,4 · playerStart hub open · 8 room 도달·threshold 통행) · `expo export` OK · 시뮬 확인.
+- `tsc` 0 · `jest`(icu-fixture: 유리벽 차단 x8,8 · auto door 통행 x4,17 · ibed footprint x2,4 · playerStart hub open · 8 room 도달·threshold 통행) · `expo export` OK.
+- **화면 단위 핸드오프 대조 (2026-07-01, 재검증):** 핸드오프 렌더 하네스(README §검증 프로토콜 4-b)로 ICU ground truth 렌더 →
+  iOS 시뮬레이터에서 **전 8구역**(Room1 VENT·Room2 CRRT·Room3 EVD·Room4 TTM·중앙 허브·면회·Dirty·MED) 딥링크 스폰·캡처·대조.
+  **결과: 오브젝트 1:1 포팅(CRRT·IVPumpTower·Ventilator·EVDStand·ICPMonitor·TTMUnit 등)·좌표·NPC·마커·바닥 팔레트(icu #E1E4EC) 모두 핸드오프와 일치.** 편차 없음.
 
 ## §7. 편차 로그
 | SoT | 실제 | 사유 |

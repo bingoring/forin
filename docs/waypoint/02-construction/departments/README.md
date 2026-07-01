@@ -84,8 +84,12 @@ updated: 2026-07-01
 1. `npx tsc --noEmit` = 0.
 2. `npx jest` — 부서 fixture 도달성 테스트(`<dept>-fixture.test.ts`): playerStart open · 전 room 도달 · 전 threshold 통행 · 대표 솔리드/유리 차단.
 3. `npx expo export -p ios` 성공(번들).
-4. **iOS 시뮬레이터 시각 검증**(핵심): Metro(`expo start`, 8081) + `xcrun simctl openurl booted "exp://127.0.0.1:8081/--/interior/<INT-ID>?ex=<t>&ey=<t>"`로 방마다 스폰 → `xcrun simctl io booted screenshot` → 크롭 확인. 전 방·신규 장비·통로가 렌더되는지 눈으로 확인.
-   (web export는 react-native-svg가 깨져 부정확 — 시뮬레이터/네이티브만 신뢰.)
+4. **화면 단위 핸드오프 대조**(핵심):
+   - **4-a 앱 캡처:** Metro(`expo start`, 8081) + `xcrun simctl openurl booted "exp://127.0.0.1:8081/--/interior/<INT-ID>?ex=<t>&ey=<t>"`로 방마다 스폰 → `xcrun simctl io booted screenshot` → 크롭. 전 구역을 커버. (딥링크 반복 시 Expo Go가 홈으로 튕김 → `openurl exp://127.0.0.1:8081`로 클린 리로드 후 재시도.)
+   - **4-b 핸드오프 ground truth 렌더:** `inputs/design-handoff_v10/reference/_hoff-harness.html`(재사용) — 디자인 JSX를 Chrome headless로 전체 바닥 flat-render. `python3 -m http.server 8770` (reference dir) 후
+     `"Google Chrome" --headless=new --window-size=<cols*32>,<rows*32> --virtual-time-budget=15000 --screenshot=/tmp/hoff-<x>.png "http://localhost:8770/_hoff-harness.html#<DEPT>"` (해시=OR/ICU/PEDS…). 부서 추가 시 하네스 `<script>` 목록에 해당 `interior-*.jsx`·`interior-objects-*2.jsx` 추가.
+   - **4-c 대조:** 4-a ↔ 4-b를 구역별로 비교, 오브젝트·좌표·NPC·마커·팔레트 일치 확인 후 편차만 §편차에 기록.
+   - (web export는 react-native-svg가 깨져 부정확 — 시뮬레이터/네이티브만 신뢰.)
 5. `DECISIONS.md` provenance + 이 부서 문서 "구현 결과/편차" 갱신 + 커밋(Co-Authored-By 없음).
 
 ---
