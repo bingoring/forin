@@ -57,6 +57,13 @@ export const OBJECT_FOOTPRINT: Record<string, { w: number; h: number }> = {
   co2insufflator: { w: 1, h: 2 },
   soiledcart: { w: 1, h: 2 },
   carm: { w: 2, h: 2 },
+  // ICU floor equipment (interior-objects-icu2). Wall/tabletop pieces
+  // (intercom/gownbox/visitorscreen/foleybag) are walkable → no footprint.
+  crrt: { w: 2, h: 2 },
+  ivpumptower: { w: 1, h: 1 },
+  evdstand: { w: 1, h: 1 },
+  icpmonitor: { w: 1, h: 1 },
+  ttmunit: { w: 2, h: 2 },
 };
 
 /** Blocked rectangles contributed by solid objects (doors are walkable → skipped).

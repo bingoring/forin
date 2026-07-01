@@ -12,6 +12,7 @@ import { LandmarkView } from './landmarks';
 import { IThreshold, IGlass } from './structures';
 import { ErObjectView } from './erEquipment';
 import { OrObjectView } from './orEquipment';
+import { IcuObjectView } from './icuEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -334,11 +335,12 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
     case 'glass':
       return <IGlass x={x} y={y} w={(props?.w as number) ?? 1} h={(props?.h as number) ?? 1} />;
     default:
-      // ER (5g-a) → OR suite (5g-b) → shared/cross-dept primitives →
+      // ER (5g-a) → OR suite (5g-b) → ICU (5g-c) → shared/cross-dept primitives →
       // outpatient-clinic equipment (5d-iii)
       return (
         ErObjectView({ object }) ??
         OrObjectView({ object }) ??
+        IcuObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );

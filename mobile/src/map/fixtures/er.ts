@@ -11,6 +11,7 @@
 import type { Interior } from '@engine';
 import { CAMPUS_INTERIOR } from './campus';
 import { OR_INTERIOR } from './or';
+import { ICU_INTERIOR } from './icu';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
@@ -327,6 +328,7 @@ export const ER_INTERIOR: Interior = {
 export const FIXTURES: Record<string, Interior> = {
   [ER_INTERIOR.id]: ER_INTERIOR,
   [OR_INTERIOR.id]: OR_INTERIOR,
+  [ICU_INTERIOR.id]: ICU_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
   [INTERNAL.id]: INTERNAL,
   [SURGERY.id]: SURGERY,
