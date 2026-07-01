@@ -367,19 +367,37 @@ export function ExamStool({ x, y, color = '#4B5563' }: { x: number; y: number; c
 
 // ─── SurgicalLight — overhead OR light dome (4×2, ceiling, non-blocking) ─
 export function SurgicalLight({ x, y }: { x: number; y: number }) {
+  // v10 (2.5D, diagonal-above): clean smooth TOP housing (no bulbs) + a tilted
+  // LIT UNDERSIDE band carrying the bulbs, casting a downward beam cone + floor
+  // glow onto the surgical field.
+  const cx = 32, cyTop = 22, rx = 22, ry = 12, band = 7, cyUnder = cyTop + band;
+  const bulbs: [number, number][] = [];
+  for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2; bulbs.push([cx + Math.cos(a) * (rx - 5), cyUnder + Math.sin(a) * (ry - 3)]); }
+  for (let i = 0; i < 4; i++) { const a = (i / 4) * Math.PI * 2 + 0.4; bulbs.push([cx + Math.cos(a) * (rx - 14), cyUnder + Math.sin(a) * (ry - 8)]); }
   return (
-    <Box x={x} y={y} offX={-16} w={64} h={32}>
-      <Svg viewBox="0 0 64 32" width={64 * S} height={32 * S}>
-        <Rect x={30} y={0} width={4} height={3} fill="#374151" stroke={C} strokeWidth={0.4} />
-        <Rect x={31} y={3} width={2} height={10} fill={METAL} stroke={C} strokeWidth={0.3} />
-        <Ellipse cx={32} cy={17} rx={22} ry={6} fill="#F1F5F9" stroke={C} strokeWidth={0.5} />
-        <Ellipse cx={32} cy={15.5} rx={20} ry={4} fill="#FFFFFF" />
-        <Path d="M10 17 L54 17 L51 21 L13 21 Z" fill="#E5E7EB" stroke={C} strokeWidth={0.4} />
-        {[14, 20, 26, 32, 38, 44, 50].map((bx, i) => (
-          <Circle key={i} cx={bx} cy={22.5} r={2.5} fill="#FEF08A" stroke={C} strokeWidth={0.3} />
+    <Box x={x} y={y} offX={-16} offY={-12} w={64} h={48}>
+      <Svg viewBox="0 0 64 48" width={64 * S} height={48 * S}>
+        {/* downward light beam (cone) + floor glow */}
+        <Path d="M14 30 L50 30 L58 46 L6 46 Z" fill="#FEF3C7" opacity={0.28} />
+        <Ellipse cx={cx} cy={45} rx={24} ry={3.5} fill="#FEF08A" opacity={0.3} />
+        {/* suspension arm + ceiling mount */}
+        <Rect x={30} y={0} width={4} height={3.5} rx={1} fill="#374151" stroke={C} strokeWidth={0.5} />
+        <Rect x={31} y={3} width={2} height={7} fill={METAL} stroke={C} strokeWidth={0.4} />
+        {/* lit underside face (tilted toward viewer, below the housing) */}
+        <Path d={`M ${cx - rx} ${cyTop} A ${rx} ${ry} 0 0 0 ${cx + rx} ${cyTop} L ${cx + rx} ${cyUnder} A ${rx} ${ry} 0 0 1 ${cx - rx} ${cyUnder} Z`} fill="#D2D9E0" stroke={C} strokeWidth={0.6} />
+        <Ellipse cx={cx} cy={cyUnder} rx={rx} ry={ry} fill="#EAF0F5" stroke={C} strokeWidth={0.6} />
+        {/* bulb cells on the lit underside */}
+        {bulbs.map(([bx, by], i) => (
+          <G key={i}>
+            <Ellipse cx={bx} cy={by} rx={2.8} ry={2} fill="#FFF8DC" stroke={C} strokeWidth={0.4} />
+            <Ellipse cx={bx} cy={by} rx={1.5} ry={1.1} fill="#FDE047" />
+          </G>
         ))}
-        <Circle cx={32} cy={22.5} r={2.5} fill="#FFFFFF" />
-        <Ellipse cx={32} cy={28} rx={24} ry={3} fill="#FEF08A" opacity={0.35} />
+        <Ellipse cx={cx} cy={cyUnder} rx={3.2} ry={2.4} fill="#CBD5E1" stroke={C} strokeWidth={0.5} />
+        {/* top housing — clean smooth dome (no bulbs) */}
+        <Ellipse cx={cx} cy={cyTop} rx={rx} ry={ry} fill="#F1F5F9" stroke={C} strokeWidth={0.7} />
+        <Ellipse cx={cx} cy={cyTop - 1.5} rx={rx - 4} ry={ry - 3} fill="#FFFFFF" opacity={0.7} />
+        <Ellipse cx={cx} cy={cyTop} rx={rx - 8} ry={ry - 5} fill="none" stroke={C} strokeWidth={0.4} opacity={0.18} />
       </Svg>
     </Box>
   );
