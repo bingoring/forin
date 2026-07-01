@@ -443,3 +443,15 @@
 - 앱 반영: `sharedEquipment.tsx` SurgicalLight 재작성(viewBox 64×48, offY -12). ER 소생/봉합 + OR1/OR2에서 공용 사용.
   시뮬레이터(ER 소생실)에서 렌더 확인 — 상단 매끈 돔 + 언더사이드 노란 전구. tsc 0·jest 52/52. 커밋 6e2e324.
 - 결정자: 사용자(v10 제공·조명 수정·reference 동기화) + AI(포팅·검증).
+
+## 2026-07-01 · 5g-c ICU — 전체 블루프린트 1:1 구현
+- **ICU 오브젝트 전수 포팅:** `icuEquipment.tsx` 신설 — interior-objects-icu2 카탈로그 9종(CRRTMachine·IVPumpTower(6단)·
+  EVDStand·ICPMonitor·TTMUnit·FoleyBag·Intercom·GownBox·VisitorScreen). text 글리프는 도형 대체.
+- **ICU_INTERIOR 1:1:** interior-icu.jsx 전수 — 34×44, **유리벽 4인 병실**(VENT/CRRT/EVD/TTM, 병실별 y17 유리경계 오토도어)
+  + 중앙 텔레메트리 허브(모니터뱅크 + 차팅데스크 2 + 코드블루 크래시카트) + 지원동(면회/오염/약품). 유리벽은 objectCollision으로 차단.
+  NPC ~11, 마커는 베드/NPC 속성(ICU 시나리오 5종 연결: park-vent/psychosis/monitor-alarm/code-blue/eol-family).
+  playerStart 허브(16,26 — 16,23은 데스크 위라 이동). 타워 4F 엘리베이터 → INT-ICU-00001(entry 7,42).
+- **디스패치:** Er→Or→Icu→Shared→Clinic. 신규 솔리드 footprint(crrt/ivpumptower/evdstand/icpmonitor/ttmunit).
+- **검증:** tsc 0 · jest 56/56(ICU 도달성·threshold·glass·footprint 신규 4) · expo export · **시뮬레이터 전 구역 렌더 확인**. 커밋 71c435d.
+- **다음:** 5g-d Peds.
+- **결정자:** 사용자("다음 프로세스 진행" + 핸드오프 충실 지시) + AI(포팅·픽스처·시뮬 검증).
