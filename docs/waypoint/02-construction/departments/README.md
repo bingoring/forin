@@ -88,19 +88,16 @@ updated: 2026-07-01
 
 ---
 
-## 부서 문서 템플릿 (각 `<dept>.md`가 담을 것)
-> Build Spec 네 아티팩트의 맵-도메인 압축 매핑: **domain-entities**→regions/rooms·오브젝트·NPC(2·5·6) ·
-> **business-rules**→collision/threshold/문 통행 규칙(3·4) · **business-logic-model**→진입/이동/시나리오 흐름(8) ·
-> **frontend-components**→오브젝트 렌더·마커·카메라(7). 인덱스 교차 사항→검증·편차(9).
+## 부서 문서 템플릿 (각 `<dept>.md` — Build Spec 4 아티팩트 압축형)
+> 부서 맵은 콘텐츠 시리즈라 네 아티팩트를 **한 문서에 A/B/C/D 섹션**으로 접는다(`FRAMEWORK.md` "구현 스펙" 위치=압축).
+> `er.md`가 기준 인스턴스.
 ```
-# 5g-<x> · <부서명>  (interior id / 핸드오프 소스 / 그리드 cols×rows / floorTheme / scale)
-## 1. 개요 & 존 구조         — 방 배치 다이어그램(핸드오프 주석 그대로), 동선/구획 원칙
-## 2. regions[] / rooms[]     — 표: id·name·icon·bounds / 빠른이동 앵커
-## 3. collision (벽)          — 표/목록: 외벽·분리벽 직사각형, 통로 gap 위치
-## 4. threshold·door·glass·tint — 각 항목 좌표+tone/label
-## 5. 오브젝트 배치 (핵심)    — 방별 표: 핸드오프 컴포넌트 → fixture type → x,y,props(마커 포함). 라인 단위 대조 가능하게
-## 6. NPC 캐스트              — 표: id·kind·start·marker(scenarioId)
-## 7. 오브젝트 카탈로그 포팅   — 신규 `<dept>Equipment.tsx` 컴포넌트 목록 + footprint + 특이 렌더
-## 8. 엘리베이터/진입          — 층·entry 좌표
-## 9. 검증 결과 & 편차         — tsc/jest/export/시뮬 캡처 요약, 핸드오프 대비 의도적 편차
+---frontmatter: build-spec/stage/status/depth: compressed/updated---
+# Build Spec — 5g-<x> · <부서명>   (메타 표: id·fixture·SoT·그리드·scale·playerStart)
+## 개요 & 범위 (Index)      — 존 다이어그램(SoT 주석 그대로)·구획 원칙·깊이
+## A. Domain & Entities      — regions[]·rooms[] · 오브젝트 배치(SoT 컴포넌트→type→좌표/props) · NPC 캐스트
+## B. Business Rules         — collision(벽·gap) · threshold/door/glass/tint 통행 규칙 · footprint(솔리드 차단)
+## C. Business Logic Model   — 엘리베이터/진입(entry) · 이동/카메라(공통 참조) · 시나리오 배선(마커→scenarioId 표)
+## D. Frontend Components    — <dept>Equipment.tsx 카탈로그 · 공용 프리미티브 · 렌더 z-order(OVERHEAD/CEILING/마커)
+## 검증 & 편차 (Index)       — tsc/jest/expo/시뮬 요약 · SoT 대비 의도적 편차
 ```
