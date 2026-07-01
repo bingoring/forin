@@ -455,3 +455,16 @@
 - **검증:** tsc 0 · jest 56/56(ICU 도달성·threshold·glass·footprint 신규 4) · expo export · **시뮬레이터 전 구역 렌더 확인**. 커밋 71c435d.
 - **다음:** 5g-d Peds.
 - **결정자:** 사용자("다음 프로세스 진행" + 핸드오프 충실 지시) + AI(포팅·픽스처·시뮬 검증).
+
+## 2026-07-01 · waypoint에 "구현 스펙(Build Spec)" 도입 (프레임워크 표준)
+- **결정:** 실제 로직/화면/알고리즘/콘텐츠를 산출하는 스테이지는 코딩 전 **Build Spec**을 쓴다. 한 문서·**고정 정규
+  섹션**(개요·분해·도메인/데이터·동작/규칙·UI/상호작용·엣지케이스·명세표·미해결질문·체크리스트·검증·편차) +
+  적응형 깊이 티어(minimal/standard/comprehensive) + Plan-first 옵션형 질문 루프(AskUserQuestion→DECISIONS) +
+  체크리스트 실행추적 + 편차 로그. `FRAMEWORK.md` "구현 스펙" · `_templates/build-spec-template.md` · stage-template 링크.
+- **근거:** 설계(무엇을/왜)만으론 구현 시 SoT(핸드오프/PRD)를 매번 재해석 → 누락·불일치가 조용히 발생(부서 맵의
+  "핸드오프엔 있는데 앱엔 없는 오브젝트"의 문서판). AI-DLC functional-design의 "구현 없이 다시 유도 안 해도 될 상세"
+  + "고정 카테고리 완결성 체크" + "plan-first 객관식 질문"을 차용. `departments/`가 선행 실사례.
+- **대안(탈락):** (a) 자유 섹션 1문서 — 완결성 강제 못함(누락 재발). (b) AI-DLC 4-문서 분할
+  (business-logic/rules/entities/frontend) — 솔로 MVP엔 파일 오버헤드. (c) user-stories/persona/units 병렬분해/
+  raw audit.md — 팀·엔터프라이즈용, 속도 저해(기존 방침 유지, 미채용).
+- **결정자:** 사용자(2번=한 문서·고정 정규 섹션 선택, "상세하게 템플릿화") + AI(AI-DLC 조사·차용 설계).
