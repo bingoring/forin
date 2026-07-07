@@ -4,7 +4,7 @@
 // IcuObjectView.
 import type { ReactElement } from 'react';
 import { View } from 'react-native';
-import Svg, { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import type { MapObject } from '@engine';
 
@@ -18,39 +18,47 @@ function Box({ x, y, offX = 0, offY = 0, w, h, children }: { x: number; y: numbe
 }
 
 // ─── CRRTMachine — continuous renal replacement (dialysis) + 4 fluid bags ──
+// v11 2.5D: unified rounded silhouette + explicit top face (spinning blood
+// pump) + seam + viewer-facing screen and front filter column.
 export function CRRTMachine({ x, y }: { x: number; y: number }) {
+  const sil = 'M4 12 Q2 12 2 14 L2 44 Q2 46 4 46 L28 46 Q30 46 30 44 L30 14 Q30 12 28 12 Z';
   return (
     <Box x={x} y={y} offY={-14} w={32} h={54}>
       <Svg viewBox="0 0 32 54" width={32 * S} height={54 * S}>
-        <Rect x={2} y={0} width={28} height={1.5} fill="#9CA3AF" />
+        {/* IV pole across the top with 4 dialysate bags hanging */}
+        <Rect x={2} y={0} width={28} height={1.5} rx={0.6} fill="#9CA3AF" />
         {[4, 11, 18, 25].map((bx, i) => (
           <G key={i}>
-            <Rect x={bx} y={1.5} width={5} height={8} fill={i % 2 ? '#D7F0E0' : '#FCE7C8'} stroke={C} strokeWidth={0.4} />
+            <Rect x={bx} y={1.5} width={5} height={8} rx={0.5} fill={i % 2 ? '#D7F0E0' : '#FCE7C8'} stroke={C} strokeWidth={0.4} />
             <Rect x={bx + 0.6} y={2.5} width={1.4} height={6} fill={i % 2 ? '#A7E0BE' : '#F4D29A'} />
           </G>
         ))}
-        <Path d="M3 11 L29 11 L30 13 L2 13 Z" fill="#475569" stroke={C} strokeWidth={0.4} />
-        <Rect x={2} y={13} width={28} height={11} fill="#5B6776" stroke={C} strokeWidth={0.5} />
-        <Rect x={4} y={14.5} width={14} height={8} fill="#0F1A24" />
-        <Rect x={5} y={15.5} width={11} height={1.3} fill="#22D3EE" />
-        <Rect x={5} y={17.5} width={9} height={1.3} fill="#F87171" />
-        <Rect x={5} y={19.5} width={11} height={1.3} fill="#FACC15" />
-        {/* blood pump */}
-        <Circle cx={24} cy={18.5} r={4} fill="#1F2937" stroke={C} strokeWidth={0.5} />
-        <Circle cx={24} cy={18.5} r={1.4} fill="#DC2626" />
-        <Rect x={23.4} y={14.8} width={1.2} height={3.7} fill="#7F1D1D" />
-        {/* filter column + blood lines */}
-        <Rect x={3} y={25} width={3} height={14} fill="#FCA5A5" stroke={C} strokeWidth={0.4} />
-        <Rect x={3.6} y={26} width={1.8} height={12} fill="#DC2626" />
-        <Path d="M6 27 Q10 26 10 30" fill="none" stroke="#DC2626" strokeWidth={1} />
-        <Path d="M6 36 Q12 38 12 33" fill="none" stroke="#3B82F6" strokeWidth={1} />
-        {/* body + drawers + wheels */}
-        <Rect x={8} y={25} width={22} height={14} fill="#9CA3AF" stroke={C} strokeWidth={0.5} />
-        <Rect x={9} y={26.5} width={20} height={3} fill="#fff" stroke={C} strokeWidth={0.3} />
-        <Rect x={9} y={31} width={20} height={3} fill="#fff" stroke={C} strokeWidth={0.3} />
-        <Ellipse cx={6} cy={48} rx={2.4} ry={1.7} fill={C} />
-        <Ellipse cx={26} cy={48} rx={2.4} ry={1.7} fill={C} />
-        <Rect x={14} y={45} width={2} height={3} fill="#6B7280" />
+        {/* full machine silhouette */}
+        <Path d={sil} fill="#8A929B" />
+        {/* TOP face — casing top with spinning blood pump */}
+        <Path d="M4 12 Q2 12 2 14 L2 22 L30 22 L30 14 Q30 12 28 12 Z" fill="#A6ADB5" />
+        <Circle cx={24} cy={17} r={3.6} fill="#1F2937" stroke={C} strokeWidth={0.5} />
+        <Circle cx={24} cy={17} r={1.3} fill="#DC2626" />
+        <Rect x={23.4} y={13.6} width={1.2} height={3.4} fill="#7F1D1D" />
+        {/* seam top → front */}
+        <Line x1={2} y1={22} x2={30} y2={22} stroke={C} strokeWidth={0.6} />
+        {/* viewer-facing screen */}
+        <Rect x={4} y={23.5} width={14} height={9} rx={0.6} fill="#0F1A24" stroke={C} strokeWidth={0.4} />
+        <Rect x={5} y={24.6} width={11} height={1.3} fill="#22D3EE" />
+        <Rect x={5} y={26.6} width={9} height={1.3} fill="#F87171" />
+        <Rect x={5} y={28.6} width={11} height={1.3} fill="#FACC15" />
+        {/* filter column + blood lines on the front */}
+        <Rect x={21} y={24} width={3} height={14} rx={0.6} fill="#FCA5A5" stroke={C} strokeWidth={0.4} />
+        <Rect x={21.6} y={25} width={1.8} height={12} fill="#DC2626" />
+        <Path d="M21 27 Q18 26 18 30" fill="none" stroke="#DC2626" strokeWidth={1} />
+        <Path d="M24 36 Q27 38 26 33" fill="none" stroke="#3B82F6" strokeWidth={1} />
+        {/* drawer */}
+        <Rect x={4} y={34} width={14} height={3} rx={0.3} fill="#C7CDD4" stroke={C} strokeWidth={0.3} />
+        {/* re-stroke silhouette */}
+        <Path d={sil} fill="none" stroke={C} strokeWidth={0.7} />
+        {/* wheels */}
+        <Ellipse cx={6} cy={48} rx={2.4} ry={1.7} fill="#2C3239" />
+        <Ellipse cx={26} cy={48} rx={2.4} ry={1.7} fill="#2C3239" />
       </Svg>
     </Box>
   );
@@ -124,23 +132,34 @@ export function ICPMonitor({ x, y }: { x: number; y: number }) {
 }
 
 // ─── TTMUnit — targeted temperature management (cooling-blanket unit + hose) ──
+// v11 2.5D: unified silhouette + top face (with port) + seam + viewer-facing
+// screen + larger cooling pad.
 export function TTMUnit({ x, y }: { x: number; y: number }) {
+  const sil = 'M3 6 Q2 6 2 7 L2 30 Q2 31 3 31 L23 31 Q24 31 24 30 L24 7 Q24 6 23 6 Z';
   return (
     <Box x={x} y={y} offY={-4} w={26} h={38}>
       <Svg viewBox="0 0 26 38" width={26 * S} height={38 * S}>
-        <Path d="M2 6 Q-2 10 4 13 Q9 16 3 19" fill="none" stroke="#7FB8D8" strokeWidth={2.5} />
-        <Path d="M3 4 L20 4 L21 6 L2 6 Z" fill="#2C5E7C" stroke={C} strokeWidth={0.4} />
-        <Rect x={2} y={6} width={19} height={15} fill="#3E7CA0" stroke={C} strokeWidth={0.5} />
-        <Rect x={4} y={8} width={11} height={7} fill="#0F1A24" stroke={C} strokeWidth={0.4} />
-        {/* "34°" target-temp readout (cyan block) */}
-        <Rect x={6} y={10} width={7} height={3} fill="#7DD3FC" />
-        <Rect x={4} y={15.5} width={11} height={1} fill="#22D3EE" />
-        <Rect x={16} y={8} width={4} height={10} fill="#BFE3EE" stroke={C} strokeWidth={0.4} />
-        <Rect x={16} y={13} width={4} height={5} fill="#9FD0E4" />
-        <Rect x={2} y={21} width={19} height={9} fill="#6B7280" stroke={C} strokeWidth={0.5} />
-        <Rect x={3.5} y={22.5} width={16} height={3} fill="#fff" stroke={C} strokeWidth={0.3} />
-        <Ellipse cx={5} cy={33} rx={2.2} ry={1.6} fill={C} />
-        <Ellipse cx={18} cy={33} rx={2.2} ry={1.6} fill={C} />
+        {/* coiling hoses to the cooling pad */}
+        <Path d="M3 8 Q-1 12 5 15 Q10 18 4 21" fill="none" stroke="#7FB8D8" strokeWidth={2.4} strokeLinecap="round" />
+        {/* full silhouette */}
+        <Path d={sil} fill="#2C5E7C" />
+        {/* TOP face (cool teal) + port */}
+        <Path d="M3 6 Q2 6 2 7 L2 13 L24 13 L24 7 Q24 6 23 6 Z" fill="#4E86A6" />
+        <Ellipse cx={18} cy={9.5} rx={2.4} ry={1.4} fill="#9CA3AF" stroke={C} strokeWidth={0.35} />
+        {/* seam top → front */}
+        <Line x1={2} y1={13} x2={24} y2={13} stroke={C} strokeWidth={0.55} />
+        {/* viewer-facing screen with target temp (cyan block for "34°") */}
+        <Rect x={3.5} y={14.5} width={11} height={7} rx={0.5} fill="#0F1A24" stroke={C} strokeWidth={0.4} />
+        <Rect x={5} y={16.3} width={8} height={3.4} fill="#7DD3FC" />
+        <Rect x={3.5} y={22} width={11} height={1} fill="#22D3EE" />
+        {/* cooling pad */}
+        <Rect x={16} y={14.5} width={5} height={12} rx={0.4} fill="#BFE3EE" stroke={C} strokeWidth={0.4} />
+        <Rect x={16} y={20} width={5} height={6.5} fill="#9FD0E4" />
+        {/* re-stroke silhouette */}
+        <Path d={sil} fill="none" stroke={C} strokeWidth={0.65} />
+        {/* wheels */}
+        <Ellipse cx={5} cy={32.5} rx={2.2} ry={1.6} fill="#2C3239" />
+        <Ellipse cx={18} cy={32.5} rx={2.2} ry={1.6} fill="#2C3239" />
       </Svg>
     </Box>
   );
