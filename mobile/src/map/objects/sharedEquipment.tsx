@@ -329,21 +329,25 @@ export function IChair({ x, y, color = '#FED7AA', facing = 'down' }: { x: number
 
 // ─── IPlant — potted plant (1 tile) ─────────────────────────────────
 export function IPlant({ x, y }: { x: number; y: number }) {
+  // v11 2.5D: foreshortened tapered pot + elliptical rim & soil opening.
   return (
     <Box x={x} y={y} offY={-6} w={16} h={22}>
       <Svg viewBox="0 0 16 22" width={16 * S} height={22 * S}>
-        <Rect x={6} y={3} width={3} height={9} fill="#4A7A4A" />
-        <Rect x={4} y={5} width={3} height={7} fill="#3E6B3A" />
-        <Rect x={9} y={4} width={3} height={8} fill="#3E6B3A" />
-        <Rect x={3} y={7} width={2} height={5} fill="#5E9554" />
-        <Rect x={11} y={6} width={2} height={6} fill="#5E9554" />
-        <Rect x={7} y={2} width={2} height={3} fill="#5E9554" />
-        <Rect x={5} y={6} width={1} height={2} fill="#94BC85" />
-        <Rect x={10} y={7} width={1} height={2} fill="#94BC85" />
-        <Rect x={3} y={12} width={10} height={2} fill="#A0531C" stroke={C} strokeWidth={0.5} />
-        <Path d="M4 14 L12 14 L11 21 L5 21 Z" fill="#7C3F1A" stroke={C} strokeWidth={0.7} />
-        <Path d="M5 17 L11 17 L11 21 L5 21 Z" fill="#5C2A0D" opacity={0.4} />
-        <Rect x={4} y={12.5} width={8} height={0.8} fill="#B8702A" />
+        {/* foliage rising from the pot */}
+        <Rect x={6} y={2} width={3} height={8} fill="#4A7A4A" />
+        <Rect x={4} y={4} width={3} height={6} fill="#3E6B3A" />
+        <Rect x={9} y={3} width={3} height={7} fill="#3E6B3A" />
+        <Rect x={3} y={6} width={2} height={4} fill="#5E9554" />
+        <Rect x={11} y={5} width={2} height={5} fill="#5E9554" />
+        <Rect x={7} y={1} width={2} height={3} fill="#5E9554" />
+        {/* pot BODY — foreshortened tapered tub */}
+        <Path d="M 4 13 L 12 13 L 10.6 20 L 5.4 20 Z" fill="#7C3F1A" stroke={C} strokeWidth={0.7} />
+        <Path d="M 5.4 20 A 3 1.2 0 0 0 10.6 20" fill="#7C3F1A" stroke={C} strokeWidth={0.6} />
+        <Path d="M 6 16 L 10 16 L 9.4 19.6 A 2 .8 0 0 1 6.6 19.6 Z" fill="#5C2A0D" opacity={0.35} />
+        {/* pot TOP face — elliptical rim + soil opening */}
+        <Ellipse cx={8} cy={13} rx={4} ry={1.7} fill="#A0531C" stroke={C} strokeWidth={0.6} />
+        <Ellipse cx={8} cy={13} rx={2.7} ry={1} fill="#3A2A1A" />
+        <Ellipse cx={8} cy={12.7} rx={4} ry={1.4} fill="none" stroke="#B8702A" strokeWidth={0.6} />
       </Svg>
     </Box>
   );
@@ -403,27 +407,31 @@ export function SurgicalLight({ x, y }: { x: number; y: number }) {
   );
 }
 
-// ─── InstrumentTray — Mayo stand with sterile drape (2×1.4) ─────────
+// ─── InstrumentTray — Mayo stand with sterile drape (v11 2.5D top face) ─
 export function InstrumentTray({ x, y }: { x: number; y: number }) {
+  const sil = 'M4 3 Q1 3 1 6 L1 14 Q1 17 4 17 L26 17 Q29 17 29 14 L29 6 Q29 3 26 3 Z';
   return (
-    <Box x={x} y={y} offY={-6} w={28} h={22}>
-      <Svg viewBox="0 0 28 22" width={28 * S} height={22 * S}>
-        <Ellipse cx={14} cy={5} rx={13} ry={3} fill="#A5D8E8" stroke={C} strokeWidth={0.5} />
-        <Ellipse cx={14} cy={4} rx={12} ry={2} fill="#C8E5F0" />
-        <Line x1={3} y1={5} x2={25} y2={5} stroke={C} strokeWidth={0.2} opacity={0.3} />
-        <Path d="M1 5 L27 5 L25 11 L3 11 Z" fill="#7DBFD9" stroke={C} strokeWidth={0.4} />
-        <Path d="M3 11 L25 11 L24 13 L4 13 Z" fill="#A5D8E8" stroke={C} strokeWidth={0.3} />
-        <Rect x={4} y={3} width={10} height={1.2} fill={METAL} stroke={C} strokeWidth={0.25} />
-        <Rect x={3} y={3.2} width={2} height={0.7} fill="#374151" />
-        <Rect x={6} y={2} width={8} height={0.8} fill={METAL} stroke={C} strokeWidth={0.25} />
-        <Rect x={16} y={3} width={6} height={1} fill={METAL} stroke={C} strokeWidth={0.25} />
-        <Rect x={22} y={3.2} width={2} height={0.7} fill="#374151" />
-        <Rect x={17} y={4.5} width={7} height={0.7} fill={METAL} />
-        <Rect x={13} y={13} width={2} height={7} fill={METAL} stroke={C} strokeWidth={0.3} />
-        <Rect x={13.3} y={13.2} width={0.7} height={6.5} fill="#CBD5E1" />
-        <Ellipse cx={14} cy={20} rx={6} ry={1.5} fill="#4B5563" stroke={C} strokeWidth={0.3} />
-        <Circle cx={9} cy={21} r={1.2} fill={C} />
-        <Circle cx={19} cy={21} r={1.2} fill={C} />
+    <Box x={x} y={y} offY={-4} w={30.4} h={25.6}>
+      <Svg viewBox="0 0 30 26" width={30.4 * S} height={25.6 * S}>
+        {/* stand pole + base behind */}
+        <Rect x={14} y={17} width={2} height={6} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        <Ellipse cx={15} cy={24} rx={6} ry={1.6} fill="#4B5563" stroke={C} strokeWidth={0.3} />
+        {/* body silhouette: top face + front rim as one outline */}
+        <Path d={sil} fill="#7DBFD9" stroke={C} strokeWidth={0.7} />
+        {/* TOP face fill */}
+        <Path d="M4 3 Q1 3 1 6 L1 11 Q15 13.4 29 11 L29 6 Q29 3 26 3 Z" fill="#C8E5F0" />
+        <Path d="M4 3 Q1 3 1 6 L1 11" fill="none" stroke="#E4F3FA" strokeWidth={1} />
+        {/* instruments on the tray */}
+        <Rect x={4} y={4.4} width={9} height={1.3} rx={0.6} fill="#CBD5E1" stroke={C} strokeWidth={0.25} />
+        <Path d="M13 4.4 l3 .65 l-3 .65 z" fill="#E5E7EB" stroke={C} strokeWidth={0.25} />
+        <Path d="M4 7.6 Q10 6.9 16 8" fill="none" stroke="#9CA3AF" strokeWidth={1} />
+        <Path d="M4 9.2 Q10 8.7 16 9" fill="none" stroke="#9CA3AF" strokeWidth={1} />
+        <Line x1={19} y1={4.4} x2={25} y2={7.8} stroke="#9CA3AF" strokeWidth={1} />
+        <Line x1={19} y1={7.8} x2={25} y2={4.4} stroke="#9CA3AF" strokeWidth={1} />
+        <Rect x={20} y={8.2} width={2.6} height={2.2} fill="#FEFCF2" stroke={C} strokeWidth={0.25} />
+        {/* re-stroke silhouette + curved seam */}
+        <Path d={sil} fill="none" stroke={C} strokeWidth={0.7} />
+        <Path d="M1 11 Q15 13.4 29 11" fill="none" stroke={C} strokeWidth={0.6} />
       </Svg>
     </Box>
   );
@@ -466,71 +474,108 @@ export function CastCart({ x, y }: { x: number; y: number }) {
   );
 }
 
-// ─── Ventilator — bedside ventilator on pole (1×2) ──────────────────
+// ─── Ventilator — v11 2.5D: touchscreen on stalk + top-face body + spider base ─
 export function Ventilator({ x, y }: { x: number; y: number }) {
+  const body = 'M7.1 13 L17.9 13 Q18.5 13 18.5 13.6 L18.5 31 Q18.5 31.6 17.9 31.6 L7.1 31.6 Q6.5 31.6 6.5 31 L6.5 13.6 Q6.5 13 7.1 13 Z';
+  const hose = 'M8.4 24 Q1.5 24 2.5 29 Q3.2 32.5 8 30.5';
   return (
-    <Box x={x} y={y} offY={-4} w={16} h={36}>
-      <Svg viewBox="0 0 16 36" width={16 * S} height={36 * S}>
-        {/* pole */}
-        <Rect x={6} y={8} width={4} height={8} fill={METAL} stroke={C} strokeWidth={0.4} />
-        {/* body */}
-        <Rect x={1} y={14} width={14} height={22} fill="#475569" stroke={C} strokeWidth={0.6} />
-        {/* screen */}
-        <Rect x={3} y={16} width={10} height={8} fill="#0F1A24" />
-        <Rect x={4} y={17} width={8} height={1} fill="#22D3EE" />
-        <Rect x={4} y={20} width={8} height={1} fill="#FACC15" />
-        {/* knobs */}
-        <Rect x={3} y={26} width={2} height={2} fill="#EF4444" />
-        <Rect x={6} y={26} width={2} height={2} fill="#3B82F6" />
-        <Rect x={9} y={26} width={2} height={2} fill="#10B981" />
-        <Rect x={12} y={26} width={2} height={2} fill="#FACC15" />
-        {/* VENT badge */}
-        <Rect x={9} y={11} width={6} height={3} fill="#22D3EE" stroke={C} strokeWidth={0.4} />
+    <Box x={x} y={y} offY={-8} w={25.6} h={46.4}>
+      <Svg viewBox="0 0 26 46" width={25.6 * S} height={46.4 * S}>
+        {/* touchscreen monitor on a stalk */}
+        <Rect x={3} y={1} width={18} height={12} rx={1.2} fill="#1B2128" stroke={C} strokeWidth={0.6} />
+        <Rect x={4.2} y={2.2} width={15.6} height={9.6} rx={0.5} fill="#0B1622" />
+        <Path d="M5 5.5 L7 5.5 L8 3.6 L9 7.2 L10 5.5 L14 5.5" fill="none" stroke="#22D3EE" strokeWidth={0.55} />
+        <Path d="M5 8.6 L8 8.6 L8 6.9 L11 6.9 L11 8.6 L14 8.6" fill="none" stroke="#FACC15" strokeWidth={0.5} />
+        <Rect x={15.5} y={3.2} width={3.4} height={2.2} fill="#10B981" opacity={0.85} />
+        <Rect x={15.5} y={6.2} width={3.4} height={2.2} fill="#F87171" opacity={0.85} />
+        <Rect x={15.5} y={9.2} width={3.4} height={1.6} fill="#38BDF8" opacity={0.7} />
+        <Rect x={11.5} y={13} width={2.4} height={4} fill="#B7BEC6" stroke={C} strokeWidth={0.4} />
+        {/* central body — dominant top face + short front */}
+        <Path d="M6.5 20 L18.5 20 L18.5 31 Q18.5 31.6 17.9 31.6 L7.1 31.6 Q6.5 31.6 6.5 31 Z" fill="#E4E5E3" />
+        <Path d="M7.1 13 L17.9 13 Q18.5 13 18.5 13.6 L18.5 20 L6.5 20 L6.5 13.6 Q6.5 13 7.1 13 Z" fill="#54606C" />
+        <Rect x={8} y={14.2} width={9} height={1.4} fill="#6B7885" />
+        <Rect x={8.2} y={16.2} width={4} height={3} rx={0.4} fill="#3A424C" />
+        <Circle cx={15} cy={17.6} r={1.4} fill="#9AA6B2" stroke={C} strokeWidth={0.35} />
+        <Line x1={6.5} y1={20} x2={18.5} y2={20} stroke={C} strokeWidth={0.55} />
+        {/* viewer-facing front: patient port + valve + label */}
+        <Circle cx={10} cy={26} r={1.6} fill="#CBD5E1" stroke={C} strokeWidth={0.4} />
+        <Circle cx={14.6} cy={26} r={1.3} fill="#9AA6B2" stroke={C} strokeWidth={0.4} />
+        <Rect x={7.6} y={29} width={9.4} height={1.4} fill="#D2D6D4" />
+        {/* blue breathing-circuit hose */}
+        <Path d={hose} fill="none" stroke="#7FB8E6" strokeWidth={2.4} strokeLinecap="round" />
+        <Path d={hose} fill="none" stroke="#5B95C9" strokeWidth={0.5} strokeLinecap="round" opacity={0.5} />
+        <Path d={body} fill="none" stroke={C} strokeWidth={0.6} />
+        {/* column + spider wheel base */}
+        <Rect x={11.5} y={31.6} width={2.4} height={6} fill="#C6CBD1" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={12.6} cy={39} rx={9} ry={2.4} fill="#D7DBDF" stroke={C} strokeWidth={0.5} />
+        <Ellipse cx={4.5} cy={41.5} rx={2.1} ry={1.6} fill="#2C3239" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={20.5} cy={41.5} rx={2.1} ry={1.6} fill="#2C3239" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={12.6} cy={43} rx={2.1} ry={1.6} fill="#2C3239" stroke={C} strokeWidth={0.4} />
       </Svg>
     </Box>
   );
 }
 
-// ─── CrashCart — red emergency cart with defib on top (1×2) ─────────
+// ─── CrashCart — v11 2.5D: red lid top (defib) + viewer-facing screen + drawers ─
 export function CrashCart({ x, y }: { x: number; y: number }) {
+  const sil = 'M2 1 Q1 1 1 2 L1 25 Q1 26 2 26 L20 26 Q21 26 21 25 L21 2 Q21 1 20 1 Z';
   return (
-    <Box x={x} y={y} offY={-8} w={16} h={40}>
-      <Svg viewBox="0 0 16 40" width={16 * S} height={40 * S}>
-        {/* defib box on top */}
-        <Rect x={4} y={0} width={8} height={5} fill="#FACC15" stroke={C} strokeWidth={0.4} />
-        <Path d="M7.5 1 L6 3 L8 3 L6.5 4.5" fill="none" stroke={C} strokeWidth={0.5} />
-        {/* yellow top tray */}
-        <Rect x={1} y={5} width={14} height={4} fill="#FACC15" stroke={C} strokeWidth={0.4} />
-        {/* red body */}
-        <Rect x={1} y={9} width={14} height={26} fill="#DC2626" stroke={C} strokeWidth={0.6} />
+    <Box x={x} y={y} offY={-3} w={22.4} h={30.4}>
+      <Svg viewBox="0 0 22 30" width={22.4 * S} height={30.4 * S}>
+        <Path d={sil} fill="#B91C1C" />
+        {/* TOP lid face — defib on top */}
+        <Path d="M2 1 Q1 1 1 2 L1 9 L21 9 L21 2 Q21 1 20 1 Z" fill="#DC2626" />
+        <Ellipse cx={15.5} cy={5} rx={2.2} ry={1.6} fill="#374151" stroke={C} strokeWidth={0.4} />
+        <Ellipse cx={18.5} cy={5} rx={1.6} ry={1.4} fill="#4B5563" stroke={C} strokeWidth={0.35} />
+        <Rect x={3} y={3} width={8} height={3.4} rx={0.4} fill="#7F1D1D" />
+        <Line x1={1} y1={9} x2={21} y2={9} stroke={C} strokeWidth={0.6} />
+        {/* viewer-facing defib screen */}
+        <Rect x={2.5} y={10} width={9} height={5} rx={0.5} fill="#0B3A1E" stroke={C} strokeWidth={0.4} />
+        <Path d="M3.2 12.4 L5 12.4 L6 10.6 L7 13.8 L8 12.4 L11 12.4" fill="none" stroke="#4ADE80" strokeWidth={0.55} />
+        <Rect x={13} y={10.4} width={2} height={2} rx={0.3} fill="#DC2626" stroke={C} strokeWidth={0.3} />
+        <Rect x={16} y={10.4} width={2} height={2} rx={0.3} fill="#FACC15" stroke={C} strokeWidth={0.3} />
+        <Rect x={13} y={13} width={5} height={2} rx={0.3} fill="#fff" stroke={C} strokeWidth={0.3} />
         {/* drawers */}
-        <Rect x={3} y={12} width={10} height={6} fill="#fff" stroke={C} strokeWidth={0.4} />
-        <Rect x={3} y={20} width={10} height={6} fill="#fff" stroke={C} strokeWidth={0.4} />
-        <Rect x={3} y={28} width={10} height={6} fill="#fff" stroke={C} strokeWidth={0.4} />
-        {/* wheels */}
-        <Ellipse cx={3} cy={37} rx={2} ry={1.5} fill={C} />
-        <Ellipse cx={13} cy={37} rx={2} ry={1.5} fill={C} />
+        <Line x1={1} y1={16} x2={21} y2={16} stroke={C} strokeWidth={0.55} />
+        <Rect x={3} y={17} width={16} height={3} rx={0.3} fill="#fff" stroke={C} strokeWidth={0.35} />
+        <Rect x={9.5} y={18.1} width={3} height={1} fill="#DC2626" />
+        <Rect x={3} y={20.5} width={16} height={3} rx={0.3} fill="#fff" stroke={C} strokeWidth={0.35} />
+        <Rect x={9.5} y={21.6} width={3} height={1} fill="#DC2626" />
+        <Path d={sil} fill="none" stroke={C} strokeWidth={0.7} />
+        <Ellipse cx={4.5} cy={27.5} rx={1.8} ry={1.3} fill="#2C3239" />
+        <Ellipse cx={17.5} cy={27.5} rx={1.8} ry={1.3} fill="#2C3239" />
       </Svg>
     </Box>
   );
 }
 
-// ─── PyxisMachine — automated drug dispensing cabinet (2×2) ─────────
+// ─── PyxisMachine — v11 2.5D: plain lid top + viewer-facing screen + drawers ─
 export function PyxisMachine({ x, y }: { x: number; y: number }) {
+  const sil = 'M3 1 Q2 1 2 2 L2 30 Q2 31 3 31 L29 31 Q30 31 30 30 L30 2 Q30 1 29 1 Z';
   return (
-    <Box x={x} y={y} w={32} h={32}>
-      <Svg viewBox="0 0 32 32" width={32 * S} height={32 * S}>
-        <Rect x={0} y={0} width={32} height={32} fill="#94A3B8" stroke={C} strokeWidth={1} />
-        {/* terminal screen */}
-        <Rect x={3} y={3} width={26} height={14} fill="#1F2937" stroke={C} strokeWidth={0.8} />
-        <Rect x={5} y={5} width={10} height={2} fill="#22D3EE" />
-        <Rect x={5} y={9} width={22} height={1.5} fill="#10B981" />
-        <Rect x={5} y={12} width={22} height={1.5} fill="#22D3EE" />
-        {/* dispense drawers */}
-        <Rect x={3} y={19} width={26} height={5} fill="#fff" stroke={C} strokeWidth={0.5} />
-        <Rect x={3} y={25} width={26} height={5} fill="#fff" stroke={C} strokeWidth={0.5} />
-        <Rect x={14} y={21} width={4} height={1.4} fill="#9CA3AF" />
-        <Rect x={14} y={27} width={4} height={1.4} fill="#9CA3AF" />
+    <Box x={x} y={y} offY={-3} w={32} h={33.6}>
+      <Svg viewBox="0 0 32 34" width={32 * S} height={33.6 * S}>
+        <Path d={sil} fill="#8A929B" />
+        {/* TOP lid face */}
+        <Path d="M3 1 Q2 1 2 2 L2 8 L30 8 L30 2 Q30 1 29 1 Z" fill="#AEB4BC" />
+        <Rect x={4} y={2.4} width={24} height={2} rx={0.4} fill="#C7CDD4" />
+        <Line x1={2} y1={8} x2={30} y2={8} stroke={C} strokeWidth={0.6} />
+        {/* viewer-facing touchscreen ("PYXIS" as cyan block) + fingerprint reader */}
+        <Rect x={4} y={9} width={15} height={10} rx={0.8} fill="#0F1A24" stroke={C} strokeWidth={0.5} />
+        <Rect x={6} y={10.6} width={11} height={2.4} fill="#22D3EE" />
+        <Rect x={5.5} y={14} width={12} height={1.4} fill="#10B981" />
+        <Rect x={5.5} y={16.2} width={9} height={1.4} fill="#22D3EE" />
+        <Ellipse cx={24.5} cy={13} rx={3} ry={3.4} fill="#7F1D1D" stroke={C} strokeWidth={0.5} />
+        <Ellipse cx={24.5} cy={13} rx={1.6} ry={2} fill="#EF4444" />
+        {/* drawers */}
+        <Line x1={2} y1={20} x2={30} y2={20} stroke={C} strokeWidth={0.55} />
+        <Rect x={4} y={21} width={24} height={2.6} rx={0.4} fill="#C7CDD4" stroke={C} strokeWidth={0.3} />
+        <Rect x={4} y={24.2} width={24} height={2.6} rx={0.4} fill="#C7CDD4" stroke={C} strokeWidth={0.3} />
+        <Rect x={4} y={27.4} width={24} height={2.6} rx={0.4} fill="#C7CDD4" stroke={C} strokeWidth={0.3} />
+        <Rect x={14} y={21.9} width={4} height={1} fill="#64748B" />
+        <Rect x={14} y={25.1} width={4} height={1} fill="#64748B" />
+        <Rect x={14} y={28.3} width={4} height={1} fill="#64748B" />
+        <Path d={sil} fill="none" stroke={C} strokeWidth={0.7} />
       </Svg>
     </Box>
   );
@@ -677,31 +722,33 @@ export function ICabinet({ x, y, w = 2, h = 1, variant = 'supply', label }: { x:
   );
 }
 
-// ─── SinkOR — OR-style scrub sink, basin + faucet + knee paddle (2×2) ─
+// ─── SinkOR — OR scrub sink (v11 top-down trough: counter top + basin + apron) ─
 export function SinkOR({ x, y }: { x: number; y: number }) {
+  const sil = 'M2 3 L30 3 L30 26 Q30 28 28 28 L4 28 Q2 28 2 26 Z';
   return (
     <Box x={x} y={y} offY={-4} w={32} h={32}>
       <Svg viewBox="0 0 32 32" width={32 * S} height={32 * S}>
-        {/* gooseneck faucet */}
-        <Rect x={15} y={0} width={2} height={6} fill={METAL} stroke={C} strokeWidth={0.4} />
-        <Rect x={15} y={6} width={6} height={2} fill={METAL} stroke={C} strokeWidth={0.4} />
-        <Rect x={19} y={8} width={2} height={3} fill="#6B7280" stroke={C} strokeWidth={0.4} />
-        <Rect x={19.5} y={11} width={1} height={4} fill="#7DD3FC" />
-        {/* knee/elbow paddles */}
-        <Circle cx={12} cy={4} r={1.5} fill="#3B82F6" stroke={C} strokeWidth={0.3} />
-        <Circle cx={24} cy={4} r={1.5} fill="#EF4444" stroke={C} strokeWidth={0.3} />
-        {/* basin rim + water */}
-        <Ellipse cx={16} cy={14} rx={12} ry={4} fill="#E5E7EB" stroke={C} strokeWidth={0.5} />
-        <Ellipse cx={16} cy={13} rx={11} ry={3} fill="#F3F4F6" />
-        <Ellipse cx={16} cy={15} rx={10} ry={2.5} fill="#A8DCEC" />
-        {/* basin front + drain + base */}
-        <Path d="M4 14 L28 14 L26 22 L6 22 Z" fill={METAL} stroke={C} strokeWidth={0.4} />
-        <Path d="M4 14 L6 14 L6 22 L4 22 Z" fill="#CBD5E1" />
-        <Rect x={14} y={22} width={4} height={3} fill="#6B7280" stroke={C} strokeWidth={0.4} />
-        <Rect x={6} y={25} width={20} height={3} fill={METAL} stroke={C} strokeWidth={0.4} />
-        <Rect x={7} y={25.5} width={18} height={1} fill="#CBD5E1" />
-        <Rect x={4} y={28} width={3} height={4} fill={METAL_DK} stroke={C} strokeWidth={0.3} />
-        <Rect x={25} y={28} width={3} height={4} fill={METAL_DK} stroke={C} strokeWidth={0.3} />
+        {/* full silhouette (counter top + front apron) */}
+        <Path d={sil} fill="#AEB4BC" />
+        {/* TOP counter face */}
+        <Path d="M2 3 L30 3 L30 20 L2 20 Z" fill="#E1E5EA" />
+        {/* gooseneck faucet + hot/cold seen from above */}
+        <Rect x={15} y={4} width={2} height={4} rx={0.4} fill="#9CA3AF" stroke={C} strokeWidth={0.35} />
+        <Path d="M16 4.5 Q21 4.5 21 9" fill="none" stroke="#B7BEC6" strokeWidth={1.6} />
+        <Rect x={20.4} y={9} width={1.2} height={2.4} fill="#7DD3FC" />
+        <Circle cx={11} cy={5.4} r={1.4} fill="#3B82F6" stroke={C} strokeWidth={0.3} />
+        <Circle cx={21} cy={5.4} r={1.4} fill="#EF4444" stroke={C} strokeWidth={0.3} />
+        {/* deep elongated scrub basin inset on the counter */}
+        <Rect x={5} y={9.5} width={22} height={9} rx={3} fill="#C7CDD4" stroke={C} strokeWidth={0.5} />
+        <Rect x={6.5} y={10.6} width={19} height={6.6} rx={2.4} fill="#A8DCEC" />
+        <Ellipse cx={16} cy={14} rx={1.3} ry={0.8} fill="#5B8FA8" />
+        {/* seam → front apron */}
+        <Line x1={2} y1={20} x2={30} y2={20} stroke={C} strokeWidth={0.55} />
+        <Rect x={3} y={21} width={26} height={1} fill="#C6C2B6" />
+        {/* knee/foot paddle on the front apron */}
+        <Rect x={12} y={22.4} width={8} height={2.2} rx={1} fill="#8A929B" stroke={C} strokeWidth={0.4} />
+        {/* outer outline */}
+        <Path d={sil} fill="none" stroke={C} strokeWidth={0.65} />
       </Svg>
     </Box>
   );
