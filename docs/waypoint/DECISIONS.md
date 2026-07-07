@@ -502,3 +502,19 @@
 - **근거:** 사용자가 OR/ICU를 ER처럼 철저히 검증 요청("전부 다시 구현하며 검증"). 소스 대조상 이미 1:1이라 재구현 대신
   화면 검증으로 충실성 실증. 하네스는 Peds 이하 전 부서 재사용.
 - **결정자:** 사용자(수술등 70% 유지·더 깊은 대조 요청) + AI(하네스 구축·전 구역 검증).
+
+## 2026-07-07 · design-handoff_v11 채택 — 장비 2.5D 재포팅
+- **결정:** 핸드오프 v11(장비를 평면 2D→RPG-Maker 2.5D로 개정: 통합 둥근 실루엣 fill+재stroke, 명시적 상단면,
+  seam, viewer-facing 전면 패널, 어두운 바퀴)을 현행 SoT로 채택. 구현된 부서 장비를 v11로 대대적 재포팅.
+- **재포팅 범위:** `sharedEquipment`(IPlant·SinkOR·InstrumentTray·Ventilator·CrashCart·PyxisMachine),
+  `icuEquipment`(CRRT·TTM), `orEquipment`(BairHugger·Bovie·RoboticConsole·LapTower·CO2Insufflator·
+  ScrubDispenser·SoiledCart·AnesthesiaMachine), `erEquipment`(Defib·OxygenTank·EKG·CompCart·Sink·SuctionUnit·
+  Wheelchair·VitalsCart·IVPump·DressingCart·WaterCooler·PPEStand·Otoscope·TicketDispenser·SecurityScanner·
+  MetalDetector·MedFridge·CoffeeTable). **그림자-방향만 바뀐 오브젝트는 미변경**(RN 포팅은 CSS drop-shadow 생략).
+- **검증:** tsc 0 · ER viewBox parity 자동 대조(전 오브젝트 v11 일치) · iOS 시뮬레이터 렌더 확인(ER resus/lobby,
+  OR1/OR2, ICU CRRT). ER은 서브에이전트 포팅 후 viewBox 대조+시뮬로 검증.
+- **문서:** departments README에 "v11 2.5D 장비 규약" 명문화(신규 부서는 v11 따름) + SoT 경로 v10→v11.
+  렌더 하네스(_hoff-harness.html)를 v11 reference dir로 이관.
+- **미구현 부서(peds/pharma/ward/surgward/orthoward/derm):** 코드 미구현 → 계획 문서(README)가 v11을 가리키도록
+  갱신, 착수 시 v11 2.5D 규약으로 포팅.
+- **결정자:** 사용자(v11 반영·대대적 수정 지시) + AI(재포팅·검증·문서).

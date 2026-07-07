@@ -12,7 +12,7 @@ updated: 2026-07-01
 |---|---|
 | interior id | `INT-ICU-00001` (deptId `DEPT-ICU-00001`) |
 | fixture | `mobile/src/map/fixtures/icu.ts` (`ICU_INTERIOR`) |
-| SoT(핸드오프) | `interior-icu.jsx` + `interior-objects-icu2.jsx`·`interior-shared.jsx` |
+| SoT(핸드오프) | `design-handoff_v11` `interior-icu.jsx` + `interior-objects-icu2.jsx`·`interior-shared.jsx` (**v11 2.5D**) |
 | 그리드 | 34 cols × 44 rows · floorTheme `ICU` · scale **0.85** |
 | playerStart | `{16,26}` (허브 open floor; 16,23은 데스크라 회피) |
 

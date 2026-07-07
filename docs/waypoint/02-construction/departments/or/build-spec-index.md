@@ -12,7 +12,7 @@ updated: 2026-07-01
 |---|---|
 | interior id | `INT-OR-00001` (deptId `DEPT-OR-00001`) |
 | fixture | `mobile/src/map/fixtures/or.ts` (`OR_INTERIOR`) |
-| SoT(핸드오프) | `interior-or.jsx` + `interior-objects-or2.jsx`·`interior-shared.jsx` |
+| SoT(핸드오프) | `design-handoff_v11` `interior-or.jsx` + `interior-objects-or2.jsx`·`interior-shared.jsx` (**v11 2.5D**) |
 | 그리드 | 40 cols × 52 rows · floorTheme `sterile` · scale **0.85** |
 | playerStart | `{7,40}` (OR1 open floor) |
 

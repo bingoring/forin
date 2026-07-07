@@ -32,7 +32,7 @@ updated: 2026-07-01
 | 정형 병동 | orthoward/ | ⬜ 예정 | `INT-ORTHOWARD-00001` | `interior-orthoward.jsx` + `interior-objects-ortho2.jsx` |
 | 피부과 센터 | dermcenter/ | ⬜ 예정 | `INT-DERM-00001` | `interior-dermcenter.jsx` + `interior-objects-derm2.jsx` |
 
-핸드오프 경로: `../../inputs/design-handoff_v10/reference/`.
+핸드오프 경로: `../../inputs/design-handoff_v11/reference/` (**현행 v11** — 장비가 2.5D 쯔꾸르식으로 개정됨; v10은 이전 버전).
 
 ---
 
@@ -51,6 +51,14 @@ updated: 2026-07-01
 - **door**(외부 auto 도어): `type:'door'`, `props:{w,kind:'auto',label?}`. 캠퍼스/엘리베이터 진입구·외부 연결에만.
 - **glass**(`IGlass`, 투명 유리벽): `type:'glass'`, `props:{w,h}`. **objectCollision으로 차단**(정적 collision에 안 넣어도 막힘). ICU 4인실 벽 등.
 - **tint**(`Tint`, 반투명 바닥 오버레이, 비차단): `type:'tint'`, `props:{w,h,color,op}`. 특수실 조도(정신/임종/제염/OR sterile/ICU dim).
+
+### v11 2.5D 장비 규약 (2026-07-07 — 필수)
+핸드오프 v11에서 장비 대부분이 **평면 2D → RPG-Maker 2.5D**로 개정됨. 신규 부서 장비 포팅 시 v11 소스를 그대로 따른다:
+- **통합 실루엣**: 몸체를 둥근 모서리(`Q` 커브) `Path` 하나로 fill → 마지막에 같은 `d`로 재-stroke(외곽선).
+- **명시적 TOP 면**: 상단을 더 밝은 색 별도 `Path`로(예 몸체 #8A929B / 상단 #A6ADB5), 상단↔전면 경계에 **seam** `Line`.
+- **viewer-facing 전면 패널**: 화면·노브·드로어를 전면에. 바퀴는 어두운 `#2C3239` Ellipse.
+- `shapeRendering`는 RN 기본값 사용(핸드오프의 `geometricPrecision`은 곡선 의도 — `Q`/`rx` 그대로 포팅). CSS `drop-shadow` filter는 **생략**(RN 미지원, 몸체 음영으로 대체).
+- 구현 완료(ER/OR/ICU/shared): `erEquipment`·`orEquipment`·`icuEquipment`·`sharedEquipment`가 v11로 재포팅됨(그림자-방향만 바뀐 오브젝트는 미변경). 예시 = `sharedEquipment.tsx`의 CrashCart/Ventilator/Pyxis/SinkOR, `icuEquipment.tsx`의 CRRT/TTM.
 
 ### 오브젝트 렌더 파이프라인
 - 디스패치(`objects/index.tsx` `InteriorObjectView`): `bed/monitor/reception/door/building/tree/landmark/threshold/glass` 특수 처리,
@@ -86,7 +94,7 @@ updated: 2026-07-01
 3. `npx expo export -p ios` 성공(번들).
 4. **화면 단위 핸드오프 대조**(핵심):
    - **4-a 앱 캡처:** Metro(`expo start`, 8081) + `xcrun simctl openurl booted "exp://127.0.0.1:8081/--/interior/<INT-ID>?ex=<t>&ey=<t>"`로 방마다 스폰 → `xcrun simctl io booted screenshot` → 크롭. 전 구역을 커버. (딥링크 반복 시 Expo Go가 홈으로 튕김 → `openurl exp://127.0.0.1:8081`로 클린 리로드 후 재시도.)
-   - **4-b 핸드오프 ground truth 렌더:** `inputs/design-handoff_v10/reference/_hoff-harness.html`(재사용) — 디자인 JSX를 Chrome headless로 전체 바닥 flat-render. `python3 -m http.server 8770` (reference dir) 후
+   - **4-b 핸드오프 ground truth 렌더:** `inputs/design-handoff_v11/reference/_hoff-harness.html`(재사용) — 디자인 JSX를 Chrome headless로 전체 바닥 flat-render. `python3 -m http.server 8770` (현행 v11 reference dir) 후
      `"Google Chrome" --headless=new --window-size=<cols*32>,<rows*32> --virtual-time-budget=15000 --screenshot=/tmp/hoff-<x>.png "http://localhost:8770/_hoff-harness.html#<DEPT>"` (해시=OR/ICU/PEDS…). 부서 추가 시 하네스 `<script>` 목록에 해당 `interior-*.jsx`·`interior-objects-*2.jsx` 추가.
    - **4-c 대조:** 4-a ↔ 4-b를 구역별로 비교, 오브젝트·좌표·NPC·마커·팔레트 일치 확인 후 편차만 §편차에 기록.
    - (web export는 react-native-svg가 깨져 부정확 — 시뮬레이터/네이티브만 신뢰.)
