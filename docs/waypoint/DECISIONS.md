@@ -527,3 +527,13 @@
   (핸드오프 좌표 그대로, 커스텀 viewBox는 밑면 맞춤). er/or은 서브에이전트 포팅 후 tsc+시뮬 검증, icu/shared는 직접.
 - **검증:** tsc 0 · jest 56/56 · 시뮬레이터(ER resus·ICU CRRT 접지 그림자 확인). 문서 SoT v11→v13, README에 v13 접지 규약 추가, 하네스 v13로.
 - **결정자:** 사용자(v13 적용 지시) + AI(diff·반영·검증).
+
+## 2026-07-10 · 5g-d Peds+NICU 구현 (v13)
+- **결정:** Peds+NICU 인테리어를 v13 핸드오프에서 1:1 구현. 34×48, floorTheme 'peds', 5구역(welcome/exam/ward/ante/nicu),
+  NICU 유리 전실 + sterile 3분 스크럽 threshold + 인큐베이터 존(저조도 tint). 신규 `pedsEquipment.tsx` 16종
+  (incubator·phototherapy·metalcrib·ivboard·babyscale·stadiometer·tonguejar·stickerroll·dosingchart·milkfridge + 놀이방
+  smallslide·rockinghorse·toychest·blocks·mural·balloon). `ibed variant='peds'` 재사용. phototherapy = OVERHEAD z.
+- **해소된 질문:** Q1 시나리오=**라벨만**(scenarioId 후속) · Q2 엘리베이터=**타워 5F 신설**(entry 16,1) · Q3 = ibed peds 변형 기존 재사용.
+- **검증:** tsc 0 · jest 61/61(peds-fixture 5: 도달성·threshold·유리벽·footprint) · 시뮬레이터 welcome/ward/NICU 렌더 확인.
+- **편차:** scale 0.85 · 놀이매트 tint 근사 · Mural clipPath 평면 근사 · RockingHorse/Balloon 정적(bob 후속) · 시나리오 라벨만.
+- **결정자:** 사용자(5F·라벨만 선택, "Peds 진행") + AI(Build Spec·구현·검증). Peds 카탈로그는 서브에이전트 생성 후 tsc+시뮬 검증.

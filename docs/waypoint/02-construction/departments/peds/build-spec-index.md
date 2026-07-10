@@ -1,7 +1,7 @@
 ---
 build-spec: departments/peds
 stage: 02-construction / 05-map-engine (5g-d)
-status: DRAFT
+status: IMPLEMENTED
 depth: comprehensive
 updated: 2026-07-10
 ---
@@ -50,26 +50,31 @@ updated: 2026-07-10
 | 엘리베이터 | 타워 4F(또는 신규 층) 진입 배선 | `map/ElevatorScreen.tsx` |
 | 테스트 | 도달성·통행·차단·유리벽 가드 | `map/peds-fixture.test.ts` (신규) |
 
-## §3. 미해결 질문 (구현 착수 전 해소)
-- [ ] **Q1 시나리오 배선:** peds 시나리오 id가 `content/scenarios.ts`에 아직 없음. 마커 라벨(성장 문진·투약 소분·위관영양 등)만 우선 배치하고 scenarioId는 콘텐츠 준비 후 연결? (제안: 라벨만, scenarioId 후속)
-- [ ] **Q2 엘리베이터 층:** Peds는 몇 층에 배치? (ER 1F·OR 3F·ICU 4F 사용 중 → Peds 5F 신설? 또는 기존 층 재배치?) 타워 `ELEVATOR_BUILDINGS` 확인 필요.
-- [ ] **Q3 `ibed` peds 변형:** 핸드오프 `<IBed variant="peds">`(주황 프레임·핑크 매트리스, `PedsBed`)가 sharedEquipment `IBed`에 이미 있는지 확인 → 없으면 추가 vs pedsEquipment에 별도 `PedsBed`.
+## §3. 미해결 질문 — 해소됨
+- **Q1 시나리오 배선** → **라벨만**(사용자 확정). 마커 라벨만 배치, scenarioId는 콘텐츠 준비 후 연결(business-logic-model §3).
+- **Q2 엘리베이터 층** → **타워 5F 신설**(사용자 확정). `ELEVATOR_BUILDINGS.tower`에 5F 추가, entry `{16,1}`.
+- **Q3 ibed peds 변형** → 해결: sharedEquipment `IBed`에 이미 `peds` 변형(주황 프레임·핑크 시트·초록 담요) 존재 → `ibed variant='peds'` 사용(별도 PedsBed 불필요).
 
 ## §4. 구현 체크리스트
-- [ ] regions/rooms/collision(외벽·divider·exam|ward·NICU 유리벽)
-- [ ] threshold(진료실/병동/NICU전실/스크럽) · door(캠퍼스) · glass(x9) · tint(NICU)
-- [ ] 오브젝트 배치(외래·진료·병동·전실·NICU) — domain-entities §
-- [ ] 신규 카탈로그 `pedsEquipment.tsx`(peds2 10 + 놀이방 7) + footprint
-- [ ] NPC 캐스트 + 마커
-- [ ] `PedsObjectView` 디스패치 + fixture 등록 + 엘리베이터
-- [ ] `peds-fixture.test.ts`
-- [ ] tsc/jest/expo + **시뮬레이터 구역별 v13 대조**
+- [x] regions/rooms/collision(외벽·divider·exam|ward·NICU 유리벽)
+- [x] threshold(진료실/병동/NICU전실/스크럽) · door(캠퍼스) · glass(x9) · tint(NICU)
+- [x] 오브젝트 배치(외래·진료·병동·전실·NICU)
+- [x] 신규 카탈로그 `pedsEquipment.tsx`(16종: peds2 10 + 놀이방 6) + footprint
+- [x] NPC 캐스트 22 + 마커(오브젝트 속성)
+- [x] `PedsObjectView` 디스패치 + `FIXTURES` 등록 + 엘리베이터 5F
+- [x] `peds-fixture.test.ts`
+- [x] tsc/jest + 시뮬레이터 렌더 확인
 
-## §5. 검증 계획
-- `tsc` 0 · `jest`(peds-fixture: playerStart open · 5 room 도달 · threshold 통행 · NICU 유리벽 차단 · 인큐베이터/크립 footprint) · `expo export`.
-- **화면 단위 v13 대조**(README §4): 하네스 `#PEDS` ground truth ↔ 시뮬레이터 구역(외래·놀이·진료·병동·전실·NICU) 대조.
+## §5. 검증 결과
+- `tsc` 0 · `jest` **61/61**(peds-fixture 5: playerStart open · 5 room 도달 · threshold 통행 · NICU 유리벽 차단 · 인큐베이터/크립 footprint).
+- **시뮬레이터**(2026-07-10, 종료 후 재기동): welcome/play·ward·NICU 렌더 확인 — peds 바닥테마·접수·놀이방(풍선/벽화/장난감)·베이비스케일·크립·인큐베이터·광선치료기(OVERHEAD)·마커 정상.
 
-## §7. 편차 로그 (구현 후 기록)
+## §7. 편차 로그 (SoT 대비)
 | SoT | 실제 | 사유 |
 |---|---|---|
-| (구현 후) | | |
+| 뷰 무관 | scale 0.85 | 34폭 방 뷰포트 맞춤(ER/OR/ICU 일관) |
+| 놀이매트 div rect(dashed) | tint(#FED7AA op0.55) | RN에 dashed bg 대체, 장식 근사 |
+| Mural clipPath 언덕 | 평면 초록 밴드 | RN View clipPath 미지원 근사 |
+| RockingHorse·Balloon `forinBob` | 정적 | 애니 후속(bob) |
+| 시나리오 마커 | 라벨만(scenarioId 없음) | peds 시나리오 콘텐츠 후속(Q1) |
+나머지 좌표·오브젝트·NPC는 `interior-peds.jsx`와 1:1.
