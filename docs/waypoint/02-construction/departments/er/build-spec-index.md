@@ -12,7 +12,7 @@ updated: 2026-07-01
 |---|---|
 | interior id | `INT-ER-00001` (deptId `DEPT-ER-00001`) |
 | fixture | `mobile/src/map/fixtures/er.ts` (`ER_INTERIOR`) |
-| SoT(핸드오프) | `inputs/design-handoff_v11/reference/interior-er.jsx` + `interior-objects-er{,2,3}.jsx`·`interior-shared.jsx` (**v11 2.5D**) |
+| SoT(핸드오프) | `inputs/design-handoff_v13/reference/interior-er.jsx` + `interior-objects-er{,2,3}.jsx`·`interior-shared.jsx` (**v13**) |
 | 그리드 | 40 cols × 60 rows · floorTheme `clinical` · scale **0.85** |
 | playerStart | `{19,28}` (중앙 너스 스테이션 well) · 엘리베이터 진입 시 `?ex&ey` 오버라이드 |
 

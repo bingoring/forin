@@ -518,3 +518,12 @@
 - **미구현 부서(peds/pharma/ward/surgward/orthoward/derm):** 코드 미구현 → 계획 문서(README)가 v11을 가리키도록
   갱신, 착수 시 v11 2.5D 규약으로 포팅.
 - **결정자:** 사용자(v11 반영·대대적 수정 지시) + AI(재포팅·검증·문서).
+
+## 2026-07-10 · handoff v12·v13 diff 확인 + v13 접지 그림자 반영
+- **v11→v12:** 인테리어/장비 변화 없음(캠퍼스 건물 `buildings-v2.jsx`/신규 `ds-buildings.jsx` + explore 화면만). 우리 작업 무관.
+- **v12→v13:** 장비 그림자 모델 교체 — 하드 CSS `drop-shadow` 제거(RN 포팅은 이미 생략) + 각 **바닥형 오브젝트** svg 첫 자식으로
+  **접지 그림자 타원** `rgba(0,0,0,.16)` 추가(벽걸이/천장/얇은 것 제외). 레이아웃·픽스처·NPC 변경 0(interior-er.jsx는 아예 무변경).
+- **결정:** v13을 현행 SoT로. 구현 4파일에 접지 그림자 반영 — er 38 · or 12 · icu 8 · shared 12개 바닥 오브젝트에 `<Ellipse>` 첫 자식 추가
+  (핸드오프 좌표 그대로, 커스텀 viewBox는 밑면 맞춤). er/or은 서브에이전트 포팅 후 tsc+시뮬 검증, icu/shared는 직접.
+- **검증:** tsc 0 · jest 56/56 · 시뮬레이터(ER resus·ICU CRRT 접지 그림자 확인). 문서 SoT v11→v13, README에 v13 접지 규약 추가, 하네스 v13로.
+- **결정자:** 사용자(v13 적용 지시) + AI(diff·반영·검증).
