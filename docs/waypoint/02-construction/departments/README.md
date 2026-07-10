@@ -25,7 +25,7 @@ updated: 2026-07-01
 | ER 응급의료센터 | [er/](er/build-spec-index.md) | ✅ 구현 (**참고 기준**) | `INT-ER-00001` | `interior-er.jsx` + `interior-objects-er{,2,3}.jsx` |
 | OR 수술실+PACU | [or/](or/build-spec-index.md) | ✅ 구현 | `INT-OR-00001` | `interior-or.jsx` + `interior-objects-or2.jsx` |
 | ICU 중환자실 | [icu/](icu/build-spec-index.md) | ✅ 구현 | `INT-ICU-00001` | `interior-icu.jsx` + `interior-objects-icu2.jsx` |
-| Peds+NICU 소아 | peds/ | ⬜ 예정 (다음) | `INT-PEDS-00001` | `interior-peds.jsx` + `interior-objects-peds2.jsx` |
+| Peds+NICU 소아 | [peds/](peds/build-spec-index.md) | 📝 스펙 작성(구현 대기) | `INT-PEDS-00001` | `interior-peds.jsx` + `interior-objects-peds2.jsx` |
 | Pharmacy 약국 | pharma/ | ⬜ 예정 | `INT-PHARMA-00001` | `interior-pharma.jsx` + `interior-objects-pharma2.jsx` |
 | 내과 병동 | ward/ | ⬜ 예정 | `INT-WARD-00001` | `interior-ward.jsx` + `interior-objects-ward2.jsx` |
 | 외과 병동 | surgward/ | ⬜ 예정 | `INT-SURGWARD-00001` | `interior-surgward.jsx` + `interior-objects-surg2.jsx` |
