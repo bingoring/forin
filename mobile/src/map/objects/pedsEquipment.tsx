@@ -446,10 +446,31 @@ export function Balloon({ x, y, c }: { x: number; y: number; c: string }) {
   );
 }
 
+// ─── PlayMat — welcome-area play zone floor (opaque salmon + dashed border) ──
+export function PlayMat({ x, y, w = 12, h = 8 }: { x: number; y: number; w?: number; h?: number }) {
+  return (
+    <View
+      pointerEvents="none"
+      style={{
+        position: 'absolute',
+        left: x * TILE + 2,
+        top: y * TILE + 2,
+        width: w * TILE - 4,
+        height: h * TILE - 4,
+        backgroundColor: '#FED7AA',
+        borderWidth: 2,
+        borderStyle: 'dashed',
+        borderColor: '#2A252555',
+      }}
+    />
+  );
+}
+
 /** Render a Pediatrics-specific object by type. null if unknown. */
 export function PedsObjectView({ object }: { object: MapObject }): ReactElement | null {
   const { type, x, y, props } = object;
   switch (type) {
+    case 'playmat': return <PlayMat x={x} y={y} w={typeof props?.w === 'number' ? props.w : 12} h={typeof props?.h === 'number' ? props.h : 8} />;
     case 'incubator': return <Incubator x={x} y={y} occupied={props?.occupied !== false} />;
     case 'phototherapy': return <PhototherapyLamp x={x} y={y} w={typeof props?.w === 'number' ? props.w : 2} />;
     case 'metalcrib': return <MetalCrib x={x} y={y} occupied={!!props?.occupied} />;

@@ -79,7 +79,7 @@ const objBaseY = (o: MapObject) => o.y + (typeof o.props?.h === 'number' ? (o.pr
 // down) → fixed high z, above objects + sprites but below markers/room-mask.
 const OVERHEAD = new Set(['surgicallight', 'phototherapy']);
 // Wall/ceiling backdrops sit BEHIND the equipment in front of them → low z.
-const CEILING = new Set(['orboommonitor', 'bankofmonitors']);
+const CEILING = new Set(['orboommonitor', 'bankofmonitors', 'playmat']);
 const OVERHEAD_Z = 8000;
 
 // Player glides between tiles (06_CHARACTER_MOTION §2: ~0.3-0.55s tween) rather

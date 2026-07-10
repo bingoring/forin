@@ -45,8 +45,8 @@ export const PEDS_INTERIOR: Interior = {
   objects: [
     // NICU low-light tint (non-blocking)
     { id: 't-nicu', type: 'tint', x: 1, y: 30, props: { w: 32, h: 16, color: '#1E2A40', op: 0.15 } },
-    // welcome play mat (decorative floor)
-    { id: 't-play', type: 'tint', x: 20, y: 3, props: { w: 12, h: 8, color: '#FED7AA', op: 0.55 } },
+    // welcome play mat (opaque salmon floor mat + dashed border, per handoff)
+    { id: 'o-play-mat', type: 'playmat', x: 20, y: 3, props: { w: 12, h: 8 } },
     // exterior campus auto door
     { id: 'd-campus', type: 'door', x: 15, y: 0, props: { w: 3, kind: 'auto', label: '↓ 캠퍼스로' } },
     // internal thresholds
@@ -61,7 +61,7 @@ export const PEDS_INTERIOR: Interior = {
 
     // ════════ WELCOME · 외래 (y1-13) ════════
     { id: 'bl-welcome', type: 'baylabel', x: 1, y: 1, props: { text: '환영 · 외래 · 4F' } },
-    { id: 'o-w-recep', type: 'clinicreception', x: 13, y: 3, props: { w: 6, tone: '#DB2777', label: '접수' } },
+    { id: 'o-w-recep', type: 'clinicReception', x: 13, y: 3, props: { w: 6, tone: '#DB2777', label: '접수' } },
     { id: 'bl-measure', type: 'baylabel', x: 1, y: 2, props: { text: '계측' } },
     { id: 'o-w-babyscale', type: 'babyscale', x: 2, y: 4 },
     { id: 'o-w-stadiometer', type: 'stadiometer', x: 5, y: 4, props: { marker: 'info', markerLabel: '성장 계측' } },
