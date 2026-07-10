@@ -73,8 +73,9 @@ updated: 2026-07-10
 | SoT | 실제 | 사유 |
 |---|---|---|
 | 뷰 무관 | scale 0.85 | 34폭 방 뷰포트 맞춤(ER/OR/ICU 일관) |
-| 놀이매트 div rect(dashed) | tint(#FED7AA op0.55) | RN에 dashed bg 대체, 장식 근사 |
 | Mural clipPath 언덕 | 평면 초록 밴드 | RN View clipPath 미지원 근사 |
 | RockingHorse·Balloon `forinBob` | 정적 | 애니 후속(bob) |
 | 시나리오 마커 | 라벨만(scenarioId 없음) | peds 시나리오 콘텐츠 후속(Q1) |
 나머지 좌표·오브젝트·NPC는 `interior-peds.jsx`와 1:1.
+
+**사용자 피드백 반영(2026-07-10):** ① 접수대 미렌더 → type `clinicreception`→`clinicReception`(dispatch camelCase 불일치) 수정. ② 놀이매트 반투명 tint → **불투명 `#FED7AA` + 점선 테두리** 전용 `playmat` 오브젝트(핸드오프 그대로, CEILING 저-z로 놀이기구 뒤). ③ 캠퍼스 문(x15 w3)·진료실 NPC(의사+아이+부모, 아이 작은 스프라이트)는 핸드오프와 이미 일치 확인(문이 이상해 보인 건 접수대 누락, exam '여분 어른'은 딥링크로 방에 선 플레이어(간호사)였음).
