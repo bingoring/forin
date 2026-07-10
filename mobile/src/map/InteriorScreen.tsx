@@ -77,7 +77,7 @@ const zFor = (baseY: number) => Math.round(baseY * 10) + 10;
 const objBaseY = (o: MapObject) => o.y + (typeof o.props?.h === 'number' ? (o.props.h as number) : OBJECT_FOOTPRINT[o.type]?.h ?? 1);
 // OVERHEAD fixtures hang from the ceiling ABOVE everything (surgical light shining
 // down) → fixed high z, above objects + sprites but below markers/room-mask.
-const OVERHEAD = new Set(['surgicallight']);
+const OVERHEAD = new Set(['surgicallight', 'phototherapy']);
 // Wall/ceiling backdrops sit BEHIND the equipment in front of them → low z.
 const CEILING = new Set(['orboommonitor', 'bankofmonitors']);
 const OVERHEAD_Z = 8000;

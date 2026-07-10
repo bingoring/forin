@@ -64,6 +64,17 @@ export const OBJECT_FOOTPRINT: Record<string, { w: number; h: number }> = {
   evdstand: { w: 1, h: 1 },
   icpmonitor: { w: 1, h: 1 },
   ttmunit: { w: 2, h: 2 },
+  // Peds floor equipment (interior-objects-peds2 + play). Wall/tabletop/ceiling
+  // pieces (dosingchart/mural/stickerroll/tonguejar/ivboard/balloon/blocks/
+  // phototherapy) are walkable → no footprint.
+  incubator: { w: 2, h: 2 },
+  metalcrib: { w: 2, h: 3 },
+  babyscale: { w: 1, h: 1 },
+  stadiometer: { w: 1, h: 2 },
+  milkfridge: { w: 1, h: 2 },
+  toychest: { w: 2, h: 1 },
+  rockinghorse: { w: 2, h: 1 },
+  smallslide: { w: 2, h: 2 },
 };
 
 /** Blocked rectangles contributed by solid objects (doors are walkable → skipped).

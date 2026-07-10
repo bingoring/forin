@@ -13,6 +13,7 @@ import { IThreshold, IGlass } from './structures';
 import { ErObjectView } from './erEquipment';
 import { OrObjectView } from './orEquipment';
 import { IcuObjectView } from './icuEquipment';
+import { PedsObjectView } from './pedsEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -341,6 +342,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         ErObjectView({ object }) ??
         OrObjectView({ object }) ??
         IcuObjectView({ object }) ??
+        PedsObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );
