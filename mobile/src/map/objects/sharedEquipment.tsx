@@ -50,6 +50,7 @@ export function IBed({ x, y, variant = 'ward', occupied }: { x: number; y: numbe
   return (
     <Box x={x} y={y} w={32} h={48}>
       <Svg viewBox="0 0 32 48" width={32 * S} height={48 * S}>
+        <Ellipse cx={16} cy={45} rx={14} ry={4} fill="rgba(0,0,0,0.16)" />
         {/* headboard */}
         <Rect x={1} y={0} width={30} height={2} fill={p.frameLt} />
         <Rect x={2} y={0.5} width={28} height={0.6} fill={p.frame} />
@@ -127,6 +128,7 @@ export function IMonitor({ x, y, beep }: { x: number; y: number; beep?: boolean 
   return (
     <Box x={x} y={y} offY={-2} w={18} h={34}>
       <Svg viewBox="0 0 18 34" width={18 * S} height={34 * S}>
+        <Ellipse cx={9} cy={33} rx={6} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* top face + right side */}
         <Rect x={4} y={0} width={13} height={3} fill={METAL} stroke={C} strokeWidth={0.5} />
         <Rect x={15} y={2} width={3} height={20} fill={METAL_DK} stroke={C} strokeWidth={0.4} />
@@ -215,6 +217,7 @@ export function IReception({ x, y, w = 4, h = 2 }: { x: number; y: number; w?: n
   return (
     <Box x={x} y={y} offY={-4} w={W} h={H}>
       <Svg viewBox={`0 0 ${W} ${H}`} width={W * S} height={H * S} preserveAspectRatio="none">
+        <Ellipse cx={W / 2} cy={H - 0.5 - W * 0.08} rx={W * 0.42} ry={W * 0.08} fill="rgba(0,0,0,0.16)" />
         {/* desk top */}
         <Path d={`M3 1 L${W - 3} 1 L${W - 1} ${topB} L1 ${topB} Z`} fill="#ECEAE1" stroke={C} strokeWidth={0.5} />
         <Path d={`M4 1.5 L${W - 4} 1.5 L${W - 5} 3.4 L5 3.4 Z`} fill="#FAF8F2" />
@@ -333,6 +336,7 @@ export function IPlant({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-6} w={16} h={22}>
       <Svg viewBox="0 0 16 22" width={16 * S} height={22 * S}>
+        <Ellipse cx={8} cy={21} rx={5.4} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* foliage rising from the pot */}
         <Rect x={6} y={2} width={3} height={8} fill="#4A7A4A" />
         <Rect x={4} y={4} width={3} height={6} fill="#3E6B3A" />
@@ -358,6 +362,7 @@ export function ExamStool({ x, y, color = '#4B5563' }: { x: number; y: number; c
   return (
     <Box x={x} y={y} offX={2} offY={2} w={12} h={12}>
       <Svg viewBox="0 0 12 12" width={12 * S} height={12 * S}>
+        <Ellipse cx={6} cy={11} rx={4} ry={1.5} fill="rgba(0,0,0,0.16)" />
         <Ellipse cx={6} cy={3} rx={5} ry={2.5} fill={color} stroke={C} strokeWidth={0.4} />
         <Ellipse cx={6} cy={2.4} rx={4} ry={1.6} fill="#6B7280" />
         <Rect x={5} y={4} width={2} height={4} fill={METAL} />
@@ -413,6 +418,7 @@ export function InstrumentTray({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={30.4} h={25.6}>
       <Svg viewBox="0 0 30 26" width={30.4 * S} height={25.6 * S}>
+        <Ellipse cx={15} cy={23.5} rx={10.2} ry={3.5} fill="rgba(0,0,0,0.16)" />
         {/* stand pole + base behind */}
         <Rect x={14} y={17} width={2} height={6} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
         <Ellipse cx={15} cy={24} rx={6} ry={1.6} fill="#4B5563" stroke={C} strokeWidth={0.3} />
@@ -442,6 +448,7 @@ export function XrayViewbox({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} w={32} h={22}>
       <Svg viewBox="0 0 32 22" width={32 * S} height={22 * S}>
+        <Ellipse cx={16} cy={20.5} rx={10.9} ry={2.2} fill="rgba(0,0,0,0.16)" />
         <Rect x={1} y={1} width={30} height={20} fill="#E5E7EB" stroke={C} strokeWidth={0.6} />
         <Rect x={3} y={3} width={12} height={16} fill="#1E3A5F" />
         <Rect x={17} y={3} width={12} height={16} fill="#1E3A5F" />
@@ -461,6 +468,7 @@ export function CastCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} w={22} h={26}>
       <Svg viewBox="0 0 22 26" width={22 * S} height={26 * S}>
+        <Ellipse cx={11} cy={24} rx={7.5} ry={2.4} fill="rgba(0,0,0,0.16)" />
         <Path d="M2 2 L20 2 L21 4 L1 4 Z" fill={METAL} stroke={C} strokeWidth={0.4} />
         <Rect x={1} y={4} width={20} height={16} fill="#CBD5E1" stroke={C} strokeWidth={0.5} />
         <Ellipse cx={6} cy={8} rx={3} ry={2} fill="#fff" stroke={C} strokeWidth={0.4} />
@@ -481,6 +489,7 @@ export function Ventilator({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-8} w={25.6} h={46.4}>
       <Svg viewBox="0 0 26 46" width={25.6 * S} height={46.4 * S}>
+        <Ellipse cx={13} cy={44} rx={8.8} ry={3} fill="rgba(0,0,0,0.16)" />
         {/* touchscreen monitor on a stalk */}
         <Rect x={3} y={1} width={18} height={12} rx={1.2} fill="#1B2128" stroke={C} strokeWidth={0.6} />
         <Rect x={4.2} y={2.2} width={15.6} height={9.6} rx={0.5} fill="#0B1622" />
@@ -522,6 +531,7 @@ export function CrashCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-3} w={22.4} h={30.4}>
       <Svg viewBox="0 0 22 30" width={22.4 * S} height={30.4 * S}>
+        <Ellipse cx={11} cy={28.4} rx={7.5} ry={2.6} fill="rgba(0,0,0,0.16)" />
         <Path d={sil} fill="#B91C1C" />
         {/* TOP lid face — defib on top */}
         <Path d="M2 1 Q1 1 1 2 L1 9 L21 9 L21 2 Q21 1 20 1 Z" fill="#DC2626" />
@@ -555,6 +565,7 @@ export function PyxisMachine({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-3} w={32} h={33.6}>
       <Svg viewBox="0 0 32 34" width={32 * S} height={33.6 * S}>
+        <Ellipse cx={16} cy={31.3} rx={10.9} ry={3.7} fill="rgba(0,0,0,0.16)" />
         <Path d={sil} fill="#8A929B" />
         {/* TOP lid face */}
         <Path d="M3 1 Q2 1 2 2 L2 8 L30 8 L30 2 Q30 1 29 1 Z" fill="#AEB4BC" />
@@ -728,6 +739,7 @@ export function SinkOR({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={32} h={32}>
       <Svg viewBox="0 0 32 32" width={32 * S} height={32 * S}>
+        <Ellipse cx={16} cy={29.3} rx={10.9} ry={3.7} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette (counter top + front apron) */}
         <Path d={sil} fill="#AEB4BC" />
         {/* TOP counter face */}

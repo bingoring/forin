@@ -25,6 +25,7 @@ export function CRRTMachine({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-14} w={32} h={54}>
       <Svg viewBox="0 0 32 54" width={32 * S} height={54 * S}>
+        <Ellipse cx={16} cy={51.3} rx={10.9} ry={3.7} fill="rgba(0,0,0,0.16)" />
         {/* IV pole across the top with 4 dialysate bags hanging */}
         <Rect x={2} y={0} width={28} height={1.5} rx={0.6} fill="#9CA3AF" />
         {[4, 11, 18, 25].map((bx, i) => (
@@ -69,6 +70,7 @@ export function IVPumpTower({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-22} w={16} h={54}>
       <Svg viewBox="0 0 16 54" width={16 * S} height={54 * S}>
+        <Ellipse cx={8} cy={53} rx={5.4} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={5} y={0} width={6} height={1.4} fill="#9CA3AF" />
         <Rect x={3} y={1.4} width={4} height={6} fill="#A8DCEC" stroke={C} strokeWidth={0.4} />
         <Rect x={9} y={1.4} width={4} height={6} fill="#FCE7C8" stroke={C} strokeWidth={0.4} />
@@ -95,6 +97,7 @@ export function EVDStand({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-20} w={16} h={48}>
       <Svg viewBox="0 0 16 48" width={16 * S} height={48 * S}>
+        <Ellipse cx={8} cy={47} rx={5.4} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={7} y={0} width={2} height={40} fill="#CBD5E1" stroke={C} strokeWidth={0.3} />
         <Rect x={9} y={4} width={3} height={22} fill="#fff" stroke={C} strokeWidth={0.4} />
         {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => <Rect key={i} x={9} y={5 + i * 2.6} width={i % 2 ? 3 : 2} height={0.5} fill={C} />)}
@@ -116,6 +119,7 @@ export function ICPMonitor({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-6} w={14} h={26}>
       <Svg viewBox="0 0 14 26" width={14 * S} height={26 * S}>
+        <Ellipse cx={7} cy={25} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={0} y={0} width={14} height={11} fill="#1F2937" stroke={C} strokeWidth={0.5} />
         <Rect x={1.5} y={1.5} width={11} height={8} fill="#0B1A22" />
         {/* "12" readout (cyan) + "ICP" tag (gray) as blocks */}
@@ -139,6 +143,7 @@ export function TTMUnit({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={26} h={38}>
       <Svg viewBox="0 0 26 38" width={26 * S} height={38 * S}>
+        <Ellipse cx={13} cy={36} rx={8.8} ry={3} fill="rgba(0,0,0,0.16)" />
         {/* coiling hoses to the cooling pad */}
         <Path d="M3 8 Q-1 12 5 15 Q10 18 4 21" fill="none" stroke="#7FB8D8" strokeWidth={2.4} strokeLinecap="round" />
         {/* full silhouette */}
@@ -170,6 +175,7 @@ export function FoleyBag({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={4} offY={2} w={8} h={16}>
       <Svg viewBox="0 0 8 16" width={8 * S} height={16 * S}>
+        <Ellipse cx={4} cy={15} rx={2.7} ry={2} fill="rgba(0,0,0,0.16)" />
         <Path d="M4 0 Q1 3 3 5" fill="none" stroke="#E9D8A6" strokeWidth={0.7} />
         <Rect x={1} y={5} width={6} height={9} fill="#FCF6DC" stroke={C} strokeWidth={0.5} />
         <Rect x={1.5} y={9} width={5} height={4.5} fill="#E9D86A" />
@@ -184,6 +190,7 @@ export function Intercom({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={3} offY={1} w={10} h={18}>
       <Svg viewBox="0 0 10 18" width={10 * S} height={18 * S}>
+        <Ellipse cx={5} cy={17} rx={3.4} ry={2} fill="rgba(0,0,0,0.16)" />
         <Ellipse cx={5} cy={2} rx={3} ry={2} fill="#374151" stroke={C} strokeWidth={0.4} />
         <Circle cx={5} cy={2.2} r={1} fill="#0B1620" />
         <Circle cx={5} cy={2.2} r={0.4} fill="#22D3EE" />
@@ -202,6 +209,7 @@ export function GownBox({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={12} h={22}>
       <Svg viewBox="0 0 12 22" width={12 * S} height={22 * S}>
+        <Ellipse cx={6} cy={21} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={1} y={0} width={10} height={4} fill="#3B82F6" stroke={C} strokeWidth={0.4} />
         <Rect x={2.5} y={1.4} width={7} height={1.4} fill="#fff" />
         <Rect x={1} y={5} width={10} height={14} fill="#E5E7EB" stroke={C} strokeWidth={0.5} />

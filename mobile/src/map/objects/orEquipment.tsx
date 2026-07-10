@@ -23,6 +23,7 @@ export function BairHugger({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={25.6} h={33.6}>
       <Svg viewBox="0 0 26 34" width={26 * S} height={34 * S}>
+        <Ellipse cx={9.0} cy={28.5} rx={8.5} ry={2.9} fill="rgba(0,0,0,0.16)" />
         <Path d="M17 9 Q24 7 23 11 Q22 15 25 16" fill="none" stroke="#BBD7E2" strokeWidth={2.6} strokeLinecap="round" />
         <Ellipse cx={16} cy={9} rx={1.6} ry={1} fill="#9CA3AF" stroke={C} strokeWidth={0.35} />
         <Path d={sil} fill="#3E7CA8" />
@@ -47,6 +48,7 @@ export function Bovie({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={20.8} h={30.4}>
       <Svg viewBox="0 0 20 30" width={20.8 * S} height={30.4 * S}>
+        <Ellipse cx={10.0} cy={28.7} rx={6.8} ry={2.3} fill="rgba(0,0,0,0.16)" />
         <Path d={sil} fill="#54606C" />
         {/* TOP face — bovie pencil in holster */}
         <Path d="M2 2 Q1 2 1 3 L1 11 L19 11 L19 3 Q19 2 18 2 Z" fill="#6B7580" />
@@ -76,6 +78,7 @@ export function KickBucket({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={2} w={12} h={12}>
       <Svg viewBox="0 0 12 12" width={12 * S} height={12 * S}>
+        <Ellipse cx={6.0} cy={11.0} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         <Ellipse cx={6} cy={4} rx={5.5} ry={2.3} fill="#CBD5E1" stroke={C} strokeWidth={0.5} />
         <Ellipse cx={6} cy={3.6} rx={4.3} ry={1.6} fill="#9CA3AF" />
         <Path d="M2 4 L10 4 L9 9 L3 9 Z" fill="#DC2626" stroke={C} strokeWidth={0.4} />
@@ -115,6 +118,7 @@ export function RoboticConsole({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-8} w={35.2} h={41.6}>
       <Svg viewBox="0 0 36 42" width={35.2 * S} height={41.6 * S}>
+        <Ellipse cx={18.0} cy={38.9} rx={12.2} ry={4.1} fill="rgba(0,0,0,0.16)" />
         <Path d={sil} fill="#8A929B" />
         {/* TOP face — binocular viewport hood from above */}
         <Path d="M6 6 Q4 6 4 8 L4 17 L32 17 L32 8 Q32 6 30 6 Z" fill="#A6ADB5" />
@@ -143,6 +147,7 @@ export function LapTower({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-18} w={24} h={54.4}>
       <Svg viewBox="0 0 24 56" width={24 * S} height={54.4 * S}>
+        <Ellipse cx={12.0} cy={48.5} rx={9} ry={3} fill="rgba(0,0,0,0.16)" />
         {/* viewer-facing endoscopy monitor + top bezel cap */}
         <Path d="M2 0.4 L22 0.4 L23 1.8 L1 1.8 Z" fill="#2C333B" />
         <Rect x={1} y={1.8} width={22} height={13.5} fill="#111827" stroke={C} strokeWidth={0.6} />
@@ -180,6 +185,7 @@ export function CO2Insufflator({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-2} w={14} h={26}>
       <Svg viewBox="0 0 14 26" width={14 * S} height={26 * S}>
+        <Ellipse cx={7.0} cy={21} rx={5} ry={1.8} fill="rgba(0,0,0,0.16)" />
         {/* green CO2 cylinder standing behind */}
         <Ellipse cx={3} cy={3} rx={1.8} ry={1} fill="#4ADE80" stroke={C} strokeWidth={0.3} />
         <Path d="M1.2 3 L1.2 9 Q1.2 10 3 10 Q4.8 10 4.8 9 L4.8 3" fill="#16A34A" stroke={C} strokeWidth={0.35} />
@@ -205,6 +211,7 @@ export function ScrubDispenser({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-2} w={14} h={26}>
       <Svg viewBox="0 0 14 26" width={14 * S} height={26 * S}>
+        <Ellipse cx={7.0} cy={25.0} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         <Path d={sil} fill="#C7CDD4" />
         {/* TOP bevel face */}
         <Path d="M1 2 L13 2 L12 4.4 L2 4.4 Z" fill="#DDE1E6" />
@@ -232,6 +239,7 @@ export function ScrubTimer({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={1} w={12} h={12}>
       <Svg viewBox="0 0 12 12" width={12 * S} height={12 * S}>
+        <Ellipse cx={6.0} cy={11.0} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={0} y={0} width={12} height={12} fill="#1F2937" stroke={C} strokeWidth={0.6} />
         <Rect x={1.5} y={2} width={9} height={5} fill="#0B2A3A" />
         <Rect x={2.5} y={3.5} width={7} height={2.2} fill="#22D3EE" />
@@ -246,6 +254,7 @@ export function ConsentClipboard({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={3} offY={3} w={10} h={12}>
       <Svg viewBox="0 0 10 12" width={10 * S} height={12 * S}>
+        <Ellipse cx={5.0} cy={11.0} rx={3.4} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={1} y={1} width={8} height={11} fill="#A88862" stroke={C} strokeWidth={0.4} />
         <Rect x={1.6} y={2} width={6.8} height={9} fill="#FEFCF2" stroke={C} strokeWidth={0.3} />
         <Rect x={3.5} y={0.4} width={3} height={1.6} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
@@ -265,6 +274,7 @@ export function SoiledCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={20} h={28}>
       <Svg viewBox="0 0 20 28" width={20 * S} height={28 * S}>
+        <Ellipse cx={10.0} cy={26.7} rx={6.8} ry={2.3} fill="rgba(0,0,0,0.16)" />
         <Path d={sil} fill="#9AA1A9" />
         {/* TOP lid face — closed hinged lid + latch */}
         <Path d="M2 2 Q1 2 1 3 L1 11 L19 11 L19 3 Q19 2 18 2 Z" fill="#B4BAC2" />
@@ -309,6 +319,7 @@ export function CArm({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-10} w={36} h={46}>
       <Svg viewBox="0 0 36 46" width={36 * S} height={46 * S}>
+        <Ellipse cx={18.0} cy={42.9} rx={12.2} ry={4.1} fill="rgba(0,0,0,0.16)" />
         <Path d="M10 6 A16 16 0 1 0 10 38" fill="none" stroke="#CBD5E1" strokeWidth={4} />
         <Path d="M10 6 A16 16 0 1 0 10 38" fill="none" stroke={C} strokeWidth={0.6} />
         <Rect x={6} y={2} width={10} height={6} fill="#94A3B8" stroke={C} strokeWidth={0.5} />
@@ -327,6 +338,7 @@ export function AnesthesiaMachine({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-8} w={28.8} h={35.2}>
       <Svg viewBox="0 0 30 36" width={28.8 * S} height={35.2 * S}>
+        <Ellipse cx={15.0} cy={33.5} rx={10.2} ry={3.5} fill="rgba(0,0,0,0.16)" />
         {/* gas cylinders (round tops from above) */}
         <Ellipse cx={7} cy={4} rx={2.6} ry={2} fill="#16A34A" stroke={C} strokeWidth={0.5} />
         <Ellipse cx={7} cy={3.4} rx={1.4} ry={1} fill="#4ADE80" />

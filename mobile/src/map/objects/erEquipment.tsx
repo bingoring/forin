@@ -23,6 +23,7 @@ export function VitalsCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-6} w={14} h={34}>
       <Svg viewBox="0 0 14 34" width={14 * S} height={34 * S}>
+        <Ellipse cx={7} cy={29.6} rx={5} ry={1.7} fill="rgba(0,0,0,0.16)" />
         {/* FAR top face — monitor casing top + hanging SpO2 probe */}
         <Path d="M2 1 Q1 1 1 2 L1 6 L13 6 L13 2 Q13 1 12 1 Z" fill="#B7BEC6" stroke={C} strokeWidth={0.45} />
         <Path d="M13 4 q3 4 1 9" fill="none" stroke={C} strokeWidth={0.5} />
@@ -56,6 +57,7 @@ export function IVPump({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-22} w={16} h={46}>
       <Svg viewBox="0 0 16 46" width={16 * S} height={46 * S}>
+        <Ellipse cx={8} cy={45} rx={5.4} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* hook */}
         <Rect x={6} y={0} width={5} height={2} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
         <Rect x={6} y={0} width={2} height={4} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
@@ -94,6 +96,7 @@ export function DressingCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={22.4} h={28.8}>
       <Svg viewBox="0 0 22 30" width={22.4 * S} height={28.8 * S}>
+        <Ellipse cx={11} cy={28.4} rx={7.5} ry={2.6} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette */}
         <Path d={sil} fill="#AEB4BC" />
         {/* TOP tray face — supplies seen from above */}
@@ -129,6 +132,7 @@ export function MedFridge({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-6} w={14} h={28.8}>
       <Svg viewBox="0 0 14 30" width={14 * S} height={28.8 * S}>
+        <Ellipse cx={7} cy={29} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette */}
         <Path d={sil} fill="#C1C7CE" />
         {/* TOP face (high angle) + temp display */}
@@ -161,6 +165,7 @@ export function SecurityScanner({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={32} h={25.6}>
       <Svg viewBox="0 0 32 26" width={32 * S} height={25.6 * S}>
+        <Ellipse cx={16} cy={23.3} rx={10.9} ry={3.7} fill="rgba(0,0,0,0.16)" />
         {/* SCANNER TUNNEL (left) — top face + front with mouth */}
         <Path d={tunnel} fill="#5B6672" />
         <Path d="M2 4 Q1 4 1 5 L1 10 L14 10 L14 5 Q14 4 13 4 Z" fill="#8A929B" />
@@ -191,6 +196,7 @@ export function MetalDetector({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-10} w={32} h={32}>
       <Svg viewBox="0 0 32 32" width={32 * S} height={32 * S}>
+        <Ellipse cx={16} cy={29.3} rx={10.9} ry={3.7} fill="rgba(0,0,0,0.16)" />
         {/* floor footprint (walk-through opening seen from above) */}
         <Path d="M4 20 L28 20 L26 30 L6 30 Z" fill="#0F1A24" opacity={0.14} />
         {/* LEFT pillar — top cap (parallelogram) + front face */}
@@ -219,6 +225,7 @@ export function BoltedBed({ x, y, occupied }: { x: number; y: number; occupied?:
   return (
     <Box x={x} y={y} w={32} h={48}>
       <Svg viewBox="0 0 32 48" width={32 * S} height={48 * S}>
+        <Ellipse cx={16} cy={45.3} rx={10.9} ry={3.7} fill="rgba(0,0,0,0.16)" />
         <Rect x={2} y={6} width={28} height={36} rx={3} fill="#6E6256" stroke={C} strokeWidth={0.7} />
         <Rect x={4} y={8} width={24} height={30} rx={2} fill="#8C9AA6" stroke={C} strokeWidth={0.5} />
         <Rect x={5} y={9} width={22} height={2} fill="#A6B2BC" />
@@ -247,6 +254,7 @@ export function DeconShower({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={-6} w={12} h={30}>
       <Svg viewBox="0 0 12 30" width={12 * S} height={30 * S}>
+        <Ellipse cx={6} cy={29} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={5} y={0} width={2} height={6} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
         {/* pull-chain valve */}
         <Rect x={8} y={1} width={1} height={6} fill="#FACC15" />
@@ -269,6 +277,7 @@ export function Sofa({ x, y, w = 2, color = '#8FA9C4' }: { x: number; y: number;
   return (
     <Box x={x} y={y} offY={-6} w={W} h={26}>
       <Svg viewBox={`0 0 ${W} 26`} width={W * S} height={26 * S} preserveAspectRatio="none">
+        <Ellipse cx={w * 8} cy={24.5 - w * 2.3} rx={w * 6.8} ry={w * 2.3} fill="rgba(0,0,0,0.16)" />
         <Path d={`M3 2 L${W - 3} 2 L${W - 2} 4 L2 4 Z`} fill={lt} stroke={C} strokeWidth={0.4} />
         <Rect x={2} y={4} width={W - 4} height={7} fill={color} stroke={C} strokeWidth={0.4} />
         <Rect x={0} y={5} width={3.5} height={13} rx={1} fill={dk} stroke={C} strokeWidth={0.4} />
@@ -312,6 +321,7 @@ export function WasteBin({ x, y, tone = 'general' }: { x: number; y: number; ton
   return (
     <Box x={x} y={y} offX={3} w={10} h={18}>
       <Svg viewBox="0 0 10 18" width={10 * S} height={18 * S}>
+        <Ellipse cx={5} cy={17} rx={3.4} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* pedal lid top */}
         <Ellipse cx={5} cy={3} rx={4.5} ry={1.6} fill={lid} stroke={C} strokeWidth={0.4} />
         <Rect x={0.5} y={3} width={9} height={2} fill={lid} />
@@ -341,6 +351,7 @@ export function PPEStand({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-8} w={14} h={34}>
       <Svg viewBox="0 0 14 34" width={14 * S} height={34 * S}>
+        <Ellipse cx={7} cy={33} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* rail top + post */}
         <Rect x={1} y={2} width={12} height={1.5} fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
         <Rect x={6.5} y={0} width={1} height={3} fill="#6B7280" />
@@ -385,6 +396,7 @@ export function ChemDrum({ x, y, tone = 'chem' }: { x: number; y: number; tone?:
   return (
     <Box x={x} y={y} offX={2} offY={-4} w={12} h={26}>
       <Svg viewBox="0 0 12 26" width={12 * S} height={26 * S}>
+        <Ellipse cx={6} cy={25} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* lid + bung */}
         <Ellipse cx={6} cy={3} rx={5} ry={1.8} fill={bodyDk} stroke={C} strokeWidth={0.4} />
         <Ellipse cx={6} cy={2.6} rx={4} ry={1.2} fill={body} />
@@ -523,6 +535,7 @@ export function Gurney({ x, y, occupied }: { x: number; y: number; occupied?: bo
   return (
     <Box x={x} y={y} offY={-4} w={32} h={56}>
       <Svg viewBox="0 0 32 56" width={32 * S} height={56 * S}>
+        <Ellipse cx={17} cy={48.5} rx={15} ry={5.5} fill="rgba(0,0,0,0.16)" />
         {/* hand rails (top) */}
         <Rect x={3} y={1} width={26} height={2} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
         <Rect x={3} y={1} width={2} height={9} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
@@ -570,6 +583,7 @@ export function Defib({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={24} h={32}>
       <Svg viewBox="0 0 24 32" width={24 * S} height={32 * S}>
+        <Ellipse cx={12} cy={30.2} rx={8.2} ry={2.8} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette (top + front, single body) */}
         <Path d={sil} fill="#CA8A04" />
         {/* FAR top face (device top) — paddles resting in their wells */}
@@ -609,6 +623,7 @@ export function OxygenTank({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={-2} w={12} h={20}>
       <Svg viewBox="0 0 12 20" width={12 * S} height={20 * S}>
+        <Ellipse cx={6} cy={19} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* valve/regulator seen from above (sits on the shoulder) */}
         <Ellipse cx={6} cy={2.4} rx={1.8} ry={1.1} fill="#B7BEC6" stroke={C} strokeWidth={0.35} />
         <Rect x={5.4} y={1.4} width={1.2} height={1.4} fill="#9CA3AF" />
@@ -632,6 +647,7 @@ export function GloveDispenser({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={12} h={14}>
       <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        <Ellipse cx={6} cy={13} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* top face */}
         <Path d="M1 1 L11 1 L12 2.5 L0 2.5 Z" fill="#94A3B8" stroke={C} strokeWidth={0.3} />
         {/* body */}
@@ -652,6 +668,7 @@ export function SharpsContainer({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={12} h={14}>
       <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        <Ellipse cx={6} cy={13} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         <Path d="M1 1 L11 1 L12 3 L0 3 Z" fill="#FACC15" stroke={C} strokeWidth={0.4} />
         <Rect x={3} y={1.5} width={6} height={0.8} fill={C} />
         <Rect x={1} y={3} width={10} height={10} fill="#DC2626" stroke={C} strokeWidth={0.5} />
@@ -667,6 +684,7 @@ export function HandSanitizer({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={4} w={8} h={12}>
       <Svg viewBox="0 0 8 12" width={8 * S} height={12 * S}>
+        <Ellipse cx={4} cy={11} rx={2.7} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* pump top */}
         <Rect x={3} y={0} width={2} height={2} fill="#fff" stroke={C} strokeWidth={0.3} />
         <Rect x={2} y={2} width={4} height={1} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
@@ -688,6 +706,7 @@ export function CompCart({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={16} h={35.2}>
       <Svg viewBox="0 0 16 36" width={16 * S} height={35.2 * S}>
+        <Ellipse cx={8} cy={35} rx={5.4} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* viewer-facing monitor on a neck */}
         <Path d="M3 1.4 L13 1.4 L13.6 2.6 L2.4 2.6 Z" fill="#2C333B" />
         <Rect x={2} y={2.6} width={12} height={9} fill="#1F2937" stroke={C} strokeWidth={0.45} />
@@ -721,6 +740,7 @@ export function BPCuff({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={12} h={14}>
       <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        <Ellipse cx={6} cy={13} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* top face */}
         <Path d="M1 0 L11 0 L12 1 L0 1 Z" fill="#374151" stroke={C} strokeWidth={0.3} />
         {/* device body + screen */}
@@ -744,6 +764,7 @@ export function SuctionUnit({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-2} w={14} h={22.4}>
       <Svg viewBox="0 0 14 20" width={14 * S} height={22.4 * S}>
+        <Ellipse cx={7} cy={19} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette */}
         <Path d={sil} fill="#8A929B" />
         {/* TOP face — canister mouths + gauge seen from above */}
@@ -772,6 +793,7 @@ export function Wheelchair({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-4} w={24} h={27.2}>
       <Svg viewBox="0 0 24 30" width={24 * S} height={27.2 * S}>
+        <Ellipse cx={12} cy={28.2} rx={8.2} ry={2.8} fill="rgba(0,0,0,0.16)" />
         {/* push handles behind the backrest */}
         <Rect x={7} y={1} width={2.2} height={2.2} rx={1} fill="#4B5563" stroke={C} strokeWidth={0.4} />
         <Rect x={14.8} y={1} width={2.2} height={2.2} rx={1} fill="#4B5563" stroke={C} strokeWidth={0.4} />
@@ -807,6 +829,7 @@ export function EKG({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-2} w={22.4} h={32}>
       <Svg viewBox="0 0 22 32" width={22.4 * S} height={32 * S}>
+        <Ellipse cx={11} cy={30.4} rx={7.5} ry={2.6} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette */}
         <Path d={sil} fill="#8A929B" />
         {/* FAR top face — cable spool + lead ports resting on the cart top */}
@@ -842,6 +865,7 @@ export function Sink({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-2} w={16} h={20.8}>
       <Svg viewBox="0 0 16 20" width={16 * S} height={20.8 * S}>
+        <Ellipse cx={8} cy={19} rx={5.4} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette (counter top + front cabinet) */}
         <Path d={sil} fill="#AEB4BC" />
         {/* TOP counter face */}
@@ -896,6 +920,7 @@ export function Scale({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={12} h={14}>
       <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        <Ellipse cx={6} cy={13} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* display unit */}
         <Rect x={3} y={0} width={6} height={4} fill="#1F2937" stroke={C} strokeWidth={0.3} />
         <Rect x={4} y={0.5} width={4} height={3} fill="#0F1A24" />
@@ -920,6 +945,7 @@ export function TicketDispenser({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={-8} w={12} h={25.6}>
       <Svg viewBox="0 0 12 26" width={12 * S} height={25.6 * S}>
+        <Ellipse cx={6} cy={25} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette */}
         <Path d={sil} fill="#B7BEC6" />
         {/* big TOP face (high-angle) — plain cabinet top */}
@@ -948,6 +974,7 @@ export function BrochureRack({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} offY={-4} w={14} h={22}>
       <Svg viewBox="0 0 14 22" width={14 * S} height={22 * S}>
+        <Ellipse cx={7} cy={21} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={1} y={0} width={12} height={16} fill="#A88862" stroke={C} strokeWidth={0.5} />
         {[0, 1, 2].map((r) => (
           <G key={r}>
@@ -967,6 +994,7 @@ export function DeskPhone({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={3} offY={4} w={10} h={10}>
       <Svg viewBox="0 0 10 10" width={10 * S} height={10 * S}>
+        <Ellipse cx={5} cy={9} rx={3.4} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={1} y={4} width={8} height={5} fill="#374151" stroke={C} strokeWidth={0.4} />
         <Rect x={2} y={5} width={4} height={3.5} fill="#1F2937" />
         <Rect x={6.5} y={1} width={2} height={8} fill="#111827" stroke={C} strokeWidth={0.4} />
@@ -981,6 +1009,7 @@ export function WaterCooler({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={3} offY={-6} w={10} h={24}>
       <Svg viewBox="0 0 10 24" width={10 * S} height={24 * S}>
+        <Ellipse cx={5} cy={23} rx={3.4} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* full silhouette */}
         <Path d={sil} fill="#D1D5DB" />
         {/* TOP face — dispenser cabinet top (a cylinder bottle stands ON it) */}
@@ -1008,6 +1037,7 @@ export function ChartBinder({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={2} w={12} h={12}>
       <Svg viewBox="0 0 12 12" width={12 * S} height={12 * S}>
+        <Ellipse cx={6} cy={11} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {[0, 1, 2].map((i) => (
           <G key={i}>
             <Rect x={1} y={8 - i * 2.4} width={10} height={2} fill={['#3B82F6', '#EF4444', '#16A34A'][i]} stroke={C} strokeWidth={0.4} />
@@ -1023,6 +1053,7 @@ export function PressureGauge({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={1} w={12} h={12}>
       <Svg viewBox="0 0 12 12" width={12 * S} height={12 * S}>
+        <Ellipse cx={6} cy={11} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={0} y={0} width={12} height={12} fill="#E5E7EB" stroke={C} strokeWidth={0.6} />
         <Rect x={1.5} y={1.5} width={9} height={6} fill="#0B2A3A" stroke={C} strokeWidth={0.4} />
         <Rect x={2.5} y={2.5} width={6} height={2} fill="#22D3EE" />
@@ -1037,6 +1068,7 @@ export function Otoscope({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} offY={1} w={12} h={14}>
       <Svg viewBox="0 0 12 14" width={12 * S} height={14 * S}>
+        <Ellipse cx={6} cy={13} rx={4.1} ry={2} fill="rgba(0,0,0,0.16)" />
         {/* wall plate */}
         <Rect x={0} y={0} width={12} height={14} fill="#D6CFB8" stroke={C} strokeWidth={0.5} />
         {/* otoscope head unit (left) */}
@@ -1058,6 +1090,7 @@ export function AnatomyPoster({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={1} w={14} h={22}>
       <Svg viewBox="0 0 14 22" width={14 * S} height={22 * S}>
+        <Ellipse cx={7} cy={21} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={0} y={0} width={14} height={22} fill="#fff" stroke={C} strokeWidth={0.6} />
         <Rect x={1} y={1} width={12} height={20} fill="#FDEBE0" />
         <Circle cx={7} cy={4.5} r={2} fill="#F4B89A" stroke={C} strokeWidth={0.3} />
@@ -1084,6 +1117,7 @@ export function BarcodePrinter({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={3} offY={2} w={10} h={10}>
       <Svg viewBox="0 0 10 10" width={10 * S} height={10 * S}>
+        <Ellipse cx={5} cy={9} rx={3.4} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={1} y={3} width={8} height={5} fill="#374151" stroke={C} strokeWidth={0.4} />
         <Rect x={2.5} y={4.5} width={5} height={2.5} fill="#fff" stroke={C} strokeWidth={0.3} />
         {[0, 1, 2, 3, 4].map((i) => <Rect key={i} x={3 + i * 0.9} y={5} width={0.4} height={1.6} fill={C} />)}
@@ -1119,6 +1153,7 @@ export function CCTVCamera({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={2} w={14} h={12}>
       <Svg viewBox="0 0 14 12" width={14 * S} height={12 * S}>
+        <Ellipse cx={7} cy={11} rx={4.8} ry={2} fill="rgba(0,0,0,0.16)" />
         <Rect x={0} y={2} width={3} height={3} fill="#6B7280" stroke={C} strokeWidth={0.4} />
         <Path d="M3 3 L12 3 Q14 3 13 8 L4 9 Q2 6 3 3 Z" fill="#9CA3AF" stroke={C} strokeWidth={0.5} />
         <Circle cx={8} cy={6} r={2} fill="#0B1620" stroke={C} strokeWidth={0.4} />
@@ -1134,6 +1169,7 @@ export function CoffeeTable({ x, y, w = 2 }: { x: number; y: number; w?: number 
   return (
     <Box x={x} y={y} offY={1} w={W} h={16}>
       <Svg viewBox={`0 0 ${W} 16`} width={W * S} height={16 * S}>
+        <Ellipse cx={w * 8} cy={12} rx={w * 5.4} ry={w * 1.8} fill="rgba(0,0,0,0.16)" />
         {/* legs peeking at the far corners */}
         <Rect x={3} y={2} width={1.8} height={3} rx={0.4} fill="#5C3A1A" />
         <Rect x={W - 4.8} y={2} width={1.8} height={3} rx={0.4} fill="#5C3A1A" />
@@ -1155,6 +1191,7 @@ export function TissueBox({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={4} offY={4} w={8} h={7}>
       <Svg viewBox="0 0 8 7" width={8 * S} height={7 * S}>
+        <Ellipse cx={4} cy={6} rx={2.7} ry={2} fill="rgba(0,0,0,0.16)" />
         <Path d="M1 1 L7 1 L7.5 2 L0.5 2 Z" fill="#BFD7E8" stroke={C} strokeWidth={0.3} />
         <Rect x={1} y={2} width={6} height={4} fill="#7FB0D8" stroke={C} strokeWidth={0.4} />
         <Rect x={1.4} y={2.4} width={5.2} height={1} fill="#A7CDE8" />
@@ -1168,6 +1205,7 @@ export function FloorLamp({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={3} offY={-14} w={10} h={34}>
       <Svg viewBox="0 0 10 34" width={10 * S} height={34 * S}>
+        <Ellipse cx={5} cy={33} rx={3.4} ry={2} fill="rgba(0,0,0,0.16)" />
         <Ellipse cx={5} cy={6} rx={6} ry={5} fill="#FFE9A8" opacity={0.35} />
         <Path d="M2 2 L8 2 L9 8 L1 8 Z" fill="#F4D78C" stroke={C} strokeWidth={0.5} />
         <Path d="M2.5 2.5 L7.5 2.5 L8 4 L2 4 Z" fill="#FBE9B8" />
