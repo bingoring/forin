@@ -415,20 +415,28 @@ export function Blocks({ x, y }: { x: number; y: number }) {
   );
 }
 
-// ─── Mural — 벽화 (div-based → nested absolute Views). Handoff fixed 4×2. ──
+// ─── Mural — wall nature painting (SVG so the ground is ROLLING HILLS, matching
+// the handoff clipPath polygon — a straight band read wrong). Handoff 4×2. ──
 export function Mural({ x, y, w = 4 }: { x: number; y: number; w?: number }) {
+  const W = w * 16, H = 32;
+  // rolling green hills across the bottom (handoff clipPath
+  // 0/60% 30/30% 60/70% 100/40% → jagged ground line)
+  const hills = `M0 ${H - 12.8} L${W * 0.3} ${H - 8.4} L${W * 0.6} ${H - 3.6} L${W} ${H - 7.2} L${W} ${H} L0 ${H} Z`;
   return (
-    <Box x={x} y={y} w={w * 16} h={2 * 16}>
-      <View style={{ position: 'absolute', left: 0, top: 0, width: w * 16 * S, height: 2 * 16 * S, backgroundColor: '#FEF3C7', borderWidth: 2 * S, borderColor: C }}>
-        {/* sun */}
-        <View style={{ position: 'absolute', right: 4 * S, top: 1 * S, width: 6 * S, height: 6 * S, backgroundColor: '#FACC15', borderWidth: 1 * S, borderColor: C, borderRadius: 3 * S }} />
+    <Box x={x} y={y} w={W} h={H}>
+      <Svg viewBox={`0 0 ${W} ${H}`} width={W * S} height={H * S} preserveAspectRatio="none">
+        {/* frame + sky */}
+        <Rect x={0} y={0} width={W} height={H} fill="#FEF3C7" stroke={C} strokeWidth={2} />
+        {/* sun (top-right) */}
+        <Circle cx={W - 9} cy={7} r={3.5} fill="#FACC15" stroke={C} strokeWidth={0.6} />
         {/* cloud */}
-        <View style={{ position: 'absolute', left: 8 * S, top: 2 * S, width: 14 * S, height: 4 * S, backgroundColor: '#fff', borderWidth: 1 * S, borderColor: C }} />
-        {/* rolling hills (approximated as a green band; clipPath not available) */}
-        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 12 * S, backgroundColor: '#86EFAC', borderTopWidth: 1 * S, borderTopColor: C }} />
-        {/* house */}
-        <View style={{ position: 'absolute', left: 6 * S, bottom: 2 * S, width: 8 * S, height: 5 * S, backgroundColor: '#FCA5A5', borderWidth: 1 * S, borderColor: C }} />
-      </View>
+        <Rect x={9} y={5} width={16} height={4} rx={2} fill="#fff" stroke={C} strokeWidth={0.5} />
+        {/* rolling grassy ground (curved hilltop) */}
+        <Path d={hills} fill="#86EFAC" stroke={C} strokeWidth={0.7} />
+        {/* little house/bush sitting on the hill */}
+        <Rect x={7} y={H - 11} width={8} height={6} fill="#FCA5A5" stroke={C} strokeWidth={0.6} />
+        <Path d={`M6 ${H - 11} L11 ${H - 15} L16 ${H - 11} Z`} fill="#F87171" stroke={C} strokeWidth={0.6} />
+      </Svg>
     </Box>
   );
 }
