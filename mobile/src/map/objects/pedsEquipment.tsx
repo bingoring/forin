@@ -4,14 +4,25 @@
 // Balloon). Authored at ITILE=16, rendered at TILE px via S. `<text>` glyphs are
 // replaced by shape equivalents. Div-based objects (Blocks, Mural) are recreated
 // with nested absolute <View>s. Dispatched via PedsObjectView.
-import type { ReactElement } from 'react';
+import { type ReactElement, type ReactNode, useEffect } from 'react';
 import { View } from 'react-native';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import type { MapObject } from '@engine';
 
 const C = '#2A2522';
 const S = TILE / 16;
+
+// ─── Bob — gentle up/down float (handoff `forinBob`) for playful props. ──
+function Bob({ amp = 4, dur = 1400, children }: { amp?: number; dur?: number; children: ReactNode }) {
+  const v = useSharedValue(0);
+  useEffect(() => {
+    v.value = withRepeat(withTiming(1, { duration: dur, easing: Easing.inOut(Easing.ease) }), -1, true);
+  }, [v, dur]);
+  const style = useAnimatedStyle(() => ({ transform: [{ translateY: -amp * v.value }] }));
+  return <Animated.View style={style}>{children}</Animated.View>;
+}
 
 function Box({ x, y, offX = 0, offY = 0, w, h, children }: { x: number; y: number; offX?: number; offY?: number; w: number; h: number; children: React.ReactNode }) {
   return (
@@ -334,6 +345,7 @@ export function SmallSlide({ x, y }: { x: number; y: number }) {
 export function RockingHorse({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-6} w={36} h={34}>
+      <Bob amp={3} dur={1500}>
       <Svg viewBox="0 0 36 34" width={36 * S} height={34 * S}>
         <Ellipse cx={18.0} cy={30.9} rx={12.2} ry={4.1} fill="rgba(0,0,0,0.16)" />
         {/* twin curved rockers (runners), seen from above-front */}
@@ -371,6 +383,7 @@ export function RockingHorse({ x, y }: { x: number; y: number }) {
         <Rect x={12} y={22} width={2.4} height={5} rx={1} fill="#EC8FAC" stroke={C} strokeWidth={0.4} />
         <Rect x={21} y={22} width={2.4} height={5} rx={1} fill="#E67F9F" stroke={C} strokeWidth={0.4} />
       </Svg>
+      </Bob>
     </Box>
   );
 }
@@ -441,15 +454,16 @@ export function Mural({ x, y, w = 4 }: { x: number; y: number; w?: number }) {
   );
 }
 
-// ─── Balloon — 놀이방 풍선 (color prop c; forinBob bob 애니메이션 → 정적 렌더) ──
+// ─── Balloon — 놀이방 풍선 (color prop c; floats up/down = handoff forinBob) ──
 export function Balloon({ x, y, c }: { x: number; y: number; c: string }) {
   return (
     <Box x={x} y={y} offX={4} offY={-4} w={8} h={14}>
-      <Svg viewBox="0 0 8 14" width={12 * S} height={20 * S}>
-        <Ellipse cx={4.0} cy={13.0} rx={2.7} ry={2} fill="rgba(0,0,0,0.16)" />
-        <Ellipse cx={4} cy={4} rx={3} ry={4} fill={c} stroke={C} strokeWidth={0.5} />
-        <Rect x={4} y={8} width={0.5} height={6} fill={C} />
-      </Svg>
+      <Bob amp={5} dur={1200 + ((x % 3) * 220)}>
+        <Svg viewBox="0 0 8 14" width={12 * S} height={20 * S}>
+          <Ellipse cx={4} cy={4} rx={3} ry={4} fill={c} stroke={C} strokeWidth={0.5} />
+          <Rect x={4} y={8} width={0.5} height={6} fill={C} />
+        </Svg>
+      </Bob>
     </Box>
   );
 }

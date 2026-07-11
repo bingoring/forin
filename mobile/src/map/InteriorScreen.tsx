@@ -34,14 +34,16 @@ function seatSprite(x: number, y: number) {
 // Quest/info marker — faithful IHotspot: a pixel box with a ! (quest/urgent) or
 // ? (info) glyph + hard shadow, gently bobbing up/down (the handoff "forinBob").
 const HS_COLORS: Record<string, string> = { quest: '#FEF08A', urgent: '#EF4444', info: '#FFFFFF', police: '#1F2937' };
-const HS_SIZE = 24;
+// Handoff IHotspot is 18px at ITILE=16 (≈1.1 tiles → ~36 screen px at ZOOM 2);
+// keep the marker that prominent rather than the earlier undersized 24.
+const HS_SIZE = 34;
 type MarkerT = Hotspot & { dy?: number };
 function HotspotMarker({ h }: { h: MarkerT }) {
   const bob = useSharedValue(0);
   useEffect(() => {
     bob.value = withRepeat(withTiming(1, { duration: 700, easing: Easing.inOut(Easing.quad) }), -1, true);
   }, [bob]);
-  const style = useAnimatedStyle(() => ({ transform: [{ translateY: -3 * bob.value }] }));
+  const style = useAnimatedStyle(() => ({ transform: [{ translateY: -5 * bob.value }] }));
   const left = (h.x + 0.5) * TILE - HS_SIZE / 2;
   const top = h.y * TILE + (h.dy ?? -(HS_SIZE + 2));
   const bg = HS_COLORS[h.kind] ?? HS_COLORS.quest;
@@ -54,17 +56,17 @@ function HotspotMarker({ h }: { h: MarkerT }) {
           width: HS_SIZE,
           height: HS_SIZE,
           backgroundColor: bg,
-          borderWidth: 2.5,
+          borderWidth: 3,
           borderColor: colors.ink,
           alignItems: 'center',
           justifyContent: 'center',
           shadowColor: colors.ink,
-          shadowOffset: { width: 2.5, height: 2.5 },
+          shadowOffset: { width: 3, height: 3 },
           shadowOpacity: 1,
           shadowRadius: 0,
         }}
       >
-        <Text style={{ fontFamily: fonts.heading, fontSize: 15, lineHeight: 18, color: fg }}>{glyph}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 22, lineHeight: 26, color: fg }}>{glyph}</Text>
       </View>
     </Animated.View>
   );
