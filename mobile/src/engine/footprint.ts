@@ -89,7 +89,11 @@ export function objectCollision(objects: MapObject[]): Bounds[] {
     // bay layout leaving an opening at its open end.
     if (
       o.type === 'door' || o.type === 'threshold' || o.type === 'tint' ||
-      o.type === 'triageline' || o.type === 'nursestation'
+      o.type === 'triageline' || o.type === 'nursestation' ||
+      // peds floor-overlay / wall / ceiling pieces (props.w/h are visual spans,
+      // not collision): the play mat, wall chart, wall mural, ceiling lamp.
+      o.type === 'playmat' || o.type === 'dosingchart' || o.type === 'mural' ||
+      o.type === 'phototherapy'
     ) continue;
     const pw = o.props?.w;
     const ph = o.props?.h;
