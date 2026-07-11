@@ -39,7 +39,6 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
     floors: [
       { f: '8F', depts: ['일반 내과 병동', '외과 병동', '정형외과 병동'], icon: '🛏' },
       { f: '6F', depts: ['외과 · 정형외과 병동'], icon: '🦴' },
-      { f: '5F', depts: ['소아청소년 센터', 'NICU 신생아 중환자실'], icon: '👶', sdepts: ['PEDS'], interior: 'INT-PEDS-00001', entry: { x: 16, y: 1 } },
       { f: '4F', depts: ['중앙 ICU', 'CCU · Neuro · TICU'], icon: '🫀', sdepts: ['ICU'], interior: 'INT-ICU-00001', entry: { x: 7, y: 42 } },
       { f: '3F', depts: ['수술실 OR', '회복실 PACU', '당일수술센터'], icon: '🔪', sdepts: ['OR'], interior: 'INT-OR-00001', entry: { x: 18, y: 1 } },
       { f: '2F', depts: ['피부과 외래', '내과 · 외과 외래'], icon: '🩺', interior: 'CLINIC-IM-00001' },
@@ -52,7 +51,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
       { f: '4F', depts: ['신생아 중환자실 NICU', '소아 중환자실 PICU'], icon: '👶' },
       { f: '3F', depts: ['가족 분만실 L&D', '산후 병동', '신생아실'], icon: '🤰' },
       { f: '2F', depts: ['소아 일반 병동'], icon: '🧸', sdepts: ['PEDS'] },
-      { f: '1F', depts: ['소아청소년과 외래', '산부인과 외래', '키즈 놀이광장'], icon: '🎈', lobby: true },
+      { f: '1F', depts: ['소아청소년과 외래', '산부인과 외래', '키즈 놀이광장'], icon: '🎈', lobby: true, sdepts: ['PEDS'], interior: 'INT-PEDS-00001', entry: { x: 16, y: 1 } },
     ],
   },
   onco: {
