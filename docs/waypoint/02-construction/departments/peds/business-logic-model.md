@@ -8,8 +8,8 @@ updated: 2026-07-10
 # Business Logic Model — 5g-d Peds+NICU (흐름)
 
 ## 1. 진입 (엘리베이터/캠퍼스)
-- interior `INT-PEDS-00001`, 캠퍼스 문 `x15 y0 w3` → `entry:{x:16,y:1}`(문 안쪽).
-- ⚠️ **Q2(인덱스 §3): 엘리베이터 층 미정** — ER 1F·OR 3F·ICU 4F 사용 중. Peds 층 배치는 사용자 확인 후 `ELEVATOR_BUILDINGS`에 배선.
+- interior `INT-PEDS-00001`, 캠퍼스 문 `x15 y0 w3` → `entry:{x:16,y:1}`(문 안쪽, 외래·놀이 웰컴 영역).
+- **엘리베이터 배선: 캠퍼스 `여성소아 센터`(b-women) 건물 → `women` 1F**(소아청소년과 외래·키즈 놀이광장). 소아과는 본관 타워가 아니라 여성소아 건물에 속함(2026-07-12 사용자 확정으로 타워 5F→여성소아 1F 재배선). 캠퍼스 건물 좌표는 불변.
 - fixture `FIXTURES['INT-PEDS-00001']` 등록.
 
 ## 2. 이동·카메라 (공통 — [README](../README.md) §렌더)
