@@ -33,16 +33,26 @@ export default function InteriorRoute() {
     let alive = true;
     setError(false);
     setInterior(null);
+    // Bespoke dept interiors (ER/OR/ICU/Peds/…) are authored client-side and the
+    // bundled FIXTURE is the source of truth — it is always complete and current.
+    // Prefer it over the server: a running dev server can hold a STALE/partial
+    // seed (older than the latest fixture), and since that returns 200 the old
+    // server-first path accepted it → thresholds/reception silently missing on
+    // some elevator entries. Use the fixture synchronously (also removes the
+    // load race behind the elevator DoorReveal). Only non-bundled interiors hit
+    // the server.
+    const fixture = FIXTURES[id];
+    if (fixture) {
+      setInterior(fixture);
+      return () => {
+        alive = false;
+      };
+    }
     api
       .interior(id)
       .then((data) => alive && setInterior(data))
       .catch(() => {
-        // Offline / no server (e.g. dev login in Expo Go): fall back to the
-        // bundled fixture if we have one for this interior.
-        if (!alive) return;
-        const fixture = FIXTURES[id];
-        if (fixture) setInterior(fixture);
-        else setError(true);
+        if (alive) setError(true);
       });
     return () => {
       alive = false;
