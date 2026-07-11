@@ -537,3 +537,10 @@
 - **검증:** tsc 0 · jest 61/61(peds-fixture 5: 도달성·threshold·유리벽·footprint) · 시뮬레이터 welcome/ward/NICU 렌더 확인.
 - **편차:** scale 0.85 · 놀이매트 tint 근사 · Mural clipPath 평면 근사 · RockingHorse/Balloon 정적(bob 후속) · 시나리오 라벨만.
 - **결정자:** 사용자(5F·라벨만 선택, "Peds 진행") + AI(Build Spec·구현·검증). Peds 카탈로그는 서브에이전트 생성 후 tsc+시뮬 검증.
+
+## 2026-07-12 · 인테리어 로딩 fixture-first (서버 구버전 시드로 오브젝트 누락 버그)
+- **증상:** 엘리베이터로 층 이동 시 간헐적으로 인테리어 오브젝트 누락(방 사이 threshold 가림막·접수대 안 보임). 사용자는 문 여닫힘 애니(DoorReveal) 의심.
+- **원인:** 라우트(`app/interior/[id].tsx`)가 `api.interior(id)`를 **서버 우선** 로드, throw 시에만 번들 FIXTURE 폴백. dev Go 서버가 켜져 있으면 **구버전/부분 시드**를 200으로 반환 → 폴백 없이 그대로 렌더 → 오브젝트 누락(서버 상태·캐시 따라 간헐적). 오브젝트 컬링은 이미 off라 렌더 문제 아님. DoorReveal은 결과를 드러낼 뿐 원인 아님(무서버 환경 3/3 정상 재현으로 확인).
+- **결정:** 부서 인테리어는 **번들 FIXTURE가 정본**(클라이언트 저작, 서버 미시드) → `FIXTURES[id]` 있으면 **동기 로드(fixture-first)**, 서버 미조회. 비번들 id만 서버 조회. 서버 시드가 최신화되면 재검토.
+- **효과:** stale-server-data로 인한 오브젝트 누락 원천 차단 + 엘리베이터 DoorReveal 뒤 async 레이스 제거. tsc 0·jest 61/61·엘리베이터 진입 재검증.
+- **결정자:** 사용자(직접 확인 요청) + AI(진단·fixture-first 수정).
