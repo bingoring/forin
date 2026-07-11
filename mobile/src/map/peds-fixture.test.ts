@@ -45,4 +45,10 @@ describe('Peds master blueprint', () => {
     expect(canEnter({ x: 11, y: 35 }, grid, blocked)).toBe(false); // incubator 2×2
     expect(canEnter({ x: 13, y: 23 }, grid, blocked)).toBe(false); // metal crib 2×3
   });
+
+  test('reception desk blocks (clinicReception w6×h2) yet welcome stays reachable', () => {
+    expect(canEnter({ x: 15, y: 3 }, grid, blocked)).toBe(false); // desk counter
+    expect(reachable({ x: 16, y: 6 })).toBe(true); // lobby in front of the desk
+    expect(reachable({ x: 16, y: 1 })).toBe(true); // elevator arrival tile above the desk
+  });
 });

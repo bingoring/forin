@@ -48,7 +48,7 @@ export const PEDS_INTERIOR: Interior = {
     // welcome play mat (opaque salmon floor mat + dashed border, per handoff)
     { id: 'o-play-mat', type: 'playmat', x: 20, y: 3, props: { w: 12, h: 8 } },
     // exterior campus auto door
-    { id: 'd-campus', type: 'door', x: 15, y: 0, props: { w: 3, kind: 'auto', label: '↓ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 14.5, y: 0, props: { w: 3, kind: 'auto', label: '↓ 캠퍼스로' } },
     // internal thresholds
     { id: 'th-exam', type: 'threshold', x: 5, y: 14, props: { w: 3, h: 1, label: '→ 진료실' } },
     { id: 'th-ward', type: 'threshold', x: 16, y: 14, props: { w: 3, h: 1, label: '→ 병동' } },
@@ -61,7 +61,7 @@ export const PEDS_INTERIOR: Interior = {
 
     // ════════ WELCOME · 외래 (y1-13) ════════
     { id: 'bl-welcome', type: 'baylabel', x: 1, y: 1, props: { text: '환영 · 외래 · 4F' } },
-    { id: 'o-w-recep', type: 'clinicReception', x: 13, y: 3, props: { w: 6, tone: '#DB2777', label: '접수' } },
+    { id: 'o-w-recep', type: 'clinicReception', x: 13, y: 3, props: { w: 6, h: 2, tone: '#DB2777', label: '접수' } },
     { id: 'bl-measure', type: 'baylabel', x: 1, y: 2, props: { text: '계측' } },
     { id: 'o-w-babyscale', type: 'babyscale', x: 2, y: 4 },
     { id: 'o-w-stadiometer', type: 'stadiometer', x: 5, y: 4, props: { marker: 'info', markerLabel: '성장 계측' } },
@@ -71,7 +71,7 @@ export const PEDS_INTERIOR: Interior = {
     { id: 'o-w-blocks', type: 'blocks', x: 24, y: 5 },
     { id: 'o-w-horse', type: 'rockinghorse', x: 21, y: 6, props: { marker: 'info', markerLabel: '놀이방' } },
     { id: 'o-w-chest', type: 'toychest', x: 30, y: 6 },
-    { id: 'o-w-mural', type: 'mural', x: 20, y: 1, props: { w: 4 } },
+    { id: 'o-w-mural', type: 'mural', x: 20, y: 1.5, props: { w: 4 } },
     { id: 'o-w-bal1', type: 'balloon', x: 22, y: 2, props: { color: '#EF4444' } },
     { id: 'o-w-bal2', type: 'balloon', x: 23, y: 1.5, props: { color: '#3B82F6' } },
     { id: 'o-w-bal3', type: 'balloon', x: 24, y: 2.5, props: { color: '#10B981' } },
