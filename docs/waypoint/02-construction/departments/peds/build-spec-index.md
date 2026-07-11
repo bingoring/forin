@@ -73,7 +73,7 @@ updated: 2026-07-10
 | SoT | 실제 | 사유 |
 |---|---|---|
 | 뷰 무관 | scale 0.85 | 34폭 방 뷰포트 맞춤(ER/OR/ICU 일관) |
-| Mural clipPath 언덕 | 평면 초록 밴드 | RN View clipPath 미지원 근사 |
+| ~~Mural clipPath 언덕 → 평면 밴드~~ | **SVG Path 굴곡 언덕으로 수정(2026-07-12)** | RN View clipPath 미지원 → mural을 react-native-svg로 전환(초원 곡선 복원). 위치는 x20,y1(놀이방 좌상단)=핸드오프 그대로 |
 | RockingHorse·Balloon `forinBob` | 정적 | 애니 후속(bob) |
 | 시나리오 마커 | 라벨만(scenarioId 없음) | peds 시나리오 콘텐츠 후속(Q1) |
 나머지 좌표·오브젝트·NPC는 `interior-peds.jsx`와 1:1.
