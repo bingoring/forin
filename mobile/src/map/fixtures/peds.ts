@@ -11,7 +11,7 @@ export const PEDS_INTERIOR: Interior = {
   id: 'INT-PEDS-00001',
   deptId: 'DEPT-PEDS-00001',
   cols: 34,
-  rows: 48,
+  rows: 47,
   floorTheme: 'peds',
   // 34-wide floor; <1 zoom so a room fits the viewport (matches ER/OR/ICU).
   scale: 0.85,
@@ -20,8 +20,8 @@ export const PEDS_INTERIOR: Interior = {
     { id: 'welcome', name: '외래 · 대기 · 놀이', icon: '🌈', bounds: { x: 0, y: 0, w: 34, h: 15 } },
     { id: 'exam', name: '소아 진료실', icon: '🩺', bounds: { x: 0, y: 14, w: 12, h: 16 } },
     { id: 'ward', name: '소아 병동', icon: '🛏', bounds: { x: 11, y: 14, w: 23, h: 16 } },
-    { id: 'ante', name: 'NICU 전실 · 세척', icon: '🧼', bounds: { x: 0, y: 29, w: 10, h: 19 } },
-    { id: 'nicu', name: 'NICU 인큐베이터 존', icon: '👶', bounds: { x: 9, y: 29, w: 25, h: 19 } },
+    { id: 'ante', name: 'NICU 전실 · 세척', icon: '🧼', bounds: { x: 0, y: 29, w: 10, h: 17 } },
+    { id: 'nicu', name: 'NICU 인큐베이터 존', icon: '👶', bounds: { x: 9, y: 29, w: 25, h: 17 } },
   ],
   rooms: [
     { id: 'welcome', name: '외래 대기·놀이', sub: '접수·계측·놀이방', icon: '🌈', color: '#FBCFE8', x: 16, y: 6 },
@@ -33,7 +33,7 @@ export const PEDS_INTERIOR: Interior = {
   collision: [
     // outer walls (top campus door x15-17 is a gap)
     { x: 0, y: 0, w: 15, h: 1 }, { x: 18, y: 0, w: 16, h: 1 },
-    { x: 0, y: 1, w: 1, h: 46 }, { x: 33, y: 1, w: 1, h: 46 }, { x: 0, y: 47, w: 34, h: 1 },
+    { x: 0, y: 1, w: 1, h: 45 }, { x: 33, y: 1, w: 1, h: 45 }, { x: 0, y: 46, w: 34, h: 1 },
     // divider y14 (welcome / exam+ward) — thresholds x5-7 (→진료실) / x16-18 (→병동)
     { x: 1, y: 14, w: 4, h: 1 }, { x: 8, y: 14, w: 8, h: 1 }, { x: 19, y: 14, w: 14, h: 1 },
     // exam | ward divider x11 (gap y20-22)
@@ -48,7 +48,7 @@ export const PEDS_INTERIOR: Interior = {
     // welcome play mat (opaque salmon floor mat + dashed border, per handoff)
     { id: 'o-play-mat', type: 'playmat', x: 20, y: 3, props: { w: 12, h: 8 } },
     // exterior campus auto door
-    { id: 'd-campus', type: 'door', x: 14.5, y: 0, props: { w: 3, kind: 'auto', label: '↓ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 15, y: 0, props: { w: 3, kind: 'auto', label: '↓ 캠퍼스로' } },
     // internal thresholds
     { id: 'th-exam', type: 'threshold', x: 5, y: 14, props: { w: 3, h: 1, label: '→ 진료실' } },
     { id: 'th-ward', type: 'threshold', x: 16, y: 14, props: { w: 3, h: 1, label: '→ 병동' } },
@@ -71,7 +71,7 @@ export const PEDS_INTERIOR: Interior = {
     { id: 'o-w-blocks', type: 'blocks', x: 24, y: 5 },
     { id: 'o-w-horse', type: 'rockinghorse', x: 21, y: 6, props: { marker: 'info', markerLabel: '놀이방' } },
     { id: 'o-w-chest', type: 'toychest', x: 30, y: 6 },
-    { id: 'o-w-mural', type: 'mural', x: 20, y: 1.5, props: { w: 4 } },
+    { id: 'o-w-mural', type: 'mural', x: 20, y: 1, props: { w: 4 } },
     { id: 'o-w-bal1', type: 'balloon', x: 22, y: 2, props: { color: '#EF4444' } },
     { id: 'o-w-bal2', type: 'balloon', x: 23, y: 1.5, props: { color: '#3B82F6' } },
     { id: 'o-w-bal3', type: 'balloon', x: 24, y: 2.5, props: { color: '#10B981' } },
