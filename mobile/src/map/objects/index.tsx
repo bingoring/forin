@@ -14,6 +14,7 @@ import { ErObjectView } from './erEquipment';
 import { OrObjectView } from './orEquipment';
 import { IcuObjectView } from './icuEquipment';
 import { PedsObjectView } from './pedsEquipment';
+import { PharmaObjectView } from './pharmaEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -343,6 +344,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         OrObjectView({ object }) ??
         IcuObjectView({ object }) ??
         PedsObjectView({ object }) ??
+        PharmaObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );

@@ -13,6 +13,7 @@ import { CAMPUS_INTERIOR } from './campus';
 import { OR_INTERIOR } from './or';
 import { ICU_INTERIOR } from './icu';
 import { PEDS_INTERIOR } from './peds';
+import { PHARMA_INTERIOR } from './pharma';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
@@ -273,7 +274,10 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-dec-chem1', type: 'chemdrum', x: 37, y: 51, props: { tone: 'chem' } },
     { id: 'o-dec-chem2', type: 'chemdrum', x: 37, y: 54, props: { tone: 'waste' } },
   ],
-  hotspots: [],
+  hotspots: [
+    // adjoining central pharmacy (원내 약국) — walk through from the 약품실 PYXIS
+    { id: 'hs-pharma', kind: 'portal', x: 18, y: 20, label: '→ 원내 약국', target: 'INT-PHARMA-00001', entry: { x: 9, y: 9 } },
+  ],
   npcs: [
     // lobby
     { id: 'er-amb-p1', kind: 'paramedic', mode: 'idle', seed: 41, start: { x: 3, y: 7 } },
@@ -331,6 +335,7 @@ export const FIXTURES: Record<string, Interior> = {
   [OR_INTERIOR.id]: OR_INTERIOR,
   [ICU_INTERIOR.id]: ICU_INTERIOR,
   [PEDS_INTERIOR.id]: PEDS_INTERIOR,
+  [PHARMA_INTERIOR.id]: PHARMA_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
   [INTERNAL.id]: INTERNAL,
   [SURGERY.id]: SURGERY,

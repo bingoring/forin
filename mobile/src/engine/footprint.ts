@@ -93,7 +93,13 @@ export function objectCollision(objects: MapObject[]): Bounds[] {
       // peds floor-overlay / wall / ceiling pieces (props.w/h are visual spans,
       // not collision): the play mat, wall chart, wall mural, ceiling lamp.
       o.type === 'playmat' || o.type === 'dosingchart' || o.type === 'mural' ||
-      o.type === 'phototherapy'
+      o.type === 'phototherapy' ||
+      // pharmacy wall-mounted / floor-overlay / hanging pieces (props.w spans are
+      // visual, not collision): hanging signs, shelf tags, floor tape, sticky mat,
+      // wall shelving/phone/gauge/spill-kit, counter-top scanner.
+      o.type === 'countersign' || o.type === 'shelflabel' || o.type === 'floortape' ||
+      o.type === 'tackymat' || o.type === 'wallphone' || o.type === 'magnehelicgauge' ||
+      o.type === 'chemospillkit' || o.type === 'barcodescanner' || o.type === 'medwallshelf'
     ) continue;
     const pw = o.props?.w;
     const ph = o.props?.h;
