@@ -565,3 +565,10 @@
 - **수정(엔진 전역):** `regionAt`을 **가장 작은(가장 구체적인) 면적의 포함 구역 반환**으로 변경(`engine/regions.ts`). 배열 순서와 무관하게 항상 실제 서 있는 방으로 해석 → "겹침 그림자" 버그 클래스 원천 제거. 약국 regions 재배치는 이제 불필요하나 무해하게 유지.
 - **검증:** 전 9개 인테리어 **중심-타일 감사 통과**(각 방 중심이 자기 방으로 해석) · tsc 0 · jest 69/69 · 시뮬레이터에서 약국 마약류 보관고·ER 너스스테이션·ER 제1진료실 각 방 포커스 정상(강한 dim 0.55로 밝은 영역=현재 방 확인 후 0.2 원복).
 - **결정자:** 사용자(직접 테스트·수정 지시) + AI(진단·전역 수정·감사).
+
+## 2026-07-13 · 5g-f Internal Medicine Ward 구현 (v13)
+- **결정:** 일반 내과 병동을 v13 핸드오프에서 1:1 구현. 28×52, floorTheme 'internal'(sage), 7구역(린넨/클린/더티 서비스 스트립 → 중앙 간호 스테이션 복도 → 4인 만성질환 병실(커튼 분리) → 1인실 + VRE 접촉 격리실). 신규 `wardEquipment.tsx` 16종(ward2 11 + local MealCart/SharpsBin/IsoSign/DedicatedBP + DeskPhone) + `WardObjectView`. 공용(ibed ward·nursestation ㄷ-데스크·icurtain·vitals·walltv·sofa 등) + pharma의 pneumatictube/barcodescanner 재사용.
+- **해소된 질문:** Q1 스코프=**내과 병동만**(외과/정형은 후속 5g-g/h, 같은 카탈로그 재사용) · Q2 진입=**엘리베이터 타워 8F**(entry {12,50}; 하단 캠퍼스 문이 1인실\|격리 분리벽 x13을 걸쳐 1인실 쪽 스폰) · Q3 시나리오=**라벨만**.
+- **검증:** tsc 0 · jest 76/76(ward-fixture 7: 도달성·threshold·4인실 커튼 차단+4베이 도달·1인실\|격리 분리벽·footprint) · 시뮬레이터 전 구역 렌더 확인.
+- **편차:** scale 0.9 · IBed label 생략(공용 dispatch 미지원, peds와 동일) · SVG text→shape/생략 · 캠퍼스 문이 분리벽 걸침(1:1 유지, entry만 조정) · 시나리오 라벨만.
+- **결정자:** 사용자("5g-f 입원 병동 진행") + AI(Build Spec·구현·검증).
