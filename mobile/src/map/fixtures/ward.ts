@@ -14,7 +14,7 @@ export const WARD_INTERIOR: Interior = {
   rows: 52,
   floorTheme: 'internal',
   scale: 0.9,
-  playerStart: { x: 13, y: 14 }, // central nursing station (handoff)
+  playerStart: { x: 4, y: 15 }, // station corridor by the ← 캠퍼스 door (handoff v14)
   // smallest-area-wins region resolution (engine/regions.ts) — order is not
   // load-bearing, but keep rooms before the big station corridor for clarity.
   regions: [
@@ -36,10 +36,10 @@ export const WARD_INTERIOR: Interior = {
     { id: 'iso', name: 'VRE 격리실', sub: '접촉 격리', icon: '⚠️', color: '#FCA5A5', x: 21, y: 44 },
   ],
   collision: [
-    // outer walls — bottom 캠퍼스 door gap x12-14
+    // outer walls — LEFT 캠퍼스 door gap y14-16 (v14; bottom is now solid)
     { x: 0, y: 0, w: 28, h: 1 },
-    { x: 0, y: 1, w: 1, h: 50 }, { x: 27, y: 1, w: 1, h: 50 },
-    { x: 0, y: 51, w: 12, h: 1 }, { x: 15, y: 51, w: 13, h: 1 },
+    { x: 0, y: 1, w: 1, h: 13 }, { x: 0, y: 17, w: 1, h: 34 }, { x: 27, y: 1, w: 1, h: 50 },
+    { x: 0, y: 51, w: 28, h: 1 },
     // service strip dividers (y10) — thresholds x5-6 / x13-14 / x21-22
     { x: 1, y: 10, w: 4, h: 1 }, { x: 7, y: 10, w: 6, h: 1 }, { x: 15, y: 10, w: 6, h: 1 }, { x: 23, y: 10, w: 4, h: 1 },
     // service vertical dividers (x9 / x18) with a threshold gap y6-8
@@ -54,7 +54,7 @@ export const WARD_INTERIOR: Interior = {
   ],
   objects: [
     // ── structural openings ──
-    { id: 'd-campus', type: 'door', x: 12, y: 51, props: { w: 3, h: 1, kind: 'auto', label: '↑ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 0, y: 14, props: { w: 1, h: 3, kind: 'auto', label: '← 캠퍼스로' } },
     { id: 'th-l', type: 'threshold', x: 5, y: 10, props: { w: 2, h: 1, label: '→ 복도' } },
     { id: 'th-c', type: 'threshold', x: 13, y: 10, props: { w: 2, h: 1, label: '→ 복도' } },
     { id: 'th-d', type: 'threshold', x: 21, y: 10, props: { w: 2, h: 1 } },
@@ -89,7 +89,6 @@ export const WARD_INTERIOR: Interior = {
 
     // ════════ 중앙 간호 스테이션 · 복도 (y11-19) ════════
     { id: 'bl-station', type: 'baylabel', x: 1, y: 11, props: { text: 'CENTRAL NURSING STATION', highlight: true } },
-    { id: 'o-s-rail1', type: 'handrail', x: 1, y: 11, props: { w: 8, vertical: true } },
     { id: 'o-s-rail2', type: 'handrail', x: 27, y: 11, props: { w: 8, vertical: true } },
     { id: 'o-s-desk', type: 'nursestation', x: 8, y: 12, props: { w: 12, h: 5 } },
     { id: 'o-s-tube', type: 'pneumatictube', x: 5, y: 11, props: { w: 2, h: 1 } },

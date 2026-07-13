@@ -14,13 +14,14 @@ const start: Coord = WARD_INTERIOR.playerStart;
 const reachable = (c: Coord) => (c.x === start.x && c.y === start.y) || findPath(start, c, grid, blocked).length > 0;
 
 describe('Internal Medicine Ward master blueprint', () => {
-  test('player start (nursing station) is open', () => {
+  test('player start (station corridor by the ← door) is open', () => {
     expect(canEnter(start, grid, blocked)).toBe(true);
   });
 
-  test('elevator arrival tile (bottom 캠퍼스 door, private side) is open + reachable', () => {
-    expect(canEnter({ x: 12, y: 50 }, grid, blocked)).toBe(true);
-    expect(reachable({ x: 12, y: 50 })).toBe(true);
+  test('elevator arrival tile (left 캠퍼스 door) is open + reachable; bottom wall solid', () => {
+    expect(canEnter({ x: 1, y: 15 }, grid, blocked)).toBe(true); // just inside the ← door
+    expect(reachable({ x: 1, y: 15 })).toBe(true);
+    expect(canEnter({ x: 13, y: 51 }, grid, blocked)).toBe(false); // bottom is now solid wall
   });
 
   test('every room is reachable (via an open tile near its anchor)', () => {
