@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<style>
+@font-face { font-family:'Galmuri11'; src:url('https://cdn.jsdelivr.net/gh/quiple/galmuri/dist/Galmuri11.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'DungGeunMo'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/DungGeunMo.woff') format('woff'); font-weight:400; font-display:swap; }
+html,body{margin:0;padding:0;background:#fff;font-family:'Galmuri11','DungGeunMo',monospace;}
+svg{shape-rendering:crispEdges;}
+#root{display:inline-block;}
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="forin-ui.jsx"></script>
+<script type="text/babel" src="forin-npcs-smooth.jsx"></script>
+<script type="text/babel" src="forin-faces.jsx"></script>
+<script type="text/babel" src="interior-shared.jsx"></script>
+<script type="text/babel" src="interior-objects-er.jsx"></script>
+<script type="text/babel" src="interior-objects-er2.jsx"></script>
+<script type="text/babel" src="interior-objects-er3.jsx"></script>
+<script type="text/babel" src="interior-objects-or2.jsx"></script>
+<script type="text/babel" src="interior-objects-icu2.jsx"></script>
+<script type="text/babel" src="interior-objects-peds2.jsx"></script>
+<script type="text/babel" src="interior-er.jsx"></script>
+<script type="text/babel" src="interior-or.jsx"></script>
+<script type="text/babel" src="interior-icu.jsx"></script>
+<script type="text/babel" src="interior-peds.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+  // Flat full-floor renderer — replaces the interactive InteriorScreen so the
+  // whole map is captured unclipped (no camera, no room mask, no player).
+  function FlatInterior(props) {
+    const { cols, rows, floor = 'clinical', render, playerStart } = props;
+    const mapW = cols * ITILE, mapH = rows * ITILE;
+    const fk = 'floor' + floor.charAt(0).toUpperCase() + floor.slice(1);
+    const tiles = [];
+    for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++)
+      tiles.push(<IFloor key={x + '-' + y} theme={floor} x={x} y={y} />);
+    return (
+      <div style={{ position: 'relative', width: mapW * 2, height: mapH * 2 }}>
+        <div style={{ position: 'absolute', left: 0, top: 0, width: mapW, height: mapH,
+          transform: 'scale(2)', transformOrigin: '0 0', background: (window.IP && IP[fk]) || '#e6edf0' }}>
+          {tiles}
+          {render({ pos: playerStart, setPos: function () {} })}
+        </div>
+      </div>
+    );
+  }
+  setTimeout(function () {
+    try {
+      InteriorScreen = FlatInterior; window.InteriorScreen = FlatInterior;
+      var which = location.hash.slice(1) || 'OR';
+      var Screen = window['ScreenInterior' + which];
+      if (!Screen) { console.error('NO SCREEN FOR', which); return; }
+      var root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<Screen />);
+      console.log('MOUNTED', which);
+      setTimeout(function () { document.body.setAttribute('data-ready', '1'); }, 500);
+    } catch (e) { console.error('MOUNT ERROR', e && e.message, e && e.stack); }
+  }, 1200);
+</script>
+</body>
+</html>
