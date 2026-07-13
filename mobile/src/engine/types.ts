@@ -55,6 +55,8 @@ export interface Hotspot {
   label?: string;
   scenarioId?: string; // kind 'quest' → scenario to launch
   building?: string; // kind 'elevator' → building key to open
+  target?: string; // kind 'portal' → interior id to walk into (adjoining dept)
+  entry?: { x: number; y: number }; // kind 'portal' → spawn tile in the target
 }
 
 export interface Interior {

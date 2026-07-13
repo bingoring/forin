@@ -9,14 +9,21 @@ export default function ElevatorRoute() {
   const { building } = useLocalSearchParams<{ building: string }>();
   const router = useRouter();
 
-  const onPickFloor = (b: string, floor: ElevFloor) => {
+  const onPickFloor = (b: string, floor: ElevFloor, from?: string, dir?: 'up' | 'down') => {
     if (floor.interior) {
       // ride in with the doors still shut; the interior continues the open via
-      // DoorReveal (?via=elevator), revealing the map once it loads. `entry`
-      // spawns the player at the floor's doorway.
-      const wall = ELEVATOR_BUILDINGS[b]?.wall ?? '#E8EAEC';
+      // DoorReveal (?via=elevator), revealing the map once it FULLY renders.
+      // from/to/dept/dir drive the elevator floor ticker on the reveal overlay.
+      // Pass the wall color WITHOUT its leading '#': a literal or decoded '#' in
+      // a URL starts a fragment and truncates every param after it (breaks the
+      // deep-link path entirely). The interior route re-adds the '#'.
+      const wall = (ELEVATOR_BUILDINGS[b]?.wall ?? '#E8EAEC').replace(/^#/, '');
       const at = floor.entry ? `&ex=${floor.entry.x}&ey=${floor.entry.y}` : '';
-      router.replace(`/interior/${floor.interior}?via=elevator&c=${encodeURIComponent(wall)}${at}`);
+      const trip =
+        `&to=${encodeURIComponent(floor.f)}&dept=${encodeURIComponent(floor.depts[0] ?? '')}` +
+        (from ? `&from=${encodeURIComponent(from)}` : '') +
+        (dir ? `&dir=${dir}` : '');
+      router.replace(`/interior/${floor.interior}?via=elevator&c=${encodeURIComponent(wall)}${at}${trip}`);
     } else {
       Alert.alert(`${floor.f} · ${floor.depts[0]}`, '이 층은 곧 공개됩니다. (준비 중)');
     }

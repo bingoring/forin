@@ -10,11 +10,18 @@ import { FIXTURES } from '@/map/fixtures/er';
 import type { Interior } from '@engine';
 
 export default function InteriorRoute() {
-  const { id, via, c, ex, ey } = useLocalSearchParams<{ id: string; via?: string; c?: string; ex?: string; ey?: string }>();
+  const { id, via, c, ex, ey, from, to, dept, dir } = useLocalSearchParams<{
+    id: string; via?: string; c?: string; ex?: string; ey?: string;
+    from?: string; to?: string; dept?: string; dir?: string;
+  }>();
   const router = useRouter();
   const [interior, setInterior] = useState<Interior | null>(null);
   const [error, setError] = useState(false);
   const [revealDone, setRevealDone] = useState(false);
+  // Doors open only once the world is actually laid out + drawn (InteriorScreen
+  // .onReady), not merely once the data loaded — otherwise the map is revealed
+  // mid-layout and visibly slides/pops into place.
+  const [mapReady, setMapReady] = useState(false);
   const viaElevator = via === 'elevator';
   // entering via the elevator: skip the route's sideways slide so only the
   // DoorReveal plays (the slide + doors opening together looked awkward).
@@ -33,6 +40,7 @@ export default function InteriorRoute() {
     let alive = true;
     setError(false);
     setInterior(null);
+    setMapReady(false);
     // Bespoke dept interiors (ER/OR/ICU/Peds/…) are authored client-side and the
     // bundled FIXTURE is the source of truth — it is always complete and current.
     // Prefer it over the server: a running dev server can hold a STALE/partial
@@ -66,10 +74,18 @@ export default function InteriorRoute() {
     </View>
   );
 
-  // When entered via the elevator, a closed DoorReveal overlay sits on top while
-  // the map loads behind it, then slides apart to reveal the map.
+  // When entered via the elevator, a closed cab-door overlay rides with a floor
+  // ticker while the map loads AND fully renders behind it, then opens.
   const reveal = viaElevator && !revealDone ? (
-    <DoorReveal ready={!!interior || error} wall={typeof c === 'string' ? c : undefined} onDone={() => setRevealDone(true)} />
+    <DoorReveal
+      ready={mapReady || error}
+      wall={typeof c === 'string' && c ? (c.startsWith('#') ? c : `#${c}`) : undefined}
+      fromFloor={typeof from === 'string' ? from : undefined}
+      toFloor={typeof to === 'string' ? to : undefined}
+      dept={typeof dept === 'string' ? dept : undefined}
+      dir={dir === 'up' || dir === 'down' ? dir : undefined}
+      onDone={() => setRevealDone(true)}
+    />
   ) : null;
 
   if (error) {
@@ -94,10 +110,16 @@ export default function InteriorRoute() {
       <Stack.Screen options={{ headerShown: false, animation: enterAnim }} />
       <InteriorScreen
         interior={spawned ?? interior}
+        onReady={() => setMapReady(true)}
         onExit={() => router.back()}
         onEnterScenario={(h) => {
           if (h.kind === 'elevator' && h.building) router.push(`/elevator/${h.building}`);
-          else if (h.scenarioId) router.push(`/scenario/${h.scenarioId}`);
+          else if (h.kind === 'portal' && h.target) {
+            // walk through an adjoining-dept door: push the target interior (so
+            // 캠퍼스/back returns here), spawning at its doorway if given.
+            const at = h.entry ? `?ex=${h.entry.x}&ey=${h.entry.y}` : '';
+            router.push(`/interior/${h.target}${at}`);
+          } else if (h.scenarioId) router.push(`/scenario/${h.scenarioId}`);
         }}
       />
       {reveal}

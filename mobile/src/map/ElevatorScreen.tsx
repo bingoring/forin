@@ -4,7 +4,7 @@
 // situation chip read from the shared scenario source (same as the 상황판), then
 // you pick a floor to ride to that floor's interior.
 import { useEffect, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, fonts } from '@/theme/tokens';
@@ -42,7 +42,8 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
       { f: '4F', depts: ['중앙 ICU', 'CCU · Neuro · TICU'], icon: '🫀', sdepts: ['ICU'], interior: 'INT-ICU-00001', entry: { x: 7, y: 42 } },
       { f: '3F', depts: ['수술실 OR', '회복실 PACU', '당일수술센터'], icon: '🔪', sdepts: ['OR'], interior: 'INT-OR-00001', entry: { x: 18, y: 1 } },
       { f: '2F', depts: ['피부과 외래', '내과 · 외과 외래'], icon: '🩺', interior: 'CLINIC-IM-00001' },
-      { f: '1F', depts: ['응급의료센터 ER', '원내 약국', '메인 로비'], icon: '🚑', sdepts: ['ER', 'PHARMA'], lobby: true, interior: 'INT-ER-00001', entry: { x: 20, y: 11 } },
+      { f: '1F', depts: ['응급의료센터 ER', '메인 로비'], icon: '🚑', sdepts: ['ER'], lobby: true, interior: 'INT-ER-00001', entry: { x: 20, y: 11 } },
+      { f: 'P1', depts: ['중앙 약제부 · 원내 약국', 'IV 무균조제실', '마약류 보관고'], icon: '💊', sdepts: ['PHARMA'], interior: 'INT-PHARMA-00001', entry: { x: 16, y: 40 } },
     ],
   },
   women: {
@@ -106,7 +107,7 @@ export function ElevatorScreen({
   onClose,
 }: {
   building?: string;
-  onPickFloor?: (building: string, floor: ElevFloor) => void;
+  onPickFloor?: (building: string, floor: ElevFloor, from?: string, dir?: 'up' | 'down') => void;
   onClose?: () => void;
 }) {
   const [bk, setBk] = useState(building in ELEVATOR_BUILDINGS ? building : 'tower');
@@ -117,22 +118,29 @@ export function ElevatorScreen({
   const [cur, setCur] = useState(lobbyFloor(b).f); // where the cab is
   const [sel, setSel] = useState(lobbyFloor(b).f); // target floor
   const [riding, setRiding] = useState(false);
-  const door = useSharedValue(0); // 0 = open (boarding), 1 = closed (riding)
+  const { width } = useWindowDimensions();
+  // Full-screen cab doors: 0 = fully open (off-screen, panel visible), 1 = shut
+  // (met at center, covering the whole screen). Pressing 이동 slides them shut over
+  // the ENTIRE screen — that close IS the "doors closing" (no small door preview),
+  // then we navigate and the destination DoorReveal continues from the shut state.
+  const boarding = useSharedValue(0);
 
   useEffect(() => {
     const s = lobbyFloor(ELEVATOR_BUILDINGS[bk]).f;
     setCur(s);
     setSel(s);
     setRiding(false);
-    door.value = 0;
-  }, [bk, door]);
+    boarding.value = 0;
+  }, [bk, boarding]);
 
   const idx = (x: string) => b.floors.findIndex((f) => f.f === x);
   const dir = idx(sel) < idx(cur) ? 'up' : idx(sel) > idx(cur) ? 'down' : 'same';
   const arrow = dir === 'up' ? '▲' : dir === 'down' ? '▼' : '';
 
-  const leftDoor = useAnimatedStyle(() => ({ transform: [{ scaleX: door.value }] }));
-  const rightDoor = useAnimatedStyle(() => ({ transform: [{ scaleX: door.value }] }));
+  const half = width / 2 + 2;
+  const leftDoor = useAnimatedStyle(() => ({ transform: [{ translateX: -half * (1 - boarding.value) }] }));
+  const rightDoor = useAnimatedStyle(() => ({ transform: [{ translateX: half * (1 - boarding.value) }] }));
+  const panelDim = useAnimatedStyle(() => ({ opacity: 1 - boarding.value }));
 
   const ride = () => {
     if (riding) return;
@@ -140,20 +148,22 @@ export function ElevatorScreen({
     setRiding(true);
     // preload the destination map during the ride so it's ready when doors open
     if (floor.interior) api.prefetchInterior(floor.interior);
-    const ease = Easing.inOut(Easing.ease);
-    door.value = withTiming(1, { duration: 450, easing: ease }); // doors CLOSE (board)
+    const ease = Easing.inOut(Easing.cubic);
+    boarding.value = withTiming(1, { duration: 520, easing: ease }); // whole screen SHUTS
+    const fromF = cur; // where the cab boarded (dir/cur are render-time values)
+    const rideDir = dir === 'up' || dir === 'down' ? dir : undefined;
     setTimeout(() => {
       setCur(sel);
-      onPickFloor?.(bk, floor);
+      onPickFloor?.(bk, floor, fromF, rideDir);
       if (floor.interior) {
-        // navigating away with the doors still shut — the destination screen
-        // continues the close→open via DoorReveal (opens once its map loads).
+        // navigating away with the screen fully shut — the destination screen
+        // continues shut→ticker→open via DoorReveal (opens once its map renders).
         return;
       }
       // 준비 중 floor: stay; reopen the doors.
       setRiding(false);
-      door.value = withTiming(0, { duration: 450, easing: ease });
-    }, 1150);
+      boarding.value = withTiming(0, { duration: 520, easing: ease });
+    }, 900);
   };
 
   return (
@@ -174,74 +184,89 @@ export function ElevatorScreen({
         ))}
       </ScrollView>
 
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 12, paddingBottom: 24 }}>
-        {/* cab header: readout + doors */}
-        <View style={{ backgroundColor: b.wall, borderWidth: 3, borderColor: INK, padding: 12, marginBottom: 14 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+      <Animated.View style={[{ flex: 1 }, panelDim]}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 12, paddingBottom: 24 }}>
+          {/* control-panel head: LCD floor indicator (real-elevator car-operating-
+              panel look) — no door preview; the doors are the full-screen shut. */}
+          <View style={{ backgroundColor: '#20262B', borderWidth: 3, borderColor: INK, padding: 12, marginBottom: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: INK }}>{b.name}</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft, marginTop: 1 }}>{b.sub}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: '#E7ECEF' }}>{b.name}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 9, color: '#8A97A0', marginTop: 2 }}>{b.sub}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 8.5, color: '#6C7A83', marginTop: 6 }}>현재 {cur} · 정원 15인 · 630kg</Text>
             </View>
-            <View style={{ backgroundColor: '#0F1A24', borderWidth: 2, borderColor: INK, paddingHorizontal: 10, paddingVertical: 4, minWidth: 48, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: riding ? '#FBBF24' : '#22D3EE', lineHeight: 20 }}>{sel}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 6, color: '#5A6B78', marginTop: 1 }}>{riding ? `${arrow || '▲'} 이동중` : '정지'}</Text>
+            {/* LCD readout */}
+            <View style={{ backgroundColor: '#0A1016', borderWidth: 2, borderColor: '#000', paddingHorizontal: 12, paddingVertical: 6, minWidth: 66, alignItems: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#3E5A46' }}>{riding ? `${arrow || '▲'}${arrow || '▲'}` : dir === 'same' ? '＝' : arrow}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 30, lineHeight: 32, color: riding ? '#FCD34D' : '#39D98A' }}>{sel}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 6.5, color: '#3E5A46', marginTop: 2 }}>{riding ? '이동 중' : '대기'}</Text>
             </View>
           </View>
-          {/* sliding doors */}
-          <View style={{ height: 30, borderWidth: 2, borderColor: INK, backgroundColor: b.trim, overflow: 'hidden', flexDirection: 'row' }}>
-            <Animated.View style={[{ width: '50%', height: '100%', backgroundColor: b.wall, borderRightWidth: 1, borderColor: INK, transformOrigin: 'left' }, leftDoor]} />
-            <Animated.View style={[{ width: '50%', height: '100%', backgroundColor: b.wall, borderLeftWidth: 1, borderColor: INK, transformOrigin: 'right' }, rightDoor]} />
-            {riding ? (
-              <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: INK }}>탑승 중…</Text>
-              </View>
-            ) : null}
+
+          {/* floor directory */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>층 선택 · 진료과 & 현황</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 8, color: colors.textSoft }}>🔴긴급 🟡진행 🟢정상 · 상황판 연동</Text>
           </View>
-        </View>
-
-        {/* floor directory */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>층 선택 · 진료과 & 현황</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: 8, color: colors.textSoft }}>🔴긴급 🟡진행 🟢정상 · 상황판 연동</Text>
-        </View>
-        <View style={{ gap: 7 }}>
-          {b.floors.map((fl) => {
-            const chip = floorChip(fl, counts);
-            const selected = sel === fl.f;
-            return (
-              <Pressable key={fl.f} onPress={() => setSel(fl.f)} style={{ flexDirection: 'row', alignItems: 'stretch', backgroundColor: selected ? b.accent : '#fff', borderWidth: 2.5, borderColor: INK, overflow: 'hidden' }}>
-                <View style={{ width: 42, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? '#fff' : colors.cream, borderRightWidth: 2, borderColor: INK, paddingVertical: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: INK, lineHeight: 18 }}>{fl.f}</Text>
-                  {fl.lobby ? <Text style={{ fontFamily: fonts.body, fontSize: 7, color: colors.textSoft, marginTop: 2 }}>LOBBY</Text> : null}
+          <View style={{ gap: 11 }}>
+            {b.floors.map((fl) => {
+              const chip = floorChip(fl, counts);
+              const selected = sel === fl.f;
+              return (
+                // hard offset shadow behind the row (forin's no-blur button look);
+                // the SELECTED floor STAYS dropped into the shadow (pressed-in latch),
+                // others sit up with their shadow showing. Press gives instant feedback.
+                <View key={fl.f} style={{ position: 'relative' }}>
+                  <View style={{ position: 'absolute', left: 4, top: 4, width: '100%', height: '100%', backgroundColor: INK }} />
+                  <Pressable onPress={() => setSel(fl.f)} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'stretch', backgroundColor: selected ? b.accent : '#fff', borderWidth: 2.5, borderColor: INK, overflow: 'hidden', transform: pressed || selected ? [{ translateX: 4 }, { translateY: 4 }] : [] })}>
+                    <View style={{ width: 42, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? '#fff' : colors.cream, borderRightWidth: 2, borderColor: INK, paddingVertical: 8 }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: INK, lineHeight: 18 }}>{fl.f}</Text>
+                      {fl.lobby ? <Text style={{ fontFamily: fonts.body, fontSize: 7, color: colors.textSoft, marginTop: 2 }}>LOBBY</Text> : null}
+                    </View>
+                    <View style={{ flex: 1, paddingHorizontal: 6, paddingVertical: 7, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                      <Text style={{ fontSize: 12 }}>{fl.icon}</Text>
+                      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: selected ? '#fff' : INK }}>{fl.depts.join(' · ')}</Text>
+                    </View>
+                    {chip ? (
+                      <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 7, backgroundColor: chip.bg, borderLeftWidth: 2, borderColor: INK }}>
+                        <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: chip.dot, marginRight: 4 }} />
+                        <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: INK }}>{chip.label}</Text>
+                      </View>
+                    ) : null}
+                  </Pressable>
                 </View>
-                <View style={{ flex: 1, paddingHorizontal: 6, paddingVertical: 7, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                  <Text style={{ fontSize: 12 }}>{fl.icon}</Text>
-                  <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: selected ? '#fff' : INK }}>{fl.depts.join(' · ')}</Text>
-                </View>
-                {chip ? (
-                  <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 7, backgroundColor: chip.bg, borderLeftWidth: 2, borderColor: INK }}>
-                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: chip.dot, marginRight: 4 }} />
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: INK }}>{chip.label}</Text>
-                  </View>
-                ) : null}
-              </Pressable>
-            );
-          })}
-        </View>
-      </ScrollView>
+              );
+            })}
+          </View>
+        </ScrollView>
 
-      {/* GO bar */}
-      <View style={{ padding: 12, borderTopWidth: 2, borderColor: INK, backgroundColor: colors.paper }}>
-        <PixelButton
-          label={riding ? '이동 중…' : dir === 'same' ? `${sel} 층 (현재 위치)` : `${sel} 층으로 이동 ${arrow}`}
-          bg={b.accent}
-          shadowColor={INK}
-          textColor="#fff"
-          disabled={riding}
-          onPress={ride}
-          full
-        />
-      </View>
+        {/* GO bar */}
+        <View style={{ padding: 12, borderTopWidth: 2, borderColor: INK, backgroundColor: colors.paper }}>
+          <PixelButton
+            label={riding ? '이동 중…' : dir === 'same' ? `${sel} 층 (현재 위치)` : `${sel} 층으로 이동 ${arrow}`}
+            bg={b.accent}
+            shadowColor={INK}
+            textColor="#fff"
+            disabled={riding}
+            onPress={ride}
+            full
+          />
+        </View>
+      </Animated.View>
+
+      {/* FULL-SCREEN cab doors — slide shut over everything on 이동, then the
+          destination DoorReveal continues from this shut state. */}
+      {riding ? (
+        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, flexDirection: 'row' }}>
+          <Animated.View style={[{ width: '50%', height: '100%', backgroundColor: b.wall, borderRightWidth: 2, borderColor: INK }, leftDoor]}>
+            <View style={{ position: 'absolute', right: 3, top: 0, bottom: 0, width: 4, backgroundColor: '#FFFFFF', opacity: 0.35 }} />
+            <View style={{ position: 'absolute', right: 12, top: 0, bottom: 0, width: 2, backgroundColor: INK, opacity: 0.12 }} />
+          </Animated.View>
+          <Animated.View style={[{ width: '50%', height: '100%', backgroundColor: b.wall, borderLeftWidth: 2, borderColor: INK }, rightDoor]}>
+            <View style={{ position: 'absolute', left: 3, top: 0, bottom: 0, width: 4, backgroundColor: '#FFFFFF', opacity: 0.35 }} />
+            <View style={{ position: 'absolute', left: 12, top: 0, bottom: 0, width: 2, backgroundColor: INK, opacity: 0.12 }} />
+          </Animated.View>
+        </View>
+      ) : null}
     </SafeAreaView>
   );
 }

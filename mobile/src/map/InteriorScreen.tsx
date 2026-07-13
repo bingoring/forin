@@ -1,7 +1,7 @@
 // Interior exploration shell: top bar, camera-followed tile world (floor +
 // objects + hotspots + player + room mask), region-transition banner, and the
 // HUD. Movement/walkability come from useMovement + the pure collision module.
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, Text, View, type LayoutChangeEvent, type GestureResponderEvent } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -33,7 +33,7 @@ function seatSprite(x: number, y: number) {
 
 // Quest/info marker — faithful IHotspot: a pixel box with a ! (quest/urgent) or
 // ? (info) glyph + hard shadow, gently bobbing up/down (the handoff "forinBob").
-const HS_COLORS: Record<string, string> = { quest: '#FEF08A', urgent: '#EF4444', info: '#FFFFFF', police: '#1F2937' };
+const HS_COLORS: Record<string, string> = { quest: '#FEF08A', urgent: '#EF4444', info: '#FFFFFF', police: '#1F2937', portal: '#A7F3D0' };
 // Handoff IHotspot is 18px at ITILE=16 (≈1.1 tiles → ~36 screen px at ZOOM 2);
 // keep the marker that prominent rather than the earlier undersized 24.
 const HS_SIZE = 34;
@@ -47,7 +47,7 @@ function HotspotMarker({ h }: { h: MarkerT }) {
   const left = (h.x + 0.5) * TILE - HS_SIZE / 2;
   const top = h.y * TILE + (h.dy ?? -(HS_SIZE + 2));
   const bg = HS_COLORS[h.kind] ?? HS_COLORS.quest;
-  const glyph = h.kind === 'info' ? '?' : '!';
+  const glyph = h.kind === 'info' ? '?' : h.kind === 'portal' ? '→' : '!';
   const fg = h.kind === 'police' ? '#FFFFFF' : colors.ink;
   return (
     <Animated.View pointerEvents="none" style={[{ position: 'absolute', left, top, zIndex: 9000 }, style]}>
@@ -79,6 +79,44 @@ const zFor = (baseY: number) => Math.round(baseY * 10) + 10;
 const objBaseY = (o: MapObject) => o.y + (typeof o.props?.h === 'number' ? (o.props.h as number) : OBJECT_FOOTPRINT[o.type]?.h ?? 1);
 // OVERHEAD fixtures hang from the ceiling ABOVE everything (surgical light shining
 // down) → fixed high z, above objects + sprites but below markers/room-mask.
+// Static world layers (floor + room tints + walls + authored objects). Memoized
+// on the interior so it renders ONCE per map and is fully isolated from the
+// dynamic layers (ambient NPCs emote on random timers → frequent re-renders). If
+// these shared a parent with the NPCs, every NPC emote reconciled the whole
+// child list and RN intermittently dropped/re-layered objects on re-entry — the
+// "오브젝트가 사라지거나 배치가 이상함" bug. React.memo keeps this subtree stable.
+const objZ = (o: MapObject) => (OVERHEAD.has(o.type) ? OVERHEAD_Z : CEILING.has(o.type) ? 5 : zFor(objBaseY(o)));
+
+const StaticWorld = memo(function StaticWorld({ interior }: { interior: Interior }) {
+  // Depth-SORT the objects and render in that DOM order (painter's algorithm),
+  // in addition to zIndex, so depth is stable regardless of RN's zIndex quirks.
+  const drawn = interior.objects.filter((o) => o.type !== 'tint').slice().sort((a, b) => objZ(a) - objZ(b));
+  // DEFER the object layer one frame past the floor/walls. On fast elevator
+  // re-entry, mounting ~50 react-native-svg objects in the SAME frame as the
+  // rest of the shell raced and the whole object layer intermittently failed to
+  // paint (floor+walls fine, all equipment gone) — "오브젝트가 다 사라짐". Letting the
+  // shell commit first, then mounting objects on the next frame, avoids the race.
+  const [showObjs, setShowObjs] = useState(false);
+  useEffect(() => {
+    const r = requestAnimationFrame(() => setShowObjs(true));
+    return () => cancelAnimationFrame(r);
+  }, []);
+  return (
+    <>
+      <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
+      {interior.objects.filter((o) => o.type === 'tint').map((o) => (
+        <Tint key={o.id} x={o.x} y={o.y} w={(o.props?.w as number) ?? 1} h={(o.props?.h as number) ?? 1} color={o.props?.color as string | undefined} op={o.props?.op as number | undefined} />
+      ))}
+      <Walls collision={interior.collision} />
+      {showObjs && drawn.map((o) => (
+        <View key={o.id} pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, zIndex: objZ(o) }}>
+          <InteriorObjectView object={o} />
+        </View>
+      ))}
+    </>
+  );
+});
+
 const OVERHEAD = new Set(['surgicallight', 'phototherapy']);
 // Wall/ceiling backdrops sit BEHIND the equipment in front of them → low z.
 const CEILING = new Set(['orboommonitor', 'bankofmonitors', 'playmat']);
@@ -113,11 +151,16 @@ export function InteriorScreen({
   deptName,
   onExit,
   onEnterScenario,
+  onReady,
 }: {
   interior: Interior;
   deptName?: string;
   onExit?: () => void;
   onEnterScenario?: (hotspot: Hotspot) => void;
+  /** Fired once the world has laid out AND drawn its first frames (camera
+   *  settled at the spawn) — lets the elevator doors open on a settled map,
+   *  not a mid-layout one that visibly slides/pops. */
+  onReady?: () => void;
 }) {
   const { pos, facing, walking, moveDir, moveTo, warpTo } = useMovement(interior);
   const [vp, setVp] = useState({ w: 0, h: 0 });
@@ -155,11 +198,9 @@ export function InteriorScreen({
       y1: (-ty + vp.h) / (TILE * scale) + m,
     };
   }, [pos.x, pos.y, vp.w, vp.h, scale, worldW, worldH]);
-  // Objects are few (~100/floor) and structural pieces (thresholds/walls/doors)
-  // sit at ROOM EDGES — i.e. the viewport boundary — where view-culling was
-  // dropping them ("missing 가림막"). The floor renders every tile anyway, so the
-  // object cull saved little; render them all for correctness.
-  const visObjects = interior.objects;
+  // Static object/floor/wall layers now live in <StaticWorld> (memoized on the
+  // interior) — see its note. View-culling of objects stays disabled: structural
+  // pieces sit at room edges where culling dropped them ("missing 가림막").
   // Markers (!/?) belong to ENTITIES, not free map tiles: the authored hotspots
   // (e.g. elevators) plus any object/NPC carrying a `marker` prop. This keeps
   // markers anchored to a bed/desk/person instead of floating on empty floor.
@@ -217,13 +258,33 @@ export function InteriorScreen({
   // from it so both ease together (no instant tile jumps).
   const pxX = useSharedValue(pos.x * TILE);
   const pyY = useSharedValue(pos.y * TILE);
+  // Viewport as SHARED VALUES (not captured JS state): the camera worklet must
+  // read the LIVE viewport. Capturing vp.w/vp.h from React state into the
+  // useAnimatedStyle closure was stale across fast remounts (elevator re-entry)
+  // → the clamp used a wrong/old viewport, so the whole map rendered at the
+  // wrong scroll/scale and objects appeared shifted or scrolled off ("사라짐").
+  const vpW = useSharedValue(0);
+  const vpH = useSharedValue(0);
   const walkClock = useSharedValue(0); // re-fired 0→1 each step → 2 hops + 2 leg steps/tile
+  // SNAP the camera to the spawn on the first frame of an interior (mount or map
+  // switch); GLIDE only for in-map steps afterward. Relying on the glide alone
+  // meant the camera's settled position depended on withTiming completing before
+  // the screenshot/paint — inconsistent across fast elevator re-entries (camera
+  // sometimes settled scrolled-down). Snapping makes entry deterministic.
+  const settledFor = useRef<Interior | null>(null);
   useEffect(() => {
-    pxX.value = withTiming(pos.x * TILE, { duration: GLIDE_MS, easing: Easing.linear });
-    pyY.value = withTiming(pos.y * TILE, { duration: GLIDE_MS, easing: Easing.linear });
+    const firstFrame = settledFor.current !== interior;
+    settledFor.current = interior;
+    if (firstFrame) {
+      pxX.value = pos.x * TILE;
+      pyY.value = pos.y * TILE;
+    } else {
+      pxX.value = withTiming(pos.x * TILE, { duration: GLIDE_MS, easing: Easing.linear });
+      pyY.value = withTiming(pos.y * TILE, { duration: GLIDE_MS, easing: Easing.linear });
+    }
     walkClock.value = 0;
     walkClock.value = withTiming(1, { duration: GLIDE_MS, easing: Easing.linear });
-  }, [pos.x, pos.y, pxX, pyY, walkClock]);
+  }, [pos.x, pos.y, interior, pxX, pyY, walkClock]);
 
   // Camera: one transform on the world Pressable — translate (follow) then scale
   // (zoom), with transformOrigin top-left so world→screen is linear and the
@@ -232,12 +293,14 @@ export function InteriorScreen({
   // view's untransformed local space (0..worldW), so the tap math is ÷TILE.
   const worldStyle = useAnimatedStyle(() => {
     'worklet';
+    const w = vpW.value;
+    const h = vpH.value;
     const sw = worldW * scale;
     const sh = worldH * scale;
     const cx = (pxX.value + TILE / 2) * scale; // player center in scaled px
     const cy = (pyY.value + TILE / 2) * scale;
-    const tx = sw <= vp.w ? (vp.w - sw) / 2 : Math.max(vp.w - sw, Math.min(0, vp.w / 2 - cx));
-    const ty = sh <= vp.h ? (vp.h - sh) / 2 : Math.max(vp.h - sh, Math.min(0, vp.h / 2 - cy));
+    const tx = sw <= w ? (w - sw) / 2 : Math.max(w - sw, Math.min(0, w / 2 - cx));
+    const ty = sh <= h ? (h - sh) / 2 : Math.max(h - sh, Math.min(0, h / 2 - cy));
     return { transform: [{ translateX: tx }, { translateY: ty }, { scale }] };
   });
   const playerStyle = useAnimatedStyle(() => ({
@@ -249,9 +312,19 @@ export function InteriorScreen({
     moveTo({ x: Math.floor(locationX / TILE), y: Math.floor(locationY / TILE) });
   };
 
+  const readyFired = useRef(false);
   const onLayout = (e: LayoutChangeEvent) => {
     const { width, height } = e.nativeEvent.layout;
     setVp({ w: width, h: height });
+    vpW.value = width; // live viewport for the camera worklet (see above)
+    vpH.value = height;
+    // Signal "map is settled" one layout + two frames after we first have a
+    // viewport (worldStyle clamp + view-cull are valid only once vp.w>0; two
+    // rAFs let that first correct frame actually paint). Fired once.
+    if (width > 0 && !readyFired.current) {
+      readyFired.current = true;
+      requestAnimationFrame(() => requestAnimationFrame(() => onReady?.()));
+    }
   };
 
   return (
@@ -276,20 +349,9 @@ export function InteriorScreen({
             onPress={onWorldPress}
             style={[{ position: 'absolute', width: worldW, height: worldH, transformOrigin: 'top left' }, worldStyle]}
           >
-            <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
-
-            {/* room tints sit above the floor, below walls/objects */}
-            {visObjects.filter((o) => o.type === 'tint').map((o) => (
-              <Tint key={o.id} x={o.x} y={o.y} w={(o.props?.w as number) ?? 1} h={(o.props?.h as number) ?? 1} color={o.props?.color as string | undefined} op={o.props?.op as number | undefined} />
-            ))}
-
-            <Walls collision={interior.collision} />
-
-            {visObjects.filter((o) => o.type !== 'tint').map((o: MapObject) => (
-              <View key={o.id} pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, zIndex: OVERHEAD.has(o.type) ? OVERHEAD_Z : CEILING.has(o.type) ? 5 : zFor(objBaseY(o)) }}>
-                <InteriorObjectView object={o} />
-              </View>
-            ))}
+            {/* Static layers (floor/tints/walls/objects) — memoized + isolated
+                from NPC re-renders so objects never drop on re-entry. */}
+            <StaticWorld interior={interior} />
 
             {visHotspots.map((h) => (
               <HotspotMarker key={h.id} h={h} />
