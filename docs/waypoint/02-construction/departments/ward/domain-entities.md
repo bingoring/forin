@@ -6,7 +6,7 @@ updated: 2026-07-13
 
 # Ward — Domain Entities
 
-`WARD_INTERIOR` (`fixtures/ward.ts`) · 28×52 · floorTheme `internal` · scale 0.9 · playerStart `{13,14}`.
+`WARD_INTERIOR` (`fixtures/ward.ts`) · 28×52 · floorTheme `internal` · scale 0.9 · playerStart `{4,15}` (v14: 좌측 ← 캠퍼스 문 앞).
 
 ## Regions (7)
 | id | 이름 | bounds |
@@ -24,7 +24,7 @@ updated: 2026-07-13
 linen `{4,5}` · clean `{13,5}` · dirty `{22,5}` · station `{13,15}` · room4 `{13,27}` · private `{6,44}` · iso `{21,44}`.
 
 ## 오브젝트 배치 (핸드오프 1:1)
-**구조**: door `d-campus{12,51 w3}` · threshold 10(서비스 x5-6/x13-14/x21-22, 세로 x9·x18 y6-8, 스테이션 x7-9/x18-20, 하단 x6-7 →1인실 / x19-20 →격리) · 커튼 3(x8/x16/x23, y22-32) · 격리 사인.
+**구조**: door `d-campus{0,14 w1 h3}`(← 캠퍼스, v14 좌측) · threshold 10(서비스 x5-6/x13-14/x21-22, 세로 x9·x18 y6-8, 스테이션 x7-9/x18-20, 하단 x6-7 →1인실 / x19-20 →격리) · 커튼 3(x8/x16/x23, y22-32) · 격리 사인.
 
 **린넨·배식**: baylabel · icabinet(linen)×2 `{1,2}`·`{5,2}` + supply `{6,6}` · mealcart `{2,5}`.
 **Clean Utility**: baylabel · supplybasketshelf `{10,2 w4 s4}` · ivstoragecart `{10,6}` · ireception 투약준비 `{14,7 w3}` · barcodescanner `{16,6}`.

@@ -572,3 +572,9 @@
 - **검증:** tsc 0 · jest 76/76(ward-fixture 7: 도달성·threshold·4인실 커튼 차단+4베이 도달·1인실\|격리 분리벽·footprint) · 시뮬레이터 전 구역 렌더 확인.
 - **편차:** scale 0.9 · IBed label 생략(공용 dispatch 미지원, peds와 동일) · SVG text→shape/생략 · 캠퍼스 문이 분리벽 걸침(1:1 유지, entry만 조정) · 시나리오 라벨만.
 - **결정자:** 사용자("5g-f 입원 병동 진행") + AI(Build Spec·구현·검증).
+
+## 2026-07-13 · 5g-f 내과 병동 v14 방 배치 정정 (사용자 피드백)
+- **결정:** handoff **v14**로 SoT 갱신 후 내과 병동(INT-WARD) 방 배치 정정. v13→v14 diff = 구조 3건: ① playerStart {13,14}→{4,15} ② 캠퍼스 문 하단(↑ x12-14 y51)→**좌측(← x0 y14-16)**, 하단 벽 채움 ③ 좌측 세로 핸드레일 제거(우측만). 오브젝트 카탈로그(ward2)·각 방 오브젝트 좌표는 v13=v14 동일(80+개 전수 대조로 확인) — 제 v13 포팅이 오브젝트 좌표상 이미 handoff와 1:1이었고, 실제 diff는 위 구조 + 핸드레일뿐.
+- **반영:** `fixtures/ward.ts`(playerStart·좌측 문 벽 갭·하단 벽·핸드레일 제거) · `ElevatorScreen` 8F entry {12,50}→{1,15} · `ward-fixture.test.ts`(좌측 문 도달·하단 벽 차단) · Build Spec SoT v14.
+- **검증:** tsc 0 · jest 76/76(ward 7) · 시뮬레이터 좌측 문·스테이션 진입·전 구역 렌더 확인.
+- **결정자:** 사용자(v14 방배치 정정·오브젝트 diff 확인 지시) + AI(v13↔v14 diff·전수 대조·수정·검증).

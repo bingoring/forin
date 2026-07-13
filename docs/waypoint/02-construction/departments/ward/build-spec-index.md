@@ -12,9 +12,9 @@ updated: 2026-07-13
 |---|---|
 | interior id | `INT-WARD-00001` (deptId `DEPT-WARD-00001`) |
 | fixture | `mobile/src/map/fixtures/ward.ts` (`WARD_INTERIOR`) — **신규** |
-| SoT(핸드오프) | `design-handoff_v13` `interior-ward.jsx` + `interior-objects-ward2.jsx` (**v13 2.5D + 접지 그림자**) |
+| SoT(핸드오프) | **`design-handoff_v14`** `interior-ward.jsx` + `interior-objects-ward2.jsx` (v14 = 방 배치/문 위치 정정; 오브젝트 카탈로그는 v13과 동일) |
 | 그리드 | 28 cols × 52 rows · floorTheme `internal`(내과 sage) · scale **0.9** |
-| playerStart | `{13,14}` (중앙 간호 스테이션 — 핸드오프 그대로) |
+| playerStart | `{4,15}` (좌측 ← 캠퍼스 문 앞 스테이션 복도 — **v14**) |
 
 > 구조·공통 규약은 [er/](../er/build-spec-index.md)(기준선) + [README](../README.md). 세로 흐름(28폭×52장).
 > **v13 2.5D 장비 규약** 적용 — 통합 실루엣+상단면+seam+viewer-facing 전면+**접지 그림자 타원**.
@@ -44,12 +44,12 @@ updated: 2026-07-13
 | Ward 카탈로그 | ward2 오브젝트 11 + ward-local 4 + DeskPhone | `objects/wardEquipment.tsx` (신규) + `WardObjectView` |
 | 공용 프리미티브 | ibed(ward)·imonitor·iiv·icurtain·icabinet(linen/supply)·ireception·ichair·iplant·nursestation(ㄷ)·vitals·walltv·sofa·wastebin·chartbinder·baylabel + **pharma의 pneumatictube·barcodescanner** | 기존 재사용 |
 | 디스패치 | `WardObjectView`를 체인에 추가(Pharma 뒤, Shared 앞) | `objects/index.tsx` |
-| 엘리베이터 | 타워 **8F**(일반 내과 병동) 진입, entry `{12,50}` | `map/ElevatorScreen.tsx` |
+| 엘리베이터 | 타워 **8F**(일반 내과 병동) 진입, entry `{1,15}`(좌측 문 안쪽) | `map/ElevatorScreen.tsx` |
 | 테스트 | 도달성·통행·커튼 차단·격리 분리벽·footprint | `map/ward-fixture.test.ts` (신규) |
 
 ## §3. 미해결 질문 — 해소됨
 - **Q1 스코프** → **내과 병동만**(5g-f). 외과(surgward)·정형(orthoward)은 후속(같은 카탈로그+shared 재사용).
-- **Q2 진입** → **엘리베이터 타워 8F**(이미 "일반 내과 병동" 표기). 하단 캠퍼스 문(x12-14)이 1인실|격리 분리벽 x13을 걸쳐 → entry는 1인실 쪽 `{12,50}`.
+- **Q2 진입** → **엘리베이터 타워 8F**(이미 "일반 내과 병동" 표기). **v14**에서 캠퍼스 문이 좌측(x0 y14-16 "← 캠퍼스로")으로 이동 → entry는 좌측 문 안쪽 `{1,15}`(스테이션 복도).
 - **Q3 시나리오** → **라벨만**(scenarioId 후속). 마커 라벨만.
 
 ## §4. 구현 체크리스트
@@ -72,6 +72,8 @@ updated: 2026-07-13
 | 뷰 무관 | scale 0.9 | 28폭 방 뷰포트 맞춤 |
 | IBed `label="A · COPD"` 등 | 라벨 생략 | 공용 `ibed` 디스패치가 label 미지원(peds와 동일). 베드 식별은 후속 마커/시나리오로 |
 | SVG `<text>`(NPO·금식/D5·NS·HS/ISOLATION/120) | shape 블록/생략 | 기존 카탈로그 규약(svg text 미사용). DIV 사인(IsoSign)만 RN View+Text 재현 |
-| 캠퍼스 문 x12-14가 1인실\|격리 분리벽(x13) 걸침 | 유지(1:1) | entry만 1인실 쪽 `{12,50}`으로(x13=벽) |
 | 시나리오 마커 | 라벨만 | ward 시나리오 콘텐츠 후속 |
-나머지 좌표·오브젝트·NPC는 `interior-ward.jsx`와 1:1.
+| 좌측 세로 핸드레일(w1 h8) | 8타일 길이(w:8) | 핸드오프 Handrail 컴포넌트가 h를 무시하고 w만 씀(1타일 버그) → 복도 길이(8타일) 의도로 렌더 |
+나머지 좌표·오브젝트·NPC는 **v14** `interior-ward.jsx`와 1:1.
+
+**v14 반영(2026-07-13, 사용자 피드백):** 방 배치 정정 — ① playerStart `{13,14}→{4,15}` ② 캠퍼스 문 **하단(↑, x12-14 y51)→좌측(←, x0 y14-16)**, 하단 벽 채움 ③ 좌측 세로 핸드레일 제거(우측만). 오브젝트 카탈로그(ward2)·각 방 오브젝트 좌표는 v13=v14 동일(전수 대조 확인) — 실제 diff는 위 구조 3건 + 핸드레일뿐.
