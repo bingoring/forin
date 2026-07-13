@@ -37,7 +37,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
   tower: {
     name: '메인 메디컬 타워', sub: '본관 · MAIN MEDICAL TOWER', accent: '#D14B3D', wall: '#E8EAEC', trim: '#C2C7CB',
     floors: [
-      { f: '8F', depts: ['일반 내과 병동', '외과 병동', '정형외과 병동'], icon: '🛏' },
+      { f: '8F', depts: ['일반 내과 병동', '외과 병동', '정형외과 병동'], icon: '🛏', interior: 'INT-WARD-00001', entry: { x: 12, y: 50 } },
       { f: '6F', depts: ['외과 · 정형외과 병동'], icon: '🦴' },
       { f: '4F', depts: ['중앙 ICU', 'CCU · Neuro · TICU'], icon: '🫀', sdepts: ['ICU'], interior: 'INT-ICU-00001', entry: { x: 7, y: 42 } },
       { f: '3F', depts: ['수술실 OR', '회복실 PACU', '당일수술센터'], icon: '🔪', sdepts: ['OR'], interior: 'INT-OR-00001', entry: { x: 18, y: 1 } },
