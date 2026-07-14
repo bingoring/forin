@@ -39,7 +39,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
     floors: [
       { f: '8F', depts: ['일반 내과 병동'], icon: '🛏', interior: 'INT-WARD-00001', entry: { x: 1, y: 15 } },
       { f: '7F', depts: ['일반 외과 병동', '수술 후 회복'], icon: '🩹', interior: 'INT-SURGWARD-00001', entry: { x: 1, y: 15 } },
-      { f: '6F', depts: ['정형외과 병동'], icon: '🦴' },
+      { f: '6F', depts: ['정형외과 병동', '골절·관절 재활'], icon: '🦴', interior: 'INT-ORTHOWARD-00001', entry: { x: 1, y: 15 } },
       { f: '4F', depts: ['중앙 ICU', 'CCU · Neuro · TICU'], icon: '🫀', sdepts: ['ICU'], interior: 'INT-ICU-00001', entry: { x: 7, y: 42 } },
       { f: '3F', depts: ['수술실 OR', '회복실 PACU', '당일수술센터'], icon: '🔪', sdepts: ['OR'], interior: 'INT-OR-00001', entry: { x: 18, y: 1 } },
       { f: '2F', depts: ['피부과 외래', '내과 · 외과 외래'], icon: '🩺', interior: 'CLINIC-IM-00001' },

@@ -130,6 +130,26 @@ export function SCDDevice({ x, y }: { x: number; y: number }) {
   );
 }
 
+// ─── Walker — a single walking frame (post-op ambulation aid) ──────────
+export function Walker({ x, y }: { x: number; y: number }) {
+  return (
+    <Box x={x} y={y} w={22} h={24}>
+      <Svg viewBox="0 0 22 24" width={22 * S} height={24 * S}>
+        <Ellipse cx={11.0} cy={22.4} rx={7.5} ry={2.6} fill="rgba(0,0,0,0.16)" />
+        <Path d="M3 4 L19 4 L17 7 L5 7 Z" fill="#9CA3AF" stroke={C} strokeWidth={0.4} />
+        <Rect x={4} y={3} width={4} height={1.6} fill="#374151" />
+        <Rect x={14} y={3} width={4} height={1.6} fill="#374151" />
+        <Rect x={5} y={11} width={12} height={1.6} fill="#CBD5E1" stroke={C} strokeWidth={0.3} />
+        <Rect x={3} y={7} width={1.8} height={15} fill="#B7BEC6" stroke={C} strokeWidth={0.4} />
+        <Rect x={17.2} y={7} width={1.8} height={15} fill="#B7BEC6" stroke={C} strokeWidth={0.4} />
+        <Rect x={6} y={12} width={1.6} height={10} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        <Rect x={14.4} y={12} width={1.6} height={10} fill="#9CA3AF" stroke={C} strokeWidth={0.3} />
+        {[3.4, 6.2, 14.6, 17.6].map((fx, i) => <Rect key={i} x={fx} y={22} width={2} height={2} fill={C} />)}
+      </Svg>
+    </Box>
+  );
+}
+
 // ─── WalkerRack — rack of parked walking frames (w tiles) ──────────────
 export function WalkerRack({ x, y, w = 3 }: { x: number; y: number; w?: number }) {
   const W = w * 16;
@@ -202,6 +222,7 @@ export function SurgObjectView({ object }: { object: MapObject }): ReactElement 
     case 'hemovac': return <Hemovac x={x} y={y} />;
     case 'ngsuction': return <NGSuction x={x} y={y} />;
     case 'scddevice': return <SCDDevice x={x} y={y} />;
+    case 'walker': return <Walker x={x} y={y} />;
     case 'walkerrack': return <WalkerRack x={x} y={y} w={num(props?.w, 3)} />;
     case 'opscheduleboard': return <OPScheduleBoard x={x} y={y} w={num(props?.w, 4)} />;
     case 'stapleremover': return <StapleRemover x={x} y={y} />;
