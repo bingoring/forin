@@ -578,3 +578,10 @@
 - **반영:** `fixtures/ward.ts`(playerStart·좌측 문 벽 갭·하단 벽·핸드레일 제거) · `ElevatorScreen` 8F entry {12,50}→{1,15} · `ward-fixture.test.ts`(좌측 문 도달·하단 벽 차단) · Build Spec SoT v14.
 - **검증:** tsc 0 · jest 76/76(ward 7) · 시뮬레이터 좌측 문·스테이션 진입·전 구역 렌더 확인.
 - **결정자:** 사용자(v14 방배치 정정·오브젝트 diff 확인 지시) + AI(v13↔v14 diff·전수 대조·수정·검증).
+
+## 2026-07-14 · 5g-g General Surgery Ward 구현 (v15)
+- **결정:** 일반 외과 병동을 v15 핸드오프에서 1:1 구현. 28×52, floorTheme 'surgery'(steel), 5구역(린넨/처치·드레싱룸 → 간호 스테이션·보행 → 4인 수술후 병실(커튼) → 1인 대수술 중증실). 내과 병동과 동형(좌측 문·세로 흐름). 신규 `surgEquipment.tsx` 8종(PCAPump·JPDrain·Hemovac·NGSuction·SCDDevice·WalkerRack·OPScheduleBoard·StapleRemover) + `SurgObjectView`. **ward2 카탈로그 + shared/OR(surgicallight·instrumenttray)/ER(dressing·suction·wastebin) 대거 재사용**.
+- **해소된 질문:** Q1 진입=**엘리베이터 타워 7F 신설**(deptCode 7F; 8F=내과·7F=외과·6F=정형(예정)), entry {1,15} · Q2 시나리오=라벨만 · Q3 미배치 helper(Walker·AbdoBinder) 스킵.
+- **검증:** tsc 0 · jest 82/82(surgward 6) · 시뮬레이터 전 구역(스테이션 OP보드·PCA·워커랙, 처치실 수술등·드레싱카트, 4인 수술후 JP·PCA·커튼, 중증실 NG흡인·Hemovac×2·SCD) 렌더 확인.
+- **편차:** scale 0.9 · IBed label 생략 · SVG text→shape · Walker/AbdoBinder 미구현 · NPC 소수 좌표 반올림(y17.5→18) · 시나리오 라벨만.
+- **결정자:** 사용자("다음 작업 시작") + AI(Build Spec·구현·검증).

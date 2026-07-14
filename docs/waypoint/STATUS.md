@@ -30,7 +30,7 @@
 | 2-2 도메인·콘텐츠 API + 계약 | [02-domain-content-api.md](02-construction/02-domain-content-api.md) | HUMAN_APPROVED |
 | 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | HUMAN_APPROVED |
 | 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | HUMAN_APPROVED |
-| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | 재오픈 · v8 계획 HUMAN_APPROVED (5a~5e ✅ 엔진코어 · **5f 캠퍼스/엔진델타 + 5g 부서 마스터블루프린트 ×9** — §5v; 5f ✅ · 5g-a ER ✅ · 5g-b OR ✅ · 5g-c ICU ✅ · **5g-d Peds+NICU ✅**(외래·놀이·계측→4bed 병동→NICU 유리 전실·인큐베이터; pedsEquipment 16종) · **5g-e Pharmacy ✅**(수령창구·기송관→조제실·마약류 금고→무균 전실·에어샤워·무균조제실; pharmaEquipment 21종; 엘리베이터 타워 P1 + ER portal) · **5g-f 내과 병동 ✅**(서비스 스트립→간호 스테이션→4인 만성질환 병실(커튼)→1인실·VRE 격리; wardEquipment 16종; 엘리베이터 타워 8F) · 장비 handoff **v13**(2.5D+접지그림자) 전 부서 반영 · 다음 5g-g 외과 병동…) |
+| 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | 재오픈 · v8 계획 HUMAN_APPROVED (5a~5e ✅ 엔진코어 · **5f 캠퍼스/엔진델타 + 5g 부서 마스터블루프린트 ×9** — §5v; 5f ✅ · 5g-a ER ✅ · 5g-b OR ✅ · 5g-c ICU ✅ · **5g-d Peds+NICU ✅**(외래·놀이·계측→4bed 병동→NICU 유리 전실·인큐베이터; pedsEquipment 16종) · **5g-e Pharmacy ✅**(수령창구·기송관→조제실·마약류 금고→무균 전실·에어샤워·무균조제실; pharmaEquipment 21종; 엘리베이터 타워 P1 + ER portal) · **5g-f 내과 병동 ✅**(서비스 스트립→간호 스테이션→4인 만성질환 병실(커튼)→1인실·VRE 격리; wardEquipment 16종; 엘리베이터 타워 8F) · 장비 handoff **v13**(2.5D+접지그림자) 전 부서 반영 · **5g-g 외과 병동 ✅**(처치·드레싱룸→간호 스테이션·보행→4인 수술후 병실→대수술 중증실; surgEquipment 8종·ward2 재사용; 엘리베이터 타워 7F) · 다음 5g-h 정형 병동…) |
 | 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | PENDING |
 | 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | PENDING |
 | 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | PENDING |
