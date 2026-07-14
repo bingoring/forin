@@ -585,3 +585,11 @@
 - **검증:** tsc 0 · jest 82/82(surgward 6) · 시뮬레이터 전 구역(스테이션 OP보드·PCA·워커랙, 처치실 수술등·드레싱카트, 4인 수술후 JP·PCA·커튼, 중증실 NG흡인·Hemovac×2·SCD) 렌더 확인.
 - **편차:** scale 0.9 · IBed label 생략 · SVG text→shape · Walker/AbdoBinder 미구현 · NPC 소수 좌표 반올림(y17.5→18) · 시나리오 라벨만.
 - **결정자:** 사용자("다음 작업 시작") + AI(Build Spec·구현·검증).
+
+## 2026-07-14 · 5g-h Orthopedics Ward 구현 (v15) — 병동 3종 완결
+- **결정:** 정형외과 병동을 v15 핸드오프에서 1:1 구현. 28×52, floorTheme 'ortho'(bone), 5구역(PT 연계 통로/석고실·소처치 → 간호 스테이션·보조기 베이 → 4인 골절/견인 병실(커튼) → 1인 고령 고관절 골절실). 신규 `orthoEquipment.tsx` 11종(TractionFrame·CPMMachine·PlasterTrapSink·CastCutter·CastRollShelf·BraceRack·AbductionPillow·ElevatedToiletGuard·BedAlarm·PACSViewer·CMSChart) + `OrthoObjectView`. surg2 `Walker`를 이번에 `surgEquipment`에 추가(외과 render 미사용이라 미구현이었음). ward2/surg2/shared/OR/ER 대거 재사용.
+- **해소된 질문:** Q1 진입=엘리베이터 타워 **6F**(기존 "정형외과 병동" 라벨) → 타워 병동 3개 완비(8F 내과·7F 외과·6F 정형), entry {1,15} · Q2 시나리오=라벨만 · Q3 Walker surg2 추가.
+- **검증:** tsc 0 · jest 88/88(ortho 6) · 시뮬레이터 전 구역(PT통로·석고실·스테이션·견인병실·고관절실) 렌더 확인.
+- **편차:** scale 0.9 · IBed label 생략 · SVG text→shape · BedAlarm 점멸 정적 · deptCode 8F→엘리베이터 6F(라벨 정합) · 시나리오 라벨만.
+- **결정자:** 사용자("외과 병동 확인 후 일치 시 정형 바로 시작") + AI(외과 5방 전수 검증(일치)·정형 Build Spec·구현·검증).
+- **비고:** 입원 병동 3종(5g-f/g/h) 동일 골격(28×52·좌측 문·서비스→스테이션→4인실→특수실)에 부서 카탈로그만 교체.

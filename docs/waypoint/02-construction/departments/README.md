@@ -29,7 +29,7 @@ updated: 2026-07-01
 | Pharmacy 약국 | [pharma/](pharma/build-spec-index.md) | ✅ 구현 (v13) | `INT-PHARMA-00001` | `interior-pharma.jsx` + `interior-objects-pharma2.jsx` |
 | 내과 병동 | [ward/](ward/build-spec-index.md) | ✅ 구현 (v13) | `INT-WARD-00001` | `interior-ward.jsx` + `interior-objects-ward2.jsx` |
 | 외과 병동 | [surgward/](surgward/build-spec-index.md) | ✅ 구현 (v15) | `INT-SURGWARD-00001` | `interior-surgward.jsx` + `interior-objects-surg2.jsx` |
-| 정형 병동 | orthoward/ | ⬜ 예정 | `INT-ORTHOWARD-00001` | `interior-orthoward.jsx` + `interior-objects-ortho2.jsx` |
+| 정형 병동 | [orthoward/](orthoward/build-spec-index.md) | ✅ 구현 (v15) | `INT-ORTHOWARD-00001` | `interior-orthoward.jsx` + `interior-objects-ortho2.jsx` |
 | 피부과 센터 | dermcenter/ | ⬜ 예정 | `INT-DERM-00001` | `interior-dermcenter.jsx` + `interior-objects-derm2.jsx` |
 
 핸드오프 경로: `../../inputs/design-handoff_v13/reference/` (**현행 v13**). 이력: v10→v11 장비 2.5D화 · v11→v12 변화없음(캠퍼스 건물만) · v12→v13 장비 접지 그림자 추가.
