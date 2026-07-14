@@ -191,7 +191,7 @@ export function PneumaticTube({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-6} w={28} h={32}>
       <Svg viewBox="0 0 28 32" width={28 * S} height={32 * S}>
-        <Ellipse cx={14.0} cy={29.8} rx={9.5} ry={3.2} fill="rgba(0,0,0,0.16)" />
+        <Ellipse cx={14.0} cy={24.2} rx={9.5} ry={3.2} fill="rgba(0,0,0,0.16)" />
         <Rect x={2} y={2} width={24} height={18} rx={2} fill="#AEB4BC" stroke={C} strokeWidth={0.7} />
         <Rect x={3.5} y={3.5} width={21} height={1.4} fill="#C7CDD4" />
         <Ellipse cx={10} cy={12} rx={6} ry={5} fill="#1F2937" stroke={C} strokeWidth={0.6} />
