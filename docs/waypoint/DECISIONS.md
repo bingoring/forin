@@ -593,3 +593,11 @@
 - **편차:** scale 0.9 · IBed label 생략 · SVG text→shape · BedAlarm 점멸 정적 · deptCode 8F→엘리베이터 6F(라벨 정합) · 시나리오 라벨만.
 - **결정자:** 사용자("외과 병동 확인 후 일치 시 정형 바로 시작") + AI(외과 5방 전수 검증(일치)·정형 Build Spec·구현·검증).
 - **비고:** 입원 병동 3종(5g-f/g/h) 동일 골격(28×52·좌측 문·서비스→스테이션→4인실→특수실)에 부서 카탈로그만 교체.
+
+## 2026-07-15 · 5g-i Dermatology Center 구현 (v15) — 5g 부서 9종 완결
+- **결정:** 피부과 센터를 v15 핸드오프에서 1:1 구현. 28×52, floorTheme 'derm'(rose), **상단 캠퍼스 문**, 5구역(로비·접수·대기 → 제1/제2 진료실 → 광선 치료실 → 소수술·레이저 처치실). 신규 `dermEquipment.tsx` 11종(Dermatoscope·WoodsLamp·UVBooth·HandUVBox·GoggleSanitizer·BiopsyKit·BiopsyBottle·CryoTank·CO2Laser·LesionChart·SkinAnatomy) + `DermObjectView`. clinicReception(pharma)/sofa/coffeetable/walltv/watercooler/surgicallight/dressing/shared 재사용.
+- **해소된 질문:** Q1 진입=엘리베이터 타워 **2F를 경량 CLINIC-IM에서 INT-DERM 정식 인테리어로 교체**(외래 클리닉 엔진 v8 redundant), 상단 문 entry {14,1} · Q2 시나리오=라벨만.
+- **검증:** tsc 0 · jest 94/94(dermcenter 6) · 시뮬레이터 전 구역(로비·진료실1/2·광선치료실·레이저 처치실) 렌더 확인.
+- **편차:** scale 0.9 · IBed label 생략 · SVG text→shape · 2F 클리닉엔진→정식 인테리어 교체(내과/외과 외래 후속) · 시나리오 라벨만.
+- **결정자:** 사용자("나머지 5g 파빌리온 진행") + AI(Build Spec·구현·검증).
+- **마일스톤:** **5g 부서 마스터블루프린트 9종 전부 구현 완료**(ER·OR·ICU·Peds·Pharmacy·내과병동·외과병동·정형병동·피부과센터).
