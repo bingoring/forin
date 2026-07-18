@@ -72,7 +72,7 @@ v16 핸드오프에 **신규 인테리어 20종**이 추가됐다(기존 구현 
 - **Phase 1 · 재사용 검증(quick win) — ✅ 완료**: **infusion ✅** → **nursery ✅** → **womenkids-opd ✅**(peds 1F 정식 교체). 재사용 파이프라인 검증 완료.
 - **Phase 2 · WOMEN 완결 — ✅ 완료**: **ld ✅(3F 통합 INT-LD)** → **nicu ✅(4F)** → **picu ✅(4F sub-선택)**. (postpartum·nursery는 ld.jsx 통합에 subsumed; standalone은 FIXTURES 잔존.)
 - **층당 복수부서 sub-선택 UI — ✅ 구현**: `ElevFloor.rooms[]` + 엘리베이터 층 선택 시 부서 sub-picker. WOMEN 4F(NICU/PICU 정식 접근) · DX 3F(외래 주사센터 / 인공신장실=준비 중) 적용. 신규 복수부서 층은 `rooms[]`로 추가하면 자동 지원.
-- **Phase 3 · DX 완결**: **rad ✅(1F)** → **endo ✅(4F)** → dial → specialty(eye2). 진단동 완성.
+- **Phase 3 · DX 완결**: **rad ✅(1F)** → **endo ✅(4F)** → **dial ✅(3F sub-선택)** → specialty(eye2). 진단동 완성.
 - **Phase 4 · ONCO 완결**: onco → hospice → geri → psych → rehab.
 - **Phase 5 · ADMIN 완결**: spd → sim → lounge → morgue(B1).
 

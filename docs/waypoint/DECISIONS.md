@@ -668,3 +668,11 @@
 - **검증:** tsc 0 · jest 142/142(endo 6) · 시뮬레이터 시술실1(EndoTower 점막모니터·ProcedureBed)·재처리실(ScopeWasher·ScopeCabinet·biohazard) 화면단위 대조 확인.
 - **편차:** scale 0.9 · SVG text(CO₂)→shape · 신규 footprint props · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 3 계속 진행") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-r Hemodialysis 구현 (v16, Phase 3 · DX 3F sub-선택)
+- **결정:** 인공신장실을 v16 핸드오프 1:1 구현. 28×44, floorTheme `clinical`, 좌측 엘리베이터 문, 4구역(접수·체중 측정 → 오픈 투석 치료실(체어+투석기 6스테이션, 중앙 간호 아일랜드) → RO 수처리실 · 격리 투석 스테이션). dial2 3종(DialysisMachine·DialysisChair·ROWaterUnit) 신규 `dialEquipment.tsx`; nursestation·compcart·sinkor·stadiometer·wastebin·shared 재사용.
+- **엘리베이터:** DX 3F sub-picker의 두 번째 방(인공신장실)을 준비 중 → **INT-DIAL로 정식 배선**(외래 주사센터와 3F 공유). sub-선택 UI 실사용 첫 정식 케이스.
+- **해소된 질문:** Q1 진입=DX 3F sub-선택 배선 · Q2 시나리오 라벨만.
+- **검증:** tsc 0 · jest 148/148(dial 6) · 시뮬레이터 투석 치료실(체어+투석기)·RO 수처리실(트윈 멤브레인) 화면단위 대조 확인.
+- **편차:** scale 0.9 · 신규 footprint props · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 3 계속 진행") + AI(Build Spec·구현·검증).
