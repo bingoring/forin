@@ -684,3 +684,11 @@
 - **마일스톤:** **v16 Phase 3(DX 진단동) 완결** — rad(1F)·specialty(2F)·dial(3F sub)·endo(4F). 진단동 4개 층 전부 정식 엘리베이터 배선.
 - **편차:** scale 0.9 · VisionChart text→shape · ultrasound footprint props 부여 · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 3 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-t Oncology/BMT 구현 (v16, Phase 4 착수 · ONCO 3F)
+- **결정:** 종양학·BMT를 v16 핸드오프 1:1 구현. 28×50, floorTheme `internal`, 좌측 엘리베이터 문, 6구역(약물 조제 확인·상담실 → 중앙 스테이션 → 개방형 항암 주입 베이 → BMT 전실·양압 무균 이식실 2). onco2 잔여 2종(BMTPod·ChemoHazardBin) + Fridge(peds) 신규 `oncoEquipment.tsx`; infusionchair/smartinfusionpump/ppestation(infusion)·warmercabinet(nursery)·er/ward/shared 대거 재사용.
+- **봉인 방 보정(핸드오프 버그):** ① 전실 진입 Th가 x8(ante\|bmt 경계 열)에 있어 anteroom 봉인 → x4로 이동. ② BMT 이식실 2 유리 완전 봉인 → room1↔room2 sterile 도어(y43) 신설. reachability 원칙.
+- **해소된 질문:** Q1 진입=ONCO 3F 단일 배선 · Q2 봉인 방=게이트 이동+도어 신설 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 160/160(onco 6) · 시뮬레이터 주입 베이·BMT 이식실(HEPA 헤더·유리 격리)·조제확인(Fridge·ChemoHazardBin) 화면단위 대조 확인.
+- **편차:** scale 0.9 · SVG text(HEPA/CHEMO/VAX)→shape · 봉인 방 2건 도달성 보정 · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·봉인방 진단/보정·검증).
