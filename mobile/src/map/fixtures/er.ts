@@ -19,6 +19,7 @@ import { SURGWARD_INTERIOR } from './surgward';
 import { ORTHO_INTERIOR } from './ortho';
 import { DERMCENTER_INTERIOR } from './dermcenter';
 import { INFUSION_INTERIOR } from './infusion';
+import { NURSERY_INTERIOR } from './nursery';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
@@ -346,6 +347,7 @@ export const FIXTURES: Record<string, Interior> = {
   [ORTHO_INTERIOR.id]: ORTHO_INTERIOR,
   [DERMCENTER_INTERIOR.id]: DERMCENTER_INTERIOR,
   [INFUSION_INTERIOR.id]: INFUSION_INTERIOR,
+  [NURSERY_INTERIOR.id]: NURSERY_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
   [INTERNAL.id]: INTERNAL,
   [SURGERY.id]: SURGERY,
