@@ -636,3 +636,14 @@
 - **검증:** tsc 0 · jest 118/118(ld 6) · 시뮬레이터 6구역(분류·마취·스테이션·LDR·산후·신생아, BirthingBed/DeliveryCart 렌더) 확인.
 - **편차:** scale 0.9 · BirthingBed footprint 3×2·DeliveryCart 2×1 · 3F INT-NURSERY→INT-LD 교체 · standalone postpartum 미배선 · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 2 계속 진행") + AI(ld.jsx 통합 구조 분석·Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-n NICU + 5g-o PICU 구현 (v16, Phase 2 완결 · WOMEN 4F)
+- **결정:** NICU·PICU를 v16 핸드오프 1:1 구현. 둘 다 28×44, floorTheme `peds`, 좌측 엘리베이터 문, **저조도 tint**.
+  - **NICU**(INT-NICU-00001, 5구역): 전실 스크럽 게이트 → 중앙 모니터 스테이션 · 소생 베이 → A/B 포드(유리 분리). nicu2 4종(NICUIsolette·GiraffeWarmer·CPAPUnit·PhototherapyLED) 신규 `nicuEquipment.tsx`.
+  - **PICU**(INT-PICU-00001, 5구역): 전실 → 중앙 허브 → 유리벽 격실 3(vent·진정/집중감시/가족상주). picu2 3종(PICUBed·PedVentilator·BroselowCart) + hospice2 ReclinerDaybed 신규 `picuEquipment.tsx`. 유리 전면 + 슬라이딩 도어.
+- **층당 복수부서 미해결:** WOMEN 4F=NICU+PICU. **NICU만 4F 정식 배선**(entry {1,6}), **PICU는 FIXTURES/딥링크**(정식 배선은 층당 sub-dept 선택 UI 필요 — 사용자 결정 대기). 동일 이슈: DX 3F(infusion+dialysis), ONCO 4F(hospice+geri).
+- **해소된 질문:** Q1 4F=NICU 선두 배선·PICU 딥링크 · Q2 ReclinerDaybed=hospice2 차용 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 130/130(nicu 6·picu 6) · 시뮬레이터(NICU A포드 인큐베이터·소생 베이 기린워머 / PICU 베드·vent·broselow·유리) 확인.
+- **마일스톤:** **v16 Phase 2(WOMEN 건물) 완결** — ld(3F 통합)·nicu(4F)·picu. 여성소아 센터 1F(OPD)·3F(L&D)·4F(NICU) 정식 배선 + PICU 딥링크. (2F 소아 일반 병동은 기존 peds ward가 후속 정식화 대기.)
+- **편차:** scale 0.9 · SVG text→shape · 저조도 tint · 신규 footprint props{w,h} · PICU 4F 미배선(딥링크) · ReclinerDaybed hospice2 차용 · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 2 계속 진행") + AI(Build Spec·구현·검증·복수부서 이슈 문서화).
