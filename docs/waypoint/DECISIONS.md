@@ -748,3 +748,11 @@
 - **검증:** tsc 0 · jest 202/202(spd 6) · 시뮬레이터 멸균(Autoclave×2·SterileRack)·배식(FoodCartColumn)·하역장(PalletStack·FloorTape 안전선) 화면단위 대조 확인.
 - **편차:** scale 0.9 · cols 30 · icabinet kind→variant supply · 신규 footprint props · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-ab Morgue & Autopsy 구현 (v16, Phase 5 완결 · ADMIN B1) — 🎉 **v16 전체 완결**
+- **결정:** 영안실·부검실을 v16 핸드오프 1:1 구현. 28×40, floorTheme `clinical`, 좌측 엘리베이터 문, **전면 저조도 Tint(#1E2530 op0.14)로 지하·통제 구역 무드**. 5구역(접수·인수인계 → 시신 냉장 보관실 → 부검실 → 유족 참관실 → 시설팀 기계실). morgue2 3종(CadaverFridge 다단 냉장 뱅크·AutopsyTable 천공 배수대·ViewingBier 드레이프 catafalque+백합+촛대) 신규 `morgueEquipment.tsx`; gurney(er)·autoclave(spd)·sinkor/instrumenttray(or)·shared 재사용.
+- **해소된 질문:** Q1 진입=ADMIN **B1** 단일 배선(ADMIN 건물 완결: 1F spd·2F lounge·3F sim·B1 morgue) · Q2 톤=전면 저조도 Tint · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 208/208(morgue 6) · 시뮬레이터 5개 방(접수·냉장보관 CadaverFridge×3·부검실 AutopsyTable·참관실 ViewingBier·기계실 Autoclave) 화면단위 대조 확인.
+- **편차:** 전면 Tint · 신규 footprint props(cadaverfridge 4×2·autopsytable 3×2·viewingbier 2×1) · icabinet variant equipment(비충돌) · 시나리오 라벨만.
+- **🎉 마일스톤:** **v16 20개 신규 부서 전체(Phase 1–5) 완결.** WOMEN·DX·ONCO·ADMIN 4개 건물 모든 층 정식 배선. morgue가 마지막 부서. 다음: 시나리오(`scenarioId`) 연결·콘텐츠.
+- **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
