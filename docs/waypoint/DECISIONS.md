@@ -725,3 +725,11 @@
 - **마일스톤:** **v16 Phase 4(ONCO 암센터) 완결** — onco(3F)·hospice+geri(4F sub)·psych(2F)·rehab(1F). ONCO 4개 층 전부 정식 배선. 메인 타워·여성소아·외래진단·암센터 4개 건물 완비.
 - **편차:** scale 0.9 · 신규 footprint props · gait|mat 세로벽 트림 · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-y Sim Lab / Nursing Admin 구현 (v16, Phase 5 착수 · ADMIN 3F)
+- **결정:** 간호부·감염관리·시뮬레이션 랩을 v16 핸드오프 1:1 구현. 28×42, floorTheme `clinical`, 좌측 엘리베이터 문, 5구역(간호부 총괄 사무실 → 감염관리실·디브리핑 강의실 → 시뮬레이션 랩·원웨이 미러 제어실). sim2 4종(SimManikin·ControlBooth·OfficeDesk·PPEBoard) 신규 `simEquipment.tsx`; shared/er/or/icu 재사용.
+- **봉인 제어실 보정:** 제어실이 원웨이 미러 벽(x18)+y24 벽으로 완전 봉인 → x18 벽에 staff 도어(y37) 신설. reachability 원칙.
+- **해소된 질문:** Q1 진입=ADMIN 3F 단일 배선 · Q2 봉인 제어실=staff 도어 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 190/190(sim 6) · 시뮬레이터 시뮬랩(SimManikin·크래시카트)·간호부(OfficeDesk×3)·감염관리(PPEBoard) 화면단위 대조 확인.
+- **편차:** scale 0.9 · PPEBoard text→shape · 제어실 staff 도어 신설 · 신규 footprint props · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·봉인방 보정·검증).
