@@ -20,6 +20,10 @@ export interface ElevFloor {
   lobby?: boolean;
   interior?: string; // interior id to ride to (omitted = not built yet)
   entry?: { x: number; y: number }; // spawn tile on arrival (else the map's default)
+  // Floors hosting more than one department: after picking the floor, a sub-picker
+  // lets the rider choose which room to ride to. Each room may be unbuilt (no
+  // interior → "준비 중"). When present this supersedes the floor-level interior/entry.
+  rooms?: { dept: string; interior?: string; entry?: { x: number; y: number } }[];
 }
 export interface ElevBuilding {
   name: string;
@@ -50,7 +54,10 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
   women: {
     name: '여성소아 센터', sub: '별관 1 · WOMEN & CHILDREN', accent: '#C2487E', wall: '#F3E6D6', trim: '#E0CBB4',
     floors: [
-      { f: '4F', depts: ['신생아 중환자실 NICU', '소아 중환자실 PICU'], icon: '👶', interior: 'INT-NICU-00001', entry: { x: 1, y: 6 } },
+      { f: '4F', depts: ['신생아 중환자실 NICU', '소아 중환자실 PICU'], icon: '👶', rooms: [
+        { dept: '신생아 중환자실 NICU', interior: 'INT-NICU-00001', entry: { x: 1, y: 6 } },
+        { dept: '소아 중환자실 PICU', interior: 'INT-PICU-00001', entry: { x: 1, y: 6 } },
+      ] },
       { f: '3F', depts: ['가족 분만실 L&D', '산후 병동', '신생아실'], icon: '🤰', interior: 'INT-LD-00001', entry: { x: 1, y: 15 } },
       { f: '2F', depts: ['소아 일반 병동'], icon: '🧸', sdepts: ['PEDS'] },
       { f: '1F', depts: ['소아청소년과 외래', '산부인과 외래', '키즈 놀이광장'], icon: '🎈', lobby: true, sdepts: ['PEDS'], interior: 'INT-WOMENKIDS-OPD-00001', entry: { x: 13, y: 1 } },
@@ -69,7 +76,10 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
     name: '외래 · 진단 지원동', sub: '별관 3 · OUTPATIENT & DX', accent: '#0E7490', wall: '#E6E9EC', trim: '#C4CBD2',
     floors: [
       { f: '4F', depts: ['내시경실', '심혈관 조영실 Cath', '인터벤션 IR'], icon: '🔭' },
-      { f: '3F', depts: ['외래 주사센터', '인공신장실 Dialysis'], icon: '💉', interior: 'INT-INFUSION-00001', entry: { x: 1, y: 6 } },
+      { f: '3F', depts: ['외래 주사센터', '인공신장실 Dialysis'], icon: '💉', rooms: [
+        { dept: '외래 주사센터', interior: 'INT-INFUSION-00001', entry: { x: 1, y: 6 } },
+        { dept: '인공신장실 Dialysis' }, // 준비 중
+      ] },
       { f: '2F', depts: ['안과 · 이비인후과 · 비뇨 · 신경과'], icon: '👁' },
       { f: '1F', depts: ['영상의학과', '진단검사의학과', '혈액은행'], icon: '🩻', lobby: true },
     ],
@@ -118,6 +128,7 @@ export function ElevatorScreen({
 
   const [cur, setCur] = useState(lobbyFloor(b).f); // where the cab is
   const [sel, setSel] = useState(lobbyFloor(b).f); // target floor
+  const [selRoom, setSelRoom] = useState(0); // chosen room on a multi-dept floor
   const [riding, setRiding] = useState(false);
   const { width } = useWindowDimensions();
   // Full-screen cab doors: 0 = fully open (off-screen, panel visible), 1 = shut
@@ -130,6 +141,7 @@ export function ElevatorScreen({
     const s = lobbyFloor(ELEVATOR_BUILDINGS[bk]).f;
     setCur(s);
     setSel(s);
+    setSelRoom(0);
     setRiding(false);
     boarding.value = 0;
   }, [bk, boarding]);
@@ -137,6 +149,7 @@ export function ElevatorScreen({
   const idx = (x: string) => b.floors.findIndex((f) => f.f === x);
   const dir = idx(sel) < idx(cur) ? 'up' : idx(sel) > idx(cur) ? 'down' : 'same';
   const arrow = dir === 'up' ? '▲' : dir === 'down' ? '▼' : '';
+  const roomLabel = b.floors.find((f) => f.f === sel)?.rooms?.[selRoom]?.dept;
 
   const half = width / 2 + 2;
   const leftDoor = useAnimatedStyle(() => ({ transform: [{ translateX: -half * (1 - boarding.value) }] }));
@@ -145,7 +158,13 @@ export function ElevatorScreen({
 
   const ride = () => {
     if (riding) return;
-    const floor = b.floors.find((f) => f.f === sel)!;
+    const baseFloor = b.floors.find((f) => f.f === sel)!;
+    // On a multi-dept floor, ride to the chosen room (its interior/entry override
+    // the floor-level ones); depts is narrowed so the arrival ticker names the room.
+    const room = baseFloor.rooms?.[selRoom];
+    const floor: ElevFloor = room
+      ? { ...baseFloor, interior: room.interior, entry: room.entry, depts: [room.dept] }
+      : baseFloor;
     setRiding(true);
     // preload the destination map during the ride so it's ready when doors open
     if (floor.interior) api.prefetchInterior(floor.interior);
@@ -216,24 +235,41 @@ export function ElevatorScreen({
                 // hard offset shadow behind the row (forin's no-blur button look);
                 // the SELECTED floor STAYS dropped into the shadow (pressed-in latch),
                 // others sit up with their shadow showing. Press gives instant feedback.
-                <View key={fl.f} style={{ position: 'relative' }}>
-                  <View style={{ position: 'absolute', left: 4, top: 4, width: '100%', height: '100%', backgroundColor: INK }} />
-                  <Pressable onPress={() => setSel(fl.f)} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'stretch', backgroundColor: selected ? b.accent : '#fff', borderWidth: 2.5, borderColor: INK, overflow: 'hidden', transform: pressed || selected ? [{ translateX: 4 }, { translateY: 4 }] : [] })}>
-                    <View style={{ width: 42, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? '#fff' : colors.cream, borderRightWidth: 2, borderColor: INK, paddingVertical: 8 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: INK, lineHeight: 18 }}>{fl.f}</Text>
-                      {fl.lobby ? <Text style={{ fontFamily: fonts.body, fontSize: 7, color: colors.textSoft, marginTop: 2 }}>LOBBY</Text> : null}
-                    </View>
-                    <View style={{ flex: 1, paddingHorizontal: 6, paddingVertical: 7, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                      <Text style={{ fontSize: 12 }}>{fl.icon}</Text>
-                      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: selected ? '#fff' : INK }}>{fl.depts.join(' · ')}</Text>
-                    </View>
-                    {chip ? (
-                      <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 7, backgroundColor: chip.bg, borderLeftWidth: 2, borderColor: INK }}>
-                        <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: chip.dot, marginRight: 4 }} />
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: INK }}>{chip.label}</Text>
+                <View key={fl.f} style={{ gap: 8 }}>
+                  <View style={{ position: 'relative' }}>
+                    <View style={{ position: 'absolute', left: 4, top: 4, width: '100%', height: '100%', backgroundColor: INK }} />
+                    <Pressable onPress={() => { setSel(fl.f); setSelRoom(0); }} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'stretch', backgroundColor: selected ? b.accent : '#fff', borderWidth: 2.5, borderColor: INK, overflow: 'hidden', transform: pressed || selected ? [{ translateX: 4 }, { translateY: 4 }] : [] })}>
+                      <View style={{ width: 42, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? '#fff' : colors.cream, borderRightWidth: 2, borderColor: INK, paddingVertical: 8 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: INK, lineHeight: 18 }}>{fl.f}</Text>
+                        {fl.lobby ? <Text style={{ fontFamily: fonts.body, fontSize: 7, color: colors.textSoft, marginTop: 2 }}>LOBBY</Text> : null}
                       </View>
-                    ) : null}
-                  </Pressable>
+                      <View style={{ flex: 1, paddingHorizontal: 6, paddingVertical: 7, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                        <Text style={{ fontSize: 12 }}>{fl.icon}</Text>
+                        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: selected ? '#fff' : INK }}>{fl.depts.join(' · ')}</Text>
+                      </View>
+                      {chip ? (
+                        <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 7, backgroundColor: chip.bg, borderLeftWidth: 2, borderColor: INK }}>
+                          <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: chip.dot, marginRight: 4 }} />
+                          <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: INK }}>{chip.label}</Text>
+                        </View>
+                      ) : null}
+                    </Pressable>
+                  </View>
+                  {/* multi-dept floor → room sub-picker (choose which room to ride to) */}
+                  {selected && fl.rooms ? (
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, paddingLeft: 46 }}>
+                      {fl.rooms.map((rm, i) => {
+                        const picked = selRoom === i;
+                        const built = !!rm.interior;
+                        return (
+                          <Pressable key={rm.dept} onPress={() => setSelRoom(i)} style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, paddingVertical: 5, backgroundColor: picked ? b.accent : '#fff', borderWidth: 2, borderColor: INK, opacity: built ? 1 : 0.6 }}>
+                            <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: picked ? '#fff' : INK }}>{rm.dept}</Text>
+                            {!built ? <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: picked ? '#fff' : colors.textSoft }}>준비 중</Text> : null}
+                          </Pressable>
+                        );
+                      })}
+                    </View>
+                  ) : null}
                 </View>
               );
             })}
@@ -243,7 +279,7 @@ export function ElevatorScreen({
         {/* GO bar */}
         <View style={{ padding: 12, borderTopWidth: 2, borderColor: INK, backgroundColor: colors.paper }}>
           <PixelButton
-            label={riding ? '이동 중…' : dir === 'same' ? `${sel} 층 (현재 위치)` : `${sel} 층으로 이동 ${arrow}`}
+            label={riding ? '이동 중…' : `${sel} 층${roomLabel ? ` · ${roomLabel}` : ''}${dir === 'same' ? ' (현재 위치)' : `으로 이동 ${arrow}`}`}
             bg={b.accent}
             shadowColor={INK}
             textColor="#fff"
