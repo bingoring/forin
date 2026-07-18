@@ -70,6 +70,24 @@ type TokenPair = paths['/auth/refresh']['post']['responses'][200]['content']['ap
 type MeResp = paths['/me']['get']['responses'][200]['content']['application/json'];
 type Manifest = paths['/content/manifest']['get']['responses'][200]['content']['application/json'];
 
+// --- scenario + conversation types (GET /scenarios/{id} is untyped in the
+// contract, so we mirror the server content.Scenario json tags here). ---
+export interface ScenarioPersona {
+  name?: string; role?: string; ageRange?: string; personality?: string;
+  speakingStyle?: string; mood?: string; sub?: string; hair?: string; hairStyle?: string;
+}
+export interface ScenarioReward { icon: string; label: string; value: string }
+export interface ScenarioReq { label: string; metric?: string; threshold?: number }
+export interface ScenarioBriefing {
+  dept?: string; deptColor?: string; brief?: string; difficulty?: number; timeLabel?: string;
+  skills?: string[]; rewards?: ScenarioReward[]; reqs?: ScenarioReq[]; tone?: string; accent?: string;
+}
+export interface ScenarioDetail {
+  id: string; profession: string; eventId: string; title: string; tagline: string;
+  persona: ScenarioPersona; goals?: string[]; guardrails?: string[]; keyPhrases?: string[];
+  briefing?: ScenarioBriefing;
+}
+
 export const api = {
   raw: http,
 
@@ -104,6 +122,70 @@ export const api = {
   prefetchInterior(id: string): void {
     if (interiorCache.has(id)) return;
     this.interior(id).catch(() => {});
+  },
+
+  // --- scenario briefing + AI conversation ---
+
+  /** Full scenario (briefing card + persona). GET /scenarios/{id}. */
+  async scenario(id: string): Promise<ScenarioDetail> {
+    const { data } = await http.get(`/scenarios/${id}`);
+    return data as ScenarioDetail;
+  },
+
+  /** Open a persona-driven session for a scenario. Returns its sessionId. */
+  async startConversation(scenarioId: string): Promise<string> {
+    const { data } = await http.post(`/scenarios/${scenarioId}/conversation`, {});
+    return (data as { sessionId: string }).sessionId;
+  },
+
+  /** Send a message; the NPC replies in persona (non-streaming). */
+  async sendMessage(sessionId: string, text: string): Promise<string> {
+    const { data } = await http.post(`/conversation/${sessionId}/message`, { text });
+    return (data as { reply: string }).reply;
+  },
+
+  /**
+   * Streaming send: the NPC reply arrives as SSE chunks (`data: <json-string>`).
+   * RN's fetch has no reliable ReadableStream, so we read XHR.responseText
+   * incrementally and parse newly-arrived `data:` frames. onDelta receives each
+   * chunk; resolves with the full reply. Falls back to sendMessage on failure.
+   */
+  sendMessageStream(sessionId: string, text: string, onDelta: (chunk: string) => void): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const token = useAuthStore.getState().accessToken;
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', `${baseURL}/conversation/${sessionId}/stream`);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      if (token) xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+
+      let seen = 0; // chars of responseText consumed up to the last newline
+      let full = '';
+      const parse = (flush = false) => {
+        const buf = xhr.responseText;
+        let chunkText = buf.slice(seen);
+        // Keep any trailing partial line buffered until its newline arrives.
+        const lastNL = chunkText.lastIndexOf('\n');
+        if (lastNL === -1 && !flush) return;
+        if (!flush && lastNL !== -1) { seen += lastNL + 1; chunkText = chunkText.slice(0, lastNL + 1); }
+        else { seen = buf.length; }
+        for (const line of chunkText.split('\n')) {
+          const l = line.trim();
+          if (!l.startsWith('data:')) continue;
+          const payload = l.slice(5).trim();
+          if (payload === '"[DONE]"' || payload === '[DONE]') continue;
+          try {
+            const chunk = JSON.parse(payload) as string; // server JSON-encodes each chunk
+            if (typeof chunk === 'string') { full += chunk; onDelta(chunk); }
+          } catch {
+            /* not valid JSON yet; ignore */
+          }
+        }
+      };
+      xhr.onprogress = () => parse(false);
+      xhr.onload = () => { parse(true); resolve(full); };
+      xhr.onerror = () => reject(new Error('stream failed'));
+      xhr.send(JSON.stringify({ text }));
+    });
   },
 };
 

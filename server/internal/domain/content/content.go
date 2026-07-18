@@ -168,27 +168,63 @@ type Directive struct {
 }
 
 type Scenario struct {
-	ID         string   `yaml:"id" json:"id"`
-	Profession string   `yaml:"profession" json:"profession"`
-	EventID    string   `yaml:"eventId" json:"eventId"`
-	Title      string   `yaml:"title" json:"title"`
-	Tagline    string   `yaml:"tagline" json:"tagline"`
-	Persona    Persona  `yaml:"persona" json:"persona"`
-	Goals      []string `yaml:"goals" json:"goals"`
-	Guardrails []string `yaml:"guardrails" json:"guardrails"`
-	KeyPhrases []string `yaml:"keyPhrases" json:"keyPhrases"`
-	Steps      []Step   `yaml:"steps" json:"steps"`
+	ID         string    `yaml:"id" json:"id"`
+	Profession string    `yaml:"profession" json:"profession"`
+	EventID    string    `yaml:"eventId" json:"eventId"`
+	Title      string    `yaml:"title" json:"title"`
+	Tagline    string    `yaml:"tagline" json:"tagline"`
+	Persona    Persona   `yaml:"persona" json:"persona"`
+	Goals      []string  `yaml:"goals" json:"goals"`
+	Guardrails []string  `yaml:"guardrails" json:"guardrails"`
+	KeyPhrases []string  `yaml:"keyPhrases" json:"keyPhrases"`
+	Steps      []Step    `yaml:"steps" json:"steps"`
+	Briefing   *Briefing `yaml:"briefing" json:"briefing,omitempty"` // pre-dialogue card (optional)
 }
 
 // Persona describes the AI's conversation character for realistic role-play.
 // Injected into the dialogue system prompt (2-3). Authored as content.
+// Sub/Hair/HairStyle are display-only (briefing portrait); they do NOT drive
+// the AI — the system prompt uses Name/Role/AgeRange/Personality/Style/Mood.
 type Persona struct {
 	Name          string `yaml:"name" json:"name,omitempty"`
 	Role          string `yaml:"role" json:"role,omitempty"`         // patient, doctor, surgeon, parent...
 	AgeRange      string `yaml:"ageRange" json:"ageRange,omitempty"` // e.g. "60s"
 	Personality   string `yaml:"personality" json:"personality,omitempty"`
 	SpeakingStyle string `yaml:"speakingStyle" json:"speakingStyle,omitempty"`
-	Mood          string `yaml:"mood" json:"mood,omitempty"` // matches expression: pain, worried, panic...
+	Mood          string `yaml:"mood" json:"mood,omitempty"`             // matches expression: pain, worried, panic...
+	Sub           string `yaml:"sub" json:"sub,omitempty"`               // display, e.g. "67y / Female"
+	Hair          string `yaml:"hair" json:"hair,omitempty"`             // portrait hair color, e.g. "#9A6B3F"
+	HairStyle     string `yaml:"hairStyle" json:"hairStyle,omitempty"`   // portrait hair style, e.g. "bob"
+}
+
+// Briefing is the pre-dialogue scenario card (situation, difficulty, skills,
+// rewards, entry requirements, dept chrome). Rendered by the briefing screen;
+// optional so pre-briefing scenarios still load. Authored as content.
+type Briefing struct {
+	Dept       string   `yaml:"dept" json:"dept,omitempty"`           // "ER · TRAUMA BAY #4"
+	DeptColor  string   `yaml:"deptColor" json:"deptColor,omitempty"` // "#DC2626"
+	Brief      string   `yaml:"brief" json:"brief,omitempty"`         // SITUATION paragraph
+	Difficulty int      `yaml:"difficulty" json:"difficulty,omitempty"` // 1..3
+	TimeLabel  string   `yaml:"timeLabel" json:"timeLabel,omitempty"` // "약 5분"
+	Skills     []string `yaml:"skills" json:"skills,omitempty"`
+	Rewards    []Reward `yaml:"rewards" json:"rewards,omitempty"`
+	Reqs       []Req    `yaml:"reqs" json:"reqs,omitempty"` // met computed client-side vs /me
+	Tone       string   `yaml:"tone" json:"tone,omitempty"`
+	Accent     string   `yaml:"accent" json:"accent,omitempty"`
+}
+
+type Reward struct {
+	Icon  string `yaml:"icon" json:"icon"`
+	Label string `yaml:"label" json:"label"`
+	Value string `yaml:"value" json:"value"`
+}
+
+// Req is an entry requirement. Metric/Threshold let the client compute `met`
+// against the user profile; Label is the display text.
+type Req struct {
+	Label     string `yaml:"label" json:"label"`
+	Metric    string `yaml:"metric" json:"metric,omitempty"` // e.g. "level", "emergencyResponse"
+	Threshold int    `yaml:"threshold" json:"threshold,omitempty"`
 }
 
 type Quiz struct {

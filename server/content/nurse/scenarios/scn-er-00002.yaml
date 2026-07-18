@@ -1,0 +1,56 @@
+# ER pilot scenario — wired to fixtures/er.ts hotspot o-tri-recep.
+# Uses the server content ID convention (SCN-ER-*, slug + 5-digit), matching
+# interiors (INT-*)/departments (DEPT-*)/events (EVT-*). The v16 handoff's
+# informal kebab IDs (er-hopkins-pain) are aligned to this scheme.
+id: SCN-ER-00002
+profession: nurse
+eventId: EVT-ER-00001
+title: "통증 사정 — Mrs. Hopkins"
+tagline: "It started about an hour ago…"
+persona:
+  name: "Mrs. Hopkins"
+  role: patient
+  ageRange: "60s"
+  sub: "67y / Female"
+  hair: "#9A6B3F"
+  hairStyle: bob
+  personality: "통증으로 예민하고 불안함. 빨리 도움받고 싶어하며 간호사에게 의지함."
+  speakingStyle: "짧고 끊기는 말투, 가끔 통증으로 신음. 격식보다 일상 표현."
+  mood: pain
+goals:
+  - "PQRST에 따라 통증 사정하기"
+  - "닥터에게 전달할 정보 수집·정리"
+guardrails:
+  - "환자에게 공감하며 말하기"
+  - "의학용어 과용 금지 (환자 눈높이)"
+keyPhrases:
+  - "On a scale of 0 to 10, how bad is the pain?"
+  - "Can you describe the pain?"
+  - "When did it start?"
+briefing:
+  dept: "ER · TRAUMA BAY #4"
+  deptColor: "#DC2626"
+  brief: "응급 베이에 막 도착한 환자입니다. 한 시간 전부터 오른팔이 욱신거린다며 호소하고 있어요. 활력 징후는 안정적입니다. PQRST에 따라 통증을 사정하고 닥터에게 전달할 정보를 모아주세요."
+  difficulty: 2
+  timeLabel: "약 5분"
+  skills:
+    - "통증 사정 (PQRST)"
+    - "청취 어휘"
+    - "의문문 만들기"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 120 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+    - { icon: "🎖", label: "응급 대응 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+    - { label: "응급 대응력 60+", metric: "emergencyResponse", threshold: 60 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: pain, lineEn: "Nurse... my arm. It really hurts.", lineKo: "간호사님… 팔이요. 너무 아파요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'm here to help. Can you describe the pain?" }

@@ -153,7 +153,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-reg-san', type: 'sanitizer', x: 37, y: 2 },
     // triage · KTAS
     { id: 'bl-tri', type: 'baylabel', x: 1, y: 6, props: { text: 'TRIAGE · KTAS', highlight: true } },
-    { id: 'o-tri-recep', type: 'ireception', x: 2, y: 8, props: { w: 3, h: 1, marker: 'quest', markerLabel: 'KTAS 분류', scenarioId: 'er-hopkins-pain' } },
+    { id: 'o-tri-recep', type: 'ireception', x: 2, y: 8, props: { w: 3, h: 1, marker: 'quest', markerLabel: 'KTAS 분류', scenarioId: 'SCN-ER-00002' } },
     { id: 'o-tri-vit', type: 'vitals', x: 6, y: 7 },
     { id: 'o-tri-bp', type: 'bpcuff', x: 1, y: 7 },
     { id: 'o-tri-san', type: 'sanitizer', x: 1, y: 9 },
