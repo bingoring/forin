@@ -676,3 +676,11 @@
 - **검증:** tsc 0 · jest 148/148(dial 6) · 시뮬레이터 투석 치료실(체어+투석기)·RO 수처리실(트윈 멤브레인) 화면단위 대조 확인.
 - **편차:** scale 0.9 · 신규 footprint props · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 3 계속 진행") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-s Specialty OPD 구현 (v16, Phase 3 완결 · DX 2F)
+- **결정:** 전문 외래(안과·이비인후과·비뇨·신경과)를 v16 핸드오프 1:1 구현. 28×44, floorTheme `clinical`, 좌측 엘리베이터 문, 5구역(통합 접수 → 안과·이비인후과 → 비뇨·신경과). eye2 4종(SlitLamp·PhoropterStand·ENTTowerChair·VisionChart) 신규 `specialtyEquipment.tsx`(objects2 부서명 불일치=eye2); otoscope(er)·clinicReception/ultrasound(clinic)·waitingdisplay/compcart·shared 재사용.
+- **해소된 질문:** Q1 진입=DX 2F 단일 배선(4과 통합) · Q2 objects2=eye2 확인 후 포팅 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 154/154(specialty 6) · 시뮬레이터 안과(SlitLamp·PhoropterStand·VisionChart)·ENT(ENTTowerChair·Otoscope) 화면단위 대조 확인.
+- **마일스톤:** **v16 Phase 3(DX 진단동) 완결** — rad(1F)·specialty(2F)·dial(3F sub)·endo(4F). 진단동 4개 층 전부 정식 엘리베이터 배선.
+- **편차:** scale 0.9 · VisionChart text→shape · ultrasound footprint props 부여 · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 3 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
