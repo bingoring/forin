@@ -26,6 +26,7 @@ import { NICU_INTERIOR } from './nicu';
 import { PICU_INTERIOR } from './picu';
 import { RAD_INTERIOR } from './rad';
 import { ENDO_INTERIOR } from './endo';
+import { DIAL_INTERIOR } from './dial';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
@@ -360,6 +361,7 @@ export const FIXTURES: Record<string, Interior> = {
   [PICU_INTERIOR.id]: PICU_INTERIOR,
   [RAD_INTERIOR.id]: RAD_INTERIOR,
   [ENDO_INTERIOR.id]: ENDO_INTERIOR,
+  [DIAL_INTERIOR.id]: DIAL_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
   [INTERNAL.id]: INTERNAL,
   [SURGERY.id]: SURGERY,
