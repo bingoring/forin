@@ -708,3 +708,11 @@
 - **검증:** tsc 0 · jest 172/172(geri 6) · 시뮬레이터 데이 커먼(HandrailWall·OrientationBoard·GeriReclineChair)·치매 병실 A(LowBed) 화면단위 대조 확인.
 - **편차:** scale 0.9 · OrientationBoard text→shape · 신규 footprint props(벽 부착 3종 비충돌) · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-w Inpatient Psych 구현 (v16, Phase 4 · ONCO 2F)
+- **결정:** 정신과 폐쇄병동을 v16 핸드오프 1:1 구현. 28×44, floorTheme `internal`, 좌측 엘리베이터 문, 5구역(이중 통제문·소지품 보관 → 관찰 간호 스테이션·데이룸 → 안전 병실·패딩 안정실). psych2 3종(SafeBed·SeclusionPad·GroupTable) 신규 `psychEquipment.tsx`; ObsWindow(nursery)·MetalDetector(er 'detector')·shared 재사용.
+- **관찰창 동선:** station|dayroom x13 divider에 ObsWindow(y12) + 상하 통행 gap(y11/y13). 관찰창은 장식(비충돌), 개구부가 실제 스테이션↔데이룸 동선.
+- **해소된 질문:** Q1 진입=ONCO 2F 단일 배선(정신과 외래 후속) · Q2 관찰창=창+gap · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 178/178(psych 6) · 시뮬레이터 안전 병실(SafeBed×4)·안정실(SeclusionPad·ObsWindow·CCTV) 화면단위 대조 확인.
+- **편차:** scale 0.9 · 신규 footprint props(seclusionpad 비충돌) · 관찰 gap · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
