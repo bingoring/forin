@@ -80,7 +80,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
         { dept: '외래 주사센터', interior: 'INT-INFUSION-00001', entry: { x: 1, y: 6 } },
         { dept: '인공신장실 Dialysis', interior: 'INT-DIAL-00001', entry: { x: 1, y: 8 } },
       ] },
-      { f: '2F', depts: ['안과 · 이비인후과 · 비뇨 · 신경과'], icon: '👁' },
+      { f: '2F', depts: ['안과 · 이비인후과 · 비뇨 · 신경과'], icon: '👁', interior: 'INT-SPECIALTY-00001', entry: { x: 1, y: 10 } },
       { f: '1F', depts: ['영상의학과', '진단검사의학과', '혈액은행'], icon: '🩻', lobby: true, interior: 'INT-RAD-00001', entry: { x: 1, y: 14 } },
     ],
   },

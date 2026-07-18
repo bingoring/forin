@@ -28,6 +28,7 @@ import { PicuObjectView } from './picuEquipment';
 import { RadObjectView } from './radEquipment';
 import { EndoObjectView } from './endoEquipment';
 import { DialObjectView } from './dialEquipment';
+import { SpecialtyObjectView } from './specialtyEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -371,6 +372,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         RadObjectView({ object }) ??
         EndoObjectView({ object }) ??
         DialObjectView({ object }) ??
+        SpecialtyObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );
