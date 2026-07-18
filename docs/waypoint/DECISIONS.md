@@ -700,3 +700,11 @@
 - **검증:** tsc 0 · jest 166/166(hospice 6) · 시뮬레이터 완화 병실 A(HospiceBed·SyringeDriver·ReclinerDaybed)·가족 라운지(ADLKitchen·Fridge)·명상실 화면단위 대조 확인.
 - **편차:** scale 0.9 · 신규 footprint props · ONCO 4F sub-선택 배선 · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-v Geriatric/Dementia 구현 (v16, Phase 4 · ONCO 4F sub-선택)
+- **결정:** 치매·노인성 질환 병동을 v16 핸드오프 1:1 구현. 28×44, floorTheme `peds`, 좌측 엘리베이터 문, 5구역(데이 커먼 배회 안전존 → 노인 간호 스테이션·회상 라운지 → 치매 병실 A·B). geri2 5종(LowBed·MemoryBox·OrientationBoard·GeriReclineChair·HandrailWall) 신규 `geriEquipment.tsx`; ComfortCart(hospice)·er/shared 재사용.
+- **엘리베이터:** ONCO 4F sub-picker 두 번째 방을 INT-GERI로 배선(hospice와 4F 공유) → **ONCO 건물 완비**(3F onco·4F hospice+geri·1F/2F rehab/psych 예정).
+- **해소된 질문:** Q1 진입=ONCO 4F sub-선택 · Q2 시나리오 라벨만.
+- **검증:** tsc 0 · jest 172/172(geri 6) · 시뮬레이터 데이 커먼(HandrailWall·OrientationBoard·GeriReclineChair)·치매 병실 A(LowBed) 화면단위 대조 확인.
+- **편차:** scale 0.9 · OrientationBoard text→shape · 신규 footprint props(벽 부착 3종 비충돌) · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).

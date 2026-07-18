@@ -43,6 +43,7 @@ updated: 2026-07-01
 | 전문 외래 Specialty | [specialty/](specialty/build-spec-index.md) | ✅ 구현 (v16 신규·Phase3, DX 2F) | `INT-SPECIALTY-00001` | `interior-specialty.jsx` + `interior-objects-eye2.jsx` |
 | 종양학 · BMT Oncology | [onco/](onco/build-spec-index.md) | ✅ 구현 (v16 신규·Phase4, ONCO 3F) | `INT-ONCO-00001` | `interior-onco.jsx` + `interior-objects-onco2.jsx` |
 | 완화의료·호스피스 Hospice | [hospice/](hospice/build-spec-index.md) | ✅ 구현 (v16 신규·Phase4, ONCO 4F sub-선택) | `INT-HOSPICE-00001` | `interior-hospice.jsx` + `interior-objects-hospice2.jsx` |
+| 치매·노인병동 Geriatric | [geri/](geri/build-spec-index.md) | ✅ 구현 (v16 신규·Phase4, ONCO 4F sub-선택) | `INT-GERI-00001` | `interior-geri.jsx` + `interior-objects-geri2.jsx` |
 
 핸드오프 경로: `../../inputs/design-handoff_v16/reference/` (**현행 v16**). 이력: v10→v11 장비 2.5D화 · v11→v12 변화없음(캠퍼스 건물만) · v12→v13 장비 접지 그림자 추가 · v13→v14 병동 3종 방배치 정정 · v14→v15 PneumaticTube 그림자 · v15→v16 **병동 3종 rows 압축(46/46/44)·특수실 상향·커튼 h6·derm rows50 + 신규 부서 20종 추가**.
 
