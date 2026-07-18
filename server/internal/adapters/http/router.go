@@ -17,6 +17,7 @@ import (
 
 // Deps are the dependencies the HTTP layer needs (wired in main).
 type Deps struct {
+	Env      string // dev | staging | prod — gates dev-only routes
 	Log      *slog.Logger
 	Tokens   *auth.TokenService
 	AuthSvc  *auth.Service
@@ -41,6 +42,9 @@ func NewRouter(d Deps) http.Handler {
 	ah := &authHandler{svc: d.AuthSvc}
 	mux.HandleFunc("POST /auth/social", ah.social)
 	mux.HandleFunc("POST /auth/refresh", ah.refresh)
+	if d.Env == "dev" {
+		mux.HandleFunc("POST /auth/dev", ah.dev) // local-only auth bypass; never registered in prod
+	}
 
 	// Authenticated routes.
 	auth := requireAuth(d.Tokens)

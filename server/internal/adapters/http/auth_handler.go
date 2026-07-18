@@ -36,6 +36,20 @@ func (h *authHandler) social(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, loginResp{Tokens: pair, User: u})
 }
 
+// @Summary Dev login (local only — no provider). Registered only when ENV=dev.
+// @Tags auth
+// @Produce json
+// @Success 200 {object} loginResp
+// @Router /auth/dev [post]
+func (h *authHandler) dev(w http.ResponseWriter, r *http.Request) {
+	pair, u, err := h.svc.DevLogin(r.Context())
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "dev login failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, loginResp{Tokens: pair, User: u})
+}
+
 // @Summary Rotate refresh token
 // @Tags auth
 // @Param body body refreshReq true "refresh token"

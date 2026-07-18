@@ -48,6 +48,22 @@ func (s *Service) SocialLogin(ctx context.Context, provider user.Provider, idTok
 	return pair, u, nil
 }
 
+// DevLogin finds-or-creates a fixed local dev user and issues tokens — NO
+// provider verification. Callers MUST gate this to non-production environments
+// (the route is only registered when ENV=dev). Lets Expo Go / local dev exercise
+// authenticated flows (dialogue, quiz, pronunciation) without OIDC credentials.
+func (s *Service) DevLogin(ctx context.Context) (*TokenPair, *user.User, error) {
+	u, err := s.users.UpsertByIdentity(ctx, user.ProviderGoogle, "dev-subject-forin", "dev@forin.local")
+	if err != nil {
+		return nil, nil, err
+	}
+	pair, err := s.issue(ctx, u.ID)
+	if err != nil {
+		return nil, nil, err
+	}
+	return pair, u, nil
+}
+
 // Refresh rotates a refresh token: consume the old, issue a fresh pair.
 func (s *Service) Refresh(ctx context.Context, refreshToken string) (*TokenPair, error) {
 	userID, err := s.tokens.ParseRefresh(refreshToken)

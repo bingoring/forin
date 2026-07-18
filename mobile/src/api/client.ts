@@ -96,6 +96,12 @@ export const api = {
     return data as LoginResp;
   },
 
+  /** Dev-only login (server registers POST /auth/dev only when ENV=dev). */
+  async devLogin(): Promise<LoginResp> {
+    const { data } = await http.post('/auth/dev', {});
+    return data as LoginResp;
+  },
+
   async me(): Promise<MeResp> {
     const { data } = await http.get('/me');
     return data as MeResp;
