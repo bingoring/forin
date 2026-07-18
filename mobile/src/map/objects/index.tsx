@@ -22,6 +22,7 @@ import { DermObjectView } from './dermEquipment';
 import { InfusionObjectView } from './infusionEquipment';
 import { NurseryObjectView } from './nurseryEquipment';
 import { WomenKidsObjectView } from './womenkidsEquipment';
+import { LdObjectView } from './ldEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -359,6 +360,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         InfusionObjectView({ object }) ??
         NurseryObjectView({ object }) ??
         WomenKidsObjectView({ object }) ??
+        LdObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );
