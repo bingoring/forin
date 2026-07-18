@@ -25,6 +25,7 @@ import { WomenKidsObjectView } from './womenkidsEquipment';
 import { LdObjectView } from './ldEquipment';
 import { NicuObjectView } from './nicuEquipment';
 import { PicuObjectView } from './picuEquipment';
+import { RadObjectView } from './radEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -365,6 +366,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         LdObjectView({ object }) ??
         NicuObjectView({ object }) ??
         PicuObjectView({ object }) ??
+        RadObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );

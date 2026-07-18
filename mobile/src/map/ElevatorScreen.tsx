@@ -81,7 +81,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
         { dept: '인공신장실 Dialysis' }, // 준비 중
       ] },
       { f: '2F', depts: ['안과 · 이비인후과 · 비뇨 · 신경과'], icon: '👁' },
-      { f: '1F', depts: ['영상의학과', '진단검사의학과', '혈액은행'], icon: '🩻', lobby: true },
+      { f: '1F', depts: ['영상의학과', '진단검사의학과', '혈액은행'], icon: '🩻', lobby: true, interior: 'INT-RAD-00001', entry: { x: 1, y: 14 } },
     ],
   },
   admin: {
