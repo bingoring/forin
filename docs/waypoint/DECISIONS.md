@@ -611,3 +611,11 @@
 - **환경:** Expo Go `exp://` 딥링크로 검증(네이티브 dev client `forin://`는 iOS26 열기확인창+osascript 차단으로 불가). 데브클라이언트 재빌드로 MessageQueue 부팅 실패 해소.
 - **편차:** scale 0.9 · InfusionChair footprint 2×2(휠체어 통로) · SVG text(☕)→shape · 3F 라벨 순서 변경 · 시나리오 라벨만.
 - **결정자:** 사용자("이어서 해줘" + 착수순서 Phase 1 선택) + AI(v16 diff 반영·계획·Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-k Nursery 구현 (v16, Phase 1 계속)
+- **결정:** 신생아실을 v16 핸드오프 1:1 구현. 28×42, floorTheme `peds`, 좌측 엘리베이터 문, 5구역(손위생·가운 → 배시넷 존(배시넷×10) → 신생아 사정·워머 → 수유실 + 면회 관람창). NICU(중환자)와 구분. **전용 objects2 부재** → ld2 4종(Bassinet·InfantWarmer·NursingRecliner·WarmerCabinet) + psych2 ObsWindow 1종만 신규 `nurseryEquipment.tsx`로 포팅, 나머지(sinkor·scrubdispenser·gownbox·babyscale·phototherapy·milkfridge·compcart·sofa·coffeetable·icurtain·ireception·ichair·iplant) 재사용.
+- **핸드오프 버그 보정:** admit(사정 워머)·viewing(관람창)이 핸드오프에서 **개구부 없이 완전 봉인**(x18·x13 divider 전벽) → 도달 불가. 임상 동선에 맞춰 **doorway 2개 신설**(nursery↔admit th{18,17} · feeding↔viewing th{13,34}). 봉인 유지는 명백한 버그이므로 reachability 원칙 우선.
+- **해소된 질문:** Q1 진입=엘리베이터 **WOMEN 3F**(신생아실 선두 배선, entry {1,6}); L&D·산후 병존 → Phase 2 구현 시 sub-선택 · Q2 objects2 부재=ld2/psych2 재사용 · Q3 봉인방=doorway 신설 · Q4 시나리오 라벨만.
+- **검증:** tsc 0 · jest 106/106(nursery 6) · 시뮬레이터 5구역(입구·배시넷·워머·수유·관람창, ObsWindow 렌더) 확인.
+- **편차:** scale 0.9 · doorway 2개 추가 · Bassinet/InfantWarmer/NursingRecliner footprint 2×2 · 3F 라벨 순서 변경 · 시나리오 라벨만.
+- **결정자:** 사용자("이어서 해줘"·Phase 1 quick-win) + AI(Build Spec·구현·봉인방 진단/보정·검증).

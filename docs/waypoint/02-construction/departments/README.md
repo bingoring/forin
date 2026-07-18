@@ -32,6 +32,7 @@ updated: 2026-07-01
 | 정형 병동 | [orthoward/](orthoward/build-spec-index.md) | ✅ 구현 (v15) | `INT-ORTHOWARD-00001` | `interior-orthoward.jsx` + `interior-objects-ortho2.jsx` |
 | 피부과 센터 | [dermcenter/](dermcenter/build-spec-index.md) | ✅ 구현 (v15) | `INT-DERM-00001` | `interior-dermcenter.jsx` + `interior-objects-derm2.jsx` |
 | 외래 주사센터 | [infusion/](infusion/build-spec-index.md) | ✅ 구현 (v16 신규·Phase1) | `INT-INFUSION-00001` | `interior-infusion.jsx` (objects: onco2 + icu 재사용) |
+| 신생아실 | [nursery/](nursery/build-spec-index.md) | ✅ 구현 (v16 신규·Phase1) | `INT-NURSERY-00001` | `interior-nursery.jsx` (objects: ld2 + psych2 재사용) |
 
 핸드오프 경로: `../../inputs/design-handoff_v16/reference/` (**현행 v16**). 이력: v10→v11 장비 2.5D화 · v11→v12 변화없음(캠퍼스 건물만) · v12→v13 장비 접지 그림자 추가 · v13→v14 병동 3종 방배치 정정 · v14→v15 PneumaticTube 그림자 · v15→v16 **병동 3종 rows 압축(46/46/44)·특수실 상향·커튼 h6·derm rows50 + 신규 부서 20종 추가**.
 
