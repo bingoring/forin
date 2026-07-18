@@ -93,7 +93,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
       { f: '3F', depts: ['간호부 사무실', '감염관리실', '시뮬레이션 랩'], icon: '🎓', interior: 'INT-SIM-00001', entry: { x: 1, y: 8 } },
       { f: '2F', depts: ['직원 락커룸', '의료진 휴게실 · 식당'], icon: '☕', interior: 'INT-LOUNGE-00001', entry: { x: 1, y: 13 } },
       { f: '1F', depts: ['중앙공급실 SPD', '영양팀 · 배식실', '하역장'], icon: '📦', lobby: true, interior: 'INT-SPD-00001', entry: { x: 1, y: 8 } },
-      { f: 'B1', depts: ['영안실 · 부검실', '시설팀 기계실'], icon: '🔧' },
+      { f: 'B1', depts: ['영안실 · 부검실', '시설팀 기계실'], icon: '🔧', interior: 'INT-MORGUE-00001', entry: { x: 1, y: 6 } },
     ],
   },
 };
