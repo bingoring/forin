@@ -90,7 +90,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
   admin: {
     name: '행정 · 백스테이지 윙', sub: '지원동 · ADMIN & SUPPORT', accent: '#6E6354', wall: '#D9D4C8', trim: '#B3AC98',
     floors: [
-      { f: '3F', depts: ['간호부 사무실', '감염관리실', '시뮬레이션 랩'], icon: '🎓' },
+      { f: '3F', depts: ['간호부 사무실', '감염관리실', '시뮬레이션 랩'], icon: '🎓', interior: 'INT-SIM-00001', entry: { x: 1, y: 8 } },
       { f: '2F', depts: ['직원 락커룸', '의료진 휴게실 · 식당'], icon: '☕' },
       { f: '1F', depts: ['중앙공급실 SPD', '영양팀 · 배식실', '하역장'], icon: '📦', lobby: true },
       { f: 'B1', depts: ['영안실 · 부검실', '시설팀 기계실'], icon: '🔧' },
