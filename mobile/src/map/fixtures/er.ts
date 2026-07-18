@@ -35,6 +35,7 @@ import { PSYCH_INTERIOR } from './psych';
 import { REHAB_INTERIOR } from './rehab';
 import { SIM_INTERIOR } from './sim';
 import { LOUNGE_INTERIOR } from './lounge';
+import { SPD_INTERIOR } from './spd';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
@@ -378,6 +379,7 @@ export const FIXTURES: Record<string, Interior> = {
   [REHAB_INTERIOR.id]: REHAB_INTERIOR,
   [SIM_INTERIOR.id]: SIM_INTERIOR,
   [LOUNGE_INTERIOR.id]: LOUNGE_INTERIOR,
+  [SPD_INTERIOR.id]: SPD_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
   [INTERNAL.id]: INTERNAL,
   [SURGERY.id]: SURGERY,

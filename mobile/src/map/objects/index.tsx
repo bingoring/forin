@@ -36,6 +36,7 @@ import { PsychObjectView } from './psychEquipment';
 import { RehabObjectView } from './rehabEquipment';
 import { SimObjectView } from './simEquipment';
 import { LoungeObjectView } from './loungeEquipment';
+import { SpdObjectView } from './spdEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -387,6 +388,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         RehabObjectView({ object }) ??
         SimObjectView({ object }) ??
         LoungeObjectView({ object }) ??
+        SpdObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );
