@@ -654,3 +654,10 @@
 - **근거:** 층당 인테리어 1슬롯 한계로 두 번째 부서가 딥링크로만 접근되던 문제 해소. 사용자 "지금 만들기" 선택.
 - **검증:** tsc 0 · jest 130/130 · 시뮬레이터 엘리베이터(WOMEN 4F 두 부서 표기·GO 라벨) 확인. sub-picker 탭 상호작용은 osascript 접근성 차단으로 육안 탭검증 불가(조건부 렌더·상태 로직은 tsc/구조로 검증).
 - **결정자:** 사용자("지금 만들기") + AI(rooms[] 모델·sub-picker·ride 해소 구현).
+
+## 2026-07-18 · 5g-p Radiology 구현 (v16, Phase 3 착수 · DX 1F)
+- **결정:** 영상의학과를 v16 핸드오프 1:1 구현. 28×48, floorTheme `clinical`, 좌측 엘리베이터 문, 6구역(접수·대기 + 저조도 PACS 판독실 → 중앙 복도 → CT·MRI 촬영실(각 유리 제어 부스) → X-ray 촬영실). rad2 5종(CTScanner·MRIScanner·XrayUnit·ControlConsole·LeadApronRack) 신규 `radEquipment.tsx`; pacsviewer(ortho)·waitingdisplay/vitals(er)·handrail(ward)·shared 재사용.
+- **해소된 질문:** Q1 진입=DX 1F(lobby) 단일 배선(진단검사/혈액은행 후속 rooms[] 전환 여지) · Q2 시나리오 라벨만.
+- **검증:** tsc 0 · jest 136/136(rad 6) · 시뮬레이터 CT(도넛 갠트리·제어콘솔·유리부스)·MRI(대형 보어·납방호복) 화면단위 대조 확인.
+- **편차:** scale 0.9 · SVG text(MAGNET ON)→shape · 스캐너 footprint props · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 3 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
