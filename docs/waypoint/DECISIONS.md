@@ -619,3 +619,12 @@
 - **검증:** tsc 0 · jest 106/106(nursery 6) · 시뮬레이터 5구역(입구·배시넷·워머·수유·관람창, ObsWindow 렌더) 확인.
 - **편차:** scale 0.9 · doorway 2개 추가 · Bassinet/InfantWarmer/NursingRecliner footprint 2×2 · 3F 라벨 순서 변경 · 시나리오 라벨만.
 - **결정자:** 사용자("이어서 해줘"·Phase 1 quick-win) + AI(Build Spec·구현·봉인방 진단/보정·검증).
+
+## 2026-07-18 · 5g-l Women & Kids OPD 구현 (v16, Phase 1 완결)
+- **결정:** 소아·산부인과 외래 + 키즈광장을 v16 핸드오프 1:1 구현. 28×40, floorTheme `peds`, 상단 캠퍼스 문, 5구역(로비·접수·계측 → 키즈 놀이광장 → 소아청소년과 외래 → 산부인과 외래 + 초음파실). 신규 오브젝트 **FetalMonitor 1종**(ld2)만 포팅, 나머지(clinicReception·ultrasound·babyscale·stadiometer·tonguejar·stickerroll·smallslide·rockinghorse·toychest·blocks·mural·playmat·watercooler·ibed·ireception·ichair·imonitor·iplant) 재사용.
+- **peds 1F 교체:** 사용자 지시("핸드오프상 peds를 대체하는 게 womenkids-opd면 대체"). v16 핸드오프가 monolithic peds 센터(외래+병동+NICU)를 **층별 분리**(interior-peds.jsx 34×48 = OPD+ward+NICU → v16: OPD=1F womenkids-opd·병동=2F·NICU=4F). 엘리베이터 WOMEN 1F를 `INT-PEDS-00001`→`INT-WOMENKIDS-OPD-00001`로 교체(entry {13,1}). `INT-PEDS`는 FIXTURES 잔존 — 병동/NICU가 Phase 2에서 2F/4F로 정식화될 때까지 딥링크 접근. 피부과 2F 교체 선례.
+- **해소된 질문:** Q1 peds 교체=사용자 지시로 1F 정식 교체 · Q2 신규=FetalMonitor 1종만 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 112/112(womenkids 6) · 시뮬레이터 5구역(로비·놀이·소아외래·산부인과·초음파, FetalMonitor 렌더) 확인.
+- **마일스톤:** **v16 Phase 1(재사용 quick-win) 3종 전부 완료**(infusion·nursery·womenkids-opd). 재사용 파이프라인 검증 — 신규 부서당 신규 오브젝트 1~5종만 포팅, 나머지 기존 카탈로그 재사용으로 성립.
+- **편차:** scale 0.9 · SVG text→shape · FetalMonitor footprint 2×2 · WOMEN 1F peds→womenkids-opd 교체(peds ward/NICU는 Phase 2 복원) · 시나리오 라벨만.
+- **결정자:** 사용자(peds 교체 지시) + AI(peds↔womenkids-opd 핸드오프 관계 분석·Build Spec·구현·검증).
