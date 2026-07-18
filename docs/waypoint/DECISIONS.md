@@ -779,3 +779,10 @@
 - **보안:** dev-login은 비프로덕션 전용(라우트가 prod에 없음). 로컬 개발에서 OIDC 없이 인증 플로우(대화·퀴즈·발음) 검증 가능.
 - **검증:** `POST /auth/dev`→실 토큰→conversation/message 페르소나 응답 OK. tsc 0·go build 0. 로그인 화면 dev 버튼 렌더 확인.
 - **결정자:** 사용자("api 에러가 났어, 이어서") + AI(원인 진단·dev-login 구축).
+
+## 2026-07-19 · 미니퀴즈 — sentence_build (문장완성) 버티컬 슬라이스
+- **결정:** 서버에 quiz 조회 경로가 전무 → 전체 구축. `content.Quiz`에 optional `QuizContent`(sub·zone·context·hint·template(`__` 빈칸)·answers·wordBank). 마이그레이션 `000010_quiz_content`(content jsonb). sqlc 수동편집(GetQuiz 신규 + InsertQuiz). `ContentReader.GetQuiz` + `GET /quizzes/{id}`(public). `QZ-ER-00001` 문장완성 저작. scn-er-00002에 quiz step(QZ-ER-00001) 추가(기존 steps jsonb 활용, 신규 필드 없음).
+- **모바일:** `api.quiz()` + `ScenarioDetail.steps`/`QuizDetail` 타입 · `useQuizData` 훅 · `quiz/[id].tsx`(핸드오프 ScreenQuizSentence 1:1: CONTEXT·슬롯 문장·단어카드 탭 채우기·제출·정오답). 대화 화면 action rail에 quiz step 있으면 "📝" 버튼→quiz.
+- **범위:** 6종 중 sentence_build 1종만(가장 관련·자족적). match_pairs·vitals·listen·sbar·triage는 후속(동일 패턴 확장).
+- **검증:** go test(로더: template/answers/wordBank·answer⊆wordBank)·jest 208/208·tsc 0. `GET /quizzes/QZ-ER-00001` 콘텐츠 왕복 OK. 시뮬레이터 문장완성 화면 렌더(슬롯·단어카드 shuffle·CONTEXT) 확인.
+- **결정자:** 사용자("순서대로 작업, 너가 하고싶은대로") + AI(구축·검증).
