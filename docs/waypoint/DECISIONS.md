@@ -772,3 +772,10 @@
 - **검증(실 스택 E2E):** DB seed→`GET /scenarios/SCN-ER-00002`(briefing 왕복)→devtoken(실 user UUID)→`POST conversation`→`message`(NPC 페르소나 응답)→`stream`(SSE 형식 = 모바일 파서). 시뮬레이터: 브리핑 실데이터 렌더, 대화 세션오픈+오프닝 렌더(임시 devtoken 주입 후 원복). go test·tsc 0·jest 208/208.
 - **후속:** 힌트모드·마이크 STT·발음 채점·결과화면·미니퀴즈·나머지 시나리오 저작·`scenarios.ts` Dept 20부서 확장·dev-login.
 - **결정자:** 사용자("Go 유지하고 시나리오 연결 착수") + AI(Build Spec·구현·검증).
+
+## 2026-07-19 · 힌트모드 + dev-login (인증 우회, ENV=dev 게이트)
+- **힌트모드:** 대화 화면 💡 힌트 토글 → scenario.keyPhrases를 추천 답변 ChoiceRow로(1번 ★AI추천). 탭하면 입력창 채움. 핸드오프 screens-dialogue hint 1:1. 시뮬레이터 렌더 확인.
+- **dev-login(문제 해결):** 임시 devtoken 원복 후 앱에 유효 세션이 없어 대화가 401. 매번 수동 토큰 주입 대신 **서버 `POST /auth/dev`**(provider 검증 없이 고정 dev 유저 upsert+토큰 발급)를 **`ENV=dev`일 때만 라우트 등록**(prod 미등록). 모바일 `api.devLogin()`+로그인 화면 "🛠 개발자 로그인" 버튼이 실 토큰 저장(setSession+secureStore). 기존 가짜 `authStore.devLogin`('dev' 문자열→401 유발) 제거.
+- **보안:** dev-login은 비프로덕션 전용(라우트가 prod에 없음). 로컬 개발에서 OIDC 없이 인증 플로우(대화·퀴즈·발음) 검증 가능.
+- **검증:** `POST /auth/dev`→실 토큰→conversation/message 페르소나 응답 OK. tsc 0·go build 0. 로그인 화면 dev 버튼 렌더 확인.
+- **결정자:** 사용자("api 에러가 났어, 이어서") + AI(원인 진단·dev-login 구축).
