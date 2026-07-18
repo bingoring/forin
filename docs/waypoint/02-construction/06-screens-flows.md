@@ -1,7 +1,7 @@
 ---
 phase: 02-construction
 stage: 06-screens-flows
-status: PENDING
+status: IN_PROGRESS
 updated: 2026-06-12
 ---
 

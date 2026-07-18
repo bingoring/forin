@@ -756,3 +756,19 @@
 - **편차:** 전면 Tint · 신규 footprint props(cadaverfridge 4×2·autopsytable 3×2·viewingbier 2×1) · icabinet variant equipment(비충돌) · 시나리오 라벨만.
 - **🎉 마일스톤:** **v16 20개 신규 부서 전체(Phase 1–5) 완결.** WOMEN·DX·ONCO·ADMIN 4개 건물 모든 층 정식 배선. morgue가 마지막 부서. 다음: 시나리오(`scenarioId`) 연결·콘텐츠.
 - **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 서버 스택 = Go 유지 (FastAPI/LangChain 재작성 반대)
+- **질문(사용자):** AI 활용성(langchain/langgraph) 위해 서버를 파이썬 FastAPI로 바꿔야 하나?
+- **결정:** **Go 유지.** 대화 엔진이 이미 Go로 완성(`conversation/{engine,strategy}.go` — 페르소나 롤플레이·스트리밍·교정 + anthropic/openai/azurespeech 어댑터). forin의 AI 요구는 단일 페르소나 롤플레이+스트리밍+교정 = Messages API 위 얇은 래퍼(API glue); 추론은 벤더에서 일어나므로 서버는 I/O·SSE 오케스트레이션 → Go가 유리. LangChain/LangGraph는 현 요구 초과(over-engineering). 재작성은 순수 손해(OIDC·pgx·redis·sqlc·헥사고날 4,800줄).
+- **향후:** RAG/에이전트 그래프/파이썬 전용 ML 필요 시 **파이썬 사이드카 마이크로서비스**로 분리(Go가 호출). 재작성 아님.
+- **결정자:** 사용자(질문·최종 승인) + AI(코드베이스 근거 기반 권고).
+
+## 2026-07-18 · 시나리오 런타임 착수 — 브리핑→AI 다이얼로그 (ER 파일럿 버티컬 슬라이스)
+- **결정:** 퀘스트 핫스팟 → 실제 시나리오 → AI 페르소나 대화 런타임. 착수전략 **버티컬 슬라이스**(ER `SCN-ER-00002` 1개 A→B→C 관통), 화면 **핸드오프 1:1 포팅**.
+- **A 서버:** `content.Scenario`에 optional `Briefing`(dept·brief·difficulty·timeLabel·skills·rewards·reqs·tone) + `Persona` 표시필드(sub·hair·hairStyle). 마이그레이션 `000009_scenario_briefing`(briefing jsonb). sqlc 생성코드 수동 편집(CLI 부재). `SCN-ER-00002.yaml` 저작 + 로드 회귀 테스트.
+- **B 모바일:** `api/client.ts` scenario/startConversation/sendMessage/sendMessageStream(XHR SSE 파서).
+- **C 화면:** `scenario/[id].tsx`(브리핑, 스텁 교체) + `dialogue/[id].tsx`(신규). RoleFace·PixelButton·tokens 재사용.
+- **ID 컨벤션:** 서버 검증기 `^[A-Z]+(-[A-Z]+)*-\d{5,}$` 강제 → v16 케밥 폐기, 서버 `SCN-*` 채택(인테리어 `INT-*`와 동일). ER 핫스팟 `o-tri-recep` → `SCN-ER-00002`.
+- **검증(실 스택 E2E):** DB seed→`GET /scenarios/SCN-ER-00002`(briefing 왕복)→devtoken(실 user UUID)→`POST conversation`→`message`(NPC 페르소나 응답)→`stream`(SSE 형식 = 모바일 파서). 시뮬레이터: 브리핑 실데이터 렌더, 대화 세션오픈+오프닝 렌더(임시 devtoken 주입 후 원복). go test·tsc 0·jest 208/208.
+- **후속:** 힌트모드·마이크 STT·발음 채점·결과화면·미니퀴즈·나머지 시나리오 저작·`scenarios.ts` Dept 20부서 확장·dev-login.
+- **결정자:** 사용자("Go 유지하고 시나리오 연결 착수") + AI(Build Spec·구현·검증).
