@@ -22,6 +22,8 @@ import { INFUSION_INTERIOR } from './infusion';
 import { NURSERY_INTERIOR } from './nursery';
 import { WOMENKIDS_INTERIOR } from './womenkids';
 import { LD_INTERIOR } from './ld';
+import { NICU_INTERIOR } from './nicu';
+import { PICU_INTERIOR } from './picu';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
@@ -352,6 +354,8 @@ export const FIXTURES: Record<string, Interior> = {
   [NURSERY_INTERIOR.id]: NURSERY_INTERIOR,
   [WOMENKIDS_INTERIOR.id]: WOMENKIDS_INTERIOR,
   [LD_INTERIOR.id]: LD_INTERIOR,
+  [NICU_INTERIOR.id]: NICU_INTERIOR,
+  [PICU_INTERIOR.id]: PICU_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
   [INTERNAL.id]: INTERNAL,
   [SURGERY.id]: SURGERY,
