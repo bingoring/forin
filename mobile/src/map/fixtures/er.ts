@@ -29,6 +29,7 @@ import { ENDO_INTERIOR } from './endo';
 import { DIAL_INTERIOR } from './dial';
 import { SPECIALTY_INTERIOR } from './specialty';
 import { ONCO_INTERIOR } from './onco';
+import { HOSPICE_INTERIOR } from './hospice';
 import { INTERNAL, SURGERY, ORTHO, DERM } from '../clinic';
 
 export const ER_INTERIOR: Interior = {
@@ -366,6 +367,7 @@ export const FIXTURES: Record<string, Interior> = {
   [DIAL_INTERIOR.id]: DIAL_INTERIOR,
   [SPECIALTY_INTERIOR.id]: SPECIALTY_INTERIOR,
   [ONCO_INTERIOR.id]: ONCO_INTERIOR,
+  [HOSPICE_INTERIOR.id]: HOSPICE_INTERIOR,
   [CAMPUS_INTERIOR.id]: CAMPUS_INTERIOR,
   [INTERNAL.id]: INTERNAL,
   [SURGERY.id]: SURGERY,
