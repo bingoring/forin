@@ -74,7 +74,7 @@ v16 핸드오프에 **신규 인테리어 20종**이 추가됐다(기존 구현 
 - **층당 복수부서 sub-선택 UI — ✅ 구현**: `ElevFloor.rooms[]` + 엘리베이터 층 선택 시 부서 sub-picker. WOMEN 4F(NICU/PICU 정식 접근) · DX 3F(외래 주사센터 / 인공신장실=준비 중) 적용. 신규 복수부서 층은 `rooms[]`로 추가하면 자동 지원.
 - **Phase 3 · DX 완결 — ✅ 완료**: **rad ✅(1F)** → **endo ✅(4F)** → **dial ✅(3F sub-선택)** → **specialty ✅(2F, eye2)**. 진단동 4개 층 전부 정식 배선.
 - **Phase 4 · ONCO 완결 — ✅ 완료**: **onco ✅(3F)** → **hospice ✅(4F sub-선택)** → **geri ✅(4F sub-선택)** → **psych ✅(2F)** → **rehab ✅(1F)**. ONCO 암센터 4개 층 전부 정식 배선.
-- **Phase 5 · ADMIN 완결**: **sim ✅(3F)** → **lounge ✅(2F)** → spd → morgue(B1).
+- **Phase 5 · ADMIN 완결**: **sim ✅(3F)** → **lounge ✅(2F)** → **spd ✅(1F)** → morgue(B1).
 
 ## 미해결 결정
 - **Q1 건물/Phase 착수 순서** — 위는 quick-win(Phase1) 후 WOMEN 우선안. 사용자 우선순위로 조정 가능.

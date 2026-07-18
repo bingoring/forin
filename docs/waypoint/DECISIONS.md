@@ -741,3 +741,10 @@
 - **검증:** tsc 0 · jest 196/196(lounge 6) · 시뮬레이터 락커룸(LockerBank)·휴게실(Vending)·식당(DiningTable) 화면단위 대조 확인.
 - **편차:** scale 0.9 · lounge↔cafe 도어 신설 · ServeryCounter footprint 부여 · 신규 footprint props · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·단절 보정·검증).
+
+## 2026-07-18 · 5g-aa SPD/Nutrition/Dock 구현 (v16, Phase 5 · ADMIN 1F)
+- **결정:** 중앙공급실·영양팀·하역장을 v16 핸드오프 1:1 구현. **30×44 와이드**, floorTheme `pharma`, 좌측 엘리베이터 문 + 우측 하역장 롤업 게이트, 4구역(오염 세척 Decon → 세척→멸균 pass-through → 멸균·보관 → 영양팀 배식실 → 화물 하역장). spd2 6종(Autoclave·SterileRack·WasherDisinfector·FoodCartColumn·PalletStack·CargoTruck) 신규 `spdEquipment.tsx`; adlkitchen(hospice)·fridge(onco)·medcart/floortape/shelflabel(pharma)·soiledcart(or)·shared 재사용.
+- **해소된 질문:** Q1 진입=ADMIN 1F 단일 배선 · Q2 30-와이드 산업 라인(세척→멸균 sterile pass-through·우측 하역 게이트) · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 202/202(spd 6) · 시뮬레이터 멸균(Autoclave×2·SterileRack)·배식(FoodCartColumn)·하역장(PalletStack·FloorTape 안전선) 화면단위 대조 확인.
+- **편차:** scale 0.9 · cols 30 · icabinet kind→variant supply · 신규 footprint props · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
