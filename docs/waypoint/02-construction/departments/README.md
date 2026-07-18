@@ -47,6 +47,7 @@ updated: 2026-07-01
 | 정신과 폐쇄병동 Psych | [psych/](psych/build-spec-index.md) | ✅ 구현 (v16 신규·Phase4, ONCO 2F) | `INT-PSYCH-00001` | `interior-psych.jsx` + `interior-objects-psych2.jsx` |
 | 재활치료실 PT/OT Rehab | [rehab/](rehab/build-spec-index.md) | ✅ 구현 (v16 신규·Phase4, ONCO 1F) | `INT-REHAB-00001` | `interior-rehab.jsx` + `interior-objects-rehab2.jsx` |
 | 간호부·감염관리·시뮬랩 Sim | [sim/](sim/build-spec-index.md) | ✅ 구현 (v16 신규·Phase5, ADMIN 3F) | `INT-SIM-00001` | `interior-sim.jsx` + `interior-objects-sim2.jsx` |
+| 락커·휴게실·식당 Lounge | [lounge/](lounge/build-spec-index.md) | ✅ 구현 (v16 신규·Phase5, ADMIN 2F) | `INT-LOUNGE-00001` | `interior-lounge.jsx` + `interior-objects-lounge2.jsx` |
 
 핸드오프 경로: `../../inputs/design-handoff_v16/reference/` (**현행 v16**). 이력: v10→v11 장비 2.5D화 · v11→v12 변화없음(캠퍼스 건물만) · v12→v13 장비 접지 그림자 추가 · v13→v14 병동 3종 방배치 정정 · v14→v15 PneumaticTube 그림자 · v15→v16 **병동 3종 rows 압축(46/46/44)·특수실 상향·커튼 h6·derm rows50 + 신규 부서 20종 추가**.
 

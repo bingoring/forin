@@ -733,3 +733,11 @@
 - **검증:** tsc 0 · jest 190/190(sim 6) · 시뮬레이터 시뮬랩(SimManikin·크래시카트)·간호부(OfficeDesk×3)·감염관리(PPEBoard) 화면단위 대조 확인.
 - **편차:** scale 0.9 · PPEBoard text→shape · 제어실 staff 도어 신설 · 신규 footprint props · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·봉인방 보정·검증).
+
+## 2026-07-18 · 5g-z Staff Lounge/Locker/Cafeteria 구현 (v16, Phase 5 · ADMIN 2F)
+- **결정:** 직원 락커룸·의료진 휴게실·식당을 v16 핸드오프 1:1 구현. 28×40, floorTheme `clinical`, 좌측 엘리베이터 문, 4구역(락커룸 A·B → 의료진 휴게실 · 직원 식당). lounge2 4종(LockerBank·Vending·DiningTable·ServeryCounter) 신규 `loungeEquipment.tsx`; coffeemachine(infusion)·nursingrecliner(nursery)·sink·shared 재사용.
+- **단절 보정(핸드오프 버그):** lockerA|B(x13)·lounge|cafe(x13) 세로벽 전벽 봉쇄로 엘리베이터 쪽(A+lounge)과 반대쪽(B+cafe)이 단절 → lounge↔cafe 도어(y27) 신설로 전체 순환.
+- **해소된 질문:** Q1 진입=ADMIN 2F 단일 배선 · Q2 단절=lounge↔cafe 도어 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 196/196(lounge 6) · 시뮬레이터 락커룸(LockerBank)·휴게실(Vending)·식당(DiningTable) 화면단위 대조 확인.
+- **편차:** scale 0.9 · lounge↔cafe 도어 신설 · ServeryCounter footprint 부여 · 신규 footprint props · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 5 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·단절 보정·검증).
