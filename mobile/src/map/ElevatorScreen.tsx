@@ -72,7 +72,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
       ] },
       { f: '3F', depts: ['종양학 병동', '조혈모세포 이식실 BMT'], icon: '🎗', interior: 'INT-ONCO-00001', entry: { x: 1, y: 15 } },
       { f: '2F', depts: ['정신과 폐쇄 병동', '정신과 외래'], icon: '🧠', interior: 'INT-PSYCH-00001', entry: { x: 1, y: 6 } },
-      { f: '1F', depts: ['대형 재활치료실 PT/OT Gym'], icon: '🦮', lobby: true },
+      { f: '1F', depts: ['대형 재활치료실 PT/OT Gym'], icon: '🦮', lobby: true, interior: 'INT-REHAB-00001', entry: { x: 1, y: 8 } },
     ],
   },
   dx: {

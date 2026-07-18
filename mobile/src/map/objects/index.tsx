@@ -33,6 +33,7 @@ import { OncoObjectView } from './oncoEquipment';
 import { HospiceObjectView } from './hospiceEquipment';
 import { GeriObjectView } from './geriEquipment';
 import { PsychObjectView } from './psychEquipment';
+import { RehabObjectView } from './rehabEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -381,6 +382,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         HospiceObjectView({ object }) ??
         GeriObjectView({ object }) ??
         PsychObjectView({ object }) ??
+        RehabObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );
