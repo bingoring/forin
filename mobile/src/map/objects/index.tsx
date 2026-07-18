@@ -19,6 +19,7 @@ import { WardObjectView } from './wardEquipment';
 import { SurgObjectView } from './surgEquipment';
 import { OrthoObjectView } from './orthoEquipment';
 import { DermObjectView } from './dermEquipment';
+import { InfusionObjectView } from './infusionEquipment';
 import { SharedObjectView } from './sharedEquipment';
 import type { MapObject } from '@engine';
 
@@ -353,6 +354,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
         SurgObjectView({ object }) ??
         OrthoObjectView({ object }) ??
         DermObjectView({ object }) ??
+        InfusionObjectView({ object }) ??
         SharedObjectView({ object }) ??
         ClinicObjectView({ object })
       );

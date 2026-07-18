@@ -69,7 +69,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
     name: '외래 · 진단 지원동', sub: '별관 3 · OUTPATIENT & DX', accent: '#0E7490', wall: '#E6E9EC', trim: '#C4CBD2',
     floors: [
       { f: '4F', depts: ['내시경실', '심혈관 조영실 Cath', '인터벤션 IR'], icon: '🔭' },
-      { f: '3F', depts: ['인공신장실 Dialysis', '외래 주사센터'], icon: '💉' },
+      { f: '3F', depts: ['외래 주사센터', '인공신장실 Dialysis'], icon: '💉', interior: 'INT-INFUSION-00001', entry: { x: 1, y: 6 } },
       { f: '2F', depts: ['안과 · 이비인후과 · 비뇨 · 신경과'], icon: '👁' },
       { f: '1F', depts: ['영상의학과', '진단검사의학과', '혈액은행'], icon: '🩻', lobby: true },
     ],
