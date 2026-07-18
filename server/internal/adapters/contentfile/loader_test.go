@@ -50,4 +50,33 @@ func TestLoadRealContentAndBriefing(t *testing.T) {
 	if !legacy {
 		t.Fatal("legacy SCN-ER-00001 scenario not loaded (regression)")
 	}
+
+	// Quiz content (sentence_build) round-trips with template/answers/wordBank.
+	var quizFound bool
+	for i := range b.Quizzes {
+		q := &b.Quizzes[i]
+		if q.ID != "QZ-ER-00001" {
+			continue
+		}
+		quizFound = true
+		if q.Content == nil {
+			t.Fatal("QZ-ER-00001: content is nil")
+		}
+		if q.Content.Template == "" || len(q.Content.Answers) == 0 || len(q.Content.WordBank) == 0 {
+			t.Fatal("QZ-ER-00001: template/answers/wordBank must be populated")
+		}
+		// Every answer must appear in the word bank.
+		bank := map[string]bool{}
+		for _, w := range q.Content.WordBank {
+			bank[w] = true
+		}
+		for _, a := range q.Content.Answers {
+			if !bank[a] {
+				t.Fatalf("QZ-ER-00001: answer %q missing from wordBank", a)
+			}
+		}
+	}
+	if !quizFound {
+		t.Fatal("QZ-ER-00001 quiz not loaded")
+	}
 }

@@ -54,3 +54,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I'm here to help. Can you describe the pain?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ER-00001 }

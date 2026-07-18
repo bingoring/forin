@@ -263,8 +263,27 @@ func (q *Queries) InsertPhrase(ctx context.Context, arg InsertPhraseParams) erro
 	return err
 }
 
+const getQuiz = `-- name: GetQuiz :one
+SELECT id, profession, type, title, content FROM quizzes WHERE id = $1
+`
+
+type GetQuizRow struct {
+	ID         string `json:"id"`
+	Profession string `json:"profession"`
+	Type       string `json:"type"`
+	Title      string `json:"title"`
+	Content    []byte `json:"content"`
+}
+
+func (q *Queries) GetQuiz(ctx context.Context, id string) (GetQuizRow, error) {
+	row := q.db.QueryRow(ctx, getQuiz, id)
+	var i GetQuizRow
+	err := row.Scan(&i.ID, &i.Profession, &i.Type, &i.Title, &i.Content)
+	return i, err
+}
+
 const insertQuiz = `-- name: InsertQuiz :exec
-INSERT INTO quizzes (id, profession, type, title) VALUES ($1, $2, $3, $4)
+INSERT INTO quizzes (id, profession, type, title, content) VALUES ($1, $2, $3, $4, $5)
 `
 
 type InsertQuizParams struct {
@@ -272,6 +291,7 @@ type InsertQuizParams struct {
 	Profession string `json:"profession"`
 	Type       string `json:"type"`
 	Title      string `json:"title"`
+	Content    []byte `json:"content"`
 }
 
 func (q *Queries) InsertQuiz(ctx context.Context, arg InsertQuizParams) error {
@@ -280,6 +300,7 @@ func (q *Queries) InsertQuiz(ctx context.Context, arg InsertQuizParams) error {
 		arg.Profession,
 		arg.Type,
 		arg.Title,
+		arg.Content,
 	)
 	return err
 }

@@ -59,6 +59,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.HandleFunc("GET /interiors/{id}", ch.interior)
 	mux.HandleFunc("GET /events", ch.events)
 	mux.HandleFunc("GET /scenarios/{id}", ch.scenario)
+	mux.HandleFunc("GET /quizzes/{id}", ch.quiz)
 	mux.HandleFunc("GET /board/today", ch.board)
 
 	// Progress + review (authenticated).

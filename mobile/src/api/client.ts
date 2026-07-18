@@ -82,10 +82,22 @@ export interface ScenarioBriefing {
   dept?: string; deptColor?: string; brief?: string; difficulty?: number; timeLabel?: string;
   skills?: string[]; rewards?: ScenarioReward[]; reqs?: ScenarioReq[]; tone?: string; accent?: string;
 }
+export interface ScenarioStep {
+  id: string; type: string; next?: string;
+  payload?: { quizId?: string; speaker?: string; expression?: string; lineEn?: string; lineKo?: string; [k: string]: unknown };
+}
 export interface ScenarioDetail {
   id: string; profession: string; eventId: string; title: string; tagline: string;
   persona: ScenarioPersona; goals?: string[]; guardrails?: string[]; keyPhrases?: string[];
-  briefing?: ScenarioBriefing;
+  briefing?: ScenarioBriefing; steps?: ScenarioStep[];
+}
+
+export interface QuizContent {
+  sub?: string; zone?: string; context?: string; hint?: string;
+  template?: string; answers?: string[]; wordBank?: string[];
+}
+export interface QuizDetail {
+  id: string; profession: string; type: string; title: string; content?: QuizContent;
 }
 
 export const api = {
@@ -136,6 +148,12 @@ export const api = {
   async scenario(id: string): Promise<ScenarioDetail> {
     const { data } = await http.get(`/scenarios/${id}`);
     return data as ScenarioDetail;
+  },
+
+  /** Full quiz (playable content). GET /quizzes/{id}. */
+  async quiz(id: string): Promise<QuizDetail> {
+    const { data } = await http.get(`/quizzes/${id}`);
+    return data as QuizDetail;
   },
 
   /** Open a persona-driven session for a scenario. Returns its sessionId. */

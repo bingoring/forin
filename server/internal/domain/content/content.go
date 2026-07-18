@@ -228,10 +228,25 @@ type Req struct {
 }
 
 type Quiz struct {
-	ID         string `yaml:"id" json:"id"`
-	Profession string `yaml:"profession" json:"profession"`
-	Type       string `yaml:"type" json:"type"`
-	Title      string `yaml:"title" json:"title"`
+	ID         string       `yaml:"id" json:"id"`
+	Profession string       `yaml:"profession" json:"profession"`
+	Type       string       `yaml:"type" json:"type"`
+	Title      string       `yaml:"title" json:"title"`
+	Content    *QuizContent `yaml:"content" json:"content,omitempty"` // playable payload (optional)
+}
+
+// QuizContent is the playable quiz payload. sentence_build (the shipped type)
+// uses Template (a sentence with `__` blanks) + Answers (correct word per blank,
+// in order) + WordBank (tiles = answers + distractors). Optional so pre-content
+// quizzes still load. Extend per new quiz type.
+type QuizContent struct {
+	Sub      string   `yaml:"sub" json:"sub,omitempty"`
+	Zone     string   `yaml:"zone" json:"zone,omitempty"`
+	Context  string   `yaml:"context" json:"context,omitempty"`
+	Hint     string   `yaml:"hint" json:"hint,omitempty"`
+	Template string   `yaml:"template" json:"template,omitempty"` // blanks marked with `__`
+	Answers  []string `yaml:"answers" json:"answers,omitempty"`
+	WordBank []string `yaml:"wordBank" json:"wordBank,omitempty"`
 }
 
 type Phrase struct {

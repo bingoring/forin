@@ -1,3 +1,23 @@
+# ER pain-assessment sentence-build quiz. Referenced by SCN-ER scenarios as a
+# `quiz` step. Template blanks marked with `__`; answers fill them left-to-right;
+# wordBank = answers + distractors (shuffled client-side).
 id: QZ-ER-00001
 type: sentence_build
-title: "통증 사정 문장 만들기"
+title: "문장 완성하기"
+content:
+  sub: "환자에게 통증 강도를 물어보세요"
+  zone: "ER"
+  context: "👩 환자가 어디가 얼마나 아픈지 말하고 있어요. 통증 수치를 정확히 알아내야 합니다."
+  hint: "얼마나 \"심하게\" 아픈지를 물어볼 때 쓰는 표현이에요."
+  template: "On a __ of 1 to __, how __ is the pain?"
+  answers:
+    - scale
+    - ten
+    - bad
+  wordBank:
+    - scale
+    - ten
+    - bad
+    - sharp
+    - hurt
+    - how

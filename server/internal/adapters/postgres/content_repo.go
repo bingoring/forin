@@ -70,7 +70,7 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 		}
 	}
 	for _, qz := range b.Quizzes {
-		if err := q.InsertQuiz(ctx, sqlc.InsertQuizParams{ID: qz.ID, Profession: qz.Profession, Type: qz.Type, Title: qz.Title}); err != nil {
+		if err := q.InsertQuiz(ctx, sqlc.InsertQuizParams{ID: qz.ID, Profession: qz.Profession, Type: qz.Type, Title: qz.Title, Content: jsonb(qz.Content)}); err != nil {
 			return err
 		}
 	}
@@ -165,6 +165,23 @@ func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scen
 		var b content.Briefing
 		unjson(s.Briefing, &b)
 		out.Briefing = &b
+	}
+	return out, nil
+}
+
+func (r *ContentRepo) GetQuiz(ctx context.Context, id string) (*content.Quiz, error) {
+	qz, err := r.q.GetQuiz(ctx, id)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	out := &content.Quiz{ID: qz.ID, Profession: qz.Profession, Type: qz.Type, Title: qz.Title}
+	if len(qz.Content) > 0 && string(qz.Content) != "{}" {
+		var c content.QuizContent
+		unjson(qz.Content, &c)
+		out.Content = &c
 	}
 	return out, nil
 }

@@ -103,6 +103,7 @@ type ContentReader interface {
 	GetInterior(ctx context.Context, id string) (*content.Interior, error)
 	ListEvents(ctx context.Context, profession string) ([]content.Event, error)
 	GetScenario(ctx context.Context, id string) (*content.Scenario, error)
+	GetQuiz(ctx context.Context, id string) (*content.Quiz, error)
 	TodaysBoard(ctx context.Context, profession string, limit int) ([]content.Event, error)
 }
 

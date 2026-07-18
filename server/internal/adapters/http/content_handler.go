@@ -77,6 +77,22 @@ func (h *contentHandler) scenario(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, s)
 }
 
+// @Summary Get a quiz (playable content)
+// @Tags content
+// @Router /quizzes/{id} [get]
+func (h *contentHandler) quiz(w http.ResponseWriter, r *http.Request) {
+	q, err := h.content.GetQuiz(r.Context(), r.PathValue("id"))
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	if q == nil {
+		httpx.Error(w, http.StatusNotFound, "quiz not found")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, q)
+}
+
 // @Summary Today's event board (daily pool)
 // @Tags content
 // @Router /board/today [get]

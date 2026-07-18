@@ -54,8 +54,11 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing)
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
 
+-- name: GetQuiz :one
+SELECT id, profession, type, title, content FROM quizzes WHERE id = $1;
+
 -- name: InsertQuiz :exec
-INSERT INTO quizzes (id, profession, type, title) VALUES ($1, $2, $3, $4);
+INSERT INTO quizzes (id, profession, type, title, content) VALUES ($1, $2, $3, $4, $5);
 
 -- name: InsertPhrase :exec
 INSERT INTO phrases (id, profession, ko, en, note, tag) VALUES ($1, $2, $3, $4, $5, $6);
