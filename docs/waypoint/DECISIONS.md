@@ -601,3 +601,13 @@
 - **편차:** scale 0.9 · IBed label 생략 · SVG text→shape · 2F 클리닉엔진→정식 인테리어 교체(내과/외과 외래 후속) · 시나리오 라벨만.
 - **결정자:** 사용자("나머지 5g 파빌리온 진행") + AI(Build Spec·구현·검증).
 - **마일스톤:** **5g 부서 마스터블루프린트 9종 전부 구현 완료**(ER·OR·ICU·Peds·Pharmacy·내과병동·외과병동·정형병동·피부과센터).
+
+## 2026-07-18 · v16 핸드오프 반영 + 5g-j Infusion 구현 (v16, Phase 1 착수)
+- **결정 A (기존 부서 v16 압축):** design-handoff_v16을 SoT로 승격. 병동 3종(내과/외과 rows 52→46, 정형 52→44)·피부과(52→50) 압축, 하단 특수실 −4 상향·room4 h16→11·커튼 h11→6, surg/ortho 소파·의자·화분·변기가드 재배치, orthoEquipment PlasterTrapSink·surgEquipment NGSuction 접지 그림자 정정. jest 94/94·tsc 0·시뮬레이터 4부서 확인.
+- **결정 B (신규 20종 계획):** v16 신규 인테리어 20종을 엘리베이터 4개 건물(WOMEN·DX·ONCO·ADMIN) 빈 층에 매핑, 5-Phase 순서 수립([departments/v16-new-departments-plan.md](02-construction/departments/v16-new-departments-plan.md)). Phase 1=재사용 quick-win(infusion·nursery·womenkids-opd).
+- **결정 C (5g-j Infusion 구현):** 외래 주사센터를 v16 핸드오프 1:1 구현. 28×40, floorTheme `clinical`, 좌측 엘리베이터 문, 5구역(접수·조제전달 → 오픈 주입 베이(리클라이너×8+스마트펌프×8) → 격리 주입실(과민반응) → 다과 + 간호 스테이션). **전용 objects2 부재** → onco2 3종(InfusionChair·SmartInfusionPump·PPEStation) + icu CoffeeMachine 1종만 신규 `infusionEquipment.tsx`로 포팅, 나머지(pneumatictube·medfridge·handsanitizer·crashcart·compcart·watercooler·coffeetable·nursestation·deskphone·ireception·icabinet·imonitor·ichair·iplant) 재사용.
+- **해소된 질문:** Q1 진입=엘리베이터 **DX 3F**(외래 주사센터 선두 배선, entry {1,6}); 3F 인공신장실 병존 → Dialysis 구현 시 층당 sub-선택 도입 · Q2 objects2 부재=onco2/icu 재사용 · Q3 시나리오 라벨만 · 착수순서=사용자 선택 "Phase 1 재사용 quick-win".
+- **검증:** tsc 0 · jest 100/100(infusion 6) · 시뮬레이터 5구역(접수·베이·격리·다과·스테이션) 렌더 확인.
+- **환경:** Expo Go `exp://` 딥링크로 검증(네이티브 dev client `forin://`는 iOS26 열기확인창+osascript 차단으로 불가). 데브클라이언트 재빌드로 MessageQueue 부팅 실패 해소.
+- **편차:** scale 0.9 · InfusionChair footprint 2×2(휠체어 통로) · SVG text(☕)→shape · 3F 라벨 순서 변경 · 시나리오 라벨만.
+- **결정자:** 사용자("이어서 해줘" + 착수순서 Phase 1 선택) + AI(v16 diff 반영·계획·Build Spec·구현·검증).
