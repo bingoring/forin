@@ -68,7 +68,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
     floors: [
       { f: '4F', depts: ['완화의료 · 호스피스', '노인성 질환 병동'], icon: '🕊', rooms: [
         { dept: '완화의료 · 호스피스', interior: 'INT-HOSPICE-00001', entry: { x: 1, y: 8 } },
-        { dept: '노인성 질환 병동' }, // 준비 중 (geri 다음)
+        { dept: '노인성 질환 병동', interior: 'INT-GERI-00001', entry: { x: 1, y: 8 } },
       ] },
       { f: '3F', depts: ['종양학 병동', '조혈모세포 이식실 BMT'], icon: '🎗', interior: 'INT-ONCO-00001', entry: { x: 1, y: 15 } },
       { f: '2F', depts: ['정신과 폐쇄 병동', '정신과 외래'], icon: '🧠' },
