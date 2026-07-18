@@ -647,3 +647,10 @@
 - **마일스톤:** **v16 Phase 2(WOMEN 건물) 완결** — ld(3F 통합)·nicu(4F)·picu. 여성소아 센터 1F(OPD)·3F(L&D)·4F(NICU) 정식 배선 + PICU 딥링크. (2F 소아 일반 병동은 기존 peds ward가 후속 정식화 대기.)
 - **편차:** scale 0.9 · SVG text→shape · 저조도 tint · 신규 footprint props{w,h} · PICU 4F 미배선(딥링크) · ReclinerDaybed hospice2 차용 · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 2 계속 진행") + AI(Build Spec·구현·검증·복수부서 이슈 문서화).
+
+## 2026-07-18 · 엘리베이터 층당 복수부서 sub-선택 UI
+- **결정:** `ElevatorScreen`의 `ElevFloor`에 `rooms?: {dept, interior?, entry?}[]` 추가. 층 선택 시 해당 층에 `rooms`가 있으면 부서 sub-picker(칩 행)를 노출, 선택한 방의 interior/entry로 라이드. 미구현 방은 `준비 중` 표시(라이드 시 기존 준비중 alert). GO 바 라벨에 선택 부서명 표기.
+- **적용:** WOMEN 4F=[NICU(INT-NICU), PICU(INT-PICU)] → **PICU 정식 엘리베이터 접근**. DX 3F=[외래 주사센터(INT-INFUSION), 인공신장실(준비 중)]. 향후 복수부서 층(ONCO 4F hospice+geri 등)은 `rooms[]`로 추가만 하면 자동 지원.
+- **근거:** 층당 인테리어 1슬롯 한계로 두 번째 부서가 딥링크로만 접근되던 문제 해소. 사용자 "지금 만들기" 선택.
+- **검증:** tsc 0 · jest 130/130 · 시뮬레이터 엘리베이터(WOMEN 4F 두 부서 표기·GO 라벨) 확인. sub-picker 탭 상호작용은 osascript 접근성 차단으로 육안 탭검증 불가(조건부 렌더·상태 로직은 tsc/구조로 검증).
+- **결정자:** 사용자("지금 만들기") + AI(rooms[] 모델·sub-picker·ride 해소 구현).

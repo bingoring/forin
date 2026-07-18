@@ -36,7 +36,7 @@ updated: 2026-07-01
 | 여성소아 외래 | [womenkids-opd/](womenkids-opd/build-spec-index.md) | ✅ 구현 (v16 신규·Phase1, peds 1F 교체) | `INT-WOMENKIDS-OPD-00001` | `interior-womenkids-opd.jsx` (objects: ld2 FetalMonitor + peds/clinic 재사용) |
 | 가족 분만실 L&D (3F 통합) | [ld/](ld/build-spec-index.md) | ✅ 구현 (v16 신규·Phase2) | `INT-LD-00001` | `interior-ld.jsx` + `interior-objects-ld2.jsx` (L&D+산후+신생아 통합) |
 | NICU 신생아 중환자실 | [nicu/](nicu/build-spec-index.md) | ✅ 구현 (v16 신규·Phase2, WOMEN 4F) | `INT-NICU-00001` | `interior-nicu.jsx` + `interior-objects-nicu2.jsx` |
-| PICU 소아 중환자실 | [picu/](picu/build-spec-index.md) | ✅ 구현 (v16 신규·Phase2, 딥링크·sub선택 대기) | `INT-PICU-00001` | `interior-picu.jsx` + `interior-objects-picu2.jsx` |
+| PICU 소아 중환자실 | [picu/](picu/build-spec-index.md) | ✅ 구현 (v16 신규·Phase2, WOMEN 4F sub-선택) | `INT-PICU-00001` | `interior-picu.jsx` + `interior-objects-picu2.jsx` |
 
 핸드오프 경로: `../../inputs/design-handoff_v16/reference/` (**현행 v16**). 이력: v10→v11 장비 2.5D화 · v11→v12 변화없음(캠퍼스 건물만) · v12→v13 장비 접지 그림자 추가 · v13→v14 병동 3종 방배치 정정 · v14→v15 PneumaticTube 그림자 · v15→v16 **병동 3종 rows 압축(46/46/44)·특수실 상향·커튼 h6·derm rows50 + 신규 부서 20종 추가**.
 
