@@ -53,7 +53,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
       { f: '4F', depts: ['신생아 중환자실 NICU', '소아 중환자실 PICU'], icon: '👶' },
       { f: '3F', depts: ['신생아실', '가족 분만실 L&D', '산후 병동'], icon: '🤰', interior: 'INT-NURSERY-00001', entry: { x: 1, y: 6 } },
       { f: '2F', depts: ['소아 일반 병동'], icon: '🧸', sdepts: ['PEDS'] },
-      { f: '1F', depts: ['소아청소년과 외래', '산부인과 외래', '키즈 놀이광장'], icon: '🎈', lobby: true, sdepts: ['PEDS'], interior: 'INT-PEDS-00001', entry: { x: 16, y: 1 } },
+      { f: '1F', depts: ['소아청소년과 외래', '산부인과 외래', '키즈 놀이광장'], icon: '🎈', lobby: true, sdepts: ['PEDS'], interior: 'INT-WOMENKIDS-OPD-00001', entry: { x: 13, y: 1 } },
     ],
   },
   onco: {
