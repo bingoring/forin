@@ -692,3 +692,11 @@
 - **검증:** tsc 0 · jest 160/160(onco 6) · 시뮬레이터 주입 베이·BMT 이식실(HEPA 헤더·유리 격리)·조제확인(Fridge·ChemoHazardBin) 화면단위 대조 확인.
 - **편차:** scale 0.9 · SVG text(HEPA/CHEMO/VAX)→shape · 봉인 방 2건 도달성 보정 · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·봉인방 진단/보정·검증).
+
+## 2026-07-18 · 5g-u Hospice/Palliative 구현 (v16, Phase 4 · ONCO 4F sub-선택)
+- **결정:** 완화의료·호스피스를 v16 핸드오프 1:1 구현. 28×44, floorTheme `peds`(가정형 따뜻한 톤), 좌측 엘리베이터 문, 5구역(가족 라운지·키친 → 완화 케어 스테이션·명상/추모실 → 가정형 1인 완화 병실 A·정원뷰 선룸 병실 B). hospice2 3종(HospiceBed·ComfortCart·SyringeDriver) + ADLKitchen(rehab2) 신규 `hospiceEquipment.tsx`; ReclinerDaybed(picu)·Fridge(onco)·er/shared 재사용.
+- **엘리베이터:** ONCO 4F sub-picker 첫 번째 방을 INT-HOSPICE로 배선(노인성 질환 병동=geri는 준비 중, 다음). 임상 병동이 아닌 존엄 케어 공간(명상실·정원 선룸 저조도 tint).
+- **해소된 질문:** Q1 진입=ONCO 4F sub-선택 · Q2 ADLKitchen=rehab2 공유 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 166/166(hospice 6) · 시뮬레이터 완화 병실 A(HospiceBed·SyringeDriver·ReclinerDaybed)·가족 라운지(ADLKitchen·Fridge)·명상실 화면단위 대조 확인.
+- **편차:** scale 0.9 · 신규 footprint props · ONCO 4F sub-선택 배선 · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 4 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
