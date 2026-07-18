@@ -12,15 +12,15 @@ export const SURGWARD_INTERIOR: Interior = {
   id: 'INT-SURGWARD-00001',
   deptId: 'DEPT-SURGWARD-00001',
   cols: 28,
-  rows: 52,
+  rows: 46,
   floorTheme: 'surgery',
   scale: 0.9,
   playerStart: { x: 4, y: 15 }, // station corridor by the ← 캠퍼스 door
   regions: [
     { id: 'linen', name: '린넨실 · 배식실', icon: '🍱', bounds: { x: 0, y: 0, w: 10, h: 11 } },
     { id: 'dressing', name: '중앙 처치실 · 드레싱룸', icon: '🩹', bounds: { x: 9, y: 0, w: 19, h: 11 } },
-    { id: 'major', name: '1인용 대수술 후 중증실', icon: '🚨', bounds: { x: 0, y: 35, w: 28, h: 17 } },
-    { id: 'room4', name: '4인용 수술 후 병실', icon: '🛏', bounds: { x: 0, y: 20, w: 28, h: 16 } },
+    { id: 'major', name: '1인용 대수술 후 중증실', icon: '🚨', bounds: { x: 0, y: 31, w: 28, h: 15 } },
+    { id: 'room4', name: '4인용 수술 후 병실', icon: '🛏', bounds: { x: 0, y: 20, w: 28, h: 11 } },
     { id: 'station', name: '중앙 간호 스테이션 · 보행', icon: '🖥', bounds: { x: 0, y: 10, w: 28, h: 11 } },
   ],
   rooms: [
@@ -28,13 +28,13 @@ export const SURGWARD_INTERIOR: Interior = {
     { id: 'dressing', name: '처치·드레싱룸', sub: '상처 소독·실밥', icon: '🩹', color: '#A8DCEC', x: 17, y: 5 },
     { id: 'station', name: '간호 스테이션', sub: 'OP 인계·스케줄', icon: '🖥', color: '#BAE6FD', x: 13, y: 15 },
     { id: 'room4', name: '4인 수술후 병실', sub: 'PCA·배액관', icon: '🛏', color: '#FBCFE8', x: 13, y: 27 },
-    { id: 'major', name: '대수술 중증실', sub: 'NG·Hemovac·SCD', icon: '🚨', color: '#FCA5A5', x: 13, y: 44 },
+    { id: 'major', name: '대수술 중증실', sub: 'NG·Hemovac·SCD', icon: '🚨', color: '#FCA5A5', x: 13, y: 39 },
   ],
   collision: [
     // outer walls — LEFT 캠퍼스 door gap y14-16 (v15; bottom solid)
     { x: 0, y: 0, w: 28, h: 1 },
-    { x: 0, y: 1, w: 1, h: 13 }, { x: 0, y: 17, w: 1, h: 34 }, { x: 27, y: 1, w: 1, h: 50 },
-    { x: 0, y: 51, w: 28, h: 1 },
+    { x: 0, y: 1, w: 1, h: 13 }, { x: 0, y: 17, w: 1, h: 28 }, { x: 27, y: 1, w: 1, h: 44 },
+    { x: 0, y: 45, w: 28, h: 1 },
     // service strip divider (y10) — thresholds x5-6 / x13-15(sterile →처치실)
     { x: 1, y: 10, w: 4, h: 1 }, { x: 7, y: 10, w: 6, h: 1 }, { x: 16, y: 10, w: 11, h: 1 },
     // linen | dressing vertical divider (x9), threshold gap y6-8
@@ -42,7 +42,7 @@ export const SURGWARD_INTERIOR: Interior = {
     // station | room4 divider (y20) — thresholds x7-9 / x18-20
     { x: 1, y: 20, w: 6, h: 1 }, { x: 10, y: 20, w: 8, h: 1 }, { x: 21, y: 20, w: 6, h: 1 },
     // room4 | major divider (y35) — threshold x10-12 (→중증실)
-    { x: 1, y: 35, w: 9, h: 1 }, { x: 13, y: 35, w: 14, h: 1 },
+    { x: 1, y: 31, w: 9, h: 1 }, { x: 13, y: 31, w: 14, h: 1 },
   ],
   objects: [
     // ── structural openings ──
@@ -52,7 +52,7 @@ export const SURGWARD_INTERIOR: Interior = {
     { id: 'th-lv', type: 'threshold', x: 9, y: 6, props: { w: 1, h: 3 } },
     { id: 'th-r4a', type: 'threshold', x: 7, y: 20, props: { w: 3, h: 1 } },
     { id: 'th-r4b', type: 'threshold', x: 18, y: 20, props: { w: 3, h: 1 } },
-    { id: 'th-major', type: 'threshold', x: 10, y: 35, props: { w: 3, h: 1, label: '→ 중증실' } },
+    { id: 'th-major', type: 'threshold', x: 10, y: 31, props: { w: 3, h: 1, label: '→ 중증실' } },
 
     // ════════ 린넨실 · 배식실 (y1-9) ════════
     { id: 'bl-linen', type: 'baylabel', x: 1, y: 1, props: { text: '린넨 · 배식실' } },
@@ -99,24 +99,24 @@ export const SURGWARD_INTERIOR: Interior = {
     { id: 'o-d-bed', type: 'ibed', x: 24, y: 23, props: { variant: 'ward', occupied: true } },
     { id: 'o-d-chair', type: 'ichair', x: 21, y: 25, props: { color: '#FED7AA', facing: 'left' } },
     // curtains splitting the bays
-    { id: 'o-cur1', type: 'icurtain', x: 8, y: 22, props: { w: 1, h: 11, color: '#BFE3EE' } },
-    { id: 'o-cur2', type: 'icurtain', x: 16, y: 22, props: { w: 1, h: 11, color: '#BFE3EE' } },
-    { id: 'o-cur3', type: 'icurtain', x: 23, y: 22, props: { w: 1, h: 11, color: '#BFE3EE' } },
+    { id: 'o-cur1', type: 'icurtain', x: 8, y: 22, props: { w: 1, h: 6, color: '#BFE3EE' } },
+    { id: 'o-cur2', type: 'icurtain', x: 16, y: 22, props: { w: 1, h: 6, color: '#BFE3EE' } },
+    { id: 'o-cur3', type: 'icurtain', x: 23, y: 22, props: { w: 1, h: 6, color: '#BFE3EE' } },
 
     // ════════ 1인용 대수술 후 중증실 (major, y36-50) ════════
-    { id: 'bl-major', type: 'baylabel', x: 1, y: 36, props: { text: 'MAJOR POST-OP · 대장암/위암 절제', highlight: true } },
-    { id: 'o-m-bed', type: 'ibed', x: 4, y: 38, props: { variant: 'ward', occupied: true } },
-    { id: 'o-m-ng', type: 'ngsuction', x: 1, y: 38, props: { w: 1, h: 2 } },
-    { id: 'o-m-mon', type: 'imonitor', x: 8, y: 38, props: { beep: true } },
-    { id: 'o-m-iv', type: 'iiv', x: 9, y: 38 },
-    { id: 'o-m-pca', type: 'pcapump', x: 11, y: 38, props: { w: 1, h: 2 } },
-    { id: 'o-m-hemo1', type: 'hemovac', x: 4, y: 40.5 },
-    { id: 'o-m-hemo2', type: 'hemovac', x: 6, y: 40.5 },
-    { id: 'o-m-scd', type: 'scddevice', x: 13, y: 42, props: { w: 2, h: 2 } },
-    { id: 'o-m-suction', type: 'suction', x: 16, y: 39 },
-    { id: 'o-m-chair', type: 'ichair', x: 20, y: 40, props: { color: '#FED7AA', facing: 'left' } },
-    { id: 'o-m-sofa', type: 'sofa', x: 20, y: 45, props: { w: 3, h: 2, color: '#9CB4C8' } },
-    { id: 'o-m-plant', type: 'iplant', x: 25, y: 48 },
+    { id: 'bl-major', type: 'baylabel', x: 1, y: 32, props: { text: 'MAJOR POST-OP · 대장암/위암 절제', highlight: true } },
+    { id: 'o-m-bed', type: 'ibed', x: 4, y: 34, props: { variant: 'ward', occupied: true } },
+    { id: 'o-m-ng', type: 'ngsuction', x: 1, y: 34, props: { w: 1, h: 2 } },
+    { id: 'o-m-mon', type: 'imonitor', x: 8, y: 34, props: { beep: true } },
+    { id: 'o-m-iv', type: 'iiv', x: 9, y: 34 },
+    { id: 'o-m-pca', type: 'pcapump', x: 11, y: 34, props: { w: 1, h: 2 } },
+    { id: 'o-m-hemo1', type: 'hemovac', x: 4, y: 36.5 },
+    { id: 'o-m-hemo2', type: 'hemovac', x: 6, y: 36.5 },
+    { id: 'o-m-scd', type: 'scddevice', x: 13, y: 38, props: { w: 2, h: 2 } },
+    { id: 'o-m-suction', type: 'suction', x: 16, y: 35 },
+    { id: 'o-m-sofa', type: 'sofa', x: 13, y: 41, props: { w: 3, h: 2, color: '#9CB4C8' } },
+    { id: 'o-m-chair', type: 'ichair', x: 17, y: 40, props: { color: '#FED7AA', facing: 'left' } },
+    { id: 'o-m-plant', type: 'iplant', x: 20, y: 41 },
   ],
   hotspots: [
     { id: 'hs-meal', kind: 'info', x: 2, y: 5, label: '식이 배식' },
@@ -128,7 +128,7 @@ export const SURGWARD_INTERIOR: Interior = {
     { id: 'hs-jp', kind: 'info', x: 9, y: 23, label: 'JP 배액량 측정' },
     { id: 'hs-flatus', kind: 'info', x: 17, y: 23, label: '가스 배출 확인' },
     { id: 'hs-dc', kind: 'info', x: 24, y: 23, label: '퇴원 약 대기' },
-    { id: 'hs-drain', kind: 'quest', x: 5, y: 38, label: '배액관 개통성 확인' },
+    { id: 'hs-drain', kind: 'quest', x: 5, y: 34, label: '배액관 개통성 확인' },
   ],
   npcs: [
     { id: 'sw-l-n', kind: 'nurse', mode: 'idle', seed: 601, start: { x: 4, y: 8 } },
@@ -142,8 +142,8 @@ export const SURGWARD_INTERIOR: Interior = {
     { id: 'sw-b-n', kind: 'nurse', mode: 'idle', seed: 609, start: { x: 12, y: 26 } },
     { id: 'sw-c-pt', kind: 'patient', mode: 'idle', seed: 610, start: { x: 20, y: 26 } },
     { id: 'sw-d-pa', kind: 'parent', mode: 'idle', seed: 611, start: { x: 21, y: 26 } },
-    { id: 'sw-r-d', kind: 'doctor', mode: 'idle', seed: 612, start: { x: 3, y: 31 } },
-    { id: 'sw-m-n', kind: 'nurse', mode: 'idle', seed: 613, start: { x: 8, y: 41 } },
-    { id: 'sw-m-pa', kind: 'parent', mode: 'idle', seed: 614, start: { x: 21, y: 41 } },
+    { id: 'sw-r-d', kind: 'doctor', mode: 'idle', seed: 612, start: { x: 3, y: 29 } },
+    { id: 'sw-m-n', kind: 'nurse', mode: 'idle', seed: 613, start: { x: 8, y: 37 } },
+    { id: 'sw-m-pa', kind: 'parent', mode: 'idle', seed: 614, start: { x: 14, y: 39 } },
   ],
 };

@@ -76,7 +76,7 @@ export function PlasterTrapSink({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offY={-2} w={26} h={34}>
       <Svg viewBox="0 0 26 34" width={26 * S} height={34 * S}>
-        <Ellipse cx={13.0} cy={32} rx={8.8} ry={3} fill="rgba(0,0,0,0.16)" />
+        <Ellipse cx={13.0} cy={25.5} rx={9} ry={2.6} fill="rgba(0,0,0,0.16)" />
         <Path d="M2 15 L24 15 L24 24 Q24 25 23 25 L3 25 Q2 25 2 24 Z" fill="#9AA6B2" stroke={C} strokeWidth={0.7} />
         <Rect x={2} y={4} width={22} height={11} rx={1} fill="#C3CAD1" stroke={C} strokeWidth={0.7} />
         <Rect x={5} y={6} width={16} height={7.5} rx={1.2} fill="#7E8893" stroke={C} strokeWidth={0.6} />

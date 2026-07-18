@@ -21,7 +21,7 @@ describe('Internal Medicine Ward master blueprint', () => {
   test('elevator arrival tile (left 캠퍼스 door) is open + reachable; bottom wall solid', () => {
     expect(canEnter({ x: 1, y: 15 }, grid, blocked)).toBe(true); // just inside the ← door
     expect(reachable({ x: 1, y: 15 })).toBe(true);
-    expect(canEnter({ x: 13, y: 51 }, grid, blocked)).toBe(false); // bottom is now solid wall
+    expect(canEnter({ x: 13, y: 45 }, grid, blocked)).toBe(false); // bottom is now solid wall (v16 rows=46)
   });
 
   test('every room is reachable (via an open tile near its anchor)', () => {
@@ -51,14 +51,14 @@ describe('Internal Medicine Ward master blueprint', () => {
   });
 
   test('private | isolation divider (x13) blocks; both rooms reachable', () => {
-    expect(canEnter({ x: 13, y: 44 }, grid, blocked)).toBe(false); // divider wall
-    expect(reachable({ x: 6, y: 44 })).toBe(true); // 1인실
-    expect(reachable({ x: 21, y: 44 })).toBe(true); // VRE 격리실
+    expect(canEnter({ x: 13, y: 40 }, grid, blocked)).toBe(false); // divider wall
+    expect(reachable({ x: 6, y: 40 })).toBe(true); // 1인실
+    expect(reachable({ x: 21, y: 40 })).toBe(true); // VRE 격리실
   });
 
   test('solid ward objects block (ward bed + sluice sink + isolation cart)', () => {
     expect(canEnter({ x: 9, y: 24 }, grid, blocked)).toBe(false); // bed B (2×3)
     expect(canEnter({ x: 19, y: 3 }, grid, blocked)).toBe(false); // sluice sink 2×2
-    expect(canEnter({ x: 15, y: 37 }, grid, blocked)).toBe(false); // isolation cart 2×2
+    expect(canEnter({ x: 15, y: 33 }, grid, blocked)).toBe(false); // isolation cart 2×2 (v16 y33)
   });
 });

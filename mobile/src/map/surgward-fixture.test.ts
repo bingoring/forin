@@ -21,7 +21,7 @@ describe('General Surgery Ward master blueprint', () => {
   test('elevator arrival tile (left 캠퍼스 door) is open + reachable; bottom wall solid', () => {
     expect(canEnter({ x: 1, y: 15 }, grid, blocked)).toBe(true);
     expect(reachable({ x: 1, y: 15 })).toBe(true);
-    expect(canEnter({ x: 13, y: 51 }, grid, blocked)).toBe(false);
+    expect(canEnter({ x: 13, y: 45 }, grid, blocked)).toBe(false); // bottom solid (v16 rows=46)
   });
 
   test('every room is reachable (via an open tile near its anchor)', () => {
@@ -50,8 +50,8 @@ describe('General Surgery Ward master blueprint', () => {
   });
 
   test('solid surg objects block (ward bed + PCA pump + SCD device)', () => {
-    expect(canEnter({ x: 4, y: 39 }, grid, blocked)).toBe(false); // major bed 2×3
-    expect(canEnter({ x: 6, y: 16 }, grid, blocked)).toBe(false); // PCA pump
-    expect(canEnter({ x: 13, y: 42 }, grid, blocked)).toBe(false); // SCD device 2×2
+    expect(canEnter({ x: 4, y: 35 }, grid, blocked)).toBe(false); // major bed 2×3 (v16 y34)
+    expect(canEnter({ x: 6, y: 16 }, grid, blocked)).toBe(false); // PCA pump (station)
+    expect(canEnter({ x: 13, y: 38 }, grid, blocked)).toBe(false); // SCD device 2×2 (v16 y38)
   });
 });

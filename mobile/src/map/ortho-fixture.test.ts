@@ -21,7 +21,7 @@ describe('Orthopedics Ward master blueprint', () => {
   test('elevator arrival tile (left 캠퍼스 door) is open + reachable; bottom wall solid', () => {
     expect(canEnter({ x: 1, y: 15 }, grid, blocked)).toBe(true);
     expect(reachable({ x: 1, y: 15 })).toBe(true);
-    expect(canEnter({ x: 13, y: 51 }, grid, blocked)).toBe(false);
+    expect(canEnter({ x: 13, y: 43 }, grid, blocked)).toBe(false); // bottom solid (v16 rows=44)
   });
 
   test('every room is reachable (via an open tile near its anchor)', () => {
@@ -50,7 +50,7 @@ describe('Orthopedics Ward master blueprint', () => {
   });
 
   test('solid ortho objects block (ward bed + plaster sink + CPM machine)', () => {
-    expect(canEnter({ x: 4, y: 39 }, grid, blocked)).toBe(false); // hip bed 2×3
+    expect(canEnter({ x: 4, y: 35 }, grid, blocked)).toBe(false); // hip bed 2×3 (v16 y34)
     expect(canEnter({ x: 15, y: 3 }, grid, blocked)).toBe(false); // plaster trap sink 2×2
     expect(canEnter({ x: 11, y: 26 }, grid, blocked)).toBe(false); // CPM machine
   });

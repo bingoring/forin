@@ -12,15 +12,15 @@ export const ORTHO_INTERIOR: Interior = {
   id: 'INT-ORTHOWARD-00001',
   deptId: 'DEPT-ORTHOWARD-00001',
   cols: 28,
-  rows: 52,
+  rows: 44,
   floorTheme: 'ortho',
   scale: 0.9,
   playerStart: { x: 4, y: 15 }, // station corridor by the ← 캠퍼스 door
   regions: [
     { id: 'pt', name: '물리치료 연계 통로', icon: '🦮', bounds: { x: 0, y: 0, w: 10, h: 11 } },
     { id: 'cast', name: '석고실 · 소처치실', icon: '🦴', bounds: { x: 9, y: 0, w: 19, h: 11 } },
-    { id: 'hip', name: '1인용 고관절 골절 병실', icon: '🦯', bounds: { x: 0, y: 35, w: 28, h: 17 } },
-    { id: 'room4', name: '4인용 골절/견인 병실', icon: '🦵', bounds: { x: 0, y: 20, w: 28, h: 16 } },
+    { id: 'hip', name: '1인용 고관절 골절 병실', icon: '🦯', bounds: { x: 0, y: 31, w: 28, h: 13 } },
+    { id: 'room4', name: '4인용 골절/견인 병실', icon: '🦵', bounds: { x: 0, y: 20, w: 28, h: 11 } },
     { id: 'station', name: '중앙 간호 스테이션 · 보조기', icon: '🖥', bounds: { x: 0, y: 10, w: 28, h: 11 } },
   ],
   rooms: [
@@ -28,13 +28,13 @@ export const ORTHO_INTERIOR: Interior = {
     { id: 'cast', name: '석고실·처치', sub: '깁스·소독', icon: '🦴', color: '#A8DCEC', x: 17, y: 5 },
     { id: 'station', name: '간호 스테이션', sub: 'CMS·보조기', icon: '🖥', color: '#BAE6FD', x: 13, y: 15 },
     { id: 'room4', name: '4인 골절 병실', sub: '견인·CPM·석고', icon: '🦵', color: '#FBCFE8', x: 13, y: 27 },
-    { id: 'hip', name: '고관절 골절실', sub: '탈구 방지', icon: '🦯', color: '#FCA5A5', x: 13, y: 44 },
+    { id: 'hip', name: '고관절 골절실', sub: '탈구 방지', icon: '🦯', color: '#FCA5A5', x: 13, y: 40 },
   ],
   collision: [
     // outer walls — LEFT 캠퍼스 door gap y14-16 (bottom solid)
     { x: 0, y: 0, w: 28, h: 1 },
-    { x: 0, y: 1, w: 1, h: 13 }, { x: 0, y: 17, w: 1, h: 34 }, { x: 27, y: 1, w: 1, h: 50 },
-    { x: 0, y: 51, w: 28, h: 1 },
+    { x: 0, y: 1, w: 1, h: 13 }, { x: 0, y: 17, w: 1, h: 26 }, { x: 27, y: 1, w: 1, h: 42 },
+    { x: 0, y: 43, w: 28, h: 1 },
     // service strip divider (y10) — thresholds x4-6 / x12-15(sterile →석고실)
     { x: 1, y: 10, w: 3, h: 1 }, { x: 7, y: 10, w: 5, h: 1 }, { x: 16, y: 10, w: 11, h: 1 },
     // pt | cast vertical divider (x9), threshold gap y5-8
@@ -42,7 +42,7 @@ export const ORTHO_INTERIOR: Interior = {
     // station | room4 divider (y20) — extra-wide thresholds x6-9 / x16-19
     { x: 1, y: 20, w: 5, h: 1 }, { x: 10, y: 20, w: 6, h: 1 }, { x: 20, y: 20, w: 7, h: 1 },
     // room4 | hip divider (y35) — threshold x9-12 (→고관절실)
-    { x: 1, y: 35, w: 8, h: 1 }, { x: 13, y: 35, w: 14, h: 1 },
+    { x: 1, y: 31, w: 8, h: 1 }, { x: 13, y: 31, w: 14, h: 1 },
   ],
   objects: [
     // ── structural openings ──
@@ -52,7 +52,7 @@ export const ORTHO_INTERIOR: Interior = {
     { id: 'th-lv', type: 'threshold', x: 9, y: 5, props: { w: 1, h: 4 } },
     { id: 'th-r4a', type: 'threshold', x: 6, y: 20, props: { w: 4, h: 1 } },
     { id: 'th-r4b', type: 'threshold', x: 16, y: 20, props: { w: 4, h: 1 } },
-    { id: 'th-hip', type: 'threshold', x: 9, y: 35, props: { w: 4, h: 1, label: '→ 고관절실' } },
+    { id: 'th-hip', type: 'threshold', x: 9, y: 31, props: { w: 4, h: 1, label: '→ 고관절실' } },
 
     // ════════ 물리치료 연계 통로 (y1-9) ════════
     { id: 'bl-pt', type: 'baylabel', x: 1, y: 1, props: { text: 'PT 연계 통로' } },
@@ -96,21 +96,21 @@ export const ORTHO_INTERIOR: Interior = {
     { id: 'o-d-bed', type: 'ibed', x: 24, y: 23, props: { variant: 'ward', occupied: true } },
     { id: 'o-d-chair', type: 'ichair', x: 21, y: 25, props: { color: '#FED7AA', facing: 'left' } },
     // curtains splitting the bays
-    { id: 'o-cur1', type: 'icurtain', x: 8, y: 22, props: { w: 1, h: 11, color: '#BFE3EE' } },
-    { id: 'o-cur2', type: 'icurtain', x: 16, y: 22, props: { w: 1, h: 11, color: '#BFE3EE' } },
-    { id: 'o-cur3', type: 'icurtain', x: 23, y: 22, props: { w: 1, h: 11, color: '#BFE3EE' } },
+    { id: 'o-cur1', type: 'icurtain', x: 8, y: 22, props: { w: 1, h: 6, color: '#BFE3EE' } },
+    { id: 'o-cur2', type: 'icurtain', x: 16, y: 22, props: { w: 1, h: 6, color: '#BFE3EE' } },
+    { id: 'o-cur3', type: 'icurtain', x: 23, y: 22, props: { w: 1, h: 6, color: '#BFE3EE' } },
 
     // ════════ 1인용 고령 고관절 골절 병실 (hip, y36-50) ════════
-    { id: 'bl-hip', type: 'baylabel', x: 1, y: 36, props: { text: 'GERIATRIC HIP FRACTURE · THR', highlight: true } },
-    { id: 'o-h-bed', type: 'ibed', x: 4, y: 38, props: { variant: 'ward', occupied: true } },
-    { id: 'o-h-pillow', type: 'abductionpillow', x: 6, y: 40 },
-    { id: 'o-h-mon', type: 'imonitor', x: 3, y: 38, props: { beep: true } },
-    { id: 'o-h-iv', type: 'iiv', x: 9, y: 38 },
-    { id: 'o-h-alarm', type: 'bedalarm', x: 4, y: 42 },
-    { id: 'o-h-toilet', type: 'elevatedtoiletguard', x: 24, y: 37, props: { w: 1, h: 1 } },
-    { id: 'o-h-chair', type: 'ichair', x: 11, y: 43, props: { color: '#FED7AA', facing: 'left' } },
-    { id: 'o-h-sofa', type: 'sofa', x: 20, y: 45, props: { w: 3, h: 2, color: '#9CB4C8' } },
-    { id: 'o-h-plant', type: 'iplant', x: 25, y: 48 },
+    { id: 'bl-hip', type: 'baylabel', x: 1, y: 32, props: { text: 'GERIATRIC HIP FRACTURE · THR', highlight: true } },
+    { id: 'o-h-bed', type: 'ibed', x: 4, y: 34, props: { variant: 'ward', occupied: true } },
+    { id: 'o-h-pillow', type: 'abductionpillow', x: 6, y: 36 },
+    { id: 'o-h-mon', type: 'imonitor', x: 3, y: 34, props: { beep: true } },
+    { id: 'o-h-iv', type: 'iiv', x: 9, y: 34 },
+    { id: 'o-h-alarm', type: 'bedalarm', x: 4, y: 38 },
+    { id: 'o-h-toilet', type: 'elevatedtoiletguard', x: 20, y: 33, props: { w: 1, h: 1 } },
+    { id: 'o-h-chair', type: 'ichair', x: 11, y: 39, props: { color: '#FED7AA', facing: 'left' } },
+    { id: 'o-h-sofa', type: 'sofa', x: 13, y: 40, props: { w: 3, h: 2, color: '#9CB4C8' } },
+    { id: 'o-h-plant', type: 'iplant', x: 17, y: 40 },
   ],
   hotspots: [
     { id: 'hs-rehab', kind: 'info', x: 3, y: 5, label: '재활 이동' },
@@ -122,7 +122,7 @@ export const ORTHO_INTERIOR: Interior = {
     { id: 'hs-cpm', kind: 'info', x: 9, y: 23, label: 'CPM 각도 확인' },
     { id: 'hs-cms', kind: 'urgent', x: 17, y: 23, label: 'CMS 사정 (5P)' },
     { id: 'hs-castedema', kind: 'info', x: 24, y: 23, label: '석고 부종 사정' },
-    { id: 'hs-dislocation', kind: 'quest', x: 5, y: 38, label: '탈구 방지 교육' },
+    { id: 'hs-dislocation', kind: 'quest', x: 5, y: 34, label: '탈구 방지 교육' },
   ],
   npcs: [
     { id: 'ow-pt-pt', kind: 'patient', mode: 'idle', seed: 701, start: { x: 5, y: 7 } },
@@ -133,8 +133,8 @@ export const ORTHO_INTERIOR: Interior = {
     { id: 'ow-s-n2', kind: 'nurse', mode: 'idle', seed: 706, start: { x: 22, y: 16 } },
     { id: 'ow-a-n', kind: 'nurse', mode: 'idle', seed: 707, start: { x: 3, y: 27 } },
     { id: 'ow-c4-n', kind: 'nurse', mode: 'idle', seed: 708, start: { x: 20, y: 26 } },
-    { id: 'ow-r-d', kind: 'doctor', mode: 'idle', seed: 709, start: { x: 3, y: 31 } },
-    { id: 'ow-h-n', kind: 'nurse', mode: 'idle', seed: 710, start: { x: 8, y: 41 } },
-    { id: 'ow-h-pa', kind: 'parent', mode: 'idle', seed: 711, start: { x: 11, y: 41 } },
+    { id: 'ow-r-d', kind: 'doctor', mode: 'idle', seed: 709, start: { x: 3, y: 30 } },
+    { id: 'ow-h-n', kind: 'nurse', mode: 'idle', seed: 710, start: { x: 8, y: 37 } },
+    { id: 'ow-h-pa', kind: 'parent', mode: 'idle', seed: 711, start: { x: 11, y: 37 } },
   ],
 };

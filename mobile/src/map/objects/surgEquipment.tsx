@@ -91,7 +91,7 @@ export function NGSuction({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} w={20} h={30}>
       <Svg viewBox="0 0 20 30" width={20 * S} height={30 * S}>
-        <Ellipse cx={10.0} cy={25.5} rx={4} ry={1.6} fill="rgba(0,0,0,0.16)" />
+        <Ellipse cx={14.5} cy={25.5} rx={6} ry={2.2} fill="rgba(0,0,0,0.16)" />
         <Rect x={11} y={1} width={8} height={9} fill="#475569" stroke={C} strokeWidth={0.5} />
         <Circle cx={15} cy={5.5} r={2.6} fill="#0F1A24" />
         <Line x1={15} y1={5.5} x2={16.6} y2={4} stroke="#22D3EE" strokeWidth={0.5} />

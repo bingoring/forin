@@ -11,14 +11,14 @@ export const DERMCENTER_INTERIOR: Interior = {
   id: 'INT-DERM-00001',
   deptId: 'DEPT-DERM-00001',
   cols: 28,
-  rows: 52,
+  rows: 50,
   floorTheme: 'derm',
   scale: 0.9,
   playerStart: { x: 14, y: 11 }, // lobby by the ↓ 캠퍼스 door
   regions: [
     { id: 'exam1', name: '제1진료실 · 병변 진단', icon: '🔬', bounds: { x: 0, y: 13, w: 14, h: 13 } },
     { id: 'exam2', name: '제2진료실', icon: '🩺', bounds: { x: 13, y: 13, w: 15, h: 13 } },
-    { id: 'laser', name: '소수술 · 레이저 처치실', icon: '✨', bounds: { x: 0, y: 37, w: 28, h: 15 } },
+    { id: 'laser', name: '소수술 · 레이저 처치실', icon: '✨', bounds: { x: 0, y: 37, w: 28, h: 13 } },
     { id: 'photo', name: '광선 치료실', icon: '💜', bounds: { x: 0, y: 25, w: 28, h: 13 } },
     { id: 'lobby', name: '로비 · 접수 · 대기', icon: '🌸', bounds: { x: 0, y: 0, w: 28, h: 14 } },
   ],
@@ -32,8 +32,8 @@ export const DERMCENTER_INTERIOR: Interior = {
   collision: [
     // outer walls — TOP 캠퍼스 door gap x13-15
     { x: 0, y: 0, w: 13, h: 1 }, { x: 16, y: 0, w: 12, h: 1 },
-    { x: 0, y: 1, w: 1, h: 50 }, { x: 27, y: 1, w: 1, h: 50 },
-    { x: 0, y: 51, w: 28, h: 1 },
+    { x: 0, y: 1, w: 1, h: 48 }, { x: 27, y: 1, w: 1, h: 48 },
+    { x: 0, y: 49, w: 28, h: 1 },
     // divider y13 (lobby | exam) — thresholds x5-7 / x13-15
     { x: 1, y: 13, w: 4, h: 1 }, { x: 8, y: 13, w: 5, h: 1 }, { x: 16, y: 13, w: 11, h: 1 },
     // exam1 | exam2 vertical divider (x13) — threshold gap y18-20
@@ -108,7 +108,7 @@ export const DERMCENTER_INTERIOR: Interior = {
     { id: 'o-ls-dress', type: 'dressing', x: 20, y: 41, props: { w: 2, h: 1 } },
     { id: 'o-ls-cab', type: 'icabinet', x: 23, y: 39, props: { w: 4, h: 1, variant: 'sterile', label: 'STERILE' } },
     { id: 'o-ls-waste', type: 'wastebin', x: 23, y: 44, props: { tone: 'infectious' } },
-    { id: 'o-ls-plant', type: 'iplant', x: 25, y: 48 },
+    { id: 'o-ls-plant', type: 'iplant', x: 25, y: 46 },
   ],
   hotspots: [
     { id: 'hs-history', kind: 'quest', x: 4, y: 5, label: '발진 히스토리 문진' },
