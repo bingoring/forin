@@ -5,7 +5,7 @@
 // startConversation(scenarioId) → sendMessageStream streams the NPC reply in
 // persona. Hint mode, mic STT, quick-tools, and the result screen are follow-ups.
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, KeyboardAvoidingView, Platform, Text, TextInput, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
@@ -25,6 +25,7 @@ export default function DialogueRoute() {
   const [npcLine, setNpcLine] = useState(''); // latest NPC utterance (VN box)
   const [draft, setDraft] = useState('');
   const [pending, setPending] = useState(false);
+  const [hintOn, setHintOn] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -150,6 +151,26 @@ export default function DialogueRoute() {
           </View>
         </Shadowed>
 
+        {/* HINT ON: suggested responses (from the scenario's key phrases) */}
+        {hintOn && !!scenario?.keyPhrases?.length && (
+          <View style={{ marginTop: 12 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+              <Shadowed offset={2}>
+                <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>💡 HINT ON</Text>
+                </View>
+              </Shadowed>
+              <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
+              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: '#fff', opacity: 0.85 }}>추천 답변 · 탭하면 입력</Text>
+            </View>
+            <View style={{ gap: 8 }}>
+              {scenario.keyPhrases.map((phrase, i) => (
+                <ChoiceRow key={i} num={i + 1} text={phrase} suggested={i === 0} onPress={() => { setDraft(phrase); setHintOn(false); }} />
+              ))}
+            </View>
+          </View>
+        )}
+
         {/* free-text input */}
         <View style={{ marginTop: 14 }}>
           <Shadowed offset={3}>
@@ -177,7 +198,7 @@ export default function DialogueRoute() {
           <View style={{ flex: 2 }}>
             <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
-          <PixelButton label="💡 힌트" bg="#fff" shadowColor={C} onPress={() => {}} disabled style={{ flex: 1 }} />
+          <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} style={{ flex: 1 }} />
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -218,6 +239,23 @@ function PortraitFrame({ children, name, status, hue }: { children: React.ReactN
         </Shadowed>
       )}
     </View>
+  );
+}
+
+/** A tappable suggested response (hint mode). Numbered chip + phrase. */
+function ChoiceRow({ num, text, suggested, onPress }: { num: number; text: string; suggested?: boolean; onPress: () => void }) {
+  return (
+    <Shadowed offset={suggested ? 3 : 2} shadowColor={suggested ? colors.mintShadow : '#2A252266'}>
+      <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
+        <View style={{ width: 28, backgroundColor: suggested ? colors.mint : colors.peach, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{num}</Text>
+        </View>
+        <View style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 10 }}>
+          <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{text}</Text>
+          {suggested && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.mintShadow, marginTop: 3 }}>★ AI 추천 · 미션 진행</Text>}
+        </View>
+      </Pressable>
+    </Shadowed>
   );
 }
 
