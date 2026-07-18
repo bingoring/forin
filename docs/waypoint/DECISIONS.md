@@ -628,3 +628,11 @@
 - **마일스톤:** **v16 Phase 1(재사용 quick-win) 3종 전부 완료**(infusion·nursery·womenkids-opd). 재사용 파이프라인 검증 — 신규 부서당 신규 오브젝트 1~5종만 포팅, 나머지 기존 카탈로그 재사용으로 성립.
 - **편차:** scale 0.9 · SVG text→shape · FetalMonitor footprint 2×2 · WOMEN 1F peds→womenkids-opd 교체(peds ward/NICU는 Phase 2 복원) · 시나리오 라벨만.
 - **결정자:** 사용자(peds 교체 지시) + AI(peds↔womenkids-opd 핸드오프 관계 분석·Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-m L&D 구현 (v16, Phase 2 착수 · WOMEN 3F 통합)
+- **결정:** 가족 분만실 L&D를 v16 핸드오프 1:1 구현. 28×50, floorTheme `peds`, 좌측 엘리베이터 문, **6구역 통합**(OB 분류 · 무통 준비 · 중앙 스테이션 · LDR 분만실×2 + 신생아 워머 · 산후 모아동실 · 유리 신생아실). ld2 잔여 2종(BirthingBed·DeliveryCart)만 신규 `ldEquipment.tsx`로 포팅, 나머지 ld2(Bassinet·InfantWarmer·NursingRecliner·WarmerCabinet·FetalMonitor)는 nursery/womenkids 카탈로그 재사용 + er/ward/shared 재사용.
+- **3F 통합 판단:** `interior-ld.jsx`가 3F 전체 산과 층을 한 인테리어로 통합(L&D+산후+신생아) → 엘리베이터 3F 라벨과 정확히 일치. Phase 1에서 임시로 3F에 걸었던 `INT-NURSERY-00001`을 **`INT-LD-00001`로 교체**. standalone nursery(+미구현 postpartum)는 ld 존이 subsume → FIXTURES/딥링크로만 잔존.
+- **해소된 질문:** Q1 3F=INT-LD 통합 배선(nursery 교체) · Q2 postpartum/nursery 중복=ld가 통합 포함 · Q3 시나리오 라벨만.
+- **검증:** tsc 0 · jest 118/118(ld 6) · 시뮬레이터 6구역(분류·마취·스테이션·LDR·산후·신생아, BirthingBed/DeliveryCart 렌더) 확인.
+- **편차:** scale 0.9 · BirthingBed footprint 3×2·DeliveryCart 2×1 · 3F INT-NURSERY→INT-LD 교체 · standalone postpartum 미배선 · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 2 계속 진행") + AI(ld.jsx 통합 구조 분석·Build Spec·구현·검증).

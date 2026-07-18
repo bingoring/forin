@@ -70,7 +70,7 @@ v16 핸드오프에 **신규 인테리어 20종**이 추가됐다(기존 구현 
 > 부서당 fixture + `<dept>Equipment.tsx` + `<dept>-fixture.test.ts` + `objects/index.tsx` 디스패치 + `ElevatorScreen` 배선 + `FIXTURES` 등록.
 
 - **Phase 1 · 재사용 검증(quick win) — ✅ 완료**: **infusion ✅** → **nursery ✅** → **womenkids-opd ✅**(peds 1F 정식 교체). 재사용 파이프라인 검증 완료.
-- **Phase 2 · WOMEN 완결**: ld(대형) → postpartum → nicu → picu. 여성소아 건물 6·5·4·3F 채움.
+- **Phase 2 · WOMEN 완결**: **ld ✅(3F 통합 — L&D+산후+신생아 한 인테리어, INT-LD)** → nicu → picu. (postpartum·nursery는 ld.jsx가 통합 포함하므로 3F에서 subsumed; standalone은 FIXTURES 잔존.)
 - **Phase 3 · DX 완결**: rad → endo → dial → specialty(eye2). 진단동 완성.
 - **Phase 4 · ONCO 완결**: onco → hospice → geri → psych → rehab.
 - **Phase 5 · ADMIN 완결**: spd → sim → lounge → morgue(B1).
