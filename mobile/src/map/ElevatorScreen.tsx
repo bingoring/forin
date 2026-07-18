@@ -67,7 +67,7 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
     name: '암센터 · 특수 재활관', sub: '별관 2 · ONCOLOGY & REHAB', accent: '#1E8A5B', wall: '#E4ECE0', trim: '#C2D4BE',
     floors: [
       { f: '4F', depts: ['완화의료 · 호스피스', '노인성 질환 병동'], icon: '🕊' },
-      { f: '3F', depts: ['종양학 병동', '조혈모세포 이식실 BMT'], icon: '🎗' },
+      { f: '3F', depts: ['종양학 병동', '조혈모세포 이식실 BMT'], icon: '🎗', interior: 'INT-ONCO-00001', entry: { x: 1, y: 15 } },
       { f: '2F', depts: ['정신과 폐쇄 병동', '정신과 외래'], icon: '🧠' },
       { f: '1F', depts: ['대형 재활치료실 PT/OT Gym'], icon: '🦮', lobby: true },
     ],
