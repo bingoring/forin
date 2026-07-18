@@ -661,3 +661,10 @@
 - **검증:** tsc 0 · jest 136/136(rad 6) · 시뮬레이터 CT(도넛 갠트리·제어콘솔·유리부스)·MRI(대형 보어·납방호복) 화면단위 대조 확인.
 - **편차:** scale 0.9 · SVG text(MAGNET ON)→shape · 스캐너 footprint props · 시나리오 라벨만.
 - **결정자:** 사용자("Phase 3 계속 진행, 방·화면단위 검증") + AI(Build Spec·구현·검증).
+
+## 2026-07-18 · 5g-q Endoscopy 구현 (v16, Phase 3 · DX 4F)
+- **결정:** 내시경실을 v16 핸드오프 1:1 구현. 28×44, floorTheme `clinical`, 좌측 엘리베이터 문, 5구역(접수·대기 → 전처치·회복 베이 · 세척·재처리실 AER → 시술실 1 상부·2 대장). endo2 4종(EndoTower·ScopeWasher·ScopeCabinet·ProcedureBed) 신규 `endoEquipment.tsx`; oxygen/suction(er)·sinkor·wastebin·shared 재사용.
+- **해소된 질문:** Q1 진입=DX 4F 단일 배선(Cath/IR 후속) · Q2 시나리오 라벨만.
+- **검증:** tsc 0 · jest 142/142(endo 6) · 시뮬레이터 시술실1(EndoTower 점막모니터·ProcedureBed)·재처리실(ScopeWasher·ScopeCabinet·biohazard) 화면단위 대조 확인.
+- **편차:** scale 0.9 · SVG text(CO₂)→shape · 신규 footprint props · 시나리오 라벨만.
+- **결정자:** 사용자("Phase 3 계속 진행") + AI(Build Spec·구현·검증).
