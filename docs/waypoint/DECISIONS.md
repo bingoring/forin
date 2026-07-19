@@ -855,3 +855,9 @@
 - 검증: 로더·go test·jest 208/208·tsc 0 · API 재시작 후 왕복(deck 5·cards 5) · 시뮬레이터 2종 렌더 확인.
 - **전체 퀴즈 14종:** fill·match·order·listen·mcq·check·monitor·calc·gauge·sort·spot_error·triage·abbr·dialogue_order.
 - **결정자:** 사용자("약어 확장·대화 순서 조립 둘 다 만들어줘") + AI(원안 설계·구현·검증).
+
+## 2026-07-20 · 부서별 퀴즈 대량 저작 — 16종 추가 (총 30 quizzes)
+- 퀴즈 없던 시나리오가 많은 부서에 포맷을 섞어 부서별 퀴즈 16종 저작·배선(v17 quiz-bank/depts 콘텐츠 참고 + 저작): OR(check)·PEDS(match)·RAD(check MRI)·ENDO(order)·REHAB(sort)·ONCO(check)·GERI(mcq)·HOSPICE(mcq)·INFUSION(spot_error)·SPECIALTY(match)·WOMENKIDS(calc)·PICU(monitor)·NURSERY(order)·SIM(order BLS)·LOUNGE(dialogue_order)·MORGUE(mcq).
+- SbarQuiz를 **일반 order 겸용**으로 확장(트랙 없으면 범례·트랙컬럼 숨김) + 디스패처 `order`→SbarQuiz. (신규 order 퀴즈가 sbar 아님)
+- 검증: 로더·go test·jest 208/208·tsc 0 · seed 30 quizzes · 시뮬레이터 order/부서 퀴즈 렌더 확인.
+- **결정자:** 사용자("부서별 퀴즈 더 채워줘") + AI(배치 저작·order 겸용화·검증).
