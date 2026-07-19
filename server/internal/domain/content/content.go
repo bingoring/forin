@@ -273,6 +273,16 @@ type QuizContent struct {
 	Gauge *QuizGauge `yaml:"gauge" json:"gauge,omitempty"` // gauge: stepper to a target
 
 	Rows []QuizErrorRow `yaml:"rows" json:"rows,omitempty"` // spot_error: find the wrong row
+
+	Deck []QuizDeckCard `yaml:"deck" json:"deck,omitempty"` // abbr: flashcard deck (one MCQ per card)
+	// dialogue_order reuses Cards (Track = speaker, Order = turn number).
+}
+
+// QuizDeckCard — one abbreviation flashcard: expand Term, pick Answer from Options.
+type QuizDeckCard struct {
+	Term    string   `yaml:"term" json:"term"`
+	Options []string `yaml:"options" json:"options"`
+	Answer  string   `yaml:"answer" json:"answer"`
 }
 
 // QuizGiven — a labeled fact in a calc quiz (e.g. "Weight" → "20 kg").

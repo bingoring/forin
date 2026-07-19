@@ -50,3 +50,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Okay. Pain here? (pointing) I will call an interpreter to help us." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ER-00004 }

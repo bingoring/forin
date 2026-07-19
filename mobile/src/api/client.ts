@@ -109,6 +109,7 @@ export interface QuizContent {
   pool?: string[]; buckets?: { name: string; color?: string; items: string[] }[];
   gauge?: { min: number; max: number; start: number; target: number; step: number; unit?: string };
   rows?: { label: string; text: string; error?: boolean }[];
+  deck?: { term: string; options: string[]; answer: string }[];
 }
 export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;

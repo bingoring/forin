@@ -1,0 +1,16 @@
+# dialogue_order — arrange a patient greeting/assessment into natural turn order
+# (original format; reuses Cards with track = speaker). Order 1→5.
+id: QZ-ER-00004
+type: dialogue_order
+title: "환자 응대 순서 조립"
+content:
+  sub: "대화를 자연스러운 순서로 배열하세요"
+  zone: "ER"
+  context: "💬 환자를 처음 응대하는 대화입니다. 자연스러운 순서(1→5)로 배열하세요."
+  note: "신원 확인 → 방문 이유 → 공감 → 다음 단계 안내 순이 자연스러워요."
+  cards:
+    - { text: "\"Hello, I'm your nurse. Can I confirm your name and date of birth?\"", track: "nurse", order: 1 }
+    - { text: "\"Yes — James Miller, March 3rd, 1958.\"", track: "patient", order: 2 }
+    - { text: "\"Thank you. What brings you in today?\"", track: "nurse", order: 3 }
+    - { text: "\"I've had a bad headache since this morning.\"", track: "patient", order: 4 }
+    - { text: "\"I'm sorry to hear that. Let me check your vitals and we'll help you.\"", track: "nurse", order: 5 }
