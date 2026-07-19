@@ -1,0 +1,54 @@
+# ER trauma handoff — motor vehicle collision (v16 er-paramedic-mvc). EMS brings
+# a trauma patient; receive an SBAR handoff (mechanism, vitals, interventions)
+# and make a triage decision.
+id: SCN-ER-00006
+eventId: EVT-ER-00001
+title: "교통사고 환자 핸드오프"
+tagline: "32-year-old, restrained driver, head-on collision…"
+persona:
+  name: "Paramedic Ruiz"
+  role: paramedic
+  ageRange: "30s"
+  sub: "EMS · Unit 27"
+  hair: "#3C2A18"
+  hairStyle: short
+  personality: "숙련된 구급대원. 빠르고 체계적, SBAR로 요약 전달."
+  speakingStyle: "속사포 같은 EMS 브리핑, 약어(GCS, BP, MVA) 다수."
+  mood: focused
+goals:
+  - "SBAR로 사고 메커니즘·활력징후·처치 내역 청취"
+  - "정보 기반 ESI 트리아지 결정"
+guardrails:
+  - "EMS 약어를 되물어 정확히 확인"
+  - "핵심 활력징후 수치 놓치지 않기"
+keyPhrases:
+  - "What were the vitals on scene?"
+  - "Any loss of consciousness at the scene?"
+  - "What interventions have been done so far?"
+briefing:
+  dept: "ER · TRAUMA BAY #2"
+  deptColor: "#DC2626"
+  brief: "교통사고 환자가 EMS로 도착했습니다. SBAR 형식으로 사고 메커니즘, 활력 징후, 처치 내역을 정확히 받아 트리아지 결정을 하세요."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "MVA 어휘"
+    - "EMS 약어"
+    - "활력징후 듣기"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 4" }
+    - { icon: "🚨", label: "트라우마 인증 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+    - { label: "응급 대응력 65+", metric: "emergencyResponse", threshold: 65 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: paramedic, expression: focused, lineEn: "32-year-old, restrained driver, head-on collision. GCS 14, BP 100 over 60.", lineKo: "32세, 안전벨트 착용 운전자, 정면충돌. GCS 14, 혈압 100/60." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Copy that. Any loss of consciousness at the scene?" }

@@ -1,0 +1,53 @@
+# ER police handoff (v16 er-police-jdoe). A police officer brings an unidentified
+# assault victim — receive an SBAR handoff and document it accurately.
+id: SCN-ER-00005
+eventId: EVT-ER-00001
+title: "경찰 동행 환자 인계"
+tagline: "We brought a possible assault victim…"
+persona:
+  name: "Officer Davis"
+  role: police
+  ageRange: "40s"
+  sub: "NYPD · 38m precinct"
+  hair: "#1F2937"
+  hairStyle: short
+  personality: "직무에 충실·간결·사무적. 사실 위주로 빠르게 전달."
+  speakingStyle: "공적·단정적 어조, 경찰 약어 사용."
+  mood: focused
+goals:
+  - "SBAR로 환자 상태·발견 시각·상황 인계 받기"
+  - "알러지·신원 정보 확인 후 보고서 기록"
+guardrails:
+  - "정확한 사실 확인, 되묻기로 오류 방지"
+  - "공문서 어휘·시간/장소 표현 정확히"
+keyPhrases:
+  - "When and where was the patient found?"
+  - "Does the patient have any known allergies?"
+  - "Can you repeat the time of the incident?"
+briefing:
+  dept: "ER · RECEPTION"
+  deptColor: "#1F2937"
+  brief: "경찰이 신원 불명의 부상 환자를 데려왔습니다. 환자의 상태, 발견 시각, 알러지 정보 등을 SBAR 핸드오프로 받고 보고서에 적절히 기록해야 합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "SBAR 인계 받기"
+    - "공문서 어휘"
+    - "시간/장소 청취"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 10" }
+    - { icon: "📋", label: "특수 시나리오 잠금해제", value: "✓" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+    - { label: "응급 대응력 75+", metric: "emergencyResponse", threshold: 75 }
+  tone: "#E5E7EB"
+  accent: "#4B5563"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: police, expression: focused, lineEn: "We brought a possible assault victim. Found unconscious on 5th Street.", lineKo: "폭행 피해자로 보이는 환자를 데려왔어요. 5번가에서 의식 없이 발견됐습니다." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Thank you, officer. When exactly was the patient found?" }

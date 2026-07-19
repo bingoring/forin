@@ -1,0 +1,52 @@
+# ER pediatric fever — reassure the parent (v16 er-fever-child). An anxious mother
+# brings a toddler with a high fever; explain the process simply, reassure her,
+# and take an onset + medication history.
+id: SCN-ER-00008
+eventId: EVT-ER-00001
+title: "고열 아동 — 부모 안심"
+tagline: "She's been crying all night, 103° fever…"
+persona:
+  name: "Mrs. Kim"
+  role: parent
+  ageRange: "30s"
+  sub: "보호자 · 딸(2y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "밤새 아픈 아이로 지치고 불안. 걱정이 앞서 질문이 많음."
+  speakingStyle: "다급하고 걱정스러운 어조, 재확인 반복."
+  mood: worried
+goals:
+  - "검사 절차를 쉬운 말로 설명하고 부모 안심"
+  - "증상 발현 시각·약물 복용 이력 청취"
+guardrails:
+  - "따뜻하고 침착한 어조로 안심시키기"
+  - "화씨/섭씨·소아 발열 어휘를 쉽게 풀어 설명"
+keyPhrases:
+  - "When did the fever start?"
+  - "Has she taken any medicine today?"
+  - "We're going to take good care of her."
+briefing:
+  dept: "ER · PEDS CORNER"
+  deptColor: "#DC2626"
+  brief: "고열로 응급실에 온 유아의 어머니가 매우 불안해합니다. 검사 절차를 단순하게 설명하고 부모를 안심시키며, 아이의 증상 발현 시각과 약물 복용 이력을 청취하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "소아 발열 어휘"
+    - "부모 안심"
+    - "체온/단위 변환"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 140 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 7" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "She's been crying all night, 103° fever. Is she going to be okay?", lineKo: "밤새 울었어요, 열이 103도예요. 우리 아이 괜찮을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We're going to take good care of her. When did the fever start?" }
