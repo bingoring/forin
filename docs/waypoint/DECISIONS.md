@@ -786,3 +786,10 @@
 - **범위:** 6종 중 sentence_build 1종만(가장 관련·자족적). match_pairs·vitals·listen·sbar·triage는 후속(동일 패턴 확장).
 - **검증:** go test(로더: template/answers/wordBank·answer⊆wordBank)·jest 208/208·tsc 0. `GET /quizzes/QZ-ER-00001` 콘텐츠 왕복 OK. 시뮬레이터 문장완성 화면 렌더(슬롯·단어카드 shuffle·CONTEXT) 확인.
 - **결정자:** 사용자("순서대로 작업, 너가 하고싶은대로") + AI(구축·검증).
+
+## 2026-07-19 · 세션 부트스트랩(반복 401 해결) + 발음 채점(클라이언트)
+- **반복 401 근본원인:** `restoreSession`이 진입 게이트(index.tsx)에서만 실행 → 대화 화면 딥링크/Fast-Refresh 리로드 시 in-memory 세션 소실, secureStore 토큰이 있어도 복원 안 됨. **루트 `_layout`으로 이동 + `bootstrapSession`**(복원 실패 시 __DEV__에서 auto devSignIn). 검증: 대화 딥링크 conversation 200(이전 401).
+- **발음 채점:** expo-audio(16kHz mono PCM WAV) 녹음 → base64(expo-file-system/legacy) → `POST /pronunciation`(기존) → 점수. `PronunciationScore`(recognized·4개 바·단어칩) + `PronunciationPractice`(녹음→채점, 힌트 패널의 추천 문장 발음 연습). `api.assessPronunciation`.
+- **⚠️ 외부 블로커:** (1) **서버 `AZURE_SPEECH_KEY`가 401**(무효/만료) — 라이브 채점 불가, 유효 키 필요. (2) iOS 시뮬레이터 마이크 없음 — 실제 녹음은 실기기/dev-build 필요. 코드는 계약대로 정확·graceful degrade. 검증: 앱 부팅(expo-audio 번들 OK)·발음 연습 UI 렌더·tsc 0·jest 208/208.
+- **범위:** 발음 연습(레퍼런스 문장 채점)만. STT-as-input(자유발화→텍스트)은 후속.
+- **결정자:** 사용자("api 에러가 났어, 이어서") + AI(진단·부트스트랩·발음 클라이언트 구축).
