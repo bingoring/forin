@@ -1,0 +1,50 @@
+# 약국 · 고위험 약물 이중확인 (단계 B #8, 코어).
+id: SCN-PHARMA-00008
+eventId: EVT-PHARMA-00001
+title: "고위험 약물 이중확인"
+tagline: "Can you double-check this heparin dose?"
+persona:
+  name: "Nurse"
+  role: nurse
+  sub: "병동 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "고위험 약물(high-alert)의 독립적 이중확인을 수행합니다."
+  mood: focused
+goals:
+  - "고위험약물 어휘"
+  - "이중확인"
+  - "안전"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's verify the drug, dose, and rate independently."
+  - "The pump settings match the order."
+  - "Two nurses sign off on high-alert meds."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "고위험 약물(high-alert)의 독립적 이중확인을 수행합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "고위험약물 어휘"
+    - "이중확인"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "Can you double-check this heparin dose?", lineKo: "이 헤파린 용량 이중확인해줄래요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's verify drug, dose, and rate independently — the pump matches the order, and we both sign off." }

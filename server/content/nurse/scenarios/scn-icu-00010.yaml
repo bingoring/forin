@@ -1,0 +1,49 @@
+# 중환자실 · 욕창 예방 체위변경 (단계 B #10, 코어).
+id: SCN-ICU-00010
+eventId: EVT-ICU-00001
+title: "욕창 예방 체위변경"
+tagline: "When should we reposition him?"
+persona:
+  name: "Aide"
+  role: nurse
+  sub: "보조 인력"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "부동 환자의 욕창 예방 체위변경을 지도합니다."
+  mood: focused
+goals:
+  - "욕창예방 어휘"
+  - "체위변경"
+  - "피부 사정"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We turn him at least every two hours."
+  - "Check the heels, sacrum, and elbows each time."
+  - "Cushion the pressure points with pillows."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "부동 환자의 욕창 예방 체위변경을 지도합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "욕창예방 어휘"
+    - "체위변경"
+    - "피부 사정"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "When should we reposition him?", lineKo: "언제 체위를 바꿔야 하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "At least every two hours — check heels, sacrum, and elbows, and cushion the pressure points." }

@@ -1,0 +1,50 @@
+# 중환자실 · ICU 섬망 대응 (단계 B #9, 코어).
+id: SCN-ICU-00009
+eventId: EVT-ICU-00001
+title: "ICU 섬망 대응"
+tagline: "Who are you? Where am I?"
+persona:
+  name: "Mr. Pratt"
+  role: patient
+  sub: "섬망"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "ICU 섬망 환자를 지남력 재확립으로 안정시킵니다."
+  mood: confused
+goals:
+  - "섬망 어휘"
+  - "지남력"
+  - "안정"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You're in the hospital, and you're safe."
+  - "I'm your nurse, Sarah — it's Tuesday morning."
+  - "The confusion can happen here; it usually passes."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "ICU 섬망 환자를 지남력 재확립으로 안정시킵니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "섬망 어휘"
+    - "지남력"
+    - "안정"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: confused, lineEn: "Who are you? Where am I?", lineKo: "당신은 누구죠? 여기 어디예요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You're in the hospital and safe — I'm your nurse, it's Tuesday morning. This confusion usually passes." }

@@ -1,0 +1,50 @@
+# 약국 · 약물 조정(reconciliation) (단계 B #13, 코어).
+id: SCN-PHARMA-00013
+eventId: EVT-PHARMA-00001
+title: "약물 조정(reconciliation)"
+tagline: "Can you reconcile her home meds?"
+persona:
+  name: "Nurse"
+  role: nurse
+  sub: "입원 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "입원 시 약물 조정(medication reconciliation)을 수행합니다."
+  mood: focused
+goals:
+  - "약물조정 어휘"
+  - "목록 대조"
+  - "확인"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's compare her home list to the new orders."
+  - "This home med isn't on the admission list."
+  - "I'll flag the duplicate therapy for the doctor."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "입원 시 약물 조정(medication reconciliation)을 수행합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "약물조정 어휘"
+    - "목록 대조"
+    - "확인"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "Can you reconcile her home meds?", lineKo: "이 환자 복용약 조정해줄래요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's compare her home list to the new orders — this one's missing, and I'll flag the duplicate for the doctor." }

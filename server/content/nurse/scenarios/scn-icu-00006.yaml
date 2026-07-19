@@ -1,0 +1,50 @@
+# 중환자실 · 인공호흡기 환자 소통 (단계 B #6, 코어).
+id: SCN-ICU-00006
+eventId: EVT-ICU-00001
+title: "인공호흡기 환자 소통"
+tagline: "I can't talk with this tube in."
+persona:
+  name: "Mr. Harmon"
+  role: patient
+  sub: "인공호흡기"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "삽관·인공호흡기 환자와 비언어적으로 소통하고 안심시킵니다."
+  mood: worried
+goals:
+  - "인공호흡기 어휘"
+  - "비언어 소통"
+  - "안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The tube helps you breathe — it's temporary."
+  - "Blink twice for yes, once for no."
+  - "I'm right here and checking on you often."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "삽관·인공호흡기 환자와 비언어적으로 소통하고 안심시킵니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "인공호흡기 어휘"
+    - "비언어 소통"
+    - "안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I can't talk with this tube in.", lineKo: "관 때문에 말을 못 하겠어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The tube is temporary and helps you breathe — blink twice for yes, I'm right here." }

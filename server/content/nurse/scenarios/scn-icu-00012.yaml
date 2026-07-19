@@ -1,0 +1,50 @@
+# 중환자실 · 코드블루 대응 (단계 B #12, 코어).
+id: SCN-ICU-00012
+eventId: EVT-ICU-00001
+title: "코드블루 대응"
+tagline: "He's coding — start compressions!"
+persona:
+  name: "Charge Nurse"
+  role: nurse
+  sub: "책임간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "코드블루에 팀 역할을 수행하며 대응합니다."
+  mood: panic
+goals:
+  - "코드블루 어휘"
+  - "CPR 역할"
+  - "폐쇄루프"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Starting compressions — someone call the code."
+  - "I have the airway; who's on meds?"
+  - "Pulse check in two minutes — switch compressors."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "코드블루에 팀 역할을 수행하며 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "코드블루 어휘"
+    - "CPR 역할"
+    - "폐쇄루프"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: panic, lineEn: "He's coding — start compressions!", lineKo: "코드블루예요 — 압박 시작!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Starting compressions — call the code. I have the airway; pulse check in two minutes, switch compressors." }

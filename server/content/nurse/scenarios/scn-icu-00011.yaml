@@ -1,0 +1,50 @@
+# 중환자실 · 중심정맥관 삽입 보조 (단계 B #11, 코어).
+id: SCN-ICU-00011
+eventId: EVT-ICU-00001
+title: "중심정맥관 삽입 보조"
+tagline: "Ready to assist with the central line?"
+persona:
+  name: "Dr. Nolan"
+  role: doctor
+  sub: "전담의"
+  hair: "#1F2937"
+  hairStyle: short
+  personality: "중심정맥관(central line) 삽입을 무균으로 보조합니다."
+  mood: focused
+goals:
+  - "중심정맥관 어휘"
+  - "무균 보조"
+  - "타임아웃"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Full barrier precautions are set up."
+  - "Let's do the time-out before we start."
+  - "I'll monitor his rhythm during insertion."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "중심정맥관(central line) 삽입을 무균으로 보조합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "중심정맥관 어휘"
+    - "무균 보조"
+    - "타임아웃"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: doctor, expression: focused, lineEn: "Ready to assist with the central line?", lineKo: "중심정맥관 삽입 보조 준비됐나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Full barrier precautions are set — let's do the time-out, and I'll monitor his rhythm." }

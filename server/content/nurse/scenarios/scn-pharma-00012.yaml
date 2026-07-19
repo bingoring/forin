@@ -1,0 +1,50 @@
+# 약국 · 오피오이드 안전 상담 (단계 B #12, 코어).
+id: SCN-PHARMA-00012
+eventId: EVT-PHARMA-00001
+title: "오피오이드 안전 상담"
+tagline: "Will I get addicted to these?"
+persona:
+  name: "Mr. Cross"
+  role: patient
+  sub: "통증"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "오피오이드 안전 사용·보관·처분을 상담합니다."
+  mood: worried
+goals:
+  - "오피오이드 어휘"
+  - "안전 상담"
+  - "비판단"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Take the lowest dose that controls your pain."
+  - "Store it locked, away from others."
+  - "We'll taper as you heal — you're not alone."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "오피오이드 안전 사용·보관·처분을 상담합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "오피오이드 어휘"
+    - "안전 상담"
+    - "비판단"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will I get addicted to these?", lineKo: "이거 중독되지 않을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Take the lowest dose that controls the pain, store it locked — we'll taper as you heal, you're not alone." }

@@ -1,0 +1,50 @@
+# 중환자실 · 인공호흡기 이탈 설명 (단계 B #14, 코어).
+id: SCN-ICU-00014
+eventId: EVT-ICU-00001
+title: "인공호흡기 이탈 설명"
+tagline: "Will I be able to breathe on my own?"
+persona:
+  name: "Mr. Reyes"
+  role: patient
+  sub: "이탈 시도"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "인공호흡기 이탈(weaning) 과정을 환자에게 설명하고 격려합니다."
+  mood: worried
+goals:
+  - "이탈 어휘"
+  - "과정 설명"
+  - "격려"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We'll lower the support slowly and watch you."
+  - "You did well on the breathing trial today."
+  - "If you tire, we ease back — no pressure."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "인공호흡기 이탈(weaning) 과정을 환자에게 설명하고 격려합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "이탈 어휘"
+    - "과정 설명"
+    - "격려"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will I be able to breathe on my own?", lineKo: "혼자 숨 쉴 수 있을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We lower the support slowly and watch you — you did well today. If you tire, we ease back." }

@@ -1,0 +1,50 @@
+# 약국 · 약물 상호작용 확인 (단계 B #10, 코어).
+id: SCN-PHARMA-00010
+eventId: EVT-PHARMA-00001
+title: "약물 상호작용 확인"
+tagline: "Any interaction with the new prescription?"
+persona:
+  name: "Dr. Frey"
+  role: doctor
+  sub: "처방의"
+  hair: "#1F2937"
+  hairStyle: short
+  personality: "처방 약물 간 상호작용을 확인하고 대안을 제시합니다."
+  mood: focused
+goals:
+  - "상호작용 어휘"
+  - "임상 확인"
+  - "대안 제시"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "This pair raises the bleeding risk together."
+  - "I'd suggest an alternative in the same class."
+  - "Let's adjust the dose and monitor closely."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "처방 약물 간 상호작용을 확인하고 대안을 제시합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "상호작용 어휘"
+    - "임상 확인"
+    - "대안 제시"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: doctor, expression: focused, lineEn: "Any interaction with the new prescription?", lineKo: "새 처방과 상호작용 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "This pair raises bleeding risk — I'd suggest an alternative in the same class, and monitor closely." }

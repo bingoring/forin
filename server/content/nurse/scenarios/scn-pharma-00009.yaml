@@ -1,0 +1,50 @@
+# 약국 · 퇴원 약물 상담 (단계 B #9, 코어).
+id: SCN-PHARMA-00009
+eventId: EVT-PHARMA-00001
+title: "퇴원 약물 상담"
+tagline: "How do I take all these new pills?"
+persona:
+  name: "Mr. Ито"
+  role: patient
+  sub: "퇴원"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "퇴원 약물 복약지도(schedule·상호작용)를 제공합니다."
+  mood: neutral
+goals:
+  - "퇴원약 어휘"
+  - "복약 지도"
+  - "상호작용"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's go through each medicine and when to take it."
+  - "This one is best taken with food."
+  - "Don't stop any without calling us first."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "퇴원 약물 복약지도(schedule·상호작용)를 제공합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "퇴원약 어휘"
+    - "복약 지도"
+    - "상호작용"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "How do I take all these new pills?", lineKo: "이 약들 어떻게 먹어야 하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's go through each one and when to take it — this one with food, and don't stop any without calling us." }

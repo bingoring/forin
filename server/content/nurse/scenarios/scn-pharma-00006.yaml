@@ -1,0 +1,50 @@
+# 약국 · 인슐린 자가주사 교육 (단계 B #6, 코어).
+id: SCN-PHARMA-00006
+eventId: EVT-PHARMA-00001
+title: "인슐린 자가주사 교육"
+tagline: "I've never given myself a shot before."
+persona:
+  name: "Mrs. Lang"
+  role: patient
+  sub: "당뇨"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "인슐린 자가주사 방법과 저혈당 대처를 교육합니다."
+  mood: worried
+goals:
+  - "인슐린 어휘"
+  - "주사 교육"
+  - "저혈당"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Rotate your injection sites to protect the skin."
+  - "Store the open pen at room temperature."
+  - "If you feel shaky or sweaty, treat the low fast."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "인슐린 자가주사 방법과 저혈당 대처를 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "인슐린 어휘"
+    - "주사 교육"
+    - "저혈당"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I've never given myself a shot before.", lineKo: "주사를 놔본 적이 없어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Rotate your sites, store the open pen at room temperature — and if you feel shaky, treat the low fast." }

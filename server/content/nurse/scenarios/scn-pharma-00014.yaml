@@ -1,0 +1,49 @@
+# 약국 · 흡입기 사용법 교육 (단계 B #14, 코어).
+id: SCN-PHARMA-00014
+eventId: EVT-PHARMA-00001
+title: "흡입기 사용법 교육"
+tagline: "I don't think the inhaler is working."
+persona:
+  name: "Mrs. Owens"
+  role: patient
+  sub: "흡입기"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "흡입기(inhaler) 올바른 사용법을 시연·교육합니다."
+  mood: worried
+goals:
+  - "흡입기 어휘"
+  - "사용법 시연"
+  - "확인"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's check your technique together."
+  - "Breathe out first, then a slow deep breath in."
+  - "Hold it for ten seconds, then rinse your mouth."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "흡입기(inhaler) 올바른 사용법을 시연·교육합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "흡입기 어휘"
+    - "사용법 시연"
+    - "확인"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I don't think the inhaler is working.", lineKo: "흡입기가 안 듣는 것 같아요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's check your technique — breathe out first, then a slow deep breath, hold ten seconds, and rinse after." }

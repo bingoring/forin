@@ -1,0 +1,50 @@
+# 약국 · 와파린 복약 상담 (단계 B #7, 코어).
+id: SCN-PHARMA-00007
+eventId: EVT-PHARMA-00001
+title: "와파린 복약 상담"
+tagline: "What foods do I need to avoid?"
+persona:
+  name: "Mr. Boone"
+  role: patient
+  sub: "항응고"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "와파린(항응고제) 복약과 식이·INR 모니터링을 상담합니다."
+  mood: worried
+goals:
+  - "항응고 어휘"
+  - "식이 상담"
+  - "모니터링"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Keep your vitamin K intake steady, not zero."
+  - "Watch for unusual bruising or bleeding."
+  - "Keep your INR blood test appointments."
+briefing:
+  dept: "약국"
+  deptColor: "#16A34A"
+  brief: "와파린(항응고제) 복약과 식이·INR 모니터링을 상담합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "항응고 어휘"
+    - "식이 상담"
+    - "모니터링"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "What foods do I need to avoid?", lineKo: "어떤 음식을 피해야 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Keep leafy greens steady, not zero — watch for unusual bruising, and keep your INR appointments." }

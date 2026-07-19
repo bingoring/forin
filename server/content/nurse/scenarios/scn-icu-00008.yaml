@@ -1,0 +1,50 @@
+# 중환자실 · 패혈증 상태 설명 (단계 B #8, 코어).
+id: SCN-ICU-00008
+eventId: EVT-ICU-00001
+title: "패혈증 상태 설명"
+tagline: "Is my dad going to make it?"
+persona:
+  name: "Mr. Silva"
+  role: family
+  sub: "환자 아들"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "패혈증 중환자 가족에게 상태를 정직하고 공감적으로 설명합니다."
+  mood: panic
+goals:
+  - "패혈증 어휘"
+  - "예후 소통"
+  - "공감"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "He's seriously ill, and we're treating aggressively."
+  - "The next hours are important — we're watching closely."
+  - "I'll keep you updated at every change."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "패혈증 중환자 가족에게 상태를 정직하고 공감적으로 설명합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "패혈증 어휘"
+    - "예후 소통"
+    - "공감"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: family, expression: panic, lineEn: "Is my dad going to make it?", lineKo: "아버지가 괜찮아지실까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "He's seriously ill and we're treating aggressively — the next hours matter, and I'll keep you updated." }

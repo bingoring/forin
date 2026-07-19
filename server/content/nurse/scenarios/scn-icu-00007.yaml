@@ -1,0 +1,50 @@
+# 중환자실 · 진정 관리 설명 (단계 B #7, 코어).
+id: SCN-ICU-00007
+eventId: EVT-ICU-00001
+title: "진정 관리 설명"
+tagline: "Why does he seem so out of it?"
+persona:
+  name: "Mrs. Doyle"
+  role: family
+  sub: "환자 아내"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "진정(sedation) 수준을 가족에게 설명하고 안심시킵니다."
+  mood: worried
+goals:
+  - "진정 어휘"
+  - "가족 설명"
+  - "안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We're keeping him sedated so he can rest and heal."
+  - "We lighten it each day to check on him."
+  - "It's normal for him to be drowsy right now."
+briefing:
+  dept: "중환자실"
+  deptColor: "#0891B2"
+  brief: "진정(sedation) 수준을 가족에게 설명하고 안심시킵니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "진정 어휘"
+    - "가족 설명"
+    - "안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: family, expression: worried, lineEn: "Why does he seem so out of it?", lineKo: "왜 이렇게 정신이 없어 보이죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We're keeping him sedated to rest and heal — we lighten it daily to check on him." }
