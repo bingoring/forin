@@ -822,3 +822,11 @@
 - 검증: 로더 전체 번들 검증·seed 48·스팟체크(mood/difficulty)·tsc 0·jest 208/208·시뮬레이터 분만(LD) 렌더(핑크·pain·B2+).
 - **마일스톤: 5개 코어(ER/OR/PEDS/ICU/PHARMA) + 신규 19부서 = 전 부서 최소 1개 플레이 가능 시나리오 배선 완료.**
 - **결정자:** 사용자("신규 20부서 시나리오도 만들어줘") + AI(from-scratch 저작·배선·검증).
+
+## 2026-07-19 · 퀴즈 타입 3종 확장 — match_pairs · listen · sbar
+- 서버 `QuizContent` 확장(content jsonb, 마이그레이션 불필요): Pairs(match) · AudioText+Choices(listen) · Cards(sbar). QuizPair/QuizChoice/QuizCard 구조체.
+- 퀴즈 저작: QZ-ER-00002(통증 표현 짝맞추기)·QZ-PHARMA-00001(구두 처방 듣기)·QZ-ICU-00001(SBAR 인계 정렬). 총 4 quizzes.
+- 모바일: `components/quiz/QuizShell`(공유 chrome) + MatchQuiz·ListenQuiz·SbarQuiz + quiz/[id].tsx type 디스패처. **expo-speech** 설치(듣기 온디바이스 TTS, 🔊 재생).
+- 배선: SCN-ER-00001→QZ-ER-00002(짝맞추기), SCN-PHARMA-00002→QZ-PHARMA-00001(듣기), SCN-ICU-00001→QZ-ICU-00001(SBAR) quiz step.
+- 검증: 로더·go test·jest 208/208·tsc 0 · 서버 재시작 후 content 왕복(pairs 4/choices 3/cards 5) · 시뮬레이터 3종 렌더(shuffle·트랙 범례·TTS 카드) 확인.
+- **결정자:** 사용자("퀴즈 타입 확장해줘") + AI(모델 확장·저작·컴포넌트·검증).
