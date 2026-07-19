@@ -793,3 +793,10 @@
 - **⚠️ 외부 블로커:** (1) **서버 `AZURE_SPEECH_KEY`가 401**(무효/만료) — 라이브 채점 불가, 유효 키 필요. (2) iOS 시뮬레이터 마이크 없음 — 실제 녹음은 실기기/dev-build 필요. 코드는 계약대로 정확·graceful degrade. 검증: 앱 부팅(expo-audio 번들 OK)·발음 연습 UI 렌더·tsc 0·jest 208/208.
 - **범위:** 발음 연습(레퍼런스 문장 채점)만. STT-as-input(자유발화→텍스트)은 후속.
 - **결정자:** 사용자("api 에러가 났어, 이어서") + AI(진단·부트스트랩·발음 클라이언트 구축).
+
+## 2026-07-19 · 결과/리워드 화면 + 시나리오 제작(ER 세트 완성)
+- **결과 화면:** `result/[id]`(핸드오프 ScreenDialogueResult 1:1) — SCENARIO CLEAR·참잘했어요 스티커·REWARDS(서버 briefing.rewards)·따뜻한 메시지·리뷰랩/다음. 컨페티는 RN Animated 버스트. 퀴즈 클리어(✓ 완료)→result 연결.
+- **시나리오 제작:** ER 인테리어 4개 핫스팟 전부 실 시나리오로 완성 — SCN-ER-00002(통증·Mrs.Hopkins, 기존), SCN-ER-00001(흉통·Mr.Robinson, briefing 보강), SCN-ER-00003(아나필락시스·Tyler's Mom, 신규), SCN-ER-00004(자해위험 안전사정, 신규·민감 임상콘텐츠→공감·비판단·안전 가드레일). 케밥 핫스팟 3개 → SCN-* 정렬. persona 표시필드·briefing(dept·brief·difficulty·skills·rewards·reqs)·keyPhrases·steps 완비.
+- **검증:** go test(로더: 5 시나리오·briefing 왕복·무-briefing 회귀는 SCN-GEN-00003)·jest 208/208·tsc 0. `GET /scenarios/SCN-ER-000{1,3,4}` 200. 시뮬레이터 아나필락시스 briefing 실데이터 렌더 확인.
+- **후속:** ER 나머지(police·paramedic·language·fever) + OR/PEDS/ICU/PHARMA + 신규 20부서 시나리오 저작. quiz 타입 확장(match_pairs 등). Azure 키·발음 실기기 검증.
+- **결정자:** 사용자("순서대로 작업, 너가 하고싶은대로") + AI(구축·검증).
