@@ -846,3 +846,12 @@
 - 모바일: CalcQuiz(키패드)·SortQuiz(버킷)·GaugeQuiz(스테퍼)·SpotErrorQuiz(처방지)·TriageQuiz(색상 랭크 슬롯) + 디스패처.
 - 검증: 로더·go test·jest 208/208·tsc 0 · API 재시작 후 content 왕복 · 시뮬레이터 5종 렌더 확인.
 - **결정자:** 사용자("calc·gauge·sort + 다양할수록 좋고 아이디어 추가 환영") + AI(구현 + triage 원안).
+
+## 2026-07-20 · 원안 퀴즈 포맷 2종 — abbr(약어 덱)·dialogue_order(대화 순서)
+- 핸드오프에 없는 **원안 2종**: abbr(의료 약어 플래시카드 덱, 카드별 MCQ+진행/점수)·dialogue_order(대화 turn을 자연스러운 순서로 배열, 화자 색상). 퀴즈 포맷 총 **14종**.
+- 서버 QuizContent: Deck[](abbr) 추가; dialogue_order는 Cards 재사용(Track=화자, Order=turn).
+- 저작: QZ-GEN-00001(abbr: NPO/PRN/STAT/BID/PO)·QZ-ER-00004(dialogue_order: 환자 응대 5턴). 배선 SCN-PHARMA-00005·SCN-ER-00007.
+- 모바일: AbbrQuiz(플래시카드 덱·진행 도트·점수)·DialogueOrderQuiz(화자 민트/peach 칩·순서 배열) + 디스패처.
+- 검증: 로더·go test·jest 208/208·tsc 0 · API 재시작 후 왕복(deck 5·cards 5) · 시뮬레이터 2종 렌더 확인.
+- **전체 퀴즈 14종:** fill·match·order·listen·mcq·check·monitor·calc·gauge·sort·spot_error·triage·abbr·dialogue_order.
+- **결정자:** 사용자("약어 확장·대화 순서 조립 둘 다 만들어줘") + AI(원안 설계·구현·검증).
