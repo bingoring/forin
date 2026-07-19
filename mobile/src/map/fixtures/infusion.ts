@@ -105,7 +105,7 @@ export const INFUSION_INTERIOR: Interior = {
     { id: 'o-st-plant', type: 'iplant', x: 25, y: 37 },
   ],
   hotspots: [
-    { id: 'hs-verify', kind: 'quest', x: 3, y: 3, label: '예약·약품 대조' },
+    { id: 'hs-verify', kind: 'quest', x: 3, y: 3, label: '예약·약품 대조', scenarioId: 'SCN-INFUSION-00001' },
     { id: 'hs-rate', kind: 'quest', x: 7, y: 11, label: '주입 속도·부작용' },
     { id: 'hs-anaphylaxis', kind: 'urgent', x: 20, y: 12, label: '아나필락시스 관찰' },
     { id: 'hs-nourish', kind: 'info', x: 4, y: 31, label: '수분·간식 보충' },

@@ -1,0 +1,51 @@
+# 암센터 · BMT · 골수이식 격리 안내 (신규 부서 시나리오, ONCO building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-ONCO-00001
+eventId: EVT-ONCO-00001
+title: "골수이식 격리 안내"
+tagline: "Can my family still visit me?"
+persona:
+  name: "Mr. Haddad"
+  role: patient
+  sub: "BMT · 이식 D+5"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "골수이식(BMT) 환자에게 역격리·손위생·방문 제한을 설명하고, 감염 예방과 정서적 지지를"
+  mood: worried
+goals:
+  - "역격리 어휘"
+  - "감염예방 교육"
+  - "정서 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Your immune system is very low right now."
+  - "Visitors must wash hands and wear a mask."
+  - "We're protecting you from infection."
+briefing:
+  dept: "암센터 · BMT"
+  deptColor: "#7C3AED"
+  brief: "골수이식(BMT) 환자에게 역격리·손위생·방문 제한을 설명하고, 감염 예방과 정서적 지지를 제공하세요."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "역격리 어휘"
+    - "감염예방 교육"
+    - "정서 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Can my family still visit me?", lineKo: "가족이 면회 올 수 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes, with a mask and hand-washing. Your immune system is very low right now." }

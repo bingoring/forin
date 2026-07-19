@@ -1,0 +1,50 @@
+# 직원 라운지 · 교대 인수인계 (신규 부서 시나리오, ADMIN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-LOUNGE-00001
+eventId: EVT-ADMIN-00001
+title: "교대 인수인계"
+tagline: "Anything I should watch for this shift?"
+persona:
+  name: "Nurse Bianchi"
+  role: nurse
+  sub: "다음 근무 동료"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "직원 라운지에서 교대 동료에게 담당 환자를 SBAR로 인계하고 주의사항을 공유하세요. 자연"
+  mood: neutral
+goals:
+  - "SBAR 인계"
+  - "동료 스몰토크"
+  - "우선순위 공유"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Bed 4 is stable but watch his blood pressure."
+  - "Meds are all given except the 2 p.m. antibiotic."
+  - "Call me if anything changes with bed 7."
+briefing:
+  dept: "직원 라운지"
+  deptColor: "#6E6354"
+  brief: "직원 라운지에서 교대 동료에게 담당 환자를 SBAR로 인계하고 주의사항을 공유하세요. 자연스러운 동료 소통도 연습합니다."
+  difficulty: 1
+  timeLabel: "약 5분"
+  skills:
+    - "SBAR 인계"
+    - "동료 스몰토크"
+    - "우선순위 공유"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: neutral, lineEn: "Anything I should watch for this shift?", lineKo: "이번 근무 때 주의할 거 있어요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Bed 4 is stable but watch his blood pressure. Meds are done except the 2 p.m. antibiotic." }

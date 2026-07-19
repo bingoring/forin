@@ -95,7 +95,7 @@ export const PICU_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-gown', kind: 'info', x: 3, y: 2, label: '가운·손위생' },
-    { id: 'hs-monitor', kind: 'quest', x: 5, y: 13, label: '3-방 활력 감시' },
+    { id: 'hs-monitor', kind: 'quest', x: 5, y: 13, label: '3-방 활력 감시', scenarioId: 'SCN-PICU-00001' },
     { id: 'hs-vent', kind: 'quest', x: 3, y: 22, label: '소아 vent·진정 사정' },
     { id: 'hs-intensive', kind: 'info', x: 12, y: 22, label: '집중 감시' },
     { id: 'hs-family', kind: 'info', x: 20, y: 31, label: '가족 상주 지지' },

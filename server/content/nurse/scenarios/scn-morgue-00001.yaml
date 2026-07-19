@@ -1,0 +1,51 @@
+# 영안실 · 고인 인수인계·유족 안내 (신규 부서 시나리오, ADMIN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-MORGUE-00001
+eventId: EVT-ADMIN-00001
+title: "고인 인수인계·유족 안내"
+tagline: "Can I see him one more time?"
+persona:
+  name: "Bereaved Son"
+  role: visitor
+  sub: "고인의 아들"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "영안실에서 고인 신원 확인·인수인계 절차를 진행하고, 유족을 공감과 존중으로 안내하세요."
+  mood: sad
+goals:
+  - "인수인계 어휘"
+  - "유족 응대"
+  - "존엄·공감 표현"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm so very sorry for your loss."
+  - "Take all the time you need to say goodbye."
+  - "When you're ready, I'll walk you through the next steps."
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "영안실에서 고인 신원 확인·인수인계 절차를 진행하고, 유족을 공감과 존중으로 안내하세요."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "인수인계 어휘"
+    - "유족 응대"
+    - "존엄·공감 표현"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "Can I see him one more time?", lineKo: "한 번만 더 볼 수 있을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Of course. I'm so sorry for your loss — take all the time you need." }

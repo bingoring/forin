@@ -96,7 +96,7 @@ export const ENDO_INTERIOR: Interior = {
     { id: 'o-p2-plant', type: 'iplant', x: 25, y: 41 },
   ],
   hotspots: [
-    { id: 'hs-npo', kind: 'quest', x: 3, y: 3, label: '금식(NPO) 확인' },
+    { id: 'hs-npo', kind: 'quest', x: 3, y: 3, label: '금식(NPO) 확인', scenarioId: 'SCN-ENDO-00001' },
     { id: 'hs-sedation', kind: 'info', x: 3, y: 12, label: '진정 회복 관찰' },
     { id: 'hs-aer', kind: 'info', x: 15, y: 13, label: '내시경 재처리(AER)' },
     { id: 'hs-upper', kind: 'quest', x: 3, y: 31, label: '진정 모니터·스코프' },

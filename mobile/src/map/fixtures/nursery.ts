@@ -105,7 +105,7 @@ export const NURSERY_INTERIOR: Interior = {
     { id: 'o-vw-plant', type: 'iplant', x: 25, y: 39 },
   ],
   hotspots: [
-    { id: 'hs-hygiene', kind: 'quest', x: 3, y: 2, label: '손위생 3분·가운' },
+    { id: 'hs-hygiene', kind: 'quest', x: 3, y: 2, label: '손위생 3분·가운', scenarioId: 'SCN-NURSERY-00001' },
     { id: 'hs-vitals', kind: 'quest', x: 2, y: 11, label: '신생아 활력징후' },
     { id: 'hs-admit', kind: 'info', x: 20, y: 12, label: '입원 사정·계측' },
     { id: 'hs-lactation', kind: 'info', x: 3, y: 31, label: '모유 수유 교육' },

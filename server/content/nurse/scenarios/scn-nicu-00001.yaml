@@ -1,0 +1,51 @@
+# 신생아 중환자실 · 미숙아 부모 상담 (신규 부서 시나리오, WOMEN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-NICU-00001
+eventId: EVT-WOMEN-00001
+title: "미숙아 부모 상담"
+tagline: "Why does he need all these machines?"
+persona:
+  name: "Preemie's Dad"
+  role: parent
+  sub: "보호자 · 아들(29주)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "NICU에서 미숙아 부모에게 인큐베이터·모니터·영양 관을 쉽게 설명하고, 캥거루 케어를 안"
+  mood: worried
+goals:
+  - "NICU 장비 어휘"
+  - "부모 상담"
+  - "캥거루 케어"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The incubator keeps him warm and safe."
+  - "These monitors track his heart rate and oxygen."
+  - "Would you like to try kangaroo care today?"
+briefing:
+  dept: "신생아 중환자실"
+  deptColor: "#DB2777"
+  brief: "NICU에서 미숙아 부모에게 인큐베이터·모니터·영양 관을 쉽게 설명하고, 캥거루 케어를 안내하며 불안을 덜어주세요."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "NICU 장비 어휘"
+    - "부모 상담"
+    - "캥거루 케어"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Why does he need all these machines?", lineKo: "왜 이렇게 많은 기계가 필요한가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The incubator keeps him warm and safe. Let me explain each monitor." }

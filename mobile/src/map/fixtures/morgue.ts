@@ -94,7 +94,7 @@ export const MORGUE_INTERIOR: Interior = {
     { id: 'o-mc-plant', type: 'plant', x: 25, y: 37 },
   ],
   hotspots: [
-    { id: 'hs-id', kind: 'quest', x: 3, y: 3, label: '고인 신원 확인' },
+    { id: 'hs-id', kind: 'quest', x: 3, y: 3, label: '고인 신원 확인', scenarioId: 'SCN-MORGUE-00001' },
     { id: 'hs-label', kind: 'info', x: 3, y: 11, label: '안치·라벨 대조' },
     { id: 'hs-autopsy', kind: 'quest', x: 16, y: 12, label: '검안·부검 기록' },
     { id: 'hs-farewell', kind: 'info', x: 3, y: 29, label: '고별 참관' },

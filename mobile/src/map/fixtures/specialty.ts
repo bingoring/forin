@@ -103,7 +103,7 @@ export const SPECIALTY_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-recep', kind: 'info', x: 3, y: 3, label: '전문외래 접수' },
-    { id: 'hs-slit', kind: 'quest', x: 3, y: 15, label: '세극등 검사 준비' },
+    { id: 'hs-slit', kind: 'quest', x: 3, y: 15, label: '세극등 검사 준비', scenarioId: 'SCN-SPECIALTY-00001' },
     { id: 'hs-ent', kind: 'info', x: 15, y: 14, label: '내시경 이경 처치' },
     { id: 'hs-bladder', kind: 'info', x: 3, y: 27, label: '방광 초음파' },
     { id: 'hs-neuro', kind: 'quest', x: 16, y: 27, label: '신경학적 사정 (GCS·반사)' },

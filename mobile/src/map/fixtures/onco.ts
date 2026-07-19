@@ -128,7 +128,7 @@ export const ONCO_INTERIOR: Interior = {
     { id: 'o-bm-tv', type: 'walltv', x: 20, y: 48, props: { w: 2 } },
   ],
   hotspots: [
-    { id: 'hs-verify', kind: 'quest', x: 3, y: 3, label: '항암제 이중 확인' },
+    { id: 'hs-verify', kind: 'quest', x: 3, y: 3, label: '항암제 이중 확인', scenarioId: 'SCN-ONCO-00001' },
     { id: 'hs-family', kind: 'info', x: 19, y: 5, label: '가족 면담' },
     { id: 'hs-schedule', kind: 'info', x: 11, y: 14, label: '주입 스케줄' },
     { id: 'hs-infusion', kind: 'quest', x: 8, y: 22, label: '주입 속도·부작용 관찰' },

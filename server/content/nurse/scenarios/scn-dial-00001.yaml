@@ -1,0 +1,51 @@
+# 인공신장실 · 혈액투석 전 체중·바이탈 (신규 부서 시나리오, DX building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-DIAL-00001
+eventId: EVT-DX-00001
+title: "혈액투석 전 체중·바이탈"
+tagline: "I gained a lot of weight this weekend."
+persona:
+  name: "Mr. Okafor"
+  role: patient
+  sub: "유지 투석 · 주3회"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "투석실에서 투석 전 체중·활력징후를 측정하고, 목표 제거량(UF)과 수분·염분 관리를 설명"
+  mood: neutral
+goals:
+  - "투석 어휘"
+  - "체중/UF 설명"
+  - "수분 관리 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's check your pre-dialysis weight."
+  - "How much fluid have you had since last session?"
+  - "We'll set your target removal based on this."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "투석실에서 투석 전 체중·활력징후를 측정하고, 목표 제거량(UF)과 수분·염분 관리를 설명하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "투석 어휘"
+    - "체중/UF 설명"
+    - "수분 관리 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "I gained a lot of weight this weekend.", lineKo: "주말에 몸무게가 많이 늘었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's check your weight. How much fluid have you had since last time?" }

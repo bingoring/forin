@@ -1,0 +1,51 @@
+# 내시경실 · 내시경 전 준비·금식 확인 (신규 부서 시나리오, DX building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-ENDO-00001
+eventId: EVT-DX-00001
+title: "내시경 전 준비·금식 확인"
+tagline: "Can I have just a sip of water?"
+persona:
+  name: "Mr. Diaz"
+  role: patient
+  sub: "위내시경 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "내시경 환자의 금식(NPO)·복용약·동의를 확인하고, 진정 내시경 절차와 회복을 안내하세요"
+  mood: neutral
+goals:
+  - "금식 확인 어휘"
+  - "진정 안내"
+  - "시술 전 체크"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "When did you last eat or drink?"
+  - "Did you hold your blood thinners as instructed?"
+  - "You'll be lightly sedated and won't feel discomfort."
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "내시경 환자의 금식(NPO)·복용약·동의를 확인하고, 진정 내시경 절차와 회복을 안내하세요."
+  difficulty: 2
+  timeLabel: "약 5분"
+  skills:
+    - "금식 확인 어휘"
+    - "진정 안내"
+    - "시술 전 체크"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Can I have just a sip of water?", lineKo: "물 한 모금만 마시면 안 될까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Not just yet — when did you last eat or drink? Let's confirm your NPO." }

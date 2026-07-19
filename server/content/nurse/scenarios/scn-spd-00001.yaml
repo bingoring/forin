@@ -1,0 +1,51 @@
+# 중앙공급실 · 멸균 물품 요청·확인 (신규 부서 시나리오, ADMIN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-SPD-00001
+eventId: EVT-ADMIN-00001
+title: "멸균 물품 요청·확인"
+tagline: "Which tray do you need for the OR?"
+persona:
+  name: "Tech Moreau"
+  role: pharmacist
+  sub: "중앙공급 기사"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "중앙공급실에서 수술용 멸균 세트를 요청하고, 멸균 표시·유효기간·수량을 확인하세요. 정확한"
+  mood: focused
+goals:
+  - "멸균 물품 어휘"
+  - "수량/유효기간 확인"
+  - "물품 요청"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I need a laparotomy tray for OR 3."
+  - "Can you confirm the sterilization indicator is green?"
+  - "Please check the expiration date on that pack."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "중앙공급실에서 수술용 멸균 세트를 요청하고, 멸균 표시·유효기간·수량을 확인하세요. 정확한 물품 커뮤니케이션을 연습합니다."
+  difficulty: 2
+  timeLabel: "약 5분"
+  skills:
+    - "멸균 물품 어휘"
+    - "수량/유효기간 확인"
+    - "물품 요청"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: focused, lineEn: "Which tray do you need for the OR?", lineKo: "수술방에 어떤 세트가 필요하세요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "A laparotomy tray for OR 3 — can you confirm the sterilization indicator is green?" }

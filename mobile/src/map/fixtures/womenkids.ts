@@ -99,7 +99,7 @@ export const WOMENKIDS_INTERIOR: Interior = {
     { id: 'o-us-plant', type: 'iplant', x: 25, y: 36 },
   ],
   hotspots: [
-    { id: 'hs-growth', kind: 'quest', x: 3, y: 3, label: '영유아 성장 계측' },
+    { id: 'hs-growth', kind: 'quest', x: 3, y: 3, label: '영유아 성장 계측', scenarioId: 'SCN-WOMENKIDS-00001' },
     { id: 'hs-play', kind: 'info', x: 5, y: 15, label: '놀이·대기' },
     { id: 'hs-pedexam', kind: 'quest', x: 16, y: 12, label: '소아 진찰·성장상담' },
     { id: 'hs-antenatal', kind: 'quest', x: 3, y: 28, label: '산전 진찰·상담' },

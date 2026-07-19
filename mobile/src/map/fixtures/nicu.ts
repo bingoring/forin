@@ -95,7 +95,7 @@ export const NICU_INTERIOR: Interior = {
     { id: 'o-pB-plant', type: 'iplant', x: 25, y: 43 },
   ],
   hotspots: [
-    { id: 'hs-scrub', kind: 'quest', x: 3, y: 2, label: '손위생·가운 착용' },
+    { id: 'hs-scrub', kind: 'quest', x: 3, y: 2, label: '손위생·가운 착용', scenarioId: 'SCN-NICU-00001' },
     { id: 'hs-central', kind: 'info', x: 6, y: 17, label: '중앙 활력 감시' },
     { id: 'hs-resus', kind: 'urgent', x: 16, y: 12, label: '미숙아 소생·기도' },
     { id: 'hs-incubator', kind: 'quest', x: 3, y: 27, label: '온·습도·활력 확인' },

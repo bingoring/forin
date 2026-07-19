@@ -1,0 +1,51 @@
+# 시뮬레이션랩 · 시뮬레이션 디브리핑 (신규 부서 시나리오, ADMIN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-SIM-00001
+eventId: EVT-ADMIN-00001
+title: "시뮬레이션 디브리핑"
+tagline: "I froze during the code. I messed up."
+persona:
+  name: "Preceptor Grant"
+  role: nurse
+  sub: "시뮬랩 프리셉터"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "시뮬레이션 랩에서 코드 시나리오 후 디브리핑을 진행합니다. 학습자를 지지하며 잘한 점과 개"
+  mood: focused
+goals:
+  - "디브리핑 어휘"
+  - "피드백 구조"
+  - "성찰 유도"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's start with what went well."
+  - "What would you do differently next time?"
+  - "Freezing happens — that's why we practice."
+briefing:
+  dept: "시뮬레이션랩"
+  deptColor: "#6E6354"
+  brief: "시뮬레이션 랩에서 코드 시나리오 후 디브리핑을 진행합니다. 학습자를 지지하며 잘한 점과 개선점을 구조적으로 피드백하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "디브리핑 어휘"
+    - "피드백 구조"
+    - "성찰 유도"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "I froze during the code. I messed up.", lineKo: "코드 때 얼어붙었어요. 망쳤어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Freezing happens — that's why we practice. Let's start with what went well." }

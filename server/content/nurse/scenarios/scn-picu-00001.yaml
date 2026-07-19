@@ -1,0 +1,51 @@
+# 소아 중환자실 · 중환 소아 부모 설명 (신규 부서 시나리오, WOMEN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-PICU-00001
+eventId: EVT-WOMEN-00001
+title: "중환 소아 부모 설명"
+tagline: "When can she wake up?"
+persona:
+  name: "Mrs. Alvarez"
+  role: parent
+  sub: "보호자 · 딸(6y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "PICU에서 진정 중인 중환 소아의 부모에게 상태와 계획을 설명합니다. 활력 감시 소견을 "
+  mood: worried
+goals:
+  - "중환 소아 어휘"
+  - "진정 설명"
+  - "부모 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "She's sedated so her body can rest and heal."
+  - "Her vitals are stable right now."
+  - "We'll wake her slowly when she's ready."
+briefing:
+  dept: "소아 중환자실"
+  deptColor: "#DB2777"
+  brief: "PICU에서 진정 중인 중환 소아의 부모에게 상태와 계획을 설명합니다. 활력 감시 소견을 쉽게 전하고 부모를 지지하세요."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "중환 소아 어휘"
+    - "진정 설명"
+    - "부모 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "When can she wake up?", lineKo: "언제 깨어날 수 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "She's sedated so she can rest and heal. Her vitals are stable now." }

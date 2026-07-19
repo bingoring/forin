@@ -103,7 +103,7 @@ export const HOSPICE_INTERIOR: Interior = {
     { id: 'hs-lounge', kind: 'info', x: 13, y: 4, label: '가족 휴식 공간' },
     { id: 'hs-pain', kind: 'info', x: 6, y: 15, label: '통증·증상 관리' },
     { id: 'hs-reflect', kind: 'info', x: 17, y: 14, label: '조용한 성찰' },
-    { id: 'hs-infpain', kind: 'quest', x: 3, y: 26, label: '지속주입 통증 조절' },
+    { id: 'hs-infpain', kind: 'quest', x: 3, y: 26, label: '지속주입 통증 조절', scenarioId: 'SCN-HOSPICE-00001' },
     { id: 'hs-dignity', kind: 'info', x: 16, y: 27, label: '임종 돌봄·존엄 케어' },
   ],
   npcs: [

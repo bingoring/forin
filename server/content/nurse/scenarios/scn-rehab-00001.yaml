@@ -1,0 +1,51 @@
+# 재활치료실 · 보행 재활 초기 평가 (신규 부서 시나리오, ONCO building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-REHAB-00001
+eventId: EVT-ONCO-00001
+title: "보행 재활 초기 평가"
+tagline: "Will I ever walk normally again?"
+persona:
+  name: "Mr. Bauer"
+  role: patient
+  sub: "뇌졸중 후 재활"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "재활실에서 초기 기능 평가와 평행봉 보행을 지도합니다. 안전하게 격려하며 현실적 목표를 함"
+  mood: worried
+goals:
+  - "재활 어휘"
+  - "보행 지도"
+  - "목표 설정"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's start at the parallel bars, holding on."
+  - "Small steps — I'm right beside you."
+  - "Each session, we'll build a little more strength."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "재활실에서 초기 기능 평가와 평행봉 보행을 지도합니다. 안전하게 격려하며 현실적 목표를 함께 세우세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "재활 어휘"
+    - "보행 지도"
+    - "목표 설정"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will I ever walk normally again?", lineKo: "다시 정상적으로 걸을 수 있을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Each session builds strength. Let's start at the parallel bars — I'm right beside you." }

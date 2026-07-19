@@ -87,7 +87,7 @@ export const DIAL_INTERIOR: Interior = {
     { id: 'o-is-plant', type: 'iplant', x: 25, y: 41 },
   ],
   hotspots: [
-    { id: 'hs-weigh', kind: 'quest', x: 7, y: 3, label: '투석 전 체중 측정' },
+    { id: 'hs-weigh', kind: 'quest', x: 7, y: 3, label: '투석 전 체중 측정', scenarioId: 'SCN-DIAL-00001' },
     { id: 'hs-avf', kind: 'quest', x: 3, y: 20, label: '바이탈·천자(AVF) 확인' },
     { id: 'hs-rowater', kind: 'info', x: 3, y: 38, label: '역삼투 수질 점검' },
     { id: 'hs-iso', kind: 'info', x: 15, y: 37, label: '전용 격리 투석' },

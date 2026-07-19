@@ -1,0 +1,51 @@
+# 여성소아 외래 · 영유아 성장 계측·문진 (신규 부서 시나리오, WOMEN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-WOMENKIDS-00001
+eventId: EVT-WOMEN-00001
+title: "영유아 성장 계측·문진"
+tagline: "Is she growing normally?"
+persona:
+  name: "Mrs. Cho"
+  role: parent
+  sub: "보호자 · 딸(18m)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "여성소아 외래에서 영유아 성장 계측과 발달 문진을 진행합니다. 키·몸무게·백분위를 설명하고"
+  mood: neutral
+goals:
+  - "성장 계측 어휘"
+  - "발달 문진"
+  - "백분위 설명"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's measure her height and weight."
+  - "She's in the 60th percentile — that's healthy."
+  - "Is she meeting her milestones?"
+briefing:
+  dept: "여성소아 외래"
+  deptColor: "#DB2777"
+  brief: "여성소아 외래에서 영유아 성장 계측과 발달 문진을 진행합니다. 키·몸무게·백분위를 설명하고 부모의 걱정을 들어주세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "성장 계측 어휘"
+    - "발달 문진"
+    - "백분위 설명"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "Is she growing normally?", lineKo: "정상적으로 크고 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's measure her. She's in the 60th percentile — that's healthy." }

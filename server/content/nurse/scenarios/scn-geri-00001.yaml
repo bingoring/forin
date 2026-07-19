@@ -1,0 +1,51 @@
+# 노인·치매병동 · 치매 환자 지남력 사정 (신규 부서 시나리오, ONCO building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-GERI-00001
+eventId: EVT-ONCO-00001
+title: "치매 환자 지남력 사정"
+tagline: "Where am I? I want to go home."
+persona:
+  name: "Mr. Whitby"
+  role: patient
+  sub: "치매 · 낙상 고위험"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "노인·치매 병동에서 지남력을 부드럽게 사정하고, 초저상 침대·낙상 예방을 안내하며 혼란을 "
+  mood: worried
+goals:
+  - "지남력 사정 어휘"
+  - "낙상 예방"
+  - "치매 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You're safe. You're at the hospital, and I'm your nurse."
+  - "Today is Monday, and it's the afternoon."
+  - "Please call me before you get up."
+briefing:
+  dept: "노인·치매병동"
+  deptColor: "#7C3AED"
+  brief: "노인·치매 병동에서 지남력을 부드럽게 사정하고, 초저상 침대·낙상 예방을 안내하며 혼란을 완화하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "지남력 사정 어휘"
+    - "낙상 예방"
+    - "치매 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Where am I? I want to go home.", lineKo: "여기가 어디죠? 집에 가고 싶어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You're safe. You're at the hospital, and I'm your nurse. Today is Monday." }

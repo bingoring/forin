@@ -94,7 +94,7 @@ export const PSYCH_INTERIOR: Interior = {
     { id: 'o-sc-plant', type: 'iplant', x: 25, y: 41 },
   ],
   hotspots: [
-    { id: 'hs-contraband', kind: 'quest', x: 4, y: 3, label: '반입 금지품 확인' },
+    { id: 'hs-contraband', kind: 'quest', x: 4, y: 3, label: '반입 금지품 확인', scenarioId: 'SCN-PSYCH-00001' },
     { id: 'hs-observe', kind: 'info', x: 6, y: 15, label: '상시 관찰·라운드' },
     { id: 'hs-group', kind: 'info', x: 16, y: 12, label: '집단 치료 프로그램' },
     { id: 'hs-oneone', kind: 'info', x: 3, y: 27, label: '1:1 관찰' },

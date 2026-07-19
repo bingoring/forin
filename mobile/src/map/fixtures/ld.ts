@@ -119,7 +119,7 @@ export const LD_INTERIOR: Interior = {
     { id: 'o-nu-sink', type: 'sinkor', x: 25, y: 37 },
   ],
   hotspots: [
-    { id: 'hs-contract', kind: 'quest', x: 3, y: 3, label: '자궁수축·태동 사정' },
+    { id: 'hs-contract', kind: 'quest', x: 3, y: 3, label: '자궁수축·태동 사정', scenarioId: 'SCN-LD-00001' },
     { id: 'hs-epidural', kind: 'info', x: 15, y: 4, label: '무통 카트 점검' },
     { id: 'hs-imminent', kind: 'urgent', x: 11, y: 14, label: '분만 임박 콜' },
     { id: 'hs-ctg', kind: 'quest', x: 3, y: 23, label: '태아 심박(CTG)' },

@@ -88,7 +88,7 @@ export const SPD_INTERIOR: Interior = {
     { id: 'o-dk-tape', type: 'floortape', x: 1, y: 41, props: { w: 20, text: '━━ 안전선 · DOCK EDGE ━━' } },
   ],
   hotspots: [
-    { id: 'hs-decon', kind: 'quest', x: 7, y: 3, label: '기구 세척·소독 사이클' },
+    { id: 'hs-decon', kind: 'quest', x: 7, y: 3, label: '기구 세척·소독 사이클', scenarioId: 'SCN-SPD-00001' },
     { id: 'hs-autoclave', kind: 'quest', x: 17, y: 3, label: '오토클레이브·팩 검수' },
     { id: 'hs-tray', kind: 'info', x: 12, y: 14, label: '치료식 트레이 준비' },
     { id: 'hs-logistics', kind: 'info', x: 12, y: 33, label: '물류 입·출고 검수' },

@@ -1,0 +1,51 @@
+# 정신과 병동 · 정신과 입원 안전 사정 (신규 부서 시나리오, ONCO building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-PSYCH-00001
+eventId: EVT-ONCO-00001
+title: "정신과 입원 안전 사정"
+tagline: "I don't need to be here."
+persona:
+  name: "Mr. Lindqvist"
+  role: patient
+  sub: "정신과 입원 · 초기"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "정신과 병동 입원 시 반입 금지품 확인과 안전 사정을 비판단적으로 진행하고, 라포를 형성하"
+  mood: neutral
+goals:
+  - "안전 사정 어휘"
+  - "비판단 소통"
+  - "입원 오리엔테이션"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'd like to go through your belongings with you, for safety."
+  - "This is a safe space, and I'm here to help."
+  - "Can we talk about what brought you in?"
+briefing:
+  dept: "정신과 병동"
+  deptColor: "#7C3AED"
+  brief: "정신과 병동 입원 시 반입 금지품 확인과 안전 사정을 비판단적으로 진행하고, 라포를 형성하세요."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "안전 사정 어휘"
+    - "비판단 소통"
+    - "입원 오리엔테이션"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "I don't need to be here.", lineKo: "저 여기 있을 필요 없어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I hear you. This is a safe space — can we talk about what brought you in?" }

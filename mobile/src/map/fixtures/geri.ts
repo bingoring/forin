@@ -99,7 +99,7 @@ export const GERI_INTERIOR: Interior = {
     { id: 'hs-orient', kind: 'info', x: 3, y: 3, label: '현실 인식 (날짜·계절)' },
     { id: 'hs-fall', kind: 'info', x: 6, y: 15, label: '배회·낙상 관찰' },
     { id: 'hs-reminis', kind: 'info', x: 16, y: 14, label: '추억 회상 요법' },
-    { id: 'hs-lowbed', kind: 'quest', x: 4, y: 27, label: '초저상 낙상 사정' },
+    { id: 'hs-lowbed', kind: 'quest', x: 4, y: 27, label: '초저상 낙상 사정', scenarioId: 'SCN-GERI-00001' },
     { id: 'hs-night', kind: 'info', x: 17, y: 27, label: '야간 배회 관찰' },
   ],
   npcs: [

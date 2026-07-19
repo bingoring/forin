@@ -91,7 +91,7 @@ export const REHAB_INTERIOR: Interior = {
     { id: 'o-ad-plant', type: 'iplant', x: 25, y: 41 },
   ],
   hotspots: [
-    { id: 'hs-eval', kind: 'quest', x: 4, y: 3, label: '초기 기능 평가' },
+    { id: 'hs-eval', kind: 'quest', x: 4, y: 3, label: '초기 기능 평가', scenarioId: 'SCN-REHAB-00001' },
     { id: 'hs-gait', kind: 'quest', x: 4, y: 13, label: '평행봉 보행 보조' },
     { id: 'hs-manual', kind: 'info', x: 16, y: 13, label: '도수 치료·ROM' },
     { id: 'hs-cardio', kind: 'info', x: 3, y: 31, label: '지구력 훈련' },

@@ -1,0 +1,51 @@
+# 특수외래(안과) · 시력·안압 검사 안내 (신규 부서 시나리오, DX building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-SPECIALTY-00001
+eventId: EVT-DX-00001
+title: "시력·안압 검사 안내"
+tagline: "Will the eye drops sting?"
+persona:
+  name: "Mrs. Reyes"
+  role: patient
+  sub: "안과 외래"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "안과 특수외래에서 시력·안압·세극등 검사를 안내하고, 산동제 점안 후 눈부심 등 주의사항을"
+  mood: neutral
+goals:
+  - "안과 검사 어휘"
+  - "점안 안내"
+  - "검사 절차 설명"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Please rest your chin here and look at the light."
+  - "The drops may sting for a second."
+  - "Your vision may be blurry for a few hours."
+briefing:
+  dept: "특수외래(안과)"
+  deptColor: "#0E7490"
+  brief: "안과 특수외래에서 시력·안압·세극등 검사를 안내하고, 산동제 점안 후 눈부심 등 주의사항을 설명하세요."
+  difficulty: 2
+  timeLabel: "약 5분"
+  skills:
+    - "안과 검사 어휘"
+    - "점안 안내"
+    - "검사 절차 설명"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Will the eye drops sting?", lineKo: "안약 넣으면 따갑나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Just for a second. Rest your chin here and look at the light." }

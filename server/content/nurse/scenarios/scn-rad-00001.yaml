@@ -1,0 +1,51 @@
+# 영상의학과 · CT 조영제 안내·동의 (신규 부서 시나리오, DX building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-RAD-00001
+eventId: EVT-DX-00001
+title: "CT 조영제 안내·동의"
+tagline: "Will the dye hurt? I heard it can be dangerous."
+persona:
+  name: "Mr. Bell"
+  role: patient
+  sub: "복부 CT 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "CT 검사 환자에게 조영제 주입 과정·주의사항·알러지 확인을 안내하고 동의를 받으세요. 따"
+  mood: worried
+goals:
+  - "조영제 어휘"
+  - "알러지 확인"
+  - "검사 동의"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Do you have any allergies to contrast dye?"
+  - "You may feel a warm flush — that's normal."
+  - "Please hold still and hold your breath when I say."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "CT 검사 환자에게 조영제 주입 과정·주의사항·알러지 확인을 안내하고 동의를 받으세요. 따뜻한 느낌 등 정상 반응을 설명하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "조영제 어휘"
+    - "알러지 확인"
+    - "검사 동의"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will the dye hurt? I heard it can be dangerous.", lineKo: "조영제 아프지 않나요? 위험하다던데요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You may feel a warm flush — that's normal. First, any allergies to contrast?" }

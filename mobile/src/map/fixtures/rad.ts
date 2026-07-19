@@ -105,7 +105,7 @@ export const RAD_INTERIOR: Interior = {
     { id: 'hs-checkin', kind: 'info', x: 3, y: 3, label: '검사 접수' },
     { id: 'hs-read', kind: 'quest', x: 16, y: 4, label: '영상 판독 (Read)' },
     { id: 'hs-guide', kind: 'info', x: 9, y: 13, label: '검사 안내' },
-    { id: 'hs-ct', kind: 'quest', x: 3, y: 22, label: '조영제·포지셔닝' },
+    { id: 'hs-ct', kind: 'quest', x: 3, y: 22, label: '조영제·포지셔닝', scenarioId: 'SCN-RAD-00001' },
     { id: 'hs-mri', kind: 'info', x: 15, y: 22, label: '금속 반입 금지' },
     { id: 'hs-xray', kind: 'quest', x: 5, y: 34, label: '흉부 촬영 포지셔닝' },
   ],

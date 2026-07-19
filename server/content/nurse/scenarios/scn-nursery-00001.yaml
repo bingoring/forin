@@ -1,0 +1,50 @@
+# 신생아실 · 신생아 수유·활력 안내 (신규 부서 시나리오, WOMEN building). Authored for role-play
+# from the department's clinical domain (no v16 source scenario).
+id: SCN-NURSERY-00001
+eventId: EVT-WOMEN-00001
+title: "신생아 수유·활력 안내"
+tagline: "Am I holding her the right way?"
+persona:
+  name: "Ji (초산모)"
+  role: parent
+  sub: "초산모 · 딸(3일)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "신생아실에서 초산모에게 손위생·수유 자세·활력 관찰을 안내합니다. 쉬운 말로 설명하고 자신"
+  mood: worried
+goals:
+  - "신생아 케어 어휘"
+  - "수유 자세 안내"
+  - "부모 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "First, let's wash our hands for a full minute."
+  - "Support her head like this."
+  - "You're doing great — she's latching well."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "신생아실에서 초산모에게 손위생·수유 자세·활력 관찰을 안내합니다. 쉬운 말로 설명하고 자신감을 북돋아주세요."
+  difficulty: 1
+  timeLabel: "약 5분"
+  skills:
+    - "신생아 케어 어휘"
+    - "수유 자세 안내"
+    - "부모 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Am I holding her the right way?", lineKo: "이렇게 안는 게 맞나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You're doing great. Support her head like this, and let's wash hands first." }

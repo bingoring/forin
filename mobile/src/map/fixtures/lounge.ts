@@ -96,7 +96,7 @@ export const LOUNGE_INTERIOR: Interior = {
     { id: 'o-ca-plant', type: 'iplant', x: 25, y: 36 },
   ],
   hotspots: [
-    { id: 'hs-change', kind: 'quest', x: 3, y: 2, label: '근무복 환복' },
+    { id: 'hs-change', kind: 'quest', x: 3, y: 2, label: '근무복 환복', scenarioId: 'SCN-LOUNGE-00001' },
     { id: 'hs-tidy', kind: 'info', x: 16, y: 2, label: '탈의·정리' },
     { id: 'hs-rest', kind: 'info', x: 4, y: 20, label: '교대 휴식' },
     { id: 'hs-meal', kind: 'quest', x: 16, y: 18, label: '배식·식사' },

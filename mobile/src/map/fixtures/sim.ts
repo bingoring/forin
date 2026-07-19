@@ -98,7 +98,7 @@ export const SIM_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-admin', kind: 'info', x: 3, y: 3, label: '근무 배치·행정' },
-    { id: 'hs-ppe', kind: 'quest', x: 3, y: 16, label: 'PPE 착탈의 감사' },
+    { id: 'hs-ppe', kind: 'quest', x: 3, y: 16, label: 'PPE 착탈의 감사', scenarioId: 'SCN-SIM-00001' },
     { id: 'hs-debrief', kind: 'info', x: 18, y: 16, label: '사례 디브리핑' },
     { id: 'hs-scenario', kind: 'quest', x: 3, y: 28, label: '응급 시나리오 실습' },
     { id: 'hs-control', kind: 'info', x: 20, y: 30, label: '마네킹 시나리오 조작' },
