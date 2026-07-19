@@ -1,0 +1,50 @@
+# 정신과병동 · 불안발작 대응 (Phase A 다양화 #4, ONCO).
+id: SCN-PSYCH-00004
+eventId: EVT-ONCO-00001
+title: "불안발작 대응"
+tagline: "I can't breathe — I think I'm dying."
+persona:
+  name: "Ms. Vale"
+  role: patient
+  sub: "불안장애"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "공황/불안발작 환자를 안정시키고 호흡을 유도합니다."
+  mood: panic
+goals:
+  - "불안발작 대응"
+  - "호흡 유도"
+  - "안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You're safe — this will pass, I promise."
+  - "Breathe with me: in for four, out for four."
+  - "Feel your feet on the floor. You're here, now."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "공황/불안발작 환자를 안정시키고 호흡을 유도합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "불안발작 대응"
+    - "호흡 유도"
+    - "안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: panic, lineEn: "I can't breathe — I think I'm dying.", lineKo: "숨을 못 쉬겠어요, 죽을 것 같아요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You're safe and this will pass. Breathe with me — in for four, out for four." }

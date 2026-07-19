@@ -1,0 +1,49 @@
+# 신생아실 · 신생아 선별검사 안내 (Phase A 다양화 #5, WOMEN).
+id: SCN-NURSERY-00005
+eventId: EVT-WOMEN-00001
+title: "신생아 선별검사 안내"
+tagline: "What is the heel prick for?"
+persona:
+  name: "Mr. Han"
+  role: parent
+  sub: "신생아 아빠"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "신생아 대사이상 선별검사(heel prick)를 설명합니다."
+  mood: neutral
+goals:
+  - "선별검사 어휘"
+  - "절차 안내"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We take a few drops of blood from the heel."
+  - "It screens for rare but treatable conditions."
+  - "You'll get the results within a couple of weeks."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "신생아 대사이상 선별검사(heel prick)를 설명합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "선별검사 어휘"
+    - "절차 안내"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "What is the heel prick for?", lineKo: "발뒤꿈치 채혈은 왜 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It screens for rare but treatable conditions — just a few drops." }

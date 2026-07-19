@@ -1,0 +1,49 @@
+# 특수외래 · 보청기 상담 (Phase A 다양화 #4, DX).
+id: SCN-SPECIALTY-00004
+eventId: EVT-DX-00001
+title: "보청기 상담"
+tagline: "Everything sounds too loud at first."
+persona:
+  name: "Mr. Novak"
+  role: patient
+  sub: "이비인후과"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "보청기 적응과 관리 방법을 상담합니다."
+  mood: neutral
+goals:
+  - "보청기 어휘"
+  - "적응 교육"
+  - "기기 관리"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Your brain needs a few weeks to adjust."
+  - "Start wearing it in quiet places first."
+  - "Keep it dry and change the batteries regularly."
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "보청기 적응과 관리 방법을 상담합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "보청기 어휘"
+    - "적응 교육"
+    - "기기 관리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Everything sounds too loud at first.", lineKo: "처음엔 다 너무 크게 들려요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "That's normal — your brain adjusts in a few weeks. Start in quiet places." }

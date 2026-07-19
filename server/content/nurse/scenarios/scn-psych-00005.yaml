@@ -1,0 +1,50 @@
+# 정신과병동 · 집단치료 안내 (Phase A 다양화 #5, ONCO).
+id: SCN-PSYCH-00005
+eventId: EVT-ONCO-00001
+title: "집단치료 안내"
+tagline: "I don't want to talk in front of others."
+persona:
+  name: "Mr. Boyd"
+  role: patient
+  sub: "입원 · 집단치료"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "집단치료 참여를 비강압적으로 안내하고 안심시킵니다."
+  mood: neutral
+goals:
+  - "집단치료 어휘"
+  - "참여 격려"
+  - "비강압"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You can just listen at first — that's okay."
+  - "Sharing is invited, never forced."
+  - "Many find it helps to know they're not alone."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "집단치료 참여를 비강압적으로 안내하고 안심시킵니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "집단치료 어휘"
+    - "참여 격려"
+    - "비강압"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "I don't want to talk in front of others.", lineKo: "다른 사람들 앞에서 말하기 싫어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You can just listen at first — sharing is invited, never forced." }

@@ -1,0 +1,50 @@
+# 특수외래 · 녹내장 안압 관리 교육 (Phase A 다양화 #5, DX).
+id: SCN-SPECIALTY-00005
+eventId: EVT-DX-00001
+title: "녹내장 안압 관리 교육"
+tagline: "Why must I use the drops every day?"
+persona:
+  name: "Mrs. Ferro"
+  role: patient
+  sub: "안과 · 녹내장"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "녹내장 안압 조절 안약의 꾸준한 사용을 교육합니다."
+  mood: neutral
+goals:
+  - "녹내장 어휘"
+  - "점안 순응"
+  - "안압 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "These drops lower the pressure in your eye."
+  - "Use them daily, even when you feel fine."
+  - "Missing doses can quietly damage your sight."
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "녹내장 안압 조절 안약의 꾸준한 사용을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "녹내장 어휘"
+    - "점안 순응"
+    - "안압 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Why must I use the drops every day?", lineKo: "왜 매일 안약을 넣어야 하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "They lower your eye pressure. Missing doses can quietly harm your sight." }

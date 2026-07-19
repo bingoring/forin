@@ -1,0 +1,50 @@
+# 특수외래 · 어지럼 검사 안내 (Phase A 다양화 #6, DX).
+id: SCN-SPECIALTY-00006
+eventId: EVT-DX-00001
+title: "어지럼 검사 안내"
+tagline: "The room spins when I turn my head."
+persona:
+  name: "Mr. Sato"
+  role: patient
+  sub: "어지럼 · ENT"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "어지럼(현훈) 검사와 이석정복술을 안내합니다."
+  mood: worried
+goals:
+  - "현훈 어휘"
+  - "검사 안내"
+  - "환자 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We'll gently move your head to find the cause."
+  - "You may feel brief spinning — I'm right here."
+  - "A simple repositioning often helps a lot."
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "어지럼(현훈) 검사와 이석정복술을 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "현훈 어휘"
+    - "검사 안내"
+    - "환자 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "The room spins when I turn my head.", lineKo: "고개를 돌리면 빙빙 돌아요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We'll gently move your head to find the cause — I'm right here." }

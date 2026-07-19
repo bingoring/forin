@@ -1,0 +1,50 @@
+# 인공신장실 · 복막투석 교육 (Phase A 다양화 #4, DX).
+id: SCN-DIAL-00004
+eventId: EVT-DX-00001
+title: "복막투석 교육"
+tagline: "How is this different from hemodialysis?"
+persona:
+  name: "Mr. Bello"
+  role: patient
+  sub: "복막투석 후보"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "복막투석(PD) 원리와 자가 관리를 교육합니다."
+  mood: neutral
+goals:
+  - "복막투석 어휘"
+  - "자가 관리"
+  - "감염 예방"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "PD cleans your blood through the belly lining."
+  - "You can do exchanges at home, even at night."
+  - "Cloudy fluid can mean infection — call us."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "복막투석(PD) 원리와 자가 관리를 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "복막투석 어휘"
+    - "자가 관리"
+    - "감염 예방"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "How is this different from hemodialysis?", lineKo: "혈액투석과 뭐가 다른가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "PD cleans blood through your belly lining — you can do it at home." }

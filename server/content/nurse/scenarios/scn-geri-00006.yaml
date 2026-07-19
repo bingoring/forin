@@ -1,0 +1,49 @@
+# 노인·치매병동 · 요실금 관리 교육 (Phase A 다양화 #6, ONCO).
+id: SCN-GERI-00006
+eventId: EVT-ONCO-00001
+title: "요실금 관리 교육"
+tagline: "It's embarrassing to talk about."
+persona:
+  name: "Mr. Bianco"
+  role: patient
+  sub: "요실금"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "노인 요실금을 존중 어조로 상담하고 관리법을 안내합니다."
+  mood: neutral
+goals:
+  - "요실금 어휘"
+  - "존중 소통"
+  - "관리 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "This is very common, and nothing to be ashamed of."
+  - "A regular toilet schedule can really help."
+  - "We'll keep your skin clean and comfortable."
+briefing:
+  dept: "노인·치매병동"
+  deptColor: "#7C3AED"
+  brief: "노인 요실금을 존중 어조로 상담하고 관리법을 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "요실금 어휘"
+    - "존중 소통"
+    - "관리 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "It's embarrassing to talk about.", lineKo: "말하기 부끄러워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It's very common, nothing to be ashamed of. A regular schedule helps." }

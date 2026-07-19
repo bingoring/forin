@@ -1,0 +1,50 @@
+# 정신과병동 · 퇴원 계획 상담 (Phase A 다양화 #6, ONCO).
+id: SCN-PSYCH-00006
+eventId: EVT-ONCO-00001
+title: "퇴원 계획 상담"
+tagline: "How do I cope after I leave?"
+persona:
+  name: "Ms. Farr"
+  role: patient
+  sub: "퇴원 계획"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "정신과 퇴원 계획(안전계획·복약·추적)을 함께 세웁니다."
+  mood: neutral
+goals:
+  - "퇴원 계획 어휘"
+  - "안전계획"
+  - "자원 연계"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's write a simple safety plan together."
+  - "Keep taking your medicine as prescribed."
+  - "Here are people to call if things get hard."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "정신과 퇴원 계획(안전계획·복약·추적)을 함께 세웁니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "퇴원 계획 어휘"
+    - "안전계획"
+    - "자원 연계"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "How do I cope after I leave?", lineKo: "퇴원 후엔 어떻게 견디죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's write a safety plan together and line up people you can call." }

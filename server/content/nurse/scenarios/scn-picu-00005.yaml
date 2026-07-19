@@ -1,0 +1,50 @@
+# 소아중환자실 · 밤샘 부모 지지 (Phase A 다양화 #5, WOMEN).
+id: SCN-PICU-00005
+eventId: EVT-WOMEN-00001
+title: "밤샘 부모 지지"
+tagline: "I haven't slept in days."
+persona:
+  name: "Mrs. Dubois"
+  role: parent
+  sub: "보호자 · 아들(4y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "중환 소아 부모의 소진을 지지하고 돌봄 자원을 안내합니다."
+  mood: worried
+goals:
+  - "정서 지지 어휘"
+  - "자원 안내"
+  - "공감"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You've been so strong for him."
+  - "Let me bring you a blanket and some water."
+  - "We can watch him so you can rest a little."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "중환 소아 부모의 소진을 지지하고 돌봄 자원을 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "정서 지지 어휘"
+    - "자원 안내"
+    - "공감"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "I haven't slept in days.", lineKo: "며칠째 못 잤어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You've been so strong. Let us watch him so you can rest a little." }

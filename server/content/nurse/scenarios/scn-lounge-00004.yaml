@@ -1,0 +1,50 @@
+# 직원 라운지 · 힘든 근무 후 정서 지지 (Phase A 다양화 #4, ADMIN).
+id: SCN-LOUNGE-00004
+eventId: EVT-ADMIN-00001
+title: "힘든 근무 후 정서 지지"
+tagline: "I lost a patient today."
+persona:
+  name: "Nurse Amara"
+  role: nurse
+  sub: "동료"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "힘든 근무를 겪은 동료를 정서적으로 지지합니다."
+  mood: sad
+goals:
+  - "정서 지지 어휘"
+  - "동료 공감"
+  - "자원 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm so sorry. That's really heavy."
+  - "You did everything you could."
+  - "Do you want to talk, or just sit together?"
+briefing:
+  dept: "직원 라운지"
+  deptColor: "#6E6354"
+  brief: "힘든 근무를 겪은 동료를 정서적으로 지지합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "정서 지지 어휘"
+    - "동료 공감"
+    - "자원 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: sad, lineEn: "I lost a patient today.", lineKo: "오늘 환자를 잃었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'm so sorry — that's really heavy. Do you want to talk, or just sit together?" }

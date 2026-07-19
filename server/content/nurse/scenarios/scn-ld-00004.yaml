@@ -1,0 +1,50 @@
+# 분만실 · 유도분만 설명 (Phase A 다양화 #4, WOMEN).
+id: SCN-LD-00004
+eventId: EVT-WOMEN-00001
+title: "유도분만 설명"
+tagline: "Why do I need to be induced?"
+persona:
+  name: "Mrs. Nadeau"
+  role: patient
+  sub: "초산 · 41주"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "유도분만(induction) 이유와 과정을 설명하고 산모를 안심시킵니다."
+  mood: worried
+goals:
+  - "유도분만 어휘"
+  - "절차 안내"
+  - "산모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We induce because you're past your due date."
+  - "We'll start with medicine to soften the cervix."
+  - "We'll monitor you and the baby closely."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "유도분만(induction) 이유와 과정을 설명하고 산모를 안심시킵니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "유도분만 어휘"
+    - "절차 안내"
+    - "산모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Why do I need to be induced?", lineKo: "왜 유도분만을 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You're past your due date. We'll start gently and monitor you both." }

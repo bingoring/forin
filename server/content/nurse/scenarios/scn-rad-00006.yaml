@@ -1,0 +1,50 @@
+# 영상의학과 · 중재시술 전 설명 (Phase A 다양화 #6, DX).
+id: SCN-RAD-00006
+eventId: EVT-DX-00001
+title: "중재시술 전 설명"
+tagline: "Will I be awake for the biopsy?"
+persona:
+  name: "Mr. Reyes"
+  role: patient
+  sub: "중재시술 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "영상유도 조직검사(중재시술) 전 설명과 동의를 진행합니다."
+  mood: worried
+goals:
+  - "중재시술 어휘"
+  - "동의"
+  - "환자 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We use imaging to guide the needle precisely."
+  - "You'll get local numbing at the site."
+  - "Hold still and breathe as I instruct."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "영상유도 조직검사(중재시술) 전 설명과 동의를 진행합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "중재시술 어휘"
+    - "동의"
+    - "환자 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will I be awake for the biopsy?", lineKo: "조직검사 때 깨어 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes, with local numbing. Imaging guides the needle precisely." }

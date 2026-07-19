@@ -1,0 +1,49 @@
+# 직원 라운지 · 감사·격려 나누기 (Phase A 다양화 #6, ADMIN).
+id: SCN-LOUNGE-00006
+eventId: EVT-ADMIN-00001
+title: "감사·격려 나누기"
+tagline: "Thanks for backing me up earlier."
+persona:
+  name: "Nurse Bello"
+  role: nurse
+  sub: "동료"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "동료 간 감사와 격려를 나누는 대화를 연습합니다."
+  mood: happy
+goals:
+  - "감사 표현"
+  - "팀 문화"
+  - "격려"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Anytime — that's what teammates are for."
+  - "You handled that tough family really well."
+  - "Let's grab coffee before the next round."
+briefing:
+  dept: "직원 라운지"
+  deptColor: "#6E6354"
+  brief: "동료 간 감사와 격려를 나누는 대화를 연습합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "감사 표현"
+    - "팀 문화"
+    - "격려"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: happy, lineEn: "Thanks for backing me up earlier.", lineKo: "아까 도와줘서 고마워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Anytime — that's what teammates are for. You handled it really well." }

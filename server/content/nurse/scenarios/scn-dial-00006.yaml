@@ -1,0 +1,50 @@
+# 인공신장실 · 응급 투석 안내 (Phase A 다양화 #6, DX).
+id: SCN-DIAL-00006
+eventId: EVT-DX-00001
+title: "응급 투석 안내"
+tagline: "Why do I need dialysis right now?"
+persona:
+  name: "Mr. Duarte"
+  role: patient
+  sub: "응급 투석"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "응급 투석(고칼륨/체액과다)의 필요성을 설명하고 안심시킵니다."
+  mood: worried
+goals:
+  - "응급투석 어휘"
+  - "필요성 설명"
+  - "환자 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Your potassium is dangerously high right now."
+  - "Dialysis will bring it down safely."
+  - "I'll stay with you and monitor closely."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "응급 투석(고칼륨/체액과다)의 필요성을 설명하고 안심시킵니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "응급투석 어휘"
+    - "필요성 설명"
+    - "환자 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Why do I need dialysis right now?", lineKo: "왜 지금 당장 투석해야 하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Your potassium is dangerously high — dialysis brings it down safely." }

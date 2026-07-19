@@ -1,0 +1,49 @@
+# 중앙공급실 · 대여 장비 반납 확인 (Phase A 다양화 #5, ADMIN).
+id: SCN-SPD-00005
+eventId: EVT-ADMIN-00001
+title: "대여 장비 반납 확인"
+tagline: "I'm returning the infusion pump."
+persona:
+  name: "Ward Nurse"
+  role: nurse
+  sub: "병동 반납"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "대여 의료장비 반납·점검을 처리합니다."
+  mood: neutral
+goals:
+  - "장비 반납 어휘"
+  - "점검"
+  - "물류 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Thanks — let me log the pump's asset number."
+  - "Is it cleaned and working normally?"
+  - "I'll mark it for maintenance check."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "대여 의료장비 반납·점검을 처리합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "장비 반납 어휘"
+    - "점검"
+    - "물류 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: neutral, lineEn: "I'm returning the infusion pump.", lineKo: "수액 펌프 반납하러 왔어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Thanks — let me log the asset number. Is it cleaned and working?" }

@@ -1,0 +1,50 @@
+# 내시경실 · 진정 내시경 동의 (Phase A 다양화 #6, DX).
+id: SCN-ENDO-00006
+eventId: EVT-DX-00001
+title: "진정 내시경 동의"
+tagline: "Is the sedation safe?"
+persona:
+  name: "Mr. Kang"
+  role: patient
+  sub: "진정 내시경 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "진정 내시경의 안전성과 동의 절차를 설명합니다."
+  mood: worried
+goals:
+  - "진정 어휘"
+  - "동의"
+  - "환자 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The sedation is light and closely monitored."
+  - "You'll be drowsy but breathing on your own."
+  - "Someone should drive you home afterward."
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "진정 내시경의 안전성과 동의 절차를 설명합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "진정 어휘"
+    - "동의"
+    - "환자 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Is the sedation safe?", lineKo: "진정제 안전한가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It's light and closely monitored. You'll be drowsy but breathe on your own." }

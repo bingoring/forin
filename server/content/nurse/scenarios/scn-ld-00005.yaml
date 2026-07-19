@@ -1,0 +1,50 @@
+# 분만실 · 제왕절개 전 준비 (Phase A 다양화 #5, WOMEN).
+id: SCN-LD-00005
+eventId: EVT-WOMEN-00001
+title: "제왕절개 전 준비"
+tagline: "Will I be awake during the C-section?"
+persona:
+  name: "Mrs. Silva"
+  role: patient
+  sub: "제왕절개 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "제왕절개 전 준비(마취·금식·동의)를 안내합니다."
+  mood: worried
+goals:
+  - "제왕절개 어휘"
+  - "수술 전 준비"
+  - "산모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You'll be awake with a spinal block."
+  - "You'll feel pressure, not sharp pain."
+  - "Your partner can be beside you."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "제왕절개 전 준비(마취·금식·동의)를 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "제왕절개 어휘"
+    - "수술 전 준비"
+    - "산모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will I be awake during the C-section?", lineKo: "제왕절개 때 깨어 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes, with a spinal block — you'll feel pressure, not sharp pain." }

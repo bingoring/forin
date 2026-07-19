@@ -1,0 +1,50 @@
+# 재활치료실 · 휠체어 이송 교육 (Phase A 다양화 #5, ONCO).
+id: SCN-REHAB-00005
+eventId: EVT-ONCO-00001
+title: "휠체어 이송 교육"
+tagline: "I'm afraid I'll fall transferring."
+persona:
+  name: "Mrs. Ferro"
+  role: patient
+  sub: "하지마비"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "휠체어 이송(transfer) 안전 기법을 교육합니다."
+  mood: neutral
+goals:
+  - "이송 어휘"
+  - "안전 기법"
+  - "자신감 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Lock the brakes before every transfer."
+  - "Scoot forward, push through your arms."
+  - "I'll guard you until you feel steady."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "휠체어 이송(transfer) 안전 기법을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "이송 어휘"
+    - "안전 기법"
+    - "자신감 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "I'm afraid I'll fall transferring.", lineKo: "옮겨 앉을 때 넘어질까 무서워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Lock the brakes first, push through your arms — I'll guard you." }

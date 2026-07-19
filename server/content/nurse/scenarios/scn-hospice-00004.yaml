@@ -1,0 +1,50 @@
+# 호스피스 · 호흡곤란 완화 안내 (Phase A 다양화 #4, ONCO).
+id: SCN-HOSPICE-00004
+eventId: EVT-ONCO-00001
+title: "호흡곤란 완화 안내"
+tagline: "I feel like I can't catch my breath."
+persona:
+  name: "Mr. Wells"
+  role: patient
+  sub: "말기 · 호흡곤란"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "말기 호흡곤란을 완화하고 환자를 안심시킵니다."
+  mood: worried
+goals:
+  - "호흡곤란 완화"
+  - "안심"
+  - "증상 조절"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's raise the head of your bed and open a window."
+  - "I can give medicine to ease the breathing."
+  - "I'll stay right here with you."
+briefing:
+  dept: "호스피스"
+  deptColor: "#7C3AED"
+  brief: "말기 호흡곤란을 완화하고 환자를 안심시킵니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "호흡곤란 완화"
+    - "안심"
+    - "증상 조절"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I feel like I can't catch my breath.", lineKo: "숨을 못 쉬겠어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's sit you up and open a window. I have medicine to ease it — I'm here." }

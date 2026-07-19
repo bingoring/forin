@@ -1,0 +1,50 @@
+# 영안실 · 장기기증 안내 (Phase A 다양화 #4, ADMIN).
+id: SCN-MORGUE-00004
+eventId: EVT-ADMIN-00001
+title: "장기기증 안내"
+tagline: "He wanted to be a donor."
+persona:
+  name: "Daughter"
+  role: visitor
+  sub: "고인의 딸"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "유족에게 장기기증 절차를 존중과 공감으로 안내합니다."
+  mood: sad
+goals:
+  - "장기기증 어휘"
+  - "유족 응대"
+  - "공감"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Thank you for sharing his wish — it's a gift."
+  - "Our donation coordinator will guide you gently."
+  - "Take all the time you need to decide."
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "유족에게 장기기증 절차를 존중과 공감으로 안내합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "장기기증 어휘"
+    - "유족 응대"
+    - "공감"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "He wanted to be a donor.", lineKo: "아버지는 기증을 원하셨어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Thank you for sharing his wish — it's a gift. Our coordinator will guide you." }

@@ -1,0 +1,50 @@
+# 신생아중환자실 · 수유 진전 상담 (Phase A 다양화 #5, WOMEN).
+id: SCN-NICU-00005
+eventId: EVT-WOMEN-00001
+title: "수유 진전 상담"
+tagline: "When can he drink from a bottle?"
+persona:
+  name: "Preemie's Mom"
+  role: parent
+  sub: "보호자 · 아들(33주)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "미숙아의 경구 수유 진전(관→젖병)을 상담합니다."
+  mood: neutral
+goals:
+  - "수유 진전 어휘"
+  - "발달 설명"
+  - "부모 격려"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "As his suck-swallow-breathe matures, we add bottle feeds."
+  - "We start slow and watch for tiring."
+  - "Every small step is real progress."
+briefing:
+  dept: "신생아중환자실"
+  deptColor: "#DB2777"
+  brief: "미숙아의 경구 수유 진전(관→젖병)을 상담합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "수유 진전 어휘"
+    - "발달 설명"
+    - "부모 격려"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "When can he drink from a bottle?", lineKo: "언제 젖병으로 먹을 수 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "As his suck-swallow-breathe matures — we start slow and build up." }

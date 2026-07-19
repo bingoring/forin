@@ -1,0 +1,49 @@
+# 영상의학과 · 초음파 검사 안내 (Phase A 다양화 #4, DX).
+id: SCN-RAD-00004
+eventId: EVT-DX-00001
+title: "초음파 검사 안내"
+tagline: "Why do I need a full bladder?"
+persona:
+  name: "Mrs. Chen"
+  role: patient
+  sub: "복부 초음파"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "복부/골반 초음파 준비와 절차를 안내합니다."
+  mood: neutral
+goals:
+  - "초음파 어휘"
+  - "검사 준비"
+  - "절차 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "A full bladder gives us a clearer image."
+  - "The gel is cool but harmless."
+  - "It's painless and takes about 20 minutes."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "복부/골반 초음파 준비와 절차를 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "초음파 어휘"
+    - "검사 준비"
+    - "절차 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Why do I need a full bladder?", lineKo: "왜 소변을 참아야 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "A full bladder gives a clearer image. It's painless, about 20 minutes." }

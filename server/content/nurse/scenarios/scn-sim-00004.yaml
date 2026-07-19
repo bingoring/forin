@@ -1,0 +1,50 @@
+# 시뮬레이션랩 · 낙상 시뮬레이션 디브리핑 (Phase A 다양화 #4, ADMIN).
+id: SCN-SIM-00004
+eventId: EVT-ADMIN-00001
+title: "낙상 시뮬레이션 디브리핑"
+tagline: "I should have raised the side rails."
+persona:
+  name: "Learner Nurse"
+  role: nurse
+  sub: "신규 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "낙상 시뮬레이션 후 예방 중재를 디브리핑합니다."
+  mood: neutral
+goals:
+  - "디브리핑"
+  - "낙상 예방"
+  - "성찰"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's start with what you noticed."
+  - "Side rails and a low bed — good catches."
+  - "What cue told you he was high-risk?"
+briefing:
+  dept: "시뮬레이션랩"
+  deptColor: "#6E6354"
+  brief: "낙상 시뮬레이션 후 예방 중재를 디브리핑합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "디브리핑"
+    - "낙상 예방"
+    - "성찰"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: neutral, lineEn: "I should have raised the side rails.", lineKo: "침대 난간을 올렸어야 했어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Good insight. What cue told you he was high-risk? Let's build on that." }

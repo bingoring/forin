@@ -1,0 +1,50 @@
+# 시뮬레이션랩 · 투약오류 근접사례 리뷰 (Phase A 다양화 #6, ADMIN).
+id: SCN-SIM-00006
+eventId: EVT-ADMIN-00001
+title: "투약오류 근접사례 리뷰"
+tagline: "I almost gave the wrong dose."
+persona:
+  name: "Learner Nurse"
+  role: nurse
+  sub: "신규 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "투약오류 근접사례를 비난 없이 리뷰하고 시스템 개선을 논의합니다."
+  mood: worried
+goals:
+  - "투약안전 어휘"
+  - "근접사례 리뷰"
+  - "비난 없는 문화"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Thank you for speaking up — that's what keeps patients safe."
+  - "Let's look at where the check could catch it."
+  - "This is a system fix, not a personal failure."
+briefing:
+  dept: "시뮬레이션랩"
+  deptColor: "#6E6354"
+  brief: "투약오류 근접사례를 비난 없이 리뷰하고 시스템 개선을 논의합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "투약안전 어휘"
+    - "근접사례 리뷰"
+    - "비난 없는 문화"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: worried, lineEn: "I almost gave the wrong dose.", lineKo: "하마터면 잘못된 용량을 줄 뻔했어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Thank you for speaking up — that keeps patients safe. Let's fix the check." }

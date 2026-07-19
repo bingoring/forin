@@ -1,0 +1,50 @@
+# 시뮬레이션랩 · 감염관리 술기 평가 (Phase A 다양화 #5, ADMIN).
+id: SCN-SIM-00005
+eventId: EVT-ADMIN-00001
+title: "감염관리 술기 평가"
+tagline: "Did I don the PPE in the right order?"
+persona:
+  name: "Learner Nurse"
+  role: nurse
+  sub: "신규 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "PPE 착탈의 술기를 평가·피드백합니다."
+  mood: focused
+goals:
+  - "감염관리 어휘"
+  - "PPE 순서"
+  - "피드백"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Gown, mask, goggles, gloves — you had it."
+  - "Doffing order is where errors happen."
+  - "Gloves first when taking it off — remember that."
+briefing:
+  dept: "시뮬레이션랩"
+  deptColor: "#6E6354"
+  brief: "PPE 착탈의 술기를 평가·피드백합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "감염관리 어휘"
+    - "PPE 순서"
+    - "피드백"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "Did I don the PPE in the right order?", lineKo: "보호구를 올바른 순서로 입었나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes — donning was good. Remember, gloves come off first when doffing." }

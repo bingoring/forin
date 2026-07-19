@@ -1,0 +1,49 @@
+# 여성소아외래 · 이유식 시작 상담 (Phase A 다양화 #4, WOMEN).
+id: SCN-WOMENKIDS-00004
+eventId: EVT-WOMEN-00001
+title: "이유식 시작 상담"
+tagline: "When can she start solid food?"
+persona:
+  name: "Mrs. Lopez"
+  role: parent
+  sub: "보호자 · 영아(6m)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "영아 이유식 시작 시기와 알레르기 주의를 상담합니다."
+  mood: neutral
+goals:
+  - "이유식 어휘"
+  - "알레르기 주의"
+  - "부모 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Around six months, start single-grain cereals."
+  - "Introduce one new food at a time."
+  - "Watch for any rash or vomiting."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "영아 이유식 시작 시기와 알레르기 주의를 상담합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "이유식 어휘"
+    - "알레르기 주의"
+    - "부모 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "When can she start solid food?", lineKo: "언제 이유식을 시작하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Around six months — one new food at a time, watching for reactions." }

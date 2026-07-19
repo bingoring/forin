@@ -1,0 +1,50 @@
+# 영안실 · 종교적·문화적 요청 존중 (Phase A 다양화 #6, ADMIN).
+id: SCN-MORGUE-00006
+eventId: EVT-ADMIN-00001
+title: "종교적·문화적 요청 존중"
+tagline: "Our faith has specific rituals."
+persona:
+  name: "Family"
+  role: visitor
+  sub: "고인의 가족"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "임종·사후 종교적/문화적 요청을 존중하고 수용합니다."
+  mood: sad
+goals:
+  - "문화적 돌봄 어휘"
+  - "존중"
+  - "요청 수용"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Please tell us what your traditions need."
+  - "We'll do everything we can to honor them."
+  - "Is there someone we should call for you?"
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "임종·사후 종교적/문화적 요청을 존중하고 수용합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "문화적 돌봄 어휘"
+    - "존중"
+    - "요청 수용"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "Our faith has specific rituals.", lineKo: "저희 종교에는 특별한 의식이 있어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Please tell us what your traditions need — we'll do all we can to honor them." }

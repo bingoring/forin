@@ -1,0 +1,50 @@
+# 재활치료실 · 가정 복귀 평가 (Phase A 다양화 #6, ONCO).
+id: SCN-REHAB-00006
+eventId: EVT-ONCO-00001
+title: "가정 복귀 평가"
+tagline: "Can I manage stairs at home?"
+persona:
+  name: "Mr. Tanaka"
+  role: patient
+  sub: "가정 복귀 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "퇴원 전 가정 복귀 기능(계단·화장실)을 평가·교육합니다."
+  mood: neutral
+goals:
+  - "가정복귀 어휘"
+  - "기능 평가"
+  - "안전 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's practice the stairs with the rail."
+  - "Up with the strong leg, down with the weak."
+  - "We'll list any home changes you'll need."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "퇴원 전 가정 복귀 기능(계단·화장실)을 평가·교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "가정복귀 어휘"
+    - "기능 평가"
+    - "안전 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Can I manage stairs at home?", lineKo: "집 계단을 오를 수 있을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's practice with the rail — up with the strong leg, down with the weak." }

@@ -1,0 +1,50 @@
+# 여성소아외래 · 소아 천식 흡입기 교육 (Phase A 다양화 #5, WOMEN).
+id: SCN-WOMENKIDS-00005
+eventId: EVT-WOMEN-00001
+title: "소아 천식 흡입기 교육"
+tagline: "He's coughing at night again."
+persona:
+  name: "Mrs. Weber"
+  role: parent
+  sub: "보호자 · 아들(7y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 천식 흡입기(inhaler·spacer) 사용법을 교육합니다."
+  mood: worried
+goals:
+  - "천식 어휘"
+  - "흡입기 사용"
+  - "부모 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Always use the spacer with his inhaler."
+  - "Shake it, one puff, then breathe slowly."
+  - "Keep a symptom diary for the doctor."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "소아 천식 흡입기(inhaler·spacer) 사용법을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "천식 어휘"
+    - "흡입기 사용"
+    - "부모 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "He's coughing at night again.", lineKo: "밤마다 또 기침해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's review the inhaler — always use the spacer, one puff at a time." }

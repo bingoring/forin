@@ -1,0 +1,50 @@
+# 중앙공급실 · 내시경 세척 확인 (Phase A 다양화 #4, ADMIN).
+id: SCN-SPD-00004
+eventId: EVT-ADMIN-00001
+title: "내시경 세척 확인"
+tagline: "Is this scope ready to reuse?"
+persona:
+  name: "Endo Tech"
+  role: pharmacist
+  sub: "내시경실 요청"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "내시경 재처리(고수준 소독) 완료를 확인·소통합니다."
+  mood: focused
+goals:
+  - "재처리 어휘"
+  - "소독 확인"
+  - "물품 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Confirm the high-level disinfection cycle ran."
+  - "Check the log and the indicator strip."
+  - "If in doubt, reprocess — patient safety first."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "내시경 재처리(고수준 소독) 완료를 확인·소통합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "재처리 어휘"
+    - "소독 확인"
+    - "물품 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: focused, lineEn: "Is this scope ready to reuse?", lineKo: "이 내시경 재사용해도 되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's confirm the disinfection cycle and indicator. If in doubt, reprocess." }

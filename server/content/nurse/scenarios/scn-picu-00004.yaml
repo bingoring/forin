@@ -1,0 +1,50 @@
+# 소아중환자실 · 소아 수술 후 통증 사정 (Phase A 다양화 #4, WOMEN).
+id: SCN-PICU-00004
+eventId: EVT-WOMEN-00001
+title: "소아 수술 후 통증 사정"
+tagline: "My tummy really hurts."
+persona:
+  name: "Sofia"
+  role: child
+  sub: "7y / F"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "수술 후 소아의 통증을 눈높이로 사정하고 완화합니다."
+  mood: pain
+goals:
+  - "소아 통증 척도"
+  - "눈높이 소통"
+  - "통증 완화"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Can you show me on the faces how much it hurts?"
+  - "I have medicine that will help very soon."
+  - "Squeeze my hand if it hurts more."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "수술 후 소아의 통증을 눈높이로 사정하고 완화합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "소아 통증 척도"
+    - "눈높이 소통"
+    - "통증 완화"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: pain, lineEn: "My tummy really hurts.", lineKo: "배가 너무 아파요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I have medicine to help soon. Show me on the faces how much it hurts." }

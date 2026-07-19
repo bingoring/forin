@@ -1,0 +1,50 @@
+# 내시경실 · 용종 절제 후 안내 (Phase A 다양화 #5, DX).
+id: SCN-ENDO-00005
+eventId: EVT-DX-00001
+title: "용종 절제 후 안내"
+tagline: "Can I go back to normal today?"
+persona:
+  name: "Mrs. Petit"
+  role: patient
+  sub: "용종 절제 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "대장 용종 절제 후 주의사항을 안내합니다."
+  mood: neutral
+goals:
+  - "용종 어휘"
+  - "시술 후 주의"
+  - "경고 징후"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Rest today and avoid heavy meals."
+  - "A little spotting can be normal."
+  - "Severe pain or heavy bleeding — come back at once."
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "대장 용종 절제 후 주의사항을 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "용종 어휘"
+    - "시술 후 주의"
+    - "경고 징후"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Can I go back to normal today?", lineKo: "오늘 바로 일상생활 해도 되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Rest today. A little spotting is normal, but heavy bleeding — come back." }

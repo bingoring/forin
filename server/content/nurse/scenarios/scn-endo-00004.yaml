@@ -1,0 +1,50 @@
+# 내시경실 · 조직검사 결과 안내 (Phase A 다양화 #4, DX).
+id: SCN-ENDO-00004
+eventId: EVT-DX-00001
+title: "조직검사 결과 안내"
+tagline: "Did you find anything bad?"
+persona:
+  name: "Mr. Abe"
+  role: patient
+  sub: "위내시경 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "위내시경 조직검사 절차와 결과 대기를 안내합니다."
+  mood: neutral
+goals:
+  - "조직검사 어휘"
+  - "결과 안내"
+  - "환자 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We took a small tissue sample to be sure."
+  - "Results usually come in a few days."
+  - "Try soft foods today and avoid alcohol."
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "위내시경 조직검사 절차와 결과 대기를 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "조직검사 어휘"
+    - "결과 안내"
+    - "환자 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Did you find anything bad?", lineKo: "뭔가 안 좋은 게 있었나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We took a small sample to be sure. Results come in a few days." }

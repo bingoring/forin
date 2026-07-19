@@ -1,0 +1,50 @@
+# 중앙공급실 · 리콜 물품 회수 (Phase A 다양화 #6, ADMIN).
+id: SCN-SPD-00006
+eventId: EVT-ADMIN-00001
+title: "리콜 물품 회수"
+tagline: "There's a recall on this lot."
+persona:
+  name: "Pharmacist"
+  role: pharmacist
+  sub: "리콜 공지"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "리콜된 물품 회수 절차를 정확히 안내·처리합니다."
+  mood: focused
+goals:
+  - "리콜 어휘"
+  - "회수 절차"
+  - "안전 확인"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Please pull all units from this lot number."
+  - "Quarantine them and don't use any."
+  - "I'll document the recall and quantities."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "리콜된 물품 회수 절차를 정확히 안내·처리합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "리콜 어휘"
+    - "회수 절차"
+    - "안전 확인"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: focused, lineEn: "There's a recall on this lot.", lineKo: "이 로트에 리콜이 걸렸어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Pull all units from that lot, quarantine them — I'll document the quantities." }

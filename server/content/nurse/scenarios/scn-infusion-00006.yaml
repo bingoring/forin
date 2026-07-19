@@ -1,0 +1,50 @@
+# 주사센터 · 케모포트 관리 교육 (Phase A 다양화 #6, DX).
+id: SCN-INFUSION-00006
+eventId: EVT-DX-00001
+title: "케모포트 관리 교육"
+tagline: "How do I care for my port?"
+persona:
+  name: "Mr. Kim"
+  role: patient
+  sub: "항암 포트 보유"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "외래 항암 포트(chemo port) 관리와 감염 징후를 교육합니다."
+  mood: neutral
+goals:
+  - "포트 어휘"
+  - "자가 관리"
+  - "감염 관찰"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Keep the site clean and watch for redness."
+  - "No heavy lifting on that side for now."
+  - "Fever or swelling — call us right away."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "외래 항암 포트(chemo port) 관리와 감염 징후를 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "포트 어휘"
+    - "자가 관리"
+    - "감염 관찰"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "How do I care for my port?", lineKo: "포트는 어떻게 관리하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Keep it clean, avoid heavy lifting that side, and watch for redness." }

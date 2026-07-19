@@ -1,0 +1,49 @@
+# 영상의학과 · 골밀도(DEXA) 검사 안내 (Phase A 다양화 #5, DX).
+id: SCN-RAD-00005
+eventId: EVT-DX-00001
+title: "골밀도(DEXA) 검사 안내"
+tagline: "Is there a lot of radiation?"
+persona:
+  name: "Mrs. Oh"
+  role: patient
+  sub: "골밀도 검사"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "골밀도 검사 절차와 낮은 방사선량을 안내합니다."
+  mood: neutral
+goals:
+  - "골밀도 어휘"
+  - "방사선 안내"
+  - "검사 협조"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The radiation dose is very low."
+  - "Just lie still while the arm passes over you."
+  - "It only takes about ten minutes."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "골밀도 검사 절차와 낮은 방사선량을 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "골밀도 어휘"
+    - "방사선 안내"
+    - "검사 협조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Is there a lot of radiation?", lineKo: "방사선이 많이 나오나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The dose is very low. Just lie still for about ten minutes." }

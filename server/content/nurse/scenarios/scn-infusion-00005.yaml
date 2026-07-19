@@ -1,0 +1,50 @@
+# 주사센터 · 면역글로불린(IVIG) 주입 (Phase A 다양화 #5, DX).
+id: SCN-INFUSION-00005
+eventId: EVT-DX-00001
+title: "면역글로불린(IVIG) 주입"
+tagline: "Why does it take so long?"
+persona:
+  name: "Mrs. Bauer"
+  role: patient
+  sub: "면역결핍"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "IVIG 주입 속도와 부작용 관찰을 설명합니다."
+  mood: worried
+goals:
+  - "IVIG 어휘"
+  - "속도 설명"
+  - "부작용 관찰"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We start slow to prevent reactions."
+  - "Headache or chills can happen — tell me early."
+  - "I'll check your vitals throughout."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "IVIG 주입 속도와 부작용 관찰을 설명합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "IVIG 어휘"
+    - "속도 설명"
+    - "부작용 관찰"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Why does it take so long?", lineKo: "왜 이렇게 오래 걸리나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We start slow to prevent reactions and check your vitals throughout." }

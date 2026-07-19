@@ -1,0 +1,50 @@
+# 영안실 · 사망 관련 서류 안내 (Phase A 다양화 #5, ADMIN).
+id: SCN-MORGUE-00005
+eventId: EVT-ADMIN-00001
+title: "사망 관련 서류 안내"
+tagline: "What documents do we need now?"
+persona:
+  name: "Son"
+  role: visitor
+  sub: "고인의 아들"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "사망진단서 등 유족이 처리할 서류를 안내합니다."
+  mood: neutral
+goals:
+  - "서류 어휘"
+  - "절차 안내"
+  - "유족 응대"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'll walk you through each document slowly."
+  - "You'll need the death certificate for arrangements."
+  - "Here's a checklist so nothing is missed."
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "사망진단서 등 유족이 처리할 서류를 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "서류 어휘"
+    - "절차 안내"
+    - "유족 응대"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: neutral, lineEn: "What documents do we need now?", lineKo: "이제 어떤 서류가 필요한가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'll walk you through each one slowly — here's a checklist so nothing's missed." }
