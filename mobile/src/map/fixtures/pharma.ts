@@ -125,17 +125,17 @@ export const PHARMA_INTERIOR: Interior = {
   ],
   npcs: [
     // pick-up window
-    { id: 'ph-w-rx', kind: 'doctor', mode: 'idle', seed: 401, start: { x: 4, y: 3 } }, // pharmacist behind glass
+    { id: 'ph-w-rx', kind: 'doctor', mode: 'idle', seed: 401, start: { x: 4, y: 3 }, marker: 'quest', markerLabel: '구두 처방', scenarioId: 'SCN-PHARMA-00002' }, // pharmacist behind glass
     { id: 'ph-w-n1', kind: 'nurse', mode: 'idle', seed: 402, start: { x: 5, y: 9 } },
     { id: 'ph-w-n2', kind: 'nurse', mode: 'idle', seed: 403, start: { x: 8, y: 9 } },
     { id: 'ph-w-n3', kind: 'nurse', mode: 'idle', seed: 404, start: { x: 18, y: 9 } },
     // dispensing
-    { id: 'ph-d-p1', kind: 'doctor', mode: 'idle', seed: 405, start: { x: 14, y: 22 } },
-    { id: 'ph-d-p2', kind: 'doctor', mode: 'idle', seed: 406, start: { x: 16, y: 22 } },
-    { id: 'ph-d-n', kind: 'nurse', mode: 'idle', seed: 407, start: { x: 10, y: 25 } },
+    { id: 'ph-d-p1', kind: 'doctor', mode: 'idle', seed: 405, start: { x: 14, y: 22 }, marker: 'quest', markerLabel: '헤파린 체크', scenarioId: 'SCN-PHARMA-00001' },
+    { id: 'ph-d-p2', kind: 'doctor', mode: 'idle', seed: 406, start: { x: 16, y: 22 }, marker: 'quest', markerLabel: '소아 용량', scenarioId: 'SCN-PHARMA-00003' },
+    { id: 'ph-d-n', kind: 'nurse', mode: 'idle', seed: 407, start: { x: 10, y: 25 }, marker: 'info', markerLabel: '마약류 픽업', scenarioId: 'SCN-PHARMA-00004' },
     // vault
     { id: 'ph-v-p', kind: 'doctor', mode: 'idle', seed: 408, start: { x: 8, y: 36 } },
     // cleanroom
-    { id: 'ph-c-s', kind: 'surgeon', mode: 'idle', seed: 409, start: { x: 26, y: 28 } },
+    { id: 'ph-c-s', kind: 'surgeon', mode: 'idle', seed: 409, start: { x: 26, y: 28 }, marker: 'urgent', markerLabel: 'IV 혼합', scenarioId: 'SCN-PHARMA-00005' },
   ],
 };

@@ -103,7 +103,7 @@ export const ICU_INTERIOR: Interior = {
     { id: 'o-hub-ph1', type: 'phone', x: 9, y: 22 },
     { id: 'o-hub-ph2', type: 'phone', x: 18, y: 22 },
     { id: 'bl-code', type: 'baylabel', x: 23, y: 20, props: { text: 'CODE BLUE' } },
-    { id: 'o-hub-crash', type: 'crashcart', x: 24, y: 22, props: { marker: 'urgent', markerLabel: 'CODE BLUE', scenarioId: 'icu-code-blue' } },
+    { id: 'o-hub-crash', type: 'crashcart', x: 24, y: 22, props: { marker: 'urgent', markerLabel: 'CODE BLUE', scenarioId: 'SCN-ICU-00003' } },
 
     // ════════ 면회 대기실 (family) ════════
     { id: 'bl-fam', type: 'baylabel', x: 1, y: 31, props: { text: '면회 대기실 · VISITOR' } },
@@ -136,17 +136,17 @@ export const ICU_INTERIOR: Interior = {
   hotspots: [],
   npcs: [
     // room nurses (markers = the room task)
-    { id: 'icu-r1-n', kind: 'nurse', mode: 'idle', seed: 201, start: { x: 4, y: 11 }, marker: 'quest', markerLabel: '승압제 적정', scenarioId: 'icu-park-vent' },
+    { id: 'icu-r1-n', kind: 'nurse', mode: 'idle', seed: 201, start: { x: 4, y: 11 }, marker: 'quest', markerLabel: '승압제 적정', scenarioId: 'SCN-ICU-00001' },
     { id: 'icu-r2-n', kind: 'nurse', mode: 'idle', seed: 202, start: { x: 10, y: 11 }, marker: 'info', markerLabel: '필터 압력' },
-    { id: 'icu-r3-n', kind: 'nurse', mode: 'idle', seed: 203, start: { x: 18, y: 11 }, marker: 'quest', markerLabel: '동공·GCS 사정', scenarioId: 'icu-psychosis' },
+    { id: 'icu-r3-n', kind: 'nurse', mode: 'idle', seed: 203, start: { x: 18, y: 11 }, marker: 'quest', markerLabel: '동공·GCS 사정', scenarioId: 'SCN-ICU-00004' },
     { id: 'icu-r4-n', kind: 'nurse', mode: 'idle', seed: 204, start: { x: 26, y: 11 }, marker: 'info', markerLabel: '떨림 감시' },
     // central hub team
-    { id: 'icu-hub-n1', kind: 'nurse', mode: 'idle', seed: 205, start: { x: 8, y: 25 }, marker: 'quest', markerLabel: 'SBAR / ABGA', scenarioId: 'icu-monitor-alarm' },
+    { id: 'icu-hub-n1', kind: 'nurse', mode: 'idle', seed: 205, start: { x: 8, y: 25 }, marker: 'quest', markerLabel: 'SBAR / ABGA', scenarioId: 'SCN-ICU-00005' },
     { id: 'icu-hub-d1', kind: 'doctor', mode: 'idle', seed: 206, start: { x: 13, y: 25 } },
     { id: 'icu-hub-d2', kind: 'doctor', mode: 'idle', seed: 207, start: { x: 18, y: 25 }, marker: 'info', markerLabel: 'RT · VENT 설정' },
     { id: 'icu-hub-n2', kind: 'nurse', mode: 'idle', seed: 208, start: { x: 22, y: 25 } },
     // family
-    { id: 'icu-fam-v1', kind: 'visitor', mode: 'idle', seed: 209, start: { x: 6, y: 37 }, marker: 'info', markerLabel: '면회 대기', scenarioId: 'icu-eol-family' },
+    { id: 'icu-fam-v1', kind: 'visitor', mode: 'idle', seed: 209, start: { x: 6, y: 37 }, marker: 'info', markerLabel: '면회 대기', scenarioId: 'SCN-ICU-00002' },
     { id: 'icu-fam-v2', kind: 'visitor', mode: 'idle', seed: 210, start: { x: 9, y: 40 } },
     // med
     { id: 'icu-med-n', kind: 'nurse', mode: 'idle', seed: 211, start: { x: 26, y: 40 }, marker: 'quest', markerLabel: '투약 준비' },
