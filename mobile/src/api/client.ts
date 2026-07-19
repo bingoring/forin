@@ -100,6 +100,12 @@ export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;
 }
 
+export interface WordScore { word: string; accuracy: number; errorType?: string }
+export interface PronunciationResult {
+  recognized: string; accuracy: number; fluency: number; completeness: number; overall: number;
+  words?: WordScore[];
+}
+
 export const api = {
   raw: http,
 
@@ -148,6 +154,12 @@ export const api = {
   async scenario(id: string): Promise<ScenarioDetail> {
     const { data } = await http.get(`/scenarios/${id}`);
     return data as ScenarioDetail;
+  },
+
+  /** Assess pronunciation of recorded audio (base64 16kHz mono WAV) vs a reference. */
+  async assessPronunciation(referenceText: string, audioBase64: string): Promise<PronunciationResult> {
+    const { data } = await http.post('/pronunciation', { referenceText, audioBase64 });
+    return data as PronunciationResult;
   },
 
   /** Full quiz (playable content). GET /quizzes/{id}. */

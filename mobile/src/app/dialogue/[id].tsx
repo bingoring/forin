@@ -9,6 +9,7 @@ import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, Text, Tex
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
+import { PronunciationPractice } from '@/components/PronunciationPractice';
 import { api, type ScenarioDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -169,6 +170,8 @@ export default function DialogueRoute() {
                 <ChoiceRow key={i} num={i + 1} text={phrase} suggested={i === 0} onPress={() => { setDraft(phrase); setHintOn(false); }} />
               ))}
             </View>
+            {/* pronunciation practice for the suggested phrase */}
+            <PronunciationPractice referenceText={scenario.keyPhrases[0]} />
           </View>
         )}
 
