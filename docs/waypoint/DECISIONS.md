@@ -813,3 +813,12 @@
 - 검증: 로더 전체 번들 검증(id·eventId 참조·enum·briefing 왕복) 통과 · seed 29 · `GET /scenarios` 스팟체크(role·mood·keyPhrases·rewards) · 시뮬레이터 OR 동의 briefing 렌더(보라 테마·콧수염 초상).
 - 후속: 각 부서 인테리어 핫스팟 배선 · quiz 타입 확장.
 - **결정자:** 사용자("OR/PEDS/ICU/PHARMA 시나리오도 만들어줘") + AI(저작·검증).
+
+## 2026-07-19 · 신규 20부서 시나리오 저작 + 배선 (전 부서 커버)
+- v16 scenarios-data.jsx엔 신규부서 시나리오 없음 → **각 부서 임상 도메인 기반 from-scratch 저작** 19종(infusion·nursery·womenkids·ld·nicu·picu / rad·endo·dial·specialty / onco·hospice·geri·psych·rehab / sim·lounge·spd·morgue).
+- 건물별 이벤트 4개(EVT-{WOMEN,DX,ONCO,ADMIN}-00001, daily_pool). **총 48 시나리오·11 이벤트 seed.**
+- 배선: 각 신규 인테리어의 quest 핫스팟(hs-*)에 scenarioId 추가(라벨-시나리오 매칭: rad hs-ct→조영제, ld hs-contract→분만 등). 19/19.
+- 건물 테마색: WOMEN 핑크·DX 청록·ONCO 보라·ADMIN 브라운. 민감 도메인(hospice·psych·morgue)은 공감·존엄·비판단 가드레일.
+- 검증: 로더 전체 번들 검증·seed 48·스팟체크(mood/difficulty)·tsc 0·jest 208/208·시뮬레이터 분만(LD) 렌더(핑크·pain·B2+).
+- **마일스톤: 5개 코어(ER/OR/PEDS/ICU/PHARMA) + 신규 19부서 = 전 부서 최소 1개 플레이 가능 시나리오 배선 완료.**
+- **결정자:** 사용자("신규 20부서 시나리오도 만들어줘") + AI(from-scratch 저작·배선·검증).
