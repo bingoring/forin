@@ -1,0 +1,50 @@
+# 소아과 · 열성경련 대응 (단계 B #7, 코어).
+id: SCN-PEDS-00007
+eventId: EVT-PEDS-00001
+title: "열성경련 대응"
+tagline: "He just had a seizure with the fever!"
+persona:
+  name: "Mrs. Weber"
+  role: parent
+  sub: "보호자 · 아들(18m)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 열성경련에 대응하고 부모를 안심시킵니다."
+  mood: panic
+goals:
+  - "열성경련 어휘"
+  - "응급 대응"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Most febrile seizures are brief and not harmful."
+  - "Turn him on his side and time it."
+  - "We'll treat the fever and watch him closely."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "소아 열성경련에 대응하고 부모를 안심시킵니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "열성경련 어휘"
+    - "응급 대응"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: panic, lineEn: "He just had a seizure with the fever!", lineKo: "열이 나면서 경련을 했어요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Most febrile seizures are brief — turn him on his side. We'll treat the fever and watch him." }

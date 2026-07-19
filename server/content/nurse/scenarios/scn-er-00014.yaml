@@ -1,0 +1,50 @@
+# 응급실 · 흉부 외상 사정 (단계 B #14, 코어).
+id: SCN-ER-00014
+eventId: EVT-ER-00001
+title: "흉부 외상 사정"
+tagline: "It hurts to breathe after the crash."
+persona:
+  name: "Mr. Osei"
+  role: patient
+  sub: "흉부 외상"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "흉부 외상 환자의 호흡·순환을 신속 사정합니다."
+  mood: panic
+goals:
+  - "흉부외상 어휘"
+  - "ABC 사정"
+  - "응급"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Take shallow breaths — I'm checking your chest."
+  - "Any part where it feels like air is trapped?"
+  - "We're getting a chest X-ray now."
+briefing:
+  dept: "응급실"
+  deptColor: "#DC2626"
+  brief: "흉부 외상 환자의 호흡·순환을 신속 사정합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "흉부외상 어휘"
+    - "ABC 사정"
+    - "응급"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: panic, lineEn: "It hurts to breathe after the crash.", lineKo: "사고 후 숨 쉴 때 아파요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'm checking your chest — take shallow breaths. We're getting an X-ray now." }

@@ -1,0 +1,50 @@
+# 소아과 · 소아 천식 발작 (단계 B #12, 코어).
+id: SCN-PEDS-00012
+eventId: EVT-PEDS-00001
+title: "소아 천식 발작"
+tagline: "She can barely breathe between coughs."
+persona:
+  name: "Mrs. Haddad"
+  role: parent
+  sub: "보호자 · 딸(6y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 천식 급성 발작에 신속 대응합니다."
+  mood: panic
+goals:
+  - "천식발작 어휘"
+  - "응급 대응"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's give her the rescue inhaler with the spacer now."
+  - "Sit her upright and stay calm with me."
+  - "We're watching her oxygen closely."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "소아 천식 급성 발작에 신속 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "천식발작 어휘"
+    - "응급 대응"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: panic, lineEn: "She can barely breathe between coughs.", lineKo: "기침 사이에 숨을 거의 못 쉬어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Rescue inhaler with the spacer now — sit her upright, we're watching her oxygen." }

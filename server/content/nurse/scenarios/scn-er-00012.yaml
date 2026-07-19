@@ -1,0 +1,50 @@
+# 응급실 · 알콜 금단 사정 (단계 B #12, 코어).
+id: SCN-ER-00012
+eventId: EVT-ER-00001
+title: "알콜 금단 사정"
+tagline: "I'm shaking and seeing things."
+persona:
+  name: "Mr. Boyd"
+  role: patient
+  sub: "알콜 금단"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "알콜 금단(진전섬망 위험)을 사정하고 안정시킵니다."
+  mood: worried
+goals:
+  - "금단 어휘"
+  - "증상 사정"
+  - "안전"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "When was your last drink?"
+  - "The shaking and visions can be withdrawal."
+  - "We have medicine to keep you safe and calm."
+briefing:
+  dept: "응급실"
+  deptColor: "#DC2626"
+  brief: "알콜 금단(진전섬망 위험)을 사정하고 안정시킵니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "금단 어휘"
+    - "증상 사정"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I'm shaking and seeing things.", lineKo: "손이 떨리고 헛것이 보여요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "When was your last drink? That can be withdrawal — we have medicine to keep you safe." }

@@ -1,0 +1,50 @@
+# 응급실 · 두부 외상 사정 (단계 B #10, 코어).
+id: SCN-ER-00010
+eventId: EVT-ER-00001
+title: "두부 외상 사정"
+tagline: "I hit my head when I fell."
+persona:
+  name: "Mrs. Cole"
+  role: patient
+  sub: "낙상 · 두부"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "낙상 후 두부 외상과 신경학적 상태를 사정합니다."
+  mood: worried
+goals:
+  - "두부외상 어휘"
+  - "신경 사정"
+  - "경고징후"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Did you black out at all?"
+  - "Any worsening headache or vomiting?"
+  - "We'll watch you and may do a scan."
+briefing:
+  dept: "응급실"
+  deptColor: "#DC2626"
+  brief: "낙상 후 두부 외상과 신경학적 상태를 사정합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "두부외상 어휘"
+    - "신경 사정"
+    - "경고징후"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I hit my head when I fell.", lineKo: "넘어지면서 머리를 부딪쳤어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Did you black out? Any worsening headache or vomiting? We'll watch you closely." }

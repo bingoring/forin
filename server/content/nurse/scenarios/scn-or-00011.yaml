@@ -1,0 +1,49 @@
+# 수술실 · 저체온 관리 (단계 B #11, 코어).
+id: SCN-OR-00011
+eventId: EVT-OR-00001
+title: "저체온 관리"
+tagline: "I can't stop shivering."
+persona:
+  name: "Mr. Tan"
+  role: patient
+  sub: "회복실"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "수술 후 저체온·떨림을 관리하고 안심시킵니다."
+  mood: worried
+goals:
+  - "저체온 어휘"
+  - "보온"
+  - "안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Shivering after surgery is common."
+  - "Let me get you a warm blanket now."
+  - "We'll check your temperature and warm you up."
+briefing:
+  dept: "수술실"
+  deptColor: "#9333EA"
+  brief: "수술 후 저체온·떨림을 관리하고 안심시킵니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "저체온 어휘"
+    - "보온"
+    - "안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I can't stop shivering.", lineKo: "자꾸 떨려요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Shivering after surgery is common — let me get you a warm blanket now." }

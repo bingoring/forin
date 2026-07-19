@@ -1,0 +1,49 @@
+# 소아과 · 소아 성장 계측 상담 (단계 B #10, 코어).
+id: SCN-PEDS-00010
+eventId: EVT-PEDS-00001
+title: "소아 성장 계측 상담"
+tagline: "Is he tall enough for his age?"
+persona:
+  name: "Mrs. Adeyemi"
+  role: parent
+  sub: "보호자 · 아들(2y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 성장 계측(percentile)을 설명하고 상담합니다."
+  mood: neutral
+goals:
+  - "성장 어휘"
+  - "백분위 설명"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "He's tracking along his growth curve nicely."
+  - "We look at the trend, not just one number."
+  - "Balanced meals and sleep support growth."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "소아 성장 계측(percentile)을 설명하고 상담합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "성장 어휘"
+    - "백분위 설명"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "Is he tall enough for his age?", lineKo: "또래보다 키가 괜찮은 편인가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "He's tracking his growth curve nicely — we look at the trend, not one number." }

@@ -1,0 +1,50 @@
+# 소아과 · 소아 탈수 사정 (단계 B #6, 코어).
+id: SCN-PEDS-00006
+eventId: EVT-PEDS-00001
+title: "소아 탈수 사정"
+tagline: "She's had diarrhea and won't drink."
+persona:
+  name: "Mrs. Ruiz"
+  role: parent
+  sub: "보호자 · 딸(2y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 탈수 정도를 사정하고 수분 보충을 교육합니다."
+  mood: worried
+goals:
+  - "탈수 어휘"
+  - "사정"
+  - "수분 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "How many wet diapers today?"
+  - "Let's check her mouth and skin for dryness."
+  - "Small sips of oral rehydration, often."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "소아 탈수 정도를 사정하고 수분 보충을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "탈수 어휘"
+    - "사정"
+    - "수분 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "She's had diarrhea and won't drink.", lineKo: "설사하고 물도 안 마셔요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "How many wet diapers today? Let's try small sips of oral rehydration, often." }

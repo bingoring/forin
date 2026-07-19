@@ -1,0 +1,50 @@
+# 수술실 · 마취 전 문진 (단계 B #6, 코어).
+id: SCN-OR-00006
+eventId: EVT-OR-00001
+title: "마취 전 문진"
+tagline: "Have I fasted long enough?"
+persona:
+  name: "Mr. Lowe"
+  role: patient
+  sub: "수술 전"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "마취 전 문진(금식·알레르기·병력)을 진행합니다."
+  mood: worried
+goals:
+  - "마취 문진 어휘"
+  - "금식 확인"
+  - "병력"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "When did you last eat or drink?"
+  - "Any allergies or reactions to anesthesia before?"
+  - "Any loose teeth, caps, or implants?"
+briefing:
+  dept: "수술실"
+  deptColor: "#9333EA"
+  brief: "마취 전 문진(금식·알레르기·병력)을 진행합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "마취 문진 어휘"
+    - "금식 확인"
+    - "병력"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Have I fasted long enough?", lineKo: "금식을 충분히 했나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "When did you last eat or drink? And any past reactions to anesthesia?" }

@@ -1,0 +1,49 @@
+# 소아과 · 중이염 상담 (단계 B #9, 코어).
+id: SCN-PEDS-00009
+eventId: EVT-PEDS-00001
+title: "중이염 상담"
+tagline: "He keeps pulling at his ear and crying."
+persona:
+  name: "Mr. Johnson"
+  role: parent
+  sub: "보호자 · 아들(4y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 중이염 증상을 상담하고 관리를 교육합니다."
+  mood: worried
+goals:
+  - "중이염 어휘"
+  - "증상 설명"
+  - "관리"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Ear-pulling with fever can mean an ear infection."
+  - "We'll look inside with a scope."
+  - "Pain relief helps while it clears."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "소아 중이염 증상을 상담하고 관리를 교육합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "중이염 어휘"
+    - "증상 설명"
+    - "관리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "He keeps pulling at his ear and crying.", lineKo: "자꾸 귀를 잡아당기며 울어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Ear-pulling with fever can mean an ear infection — we'll look inside and manage the pain." }

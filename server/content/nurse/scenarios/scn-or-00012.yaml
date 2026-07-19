@@ -1,0 +1,50 @@
+# 수술실 · 수술 중 출혈 대응 (단계 B #12, 코어).
+id: SCN-OR-00012
+eventId: EVT-OR-00001
+title: "수술 중 출혈 대응"
+tagline: "We have unexpected bleeding."
+persona:
+  name: "Dr. Kim"
+  role: doctor
+  sub: "집도의"
+  hair: "#1F2937"
+  hairStyle: short
+  personality: "수술 중 출혈에 팀으로 신속 대응합니다."
+  mood: panic
+goals:
+  - "출혈 어휘"
+  - "팀 대응"
+  - "신속"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm calling for extra units of blood now."
+  - "Suction ready, and I have the pressure held."
+  - "What else do you need from me?"
+briefing:
+  dept: "수술실"
+  deptColor: "#9333EA"
+  brief: "수술 중 출혈에 팀으로 신속 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "출혈 어휘"
+    - "팀 대응"
+    - "신속"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: doctor, expression: panic, lineEn: "We have unexpected bleeding.", lineKo: "예상치 못한 출혈이 있어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Calling for blood now, suction ready, pressure held — what else do you need?" }

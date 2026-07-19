@@ -1,0 +1,50 @@
+# 소아과 · 학령기 소아 통증 사정 (단계 B #14, 코어).
+id: SCN-PEDS-00014
+eventId: EVT-PEDS-00001
+title: "학령기 소아 통증 사정"
+tagline: "My stomach really hurts."
+persona:
+  name: "Sam"
+  role: child
+  sub: "9y / M"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "학령기 소아의 복통을 눈높이로 사정합니다."
+  mood: pain
+goals:
+  - "소아 통증 어휘"
+  - "눈높이 사정"
+  - "공감"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Can you point to where it hurts most?"
+  - "Is it a sharp pain or a dull ache?"
+  - "You're doing great telling me about it."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "학령기 소아의 복통을 눈높이로 사정합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "소아 통증 어휘"
+    - "눈높이 사정"
+    - "공감"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: pain, lineEn: "My stomach really hurts.", lineKo: "배가 너무 아파요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Can you point to where it hurts most? Sharp or a dull ache? You're doing great." }

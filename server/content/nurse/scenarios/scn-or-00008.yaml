@@ -1,0 +1,50 @@
+# 수술실 · 무균술 유지 (단계 B #8, 코어).
+id: SCN-OR-00008
+eventId: EVT-OR-00001
+title: "무균술 유지"
+tagline: "Did I break the sterile field?"
+persona:
+  name: "Scrub Tech"
+  role: nurse
+  sub: "스크럽"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "수술 중 무균술(sterile technique) 위반을 인지·대응합니다."
+  mood: focused
+goals:
+  - "무균술 어휘"
+  - "오염 대응"
+  - "안전"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "If in doubt, consider it contaminated."
+  - "Let's re-gown and open a fresh set."
+  - "Keep your hands above waist, in view."
+briefing:
+  dept: "수술실"
+  deptColor: "#9333EA"
+  brief: "수술 중 무균술(sterile technique) 위반을 인지·대응합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "무균술 어휘"
+    - "오염 대응"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "Did I break the sterile field?", lineKo: "무균 구역을 오염시켰나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "If in doubt, treat it as contaminated — let's re-gown and open a fresh set." }

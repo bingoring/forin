@@ -1,0 +1,50 @@
+# 수술실 · 검체 처리 확인 (단계 B #9, 코어).
+id: SCN-OR-00009
+eventId: EVT-OR-00001
+title: "검체 처리 확인"
+tagline: "How should I label this specimen?"
+persona:
+  name: "Circulating Nurse"
+  role: nurse
+  sub: "순환"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "수술 검체(specimen) 라벨·처리를 정확히 확인합니다."
+  mood: focused
+goals:
+  - "검체 어휘"
+  - "라벨"
+  - "확인"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Label it with site, side, and patient ID."
+  - "Confirm the request with the surgeon."
+  - "Log it before it leaves the room."
+briefing:
+  dept: "수술실"
+  deptColor: "#9333EA"
+  brief: "수술 검체(specimen) 라벨·처리를 정확히 확인합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "검체 어휘"
+    - "라벨"
+    - "확인"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "How should I label this specimen?", lineKo: "이 검체는 어떻게 라벨하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Site, side, and patient ID — confirm with the surgeon and log it before it leaves." }

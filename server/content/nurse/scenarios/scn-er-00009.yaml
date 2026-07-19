@@ -1,0 +1,50 @@
+# 응급실 · 뇌졸중 의심 신속 사정 (단계 B #9, 코어).
+id: SCN-ER-00009
+eventId: EVT-ER-00001
+title: "뇌졸중 의심 신속 사정"
+tagline: "My arm went weak and my speech is slurred."
+persona:
+  name: "Mr. Doyle"
+  role: patient
+  sub: "68세 · 편측 위약"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "뇌졸중 의심 환자를 FAST로 신속 사정하고 시간을 기록합니다."
+  mood: worried
+goals:
+  - "뇌졸중 어휘"
+  - "FAST 사정"
+  - "시간 기록"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "When did the symptoms start exactly?"
+  - "Can you smile and raise both arms for me?"
+  - "Time is brain — we're moving fast."
+briefing:
+  dept: "응급실"
+  deptColor: "#DC2626"
+  brief: "뇌졸중 의심 환자를 FAST로 신속 사정하고 시간을 기록합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "뇌졸중 어휘"
+    - "FAST 사정"
+    - "시간 기록"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "My arm went weak and my speech is slurred.", lineKo: "팔에 힘이 빠지고 말이 어눌해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "When did it start? Smile and raise both arms for me — time is brain." }

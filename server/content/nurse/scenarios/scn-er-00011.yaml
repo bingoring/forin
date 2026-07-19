@@ -1,0 +1,50 @@
+# 응급실 · 약물 과다복용 응급 (단계 B #11, 코어).
+id: SCN-ER-00011
+eventId: EVT-ER-00001
+title: "약물 과다복용 응급"
+tagline: "I took a whole bottle of pills."
+persona:
+  name: "Mr. Vance"
+  role: patient
+  sub: "약물 과다"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "약물 과다복용 환자를 응급 사정하고 정보를 확보합니다."
+  mood: panic
+goals:
+  - "중독 어휘"
+  - "응급 사정"
+  - "비판단"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "What did you take, and how much?"
+  - "When did you take them?"
+  - "We're here to help you — you're safe now."
+briefing:
+  dept: "응급실"
+  deptColor: "#DC2626"
+  brief: "약물 과다복용 환자를 응급 사정하고 정보를 확보합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "중독 어휘"
+    - "응급 사정"
+    - "비판단"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: panic, lineEn: "I took a whole bottle of pills.", lineKo: "약을 한 통 다 먹었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "What did you take and when? We're here to help you — you're safe now." }

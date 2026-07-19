@@ -1,0 +1,50 @@
+# 응급실 · 소아 이물 흡인 (단계 B #15, 코어).
+id: SCN-ER-00015
+eventId: EVT-ER-00001
+title: "소아 이물 흡인"
+tagline: "She swallowed something and can't breathe!"
+persona:
+  name: "Mrs. Kim"
+  role: parent
+  sub: "보호자 · 딸(3y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 기도 이물 흡인 응급에 대응합니다."
+  mood: panic
+goals:
+  - "이물 흡인 어휘"
+  - "응급 대응"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Is she coughing or making any sound?"
+  - "I'm going to help her right now."
+  - "Stay with me — we know exactly what to do."
+briefing:
+  dept: "응급실"
+  deptColor: "#DC2626"
+  brief: "소아 기도 이물 흡인 응급에 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "이물 흡인 어휘"
+    - "응급 대응"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: panic, lineEn: "She swallowed something and can't breathe!", lineKo: "뭘 삼켰는데 숨을 못 쉬어요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Is she making any sound? I'm helping her right now — stay with me." }

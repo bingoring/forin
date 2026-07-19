@@ -1,0 +1,50 @@
+# 응급실 · 화상 응급 처치 (단계 B #13, 코어).
+id: SCN-ER-00013
+eventId: EVT-ER-00001
+title: "화상 응급 처치"
+tagline: "I burned my hand on the stove."
+persona:
+  name: "Ms. Reed"
+  role: patient
+  sub: "손 화상"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "화상 환자를 사정하고 초기 처치를 시행합니다."
+  mood: pain
+goals:
+  - "화상 어휘"
+  - "초기 처치"
+  - "통증"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's cool it under running water, not ice."
+  - "How large and deep does it look?"
+  - "I'll cover it and manage your pain."
+briefing:
+  dept: "응급실"
+  deptColor: "#DC2626"
+  brief: "화상 환자를 사정하고 초기 처치를 시행합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "화상 어휘"
+    - "초기 처치"
+    - "통증"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: pain, lineEn: "I burned my hand on the stove.", lineKo: "가스레인지에 손을 데었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's cool it under running water, not ice — I'll cover it and manage your pain." }

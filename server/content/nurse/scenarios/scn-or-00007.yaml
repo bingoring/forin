@@ -1,0 +1,50 @@
+# 수술실 · 수술 부위 표시 확인 (단계 B #7, 코어).
+id: SCN-OR-00007
+eventId: EVT-OR-00001
+title: "수술 부위 표시 확인"
+tagline: "Is the site marked and confirmed?"
+persona:
+  name: "Dr. Vega"
+  role: doctor
+  sub: "집도의"
+  hair: "#1F2937"
+  hairStyle: short
+  personality: "수술 부위 표시(site marking)를 확인합니다."
+  mood: focused
+goals:
+  - "부위표시 어휘"
+  - "확인"
+  - "안전"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The site is marked and matches the consent."
+  - "Let's confirm left versus right together."
+  - "Imaging is up and matches the marked side."
+briefing:
+  dept: "수술실"
+  deptColor: "#9333EA"
+  brief: "수술 부위 표시(site marking)를 확인합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "부위표시 어휘"
+    - "확인"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: doctor, expression: focused, lineEn: "Is the site marked and confirmed?", lineKo: "부위 표시 확인됐나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Marked and matches the consent — let's confirm left versus right together." }

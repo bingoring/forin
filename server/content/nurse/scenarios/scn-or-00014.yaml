@@ -1,0 +1,50 @@
+# 수술실 · 회복실 통증 조절 (단계 B #14, 코어).
+id: SCN-OR-00014
+eventId: EVT-OR-00001
+title: "회복실 통증 조절"
+tagline: "The pain is really bad now."
+persona:
+  name: "Mr. Bello"
+  role: patient
+  sub: "회복실"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "회복실(PACU)에서 수술 후 통증을 조절합니다."
+  mood: pain
+goals:
+  - "PACU 통증 어휘"
+  - "통증 사정"
+  - "투약"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "On a scale of 0 to 10, how bad?"
+  - "I'll give your pain medicine now."
+  - "Tell me when it starts to ease."
+briefing:
+  dept: "수술실"
+  deptColor: "#9333EA"
+  brief: "회복실(PACU)에서 수술 후 통증을 조절합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "PACU 통증 어휘"
+    - "통증 사정"
+    - "투약"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: pain, lineEn: "The pain is really bad now.", lineKo: "지금 통증이 너무 심해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "On a scale of 0 to 10? I'll give your pain medicine now — tell me when it eases." }

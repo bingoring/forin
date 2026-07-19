@@ -1,0 +1,50 @@
+# 소아과 · 크룹 호흡곤란 (단계 B #8, 코어).
+id: SCN-PEDS-00008
+eventId: EVT-PEDS-00001
+title: "크룹 호흡곤란"
+tagline: "She has a barking cough and noisy breathing."
+persona:
+  name: "Mrs. Cho"
+  role: parent
+  sub: "보호자 · 딸(3y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "크룹(croup)의 호흡곤란을 사정하고 대응합니다."
+  mood: worried
+goals:
+  - "크룹 어휘"
+  - "호흡 사정"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "That barking cough is typical of croup."
+  - "Cool, humid air can ease it."
+  - "We may give a steroid to reduce swelling."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "크룹(croup)의 호흡곤란을 사정하고 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "크룹 어휘"
+    - "호흡 사정"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "She has a barking cough and noisy breathing.", lineKo: "컹컹 기침에 숨소리가 시끄러워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "That barking cough is typical of croup — cool humid air helps, and we may give a steroid." }

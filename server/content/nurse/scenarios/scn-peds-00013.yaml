@@ -1,0 +1,49 @@
+# 소아과 · 예방접종 이상반응 (단계 B #13, 코어).
+id: SCN-PEDS-00013
+eventId: EVT-PEDS-00001
+title: "예방접종 이상반응"
+tagline: "He got a fever after his shots."
+persona:
+  name: "Mrs. Park"
+  role: parent
+  sub: "보호자 · 아들(1y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "예방접종 후 이상반응을 사정하고 부모를 안심시킵니다."
+  mood: worried
+goals:
+  - "접종 반응 어휘"
+  - "증상 관리"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Mild fever after vaccines is common and short."
+  - "You can give the weight-based fever medicine."
+  - "Call us if it's very high or he seems unwell."
+briefing:
+  dept: "소아과"
+  deptColor: "#3B82F6"
+  brief: "예방접종 후 이상반응을 사정하고 부모를 안심시킵니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "접종 반응 어휘"
+    - "증상 관리"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "He got a fever after his shots.", lineKo: "접종 후에 열이 났어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Mild fever after vaccines is common and short — give the weight-based medicine, and call if it's high." }
