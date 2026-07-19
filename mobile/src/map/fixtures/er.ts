@@ -303,9 +303,9 @@ export const ER_INTERIOR: Interior = {
   ],
   npcs: [
     // lobby
-    { id: 'er-amb-p1', kind: 'paramedic', mode: 'idle', seed: 41, start: { x: 3, y: 7 } },
+    { id: 'er-amb-p1', kind: 'paramedic', mode: 'idle', seed: 41, start: { x: 3, y: 7 }, marker: 'urgent', markerLabel: 'EMS 인계', scenarioId: 'SCN-ER-00006' },
     { id: 'er-amb-p2', kind: 'paramedic', mode: 'idle', seed: 42, start: { x: 7, y: 7 } },
-    { id: 'er-sec-1', kind: 'police', mode: 'idle', seed: 43, start: { x: 16, y: 4 } },
+    { id: 'er-sec-1', kind: 'police', mode: 'idle', seed: 43, start: { x: 16, y: 4 }, marker: 'urgent', markerLabel: '경찰 인계', scenarioId: 'SCN-ER-00005' },
     { id: 'er-sec-2', kind: 'police', mode: 'idle', seed: 44, start: { x: 24, y: 4 } },
     { id: 'er-reg-n1', kind: 'nurse', mode: 'idle', seed: 45, start: { x: 30, y: 6 } },
     { id: 'er-reg-n2', kind: 'nurse', mode: 'idle', seed: 46, start: { x: 32, y: 6 } },
@@ -315,7 +315,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'er-tri-pat', kind: 'patient', mode: 'idle', seed: 50, start: { x: 2, y: 11 } },
     { id: 'er-tri-vis', kind: 'visitor', mode: 'idle', seed: 51, start: { x: 3, y: 12 } },
     { id: 'er-wait-pat', kind: 'patient', mode: 'idle', seed: 52, start: { x: 16, y: 11 } },
-    { id: 'er-wait-par', kind: 'parent', mode: 'idle', seed: 53, start: { x: 20, y: 11 } },
+    { id: 'er-wait-par', kind: 'parent', mode: 'idle', seed: 53, start: { x: 20, y: 11 }, marker: 'quest', markerLabel: '고열 아동', scenarioId: 'SCN-ER-00008' },
     { id: 'er-wait-chd', kind: 'child', mode: 'idle', seed: 54, start: { x: 21, y: 11 } },
     { id: 'er-wait-vis', kind: 'visitor', mode: 'idle', seed: 55, start: { x: 24, y: 13 } },
     // resus
@@ -332,7 +332,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'er-ns-d2', kind: 'doctor', mode: 'idle', seed: 65, start: { x: 22, y: 27 } },
     // exam1
     { id: 'er-e1-doc', kind: 'doctor', mode: 'idle', seed: 66, start: { x: 28, y: 23 } },
-    { id: 'er-e1-pat', kind: 'patient', mode: 'idle', seed: 67, start: { x: 34, y: 24 } },
+    { id: 'er-e1-pat', kind: 'patient', mode: 'idle', seed: 67, start: { x: 34, y: 24 }, marker: 'quest', markerLabel: '통역 필요', scenarioId: 'SCN-ER-00007' },
     // iso
     { id: 'er-iso-n', kind: 'nurse', mode: 'idle', seed: 68, start: { x: 6, y: 45 } },
     // suture
