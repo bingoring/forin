@@ -1,0 +1,50 @@
+# 정신과병동 · 자해 상처 관리 (단계 B #9, ONCO).
+id: SCN-PSYCH-00009
+eventId: EVT-ONCO-00001
+title: "자해 상처 관리"
+tagline: "I did it again — I'm sorry."
+persona:
+  name: "Ms. Farr"
+  role: patient
+  sub: "자해 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "자해 상처를 비판단적으로 처치하며 정서를 지지합니다."
+  mood: sad
+goals:
+  - "상처 처치 어휘"
+  - "비판단 소통"
+  - "안전 계획"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's take care of these wounds together."
+  - "You don't need to apologize to me."
+  - "I'm glad you're here — let's talk about what helps."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "자해 상처를 비판단적으로 처치하며 정서를 지지합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "상처 처치 어휘"
+    - "비판단 소통"
+    - "안전 계획"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "I did it again — I'm sorry.", lineKo: "또 그랬어요… 죄송해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "No need to apologize. Let's care for these wounds and talk about what helps." }

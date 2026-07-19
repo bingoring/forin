@@ -1,0 +1,50 @@
+# 재활치료실 · 연하 재활 훈련 (단계 B #7, ONCO).
+id: SCN-REHAB-00007
+eventId: EVT-ONCO-00001
+title: "연하 재활 훈련"
+tagline: "Swallowing still feels scary."
+persona:
+  name: "Mr. Renaud"
+  role: patient
+  sub: "연하장애"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "뇌졸중 후 연하 재활을 안전하게 지도합니다."
+  mood: neutral
+goals:
+  - "연하재활 어휘"
+  - "안전 삼킴"
+  - "격려"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Chin tuck slightly as you swallow."
+  - "Small sips, and we'll thicken liquids for now."
+  - "You're improving — one safe swallow at a time."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "뇌졸중 후 연하 재활을 안전하게 지도합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "연하재활 어휘"
+    - "안전 삼킴"
+    - "격려"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Swallowing still feels scary.", lineKo: "삼키는 게 아직 무서워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Chin tuck slightly, small sips — you're improving, one safe swallow at a time." }

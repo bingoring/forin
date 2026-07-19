@@ -1,0 +1,50 @@
+# 호스피스 · 임종기 섬망 완화 (단계 B #7, ONCO).
+id: SCN-HOSPICE-00007
+eventId: EVT-ONCO-00001
+title: "임종기 섬망 완화"
+tagline: "He's confused and restless."
+persona:
+  name: "Mr. Wells"
+  role: patient
+  sub: "말기 섬망"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "임종기 섬망(terminal restlessness)을 완화하고 가족을 안심시킵니다."
+  mood: worried
+goals:
+  - "섬망 어휘"
+  - "비약물 완화"
+  - "가족 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "This restlessness is part of the process."
+  - "A calm, quiet room and your voice help."
+  - "We can give gentle medicine for comfort."
+briefing:
+  dept: "호스피스"
+  deptColor: "#7C3AED"
+  brief: "임종기 섬망(terminal restlessness)을 완화하고 가족을 안심시킵니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "섬망 어휘"
+    - "비약물 완화"
+    - "가족 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "He's confused and restless.", lineKo: "의식이 흐리고 안절부절 못해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "This is part of the process — your calm voice helps, and we can ease it gently." }

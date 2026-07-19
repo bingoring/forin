@@ -1,0 +1,50 @@
+# 호스피스 · 증상 악화 대응 (단계 B #11, ONCO).
+id: SCN-HOSPICE-00011
+eventId: EVT-ONCO-00001
+title: "증상 악화 대응"
+tagline: "The pain is breaking through again."
+persona:
+  name: "Mrs. Fionn"
+  role: patient
+  sub: "증상 악화"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "돌발 통증(breakthrough pain)에 신속히 대응합니다."
+  mood: worried
+goals:
+  - "돌발통증 어휘"
+  - "신속 대응"
+  - "재평가"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'll give your breakthrough dose right now."
+  - "Let's see if the baseline needs adjusting."
+  - "You should not have to endure this."
+briefing:
+  dept: "호스피스"
+  deptColor: "#7C3AED"
+  brief: "돌발 통증(breakthrough pain)에 신속히 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "돌발통증 어휘"
+    - "신속 대응"
+    - "재평가"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "The pain is breaking through again.", lineKo: "통증이 또 뚫고 올라와요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'll give your breakthrough dose now — you shouldn't have to endure this." }

@@ -1,0 +1,50 @@
+# 정신과병동 · 환청 환자 대응 (단계 B #8, ONCO).
+id: SCN-PSYCH-00008
+eventId: EVT-ONCO-00001
+title: "환청 환자 대응"
+tagline: "The voices are telling me things."
+persona:
+  name: "Ms. Vale"
+  role: patient
+  sub: "환청"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "환청을 겪는 환자를 비판단적으로 지지합니다."
+  mood: worried
+goals:
+  - "환청 어휘"
+  - "비판단 지지"
+  - "안전 사정"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I don't hear them, but I believe that you do."
+  - "Are the voices telling you to harm anyone?"
+  - "You're safe here, and I'm staying with you."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "환청을 겪는 환자를 비판단적으로 지지합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "환청 어휘"
+    - "비판단 지지"
+    - "안전 사정"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "The voices are telling me things.", lineKo: "목소리들이 자꾸 말을 걸어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I don't hear them, but I believe you do. Are they telling you to harm anyone?" }

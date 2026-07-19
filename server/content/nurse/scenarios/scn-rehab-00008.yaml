@@ -1,0 +1,50 @@
+# 재활치료실 · 상지 재활 훈련 (단계 B #8, ONCO).
+id: SCN-REHAB-00008
+eventId: EVT-ONCO-00001
+title: "상지 재활 훈련"
+tagline: "My weak arm won't cooperate."
+persona:
+  name: "Mrs. Ferro"
+  role: patient
+  sub: "편마비"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "편마비 상지 재활 운동을 지도하고 격려합니다."
+  mood: neutral
+goals:
+  - "상지재활 어휘"
+  - "운동 지도"
+  - "동기부여"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's guide the weak arm with the strong one."
+  - "Even small movements rebuild the connection."
+  - "Consistency matters more than intensity."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "편마비 상지 재활 운동을 지도하고 격려합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "상지재활 어휘"
+    - "운동 지도"
+    - "동기부여"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "My weak arm won't cooperate.", lineKo: "약한 팔이 말을 안 들어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's guide it with your strong arm — small movements rebuild the connection." }

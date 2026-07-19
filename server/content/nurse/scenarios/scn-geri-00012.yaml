@@ -1,0 +1,50 @@
+# 노인·치매병동 · 치료 방향(연명) 논의 (단계 B #12, ONCO).
+id: SCN-GERI-00012
+eventId: EVT-ONCO-00001
+title: "치료 방향(연명) 논의"
+tagline: "Would she want to be kept on machines?"
+persona:
+  name: "Family"
+  role: visitor
+  sub: "치매 환자 가족"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "진행성 치매 환자의 치료 방향(goals of care)을 논의합니다."
+  mood: sad
+goals:
+  - "연명의료 어휘"
+  - "가치 탐색"
+  - "공감"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's think about what she valued in life."
+  - "Comfort-focused care is a valid, loving choice."
+  - "There's no wrong answer made out of love."
+briefing:
+  dept: "노인·치매병동"
+  deptColor: "#7C3AED"
+  brief: "진행성 치매 환자의 치료 방향(goals of care)을 논의합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "연명의료 어휘"
+    - "가치 탐색"
+    - "공감"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "Would she want to be kept on machines?", lineKo: "기계로 연명하는 걸 원하셨을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's think about what she valued — comfort-focused care is a loving, valid choice." }

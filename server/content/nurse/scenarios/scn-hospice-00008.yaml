@@ -1,0 +1,50 @@
+# 호스피스 · 임종기 식욕부진 상담 (단계 B #8, ONCO).
+id: SCN-HOSPICE-00008
+eventId: EVT-ONCO-00001
+title: "임종기 식욕부진 상담"
+tagline: "She won't eat — should I force her?"
+persona:
+  name: "Mrs. Osei"
+  role: patient
+  sub: "식욕부진"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "임종기 자연스러운 식욕 감소를 가족에게 설명합니다."
+  mood: sad
+goals:
+  - "식욕부진 어휘"
+  - "가족 교육"
+  - "편안함"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Near the end, the body needs less food."
+  - "Forcing food can cause more discomfort."
+  - "Small sips or mouth care show your love too."
+briefing:
+  dept: "호스피스"
+  deptColor: "#7C3AED"
+  brief: "임종기 자연스러운 식욕 감소를 가족에게 설명합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "식욕부진 어휘"
+    - "가족 교육"
+    - "편안함"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "She won't eat — should I force her?", lineKo: "안 드시는데 억지로 드려야 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Near the end the body needs less — forcing can hurt. Mouth care shows love too." }

@@ -1,0 +1,50 @@
+# 정신과병동 · 조증 환자 대응 (단계 B #7, ONCO).
+id: SCN-PSYCH-00007
+eventId: EVT-ONCO-00001
+title: "조증 환자 대응"
+tagline: "I don't need sleep, I have big plans!"
+persona:
+  name: "Mr. Boyd"
+  role: patient
+  sub: "조증"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "조증 삽화 환자를 안전하고 차분하게 대응합니다."
+  mood: panic
+goals:
+  - "조증 어휘"
+  - "안전 대응"
+  - "차분 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's find a calmer, quieter space together."
+  - "I want to keep you safe right now."
+  - "We can talk through those plans slowly."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "조증 삽화 환자를 안전하고 차분하게 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "조증 어휘"
+    - "안전 대응"
+    - "차분 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: panic, lineEn: "I don't need sleep, I have big plans!", lineKo: "잠 필요 없어요, 큰 계획이 있거든요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's move somewhere calmer — I want to keep you safe. We can talk it through slowly." }

@@ -1,0 +1,50 @@
+# 재활치료실 · 재활 동기 지지 (단계 B #11, ONCO).
+id: SCN-REHAB-00011
+eventId: EVT-ONCO-00001
+title: "재활 동기 지지"
+tagline: "I don't see the point anymore."
+persona:
+  name: "Mrs. Duval"
+  role: patient
+  sub: "동기 저하"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "재활 정체기의 동기 저하를 정서적으로 지지합니다."
+  mood: sad
+goals:
+  - "동기 지지 어휘"
+  - "공감"
+  - "목표 재설정"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Plateaus are frustrating — that's normal."
+  - "Let's look at how far you've already come."
+  - "We can set a small, meaningful next goal."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "재활 정체기의 동기 저하를 정서적으로 지지합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "동기 지지 어휘"
+    - "공감"
+    - "목표 재설정"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "I don't see the point anymore.", lineKo: "이제 무슨 소용인가 싶어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Plateaus are frustrating — but look how far you've come. Let's set a small next goal." }

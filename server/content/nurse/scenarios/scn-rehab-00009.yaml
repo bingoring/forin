@@ -1,0 +1,50 @@
+# 재활치료실 · 재활 중 통증 관리 (단계 B #9, ONCO).
+id: SCN-REHAB-00009
+eventId: EVT-ONCO-00001
+title: "재활 중 통증 관리"
+tagline: "It hurts when I do the exercises."
+persona:
+  name: "Mr. Bauer"
+  role: patient
+  sub: "만성 요통"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "재활 중 통증을 사정하고 안전 범위를 조정합니다."
+  mood: pain
+goals:
+  - "통증 어휘"
+  - "운동 조정"
+  - "안전"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "A little discomfort is okay; sharp pain is not."
+  - "Let's adjust the range to a safe level."
+  - "Tell me the moment it turns sharp."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "재활 중 통증을 사정하고 안전 범위를 조정합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "통증 어휘"
+    - "운동 조정"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: pain, lineEn: "It hurts when I do the exercises.", lineKo: "운동할 때 아파요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Mild discomfort is okay, sharp pain isn't — tell me the moment it turns sharp." }

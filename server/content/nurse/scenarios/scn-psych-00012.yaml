@@ -1,0 +1,50 @@
+# 정신과병동 · 가족 심리교육 (단계 B #12, ONCO).
+id: SCN-PSYCH-00012
+eventId: EVT-ONCO-00001
+title: "가족 심리교육"
+tagline: "How do we support him at home?"
+persona:
+  name: "Family"
+  role: visitor
+  sub: "환자 가족"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "정신질환 환자 가족을 심리교육하고 자원을 안내합니다."
+  mood: neutral
+goals:
+  - "심리교육 어휘"
+  - "가족 교육"
+  - "자원 연계"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Learning about his condition really helps."
+  - "Keep the routine calm and non-critical."
+  - "Here are warning signs and who to call."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "정신질환 환자 가족을 심리교육하고 자원을 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "심리교육 어휘"
+    - "가족 교육"
+    - "자원 연계"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: neutral, lineEn: "How do we support him at home?", lineKo: "집에서 그를 어떻게 도와야 하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Learning about his condition helps — keep the routine calm, and here are warning signs." }

@@ -1,0 +1,50 @@
+# 암센터 · 항암 영양 상담 (단계 B #10, ONCO).
+id: SCN-ONCO-00010
+eventId: EVT-ONCO-00001
+title: "항암 영양 상담"
+tagline: "I have no appetite at all."
+persona:
+  name: "Mr. Haddad"
+  role: patient
+  sub: "체중 감소"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "항암 환자의 식욕부진·영양을 상담합니다."
+  mood: neutral
+goals:
+  - "영양 어휘"
+  - "식욕부진 관리"
+  - "상담"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Eat small amounts often, whatever appeals."
+  - "High-calorie shakes can help fill gaps."
+  - "Let's involve our dietitian too."
+briefing:
+  dept: "암센터"
+  deptColor: "#7C3AED"
+  brief: "항암 환자의 식욕부진·영양을 상담합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "영양 어휘"
+    - "식욕부진 관리"
+    - "상담"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "I have no appetite at all.", lineKo: "입맛이 하나도 없어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Eat small amounts often — high-calorie shakes help. Let's involve our dietitian." }

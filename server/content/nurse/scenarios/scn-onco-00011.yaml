@@ -1,0 +1,50 @@
+# 암센터 · 항암 말초신경병증 관리 (단계 B #11, ONCO).
+id: SCN-ONCO-00011
+eventId: EVT-ONCO-00001
+title: "항암 말초신경병증 관리"
+tagline: "My fingers are numb and tingly."
+persona:
+  name: "Mrs. Lindqvist"
+  role: patient
+  sub: "말초신경병증"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "항암 말초신경병증(CIPN)을 사정하고 안전을 교육합니다."
+  mood: worried
+goals:
+  - "CIPN 어휘"
+  - "증상 사정"
+  - "안전 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Numbness can come from certain chemo drugs."
+  - "Be careful with heat and sharp objects."
+  - "Report worsening — the dose may need adjusting."
+briefing:
+  dept: "암센터"
+  deptColor: "#7C3AED"
+  brief: "항암 말초신경병증(CIPN)을 사정하고 안전을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "CIPN 어휘"
+    - "증상 사정"
+    - "안전 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "My fingers are numb and tingly.", lineKo: "손가락이 저리고 무감각해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "That can come from chemo — be careful with heat and sharps, and report worsening." }

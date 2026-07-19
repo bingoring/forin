@@ -1,0 +1,49 @@
+# 재활치료실 · 퇴원 운동 교육 (단계 B #12, ONCO).
+id: SCN-REHAB-00012
+eventId: EVT-ONCO-00001
+title: "퇴원 운동 교육"
+tagline: "How do I keep this up at home?"
+persona:
+  name: "Mr. Kim"
+  role: patient
+  sub: "퇴원 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "퇴원 후 가정 운동 프로그램(HEP)을 교육합니다."
+  mood: neutral
+goals:
+  - "가정운동 어휘"
+  - "HEP 교육"
+  - "자기관리"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Here's your home exercise sheet with pictures."
+  - "Ten minutes, twice a day, keeps your gains."
+  - "Call us if anything causes new pain."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "퇴원 후 가정 운동 프로그램(HEP)을 교육합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "가정운동 어휘"
+    - "HEP 교육"
+    - "자기관리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "How do I keep this up at home?", lineKo: "집에서 어떻게 계속하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Here's your home exercise sheet — ten minutes twice a day keeps your gains." }

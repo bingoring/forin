@@ -1,0 +1,50 @@
+# 노인·치매병동 · 보호자 소진 지지 (단계 B #10, ONCO).
+id: SCN-GERI-00010
+eventId: EVT-ONCO-00001
+title: "보호자 소진 지지"
+tagline: "I'm exhausted caring for my mother."
+persona:
+  name: "Mrs. Adler"
+  role: visitor
+  sub: "치매 환자 보호자"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "치매 환자 주보호자의 소진을 지지하고 자원을 연계합니다."
+  mood: worried
+goals:
+  - "보호자 지지 어휘"
+  - "소진 사정"
+  - "자원 연계"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Caregiver burnout is real — you matter too."
+  - "Respite care can give you a needed break."
+  - "Let's connect you with a support group."
+briefing:
+  dept: "노인·치매병동"
+  deptColor: "#7C3AED"
+  brief: "치매 환자 주보호자의 소진을 지지하고 자원을 연계합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "보호자 지지 어휘"
+    - "소진 사정"
+    - "자원 연계"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: worried, lineEn: "I'm exhausted caring for my mother.", lineKo: "어머니 돌보느라 너무 지쳤어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Caregiver burnout is real — respite care can give you a break. You matter too." }

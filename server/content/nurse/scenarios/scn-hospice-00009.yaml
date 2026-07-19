@@ -1,0 +1,50 @@
+# 호스피스 · 가족 갈등 중재 (단계 B #9, ONCO).
+id: SCN-HOSPICE-00009
+eventId: EVT-ONCO-00001
+title: "가족 갈등 중재"
+tagline: "My siblings and I disagree on his care."
+persona:
+  name: "Family"
+  role: visitor
+  sub: "고인의 자녀들"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "말기 돌봄을 둘러싼 가족 갈등을 중재합니다."
+  mood: sad
+goals:
+  - "갈등 중재 어휘"
+  - "가족 소통"
+  - "환자 중심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's focus on what he would have wanted."
+  - "Everyone here loves him — that's common ground."
+  - "I can bring in our social worker to help."
+briefing:
+  dept: "호스피스"
+  deptColor: "#7C3AED"
+  brief: "말기 돌봄을 둘러싼 가족 갈등을 중재합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "갈등 중재 어휘"
+    - "가족 소통"
+    - "환자 중심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "My siblings and I disagree on his care.", lineKo: "형제들과 아버지 돌봄으로 의견이 갈려요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's focus on what he would have wanted — that's your common ground." }

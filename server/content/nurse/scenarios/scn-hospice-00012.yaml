@@ -1,0 +1,50 @@
+# 호스피스 · 사별 후 자원 연계 (단계 B #12, ONCO).
+id: SCN-HOSPICE-00012
+eventId: EVT-ONCO-00001
+title: "사별 후 자원 연계"
+tagline: "How do I even plan a funeral?"
+persona:
+  name: "Widower"
+  role: visitor
+  sub: "고인의 배우자"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "사별 직후 실무·정서 자원을 안내합니다."
+  mood: sad
+goals:
+  - "사별 자원 어휘"
+  - "실무 안내"
+  - "정서 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Take this one small step at a time."
+  - "Our team can connect you with support services."
+  - "There's no rush — we're here to help."
+briefing:
+  dept: "호스피스"
+  deptColor: "#7C3AED"
+  brief: "사별 직후 실무·정서 자원을 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "사별 자원 어휘"
+    - "실무 안내"
+    - "정서 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "How do I even plan a funeral?", lineKo: "장례를 어떻게 준비하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "One small step at a time — our team can connect you with support services." }

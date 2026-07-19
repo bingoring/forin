@@ -1,0 +1,50 @@
+# 재활치료실 · 보조기·의지 적응 (단계 B #10, ONCO).
+id: SCN-REHAB-00010
+eventId: EVT-ONCO-00001
+title: "보조기·의지 적응"
+tagline: "Will I get used to the prosthesis?"
+persona:
+  name: "Mr. Tanaka"
+  role: patient
+  sub: "절단 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "절단 후 의지(prosthesis) 적응을 지도합니다."
+  mood: worried
+goals:
+  - "의지 어휘"
+  - "적응 훈련"
+  - "피부 관리"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We build up wear time gradually each day."
+  - "Check the skin for redness after use."
+  - "Most people adapt well with practice."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "절단 후 의지(prosthesis) 적응을 지도합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "의지 어휘"
+    - "적응 훈련"
+    - "피부 관리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will I get used to the prosthesis?", lineKo: "의지에 적응할 수 있을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes, with practice — we build up wear time gradually and check your skin." }
