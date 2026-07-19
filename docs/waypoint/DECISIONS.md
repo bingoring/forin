@@ -806,3 +806,10 @@
 - 인테리어 핫스팟(4개)은 00001~00004에 배선됨; 00005~00008은 상황판/데일리 로테이션으로 도달(후속 배선 가능).
 - 검증: go test(로더 전체 검증)·`GET /scenarios/SCN-ER-000{5,6,7,8}` 200·시뮬레이터 police briefing 렌더(경찰 초상·SBAR·보상).
 - **결정자:** 사용자("ER 나머지 시나리오도 만들어줘") + AI(저작·검증).
+
+## 2026-07-19 · OR/PEDS/ICU/PHARMA 시나리오 20종 저작
+- v16 scenarios-data.jsx의 OR(5)·PEDS(5)·ICU(5)·PHARMA(5) 전부 저작. 부서별 이벤트 4개(EVT-{OR,PEDS,ICU,PHARMA}-00001, delivery daily_pool) 신설(scenario.eventId 참조 필수). 총 29 시나리오·7 이벤트 seed.
+- 생성 방식: 소스에서 briefing(brief·difficulty·time·skills·rewards·reqs)·persona(name·sub) 추출 + 언어 핵심(role·mood·keyPhrases 3개·오프닝 대사 EN/KO·player 라인)은 시나리오별 수기 저작. dept 테마색(OR 보라·PEDS 파랑·ICU 청록·PHARMA 초록).
+- 검증: 로더 전체 번들 검증(id·eventId 참조·enum·briefing 왕복) 통과 · seed 29 · `GET /scenarios` 스팟체크(role·mood·keyPhrases·rewards) · 시뮬레이터 OR 동의 briefing 렌더(보라 테마·콧수염 초상).
+- 후속: 각 부서 인테리어 핫스팟 배선 · quiz 타입 확장.
+- **결정자:** 사용자("OR/PEDS/ICU/PHARMA 시나리오도 만들어줘") + AI(저작·검증).
