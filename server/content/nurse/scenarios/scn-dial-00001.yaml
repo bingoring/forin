@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's check your weight. How much fluid have you had since last time?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-DIAL-00001 }

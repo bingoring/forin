@@ -1,0 +1,13 @@
+# sort — categorize items as contaminated vs sterile (v17 SORT format).
+id: QZ-SPD-00001
+type: sort
+title: "오염 · 멸균 분류"
+content:
+  sub: "물품을 올바른 구역으로 분류하세요"
+  zone: "중앙공급실"
+  context: "🧼 사용/입고 물품을 감염관리 원칙에 따라 분류하세요. 각 물품을 알맞은 구역에 넣으세요."
+  pool: ["Used forceps", "Sealed pack (green tag)", "Bloody gauze", "Sterile tray (indicator OK)", "Soiled gown"]
+  buckets:
+    - { name: "오염 세척 (Decon)", color: "#FCA5A5", items: ["Used forceps", "Bloody gauze", "Soiled gown"] }
+    - { name: "멸균 완료 (Sterile)", color: "#A7F3D0", items: ["Sealed pack (green tag)", "Sterile tray (indicator OK)"] }
+  hint: "멸균 표시(indicator)가 확인된 것만 멸균 구역으로."

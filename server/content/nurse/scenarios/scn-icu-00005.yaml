@@ -48,3 +48,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "On it. It's a low-SpO2 alarm — checking the patient now." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ICU-00002 }

@@ -1,0 +1,15 @@
+# spot_error — find the one wrong field in a medication order (v17 SPOT format).
+id: QZ-ER-00003
+type: spot_error
+title: "처방 오류 찾기"
+content:
+  sub: "잘못된 항목 하나를 찾으세요"
+  zone: "ER"
+  context: "⚠ 헤파린 지속주입 처방지입니다. 잘못된 항목 하나를 찾아 탭하세요."
+  note: "헤파린 지속주입은 IV로 투여합니다. IM 투여는 오류(혈종·출혈 위험)."
+  rows:
+    - { label: "Patient", text: "John Doe · DOB 05/12" }
+    - { label: "Drug", text: "Heparin" }
+    - { label: "Dose", text: "25,000 U in 250 mL" }
+    - { label: "Rate", text: "1,000 U / hr" }
+    - { label: "Route", text: "IM (intramuscular)", error: true }

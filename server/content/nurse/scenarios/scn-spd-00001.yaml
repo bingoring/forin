@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "A laparotomy tray for OR 3 — can you confirm the sterilization indicator is green?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPD-00001 }

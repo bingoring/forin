@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Sure. The patient is 20 kg, so at 10 mg/kg that's 200 mg." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00003 }

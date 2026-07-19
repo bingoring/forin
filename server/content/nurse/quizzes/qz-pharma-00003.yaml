@@ -1,0 +1,16 @@
+# calc — weight-based pediatric dose (v17 CALC format). Compute the per-dose mg.
+id: QZ-PHARMA-00003
+type: calc
+title: "소아 용량 계산"
+content:
+  sub: "체중 기반 1회 용량을 구하세요"
+  zone: "약국"
+  context: "🍼 소아 항생제를 체중 기반으로 계산합니다. 1회 처방 용량(mg)을 구하세요."
+  given:
+    - { label: "Patient weight", value: "20 kg" }
+    - { label: "Ordered dose", value: "15 mg / kg" }
+    - { label: "Frequency", value: "q8h" }
+  eq: "15 × 20"
+  answer: "300"
+  answerUnit: "mg / dose"
+  hint: "체중(kg) × 용량(mg/kg) = 1회 용량. 소수점·단위 주의!"

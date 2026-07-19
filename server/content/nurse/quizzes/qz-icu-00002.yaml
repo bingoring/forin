@@ -1,0 +1,15 @@
+# triage — rank patients by acuity (original format: priority ordering).
+id: QZ-ICU-00002
+type: triage
+title: "환자 우선순위 정렬"
+content:
+  sub: "가장 급한 순서(1→4)로 배열하세요"
+  zone: "중환자실"
+  context: "🚨 4명의 환자를 응급도(acuity) 순으로 배열하세요. 1번이 가장 급합니다."
+  note: "무맥성(심정지) → 기도·호흡 위협 → 순환 이상 → 안정 순으로."
+  cards:
+    - { text: '"Unresponsive, no pulse — CPR started."', track: "", order: 1 }
+    - { text: '"SpO2 84%, severe respiratory distress."', track: "", order: 2 }
+    - { text: '"Chest pain, vitals currently stable."', track: "", order: 3 }
+    - { text: '"Requesting an extra blanket."', track: "", order: 4 }
+  hint: "ABC(기도·호흡·순환) 우선순위로 판단하세요."

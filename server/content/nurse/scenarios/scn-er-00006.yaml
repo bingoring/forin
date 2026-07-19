@@ -52,3 +52,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Copy that. Any loss of consciousness at the scene?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ER-00003 }

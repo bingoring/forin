@@ -105,6 +105,10 @@ export interface QuizContent {
   cards?: QuizCard[];
   scene?: string; note?: string; items?: QuizItem[];
   device?: string; readings?: QuizReading[]; bank?: string[];
+  given?: { label: string; value: string }[]; eq?: string; answer?: string; answerUnit?: string;
+  pool?: string[]; buckets?: { name: string; color?: string; items: string[] }[];
+  gauge?: { min: number; max: number; start: number; target: number; step: number; unit?: string };
+  rows?: { label: string; text: string; error?: boolean }[];
 }
 export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;

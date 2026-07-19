@@ -1,0 +1,11 @@
+# gauge — set the ultrafiltration rate to target (v17 GAUGE format).
+id: QZ-DIAL-00001
+type: gauge
+title: "제거 속도(UF) 설정"
+content:
+  sub: "목표 UF 속도로 맞추세요"
+  zone: "인공신장실"
+  device: "DIALYSIS · UF RATE"
+  context: "💧 혈액투석 중 제거 속도(ultrafiltration)를 목표에 맞추세요. ▲/▼로 조절합니다."
+  gauge: { min: 0, max: 1500, start: 500, target: 800, step: 100, unit: "mL / hr" }
+  hint: "시간당 제거량이 과하면 저혈압·근경련 위험 — 목표치에 정확히."

@@ -15,6 +15,11 @@ import { SbarQuiz } from '@/components/quiz/SbarQuiz';
 import { McqQuiz } from '@/components/quiz/McqQuiz';
 import { CheckQuiz } from '@/components/quiz/CheckQuiz';
 import { MonitorQuiz } from '@/components/quiz/MonitorQuiz';
+import { CalcQuiz } from '@/components/quiz/CalcQuiz';
+import { SortQuiz } from '@/components/quiz/SortQuiz';
+import { GaugeQuiz } from '@/components/quiz/GaugeQuiz';
+import { SpotErrorQuiz } from '@/components/quiz/SpotErrorQuiz';
+import { TriageQuiz } from '@/components/quiz/TriageQuiz';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -51,6 +56,11 @@ export default function QuizRoute() {
     case 'mcq': return <McqQuiz {...props} />;
     case 'check': return <CheckQuiz {...props} />;
     case 'monitor': return <MonitorQuiz {...props} />;
+    case 'calc': return <CalcQuiz {...props} />;
+    case 'sort': return <SortQuiz {...props} />;
+    case 'gauge': return <GaugeQuiz {...props} />;
+    case 'spot_error': return <SpotErrorQuiz {...props} />;
+    case 'triage': return <TriageQuiz {...props} />;
     default: return <SentenceQuiz quiz={quiz} onExit={onExit} onComplete={onComplete} />;
   }
 }

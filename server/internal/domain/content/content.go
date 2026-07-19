@@ -256,11 +256,53 @@ type QuizContent struct {
 	Cards     []QuizCard   `yaml:"cards" json:"cards,omitempty"`         // sbar (order by `order`)
 
 	Scene    string        `yaml:"scene" json:"scene,omitempty"`   // mcq: scenario prompt
-	Note     string        `yaml:"note" json:"note,omitempty"`     // mcq/check: post-answer explanation
+	Note     string        `yaml:"note" json:"note,omitempty"`     // mcq/check/spot_error: explanation
 	Items    []QuizItem    `yaml:"items" json:"items,omitempty"`   // check: select-all-that-apply
-	Device   string        `yaml:"device" json:"device,omitempty"` // monitor: device name
+	Device   string        `yaml:"device" json:"device,omitempty"` // monitor/gauge: device name
 	Readings []QuizReading `yaml:"readings" json:"readings,omitempty"` // monitor
 	Bank     []string      `yaml:"bank" json:"bank,omitempty"`     // monitor: label bank
+
+	Given      []QuizGiven `yaml:"given" json:"given,omitempty"`           // calc: given facts
+	Eq         string      `yaml:"eq" json:"eq,omitempty"`                 // calc: shown equation
+	Answer     string      `yaml:"answer" json:"answer,omitempty"`         // calc: correct numeric answer
+	AnswerUnit string      `yaml:"answerUnit" json:"answerUnit,omitempty"` // calc: unit label
+
+	Pool    []string     `yaml:"pool" json:"pool,omitempty"`       // sort: chips to categorize
+	Buckets []QuizBucket `yaml:"buckets" json:"buckets,omitempty"` // sort: target buckets
+
+	Gauge *QuizGauge `yaml:"gauge" json:"gauge,omitempty"` // gauge: stepper to a target
+
+	Rows []QuizErrorRow `yaml:"rows" json:"rows,omitempty"` // spot_error: find the wrong row
+}
+
+// QuizGiven — a labeled fact in a calc quiz (e.g. "Weight" → "20 kg").
+type QuizGiven struct {
+	Label string `yaml:"label" json:"label"`
+	Value string `yaml:"value" json:"value"`
+}
+
+// QuizBucket — a sort target; Items lists the chips that belong here.
+type QuizBucket struct {
+	Name  string   `yaml:"name" json:"name"`
+	Color string   `yaml:"color" json:"color,omitempty"`
+	Items []string `yaml:"items" json:"items"`
+}
+
+// QuizGauge — a value the learner steps to a target (e.g. incubator temp).
+type QuizGauge struct {
+	Min    float64 `yaml:"min" json:"min"`
+	Max    float64 `yaml:"max" json:"max"`
+	Start  float64 `yaml:"start" json:"start"`
+	Target float64 `yaml:"target" json:"target"`
+	Step   float64 `yaml:"step" json:"step"`
+	Unit   string  `yaml:"unit" json:"unit,omitempty"`
+}
+
+// QuizErrorRow — a row in a spot_error order sheet; exactly one has Error true.
+type QuizErrorRow struct {
+	Label string `yaml:"label" json:"label"`
+	Text  string `yaml:"text" json:"text"`
+	Error bool   `yaml:"error" json:"error,omitempty"`
 }
 
 // QuizItem — a checklist row (check quiz); Correct marks the ones to select.
