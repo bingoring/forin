@@ -1,0 +1,17 @@
+# monitor — fetal-heart (EFM) reading (v17 L&D quiz). Assign the correct label to
+# each reading on the electronic fetal monitor.
+id: QZ-LD-00001
+type: monitor
+title: "태아심박 감시 판독"
+content:
+  sub: "EFM 파형을 해석해 라벨을 붙이세요"
+  zone: "분만실"
+  device: "FETAL MONITOR · EFM"
+  context: "전자태아감시(EFM) 화면입니다. 각 수치의 의미를 라벨 카드로 붙이세요."
+  note: "늦은 하강(late deceleration)은 태반 기능 저하 신호 — 즉시 좌측위!"
+  readings:
+    - { num: "142", unit: "FHR bpm", color: "#22D3EE", label: "Baseline FHR" }
+    - { num: "↓ late", unit: "deceleration", color: "#EF4444", label: "Late decel" }
+    - { num: "3.5", unit: "min interval", color: "#FACC15", label: "Contraction" }
+    - { num: "+15", unit: "accel bpm", color: "#34D399", label: "Acceleration" }
+  bank: ["Baseline FHR", "Late decel", "Contraction", "Acceleration"]

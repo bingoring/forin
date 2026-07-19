@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I hear you. This is a safe space — can we talk about what brought you in?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00001 }

@@ -93,14 +93,18 @@ export interface ScenarioDetail {
 }
 
 export interface QuizPair { left: string; leftSub?: string; right: string; rightIcon?: string }
-export interface QuizChoice { text: string; tags?: string[]; correct?: boolean }
+export interface QuizChoice { text: string; ko?: string; tags?: string[]; correct?: boolean }
 export interface QuizCard { text: string; track: string; order: number }
+export interface QuizItem { text: string; ko?: string; correct?: boolean }
+export interface QuizReading { num: string; unit?: string; color?: string; label: string }
 export interface QuizContent {
   sub?: string; zone?: string; context?: string; hint?: string;
   template?: string; answers?: string[]; wordBank?: string[];
   pairs?: QuizPair[];
   audioText?: string; choices?: QuizChoice[];
   cards?: QuizCard[];
+  scene?: string; note?: string; items?: QuizItem[];
+  device?: string; readings?: QuizReading[]; bank?: string[];
 }
 export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;

@@ -1,0 +1,15 @@
+# check — preemie danger signs (v17 NICU quiz). Select every sign that must be
+# reported immediately.
+id: QZ-NICU-00001
+type: check
+title: "미숙아 위험 징후"
+content:
+  sub: "즉시 보고할 항목을 모두 고르세요"
+  zone: "NICU"
+  context: "🍼 이른둥이(미숙아)를 관찰 중입니다. 즉시 보고해야 할 위험 징후를 모두 체크하세요."
+  note: "무호흡·함몰호흡·체온 불안정은 응급. 딸꾹질은 정상."
+  items:
+    - { text: "Apnea > 20 sec", ko: "20초 이상 무호흡", correct: true }
+    - { text: "Grunting / retractions", ko: "신음·함몰호흡", correct: true }
+    - { text: "Temperature instability", ko: "체온 불안정", correct: true }
+    - { text: "Occasional hiccups", ko: "가끔 딸꾹질", correct: false }

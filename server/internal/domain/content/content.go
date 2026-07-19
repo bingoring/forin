@@ -252,8 +252,31 @@ type QuizContent struct {
 
 	Pairs     []QuizPair   `yaml:"pairs" json:"pairs,omitempty"`         // match_pairs
 	AudioText string       `yaml:"audioText" json:"audioText,omitempty"` // listen: the spoken line (TTS/reference)
-	Choices   []QuizChoice `yaml:"choices" json:"choices,omitempty"`     // listen
+	Choices   []QuizChoice `yaml:"choices" json:"choices,omitempty"`     // listen + mcq
 	Cards     []QuizCard   `yaml:"cards" json:"cards,omitempty"`         // sbar (order by `order`)
+
+	Scene    string        `yaml:"scene" json:"scene,omitempty"`   // mcq: scenario prompt
+	Note     string        `yaml:"note" json:"note,omitempty"`     // mcq/check: post-answer explanation
+	Items    []QuizItem    `yaml:"items" json:"items,omitempty"`   // check: select-all-that-apply
+	Device   string        `yaml:"device" json:"device,omitempty"` // monitor: device name
+	Readings []QuizReading `yaml:"readings" json:"readings,omitempty"` // monitor
+	Bank     []string      `yaml:"bank" json:"bank,omitempty"`     // monitor: label bank
+}
+
+// QuizItem — a checklist row (check quiz); Correct marks the ones to select.
+type QuizItem struct {
+	Text    string `yaml:"text" json:"text"`
+	Ko      string `yaml:"ko" json:"ko,omitempty"`
+	Correct bool   `yaml:"correct" json:"correct,omitempty"`
+}
+
+// QuizReading — one device reading (monitor quiz); Label is the correct name to
+// assign from Bank.
+type QuizReading struct {
+	Num   string `yaml:"num" json:"num"`
+	Unit  string `yaml:"unit" json:"unit,omitempty"`
+	Color string `yaml:"color" json:"color,omitempty"`
+	Label string `yaml:"label" json:"label"`
 }
 
 // QuizPair — one left↔right match (e.g. "throbbing" ↔ "욱신거리는" 💢).
@@ -264,9 +287,11 @@ type QuizPair struct {
 	RightIcon string `yaml:"rightIcon" json:"rightIcon,omitempty"`
 }
 
-// QuizChoice — a listening-dictation option; exactly one has Correct true.
+// QuizChoice — a listening-dictation or MCQ option; exactly one has Correct true.
+// Tags are shown for listen; Ko is a Korean subtitle shown for mcq.
 type QuizChoice struct {
 	Text    string   `yaml:"text" json:"text"`
+	Ko      string   `yaml:"ko" json:"ko,omitempty"`
 	Tags    []string `yaml:"tags" json:"tags,omitempty"`
 	Correct bool     `yaml:"correct" json:"correct,omitempty"`
 }

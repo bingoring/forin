@@ -12,6 +12,9 @@ import { PixelButton } from '@/components/PixelButton';
 import { MatchQuiz } from '@/components/quiz/MatchQuiz';
 import { ListenQuiz } from '@/components/quiz/ListenQuiz';
 import { SbarQuiz } from '@/components/quiz/SbarQuiz';
+import { McqQuiz } from '@/components/quiz/McqQuiz';
+import { CheckQuiz } from '@/components/quiz/CheckQuiz';
+import { MonitorQuiz } from '@/components/quiz/MonitorQuiz';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -45,6 +48,9 @@ export default function QuizRoute() {
     case 'match_pairs': return <MatchQuiz {...props} />;
     case 'listen': return <ListenQuiz {...props} />;
     case 'sbar': return <SbarQuiz {...props} />;
+    case 'mcq': return <McqQuiz {...props} />;
+    case 'check': return <CheckQuiz {...props} />;
+    case 'monitor': return <MonitorQuiz {...props} />;
     default: return <SentenceQuiz quiz={quiz} onExit={onExit} onComplete={onComplete} />;
   }
 }

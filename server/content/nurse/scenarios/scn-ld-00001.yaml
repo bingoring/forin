@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "You can do this. Breathe with me — in through the nose, out through the mouth." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LD-00001 }
