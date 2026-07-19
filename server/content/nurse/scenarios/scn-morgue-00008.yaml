@@ -1,0 +1,50 @@
+# 영안실 · 안치실 안내 (단계 B #8, ADMIN).
+id: SCN-MORGUE-00008
+eventId: EVT-ADMIN-00001
+title: "안치실 안내"
+tagline: "Can I sit with her for a while?"
+persona:
+  name: "Daughter"
+  role: visitor
+  sub: "유족"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "유족을 안치실(참관)로 존중과 배려로 안내합니다."
+  mood: sad
+goals:
+  - "안치실 어휘"
+  - "유족 배려"
+  - "공감"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Of course — take all the time you need."
+  - "I'll give you privacy, just outside if you need me."
+  - "Is there anything that would bring you comfort?"
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "유족을 안치실(참관)로 존중과 배려로 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "안치실 어휘"
+    - "유족 배려"
+    - "공감"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "Can I sit with her for a while?", lineKo: "잠시 곁에 있어도 될까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Of course — take all the time you need. I'll be just outside if you need me." }

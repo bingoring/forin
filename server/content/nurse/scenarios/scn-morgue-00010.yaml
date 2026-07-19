@@ -1,0 +1,50 @@
+# 영안실 · 소아 사망 유족 지지 (단계 B #10, ADMIN).
+id: SCN-MORGUE-00010
+eventId: EVT-ADMIN-00001
+title: "소아 사망 유족 지지"
+tagline: "I can't believe my child is gone."
+persona:
+  name: "Parent"
+  role: parent
+  sub: "고인 아동의 부모"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 사망 유족을 깊은 공감으로 지지합니다."
+  mood: sad
+goals:
+  - "사별 지지 어휘"
+  - "깊은 공감"
+  - "자원 연계"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I am so deeply sorry for your loss."
+  - "There are no words — I'm here with you."
+  - "Our bereavement team specializes in this support."
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "소아 사망 유족을 깊은 공감으로 지지합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "사별 지지 어휘"
+    - "깊은 공감"
+    - "자원 연계"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: sad, lineEn: "I can't believe my child is gone.", lineKo: "제 아이가 떠났다니 믿기지 않아요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I am so deeply sorry. There are no words — I'm here with you, for as long as you need." }

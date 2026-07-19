@@ -1,0 +1,50 @@
+# 시뮬레이션랩 · 의사소통 오류 리뷰 (단계 B #11, ADMIN).
+id: SCN-SIM-00011
+eventId: EVT-ADMIN-00001
+title: "의사소통 오류 리뷰"
+tagline: "The doctor didn't hear my concern."
+persona:
+  name: "Learner Nurse"
+  role: nurse
+  sub: "신규"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "폐쇄형 의사소통 실패 사례를 디브리핑합니다."
+  mood: worried
+goals:
+  - "의사소통 어휘"
+  - "주장 기법"
+  - "안전"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Use CUS: 'I'm Concerned, Uncomfortable, this is a Safety issue.'"
+  - "Say it clearly and escalate if unheard."
+  - "Speaking up protects the patient."
+briefing:
+  dept: "시뮬레이션랩"
+  deptColor: "#6E6354"
+  brief: "폐쇄형 의사소통 실패 사례를 디브리핑합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "의사소통 어휘"
+    - "주장 기법"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: worried, lineEn: "The doctor didn't hear my concern.", lineKo: "의사가 제 우려를 안 들었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Try CUS wording — 'I'm Concerned, this is a Safety issue' — and escalate if unheard." }

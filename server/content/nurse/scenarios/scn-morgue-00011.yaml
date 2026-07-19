@@ -1,0 +1,50 @@
+# 영안실 · 무연고 사망 처리 안내 (단계 B #11, ADMIN).
+id: SCN-MORGUE-00011
+eventId: EVT-ADMIN-00001
+title: "무연고 사망 처리 안내"
+tagline: "There's no family we can reach."
+persona:
+  name: "Social Worker"
+  role: nurse
+  sub: "사회복지"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "무연고 사망자 처리 절차를 존엄하게 안내합니다."
+  mood: neutral
+goals:
+  - "무연고 어휘"
+  - "절차 안내"
+  - "존엄"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We'll follow the unclaimed-remains protocol."
+  - "Every effort is made to locate next of kin."
+  - "They're treated with the same dignity, always."
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "무연고 사망자 처리 절차를 존엄하게 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "무연고 어휘"
+    - "절차 안내"
+    - "존엄"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: neutral, lineEn: "There's no family we can reach.", lineKo: "연락할 가족이 없어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We follow the unclaimed-remains protocol — every effort to find kin, always with dignity." }

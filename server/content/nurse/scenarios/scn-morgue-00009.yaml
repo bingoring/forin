@@ -1,0 +1,50 @@
+# 영안실 · 검시(부검) 절차 설명 (단계 B #9, ADMIN).
+id: SCN-MORGUE-00009
+eventId: EVT-ADMIN-00001
+title: "검시(부검) 절차 설명"
+tagline: "Why does the coroner need to be involved?"
+persona:
+  name: "Family"
+  role: visitor
+  sub: "유족"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "검시(coroner) 필요 사례의 절차를 설명합니다."
+  mood: neutral
+goals:
+  - "검시 어휘"
+  - "절차 설명"
+  - "유족 응대"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Certain deaths are required by law to be reviewed."
+  - "The coroner determines the exact cause."
+  - "We'll guide you through each step gently."
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "검시(coroner) 필요 사례의 절차를 설명합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "검시 어휘"
+    - "절차 설명"
+    - "유족 응대"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: neutral, lineEn: "Why does the coroner need to be involved?", lineKo: "왜 검시관이 필요한가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Certain deaths must be reviewed by law — the coroner determines the cause. We'll guide you gently." }

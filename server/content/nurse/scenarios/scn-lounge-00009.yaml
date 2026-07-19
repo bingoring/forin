@@ -1,0 +1,50 @@
+# 직원 라운지 · 문화 차이 소통 (단계 B #9, ADMIN).
+id: SCN-LOUNGE-00009
+eventId: EVT-ADMIN-00001
+title: "문화 차이 소통"
+tagline: "I'm still getting used to how things work here."
+persona:
+  name: "Nurse Osei"
+  role: nurse
+  sub: "외국인 동료"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "다문화 동료와 존중하며 소통하고 지원합니다."
+  mood: neutral
+goals:
+  - "문화 소통 어휘"
+  - "포용"
+  - "지원"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Please ask if any custom here is unclear."
+  - "Your perspective adds a lot to our team."
+  - "We can go over the unwritten rules together."
+briefing:
+  dept: "직원 라운지"
+  deptColor: "#6E6354"
+  brief: "다문화 동료와 존중하며 소통하고 지원합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "문화 소통 어휘"
+    - "포용"
+    - "지원"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: neutral, lineEn: "I'm still getting used to how things work here.", lineKo: "여기 방식에 아직 적응 중이에요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Ask me anything that's unclear — your perspective adds a lot to our team." }

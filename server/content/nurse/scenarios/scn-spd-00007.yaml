@@ -1,0 +1,50 @@
+# 중앙공급실 · 응급 세트 추적 (단계 B #7, ADMIN).
+id: SCN-SPD-00007
+eventId: EVT-ADMIN-00001
+title: "응급 세트 추적"
+tagline: "Where is the emergency laparotomy tray?"
+persona:
+  name: "OR Coordinator"
+  role: nurse
+  sub: "수술실"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "긴급 멸균 세트의 위치·상태를 추적·확인합니다."
+  mood: focused
+goals:
+  - "추적 어휘"
+  - "물품 확인"
+  - "우선 처리"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let me check the tracking system now."
+  - "It's sterilized and staged for OR 2."
+  - "I'll bring it up and confirm the indicator."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "긴급 멸균 세트의 위치·상태를 추적·확인합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "추적 어휘"
+    - "물품 확인"
+    - "우선 처리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "Where is the emergency laparotomy tray?", lineKo: "응급 개복 세트 어디 있어요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Checking the tracker now — it's staged for OR 2. I'll confirm the indicator." }

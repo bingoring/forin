@@ -1,0 +1,49 @@
+# 중앙공급실 · 유효기간 점검 안내 (단계 B #8, ADMIN).
+id: SCN-SPD-00008
+eventId: EVT-ADMIN-00001
+title: "유효기간 점검 안내"
+tagline: "Some of these packs look old."
+persona:
+  name: "Ward Nurse"
+  role: nurse
+  sub: "병동"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "멸균 물품 유효기간·무결성 점검을 안내합니다."
+  mood: neutral
+goals:
+  - "유효기간 어휘"
+  - "무결성 점검"
+  - "안전"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Check the expiry and that the seal is intact."
+  - "If it's wet, torn, or expired — don't use it."
+  - "Send questionable items back for reprocessing."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "멸균 물품 유효기간·무결성 점검을 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "유효기간 어휘"
+    - "무결성 점검"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: neutral, lineEn: "Some of these packs look old.", lineKo: "이 팩들 좀 오래돼 보여요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Check the expiry and seal — if wet, torn, or expired, send it back to reprocess." }

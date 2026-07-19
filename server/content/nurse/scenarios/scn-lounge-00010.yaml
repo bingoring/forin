@@ -1,0 +1,49 @@
+# 직원 라운지 · 점심 스몰토크 (단계 B #10, ADMIN).
+id: SCN-LOUNGE-00010
+eventId: EVT-ADMIN-00001
+title: "점심 스몰토크"
+tagline: "Any fun plans this weekend?"
+persona:
+  name: "Nurse Diaz"
+  role: nurse
+  sub: "동료"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "동료와 자연스러운 일상 스몰토크를 연습합니다."
+  mood: happy
+goals:
+  - "스몰토크 어휘"
+  - "친목"
+  - "일상 표현"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm finally catching up on sleep!"
+  - "How about you — anything fun planned?"
+  - "We should grab dinner as a team sometime."
+briefing:
+  dept: "직원 라운지"
+  deptColor: "#6E6354"
+  brief: "동료와 자연스러운 일상 스몰토크를 연습합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "스몰토크 어휘"
+    - "친목"
+    - "일상 표현"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: happy, lineEn: "Any fun plans this weekend?", lineKo: "주말에 재밌는 계획 있어요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'm finally catching up on sleep! You? We should do a team dinner sometime." }

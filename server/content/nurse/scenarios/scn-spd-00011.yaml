@@ -1,0 +1,50 @@
+# 중앙공급실 · 신규 물품 교육 (단계 B #11, ADMIN).
+id: SCN-SPD-00011
+eventId: EVT-ADMIN-00001
+title: "신규 물품 교육"
+tagline: "I've never processed this instrument."
+persona:
+  name: "New Tech"
+  role: pharmacist
+  sub: "신규 기사"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "신규 기구 재처리 방법을 교육합니다."
+  mood: worried
+goals:
+  - "재처리 어휘"
+  - "기구 교육"
+  - "안전"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Every instrument has its own reprocessing card."
+  - "Disassemble it fully before cleaning."
+  - "When unsure, ask — never guess with sterile items."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "신규 기구 재처리 방법을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "재처리 어휘"
+    - "기구 교육"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: worried, lineEn: "I've never processed this instrument.", lineKo: "이 기구는 처리해본 적 없어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Each has its own reprocessing card — disassemble fully, and ask when unsure." }

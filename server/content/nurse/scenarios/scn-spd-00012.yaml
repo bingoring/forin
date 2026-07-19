@@ -1,0 +1,50 @@
+# 중앙공급실 · 재처리 실패 보고 (단계 B #12, ADMIN).
+id: SCN-SPD-00012
+eventId: EVT-ADMIN-00001
+title: "재처리 실패 보고"
+tagline: "The sterilizer indicator didn't turn."
+persona:
+  name: "Tech Lee"
+  role: pharmacist
+  sub: "SPD 기사"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "멸균 실패(indicator fail)를 보고하고 재처리합니다."
+  mood: worried
+goals:
+  - "멸균 실패 어휘"
+  - "보고"
+  - "재처리"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Quarantine the whole load right now."
+  - "Don't release any of it for use."
+  - "I'll log the failure and rerun the cycle."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "멸균 실패(indicator fail)를 보고하고 재처리합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "멸균 실패 어휘"
+    - "보고"
+    - "재처리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: worried, lineEn: "The sterilizer indicator didn't turn.", lineKo: "멸균 인디케이터가 안 변했어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Quarantine the whole load now, release nothing — I'll log it and rerun the cycle." }

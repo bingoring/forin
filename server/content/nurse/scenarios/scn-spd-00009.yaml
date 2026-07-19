@@ -1,0 +1,50 @@
+# 중앙공급실 · 오염 노출 사고 대응 (단계 B #9, ADMIN).
+id: SCN-SPD-00009
+eventId: EVT-ADMIN-00001
+title: "오염 노출 사고 대응"
+tagline: "A sterile field was contaminated."
+persona:
+  name: "Tech Moreau"
+  role: pharmacist
+  sub: "SPD 기사"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "멸균 구역 오염 사고를 보고하고 대응합니다."
+  mood: worried
+goals:
+  - "오염 사고 어휘"
+  - "즉시 대응"
+  - "보고"
+guardrails:
+  - "환자·보호자·동료를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Stop and remove the affected items now."
+  - "Don't use anything that touched the field."
+  - "I'll document it and open fresh supplies."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "멸균 구역 오염 사고를 보고하고 대응합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "오염 사고 어휘"
+    - "즉시 대응"
+    - "보고"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: worried, lineEn: "A sterile field was contaminated.", lineKo: "멸균 구역이 오염됐어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Remove the affected items now — don't use anything that touched it. I'll open fresh supplies." }
