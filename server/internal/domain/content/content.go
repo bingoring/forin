@@ -227,6 +227,17 @@ type Req struct {
 	Threshold int    `yaml:"threshold" json:"threshold,omitempty"`
 }
 
+// BoardCard is a compact scenario entry for the daily situation board — enough
+// to render a card and fast-travel to the scenario briefing.
+type BoardCard struct {
+	ID        string `json:"id"`
+	Dept      string `json:"dept"`      // dept code from the id (ER, LD, ONCO...)
+	Title     string `json:"title"`
+	Tagline   string `json:"tagline"`
+	Urgency   string `json:"urgency"`   // urgent | quest | info (from difficulty)
+	DeptColor string `json:"deptColor"`
+}
+
 type Quiz struct {
 	ID         string       `yaml:"id" json:"id"`
 	Profession string       `yaml:"profession" json:"profession"`

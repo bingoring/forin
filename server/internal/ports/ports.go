@@ -105,6 +105,7 @@ type ContentReader interface {
 	GetScenario(ctx context.Context, id string) (*content.Scenario, error)
 	GetQuiz(ctx context.Context, id string) (*content.Quiz, error)
 	TodaysBoard(ctx context.Context, profession string, limit int) ([]content.Event, error)
+	TodaysScenarios(ctx context.Context, profession string, limit int) ([]content.BoardCard, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

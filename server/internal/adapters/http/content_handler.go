@@ -93,14 +93,14 @@ func (h *contentHandler) quiz(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, q)
 }
 
-// @Summary Today's event board (daily pool)
+// @Summary Today's situation board — a daily-rotated set of scenario cards
 // @Tags content
 // @Router /board/today [get]
 func (h *contentHandler) board(w http.ResponseWriter, r *http.Request) {
-	events, err := h.content.TodaysBoard(r.Context(), r.URL.Query().Get("profession"), 6)
+	cards, err := h.content.TodaysScenarios(r.Context(), r.URL.Query().Get("profession"), 12)
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not load board")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]any{"events": events})
+	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards})
 }

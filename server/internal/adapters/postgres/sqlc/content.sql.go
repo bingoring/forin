@@ -411,6 +411,39 @@ func (q *Queries) ListEvents(ctx context.Context, dollar_1 interface{}) ([]Event
 	return items, nil
 }
 
+const listBoardScenarios = `-- name: ListBoardScenarios :many
+SELECT s.id, s.title, s.tagline, s.briefing
+FROM scenarios s JOIN events e ON s.event_id = e.id
+WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common')
+`
+
+type ListBoardScenariosRow struct {
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Tagline  string `json:"tagline"`
+	Briefing []byte `json:"briefing"`
+}
+
+func (q *Queries) ListBoardScenarios(ctx context.Context, column1 interface{}) ([]ListBoardScenariosRow, error) {
+	rows, err := q.db.Query(ctx, listBoardScenarios, column1)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListBoardScenariosRow
+	for rows.Next() {
+		var i ListBoardScenariosRow
+		if err := rows.Scan(&i.ID, &i.Title, &i.Tagline, &i.Briefing); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const todaysBoard = `-- name: TodaysBoard :many
 SELECT id, profession, title, ward, category, tier, tags, delivery, prerequisites, follow_ups, related, scenarios
 FROM events WHERE delivery IN ('daily_pool', 'both') AND ($1 = '' OR profession = $1 OR profession = 'common')

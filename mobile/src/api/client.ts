@@ -115,6 +115,8 @@ export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;
 }
 
+export interface BoardCard { id: string; dept: string; title: string; tagline: string; urgency: string; deptColor?: string }
+
 export interface WordScore { word: string; accuracy: number; errorType?: string }
 export interface PronunciationResult {
   recognized: string; accuracy: number; fluency: number; completeness: number; overall: number;
@@ -169,6 +171,12 @@ export const api = {
   async scenario(id: string): Promise<ScenarioDetail> {
     const { data } = await http.get(`/scenarios/${id}`);
     return data as ScenarioDetail;
+  },
+
+  /** Today's situation board — a daily-rotated set of scenario cards. */
+  async boardToday(profession = 'nurse'): Promise<BoardCard[]> {
+    const { data } = await http.get(`/board/today?profession=${profession}`);
+    return (data as { scenarios: BoardCard[] }).scenarios ?? [];
   },
 
   /** Assess pronunciation of recorded audio (base64 16kHz mono WAV) vs a reference. */

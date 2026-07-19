@@ -26,6 +26,11 @@ ORDER BY tier, id LIMIT $2;
 SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing
 FROM scenarios WHERE id = $1;
 
+-- name: ListBoardScenarios :many
+SELECT s.id, s.title, s.tagline, s.briefing
+FROM scenarios s JOIN events e ON s.event_id = e.id
+WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common');
+
 -- name: DeleteDepartments :exec
 DELETE FROM departments;
 -- name: DeleteInteriors :exec

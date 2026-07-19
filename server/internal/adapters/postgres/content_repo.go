@@ -4,6 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	mathrand "math/rand"
+	"strings"
+	"time"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -167,6 +170,50 @@ func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scen
 		out.Briefing = &b
 	}
 	return out, nil
+}
+
+// TodaysScenarios returns a deterministic daily-rotated set of scenario cards
+// for the board — stable within a calendar day, fresh each morning. Groups all
+// eligible (daily_pool/both) scenarios, seeds a shuffle by the date, takes limit.
+func (r *ContentRepo) TodaysScenarios(ctx context.Context, profession string, limit int) ([]content.BoardCard, error) {
+	rows, err := r.q.ListBoardScenarios(ctx, profession)
+	if err != nil {
+		return nil, err
+	}
+	cards := make([]content.BoardCard, 0, len(rows))
+	for _, s := range rows {
+		c := content.BoardCard{ID: s.ID, Title: s.Title, Tagline: s.Tagline, Dept: deptFromID(s.ID), Urgency: "quest"}
+		if len(s.Briefing) > 0 && string(s.Briefing) != "{}" {
+			var b content.Briefing
+			unjson(s.Briefing, &b)
+			c.DeptColor = b.DeptColor
+			switch {
+			case b.Difficulty >= 3:
+				c.Urgency = "urgent"
+			case b.Difficulty <= 1:
+				c.Urgency = "info"
+			}
+		}
+		cards = append(cards, c)
+	}
+	// Deterministic daily rotation: seed by YYYYMMDD so the set is stable per day.
+	now := time.Now()
+	seed := int64(now.Year()*10000 + int(now.Month())*100 + now.Day())
+	rnd := mathrand.New(mathrand.NewSource(seed))
+	rnd.Shuffle(len(cards), func(i, j int) { cards[i], cards[j] = cards[j], cards[i] })
+	if limit > 0 && len(cards) > limit {
+		cards = cards[:limit]
+	}
+	return cards, nil
+}
+
+// deptFromID pulls the dept code out of an id like "SCN-ONCO-00002" → "ONCO".
+func deptFromID(id string) string {
+	parts := strings.Split(id, "-")
+	if len(parts) >= 2 {
+		return parts[1]
+	}
+	return ""
 }
 
 func (r *ContentRepo) GetQuiz(ctx context.Context, id string) (*content.Quiz, error) {
