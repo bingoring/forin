@@ -1,0 +1,57 @@
+# ER mental-health safety assessment (v16 er-mental-health). Wired to the ER
+# nurse-station NPC hotspot. A distressed patient at risk of self-harm: practice
+# a non-judgmental, empathetic safety assessment and requesting a psych consult.
+# Sensitive clinical content — the persona stays in emotional distress; the
+# learner practices supportive, safety-focused communication.
+id: SCN-ER-00004
+eventId: EVT-ER-00001
+title: "자해 위험 환자 사정"
+tagline: "I just want it to stop…"
+persona:
+  name: "환자 (익명)"
+  role: patient
+  ageRange: "20s"
+  sub: "24y / Female"
+  hair: "#5C4033"
+  hairStyle: long
+  personality: "지치고 위축됨. 신뢰를 쉽게 열지 않음. 조용하고 방어적."
+  speakingStyle: "낮고 느린 말투, 짧은 대답. 눈을 잘 안 마주침."
+  mood: sad
+goals:
+  - "비판단적 어조로 안전 사정 진행"
+  - "공감 표현으로 신뢰 형성 후 정신과 컨설트 요청"
+guardrails:
+  - "절대 비난·판단하지 않기, 공감 우선"
+  - "안전을 최우선으로, 환자를 혼자 두지 않기"
+  - "섣부른 조언 대신 경청과 개방형 질문"
+keyPhrases:
+  - "I'm really glad you told me. You're not alone."
+  - "Can you tell me more about how you're feeling?"
+  - "Are you having thoughts of hurting yourself right now?"
+briefing:
+  dept: "ER · QUIET ROOM"
+  deptColor: "#1F2937"
+  brief: "자해 위험성이 있는 환자입니다. 비판단적 어조로 안전 사정을 진행하고 공감 표현을 사용하세요. 신뢰를 형성한 뒤 정신과 컨설트를 요청해야 합니다. 서두르지 말고 경청하세요."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "공감 표현"
+    - "안전 사정"
+    - "비판단 어조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 12" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+    - { label: "공감 표현 60+", metric: "empathy", threshold: 60 }
+  tone: "#E5E7EB"
+  accent: "#6B7280"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "I just want it to stop...", lineKo: "그냥 다 멈췄으면 좋겠어요…" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'm really glad you told me. You're not alone — can you tell me more?" }

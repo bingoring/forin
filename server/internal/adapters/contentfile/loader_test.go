@@ -37,10 +37,10 @@ func TestLoadRealContentAndBriefing(t *testing.T) {
 			if s.Persona.Sub == "" || s.Persona.Hair == "" {
 				t.Fatal("SCN-ER-00002: persona display fields (sub/hair) missing")
 			}
-		case "SCN-ER-00001":
+		case "SCN-GEN-00003":
 			legacy = true
 			if s.Briefing != nil {
-				t.Fatal("SCN-ER-00001: legacy scenario should have no briefing")
+				t.Fatal("SCN-GEN-00003: pre-briefing scenario should still load with no briefing")
 			}
 		}
 	}
@@ -48,7 +48,7 @@ func TestLoadRealContentAndBriefing(t *testing.T) {
 		t.Fatal("SCN-ER-00002 scenario not loaded")
 	}
 	if !legacy {
-		t.Fatal("legacy SCN-ER-00001 scenario not loaded (regression)")
+		t.Fatal("pre-briefing SCN-GEN-00003 scenario not loaded (regression)")
 	}
 
 	// Quiz content (sentence_build) round-trips with template/answers/wordBank.

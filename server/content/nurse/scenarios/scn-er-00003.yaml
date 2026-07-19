@@ -1,0 +1,55 @@
+# ER anaphylaxis — pediatric peanut allergy (v16 er-anaphylaxis, Tyler Chen).
+# Wired to fixtures/er.ts hotspot o-r1-bed. You talk to the panicked mother while
+# the child is in respiratory distress — listen for allergy/exposure history and
+# prepare epinephrine.
+id: SCN-ER-00003
+eventId: EVT-ER-00001
+title: "아나필락시스 — Peanut allergy"
+tagline: "He ate a cookie at school and now he can't breathe!"
+persona:
+  name: "Tyler's Mom"
+  role: parent
+  ageRange: "30s"
+  sub: "보호자 · Tyler(8y/M)"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "극도로 불안·다급함. 아이 걱정으로 말이 빨라짐."
+  speakingStyle: "빠르고 끊기는 말투, 울먹임. 반복 질문."
+  mood: panic
+goals:
+  - "알러지·노출 시간·이전 반응 신속 청취"
+  - "에피네프린 투여 준비 안내"
+guardrails:
+  - "침착하고 명확한 어조로 보호자 안심"
+  - "소아 응급 어조 유지, 전문용어 최소화"
+keyPhrases:
+  - "When did he eat the cookie?"
+  - "Has he had a reaction like this before?"
+  - "Does he have an epinephrine pen?"
+briefing:
+  dept: "ER · RESUS BAY #1"
+  deptColor: "#DC2626"
+  brief: "아동 환자가 호흡곤란으로 도착했습니다. 어머니에게 알러지, 노출 시간, 이전 반응을 영어로 신속히 청취하고 에피네프린 투여를 준비하세요. 시간이 촉박합니다."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "알러지 어휘"
+    - "에피펜 안내"
+    - "소아 응급 어조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 220 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 9" }
+    - { icon: "🎖", label: "응급 대응 진척", value: "+ 2" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+    - { label: "응급 대응력 70+", metric: "emergencyResponse", threshold: 70 }
+  tone: "#FFE4E6"
+  accent: "#FB7185"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: panic, lineEn: "He ate a cookie at school and now he can't breathe!", lineKo: "학교에서 쿠키를 먹었는데 숨을 못 쉬어요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'm here to help. Has he had a reaction like this before?" }

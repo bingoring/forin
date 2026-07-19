@@ -185,7 +185,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'bl-resus', type: 'baylabel', x: 1, y: 17, props: { text: 'RESUS · 소생실', highlight: true } },
     // trauma bay 1
     { id: 'o-r1-light', type: 'surgicallight', x: 4, y: 17 },
-    { id: 'o-r1-bed', type: 'ibed', x: 3, y: 18, props: { variant: 'or', occupied: true, marker: 'urgent', markerLabel: 'CODE', scenarioId: 'er-anaphylaxis' } },
+    { id: 'o-r1-bed', type: 'ibed', x: 3, y: 18, props: { variant: 'or', occupied: true, marker: 'urgent', markerLabel: 'CODE', scenarioId: 'SCN-ER-00003' } },
     { id: 'o-r1-mon', type: 'imonitor', x: 1, y: 18, props: { beep: true } },
     { id: 'o-r1-vent', type: 'ventilator', x: 6, y: 18 },
     { id: 'o-r1-crash', type: 'crashcart', x: 8, y: 18 },
@@ -229,7 +229,7 @@ export const ER_INTERIOR: Interior = {
     { id: 'o-e1-comp', type: 'compcart', x: 27, y: 19 },
     { id: 'o-e1-mon', type: 'imonitor', x: 31, y: 19 },
     { id: 'o-e1-stool', type: 'examstool', x: 30, y: 22 },
-    { id: 'o-e1-bed', type: 'ibed', x: 34, y: 20, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: '복통 문진', scenarioId: 'er-chest-pain' } },
+    { id: 'o-e1-bed', type: 'ibed', x: 34, y: 20, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: '복통 문진', scenarioId: 'SCN-ER-00001' } },
     { id: 'o-e1-chair', type: 'ichair', x: 32, y: 24, props: { color: '#A8C7DC', facing: 'up' } },
     { id: 'o-e1-plant', type: 'iplant', x: 37, y: 30 },
 
@@ -327,7 +327,7 @@ export const ER_INTERIOR: Interior = {
     // nurse station + pyxis
     { id: 'er-px-n', kind: 'nurse', mode: 'idle', seed: 61, start: { x: 16, y: 20 } },
     { id: 'er-ns-n1', kind: 'nurse', mode: 'idle', seed: 62, start: { x: 16, y: 27 } },
-    { id: 'er-ns-d1', kind: 'doctor', mode: 'idle', seed: 63, start: { x: 18, y: 27 }, marker: 'urgent', markerLabel: 'Dr. Patel', scenarioId: 'er-mental-health' },
+    { id: 'er-ns-d1', kind: 'doctor', mode: 'idle', seed: 63, start: { x: 18, y: 27 }, marker: 'urgent', markerLabel: 'Dr. Patel', scenarioId: 'SCN-ER-00004' },
     { id: 'er-ns-n2', kind: 'nurse', mode: 'idle', seed: 64, start: { x: 20, y: 27 } },
     { id: 'er-ns-d2', kind: 'doctor', mode: 'idle', seed: 65, start: { x: 22, y: 27 } },
     // exam1

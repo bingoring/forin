@@ -1,27 +1,51 @@
+# ER chest-pain triage (v16 er-chest-pain, Mr. Robinson). Wired to fixtures/er.ts
+# hotspot o-e1-bed. Enhanced with persona display + briefing card.
 id: SCN-ER-00001
 eventId: EVT-ER-00001
 title: "흉통 환자 트리아지"
-tagline: "가슴이 아파요…"
+tagline: "It feels like an elephant on my chest…"
 persona:
-  name: 김복순
+  name: "Mr. Robinson"
   role: patient
-  ageRange: "60s"
-  personality: "통증으로 예민하고 불안함. 빨리 도움받고 싶어함."
-  speakingStyle: "짧고 끊기는 말투, 가끔 신음."
+  ageRange: "50s"
+  sub: "58y / Male"
+  hair: "#4A4A4A"
+  hairStyle: short
+  personality: "운동 후 흉통. 겁먹었지만 참으려 함. 심장마비를 걱정함."
+  speakingStyle: "숨차서 짧게 끊어 말함. 가슴을 움켜쥠."
   mood: pain
 goals:
-  - "통증 사정(OPQRST)"
-  - "SBAR로 보고"
+  - "흉통 양상·방사통·동반증상 PQRST 사정"
+  - "STEMI 배제 위해 ESI 트리아지"
 guardrails:
-  - "환자에게 공감하며 말하기"
+  - "환자를 안심시키며 신속히 사정"
   - "의학용어 과용 금지"
 keyPhrases:
-  - "On a scale of 0 to 10"
-  - "Can you describe the pain?"
+  - "Can you describe the chest pain?"
+  - "Does the pain spread to your arm or jaw?"
+  - "On a scale of 0 to 10, how bad is it?"
+briefing:
+  dept: "ER · TRIAGE"
+  deptColor: "#DC2626"
+  brief: "운동 후 발생한 흉통을 호소하는 환자입니다. STEMI 가능성을 배제하기 위해 흉통의 양상, 방사통, 동반 증상을 PQRST로 사정하고 ESI 트리아지 등급을 정하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "흉통 PQRST"
+    - "심혈관 어휘"
+    - "ESI 트리아지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 140 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 5" }
+    - { icon: "🎖", label: "응급 대응 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FFEDD5"
+  accent: "#E8B584"
 steps:
   - id: s1
     type: dialogue
-    payload: { speaker: patient, expression: pain, lineKo: "가슴이… 너무 아파요", lineEn: "My chest... it really hurts" }
+    payload: { speaker: patient, expression: pain, lineEn: "It feels like an elephant on my chest...", lineKo: "가슴을 코끼리가 누르는 것 같아요…" }
     next: s2
   - id: s2
     type: quiz
@@ -29,4 +53,4 @@ steps:
     next: s3
   - id: s3
     type: dialogue
-    payload: { speaker: player, expression: focused, lineEn: "Can you describe the pain?" }
+    payload: { speaker: player, expression: focused, lineEn: "Does the pain spread to your arm or jaw?" }
