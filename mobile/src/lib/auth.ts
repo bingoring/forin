@@ -33,6 +33,17 @@ export async function signIn(provider: Provider): Promise<void> {
   useAuthStore.getState().setSession(access, refresh, toUser(res.user));
 }
 
+// devSignIn: local-only login via the server's ENV=dev /auth/dev endpoint (no
+// provider). Lets Expo Go exercise authed flows without OIDC credentials.
+export async function devSignIn(): Promise<void> {
+  const res = await api.devLogin();
+  const access = res.tokens?.accessToken;
+  const refresh = res.tokens?.refreshToken;
+  if (!access || !refresh) throw new Error('dev login: server returned no tokens');
+  await saveTokens(access, refresh);
+  useAuthStore.getState().setSession(access, refresh, toUser(res.user));
+}
+
 export async function signOut(): Promise<void> {
   await clearTokens();
   useAuthStore.getState().logout();
@@ -48,6 +59,20 @@ export async function restoreSession(): Promise<void> {
     useAuthStore.getState().setSession(access, refresh, toUser(me.user));
   } catch {
     // token invalid/expired → the 401 interceptor rotates or logs out.
+  }
+}
+
+// bootstrapSession runs once at app root: restore a saved session; in dev, if
+// none survives (fresh install, or deep-linking to an authed screen without ever
+// logging in), auto dev-login so testing flows just work. No-op effect in prod.
+export async function bootstrapSession(): Promise<void> {
+  await restoreSession();
+  if (__DEV__ && !useAuthStore.getState().isAuthed) {
+    try {
+      await devSignIn();
+    } catch {
+      // dev server not running / ENV!=dev → stay logged out (login screen handles it).
+    }
   }
 }
 

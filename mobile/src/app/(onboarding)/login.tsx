@@ -2,17 +2,13 @@ import { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
-import { signIn, type Provider } from '@/lib/auth';
-import { useAuthStore } from '@/store/authStore';
-import { api } from '@/api/client';
-import { saveTokens } from '@/lib/secureStore';
+import { signIn, devSignIn, type Provider } from '@/lib/auth';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 // Social one-tap sign-in → server /auth/social → JWT (secure-store), then enter the app.
 export default function Login() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
-  const setSession = useAuthStore((s) => s.setSession);
 
   async function onProvider(provider: Provider) {
     if (busy) return;
@@ -31,11 +27,7 @@ export default function Login() {
     if (busy) return;
     setBusy(true);
     try {
-      const { tokens, user } = await api.devLogin();
-      if (!tokens?.accessToken || !tokens?.refreshToken) throw new Error('토큰이 없습니다');
-      await saveTokens(tokens.accessToken, tokens.refreshToken);
-      const u = user?.id ? { id: user.id, status: user.status ?? 'active' } : null;
-      setSession(tokens.accessToken, tokens.refreshToken, u);
+      await devSignIn();
       router.replace('/campus');
     } catch (e) {
       Alert.alert('개발자 로그인 실패', e instanceof Error ? e.message : '서버(ENV=dev)가 실행 중인지 확인하세요.');
