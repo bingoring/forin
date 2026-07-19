@@ -14,7 +14,7 @@ import { colors, fonts } from '@/theme/tokens';
 const C = colors.ink;
 
 export default function QuizRoute() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, scenario } = useLocalSearchParams<{ id: string; scenario?: string }>();
   const router = useRouter();
   const { quiz, state } = useQuizData(id);
 
@@ -34,11 +34,13 @@ export default function QuizRoute() {
     );
   }
 
-  return <SentenceQuiz quiz={quiz} onExit={() => router.back()} />;
+  // On clear: go to the scenario result screen if we came from one, else back.
+  const onComplete = () => (scenario ? router.replace(`/result/${scenario}`) : router.back());
+  return <SentenceQuiz quiz={quiz} onExit={() => router.back()} onComplete={onComplete} />;
 }
 
 // ── sentence-build quiz ───────────────────────────────────────────────
-function SentenceQuiz({ quiz, onExit }: { quiz: NonNullable<ReturnType<typeof useQuizData>['quiz']>; onExit: () => void }) {
+function SentenceQuiz({ quiz, onExit, onComplete }: { quiz: NonNullable<ReturnType<typeof useQuizData>['quiz']>; onExit: () => void; onComplete: () => void }) {
   const c = quiz.content!;
   const answers = c.answers ?? [];
   // Split the template into text segments; N answers → N slots between them.
@@ -175,7 +177,7 @@ function SentenceQuiz({ quiz, onExit }: { quiz: NonNullable<ReturnType<typeof us
               )}
               <View style={{ flex: 2 }}>
                 {allCorrect ? (
-                  <PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onExit} full />
+                  <PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full />
                 ) : (
                   <PixelButton label="✓ 제출하기" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allFilled || checked} onPress={() => setChecked(true)} full />
                 )}

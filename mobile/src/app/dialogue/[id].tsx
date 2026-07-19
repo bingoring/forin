@@ -203,7 +203,7 @@ export default function DialogueRoute() {
             <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
           <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} style={{ flex: 1 }} />
-          {!!quizId && <PixelButton label="📝" bg="#fff" shadowColor={C} onPress={() => router.push(`/quiz/${quizId}`)} style={{ paddingHorizontal: 12 }} />}
+          {!!quizId && <PixelButton label="📝" bg="#fff" shadowColor={C} onPress={() => router.push(`/quiz/${quizId}?scenario=${id}`)} style={{ paddingHorizontal: 12 }} />}
         </View>
       </View>
     </KeyboardAvoidingView>
