@@ -59,4 +59,7 @@ updated: 2026-07-18
 > **검증 결과:** 백엔드 파이프라인(yaml→seed→DB→GetScenario→StartSession→persona 프롬프트→LLM(openai)→스트리밍)이 실 엔드포인트로 관통. NPC(Mrs. Hopkins) 페르소나 응답 확인("It's sharp... stabbing me in the side", "I'd say... an 8"). 스트리밍 SSE 형식이 모바일 파서와 일치. 브리핑 화면은 시뮬레이터에서 실서버 데이터로 렌더, 대화 화면은 유효 세션으로 오프닝·초상·미션 렌더. (대화 화면의 시뮬레이터 happy-path는 실 로그인 세션 필요 — 검증 시 임시 devtoken 주입 후 원복.)
 
 ## §5. 후속 (슬라이스 밖)
-힌트모드(선택지·번역)·마이크 STT·발음 채점(azurespeech)·결과/리워드 화면(컨페티)·미니퀴즈 8종·나머지 시나리오 저작(ER 8→OR/PEDS/ICU/PHARMA→신규 20부서)·`scenarios.ts` Dept 타입 20부서 확장·레거시 SCN-* 정렬.
+힌트모드·마이크 STT·발음 채점·결과화면·퀴즈 14포맷·전 부서 시나리오 — **대부분 구현 완료** (DECISIONS 2026-07-18~20 참조).
+
+## §6. 콘텐츠 확충 (상시 최우선) → [content-roadmap](content-roadmap.md)
+시나리오는 핵심 학습 자산. **목표 ≥ 300 시나리오**(현 86). 부서 평균 ~12개·난이도/유형 다양화. 저작은 생성기로 기계화됨. 상세 단계·품질기준은 [content-roadmap.md](content-roadmap.md).
