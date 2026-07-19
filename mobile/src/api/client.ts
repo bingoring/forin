@@ -92,9 +92,15 @@ export interface ScenarioDetail {
   briefing?: ScenarioBriefing; steps?: ScenarioStep[];
 }
 
+export interface QuizPair { left: string; leftSub?: string; right: string; rightIcon?: string }
+export interface QuizChoice { text: string; tags?: string[]; correct?: boolean }
+export interface QuizCard { text: string; track: string; order: number }
 export interface QuizContent {
   sub?: string; zone?: string; context?: string; hint?: string;
   template?: string; answers?: string[]; wordBank?: string[];
+  pairs?: QuizPair[];
+  audioText?: string; choices?: QuizChoice[];
+  cards?: QuizCard[];
 }
 export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;

@@ -235,18 +235,47 @@ type Quiz struct {
 	Content    *QuizContent `yaml:"content" json:"content,omitempty"` // playable payload (optional)
 }
 
-// QuizContent is the playable quiz payload. sentence_build (the shipped type)
-// uses Template (a sentence with `__` blanks) + Answers (correct word per blank,
-// in order) + WordBank (tiles = answers + distractors). Optional so pre-content
-// quizzes still load. Extend per new quiz type.
+// QuizContent is the playable quiz payload. The active quiz `type` selects which
+// fields matter; all are optional so any type loads. Shipped types:
+//   - sentence_build: Template (`__` blanks) + Answers (per blank) + WordBank
+//   - match_pairs:    Pairs (left↔right term matching)
+//   - listen:         AudioText (the spoken line) + Choices (pick the correct one)
+//   - sbar:           Cards (order them into the S-B-A-R sequence)
 type QuizContent struct {
 	Sub      string   `yaml:"sub" json:"sub,omitempty"`
 	Zone     string   `yaml:"zone" json:"zone,omitempty"`
 	Context  string   `yaml:"context" json:"context,omitempty"`
 	Hint     string   `yaml:"hint" json:"hint,omitempty"`
-	Template string   `yaml:"template" json:"template,omitempty"` // blanks marked with `__`
+	Template string   `yaml:"template" json:"template,omitempty"` // sentence_build: blanks marked with `__`
 	Answers  []string `yaml:"answers" json:"answers,omitempty"`
 	WordBank []string `yaml:"wordBank" json:"wordBank,omitempty"`
+
+	Pairs     []QuizPair   `yaml:"pairs" json:"pairs,omitempty"`         // match_pairs
+	AudioText string       `yaml:"audioText" json:"audioText,omitempty"` // listen: the spoken line (TTS/reference)
+	Choices   []QuizChoice `yaml:"choices" json:"choices,omitempty"`     // listen
+	Cards     []QuizCard   `yaml:"cards" json:"cards,omitempty"`         // sbar (order by `order`)
+}
+
+// QuizPair — one left↔right match (e.g. "throbbing" ↔ "욱신거리는" 💢).
+type QuizPair struct {
+	Left     string `yaml:"left" json:"left"`
+	LeftSub  string `yaml:"leftSub" json:"leftSub,omitempty"` // e.g. IPA
+	Right    string `yaml:"right" json:"right"`
+	RightIcon string `yaml:"rightIcon" json:"rightIcon,omitempty"`
+}
+
+// QuizChoice — a listening-dictation option; exactly one has Correct true.
+type QuizChoice struct {
+	Text    string   `yaml:"text" json:"text"`
+	Tags    []string `yaml:"tags" json:"tags,omitempty"`
+	Correct bool     `yaml:"correct" json:"correct,omitempty"`
+}
+
+// QuizCard — an SBAR handoff line; Track is S|B|A|R, Order is its 1-based place.
+type QuizCard struct {
+	Text  string `yaml:"text" json:"text"`
+	Track string `yaml:"track" json:"track"`
+	Order int    `yaml:"order" json:"order"`
 }
 
 type Phrase struct {

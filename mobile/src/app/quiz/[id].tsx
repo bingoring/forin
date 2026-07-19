@@ -9,6 +9,9 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View, type ViewStyle } 
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useQuizData } from '@/hooks/useQuizData';
 import { PixelButton } from '@/components/PixelButton';
+import { MatchQuiz } from '@/components/quiz/MatchQuiz';
+import { ListenQuiz } from '@/components/quiz/ListenQuiz';
+import { SbarQuiz } from '@/components/quiz/SbarQuiz';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -36,7 +39,14 @@ export default function QuizRoute() {
 
   // On clear: go to the scenario result screen if we came from one, else back.
   const onComplete = () => (scenario ? router.replace(`/result/${scenario}`) : router.back());
-  return <SentenceQuiz quiz={quiz} onExit={() => router.back()} onComplete={onComplete} />;
+  const onExit = () => router.back();
+  const props = { quiz, onExit, onComplete };
+  switch (quiz.type) {
+    case 'match_pairs': return <MatchQuiz {...props} />;
+    case 'listen': return <ListenQuiz {...props} />;
+    case 'sbar': return <SbarQuiz {...props} />;
+    default: return <SentenceQuiz quiz={quiz} onExit={onExit} onComplete={onComplete} />;
+  }
 }
 
 // ── sentence-build quiz ───────────────────────────────────────────────

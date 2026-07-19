@@ -50,3 +50,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Current settings: FiO2 80%, PEEP 10. SpO2 is 88%." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ICU-00001 }

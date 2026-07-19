@@ -48,3 +48,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Read-back: morphine 5 milligrams, IV push, now. Correct?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00001 }

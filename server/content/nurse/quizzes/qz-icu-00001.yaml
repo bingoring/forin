@@ -1,0 +1,16 @@
+# sbar — order the handoff into the S-B-A-R sequence (v16 quiz SBAR). Cards are
+# shuffled; place them 1→5 by `order`.
+id: QZ-ICU-00001
+type: sbar
+title: "SBAR 전화 인계 정렬"
+content:
+  sub: "전화 인계 문장을 S-B-A-R 순서로 배열하세요"
+  zone: "중환자실"
+  context: "📞 당직의에게 환자 상태를 SBAR로 보고합니다. 순서가 명확해야 합니다."
+  hint: "Situation(지금) → Background(배경) → Assessment(사정) → Recommendation(요청)."
+  cards:
+    - { text: '"Mr. Park in Bed 412 has new shortness of breath."', track: "S", order: 1 }
+    - { text: '"68-year-old male, post-op day 2, history of asthma."', track: "B", order: 2 }
+    - { text: '"SpO2 88% on room air, RR 28, accessory muscle use."', track: "A", order: 3 }
+    - { text: '"BP 110/70, HR 105, lungs clear bilaterally."', track: "A", order: 4 }
+    - { text: '"I would like you to come evaluate. He may need a stat ABG."', track: "R", order: 5 }
