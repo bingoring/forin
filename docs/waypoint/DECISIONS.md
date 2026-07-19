@@ -830,3 +830,11 @@
 - 배선: SCN-ER-00001→QZ-ER-00002(짝맞추기), SCN-PHARMA-00002→QZ-PHARMA-00001(듣기), SCN-ICU-00001→QZ-ICU-00001(SBAR) quiz step.
 - 검증: 로더·go test·jest 208/208·tsc 0 · 서버 재시작 후 content 왕복(pairs 4/choices 3/cards 5) · 시뮬레이터 3종 렌더(shuffle·트랙 범례·TTS 카드) 확인.
 - **결정자:** 사용자("퀴즈 타입 확장해줘") + AI(모델 확장·저작·컴포넌트·검증).
+
+## 2026-07-20 · v17 퀴즈 포맷 3종 추가 — mcq · check · monitor (6 코어 완성)
+- v17 핸드오프(`design-handoff_v17`)가 퀴즈 6 코어 포맷(FILL·MATCH·MONITOR·ORDER·CHECK·MCQ) + dept별 인스턴스 추가(`screens-quiz-bank.jsx`·`screens-quiz-depts.jsx`).
+- 기보유(sentence/match/sbar/listen)에 더해 **신규 3종 저작·구현**: mcq(치료적 의사소통 QZ-PSYCH-00001)·check(미숙아 위험징후 QZ-NICU-00001)·monitor(EFM 태아심박 QZ-LD-00001). → 6 코어 포맷 완성.
+- 서버 `QuizContent` 확장(content jsonb): Scene·Note·Items(check)·Device·Readings·Bank(monitor)·Choice.Ko(mcq). 시나리오 quiz step 배선(PSYCH/NICU/LD).
+- 모바일: McqQuiz(SCENE+객관식)·CheckQuiz(클립보드 select-all)·MonitorQuiz(다크 패널 라벨 배정) + 디스패처. QuizShell 재사용.
+- 검증: 로더·go test·jest 208/208·tsc 0 · **API 재시작 후** content 왕복(choices/items/readings) · 시뮬레이터 3종 렌더(SCENE 다크카드·클립보드·EFM 패널) 확인.
+- **결정자:** 사용자("v17 퀴즈가 추가되었어") + AI(포맷 분석·모델 확장·저작·컴포넌트·검증).
