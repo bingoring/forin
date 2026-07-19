@@ -1,0 +1,50 @@
+# 주사센터 · 수혈 전 확인 (부서 시나리오 다양화 #3, DX).
+id: SCN-INFUSION-00003
+eventId: EVT-DX-00001
+title: "수혈 전 확인"
+tagline: "How do you know it's the right blood?"
+persona:
+  name: "Mrs. Petrov"
+  role: patient
+  sub: "수혈 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "수혈 전 환자·혈액 이중 확인 절차를 설명하고 초기 부작용을 관찰하세요."
+  mood: worried
+goals:
+  - "수혈 어휘"
+  - "이중 확인"
+  - "부작용 관찰"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Two nurses will verify your name and blood type."
+  - "Tell me right away if you feel chills or itching."
+  - "I'll check your vitals in the first 15 minutes."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "수혈 전 환자·혈액 이중 확인 절차를 설명하고 초기 부작용을 관찰하세요."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "수혈 어휘"
+    - "이중 확인"
+    - "부작용 관찰"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "How do you know it's the right blood?", lineKo: "제 피가 맞는지 어떻게 아세요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Two of us verify your name and blood type together, step by step." }

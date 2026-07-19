@@ -1,0 +1,50 @@
+# 신생아실 · 신생아 황달 광선치료 안내 (부서 시나리오 다양화 #2, WOMEN).
+id: SCN-NURSERY-00002
+eventId: EVT-WOMEN-00001
+title: "신생아 황달 광선치료 안내"
+tagline: "Why are her eyes covered?"
+persona:
+  name: "Ji-woo Mom"
+  role: parent
+  sub: "초산모 · 딸(4일)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "신생아 황달로 광선치료 중입니다. 어머니에게 안대·수분·경과를 쉽게 설명하고 안심시키세요."
+  mood: worried
+goals:
+  - "황달 어휘"
+  - "광선치료 안내"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The eye shields protect her from the light."
+  - "We'll check her bilirubin levels regularly."
+  - "She may need a little extra feeding."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "신생아 황달로 광선치료 중입니다. 어머니에게 안대·수분·경과를 쉽게 설명하고 안심시키세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "황달 어휘"
+    - "광선치료 안내"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Why are her eyes covered?", lineKo: "왜 아이 눈을 가렸나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The eye shields protect her from the light. Let me explain the treatment." }

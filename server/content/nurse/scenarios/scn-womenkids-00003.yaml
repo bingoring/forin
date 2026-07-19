@@ -1,0 +1,50 @@
+# 여성소아외래 · 산전 외래 문진 (부서 시나리오 다양화 #3, WOMEN).
+id: SCN-WOMENKIDS-00003
+eventId: EVT-WOMEN-00001
+title: "산전 외래 문진"
+tagline: "Is my baby developing okay?"
+persona:
+  name: "Mrs. Adeyemi"
+  role: patient
+  sub: "임신 28주"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "산전 외래에서 산모 문진과 태동·부종을 확인하고 안심시키세요."
+  mood: worried
+goals:
+  - "산전 문진"
+  - "태동 확인"
+  - "산모 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "How often do you feel the baby move?"
+  - "Any swelling in your hands or face?"
+  - "Let's listen to the baby's heartbeat."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "산전 외래에서 산모 문진과 태동·부종을 확인하고 안심시키세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "산전 문진"
+    - "태동 확인"
+    - "산모 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Is my baby developing okay?", lineKo: "아이가 잘 크고 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's listen to the heartbeat. How often do you feel the baby move?" }

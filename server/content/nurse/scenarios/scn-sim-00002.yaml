@@ -1,0 +1,50 @@
+# 시뮬레이션랩 · 응급상황 팀 리더십 (부서 시나리오 다양화 #2, ADMIN).
+id: SCN-SIM-00002
+eventId: EVT-ADMIN-00001
+title: "응급상황 팀 리더십"
+tagline: "I didn't know who should do what."
+persona:
+  name: "Learner Nurse"
+  role: nurse
+  sub: "신규 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "모의 응급 상황 후 팀 역할 분담·리더십을 디브리핑합니다."
+  mood: worried
+goals:
+  - "팀 커뮤니케이션"
+  - "역할 분담"
+  - "리더십"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Assign roles out loud — compressions, airway, meds."
+  - "Closed-loop communication prevents missed orders."
+  - "What would you delegate first next time?"
+briefing:
+  dept: "시뮬레이션랩"
+  deptColor: "#6E6354"
+  brief: "모의 응급 상황 후 팀 역할 분담·리더십을 디브리핑합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "팀 커뮤니케이션"
+    - "역할 분담"
+    - "리더십"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: worried, lineEn: "I didn't know who should do what.", lineKo: "누가 뭘 해야 할지 몰랐어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Next time, assign roles out loud — closed-loop keeps everyone in sync." }

@@ -1,0 +1,50 @@
+# 재활치료실 · 낙상 후 자신감 회복 (부서 시나리오 다양화 #3, ONCO).
+id: SCN-REHAB-00003
+eventId: EVT-ONCO-00001
+title: "낙상 후 자신감 회복"
+tagline: "I'm afraid I'll fall again."
+persona:
+  name: "Mrs. Duval"
+  role: patient
+  sub: "낙상 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "낙상 후 보행 공포를 다루며 자신감을 회복하도록 지지합니다."
+  mood: worried
+goals:
+  - "낙상 후 재활"
+  - "자신감 지지"
+  - "보행 안전"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'll be right beside you the whole time."
+  - "We'll start with the walker, small steps."
+  - "Fear is normal — we'll rebuild it together."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "낙상 후 보행 공포를 다루며 자신감을 회복하도록 지지합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "낙상 후 재활"
+    - "자신감 지지"
+    - "보행 안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I'm afraid I'll fall again.", lineKo: "또 넘어질까 봐 무서워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'll be right beside you. We'll start small with the walker." }

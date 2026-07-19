@@ -1,0 +1,50 @@
+# 영상의학과 · MRI 검사 안내 (부서 시나리오 다양화 #2, DX).
+id: SCN-RAD-00002
+eventId: EVT-DX-00001
+title: "MRI 검사 안내"
+tagline: "I'm claustrophobic — will I be trapped?"
+persona:
+  name: "Mr. Feld"
+  role: patient
+  sub: "MRI 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "MRI 검사 절차·소음·폐소공포를 설명하고 안심시키세요."
+  mood: worried
+goals:
+  - "MRI 어휘"
+  - "폐소공포 대응"
+  - "검사 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The scanner is open at both ends."
+  - "You'll hear loud knocking — that's normal."
+  - "You can talk to me anytime through the mic."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "MRI 검사 절차·소음·폐소공포를 설명하고 안심시키세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "MRI 어휘"
+    - "폐소공포 대응"
+    - "검사 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I'm claustrophobic — will I be trapped?", lineKo: "폐소공포가 있어요, 갇히나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The scanner is open at both ends, and you can talk to me anytime." }

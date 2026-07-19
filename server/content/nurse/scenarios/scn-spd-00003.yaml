@@ -1,0 +1,49 @@
+# 중앙공급실 · 재고 부족 보고 (부서 시나리오 다양화 #3, ADMIN).
+id: SCN-SPD-00003
+eventId: EVT-ADMIN-00001
+title: "재고 부족 보고"
+tagline: "We're out of sterile gauze on the ward."
+persona:
+  name: "Ward Clerk"
+  role: nurse
+  sub: "병동 요청"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "물품 재고 부족을 보고받고 보충 절차를 안내합니다."
+  mood: neutral
+goals:
+  - "재고 어휘"
+  - "보충 절차"
+  - "물류 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'll send an urgent restock right away."
+  - "How many units do you need for today?"
+  - "I'll flag it for the next delivery too."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "물품 재고 부족을 보고받고 보충 절차를 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "재고 어휘"
+    - "보충 절차"
+    - "물류 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: neutral, lineEn: "We're out of sterile gauze on the ward.", lineKo: "병동에 멸균 거즈가 다 떨어졌어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'll send an urgent restock now. How many units do you need today?" }

@@ -1,0 +1,50 @@
+# 여성소아외래 · 영유아 예방접종 안내 (부서 시나리오 다양화 #2, WOMEN).
+id: SCN-WOMENKIDS-00002
+eventId: EVT-WOMEN-00001
+title: "영유아 예방접종 안내"
+tagline: "Does he really need another shot?"
+persona:
+  name: "Mrs. Yun"
+  role: parent
+  sub: "보호자 · 아들(4y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "영유아 예방접종 일정을 설명하고 부모의 걱정을 다룹니다."
+  mood: neutral
+goals:
+  - "접종 일정 어휘"
+  - "부작용 설명"
+  - "부모 상담"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Today he's due for the DTaP booster."
+  - "Some soreness or mild fever is normal."
+  - "Keep him hydrated and rest today."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "영유아 예방접종 일정을 설명하고 부모의 걱정을 다룹니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "접종 일정 어휘"
+    - "부작용 설명"
+    - "부모 상담"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "Does he really need another shot?", lineKo: "또 주사를 맞아야 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Today he's due for the DTaP booster — it keeps him protected." }

@@ -1,0 +1,50 @@
+# 영안실 · 부검 동의 설명 (부서 시나리오 다양화 #2, ADMIN).
+id: SCN-MORGUE-00002
+eventId: EVT-ADMIN-00001
+title: "부검 동의 설명"
+tagline: "Why is an autopsy needed?"
+persona:
+  name: "Daughter"
+  role: visitor
+  sub: "고인의 딸"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "유족에게 부검의 목적과 절차를 존중과 공감으로 설명합니다."
+  mood: sad
+goals:
+  - "부검 동의 어휘"
+  - "유족 응대"
+  - "공감 표현"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "An autopsy can help us understand the cause."
+  - "It's your decision, and we respect your wishes."
+  - "Take your time — I can explain anything.'"
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "유족에게 부검의 목적과 절차를 존중과 공감으로 설명합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "부검 동의 어휘"
+    - "유족 응대"
+    - "공감 표현"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "Why is an autopsy needed?", lineKo: "왜 부검이 필요한가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It can help us understand the cause. It's your decision, and we respect it." }

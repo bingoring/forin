@@ -1,0 +1,50 @@
+# 인공신장실 · 투석 중 저혈압 대응 (부서 시나리오 다양화 #3, DX).
+id: SCN-DIAL-00003
+eventId: EVT-DX-00001
+title: "투석 중 저혈압 대응"
+tagline: "I feel dizzy and sick."
+persona:
+  name: "Mrs. Costa"
+  role: patient
+  sub: "투석 중"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "투석 중 저혈압 증상을 사정하고 침착하게 대응·설명하세요."
+  mood: worried
+goals:
+  - "저혈압 어휘"
+  - "증상 사정"
+  - "응급 대응"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm lowering the fluid removal rate now."
+  - "Lie back — I'll raise your legs."
+  - "Tell me if the dizziness gets worse."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "투석 중 저혈압 증상을 사정하고 침착하게 대응·설명하세요."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "저혈압 어휘"
+    - "증상 사정"
+    - "응급 대응"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I feel dizzy and sick.", lineKo: "어지럽고 메스꺼워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Lie back, I'll raise your legs and lower the removal rate now." }

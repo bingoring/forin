@@ -1,0 +1,49 @@
+# 특수외래 · 청력 검사 안내 (부서 시나리오 다양화 #2, DX).
+id: SCN-SPECIALTY-00002
+eventId: EVT-DX-00001
+title: "청력 검사 안내"
+tagline: "What do I do during the test?"
+persona:
+  name: "Mr. Haas"
+  role: patient
+  sub: "이비인후과"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "순음청력검사 절차를 안내합니다."
+  mood: neutral
+goals:
+  - "청력검사 어휘"
+  - "절차 안내"
+  - "검사 협조"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Press the button each time you hear a tone."
+  - "Even a very faint beep counts."
+  - "We'll test each ear separately."
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "순음청력검사 절차를 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "청력검사 어휘"
+    - "절차 안내"
+    - "검사 협조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "What do I do during the test?", lineKo: "검사 때 뭘 하면 되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Press the button each time you hear a tone — even a faint one." }

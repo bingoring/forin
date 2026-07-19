@@ -1,0 +1,50 @@
+# 암센터 · 항암 부작용 상담 (부서 시나리오 다양화 #2, ONCO).
+id: SCN-ONCO-00002
+eventId: EVT-ONCO-00001
+title: "항암 부작용 상담"
+tagline: "My mouth is full of sores."
+persona:
+  name: "Ms. Lindqvist"
+  role: patient
+  sub: "항암 2주기"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "항암 부작용(구내염·오심)을 상담하고 관리법을 교육합니다."
+  mood: worried
+goals:
+  - "부작용 어휘"
+  - "구내염 관리"
+  - "환자 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Rinse with the mouthwash we gave you, no alcohol."
+  - "Soft, cool foods will be easier for now."
+  - "Tell us about any fever right away."
+briefing:
+  dept: "암센터"
+  deptColor: "#7C3AED"
+  brief: "항암 부작용(구내염·오심)을 상담하고 관리법을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "부작용 어휘"
+    - "구내염 관리"
+    - "환자 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "My mouth is full of sores.", lineKo: "입안이 온통 헐었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Use the alcohol-free rinse, and try soft cool foods for now." }

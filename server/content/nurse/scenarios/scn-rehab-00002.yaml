@@ -1,0 +1,50 @@
+# 재활치료실 · 일상생활동작(ADL) 훈련 (부서 시나리오 다양화 #2, ONCO).
+id: SCN-REHAB-00002
+eventId: EVT-ONCO-00001
+title: "일상생활동작(ADL) 훈련"
+tagline: "Can I dress myself again?"
+persona:
+  name: "Mr. Ferra"
+  role: patient
+  sub: "고관절 수술 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "수술 후 환자의 일상생활동작(ADL)을 안전하게 재훈련합니다."
+  mood: neutral
+goals:
+  - "ADL 어휘"
+  - "동작 지도"
+  - "안전 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's practice putting on your sock with this aid."
+  - "Bend from the hips, not the waist."
+  - "Small wins each day add up fast."
+briefing:
+  dept: "재활치료실"
+  deptColor: "#7C3AED"
+  brief: "수술 후 환자의 일상생활동작(ADL)을 안전하게 재훈련합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "ADL 어휘"
+    - "동작 지도"
+    - "안전 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Can I dress myself again?", lineKo: "다시 혼자 옷을 입을 수 있을까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes — let's practice with this aid. Bend from the hips, not the waist." }

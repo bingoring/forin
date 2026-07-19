@@ -1,0 +1,50 @@
+# 중앙공급실 · 긴급 멸균 세트 요청 (부서 시나리오 다양화 #2, ADMIN).
+id: SCN-SPD-00002
+eventId: EVT-ADMIN-00001
+title: "긴급 멸균 세트 요청"
+tagline: "We need a tray for an emergency case!"
+persona:
+  name: "OR Runner"
+  role: nurse
+  sub: "수술실 요청"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "수술실의 긴급 멸균 세트 요청을 정확히 접수·확인합니다."
+  mood: focused
+goals:
+  - "긴급 요청 어휘"
+  - "물품 확인"
+  - "우선 처리"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Which tray and for which OR?"
+  - "I'll flash-sterilize and bring it up now."
+  - "Confirm the indicator turned before use."
+briefing:
+  dept: "중앙공급실"
+  deptColor: "#6E6354"
+  brief: "수술실의 긴급 멸균 세트 요청을 정확히 접수·확인합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "긴급 요청 어휘"
+    - "물품 확인"
+    - "우선 처리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "We need a tray for an emergency case!", lineKo: "응급 수술용 세트가 급히 필요해요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Which tray and which OR? I'll sterilize and bring it up now." }

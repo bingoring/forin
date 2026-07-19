@@ -1,0 +1,50 @@
+# 신생아중환자실 · 캥거루 케어 첫 시도 (부서 시나리오 다양화 #3, WOMEN).
+id: SCN-NICU-00003
+eventId: EVT-WOMEN-00001
+title: "캥거루 케어 첫 시도"
+tagline: "I'm scared I'll hurt him."
+persona:
+  name: "Preemie's Dad"
+  role: parent
+  sub: "보호자 · 아들(30주)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "아버지의 첫 캥거루 케어(skin-to-skin)를 안내하며 자신감을 북돋우세요."
+  mood: worried
+goals:
+  - "캥거루 케어"
+  - "부모 격려"
+  - "안전 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Skin-to-skin helps him stay warm and calm."
+  - "I'll help you hold him safely on your chest."
+  - "You're doing wonderfully — he loves this."
+briefing:
+  dept: "신생아중환자실"
+  deptColor: "#DB2777"
+  brief: "아버지의 첫 캥거루 케어(skin-to-skin)를 안내하며 자신감을 북돋우세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "캥거루 케어"
+    - "부모 격려"
+    - "안전 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "I'm scared I'll hurt him.", lineKo: "제가 다치게 할까 봐 무서워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'll help you hold him safely. Skin-to-skin keeps him warm and calm." }

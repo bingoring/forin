@@ -1,0 +1,49 @@
+# 직원 라운지 · 신규 간호사 멘토링 (부서 시나리오 다양화 #3, ADMIN).
+id: SCN-LOUNGE-00003
+eventId: EVT-ADMIN-00001
+title: "신규 간호사 멘토링"
+tagline: "I feel like I'm falling behind."
+persona:
+  name: "New Grad"
+  role: nurse
+  sub: "신규 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "신규 간호사를 멘토링하며 격려하고 우선순위를 함께 세웁니다."
+  mood: worried
+goals:
+  - "멘토링 어휘"
+  - "격려"
+  - "우선순위"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Everyone feels that way at first — you're doing fine."
+  - "Let's prioritize your morning tasks together."
+  - "Ask me anything, anytime — that's what I'm here for."
+briefing:
+  dept: "직원 라운지"
+  deptColor: "#6E6354"
+  brief: "신규 간호사를 멘토링하며 격려하고 우선순위를 함께 세웁니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "멘토링 어휘"
+    - "격려"
+    - "우선순위"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: worried, lineEn: "I feel like I'm falling behind.", lineKo: "제가 뒤처지는 것 같아요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Everyone feels that at first. Let's prioritize your morning together." }

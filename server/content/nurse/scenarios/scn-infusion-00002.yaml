@@ -1,0 +1,50 @@
+# 주사센터 · 정맥주사 부작용 관찰 (부서 시나리오 다양화 #2, DX).
+id: SCN-INFUSION-00002
+eventId: EVT-DX-00001
+title: "정맥주사 부작용 관찰"
+tagline: "My arm feels hot and swollen."
+persona:
+  name: "Mr. Novak"
+  role: patient
+  sub: "외래 항생제 주사"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "정맥주사 중 침윤·정맥염 징후를 관찰하고 환자에게 설명·대응하세요."
+  mood: worried
+goals:
+  - "정맥염 어휘"
+  - "부작용 관찰"
+  - "환자 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let me check the IV site right away."
+  - "Redness or swelling can mean the IV slipped."
+  - "I'll stop it and restart in a better vein."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "정맥주사 중 침윤·정맥염 징후를 관찰하고 환자에게 설명·대응하세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "정맥염 어휘"
+    - "부작용 관찰"
+    - "환자 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "My arm feels hot and swollen.", lineKo: "팔이 화끈거리고 부었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let me check the IV site right away — I'll stop it if needed." }

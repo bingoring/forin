@@ -1,0 +1,50 @@
+# 영안실 · 사후 처치 안내 (부서 시나리오 다양화 #3, ADMIN).
+id: SCN-MORGUE-00003
+eventId: EVT-ADMIN-00001
+title: "사후 처치 안내"
+tagline: "How do we prepare the body respectfully?"
+persona:
+  name: "Ward Nurse"
+  role: nurse
+  sub: "병동 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "신규 간호사에게 사후 처치(post-mortem care) 절차를 존엄하게 안내합니다."
+  mood: sad
+goals:
+  - "사후 처치 어휘"
+  - "존엄 케어"
+  - "절차 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We wash and position the body gently."
+  - "Remove tubes per policy, and note valuables."
+  - "We treat them with the same dignity as always."
+briefing:
+  dept: "영안실"
+  deptColor: "#6E6354"
+  brief: "신규 간호사에게 사후 처치(post-mortem care) 절차를 존엄하게 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "사후 처치 어휘"
+    - "존엄 케어"
+    - "절차 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: sad, lineEn: "How do we prepare the body respectfully?", lineKo: "어떻게 존엄하게 준비하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We wash and position gently, remove tubes per policy, with full dignity." }

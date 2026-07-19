@@ -1,0 +1,49 @@
+# 신생아실 · 모유수유 자세 코칭 (부서 시나리오 다양화 #3, WOMEN).
+id: SCN-NURSERY-00003
+eventId: EVT-WOMEN-00001
+title: "모유수유 자세 코칭"
+tagline: "He won't latch properly."
+persona:
+  name: "Min Mom"
+  role: parent
+  sub: "초산모 · 아들(2일)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "초산모의 모유수유 자세를 코칭합니다. 물림(latch)과 자세를 쉬운 말로 지도하세요."
+  mood: neutral
+goals:
+  - "수유 자세"
+  - "래치 코칭"
+  - "부모 격려"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's try the cradle hold."
+  - "Bring him to your breast, not the other way."
+  - "A good latch covers most of the areola."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "초산모의 모유수유 자세를 코칭합니다. 물림(latch)과 자세를 쉬운 말로 지도하세요."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "수유 자세"
+    - "래치 코칭"
+    - "부모 격려"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "He won't latch properly.", lineKo: "아이가 잘 못 물어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's try the cradle hold — bring him to you, chin first." }

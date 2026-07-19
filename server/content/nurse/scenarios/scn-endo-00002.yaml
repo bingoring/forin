@@ -1,0 +1,50 @@
+# 내시경실 · 대장내시경 장정결 교육 (부서 시나리오 다양화 #2, DX).
+id: SCN-ENDO-00002
+eventId: EVT-DX-00001
+title: "대장내시경 장정결 교육"
+tagline: "Do I really have to drink all of this?"
+persona:
+  name: "Mr. Cruz"
+  role: patient
+  sub: "대장내시경 예정"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "대장내시경 전 장정결(bowel prep) 방법을 교육합니다."
+  mood: neutral
+goals:
+  - "장정결 어휘"
+  - "복용 교육"
+  - "절차 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Drink the solution in split doses as scheduled."
+  - "Clear liquids only until the exam."
+  - "Good prep means a clearer, safer exam."
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "대장내시경 전 장정결(bowel prep) 방법을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "장정결 어휘"
+    - "복용 교육"
+    - "절차 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Do I really have to drink all of this?", lineKo: "이거 다 마셔야 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes — split doses as scheduled. Good prep makes the exam safer." }

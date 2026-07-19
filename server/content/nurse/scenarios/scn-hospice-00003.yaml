@@ -1,0 +1,50 @@
+# 호스피스 · 통증 자가조절(PCA) 안내 (부서 시나리오 다양화 #3, ONCO).
+id: SCN-HOSPICE-00003
+eventId: EVT-ONCO-00001
+title: "통증 자가조절(PCA) 안내"
+tagline: "What if I press it too much?"
+persona:
+  name: "Mrs. Bauer"
+  role: patient
+  sub: "완화 케어"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "통증 자가조절 장치(PCA) 사용법과 안전을 설명합니다."
+  mood: sad
+goals:
+  - "PCA 어휘"
+  - "통증 관리"
+  - "안전 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Press the button when you feel pain."
+  - "It has a safe limit — you can't overdose."
+  - "Only you should press it, no one else."
+briefing:
+  dept: "호스피스"
+  deptColor: "#7C3AED"
+  brief: "통증 자가조절 장치(PCA) 사용법과 안전을 설명합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "PCA 어휘"
+    - "통증 관리"
+    - "안전 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "What if I press it too much?", lineKo: "너무 많이 누르면 어쩌죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It has a safe limit — you can't overdose. Just press it when it hurts." }

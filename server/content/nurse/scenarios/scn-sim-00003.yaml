@@ -1,0 +1,50 @@
+# 시뮬레이션랩 · SBAR 시뮬레이션 디브리핑 (부서 시나리오 다양화 #3, ADMIN).
+id: SCN-SIM-00003
+eventId: EVT-ADMIN-00001
+title: "SBAR 시뮬레이션 디브리핑"
+tagline: "My report was all over the place."
+persona:
+  name: "Learner Nurse"
+  role: nurse
+  sub: "신규 간호사"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "SBAR 보고 시뮬레이션을 디브리핑하며 구조적 전달을 코칭합니다."
+  mood: focused
+goals:
+  - "SBAR 구조"
+  - "보고 코칭"
+  - "피드백"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Lead with the situation in one sentence."
+  - "Keep background brief and relevant."
+  - "End with a clear recommendation or request."
+briefing:
+  dept: "시뮬레이션랩"
+  deptColor: "#6E6354"
+  brief: "SBAR 보고 시뮬레이션을 디브리핑하며 구조적 전달을 코칭합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "SBAR 구조"
+    - "보고 코칭"
+    - "피드백"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDEAE0"
+  accent: "#B3AC98"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "My report was all over the place.", lineKo: "보고가 뒤죽박죽이었어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Lead with the situation in one sentence, then keep background brief." }

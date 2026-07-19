@@ -1,0 +1,50 @@
+# 분만실 · 산후 출혈 대응 (부서 시나리오 다양화 #3, WOMEN).
+id: SCN-LD-00003
+eventId: EVT-WOMEN-00001
+title: "산후 출혈 대응"
+tagline: "There's so much blood — what's happening?"
+persona:
+  name: "Mrs. Okoro"
+  role: patient
+  sub: "분만 직후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "분만 직후 이완성 출혈이 의심됩니다. 침착하게 자궁저 마사지·보고를 하며 산모를 안정시키세"
+  mood: panic
+goals:
+  - "산후출혈 어휘"
+  - "자궁저 마사지"
+  - "응급 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm going to firmly massage your uterus."
+  - "Stay with me — we're taking care of this."
+  - "I'm calling the doctor right now."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "분만 직후 이완성 출혈이 의심됩니다. 침착하게 자궁저 마사지·보고를 하며 산모를 안정시키세요."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "산후출혈 어휘"
+    - "자궁저 마사지"
+    - "응급 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: panic, lineEn: "There's so much blood — what's happening?", lineKo: "피가 너무 많이 나요, 무슨 일이죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Stay with me. I'm going to massage your uterus and call the doctor now." }

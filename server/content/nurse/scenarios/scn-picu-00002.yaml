@@ -1,0 +1,50 @@
+# 소아중환자실 · 소아 인공호흡기 이탈 (부서 시나리오 다양화 #2, WOMEN).
+id: SCN-PICU-00002
+eventId: EVT-WOMEN-00001
+title: "소아 인공호흡기 이탈"
+tagline: "Can she breathe on her own now?"
+persona:
+  name: "Mrs. Haddad"
+  role: parent
+  sub: "보호자 · 딸(5y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 인공호흡기 이탈(weaning) 과정을 부모에게 설명합니다."
+  mood: worried
+goals:
+  - "이탈 어휘"
+  - "호흡 사정"
+  - "부모 상담"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We're slowly letting her do more of the breathing."
+  - "We watch her oxygen and effort closely."
+  - "If she does well, the tube comes out soon."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "소아 인공호흡기 이탈(weaning) 과정을 부모에게 설명합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "이탈 어휘"
+    - "호흡 사정"
+    - "부모 상담"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Can she breathe on her own now?", lineKo: "이제 스스로 숨 쉴 수 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We're slowly letting her breathe more on her own and watching closely." }

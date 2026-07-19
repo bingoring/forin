@@ -1,0 +1,50 @@
+# 분만실 · 무통분만(경막외) 안내 (부서 시나리오 다양화 #2, WOMEN).
+id: SCN-LD-00002
+eventId: EVT-WOMEN-00001
+title: "무통분만(경막외) 안내"
+tagline: "Will the epidural hurt the baby?"
+persona:
+  name: "Mrs. Bianchi"
+  role: patient
+  sub: "초산 · 진통 중"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "경막외 무통분만 절차와 안전을 설명하고 산모를 안심시키세요."
+  mood: worried
+goals:
+  - "무통분만 어휘"
+  - "절차 안내"
+  - "산모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The epidural numbs the pain but you stay awake."
+  - "It's very safe for you and the baby."
+  - "You'll feel pressure, but much less pain."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "경막외 무통분만 절차와 안전을 설명하고 산모를 안심시키세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "무통분만 어휘"
+    - "절차 안내"
+    - "산모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will the epidural hurt the baby?", lineKo: "무통주사가 아기한테 해롭지 않나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It's very safe for both of you. It numbs the pain but you stay awake." }

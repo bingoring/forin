@@ -1,0 +1,50 @@
+# 정신과병동 · 우울 환자 면담 (부서 시나리오 다양화 #2, ONCO).
+id: SCN-PSYCH-00002
+eventId: EVT-ONCO-00001
+title: "우울 환자 면담"
+tagline: "Nothing matters anymore."
+persona:
+  name: "Ms. Park"
+  role: patient
+  sub: "우울 · 입원"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "우울 환자와 치료적으로 면담하며 안전을 사정합니다."
+  mood: sad
+goals:
+  - "치료적 면담"
+  - "공감 표현"
+  - "안전 사정"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "It sounds like things feel very heavy right now."
+  - "I'm here to listen, for as long as you need."
+  - "Are you having any thoughts of harming yourself?"
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "우울 환자와 치료적으로 면담하며 안전을 사정합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "치료적 면담"
+    - "공감 표현"
+    - "안전 사정"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "Nothing matters anymore.", lineKo: "이제 아무것도 의미 없어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It sounds very heavy right now. I'm here to listen for as long as you need." }

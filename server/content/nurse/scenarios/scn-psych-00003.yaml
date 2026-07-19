@@ -1,0 +1,50 @@
+# 정신과병동 · 투약 거부 대응 (부서 시나리오 다양화 #3, ONCO).
+id: SCN-PSYCH-00003
+eventId: EVT-ONCO-00001
+title: "투약 거부 대응"
+tagline: "I don't want those pills."
+persona:
+  name: "Mr. Reyes"
+  role: patient
+  sub: "투약 거부"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "투약을 거부하는 환자와 비강압적으로 소통하며 이유를 탐색합니다."
+  mood: neutral
+goals:
+  - "투약 협상 어휘"
+  - "비강압 소통"
+  - "교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Can you tell me what worries you about it?"
+  - "This helps steady your mood — let's talk it through."
+  - "It's your choice, and I'll note your concerns."
+briefing:
+  dept: "정신과병동"
+  deptColor: "#7C3AED"
+  brief: "투약을 거부하는 환자와 비강압적으로 소통하며 이유를 탐색합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "투약 협상 어휘"
+    - "비강압 소통"
+    - "교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "I don't want those pills.", lineKo: "그 약 먹기 싫어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Can you tell me what worries you about it? Let's talk it through." }

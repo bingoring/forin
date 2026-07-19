@@ -1,0 +1,50 @@
+# 소아중환자실 · 소아 통증 사정 (부서 시나리오 다양화 #3, WOMEN).
+id: SCN-PICU-00003
+eventId: EVT-WOMEN-00001
+title: "소아 통증 사정"
+tagline: "It hurts a lot!"
+persona:
+  name: "Leo"
+  role: child
+  sub: "6y / M"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "중환 소아의 통증을 눈높이로 사정합니다. 얼굴 척도(FACES)로 물어보세요."
+  mood: pain
+goals:
+  - "소아 통증 척도"
+  - "눈높이 소통"
+  - "공감"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Can you point to the face that shows your hurt?"
+  - "Where does it hurt the most?"
+  - "You're so brave — I'll help you feel better."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "중환 소아의 통증을 눈높이로 사정합니다. 얼굴 척도(FACES)로 물어보세요."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "소아 통증 척도"
+    - "눈높이 소통"
+    - "공감"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: pain, lineEn: "It hurts a lot!", lineKo: "너무 아파요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You're so brave. Can you point to the face that shows how much it hurts?" }

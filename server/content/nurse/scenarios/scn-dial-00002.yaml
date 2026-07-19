@@ -1,0 +1,50 @@
+# 인공신장실 · 동정맥루 관리 교육 (부서 시나리오 다양화 #2, DX).
+id: SCN-DIAL-00002
+eventId: EVT-DX-00001
+title: "동정맥루 관리 교육"
+tagline: "How do I take care of my fistula?"
+persona:
+  name: "Mr. Diallo"
+  role: patient
+  sub: "유지 투석"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "동정맥루(AV fistula) 자가 관리와 감염·폐색 징후를 교육합니다."
+  mood: neutral
+goals:
+  - "동정맥루 어휘"
+  - "자가 관리"
+  - "합병증 관찰"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Feel for the buzz (thrill) every day."
+  - "No blood pressure or blood draws on that arm."
+  - "Call us if it stops buzzing or looks red."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "동정맥루(AV fistula) 자가 관리와 감염·폐색 징후를 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "동정맥루 어휘"
+    - "자가 관리"
+    - "합병증 관찰"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "How do I take care of my fistula?", lineKo: "동정맥루는 어떻게 관리하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Feel for the buzz daily, and no BP or blood draws on that arm." }

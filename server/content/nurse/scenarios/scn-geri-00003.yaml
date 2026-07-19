@@ -1,0 +1,50 @@
+# 노인·치매병동 · 다약제 복용 검토 (부서 시나리오 다양화 #3, ONCO).
+id: SCN-GERI-00003
+eventId: EVT-ONCO-00001
+title: "다약제 복용 검토"
+tagline: "I take so many pills, I get confused."
+persona:
+  name: "Mrs. Klein"
+  role: patient
+  sub: "다약제 복용"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "노인 다약제(polypharmacy) 복용을 검토하고 복약을 쉽게 정리해줍니다."
+  mood: neutral
+goals:
+  - "복약 검토 어휘"
+  - "복약 교육"
+  - "안전 확인"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's go through each medicine together."
+  - "This chart shows when to take each one."
+  - "Bring all your pills to every visit."
+briefing:
+  dept: "노인·치매병동"
+  deptColor: "#7C3AED"
+  brief: "노인 다약제(polypharmacy) 복용을 검토하고 복약을 쉽게 정리해줍니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "복약 검토 어휘"
+    - "복약 교육"
+    - "안전 확인"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#EDE9FE"
+  accent: "#C4B5FD"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "I take so many pills, I get confused.", lineKo: "약이 너무 많아서 헷갈려요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's go through each one together — this chart shows the timing." }
