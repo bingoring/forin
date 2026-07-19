@@ -1,0 +1,50 @@
+# OR · PACU 인계 (v16 or-pacu-handoff). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-OR-00004
+eventId: EVT-OR-00001
+title: "PACU 인계"
+tagline: "\"Tell me what happened in there.\""
+persona:
+  name: "Nurse Park"
+  role: nurse
+  sub: "PACU 수석"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "수술이 막 끝난 환자를 PACU로 인계합니다. 시술 종류, 마취제, 출혈량, 통증 관리 계획을 SBAR로 정"
+  mood: focused
+goals:
+    - "SBAR 인계"
+    - "마취 어휘"
+    - "출혈량 보고"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "The patient is stable, vitals within normal limits."
+  - "Pain is controlled with morphine."
+  - "Any post-op concerns to watch for?"
+briefing:
+  dept: "OR · PACU"
+  deptColor: "#9333EA"
+  brief: "수술이 막 끝난 환자를 PACU로 인계합니다. 시술 종류, 마취제, 출혈량, 통증 관리 계획을 SBAR로 정확히 전달하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "SBAR 인계"
+    - "마취 어휘"
+    - "출혈량 보고"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 170 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 8" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "How did the case go?", lineKo: "수술은 어땠나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The patient is stable. Vitals are within normal limits." }

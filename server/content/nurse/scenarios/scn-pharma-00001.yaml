@@ -1,0 +1,50 @@
+# PHARMA · 헤파린 더블 체크 (v16 pharma-heparin). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PHARMA-00001
+eventId: EVT-PHARMA-00001
+title: "헤파린 더블 체크"
+tagline: "\"Let's confirm the dose.\""
+persona:
+  name: "Pharmacist Lee"
+  role: pharmacist
+  sub: "약사"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "Mr. Lee에게 줄 헤파린 5,000 units 처방을 약사와 함께 5 Rights에 따라 영어로 더블체크"
+  mood: focused
+goals:
+    - "5 Rights 영어"
+    - "용량 표현"
+    - "환자 식별"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's double-check the heparin dose."
+  - "Can you confirm the units per hour?"
+  - "Independent double-check complete."
+briefing:
+  dept: "PHARMA · 픽업 카운터"
+  deptColor: "#16A34A"
+  brief: "Mr. Lee에게 줄 헤파린 5,000 units 처방을 약사와 함께 5 Rights에 따라 영어로 더블체크하세요. 환자명, 용량, 경로, 시간을 정확히 발음합니다."
+  difficulty: 2
+  timeLabel: "약 5분"
+  skills:
+    - "5 Rights 영어"
+    - "용량 표현"
+    - "환자 식별"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 140 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 7" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: focused, lineEn: "Ready for the heparin double-check?", lineKo: "헤파린 더블체크 준비됐나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes. Confirming: 25,000 units in 250 mL at 12 mL per hour." }

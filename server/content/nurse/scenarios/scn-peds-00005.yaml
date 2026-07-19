@@ -1,0 +1,50 @@
+# PEDS · 예방접종 동의서 안내 (v16 peds-immunization-consent). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PEDS-00005
+eventId: EVT-PEDS-00001
+title: "예방접종 동의서 안내"
+tagline: "\"Where do I sign this?\""
+persona:
+  name: "Multiple parents"
+  role: parent
+  sub: "단체 접종일"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "동의서의 각 섹션을 영어로 풀어서 설명하고, 알러지/기왕력 칸의 의미를 안내하세요. 5명의 부모가 차례로 줄"
+  mood: neutral
+goals:
+    - "동의서 어휘"
+    - "연속 응대"
+    - "간결 설명"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "Please review and sign the consent form."
+  - "These are the possible side effects."
+  - "Do you consent to the immunization?"
+briefing:
+  dept: "PEDS · 환영 데스크"
+  deptColor: "#3B82F6"
+  brief: "동의서의 각 섹션을 영어로 풀어서 설명하고, 알러지/기왕력 칸의 의미를 안내하세요. 5명의 부모가 차례로 줄을 섭니다."
+  difficulty: 1
+  timeLabel: "약 5분"
+  skills:
+    - "동의서 어휘"
+    - "연속 응대"
+    - "간결 설명"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 110 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 4" }
+  reqs:
+    - { label: "레벨 A2+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "What are the side effects?", lineKo: "부작용은 어떤 게 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let me go over the consent form and side effects with you." }

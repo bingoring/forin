@@ -1,0 +1,50 @@
+# PHARMA · IV 혼합 — STAT 콜 (v16 pharma-iv-admixture). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PHARMA-00005
+eventId: EVT-PHARMA-00001
+title: "IV 혼합 — STAT 콜"
+tagline: "\"We need vancomycin 1g in NS 250 mL STAT.\""
+persona:
+  name: "Compounding Tech"
+  role: pharmacist
+  sub: "클린룸"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "ICU에서 STAT으로 요청된 항생제 IV 혼합을 USP 797 무균 절차에 따라 진행합니다. 용량 계산, "
+  mood: focused
+goals:
+    - "IV 혼합 어휘"
+    - "STAT 절차"
+    - "USP 797"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "This is a STAT order."
+  - "Confirm the drug, diluent, and volume."
+  - "How soon can it be ready?"
+briefing:
+  dept: "PHARMA · IV 무균실"
+  deptColor: "#16A34A"
+  brief: "ICU에서 STAT으로 요청된 항생제 IV 혼합을 USP 797 무균 절차에 따라 진행합니다. 용량 계산, 라벨 인쇄, 인계 절차를 영어로 처리하세요."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "IV 혼합 어휘"
+    - "STAT 절차"
+    - "USP 797"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 230 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 10" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: focused, lineEn: "STAT IV admixture just came in!", lineKo: "STAT IV 혼합 오더 들어왔어요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Confirming the drug, diluent, and final volume — prepping now." }

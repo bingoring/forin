@@ -1,0 +1,50 @@
+# PEDS · 우는 아이 달래기 — Mia (v16 peds-crying-mia). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PEDS-00001
+eventId: EVT-PEDS-00001
+title: "우는 아이 달래기 — Mia"
+tagline: "\"I want my mommy!\""
+persona:
+  name: "Mia"
+  role: child
+  sub: "4y / F"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "놀이방에서 검사를 기다리는 4세 아이가 부모와 분리되어 울고 있습니다. 아이의 눈높이에서 단순하고 따뜻한 영"
+  mood: sad
+goals:
+    - "소아 어조"
+    - "단순 영어"
+    - "주의 분산"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "Hi Mia, it's okay. I'm right here."
+  - "Can you show me where it hurts?"
+  - "You're being so brave."
+briefing:
+  dept: "PEDS · 놀이방"
+  deptColor: "#3B82F6"
+  brief: "놀이방에서 검사를 기다리는 4세 아이가 부모와 분리되어 울고 있습니다. 아이의 눈높이에서 단순하고 따뜻한 영어로 안심시키고 주의를 다른 곳으로 돌려보세요."
+  difficulty: 1
+  timeLabel: "약 4분"
+  skills:
+    - "소아 어조"
+    - "단순 영어"
+    - "주의 분산"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 100 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+  reqs:
+    - { label: "레벨 A2+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: sad, lineEn: "(crying) I want my mom!", lineKo: "(울며) 엄마 보고 싶어요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Hi Mia, it's okay. I'm right here with you." }

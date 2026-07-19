@@ -1,0 +1,51 @@
+# PHARMA · 소아 용량 환산 (체중 기반) (v16 pharma-pediatric-dose). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PHARMA-00003
+eventId: EVT-PHARMA-00001
+title: "소아 용량 환산 (체중 기반)"
+tagline: "\"15 kg patient, 10 mg/kg of acetaminophen…\""
+persona:
+  name: "Pharm Tech"
+  role: pharmacist
+  sub: "약무직"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "체중 기반 처방을 mL 단위로 환산하세요. 시럽 농도와 1회 분량을 계산하고 부모 안내문에 적합한 단어로 표"
+  mood: focused
+goals:
+    - "mg/kg 계산"
+    - "mL 환산"
+    - "소아 어조"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "What is the patient's weight in kilograms?"
+  - "The dose is 10 mg per kilogram."
+  - "Let me verify the calculation."
+briefing:
+  dept: "PHARMA · Compounding"
+  deptColor: "#16A34A"
+  brief: "체중 기반 처방을 mL 단위로 환산하세요. 시럽 농도와 1회 분량을 계산하고 부모 안내문에 적합한 단어로 표현해야 합니다."
+  difficulty: 3
+  timeLabel: "약 7분"
+  skills:
+    - "mg/kg 계산"
+    - "mL 환산"
+    - "소아 어조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "🎖", label: "소아약리 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+    - { label: "응급 대응력 60+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: focused, lineEn: "Can you calculate the pediatric dose?", lineKo: "소아 용량 환산 좀 해줄래요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Sure. The patient is 20 kg, so at 10 mg/kg that's 200 mg." }

@@ -1,0 +1,50 @@
+# ICU · ICU Delirium 환자 진정 (v16 icu-psychosis). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-ICU-00004
+eventId: EVT-ICU-00001
+title: "ICU Delirium 환자 진정"
+tagline: "\"There are bugs everywhere! Get them off me!\""
+persona:
+  name: "Mrs. Park"
+  role: patient
+  sub: "입원 5일차"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "ICU 섬망 상태의 환자가 환각을 호소합니다. 비판단적이고 차분한 어조로 현실 정향을 시도하고, 가족 사진/"
+  mood: panic
+goals:
+    - "섬망 어휘"
+    - "현실 정향"
+    - "차분 어조"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "Mrs. Park, you're safe. You're in the hospital."
+  - "I'm your nurse. Can you look at me?"
+  - "Let's take a slow breath together."
+briefing:
+  dept: "ICU · Room 4"
+  deptColor: "#0891B2"
+  brief: "ICU 섬망 상태의 환자가 환각을 호소합니다. 비판단적이고 차분한 어조로 현실 정향을 시도하고, 가족 사진/시계 등 환경 자극을 활용하세요."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "섬망 어휘"
+    - "현실 정향"
+    - "차분 어조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 180 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 9" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: panic, lineEn: "Who are you?! Get away!", lineKo: "누구세요?! 저리 가요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Mrs. Park, you're safe. I'm your nurse." }

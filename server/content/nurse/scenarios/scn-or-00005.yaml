@@ -1,0 +1,50 @@
+# OR · 수술 중 가족 업데이트 (v16 or-family-update). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-OR-00005
+eventId: EVT-OR-00001
+title: "수술 중 가족 업데이트"
+tagline: "\"Is everything OK? It's been so long…\""
+persona:
+  name: "Mrs. Garcia"
+  role: visitor
+  sub: "환자 부인"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "수술이 예정보다 길어지고 있어 가족에게 진행 상황을 차분하게 설명해야 합니다. 과한 약속 없이 안심시키되, "
+  mood: worried
+goals:
+    - "가족 응대"
+    - "시간 표현"
+    - "안심 어조"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "The surgery is going well so far."
+  - "The surgeon will speak with you afterward."
+  - "Is there anything I can get you?"
+briefing:
+  dept: "OR · 가족 면담"
+  deptColor: "#9333EA"
+  brief: "수술이 예정보다 길어지고 있어 가족에게 진행 상황을 차분하게 설명해야 합니다. 과한 약속 없이 안심시키되, 정확한 정보를 전달하세요."
+  difficulty: 2
+  timeLabel: "약 5분"
+  skills:
+    - "가족 응대"
+    - "시간 표현"
+    - "안심 어조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 140 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: worried, lineEn: "How is my husband doing?", lineKo: "남편은 괜찮은가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The surgery is going well. The surgeon will update you soon." }

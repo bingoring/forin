@@ -1,0 +1,50 @@
+# ICU · 모니터 알람 해석 (v16 icu-monitor-alarm). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-ICU-00005
+eventId: EVT-ICU-00001
+title: "모니터 알람 해석"
+tagline: "\"Room 1 just went off — what is it?\""
+persona:
+  name: "Charge Nurse"
+  role: nurse
+  sub: "동료"
+  hair: "#3C2A18"
+  hairStyle: bob
+  personality: "중앙 모니터에 Room 1의 알람이 떴습니다. 파형을 보고 부정맥 종류를 식별하고 닥터에게 알림 필요 여부를"
+  mood: focused
+goals:
+    - "ECG 파형"
+    - "부정맥 어휘"
+    - "신속 보고"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "What is the alarm for?"
+  - "Is this a true alarm or an artifact?"
+  - "Bed 3's rhythm looks abnormal."
+briefing:
+  dept: "ICU · 중앙 모니터링"
+  deptColor: "#0891B2"
+  brief: "중앙 모니터에 Room 1의 알람이 떴습니다. 파형을 보고 부정맥 종류를 식별하고 닥터에게 알림 필요 여부를 영어로 보고하세요."
+  difficulty: 2
+  timeLabel: "약 5분"
+  skills:
+    - "ECG 파형"
+    - "부정맥 어휘"
+    - "신속 보고"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 150 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: nurse, expression: focused, lineEn: "Can you check bed 3's monitor?", lineKo: "3번 베드 모니터 확인해줄래요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "On it. It's a low-SpO2 alarm — checking the patient now." }

@@ -1,0 +1,50 @@
+# PHARMA · 구두 처방 받아쓰기 (v16 pharma-verbal-order). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PHARMA-00002
+eventId: EVT-PHARMA-00001
+title: "구두 처방 받아쓰기"
+tagline: "\"Give morphine, 2 milligrams, IV, every 4 hours, PRN pain.\""
+persona:
+  name: "Dr. Patel"
+  role: doctor
+  sub: "주치의 (phone)"
+  hair: "#1F2937"
+  hairStyle: short
+  personality: "닥터의 구두 처방을 정확히 받아 적고 약사가 검증하기 전까지 복창(read-back)으로 확인하세요. 닮은소"
+  mood: focused
+goals:
+    - "Verbal Order 청취"
+    - "Read-back"
+    - "PRN/q4h 약어"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "I'll read that back to confirm."
+  - "Was that 5 milligrams?"
+  - "Read-back complete — order confirmed."
+briefing:
+  dept: "PHARMA · 복약 상담"
+  deptColor: "#16A34A"
+  brief: "닥터의 구두 처방을 정확히 받아 적고 약사가 검증하기 전까지 복창(read-back)으로 확인하세요. 닮은소리 단어 주의."
+  difficulty: 2
+  timeLabel: "약 4분"
+  skills:
+    - "Verbal Order 청취"
+    - "Read-back"
+    - "PRN/q4h 약어"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 130 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 5" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: doctor, expression: focused, lineEn: "Give 5 of morphine IV push, now.", lineKo: "지금 모르핀 5 IV로 주세요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Read-back: morphine 5 milligrams, IV push, now. Correct?" }

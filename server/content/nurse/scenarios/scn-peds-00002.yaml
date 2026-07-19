@@ -1,0 +1,50 @@
+# PEDS · MMR 예방접종 설명 (v16 peds-vax-explain). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PEDS-00002
+eventId: EVT-PEDS-00001
+title: "MMR 예방접종 설명"
+tagline: "\"Are there any side effects we should watch for?\""
+persona:
+  name: "Mr. Johnson"
+  role: parent
+  sub: "6m 아기 아빠"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "아기의 첫 MMR 백신 접종 전 부모에게 효과, 흔한 부작용(미열, 발진), 응급 신호를 설명하세요. CDC"
+  mood: neutral
+goals:
+    - "백신 어휘"
+    - "부작용 설명"
+    - "CDC 표현"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "The MMR protects against measles, mumps, and rubella."
+  - "A mild fever or soreness is normal."
+  - "Do you have any questions before we proceed?"
+briefing:
+  dept: "PEDS · 예방접종실"
+  deptColor: "#3B82F6"
+  brief: "아기의 첫 MMR 백신 접종 전 부모에게 효과, 흔한 부작용(미열, 발진), 응급 신호를 설명하세요. CDC 공식 표현을 활용합니다."
+  difficulty: 2
+  timeLabel: "약 6분"
+  skills:
+    - "백신 어휘"
+    - "부작용 설명"
+    - "CDC 표현"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 150 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 7" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#DBEAFE"
+  accent: "#3B82F6"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "Is the MMR shot really necessary?", lineKo: "MMR 접종이 꼭 필요한가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Great question. The MMR protects against three diseases." }

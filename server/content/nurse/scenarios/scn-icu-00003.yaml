@@ -1,0 +1,51 @@
+# ICU · Code Blue 콜 응대 (v16 icu-code-blue). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-ICU-00003
+eventId: EVT-ICU-00001
+title: "Code Blue 콜 응대"
+tagline: "\"CODE BLUE, ICU ROOM 2!\""
+persona:
+  name: "Mrs. Lee"
+  role: patient
+  sub: "심정지 환자"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "심정지가 발생했습니다. CPR 팀을 호출하고 압박-환기 비율, 약물 투여 시각, 리듬 체크 결과를 영어로 정"
+  mood: panic
+goals:
+    - "ACLS 어휘"
+    - "응급 콜"
+    - "시간 보고"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "Code blue — I need help in here!"
+  - "Start compressions."
+  - "Get the crash cart, now."
+briefing:
+  dept: "ICU · Room 2"
+  deptColor: "#0891B2"
+  brief: "심정지가 발생했습니다. CPR 팀을 호출하고 압박-환기 비율, 약물 투여 시각, 리듬 체크 결과를 영어로 정확히 콜하세요."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "ACLS 어휘"
+    - "응급 콜"
+    - "시간 보고"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 280 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 15" }
+    - { icon: "🚨", label: "ACLS 인증 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: panic, lineEn: "(flatline alarm — no response)", lineKo: "(무반응 — 알람)" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Code blue! I'm starting compressions now." }

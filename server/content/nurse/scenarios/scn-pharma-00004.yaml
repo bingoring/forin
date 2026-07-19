@@ -1,0 +1,50 @@
+# PHARMA · 마약류 픽업 (2인 인증) (v16 pharma-controlled-pickup). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-PHARMA-00004
+eventId: EVT-PHARMA-00001
+title: "마약류 픽업 (2인 인증)"
+tagline: "\"Two-witness sign-out for Schedule II.\""
+persona:
+  name: "Pharmacist Lee"
+  role: pharmacist
+  sub: "약사"
+  hair: "#2D2417"
+  hairStyle: short
+  personality: "통제약물(예: morphine, oxycodone)을 2인 검증 절차로 픽업하세요. 처방, 환자, 용량, 잔"
+  mood: focused
+goals:
+    - "Schedule II 어휘"
+    - "2인 검증"
+    - "카운트"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "I need a second nurse to witness."
+  - "Let's verify the count together."
+  - "Both signatures, please."
+briefing:
+  dept: "PHARMA · 통제약물 금고"
+  deptColor: "#16A34A"
+  brief: "통제약물(예: morphine, oxycodone)을 2인 검증 절차로 픽업하세요. 처방, 환자, 용량, 잔량을 영어로 함께 카운트합니다."
+  difficulty: 3
+  timeLabel: "약 6분"
+  skills:
+    - "Schedule II 어휘"
+    - "2인 검증"
+    - "카운트"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 220 XP" }
+    - { icon: "🎖", label: "통제약물 인증 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#DCFCE7"
+  accent: "#16A34A"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: pharmacist, expression: focused, lineEn: "Picking up the controlled substance?", lineKo: "마약류 픽업하시나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes. I need a second witness to verify the count." }

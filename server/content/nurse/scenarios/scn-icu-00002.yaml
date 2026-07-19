@@ -1,0 +1,52 @@
+# ICU · 임종 가족과의 면담 (v16 icu-eol-family). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-ICU-00002
+eventId: EVT-ICU-00001
+title: "임종 가족과의 면담"
+tagline: "\"Is there anything more we can do?\""
+persona:
+  name: "Mr. Wong\\'s daughter"
+  role: visitor
+  sub: "next of kin"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "회복 가능성이 낮은 환자의 가족에게 의학적 상황과 DNR/comfort care 옵션을 따뜻하고 명확하게 설"
+  mood: sad
+goals:
+    - "임종 어휘"
+    - "DNR 설명"
+    - "공감 표현"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm so sorry. We're keeping him comfortable."
+  - "Please take all the time you need."
+  - "Is there anyone you'd like us to call?"
+briefing:
+  dept: "ICU · 가족실"
+  deptColor: "#0891B2"
+  brief: "회복 가능성이 낮은 환자의 가족에게 의학적 상황과 DNR/comfort care 옵션을 따뜻하고 명확하게 설명하세요. 의사가 자리에 있고 가족의 질문을 받아주세요."
+  difficulty: 3
+  timeLabel: "약 10분"
+  skills:
+    - "임종 어휘"
+    - "DNR 설명"
+    - "공감 표현"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 300 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 15" }
+    - { icon: "🎖", label: "호스피스 인증 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+    - { label: "환자 만족도 80+", metric: "satisfaction", threshold: 80 }
+  tone: "#CFFAFE"
+  accent: "#0891B2"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: visitor, expression: sad, lineEn: "Is my father in any pain?", lineKo: "아버지가 고통스러우신가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We're keeping him comfortable. Take all the time you need." }

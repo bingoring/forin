@@ -1,0 +1,50 @@
+# OR · 기구 패스 — Scrub Nurse (v16 or-instrument-pass). Auto-composed from the v16 scenario
+# library; persona lines + key phrases authored for role-play.
+id: SCN-OR-00003
+eventId: EVT-OR-00001
+title: "기구 패스 — Scrub Nurse"
+tagline: "\"Bovie. Suction. Mosquito clamp, please.\""
+persona:
+  name: "Dr. Park"
+  role: doctor
+  sub: "집도의"
+  hair: "#1F2937"
+  hairStyle: short
+  personality: "집도의의 영어 기구 요청을 정확히 알아듣고 패스해야 합니다. Bovie, hemostat, Metzenbau"
+  mood: focused
+goals:
+    - "외과 기구 어휘"
+    - "신속 청취"
+    - "간결 응대"
+guardrails:
+  - "환자·동료를 존중하며 명확히 소통"
+  - "전문용어는 필요 시 쉽게 풀어 설명"
+keyPhrases:
+  - "Scalpel, ready."
+  - "Do you need suction?"
+  - "Sponge count is correct."
+briefing:
+  dept: "OR · OR 1"
+  deptColor: "#9333EA"
+  brief: "집도의의 영어 기구 요청을 정확히 알아듣고 패스해야 합니다. Bovie, hemostat, Metzenbaum 등 외과 기구 어휘를 빠르게 처리하세요."
+  difficulty: 3
+  timeLabel: "약 6분"
+  skills:
+    - "외과 기구 어휘"
+    - "신속 청취"
+    - "간결 응대"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "🤝", label: "동료 신뢰도", value: "+ 10" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#E9D5FF"
+  accent: "#9333EA"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: doctor, expression: focused, lineEn: "Scalpel.", lineKo: "메스." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Scalpel, ready. Passing now." }
