@@ -1,0 +1,50 @@
+# 특수외래 · 귀 이물 제거 안내 (단계 B #9, DX).
+id: SCN-SPECIALTY-00009
+eventId: EVT-DX-00001
+title: "귀 이물 제거 안내"
+tagline: "There's a bean stuck in my ear!"
+persona:
+  name: "Leo"
+  role: child
+  sub: "5y / M"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "소아 외이도 이물 제거를 눈높이로 안내합니다."
+  mood: worried
+goals:
+  - "이물 어휘"
+  - "소아 소통"
+  - "협조 유도"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Hold very still so I can look inside."
+  - "It won't hurt — I'll take it out gently."
+  - "You're being so brave, almost done!"
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "소아 외이도 이물 제거를 눈높이로 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "이물 어휘"
+    - "소아 소통"
+    - "협조 유도"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: worried, lineEn: "There's a bean stuck in my ear!", lineKo: "귀에 콩이 들어갔어요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Hold very still — I'll take it out gently. So brave, almost done!" }

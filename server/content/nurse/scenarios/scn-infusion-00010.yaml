@@ -1,0 +1,50 @@
+# 주사센터 · 저혈당 대응 (단계 B #10, DX).
+id: SCN-INFUSION-00010
+eventId: EVT-DX-00001
+title: "저혈당 대응"
+tagline: "I feel shaky and sweaty."
+persona:
+  name: "Mr. Bello"
+  role: patient
+  sub: "당뇨"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "주사센터에서 저혈당 증상을 사정하고 대응합니다."
+  mood: worried
+goals:
+  - "저혈당 어휘"
+  - "증상 사정"
+  - "응급 대응"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's check your blood sugar right now."
+  - "Here's some juice — sip it slowly."
+  - "We'll recheck in fifteen minutes."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "주사센터에서 저혈당 증상을 사정하고 대응합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "저혈당 어휘"
+    - "증상 사정"
+    - "응급 대응"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I feel shaky and sweaty.", lineKo: "떨리고 식은땀이 나요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's check your sugar now — here's juice, sip slowly." }

@@ -1,0 +1,50 @@
+# 주사센터 · 탈감작 요법 안내 (단계 B #9, DX).
+id: SCN-INFUSION-00009
+eventId: EVT-DX-00001
+title: "탈감작 요법 안내"
+tagline: "Is it safe to give me what I'm allergic to?"
+persona:
+  name: "Ms. Farr"
+  role: patient
+  sub: "알레르기"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "약물 탈감작(desensitization) 절차와 안전을 설명합니다."
+  mood: worried
+goals:
+  - "탈감작 어휘"
+  - "안전 설명"
+  - "응급 대비"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We give tiny, increasing doses very slowly."
+  - "You're monitored closely the whole time."
+  - "Emergency medicine is right here if needed."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "약물 탈감작(desensitization) 절차와 안전을 설명합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "탈감작 어휘"
+    - "안전 설명"
+    - "응급 대비"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Is it safe to give me what I'm allergic to?", lineKo: "알레르기 있는 걸 줘도 되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We give tiny increasing doses slowly, with you monitored and emergency meds ready." }

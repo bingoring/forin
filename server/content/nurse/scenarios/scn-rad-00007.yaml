@@ -1,0 +1,49 @@
+# 영상의학과 · 유방촬영(맘모) 안내 (단계 B #7, DX).
+id: SCN-RAD-00007
+eventId: EVT-DX-00001
+title: "유방촬영(맘모) 안내"
+tagline: "Will the mammogram hurt?"
+persona:
+  name: "Mrs. Weber"
+  role: patient
+  sub: "유방촬영"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "유방촬영 절차와 압박감을 안내합니다."
+  mood: worried
+goals:
+  - "맘모 어휘"
+  - "절차 안내"
+  - "환자 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "There's firm pressure for a few seconds."
+  - "It helps get a clear, low-dose image."
+  - "Tell me and I'll adjust if it's too much."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "유방촬영 절차와 압박감을 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "맘모 어휘"
+    - "절차 안내"
+    - "환자 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will the mammogram hurt?", lineKo: "유방촬영 아픈가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Firm pressure for a few seconds — tell me if it's too much and I'll adjust." }

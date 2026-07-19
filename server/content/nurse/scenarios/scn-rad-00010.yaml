@@ -1,0 +1,50 @@
+# 영상의학과 · 조영제 전 신기능 확인 (단계 B #10, DX).
+id: SCN-RAD-00010
+eventId: EVT-DX-00001
+title: "조영제 전 신기능 확인"
+tagline: "Is the dye hard on my kidneys?"
+persona:
+  name: "Mr. Haddad"
+  role: patient
+  sub: "조영제 CT"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "조영제 투여 전 신기능(크레아티닌)·수분을 확인합니다."
+  mood: worried
+goals:
+  - "신기능 어휘"
+  - "조영제 안전"
+  - "수분 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "We check your kidney blood test first."
+  - "Drinking water before and after helps flush it."
+  - "Tell me about any past dye reactions."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "조영제 투여 전 신기능(크레아티닌)·수분을 확인합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "신기능 어휘"
+    - "조영제 안전"
+    - "수분 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Is the dye hard on my kidneys?", lineKo: "조영제가 신장에 부담되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "We check your kidney test first and hydrate you to flush it safely." }

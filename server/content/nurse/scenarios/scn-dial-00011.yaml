@@ -1,0 +1,49 @@
+# 인공신장실 · 인결합제 복약 교육 (단계 B #11, DX).
+id: SCN-DIAL-00011
+eventId: EVT-DX-00001
+title: "인결합제 복약 교육"
+tagline: "When do I take these phosphate binders?"
+persona:
+  name: "Mr. Okafor"
+  role: patient
+  sub: "고인혈증"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "인결합제 복약 타이밍을 교육합니다."
+  mood: neutral
+goals:
+  - "인결합제 어휘"
+  - "복약 교육"
+  - "식이"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Take the binders with your meals, not after."
+  - "They stop phosphorus from being absorbed."
+  - "High phosphorus harms your bones and heart."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "인결합제 복약 타이밍을 교육합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "인결합제 어휘"
+    - "복약 교육"
+    - "식이"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "When do I take these phosphate binders?", lineKo: "인결합제는 언제 먹죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "With meals, not after — they block phosphorus, which harms bones and heart." }

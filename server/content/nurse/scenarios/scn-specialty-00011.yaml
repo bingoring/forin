@@ -1,0 +1,49 @@
+# 특수외래 · 시야검사 안내 (단계 B #11, DX).
+id: SCN-SPECIALTY-00011
+eventId: EVT-DX-00001
+title: "시야검사 안내"
+tagline: "What is this field test for?"
+persona:
+  name: "Mr. Sato"
+  role: patient
+  sub: "녹내장 추적"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "녹내장 시야검사(perimetry) 절차를 안내합니다."
+  mood: neutral
+goals:
+  - "시야검사 어휘"
+  - "절차 안내"
+  - "협조"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Press the button whenever you see a light."
+  - "Keep looking straight at the center target."
+  - "It maps your side (peripheral) vision."
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "녹내장 시야검사(perimetry) 절차를 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "시야검사 어휘"
+    - "절차 안내"
+    - "협조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "What is this field test for?", lineKo: "이 시야검사는 왜 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It maps your peripheral vision — press the button whenever you see a light." }

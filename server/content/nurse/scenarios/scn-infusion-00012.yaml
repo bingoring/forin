@@ -1,0 +1,50 @@
+# 주사센터 · 수혈 반응 관찰 (단계 B #12, DX).
+id: SCN-INFUSION-00012
+eventId: EVT-DX-00001
+title: "수혈 반응 관찰"
+tagline: "I suddenly feel cold and itchy."
+persona:
+  name: "Mrs. Sato"
+  role: patient
+  sub: "수혈 중"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "수혈 중 급성 반응을 사정하고 즉시 대응합니다."
+  mood: worried
+goals:
+  - "수혈반응 어휘"
+  - "즉시 대응"
+  - "관찰"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "I'm stopping the transfusion right now."
+  - "Chills and itching can be a reaction."
+  - "I'll check your vitals and call the doctor."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "수혈 중 급성 반응을 사정하고 즉시 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "수혈반응 어휘"
+    - "즉시 대응"
+    - "관찰"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I suddenly feel cold and itchy.", lineKo: "갑자기 춥고 가려워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I'm stopping the transfusion now — those can be a reaction. Checking your vitals." }

@@ -1,0 +1,50 @@
+# 내시경실 · 항응고제 중단 안내 (단계 B #11, DX).
+id: SCN-ENDO-00011
+eventId: EVT-DX-00001
+title: "항응고제 중단 안내"
+tagline: "Should I stop my blood thinner?"
+persona:
+  name: "Mr. Cruz"
+  role: patient
+  sub: "항응고제 복용"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "내시경 전 항응고제 중단 여부를 안내합니다."
+  mood: worried
+goals:
+  - "항응고 어휘"
+  - "복약 조정"
+  - "안전"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Don't stop it on your own — we'll advise timing."
+  - "Some procedures need it held a few days."
+  - "We balance bleeding and clotting risks."
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "내시경 전 항응고제 중단 여부를 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "항응고 어휘"
+    - "복약 조정"
+    - "안전"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Should I stop my blood thinner?", lineKo: "항응고제를 끊어야 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Don't stop on your own — we'll advise the exact timing to balance the risks." }

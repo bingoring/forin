@@ -1,0 +1,50 @@
+# 인공신장실 · 빈혈 관리(EPO) 교육 (단계 B #10, DX).
+id: SCN-DIAL-00010
+eventId: EVT-DX-00001
+title: "빈혈 관리(EPO) 교육"
+tagline: "Why am I always so tired?"
+persona:
+  name: "Mrs. Aziz"
+  role: patient
+  sub: "신성 빈혈"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "투석 환자 빈혈과 조혈제(EPO)·철분을 교육합니다."
+  mood: neutral
+goals:
+  - "빈혈 어휘"
+  - "EPO 교육"
+  - "피로 관리"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Kidney disease lowers your red blood cells."
+  - "The EPO injection helps your body make more."
+  - "We track your iron and hemoglobin."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "투석 환자 빈혈과 조혈제(EPO)·철분을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "빈혈 어휘"
+    - "EPO 교육"
+    - "피로 관리"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Why am I always so tired?", lineKo: "왜 늘 이렇게 피곤하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Kidney disease lowers red cells — the EPO shot helps, and we track your iron." }

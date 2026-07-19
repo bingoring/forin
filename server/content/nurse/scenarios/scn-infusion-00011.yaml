@@ -1,0 +1,49 @@
+# 주사센터 · 소아 주사 공포 완화 (단계 B #11, DX).
+id: SCN-INFUSION-00011
+eventId: EVT-DX-00001
+title: "소아 주사 공포 완화"
+tagline: "I don't want the needle!"
+persona:
+  name: "Timmy"
+  role: child
+  sub: "8y / M"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "주사를 무서워하는 아동을 눈높이로 안심시킵니다."
+  mood: worried
+goals:
+  - "소아 소통"
+  - "공포 완화"
+  - "격려"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You can look away and squeeze my hand."
+  - "It's a quick little pinch, then all done."
+  - "You're being so brave — want to count with me?"
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "주사를 무서워하는 아동을 눈높이로 안심시킵니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "소아 소통"
+    - "공포 완화"
+    - "격려"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: worried, lineEn: "I don't want the needle!", lineKo: "주사 싫어요!" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Squeeze my hand and look away — a quick pinch, then all done. So brave!" }

@@ -1,0 +1,49 @@
+# 주사센터 · 외래 항생제 주입 안내 (단계 B #7, DX).
+id: SCN-INFUSION-00007
+eventId: EVT-DX-00001
+title: "외래 항생제 주입 안내"
+tagline: "How long does the antibiotic take?"
+persona:
+  name: "Mr. Cole"
+  role: patient
+  sub: "외래 항생제"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "외래 정맥 항생제(OPAT) 주입과 관찰을 안내합니다."
+  mood: neutral
+goals:
+  - "항생제 어휘"
+  - "주입 안내"
+  - "부작용 관찰"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "This infusion runs over about 30 minutes."
+  - "Tell me if you feel any rash or itching."
+  - "Finish the full course even if you feel better."
+briefing:
+  dept: "주사센터"
+  deptColor: "#0E7490"
+  brief: "외래 정맥 항생제(OPAT) 주입과 관찰을 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "항생제 어휘"
+    - "주입 안내"
+    - "부작용 관찰"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "How long does the antibiotic take?", lineKo: "항생제 주입 얼마나 걸려요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "About 30 minutes — tell me if you feel any itching." }

@@ -1,0 +1,49 @@
+# 특수외래 · 콘택트렌즈 관리 교육 (단계 B #12, DX).
+id: SCN-SPECIALTY-00012
+eventId: EVT-DX-00001
+title: "콘택트렌즈 관리 교육"
+tagline: "Can I sleep in my contacts?"
+persona:
+  name: "Ms. Han"
+  role: patient
+  sub: "콘택트렌즈"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "콘택트렌즈 위생·착용 규칙을 교육합니다."
+  mood: neutral
+goals:
+  - "렌즈 어휘"
+  - "위생 교육"
+  - "합병증 예방"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Never sleep in them unless they're approved for it."
+  - "Clean with fresh solution, never water or spit."
+  - "Redness or pain — take them out and call us."
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "콘택트렌즈 위생·착용 규칙을 교육합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "렌즈 어휘"
+    - "위생 교육"
+    - "합병증 예방"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "Can I sleep in my contacts?", lineKo: "렌즈 낀 채로 자도 되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Not unless approved — and clean with fresh solution only, never water." }

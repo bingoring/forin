@@ -1,0 +1,50 @@
+# 내시경실 · 시술 후 출혈 관찰 (단계 B #9, DX).
+id: SCN-ENDO-00009
+eventId: EVT-DX-00001
+title: "시술 후 출혈 관찰"
+tagline: "There's a little blood — is that normal?"
+persona:
+  name: "Mr. Kang"
+  role: patient
+  sub: "내시경 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "내시경/절제 후 출혈 경고징후를 사정합니다."
+  mood: worried
+goals:
+  - "출혈 어휘"
+  - "경고징후"
+  - "응급 대응"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "A tiny amount can be normal at first."
+  - "But heavy bleeding or black stool — come back now."
+  - "How much blood, and when did it start?"
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "내시경/절제 후 출혈 경고징후를 사정합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "출혈 어휘"
+    - "경고징후"
+    - "응급 대응"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "There's a little blood — is that normal?", lineKo: "피가 조금 나는데 정상인가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "A tiny amount can be normal, but heavy bleeding or black stool — come back now." }

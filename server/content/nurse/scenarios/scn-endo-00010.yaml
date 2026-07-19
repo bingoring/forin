@@ -1,0 +1,49 @@
+# 내시경실 · 인후 불편 완화 안내 (단계 B #10, DX).
+id: SCN-ENDO-00010
+eventId: EVT-DX-00001
+title: "인후 불편 완화 안내"
+tagline: "My throat feels sore."
+persona:
+  name: "Ms. Green"
+  role: patient
+  sub: "내시경 후"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "상부내시경 후 인후 불편을 안내하고 완화합니다."
+  mood: neutral
+goals:
+  - "인후 어휘"
+  - "증상 완화"
+  - "회복 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "A sore throat is common after the scope."
+  - "Warm liquids and lozenges will help."
+  - "It usually settles within a day."
+briefing:
+  dept: "내시경실"
+  deptColor: "#0E7490"
+  brief: "상부내시경 후 인후 불편을 안내하고 완화합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "인후 어휘"
+    - "증상 완화"
+    - "회복 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: neutral, lineEn: "My throat feels sore.", lineKo: "목이 아파요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "That's common after the scope — warm liquids help, and it settles within a day." }

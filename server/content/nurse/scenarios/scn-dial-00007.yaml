@@ -1,0 +1,50 @@
+# 인공신장실 · 투석 카테터 감염 관찰 (단계 B #7, DX).
+id: SCN-DIAL-00007
+eventId: EVT-DX-00001
+title: "투석 카테터 감염 관찰"
+tagline: "The catheter site looks red."
+persona:
+  name: "Mr. Diallo"
+  role: patient
+  sub: "카테터 보유"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "투석 카테터 감염 징후를 사정하고 대응합니다."
+  mood: worried
+goals:
+  - "카테터 감염 어휘"
+  - "징후 사정"
+  - "대응"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Redness or discharge can mean infection."
+  - "Any fever or chills with it?"
+  - "We'll take cultures and start treatment early."
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "투석 카테터 감염 징후를 사정하고 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "카테터 감염 어휘"
+    - "징후 사정"
+    - "대응"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "The catheter site looks red.", lineKo: "카테터 부위가 빨개요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Redness can mean infection — any fever? We'll culture it and treat early." }

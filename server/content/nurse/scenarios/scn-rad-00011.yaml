@@ -1,0 +1,50 @@
+# 영상의학과 · MRI 중 움직임·불편 대응 (단계 B #11, DX).
+id: SCN-RAD-00011
+eventId: EVT-DX-00001
+title: "MRI 중 움직임·불편 대응"
+tagline: "My arm is cramping — I need to move."
+persona:
+  name: "Mrs. Kim"
+  role: patient
+  sub: "MRI 중"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "MRI 촬영 중 불편을 관리하며 재촬영을 최소화합니다."
+  mood: worried
+goals:
+  - "MRI 어휘"
+  - "불편 관리"
+  - "협조"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Squeeze the call bulb if you need me."
+  - "We can pause between sequences to reposition."
+  - "Just a few more minutes — you're doing great."
+briefing:
+  dept: "영상의학과"
+  deptColor: "#0E7490"
+  brief: "MRI 촬영 중 불편을 관리하며 재촬영을 최소화합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "MRI 어휘"
+    - "불편 관리"
+    - "협조"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "My arm is cramping — I need to move.", lineKo: "팔에 쥐가 나요, 움직여야 해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Squeeze the call bulb — we can pause between sequences to reposition." }

@@ -1,0 +1,50 @@
+# 특수외래 · 백내장 수술 전 안내 (단계 B #7, DX).
+id: SCN-SPECIALTY-00007
+eventId: EVT-DX-00001
+title: "백내장 수술 전 안내"
+tagline: "Will I be awake during eye surgery?"
+persona:
+  name: "Mr. Novak"
+  role: patient
+  sub: "백내장 수술 전"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "백내장 수술 전 준비와 안약·안정을 안내합니다."
+  mood: worried
+goals:
+  - "백내장 어휘"
+  - "수술 전 준비"
+  - "환자 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "You'll be awake but your eye is fully numbed."
+  - "We'll give drops to widen the pupil first."
+  - "It's quick, and you won't see the instruments."
+briefing:
+  dept: "특수외래"
+  deptColor: "#0E7490"
+  brief: "백내장 수술 전 준비와 안약·안정을 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "백내장 어휘"
+    - "수술 전 준비"
+    - "환자 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "Will I be awake during eye surgery?", lineKo: "눈 수술 때 깨어 있나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Yes, but your eye is fully numbed — quick, and you won't see the instruments." }

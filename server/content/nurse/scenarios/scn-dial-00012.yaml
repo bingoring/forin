@@ -1,0 +1,50 @@
+# 인공신장실 · 만성질환 정서 지지 (단계 B #12, DX).
+id: SCN-DIAL-00012
+eventId: EVT-DX-00001
+title: "만성질환 정서 지지"
+tagline: "I'm so tired of coming here three times a week."
+persona:
+  name: "Mrs. Duarte"
+  role: patient
+  sub: "유지 투석"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "만성 투석 환자의 소진·우울을 지지합니다."
+  mood: sad
+goals:
+  - "정서 지지 어휘"
+  - "공감"
+  - "자원 연계"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "This routine is genuinely exhausting — I hear you."
+  - "Many patients feel worn down; you're not alone."
+  - "Would it help to talk with our social worker?"
+briefing:
+  dept: "인공신장실"
+  deptColor: "#0E7490"
+  brief: "만성 투석 환자의 소진·우울을 지지합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "정서 지지 어휘"
+    - "공감"
+    - "자원 연계"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#CFFAFE"
+  accent: "#67E8F9"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "I'm so tired of coming here three times a week.", lineKo: "일주일에 세 번씩 오는 게 너무 지쳐요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "I hear you — it's genuinely exhausting. Would talking with our social worker help?" }
