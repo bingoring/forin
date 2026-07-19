@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "She's sedated so she can rest and heal. Her vitals are stable now." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PICU-00001 }

@@ -48,3 +48,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Great question. The MMR protects against three diseases." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PEDS-00001 }

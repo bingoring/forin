@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's confirm your details first. Some nausea is common, and we'll manage it." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-INFUSION-00001 }

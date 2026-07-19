@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Of course. I'm so sorry for your loss — take all the time you need." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00001 }

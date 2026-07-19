@@ -1,0 +1,16 @@
+# QZ-WOMENKIDS-00001 — 소아 해열제 용량 (calc). Dept quiz (v17-informed / authored).
+id: QZ-WOMENKIDS-00001
+type: calc
+title: "소아 해열제 용량"
+content:
+  sub: "체중 기반 1회 용량을 구하세요"
+  zone: "여성소아외래"
+  context: "🌡 소아 아세트아미노펜을 체중 기반으로 계산합니다. 1회 용량(mg)을 구하세요."
+  hint: "체중 × 용량(mg/kg). 10 mg/kg × 15 kg."
+  given:
+    - { label: "Child weight", value: "15 kg" }
+    - { label: "Ordered dose", value: "10 mg / kg" }
+    - { label: "Frequency", value: "q6h PRN" }
+  eq: "10 × 15"
+  answer: "150"
+  answerUnit: "mg / dose"

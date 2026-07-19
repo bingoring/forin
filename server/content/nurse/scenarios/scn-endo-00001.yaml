@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Not just yet — when did you last eat or drink? Let's confirm your NPO." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ENDO-00001 }

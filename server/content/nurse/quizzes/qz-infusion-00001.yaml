@@ -1,0 +1,14 @@
+# QZ-INFUSION-00001 — 수액 펌프 세팅 점검 (spot_error). Dept quiz (v17-informed / authored).
+id: QZ-INFUSION-00001
+type: spot_error
+title: "수액 펌프 세팅 점검"
+content:
+  sub: "잘못된 항목 하나를 찾으세요"
+  zone: "주사센터"
+  context: "⚠ 항암 수액 펌프 세팅입니다. 잘못된 항목 하나를 찾아 탭하세요."
+  note: "총량 250 mL를 2시간에 → 속도는 125 mL/hr. 1250은 오류."
+  rows:
+    - { label: "Drug", text: "5-FU in D5W" }
+    - { label: "Volume", text: "250 mL" }
+    - { label: "Duration", text: "2 hours" }
+    - { label: "Rate", text: "1,250 mL / hr", error: true }

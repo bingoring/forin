@@ -1,0 +1,14 @@
+# QZ-RAD-00002 — MRI 반입 금지 확인 (check). Dept quiz (v17-informed / authored).
+id: QZ-RAD-00002
+type: check
+title: "MRI 반입 금지 확인"
+content:
+  sub: "MRI 실에 들여도 안 되는 것 모두 고르기"
+  zone: "영상의학과"
+  context: "🧲 MRI는 강한 자기장을 씁니다. 검사실에 반입 금지인 것을 모두 체크하세요."
+  hint: "금속·전자기기는 위험. 면 가운은 안전."
+  items:
+    - { text: "Pacemaker", ko: "심박동기", correct: true }
+    - { text: "Oxygen tank (steel)", ko: "철제 산소통", correct: true }
+    - { text: "Metal hair clip", ko: "금속 머리핀", correct: true }
+    - { text: "Cotton gown", ko: "면 가운", correct: false }

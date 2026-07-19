@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "You're safe. You're at the hospital, and I'm your nurse. Today is Monday." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-GERI-00001 }

@@ -48,3 +48,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Bed 4 is stable but watch his blood pressure. Meds are done except the 2 p.m. antibiotic." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LOUNGE-00001 }

@@ -1,0 +1,14 @@
+# QZ-LOUNGE-00001 — 인수인계 대화 순서 (dialogue_order). Dept quiz (v17-informed / authored).
+id: QZ-LOUNGE-00001
+type: dialogue_order
+title: "인수인계 대화 순서"
+content:
+  sub: "교대 대화를 자연스러운 순서로"
+  zone: "라운지"
+  context: "💬 교대 인수인계 대화입니다. 자연스러운 순서(1→4)로 배열하세요."
+  hint: "인사 → 담당/상태 → 주의점 → 마무리 확인."
+  cards:
+    - { text: "\"Hi, ready for handoff? I had beds 3 to 8.\"", track: "nurse", order: 1 }
+    - { text: "\"Yes, go ahead. How's bed 4?\"", track: "player", order: 2 }
+    - { text: "\"Stable, but watch his blood pressure overnight.\"", track: "nurse", order: 3 }
+    - { text: "\"Got it. I'll keep an eye on him. Thanks!\"", track: "player", order: 4 }

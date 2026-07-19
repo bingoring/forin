@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes, with a mask and hand-washing. Your immune system is very low right now." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ONCO-00002 }

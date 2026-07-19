@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I hear you. I can increase your pain medicine — you won't have to suffer." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-HOSPICE-00001 }

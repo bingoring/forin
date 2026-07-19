@@ -54,7 +54,7 @@ export default function QuizRoute() {
   switch (quiz.type) {
     case 'match_pairs': return <MatchQuiz {...props} />;
     case 'listen': return <ListenQuiz {...props} />;
-    case 'sbar': return <SbarQuiz {...props} />;
+    case 'sbar': case 'order': return <SbarQuiz {...props} />;
     case 'mcq': return <McqQuiz {...props} />;
     case 'check': return <CheckQuiz {...props} />;
     case 'monitor': return <MonitorQuiz {...props} />;

@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "You may feel a warm flush — that's normal. First, any allergies to contrast?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-RAD-00002 }

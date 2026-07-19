@@ -25,6 +25,7 @@ export function SbarQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onExi
   const [checked, setChecked] = useState(false);
 
   const inBank = bankOrder.filter((i) => !placed.includes(i));
+  const hasTracks = cards.some((c) => !!c.track && !!TRACKS[c.track]); // SBAR vs generic order
   const full = placed.length === cards.length && cards.length > 0;
   const correctness = placed.map((ci, slot) => cards[ci]?.order === slot + 1);
   const allCorrect = checked && correctness.every(Boolean);
@@ -40,22 +41,24 @@ export function SbarQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onExi
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
             ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시 정렬" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="📞 콜 시작 (제출)" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton label={hasTracks ? '📞 콜 시작 (제출)' : '✓ 순서 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
 
-      {/* S-B-A-R track legend */}
-      <View style={{ flexDirection: 'row', gap: 4, marginBottom: 12 }}>
-        {Object.entries(TRACKS).map(([k, tr]) => (
-          <View key={k} style={{ flex: 1, backgroundColor: tr.color, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{k}</Text>
-          </View>
-        ))}
-      </View>
+      {/* S-B-A-R track legend (only for SBAR) */}
+      {hasTracks && (
+        <View style={{ flexDirection: 'row', gap: 4, marginBottom: 12 }}>
+          {Object.entries(TRACKS).map(([k, tr]) => (
+            <View key={k} style={{ flex: 1, backgroundColor: tr.color, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{k}</Text>
+            </View>
+          ))}
+        </View>
+      )}
 
       {/* ordered slots */}
-      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 인계 순서 (탭하여 배치/해제) ━</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ {hasTracks ? '인계 순서' : '순서'} (탭하여 배치/해제) ━</Text>
       <View style={{ gap: 6 }}>
         {cards.map((_, slot) => {
           const ci = placed[slot];
@@ -70,9 +73,11 @@ export function SbarQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onExi
               </View>
               {card ? (
                 <Pressable onPress={() => removeAt(slot)} style={{ flex: 1, flexDirection: 'row', backgroundColor: ok ? colors.mint : bad ? '#FEE2E2' : '#fff', borderWidth: 2, borderColor: C }}>
-                  <View style={{ width: 22, backgroundColor: tr?.color, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{card.track}</Text>
-                  </View>
+                  {hasTracks && (
+                    <View style={{ width: 22, backgroundColor: tr?.color, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{card.track}</Text>
+                    </View>
+                  )}
                   <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C, padding: 6, lineHeight: 14 }}>{card.text}</Text>
                 </Pressable>
               ) : (
@@ -95,9 +100,11 @@ export function SbarQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onExi
               return (
                 <Shadowed key={ci} offset={2}>
                   <Pressable onPress={() => place(ci)} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
-                    <View style={{ width: 22, backgroundColor: tr?.color, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{card.track}</Text>
-                    </View>
+                    {hasTracks && (
+                      <View style={{ width: 22, backgroundColor: tr?.color, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{card.track}</Text>
+                      </View>
+                    )}
                     <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C, padding: 6, lineHeight: 14 }}>{card.text}</Text>
                   </Pressable>
                 </Shadowed>

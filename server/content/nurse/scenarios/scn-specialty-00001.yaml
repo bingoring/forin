@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Just for a second. Rest your chin here and look at the light." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00001 }

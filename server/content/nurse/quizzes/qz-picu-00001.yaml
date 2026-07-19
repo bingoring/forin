@@ -1,0 +1,16 @@
+# QZ-PICU-00001 — 소아 활력 판독 (monitor). Dept quiz (v17-informed / authored).
+id: QZ-PICU-00001
+type: monitor
+title: "소아 활력 판독"
+content:
+  sub: "수치의 의미를 라벨로 붙이세요"
+  zone: "소아중환자실"
+  context: "🖥 진정 중인 소아 모니터입니다. 각 수치의 의미를 라벨 카드로 붙이세요."
+  hint: "SpO2는 산소포화도, EtCO2는 호기말 이산화탄소."
+  device: "PICU MONITOR"
+  readings:
+    - { num: "120", unit: "beats/min", color: "#F87171", label: "Heart rate" }
+    - { num: "96", unit: "%", color: "#22D3EE", label: "SpO2" }
+    - { num: "24", unit: "breaths/min", color: "#34D399", label: "Resp rate" }
+    - { num: "38", unit: "mmHg", color: "#FACC15", label: "EtCO2" }
+  bank: ["Heart rate", "SpO2", "Resp rate", "EtCO2"]

@@ -1,0 +1,14 @@
+# QZ-OR-00001 — 수술 전 Time-out 체크 (check). Dept quiz (v17-informed / authored).
+id: QZ-OR-00001
+type: check
+title: "수술 전 Time-out 체크"
+content:
+  sub: "수술 전 반드시 확인할 항목 모두 고르기"
+  zone: "수술실"
+  context: "⏸ 절개 직전 Time-out입니다. 반드시 확인해야 할 항목을 모두 체크하세요."
+  hint: "환자·부위·술식·동의는 필수. 점심 메뉴는 무관."
+  items:
+    - { text: "Correct patient identity", ko: "환자 신원 확인", correct: true }
+    - { text: "Correct surgical site & side", ko: "수술 부위·좌우 확인", correct: true }
+    - { text: "Procedure & consent verified", ko: "술식·동의서 확인", correct: true }
+    - { text: "Surgeon's lunch order", ko: "집도의 점심 메뉴", correct: false }

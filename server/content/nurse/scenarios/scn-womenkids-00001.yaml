@@ -49,3 +49,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's measure her. She's in the 60th percentile — that's healthy." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-WOMENKIDS-00001 }
