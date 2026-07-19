@@ -838,3 +838,11 @@
 - 모바일: McqQuiz(SCENE+객관식)·CheckQuiz(클립보드 select-all)·MonitorQuiz(다크 패널 라벨 배정) + 디스패처. QuizShell 재사용.
 - 검증: 로더·go test·jest 208/208·tsc 0 · **API 재시작 후** content 왕복(choices/items/readings) · 시뮬레이터 3종 렌더(SCENE 다크카드·클립보드·EFM 패널) 확인.
 - **결정자:** 사용자("v17 퀴즈가 추가되었어") + AI(포맷 분석·모델 확장·저작·컴포넌트·검증).
+
+## 2026-07-20 · 퀴즈 포맷 5종 추가 — calc·gauge·sort·spot_error + triage(원안)
+- v17 calc·gauge·sort·spot_error 포맷 구현 + **원안 triage(우선순위 정렬)** 추가. 퀴즈 포맷 총 **12종**(fill·match·order·listen·mcq·check·monitor·calc·gauge·sort·spot_error·triage).
+- 서버 QuizContent 확장: Given/Eq/Answer/AnswerUnit(calc)·Pool/Buckets(sort)·Gauge(gauge)·Rows(spot_error). triage는 Cards 재사용(track 생략, order=우선순위).
+- 퀴즈 저작: QZ-PHARMA-00003(calc 소아용량)·QZ-DIAL-00001(gauge UF)·QZ-SPD-00001(sort 오염/멸균)·QZ-ER-00003(spot_error 헤파린 IM 오류)·QZ-ICU-00002(triage ABC 우선순위). 시나리오 quiz step 배선.
+- 모바일: CalcQuiz(키패드)·SortQuiz(버킷)·GaugeQuiz(스테퍼)·SpotErrorQuiz(처방지)·TriageQuiz(색상 랭크 슬롯) + 디스패처.
+- 검증: 로더·go test·jest 208/208·tsc 0 · API 재시작 후 content 왕복 · 시뮬레이터 5종 렌더 확인.
+- **결정자:** 사용자("calc·gauge·sort + 다양할수록 좋고 아이디어 추가 환영") + AI(구현 + triage 원안).
