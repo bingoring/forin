@@ -800,3 +800,9 @@
 - **검증:** go test(로더: 5 시나리오·briefing 왕복·무-briefing 회귀는 SCN-GEN-00003)·jest 208/208·tsc 0. `GET /scenarios/SCN-ER-000{1,3,4}` 200. 시뮬레이터 아나필락시스 briefing 실데이터 렌더 확인.
 - **후속:** ER 나머지(police·paramedic·language·fever) + OR/PEDS/ICU/PHARMA + 신규 20부서 시나리오 저작. quiz 타입 확장(match_pairs 등). Azure 키·발음 실기기 검증.
 - **결정자:** 사용자("순서대로 작업, 너가 하고싶은대로") + AI(구축·검증).
+
+## 2026-07-19 · ER 시나리오 세트 완결 (8/8)
+- SCN-ER-00005 경찰 인계(Officer Davis·SBAR)·00006 교통사고 핸드오프(Paramedic Ruiz·MVA)·00007 언어장벽 통역호출(Mrs.Patel·Hindi)·00008 고열 아동 부모 안심(Mrs.Kim). v16 소스 1:1(persona role police/paramedic/patient/parent·briefing·rewards·reqs·keyPhrases). ER 8개 시나리오 전부 저작 완료(총 9 시나리오 seed).
+- 인테리어 핫스팟(4개)은 00001~00004에 배선됨; 00005~00008은 상황판/데일리 로테이션으로 도달(후속 배선 가능).
+- 검증: go test(로더 전체 검증)·`GET /scenarios/SCN-ER-000{5,6,7,8}` 200·시뮬레이터 police briefing 렌더(경찰 초상·SBAR·보상).
+- **결정자:** 사용자("ER 나머지 시나리오도 만들어줘") + AI(저작·검증).
