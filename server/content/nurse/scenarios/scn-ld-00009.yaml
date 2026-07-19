@@ -1,0 +1,50 @@
+# 분만실 · 분만 호흡·이완 코칭 (단계 B #9, WOMEN).
+id: SCN-LD-00009
+eventId: EVT-WOMEN-00001
+title: "분만 호흡·이완 코칭"
+tagline: "The contractions are overwhelming."
+persona:
+  name: "Mrs. Okoro"
+  role: patient
+  sub: "진통 중"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "분만 중 호흡법과 이완 기법을 코칭합니다."
+  mood: pain
+goals:
+  - "호흡 코칭"
+  - "이완 기법"
+  - "산모 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Breathe slow — in through the nose, out the mouth."
+  - "Relax your shoulders between contractions."
+  - "You're riding each wave beautifully."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "분만 중 호흡법과 이완 기법을 코칭합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "호흡 코칭"
+    - "이완 기법"
+    - "산모 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: pain, lineEn: "The contractions are overwhelming.", lineKo: "수축이 너무 힘들어요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Slow breaths — in through the nose, out the mouth. Relax between waves." }

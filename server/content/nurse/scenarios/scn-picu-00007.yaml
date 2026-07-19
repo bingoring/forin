@@ -1,0 +1,50 @@
+# 소아중환자실 · 소아 진정 관찰 설명 (단계 B #7, WOMEN).
+id: SCN-PICU-00007
+eventId: EVT-WOMEN-00001
+title: "소아 진정 관찰 설명"
+tagline: "Why is she so sleepy?"
+persona:
+  name: "Mrs. Alvarez"
+  role: parent
+  sub: "보호자 · 딸(6y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "진정 중 소아의 관찰과 안전을 부모에게 설명합니다."
+  mood: worried
+goals:
+  - "진정 어휘"
+  - "관찰 설명"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The sedation keeps her calm and comfortable."
+  - "We watch her breathing and oxygen constantly."
+  - "She can still hear your voice — talk to her."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "진정 중 소아의 관찰과 안전을 부모에게 설명합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "진정 어휘"
+    - "관찰 설명"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Why is she so sleepy?", lineKo: "왜 이렇게 잠만 자나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "The sedation keeps her comfortable — we watch her breathing constantly." }

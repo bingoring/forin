@@ -1,0 +1,50 @@
+# 신생아중환자실 · 모유 강화(fortifier) 안내 (단계 B #9, WOMEN).
+id: SCN-NICU-00009
+eventId: EVT-WOMEN-00001
+title: "모유 강화(fortifier) 안내"
+tagline: "Why are you adding something to my milk?"
+persona:
+  name: "Preemie's Mom"
+  role: parent
+  sub: "보호자 · 아들(30주)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "미숙아 모유 강화제(fortifier)의 목적을 설명합니다."
+  mood: neutral
+goals:
+  - "강화제 어휘"
+  - "영양 설명"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Your milk is best — we just add extra calories."
+  - "Preemies need more to grow and gain weight."
+  - "We'll track his growth every day."
+briefing:
+  dept: "신생아중환자실"
+  deptColor: "#DB2777"
+  brief: "미숙아 모유 강화제(fortifier)의 목적을 설명합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "강화제 어휘"
+    - "영양 설명"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "Why are you adding something to my milk?", lineKo: "왜 제 모유에 뭘 넣나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Your milk is best — we just add calories preemies need to grow." }

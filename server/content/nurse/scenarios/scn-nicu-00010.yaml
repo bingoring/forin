@@ -1,0 +1,49 @@
+# 신생아중환자실 · 신생아 청력 선별 안내 (단계 B #10, WOMEN).
+id: SCN-NICU-00010
+eventId: EVT-WOMEN-00001
+title: "신생아 청력 선별 안내"
+tagline: "Does a failed test mean he's deaf?"
+persona:
+  name: "Preemie's Dad"
+  role: parent
+  sub: "보호자"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "신생아 청력 선별검사와 재검을 안내합니다."
+  mood: worried
+goals:
+  - "청력선별 어휘"
+  - "재검 안내"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "A first 'refer' result often just needs a retest."
+  - "Fluid in the ear can affect it early on."
+  - "We'll recheck before you go home."
+briefing:
+  dept: "신생아중환자실"
+  deptColor: "#DB2777"
+  brief: "신생아 청력 선별검사와 재검을 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "청력선별 어휘"
+    - "재검 안내"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Does a failed test mean he's deaf?", lineKo: "검사에 걸리면 못 듣는 건가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Not necessarily — a 'refer' often just needs a retest. We'll recheck." }

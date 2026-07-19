@@ -1,0 +1,49 @@
+# 신생아실 · 모유 저장·보관 교육 (단계 B #9, WOMEN).
+id: SCN-NURSERY-00009
+eventId: EVT-WOMEN-00001
+title: "모유 저장·보관 교육"
+tagline: "How long can I store pumped milk?"
+persona:
+  name: "Mrs. Yamada"
+  role: parent
+  sub: "모유수유모"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "유축 모유의 안전한 저장·보관을 교육합니다."
+  mood: neutral
+goals:
+  - "모유 저장 어휘"
+  - "보관 규칙"
+  - "위생"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Fresh milk keeps four hours at room temperature."
+  - "Label each bottle with the date."
+  - "Thaw in the fridge, never the microwave."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "유축 모유의 안전한 저장·보관을 교육합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "모유 저장 어휘"
+    - "보관 규칙"
+    - "위생"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "How long can I store pumped milk?", lineKo: "유축한 모유는 얼마나 보관하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Four hours at room temp — label the date, and never thaw in a microwave." }

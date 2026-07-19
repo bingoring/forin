@@ -1,0 +1,50 @@
+# 신생아중환자실 · 미숙아 안검사(ROP) 안내 (단계 B #11, WOMEN).
+id: SCN-NICU-00011
+eventId: EVT-WOMEN-00001
+title: "미숙아 안검사(ROP) 안내"
+tagline: "Why does she need her eyes examined?"
+persona:
+  name: "Preemie's Mom"
+  role: parent
+  sub: "보호자 · 딸(26주)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "미숙아 망막병증(ROP) 선별검사를 설명합니다."
+  mood: worried
+goals:
+  - "ROP 어휘"
+  - "검사 안내"
+  - "부모 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Preemies' eyes can develop abnormal vessels."
+  - "The exam is brief and we protect her comfort."
+  - "Finding it early means we can treat it."
+briefing:
+  dept: "신생아중환자실"
+  deptColor: "#DB2777"
+  brief: "미숙아 망막병증(ROP) 선별검사를 설명합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "ROP 어휘"
+    - "검사 안내"
+    - "부모 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Why does she need her eyes examined?", lineKo: "왜 눈 검사를 하나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Preemies can develop abnormal eye vessels — finding it early means we can treat it." }

@@ -1,0 +1,50 @@
+# 분만실 · 산후우울 선별 (단계 B #10, WOMEN).
+id: SCN-LD-00010
+eventId: EVT-WOMEN-00001
+title: "산후우울 선별"
+tagline: "I feel so low and I don't know why."
+persona:
+  name: "Mrs. Nadeau"
+  role: patient
+  sub: "산후 1일"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "산후우울(baby blues vs PPD)을 선별하고 지지·연계합니다."
+  mood: sad
+goals:
+  - "산후우울 어휘"
+  - "선별"
+  - "정서 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Many new moms feel this — you're not alone."
+  - "Have these feelings lasted more than two weeks?"
+  - "Let's connect you with support today."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "산후우울(baby blues vs PPD)을 선별하고 지지·연계합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "산후우울 어휘"
+    - "선별"
+    - "정서 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: sad, lineEn: "I feel so low and I don't know why.", lineKo: "이유 없이 너무 우울해요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "You're not alone — many new moms feel this. Let's get you support today." }

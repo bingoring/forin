@@ -1,0 +1,50 @@
+# 여성소아외래 · 식품 알레르기 관리 (단계 B #12, WOMEN).
+id: SCN-WOMENKIDS-00012
+eventId: EVT-WOMEN-00001
+title: "식품 알레르기 관리"
+tagline: "What if she eats peanuts by accident?"
+persona:
+  name: "Mrs. Haddad"
+  role: parent
+  sub: "보호자 · 딸(5y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 식품 알레르기 관리와 에피펜 사용을 교육합니다."
+  mood: worried
+goals:
+  - "알레르기 어휘"
+  - "에피펜 교육"
+  - "응급 대응"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Read every label — hidden nuts are common."
+  - "Carry the epinephrine pen at all times."
+  - "Use it and call 911 if her throat tightens."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "소아 식품 알레르기 관리와 에피펜 사용을 교육합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "알레르기 어휘"
+    - "에피펜 교육"
+    - "응급 대응"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "What if she eats peanuts by accident?", lineKo: "실수로 땅콩을 먹으면요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Carry the epi-pen always — use it and call 911 if her throat tightens." }

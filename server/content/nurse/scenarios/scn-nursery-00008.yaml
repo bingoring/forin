@@ -1,0 +1,50 @@
+# 신생아실 · 신생아 수면 안전(SIDS) 교육 (단계 B #8, WOMEN).
+id: SCN-NURSERY-00008
+eventId: EVT-WOMEN-00001
+title: "신생아 수면 안전(SIDS) 교육"
+tagline: "Can she sleep on her tummy?"
+persona:
+  name: "Mr. Cho"
+  role: parent
+  sub: "신생아 아빠"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "영아돌연사증후군(SIDS) 예방 수면 안전을 교육합니다."
+  mood: worried
+goals:
+  - "수면 안전"
+  - "SIDS 예방"
+  - "부모 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Always place her on her back to sleep."
+  - "A firm, bare crib — no pillows or blankets."
+  - "Room-share, but not bed-share."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "영아돌연사증후군(SIDS) 예방 수면 안전을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "수면 안전"
+    - "SIDS 예방"
+    - "부모 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Can she sleep on her tummy?", lineKo: "엎어 재워도 되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Always on her back — a firm, bare crib prevents SIDS." }

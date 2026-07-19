@@ -1,0 +1,50 @@
+# 신생아중환자실 · NICU 퇴원 후 추적 안내 (단계 B #12, WOMEN).
+id: SCN-NICU-00012
+eventId: EVT-WOMEN-00001
+title: "NICU 퇴원 후 추적 안내"
+tagline: "What appointments come next?"
+persona:
+  name: "Preemie's Dad"
+  role: parent
+  sub: "퇴원 후"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "NICU 퇴원 후 발달 추적·예방접종 일정을 안내합니다."
+  mood: neutral
+goals:
+  - "추적 어휘"
+  - "일정 안내"
+  - "부모 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "He'll follow up with the NICU clinic."
+  - "Vaccines follow his corrected age."
+  - "Watch his milestones and bring questions."
+briefing:
+  dept: "신생아중환자실"
+  deptColor: "#DB2777"
+  brief: "NICU 퇴원 후 발달 추적·예방접종 일정을 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "추적 어휘"
+    - "일정 안내"
+    - "부모 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "What appointments come next?", lineKo: "다음 진료는 언제인가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "He'll follow up at the NICU clinic — vaccines by corrected age." }

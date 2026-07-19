@@ -1,0 +1,50 @@
+# 여성소아외래 · 소아 비만 상담 (단계 B #9, WOMEN).
+id: SCN-WOMENKIDS-00009
+eventId: EVT-WOMEN-00001
+title: "소아 비만 상담"
+tagline: "How do I help him lose weight?"
+persona:
+  name: "Mrs. Weber"
+  role: parent
+  sub: "보호자 · 아들(10y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 비만을 존중 어조로 상담하고 생활습관을 교육합니다."
+  mood: neutral
+goals:
+  - "비만 상담 어휘"
+  - "생활습관"
+  - "가족 참여"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Small family changes work better than diets."
+  - "Aim for an hour of active play daily."
+  - "Swap sugary drinks for water together."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "소아 비만을 존중 어조로 상담하고 생활습관을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "비만 상담 어휘"
+    - "생활습관"
+    - "가족 참여"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "How do I help him lose weight?", lineKo: "살을 어떻게 빼게 하죠?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Small family changes beat diets — active play and water over sugary drinks." }

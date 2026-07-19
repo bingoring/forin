@@ -1,0 +1,50 @@
+# 소아중환자실 · 소아 인공호흡기 관리 설명 (단계 B #8, WOMEN).
+id: SCN-PICU-00008
+eventId: EVT-WOMEN-00001
+title: "소아 인공호흡기 관리 설명"
+tagline: "Is the machine breathing for him?"
+persona:
+  name: "Mrs. Haddad"
+  role: parent
+  sub: "보호자 · 아들(3y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 인공호흡기의 역할과 관찰을 부모에게 설명합니다."
+  mood: worried
+goals:
+  - "인공호흡기 어휘"
+  - "부모 소통"
+  - "관찰 설명"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The ventilator supports his breathing for now."
+  - "We adjust it as his lungs recover."
+  - "The alarms help us respond quickly — don't be scared."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "소아 인공호흡기의 역할과 관찰을 부모에게 설명합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "인공호흡기 어휘"
+    - "부모 소통"
+    - "관찰 설명"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Is the machine breathing for him?", lineKo: "기계가 대신 숨 쉬어 주나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It supports his breathing for now — we adjust it as his lungs recover." }

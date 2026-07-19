@@ -1,0 +1,49 @@
+# 신생아실 · 신생아 목욕 시연 (단계 B #7, WOMEN).
+id: SCN-NURSERY-00007
+eventId: EVT-WOMEN-00001
+title: "신생아 목욕 시연"
+tagline: "I'm nervous to bathe him alone."
+persona:
+  name: "Mrs. Adeyemi"
+  role: parent
+  sub: "초산모"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "신생아 첫 목욕을 시연하며 안전하게 지도합니다."
+  mood: neutral
+goals:
+  - "목욕 안전"
+  - "부모 시연"
+  - "체온 유지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Support his head and neck the whole time."
+  - "Never leave him alone near water."
+  - "Warm room, warm towel ready first."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "신생아 첫 목욕을 시연하며 안전하게 지도합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "목욕 안전"
+    - "부모 시연"
+    - "체온 유지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "I'm nervous to bathe him alone.", lineKo: "혼자 목욕시키기가 겁나요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Support his head the whole time — I'll show you step by step." }

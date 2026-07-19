@@ -1,0 +1,50 @@
+# 여성소아외래 · ADHD 부모 상담 (단계 B #11, WOMEN).
+id: SCN-WOMENKIDS-00011
+eventId: EVT-WOMEN-00001
+title: "ADHD 부모 상담"
+tagline: "His teacher says he can't focus."
+persona:
+  name: "Mrs. Costa"
+  role: parent
+  sub: "보호자 · 아들(8y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "ADHD 의심 아동의 부모를 상담하고 평가·지원을 안내합니다."
+  mood: worried
+goals:
+  - "ADHD 어휘"
+  - "부모 상담"
+  - "평가 안내"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Let's gather reports from home and school."
+  - "A full evaluation gives us a clear picture."
+  - "There are many supports, not just medicine."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "ADHD 의심 아동의 부모를 상담하고 평가·지원을 안내합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "ADHD 어휘"
+    - "부모 상담"
+    - "평가 안내"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "His teacher says he can't focus.", lineKo: "선생님이 집중을 못 한대요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Let's gather home and school reports for a full evaluation — many supports exist." }

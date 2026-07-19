@@ -1,0 +1,50 @@
+# 소아중환자실 · 형제 지지 대화 (단계 B #12, WOMEN).
+id: SCN-PICU-00012
+eventId: EVT-WOMEN-00001
+title: "형제 지지 대화"
+tagline: "Is my little brother going to be okay?"
+persona:
+  name: "Sofia"
+  role: child
+  sub: "8y / F"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "중환 형제를 둔 아동을 눈높이로 안심시킵니다."
+  mood: sad
+goals:
+  - "형제 지지"
+  - "눈높이 소통"
+  - "정서 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "It's okay to feel worried about him."
+  - "The doctors are taking very good care of him."
+  - "You can draw him a picture to cheer him up."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "중환 형제를 둔 아동을 눈높이로 안심시킵니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "형제 지지"
+    - "눈높이 소통"
+    - "정서 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: sad, lineEn: "Is my little brother going to be okay?", lineKo: "동생 괜찮아질까요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It's okay to worry. The doctors are taking great care of him — want to draw him a picture?" }

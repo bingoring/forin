@@ -1,0 +1,50 @@
+# 신생아실 · 카시트 안전 교육 (단계 B #12, WOMEN).
+id: SCN-NURSERY-00012
+eventId: EVT-WOMEN-00001
+title: "카시트 안전 교육"
+tagline: "Is he strapped in correctly?"
+persona:
+  name: "Mrs. Klein"
+  role: parent
+  sub: "퇴원 예정모"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "신생아 카시트 설치·안전 착석을 교육합니다."
+  mood: worried
+goals:
+  - "카시트 안전"
+  - "착석 확인"
+  - "부모 교육"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "The car seat must face the rear."
+  - "Straps snug, chest clip at armpit level."
+  - "No bulky coats under the straps."
+briefing:
+  dept: "신생아실"
+  deptColor: "#DB2777"
+  brief: "신생아 카시트 설치·안전 착석을 교육합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "카시트 안전"
+    - "착석 확인"
+    - "부모 교육"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "Is he strapped in correctly?", lineKo: "제대로 채워진 건가요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Straps snug, chest clip at armpit level, and it must face the rear." }

@@ -1,0 +1,50 @@
+# 분만실 · 양막 파열 확인 (단계 B #8, WOMEN).
+id: SCN-LD-00008
+eventId: EVT-WOMEN-00001
+title: "양막 파열 확인"
+tagline: "I think my water broke."
+persona:
+  name: "Mrs. Silva"
+  role: patient
+  sub: "임신 38주"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "양막 파열(SROM)을 확인하고 다음 단계를 안내합니다."
+  mood: worried
+goals:
+  - "양막파열 어휘"
+  - "확인 절차"
+  - "산모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "When did the fluid leak, and what color?"
+  - "Green or foul-smelling fluid — tell me now."
+  - "We'll monitor you and the baby closely."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "양막 파열(SROM)을 확인하고 다음 단계를 안내합니다."
+  difficulty: 2
+  timeLabel: "약 7분"
+  skills:
+    - "양막파열 어휘"
+    - "확인 절차"
+    - "산모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 200 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 8" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "I think my water broke.", lineKo: "양수가 터진 것 같아요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "When did it leak, and what color? We'll monitor you and the baby closely." }

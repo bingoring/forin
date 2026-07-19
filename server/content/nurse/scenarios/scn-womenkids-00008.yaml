@@ -1,0 +1,49 @@
+# 여성소아외래 · 야뇨증 상담 (단계 B #8, WOMEN).
+id: SCN-WOMENKIDS-00008
+eventId: EVT-WOMEN-00001
+title: "야뇨증 상담"
+tagline: "She still wets the bed at night."
+persona:
+  name: "Mrs. Novak"
+  role: parent
+  sub: "보호자 · 딸(6y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "소아 야뇨증을 상담하고 행동 관리를 교육합니다."
+  mood: neutral
+goals:
+  - "야뇨증 어휘"
+  - "행동 관리"
+  - "부모 안심"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Bedwetting is common and usually outgrown."
+  - "Limit drinks in the evening."
+  - "Please don't punish — praise dry nights."
+briefing:
+  dept: "여성소아외래"
+  deptColor: "#DB2777"
+  brief: "소아 야뇨증을 상담하고 행동 관리를 교육합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "야뇨증 어휘"
+    - "행동 관리"
+    - "부모 안심"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "She still wets the bed at night.", lineKo: "아직도 밤에 오줌을 싸요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "It's common and usually outgrown. Praise dry nights, and don't punish." }

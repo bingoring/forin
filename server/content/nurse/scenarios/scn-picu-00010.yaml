@@ -1,0 +1,49 @@
+# 소아중환자실 · 소아 진통제 안내 (단계 B #10, WOMEN).
+id: SCN-PICU-00010
+eventId: EVT-WOMEN-00001
+title: "소아 진통제 안내"
+tagline: "Will the medicine hurt?"
+persona:
+  name: "Leo"
+  role: child
+  sub: "7y / M"
+  hair: "#5C4033"
+  hairStyle: short
+  personality: "소아에게 진통제 투여를 눈높이로 설명하고 안심시킵니다."
+  mood: pain
+goals:
+  - "진통 어휘"
+  - "눈높이 소통"
+  - "투약 설명"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "This medicine helps the hurt go away."
+  - "It goes in your IV — no new pokes."
+  - "Tell me when it starts feeling better."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "소아에게 진통제 투여를 눈높이로 설명하고 안심시킵니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "진통 어휘"
+    - "눈높이 소통"
+    - "투약 설명"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: child, expression: pain, lineEn: "Will the medicine hurt?", lineKo: "약이 아파요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "No new pokes — it goes in your IV and helps the hurt go away." }

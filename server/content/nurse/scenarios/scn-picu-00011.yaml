@@ -1,0 +1,49 @@
+# 소아중환자실 · 놀이치료(Child Life) 안내 (단계 B #11, WOMEN).
+id: SCN-PICU-00011
+eventId: EVT-WOMEN-00001
+title: "놀이치료(Child Life) 안내"
+tagline: "How can I help her feel less scared?"
+persona:
+  name: "Mrs. Kim"
+  role: parent
+  sub: "보호자 · 딸(5y)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "아동생활전문가(Child Life)·놀이치료를 안내합니다."
+  mood: neutral
+goals:
+  - "놀이치료 어휘"
+  - "불안 완화"
+  - "가족 지지"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Our Child Life specialist uses play to prepare her."
+  - "Bring her favorite toy or blanket."
+  - "Play helps her feel in control."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "아동생활전문가(Child Life)·놀이치료를 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "놀이치료 어휘"
+    - "불안 완화"
+    - "가족 지지"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "How can I help her feel less scared?", lineKo: "덜 무서워하게 하려면요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Our Child Life specialist uses play to prepare her — bring her favorite toy." }

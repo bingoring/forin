@@ -1,0 +1,50 @@
+# 신생아중환자실 · 미숙아 감염 관찰 (단계 B #7, WOMEN).
+id: SCN-NICU-00007
+eventId: EVT-WOMEN-00001
+title: "미숙아 감염 관찰"
+tagline: "She feels cooler than usual."
+persona:
+  name: "Preemie's Mom"
+  role: parent
+  sub: "보호자 · 딸(27주)"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "미숙아 패혈증 조기 징후를 관찰하고 부모에게 설명합니다."
+  mood: worried
+goals:
+  - "패혈증 어휘"
+  - "조기 징후"
+  - "부모 소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Temperature changes can be an early sign."
+  - "We're drawing labs and watching closely."
+  - "We treat quickly to keep her safe."
+briefing:
+  dept: "신생아중환자실"
+  deptColor: "#DB2777"
+  brief: "미숙아 패혈증 조기 징후를 관찰하고 부모에게 설명합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "패혈증 어휘"
+    - "조기 징후"
+    - "부모 소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: worried, lineEn: "She feels cooler than usual.", lineKo: "평소보다 차가워요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Temperature changes can be an early sign — we're drawing labs and watching closely." }

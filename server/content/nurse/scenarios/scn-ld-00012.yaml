@@ -1,0 +1,50 @@
+# 분만실 · 임신성 고혈압 관찰 (단계 B #12, WOMEN).
+id: SCN-LD-00012
+eventId: EVT-WOMEN-00001
+title: "임신성 고혈압 관찰"
+tagline: "My head is pounding and I see spots."
+persona:
+  name: "Mrs. Ferro"
+  role: patient
+  sub: "고위험 임신"
+  hair: "#5C3A1A"
+  hairStyle: short
+  personality: "임신성 고혈압/전자간증 경고증상을 사정하고 대응합니다."
+  mood: worried
+goals:
+  - "전자간증 어휘"
+  - "경고증상"
+  - "응급 대응"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Headache and vision spots are warning signs."
+  - "I'm checking your blood pressure right now."
+  - "Lie on your left side while I call the doctor."
+briefing:
+  dept: "분만실"
+  deptColor: "#DB2777"
+  brief: "임신성 고혈압/전자간증 경고증상을 사정하고 대응합니다."
+  difficulty: 3
+  timeLabel: "약 8분"
+  skills:
+    - "전자간증 어휘"
+    - "경고증상"
+    - "응급 대응"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 240 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 10" }
+    - { icon: "🎖", label: "부서 진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 B2+", metric: "level", threshold: 4 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: patient, expression: worried, lineEn: "My head is pounding and I see spots.", lineKo: "머리가 깨질 듯하고 반점이 보여요." }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Those are warning signs — lie on your left side while I check your BP and call the doctor." }

@@ -1,0 +1,49 @@
+# 소아중환자실 · 가족 중심 회진 참여 안내 (단계 B #9, WOMEN).
+id: SCN-PICU-00009
+eventId: EVT-WOMEN-00001
+title: "가족 중심 회진 참여 안내"
+tagline: "Can I be there for rounds?"
+persona:
+  name: "Mr. Dubois"
+  role: parent
+  sub: "보호자"
+  hair: "#3C2A18"
+  hairStyle: long
+  personality: "가족 중심 회진(family-centered rounds) 참여를 안내합니다."
+  mood: neutral
+goals:
+  - "회진 어휘"
+  - "가족 참여"
+  - "소통"
+guardrails:
+  - "환자·보호자를 존중하며 공감으로 소통"
+  - "전문용어는 쉽게 풀어 설명"
+keyPhrases:
+  - "Yes — we'd love you to join rounds."
+  - "You can ask questions and share what you notice."
+  - "You know your child best."
+briefing:
+  dept: "소아중환자실"
+  deptColor: "#DB2777"
+  brief: "가족 중심 회진(family-centered rounds) 참여를 안내합니다."
+  difficulty: 1
+  timeLabel: "약 6분"
+  skills:
+    - "회진 어휘"
+    - "가족 참여"
+    - "소통"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 160 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 6" }
+  reqs:
+    - { label: "레벨 B1+", metric: "level", threshold: 3 }
+  tone: "#FCE7F3"
+  accent: "#F9A8D4"
+steps:
+  - id: s1
+    type: dialogue
+    payload: { speaker: parent, expression: neutral, lineEn: "Can I be there for rounds?", lineKo: "회진 때 있어도 되나요?" }
+    next: s2
+  - id: s2
+    type: dialogue
+    payload: { speaker: player, expression: focused, lineEn: "Absolutely — please join. You know your child best; ask anything." }
