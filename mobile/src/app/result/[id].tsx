@@ -5,15 +5,14 @@
 // count-up to the new total, a level-progress bar, a level-up banner when the
 // level ticks over, and the current streak. Falls back to the scenario's static
 // briefing rewards if the progress API is unavailable (offline / not authed).
-import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Animated, Easing, Share, Text, View, type ViewStyle } from 'react-native';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ActivityIndicator, Animated, Easing, Pressable, Share, Text, View, type GestureResponderEvent, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type Progress, type ScenarioDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
-const CONFETTI_COLORS = [colors.mint, colors.peach, colors.yellow, colors.pink, '#A78BFA', '#FCA5A5', '#10B981', '#60A5FA'];
 const XP_PER_LEVEL = 100; // server: level = 1 + floor(xp / 100)
 
 // Parse the scenario's authored XP reward ("+ 120 XP" → 120); default 100.
@@ -31,6 +30,21 @@ export default function ResultRoute() {
   const [after, setAfter] = useState<Progress | null>(null);
   const [failed, setFailed] = useState(false);
   const recorded = useRef(false);
+
+  // Firework bursts (1:1 with the v17 handoff): one anchored to the sticker on
+  // mount, plus one wherever the user taps the background. Each auto-expires.
+  const [bursts, setBursts] = useState<{ id: number; x: number; y: number }[]>([]);
+  const nextBurst = useRef(1);
+  const stickerRef = useRef<View>(null);
+  const spawnBurst = (x: number, y: number) => {
+    const id = nextBurst.current++;
+    setBursts((prev) => [...prev, { id, x, y }]);
+    setTimeout(() => setBursts((curr) => curr.filter((b) => b.id !== id)), 4600);
+  };
+  const onBgTap = (e: GestureResponderEvent) => spawnBurst(e.nativeEvent.locationX, e.nativeEvent.locationY);
+  const onStickerLayout = () => {
+    stickerRef.current?.measureInWindow((x, y, w, h) => spawnBurst(x + w / 2, y + h / 2));
+  };
 
   useEffect(() => {
     let alive = true;
@@ -60,10 +74,13 @@ export default function ResultRoute() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+    <Pressable onPress={onBgTap} style={{ flex: 1, backgroundColor: colors.cream }}>
       <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
-      <Confetti />
-      {leveledUp && <Confetti />}
+
+      {/* confetti layer — above background, below content, tap-transparent */}
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, overflow: 'hidden' }}>
+        {bursts.map((b) => <ConfettiBurst key={b.id} x={b.x} y={b.y} />)}
+      </View>
 
       {/* topbar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, flexDirection: 'row', justifyContent: 'space-between', zIndex: 3 }}>
@@ -90,7 +107,7 @@ export default function ResultRoute() {
 
         {/* sticker */}
         <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
-          <View style={{ width: 112, height: 112, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+          <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 112, height: 112, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
             <View style={{ width: 86, height: 86, borderRadius: 43, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
               <Text style={{ fontSize: 26 }}>⭐</Text>
               <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C, marginTop: 2 }}>참잘했</Text>
@@ -127,7 +144,7 @@ export default function ResultRoute() {
           </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
@@ -208,43 +225,81 @@ function StaticRewards({ scenario, baseXp }: { scenario: ScenarioDetail | null; 
   );
 }
 
-// ── confetti (Animated burst from the top-center) ─────────────────────
-function Confetti() {
-  const pieces = useRef(
-    Array.from({ length: 28 }, (_, i) => ({
-      pid: i,
-      left: 10 + ((i * 37) % 80),
-      color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
-      delay: (i % 6) * 90,
-      drift: ((i % 5) - 2) * 20,
-      rotate: (i % 2 === 0 ? 1 : -1) * (180 + (i % 3) * 120),
-      size: 8 + (i % 3) * 3,
-    })),
-  ).current;
+// ── confetti burst (1:1 with v17 handoff ConfettiBurst) ───────────────
+// A one-shot firework at container-local (x, y): 48 embers each follow a real
+// parabola sampled through (0,0), (peakT, peakY), (1, finalY) — up fast, arc
+// over, fall past the bottom — plus a warm flash at the origin. The handoff
+// drives this with the Web Animations API; here each ember rides one Animated
+// value with a multi-point interpolation that reproduces the same curve.
+const BURST_COLORS = [colors.mint, colors.peach, colors.yellow, colors.pink, '#60A5FA', '#A78BFA', '#FCA5A5', '#10B981'];
+const N_SAMPLES = 8;
+
+function ConfettiBurst({ x, y }: { x: number; y: number }) {
+  const pieces = useMemo(
+    () =>
+      Array.from({ length: 48 }, () => {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 70 + Math.random() * 180;
+        const peakT = 0.32 + Math.random() * 0.1;
+        const peakY = -(60 + Math.random() * 130);
+        const finalY = 480 + Math.round(Math.random() * 260);
+        // sample the parabola at N evenly-spaced times for a smooth Animated curve
+        const ins: number[] = [];
+        const ys: number[] = [];
+        for (let k = 0; k <= N_SAMPLES; k++) {
+          const t = k / N_SAMPLES;
+          const alpha = (t * (t - 1)) / (peakT * (peakT - 1));
+          const beta = (t * (t - peakT)) / (1 - peakT);
+          ins.push(t);
+          ys.push(alpha * peakY + beta * finalY);
+        }
+        return {
+          finalX: Math.round(Math.cos(angle) * speed),
+          ins, ys,
+          c: BURST_COLORS[Math.floor(Math.random() * BURST_COLORS.length)],
+          dur: (2.6 + Math.random() * 1.4) * 1000,
+          rot: Math.round(Math.random() * 720 - 360),
+          size: 7 + Math.floor(Math.random() * 3) * 2,
+        };
+      }),
+    [],
+  );
+  const flash = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(flash, { toValue: 1, duration: 700, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
+  }, [flash]);
+
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }}>
-      {pieces.map(({ pid, ...p }) => (
-        <ConfettiPiece key={pid} {...p} />
-      ))}
-    </View>
+    <>
+      {/* warm flash at the origin */}
+      <Animated.View
+        style={{
+          position: 'absolute', left: x - 30, top: y - 30, width: 60, height: 60, borderRadius: 30,
+          backgroundColor: 'rgba(255,236,150,0.9)',
+          opacity: flash.interpolate({ inputRange: [0, 0.5, 1], outputRange: [0.9, 0.5, 0] }),
+          transform: [{ scale: flash.interpolate({ inputRange: [0, 1], outputRange: [0.4, 1.6] }) }],
+        }}
+      />
+      {pieces.map((p, i) => <Ember key={i} x={x} y={y} {...p} />)}
+    </>
   );
 }
 
-function ConfettiPiece({ left, color, delay, drift, rotate, size }: { left: number; color: string; delay: number; drift: number; rotate: number; size: number }) {
+function Ember({ x, y, finalX, ins, ys, c, dur, rot, size }: { x: number; y: number; finalX: number; ins: number[]; ys: number[]; c: string; dur: number; rot: number; size: number }) {
   const t = useRef(new Animated.Value(0)).current;
   useEffect(() => {
-    Animated.timing(t, { toValue: 1, duration: 2200, delay, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
-  }, [t, delay]);
-  const translateY = t.interpolate({ inputRange: [0, 1], outputRange: [-40, 700] });
-  const translateX = t.interpolate({ inputRange: [0, 1], outputRange: [0, drift] });
-  const rot = t.interpolate({ inputRange: [0, 1], outputRange: ['0deg', `${rotate}deg`] });
-  const opacity = t.interpolate({ inputRange: [0, 0.85, 1], outputRange: [1, 1, 0] });
+    Animated.timing(t, { toValue: 1, duration: dur, easing: Easing.linear, useNativeDriver: true }).start();
+  }, [t, dur]);
+  const translateX = t.interpolate({ inputRange: [0, 1], outputRange: [0, finalX] });
+  const translateY = t.interpolate({ inputRange: ins, outputRange: ys });
+  const rotate = t.interpolate({ inputRange: [0, 1], outputRange: ['0deg', `${rot}deg`] });
+  const opacity = t.interpolate({ inputRange: [0, 0.05, 0.88, 1], outputRange: [0, 1, 1, 0] });
   return (
     <Animated.View
       style={{
-        position: 'absolute', left: `${left}%`, top: 80, width: size, height: size,
-        backgroundColor: color, borderWidth: 1, borderColor: C, opacity,
-        transform: [{ translateY }, { translateX }, { rotate: rot }],
+        position: 'absolute', left: x - size / 2, top: y - size / 2, width: size, height: size,
+        backgroundColor: c, borderWidth: 1.5, borderColor: C, opacity,
+        transform: [{ translateX }, { translateY }, { rotate }],
       }}
     />
   );
