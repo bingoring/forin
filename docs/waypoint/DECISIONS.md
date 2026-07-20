@@ -956,3 +956,8 @@
 - **나 탭**: 스텁 → 실 진척(`GET /me/progress`·`/me`) 연동 프로필. ID카드(랭크·레벨·XP바·EN레벨칩), 평판 3종(환자만족/동료신뢰/응급대응), 나의 성장 요약, CAREER PATH 스테퍼(레벨 기반 Learner→Junior→Senior→Head), 커리어 뱃지(레벨/스트릭 마일스톤 연동, N/8), 리뷰랩 티저(→리뷰 탭). `useFocusEffect`로 복귀 시 갱신.
 - 저작 원칙: 랭크/뱃지 등 서버 미갱신 값은 레벨·스트릭에서 정직하게 파생.
 - 검증: tsc 0 · jest 208/208 · 시뮬레이터 결과 폭죽 렌더 + 나 탭(Junior Nurse Lv.9·820/900·평판·뱃지 3/8) 실데이터 확인.
+
+## 2026-07-20 — 단계 C: 리뷰랩 탭 + dev 인증 복원력
+- **리뷰랩 탭(lab)**: 스텁 → SM-2 오답노트. `GET /me/review`로 오늘 due 카드, 각 카드는 AI 교정(front=원문 취소선 / back=교정 강조 / note=왜?). 자가평가 다시·어려움·알맞음·쉬움 → `POST /me/review/{id}/grade`(SM-2 스케줄 갱신, 채점 카드는 오늘 큐에서 제외). 🔊 교정문 TTS(expo-speech), 숙련 pips, 오늘의 복습 히어로 + 미니스탯(대기/숙련/즐겨찾기). `useFocusEffect` 갱신. client: `reviewDue()`·`gradeReview()`·`ReviewCard` 추가.
+- **dev 인증 복원력(반복 'api 에러' 근본 해결)**: 액세스 토큰 만료 시 인터셉터 rotate가 refresh 실패/토큰 부재여도 **__DEV__에서 `/auth/dev` 자동 재로그인**으로 세션 복구(로그아웃 대신). 딥링크 네비게이션 중 세션 소실로 화면이 에러로 굳던 문제 해소.
+- 검증: tsc 0 · jest 208/208 · 라이브(/me/review 4건·grade good→pips 1·due 3) · 시뮬레이터 리뷰랩 3카드·평가·TTS·미니스탯 렌더 확인.
