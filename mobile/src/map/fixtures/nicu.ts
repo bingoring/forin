@@ -96,24 +96,24 @@ export const NICU_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-scrub', kind: 'quest', x: 3, y: 2, label: '손위생·가운 착용', scenarioId: 'SCN-NICU-00001' },
-    { id: 'hs-central', kind: 'info', x: 6, y: 17, label: '중앙 활력 감시' },
+    { id: 'hs-central', kind: 'quest', x: 6, y: 17, label: '중앙 활력 감시', scenarioId: 'SCN-NICU-00002' },
     { id: 'hs-resus', kind: 'urgent', x: 16, y: 12, label: '미숙아 소생·기도' },
-    { id: 'hs-incubator', kind: 'quest', x: 3, y: 27, label: '온·습도·활력 확인' },
-    { id: 'hs-kangaroo', kind: 'info', x: 20, y: 33, label: '캥거루 케어 지지' },
+    { id: 'hs-incubator', kind: 'quest', x: 3, y: 27, label: '온·습도·활력 확인', scenarioId: 'SCN-NICU-00003' },
+    { id: 'hs-kangaroo', kind: 'quest', x: 20, y: 33, label: '캥거루 케어 지지', scenarioId: 'SCN-NICU-00004' },
   ],
   npcs: [
     // ante
-    { id: 'ni-an-n', kind: 'nurse', mode: 'idle', seed: 881, start: { x: 5, y: 5 } },
-    { id: 'ni-an-v', kind: 'visitor', mode: 'idle', seed: 882, start: { x: 16, y: 5 } },
+    { id: 'ni-an-n', kind: 'nurse', mode: 'idle', seed: 881, start: { x: 5, y: 5 }, marker: 'quest', markerLabel: '수유 진전 상담', scenarioId: 'SCN-NICU-00005' },
+    { id: 'ni-an-v', kind: 'visitor', mode: 'idle', seed: 882, start: { x: 16, y: 5 }, marker: 'quest', markerLabel: 'NICU 퇴원 준비 교육', scenarioId: 'SCN-NICU-00006' },
     // station
-    { id: 'ni-st-n', kind: 'nurse', mode: 'idle', seed: 883, start: { x: 6, y: 18 } },
+    { id: 'ni-st-n', kind: 'nurse', mode: 'idle', seed: 883, start: { x: 6, y: 18 }, marker: 'quest', markerLabel: '미숙아 감염 관찰', scenarioId: 'SCN-NICU-00007' },
     // resus
-    { id: 'ni-rs-d', kind: 'doctor', mode: 'idle', seed: 884, start: { x: 19, y: 18 } },
-    { id: 'ni-rs-n', kind: 'nurse', mode: 'idle', seed: 885, start: { x: 21, y: 18 } },
+    { id: 'ni-rs-d', kind: 'doctor', mode: 'idle', seed: 884, start: { x: 19, y: 18 }, marker: 'quest', markerLabel: '형제·조부모 면회 안내', scenarioId: 'SCN-NICU-00008' },
+    { id: 'ni-rs-n', kind: 'nurse', mode: 'idle', seed: 885, start: { x: 21, y: 18 }, marker: 'quest', markerLabel: '모유 강화(fortifier) 안내', scenarioId: 'SCN-NICU-00009' },
     // podA
-    { id: 'ni-pA-n', kind: 'nurse', mode: 'idle', seed: 886, start: { x: 6, y: 33 } },
+    { id: 'ni-pA-n', kind: 'nurse', mode: 'idle', seed: 886, start: { x: 6, y: 33 }, marker: 'quest', markerLabel: '신생아 청력 선별 안내', scenarioId: 'SCN-NICU-00010' },
     // podB
-    { id: 'ni-pB-p', kind: 'parent', mode: 'idle', seed: 887, start: { x: 22, y: 35 } },
-    { id: 'ni-pB-n', kind: 'nurse', mode: 'idle', seed: 888, start: { x: 18, y: 40 } },
+    { id: 'ni-pB-p', kind: 'parent', mode: 'idle', seed: 887, start: { x: 22, y: 35 }, marker: 'quest', markerLabel: '미숙아 안검사(ROP) 안내', scenarioId: 'SCN-NICU-00011' },
+    { id: 'ni-pB-n', kind: 'nurse', mode: 'idle', seed: 888, start: { x: 18, y: 40 }, marker: 'quest', markerLabel: 'NICU 퇴원 후 추적 안내', scenarioId: 'SCN-NICU-00012' },
   ],
 };

@@ -97,24 +97,24 @@ export const SIM_INTERIOR: Interior = {
     { id: 'o-bo-desk', type: 'officedesk', x: 20, y: 33, props: { w: 2, h: 1 } },
   ],
   hotspots: [
-    { id: 'hs-admin', kind: 'info', x: 3, y: 3, label: '근무 배치·행정' },
+    { id: 'hs-admin', kind: 'quest', x: 3, y: 3, label: '근무 배치·행정', scenarioId: 'SCN-SIM-00002' },
     { id: 'hs-ppe', kind: 'quest', x: 3, y: 16, label: 'PPE 착탈의 감사', scenarioId: 'SCN-SIM-00001' },
-    { id: 'hs-debrief', kind: 'info', x: 18, y: 16, label: '사례 디브리핑' },
-    { id: 'hs-scenario', kind: 'quest', x: 3, y: 28, label: '응급 시나리오 실습' },
-    { id: 'hs-control', kind: 'info', x: 20, y: 30, label: '마네킹 시나리오 조작' },
+    { id: 'hs-debrief', kind: 'quest', x: 18, y: 16, label: '사례 디브리핑', scenarioId: 'SCN-SIM-00003' },
+    { id: 'hs-scenario', kind: 'quest', x: 3, y: 28, label: '응급 시나리오 실습', scenarioId: 'SCN-SIM-00004' },
+    { id: 'hs-control', kind: 'quest', x: 20, y: 30, label: '마네킹 시나리오 조작', scenarioId: 'SCN-SIM-00005' },
   ],
   npcs: [
     // admin
-    { id: 'si-ad-d', kind: 'doctor', mode: 'idle', seed: 1081, start: { x: 3, y: 7 } },
-    { id: 'si-ad-n1', kind: 'nurse', mode: 'idle', seed: 1082, start: { x: 8, y: 7 } },
-    { id: 'si-ad-n2', kind: 'nurse', mode: 'idle', seed: 1083, start: { x: 13, y: 7 } },
+    { id: 'si-ad-d', kind: 'doctor', mode: 'idle', seed: 1081, start: { x: 3, y: 7 }, marker: 'quest', markerLabel: '투약오류 근접사례 리뷰', scenarioId: 'SCN-SIM-00006' },
+    { id: 'si-ad-n1', kind: 'nurse', mode: 'idle', seed: 1082, start: { x: 8, y: 7 }, marker: 'quest', markerLabel: '기도삽관 보조 시뮬 디브리핑', scenarioId: 'SCN-SIM-00007' },
+    { id: 'si-ad-n2', kind: 'nurse', mode: 'idle', seed: 1083, start: { x: 13, y: 7 }, marker: 'quest', markerLabel: '신생아 소생 시뮬 디브리핑', scenarioId: 'SCN-SIM-00008' },
     // infection
-    { id: 'si-in-n', kind: 'nurse', mode: 'idle', seed: 1084, start: { x: 6, y: 21 } },
+    { id: 'si-in-n', kind: 'nurse', mode: 'idle', seed: 1084, start: { x: 6, y: 21 }, marker: 'quest', markerLabel: '대량재해 트리아지 시뮬', scenarioId: 'SCN-SIM-00009' },
     // debrief
-    { id: 'si-de-d', kind: 'doctor', mode: 'idle', seed: 1085, start: { x: 22, y: 16 } },
-    { id: 'si-de-n', kind: 'nurse', mode: 'idle', seed: 1086, start: { x: 17, y: 19 } },
+    { id: 'si-de-d', kind: 'doctor', mode: 'idle', seed: 1085, start: { x: 22, y: 16 }, marker: 'quest', markerLabel: '폐색전 시나리오 사전 브리핑', scenarioId: 'SCN-SIM-00010' },
+    { id: 'si-de-n', kind: 'nurse', mode: 'idle', seed: 1086, start: { x: 17, y: 19 }, marker: 'quest', markerLabel: '의사소통 오류 리뷰', scenarioId: 'SCN-SIM-00011' },
     // simlab
-    { id: 'si-sl-n1', kind: 'nurse', mode: 'idle', seed: 1087, start: { x: 4, y: 36 } },
+    { id: 'si-sl-n1', kind: 'nurse', mode: 'idle', seed: 1087, start: { x: 4, y: 36 }, marker: 'quest', markerLabel: '포터블 초음파 술기 평가', scenarioId: 'SCN-SIM-00012' },
     { id: 'si-sl-n2', kind: 'nurse', mode: 'idle', seed: 1088, start: { x: 7, y: 37 } },
     { id: 'si-sl-d', kind: 'doctor', mode: 'idle', seed: 1089, start: { x: 11, y: 34 } },
     // booth

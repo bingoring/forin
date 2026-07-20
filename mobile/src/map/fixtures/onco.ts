@@ -129,22 +129,22 @@ export const ONCO_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-verify', kind: 'quest', x: 3, y: 3, label: '항암제 이중 확인', scenarioId: 'SCN-ONCO-00001' },
-    { id: 'hs-family', kind: 'info', x: 19, y: 5, label: '가족 면담' },
-    { id: 'hs-schedule', kind: 'info', x: 11, y: 14, label: '주입 스케줄' },
-    { id: 'hs-infusion', kind: 'quest', x: 8, y: 22, label: '주입 속도·부작용 관찰' },
-    { id: 'hs-ante', kind: 'info', x: 2, y: 41, label: '양압 손위생·방호' },
-    { id: 'hs-engraft', kind: 'info', x: 10, y: 40, label: '이식·생착 모니터' },
+    { id: 'hs-family', kind: 'quest', x: 19, y: 5, label: '가족 면담', scenarioId: 'SCN-ONCO-00002' },
+    { id: 'hs-schedule', kind: 'quest', x: 11, y: 14, label: '주입 스케줄', scenarioId: 'SCN-ONCO-00003' },
+    { id: 'hs-infusion', kind: 'quest', x: 8, y: 22, label: '주입 속도·부작용 관찰', scenarioId: 'SCN-ONCO-00004' },
+    { id: 'hs-ante', kind: 'quest', x: 2, y: 41, label: '양압 손위생·방호', scenarioId: 'SCN-ONCO-00005' },
+    { id: 'hs-engraft', kind: 'quest', x: 10, y: 40, label: '이식·생착 모니터', scenarioId: 'SCN-ONCO-00006' },
   ],
   npcs: [
     // verify
-    { id: 'on-vf-d', kind: 'doctor', mode: 'idle', seed: 981, start: { x: 4, y: 7 } },
-    { id: 'on-vf-n', kind: 'nurse', mode: 'idle', seed: 982, start: { x: 7, y: 7 } },
+    { id: 'on-vf-d', kind: 'doctor', mode: 'idle', seed: 981, start: { x: 4, y: 7 }, marker: 'quest', markerLabel: '오심·구토 관리', scenarioId: 'SCN-ONCO-00007' },
+    { id: 'on-vf-n', kind: 'nurse', mode: 'idle', seed: 982, start: { x: 7, y: 7 }, marker: 'quest', markerLabel: '암성 통증 관리', scenarioId: 'SCN-ONCO-00008' },
     // quiet
-    { id: 'on-qt-d', kind: 'doctor', mode: 'idle', seed: 983, start: { x: 18, y: 7 } },
-    { id: 'on-qt-p', kind: 'parent', mode: 'idle', seed: 984, start: { x: 21, y: 7 } },
+    { id: 'on-qt-d', kind: 'doctor', mode: 'idle', seed: 983, start: { x: 18, y: 7 }, marker: 'quest', markerLabel: '임상시험 설명', scenarioId: 'SCN-ONCO-00009' },
+    { id: 'on-qt-p', kind: 'parent', mode: 'idle', seed: 984, start: { x: 21, y: 7 }, marker: 'quest', markerLabel: '항암 영양 상담', scenarioId: 'SCN-ONCO-00010' },
     // station
-    { id: 'on-st-n1', kind: 'nurse', mode: 'idle', seed: 985, start: { x: 11, y: 15 } },
-    { id: 'on-st-n2', kind: 'nurse', mode: 'idle', seed: 986, start: { x: 15, y: 15 } },
+    { id: 'on-st-n1', kind: 'nurse', mode: 'idle', seed: 985, start: { x: 11, y: 15 }, marker: 'quest', markerLabel: '항암 말초신경병증 관리', scenarioId: 'SCN-ONCO-00011' },
+    { id: 'on-st-n2', kind: 'nurse', mode: 'idle', seed: 986, start: { x: 15, y: 15 }, marker: 'quest', markerLabel: '암 생존자 관리 안내', scenarioId: 'SCN-ONCO-00012' },
     // infusion
     { id: 'on-if-n', kind: 'nurse', mode: 'idle', seed: 987, start: { x: 12, y: 30 } },
     { id: 'on-if-p', kind: 'parent', mode: 'idle', seed: 988, start: { x: 20, y: 30 } },

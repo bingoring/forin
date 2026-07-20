@@ -100,24 +100,24 @@ export const HOSPICE_INTERIOR: Interior = {
     { id: 'o-b-day', type: 'reclinerdaybed', x: 15, y: 38, props: { w: 2, h: 2 } },
   ],
   hotspots: [
-    { id: 'hs-lounge', kind: 'info', x: 13, y: 4, label: '가족 휴식 공간' },
-    { id: 'hs-pain', kind: 'info', x: 6, y: 15, label: '통증·증상 관리' },
-    { id: 'hs-reflect', kind: 'info', x: 17, y: 14, label: '조용한 성찰' },
+    { id: 'hs-lounge', kind: 'quest', x: 13, y: 4, label: '가족 휴식 공간', scenarioId: 'SCN-HOSPICE-00002' },
+    { id: 'hs-pain', kind: 'quest', x: 6, y: 15, label: '통증·증상 관리', scenarioId: 'SCN-HOSPICE-00003' },
+    { id: 'hs-reflect', kind: 'quest', x: 17, y: 14, label: '조용한 성찰', scenarioId: 'SCN-HOSPICE-00004' },
     { id: 'hs-infpain', kind: 'quest', x: 3, y: 26, label: '지속주입 통증 조절', scenarioId: 'SCN-HOSPICE-00001' },
-    { id: 'hs-dignity', kind: 'info', x: 16, y: 27, label: '임종 돌봄·존엄 케어' },
+    { id: 'hs-dignity', kind: 'quest', x: 16, y: 27, label: '임종 돌봄·존엄 케어', scenarioId: 'SCN-HOSPICE-00005' },
   ],
   npcs: [
     // lounge
-    { id: 'ho-lg-p', kind: 'parent', mode: 'idle', seed: 1001, start: { x: 14, y: 7 } },
-    { id: 'ho-lg-v', kind: 'visitor', mode: 'idle', seed: 1002, start: { x: 20, y: 7 } },
+    { id: 'ho-lg-p', kind: 'parent', mode: 'idle', seed: 1001, start: { x: 14, y: 7 }, marker: 'quest', markerLabel: '사별 가족 지지', scenarioId: 'SCN-HOSPICE-00006' },
+    { id: 'ho-lg-v', kind: 'visitor', mode: 'idle', seed: 1002, start: { x: 20, y: 7 }, marker: 'quest', markerLabel: '임종기 섬망 완화', scenarioId: 'SCN-HOSPICE-00007' },
     // station
-    { id: 'ho-st-n', kind: 'nurse', mode: 'idle', seed: 1003, start: { x: 6, y: 16 } },
-    { id: 'ho-st-d', kind: 'doctor', mode: 'idle', seed: 1004, start: { x: 9, y: 19 } },
+    { id: 'ho-st-n', kind: 'nurse', mode: 'idle', seed: 1003, start: { x: 6, y: 16 }, marker: 'quest', markerLabel: '임종기 식욕부진 상담', scenarioId: 'SCN-HOSPICE-00008' },
+    { id: 'ho-st-d', kind: 'doctor', mode: 'idle', seed: 1004, start: { x: 9, y: 19 }, marker: 'quest', markerLabel: '가족 갈등 중재', scenarioId: 'SCN-HOSPICE-00009' },
     // reflection
-    { id: 'ho-rf-v', kind: 'visitor', mode: 'idle', seed: 1005, start: { x: 18, y: 19 } },
+    { id: 'ho-rf-v', kind: 'visitor', mode: 'idle', seed: 1005, start: { x: 18, y: 19 }, marker: 'quest', markerLabel: '마지막 소원 지원', scenarioId: 'SCN-HOSPICE-00010' },
     // room A
-    { id: 'ho-a-n', kind: 'nurse', mode: 'idle', seed: 1006, start: { x: 6, y: 31 } },
-    { id: 'ho-a-p', kind: 'parent', mode: 'idle', seed: 1007, start: { x: 4, y: 40 } },
+    { id: 'ho-a-n', kind: 'nurse', mode: 'idle', seed: 1006, start: { x: 6, y: 31 }, marker: 'quest', markerLabel: '증상 악화 대응', scenarioId: 'SCN-HOSPICE-00011' },
+    { id: 'ho-a-p', kind: 'parent', mode: 'idle', seed: 1007, start: { x: 4, y: 40 }, marker: 'quest', markerLabel: '사별 후 자원 연계', scenarioId: 'SCN-HOSPICE-00012' },
     // sunroom B
     { id: 'ho-b-n', kind: 'nurse', mode: 'idle', seed: 1008, start: { x: 19, y: 32 } },
     { id: 'ho-b-v', kind: 'visitor', mode: 'idle', seed: 1009, start: { x: 18, y: 41 } },

@@ -106,24 +106,24 @@ export const INFUSION_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-verify', kind: 'quest', x: 3, y: 3, label: '예약·약품 대조', scenarioId: 'SCN-INFUSION-00001' },
-    { id: 'hs-rate', kind: 'quest', x: 7, y: 11, label: '주입 속도·부작용' },
+    { id: 'hs-rate', kind: 'quest', x: 7, y: 11, label: '주입 속도·부작용', scenarioId: 'SCN-INFUSION-00002' },
     { id: 'hs-anaphylaxis', kind: 'urgent', x: 20, y: 12, label: '아나필락시스 관찰' },
-    { id: 'hs-nourish', kind: 'info', x: 4, y: 31, label: '수분·간식 보충' },
-    { id: 'hs-chart', kind: 'info', x: 18, y: 34, label: '주입 일정·차팅' },
+    { id: 'hs-nourish', kind: 'quest', x: 4, y: 31, label: '수분·간식 보충', scenarioId: 'SCN-INFUSION-00003' },
+    { id: 'hs-chart', kind: 'quest', x: 18, y: 34, label: '주입 일정·차팅', scenarioId: 'SCN-INFUSION-00004' },
   ],
   npcs: [
     // check
-    { id: 'if-ck-n', kind: 'nurse', mode: 'idle', seed: 821, start: { x: 4, y: 5 } },
-    { id: 'if-ck-p', kind: 'patient', mode: 'idle', seed: 822, start: { x: 12, y: 5 } },
+    { id: 'if-ck-n', kind: 'nurse', mode: 'idle', seed: 821, start: { x: 4, y: 5 }, marker: 'quest', markerLabel: '면역글로불린(IVIG) 주입', scenarioId: 'SCN-INFUSION-00005' },
+    { id: 'if-ck-p', kind: 'patient', mode: 'idle', seed: 822, start: { x: 12, y: 5 }, marker: 'quest', markerLabel: '케모포트 관리 교육', scenarioId: 'SCN-INFUSION-00006' },
     // bay
-    { id: 'if-by-n', kind: 'nurse', mode: 'idle', seed: 823, start: { x: 9, y: 14 } },
-    { id: 'if-by-p', kind: 'patient', mode: 'idle', seed: 824, start: { x: 13, y: 20 } },
+    { id: 'if-by-n', kind: 'nurse', mode: 'idle', seed: 823, start: { x: 9, y: 14 }, marker: 'quest', markerLabel: '외래 항생제 주입 안내', scenarioId: 'SCN-INFUSION-00007' },
+    { id: 'if-by-p', kind: 'patient', mode: 'idle', seed: 824, start: { x: 13, y: 20 }, marker: 'quest', markerLabel: '수액 보충 안내', scenarioId: 'SCN-INFUSION-00008' },
     // private
-    { id: 'if-pv-n', kind: 'nurse', mode: 'idle', seed: 825, start: { x: 22, y: 16 } },
+    { id: 'if-pv-n', kind: 'nurse', mode: 'idle', seed: 825, start: { x: 22, y: 16 }, marker: 'quest', markerLabel: '탈감작 요법 안내', scenarioId: 'SCN-INFUSION-00009' },
     // nourish
-    { id: 'if-no-v', kind: 'visitor', mode: 'idle', seed: 826, start: { x: 7, y: 35 } },
+    { id: 'if-no-v', kind: 'visitor', mode: 'idle', seed: 826, start: { x: 7, y: 35 }, marker: 'quest', markerLabel: '저혈당 대응', scenarioId: 'SCN-INFUSION-00010' },
     // station
-    { id: 'if-st-n', kind: 'nurse', mode: 'idle', seed: 827, start: { x: 18, y: 35 } },
-    { id: 'if-st-d', kind: 'doctor', mode: 'idle', seed: 828, start: { x: 21, y: 35 } },
+    { id: 'if-st-n', kind: 'nurse', mode: 'idle', seed: 827, start: { x: 18, y: 35 }, marker: 'quest', markerLabel: '소아 주사 공포 완화', scenarioId: 'SCN-INFUSION-00011' },
+    { id: 'if-st-d', kind: 'doctor', mode: 'idle', seed: 828, start: { x: 21, y: 35 }, marker: 'quest', markerLabel: '수혈 반응 관찰', scenarioId: 'SCN-INFUSION-00012' },
   ],
 };

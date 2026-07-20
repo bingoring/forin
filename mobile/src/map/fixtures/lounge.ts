@@ -97,23 +97,23 @@ export const LOUNGE_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-change', kind: 'quest', x: 3, y: 2, label: '근무복 환복', scenarioId: 'SCN-LOUNGE-00001' },
-    { id: 'hs-tidy', kind: 'info', x: 16, y: 2, label: '탈의·정리' },
-    { id: 'hs-rest', kind: 'info', x: 4, y: 20, label: '교대 휴식' },
-    { id: 'hs-meal', kind: 'quest', x: 16, y: 18, label: '배식·식사' },
+    { id: 'hs-tidy', kind: 'quest', x: 16, y: 2, label: '탈의·정리', scenarioId: 'SCN-LOUNGE-00002' },
+    { id: 'hs-rest', kind: 'quest', x: 4, y: 20, label: '교대 휴식', scenarioId: 'SCN-LOUNGE-00003' },
+    { id: 'hs-meal', kind: 'quest', x: 16, y: 18, label: '배식·식사', scenarioId: 'SCN-LOUNGE-00004' },
   ],
   npcs: [
     // lockerA
-    { id: 'lo-la-n', kind: 'nurse', mode: 'idle', seed: 1101, start: { x: 5, y: 6 } },
-    { id: 'lo-la-d', kind: 'doctor', mode: 'idle', seed: 1102, start: { x: 9, y: 11 } },
+    { id: 'lo-la-n', kind: 'nurse', mode: 'idle', seed: 1101, start: { x: 5, y: 6 }, marker: 'quest', markerLabel: '추가 근무 요청 조율', scenarioId: 'SCN-LOUNGE-00005' },
+    { id: 'lo-la-d', kind: 'doctor', mode: 'idle', seed: 1102, start: { x: 9, y: 11 }, marker: 'quest', markerLabel: '감사·격려 나누기', scenarioId: 'SCN-LOUNGE-00006' },
     // lockerB
-    { id: 'lo-lb-n1', kind: 'nurse', mode: 'idle', seed: 1103, start: { x: 17, y: 6 } },
-    { id: 'lo-lb-n2', kind: 'nurse', mode: 'idle', seed: 1104, start: { x: 22, y: 11 } },
+    { id: 'lo-lb-n1', kind: 'nurse', mode: 'idle', seed: 1103, start: { x: 17, y: 6 }, marker: 'quest', markerLabel: '번아웃 동료 대화', scenarioId: 'SCN-LOUNGE-00007' },
+    { id: 'lo-lb-n2', kind: 'nurse', mode: 'idle', seed: 1104, start: { x: 22, y: 11 }, marker: 'quest', markerLabel: '신규 오리엔테이션 안내', scenarioId: 'SCN-LOUNGE-00008' },
     // lounge
-    { id: 'lo-lo-n', kind: 'nurse', mode: 'idle', seed: 1105, start: { x: 4, y: 23 } },
-    { id: 'lo-lo-d', kind: 'doctor', mode: 'idle', seed: 1106, start: { x: 9, y: 34 } },
+    { id: 'lo-lo-n', kind: 'nurse', mode: 'idle', seed: 1105, start: { x: 4, y: 23 }, marker: 'quest', markerLabel: '문화 차이 소통', scenarioId: 'SCN-LOUNGE-00009' },
+    { id: 'lo-lo-d', kind: 'doctor', mode: 'idle', seed: 1106, start: { x: 9, y: 34 }, marker: 'quest', markerLabel: '점심 스몰토크', scenarioId: 'SCN-LOUNGE-00010' },
     // cafe
-    { id: 'lo-ca-n1', kind: 'nurse', mode: 'idle', seed: 1107, start: { x: 17, y: 20 } },
-    { id: 'lo-ca-d', kind: 'doctor', mode: 'idle', seed: 1108, start: { x: 22, y: 27 } },
+    { id: 'lo-ca-n1', kind: 'nurse', mode: 'idle', seed: 1107, start: { x: 17, y: 20 }, marker: 'quest', markerLabel: '병동 안전 회의 발언', scenarioId: 'SCN-LOUNGE-00011' },
+    { id: 'lo-ca-d', kind: 'doctor', mode: 'idle', seed: 1108, start: { x: 22, y: 27 }, marker: 'quest', markerLabel: '경력 개발 상담', scenarioId: 'SCN-LOUNGE-00012' },
     { id: 'lo-ca-n2', kind: 'nurse', mode: 'idle', seed: 1109, start: { x: 16, y: 34 } },
   ],
 };

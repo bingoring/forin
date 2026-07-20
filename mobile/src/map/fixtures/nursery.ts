@@ -106,23 +106,23 @@ export const NURSERY_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-hygiene', kind: 'quest', x: 3, y: 2, label: '손위생 3분·가운', scenarioId: 'SCN-NURSERY-00001' },
-    { id: 'hs-vitals', kind: 'quest', x: 2, y: 11, label: '신생아 활력징후' },
-    { id: 'hs-admit', kind: 'info', x: 20, y: 12, label: '입원 사정·계측' },
-    { id: 'hs-lactation', kind: 'info', x: 3, y: 31, label: '모유 수유 교육' },
-    { id: 'hs-family', kind: 'info', x: 16, y: 33, label: '가족 면회' },
+    { id: 'hs-vitals', kind: 'quest', x: 2, y: 11, label: '신생아 활력징후', scenarioId: 'SCN-NURSERY-00002' },
+    { id: 'hs-admit', kind: 'quest', x: 20, y: 12, label: '입원 사정·계측', scenarioId: 'SCN-NURSERY-00003' },
+    { id: 'hs-lactation', kind: 'quest', x: 3, y: 31, label: '모유 수유 교육', scenarioId: 'SCN-NURSERY-00004' },
+    { id: 'hs-family', kind: 'quest', x: 16, y: 33, label: '가족 면회', scenarioId: 'SCN-NURSERY-00005' },
   ],
   npcs: [
     // entry
-    { id: 'nu-en-n', kind: 'nurse', mode: 'idle', seed: 831, start: { x: 4, y: 5 } },
-    { id: 'nu-en-p', kind: 'parent', mode: 'idle', seed: 832, start: { x: 19, y: 5 } },
+    { id: 'nu-en-n', kind: 'nurse', mode: 'idle', seed: 831, start: { x: 4, y: 5 }, marker: 'quest', markerLabel: '신생아 퇴원 교육', scenarioId: 'SCN-NURSERY-00006' },
+    { id: 'nu-en-p', kind: 'parent', mode: 'idle', seed: 832, start: { x: 19, y: 5 }, marker: 'quest', markerLabel: '신생아 목욕 시연', scenarioId: 'SCN-NURSERY-00007' },
     // nursery
-    { id: 'nu-ns-n1', kind: 'nurse', mode: 'idle', seed: 833, start: { x: 5, y: 14 } },
-    { id: 'nu-ns-n2', kind: 'nurse', mode: 'idle', seed: 834, start: { x: 10, y: 19 } },
+    { id: 'nu-ns-n1', kind: 'nurse', mode: 'idle', seed: 833, start: { x: 5, y: 14 }, marker: 'quest', markerLabel: '신생아 수면 안전(SIDS) 교육', scenarioId: 'SCN-NURSERY-00008' },
+    { id: 'nu-ns-n2', kind: 'nurse', mode: 'idle', seed: 834, start: { x: 10, y: 19 }, marker: 'quest', markerLabel: '모유 저장·보관 교육', scenarioId: 'SCN-NURSERY-00009' },
     // admit
-    { id: 'nu-ad-n', kind: 'nurse', mode: 'idle', seed: 835, start: { x: 22, y: 16 } },
+    { id: 'nu-ad-n', kind: 'nurse', mode: 'idle', seed: 835, start: { x: 22, y: 16 }, marker: 'quest', markerLabel: '신생아 첫 예방접종 안내', scenarioId: 'SCN-NURSERY-00010' },
     // feeding
-    { id: 'nu-fd-p', kind: 'parent', mode: 'idle', seed: 836, start: { x: 3, y: 34 } },
-    { id: 'nu-fd-n', kind: 'nurse', mode: 'idle', seed: 837, start: { x: 8, y: 34 } },
+    { id: 'nu-fd-p', kind: 'parent', mode: 'idle', seed: 836, start: { x: 3, y: 34 }, marker: 'quest', markerLabel: '형제 적응 지지', scenarioId: 'SCN-NURSERY-00011' },
+    { id: 'nu-fd-n', kind: 'nurse', mode: 'idle', seed: 837, start: { x: 8, y: 34 }, marker: 'quest', markerLabel: '카시트 안전 교육', scenarioId: 'SCN-NURSERY-00012' },
     // viewing
     { id: 'nu-vw-v', kind: 'visitor', mode: 'idle', seed: 838, start: { x: 16, y: 35 } },
     { id: 'nu-vw-p', kind: 'parent', mode: 'idle', seed: 839, start: { x: 21, y: 35 } },

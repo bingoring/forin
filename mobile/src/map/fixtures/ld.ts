@@ -120,23 +120,23 @@ export const LD_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-contract', kind: 'quest', x: 3, y: 3, label: '자궁수축·태동 사정', scenarioId: 'SCN-LD-00001' },
-    { id: 'hs-epidural', kind: 'info', x: 15, y: 4, label: '무통 카트 점검' },
+    { id: 'hs-epidural', kind: 'quest', x: 15, y: 4, label: '무통 카트 점검', scenarioId: 'SCN-LD-00002' },
     { id: 'hs-imminent', kind: 'urgent', x: 11, y: 14, label: '분만 임박 콜' },
-    { id: 'hs-ctg', kind: 'quest', x: 3, y: 23, label: '태아 심박(CTG)' },
-    { id: 'hs-ldr2', kind: 'info', x: 12, y: 23, label: '분만 진행' },
-    { id: 'hs-apgar', kind: 'info', x: 21, y: 24, label: '아기 보온·아프가' },
-    { id: 'hs-breastfeed', kind: 'quest', x: 3, y: 38, label: '모유수유 교육' },
-    { id: 'hs-newborn', kind: 'info', x: 17, y: 38, label: '신생아 관찰·수유' },
+    { id: 'hs-ctg', kind: 'quest', x: 3, y: 23, label: '태아 심박(CTG)', scenarioId: 'SCN-LD-00003' },
+    { id: 'hs-ldr2', kind: 'quest', x: 12, y: 23, label: '분만 진행', scenarioId: 'SCN-LD-00004' },
+    { id: 'hs-apgar', kind: 'quest', x: 21, y: 24, label: '아기 보온·아프가', scenarioId: 'SCN-LD-00005' },
+    { id: 'hs-breastfeed', kind: 'quest', x: 3, y: 38, label: '모유수유 교육', scenarioId: 'SCN-LD-00006' },
+    { id: 'hs-newborn', kind: 'quest', x: 17, y: 38, label: '신생아 관찰·수유', scenarioId: 'SCN-LD-00007' },
   ],
   npcs: [
     // triage
-    { id: 'ld-tr-n', kind: 'nurse', mode: 'idle', seed: 861, start: { x: 4, y: 7 } },
-    { id: 'ld-tr-p', kind: 'patient', mode: 'idle', seed: 862, start: { x: 7, y: 7 } },
+    { id: 'ld-tr-n', kind: 'nurse', mode: 'idle', seed: 861, start: { x: 4, y: 7 }, marker: 'quest', markerLabel: '양막 파열 확인', scenarioId: 'SCN-LD-00008' },
+    { id: 'ld-tr-p', kind: 'patient', mode: 'idle', seed: 862, start: { x: 7, y: 7 }, marker: 'quest', markerLabel: '분만 호흡·이완 코칭', scenarioId: 'SCN-LD-00009' },
     // anes
-    { id: 'ld-an-d', kind: 'doctor', mode: 'idle', seed: 863, start: { x: 16, y: 7 } },
+    { id: 'ld-an-d', kind: 'doctor', mode: 'idle', seed: 863, start: { x: 16, y: 7 }, marker: 'quest', markerLabel: '산후우울 선별', scenarioId: 'SCN-LD-00010' },
     // station
-    { id: 'ld-st-n1', kind: 'nurse', mode: 'idle', seed: 864, start: { x: 11, y: 15 } },
-    { id: 'ld-st-d', kind: 'doctor', mode: 'idle', seed: 865, start: { x: 15, y: 15 } },
+    { id: 'ld-st-n1', kind: 'nurse', mode: 'idle', seed: 864, start: { x: 11, y: 15 }, marker: 'quest', markerLabel: '회음부 관리 교육', scenarioId: 'SCN-LD-00011' },
+    { id: 'ld-st-d', kind: 'doctor', mode: 'idle', seed: 865, start: { x: 15, y: 15 }, marker: 'quest', markerLabel: '임신성 고혈압 관찰', scenarioId: 'SCN-LD-00012' },
     { id: 'ld-st-n2', kind: 'nurse', mode: 'idle', seed: 866, start: { x: 5, y: 18 } },
     // ldr
     { id: 'ld-l1-n', kind: 'nurse', mode: 'idle', seed: 867, start: { x: 5, y: 31 } },

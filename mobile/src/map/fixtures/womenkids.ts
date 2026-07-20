@@ -100,22 +100,22 @@ export const WOMENKIDS_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-growth', kind: 'quest', x: 3, y: 3, label: '영유아 성장 계측', scenarioId: 'SCN-WOMENKIDS-00001' },
-    { id: 'hs-play', kind: 'info', x: 5, y: 15, label: '놀이·대기' },
-    { id: 'hs-pedexam', kind: 'quest', x: 16, y: 12, label: '소아 진찰·성장상담' },
-    { id: 'hs-antenatal', kind: 'quest', x: 3, y: 28, label: '산전 진찰·상담' },
-    { id: 'hs-usscan', kind: 'info', x: 17, y: 28, label: '태아 초음파' },
+    { id: 'hs-play', kind: 'quest', x: 5, y: 15, label: '놀이·대기', scenarioId: 'SCN-WOMENKIDS-00002' },
+    { id: 'hs-pedexam', kind: 'quest', x: 16, y: 12, label: '소아 진찰·성장상담', scenarioId: 'SCN-WOMENKIDS-00003' },
+    { id: 'hs-antenatal', kind: 'quest', x: 3, y: 28, label: '산전 진찰·상담', scenarioId: 'SCN-WOMENKIDS-00004' },
+    { id: 'hs-usscan', kind: 'quest', x: 17, y: 28, label: '태아 초음파', scenarioId: 'SCN-WOMENKIDS-00005' },
   ],
   npcs: [
     // lobby
-    { id: 'wk-lb-n', kind: 'nurse', mode: 'idle', seed: 841, start: { x: 4, y: 5 } },
-    { id: 'wk-lb-p', kind: 'parent', mode: 'idle', seed: 842, start: { x: 19, y: 6 } },
-    { id: 'wk-lb-c', kind: 'child', mode: 'idle', seed: 843, start: { x: 21, y: 6 } },
+    { id: 'wk-lb-n', kind: 'nurse', mode: 'idle', seed: 841, start: { x: 4, y: 5 }, marker: 'quest', markerLabel: '성장통 상담', scenarioId: 'SCN-WOMENKIDS-00006' },
+    { id: 'wk-lb-p', kind: 'parent', mode: 'idle', seed: 842, start: { x: 19, y: 6 }, marker: 'quest', markerLabel: '발달 지연 상담', scenarioId: 'SCN-WOMENKIDS-00007' },
+    { id: 'wk-lb-c', kind: 'child', mode: 'idle', seed: 843, start: { x: 21, y: 6 }, marker: 'quest', markerLabel: '야뇨증 상담', scenarioId: 'SCN-WOMENKIDS-00008' },
     // play
-    { id: 'wk-pl-c1', kind: 'child', mode: 'idle', seed: 844, start: { x: 4, y: 16 } },
-    { id: 'wk-pl-c2', kind: 'child', mode: 'idle', seed: 845, start: { x: 6, y: 19 } },
-    { id: 'wk-pl-p', kind: 'parent', mode: 'idle', seed: 846, start: { x: 9, y: 16 } },
+    { id: 'wk-pl-c1', kind: 'child', mode: 'idle', seed: 844, start: { x: 4, y: 16 }, marker: 'quest', markerLabel: '소아 비만 상담', scenarioId: 'SCN-WOMENKIDS-00009' },
+    { id: 'wk-pl-c2', kind: 'child', mode: 'idle', seed: 845, start: { x: 6, y: 19 }, marker: 'quest', markerLabel: '사춘기 건강 상담', scenarioId: 'SCN-WOMENKIDS-00010' },
+    { id: 'wk-pl-p', kind: 'parent', mode: 'idle', seed: 846, start: { x: 9, y: 16 }, marker: 'quest', markerLabel: 'ADHD 부모 상담', scenarioId: 'SCN-WOMENKIDS-00011' },
     // pedopd
-    { id: 'wk-pd-d', kind: 'doctor', mode: 'idle', seed: 847, start: { x: 17, y: 15 } },
+    { id: 'wk-pd-d', kind: 'doctor', mode: 'idle', seed: 847, start: { x: 17, y: 15 }, marker: 'quest', markerLabel: '식품 알레르기 관리', scenarioId: 'SCN-WOMENKIDS-00012' },
     { id: 'wk-pd-c', kind: 'child', mode: 'idle', seed: 848, start: { x: 19, y: 20 } },
     { id: 'wk-pd-p', kind: 'parent', mode: 'idle', seed: 849, start: { x: 21, y: 20 } },
     // obopd

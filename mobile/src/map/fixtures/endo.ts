@@ -97,23 +97,23 @@ export const ENDO_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-npo', kind: 'quest', x: 3, y: 3, label: '금식(NPO) 확인', scenarioId: 'SCN-ENDO-00001' },
-    { id: 'hs-sedation', kind: 'info', x: 3, y: 12, label: '진정 회복 관찰' },
-    { id: 'hs-aer', kind: 'info', x: 15, y: 13, label: '내시경 재처리(AER)' },
-    { id: 'hs-upper', kind: 'quest', x: 3, y: 31, label: '진정 모니터·스코프' },
-    { id: 'hs-colon', kind: 'info', x: 16, y: 31, label: '대장내시경 진행' },
+    { id: 'hs-sedation', kind: 'quest', x: 3, y: 12, label: '진정 회복 관찰', scenarioId: 'SCN-ENDO-00002' },
+    { id: 'hs-aer', kind: 'quest', x: 15, y: 13, label: '내시경 재처리(AER)', scenarioId: 'SCN-ENDO-00003' },
+    { id: 'hs-upper', kind: 'quest', x: 3, y: 31, label: '진정 모니터·스코프', scenarioId: 'SCN-ENDO-00004' },
+    { id: 'hs-colon', kind: 'quest', x: 16, y: 31, label: '대장내시경 진행', scenarioId: 'SCN-ENDO-00005' },
   ],
   npcs: [
     // checkin
-    { id: 'en-ck-n', kind: 'nurse', mode: 'idle', seed: 921, start: { x: 3, y: 4 } },
-    { id: 'en-ck-p', kind: 'patient', mode: 'idle', seed: 922, start: { x: 16, y: 7 } },
+    { id: 'en-ck-n', kind: 'nurse', mode: 'idle', seed: 921, start: { x: 3, y: 4 }, marker: 'quest', markerLabel: '진정 내시경 동의', scenarioId: 'SCN-ENDO-00006' },
+    { id: 'en-ck-p', kind: 'patient', mode: 'idle', seed: 922, start: { x: 16, y: 7 }, marker: 'quest', markerLabel: '캡슐내시경 안내', scenarioId: 'SCN-ENDO-00007' },
     // prep
-    { id: 'en-pr-n', kind: 'nurse', mode: 'idle', seed: 923, start: { x: 5, y: 15 } },
+    { id: 'en-pr-n', kind: 'nurse', mode: 'idle', seed: 923, start: { x: 5, y: 15 }, marker: 'quest', markerLabel: 'ERCP 시술 안내', scenarioId: 'SCN-ENDO-00008' },
     // reproc
-    { id: 'en-rp-n', kind: 'nurse', mode: 'idle', seed: 924, start: { x: 17, y: 22 } },
+    { id: 'en-rp-n', kind: 'nurse', mode: 'idle', seed: 924, start: { x: 17, y: 22 }, marker: 'quest', markerLabel: '시술 후 출혈 관찰', scenarioId: 'SCN-ENDO-00009' },
     // proc1
-    { id: 'en-p1-d', kind: 'doctor', mode: 'idle', seed: 925, start: { x: 6, y: 35 } },
-    { id: 'en-p1-n1', kind: 'nurse', mode: 'idle', seed: 926, start: { x: 9, y: 35 } },
-    { id: 'en-p1-n2', kind: 'nurse', mode: 'idle', seed: 927, start: { x: 3, y: 34 } },
+    { id: 'en-p1-d', kind: 'doctor', mode: 'idle', seed: 925, start: { x: 6, y: 35 }, marker: 'quest', markerLabel: '인후 불편 완화 안내', scenarioId: 'SCN-ENDO-00010' },
+    { id: 'en-p1-n1', kind: 'nurse', mode: 'idle', seed: 926, start: { x: 9, y: 35 }, marker: 'quest', markerLabel: '항응고제 중단 안내', scenarioId: 'SCN-ENDO-00011' },
+    { id: 'en-p1-n2', kind: 'nurse', mode: 'idle', seed: 927, start: { x: 3, y: 34 }, marker: 'quest', markerLabel: '추적 내시경 안내', scenarioId: 'SCN-ENDO-00012' },
     // proc2
     { id: 'en-p2-d', kind: 'doctor', mode: 'idle', seed: 928, start: { x: 19, y: 35 } },
     { id: 'en-p2-n', kind: 'nurse', mode: 'idle', seed: 929, start: { x: 16, y: 35 } },

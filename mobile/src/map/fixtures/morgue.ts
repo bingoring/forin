@@ -95,23 +95,23 @@ export const MORGUE_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-id', kind: 'quest', x: 3, y: 3, label: '고인 신원 확인', scenarioId: 'SCN-MORGUE-00001' },
-    { id: 'hs-label', kind: 'info', x: 3, y: 11, label: '안치·라벨 대조' },
-    { id: 'hs-autopsy', kind: 'quest', x: 16, y: 12, label: '검안·부검 기록' },
-    { id: 'hs-farewell', kind: 'info', x: 3, y: 29, label: '고별 참관' },
-    { id: 'hs-facility', kind: 'info', x: 16, y: 32, label: '설비 점검' },
+    { id: 'hs-label', kind: 'quest', x: 3, y: 11, label: '안치·라벨 대조', scenarioId: 'SCN-MORGUE-00002' },
+    { id: 'hs-autopsy', kind: 'quest', x: 16, y: 12, label: '검안·부검 기록', scenarioId: 'SCN-MORGUE-00003' },
+    { id: 'hs-farewell', kind: 'quest', x: 3, y: 29, label: '고별 참관', scenarioId: 'SCN-MORGUE-00004' },
+    { id: 'hs-facility', kind: 'quest', x: 16, y: 32, label: '설비 점검', scenarioId: 'SCN-MORGUE-00005' },
   ],
   npcs: [
     // reception
-    { id: 'mg-rc-d', kind: 'doctor', mode: 'idle', seed: 1131, start: { x: 4, y: 5 } },
-    { id: 'mg-rc-v', kind: 'visitor', mode: 'idle', seed: 1132, start: { x: 17, y: 5 } },
+    { id: 'mg-rc-d', kind: 'doctor', mode: 'idle', seed: 1131, start: { x: 4, y: 5 }, marker: 'quest', markerLabel: '종교적·문화적 요청 존중', scenarioId: 'SCN-MORGUE-00006' },
+    { id: 'mg-rc-v', kind: 'visitor', mode: 'idle', seed: 1132, start: { x: 17, y: 5 }, marker: 'quest', markerLabel: '시신 인계 확인', scenarioId: 'SCN-MORGUE-00007' },
     // cold
-    { id: 'mg-cd-n', kind: 'nurse', mode: 'idle', seed: 1133, start: { x: 6, y: 16 } },
+    { id: 'mg-cd-n', kind: 'nurse', mode: 'idle', seed: 1133, start: { x: 6, y: 16 }, marker: 'quest', markerLabel: '안치실 안내', scenarioId: 'SCN-MORGUE-00008' },
     // autopsy
-    { id: 'mg-au-d', kind: 'doctor', mode: 'idle', seed: 1134, start: { x: 17, y: 19 } },
-    { id: 'mg-au-n', kind: 'nurse', mode: 'idle', seed: 1135, start: { x: 20, y: 20 } },
+    { id: 'mg-au-d', kind: 'doctor', mode: 'idle', seed: 1134, start: { x: 17, y: 19 }, marker: 'quest', markerLabel: '검시(부검) 절차 설명', scenarioId: 'SCN-MORGUE-00009' },
+    { id: 'mg-au-n', kind: 'nurse', mode: 'idle', seed: 1135, start: { x: 20, y: 20 }, marker: 'quest', markerLabel: '소아 사망 유족 지지', scenarioId: 'SCN-MORGUE-00010' },
     // viewing
-    { id: 'mg-vw-v1', kind: 'visitor', mode: 'idle', seed: 1136, start: { x: 8, y: 31 } },
-    { id: 'mg-vw-v2', kind: 'visitor', mode: 'idle', seed: 1137, start: { x: 9, y: 33 } },
+    { id: 'mg-vw-v1', kind: 'visitor', mode: 'idle', seed: 1136, start: { x: 8, y: 31 }, marker: 'quest', markerLabel: '무연고 사망 처리 안내', scenarioId: 'SCN-MORGUE-00011' },
+    { id: 'mg-vw-v2', kind: 'visitor', mode: 'idle', seed: 1137, start: { x: 9, y: 33 }, marker: 'quest', markerLabel: '감염 시신 관리 안내', scenarioId: 'SCN-MORGUE-00012' },
     // mech
     { id: 'mg-mc-d', kind: 'doctor', mode: 'idle', seed: 1138, start: { x: 21, y: 34 } },
   ],

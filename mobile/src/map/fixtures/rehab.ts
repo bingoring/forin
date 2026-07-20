@@ -92,23 +92,23 @@ export const REHAB_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-eval', kind: 'quest', x: 4, y: 3, label: '초기 기능 평가', scenarioId: 'SCN-REHAB-00001' },
-    { id: 'hs-gait', kind: 'quest', x: 4, y: 13, label: '평행봉 보행 보조' },
-    { id: 'hs-manual', kind: 'info', x: 16, y: 13, label: '도수 치료·ROM' },
-    { id: 'hs-cardio', kind: 'info', x: 3, y: 31, label: '지구력 훈련' },
-    { id: 'hs-adl', kind: 'quest', x: 16, y: 30, label: '부엌 일상동작 훈련' },
+    { id: 'hs-gait', kind: 'quest', x: 4, y: 13, label: '평행봉 보행 보조', scenarioId: 'SCN-REHAB-00002' },
+    { id: 'hs-manual', kind: 'quest', x: 16, y: 13, label: '도수 치료·ROM', scenarioId: 'SCN-REHAB-00003' },
+    { id: 'hs-cardio', kind: 'quest', x: 3, y: 31, label: '지구력 훈련', scenarioId: 'SCN-REHAB-00004' },
+    { id: 'hs-adl', kind: 'quest', x: 16, y: 30, label: '부엌 일상동작 훈련', scenarioId: 'SCN-REHAB-00005' },
   ],
   npcs: [
     // reception
-    { id: 're-rc-d', kind: 'doctor', mode: 'idle', seed: 1061, start: { x: 4, y: 6 } },
-    { id: 're-rc-p', kind: 'patient', mode: 'idle', seed: 1062, start: { x: 7, y: 6 } },
+    { id: 're-rc-d', kind: 'doctor', mode: 'idle', seed: 1061, start: { x: 4, y: 6 }, marker: 'quest', markerLabel: '가정 복귀 평가', scenarioId: 'SCN-REHAB-00006' },
+    { id: 're-rc-p', kind: 'patient', mode: 'idle', seed: 1062, start: { x: 7, y: 6 }, marker: 'quest', markerLabel: '연하 재활 훈련', scenarioId: 'SCN-REHAB-00007' },
     // gait
-    { id: 're-ga-p', kind: 'patient', mode: 'idle', seed: 1063, start: { x: 5, y: 15 } },
-    { id: 're-ga-n', kind: 'nurse', mode: 'idle', seed: 1064, start: { x: 7, y: 16 } },
+    { id: 're-ga-p', kind: 'patient', mode: 'idle', seed: 1063, start: { x: 5, y: 15 }, marker: 'quest', markerLabel: '상지 재활 훈련', scenarioId: 'SCN-REHAB-00008' },
+    { id: 're-ga-n', kind: 'nurse', mode: 'idle', seed: 1064, start: { x: 7, y: 16 }, marker: 'quest', markerLabel: '재활 중 통증 관리', scenarioId: 'SCN-REHAB-00009' },
     // mat
-    { id: 're-ma-n', kind: 'nurse', mode: 'idle', seed: 1065, start: { x: 17, y: 16 } },
-    { id: 're-ma-p', kind: 'patient', mode: 'idle', seed: 1066, start: { x: 21, y: 22 } },
+    { id: 're-ma-n', kind: 'nurse', mode: 'idle', seed: 1065, start: { x: 17, y: 16 }, marker: 'quest', markerLabel: '보조기·의지 적응', scenarioId: 'SCN-REHAB-00010' },
+    { id: 're-ma-p', kind: 'patient', mode: 'idle', seed: 1066, start: { x: 21, y: 22 }, marker: 'quest', markerLabel: '재활 동기 지지', scenarioId: 'SCN-REHAB-00011' },
     // cardio
-    { id: 're-cd-p', kind: 'patient', mode: 'idle', seed: 1067, start: { x: 4, y: 35 } },
+    { id: 're-cd-p', kind: 'patient', mode: 'idle', seed: 1067, start: { x: 4, y: 35 }, marker: 'quest', markerLabel: '퇴원 운동 교육', scenarioId: 'SCN-REHAB-00012' },
     { id: 're-cd-n', kind: 'nurse', mode: 'idle', seed: 1068, start: { x: 9, y: 35 } },
     // adl
     { id: 're-ad-n', kind: 'nurse', mode: 'idle', seed: 1069, start: { x: 17, y: 33 } },

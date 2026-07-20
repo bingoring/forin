@@ -96,24 +96,24 @@ export const GERI_INTERIOR: Interior = {
     { id: 'o-b-plant', type: 'iplant', x: 25, y: 42 },
   ],
   hotspots: [
-    { id: 'hs-orient', kind: 'info', x: 3, y: 3, label: '현실 인식 (날짜·계절)' },
-    { id: 'hs-fall', kind: 'info', x: 6, y: 15, label: '배회·낙상 관찰' },
-    { id: 'hs-reminis', kind: 'info', x: 16, y: 14, label: '추억 회상 요법' },
+    { id: 'hs-orient', kind: 'quest', x: 3, y: 3, label: '현실 인식 (날짜·계절)', scenarioId: 'SCN-GERI-00002' },
+    { id: 'hs-fall', kind: 'quest', x: 6, y: 15, label: '배회·낙상 관찰', scenarioId: 'SCN-GERI-00003' },
+    { id: 'hs-reminis', kind: 'quest', x: 16, y: 14, label: '추억 회상 요법', scenarioId: 'SCN-GERI-00004' },
     { id: 'hs-lowbed', kind: 'quest', x: 4, y: 27, label: '초저상 낙상 사정', scenarioId: 'SCN-GERI-00001' },
-    { id: 'hs-night', kind: 'info', x: 17, y: 27, label: '야간 배회 관찰' },
+    { id: 'hs-night', kind: 'quest', x: 17, y: 27, label: '야간 배회 관찰', scenarioId: 'SCN-GERI-00005' },
   ],
   npcs: [
     // day common
-    { id: 'ge-dc-p1', kind: 'patient', mode: 'idle', seed: 1021, start: { x: 13, y: 7 } },
-    { id: 'ge-dc-p2', kind: 'patient', mode: 'idle', seed: 1022, start: { x: 19, y: 7 } },
+    { id: 'ge-dc-p1', kind: 'patient', mode: 'idle', seed: 1021, start: { x: 13, y: 7 }, marker: 'quest', markerLabel: '요실금 관리 교육', scenarioId: 'SCN-GERI-00006' },
+    { id: 'ge-dc-p2', kind: 'patient', mode: 'idle', seed: 1022, start: { x: 19, y: 7 }, marker: 'quest', markerLabel: '낙상 후 평가', scenarioId: 'SCN-GERI-00007' },
     // station
-    { id: 'ge-st-n', kind: 'nurse', mode: 'idle', seed: 1023, start: { x: 6, y: 16 } },
-    { id: 'ge-st-d', kind: 'doctor', mode: 'idle', seed: 1024, start: { x: 9, y: 19 } },
+    { id: 'ge-st-n', kind: 'nurse', mode: 'idle', seed: 1023, start: { x: 6, y: 16 }, marker: 'quest', markerLabel: '노인 우울 선별', scenarioId: 'SCN-GERI-00008' },
+    { id: 'ge-st-d', kind: 'doctor', mode: 'idle', seed: 1024, start: { x: 9, y: 19 }, marker: 'quest', markerLabel: '난청 환자 소통', scenarioId: 'SCN-GERI-00009' },
     // reminis
-    { id: 'ge-rm-p', kind: 'patient', mode: 'idle', seed: 1025, start: { x: 17, y: 19 } },
-    { id: 'ge-rm-v', kind: 'visitor', mode: 'idle', seed: 1026, start: { x: 20, y: 19 } },
+    { id: 'ge-rm-p', kind: 'patient', mode: 'idle', seed: 1025, start: { x: 17, y: 19 }, marker: 'quest', markerLabel: '보호자 소진 지지', scenarioId: 'SCN-GERI-00010' },
+    { id: 'ge-rm-v', kind: 'visitor', mode: 'idle', seed: 1026, start: { x: 20, y: 19 }, marker: 'quest', markerLabel: '재택 안전 교육', scenarioId: 'SCN-GERI-00011' },
     // room A
-    { id: 'ge-a-n', kind: 'nurse', mode: 'idle', seed: 1027, start: { x: 7, y: 33 } },
+    { id: 'ge-a-n', kind: 'nurse', mode: 'idle', seed: 1027, start: { x: 7, y: 33 }, marker: 'quest', markerLabel: '치료 방향(연명) 논의', scenarioId: 'SCN-GERI-00012' },
     { id: 'ge-a-p', kind: 'patient', mode: 'idle', seed: 1028, start: { x: 10, y: 40 } },
     // room B
     { id: 'ge-b-n', kind: 'nurse', mode: 'idle', seed: 1029, start: { x: 20, y: 33 } },

@@ -95,24 +95,24 @@ export const PSYCH_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-contraband', kind: 'quest', x: 4, y: 3, label: '반입 금지품 확인', scenarioId: 'SCN-PSYCH-00001' },
-    { id: 'hs-observe', kind: 'info', x: 6, y: 15, label: '상시 관찰·라운드' },
-    { id: 'hs-group', kind: 'info', x: 16, y: 12, label: '집단 치료 프로그램' },
-    { id: 'hs-oneone', kind: 'info', x: 3, y: 27, label: '1:1 관찰' },
+    { id: 'hs-observe', kind: 'quest', x: 6, y: 15, label: '상시 관찰·라운드', scenarioId: 'SCN-PSYCH-00002' },
+    { id: 'hs-group', kind: 'quest', x: 16, y: 12, label: '집단 치료 프로그램', scenarioId: 'SCN-PSYCH-00003' },
+    { id: 'hs-oneone', kind: 'quest', x: 3, y: 27, label: '1:1 관찰', scenarioId: 'SCN-PSYCH-00004' },
     { id: 'hs-cctv', kind: 'urgent', x: 16, y: 28, label: 'CCTV 상시 관찰' },
   ],
   npcs: [
     // sally
-    { id: 'ps-sl-n', kind: 'nurse', mode: 'idle', seed: 1041, start: { x: 5, y: 5 } },
-    { id: 'ps-sl-p', kind: 'patient', mode: 'idle', seed: 1042, start: { x: 17, y: 5 } },
+    { id: 'ps-sl-n', kind: 'nurse', mode: 'idle', seed: 1041, start: { x: 5, y: 5 }, marker: 'quest', markerLabel: '집단치료 안내', scenarioId: 'SCN-PSYCH-00005' },
+    { id: 'ps-sl-p', kind: 'patient', mode: 'idle', seed: 1042, start: { x: 17, y: 5 }, marker: 'quest', markerLabel: '퇴원 계획 상담', scenarioId: 'SCN-PSYCH-00006' },
     // station
-    { id: 'ps-st-n', kind: 'nurse', mode: 'idle', seed: 1043, start: { x: 6, y: 16 } },
-    { id: 'ps-st-d', kind: 'doctor', mode: 'idle', seed: 1044, start: { x: 9, y: 19 } },
+    { id: 'ps-st-n', kind: 'nurse', mode: 'idle', seed: 1043, start: { x: 6, y: 16 }, marker: 'quest', markerLabel: '조증 환자 대응', scenarioId: 'SCN-PSYCH-00007' },
+    { id: 'ps-st-d', kind: 'doctor', mode: 'idle', seed: 1044, start: { x: 9, y: 19 }, marker: 'quest', markerLabel: '환청 환자 대응', scenarioId: 'SCN-PSYCH-00008' },
     // dayroom
-    { id: 'ps-dr-p', kind: 'patient', mode: 'idle', seed: 1045, start: { x: 18, y: 13 } },
-    { id: 'ps-dr-n', kind: 'nurse', mode: 'idle', seed: 1046, start: { x: 22, y: 18 } },
+    { id: 'ps-dr-p', kind: 'patient', mode: 'idle', seed: 1045, start: { x: 18, y: 13 }, marker: 'quest', markerLabel: '자해 상처 관리', scenarioId: 'SCN-PSYCH-00009' },
+    { id: 'ps-dr-n', kind: 'nurse', mode: 'idle', seed: 1046, start: { x: 22, y: 18 }, marker: 'quest', markerLabel: '강박 증상 지지', scenarioId: 'SCN-PSYCH-00010' },
     // rooms
-    { id: 'ps-rm-n', kind: 'nurse', mode: 'idle', seed: 1047, start: { x: 6, y: 33 } },
-    { id: 'ps-rm-p', kind: 'patient', mode: 'idle', seed: 1048, start: { x: 10, y: 31 } },
+    { id: 'ps-rm-n', kind: 'nurse', mode: 'idle', seed: 1047, start: { x: 6, y: 33 }, marker: 'quest', markerLabel: '섭식장애 식사 지지', scenarioId: 'SCN-PSYCH-00011' },
+    { id: 'ps-rm-p', kind: 'patient', mode: 'idle', seed: 1048, start: { x: 10, y: 31 }, marker: 'quest', markerLabel: '가족 심리교육', scenarioId: 'SCN-PSYCH-00012' },
     // seclusion
     { id: 'ps-sc-p', kind: 'patient', mode: 'idle', seed: 1049, start: { x: 17, y: 32 } },
     { id: 'ps-sc-n', kind: 'nurse', mode: 'idle', seed: 1050, start: { x: 22, y: 38 } },

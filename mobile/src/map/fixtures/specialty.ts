@@ -102,23 +102,23 @@ export const SPECIALTY_INTERIOR: Interior = {
     { id: 'o-nu-plant', type: 'iplant', x: 25, y: 39 },
   ],
   hotspots: [
-    { id: 'hs-recep', kind: 'info', x: 3, y: 3, label: '전문외래 접수' },
+    { id: 'hs-recep', kind: 'quest', x: 3, y: 3, label: '전문외래 접수', scenarioId: 'SCN-SPECIALTY-00002' },
     { id: 'hs-slit', kind: 'quest', x: 3, y: 15, label: '세극등 검사 준비', scenarioId: 'SCN-SPECIALTY-00001' },
-    { id: 'hs-ent', kind: 'info', x: 15, y: 14, label: '내시경 이경 처치' },
-    { id: 'hs-bladder', kind: 'info', x: 3, y: 27, label: '방광 초음파' },
-    { id: 'hs-neuro', kind: 'quest', x: 16, y: 27, label: '신경학적 사정 (GCS·반사)' },
+    { id: 'hs-ent', kind: 'quest', x: 15, y: 14, label: '내시경 이경 처치', scenarioId: 'SCN-SPECIALTY-00003' },
+    { id: 'hs-bladder', kind: 'quest', x: 3, y: 27, label: '방광 초음파', scenarioId: 'SCN-SPECIALTY-00004' },
+    { id: 'hs-neuro', kind: 'quest', x: 16, y: 27, label: '신경학적 사정 (GCS·반사)', scenarioId: 'SCN-SPECIALTY-00005' },
   ],
   npcs: [
     // checkin
-    { id: 'sp-ck-n', kind: 'nurse', mode: 'idle', seed: 961, start: { x: 3, y: 6 } },
-    { id: 'sp-ck-p', kind: 'patient', mode: 'idle', seed: 962, start: { x: 14, y: 7 } },
-    { id: 'sp-ck-v', kind: 'visitor', mode: 'idle', seed: 963, start: { x: 20, y: 7 } },
+    { id: 'sp-ck-n', kind: 'nurse', mode: 'idle', seed: 961, start: { x: 3, y: 6 }, marker: 'quest', markerLabel: '어지럼 검사 안내', scenarioId: 'SCN-SPECIALTY-00006' },
+    { id: 'sp-ck-p', kind: 'patient', mode: 'idle', seed: 962, start: { x: 14, y: 7 }, marker: 'quest', markerLabel: '백내장 수술 전 안내', scenarioId: 'SCN-SPECIALTY-00007' },
+    { id: 'sp-ck-v', kind: 'visitor', mode: 'idle', seed: 963, start: { x: 20, y: 7 }, marker: 'quest', markerLabel: '코피 지혈 안내', scenarioId: 'SCN-SPECIALTY-00008' },
     // eye
-    { id: 'sp-ey-d', kind: 'doctor', mode: 'idle', seed: 964, start: { x: 2, y: 19 } },
-    { id: 'sp-ey-p', kind: 'patient', mode: 'idle', seed: 965, start: { x: 4, y: 20 } },
+    { id: 'sp-ey-d', kind: 'doctor', mode: 'idle', seed: 964, start: { x: 2, y: 19 }, marker: 'quest', markerLabel: '귀 이물 제거 안내', scenarioId: 'SCN-SPECIALTY-00009' },
+    { id: 'sp-ey-p', kind: 'patient', mode: 'idle', seed: 965, start: { x: 4, y: 20 }, marker: 'quest', markerLabel: '알레르기 비염 관리 교육', scenarioId: 'SCN-SPECIALTY-00010' },
     // ent
-    { id: 'sp-en-d', kind: 'doctor', mode: 'idle', seed: 966, start: { x: 16, y: 20 } },
-    { id: 'sp-en-p', kind: 'patient', mode: 'idle', seed: 967, start: { x: 19, y: 19 } },
+    { id: 'sp-en-d', kind: 'doctor', mode: 'idle', seed: 966, start: { x: 16, y: 20 }, marker: 'quest', markerLabel: '시야검사 안내', scenarioId: 'SCN-SPECIALTY-00011' },
+    { id: 'sp-en-p', kind: 'patient', mode: 'idle', seed: 967, start: { x: 19, y: 19 }, marker: 'quest', markerLabel: '콘택트렌즈 관리 교육', scenarioId: 'SCN-SPECIALTY-00012' },
     // uro
     { id: 'sp-ur-d', kind: 'doctor', mode: 'idle', seed: 968, start: { x: 4, y: 39 } },
     { id: 'sp-ur-p', kind: 'patient', mode: 'idle', seed: 969, start: { x: 7, y: 38 } },

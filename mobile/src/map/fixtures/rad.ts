@@ -102,23 +102,23 @@ export const RAD_INTERIOR: Interior = {
     { id: 'o-xr-plant', type: 'iplant', x: 25, y: 45 },
   ],
   hotspots: [
-    { id: 'hs-checkin', kind: 'info', x: 3, y: 3, label: '검사 접수' },
-    { id: 'hs-read', kind: 'quest', x: 16, y: 4, label: '영상 판독 (Read)' },
-    { id: 'hs-guide', kind: 'info', x: 9, y: 13, label: '검사 안내' },
+    { id: 'hs-checkin', kind: 'quest', x: 3, y: 3, label: '검사 접수', scenarioId: 'SCN-RAD-00002' },
+    { id: 'hs-read', kind: 'quest', x: 16, y: 4, label: '영상 판독 (Read)', scenarioId: 'SCN-RAD-00003' },
+    { id: 'hs-guide', kind: 'quest', x: 9, y: 13, label: '검사 안내', scenarioId: 'SCN-RAD-00004' },
     { id: 'hs-ct', kind: 'quest', x: 3, y: 22, label: '조영제·포지셔닝', scenarioId: 'SCN-RAD-00001' },
-    { id: 'hs-mri', kind: 'info', x: 15, y: 22, label: '금속 반입 금지' },
-    { id: 'hs-xray', kind: 'quest', x: 5, y: 34, label: '흉부 촬영 포지셔닝' },
+    { id: 'hs-mri', kind: 'quest', x: 15, y: 22, label: '금속 반입 금지', scenarioId: 'SCN-RAD-00005' },
+    { id: 'hs-xray', kind: 'quest', x: 5, y: 34, label: '흉부 촬영 포지셔닝', scenarioId: 'SCN-RAD-00006' },
   ],
   npcs: [
     // checkin
-    { id: 'rd-ck-n', kind: 'nurse', mode: 'idle', seed: 901, start: { x: 3, y: 4 } },
-    { id: 'rd-ck-p', kind: 'patient', mode: 'idle', seed: 902, start: { x: 5, y: 8 } },
+    { id: 'rd-ck-n', kind: 'nurse', mode: 'idle', seed: 901, start: { x: 3, y: 4 }, marker: 'quest', markerLabel: '유방촬영(맘모) 안내', scenarioId: 'SCN-RAD-00007' },
+    { id: 'rd-ck-p', kind: 'patient', mode: 'idle', seed: 902, start: { x: 5, y: 8 }, marker: 'quest', markerLabel: 'PET-CT 안내', scenarioId: 'SCN-RAD-00008' },
     // reading
-    { id: 'rd-rd-d1', kind: 'doctor', mode: 'idle', seed: 903, start: { x: 16, y: 7 } },
-    { id: 'rd-rd-d2', kind: 'doctor', mode: 'idle', seed: 904, start: { x: 21, y: 7 } },
+    { id: 'rd-rd-d1', kind: 'doctor', mode: 'idle', seed: 903, start: { x: 16, y: 7 }, marker: 'quest', markerLabel: '소아 촬영 협조 유도', scenarioId: 'SCN-RAD-00009' },
+    { id: 'rd-rd-d2', kind: 'doctor', mode: 'idle', seed: 904, start: { x: 21, y: 7 }, marker: 'quest', markerLabel: '조영제 전 신기능 확인', scenarioId: 'SCN-RAD-00010' },
     // hall
-    { id: 'rd-hl-n', kind: 'nurse', mode: 'idle', seed: 905, start: { x: 9, y: 14 } },
-    { id: 'rd-hl-p', kind: 'patient', mode: 'idle', seed: 906, start: { x: 13, y: 14 } },
+    { id: 'rd-hl-n', kind: 'nurse', mode: 'idle', seed: 905, start: { x: 9, y: 14 }, marker: 'quest', markerLabel: 'MRI 중 움직임·불편 대응', scenarioId: 'SCN-RAD-00011' },
+    { id: 'rd-hl-p', kind: 'patient', mode: 'idle', seed: 906, start: { x: 13, y: 14 }, marker: 'quest', markerLabel: '영상 판독 결과 안내', scenarioId: 'SCN-RAD-00012' },
     // ct
     { id: 'rd-ct-d', kind: 'doctor', mode: 'idle', seed: 907, start: { x: 9, y: 26 } },
     // mri

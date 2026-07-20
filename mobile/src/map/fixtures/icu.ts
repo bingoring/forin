@@ -69,7 +69,7 @@ export const ICU_INTERIOR: Interior = {
 
     // ════════ ROOM 1 · 인공호흡 ════════
     { id: 'bl-r1', type: 'baylabel', x: 1, y: 1, props: { text: 'ROOM 1 · 인공호흡', highlight: true } },
-    { id: 'o-r1-bed', type: 'ibed', x: 2, y: 3, props: { variant: 'ward', occupied: true } },
+    { id: 'o-r1-bed', type: 'ibed', x: 2, y: 3, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: 'ICU 섬망 대응', scenarioId: 'SCN-ICU-00009' } },
     { id: 'o-r1-vent', type: 'ventilator', x: 1, y: 8 },
     { id: 'o-r1-tower', type: 'ivpumptower', x: 5, y: 6 },
     { id: 'o-r1-mon', type: 'imonitor', x: 4, y: 2, props: { beep: true } },
@@ -77,19 +77,19 @@ export const ICU_INTERIOR: Interior = {
     { id: 'o-r1-foley', type: 'foleybag', x: 2, y: 11 },
     // ════════ ROOM 2 · CRRT ════════
     { id: 'bl-r2', type: 'baylabel', x: 9, y: 1, props: { text: 'ROOM 2 · CRRT' } },
-    { id: 'o-r2-bed', type: 'ibed', x: 10, y: 3, props: { variant: 'ward', occupied: true } },
+    { id: 'o-r2-bed', type: 'ibed', x: 10, y: 3, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: '욕창 예방 체위변경', scenarioId: 'SCN-ICU-00010' } },
     { id: 'o-r2-mon', type: 'imonitor', x: 12, y: 2, props: { beep: true } },
     { id: 'o-r2-iv', type: 'iiv', x: 12, y: 4 },
     { id: 'o-r2-crrt', type: 'crrt', x: 13, y: 7 },
     // ════════ ROOM 3 · 뇌압/EVD ════════
     { id: 'bl-r3', type: 'baylabel', x: 17, y: 1, props: { text: 'ROOM 3 · 뇌압/EVD' } },
-    { id: 'o-r3-bed', type: 'ibed', x: 18, y: 3, props: { variant: 'ward', occupied: true } },
+    { id: 'o-r3-bed', type: 'ibed', x: 18, y: 3, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: '중심정맥관 삽입 보조', scenarioId: 'SCN-ICU-00011' } },
     { id: 'o-r3-mon', type: 'imonitor', x: 20, y: 2, props: { beep: true } },
     { id: 'o-r3-evd', type: 'evdstand', x: 21, y: 6 },
     { id: 'o-r3-icp', type: 'icpmonitor', x: 22, y: 10 },
     // ════════ ROOM 4 · TTM ════════
     { id: 'bl-r4', type: 'baylabel', x: 25, y: 1, props: { text: 'ROOM 4 · TTM' } },
-    { id: 'o-r4-bed', type: 'ibed', x: 26, y: 3, props: { variant: 'ward', occupied: true } },
+    { id: 'o-r4-bed', type: 'ibed', x: 26, y: 3, props: { variant: 'ward', occupied: true, marker: 'quest', markerLabel: '코드블루 대응', scenarioId: 'SCN-ICU-00012' } },
     { id: 'o-r4-mon', type: 'imonitor', x: 28, y: 2, props: { beep: true } },
     { id: 'o-r4-ttm', type: 'ttmunit', x: 29, y: 7 },
 
@@ -137,17 +137,17 @@ export const ICU_INTERIOR: Interior = {
   npcs: [
     // room nurses (markers = the room task)
     { id: 'icu-r1-n', kind: 'nurse', mode: 'idle', seed: 201, start: { x: 4, y: 11 }, marker: 'quest', markerLabel: '승압제 적정', scenarioId: 'SCN-ICU-00001' },
-    { id: 'icu-r2-n', kind: 'nurse', mode: 'idle', seed: 202, start: { x: 10, y: 11 }, marker: 'info', markerLabel: '필터 압력' },
+    { id: 'icu-r2-n', kind: 'nurse', mode: 'idle', seed: 202, start: { x: 10, y: 11 }, marker: 'quest', markerLabel: '임종 임박 소통', scenarioId: 'SCN-ICU-00013' },
     { id: 'icu-r3-n', kind: 'nurse', mode: 'idle', seed: 203, start: { x: 18, y: 11 }, marker: 'quest', markerLabel: '동공·GCS 사정', scenarioId: 'SCN-ICU-00004' },
-    { id: 'icu-r4-n', kind: 'nurse', mode: 'idle', seed: 204, start: { x: 26, y: 11 }, marker: 'info', markerLabel: '떨림 감시' },
+    { id: 'icu-r4-n', kind: 'nurse', mode: 'idle', seed: 204, start: { x: 26, y: 11 }, marker: 'quest', markerLabel: '인공호흡기 이탈', scenarioId: 'SCN-ICU-00014' },
     // central hub team
     { id: 'icu-hub-n1', kind: 'nurse', mode: 'idle', seed: 205, start: { x: 8, y: 25 }, marker: 'quest', markerLabel: 'SBAR / ABGA', scenarioId: 'SCN-ICU-00005' },
-    { id: 'icu-hub-d1', kind: 'doctor', mode: 'idle', seed: 206, start: { x: 13, y: 25 } },
+    { id: 'icu-hub-d1', kind: 'doctor', mode: 'idle', seed: 206, start: { x: 13, y: 25 }, marker: 'quest', markerLabel: '인공호흡기 환자 소통', scenarioId: 'SCN-ICU-00006' },
     { id: 'icu-hub-d2', kind: 'doctor', mode: 'idle', seed: 207, start: { x: 18, y: 25 }, marker: 'info', markerLabel: 'RT · VENT 설정' },
-    { id: 'icu-hub-n2', kind: 'nurse', mode: 'idle', seed: 208, start: { x: 22, y: 25 } },
+    { id: 'icu-hub-n2', kind: 'nurse', mode: 'idle', seed: 208, start: { x: 22, y: 25 }, marker: 'quest', markerLabel: '진정 관리 설명', scenarioId: 'SCN-ICU-00007' },
     // family
     { id: 'icu-fam-v1', kind: 'visitor', mode: 'idle', seed: 209, start: { x: 6, y: 37 }, marker: 'info', markerLabel: '면회 대기', scenarioId: 'SCN-ICU-00002' },
-    { id: 'icu-fam-v2', kind: 'visitor', mode: 'idle', seed: 210, start: { x: 9, y: 40 } },
+    { id: 'icu-fam-v2', kind: 'visitor', mode: 'idle', seed: 210, start: { x: 9, y: 40 }, marker: 'quest', markerLabel: '패혈증 상태 설명', scenarioId: 'SCN-ICU-00008' },
     // med
     { id: 'icu-med-n', kind: 'nurse', mode: 'idle', seed: 211, start: { x: 26, y: 40 }, marker: 'quest', markerLabel: '투약 준비' },
   ],

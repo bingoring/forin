@@ -48,7 +48,7 @@ export const DIAL_INTERIOR: Interior = {
 
     // ════════ 접수 · 체중 측정 (checkin, y1-8) ════════
     { id: 'bl-ck', type: 'baylabel', x: 1, y: 1, props: { text: 'DIALYSIS CHECK-IN · 체중' } },
-    { id: 'o-ck-recep', type: 'ireception', x: 2, y: 3, props: { w: 4, h: 1, label: '접수' } },
+    { id: 'o-ck-recep', type: 'ireception', x: 2, y: 3, props: { w: 4, h: 1, label: '접수', marker: 'quest', markerLabel: '만성질환 정서 지지', scenarioId: 'SCN-DIAL-00012' } },
     { id: 'o-ck-scale', type: 'stadiometer', x: 7, y: 2 },
     { id: 'o-ck-mon', type: 'imonitor', x: 9, y: 2 },
     { id: 'o-ck-c1', type: 'ichair', x: 16, y: 6, props: { color: '#BAE6FD', facing: 'up' } },
@@ -88,21 +88,21 @@ export const DIAL_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-weigh', kind: 'quest', x: 7, y: 3, label: '투석 전 체중 측정', scenarioId: 'SCN-DIAL-00001' },
-    { id: 'hs-avf', kind: 'quest', x: 3, y: 20, label: '바이탈·천자(AVF) 확인' },
-    { id: 'hs-rowater', kind: 'info', x: 3, y: 38, label: '역삼투 수질 점검' },
-    { id: 'hs-iso', kind: 'info', x: 15, y: 37, label: '전용 격리 투석' },
+    { id: 'hs-avf', kind: 'quest', x: 3, y: 20, label: '바이탈·천자(AVF) 확인', scenarioId: 'SCN-DIAL-00002' },
+    { id: 'hs-rowater', kind: 'quest', x: 3, y: 38, label: '역삼투 수질 점검', scenarioId: 'SCN-DIAL-00003' },
+    { id: 'hs-iso', kind: 'quest', x: 15, y: 37, label: '전용 격리 투석', scenarioId: 'SCN-DIAL-00004' },
   ],
   npcs: [
     // checkin
-    { id: 'di-ck-n', kind: 'nurse', mode: 'idle', seed: 941, start: { x: 3, y: 4 } },
-    { id: 'di-ck-p', kind: 'patient', mode: 'idle', seed: 942, start: { x: 8, y: 5 } },
+    { id: 'di-ck-n', kind: 'nurse', mode: 'idle', seed: 941, start: { x: 3, y: 4 }, marker: 'quest', markerLabel: '투석 환자 식이 상담', scenarioId: 'SCN-DIAL-00005' },
+    { id: 'di-ck-p', kind: 'patient', mode: 'idle', seed: 942, start: { x: 8, y: 5 }, marker: 'quest', markerLabel: '응급 투석 안내', scenarioId: 'SCN-DIAL-00006' },
     // floor
-    { id: 'di-fl-n1', kind: 'nurse', mode: 'idle', seed: 943, start: { x: 13, y: 19 } },
-    { id: 'di-fl-n2', kind: 'nurse', mode: 'idle', seed: 944, start: { x: 5, y: 17 } },
-    { id: 'di-fl-d', kind: 'doctor', mode: 'idle', seed: 945, start: { x: 19, y: 24 } },
+    { id: 'di-fl-n1', kind: 'nurse', mode: 'idle', seed: 943, start: { x: 13, y: 19 }, marker: 'quest', markerLabel: '투석 카테터 감염 관찰', scenarioId: 'SCN-DIAL-00007' },
+    { id: 'di-fl-n2', kind: 'nurse', mode: 'idle', seed: 944, start: { x: 5, y: 17 }, marker: 'quest', markerLabel: '투석 중 근경련 대응', scenarioId: 'SCN-DIAL-00008' },
+    { id: 'di-fl-d', kind: 'doctor', mode: 'idle', seed: 945, start: { x: 19, y: 24 }, marker: 'quest', markerLabel: '신장이식 대기 상담', scenarioId: 'SCN-DIAL-00009' },
     // water
-    { id: 'di-wt-d', kind: 'doctor', mode: 'idle', seed: 946, start: { x: 6, y: 41 } },
+    { id: 'di-wt-d', kind: 'doctor', mode: 'idle', seed: 946, start: { x: 6, y: 41 }, marker: 'quest', markerLabel: '빈혈 관리(EPO) 교육', scenarioId: 'SCN-DIAL-00010' },
     // iso
-    { id: 'di-is-n', kind: 'nurse', mode: 'idle', seed: 947, start: { x: 17, y: 41 } },
+    { id: 'di-is-n', kind: 'nurse', mode: 'idle', seed: 947, start: { x: 17, y: 41 }, marker: 'quest', markerLabel: '인결합제 복약 교육', scenarioId: 'SCN-DIAL-00011' },
   ],
 };

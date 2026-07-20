@@ -81,13 +81,13 @@ export const PHARMA_INTERIOR: Interior = {
 
     // ════════ 일반 약품 조제실 (dispense, y13-40) ════════
     { id: 'bl-disp', type: 'baylabel', x: 1, y: 13, props: { text: 'MAIN DISPENSING' } },
-    { id: 'o-d-atc', type: 'atcmachine', x: 2, y: 16, props: { w: 2, h: 2, marker: 'info', markerLabel: '자동 조제 (ATC)' } },
+    { id: 'o-d-atc', type: 'atcmachine', x: 2, y: 16, props: { w: 2, h: 2, marker: 'quest', markerLabel: '약물 조정', scenarioId: 'SCN-PHARMA-00013' } },
     { id: 'o-d-lasa', type: 'lasashelf', x: 8, y: 15, props: { w: 3, h: 1 } },
     { id: 'o-d-cabA', type: 'icabinet', x: 14, y: 14, props: { w: 3, h: 1, variant: 'pharma' } },
     { id: 'o-d-cabB', type: 'icabinet', x: 17, y: 14, props: { w: 3, h: 1, variant: 'pharma' } },
     { id: 'sl-A', type: 'shelflabel', x: 14, y: 14, props: { text: 'A · ANTIBIOTICS' } },
     { id: 'sl-B', type: 'shelflabel', x: 17, y: 14, props: { text: 'B · CARDIAC' } },
-    { id: 'o-d-verify', type: 'ireception', x: 13, y: 19, props: { w: 4, h: 1, label: '검수대 · DOUBLE-CHECK', marker: 'quest', markerLabel: '처방 더블체크' } },
+    { id: 'o-d-verify', type: 'ireception', x: 13, y: 19, props: { w: 4, h: 1, label: '검수대 · DOUBLE-CHECK', marker: 'quest', markerLabel: '오피오이드 안전 상담', scenarioId: 'SCN-PHARMA-00012' } },
     { id: 'o-d-mon', type: 'imonitor', x: 18, y: 19 },
     { id: 'o-d-cart', type: 'medcart', x: 9, y: 23, props: { w: 2, h: 1 } },
     { id: 'o-d-cabC', type: 'icabinet', x: 14, y: 25, props: { w: 3, h: 1, variant: 'pharma' } },
@@ -120,21 +120,21 @@ export const PHARMA_INTERIOR: Interior = {
     { id: 'o-c-tape', type: 'floortape', x: 22, y: 39, props: { w: 12, text: '━ STERILE LINE · NO STREET CLOTHES ━' } },
   ],
   hotspots: [
-    { id: 'hs-missing', kind: 'quest', x: 4, y: 6, label: '누락 약 확인' },
-    { id: 'hs-tube', kind: 'info', x: 16, y: 5, label: '캡슐 송수신' },
+    { id: 'hs-missing', kind: 'quest', x: 4, y: 6, label: '누락 약 확인', scenarioId: 'SCN-PHARMA-00006' },
+    { id: 'hs-tube', kind: 'quest', x: 16, y: 5, label: '캡슐 송수신', scenarioId: 'SCN-PHARMA-00007' },
   ],
   npcs: [
     // pick-up window
     { id: 'ph-w-rx', kind: 'doctor', mode: 'idle', seed: 401, start: { x: 4, y: 3 }, marker: 'quest', markerLabel: '구두 처방', scenarioId: 'SCN-PHARMA-00002' }, // pharmacist behind glass
-    { id: 'ph-w-n1', kind: 'nurse', mode: 'idle', seed: 402, start: { x: 5, y: 9 } },
-    { id: 'ph-w-n2', kind: 'nurse', mode: 'idle', seed: 403, start: { x: 8, y: 9 } },
-    { id: 'ph-w-n3', kind: 'nurse', mode: 'idle', seed: 404, start: { x: 18, y: 9 } },
+    { id: 'ph-w-n1', kind: 'nurse', mode: 'idle', seed: 402, start: { x: 5, y: 9 }, marker: 'quest', markerLabel: '고위험 약물 이중확인', scenarioId: 'SCN-PHARMA-00008' },
+    { id: 'ph-w-n2', kind: 'nurse', mode: 'idle', seed: 403, start: { x: 8, y: 9 }, marker: 'quest', markerLabel: '퇴원 약물 상담', scenarioId: 'SCN-PHARMA-00009' },
+    { id: 'ph-w-n3', kind: 'nurse', mode: 'idle', seed: 404, start: { x: 18, y: 9 }, marker: 'quest', markerLabel: '약물 상호작용 확인', scenarioId: 'SCN-PHARMA-00010' },
     // dispensing
     { id: 'ph-d-p1', kind: 'doctor', mode: 'idle', seed: 405, start: { x: 14, y: 22 }, marker: 'quest', markerLabel: '헤파린 체크', scenarioId: 'SCN-PHARMA-00001' },
     { id: 'ph-d-p2', kind: 'doctor', mode: 'idle', seed: 406, start: { x: 16, y: 22 }, marker: 'quest', markerLabel: '소아 용량', scenarioId: 'SCN-PHARMA-00003' },
     { id: 'ph-d-n', kind: 'nurse', mode: 'idle', seed: 407, start: { x: 10, y: 25 }, marker: 'info', markerLabel: '마약류 픽업', scenarioId: 'SCN-PHARMA-00004' },
     // vault
-    { id: 'ph-v-p', kind: 'doctor', mode: 'idle', seed: 408, start: { x: 8, y: 36 } },
+    { id: 'ph-v-p', kind: 'doctor', mode: 'idle', seed: 408, start: { x: 8, y: 36 }, marker: 'quest', markerLabel: '소아 용량 확인', scenarioId: 'SCN-PHARMA-00011' },
     // cleanroom
     { id: 'ph-c-s', kind: 'surgeon', mode: 'idle', seed: 409, start: { x: 26, y: 28 }, marker: 'urgent', markerLabel: 'IV 혼합', scenarioId: 'SCN-PHARMA-00005' },
   ],

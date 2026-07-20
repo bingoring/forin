@@ -70,7 +70,7 @@ export const SPD_INTERIOR: Interior = {
     { id: 'o-ki-fc1', type: 'foodcartcolumn', x: 2, y: 19, props: { w: 1, h: 2 } },
     { id: 'o-ki-fc2', type: 'foodcartcolumn', x: 5, y: 19, props: { w: 1, h: 2 } },
     { id: 'o-ki-fc3', type: 'foodcartcolumn', x: 8, y: 19, props: { w: 1, h: 2 } },
-    { id: 'o-ki-recep', type: 'ireception', x: 12, y: 14, props: { w: 5, h: 1, label: '식단 검수' } },
+    { id: 'o-ki-recep', type: 'ireception', x: 12, y: 14, props: { w: 5, h: 1, label: '식단 검수', marker: 'quest', markerLabel: '신규 물품 교육', scenarioId: 'SCN-SPD-00011' } },
     { id: 'o-ki-shelf', type: 'shelflabel', x: 19, y: 13, props: { text: 'DIET ORDERS' } },
     { id: 'o-ki-cab1', type: 'icabinet', x: 19, y: 14, props: { w: 4, variant: 'supply' } },
     { id: 'o-ki-cab2', type: 'icabinet', x: 23, y: 14, props: { w: 4, variant: 'supply' } },
@@ -89,20 +89,20 @@ export const SPD_INTERIOR: Interior = {
   ],
   hotspots: [
     { id: 'hs-decon', kind: 'quest', x: 7, y: 3, label: '기구 세척·소독 사이클', scenarioId: 'SCN-SPD-00001' },
-    { id: 'hs-autoclave', kind: 'quest', x: 17, y: 3, label: '오토클레이브·팩 검수' },
-    { id: 'hs-tray', kind: 'info', x: 12, y: 14, label: '치료식 트레이 준비' },
-    { id: 'hs-logistics', kind: 'info', x: 12, y: 33, label: '물류 입·출고 검수' },
+    { id: 'hs-autoclave', kind: 'quest', x: 17, y: 3, label: '오토클레이브·팩 검수', scenarioId: 'SCN-SPD-00002' },
+    { id: 'hs-tray', kind: 'quest', x: 12, y: 14, label: '치료식 트레이 준비', scenarioId: 'SCN-SPD-00003' },
+    { id: 'hs-logistics', kind: 'quest', x: 12, y: 33, label: '물류 입·출고 검수', scenarioId: 'SCN-SPD-00004' },
   ],
   npcs: [
     // soiled
-    { id: 'sp-so-n', kind: 'nurse', mode: 'idle', seed: 1121, start: { x: 5, y: 7 } },
+    { id: 'sp-so-n', kind: 'nurse', mode: 'idle', seed: 1121, start: { x: 5, y: 7 }, marker: 'quest', markerLabel: '대여 장비 반납 확인', scenarioId: 'SCN-SPD-00005' },
     // sterile
-    { id: 'sp-st-n', kind: 'nurse', mode: 'idle', seed: 1122, start: { x: 22, y: 8 } },
+    { id: 'sp-st-n', kind: 'nurse', mode: 'idle', seed: 1122, start: { x: 22, y: 8 }, marker: 'quest', markerLabel: '리콜 물품 회수', scenarioId: 'SCN-SPD-00006' },
     // kitchen
-    { id: 'sp-ki-n1', kind: 'nurse', mode: 'idle', seed: 1123, start: { x: 4, y: 17 } },
-    { id: 'sp-ki-n2', kind: 'nurse', mode: 'idle', seed: 1124, start: { x: 13, y: 17 } },
+    { id: 'sp-ki-n1', kind: 'nurse', mode: 'idle', seed: 1123, start: { x: 4, y: 17 }, marker: 'quest', markerLabel: '응급 세트 추적', scenarioId: 'SCN-SPD-00007' },
+    { id: 'sp-ki-n2', kind: 'nurse', mode: 'idle', seed: 1124, start: { x: 13, y: 17 }, marker: 'quest', markerLabel: '유효기간 점검 안내', scenarioId: 'SCN-SPD-00008' },
     // dock
-    { id: 'sp-dk-n', kind: 'nurse', mode: 'idle', seed: 1125, start: { x: 10, y: 35 } },
-    { id: 'sp-dk-v', kind: 'visitor', mode: 'idle', seed: 1126, start: { x: 16, y: 34 } },
+    { id: 'sp-dk-n', kind: 'nurse', mode: 'idle', seed: 1125, start: { x: 10, y: 35 }, marker: 'quest', markerLabel: '오염 노출 사고 대응', scenarioId: 'SCN-SPD-00009' },
+    { id: 'sp-dk-v', kind: 'visitor', mode: 'idle', seed: 1126, start: { x: 16, y: 34 }, marker: 'quest', markerLabel: '대여 장비 계약 확인', scenarioId: 'SCN-SPD-00010' },
   ],
 };

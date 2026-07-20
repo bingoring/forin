@@ -69,7 +69,7 @@ export const PICU_INTERIOR: Interior = {
     { id: 'bl-hub', type: 'baylabel', x: 1, y: 8, props: { text: 'CENTRAL MONITOR HUB', highlight: true } },
     { id: 'o-hb-bank', type: 'bankofmonitors', x: 9, y: 9 },
     { id: 'o-hb-desk', type: 'nursestation', x: 2, y: 11, props: { w: 6, h: 4 } },
-    { id: 'o-hb-recep', type: 'ireception', x: 20, y: 10, props: { w: 5, h: 1, label: 'PICU DESK' } },
+    { id: 'o-hb-recep', type: 'ireception', x: 20, y: 10, props: { w: 5, h: 1, label: 'PICU DESK', marker: 'quest', markerLabel: '형제 지지 대화', scenarioId: 'SCN-PICU-00012' } },
     { id: 'o-hb-crash', type: 'crashcart', x: 24, y: 13 },
     { id: 'o-hb-phone', type: 'deskphone', x: 3, y: 11 },
 
@@ -94,23 +94,23 @@ export const PICU_INTERIOR: Interior = {
     { id: 'o-r3-plant', type: 'iplant', x: 25, y: 42 },
   ],
   hotspots: [
-    { id: 'hs-gown', kind: 'info', x: 3, y: 2, label: '가운·손위생' },
+    { id: 'hs-gown', kind: 'quest', x: 3, y: 2, label: '가운·손위생', scenarioId: 'SCN-PICU-00002' },
     { id: 'hs-monitor', kind: 'quest', x: 5, y: 13, label: '3-방 활력 감시', scenarioId: 'SCN-PICU-00001' },
-    { id: 'hs-vent', kind: 'quest', x: 3, y: 22, label: '소아 vent·진정 사정' },
-    { id: 'hs-intensive', kind: 'info', x: 12, y: 22, label: '집중 감시' },
-    { id: 'hs-family', kind: 'info', x: 20, y: 31, label: '가족 상주 지지' },
+    { id: 'hs-vent', kind: 'quest', x: 3, y: 22, label: '소아 vent·진정 사정', scenarioId: 'SCN-PICU-00003' },
+    { id: 'hs-intensive', kind: 'quest', x: 12, y: 22, label: '집중 감시', scenarioId: 'SCN-PICU-00004' },
+    { id: 'hs-family', kind: 'quest', x: 20, y: 31, label: '가족 상주 지지', scenarioId: 'SCN-PICU-00005' },
   ],
   npcs: [
     // ante
-    { id: 'pi-an-n', kind: 'nurse', mode: 'idle', seed: 891, start: { x: 5, y: 5 } },
+    { id: 'pi-an-n', kind: 'nurse', mode: 'idle', seed: 891, start: { x: 5, y: 5 }, marker: 'quest', markerLabel: '소아 재활 첫 시작', scenarioId: 'SCN-PICU-00006' },
     // station
-    { id: 'pi-st-n', kind: 'nurse', mode: 'idle', seed: 892, start: { x: 5, y: 14 } },
-    { id: 'pi-st-d', kind: 'doctor', mode: 'idle', seed: 893, start: { x: 12, y: 14 } },
+    { id: 'pi-st-n', kind: 'nurse', mode: 'idle', seed: 892, start: { x: 5, y: 14 }, marker: 'quest', markerLabel: '소아 진정 관찰 설명', scenarioId: 'SCN-PICU-00007' },
+    { id: 'pi-st-d', kind: 'doctor', mode: 'idle', seed: 893, start: { x: 12, y: 14 }, marker: 'quest', markerLabel: '소아 인공호흡기 관리 설명', scenarioId: 'SCN-PICU-00008' },
     // room1
-    { id: 'pi-r1-n', kind: 'nurse', mode: 'idle', seed: 894, start: { x: 5, y: 35 } },
+    { id: 'pi-r1-n', kind: 'nurse', mode: 'idle', seed: 894, start: { x: 5, y: 35 }, marker: 'quest', markerLabel: '가족 중심 회진 참여 안내', scenarioId: 'SCN-PICU-00009' },
     // room2
-    { id: 'pi-r2-n', kind: 'nurse', mode: 'idle', seed: 895, start: { x: 15, y: 36 } },
+    { id: 'pi-r2-n', kind: 'nurse', mode: 'idle', seed: 895, start: { x: 15, y: 36 }, marker: 'quest', markerLabel: '소아 진통제 안내', scenarioId: 'SCN-PICU-00010' },
     // room3
-    { id: 'pi-r3-p', kind: 'parent', mode: 'idle', seed: 896, start: { x: 22, y: 35 } },
+    { id: 'pi-r3-p', kind: 'parent', mode: 'idle', seed: 896, start: { x: 22, y: 35 }, marker: 'quest', markerLabel: '놀이치료(Child Life) 안내', scenarioId: 'SCN-PICU-00011' },
   ],
 };
