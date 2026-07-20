@@ -48,3 +48,15 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes. Confirming: 25,000 units in 250 mL at 12 mL per hour." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00002 }
+    next: s5
+  - id: s5
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00004 }

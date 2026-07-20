@@ -53,3 +53,11 @@ steps:
   - id: s3
     type: quiz
     payload: { quizId: QZ-PSYCH-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00002 }
+    next: s5
+  - id: s5
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00003 }

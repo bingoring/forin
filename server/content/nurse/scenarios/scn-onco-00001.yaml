@@ -52,4 +52,12 @@ steps:
     next: s3
   - id: s3
     type: quiz
-    payload: { quizId: QZ-ONCO-00002 }
+    payload: { quizId: QZ-ONCO-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ONCO-00001 }
+    next: s5
+  - id: s5
+    type: quiz
+    payload: { quizId: QZ-ONCO-00003 }

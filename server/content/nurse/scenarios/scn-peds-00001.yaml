@@ -48,3 +48,15 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Hi Mia, it's okay. I'm right here with you." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PEDS-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PEDS-00002 }
+    next: s5
+  - id: s5
+    type: quiz
+    payload: { quizId: QZ-PEDS-00003 }

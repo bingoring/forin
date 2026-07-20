@@ -50,3 +50,15 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let me walk you through the consent. Do you have any questions?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-OR-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-OR-00002 }
+    next: s5
+  - id: s5
+    type: quiz
+    payload: { quizId: QZ-OR-00003 }
