@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "No new pokes — it goes in your IV and helps the hurt go away." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PICU-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PICU-00005 }

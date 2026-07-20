@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "When did you last eat or drink? And any past reactions to anesthesia?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-OR-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-OR-00005 }

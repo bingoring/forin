@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "That's a beautiful wish — let's see what's possible, even sounds or photos." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-HOSPICE-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-HOSPICE-00005 }

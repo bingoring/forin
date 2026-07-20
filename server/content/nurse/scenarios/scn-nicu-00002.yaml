@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "She's still too little to suck and breathe at once — the tube feeds her safely." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NICU-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NICU-00002 }

@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Full barrier precautions are set — let's do the time-out, and I'll monitor his rhythm." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ICU-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ICU-00004 }

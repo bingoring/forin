@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "We check your kidney test first and hydrate you to flush it safely." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-RAD-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-RAD-00005 }

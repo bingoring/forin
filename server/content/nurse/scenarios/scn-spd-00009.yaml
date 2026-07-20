@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Remove the affected items now — don't use anything that touched it. I'll open fresh supplies." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPD-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SPD-00004 }

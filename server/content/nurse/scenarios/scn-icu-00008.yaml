@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "He's seriously ill and we're treating aggressively — the next hours matter, and I'll keep you updated." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ICU-00006 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ICU-00001 }

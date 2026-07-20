@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Certain deaths must be reviewed by law — the coroner determines the cause. We'll guide you gently." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00004 }

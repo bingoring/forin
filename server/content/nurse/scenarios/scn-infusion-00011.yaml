@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Squeeze my hand and look away — a quick pinch, then all done. So brave!" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-INFUSION-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-INFUSION-00001 }

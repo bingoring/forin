@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "It's common and usually outgrown. Praise dry nights, and don't punish." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-WOMENKIDS-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-WOMENKIDS-00003 }

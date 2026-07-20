@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's practice with the rail — up with the strong leg, down with the weak." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-REHAB-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-REHAB-00001 }

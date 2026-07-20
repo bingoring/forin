@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's focus on what he would have wanted — that's your common ground." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-HOSPICE-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-HOSPICE-00004 }

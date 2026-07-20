@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "True labor gets stronger and closer. Let's time them and check to be sure." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LD-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-LD-00002 }

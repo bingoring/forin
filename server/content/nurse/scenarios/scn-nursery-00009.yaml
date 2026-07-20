@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Four hours at room temp — label the date, and never thaw in a microwave." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00004 }

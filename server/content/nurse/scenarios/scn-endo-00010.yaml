@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "That's common after the scope — warm liquids help, and it settles within a day." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ENDO-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ENDO-00005 }

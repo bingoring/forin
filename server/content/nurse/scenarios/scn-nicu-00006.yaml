@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "We'll teach you infant CPR and give you a clear plan. You won't be alone." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NICU-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NICU-00001 }

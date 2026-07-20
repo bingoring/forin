@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Falls dropped after hourly rounding — here's the quarter's trend. Let's standardize bed alarms." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LOUNGE-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-LOUNGE-00001 }

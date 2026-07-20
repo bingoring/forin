@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "When was your last drink? That can be withdrawal — we have medicine to keep you safe." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ER-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ER-00001 }

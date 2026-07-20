@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Squeeze the call bulb — we can pause between sequences to reposition." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-RAD-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-RAD-00001 }

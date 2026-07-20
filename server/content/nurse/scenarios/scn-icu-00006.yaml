@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "The tube is temporary and helps you breathe — blink twice for yes, I'm right here." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ICU-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ICU-00005 }

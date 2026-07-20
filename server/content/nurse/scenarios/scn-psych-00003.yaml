@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Can you tell me what worries you about it? Let's talk it through." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00003 }

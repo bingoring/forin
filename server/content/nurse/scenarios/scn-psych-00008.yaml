@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I don't hear them, but I believe you do. Are they telling you to harm anyone?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00003 }

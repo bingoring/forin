@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Around six months — one new food at a time, watching for reactions." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-WOMENKIDS-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-WOMENKIDS-00004 }

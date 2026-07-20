@@ -50,3 +50,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "We're going to take good care of her. When did the fever start?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ER-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ER-00001 }

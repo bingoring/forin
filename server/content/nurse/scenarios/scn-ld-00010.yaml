@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "You're not alone — many new moms feel this. Let's get you support today." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LD-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-LD-00005 }

@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "We wash and position gently, remove tubes per policy, with full dignity." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00003 }

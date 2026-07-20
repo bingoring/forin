@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "It can open doors — which area energizes you most? I'll share study resources." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LOUNGE-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-LOUNGE-00002 }

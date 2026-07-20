@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "With meals, not after — they block phosphorus, which harms bones and heart." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-DIAL-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-DIAL-00001 }

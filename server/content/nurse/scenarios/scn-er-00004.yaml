@@ -55,3 +55,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I'm really glad you told me. You're not alone — can you tell me more?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ER-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ER-00003 }

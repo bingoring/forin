@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "This pair raises bleeding risk — I'd suggest an alternative in the same class, and monitor closely." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00006 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00001 }

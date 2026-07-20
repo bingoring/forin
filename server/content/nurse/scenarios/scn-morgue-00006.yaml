@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Please tell us what your traditions need — we'll do all we can to honor them." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00001 }

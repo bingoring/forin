@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I'm so sorry. It usually grows back — and you are still you." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ONCO-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ONCO-00005 }

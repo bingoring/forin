@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Mrs. Park, you're safe. I'm your nurse." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ICU-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ICU-00004 }

@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's verify drug, dose, and rate independently — the pump matches the order, and we both sign off." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00005 }

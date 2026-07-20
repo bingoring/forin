@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "The eye shields protect her from the light. Let me explain the treatment." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00002 }

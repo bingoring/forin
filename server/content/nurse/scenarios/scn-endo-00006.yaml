@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "It's light and closely monitored. You'll be drowsy but breathe on your own." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ENDO-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ENDO-00001 }

@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I'll slow the removal rate and stretch your calf — cramps often ease then." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-DIAL-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-DIAL-00003 }

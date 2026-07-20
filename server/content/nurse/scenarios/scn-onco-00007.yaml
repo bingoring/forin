@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Take the anti-nausea med before it hits, and try small bland meals." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ONCO-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ONCO-00002 }

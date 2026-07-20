@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes. I need a second witness to verify the count." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00002 }

@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Lean forward, pinch the soft part firmly for ten minutes, and breathe through your mouth." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00003 }

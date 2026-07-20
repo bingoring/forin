@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Rescue inhaler with the spacer now — sit her upright, we're watching her oxygen." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PEDS-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PEDS-00001 }

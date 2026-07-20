@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "What did you take and when? We're here to help you — you're safe now." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ER-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ER-00004 }

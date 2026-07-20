@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "You're past your due date. We'll start gently and monitor you both." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LD-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-LD-00004 }

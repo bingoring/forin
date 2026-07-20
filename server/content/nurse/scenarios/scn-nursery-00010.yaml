@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes — it's routine on day one and protects against a serious infection." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00005 }

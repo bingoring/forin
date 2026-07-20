@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes, with a spinal block — you'll feel pressure, not sharp pain." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LD-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-LD-00005 }

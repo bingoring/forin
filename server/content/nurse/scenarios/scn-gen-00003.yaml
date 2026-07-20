@@ -29,3 +29,7 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Please evacuate calmly and use the stairs, not the elevator." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-GEN-00001 }

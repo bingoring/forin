@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes, with local numbing. Imaging guides the needle precisely." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-RAD-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-RAD-00001 }

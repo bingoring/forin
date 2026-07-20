@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "They replace what you've lost — you'll feel less dizzy soon." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-INFUSION-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-INFUSION-00003 }

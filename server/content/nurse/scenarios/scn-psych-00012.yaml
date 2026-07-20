@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Learning about his condition helps — keep the routine calm, and here are warning signs." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00002 }

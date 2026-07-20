@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Check the expiry and seal — if wet, torn, or expired, send it back to reprocess." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPD-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SPD-00003 }

@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Shivering after surgery is common — let me get you a warm blanket now." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-OR-00004 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-OR-00005 }

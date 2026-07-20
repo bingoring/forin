@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Six or more wet diapers a day is a good sign." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00001 }

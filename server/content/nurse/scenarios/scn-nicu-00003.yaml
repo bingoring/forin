@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I'll help you hold him safely. Skin-to-skin keeps him warm and calm." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NICU-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NICU-00003 }

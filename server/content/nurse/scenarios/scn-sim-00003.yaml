@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Lead with the situation in one sentence, then keep background brief." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SIM-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SIM-00003 }

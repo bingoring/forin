@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes — let's practice with this aid. Bend from the hips, not the waist." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-REHAB-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-REHAB-00002 }

@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Growing pains are usually harmless. But limping or swelling — tell us." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-WOMENKIDS-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-WOMENKIDS-00001 }

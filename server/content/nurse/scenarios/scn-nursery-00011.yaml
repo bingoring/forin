@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let him help with small tasks and give him special one-on-one time." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NURSERY-00001 }

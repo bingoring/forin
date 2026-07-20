@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's schedule your pain medicine, not just as-needed, so nights are better." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ONCO-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ONCO-00003 }

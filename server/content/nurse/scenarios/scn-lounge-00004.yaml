@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "I'm so sorry — that's really heavy. Do you want to talk, or just sit together?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-LOUNGE-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-LOUNGE-00004 }

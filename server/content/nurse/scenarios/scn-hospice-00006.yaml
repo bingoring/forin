@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "There's no timeline to grieve. We're here for you, whenever you're ready." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-HOSPICE-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-HOSPICE-00001 }

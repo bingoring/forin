@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "We lower the support slowly and watch you — you did well today. If you tire, we ease back." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ICU-00006 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ICU-00001 }

@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "He's tracking his growth curve nicely — we look at the trend, not one number." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PEDS-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PEDS-00004 }

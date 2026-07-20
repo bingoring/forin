@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "You're safe, and I'm your nurse. Let's turn on a soft light together." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-GERI-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-GERI-00002 }

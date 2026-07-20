@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Yes, but your eye is fully numbed — quick, and you won't see the instruments." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00002 }

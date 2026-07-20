@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's compare her home list to the new orders — this one's missing, and I'll flag the duplicate for the doctor." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PHARMA-00004 }

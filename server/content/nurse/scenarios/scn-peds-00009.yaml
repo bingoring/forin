@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Ear-pulling with fever can mean an ear infection — we'll look inside and manage the pain." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PEDS-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PEDS-00003 }

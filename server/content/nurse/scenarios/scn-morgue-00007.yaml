@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "We verify the ID band and toe tag together — two staff confirm and sign, with full dignity." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-MORGUE-00002 }

@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Plateaus are frustrating — but look how far you've come. Let's set a small next goal." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-REHAB-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-REHAB-00001 }

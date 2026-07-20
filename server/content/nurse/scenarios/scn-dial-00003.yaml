@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Lie back, I'll raise your legs and lower the removal rate now." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-DIAL-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-DIAL-00003 }

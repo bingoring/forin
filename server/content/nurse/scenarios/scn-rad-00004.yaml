@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "A full bladder gives a clearer image. It's painless, about 20 minutes." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-RAD-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-RAD-00004 }

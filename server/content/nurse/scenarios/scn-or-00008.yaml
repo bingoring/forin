@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "If in doubt, treat it as contaminated — let's re-gown and open a fresh set." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-OR-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-OR-00002 }

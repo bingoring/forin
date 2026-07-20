@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Temperature changes can be an early sign — we're drawing labs and watching closely." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-NICU-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-NICU-00002 }

@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Redness can mean infection — any fever? We'll culture it and treat early." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-DIAL-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-DIAL-00002 }

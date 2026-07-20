@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "You're safe and this will pass. Breathe with me — in for four, out for four." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-PSYCH-00004 }

@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Nausea after anesthesia is common — I'll give you medicine. Slow breaths." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-OR-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-OR-00004 }

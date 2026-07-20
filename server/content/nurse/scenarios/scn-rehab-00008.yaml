@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's guide it with your strong arm — small movements rebuild the connection." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-REHAB-00002 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-REHAB-00003 }

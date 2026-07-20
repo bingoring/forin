@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Quarantine the whole load now, release nothing — I'll log it and rerun the cycle." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPD-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SPD-00002 }

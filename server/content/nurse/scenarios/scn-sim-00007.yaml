@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Let's replay it — what cue tells you which size to prep next time?" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SIM-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SIM-00002 }

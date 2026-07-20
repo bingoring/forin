@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Hold very still — I'll take it out gently. So brave, almost done!" }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00003 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00004 }

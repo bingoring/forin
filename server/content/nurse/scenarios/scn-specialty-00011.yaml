@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "It maps your peripheral vision — press the button whenever you see a light." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-SPECIALTY-00001 }

@@ -47,3 +47,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Follow-up catches changes early — the interval depends on your last findings." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-ENDO-00001 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-ENDO-00002 }

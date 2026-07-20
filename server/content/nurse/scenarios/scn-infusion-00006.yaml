@@ -48,3 +48,11 @@ steps:
   - id: s2
     type: dialogue
     payload: { speaker: player, expression: focused, lineEn: "Keep it clean, avoid heavy lifting that side, and watch for redness." }
+    next: s3
+  - id: s3
+    type: quiz
+    payload: { quizId: QZ-INFUSION-00005 }
+    next: s4
+  - id: s4
+    type: quiz
+    payload: { quizId: QZ-INFUSION-00001 }
