@@ -25,16 +25,32 @@ async function rotate(): Promise<string | null> {
   if (!refreshing) {
     refreshing = (async () => {
       const rt = useAuthStore.getState().refreshToken;
-      if (!rt) return null;
       try {
-        // raw axios (no interceptors) to avoid recursion
-        const { data } = await axios.post(`${baseURL}/auth/refresh`, { refreshToken: rt });
-        const pair = data as TokenPair;
-        if (!pair.accessToken || !pair.refreshToken) return null;
-        useAuthStore.setState({ accessToken: pair.accessToken, refreshToken: pair.refreshToken });
-        await saveTokens(pair.accessToken, pair.refreshToken);
-        return pair.accessToken;
+        if (rt) {
+          // raw axios (no interceptors) to avoid recursion
+          const { data } = await axios.post(`${baseURL}/auth/refresh`, { refreshToken: rt });
+          const pair = data as TokenPair;
+          if (pair.accessToken && pair.refreshToken) {
+            useAuthStore.setState({ accessToken: pair.accessToken, refreshToken: pair.refreshToken });
+            await saveTokens(pair.accessToken, pair.refreshToken);
+            return pair.accessToken;
+          }
+        }
+        throw new Error('refresh unavailable');
       } catch {
+        // In dev, a missing/stale refresh token shouldn't strand the session:
+        // silently re-run the dev login (server registers /auth/dev only in dev).
+        if (__DEV__) {
+          try {
+            const { data } = await axios.post(`${baseURL}/auth/dev`, {});
+            const pair = (data as { tokens?: TokenPair })?.tokens;
+            if (pair?.accessToken && pair?.refreshToken) {
+              useAuthStore.setState({ accessToken: pair.accessToken, refreshToken: pair.refreshToken });
+              await saveTokens(pair.accessToken, pair.refreshToken);
+              return pair.accessToken;
+            }
+          } catch { /* fall through to logout */ }
+        }
         return null;
       } finally {
         refreshing = null;
@@ -131,6 +147,14 @@ export interface Progress {
   streakCurrent: number; streakLongest: number;
 }
 
+// One spaced-repetition (SM-2) card from an AI correction: front = original
+// phrasing, back = the natural correction, note = why. masteryPips 0-3.
+export interface ReviewCard {
+  id: string; source: string; front: string; back: string; note: string;
+  topicTag: string; masteryPips: number; favorite: boolean;
+}
+export type ReviewGrade = 'again' | 'hard' | 'good' | 'easy';
+
 export const api = {
   raw: http,
 
@@ -160,6 +184,18 @@ export const api = {
   async recordAttempt(scenarioId: string, score: number): Promise<Progress> {
     const { data } = await http.post('/attempts', { scenarioId, score });
     return data as Progress;
+  },
+
+  /** Review cards due today (spaced-repetition oops-notes). */
+  async reviewDue(): Promise<ReviewCard[]> {
+    const { data } = await http.get('/me/review');
+    return (data?.cards ?? []) as ReviewCard[];
+  },
+
+  /** Grade a review card (SM-2); returns the new mastery pips. */
+  async gradeReview(id: string, grade: ReviewGrade): Promise<{ masteryPips: number }> {
+    const { data } = await http.post(`/me/review/${id}/grade`, { grade });
+    return { masteryPips: (data?.masteryPips ?? 0) as number };
   },
 
   async manifest(): Promise<Manifest> {
