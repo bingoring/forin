@@ -6,10 +6,10 @@ import { Pressable, Text, View } from 'react-native';
 import * as Speech from 'expo-speech';
 import type { QuizDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
-import { QuizShell, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
+import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
-export function ListenQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void }) {
+export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
   const choices = c.choices ?? [];
   const [picked, setPicked] = useState<number | null>(null);
@@ -20,7 +20,7 @@ export function ListenQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onE
 
   return (
     <QuizShell
-      title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit}
+      title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && correct
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>

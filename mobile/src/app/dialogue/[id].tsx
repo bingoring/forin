@@ -69,7 +69,11 @@ export default function DialogueRoute() {
   const expr = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
   const npcName = (p.name || 'NPC').toUpperCase();
   const mission = scenario?.goals?.[0];
-  const quizId = scenario?.steps?.find((s) => s.type === 'quiz')?.payload?.quizId;
+  // A scenario can embed several quiz steps; surface them all as one sequence.
+  const quizIds = (scenario?.steps ?? [])
+    .filter((s) => s.type === 'quiz')
+    .map((s) => s.payload?.quizId)
+    .filter((q): q is string => !!q);
 
   if (state === 'loading') {
     return (
@@ -203,7 +207,15 @@ export default function DialogueRoute() {
             <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
           <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} style={{ flex: 1 }} />
-          {!!quizId && <PixelButton label="📝" bg="#fff" shadowColor={C} onPress={() => router.push(`/quiz/${quizId}?scenario=${id}`)} style={{ paddingHorizontal: 12 }} />}
+          {quizIds.length > 0 && (
+            <PixelButton
+              label={quizIds.length > 1 ? `📝 ${quizIds.length}` : '📝'}
+              bg="#fff"
+              shadowColor={C}
+              onPress={() => router.push(`/quiz/${quizIds[0]}?scenario=${id}&q=${quizIds.join(',')}&i=0`)}
+              style={{ paddingHorizontal: 12 }}
+            />
+          )}
         </View>
       </View>
     </KeyboardAvoidingView>

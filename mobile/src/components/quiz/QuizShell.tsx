@@ -30,8 +30,12 @@ function CornerStaples() {
   );
 }
 
-export function QuizShell({ title, sub, zone, onExit, children, footer }: {
-  title: string; sub?: string; zone?: string; onExit: () => void; children: React.ReactNode; footer: React.ReactNode;
+// A multi-quiz sequence (scenario with several quiz steps) shows "N/M" so the
+// learner knows how many mini-quizzes remain before the scenario result.
+export type QuizProgress = { cur: number; total: number };
+
+export function QuizShell({ title, sub, zone, onExit, progress, children, footer }: {
+  title: string; sub?: string; zone?: string; onExit: () => void; progress?: QuizProgress; children: React.ReactNode; footer: React.ReactNode;
 }) {
   return (
     <View style={{ flex: 1, backgroundColor: '#1F2937' }}>
@@ -40,11 +44,20 @@ export function QuizShell({ title, sub, zone, onExit, children, footer }: {
       {/* top exit / zone */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 7 }}>
         <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} onPress={onExit} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
-        <Shadowed offset={2}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{zone || 'QUIZ'} · {title}</Text>
-          </View>
-        </Shadowed>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          {!!progress && progress.total > 1 && (
+            <Shadowed offset={2} shadowColor={colors.mintShadow}>
+              <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>📝 {progress.cur}/{progress.total}</Text>
+              </View>
+            </Shadowed>
+          )}
+          <Shadowed offset={2}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{zone || 'QUIZ'} · {title}</Text>
+            </View>
+          </Shadowed>
+        </View>
       </View>
 
       {/* card */}

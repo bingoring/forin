@@ -6,12 +6,12 @@ import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
-import { QuizShell, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
+import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 
-export function MonitorQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void }) {
+export function MonitorQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
   const readings = c.readings ?? [];
   const bank = useMemo(() => shuffle(c.bank ?? []), [c.bank]);
@@ -37,7 +37,7 @@ export function MonitorQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; on
 
   return (
     <QuizShell
-      title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit}
+      title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>

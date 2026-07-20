@@ -5,10 +5,10 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
-import { QuizShell, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
+import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
-export function CheckQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void }) {
+export function CheckQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
   const items = c.items ?? [];
   const [sel, setSel] = useState<Set<number>>(new Set());
@@ -22,7 +22,7 @@ export function CheckQuiz({ quiz, onExit, onComplete }: { quiz: QuizDetail; onEx
 
   return (
     <QuizShell
-      title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit}
+      title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>

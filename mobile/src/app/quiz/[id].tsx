@@ -27,9 +27,16 @@ import { colors, fonts } from '@/theme/tokens';
 const C = colors.ink;
 
 export default function QuizRoute() {
-  const { id, scenario } = useLocalSearchParams<{ id: string; scenario?: string }>();
+  const { id, scenario, q, i } = useLocalSearchParams<{ id: string; scenario?: string; q?: string; i?: string }>();
   const router = useRouter();
   const { quiz, state } = useQuizData(id);
+
+  // Multi-quiz sequence: `q` is the full ordered quizId queue for the scenario
+  // (comma-joined) and `i` the current 0-based index. Kept in the URL so the
+  // sequence is stateless across router.replace hops.
+  const queue = q ? q.split(',').filter(Boolean) : [];
+  const idx = i ? parseInt(i, 10) || 0 : 0;
+  const progress = queue.length > 1 ? { cur: idx + 1, total: queue.length } : undefined;
 
   if (state !== 'ok' || !quiz?.content) {
     return (
@@ -47,10 +54,23 @@ export default function QuizRoute() {
     );
   }
 
-  // On clear: go to the scenario result screen if we came from one, else back.
-  const onComplete = () => (scenario ? router.replace(`/result/${scenario}`) : router.back());
+  // On clear: advance to the next quiz in the sequence, else show the scenario
+  // result, else just go back.
+  const onComplete = () => {
+    if (idx + 1 < queue.length) {
+      const sp = new URLSearchParams();
+      if (scenario) sp.set('scenario', scenario);
+      sp.set('q', queue.join(','));
+      sp.set('i', String(idx + 1));
+      router.replace(`/quiz/${queue[idx + 1]}?${sp.toString()}`);
+    } else if (scenario) {
+      router.replace(`/result/${scenario}`);
+    } else {
+      router.back();
+    }
+  };
   const onExit = () => router.back();
-  const props = { quiz, onExit, onComplete };
+  const props = { quiz, onExit, onComplete, progress };
   switch (quiz.type) {
     case 'match_pairs': return <MatchQuiz {...props} />;
     case 'listen': return <ListenQuiz {...props} />;
@@ -65,12 +85,12 @@ export default function QuizRoute() {
     case 'triage': return <TriageQuiz {...props} />;
     case 'abbr': return <AbbrQuiz {...props} />;
     case 'dialogue_order': return <DialogueOrderQuiz {...props} />;
-    default: return <SentenceQuiz quiz={quiz} onExit={onExit} onComplete={onComplete} />;
+    default: return <SentenceQuiz quiz={quiz} onExit={onExit} onComplete={onComplete} progress={progress} />;
   }
 }
 
 // ── sentence-build quiz ───────────────────────────────────────────────
-function SentenceQuiz({ quiz, onExit, onComplete }: { quiz: NonNullable<ReturnType<typeof useQuizData>['quiz']>; onExit: () => void; onComplete: () => void }) {
+function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullable<ReturnType<typeof useQuizData>['quiz']>; onExit: () => void; onComplete: () => void; progress?: { cur: number; total: number } }) {
   const c = quiz.content!;
   const answers = c.answers ?? [];
   // Split the template into text segments; N answers → N slots between them.
@@ -105,11 +125,20 @@ function SentenceQuiz({ quiz, onExit, onComplete }: { quiz: NonNullable<ReturnTy
       {/* top exit / zone */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 7 }}>
         <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} onPress={onExit} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
-        <Shadowed offset={2}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{c.zone || 'QUIZ'} · {quiz.title}</Text>
-          </View>
-        </Shadowed>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          {!!progress && progress.total > 1 && (
+            <Shadowed offset={2} shadowColor={colors.mintShadow}>
+              <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>📝 {progress.cur}/{progress.total}</Text>
+              </View>
+            </Shadowed>
+          )}
+          <Shadowed offset={2}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{c.zone || 'QUIZ'} · {quiz.title}</Text>
+            </View>
+          </Shadowed>
+        </View>
       </View>
 
       {/* quiz card */}
