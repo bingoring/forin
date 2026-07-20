@@ -415,6 +415,7 @@ const listBoardScenarios = `-- name: ListBoardScenarios :many
 SELECT s.id, s.title, s.tagline, s.briefing
 FROM scenarios s JOIN events e ON s.event_id = e.id
 WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common')
+ORDER BY s.id
 `
 
 type ListBoardScenariosRow struct {

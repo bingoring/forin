@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	mathrand "math/rand"
+	"sort"
 	"strings"
 	"time"
 
@@ -173,16 +174,26 @@ func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scen
 }
 
 // TodaysScenarios returns a deterministic daily-rotated set of scenario cards
-// for the board — stable within a calendar day, fresh each morning. Groups all
-// eligible (daily_pool/both) scenarios, seeds a shuffle by the date, takes limit.
+// for the board — stable within a calendar day, fresh each morning.
+//
+// Rotation is department-stratified round-robin, not a flat shuffle: a flat
+// shuffle over a 300-scenario pool clustered up to 3 cards from one dept on a
+// 12-slot board and left ~9 distinct depts/day. Instead we (1) rotate which
+// scenario represents each dept, (2) rotate the dept order, then (3) pick
+// round-robin across depts. With 24 depts > 12 slots this guarantees 12
+// distinct depts/day (zero clustering) while giving every dept fair long-run
+// exposure. All seeded by YYYYMMDD so the set is stable within the day.
 func (r *ContentRepo) TodaysScenarios(ctx context.Context, profession string, limit int) ([]content.BoardCard, error) {
 	rows, err := r.q.ListBoardScenarios(ctx, profession)
 	if err != nil {
 		return nil, err
 	}
-	cards := make([]content.BoardCard, 0, len(rows))
+	// Group cards by dept. Rows arrive ORDER BY id (stable base for the seed).
+	byDept := map[string][]content.BoardCard{}
+	deptOrder := make([]string, 0, len(rows))
 	for _, s := range rows {
-		c := content.BoardCard{ID: s.ID, Title: s.Title, Tagline: s.Tagline, Dept: deptFromID(s.ID), Urgency: "quest"}
+		dept := deptFromID(s.ID)
+		c := content.BoardCard{ID: s.ID, Title: s.Title, Tagline: s.Tagline, Dept: dept, Urgency: "quest"}
 		if len(s.Briefing) > 0 && string(s.Briefing) != "{}" {
 			var b content.Briefing
 			unjson(s.Briefing, &b)
@@ -194,17 +205,43 @@ func (r *ContentRepo) TodaysScenarios(ctx context.Context, profession string, li
 				c.Urgency = "info"
 			}
 		}
-		cards = append(cards, c)
+		if _, ok := byDept[dept]; !ok {
+			deptOrder = append(deptOrder, dept)
+		}
+		byDept[dept] = append(byDept[dept], c)
 	}
-	// Deterministic daily rotation: seed by YYYYMMDD so the set is stable per day.
+	sort.Strings(deptOrder)
+
 	now := time.Now()
 	seed := int64(now.Year()*10000 + int(now.Month())*100 + now.Day())
 	rnd := mathrand.New(mathrand.NewSource(seed))
-	rnd.Shuffle(len(cards), func(i, j int) { cards[i], cards[j] = cards[j], cards[i] })
-	if limit > 0 && len(cards) > limit {
-		cards = cards[:limit]
+	// Rotate which scenario fronts each dept, then rotate the dept order.
+	for _, d := range deptOrder {
+		s := byDept[d]
+		rnd.Shuffle(len(s), func(i, j int) { s[i], s[j] = s[j], s[i] })
 	}
-	return cards, nil
+	rnd.Shuffle(len(deptOrder), func(i, j int) { deptOrder[i], deptOrder[j] = deptOrder[j], deptOrder[i] })
+
+	// Round-robin one card per dept per pass until the board is full.
+	out := make([]content.BoardCard, 0, limit)
+	idx := make(map[string]int, len(deptOrder))
+	for limit <= 0 || len(out) < limit {
+		progressed := false
+		for _, d := range deptOrder {
+			if limit > 0 && len(out) >= limit {
+				break
+			}
+			if i := idx[d]; i < len(byDept[d]) {
+				out = append(out, byDept[d][i])
+				idx[d] = i + 1
+				progressed = true
+			}
+		}
+		if !progressed {
+			break
+		}
+	}
+	return out, nil
 }
 
 // deptFromID pulls the dept code out of an id like "SCN-ONCO-00002" → "ONCO".
