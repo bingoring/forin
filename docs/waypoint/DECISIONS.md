@@ -941,3 +941,12 @@
 - **잔여 갭 완결**: pharma 13/14·spd 11/12(앞서 적합 앵커 부족으로 상황판 전용) → 전용 quest hotspot 신규 추가(hs-inhaler=SCN-PHARMA-00014·hs-qcfail=SCN-SPD-00012). **전 부서 인테리어 커버리지 100%**.
 - **검증**: tsc 0 · jest green · 시뮬레이터 pharma 인테리어 신규 hotspot이 보행 가능 바닥에 렌더, A 버튼(시나리오 라벨) 상호작용으로 hotspot→시나리오 진입 확인.
 - 결과: 모든 dept 시나리오가 인테리어 진입점에서 직접 도달 가능. 상황판(층화 로테이션)과 함께 이중 노출.
+
+## 2026-07-20 — 단계 C: 결과/리워드 화면 고도화 (실 진척 시스템 연결)
+- **기존**: 결과 화면이 정적 — 브리핑 고정 리워드만 표시, 적립·성장·공유 없음.
+- **고도화**: 백엔드 진척 시스템(`POST /attempts`·`GET /me/progress`, 이미 구현됨: XP·레벨·스트릭, level=1+xp/100)에 연결.
+  - 모바일 client: `Progress` 타입 + `progress()`·`recordAttempt(scenarioId, score)` 추가.
+  - 결과 화면: 마운트 시 before 조회 → attempt 기록(score=브리핑 base XP 파싱) → after. **XP 카운트업**(before→after)·**레벨 진행바**(xp%100)·**레벨업 배너**(level↑ 시 컨페티 2배)·**스트릭 🔥**·정직한 실값 표시.
+  - 공유 버튼 실동작(RN Share), 미인증/오프라인 시 브리핑 리워드 정적 폴백.
+- 저작 원칙: 가짜 별점 대신 **실제 적립된 성장**만 표시(정직성). score는 시나리오 난이도 기반 base XP(120+diff*40).
+- 검증: tsc 0 · jest 208/208 · 라이브 /attempts·/me/progress(xp 0→160→220, 레벨 1→2→3) · 시뮬레이터 결과 화면(레벨업 Lv.3→5·+240XP·460XP 바 60%·스트릭) 렌더 확인.
