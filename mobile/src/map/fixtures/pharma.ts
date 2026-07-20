@@ -122,6 +122,7 @@ export const PHARMA_INTERIOR: Interior = {
   hotspots: [
     { id: 'hs-missing', kind: 'quest', x: 4, y: 6, label: '누락 약 확인', scenarioId: 'SCN-PHARMA-00006' },
     { id: 'hs-tube', kind: 'quest', x: 16, y: 5, label: '캡슐 송수신', scenarioId: 'SCN-PHARMA-00007' },
+    { id: 'hs-inhaler', kind: 'quest', x: 18, y: 5, label: '흡입기 사용법 교육', scenarioId: 'SCN-PHARMA-00014' },
   ],
   npcs: [
     // pick-up window

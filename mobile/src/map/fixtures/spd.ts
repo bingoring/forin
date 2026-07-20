@@ -90,6 +90,7 @@ export const SPD_INTERIOR: Interior = {
   hotspots: [
     { id: 'hs-decon', kind: 'quest', x: 7, y: 3, label: '기구 세척·소독 사이클', scenarioId: 'SCN-SPD-00001' },
     { id: 'hs-autoclave', kind: 'quest', x: 17, y: 3, label: '오토클레이브·팩 검수', scenarioId: 'SCN-SPD-00002' },
+    { id: 'hs-qcfail', kind: 'quest', x: 19, y: 3, label: '재처리 실패 보고', scenarioId: 'SCN-SPD-00012' },
     { id: 'hs-tray', kind: 'quest', x: 12, y: 14, label: '치료식 트레이 준비', scenarioId: 'SCN-SPD-00003' },
     { id: 'hs-logistics', kind: 'quest', x: 12, y: 33, label: '물류 입·출고 검수', scenarioId: 'SCN-SPD-00004' },
   ],
