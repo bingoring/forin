@@ -123,6 +123,14 @@ export interface PronunciationResult {
   words?: WordScore[];
 }
 
+// A user's growth snapshot (server: GET /me/progress, POST /attempts).
+// Level = 1 + floor(xp / 100); every 100 XP is one level.
+export interface Progress {
+  xp: number; level: number; rank: string;
+  patientSatisfaction: number; peerTrust: number; emergencyResponse: number;
+  streakCurrent: number; streakLongest: number;
+}
+
 export const api = {
   raw: http,
 
@@ -140,6 +148,18 @@ export const api = {
   async me(): Promise<MeResp> {
     const { data } = await http.get('/me');
     return data as MeResp;
+  },
+
+  /** Current growth snapshot (XP, level, streak, stats). */
+  async progress(): Promise<Progress> {
+    const { data } = await http.get('/me/progress');
+    return data as Progress;
+  },
+
+  /** Record a cleared scenario; awards `score` XP + advances streak, returns updated progress. */
+  async recordAttempt(scenarioId: string, score: number): Promise<Progress> {
+    const { data } = await http.post('/attempts', { scenarioId, score });
+    return data as Progress;
   },
 
   async manifest(): Promise<Manifest> {
