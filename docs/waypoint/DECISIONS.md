@@ -974,3 +974,13 @@
 **퀴즈**: QuizShell 카드 헤더 zone 칩·Monitor/Calc 섹션 헤더 흰색→textSoft(가독성 버그)·Match 다시 버튼+안내문·Monitor 처음부터 버튼.
 **의도적 보류(수정 안 함)**: 마이크 직접말하기(Azure 키 대기)·⏸→📝 퀴즈 버튼·Triage/CalcQuiz/Listen파형 재설계·타이머(무시간제)·대화 퀵툴 독/번역글로스/위험선택지(데이터·기능 대기)·상황판 부서 섹션 그룹화(우리 로테이션은 부서당 1건이라 단일카드 섹션 난립 → flat 유지).
 검증: tsc 0 · jest 208/208 · 시뮬레이터 7화면 렌더 확인.
+
+## 2026-07-21 — TriageQuiz·CalcQuiz·Listen 핸드오프 완전 구현 (재설계 → 1:1+)
+이전에 '재설계라 보류'했던 3개 퀴즈 타입을 핸드오프대로(또는 그 이상 인터랙티브로) 구현.
+- **서버**: `QuizContent`에 신규 필드/구조체 추가 — triage(patient{age,sex,arrival,cc,vitals[],obs[]}·correctLevel·reasoning[kind,text]), calc(order·vial·desired·onHand·perQty·dhqUnit·syringeMax·secondCheck), listen(duration·glossary[abbr,meaning]). **struct 변경 → API 재빌드·재시작 필수.**
+- **콘텐츠**: QZ-ICU-00002(ESI 흉통 STEMI, LV2)·QZ-PHARMA-00003(Heparin D/H×Q=0.5mL)·QZ-PHARMA-00001(morphine verbal order + 파형/자막/용어집) 저작.
+- **TriageQuiz**: PATIENT CASE 카드(초상·CC 하이라이트·활력 4그리드 warn·관찰 태그) + ESI 5단계 컬러 행 선택 + 확정 → 정오답 + WHY LVn? 근거 패널. 레거시 우선순위정렬은 fallback 유지.
+- **CalcQuiz**: ORDER 카드 + ON HAND 바이알(SVG 픽셀아트) + D/H×Q FORMULA 워크시트(제출 시 대입행 공개) + 주사기 눈금 SVG + 5R 안전점검 + 키패드. 단순 given/eq(체중기반)는 fallback.
+- **ListenQuiz**: 다크 오디오 카드(SVG 스피커 + 50-bar 파형 played/unplayed+플레이헤드) + 시간 라벨 + 0.7×/1.0× 속도(TTS rate) + 📝 자막 토글 + 약어 용어집 + 복창(Read back).
+- react-native-svg로 바이알/스피커/파형 픽셀아트 구현.
+- 검증: tsc 0 · jest 208/208 · 로더 0 · seed(122 퀴즈) · API 새 필드 왕복 · 시뮬레이터 3화면 렌더 확인.
