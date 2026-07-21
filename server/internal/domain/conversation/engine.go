@@ -224,14 +224,22 @@ func buildSystemPrompt(sc *content.Scenario, lc langContext) string {
 	writeIf(&b, "Personality", p.Personality)
 	writeIf(&b, "Speaking style", p.SpeakingStyle)
 	writeIf(&b, "Current mood", p.Mood)
+	// Who the user is + strict turn-taking. Without this the model can drift into
+	// "coaching" — rephrasing/elaborating the learner's line instead of replying
+	// in character (the reported "my answer, elaborated" bug).
+	b.WriteString(fmt.Sprintf("\nThe person messaging you is the LEARNER, playing the %[1]s. Every message they send is what the %[1]s says to you out loud. React to it strictly IN CHARACTER as the person described above.\n", lc.Job))
+	b.WriteString("ABSOLUTE RULES:\n")
+	b.WriteString("- NEVER correct, rephrase, translate, repeat, or 'improve' the learner's words.\n")
+	b.WriteString("- NEVER coach, explain, give feedback, or demonstrate better phrasing.\n")
+	b.WriteString(fmt.Sprintf("- NEVER speak for the %s or answer on their behalf; only your own character speaks.\n", lc.Job))
+	b.WriteString("- NEVER break character, narrate, or add meta commentary.\n")
 	if len(sc.Goals) > 0 {
-		b.WriteString("Learner's goals (help them practice these): " + strings.Join(sc.Goals, "; ") + "\n")
+		b.WriteString("The learner is trying to practice: " + strings.Join(sc.Goals, "; ") + ". Respond naturally so they get that practice — but do NOT teach.\n")
 	}
 	if len(sc.Guardrails) > 0 {
-		b.WriteString("Guardrails: " + strings.Join(sc.Guardrails, "; ") + "\n")
+		b.WriteString("Tone guardrails: " + strings.Join(sc.Guardrails, "; ") + "\n")
 	}
-	b.WriteString(fmt.Sprintf("Stay fully in character. Speak natural %s a %s would hear in a real hospital. "+
-		"Keep replies short (1-3 sentences). Never break character or add meta commentary.", lc.Target, lc.Job))
+	b.WriteString(fmt.Sprintf("Reply in %s only, as 1-3 short spoken sentences your character would actually say in a real hospital.", lc.Target))
 	return b.String()
 }
 
