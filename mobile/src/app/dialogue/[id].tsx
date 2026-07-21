@@ -158,19 +158,23 @@ export default function DialogueRoute() {
 
       {/* status bar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}>
-        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} onPress={() => router.back()} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
-        {!!mission && (
-          <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 190 }}>
-            <Shadowed offset={2}>
-              <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>🎯 MISSION 1/{Math.max(1, goals.length)}</Text>
+        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
+        <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
+          {!!mission && (
+            <>
+              <Shadowed offset={2}>
+                <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>🎯 MISSION 1/{Math.max(1, goals.length)}</Text>
+                </View>
+              </Shadowed>
+              <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, textAlign: 'right', lineHeight: 14 }}>{mission}</Text>
               </View>
-            </Shadowed>
-            <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, textAlign: 'right', lineHeight: 14 }}>{mission}</Text>
-            </View>
-          </View>
-        )}
+            </>
+          )}
+          {/* Main completion: resolving the situation via dialogue ends the scenario. */}
+          <PixelButton label="✓ 상황 종료" bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={() => router.replace(`/result/${id}`)} />
+        </View>
       </View>
 
       {/* patient portrait (L) */}

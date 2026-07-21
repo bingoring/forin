@@ -138,7 +138,7 @@ export default function ResultRoute() {
 
         {/* footer */}
         <View style={{ flexDirection: 'row', gap: 8, marginTop: 16, alignSelf: 'stretch' }}>
-          <PixelButton label="📓 리뷰랩에 저장" bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
+          <PixelButton label="📓 오답노트 보기" bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
           <View style={{ flex: 1 }}>
             <PixelButton label="다음 시나리오 ▶" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
           </View>

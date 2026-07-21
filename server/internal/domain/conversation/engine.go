@@ -143,6 +143,7 @@ func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply); err != nil {
 		return "", err
 	}
+	e.fileCorrection(userID, text) // background: AI-correct the learner's line → review card
 	return reply, nil
 }
 
@@ -160,7 +161,22 @@ func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text 
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply); err != nil {
 		return "", err
 	}
+	e.fileCorrection(userID, text) // background: AI-correct the learner's line → review card
 	return reply, nil
+}
+
+// fileCorrection runs an AI correction on the learner's utterance in the background
+// and files a review card only when the corrected phrasing meaningfully differs.
+// Fire-and-forget so it never blocks (or fails) the dialogue reply. Skips trivial
+// utterances (< 3 words) to avoid noise/cost.
+func (e *Engine) fileCorrection(userID, text string) {
+	if len(strings.Fields(text)) < 3 {
+		return
+	}
+	go func() {
+		defer func() { _ = recover() }()
+		_, _ = e.Correct(context.Background(), userID, text, "")
+	}()
 }
 
 // Correction is the result of correcting a user's English utterance.
@@ -201,12 +217,27 @@ func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText str
 		}
 	}
 
-	_ = e.convo.SaveCorrection(ctx, userID, c.Original, c.Corrected, c.Note, "")
-	if id, err := e.review.CreateCard(ctx, ports.NewReviewCard{
-		UserID: userID, Source: "correction", Front: c.Original, Back: c.Corrected, Note: c.Note}); err == nil {
-		c.CardID = id
+	// Only persist a review card when the correction is a real change — otherwise
+	// "already correct" utterances would spam the review lab.
+	if changed(c.Original, c.Corrected) {
+		_ = e.convo.SaveCorrection(ctx, userID, c.Original, c.Corrected, c.Note, "")
+		if id, err := e.review.CreateCard(ctx, ports.NewReviewCard{
+			UserID: userID, Source: "correction", Front: c.Original, Back: c.Corrected, Note: c.Note}); err == nil {
+			c.CardID = id
+		}
 	}
 	return c, nil
+}
+
+// changed reports whether the correction differs from the original after
+// normalizing case, surrounding whitespace, and trailing punctuation.
+func changed(original, corrected string) bool {
+	norm := func(s string) string {
+		s = strings.ToLower(strings.TrimSpace(s))
+		s = strings.TrimRight(s, ".!?,;: ")
+		return strings.Join(strings.Fields(s), " ")
+	}
+	return corrected != "" && norm(original) != norm(corrected)
 }
 
 // buildSystemPrompt composes the persona + scenario goals/guardrails into a role-play instruction,

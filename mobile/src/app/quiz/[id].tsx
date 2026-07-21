@@ -54,8 +54,9 @@ export default function QuizRoute() {
     );
   }
 
-  // On clear: advance to the next quiz in the sequence, else show the scenario
-  // result, else just go back.
+  // On clear: advance to the next quiz in the sequence; when the whole sequence is
+  // done, RETURN TO THE DIALOGUE (the quiz is a side activity — resolving the
+  // situation via conversation is the main flow and what ends the scenario).
   const onComplete = () => {
     if (idx + 1 < queue.length) {
       const sp = new URLSearchParams();
@@ -63,10 +64,8 @@ export default function QuizRoute() {
       sp.set('q', queue.join(','));
       sp.set('i', String(idx + 1));
       router.replace(`/quiz/${queue[idx + 1]}?${sp.toString()}`);
-    } else if (scenario) {
-      router.replace(`/result/${scenario}`);
     } else {
-      router.back();
+      router.back(); // back to the dialogue that launched the quiz
     }
   };
   const onExit = () => router.back();
