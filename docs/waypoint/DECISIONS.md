@@ -984,3 +984,13 @@
 - **ListenQuiz**: 다크 오디오 카드(SVG 스피커 + 50-bar 파형 played/unplayed+플레이헤드) + 시간 라벨 + 0.7×/1.0× 속도(TTS rate) + 📝 자막 토글 + 약어 용어집 + 복창(Read back).
 - react-native-svg로 바이알/스피커/파형 픽셀아트 구현.
 - 검증: tsc 0 · jest 208/208 · 로더 0 · seed(122 퀴즈) · API 새 필드 왕복 · 시뮬레이터 3화면 렌더 확인.
+
+## 2026-07-21 — 대화 화면 보류 항목 핸드오프 구현 (+ 앱-적합 gap 채움)
+이전에 '데이터/기능 대기'로 보류했던 대화 화면 항목들을 핸드오프대로 구현.
+- **서버**: `Briefing`에 `chart`(ScenarioChart: vitals/meds/allergies/notes)·`riskyPhrases[]` 추가(jsonb, 마이그레이션 불필요). SCN-ER-00002에 실 차트(활력·투약·알레르기)+riskyPhrase 저작, keyPhrases에 위험 선택지 1개 추가.
+- **QUICK INFO 독**: 📋 차트/💊 약물/🩺 활력 3버튼 → 스크림+모달 패널. 차트(환자·역할·호소·알레르기·메모)·약물(chart.meds)·활력(chart.vitals 그리드). chart 없는 시나리오는 '직접 사정하세요' 등 앱-적합 fallback(임상값 날조 안 함).
+- **번역 칩**: NPC 말풍선에 'tap to 번역' → 스크립트 오프닝 대사의 한국어(step lineKo) 토글. AI 스트리밍 응답엔 Ko 없어 칩 미표시(정직).
+- **위험 선택지 변형**: 힌트모드 ChoiceRow에 red 변형(⚠ 평판 −2 위험) 추가, briefing.riskyPhrases로 태깅.
+- **MISSION 1/N 카운터**·**💧 distress cue**(mood pain/panic/worried)·**▼ next-turn cue**·**스피커탭 위쪽 그림자**·**힌트 ● active 배지**·오프닝 대사=첫 dialogue 스텝(태그라인 아님).
+- 보류 유지: 마이크 STT(Azure 키 대기).
+- 검증: tsc 0 · jest 208/208 · 로더 0 · seed(300·122·11) · 새 필드 왕복 · 시뮬레이터 기본뷰+QUICK INFO 활력 패널+힌트 위험선택지 렌더 확인.
