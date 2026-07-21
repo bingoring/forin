@@ -6,7 +6,7 @@
 // 🔊 speaks the corrected line (expo-speech). 1:1 in spirit with v17 ScreenReviewLab.
 import { useCallback, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
-import { useFocusEffect } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
@@ -30,6 +30,7 @@ function splitTag(topicTag: string): { dept: string; tag: string } {
 }
 
 export default function Lab() {
+  const router = useRouter();
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [filter, setFilter] = useState('ALL');
@@ -88,7 +89,7 @@ export default function Lab() {
             </Text>
             {cards.length > 0 && (
               <View style={{ marginTop: 12 }}>
-                <PixelButton label={`▶  오늘의 복습 시작 (${cards.length})`} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => { setFilter('ALL'); Speech.speak(cards[0].back, { language: 'en-US', rate: 0.92 }); }} />
+                <PixelButton label={`▶  오늘의 복습 시작 (${cards.length})`} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
               </View>
             )}
             <Text style={{ position: 'absolute', top: -10, right: -4, fontSize: 26, transform: [{ rotate: '10deg' }] }}>📓</Text>
