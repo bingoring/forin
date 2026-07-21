@@ -78,9 +78,12 @@ export default function Me() {
 
         {/* ── ID card ── */}
         <Shadowed offset={5}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
-            <View style={{ height: 8, backgroundColor: colors.mint, borderWidth: 2, borderColor: C, marginBottom: 10 }} />
-            <View style={{ flexDirection: 'row', gap: 14 }}>
+          <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, overflow: 'hidden' }}>
+            {/* hospital header band — flush to the card's top edge (ID-card look) */}
+            <View style={{ height: 8, backgroundColor: colors.mint, borderBottomWidth: 2, borderBottomColor: C }} />
+            {/* punched-hole notch (id-card vibe) */}
+            <View style={{ position: 'absolute', top: -1, left: '50%', marginLeft: -12, width: 24, height: 5, backgroundColor: colors.cream, borderWidth: 2, borderTopWidth: 0, borderColor: C }} />
+            <View style={{ padding: 14, paddingTop: 12, flexDirection: 'row', gap: 14 }}>
               {/* avatar */}
               <Shadowed offset={3}>
                 <View style={{ width: 80, height: 96, backgroundColor: colors.peach, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>

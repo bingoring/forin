@@ -116,7 +116,7 @@ export default function DialogueRoute() {
       </View>
 
       {/* status bar */}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', zIndex: 5 }}>
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}>
         <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} onPress={() => router.back()} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
         {!!mission && (
           <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 190 }}>
@@ -140,7 +140,7 @@ export default function DialogueRoute() {
       </View>
 
       {/* player portrait (R) */}
-      <View style={{ position: 'absolute', right: 16, top: 158, zIndex: 2, opacity: 0.9 }}>
+      <View style={{ position: 'absolute', right: 16, top: 158, zIndex: 2, opacity: 0.85 }}>
         <PortraitFrame name="YOU · Junior Nurse" hue={colors.mint}>
           <RoleFace kind="nurse" hair="#3C2A18" expression="focused" size={120} />
         </PortraitFrame>
@@ -215,8 +215,12 @@ export default function DialogueRoute() {
             )}
             {/* next-turn cue */}
             {!!npcLine && (
-              <View style={{ position: 'absolute', right: 10, bottom: -8, width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>▼</Text>
+              <View style={{ position: 'absolute', right: 10, bottom: -8 }}>
+                <Shadowed offset={2}>
+                  <View style={{ width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>▼</Text>
+                  </View>
+                </Shadowed>
               </View>
             )}
           </View>
@@ -275,12 +279,14 @@ export default function DialogueRoute() {
         {/* action rail */}
         <View style={{ marginTop: 12, flexDirection: 'row', gap: 8 }}>
           <View style={{ flex: 2 }}>
-            <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} disabled={pending || !draft.trim()} onPress={send} full />
+            <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
           <View style={{ flex: 1 }}>
-            <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
+            <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
             {hintOn && (
-              <View style={{ position: 'absolute', top: -4, right: -4, width: 12, height: 12, borderRadius: 6, backgroundColor: C, borderWidth: 1.5, borderColor: colors.cream }} />
+              <View style={{ position: 'absolute', top: -6, right: -6, width: 14, height: 14, backgroundColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.yellow }}>●</Text>
+              </View>
             )}
           </View>
           {quizIds.length > 0 && (
@@ -291,6 +297,8 @@ export default function DialogueRoute() {
               fontSize={12}
               paddingV={9}
               paddingH={12}
+              borderWidth={2}
+              offset={2}
               onPress={() => router.push(`/quiz/${quizIds[0]}?scenario=${id}&q=${quizIds.join(',')}&i=0`)}
             />
           )}
@@ -341,13 +349,13 @@ function PortraitFrame({ children, name, status, hue, sweat }: { children: React
 /** A tappable suggested response (hint mode). Numbered chip + phrase.
  *  suggested = mint (AI 추천) · risky = red (평판 위험) · else peach (normal). */
 function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text: string; suggested?: boolean; risky?: boolean; onPress: () => void }) {
-  const tabBg = risky ? '#EF4444' : suggested ? colors.mint : colors.peach;
-  const shadow = risky ? '#B91C1C' : suggested ? colors.mintShadow : '#2A252266';
+  const tabBg = risky ? '#FCA5A5' : suggested ? colors.mint : colors.peach;
+  const shadow = suggested ? colors.mintShadow : '#2A252266';
   return (
-    <Shadowed offset={suggested || risky ? 3 : 2} shadowColor={shadow}>
-      <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: risky ? '#B91C1C' : C }}>
+    <Shadowed offset={suggested ? 3 : 2} shadowColor={shadow}>
+      <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
         <View style={{ width: 28, backgroundColor: tabBg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: risky ? '#fff' : C }}>{num}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{num}</Text>
         </View>
         <View style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 10 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{text}</Text>

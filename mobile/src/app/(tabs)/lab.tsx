@@ -107,12 +107,17 @@ export default function Lab() {
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
             {cats.map((c) => {
               const active = filter === c.id;
+              const catColor = c.id === 'ALL' ? C : toneOf(c.id);
               return (
-                <Pressable key={c.id} onPress={() => setFilter(c.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? C : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: active ? '#fff' : C }}>{c.label}</Text>
-                  <View style={{ backgroundColor: active ? '#fff' : C, paddingHorizontal: 4 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: active ? C : '#fff' }}>{c.count}</Text>
-                  </View>
+                <Pressable key={c.id} onPress={() => setFilter(c.id)}>
+                  <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: active ? C : C }}>{c.label}</Text>
+                      <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{c.count}</Text>
+                      </View>
+                    </View>
+                  </Shadowed>
                 </Pressable>
               );
             })}
@@ -207,12 +212,10 @@ function Badge({ text, bg, color }: { text: string; bg: string; color: string })
 function MiniStat({ label, value, color }: { label: string; value: number; color: string }) {
   return (
     <Shadowed offset={2} shadowColor={C + '66'} style={{ flex: 1 }}>
-      <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingLeft: 12, flexDirection: 'row', alignItems: 'center' }}>
+      <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
         <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, backgroundColor: color }} />
-        <View>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 22, color: C }}>{value}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{label}</Text>
-        </View>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 22, color: C }}>{value}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{label}</Text>
       </View>
     </Shadowed>
   );

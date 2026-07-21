@@ -5,6 +5,7 @@
 // (card order) when no `patient`/`correctLevel` is present.
 import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import Svg, { Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
@@ -21,6 +22,22 @@ const LEVELS = [
 ];
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+
+// Crisp-edges pixel patient head (hair · face · frown · sweat drops), ~ handoff PatientHeadPixel.
+function PatientHeadPixel() {
+  return (
+    <Svg width="100%" height="100%" viewBox="0 0 16 18">
+      <Rect x={3} y={1} width={10} height={3} fill="#9A6B3F" />
+      <Rect x={4} y={3} width={8} height={7} fill="#FDE1C8" stroke={C} strokeWidth={0.2} />
+      <Rect x={5.5} y={5.5} width={1.5} height={1} fill={C} />
+      <Rect x={9} y={5.5} width={1.5} height={1} fill={C} />
+      <Rect x={6.5} y={8} width={3} height={0.6} fill="#7C2D12" />
+      <Rect x={3} y={10} width={10} height={8} fill="#FED7AA" stroke={C} strokeWidth={0.2} />
+      <Rect x={13} y={4} width={1} height={2} fill="#60A5FA" />
+      <Rect x={13} y={6} width={1} height={1} fill="#60A5FA" />
+    </Svg>
+  );
+}
 
 export function TriageQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -67,8 +84,8 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
               <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>PATIENT CASE</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
-              <View style={{ width: 56, height: 64, backgroundColor: colors.peach, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 34 }}>😰</Text>
+              <View style={{ width: 56, height: 64, backgroundColor: colors.peach, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center', padding: 4 }}>
+                <PatientHeadPixel />
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{p.age} y / {p.sex}</Text>

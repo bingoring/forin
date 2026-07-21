@@ -130,6 +130,11 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
                     </View>
                   )}
                 </View>
+                {isPicked && !checked && (
+                  <View style={{ position: 'absolute', top: -7, right: -7, width: 15, height: 15, backgroundColor: colors.yellowShadow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>?</Text>
+                  </View>
+                )}
               </Pressable>
             </Shadowed>
           );

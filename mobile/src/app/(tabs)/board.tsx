@@ -88,20 +88,27 @@ export default function Board() {
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
       {/* ── pinned header: title + summary + counters + filter tabs ── */}
       <View style={{ paddingTop: 52, paddingHorizontal: space.lg, paddingBottom: 8, backgroundColor: colors.cream, borderBottomWidth: 2, borderBottomColor: '#2A252222', zIndex: 2 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>오늘의 상황판</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft }}>{todayLabel()}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>≡</Text>
+          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>오늘의 상황판</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{todayLabel()}</Text>
         </View>
 
         {/* date + summary card */}
         <Shadowed offset={4} shadowColor={colors.mintShadow} style={{ marginTop: 10 }}>
-          <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 12 }}>
+          <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Text style={{ fontSize: 26 }}>📋</Text>
+              <Text style={{ fontSize: 28 }}>📋</Text>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
               </View>
+              <Shadowed offset={2}>
+                <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 7, alignItems: 'center' }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft }}>새로고침</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>⏱ {nowTime()}</Text>
+                </View>
+              </Shadowed>
             </View>
             <View style={{ flexDirection: 'row', gap: 6, marginTop: 10 }}>
               <Counter label="URGENT" value={urgent} accent="#EF4444" />
@@ -132,7 +139,7 @@ export default function Board() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                 <Shadowed offset={2}>
                   <View style={{ width: 28, height: 28, backgroundColor: m?.color ?? C, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 15 }}>{m?.icon ?? '🏥'}</Text>
+                    <Text style={{ fontSize: 16 }}>{m?.icon ?? '🏥'}</Text>
                   </View>
                 </Shadowed>
                 <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 13, color: C }}>{m?.name ?? dept}</Text>
@@ -172,9 +179,11 @@ function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
         {/* urgency tag + room + difficulty */}
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, flex: 1 }}>
-            <View style={{ backgroundColor: u.accent, borderWidth: 1.5, borderColor: C, paddingHorizontal: 6, paddingVertical: 1 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{u.label}</Text>
-            </View>
+            <Shadowed offset={1.5}>
+              <View style={{ backgroundColor: u.accent, borderWidth: 1.5, borderColor: C, paddingHorizontal: 6, paddingVertical: 1 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{u.label}</Text>
+              </View>
+            </Shadowed>
             {!!c.room && <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }} numberOfLines={1}>{c.room}</Text>}
           </View>
           <DifficultyMini n={c.difficulty ?? 1} />
@@ -249,7 +258,7 @@ function DeptTab({ label, icon, color, active, count, onPress }: { id: string; l
     <Pressable onPress={onPress}>
       <Shadowed offset={active ? 2.5 : 2} shadowColor={active ? C : C + '66'}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: active ? color : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 8 }}>
-          <Text style={{ fontSize: 12 }}>{icon}</Text>
+          <Text style={{ fontSize: 13 }}>{icon}</Text>
           <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: active ? '#fff' : C }}>{label}</Text>
           {count > 0 && (
             <View style={{ backgroundColor: active ? '#fff' : color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
@@ -281,4 +290,8 @@ function monthDay(): string {
   const d = new Date();
   const mon = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()];
   return `${mon} ${d.getDate()}`;
+}
+function nowTime(): string {
+  const d = new Date();
+  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }

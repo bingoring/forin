@@ -88,7 +88,7 @@ export default function ResultRoute() {
         <PixelButton label="↗ 공유" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={onShare} />
       </View>
 
-      <View style={{ paddingHorizontal: 22, paddingTop: 92, alignItems: 'center', zIndex: 2 }}>
+      <View style={{ paddingHorizontal: 22, paddingTop: 80, alignItems: 'center', zIndex: 2 }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>SCENARIO CLEAR!</Text>
         <View style={{ marginTop: 6 }}>
           <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: 34, color: colors.yellow }}>참 잘했어요!</Text>

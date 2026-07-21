@@ -142,7 +142,7 @@ function DosageBody({ c, entry, checked, correct }: { c: NonNullable<QuizDetail[
             {/* substitution — revealed after submit */}
             {checked && (
               <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 5, flexWrap: 'wrap' }}>
-                <Fraction top={c.desired} bottom={c.onHand} red />
+                <Fraction top={c.desired} bottom={c.onHand} sub={c.dhqUnit} red />
                 <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>× {c.perQty} =</Text>
                 <View style={{ backgroundColor: correct ? colors.yellow : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{c.answer} {c.answerUnit}</Text>
@@ -188,13 +188,16 @@ function DosageBody({ c, entry, checked, correct }: { c: NonNullable<QuizDetail[
   );
 }
 
-function Fraction({ top, bottom, red }: { top?: string; bottom?: string; red?: boolean }) {
+function Fraction({ top, bottom, sub, red }: { top?: string; bottom?: string; sub?: string; red?: boolean }) {
   const col = red ? '#DC2626' : C;
   return (
-    <View style={{ alignItems: 'center' }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: col, paddingHorizontal: 3 }}>{top}</Text>
-      <View style={{ height: 2, backgroundColor: C, alignSelf: 'stretch' }} />
-      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: col, paddingHorizontal: 3 }}>{bottom}</Text>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 2 }}>
+      <View style={{ alignItems: 'center' }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: col, paddingHorizontal: 3 }}>{top}</Text>
+        <View style={{ height: 2, backgroundColor: C, alignSelf: 'stretch' }} />
+        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: col, paddingHorizontal: 3 }}>{bottom}</Text>
+      </View>
+      {!!sub && <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft }}>{sub}</Text>}
     </View>
   );
 }
@@ -215,6 +218,7 @@ function VialArt() {
         <Rect x={8} y={25} width={14} height={1} fill={C} />
         <Rect x={8} y={27} width={10} height={1} fill={C} />
         <Rect x={8} y={29} width={12} height={1} fill={C} />
+        <Rect x={8} y={31} width={8} height={1} fill={C} />
         <Rect x={6} y={41} width={18} height={3} fill="#94A3B8" stroke={C} strokeWidth={0.4} />
       </Svg>
     </View>
@@ -225,6 +229,9 @@ function VialArt() {
 function SyringeScale({ fill, label }: { fill: number; label: string }) {
   return (
     <View style={{ height: 30, justifyContent: 'center' }}>
+      {/* tip (left) + needle (right) */}
+      <View style={{ position: 'absolute', left: 0, top: 12, width: 6, height: 6, backgroundColor: '#475569', borderWidth: 1.5, borderColor: C }} />
+      <View style={{ position: 'absolute', right: 0, top: 14, width: 6, height: 2, backgroundColor: C }} />
       <View style={{ height: 16, backgroundColor: '#fff', borderWidth: 2, borderColor: C, marginHorizontal: 6, position: 'relative' }}>
         <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${fill * 100}%`, backgroundColor: '#A5B4FC', borderRightWidth: 2, borderRightColor: C }} />
         {[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9].map((tv) => (
