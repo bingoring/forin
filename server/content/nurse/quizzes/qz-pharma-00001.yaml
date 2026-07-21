@@ -1,5 +1,6 @@
-# listen — verbal-order dictation (v16 quiz Listening). Listen to the order and
-# pick the exact read-back. Distractors are similar-sounding (mg/mL, IV/IM...).
+# listen — verbal-order dictation (v17 handoff LISTEN design). Play the audio
+# (waveform + speed toggles), then pick the exact read-back. Distractors are
+# similar-sounding (mg/mL, IV/IM, q4h/q6h). Abbreviation glossary below.
 id: QZ-PHARMA-00001
 type: listen
 title: "구두 처방 받아쓰기"
@@ -7,9 +8,15 @@ content:
   sub: "의사의 verbal order를 정확히 듣고 골라주세요"
   zone: "약국"
   context: "📞 Dr. Patel이 전화로 구두 처방을 냅니다. 정확히 복창해야 합니다."
-  hint: "단위(mg vs mL)와 경로(IV vs IM)를 특히 주의하세요."
+  hint: "단위(mg vs mL)와 경로(IV vs IM), 빈도(q4h vs q6h)를 특히 주의하세요."
   audioText: "Give 2 milligrams of morphine IV every 4 hours, PRN pain."
+  duration: "0:08"
   choices:
     - { text: "Give 2 mg of morphine IV every 4 hours, PRN pain.", tags: ["2 mg", "IV", "q4h", "PRN"], correct: true }
     - { text: "Give 20 mg of morphine IM every 4 hours, after meals.", tags: ["20 mg", "IM", "q4h", "PC"] }
     - { text: "Give 2 mL of morphine IV every 6 hours, PRN pain.", tags: ["2 mL", "IV", "q6h", "PRN"] }
+  glossary:
+    - { abbr: "PRN", meaning: "필요할 때" }
+    - { abbr: "q4h", meaning: "4시간마다" }
+    - { abbr: "IV", meaning: "정맥주사" }
+    - { abbr: "IM", meaning: "근육주사" }

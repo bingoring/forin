@@ -287,6 +287,77 @@ type QuizContent struct {
 
 	Deck []QuizDeckCard `yaml:"deck" json:"deck,omitempty"` // abbr: flashcard deck (one MCQ per card)
 	// dialogue_order reuses Cards (Track = speaker, Order = turn number).
+
+	// triage (ESI decision): a patient case + the correct ESI level (1-5) + reasoning.
+	Patient      *QuizPatient `yaml:"patient" json:"patient,omitempty"`
+	CorrectLevel int          `yaml:"correctLevel" json:"correctLevel,omitempty"`
+	Reasoning    []QuizReason `yaml:"reasoning" json:"reasoning,omitempty"`
+
+	// calc (dosage): a full order card, the on-hand vial, and the D/H×Q worksheet.
+	Order       *QuizOrder `yaml:"order" json:"order,omitempty"`
+	Vial        *QuizVial  `yaml:"vial" json:"vial,omitempty"`
+	Desired     string     `yaml:"desired" json:"desired,omitempty"`         // D (numerator)
+	OnHand      string     `yaml:"onHand" json:"onHand,omitempty"`           // H (denominator)
+	PerQty      string     `yaml:"perQty" json:"perQty,omitempty"`           // Q (e.g. "1 mL")
+	DhqUnit     string     `yaml:"dhqUnit" json:"dhqUnit,omitempty"`         // shared D/H unit (e.g. "units")
+	SyringeMax  float64    `yaml:"syringeMax" json:"syringeMax,omitempty"`   // syringe scale max (default 1.0 mL)
+	SecondCheck string     `yaml:"secondCheck" json:"secondCheck,omitempty"` // "2nd check by" name
+
+	// listen (waveform): clip duration + an abbreviation glossary.
+	Duration string      `yaml:"duration" json:"duration,omitempty"` // e.g. "0:08"
+	Glossary []QuizGloss `yaml:"glossary" json:"glossary,omitempty"`
+}
+
+// QuizPatient — a triage patient case: demographics, chief complaint, vitals, observations.
+type QuizPatient struct {
+	Age     string      `yaml:"age" json:"age,omitempty"`
+	Sex     string      `yaml:"sex" json:"sex,omitempty"`
+	Arrival string      `yaml:"arrival" json:"arrival,omitempty"`
+	CC      string      `yaml:"cc" json:"cc,omitempty"`
+	Vitals  []QuizVital `yaml:"vitals" json:"vitals,omitempty"`
+	Obs     []QuizObs   `yaml:"obs" json:"obs,omitempty"`
+}
+
+// QuizVital — one vital sign; Warn marks an abnormal (red) value.
+type QuizVital struct {
+	Label string `yaml:"label" json:"label"`
+	Value string `yaml:"value" json:"value"`
+	Unit  string `yaml:"unit" json:"unit,omitempty"`
+	Warn  bool   `yaml:"warn" json:"warn,omitempty"`
+}
+
+// QuizObs — an observation tag; Warn marks a red (concerning) tag.
+type QuizObs struct {
+	Text string `yaml:"text" json:"text"`
+	Warn bool   `yaml:"warn" json:"warn,omitempty"`
+}
+
+// QuizReason — a line in the triage reasoning panel. Kind: ok|bad|note.
+type QuizReason struct {
+	Kind string `yaml:"kind" json:"kind"`
+	Text string `yaml:"text" json:"text"`
+}
+
+// QuizOrder — a prescription order card (calc quiz).
+type QuizOrder struct {
+	ID         string `yaml:"id" json:"id,omitempty"`
+	Prescriber string `yaml:"prescriber" json:"prescriber,omitempty"`
+	Time       string `yaml:"time" json:"time,omitempty"`
+	Patient    string `yaml:"patient" json:"patient,omitempty"`
+	Drug       string `yaml:"drug" json:"drug,omitempty"` // highlighted order line
+}
+
+// QuizVial — the on-hand medication vial (calc quiz).
+type QuizVial struct {
+	Drug          string `yaml:"drug" json:"drug,omitempty"`
+	Concentration string `yaml:"concentration" json:"concentration,omitempty"`
+	Size          string `yaml:"size" json:"size,omitempty"`
+}
+
+// QuizGloss — one abbreviation → meaning entry (listen glossary).
+type QuizGloss struct {
+	Abbr    string `yaml:"abbr" json:"abbr"`
+	Meaning string `yaml:"meaning" json:"meaning"`
 }
 
 // QuizDeckCard — one abbreviation flashcard: expand Term, pick Answer from Options.

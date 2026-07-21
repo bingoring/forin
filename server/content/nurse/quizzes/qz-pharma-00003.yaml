@@ -1,16 +1,28 @@
-# calc — weight-based pediatric dose (v17 CALC format). Compute the per-dose mg.
+# calc — dosage calculation (v17 handoff DOSAGE design). Order → on-hand vial →
+# D ÷ H × Q worksheet → syringe volume, with a 5-Rights safety check.
 id: QZ-PHARMA-00003
 type: calc
-title: "소아 용량 계산"
+title: "약물 용량 계산"
 content:
-  sub: "체중 기반 1회 용량을 구하세요"
+  sub: "처방 → 바이알 → 투여량 (D ÷ H × Q)"
   zone: "약국"
-  context: "🍼 소아 항생제를 체중 기반으로 계산합니다. 1회 처방 용량(mg)을 구하세요."
-  given:
-    - { label: "Patient weight", value: "20 kg" }
-    - { label: "Ordered dose", value: "15 mg / kg" }
-    - { label: "Frequency", value: "q8h" }
-  eq: "15 × 20"
-  answer: "300"
-  answerUnit: "mg / dose"
-  hint: "체중(kg) × 용량(mg/kg) = 1회 용량. 소수점·단위 주의!"
+  context: "💊 구두/전자 처방을 보유 바이알 농도로 나눠 실제 주입량(mL)을 계산하세요."
+  order:
+    id: "#0824"
+    prescriber: "Dr. Patel"
+    time: "14:23"
+    patient: "Mr. Lee (62 M, Bed 412)"
+    drug: "Heparin 5,000 units SC × 1 dose now"
+  vial:
+    drug: "Heparin"
+    concentration: "10,000 u/mL"
+    size: "5 mL multi-dose vial"
+  desired: "5,000"
+  onHand: "10,000"
+  perQty: "1 mL"
+  dhqUnit: "units"
+  answer: "0.5"
+  answerUnit: "mL"
+  syringeMax: 1.0
+  secondCheck: "Nurse Park"
+  hint: "D(원하는 용량) ÷ H(보유 농도) × Q(수량). 5,000 ÷ 10,000 × 1 mL."

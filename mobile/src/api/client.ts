@@ -126,7 +126,20 @@ export interface QuizContent {
   gauge?: { min: number; max: number; start: number; target: number; step: number; unit?: string };
   rows?: { label: string; text: string; error?: boolean }[];
   deck?: { term: string; options: string[]; answer: string }[];
+  // triage (ESI decision)
+  patient?: QuizPatient; correctLevel?: number; reasoning?: QuizReason[];
+  // calc (dosage worksheet)
+  order?: QuizOrder; vial?: QuizVial; desired?: string; onHand?: string; perQty?: string; dhqUnit?: string; syringeMax?: number; secondCheck?: string;
+  // listen (waveform)
+  duration?: string; glossary?: QuizGloss[];
 }
+export interface QuizVital { label: string; value: string; unit?: string; warn?: boolean }
+export interface QuizObs { text: string; warn?: boolean }
+export interface QuizPatient { age?: string; sex?: string; arrival?: string; cc?: string; vitals?: QuizVital[]; obs?: QuizObs[] }
+export interface QuizReason { kind: string; text: string }
+export interface QuizOrder { id?: string; prescriber?: string; time?: string; patient?: string; drug?: string }
+export interface QuizVial { drug?: string; concentration?: string; size?: string }
+export interface QuizGloss { abbr: string; meaning: string }
 export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;
 }
