@@ -23,7 +23,13 @@ const DEPT_META: Record<string, { label: string; icon: string }> = {
   SIM: { label: '시뮬레이션랩', icon: '🎓' }, LOUNGE: { label: '라운지', icon: '☕' }, SPD: { label: '중앙공급', icon: '📦' },
   MORGUE: { label: '영안실', icon: '🕯' }, GEN: { label: '공통', icon: '🏥' },
 };
-const urgencyColor = (u: string) => (u === 'urgent' ? '#FCA5A5' : u === 'info' ? colors.mint : colors.yellow);
+// Urgency → card tint, accent color, and all-caps tag (1:1 with the handoff scheme).
+const URGENCY: Record<string, { tint: string; accent: string; label: string }> = {
+  urgent: { tint: '#FEE2E2', accent: '#DC2626', label: 'URGENT' },
+  quest: { tint: '#FEF3C7', accent: '#CA8A04', label: 'QUEST' },
+  info: { tint: '#FFFFFF', accent: '#6B7280', label: 'INFO' },
+};
+const urg = (u: string) => URGENCY[u] ?? URGENCY.quest;
 
 export default function Board() {
   const router = useRouter();
@@ -51,48 +57,82 @@ export default function Board() {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.paper }}>
-      <ScrollView contentContainerStyle={{ padding: space.lg, paddingBottom: 40, gap: space.md }}>
+    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+      <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>오늘의 상황판</Text>
 
-        {/* summary */}
-        <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: space.lg }}>
+        {/* summary + counter tiles */}
+        <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: space.md }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: t.section, color: C }}>현장 상황 {cards.length}건 발생</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: C, marginTop: 4 }}>🔴 긴급 {urgent} · 🟡 일반 {quest}</Text>
+          <View style={{ flexDirection: 'row', gap: 6, marginTop: 10 }}>
+            <Counter label="URGENT" value={urgent} accent="#EF4444" />
+            <Counter label="QUEST" value={quest} accent="#FACC15" />
+            <Counter label="완료" value={0} accent={colors.mintShadow} />
+            <Counter label="남은" value={cards.length} accent={C} />
+          </View>
         </View>
 
-        {/* filter chips */}
+        {/* filter chips — English dept codes, active fills with the dept color, + count */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
           {['ALL', ...depts].map((d) => {
             const active = filter === d;
-            const label = d === 'ALL' ? '✨ 전체' : `${DEPT_META[d]?.icon ?? ''} ${DEPT_META[d]?.label ?? d}`;
+            const count = d === 'ALL' ? cards.length : cards.filter((c) => c.dept === d).length;
+            const deptColor = cards.find((c) => c.dept === d)?.deptColor || C;
+            const activeBg = d === 'ALL' ? C : deptColor;
             return (
-              <Pressable key={d} onPress={() => setFilter(d)} style={{ backgroundColor: active ? C : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 10 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: active ? '#fff' : C }}>{label}</Text>
+              <Pressable key={d} onPress={() => setFilter(d)} style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? activeBg : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: active ? '#fff' : C }}>{d === 'ALL' ? '✨ 전체' : `${DEPT_META[d]?.icon ?? ''} ${d}`}</Text>
+                <View style={{ backgroundColor: active ? '#fff' : C, paddingHorizontal: 4 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: active ? C : '#fff' }}>{count}</Text>
+                </View>
               </Pressable>
             );
           })}
         </ScrollView>
 
         {/* cards */}
-        {shown.map((c) => (
-          <Pressable key={c.id} onPress={() => router.push(`/scenario/${c.id}`)} style={{ flexDirection: 'row', alignItems: 'center', gap: space.md, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: space.md }}>
-            <View style={{ width: 8, alignSelf: 'stretch', backgroundColor: urgencyColor(c.urgency), borderWidth: 1.5, borderColor: C }} />
-            <View style={{ flex: 1 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <View style={{ backgroundColor: c.deptColor || C, paddingHorizontal: 5, paddingVertical: 1 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{DEPT_META[c.dept]?.icon ?? ''} {DEPT_META[c.dept]?.label ?? c.dept}</Text>
+        {shown.map((c) => {
+          const u = urg(c.urgency);
+          return (
+            <Pressable key={c.id} onPress={() => router.push(`/scenario/${c.id}`)} style={{ flexDirection: 'row', alignItems: 'center', gap: space.md, backgroundColor: u.tint, borderWidth: 3, borderColor: C, padding: space.md }}>
+              <View style={{ width: 8, alignSelf: 'stretch', backgroundColor: u.accent, borderWidth: 1.5, borderColor: C }} />
+              <View style={{ flex: 1 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                  <View style={{ backgroundColor: c.deptColor || C, paddingHorizontal: 5, paddingVertical: 1 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{DEPT_META[c.dept]?.icon ?? ''} {DEPT_META[c.dept]?.label ?? c.dept}</Text>
+                  </View>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: u.accent }}>{u.label}</Text>
                 </View>
-                {c.urgency === 'urgent' && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#DC2626' }}>❗긴급</Text>}
+                <Text style={{ fontFamily: fonts.heading, fontSize: t.body, color: C, marginTop: 4 }}>{c.title}</Text>
+                {!!c.tagline && (
+                  <View style={{ marginTop: 4, alignSelf: 'flex-start', backgroundColor: '#fff', borderWidth: 1.5, borderColor: C + '44', paddingHorizontal: 6, paddingVertical: 2 }}>
+                    <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.text, fontStyle: 'italic' }} numberOfLines={1}>{c.tagline}</Text>
+                  </View>
+                )}
               </View>
-              <Text style={{ fontFamily: fonts.heading, fontSize: t.body, color: C, marginTop: 4 }}>{c.title}</Text>
-              {!!c.tagline && <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textSoft, fontStyle: 'italic', marginTop: 2 }} numberOfLines={1}>{c.tagline}</Text>}
-            </View>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: colors.textSoft }}>›</Text>
-          </Pressable>
-        ))}
-        {shown.length === 0 && <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textFaint, textAlign: 'center', marginTop: 20 }}>이 부서엔 오늘 발생한 상황이 없어요.</Text>}
+              <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: colors.textSoft }}>›</Text>
+            </Pressable>
+          );
+        })}
+        {shown.length === 0 && (
+          <View style={{ alignItems: 'center', marginTop: 20, gap: 6, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', backgroundColor: colors.paper, paddingVertical: 28 }}>
+            <Text style={{ fontSize: 28 }}>{DEPT_META[filter]?.icon ?? '🗓'}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textSoft, textAlign: 'center' }}>{DEPT_META[filter]?.label ?? filter}에 오늘 발생한 상황이 없어요.</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textFaint }}>내일 다시 확인해보세요!</Text>
+          </View>
+        )}
       </ScrollView>
+    </View>
+  );
+}
+
+// One boxed summary counter tile (URGENT / QUEST / 완료 / 남은).
+function Counter({ label, value, accent }: { label: string; value: number; accent: string }) {
+  return (
+    <View style={{ flex: 1, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 6, alignItems: 'center' }}>
+      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, backgroundColor: accent }} />
+      <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 3 }}>{value}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft, marginTop: 1 }}>{label}</Text>
     </View>
   );
 }

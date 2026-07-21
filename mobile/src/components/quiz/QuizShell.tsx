@@ -72,7 +72,14 @@ export function QuizShell({ title, sub, zone, onExit, progress, children, footer
                 </View>
               </Shadowed>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{title}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                  {!!zone && (
+                    <View style={{ backgroundColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#fff' }}>{zone}</Text>
+                    </View>
+                  )}
+                  <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 13, color: C }}>{title}</Text>
+                </View>
                 {!!sub && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{sub}</Text>}
               </View>
             </View>

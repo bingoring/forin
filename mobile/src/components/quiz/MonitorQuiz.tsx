@@ -43,7 +43,12 @@ export function MonitorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
             ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setAssigned(readings.map(() => null)); setSel(null); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="✓ 판독 제출" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            : (
+              <>
+                <PixelButton label="↺ 처음부터" bg="#fff" shadowColor={C} fontSize={12} disabled={assigned.every((a) => a === null)} onPress={() => { setAssigned(readings.map(() => null)); setSel(null); }} style={{ flex: 1 }} />
+                <View style={{ flex: 2 }}><PixelButton label="✓ 판독 제출" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+              </>
+            )
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
@@ -76,7 +81,7 @@ export function MonitorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
 
       {/* label bank */}
       <View style={{ marginTop: 14 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff', opacity: 0.85, marginBottom: 6 }}>━ 라벨 카드 ━━━━━━━━</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 6 }}>━ 라벨 카드 ━━━━━━━━</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           {bank.map((label, i) => {
             const isUsed = used.has(label);

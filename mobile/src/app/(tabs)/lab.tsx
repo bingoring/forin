@@ -4,10 +4,11 @@
 // self-rates recall (다시/어려움/알맞음/쉬움 → POST /me/review/{id}/grade), which
 // advances the spaced-repetition schedule; graded cards leave today's queue.
 // 🔊 speaks the corrected line (expo-speech). 1:1 in spirit with v17 ScreenReviewLab.
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import * as Speech from 'expo-speech';
+import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
@@ -18,10 +19,20 @@ const GRADES: { g: ReviewGrade; label: string; bg: string }[] = [
   { g: 'good', label: '알맞음', bg: colors.mint },
   { g: 'easy', label: '쉬움', bg: colors.yellow },
 ];
+// Per-topic tone for the card header strip (v17 uses a per-dept tone background).
+const TONES = [colors.mint, colors.peach, colors.blue, colors.lilac, colors.yellow];
+const toneOf = (tag: string) => TONES[[...tag].reduce((s, ch) => s + ch.charCodeAt(0), 0) % TONES.length];
+// A topicTag like "ER · 통증 사정" → { dept: "ER", tag: "통증 사정" }.
+function splitTag(topicTag: string): { dept: string; tag: string } {
+  const parts = (topicTag || '').split('·').map((s) => s.trim());
+  if (parts.length >= 2) return { dept: parts[0], tag: parts.slice(1).join(' · ') };
+  return { dept: topicTag || '교정 노트', tag: '' };
+}
 
 export default function Lab() {
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
+  const [filter, setFilter] = useState('ALL');
 
   useFocusEffect(
     useCallback(() => {
@@ -38,6 +49,14 @@ export default function Lab() {
     try { await api.gradeReview(id, g); } catch { /* best-effort; refreshes on next focus */ }
   };
 
+  // Category filter tabs derived from card topicTags (handoff has a FilterTab row).
+  const cats = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const c of cards) { const d = splitTag(c.topicTag).dept; counts.set(d, (counts.get(d) ?? 0) + 1); }
+    return [{ id: 'ALL', label: '전체', count: cards.length }, ...Array.from(counts, ([id, count]) => ({ id, label: id, count }))];
+  }, [cards]);
+  const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(c.topicTag).dept === filter);
+
   if (state !== 'ok') {
     return (
       <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
@@ -47,7 +66,6 @@ export default function Lab() {
   }
 
   const mastered = cards.filter((c) => c.masteryPips >= 3).length;
-  const favorites = cards.filter((c) => c.favorite).length;
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
@@ -56,32 +74,59 @@ export default function Lab() {
 
         {/* hero */}
         <Shadowed offset={4}>
-          <View style={{ backgroundColor: colors.pink, borderWidth: 3, borderColor: C, padding: 14 }}>
+          <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C, opacity: 0.7 }}>오늘의 복습</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C, marginTop: 5, lineHeight: 23 }}>
-              {cards.length > 0 ? `${cards.length}개 카드 복습할 시간이에요` : '오늘 복습할 카드가 없어요 🎉'}
+            {cards.length > 0 ? (
+              <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C, marginTop: 6, lineHeight: 25 }}>
+                <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
+              </Text>
+            ) : (
+              <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요 🎉</Text>
+            )}
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, marginTop: 8, lineHeight: 16 }}>
+              AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
             </Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 8, lineHeight: 16 }}>
-              AI가 교정한 문장을 '현지인처럼 말하기' 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
-            </Text>
+            {cards.length > 0 && (
+              <View style={{ marginTop: 12 }}>
+                <PixelButton label={`▶  오늘의 복습 시작 (${cards.length})`} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => { setFilter('ALL'); Speech.speak(cards[0].back, { language: 'en-US', rate: 0.92 }); }} />
+              </View>
+            )}
+            <Text style={{ position: 'absolute', top: -10, right: -4, fontSize: 26, transform: [{ rotate: '10deg' }] }}>📓</Text>
           </View>
         </Shadowed>
 
         {/* mini stats */}
         <View style={{ flexDirection: 'row', gap: 8 }}>
+          <MiniStat label="저장된 카드" value={cards.length} color={colors.mint} />
+          <MiniStat label="마스터" value={mastered} color={colors.yellow} />
           <MiniStat label="복습 대기" value={cards.length} color="#FCA5A5" />
-          <MiniStat label="숙련(3)" value={mastered} color={colors.mint} />
-          <MiniStat label="즐겨찾기" value={favorites} color={colors.yellow} />
         </View>
 
+        {/* category filter */}
+        {cats.length > 1 && (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
+            {cats.map((c) => {
+              const active = filter === c.id;
+              return (
+                <Pressable key={c.id} onPress={() => setFilter(c.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? C : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: active ? '#fff' : C }}>{c.label}</Text>
+                  <View style={{ backgroundColor: active ? '#fff' : C, paddingHorizontal: 4 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: active ? C : '#fff' }}>{c.count}</Text>
+                  </View>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        )}
+
         {/* cards */}
-        {cards.length === 0 ? (
+        {shown.length === 0 ? (
           <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
             <Text style={{ fontSize: 40 }}>📓</Text>
             <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
           </View>
         ) : (
-          cards.map((c) => <PhraseCard key={c.id} card={c} onGrade={grade} />)
+          shown.map((c) => <PhraseCard key={c.id} card={c} onGrade={grade} />)
         )}
       </ScrollView>
     </View>
@@ -90,18 +135,24 @@ export default function Lab() {
 
 function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string, g: ReviewGrade) => void }) {
   const speak = () => Speech.speak(card.back, { language: 'en-US', rate: 0.92 });
+  const { dept, tag } = splitTag(card.topicTag);
   return (
     <Shadowed offset={4}>
       <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
-        {/* header */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 7, paddingHorizontal: 10, backgroundColor: colors.mint, borderBottomWidth: 2.5, borderBottomColor: C }}>
-          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 10, color: C }}>{card.topicTag || '교정 노트'}</Text>
+        {/* header: per-topic tone + dept label + 복습 badge + tag chip */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 7, paddingHorizontal: 10, backgroundColor: toneOf(card.topicTag), borderBottomWidth: 2.5, borderBottomColor: C }}>
+          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 10, color: C }}>{dept}</Text>
           <View style={{ backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#fff' }}>복습</Text>
           </View>
+          {!!tag && (
+            <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{tag}</Text>
+            </View>
+          )}
         </View>
 
-        <View style={{ padding: 12 }}>
+        <View style={{ paddingVertical: 10, paddingHorizontal: 12 }}>
           {/* bad */}
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start' }}>
             <Badge text="✕" bg="#FEE2E2" color="#B91C1C" />
@@ -110,8 +161,8 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           {/* good */}
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start', marginTop: 8 }}>
             <Badge text="✓" bg={colors.mint} color={C} />
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, lineHeight: 18 }}>{card.back}</Text>
-            <Pressable onPress={speak} hitSlop={8}><Text style={{ fontSize: 16 }}>🔊</Text></Pressable>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, lineHeight: 18 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
+            <Pressable onPress={speak} hitSlop={8}><Text style={{ fontSize: 15 }}>🔊</Text></Pressable>
           </View>
 
           {/* note */}
@@ -125,7 +176,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 10 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginRight: 2 }}>숙련</Text>
             {[0, 1, 2].map((i) => (
-              <View key={i} style={{ width: 10, height: 10, borderWidth: 1.5, borderColor: C, backgroundColor: i < card.masteryPips ? colors.mint : '#fff' }} />
+              <View key={i} style={{ width: 9, height: 9, borderWidth: 1.5, borderColor: C, backgroundColor: i < card.masteryPips ? colors.mint : '#fff' }} />
             ))}
           </View>
 
@@ -155,11 +206,13 @@ function Badge({ text, bg, color }: { text: string; bg: string; color: string })
 
 function MiniStat({ label, value, color }: { label: string; value: number; color: string }) {
   return (
-    <Shadowed offset={3} style={{ flex: 1 }}>
-      <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
-        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 5, backgroundColor: color, borderBottomWidth: 1.5, borderBottomColor: C }} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: 20, color: C, marginTop: 4 }}>{value}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{label}</Text>
+    <Shadowed offset={2} shadowColor={C + '66'} style={{ flex: 1 }}>
+      <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingLeft: 12, flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, backgroundColor: color }} />
+        <View>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 22, color: C }}>{value}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{label}</Text>
+        </View>
       </View>
     </Shadowed>
   );

@@ -84,15 +84,15 @@ export default function ResultRoute() {
 
       {/* topbar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, flexDirection: 'row', justifyContent: 'space-between', zIndex: 3 }}>
-        <PixelButton label="‹ 맵으로" bg="#fff" shadowColor={C} offset={2} onPress={() => router.replace('/campus')} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
-        <PixelButton label="↗ 공유" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} onPress={onShare} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
+        <PixelButton label="‹ 맵으로" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.replace('/campus')} />
+        <PixelButton label="↗ 공유" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={onShare} />
       </View>
 
       <View style={{ paddingHorizontal: 22, paddingTop: 92, alignItems: 'center', zIndex: 2 }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>SCENARIO CLEAR!</Text>
         <View style={{ marginTop: 6 }}>
-          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: 32, color: colors.yellow }}>참 잘했어요!</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 32, color: C }}>참 잘했어요!</Text>
+          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: 34, color: colors.yellow }}>참 잘했어요!</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 34, color: C }}>참 잘했어요!</Text>
         </View>
         {!!subtitle && <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 8 }}>{subtitle}</Text>}
 
@@ -107,11 +107,11 @@ export default function ResultRoute() {
 
         {/* sticker */}
         <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
-          <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 112, height: 112, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <View style={{ width: 86, height: 86, borderRadius: 43, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 26 }}>⭐</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C, marginTop: 2 }}>참잘했</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>어요</Text>
+          <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 32 }}>⭐</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 4 }}>참잘했</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>어요</Text>
             </View>
           </View>
         </Shadowed>
@@ -131,16 +131,16 @@ export default function ResultRoute() {
             )}
 
             <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 한마디를 건넸습니다." 💌</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다." 💌</Text>
             </View>
           </View>
         </Shadowed>
 
         {/* footer */}
         <View style={{ flexDirection: 'row', gap: 8, marginTop: 16, alignSelf: 'stretch' }}>
-          <PixelButton label="📓 리뷰랩" bg="#fff" shadowColor={C} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
+          <PixelButton label="📓 리뷰랩에 저장" bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
           <View style={{ flex: 1 }}>
-            <PixelButton label="다음 ▶" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
+            <PixelButton label="다음 시나리오 ▶" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
           </View>
         </View>
       </View>
@@ -231,8 +231,8 @@ function StaticRewards({ scenario, baseXp }: { scenario: ScenarioDetail | null; 
 // over, fall past the bottom — plus a warm flash at the origin. The handoff
 // drives this with the Web Animations API; here each ember rides one Animated
 // value with a multi-point interpolation that reproduces the same curve.
-const BURST_COLORS = [colors.mint, colors.peach, colors.yellow, colors.pink, '#60A5FA', '#A78BFA', '#FCA5A5', '#10B981'];
-const N_SAMPLES = 8;
+const BURST_COLORS = [colors.mint, colors.peach, colors.yellow, colors.pink, colors.blue, '#A78BFA', '#FCA5A5', '#10B981'];
+const N_SAMPLES = 24;
 
 function ConfettiBurst({ x, y }: { x: number; y: number }) {
   const pieces = useMemo(

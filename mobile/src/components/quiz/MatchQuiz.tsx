@@ -25,6 +25,7 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
     if (sel === pairIdx) { const m = new Set(matched); m.add(pairIdx); setMatched(m); setSel(null); setWrong(null); }
     else { setWrong(pairIdx); setTimeout(() => setWrong((w) => (w === pairIdx ? null : w)), 500); setSel(null); }
   };
+  const reset = () => { setMatched(new Set()); setSel(null); setWrong(null); };
 
   return (
     <QuizShell
@@ -32,10 +33,16 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       footer={
         done
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
-          : <View style={{ flex: 1 }}><PixelButton label={`${matched.size} / ${pairs.length} 짝지음`} bg="#fff" shadowColor={C} disabled onPress={() => {}} full /></View>
+          : (
+            <>
+              <PixelButton label="↺ 다시" bg="#fff" shadowColor={C} fontSize={12} disabled={matched.size === 0} onPress={reset} style={{ flex: 1 }} />
+              <View style={{ flex: 2 }}><PixelButton label={`${matched.size} / ${pairs.length} 짝지음`} bg="#fff" shadowColor={C} disabled onPress={() => {}} full /></View>
+            </>
+          )
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
+      <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, textAlign: 'center', marginBottom: 10 }}>왼쪽 단어와 오른쪽 의미를 짝지어 보세요.</Text>
       <View style={{ flexDirection: 'row', gap: 10 }}>
         {/* left column */}
         <View style={{ flex: 1, gap: 8 }}>

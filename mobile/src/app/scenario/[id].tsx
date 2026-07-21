@@ -56,6 +56,7 @@ export default function ScenarioBriefingRoute() {
   const accent = b.accent || colors.peachShadow;
   const deptColor = b.deptColor || '#DC2626';
   const reqs = (b.reqs ?? []).map((r) => ({ ...r, met: true })); // pilot: optimistic gating
+  const xpBadge = (b.rewards?.find((r) => r.label.includes('경험치') || /xp/i.test(r.value))?.value || '').replace(/\s+/g, ''); // e.g. "+120XP"
 
   return (
     <View style={{ flex: 1, backgroundColor: '#1F2937' }}>
@@ -65,7 +66,7 @@ export default function ScenarioBriefingRoute() {
 
       {/* topbar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 8 }}>
-        <PixelButton label="× 닫기" bg="#fff" shadowColor={C} offset={2} onPress={() => router.back()} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
+        <PixelButton label="× 닫기" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
         <Shadowed offset={2}>
           <View style={{ backgroundColor: deptColor, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: '#fff' }}>⚑ {b.dept || scenario.title}</Text>
@@ -173,7 +174,7 @@ export default function ScenarioBriefingRoute() {
 
             {/* footer */}
             <View style={{ borderTopWidth: 3, borderTopColor: '#2A252244', borderStyle: 'dotted', backgroundColor: colors.paper, paddingHorizontal: 14, paddingTop: 10, paddingBottom: 12, flexDirection: 'row', gap: 8 }}>
-              <PixelButton label="나중에 하기" bg="#fff" shadowColor={C} onPress={() => router.back()} style={{ flex: 1 }} />
+              <PixelButton label="나중에 하기" bg="#fff" shadowColor={C} fontSize={12} onPress={() => router.back()} style={{ flex: 1 }} />
               <View style={{ flex: 2 }}>
                 <PixelButton
                   label="▶  지금 진행"
@@ -182,6 +183,15 @@ export default function ScenarioBriefingRoute() {
                   onPress={() => router.push(`/dialogue/${id}`)}
                   full
                 />
+                {/* +XP reward micro-badge (handoff pins this top-right of the CTA) */}
+                {!!xpBadge && (
+                  <View style={{ position: 'absolute', top: -6, right: -6 }}>
+                    <View style={{ position: 'absolute', left: 1.5, top: 1.5, right: -1.5, bottom: -1.5, backgroundColor: C }} />
+                    <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingHorizontal: 4 }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{xpBadge}</Text>
+                    </View>
+                  </View>
+                )}
               </View>
             </View>
           </View>
@@ -221,9 +231,9 @@ function DifficultyStars({ n }: { n: number }) {
   const idx = Math.min(3, Math.max(1, n)) - 1;
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-      <View style={{ flexDirection: 'row', gap: 2 }}>
+      <View style={{ flexDirection: 'row', gap: 3 }}>
         {[0, 1, 2].map((i) => (
-          <View key={i} style={{ width: 9, height: 9, borderWidth: 1.5, borderColor: C, backgroundColor: i <= idx ? palette[idx] : '#fff' }} />
+          <View key={i} style={{ width: 11, height: 11, borderWidth: 1.5, borderColor: C, backgroundColor: i <= idx ? palette[idx] : '#fff' }} />
         ))}
       </View>
       <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{labels[idx]}</Text>

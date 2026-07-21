@@ -167,7 +167,7 @@ export default function DialogueRoute() {
                 </View>
               </Shadowed>
               <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
-              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: '#fff', opacity: 0.85 }}>추천 답변 · 탭하면 입력</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.cream, opacity: 0.85 }}>{scenario.keyPhrases.length}가지 추천 답변</Text>
             </View>
             <View style={{ gap: 8 }}>
               {scenario.keyPhrases.map((phrase, i) => (
@@ -179,41 +179,53 @@ export default function DialogueRoute() {
           </View>
         )}
 
-        {/* free-text input */}
-        <View style={{ marginTop: 14 }}>
-          <Shadowed offset={3}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <View style={{ width: 32, height: 32, backgroundColor: colors.mint, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 16 }}>🎤</Text>
+        {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
+        {!hintOn && (
+          <View style={{ marginTop: 14 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 5 }}>SPEAK FREELY</Text>
+            <Shadowed offset={3}>
+              <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <Shadowed offset={2} shadowColor={colors.mintShadow}>
+                  <View style={{ width: 32, height: 32, backgroundColor: colors.mint, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 16 }}>🎤</Text>
+                  </View>
+                </Shadowed>
+                <TextInput
+                  value={draft}
+                  onChangeText={setDraft}
+                  editable={!pending}
+                  placeholder="자유롭게 영어로 답해보세요…"
+                  placeholderTextColor={colors.textFaint}
+                  style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, paddingVertical: 4 }}
+                  onSubmitEditing={send}
+                  returnKeyType="send"
+                  multiline
+                />
               </View>
-              <TextInput
-                value={draft}
-                onChangeText={setDraft}
-                editable={!pending}
-                placeholder="영어로 답해보세요…"
-                placeholderTextColor={colors.textFaint}
-                style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, paddingVertical: 4 }}
-                onSubmitEditing={send}
-                returnKeyType="send"
-                multiline
-              />
-            </View>
-          </Shadowed>
-        </View>
+            </Shadowed>
+          </View>
+        )}
 
         {/* action rail */}
         <View style={{ marginTop: 12, flexDirection: 'row', gap: 8 }}>
           <View style={{ flex: 2 }}>
-            <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={pending || !draft.trim()} onPress={send} full />
+            <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
-          <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} style={{ flex: 1 }} />
+          <View style={{ flex: 1 }}>
+            <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
+            {hintOn && (
+              <View style={{ position: 'absolute', top: -4, right: -4, width: 12, height: 12, borderRadius: 6, backgroundColor: C, borderWidth: 1.5, borderColor: colors.cream }} />
+            )}
+          </View>
           {quizIds.length > 0 && (
             <PixelButton
               label={quizIds.length > 1 ? `📝 ${quizIds.length}` : '📝'}
               bg="#fff"
               shadowColor={C}
+              fontSize={12}
+              paddingV={9}
+              paddingH={12}
               onPress={() => router.push(`/quiz/${quizIds[0]}?scenario=${id}&q=${quizIds.join(',')}&i=0`)}
-              style={{ paddingHorizontal: 12 }}
             />
           )}
         </View>

@@ -56,7 +56,7 @@ export function CalcQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
 
       {/* keypad */}
       <View style={{ marginTop: 14 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff', opacity: 0.85, marginBottom: 6 }}>━ 계산기 ━━━━━━━━</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 6 }}>━ 계산기 ━━━━━━━━</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
           {KEYS.map((k) => (
             <Shadowed key={k} offset={2} style={{ width: '31.5%' }}>

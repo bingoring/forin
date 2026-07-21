@@ -16,6 +16,10 @@ type Props = {
   disabled?: boolean;
   offset?: number;
   full?: boolean; // stretch to the parent width
+  fontSize?: number; // override label size (handoff buttons vary 11/12/13)
+  borderWidth?: number; // override border weight (some handoff buttons are 2px)
+  paddingV?: number;
+  paddingH?: number;
   style?: ViewStyle;
 };
 
@@ -28,6 +32,10 @@ export function PixelButton({
   disabled = false,
   offset = 4,
   full = false,
+  fontSize,
+  borderWidth,
+  paddingV,
+  paddingH,
   style,
 }: Props) {
   const [pressed, setPressed] = useState(false);
@@ -41,9 +49,20 @@ export function PixelButton({
         onPressIn={() => setPressed(true)}
         onPressOut={() => setPressed(false)}
         onPress={onPress}
-        style={[styles.btn, full && styles.full, { backgroundColor: disabled ? colors.cream : bg, transform: [{ translateX: dx }, { translateY: dx }] }, style]}
+        style={[
+          styles.btn,
+          full && styles.full,
+          {
+            backgroundColor: disabled ? colors.cream : bg,
+            transform: [{ translateX: dx }, { translateY: dx }],
+            ...(borderWidth != null && { borderWidth }),
+            ...(paddingV != null && { paddingVertical: paddingV }),
+            ...(paddingH != null && { paddingHorizontal: paddingH }),
+          },
+          style,
+        ]}
       >
-        <Text style={[styles.label, { color: disabled ? colors.textFaint : textColor }]}>{label}</Text>
+        <Text style={[styles.label, { color: disabled ? colors.textFaint : textColor }, fontSize != null && { fontSize }]}>{label}</Text>
       </Pressable>
     </View>
   );

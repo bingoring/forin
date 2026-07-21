@@ -5,6 +5,7 @@
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
+import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { api, type Progress } from '@/api/client';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
@@ -56,19 +57,19 @@ export default function Me() {
   const { level, xp, streakCurrent, streakLongest, patientSatisfaction, peerTrust, emergencyResponse } = progress;
   const career = careerOf(level);
   const inLevel = xp % XP_PER_LEVEL;
-  const nextAt = level * XP_PER_LEVEL;
 
   const badges = [
     { e: '👒', l: '첫 근무', got: xp > 0 },
     { e: '🩺', l: 'Lv.3', got: level >= 3 },
     { e: '💉', l: 'Lv.5', got: level >= 5 },
     { e: '🔥', l: '3일 연속', got: streakLongest >= 3 },
-    { e: '🏅', l: '7일 연속', got: streakLongest >= 7 },
+    { e: '🏅', l: '7일 연속', got: streakLongest >= 7, special: true },
     { e: '🏆', l: 'Lv.10', got: level >= 10 },
     { e: '👑', l: 'Lv.20', got: level >= 20 },
     { e: '🔒', l: '???', got: false },
-  ];
+  ] as { e: string; l: string; got: boolean; special?: boolean }[];
   const gotCount = badges.filter((b) => b.got).length;
+  const BADGE_TOTAL = 24; // full career-badge pool (handoff shows collection vs 24)
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
@@ -94,7 +95,7 @@ export default function Me() {
                 <View style={{ marginTop: 10 }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>LV {level}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>{xp.toLocaleString()} / {nextAt.toLocaleString()}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>{inLevel} / {XP_PER_LEVEL}</Text>
                     <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>LV {level + 1}</Text>
                   </View>
                   <View style={{ height: 10, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, marginTop: 3 }}>
@@ -124,9 +125,10 @@ export default function Me() {
               <Text style={{ fontSize: 20 }}>📊</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>나의 성장</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>오늘의 성장 리포트</Text>
               <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 3, opacity: 0.8 }}>Lv.{level} · {xp.toLocaleString()} XP · 🔥 {streakCurrent}일 연속</Text>
             </View>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>▶</Text>
           </View>
         </Shadowed>
 
@@ -134,18 +136,25 @@ export default function Me() {
         <Shadowed offset={3}>
           <View style={{ backgroundColor: colors.paper, borderWidth: 3, borderColor: C, padding: 12 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft, marginBottom: 10 }}>CAREER PATH</Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              {['Learner', 'Junior', 'Senior', 'Head'].map((s, i) => (
-                <View key={s} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                  <View style={{ alignItems: 'center', width: 46 }}>
-                    <View style={{ width: 20, height: 20, borderWidth: 2, borderColor: C, backgroundColor: i <= career.step ? colors.mint : '#fff', alignItems: 'center', justifyContent: 'center' }}>
-                      {i === career.step ? <Text style={{ fontSize: 10 }}>📍</Text> : i < career.step ? <Text style={{ fontSize: 9, color: C }}>✓</Text> : null}
+            <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+              {['Learner', 'Junior', 'Senior', 'Head Nurse'].map((s, i) => {
+                const here = i === career.step;
+                const done = i < career.step;
+                return (
+                  <View key={s} style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
+                    <View style={{ alignItems: 'center', width: 52 }}>
+                      <Shadowed offset={here ? 3 : 0} shadowColor={colors.yellowShadow}>
+                        <View style={{ width: 20, height: 20, borderWidth: 2, borderColor: C, backgroundColor: done || here ? colors.mint : '#fff', alignItems: 'center', justifyContent: 'center' }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{done ? '✓' : i + 1}</Text>
+                        </View>
+                      </Shadowed>
+                      <Text style={{ fontFamily: fonts.body, fontSize: 8, color: done || here ? C : colors.textFaint, marginTop: 4, textAlign: 'center' }}>{s}</Text>
+                      {here && <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: colors.yellowShadow, marginTop: 1 }}>● HERE</Text>}
                     </View>
-                    <Text style={{ fontFamily: fonts.body, fontSize: 8, color: i <= career.step ? C : colors.textFaint, marginTop: 3 }}>{s}</Text>
+                    {i < 3 && <View style={{ flex: 1, height: 2, backgroundColor: done ? colors.mint : '#2A252233', marginTop: 9 }} />}
                   </View>
-                  {i < 3 && <View style={{ flex: 1, height: 2, backgroundColor: i < career.step ? colors.mint : '#2A252233', marginBottom: 11 }} />}
-                </View>
-              ))}
+                );
+              })}
             </View>
           </View>
         </Shadowed>
@@ -154,33 +163,49 @@ export default function Me() {
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🎖 커리어 뱃지</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{gotCount} / {badges.length}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{gotCount} / {BADGE_TOTAL}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            {badges.map((b, i) => (
-              <View key={i} style={{ width: '22.5%', aspectRatio: 0.85, borderWidth: 2, borderColor: C, backgroundColor: b.got ? colors.yellow : '#EFEAE2', alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 22, opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 8, color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
-              </View>
-            ))}
+            {badges.map((b, i) => {
+              // earned = white tile + ink shadow; special earned = yellow + NEW ribbon; locked = flat cream.
+              const bg = !b.got ? colors.cream : b.special ? colors.yellow : '#fff';
+              return (
+                <Shadowed key={i} offset={b.got ? 3 : 0} shadowColor={b.special ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
+                  <View style={{ aspectRatio: 0.85, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 22, opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: 8, color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
+                    {b.got && b.special && (
+                      <View style={{ position: 'absolute', top: -4, right: -4, backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 3 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: '#fff' }}>NEW</Text>
+                      </View>
+                    )}
+                  </View>
+                </Shadowed>
+              );
+            })}
           </View>
         </View>
 
         {/* review lab teaser → review tab */}
         <Pressable onPress={() => router.push('/lab')}>
           <Shadowed offset={4}>
-            <View style={{ backgroundColor: colors.pink, borderWidth: 3, borderColor: C, padding: 14, gap: 10 }}>
+            <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14, gap: 10 }}>
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
                 <View style={{ width: 40, height: 40, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ fontSize: 22 }}>📓</Text>
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>리뷰랩 · 오답노트</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 '현지인처럼 말하기' 카드로 쌓여요.</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 변환됐어요.</Text>
                 </View>
               </View>
+              {/* corrected-phrase example box */}
+              <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textFaint, textDecorationLine: 'line-through' }}>I want to ask about your pain.</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 2 }}>→ <Text style={{ backgroundColor: colors.mint }}>Can you tell me about your pain?</Text></Text>
+              </View>
               <View style={{ alignItems: 'flex-end' }}>
-                <PixelChip label="리뷰랩 열기 ▶" bg={colors.yellow} />
+                <PixelButton label="리뷰랩 열기 ▶" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={5} paddingH={10} onPress={() => router.push('/lab')} />
               </View>
             </View>
           </Shadowed>
@@ -203,9 +228,9 @@ function RepRow({ label, value, color }: { label: string; value: number; color: 
   );
 }
 
-function Shadowed({ children, offset = 4, shadowColor = C }: { children: React.ReactNode; offset?: number; shadowColor?: string }) {
+function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: object }) {
   return (
-    <View>
+    <View style={style}>
       <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
       {children}
     </View>
