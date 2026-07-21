@@ -215,9 +215,12 @@ export const api = {
   },
 
   /** Grade a review card (SM-2); returns the new mastery pips. */
-  async gradeReview(id: string, grade: ReviewGrade): Promise<{ masteryPips: number }> {
+  async gradeReview(id: string, grade: ReviewGrade): Promise<{ masteryPips: number; intervalDays: number }> {
     const { data } = await http.post(`/me/review/${id}/grade`, { grade });
-    return { masteryPips: (data?.masteryPips ?? 0) as number };
+    return {
+      masteryPips: (data?.masteryPips ?? 0) as number,
+      intervalDays: (data?.schedule?.intervalDays ?? 1) as number,
+    };
   },
 
   async manifest(): Promise<Manifest> {

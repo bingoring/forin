@@ -12,12 +12,20 @@ import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
-const GRADES: { g: ReviewGrade; label: string; bg: string }[] = [
-  { g: 'again', label: '다시', bg: '#FCA5A5' },
-  { g: 'hard', label: '어려움', bg: colors.peach },
-  { g: 'good', label: '알맞음', bg: colors.mint },
-  { g: 'easy', label: '쉬움', bg: colors.yellow },
+const GRADES: { g: ReviewGrade; label: string; bg: string; blurb: string }[] = [
+  { g: 'again', label: '다시', bg: '#FCA5A5', blurb: '기억이 안 났어요 — 곧 다시 보여줄게요' },
+  { g: 'hard', label: '어려움', bg: colors.peach, blurb: '겨우 기억했어요 — 간격을 짧게 잡아요' },
+  { g: 'good', label: '알맞음', bg: colors.mint, blurb: '잘 기억했어요 — 표준 간격으로 넘어가요' },
+  { g: 'easy', label: '쉬움', bg: colors.yellow, blurb: '아주 쉬웠어요 — 한참 뒤에 다시 봐요' },
 ];
+
+// humanize the SM-2 next-interval into a friendly Korean "다음 복습" label.
+function nextLabel(days: number): string {
+  if (days <= 1) return '내일 다시';
+  if (days < 14) return `${days}일 후`;
+  if (days < 60) return `약 ${Math.round(days / 7)}주 후`;
+  return `약 ${Math.round(days / 30)}개월 후`;
+}
 
 export default function ReviewSession() {
   const router = useRouter();
@@ -25,7 +33,9 @@ export default function ReviewSession() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
-  const [graded, setGraded] = useState(0); // how many completed this session // how many completed this session
+  const [graded, setGraded] = useState(0); // how many completed this session
+  const [toast, setToast] = useState<{ label: string; bg: string; blurb: string; next: string } | null>(null);
+  const [busy, setBusy] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -41,12 +51,21 @@ export default function ReviewSession() {
   const done = state === 'ok' && idx >= cards.length;
 
   const grade = async (g: ReviewGrade) => {
-    if (!card) return;
+    if (!card || busy) return;
     Speech.stop();
-    try { await api.gradeReview(card.id, g); } catch { /* best-effort */ }
-    setGraded((n) => n + 1);
-    setRevealed(false);
-    setIdx((i) => i + 1);
+    setBusy(true);
+    const meta = GRADES.find((x) => x.g === g)!;
+    let interval = 1;
+    try { const r = await api.gradeReview(card.id, g); interval = r.intervalDays; } catch { /* best-effort */ }
+    // Show a short confirmation so the card doesn't just vanish silently, then advance.
+    setToast({ label: meta.label, bg: meta.bg, blurb: meta.blurb, next: nextLabel(interval) });
+    setTimeout(() => {
+      setToast(null);
+      setBusy(false);
+      setGraded((n) => n + 1);
+      setRevealed(false);
+      setIdx((i) => i + 1);
+    }, 1300);
   };
 
   const back = () => { Speech.stop(); router.replace('/lab'); };
@@ -140,6 +159,23 @@ export default function ReviewSession() {
             </View>
           )}
         </ScrollView>
+      )}
+
+      {/* grade confirmation — so the card doesn't just silently vanish */}
+      {toast && (
+        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 28, alignItems: 'center', paddingHorizontal: 18 }}>
+          <Shadowed offset={3}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 12, paddingHorizontal: 16, minWidth: 260, alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <View style={{ backgroundColor: toast.bg, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{toast.label}</Text>
+                </View>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>📅 {toast.next}</Text>
+              </View>
+              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
+            </View>
+          </Shadowed>
+        </View>
       )}
     </View>
   );

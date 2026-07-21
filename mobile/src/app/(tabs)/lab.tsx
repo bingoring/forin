@@ -13,12 +13,19 @@ import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
-const GRADES: { g: ReviewGrade; label: string; bg: string }[] = [
-  { g: 'again', label: '다시', bg: '#FCA5A5' },
-  { g: 'hard', label: '어려움', bg: colors.peach },
-  { g: 'good', label: '알맞음', bg: colors.mint },
-  { g: 'easy', label: '쉬움', bg: colors.yellow },
+const GRADES: { g: ReviewGrade; label: string; bg: string; blurb: string; guide: string }[] = [
+  { g: 'again', label: '다시', bg: '#FCA5A5', blurb: '기억이 안 났어요 — 곧 다시 보여줄게요', guide: '기억이 전혀 안 났을 때. 진행도를 초기화하고 곧바로(내일) 다시 보여줘요.' },
+  { g: 'hard', label: '어려움', bg: colors.peach, blurb: '겨우 기억했어요 — 간격을 짧게 잡아요', guide: '겨우 떠올렸을 때. 다음 복습까지의 간격을 평소보다 짧게 잡아요.' },
+  { g: 'good', label: '알맞음', bg: colors.mint, blurb: '잘 기억했어요 — 표준 간격으로 넘어가요', guide: '무난하게 기억했을 때. 표준 간격(1일 → 6일 → 그 이상)으로 늘려가요.' },
+  { g: 'easy', label: '쉬움', bg: colors.yellow, blurb: '아주 쉬웠어요 — 한참 뒤에 다시 봐요', guide: '너무 쉬웠을 때. 간격을 크게 늘려 한참 뒤에 다시 보여줘요.' },
 ];
+// humanize the SM-2 next-interval into a friendly Korean "다음 복습" label.
+function nextLabel(days: number): string {
+  if (days <= 1) return '내일 다시';
+  if (days < 14) return `${days}일 후`;
+  if (days < 60) return `약 ${Math.round(days / 7)}주 후`;
+  return `약 ${Math.round(days / 30)}개월 후`;
+}
 // Per-topic tone for the card header strip (v17 uses a per-dept tone background).
 const TONES = [colors.mint, colors.peach, colors.blue, colors.lilac, colors.yellow];
 const toneOf = (tag: string) => TONES[[...tag].reduce((s, ch) => s + ch.charCodeAt(0), 0) % TONES.length];
@@ -34,6 +41,8 @@ export default function Lab() {
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [filter, setFilter] = useState('ALL');
+  const [guideOpen, setGuideOpen] = useState(false);
+  const [toast, setToast] = useState<{ label: string; bg: string; blurb: string; next: string } | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -46,8 +55,13 @@ export default function Lab() {
   );
 
   const grade = async (id: string, g: ReviewGrade) => {
+    const meta = GRADES.find((x) => x.g === g)!;
     setCards((prev) => prev.filter((c) => c.id !== id)); // optimistic: leave today's queue
-    try { await api.gradeReview(id, g); } catch { /* best-effort; refreshes on next focus */ }
+    let interval = 1;
+    try { const r = await api.gradeReview(id, g); interval = r.intervalDays; } catch { /* best-effort; refreshes on next focus */ }
+    // Confirm the grade so the card doesn't just silently disappear.
+    setToast({ label: meta.label, bg: meta.bg, blurb: meta.blurb, next: nextLabel(interval) });
+    setTimeout(() => setToast(null), 1600);
   };
 
   // Category filter tabs derived from card topicTags (handoff has a FilterTab row).
@@ -96,6 +110,34 @@ export default function Lab() {
           </View>
         </Shadowed>
 
+        {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
+        <Shadowed offset={3}>
+          <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
+            <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
+              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 12, color: C }}>❓ 복습 등급이 뭔가요?</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>{guideOpen ? '▲' : '▼'}</Text>
+            </Pressable>
+            {guideOpen && (
+              <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8, borderTopWidth: 2, borderTopColor: C }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16, marginTop: 10 }}>
+                  카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
+                </Text>
+                {GRADES.map(({ g, label, bg, guide }) => (
+                  <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+                    <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{label}</Text>
+                    </View>
+                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: colors.text, lineHeight: 15 }}>{guide}</Text>
+                  </View>
+                ))}
+                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
+                  💡 숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 '마스터'로 분류돼요.
+                </Text>
+              </View>
+            )}
+          </View>
+        </Shadowed>
+
         {/* mini stats */}
         <View style={{ flexDirection: 'row', gap: 8 }}>
           <MiniStat label="저장된 카드" value={cards.length} color={colors.mint} />
@@ -135,6 +177,23 @@ export default function Lab() {
           shown.map((c) => <PhraseCard key={c.id} card={c} onGrade={grade} />)
         )}
       </ScrollView>
+
+      {/* grade confirmation — so cards don't just silently disappear from the list */}
+      {toast && (
+        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 24, alignItems: 'center', paddingHorizontal: 18 }}>
+          <Shadowed offset={3}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 11, paddingHorizontal: 16, minWidth: 250, alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <View style={{ backgroundColor: toast.bg, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{toast.label}</Text>
+                </View>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>📅 {toast.next}</Text>
+              </View>
+              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
+            </View>
+          </Shadowed>
+        </View>
+      )}
     </View>
   );
 }
