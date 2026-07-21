@@ -1014,3 +1014,11 @@
 - **리뷰랩**: 필터 active 탭 부서색+카운트 배지 색·MiniStat 중앙정렬.
 - **퀴즈**: Calc Fraction 'units' 라벨·바이알 4번째 눈금·주사기 팁/바늘 · Listen 선택칩 '?' 코너배지 · Triage 😰 → 픽셀 환자얼굴 SVG(PatientHeadPixel).
 - 검증: tsc 0 · jest 208/208 · 시뮬레이터 board/me/triage 렌더 확인.
+
+## 2026-07-21 — 발음 채점(Azure Speech) 라이브 활성화
+- 외부 블로커 해소: 유효한 Azure AI Speech 리소스 키(리전 **eastus**)를 `server/.env`(gitignore, 미커밋)에 설정.
+- 키 유효성: `eastus …/issueToken` 200.
+- **E2E 검증(라이브)**: macOS TTS로 16kHz mono WAV 생성 → dev 토큰으로 `POST /pronunciation` → Azure 발음평가 실점수 왕복 성공(recognized + accuracy 84·fluency 93·completeness 100·overall 89·단어별 점수).
+- 모바일 녹음 포맷(PronunciationPractice: 16kHz·mono·LINEARPCM WAV)이 어댑터/Azure 요구와 일치 확인 → 앱 녹음→채점 경로 준비 완료.
+- 이전 koreacentral 키(401)는 비활성 구독 소속으로 폐기, eastus 신규 리소스로 대체.
+- 남은 선택: 대화 자유입력의 마이크 STT(받아쓰기)는 별도 기능으로 추후.
