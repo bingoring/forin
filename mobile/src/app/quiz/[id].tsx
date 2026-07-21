@@ -199,8 +199,8 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
               <View style={{ marginTop: 16 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 6 }}>━ 단어 카드 ━━━━━━━━</Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-                  {tiles.map((tile) => (
-                    <WordTile key={tile.i} word={tile.word} used={usedTiles.has(tile.i)} onPress={() => placeTile(tile.i)} />
+                  {tiles.map((tile, ti) => (
+                    <WordTile key={ti} word={tile.word} used={usedTiles.has(ti)} onPress={() => placeTile(ti)} />
                   ))}
                 </View>
               </View>
@@ -227,18 +227,14 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
 
             {/* footer */}
             <View style={{ paddingHorizontal: 14, paddingTop: 10, paddingBottom: 12, borderTopWidth: 3, borderTopColor: '#2A252244', borderStyle: 'dotted', backgroundColor: colors.paper, flexDirection: 'row', gap: 8 }}>
-              {checked && !allCorrect ? (
-                <View style={{ flex: 1 }}>
-                  <PixelButton label="↻ 다시 풀기" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setSlots(Array(blankCount).fill(null)); }} full />
-                </View>
-              ) : (
-                <PixelButton label="건너뛰기" bg="#fff" shadowColor={C} onPress={onExit} style={{ flex: 1 }} />
-              )}
+              <PixelButton label="건너뛰기" bg="#fff" shadowColor={C} onPress={onExit} style={{ flex: 1 }} />
               <View style={{ flex: 2 }}>
                 {allCorrect ? (
                   <PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full />
+                ) : checked ? (
+                  <PixelButton label="↻ 다시 풀기" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => { setChecked(false); setSlots(Array(blankCount).fill(null)); }} full />
                 ) : (
-                  <PixelButton label="✓ 제출하기" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allFilled || checked} onPress={() => setChecked(true)} full />
+                  <PixelButton label="✓ 제출하기" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allFilled} onPress={() => setChecked(true)} full />
                 )}
               </View>
             </View>

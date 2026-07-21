@@ -62,7 +62,7 @@ export function PixelButton({
           style,
         ]}
       >
-        <Text style={[styles.label, { color: disabled ? colors.textFaint : textColor }, fontSize != null && { fontSize }]}>{label}</Text>
+        <Text numberOfLines={1} style={[styles.label, { color: disabled ? colors.textFaint : textColor }, fontSize != null && { fontSize }]}>{label}</Text>
       </Pressable>
     </View>
   );
