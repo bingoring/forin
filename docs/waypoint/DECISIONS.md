@@ -961,3 +961,16 @@
 - **리뷰랩 탭(lab)**: 스텁 → SM-2 오답노트. `GET /me/review`로 오늘 due 카드, 각 카드는 AI 교정(front=원문 취소선 / back=교정 강조 / note=왜?). 자가평가 다시·어려움·알맞음·쉬움 → `POST /me/review/{id}/grade`(SM-2 스케줄 갱신, 채점 카드는 오늘 큐에서 제외). 🔊 교정문 TTS(expo-speech), 숙련 pips, 오늘의 복습 히어로 + 미니스탯(대기/숙련/즐겨찾기). `useFocusEffect` 갱신. client: `reviewDue()`·`gradeReview()`·`ReviewCard` 추가.
 - **dev 인증 복원력(반복 'api 에러' 근본 해결)**: 액세스 토큰 만료 시 인터셉터 rotate가 refresh 실패/토큰 부재여도 **__DEV__에서 `/auth/dev` 자동 재로그인**으로 세션 복구(로그아웃 대신). 딥링크 네비게이션 중 세션 소실로 화면이 에러로 굳던 문제 해소.
 - 검증: tsc 0 · jest 208/208 · 라이브(/me/review 4건·grade good→pips 1·due 3) · 시뮬레이터 리뷰랩 3카드·평가·TTS·미니스탯 렌더 확인.
+
+## 2026-07-21 — 화면별 핸드오프 정합성 리뷰 & 수정 (7개 프로덕트 화면)
+7개 화면(브리핑·대화·결과·상황판·프로필·리뷰랩·퀴즈)을 병렬 서브에이전트로 v17 핸드오프 대비 비판적 리뷰 → 실 정합성 갭만 선별 수정.
+**공통**: `PixelButton`에 fontSize/borderWidth/padding 오버라이드 추가(핸드오프 버튼 11/12/2px 대응).
+**결과**: 타이틀 32→34·스티커 112→130·풋터 라벨(리뷰랩에 저장/다음 시나리오 ▶)·위로 문구·컨페티 파랑(#60A5FA→colors.blue)·샘플 8→24·topbar 버튼 컴팩트·리뷰랩 버튼 그림자 ink33.
+**상황판**: 요약 4카운터 타일(URGENT/QUEST/완료/남은)·긴급 스킴(카드 틴트+accent+전 카드 URGENT/QUEST/INFO 라벨, info=회색)·필터칩 영문 부서코드+부서색 active+카운트 배지·빈상태 2줄+아이콘+대시박스·배경 cream.
+**프로필**: **XP바 라벨/게이지 수치 불일치 버그 수정**(총xp/level*100 → within-level inLevel/100)·성장리포트 라벨+▶·뱃지 /24 분모+special+NEW+earned 흰타일·Head Nurse·스테퍼(✓/숫자+● HERE)·리뷰티저 lilac+교정 예시박스+버튼 primitive.
+**리뷰랩**: 히어로 lilac(핑크였음)+복습시작 CTA+📓 코너+강조칩·필터탭(topicTag 파생)·미니스탯 라벨/좌측 액센트·카드 헤더 per-topic tone+태그칩·good-line 민트 하이라이트.
+**브리핑**: 지금진행 +XP 배지·버튼 폰트(닫기11/나중에12)·난이도 pip 9→11.
+**대화**: SPEAK FREELY 라벨+프롬프트·힌트 헤더 문구(N가지 추천 답변)·힌트모드 입력 숨김·rail 버튼 컴팩트·힌트 ● active 배지·🎤 mintShadow.
+**퀴즈**: QuizShell 카드 헤더 zone 칩·Monitor/Calc 섹션 헤더 흰색→textSoft(가독성 버그)·Match 다시 버튼+안내문·Monitor 처음부터 버튼.
+**의도적 보류(수정 안 함)**: 마이크 직접말하기(Azure 키 대기)·⏸→📝 퀴즈 버튼·Triage/CalcQuiz/Listen파형 재설계·타이머(무시간제)·대화 퀵툴 독/번역글로스/위험선택지(데이터·기능 대기)·상황판 부서 섹션 그룹화(우리 로테이션은 부서당 1건이라 단일카드 섹션 난립 → flat 유지).
+검증: tsc 0 · jest 208/208 · 시뮬레이터 7화면 렌더 확인.
