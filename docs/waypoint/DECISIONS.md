@@ -1058,3 +1058,11 @@
   - 상단 📓 N/M 진행, 완료 시 '오늘의 복습 완료! N개' 요약 → 리뷰랩 복귀. 빈/에러 상태 처리.
 - 리뷰랩 '오늘의 복습 시작' 버튼 → `router.push('/review')`.
 - 검증: tsc 0 · jest 208/208 · 시뮬레이터 회상/공개 상태 렌더 확인(7카드).
+
+## 2026-07-22 — 리뷰랩 고도화: 교정 카드에 맥락 저장·표시 + SM-2 등급 동작
+사용자 요구: (1) "어떤 맥락/상황에서, 어떤 대화 중에 저 말을 했는지"를 교정 노트에서 보고 싶다, (2) 다시/어려움/쉬움 버튼이 무슨 동작인지.
+- **맥락 스키마**: `progress.ReviewContext{Title,Dept,Situation,Npc}` + `ReviewCard.ScenarioID/Context`. 마이그레이션 000011 — `review_cards`에 `scenario_id text`, `context jsonb` 컬럼 추가. sqlc(InsertReviewCard·DueCards Row/Scan), progress_repo(마샬/언마샬), ports.NewReviewCard 확장.
+- **캡처 지점**: 대화 엔진 `prepare`가 시나리오와 **직전 NPC 대사(priorNpc)** 를 함께 반환 → `fileCorrection`이 ReviewContext 구성(Title=시나리오 제목, Dept=Briefing.Dept, Situation=Briefing.Brief∥Tagline, Npc=직전 상대 대사) → `Correct`가 CreateCard에 전달. 수동 `/correct` 엔드포인트는 빈 맥락으로 호출.
+- **모바일 표시**: `review.tsx`에 라일락 맥락 카드(🗺 이때의 상황 + Dept 뱃지 + 제목 + 상황, 그리고 "상대가 이렇게 말했고 🗣 {npc} → 여기에 답하며 한 말"), `lab.tsx` PhraseCard에 접이식 '🗺 맥락'(제목 미리보기 → 펼치면 상황+직전 대사).
+- **SM-2 등급 동작(사용자 설명용)**: q값 다시=1/어려움=3/알맞음=4/쉬움=5. reps 0→1일, 1→6일, 이후 ×ease로 다음 복습 간격 결정. 어려움은 ease 감소·간격 짧게, 쉬움은 ease 증가·간격 길게, 다시는 리셋. 숙련 pip=min(reps,3).
+- 검증: go build/test 0 · tsc 0 · jest 208/208 · E2E(대화 2턴 → 카드 context에 title/dept/situation + 2번째 카드에 npc="It's my chest... right in the middle. Hurts a lot." 저장 확인) · 시뮬레이터 맥락 카드 렌더 확인(ER·TRAUMA BAY #4 / 통증 사정 — Mrs. Hopkins).
