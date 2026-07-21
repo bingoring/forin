@@ -1022,3 +1022,10 @@
 - 모바일 녹음 포맷(PronunciationPractice: 16kHz·mono·LINEARPCM WAV)이 어댑터/Azure 요구와 일치 확인 → 앱 녹음→채점 경로 준비 완료.
 - 이전 koreacentral 키(401)는 비활성 구독 소속으로 폐기, eastus 신규 리소스로 대체.
 - 남은 선택: 대화 자유입력의 마이크 STT(받아쓰기)는 별도 기능으로 추후.
+
+## 2026-07-21 — 마이크 STT 받아쓰기 배선 (대화 자유입력)
+- **서버**: azurespeech 어댑터에 `Transcribe(audioWav, locale)` 추가(동일 인식 엔드포인트, Pronunciation 헤더 제외 → DisplayText 반환). `PronunciationPort`에 Transcribe 추가, pronunciation 서비스에 `Transcribe(userID, audio)`(프로필 target locale), `POST /stt` 핸들러/라우트.
+- **모바일**: client `transcribe(audioBase64)→text`. 대화 SPEAK FREELY 입력의 🎤 박스를 Pressable로 — 탭 녹음(16kHz mono WAV)→탭 중지→`/stt`→받아쓴 텍스트를 draft에 채움. 상태(idle/recording/transcribing) + 라벨/플레이스홀더/버튼 색 반영.
+- **E2E**: `POST /stt`(dev 토큰 + 16kHz WAV) → Azure STT 텍스트 왕복 확인. 모바일 녹음 포맷 일치. (시뮬레이터는 마이크 없어 실 녹음 육안검증 불가 — 실기기 필요.)
+- 검증: go build 0 · tsc 0 · jest 208/208 · 대화 화면 렌더 확인.
+- 이로써 대화 화면의 마지막 보류 항목(마이크 STT)까지 완료.
