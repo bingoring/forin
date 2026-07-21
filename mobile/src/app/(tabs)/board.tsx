@@ -1,7 +1,10 @@
-// 오늘의 상황판 (situation board) — a daily-rotated set of scenario cards from
-// the server (api.boardToday), grouped by department with filter chips. Tapping a
-// card fast-travels to that scenario's briefing. 1:1 with the v17 handoff
-// screen-event-board (per-scenario cards, urgent/quest counts, dept filter).
+// 오늘의 상황판 (event board) — a daily-rotated set of scenario cards from the
+// server (api.boardToday), grouped into department sections with a filter bar.
+// 1:1 with the v17 handoff screen-event-board: a pinned date+summary card with
+// four counter tiles (URGENT/QUEST/완료/남은), dept filter tabs, then per-dept
+// sections (colored header + count) of rich EventCards (urgency tag · room ·
+// difficulty meter · title · NPC · tagline · skill chips · time · action rail).
+// The summary + filter bar stay pinned at the top while the sections scroll.
 import { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
@@ -10,20 +13,36 @@ import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
 
-// dept code → label + icon. Falls back to the code + card color for unknown depts.
-const DEPT_META: Record<string, { label: string; icon: string }> = {
-  ER: { label: '응급실', icon: '🚑' }, OR: { label: '수술실', icon: '🔪' }, ICU: { label: '중환자실', icon: '🛏' },
-  PEDS: { label: '소아과', icon: '👶' }, PHARMA: { label: '약국', icon: '💊' },
-  LD: { label: '분만실', icon: '🤰' }, NICU: { label: '신생아중환자실', icon: '🍼' }, PICU: { label: '소아중환자실', icon: '🧸' },
-  NURSERY: { label: '신생아실', icon: '👶' }, WOMENKIDS: { label: '여성소아외래', icon: '🌸' },
-  RAD: { label: '영상의학', icon: '🩻' }, ENDO: { label: '내시경', icon: '🔬' }, DIAL: { label: '인공신장실', icon: '💧' },
-  SPECIALTY: { label: '특수외래', icon: '👁' }, INFUSION: { label: '주사센터', icon: '💉' },
-  ONCO: { label: '암센터', icon: '🎗' }, HOSPICE: { label: '호스피스', icon: '🕊' }, GERI: { label: '노인병동', icon: '👵' },
-  PSYCH: { label: '정신과', icon: '🧠' }, REHAB: { label: '재활', icon: '🦿' },
-  SIM: { label: '시뮬레이션랩', icon: '🎓' }, LOUNGE: { label: '라운지', icon: '☕' }, SPD: { label: '중앙공급', icon: '📦' },
-  MORGUE: { label: '영안실', icon: '🕯' }, GEN: { label: '공통', icon: '🏥' },
+// dept code → label (한글 ENG) + short code + icon + color. Canonical order first.
+const DEPT_META: Record<string, { name: string; short: string; icon: string; color: string }> = {
+  ER: { name: '응급실 ER', short: 'ER', icon: '🚑', color: '#DC2626' },
+  ICU: { name: '중환자실 ICU', short: 'ICU', icon: '🛏', color: '#7F1D1D' },
+  OR: { name: '수술실 OR', short: 'OR', icon: '🔪', color: '#9333EA' },
+  PEDS: { name: '소아과 Peds', short: 'PEDS', icon: '👶', color: '#3B82F6' },
+  PHARMA: { name: '약국 Pharma', short: 'PHARMA', icon: '💊', color: '#16A34A' },
+  LD: { name: '분만실 L&D', short: 'LD', icon: '🤰', color: '#DB2777' },
+  NICU: { name: '신생아중환자실 NICU', short: 'NICU', icon: '🍼', color: '#0EA5E9' },
+  PICU: { name: '소아중환자실 PICU', short: 'PICU', icon: '🧸', color: '#6366F1' },
+  NURSERY: { name: '신생아실 Nursery', short: 'NURSERY', icon: '👶', color: '#F472B6' },
+  WOMENKIDS: { name: '여성소아외래', short: 'W&K', icon: '🌸', color: '#EC4899' },
+  RAD: { name: '영상의학 Rad', short: 'RAD', icon: '🩻', color: '#0891B2' },
+  ENDO: { name: '내시경 Endo', short: 'ENDO', icon: '🔬', color: '#0D9488' },
+  DIAL: { name: '인공신장실 Dialysis', short: 'DIAL', icon: '💧', color: '#2563EB' },
+  SPECIALTY: { name: '특수외래 Specialty', short: 'SPEC', icon: '👁', color: '#7C3AED' },
+  INFUSION: { name: '주사센터 Infusion', short: 'INFU', icon: '💉', color: '#059669' },
+  ONCO: { name: '암센터 Oncology', short: 'ONCO', icon: '🎗', color: '#9333EA' },
+  HOSPICE: { name: '호스피스 Hospice', short: 'HOSP', icon: '🕊', color: '#64748B' },
+  GERI: { name: '노인병동 Geriatrics', short: 'GERI', icon: '👵', color: '#B45309' },
+  PSYCH: { name: '정신과 Psych', short: 'PSYCH', icon: '🧠', color: '#7C3AED' },
+  REHAB: { name: '재활 Rehab', short: 'REHAB', icon: '🦿', color: '#0284C7' },
+  SIM: { name: '시뮬레이션랩 Sim', short: 'SIM', icon: '🎓', color: '#4F46E5' },
+  LOUNGE: { name: '라운지 Lounge', short: 'LOUNGE', icon: '☕', color: '#A16207' },
+  SPD: { name: '중앙공급 SPD', short: 'SPD', icon: '📦', color: '#525252' },
+  MORGUE: { name: '영안실 Morgue', short: 'MORGUE', icon: '🕯', color: '#334155' },
+  GEN: { name: '공통 General', short: 'GEN', icon: '🏥', color: '#6B7280' },
 };
-// Urgency → card tint, accent color, and all-caps tag (1:1 with the handoff scheme).
+const DEPT_ORDER = Object.keys(DEPT_META);
+// urgency → card tint, accent, tag (1:1 with the handoff scheme).
 const URGENCY: Record<string, { tint: string; accent: string; label: string }> = {
   urgent: { tint: '#FEE2E2', accent: '#DC2626', label: 'URGENT' },
   quest: { tint: '#FEF3C7', accent: '#CA8A04', label: 'QUEST' },
@@ -43,14 +62,23 @@ export default function Board() {
     return () => { alive = false; };
   }, []);
 
-  const depts = useMemo(() => Array.from(new Set(cards.map((c) => c.dept))), [cards]);
+  const byDept = useMemo(() => {
+    const m: Record<string, BoardCard[]> = {};
+    for (const c of cards) (m[c.dept] = m[c.dept] || []).push(c);
+    return m;
+  }, [cards]);
+  // depts present, in canonical order (unknown depts appended).
+  const presentDepts = useMemo(() => {
+    const present = Object.keys(byDept);
+    return [...DEPT_ORDER.filter((d) => present.includes(d)), ...present.filter((d) => !DEPT_ORDER.includes(d))];
+  }, [byDept]);
   const urgent = cards.filter((c) => c.urgency === 'urgent').length;
   const quest = cards.filter((c) => c.urgency === 'quest').length;
-  const shown = filter === 'ALL' ? cards : cards.filter((c) => c.dept === filter);
+  const shownDepts = filter === 'ALL' ? presentDepts : presentDepts.filter((d) => d === filter);
 
   if (state !== 'ok') {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
+      <View style={{ flex: 1, backgroundColor: colors.cream, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
         {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.textSoft, textAlign: 'center' }}>상황판을 불러오지 못했어요. (서버 확인)</Text>}
       </View>
     );
@@ -58,81 +86,199 @@ export default function Board() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
-      <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>오늘의 상황판</Text>
-
-        {/* summary + counter tiles */}
-        <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: space.md }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: t.section, color: C }}>현장 상황 {cards.length}건 발생</Text>
-          <View style={{ flexDirection: 'row', gap: 6, marginTop: 10 }}>
-            <Counter label="URGENT" value={urgent} accent="#EF4444" />
-            <Counter label="QUEST" value={quest} accent="#FACC15" />
-            <Counter label="완료" value={0} accent={colors.mintShadow} />
-            <Counter label="남은" value={cards.length} accent={C} />
-          </View>
+      {/* ── pinned header: title + summary + counters + filter tabs ── */}
+      <View style={{ paddingTop: 52, paddingHorizontal: space.lg, paddingBottom: 8, backgroundColor: colors.cream, borderBottomWidth: 2, borderBottomColor: '#2A252222', zIndex: 2 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>오늘의 상황판</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft }}>{todayLabel()}</Text>
         </View>
 
-        {/* filter chips — English dept codes, active fills with the dept color, + count */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
-          {['ALL', ...depts].map((d) => {
-            const active = filter === d;
-            const count = d === 'ALL' ? cards.length : cards.filter((c) => c.dept === d).length;
-            const deptColor = cards.find((c) => c.dept === d)?.deptColor || C;
-            const activeBg = d === 'ALL' ? C : deptColor;
-            return (
-              <Pressable key={d} onPress={() => setFilter(d)} style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? activeBg : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: active ? '#fff' : C }}>{d === 'ALL' ? '✨ 전체' : `${DEPT_META[d]?.icon ?? ''} ${d}`}</Text>
-                <View style={{ backgroundColor: active ? '#fff' : C, paddingHorizontal: 4 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: active ? C : '#fff' }}>{count}</Text>
-                </View>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
-
-        {/* cards */}
-        {shown.map((c) => {
-          const u = urg(c.urgency);
-          return (
-            <Pressable key={c.id} onPress={() => router.push(`/scenario/${c.id}`)} style={{ flexDirection: 'row', alignItems: 'center', gap: space.md, backgroundColor: u.tint, borderWidth: 3, borderColor: C, padding: space.md }}>
-              <View style={{ width: 8, alignSelf: 'stretch', backgroundColor: u.accent, borderWidth: 1.5, borderColor: C }} />
+        {/* date + summary card */}
+        <Shadowed offset={4} shadowColor={colors.mintShadow} style={{ marginTop: 10 }}>
+          <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 12 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <Text style={{ fontSize: 26 }}>📋</Text>
               <View style={{ flex: 1 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                  <View style={{ backgroundColor: c.deptColor || C, paddingHorizontal: 5, paddingVertical: 1 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{DEPT_META[c.dept]?.icon ?? ''} {DEPT_META[c.dept]?.label ?? c.dept}</Text>
-                  </View>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: u.accent }}>{u.label}</Text>
-                </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: t.body, color: C, marginTop: 4 }}>{c.title}</Text>
-                {!!c.tagline && (
-                  <View style={{ marginTop: 4, alignSelf: 'flex-start', backgroundColor: '#fff', borderWidth: 1.5, borderColor: C + '44', paddingHorizontal: 6, paddingVertical: 2 }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.text, fontStyle: 'italic' }} numberOfLines={1}>{c.tagline}</Text>
-                  </View>
-                )}
+                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
               </View>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: colors.textSoft }}>›</Text>
-            </Pressable>
+            </View>
+            <View style={{ flexDirection: 'row', gap: 6, marginTop: 10 }}>
+              <Counter label="URGENT" value={urgent} accent="#EF4444" />
+              <Counter label="QUEST" value={quest} accent="#FACC15" />
+              <Counter label="완료" value={0} accent={colors.mintShadow} />
+              <Counter label="남은" value={cards.length} accent={C} />
+            </View>
+          </View>
+        </Shadowed>
+
+        {/* filter tabs */}
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 5, paddingVertical: 2, paddingTop: 10 }}>
+          <DeptTab id="ALL" label="전체" icon="✨" color={C} active={filter === 'ALL'} count={cards.length} onPress={() => setFilter('ALL')} />
+          {presentDepts.map((d) => (
+            <DeptTab key={d} id={d} label={DEPT_META[d]?.short ?? d} icon={DEPT_META[d]?.icon ?? ''} color={DEPT_META[d]?.color ?? C} active={filter === d} count={byDept[d].length} onPress={() => setFilter(d)} />
+          ))}
+        </ScrollView>
+      </View>
+
+      {/* ── scrolling sections ── */}
+      <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 14, paddingBottom: 40, gap: 18 }}>
+        {shownDepts.map((dept) => {
+          const list = byDept[dept] ?? [];
+          const m = DEPT_META[dept];
+          return (
+            <View key={dept}>
+              {/* dept header */}
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                <Shadowed offset={2}>
+                  <View style={{ width: 28, height: 28, backgroundColor: m?.color ?? C, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 15 }}>{m?.icon ?? '🏥'}</Text>
+                  </View>
+                </Shadowed>
+                <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 13, color: C }}>{m?.name ?? dept}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{list.length}건</Text>
+              </View>
+              <View style={{ gap: 8 }}>
+                {list.map((c) => <EventCard key={c.id} c={c} onPress={() => router.push(`/scenario/${c.id}`)} />)}
+              </View>
+            </View>
           );
         })}
-        {shown.length === 0 && (
-          <View style={{ alignItems: 'center', marginTop: 20, gap: 6, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', backgroundColor: colors.paper, paddingVertical: 28 }}>
+        {shownDepts.length === 0 && (
+          <View style={{ alignItems: 'center', gap: 6, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', backgroundColor: colors.paper, paddingVertical: 28 }}>
             <Text style={{ fontSize: 28 }}>{DEPT_META[filter]?.icon ?? '🗓'}</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textSoft, textAlign: 'center' }}>{DEPT_META[filter]?.label ?? filter}에 오늘 발생한 상황이 없어요.</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textSoft, textAlign: 'center' }}>{DEPT_META[filter]?.name ?? filter}에 오늘 발생한 상황이 없어요.</Text>
             <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textFaint }}>내일 다시 확인해보세요!</Text>
           </View>
         )}
+
+        {/* daily rotation note */}
+        <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
+          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>
+            <Text style={{ fontFamily: fonts.heading, color: C }}>💡 매일 자정마다 </Text>새로운 현장 상황이 부서별로 골고루 발생해요. 저장된 300+ 시나리오 중에서 오늘의 {cards.length}건을 골랐어요.
+          </Text>
+        </View>
       </ScrollView>
     </View>
   );
 }
 
-// One boxed summary counter tile (URGENT / QUEST / 완료 / 남은).
-function Counter({ label, value, accent }: { label: string; value: number; accent: string }) {
+// ── rich event card ──
+function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
+  const u = urg(c.urgency);
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 6, alignItems: 'center' }}>
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, backgroundColor: accent }} />
-      <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 3 }}>{value}</Text>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft, marginTop: 1 }}>{label}</Text>
+    <Shadowed offset={3}>
+      <View style={{ backgroundColor: u.tint, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
+        {/* urgency tag + room + difficulty */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, flex: 1 }}>
+            <View style={{ backgroundColor: u.accent, borderWidth: 1.5, borderColor: C, paddingHorizontal: 6, paddingVertical: 1 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{u.label}</Text>
+            </View>
+            {!!c.room && <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }} numberOfLines={1}>{c.room}</Text>}
+          </View>
+          <DifficultyMini n={c.difficulty ?? 1} />
+        </View>
+
+        {/* title + npc */}
+        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C, lineHeight: 17 }}>{c.title}</Text>
+        {!!c.npcName && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>👤 {c.npcName}{c.npcSub ? ` · ${c.npcSub}` : ''}</Text>}
+
+        {/* tagline */}
+        {!!c.tagline && (
+          <View style={{ marginTop: 6, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C + '44', paddingVertical: 4, paddingHorizontal: 8 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.text, fontStyle: 'italic', lineHeight: 14 }} numberOfLines={2}>{c.tagline}</Text>
+          </View>
+        )}
+
+        {/* skills + time */}
+        {(!!c.skills?.length || !!c.timeLabel) && (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 8, flexWrap: 'wrap' }}>
+            {(c.skills ?? []).slice(0, 2).map((sk, i) => (
+              <View key={i} style={{ backgroundColor: colors.mint, borderWidth: 1.5, borderColor: C, paddingHorizontal: 5, paddingVertical: 1 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{sk}</Text>
+              </View>
+            ))}
+            {(c.skills?.length ?? 0) > 2 && <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft }}>+{(c.skills!.length) - 2}</Text>}
+            {!!c.timeLabel && <Text style={{ marginLeft: 'auto', fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>⏱ {c.timeLabel}</Text>}
+          </View>
+        )}
+
+        {/* action rail */}
+        <View style={{ flexDirection: 'row', gap: 6, marginTop: 9 }}>
+          <Pressable onPress={onPress} style={{ flex: 1 }}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>📍 위치 보기</Text>
+            </View>
+          </Pressable>
+          <Pressable onPress={onPress} style={{ flex: 2 }}>
+            <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>▶ 진행하기</Text>
+            </View>
+          </Pressable>
+        </View>
+      </View>
+    </Shadowed>
+  );
+}
+
+function DifficultyMini({ n }: { n: number }) {
+  const cols = ['#A7F3D0', '#FEF08A', '#FCA5A5'];
+  return (
+    <View style={{ flexDirection: 'row', gap: 2 }}>
+      {[1, 2, 3].map((i) => (
+        <View key={i} style={{ width: 8, height: 8, borderWidth: 1, borderColor: C, backgroundColor: i <= n ? cols[Math.min(n, 3) - 1] : '#fff' }} />
+      ))}
     </View>
   );
+}
+
+function Counter({ label, value, accent }: { label: string; value: number; accent: string }) {
+  return (
+    <Shadowed offset={2} shadowColor={C + '77'} style={{ flex: 1 }}>
+      <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: accent }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 2 }}>{value}</Text>
+      </View>
+    </Shadowed>
+  );
+}
+
+function DeptTab({ label, icon, color, active, count, onPress }: { id: string; label: string; icon: string; color: string; active: boolean; count: number; onPress: () => void }) {
+  return (
+    <Pressable onPress={onPress}>
+      <Shadowed offset={active ? 2.5 : 2} shadowColor={active ? C : C + '66'}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: active ? color : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 8 }}>
+          <Text style={{ fontSize: 12 }}>{icon}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: active ? '#fff' : C }}>{label}</Text>
+          {count > 0 && (
+            <View style={{ backgroundColor: active ? '#fff' : color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: active ? color : '#fff' }}>{count}</Text>
+            </View>
+          )}
+        </View>
+      </Shadowed>
+    </Pressable>
+  );
+}
+
+function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: object }) {
+  return (
+    <View style={style}>
+      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
+      {children}
+    </View>
+  );
+}
+
+// Local date labels (design demo froze at 5/14 WED; here we use the real date).
+function todayLabel(): string {
+  const d = new Date();
+  const wd = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][d.getDay()];
+  return `${d.getMonth() + 1}/${d.getDate()} ${wd}`;
+}
+function monthDay(): string {
+  const d = new Date();
+  const mon = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()];
+  return `${mon} ${d.getDate()}`;
 }

@@ -243,12 +243,18 @@ type Req struct {
 // BoardCard is a compact scenario entry for the daily situation board — enough
 // to render a card and fast-travel to the scenario briefing.
 type BoardCard struct {
-	ID        string `json:"id"`
-	Dept      string `json:"dept"`      // dept code from the id (ER, LD, ONCO...)
-	Title     string `json:"title"`
-	Tagline   string `json:"tagline"`
-	Urgency   string `json:"urgency"`   // urgent | quest | info (from difficulty)
-	DeptColor string `json:"deptColor"`
+	ID         string   `json:"id"`
+	Dept       string   `json:"dept"`    // dept code from the id (ER, LD, ONCO...)
+	Title      string   `json:"title"`
+	Tagline    string   `json:"tagline"`
+	Urgency    string   `json:"urgency"` // urgent | quest | info (from difficulty)
+	DeptColor  string   `json:"deptColor"`
+	Difficulty int      `json:"difficulty,omitempty"` // 1..3
+	Room       string   `json:"room,omitempty"`       // briefing dept label (e.g. "ER · TRAUMA BAY #4")
+	NpcName    string   `json:"npcName,omitempty"`
+	NpcSub     string   `json:"npcSub,omitempty"`
+	Skills     []string `json:"skills,omitempty"`
+	TimeLabel  string   `json:"timeLabel,omitempty"`
 }
 
 type Quiz struct {

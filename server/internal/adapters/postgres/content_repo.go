@@ -198,12 +198,22 @@ func (r *ContentRepo) TodaysScenarios(ctx context.Context, profession string, li
 			var b content.Briefing
 			unjson(s.Briefing, &b)
 			c.DeptColor = b.DeptColor
+			c.Difficulty = b.Difficulty
+			c.Room = b.Dept
+			c.Skills = b.Skills
+			c.TimeLabel = b.TimeLabel
 			switch {
 			case b.Difficulty >= 3:
 				c.Urgency = "urgent"
 			case b.Difficulty <= 1:
 				c.Urgency = "info"
 			}
+		}
+		if len(s.Persona) > 0 && string(s.Persona) != "{}" {
+			var pr content.Persona
+			unjson(s.Persona, &pr)
+			c.NpcName = pr.Name
+			c.NpcSub = pr.Sub
 		}
 		if _, ok := byDept[dept]; !ok {
 			deptOrder = append(deptOrder, dept)

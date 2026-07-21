@@ -412,7 +412,7 @@ func (q *Queries) ListEvents(ctx context.Context, dollar_1 interface{}) ([]Event
 }
 
 const listBoardScenarios = `-- name: ListBoardScenarios :many
-SELECT s.id, s.title, s.tagline, s.briefing
+SELECT s.id, s.title, s.tagline, s.briefing, s.persona
 FROM scenarios s JOIN events e ON s.event_id = e.id
 WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common')
 ORDER BY s.id
@@ -423,6 +423,7 @@ type ListBoardScenariosRow struct {
 	Title    string `json:"title"`
 	Tagline  string `json:"tagline"`
 	Briefing []byte `json:"briefing"`
+	Persona  []byte `json:"persona"`
 }
 
 func (q *Queries) ListBoardScenarios(ctx context.Context, column1 interface{}) ([]ListBoardScenariosRow, error) {
@@ -434,7 +435,7 @@ func (q *Queries) ListBoardScenarios(ctx context.Context, column1 interface{}) (
 	var items []ListBoardScenariosRow
 	for rows.Next() {
 		var i ListBoardScenariosRow
-		if err := rows.Scan(&i.ID, &i.Title, &i.Tagline, &i.Briefing); err != nil {
+		if err := rows.Scan(&i.ID, &i.Title, &i.Tagline, &i.Briefing, &i.Persona); err != nil {
 			return nil, err
 		}
 		items = append(items, i)

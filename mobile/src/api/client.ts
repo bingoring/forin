@@ -146,7 +146,10 @@ export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;
 }
 
-export interface BoardCard { id: string; dept: string; title: string; tagline: string; urgency: string; deptColor?: string }
+export interface BoardCard {
+  id: string; dept: string; title: string; tagline: string; urgency: string; deptColor?: string;
+  difficulty?: number; room?: string; npcName?: string; npcSub?: string; skills?: string[]; timeLabel?: string;
+}
 
 export interface WordScore { word: string; accuracy: number; errorType?: string }
 export interface PronunciationResult {

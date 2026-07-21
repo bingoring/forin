@@ -27,7 +27,7 @@ SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key
 FROM scenarios WHERE id = $1;
 
 -- name: ListBoardScenarios :many
-SELECT s.id, s.title, s.tagline, s.briefing
+SELECT s.id, s.title, s.tagline, s.briefing, s.persona
 FROM scenarios s JOIN events e ON s.event_id = e.id
 WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common')
 ORDER BY s.id;
