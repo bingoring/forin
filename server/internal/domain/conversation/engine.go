@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -100,38 +101,48 @@ func (e *Engine) StartSession(ctx context.Context, userID, scenarioID string) (s
 
 // prepare validates the session/scenario, records the user's line, and builds the
 // system prompt + message history for the LLM. Shared by SendMessage(+Stream).
-func (e *Engine) prepare(ctx context.Context, userID, sessionID, text string) (string, []ports.LLMMessage, error) {
+func (e *Engine) prepare(ctx context.Context, userID, sessionID, text string) (string, []ports.LLMMessage, *content.Scenario, string, error) {
 	sess, err := e.convo.GetSession(ctx, sessionID)
 	if err != nil {
-		return "", nil, err
+		return "", nil, nil, "", err
 	}
 	if sess == nil || sess.UserID != userID {
-		return "", nil, ErrSessionNotFound
+		return "", nil, nil, "", ErrSessionNotFound
 	}
 	sc, err := e.content.GetScenario(ctx, sess.ScenarioID)
 	if err != nil {
-		return "", nil, err
+		return "", nil, nil, "", err
 	}
 	if sc == nil {
-		return "", nil, ErrScenarioNotFound
+		return "", nil, nil, "", ErrScenarioNotFound
+	}
+	// The last NPC line before this user turn — the line the learner is replying to.
+	priorNpc := ""
+	if hist, e2 := e.convo.History(ctx, sessionID, historyLimit); e2 == nil {
+		for i := len(hist) - 1; i >= 0; i-- {
+			if hist[i].Role == "assistant" {
+				priorNpc = hist[i].Content
+				break
+			}
+		}
 	}
 	if err := e.convo.AppendTurn(ctx, sessionID, "user", text); err != nil {
-		return "", nil, err
+		return "", nil, nil, "", err
 	}
 	hist, err := e.convo.History(ctx, sessionID, historyLimit)
 	if err != nil {
-		return "", nil, err
+		return "", nil, nil, "", err
 	}
 	msgs := make([]ports.LLMMessage, 0, len(hist))
 	for _, t := range hist {
 		msgs = append(msgs, ports.LLMMessage{Role: t.Role, Content: t.Content})
 	}
-	return buildSystemPrompt(sc, e.langFor(ctx, userID)), msgs, nil
+	return buildSystemPrompt(sc, e.langFor(ctx, userID)), msgs, sc, priorNpc, nil
 }
 
 // SendMessage records the user's line, generates the NPC reply in persona, persists both.
 func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (string, error) {
-	system, msgs, err := e.prepare(ctx, userID, sessionID, text)
+	system, msgs, sc, priorNpc, err := e.prepare(ctx, userID, sessionID, text)
 	if err != nil {
 		return "", err
 	}
@@ -143,13 +154,13 @@ func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply); err != nil {
 		return "", err
 	}
-	e.fileCorrection(userID, text) // background: AI-correct the learner's line → review card
+	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
 	return reply, nil
 }
 
 // SendMessageStream streams the NPC reply (onDelta per chunk) and persists the full turn.
 func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text string, onDelta func(string) error) (string, error) {
-	system, msgs, err := e.prepare(ctx, userID, sessionID, text)
+	system, msgs, sc, priorNpc, err := e.prepare(ctx, userID, sessionID, text)
 	if err != nil {
 		return "", err
 	}
@@ -161,21 +172,36 @@ func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text 
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply); err != nil {
 		return "", err
 	}
-	e.fileCorrection(userID, text) // background: AI-correct the learner's line → review card
+	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
 	return reply, nil
 }
 
 // fileCorrection runs an AI correction on the learner's utterance in the background
-// and files a review card only when the corrected phrasing meaningfully differs.
-// Fire-and-forget so it never blocks (or fails) the dialogue reply. Skips trivial
-// utterances (< 3 words) to avoid noise/cost.
-func (e *Engine) fileCorrection(userID, text string) {
+// and files a review card (with the scenario/dialogue context) only when the
+// corrected phrasing meaningfully differs. Fire-and-forget so it never blocks (or
+// fails) the dialogue reply. Skips trivial utterances (< 3 words) to avoid noise/cost.
+func (e *Engine) fileCorrection(userID, text string, sc *content.Scenario, priorNpc string) {
 	if len(strings.Fields(text)) < 3 {
 		return
 	}
+	rc := progress.ReviewContext{Npc: priorNpc}
+	if sc != nil {
+		rc.Title = sc.Title
+		rc.Situation = sc.Tagline
+		if sc.Briefing != nil {
+			rc.Dept = sc.Briefing.Dept
+			if sc.Briefing.Brief != "" {
+				rc.Situation = sc.Briefing.Brief
+			}
+		}
+	}
+	scenarioID := ""
+	if sc != nil {
+		scenarioID = sc.ID
+	}
 	go func() {
 		defer func() { _ = recover() }()
-		_, _ = e.Correct(context.Background(), userID, text, "")
+		_, _ = e.Correct(context.Background(), userID, text, rc.Situation, scenarioID, rc)
 	}()
 }
 
@@ -188,7 +214,7 @@ type Correction struct {
 }
 
 // Correct fixes the utterance (cheaper model), stores it, and creates a review card.
-func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText string) (*Correction, error) {
+func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText, scenarioID string, rc progress.ReviewContext) (*Correction, error) {
 	lc := e.langFor(ctx, userID)
 	sys := fmt.Sprintf("You are a %[1]s coach for %[2]s-speaking %[3]ss. Correct the user's %[1]s to natural, "+
 		"clinically appropriate phrasing. Respond ONLY with JSON: {\"corrected\": string, \"note\": string}. "+
@@ -222,7 +248,8 @@ func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText str
 	if changed(c.Original, c.Corrected) {
 		_ = e.convo.SaveCorrection(ctx, userID, c.Original, c.Corrected, c.Note, "")
 		if id, err := e.review.CreateCard(ctx, ports.NewReviewCard{
-			UserID: userID, Source: "correction", Front: c.Original, Back: c.Corrected, Note: c.Note}); err == nil {
+			UserID: userID, Source: "correction", Front: c.Original, Back: c.Corrected, Note: c.Note,
+			ScenarioID: scenarioID, Context: rc}); err == nil {
 			c.CardID = id
 		}
 	}

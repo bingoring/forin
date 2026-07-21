@@ -25,7 +25,7 @@ ON CONFLICT (user_id) DO UPDATE SET
 
 -- name: DueCards :many
 SELECT c.id, c.source, c.front, c.back, c.note, c.topic_tag, c.mastery_pips, c.favorite,
-       s.ease, s.interval_days, s.reps, s.due_date
+       s.ease, s.interval_days, s.reps, s.due_date, c.scenario_id, c.context
 FROM review_cards c JOIN review_schedules s ON s.card_id = c.id
 WHERE c.user_id = $1 AND s.due_date <= $2 ORDER BY s.due_date LIMIT $3;
 

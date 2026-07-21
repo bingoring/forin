@@ -18,15 +18,27 @@ type Progress struct {
 
 // ReviewCard is one spaced-repetition phrase card (oops-note).
 type ReviewCard struct {
-	ID          string   `json:"id"`
-	Source      string   `json:"source"`
-	Front       string   `json:"front"`
-	Back        string   `json:"back"`
-	Note        string   `json:"note"`
-	TopicTag    string   `json:"topicTag"`
-	MasteryPips int      `json:"masteryPips"`
-	Favorite    bool     `json:"favorite"`
-	Schedule    Schedule `json:"schedule"`
+	ID          string         `json:"id"`
+	Source      string         `json:"source"`
+	Front       string         `json:"front"`
+	Back        string         `json:"back"`
+	Note        string         `json:"note"`
+	TopicTag    string         `json:"topicTag"`
+	MasteryPips int            `json:"masteryPips"`
+	Favorite    bool           `json:"favorite"`
+	Schedule    Schedule       `json:"schedule"`
+	ScenarioID  string         `json:"scenarioId,omitempty"`
+	Context     *ReviewContext `json:"context,omitempty"`
+}
+
+// ReviewContext is the situation a correction was captured in, so the learner can
+// recall what prompted it: the scenario, its situation brief, and the line they
+// were replying to.
+type ReviewContext struct {
+	Title     string `json:"title,omitempty"`     // scenario title
+	Dept      string `json:"dept,omitempty"`      // dept label
+	Situation string `json:"situation,omitempty"` // scenario briefing / tagline
+	Npc       string `json:"npc,omitempty"`       // the NPC line the learner was responding to
 }
 
 // Schedule is the SM-2 state for a card.

@@ -14,7 +14,7 @@ import (
 
 const dueCards = `-- name: DueCards :many
 SELECT c.id, c.source, c.front, c.back, c.note, c.topic_tag, c.mastery_pips, c.favorite,
-       s.ease, s.interval_days, s.reps, s.due_date
+       s.ease, s.interval_days, s.reps, s.due_date, c.scenario_id, c.context
 FROM review_cards c JOIN review_schedules s ON s.card_id = c.id
 WHERE c.user_id = $1 AND s.due_date <= $2 ORDER BY s.due_date LIMIT $3
 `
@@ -38,6 +38,8 @@ type DueCardsRow struct {
 	IntervalDays int       `json:"interval_days"`
 	Reps         int       `json:"reps"`
 	DueDate      time.Time `json:"due_date"`
+	ScenarioID   string    `json:"scenario_id"`
+	Context      []byte    `json:"context"`
 }
 
 func (q *Queries) DueCards(ctx context.Context, arg DueCardsParams) ([]DueCardsRow, error) {
@@ -62,6 +64,8 @@ func (q *Queries) DueCards(ctx context.Context, arg DueCardsParams) ([]DueCardsR
 			&i.IntervalDays,
 			&i.Reps,
 			&i.DueDate,
+			&i.ScenarioID,
+			&i.Context,
 		); err != nil {
 			return nil, err
 		}

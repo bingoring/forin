@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/bingoring/forin/server/internal/domain/conversation"
+	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 )
 
@@ -67,7 +68,7 @@ func (h *conversationHandler) correct(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusBadRequest, "text is required")
 		return
 	}
-	c, err := h.engine.Correct(r.Context(), uid, req.Text, req.Context)
+	c, err := h.engine.Correct(r.Context(), uid, req.Text, req.Context, "", progress.ReviewContext{})
 	if err != nil {
 		httpx.Error(w, http.StatusBadGateway, "ai unavailable")
 		return

@@ -30,6 +30,8 @@ type ReviewRepo interface {
 // NewReviewCard is the input for creating a review card (e.g. from an AI correction).
 type NewReviewCard struct {
 	UserID, Source, Front, Back, Note, TopicTag string
+	ScenarioID                                  string
+	Context                                     progress.ReviewContext
 }
 
 // ---- AI / conversation ports ----

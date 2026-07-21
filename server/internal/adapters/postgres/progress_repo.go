@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"time"
 
@@ -71,11 +72,18 @@ func (r *ProgressRepo) DueCards(ctx context.Context, userID string, today time.T
 	}
 	out := make([]progress.ReviewCard, 0, len(rows))
 	for _, d := range rows {
-		out = append(out, progress.ReviewCard{
+		card := progress.ReviewCard{
 			ID: d.ID, Source: d.Source, Front: d.Front, Back: d.Back, Note: d.Note, TopicTag: d.TopicTag,
-			MasteryPips: d.MasteryPips, Favorite: d.Favorite,
+			MasteryPips: d.MasteryPips, Favorite: d.Favorite, ScenarioID: d.ScenarioID,
 			Schedule: progress.Schedule{Ease: d.Ease, IntervalDays: d.IntervalDays, Reps: d.Reps, DueDate: d.DueDate},
-		})
+		}
+		if len(d.Context) > 0 && string(d.Context) != "{}" {
+			var rc progress.ReviewContext
+			if json.Unmarshal(d.Context, &rc) == nil {
+				card.Context = &rc
+			}
+		}
+		out = append(out, card)
 	}
 	return out, nil
 }
@@ -104,8 +112,10 @@ func (r *ProgressRepo) CreateCard(ctx context.Context, c ports.NewReviewCard) (s
 	defer tx.Rollback(ctx)
 	q := r.q.WithTx(tx)
 
+	ctxJSON, _ := json.Marshal(c.Context)
 	id, err := q.InsertReviewCard(ctx, sqlc.InsertReviewCardParams{
-		UserID: c.UserID, Source: c.Source, Front: c.Front, Back: c.Back, Note: c.Note, TopicTag: c.TopicTag})
+		UserID: c.UserID, Source: c.Source, Front: c.Front, Back: c.Back, Note: c.Note, TopicTag: c.TopicTag,
+		ScenarioID: c.ScenarioID, Context: ctxJSON})
 	if err != nil {
 		return "", err
 	}

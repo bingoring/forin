@@ -142,6 +142,9 @@ export default function Lab() {
 function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string, g: ReviewGrade) => void }) {
   const speak = () => Speech.speak(card.back, { language: 'en-US', rate: 0.92 });
   const { dept, tag } = splitTag(card.topicTag);
+  const [showCtx, setShowCtx] = useState(false);
+  const ctx = card.context;
+  const hasCtx = !!ctx && (!!ctx.title || !!ctx.situation || !!ctx.npc);
   return (
     <Shadowed offset={4}>
       <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
@@ -175,6 +178,33 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           {!!card.note && (
             <View style={{ marginTop: 10, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8 }}>
               <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.text, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>왜? </Text>{card.note}</Text>
+            </View>
+          )}
+
+          {/* 맥락: which situation / dialogue this correction came from (collapsible) */}
+          {hasCtx && (
+            <View style={{ marginTop: 10 }}>
+              <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>🗺 맥락 {showCtx ? '▲' : '▼'}</Text>
+                </View>
+                {!showCtx && !!ctx?.title && (
+                  <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft }}>{ctx.title}</Text>
+                )}
+              </Pressable>
+              {showCtx && (
+                <View style={{ marginTop: 8, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
+                  {!!ctx?.title && <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 4 }}>{ctx.title}</Text>}
+                  {!!ctx?.situation && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.text, lineHeight: 15 }}>{ctx.situation}</Text>}
+                  {!!ctx?.npc && (
+                    <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: '#2A252233' }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft, marginBottom: 2 }}>상대가 이렇게 말했고</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>🗣 {ctx.npc}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15, marginTop: 3 }}>→ 여기에 답하며 한 말이에요.</Text>
+                    </View>
+                  )}
+                </View>
+              )}
             </View>
           )}
 

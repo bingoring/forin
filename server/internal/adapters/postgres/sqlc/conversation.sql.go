@@ -91,17 +91,19 @@ func (q *Queries) InsertCorrection(ctx context.Context, arg InsertCorrectionPara
 }
 
 const insertReviewCard = `-- name: InsertReviewCard :one
-INSERT INTO review_cards (user_id, source, front, back, note, topic_tag)
-VALUES ($1, $2, $3, $4, $5, $6) RETURNING id
+INSERT INTO review_cards (user_id, source, front, back, note, topic_tag, scenario_id, context)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id
 `
 
 type InsertReviewCardParams struct {
-	UserID   string `json:"user_id"`
-	Source   string `json:"source"`
-	Front    string `json:"front"`
-	Back     string `json:"back"`
-	Note     string `json:"note"`
-	TopicTag string `json:"topic_tag"`
+	UserID     string `json:"user_id"`
+	Source     string `json:"source"`
+	Front      string `json:"front"`
+	Back       string `json:"back"`
+	Note       string `json:"note"`
+	TopicTag   string `json:"topic_tag"`
+	ScenarioID string `json:"scenario_id"`
+	Context    []byte `json:"context"`
 }
 
 func (q *Queries) InsertReviewCard(ctx context.Context, arg InsertReviewCardParams) (string, error) {
@@ -112,6 +114,8 @@ func (q *Queries) InsertReviewCard(ctx context.Context, arg InsertReviewCardPara
 		arg.Back,
 		arg.Note,
 		arg.TopicTag,
+		arg.ScenarioID,
+		arg.Context,
 	)
 	var id string
 	err := row.Scan(&id)

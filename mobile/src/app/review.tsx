@@ -88,6 +88,9 @@ export default function ReviewSession() {
         <ScrollView contentContainerStyle={{ paddingHorizontal: 18, paddingTop: 8, paddingBottom: 24, flexGrow: 1 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft, marginBottom: 10 }}>{card.topicTag || '교정 노트'}</Text>
 
+          {/* 맥락: which situation / dialogue this correction came from */}
+          <ContextCard card={card} />
+
           {/* prompt: what you said → recall the natural version */}
           <Shadowed offset={4}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 16 }}>
@@ -138,6 +141,38 @@ export default function ReviewSession() {
           )}
         </ScrollView>
       )}
+    </View>
+  );
+}
+
+// ContextCard shows what situation the correction came from and the line the
+// learner was replying to — so "왜 저 말을 했는지" is recallable at review time.
+function ContextCard({ card }: { card: ReviewCard }) {
+  const ctx = card.context;
+  if (!ctx || (!ctx.title && !ctx.situation && !ctx.npc)) return null;
+  return (
+    <View style={{ marginBottom: 12 }}>
+      <Shadowed offset={3} shadowColor={colors.lilac}>
+        <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, padding: 12 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 6, marginBottom: 6 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>🗺 이때의 상황</Text>
+            {!!ctx.dept && (
+              <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{ctx.dept}</Text>
+              </View>
+            )}
+          </View>
+          {!!ctx.title && <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C, marginBottom: 4 }}>{ctx.title}</Text>}
+          {!!ctx.situation && <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>{ctx.situation}</Text>}
+          {!!ctx.npc && (
+            <View style={{ marginTop: 10, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 7, paddingHorizontal: 9 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft, marginBottom: 3 }}>상대가 이렇게 말했고</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.text, lineHeight: 17 }}>🗣 {ctx.npc}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, lineHeight: 16, marginTop: 4 }}>→ 여기에 내가 답하면서 한 말이에요.</Text>
+            </View>
+          )}
+        </View>
+      </Shadowed>
     </View>
   );
 }

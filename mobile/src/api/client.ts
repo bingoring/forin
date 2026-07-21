@@ -167,9 +167,13 @@ export interface Progress {
 
 // One spaced-repetition (SM-2) card from an AI correction: front = original
 // phrasing, back = the natural correction, note = why. masteryPips 0-3.
+export interface ReviewContext {
+  title?: string; dept?: string; situation?: string; npc?: string;
+}
 export interface ReviewCard {
   id: string; source: string; front: string; back: string; note: string;
   topicTag: string; masteryPips: number; favorite: boolean;
+  scenarioId?: string; context?: ReviewContext;
 }
 export type ReviewGrade = 'again' | 'hard' | 'good' | 'easy';
 
