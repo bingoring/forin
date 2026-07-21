@@ -994,3 +994,13 @@
 - **MISSION 1/N 카운터**·**💧 distress cue**(mood pain/panic/worried)·**▼ next-turn cue**·**스피커탭 위쪽 그림자**·**힌트 ● active 배지**·오프닝 대사=첫 dialogue 스텝(태그라인 아님).
 - 보류 유지: 마이크 STT(Azure 키 대기).
 - 검증: tsc 0 · jest 208/208 · 로더 0 · seed(300·122·11) · 새 필드 왕복 · 시뮬레이터 기본뷰+QUICK INFO 활력 패널+힌트 위험선택지 렌더 확인.
+
+## 2026-07-21 — 상황판 핸드오프 재구축 (리치 카드·부서 섹션·요약 고정)
+사용자 피드백: 상황판이 핸드오프와 많이 다름 + 스크롤 시 요약 상단 고정 요청.
+- **요약 고정(sticky)**: 제목+날짜(TODAY·날짜/요일)+요약카드(📋·현장 상황 N건)+4카운터(URGENT/QUEST/완료/남은)+필터탭을 ScrollView **밖** 고정 헤더로 분리 → 섹션만 스크롤.
+- **부서 섹션 그룹핑**: 부서별 섹션(컬러 아이콘 박스 + '응급실 ER' 한글ENG명 + N건), 정규 부서 순서.
+- **리치 EventCard**: urgency 태그(URGENT/QUEST/INFO)+틴트 · room · 난이도 미터(3칸) · 제목 · 👤 NPC·sub · 태그라인 박스 · 스킬칩 2개+N · ⏱ 시간 · 📍위치보기/▶진행하기 액션레일.
+- **board API 확장**: `BoardCard`에 difficulty·room·npcName·npcSub·skills·timeLabel 추가; `ListBoardScenarios`가 s.persona도 SELECT; `TodaysScenarios`가 briefing/persona에서 리치 필드 채움. (struct/쿼리 변경 → API 재빌드·재시작)
+- 필터탭: 영문 부서코드+부서색 active+카운트, 부서 섹션·빈상태·데일리 로테이션 설명 유지.
+- 검증: tsc 0 · jest 208/208 · seed(300·122·11) · /board/today 리치필드 왕복 · 시뮬레이터 렌더 확인(전체 앱 재기동 후 stale 번들 해소).
+- 참고: 재리뷰 서브에이전트 3개는 API 529로 실패 → 추후 재시도 예정.
