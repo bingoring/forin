@@ -254,6 +254,12 @@ export const api = {
   },
 
   /** Assess pronunciation of recorded audio (base64 16kHz mono WAV) vs a reference. */
+  /** Transcribe recorded audio to text (dictation, Azure STT). */
+  async transcribe(audioBase64: string): Promise<string> {
+    const { data } = await http.post('/stt', { audioBase64 });
+    return (data as { text?: string })?.text ?? '';
+  },
+
   async assessPronunciation(referenceText: string, audioBase64: string): Promise<PronunciationResult> {
     const { data } = await http.post('/pronunciation', { referenceText, audioBase64 });
     return data as PronunciationResult;

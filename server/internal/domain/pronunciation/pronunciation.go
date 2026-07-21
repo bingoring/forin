@@ -26,6 +26,15 @@ func (s *Service) Assess(ctx context.Context, userID string, audioWav []byte, re
 	return s.pron.Assess(ctx, audioWav, referenceText, locale)
 }
 
+// Transcribe converts spoken audio to text (dictation) in the user's target locale.
+func (s *Service) Transcribe(ctx context.Context, userID string, audioWav []byte) (string, error) {
+	locale := "en-US"
+	if p, err := s.profiles.GetProfile(ctx, userID); err == nil && p != nil && p.TargetLang != "" {
+		locale = localeFor(p.TargetLang)
+	}
+	return s.pron.Transcribe(ctx, audioWav, locale)
+}
+
 // localeFor maps a target language code to a BCP-47 locale Azure expects.
 func localeFor(lang string) string {
 	switch lang {

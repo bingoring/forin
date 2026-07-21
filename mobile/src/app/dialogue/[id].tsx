@@ -5,10 +5,15 @@
 // startConversation(scenarioId) → sendMessageStream streams the NPC reply in
 // persona. Includes the v17 handoff affordances: MISSION counter, 💧 distress cue,
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
-// and hint-mode choices with a red risky (평판 위험) variant. Mic STT is a follow-up.
+// and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import {
+  useAudioRecorder, requestRecordingPermissionsAsync, setAudioModeAsync,
+  IOSOutputFormat, AudioQuality, type RecordingOptions,
+} from 'expo-audio';
+import { readAsStringAsync, EncodingType } from 'expo-file-system/legacy';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { PronunciationPractice } from '@/components/PronunciationPractice';
@@ -16,6 +21,14 @@ import { api, type ScenarioDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
+
+// 16kHz mono PCM WAV — the format the server STT endpoint expects.
+const WAV_16K_MONO: RecordingOptions = {
+  extension: '.wav', sampleRate: 16000, numberOfChannels: 1, bitRate: 256000,
+  ios: { outputFormat: IOSOutputFormat.LINEARPCM, audioQuality: AudioQuality.HIGH, linearPCMBitDepth: 16, linearPCMIsBigEndian: false, linearPCMIsFloat: false },
+  android: { outputFormat: 'default', audioEncoder: 'default' },
+  web: {},
+};
 
 export default function DialogueRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -32,6 +45,34 @@ export default function DialogueRoute() {
   const [pending, setPending] = useState(false);
   const [hintOn, setHintOn] = useState(false);
   const [tool, setTool] = useState<'chart' | 'meds' | 'vitals' | null>(null); // QUICK INFO panel
+  const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
+  const recorder = useAudioRecorder(WAV_16K_MONO);
+
+  // Mic → speech-to-text: tap to record, tap to stop → transcribe → fill the draft.
+  const toggleMic = async () => {
+    if (rec === 'transcribing') return;
+    if (rec === 'recording') {
+      setRec('transcribing');
+      try {
+        await recorder.stop();
+        const uri = recorder.uri;
+        if (!uri) throw new Error('no audio');
+        const b64 = await readAsStringAsync(uri, { encoding: EncodingType.Base64 });
+        const text = await api.transcribe(b64);
+        if (text) setDraft((d) => (d.trim() ? `${d.trim()} ${text}` : text));
+      } catch { /* mic/STT unavailable — leave draft as-is */ }
+      finally { setRec('idle'); }
+      return;
+    }
+    try {
+      const perm = await requestRecordingPermissionsAsync();
+      if (!perm.granted) return;
+      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
+      await recorder.prepareToRecordAsync();
+      recorder.record();
+      setRec('recording');
+    } catch { setRec('idle'); }
+  };
 
   useEffect(() => {
     let alive = true;
@@ -252,19 +293,21 @@ export default function DialogueRoute() {
         {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
         {!hintOn && (
           <View style={{ marginTop: 14 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 5 }}>SPEAK FREELY</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? '🔴 듣는 중… (마이크 탭하면 완료)' : rec === 'transcribing' ? '받아쓰는 중…' : 'SPEAK FREELY · 🎤 눌러 말하기'}</Text>
             <Shadowed offset={3}>
               <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                <Shadowed offset={2} shadowColor={colors.mintShadow}>
-                  <View style={{ width: 32, height: 32, backgroundColor: colors.mint, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 16 }}>🎤</Text>
-                  </View>
-                </Shadowed>
+                <Pressable onPress={toggleMic} disabled={pending}>
+                  <Shadowed offset={2} shadowColor={rec === 'recording' ? '#B91C1C' : colors.mintShadow}>
+                    <View style={{ width: 32, height: 32, backgroundColor: rec === 'recording' ? '#FCA5A5' : colors.mint, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                      {rec === 'transcribing' ? <ActivityIndicator color={C} size="small" /> : <Text style={{ fontSize: 16 }}>{rec === 'recording' ? '■' : '🎤'}</Text>}
+                    </View>
+                  </Shadowed>
+                </Pressable>
                 <TextInput
                   value={draft}
                   onChangeText={setDraft}
-                  editable={!pending}
-                  placeholder="자유롭게 영어로 답해보세요…"
+                  editable={!pending && rec === 'idle'}
+                  placeholder={rec === 'recording' ? '말한 뒤 마이크를 다시 누르세요…' : '자유롭게 영어로 답하거나 🎤로 말해보세요…'}
                   placeholderTextColor={colors.textFaint}
                   style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, paddingVertical: 4 }}
                   onSubmitEditing={send}

@@ -79,6 +79,7 @@ func NewRouter(d Deps) http.Handler {
 	// Pronunciation assessment (authenticated).
 	pron := &pronunciationHandler{svc: d.Pron}
 	mux.Handle("POST /pronunciation", auth(http.HandlerFunc(pron.assess)))
+	mux.Handle("POST /stt", auth(http.HandlerFunc(pron.transcribe)))
 
 	// Global middleware (outermost first).
 	return chain(mux,

@@ -100,6 +100,44 @@ func (c *Client) Assess(ctx context.Context, audioWav []byte, referenceText, loc
 	return res, nil
 }
 
+// Transcribe returns the recognized text for audioWav (16kHz mono PCM WAV) in the
+// given locale — plain speech-to-text (no pronunciation-assessment header).
+func (c *Client) Transcribe(ctx context.Context, audioWav []byte, locale string) (string, error) {
+	if !c.Configured() {
+		return "", errors.New("azurespeech: key/region not configured")
+	}
+	url := fmt.Sprintf("https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s&format=detailed",
+		c.region, locale)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewReader(audioWav))
+	if err != nil {
+		return "", err
+	}
+	req.Header.Set("Ocp-Apim-Subscription-Key", c.key)
+	req.Header.Set("Content-Type", "audio/wav; codecs=audio/pcm; samplerate=16000")
+	req.Header.Set("Accept", "application/json")
+
+	resp, err := c.http.Do(req)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	raw, _ := io.ReadAll(resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("azurespeech: status %d: %s", resp.StatusCode, truncate(raw))
+	}
+	var ar azureResp
+	if err := json.Unmarshal(raw, &ar); err != nil {
+		return "", fmt.Errorf("azurespeech: bad response: %s", truncate(raw))
+	}
+	if ar.DisplayText != "" {
+		return ar.DisplayText, nil
+	}
+	if len(ar.NBest) > 0 {
+		return ar.NBest[0].Display, nil
+	}
+	return "", nil // no speech recognized
+}
+
 func truncate(b []byte) string {
 	if len(b) > 300 {
 		return string(b[:300])

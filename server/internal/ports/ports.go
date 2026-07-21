@@ -78,9 +78,11 @@ type PronunciationResult struct {
 	Words        []WordScore `json:"words,omitempty"`
 }
 
-// PronunciationPort scores spoken audio against a reference (Azure etc.).
+// PronunciationPort scores spoken audio against a reference (Azure etc.) and
+// transcribes plain speech-to-text.
 type PronunciationPort interface {
 	Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*PronunciationResult, error)
+	Transcribe(ctx context.Context, audioWav []byte, locale string) (string, error)
 }
 
 // ConversationSession / Turn are persistence DTOs for dialogue.
