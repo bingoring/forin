@@ -3,7 +3,9 @@
 // (L) + player (R) portrait frames, a mission tracker, and the bottom dialogue
 // box with a speaker tab + NPC line + free-text input. Wired to the real AI:
 // startConversation(scenarioId) → sendMessageStream streams the NPC reply in
-// persona. Hint mode, mic STT, quick-tools, and the result screen are follow-ups.
+// persona. Includes the v17 handoff affordances: MISSION counter, 💧 distress cue,
+// QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
+// and hint-mode choices with a red risky (평판 위험) variant. Mic STT is a follow-up.
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
@@ -24,9 +26,12 @@ export default function DialogueRoute() {
   const sessionRef = useRef<string | null>(null);
 
   const [npcLine, setNpcLine] = useState(''); // latest NPC utterance (VN box)
+  const [npcLineKo, setNpcLineKo] = useState(''); // Korean of the scripted line (for 번역)
+  const [showKo, setShowKo] = useState(false);
   const [draft, setDraft] = useState('');
   const [pending, setPending] = useState(false);
   const [hintOn, setHintOn] = useState(false);
+  const [tool, setTool] = useState<'chart' | 'meds' | 'vitals' | null>(null); // QUICK INFO panel
 
   useEffect(() => {
     let alive = true;
@@ -35,7 +40,10 @@ export default function DialogueRoute() {
         const s = await api.scenario(id);
         if (!alive) return;
         setScenario(s);
-        setNpcLine(s.tagline || ''); // opening line before the exchange starts
+        // Opening line: the scenario's first dialogue step (has a Korean line for 번역), else the tagline.
+        const opening = (s.steps ?? []).find((st) => st.type === 'dialogue');
+        setNpcLine((opening?.payload?.lineEn as string) || s.tagline || '');
+        setNpcLineKo((opening?.payload?.lineKo as string) || '');
         const sid = await api.startConversation(id);
         if (!alive) return;
         sessionRef.current = sid;
@@ -52,7 +60,7 @@ export default function DialogueRoute() {
     if (!text || pending || !sessionRef.current) return;
     setDraft('');
     setPending(true);
-    setNpcLine(''); // clear for the streaming reply
+    setNpcLine(''); setNpcLineKo(''); setShowKo(false); // clear for the streaming reply (no Ko for AI lines)
     try {
       await api.sendMessageStream(sessionRef.current, text, (chunk) => {
         setNpcLine((prev) => prev + chunk);
@@ -68,7 +76,11 @@ export default function DialogueRoute() {
   const kind = (ROLE_KINDS.has(p.role as RoleKind) ? p.role : 'patient') as RoleKind;
   const expr = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
   const npcName = (p.name || 'NPC').toUpperCase();
-  const mission = scenario?.goals?.[0];
+  const goals = scenario?.goals ?? [];
+  const mission = goals[0];
+  const chart = scenario?.briefing?.chart;
+  const riskyPhrases = scenario?.briefing?.riskyPhrases ?? [];
+  const showSweat = expr === 'pain' || expr === 'panic' || expr === 'worried';
   // A scenario can embed several quiz steps; surface them all as one sequence.
   const quizIds = (scenario?.steps ?? [])
     .filter((s) => s.type === 'quiz')
@@ -110,7 +122,7 @@ export default function DialogueRoute() {
           <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 190 }}>
             <Shadowed offset={2}>
               <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>🎯 MISSION</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>🎯 MISSION 1/{Math.max(1, goals.length)}</Text>
               </View>
             </Shadowed>
             <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
@@ -122,7 +134,7 @@ export default function DialogueRoute() {
 
       {/* patient portrait (L) */}
       <View style={{ position: 'absolute', left: 16, top: 128, zIndex: 3 }}>
-        <PortraitFrame name={p.name || 'NPC'} status={p.mood ? p.mood.toUpperCase() : undefined}>
+        <PortraitFrame name={p.name || 'NPC'} status={p.mood ? p.mood.toUpperCase() : undefined} sweat={showSweat}>
           <RoleFace kind={kind} hair={p.hair} expression={expr} size={120} />
         </PortraitFrame>
       </View>
@@ -134,10 +146,46 @@ export default function DialogueRoute() {
         </PortraitFrame>
       </View>
 
+      {/* QUICK INFO dock — bedside reference tools (차트 / 약물 / 활력) */}
+      <View style={{ position: 'absolute', left: 14, right: 14, top: '41%', flexDirection: 'row', alignItems: 'center', gap: 6, zIndex: 4 }}>
+        <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C, opacity: 0.75 }}>QUICK INFO</Text>
+        </View>
+        <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
+        {([['chart', '📋', '차트'], ['meds', '💊', '약물'], ['vitals', '🩺', '활력']] as const).map(([k, icon, label]) => (
+          <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
+            <Shadowed offset={2}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
+                <Text style={{ fontSize: 13 }}>{icon}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{label}</Text>
+              </View>
+            </Shadowed>
+          </Pressable>
+        ))}
+      </View>
+
+      {/* QUICK INFO panel — modal card over a scrim */}
+      {tool && (
+        <Pressable onPress={() => setTool(null)} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(31,41,55,0.55)', zIndex: 20, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+          <Pressable onPress={() => {}} style={{ alignSelf: 'stretch' }}>
+            <Shadowed offset={5}>
+              <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{tool === 'chart' ? '📋 환자 차트' : tool === 'meds' ? '💊 투약 정보' : '🩺 활력징후'}</Text>
+                  <Pressable onPress={() => setTool(null)}><Text style={{ fontFamily: fonts.heading, fontSize: 14, color: colors.textSoft }}>✕</Text></Pressable>
+                </View>
+                <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
+              </View>
+            </Shadowed>
+          </Pressable>
+        </Pressable>
+      )}
+
       {/* dialogue box */}
       <View style={{ position: 'absolute', left: 14, right: 14, bottom: 20, zIndex: 6 }}>
-        {/* speaker tab */}
+        {/* speaker tab (with an upward peach shadow) */}
         <View style={{ alignSelf: 'flex-start', marginLeft: 12 }}>
+          <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
           <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{npcName} · {roleKo(kind)}</Text>
           </View>
@@ -147,11 +195,28 @@ export default function DialogueRoute() {
         <Shadowed offset={4}>
           <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingHorizontal: 16, paddingTop: 14, paddingBottom: 12, minHeight: 76 }}>
             {npcLine ? (
-              <Text style={{ fontFamily: fonts.body, fontSize: 14, color: C, lineHeight: 22 }}>{npcLine}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 14, color: C, lineHeight: 22 }}>{showKo && npcLineKo ? npcLineKo : npcLine}</Text>
             ) : (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <ActivityIndicator color={C} size="small" />
                 <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>{npcName} 응답 중…</Text>
+              </View>
+            )}
+            {/* translate row — available for scripted lines that carry a Korean translation */}
+            {!!npcLine && !!npcLineKo && (
+              <View style={{ marginTop: 10, paddingTop: 10, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 14 }}>{showKo ? '원문 English' : '한국어 번역'}</Text>
+                <Pressable onPress={() => setShowKo((v) => !v)}>
+                  <View style={{ backgroundColor: showKo ? colors.yellow : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{showKo ? '원문 보기' : 'tap to 번역'}</Text>
+                  </View>
+                </Pressable>
+              </View>
+            )}
+            {/* next-turn cue */}
+            {!!npcLine && (
+              <View style={{ position: 'absolute', right: 10, bottom: -8, width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>▼</Text>
               </View>
             )}
           </View>
@@ -170,9 +235,10 @@ export default function DialogueRoute() {
               <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.cream, opacity: 0.85 }}>{scenario.keyPhrases.length}가지 추천 답변</Text>
             </View>
             <View style={{ gap: 8 }}>
-              {scenario.keyPhrases.map((phrase, i) => (
-                <ChoiceRow key={i} num={i + 1} text={phrase} suggested={i === 0} onPress={() => { setDraft(phrase); setHintOn(false); }} />
-              ))}
+              {scenario.keyPhrases.map((phrase, i) => {
+                const risky = riskyPhrases.includes(phrase);
+                return <ChoiceRow key={i} num={i + 1} text={phrase} suggested={i === 0 && !risky} risky={risky} onPress={() => { setDraft(phrase); setHintOn(false); }} />;
+              })}
             </View>
             {/* pronunciation practice for the suggested phrase */}
             <PronunciationPractice referenceText={scenario.keyPhrases[0]} />
@@ -246,7 +312,7 @@ function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: 
 }
 
 /** Portrait frame with a name plate (and optional red status chip). */
-function PortraitFrame({ children, name, status, hue }: { children: React.ReactNode; name: string; status?: string; hue?: string }) {
+function PortraitFrame({ children, name, status, hue, sweat }: { children: React.ReactNode; name: string; status?: string; hue?: string; sweat?: boolean }) {
   return (
     <View>
       <Shadowed offset={4}>
@@ -255,6 +321,7 @@ function PortraitFrame({ children, name, status, hue }: { children: React.ReactN
           {children}
         </View>
       </Shadowed>
+      {sweat && <Text style={{ position: 'absolute', top: 2, right: -8, fontSize: 18, zIndex: 4 }}>💧</Text>}
       <Shadowed offset={2} style={{ marginTop: 6, alignSelf: 'flex-start' }}>
         <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{name}</Text>
@@ -271,20 +338,81 @@ function PortraitFrame({ children, name, status, hue }: { children: React.ReactN
   );
 }
 
-/** A tappable suggested response (hint mode). Numbered chip + phrase. */
-function ChoiceRow({ num, text, suggested, onPress }: { num: number; text: string; suggested?: boolean; onPress: () => void }) {
+/** A tappable suggested response (hint mode). Numbered chip + phrase.
+ *  suggested = mint (AI 추천) · risky = red (평판 위험) · else peach (normal). */
+function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text: string; suggested?: boolean; risky?: boolean; onPress: () => void }) {
+  const tabBg = risky ? '#EF4444' : suggested ? colors.mint : colors.peach;
+  const shadow = risky ? '#B91C1C' : suggested ? colors.mintShadow : '#2A252266';
   return (
-    <Shadowed offset={suggested ? 3 : 2} shadowColor={suggested ? colors.mintShadow : '#2A252266'}>
-      <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
-        <View style={{ width: 28, backgroundColor: suggested ? colors.mint : colors.peach, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{num}</Text>
+    <Shadowed offset={suggested || risky ? 3 : 2} shadowColor={shadow}>
+      <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: risky ? '#B91C1C' : C }}>
+        <View style={{ width: 28, backgroundColor: tabBg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: risky ? '#fff' : C }}>{num}</Text>
         </View>
         <View style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 10 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{text}</Text>
           {suggested && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.mintShadow, marginTop: 3 }}>★ AI 추천 · 미션 진행</Text>}
+          {risky && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#B91C1C', marginTop: 3 }}>⚠ 평판 −2 위험</Text>}
         </View>
       </Pressable>
     </Shadowed>
+  );
+}
+
+/** QUICK INFO panel body — bedside reference derived from the scenario chart,
+ *  with sensible fallbacks so a tool is never empty (prompts the nurse to assess). */
+function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | 'meds' | 'vitals'; p: { name?: string; sub?: string }; kind: RoleKind; chart?: import('@/api/client').ScenarioChart; brief?: string; tagline?: string }) {
+  if (tool === 'chart') {
+    const rows: [string, string][] = [
+      ['환자', p.name || '—'],
+      ['역할', roleKo(kind)],
+      ...(p.sub ? ([['정보', p.sub]] as [string, string][]) : []),
+      ['주요 호소', tagline || '—'],
+      ['알레르기', chart?.allergies || '확인 필요'],
+    ];
+    return (
+      <View style={{ gap: 6 }}>
+        {rows.map(([k, v], i) => (
+          <View key={i} style={{ flexDirection: 'row', gap: 8 }}>
+            <Text style={{ width: 68, fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft }}>{k}</Text>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{v}</Text>
+          </View>
+        ))}
+        {!!(chart?.notes || brief) && (
+          <View style={{ marginTop: 4, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252244', borderStyle: 'dashed', padding: 8 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>{chart?.notes || brief}</Text>
+          </View>
+        )}
+      </View>
+    );
+  }
+  if (tool === 'meds') {
+    const meds = chart?.meds ?? [];
+    if (meds.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요. 💊</Text>;
+    return (
+      <View style={{ gap: 6 }}>
+        {meds.map((m, i) => (
+          <View key={i} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
+            <Text style={{ fontSize: 13 }}>💊</Text>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{m}</Text>
+          </View>
+        ))}
+      </View>
+    );
+  }
+  // vitals
+  const vitals = chart?.vitals ?? [];
+  if (vitals.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요. 🩺</Text>;
+  return (
+    <View style={{ flexDirection: 'row', gap: 6 }}>
+      {vitals.map((v, i) => (
+        <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FEE2E2' : colors.paper, borderWidth: 1.5, borderColor: C, paddingVertical: 6, alignItems: 'center' }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft }}>{v.label}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
+          {!!v.unit && <Text style={{ fontFamily: fonts.body, fontSize: 8, color: colors.textSoft, marginTop: 1 }}>{v.unit}</Text>}
+        </View>
+      ))}
+    </View>
   );
 }
 

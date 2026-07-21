@@ -94,9 +94,11 @@ export interface ScenarioPersona {
 }
 export interface ScenarioReward { icon: string; label: string; value: string }
 export interface ScenarioReq { label: string; metric?: string; threshold?: number }
+export interface ScenarioChart { vitals?: QuizVital[]; meds?: string[]; allergies?: string; notes?: string }
 export interface ScenarioBriefing {
   dept?: string; deptColor?: string; brief?: string; difficulty?: number; timeLabel?: string;
   skills?: string[]; rewards?: ScenarioReward[]; reqs?: ScenarioReq[]; tone?: string; accent?: string;
+  chart?: ScenarioChart; riskyPhrases?: string[];
 }
 export interface ScenarioStep {
   id: string; type: string; next?: string;

@@ -27,6 +27,7 @@ keyPhrases:
   - "On a scale of 0 to 10, how bad is the pain?"
   - "Can you describe the pain?"
   - "When did it start?"
+  - "Let me get the doctor right away."
 briefing:
   dept: "ER · TRAUMA BAY #4"
   deptColor: "#DC2626"
@@ -46,6 +47,19 @@ briefing:
     - { label: "응급 대응력 60+", metric: "emergencyResponse", threshold: 60 }
   tone: "#FFEDD5"
   accent: "#E8B584"
+  riskyPhrases:
+    - "Let me get the doctor right away."
+  chart:
+    vitals:
+      - { label: "BP", value: "128/82", unit: "mmHg" }
+      - { label: "HR", value: "96", unit: "bpm" }
+      - { label: "SpO₂", value: "98", unit: "%" }
+      - { label: "Temp", value: "37.1", unit: "°C" }
+    meds:
+      - "Acetaminophen 650 mg PO PRN (통증)"
+      - "Ibuprofen 400 mg PO PRN (미투여)"
+    allergies: "NKDA (알려진 알레르기 없음)"
+    notes: "발병 약 1시간 전 · 오른팔 욱신거림 · 외상력 없음"
 steps:
   - id: s1
     type: dialogue

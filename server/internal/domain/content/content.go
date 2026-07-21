@@ -211,6 +211,19 @@ type Briefing struct {
 	Reqs       []Req    `yaml:"reqs" json:"reqs,omitempty"` // met computed client-side vs /me
 	Tone       string   `yaml:"tone" json:"tone,omitempty"`
 	Accent     string   `yaml:"accent" json:"accent,omitempty"`
+
+	// Dialogue quick-reference (QUICK INFO dock: 차트/약물/활력) and risky-choice
+	// tagging (hint mode marks these key phrases as reputation-risky).
+	Chart        *ScenarioChart `yaml:"chart" json:"chart,omitempty"`
+	RiskyPhrases []string       `yaml:"riskyPhrases" json:"riskyPhrases,omitempty"`
+}
+
+// ScenarioChart — bedside quick-reference shown in the dialogue QUICK INFO dock.
+type ScenarioChart struct {
+	Vitals    []QuizVital `yaml:"vitals" json:"vitals,omitempty"`
+	Meds      []string    `yaml:"meds" json:"meds,omitempty"`
+	Allergies string      `yaml:"allergies" json:"allergies,omitempty"`
+	Notes     string      `yaml:"notes" json:"notes,omitempty"`
 }
 
 type Reward struct {
