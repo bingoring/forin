@@ -25,7 +25,7 @@ export default function ReviewSession() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
-  const [graded, setGraded] = useState(0); // how many completed this session
+  const [graded, setGraded] = useState(0); // how many completed this session // how many completed this session
 
   useFocusEffect(
     useCallback(() => {
@@ -79,7 +79,7 @@ export default function ReviewSession() {
           <Text style={{ fontSize: 52 }}>{graded > 0 ? '🎉' : '📓'}</Text>
           <Text style={{ fontFamily: fonts.heading, fontSize: 20, color: C, textAlign: 'center' }}>{graded > 0 ? '오늘의 복습 완료!' : '복습할 카드가 없어요'}</Text>
           {graded > 0 && <Text style={{ fontFamily: fonts.body, fontSize: 13, color: colors.textSoft }}>{graded}개 카드를 복습했어요. 내일 또 만나요!</Text>}
-          <View style={{ marginTop: 8 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={back} /></View>
+          <View style={{ marginTop: 8, width: 200 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={back} full /></View>
         </View>
       )}
 
