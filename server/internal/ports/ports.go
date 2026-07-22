@@ -17,8 +17,9 @@ type ProgressRepo interface {
 	// RecordAttempt logs a cleared scenario, awards XP, updates streak, returns new progress.
 	RecordAttempt(ctx context.Context, userID, scenarioID string, score int) (*progress.Progress, error)
 	// GrowthStats aggregates activity for the growth report. dayStart/weekStart are
-	// UTC lower bounds; ActiveDates covers [weekStart, now).
-	GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time) (*progress.GrowthStats, error)
+	// the period lower bounds (already computed in tzName); ActiveDates are bucketed
+	// as calendar dates in tzName (an IANA zone, e.g. "Asia/Seoul") over the week.
+	GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time, tzName string) (*progress.GrowthStats, error)
 }
 
 // ReviewRepo manages spaced-repetition cards.

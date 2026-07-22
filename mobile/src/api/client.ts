@@ -212,9 +212,12 @@ export const api = {
   },
 
   /** Record a cleared scenario; awards `score` XP + advances streak, returns updated progress. */
-  /** Growth-report aggregates (scenarios, cards, conversation time, attendance). */
+  /** Growth-report aggregates (scenarios, cards, conversation time, attendance).
+   *  Sends the device timezone so the server buckets today/this-week locally. */
   async growthStats(): Promise<GrowthStats> {
-    const { data } = await http.get('/me/stats');
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    const { data } = await http.get('/me/stats', { params: tz ? { tz } : undefined });
     return data as GrowthStats;
   },
 

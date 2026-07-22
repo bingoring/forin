@@ -14,9 +14,10 @@ import { colors, fonts } from '@/theme/tokens';
 const C = colors.ink;
 const WD = ['월', '화', '수', '목', '금', '토', '일']; // Monday-first week strip
 
-// UTC yyyy-mm-dd for a Date (matches the server's week bucketing).
-function utcDate(d: Date): string {
-  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+// Local yyyy-mm-dd for a Date. The server buckets activeDates in the device
+// timezone (sent by the client), so the week grid is built in local time too.
+function localDate(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 function fmtMinutes(seconds: number): string {
   const m = Math.round(seconds / 60);
@@ -56,17 +57,17 @@ export default function Growth() {
   );
 
   // today's date + weekday, and the current-week attendance from the server's
-  // activeDates (UTC, so the week grid matches the server's bucketing exactly).
+  // activeDates (bucketed in the device timezone → built in local time here).
   const { dateLabel, dow, week, attended } = useMemo(() => {
     const now = new Date();
-    const d = `${now.getUTCMonth() + 1}월 ${now.getUTCDate()}일`;
-    const todayIdx = (now.getUTCDay() + 6) % 7; // Mon=0 … Sun=6
-    const monday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - todayIdx));
+    const d = `${now.getMonth() + 1}월 ${now.getDate()}일`;
+    const todayIdx = (now.getDay() + 6) % 7; // Mon=0 … Sun=6
+    const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - todayIdx);
     const active = new Set(stats?.activeDates ?? []);
     const w = WD.map((label, i) => {
       const cell = new Date(monday);
-      cell.setUTCDate(monday.getUTCDate() + i);
-      return { label, today: i === todayIdx, filled: active.has(utcDate(cell)) };
+      cell.setDate(monday.getDate() + i);
+      return { label, today: i === todayIdx, filled: active.has(localDate(cell)) };
     });
     return { dateLabel: d, dow: WD[todayIdx], week: w, attended: w.filter((x) => x.filled).length };
   }, [stats]);

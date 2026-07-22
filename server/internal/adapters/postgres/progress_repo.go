@@ -47,7 +47,7 @@ func (r *ProgressRepo) GetProgress(ctx context.Context, userID string) (*progres
 // GrowthStats aggregates scenario clears, new review cards, active conversation
 // time, and distinct active dates for the growth report. Read-only aggregates run
 // directly on the pool (outside the sqlc CRUD surface).
-func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time) (*progress.GrowthStats, error) {
+func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time, tzName string) (*progress.GrowthStats, error) {
 	s := &progress.GrowthStats{ActiveDates: []string{}}
 
 	countScenarios := func(since time.Time) (int, error) {
@@ -101,9 +101,10 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 		return nil, err
 	}
 
-	// Distinct active dates this week (UTC) — a clear counts, and any dialogue turn counts.
+	// Distinct active dates this week, bucketed as calendar dates in the caller's
+	// timezone — a scenario clear counts, and any dialogue turn counts.
 	rows, err := r.pool.Query(ctx,
-		`SELECT DISTINCT d::date FROM (
+		`SELECT DISTINCT (d AT TIME ZONE $3)::date FROM (
 		   SELECT COALESCE(cleared_at, started_at) AS d FROM scenario_attempts
 		     WHERE user_id = $1 AND COALESCE(cleared_at, started_at) >= $2
 		   UNION ALL
@@ -111,7 +112,7 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 		     JOIN conversation_sessions cs ON cs.id = dt.session_id
 		     WHERE cs.user_id = $1 AND dt.created_at >= $2
 		 ) x ORDER BY 1`,
-		userID, weekStart)
+		userID, weekStart, tzName)
 	if err != nil {
 		return nil, err
 	}

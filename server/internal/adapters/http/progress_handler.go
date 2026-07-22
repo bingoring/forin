@@ -36,12 +36,20 @@ func (h *progressHandler) get(w http.ResponseWriter, r *http.Request) {
 // @Router /me/stats [get]
 func (h *progressHandler) stats(w http.ResponseWriter, r *http.Request) {
 	uid, _ := UserID(r.Context())
-	now := time.Now().UTC()
-	dayStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
+	// Bucket "today"/"this week" in the caller's timezone (device-provided IANA
+	// name, e.g. "Asia/Seoul"); fall back to UTC when absent or unknown.
+	loc := time.UTC
+	if tz := r.URL.Query().Get("tz"); tz != "" {
+		if l, err := time.LoadLocation(tz); err == nil {
+			loc = l
+		}
+	}
+	now := time.Now().In(loc)
+	dayStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, loc)
 	// Monday-first week: Go's Weekday has Sunday=0, so map to Monday=0..Sunday=6.
 	offset := (int(now.Weekday()) + 6) % 7
 	weekStart := dayStart.AddDate(0, 0, -offset)
-	s, err := h.progress.GrowthStats(r.Context(), uid, dayStart, weekStart)
+	s, err := h.progress.GrowthStats(r.Context(), uid, dayStart, weekStart, loc.String())
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not load stats")
 		return
