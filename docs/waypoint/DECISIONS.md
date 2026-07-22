@@ -1100,3 +1100,9 @@
 - **모바일 배선**: `/growth`가 `api.growthStats()` 사용 — 출석 스트립을 streak 추정 → 실제 activeDates 매칭으로 교체(주 그리드·today 모두 UTC로 서버와 일치), 스탯 타일을 시나리오/새 표현/대화 시간/레벨 실값으로. `ScenariosToday`/`NewCardsToday`/`conversationSecondsToday`도 응답에 포함(향후 '오늘' 뷰용).
 - **TZ 메모**: 버킷팅은 UTC 기준(단일 사용자 MVP). 사용자별 타임존 버킷은 후속.
 - 검증: go build/test 0 · tsc 0 · jest 208/208 · E2E(/me/stats: scenariosWeek 8·newCardsWeek 14·convWeek 144s·activeDates[07-20,07-21]) · 시뮬레이터(출석 월·화 체크/수 today, 스탯 실값).
+
+## 2026-07-22 — 성장 리포트 타임존: 기기 TZ → 서버 버킷팅
+이전엔 UTC 고정 버킷팅이라 KST 자정~오전9시 구간에서 '오늘/이번 주'가 하루 어긋남. 프로필 저장 대신 **기기 타임존을 클라가 감지해 서버에 전달**하는 방식 채택(출장/이동에도 항상 정확, 집계는 서버 SQL 유지 — 순수 클라 집계는 원시 행 전송이 필요해 배제).
+- **서버**: `GET /me/stats?tz=<IANA>` — 핸들러가 `time.LoadLocation(tz)`(없거나 불명 → UTC 폴백)로 dayStart(자정)·weekStart(월요일)를 해당 존에서 계산. activeDates는 `(ts AT TIME ZONE $tz)::date`로 버킷팅. `ProgressRepo.GrowthStats(..., tzName string)`로 시그니처 확장.
+- **클라**: `Intl.DateTimeFormat().resolvedOptions().timeZone`로 기기 존 감지해 쿼리 전달(감지 실패 시 생략→UTC). `/growth` 주 그리드/헤더/today를 로컬 시간 기준으로 계산(getDay/getDate)해 서버 로컬-버킷 activeDates와 매칭.
+- 검증: go build 0 · tsc 0 · jest 208/208 · E2E(UTC=[07-20,21] vs Asia/Seoul=[07-20,21,22] vs America/New_York=[07-20,21] vs bad→UTC 폴백) · 시뮬레이터(기기 KST → 출석 월·화·수 3/7, 수=today).
