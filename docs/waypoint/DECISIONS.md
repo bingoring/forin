@@ -1087,3 +1087,16 @@
 - **실데이터 배선(GET /me/progress + /me/review)**: 레벨/누적 XP/연속·최장/평판(환자·동료·응급)/복습 카드 수는 실제 값. 출석 스트립은 서버에 일별 로그가 없어 `streakCurrent`로 이번 주(월~오늘) 역산해 표시(연속 출석의 정직한 시각화).
 - **핸드오프 대비 축소**: 서버 데이터 소스가 아직 없는 '시나리오 완료 수/대화 시간/칭찬 스티커 보드'는 이번 판에서 제외하고, 스탯 타일을 실측 지표(레벨·누적 XP·환자 만족·복습 카드)로 대체. 추후 시나리오 완료/대화시간 집계 엔드포인트 추가 시 확장 여지 남김.
 - 검증: tsc 0 · jest 208/208 · 시뮬레이터(7/22 수요일, 연속 2일 → 화·수 체크, 스탯 실값) 확인.
+
+## 2026-07-22 — 성장 리포트 집계 엔드포인트 GET /me/stats
+성장 리포트를 완전 실데이터로: 출석/시나리오/대화시간을 서버에서 집계.
+- **신규 `GET /me/stats`** → `progress.GrowthStats{scenariosToday/Week, newCardsToday/Week, conversationSecondsToday/Week, activeDates[]}`.
+- **집계 소스(read-only, pool 직접 쿼리)**:
+  - 시나리오 완료: `scenario_attempts` state='cleared' COALESCE(cleared_at,started_at) ≥ 기준.
+  - 새 표현: `review_cards.created_at` ≥ 기준.
+  - 대화 시간: 세션별 (MAX-MIN dialogue_turns.created_at) 합(활성 대화 시간 근사).
+  - 출석 activeDates: `scenario_attempts` ∪ `dialogue_turns` DISTINCT 날짜(UTC), 이번 주.
+- **기간 계산**: 핸들러가 UTC 기준 dayStart(자정)·weekStart(월요일)를 계산해 repo에 전달.
+- **모바일 배선**: `/growth`가 `api.growthStats()` 사용 — 출석 스트립을 streak 추정 → 실제 activeDates 매칭으로 교체(주 그리드·today 모두 UTC로 서버와 일치), 스탯 타일을 시나리오/새 표현/대화 시간/레벨 실값으로. `ScenariosToday`/`NewCardsToday`/`conversationSecondsToday`도 응답에 포함(향후 '오늘' 뷰용).
+- **TZ 메모**: 버킷팅은 UTC 기준(단일 사용자 MVP). 사용자별 타임존 버킷은 후속.
+- 검증: go build/test 0 · tsc 0 · jest 208/208 · E2E(/me/stats: scenariosWeek 8·newCardsWeek 14·convWeek 144s·activeDates[07-20,07-21]) · 시뮬레이터(출석 월·화 체크/수 today, 스탯 실값).
