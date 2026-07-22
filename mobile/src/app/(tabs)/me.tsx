@@ -7,6 +7,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
+import { FacePlayer } from '@engine';
 import { api, type Progress } from '@/api/client';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
@@ -84,10 +85,13 @@ export default function Me() {
             {/* punched-hole notch (id-card vibe) */}
             <View style={{ position: 'absolute', top: -1, left: '50%', marginLeft: -12, width: 24, height: 5, backgroundColor: colors.cream, borderWidth: 2, borderTopWidth: 0, borderColor: C }} />
             <View style={{ padding: 14, paddingTop: 12, flexDirection: 'row', gap: 14 }}>
-              {/* avatar */}
-              <Shadowed offset={3}>
-                <View style={{ width: 80, height: 96, backgroundColor: colors.peach, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 46 }}>👩‍⚕️</Text>
+              {/* avatar — same pixel portrait as the dialogue player frame.
+                  alignSelf flex-start stops the shadow box from stretching to
+                  the row's full height (the row defaults to alignItems:stretch). */}
+              <Shadowed offset={3} style={{ alignSelf: 'flex-start' }}>
+                <View style={{ width: 80, height: 96, backgroundColor: colors.peach, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
+                  <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
+                  <FacePlayer size={86} />
                 </View>
               </Shadowed>
               <View style={{ flex: 1, minWidth: 0 }}>
@@ -174,7 +178,7 @@ export default function Me() {
               const bg = !b.got ? colors.cream : b.special ? colors.yellow : '#fff';
               return (
                 <Shadowed key={i} offset={b.got ? 3 : 0} shadowColor={b.special ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
-                  <View style={{ aspectRatio: 0.85, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
+                  <View style={{ aspectRatio: 1, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={{ fontSize: 22, opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>
                     <Text style={{ fontFamily: fonts.body, fontSize: 8, color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
                     {b.got && b.special && (
