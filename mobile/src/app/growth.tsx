@@ -8,11 +8,21 @@ import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
-import { api, type Progress } from '@/api/client';
+import { api, type Progress, type GrowthStats } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
 const WD = ['월', '화', '수', '목', '금', '토', '일']; // Monday-first week strip
+
+// UTC yyyy-mm-dd for a Date (matches the server's week bucketing).
+function utcDate(d: Date): string {
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+}
+function fmtMinutes(seconds: number): string {
+  const m = Math.round(seconds / 60);
+  if (m < 60) return `${m}분`;
+  return `${Math.floor(m / 60)}시간 ${m % 60}분`;
+}
 
 function careerTitle(level: number) {
   if (level >= 30) return 'Head Nurse';
@@ -24,7 +34,7 @@ function careerTitle(level: number) {
 export default function Growth() {
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
-  const [cardCount, setCardCount] = useState(0);
+  const [stats, setStats] = useState<GrowthStats | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
 
   useFocusEffect(
@@ -32,10 +42,10 @@ export default function Growth() {
       let alive = true;
       (async () => {
         try {
-          const [p, cards] = await Promise.all([api.progress(), api.reviewDue().catch(() => [])]);
+          const [p, s] = await Promise.all([api.progress(), api.growthStats()]);
           if (!alive) return;
           setProgress(p);
-          setCardCount(cards.length);
+          setStats(s);
           setState('ok');
         } catch {
           if (alive) setState('error');
@@ -45,20 +55,21 @@ export default function Growth() {
     }, []),
   );
 
-  // today's date + weekday, and the current-week attendance derived from the streak.
+  // today's date + weekday, and the current-week attendance from the server's
+  // activeDates (UTC, so the week grid matches the server's bucketing exactly).
   const { dateLabel, dow, week, attended } = useMemo(() => {
     const now = new Date();
-    const d = `${now.getMonth() + 1}월 ${now.getDate()}일`;
-    const todayIdx = (now.getDay() + 6) % 7; // Mon=0 … Sun=6
-    const streak = progress?.streakCurrent ?? 0;
-    const w = WD.map((label, i) => ({
-      label,
-      today: i === todayIdx,
-      // filled = a day on/before today that falls inside the current streak run
-      filled: i <= todayIdx && todayIdx - i < streak,
-    }));
+    const d = `${now.getUTCMonth() + 1}월 ${now.getUTCDate()}일`;
+    const todayIdx = (now.getUTCDay() + 6) % 7; // Mon=0 … Sun=6
+    const monday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - todayIdx));
+    const active = new Set(stats?.activeDates ?? []);
+    const w = WD.map((label, i) => {
+      const cell = new Date(monday);
+      cell.setUTCDate(monday.getUTCDate() + i);
+      return { label, today: i === todayIdx, filled: active.has(utcDate(cell)) };
+    });
     return { dateLabel: d, dow: WD[todayIdx], week: w, attended: w.filter((x) => x.filled).length };
-  }, [progress]);
+  }, [stats]);
 
   const back = () => router.back();
 
@@ -81,7 +92,7 @@ export default function Growth() {
         </View>
       )}
 
-      {state === 'ok' && progress && (
+      {state === 'ok' && progress && stats && (
         <ScrollView contentContainerStyle={{ paddingHorizontal: 18, paddingBottom: 40, gap: 16 }}>
           {/* hero report card */}
           <Shadowed offset={4} shadowColor={colors.mintShadow}>
@@ -127,12 +138,12 @@ export default function Growth() {
             </View>
           </Shadowed>
 
-          {/* stat grid — live metrics */}
+          {/* stat grid — this week's live activity (GET /me/stats) */}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            <StatTile label="레벨" value={`Lv.${progress.level}`} sub={careerTitle(progress.level)} color={colors.mint} />
-            <StatTile label="누적 XP" value={progress.xp.toLocaleString()} sub="성장" color={colors.peach} />
-            <StatTile label="환자 만족" value={`${progress.patientSatisfaction}%`} sub="평판" color={colors.yellow} />
-            <StatTile label="복습 카드" value={`${cardCount}`} sub="오늘 대기" color={colors.pink} />
+            <StatTile label="시나리오" value={`${stats.scenariosWeek}`} sub="이번 주 완료" color={colors.mint} />
+            <StatTile label="새 표현" value={`${stats.newCardsWeek}`} sub="이번 주 배움" color={colors.peach} />
+            <StatTile label="대화 시간" value={fmtMinutes(stats.conversationSecondsWeek)} sub="이번 주 현장" color={colors.pink} />
+            <StatTile label="레벨" value={`Lv.${progress.level}`} sub={careerTitle(progress.level)} color={colors.yellow} />
           </View>
 
           {/* reputation snapshot */}

@@ -16,6 +16,19 @@ type Progress struct {
 	StreakLongest       int    `json:"streakLongest"`
 }
 
+// GrowthStats is the aggregated activity behind the "성장 리포트" screen:
+// scenario clears, new review cards, and active conversation time for today and
+// the current (Monday-first) week, plus the distinct active dates this week.
+type GrowthStats struct {
+	ScenariosToday           int      `json:"scenariosToday"`
+	ScenariosWeek            int      `json:"scenariosWeek"`
+	NewCardsToday            int      `json:"newCardsToday"`
+	NewCardsWeek             int      `json:"newCardsWeek"`
+	ConversationSecondsToday int      `json:"conversationSecondsToday"`
+	ConversationSecondsWeek  int      `json:"conversationSecondsWeek"`
+	ActiveDates              []string `json:"activeDates"` // yyyy-mm-dd (UTC), current week
+}
+
 // ReviewCard is one spaced-repetition phrase card (oops-note).
 type ReviewCard struct {
 	ID          string         `json:"id"`

@@ -44,6 +44,91 @@ func (r *ProgressRepo) GetProgress(ctx context.Context, userID string) (*progres
 	}, nil
 }
 
+// GrowthStats aggregates scenario clears, new review cards, active conversation
+// time, and distinct active dates for the growth report. Read-only aggregates run
+// directly on the pool (outside the sqlc CRUD surface).
+func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time) (*progress.GrowthStats, error) {
+	s := &progress.GrowthStats{ActiveDates: []string{}}
+
+	countScenarios := func(since time.Time) (int, error) {
+		var n int
+		err := r.pool.QueryRow(ctx,
+			`SELECT count(*) FROM scenario_attempts
+			 WHERE user_id = $1 AND state = 'cleared' AND COALESCE(cleared_at, started_at) >= $2`,
+			userID, since).Scan(&n)
+		return n, err
+	}
+	countCards := func(since time.Time) (int, error) {
+		var n int
+		err := r.pool.QueryRow(ctx,
+			`SELECT count(*) FROM review_cards WHERE user_id = $1 AND created_at >= $2`,
+			userID, since).Scan(&n)
+		return n, err
+	}
+	// Active conversation time: per session, the span between its first and last
+	// turn, summed over sessions touched within the period.
+	convSeconds := func(since time.Time) (int, error) {
+		var n int
+		err := r.pool.QueryRow(ctx,
+			`SELECT COALESCE(SUM(EXTRACT(EPOCH FROM (t.mx - t.mn))), 0)::int
+			 FROM (
+			   SELECT session_id, MIN(created_at) AS mn, MAX(created_at) AS mx
+			   FROM dialogue_turns GROUP BY session_id
+			 ) t
+			 JOIN conversation_sessions cs ON cs.id = t.session_id
+			 WHERE cs.user_id = $1 AND t.mx >= $2`,
+			userID, since).Scan(&n)
+		return n, err
+	}
+
+	var err error
+	if s.ScenariosToday, err = countScenarios(dayStart); err != nil {
+		return nil, err
+	}
+	if s.ScenariosWeek, err = countScenarios(weekStart); err != nil {
+		return nil, err
+	}
+	if s.NewCardsToday, err = countCards(dayStart); err != nil {
+		return nil, err
+	}
+	if s.NewCardsWeek, err = countCards(weekStart); err != nil {
+		return nil, err
+	}
+	if s.ConversationSecondsToday, err = convSeconds(dayStart); err != nil {
+		return nil, err
+	}
+	if s.ConversationSecondsWeek, err = convSeconds(weekStart); err != nil {
+		return nil, err
+	}
+
+	// Distinct active dates this week (UTC) — a clear counts, and any dialogue turn counts.
+	rows, err := r.pool.Query(ctx,
+		`SELECT DISTINCT d::date FROM (
+		   SELECT COALESCE(cleared_at, started_at) AS d FROM scenario_attempts
+		     WHERE user_id = $1 AND COALESCE(cleared_at, started_at) >= $2
+		   UNION ALL
+		   SELECT dt.created_at FROM dialogue_turns dt
+		     JOIN conversation_sessions cs ON cs.id = dt.session_id
+		     WHERE cs.user_id = $1 AND dt.created_at >= $2
+		 ) x ORDER BY 1`,
+		userID, weekStart)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var d time.Time
+		if err := rows.Scan(&d); err != nil {
+			return nil, err
+		}
+		s.ActiveDates = append(s.ActiveDates, d.UTC().Format("2006-01-02"))
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return s, nil
+}
+
 func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID string, score int) (*progress.Progress, error) {
 	tx, err := r.pool.Begin(ctx)
 	if err != nil {

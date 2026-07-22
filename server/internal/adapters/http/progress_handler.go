@@ -29,6 +29,26 @@ func (h *progressHandler) get(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, p)
 }
 
+// @Summary Growth-report aggregates (scenarios, cards, conversation time, attendance)
+// @Tags progress
+// @Security Bearer
+// @Success 200 {object} progress.GrowthStats
+// @Router /me/stats [get]
+func (h *progressHandler) stats(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	now := time.Now().UTC()
+	dayStart := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
+	// Monday-first week: Go's Weekday has Sunday=0, so map to Monday=0..Sunday=6.
+	offset := (int(now.Weekday()) + 6) % 7
+	weekStart := dayStart.AddDate(0, 0, -offset)
+	s, err := h.progress.GrowthStats(r.Context(), uid, dayStart, weekStart)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load stats")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, s)
+}
+
 // @Summary Record a cleared scenario (awards XP, advances streak)
 // @Tags progress
 // @Security Bearer

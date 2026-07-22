@@ -165,6 +165,15 @@ export interface Progress {
   streakCurrent: number; streakLongest: number;
 }
 
+// Aggregated activity for the growth report. activeDates are UTC yyyy-mm-dd
+// within the current (Monday-first) week.
+export interface GrowthStats {
+  scenariosToday: number; scenariosWeek: number;
+  newCardsToday: number; newCardsWeek: number;
+  conversationSecondsToday: number; conversationSecondsWeek: number;
+  activeDates: string[];
+}
+
 // One spaced-repetition (SM-2) card from an AI correction: front = original
 // phrasing, back = the natural correction, note = why. masteryPips 0-3.
 export interface ReviewContext {
@@ -203,6 +212,12 @@ export const api = {
   },
 
   /** Record a cleared scenario; awards `score` XP + advances streak, returns updated progress. */
+  /** Growth-report aggregates (scenarios, cards, conversation time, attendance). */
+  async growthStats(): Promise<GrowthStats> {
+    const { data } = await http.get('/me/stats');
+    return data as GrowthStats;
+  },
+
   async recordAttempt(scenarioId: string, score: number): Promise<Progress> {
     const { data } = await http.post('/attempts', { scenarioId, score });
     return data as Progress;
