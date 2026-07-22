@@ -125,19 +125,21 @@ export default function Me() {
           </View>
         </Shadowed>
 
-        {/* growth summary */}
-        <Shadowed offset={4} shadowColor={colors.mintShadow}>
-          <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-            <View style={{ width: 38, height: 38, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 20 }}>📊</Text>
+        {/* growth summary → 성장 리포트 상세 (/growth) */}
+        <Pressable onPress={() => router.push('/growth')}>
+          <Shadowed offset={4} shadowColor={colors.mintShadow}>
+            <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <View style={{ width: 38, height: 38, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 20 }}>📊</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>오늘의 성장 리포트</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 3, opacity: 0.8 }}>Lv.{level} · {xp.toLocaleString()} XP · 🔥 {streakCurrent}일 연속</Text>
+              </View>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>▶</Text>
             </View>
-            <View style={{ flex: 1 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>오늘의 성장 리포트</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 3, opacity: 0.8 }}>Lv.{level} · {xp.toLocaleString()} XP · 🔥 {streakCurrent}일 연속</Text>
-            </View>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>▶</Text>
-          </View>
-        </Shadowed>
+          </Shadowed>
+        </Pressable>
 
         {/* career path */}
         <Shadowed offset={3}>
