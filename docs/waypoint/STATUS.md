@@ -4,11 +4,14 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v10/](inputs/design-handoff_v10/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-06-27
+**Last updated:** 2026-07-29
 
-> ⚠️ **Handoff v8 채택(2026-06-27) — 맵/화면 대규모 재설계, 재계획 대기.** 5개 파빌리온 캠퍼스 + 엘리베이터 화면 +
-> 부서 마스터 블루프린트(ER/OR/ICU/Peds/Pharma 대형화) + 입원 병동(내·외·정형)·피부과 센터 신설. **외래 클리닉 엔진(5d-iii)은 v8에서 폐기**(redundant).
-> 순서·클리닉엔진 처리·증분 분해는 사용자 결정 후. 상세: [DECISIONS](DECISIONS.md) 2026-06-27.
+> 🏗 **현재 초점(2026-07): 시나리오 런타임 + 화면 플로우 마감.** 맵/부서 인테리어(2-5)는 완결. 그 위로 실제 학습 루프를
+> 배선 중 — 브리핑→AI 다이얼로그(교정→리뷰랩 자동 등록)⇄퀴즈→클리어→성장 리포트/리뷰랩. 상세 진행은 아래 표 및
+> [DECISIONS](DECISIONS.md) 2026-07-18~29 참조.
+>
+> ⚠️ **Handoff v8 채택(2026-06-27) — 맵/화면 대규모 재설계.** 5개 파빌리온 캠퍼스 + 엘리베이터 + 부서 마스터
+> 블루프린트(ER/OR/ICU/Peds/Pharma 대형화) + 입원 병동(내·외·정형)·피부과 센터. **외래 클리닉 엔진(5d-iii)은 폐기**(redundant).
 
 ---
 
@@ -31,9 +34,9 @@
 | 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | HUMAN_APPROVED |
 | 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | HUMAN_APPROVED |
 | 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | 재오픈 · v8 계획 HUMAN_APPROVED (5a~5e ✅ 엔진코어 · **5f 캠퍼스/엔진델타 + 5g 부서 마스터블루프린트 ×9** — §5v; 5f ✅ · 5g-a ER ✅ · 5g-b OR ✅ · 5g-c ICU ✅ · **5g-d Peds+NICU ✅**(외래·놀이·계측→4bed 병동→NICU 유리 전실·인큐베이터; pedsEquipment 16종) · **5g-e Pharmacy ✅**(수령창구·기송관→조제실·마약류 금고→무균 전실·에어샤워·무균조제실; pharmaEquipment 21종; 엘리베이터 타워 P1 + ER portal) · **5g-f 내과 병동 ✅**(서비스 스트립→간호 스테이션→4인 만성질환 병실(커튼)→1인실·VRE 격리; wardEquipment 16종; 엘리베이터 타워 8F) · 장비 handoff **v13**(2.5D+접지그림자) 전 부서 반영 · **5g-g 외과 병동 ✅**(처치·드레싱룸→간호 스테이션·보행→4인 수술후 병실→대수술 중증실; surgEquipment 8종·ward2 재사용; 엘리베이터 타워 7F) · **5g-h 정형외과 병동 ✅**(PT통로·석고실→간호 스테이션·보조기→4인 골절/견인 병실→고관절 골절실; orthoEquipment 11종; 엘리베이터 타워 6F) · **입원 병동 3종 완결**(내과 8F·외과 7F·정형 6F) · **5g-i 피부과 센터 ✅**(로비→진료실1/2→광선치료실→레이저 처치실; dermEquipment 11종; 엘리베이터 타워 2F) · **🎉 5g 부서 마스터블루프린트 9종 전부 완결**) |
-| 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | PENDING |
-| 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | PENDING |
-| 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | PENDING |
+| 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | IN_PROGRESS (거의 완료) — 온보딩(splash/login/locale/job/level) ✅ · 캠퍼스/인테리어/상황판 ✅ · 브리핑→**AI 다이얼로그**(🎤 STT/🔊 TTS·번역·QUICK INFO)⇄**퀴즈 10종**→클리어(result) ✅ · **프로필(나) + 성장 리포트(/growth 푸시)** ✅ · **리뷰랩**(PhraseCard·필터·복습 세션·맥락·등급 안내) ✅ · 뱃지/스티커 탭 상세 ✅. **남음:** 클리어 컨페티·리워드 연출 보강, 온보딩 저장/재진입 스킵 검증 |
+| 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | IN_PROGRESS (부분) — XP/레벨/커리어 패스 ✅ · SM-2 복습(스케줄·마스터리·세션) ✅ · 성장 집계 `GET /me/stats`(기기 TZ 버킷팅) ✅ · 칭찬 스티커(시나리오 클리어당) ✅. **남음:** 🔜 **평판→NPC 반응 가중(착수 예정)** · 칭호·히든미션 · 유기적 환류 · 이벤트 일일 풀(00:00 리셋·가중 샘플링)·메인 루트 그래프·보상형 광고 · 경제 수치 설정 테이블화(하드코딩 제거) |
+| 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | PENDING — ER 파일럿(SCN-ER-00002) 수직 슬라이스 E2E는 통과. 전체 여정 통합·에러/오프라인/토큰 만료·성능·AI 비용 모니터링·분석·스토어 체크리스트 남음 |
 
 **병행 트랙:** [콘텐츠 워크스트림](content-workstream.md) — AI 작성(조사→초안→검수), **2-2 포맷 확정 후 본격 착수**. PENDING.
 
@@ -56,5 +59,6 @@
 
 ## AI 진입점
 
-> AI는 위 테이블에서 `PENDING` 상태인 가장 앞 스테이지(1-1 Context Synthesis)부터 작업을 시작하세요.
+> 현재 진행 스테이지: **2-7 성장·경제·복습·이벤트** (2-6은 마감 항목 소수만 남음).
+> 다음 작업: **평판 → NPC 반응 가중** 배선 (평판 값이 대화 프롬프트/페르소나 톤에 반영되도록).
 > 규칙: [`FRAMEWORK.md`](../../FRAMEWORK.md) 참조
