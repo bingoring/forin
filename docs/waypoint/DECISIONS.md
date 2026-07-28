@@ -1121,3 +1121,10 @@
 - **커리어 뱃지(me.tsx)**: 8종에 name/what/how 부여(간호사 캡·청진기·주사기·3일/7일 연속·병동 트로피·왕관·숨겨진 뱃지). 잠긴 뱃지는 제목 '???'·조건만 노출. 타일 Pressable → 시트.
 - **칭찬 스티커(growth.tsx)**: 각 스티커 탭 → "칭찬 스티커 #N"·획득·획득 방법(시나리오 클리어당 1장, 100장=자격증). 빈 칸 탭 → 잠김 안내.
 - 검증: tsc 0 · jest 208/208 · 시뮬레이터(스티커 시트·뱃지 시트 각각 렌더 확인).
+
+## 2026-07-29 — 평판 → NPC 반응 가중 (2-7)
+평판(환자 만족/동료 신뢰)이 그동안 표시만 되고 대화 경험에 미반영이었음 → 대화 시점 평판을 NPC 기본 태도로 반영.
+- **포트**: 좁은 `ports.ProgressReader{GetProgress}` 추가. 대화 엔진에 주입(기존 progressRepo가 ReviewRepo+ProgressReader 겸함 → main.go에서 같은 객체 재전달).
+- **로직**: `Engine.reputationDisposition(ctx,uid,sc)` — persona.Role로 차원 선택(doctor/nurse/colleague/… → 동료 신뢰, 그 외(환자·보호자) → 환자 만족), 점수 밴드(≥75 우호·≥50 중립·≥25 경계·<25 불신)로 영어 1줄 태도 지시문 생성. `buildSystemPrompt`에 `disposition` 인자 추가 → "Baseline disposition (reputation): …"로 주입. **톤만 조절**, 임상 사실·"캐릭터 유지/코칭 금지" 규칙 불변.
+- **검증**: go build/test(신규 TestBuildSystemPromptInjectsDisposition 포함) 0 · E2E(동일 학습자 문장에 대해 patient_satisfaction=8 → "(sighs)…경계·최소정보" vs 95 → "Oh, nurse…따뜻·적극")로 톤 차이 확인, 50 복원.
+- 모바일 변경 없음(서버 프롬프트 셰이핑).
