@@ -1106,3 +1106,11 @@
 - **서버**: `GET /me/stats?tz=<IANA>` — 핸들러가 `time.LoadLocation(tz)`(없거나 불명 → UTC 폴백)로 dayStart(자정)·weekStart(월요일)를 해당 존에서 계산. activeDates는 `(ts AT TIME ZONE $tz)::date`로 버킷팅. `ProgressRepo.GrowthStats(..., tzName string)`로 시그니처 확장.
 - **클라**: `Intl.DateTimeFormat().resolvedOptions().timeZone`로 기기 존 감지해 쿼리 전달(감지 실패 시 생략→UTC). `/growth` 주 그리드/헤더/today를 로컬 시간 기준으로 계산(getDay/getDate)해 서버 로컬-버킷 activeDates와 매칭.
 - 검증: go build 0 · tsc 0 · jest 208/208 · E2E(UTC=[07-20,21] vs Asia/Seoul=[07-20,21,22] vs America/New_York=[07-20,21] vs bad→UTC 폴백) · 시뮬레이터(기기 KST → 출석 월·화·수 3/7, 수=today).
+
+## 2026-07-29 — 성장 리포트 하단: 평판 스냅샷 → 칭찬 스티커 보드
+결정(사용자): (1) 평판(환자 만족/동료 신뢰/응급 대응)은 MY CARD ID 카드에 이미 있어 중복 → 성장 리포트에서 제거. (2) 커리어 뱃지(나 탭)와 역할을 구분해 칭찬 스티커 보드 채택 — 뱃지=마일스톤/정체성, 스티커=활동 누적/온기. 핸드오프 ScreenGrowth 원안이 스티커 보드였음.
+- **획득 규칙**: 시나리오 클리어 1회 = 스티커 1장(누적), 100장마다 '자격증' 해금 콘셉트.
+- **서버**: `GrowthStats.ScenariosTotal`(lifetime cleared, 날짜필터 없음) 추가 → `GET /me/stats`. E2E: scenariosTotal=9.
+- **모바일**: `/growth`에서 RepRow/평판 블록 삭제, `StickerBoard`(핸드오프 1:1 — 룰드 페이퍼, 회전 색스티커/점선 빈칸, "빈 칸이 채워질 때마다…" 캡션) 추가. earned=scenariosTotal. 퍼센트+aspectRatio가 wrap 행에서 빈칸을 붕괴시켜 Dimensions 기반 고정 TILE 크기로 렌더.
+- 임시 비교 화면 `growth-compare.tsx` 삭제(결정 완료).
+- 검증: go build 0 · tsc 0 · jest 208/208 · 시뮬레이터(9/100, 스티커 9장 렌더).
