@@ -1135,3 +1135,10 @@
 - **칭찬 스티커 +1 리워드 행**: XP 아래 "🎖 칭찬 스티커 (누적 N장) +1" 표시. N은 `api.growthStats().scenariosTotal`(이 클리어 반영본).
 - **새 뱃지 획득 배너**: `newlyEarned(before, after)`로 이번 클리어에 임계 넘긴 뱃지 감지 → 레벨업 배너 아래 민트/옐로 배너(아이콘+이름). 없으면 미표시.
 - 검증: tsc 0 · jest 208/208 · 시뮬레이터(레벨업 Lv.16→17, 스티커 누적 10→11장 +1, 새 뱃지 '병동 트로피' 배너 렌더 확인).
+
+## 2026-07-29 — 온보딩 전체 구현 + 저장/재진입 스킵 (2-6)
+검증 결과 온보딩 프로필 단계(locale/job/level)가 스텁이었고 저장/게이트 부재 → 전체 구현 채택(사용자 결정).
+- **서버**: migration 000012 `profiles.onboarded bool`. 도메인 Profile.Onboarded, sqlc GetProfile(+onboarded)·UpsertProfile(INSERT…ON CONFLICT, onboarded=true), user_repo.UpdateProfile, ports.UserRepo.UpdateProfile, `PATCH /me/profile`(job/nativeLang/targetLang/destination/targetLevel, MVP 기본값 채움) → onboarded=true. `/me` 응답에 onboarded 포함.
+- **모바일 온보딩 3화면(핸드오프 1:1)**: locale(1/4 모국어+목적지→targetLang), job(2/4 간호사 MVP·나머지 곧 열림), level(3/4 CEFR 게이지+밴드, 기본 B1) → `api.updateProfile` 저장. 선택은 router params로 단계 간 전달.
+- **게이트**: authStore.onboarded(null=미상) 추가. restoreSession/syncOnboarded가 `/me.profile.onboarded` 반영, bootstrap의 dev auto-login 후에도 sync. index 게이트 3분기: 미인증→login, 인증&onboarded=false→locale, else→campus. login 성공 후에도 syncOnboarded로 분기.
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(PATCH → /me onboarded=true) · 시뮬레이터(onboarded=false→locale 1/4 진입, job 2/4, level 3/4 렌더, onboarded=true→campus 스킵).
