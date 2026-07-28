@@ -9,8 +9,11 @@ type AuthState = {
   refreshToken: string | null;
   user: User;
   isAuthed: boolean;
+  // Onboarding completion, learned from /me. null = not yet known (still loading).
+  onboarded: boolean | null;
   setSession: (accessToken: string, refreshToken: string, user: User) => void;
   setAccessToken: (token: string) => void;
+  setOnboarded: (onboarded: boolean) => void;
   logout: () => void;
 };
 
@@ -19,8 +22,10 @@ export const useAuthStore = create<AuthState>((set) => ({
   refreshToken: null,
   user: null,
   isAuthed: false,
+  onboarded: null,
   setSession: (accessToken, refreshToken, user) =>
     set({ accessToken, refreshToken, user, isAuthed: true }),
   setAccessToken: (accessToken) => set({ accessToken }),
-  logout: () => set({ accessToken: null, refreshToken: null, user: null, isAuthed: false }),
+  setOnboarded: (onboarded) => set({ onboarded }),
+  logout: () => set({ accessToken: null, refreshToken: null, user: null, isAuthed: false, onboarded: null }),
 }));

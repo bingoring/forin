@@ -49,6 +49,19 @@ export async function signOut(): Promise<void> {
   useAuthStore.getState().logout();
 }
 
+// syncOnboarded fetches /me and records whether the profile is onboarded, so the
+// entry gate can route to the onboarding wizard vs the app. Returns the flag.
+export async function syncOnboarded(): Promise<boolean> {
+  try {
+    const me = await api.me();
+    const ob = !!(me.profile as { onboarded?: boolean } | null)?.onboarded;
+    useAuthStore.getState().setOnboarded(ob);
+    return ob;
+  } catch {
+    return false;
+  }
+}
+
 // restoreSession rehydrates tokens from secure-store on app start and verifies via /me.
 export async function restoreSession(): Promise<void> {
   const { access, refresh } = await loadTokens();
@@ -57,6 +70,7 @@ export async function restoreSession(): Promise<void> {
   try {
     const me = await api.me();
     useAuthStore.getState().setSession(access, refresh, toUser(me.user));
+    useAuthStore.getState().setOnboarded(!!(me.profile as { onboarded?: boolean } | null)?.onboarded);
   } catch {
     // token invalid/expired → the 401 interceptor rotates or logs out.
   }
@@ -70,6 +84,7 @@ export async function bootstrapSession(): Promise<void> {
   if (__DEV__ && !useAuthStore.getState().isAuthed) {
     try {
       await devSignIn();
+      await syncOnboarded(); // devSignIn doesn't hit /me; learn onboarding state for the gate
     } catch {
       // dev server not running / ENV!=dev → stay logged out (login screen handles it).
     }

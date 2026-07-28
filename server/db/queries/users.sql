@@ -16,4 +16,11 @@ UPDATE auth_identities SET email = $3 WHERE provider = $1 AND subject_id = $2;
 SELECT id, status, created_at FROM users WHERE id = $1;
 
 -- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level FROM profiles WHERE user_id = $1;
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded FROM profiles WHERE user_id = $1;
+
+-- name: UpsertProfile :exec
+INSERT INTO profiles (user_id, job, native_lang, target_lang, destination, target_level, onboarded, updated_at)
+VALUES ($1, $2, $3, $4, $5, $6, true, now())
+ON CONFLICT (user_id) DO UPDATE SET
+    job = $2, native_lang = $3, target_lang = $4, destination = $5, target_level = $6,
+    onboarded = true, updated_at = now();

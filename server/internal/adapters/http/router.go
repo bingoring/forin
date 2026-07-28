@@ -51,6 +51,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /auth/logout", auth(http.HandlerFunc(ah.logout)))
 	mh := &meHandler{users: d.Users}
 	mux.Handle("GET /me", auth(http.HandlerFunc(mh.me)))
+	mux.Handle("PATCH /me/profile", auth(http.HandlerFunc(mh.updateProfile)))
 
 	// Content (public read).
 	ch := &contentHandler{content: d.Content}

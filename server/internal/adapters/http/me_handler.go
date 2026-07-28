@@ -42,3 +42,53 @@ func (h *meHandler) me(w http.ResponseWriter, r *http.Request) {
 	}
 	httpx.JSON(w, http.StatusOK, meResp{User: u, Profile: p})
 }
+
+type updateProfileReq struct {
+	Job         string `json:"job"`
+	NativeLang  string `json:"nativeLang"`
+	TargetLang  string `json:"targetLang"`
+	Destination string `json:"destination"`
+	TargetLevel string `json:"targetLevel"`
+}
+
+// @Summary Save onboarding profile (marks the user onboarded)
+// @Tags user
+// @Security Bearer
+// @Param body body updateProfileReq true "onboarding selections"
+// @Success 200 {object} user.Profile
+// @Router /me/profile [patch]
+func (h *meHandler) updateProfile(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	var req updateProfileReq
+	if err := httpx.DecodeJSON(r, &req); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid body")
+		return
+	}
+	// Fill sensible MVP defaults for anything the client omits.
+	p := user.Profile{
+		UserID: uid, Job: orDefault(req.Job, "nurse"), NativeLang: orDefault(req.NativeLang, "ko"),
+		TargetLang: orDefault(req.TargetLang, "en"), Destination: orDefault(req.Destination, "us"),
+		TargetLevel: orDefault(req.TargetLevel, "B1"),
+	}
+	if err := h.users.UpdateProfile(r.Context(), p); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not save profile")
+		return
+	}
+	saved, err := h.users.GetProfile(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, saved)
+}
+
+func orDefault(v, def string) string {
+	if v == "" {
+		return def
+	}
+	return v
+}

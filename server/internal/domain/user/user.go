@@ -46,4 +46,5 @@ type Profile struct {
 	TargetLang  string `json:"targetLang"`  // language being learned, e.g. "en", "de"
 	Destination string `json:"destination"` // e.g. "us"
 	TargetLevel string `json:"targetLevel"` // level in TargetLang, e.g. "B1"
+	Onboarded   bool   `json:"onboarded"`   // completed the onboarding wizard
 }

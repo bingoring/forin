@@ -205,6 +205,14 @@ export const api = {
     return data as MeResp;
   },
 
+  /** Save onboarding selections; server marks the profile onboarded. */
+  async updateProfile(body: {
+    job?: string; nativeLang?: string; targetLang?: string; destination?: string; targetLevel?: string;
+  }): Promise<{ onboarded: boolean }> {
+    const { data } = await http.patch('/me/profile', body);
+    return data as { onboarded: boolean };
+  },
+
   /** Current growth snapshot (XP, level, streak, stats). */
   async progress(): Promise<Progress> {
     const { data } = await http.get('/me/progress');

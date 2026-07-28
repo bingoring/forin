@@ -1,16 +1,92 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { colors, fonts, type as t } from '@/theme/tokens';
+// Onboarding 1/4 — language & destination (handoff ScreenLocale). Pick the app's
+// native language and the destination country (→ target language), then carry the
+// selection forward to the job step via router params.
+import { useState } from 'react';
+import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Stack, useRouter } from 'expo-router';
+import { PixelButton } from '@/components/PixelButton';
+import { colors, fonts } from '@/theme/tokens';
 
-// Route shell — full UI in Stage 2-6.
-export default function Screen() {
+const C = colors.ink;
+const NATIVE = [
+  { code: 'ko', flag: '🇰🇷', name: '한국어', sub: 'Korean' },
+  { code: 'ja', flag: '🇯🇵', name: '日本語', sub: 'Japanese' },
+  { code: 'en', flag: '🇺🇸', name: 'English', sub: 'US' },
+  { code: 'de', flag: '🇩🇪', name: 'Deutsch', sub: 'Germany' },
+];
+const DEST = [
+  { code: 'us', targetLang: 'en', flag: '🇺🇸', name: '미국', sub: 'English-US' },
+  { code: 'de', targetLang: 'de', flag: '🇩🇪', name: '독일', sub: 'Deutsch' },
+];
+
+export default function Locale() {
+  const router = useRouter();
+  const [native, setNative] = useState('ko');
+  const [dest, setDest] = useState('us');
+
+  const next = () => {
+    const targetLang = DEST.find((d) => d.code === dest)?.targetLang || 'en';
+    router.push({ pathname: '/job', params: { nativeLang: native, destination: dest, targetLang } });
+  };
+
   return (
-    <View style={styles.s}>
-      <Text style={styles.h}>locale</Text>
+    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+      <Stack.Screen options={{ headerShown: false }} />
+      <OnbTopBar title="LANGUAGE" step="1/4" onBack={() => router.replace('/login')} />
+      <ScrollView contentContainerStyle={{ padding: 22, paddingBottom: 40 }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 21, color: C, lineHeight: 30 }}>어디서 오셨나요?</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 6, marginBottom: 20 }}>앱이 사용할 모국어를 골라주세요.</Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
+          {NATIVE.map((o) => <LocaleCard key={o.code} {...o} selected={native === o.code} onPress={() => setNative(o.code)} />)}
+        </View>
+
+        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 28, marginBottom: 12 }}>⇨ 어디로 가시나요?</Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
+          {DEST.map((o) => <LocaleCard key={o.code} {...o} selected={dest === o.code} onPress={() => setDest(o.code)} />)}
+        </View>
+
+        <View style={{ marginTop: 30 }}>
+          <PixelButton label="다음 ▶" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
+        </View>
+      </ScrollView>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  s: { flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center' },
-  h: { fontFamily: fonts.heading, fontSize: t.screenHeading, color: colors.ink },
-});
+function LocaleCard({ flag, name, sub, selected, onPress }: { flag: string; name: string; sub: string; selected: boolean; onPress: () => void }) {
+  return (
+    <Shadowed offset={selected ? 4 : 3} shadowColor={selected ? colors.mintShadow : C + '33'} style={{ width: '45%', flexGrow: 1 }}>
+      <Pressable onPress={onPress} style={{ backgroundColor: selected ? colors.mint : '#fff', borderWidth: 3, borderColor: C, paddingVertical: 14, paddingHorizontal: 12 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+          <Text style={{ fontSize: 30 }}>{flag}</Text>
+          {selected && (
+            <View style={{ marginLeft: 'auto', width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>✓</Text>
+            </View>
+          )}
+        </View>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C }}>{name}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 4 }}>{sub}</Text>
+      </Pressable>
+    </Shadowed>
+  );
+}
+
+export function OnbTopBar({ title, step, onBack }: { title: string; step: string; onBack: () => void }) {
+  return (
+    <View style={{ paddingTop: 52, paddingHorizontal: 18, paddingBottom: 6, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Pressable onPress={onBack} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: 20, color: C }}>‹</Text></Pressable>
+      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{title}</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, width: 28, textAlign: 'right' }}>{step}</Text>
+    </View>
+  );
+}
+
+export function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: object }) {
+  return (
+    <View style={style}>
+      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
+      {children}
+    </View>
+  );
+}

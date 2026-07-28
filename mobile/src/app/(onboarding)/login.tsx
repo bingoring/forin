@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
-import { signIn, devSignIn, type Provider } from '@/lib/auth';
+import { signIn, devSignIn, syncOnboarded, type Provider } from '@/lib/auth';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 // Social one-tap sign-in → server /auth/social → JWT (secure-store), then enter the app.
@@ -15,7 +15,7 @@ export default function Login() {
     setBusy(true);
     try {
       await signIn(provider);
-      router.replace('/campus');
+      router.replace((await syncOnboarded()) ? '/campus' : '/locale');
     } catch (e) {
       Alert.alert('로그인 실패', e instanceof Error ? e.message : '다시 시도해 주세요.');
     } finally {
@@ -28,7 +28,7 @@ export default function Login() {
     setBusy(true);
     try {
       await devSignIn();
-      router.replace('/campus');
+      router.replace((await syncOnboarded()) ? '/campus' : '/locale');
     } catch (e) {
       Alert.alert('개발자 로그인 실패', e instanceof Error ? e.message : '서버(ENV=dev)가 실행 중인지 확인하세요.');
     } finally {

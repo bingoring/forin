@@ -144,6 +144,8 @@ type UserRepo interface {
 	UpsertByIdentity(ctx context.Context, provider user.Provider, subject, email string) (*user.User, error)
 	GetByID(ctx context.Context, id string) (*user.User, error)
 	GetProfile(ctx context.Context, userID string) (*user.Profile, error)
+	// UpdateProfile upserts onboarding-derived profile fields and marks onboarded.
+	UpdateProfile(ctx context.Context, p user.Profile) error
 }
 
 // RefreshStore stores hashed refresh tokens with TTL and supports rotation.

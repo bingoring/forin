@@ -75,6 +75,14 @@ func (r *UserRepo) GetProfile(ctx context.Context, userID string) (*user.Profile
 	}
 	return &user.Profile{
 		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
-		Destination: p.Destination, TargetLevel: p.TargetLevel,
+		Destination: p.Destination, TargetLevel: p.TargetLevel, Onboarded: p.Onboarded,
 	}, nil
+}
+
+// UpdateProfile upserts the onboarding-derived profile and marks it onboarded.
+func (r *UserRepo) UpdateProfile(ctx context.Context, p user.Profile) error {
+	return r.q.UpsertProfile(ctx, sqlc.UpsertProfileParams{
+		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
+		Destination: p.Destination, TargetLevel: p.TargetLevel,
+	})
 }

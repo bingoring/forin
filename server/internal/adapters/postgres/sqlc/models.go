@@ -104,6 +104,7 @@ type Profile struct {
 	TargetLevel string             `json:"target_level"`
 	UpdatedAt   pgtype.Timestamptz `json:"updated_at"`
 	TargetLang  string             `json:"target_lang"`
+	Onboarded   bool               `json:"onboarded"`
 }
 
 type Quiz struct {

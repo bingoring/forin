@@ -42,7 +42,7 @@ func (q *Queries) CreateUser(ctx context.Context, status string) (User, error) {
 }
 
 const getProfile = `-- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level FROM profiles WHERE user_id = $1
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded FROM profiles WHERE user_id = $1
 `
 
 type GetProfileRow struct {
@@ -52,6 +52,7 @@ type GetProfileRow struct {
 	TargetLang  string `json:"target_lang"`
 	Destination string `json:"destination"`
 	TargetLevel string `json:"target_level"`
+	Onboarded   bool   `json:"onboarded"`
 }
 
 func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow, error) {
@@ -64,8 +65,38 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 		&i.TargetLang,
 		&i.Destination,
 		&i.TargetLevel,
+		&i.Onboarded,
 	)
 	return i, err
+}
+
+const upsertProfile = `-- name: UpsertProfile :exec
+INSERT INTO profiles (user_id, job, native_lang, target_lang, destination, target_level, onboarded, updated_at)
+VALUES ($1, $2, $3, $4, $5, $6, true, now())
+ON CONFLICT (user_id) DO UPDATE SET
+    job = $2, native_lang = $3, target_lang = $4, destination = $5, target_level = $6,
+    onboarded = true, updated_at = now()
+`
+
+type UpsertProfileParams struct {
+	UserID      string `json:"user_id"`
+	Job         string `json:"job"`
+	NativeLang  string `json:"native_lang"`
+	TargetLang  string `json:"target_lang"`
+	Destination string `json:"destination"`
+	TargetLevel string `json:"target_level"`
+}
+
+func (q *Queries) UpsertProfile(ctx context.Context, arg UpsertProfileParams) error {
+	_, err := q.db.Exec(ctx, upsertProfile,
+		arg.UserID,
+		arg.Job,
+		arg.NativeLang,
+		arg.TargetLang,
+		arg.Destination,
+		arg.TargetLevel,
+	)
+	return err
 }
 
 const getUserByID = `-- name: GetUserByID :one
