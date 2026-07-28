@@ -85,7 +85,7 @@ func main() {
 		dialogueModel, correctionModel = cfg.AnthropicDialogueModel, cfg.AnthropicCorrectionModel
 	}
 	dialogue := conversation.SingleModel{LLM: llm, Model: dialogueModel, MaxTokens: 512}
-	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, users, llm, dialogue, correctionModel)
+	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, users, progressRepo, llm, dialogue, correctionModel)
 	logger.Info("llm provider", "provider", cfg.ResolveProvider(), "configured", configured)
 	if !configured {
 		logger.Warn("LLM API key not set — AI conversation/correction endpoints will return errors")

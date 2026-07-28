@@ -25,15 +25,16 @@ type Engine struct {
 	convo           ports.ConversationRepo
 	review          ports.ReviewRepo
 	profiles        ports.ProfileReader
+	reputation      ports.ProgressReader
 	llm             ports.LLMPort
 	strategy        Strategy
 	correctionModel string
 }
 
 func NewEngine(c ports.ContentReader, convo ports.ConversationRepo, review ports.ReviewRepo,
-	profiles ports.ProfileReader, llm ports.LLMPort, strategy Strategy, correctionModel string) *Engine {
+	profiles ports.ProfileReader, reputation ports.ProgressReader, llm ports.LLMPort, strategy Strategy, correctionModel string) *Engine {
 	return &Engine{content: c, convo: convo, review: review, profiles: profiles,
-		llm: llm, strategy: strategy, correctionModel: correctionModel}
+		reputation: reputation, llm: llm, strategy: strategy, correctionModel: correctionModel}
 }
 
 // langContext is the user's language framing for prompts (never hardcoded).
@@ -137,7 +138,44 @@ func (e *Engine) prepare(ctx context.Context, userID, sessionID, text string) (s
 	for _, t := range hist {
 		msgs = append(msgs, ports.LLMMessage{Role: t.Role, Content: t.Content})
 	}
-	return buildSystemPrompt(sc, e.langFor(ctx, userID)), msgs, sc, priorNpc, nil
+	return buildSystemPrompt(sc, e.langFor(ctx, userID), e.reputationDisposition(ctx, userID, sc)), msgs, sc, priorNpc, nil
+}
+
+// reputationDisposition turns the learner's standing into a one-line baseline
+// attitude for the NPC — so a well-regarded nurse meets warmer, more cooperative
+// characters, and a poorly-regarded one meets warier ones. Tone only; it never
+// changes clinical facts or the "stay in character / never coach" rules.
+func (e *Engine) reputationDisposition(ctx context.Context, userID string, sc *content.Scenario) string {
+	if e.reputation == nil {
+		return ""
+	}
+	p, err := e.reputation.GetProgress(ctx, userID)
+	if err != nil || p == nil {
+		return ""
+	}
+	// Pick the dimension that fits who the NPC is: colleagues read peer trust,
+	// everyone else (patients, families) reads patient satisfaction.
+	role := strings.ToLower(sc.Persona.Role)
+	dim, score := "patient satisfaction", p.PatientSatisfaction
+	for _, k := range []string{"doctor", "physician", "surgeon", "nurse", "colleague", "charge", "resident", "attending"} {
+		if strings.Contains(role, k) {
+			dim, score = "peer trust", p.PeerTrust
+			break
+		}
+	}
+	who := "This character"
+	var tone string
+	switch {
+	case score >= 75:
+		tone = fmt.Sprintf("%s already regards this learner highly (%s is high). Be noticeably warm, cooperative, and quick to trust — while staying fully in character.", who, dim)
+	case score >= 50:
+		tone = fmt.Sprintf("%s feels neutral-to-cordial toward this learner (%s is moderate). React normally and fairly.", who, dim)
+	case score >= 25:
+		tone = fmt.Sprintf("%s is a little wary of this learner (%s is low). Be slightly guarded and need some reassurance before opening up — while staying in character.", who, dim)
+	default:
+		tone = fmt.Sprintf("%s does not yet trust this learner (%s is very low). Be reserved, terse, and slow to cooperate until reassured — while staying in character. Never explain why.", who, dim)
+	}
+	return tone
 }
 
 // SendMessage records the user's line, generates the NPC reply in persona, persists both.
@@ -268,8 +306,9 @@ func changed(original, corrected string) bool {
 }
 
 // buildSystemPrompt composes the persona + scenario goals/guardrails into a role-play instruction,
-// framed by the user's native/target language (never hardcoded).
-func buildSystemPrompt(sc *content.Scenario, lc langContext) string {
+// framed by the user's native/target language (never hardcoded). `disposition` is an
+// optional reputation-driven baseline attitude line for the NPC (may be empty).
+func buildSystemPrompt(sc *content.Scenario, lc langContext, disposition string) string {
 	var b strings.Builder
 	b.WriteString(fmt.Sprintf("You are role-playing a character in a clinical %s-language practice scenario "+
 		"for a %s-speaking %s preparing to work abroad.\n", lc.Target, lc.Native, lc.Job))
@@ -296,6 +335,9 @@ func buildSystemPrompt(sc *content.Scenario, lc langContext) string {
 	}
 	if len(sc.Guardrails) > 0 {
 		b.WriteString("Tone guardrails: " + strings.Join(sc.Guardrails, "; ") + "\n")
+	}
+	if disposition != "" {
+		b.WriteString("Baseline disposition (reputation): " + disposition + "\n")
 	}
 	b.WriteString(fmt.Sprintf("Reply in %s only, as 1-3 short spoken sentences your character would actually say in a real hospital.", lc.Target))
 	return b.String()

@@ -67,6 +67,12 @@ type ProfileReader interface {
 	GetProfile(ctx context.Context, userID string) (*user.Profile, error)
 }
 
+// ProgressReader exposes the user's growth snapshot for prompt building (e.g. to
+// weight an NPC's disposition by reputation). Narrow read-only view of ProgressRepo.
+type ProgressReader interface {
+	GetProgress(ctx context.Context, userID string) (*progress.Progress, error)
+}
+
 // WordScore is a per-word pronunciation result.
 type WordScore struct {
 	Word      string  `json:"word"`

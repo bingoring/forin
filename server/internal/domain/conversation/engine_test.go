@@ -11,7 +11,7 @@ func TestBuildSystemPromptIsLanguageDriven(t *testing.T) {
 	sc := &content.Scenario{Title: "T", Tagline: "x", Persona: content.Persona{Role: "patient"}}
 
 	// Japanese learner of German → prompt must reflect that, with NO hardcoded ko/en leak.
-	p := buildSystemPrompt(sc, langContext{Native: "Japanese", Target: "German", Job: "nurse"})
+	p := buildSystemPrompt(sc, langContext{Native: "Japanese", Target: "German", Job: "nurse"}, "")
 	if !strings.Contains(p, "German") || !strings.Contains(p, "Japanese") {
 		t.Fatalf("prompt should use the given languages:\n%s", p)
 	}
@@ -20,9 +20,23 @@ func TestBuildSystemPromptIsLanguageDriven(t *testing.T) {
 	}
 
 	// Korean learner of English → reflects those.
-	p2 := buildSystemPrompt(sc, langContext{Native: "Korean", Target: "English", Job: "nurse"})
+	p2 := buildSystemPrompt(sc, langContext{Native: "Korean", Target: "English", Job: "nurse"}, "")
 	if !strings.Contains(p2, "English") || !strings.Contains(p2, "Korean") {
 		t.Fatalf("prompt should use Korean/English when given:\n%s", p2)
+	}
+}
+
+func TestBuildSystemPromptInjectsDisposition(t *testing.T) {
+	sc := &content.Scenario{Title: "T", Tagline: "x", Persona: content.Persona{Role: "patient"}}
+	disp := "This character does not yet trust this learner."
+	p := buildSystemPrompt(sc, langContext{Native: "Korean", Target: "English", Job: "nurse"}, disp)
+	if !strings.Contains(p, disp) {
+		t.Fatalf("prompt should include the disposition line:\n%s", p)
+	}
+	// Empty disposition must not add the label.
+	p2 := buildSystemPrompt(sc, langContext{Native: "Korean", Target: "English", Job: "nurse"}, "")
+	if strings.Contains(p2, "Baseline disposition") {
+		t.Fatalf("empty disposition should not add the label:\n%s", p2)
 	}
 }
 
