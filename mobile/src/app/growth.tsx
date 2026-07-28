@@ -4,7 +4,7 @@
 // board. Wired to live data (GET /me/progress + /me/review); metrics without a
 // server source yet are derived honestly from what we have.
 import { useCallback, useMemo, useState } from 'react';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
@@ -147,15 +147,8 @@ export default function Growth() {
             <StatTile label="레벨" value={`Lv.${progress.level}`} sub={careerTitle(progress.level)} color={colors.yellow} />
           </View>
 
-          {/* reputation snapshot */}
-          <Shadowed offset={3}>
-            <View style={{ backgroundColor: colors.paper, borderWidth: 3, borderColor: C, padding: 14, gap: 2 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft, marginBottom: 8 }}>평판 스냅샷</Text>
-              <RepRow label="환자 만족도" value={progress.patientSatisfaction} color={colors.mint} />
-              <RepRow label="동료 신뢰도" value={progress.peerTrust} color={colors.peach} />
-              <RepRow label="응급 대응력" value={progress.emergencyResponse} color={colors.yellow} />
-            </View>
-          </Shadowed>
+          {/* 칭찬 스티커 보드 — 시나리오 클리어 1회당 스티커 1장(누적) */}
+          <StickerBoard earned={stats.scenariosTotal} />
 
           {/* go practice */}
           <View style={{ marginTop: 2 }}>
@@ -180,15 +173,58 @@ function StatTile({ label, value, sub, color }: { label: string; value: string; 
   );
 }
 
-function RepRow({ label, value, color }: { label: string; value: number; color: string }) {
-  const pct = Math.max(0, Math.min(100, value));
+// StickerBoard — 1:1 with the handoff ScreenGrowth praise-sticker board: a ruled
+// paper card with a grid of collected stickers (earned = colored + rotated, locked
+// = dashed), toward a 100-sticker "자격증" unlock. earned = lifetime scenario clears.
+const STICKERS = [
+  { e: '⭐', rot: '-6deg', bg: colors.yellow },
+  { e: '❤', rot: '4deg', bg: colors.peach },
+  { e: '🌸', rot: '-2deg', bg: colors.pink },
+  { e: '✿', rot: '8deg', bg: colors.mint },
+  { e: '★', rot: '-4deg', bg: colors.yellow },
+  { e: '♡', rot: '2deg', bg: colors.peach },
+  { e: '✚', rot: '-5deg', bg: colors.mint },
+  { e: '☺', rot: '6deg', bg: colors.pink },
+];
+const SLOTS = 12; // preview slots (3 rows × 4)
+const CAPACITY = 100;
+const GAP = 12;
+// Fixed square size — percentage width + aspectRatio collapses empty rows in a
+// wrapped flex row, so derive an explicit tile size from the screen width.
+const TILE = Math.floor((Dimensions.get('window').width - 36 /*page*/ - 34 /*card*/ - GAP * 3) / 4);
+
+function StickerBoard({ earned }: { earned: number }) {
+  const filled = Math.max(0, Math.min(SLOTS, earned));
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 5 }}>
-      <Text style={{ width: 78, fontFamily: fonts.body, fontSize: 11, color: C }}>{label}</Text>
-      <View style={{ flex: 1, height: 12, backgroundColor: colors.cream, borderWidth: 2, borderColor: C }}>
-        <View style={{ width: `${pct}%`, height: '100%', backgroundColor: color }} />
+    <View>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>★ 칭찬 스티커 보드</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{earned} / {CAPACITY}</Text>
       </View>
-      <Text style={{ width: 34, textAlign: 'right', fontFamily: fonts.heading, fontSize: 11, color: C }}>{pct}%</Text>
+      <Shadowed offset={3}>
+        <View style={{ backgroundColor: colors.paper, borderWidth: 3, borderColor: C, padding: 14, overflow: 'hidden' }}>
+          {/* ruled-paper hairlines */}
+          {Array.from({ length: 9 }).map((_, i) => (
+            <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: 22 * (i + 1), height: 1, backgroundColor: C + '11' }} />
+          ))}
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: GAP }}>
+            {Array.from({ length: SLOTS }).map((_, i) => {
+              const got = i < filled;
+              const s = STICKERS[i % STICKERS.length];
+              return got ? (
+                <Shadowed key={i} offset={3} style={{ width: TILE, height: TILE }}>
+                  <View style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
+                    <Text style={{ fontSize: 22, color: C }}>{s.e}</Text>
+                  </View>
+                </Shadowed>
+              ) : (
+                <View key={i} style={{ width: TILE, height: TILE, borderWidth: 2, borderColor: C + '33', borderStyle: 'dashed' }} />
+              );
+            })}
+          </View>
+          <Text style={{ marginTop: 12, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, textAlign: 'center' }}>· · · 빈 칸이 채워질 때마다 새 자격증이 열려요 · · ·</Text>
+        </View>
+      </Shadowed>
     </View>
   );
 }

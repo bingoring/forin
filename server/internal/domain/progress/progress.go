@@ -22,11 +22,12 @@ type Progress struct {
 type GrowthStats struct {
 	ScenariosToday           int      `json:"scenariosToday"`
 	ScenariosWeek            int      `json:"scenariosWeek"`
+	ScenariosTotal           int      `json:"scenariosTotal"` // lifetime clears → praise stickers (1 each)
 	NewCardsToday            int      `json:"newCardsToday"`
 	NewCardsWeek             int      `json:"newCardsWeek"`
 	ConversationSecondsToday int      `json:"conversationSecondsToday"`
 	ConversationSecondsWeek  int      `json:"conversationSecondsWeek"`
-	ActiveDates              []string `json:"activeDates"` // yyyy-mm-dd (UTC), current week
+	ActiveDates              []string `json:"activeDates"` // yyyy-mm-dd (tz), current week
 }
 
 // ReviewCard is one spaced-repetition phrase card (oops-note).

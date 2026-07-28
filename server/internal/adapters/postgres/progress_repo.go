@@ -88,6 +88,12 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 	if s.ScenariosWeek, err = countScenarios(weekStart); err != nil {
 		return nil, err
 	}
+	// Lifetime clears drive the praise-sticker collection (1 sticker per clear).
+	if err = r.pool.QueryRow(ctx,
+		`SELECT count(*) FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`,
+		userID).Scan(&s.ScenariosTotal); err != nil {
+		return nil, err
+	}
 	if s.NewCardsToday, err = countCards(dayStart); err != nil {
 		return nil, err
 	}

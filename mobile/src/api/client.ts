@@ -168,7 +168,7 @@ export interface Progress {
 // Aggregated activity for the growth report. activeDates are UTC yyyy-mm-dd
 // within the current (Monday-first) week.
 export interface GrowthStats {
-  scenariosToday: number; scenariosWeek: number;
+  scenariosToday: number; scenariosWeek: number; scenariosTotal: number;
   newCardsToday: number; newCardsWeek: number;
   conversationSecondsToday: number; conversationSecondsWeek: number;
   activeDates: string[];
