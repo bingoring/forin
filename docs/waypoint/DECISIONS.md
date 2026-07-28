@@ -1128,3 +1128,10 @@
 - **로직**: `Engine.reputationDisposition(ctx,uid,sc)` — persona.Role로 차원 선택(doctor/nurse/colleague/… → 동료 신뢰, 그 외(환자·보호자) → 환자 만족), 점수 밴드(≥75 우호·≥50 중립·≥25 경계·<25 불신)로 영어 1줄 태도 지시문 생성. `buildSystemPrompt`에 `disposition` 인자 추가 → "Baseline disposition (reputation): …"로 주입. **톤만 조절**, 임상 사실·"캐릭터 유지/코칭 금지" 규칙 불변.
 - **검증**: go build/test(신규 TestBuildSystemPromptInjectsDisposition 포함) 0 · E2E(동일 학습자 문장에 대해 patient_satisfaction=8 → "(sighs)…경계·최소정보" vs 95 → "Oh, nurse…따뜻·적극")로 톤 차이 확인, 50 복원.
 - 모바일 변경 없음(서버 프롬프트 셰이핑).
+
+## 2026-07-29 — 클리어 리워드 연출 보강 (2-6)
+기존 result 화면(컨페티 ConfettiBurst·XP 카운트업·레벨바·레벨업 배너·연속 학습)에 최근 스티커/뱃지 시스템을 연결.
+- **뱃지 카탈로그 공용화**: me.tsx 인라인 뱃지 정의를 `src/data/badges.ts`로 추출(`BADGES`·`earnedBadges`·`newlyEarned`). me.tsx는 `earnedBadges(progress)` 사용 → 두 화면 정의 분기 방지.
+- **칭찬 스티커 +1 리워드 행**: XP 아래 "🎖 칭찬 스티커 (누적 N장) +1" 표시. N은 `api.growthStats().scenariosTotal`(이 클리어 반영본).
+- **새 뱃지 획득 배너**: `newlyEarned(before, after)`로 이번 클리어에 임계 넘긴 뱃지 감지 → 레벨업 배너 아래 민트/옐로 배너(아이콘+이름). 없으면 미표시.
+- 검증: tsc 0 · jest 208/208 · 시뮬레이터(레벨업 Lv.16→17, 스티커 누적 10→11장 +1, 새 뱃지 '병동 트로피' 배너 렌더 확인).
