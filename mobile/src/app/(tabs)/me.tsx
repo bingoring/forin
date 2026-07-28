@@ -7,12 +7,15 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
+import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { FacePlayer } from '@engine';
 import { api, type Progress } from '@/api/client';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
 const XP_PER_LEVEL = 100;
+
+type Badge = { e: string; l: string; name: string; what: string; how: string; got: boolean; special?: boolean };
 
 // Server keeps rank at a default; derive a friendly career title from level so
 // the card reflects real progression.
@@ -28,6 +31,7 @@ export default function Me() {
   const [progress, setProgress] = useState<Progress | null>(null);
   const [enLevel, setEnLevel] = useState<string>('');
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
+  const [sheet, setSheet] = useState<InfoSheetData | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -59,16 +63,16 @@ export default function Me() {
   const career = careerOf(level);
   const inLevel = xp % XP_PER_LEVEL;
 
-  const badges = [
-    { e: '👒', l: '첫 근무', got: xp > 0 },
-    { e: '🩺', l: 'Lv.3', got: level >= 3 },
-    { e: '💉', l: 'Lv.5', got: level >= 5 },
-    { e: '🔥', l: '3일 연속', got: streakLongest >= 3 },
-    { e: '🏅', l: '7일 연속', got: streakLongest >= 7, special: true },
-    { e: '🏆', l: 'Lv.10', got: level >= 10 },
-    { e: '👑', l: 'Lv.20', got: level >= 20 },
-    { e: '🔒', l: '???', got: false },
-  ] as { e: string; l: string; got: boolean; special?: boolean }[];
+  const badges: Badge[] = [
+    { e: '👒', l: '첫 근무', name: '간호사 캡', what: '첫 근무를 시작하며 받은 간호사 캡이에요. 여정의 출발점을 기념해요.', how: '첫 시나리오에서 XP를 획득하면 열려요.', got: xp > 0 },
+    { e: '🩺', l: 'Lv.3', name: '청진기', what: '기본기를 다졌다는 표시예요. 환자의 소리에 귀 기울일 준비가 됐어요.', how: '레벨 3에 도달하면 열려요.', got: level >= 3 },
+    { e: '💉', l: 'Lv.5', name: '주사기', what: '술기에 익숙해진 주니어 간호사의 증표예요.', how: '레벨 5에 도달하면 열려요.', got: level >= 5 },
+    { e: '🔥', l: '3일 연속', name: '3일 연속 출석', what: '사흘 연속 근무한 성실함의 상징이에요.', how: '3일 연속 출석하면 열려요.', got: streakLongest >= 3 },
+    { e: '🏅', l: '7일 연속', name: '일주일 개근', what: '일주일 내내 빠짐없이 나온 열정의 메달이에요.', how: '7일 연속 출석하면 열려요.', got: streakLongest >= 7, special: true },
+    { e: '🏆', l: 'Lv.10', name: '병동 트로피', what: '한 병동을 능숙히 누비는 실력자의 트로피예요.', how: '레벨 10에 도달하면 열려요.', got: level >= 10 },
+    { e: '👑', l: 'Lv.20', name: '헤드 간호사 왕관', what: '팀을 이끄는 시니어의 왕관이에요.', how: '레벨 20에 도달하면 열려요.', got: level >= 20 },
+    { e: '🔒', l: '???', name: '숨겨진 뱃지', what: '아직 공개되지 않은 뱃지예요. 계속 성장하다 보면 만나게 돼요.', how: '조건은 아직 비밀이에요.', got: false },
+  ];
   const gotCount = badges.filter((b) => b.got).length;
   const BADGE_TOTAL = 24; // full career-badge pool (handoff shows collection vs 24)
 
@@ -178,9 +182,14 @@ export default function Me() {
             {badges.map((b, i) => {
               // earned = white tile + ink shadow; special earned = yellow + NEW ribbon; locked = flat cream.
               const bg = !b.got ? colors.cream : b.special ? colors.yellow : '#fff';
+              const open = () => setSheet({
+                icon: b.e, iconBg: bg, title: b.got ? b.name : '???',
+                status: { label: b.got ? '✓ 획득' : '🔒 잠김', bg: b.got ? colors.mint : colors.cream },
+                what: b.what, how: b.how,
+              });
               return (
                 <Shadowed key={i} offset={b.got ? 3 : 0} shadowColor={b.special ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
-                  <View style={{ aspectRatio: 1, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
+                  <Pressable onPress={open} style={{ aspectRatio: 1, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={{ fontSize: 22, opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>
                     <Text style={{ fontFamily: fonts.body, fontSize: 8, color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
                     {b.got && b.special && (
@@ -188,7 +197,7 @@ export default function Me() {
                         <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: '#fff' }}>NEW</Text>
                       </View>
                     )}
-                  </View>
+                  </Pressable>
                 </Shadowed>
               );
             })}
@@ -220,6 +229,7 @@ export default function Me() {
           </Shadowed>
         </Pressable>
       </ScrollView>
+      <InfoSheet data={sheet} onClose={() => setSheet(null)} />
     </View>
   );
 }

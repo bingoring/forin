@@ -4,10 +4,11 @@
 // board. Wired to live data (GET /me/progress + /me/review); metrics without a
 // server source yet are derived honestly from what we have.
 import { useCallback, useMemo, useState } from 'react';
-import { ActivityIndicator, Dimensions, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
+import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { api, type Progress, type GrowthStats } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -37,6 +38,7 @@ export default function Growth() {
   const [progress, setProgress] = useState<Progress | null>(null);
   const [stats, setStats] = useState<GrowthStats | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
+  const [sheet, setSheet] = useState<InfoSheetData | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -148,7 +150,7 @@ export default function Growth() {
           </View>
 
           {/* 칭찬 스티커 보드 — 시나리오 클리어 1회당 스티커 1장(누적) */}
-          <StickerBoard earned={stats.scenariosTotal} />
+          <StickerBoard earned={stats.scenariosTotal} onPick={setSheet} />
 
           {/* go practice */}
           <View style={{ marginTop: 2 }}>
@@ -156,6 +158,7 @@ export default function Growth() {
           </View>
         </ScrollView>
       )}
+      <InfoSheet data={sheet} onClose={() => setSheet(null)} />
     </View>
   );
 }
@@ -193,8 +196,9 @@ const GAP = 12;
 // wrapped flex row, so derive an explicit tile size from the screen width.
 const TILE = Math.floor((Dimensions.get('window').width - 36 /*page*/ - 34 /*card*/ - GAP * 3) / 4);
 
-function StickerBoard({ earned }: { earned: number }) {
+function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoSheetData) => void }) {
   const filled = Math.max(0, Math.min(SLOTS, earned));
+  const howText = '시나리오를 클리어할 때마다 환자에게서 칭찬 스티커를 한 장씩 받아요. 100장을 모으면 새 자격증이 열려요.';
   return (
     <View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
@@ -213,12 +217,27 @@ function StickerBoard({ earned }: { earned: number }) {
               const s = STICKERS[i % STICKERS.length];
               return got ? (
                 <Shadowed key={i} offset={3} style={{ width: TILE, height: TILE }}>
-                  <View style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
+                  <Pressable
+                    onPress={() => onPick({
+                      icon: s.e, iconBg: s.bg, title: `칭찬 스티커 #${i + 1}`,
+                      status: { label: '✓ 획득', bg: colors.mint },
+                      what: `시나리오를 성공적으로 마치고 환자에게서 받은 칭찬 스티커예요. 지금까지 ${earned}장 모았어요.`,
+                      how: howText,
+                    })}
+                    style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
                     <Text style={{ fontSize: 22, color: C }}>{s.e}</Text>
-                  </View>
+                  </Pressable>
                 </Shadowed>
               ) : (
-                <View key={i} style={{ width: TILE, height: TILE, borderWidth: 2, borderColor: C + '33', borderStyle: 'dashed' }} />
+                <Pressable
+                  key={i}
+                  onPress={() => onPick({
+                    icon: '➕', iconBg: colors.cream, title: '빈 스티커 칸',
+                    status: { label: '🔒 잠김', bg: colors.cream },
+                    what: '아직 비어 있는 칸이에요. 시나리오를 클리어하면 이 칸이 칭찬 스티커로 채워져요.',
+                    how: howText,
+                  })}
+                  style={{ width: TILE, height: TILE, borderWidth: 2, borderColor: C + '33', borderStyle: 'dashed' }} />
               );
             })}
           </View>
