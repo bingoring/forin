@@ -10,6 +10,7 @@ import { ActivityIndicator, Animated, Easing, Pressable, Share, Text, View, type
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type Progress, type ScenarioDetail } from '@/api/client';
+import { newlyEarned, type BadgeDef } from '@/data/badges';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -28,6 +29,8 @@ export default function ResultRoute() {
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
   const [before, setBefore] = useState<Progress | null>(null);
   const [after, setAfter] = useState<Progress | null>(null);
+  const [stickerTotal, setStickerTotal] = useState<number | null>(null);
+  const [newBadges, setNewBadges] = useState<BadgeDef[]>([]);
   const [failed, setFailed] = useState(false);
   const recorded = useRef(false);
 
@@ -56,7 +59,13 @@ export default function ResultRoute() {
       try {
         const b = await api.progress();
         const a = await api.recordAttempt(id, baseXpOf(s));
-        if (alive) { setBefore(b); setAfter(a); }
+        if (!alive) return;
+        setBefore(b);
+        setAfter(a);
+        // Badges that unlocked with this clear → celebrate them.
+        setNewBadges(newlyEarned(b, a));
+        // Praise-sticker tally (1 per clear); reflects this clear once recorded.
+        api.growthStats().then((st) => { if (alive) setStickerTotal(st.scenariosTotal); }).catch(() => {});
       } catch {
         if (alive) setFailed(true); // not authed / offline → static fallback
       }
@@ -105,6 +114,19 @@ export default function ResultRoute() {
           </Shadowed>
         )}
 
+        {/* new-badge unlock banner(s) */}
+        {newBadges.map((b) => (
+          <Shadowed key={b.name} offset={4} style={{ alignSelf: 'stretch', marginTop: 10 }}>
+            <View style={{ backgroundColor: b.special ? colors.yellow : colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <Text style={{ fontSize: 24 }}>{b.e}</Text>
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>🎖 새 뱃지 획득!</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 2 }}>{b.name}</Text>
+              </View>
+            </View>
+          </Shadowed>
+        ))}
+
         {/* sticker */}
         <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
           <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
@@ -120,7 +142,7 @@ export default function ResultRoute() {
         <Shadowed offset={4} style={{ alignSelf: 'stretch' }}>
           <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
             {after ? (
-              <XpCard baseXp={baseXp} before={before} after={after} />
+              <XpCard baseXp={baseXp} before={before} after={after} stickerTotal={stickerTotal} />
             ) : failed ? (
               <StaticRewards scenario={scenario} baseXp={baseXp} />
             ) : (
@@ -149,7 +171,7 @@ export default function ResultRoute() {
 }
 
 // ── XP + level card (real progress) ───────────────────────────────────
-function XpCard({ baseXp, before, after }: { baseXp: number; before: Progress | null; after: Progress }) {
+function XpCard({ baseXp, before, after, stickerTotal }: { baseXp: number; before: Progress | null; after: Progress; stickerTotal: number | null }) {
   const startXp = before?.xp ?? Math.max(0, after.xp - baseXp);
   const inLevel = after.xp % XP_PER_LEVEL;
   const toNext = XP_PER_LEVEL - inLevel;
@@ -161,6 +183,15 @@ function XpCard({ baseXp, before, after }: { baseXp: number; before: Progress | 
         </View>
         <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>경험치 획득</Text>
         <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: '#10B981' }}>+{baseXp} XP</Text>
+      </View>
+
+      {/* praise sticker earned (1 per clear) */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12, paddingBottom: 12, borderBottomWidth: 1.5, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
+        <View style={{ width: 30, height: 30, backgroundColor: colors.pink, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 15 }}>🎖</Text>
+        </View>
+        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>칭찬 스티커{stickerTotal != null ? ` (누적 ${stickerTotal}장)` : ''}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: '#10B981' }}>+1</Text>
       </View>
 
       {/* level + progress bar */}

@@ -10,12 +10,11 @@ import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { FacePlayer } from '@engine';
 import { api, type Progress } from '@/api/client';
+import { earnedBadges } from '@/data/badges';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
 const XP_PER_LEVEL = 100;
-
-type Badge = { e: string; l: string; name: string; what: string; how: string; got: boolean; special?: boolean };
 
 // Server keeps rank at a default; derive a friendly career title from level so
 // the card reflects real progression.
@@ -63,16 +62,7 @@ export default function Me() {
   const career = careerOf(level);
   const inLevel = xp % XP_PER_LEVEL;
 
-  const badges: Badge[] = [
-    { e: '👒', l: '첫 근무', name: '간호사 캡', what: '첫 근무를 시작하며 받은 간호사 캡이에요. 여정의 출발점을 기념해요.', how: '첫 시나리오에서 XP를 획득하면 열려요.', got: xp > 0 },
-    { e: '🩺', l: 'Lv.3', name: '청진기', what: '기본기를 다졌다는 표시예요. 환자의 소리에 귀 기울일 준비가 됐어요.', how: '레벨 3에 도달하면 열려요.', got: level >= 3 },
-    { e: '💉', l: 'Lv.5', name: '주사기', what: '술기에 익숙해진 주니어 간호사의 증표예요.', how: '레벨 5에 도달하면 열려요.', got: level >= 5 },
-    { e: '🔥', l: '3일 연속', name: '3일 연속 출석', what: '사흘 연속 근무한 성실함의 상징이에요.', how: '3일 연속 출석하면 열려요.', got: streakLongest >= 3 },
-    { e: '🏅', l: '7일 연속', name: '일주일 개근', what: '일주일 내내 빠짐없이 나온 열정의 메달이에요.', how: '7일 연속 출석하면 열려요.', got: streakLongest >= 7, special: true },
-    { e: '🏆', l: 'Lv.10', name: '병동 트로피', what: '한 병동을 능숙히 누비는 실력자의 트로피예요.', how: '레벨 10에 도달하면 열려요.', got: level >= 10 },
-    { e: '👑', l: 'Lv.20', name: '헤드 간호사 왕관', what: '팀을 이끄는 시니어의 왕관이에요.', how: '레벨 20에 도달하면 열려요.', got: level >= 20 },
-    { e: '🔒', l: '???', name: '숨겨진 뱃지', what: '아직 공개되지 않은 뱃지예요. 계속 성장하다 보면 만나게 돼요.', how: '조건은 아직 비밀이에요.', got: false },
-  ];
+  const badges = earnedBadges({ xp, level, streakLongest });
   const gotCount = badges.filter((b) => b.got).length;
   const BADGE_TOTAL = 24; // full career-badge pool (handoff shows collection vs 24)
 
