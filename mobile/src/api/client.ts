@@ -298,9 +298,17 @@ export const api = {
     return data as ScenarioDetail;
   },
 
-  /** Today's situation board — a daily-rotated set of scenario cards. */
+  /** Today's situation board — a daily-rotated set of scenario cards (global). */
   async boardToday(profession = 'nurse'): Promise<BoardCard[]> {
     const { data } = await http.get(`/board/today?profession=${profession}`);
+    return (data as { scenarios: BoardCard[] }).scenarios ?? [];
+  },
+
+  /** Personalized daily pool (weighted, persisted, resets 00:00 in device tz). */
+  async dailyBoard(profession = 'nurse'): Promise<BoardCard[]> {
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    const { data } = await http.get('/me/daily-board', { params: { profession, ...(tz ? { tz } : {}) } });
     return (data as { scenarios: BoardCard[] }).scenarios ?? [];
   },
 

@@ -192,29 +192,8 @@ func (r *ContentRepo) TodaysScenarios(ctx context.Context, profession string, li
 	byDept := map[string][]content.BoardCard{}
 	deptOrder := make([]string, 0, len(rows))
 	for _, s := range rows {
-		dept := deptFromID(s.ID)
-		c := content.BoardCard{ID: s.ID, Title: s.Title, Tagline: s.Tagline, Dept: dept, Urgency: "quest"}
-		if len(s.Briefing) > 0 && string(s.Briefing) != "{}" {
-			var b content.Briefing
-			unjson(s.Briefing, &b)
-			c.DeptColor = b.DeptColor
-			c.Difficulty = b.Difficulty
-			c.Room = b.Dept
-			c.Skills = b.Skills
-			c.TimeLabel = b.TimeLabel
-			switch {
-			case b.Difficulty >= 3:
-				c.Urgency = "urgent"
-			case b.Difficulty <= 1:
-				c.Urgency = "info"
-			}
-		}
-		if len(s.Persona) > 0 && string(s.Persona) != "{}" {
-			var pr content.Persona
-			unjson(s.Persona, &pr)
-			c.NpcName = pr.Name
-			c.NpcSub = pr.Sub
-		}
+		c := boardCardFromRow(s)
+		dept := c.Dept
 		if _, ok := byDept[dept]; !ok {
 			deptOrder = append(deptOrder, dept)
 		}
@@ -252,6 +231,172 @@ func (r *ContentRepo) TodaysScenarios(ctx context.Context, profession string, li
 		}
 	}
 	return out, nil
+}
+
+// boardCardFromRow builds a BoardCard from a board-scenario row (shared by the
+// global board and the personalized daily pool).
+func boardCardFromRow(s sqlc.ListBoardScenariosRow) content.BoardCard {
+	c := content.BoardCard{ID: s.ID, Title: s.Title, Tagline: s.Tagline, Dept: deptFromID(s.ID), Urgency: "quest"}
+	if len(s.Briefing) > 0 && string(s.Briefing) != "{}" {
+		var b content.Briefing
+		unjson(s.Briefing, &b)
+		c.DeptColor = b.DeptColor
+		c.Difficulty = b.Difficulty
+		c.Room = b.Dept
+		c.Skills = b.Skills
+		c.TimeLabel = b.TimeLabel
+		switch {
+		case b.Difficulty >= 3:
+			c.Urgency = "urgent"
+		case b.Difficulty <= 1:
+			c.Urgency = "info"
+		}
+	}
+	if len(s.Persona) > 0 && string(s.Persona) != "{}" {
+		var pr content.Persona
+		unjson(s.Persona, &pr)
+		c.NpcName = pr.Name
+		c.NpcSub = pr.Sub
+	}
+	return c
+}
+
+// DailyPool returns the user's personalized daily situation set (the domain's
+// DailyEventSet): a weighted sample stable within their local day and refreshed
+// at 00:00 local (localDate buckets the reset). The chosen ids are persisted so
+// the set is immune to content-pool changes mid-day and can be topped up later
+// (rewarded ad). Weighting favors uncleared scenarios and difficulty near the
+// learner's level, with dept diversity.
+func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDate string, limit int) ([]content.BoardCard, error) {
+	rows, err := r.q.ListBoardScenarios(ctx, profession)
+	if err != nil {
+		return nil, err
+	}
+	byID := make(map[string]sqlc.ListBoardScenariosRow, len(rows))
+	for _, s := range rows {
+		byID[s.ID] = s
+	}
+
+	// Return the persisted set if one exists for this local day.
+	if raw, err := r.q.GetDailyEventSet(ctx, userID, localDate); err == nil && len(raw) > 0 {
+		var ids []string
+		if json.Unmarshal(raw, &ids) == nil {
+			out := make([]content.BoardCard, 0, len(ids))
+			for _, id := range ids {
+				if s, ok := byID[id]; ok {
+					out = append(out, boardCardFromRow(s))
+				}
+			}
+			if len(out) > 0 {
+				return out, nil
+			}
+		}
+	}
+
+	// Sample a fresh set. Learner level + already-cleared scenarios drive weights.
+	level := 1
+	_ = r.pool.QueryRow(ctx, `SELECT level FROM user_progress WHERE user_id = $1`, userID).Scan(&level)
+	cleared := map[string]bool{}
+	if crows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
+		defer crows.Close()
+		for crows.Next() {
+			var id string
+			if crows.Scan(&id) == nil {
+				cleared[id] = true
+			}
+		}
+	}
+	ids := sampleDailyPool(rows, level, cleared, localDate+userID, limit)
+
+	if payload, err := json.Marshal(ids); err == nil {
+		_ = r.q.InsertDailyEventSet(ctx, sqlc.InsertDailyEventSetParams{UserID: userID, LocalDate: localDate, ScenarioIds: payload})
+	}
+	out := make([]content.BoardCard, 0, len(ids))
+	for _, id := range ids {
+		if s, ok := byID[id]; ok {
+			out = append(out, boardCardFromRow(s))
+		}
+	}
+	return out, nil
+}
+
+// sampleDailyPool picks `limit` scenario ids by weighted sampling-without-
+// replacement, seeded deterministically by `seed` so an un-persisted resample is
+// stable. Weight = unclearedBoost × levelFit; a max of 2 per dept keeps variety.
+func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[string]bool, seed string, limit int) []string {
+	// preferred difficulty band by level (difficulty is 1..3 on the board)
+	lo, hi := 1, 2
+	switch {
+	case level >= 15:
+		lo, hi = 2, 3
+	case level >= 5:
+		lo, hi = 2, 3
+	}
+	type cand struct {
+		id, dept string
+		weight   float64
+	}
+	cands := make([]cand, 0, len(rows))
+	for _, s := range rows {
+		diff := 2
+		if len(s.Briefing) > 0 {
+			var b content.Briefing
+			unjson(s.Briefing, &b)
+			if b.Difficulty > 0 {
+				diff = b.Difficulty
+			}
+		}
+		w := 1.0
+		if cleared[s.ID] {
+			w *= 0.25 // prefer new content
+		}
+		if diff >= lo && diff <= hi {
+			w *= 1.0
+		} else {
+			w *= 0.5 // off-band but still possible
+		}
+		cands = append(cands, cand{id: s.ID, dept: deptFromID(s.ID), weight: w})
+	}
+
+	rnd := mathrand.New(mathrand.NewSource(seedHash(seed)))
+	picked := make([]string, 0, limit)
+	deptCount := map[string]int{}
+	for len(picked) < limit && len(cands) > 0 {
+		total := 0.0
+		for _, c := range cands {
+			total += c.weight
+		}
+		if total <= 0 {
+			break
+		}
+		x := rnd.Float64() * total
+		sel := 0
+		for i, c := range cands {
+			x -= c.weight
+			if x <= 0 {
+				sel = i
+				break
+			}
+		}
+		c := cands[sel]
+		cands = append(cands[:sel], cands[sel+1:]...) // remove (no replacement)
+		if deptCount[c.dept] >= 2 {
+			continue // cap 2 per dept for variety
+		}
+		deptCount[c.dept]++
+		picked = append(picked, c.id)
+	}
+	return picked
+}
+
+// seedHash turns a string seed into a stable int64 (FNV-1a).
+func seedHash(s string) int64 {
+	var h uint64 = 1469598103934665603
+	for i := 0; i < len(s); i++ {
+		h ^= uint64(s[i])
+		h *= 1099511628211
+	}
+	return int64(h & 0x7fffffffffffffff)
 }
 
 // deptFromID pulls the dept code out of an id like "SCN-ONCO-00002" → "ONCO".

@@ -411,6 +411,33 @@ func (q *Queries) ListEvents(ctx context.Context, dollar_1 interface{}) ([]Event
 	return items, nil
 }
 
+const getDailyEventSet = `-- name: GetDailyEventSet :one
+SELECT scenario_ids FROM daily_event_sets WHERE user_id = $1 AND local_date = $2
+`
+
+func (q *Queries) GetDailyEventSet(ctx context.Context, userID string, localDate string) ([]byte, error) {
+	row := q.db.QueryRow(ctx, getDailyEventSet, userID, localDate)
+	var scenarioIds []byte
+	err := row.Scan(&scenarioIds)
+	return scenarioIds, err
+}
+
+const insertDailyEventSet = `-- name: InsertDailyEventSet :exec
+INSERT INTO daily_event_sets (user_id, local_date, scenario_ids) VALUES ($1, $2, $3)
+ON CONFLICT (user_id, local_date) DO NOTHING
+`
+
+type InsertDailyEventSetParams struct {
+	UserID      string `json:"user_id"`
+	LocalDate   string `json:"local_date"`
+	ScenarioIds []byte `json:"scenario_ids"`
+}
+
+func (q *Queries) InsertDailyEventSet(ctx context.Context, arg InsertDailyEventSetParams) error {
+	_, err := q.db.Exec(ctx, insertDailyEventSet, arg.UserID, arg.LocalDate, arg.ScenarioIds)
+	return err
+}
+
 const listBoardScenarios = `-- name: ListBoardScenarios :many
 SELECT s.id, s.title, s.tagline, s.briefing, s.persona
 FROM scenarios s JOIN events e ON s.event_id = e.id

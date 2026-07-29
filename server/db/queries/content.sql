@@ -32,6 +32,13 @@ FROM scenarios s JOIN events e ON s.event_id = e.id
 WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common')
 ORDER BY s.id;
 
+-- name: GetDailyEventSet :one
+SELECT scenario_ids FROM daily_event_sets WHERE user_id = $1 AND local_date = $2;
+
+-- name: InsertDailyEventSet :exec
+INSERT INTO daily_event_sets (user_id, local_date, scenario_ids) VALUES ($1, $2, $3)
+ON CONFLICT (user_id, local_date) DO NOTHING;
+
 -- name: DeleteDepartments :exec
 DELETE FROM departments;
 -- name: DeleteInteriors :exec

@@ -2,6 +2,7 @@ package http
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -100,6 +101,31 @@ func (h *contentHandler) board(w http.ResponseWriter, r *http.Request) {
 	cards, err := h.content.TodaysScenarios(r.Context(), r.URL.Query().Get("profession"), 12)
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not load board")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards})
+}
+
+// @Summary Personalized daily pool — weighted, persisted, resets 00:00 local (?tz=)
+// @Tags content
+// @Security Bearer
+// @Router /me/daily-board [get]
+func (h *contentHandler) dailyBoard(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	loc := time.UTC
+	if tz := r.URL.Query().Get("tz"); tz != "" {
+		if l, err := time.LoadLocation(tz); err == nil {
+			loc = l
+		}
+	}
+	localDate := time.Now().In(loc).Format("2006-01-02")
+	cards, err := h.content.DailyPool(r.Context(), uid, r.URL.Query().Get("profession"), localDate, 12)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load daily board")
 		return
 	}
 	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards})

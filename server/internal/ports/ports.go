@@ -124,6 +124,9 @@ type ContentReader interface {
 	GetQuiz(ctx context.Context, id string) (*content.Quiz, error)
 	TodaysBoard(ctx context.Context, profession string, limit int) ([]content.Event, error)
 	TodaysScenarios(ctx context.Context, profession string, limit int) ([]content.BoardCard, error)
+	// DailyPool returns the user's personalized daily situation set (DailyEventSet):
+	// weighted, persisted, and reset at 00:00 in the user's timezone (via localDate).
+	DailyPool(ctx context.Context, userID, profession, localDate string, limit int) ([]content.BoardCard, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

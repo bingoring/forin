@@ -58,7 +58,13 @@ export default function Board() {
 
   useEffect(() => {
     let alive = true;
-    api.boardToday().then((c) => { if (alive) { setCards(c); setState('ok'); } }).catch(() => { if (alive) setState('error'); });
+    // Personalized daily pool (weighted, per-user, resets 00:00 local); fall back
+    // to the global rotated board if the authed call fails (offline / not authed).
+    api.dailyBoard()
+      .then((c) => { if (alive) { setCards(c); setState('ok'); } })
+      .catch(() => api.boardToday()
+        .then((c) => { if (alive) { setCards(c); setState('ok'); } })
+        .catch(() => { if (alive) setState('error'); }));
     return () => { alive = false; };
   }, []);
 
