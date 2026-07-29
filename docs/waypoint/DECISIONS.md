@@ -1151,3 +1151,10 @@
 - **서버**: migration 000013 `profiles.equipped_title`. 도메인 Profile.EquippedTitle, sqlc GetProfile(+equipped_title)·SetEquippedTitle(upsert), user_repo.SetEquippedTitle, ports.UserRepo, `PATCH /me/title`(코드측 allowedTitles 검증), engine.reputationDisposition에 warm 넛지, `/me` 응답에 equippedTitle.
 - **모바일**: `src/data/titles.ts`(TITLES·MISSIONS·earnedTitles·foundMissions·titleById), `api.equipTitle`, InfoSheet에 action 버튼(장착) 추가. me.tsx — ID카드 장착 칭호 칩, 칭호 리스트(보유/미보유/장착, 탭→상세+장착), 히든미션 그리드(???/발견, 탭→힌트/보상).
 - **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(PATCH equip 저장·/me 반영·잘못된 칭호 400·warm 넛지 톤 변화) · 시뮬레이터(장착 칩·칭호 4/6 리스트·히든미션 0/3·장착 시트).
+
+## 2026-07-29 — 히든미션 영구 기록 + 발견 축하 토스트
+직전 구현은 히든미션 발견을 실시간 조건 판정만 해 조건이 떨어지면 미발견으로 되돌아갈 수 있었음 → 영구화 + 최초 발견 연출.
+- **서버**: migration 000014 `hidden_mission_progress(user_id, mission_id, found_at, PK(user,mission))`. sqlc FoundMissions/RecordMission(ON CONFLICT DO NOTHING), progress_repo 메서드, ports.ProgressRepo 확장, `GET /me/missions`(→{found:[]}) · `POST /me/missions/{id}`(allowedMissions 검증, 멱등).
+- **모바일**: me.tsx 로드 시 서버 found 목록 조회 → titles.ts 조건으로 새로 met인데 미기록인 미션 감지 → `api.recordMission` 영구 기록 + 발견 토스트(🎉 이름·보상, 3.2s). 표시·hidden_hero 칭호 획득·히든 카운트는 모두 **서버 found 기반(영구)**으로 전환(earnedTitles에 hiddenFound 주입).
+- **영구성 E2E**: streak14+평판85로 iron_will·beloved 발견 기록 → 조건 하락(streak2·평판50)해도 `/me/missions`가 여전히 두 미션 반환. 멱등: 재진입 시 fresh 없음 → 토스트 미발생.
+- 검증: go build/test 0 · tsc 0 · jest 208/208 · E2E(기록·멱등·400·영구성) · 시뮬레이터(발견 토스트 렌더).
