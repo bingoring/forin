@@ -205,6 +205,12 @@ export const api = {
     return data as MeResp;
   },
 
+  /** Server economy config (single source of truth) — mirrored into ECON at boot. */
+  async economyConfig(): Promise<Record<string, number>> {
+    const { data } = await http.get('/config/economy');
+    return data as Record<string, number>;
+  },
+
   /** Save onboarding selections; server marks the profile onboarded. */
   async updateProfile(body: {
     job?: string; nativeLang?: string; targetLang?: string; destination?: string; targetLevel?: string;

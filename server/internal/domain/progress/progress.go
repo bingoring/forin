@@ -2,7 +2,11 @@
 // (SM-2) review algorithm. Pure domain — no infrastructure.
 package progress
 
-import "time"
+import (
+	"time"
+
+	"github.com/bingoring/forin/server/internal/economy"
+)
 
 // Progress is a user's growth snapshot.
 type Progress struct {
@@ -77,24 +81,26 @@ var gradeQ = map[Grade]int{GradeAgain: 1, GradeHard: 3, GradeGood: 4, GradeEasy:
 
 func (g Grade) Valid() bool { _, ok := gradeQ[g]; return ok }
 
-// Review applies the SM-2 algorithm and returns the next schedule + mastery pips (0-3).
-// `today` is injected so the calculation is pure/testable.
+// Review applies the SM-2 algorithm and returns the next schedule + mastery pips.
+// `today` is injected so the calculation is pure/testable. Tunable numbers come
+// from the economy config (single source of truth).
 func Review(s Schedule, g Grade, today time.Time) (Schedule, int) {
+	e := economy.Active
 	q := gradeQ[g]
 	next := s
 	if next.Ease == 0 {
-		next.Ease = 2.5
+		next.Ease = e.EaseDefault
 	}
 
 	if q < 3 { // failed recall → reset interval, keep ease (lightly penalized)
 		next.Reps = 0
-		next.IntervalDays = 1
+		next.IntervalDays = e.FirstInterval
 	} else {
 		switch next.Reps {
 		case 0:
-			next.IntervalDays = 1
+			next.IntervalDays = e.FirstInterval
 		case 1:
-			next.IntervalDays = 6
+			next.IntervalDays = e.SecondInterval
 		default:
 			next.IntervalDays = int(float64(next.IntervalDays)*next.Ease + 0.5)
 		}
@@ -104,15 +110,15 @@ func Review(s Schedule, g Grade, today time.Time) (Schedule, int) {
 	// EF update (SM-2): EF += 0.1 - (5-q)*(0.08 + (5-q)*0.02)
 	d := float64(5 - q)
 	next.Ease += 0.1 - d*(0.08+d*0.02)
-	if next.Ease < 1.3 {
-		next.Ease = 1.3
+	if next.Ease < e.EaseFloor {
+		next.Ease = e.EaseFloor
 	}
 
 	next.DueDate = today.AddDate(0, 0, next.IntervalDays)
 
 	pips := next.Reps
-	if pips > 3 {
-		pips = 3
+	if pips > e.MasteryCap {
+		pips = e.MasteryCap
 	}
 	return next, pips
 }

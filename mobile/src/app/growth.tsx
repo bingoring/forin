@@ -10,6 +10,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { api, type Progress, type GrowthStats } from '@/api/client';
+import { careerFor } from '@/data/economy';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -24,13 +25,6 @@ function fmtMinutes(seconds: number): string {
   const m = Math.round(seconds / 60);
   if (m < 60) return `${m}분`;
   return `${Math.floor(m / 60)}시간 ${m % 60}분`;
-}
-
-function careerTitle(level: number) {
-  if (level >= 30) return 'Head Nurse';
-  if (level >= 15) return 'Senior Nurse';
-  if (level >= 5) return 'Junior Nurse';
-  return 'Learner';
 }
 
 export default function Growth() {
@@ -146,7 +140,7 @@ export default function Growth() {
             <StatTile label="시나리오" value={`${stats.scenariosWeek}`} sub="이번 주 완료" color={colors.mint} />
             <StatTile label="새 표현" value={`${stats.newCardsWeek}`} sub="이번 주 배움" color={colors.peach} />
             <StatTile label="대화 시간" value={fmtMinutes(stats.conversationSecondsWeek)} sub="이번 주 현장" color={colors.pink} />
-            <StatTile label="레벨" value={`Lv.${progress.level}`} sub={careerTitle(progress.level)} color={colors.yellow} />
+            <StatTile label="레벨" value={`Lv.${progress.level}`} sub={careerFor(progress.level).label} color={colors.yellow} />
           </View>
 
           {/* 칭찬 스티커 보드 — 시나리오 클리어 1회당 스티커 1장(누적) */}

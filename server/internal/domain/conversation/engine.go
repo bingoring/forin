@@ -9,6 +9,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -170,7 +171,7 @@ func (e *Engine) reputationDisposition(ctx context.Context, userID string, sc *c
 		}
 	}
 	if warm {
-		score += 15
+		score += economy.Active.TitleWarmthBonus
 	}
 	for _, k := range []string{"doctor", "physician", "surgeon", "nurse", "colleague", "charge", "resident", "attending"} {
 		if strings.Contains(role, k) {
@@ -181,11 +182,11 @@ func (e *Engine) reputationDisposition(ctx context.Context, userID string, sc *c
 	who := "This character"
 	var tone string
 	switch {
-	case score >= 75:
+	case score >= economy.Active.RepBandWarm:
 		tone = fmt.Sprintf("%s already regards this learner highly (%s is high). Be noticeably warm, cooperative, and quick to trust — while staying fully in character.", who, dim)
-	case score >= 50:
+	case score >= economy.Active.RepBandCordial:
 		tone = fmt.Sprintf("%s feels neutral-to-cordial toward this learner (%s is moderate). React normally and fairly.", who, dim)
-	case score >= 25:
+	case score >= economy.Active.RepBandWary:
 		tone = fmt.Sprintf("%s is a little wary of this learner (%s is low). Be slightly guarded and need some reassurance before opening up — while staying in character.", who, dim)
 	default:
 		tone = fmt.Sprintf("%s does not yet trust this learner (%s is very low). Be reserved, terse, and slow to cooperate until reassured — while staying in character. Never explain why.", who, dim)

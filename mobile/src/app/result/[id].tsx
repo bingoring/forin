@@ -11,16 +11,16 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type Progress, type ScenarioDetail } from '@/api/client';
 import { newlyEarned, type BadgeDef } from '@/data/badges';
+import { ECON } from '@/data/economy';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
-const XP_PER_LEVEL = 100; // server: level = 1 + floor(xp / 100)
 
 // Parse the scenario's authored XP reward ("+ 120 XP" → 120); default 100.
 function baseXpOf(s: ScenarioDetail | null): number {
   const r = s?.briefing?.rewards?.find((x) => x.label.includes('경험치') || /xp/i.test(x.value));
   const n = r ? parseInt(r.value.replace(/[^0-9]/g, ''), 10) : NaN;
-  return Number.isFinite(n) && n > 0 ? n : 100;
+  return Number.isFinite(n) && n > 0 ? n : ECON.scenarioBaseXP;
 }
 
 export default function ResultRoute() {
@@ -173,8 +173,8 @@ export default function ResultRoute() {
 // ── XP + level card (real progress) ───────────────────────────────────
 function XpCard({ baseXp, before, after, stickerTotal }: { baseXp: number; before: Progress | null; after: Progress; stickerTotal: number | null }) {
   const startXp = before?.xp ?? Math.max(0, after.xp - baseXp);
-  const inLevel = after.xp % XP_PER_LEVEL;
-  const toNext = XP_PER_LEVEL - inLevel;
+  const inLevel = after.xp % ECON.xpPerLevel;
+  const toNext = ECON.xpPerLevel - inLevel;
   return (
     <View>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 }}>
@@ -199,7 +199,7 @@ function XpCard({ baseXp, before, after, stickerTotal }: { baseXp: number; befor
         <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>Lv. {after.level}</Text>
         <CountUp from={startXp} to={after.xp} suffix=" XP" style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }} />
       </View>
-      <LevelBar ratio={inLevel / XP_PER_LEVEL} />
+      <LevelBar ratio={inLevel / ECON.xpPerLevel} />
       <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 5, textAlign: 'right' }}>다음 레벨까지 {toNext} XP</Text>
 
       {/* streak */}

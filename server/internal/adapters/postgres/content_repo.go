@@ -15,6 +15,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -329,7 +330,7 @@ func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, lo
 	set, err := r.q.GetDailyEventSet(ctx, userID, localDate)
 	if errors.Is(err, pgx.ErrNoRows) {
 		// No base set yet — build one first, then this call becomes the top-up.
-		if _, e := r.DailyPool(ctx, userID, profession, localDate, 12); e != nil {
+		if _, e := r.DailyPool(ctx, userID, profession, localDate, economy.Active.DailyPoolSize); e != nil {
 			return nil, 0, e
 		}
 		set, err = r.q.GetDailyEventSet(ctx, userID, localDate)
@@ -399,10 +400,7 @@ func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, lo
 func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[string]bool, seed string, limit int) []string {
 	// preferred difficulty band by level (difficulty is 1..3 on the board)
 	lo, hi := 1, 2
-	switch {
-	case level >= 15:
-		lo, hi = 2, 3
-	case level >= 5:
+	if level >= economy.Active.RankJunior {
 		lo, hi = 2, 3
 	}
 	type cand struct {
@@ -421,12 +419,10 @@ func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[s
 		}
 		w := 1.0
 		if cleared[s.ID] {
-			w *= 0.25 // prefer new content
+			w *= economy.Active.DailyClearedWeight // prefer new content
 		}
-		if diff >= lo && diff <= hi {
-			w *= 1.0
-		} else {
-			w *= 0.5 // off-band but still possible
+		if diff < lo || diff > hi {
+			w *= economy.Active.DailyOffBandWeight // off-band but still possible
 		}
 		cands = append(cands, cand{id: s.ID, dept: deptFromID(s.ID), weight: w})
 	}
@@ -453,8 +449,8 @@ func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[s
 		}
 		c := cands[sel]
 		cands = append(cands[:sel], cands[sel+1:]...) // remove (no replacement)
-		if deptCount[c.dept] >= 2 {
-			continue // cap 2 per dept for variety
+		if deptCount[c.dept] >= economy.Active.DailyDeptCap {
+			continue // cap per dept for variety
 		}
 		deptCount[c.dept]++
 		picked = append(picked, c.id)

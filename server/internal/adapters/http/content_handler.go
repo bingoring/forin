@@ -5,14 +5,9 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
-)
-
-// Rewarded-ad daily-pool top-up tuning (code-side, not hardcoded per-call).
-const (
-	topUpAdd = 3 // scenarios added per rewarded-ad view
-	topUpCap = 3 // rewarded top-ups allowed per local day
 )
 
 type contentHandler struct{ content ports.ContentReader }
@@ -113,6 +108,13 @@ func (h *contentHandler) board(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards})
 }
 
+// @Summary Economy config (single source of truth mirrored to the client)
+// @Tags content
+// @Router /config/economy [get]
+func (h *contentHandler) economyConfig(w http.ResponseWriter, r *http.Request) {
+	httpx.JSON(w, http.StatusOK, economy.Active)
+}
+
 // @Summary Personalized daily pool — weighted, persisted, resets 00:00 local (?tz=)
 // @Tags content
 // @Security Bearer
@@ -130,7 +132,7 @@ func (h *contentHandler) dailyBoard(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	localDate := time.Now().In(loc).Format("2006-01-02")
-	cards, err := h.content.DailyPool(r.Context(), uid, r.URL.Query().Get("profession"), localDate, 12)
+	cards, err := h.content.DailyPool(r.Context(), uid, r.URL.Query().Get("profession"), localDate, economy.Active.DailyPoolSize)
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not load daily board")
 		return
@@ -155,7 +157,7 @@ func (h *contentHandler) dailyBoardTopUp(w http.ResponseWriter, r *http.Request)
 		}
 	}
 	localDate := time.Now().In(loc).Format("2006-01-02")
-	cards, grants, err := h.content.TopUpDailyPool(r.Context(), uid, r.URL.Query().Get("profession"), localDate, topUpAdd, topUpCap)
+	cards, grants, err := h.content.TopUpDailyPool(r.Context(), uid, r.URL.Query().Get("profession"), localDate, economy.Active.TopUpAdd, economy.Active.TopUpCap)
 	if errors.Is(err, ports.ErrDailyCapReached) {
 		httpx.Error(w, http.StatusTooManyRequests, "오늘의 광고 보상을 모두 받았어요")
 		return
@@ -164,5 +166,5 @@ func (h *contentHandler) dailyBoardTopUp(w http.ResponseWriter, r *http.Request)
 		httpx.Error(w, http.StatusInternalServerError, "could not top up daily board")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards, "adGrants": grants, "cap": topUpCap})
+	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards, "adGrants": grants, "cap": economy.Active.TopUpCap})
 }

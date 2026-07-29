@@ -12,19 +12,10 @@ import { FacePlayer } from '@engine';
 import { api, type Progress } from '@/api/client';
 import { earnedBadges } from '@/data/badges';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
+import { ECON, careerFor } from '@/data/economy';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
-const XP_PER_LEVEL = 100;
-
-// Server keeps rank at a default; derive a friendly career title from level so
-// the card reflects real progression.
-function careerOf(level: number) {
-  if (level >= 30) return { label: 'Head Nurse', step: 3 };
-  if (level >= 15) return { label: 'Senior Nurse', step: 2 };
-  if (level >= 5) return { label: 'Junior Nurse', step: 1 };
-  return { label: 'Learner', step: 0 };
-}
 
 export default function Me() {
   const router = useRouter();
@@ -92,8 +83,8 @@ export default function Me() {
   }
 
   const { level, xp, streakCurrent, streakLongest, patientSatisfaction, peerTrust, emergencyResponse } = progress;
-  const career = careerOf(level);
-  const inLevel = xp % XP_PER_LEVEL;
+  const career = careerFor(level);
+  const inLevel = xp % ECON.xpPerLevel;
 
   const badges = earnedBadges({ xp, level, streakLongest });
   const gotCount = badges.filter((b) => b.got).length;
@@ -165,11 +156,11 @@ export default function Me() {
                 <View style={{ marginTop: 10 }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>LV {level}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>{inLevel} / {XP_PER_LEVEL}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>{inLevel} / {ECON.xpPerLevel}</Text>
                     <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>LV {level + 1}</Text>
                   </View>
                   <View style={{ height: 10, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, marginTop: 3 }}>
-                    <View style={{ width: `${(inLevel / XP_PER_LEVEL) * 100}%`, height: '100%', backgroundColor: colors.mint }} />
+                    <View style={{ width: `${(inLevel / ECON.xpPerLevel) * 100}%`, height: '100%', backgroundColor: colors.mint }} />
                   </View>
                 </View>
                 <View style={{ flexDirection: 'row', gap: 6, marginTop: 8 }}>

@@ -12,6 +12,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -26,7 +27,8 @@ func NewProgressRepo(pool *pgxpool.Pool) *ProgressRepo {
 }
 
 func defaults() *progress.Progress {
-	return &progress.Progress{Level: 1, Rank: "learner", PatientSatisfaction: 50, PeerTrust: 50, EmergencyResponse: 50}
+	d := economy.Active.ReputationDefault
+	return &progress.Progress{Level: 1, Rank: "learner", PatientSatisfaction: d, PeerTrust: d, EmergencyResponse: d}
 }
 
 func (r *ProgressRepo) GetProgress(ctx context.Context, userID string) (*progress.Progress, error) {
