@@ -32,6 +32,8 @@ export default function Me() {
   const [enLevel, setEnLevel] = useState<string>('');
   const [scenariosTotal, setScenariosTotal] = useState(0);
   const [equipped, setEquipped] = useState<string>('');
+  const [foundIds, setFoundIds] = useState<Set<string>>(new Set());
+  const [toast, setToast] = useState<{ name: string; reward: string } | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [sheet, setSheet] = useState<InfoSheetData | null>(null);
 
@@ -40,14 +42,33 @@ export default function Me() {
       let alive = true;
       (async () => {
         try {
-          const [p, me, stats] = await Promise.all([api.progress(), api.me().catch(() => null), api.growthStats().catch(() => null)]);
+          const [p, me, stats, found] = await Promise.all([
+            api.progress(), api.me().catch(() => null), api.growthStats().catch(() => null), api.missions().catch(() => [] as string[]),
+          ]);
           if (!alive) return;
           setProgress(p);
           const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string } } | null)?.profile;
           setEnLevel(prof?.targetLevel || '');
           setEquipped(prof?.equippedTitle || '');
           setScenariosTotal(stats?.scenariosTotal ?? 0);
-          setState('ok');
+
+          // Detect newly-met missions not yet recorded → persist + celebrate.
+          const g: GrowthInput = {
+            level: p.level, xp: p.xp, streakLongest: p.streakLongest,
+            patientSatisfaction: p.patientSatisfaction, peerTrust: p.peerTrust, emergencyResponse: p.emergencyResponse,
+            scenariosTotal: stats?.scenariosTotal ?? 0,
+          };
+          const set = new Set(found);
+          const fresh = foundMissions(g).filter((m) => !set.has(m.id));
+          for (const m of fresh) {
+            set.add(m.id);
+            try { await api.recordMission(m.id); } catch { /* best-effort */ }
+          }
+          if (alive) {
+            setFoundIds(set);
+            if (fresh.length) { setToast({ name: fresh[0].name, reward: fresh[0].reward }); setTimeout(() => alive && setToast(null), 3200); }
+            setState('ok');
+          }
         } catch {
           if (alive) setState('error');
         }
@@ -79,9 +100,7 @@ export default function Me() {
   const BADGE_TOTAL = 24; // full career-badge pool (handoff shows collection vs 24)
 
   const growth: GrowthInput = { level, xp, streakLongest, patientSatisfaction, peerTrust, emergencyResponse, scenariosTotal };
-  const titles = earnedTitles(growth);
-  const found = foundMissions(growth);
-  const foundIds = new Set(found.map((m) => m.id));
+  const titles = earnedTitles(growth, foundIds.size); // hidden_hero earned = permanent discoveries
   const equippedTitle = titleById(equipped);
 
   // open a title detail sheet, with an 장착/장착 해제 action when earned
@@ -275,7 +294,7 @@ export default function Me() {
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🔍 히든 미션</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{found.length} / {MISSIONS.length}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{foundIds.size} / {MISSIONS.length}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {MISSIONS.map((m) => {
@@ -317,6 +336,20 @@ export default function Me() {
           </Shadowed>
         </Pressable>
       </ScrollView>
+
+      {/* hidden-mission discovery celebration */}
+      {toast && (
+        <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 28, alignItems: 'center', paddingHorizontal: 18 }}>
+          <Shadowed offset={4} shadowColor={colors.yellowShadow}>
+            <View style={{ backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 18, alignItems: 'center', minWidth: 260 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🎉 히든 미션 발견!</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, marginTop: 4 }}>{toast.name}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 4 }}>보상: {toast.reward}</Text>
+            </View>
+          </Shadowed>
+        </View>
+      )}
+
       <InfoSheet data={sheet} onClose={() => setSheet(null)} />
     </View>
   );

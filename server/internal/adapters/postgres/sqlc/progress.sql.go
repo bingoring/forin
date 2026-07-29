@@ -77,6 +77,45 @@ func (q *Queries) DueCards(ctx context.Context, arg DueCardsParams) ([]DueCardsR
 	return items, nil
 }
 
+const foundMissions = `-- name: FoundMissions :many
+SELECT mission_id FROM hidden_mission_progress WHERE user_id = $1 ORDER BY found_at
+`
+
+func (q *Queries) FoundMissions(ctx context.Context, userID string) ([]string, error) {
+	rows, err := q.db.Query(ctx, foundMissions, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []string
+	for rows.Next() {
+		var missionID string
+		if err := rows.Scan(&missionID); err != nil {
+			return nil, err
+		}
+		items = append(items, missionID)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const recordMission = `-- name: RecordMission :exec
+INSERT INTO hidden_mission_progress (user_id, mission_id) VALUES ($1, $2)
+ON CONFLICT (user_id, mission_id) DO NOTHING
+`
+
+type RecordMissionParams struct {
+	UserID    string `json:"user_id"`
+	MissionID string `json:"mission_id"`
+}
+
+func (q *Queries) RecordMission(ctx context.Context, arg RecordMissionParams) error {
+	_, err := q.db.Exec(ctx, recordMission, arg.UserID, arg.MissionID)
+	return err
+}
+
 const getCardForUser = `-- name: GetCardForUser :one
 SELECT c.id, c.source, c.front, c.back, c.note, c.topic_tag, c.mastery_pips, c.favorite,
        s.ease, s.interval_days, s.reps, s.due_date

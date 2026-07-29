@@ -136,6 +136,23 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 	return s, nil
 }
 
+// FoundMissions returns the ids of hidden missions the user has permanently discovered.
+func (r *ProgressRepo) FoundMissions(ctx context.Context, userID string) ([]string, error) {
+	ids, err := r.q.FoundMissions(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	if ids == nil {
+		ids = []string{}
+	}
+	return ids, nil
+}
+
+// RecordMission permanently records a hidden-mission discovery (idempotent).
+func (r *ProgressRepo) RecordMission(ctx context.Context, userID, missionID string) error {
+	return r.q.RecordMission(ctx, sqlc.RecordMissionParams{UserID: userID, MissionID: missionID})
+}
+
 func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID string, score int) (*progress.Progress, error) {
 	tx, err := r.pool.Begin(ctx)
 	if err != nil {

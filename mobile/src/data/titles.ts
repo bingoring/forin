@@ -51,9 +51,11 @@ export function foundMissions(g: GrowthInput): MissionDef[] {
   return MISSIONS.filter((m) => m.met(g));
 }
 
-export function earnedTitles(g: GrowthInput): (TitleDef & { got: boolean })[] {
-  const hiddenFound = foundMissions(g).length;
-  return TITLES.map((t) => ({ ...t, got: t.earned(g, { hiddenFound }) }));
+// hiddenFound: permanent count of discovered missions (from the server). Falls
+// back to the live-met count when omitted.
+export function earnedTitles(g: GrowthInput, hiddenFound?: number): (TitleDef & { got: boolean })[] {
+  const hf = hiddenFound ?? foundMissions(g).length;
+  return TITLES.map((t) => ({ ...t, got: t.earned(g, { hiddenFound: hf }) }));
 }
 
 export function titleById(id: string): TitleDef | undefined {

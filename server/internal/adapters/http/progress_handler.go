@@ -14,6 +14,49 @@ type progressHandler struct {
 	review   ports.ReviewRepo
 }
 
+// allowedMissions is the code-side set of hidden-mission ids (extensible, no DB
+// constraint). Kept in sync with the mobile mission catalog.
+var allowedMissions = map[string]bool{"veteran": true, "iron_will": true, "beloved": true}
+
+// @Summary Discovered hidden missions
+// @Tags progress
+// @Security Bearer
+// @Success 200 {object} map[string][]string
+// @Router /me/missions [get]
+func (h *progressHandler) missions(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	found, err := h.progress.FoundMissions(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load missions")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"found": found})
+}
+
+// @Summary Record a hidden-mission discovery (permanent, idempotent)
+// @Tags progress
+// @Security Bearer
+// @Success 200 {object} map[string][]string
+// @Router /me/missions/{id} [post]
+func (h *progressHandler) recordMission(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	id := r.PathValue("id")
+	if !allowedMissions[id] {
+		httpx.Error(w, http.StatusBadRequest, "unknown mission")
+		return
+	}
+	if err := h.progress.RecordMission(r.Context(), uid, id); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not record mission")
+		return
+	}
+	found, err := h.progress.FoundMissions(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"found": found})
+}
+
 // @Summary Current user's growth
 // @Tags progress
 // @Security Bearer

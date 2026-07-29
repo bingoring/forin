@@ -41,3 +41,10 @@ WHERE card_id = $1;
 
 -- name: UpdateCardMastery :exec
 UPDATE review_cards SET mastery_pips = $2 WHERE id = $1;
+
+-- name: FoundMissions :many
+SELECT mission_id FROM hidden_mission_progress WHERE user_id = $1 ORDER BY found_at;
+
+-- name: RecordMission :exec
+INSERT INTO hidden_mission_progress (user_id, mission_id) VALUES ($1, $2)
+ON CONFLICT (user_id, mission_id) DO NOTHING;

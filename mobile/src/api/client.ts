@@ -219,6 +219,18 @@ export const api = {
     return data as { equippedTitle: string };
   },
 
+  /** Permanently-discovered hidden mission ids. */
+  async missions(): Promise<string[]> {
+    const { data } = await http.get('/me/missions');
+    return (data?.found ?? []) as string[];
+  },
+
+  /** Record a hidden-mission discovery (permanent, idempotent); returns found ids. */
+  async recordMission(id: string): Promise<string[]> {
+    const { data } = await http.post(`/me/missions/${id}`);
+    return (data?.found ?? []) as string[];
+  },
+
   /** Current growth snapshot (XP, level, streak, stats). */
   async progress(): Promise<Progress> {
     const { data } = await http.get('/me/progress');
