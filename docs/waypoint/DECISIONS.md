@@ -1181,3 +1181,11 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **소비처 리팩터**: progress.Review(SM-2)·engine.reputationDisposition(밴드·warm 넛지)·content_repo.DailyPool/sampleDailyPool(크기·캡·가중·레벨밴드)·content_handler(daily size·topup)·progress_repo.defaults(평판 기본값)가 `economy.Active`에서 읽음. (레벨 공식 `1+xp/100`는 SQL 구조라 유지, XPPerLevel=100 주석 참조.)
 - **클라 미러**: `GET /config/economy`로 노출. 모바일 `src/data/economy.ts`(ECON 번들 기본값 + `hydrateEconomy` 부팅 시 서버에서 덮어씀 = 서버 권위, 오프라인 폴백). me/growth/result의 XP_PER_LEVEL·careerOf/careerTitle(→`careerFor`)·baseXp 기본값을 ECON으로 교체. 뱃지/칭호/미션 임계는 디자인 카탈로그로 유지.
 - **검증**: go build/test 0 · tsc 0 · jest 208/208 · `GET /config/economy` 21필드 반환 · 시뮬레이터(레벨·랭크·XP바 회귀 없음).
+
+## 2026-07-29 — 메인 루트 그래프 (MainRoute 커리큘럼, 2-7)
+도메인 스펙 MainRoute(커리큘럼 그래프) + MainRouteProgress 구현. prerequisites/follow_ups 기반 진행 경로.
+- **파생 상태(마이그레이션 불필요)**: 완료 = scenario_attempts에서 이벤트별 클리어 여부 파생(이미 영속). 별도 progress 테이블 없이 그래프+클리어로 상태 계산.
+- **서버**: `ContentRepo.MainRoute(userID, profession)` → main_route/both 이벤트를 tier 순으로, 각 노드 state = completed(이벤트의 시나리오 클리어) / available(모든 prereq 완료) / locked. 대표 진입 시나리오(이벤트별 최소 id) 포함. `content.RouteNode` 도메인 타입, ports.ContentReader 확장, `GET /me/route`.
+- **모바일**: `app/route.tsx`(`/route`) 세로 스텝퍼 — 노드 dot(✓/▶/🔒)+연결선, 카드(TIER 뱃지·상태 라벨·제목), available+시나리오 있으면 탭→briefing. 시나리오 미저작 available은 "준비 중"(콘텐츠 갭 정직 처리). 캠퍼스에 "🧭 메인 루트" 진입 버튼.
+- **콘텐츠 메모**: 현재 main_route 그래프는 파일럿 2노드(EVT-ER-00001 tier1 → 00002 tier2)만 시드. 00002는 시나리오 미저작 → "준비 중". 메커니즘은 콘텐츠 증가 시 자동 확장.
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(fresh: 00001 available·00002 locked → 00001 클리어 시 completed·00002 available) · 시뮬레이터(지금 도전/완료/잠김/준비 중 4상태 렌더).
