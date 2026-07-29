@@ -1158,3 +1158,12 @@
 - **모바일**: me.tsx 로드 시 서버 found 목록 조회 → titles.ts 조건으로 새로 met인데 미기록인 미션 감지 → `api.recordMission` 영구 기록 + 발견 토스트(🎉 이름·보상, 3.2s). 표시·hidden_hero 칭호 획득·히든 카운트는 모두 **서버 found 기반(영구)**으로 전환(earnedTitles에 hiddenFound 주입).
 - **영구성 E2E**: streak14+평판85로 iron_will·beloved 발견 기록 → 조건 하락(streak2·평판50)해도 `/me/missions`가 여전히 두 미션 반환. 멱등: 재진입 시 fresh 없음 → 토스트 미발생.
 - 검증: go build/test 0 · tsc 0 · jest 208/208 · E2E(기록·멱등·400·영구성) · 시뮬레이터(발견 토스트 렌더).
+
+## 2026-07-29 — 이벤트 일일 풀 (DailyEventSet, 2-7)
+도메인 스펙 DailyEventSet(userId·date·eventIds·resetsAt 00:00 local, level·ward·진행도 가중) 구현. 기존 TodaysScenarios(전역·결정적·미영속)는 fallback으로 유지.
+- **영속 모델**: migration 000015 `daily_event_sets(user_id, local_date, scenario_ids jsonb, PK(user,local_date))`. 하루 내 안정적·콘텐츠 풀 변경에 불변·향후 광고 top-up 기반.
+- **리셋**: 클라가 기기 tz 전달(`?tz=`) → 서버가 로컬 날짜로 버킷 → 자정(로컬)마다 새 행/샘플. (평판 집계와 동일 패턴)
+- **가중 샘플링**(ContentRepo.DailyPool): 미클리어 부스트(cleared×0.25) × 레벨-난이도 적합(밴드 밖×0.5), dept 최대 2개 캡으로 다양성. 시드=FNV(userID+localDate)로 미영속 재샘플도 결정적. level=user_progress, cleared=scenario_attempts(ContentRepo가 pool로 직접 조회 — 실용적 계층 절충).
+- **API**: `GET /me/daily-board?tz=&profession=`(authed, 12건). 모바일 board.tsx가 `api.dailyBoard()` 사용, 실패 시 `boardToday`(전역)로 폴백.
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(12건·하루 내 동일=영속·dept≤2·삭제후 재샘플 동일=결정적·Seoul[07-29] vs Pacific[07-28] 다른 세트=로컬 리셋) · 시뮬레이터(상황판 12건 렌더).
+- **남음**: 소진 시 RewardedAdGrant +N(상한) — 다음. 메인 루트 그래프도 별도.
