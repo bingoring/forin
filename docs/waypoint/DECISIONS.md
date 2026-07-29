@@ -1142,3 +1142,12 @@
 - **모바일 온보딩 3화면(핸드오프 1:1)**: locale(1/4 모국어+목적지→targetLang), job(2/4 간호사 MVP·나머지 곧 열림), level(3/4 CEFR 게이지+밴드, 기본 B1) → `api.updateProfile` 저장. 선택은 router params로 단계 간 전달.
 - **게이트**: authStore.onboarded(null=미상) 추가. restoreSession/syncOnboarded가 `/me.profile.onboarded` 반영, bootstrap의 dev auto-login 후에도 sync. index 게이트 3분기: 미인증→login, 인증&onboarded=false→locale, else→campus. login 성공 후에도 syncOnboarded로 분기.
 - **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(PATCH → /me onboarded=true) · 시뮬레이터(onboarded=false→locale 1/4 진입, job 2/4, level 3/4 렌더, onboarded=true→campus 스킵).
+
+## 2026-07-29 — 칭호·히든미션 (2-7, 풀 구현 + NPC 효과)
+도메인 스펙(Title 효과=NPC 반응 가중, HiddenMission=은닉 조건+힌트+보상, UserTitle 장착)을 MVP로 구현. 사용자 결정: 풀 구현 + NPC 효과.
+- **칭호 6종**(코드측 카탈로그, 성장 지표로 획득 판정 — 뱃지 패턴): 새내기(기본)·병동의 벗[온기]·성실한 손길·응급실의 에이스·언어의 달인·숨은 영웅[온기]. 장착은 **하나만 서버 저장**.
+- **히든미션 3종**(힌트만 노출→조건 충족 시 발견, 보상=숨은 영웅 칭호): 베테랑(25회 클리어)·철인(14일 연속)·신망(평판 3종 ≥80). '숨은 영웅' 칭호 = 히든미션 하나라도 발견 시 획득(환류).
+- **NPC 효과**: 장착한 [온기] 칭호(병동의 벗·숨은 영웅)가 대화 시 NPC 초기 우호도 +15 넛지. 서버 warmTitles 셋 ↔ 모바일 카탈로그 warm 플래그 동기화. 평판→NPC 가중 위에 얹음. 톤만, 규칙 불변.
+- **서버**: migration 000013 `profiles.equipped_title`. 도메인 Profile.EquippedTitle, sqlc GetProfile(+equipped_title)·SetEquippedTitle(upsert), user_repo.SetEquippedTitle, ports.UserRepo, `PATCH /me/title`(코드측 allowedTitles 검증), engine.reputationDisposition에 warm 넛지, `/me` 응답에 equippedTitle.
+- **모바일**: `src/data/titles.ts`(TITLES·MISSIONS·earnedTitles·foundMissions·titleById), `api.equipTitle`, InfoSheet에 action 버튼(장착) 추가. me.tsx — ID카드 장착 칭호 칩, 칭호 리스트(보유/미보유/장착, 탭→상세+장착), 히든미션 그리드(???/발견, 탭→힌트/보상).
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(PATCH equip 저장·/me 반영·잘못된 칭호 400·warm 넛지 톤 변화) · 시뮬레이터(장착 칩·칭호 4/6 리스트·히든미션 0/3·장착 시트).
