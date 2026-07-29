@@ -21,6 +21,7 @@ export default function Campus() {
           <PixelChip label="PEDS" bg={colors.pink} />
         </View>
       </PixelBox>
+      <PixelButton label="🧭  메인 루트 (커리큘럼)" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={() => router.push('/route')} full />
       <PixelButton label="🗺  캠퍼스 둘러보기" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.push('/interior/CAMPUS-00001')} full />
       <PixelButton label="✈  응급실 입장" onPress={() => router.push('/interior/INT-ER-00001')} full />
       <Text style={[styles.body, { marginTop: space.sm }]}>외래 클리닉</Text>

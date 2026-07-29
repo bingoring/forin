@@ -108,6 +108,24 @@ func (h *contentHandler) board(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards})
 }
 
+// @Summary Main-route curriculum path (events + unlock states) for the user
+// @Tags content
+// @Security Bearer
+// @Router /me/route [get]
+func (h *contentHandler) mainRoute(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	nodes, err := h.content.MainRoute(r.Context(), uid, r.URL.Query().Get("profession"))
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load route")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"nodes": nodes})
+}
+
 // @Summary Economy config (single source of truth mirrored to the client)
 // @Tags content
 // @Router /config/economy [get]

@@ -151,6 +151,13 @@ export interface BoardCard {
   difficulty?: number; room?: string; npcName?: string; npcSub?: string; skills?: string[]; timeLabel?: string;
 }
 
+// One node of the main-route curriculum graph (server: GET /me/route).
+export interface RouteNode {
+  eventId: string; title: string; tier: number;
+  state: 'locked' | 'available' | 'completed';
+  scenarioId?: string; prerequisites?: string[];
+}
+
 export interface WordScore { word: string; accuracy: number; errorType?: string }
 export interface PronunciationResult {
   recognized: string; accuracy: number; fluency: number; completeness: number; overall: number;
@@ -308,6 +315,12 @@ export const api = {
   async boardToday(profession = 'nurse'): Promise<BoardCard[]> {
     const { data } = await http.get(`/board/today?profession=${profession}`);
     return (data as { scenarios: BoardCard[] }).scenarios ?? [];
+  },
+
+  /** Main-route curriculum path (events + unlock states). */
+  async mainRoute(profession = 'nurse'): Promise<RouteNode[]> {
+    const { data } = await http.get('/me/route', { params: { profession } });
+    return (data as { nodes: RouteNode[] }).nodes ?? [];
   },
 
   /** Personalized daily pool (weighted, persisted, resets 00:00 in device tz). */

@@ -134,6 +134,8 @@ type ContentReader interface {
 	// TopUpDailyPool appends `add` fresh scenarios (rewarded ad) up to `cap` grants/
 	// day; returns the grown set + new grant count (ErrDailyCapReached when spent).
 	TopUpDailyPool(ctx context.Context, userID, profession, localDate string, add, cap int) ([]content.BoardCard, int, error)
+	// MainRoute computes the user's curriculum path (events + unlock states).
+	MainRoute(ctx context.Context, userID, profession string) ([]content.RouteNode, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

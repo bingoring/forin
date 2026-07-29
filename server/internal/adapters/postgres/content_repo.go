@@ -236,6 +236,89 @@ func (r *ContentRepo) TodaysScenarios(ctx context.Context, profession string, li
 	return out, nil
 }
 
+// MainRoute computes the user's curriculum path (domain MainRoute): main-route
+// events ordered by tier, each tagged completed / available / locked. Completion
+// is derived from cleared attempts (no separate progress table); an event is
+// available once all its prerequisites are completed. Scales as content grows.
+func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) ([]content.RouteNode, error) {
+	rows, err := r.pool.Query(ctx,
+		`SELECT id, title, tier, prerequisites FROM events
+		 WHERE delivery IN ('main_route','both') AND ($1 = '' OR profession = $1 OR profession = 'common')
+		 ORDER BY tier, id`, profession)
+	if err != nil {
+		return nil, err
+	}
+	type ev struct {
+		id, title string
+		tier      int
+		prereqs   []string
+	}
+	var evs []ev
+	for rows.Next() {
+		var e ev
+		var raw []byte
+		if err := rows.Scan(&e.id, &e.title, &e.tier, &raw); err != nil {
+			rows.Close()
+			return nil, err
+		}
+		if len(raw) > 0 {
+			_ = json.Unmarshal(raw, &e.prereqs)
+		}
+		evs = append(evs, e)
+	}
+	rows.Close()
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	// Representative entry scenario per event (lowest id).
+	scenByEvent := map[string]string{}
+	if srows, err := r.pool.Query(ctx,
+		`SELECT DISTINCT ON (event_id) event_id, id FROM scenarios ORDER BY event_id, id`); err == nil {
+		defer srows.Close()
+		for srows.Next() {
+			var eid, sid string
+			if srows.Scan(&eid, &sid) == nil {
+				scenByEvent[eid] = sid
+			}
+		}
+	}
+
+	// Events the user has completed (cleared any of their scenarios).
+	done := map[string]bool{}
+	if crows, err := r.pool.Query(ctx,
+		`SELECT DISTINCT s.event_id FROM scenario_attempts a JOIN scenarios s ON s.id = a.scenario_id
+		 WHERE a.user_id = $1 AND a.state = 'cleared'`, userID); err == nil {
+		defer crows.Close()
+		for crows.Next() {
+			var eid string
+			if crows.Scan(&eid) == nil {
+				done[eid] = true
+			}
+		}
+	}
+
+	out := make([]content.RouteNode, 0, len(evs))
+	for _, e := range evs {
+		state := "available"
+		if done[e.id] {
+			state = "completed"
+		} else {
+			for _, p := range e.prereqs {
+				if !done[p] {
+					state = "locked"
+					break
+				}
+			}
+		}
+		out = append(out, content.RouteNode{
+			EventID: e.id, Title: e.title, Tier: e.tier, State: state,
+			ScenarioID: scenByEvent[e.id], Prerequisites: e.prereqs,
+		})
+	}
+	return out, nil
+}
+
 // boardCardFromRow builds a BoardCard from a board-scenario row (shared by the
 // global board and the personalized daily pool).
 func boardCardFromRow(s sqlc.ListBoardScenariosRow) content.BoardCard {

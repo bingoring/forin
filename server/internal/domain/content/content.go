@@ -240,6 +240,17 @@ type Req struct {
 	Threshold int    `yaml:"threshold" json:"threshold,omitempty"`
 }
 
+// RouteNode is one step of the main-route curriculum graph for a user: an event
+// with its unlock state derived from prerequisites + what the user has cleared.
+type RouteNode struct {
+	EventID       string   `json:"eventId"`
+	Title         string   `json:"title"`
+	Tier          int      `json:"tier"`
+	State         string   `json:"state"`                // locked | available | completed
+	ScenarioID    string   `json:"scenarioId,omitempty"` // entry scenario to launch
+	Prerequisites []string `json:"prerequisites,omitempty"`
+}
+
 // BoardCard is a compact scenario entry for the daily situation board — enough
 // to render a card and fast-travel to the scenario briefing.
 type BoardCard struct {
