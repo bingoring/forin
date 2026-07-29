@@ -6,6 +6,7 @@ import (
 	"errors"
 	mathrand "math/rand"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/ports"
 )
 
 // ContentRepo serves authored content and ingests bundles via sqlc.
@@ -278,9 +280,9 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 	}
 
 	// Return the persisted set if one exists for this local day.
-	if raw, err := r.q.GetDailyEventSet(ctx, userID, localDate); err == nil && len(raw) > 0 {
+	if set, err := r.q.GetDailyEventSet(ctx, userID, localDate); err == nil && len(set.ScenarioIds) > 0 {
 		var ids []string
-		if json.Unmarshal(raw, &ids) == nil {
+		if json.Unmarshal(set.ScenarioIds, &ids) == nil {
 			out := make([]content.BoardCard, 0, len(ids))
 			for _, id := range ids {
 				if s, ok := byID[id]; ok {
@@ -318,6 +320,77 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 		}
 	}
 	return out, nil
+}
+
+// TopUpDailyPool appends `add` fresh weighted scenarios to today's set in exchange
+// for a rewarded-ad view, up to `cap` grants/day. Returns the grown set, the new
+// grant count, and ErrDailyCapReached when the cap is already spent.
+func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, localDate string, add, cap int) ([]content.BoardCard, int, error) {
+	set, err := r.q.GetDailyEventSet(ctx, userID, localDate)
+	if errors.Is(err, pgx.ErrNoRows) {
+		// No base set yet — build one first, then this call becomes the top-up.
+		if _, e := r.DailyPool(ctx, userID, profession, localDate, 12); e != nil {
+			return nil, 0, e
+		}
+		set, err = r.q.GetDailyEventSet(ctx, userID, localDate)
+	}
+	if err != nil {
+		return nil, 0, err
+	}
+	if set.AdGrants >= cap {
+		return nil, set.AdGrants, ports.ErrDailyCapReached
+	}
+
+	var ids []string
+	_ = json.Unmarshal(set.ScenarioIds, &ids)
+	have := map[string]bool{}
+	for _, id := range ids {
+		have[id] = true
+	}
+
+	rows, err := r.q.ListBoardScenarios(ctx, profession)
+	if err != nil {
+		return nil, 0, err
+	}
+	byID := make(map[string]sqlc.ListBoardScenariosRow, len(rows))
+	fresh := make([]sqlc.ListBoardScenariosRow, 0, len(rows))
+	for _, s := range rows {
+		byID[s.ID] = s
+		if !have[s.ID] {
+			fresh = append(fresh, s)
+		}
+	}
+
+	level := 1
+	_ = r.pool.QueryRow(ctx, `SELECT level FROM user_progress WHERE user_id = $1`, userID).Scan(&level)
+	cleared := map[string]bool{}
+	if crows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
+		defer crows.Close()
+		for crows.Next() {
+			var id string
+			if crows.Scan(&id) == nil {
+				cleared[id] = true
+			}
+		}
+	}
+
+	grant := set.AdGrants + 1
+	// Vary the seed per grant so repeated top-ups don't resample the same ids.
+	picked := sampleDailyPool(fresh, level, cleared, localDate+userID+"topup"+strconv.Itoa(grant), add)
+	ids = append(ids, picked...)
+
+	payload, _ := json.Marshal(ids)
+	if err := r.q.UpdateDailyEventSet(ctx, sqlc.UpdateDailyEventSetParams{
+		UserID: userID, LocalDate: localDate, ScenarioIds: payload, AdGrants: grant}); err != nil {
+		return nil, 0, err
+	}
+	out := make([]content.BoardCard, 0, len(ids))
+	for _, id := range ids {
+		if s, ok := byID[id]; ok {
+			out = append(out, boardCardFromRow(s))
+		}
+	}
+	return out, grant, nil
 }
 
 // sampleDailyPool picks `limit` scenario ids by weighted sampling-without-

@@ -312,6 +312,21 @@ export const api = {
     return (data as { scenarios: BoardCard[] }).scenarios ?? [];
   },
 
+  /** Rewarded-ad top-up: adds fresh scenarios to today's pool (up to a daily cap).
+   *  Throws with `capReached: true` when the daily cap is spent (HTTP 429). */
+  async topUpDailyBoard(profession = 'nurse'): Promise<{ scenarios: BoardCard[]; adGrants: number; cap: number }> {
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    try {
+      const { data } = await http.post('/me/daily-board/topup', null, { params: { profession, ...(tz ? { tz } : {}) } });
+      return data as { scenarios: BoardCard[]; adGrants: number; cap: number };
+    } catch (e) {
+      const err = e as { response?: { status?: number } };
+      if (err.response?.status === 429) throw Object.assign(new Error('cap'), { capReached: true });
+      throw e;
+    }
+  },
+
   /** Assess pronunciation of recorded audio (base64 16kHz mono WAV) vs a reference. */
   /** Transcribe recorded audio to text (dictation, Azure STT). */
   async transcribe(audioBase64: string): Promise<string> {

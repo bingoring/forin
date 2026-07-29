@@ -412,20 +412,41 @@ func (q *Queries) ListEvents(ctx context.Context, dollar_1 interface{}) ([]Event
 }
 
 const getDailyEventSet = `-- name: GetDailyEventSet :one
-SELECT scenario_ids FROM daily_event_sets WHERE user_id = $1 AND local_date = $2
+SELECT scenario_ids, ad_grants FROM daily_event_sets WHERE user_id = $1 AND local_date = $2
 `
 
-func (q *Queries) GetDailyEventSet(ctx context.Context, userID string, localDate string) ([]byte, error) {
+type GetDailyEventSetRow struct {
+	ScenarioIds []byte `json:"scenario_ids"`
+	AdGrants    int    `json:"ad_grants"`
+}
+
+func (q *Queries) GetDailyEventSet(ctx context.Context, userID string, localDate string) (GetDailyEventSetRow, error) {
 	row := q.db.QueryRow(ctx, getDailyEventSet, userID, localDate)
-	var scenarioIds []byte
-	err := row.Scan(&scenarioIds)
-	return scenarioIds, err
+	var i GetDailyEventSetRow
+	err := row.Scan(&i.ScenarioIds, &i.AdGrants)
+	return i, err
 }
 
 const insertDailyEventSet = `-- name: InsertDailyEventSet :exec
 INSERT INTO daily_event_sets (user_id, local_date, scenario_ids) VALUES ($1, $2, $3)
 ON CONFLICT (user_id, local_date) DO NOTHING
 `
+
+const updateDailyEventSet = `-- name: UpdateDailyEventSet :exec
+UPDATE daily_event_sets SET scenario_ids = $3, ad_grants = $4 WHERE user_id = $1 AND local_date = $2
+`
+
+type UpdateDailyEventSetParams struct {
+	UserID      string `json:"user_id"`
+	LocalDate   string `json:"local_date"`
+	ScenarioIds []byte `json:"scenario_ids"`
+	AdGrants    int    `json:"ad_grants"`
+}
+
+func (q *Queries) UpdateDailyEventSet(ctx context.Context, arg UpdateDailyEventSetParams) error {
+	_, err := q.db.Exec(ctx, updateDailyEventSet, arg.UserID, arg.LocalDate, arg.ScenarioIds, arg.AdGrants)
+	return err
+}
 
 type InsertDailyEventSetParams struct {
 	UserID      string `json:"user_id"`

@@ -4,12 +4,16 @@ package ports
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/user"
 )
+
+// ErrDailyCapReached signals the user has spent all of today's rewarded-ad top-up grants.
+var ErrDailyCapReached = errors.New("daily ad-grant cap reached")
 
 // ProgressRepo reads/updates user growth.
 type ProgressRepo interface {
@@ -127,6 +131,9 @@ type ContentReader interface {
 	// DailyPool returns the user's personalized daily situation set (DailyEventSet):
 	// weighted, persisted, and reset at 00:00 in the user's timezone (via localDate).
 	DailyPool(ctx context.Context, userID, profession, localDate string, limit int) ([]content.BoardCard, error)
+	// TopUpDailyPool appends `add` fresh scenarios (rewarded ad) up to `cap` grants/
+	// day; returns the grown set + new grant count (ErrDailyCapReached when spent).
+	TopUpDailyPool(ctx context.Context, userID, profession, localDate string, add, cap int) ([]content.BoardCard, int, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

@@ -1,11 +1,18 @@
 package http
 
 import (
+	"errors"
 	"net/http"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
+)
+
+// Rewarded-ad daily-pool top-up tuning (code-side, not hardcoded per-call).
+const (
+	topUpAdd = 3 // scenarios added per rewarded-ad view
+	topUpCap = 3 // rewarded top-ups allowed per local day
 )
 
 type contentHandler struct{ content ports.ContentReader }
@@ -129,4 +136,33 @@ func (h *contentHandler) dailyBoard(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards})
+}
+
+// @Summary Rewarded-ad top-up of today's daily pool (+N, up to a daily cap)
+// @Tags content
+// @Security Bearer
+// @Router /me/daily-board/topup [post]
+func (h *contentHandler) dailyBoardTopUp(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	loc := time.UTC
+	if tz := r.URL.Query().Get("tz"); tz != "" {
+		if l, err := time.LoadLocation(tz); err == nil {
+			loc = l
+		}
+	}
+	localDate := time.Now().In(loc).Format("2006-01-02")
+	cards, grants, err := h.content.TopUpDailyPool(r.Context(), uid, r.URL.Query().Get("profession"), localDate, topUpAdd, topUpCap)
+	if errors.Is(err, ports.ErrDailyCapReached) {
+		httpx.Error(w, http.StatusTooManyRequests, "오늘의 광고 보상을 모두 받았어요")
+		return
+	}
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not top up daily board")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"scenarios": cards, "adGrants": grants, "cap": topUpCap})
 }

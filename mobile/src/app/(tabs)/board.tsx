@@ -6,7 +6,7 @@
 // difficulty meter · title · NPC · tagline · skill chips · time · action rail).
 // The summary + filter bar stay pinned at the top while the sections scroll.
 import { useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
@@ -55,6 +55,31 @@ export default function Board() {
   const [cards, setCards] = useState<BoardCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [filter, setFilter] = useState('ALL');
+  const [adPlaying, setAdPlaying] = useState(false);
+  const [topping, setTopping] = useState(false);
+  const [capReached, setCapReached] = useState(false);
+
+  // Rewarded-ad stub: real SDK (react-native-google-mobile-ads) needs a dev build,
+  // so in Expo Go this simulates a short ad view. Swap for the SDK in production.
+  const watchAd = () => new Promise<void>((resolve) => {
+    setAdPlaying(true);
+    setTimeout(() => { setAdPlaying(false); resolve(); }, 1600);
+  });
+
+  const onTopUp = async () => {
+    if (topping || capReached) return;
+    setTopping(true);
+    await watchAd();
+    try {
+      const r = await api.topUpDailyBoard();
+      setCards(r.scenarios);
+      if (r.adGrants >= r.cap) setCapReached(true);
+    } catch (e) {
+      if ((e as { capReached?: boolean }).capReached) setCapReached(true);
+    } finally {
+      setTopping(false);
+    }
+  };
 
   useEffect(() => {
     let alive = true;
@@ -165,6 +190,20 @@ export default function Board() {
           </View>
         )}
 
+        {/* rewarded-ad top-up — open extra situations when the board runs dry */}
+        {filter === 'ALL' && (
+          <Shadowed offset={4} shadowColor={capReached ? C + '33' : colors.yellowShadow}>
+            <Pressable onPress={onTopUp} disabled={topping || capReached} style={{ backgroundColor: capReached ? colors.paper : colors.yellow, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <Text style={{ fontSize: 26 }}>{capReached ? '✅' : '🎬'}</Text>
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{capReached ? '오늘의 보상을 다 받았어요' : '광고 보고 새 상황 3건 열기'}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: capReached ? colors.textSoft : C, marginTop: 3, lineHeight: 15 }}>{capReached ? '자정이 지나면 새로운 현장이 열려요.' : '현장이 잠잠한가요? 짧은 광고를 보고 시나리오를 더 받아요.'}</Text>
+              </View>
+              {topping ? <ActivityIndicator color={C} /> : !capReached && <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C }}>▶</Text>}
+            </Pressable>
+          </Shadowed>
+        )}
+
         {/* daily rotation note */}
         <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>
@@ -172,6 +211,16 @@ export default function Board() {
           </Text>
         </View>
       </ScrollView>
+
+      {/* rewarded-ad stub overlay */}
+      <Modal visible={adPlaying} transparent animationType="fade">
+        <View style={{ flex: 1, backgroundColor: '#000A', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+          <Text style={{ fontSize: 40 }}>🎬</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: '#fff' }}>광고 시청 중…</Text>
+          <ActivityIndicator color="#fff" />
+          <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#fff', opacity: 0.7 }}>(개발 모드 · 실제 광고는 dev build 필요)</Text>
+        </View>
+      </Modal>
     </View>
   );
 }
