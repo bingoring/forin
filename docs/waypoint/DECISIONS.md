@@ -1167,3 +1167,10 @@
 - **API**: `GET /me/daily-board?tz=&profession=`(authed, 12건). 모바일 board.tsx가 `api.dailyBoard()` 사용, 실패 시 `boardToday`(전역)로 폴백.
 - **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(12건·하루 내 동일=영속·dept≤2·삭제후 재샘플 동일=결정적·Seoul[07-29] vs Pacific[07-28] 다른 세트=로컬 리셋) · 시뮬레이터(상황판 12건 렌더).
 - **남음**: 소진 시 RewardedAdGrant +N(상한) — 다음. 메인 루트 그래프도 별도.
+
+## 2026-07-29 — 보상형 광고 top-up (RewardedAdGrant, 2-7)
+DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스펙 RewardedAdGrant.
+- **서버**: migration 000016 `daily_event_sets.ad_grants`. `POST /me/daily-board/topup?tz=` → 오늘 세트에 가중 샘플 +3(세트에 없는 것 중, top-up 시드로 매번 다르게) append, ad_grants++. 일일 상한 3회(코드측 상수 topUpAdd=3·topUpCap=3, 하드코딩 아님). 상한 초과 → `ports.ErrDailyCapReached` → HTTP 429. sqlc GetDailyEventSet(+ad_grants)·UpdateDailyEventSet.
+- **모바일**: board 하단 "🎬 광고 보고 새 상황 3건 열기" 버튼 → 보상형 광고 **스텁**(Expo Go용, 실제 SDK는 dev build 후속) → `api.topUpDailyBoard()` → 카드 갱신. 상한 도달 시 "오늘의 보상을 다 받았어요"로 비활성. 429는 capReached로 처리.
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(12→15→18→21건, ad_grants 1/2/3, 4회차 429) · 시뮬레이터(top-up 버튼 렌더).
+- **메모**: 실제 AdMob 연동(react-native-google-mobile-ads, dev build), board '완료' 카운터 실집계는 후속.
