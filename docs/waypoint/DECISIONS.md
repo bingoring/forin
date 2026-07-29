@@ -1174,3 +1174,10 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **모바일**: board 하단 "🎬 광고 보고 새 상황 3건 열기" 버튼 → 보상형 광고 **스텁**(Expo Go용, 실제 SDK는 dev build 후속) → `api.topUpDailyBoard()` → 카드 갱신. 상한 도달 시 "오늘의 보상을 다 받았어요"로 비활성. 429는 capReached로 처리.
 - **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(12→15→18→21건, ad_grants 1/2/3, 4회차 429) · 시뮬레이터(top-up 버튼 렌더).
 - **메모**: 실제 AdMob 연동(react-native-google-mobile-ads, dev build), board '완료' 카운터 실집계는 후속.
+
+## 2026-07-29 — 경제 수치 설정 테이블화 (하드코딩 제거, 2-7)
+흩어진 경제 상수를 단일 소스로 중앙화(스펙: "코드측 허용집합 + 설정 테이블, 하드코딩 금지").
+- **서버 권위 단일 소스**: `internal/economy` 패키지 `Economy` 구조체 + `Default()` + `var Active`. XP/레벨·랭크 임계·평판(기본값·밴드·칭호 넛지)·SM-2(ease·간격·mastery cap)·일일 풀(크기·dept 캡·가중)·top-up(add·cap) 전부 필드로.
+- **소비처 리팩터**: progress.Review(SM-2)·engine.reputationDisposition(밴드·warm 넛지)·content_repo.DailyPool/sampleDailyPool(크기·캡·가중·레벨밴드)·content_handler(daily size·topup)·progress_repo.defaults(평판 기본값)가 `economy.Active`에서 읽음. (레벨 공식 `1+xp/100`는 SQL 구조라 유지, XPPerLevel=100 주석 참조.)
+- **클라 미러**: `GET /config/economy`로 노출. 모바일 `src/data/economy.ts`(ECON 번들 기본값 + `hydrateEconomy` 부팅 시 서버에서 덮어씀 = 서버 권위, 오프라인 폴백). me/growth/result의 XP_PER_LEVEL·careerOf/careerTitle(→`careerFor`)·baseXp 기본값을 ECON으로 교체. 뱃지/칭호/미션 임계는 디자인 카탈로그로 유지.
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · `GET /config/economy` 21필드 반환 · 시뮬레이터(레벨·랭크·XP바 회귀 없음).
