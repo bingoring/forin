@@ -146,6 +146,8 @@ type UserRepo interface {
 	GetProfile(ctx context.Context, userID string) (*user.Profile, error)
 	// UpdateProfile upserts onboarding-derived profile fields and marks onboarded.
 	UpdateProfile(ctx context.Context, p user.Profile) error
+	// SetEquippedTitle persists the user's equipped career title.
+	SetEquippedTitle(ctx context.Context, userID, titleID string) error
 }
 
 // RefreshStore stores hashed refresh tokens with TTL and supports rotation.

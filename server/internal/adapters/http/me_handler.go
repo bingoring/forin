@@ -92,3 +92,47 @@ func orDefault(v, def string) string {
 	}
 	return v
 }
+
+// allowedTitles is the code-side set of equippable career title ids (extensible,
+// no DB constraint). "" un-equips. Kept in sync with the mobile title catalog.
+var allowedTitles = map[string]bool{
+	"": true, "learner": true, "ward_friend": true, "diligent": true,
+	"er_ace": true, "polyglot": true, "hidden_hero": true,
+}
+
+type titleReq struct {
+	TitleID string `json:"titleId"`
+}
+
+// @Summary Equip a career title
+// @Tags user
+// @Security Bearer
+// @Param body body titleReq true "title id ('' to un-equip)"
+// @Success 200 {object} user.Profile
+// @Router /me/title [patch]
+func (h *meHandler) equipTitle(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	var req titleReq
+	if err := httpx.DecodeJSON(r, &req); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid body")
+		return
+	}
+	if !allowedTitles[req.TitleID] {
+		httpx.Error(w, http.StatusBadRequest, "unknown title")
+		return
+	}
+	if err := h.users.SetEquippedTitle(r.Context(), uid, req.TitleID); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not equip title")
+		return
+	}
+	saved, err := h.users.GetProfile(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, saved)
+}

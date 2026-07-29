@@ -102,9 +102,10 @@ type Profile struct {
 	NativeLang  string             `json:"native_lang"`
 	Destination string             `json:"destination"`
 	TargetLevel string             `json:"target_level"`
-	UpdatedAt   pgtype.Timestamptz `json:"updated_at"`
-	TargetLang  string             `json:"target_lang"`
-	Onboarded   bool               `json:"onboarded"`
+	UpdatedAt     pgtype.Timestamptz `json:"updated_at"`
+	TargetLang    string             `json:"target_lang"`
+	Onboarded     bool               `json:"onboarded"`
+	EquippedTitle string             `json:"equipped_title"`
 }
 
 type Quiz struct {

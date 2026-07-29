@@ -42,17 +42,18 @@ func (q *Queries) CreateUser(ctx context.Context, status string) (User, error) {
 }
 
 const getProfile = `-- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded FROM profiles WHERE user_id = $1
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title FROM profiles WHERE user_id = $1
 `
 
 type GetProfileRow struct {
-	UserID      string `json:"user_id"`
-	Job         string `json:"job"`
-	NativeLang  string `json:"native_lang"`
-	TargetLang  string `json:"target_lang"`
-	Destination string `json:"destination"`
-	TargetLevel string `json:"target_level"`
-	Onboarded   bool   `json:"onboarded"`
+	UserID        string `json:"user_id"`
+	Job           string `json:"job"`
+	NativeLang    string `json:"native_lang"`
+	TargetLang    string `json:"target_lang"`
+	Destination   string `json:"destination"`
+	TargetLevel   string `json:"target_level"`
+	Onboarded     bool   `json:"onboarded"`
+	EquippedTitle string `json:"equipped_title"`
 }
 
 func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow, error) {
@@ -66,8 +67,24 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 		&i.Destination,
 		&i.TargetLevel,
 		&i.Onboarded,
+		&i.EquippedTitle,
 	)
 	return i, err
+}
+
+const setEquippedTitle = `-- name: SetEquippedTitle :exec
+INSERT INTO profiles (user_id, equipped_title, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET equipped_title = $2, updated_at = now()
+`
+
+type SetEquippedTitleParams struct {
+	UserID        string `json:"user_id"`
+	EquippedTitle string `json:"equipped_title"`
+}
+
+func (q *Queries) SetEquippedTitle(ctx context.Context, arg SetEquippedTitleParams) error {
+	_, err := q.db.Exec(ctx, setEquippedTitle, arg.UserID, arg.EquippedTitle)
+	return err
 }
 
 const upsertProfile = `-- name: UpsertProfile :exec

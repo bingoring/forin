@@ -11,6 +11,7 @@ import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { FacePlayer } from '@engine';
 import { api, type Progress } from '@/api/client';
 import { earnedBadges } from '@/data/badges';
+import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -29,6 +30,8 @@ export default function Me() {
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [enLevel, setEnLevel] = useState<string>('');
+  const [scenariosTotal, setScenariosTotal] = useState(0);
+  const [equipped, setEquipped] = useState<string>('');
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [sheet, setSheet] = useState<InfoSheetData | null>(null);
 
@@ -37,10 +40,13 @@ export default function Me() {
       let alive = true;
       (async () => {
         try {
-          const [p, me] = await Promise.all([api.progress(), api.me().catch(() => null)]);
+          const [p, me, stats] = await Promise.all([api.progress(), api.me().catch(() => null), api.growthStats().catch(() => null)]);
           if (!alive) return;
           setProgress(p);
-          setEnLevel(((me as { profile?: { targetLevel?: string } } | null)?.profile?.targetLevel) || '');
+          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string } } | null)?.profile;
+          setEnLevel(prof?.targetLevel || '');
+          setEquipped(prof?.equippedTitle || '');
+          setScenariosTotal(stats?.scenariosTotal ?? 0);
           setState('ok');
         } catch {
           if (alive) setState('error');
@@ -49,6 +55,12 @@ export default function Me() {
       return () => { alive = false; };
     }, []),
   );
+
+  const equip = async (titleId: string) => {
+    setEquipped(titleId); // optimistic
+    setSheet(null);
+    try { await api.equipTitle(titleId); } catch { /* best-effort; refreshes on next focus */ }
+  };
 
   if (state !== 'ok' || !progress) {
     return (
@@ -65,6 +77,38 @@ export default function Me() {
   const badges = earnedBadges({ xp, level, streakLongest });
   const gotCount = badges.filter((b) => b.got).length;
   const BADGE_TOTAL = 24; // full career-badge pool (handoff shows collection vs 24)
+
+  const growth: GrowthInput = { level, xp, streakLongest, patientSatisfaction, peerTrust, emergencyResponse, scenariosTotal };
+  const titles = earnedTitles(growth);
+  const found = foundMissions(growth);
+  const foundIds = new Set(found.map((m) => m.id));
+  const equippedTitle = titleById(equipped);
+
+  // open a title detail sheet, with an 장착/장착 해제 action when earned
+  const openTitle = (id: string) => {
+    const tdef = titles.find((x) => x.id === id);
+    if (!tdef) return;
+    const isEquipped = equipped === id;
+    setSheet({
+      icon: tdef.emoji, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? tdef.name : '???',
+      status: { label: isEquipped ? '● 장착 중' : tdef.got ? '✓ 보유' : '🔒 미보유', bg: isEquipped ? colors.yellow : tdef.got ? colors.mint : colors.cream },
+      what: tdef.got ? tdef.desc + (tdef.effect ? `\n\n✨ 효과: ${tdef.effect}` : '') : '아직 보유하지 않은 칭호예요.',
+      how: tdef.how,
+      action: tdef.got ? { label: isEquipped ? '장착 해제' : '장착하기', bg: isEquipped ? '#fff' : colors.yellow, onPress: () => equip(isEquipped ? '' : id) } : undefined,
+    });
+  };
+
+  const openMission = (id: string) => {
+    const m = MISSIONS.find((x) => x.id === id);
+    if (!m) return;
+    const done = foundIds.has(id);
+    setSheet({
+      icon: done ? '🎉' : '❔', iconBg: done ? colors.mint : colors.cream, title: done ? m.name : '숨겨진 미션',
+      status: { label: done ? '✓ 발견!' : '🔒 미발견', bg: done ? colors.mint : colors.cream },
+      what: done ? `히든 미션 '${m.name}'을 발견했어요!` : `힌트: ${m.hint}`,
+      how: `보상: ${m.reward}`,
+    });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
@@ -91,6 +135,12 @@ export default function Me() {
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>RANK</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C }}>{career.label}</Text>
+                {!!equippedTitle && (
+                  <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
+                    <Text style={{ fontSize: 10 }}>{equippedTitle.emoji}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{equippedTitle.name}</Text>
+                  </View>
+                )}
                 <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 2 }}>EN-US · 미국 종합병원</Text>
                 {/* xp bar */}
                 <View style={{ marginTop: 10 }}>
@@ -187,6 +237,54 @@ export default function Me() {
                         <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: '#fff' }}>NEW</Text>
                       </View>
                     )}
+                  </Pressable>
+                </Shadowed>
+              );
+            })}
+          </View>
+        </View>
+
+        {/* titles (칭호) — tap to view / equip */}
+        <View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🏷 칭호</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
+          </View>
+          <View style={{ gap: 8 }}>
+            {titles.map((tt) => {
+              const isEq = equipped === tt.id;
+              return (
+                <Shadowed key={tt.id} offset={tt.got ? 3 : 0} shadowColor={isEq ? colors.yellowShadow : C + '33'}>
+                  <Pressable onPress={() => openTitle(tt.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream, borderWidth: isEq ? 3 : 2, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
+                    <Text style={{ fontSize: 22, opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>
+                    <View style={{ flex: 1 }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: tt.got ? C : colors.textFaint }}>{tt.got ? tt.name : '???'}{tt.warm ? ' ✨' : ''}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>{tt.got ? tt.desc : tt.how}</Text>
+                    </View>
+                    {isEq
+                      ? <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>장착</Text></View>
+                      : tt.got && <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>▶</Text>}
+                  </Pressable>
+                </Shadowed>
+              );
+            })}
+          </View>
+        </View>
+
+        {/* hidden missions (히든미션) — hint until discovered */}
+        <View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🔍 히든 미션</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{found.length} / {MISSIONS.length}</Text>
+          </View>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {MISSIONS.map((m) => {
+              const done = foundIds.has(m.id);
+              return (
+                <Shadowed key={m.id} offset={done ? 3 : 0} shadowColor={done ? colors.mintShadow : C + '33'} style={{ width: '31.5%' }}>
+                  <Pressable onPress={() => openMission(m.id)} style={{ aspectRatio: 1, borderWidth: done ? 3 : 2, borderColor: C, backgroundColor: done ? colors.mint : colors.cream, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 }}>
+                    <Text style={{ fontSize: 22 }}>{done ? '🎉' : '❔'}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: 8, color: done ? C : colors.textFaint, marginTop: 3, textAlign: 'center' }}>{done ? m.name : '???'}</Text>
                   </Pressable>
                 </Shadowed>
               );

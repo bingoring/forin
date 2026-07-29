@@ -13,6 +13,7 @@ export type InfoSheetData = {
   what?: string; // 무엇인지
   how?: string; // 어떻게 얻는지 (조건)
   iconBg?: string;
+  action?: { label: string; bg?: string; onPress: () => void }; // optional primary action (e.g. 장착)
 };
 
 export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClose: () => void }) {
@@ -51,7 +52,12 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
             </View>
           )}
 
-          <Pressable onPress={onClose} style={{ marginTop: 4, alignSelf: 'stretch', backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
+          {!!data?.action && (
+            <Pressable onPress={data.action.onPress} style={{ marginTop: 4, alignSelf: 'stretch', backgroundColor: data.action.bg || colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 11, alignItems: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{data.action.label}</Text>
+            </Pressable>
+          )}
+          <Pressable onPress={onClose} style={{ marginTop: data?.action ? 8 : 4, alignSelf: 'stretch', backgroundColor: data?.action ? '#fff' : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>닫기</Text>
           </Pressable>
         </Pressable>

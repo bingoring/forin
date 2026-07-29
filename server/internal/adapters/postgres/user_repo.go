@@ -76,7 +76,13 @@ func (r *UserRepo) GetProfile(ctx context.Context, userID string) (*user.Profile
 	return &user.Profile{
 		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
 		Destination: p.Destination, TargetLevel: p.TargetLevel, Onboarded: p.Onboarded,
+		EquippedTitle: p.EquippedTitle,
 	}, nil
+}
+
+// SetEquippedTitle persists the user's currently-equipped career title.
+func (r *UserRepo) SetEquippedTitle(ctx context.Context, userID, titleID string) error {
+	return r.q.SetEquippedTitle(ctx, sqlc.SetEquippedTitleParams{UserID: userID, EquippedTitle: titleID})
 }
 
 // UpdateProfile upserts the onboarding-derived profile and marks it onboarded.

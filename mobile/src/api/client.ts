@@ -213,6 +213,12 @@ export const api = {
     return data as { onboarded: boolean };
   },
 
+  /** Equip a career title ('' un-equips); returns the updated profile. */
+  async equipTitle(titleId: string): Promise<{ equippedTitle: string }> {
+    const { data } = await http.patch('/me/title', { titleId });
+    return data as { equippedTitle: string };
+  },
+
   /** Current growth snapshot (XP, level, streak, stats). */
   async progress(): Promise<Progress> {
     const { data } = await http.get('/me/progress');
