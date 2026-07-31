@@ -1204,3 +1204,11 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **부서 상세 시트**(Modal 바텀시트): 헤더(아이콘/이름/위치·영문/×) + 3 스탯 타일 + 이 부서의 커리큘럼(민트+이어하기) + 이 부서의 상황(긴급/신규/완료 카드) + 스티키 푸터(다음 상황 시작 / 🎮 걸어보기).
 - **데이터**: `src/data/campus.ts`(CURRICULUM·STEP_META·BLD·deptFor) 번들(프로토타입처럼 authored). CTA(이어하기/시작)는 실제 시나리오(SCN-ER-*)로 연결. 헤더 Lv/streak는 실데이터(me.targetLevel·progress.streakCurrent). ER 1F는 풀 저작(showcase), 타 층은 "준비 중" 시트. 서버 주도화 여지 남김.
 - 검증: tsc 0 · jest 208/208 · 시뮬레이터(커리큘럼·건물층·부서시트 3화면 렌더).
+
+## 2026-07-31 — 서버 커리큘럼 챕터/스텝 모델 정렬
+캠퍼스 v19 커리큘럼(챕터>스텝)을 클라 번들 → **서버 주도**로 이관. economy 패턴(코드측 카탈로그 + 파생, 마이그레이션 불필요).
+- **서버 `internal/curriculum`**: Chapter/Step 카탈로그(v19 데이터) + `Resolve(cleared)`. 스텝 done = 매핑 시나리오 클리어, now = 잠금 아닌 챕터의 첫 미완료 스텝, lock = 그 뒤. 챕터 done = 전 스텝 done, now = 이전 챕터 done(prereq 체인), else lock. Ch.1–2는 실제 ER 시나리오(SCN-ER-00001..00011)에 스텝 매핑, Ch.3–5는 메타데이터만(lock).
+- **진행 파생**: `ProgressRepo.ClearedScenarioIDs`(scenario_attempts). `GET /me/curriculum`(progressHandler) → 사용자별 챕터/스텝 상태.
+- **클라**: `api.curriculum()` + `CurriculumChapter/Step` 타입. campus.tsx 커리큘럼 탭이 서버 데이터로 렌더(히어로=now 챕터, 타임라인=그 스텝, 로드맵=전 챕터), 로딩/오프라인 시 번들 fallback. 이어하기/NOW 스텝 탭 → now 스텝의 실 시나리오 briefing.
+- **부서 상세 시트**: 여전히 번들 deptFor(ER showcase) — 후속 정렬 여지.
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(fresh: CH1 now·나머지 lock → ER1~6 클리어 시 CH1 done(5/5)·CH2 now(1/6, 다음=통증 사정 표현)·CH3~5 lock) · 시뮬레이터(실 진행 반영).
