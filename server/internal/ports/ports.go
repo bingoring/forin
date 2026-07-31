@@ -138,6 +138,9 @@ type ContentReader interface {
 	TopUpDailyPool(ctx context.Context, userID, profession, localDate string, add, cap int) ([]content.BoardCard, int, error)
 	// MainRoute computes the user's curriculum path (events + unlock states).
 	MainRoute(ctx context.Context, userID, profession string) ([]content.RouteNode, error)
+	// DeptSituations lists a department's scenarios as situation cards (tagged by
+	// difficulty + the user's cleared attempts).
+	DeptSituations(ctx context.Context, userID, dept string) ([]content.DeptSituation, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

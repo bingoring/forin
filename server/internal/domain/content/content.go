@@ -240,6 +240,18 @@ type Req struct {
 	Threshold int    `yaml:"threshold" json:"threshold,omitempty"`
 }
 
+// DeptSituation is one department-scoped scenario card (v19 campus dept sheet):
+// a scenario in a department with its learner-facing labels + cleared state.
+type DeptSituation struct {
+	ScenarioID string `json:"scenarioId"`
+	Name       string `json:"name"`
+	Room       string `json:"room,omitempty"`
+	Lv         string `json:"lv"`
+	Min        int    `json:"min"`
+	Tag        string `json:"tag"`    // 완료 | 긴급 | 신규
+	Urgent     bool   `json:"urgent"` // high difficulty
+}
+
 // RouteNode is one step of the main-route curriculum graph for a user: an event
 // with its unlock state derived from prerequisites + what the user has cleared.
 type RouteNode struct {

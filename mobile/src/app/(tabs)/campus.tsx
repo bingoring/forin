@@ -3,10 +3,10 @@
 // main line (이어하기 hero + chapter timeline + roadmap); 건물·층 browses places
 // (building accordions → floor tap opens a dept sheet). The tile-walk campus is
 // demoted to an opt-in ExploreDock. Axis split: 캠퍼스 = 장소·커리큘럼, 상황판 = 시간·피드.
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { api, type Progress, type CurriculumChapter } from '@/api/client';
+import { api, type Progress, type CurriculumChapter, type DeptSituation } from '@/api/client';
 import {
   CURRICULUM, STEP_META, BLD, deptFor,
   type Building, type Floor, type DeptDetail,
@@ -247,6 +247,20 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
   // link this department to its server curriculum chapter (live progress).
   const chapter = dept?.chapterCh != null ? chapters.find((c) => c.ch === dept.chapterCh) : undefined;
   const chapterNowScn = chapter?.steps?.find((s) => s.state === 'now')?.scenarioId;
+
+  // live department situations (fall back to bundled when no dept code / offline).
+  const bundled: DeptSituation[] = (dept?.sits ?? []).map((s) => ({ scenarioId: s.scn ?? '', name: s.name, room: s.room, lv: s.lv, min: s.min, tag: s.tag, urgent: s.urg === 1 }));
+  const [sits, setSits] = useState<DeptSituation[]>(bundled);
+  useEffect(() => {
+    let alive = true;
+    setSits(bundled);
+    if (dept?.deptCode) {
+      api.deptSituations(dept.deptCode).then((s) => { if (alive && s.length) setSits(s); }).catch(() => {});
+    }
+    return () => { alive = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dept?.deptCode, dept?.name]);
+
   return (
     <Modal visible={!!dept} transparent animationType="slide" onRequestClose={onClose}>
       <Pressable onPress={onClose} style={{ flex: 1, backgroundColor: '#000A' }} />
@@ -306,27 +320,27 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
               </View>
             )}
 
-            {/* 이 부서의 상황 */}
+            {/* 이 부서의 상황 — server-driven (dept-scoped, tagged by cleared) */}
             <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 이 부서의 상황 ━━━━━━</Text>
-            {dept.sits.length === 0 && (
+            {sits.length === 0 && (
               <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, textAlign: 'center', paddingVertical: 14 }}>준비 중인 상황이에요.</Text>
             )}
-            {dept.sits.map((s, i) => {
-              const urgent = s.urg === 1, done = s.tag === '완료';
+            {sits.map((s, i) => {
+              const done = s.tag === '완료';
               return (
                 <Shadowed key={i} offset={2.5} style={{ marginBottom: 8 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: urgent ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>
                     <View style={{ flex: 1, minWidth: 0 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-                        <View style={{ backgroundColor: done ? colors.mint : urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: urgent && !done ? colors.cream : C }}>{s.tag}</Text>
+                        <View style={{ backgroundColor: done ? colors.mint : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
                         </View>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: urgent ? C : colors.textSoft }}>{s.room}</Text>
+                        {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
                       </View>
                       <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 15 }}>{s.name}</Text>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
                     </View>
-                    <Pressable onPress={() => onStart(s.scn)} style={{ backgroundColor: done ? '#fff' : C, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 9 }}>
+                    <Pressable onPress={() => onStart(s.scenarioId)} style={{ backgroundColor: done ? '#fff' : C, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 9 }}>
                       <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: done ? C : colors.cream }}>{done ? '복습' : '시작'}</Text>
                     </Pressable>
                   </View>
@@ -338,7 +352,7 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
           {/* sticky footer */}
           <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: colors.cream, borderTopWidth: 3, borderTopColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', gap: 8 }}>
             <Shadowed offset={2.5} style={{ flex: 1 }}>
-              <Pressable onPress={() => onStart(dept.sits.find((x) => x.tag !== '완료')?.scn ?? chapterNowScn)} style={{ backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
+              <Pressable onPress={() => onStart(sits.find((x) => x.tag !== '완료')?.scenarioId ?? chapterNowScn)} style={{ backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.cream }}>▶ 다음 상황 시작</Text>
               </Pressable>
             </Shadowed>

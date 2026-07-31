@@ -319,6 +319,99 @@ func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) 
 	return out, nil
 }
 
+// DeptSituations lists a department's scenarios as situation cards (v19 dept
+// sheet), tagged 완료/긴급/신규 from difficulty + the user's cleared attempts.
+// Department = the id prefix (SCN-<DEPT>-*), so a new dept needs no new query.
+func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string) ([]content.DeptSituation, error) {
+	cleared := map[string]bool{}
+	if crows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
+		defer crows.Close()
+		for crows.Next() {
+			var id string
+			if crows.Scan(&id) == nil {
+				cleared[id] = true
+			}
+		}
+	}
+
+	rows, err := r.pool.Query(ctx,
+		`SELECT id, title, briefing FROM scenarios WHERE id LIKE $1 ORDER BY id LIMIT 8`,
+		"SCN-"+dept+"-%")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := []content.DeptSituation{}
+	for rows.Next() {
+		var id, title string
+		var briefing []byte
+		if err := rows.Scan(&id, &title, &briefing); err != nil {
+			return nil, err
+		}
+		s := content.DeptSituation{ScenarioID: id, Name: title, Lv: "B1", Min: 6}
+		diff := 2
+		if len(briefing) > 0 && string(briefing) != "{}" {
+			var b content.Briefing
+			unjson(briefing, &b)
+			if b.Difficulty > 0 {
+				diff = b.Difficulty
+			}
+			if b.Dept != "" {
+				s.Room = b.Dept
+			}
+			if m := minutesOf(b.TimeLabel); m > 0 {
+				s.Min = m
+			}
+		}
+		s.Lv = cefrForDifficulty(diff)
+		if s.Min == 6 {
+			s.Min = 4 + diff // fall back to a difficulty-based estimate
+		}
+		s.Urgent = diff >= 3
+		switch {
+		case cleared[id]:
+			s.Tag = "완료"
+		case s.Urgent:
+			s.Tag = "긴급"
+		default:
+			s.Tag = "신규"
+		}
+		out = append(out, s)
+	}
+	return out, rows.Err()
+}
+
+// cefrForDifficulty maps an authored difficulty (1..3) to a CEFR band for display.
+func cefrForDifficulty(diff int) string {
+	switch {
+	case diff <= 1:
+		return "A2"
+	case diff == 2:
+		return "B1"
+	default:
+		return "B2"
+	}
+}
+
+// minutesOf pulls a minute count out of a time label like "약 6분" / "6 min".
+func minutesOf(label string) int {
+	n, cur := 0, 0
+	found := false
+	for _, ch := range label {
+		if ch >= '0' && ch <= '9' {
+			cur = cur*10 + int(ch-'0')
+			found = true
+		} else if found {
+			n = cur
+			break
+		}
+	}
+	if found && n == 0 {
+		n = cur
+	}
+	return n
+}
+
 // boardCardFromRow builds a BoardCard from a board-scenario row (shared by the
 // global board and the personalized daily pool).
 func boardCardFromRow(s sqlc.ListBoardScenariosRow) content.BoardCard {

@@ -151,6 +151,12 @@ export interface BoardCard {
   difficulty?: number; room?: string; npcName?: string; npcSub?: string; skills?: string[]; timeLabel?: string;
 }
 
+// A department-scoped situation card (server: GET /me/situations?dept=).
+export interface DeptSituation {
+  scenarioId: string; name: string; room?: string;
+  lv: string; min: number; tag: string; urgent: boolean;
+}
+
 // Chapter/step curriculum with per-user progress (server: GET /me/curriculum).
 export interface CurriculumStep {
   kind: 'dlg' | 'quiz' | 'event' | 'boss';
@@ -326,6 +332,12 @@ export const api = {
   async boardToday(profession = 'nurse'): Promise<BoardCard[]> {
     const { data } = await http.get(`/board/today?profession=${profession}`);
     return (data as { scenarios: BoardCard[] }).scenarios ?? [];
+  },
+
+  /** Department situation cards (dept-scoped scenarios, tagged 완료/긴급/신규). */
+  async deptSituations(dept: string): Promise<DeptSituation[]> {
+    const { data } = await http.get('/me/situations', { params: { dept } });
+    return (data as { situations: DeptSituation[] }).situations ?? [];
   },
 
   /** Chapter/step curriculum with per-user progress (v19 campus hub). */

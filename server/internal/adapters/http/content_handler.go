@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -124,6 +125,29 @@ func (h *contentHandler) mainRoute(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	httpx.JSON(w, http.StatusOK, map[string]any{"nodes": nodes})
+}
+
+// @Summary Department situation cards (?dept=ER) — dept-scoped scenarios
+// @Tags content
+// @Security Bearer
+// @Router /me/situations [get]
+func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	dept := r.URL.Query().Get("dept")
+	if dept == "" {
+		httpx.JSON(w, http.StatusOK, map[string]any{"situations": []content.DeptSituation{}})
+		return
+	}
+	sits, err := h.content.DeptSituations(r.Context(), uid, dept)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load situations")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits})
 }
 
 // @Summary Economy config (single source of truth mirrored to the client)
