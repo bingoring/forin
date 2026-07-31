@@ -24,6 +24,8 @@ type ProgressRepo interface {
 	// the period lower bounds (already computed in tzName); ActiveDates are bucketed
 	// as calendar dates in tzName (an IANA zone, e.g. "Asia/Seoul") over the week.
 	GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time, tzName string) (*progress.GrowthStats, error)
+	// ClearedScenarioIDs returns the set of scenario ids the user has cleared.
+	ClearedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error)
 	// FoundMissions lists permanently-discovered hidden mission ids.
 	FoundMissions(ctx context.Context, userID string) ([]string, error)
 	// RecordMission permanently records a hidden-mission discovery (idempotent).

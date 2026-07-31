@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -17,6 +18,21 @@ type progressHandler struct {
 // allowedMissions is the code-side set of hidden-mission ids (extensible, no DB
 // constraint). Kept in sync with the mobile mission catalog.
 var allowedMissions = map[string]bool{"veteran": true, "iron_will": true, "beloved": true}
+
+// @Summary Chapter/step curriculum with per-user progress (v19 campus hub)
+// @Tags progress
+// @Security Bearer
+// @Success 200 {object} map[string][]curriculum.ChapterState
+// @Router /me/curriculum [get]
+func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	cleared, err := h.progress.ClearedScenarioIDs(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load curriculum")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"chapters": curriculum.Resolve(cleared)})
+}
 
 // @Summary Discovered hidden missions
 // @Tags progress

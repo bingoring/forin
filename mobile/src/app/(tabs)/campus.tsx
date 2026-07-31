@@ -6,12 +6,18 @@
 import { useCallback, useState } from 'react';
 import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { api, type Progress } from '@/api/client';
+import { api, type Progress, type CurriculumChapter } from '@/api/client';
 import {
   CURRICULUM, STEP_META, BLD, deptFor,
   type Building, type Floor, type DeptDetail,
 } from '@/data/campus';
 import { colors, fonts } from '@/theme/tokens';
+
+// Bundled fallback in server shape (used only while /me/curriculum is loading or offline).
+const FALLBACK_CHAPTERS: CurriculumChapter[] = CURRICULUM.map((c) => ({
+  ch: c.ch, name: c.name, dept: c.dept, done: c.done, total: c.total, state: c.state, next: c.next,
+  steps: c.steps?.map((s) => ({ kind: s.k, name: s.n, scenarioId: s.scn, state: s.s })),
+}));
 
 const C = colors.ink;
 
@@ -21,15 +27,21 @@ export default function Campus() {
   const [sheet, setSheet] = useState<DeptDetail | null>(null);
   const [enLevel, setEnLevel] = useState('B1');
   const [streak, setStreak] = useState(0);
+  const [chapters, setChapters] = useState<CurriculumChapter[]>(FALLBACK_CHAPTERS);
 
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      Promise.all([api.progress().catch(() => null), api.me().catch(() => null)]).then(([p, me]) => {
+      Promise.all([
+        api.progress().catch(() => null),
+        api.me().catch(() => null),
+        api.curriculum().catch(() => [] as CurriculumChapter[]),
+      ]).then(([p, me, chs]) => {
         if (!alive) return;
         if (p) setStreak((p as Progress).streakCurrent);
         const lv = (me as { profile?: { targetLevel?: string } } | null)?.profile?.targetLevel;
         if (lv) setEnLevel(lv);
+        if (chs.length) setChapters(chs);
       });
       return () => { alive = false; };
     }, []),
@@ -66,7 +78,7 @@ export default function Campus() {
       {/* ── scroll body ── */}
       <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 150 }}>
         {tab === 'curriculum'
-          ? <Curriculum onResume={openScenario} />
+          ? <Curriculum chapters={chapters} onResume={openScenario} />
           : <Buildings onFloor={(b, f) => setSheet(deptFor(b, f))} />}
       </ScrollView>
 
@@ -92,63 +104,70 @@ export default function Campus() {
 }
 
 // ══ TAB 1 · 커리큘럼 ════════════════════════════════════════════════
-function Curriculum({ onResume }: { onResume: (scn?: string) => void }) {
-  const cur = CURRICULUM[1];
+function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onResume: (scn?: string) => void }) {
+  const cur = chapters.find((c) => c.state === 'now') ?? chapters[0];
+  const nowStep = cur?.steps?.find((s) => s.state === 'now');
   return (
     <View>
       {/* 이어하기 hero */}
-      <View style={{ marginTop: 6, marginBottom: 15 }}>
-        <Shadowed offset={4} shadowColor={colors.mintShadow}>
-          <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 12 }}>
-            <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>MAIN CURRICULUM</Text>
+      {cur && (
+        <View style={{ marginTop: 6, marginBottom: 15 }}>
+          <Shadowed offset={4} shadowColor={colors.mintShadow}>
+            <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 12 }}>
+              <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>MAIN CURRICULUM</Text>
+              </View>
+              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, opacity: 0.75, marginTop: 2 }}>CHAPTER {cur.ch} · {cur.dept}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 4, marginBottom: 8 }}>{cur.name}</Text>
+              <ProgressBar done={cur.done} total={cur.total} />
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: C }}>다음 · {cur.next ?? '준비 중'}</Text>
+                <Pressable onPress={() => onResume(nowStep?.scenarioId)} style={{ backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 7, paddingHorizontal: 13 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 12.5, color: colors.cream }}>▶ 이어하기</Text>
+                </Pressable>
+              </View>
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, opacity: 0.75, marginTop: 2 }}>CHAPTER {cur.ch} · {cur.dept}</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 4, marginBottom: 8 }}>{cur.name}</Text>
-            <ProgressBar done={cur.done} total={cur.total} />
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
-              <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: C }}>다음 · {cur.next}</Text>
-              <Pressable onPress={() => onResume(cur.scn)} style={{ backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 7, paddingHorizontal: 13 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12.5, color: colors.cream }}>▶ 이어하기</Text>
-              </Pressable>
-            </View>
-          </View>
-        </Shadowed>
-      </View>
+          </Shadowed>
+        </View>
+      )}
 
       {/* chapter timeline */}
-      <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ CHAPTER {cur.ch} 진행 ━━━━━━</Text>
-      <View style={{ paddingLeft: 16, marginBottom: 17 }}>
-        <View style={{ position: 'absolute', left: 6, top: 8, bottom: 8, width: 3, backgroundColor: C + '22' }} />
-        {cur.steps!.map((s, i) => {
-          const m = STEP_META[s.k];
-          const bg = s.s === 'done' ? '#fff' : s.s === 'now' ? m.bg : C + '11';
-          const dot = s.s === 'done' ? colors.mintShadow : s.s === 'now' ? colors.yellowDeep : C + '33';
-          const inner = (
-            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: bg, borderWidth: 2.5, borderColor: s.s === 'lock' ? C + '55' : C, paddingVertical: 8, paddingHorizontal: 9, opacity: s.s === 'lock' ? 0.55 : 1 }}>
-              <Text style={{ fontSize: 14 }}>{s.s === 'lock' ? '🔒' : m.icon}</Text>
-              <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 15 }}>{s.n}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: colors.textSoft, marginTop: 2 }}>{m.label}</Text>
-              </View>
-              {s.s === 'done' && <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.mintShadow }}>✓</Text>}
-              {s.s === 'now' && <View style={{ backgroundColor: C, paddingVertical: 2, paddingHorizontal: 6 }}><Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>NOW</Text></View>}
-            </View>
-          );
-          return (
-            <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginBottom: 7 }}>
-              <View style={{ position: 'absolute', left: -14, width: 11, height: 11, borderRadius: 6, backgroundColor: dot, borderWidth: 2, borderColor: C }} />
-              {s.s === 'now'
-                ? <Pressable style={{ flex: 1, flexDirection: 'row' }} onPress={() => onResume(s.scn)}>{inner}</Pressable>
-                : inner}
-            </View>
-          );
-        })}
-      </View>
+      {cur?.steps && cur.steps.length > 0 && (
+        <>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ CHAPTER {cur.ch} 진행 ━━━━━━</Text>
+          <View style={{ paddingLeft: 16, marginBottom: 17 }}>
+            <View style={{ position: 'absolute', left: 6, top: 8, bottom: 8, width: 3, backgroundColor: C + '22' }} />
+            {cur.steps.map((s, i) => {
+              const m = STEP_META[s.kind];
+              const bg = s.state === 'done' ? '#fff' : s.state === 'now' ? m.bg : C + '11';
+              const dot = s.state === 'done' ? colors.mintShadow : s.state === 'now' ? colors.yellowDeep : C + '33';
+              const inner = (
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: bg, borderWidth: 2.5, borderColor: s.state === 'lock' ? C + '55' : C, paddingVertical: 8, paddingHorizontal: 9, opacity: s.state === 'lock' ? 0.55 : 1 }}>
+                  <Text style={{ fontSize: 14 }}>{s.state === 'lock' ? '🔒' : m.icon}</Text>
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 15 }}>{s.name}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: colors.textSoft, marginTop: 2 }}>{m.label}</Text>
+                  </View>
+                  {s.state === 'done' && <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.mintShadow }}>✓</Text>}
+                  {s.state === 'now' && <View style={{ backgroundColor: C, paddingVertical: 2, paddingHorizontal: 6 }}><Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>NOW</Text></View>}
+                </View>
+              );
+              return (
+                <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginBottom: 7 }}>
+                  <View style={{ position: 'absolute', left: -14, width: 11, height: 11, borderRadius: 6, backgroundColor: dot, borderWidth: 2, borderColor: C }} />
+                  {s.state === 'now'
+                    ? <Pressable style={{ flex: 1, flexDirection: 'row' }} onPress={() => onResume(s.scenarioId)}>{inner}</Pressable>
+                    : inner}
+                </View>
+              );
+            })}
+          </View>
+        </>
+      )}
 
       {/* full roadmap */}
       <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 전체 로드맵 ━━━━━━━━</Text>
-      {CURRICULUM.map((c, i) => {
+      {chapters.map((c, i) => {
         const lock = c.state === 'lock', now = c.state === 'now';
         return (
           <Shadowed key={i} offset={lock ? 0 : 2.5} style={{ marginBottom: 8 }}>

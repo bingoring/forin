@@ -151,6 +151,17 @@ export interface BoardCard {
   difficulty?: number; room?: string; npcName?: string; npcSub?: string; skills?: string[]; timeLabel?: string;
 }
 
+// Chapter/step curriculum with per-user progress (server: GET /me/curriculum).
+export interface CurriculumStep {
+  kind: 'dlg' | 'quiz' | 'event' | 'boss';
+  name: string; scenarioId?: string;
+  state: 'done' | 'now' | 'lock';
+}
+export interface CurriculumChapter {
+  ch: number; name: string; dept: string; done: number; total: number;
+  state: 'done' | 'now' | 'lock'; next?: string; steps?: CurriculumStep[];
+}
+
 // One node of the main-route curriculum graph (server: GET /me/route).
 export interface RouteNode {
   eventId: string; title: string; tier: number;
@@ -315,6 +326,12 @@ export const api = {
   async boardToday(profession = 'nurse'): Promise<BoardCard[]> {
     const { data } = await http.get(`/board/today?profession=${profession}`);
     return (data as { scenarios: BoardCard[] }).scenarios ?? [];
+  },
+
+  /** Chapter/step curriculum with per-user progress (v19 campus hub). */
+  async curriculum(): Promise<CurriculumChapter[]> {
+    const { data } = await http.get('/me/curriculum');
+    return (data as { chapters: CurriculumChapter[] }).chapters ?? [];
   },
 
   /** Main-route curriculum path (events + unlock states). */

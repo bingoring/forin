@@ -138,6 +138,24 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 	return s, nil
 }
 
+// ClearedScenarioIDs returns the set of scenario ids the user has cleared.
+func (r *ProgressRepo) ClearedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error) {
+	rows, err := r.pool.Query(ctx, `SELECT DISTINCT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := map[string]bool{}
+	for rows.Next() {
+		var id string
+		if err := rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		out[id] = true
+	}
+	return out, rows.Err()
+}
+
 // FoundMissions returns the ids of hidden missions the user has permanently discovered.
 func (r *ProgressRepo) FoundMissions(ctx context.Context, userID string) ([]string, error) {
 	ids, err := r.q.FoundMissions(ctx, userID)
