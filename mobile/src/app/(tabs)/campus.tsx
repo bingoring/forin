@@ -98,7 +98,7 @@ export default function Campus() {
         </Shadowed>
       </View>
 
-      <DeptSheet dept={sheet} onClose={() => setSheet(null)} onStart={openScenario} onWalk={() => { setSheet(null); router.push('/interior/INT-ER-00001'); }} />
+      <DeptSheet dept={sheet} chapters={chapters} onClose={() => setSheet(null)} onStart={openScenario} onWalk={() => { setSheet(null); router.push('/interior/INT-ER-00001'); }} />
     </View>
   );
 }
@@ -243,7 +243,10 @@ function Buildings({ onFloor }: { onFloor: (b: Building, f: Floor) => void }) {
 }
 
 // ══ 부서 상세 시트 ══════════════════════════════════════════════════
-function DeptSheet({ dept, onClose, onStart, onWalk }: { dept: DeptDetail | null; onClose: () => void; onStart: (scn?: string) => void; onWalk: () => void }) {
+function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDetail | null; chapters: CurriculumChapter[]; onClose: () => void; onStart: (scn?: string) => void; onWalk: () => void }) {
+  // link this department to its server curriculum chapter (live progress).
+  const chapter = dept?.chapterCh != null ? chapters.find((c) => c.ch === dept.chapterCh) : undefined;
+  const chapterNowScn = chapter?.steps?.find((s) => s.state === 'now')?.scenarioId;
   return (
     <Modal visible={!!dept} transparent animationType="slide" onRequestClose={onClose}>
       <Pressable onPress={onClose} style={{ flex: 1, backgroundColor: '#000A' }} />
@@ -269,7 +272,7 @@ function DeptSheet({ dept, onClose, onStart, onWalk }: { dept: DeptDetail | null
           <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 96 }}>
             {/* 3 stat tiles */}
             <View style={{ flexDirection: 'row', gap: 8, marginBottom: 14 }}>
-              {[['권장 레벨', dept.lv], ['해결한 상황', `${dept.cleared}/${dept.totalSit}`], ['커리큘럼', dept.chapter ? `CH.${dept.chapter.ch}` : '—']].map(([k, v], i) => (
+              {[['권장 레벨', dept.lv], ['해결한 상황', `${dept.cleared}/${dept.totalSit}`], ['커리큘럼', chapter ? `CH.${chapter.ch}` : '—']].map(([k, v], i) => (
                 <Shadowed key={i} offset={2.5} style={{ flex: 1 }}>
                   <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 7, paddingHorizontal: 6, alignItems: 'center' }}>
                     <Text style={{ fontFamily: fonts.body, fontSize: 8.5, color: colors.textSoft }}>{k}</Text>
@@ -279,25 +282,27 @@ function DeptSheet({ dept, onClose, onStart, onWalk }: { dept: DeptDetail | null
               ))}
             </View>
 
-            {/* 이 부서의 커리큘럼 */}
+            {/* 이 부서의 커리큘럼 — server-driven (live progress) */}
             <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 이 부서의 커리큘럼 ━━━━━</Text>
-            {dept.chapter ? (
+            {chapter && chapter.state !== 'lock' ? (
               <Shadowed offset={3} shadowColor={colors.mintShadow} style={{ marginBottom: 16 }}>
                 <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 11 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: C, opacity: 0.75 }}>CHAPTER {dept.chapter.ch}</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 3, marginBottom: 7 }}>{dept.chapter.name}</Text>
-                  <ProgressBar done={dept.chapter.done} total={dept.chapter.total} />
+                  <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: C, opacity: 0.75 }}>CHAPTER {chapter.ch}{chapter.state === 'done' ? ' · 완료' : ''}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 3, marginBottom: 7 }}>{chapter.name}</Text>
+                  <ProgressBar done={chapter.done} total={chapter.total} />
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
-                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C }}>다음 · {dept.chapter.next}</Text>
-                    <Pressable onPress={() => onStart(dept.chapter!.scn)} style={{ backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 11 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 11.5, color: colors.cream }}>▶ 이어하기</Text>
-                    </Pressable>
+                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C }}>{chapter.state === 'done' ? '이 챕터를 마쳤어요' : `다음 · ${chapter.next ?? '준비 중'}`}</Text>
+                    {chapter.state !== 'done' && (
+                      <Pressable onPress={() => onStart(chapterNowScn)} style={{ backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 11 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: 11.5, color: colors.cream }}>▶ 이어하기</Text>
+                      </Pressable>
+                    )}
                   </View>
                 </View>
               </Shadowed>
             ) : (
               <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', padding: 14, marginBottom: 16 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, textAlign: 'center' }}>이 부서의 학습 콘텐츠가 곧 추가돼요.</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, textAlign: 'center' }}>{chapter ? '이전 챕터를 완료하면 열려요.' : '이 부서의 학습 콘텐츠가 곧 추가돼요.'}</Text>
               </View>
             )}
 
@@ -333,7 +338,7 @@ function DeptSheet({ dept, onClose, onStart, onWalk }: { dept: DeptDetail | null
           {/* sticky footer */}
           <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: colors.cream, borderTopWidth: 3, borderTopColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', gap: 8 }}>
             <Shadowed offset={2.5} style={{ flex: 1 }}>
-              <Pressable onPress={() => onStart(dept.sits.find((x) => x.tag !== '완료')?.scn ?? dept.chapter?.scn)} style={{ backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
+              <Pressable onPress={() => onStart(dept.sits.find((x) => x.tag !== '완료')?.scn ?? chapterNowScn)} style={{ backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.cream }}>▶ 다음 상황 시작</Text>
               </Pressable>
             </Shadowed>

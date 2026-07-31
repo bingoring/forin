@@ -73,7 +73,7 @@ export type Situation = { urg: number; name: string; lv: string; min: number; ta
 export type DeptDetail = {
   name: string; en: string; where: string; accent: string; icon: string; lv: string;
   cleared: number; totalSit: number;
-  chapter?: { ch: number; name: string; done: number; total: number; next: string; scn?: string };
+  chapterCh?: number; // links to a server curriculum chapter (GET /me/curriculum) by ch number
   sits: Situation[];
 };
 
@@ -81,7 +81,7 @@ export type DeptDetail = {
 const ER_DEPT: DeptDetail = {
   name: '응급의료센터', en: 'Emergency Medical Center', where: '메인 메디컬 타워 · 1F',
   accent: '#D14B3D', icon: '🚨', lv: 'B1', cleared: 7, totalSit: 12,
-  chapter: { ch: 2, name: '응급실 트리아지', done: 4, total: 6, next: '보호자에게 대기 안내', scn: 'SCN-ER-00002' },
+  chapterCh: 2, // 응급실 트리아지 (server curriculum)
   sits: [
     { urg: 1, name: '흉통 환자 트리아지', lv: 'B1', min: 6, tag: '긴급', room: '분류소', scn: 'SCN-ER-00002' },
     { urg: 0, name: '주취 환자 진정 · 보안 협조', lv: 'B2', min: 7, tag: '신규', room: '소생실', scn: 'SCN-ER-00003' },
@@ -98,6 +98,6 @@ export function deptFor(building: Building, floor: Floor): DeptDetail {
   return {
     name: floor.d, en: '', where: `${building.name} · ${floor.f}`,
     accent: building.accent, icon: building.icon, lv: '—',
-    cleared: 0, totalSit: floor.n, sits: [],
+    cleared: 0, totalSit: floor.n, chapterCh: floor.cur, sits: [],
   };
 }
