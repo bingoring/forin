@@ -37,35 +37,38 @@ export const CURRICULUM: Chapter[] = [
   { ch: 5, name: '중환자실 집중 감시', dept: '본관 4F ICU', done: 0, total: 8, state: 'lock' },
 ];
 
-export type Floor = { f: string; d: string; n: number; hot?: boolean; cur?: number };
+// `dept` = the primary scenario id prefix (SCN-<dept>-*) for a floor's live
+// situations; `cur` = the server curriculum chapter that lives there. Floors with
+// no seeded content (e.g. general wards) omit `dept` and read "준비 중".
+export type Floor = { f: string; d: string; n: number; hot?: boolean; cur?: number; dept?: string };
 export type Building = { id: string; name: string; sub: string; accent: string; icon: string; open?: boolean; floors: Floor[] };
 
 export const BLD: Building[] = [
   {
     id: 'tower', name: '메인 메디컬 타워', sub: '본관 · 9개 과', accent: '#D14B3D', icon: '🏢', open: true,
     floors: [
-      { f: '1F', d: '응급의료센터 · 중앙약국', n: 3, hot: true, cur: 2 },
+      { f: '1F', d: '응급의료센터 · 중앙약국', n: 3, hot: true, cur: 2, dept: 'ER' },
       { f: '2F', d: '피부과 센터', n: 1 },
-      { f: '3F', d: '수술실 · PACU', n: 2, cur: 4 },
-      { f: '4F', d: '중앙 중환자실 ICU', n: 2, hot: true, cur: 5 },
+      { f: '3F', d: '수술실 · PACU', n: 2, cur: 4, dept: 'OR' },
+      { f: '4F', d: '중앙 중환자실 ICU', n: 2, hot: true, cur: 5, dept: 'ICU' },
       { f: '5-8F', d: '내과 · 외과 · 정형외과 병동', n: 4, cur: 3 },
     ],
   },
   {
     id: 'women', name: '여성소아 센터', sub: '별관 1 · 6개 과', accent: '#C2487E', icon: '🏥',
-    floors: [{ f: '1F', d: '소아·산부인과 외래', n: 2 }, { f: '3F', d: '분만실 · 산후 · 신생아실', n: 3 }, { f: '4-6F', d: 'NICU · PICU', n: 2 }],
+    floors: [{ f: '1F', d: '소아·산부인과 외래', n: 2, dept: 'WOMENKIDS' }, { f: '3F', d: '분만실 · 산후 · 신생아실', n: 3, dept: 'LD' }, { f: '4-6F', d: 'NICU · PICU', n: 2, dept: 'NICU' }],
   },
   {
     id: 'onco', name: '암센터 · 특수 재활관', sub: '별관 2 · 6개 과', accent: '#1E8A5B', icon: '🌿',
-    floors: [{ f: '1F', d: '재활치료실 PT/OT', n: 2 }, { f: '2F', d: '정신과 폐쇄병동', n: 1 }, { f: '3F', d: '종양 · BMT', n: 2 }, { f: '4F', d: '호스피스 · 노인병동', n: 2 }],
+    floors: [{ f: '1F', d: '재활치료실 PT/OT', n: 2, dept: 'REHAB' }, { f: '2F', d: '정신과 폐쇄병동', n: 1, dept: 'PSYCH' }, { f: '3F', d: '종양 · BMT', n: 2, dept: 'ONCO' }, { f: '4F', d: '호스피스 · 노인병동', n: 2, dept: 'HOSPICE' }],
   },
   {
     id: 'dx', name: '외래 · 진단 지원동', sub: '별관 3 · 6개 과', accent: '#0E7490', icon: '🔬',
-    floors: [{ f: '1F', d: '영상의학 · 진단검사', n: 2 }, { f: '3F', d: '인공신장실 · 주사센터', n: 2 }, { f: '4F', d: '내시경 · Cath · IR', n: 1 }],
+    floors: [{ f: '1F', d: '영상의학 · 진단검사', n: 2, dept: 'RAD' }, { f: '3F', d: '인공신장실 · 주사센터', n: 2, dept: 'DIAL' }, { f: '4F', d: '내시경 · Cath · IR', n: 1, dept: 'ENDO' }],
   },
   {
     id: 'admin', name: '행정 · 백스테이지 윙', sub: '지원동 · 4개 부서', accent: '#6E6354', icon: '📦',
-    floors: [{ f: 'B1', d: '영안실 · 부검실', n: 1 }, { f: '1F', d: '중앙공급실 · 영양팀', n: 1 }, { f: '2F', d: '락커 · 휴게실', n: 1 }, { f: '3F', d: '간호부 · 시뮬랩', n: 2 }],
+    floors: [{ f: 'B1', d: '영안실 · 부검실', n: 1, dept: 'MORGUE' }, { f: '1F', d: '중앙공급실 · 영양팀', n: 1, dept: 'SPD' }, { f: '2F', d: '락커 · 휴게실', n: 1, dept: 'LOUNGE' }, { f: '3F', d: '간호부 · 시뮬랩', n: 2, dept: 'SIM' }],
   },
 ];
 
@@ -100,6 +103,6 @@ export function deptFor(building: Building, floor: Floor): DeptDetail {
   return {
     name: floor.d, en: '', where: `${building.name} · ${floor.f}`,
     accent: building.accent, icon: building.icon, lv: '—',
-    cleared: 0, totalSit: floor.n, chapterCh: floor.cur, sits: [],
+    cleared: 0, totalSit: floor.n, chapterCh: floor.cur, deptCode: floor.dept, sits: [],
   };
 }

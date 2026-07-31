@@ -261,6 +261,11 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dept?.deptCode, dept?.name]);
 
+  // stat tiles: derive from live situations for mapped depts, else authored.
+  const live = !!dept?.deptCode && sits.length > 0;
+  const clearedTile = live ? `${sits.filter((s) => s.tag === '완료').length}/${sits.length}` : `${dept?.cleared ?? 0}/${dept?.totalSit ?? 0}`;
+  const lvTile = dept?.lv && dept.lv !== '—' ? dept.lv : live ? modeLv(sits) : '—';
+
   return (
     <Modal visible={!!dept} transparent animationType="slide" onRequestClose={onClose}>
       <Pressable onPress={onClose} style={{ flex: 1, backgroundColor: '#000A' }} />
@@ -286,7 +291,7 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
           <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 96 }}>
             {/* 3 stat tiles */}
             <View style={{ flexDirection: 'row', gap: 8, marginBottom: 14 }}>
-              {[['권장 레벨', dept.lv], ['해결한 상황', `${dept.cleared}/${dept.totalSit}`], ['커리큘럼', chapter ? `CH.${chapter.ch}` : '—']].map(([k, v], i) => (
+              {[['권장 레벨', lvTile], ['해결한 상황', clearedTile], ['커리큘럼', chapter ? `CH.${chapter.ch}` : '—']].map(([k, v], i) => (
                 <Shadowed key={i} offset={2.5} style={{ flex: 1 }}>
                   <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 7, paddingHorizontal: 6, alignItems: 'center' }}>
                     <Text style={{ fontFamily: fonts.body, fontSize: 8.5, color: colors.textSoft }}>{k}</Text>
@@ -366,6 +371,13 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
       )}
     </Modal>
   );
+}
+
+// modeLv returns the most common CEFR level among situations (recommended level).
+function modeLv(sits: DeptSituation[]): string {
+  const count: Record<string, number> = {};
+  for (const s of sits) count[s.lv] = (count[s.lv] ?? 0) + 1;
+  return Object.entries(count).sort((a, b) => b[1] - a[1])[0]?.[0] ?? '—';
 }
 
 function ProgressBar({ done, total }: { done: number; total: number }) {
