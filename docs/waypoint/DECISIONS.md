@@ -1212,3 +1212,9 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **클라**: `api.curriculum()` + `CurriculumChapter/Step` 타입. campus.tsx 커리큘럼 탭이 서버 데이터로 렌더(히어로=now 챕터, 타임라인=그 스텝, 로드맵=전 챕터), 로딩/오프라인 시 번들 fallback. 이어하기/NOW 스텝 탭 → now 스텝의 실 시나리오 briefing.
 - **부서 상세 시트**: 여전히 번들 deptFor(ER showcase) — 후속 정렬 여지.
 - **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(fresh: CH1 now·나머지 lock → ER1~6 클리어 시 CH1 done(5/5)·CH2 now(1/6, 다음=통증 사정 표현)·CH3~5 lock) · 시뮬레이터(실 진행 반영).
+
+## 2026-07-31 — 부서 상세 시트 서버 커리큘럼 연결
+캠퍼스 v19 부서 상세 시트의 "이 부서의 커리큘럼"을 번들 → 서버 `/me/curriculum`로 연결(커리큘럼 탭과 단일 소스).
+- **DeptDetail**: `chapter{...}`(번들) 제거 → `chapterCh?: number`(서버 챕터 링크). ER 1F=CH.2, 타 층은 floor.cur로 링크(잠긴 챕터면 "이전 챕터 완료 시 열려요").
+- **DeptSheet**: `chapters`(서버) prop 받아 `chapters.find(ch===dept.chapterCh)`로 실 진행 렌더. 진행바 done/total·다음 스텝·이어하기(now 스텝 시나리오)·완료 상태·잠김 상태 모두 서버 파생. 스탯 타일 커리큘럼 CH도 서버.
+- **검증**: tsc 0 · jest 208/208 · 시뮬레이터(ER 시트 CH.2 1/6·다음=통증 사정 표현 — 커리큘럼 탭과 일치, 실 클리어 반영).
