@@ -1218,3 +1218,9 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **DeptDetail**: `chapter{...}`(번들) 제거 → `chapterCh?: number`(서버 챕터 링크). ER 1F=CH.2, 타 층은 floor.cur로 링크(잠긴 챕터면 "이전 챕터 완료 시 열려요").
 - **DeptSheet**: `chapters`(서버) prop 받아 `chapters.find(ch===dept.chapterCh)`로 실 진행 렌더. 진행바 done/total·다음 스텝·이어하기(now 스텝 시나리오)·완료 상태·잠김 상태 모두 서버 파생. 스탯 타일 커리큘럼 CH도 서버.
 - **검증**: tsc 0 · jest 208/208 · 시뮬레이터(ER 시트 CH.2 1/6·다음=통증 사정 표현 — 커리큘럼 탭과 일치, 실 클리어 반영).
+
+## 2026-07-31 — 부서 상황(sits) 실데이터화
+캠퍼스 부서 상세 시트의 "이 부서의 상황"을 번들 → 서버 조회로. 부서 = 시나리오 id 접두사(SCN-<DEPT>-*)이라 새 부서에 새 쿼리 불필요.
+- **서버 `GET /me/situations?dept=ER`**: 해당 dept 시나리오(≤8)를 `content.DeptSituation`(scenarioId·name·room·lv·min·tag·urgent)로. tag=완료(클리어)/긴급(난이도≥3)/신규, lv=난이도→CEFR(A2/B1/B2), min=timeLabel 파싱 or 난이도 추정, room=briefing.Dept. cleared는 scenario_attempts. `ContentRepo.DeptSituations`, ports 확장.
+- **클라**: `api.deptSituations(dept)` + `DeptSituation` 타입. DeptDetail에 `deptCode`(ER='ER'). DeptSheet가 시트 열릴 때 fetch(useEffect), 번들 sits는 fallback. 시작/복습·다음 상황 시작 CTA는 실 시나리오.
+- **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(/me/situations?dept=ER → 8건, 클리어분 완료·나머지 신규, room·Lv·min) · 시뮬레이터(ER 시트 실 시나리오·완료 태그 반영).
