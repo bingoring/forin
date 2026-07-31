@@ -1224,3 +1224,11 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **서버 `GET /me/situations?dept=ER`**: 해당 dept 시나리오(≤8)를 `content.DeptSituation`(scenarioId·name·room·lv·min·tag·urgent)로. tag=완료(클리어)/긴급(난이도≥3)/신규, lv=난이도→CEFR(A2/B1/B2), min=timeLabel 파싱 or 난이도 추정, room=briefing.Dept. cleared는 scenario_attempts. `ContentRepo.DeptSituations`, ports 확장.
 - **클라**: `api.deptSituations(dept)` + `DeptSituation` 타입. DeptDetail에 `deptCode`(ER='ER'). DeptSheet가 시트 열릴 때 fetch(useEffect), 번들 sits는 fallback. 시작/복습·다음 상황 시작 CTA는 실 시나리오.
 - **검증**: go build/test 0 · tsc 0 · jest 208/208 · E2E(/me/situations?dept=ER → 8건, 클리어분 완료·나머지 신규, room·Lv·min) · 시뮬레이터(ER 시트 실 시나리오·완료 태그 반영).
+
+## 2026-07-31 — 건물·층/부서 매핑 확장
+캠퍼스 건물·층의 각 층을 실제 부서 코드에 매핑 → 모든 매핑 층에서 실 상황 로드(이전엔 ER만).
+- **DB 실측**: 25개 부서 코드(ER/OR/ICU/ONCO/REHAB/PSYCH/HOSPICE/RAD/DIAL/ENDO/WOMENKIDS/LD/NICU/MORGUE/SPD/LOUNGE/SIM …), 각 12~15 시나리오.
+- **Floor.dept 부여**(campus.ts): 층 → 대표 부서 접두사. tower(ER/OR/ICU), women(WOMENKIDS/LD/NICU), onco(REHAB/PSYCH/ONCO/HOSPICE), dx(RAD/DIAL/ENDO), admin(MORGUE/SPD/LOUNGE/SIM). 콘텐츠 없는 층(피부과·일반병동)은 dept 미지정 → "준비 중". deptFor가 floor.dept→deptCode로 넘겨 부서 시트에서 `GET /me/situations?dept=`로 실 상황.
+- **스탯 타일 실값화**: 매핑 부서는 로드된 상황에서 해결한 상황(완료수/표시수)·권장 레벨(최빈 Lv) 파생, 아니면 authored/—.
+- **커리큘럼 링크**: 층 chapterCh는 floor.cur 유지(tower 1F=CH2, 3F=CH4, 4F=CH5, 5-8F=CH3).
+- 검증: tsc 0 · jest 208/208 · 시뮬레이터(ONCO 종양·BMT 시트에 실 시나리오·긴급/신규 태그·스탯 실값 렌더).
