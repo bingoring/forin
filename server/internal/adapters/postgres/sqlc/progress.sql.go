@@ -196,18 +196,20 @@ func (q *Queries) GetProgress(ctx context.Context, userID string) (GetProgressRo
 }
 
 const insertAttempt = `-- name: InsertAttempt :exec
-INSERT INTO scenario_attempts (user_id, scenario_id, state, score, cleared_at)
-VALUES ($1, $2, 'cleared', $3, now())
+INSERT INTO scenario_attempts (user_id, scenario_id, state, score, grade, cleared_at)
+VALUES ($1, $2, $3, $4, $5, CASE WHEN $3 = 'cleared' THEN now() ELSE NULL END)
 `
 
 type InsertAttemptParams struct {
-	UserID     string `json:"user_id"`
-	ScenarioID string `json:"scenario_id"`
-	Score      int    `json:"score"`
+	UserID     string      `json:"user_id"`
+	ScenarioID string      `json:"scenario_id"`
+	State      string      `json:"state"`
+	Score      int         `json:"score"`
+	Grade      pgtype.Int4 `json:"grade"`
 }
 
 func (q *Queries) InsertAttempt(ctx context.Context, arg InsertAttemptParams) error {
-	_, err := q.db.Exec(ctx, insertAttempt, arg.UserID, arg.ScenarioID, arg.Score)
+	_, err := q.db.Exec(ctx, insertAttempt, arg.UserID, arg.ScenarioID, arg.State, arg.Score, arg.Grade)
 	return err
 }
 

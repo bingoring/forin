@@ -129,7 +129,8 @@ func (h *progressHandler) attempt(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusBadRequest, "scenarioId is required")
 		return
 	}
-	p, err := h.progress.RecordAttempt(r.Context(), uid, req.ScenarioID, req.Score)
+	// Direct attempt (legacy / no dialogue grading): treat as a clear, no grade.
+	p, err := h.progress.RecordAttempt(r.Context(), uid, req.ScenarioID, req.Score, "cleared", -1)
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not record attempt")
 		return

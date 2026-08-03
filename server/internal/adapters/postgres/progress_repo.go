@@ -174,7 +174,10 @@ func (r *ProgressRepo) RecordMission(ctx context.Context, userID, missionID stri
 	return r.q.RecordMission(ctx, sqlc.RecordMissionParams{UserID: userID, MissionID: missionID})
 }
 
-func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID string, score int) (*progress.Progress, error) {
+func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int) (*progress.Progress, error) {
+	if state == "" {
+		state = "cleared"
+	}
 	tx, err := r.pool.Begin(ctx)
 	if err != nil {
 		return nil, err
@@ -182,7 +185,11 @@ func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID str
 	defer tx.Rollback(ctx)
 	q := r.q.WithTx(tx)
 
-	if err := q.InsertAttempt(ctx, sqlc.InsertAttemptParams{UserID: userID, ScenarioID: scenarioID, Score: score}); err != nil {
+	gradeCol := pgtype.Int4{} // NULL when grade < 0 (direct/legacy attempt)
+	if grade >= 0 {
+		gradeCol = pgtype.Int4{Int32: int32(grade), Valid: true}
+	}
+	if err := q.InsertAttempt(ctx, sqlc.InsertAttemptParams{UserID: userID, ScenarioID: scenarioID, State: state, Score: score, Grade: gradeCol}); err != nil {
 		return nil, err
 	}
 	today := pgtype.Date{Time: time.Now().UTC(), Valid: true}

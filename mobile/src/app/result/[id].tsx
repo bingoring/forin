@@ -9,7 +9,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Animated, Easing, Pressable, Share, Text, View, type GestureResponderEvent, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
-import { api, type Progress, type ScenarioDetail } from '@/api/client';
+import { api, type Progress, type ScenarioDetail, type ScenarioGrade } from '@/api/client';
 import { newlyEarned, type BadgeDef } from '@/data/badges';
 import { ECON } from '@/data/economy';
 import { colors, fonts } from '@/theme/tokens';
@@ -24,15 +24,19 @@ function baseXpOf(s: ScenarioDetail | null): number {
 }
 
 export default function ResultRoute() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, session } = useLocalSearchParams<{ id: string; session?: string }>();
   const router = useRouter();
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
   const [before, setBefore] = useState<Progress | null>(null);
   const [after, setAfter] = useState<Progress | null>(null);
+  const [grade, setGrade] = useState<ScenarioGrade | null>(null);
   const [stickerTotal, setStickerTotal] = useState<number | null>(null);
   const [newBadges, setNewBadges] = useState<BadgeDef[]>([]);
   const [failed, setFailed] = useState(false);
   const recorded = useRef(false);
+  // Whether this run was AI-graded (had a session) and whether it passed (완료).
+  const graded = !!grade;
+  const passed = grade ? grade.passed : true; // legacy/deep-link path is a plain clear
 
   // Firework bursts (1:1 with the v17 handoff): one anchored to the sticker on
   // mount, plus one wherever the user taps the background. Each auto-expires.
@@ -58,29 +62,44 @@ export default function ResultRoute() {
       recorded.current = true; // guard StrictMode double-invoke / re-award
       try {
         const b = await api.progress();
-        const a = await api.recordAttempt(id, baseXpOf(s));
         if (!alive) return;
         setBefore(b);
-        setAfter(a);
-        // Badges that unlocked with this clear → celebrate them.
-        setNewBadges(newlyEarned(b, a));
-        // Praise-sticker tally (1 per clear); reflects this clear once recorded.
-        api.growthStats().then((st) => { if (alive) setStickerTotal(st.scenariosTotal); }).catch(() => {});
+        if (session) {
+          // AI-graded completion: award scaled XP, judge clear/attempt, get feedback.
+          const res = await api.completeScenario(session);
+          if (!alive) return;
+          setGrade(res.grade);
+          setAfter(res.progress);
+          setNewBadges(newlyEarned(b, res.progress));
+          // Praise sticker only when it counts as a clear (완료).
+          if (res.grade.passed) api.growthStats().then((st) => { if (alive) setStickerTotal(st.scenariosTotal); }).catch(() => {});
+        } else {
+          // Legacy / deep-link path (no dialogue session): a plain clear.
+          const a = await api.recordAttempt(id, baseXpOf(s));
+          if (!alive) return;
+          setAfter(a);
+          setNewBadges(newlyEarned(b, a));
+          api.growthStats().then((st) => { if (alive) setStickerTotal(st.scenariosTotal); }).catch(() => {});
+        }
       } catch {
         if (alive) setFailed(true); // not authed / offline → static fallback
       }
     })();
     return () => { alive = false; };
-  }, [id]);
+  }, [id, session]);
 
+  const awardedXp = grade ? grade.xpAwarded : baseXpOf(scenario);
   const baseXp = baseXpOf(scenario);
   const subtitle = scenario?.briefing?.dept || scenario?.title || '';
   const leveledUp = !!before && !!after && after.level > before.level;
 
   const onShare = () => {
     const lv = after ? ` (Lv.${after.level}${after.streakCurrent > 1 ? ` · 🔥${after.streakCurrent}일` : ''})` : '';
-    Share.share({ message: `forin에서 "${scenario?.title || '시나리오'}"를 클리어하고 +${baseXp} XP를 얻었어요!${lv}` }).catch(() => {});
+    const verb = passed ? '클리어하고' : '연습하고';
+    Share.share({ message: `forin에서 "${scenario?.title || '시나리오'}"를 ${verb} +${awardedXp} XP를 얻었어요!${lv}` }).catch(() => {});
   };
+
+  const titleColor = passed ? colors.yellow : colors.peachShadow;
 
   return (
     <Pressable onPress={onBgTap} style={{ flex: 1, backgroundColor: colors.cream }}>
@@ -98,12 +117,15 @@ export default function ResultRoute() {
       </View>
 
       <View style={{ paddingHorizontal: 22, paddingTop: 80, alignItems: 'center', zIndex: 2 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>SCENARIO CLEAR!</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>{passed ? 'SCENARIO CLEAR!' : 'GOOD TRY · 재도전'}</Text>
         <View style={{ marginTop: 6 }}>
-          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: 34, color: colors.yellow }}>참 잘했어요!</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 34, color: C }}>참 잘했어요!</Text>
+          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: 34, color: titleColor }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 34, color: C }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
         </View>
         {!!subtitle && <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 8 }}>{subtitle}</Text>}
+
+        {/* AI grade detail (score, goals, feedback) — only for graded runs */}
+        {graded && <GradeDetail grade={grade!} />}
 
         {/* level-up banner */}
         {leveledUp && (
@@ -127,22 +149,29 @@ export default function ResultRoute() {
           </Shadowed>
         ))}
 
-        {/* sticker */}
-        <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
-          <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 32 }}>⭐</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 4 }}>참잘했</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>어요</Text>
+        {/* praise sticker — only a real clear (완료) earns it */}
+        {passed ? (
+          <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
+            <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 32 }}>⭐</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 4 }}>참잘했</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>어요</Text>
+              </View>
             </View>
+          </Shadowed>
+        ) : (
+          <View style={{ marginTop: 16, marginBottom: 16, alignItems: 'center', gap: 4 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>다시 도전하면 완료로 인정돼요</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>🔁 이 상황은 아직 '재도전'이에요</Text>
           </View>
-        </Shadowed>
+        )}
 
         {/* XP + level card */}
         <Shadowed offset={4} style={{ alignSelf: 'stretch' }}>
           <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
             {after ? (
-              <XpCard baseXp={baseXp} before={before} after={after} stickerTotal={stickerTotal} />
+              <XpCard baseXp={awardedXp} before={before} after={after} stickerTotal={passed ? stickerTotal : null} showSticker={passed} />
             ) : failed ? (
               <StaticRewards scenario={scenario} baseXp={baseXp} />
             ) : (
@@ -152,9 +181,11 @@ export default function ResultRoute() {
               </View>
             )}
 
-            <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다." 💌</Text>
-            </View>
+            {!graded && (
+              <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다." 💌</Text>
+              </View>
+            )}
           </View>
         </Shadowed>
 
@@ -171,7 +202,64 @@ export default function ResultRoute() {
 }
 
 // ── XP + level card (real progress) ───────────────────────────────────
-function XpCard({ baseXp, before, after, stickerTotal }: { baseXp: number; before: Progress | null; after: Progress; stickerTotal: number | null }) {
+// ── AI grade detail (score + goals + feedback) ────────────────────────
+function GradeDetail({ grade }: { grade: ScenarioGrade }) {
+  const good = grade.passed;
+  const accent = good ? colors.mint : colors.peach;
+  const shadow = good ? colors.mintShadow : colors.peachShadow;
+  return (
+    <Shadowed offset={4} shadowColor={shadow} style={{ alignSelf: 'stretch', marginTop: 14 }}>
+      <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
+        {/* score row */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          <View style={{ backgroundColor: accent, borderWidth: 2.5, borderColor: C, paddingVertical: 6, paddingHorizontal: 10, alignItems: 'center' }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 22, color: C }}>{grade.score}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 8, color: C, marginTop: -2 }}>/ 100</Text>
+          </View>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <View style={{ alignSelf: 'flex-start', backgroundColor: good ? colors.mint : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 6, marginBottom: 4 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{good ? '완료 · PASS' : '재도전 · RETRY'}</Text>
+            </View>
+            {!!grade.headline && <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{grade.headline}</Text>}
+          </View>
+        </View>
+
+        {/* goals checklist */}
+        {grade.goals?.length > 0 && (
+          <View style={{ marginTop: 12, gap: 5 }}>
+            {grade.goals.map((g, i) => (
+              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: g.met ? '#10B981' : colors.textFaint }}>{g.met ? '✓' : '✗'}</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 11.5, color: g.met ? C : colors.textSoft }}>{g.goal}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+
+        {/* feedback */}
+        {!!grade.feedback && (
+          <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1.5, borderTopColor: '#2A252222', borderStyle: 'dotted' }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 17 }}>💬 {grade.feedback}</Text>
+          </View>
+        )}
+
+        {/* tips → review lab */}
+        {grade.tips?.length > 0 && (
+          <View style={{ marginTop: 10, gap: 4 }}>
+            {grade.tips.map((t, i) => (
+              <Text key={i} style={{ fontFamily: fonts.body, fontSize: 10.5, color: colors.textSoft, lineHeight: 15 }}>
+                <Text style={{ color: C }}>“{t.en}”</Text>{t.ko ? ` — ${t.ko}` : ''}
+              </Text>
+            ))}
+            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textFaint, marginTop: 2 }}>↳ 리뷰랩에 복습 카드로 저장됐어요</Text>
+          </View>
+        )}
+      </View>
+    </Shadowed>
+  );
+}
+
+function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { baseXp: number; before: Progress | null; after: Progress; stickerTotal: number | null; showSticker?: boolean }) {
   const startXp = before?.xp ?? Math.max(0, after.xp - baseXp);
   const inLevel = after.xp % ECON.xpPerLevel;
   const toNext = ECON.xpPerLevel - inLevel;
@@ -185,14 +273,16 @@ function XpCard({ baseXp, before, after, stickerTotal }: { baseXp: number; befor
         <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: '#10B981' }}>+{baseXp} XP</Text>
       </View>
 
-      {/* praise sticker earned (1 per clear) */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12, paddingBottom: 12, borderBottomWidth: 1.5, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
-        <View style={{ width: 30, height: 30, backgroundColor: colors.pink, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 15 }}>🎖</Text>
+      {/* praise sticker earned (only a real clear/완료 earns it) */}
+      {showSticker && (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12, paddingBottom: 12, borderBottomWidth: 1.5, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
+          <View style={{ width: 30, height: 30, backgroundColor: colors.pink, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 15 }}>🎖</Text>
+          </View>
+          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>칭찬 스티커{stickerTotal != null ? ` (누적 ${stickerTotal}장)` : ''}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: '#10B981' }}>+1</Text>
         </View>
-        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>칭찬 스티커{stickerTotal != null ? ` (누적 ${stickerTotal}장)` : ''}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: '#10B981' }}>+1</Text>
-      </View>
+      )}
 
       {/* level + progress bar */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 }}>

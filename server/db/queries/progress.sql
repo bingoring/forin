@@ -3,8 +3,11 @@ SELECT xp, level, rank, patient_satisfaction, peer_trust, emergency_response, st
 FROM user_progress WHERE user_id = $1;
 
 -- name: InsertAttempt :exec
-INSERT INTO scenario_attempts (user_id, scenario_id, state, score, cleared_at)
-VALUES ($1, $2, 'cleared', $3, now());
+-- state is 'cleared' (passed, counts as 완료) or 'attempted' (engaged but below the
+-- pass score). grade is the 0..100 AI score (NULL for direct/legacy attempts).
+-- cleared_at is set only on a real clear.
+INSERT INTO scenario_attempts (user_id, scenario_id, state, score, grade, cleared_at)
+VALUES ($1, $2, $3, $4, $5, CASE WHEN $3 = 'cleared' THEN now() ELSE NULL END);
 
 -- name: UpsertProgressOnAttempt :exec
 INSERT INTO user_progress (user_id, xp, level, streak_current, streak_longest, last_active_date)

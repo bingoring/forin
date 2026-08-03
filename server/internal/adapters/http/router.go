@@ -81,10 +81,11 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /me/review/{id}/grade", auth(http.HandlerFunc(ph.grade)))
 
 	// AI conversation + correction (authenticated).
-	conv := &conversationHandler{engine: d.Convo}
+	conv := &conversationHandler{engine: d.Convo, progress: d.Progress}
 	mux.Handle("POST /scenarios/{id}/conversation", auth(http.HandlerFunc(conv.start)))
 	mux.Handle("POST /conversation/{sessionId}/message", auth(http.HandlerFunc(conv.message)))
 	mux.Handle("POST /conversation/{sessionId}/stream", auth(http.HandlerFunc(conv.stream)))
+	mux.Handle("POST /conversation/{sessionId}/complete", auth(http.HandlerFunc(conv.complete)))
 	mux.Handle("POST /correct", auth(http.HandlerFunc(conv.correct)))
 
 	// Pronunciation assessment (authenticated).

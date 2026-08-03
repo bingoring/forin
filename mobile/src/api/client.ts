@@ -189,6 +189,16 @@ export interface Progress {
   streakCurrent: number; streakLongest: number;
 }
 
+// AI grade of a finished scenario conversation (server: POST /conversation/{sid}/complete).
+export interface ScenarioGrade {
+  scenarioId: string; score: number; passed: boolean; xpAwarded: number;
+  goals: { goal: string; met: boolean }[];
+  headline: string; feedback: string;
+  tips: { en: string; ko: string }[];
+  turns: number;
+}
+export interface CompleteResult { progress: Progress; grade: ScenarioGrade; xpAwarded: number; }
+
 // Aggregated activity for the growth report. activeDates are UTC yyyy-mm-dd
 // within the current (Monday-first) week.
 export interface GrowthStats {
@@ -399,6 +409,14 @@ export const api = {
   async startConversation(scenarioId: string): Promise<string> {
     const { data } = await http.post(`/scenarios/${scenarioId}/conversation`, {});
     return (data as { sessionId: string }).sessionId;
+  },
+
+  /** Finish + AI-grade a conversation: awards score-scaled XP, records the clear
+   *  (완료) or attempt (재도전), files improvement tips as review cards. 422 when
+   *  the learner never spoke (nothing to grade). */
+  async completeScenario(sessionId: string): Promise<CompleteResult> {
+    const { data } = await http.post(`/conversation/${sessionId}/complete`, {});
+    return data as CompleteResult;
   },
 
   /** Send a message; the NPC replies in persona (non-streaming). */

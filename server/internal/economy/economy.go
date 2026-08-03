@@ -10,6 +10,12 @@ type Economy struct {
 	XPPerLevel     int `json:"xpPerLevel"`     // XP for one level (level = 1 + xp/XPPerLevel)
 	ScenarioBaseXP int `json:"scenarioBaseXP"` // default XP for clearing a scenario
 
+	// Scenario grading (AI-judged completion). A scenario is "cleared" (완료) only
+	// when the graded score ≥ ScenarioPassScore; below that it's an engaged attempt
+	// (재도전) that still earns score-scaled XP + streak but no clear/스티커.
+	ScenarioPassScore int `json:"scenarioPassScore"` // 0..100 pass threshold
+	ScenarioMinXP     int `json:"scenarioMinXP"`     // XP floor for a genuine attempt (score>0)
+
 	// Rank thresholds (level → career title).
 	RankJunior int `json:"rankJunior"`
 	RankSenior int `json:"rankSenior"`
@@ -45,6 +51,9 @@ func Default() Economy {
 	return Economy{
 		XPPerLevel:     100,
 		ScenarioBaseXP: 100,
+
+		ScenarioPassScore: 60,
+		ScenarioMinXP:     10,
 
 		RankJunior: 5,
 		RankSenior: 15,

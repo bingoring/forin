@@ -7,7 +7,7 @@
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Alert, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
   useAudioRecorder, requestRecordingPermissionsAsync, setAudioModeAsync,
@@ -37,6 +37,7 @@ export default function DialogueRoute() {
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ready'>('loading');
   const sessionRef = useRef<string | null>(null);
+  const turnsRef = useRef(0); // learner turns sent — gates grading (0 turns → 중단)
 
   const [npcLine, setNpcLine] = useState(''); // latest NPC utterance (VN box)
   const [npcLineKo, setNpcLineKo] = useState(''); // Korean of the scripted line (for 번역)
@@ -99,6 +100,7 @@ export default function DialogueRoute() {
   const send = async () => {
     const text = draft.trim();
     if (!text || pending || !sessionRef.current) return;
+    turnsRef.current += 1; // the server persists this turn in prepare(); count it for grading
     setDraft('');
     setPending(true);
     setNpcLine(''); setNpcLineKo(''); setShowKo(false); // clear for the streaming reply (no Ko for AI lines)
@@ -111,6 +113,23 @@ export default function DialogueRoute() {
     } finally {
       setPending(false);
     }
+  };
+
+  // End the situation. No turns → nothing to grade: confirm, then leave without a
+  // reward (the situation stays uncleared). With turns → grade on the result screen.
+  const endSituation = () => {
+    if (turnsRef.current === 0) {
+      Alert.alert(
+        '아직 대화를 시작하지 않았어요',
+        '대화를 나눠야 평가와 보상을 받을 수 있어요. 그냥 나갈까요?',
+        [
+          { text: '계속하기', style: 'cancel' },
+          { text: '나가기', style: 'destructive', onPress: () => router.back() },
+        ],
+      );
+      return;
+    }
+    router.replace(`/result/${id}?session=${sessionRef.current ?? ''}`);
   };
 
   const p = scenario?.persona ?? {};
@@ -172,8 +191,10 @@ export default function DialogueRoute() {
               </View>
             </>
           )}
-          {/* Main completion: resolving the situation via dialogue ends the scenario. */}
-          <PixelButton label="✓ 상황 종료" bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={() => router.replace(`/result/${id}`)} />
+          {/* Main completion: resolving the situation via dialogue ends the scenario.
+              Ending with no dialogue is "중단" — no grade, no reward; ending after
+              speaking hands the sessionId to the result screen for AI grading. */}
+          <PixelButton label="✓ 상황 종료" bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={endSituation} />
         </View>
       </View>
 

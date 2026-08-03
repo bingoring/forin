@@ -18,8 +18,11 @@ var ErrDailyCapReached = errors.New("daily ad-grant cap reached")
 // ProgressRepo reads/updates user growth.
 type ProgressRepo interface {
 	GetProgress(ctx context.Context, userID string) (*progress.Progress, error)
-	// RecordAttempt logs a cleared scenario, awards XP, updates streak, returns new progress.
-	RecordAttempt(ctx context.Context, userID, scenarioID string, score int) (*progress.Progress, error)
+	// RecordAttempt logs a scenario attempt, awards `score` XP, updates streak, and
+	// returns new progress. state is 'cleared' (passed → counts as 완료) or
+	// 'attempted' (engaged but below pass). grade is the 0..100 AI score, or <0 for
+	// a direct/legacy attempt with no grade (stored NULL).
+	RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int) (*progress.Progress, error)
 	// GrowthStats aggregates activity for the growth report. dayStart/weekStart are
 	// the period lower bounds (already computed in tzName); ActiveDates are bucketed
 	// as calendar dates in tzName (an IANA zone, e.g. "Asia/Seoul") over the week.

@@ -30,12 +30,13 @@ type Engine struct {
 	llm             ports.LLMPort
 	strategy        Strategy
 	correctionModel string
+	gradingModel    string
 }
 
 func NewEngine(c ports.ContentReader, convo ports.ConversationRepo, review ports.ReviewRepo,
-	profiles ports.ProfileReader, reputation ports.ProgressReader, llm ports.LLMPort, strategy Strategy, correctionModel string) *Engine {
+	profiles ports.ProfileReader, reputation ports.ProgressReader, llm ports.LLMPort, strategy Strategy, correctionModel, gradingModel string) *Engine {
 	return &Engine{content: c, convo: convo, review: review, profiles: profiles,
-		reputation: reputation, llm: llm, strategy: strategy, correctionModel: correctionModel}
+		reputation: reputation, llm: llm, strategy: strategy, correctionModel: correctionModel, gradingModel: gradingModel}
 }
 
 // langContext is the user's language framing for prompts (never hardcoded).
