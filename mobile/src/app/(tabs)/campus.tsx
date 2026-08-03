@@ -381,9 +381,10 @@ function modeLv(sits: DeptSituation[]): string {
 }
 
 function ProgressBar({ done, total }: { done: number; total: number }) {
+  const pct = total > 0 ? Math.max(0, Math.min(100, (done / total) * 100)) : 0;
   return (
     <View style={{ height: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, justifyContent: 'center' }}>
-      <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${(done / total) * 100}%`, backgroundColor: colors.mintShadow }} />
+      <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${pct}%`, backgroundColor: colors.mintShadow }} />
       <Text style={{ position: 'absolute', right: 4, fontFamily: fonts.heading, fontSize: 8.5, color: C }}>{done}/{total}</Text>
     </View>
   );

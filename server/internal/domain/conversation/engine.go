@@ -162,21 +162,18 @@ func (e *Engine) reputationDisposition(ctx context.Context, userID string, sc *c
 	// everyone else (patients, families) reads patient satisfaction.
 	role := strings.ToLower(sc.Persona.Role)
 	dim, score := "patient satisfaction", p.PatientSatisfaction
-	// Equipped "warm" title (칭호 효과): a small first-impression nudge so the NPC
-	// starts a touch warmer. Organic feedback — reputation × title into the reply.
-	warm := false
-	if e.profiles != nil {
-		if pr, err := e.profiles.GetProfile(ctx, userID); err == nil && pr != nil {
-			warm = warmTitles[pr.EquippedTitle]
-		}
-	}
-	if warm {
-		score += economy.Active.TitleWarmthBonus
-	}
 	for _, k := range []string{"doctor", "physician", "surgeon", "nurse", "colleague", "charge", "resident", "attending"} {
 		if strings.Contains(role, k) {
 			dim, score = "peer trust", p.PeerTrust
 			break
+		}
+	}
+	// Equipped "warm" title (칭호 효과): a small first-impression nudge so the NPC
+	// starts a touch warmer. Applied AFTER the dimension is chosen so the bonus
+	// lands on the score actually used (patient satisfaction OR peer trust).
+	if e.profiles != nil {
+		if pr, err := e.profiles.GetProfile(ctx, userID); err == nil && pr != nil && warmTitles[pr.EquippedTitle] {
+			score += economy.Active.TitleWarmthBonus
 		}
 	}
 	who := "This character"

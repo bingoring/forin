@@ -68,11 +68,12 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 		return n, err
 	}
 	// Active conversation time: per session, the span between its first and last
-	// turn, summed over sessions touched within the period.
+	// turn, clipped to the period so a session straddling the boundary (e.g. it
+	// began before midnight) only contributes its in-period portion.
 	convSeconds := func(since time.Time) (int, error) {
 		var n int
 		err := r.pool.QueryRow(ctx,
-			`SELECT COALESCE(SUM(EXTRACT(EPOCH FROM (t.mx - t.mn))), 0)::int
+			`SELECT COALESCE(SUM(EXTRACT(EPOCH FROM (t.mx - GREATEST(t.mn, $2)))), 0)::int
 			 FROM (
 			   SELECT session_id, MIN(created_at) AS mn, MAX(created_at) AS mx
 			   FROM dialogue_turns GROUP BY session_id

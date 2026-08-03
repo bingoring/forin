@@ -485,7 +485,7 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 			}
 		}
 	}
-	ids := sampleDailyPool(rows, level, cleared, localDate+userID, limit)
+	ids := sampleDailyPool(rows, level, cleared, localDate+userID, limit, nil)
 
 	if payload, err := json.Marshal(ids); err == nil {
 		_ = r.q.InsertDailyEventSet(ctx, sqlc.InsertDailyEventSetParams{UserID: userID, LocalDate: localDate, ScenarioIds: payload})
@@ -503,26 +503,41 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 // for a rewarded-ad view, up to `cap` grants/day. Returns the grown set, the new
 // grant count, and ErrDailyCapReached when the cap is already spent.
 func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, localDate string, add, cap int) ([]content.BoardCard, int, error) {
-	set, err := r.q.GetDailyEventSet(ctx, userID, localDate)
-	if errors.Is(err, pgx.ErrNoRows) {
-		// No base set yet — build one first, then this call becomes the top-up.
+	// Ensure a base set exists so the row lock below has a target (idempotent).
+	if _, err := r.q.GetDailyEventSet(ctx, userID, localDate); errors.Is(err, pgx.ErrNoRows) {
 		if _, e := r.DailyPool(ctx, userID, profession, localDate, economy.Active.DailyPoolSize); e != nil {
 			return nil, 0, e
 		}
-		set, err = r.q.GetDailyEventSet(ctx, userID, localDate)
+	} else if err != nil {
+		return nil, 0, err
 	}
+
+	// Serialize the read-check-write on today's row: concurrent double-taps can't
+	// each pass the cap check and then clobber each other (race / lost update).
+	tx, err := r.pool.Begin(ctx)
 	if err != nil {
 		return nil, 0, err
 	}
-	if set.AdGrants >= cap {
-		return nil, set.AdGrants, ports.ErrDailyCapReached
+	defer tx.Rollback(ctx)
+
+	var raw []byte
+	var grants int
+	if err := tx.QueryRow(ctx,
+		`SELECT scenario_ids, ad_grants FROM daily_event_sets WHERE user_id = $1 AND local_date = $2 FOR UPDATE`,
+		userID, localDate).Scan(&raw, &grants); err != nil {
+		return nil, 0, err
+	}
+	if grants >= cap {
+		return nil, grants, ports.ErrDailyCapReached
 	}
 
 	var ids []string
-	_ = json.Unmarshal(set.ScenarioIds, &ids)
+	_ = json.Unmarshal(raw, &ids)
 	have := map[string]bool{}
+	deptSeed := map[string]int{} // depts already in the set → enforce the cap cumulatively
 	for _, id := range ids {
 		have[id] = true
+		deptSeed[deptFromID(id)]++
 	}
 
 	rows, err := r.q.ListBoardScenarios(ctx, profession)
@@ -539,28 +554,33 @@ func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, lo
 	}
 
 	level := 1
-	_ = r.pool.QueryRow(ctx, `SELECT level FROM user_progress WHERE user_id = $1`, userID).Scan(&level)
+	_ = tx.QueryRow(ctx, `SELECT level FROM user_progress WHERE user_id = $1`, userID).Scan(&level)
 	cleared := map[string]bool{}
-	if crows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
-		defer crows.Close()
+	if crows, err := tx.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
 		for crows.Next() {
 			var id string
 			if crows.Scan(&id) == nil {
 				cleared[id] = true
 			}
 		}
+		crows.Close()
 	}
 
-	grant := set.AdGrants + 1
+	grant := grants + 1
 	// Vary the seed per grant so repeated top-ups don't resample the same ids.
-	picked := sampleDailyPool(fresh, level, cleared, localDate+userID+"topup"+strconv.Itoa(grant), add)
+	picked := sampleDailyPool(fresh, level, cleared, localDate+userID+"topup"+strconv.Itoa(grant), add, deptSeed)
 	ids = append(ids, picked...)
 
 	payload, _ := json.Marshal(ids)
-	if err := r.q.UpdateDailyEventSet(ctx, sqlc.UpdateDailyEventSetParams{
-		UserID: userID, LocalDate: localDate, ScenarioIds: payload, AdGrants: grant}); err != nil {
+	if _, err := tx.Exec(ctx,
+		`UPDATE daily_event_sets SET scenario_ids = $3, ad_grants = $4 WHERE user_id = $1 AND local_date = $2`,
+		userID, localDate, payload, grant); err != nil {
 		return nil, 0, err
 	}
+	if err := tx.Commit(ctx); err != nil {
+		return nil, 0, err
+	}
+
 	out := make([]content.BoardCard, 0, len(ids))
 	for _, id := range ids {
 		if s, ok := byID[id]; ok {
@@ -572,8 +592,10 @@ func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, lo
 
 // sampleDailyPool picks `limit` scenario ids by weighted sampling-without-
 // replacement, seeded deterministically by `seed` so an un-persisted resample is
-// stable. Weight = unclearedBoost × levelFit; a max of 2 per dept keeps variety.
-func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[string]bool, seed string, limit int) []string {
+// stable. Weight = unclearedBoost × levelFit; the per-dept cap is enforced
+// cumulatively — deptSeed carries counts already in the day's set so a top-up
+// can't push a dept past the cap across base + grants.
+func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[string]bool, seed string, limit int, deptSeed map[string]int) []string {
 	// preferred difficulty band by level (difficulty is 1..3 on the board)
 	lo, hi := 1, 2
 	if level >= economy.Active.RankJunior {
@@ -606,6 +628,9 @@ func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[s
 	rnd := mathrand.New(mathrand.NewSource(seedHash(seed)))
 	picked := make([]string, 0, limit)
 	deptCount := map[string]int{}
+	for d, n := range deptSeed { // seed with depts already in the day's set
+		deptCount[d] = n
+	}
 	for len(picked) < limit && len(cands) > 0 {
 		total := 0.0
 		for _, c := range cands {
