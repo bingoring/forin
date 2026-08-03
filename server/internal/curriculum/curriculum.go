@@ -40,9 +40,33 @@ var catalog = []Chapter{
 		{Kind: "dlg", Name: "보호자에게 대기 안내", ScenarioID: "SCN-ER-00010"},
 		{Kind: "boss", Name: "SBAR 인계 (챕터 시험)", ScenarioID: "SCN-ER-00011"},
 	}},
-	{Ch: 3, Name: "병동 인계와 투약", Dept: "본관 5F 내과 병동", Total: 7},
-	{Ch: 4, Name: "수술 전후 케어", Dept: "본관 3F 수술실 · PACU", Total: 6},
-	{Ch: 5, Name: "중환자실 집중 감시", Dept: "본관 4F ICU", Total: 8},
+	{Ch: 3, Name: "병동 인계와 투약", Dept: "본관 5F 내과 병동 · 중앙약국", Steps: []Step{
+		{Kind: "dlg", Name: "헤파린 더블 체크", ScenarioID: "SCN-PHARMA-00001"},
+		{Kind: "quiz", Name: "구두 처방 받아쓰기", ScenarioID: "SCN-PHARMA-00002"},
+		{Kind: "dlg", Name: "마약류 픽업 · 2인 인증", ScenarioID: "SCN-PHARMA-00004"},
+		{Kind: "event", Name: "돌발 · STAT IV 혼합 콜", ScenarioID: "SCN-PHARMA-00005"},
+		{Kind: "dlg", Name: "인슐린 자가주사 교육", ScenarioID: "SCN-PHARMA-00006"},
+		{Kind: "dlg", Name: "와파린 복약 상담", ScenarioID: "SCN-PHARMA-00007"},
+		{Kind: "boss", Name: "고위험 약물 이중확인 (챕터 시험)", ScenarioID: "SCN-PHARMA-00008"},
+	}},
+	{Ch: 4, Name: "수술 전후 케어", Dept: "본관 3F 수술실 · PACU", Steps: []Step{
+		{Kind: "dlg", Name: "수술 동의 확인", ScenarioID: "SCN-OR-00001"},
+		{Kind: "dlg", Name: "마취 전 문진", ScenarioID: "SCN-OR-00006"},
+		{Kind: "quiz", Name: "수술 부위 표시 확인", ScenarioID: "SCN-OR-00007"},
+		{Kind: "dlg", Name: "수술 전 Time-out 진행", ScenarioID: "SCN-OR-00002"},
+		{Kind: "event", Name: "돌발 · 무균술 유지 대응", ScenarioID: "SCN-OR-00008"},
+		{Kind: "boss", Name: "PACU 인계 (챕터 시험)", ScenarioID: "SCN-OR-00004"},
+	}},
+	{Ch: 5, Name: "중환자실 집중 감시", Dept: "본관 4F ICU", Steps: []Step{
+		{Kind: "dlg", Name: "모니터 알람 해석", ScenarioID: "SCN-ICU-00005"},
+		{Kind: "quiz", Name: "인공호흡기 설정 보고", ScenarioID: "SCN-ICU-00001"},
+		{Kind: "dlg", Name: "인공호흡기 환자 소통", ScenarioID: "SCN-ICU-00006"},
+		{Kind: "dlg", Name: "진정 관리 설명", ScenarioID: "SCN-ICU-00007"},
+		{Kind: "event", Name: "돌발 · Code Blue 콜 응대", ScenarioID: "SCN-ICU-00003"},
+		{Kind: "dlg", Name: "ICU 섬망 대응", ScenarioID: "SCN-ICU-00009"},
+		{Kind: "dlg", Name: "패혈증 상태 설명", ScenarioID: "SCN-ICU-00008"},
+		{Kind: "boss", Name: "임종 가족과의 면담 (챕터 시험)", ScenarioID: "SCN-ICU-00002"},
+	}},
 }
 
 // StepState is a step with its resolved per-user state.
