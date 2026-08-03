@@ -3,7 +3,7 @@
 // main line (이어하기 hero + chapter timeline + roadmap); 건물·층 browses places
 // (building accordions → floor tap opens a dept sheet). The tile-walk campus is
 // demoted to an opt-in ExploreDock. Axis split: 캠퍼스 = 장소·커리큘럼, 상황판 = 시간·피드.
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type Progress, type CurriculumChapter, type DeptSituation } from '@/api/client';
@@ -250,20 +250,48 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
 
   // live department situations (fall back to bundled when no dept code / offline).
   const bundled: DeptSituation[] = (dept?.sits ?? []).map((s) => ({ scenarioId: s.scn ?? '', name: s.name, room: s.room, lv: s.lv, min: s.min, tag: s.tag, urgent: s.urg === 1 }));
+  const PAGE = 20;
   const [sits, setSits] = useState<DeptSituation[]>(bundled);
+  const [hasMore, setHasMore] = useState(false);
+  const loadingRef = useRef(false); // guards concurrent page fetches
+  const offsetRef = useRef(0);
   useEffect(() => {
     let alive = true;
     setSits(bundled);
+    setHasMore(false);
+    offsetRef.current = 0;
     if (dept?.deptCode) {
-      api.deptSituations(dept.deptCode).then((s) => { if (alive && s.length) setSits(s); }).catch(() => {});
+      loadingRef.current = true;
+      api.deptSituations(dept.deptCode, 0, PAGE)
+        .then((r) => {
+          if (!alive) return;
+          if (r.situations.length) { setSits(r.situations); offsetRef.current = r.situations.length; }
+          setHasMore(r.hasMore);
+        })
+        .catch(() => {})
+        .finally(() => { loadingRef.current = false; });
     }
     return () => { alive = false; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dept?.deptCode, dept?.name]);
 
+  // infinite scroll: append the next page as the learner nears the bottom.
+  const loadMoreSits = useCallback(() => {
+    if (!dept?.deptCode || loadingRef.current || !hasMore) return;
+    loadingRef.current = true;
+    api.deptSituations(dept.deptCode, offsetRef.current, PAGE)
+      .then((r) => {
+        setSits((prev) => [...prev, ...r.situations]);
+        offsetRef.current += r.situations.length;
+        setHasMore(r.hasMore);
+      })
+      .catch(() => {})
+      .finally(() => { loadingRef.current = false; });
+  }, [dept?.deptCode, hasMore]);
+
   // stat tiles: derive from live situations for mapped depts, else authored.
   const live = !!dept?.deptCode && sits.length > 0;
-  const clearedTile = live ? `${sits.filter((s) => s.tag === '완료').length}/${sits.length}` : `${dept?.cleared ?? 0}/${dept?.totalSit ?? 0}`;
+  const clearedTile = live ? `${sits.filter((s) => s.tag === '완료').length}/${sits.length}${hasMore ? '+' : ''}` : `${dept?.cleared ?? 0}/${dept?.totalSit ?? 0}`;
   const lvTile = dept?.lv && dept.lv !== '—' ? dept.lv : live ? modeLv(sits) : '—';
 
   return (
@@ -288,7 +316,14 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
             </View>
           </View>
 
-          <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 96 }}>
+          <ScrollView
+            contentContainerStyle={{ padding: 14, paddingBottom: 96 }}
+            scrollEventThrottle={200}
+            onScroll={(e) => {
+              const { layoutMeasurement, contentOffset, contentSize } = e.nativeEvent;
+              if (contentOffset.y + layoutMeasurement.height >= contentSize.height - 240) loadMoreSits();
+            }}
+          >
             {/* 3 stat tiles */}
             <View style={{ flexDirection: 'row', gap: 8, marginBottom: 14 }}>
               {[['권장 레벨', lvTile], ['해결한 상황', clearedTile], ['커리큘럼', chapter ? `CH.${chapter.ch}` : '—']].map(([k, v], i) => (
@@ -352,6 +387,11 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
                 </Shadowed>
               );
             })}
+            {hasMore && (
+              <Pressable onPress={loadMoreSits} style={{ paddingVertical: 12, alignItems: 'center' }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 10.5, color: colors.textSoft }}>더 많은 상황 불러오기 ▾</Text>
+              </Pressable>
+            )}
           </ScrollView>
 
           {/* sticky footer */}

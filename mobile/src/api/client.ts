@@ -334,10 +334,12 @@ export const api = {
     return (data as { scenarios: BoardCard[] }).scenarios ?? [];
   },
 
-  /** Department situation cards (dept-scoped scenarios, tagged 완료/긴급/신규). */
-  async deptSituations(dept: string): Promise<DeptSituation[]> {
-    const { data } = await http.get('/me/situations', { params: { dept } });
-    return (data as { situations: DeptSituation[] }).situations ?? [];
+  /** Department situation cards (dept-scoped scenarios, tagged 완료/긴급/신규),
+   *  paginated so a single-dept learner can scroll the full bank. */
+  async deptSituations(dept: string, offset = 0, limit = 20): Promise<{ situations: DeptSituation[]; hasMore: boolean }> {
+    const { data } = await http.get('/me/situations', { params: { dept, offset, limit } });
+    const d = data as { situations?: DeptSituation[]; hasMore?: boolean };
+    return { situations: d.situations ?? [], hasMore: !!d.hasMore };
   },
 
   /** Chapter/step curriculum with per-user progress (v19 campus hub). */

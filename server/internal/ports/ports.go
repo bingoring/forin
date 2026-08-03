@@ -139,8 +139,9 @@ type ContentReader interface {
 	// MainRoute computes the user's curriculum path (events + unlock states).
 	MainRoute(ctx context.Context, userID, profession string) ([]content.RouteNode, error)
 	// DeptSituations lists a department's scenarios as situation cards (tagged by
-	// difficulty + the user's cleared attempts).
-	DeptSituations(ctx context.Context, userID, dept string) ([]content.DeptSituation, error)
+	// difficulty + the user's cleared attempts), paginated by offset/limit so a
+	// single-department learner can browse the full bank. Returns hasMore.
+	DeptSituations(ctx context.Context, userID, dept string, offset, limit int) ([]content.DeptSituation, bool, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

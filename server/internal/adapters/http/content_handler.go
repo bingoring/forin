@@ -3,6 +3,7 @@ package http
 import (
 	"errors"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
@@ -12,6 +13,18 @@ import (
 )
 
 type contentHandler struct{ content ports.ContentReader }
+
+// atoiDefault parses a query-string int, falling back to def on empty/invalid.
+func atoiDefault(s string, def int) int {
+	if s == "" {
+		return def
+	}
+	n, err := strconv.Atoi(s)
+	if err != nil {
+		return def
+	}
+	return n
+}
 
 // @Summary Content manifest (version)
 // @Tags content
@@ -139,15 +152,20 @@ func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) 
 	}
 	dept := r.URL.Query().Get("dept")
 	if dept == "" {
-		httpx.JSON(w, http.StatusOK, map[string]any{"situations": []content.DeptSituation{}})
+		httpx.JSON(w, http.StatusOK, map[string]any{"situations": []content.DeptSituation{}, "hasMore": false})
 		return
 	}
-	sits, err := h.content.DeptSituations(r.Context(), uid, dept)
+	offset := atoiDefault(r.URL.Query().Get("offset"), 0)
+	limit := atoiDefault(r.URL.Query().Get("limit"), 20)
+	if limit < 1 || limit > 50 {
+		limit = 20 // clamp so a single request can't scan a whole dept
+	}
+	sits, hasMore, err := h.content.DeptSituations(r.Context(), uid, dept, offset, limit)
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not load situations")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits})
+	httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits, "hasMore": hasMore})
 }
 
 // @Summary Economy config (single source of truth mirrored to the client)

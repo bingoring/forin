@@ -322,7 +322,15 @@ func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) 
 // DeptSituations lists a department's scenarios as situation cards (v19 dept
 // sheet), tagged 완료/긴급/신규 from difficulty + the user's cleared attempts.
 // Department = the id prefix (SCN-<DEPT>-*), so a new dept needs no new query.
-func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string) ([]content.DeptSituation, error) {
+// Paginated by offset/limit (stable ORDER BY id) so a single-department learner
+// can scroll the full bank; hasMore is true when more rows follow this page.
+func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, offset, limit int) ([]content.DeptSituation, bool, error) {
+	if limit <= 0 {
+		limit = 20
+	}
+	if offset < 0 {
+		offset = 0
+	}
 	cleared := map[string]bool{}
 	if crows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
 		defer crows.Close()
@@ -334,11 +342,12 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string) (
 		}
 	}
 
+	// Fetch limit+1 to detect whether another page follows, then trim.
 	rows, err := r.pool.Query(ctx,
-		`SELECT id, title, briefing FROM scenarios WHERE id LIKE $1 ORDER BY id LIMIT 8`,
-		"SCN-"+dept+"-%")
+		`SELECT id, title, briefing FROM scenarios WHERE id LIKE $1 ORDER BY id LIMIT $2 OFFSET $3`,
+		"SCN-"+dept+"-%", limit+1, offset)
 	if err != nil {
-		return nil, err
+		return nil, false, err
 	}
 	defer rows.Close()
 	out := []content.DeptSituation{}
@@ -346,7 +355,7 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string) (
 		var id, title string
 		var briefing []byte
 		if err := rows.Scan(&id, &title, &briefing); err != nil {
-			return nil, err
+			return nil, false, err
 		}
 		s := content.DeptSituation{ScenarioID: id, Name: title, Lv: "B1", Min: 6}
 		diff := 2
@@ -378,7 +387,14 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string) (
 		}
 		out = append(out, s)
 	}
-	return out, rows.Err()
+	if err := rows.Err(); err != nil {
+		return nil, false, err
+	}
+	hasMore := len(out) > limit
+	if hasMore {
+		out = out[:limit] // drop the probe row
+	}
+	return out, hasMore, nil
 }
 
 // cefrForDifficulty maps an authored difficulty (1..3) to a CEFR band for display.
