@@ -1251,3 +1251,11 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **배제(결함 아님)**: economy.Active 전역(read-only, 레이스 없음), SM-2 수식, curriculum.Resolve, minutesOf, TZ 수학, rows.Close/인젝션, 모바일 effect/alive/ECON 게이트, setTimeout no-op.
 - **검증**: go build/test 0·tsc 0·jest 208/208·스모크 24/0 재통과·F2/F3 전용 E2E(429·부서당≤2).
 - R-2 문서(0R-review/02) AI_PROPOSED. Operations 진입 사람 승인 대기.
+
+## 2026-08-03 — 콘텐츠: 커리큘럼 챕터 3~5 스텝 저작
+서버 curriculum 카탈로그 ch3~5를 메타데이터(Total만) → 실 스텝(대화/퀴즈/돌발/시험)으로 저작, 각 스텝을 실제 시나리오에 매핑.
+- **CH3 병동 인계와 투약**(7 스텝) → PHARMA 시나리오(헤파린 더블 체크·구두 처방·마약류 2인 인증·STAT IV·인슐린 교육·와파린 상담·고위험 약물 이중확인).
+- **CH4 수술 전후 케어**(6 스텝) → OR(수술 동의·마취 전 문진·부위 표시·Time-out·무균술·PACU 인계).
+- **CH5 중환자실 집중 감시**(8 스텝) → ICU(모니터 알람·인공호흡기 보고/소통·진정 관리·Code Blue·섬망·패혈증·임종 면담).
+- 진행 파생은 기존 Resolve 그대로 — 실 시나리오 클리어로 done/now/lock 전진. 클라 변경 불필요(서버 주도, /me/curriculum).
+- 검증: go build/test 0 · E2E(ER 11 클리어→CH3 now 0/7·CH4/5 lock; PHARMA-00001 클리어→CH3 1/7, next=구두 처방 받아쓰기·스텝 순차) · 스모크 24/0.
