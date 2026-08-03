@@ -42,8 +42,10 @@ export function PixelButton({
   const dx = pressed && !disabled ? offset : 0; // drop into the shadow on press
   return (
     <View style={[styles.wrap, full && styles.full, disabled && { opacity: 0.55 }]}>
-      {/* hard offset shadow (solid, never blurred) — the cap drops into this */}
-      <View style={{ position: 'absolute', left: offset, top: offset, width: '100%', height: '100%', backgroundColor: disabled ? colors.textFaint : shadowColor }} />
+      {/* hard offset shadow (solid, never blurred) — the cap drops into this.
+          Sized via insets (not width/height:100%) so a percentage doesn't resolve
+          against a stretched flex ancestor and smear past the button. */}
+      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: disabled ? colors.textFaint : shadowColor }} />
       <Pressable
         disabled={disabled}
         onPressIn={() => setPressed(true)}
