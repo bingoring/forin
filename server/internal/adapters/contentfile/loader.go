@@ -54,7 +54,10 @@ func Load(dir string) (*content.Bundle, error) {
 	return b, nil
 }
 
-// loadType reads every *.yaml in <pdir>/<typeDir> as a T, defaults its profession, and collects it.
+// loadType reads every *.yaml in <pdir>/<typeDir>, defaults each item's profession,
+// and collects it. A file may hold a single item (mapping) OR a list of items
+// (top-level YAML sequence) — the latter lets bulk/generated content live in one
+// file per department instead of thousands of tiny files.
 func loadType[T any](pdir, typeDir, prof string, collect func(T)) error {
 	glob := filepath.Join(pdir, typeDir, "*.yaml")
 	files, err := filepath.Glob(glob)
@@ -62,8 +65,21 @@ func loadType[T any](pdir, typeDir, prof string, collect func(T)) error {
 		return err
 	}
 	for _, f := range files {
+		data, err := os.ReadFile(f)
+		if err != nil {
+			return fmt.Errorf("%s: %w", f, err)
+		}
+		// Try a list first; fall back to a single item (a mapping won't decode as a list).
+		var list []T
+		if err := yaml.Unmarshal(data, &list); err == nil && len(list) > 0 {
+			for i := range list {
+				setProfessionIfEmpty(&list[i], prof)
+				collect(list[i])
+			}
+			continue
+		}
 		var item T
-		if err := readYAML(f, &item); err != nil {
+		if err := yaml.Unmarshal(data, &item); err != nil {
 			return fmt.Errorf("%s: %w", f, err)
 		}
 		setProfessionIfEmpty(&item, prof)
