@@ -47,6 +47,7 @@
 | 스테이지 | 문서 | 상태 |
 |---------|------|------|
 | R-1 Independent Code Review (2-5 맵 엔진 스코프) | [01-independent-review.md](0R-review/01-independent-review.md) | AI_PROPOSED (HIGH 1·MEDIUM 3·LOW 3·NIT 2 채택·수정; +6 테스트) |
+| R-2 Independent Code Review (2-6~2-8: 런타임·성장·커리큘럼·캠퍼스) | [02-independent-review.md](0R-review/02-independent-review.md) | AI_PROPOSED — 3 분리 에이전트 병렬 리뷰. **채택·수정 5**(Critical 2: warm 칭호 보너스 유실·top-up 레이스; Important 1: dept 캡 누적; Moderate 1: convSeconds 자정 clip; 하드닝 1). 스모크 24/0 재통과 |
 
 ## Phase 3 — Operations (Ship)
 
@@ -59,6 +60,6 @@
 
 ## AI 진입점
 
-> Construction(2-5~2-8) 기능 완료. 2-6 화면·플로우(캠퍼스 v19 허브 포함)·2-7 성장/경제/복습/이벤트·2-8 통합 스모크(24/0) 통과.
-> 다음: **Phase R 독립 코드 리뷰**(시나리오 런타임·성장·커리큘럼·캠퍼스 신규 코드) → Phase 3 Operations. 병행 **콘텐츠 워크스트림**(커리큘럼 챕터 3~5 스텝 시나리오 저작).
+> Construction(2-5~2-8) 완료 + Phase R 리뷰 게이트 통과(R-1 맵 엔진·R-2 런타임/성장/커리큘럼/캠퍼스, 채택 결함 수정·스모크 24/0).
+> 다음: **Phase 3 Operations**(3-1 배포 → 3-2 모니터링). 병행 **콘텐츠 워크스트림**(커리큘럼 챕터 3~5 스텝 시나리오 저작). Operations 진입은 사람 승인 대기.
 > 규칙: [`FRAMEWORK.md`](../../FRAMEWORK.md) 참조

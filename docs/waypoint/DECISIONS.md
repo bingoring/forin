@@ -1239,3 +1239,15 @@ DailyEventSet 소진 시 광고 시청으로 +N(일일 상한) — 도메인 스
 - **발견**: /auth/refresh는 TokenPair 최상위 반환(로그인은 {tokens} 래핑) — 클라 인터셉터가 두 형태 각각 파싱 확인(회귀 없음).
 - **후속(Phase 3 이관)**: AI 비용·지연 모니터링·분석 이벤트·성능/부하·스토어 메타/권한/개인정보. MVP 안정성 게이트는 스모크로 충족.
 - 스테이지 status AI_PROPOSED, STATUS.md·2-8 문서 갱신. 다음 진입점: Phase R 독립 리뷰.
+
+## 2026-08-03 — Phase R-2 독립 코드 리뷰 (Construction→Operations 게이트)
+컨텍스트 분리된 3 서브에이전트(code-reviewer) 병렬 적대적 리뷰. 각 finding 개별 검증(맹목 수용 금지), 오탐 후보 명시 배제.
+- **채택·수정 5**:
+  - F1 Critical: warm 칭호 보너스가 동료 역할 NPC에서 유실(차원 선택 前 적용) → 루프 後로 이동.
+  - F2 Critical: TopUpDailyPool check-then-act 레이스/상한 우회·lost update → tx + SELECT FOR UPDATE 직렬화.
+  - F3 Important: dept 캡이 base+topup 누적 아님 → sampleDailyPool deptSeed로 기존 세트 부서 카운트 시드.
+  - F4 Moderate: convSeconds 자정 걸친 세션 전체 계상 → `mx-GREATEST(mn,since)` clip.
+  - F5 하드닝: ProgressBar div-by-zero 가드.
+- **배제(결함 아님)**: economy.Active 전역(read-only, 레이스 없음), SM-2 수식, curriculum.Resolve, minutesOf, TZ 수학, rows.Close/인젝션, 모바일 effect/alive/ECON 게이트, setTimeout no-op.
+- **검증**: go build/test 0·tsc 0·jest 208/208·스모크 24/0 재통과·F2/F3 전용 E2E(429·부서당≤2).
+- R-2 문서(0R-review/02) AI_PROPOSED. Operations 진입 사람 승인 대기.
