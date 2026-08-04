@@ -4,6 +4,7 @@
 // bank label to assign; submit checks each slot against the reading's label.
 import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import Svg, { Polyline } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
@@ -76,6 +77,13 @@ export function MonitorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
               </Pressable>
             );
           })}
+        </View>
+
+        {/* ECG trace strip — ambient monitor readout (1:1 with handoff) */}
+        <View style={{ marginTop: 8, height: 24, backgroundColor: '#000', borderWidth: 1.5, borderColor: C, overflow: 'hidden' }}>
+          <Svg width="100%" height={24} viewBox="0 0 200 24" preserveAspectRatio="none">
+            <Polyline points="0,12 30,12 32,4 34,20 36,12 80,12 82,4 84,20 86,12 130,12 132,4 134,20 136,12 180,12 200,12" fill="none" stroke="#22D3EE" strokeWidth={1.5} />
+          </Svg>
         </View>
       </View>
 

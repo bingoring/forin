@@ -41,7 +41,12 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
             ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시 정렬" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label={hasTracks ? '📞 콜 시작 (제출)' : '✓ 순서 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            : (
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{placed.length}/{cards.length} 배치됨</Text>
+              <PixelButton label={hasTracks ? '📞 콜 시작' : '✓ 순서 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} />
+            </View>
+          )
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
@@ -50,8 +55,9 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       {hasTracks && (
         <View style={{ flexDirection: 'row', gap: 4, marginBottom: 12 }}>
           {Object.entries(TRACKS).map(([k, tr]) => (
-            <View key={k} style={{ flex: 1, backgroundColor: tr.color, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{k}</Text>
+            <View key={k} style={{ flex: 1, backgroundColor: tr.color, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 2, alignItems: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: '#fff', lineHeight: 13 }}>{k}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 7, color: '#fff', opacity: 0.9, marginTop: 1 }}>{tr.name}</Text>
             </View>
           ))}
         </View>
