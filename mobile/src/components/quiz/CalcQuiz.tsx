@@ -13,11 +13,26 @@ import { PixelButton } from '@/components/PixelButton';
 
 const KEYS = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', '⌫'];
 
+// numEqual compares a keyed entry to the answer numerically (so ".5" === "0.50"),
+// with a tiny tolerance for float dust; falls back to a trimmed string compare
+// when either side isn't a plain number.
+function numEqual(entry: string, answer: string): boolean {
+  const a = entry.trim();
+  const b = (answer ?? '').trim();
+  if (!a) return false;
+  const na = Number(a);
+  const nb = Number(b);
+  if (Number.isFinite(na) && Number.isFinite(nb)) return Math.abs(na - nb) < 1e-6;
+  return a === b;
+}
+
 export function CalcQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
   const [entry, setEntry] = useState('');
   const [checked, setChecked] = useState(false);
-  const correct = checked && entry.trim() === (c.answer ?? '').trim();
+  // Numeric match with tolerance — ".5", "0.5", "0.50" are all the same dose.
+  // Falls back to a trimmed string compare for non-numeric answers.
+  const correct = checked && numEqual(entry, c.answer ?? '');
   const rich = !!(c.order || c.vial || c.desired);
 
   const press = (k: string) => {

@@ -71,7 +71,7 @@ export default function QuizRoute() {
   const onExit = () => router.back();
   const props = { quiz, onExit, onComplete, progress };
   switch (quiz.type) {
-    case 'match_pairs': return <MatchQuiz {...props} />;
+    case 'match_pairs': case 'match': return <MatchQuiz {...props} />;
     case 'listen': return <ListenQuiz {...props} />;
     case 'sbar': case 'order': return <SbarQuiz {...props} />;
     case 'mcq': return <McqQuiz {...props} />;
@@ -102,9 +102,11 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
   const [checked, setChecked] = useState(false);
 
   const usedTiles = new Set(slots.filter((s): s is number => s !== null));
-  const allFilled = slots.every((s) => s !== null);
+  // Guard on blankCount so a mis-routed payload with no template (e.g. a `match`
+  // quiz) can't auto-pass on an empty slot list (`[].every` is vacuously true).
+  const allFilled = blankCount > 0 && slots.every((s) => s !== null);
   const correctness = slots.map((s, b) => s !== null && tiles[s]?.word === answers[b]);
-  const allCorrect = checked && correctness.every(Boolean);
+  const allCorrect = checked && blankCount > 0 && correctness.every(Boolean);
 
   const placeTile = (tileIdx: number) => {
     if (checked || usedTiles.has(tileIdx)) return;
