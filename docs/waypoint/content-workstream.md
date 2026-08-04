@@ -41,6 +41,23 @@ AI가 진료과·병동·티어·카테고리별로 **배치 단위 초안 생�
 
 AI 초안 → (임상/언어) 검수 → 승인 → 적재. 오류·지역차·난이도 라벨 점검. 도구는 2-2에서 정함.
 
+## 구두처방(listen) 퀴즈 실제 오디오·파형 (2026-08)
+
+기존 listen 퀴즈: 소리는 기기 TTS로 진짜 났지만 **파형·재생바·시간은 고정 장식**이었음.
+사용자 요구: 재생하면 바가 이동하며 파형을 색칠하고, **파형이 실제 음성과 일치**.
+
+- **서버 TTS+파형:** azurespeech에 `Synthesize`(Azure TTS, `tts.speech.microsoft.com/v1`,
+  `riff-24khz-16bit-mono-pcm`, 같은 STT 키/리전) 추가. `GET /quizzes/{id}/audio.wav`(합성 WAV,
+  **`http.ServeContent`로 Range/206 지원 — iOS AVPlayer 로드에 필수**) +
+  `GET /quizzes/{id}/audio-meta`(48바 **RMS 진폭 포락선** + durationMs). audioText 해시로 캐시 →
+  반복 재생 비용 0. 진폭은 WAV PCM16을 48버킷 RMS로 다운샘플(실제 loudness 모양).
+- **클라이언트:** WAV를 **로컬 파일로 다운로드 후 재생**(expo-audio) — AVPlayer가 cleartext-http
+  localhost 스트리밍을 ATS로 막으므로 로컬 파일 우회. 재생 위치(currentTime/duration)로 파형 바
+  색칠(played=cyan)+재생헤드 이동+mm:ss 시간, 바 높이는 서버 진폭(실제 모양). 0.7×/1.0× 속도.
+  합성 불가/오프라인이면 기기 TTS+정적 바로 폴백.
+- **검증(시뮬레이터):** 재생 중 `L1P1 t1.5→3.1/5.0`, 재생헤드가 30%→75%로 이동하며 파형 실시간
+  색칠 확인(스크린샷). Range 미지원 시 `L0P0`(로드 실패) → ServeContent로 해결. go/tsc/jest·E2E 24/0.
+
 ## 대량 생성기 (`cmd/gencontent`, 2026-08)
 
 **요구(사용자):** "부서별 최소 100개" — 한 부서만 파는 간호사도 부족함이 없도록. 학습·퀴즈·이벤트 포함, 타 부서 연계 확장성.
