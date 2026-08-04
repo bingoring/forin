@@ -77,21 +77,25 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
               const st = checked && a ? (correctness[i] ? 'correct' : 'wrong') : a ? 'filled' : sel === i ? 'hover' : 'empty';
               const dotBg = st === 'correct' || st === 'filled' ? colors.mint : st === 'wrong' ? '#FCA5A5' : st === 'hover' ? colors.yellow : '#fff';
               return (
-                <Pressable key={i} onPress={() => tapDot(i)} style={{ position: 'absolute', left: `${d.x}%`, top: `${d.y}%`, zIndex: 4 }}>
-                  <View style={{ marginLeft: -10, marginTop: -10, alignItems: 'center' }}>
-                    <View style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: dotBg, borderWidth: 2.5, borderColor: st === 'empty' ? '#9CA3AF' : C, alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{i + 1}</Text>
-                    </View>
-                    {a ? (
-                      <View style={{ marginTop: 2, backgroundColor: dotBg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 4 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}{st === 'correct' ? ' ✓' : st === 'wrong' ? ' ✕' : ''}</Text>
-                      </View>
-                    ) : sel === i ? (
-                      <View style={{ marginTop: 2, borderWidth: 1.5, borderColor: colors.yellowShadow, borderStyle: 'dashed', paddingVertical: 1, paddingHorizontal: 4 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.yellowShadow }}>여기에</Text>
-                      </View>
-                    ) : null}
+                <Pressable key={i} onPress={() => tapDot(i)} style={{ position: 'absolute', left: `${d.x}%`, top: `${d.y}%`, marginLeft: -10, marginTop: -10, zIndex: 4 }}>
+                  {/* dot — fixed 20×20, always centered on the point */}
+                  <View style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: dotBg, borderWidth: 2.5, borderColor: st === 'empty' ? '#9CA3AF' : C, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{i + 1}</Text>
                   </View>
+                  {/* tag — absolute + centered under the dot so its width never shifts the dot */}
+                  {(a || sel === i) && (
+                    <View pointerEvents="none" style={{ position: 'absolute', top: 22, left: -40, width: 100, alignItems: 'center' }}>
+                      {a ? (
+                        <View style={{ backgroundColor: dotBg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 4 }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}{st === 'correct' ? ' ✓' : st === 'wrong' ? ' ✕' : ''}</Text>
+                        </View>
+                      ) : (
+                        <View style={{ borderWidth: 1.5, borderColor: colors.yellowShadow, borderStyle: 'dashed', paddingVertical: 1, paddingHorizontal: 4 }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.yellowShadow }}>여기에</Text>
+                        </View>
+                      )}
+                    </View>
+                  )}
                 </Pressable>
               );
             })}
