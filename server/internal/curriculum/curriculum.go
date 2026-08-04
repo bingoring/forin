@@ -29,6 +29,7 @@ var catalog = []Chapter{
 		{Kind: "dlg", Name: "출근 · 인사와 자기소개", ScenarioID: "SCN-ER-00001"},
 		{Kind: "dlg", Name: "환자 확인 · 신원 대조", ScenarioID: "SCN-ER-00002"},
 		{Kind: "dlg", Name: "주호소 청취", ScenarioID: "SCN-ER-00003"},
+		{Kind: "quiz", Name: "신체 부위 라벨링", ScenarioID: "QZ-GEN-00002"},
 		{Kind: "dlg", Name: "활력징후 안내", ScenarioID: "SCN-ER-00004"},
 		{Kind: "dlg", Name: "대기 안내와 배려", ScenarioID: "SCN-ER-00005"},
 	}},

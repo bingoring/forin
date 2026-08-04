@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useQuizData } from '@/hooks/useQuizData';
+import { api } from '@/api/client';
 import { PixelButton } from '@/components/PixelButton';
 import { MatchQuiz } from '@/components/quiz/MatchQuiz';
 import { ListenQuiz } from '@/components/quiz/ListenQuiz';
@@ -56,18 +57,23 @@ export default function QuizRoute() {
   }
 
   // On clear: advance to the next quiz in the sequence; when the whole sequence is
-  // done, RETURN TO THE DIALOGUE (the quiz is a side activity — resolving the
-  // situation via conversation is the main flow and what ends the scenario).
-  const onComplete = () => {
+  // done, RETURN TO THE DIALOGUE (a dialogue side-quiz) — or, for a STANDALONE quiz
+  // (e.g. a curriculum step, no parent dialogue), record the clear so curriculum
+  // progress advances, then return.
+  const onComplete = async () => {
     if (idx + 1 < queue.length) {
       const sp = new URLSearchParams();
       if (scenario) sp.set('scenario', scenario);
       sp.set('q', queue.join(','));
       sp.set('i', String(idx + 1));
       router.replace(`/quiz/${queue[idx + 1]}?${sp.toString()}`);
-    } else {
-      router.back(); // back to the dialogue that launched the quiz
+      return;
     }
+    if (!scenario) {
+      // standalone quiz → mark it cleared (curriculum steps key on cleared attempts)
+      try { await api.recordAttempt(id, 20); } catch { /* offline: skip */ }
+    }
+    router.back();
   };
   const onExit = () => router.back();
   const props = { quiz, onExit, onComplete, progress };

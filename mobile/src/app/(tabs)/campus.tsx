@@ -47,7 +47,8 @@ export default function Campus() {
     }, []),
   );
 
-  const openScenario = (scn?: string) => scn && router.push(`/scenario/${scn}`);
+  // Quiz steps (QZ-*) open the quiz player; scenario steps open the briefing.
+  const openScenario = (scn?: string) => { if (scn) router.push(scn.startsWith('QZ-') ? `/quiz/${scn}` : `/scenario/${scn}`); };
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
