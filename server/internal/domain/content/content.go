@@ -348,6 +348,19 @@ type QuizContent struct {
 	// listen (waveform): clip duration + an abbreviation glossary.
 	Duration string      `yaml:"duration" json:"duration,omitempty"` // e.g. "0:08"
 	Glossary []QuizGloss `yaml:"glossary" json:"glossary,omitempty"`
+
+	// anatomy (body labeling): dots placed on the patient body diagram, each with
+	// its correct body-part label. `bank` (above) supplies the draggable labels
+	// (the dot labels + distractors).
+	BodyDots []QuizBodyDot `yaml:"bodyDots" json:"bodyDots,omitempty"`
+}
+
+// QuizBodyDot — a labelable point on the patient body diagram (anatomy quiz).
+// X/Y are percentages (0..100) of the body card; Label is the correct body part.
+type QuizBodyDot struct {
+	X     float64 `yaml:"x" json:"x"`
+	Y     float64 `yaml:"y" json:"y"`
+	Label string  `yaml:"label" json:"label"`
 }
 
 // QuizPatient — a triage patient case: demographics, chief complaint, vitals, observations.

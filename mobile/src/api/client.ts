@@ -134,6 +134,8 @@ export interface QuizContent {
   order?: QuizOrder; vial?: QuizVial; desired?: string; onHand?: string; perQty?: string; dhqUnit?: string; syringeMax?: number; secondCheck?: string;
   // listen (waveform)
   duration?: string; glossary?: QuizGloss[];
+  // anatomy (body labeling): dots at x/y % of the body card + their correct label
+  bodyDots?: { x: number; y: number; label: string }[];
 }
 export interface QuizVital { label: string; value: string; unit?: string; warn?: boolean }
 export interface QuizObs { text: string; warn?: boolean }

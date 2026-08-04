@@ -21,6 +21,7 @@ import { GaugeQuiz } from '@/components/quiz/GaugeQuiz';
 import { SpotErrorQuiz } from '@/components/quiz/SpotErrorQuiz';
 import { TriageQuiz } from '@/components/quiz/TriageQuiz';
 import { AbbrQuiz } from '@/components/quiz/AbbrQuiz';
+import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -83,6 +84,7 @@ export default function QuizRoute() {
     case 'spot_error': return <SpotErrorQuiz {...props} />;
     case 'triage': return <TriageQuiz {...props} />;
     case 'abbr': return <AbbrQuiz {...props} />;
+    case 'anatomy': return <AnatomyQuiz {...props} />;
     case 'dialogue_order': return <DialogueOrderQuiz {...props} />;
     default: return <SentenceQuiz quiz={quiz} onExit={onExit} onComplete={onComplete} progress={progress} />;
   }
