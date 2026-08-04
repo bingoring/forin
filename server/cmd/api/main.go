@@ -103,7 +103,7 @@ func main() {
 	handler := httpadapter.NewRouter(httpadapter.Deps{
 		Env: cfg.Env,
 		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
-		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, PG: pool, Redis: rdb,
+		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Synth: speech, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

@@ -146,6 +146,10 @@ export interface QuizDetail {
   id: string; profession: string; type: string; title: string; content?: QuizContent;
 }
 
+// Listen-quiz dictation audio metadata (server: GET /quizzes/{id}/audio-meta).
+// waveform is a 0..100 RMS amplitude envelope of the real synthesized clip.
+export interface QuizAudioMeta { waveform: number[]; durationMs: number; url: string; }
+
 export interface BoardCard {
   id: string; dept: string; title: string; tagline: string; urgency: string; deptColor?: string;
   difficulty?: number; room?: string; npcName?: string; npcSub?: string; skills?: string[]; timeLabel?: string;
@@ -403,6 +407,18 @@ export const api = {
   async quiz(id: string): Promise<QuizDetail> {
     const { data } = await http.get(`/quizzes/${id}`);
     return data as QuizDetail;
+  },
+
+  /** Absolute URL of a listen-quiz's synthesized dictation audio (for the player). */
+  quizAudioUrl(id: string): string {
+    return `${baseURL}/quizzes/${id}/audio.wav`;
+  },
+
+  /** Real amplitude waveform + duration for a listen-quiz's dictation audio. */
+  async quizAudioMeta(id: string): Promise<QuizAudioMeta> {
+    const { data } = await http.get(`/quizzes/${id}/audio-meta`);
+    const d = (data ?? {}) as Partial<QuizAudioMeta>;
+    return { waveform: d.waveform ?? [], durationMs: d.durationMs ?? 0, url: d.url ?? '' };
   },
 
   /** Open a persona-driven session for a scenario. Returns its sessionId. */

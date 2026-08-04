@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/ports"
@@ -136,6 +137,48 @@ func (c *Client) Transcribe(ctx context.Context, audioWav []byte, locale string)
 		return ar.NBest[0].Display, nil
 	}
 	return "", nil // no speech recognized
+}
+
+// Synthesize speaks `text` via Azure Text-to-Speech (same key/region as STT) and
+// returns a WAV (RIFF 24kHz 16-bit mono PCM) — a format we can both play and
+// analyze for a real waveform. voice/locale default to a clear US-English neural voice.
+func (c *Client) Synthesize(ctx context.Context, text, voice, locale string) ([]byte, error) {
+	if !c.Configured() {
+		return nil, errors.New("azurespeech: key/region not configured")
+	}
+	if voice == "" {
+		voice = "en-US-JennyNeural"
+	}
+	if locale == "" {
+		locale = "en-US"
+	}
+	ssml := fmt.Sprintf(`<speak version="1.0" xml:lang="%s"><voice name="%s">%s</voice></speak>`, locale, voice, xmlEscape(text))
+	url := fmt.Sprintf("https://%s.tts.speech.microsoft.com/cognitiveservices/v1", c.region)
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewReader([]byte(ssml)))
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Ocp-Apim-Subscription-Key", c.key)
+	req.Header.Set("Content-Type", "application/ssml+xml")
+	req.Header.Set("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm")
+	req.Header.Set("User-Agent", "forin")
+
+	resp, err := c.http.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	body, _ := io.ReadAll(resp.Body)
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("azurespeech tts: status %d: %s", resp.StatusCode, truncate(body))
+	}
+	return body, nil
+}
+
+// xmlEscape escapes the five XML entities so arbitrary order text is SSML-safe.
+func xmlEscape(s string) string {
+	r := strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;", `"`, "&quot;", "'", "&apos;")
+	return r.Replace(s)
 }
 
 func truncate(b []byte) string {

@@ -1,18 +1,30 @@
-// listen quiz — verbal-order dictation (v17 handoff design). A dark audio card
-// with a pixel speaker + waveform (played=cyan / unplayed=slate + yellow playhead),
-// clip duration, 0.7×/1.0× speed toggles, and a 📝 자막 subtitle reveal. A 🔊 play
-// button speaks the order via on-device TTS (expo-speech); the learner picks the
-// exact read-back from similar-sounding choices. An abbreviation glossary sits below.
-import { useState } from 'react';
+// listen quiz — verbal-order dictation. A dark audio card with a pixel speaker +
+// a REAL waveform: the dictation line is synthesized to audio server-side (Azure
+// TTS, cached), the client plays it (expo-audio) and colors the bars in sync with
+// playback (played=cyan / unplayed=slate + a moving yellow playhead). The bar
+// heights are the clip's actual RMS amplitude envelope, so the shape matches the
+// audio. 0.7×/1.0× speed + a 📝 자막 reveal. Falls back to on-device TTS
+// (expo-speech, static bars) if synthesis is unavailable/offline.
+import { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 import * as Speech from 'expo-speech';
-import type { QuizDetail } from '@/api/client';
+import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import * as FileSystem from 'expo-file-system/legacy';
+import { api, type QuizDetail } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
+// Fallback bar heights, only used when real audio/waveform can't be fetched.
 const WAVE = [6, 12, 18, 10, 22, 14, 8, 16, 28, 18, 24, 12, 8, 14, 20, 30, 22, 16, 8, 12, 18, 26, 14, 8, 10, 16, 22, 28, 18, 12, 8, 14, 20, 16, 10, 18, 24, 12, 8, 14, 20, 16, 10, 6, 12, 18, 8, 14, 20, 10];
+
+const mmss = (sec: number) => {
+  if (!isFinite(sec) || sec < 0) sec = 0;
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+};
 
 export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -24,7 +36,50 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
   const [replays, setReplays] = useState(0);
   const correct = checked && picked !== null && !!choices[picked]?.correct;
 
-  const play = (rate = speed) => { Speech.stop(); Speech.speak(c.audioText ?? '', { language: 'en-US', rate }); setReplays((r) => r + 1); };
+  // Real synthesized audio + amplitude waveform (with graceful TTS fallback).
+  // The clip is downloaded to a local file and played from there — iOS AVPlayer
+  // won't stream cleartext-http localhost (ATS), but plays local files fine.
+  const player = useAudioPlayer(undefined, { updateInterval: 100 });
+  const status = useAudioPlayerStatus(player);
+  const [meta, setMeta] = useState<{ waveform: number[]; durationMs: number } | null>(null);
+  const [ttsFallback, setTtsFallback] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    api.quizAudioMeta(quiz.id)
+      .then((m) => { if (alive) (m.waveform.length ? setMeta(m) : setTtsFallback(true)); })
+      .catch(() => { if (alive) setTtsFallback(true); });
+    (async () => {
+      try {
+        const path = `${FileSystem.cacheDirectory}listen-${quiz.id}.wav`;
+        const info = await FileSystem.getInfoAsync(path);
+        if (!info.exists) await FileSystem.downloadAsync(api.quizAudioUrl(quiz.id), path);
+        if (alive) player.replace({ uri: path });
+      } catch { if (alive) setTtsFallback(true); }
+    })();
+    return () => { alive = false; Speech.stop(); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quiz.id]);
+
+  const bars = meta?.waveform.length ? meta.waveform : WAVE;
+  const barMax = Math.max(1, ...bars);
+  const durationSec = (meta?.durationMs ? meta.durationMs / 1000 : 0) || status.duration || 0;
+  const played = ttsFallback ? 0.52 : durationSec > 0 ? Math.min(1, status.currentTime / durationSec) : 0;
+
+  const play = (rate = speed) => {
+    setReplays((r) => r + 1);
+    if (ttsFallback) { // TTS unavailable → on-device speech, no live waveform
+      Speech.stop(); Speech.speak(c.audioText ?? '', { language: 'en-US', rate });
+      return;
+    }
+    try {
+      player.setPlaybackRate(rate);
+      player.seekTo(0);
+      player.play();
+    } catch {
+      setTtsFallback(true);
+      Speech.stop(); Speech.speak(c.audioText ?? '', { language: 'en-US', rate });
+    }
+  };
 
   return (
     <QuizShell
@@ -48,13 +103,13 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
       <Shadowed offset={3}>
         <View style={{ backgroundColor: '#0F1A24', borderWidth: 3, borderColor: C, padding: 10, paddingTop: 14 }}>
           <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>AUDIO · {c.duration || '0:08'}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>AUDIO · {durationSec > 0 ? mmss(durationSec) : (c.duration || '0:00')}</Text>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-            {/* speaker */}
+            {/* speaker (▶ when idle, ❚❚ pulse while playing) */}
             <Pressable onPress={() => play()}>
               <Shadowed offset={2} shadowColor={colors.mintShadow}>
-                <View style={{ width: 44, height: 44, backgroundColor: colors.mint, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: 44, height: 44, backgroundColor: status.playing ? colors.yellow : colors.mint, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                   <Svg width={22} height={22} viewBox="0 0 22 22">
                     <Rect x={4} y={8} width={3} height={6} fill={C} />
                     <Rect x={7} y={6} width={2} height={10} fill={C} />
@@ -69,18 +124,21 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
                 </View>
               </Shadowed>
             </Pressable>
-            {/* waveform */}
+            {/* waveform — bars are the real amplitude envelope; coloring + playhead track playback */}
             <View style={{ flex: 1 }}>
-              <Svg width="100%" height={40} viewBox="0 0 200 40" preserveAspectRatio="none">
-                {WAVE.map((h, i) => (
-                  <Rect key={i} x={i * 4} y={20 - h / 2} width={3} height={h} fill={i < 26 ? '#22D3EE' : '#475569'} />
-                ))}
-                <Rect x={103} y={0} width={2} height={40} fill="#FEF08A" />
+              <Svg width="100%" height={40} viewBox={`0 0 ${bars.length * 4} 40`} preserveAspectRatio="none">
+                {bars.map((h, i) => {
+                  const barH = 4 + (h / barMax) * 32;
+                  const isPlayed = (i + 0.5) / bars.length <= played;
+                  return <Rect key={i} x={i * 4} y={20 - barH / 2} width={3} height={barH} fill={isPlayed ? '#22D3EE' : '#475569'} />;
+                })}
+                {(status.playing || (played > 0 && played < 1)) && !ttsFallback && (
+                  <Rect x={played * bars.length * 4} y={0} width={2} height={40} fill="#FEF08A" />
+                )}
               </Svg>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 2 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#94A3B8' }}>0:00</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#FEF08A' }}>0:05</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#94A3B8' }}>{c.duration || '0:08'}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#FEF08A' }}>{ttsFallback ? '0:00' : mmss(status.currentTime)}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#94A3B8' }}>{durationSec > 0 ? mmss(durationSec) : (c.duration || '0:00')}</Text>
               </View>
             </View>
           </View>

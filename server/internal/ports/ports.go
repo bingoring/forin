@@ -110,6 +110,14 @@ type PronunciationPort interface {
 	Transcribe(ctx context.Context, audioWav []byte, locale string) (string, error)
 }
 
+// SpeechSynthesizer turns text into speech audio (WAV/PCM16). Used to voice
+// listen-quiz dictation with a real, waveform-analyzable audio clip.
+type SpeechSynthesizer interface {
+	// Synthesize returns a WAV (RIFF PCM16) of `text` spoken in `voice`/`locale`.
+	Synthesize(ctx context.Context, text, voice, locale string) ([]byte, error)
+	Configured() bool
+}
+
 // ConversationSession / Turn are persistence DTOs for dialogue.
 type ConversationSession struct{ ID, UserID, ScenarioID string }
 type ConversationTurn struct{ Role, Content string }

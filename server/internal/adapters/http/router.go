@@ -27,6 +27,7 @@ type Deps struct {
 	Review   ports.ReviewRepo
 	Convo    *conversation.Engine
 	Pron     *pronunciation.Service
+	Synth    ports.SpeechSynthesizer // TTS for listen-quiz audio (optional)
 	PG       *pgxpool.Pool
 	Redis    *redis.Client
 }
@@ -62,6 +63,9 @@ func NewRouter(d Deps) http.Handler {
 	mux.HandleFunc("GET /events", ch.events)
 	mux.HandleFunc("GET /scenarios/{id}", ch.scenario)
 	mux.HandleFunc("GET /quizzes/{id}", ch.quiz)
+	qa := &quizAudioHandler{content: d.Content, synth: d.Synth}
+	mux.HandleFunc("GET /quizzes/{id}/audio.wav", qa.audio)
+	mux.HandleFunc("GET /quizzes/{id}/audio-meta", qa.meta)
 	mux.HandleFunc("GET /board/today", ch.board)
 	mux.HandleFunc("GET /config/economy", ch.economyConfig)
 	mux.Handle("GET /me/route", auth(http.HandlerFunc(ch.mainRoute)))
