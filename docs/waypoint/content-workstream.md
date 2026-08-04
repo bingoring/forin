@@ -58,6 +58,20 @@ AI 초안 → (임상/언어) 검수 → 승인 → 적재. 오류·지역차·�
 - **검증(시뮬레이터):** 재생 중 `L1P1 t1.5→3.1/5.0`, 재생헤드가 30%→75%로 이동하며 파형 실시간
   색칠 확인(스크린샷). Range 미지원 시 `L0P0`(로드 실패) → ServeContent로 해결. go/tsc/jest·E2E 24/0.
 
+## 전체 퀴즈 타입 감사 (2026-08)
+
+16개 타입(15 컴포넌트 + 기본 SentenceQuiz)이 실제 인터랙션·채점·완료 게이팅이 되는지 감사.
+
+- **정상(10):** mcq · match_pairs · check · sbar(+order) · sort · monitor · gauge · spot_error · triage · sentence_build. 탭 선택/배치·정오 채점·정답시에만 완료.
+- **수정한 버그(3):**
+  1. **`match` 타입 dispatch 누락 → 깨짐** — `case 'match'`가 없어 default(SentenceQuiz)로 빠짐.
+     pairs만 있고 template 없음 → 빈 카드 + **자동 통과**(빈 슬롯 `[].every`=true). `match_pairs`와 함께
+     MatchQuiz로 매핑해 수정(시뮬 확인). 방어로 SentenceQuiz `allFilled/allCorrect`에 `blankCount>0` 가드.
+  2. **CalcQuiz 문자열 채점** — `entry===answer`라 `.5`/`0.50`이 오답 처리. 숫자 파싱+허용오차(1e-6)로 수정,
+     비수치는 문자열 폴백.
+- **설계 노트(미변경):** AbbrQuiz는 플래시카드 드릴이라 정답률과 무관하게 완료 가능(다른 타입은 정답 게이팅).
+  의도된 차이로 판단 — 변경 필요시 후속.
+
 ## 대량 생성기 (`cmd/gencontent`, 2026-08)
 
 **요구(사용자):** "부서별 최소 100개" — 한 부서만 파는 간호사도 부족함이 없도록. 학습·퀴즈·이벤트 포함, 타 부서 연계 확장성.
