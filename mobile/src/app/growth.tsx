@@ -9,6 +9,7 @@ import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
+import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { api, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
 import { colors, fonts } from '@/theme/tokens';
@@ -196,7 +197,10 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
   return (
     <View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>★ 칭찬 스티커 보드</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          <PixelIcon name="star" color={C} size={16} sw={1.6} />
+          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>칭찬 스티커 보드</Text>
+        </View>
         <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{earned} / {CAPACITY}</Text>
       </View>
       <Shadowed offset={3}>
@@ -213,20 +217,20 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
                 <Shadowed key={i} offset={3} style={{ width: TILE, height: TILE }}>
                   <Pressable
                     onPress={() => onPick({
-                      icon: s.e, iconBg: s.bg, title: `칭찬 스티커 #${i + 1}`,
+                      icon: s.e, iconNode: iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={34} sw={1.6} /> : undefined, iconBg: s.bg, title: `칭찬 스티커 #${i + 1}`,
                       status: { label: '✓ 획득', bg: colors.mint },
                       what: `시나리오를 성공적으로 마치고 환자에게서 받은 칭찬 스티커예요. 지금까지 ${earned}장 모았어요.`,
                       how: howText,
                     })}
                     style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
-                    <Text style={{ fontSize: 22, color: C }}>{s.e}</Text>
+                    {iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={24} /> : <Text style={{ fontSize: 22, color: C }}>{s.e}</Text>}
                   </Pressable>
                 </Shadowed>
               ) : (
                 <Pressable
                   key={i}
                   onPress={() => onPick({
-                    icon: '➕', iconBg: colors.cream, title: '빈 스티커 칸',
+                    icon: '➕', iconNode: <PixelIcon name="plus" color={C} size={30} sw={1.8} />, iconBg: colors.cream, title: '빈 스티커 칸',
                     status: { label: '🔒 잠김', bg: colors.cream },
                     what: '아직 비어 있는 칸이에요. 시나리오를 클리어하면 이 칸이 칭찬 스티커로 채워져요.',
                     how: howText,

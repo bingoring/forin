@@ -8,6 +8,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
+import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { FacePlayer } from '@engine';
 import { api, type Progress } from '@/api/client';
 import { earnedBadges } from '@/data/badges';
@@ -99,8 +100,9 @@ export default function Me() {
     const tdef = titles.find((x) => x.id === id);
     if (!tdef) return;
     const isEquipped = equipped === id;
+    const tIc = iconFor(tdef.emoji);
     setSheet({
-      icon: tdef.emoji, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? tdef.name : '???',
+      icon: tdef.emoji, iconNode: tIc ? <PixelIcon name={tIc} color={C} size={34} sw={1.6} /> : undefined, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? tdef.name : '???',
       status: { label: isEquipped ? '● 장착 중' : tdef.got ? '✓ 보유' : '🔒 미보유', bg: isEquipped ? colors.yellow : tdef.got ? colors.mint : colors.cream },
       what: tdef.got ? tdef.desc + (tdef.effect ? `\n\n✨ 효과: ${tdef.effect}` : '') : '아직 보유하지 않은 칭호예요.',
       how: tdef.how,
@@ -113,7 +115,7 @@ export default function Me() {
     if (!m) return;
     const done = foundIds.has(id);
     setSheet({
-      icon: done ? '🎉' : '❔', iconBg: done ? colors.mint : colors.cream, title: done ? m.name : '숨겨진 미션',
+      icon: done ? '🎉' : '❔', iconNode: <PixelIcon name={done ? 'burst' : 'question'} color={C} size={34} sw={1.6} />, iconBg: done ? colors.mint : colors.cream, title: done ? m.name : '숨겨진 미션',
       status: { label: done ? '✓ 발견!' : '🔒 미발견', bg: done ? colors.mint : colors.cream },
       what: done ? `히든 미션 '${m.name}'을 발견했어요!` : `힌트: ${m.hint}`,
       how: `보상: ${m.reward}`,
@@ -146,8 +148,8 @@ export default function Me() {
                 <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>RANK</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C }}>{career.label}</Text>
                 {!!equippedTitle && (
-                  <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
-                    <Text style={{ fontSize: 10 }}>{equippedTitle.emoji}</Text>
+                  <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
+                    {iconFor(equippedTitle.emoji) ? <PixelIcon name={iconFor(equippedTitle.emoji)!} color={C} size={13} sw={1.6} /> : <Text style={{ fontSize: 10 }}>{equippedTitle.emoji}</Text>}
                     <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{equippedTitle.name}</Text>
                   </View>
                 )}
@@ -225,22 +227,27 @@ export default function Me() {
         {/* badges */}
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🎖 커리어 뱃지</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <PixelIcon name="medal" color={C} size={16} sw={1.6} />
+              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>커리어 뱃지</Text>
+            </View>
             <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{gotCount} / {BADGE_TOTAL}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {badges.map((b, i) => {
               // earned = white tile + ink shadow; special earned = yellow + NEW ribbon; locked = flat cream.
               const bg = !b.got ? colors.cream : b.special ? colors.yellow : '#fff';
+              const ic = iconFor(b.e);
+              const iconColor = b.got ? C : colors.textFaint;
               const open = () => setSheet({
-                icon: b.e, iconBg: bg, title: b.got ? b.name : '???',
+                icon: b.e, iconNode: ic ? <PixelIcon name={ic} color={C} size={34} sw={1.6} /> : undefined, iconBg: bg, title: b.got ? b.name : '???',
                 status: { label: b.got ? '✓ 획득' : '🔒 잠김', bg: b.got ? colors.mint : colors.cream },
                 what: b.what, how: b.how,
               });
               return (
                 <Shadowed key={i} offset={b.got ? 3 : 0} shadowColor={b.special ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
                   <Pressable onPress={open} style={{ aspectRatio: 1, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 22, opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>
+                    {ic ? <PixelIcon name={ic} color={iconColor} size={24} /> : <Text style={{ fontSize: 22, opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>}
                     <Text style={{ fontFamily: fonts.body, fontSize: 8, color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
                     {b.got && b.special && (
                       <View style={{ position: 'absolute', top: -4, right: -4, backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 3 }}>
@@ -257,7 +264,10 @@ export default function Me() {
         {/* titles (칭호) — tap to view / equip */}
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🏷 칭호</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <PixelIcon name="tag" color={C} size={16} sw={1.6} />
+              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>칭호</Text>
+            </View>
             <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
           </View>
           <View style={{ gap: 8 }}>
@@ -266,7 +276,7 @@ export default function Me() {
               return (
                 <Shadowed key={tt.id} offset={tt.got ? 3 : 0} shadowColor={isEq ? colors.yellowShadow : C + '33'}>
                   <Pressable onPress={() => openTitle(tt.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream, borderWidth: isEq ? 3 : 2, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
-                    <Text style={{ fontSize: 22, opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>
+                    {iconFor(tt.emoji) ? <PixelIcon name={iconFor(tt.emoji)!} color={tt.got ? C : colors.textFaint} size={24} /> : <Text style={{ fontSize: 22, opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
                     <View style={{ flex: 1 }}>
                       <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: tt.got ? C : colors.textFaint }}>{tt.got ? tt.name : '???'}{tt.warm ? ' ✨' : ''}</Text>
                       <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>{tt.got ? tt.desc : tt.how}</Text>
@@ -284,7 +294,10 @@ export default function Me() {
         {/* hidden missions (히든미션) — hint until discovered */}
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>🔍 히든 미션</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <PixelIcon name="search" color={C} size={16} sw={1.6} />
+              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>히든 미션</Text>
+            </View>
             <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{foundIds.size} / {MISSIONS.length}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
@@ -293,7 +306,7 @@ export default function Me() {
               return (
                 <Shadowed key={m.id} offset={done ? 3 : 0} shadowColor={done ? colors.mintShadow : C + '33'} style={{ width: '31.5%' }}>
                   <Pressable onPress={() => openMission(m.id)} style={{ aspectRatio: 1, borderWidth: done ? 3 : 2, borderColor: C, backgroundColor: done ? colors.mint : colors.cream, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 }}>
-                    <Text style={{ fontSize: 22 }}>{done ? '🎉' : '❔'}</Text>
+                    <PixelIcon name={done ? 'burst' : 'question'} color={done ? C : colors.textFaint} size={24} />
                     <Text style={{ fontFamily: fonts.body, fontSize: 8, color: done ? C : colors.textFaint, marginTop: 3, textAlign: 'center' }}>{done ? m.name : '???'}</Text>
                   </Pressable>
                 </Shadowed>

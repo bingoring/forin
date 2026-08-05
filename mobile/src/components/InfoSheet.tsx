@@ -1,6 +1,7 @@
 // InfoSheet — a small pixel-styled bottom modal for showing the detail behind a
 // tapped emoji tile (a career badge or a praise sticker): big icon, title, a
 // status chip (획득/잠김), and a short "무엇인지 / 어떻게 얻는지" body.
+import type { ReactNode } from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
 import { colors, fonts } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
@@ -9,6 +10,7 @@ const C = colors.ink;
 
 export type InfoSheetData = {
   icon: string;
+  iconNode?: ReactNode; // preferred: a line icon (falls back to the `icon` emoji)
   title: string;
   status?: { label: string; bg: string };
   what?: string; // 무엇인지
@@ -28,7 +30,7 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
 
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
             <View style={{ width: 64, height: 64, backgroundColor: data?.iconBg || '#fff', borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 34 }}>{data?.icon}</Text>
+              {data?.iconNode ?? <Text style={{ fontSize: 34 }}>{data?.icon}</Text>}
             </View>
             <View style={{ flex: 1, gap: 6 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C }}>{data?.title}</Text>
