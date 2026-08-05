@@ -167,7 +167,8 @@ export interface DeptSituation {
 export interface CurriculumStep {
   kind: 'dlg' | 'quiz' | 'event' | 'boss';
   name: string; scenarioId?: string;
-  state: 'done' | 'now' | 'lock';
+  state: 'done' | 'now' | 'lock' | 'optional'; // optional = bonus quiz (doesn't gate)
+  optional?: boolean;
 }
 export interface CurriculumChapter {
   ch: number; name: string; dept: string; done: number; total: number;

@@ -140,23 +140,26 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
             <View style={{ position: 'absolute', left: 6, top: 8, bottom: 8, width: 3, backgroundColor: C + '22' }} />
             {cur.steps.map((s, i) => {
               const m = STEP_META[s.kind];
-              const bg = s.state === 'done' ? '#fff' : s.state === 'now' ? m.bg : C + '11';
-              const dot = s.state === 'done' ? colors.mintShadow : s.state === 'now' ? colors.yellowDeep : C + '33';
+              const opt = s.state === 'optional'; // bonus quiz — playable but not required
+              const bg = s.state === 'done' ? '#fff' : s.state === 'now' ? m.bg : opt ? colors.lilac + '2A' : C + '11';
+              const dot = s.state === 'done' ? colors.mintShadow : s.state === 'now' ? colors.yellowDeep : opt ? '#A78BFA' : C + '33';
+              const tappable = s.state === 'now' || opt;
               const inner = (
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: bg, borderWidth: 2.5, borderColor: s.state === 'lock' ? C + '55' : C, paddingVertical: 8, paddingHorizontal: 9, opacity: s.state === 'lock' ? 0.55 : 1 }}>
                   <Text style={{ fontSize: 14 }}>{s.state === 'lock' ? '🔒' : m.icon}</Text>
                   <View style={{ flex: 1, minWidth: 0 }}>
                     <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 15 }}>{s.name}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: colors.textSoft, marginTop: 2 }}>{m.label}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: colors.textSoft, marginTop: 2 }}>{m.label}{opt ? ' · 선택' : ''}</Text>
                   </View>
                   {s.state === 'done' && <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.mintShadow }}>✓</Text>}
                   {s.state === 'now' && <View style={{ backgroundColor: C, paddingVertical: 2, paddingHorizontal: 6 }}><Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>NOW</Text></View>}
+                  {opt && <View style={{ backgroundColor: '#A78BFA', borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: '#fff' }}>보너스</Text></View>}
                 </View>
               );
               return (
                 <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginBottom: 7 }}>
                   <View style={{ position: 'absolute', left: -14, width: 11, height: 11, borderRadius: 6, backgroundColor: dot, borderWidth: 2, borderColor: C }} />
-                  {s.state === 'now'
+                  {tappable
                     ? <Pressable style={{ flex: 1, flexDirection: 'row' }} onPress={() => onResume(s.scenarioId)}>{inner}</Pressable>
                     : inner}
                 </View>

@@ -75,8 +75,14 @@ type StepState struct {
 	Kind       string `json:"kind"`
 	Name       string `json:"name"`
 	ScenarioID string `json:"scenarioId,omitempty"`
-	State      string `json:"state"` // done | now | lock
+	State      string `json:"state"`              // done | now | lock | optional
+	Optional   bool   `json:"optional,omitempty"` // bonus practice; doesn't gate the chapter
 }
+
+// isOptional reports whether a step is supplementary (doesn't gate chapter
+// completion). Quizzes are secondary content — the dialogue/event/boss steps are
+// the required learning spine; a quiz can be played anytime but isn't required.
+func isOptional(kind string) bool { return kind == "quiz" }
 
 // ChapterState is a chapter with resolved progress + step states.
 type ChapterState struct {
@@ -91,27 +97,38 @@ type ChapterState struct {
 }
 
 // Resolve computes per-user chapter/step states from the set of cleared scenario
-// ids. A step is done when its scenario is cleared; the first not-done step in an
-// unlocked chapter is now, the rest lock. A chapter is done when all its steps are
-// done, now when the previous chapter is done, else locked (prerequisite chain).
+// ids. Only REQUIRED steps (dialogue/event/boss) gate progression: total/done and
+// chapter completion count required steps only, and the "now" pointer walks them.
+// Optional steps (quizzes) are bonus practice — playable anytime the chapter is
+// unlocked ("optional" state), done when cleared, but never required to advance.
 func Resolve(cleared map[string]bool) []ChapterState {
 	out := make([]ChapterState, 0, len(catalog))
 	prevDone := true // ch.1 has no prerequisite
 	for _, c := range catalog {
+		// total counts only the required (non-optional) steps.
 		total := c.Total
 		if len(c.Steps) > 0 {
-			total = len(c.Steps)
+			total = 0
+			for _, s := range c.Steps {
+				if !isOptional(s.Kind) {
+					total++
+				}
+			}
 		}
 		cs := ChapterState{Ch: c.Ch, Name: c.Name, Dept: c.Dept, Total: total}
 
-		done := 0
+		done := 0 // required steps cleared
 		nowUsed := false
 		for _, s := range c.Steps {
-			st := StepState{Kind: s.Kind, Name: s.Name, ScenarioID: s.ScenarioID}
+			st := StepState{Kind: s.Kind, Name: s.Name, ScenarioID: s.ScenarioID, Optional: isOptional(s.Kind)}
 			switch {
 			case s.ScenarioID != "" && cleared[s.ScenarioID]:
 				st.State = "done"
-				done++
+				if !st.Optional {
+					done++
+				}
+			case st.Optional:
+				st.State = "optional" // available anytime (this chapter is unlocked); never gates
 			case prevDone && !nowUsed:
 				st.State = "now"
 				nowUsed = true
@@ -131,10 +148,10 @@ func Resolve(cleared map[string]bool) []ChapterState {
 		default:
 			cs.State = "lock"
 		}
-		// A locked chapter shows all steps locked (no premature "now").
+		// A locked chapter shows every step locked (no premature now/optional).
 		if cs.State == "lock" {
 			for i := range cs.Steps {
-				if cs.Steps[i].State == "now" {
+				if cs.Steps[i].State == "now" || cs.Steps[i].State == "optional" {
 					cs.Steps[i].State = "lock"
 				}
 			}
