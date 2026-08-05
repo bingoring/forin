@@ -3,6 +3,7 @@
 // status chip (획득/잠김), and a short "무엇인지 / 어떻게 얻는지" body.
 import { Modal, Pressable, Text, View } from 'react-native';
 import { colors, fonts } from '@/theme/tokens';
+import { PixelButton } from '@/components/PixelButton';
 
 const C = colors.ink;
 
@@ -53,13 +54,13 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
           )}
 
           {!!data?.action && (
-            <Pressable onPress={data.action.onPress} style={{ marginTop: 4, alignSelf: 'stretch', backgroundColor: data.action.bg || colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 11, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{data.action.label}</Text>
-            </Pressable>
+            <View style={{ marginTop: 4 }}>
+              <PixelButton label={data.action.label} bg={data.action.bg || colors.yellow} shadowColor={C} borderWidth={2} paddingV={11} fontSize={13} onPress={data.action.onPress} full />
+            </View>
           )}
-          <Pressable onPress={onClose} style={{ marginTop: data?.action ? 8 : 4, alignSelf: 'stretch', backgroundColor: data?.action ? '#fff' : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>닫기</Text>
-          </Pressable>
+          <View style={{ marginTop: data?.action ? 8 : 4 }}>
+            <PixelButton label="닫기" bg={data?.action ? '#fff' : colors.mint} shadowColor={data?.action ? C : colors.mintShadow} borderWidth={2} paddingV={10} fontSize={13} onPress={onClose} full />
+          </View>
         </Pressable>
       </Pressable>
     </Modal>

@@ -369,9 +369,7 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
                     <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C }}>{chapter.state === 'done' ? '이 챕터를 마쳤어요' : `다음 · ${chapter.next ?? '준비 중'}`}</Text>
                     {chapter.state !== 'done' && (
-                      <Pressable onPress={() => onStart(chapterNowScn)} style={{ backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 11 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 11.5, color: colors.cream }}>▶ 이어하기</Text>
-                      </Pressable>
+                      <PixelButton label="▶ 이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={11.5} borderWidth={2} paddingV={6} paddingH={11} onPress={() => onStart(chapterNowScn)} />
                     )}
                   </View>
                 </View>

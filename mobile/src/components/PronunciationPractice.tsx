@@ -17,6 +17,7 @@ import {
 } from 'expo-audio';
 import { readAsStringAsync, EncodingType } from 'expo-file-system/legacy';
 import { PronunciationScore } from '@/components/PronunciationScore';
+import { PixelButton } from '@/components/PixelButton';
 import { api, type PronunciationResult } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -83,18 +84,14 @@ export function PronunciationPractice({ referenceText }: { referenceText: string
       <Text style={{ fontFamily: fonts.body, fontSize: 13, color: C }}>"{referenceText}"</Text>
 
       {phase === 'recording' ? (
-        <Pressable onPress={stopAndAssess} style={{ backgroundColor: '#FCA5A5', borderWidth: 2, borderColor: C, paddingVertical: 8, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>■ 녹음 중지 · 채점</Text>
-        </Pressable>
+        <PixelButton label="■ 녹음 중지 · 채점" bg="#FCA5A5" shadowColor="#DC2626" borderWidth={2} paddingV={8} fontSize={12} onPress={stopAndAssess} full />
       ) : phase === 'assessing' ? (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 8, justifyContent: 'center' }}>
           <ActivityIndicator color={C} size="small" />
           <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>채점 중…</Text>
         </View>
       ) : (
-        <Pressable onPress={start} style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 8, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>🎤 {phase === 'done' || phase === 'error' ? '다시 녹음' : '녹음 시작'}</Text>
-        </Pressable>
+        <PixelButton label={`🎤 ${phase === 'done' || phase === 'error' ? '다시 녹음' : '녹음 시작'}`} bg={colors.mint} shadowColor={colors.mintShadow} borderWidth={2} paddingV={8} fontSize={12} onPress={start} full />
       )}
 
       {phase === 'error' && <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#DC2626' }}>{err}</Text>}
