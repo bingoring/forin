@@ -12,6 +12,7 @@ import {
   type Building, type Floor, type DeptDetail,
 } from '@/data/campus';
 import { colors, fonts } from '@/theme/tokens';
+import { PixelButton } from '@/components/PixelButton';
 
 // Bundled fallback in server shape (used only while /me/curriculum is loading or offline).
 const FALLBACK_CHAPTERS: CurriculumChapter[] = CURRICULUM.map((c) => ({
@@ -99,7 +100,9 @@ export default function Campus() {
         </Shadowed>
       </View>
 
-      <DeptSheet dept={sheet} chapters={chapters} onClose={() => setSheet(null)} onStart={openScenario} onWalk={() => { setSheet(null); router.push('/interior/INT-ER-00001'); }} />
+      {/* close the sheet before navigating — a RN Modal renders above the pushed
+          screen, so leaving it open would hide the scenario/quiz we open. */}
+      <DeptSheet dept={sheet} chapters={chapters} onClose={() => setSheet(null)} onStart={(scn) => { setSheet(null); openScenario(scn); }} onWalk={() => { setSheet(null); router.push('/interior/INT-ER-00001'); }} />
     </View>
   );
 }
@@ -107,7 +110,12 @@ export default function Campus() {
 // ══ TAB 1 · 커리큘럼 ════════════════════════════════════════════════
 function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onResume: (scn?: string) => void }) {
   const cur = chapters.find((c) => c.state === 'now') ?? chapters[0];
-  const nowStep = cur?.steps?.find((s) => s.state === 'now');
+  // Which chapter's step list is shown below (null = the current one). Tapping a
+  // chapter in the roadmap opens it here — so completed chapters can be revisited.
+  const [viewCh, setViewCh] = useState<number | null>(null);
+  const shown = (viewCh != null ? chapters.find((c) => c.ch === viewCh) : undefined) ?? cur;
+  const reviewing = !!shown && !!cur && shown.ch !== cur.ch;
+  const curNowStep = cur?.steps?.find((s) => s.state === 'now');
   return (
     <View>
       {/* 이어하기 hero */}
@@ -123,27 +131,32 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
               <ProgressBar done={cur.done} total={cur.total} />
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
                 <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: C }}>다음 · {cur.next ?? '준비 중'}</Text>
-                <Pressable onPress={() => onResume(nowStep?.scenarioId)} style={{ backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 7, paddingHorizontal: 13 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12.5, color: colors.cream }}>▶ 이어하기</Text>
-                </Pressable>
+                <PixelButton label="▶ 이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => onResume(curNowStep?.scenarioId)} />
               </View>
             </View>
           </Shadowed>
         </View>
       )}
 
-      {/* chapter timeline */}
-      {cur?.steps && cur.steps.length > 0 && (
+      {/* chapter timeline (of the chapter being viewed — current, or one reopened from the roadmap) */}
+      {shown?.steps && shown.steps.length > 0 && (
         <>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ CHAPTER {cur.ch} 진행 ━━━━━━</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>━ CHAPTER {shown.ch} {reviewing ? '복습' : '진행'} ━━━</Text>
+            {reviewing && (
+              <Pressable onPress={() => setViewCh(null)} style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>현재 챕터 ›</Text>
+              </Pressable>
+            )}
+          </View>
           <View style={{ paddingLeft: 16, marginBottom: 17 }}>
             <View style={{ position: 'absolute', left: 6, top: 8, bottom: 8, width: 3, backgroundColor: C + '22' }} />
-            {cur.steps.map((s, i) => {
+            {shown.steps.map((s, i) => {
               const m = STEP_META[s.kind];
               const opt = s.state === 'optional'; // bonus quiz — playable but not required
               const bg = s.state === 'done' ? '#fff' : s.state === 'now' ? m.bg : opt ? colors.lilac + '2A' : C + '11';
               const dot = s.state === 'done' ? colors.mintShadow : s.state === 'now' ? colors.yellowDeep : opt ? '#A78BFA' : C + '33';
-              const tappable = s.state === 'now' || opt;
+              const tappable = s.state !== 'lock'; // done steps are replayable, now/optional playable
               const inner = (
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: bg, borderWidth: 2.5, borderColor: s.state === 'lock' ? C + '55' : C, paddingVertical: 8, paddingHorizontal: 9, opacity: s.state === 'lock' ? 0.55 : 1 }}>
                   <Text style={{ fontSize: 14 }}>{s.state === 'lock' ? '🔒' : m.icon}</Text>
@@ -173,18 +186,23 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
       <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 전체 로드맵 ━━━━━━━━</Text>
       {chapters.map((c, i) => {
         const lock = c.state === 'lock', now = c.state === 'now';
+        const viewing = shown?.ch === c.ch; // currently shown in the timeline above
+        const row = (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: now ? colors.yellow : viewing ? colors.paper : '#fff', borderWidth: 2.5, borderColor: lock ? C + '55' : C, paddingVertical: 9, paddingHorizontal: 10, opacity: lock ? 0.6 : 1 }}>
+            <View style={{ width: 26, height: 26, backgroundColor: c.state === 'done' ? colors.mint : now ? C : C + '18', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: now ? colors.cream : C }}>{c.state === 'done' ? '✓' : lock ? '🔒' : c.ch}</Text>
+            </View>
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 15 }}>{c.name}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{c.dept} · {c.done}/{c.total}</Text>
+            </View>
+            {!lock && <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{viewing ? '보는 중' : '›'}</Text>}
+          </View>
+        );
         return (
           <Shadowed key={i} offset={lock ? 0 : 2.5} style={{ marginBottom: 8 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: now ? colors.yellow : '#fff', borderWidth: 2.5, borderColor: lock ? C + '55' : C, paddingVertical: 9, paddingHorizontal: 10, opacity: lock ? 0.6 : 1 }}>
-              <View style={{ width: 26, height: 26, backgroundColor: c.state === 'done' ? colors.mint : now ? C : C + '18', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: now ? colors.cream : C }}>{c.state === 'done' ? '✓' : lock ? '🔒' : c.ch}</Text>
-              </View>
-              <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 15 }}>{c.name}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{c.dept} · {c.done}/{c.total}</Text>
-              </View>
-              {!lock && <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>›</Text>}
-            </View>
+            {/* tapping an unlocked chapter opens its steps in the timeline above */}
+            {lock ? row : <Pressable onPress={() => setViewCh(c.ch)}>{row}</Pressable>}
           </Shadowed>
         );
       })}
@@ -384,9 +402,7 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
                       <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 15 }}>{s.name}</Text>
                       <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
                     </View>
-                    <Pressable onPress={() => onStart(s.scenarioId)} style={{ backgroundColor: done ? '#fff' : C, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 9 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: done ? C : colors.cream }}>{done ? '복습' : '시작'}</Text>
-                    </Pressable>
+                    <PixelButton label={done ? '복습' : '시작'} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
                   </View>
                 </Shadowed>
               );
@@ -400,16 +416,10 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
 
           {/* sticky footer */}
           <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: colors.cream, borderTopWidth: 3, borderTopColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', gap: 8 }}>
-            <Shadowed offset={2.5} style={{ flex: 1 }}>
-              <Pressable onPress={() => onStart(sits.find((x) => x.tag !== '완료')?.scenarioId ?? chapterNowScn)} style={{ backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.cream }}>▶ 다음 상황 시작</Text>
-              </Pressable>
-            </Shadowed>
-            <Shadowed offset={2.5}>
-              <Pressable onPress={onWalk} style={{ backgroundColor: colors.lilac, borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 12, alignItems: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>🎮 걸어보기</Text>
-              </Pressable>
-            </Shadowed>
+            <View style={{ flex: 1 }}>
+              <PixelButton label="▶ 다음 상황 시작" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} fontSize={13} borderWidth={2.5} paddingV={10} onPress={() => onStart(sits.find((x) => x.tag !== '완료')?.scenarioId ?? chapterNowScn)} full />
+            </View>
+            <PixelButton label="🎮 걸어보기" bg={colors.lilac} shadowColor={C} fontSize={12} borderWidth={2.5} paddingV={10} paddingH={12} onPress={onWalk} />
           </View>
         </View>
       )}

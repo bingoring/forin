@@ -10,6 +10,7 @@ import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'rea
 import { useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
+import { PixelButton } from '@/components/PixelButton';
 
 const C = colors.ink;
 
@@ -270,16 +271,12 @@ function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
 
         {/* action rail */}
         <View style={{ flexDirection: 'row', gap: 6, marginTop: 9 }}>
-          <Pressable onPress={onPress} style={{ flex: 1 }}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>📍 위치 보기</Text>
-            </View>
-          </Pressable>
-          <Pressable onPress={onPress} style={{ flex: 2 }}>
-            <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>▶ 진행하기</Text>
-            </View>
-          </Pressable>
+          <View style={{ flex: 1 }}>
+            <PixelButton label="📍 위치 보기" bg="#fff" shadowColor={C} fontSize={10} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
+          </View>
+          <View style={{ flex: 2 }}>
+            <PixelButton label="▶ 진행하기" bg={colors.mint} shadowColor={colors.mintShadow} fontSize={11} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
+          </View>
         </View>
       </View>
     </Shadowed>
