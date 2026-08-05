@@ -147,13 +147,9 @@ export default function ReviewSession() {
               <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, textAlign: 'center' }}>얼마나 잘 기억했나요?</Text>
               <View style={{ flexDirection: 'row', gap: 6 }}>
                 {GRADES.map(({ g, label, bg }) => (
-                  <Pressable key={g} onPress={() => grade(g)} style={{ flex: 1 }}>
-                    <Shadowed offset={2}>
-                      <View style={{ backgroundColor: bg, borderWidth: 2, borderColor: C, paddingVertical: 9, alignItems: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{label}</Text>
-                      </View>
-                    </Shadowed>
-                  </Pressable>
+                  <View key={g} style={{ flex: 1 }}>
+                    <PixelButton label={label} bg={bg} shadowColor={C} offset={2} fontSize={12} borderWidth={2} paddingV={9} onPress={() => grade(g)} full />
+                  </View>
                 ))}
               </View>
             </View>

@@ -278,11 +278,9 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           {/* grade buttons */}
           <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
             {GRADES.map(({ g, label, bg }) => (
-              <Pressable key={g} onPress={() => onGrade(card.id, g)} style={{ flex: 1 }}>
-                <View style={{ backgroundColor: bg, borderWidth: 2, borderColor: C, paddingVertical: 7, alignItems: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{label}</Text>
-                </View>
-              </Pressable>
+              <View key={g} style={{ flex: 1 }}>
+                <PixelButton label={label} bg={bg} shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={7} onPress={() => onGrade(card.id, g)} full />
+              </View>
             ))}
           </View>
         </View>
