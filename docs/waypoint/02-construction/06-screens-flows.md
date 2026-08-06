@@ -49,6 +49,21 @@ updated: 2026-06-12
 
 *[승인 후 작성]*
 
+## 온보딩 화면 구현 (2026-08)
+
+핸드오프(screens-onboarding) 4단계 온보딩을 실제 UI로 구현. 진입 게이트(index.tsx):
+미인증 → `/splash` → 로그인 → 로케일 → 직업 → 레벨 → 캠퍼스.
+
+- **Splash**(앱 첫 화면): 밴드형 하늘 그라디언트(peach→mint) + 픽셀 구름·태양·비행기 +
+  yellow 픽셀 그림자 `forin` 워드마크 + "▶ 처음 시작하기" + 로그인 링크.
+- **Login**: mint→cream 그라디언트 + 워드마크 + 3개 One-Tap 버튼(Google/Apple/Kakao,
+  크리스프 SVG 글리프 + 하드 픽셀 그림자) + 약관 문구 + 개발자 로그인(dev only).
+- **Locale**: 이모지 국기 → **픽셀 국기**(태극기/일장기/성조기/독일기)로 교체(이모지 지양 방침).
+- **Job/Level**: 기존 구현이 핸드오프와 이미 일치 → 유지.
+- 공용 픽셀 아트: `components/onboardingArt.tsx`(VertGradient 밴드 그라디언트[native
+  expo-linear-gradient 불필요] + Cloud/PixelSun/PixelPlane + 프로바이더 글리프 + FLAGS).
+- 검증: tsc·jest 209 + 시뮬(splash/login/locale/job 렌더 확인).
+
 ## 검토 게이트 (Human Gate)
 
 - [ ] 화면·카피·상호작용이 핸드오프와 일치하는가?
