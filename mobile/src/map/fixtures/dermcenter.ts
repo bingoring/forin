@@ -45,7 +45,7 @@ export const DERMCENTER_INTERIOR: Interior = {
   ],
   objects: [
     // ── structural openings ──
-    { id: 'd-campus', type: 'door', x: 13, y: 0, props: { w: 3, h: 1, kind: 'auto', label: '↓ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 13, y: 0, props: { w: 3, h: 1, kind: 'auto', label: '↓ 커리어로' } },
     { id: 'th-e1', type: 'threshold', x: 5, y: 13, props: { w: 3, h: 1, label: '→ 진료실' } },
     { id: 'th-e2', type: 'threshold', x: 13, y: 13, props: { w: 3, h: 1, label: '→ 진료실 2' } },
     { id: 'th-ex', type: 'threshold', x: 13, y: 18, props: { w: 1, h: 3 } },

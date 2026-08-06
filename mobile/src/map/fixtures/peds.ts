@@ -48,7 +48,7 @@ export const PEDS_INTERIOR: Interior = {
     // welcome play mat (opaque salmon floor mat + dashed border, per handoff)
     { id: 'o-play-mat', type: 'playmat', x: 20, y: 3, props: { w: 12, h: 8 } },
     // exterior campus auto door
-    { id: 'd-campus', type: 'door', x: 15, y: 0, props: { w: 3, kind: 'auto', label: '↓ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 15, y: 0, props: { w: 3, kind: 'auto', label: '↓ 커리어로' } },
     // internal thresholds
     { id: 'th-exam', type: 'threshold', x: 5, y: 14, props: { w: 3, h: 1, label: '→ 진료실' } },
     { id: 'th-ward', type: 'threshold', x: 16, y: 14, props: { w: 3, h: 1, label: '→ 병동' } },

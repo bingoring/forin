@@ -193,7 +193,7 @@ export function ElevatorScreen({
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.paper }} edges={['top', 'bottom']}>
       {/* top bar */}
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 10 }}>
-        <Pressable onPress={onClose} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: 18, color: INK }}>‹ 캠퍼스</Text></Pressable>
+        <Pressable onPress={onClose} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: 18, color: INK }}>‹ 커리어</Text></Pressable>
         <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: INK }}>🛗 엘리베이터</Text>
         <Text style={{ fontSize: 16 }}>　</Text>
       </View>

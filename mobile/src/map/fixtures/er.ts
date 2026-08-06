@@ -109,7 +109,7 @@ export const ER_INTERIOR: Interior = {
     // ── exterior auto doors (top: ambulance + entrance, bottom: campus + decon) ──
     { id: 'd-amb', type: 'door', x: 4, y: 0, props: { w: 4, kind: 'auto', label: '🚑 AMBULANCE' } },
     { id: 'd-main', type: 'door', x: 18, y: 0, props: { w: 4, kind: 'auto', label: '정문 ENTRANCE' } },
-    { id: 'd-campus', type: 'door', x: 18, y: 59, props: { w: 4, kind: 'auto', label: '↓ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 18, y: 59, props: { w: 4, kind: 'auto', label: '↓ 커리어로' } },
     { id: 'd-deconext', type: 'door', x: 34, y: 59, props: { w: 3, kind: 'auto', label: '🚿 외부' } },
     // ── internal zone thresholds (leafless openings) ──
     { id: 'th-y16-a', type: 'threshold', x: 5, y: 16, props: { w: 3, h: 1, label: '→ 소생실' } },

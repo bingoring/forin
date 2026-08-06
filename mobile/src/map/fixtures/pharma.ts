@@ -54,7 +54,7 @@ export const PHARMA_INTERIOR: Interior = {
   objects: [
     // ── structural openings ──
     { id: 'd-nurse', type: 'door', x: 0, y: 4, props: { w: 1, h: 2, kind: 'auto', label: '간호사 출입' } },
-    { id: 'd-campus', type: 'door', x: 15, y: 41, props: { w: 3, h: 1, kind: 'auto', label: '↑ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 15, y: 41, props: { w: 3, h: 1, kind: 'auto', label: '↑ 커리어로' } },
     { id: 'th-staff', type: 'threshold', x: 6, y: 12, props: { w: 2, h: 1, label: 'STAFF ONLY' } },
     { id: 'th-ante', type: 'threshold', x: 20, y: 12, props: { w: 2, h: 1, tone: 'sterile', label: '무균 전실' } },
     { id: 'th-vault', type: 'threshold', x: 5, y: 28, props: { w: 2, h: 1, tone: 'sterile', label: '마약류 보관고' } },

@@ -14,7 +14,7 @@ export const WOMENKIDS_INTERIOR: Interior = {
   rows: 40,
   floorTheme: 'peds',
   scale: 0.9,
-  playerStart: { x: 4, y: 8 }, // lobby by the ↓ 캠퍼스/엘리베이터 door
+  playerStart: { x: 4, y: 8 }, // lobby by the ↓ 커리어/엘리베이터 door
   regions: [
     { id: 'play', name: '키즈 놀이광장', icon: '🛝', bounds: { x: 0, y: 9, w: 14, h: 16 } },
     { id: 'pedopd', name: '소아청소년과 외래', icon: '🧸', bounds: { x: 13, y: 9, w: 15, h: 16 } },
@@ -30,7 +30,7 @@ export const WOMENKIDS_INTERIOR: Interior = {
     { id: 'usroom', name: '초음파실', sub: '태아 초음파', icon: '📡', color: '#DDD6FE', x: 21, y: 32 },
   ],
   collision: [
-    // outer walls — TOP 캠퍼스/엘리베이터 door gap x12-14
+    // outer walls — TOP 커리어/엘리베이터 door gap x12-14
     { x: 0, y: 0, w: 12, h: 1 }, { x: 15, y: 0, w: 13, h: 1 },
     { x: 0, y: 1, w: 1, h: 38 }, { x: 27, y: 1, w: 1, h: 38 },
     { x: 0, y: 39, w: 28, h: 1 },
@@ -45,7 +45,7 @@ export const WOMENKIDS_INTERIOR: Interior = {
   ],
   objects: [
     // ── structural openings ──
-    { id: 'd-campus', type: 'door', x: 12, y: 0, props: { w: 3, h: 1, kind: 'auto', label: '↓ 캠퍼스/엘리베이터' } },
+    { id: 'd-campus', type: 'door', x: 12, y: 0, props: { w: 3, h: 1, kind: 'auto', label: '↓ 커리어/엘리베이터' } },
     { id: 'th-play', type: 'threshold', x: 6, y: 9, props: { w: 2, h: 1, label: '→ 놀이광장' } },
     { id: 'th-ped', type: 'threshold', x: 13, y: 9, props: { w: 2, h: 1, label: '→ 소아 외래' } },
     { id: 'th-ob', type: 'threshold', x: 6, y: 24, props: { w: 2, h: 1, label: '→ 산부인과' } },

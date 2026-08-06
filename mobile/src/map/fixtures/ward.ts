@@ -54,7 +54,7 @@ export const WARD_INTERIOR: Interior = {
   ],
   objects: [
     // ── structural openings ──
-    { id: 'd-campus', type: 'door', x: 0, y: 14, props: { w: 1, h: 3, kind: 'auto', label: '← 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 0, y: 14, props: { w: 1, h: 3, kind: 'auto', label: '← 커리어로' } },
     { id: 'th-l', type: 'threshold', x: 5, y: 10, props: { w: 2, h: 1, label: '→ 복도' } },
     { id: 'th-c', type: 'threshold', x: 13, y: 10, props: { w: 2, h: 1, label: '→ 복도' } },
     { id: 'th-d', type: 'threshold', x: 21, y: 10, props: { w: 2, h: 1 } },

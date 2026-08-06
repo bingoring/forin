@@ -337,7 +337,7 @@ export function InteriorScreen({
         style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 10 }}
       >
         <Pressable onPress={onExit} hitSlop={10}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.topBar, color: colors.ink }}>‹ 캠퍼스</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.topBar, color: colors.ink }}>‹ 커리어</Text>
         </Pressable>
         <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.topBar, color: colors.ink }}>
           {deptName ?? interior.deptId}

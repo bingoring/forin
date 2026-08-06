@@ -60,7 +60,7 @@ export const ICU_INTERIOR: Interior = {
     { id: 'g-h3a', type: 'glass', x: 17, y: 17, props: { w: 3, h: 1 } }, { id: 'd-r3', type: 'door', x: 20, y: 17, props: { w: 1, kind: 'auto' } }, { id: 'g-h3b', type: 'glass', x: 21, y: 17, props: { w: 3, h: 1 } },
     { id: 'g-h4a', type: 'glass', x: 25, y: 17, props: { w: 3, h: 1 } }, { id: 'd-r4', type: 'door', x: 28, y: 17, props: { w: 1, kind: 'auto' } }, { id: 'g-h4b', type: 'glass', x: 29, y: 17, props: { w: 4, h: 1 } },
     // bottom campus door + support thresholds
-    { id: 'd-campus', type: 'door', x: 6, y: 43, props: { w: 3, kind: 'auto', label: '↓ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 6, y: 43, props: { w: 3, kind: 'auto', label: '↓ 커리어로' } },
     { id: 'th-fam', type: 'threshold', x: 5, y: 30, props: { w: 3, h: 1, label: '→ 면회' } },
     { id: 'th-dirty', type: 'threshold', x: 13, y: 30, props: { w: 3, h: 1, label: '→ 오염' } },
     { id: 'th-med', type: 'threshold', x: 22, y: 30, props: { w: 3, h: 1, label: '→ MED' } },

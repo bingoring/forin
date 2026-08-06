@@ -56,7 +56,7 @@ export default function Campus() {
       {/* ── fixed header: title + Lv + streak, then segmented tabs ── */}
       <View style={{ paddingTop: 50, paddingHorizontal: 14, backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C }}>캠퍼스</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C }}>커리어</Text>
           <Shadowed offset={2} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>Lv.{enLevel}</Text>
@@ -90,7 +90,7 @@ export default function Campus() {
           <Pressable onPress={() => router.push('/interior/CAMPUS-00001')} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
             <Text style={{ fontSize: 17 }}>🎮</Text>
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>캠퍼스 탐험 모드</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>커리어 탐험 모드</Text>
               <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, marginTop: 1 }}>직접 걸어다니며 NPC 만나기 · 선택 기능</Text>
             </View>
             <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>

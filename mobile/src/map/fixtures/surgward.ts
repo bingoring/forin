@@ -46,7 +46,7 @@ export const SURGWARD_INTERIOR: Interior = {
   ],
   objects: [
     // ── structural openings ──
-    { id: 'd-campus', type: 'door', x: 0, y: 14, props: { w: 1, h: 3, kind: 'auto', label: '← 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 0, y: 14, props: { w: 1, h: 3, kind: 'auto', label: '← 커리어로' } },
     { id: 'th-l', type: 'threshold', x: 5, y: 10, props: { w: 2, h: 1, label: '→ 복도' } },
     { id: 'th-dr', type: 'threshold', x: 13, y: 10, props: { w: 3, h: 1, tone: 'sterile', label: '→ 처치실' } },
     { id: 'th-lv', type: 'threshold', x: 9, y: 6, props: { w: 1, h: 3 } },

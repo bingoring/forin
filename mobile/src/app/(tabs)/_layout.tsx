@@ -4,7 +4,7 @@ import { Tabs } from 'expo-router';
 import { colors, fonts } from '@/theme/tokens';
 import { CampusIcon, BoardIcon, LabIcon, MeIcon } from '@/components/TabIcons';
 
-// Bottom nav: 캠퍼스 / 상황판 / 리뷰랩 / 나. Black-line SVG icons (app's ink-outline
+// Bottom nav: 커리어 / 상황판 / 리뷰랩 / 프로필. Black-line SVG icons (app's ink-outline
 // style) above the label, active tab on a mint cell.
 type IconCmp = (p: { color: string; size?: number }) => ReactNode;
 const tabIcon = (Icon: IconCmp) =>
@@ -25,10 +25,10 @@ export default function TabsLayout() {
         tabBarIconStyle: { marginBottom: -2 },
       }}
     >
-      <Tabs.Screen name="campus" options={{ title: '캠퍼스', tabBarIcon: tabIcon(CampusIcon) }} />
+      <Tabs.Screen name="campus" options={{ title: '커리어', tabBarIcon: tabIcon(CampusIcon) }} />
       <Tabs.Screen name="board" options={{ title: '상황판', tabBarIcon: tabIcon(BoardIcon) }} />
       <Tabs.Screen name="lab" options={{ title: '리뷰랩', tabBarIcon: tabIcon(LabIcon) }} />
-      <Tabs.Screen name="me" options={{ title: '나', tabBarIcon: tabIcon(MeIcon) }} />
+      <Tabs.Screen name="me" options={{ title: '프로필', tabBarIcon: tabIcon(MeIcon) }} />
     </Tabs>
   );
 }

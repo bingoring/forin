@@ -62,7 +62,7 @@ export const OR_INTERIOR: Interior = {
     { id: 't-or1', type: 'tint', x: 1, y: 32, props: { w: 14, h: 19, color: '#CDE3D6', op: 0.28 } },
     { id: 't-or2', type: 'tint', x: 24, y: 32, props: { w: 15, h: 19, color: '#CDE3D6', op: 0.28 } },
     // exterior auto door (campus)
-    { id: 'd-campus', type: 'door', x: 17, y: 0, props: { w: 4, kind: 'auto', label: '↓ 캠퍼스로' } },
+    { id: 'd-campus', type: 'door', x: 17, y: 0, props: { w: 4, kind: 'auto', label: '↓ 커리어로' } },
     // thresholds (y14)
     { id: 'th-y14-a', type: 'threshold', x: 5, y: 14, props: { w: 3, h: 1, label: '→ Pre-Op' } },
     { id: 'th-y14-b', type: 'threshold', x: 17, y: 14, props: { w: 3, h: 1, label: '→ 복도' } },
