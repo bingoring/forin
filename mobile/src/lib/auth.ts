@@ -6,6 +6,7 @@
 // (SOCIAL_CONFIG); until they're set, the login screen disables those buttons.
 // The obtained id_token's audience must equal the server's GOOGLE_CLIENT_ID /
 // KAKAO_CLIENT_ID for /auth/social to verify it.
+import { Platform } from 'react-native';
 import * as AppleAuthentication from 'expo-apple-authentication';
 
 import { api } from '@/api/client';
@@ -18,12 +19,14 @@ export type Provider = 'google' | 'apple' | 'kakao';
 // configured → the login screen keeps that provider disabled.
 export const SOCIAL_CONFIG = {
   googleIosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? '',
+  googleAndroidClientId: process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? '',
   googleWebClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? '',
   kakaoRestApiKey: process.env.EXPO_PUBLIC_KAKAO_REST_API_KEY ?? '',
 };
 export function isProviderConfigured(provider: Provider): boolean {
   if (provider === 'apple') return true; // native, no client-side key
-  if (provider === 'google') return !!SOCIAL_CONFIG.googleIosClientId; // iOS hook requires iosClientId
+  // The Google auth hook needs the client ID for THIS platform (iOS/Android).
+  if (provider === 'google') return !!(Platform.OS === 'android' ? SOCIAL_CONFIG.googleAndroidClientId : SOCIAL_CONFIG.googleIosClientId);
   return !!SOCIAL_CONFIG.kakaoRestApiKey; // kakao
 }
 

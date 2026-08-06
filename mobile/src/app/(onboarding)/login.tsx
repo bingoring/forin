@@ -51,6 +51,7 @@ function OneTap({ bg, color, shadow, icon, label, disabled, onPress }: {
 function GoogleButton({ busy, complete }: { busy: boolean; complete: Complete }) {
   const [, res, prompt] = Google.useAuthRequest({
     iosClientId: SOCIAL_CONFIG.googleIosClientId || undefined,
+    androidClientId: SOCIAL_CONFIG.googleAndroidClientId || undefined,
     webClientId: SOCIAL_CONFIG.googleWebClientId || undefined,
   });
   useEffect(() => {
