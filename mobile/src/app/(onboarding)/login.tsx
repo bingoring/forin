@@ -1,17 +1,32 @@
 // Onboarding 1 — one-tap sign-in (handoff ScreenLogin). A soft pixel sky
 // (mint→cream) with clouds and the forin wordmark over three provider One-Tap
-// buttons (Google / Apple / Kakao) with crisp SVG glyphs, then terms text. Social
-// sign-in hits the server /auth/social → JWT (secure-store); a dev bypass lets
-// you walk the app in Expo Go where real provider auth needs a native build.
-import { useState } from 'react';
+// buttons (Google / Apple / Kakao) with crisp SVG glyphs, then terms text.
+//
+// Apple → native (expo-apple-authentication). Google → expo-auth-session Google
+// provider (OIDC id_token). Kakao → expo-auth-session code flow + token exchange
+// (Kakao issues an id_token when `openid` is granted). Each id_token is POSTed to
+// /auth/social, which OIDC-verifies it. Client IDs come from env (SOCIAL_CONFIG);
+// a provider's real button (which owns the auth hook) mounts ONLY when its client
+// ID is set — otherwise a "설정 필요" placeholder shows, so the hook never runs
+// with an empty client ID (which throws). A dev bypass covers Expo Go.
+import { useEffect, useState } from 'react';
 import { Alert, Pressable, Text, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { signIn, devSignIn, syncOnboarded, type Provider } from '@/lib/auth';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
+import * as AuthSession from 'expo-auth-session';
+import { completeSocialLogin, signInApple, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured } from '@/lib/auth';
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
 import { colors, fonts } from '@/theme/tokens';
 
+// Lets the auth popup redirect back and dismiss the in-app browser.
+WebBrowser.maybeCompleteAuthSession();
+
 const C = colors.ink;
+const KAKAO_ISSUER = 'https://kauth.kakao.com';
+
+type Complete = (label: string, run: () => Promise<void>) => void;
 
 // One-Tap provider button — icon + label, hard pixel shadow (handoff OneTapButton).
 function OneTap({ bg, color, shadow, icon, label, disabled, onPress }: {
@@ -32,37 +47,75 @@ function OneTap({ bg, color, shadow, icon, label, disabled, onPress }: {
   );
 }
 
+// Google — owns the auth hook, so it mounts ONLY when configured (see Login).
+function GoogleButton({ busy, complete }: { busy: boolean; complete: Complete }) {
+  const [, res, prompt] = Google.useAuthRequest({
+    iosClientId: SOCIAL_CONFIG.googleIosClientId || undefined,
+    webClientId: SOCIAL_CONFIG.googleWebClientId || undefined,
+  });
+  useEffect(() => {
+    if (res?.type !== 'success') return;
+    const idToken = res.authentication?.idToken ?? (res.params as Record<string, string> | undefined)?.id_token;
+    if (idToken) complete('Google', () => completeSocialLogin('google', idToken));
+    else Alert.alert('Google 로그인 실패', 'ID 토큰을 받지 못했어요.');
+  }, [res]); // eslint-disable-line react-hooks/exhaustive-deps
+  return <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label="Google로 계속하기" disabled={busy || !prompt} onPress={() => prompt?.()} />;
+}
+
+// Kakao — code flow → token exchange → id_token. Mounts ONLY when configured.
+function KakaoButton({ busy, complete }: { busy: boolean; complete: Complete }) {
+  const discovery = AuthSession.useAutoDiscovery(KAKAO_ISSUER);
+  const redirectUri = AuthSession.makeRedirectUri({ scheme: 'forin' });
+  const [req, res, prompt] = AuthSession.useAuthRequest(
+    {
+      clientId: SOCIAL_CONFIG.kakaoRestApiKey,
+      redirectUri,
+      responseType: AuthSession.ResponseType.Code,
+      scopes: ['openid', 'account_email'],
+    },
+    discovery,
+  );
+  useEffect(() => {
+    if (res?.type !== 'success' || !discovery || !req) return;
+    complete('카카오', async () => {
+      const tok = await AuthSession.exchangeCodeAsync(
+        {
+          clientId: SOCIAL_CONFIG.kakaoRestApiKey,
+          code: res.params.code,
+          redirectUri,
+          extraParams: req.codeVerifier ? { code_verifier: req.codeVerifier } : undefined,
+        },
+        discovery,
+      );
+      if (!tok.idToken) throw new Error('카카오 ID 토큰을 받지 못했어요.');
+      await completeSocialLogin('kakao', tok.idToken);
+    });
+  }, [res]); // eslint-disable-line react-hooks/exhaustive-deps
+  return <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy || !prompt} onPress={() => prompt?.()} />;
+}
+
 export default function Login() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 
-  async function enter() {
-    router.replace((await syncOnboarded()) ? '/campus' : '/locale');
-  }
-  async function onProvider(provider: Provider) {
+  const enter = async () => router.replace((await syncOnboarded()) ? '/campus' : '/locale');
+
+  // Wrap a provider's id_token exchange with busy/error handling + navigation.
+  const complete: Complete = async (label, run) => {
     if (busy) return;
     setBusy(true);
     try {
-      await signIn(provider);
+      await run();
       await enter();
     } catch (e) {
-      Alert.alert('로그인 실패', e instanceof Error ? e.message : '다시 시도해 주세요.');
+      Alert.alert(`${label} 로그인 실패`, e instanceof Error ? e.message : '다시 시도해 주세요.');
     } finally {
       setBusy(false);
     }
-  }
-  async function onDev() {
-    if (busy) return;
-    setBusy(true);
-    try {
-      await devSignIn();
-      await enter();
-    } catch (e) {
-      Alert.alert('개발자 로그인 실패', e instanceof Error ? e.message : '서버(ENV=dev)가 실행 중인지 확인하세요.');
-    } finally {
-      setBusy(false);
-    }
-  }
+  };
+
+  const notConfigured = (label: string) =>
+    Alert.alert(`${label} 로그인 준비 중`, `${label} 클라이언트 ID가 설정되면 사용할 수 있어요. (env)`);
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.mint }}>
@@ -77,12 +130,17 @@ export default function Login() {
         <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 12 }}>한 번의 탭으로 시작하세요.</Text>
       </View>
 
-      {/* providers */}
+      {/* providers — a provider's real (hook-owning) button mounts only when its
+          client ID is set; otherwise a placeholder shows a "설정 필요" notice. */}
       <SafeAreaView edges={['bottom']} style={{ position: 'absolute', left: 0, right: 0, bottom: 24, paddingHorizontal: 28 }}>
         <View style={{ gap: 10 }}>
-          <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label="Google로 계속하기" disabled={busy} onPress={() => onProvider('google')} />
-          <OneTap bg="#000" color="#fff" shadow="#000" icon={<AppleGlyph />} label="Apple로 계속하기" disabled={busy} onPress={() => onProvider('apple')} />
-          <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy} onPress={() => onProvider('kakao')} />
+          {isProviderConfigured('google')
+            ? <GoogleButton busy={busy} complete={complete} />
+            : <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label="Google로 계속하기" disabled={busy} onPress={() => notConfigured('Google')} />}
+          <OneTap bg="#000" color="#fff" shadow="#000" icon={<AppleGlyph />} label="Apple로 계속하기" disabled={busy} onPress={() => complete('Apple', signInApple)} />
+          {isProviderConfigured('kakao')
+            ? <KakaoButton busy={busy} complete={complete} />
+            : <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy} onPress={() => notConfigured('카카오')} />}
         </View>
 
         <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, textAlign: 'center', marginTop: 16, lineHeight: 16 }}>
@@ -91,7 +149,7 @@ export default function Login() {
 
         {/* Dev-only bypass — real provider auth needs a dev build + credentials. */}
         {__DEV__ && (
-          <Pressable onPress={onDev} disabled={busy} style={{ marginTop: 14, alignSelf: 'center' }}>
+          <Pressable onPress={() => complete('개발자', devSignIn)} disabled={busy} style={{ marginTop: 14, alignSelf: 'center' }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textFaint }}>🛠 개발자 로그인 (둘러보기)</Text>
           </Pressable>
         )}

@@ -1,8 +1,11 @@
-// Auth flow: native social sign-in → server /auth/social → JWT in secure-store.
+// Auth flow: native/OIDC social sign-in → server /auth/social (verifies the
+// provider ID token via OIDC) → JWT in secure-store.
 //
-// NOTE: native provider SDKs need a dev build (NOT Expo Go) + provider app
-// registration (client IDs / Kakao app key). Apple is wired via expo-apple-authentication;
-// Google/Kakao are stubbed until their SDKs + credentials are set up.
+// Apple: expo-apple-authentication (native). Google/Kakao: expo-auth-session
+// (OIDC id_token via the system browser) — the client IDs come from env
+// (SOCIAL_CONFIG); until they're set, the login screen disables those buttons.
+// The obtained id_token's audience must equal the server's GOOGLE_CLIENT_ID /
+// KAKAO_CLIENT_ID for /auth/social to verify it.
 import * as AppleAuthentication from 'expo-apple-authentication';
 
 import { api } from '@/api/client';
@@ -11,26 +14,38 @@ import { useAuthStore } from '@/store/authStore';
 
 export type Provider = 'google' | 'apple' | 'kakao';
 
-async function providerIdToken(provider: Provider): Promise<string> {
-  if (provider === 'apple') {
-    const cred = await AppleAuthentication.signInAsync({
-      requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
-    });
-    if (!cred.identityToken) throw new Error('apple: no identity token');
-    return cred.identityToken;
-  }
-  // Google/Kakao: install the native SDK + configure the client ID/app key, then return its ID token.
-  throw new Error(`${provider} 로그인은 아직 설정되지 않았습니다 (client ID + dev build 필요).`);
+// Provider credentials (filled in later via env / EAS secrets). Empty = not
+// configured → the login screen keeps that provider disabled.
+export const SOCIAL_CONFIG = {
+  googleIosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? '',
+  googleWebClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? '',
+  kakaoRestApiKey: process.env.EXPO_PUBLIC_KAKAO_REST_API_KEY ?? '',
+};
+export function isProviderConfigured(provider: Provider): boolean {
+  if (provider === 'apple') return true; // native, no client-side key
+  if (provider === 'google') return !!SOCIAL_CONFIG.googleIosClientId; // iOS hook requires iosClientId
+  return !!SOCIAL_CONFIG.kakaoRestApiKey; // kakao
 }
 
-export async function signIn(provider: Provider): Promise<void> {
-  const idToken = await providerIdToken(provider);
+// Exchange a verified provider ID token for our session JWTs. Called by the
+// Apple flow below and by the Google/Kakao expo-auth-session flows (login.tsx).
+export async function completeSocialLogin(provider: Provider, idToken: string): Promise<void> {
   const res = await api.socialLogin({ provider, idToken });
   const access = res.tokens?.accessToken;
   const refresh = res.tokens?.refreshToken;
   if (!access || !refresh) throw new Error('login: server returned no tokens');
   await saveTokens(access, refresh);
   useAuthStore.getState().setSession(access, refresh, toUser(res.user));
+}
+
+// Apple sign-in (native). Google/Kakao are hook-driven in login.tsx, then call
+// completeSocialLogin() with the returned id_token.
+export async function signInApple(): Promise<void> {
+  const cred = await AppleAuthentication.signInAsync({
+    requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
+  });
+  if (!cred.identityToken) throw new Error('apple: no identity token');
+  await completeSocialLogin('apple', cred.identityToken);
 }
 
 // devSignIn: local-only login via the server's ENV=dev /auth/dev endpoint (no
