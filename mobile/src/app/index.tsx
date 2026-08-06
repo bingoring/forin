@@ -6,7 +6,7 @@ import { useAuthStore } from '@/store/authStore';
 export default function Index() {
   const isAuthed = useAuthStore((s) => s.isAuthed);
   const onboarded = useAuthStore((s) => s.onboarded);
-  if (!isAuthed) return <Redirect href="/login" />;
+  if (!isAuthed) return <Redirect href="/splash" />;
   if (onboarded === false) return <Redirect href="/locale" />;
   return <Redirect href="/campus" />;
 }

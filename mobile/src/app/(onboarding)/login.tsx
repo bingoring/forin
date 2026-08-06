@@ -1,34 +1,62 @@
+// Onboarding 1 — one-tap sign-in (handoff ScreenLogin). A soft pixel sky
+// (mint→cream) with clouds and the forin wordmark over three provider One-Tap
+// buttons (Google / Apple / Kakao) with crisp SVG glyphs, then terms text. Social
+// sign-in hits the server /auth/social → JWT (secure-store); a dev bypass lets
+// you walk the app in Expo Go where real provider auth needs a native build.
 import { useState } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
-import { PixelButton } from '@/components/PixelButton';
+import { Alert, Pressable, Text, View } from 'react-native';
+import { Stack, useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { signIn, devSignIn, syncOnboarded, type Provider } from '@/lib/auth';
-import { colors, fonts, space, type as t } from '@/theme/tokens';
+import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
+import { colors, fonts } from '@/theme/tokens';
 
-// Social one-tap sign-in → server /auth/social → JWT (secure-store), then enter the app.
+const C = colors.ink;
+
+// One-Tap provider button — icon + label, hard pixel shadow (handoff OneTapButton).
+function OneTap({ bg, color, shadow, icon, label, disabled, onPress }: {
+  bg: string; color: string; shadow: string; icon: React.ReactNode; label: string; disabled?: boolean; onPress: () => void;
+}) {
+  return (
+    <Pressable onPress={onPress} disabled={disabled} style={({ pressed }) => ({
+      flexDirection: 'row', alignItems: 'center', gap: 12,
+      backgroundColor: bg, borderWidth: 3, borderColor: C,
+      paddingVertical: 12, paddingHorizontal: 16,
+      opacity: disabled ? 0.6 : 1,
+      transform: [{ translateX: pressed ? 4 : 0 }, { translateY: pressed ? 4 : 0 }],
+      shadowColor: shadow, shadowOffset: { width: pressed ? 0 : 4, height: pressed ? 0 : 4 }, shadowOpacity: 1, shadowRadius: 0,
+    })}>
+      <View style={{ width: 26, height: 26, alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
+      <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 14, color }}>{label}</Text>
+    </Pressable>
+  );
+}
+
 export default function Login() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 
+  async function enter() {
+    router.replace((await syncOnboarded()) ? '/campus' : '/locale');
+  }
   async function onProvider(provider: Provider) {
     if (busy) return;
     setBusy(true);
     try {
       await signIn(provider);
-      router.replace((await syncOnboarded()) ? '/campus' : '/locale');
+      await enter();
     } catch (e) {
       Alert.alert('로그인 실패', e instanceof Error ? e.message : '다시 시도해 주세요.');
     } finally {
       setBusy(false);
     }
   }
-
-  async function onDevLogin() {
+  async function onDev() {
     if (busy) return;
     setBusy(true);
     try {
       await devSignIn();
-      router.replace((await syncOnboarded()) ? '/campus' : '/locale');
+      await enter();
     } catch (e) {
       Alert.alert('개발자 로그인 실패', e instanceof Error ? e.message : '서버(ENV=dev)가 실행 중인지 확인하세요.');
     } finally {
@@ -37,32 +65,37 @@ export default function Login() {
   }
 
   return (
-    <View style={styles.s}>
-      <Text style={styles.logo}>forin</Text>
-      <Text style={styles.tag}>해외 이직, 언어로 막막할 때{'\n'}가장 따뜻한 현장 시뮬레이션</Text>
-      <View style={styles.btns}>
-        <PixelButton label="Google로 계속하기" bg={colors.cream} shadowColor={colors.ink} disabled={busy} onPress={() => onProvider('google')} full />
-        <PixelButton label="Apple로 계속하기" bg={colors.ink} textColor={colors.cream} shadowColor={colors.text} disabled={busy} onPress={() => onProvider('apple')} full />
-        <PixelButton label="카카오로 시작하기" bg={colors.yellow} shadowColor={colors.yellowShadow} disabled={busy} onPress={() => onProvider('kakao')} full />
+    <View style={{ flex: 1, backgroundColor: colors.mint }}>
+      <Stack.Screen options={{ headerShown: false }} />
+      <VertGradient from={colors.mint} to={colors.cream} bands={14} />
+      <Cloud size={1.1} style={{ top: 90, left: 26 }} />
+      <Cloud size={0.8} style={{ top: 140, right: 30 }} />
+
+      {/* hero wordmark */}
+      <View style={{ position: 'absolute', top: 150, left: 0, right: 0, alignItems: 'center' }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: 48, color: C, letterSpacing: 3, textShadowColor: colors.yellow, textShadowOffset: { width: 4, height: 4 }, textShadowRadius: 0 }}>forin</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 12 }}>한 번의 탭으로 시작하세요.</Text>
       </View>
 
-      {/* Dev-only bypass: real provider sign-in needs a dev build + credentials,
-          so this lets you walk the UI/map in Expo Go. Stripped from production builds. */}
-      {__DEV__ && (
-        <View style={styles.dev}>
-          <Text style={styles.devNote}>개발 모드 · 소셜 로그인은 dev build 필요</Text>
-          <PixelButton label="🛠  개발자 로그인 (둘러보기)" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onDevLogin} full />
+      {/* providers */}
+      <SafeAreaView edges={['bottom']} style={{ position: 'absolute', left: 0, right: 0, bottom: 24, paddingHorizontal: 28 }}>
+        <View style={{ gap: 10 }}>
+          <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label="Google로 계속하기" disabled={busy} onPress={() => onProvider('google')} />
+          <OneTap bg="#000" color="#fff" shadow="#000" icon={<AppleGlyph />} label="Apple로 계속하기" disabled={busy} onPress={() => onProvider('apple')} />
+          <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy} onPress={() => onProvider('kakao')} />
         </View>
-      )}
+
+        <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, textAlign: 'center', marginTop: 16, lineHeight: 16 }}>
+          계속 진행하면 <Text style={{ color: C, textDecorationLine: 'underline' }}>이용약관</Text> 및 <Text style={{ color: C, textDecorationLine: 'underline' }}>개인정보처리방침</Text>에{'\n'}동의하는 것으로 간주됩니다.
+        </Text>
+
+        {/* Dev-only bypass — real provider auth needs a dev build + credentials. */}
+        {__DEV__ && (
+          <Pressable onPress={onDev} disabled={busy} style={{ marginTop: 14, alignSelf: 'center' }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textFaint }}>🛠 개발자 로그인 (둘러보기)</Text>
+          </Pressable>
+        )}
+      </SafeAreaView>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  s: { flex: 1, backgroundColor: colors.peach, alignItems: 'center', justifyContent: 'center', padding: space.xl, gap: space.lg },
-  logo: { fontFamily: fonts.heading, fontSize: t.hero, color: colors.ink, letterSpacing: 2 },
-  tag: { fontFamily: fonts.body, fontSize: t.body, color: colors.textSoft, textAlign: 'center', lineHeight: 22 },
-  btns: { alignSelf: 'stretch', gap: space.md, marginTop: space.xxl },
-  dev: { alignSelf: 'stretch', gap: space.sm, marginTop: space.xl, alignItems: 'center' },
-  devNote: { fontFamily: fonts.body, fontSize: t.caption, color: colors.textFaint },
-});

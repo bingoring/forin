@@ -5,18 +5,19 @@ import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
+import { FLAGS } from '@/components/onboardingArt';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
 const NATIVE = [
-  { code: 'ko', flag: '🇰🇷', name: '한국어', sub: 'Korean' },
-  { code: 'ja', flag: '🇯🇵', name: '日本語', sub: 'Japanese' },
-  { code: 'en', flag: '🇺🇸', name: 'English', sub: 'US' },
-  { code: 'de', flag: '🇩🇪', name: 'Deutsch', sub: 'Germany' },
+  { code: 'ko', flag: 'kr', name: '한국어', sub: 'Korean' },
+  { code: 'ja', flag: 'jp', name: '日本語', sub: 'Japanese' },
+  { code: 'en', flag: 'us', name: 'English', sub: 'US' },
+  { code: 'de', flag: 'de', name: 'Deutsch', sub: 'Germany' },
 ];
 const DEST = [
-  { code: 'us', targetLang: 'en', flag: '🇺🇸', name: '미국', sub: 'English-US' },
-  { code: 'de', targetLang: 'de', flag: '🇩🇪', name: '독일', sub: 'Deutsch' },
+  { code: 'us', targetLang: 'en', flag: 'us', name: '미국', sub: 'English-US' },
+  { code: 'de', targetLang: 'de', flag: 'de', name: '독일', sub: 'Deutsch' },
 ];
 
 export default function Locale() {
@@ -54,11 +55,12 @@ export default function Locale() {
 }
 
 function LocaleCard({ flag, name, sub, selected, onPress }: { flag: string; name: string; sub: string; selected: boolean; onPress: () => void }) {
+  const Flag = FLAGS[flag];
   return (
     <Shadowed offset={selected ? 4 : 3} shadowColor={selected ? colors.mintShadow : C + '33'} style={{ width: '45%', flexGrow: 1 }}>
       <Pressable onPress={onPress} style={{ backgroundColor: selected ? colors.mint : '#fff', borderWidth: 3, borderColor: C, paddingVertical: 14, paddingHorizontal: 12 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
-          <Text style={{ fontSize: 30 }}>{flag}</Text>
+          {Flag ? <Flag size={38} /> : null}
           {selected && (
             <View style={{ marginLeft: 'auto', width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>✓</Text>
