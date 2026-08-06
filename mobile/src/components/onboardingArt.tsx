@@ -2,7 +2,9 @@
 // (clouds, sun, airplane), provider glyphs, and pixel flags, plus a banded
 // vertical gradient (no native expo-linear-gradient dependency → pure JS Views,
 // which also reads as a pleasingly pixelated sky). Shared by splash + login.
+import { useEffect } from 'react';
 import { View, type ViewStyle } from 'react-native';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import Svg, { Path, Rect, G } from 'react-native-svg';
 import { colors } from '@/theme/tokens';
 
@@ -29,11 +31,23 @@ export function VertGradient({ from, to, bands = 14, style }: { from: string; to
   );
 }
 
-// ── Cloud — stacked pixel lobes with a soft blue underside ──────────────────
+// A gently looping 0→1→0 driver (ease-in-out), shared by the floating art.
+function useFloat(durationMs: number) {
+  const v = useSharedValue(0);
+  useEffect(() => {
+    v.value = withRepeat(withTiming(1, { duration: durationMs, easing: Easing.inOut(Easing.quad) }), -1, true);
+  }, [v, durationMs]);
+  return v;
+}
+
+// ── Cloud — stacked pixel lobes; drifts sideways (handoff forinDrift) ────────
 export function Cloud({ size = 1, style }: { size?: number; style?: ViewStyle }) {
   const s = 8 * size;
+  const t = useFloat(3500 / size); // bigger clouds drift a touch faster (handoff 7/size)
+  const drift = useAnimatedStyle(() => ({ transform: [{ translateX: (t.value - 0.5) * 12 }] }));
   return (
     <View pointerEvents="none" style={[{ position: 'absolute' }, style]}>
+      <Animated.View style={drift}>
       <Svg width={s * 9} height={s * 5} viewBox="0 0 36 20">
         <Rect x={10} y={5} width={8} height={4} fill="#fff" />
         <Rect x={6} y={8} width={10} height={4} fill="#fff" />
@@ -46,6 +60,7 @@ export function Cloud({ size = 1, style }: { size?: number; style?: ViewStyle })
         <Rect x={11} y={5} width={5} height={1} fill="#fff" />
         <Rect x={4} y={11} width={28} height={1} fill={INK} opacity={0.12} />
       </Svg>
+      </Animated.View>
     </View>
   );
 }
@@ -81,8 +96,11 @@ export function PixelSun({ size = 72, style }: { size?: number; style?: ViewStyl
 
 // ── Pixel airplane with contrail ────────────────────────────────────────────
 export function PixelPlane({ size = 150, style }: { size?: number; style?: ViewStyle }) {
+  const t = useFloat(1600); // gentle up/down bob
+  const bob = useAnimatedStyle(() => ({ transform: [{ translateY: (t.value - 0.5) * 14 }] }));
   return (
     <View pointerEvents="none" style={[{ position: 'absolute' }, style]}>
+      <Animated.View style={bob}>
       <Svg width={size} height={(size * 26) / 50} viewBox="0 0 50 26">
         <Rect x={0} y={12} width={3} height={2} fill="#fff" opacity={0.5} />
         <Rect x={4} y={11} width={3} height={3} fill="#fff" opacity={0.7} />
@@ -99,6 +117,7 @@ export function PixelPlane({ size = 150, style }: { size?: number; style?: ViewS
         {[12, 15, 18, 21, 24, 27].map((wx, i) => <Rect key={i} x={wx} y={11} width={2} height={2} fill={colors.blue} />)}
         <Rect x={32} y={11} width={2} height={2} fill="#3E2E1C" />
       </Svg>
+      </Animated.View>
     </View>
   );
 }
