@@ -34,6 +34,7 @@ export * from './Face';
 
 // stateless map-layer components
 export * from './TileFloor';
+export * from './CampusGround';
 export * from './Walls';
 export * from './RoomMask';
 export * from './EmoteBubble';

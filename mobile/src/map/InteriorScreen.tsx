@@ -11,6 +11,7 @@ import { regionAt } from '@engine';
 import { boxInView, OBJECT_FOOTPRINT } from '@engine';
 import { useMovement } from '@engine';
 import { TileFloor } from '@engine';
+import { CampusGround } from '@engine';
 import { Walls } from '@engine';
 import { RoomMask } from '@engine';
 import { HUD } from './HUD';
@@ -103,7 +104,9 @@ const StaticWorld = memo(function StaticWorld({ interior }: { interior: Interior
   }, []);
   return (
     <>
-      <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />
+      {interior.groundMap
+        ? <CampusGround map={interior.groundMap} />
+        : <TileFloor cols={interior.cols} rows={interior.rows} theme={interior.floorTheme} />}
       {interior.objects.filter((o) => o.type === 'tint').map((o) => (
         <Tint key={o.id} x={o.x} y={o.y} w={(o.props?.w as number) ?? 1} h={(o.props?.h as number) ?? 1} color={o.props?.color as string | undefined} op={o.props?.op as number | undefined} />
       ))}

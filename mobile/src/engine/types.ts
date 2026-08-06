@@ -74,4 +74,8 @@ export interface Interior {
   collision: Bounds[];
   npcs?: NpcSpec[]; // ambient roaming NPCs (optional)
   scale?: number; // camera zoom (5d-iv): <1 pulls the camera back (campus), default 1
+  // Outdoor per-tile ground legend (one string per row, one char per column) —
+  // roads/paths/plaza/pond/curb tiles the checkerboard TileFloor can't express.
+  // When present, the campus ground renderer replaces TileFloor. See CampusGround.
+  groundMap?: string[];
 }

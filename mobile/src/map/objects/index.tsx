@@ -9,6 +9,7 @@ import { TILE } from '@engine';
 import { fonts } from '@/theme/tokens';
 import { ClinicObjectView } from './clinicEquipment';
 import { LandmarkView } from './landmarks';
+import { CampusObjectView } from './campusEquipment';
 import { IThreshold, IGlass } from './structures';
 import { ErObjectView } from './erEquipment';
 import { OrObjectView } from './orEquipment';
@@ -363,6 +364,7 @@ export function InteriorObjectView({ object }: { object: MapObject }) {
       // ER (5g-a) → OR suite (5g-b) → ICU (5g-c) → shared/cross-dept primitives →
       // outpatient-clinic equipment (5d-iii)
       return (
+        CampusObjectView({ object }) ??
         ErObjectView({ object }) ??
         OrObjectView({ object }) ??
         IcuObjectView({ object }) ??
