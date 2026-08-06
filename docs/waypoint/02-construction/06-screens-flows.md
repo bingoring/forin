@@ -61,8 +61,10 @@ updated: 2026-06-12
   - **소셜 로그인 배선(2026-08)**: 서버 `/auth/social`이 OIDC id_token 검증(Google/Apple/
     Kakao). 클라이언트: Apple=expo-apple-authentication(완성). Google=expo-auth-session
     Google provider(id_token). Kakao=expo-auth-session code flow→토큰교환→id_token.
-    클라이언트 ID는 env(`EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID`/`_WEB_CLIENT_ID`/
-    `EXPO_PUBLIC_KAKAO_REST_API_KEY`, `.env.example` 참고). **미설정 시 해당 버튼은 훅을
+    클라이언트 ID는 env(`EXPO_PUBLIC_GOOGLE_IOS/ANDROID/WEB_CLIENT_ID`/
+    `EXPO_PUBLIC_KAKAO_REST_API_KEY`, `.env.example` 참고). Google은 플랫폼별 client
+    ID 별개(iOS=번들ID, Android=패키지명+SHA-1, Web=id_token audience) — `isProviderConfigured`가
+    `Platform.OS`로 해당 플랫폼 ID를 확인. 현재 iOS-only 빌드라 Android ID는 확장 시 발급. **미설정 시 해당 버튼은 훅을
     안 띄우고 "설정 필요" 안내**(훅에 빈 client ID를 넘기면 렌더 에러 → 프로바이더별
     버튼 컴포넌트를 configured일 때만 마운트). 서버 `GOOGLE/KAKAO_CLIENT_ID`(audience)와
     클라이언트 ID 일치 필요. expo-crypto 추가로 dev-client 재빌드 필요(pod install+ad-hoc 서명).
