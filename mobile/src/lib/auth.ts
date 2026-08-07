@@ -21,13 +21,24 @@ export const SOCIAL_CONFIG = {
   googleIosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? '',
   googleAndroidClientId: process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? '',
   googleWebClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? '',
-  kakaoRestApiKey: process.env.EXPO_PUBLIC_KAKAO_REST_API_KEY ?? '',
+  // Kakao: the NATIVE app key, not the REST key. Kakao's console refuses to
+  // register a custom-scheme redirect URI for a REST key (http/https only), but
+  // `kakao<NATIVE_APP_KEY>://oauth` is implicitly bound to the native key — that's
+  // the redirect Kakao's own SDKs use. So we drive the same OIDC endpoints with
+  // the native key as client_id. The id_token's `aud` is then this key.
+  kakaoNativeAppKey: process.env.EXPO_PUBLIC_KAKAO_NATIVE_APP_KEY ?? '',
 };
+
+// The redirect Kakao accepts for a native app key. Must also be registered as a
+// URL scheme in app.json (`kakao<key>`) or the browser can't hand control back.
+export const kakaoRedirectUri = SOCIAL_CONFIG.kakaoNativeAppKey
+  ? `kakao${SOCIAL_CONFIG.kakaoNativeAppKey}://oauth`
+  : '';
 export function isProviderConfigured(provider: Provider): boolean {
   if (provider === 'apple') return true; // native, no client-side key
   // The Google auth hook needs the client ID for THIS platform (iOS/Android).
   if (provider === 'google') return !!(Platform.OS === 'android' ? SOCIAL_CONFIG.googleAndroidClientId : SOCIAL_CONFIG.googleIosClientId);
-  return !!SOCIAL_CONFIG.kakaoRestApiKey; // kakao
+  return !!SOCIAL_CONFIG.kakaoNativeAppKey; // kakao
 }
 
 // Exchange a verified provider ID token for our session JWTs. Called by the

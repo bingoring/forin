@@ -16,7 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import * as AuthSession from 'expo-auth-session';
-import { completeSocialLogin, signInApple, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured } from '@/lib/auth';
+import { completeSocialLogin, signInApple, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured, kakaoRedirectUri } from '@/lib/auth';
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -66,10 +66,12 @@ function GoogleButton({ busy, complete }: { busy: boolean; complete: Complete })
 // Kakao — code flow → token exchange → id_token. Mounts ONLY when configured.
 function KakaoButton({ busy, complete }: { busy: boolean; complete: Complete }) {
   const discovery = AuthSession.useAutoDiscovery(KAKAO_ISSUER);
-  const redirectUri = AuthSession.makeRedirectUri({ scheme: 'forin' });
+  // NOT makeRedirectUri() — Kakao only accepts `kakao<NATIVE_APP_KEY>://oauth`
+  // for a native app key; its console rejects custom schemes for REST keys.
+  const redirectUri = kakaoRedirectUri;
   const [req, res, prompt] = AuthSession.useAuthRequest(
     {
-      clientId: SOCIAL_CONFIG.kakaoRestApiKey,
+      clientId: SOCIAL_CONFIG.kakaoNativeAppKey,
       redirectUri,
       responseType: AuthSession.ResponseType.Code,
       scopes: ['openid', 'account_email'],
@@ -81,7 +83,7 @@ function KakaoButton({ busy, complete }: { busy: boolean; complete: Complete }) 
     complete('카카오', async () => {
       const tok = await AuthSession.exchangeCodeAsync(
         {
-          clientId: SOCIAL_CONFIG.kakaoRestApiKey,
+          clientId: SOCIAL_CONFIG.kakaoNativeAppKey,
           code: res.params.code,
           redirectUri,
           extraParams: req.codeVerifier ? { code_verifier: req.codeVerifier } : undefined,
