@@ -107,11 +107,14 @@ Info.plist에 `forin`·`app.forin.mobile` 스킴 등록 확인.
   Google 때처럼 사전 probe로 판별 불가(대조군까지 로그인 페이지를 반환). 실패 시 `KOE006`이
   뜨며, 그 경우 대안은 (a) 네이티브 SDK `@react-native-kakao/user` 전환, (b) 서버 https 콜백 경유.
 - ⚠️ 콘솔 Client Secret은 **켜지 말 것** — `exchangeCodeAsync`가 시크릿을 보내지 않아 토큰 교환 실패.
-- **스코프는 `openid` 단독**(`account_email` 제거). 카카오계정(이메일) 동의항목은 **비즈 앱 전환
-  (사업자 정보 심사)** 전에는 콘솔에서 회색 비활성이고, 승인 안 된 스코프를 요청하면 인가 자체가
-  실패한다. 이메일이 비어도 안전 — `auth_identities.email`은 `NOT NULL DEFAULT ''`에 유니크 제약이
-  없어(PK는 `(provider, subject_id)`) 빈 이메일 사용자가 여럿이어도 충돌하지 않는다. 비즈 앱
-  통과 후 스코프를 되돌리면 된다.
+- **스코프 `['openid', 'account_email']`.** 카카오계정(이메일) 동의항목은 **비즈 앱 전환(사업자 정보
+  심사)** 후에만 활성화되며, 승인 안 된 스코프를 요청하면 인가 자체가 실패한다(그 전까지는 `openid`
+  단독으로 운용했음). 비즈 앱 통과(2026-08-07) 후 **선택 동의**로 추가 — 목적 "계정 복구 및 고객 문의
+  응대". **필수 동의로 하지 않은 이유**: 카카오는 필수로 설정해도 이메일이 없거나 마스킹(`ka***@`)돼
+  올 수 있어 값이 보장되지 않고("이메일을 ID·동일 사용자 판단 기준으로 쓰지 말라"고 명시), 반면
+  미동의 시 가입이 막혀 이탈은 확실하다. 식별은 이미 `auth_identities` PK `(provider, subject_id)`가
+  담당하고 `email`은 `NOT NULL DEFAULT ''`에 유니크 제약이 없어 빈 값이어도 안전.
+- 플랫폼 등록: 카카오 콘솔 네이티브 앱 키에 iOS 번들 ID / Android 패키지명 `app.forin.mobile` 등록됨.
 - 콘솔 경로: OpenID Connect는 **앱 관리 → 카카오 로그인 → OpenID Connect → ON**.
 
 ## 로그아웃 (2026-08-07)
