@@ -84,6 +84,17 @@ updated: 2026-06-12
   expo-linear-gradient 불필요] + Cloud/PixelSun/PixelPlane + 프로바이더 글리프 + FLAGS).
 - 검증: tsc·jest 209 + 시뮬(splash/login/locale/job 렌더 확인).
 
+## 로그아웃 (2026-08-07)
+
+`lib/auth.ts`에 `signOut()`은 있었으나 **호출하는 화면이 하나도 없었다** — 정상 경로로는 로그인
+화면에 돌아갈 방법이 없었고(계정 전환 불가), 소셜 로그인 검증도 딥링크 우회로만 가능했다.
+프로필 탭(`(tabs)/me.tsx`) 맨 아래 **계정 섹션**에 로그아웃 행 추가:
+- `Alert` 확인 → `signOut()`(secure-store 토큰 삭제 + authStore 초기화) → `router.replace('/login')`
+- 진행 중 `ActivityIndicator` + `disabled`(중복 탭 방지). 성공 시 화면이 언마운트되므로
+  `signingOut`은 **실패 시에만** 해제.
+- 참고: `bootstrapSession()`은 `__DEV__`에서 세션이 없으면 dev 자동 로그인을 한다(앱 루트 1회).
+  같은 실행 중 로그아웃은 유지되지만, **앱을 재시작하면 dev 자동 로그인이 다시 걸린다**.
+
 ## 탭 명칭 직무 무관화 (2026-08)
 
 '캠퍼스'는 병원 한정이라(프로그래머·변호사 등엔 부적합) 직무 무관 명칭으로 변경:
