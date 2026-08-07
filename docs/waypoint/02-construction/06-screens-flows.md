@@ -84,6 +84,30 @@ updated: 2026-06-12
   expo-linear-gradient 불필요] + Cloud/PixelSun/PixelPlane + 프로바이더 글리프 + FLAGS).
 - 검증: tsc·jest 209 + 시뮬(splash/login/locale/job 렌더 확인).
 
+## 소셜 로그인 검증 (2026-08-07)
+
+**Google — 등록 검증 완료.** 시뮬레이터 탭 입력이 불가(osascript 보조접근 `-1719`)해서, 앱이 보내는
+것과 동일한 인가 요청을 Google 엔드포인트에 직접 던져 검증. redirect는 expo-auth-session이
+만드는 `app.forin.mobile:/oauthredirect`(`providers/google.js:144` = `${applicationId}:/oauthredirect`),
+Info.plist에 `forin`·`app.forin.mobile` 스킴 등록 확인.
+- iOS 클라이언트: 처음부터 통과(로그인 페이지 반환).
+- Android 클라이언트: `Error 400: invalid_request — "Custom URI scheme is not enabled for your
+  Android client."` → **콘솔 Advanced Settings에서 "Enable Custom URI scheme" ON** 후 통과.
+  (신규 Android 클라이언트는 기본 비활성. iOS는 기본 활성이라 통과했던 것.)
+- 남음: 실제 계정 로그인 → `/auth/social` (사람이 눌러야 함).
+
+**Kakao — 커스텀 스킴 제약으로 네이티브 앱 키 방식 채택.** 콘솔의 REST API 키 Redirect URI 란은
+`forin://`·`forin://oauth` 모두 "유효하지 않은 URL"로 거부(http/https만 허용). 반면
+`kakao<NATIVE_APP_KEY>://oauth`는 콘솔 등록 없이 **네이티브 앱 키에 암묵적으로 귀속**된 리디렉트
+(카카오 자체 SDK가 쓰는 값)라, expo-auth-session을 유지한 채 **client_id를 네이티브 앱 키로** 교체:
+- `app.json` `scheme`를 배열로 → `["forin", "kakao<NATIVE_KEY>"]` (prebuild+네이티브 재빌드 필요)
+- `SOCIAL_CONFIG.kakaoNativeAppKey` + `kakaoRedirectUri`(auth.ts) 신설, REST 키 참조 제거
+- 서버 `KAKAO_CLIENT_ID` = 네이티브 앱 키 (id_token의 aud)
+- ⚠️ **미검증**: 카카오는 redirect_uri를 인가 요청이 아니라 **로그인 완료 후** 검증하므로,
+  Google 때처럼 사전 probe로 판별 불가(대조군까지 로그인 페이지를 반환). 실패 시 `KOE006`이
+  뜨며, 그 경우 대안은 (a) 네이티브 SDK `@react-native-kakao/user` 전환, (b) 서버 https 콜백 경유.
+- ⚠️ 콘솔 Client Secret은 **켜지 말 것** — `exchangeCodeAsync`가 시크릿을 보내지 않아 토큰 교환 실패.
+
 ## 로그아웃 (2026-08-07)
 
 `lib/auth.ts`에 `signOut()`은 있었으나 **호출하는 화면이 하나도 없었다** — 정상 경로로는 로그인
