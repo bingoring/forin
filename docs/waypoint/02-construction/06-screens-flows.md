@@ -107,6 +107,12 @@ Info.plist에 `forin`·`app.forin.mobile` 스킴 등록 확인.
   Google 때처럼 사전 probe로 판별 불가(대조군까지 로그인 페이지를 반환). 실패 시 `KOE006`이
   뜨며, 그 경우 대안은 (a) 네이티브 SDK `@react-native-kakao/user` 전환, (b) 서버 https 콜백 경유.
 - ⚠️ 콘솔 Client Secret은 **켜지 말 것** — `exchangeCodeAsync`가 시크릿을 보내지 않아 토큰 교환 실패.
+- **스코프는 `openid` 단독**(`account_email` 제거). 카카오계정(이메일) 동의항목은 **비즈 앱 전환
+  (사업자 정보 심사)** 전에는 콘솔에서 회색 비활성이고, 승인 안 된 스코프를 요청하면 인가 자체가
+  실패한다. 이메일이 비어도 안전 — `auth_identities.email`은 `NOT NULL DEFAULT ''`에 유니크 제약이
+  없어(PK는 `(provider, subject_id)`) 빈 이메일 사용자가 여럿이어도 충돌하지 않는다. 비즈 앱
+  통과 후 스코프를 되돌리면 된다.
+- 콘솔 경로: OpenID Connect는 **앱 관리 → 카카오 로그인 → OpenID Connect → ON**.
 
 ## 로그아웃 (2026-08-07)
 
