@@ -96,7 +96,24 @@ Info.plist에 `forin`·`app.forin.mobile` 스킴 등록 확인.
   (신규 Android 클라이언트는 기본 비활성. iOS는 기본 활성이라 통과했던 것.)
 - 남음: 실제 계정 로그인 → `/auth/social` (사람이 눌러야 함).
 
-**Kakao — 커스텀 스킴 제약으로 네이티브 앱 키 방식 채택.** 콘솔의 REST API 키 Redirect URI 란은
+**Kakao — 최종: 공식 SDK(`@react-native-kakao`)로 전환.** 아래 expo-auth-session 시도는 **실패**했다.
+실제 로그인에서 **KOE033** 발생 — 공식 문서 정의는 *"지원하지 않는 SDK를 사용해 인가 코드를 요청한
+경우"*. 카카오가 호출 주체의 SDK를 검사해 거부하는 것이라, 직접 OIDC를 도는 경로는 **정책적으로 막혀
+있다**(REST 키에 커스텀 스킴 리다이렉트 등록을 막아둔 것도 같은 맥락). 대응:
+- `@react-native-kakao/core` + `/user` 2.4.6 도입. `initializeKakaoSDK(nativeAppKey)`를 루트
+  레이아웃에서 1회 호출 → `login()`이 `idToken` 반환(콘솔 OIDC 활성 시) → 기존 `/auth/social` 그대로.
+  서버는 **무변경**(aud = 네이티브 앱 키, 이미 설정됨).
+- config plugin이 `kakao<key>` URL 스킴·`LSApplicationQueriesSchemes`·AppDelegate open-url 훅을 주입.
+  `app.json`의 수동 스킴 배열은 제거하고 플러그인에 위임.
+- **SDK 버전 상한 이슈**: 래퍼가 Kakao SDK를 2.22.0에 고정하는데 KOE033은 구버전 거부 문제로도
+  알려져 있어 상향 필요. 래퍼가 제공하는 `$KakaoCoreSDKVersion`/`$KakaoUserSDKVersion` Podfile
+  전역으로 오버라이드 — `ios/`가 prebuild마다 재생성되므로 로컬 config plugin
+  `plugins/withKakaoSdkVersion.js`로 주입(기존 주입값을 **덮어쓰도록** 구현: 안 그러면 버전 상향이
+  Podfile에 반영되지 않음). 상한은 **2.22.5**: CocoaPods에는 2.22.7까지만 있고(2.24+는 SPM 전용),
+  2.22.6에서 `Account.ciNeedsAgreement`가 제거돼 래퍼 Swift가 컴파일되지 않는다.
+- Podfile.lock이 구버전을 잡고 있으면 `pod install`로는 안 오르고 `pod update <pod>` 필요.
+
+**(실패한 시도) 네이티브 앱 키 + 커스텀 스킴 리다이렉트.** 콘솔의 REST API 키 Redirect URI 란은
 `forin://`·`forin://oauth` 모두 "유효하지 않은 URL"로 거부(http/https만 허용). 반면
 `kakao<NATIVE_APP_KEY>://oauth`는 콘솔 등록 없이 **네이티브 앱 키에 암묵적으로 귀속**된 리디렉트
 (카카오 자체 SDK가 쓰는 값)라, expo-auth-session을 유지한 채 **client_id를 네이티브 앱 키로** 교체:
