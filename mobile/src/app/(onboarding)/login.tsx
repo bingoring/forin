@@ -74,7 +74,12 @@ function KakaoButton({ busy, complete }: { busy: boolean; complete: Complete }) 
       clientId: SOCIAL_CONFIG.kakaoNativeAppKey,
       redirectUri,
       responseType: AuthSession.ResponseType.Code,
-      scopes: ['openid', 'account_email'],
+      // `openid` only. Kakao's 카카오계정(이메일) 동의항목 needs a 비즈 앱 (business
+      // verification) before it can even be enabled, and requesting a scope the
+      // console hasn't granted fails the whole authorization. The server stores an
+      // empty email fine (auth_identities.email is NOT NULL DEFAULT '' with no
+      // unique constraint) — add 'account_email' back once the 비즈 앱 clears.
+      scopes: ['openid'],
     },
     discovery,
   );
