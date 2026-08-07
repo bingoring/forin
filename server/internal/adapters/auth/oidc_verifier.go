@@ -23,13 +23,16 @@ var issuers = map[user.Provider]string{
 // OIDCVerifier validates ID tokens. Verifiers are built lazily on first use per
 // provider (discovery hits the network), so unconfigured providers don't block startup.
 type OIDCVerifier struct {
-	clientIDs map[user.Provider]string
+	clientIDs map[user.Provider][]string
 	mu        sync.Mutex
 	cache     map[user.Provider]*oidc.IDTokenVerifier
 }
 
-// NewOIDCVerifier takes the configured client ID (audience) per provider; empty disables it.
-func NewOIDCVerifier(clientIDs map[user.Provider]string) *OIDCVerifier {
+// NewOIDCVerifier takes the accepted client IDs (audiences) per provider; empty
+// disables that provider. A provider may need several — Google issues a separate
+// OAuth client ID per platform (iOS/Android/Web) and stamps the requesting one
+// into the id_token's `aud`, so a single audience would lock out the other platforms.
+func NewOIDCVerifier(clientIDs map[user.Provider][]string) *OIDCVerifier {
 	return &OIDCVerifier{clientIDs: clientIDs, cache: map[user.Provider]*oidc.IDTokenVerifier{}}
 }
 
@@ -42,6 +45,11 @@ func (v *OIDCVerifier) Verify(ctx context.Context, provider user.Provider, idTok
 	if err != nil {
 		return nil, fmt.Errorf("oidc verify: %w", err)
 	}
+	// The verifier skips the built-in single-audience check; we match against the
+	// configured set instead (see NewOIDCVerifier).
+	if !audienceAllowed(tok.Audience, v.clientIDs[provider]) {
+		return nil, fmt.Errorf("oidc verify: audience %v not accepted for provider %q", tok.Audience, provider)
+	}
 	var claims struct {
 		Email string `json:"email"`
 	}
@@ -49,9 +57,21 @@ func (v *OIDCVerifier) Verify(ctx context.Context, provider user.Provider, idTok
 	return &ports.VerifiedIdentity{Subject: tok.Subject, Email: claims.Email}, nil
 }
 
+// audienceAllowed reports whether any of the token's audiences is configured.
+// An empty allow-list accepts nothing.
+func audienceAllowed(tokenAud, allowed []string) bool {
+	for _, a := range tokenAud {
+		for _, want := range allowed {
+			if a == want {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func (v *OIDCVerifier) verifierFor(ctx context.Context, provider user.Provider) (*oidc.IDTokenVerifier, error) {
-	clientID := v.clientIDs[provider]
-	if clientID == "" {
+	if len(v.clientIDs[provider]) == 0 {
 		return nil, fmt.Errorf("provider %q not configured", provider)
 	}
 	issuer, ok := issuers[provider]
@@ -68,7 +88,7 @@ func (v *OIDCVerifier) verifierFor(ctx context.Context, provider user.Provider) 
 	if err != nil {
 		return nil, fmt.Errorf("oidc discovery (%s): %w", provider, err)
 	}
-	ver := p.Verifier(&oidc.Config{ClientID: clientID})
+	ver := p.Verifier(&oidc.Config{SkipClientIDCheck: true})
 	v.cache[provider] = ver
 	return ver, nil
 }

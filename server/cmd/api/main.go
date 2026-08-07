@@ -58,10 +58,10 @@ func main() {
 	defer rdb.Close()
 
 	tokens := auth.NewTokenService(cfg.JWTSigningKey, cfg.JWTIssuer, cfg.AccessTTL)
-	verifier := authadapter.NewOIDCVerifier(map[user.Provider]string{
-		user.ProviderGoogle: cfg.GoogleClientID,
-		user.ProviderApple:  cfg.AppleClientID,
-		user.ProviderKakao:  cfg.KakaoClientID,
+	verifier := authadapter.NewOIDCVerifier(map[user.Provider][]string{
+		user.ProviderGoogle: cfg.GoogleClientIDs,
+		user.ProviderApple:  cfg.AppleClientIDs,
+		user.ProviderKakao:  cfg.KakaoClientIDs,
 	})
 	users := postgres.NewUserRepo(pool)
 	contentRepo := postgres.NewContentRepo(pool)

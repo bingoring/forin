@@ -19,10 +19,13 @@ type Config struct {
 	AccessTTL     time.Duration
 	RefreshTTL    time.Duration
 
-	// OIDC client IDs (audience) per provider. Empty = provider disabled.
-	GoogleClientID string
-	AppleClientID  string
-	KakaoClientID  string
+	// OIDC client IDs (accepted audiences) per provider; comma-separated in the
+	// environment. Empty = provider disabled. A provider needs more than one when
+	// it issues a distinct client ID per platform — Google does (iOS/Android/Web),
+	// and the id_token's `aud` is whichever client requested it.
+	GoogleClientIDs []string
+	AppleClientIDs  []string
+	KakaoClientIDs  []string
 
 	// AI. Provider is selectable (LLMPort adapters are swappable). LLMProvider:
 	// "anthropic" | "openai" | "" (auto: openai if its key is set, else anthropic).
@@ -61,9 +64,9 @@ func Load() (*Config, error) {
 		JWTIssuer:                getenv("JWT_ISSUER", "forin"),
 		AccessTTL:                getdur("ACCESS_TTL", 15*time.Minute),
 		RefreshTTL:               getdur("REFRESH_TTL", 30*24*time.Hour),
-		GoogleClientID:           os.Getenv("GOOGLE_CLIENT_ID"),
-		AppleClientID:            os.Getenv("APPLE_CLIENT_ID"),
-		KakaoClientID:            os.Getenv("KAKAO_CLIENT_ID"),
+		GoogleClientIDs:          splitList(os.Getenv("GOOGLE_CLIENT_ID")),
+		AppleClientIDs:           splitList(os.Getenv("APPLE_CLIENT_ID")),
+		KakaoClientIDs:           splitList(os.Getenv("KAKAO_CLIENT_ID")),
 		LLMProvider:              os.Getenv("LLM_PROVIDER"),
 		AnthropicKey:             firstNonEmpty(os.Getenv("ANTHROPIC_API_KEY"), os.Getenv("ANTHROPIC_KEY")),
 		OpenAIKey:                firstNonEmpty(os.Getenv("OPENAI_API_KEY"), os.Getenv("OPENAI_KEY")),
@@ -98,6 +101,17 @@ func firstNonEmpty(vals ...string) string {
 		}
 	}
 	return ""
+}
+
+// splitList parses a comma-separated env value into trimmed, non-empty entries.
+func splitList(v string) []string {
+	var out []string
+	for _, part := range strings.Split(v, ",") {
+		if p := strings.TrimSpace(part); p != "" {
+			out = append(out, p)
+		}
+	}
+	return out
 }
 
 func getenv(k, def string) string {
