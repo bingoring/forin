@@ -3,7 +3,7 @@
 // summary, a career-path stepper, milestone badges, and a review-lab teaser.
 // 1:1 in spirit with the v17 handoff ScreenProfile, scaled to live data.
 import { useCallback, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
@@ -11,6 +11,7 @@ import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { FacePlayer } from '@engine';
 import { api, type Progress } from '@/api/client';
+import { signOut } from '@/lib/auth';
 import { earnedBadges } from '@/data/badges';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
 import { ECON, careerFor } from '@/data/economy';
@@ -28,6 +29,7 @@ export default function Me() {
   const [toast, setToast] = useState<{ name: string; reward: string } | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [sheet, setSheet] = useState<InfoSheetData | null>(null);
+  const [signingOut, setSigningOut] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -73,6 +75,28 @@ export default function Me() {
     setEquipped(titleId); // optimistic
     setSheet(null);
     try { await api.equipTitle(titleId); } catch { /* best-effort; refreshes on next focus */ }
+  };
+
+  // Sign out — drops the session on this device, so confirm first. On success we
+  // navigate away and the screen unmounts, so `signingOut` is only cleared on failure.
+  const confirmSignOut = () => {
+    Alert.alert('로그아웃', '이 기기에서 로그아웃할까요?\n다시 로그인하면 학습 기록은 그대로예요.', [
+      { text: '취소', style: 'cancel' },
+      {
+        text: '로그아웃',
+        style: 'destructive',
+        onPress: async () => {
+          setSigningOut(true);
+          try {
+            await signOut();
+            router.replace('/login');
+          } catch {
+            setSigningOut(false);
+            Alert.alert('로그아웃 실패', '잠시 후 다시 시도해 주세요.');
+          }
+        },
+      },
+    ]);
   };
 
   if (state !== 'ok' || !progress) {
@@ -339,6 +363,29 @@ export default function Me() {
             </View>
           </Shadowed>
         </Pressable>
+
+        {/* 계정 — 로그아웃 (그 전까진 로그인 화면으로 돌아갈 경로가 없었다) */}
+        <View style={{ marginTop: space.sm }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+            <PixelIcon name="lock" color={C} size={16} sw={1.6} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>계정</Text>
+          </View>
+          <Shadowed offset={3} shadowColor={C + '33'}>
+            <Pressable
+              onPress={confirmSignOut}
+              disabled={signingOut}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12, opacity: signingOut ? 0.6 : 1 }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>로그아웃</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>이 기기에서 로그아웃하고 로그인 화면으로 돌아가요.</Text>
+              </View>
+              {signingOut
+                ? <ActivityIndicator color={C} />
+                : <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>▶</Text>}
+            </Pressable>
+          </Shadowed>
+        </View>
       </ScrollView>
 
       {/* hidden-mission discovery celebration */}
