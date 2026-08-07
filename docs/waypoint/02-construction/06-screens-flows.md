@@ -64,10 +64,20 @@ updated: 2026-06-12
     클라이언트 ID는 env(`EXPO_PUBLIC_GOOGLE_IOS/ANDROID/WEB_CLIENT_ID`/
     `EXPO_PUBLIC_KAKAO_REST_API_KEY`, `.env.example` 참고). Google은 플랫폼별 client
     ID 별개(iOS=번들ID, Android=패키지명+SHA-1, Web=id_token audience) — `isProviderConfigured`가
-    `Platform.OS`로 해당 플랫폼 ID를 확인. 현재 iOS-only 빌드라 Android ID는 확장 시 발급. **미설정 시 해당 버튼은 훅을
+    `Platform.OS`로 해당 플랫폼 ID를 확인. **미설정 시 해당 버튼은 훅을
     안 띄우고 "설정 필요" 안내**(훅에 빈 client ID를 넘기면 렌더 에러 → 프로바이더별
     버튼 컴포넌트를 configured일 때만 마운트). 서버 `GOOGLE/KAKAO_CLIENT_ID`(audience)와
     클라이언트 ID 일치 필요. expo-crypto 추가로 dev-client 재빌드 필요(pod install+ad-hoc 서명).
+  - **앱 식별자 확정(2026-08-07)**: `com.anonymous.forin`(Expo placeholder) → **`app.forin.mobile`**
+    (iOS bundleIdentifier = Android package). 스토어 등록 후엔 영구 불변이라 OAuth 클라이언트
+    발급 전에 확정. Android 서명은 **EAS 관리 키스토어**(`eas.json` 신규 · `credentialsSource: remote`,
+    앱당 키스토어 1개를 전 프로필 공유 → dev-client 빌드도 같은 SHA-1). 로컬 `expo run:android`를
+    쓰면 `~/.android/debug.keystore` SHA-1이 달라 `DEVELOPER_ERROR(10)` → 그 경우 별도 등록 필요.
+  - **서버 audience 목록화(2026-08-07)**: Google은 플랫폼별 클라이언트 ID가 따로라 id_token `aud`가
+    플랫폼마다 다름 → 단일 audience 검증이면 한 플랫폼만 통과. `GOOGLE/APPLE/KAKAO_CLIENT_ID`를
+    **콤마 구분 목록**으로 파싱(`config.splitList`), verifier는 `SkipClientIDCheck: true` 후
+    `audienceAllowed`로 집합 대조(`oidc_verifier.go`). 빈 목록 = 프로바이더 비활성(기존과 동일).
+    테스트 신규 2종(`config_test.go`·`oidc_verifier_test.go`).
 - **Locale**: 이모지 국기 → **픽셀 국기**(태극기/일장기/성조기/독일기)로 교체(이모지 지양 방침).
 - **Job/Level**: 기존 구현이 핸드오프와 이미 일치 → 유지.
 - 공용 픽셀 아트: `components/onboardingArt.tsx`(VertGradient 밴드 그라디언트[native
