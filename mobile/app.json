@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": ["forin", "kakao08f72ff4761dd9d698d54e82723c0258"],
+    "scheme": "forin",
     "userInterfaceStyle": "light",
     "ios": {
       "icon": "./assets/images/icon.png",
@@ -53,6 +53,34 @@
         "expo-audio",
         {
           "microphonePermission": "발음 연습을 위해 마이크 접근이 필요합니다."
+        }
+      ],
+      [
+        "@react-native-kakao/core",
+        {
+          "nativeAppKey": "08f72ff4761dd9d698d54e82723c0258",
+          "ios": {
+            "handleKakaoOpenUrl": true
+          },
+          "android": {
+            "authCodeHandlerActivity": true
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraMavenRepos": [
+              "https://devrepo.kakao.com/nexus/content/groups/public/"
+            ]
+          }
+        }
+      ],
+      [
+        "./plugins/withKakaoSdkVersion",
+        {
+          "version": "2.22.5"
         }
       ]
     ],

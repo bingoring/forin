@@ -8,6 +8,8 @@
 // KAKAO_CLIENT_ID for /auth/social to verify it.
 import { Platform } from 'react-native';
 import * as AppleAuthentication from 'expo-apple-authentication';
+import { initializeKakaoSDK } from '@react-native-kakao/core';
+import { login as kakaoLogin } from '@react-native-kakao/user';
 
 import { api } from '@/api/client';
 import { clearTokens, loadTokens, saveTokens } from '@/lib/secureStore';
@@ -21,19 +23,13 @@ export const SOCIAL_CONFIG = {
   googleIosClientId: process.env.EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID ?? '',
   googleAndroidClientId: process.env.EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID ?? '',
   googleWebClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ?? '',
-  // Kakao: the NATIVE app key, not the REST key. Kakao's console refuses to
-  // register a custom-scheme redirect URI for a REST key (http/https only), but
-  // `kakao<NATIVE_APP_KEY>://oauth` is implicitly bound to the native key — that's
-  // the redirect Kakao's own SDKs use. So we drive the same OIDC endpoints with
-  // the native key as client_id. The id_token's `aud` is then this key.
+  // Kakao: the NATIVE app key, consumed by the official Kakao SDK
+  // (@react-native-kakao). Driving Kakao's OIDC endpoints ourselves via
+  // expo-auth-session is NOT viable — Kakao inspects the caller and rejects
+  // anything that isn't a current official SDK with KOE033 ("지원하지 않는 SDK"),
+  // and its console won't register a custom-scheme redirect URI for a REST key.
   kakaoNativeAppKey: process.env.EXPO_PUBLIC_KAKAO_NATIVE_APP_KEY ?? '',
 };
-
-// The redirect Kakao accepts for a native app key. Must also be registered as a
-// URL scheme in app.json (`kakao<key>`) or the browser can't hand control back.
-export const kakaoRedirectUri = SOCIAL_CONFIG.kakaoNativeAppKey
-  ? `kakao${SOCIAL_CONFIG.kakaoNativeAppKey}://oauth`
-  : '';
 export function isProviderConfigured(provider: Provider): boolean {
   if (provider === 'apple') return true; // native, no client-side key
   // The Google auth hook needs the client ID for THIS platform (iOS/Android).
@@ -60,6 +56,21 @@ export async function signInApple(): Promise<void> {
   });
   if (!cred.identityToken) throw new Error('apple: no identity token');
   await completeSocialLogin('apple', cred.identityToken);
+}
+
+// Kakao's SDK needs one init before any call; safe to run more than once.
+// Called from the root layout so the login screen never races it.
+export function initKakao(): void {
+  if (SOCIAL_CONFIG.kakaoNativeAppKey) initializeKakaoSDK(SOCIAL_CONFIG.kakaoNativeAppKey);
+}
+
+// Kakao sign-in through the official SDK: it uses the KakaoTalk app when
+// installed and falls back to the account web login otherwise. The id_token is
+// only issued when OpenID Connect is enabled for the app in Kakao's console.
+export async function signInKakao(): Promise<void> {
+  const token = await kakaoLogin();
+  if (!token.idToken) throw new Error('카카오 ID 토큰을 받지 못했어요. (콘솔에서 OpenID Connect 활성화 필요)');
+  await completeSocialLogin('kakao', token.idToken);
 }
 
 // devSignIn: local-only login via the server's ENV=dev /auth/dev endpoint (no

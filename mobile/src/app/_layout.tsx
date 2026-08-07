@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { Stack } from 'expo-router';
-import { bootstrapSession } from '@/lib/auth';
+import { bootstrapSession, initKakao } from '@/lib/auth';
 import { api } from '@/api/client';
 import { hydrateEconomy } from '@/data/economy';
 import { colors } from '@/theme/tokens';
@@ -14,6 +14,7 @@ export default function RootLayout() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    initKakao(); // must run before the login screen can call Kakao's SDK
     // Hydrate the economy config (single source of truth) alongside the session.
     Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig())]).finally(() => setHydrated(true));
   }, []);

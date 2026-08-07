@@ -15,8 +15,7 @@ import { Stack, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
-import * as AuthSession from 'expo-auth-session';
-import { completeSocialLogin, signInApple, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured, kakaoRedirectUri } from '@/lib/auth';
+import { completeSocialLogin, signInApple, signInKakao, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured } from '@/lib/auth';
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -63,43 +62,10 @@ function GoogleButton({ busy, complete }: { busy: boolean; complete: Complete })
   return <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label="Google로 계속하기" disabled={busy || !prompt} onPress={() => prompt?.()} />;
 }
 
-// Kakao — code flow → token exchange → id_token. Mounts ONLY when configured.
+// Kakao — official SDK (KakaoTalk app when installed, account web login when not).
+// No auth hook to own, so unlike Google this needs no conditional mounting.
 function KakaoButton({ busy, complete }: { busy: boolean; complete: Complete }) {
-  const discovery = AuthSession.useAutoDiscovery(KAKAO_ISSUER);
-  // NOT makeRedirectUri() — Kakao only accepts `kakao<NATIVE_APP_KEY>://oauth`
-  // for a native app key; its console rejects custom schemes for REST keys.
-  const redirectUri = kakaoRedirectUri;
-  const [req, res, prompt] = AuthSession.useAuthRequest(
-    {
-      clientId: SOCIAL_CONFIG.kakaoNativeAppKey,
-      redirectUri,
-      responseType: AuthSession.ResponseType.Code,
-      // account_email is 선택 동의 (optional consent), so a user can decline and the
-      // authorization still succeeds. Never treat the email as present or stable:
-      // Kakao masks unverified addresses (ka***@kakao.com) and users can change
-      // them, so identity keys off (provider, subject_id) — auth_identities.email
-      // is NOT NULL DEFAULT '' with no unique constraint, and an empty one is fine.
-      scopes: ['openid', 'account_email'],
-    },
-    discovery,
-  );
-  useEffect(() => {
-    if (res?.type !== 'success' || !discovery || !req) return;
-    complete('카카오', async () => {
-      const tok = await AuthSession.exchangeCodeAsync(
-        {
-          clientId: SOCIAL_CONFIG.kakaoNativeAppKey,
-          code: res.params.code,
-          redirectUri,
-          extraParams: req.codeVerifier ? { code_verifier: req.codeVerifier } : undefined,
-        },
-        discovery,
-      );
-      if (!tok.idToken) throw new Error('카카오 ID 토큰을 받지 못했어요.');
-      await completeSocialLogin('kakao', tok.idToken);
-    });
-  }, [res]); // eslint-disable-line react-hooks/exhaustive-deps
-  return <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy || !prompt} onPress={() => prompt?.()} />;
+  return <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy} onPress={() => complete('카카오', signInKakao)} />;
 }
 
 export default function Login() {
