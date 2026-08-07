@@ -117,6 +117,23 @@ Info.plist에 `forin`·`app.forin.mobile` 스킴 등록 확인.
 - 플랫폼 등록: 카카오 콘솔 네이티브 앱 키에 iOS 번들 ID / Android 패키지명 `app.forin.mobile` 등록됨.
 - 콘솔 경로: OpenID Connect는 **앱 관리 → 카카오 로그인 → OpenID Connect → ON**.
 
+## 앱 아이콘 · 네이티브 스플래시 (2026-08-07)
+
+기존 `assets/images/*`는 전부 **Expo 템플릿 기본값**(파란 셰브론 아이콘, `#208AEF` 스플래시)이었다 —
+그대로면 App Store·홈 화면·카카오 로그인 동의 화면에 Expo 플레이스홀더가 노출된다. 스플래시 아트
+(`onboardingArt.tsx`의 `PixelPlane`/`Cloud`)의 **픽셀 좌표를 그대로 재사용**해 아이콘 세트를 생성:
+
+- `icon.png` 1024 — 피치→**민트딥** 16밴드 하늘 + 구름 2 + 비행기. 하늘 끝을 mint에서 mintDeep으로
+  내린 것은 흰 동체 대비 확보용(원래 mint는 아이콘 크기에서 뭉갬). 비행기에 디자인 시스템의
+  **잉크 하드 그림자**(1픽셀 유닛 오프셋, 블러 없음) 추가. 선두 비행운 2조각은 축소 시 먼지로 보여 제거.
+- `android-icon-background/foreground/monochrome.png` — 어댑티브 아이콘은 레이어가 분리되므로
+  배경=하늘, 전경=비행기(투명). 전경은 Android가 중앙 ~66%만 보장하므로 그 안에 들어가게 축소.
+- `favicon.png` 48, `splash-icon.png` 512(비행기 단독·투명).
+- 네이티브 스플래시 배경을 `#208AEF`(Expo 기본) → **`#FFEDD5`(peach)** 로. 앱 스플래시 화면이
+  피치→민트 그라데이션이라 그 앞에 파란 화면이 번쩍이던 문제 해소. iOS에도 `image` 지정(기존엔
+  android만 있어 iOS는 배경색만 떴음).
+- 생성 스크립트는 세션 스크래치패드(`mkassets.py`)에 있고 레포에는 산출물만 커밋.
+
 ## 로그아웃 (2026-08-07)
 
 `lib/auth.ts`에 `signOut()`은 있었으나 **호출하는 화면이 하나도 없었다** — 정상 경로로는 로그인
