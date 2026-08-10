@@ -7,6 +7,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/user"
@@ -189,4 +190,65 @@ type RefreshStore interface {
 	// Consume returns true and deletes the token if (userID, tokenHash) exists.
 	Consume(ctx context.Context, userID, tokenHash string) (bool, error)
 	DeleteAll(ctx context.Context, userID string) error
+}
+
+// ColleagueRepo persists invite-code based colleague relationships, the requests
+// that create them, cheers, presence and sharing preferences.
+//
+// Links are stored as a MIRRORED PAIR — every method that creates or removes a
+// link writes both rows in one transaction, so callers never see a half-link
+// (Build Spec INV-1/2/3).
+type ColleagueRepo interface {
+	// ActiveCode returns the user's current invite code, or nil when they have
+	// none / it expired / it is used up.
+	ActiveCode(ctx context.Context, userID string) (*colleague.InviteCode, error)
+	// SaveCode revokes any previous active code and stores this one atomically.
+	SaveCode(ctx context.Context, c colleague.InviteCode) error
+	// CodeOwner resolves a normalized code to its still-usable record.
+	CodeOwner(ctx context.Context, code string) (*colleague.InviteCode, error)
+
+	// Links lists the user's colleagues, newest first.
+	Links(ctx context.Context, userID string) ([]colleague.Link, error)
+	// Linked reports whether the two users are connected (either direction implies
+	// both, given the mirrored-pair invariant).
+	Linked(ctx context.Context, userID, otherID string) (bool, error)
+	// LinkCount is used to enforce the colleague cap.
+	LinkCount(ctx context.Context, userID string) (int, error)
+	// Unlink removes both rows of the pair.
+	Unlink(ctx context.Context, userID, otherID string) error
+
+	// PendingRequest returns the pending request from → to, if any.
+	PendingRequest(ctx context.Context, fromID, toID string) (*colleague.Request, error)
+	// CreateRequest stores a pending request and increments the code's use count
+	// in the same transaction (INV-4).
+	CreateRequest(ctx context.Context, r colleague.Request, code string) error
+	// InboxRequests lists pending requests addressed to the user.
+	InboxRequests(ctx context.Context, userID string) ([]colleague.Request, error)
+	// AcceptRequest marks the request accepted AND writes the mirrored link pair.
+	AcceptRequest(ctx context.Context, requestID, byUserID string) (*colleague.Request, error)
+	// SetRequestStatus handles decline/cancel.
+	SetRequestStatus(ctx context.Context, requestID, byUserID string, status colleague.RequestStatus) error
+
+	// AddCheer stores a cheer. cheersToday enforcement happens in the service.
+	AddCheer(ctx context.Context, c colleague.Cheer) error
+	// CheersToday counts cheers sent from → to since `since` (rate limit R-9).
+	CheersToday(ctx context.Context, fromID, toID string, since time.Time) (int, error)
+	// Inbox lists received cheers, newest first.
+	Inbox(ctx context.Context, userID string, limit int) ([]colleague.Cheer, error)
+	// UnreadCheers counts unread received cheers.
+	UnreadCheers(ctx context.Context, userID string) (int, error)
+	// MarkCheersRead marks the user's received cheers as read.
+	MarkCheersRead(ctx context.Context, userID string) error
+	// Conversation lists cheers exchanged between two users, newest first.
+	Conversation(ctx context.Context, userID, otherID string, limit int) ([]colleague.Cheer, error)
+
+	// TouchPresence bumps last_seen_at, optionally recording what the user is doing.
+	// Empty scenarioID/label leave the previous activity untouched.
+	TouchPresence(ctx context.Context, userID, scenarioID, label string) error
+	// Presences fetches presence for several users at once (colleague list).
+	Presences(ctx context.Context, userIDs []string) (map[string]colleague.Presence, error)
+
+	// Prefs returns sharing preferences, defaulting when no row exists.
+	Prefs(ctx context.Context, userID string) (colleague.Prefs, error)
+	SetPrefs(ctx context.Context, userID string, p colleague.Prefs) error
 }
