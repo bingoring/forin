@@ -1,5 +1,44 @@
 components:
   schemas:
+    github_com_bingoring_forin_server_internal_curriculum.ChapterState:
+      properties:
+        ch:
+          type: integer
+        dept:
+          type: string
+        done:
+          type: integer
+        name:
+          type: string
+        next:
+          description: name of the current (now) step
+          type: string
+        state:
+          description: done | now | lock
+          type: string
+        steps:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.StepState'
+          type: array
+          uniqueItems: false
+        total:
+          type: integer
+      type: object
+    github_com_bingoring_forin_server_internal_curriculum.StepState:
+      properties:
+        kind:
+          type: string
+        name:
+          type: string
+        optional:
+          description: bonus practice; doesn't gate the chapter
+          type: boolean
+        scenarioId:
+          type: string
+        state:
+          description: done | now | lock | optional
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_domain_auth.TokenPair:
       properties:
         accessToken:
@@ -10,6 +49,16 @@ components:
         refreshToken:
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_colleague.Relation:
+      enum:
+      - peer
+      - mentor
+      - mentee
+      type: string
+      x-enum-varnames:
+      - RelationPeer
+      - RelationMentor
+      - RelationMentee
     github_com_bingoring_forin_server_internal_domain_conversation.Correction:
       properties:
         cardId:
@@ -20,6 +69,65 @@ components:
           type: string
         original:
           type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_home.MentorNote:
+      properties:
+        id:
+          type: string
+        npc:
+          properties:
+            dept:
+              type: string
+            name:
+              type: string
+            role:
+              type: string
+          type: object
+        text:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_home.Phrase:
+      properties:
+        en:
+          type: string
+        id:
+          type: string
+        ko:
+          type: string
+        note:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_home.Shift:
+      properties:
+        deptLabel:
+          type: string
+        shift:
+          description: DAY | EVENING
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_progress.GrowthStats:
+      properties:
+        activeDates:
+          description: yyyy-mm-dd (tz), current week
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        conversationSecondsToday:
+          type: integer
+        conversationSecondsWeek:
+          type: integer
+        newCardsToday:
+          type: integer
+        newCardsWeek:
+          type: integer
+        scenariosToday:
+          type: integer
+        scenariosTotal:
+          description: lifetime clears → praise stickers (1 each)
+          type: integer
+        scenariosWeek:
+          type: integer
       type: object
     github_com_bingoring_forin_server_internal_domain_progress.Progress:
       properties:
@@ -45,12 +153,18 @@ components:
         destination:
           description: e.g. "us"
           type: string
+        equippedTitle:
+          description: equipped career title id (may be empty)
+          type: string
         job:
           description: 'MVP: "nurse"'
           type: string
         nativeLang:
           description: user's language, e.g. "ko"
           type: string
+        onboarded:
+          description: completed the onboarding wizard
+          type: boolean
         targetLang:
           description: language being learned, e.g. "en", "de"
           type: string
@@ -87,6 +201,80 @@ components:
     internal_adapters_http.gradeReq:
       properties:
         grade:
+          type: string
+      type: object
+    internal_adapters_http.homeColleague:
+      properties:
+        activeToday:
+          type: boolean
+        activity:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        relation:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_colleague.Relation'
+      type: object
+    internal_adapters_http.homeResp:
+      properties:
+        colleagueTotal:
+          type: integer
+        colleagues:
+          items:
+            $ref: '#/components/schemas/internal_adapters_http.homeColleague'
+          type: array
+          uniqueItems: false
+        date:
+          type: string
+        done:
+          type: boolean
+        level:
+          type: integer
+        mentorNote:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_home.MentorNote'
+        pendingRequests:
+          type: integer
+        phrase:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_home.Phrase'
+        review:
+          $ref: '#/components/schemas/internal_adapters_http.homeReview'
+        shift:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_home.Shift'
+        situationsWaiting:
+          type: integer
+        streak:
+          type: integer
+        targetLevel:
+          type: string
+        todayOne:
+          $ref: '#/components/schemas/internal_adapters_http.homeTodayOne'
+        unreadCheers:
+          type: integer
+        week:
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
+        xp:
+          type: integer
+      type: object
+    internal_adapters_http.homeReview:
+      properties:
+        front:
+          type: string
+        id:
+          type: string
+      type: object
+    internal_adapters_http.homeTodayOne:
+      properties:
+        chapter:
+          type: string
+        kind:
+          type: string
+        scenarioId:
+          type: string
+        title:
           type: string
       type: object
     internal_adapters_http.loginResp:
@@ -127,6 +315,29 @@ components:
         provider:
           type: string
       type: object
+    internal_adapters_http.sttReq:
+      properties:
+        audioBase64:
+          type: string
+      type: object
+    internal_adapters_http.titleReq:
+      properties:
+        titleId:
+          type: string
+      type: object
+    internal_adapters_http.updateProfileReq:
+      properties:
+        destination:
+          type: string
+        job:
+          type: string
+        nativeLang:
+          type: string
+        targetLang:
+          type: string
+        targetLevel:
+          type: string
+      type: object
   securitySchemes:
     Bearer:
       in: header
@@ -165,6 +376,18 @@ paths:
       summary: Record a cleared scenario (awards XP, advances streak)
       tags:
       - progress
+  /auth/dev:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.loginResp'
+          description: OK
+      summary: Dev login (local only — no provider). Registered only when ENV=dev.
+      tags:
+      - auth
   /auth/logout:
     post:
       responses: null
@@ -220,7 +443,13 @@ paths:
   /board/today:
     get:
       responses: null
-      summary: Today's event board (daily pool)
+      summary: Today's situation board — a daily-rotated set of scenario cards
+      tags:
+      - content
+  /config/economy:
+    get:
+      responses: null
+      summary: Economy config (single source of truth mirrored to the client)
       tags:
       - content
   /content/manifest:
@@ -229,6 +458,14 @@ paths:
       summary: Content manifest (version)
       tags:
       - content
+  /conversation/{sessionId}/complete:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Grade the finished conversation, award scaled XP, return the result
+      tags:
+      - conversation
   /conversation/{sessionId}/message:
     post:
       requestBody:
@@ -304,6 +541,14 @@ paths:
       summary: 'Get a department interior (tile map: regions/rooms/objects/hotspots)'
       tags:
       - content
+  /invite/{code}:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Preview the person behind an invite code
+      tags:
+      - colleagues
   /me:
     get:
       responses:
@@ -316,6 +561,199 @@ paths:
       security:
       - Bearer: []
       summary: Current user + profile
+      tags:
+      - user
+  /me/cheers:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Cheer inbox (marks them read)
+      tags:
+      - colleagues
+  /me/colleague-prefs:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Read or update colleague sharing preferences
+      tags:
+      - colleagues
+  /me/colleague-requests:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Pending colleague requests addressed to me
+      tags:
+      - colleagues
+  /me/colleague-requests/{id}/accept:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Accept a colleague request
+      tags:
+      - colleagues
+  /me/colleague-requests/{id}/decline:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Decline a colleague request
+      tags:
+      - colleagues
+  /me/colleagues:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: My colleagues
+      tags:
+      - colleagues
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Redeem an invite code (creates a request, or links when mutual)
+      tags:
+      - colleagues
+  /me/colleagues/{id}:
+    delete:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Remove a colleague
+      tags:
+      - colleagues
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: One colleague's profile (404 unless linked)
+      tags:
+      - colleagues
+  /me/colleagues/{id}/cheers:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Send a cheer to a colleague
+      tags:
+      - colleagues
+  /me/curriculum:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.ChapterState'
+                  type: array
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: Chapter/step curriculum with per-user progress (v19 campus hub)
+      tags:
+      - progress
+  /me/daily-board:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Personalized daily pool — weighted, persisted, resets 00:00 local (?tz=)
+      tags:
+      - content
+  /me/daily-board/topup:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Rewarded-ad top-up of today's daily pool (+N, up to a daily cap)
+      tags:
+      - content
+  /me/home:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.homeResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Home tab (one round trip)
+      tags:
+      - home
+  /me/invite-code:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: My invite code (mints one when absent; ?rotate=1 issues a fresh one)
+      tags:
+      - colleagues
+  /me/missions:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    type: string
+                  type: array
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: Discovered hidden missions
+      tags:
+      - progress
+  /me/missions/{id}:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    type: string
+                  type: array
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: Record a hidden-mission discovery (permanent, idempotent)
+      tags:
+      - progress
+  /me/profile:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.updateProfileReq'
+              description: onboarding selections
+              summary: body
+        description: onboarding selections
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.Profile'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Save onboarding profile (marks the user onboarded)
       tags:
       - user
   /me/progress:
@@ -357,6 +795,59 @@ paths:
       summary: Grade a review card (SM-2 spaced repetition)
       tags:
       - review
+  /me/route:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Main-route curriculum path (events + unlock states) for the user
+      tags:
+      - content
+  /me/situations:
+    get:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Department situation cards (?dept=ER) — dept-scoped scenarios
+      tags:
+      - content
+  /me/stats:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.GrowthStats'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Growth-report aggregates (scenarios, cards, conversation time, attendance)
+      tags:
+      - progress
+  /me/title:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.titleReq'
+              description: title id ('' to un-equip)
+              summary: body
+        description: title id ('' to un-equip)
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.Profile'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Equip a career title
+      tags:
+      - user
   /pronunciation:
     post:
       requestBody:
@@ -374,6 +865,24 @@ paths:
       summary: Assess pronunciation of recorded audio vs a reference phrase (Azure)
       tags:
       - pronunciation
+  /quizzes/{id}:
+    get:
+      responses: null
+      summary: Get a quiz (playable content)
+      tags:
+      - content
+  /quizzes/{id}/audio-meta:
+    get:
+      responses: null
+      summary: Waveform + duration for a listen quiz's dictation audio
+      tags:
+      - content
+  /quizzes/{id}/audio.wav:
+    get:
+      responses: null
+      summary: Synthesized dictation audio for a listen quiz (WAV)
+      tags:
+      - content
   /scenarios/{id}:
     get:
       responses: null
@@ -388,3 +897,20 @@ paths:
       summary: Start a persona-driven conversation for a scenario
       tags:
       - conversation
+  /stt:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.sttReq'
+              description: base64 WAV (16kHz mono PCM)
+              summary: body
+        description: base64 WAV (16kHz mono PCM)
+        required: true
+      responses: null
+      security:
+      - Bearer: []
+      summary: Transcribe recorded audio to text (dictation, Azure STT)
+      tags:
+      - pronunciation

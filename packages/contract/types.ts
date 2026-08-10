@@ -45,6 +45,42 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/dev": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Dev login (local only — no provider). Registered only when ENV=dev. */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.loginResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/auth/logout": {
         parameters: {
             query?: never;
@@ -160,7 +196,33 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Today's event board (daily pool) */
+        /** Today's situation board — a daily-rotated set of scenario cards */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/config/economy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Economy config (single source of truth mirrored to the client) */
         get: {
             parameters: {
                 query?: never;
@@ -199,6 +261,32 @@ export interface paths {
         };
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/conversation/{sessionId}/complete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Grade the finished conversation, award scaled XP, return the result */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -386,6 +474,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/invite/{code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Preview the person behind an invite code */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me": {
         parameters: {
             query?: never;
@@ -420,6 +534,503 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/me/cheers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Cheer inbox (marks them read) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/colleague-prefs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Read or update colleague sharing preferences */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/colleague-requests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Pending colleague requests addressed to me */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/colleague-requests/{id}/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Accept a colleague request */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/colleague-requests/{id}/decline": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Decline a colleague request */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/colleagues": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** My colleagues */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        /** Redeem an invite code (creates a request, or links when mutual) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/colleagues/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** One colleague's profile (404 unless linked) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        /** Remove a colleague */
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/colleagues/{id}/cheers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Send a cheer to a colleague */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/curriculum": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Chapter/step curriculum with per-user progress (v19 campus hub) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.ChapterState"][];
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/daily-board": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Personalized daily pool — weighted, persisted, resets 00:00 local (?tz=) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/daily-board/topup": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Rewarded-ad top-up of today's daily pool (+N, up to a daily cap) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/home": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Home tab (one round trip) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.homeResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/invite-code": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** My invite code (mints one when absent; ?rotate=1 issues a fresh one) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/missions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Discovered hidden missions */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: string[];
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/missions/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Record a hidden-mission discovery (permanent, idempotent) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: string[];
+                        };
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Save onboarding profile (marks the user onboarded) */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description onboarding selections */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.updateProfileReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
+                    };
+                };
+            };
+        };
         trace?: never;
     };
     "/me/progress": {
@@ -515,6 +1126,135 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/route": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Main-route curriculum path (events + unlock states) for the user */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/situations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Department situation cards (?dept=ER) — dept-scoped scenarios */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/stats": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Growth-report aggregates (scenarios, cards, conversation time, attendance) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.GrowthStats"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/title": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Equip a career title */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description title id ('' to un-equip) */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.titleReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
+                    };
+                };
+            };
+        };
+        trace?: never;
+    };
     "/pronunciation": {
         parameters: {
             query?: never;
@@ -540,6 +1280,84 @@ export interface paths {
             };
             responses: never;
         };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/quizzes/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get a quiz (playable content) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/quizzes/{id}/audio-meta": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Waveform + duration for a listen quiz's dictation audio */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/quizzes/{id}/audio.wav": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Synthesized dictation audio for a listen quiz (WAV) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -598,21 +1416,107 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/stt": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Transcribe recorded audio to text (dictation, Azure STT) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description base64 WAV (16kHz mono PCM) */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.sttReq"];
+                };
+            };
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        "github_com_bingoring_forin_server_internal_curriculum.ChapterState": {
+            ch?: number;
+            dept?: string;
+            done?: number;
+            name?: string;
+            /** @description name of the current (now) step */
+            next?: string;
+            /** @description done | now | lock */
+            state?: string;
+            steps?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.StepState"][];
+            total?: number;
+        };
+        "github_com_bingoring_forin_server_internal_curriculum.StepState": {
+            kind?: string;
+            name?: string;
+            /** @description bonus practice; doesn't gate the chapter */
+            optional?: boolean;
+            scenarioId?: string;
+            /** @description done | now | lock | optional */
+            state?: string;
+        };
         "github_com_bingoring_forin_server_internal_domain_auth.TokenPair": {
             accessToken?: string;
             /** @description access token seconds-to-live */
             expiresIn?: number;
             refreshToken?: string;
         };
+        /** @enum {string} */
+        "github_com_bingoring_forin_server_internal_domain_colleague.Relation": "peer" | "mentor" | "mentee";
         "github_com_bingoring_forin_server_internal_domain_conversation.Correction": {
             cardId?: string;
             corrected?: string;
             note?: string;
             original?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_home.MentorNote": {
+            id?: string;
+            npc?: {
+                dept?: string;
+                name?: string;
+                role?: string;
+            };
+            text?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_home.Phrase": {
+            en?: string;
+            id?: string;
+            ko?: string;
+            note?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_home.Shift": {
+            deptLabel?: string;
+            /** @description DAY | EVENING */
+            shift?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_progress.GrowthStats": {
+            /** @description yyyy-mm-dd (tz), current week */
+            activeDates?: string[];
+            conversationSecondsToday?: number;
+            conversationSecondsWeek?: number;
+            newCardsToday?: number;
+            newCardsWeek?: number;
+            scenariosToday?: number;
+            /** @description lifetime clears → praise stickers (1 each) */
+            scenariosTotal?: number;
+            scenariosWeek?: number;
         };
         "github_com_bingoring_forin_server_internal_domain_progress.Progress": {
             emergencyResponse?: number;
@@ -627,10 +1531,14 @@ export interface components {
         "github_com_bingoring_forin_server_internal_domain_user.Profile": {
             /** @description e.g. "us" */
             destination?: string;
+            /** @description equipped career title id (may be empty) */
+            equippedTitle?: string;
             /** @description MVP: "nurse" */
             job?: string;
             /** @description user's language, e.g. "ko" */
             nativeLang?: string;
+            /** @description completed the onboarding wizard */
+            onboarded?: boolean;
             /** @description language being learned, e.g. "en", "de" */
             targetLang?: string;
             /** @description level in TargetLang, e.g. "B1" */
@@ -654,6 +1562,42 @@ export interface components {
         "internal_adapters_http.gradeReq": {
             grade?: string;
         };
+        "internal_adapters_http.homeColleague": {
+            activeToday?: boolean;
+            activity?: string;
+            id?: string;
+            name?: string;
+            relation?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_colleague.Relation"];
+        };
+        "internal_adapters_http.homeResp": {
+            colleagueTotal?: number;
+            colleagues?: components["schemas"]["internal_adapters_http.homeColleague"][];
+            date?: string;
+            done?: boolean;
+            level?: number;
+            mentorNote?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_home.MentorNote"];
+            pendingRequests?: number;
+            phrase?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_home.Phrase"];
+            review?: components["schemas"]["internal_adapters_http.homeReview"];
+            shift?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_home.Shift"];
+            situationsWaiting?: number;
+            streak?: number;
+            targetLevel?: string;
+            todayOne?: components["schemas"]["internal_adapters_http.homeTodayOne"];
+            unreadCheers?: number;
+            week?: number[];
+            xp?: number;
+        };
+        "internal_adapters_http.homeReview": {
+            front?: string;
+            id?: string;
+        };
+        "internal_adapters_http.homeTodayOne": {
+            chapter?: string;
+            kind?: string;
+            scenarioId?: string;
+            title?: string;
+        };
         "internal_adapters_http.loginResp": {
             tokens?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];
             user?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.User"];
@@ -675,6 +1619,19 @@ export interface components {
         "internal_adapters_http.socialLoginReq": {
             idToken?: string;
             provider?: string;
+        };
+        "internal_adapters_http.sttReq": {
+            audioBase64?: string;
+        };
+        "internal_adapters_http.titleReq": {
+            titleId?: string;
+        };
+        "internal_adapters_http.updateProfileReq": {
+            destination?: string;
+            job?: string;
+            nativeLang?: string;
+            targetLang?: string;
+            targetLevel?: string;
         };
     };
     responses: never;

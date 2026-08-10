@@ -2,7 +2,13 @@
 # End-to-end smoke test for the core forin journey (Stage 2-8 통합·E2E).
 # Exercises: auth → onboarding → curriculum → dialogue+correction → clear(XP) →
 # review(SM-2) → growth stats → daily pool + rewarded top-up → missions → dept
-# situations, plus robustness (token refresh/rotation, error status codes).
+# situations → home aggregate → colleagues (code, boundaries, privacy), plus
+# robustness (token refresh/rotation, error status codes).
+#
+# The colleague LINK flow (request → accept → cheer) needs two users and
+# /auth/dev is a single fixed account, so this script covers the single-user
+# contract and the boundaries instead; the two-user path is verified manually
+# (see the Build Spec §5 verification plan).
 #
 # State-independent: assertions are monotonic (after ≥ before) or structural, so
 # the script passes on any starting state and is safe to re-run. Requires the dev
@@ -115,6 +121,76 @@ hd "⑪ ERROR PATHS · status codes"
 c=$(curl -s -o /dev/null -w '%{http_code}' "$B/me"); [ "$c" = 401 ] && ok "unauth /me → 401" || bad "unauth /me → $c"
 run PATCH /me/title '{"titleId":"bogus"}'; [ "$CODE" = 400 ] && ok "bad title → 400" || bad "bad title → $CODE"
 run POST /me/missions/bogus; [ "$CODE" = 400 ] && ok "unknown mission → 400" || bad "unknown mission → $CODE"
+
+hd "⑫ HOME · one round trip, no placeholders"
+run GET "/me/home?tz=Asia/Seoul"
+[ "$CODE" = 200 ] && ok "GET /me/home 200" || bad "home → $CODE"
+hdate=$(pj "d.get('date','')")
+[ -n "$hdate" ] && ok "home date bucketed in tz: $hdate" || bad "no date"
+wk=$(pj "len(d.get('week',[]))")
+[ "${wk:-0}" = 7 ] && ok "week rhythm has 7 blocks" || bad "week blocks=$wk"
+todaymark=$(pj "d.get('week',[0]*7).count(2)")
+[ "${todaymark:-0}" = 1 ] && ok "exactly one block marked today" || bad "today blocks=$todaymark"
+# 더미 금지: a module is either absent or fully populated — never a stub.
+mn=$(pj "('mentorNote' not in d) or bool(d['mentorNote'].get('text') and d['mentorNote'].get('npc',{}).get('name'))")
+[ "$mn" = "True" ] && ok "mentorNote absent or complete" || bad "mentorNote present but hollow"
+ph=$(pj "('phrase' not in d) or bool(d['phrase'].get('en') and d['phrase'].get('ko'))")
+[ "$ph" = "True" ] && ok "phrase absent or complete" || bad "phrase present but hollow"
+t1=$(pj "('todayOne' not in d) or bool(d['todayOne'].get('title'))")
+[ "$t1" = "True" ] && ok "todayOne absent or titled" || bad "todayOne present but untitled"
+# done is the inverse of having a next step — the rest card replaces the hero.
+inv=$(pj "d.get('done') == ('todayOne' not in d)")
+[ "$inv" = "True" ] && ok "done ⇔ no todayOne (rest card state)" || bad "done/todayOne disagree"
+# The shift department must be the curriculum's current one, not a random pick.
+if [ "$(pj "'shift' in d")" = "True" ]; then
+  sdept=$(pj "d['shift']['deptLabel']")
+  run GET /me/curriculum
+  cdept=$(pj "next((c['dept'] for c in d.get('chapters',[]) if c.get('state')=='now'), '')")
+  [ "$sdept" = "$cdept" ] && ok "shift dept matches curriculum: $sdept" || bad "shift '$sdept' ≠ curriculum '$cdept'"
+fi
+
+hd "⑬ COLLEAGUES · code, boundaries, privacy"
+run POST /me/invite-code
+[ "$CODE" = 200 ] && ok "POST /me/invite-code 200" || bad "invite-code → $CODE"
+MYCODE=$(pj "d.get('code','')")
+printf '%s' "$MYCODE" | grep -qE '^[23456789ABCDEFGHJKMNPQRSTVWXYZ]{2}-[23456789ABCDEFGHJKMNPQRSTVWXYZ]{4}$' \
+  && ok "code shape XX-XXXX, no confusable chars: $MYCODE" || bad "bad code shape: $MYCODE"
+run POST /me/invite-code; SAME=$(pj "d.get('code','')")
+[ "$SAME" = "$MYCODE" ] && ok "re-issue returns the same active code" || bad "code changed without rotate ($MYCODE→$SAME)"
+# Looking up your OWN code is a mistake, not a match.
+run "GET" "/invite/$MYCODE"
+[ "$CODE" = 400 ] && ok "own code lookup → 400" || bad "own code lookup → $CODE"
+run GET /invite/ZZ-ZZZZ
+[ "$CODE" = 404 ] && ok "unknown code → 404" || bad "unknown code → $CODE"
+run POST /me/colleagues "{\"code\":\"$MYCODE\"}"
+[ "$CODE" = 400 ] && ok "adding yourself → 400" || bad "self-add → $CODE"
+run POST /me/colleagues '{"code":"nonsense"}'
+[ "$CODE" = 404 ] && ok "malformed code → 404" || bad "malformed code → $CODE"
+run GET /me/colleagues
+[ "$CODE" = 200 ] && ok "GET /me/colleagues 200" || bad "colleagues → $CODE"
+# A stranger must be indistinguishable from a non-existent user (404, never 403).
+run GET /me/colleagues/00000000-0000-0000-0000-000000000000
+[ "$CODE" = 404 ] && ok "unlinked colleague → 404 (not 403)" || bad "unlinked colleague → $CODE"
+run POST /me/colleagues/00000000-0000-0000-0000-000000000000/cheers '{"preset":"fighting"}'
+[ "$CODE" = 404 ] && ok "cheer to unlinked → 404" || bad "cheer to unlinked → $CODE"
+run GET /me/cheers
+[ "$CODE" = 200 ] && ok "GET /me/cheers 200" || bad "cheers → $CODE"
+run GET /me/colleague-requests
+[ "$CODE" = 200 ] && ok "GET /me/colleague-requests 200" || bad "requests → $CODE"
+
+hd "⑭ COLLEAGUE PREFS · toggle + restore"
+run GET /me/colleague-prefs
+ORIG=$(pj "d.get('shareStatus')")
+[ "$CODE" = 200 ] && ok "prefs default readable (shareStatus=$ORIG)" || bad "prefs → $CODE"
+run PATCH /me/colleague-prefs '{"shareStatus":false}'
+off=$(pj "d.get('shareStatus')")
+[ "$off" = "False" ] && ok "shareStatus can be turned off" || bad "prefs patch → $off"
+# Restore whatever the account had, not a hardcoded default — a user who
+# deliberately hid their status must not have it flipped back by a test run.
+if [ "$ORIG" = "True" ]; then RESTORE=true; else RESTORE=false; fi
+run PATCH /me/colleague-prefs "{\"shareStatus\":$RESTORE}"
+on=$(pj "d.get('shareStatus')")
+[ "$on" = "$ORIG" ] && ok "shareStatus restored to original ($ORIG)" || bad "restore → $on, wanted $ORIG"
 
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"
