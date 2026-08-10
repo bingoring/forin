@@ -26,23 +26,45 @@ type Topic struct {
 	Acuity string
 }
 
-// urgentTopics marks curated topics as urgent/critical by exact title. Kept as a
-// table rather than keyword matching so every entry is a reviewed decision.
+// urgentTopics marks curated topics as urgent/critical by exact title.
+//
+// A table, not keyword matching: "낙상 외상 사정" is an emergency and "낙상 예방
+// 교육" is a lesson — no regex separates those. The test is whether the situation
+// is HAPPENING and the response is the task; teaching, counselling and handovers
+// stay routine however serious their subject.
+//
+// Reviewed against all 250 curated topics (2026-08-10).
 var urgentTopics = map[string]string{
+	// critical — life-threatening, the response IS the task
 	"Code Blue 콜 응대": "critical",
 	"소아 Code 대응":     "critical",
 	"산후 출혈 대응":       "critical",
 	"증상 급변 대응":       "critical",
-	"호흡곤란 초기 평가":     "urgent",
-	"낙상 외상 사정":       "urgent",
-	"낙상·머리 손상 관찰":    "urgent",
-	"소아 열경련 부모 안내":   "urgent",
-	"모니터 알람 해석":      "urgent",
-	"무호흡·서맥 알람 설명":   "urgent",
-	"장비 알람 대응":       "urgent",
-	"ICU 섬망 대응":      "urgent",
-	"패혈증 상태 설명":      "urgent",
-	"자살 위험 사정":       "urgent",
+	"천식 발작 아동 진정":    "critical",
+	"알레르기 반응 대응":     "critical",
+	"조영제 이상반응 대응":    "critical",
+
+	// urgent — happening now, deteriorating, or a safety incident
+	"흉통 트리아지":       "urgent",
+	"호흡곤란 초기 평가":    "urgent",
+	"낙상 외상 사정":      "urgent",
+	"낙상·머리 손상 관찰":   "urgent",
+	"소아 열경련 부모 안내":  "urgent",
+	"주취 환자 진정":      "urgent",
+	"모니터 알람 해석":     "urgent",
+	"무호흡·서맥 알람 설명":  "urgent",
+	"장비 알람 대응":      "urgent",
+	"패혈증 상태 설명":     "urgent",
+	"ICU 섬망 대응":     "urgent",
+	"중증 아동 부모 설명":   "urgent",
+	"저혈압 에피소드 대응":   "urgent",
+	"위기 환자 디에스컬레이션": "urgent",
+	"자살 위험 사정":      "urgent",
+	"환청 대응":         "urgent",
+	"불안 발작 진정":      "urgent",
+	"멸균 실패 보고 대응":   "urgent",
+	"긴급 기구 재처리":     "urgent",
+	"장비 고장 에스컬레이션":  "urgent",
 }
 
 // acuityOf returns the topic's curated acuity ("" = routine).
