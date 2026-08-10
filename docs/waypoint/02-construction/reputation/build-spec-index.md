@@ -1,7 +1,7 @@
 ---
 build-spec: reputation
 stage: 02-construction/07-growth-economy-review
-status: READY
+status: IMPLEMENTED
 depth: standard
 updated: 2026-08-10
 ---
@@ -73,12 +73,12 @@ xp·level·streak만 갱신). 결과:
 
 ## §4. 구현 체크리스트
 
-- [ ] U1 `reputation` 도메인 + 테스트
-- [ ] U2 `Scenario.acuity` + 기존 콘텐츠 태깅
-- [ ] U3 저장소 `ApplyReputation` (클램프 0~100)
-- [ ] U4 클리어 훅 + 소비 측 긴급도 연결
-- [ ] U5 economy 수치화
-- [ ] 검증(단위·E2E) · STATUS/DECISIONS
+- [x] U1 `reputation` 도메인 + 테스트
+- [x] U2 `Scenario.acuity` + 기존 콘텐츠 태깅
+- [x] U3 저장소 `ApplyReputation` (클램프 0~100)
+- [x] U4 클리어 훅 + 소비 측 긴급도 연결
+- [x] U5 economy 수치화
+- [x] 검증(단위·E2E) · STATUS/DECISIONS
 
 ## §5. 검증 계획
 
@@ -88,3 +88,22 @@ xp·level·streak만 갱신). 결과:
 | 델타 | 만점/합격선/실패 경계, 0·100 클램프 |
 | 통합 | 클리어 → 해당 차원만 이동 · 다른 차원 불변 |
 | E2E | 스모크에 "클리어 후 평판이 움직인다" 추가 |
+
+
+## §6. 구현 결과 (2026-08-10)
+
+- `reputation` 도메인 + 테스트 8종. **합격선 피벗**(겨우 통과 = 0), 상승6/하락4, 단조.
+  구현 중 테스트가 잡은 결함: 정수 스케일 때문에 합격선 ±3점이 전부 0으로 뭉개져 61점과
+  60점이 같은 클리어가 됐다 → 피벗을 벗어나면 최소 1은 움직이도록 수정(`atLeastOne`).
+- **차원 결정을 소비·생산 양쪽이 같은 `Resolve`를 쓴다** — 배운 축과 평가받는 축이 어긋나지 않는다.
+  기존 엔진의 역할 문자열 분기를 걷어내고 대체.
+- `Scenario.acuity` 파이프라인 완성: 생성기(`Topic.Acuity` + 큐레이션 표) → YAML →
+  마이그레이션 019 컬럼 → 시드 → API. **140/2500 태깅**(critical 40 · urgent 100).
+- **부서 무관 검증**: `SCN-HOSPICE-00108`(호스피스 병동, critical) 실제 클리어 →
+  응급 대응력만 85→87(점수 70, 합격 60 → +2), 나머지 2차원 불변.
+- 스모크 48 → **51/0**.
+
+### 남은 콘텐츠 작업
+250개 큐레이션 토픽 중 14개만 긴급으로 표시했다. 키워드로는 "낙상 외상 사정"(응급)과
+"낙상 예방 교육"(일상)을 가를 수 없어 **토픽별 검토가 필요**하다. 추가 방법은
+`cmd/gencontent/banks.go`의 `urgentTopics`에 제목을 넣고 재생성하는 것 — 콘텐츠 워크스트림 몫.
