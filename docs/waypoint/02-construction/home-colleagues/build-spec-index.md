@@ -80,9 +80,11 @@ v21은 여기에 **동료**를 얹는다. 익명 티커("같은 목표를 준비
 
 ## §4. 구현 체크리스트
 
-- [ ] U1 마이그레이션 6테이블 + 인덱스 (up/down 대칭 확인)
-- [ ] U2 `colleague` 도메인 + allowed-set + `MirrorRelation`
-- [ ] U3 저장소 + ports (링크 2행 트랜잭션 INV-1/2/3)
+> 진행: **U1~U3 완료**(2026-08-10, commit `2de2647`). 다음은 U4 프레즌스 훅부터.
+
+- [x] U1 마이그레이션 6테이블 + 인덱스 (up/down 대칭 확인)
+- [x] U2 `colleague` 도메인 + allowed-set + `MirrorRelation`
+- [x] U3 저장소 + ports (링크 2행 트랜잭션 INV-1/2/3)
 - [ ] U4 프레즌스 + 대화/시도 훅
 - [ ] U5 콘텐츠 풀 + `pickDaily` (결정적)
 - [ ] U6 `GET /me/home` (nullable 모듈 · 병렬 조회)
