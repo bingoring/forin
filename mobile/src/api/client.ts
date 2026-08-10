@@ -227,6 +227,60 @@ export interface ReviewCard {
 }
 export type ReviewGrade = 'again' | 'hard' | 'good' | 'easy';
 
+// ── Home tab ───────────────────────────────────────────────────────────────
+// The server sends ONE object for the whole home screen. Optional fields are
+// ABSENT (not null/placeholder) when there is nothing to show — the screen's
+// rule is simply "no field, no module", never invented copy.
+export interface HomeShift { shift: 'DAY' | 'EVENING'; deptLabel: string }
+export interface HomeTodayOne { chapter: string; title: string; kind: string; scenarioId?: string }
+export interface HomeMentorNote { id: string; npc: { name: string; role: string; dept: string }; text: string }
+export interface HomePhrase { id: string; en: string; ko: string; note?: string }
+export interface HomeReviewPeek { id: string; front: string }
+export type ColleagueRelation = 'peer' | 'mentor' | 'mentee';
+export interface HomeColleague {
+  id: string; name: string; relation: ColleagueRelation; activity?: string; activeToday: boolean;
+}
+export interface Home {
+  date: string;
+  done: boolean;               // curriculum has no next step today → rest card
+  shift?: HomeShift;
+  streak: number;
+  week: number[];              // 7 blocks, Monday-first: 0 none | 1 studied | 2 today
+  level: number; xp: number; targetLevel?: string;
+  todayOne?: HomeTodayOne;
+  mentorNote?: HomeMentorNote;
+  phrase?: HomePhrase;
+  review?: HomeReviewPeek;
+  situationsWaiting: number;
+  colleagues: HomeColleague[];
+  colleagueTotal: number;
+  unreadCheers: number;
+  pendingRequests: number;
+}
+
+// ── Colleagues ─────────────────────────────────────────────────────────────
+export interface InviteCode { code: string; relation: ColleagueRelation; expiresAt: string; maxUses: number; uses: number }
+export interface CodePreview { id: string; name: string; targetLevel?: string; destination?: string; streak?: number }
+export interface Colleague {
+  id: string; name: string; relation: ColleagueRelation;
+  targetLevel?: string; destination?: string; streak?: number;
+  activity?: string; activeToday?: boolean; statusHidden?: boolean;
+}
+export interface ColleagueDetail extends Colleague {
+  level?: number; lastSeenAt?: string; activeDates?: string[]; weeklyHidden?: boolean; cheers: Cheer[];
+}
+export type CheerPreset = 'well_done' | 'fighting' | 'streak' | 'rest';
+export interface Cheer {
+  id: string; fromUserId: string; toUserId: string;
+  preset?: CheerPreset; presetText?: string; message?: string; createdAt: string; read: boolean;
+}
+export interface ColleagueRequest { id: string; from: string; name: string; relation: ColleagueRelation; createdAt: string }
+/** All four outcomes are successes — "you already asked" is a state, not a failure. */
+export interface AddColleagueResult {
+  colleagueId: string; requested?: boolean; alreadyLinked?: boolean; alreadyRequested?: boolean; autoAccepted?: boolean;
+}
+export interface ColleaguePrefs { shareStatus: boolean; shareWeekly: boolean }
+
 export const api = {
   raw: http,
 
@@ -279,6 +333,78 @@ export const api = {
   },
 
   /** Current growth snapshot (XP, level, streak, stats). */
+  /** The whole home tab in one round trip (app's first screen — round trips are felt). */
+  async home(): Promise<Home> {
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    const { data } = await http.get('/me/home', { params: tz ? { tz } : undefined });
+    return data as Home;
+  },
+
+  /** My invite code; `rotate` mints a fresh one and revokes the old. */
+  async inviteCode(rotate = false): Promise<InviteCode> {
+    const { data } = await http.post('/me/invite-code', null, { params: rotate ? { rotate: 1 } : undefined });
+    return data as InviteCode;
+  },
+
+  /** Preview who a code belongs to, before sending a request. */
+  async lookupCode(code: string): Promise<CodePreview> {
+    const { data } = await http.get(`/invite/${encodeURIComponent(code)}`);
+    return data as CodePreview;
+  },
+
+  async colleagues(): Promise<{ colleagues: Colleague[]; pendingRequests: number; unreadCheers: number }> {
+    const { data } = await http.get('/me/colleagues');
+    return { colleagues: data?.colleagues ?? [], pendingRequests: data?.pendingRequests ?? 0, unreadCheers: data?.unreadCheers ?? 0 };
+  },
+
+  async addColleague(code: string): Promise<AddColleagueResult> {
+    const { data } = await http.post('/me/colleagues', { code });
+    return data as AddColleagueResult;
+  },
+
+  async colleague(id: string): Promise<ColleagueDetail> {
+    const { data } = await http.get(`/me/colleagues/${id}`);
+    return data as ColleagueDetail;
+  },
+
+  async removeColleague(id: string): Promise<void> {
+    await http.delete(`/me/colleagues/${id}`);
+  },
+
+  async sendCheer(id: string, body: { preset?: CheerPreset; message?: string }): Promise<Cheer> {
+    const { data } = await http.post(`/me/colleagues/${id}/cheers`, body);
+    return data as Cheer;
+  },
+
+  async cheerInbox(markRead = false): Promise<Cheer[]> {
+    const { data } = await http.get('/me/cheers', { params: markRead ? { markRead: 1 } : undefined });
+    return (data?.cheers ?? []) as Cheer[];
+  },
+
+  async colleagueRequests(): Promise<ColleagueRequest[]> {
+    const { data } = await http.get('/me/colleague-requests');
+    return (data?.requests ?? []) as ColleagueRequest[];
+  },
+
+  async acceptColleagueRequest(id: string): Promise<void> {
+    await http.post(`/me/colleague-requests/${id}/accept`);
+  },
+
+  async declineColleagueRequest(id: string): Promise<void> {
+    await http.post(`/me/colleague-requests/${id}/decline`);
+  },
+
+  async colleaguePrefs(): Promise<ColleaguePrefs> {
+    const { data } = await http.get('/me/colleague-prefs');
+    return data as ColleaguePrefs;
+  },
+
+  async setColleaguePrefs(p: Partial<ColleaguePrefs>): Promise<ColleaguePrefs> {
+    const { data } = await http.patch('/me/colleague-prefs', p);
+    return data as ColleaguePrefs;
+  },
+
   async progress(): Promise<Progress> {
     const { data } = await http.get('/me/progress');
     return data as Progress;

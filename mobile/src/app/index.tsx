@@ -8,5 +8,7 @@ export default function Index() {
   const onboarded = useAuthStore((s) => s.onboarded);
   if (!isAuthed) return <Redirect href="/splash" />;
   if (onboarded === false) return <Redirect href="/locale" />;
-  return <Redirect href="/campus" />;
+  // Home, not the career tab: the app's first screen shows today's ONE thing
+  // rather than the curriculum/building/situation lists (handoff v21 §①b).
+  return <Redirect href="/(tabs)" />;
 }

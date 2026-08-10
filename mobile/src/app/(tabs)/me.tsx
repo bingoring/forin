@@ -10,7 +10,7 @@ import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { FacePlayer } from '@engine';
-import { api, type Progress } from '@/api/client';
+import { api, type Colleague, type InviteCode, type Progress } from '@/api/client';
 import { signOut } from '@/lib/auth';
 import { earnedBadges } from '@/data/badges';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
@@ -30,14 +30,18 @@ export default function Me() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [sheet, setSheet] = useState<InfoSheetData | null>(null);
   const [signingOut, setSigningOut] = useState(false);
+  const [colleagues, setColleagues] = useState<Colleague[]>([]);
+  const [invite, setInvite] = useState<InviteCode | null>(null);
 
   useFocusEffect(
     useCallback(() => {
       let alive = true;
       (async () => {
         try {
-          const [p, me, stats, found] = await Promise.all([
+          const [p, me, stats, found, mates, code] = await Promise.all([
             api.progress(), api.me().catch(() => null), api.growthStats().catch(() => null), api.missions().catch(() => [] as string[]),
+            api.colleagues().catch(() => ({ colleagues: [] as Colleague[], pendingRequests: 0, unreadCheers: 0 })),
+            api.inviteCode().catch(() => null),
           ]);
           if (!alive) return;
           setProgress(p);
@@ -45,6 +49,8 @@ export default function Me() {
           setEnLevel(prof?.targetLevel || '');
           setEquipped(prof?.equippedTitle || '');
           setScenariosTotal(stats?.scenariosTotal ?? 0);
+          setColleagues(mates.colleagues);
+          setInvite(code);
 
           // Detect newly-met missions not yet recorded → persist + celebrate.
           const g: GrowthInput = {
@@ -220,6 +226,52 @@ export default function Me() {
             </View>
           </Shadowed>
         </Pressable>
+
+        {/* 내 동료 — 관리 소유권은 프로필에 있다(홈은 오늘 활동만 보여주고 여기로 보낸다) */}
+        <View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <PixelIcon name="handshake" color={C} size={16} sw={1.7} />
+              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>내 동료</Text>
+            </View>
+            <Pressable onPress={() => router.push('/colleagues')}>
+              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{colleagues.length}명 · 전체 ›</Text>
+            </Pressable>
+          </View>
+          <Shadowed offset={3}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
+              {colleagues.length === 0 ? (
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, lineHeight: 17 }}>
+                  아직 동료가 없어요. 코드를 주고받아 서로의 학습을 응원해보세요.
+                </Text>
+              ) : (
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+                  {colleagues.slice(0, 8).map((c) => (
+                    <Pressable
+                      key={c.id}
+                      onPress={() => router.push(`/colleagues/${c.id}`)}
+                      style={{ alignItems: 'center', width: '21%' }}
+                    >
+                      <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                        <PixelIcon name="people" color={C} size={22} sw={1.7} />
+                      </View>
+                      <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 9, color: C, marginTop: 3 }}>{c.name}</Text>
+                    </Pressable>
+                  ))}
+                </View>
+              )}
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 11, borderTopWidth: 2, borderTopColor: C + '22' }}>
+                <View style={{ flex: 1, minWidth: 0 }}>
+                  <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft }}>내 초대 코드</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C, letterSpacing: 2, marginTop: 2 }}>{invite?.code ?? '· · · ·'}</Text>
+                </View>
+                <Pressable onPress={() => router.push('/colleagues/add')} style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>+ 추가</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Shadowed>
+        </View>
 
         {/* career path */}
         <Shadowed offset={3}>

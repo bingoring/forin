@@ -13,7 +13,10 @@ export type IconName =
   // stickers
   | 'star' | 'flower' | 'plus'
   // missions + status + section headers
-  | 'burst' | 'question' | 'tag' | 'search' | 'check' | 'sparkle';
+  | 'burst' | 'question' | 'tag' | 'search' | 'check' | 'sparkle'
+  // home + colleagues (handoff draws these as emoji; the app uses line icons)
+  | 'home' | 'handshake' | 'clap' | 'moon' | 'bulb' | 'map' | 'clipboard'
+  | 'note' | 'people' | 'shift' | 'send' | 'copy' | 'share' | 'plus-box';
 
 function body(name: IconName, color: string): ReactNode {
   switch (name) {
@@ -112,6 +115,88 @@ function body(name: IconName, color: string): ReactNode {
       return <Path d="M5 12.5 l4 4 L19 6.5" />;
     case 'sparkle':
       return <Path d="M12 4 l1.4 4.6 4.6 1.4 -4.6 1.4 -1.4 4.6 -1.4 -4.6 -4.6 -1.4 4.6 -1.4 z" />;
+
+    // ── home + colleagues ───────────────────────────────────────────────────
+    case 'home':
+      return (<>
+        <Path d="M4 11 L12 4 l8 7" />
+        <Path d="M6 10.5 V20 h12 V10.5" />
+        <Path d="M10 20 v-5 h4 v5" />
+      </>);
+    case 'handshake':
+      // two hands meeting — the peer relation mark
+      return (<>
+        <Path d="M3 12 l4 -3 3 2" />
+        <Path d="M21 12 l-4 -3 -3 2" />
+        <Path d="M7 9 l4 4 a1.6 1.6 0 0 0 2.4 -2 L10 8" />
+        <Path d="M4 12 v4 h3" />
+        <Path d="M20 12 v4 h-3" />
+      </>);
+    case 'clap':
+      return (<>
+        <Path d="M8 20 a4 4 0 0 1 -1 -6 l4 -4 a1.4 1.4 0 0 1 2 2 l-2 2" />
+        <Path d="M11 12 l3 -3 a1.4 1.4 0 0 1 2 2 l-3 3" />
+        <Path d="M14 14 l2 -2 a1.4 1.4 0 0 1 2 2 l-4 5" />
+        <Path d="M6 6 L5 4 M10 5 L10 3 M14 6 l1 -2" />
+      </>);
+    case 'moon':
+      return <Path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 z" />;
+    case 'bulb':
+      return (<>
+        <Path d="M9 16 a6 6 0 1 1 6 0 v2 h-6 z" />
+        <Path d="M10 20 h4" />
+      </>);
+    case 'map':
+      return (<>
+        <Path d="M3 6 l6 -2 6 2 6 -2 v14 l-6 2 -6 -2 -6 2 z" />
+        <Path d="M9 4 v14 M15 6 v14" />
+      </>);
+    case 'clipboard':
+      return (<>
+        <Path d="M8 5 H6 v15 h12 V5 h-2" />
+        <Path d="M9 3 h6 v4 H9 z" />
+        <Path d="M9 12 h6 M9 16 h4" />
+      </>);
+    case 'note':
+      return (<>
+        <Path d="M6 4 h9 l4 4 v12 H6 z" />
+        <Path d="M15 4 v4 h4" />
+        <Path d="M9 13 h7 M9 17 h5" />
+      </>);
+    case 'people':
+      return (<>
+        <Circle cx={9} cy={8} r={3} />
+        <Path d="M3.5 20 a5.5 5.5 0 0 1 11 0" />
+        <Path d="M16 6.5 a3 3 0 0 1 0 5.6" />
+        <Path d="M17 14.5 a5.5 5.5 0 0 1 4 5.5" />
+      </>);
+    case 'shift':
+      // clock face — the roster/shift mark
+      return (<>
+        <Circle cx={12} cy={12} r={8} />
+        <Path d="M12 7.5 V12 l3 2" />
+      </>);
+    case 'send':
+      return (<>
+        <Path d="M21 4 L3 11 l7 3 3 7 z" />
+        <Path d="M10 14 l4 -4" />
+      </>);
+    case 'copy':
+      return (<>
+        <Path d="M9 9 h11 v11 H9 z" />
+        <Path d="M15 9 V4 H4 v11 h5" />
+      </>);
+    case 'share':
+      return (<>
+        <Path d="M12 15 V4" />
+        <Path d="M8 8 l4 -4 4 4" />
+        <Path d="M5 13 v7 h14 v-7" />
+      </>);
+    case 'plus-box':
+      return (<>
+        <Path d="M4 4 h16 v16 H4 z" />
+        <Path d="M12 8 v8 M8 12 h8" />
+      </>);
   }
 }
 
