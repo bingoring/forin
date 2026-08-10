@@ -536,6 +536,44 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/access/{interiorId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** What the learner may enter in one interior */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: components["schemas"]["internal_adapters_http.gate"][];
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/cheers": {
         parameters: {
             query?: never;
@@ -1565,6 +1603,11 @@ export interface components {
         "internal_adapters_http.correctReq": {
             context?: string;
             text?: string;
+        };
+        "internal_adapters_http.gate": {
+            id?: string;
+            locked?: boolean;
+            reason?: string;
         };
         "internal_adapters_http.gradeReq": {
             grade?: string;

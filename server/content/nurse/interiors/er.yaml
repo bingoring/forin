@@ -15,7 +15,10 @@ regions:
     bounds: { x: 12, y: 1, w: 11, h: 8 }
 rooms:
   - { id: triage, name: 트리아지, sub: 접수·사정, icon: "🩺", color: "#A7F3D0", x: 5, y: 4 }
-  - { id: trauma, name: 트라우마 룸, sub: 응급 처치, icon: "🚑", color: "#FCA5A5", x: 17, y: 4 }
+  # 트라우마 룸은 트리아지를 익힌 뒤에 열린다 — 보상(클리어)이 곧 열쇠가 되는
+  # 유기적 환류의 첫 사례. 조건은 서버가 평가하고(GET /me/access/{id}) 이유까지 돌려준다.
+  - { id: trauma, name: 트라우마 룸, sub: 응급 처치, icon: "🚑", color: "#FCA5A5", x: 17, y: 4,
+      requires: [ { kind: cleared, key: SCN-ER-00001 } ] }
 objects:
   - { id: bed1, type: bed, x: 4, y: 3, props: { occupied: true } }
   - { id: monitor1, type: monitor, x: 6, y: 3, props: { beep: true } }

@@ -88,6 +88,10 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("GET /me/review", auth(http.HandlerFunc(ph.due)))
 	mux.Handle("POST /me/review/{id}/grade", auth(http.HandlerFunc(ph.grade)))
 
+	// Access — what this learner may enter (kept out of the cached interior payload).
+	acc := &accessHandler{content: d.Content, progress: d.Progress, users: d.Users}
+	mux.Handle("GET /me/access/{interiorId}", auth(http.HandlerFunc(acc.interior)))
+
 	// Home tab — one aggregated response (see homeHandler).
 	hh := &homeHandler{progress: d.Progress, review: d.Review, content: d.Content,
 		users: d.Users, colleague: d.Colleague, pools: d.HomePools}

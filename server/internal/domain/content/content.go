@@ -6,6 +6,8 @@
 // entry here — never a schema migration.
 package content
 
+import "github.com/bingoring/forin/server/internal/domain/access"
+
 // ---- enum-ish fields: code-side allowed sets (no DB CHECK), extensible. ----
 
 type Profession string // "nurse", "doctor", ... ; "common" = cross-profession
@@ -109,14 +111,18 @@ type Region struct {
 }
 
 type Room struct {
-	ID     string `yaml:"id" json:"id"`
-	Name   string `yaml:"name" json:"name"`
-	Sub    string `yaml:"sub" json:"sub"`
-	Icon   string `yaml:"icon" json:"icon"`
-	Color  string `yaml:"color" json:"color"`
-	X      int    `yaml:"x" json:"x"`
-	Y      int    `yaml:"y" json:"y"`
-	Locked bool   `yaml:"locked" json:"locked"`
+	ID    string `yaml:"id" json:"id"`
+	Name  string `yaml:"name" json:"name"`
+	Sub   string `yaml:"sub" json:"sub"`
+	Icon  string `yaml:"icon" json:"icon"`
+	Color string `yaml:"color" json:"color"`
+	X     int    `yaml:"x" json:"x"`
+	Y     int    `yaml:"y" json:"y"`
+	// Locked is a permanent "never enterable" flag (scenery). For a door that
+	// EARNED progress should open, use Requires instead — that's what turns a
+	// reward into a key rather than a scoreboard entry.
+	Locked   bool                 `yaml:"locked" json:"locked"`
+	Requires []access.Requirement `yaml:"requires" json:"requires,omitempty"`
 }
 
 type MapObject struct {
@@ -128,12 +134,13 @@ type MapObject struct {
 }
 
 type Hotspot struct {
-	ID         string `yaml:"id" json:"id"`
-	Kind       string `yaml:"kind" json:"kind"` // quest|urgent|info
-	X          int    `yaml:"x" json:"x"`
-	Y          int    `yaml:"y" json:"y"`
-	Label      string `yaml:"label" json:"label"`
-	ScenarioID string `yaml:"scenarioId" json:"scenarioId"`
+	ID         string               `yaml:"id" json:"id"`
+	Kind       string               `yaml:"kind" json:"kind"` // quest|urgent|info
+	X          int                  `yaml:"x" json:"x"`
+	Y          int                  `yaml:"y" json:"y"`
+	Label      string               `yaml:"label" json:"label"`
+	ScenarioID string               `yaml:"scenarioId" json:"scenarioId"`
+	Requires   []access.Requirement `yaml:"requires" json:"requires,omitempty"`
 }
 
 type Event struct {

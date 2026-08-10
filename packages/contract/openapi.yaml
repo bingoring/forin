@@ -209,6 +209,15 @@ components:
         text:
           type: string
       type: object
+    internal_adapters_http.gate:
+      properties:
+        id:
+          type: string
+        locked:
+          type: boolean
+        reason:
+          type: string
+      type: object
     internal_adapters_http.gradeReq:
       properties:
         grade:
@@ -574,6 +583,24 @@ paths:
       summary: Current user + profile
       tags:
       - user
+  /me/access/{interiorId}:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/internal_adapters_http.gate'
+                  type: array
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: What the learner may enter in one interior
+      tags:
+      - access
   /me/cheers:
     get:
       responses: null

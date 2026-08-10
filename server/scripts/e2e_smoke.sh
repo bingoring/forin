@@ -3,7 +3,7 @@
 # Exercises: auth → onboarding → curriculum → dialogue+correction → clear(XP) →
 # review(SM-2) → growth stats → daily pool + rewarded top-up → missions → dept
 # situations → home aggregate → colleagues (code, boundaries, privacy) →
-# reputation (acuity plumbing, ungraded clears), plus
+# reputation (acuity plumbing, ungraded clears) → access (rewards as keys), plus
 # robustness (token refresh/rotation, error status codes).
 #
 # The colleague LINK flow (request → accept → cheer) needs two users and
@@ -216,6 +216,19 @@ run POST /attempts '{"scenarioId":"SCN-ER-00001","score":50}'
 run GET /me/progress
 same=$(pj "str(sorted((x['key'], x['value']) for x in d.get('reputation',[]))) == '''$rep0'''")
 [ "$same" = "True" ] && ok "ungraded clear leaves reputation untouched" || bad "ungraded clear moved reputation"
+
+hd "⑯ ACCESS · rewards become keys"
+run GET /me/access/INT-ER-00001
+[ "$CODE" = 200 ] && ok "GET /me/access/{interior} 200" || bad "access → $CODE"
+shape=$(pj "all('id' in g and 'locked' in g for g in d.get('rooms',[]) + d.get('hotspots',[]))")
+[ "$shape" = "True" ] && ok "every room/hotspot reports a lock state" || bad "malformed gate"
+# A lock without a reason isn't a goal — anything closed must say why.
+reasoned=$(pj "all(g.get('reason') for g in d.get('rooms',[]) + d.get('hotspots',[]) if g.get('locked'))")
+[ "$reasoned" = "True" ] && ok "every locked gate states a reason" || bad "a locked gate gave no reason"
+# The dev user has cleared SCN-ER-00001 by this point in the run, so the room it
+# gates must be open — i.e. the reward actually turned into a key.
+trauma=$(pj "next((g['locked'] for g in d.get('rooms',[]) if g['id']=='trauma'), None)")
+[ "$trauma" = "False" ] && ok "requirement met → gated room open (reward = key)" || bad "trauma locked=$trauma after clearing its requirement"
 
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"
