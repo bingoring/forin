@@ -2,6 +2,7 @@ package http
 
 import (
 	"errors"
+	"log/slog"
 	"net/http"
 
 	"github.com/bingoring/forin/server/internal/domain/auth"
@@ -9,7 +10,10 @@ import (
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 )
 
-type authHandler struct{ svc *auth.Service }
+type authHandler struct {
+	svc *auth.Service
+	log *slog.Logger
+}
 
 // @Summary Social login (Apple/Google/Kakao)
 // @Tags auth
@@ -30,6 +34,12 @@ func (h *authHandler) social(w http.ResponseWriter, r *http.Request) {
 	}
 	pair, u, err := h.svc.SocialLogin(r.Context(), user.Provider(req.Provider), req.IDToken)
 	if err != nil {
+		// The client deliberately gets a generic message, but swallowing the cause
+		// entirely makes a failed sign-in undiagnosable — log why it was rejected
+		// (issuer/audience/expiry/signature all surface here).
+		if h.log != nil {
+			h.log.Warn("social login rejected", "provider", req.Provider, "err", err)
+		}
 		httpx.Error(w, http.StatusUnauthorized, "authentication failed")
 		return
 	}

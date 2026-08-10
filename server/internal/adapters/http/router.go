@@ -40,7 +40,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.HandleFunc("GET /healthz", h.live)
 	mux.HandleFunc("GET /readyz", h.ready)
 
-	ah := &authHandler{svc: d.AuthSvc}
+	ah := &authHandler{svc: d.AuthSvc, log: d.Log}
 	mux.HandleFunc("POST /auth/social", ah.social)
 	mux.HandleFunc("POST /auth/refresh", ah.refresh)
 	if d.Env == "dev" {
