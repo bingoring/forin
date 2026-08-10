@@ -55,8 +55,9 @@ func (f *fakeRepo) AcceptRequest(_ context.Context, id, by string) (*Request, er
 	f.accepted = append(f.accepted, id)
 	return &Request{ID: id, ToUserID: by, Status: StatusAccepted}, nil
 }
-func (f *fakeRepo) AddCheer(_ context.Context, c Cheer) error {
-	f.cheers = append(f.cheers, c)
+func (f *fakeRepo) AddCheer(_ context.Context, c *Cheer) error {
+	c.ID = "cheer-1"
+	f.cheers = append(f.cheers, *c)
 	return nil
 }
 func (f *fakeRepo) CheersToday(context.Context, string, string, time.Time) (int, error) {
@@ -250,5 +251,8 @@ func TestSendCheerStoresPresetText(t *testing.T) {
 	}
 	if len(f.cheers) != 1 {
 		t.Fatalf("cheer was not stored")
+	}
+	if c.ID == "" {
+		t.Fatal("the stored cheer's id must be returned to the caller")
 	}
 }

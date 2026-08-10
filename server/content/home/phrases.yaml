@@ -1,0 +1,168 @@
+# 오늘의 한마디 — 홈의 뒤집기 카드에 뜨는 현장 표현 1개.
+#
+# 고른 기준: 교과서 문장이 아니라 '한국인 간호사가 현장에서 막히는 순간'의 표현.
+# note는 언제 쓰는지를 한 줄로 — 뜻만 알면 결국 못 쓴다.
+
+# ── ER ──────────────────────────────────────────────────────────────────────
+- id: ph-er-001
+  dept: er
+  en: "Bear with me for a moment."
+  ko: "잠시만 기다려 주시겠어요"
+  note: "대기 안내 · 처치 중 양해를 구할 때"
+- id: ph-er-002
+  dept: er
+  en: "Can you point to where it hurts the most?"
+  ko: "가장 아픈 곳을 짚어 주시겠어요?"
+  note: "언어가 통하지 않을 때 통증 부위 확인"
+- id: ph-er-003
+  dept: er
+  en: "Does the pain radiate anywhere?"
+  ko: "통증이 다른 데로 퍼지나요?"
+  note: "흉통 평가의 핵심 질문"
+- id: ph-er-004
+  dept: er
+  en: "I'll be right back with the doctor."
+  ko: "의사 선생님과 함께 바로 오겠습니다"
+  note: "자리를 뜰 때 — 그냥 사라지지 않는다"
+- id: ph-er-005
+  dept: er
+  en: "On a scale of zero to ten, how bad is it right now?"
+  ko: "지금 통증이 0에서 10 중 어느 정도인가요?"
+  note: "통증 척도 · 'right now'를 붙여야 현재 상태가 나온다"
+
+# ── OR ──────────────────────────────────────────────────────────────────────
+- id: ph-or-001
+  dept: or
+  en: "Let's do a time-out before we start."
+  ko: "시작 전에 타임아웃 하겠습니다"
+  note: "수술 전 최종 확인 개시"
+- id: ph-or-002
+  dept: or
+  en: "Can you confirm your name and date of birth for me?"
+  ko: "성함과 생년월일을 확인해 주시겠어요?"
+  note: "환자 확인 — 이름만 묻지 않는다"
+- id: ph-or-003
+  dept: or
+  en: "You may feel some pressure, but it shouldn't hurt."
+  ko: "누르는 느낌은 있어도 아프진 않을 거예요"
+  note: "국소마취 처치 중 안내"
+
+# ── ICU ─────────────────────────────────────────────────────────────────────
+- id: ph-icu-001
+  dept: icu
+  en: "His oxygen saturation has dropped to eighty-eight percent."
+  ko: "산소포화도가 88%로 떨어졌습니다"
+  note: "SBAR의 S — 숫자 앞에 '무엇이' 붙어야 한다"
+- id: ph-icu-002
+  dept: icu
+  en: "I'm concerned about his mental status."
+  ko: "의식 상태가 걱정됩니다"
+  note: "\"I'm concerned\"는 미국 병원에서 즉시 주목받는 신호어"
+- id: ph-icu-003
+  dept: icu
+  en: "Could we titrate the sedation down a little?"
+  ko: "진정을 조금 줄여볼 수 있을까요?"
+  note: "titrate = 조금씩 조절 · 중환자실 필수 동사"
+- id: ph-icu-004
+  dept: icu
+  en: "Take all the time you need."
+  ko: "천천히 하셔도 됩니다"
+  note: "임종·중대 결정 면담 · 재촉하지 않는다는 신호"
+
+# ── 소아 ────────────────────────────────────────────────────────────────────
+- id: ph-peds-001
+  dept: peds
+  en: "You're doing great. Just one more, okay?"
+  ko: "정말 잘하고 있어요. 딱 한 번만 더, 괜찮죠?"
+  note: "아이 처치 중 · 예고 + 끝이 있음을 알린다"
+- id: ph-peds-002
+  dept: peds
+  en: "Would you like to sit on your mom's lap for this?"
+  ko: "엄마 무릎에 앉아서 할까요?"
+  note: "선택지를 주면 협조가 달라진다"
+- id: ph-peds-003
+  dept: peds
+  en: "It will feel like a quick pinch."
+  ko: "살짝 꼬집는 느낌일 거예요"
+  note: "주사 전 정직한 예고 — '안 아파'는 쓰지 않는다"
+
+# ── 약제 ────────────────────────────────────────────────────────────────────
+- id: ph-pharma-001
+  dept: pharma
+  en: "Let me read that back to you."
+  ko: "제가 다시 읽어드리겠습니다"
+  note: "구두 처방 되읽기 — 생략하면 사고가 난다"
+- id: ph-pharma-002
+  dept: pharma
+  en: "That's one-five, fifteen milligrams."
+  ko: "일오, 15밀리그램입니다"
+  note: "fifteen/fifty 혼동 방지 · 자릿수를 따로 읽는다"
+- id: ph-pharma-003
+  dept: pharma
+  en: "I need a second nurse to verify this."
+  ko: "이중확인을 위해 다른 간호사가 필요합니다"
+  note: "고위험 약물 · 요청을 미루지 않는다"
+- id: ph-pharma-004
+  dept: pharma
+  en: "Are you allergic to any medications?"
+  ko: "약물 알레르기가 있으신가요?"
+  note: "투약 전 필수 확인"
+
+# ── 병동 ────────────────────────────────────────────────────────────────────
+- id: ph-ward-001
+  dept: ward
+  en: "I'm going to hand over to the night nurse now."
+  ko: "이제 나이트 근무 간호사에게 인계하겠습니다"
+  note: "환자에게도 인계를 알린다"
+- id: ph-ward-002
+  dept: ward
+  en: "Let me pull the curtain for your privacy."
+  ko: "사생활 보호를 위해 커튼을 치겠습니다"
+  note: "행동 전 예고 — 사생활은 예고에서 시작된다"
+- id: ph-ward-003
+  dept: ward
+  en: "Do you have any questions before you go home?"
+  ko: "퇴원 전에 궁금한 점 있으세요?"
+  note: "퇴원 교육 마무리 · 열린 질문으로 닫는다"
+
+# ── 공통 ────────────────────────────────────────────────────────────────────
+- id: ph-common-001
+  dept: ""
+  en: "Sorry, could you say that again more slowly?"
+  ko: "죄송해요, 조금 천천히 다시 말씀해 주시겠어요?"
+  note: "못 알아들었을 때 · 웃어넘기지 않는다"
+- id: ph-common-002
+  dept: ""
+  en: "I'm not sure — let me check and get back to you."
+  ko: "확실하지 않아서 확인 후 다시 알려드릴게요"
+  note: "모를 때의 안전한 정답"
+- id: ph-common-003
+  dept: ""
+  en: "Just to make sure I understood correctly..."
+  ko: "제가 제대로 이해했는지 확인차 여쭤요…"
+  note: "되짚기 · 무례하지 않게 재확인"
+- id: ph-common-004
+  dept: ""
+  en: "Could you give me a hand with this?"
+  ko: "이것 좀 도와주시겠어요?"
+  note: "동료에게 도움 요청 · help me보다 자연스럽다"
+- id: ph-common-005
+  dept: ""
+  en: "How have you been feeling since this morning?"
+  ko: "오늘 아침 이후로는 어떠셨어요?"
+  note: "라운딩 첫 질문 · 기간을 주면 답이 구체적이다"
+- id: ph-common-006
+  dept: ""
+  en: "I'll document that and let the team know."
+  ko: "기록하고 팀에 공유하겠습니다"
+  note: "환자 호소를 받은 뒤 · 흘려듣지 않았음을 보인다"
+- id: ph-common-007
+  dept: ""
+  en: "Is there anything else on your mind?"
+  ko: "그 밖에 마음에 걸리는 건 없으세요?"
+  note: "대화를 닫기 전 · 진짜 걱정은 마지막에 나온다"
+- id: ph-common-008
+  dept: ""
+  en: "Let me walk you through what happens next."
+  ko: "다음에 어떤 일이 있을지 설명드릴게요"
+  note: "불안한 환자에게 · 절차를 미리 그려준다"

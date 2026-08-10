@@ -21,7 +21,7 @@ type Repo interface {
 	CreateRequest(ctx context.Context, r Request, code string) error
 	AcceptRequest(ctx context.Context, requestID, byUserID string) (*Request, error)
 
-	AddCheer(ctx context.Context, c Cheer) error
+	AddCheer(ctx context.Context, c *Cheer) error
 	CheersToday(ctx context.Context, fromID, toID string, since time.Time) (int, error)
 }
 
@@ -158,12 +158,12 @@ func (s *Service) SendCheer(ctx context.Context, fromID, toID string, preset Pre
 	if n >= MaxCheersPerDay {
 		return nil, ErrCheerLimit
 	}
-	c := Cheer{FromUserID: fromID, ToUserID: toID, Preset: preset, Message: message, CreatedAt: time.Now()}
+	c := &Cheer{FromUserID: fromID, ToUserID: toID, Preset: preset, Message: message}
 	if err := s.repo.AddCheer(ctx, c); err != nil {
 		return nil, err
 	}
 	c.PresetText = PresetText[preset]
-	return &c, nil
+	return c, nil
 }
 
 func (s *Service) checkCap(ctx context.Context, userID string) error {

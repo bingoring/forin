@@ -13,6 +13,7 @@ import (
 	"github.com/bingoring/forin/server/internal/adapters/anthropic"
 	authadapter "github.com/bingoring/forin/server/internal/adapters/auth"
 	"github.com/bingoring/forin/server/internal/adapters/azurespeech"
+	"github.com/bingoring/forin/server/internal/adapters/contentfile"
 	httpadapter "github.com/bingoring/forin/server/internal/adapters/http"
 	"github.com/bingoring/forin/server/internal/adapters/openai"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
@@ -67,6 +68,14 @@ func main() {
 	contentRepo := postgres.NewContentRepo(pool)
 	progressRepo := postgres.NewProgressRepo(pool)
 	convoRepo := postgres.NewConversationRepo(pool)
+	colleagueRepo := postgres.NewColleagueRepo(pool)
+
+	// Home flavour (mentor notes, field phrases). A missing content dir is not
+	// fatal — those two modules are simply omitted from the home response.
+	homePools, err := contentfile.LoadHomePools("content")
+	if err != nil {
+		logger.Warn("home content pools failed to load; those modules will be hidden", "err", err)
+	}
 	refreshStore := redisadapter.NewRefreshStore(rdb)
 	authSvc := auth.NewService(users, verifier, refreshStore, tokens, cfg.RefreshTTL)
 
@@ -103,7 +112,8 @@ func main() {
 	handler := httpadapter.NewRouter(httpadapter.Deps{
 		Env: cfg.Env,
 		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
-		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Synth: speech, PG: pool, Redis: rdb,
+		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Synth: speech,
+		Colleague: colleagueRepo, HomePools: homePools, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

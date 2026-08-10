@@ -97,11 +97,11 @@ type Phrase struct {
 }
 
 type Profile struct {
-	UserID      string             `json:"user_id"`
-	Job         string             `json:"job"`
-	NativeLang  string             `json:"native_lang"`
-	Destination string             `json:"destination"`
-	TargetLevel string             `json:"target_level"`
+	UserID        string             `json:"user_id"`
+	Job           string             `json:"job"`
+	NativeLang    string             `json:"native_lang"`
+	Destination   string             `json:"destination"`
+	TargetLevel   string             `json:"target_level"`
 	UpdatedAt     pgtype.Timestamptz `json:"updated_at"`
 	TargetLang    string             `json:"target_lang"`
 	Onboarded     bool               `json:"onboarded"`

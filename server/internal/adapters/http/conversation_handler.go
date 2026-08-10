@@ -13,8 +13,10 @@ import (
 )
 
 type conversationHandler struct {
-	engine   *conversation.Engine
-	progress ports.ProgressRepo // records the graded attempt (scaled XP + clear state)
+	engine    *conversation.Engine
+	progress  ports.ProgressRepo  // records the graded attempt (scaled XP + clear state)
+	content   ports.ContentReader // scenario title for the presence label
+	colleague ports.ColleagueRepo // presence: what this user is working on right now
 }
 
 // @Summary Start a persona-driven conversation for a scenario
@@ -32,7 +34,24 @@ func (h *conversationHandler) start(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusBadGateway, "could not start conversation")
 		return
 	}
+	// Starting a scenario is the one moment we know exactly what someone is doing —
+	// record it so colleagues see "지금 ICU 승압제 진행 중" instead of a bare timestamp.
+	h.touchPresence(r, uid, r.PathValue("id"))
 	httpx.JSON(w, http.StatusOK, map[string]string{"sessionId": sessionID})
+}
+
+// touchPresence is best-effort: a presence write must never fail a lesson.
+func (h *conversationHandler) touchPresence(r *http.Request, uid, scenarioID string) {
+	if h.colleague == nil {
+		return
+	}
+	label := ""
+	if h.content != nil {
+		if sc, err := h.content.GetScenario(r.Context(), scenarioID); err == nil && sc != nil {
+			label = sc.Title
+		}
+	}
+	_ = h.colleague.TouchPresence(r.Context(), uid, scenarioID, label)
 }
 
 // @Summary Send a message; NPC replies in persona (LLM)

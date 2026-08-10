@@ -25,7 +25,7 @@ type Economy struct {
 	ReputationDefault int `json:"reputationDefault"` // starting value per dimension
 	RepBandWarm       int `json:"repBandWarm"`       // ≥ → NPC noticeably warm
 	RepBandCordial    int `json:"repBandCordial"`    // ≥ → neutral/cordial
-	RepBandWary       int `json:"repBandWary"`        // ≥ → slightly wary; below → guarded
+	RepBandWary       int `json:"repBandWary"`       // ≥ → slightly wary; below → guarded
 	TitleWarmthBonus  int `json:"titleWarmthBonus"`  // equipped "warm" title nudge
 
 	// Spaced repetition (SM-2).

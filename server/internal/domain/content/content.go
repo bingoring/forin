@@ -191,21 +191,21 @@ type Persona struct {
 	AgeRange      string `yaml:"ageRange" json:"ageRange,omitempty"` // e.g. "60s"
 	Personality   string `yaml:"personality" json:"personality,omitempty"`
 	SpeakingStyle string `yaml:"speakingStyle" json:"speakingStyle,omitempty"`
-	Mood          string `yaml:"mood" json:"mood,omitempty"`             // matches expression: pain, worried, panic...
-	Sub           string `yaml:"sub" json:"sub,omitempty"`               // display, e.g. "67y / Female"
-	Hair          string `yaml:"hair" json:"hair,omitempty"`             // portrait hair color, e.g. "#9A6B3F"
-	HairStyle     string `yaml:"hairStyle" json:"hairStyle,omitempty"`   // portrait hair style, e.g. "bob"
+	Mood          string `yaml:"mood" json:"mood,omitempty"`           // matches expression: pain, worried, panic...
+	Sub           string `yaml:"sub" json:"sub,omitempty"`             // display, e.g. "67y / Female"
+	Hair          string `yaml:"hair" json:"hair,omitempty"`           // portrait hair color, e.g. "#9A6B3F"
+	HairStyle     string `yaml:"hairStyle" json:"hairStyle,omitempty"` // portrait hair style, e.g. "bob"
 }
 
 // Briefing is the pre-dialogue scenario card (situation, difficulty, skills,
 // rewards, entry requirements, dept chrome). Rendered by the briefing screen;
 // optional so pre-briefing scenarios still load. Authored as content.
 type Briefing struct {
-	Dept       string   `yaml:"dept" json:"dept,omitempty"`           // "ER · TRAUMA BAY #4"
-	DeptColor  string   `yaml:"deptColor" json:"deptColor,omitempty"` // "#DC2626"
-	Brief      string   `yaml:"brief" json:"brief,omitempty"`         // SITUATION paragraph
+	Dept       string   `yaml:"dept" json:"dept,omitempty"`             // "ER · TRAUMA BAY #4"
+	DeptColor  string   `yaml:"deptColor" json:"deptColor,omitempty"`   // "#DC2626"
+	Brief      string   `yaml:"brief" json:"brief,omitempty"`           // SITUATION paragraph
 	Difficulty int      `yaml:"difficulty" json:"difficulty,omitempty"` // 1..3
-	TimeLabel  string   `yaml:"timeLabel" json:"timeLabel,omitempty"` // "약 5분"
+	TimeLabel  string   `yaml:"timeLabel" json:"timeLabel,omitempty"`   // "약 5분"
 	Skills     []string `yaml:"skills" json:"skills,omitempty"`
 	Rewards    []Reward `yaml:"rewards" json:"rewards,omitempty"`
 	Reqs       []Req    `yaml:"reqs" json:"reqs,omitempty"` // met computed client-side vs /me
@@ -267,7 +267,7 @@ type RouteNode struct {
 // to render a card and fast-travel to the scenario briefing.
 type BoardCard struct {
 	ID         string   `json:"id"`
-	Dept       string   `json:"dept"`    // dept code from the id (ER, LD, ONCO...)
+	Dept       string   `json:"dept"` // dept code from the id (ER, LD, ONCO...)
 	Title      string   `json:"title"`
 	Tagline    string   `json:"tagline"`
 	Urgency    string   `json:"urgency"` // urgent | quest | info (from difficulty)
@@ -308,12 +308,12 @@ type QuizContent struct {
 	Choices   []QuizChoice `yaml:"choices" json:"choices,omitempty"`     // listen + mcq
 	Cards     []QuizCard   `yaml:"cards" json:"cards,omitempty"`         // sbar (order by `order`)
 
-	Scene    string        `yaml:"scene" json:"scene,omitempty"`   // mcq: scenario prompt
-	Note     string        `yaml:"note" json:"note,omitempty"`     // mcq/check/spot_error: explanation
-	Items    []QuizItem    `yaml:"items" json:"items,omitempty"`   // check: select-all-that-apply
-	Device   string        `yaml:"device" json:"device,omitempty"` // monitor/gauge: device name
+	Scene    string        `yaml:"scene" json:"scene,omitempty"`       // mcq: scenario prompt
+	Note     string        `yaml:"note" json:"note,omitempty"`         // mcq/check/spot_error: explanation
+	Items    []QuizItem    `yaml:"items" json:"items,omitempty"`       // check: select-all-that-apply
+	Device   string        `yaml:"device" json:"device,omitempty"`     // monitor/gauge: device name
 	Readings []QuizReading `yaml:"readings" json:"readings,omitempty"` // monitor
-	Bank     []string      `yaml:"bank" json:"bank,omitempty"`     // monitor: label bank
+	Bank     []string      `yaml:"bank" json:"bank,omitempty"`         // monitor: label bank
 
 	Given      []QuizGiven `yaml:"given" json:"given,omitempty"`           // calc: given facts
 	Eq         string      `yaml:"eq" json:"eq,omitempty"`                 // calc: shown equation
@@ -470,9 +470,9 @@ type QuizReading struct {
 
 // QuizPair — one left↔right match (e.g. "throbbing" ↔ "욱신거리는" 💢).
 type QuizPair struct {
-	Left     string `yaml:"left" json:"left"`
-	LeftSub  string `yaml:"leftSub" json:"leftSub,omitempty"` // e.g. IPA
-	Right    string `yaml:"right" json:"right"`
+	Left      string `yaml:"left" json:"left"`
+	LeftSub   string `yaml:"leftSub" json:"leftSub,omitempty"` // e.g. IPA
+	Right     string `yaml:"right" json:"right"`
 	RightIcon string `yaml:"rightIcon" json:"rightIcon,omitempty"`
 }
 

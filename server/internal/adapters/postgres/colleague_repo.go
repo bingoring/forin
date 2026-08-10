@@ -241,12 +241,14 @@ func (r *ColleagueRepo) SetRequestStatus(ctx context.Context, requestID, byUserI
 
 // ── cheers ─────────────────────────────────────────────────────────────────
 
-func (r *ColleagueRepo) AddCheer(ctx context.Context, c colleague.Cheer) error {
+// AddCheer stores the cheer and fills in the DB-generated id/timestamp, so the
+// caller can hand a complete object back to the client.
+func (r *ColleagueRepo) AddCheer(ctx context.Context, c *colleague.Cheer) error {
 	// ids come from the DB (gen_random_uuid), matching the rest of the schema.
-	_, err := r.pool.Exec(ctx,
-		`INSERT INTO cheers (from_user_id, to_user_id, preset, message) VALUES ($1,$2,$3,$4)`,
-		c.FromUserID, c.ToUserID, string(c.Preset), c.Message)
-	return err
+	return r.pool.QueryRow(ctx,
+		`INSERT INTO cheers (from_user_id, to_user_id, preset, message) VALUES ($1,$2,$3,$4)
+		 RETURNING id, created_at`,
+		c.FromUserID, c.ToUserID, string(c.Preset), c.Message).Scan(&c.ID, &c.CreatedAt)
 }
 
 func (r *ColleagueRepo) CheersToday(ctx context.Context, fromID, toID string, since time.Time) (int, error) {

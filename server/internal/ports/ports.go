@@ -229,8 +229,8 @@ type ColleagueRepo interface {
 	// SetRequestStatus handles decline/cancel.
 	SetRequestStatus(ctx context.Context, requestID, byUserID string, status colleague.RequestStatus) error
 
-	// AddCheer stores a cheer. cheersToday enforcement happens in the service.
-	AddCheer(ctx context.Context, c colleague.Cheer) error
+	// AddCheer stores a cheer and fills in the generated id/timestamp.
+	AddCheer(ctx context.Context, c *colleague.Cheer) error
 	// CheersToday counts cheers sent from → to since `since` (rate limit R-9).
 	CheersToday(ctx context.Context, fromID, toID string, since time.Time) (int, error)
 	// Inbox lists received cheers, newest first.

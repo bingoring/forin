@@ -1,0 +1,129 @@
+# 멘토 쪽지 — 홈 탭에서 선임 NPC가 매일 남기는 한 줄.
+#
+# dept: '' 는 부서 공통 풀. 부서 전용이 하나라도 있으면 그 부서에서는 전용만 뽑힌다
+# (도메인 filterNotes) — 부서의 목소리가 희석되지 않게.
+#
+# 톤: 기술이 아니라 '태도'를 짚는다. 문법 규칙은 리뷰랩이 하고, 여기서는 선배가
+# 지나가며 툭 던지는 말의 무게를 노린다.
+
+# ── ER ──────────────────────────────────────────────────────────────────────
+- id: mn-er-001
+  dept: er
+  npc: { name: "Emma", role: "수간호사", dept: "ER" }
+  text: "보호자가 화를 낼 땐 정보를 더 주기 전에 감정을 먼저 인정해줘요."
+- id: mn-er-002
+  dept: er
+  npc: { name: "Emma", role: "수간호사", dept: "ER" }
+  text: "트리아지에서 제일 중요한 건 빠른 영어가 아니라 정확한 확인이에요. 두 번 물어도 괜찮아요."
+- id: mn-er-003
+  dept: er
+  npc: { name: "Marcus", role: "책임간호사", dept: "ER" }
+  text: "\"I'm not sure, let me check\"는 실력 부족이 아니라 안전한 태도예요. 자주 쓰세요."
+- id: mn-er-004
+  dept: er
+  npc: { name: "Emma", role: "수간호사", dept: "ER" }
+  text: "통증을 물을 땐 숫자보다 '무엇을 못 하게 되었는지'가 더 많은 걸 알려줘요."
+- id: mn-er-005
+  dept: er
+  npc: { name: "Marcus", role: "책임간호사", dept: "ER" }
+  text: "대기 시간을 말할 땐 이유를 함께 주세요. 이유 없는 숫자는 화를 키웁니다."
+
+# ── OR ──────────────────────────────────────────────────────────────────────
+- id: mn-or-001
+  dept: or
+  npc: { name: "Priya", role: "수술실 간호사", dept: "OR" }
+  text: "Time-out에서는 목소리를 낮추지 마세요. 확인은 들려야 확인이에요."
+- id: mn-or-002
+  dept: or
+  npc: { name: "Priya", role: "수술실 간호사", dept: "OR" }
+  text: "수술 부위 표시는 환자가 깨어 있을 때, 환자와 함께. 순서를 바꾸지 않아요."
+- id: mn-or-003
+  dept: or
+  npc: { name: "Daniel", role: "마취간호사", dept: "OR" }
+  text: "마취 전 문진은 체크리스트가 아니라 대화예요. 환자가 말을 멈추면 거기에 답이 있어요."
+
+# ── ICU ─────────────────────────────────────────────────────────────────────
+- id: mn-icu-001
+  dept: icu
+  npc: { name: "Sofia", role: "중환자실 책임간호사", dept: "ICU" }
+  text: "알람이 울릴 때 먼저 볼 건 모니터가 아니라 환자예요."
+- id: mn-icu-002
+  dept: icu
+  npc: { name: "Sofia", role: "중환자실 책임간호사", dept: "ICU" }
+  text: "보고할 땐 숫자부터 말하지 말고 '무엇이 달라졌는지'부터. SBAR의 S가 그래서 먼저예요."
+- id: mn-icu-003
+  dept: icu
+  npc: { name: "Noah", role: "호흡치료사", dept: "ICU" }
+  text: "인공호흡기 설정을 바꾸자고 할 땐 근거를 한 문장으로 준비해두면 대화가 빨라져요."
+- id: mn-icu-004
+  dept: icu
+  npc: { name: "Sofia", role: "중환자실 책임간호사", dept: "ICU" }
+  text: "임종 면담에서 침묵은 실패가 아니에요. 채우려 하지 말고 곁에 있어 주세요."
+
+# ── 소아 ────────────────────────────────────────────────────────────────────
+- id: mn-peds-001
+  dept: peds
+  npc: { name: "Grace", role: "소아과 간호사", dept: "Peds" }
+  text: "아이에게는 아이에게, 보호자에게는 보호자에게 따로 말해주세요. 한 번에 하면 둘 다 놓쳐요."
+- id: mn-peds-002
+  dept: peds
+  npc: { name: "Grace", role: "소아과 간호사", dept: "Peds" }
+  text: "\"아프지 않아\"라고 하지 마세요. 거짓말이 들키면 다음 처치가 두 배로 힘들어집니다."
+- id: mn-peds-003
+  dept: peds
+  npc: { name: "Grace", role: "소아과 간호사", dept: "Peds" }
+  text: "설명은 짧게, 선택지는 두 개만. 아이에게 고를 게 있으면 협조가 달라져요."
+
+# ── 약제 ────────────────────────────────────────────────────────────────────
+- id: mn-pharma-001
+  dept: pharma
+  npc: { name: "Hana", role: "약제부 선임", dept: "Pharmacy" }
+  text: "구두 처방은 반드시 되읽기(read-back). 서두르는 사람 앞에서 더 그래야 해요."
+- id: mn-pharma-002
+  dept: pharma
+  npc: { name: "Hana", role: "약제부 선임", dept: "Pharmacy" }
+  text: "고위험 약물의 이중확인은 형식이 아니라 두 사람의 판단이에요. 그냥 사인하지 마세요."
+- id: mn-pharma-003
+  dept: pharma
+  npc: { name: "Hana", role: "약제부 선임", dept: "Pharmacy" }
+  text: "숫자를 말할 땐 단위까지. \"fifteen\"과 \"fifty\"는 소음 속에서 같게 들려요."
+
+# ── 병동 ────────────────────────────────────────────────────────────────────
+- id: mn-ward-001
+  dept: ward
+  npc: { name: "Olivia", role: "병동 수간호사", dept: "Ward" }
+  text: "인계는 요약이 아니라 인수인계예요. 상대가 되물을 게 없어야 끝난 겁니다."
+- id: mn-ward-002
+  dept: ward
+  npc: { name: "Olivia", role: "병동 수간호사", dept: "Ward" }
+  text: "퇴원 교육은 마지막에 한 번이 아니라 매일 조금씩. 그래야 집에 가서 기억해요."
+- id: mn-ward-003
+  dept: ward
+  npc: { name: "Olivia", role: "병동 수간호사", dept: "Ward" }
+  text: "커튼을 치기 전에 한마디 하세요. 사생활은 공간이 아니라 예고에서 시작돼요."
+
+# ── 공통 ────────────────────────────────────────────────────────────────────
+- id: mn-common-001
+  dept: ""
+  npc: { name: "Emma", role: "수간호사", dept: "ER" }
+  text: "못 알아들었을 때 웃으며 넘기지 마세요. 다시 물어보는 게 훨씬 프로답습니다."
+- id: mn-common-002
+  dept: ""
+  npc: { name: "Olivia", role: "병동 수간호사", dept: "Ward" }
+  text: "완벽한 문장을 기다리다 말할 타이밍을 놓치는 것보다, 짧고 분명한 편이 나아요."
+- id: mn-common-003
+  dept: ""
+  npc: { name: "Marcus", role: "책임간호사", dept: "ER" }
+  text: "이름을 부르세요. 'the patient in bed 3'보다 훨씬 많은 게 바뀝니다."
+- id: mn-common-004
+  dept: ""
+  npc: { name: "Sofia", role: "중환자실 책임간호사", dept: "ICU" }
+  text: "오늘 하나만 확실히 익혀도 충분해요. 내일의 나는 오늘의 나보다 조금 낫습니다."
+- id: mn-common-005
+  dept: ""
+  npc: { name: "Hana", role: "약제부 선임", dept: "Pharmacy" }
+  text: "발음이 완벽하지 않아도 돼요. 다만 숫자와 약 이름은 또박또박."
+- id: mn-common-006
+  dept: ""
+  npc: { name: "Priya", role: "수술실 간호사", dept: "OR" }
+  text: "동료에게 도움을 청하는 건 실력이에요. 혼자 버티다 생기는 사고가 제일 큽니다."
