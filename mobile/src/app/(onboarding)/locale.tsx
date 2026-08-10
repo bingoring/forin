@@ -1,11 +1,13 @@
 // Onboarding 1/4 — language & destination (handoff ScreenLocale). Pick the app's
 // native language and the destination country (→ target language), then carry the
-// selection forward to the job step via router params.
-import { useState } from 'react';
+// selection forward to the job step. Answers are also written to a local draft
+// so closing the app mid-wizard doesn't throw the earlier steps away.
+import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { FLAGS } from '@/components/onboardingArt';
+import { loadDraft, saveDraft } from '@/lib/onboardingDraft';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -25,8 +27,17 @@ export default function Locale() {
   const [native, setNative] = useState('ko');
   const [dest, setDest] = useState('us');
 
-  const next = () => {
+  // Come back to a half-finished wizard and your earlier answers are still here.
+  useEffect(() => {
+    loadDraft().then((d) => {
+      if (d.nativeLang) setNative(d.nativeLang);
+      if (d.destination) setDest(d.destination);
+    });
+  }, []);
+
+  const next = async () => {
     const targetLang = DEST.find((d) => d.code === dest)?.targetLang || 'en';
+    await saveDraft({ nativeLang: native, destination: dest, targetLang });
     router.push({ pathname: '/job', params: { nativeLang: native, destination: dest, targetLang } });
   };
 

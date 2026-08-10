@@ -6,6 +6,7 @@ import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'rea
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { api } from '@/api/client';
+import { clearDraft, loadDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
 import { colors, fonts } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
@@ -30,15 +31,23 @@ export default function Level() {
     if (busy) return;
     setBusy(true);
     try {
+      // Params win (this run's answers); the draft covers a resumed wizard where
+      // the earlier screens were never revisited.
+      const d = await loadDraft();
       await api.updateProfile({
-        job: params.job || 'nurse',
-        nativeLang: params.nativeLang || 'ko',
-        targetLang: params.targetLang || 'en',
-        destination: params.destination || 'us',
+        job: params.job || d.job || 'nurse',
+        nativeLang: params.nativeLang || d.nativeLang || 'ko',
+        targetLang: params.targetLang || d.targetLang || 'en',
+        destination: params.destination || d.destination || 'us',
         targetLevel: level,
       });
       await syncOnboarded();
-      router.replace('/campus');
+      // The draft has done its job; leaving it behind would prefill a wizard the
+      // user will never see again.
+      await clearDraft();
+      // Home, not the career tab — the first thing after onboarding should be
+      // today's ONE thing, not the curriculum list (handoff v21 §①b).
+      router.replace('/(tabs)');
     } catch (e) {
       Alert.alert('저장 실패', e instanceof Error ? e.message : '다시 시도해 주세요.');
       setBusy(false);

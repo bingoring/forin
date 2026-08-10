@@ -72,7 +72,7 @@ export default function Login() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 
-  const enter = async () => router.replace((await syncOnboarded()) ? '/campus' : '/locale');
+  const enter = async () => router.replace((await syncOnboarded()) ? '/(tabs)' : '/locale');
 
   // Wrap a provider's id_token exchange with busy/error handling + navigation.
   const complete: Complete = async (label, run) => {

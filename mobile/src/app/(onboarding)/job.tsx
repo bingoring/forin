@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
+import { saveDraft } from '@/lib/onboardingDraft';
 import { colors, fonts } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
 
@@ -19,7 +20,10 @@ export default function Job() {
   const router = useRouter();
   const params = useLocalSearchParams<{ nativeLang: string; destination: string; targetLang: string }>();
 
-  const next = () => router.push({ pathname: '/level', params: { ...params, job: 'nurse' } });
+  const next = async () => {
+    await saveDraft({ job: 'nurse' });
+    router.push({ pathname: '/level', params: { ...params, job: 'nurse' } });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
