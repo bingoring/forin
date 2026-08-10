@@ -1235,7 +1235,7 @@ export interface paths {
                 path?: never;
                 cookie?: never;
             };
-            /** @description title id ('' to un-equip) */
+            /** @description title id (” to un-equip) */
             requestBody: {
                 content: {
                     "application/json": components["schemas"]["internal_adapters_http.titleReq"];
@@ -1519,14 +1519,21 @@ export interface components {
             scenariosWeek?: number;
         };
         "github_com_bingoring_forin_server_internal_domain_progress.Progress": {
-            emergencyResponse?: number;
             level?: number;
-            patientSatisfaction?: number;
-            peerTrust?: number;
             rank?: string;
+            /**
+             * @description Reputation is ordered for display and carries its own labels, so the client
+             *     renders whatever the profession defines without knowing any of the names.
+             */
+            reputation?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.Standing"][];
             streakCurrent?: number;
             streakLongest?: number;
             xp?: number;
+        };
+        "github_com_bingoring_forin_server_internal_domain_progress.Standing": {
+            key?: string;
+            label?: string;
+            value?: number;
         };
         "github_com_bingoring_forin_server_internal_domain_user.Profile": {
             /** @description e.g. "us" */

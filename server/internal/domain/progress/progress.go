@@ -9,15 +9,22 @@ import (
 )
 
 // Progress is a user's growth snapshot.
+// Standing is one reputation dimension's current value, ready to render.
+type Standing struct {
+	Key   string `json:"key"`
+	Label string `json:"label"`
+	Value int    `json:"value"`
+}
+
 type Progress struct {
-	XP                  int    `json:"xp"`
-	Level               int    `json:"level"`
-	Rank                string `json:"rank"`
-	PatientSatisfaction int    `json:"patientSatisfaction"`
-	PeerTrust           int    `json:"peerTrust"`
-	EmergencyResponse   int    `json:"emergencyResponse"`
-	StreakCurrent       int    `json:"streakCurrent"`
-	StreakLongest       int    `json:"streakLongest"`
+	XP    int    `json:"xp"`
+	Level int    `json:"level"`
+	Rank  string `json:"rank"`
+	// Reputation is ordered for display and carries its own labels, so the client
+	// renders whatever the profession defines without knowing any of the names.
+	Reputation    []Standing `json:"reputation"`
+	StreakCurrent int        `json:"streakCurrent"`
+	StreakLongest int        `json:"streakLongest"`
 }
 
 // GrowthStats is the aggregated activity behind the "성장 리포트" screen:

@@ -52,25 +52,57 @@ func NormalizeAcuity(s string) Acuity {
 // Routine reports whether this acuity is the everyday case.
 func (a Acuity) Routine() bool { return a != AcuityUrgent && a != AcuityCritical }
 
-// Catalog is one profession's reputation model: which dimensions exist, which
-// persona roles count as "a colleague" in that trade, and which dimension each
-// role group reads.
+// Spec is one dimension as it should be shown. The LABEL lives here, on the
+// server, because it is profession vocabulary: a client that hardcodes
+// "환자 만족도" has to be rebuilt the day a non-clinical profession ships.
+type Spec struct {
+	Key   Dimension `json:"key"`
+	Label string    `json:"label"`
+}
+
+// Catalog is one profession's reputation model: which dimensions exist (in
+// display order), which persona roles count as "a colleague" in that trade, and
+// which dimension each role group reads.
 type Catalog struct {
 	Profession     string
-	Dims           []Dimension
+	Specs          []Spec // display order is meaningful
 	ColleagueRoles []string
 	Peer           Dimension // a colleague in a routine situation
 	Client         Dimension // the person being served (patient, customer, …)
 	Urgent         Dimension // anything non-routine, whoever it is with
 }
 
+// Dims returns just the keys, in display order.
+func (c Catalog) Dims() []Dimension {
+	out := make([]Dimension, 0, len(c.Specs))
+	for _, s := range c.Specs {
+		out = append(out, s.Key)
+	}
+	return out
+}
+
+// Has reports whether this profession uses the dimension — used to ignore stored
+// rows left over from another profession's model.
+func (c Catalog) Has(d Dimension) bool {
+	for _, s := range c.Specs {
+		if s.Key == d {
+			return true
+		}
+	}
+	return false
+}
+
 // Valid reports whether this catalog is usable (a zero Catalog is not).
-func (c Catalog) Valid() bool { return c.Profession != "" && len(c.Dims) > 0 }
+func (c Catalog) Valid() bool { return c.Profession != "" && len(c.Specs) > 0 }
 
 var catalogs = map[string]Catalog{
 	"nurse": {
 		Profession: "nurse",
-		Dims:       []Dimension{DimPatientSatisfaction, DimPeerTrust, DimEmergencyResponse},
+		Specs: []Spec{
+			{Key: DimPatientSatisfaction, Label: "환자 만족도"},
+			{Key: DimPeerTrust, Label: "동료 신뢰도"},
+			{Key: DimEmergencyResponse, Label: "응급 대응력"},
+		},
 		ColleagueRoles: []string{
 			"doctor", "physician", "surgeon", "nurse", "colleague", "charge",
 			"resident", "attending", "pharmacist", "therapist", "technician",
@@ -157,3 +189,6 @@ func Clamp(v int) int {
 	}
 	return v
 }
+
+// Default is the starting value for a dimension with no stored row yet.
+const Default = 50

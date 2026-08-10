@@ -190,9 +190,12 @@ export interface PronunciationResult {
 
 // A user's growth snapshot (server: GET /me/progress, POST /attempts).
 // Level = 1 + floor(xp / 100); every 100 XP is one level.
+export interface Standing { key: string; label: string; value: number }
 export interface Progress {
   xp: number; level: number; rank: string;
-  patientSatisfaction: number; peerTrust: number; emergencyResponse: number;
+  // Reputation is server-defined per profession: ordered, self-labelled. The
+  // client renders whatever arrives and never hardcodes a dimension name.
+  reputation: Standing[];
   streakCurrent: number; streakLongest: number;
 }
 

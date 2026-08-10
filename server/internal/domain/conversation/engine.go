@@ -169,15 +169,15 @@ func (e *Engine) reputationDisposition(ctx context.Context, userID string, sc *c
 	if !cat.Valid() {
 		return ""
 	}
-	var dim string
-	var score int
-	switch cat.Resolve(sc.Persona.Role, reputation.NormalizeAcuity(sc.Acuity)) {
-	case reputation.DimPeerTrust:
-		dim, score = "peer trust", p.PeerTrust
-	case reputation.DimEmergencyResponse:
-		dim, score = "emergency response", p.EmergencyResponse
-	default:
-		dim, score = "patient satisfaction", p.PatientSatisfaction
+	key := cat.Resolve(sc.Persona.Role, reputation.NormalizeAcuity(sc.Acuity))
+	dim, score := string(key), economy.Active.ReputationDefault
+	for _, st := range p.Reputation {
+		if st.Key == string(key) {
+			// The NPC-facing wording is the dimension key with underscores opened
+			// out; the Korean label is for the player's screen, not the prompt.
+			dim, score = strings.ReplaceAll(st.Key, "_", " "), st.Value
+			break
+		}
 	}
 	// Equipped "warm" title (칭호 효과): a small first-impression nudge so the NPC
 	// starts a touch warmer. Applied AFTER the dimension is chosen so the bonus

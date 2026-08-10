@@ -7,9 +7,10 @@ export type GrowthInput = {
   level: number;
   xp: number;
   streakLongest: number;
-  patientSatisfaction: number;
-  peerTrust: number;
-  emergencyResponse: number;
+  // Keyed by the server's reputation dimension (see api Standing). Titles are
+  // themselves profession content, so naming nurse dimensions here is fine —
+  // a second profession brings its own title catalog.
+  rep: Record<string, number>;
   scenariosTotal: number;
 };
 
@@ -26,7 +27,7 @@ export type TitleDef = {
 
 export const TITLES: TitleDef[] = [
   { id: 'learner', emoji: '🌱', name: '새내기', desc: '이제 막 현장에 발을 들인 간호사예요.', how: '기본으로 주어지는 칭호예요.', earned: () => true },
-  { id: 'ward_friend', emoji: '💗', name: '병동의 벗', desc: '환자들이 편안해하는 따뜻한 손길이에요.', how: '환자 만족도 70 이상이면 얻어요.', effect: '환자 NPC가 처음부터 조금 더 우호적으로 반응해요.', warm: true, earned: (g) => g.patientSatisfaction >= 70 },
+  { id: 'ward_friend', emoji: '💗', name: '병동의 벗', desc: '환자들이 편안해하는 따뜻한 손길이에요.', how: '환자 만족도 70 이상이면 얻어요.', effect: '환자 NPC가 처음부터 조금 더 우호적으로 반응해요.', warm: true, earned: (g) => (g.rep.patient_satisfaction ?? 0) >= 70 },
   { id: 'diligent', emoji: '🔥', name: '성실한 손길', desc: '하루도 빠짐없이 근무한 성실함의 증표예요.', how: '7일 연속 출석하면 얻어요.', earned: (g) => g.streakLongest >= 7 },
   { id: 'er_ace', emoji: '⚡', name: '응급실의 에이스', desc: '수많은 현장을 지켜낸 베테랑이에요.', how: '시나리오를 10회 클리어하면 얻어요.', earned: (g) => g.scenariosTotal >= 10 },
   { id: 'polyglot', emoji: '🗣', name: '언어의 달인', desc: '영어가 몸에 밴 실력자예요.', how: '레벨 10에 도달하면 얻어요.', earned: (g) => g.level >= 10 },
@@ -44,7 +45,7 @@ export type MissionDef = {
 export const MISSIONS: MissionDef[] = [
   { id: 'veteran', name: '베테랑', hint: '현장을 아주 많이 누비다 보면…', reward: '숨은 영웅 칭호', met: (g) => g.scenariosTotal >= 25 },
   { id: 'iron_will', name: '철인', hint: '2주를 하루도 빠짐없이…', reward: '숨은 영웅 칭호', met: (g) => g.streakLongest >= 14 },
-  { id: 'beloved', name: '신망', hint: '모두에게 사랑받는 간호사가 되면…', reward: '숨은 영웅 칭호', met: (g) => g.patientSatisfaction >= 80 && g.peerTrust >= 80 && g.emergencyResponse >= 80 },
+  { id: 'beloved', name: '신망', hint: '모두에게 사랑받는 간호사가 되면…', reward: '숨은 영웅 칭호', met: (g) => (g.rep.patient_satisfaction ?? 0) >= 80 && (g.rep.peer_trust ?? 0) >= 80 && (g.rep.emergency_response ?? 0) >= 80 },
 ];
 
 export function foundMissions(g: GrowthInput): MissionDef[] {

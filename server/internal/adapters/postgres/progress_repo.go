@@ -27,24 +27,65 @@ func NewProgressRepo(pool *pgxpool.Pool) *ProgressRepo {
 	return &ProgressRepo{pool: pool, q: sqlc.New(pool)}
 }
 
-func defaults() *progress.Progress {
-	d := economy.Active.ReputationDefault
-	return &progress.Progress{Level: 1, Rank: "learner", PatientSatisfaction: d, PeerTrust: d, EmergencyResponse: d}
-}
-
 func (r *ProgressRepo) GetProgress(ctx context.Context, userID string) (*progress.Progress, error) {
-	row, err := r.q.GetProgress(ctx, userID)
+	// The profession comes along for the ride: it decides WHICH standings exist,
+	// and reading it here keeps that off the port signature.
+	var p progress.Progress
+	var job string
+	err := r.pool.QueryRow(ctx,
+		`SELECT up.xp, up.level, up.rank, up.streak_current, up.streak_longest, COALESCE(pf.job, '')
+		   FROM user_progress up
+		   LEFT JOIN profiles pf ON pf.user_id = up.user_id
+		  WHERE up.user_id = $1`, userID).
+		Scan(&p.XP, &p.Level, &p.Rank, &p.StreakCurrent, &p.StreakLongest, &job)
 	if errors.Is(err, pgx.ErrNoRows) {
-		return defaults(), nil // new user → defaults
+		p = progress.Progress{Level: 1, Rank: "learner"}
+		_ = r.pool.QueryRow(ctx, `SELECT COALESCE(job, '') FROM profiles WHERE user_id = $1`, userID).Scan(&job)
+	} else if err != nil {
+		return nil, err
 	}
+	st, err := r.standings(ctx, userID, job)
 	if err != nil {
 		return nil, err
 	}
-	return &progress.Progress{
-		XP: row.Xp, Level: row.Level, Rank: row.Rank,
-		PatientSatisfaction: row.PatientSatisfaction, PeerTrust: row.PeerTrust, EmergencyResponse: row.EmergencyResponse,
-		StreakCurrent: row.StreakCurrent, StreakLongest: row.StreakLongest,
-	}, nil
+	p.Reputation = st
+	return &p, nil
+}
+
+// standings returns the profession's dimensions in display order, filling in the
+// default for any the user has never moved. An unmodelled profession yields none
+// rather than inventing axes (Build Spec R-8).
+func (r *ProgressRepo) standings(ctx context.Context, userID, job string) ([]progress.Standing, error) {
+	cat := reputation.CatalogFor(job)
+	if !cat.Valid() {
+		return []progress.Standing{}, nil
+	}
+	stored := map[reputation.Dimension]int{}
+	rows, err := r.pool.Query(ctx, `SELECT dimension, value FROM user_reputation WHERE user_id = $1`, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var d string
+		var v int
+		if err := rows.Scan(&d, &v); err != nil {
+			return nil, err
+		}
+		stored[reputation.Dimension(d)] = v
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	out := make([]progress.Standing, 0, len(cat.Specs))
+	for _, sp := range cat.Specs {
+		v, ok := stored[sp.Key]
+		if !ok {
+			v = economy.Active.ReputationDefault
+		}
+		out = append(out, progress.Standing{Key: string(sp.Key), Label: sp.Label, Value: reputation.Clamp(v)})
+	}
+	return out, nil
 }
 
 // GrowthStats aggregates scenario clears, new review cards, active conversation
@@ -284,26 +325,18 @@ func (r *ProgressRepo) SaveSchedule(ctx context.Context, cardID string, s progre
 	return tx.Commit(ctx)
 }
 
-// repColumns maps a reputation dimension to its column. Keeping this the ONLY
-// place that knows the storage layout means a later move to a per-profession
-// key-value table changes this file and nothing else.
-var repColumns = map[reputation.Dimension]string{
-	reputation.DimPatientSatisfaction: "patient_satisfaction",
-	reputation.DimPeerTrust:           "peer_trust",
-	reputation.DimEmergencyResponse:   "emergency_response",
-}
-
-// ApplyReputation adds delta to one dimension, clamping to 0..100 in SQL so a
-// concurrent clear can't race the read-modify-write past the bounds.
+// ApplyReputation adds delta to one dimension, clamping to 0..100 in SQL so two
+// concurrent clears can't race the read-modify-write past the bounds. The row is
+// created on first movement, seeded from the configured default.
 func (r *ProgressRepo) ApplyReputation(ctx context.Context, userID string, dim reputation.Dimension, delta int) error {
-	col, ok := repColumns[dim]
-	if !ok || delta == 0 {
-		return nil // unknown dimension or nothing to do — not an error
+	if dim == "" || delta == 0 {
+		return nil
 	}
 	_, err := r.pool.Exec(ctx,
-		`UPDATE user_progress
-		    SET `+col+` = LEAST(100, GREATEST(0, `+col+` + $2)), updated_at = now()
-		  WHERE user_id = $1`,
-		userID, delta)
+		`INSERT INTO user_reputation (user_id, dimension, value)
+		 VALUES ($1, $2, LEAST(100, GREATEST(0, $3 + $4)))
+		 ON CONFLICT (user_id, dimension) DO UPDATE
+		   SET value = LEAST(100, GREATEST(0, user_reputation.value + $4)), updated_at = now()`,
+		userID, string(dim), economy.Active.ReputationDefault, delta)
 	return err
 }

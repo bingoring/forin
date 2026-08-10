@@ -200,16 +200,21 @@ ac=$(pj "d.get('acuity','')")
 [ "$ac" = "critical" ] && ok "acuity reaches the API (hospice scenario = critical)" || bad "acuity='$ac', wanted critical"
 # Emergencies are not an ER thing — the tagged scenario above is a hospice ward.
 run GET /me/progress
-inrange=$(pj "all(0 <= d.get(k,0) <= 100 for k in ('patientSatisfaction','peerTrust','emergencyResponse'))")
+# Reputation is server-defined per profession: ordered, labelled, self-describing.
+nd=$(pj "len(d.get('reputation',[]))")
+[ "${nd:-0}" -ge 1 ] && ok "reputation dimensions served: $nd" || bad "no reputation dimensions"
+labelled=$(pj "all(x.get('key') and x.get('label') for x in d.get('reputation',[]))")
+[ "$labelled" = "True" ] && ok "every dimension carries key + label (client hardcodes none)" || bad "a dimension lacks key/label"
+inrange=$(pj "all(0 <= x.get('value',0) <= 100 for x in d.get('reputation',[]))")
 [ "$inrange" = "True" ] && ok "all reputation dimensions within 0..100" || bad "a dimension is out of range"
-ps0=$(pj "d.get('patientSatisfaction',0)"); pt0=$(pj "d.get('peerTrust',0)"); er0=$(pj "d.get('emergencyResponse',0)")
+rep0=$(pj "sorted((x['key'], x['value']) for x in d.get('reputation',[]))")
 # A direct /attempts clear carries no AI grade, so there is nothing to judge and
 # reputation must stay put. (The GRADED path is covered by unit tests + manual
 # E2E; completing a session here would add an LLM call whose neutral-fallback
 # grade equals the pass score, i.e. a zero delta — a flaky assertion.)
 run POST /attempts '{"scenarioId":"SCN-ER-00001","score":50}'
 run GET /me/progress
-same=$(pj "d.get('patientSatisfaction',0) == $ps0 and d.get('peerTrust',0) == $pt0 and d.get('emergencyResponse',0) == $er0")
+same=$(pj "str(sorted((x['key'], x['value']) for x in d.get('reputation',[]))) == '''$rep0'''")
 [ "$same" = "True" ] && ok "ungraded clear leaves reputation untouched" || bad "ungraded clear moved reputation"
 
 hd "RESULT"

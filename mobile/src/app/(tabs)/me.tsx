@@ -19,6 +19,14 @@ import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
 
+// Bars cycle this palette, so a profession with more (or fewer) dimensions than
+// nursing's three still renders without a code change.
+const REP_COLORS = [colors.mint, colors.peach, colors.yellow, colors.lilac, colors.blue];
+
+// repMap flattens the server's ordered standings for threshold checks.
+const repMap = (st: Progress['reputation']) =>
+  Object.fromEntries(st.map((s) => [s.key, s.value]));
+
 export default function Me() {
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
@@ -55,7 +63,7 @@ export default function Me() {
           // Detect newly-met missions not yet recorded → persist + celebrate.
           const g: GrowthInput = {
             level: p.level, xp: p.xp, streakLongest: p.streakLongest,
-            patientSatisfaction: p.patientSatisfaction, peerTrust: p.peerTrust, emergencyResponse: p.emergencyResponse,
+            rep: repMap(p.reputation),
             scenariosTotal: stats?.scenariosTotal ?? 0,
           };
           const set = new Set(found);
@@ -113,7 +121,7 @@ export default function Me() {
     );
   }
 
-  const { level, xp, streakCurrent, streakLongest, patientSatisfaction, peerTrust, emergencyResponse } = progress;
+  const { level, xp, streakCurrent, streakLongest } = progress;
   const career = careerFor(level);
   const inLevel = xp % ECON.xpPerLevel;
 
@@ -121,7 +129,7 @@ export default function Me() {
   const gotCount = badges.filter((b) => b.got).length;
   const BADGE_TOTAL = 24; // full career-badge pool (handoff shows collection vs 24)
 
-  const growth: GrowthInput = { level, xp, streakLongest, patientSatisfaction, peerTrust, emergencyResponse, scenariosTotal };
+  const growth: GrowthInput = { level, xp, streakLongest, rep: repMap(progress.reputation), scenariosTotal };
   const titles = earnedTitles(growth, foundIds.size); // hidden_hero earned = permanent discoveries
   const equippedTitle = titleById(equipped);
 
@@ -204,9 +212,9 @@ export default function Me() {
 
             {/* reputation */}
             <View style={{ marginTop: 14, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dashed' }}>
-              <RepRow label="환자 만족도" value={patientSatisfaction} color={colors.mint} />
-              <RepRow label="동료 신뢰도" value={peerTrust} color={colors.peach} />
-              <RepRow label="응급 대응력" value={emergencyResponse} color={colors.yellow} />
+              {progress.reputation.map((st, i) => (
+                <RepRow key={st.key} label={st.label} value={st.value} color={REP_COLORS[i % REP_COLORS.length]} />
+              ))}
             </View>
           </View>
         </Shadowed>

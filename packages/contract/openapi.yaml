@@ -131,21 +131,32 @@ components:
       type: object
     github_com_bingoring_forin_server_internal_domain_progress.Progress:
       properties:
-        emergencyResponse:
-          type: integer
         level:
-          type: integer
-        patientSatisfaction:
-          type: integer
-        peerTrust:
           type: integer
         rank:
           type: string
+        reputation:
+          description: |-
+            Reputation is ordered for display and carries its own labels, so the client
+            renders whatever the profession defines without knowing any of the names.
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.Standing'
+          type: array
+          uniqueItems: false
         streakCurrent:
           type: integer
         streakLongest:
           type: integer
         xp:
+          type: integer
+      type: object
+    github_com_bingoring_forin_server_internal_domain_progress.Standing:
+      properties:
+        key:
+          type: string
+        label:
+          type: string
+        value:
           type: integer
       type: object
     github_com_bingoring_forin_server_internal_domain_user.Profile:
@@ -832,9 +843,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/internal_adapters_http.titleReq'
-              description: title id ('' to un-equip)
+              description: title id (” to un-equip)
               summary: body
-        description: title id ('' to un-equip)
+        description: title id (” to un-equip)
         required: true
       responses:
         "200":
