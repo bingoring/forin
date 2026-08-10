@@ -100,7 +100,7 @@ func (q *Queries) GetInterior(ctx context.Context, id string) (Interior, error) 
 }
 
 const getScenario = `-- name: GetScenario :one
-SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing
+SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity
 FROM scenarios WHERE id = $1
 `
 
@@ -116,6 +116,7 @@ type GetScenarioRow struct {
 	KeyPhrases []byte `json:"key_phrases"`
 	Steps      []byte `json:"steps"`
 	Briefing   []byte `json:"briefing"`
+	Acuity     string `json:"acuity"`
 }
 
 func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, error) {
@@ -133,6 +134,7 @@ func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, e
 		&i.KeyPhrases,
 		&i.Steps,
 		&i.Briefing,
+		&i.Acuity,
 	)
 	return i, err
 }
@@ -306,8 +308,8 @@ func (q *Queries) InsertQuiz(ctx context.Context, arg InsertQuizParams) error {
 }
 
 const insertScenario = `-- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
 `
 
 type InsertScenarioParams struct {
@@ -322,6 +324,7 @@ type InsertScenarioParams struct {
 	KeyPhrases []byte `json:"key_phrases"`
 	Steps      []byte `json:"steps"`
 	Briefing   []byte `json:"briefing"`
+	Acuity     string `json:"acuity"`
 }
 
 func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) error {
@@ -337,6 +340,7 @@ func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) 
 		arg.KeyPhrases,
 		arg.Steps,
 		arg.Briefing,
+		arg.Acuity,
 	)
 	return err
 }

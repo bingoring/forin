@@ -9,6 +9,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/domain/reputation"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -27,6 +28,7 @@ type Engine struct {
 	review          ports.ReviewRepo
 	profiles        ports.ProfileReader
 	reputation      ports.ProgressReader
+	repWriter       ports.ReputationWriter
 	llm             ports.LLMPort
 	strategy        Strategy
 	correctionModel string
@@ -34,9 +36,10 @@ type Engine struct {
 }
 
 func NewEngine(c ports.ContentReader, convo ports.ConversationRepo, review ports.ReviewRepo,
-	profiles ports.ProfileReader, reputation ports.ProgressReader, llm ports.LLMPort, strategy Strategy, correctionModel, gradingModel string) *Engine {
+	profiles ports.ProfileReader, reputation ports.ProgressReader, repWriter ports.ReputationWriter,
+	llm ports.LLMPort, strategy Strategy, correctionModel, gradingModel string) *Engine {
 	return &Engine{content: c, convo: convo, review: review, profiles: profiles,
-		reputation: reputation, llm: llm, strategy: strategy, correctionModel: correctionModel, gradingModel: gradingModel}
+		reputation: reputation, repWriter: repWriter, llm: llm, strategy: strategy, correctionModel: correctionModel, gradingModel: gradingModel}
 }
 
 // langContext is the user's language framing for prompts (never hardcoded).
@@ -159,15 +162,22 @@ func (e *Engine) reputationDisposition(ctx context.Context, userID string, sc *c
 	if err != nil || p == nil {
 		return ""
 	}
-	// Pick the dimension that fits who the NPC is: colleagues read peer trust,
-	// everyone else (patients, families) reads patient satisfaction.
-	role := strings.ToLower(sc.Persona.Role)
-	dim, score := "patient satisfaction", p.PatientSatisfaction
-	for _, k := range []string{"doctor", "physician", "surgeon", "nurse", "colleague", "charge", "resident", "attending"} {
-		if strings.Contains(role, k) {
-			dim, score = "peer trust", p.PeerTrust
-			break
-		}
+	// Which standing this NPC reads comes from the SAME resolver that decides
+	// which one a clear moves — so what the learner earns is what they are judged
+	// on. Acuity outranks role: in an emergency it is the response that matters.
+	cat := reputation.CatalogFor(sc.Profession)
+	if !cat.Valid() {
+		return ""
+	}
+	var dim string
+	var score int
+	switch cat.Resolve(sc.Persona.Role, reputation.NormalizeAcuity(sc.Acuity)) {
+	case reputation.DimPeerTrust:
+		dim, score = "peer trust", p.PeerTrust
+	case reputation.DimEmergencyResponse:
+		dim, score = "emergency response", p.EmergencyResponse
+	default:
+		dim, score = "patient satisfaction", p.PatientSatisfaction
 	}
 	// Equipped "warm" title (칭호 효과): a small first-impression nudge so the NPC
 	// starts a touch warmer. Applied AFTER the dimension is chosen so the bonus

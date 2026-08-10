@@ -2,7 +2,8 @@
 # End-to-end smoke test for the core forin journey (Stage 2-8 통합·E2E).
 # Exercises: auth → onboarding → curriculum → dialogue+correction → clear(XP) →
 # review(SM-2) → growth stats → daily pool + rewarded top-up → missions → dept
-# situations → home aggregate → colleagues (code, boundaries, privacy), plus
+# situations → home aggregate → colleagues (code, boundaries, privacy) →
+# reputation (acuity plumbing, ungraded clears), plus
 # robustness (token refresh/rotation, error status codes).
 #
 # The colleague LINK flow (request → accept → cheer) needs two users and
@@ -191,6 +192,25 @@ if [ "$ORIG" = "True" ]; then RESTORE=true; else RESTORE=false; fi
 run PATCH /me/colleague-prefs "{\"shareStatus\":$RESTORE}"
 on=$(pj "d.get('shareStatus')")
 [ "$on" = "$ORIG" ] && ok "shareStatus restored to original ($ORIG)" || bad "restore → $on, wanted $ORIG"
+
+hd "⑮ REPUTATION · acuity plumbing + ungraded clears don't move it"
+# Acuity must survive content → DB → API, or the emergency dimension can never move.
+run GET /scenarios/SCN-HOSPICE-00108
+ac=$(pj "d.get('acuity','')")
+[ "$ac" = "critical" ] && ok "acuity reaches the API (hospice scenario = critical)" || bad "acuity='$ac', wanted critical"
+# Emergencies are not an ER thing — the tagged scenario above is a hospice ward.
+run GET /me/progress
+inrange=$(pj "all(0 <= d.get(k,0) <= 100 for k in ('patientSatisfaction','peerTrust','emergencyResponse'))")
+[ "$inrange" = "True" ] && ok "all reputation dimensions within 0..100" || bad "a dimension is out of range"
+ps0=$(pj "d.get('patientSatisfaction',0)"); pt0=$(pj "d.get('peerTrust',0)"); er0=$(pj "d.get('emergencyResponse',0)")
+# A direct /attempts clear carries no AI grade, so there is nothing to judge and
+# reputation must stay put. (The GRADED path is covered by unit tests + manual
+# E2E; completing a session here would add an LLM call whose neutral-fallback
+# grade equals the pass score, i.e. a zero delta — a flaky assertion.)
+run POST /attempts '{"scenarioId":"SCN-ER-00001","score":50}'
+run GET /me/progress
+same=$(pj "d.get('patientSatisfaction',0) == $ps0 and d.get('peerTrust',0) == $pt0 and d.get('emergencyResponse',0) == $er0")
+[ "$same" = "True" ] && ok "ungraded clear leaves reputation untouched" || bad "ungraded clear moved reputation"
 
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"

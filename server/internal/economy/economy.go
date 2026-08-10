@@ -27,6 +27,8 @@ type Economy struct {
 	RepBandCordial    int `json:"repBandCordial"`    // ≥ → neutral/cordial
 	RepBandWary       int `json:"repBandWary"`       // ≥ → slightly wary; below → guarded
 	TitleWarmthBonus  int `json:"titleWarmthBonus"`  // equipped "warm" title nudge
+	RepGainMax        int `json:"repGainMax"`        // reputation gained by a perfect clear
+	RepLossMax        int `json:"repLossMax"`        // reputation lost by a zero-score attempt
 
 	// Spaced repetition (SM-2).
 	EaseDefault    float64 `json:"easeDefault"`
@@ -64,6 +66,10 @@ func Default() Economy {
 		RepBandCordial:    50,
 		RepBandWary:       25,
 		TitleWarmthBonus:  15,
+		// Recovery is deliberately easier than the fall: this is a learning app,
+		// and a bad day should not take a week to undo.
+		RepGainMax: 6,
+		RepLossMax: 4,
 
 		EaseDefault:    2.5,
 		EaseFloor:      1.3,

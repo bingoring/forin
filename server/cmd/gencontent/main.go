@@ -81,6 +81,7 @@ func generateDept(deptIdx int, d Dept, target int) ([]content.Scenario, []conten
 			Goals:      t.Goals,
 			Guardrails: orDefault(t.Guard, defaultGuard),
 			KeyPhrases: t.Phrases,
+			Acuity:     t.acuityOf(),
 			Briefing: &content.Briefing{
 				Dept: d.Label + " · " + t.Room, DeptColor: d.Color, Brief: t.Brief, Difficulty: diff,
 				TimeLabel: fmt.Sprintf("약 %d분", mins), Skills: t.Skills,
@@ -89,8 +90,8 @@ func generateDept(deptIdx int, d Dept, target int) ([]content.Scenario, []conten
 					{Icon: "❤", Label: "환자 만족도", Value: fmt.Sprintf("+ %d", diff+2)},
 					{Icon: "🎖", Label: "진척", Value: "+ 1"},
 				},
-				Reqs:   []content.Req{{Label: fmt.Sprintf("레벨 %d+", diff*2), Metric: "level", Threshold: diff * 2}},
-				Tone:   d.Tone, Accent: d.Accent,
+				Reqs: []content.Req{{Label: fmt.Sprintf("레벨 %d+", diff*2), Metric: "level", Threshold: diff * 2}},
+				Tone: d.Tone, Accent: d.Accent,
 			},
 		})
 	}

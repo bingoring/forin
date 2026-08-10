@@ -9,7 +9,7 @@ var Depts []Dept
 // expanded (× patient persona × difficulty) into ≥ target scenarios.
 type Dept struct {
 	Code, Name, Label, Color, Tone, Accent string
-	Topics                                  []Topic
+	Topics                                 []Topic
 }
 
 // Topic is one curated clinical situation. Room is the sub-location shown as
@@ -19,6 +19,38 @@ type Topic struct {
 	Diff                              int
 	Skills, Phrases, Goals, Guard     []string
 	Moods                             []string // optional; default by role
+	// Acuity marks a situation that is HAPPENING, not one being taught about —
+	// it decides which reputation dimension a clear moves. Curated per topic
+	// because prose can't be sniffed reliably: "낙상 외상 사정" is an emergency,
+	// "낙상 예방 교육" is a lesson. Empty = routine.
+	Acuity string
+}
+
+// urgentTopics marks curated topics as urgent/critical by exact title. Kept as a
+// table rather than keyword matching so every entry is a reviewed decision.
+var urgentTopics = map[string]string{
+	"Code Blue 콜 응대": "critical",
+	"소아 Code 대응":     "critical",
+	"산후 출혈 대응":       "critical",
+	"증상 급변 대응":       "critical",
+	"호흡곤란 초기 평가":     "urgent",
+	"낙상 외상 사정":       "urgent",
+	"낙상·머리 손상 관찰":    "urgent",
+	"소아 열경련 부모 안내":   "urgent",
+	"모니터 알람 해석":      "urgent",
+	"무호흡·서맥 알람 설명":   "urgent",
+	"장비 알람 대응":       "urgent",
+	"ICU 섬망 대응":      "urgent",
+	"패혈증 상태 설명":      "urgent",
+	"자살 위험 사정":       "urgent",
+}
+
+// acuityOf returns the topic's curated acuity ("" = routine).
+func (t Topic) acuityOf() string {
+	if t.Acuity != "" {
+		return t.Acuity
+	}
+	return urgentTopics[t.Title]
 }
 
 func (t Topic) Mood() string {
@@ -40,13 +72,13 @@ func moodForVariant(t Topic, variant int) string {
 }
 
 var roleMoods = map[string][]string{
-	"patient":   {"worried", "pain", "anxious", "sad", "neutral"},
-	"parent":    {"worried", "anxious", "panic", "sad"},
-	"family":    {"worried", "sad", "anxious"},
-	"child":     {"scared", "shy", "sad"},
-	"colleague": {"focused", "neutral"},
-	"doctor":    {"focused", "neutral"},
-	"nurse":     {"focused", "neutral"},
+	"patient":    {"worried", "pain", "anxious", "sad", "neutral"},
+	"parent":     {"worried", "anxious", "panic", "sad"},
+	"family":     {"worried", "sad", "anxious"},
+	"child":      {"scared", "shy", "sad"},
+	"colleague":  {"focused", "neutral"},
+	"doctor":     {"focused", "neutral"},
+	"nurse":      {"focused", "neutral"},
 	"pharmacist": {"focused", "neutral"},
 }
 

@@ -10,6 +10,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/domain/reputation"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -88,7 +89,31 @@ func (e *Engine) GradeSession(ctx context.Context, userID, sessionID string) (*G
 	g.XPAwarded = scaledXP(baseXPOf(sc), g.Score)
 
 	e.fileGradeTips(ctx, userID, sc, g.Tips)
+	e.applyReputation(ctx, userID, sc, g.Score)
 	return g, nil
+}
+
+// applyReputation moves ONE standing dimension by an amount derived from the
+// grade. Which dimension comes from the scenario's own acuity and the persona's
+// role — never from a department, so a ward emergency counts exactly like an ER
+// one and a new profession needs a catalog entry, not new branching here.
+//
+// Best-effort by design: a failure here must never cost the learner their clear
+// (Build Spec R-9).
+func (e *Engine) applyReputation(ctx context.Context, userID string, sc *content.Scenario, score int) {
+	if e.repWriter == nil || sc == nil {
+		return
+	}
+	cat := reputation.CatalogFor(sc.Profession)
+	if !cat.Valid() {
+		return // profession we haven't modelled — move nothing rather than the wrong axis
+	}
+	dim := cat.Resolve(sc.Persona.Role, reputation.NormalizeAcuity(sc.Acuity))
+	delta := reputation.Delta(score, economy.Active.ScenarioPassScore, economy.Active.RepGainMax, economy.Active.RepLossMax)
+	if delta == 0 {
+		return
+	}
+	_ = e.repWriter.ApplyReputation(ctx, userID, dim, delta)
 }
 
 // gradeTranscript makes the single grading LLM call and parses its JSON. On any

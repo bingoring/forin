@@ -12,6 +12,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/domain/reputation"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -281,4 +282,28 @@ func (r *ProgressRepo) SaveSchedule(ctx context.Context, cardID string, s progre
 		return err
 	}
 	return tx.Commit(ctx)
+}
+
+// repColumns maps a reputation dimension to its column. Keeping this the ONLY
+// place that knows the storage layout means a later move to a per-profession
+// key-value table changes this file and nothing else.
+var repColumns = map[reputation.Dimension]string{
+	reputation.DimPatientSatisfaction: "patient_satisfaction",
+	reputation.DimPeerTrust:           "peer_trust",
+	reputation.DimEmergencyResponse:   "emergency_response",
+}
+
+// ApplyReputation adds delta to one dimension, clamping to 0..100 in SQL so a
+// concurrent clear can't race the read-modify-write past the bounds.
+func (r *ProgressRepo) ApplyReputation(ctx context.Context, userID string, dim reputation.Dimension, delta int) error {
+	col, ok := repColumns[dim]
+	if !ok || delta == 0 {
+		return nil // unknown dimension or nothing to do — not an error
+	}
+	_, err := r.pool.Exec(ctx,
+		`UPDATE user_progress
+		    SET `+col+` = LEAST(100, GREATEST(0, `+col+` + $2)), updated_at = now()
+		  WHERE user_id = $1`,
+		userID, delta)
+	return err
 }

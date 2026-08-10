@@ -23,7 +23,7 @@ FROM events WHERE delivery IN ('daily_pool', 'both') AND ($1 = '' OR profession 
 ORDER BY tier, id LIMIT $2;
 
 -- name: GetScenario :one
-SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing
+SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity
 FROM scenarios WHERE id = $1;
 
 -- name: ListBoardScenarios :many
@@ -67,8 +67,8 @@ INSERT INTO events (id, profession, title, ward, category, tier, tags, delivery,
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 
 -- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 
 -- name: GetQuiz :one
 SELECT id, profession, type, title, content FROM quizzes WHERE id = $1;

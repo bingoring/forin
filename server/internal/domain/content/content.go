@@ -168,17 +168,22 @@ type Directive struct {
 }
 
 type Scenario struct {
-	ID         string    `yaml:"id" json:"id"`
-	Profession string    `yaml:"profession" json:"profession"`
-	EventID    string    `yaml:"eventId" json:"eventId"`
-	Title      string    `yaml:"title" json:"title"`
-	Tagline    string    `yaml:"tagline" json:"tagline"`
-	Persona    Persona   `yaml:"persona" json:"persona"`
-	Goals      []string  `yaml:"goals" json:"goals"`
-	Guardrails []string  `yaml:"guardrails" json:"guardrails"`
-	KeyPhrases []string  `yaml:"keyPhrases" json:"keyPhrases"`
-	Steps      []Step    `yaml:"steps" json:"steps"`
-	Briefing   *Briefing `yaml:"briefing" json:"briefing,omitempty"` // pre-dialogue card (optional)
+	ID         string   `yaml:"id" json:"id"`
+	Profession string   `yaml:"profession" json:"profession"`
+	EventID    string   `yaml:"eventId" json:"eventId"`
+	Title      string   `yaml:"title" json:"title"`
+	Tagline    string   `yaml:"tagline" json:"tagline"`
+	Persona    Persona  `yaml:"persona" json:"persona"`
+	Goals      []string `yaml:"goals" json:"goals"`
+	Guardrails []string `yaml:"guardrails" json:"guardrails"`
+	KeyPhrases []string `yaml:"keyPhrases" json:"keyPhrases"`
+	// Acuity drives which reputation dimension a clear moves. Declared by the
+	// scenario, NOT inferred from a department: wards, theatres and pharmacies all
+	// produce emergencies, and department vocabulary doesn't survive a new
+	// profession. Empty = routine (see domain/reputation.NormalizeAcuity).
+	Acuity   string    `yaml:"acuity,omitempty" json:"acuity,omitempty"`
+	Steps    []Step    `yaml:"steps" json:"steps"`
+	Briefing *Briefing `yaml:"briefing" json:"briefing,omitempty"` // pre-dialogue card (optional)
 }
 
 // Persona describes the AI's conversation character for realistic role-play.

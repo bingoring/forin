@@ -10,6 +10,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/domain/reputation"
 	"github.com/bingoring/forin/server/internal/domain/user"
 )
 
@@ -24,6 +25,11 @@ type ProgressRepo interface {
 	// 'attempted' (engaged but below pass). grade is the 0..100 AI score, or <0 for
 	// a direct/legacy attempt with no grade (stored NULL).
 	RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int) (*progress.Progress, error)
+	// ApplyReputation nudges ONE standing dimension by delta, clamped to 0..100.
+	// The dimension is passed by name (reputation.Dimension) so the column layout
+	// stays an implementation detail of the repo — a future per-profession
+	// key-value store swaps in without touching callers.
+	ApplyReputation(ctx context.Context, userID string, dim reputation.Dimension, delta int) error
 	// GrowthStats aggregates activity for the growth report. dayStart/weekStart are
 	// the period lower bounds (already computed in tzName); ActiveDates are bucketed
 	// as calendar dates in tzName (an IANA zone, e.g. "Asia/Seoul") over the week.
@@ -85,6 +91,12 @@ type ProfileReader interface {
 // weight an NPC's disposition by reputation). Narrow read-only view of ProgressRepo.
 type ProgressReader interface {
 	GetProgress(ctx context.Context, userID string) (*progress.Progress, error)
+}
+
+// ReputationWriter applies a standing change. Kept separate from ProgressReader
+// so the dialogue engine's read path stays provably read-only.
+type ReputationWriter interface {
+	ApplyReputation(ctx context.Context, userID string, dim reputation.Dimension, delta int) error
 }
 
 // WordScore is a per-word pronunciation result.
