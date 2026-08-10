@@ -107,7 +107,7 @@ type titleReq struct {
 // @Summary Equip a career title
 // @Tags user
 // @Security Bearer
-// @Param body body titleReq true "title id (” to un-equip)"
+// @Param body body titleReq true "title id ('' to un-equip)"
 // @Success 200 {object} user.Profile
 // @Router /me/title [patch]
 func (h *meHandler) equipTitle(w http.ResponseWriter, r *http.Request) {
