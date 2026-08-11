@@ -50,6 +50,8 @@
 **감사(2026-08-10):** 아래는 "남음"으로 적혀 있었으나 **실제로는 이미 구현돼 있었음** — 칭호·히든미션(서버 영속 확인) · 일일 풀 00:00 리셋+가중 샘플링(`content_repo.go:461`) · 메인 루트 그래프 · 보상형 광고 top-up · 경제 수치 테이블(25필드 `GET /config/economy`). 2-7 체크리스트 전 항목 완료. |
 | 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | AI_PROPOSED — **전체 여정 스모크 `server/scripts/e2e_smoke.sh`(48 assert, 48/0 pass, 재실행 가능)**: 인증·온보딩·토큰 회전·커리큘럼·대화+교정·클리어(XP)·SM-2·일일풀+광고·미션·부서 상황·에러 경로. 남음(Phase 3 이관): AI 비용·지연 모니터링·분석 이벤트·성능/부하·스토어 메타·권한·개인정보 |
 
+> 📚 **커리큘럼 층 전수 커버(2026-08-11)**: 5챕터(본관 4개 층) → **25챕터 / 24개 층 전체**. 층 지도에서 생성(`cmd/gencontent/floors.go` → `catalog_gen.go`), 난이도 순 배치. 콘텐츠 공백이던 4개 층(내과·외과·정형·피부과)은 **뱅크 신규 저작**(29개 부서 3,200 시나리오). 층 표기 버그(존재하지 않는 "본관 5F") 정정.
+
 **병행 트랙:** [콘텐츠 워크스트림](content-workstream.md) — AI 작성(조사→초안→검수), **2-2 포맷 확정 후 본격 착수**. PENDING.
 
 ## Phase R — Independent Code Review 🔍 (Construction → Operations 게이트)
