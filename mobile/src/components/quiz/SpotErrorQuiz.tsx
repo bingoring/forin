@@ -46,7 +46,7 @@ export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Qu
         </View>
       </Shadowed>
 
-      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#fff', textAlign: 'center', marginTop: 10 }}>⚠ 위 항목 중 <Text style={{ fontFamily: fonts.heading }}>잘못된 하나</Text>를 찾으세요.</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#fff', textAlign: 'center', marginTop: 10 }}>위 항목 중 <Text style={{ fontFamily: fonts.heading }}>잘못된 하나</Text>를 찾으세요.</Text>
 
       {checked && !!c.note && (
         <Shadowed offset={2} shadowColor={colors.mintShadow} style={{ marginTop: 10 }}>

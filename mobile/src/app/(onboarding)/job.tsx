@@ -5,15 +5,16 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { saveDraft } from '@/lib/onboardingDraft';
+import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
 
 const C = colors.ink;
 const JOBS = [
-  { code: 'nurse', name: '간호사', sub: 'Nurse · 종합병원', scenarios: 124, icon: '🏥', ready: true },
-  { code: 'swe', name: '소프트웨어 엔지니어', sub: 'SW Engineer · 스타트업', icon: '💻', ready: false },
-  { code: 'barista', name: '바리스타', sub: 'Barista · 카페', icon: '☕', ready: false },
-  { code: 'hotelier', name: '호텔리어', sub: 'Hotelier · 프론트', icon: '🛎', ready: false },
+  { code: 'nurse', name: '간호사', sub: 'Nurse · 종합병원', scenarios: 124, icon: 'hospital' as IconName, ready: true },
+  { code: 'swe', name: '소프트웨어 엔지니어', sub: 'SW Engineer · 스타트업', icon: 'chart' as IconName, ready: false },
+  { code: 'barista', name: '바리스타', sub: 'Barista · 카페', icon: 'cup' as IconName, ready: false },
+  { code: 'hotelier', name: '호텔리어', sub: 'Hotelier · 프론트', icon: 'pin' as IconName, ready: false },
 ];
 
 export default function Job() {
@@ -38,7 +39,7 @@ export default function Job() {
             <Shadowed key={j.code} offset={j.ready ? 4 : 2} shadowColor={j.ready ? colors.peachShadow : C + '22'}>
               <View style={{ backgroundColor: j.ready ? colors.peach : '#fff', borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 14, opacity: j.ready ? 1 : 0.7 }}>
                 <View style={{ width: 52, height: 52, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 26 }}>{j.icon}</Text>
+                  <PixelIcon name={j.icon} color={C} size={26} sw={1.6} />
                 </View>
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C }}>{j.name}</Text>

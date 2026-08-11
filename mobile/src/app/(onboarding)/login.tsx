@@ -17,6 +17,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import { completeSocialLogin, signInApple, signInKakao, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured } from '@/lib/auth';
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 
 // Lets the auth popup redirect back and dismiss the in-app browser.
@@ -124,7 +125,7 @@ export default function Login() {
         {/* Dev-only bypass — real provider auth needs a dev build + credentials. */}
         {__DEV__ && (
           <Pressable onPress={() => complete('개발자', devSignIn)} disabled={busy} style={{ marginTop: 14, alignSelf: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textFaint }}>🛠 개발자 로그인 (둘러보기)</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textFaint }}>개발자 로그인 (둘러보기)</Text>
           </Pressable>
         )}
       </SafeAreaView>

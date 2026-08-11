@@ -24,6 +24,7 @@ import { TriageQuiz } from '@/components/quiz/TriageQuiz';
 import { AbbrQuiz } from '@/components/quiz/AbbrQuiz';
 import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -138,7 +139,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
           {!!progress && progress.total > 1 && (
             <Shadowed offset={2} shadowColor={colors.mintShadow}>
               <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>📝 {progress.cur}/{progress.total}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{progress.cur}/{progress.total}</Text>
               </View>
             </Shadowed>
           )}
@@ -160,7 +161,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
             <View style={{ paddingHorizontal: 14, paddingTop: 12, paddingBottom: 10, borderBottomWidth: 3, borderBottomColor: '#2A252244', borderStyle: 'dotted', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Shadowed offset={2} shadowColor={colors.peachShadow}>
                 <View style={{ backgroundColor: colors.peach, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>📚 정형 학습</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>정형 학습</Text>
                 </View>
               </Shadowed>
               <View style={{ flex: 1 }}>
@@ -218,7 +219,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
               {!!c.hint && (
                 <View style={{ marginTop: 16, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                   <View style={{ width: 18, height: 18, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 11 }}>💡</Text>
+                    <PixelIcon name="bulb" color={C} size={12} sw={1.8} />
                   </View>
                   <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>{c.hint}</Text>
                 </View>

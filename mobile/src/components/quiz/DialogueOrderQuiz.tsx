@@ -47,7 +47,7 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
             ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="💬 순서 제출" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton label="순서 제출" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}

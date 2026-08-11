@@ -219,7 +219,7 @@ export default function DialogueRoute() {
           <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C, opacity: 0.75 }}>QUICK INFO</Text>
         </View>
         <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
-        {([['chart', '📋', '차트'], ['meds', '💊', '약물'], ['vitals', '🩺', '활력']] as const).map(([k, icon, label]) => (
+        {([['chart', 'clipboard', '차트'], ['meds', 'pill', '약물'], ['vitals', 'stethoscope', '활력']] as const).map(([k, icon, label]) => (
           <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
             <Shadowed offset={2}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
@@ -238,7 +238,7 @@ export default function DialogueRoute() {
             <Shadowed offset={5}>
               <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{tool === 'chart' ? '📋 환자 차트' : tool === 'meds' ? '💊 투약 정보' : '🩺 활력징후'}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{tool === 'chart' ? '환자 차트' : tool === 'meds' ? '투약 정보' : '활력징후'}</Text>
                   <Pressable onPress={() => setTool(null)}><Text style={{ fontFamily: fonts.heading, fontSize: 14, color: colors.textSoft }}>✕</Text></Pressable>
                 </View>
                 <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
@@ -319,13 +319,17 @@ export default function DialogueRoute() {
         {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
         {!hintOn && (
           <View style={{ marginTop: 14 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? '🔴 듣는 중… (마이크 탭하면 완료)' : rec === 'transcribing' ? '받아쓰는 중…' : 'SPEAK FREELY · 🎤 눌러 말하기'}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? '듣는 중… (마이크 탭하면 완료)' : rec === 'transcribing' ? '받아쓰는 중…' : 'SPEAK FREELY · 마이크를 눌러 말하기'}</Text>
             <Shadowed offset={3}>
               <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <Pressable onPress={toggleMic} disabled={pending}>
                   <Shadowed offset={2} shadowColor={rec === 'recording' ? '#B91C1C' : colors.mintShadow}>
                     <View style={{ width: 32, height: 32, backgroundColor: rec === 'recording' ? '#FCA5A5' : colors.mint, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                      {rec === 'transcribing' ? <ActivityIndicator color={C} size="small" /> : <Text style={{ fontSize: 16 }}>{rec === 'recording' ? '■' : '🎤'}</Text>}
+                      {rec === 'transcribing'
+                        ? <ActivityIndicator color={C} size="small" />
+                        : rec === 'recording'
+                          ? <Text style={{ fontSize: 16 }}>■</Text>
+                          : <PixelIcon name="mic" color={C} size={18} sw={1.8} />}
                     </View>
                   </Shadowed>
                 </Pressable>
@@ -333,7 +337,7 @@ export default function DialogueRoute() {
                   value={draft}
                   onChangeText={setDraft}
                   editable={!pending && rec === 'idle'}
-                  placeholder={rec === 'recording' ? '말한 뒤 마이크를 다시 누르세요…' : '자유롭게 영어로 답하거나 🎤로 말해보세요…'}
+                  placeholder={rec === 'recording' ? '말한 뒤 마이크를 다시 누르세요…' : '자유롭게 영어로 답하거나 마이크로 말해보세요…'}
                   placeholderTextColor={colors.textFaint}
                   style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, paddingVertical: 4 }}
                   onSubmitEditing={send}
@@ -351,7 +355,7 @@ export default function DialogueRoute() {
             <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
           <View style={{ flex: 1 }}>
-            <PixelButton label="💡 힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
+            <PixelButton icon="bulb" label="힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
             {hintOn && (
               <View style={{ position: 'absolute', top: -6, right: -6, width: 14, height: 14, backgroundColor: C, alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.yellow }}>●</Text>
@@ -360,7 +364,8 @@ export default function DialogueRoute() {
           </View>
           {quizIds.length > 0 && (
             <PixelButton
-              label={quizIds.length > 1 ? `📝 ${quizIds.length}` : '📝'}
+              icon="note"
+              label={quizIds.length > 1 ? `${quizIds.length}` : ''}
               bg="#fff"
               shadowColor={C}
               fontSize={12}
@@ -398,7 +403,11 @@ function PortraitFrame({ children, name, status, hue, sweat }: { children: React
           {children}
         </View>
       </Shadowed>
-      {sweat && <Text style={{ position: 'absolute', top: 2, right: -8, fontSize: 18, zIndex: 4 }}>💧</Text>}
+      {sweat && (
+        <View style={{ position: 'absolute', top: 2, right: -8, zIndex: 4 }}>
+          <PixelIcon name="droplet" color={colors.blue} size={18} sw={1.8} />
+        </View>
+      )}
       <Shadowed offset={2} style={{ marginTop: 6, alignSelf: 'flex-start' }}>
         <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{name}</Text>
@@ -428,8 +437,8 @@ function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text
         </View>
         <View style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 10 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{text}</Text>
-          {suggested && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.mintShadow, marginTop: 3 }}>★ AI 추천 · 미션 진행</Text>}
-          {risky && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#B91C1C', marginTop: 3 }}>⚠ 평판 −2 위험</Text>}
+          {suggested && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.mintShadow, marginTop: 3 }}>AI 추천 · 미션 진행</Text>}
+          {risky && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#B91C1C', marginTop: 3 }}>평판 −2 위험</Text>}
         </View>
       </Pressable>
     </Shadowed>
@@ -465,12 +474,12 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   }
   if (tool === 'meds') {
     const meds = chart?.meds ?? [];
-    if (meds.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요. 💊</Text>;
+    if (meds.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요.</Text>;
     return (
       <View style={{ gap: 6 }}>
         {meds.map((m, i) => (
           <View key={i} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
-            <Text style={{ fontSize: 13 }}>💊</Text>
+            <PixelIcon name="pill" color={C} size={14} sw={1.8} />
             <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{m}</Text>
           </View>
         ))}
@@ -479,7 +488,7 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   }
   // vitals
   const vitals = chart?.vitals ?? [];
-  if (vitals.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요. 🩺</Text>;
+  if (vitals.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요.</Text>;
   return (
     <View style={{ flexDirection: 'row', gap: 6 }}>
       {vitals.map((v, i) => (

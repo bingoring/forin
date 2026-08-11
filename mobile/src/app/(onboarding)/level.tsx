@@ -8,6 +8,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api } from '@/api/client';
 import { clearDraft, loadDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
+import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
 
@@ -75,7 +76,7 @@ export default function Level() {
                 <View key={l} style={{ flex: 1, borderRightWidth: i < 5 ? 2 : 0, borderColor: C, backgroundColor: i <= activeIdx ? colors.mint : 'transparent' }} />
               ))}
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 8 }}>🎯 추정 레벨 · <Text style={{ fontFamily: fonts.heading }}>{level}</Text> 정도부터 시작해볼게요</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 8 }}>추정 레벨 · <Text style={{ fontFamily: fonts.heading }}>{level}</Text> 정도부터 시작해볼게요</Text>
           </View>
         </Shadowed>
 

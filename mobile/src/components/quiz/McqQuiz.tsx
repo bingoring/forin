@@ -29,7 +29,7 @@ export function McqQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDeta
       {!!scene && (
         <View style={{ backgroundColor: C, borderWidth: 3, borderColor: C, padding: 12, marginBottom: 13, position: 'relative' }}>
           <View style={{ position: 'absolute', top: -7, left: 10, backgroundColor: colors.peach, borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>💬 SCENE</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>SCENE</Text>
           </View>
           <Text style={{ fontFamily: fonts.body, fontSize: 12.5, color: colors.cream, lineHeight: 19 }}>{scene}</Text>
         </View>

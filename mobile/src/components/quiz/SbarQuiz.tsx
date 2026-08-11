@@ -44,7 +44,7 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
             : (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{placed.length}/{cards.length} 배치됨</Text>
-              <PixelButton label={hasTracks ? '📞 콜 시작' : '✓ 순서 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} />
+              <PixelButton label={hasTracks ? '콜 시작' : '✓ 순서 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} />
             </View>
           )
       }

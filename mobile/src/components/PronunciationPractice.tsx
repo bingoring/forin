@@ -80,7 +80,7 @@ export function PronunciationPractice({ referenceText }: { referenceText: string
 
   return (
     <View style={{ marginTop: 10, backgroundColor: colors.paper, borderWidth: 2, borderColor: C, padding: 10, gap: 8 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>🎤 발음 연습</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>발음 연습</Text>
       <Text style={{ fontFamily: fonts.body, fontSize: 13, color: C }}>"{referenceText}"</Text>
 
       {phase === 'recording' ? (
@@ -91,7 +91,7 @@ export function PronunciationPractice({ referenceText }: { referenceText: string
           <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>채점 중…</Text>
         </View>
       ) : (
-        <PixelButton label={`🎤 ${phase === 'done' || phase === 'error' ? '다시 녹음' : '녹음 시작'}`} bg={colors.mint} shadowColor={colors.mintShadow} borderWidth={2} paddingV={8} fontSize={12} onPress={start} full />
+        <PixelButton icon="mic" label={phase === 'done' || phase === 'error' ? '다시 녹음' : '녹음 시작'} bg={colors.mint} shadowColor={colors.mintShadow} borderWidth={2} paddingV={8} fontSize={12} onPress={start} full />
       )}
 
       {phase === 'error' && <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#DC2626' }}>{err}</Text>}

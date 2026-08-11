@@ -53,7 +53,7 @@ export default function Route() {
 
           {nodes.length === 0 ? (
             <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
-              <Text style={{ fontSize: 40 }}>🗺</Text>
+              <PixelIcon name="map" color={colors.textFaint} size={40} sw={1.5} />
               <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, textAlign: 'center' }}>아직 열린 루트가 없어요.</Text>
             </View>
           ) : (

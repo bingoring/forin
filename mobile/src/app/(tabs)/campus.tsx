@@ -160,7 +160,9 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
               const tappable = s.state !== 'lock'; // done steps are replayable, now/optional playable
               const inner = (
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: bg, borderWidth: 2.5, borderColor: s.state === 'lock' ? C + '55' : C, paddingVertical: 8, paddingHorizontal: 9, opacity: s.state === 'lock' ? 0.55 : 1 }}>
-                  <Text style={{ fontSize: 14 }}>{s.state === 'lock' ? '🔒' : m.icon}</Text>
+                  {s.state === 'lock'
+                    ? <PixelIcon name="lock" color={colors.textFaint} size={14} sw={1.8} />
+                    : <Text style={{ fontSize: 14 }}>{m.icon}</Text>}
                   <View style={{ flex: 1, minWidth: 0 }}>
                     <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 15 }}>{s.name}</Text>
                     <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: colors.textSoft, marginTop: 2 }}>{m.label}{opt ? ' · 선택' : ''}</Text>
@@ -191,7 +193,11 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
         const row = (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: now ? colors.yellow : viewing ? colors.paper : '#fff', borderWidth: 2.5, borderColor: lock ? C + '55' : C, paddingVertical: 9, paddingHorizontal: 10, opacity: lock ? 0.6 : 1 }}>
             <View style={{ width: 26, height: 26, backgroundColor: c.state === 'done' ? colors.mint : now ? C : C + '18', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: now ? colors.cream : C }}>{c.state === 'done' ? '✓' : lock ? '🔒' : c.ch}</Text>
+              {c.state === 'done'
+                ? <PixelIcon name="check" color={now ? colors.cream : C} size={13} sw={2} />
+                : lock
+                  ? <PixelIcon name="lock" color={now ? colors.cream : C} size={13} sw={1.8} />
+                  : <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: now ? colors.cream : C }}>{c.ch}</Text>}
             </View>
             <View style={{ flex: 1, minWidth: 0 }}>
               <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 15 }}>{c.name}</Text>

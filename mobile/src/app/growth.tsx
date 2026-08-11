@@ -218,7 +218,7 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
                   <Pressable
                     onPress={() => onPick({
                       icon: s.e, iconNode: iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={34} sw={1.6} /> : undefined, iconBg: s.bg, title: `칭찬 스티커 #${i + 1}`,
-                      status: { label: '✓ 획득', bg: colors.mint },
+                      status: { label: '획득', bg: colors.mint },
                       what: `시나리오를 성공적으로 마치고 환자에게서 받은 칭찬 스티커예요. 지금까지 ${earned}장 모았어요.`,
                       how: howText,
                     })}
@@ -231,7 +231,7 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
                   key={i}
                   onPress={() => onPick({
                     icon: '➕', iconNode: <PixelIcon name="plus" color={C} size={30} sw={1.8} />, iconBg: colors.cream, title: '빈 스티커 칸',
-                    status: { label: '🔒 잠김', bg: colors.cream },
+                    status: { label: '잠김', bg: colors.cream },
                     what: '아직 비어 있는 칸이에요. 시나리오를 클리어하면 이 칸이 칭찬 스티커로 채워져요.',
                     how: howText,
                   })}

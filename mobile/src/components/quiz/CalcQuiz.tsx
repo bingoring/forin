@@ -115,7 +115,7 @@ function DosageBody({ c, entry, checked, correct }: { c: NonNullable<QuizDetail[
         <Shadowed offset={3}>
           <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, marginBottom: 10 }}>
             <View style={{ backgroundColor: colors.yellow, borderBottomWidth: 2.5, borderBottomColor: C, paddingVertical: 4, paddingHorizontal: 8, flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>📋 ORDER · {o.id}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>ORDER · {o.id}</Text>
               <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{o.prescriber} · {o.time}</Text>
             </View>
             <View style={{ paddingVertical: 8, paddingHorizontal: 10 }}>

@@ -233,7 +233,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start', marginTop: 8 }}>
             <Badge text="✓" bg={colors.mint} color={C} />
             <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, lineHeight: 18 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
-            <Pressable onPress={speak} hitSlop={8}><Text style={{ fontSize: 15 }}>🔊</Text></Pressable>
+            <Pressable onPress={speak} hitSlop={8}><PixelIcon name="volume" color={C} size={16} sw={1.8} /></Pressable>
           </View>
 
           {/* note */}
@@ -248,7 +248,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
             <View style={{ marginTop: 10 }}>
               <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                 <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>🗺 맥락 {showCtx ? '▲' : '▼'}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>맥락 {showCtx ? '▲' : '▼'}</Text>
                 </View>
                 {!showCtx && !!ctx?.title && (
                   <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft }}>{ctx.title}</Text>
@@ -261,7 +261,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
                   {!!ctx?.npc && (
                     <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: '#2A252233' }}>
                       <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft, marginBottom: 2 }}>상대가 이렇게 말했고</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>🗣 {ctx.npc}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>{ctx.npc}</Text>
                       <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15, marginTop: 3 }}>→ 여기에 답하며 한 말이에요.</Text>
                     </View>
                   )}

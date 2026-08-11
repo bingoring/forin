@@ -48,7 +48,7 @@ export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
           <View style={{ position: 'absolute', left: `${targetPct}%`, top: -3, bottom: -3, width: 3, backgroundColor: '#22D3EE' }} />
         </View>
         <View style={{ marginTop: 8, backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 10 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>🎯 목표 {g.target} {g.unit}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>목표 {g.target} {g.unit}</Text>
         </View>
       </View>
 

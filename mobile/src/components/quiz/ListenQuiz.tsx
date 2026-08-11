@@ -89,7 +89,7 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
           ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : (
             <>
-              <PixelButton label={`🔊 한 번 더 듣기 (${Math.min(replays, 3)}/3)`} bg="#fff" shadowColor={C} fontSize={11} onPress={() => play()} style={{ flex: 1 }} />
+              <PixelButton label={`한 번 더 듣기 (${Math.min(replays, 3)}/3)`} bg="#fff" shadowColor={C} fontSize={11} onPress={() => play()} style={{ flex: 1 }} />
               <View style={{ flex: 2 }}>
                 <PixelButton label={checked ? '↻ 다시' : '✓ 복창하기 (Read back)'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} disabled={picked === null} onPress={() => (checked ? (setChecked(false), setPicked(null)) : setChecked(true))} full />
               </View>
@@ -147,7 +147,7 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
             <SpeedBtn label="0.7×" active={speed === 0.7} onPress={() => { setSpeed(0.7); play(0.7); }} />
             <SpeedBtn label="1.0×" active={speed === 1.0} onPress={() => { setSpeed(1.0); play(1.0); }} />
             <View style={{ flex: 1 }} />
-            <SpeedBtn label="📝 자막" active={subtitle} onPress={() => setSubtitle((s) => !s)} />
+            <SpeedBtn label="자막" active={subtitle} onPress={() => setSubtitle((s) => !s)} />
           </View>
           {/* subtitle reveal */}
           {subtitle && !!c.audioText && (

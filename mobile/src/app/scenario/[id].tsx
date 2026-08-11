@@ -11,6 +11,7 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -69,7 +70,7 @@ export default function ScenarioBriefingRoute() {
         <PixelButton label="× 닫기" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
         <Shadowed offset={2}>
           <View style={{ backgroundColor: deptColor, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: '#fff' }}>⚑ {b.dept || scenario.title}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: '#fff' }}>{b.dept || scenario.title}</Text>
           </View>
         </Shadowed>
       </View>

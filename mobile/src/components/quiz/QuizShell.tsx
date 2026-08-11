@@ -5,6 +5,7 @@
 import { ScrollView, Text, View, type ViewStyle } from 'react-native';
 import { Stack } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 
 export const C = colors.ink;
@@ -48,7 +49,7 @@ export function QuizShell({ title, sub, zone, onExit, progress, children, footer
           {!!progress && progress.total > 1 && (
             <Shadowed offset={2} shadowColor={colors.mintShadow}>
               <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>📝 {progress.cur}/{progress.total}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{progress.cur}/{progress.total}</Text>
               </View>
             </Shadowed>
           )}
@@ -68,7 +69,7 @@ export function QuizShell({ title, sub, zone, onExit, progress, children, footer
             <View style={{ paddingHorizontal: 14, paddingTop: 12, paddingBottom: 10, borderBottomWidth: 3, borderBottomColor: '#2A252244', borderStyle: 'dotted', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Shadowed offset={2} shadowColor={colors.peachShadow}>
                 <View style={{ backgroundColor: colors.peach, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>📚 정형 학습</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>정형 학습</Text>
                 </View>
               </Shadowed>
               <View style={{ flex: 1 }}>
@@ -112,7 +113,7 @@ export function HintRow({ text }: { text: string }) {
   return (
     <View style={{ marginTop: 16, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
       <View style={{ width: 18, height: 18, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={{ fontSize: 11 }}>💡</Text>
+        <PixelIcon name="bulb" color={colors.ink} size={12} sw={1.8} />
       </View>
       <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>{text}</Text>
     </View>
