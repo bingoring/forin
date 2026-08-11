@@ -18,6 +18,7 @@ import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { PronunciationPractice } from '@/components/PronunciationPractice';
 import { api, type ScenarioDetail } from '@/api/client';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -183,7 +184,7 @@ export default function DialogueRoute() {
             <>
               <Shadowed offset={2}>
                 <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>🎯 MISSION 1/{Math.max(1, goals.length)}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>MISSION 1/{Math.max(1, goals.length)}</Text>
                 </View>
               </Shadowed>
               <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
@@ -194,7 +195,7 @@ export default function DialogueRoute() {
           {/* Main completion: resolving the situation via dialogue ends the scenario.
               Ending with no dialogue is "중단" — no grade, no reward; ending after
               speaking hands the sessionId to the result screen for AI grading. */}
-          <PixelButton label="✓ 상황 종료" bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={endSituation} />
+          <PixelButton icon="check" label="상황 종료" bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={endSituation} />
         </View>
       </View>
 
@@ -298,7 +299,7 @@ export default function DialogueRoute() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
               <Shadowed offset={2}>
                 <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>💡 HINT ON</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>HINT ON</Text>
                 </View>
               </Shadowed>
               <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />

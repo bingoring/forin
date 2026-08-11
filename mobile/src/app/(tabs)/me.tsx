@@ -230,7 +230,7 @@ export default function Me() {
                 <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>오늘의 성장 리포트</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 3, opacity: 0.8 }}>Lv.{level} · {xp.toLocaleString()} XP · 🔥 {streakCurrent}일 연속</Text>
               </View>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>▶</Text>
+              <PixelIcon name="chevron-right" color={C} size={18} sw={2} />
             </View>
           </Shadowed>
         </Pressable>
@@ -367,7 +367,7 @@ export default function Me() {
                     </View>
                     {isEq
                       ? <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>장착</Text></View>
-                      : tt.got && <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>▶</Text>}
+                      : tt.got && <PixelIcon name="chevron-right" color={C} size={16} sw={2} />}
                   </Pressable>
                 </Shadowed>
               );
@@ -418,7 +418,7 @@ export default function Me() {
                 <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 2 }}>→ <Text style={{ backgroundColor: colors.mint }}>Can you tell me about your pain?</Text></Text>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
-                <PixelButton label="리뷰랩 열기 ▶" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={5} paddingH={10} onPress={() => router.push('/lab')} />
+                <PixelButton icon="chevron-right" label="리뷰랩 열기" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={5} paddingH={10} onPress={() => router.push('/lab')} />
               </View>
             </View>
           </Shadowed>
@@ -442,7 +442,7 @@ export default function Me() {
               </View>
               {signingOut
                 ? <ActivityIndicator color={C} />
-                : <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>▶</Text>}
+                : <PixelIcon name="chevron-right" color={C} size={16} sw={2} />}
             </Pressable>
           </Shadowed>
         </View>

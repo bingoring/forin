@@ -3,13 +3,14 @@
 // struck through, the natural correction highlighted, and a why-note. The learner
 // self-rates recall (다시/어려움/알맞음/쉬움 → POST /me/review/{id}/grade), which
 // advances the spaced-repetition schedule; graded cards leave today's queue.
-// 🔊 speaks the corrected line (expo-speech). 1:1 in spirit with v17 ScreenReviewLab.
+// A speaker button reads the corrected line (expo-speech). 1:1 in spirit with v17 ScreenReviewLab.
 import { useCallback, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -96,17 +97,19 @@ export default function Lab() {
                 <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
               </Text>
             ) : (
-              <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요 🎉</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
             )}
             <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, marginTop: 8, lineHeight: 16 }}>
               AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
             </Text>
             {cards.length > 0 && (
               <View style={{ marginTop: 12 }}>
-                <PixelButton label={`▶  오늘의 복습 시작 (${cards.length})`} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
+                <PixelButton icon="play" label={`오늘의 복습 시작 (${cards.length})`} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
               </View>
             )}
-            <Text style={{ position: 'absolute', top: -10, right: -4, fontSize: 26, transform: [{ rotate: '10deg' }] }}>📓</Text>
+            <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
+              <PixelIcon name="note" color={C} size={26} sw={1.7} />
+            </View>
           </View>
         </Shadowed>
 
@@ -114,7 +117,7 @@ export default function Lab() {
         <Shadowed offset={3}>
           <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
             <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
-              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 12, color: C }}>❓ 복습 등급이 뭔가요?</Text>
+              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 12, color: C }}>복습 등급이 뭔가요?</Text>
               <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>{guideOpen ? '▲' : '▼'}</Text>
             </Pressable>
             {guideOpen && (
@@ -131,7 +134,7 @@ export default function Lab() {
                   </View>
                 ))}
                 <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
-                  💡 숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 '마스터'로 분류돼요.
+                  숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 '마스터'로 분류돼요.
                 </Text>
               </View>
             )}
@@ -170,7 +173,7 @@ export default function Lab() {
         {/* cards */}
         {shown.length === 0 ? (
           <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
-            <Text style={{ fontSize: 40 }}>📓</Text>
+            <PixelIcon name="note" color={colors.textFaint} size={40} sw={1.5} />
             <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
           </View>
         ) : (
@@ -187,7 +190,7 @@ export default function Lab() {
                 <View style={{ backgroundColor: toast.bg, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{toast.label}</Text>
                 </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>📅 {toast.next}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{toast.next}</Text>
               </View>
               <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
             </View>

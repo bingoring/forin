@@ -184,9 +184,11 @@ function TodayOne({ one, onStart }: { one: NonNullable<Home['todayOne']>; onStar
           </View>
           <Pressable onPress={onStart} style={({ pressed }) => ({
             marginTop: 12, backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 11,
-            alignItems: 'center', opacity: pressed ? 0.85 : 1,
+            flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7,
+            opacity: pressed ? 0.85 : 1,
           })}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: colors.cream }}>▶ 시작하기</Text>
+            <PixelIcon name="play" color={colors.cream} size={16} sw={1.9} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: colors.cream }}>시작하기</Text>
           </Pressable>
         </View>
       </Shadowed>
@@ -302,7 +304,7 @@ function OneReview({ front, onPress }: { front: string; onPress: () => void }) {
           <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 15 }}>틀린 표현 하나만 다시 볼까요?</Text>
           <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: 9.5, color: colors.textSoft, marginTop: 3 }}>“{front}” · 1분</Text>
         </View>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>›</Text>
+        <PixelIcon name="chevron-right" color={C} size={16} sw={2} />
       </Pressable>
     </Shadowed>
   );

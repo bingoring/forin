@@ -9,38 +9,39 @@ import { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
+import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, space, type as t } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 
 const C = colors.ink;
 
 // dept code → label (한글 ENG) + short code + icon + color. Canonical order first.
-const DEPT_META: Record<string, { name: string; short: string; icon: string; color: string }> = {
-  ER: { name: '응급실 ER', short: 'ER', icon: '🚑', color: '#DC2626' },
-  ICU: { name: '중환자실 ICU', short: 'ICU', icon: '🛏', color: '#7F1D1D' },
-  OR: { name: '수술실 OR', short: 'OR', icon: '🔪', color: '#9333EA' },
-  PEDS: { name: '소아과 Peds', short: 'PEDS', icon: '👶', color: '#3B82F6' },
-  PHARMA: { name: '약국 Pharma', short: 'PHARMA', icon: '💊', color: '#16A34A' },
-  LD: { name: '분만실 L&D', short: 'LD', icon: '🤰', color: '#DB2777' },
-  NICU: { name: '신생아중환자실 NICU', short: 'NICU', icon: '🍼', color: '#0EA5E9' },
-  PICU: { name: '소아중환자실 PICU', short: 'PICU', icon: '🧸', color: '#6366F1' },
-  NURSERY: { name: '신생아실 Nursery', short: 'NURSERY', icon: '👶', color: '#F472B6' },
-  WOMENKIDS: { name: '여성소아외래', short: 'W&K', icon: '🌸', color: '#EC4899' },
-  RAD: { name: '영상의학 Rad', short: 'RAD', icon: '🩻', color: '#0891B2' },
-  ENDO: { name: '내시경 Endo', short: 'ENDO', icon: '🔬', color: '#0D9488' },
-  DIAL: { name: '인공신장실 Dialysis', short: 'DIAL', icon: '💧', color: '#2563EB' },
-  SPECIALTY: { name: '특수외래 Specialty', short: 'SPEC', icon: '👁', color: '#7C3AED' },
-  INFUSION: { name: '주사센터 Infusion', short: 'INFU', icon: '💉', color: '#059669' },
-  ONCO: { name: '암센터 Oncology', short: 'ONCO', icon: '🎗', color: '#9333EA' },
-  HOSPICE: { name: '호스피스 Hospice', short: 'HOSP', icon: '🕊', color: '#64748B' },
-  GERI: { name: '노인병동 Geriatrics', short: 'GERI', icon: '👵', color: '#B45309' },
-  PSYCH: { name: '정신과 Psych', short: 'PSYCH', icon: '🧠', color: '#7C3AED' },
-  REHAB: { name: '재활 Rehab', short: 'REHAB', icon: '🦿', color: '#0284C7' },
-  SIM: { name: '시뮬레이션랩 Sim', short: 'SIM', icon: '🎓', color: '#4F46E5' },
-  LOUNGE: { name: '라운지 Lounge', short: 'LOUNGE', icon: '☕', color: '#A16207' },
-  SPD: { name: '중앙공급 SPD', short: 'SPD', icon: '📦', color: '#525252' },
-  MORGUE: { name: '영안실 Morgue', short: 'MORGUE', icon: '🕯', color: '#334155' },
-  GEN: { name: '공통 General', short: 'GEN', icon: '🏥', color: '#6B7280' },
+const DEPT_META: Record<string, { name: string; short: string; icon: IconName; color: string }> = {
+  ER: { name: '응급실 ER', short: 'ER', icon: 'ambulance', color: '#DC2626' },
+  ICU: { name: '중환자실 ICU', short: 'ICU', icon: 'bed', color: '#7F1D1D' },
+  OR: { name: '수술실 OR', short: 'OR', icon: 'scalpel', color: '#9333EA' },
+  PEDS: { name: '소아과 Peds', short: 'PEDS', icon: 'teddy', color: '#3B82F6' },
+  PHARMA: { name: '약국 Pharma', short: 'PHARMA', icon: 'pill', color: '#16A34A' },
+  LD: { name: '분만실 L&D', short: 'LD', icon: 'pregnant', color: '#DB2777' },
+  NICU: { name: '신생아중환자실 NICU', short: 'NICU', icon: 'bottle', color: '#0EA5E9' },
+  PICU: { name: '소아중환자실 PICU', short: 'PICU', icon: 'teddy', color: '#6366F1' },
+  NURSERY: { name: '신생아실 Nursery', short: 'NURSERY', icon: 'baby', color: '#F472B6' },
+  WOMENKIDS: { name: '여성소아외래', short: 'W&K', icon: 'flower', color: '#EC4899' },
+  RAD: { name: '영상의학 Rad', short: 'RAD', icon: 'xray', color: '#0891B2' },
+  ENDO: { name: '내시경 Endo', short: 'ENDO', icon: 'microscope', color: '#0D9488' },
+  DIAL: { name: '인공신장실 Dialysis', short: 'DIAL', icon: 'droplet', color: '#2563EB' },
+  SPECIALTY: { name: '특수외래 Specialty', short: 'SPEC', icon: 'eye', color: '#7C3AED' },
+  INFUSION: { name: '주사센터 Infusion', short: 'INFU', icon: 'syringe', color: '#059669' },
+  ONCO: { name: '암센터 Oncology', short: 'ONCO', icon: 'ribbon', color: '#9333EA' },
+  HOSPICE: { name: '호스피스 Hospice', short: 'HOSP', icon: 'dove', color: '#64748B' },
+  GERI: { name: '노인병동 Geriatrics', short: 'GERI', icon: 'cane', color: '#B45309' },
+  PSYCH: { name: '정신과 Psych', short: 'PSYCH', icon: 'brain', color: '#7C3AED' },
+  REHAB: { name: '재활 Rehab', short: 'REHAB', icon: 'prosthesis', color: '#0284C7' },
+  SIM: { name: '시뮬레이션랩 Sim', short: 'SIM', icon: 'cap', color: '#4F46E5' },
+  LOUNGE: { name: '라운지 Lounge', short: 'LOUNGE', icon: 'cup', color: '#A16207' },
+  SPD: { name: '중앙공급 SPD', short: 'SPD', icon: 'box', color: '#525252' },
+  MORGUE: { name: '영안실 Morgue', short: 'MORGUE', icon: 'candle', color: '#334155' },
+  GEN: { name: '공통 General', short: 'GEN', icon: 'hospital', color: '#6B7280' },
 };
 const DEPT_ORDER = Object.keys(DEPT_META);
 // urgency → card tint, accent, tag (1:1 with the handoff scheme).
@@ -130,7 +131,7 @@ export default function Board() {
         <Shadowed offset={4} shadowColor={colors.mintShadow} style={{ marginTop: 10 }}>
           <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Text style={{ fontSize: 28 }}>📋</Text>
+              <PixelIcon name="clipboard" color={C} size={28} sw={1.6} />
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
@@ -153,9 +154,9 @@ export default function Board() {
 
         {/* filter tabs */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 5, paddingVertical: 2, paddingTop: 10 }}>
-          <DeptTab id="ALL" label="전체" icon="✨" color={C} active={filter === 'ALL'} count={cards.length} onPress={() => setFilter('ALL')} />
+          <DeptTab id="ALL" label="전체" icon="sparkle" color={C} active={filter === 'ALL'} count={cards.length} onPress={() => setFilter('ALL')} />
           {presentDepts.map((d) => (
-            <DeptTab key={d} id={d} label={DEPT_META[d]?.short ?? d} icon={DEPT_META[d]?.icon ?? ''} color={DEPT_META[d]?.color ?? C} active={filter === d} count={byDept[d].length} onPress={() => setFilter(d)} />
+            <DeptTab key={d} id={d} label={DEPT_META[d]?.short ?? d} icon={DEPT_META[d]?.icon ?? 'hospital'} color={DEPT_META[d]?.color ?? C} active={filter === d} count={byDept[d].length} onPress={() => setFilter(d)} />
           ))}
         </ScrollView>
       </View>
@@ -171,7 +172,7 @@ export default function Board() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                 <Shadowed offset={2}>
                   <View style={{ width: 28, height: 28, backgroundColor: m?.color ?? C, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 16 }}>{m?.icon ?? '🏥'}</Text>
+                    <PixelIcon name={m?.icon ?? 'hospital'} color={C} size={17} sw={1.7} />
                   </View>
                 </Shadowed>
                 <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 13, color: C }}>{m?.name ?? dept}</Text>
@@ -185,7 +186,7 @@ export default function Board() {
         })}
         {shownDepts.length === 0 && (
           <View style={{ alignItems: 'center', gap: 6, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', backgroundColor: colors.paper, paddingVertical: 28 }}>
-            <Text style={{ fontSize: 28 }}>{DEPT_META[filter]?.icon ?? '🗓'}</Text>
+            <PixelIcon name={DEPT_META[filter]?.icon ?? 'calendar'} color={C} size={28} sw={1.6} />
             <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textSoft, textAlign: 'center' }}>{DEPT_META[filter]?.name ?? filter}에 오늘 발생한 상황이 없어요.</Text>
             <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textFaint }}>내일 다시 확인해보세요!</Text>
           </View>
@@ -195,12 +196,12 @@ export default function Board() {
         {filter === 'ALL' && (
           <Shadowed offset={4} shadowColor={capReached ? C + '33' : colors.yellowShadow}>
             <Pressable onPress={onTopUp} disabled={topping || capReached} style={{ backgroundColor: capReached ? colors.paper : colors.yellow, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-              <Text style={{ fontSize: 26 }}>{capReached ? '✅' : '🎬'}</Text>
+              <PixelIcon name={capReached ? 'check' : 'play'} color={C} size={26} sw={1.7} />
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{capReached ? '오늘의 보상을 다 받았어요' : '광고 보고 새 상황 3건 열기'}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: 10, color: capReached ? colors.textSoft : C, marginTop: 3, lineHeight: 15 }}>{capReached ? '자정이 지나면 새로운 현장이 열려요.' : '현장이 잠잠한가요? 짧은 광고를 보고 시나리오를 더 받아요.'}</Text>
               </View>
-              {topping ? <ActivityIndicator color={C} /> : !capReached && <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C }}>▶</Text>}
+              {topping ? <ActivityIndicator color={C} /> : !capReached && <PixelIcon name="play" color={C} size={18} sw={1.9} />}
             </Pressable>
           </Shadowed>
         )}
@@ -208,7 +209,7 @@ export default function Board() {
         {/* daily rotation note */}
         <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>
-            <Text style={{ fontFamily: fonts.heading, color: C }}>💡 매일 자정마다 </Text>새로운 현장 상황이 부서별로 골고루 발생해요. 저장된 300+ 시나리오 중에서 오늘의 {cards.length}건을 골랐어요.
+            <Text style={{ fontFamily: fonts.heading, color: C }}>매일 자정마다 </Text>새로운 현장 상황이 부서별로 골고루 발생해요. 저장된 300+ 시나리오 중에서 오늘의 {cards.length}건을 골랐어요.
           </Text>
         </View>
       </ScrollView>
@@ -216,7 +217,7 @@ export default function Board() {
       {/* rewarded-ad stub overlay */}
       <Modal visible={adPlaying} transparent animationType="fade">
         <View style={{ flex: 1, backgroundColor: '#000A', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
-          <Text style={{ fontSize: 40 }}>🎬</Text>
+          <PixelIcon name="clipboard" color={colors.textFaint} size={40} sw={1.5} />
           <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: '#fff' }}>광고 시청 중…</Text>
           <ActivityIndicator color="#fff" />
           <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#fff', opacity: 0.7 }}>(개발 모드 · 실제 광고는 dev build 필요)</Text>
@@ -247,7 +248,7 @@ function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
 
         {/* title + npc */}
         <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C, lineHeight: 17 }}>{c.title}</Text>
-        {!!c.npcName && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>👤 {c.npcName}{c.npcSub ? ` · ${c.npcSub}` : ''}</Text>}
+        {!!c.npcName && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{c.npcName}{c.npcSub ? ` · ${c.npcSub}` : ''}</Text>}
 
         {/* tagline */}
         {!!c.tagline && (
@@ -272,10 +273,10 @@ function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
         {/* action rail */}
         <View style={{ flexDirection: 'row', gap: 6, marginTop: 9 }}>
           <View style={{ flex: 1 }}>
-            <PixelButton label="📍 위치 보기" bg="#fff" shadowColor={C} fontSize={10} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
+            <PixelButton icon="pin" label="위치 보기" bg="#fff" shadowColor={C} fontSize={10} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
           </View>
           <View style={{ flex: 2 }}>
-            <PixelButton label="▶ 진행하기" bg={colors.mint} shadowColor={colors.mintShadow} fontSize={11} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
+            <PixelButton icon="play" label="진행하기" bg={colors.mint} shadowColor={colors.mintShadow} fontSize={11} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
           </View>
         </View>
       </View>
@@ -305,12 +306,12 @@ function Counter({ label, value, accent }: { label: string; value: number; accen
   );
 }
 
-function DeptTab({ label, icon, color, active, count, onPress }: { id: string; label: string; icon: string; color: string; active: boolean; count: number; onPress: () => void }) {
+function DeptTab({ label, icon, color, active, count, onPress }: { id: string; label: string; icon: IconName; color: string; active: boolean; count: number; onPress: () => void }) {
   return (
     <Pressable onPress={onPress}>
       <Shadowed offset={active ? 2.5 : 2} shadowColor={active ? C : C + '66'}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: active ? color : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 8 }}>
-          <Text style={{ fontSize: 13 }}>{icon}</Text>
+          <PixelIcon name={icon} color={active ? '#fff' : C} size={14} sw={1.8} />
           <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: active ? '#fff' : C }}>{label}</Text>
           {count > 0 && (
             <View style={{ backgroundColor: active ? '#fff' : color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>

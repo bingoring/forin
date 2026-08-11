@@ -177,7 +177,7 @@ export default function ScenarioBriefingRoute() {
               <PixelButton label="나중에 하기" bg="#fff" shadowColor={C} fontSize={12} onPress={() => router.back()} style={{ flex: 1 }} />
               <View style={{ flex: 2 }}>
                 <PixelButton
-                  label="▶  지금 진행"
+                  icon="play" label="지금 진행"
                   bg={colors.mint}
                   shadowColor={colors.mintShadow}
                   onPress={() => router.push(`/dialogue/${id}`)}

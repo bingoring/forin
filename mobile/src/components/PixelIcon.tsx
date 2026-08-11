@@ -16,7 +16,15 @@ export type IconName =
   | 'burst' | 'question' | 'tag' | 'search' | 'check' | 'sparkle'
   // home + colleagues (handoff draws these as emoji; the app uses line icons)
   | 'home' | 'handshake' | 'clap' | 'moon' | 'bulb' | 'map' | 'clipboard'
-  | 'note' | 'people' | 'shift' | 'send' | 'copy' | 'share' | 'plus-box';
+  | 'note' | 'people' | 'shift' | 'send' | 'copy' | 'share' | 'plus-box'
+  // navigation + actions (replacing ▶ / › / ✓ glyphs in buttons and rows)
+  | 'play' | 'chevron-right' | 'chevron-left' | 'refresh' | 'pause'
+  // board / growth / review surfaces
+  | 'chart' | 'calendar' | 'target' | 'book' | 'mic' | 'volume' | 'clock' | 'pin' | 'bed' | 'alert'
+  // departments — one per ward/unit, so board/campus/lift stop leaning on emoji
+  | 'ambulance' | 'scalpel' | 'baby' | 'pill' | 'pregnant' | 'bottle' | 'teddy'
+  | 'xray' | 'microscope' | 'droplet' | 'eye' | 'ribbon' | 'dove' | 'cane'
+  | 'brain' | 'prosthesis' | 'cap' | 'cup' | 'box' | 'candle' | 'hospital' | 'x';
 
 function body(name: IconName, color: string): ReactNode {
   switch (name) {
@@ -196,6 +204,213 @@ function body(name: IconName, color: string): ReactNode {
       return (<>
         <Path d="M4 4 h16 v16 H4 z" />
         <Path d="M12 8 v8 M8 12 h8" />
+      </>);
+
+    // ── navigation + actions ────────────────────────────────────────────────
+    case 'play':
+      // Filled, unlike the rest of the set: a play control reads as a solid
+      // wedge everywhere, and an outlined one looks like an empty placeholder.
+      return <Path d="M7 4.5 L19 12 L7 19.5 z" fill={color} />;
+    case 'pause':
+      return (<>
+        <Path d="M9 5 v14" />
+        <Path d="M15 5 v14" />
+      </>);
+    case 'chevron-right':
+      return <Path d="M9 5 l7 7 -7 7" />;
+    case 'chevron-left':
+      return <Path d="M15 5 l-7 7 7 7" />;
+    case 'refresh':
+      return (<>
+        <Path d="M20 12 a8 8 0 1 1 -2.4 -5.7" />
+        <Path d="M20 4 v5 h-5" />
+      </>);
+
+    // ── board / growth / review ─────────────────────────────────────────────
+    case 'chart':
+      return (<>
+        <Path d="M4 20 V4" />
+        <Path d="M4 20 h16" />
+        <Path d="M8 17 v-5 M12.5 17 v-9 M17 17 v-6" />
+      </>);
+    case 'calendar':
+      return (<>
+        <Path d="M4 6 h16 v14 H4 z" />
+        <Path d="M4 10 h16" />
+        <Path d="M8 3 v4 M16 3 v4" />
+      </>);
+    case 'target':
+      return (<>
+        <Circle cx={12} cy={12} r={8} />
+        <Circle cx={12} cy={12} r={3.5} />
+      </>);
+    case 'book':
+      return (<>
+        <Path d="M4 5 a3 3 0 0 1 3 -1 h12 v16 H7 a3 3 0 0 0 -3 1 z" />
+        <Path d="M7 4 v16" />
+      </>);
+    case 'mic':
+      return (<>
+        <Path d="M12 4 a2.5 2.5 0 0 1 2.5 2.5 v5 a2.5 2.5 0 0 1 -5 0 v-5 A2.5 2.5 0 0 1 12 4 z" />
+        <Path d="M6.5 11 a5.5 5.5 0 0 0 11 0" />
+        <Path d="M12 16.5 V20 M9 20 h6" />
+      </>);
+    case 'volume':
+      return (<>
+        <Path d="M4 9.5 h3.5 L12 5.5 v13 L7.5 14.5 H4 z" />
+        <Path d="M15.5 9 a4 4 0 0 1 0 6" />
+      </>);
+    case 'clock':
+      return (<>
+        <Circle cx={12} cy={12} r={8} />
+        <Path d="M12 7.5 V12 l3 2" />
+      </>);
+    case 'pin':
+      return (<>
+        <Path d="M12 21 s6 -6.4 6 -10.4 a6 6 0 1 0 -12 0 C6 14.6 12 21 12 21 z" />
+        <Circle cx={12} cy={10.5} r={2.4} />
+      </>);
+    case 'bed':
+      return (<>
+        <Path d="M3 18 V8" />
+        <Path d="M3 12 h11 a4 4 0 0 1 4 4 v2" />
+        <Path d="M3 18 h18" />
+        <Circle cx={7} cy={9.5} r={1.8} />
+      </>);
+    case 'alert':
+      return (<>
+        <Path d="M12 4 L21 19 H3 z" />
+        <Path d="M12 10 v4" />
+        <Path d="M12 16.5 v.5" />
+      </>);
+    case 'x':
+      return <Path d="M6 6 l12 12 M18 6 l-12 12" />;
+
+    // ── departments ─────────────────────────────────────────────────────────
+    case 'ambulance':
+      return (<>
+        <Path d="M2 16 V8 h11 v8" />
+        <Path d="M13 10 h4 l4 4 v2 h-8" />
+        <Path d="M2 16 h19" />
+        <Circle cx={7} cy={17.5} r={2} />
+        <Circle cx={17} cy={17.5} r={2} />
+        <Path d="M6.5 12 h3 M8 10.5 v3" />
+      </>);
+    case 'scalpel':
+      return (<>
+        <Path d="M4 20 L13 11 l5 -5 2 2 -5 5 z" />
+        <Path d="M4 20 l3 -1" />
+      </>);
+    case 'baby':
+      return (<>
+        <Circle cx={12} cy={9} r={5} />
+        <Path d="M10 8.5 v.5 M14 8.5 v.5" />
+        <Path d="M10.5 11.5 a2.4 2.4 0 0 0 3 0" />
+        <Path d="M6 20 a6 6 0 0 1 12 0" />
+      </>);
+    case 'pill':
+      return (<>
+        <Path d="M9 4 a5 5 0 0 1 7 7 l-5 5 a5 5 0 0 1 -7 -7 z" />
+        <Path d="M7.5 8.5 l7 7" />
+      </>);
+    case 'pregnant':
+      return (<>
+        <Circle cx={12} cy={5} r={2.2} />
+        <Path d="M12 8 v5" />
+        <Path d="M12 12 a4 4 0 0 1 0 7" />
+        <Path d="M12 19 v3" />
+      </>);
+    case 'bottle':
+      return (<>
+        <Path d="M10 3 h4 v2 h-4 z" />
+        <Path d="M9 5 h6 l1 3 v11 a2 2 0 0 1 -2 2 h-4 a2 2 0 0 1 -2 -2 V8 z" />
+        <Path d="M9 12 h6" />
+      </>);
+    case 'teddy':
+      return (<>
+        <Circle cx={7.5} cy={6.5} r={2.2} />
+        <Circle cx={16.5} cy={6.5} r={2.2} />
+        <Circle cx={12} cy={12} r={6} />
+        <Path d="M10 11 v.5 M14 11 v.5" />
+        <Path d="M10.5 14 a2.4 2.4 0 0 0 3 0" />
+      </>);
+    case 'xray':
+      return (<>
+        <Path d="M4 3 h16 v18 H4 z" />
+        <Path d="M9 7 v10 M15 7 v10" />
+        <Path d="M9 10 h6 M9 14 h6" />
+      </>);
+    case 'microscope':
+      return (<>
+        <Path d="M9 4 h4 l1 8 h-6 z" />
+        <Path d="M8 12 h8" />
+        <Path d="M12 12 a6 6 0 0 1 5 8" />
+        <Path d="M5 20 h14" />
+      </>);
+    case 'droplet':
+      return <Path d="M12 3 s6 6.6 6 10.4 a6 6 0 1 1 -12 0 C6 9.6 12 3 12 3 z" />;
+    case 'eye':
+      return (<>
+        <Path d="M2 12 s4 -6 10 -6 10 6 10 6 -4 6 -10 6 -10 -6 -10 -6 z" />
+        <Circle cx={12} cy={12} r={2.6} />
+      </>);
+    case 'ribbon':
+      return (<>
+        <Path d="M9 21 l3 -9 3 9" />
+        <Path d="M12 12 c-4 -3 -4 -9 0 -9 s4 6 0 9 z" />
+      </>);
+    case 'dove':
+      return (<>
+        <Path d="M4 14 c4 1 7 -1 9 -5" />
+        <Path d="M13 9 a4 4 0 0 1 7 3 c0 4 -4 7 -8 7 -4 0 -8 -3 -8 -6" />
+        <Path d="M18 11 v.5" />
+      </>);
+    case 'cane':
+      return (<>
+        <Path d="M9 21 V9 a4 4 0 0 1 8 0" />
+        <Path d="M5 21 h10" />
+      </>);
+    case 'brain':
+      return (<>
+        <Path d="M12 5 a3 3 0 0 0 -5.6 1.2 A3 3 0 0 0 5 12 a3 3 0 0 0 1.5 5 A3 3 0 0 0 12 19 z" />
+        <Path d="M12 5 a3 3 0 0 1 5.6 1.2 A3 3 0 0 1 19 12 a3 3 0 0 1 -1.5 5 A3 3 0 0 1 12 19 z" />
+        <Path d="M12 5 v14" />
+      </>);
+    case 'prosthesis':
+      return (<>
+        <Path d="M10 3 v7 l-2 5 3 3" />
+        <Path d="M14 3 v6" />
+        <Path d="M8 20 h8" />
+      </>);
+    case 'cap':
+      // graduation cap — simulation lab / training
+      return (<>
+        <Path d="M2 9 L12 5 l10 4 -10 4 z" />
+        <Path d="M6 11 v5 c0 1.6 2.7 3 6 3 s6 -1.4 6 -3 v-5" />
+      </>);
+    case 'cup':
+      return (<>
+        <Path d="M4 8 h13 v6 a5 5 0 0 1 -5 5 H9 a5 5 0 0 1 -5 -5 z" />
+        <Path d="M17 10 h2.5 a2.5 2.5 0 0 1 0 5 H17" />
+        <Path d="M4 21 h13" />
+      </>);
+    case 'box':
+      return (<>
+        <Path d="M3 7 l9 -4 9 4 v10 l-9 4 -9 -4 z" />
+        <Path d="M3 7 l9 4 9 -4" />
+        <Path d="M12 11 v10" />
+      </>);
+    case 'candle':
+      return (<>
+        <Path d="M12 3 c1.6 1.6 1.6 3.4 0 4 -1.6 -.6 -1.6 -2.4 0 -4 z" />
+        <Path d="M8 9 h8 v11 H8 z" />
+        <Path d="M12 7 v2" />
+      </>);
+    case 'hospital':
+      return (<>
+        <Path d="M4 21 V8 l8 -5 8 5 v13" />
+        <Path d="M12 8 v6 M9 11 h6" />
+        <Path d="M2 21 h20" />
       </>);
   }
 }

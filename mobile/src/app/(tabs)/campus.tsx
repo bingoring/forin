@@ -11,6 +11,7 @@ import {
   CURRICULUM, STEP_META, BLD, deptFor,
   type Building, type Floor, type DeptDetail,
 } from '@/data/campus';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -63,7 +64,7 @@ export default function Campus() {
             </View>
           </Shadowed>
           <View style={{ flex: 1 }} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>🔥 {streak}일</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{streak}일 연속</Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
           {([['curriculum', '커리큘럼'], ['buildings', '건물·층']] as const).map(([id, label]) => {
@@ -88,7 +89,7 @@ export default function Campus() {
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 12, paddingHorizontal: 14 }}>
         <Shadowed offset={3}>
           <Pressable onPress={() => router.push('/interior/CAMPUS-00001')} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
-            <Text style={{ fontSize: 17 }}>🎮</Text>
+            <PixelIcon name="map" color={C} size={17} sw={1.7} />
             <View style={{ flex: 1, minWidth: 0 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>커리어 탐험 모드</Text>
               <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, marginTop: 1 }}>직접 걸어다니며 NPC 만나기 · 선택 기능</Text>
@@ -131,7 +132,7 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
               <ProgressBar done={cur.done} total={cur.total} />
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
                 <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: C }}>다음 · {cur.next ?? '준비 중'}</Text>
-                <PixelButton label="▶ 이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => onResume(curNowStep?.scenarioId)} />
+                <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => onResume(curNowStep?.scenarioId)} />
               </View>
             </View>
           </Shadowed>
@@ -218,7 +219,7 @@ function Buildings({ onFloor }: { onFloor: (b: Building, f: Floor) => void }) {
       {/* axis-split helper */}
       <Shadowed offset={2.5} style={{ marginBottom: 12 }}>
         <View style={{ flexDirection: 'row', gap: 7, backgroundColor: colors.blue, borderWidth: 2.5, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
-          <Text style={{ fontSize: 13 }}>🧭</Text>
+          <PixelIcon name="pin" color={C} size={14} sw={1.8} />
           <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C, lineHeight: 15 }}>
             <Text style={{ fontFamily: fonts.heading }}>여기</Text>는 장소로 찾는 곳 — 층을 누르면 그 부서의 학습 카드가 열려요. 지금 병원 전체에 벌어지는 일은 <Text style={{ fontFamily: fonts.heading }}>상황판</Text> 탭에서 시간순으로 봐요.
           </Text>
@@ -250,7 +251,7 @@ function Buildings({ onFloor }: { onFloor: (b: Building, f: Floor) => void }) {
                     <View style={{ flexDirection: 'row', gap: 4, marginTop: 4 }}>
                       {!!f.cur && <Chip label={`CH.${f.cur}`} bg={colors.mint} color={C} />}
                       <Chip label={`상황 ${f.n}`} bg="#fff" color={colors.textSoft} />
-                      {f.hot && <Chip label="🔴 긴급" bg={colors.red} color={C} />}
+                      {f.hot && <Chip label="긴급" bg={colors.red} color={C} />}
                     </View>
                   </View>
                   <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>›</Text>
@@ -369,7 +370,7 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
                     <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C }}>{chapter.state === 'done' ? '이 챕터를 마쳤어요' : `다음 · ${chapter.next ?? '준비 중'}`}</Text>
                     {chapter.state !== 'done' && (
-                      <PixelButton label="▶ 이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={11.5} borderWidth={2} paddingV={6} paddingH={11} onPress={() => onStart(chapterNowScn)} />
+                      <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={11.5} borderWidth={2} paddingV={6} paddingH={11} onPress={() => onStart(chapterNowScn)} />
                     )}
                   </View>
                 </View>
@@ -415,9 +416,9 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
           {/* sticky footer */}
           <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: colors.cream, borderTopWidth: 3, borderTopColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', gap: 8 }}>
             <View style={{ flex: 1 }}>
-              <PixelButton label="▶ 다음 상황 시작" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} fontSize={13} borderWidth={2.5} paddingV={10} onPress={() => onStart(sits.find((x) => x.tag !== '완료')?.scenarioId ?? chapterNowScn)} full />
+              <PixelButton icon="play" label="다음 상황 시작" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} fontSize={13} borderWidth={2.5} paddingV={10} onPress={() => onStart(sits.find((x) => x.tag !== '완료')?.scenarioId ?? chapterNowScn)} full />
             </View>
-            <PixelButton label="🎮 걸어보기" bg={colors.lilac} shadowColor={C} fontSize={12} borderWidth={2.5} paddingV={10} paddingH={12} onPress={onWalk} />
+            <PixelButton icon="map" label="걸어보기" bg={colors.lilac} shadowColor={C} fontSize={12} borderWidth={2.5} paddingV={10} paddingH={12} onPress={onWalk} />
           </View>
         </View>
       )}

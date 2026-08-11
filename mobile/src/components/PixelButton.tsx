@@ -5,10 +5,15 @@
 // and lets the offset shadow do all the depth work.
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { border, colors, fonts, radius, type as typeScale } from '@/theme/tokens';
 
 type Props = {
   label: string;
+  /** Drawn before the label. Prefer this over putting a glyph in the label —
+   *  the design system is line icons, and ▶/› in text sit on the font's own
+   *  baseline and metrics rather than the icon grid. */
+  icon?: IconName;
   onPress?: () => void;
   bg?: string;
   shadowColor?: string;
@@ -25,6 +30,7 @@ type Props = {
 
 export function PixelButton({
   label,
+  icon,
   onPress,
   bg = colors.yellow,
   shadowColor = colors.yellowShadow,
@@ -64,7 +70,17 @@ export function PixelButton({
           style,
         ]}
       >
-        <Text numberOfLines={1} style={[styles.label, { color: disabled ? colors.textFaint : textColor }, fontSize != null && { fontSize }]}>{label}</Text>
+        <View style={styles.row}>
+          {icon && (
+            <PixelIcon
+              name={icon}
+              color={disabled ? colors.textFaint : textColor}
+              size={(fontSize ?? typeScale.section) + 3}
+              sw={1.9}
+            />
+          )}
+          <Text numberOfLines={1} style={[styles.label, { color: disabled ? colors.textFaint : textColor }, fontSize != null && { fontSize }]}>{label}</Text>
+        </View>
       </Pressable>
     </View>
   );
@@ -72,6 +88,7 @@ export function PixelButton({
 
 const styles = StyleSheet.create({
   wrap: { alignSelf: 'flex-start' },
+  row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7 },
   full: { width: '100%', alignSelf: 'stretch' },
   btn: {
     borderWidth: border.card,

@@ -1,12 +1,13 @@
 // 메인 루트 (main-route curriculum) — the guided progression path. A vertical
 // stepper of event nodes from the server (GET /me/route): completed ✓, the
-// current available node ▶ (tap → scenario briefing), and locked 🔒 nodes gated
+// current available node (play icon; tap → scenario briefing), and locked nodes gated
 // by prerequisites. Nodes whose scenario isn't authored yet show 준비 중.
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type RouteNode } from '@/api/client';
+import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -71,7 +72,7 @@ function RouteStep({ node, last, onPress }: { node: RouteNode; last: boolean; on
   const tappable = available && !!node.scenarioId;
 
   const dotBg = completed ? colors.mint : available ? colors.yellow : '#fff';
-  const icon = completed ? '✓' : available ? '▶' : '🔒';
+  const icon: IconName = completed ? 'check' : available ? 'play' : 'lock';
   const cardBg = completed ? '#fff' : available ? colors.paper : colors.cream;
 
   return (
@@ -80,7 +81,7 @@ function RouteStep({ node, last, onPress }: { node: RouteNode; last: boolean; on
       <View style={{ alignItems: 'center', width: 34 }}>
         <Shadowed offset={available ? 3 : 0} shadowColor={colors.yellowShadow}>
           <View style={{ width: 34, height: 34, borderWidth: 2.5, borderColor: C, backgroundColor: dotBg, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{icon}</Text>
+            <PixelIcon name={icon} color={C} size={16} sw={1.9} />
           </View>
         </Shadowed>
         {!last && <View style={{ flex: 1, width: 3, backgroundColor: completed ? colors.mint : '#2A252233', marginVertical: 4, minHeight: 24 }} />}

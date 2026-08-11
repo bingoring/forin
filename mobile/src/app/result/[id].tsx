@@ -12,6 +12,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type Progress, type ScenarioDetail, type ScenarioGrade } from '@/api/client';
 import { newlyEarned, type BadgeDef } from '@/data/badges';
 import { ECON } from '@/data/economy';
+import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
 
 const C = colors.ink;
@@ -94,7 +95,7 @@ export default function ResultRoute() {
   const leveledUp = !!before && !!after && after.level > before.level;
 
   const onShare = () => {
-    const lv = after ? ` (Lv.${after.level}${after.streakCurrent > 1 ? ` · 🔥${after.streakCurrent}일` : ''})` : '';
+    const lv = after ? ` (Lv.${after.level}${after.streakCurrent > 1 ? ` · ${after.streakCurrent}일 연속` : ''})` : '';
     const verb = passed ? '클리어하고' : '연습하고';
     Share.share({ message: `forin에서 "${scenario?.title || '시나리오'}"를 ${verb} +${awardedXp} XP를 얻었어요!${lv}` }).catch(() => {});
   };
@@ -131,7 +132,7 @@ export default function ResultRoute() {
         {leveledUp && (
           <Shadowed offset={4} style={{ alignSelf: 'stretch', marginTop: 14 }}>
             <View style={{ backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C }}>🎉 레벨 업!  Lv.{before!.level} → Lv.{after!.level}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C }}>레벨 업!  Lv.{before!.level} → Lv.{after!.level}</Text>
             </View>
           </Shadowed>
         )}
@@ -142,7 +143,7 @@ export default function ResultRoute() {
             <View style={{ backgroundColor: b.special ? colors.yellow : colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Text style={{ fontSize: 24 }}>{b.e}</Text>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>🎖 새 뱃지 획득!</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>새 뱃지 획득!</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 2 }}>{b.name}</Text>
               </View>
             </View>
@@ -163,7 +164,7 @@ export default function ResultRoute() {
         ) : (
           <View style={{ marginTop: 16, marginBottom: 16, alignItems: 'center', gap: 4 }}>
             <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>다시 도전하면 완료로 인정돼요</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>🔁 이 상황은 아직 '재도전'이에요</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>이 상황은 아직 '재도전'이에요</Text>
           </View>
         )}
 
@@ -183,7 +184,7 @@ export default function ResultRoute() {
 
             {!graded && (
               <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다." 💌</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다."</Text>
               </View>
             )}
           </View>
@@ -191,9 +192,9 @@ export default function ResultRoute() {
 
         {/* footer */}
         <View style={{ flexDirection: 'row', gap: 8, marginTop: 16, alignSelf: 'stretch' }}>
-          <PixelButton label="📓 오답노트 보기" bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
+          <PixelButton icon="note" label="오답노트 보기" bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
           <View style={{ flex: 1 }}>
-            <PixelButton label="다음 시나리오 ▶" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
+            <PixelButton icon="play" label="다음 시나리오" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
           </View>
         </View>
       </View>
@@ -239,7 +240,7 @@ function GradeDetail({ grade }: { grade: ScenarioGrade }) {
         {/* feedback */}
         {!!grade.feedback && (
           <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1.5, borderTopColor: '#2A252222', borderStyle: 'dotted' }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 17 }}>💬 {grade.feedback}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 17 }}>{grade.feedback}</Text>
           </View>
         )}
 

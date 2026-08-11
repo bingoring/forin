@@ -107,7 +107,7 @@ export default function Growth() {
                 </Text>
               )}
               <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
-                <PixelChip label={`🔥 최장 ${progress.streakLongest}일`} bg={colors.yellow} />
+                <PixelChip icon="flame" label={`최장 ${progress.streakLongest}일`} bg={colors.yellow} />
                 <PixelChip label={`${progress.xp.toLocaleString()} XP`} bg="#fff" />
               </View>
               <Text style={{ position: 'absolute', top: -6, right: -2, fontSize: 24, transform: [{ rotate: '12deg' }] }}>✨</Text>
@@ -149,7 +149,7 @@ export default function Growth() {
 
           {/* go practice */}
           <View style={{ marginTop: 2 }}>
-            <PixelButton label="▶  오늘의 근무 시작하기" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.replace('/campus')} />
+            <PixelButton icon="play" label="오늘의 근무 시작하기" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.replace('/campus')} />
           </View>
         </ScrollView>
       )}
