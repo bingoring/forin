@@ -22,9 +22,10 @@ type Chapter struct {
 	Total int    `json:"-"` // used when a chapter has no authored steps yet
 }
 
-// catalog is the authored curriculum. Ch.1–2 have real steps mapped to ER
-// scenarios; Ch.3–5 are placeholders (metadata only) until their content lands.
-var catalog = []Chapter{
+// handAuthored is the opening of the path — the five chapters written by hand
+// because a newcomer's first hours deserve exact wording. Everything after them
+// is generated per elevator floor (catalog_gen.go).
+var handAuthored = []Chapter{
 	{Ch: 1, Name: "입사 첫 주 · 기본 소통", Dept: "본관 1F 로비 · ER", Steps: []Step{
 		{Kind: "dlg", Name: "출근 · 인사와 자기소개", ScenarioID: "SCN-ER-00001"},
 		{Kind: "dlg", Name: "환자 확인 · 신원 대조", ScenarioID: "SCN-ER-00002"},
@@ -41,7 +42,7 @@ var catalog = []Chapter{
 		{Kind: "dlg", Name: "보호자에게 대기 안내", ScenarioID: "SCN-ER-00010"},
 		{Kind: "boss", Name: "SBAR 인계 (챕터 시험)", ScenarioID: "SCN-ER-00011"},
 	}},
-	{Ch: 3, Name: "병동 인계와 투약", Dept: "본관 5F 내과 병동 · 중앙약국", Steps: []Step{
+	{Ch: 3, Name: "병동 인계와 투약", Dept: "본관 P1 중앙 약제부", Steps: []Step{
 		{Kind: "dlg", Name: "헤파린 더블 체크", ScenarioID: "SCN-PHARMA-00001"},
 		{Kind: "quiz", Name: "구두 처방 받아쓰기", ScenarioID: "QZ-PHARMA-00001"},
 		{Kind: "dlg", Name: "마약류 픽업 · 2인 인증", ScenarioID: "SCN-PHARMA-00004"},
@@ -101,6 +102,17 @@ type ChapterState struct {
 // chapter completion count required steps only, and the "now" pointer walks them.
 // Optional steps (quizzes) are bonus practice — playable anytime the chapter is
 // unlocked ("optional" state), done when cleared, but never required to advance.
+// catalog is the whole learning path: the hand-written opening followed by one
+// chapter per remaining floor. Chapter numbers are assigned here so inserting a
+// floor never means renumbering anything by hand.
+var catalog = func() []Chapter {
+	all := append(append([]Chapter(nil), handAuthored...), generated...)
+	for i := range all {
+		all[i].Ch = i + 1
+	}
+	return all
+}()
+
 func Resolve(cleared map[string]bool) []ChapterState {
 	out := make([]ChapterState, 0, len(catalog))
 	prevDone := true // ch.1 has no prerequisite
