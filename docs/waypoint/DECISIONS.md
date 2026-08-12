@@ -1349,3 +1349,75 @@ Build Spec 전 유닛 구현. 서버(6테이블·`colleague` 도메인·`GET /me
 - **국기(🇰🇷 등)** — 라인 아이콘화 불가. 로케일 선택은 이모지 유지.
 - **`✓ / ✕ / ▲▼`** — 이모지가 아니라 **픽셀 폰트가 직접 그리는 기호**라 플랫폼 편차가 없다.
 - 검증: tsc 0 · jest 213/213 · 시뮬레이터 렌더 확인(헤딩=둥근모꼴, 본문·영문=Galmuri11).
+
+## 2026-08-12 — 호스팅 타깃 확정: Cloud Run + Cloud SQL (서울) · Redis는 Upstash
+`prd-tech.md`가 "Fly.io 또는 Render 권고, 최종 선택 게이트"로 남겨둔 호스팅 결정을 닫았다.
+- **결정: Cloud Run + Cloud SQL, asia-northeast3(서울).** 사용자가 한국 간호사이므로 반사 지역이 최소인 리전을 택했다.
+- **대안(탈락)**: **Fly.io는 도쿄(nrt)까지만**(서울 ICN 없음 — 커뮤니티 요청만 존재), **Render는 아시아가 싱가포르 단독**
+  (도쿄 작업 중, 시드니 예정). 서울 기준 RTT 대략 Seoul ~10ms / Tokyo ~35ms / Singapore ~75ms.
+- **리전 근거를 정직하게 좁혔다**: AI 대화는 LLM 제공자가 미국이라 어차피 태평양을 건넌다. 리전이 실제로 좌우하는 건
+  **홈 집계·커리큘럼·클리어 같은 비-AI 왕복의 체감**이다. "리전으로 AI가 빨라진다"는 기대는 근거가 아니다.
+- **Redis는 Memorystore가 아니라 Upstash(도쿄).** 용도가 캐시·레이트리밋·일일 리셋·refresh 토큰이라 초단위 지연에 물리지
+  않는데, Memorystore는 최소 구성도 고정비가 붙고 Cloud Run이 VPC 커넥터를 거쳐야 한다. `redis.ParseURL`(go-redis v9)이
+  `rediss://`를 그대로 파싱하므로 **코드 변경 0**.
+- **다만 Redis를 캐시로 착각하지 않는다**: `RefreshStore`가 refresh 토큰 해시를 TTL 30일로 들고 있어 소실 = 전 사용자 재로그인.
+  로그인 경로의 경성 의존이며 `config.go:85`가 없으면 부팅을 실패시킨다(의도적). 3-2 모니터링의 계측 대상.
+- **결정자:** 사용자(옵션 제시 후 선택).
+
+## 2026-08-12 — 환경 = staging + prod, Cloud SQL 인스턴스 1개에 DB 2개
+- **결정:** Cloud Run 서비스 2개(staging은 scale-to-zero, prod는 `min-instances=1`) + **Cloud SQL 인스턴스 1개에
+  `forin_staging`·`forin_prod` 두 데이터베이스**.
+- **근거:** 고정비는 prod 단독과 거의 같은데, **Cloud Run 고유 설정(Secret Manager·IAM·Cloud SQL 커넥터·마이그레이션 Job)을
+  prod를 죽여보지 않고 검증**할 자리가 생긴다. 배포 버그는 거의 전부 이 지점에 있다.
+- **대안(탈락):** ①prod 단독 — 로컬 docker-compose 패리티와 스모크 57개가 리허설을 대신한다는 논리였으나, 마이그레이션이
+  이미 20개이고 계속 늘어나므로 실사용자 이후엔 리허설 없는 스키마 변경이 위험해진다. ②인스턴스 2개 완전 분리 — 아직 prod
+  트래픽이 없는 단계에선 이중 고정비만 남는다.
+- **결정자:** 사용자.
+
+## 2026-08-12 — 배포 파이프라인 원칙 4가지
+설계를 관통하는 결정들. 상세는 [3-1 Deployment](03-operations/01-deployment.md).
+- **①이미지 하나, 엔트리포인트 셋(`/api`·`/migrate`·`/seed`).** 마이그레이션과 그것을 필요로 하는 코드가 **원리적으로 어긋날
+  수 없게** 같은 다이제스트로 돈다. 이를 위해 `cmd/migrate`를 신설해 `//go:embed`로 마이그레이션을 이미지에 넣고
+  golang-migrate를 **라이브러리로** 쓴다 — Cloud Run Job은 CLI를 설치할 자리가 없고, 임베드하면 "런너의 로컬 파일"에
+  의존하지 않는다. `make migrate-up`(CLI)은 로컬 개발용으로 남긴다.
+- **②코드는 즉시 롤백, 스키마는 전진만.** down이 20개 전부 대칭으로 있지만 **자동 롤백하지 않는다** — 롤백은 장애 중에
+  실행되는 절차이고 down은 데이터를 지울 수 있다. 무엇을 잃는지 판단할 여유가 없는 시점에 파괴적 작업을 자동화하지 않는다.
+  대신 **마이그레이션을 하위호환으로만 쓴다**(nullable 추가 → 백필 → 다음 릴리스에서 제거). 그러면 이전 리비전 코드가 새
+  스키마에서 항상 동작하므로 **트래픽 전환만으로 복구가 완결된다** — 스키마 롤백을 포기하는 대가로 얻는 불변식이다.
+- **③무키 CI(Workload Identity Federation).** 서비스 계정 JSON 키를 GitHub Secrets에 두지 않는다 — 키는 유출되면 회수 시점을
+  알 수 없고 만료도 없다. GitHub Secrets에는 프로젝트 ID·WIF provider 경로만.
+- **④prod 승격은 수동 승인.** staging 배포와 스모크 57 assert는 자동, prod는 GitHub Environment 승인. 솔로라도 스키마가 붙은
+  배포에 사람 확인 한 번은 남긴다. OTA(`eas update`)도 **같은 게이트로 취급** — 스토어 심사를 우회하는 경로이므로 더 조심해야 한다.
+
+## 2026-08-12 — 콘텐츠 시드 가드 (교체 의미의 위험을 좁힘)
+`ContentRepo.Seed`가 단일 트랜잭션 안에서 `DELETE` 6종 → `INSERT`, 즉 **교체(replace)** 라는 것을 감사에서 확인했다.
+- **진행도는 안전하다**: `user_progress`·`review_cards`·`conversation_sessions`의 `scenario_id`가 **FK 없는 `text`**
+  (`000003_progress.up.sql:21`)라 콘텐츠 삭제가 cascade하지 않는다. 콘텐츠와 진행도를 처음부터 분리해둔 게 여기서 값을 했다.
+- **그러나 dangling 참조는 생긴다**: 시드가 ID를 없애면 진행도·복습 카드가 없는 시나리오를 가리킨다. → **시드 전 게이트**:
+  새 번들의 시나리오 ID 집합이 **(커리큘럼 참조 173개 ∪ DB에 실재하는 `scenario_id`)를 포함**하는지 검사하고 아니면 실패.
+  콘텐츠는 늘어나기만 하는 게 정상이고, 줄어드는 배포는 사고일 확률이 높다.
+- **시드는 배포의 자동 단계가 아니다** — `workflow_dispatch` 수동 트리거. 코드 배포마다 6.8MB 콘텐츠를 전량 교체할 이유가 없다.
+
+## 2026-08-12 — 모바일: 환경 분리 + OTA는 fingerprint 정책
+- **`eas.json` 프로필별 API 주입**: `preview`→staging, `production`→prod. 근거: `client.ts:10`이
+  `EXPO_PUBLIC_API_URL ?? 'http://localhost:8080'`이라 프로필에 값이 없으면 **localhost로 조용히 폴백**한다 —
+  스토어 빌드에서 즉시 전면 실패다. 폰트가 조용히 폴백했던 것과 같은 종류의 함정.
+- **`expo-updates` + `runtimeVersion: { policy: "fingerprint" }`.** 카카오 SDK·애플 인증·expo-audio 등 네이티브 모듈이 있어
+  `appVersion` 정책은 위험하다 — **네이티브 의존이 바뀐 JS를 구버전 바이너리에 밀어넣을 수 있다.** fingerprint는 네이티브
+  지문이 변하면 OTA를 자동 무효화한다. JS-only만 `eas update`, 네이티브 변경은 새 빌드.
+- **3-1 범위는 내부 트랙까지**(TestFlight·Play 내부 테스트). 스토어 본심사·메타데이터·개인정보 라벨 제외 — 실제 출시 사정에
+  묶이면 이 스테이지가 끝나지 않는다.
+
+## 2026-08-12 — IaC: 콘솔 클릭을 0에 가깝게, 못 되는 경계는 명시
+- **결정:** `infra/terraform/` **단일 루트 모듈**이 staging·prod를 함께 선언. 공유 Cloud SQL 인스턴스가 실제로 하나이므로
+  상태를 환경별로 쪼개면 그 공유물의 소유자가 애매해진다.
+- 부트스트랩 치킨-에그(원격 상태 버킷이 Terraform보다 먼저 있어야 함)는 `make infra-bootstrap`이 **GCS 버킷 하나만** gcloud로
+  만들고 이후 전부 Terraform. 자격은 로컬 1회 `gcloud auth application-default login`(CLI, 콘솔 아님) → apply가 WIF까지 만들고
+  이후 CI는 무키 배포.
+- **자동화 불가 경계를 문서에 못박는다**(요구가 "콘솔 작업 없기"였으므로 못 되는 부분을 숨기지 않는다):
+  ①Upstash 계정 가입·API 키 발급(웹) ②시크릿 **값** — Terraform은 컨테이너만, 값은 `make secrets`(gcloud CLI)로 주입
+  ③Apple App Store Connect API 키·Google Play 서비스 계정 — Apple/Google 포털엔 IaC가 없다. GCP 프로젝트는 `forin-504711`로 이미 존재.
+- **문서 형식**: 산출물이 로직·화면이 아니라 파이프라인 구성이고 `domain-entities`·`business-rules`가 실질 N/A이므로,
+  **별도 Build Spec 디렉토리를 만들지 않고** 스테이지 문서 AI Proposal + DECISIONS로 간다(FRAMEWORK의 "구현 중심 스테이지엔
+  Build Spec" 기준에서 의도적으로 벗어남, 사용자 승인).
+- **결정자:** 사용자("iac가 되는거지? 그럼 그대로 진행하자. 내가 수동으로 gcp 콘솔에 들어가서 작업할일이 없으면좋겠어").
