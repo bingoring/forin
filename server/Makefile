@@ -1,4 +1,4 @@
-.PHONY: run build test vet tidy sqlc contract migrate-up migrate-down docker-up docker-down
+.PHONY: run build test vet tidy sqlc contract migrate-up migrate-down migrate-embed migrate-version docker-up docker-down
 
 DATABASE_URL ?= postgres://forin:forin@localhost:5432/forin?sslmode=disable
 
@@ -33,6 +33,12 @@ migrate-up: ## apply migrations (requires golang-migrate CLI)
 
 migrate-down:
 	migrate -path db/migrations -database "$(DATABASE_URL)" down 1
+
+migrate-embed: ## apply migrations with the embedded runner (same code path as prod)
+	DATABASE_URL="$(DATABASE_URL)" go run ./cmd/migrate up
+
+migrate-version: ## print current schema version + dirty flag
+	DATABASE_URL="$(DATABASE_URL)" go run ./cmd/migrate version
 
 docker-up:
 	docker compose up --build
