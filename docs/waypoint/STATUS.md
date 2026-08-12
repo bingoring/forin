@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v21/](inputs/design-handoff_v21/README.md) (최신)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-08-10
+**Last updated:** 2026-08-12
 
 > ✅ **홈 탭 + 동료 시스템(핸드오프 v20→v21) 구현 완료(2026-08-10).** Build Spec U1~U10 전부.
 > 서버(마이그레이션·도메인·저장소·`GET /me/home`·동료 API 13종·콘텐츠 시드) + 모바일(탭 5개·홈 10모듈·
@@ -49,6 +49,14 @@
 | 2-7 성장·경제·복습·이벤트 전달 | [07-growth-economy-review.md](02-construction/07-growth-economy-review.md) | **체크리스트 전 항목 완료(2026-08-10)** — XP/레벨/커리어 패스 ✅ · SM-2 복습(스케줄·마스터리·세션) ✅ · 성장 집계 `GET /me/stats`(기기 TZ 버킷팅) ✅ · 칭찬 스티커(시나리오 클리어당) ✅. **평판→NPC 반응 가중 ✅(2026-08-10)** — 소비 측(NPC 톤 4밴드)은 이미 있었고 **생산 측이 통째로 없어** 전원이 기본값 50에 고정돼 있었다. 등급 기반 획득 + 차원 결정을 **부서가 아닌 시나리오 긴급도**로(모든 병동·직업 확장 대비) 구현. [Build Spec](02-construction/reputation/build-spec-index.md). **유기적 환류 ✅(2026-08-10)** — 보상이 **입장 조건**으로 재사용된다: 방·핫스팟이 `requires`를 선언하고 `GET /me/access/{interiorId}`가 학습자 스냅샷(레벨·클리어·칭호·평판·미션)으로 평가해 잠금과 **이유**를 돌려준다(`domain/access`). ER 트라우마 룸이 첫 사례.
 **감사(2026-08-10):** 아래는 "남음"으로 적혀 있었으나 **실제로는 이미 구현돼 있었음** — 칭호·히든미션(서버 영속 확인) · 일일 풀 00:00 리셋+가중 샘플링(`content_repo.go:461`) · 메인 루트 그래프 · 보상형 광고 top-up · 경제 수치 테이블(25필드 `GET /config/economy`). 2-7 체크리스트 전 항목 완료. |
 | 2-8 통합·E2E | [08-integration-e2e.md](02-construction/08-integration-e2e.md) | AI_PROPOSED — **전체 여정 스모크 `server/scripts/e2e_smoke.sh`(48 assert, 48/0 pass, 재실행 가능)**: 인증·온보딩·토큰 회전·커리큘럼·대화+교정·클리어(XP)·SM-2·일일풀+광고·미션·부서 상황·에러 경로. 남음(Phase 3 이관): AI 비용·지연 모니터링·분석 이벤트·성능/부하·스토어 메타·권한·개인정보 |
+
+> 🎨 **UI 마감(2026-08-11)**: 핸드오프 타이포·아이콘 어휘를 런타임까지 연결. ①**픽셀 폰트 실제 번들·로드** — tokens는
+> `DungGeunMo`/`Galmuri11`을 지정했지만 폰트 파일과 `useFonts`가 없어 **전 화면이 조용히 시스템 폰트로 폴백**하고 있었다
+> (tsc·jest는 그린). TTF 3종 번들(둥근모꼴은 WOFF→TTF 변환) + 폰트 준비 전 렌더 보류(단 로드 실패가 시작을 막지는 않음) +
+> 서브셋 없음(런타임 LLM 텍스트의 두부 방지). ②**이모지 → 아이콘 세트 31→73종**(범용 21 + 부서 21 신규 저작).
+> `PixelButton`/`PixelChip`에 `icon` 슬롯(`▶`는 폰트 베이스라인에 얹혀 있었다), 장식용 이모지는 교체가 아니라 **제거**,
+> 데이터의 이모지는 `EMOJI_ICON`+`iconFor()` 브리지로 흡수. **남은 것**: 맵 픽스처 방·층 아이콘 31파일
+> (`ElevatorScreen.tsx:250`·`FastTravelModal.tsx:44`에서 렌더) · 국기(라인 아이콘화 불가). [DECISIONS](DECISIONS.md) 2026-08-11 참조.
 
 > 📚 **커리큘럼 층 전수 커버(2026-08-11)**: 5챕터(본관 4개 층) → **25챕터 / 24개 층 전체**. 층 지도에서 생성(`cmd/gencontent/floors.go` → `catalog_gen.go`), 난이도 순 배치. 콘텐츠 공백이던 4개 층(내과·외과·정형·피부과)은 **뱅크 신규 저작**(29개 부서 3,200 시나리오). 층 표기 버그(존재하지 않는 "본관 5F") 정정.
 
