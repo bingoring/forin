@@ -74,7 +74,10 @@ Cloud Run **Job** 2종이 `/migrate`·`/seed`를 **같은 이미지 다이제스
   Job은 CLI를 설치할 자리가 없고, 임베드하면 마이그레이션 파일이 이미지에 고정되어 "런너의 로컬 파일"에 의존하지 않는다.
   `make migrate-up`(CLI)은 로컬 개발용으로 남긴다.
 - **DB 연결**: Cloud Run의 Cloud SQL 연결(`--set-cloudsql-instances`)로 유닉스 소켓을 붙이고 `DATABASE_URL`은
-  `postgres://user:pass@/forin_prod?host=/cloudsql/<conn>` 형태. DB에 공인 IP를 열지 않는다.
+  `postgres://user:pass@/forin_prod?host=/cloudsql/<conn>` 형태. **인증 네트워킹(authorized networks)을 비워
+  직접 TCP 접속을 전부 거부**하고, 커넥터가 IAM + 임시 인증서로만 붙는다.
+  (초안은 "공인 IP를 열지 않는다"였으나 **구현 계획 수립 중 정정**: private-IP-only 인스턴스에는 커넥터가 닿을 경로가 없어
+  VPC 네트워크 + private services access + Direct VPC egress가 함께 필요하다. 그건 나중 강화 단계이고 기본값이 아니다.)
 
 #### 2.1 "어떤 마이그레이션을 적용할지"는 사람이 판단하지 않는다
 
