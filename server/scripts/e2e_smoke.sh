@@ -16,8 +16,12 @@
 # server running with ENV=dev (uses POST /auth/dev).
 #
 #   usage: ./scripts/e2e_smoke.sh [BASE_URL]   (default http://localhost:8080)
+#   env:   DEV_AUTH_SECRET — required against staging (see 3-1 §Task 4); unused locally
 set -uo pipefail
 B="${1:-http://localhost:8080}"
+# staging/prod-shaped environments register /auth/dev only when DEV_AUTH_SECRET is
+# configured, and then require it as a header. Locally this is empty and unused.
+DEV_AUTH="${DEV_AUTH_SECRET:-}"
 PASS=0; FAIL=0
 ok()  { PASS=$((PASS+1)); printf "  \033[32m✔\033[0m %s\n" "$1"; }
 bad() { FAIL=$((FAIL+1)); printf "  \033[31mx\033[0m %s\n" "$1"; }
@@ -33,15 +37,15 @@ TOK=""; REFRESH=""; BODY=""; CODE=""
 run() {
   local m="$1" p="$2" d="${3:-}" out
   if [ -n "$d" ]; then
-    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H 'Content-Type: application/json' -d "$d")
+    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H "X-Dev-Auth: $DEV_AUTH" -H 'Content-Type: application/json' -d "$d")
   else
-    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK")
+    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H "X-Dev-Auth: $DEV_AUTH")
   fi
   CODE="${out##*$'\n'}"; BODY="${out%$'\n'*}"
 }
 
 hd "① AUTH · dev login"
-BODY=$(curl -s -X POST "$B/auth/dev")
+BODY=$(curl -s -X POST "$B/auth/dev" -H "X-Dev-Auth: $DEV_AUTH")
 TOK=$(pj "d['tokens']['accessToken']")
 REFRESH=$(pj "d['tokens']['refreshToken']")
 [ -n "$TOK" ] && ok "access token issued" || bad "no access token (is ENV=dev + server up?)"

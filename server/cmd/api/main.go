@@ -110,8 +110,9 @@ func main() {
 	}
 
 	handler := httpadapter.NewRouter(httpadapter.Deps{
-		Env: cfg.Env,
-		Log: logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
+		Env:           cfg.Env,
+		DevAuthSecret: cfg.DevAuthSecret,
+		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Synth: speech,
 		Colleague: colleagueRepo, HomePools: homePools, PG: pool, Redis: rdb,
 	})

@@ -19,21 +19,22 @@ import (
 
 // Deps are the dependencies the HTTP layer needs (wired in main).
 type Deps struct {
-	Env       string // dev | staging | prod — gates dev-only routes
-	Log       *slog.Logger
-	Tokens    *auth.TokenService
-	AuthSvc   *auth.Service
-	Users     ports.UserRepo
-	Content   ports.ContentReader
-	Progress  ports.ProgressRepo
-	Review    ports.ReviewRepo
-	Convo     *conversation.Engine
-	Pron      *pronunciation.Service
-	Synth     ports.SpeechSynthesizer // TTS for listen-quiz audio (optional)
-	Colleague ports.ColleagueRepo     // colleague links, cheers, presence
-	HomePools home.Pools              // authored mentor notes + field phrases
-	PG        *pgxpool.Pool
-	Redis     *redis.Client
+	Env           string // dev | staging | prod — gates dev-only routes
+	DevAuthSecret string // gates POST /auth/dev outside dev; empty in prod
+	Log           *slog.Logger
+	Tokens        *auth.TokenService
+	AuthSvc       *auth.Service
+	Users         ports.UserRepo
+	Content       ports.ContentReader
+	Progress      ports.ProgressRepo
+	Review        ports.ReviewRepo
+	Convo         *conversation.Engine
+	Pron          *pronunciation.Service
+	Synth         ports.SpeechSynthesizer // TTS for listen-quiz audio (optional)
+	Colleague     ports.ColleagueRepo     // colleague links, cheers, presence
+	HomePools     home.Pools              // authored mentor notes + field phrases
+	PG            *pgxpool.Pool
+	Redis         *redis.Client
 }
 
 // NewRouter builds the application handler with global middleware and routes.
@@ -44,11 +45,14 @@ func NewRouter(d Deps) http.Handler {
 	mux.HandleFunc("GET /healthz", h.live)
 	mux.HandleFunc("GET /readyz", h.ready)
 
-	ah := &authHandler{svc: d.AuthSvc, log: d.Log}
+	ah := &authHandler{svc: d.AuthSvc, log: d.Log, env: d.Env, devSecret: d.DevAuthSecret}
 	mux.HandleFunc("POST /auth/social", ah.social)
 	mux.HandleFunc("POST /auth/refresh", ah.refresh)
-	if d.Env == "dev" {
-		mux.HandleFunc("POST /auth/dev", ah.dev) // local-only auth bypass; never registered in prod
+	// Registered only where the bypass is deliberately enabled: local dev, or an
+	// environment that was given DEV_AUTH_SECRET (staging, for the smoke test).
+	// Production sets neither, so the route does not exist there.
+	if d.Env == "dev" || d.DevAuthSecret != "" {
+		mux.HandleFunc("POST /auth/dev", ah.dev)
 	}
 
 	// Authenticated routes.

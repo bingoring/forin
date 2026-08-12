@@ -54,7 +54,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Dev login (local only — no provider). Registered only when ENV=dev. */
+        /** Dev login (no provider). Registered only in dev or where DEV_AUTH_SECRET is set. */
         post: {
             parameters: {
                 query?: never;

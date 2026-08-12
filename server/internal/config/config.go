@@ -19,6 +19,10 @@ type Config struct {
 	AccessTTL     time.Duration
 	RefreshTTL    time.Duration
 
+	// DevAuthSecret gates POST /auth/dev outside local development. Empty in
+	// production, so the route is not registered there at all.
+	DevAuthSecret string
+
 	// OIDC client IDs (accepted audiences) per provider; comma-separated in the
 	// environment. Empty = provider disabled. A provider needs more than one when
 	// it issues a distinct client ID per platform — Google does (iOS/Android/Web),
@@ -62,6 +66,7 @@ func Load() (*Config, error) {
 		RedisURL:                 os.Getenv("REDIS_URL"),
 		JWTSigningKey:            []byte(os.Getenv("JWT_SIGNING_KEY")),
 		JWTIssuer:                getenv("JWT_ISSUER", "forin"),
+		DevAuthSecret:            os.Getenv("DEV_AUTH_SECRET"),
 		AccessTTL:                getdur("ACCESS_TTL", 15*time.Minute),
 		RefreshTTL:               getdur("REFRESH_TTL", 30*24*time.Hour),
 		GoogleClientIDs:          splitList(os.Getenv("GOOGLE_CLIENT_ID")),

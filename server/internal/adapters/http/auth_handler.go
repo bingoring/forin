@@ -11,8 +11,10 @@ import (
 )
 
 type authHandler struct {
-	svc *auth.Service
-	log *slog.Logger
+	svc       *auth.Service
+	log       *slog.Logger
+	env       string
+	devSecret string
 }
 
 // @Summary Social login (Apple/Google/Kakao)
@@ -46,12 +48,17 @@ func (h *authHandler) social(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, loginResp{Tokens: pair, User: u})
 }
 
-// @Summary Dev login (local only — no provider). Registered only when ENV=dev.
+// @Summary Dev login (no provider). Registered only in dev or where DEV_AUTH_SECRET is set.
 // @Tags auth
 // @Produce json
 // @Success 200 {object} loginResp
 // @Router /auth/dev [post]
 func (h *authHandler) dev(w http.ResponseWriter, r *http.Request) {
+	// 404, not 401: outside dev this route should look like it does not exist.
+	if !devAccessAllowed(h.env, h.devSecret, r.Header.Get("X-Dev-Auth")) {
+		httpx.Error(w, http.StatusNotFound, "not found")
+		return
+	}
 	pair, u, err := h.svc.DevLogin(r.Context())
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "dev login failed")
