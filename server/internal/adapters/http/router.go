@@ -50,8 +50,11 @@ func NewRouter(d Deps) http.Handler {
 	mux.HandleFunc("POST /auth/refresh", ah.refresh)
 	// Registered only where the bypass is deliberately enabled: local dev, or an
 	// environment that was given DEV_AUTH_SECRET (staging, for the smoke test).
-	// Production sets neither, so the route does not exist there.
-	if d.Env == "dev" || d.DevAuthSecret != "" {
+	// The `d.Env != "prod"` guard is a second, independent lock on top of
+	// devAccessAllowed's own unconditional prod refusal — a stray
+	// DEV_AUTH_SECRET in a prod env block must not even register the route,
+	// let alone pass the handler's check.
+	if d.Env != "prod" && (d.Env == "dev" || d.DevAuthSecret != "") {
 		mux.HandleFunc("POST /auth/dev", ah.dev)
 	}
 
