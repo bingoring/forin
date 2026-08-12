@@ -10,6 +10,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/contentfile"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
+	"github.com/bingoring/forin/server/internal/curriculum"
 )
 
 func main() {
@@ -48,6 +49,40 @@ func run() error {
 		return err
 	}
 	defer pool.Close()
+
+	// Seed replaces content wholesale (DELETE then INSERT in one transaction).
+	// Learner progress survives — scenario_id columns carry no foreign key — but
+	// dropping an id leaves those rows pointing at nothing. So refuse a bundle
+	// that would remove anything the curriculum or durable learner state still
+	// references.
+	have := make(map[string]bool, len(bundle.Scenarios)+len(bundle.Quizzes))
+	for _, s := range bundle.Scenarios {
+		have[s.ID] = true
+	}
+	for _, q := range bundle.Quizzes {
+		have[q.ID] = true
+	}
+	referenced := map[string]bool{}
+	for _, id := range curriculum.ReferencedIDs() {
+		referenced[id] = true
+	}
+	inUse, err := referencedInDB(ctx, pool)
+	if err != nil {
+		return fmt.Errorf("collect referenced ids: %w", err)
+	}
+	for id := range inUse {
+		referenced[id] = true
+	}
+	if missing := missingIDs(have, referenced); len(missing) > 0 {
+		if os.Getenv("SEED_ALLOW_REMOVAL") != "1" {
+			fmt.Fprintf(os.Stderr, "seed would remove %d referenced id(s):\n", len(missing))
+			for _, id := range missing {
+				fmt.Fprintln(os.Stderr, "  -", id)
+			}
+			return fmt.Errorf("aborting: content shrank; set SEED_ALLOW_REMOVAL=1 to retire content on purpose")
+		}
+		fmt.Fprintf(os.Stderr, "seed: SEED_ALLOW_REMOVAL=1 — removing %d referenced id(s) anyway\n", len(missing))
+	}
 
 	if err := postgres.NewContentRepo(pool).Seed(ctx, bundle); err != nil {
 		return err
