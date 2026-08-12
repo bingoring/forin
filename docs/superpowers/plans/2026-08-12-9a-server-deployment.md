@@ -803,6 +803,13 @@ func TestDevAccessAllowed(t *testing.T) {
 		{"staging with the wrong secret", "staging", "s3cret", "nope", false},
 		{"staging with no header", "staging", "s3cret", "", false},
 		{"an empty secret never matches an empty header", "staging", "", "", false},
+		// The invariant: prod is closed by construction, not by remembering to
+		// leave the secret unset.
+		{"prod never allows it, even with a matching secret", "prod", "s3cret", "s3cret", false},
+		// Equal length, so ConstantTimeCompare actually compares bytes instead of
+		// short-circuiting on its length pre-check.
+		{"equal-length wrong secret still fails", "staging", "s3cret", "s3crXt", false},
+		{"dev ignores the header entirely", "dev", "s3cret", "wrong", true},
 	}
 	for _, c := range cases {
 		if got := devAccessAllowed(c.env, c.secret, c.header); got != c.want {
@@ -829,11 +836,17 @@ import "crypto/subtle"
 // devAccessAllowed decides whether the dev-login bypass may be used.
 //
 // Local development needs no ceremony. Anywhere else the caller must present a
-// secret that was deliberately configured for that environment — production
-// leaves DEV_AUTH_SECRET unset, so the route is never even registered and this
-// function would refuse anyway. An empty secret matches nothing: otherwise a
-// misconfigured staging would accept a missing header.
+// secret that was deliberately configured for that environment. An empty secret
+// matches nothing: otherwise a misconfigured staging would accept a missing
+// header.
 func devAccessAllowed(env, secret, header string) bool {
+	// Production never allows the bypass, no matter what leaks into the
+	// environment. Encoding it here means a stray DEV_AUTH_SECRET in a prod env
+	// block cannot open the route — configuration discipline is not a security
+	// control.
+	if env == "prod" {
+		return false
+	}
 	if env == "dev" {
 		return true
 	}
@@ -918,8 +931,13 @@ Expected: PASS. 실패하면 기존 `config_test.go`가 어떤 환경변수를 �
 	mux.HandleFunc("POST /auth/refresh", ah.refresh)
 	// Registered only where the bypass is deliberately enabled: local dev, or an
 	// environment that was given DEV_AUTH_SECRET (staging, for the smoke test).
-	// Production sets neither, so the route does not exist there.
-	if d.Env == "dev" || d.DevAuthSecret != "" {
+	//
+	// The `!= "prod"` clause is not redundant with the config: it makes the
+	// production invariant structural. Both layers close prod independently — the
+	// route is never registered, and devAccessAllowed would refuse anyway — so a
+	// stray DEV_AUTH_SECRET in a prod env block cannot open an auth bypass on a
+	// public URL.
+	if d.Env != "prod" && (d.Env == "dev" || d.DevAuthSecret != "") {
 		mux.HandleFunc("POST /auth/dev", ah.dev)
 	}
 ```
