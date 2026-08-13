@@ -34,11 +34,16 @@ secrets:   ## push secret VALUES that Terraform must not hold. usage: make secre
 	@printf '%s' '$(ANTHROPIC_KEY)'    | gcloud secrets versions add forin-anthropic-key    --project=$(PROJECT) --data-file=-
 	@printf '%s' '$(OPENAI_KEY)'       | gcloud secrets versions add forin-openai-key       --project=$(PROJECT) --data-file=-
 	@printf '%s' '$(AZURE_SPEECH_KEY)' | gcloud secrets versions add forin-azure-speech-key --project=$(PROJECT) --data-file=-
+	@# `tr -d '\n'` is not cosmetic: openssl appends a newline, and a secret
+	@# stored as 65 bytes fails an exact comparison against a caller that read
+	@# it back through `$$(...)` (which strips the newline). The first staging
+	@# smoke failed exactly this way — every request came back 401 because the
+	@# dev-auth header was 64 bytes and the server's copy was 65.
 	@# Separate openssl calls, deliberately: one shared JWT key would erase the
 	@# environment boundary (tokens carry no audience/env claim — see
 	@# secrets.tf), so staging and prod must get two DIFFERENT random values,
 	@# not the same value written twice.
-	@openssl rand -hex 32 | gcloud secrets versions add forin-jwt-signing-key-staging --project=$(PROJECT) --data-file=-
-	@openssl rand -hex 32 | gcloud secrets versions add forin-jwt-signing-key-prod    --project=$(PROJECT) --data-file=-
-	@openssl rand -hex 32 | gcloud secrets versions add forin-dev-auth-secret-staging --project=$(PROJECT) --data-file=-
+	@openssl rand -hex 32 | tr -d '\n' | gcloud secrets versions add forin-jwt-signing-key-staging --project=$(PROJECT) --data-file=-
+	@openssl rand -hex 32 | tr -d '\n' | gcloud secrets versions add forin-jwt-signing-key-prod    --project=$(PROJECT) --data-file=-
+	@openssl rand -hex 32 | tr -d '\n' | gcloud secrets versions add forin-dev-auth-secret-staging --project=$(PROJECT) --data-file=-
 	@echo "pushed. JWT signing keys and staging dev-auth secret were generated here — they are never printed."

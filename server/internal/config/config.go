@@ -66,7 +66,15 @@ func Load() (*Config, error) {
 		RedisURL:                 os.Getenv("REDIS_URL"),
 		JWTSigningKey:            []byte(os.Getenv("JWT_SIGNING_KEY")),
 		JWTIssuer:                getenv("JWT_ISSUER", "forin"),
-		DevAuthSecret:            os.Getenv("DEV_AUTH_SECRET"),
+		// Trimmed deliberately. The comparison against the X-Dev-Auth header is
+		// exact, and a secret that arrives with a trailing newline fails it on
+		// length while looking correct everywhere a human inspects it. That is
+		// not hypothetical: the first staging smoke failed this way, because
+		// `openssl rand -hex 32 | gcloud secrets versions add` stored 65 bytes
+		// while the caller's `$(gcloud secrets versions access)` stripped the
+		// newline down to 64. The generator is fixed, but pasting a value into
+		// the console can reintroduce it, so tolerate surrounding whitespace here.
+		DevAuthSecret:            strings.TrimSpace(os.Getenv("DEV_AUTH_SECRET")),
 		AccessTTL:                getdur("ACCESS_TTL", 15*time.Minute),
 		RefreshTTL:               getdur("REFRESH_TTL", 30*24*time.Hour),
 		GoogleClientIDs:          splitList(os.Getenv("GOOGLE_CLIENT_ID")),
