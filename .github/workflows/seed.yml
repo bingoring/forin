@@ -71,7 +71,7 @@ jobs:
           ENVIRONMENT: ${{ inputs.environment }}
         run: |
           REV_RAW=$(gcloud run services describe "forin-api-$ENVIRONMENT" \
-            --region="$REGION" --format='value(status.traffic.filter("percent:100").extract(revisionName))')
+            --region="$REGION" --format='value(status.traffic.filter("percent=100").extract(revisionName).flatten())')
           REV="${REV_RAW%%$'\n'*}"
           test -n "$REV" || {
             echo "could not resolve the revision serving 100% of traffic for forin-api-$ENVIRONMENT"

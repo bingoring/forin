@@ -112,7 +112,7 @@ jobs:
         id: prev
         run: |
           PREV_RAW=$(gcloud run services describe forin-api-prod --region="$REGION" \
-            --format='value(status.traffic.filter("percent:100").extract(revisionName))')
+            --format='value(status.traffic.filter("percent=100").extract(revisionName).flatten())')
           PREV="${PREV_RAW%%$'\n'*}"
           echo "revision=$PREV" >> "$GITHUB_OUTPUT"
 
@@ -167,7 +167,7 @@ jobs:
       - name: Verify the new revision is ready
         run: |
           READY=$(gcloud run revisions describe "${{ steps.rev.outputs.revision }}" --region="$REGION" \
-            --format='value(status.conditions.filter("type:Ready").extract(status))')
+            --format='value(status.conditions.filter("type=Ready").extract(status).flatten())')
           test "$READY" = "True" || { echo "revision is not Ready: $READY"; exit 1; }
 
       # Check the candidate BEFORE it carries any traffic. Checking after the
@@ -177,7 +177,7 @@ jobs:
       - name: Confirm candidate health and that the dev bypass is absent
         run: |
           CAND_RAW=$(gcloud run services describe forin-api-prod --region="$REGION" \
-            --format='value(status.traffic.filter("tag:candidate").extract(url))')
+            --format='value(status.traffic.filter("tag=candidate").extract(url).flatten())')
           CAND="${CAND_RAW%%$'\n'*}"
           test -n "$CAND" || { echo "could not find the candidate URL"; exit 1; }
           curl -fsS "$CAND/readyz" >/dev/null
