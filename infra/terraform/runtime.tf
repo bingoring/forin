@@ -89,6 +89,16 @@ resource "google_cloud_run_v2_service" "api" {
       min_instance_count = local.min_instances[each.value]
       max_instance_count = 4
     }
+    # KNOWN PERPETUAL DIFF (first real deploy, google provider 6.50): every
+    # `plan` proposes removing `manual_instance_count` and `min_instance_count`
+    # from this block (`0 -> null`). The API always reports 0 for
+    # manual_instance_count, but the service-level `scaling` schema does not
+    # accept it, and `ignore_changes` cannot reach that nested path either. The
+    # two escapes are both worse: ignoring `template[0].scaling` wholesale would
+    # silently disable the documented "raise prod to 1" step, and applying the
+    # diff is a no-op that the API immediately re-reports. So Terraform keeps
+    # ownership and this diff is expected — it is NOT a pending change. Anything
+    # else appearing in a service plan is real and worth reading.
 
     volumes {
       name = "cloudsql"
