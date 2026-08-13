@@ -1482,3 +1482,14 @@ Task 6(Cloud Run 런타임 + WIF)의 독립 리뷰가 **Critical 1 + Important 7
   → 시크릿 슬롯을 `database-url-{env}`로 바꿔 **URL 전체**를 시크릿에 넣고 서비스·Job 양쪽이 `secret_key_ref`로 받는다.
   앱은 `DATABASE_URL` 하나만 읽으므로 앱 변경이 없다. `random_password`가 state에 남는 것은 피할 수 없지만 Cloud Run
   설정에서의 노출은 없앨 수 있다.
+
+## 2026-08-13 — prod `min-instances`를 0으로 시작 (§10 미해결 질문 해소)
+- **결정:** 양 환경 모두 `min-instances=0`. 실 테스터가 붙는 시점(§6.1의 Play 비공개 테스트 12명/14일 시계가 시작될 때)에
+  prod를 1로 올린다.
+- **근거:** 상시 켜진 prod 인스턴스는 Cloud SQL 옆의 **두 번째 고정비**인데 **출시 전에는 사는 것이 없다** — 콜드스타트를
+  아껴줄 "하루 첫 학습자"가 아직 없다. 결제 계정을 여는 시점에 고정비를 Cloud SQL 하나로 좁힌다.
+- **대안(탈락):** 처음부터 1 — 콜드스타트 대비는 맞지만 그 대비가 보호할 사용자가 없는 구간에 비용을 낸다.
+- **함의로 알아둘 것:** 변경은 `runtime.tf`의 `local.min_instances` 맵 한 줄이지만, `traffic`을 `ignore_changes`에 넣은
+  대가로 **Terraform 템플릿 변경은 0% 트래픽 리비전에 실려 다음 승격에 반영된다**(§11 이연 항목 4와 같은 성질).
+  즉 1로 올리는 것은 "apply 한 번"이 아니라 "apply + 승격"이다.
+- **결정자:** 사용자.
