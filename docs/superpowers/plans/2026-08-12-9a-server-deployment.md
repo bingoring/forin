@@ -1074,13 +1074,18 @@ git push origin master
 루트 `.gitignore` 끝에 추가:
 
 ```gitignore
-# Terraform
+# Terraform — state and credentials only.
+#
+# .terraform.lock.hcl is deliberately NOT ignored: committing it is what makes
+# `terraform init` resolve the same provider hashes on every machine and in CI.
+# The version constraints in versions.tf are ranges (~> 6.0), so without the
+# lock file "reproducible" would not hold. Upgrades happen on purpose, via
+# `terraform init -upgrade`.
 .terraform/
 *.tfstate
 *.tfstate.*
 *.tfvars
 !*.tfvars.example
-.terraform.lock.hcl
 ```
 
 - [ ] **Step 2: 프로바이더·백엔드 선언**
@@ -1374,7 +1379,12 @@ apply:
 	cd terraform && terraform apply
 
 secrets:   ## push secret VALUES that Terraform must not hold. usage: make secrets ANTHROPIC_KEY=... OPENAI_KEY=... AZURE_SPEECH_KEY=...
-	@test -n "$(ANTHROPIC_KEY)" || (echo "ANTHROPIC_KEY is required"; exit 1)
+	@# Guard every key BEFORE pushing any of them: a partial invocation would
+	@# overwrite a live secret with an empty version, and that failure only
+	@# surfaces later as an auth error, not here.
+	@test -n "$(ANTHROPIC_KEY)"    || (echo "ANTHROPIC_KEY is required";    exit 1)
+	@test -n "$(OPENAI_KEY)"       || (echo "OPENAI_KEY is required";       exit 1)
+	@test -n "$(AZURE_SPEECH_KEY)" || (echo "AZURE_SPEECH_KEY is required"; exit 1)
 	@printf '%s' '$(ANTHROPIC_KEY)'    | gcloud secrets versions add forin-anthropic-key    --project=$(PROJECT) --data-file=-
 	@printf '%s' '$(OPENAI_KEY)'       | gcloud secrets versions add forin-openai-key       --project=$(PROJECT) --data-file=-
 	@printf '%s' '$(AZURE_SPEECH_KEY)' | gcloud secrets versions add forin-azure-speech-key --project=$(PROJECT) --data-file=-
