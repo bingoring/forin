@@ -35,6 +35,31 @@ make apply
 `make secrets`는 JWT 서명 키(스테이징·프로덕션 각각 별도 값)와 staging dev-auth
 시크릿을 **여기서 생성**하고 출력하지 않는다.
 
+**`apply`가 권한 오류로 실패하면, 먼저 한 번 더 돌려봐라.** Secret Manager IAM
+바인딩은 최종적 일관성(eventually consistent)이라 방금 만든 `secretAccessor`
+grant를 서비스가 곧바로 못 읽는 순간이 있다. 원인을 더 파기 전에 재시도가 더 싼
+진단이다.
+
+## 첫 apply 이후 확인할 것 (관측 체크리스트)
+
+아래는 "실제 서비스에 물려보기 전까지는 확인할 수 없다"고 이연해둔 것들이다.
+확인 자리를 여기에 박아두지 않으면 조용히 잊힌다 — 첫 apply가 끝나면 순서대로 본다.
+
+- [ ] **hello 부트스트랩 이미지가 `/readyz` 프로브를 통과했는가.** `runtime.tf`의
+      `bootstrap_image`(`us-docker.pkg.dev/cloudrun/container/hello`)는 `/readyz`에
+      응답하지 않는다 — startup probe가 실패해도 리비전이 Ready로 올라오는지, 아니면
+      첫 apply 자체가 여기서 막히는지 첫 실행에서만 알 수 있다.
+- [ ] **`status.traffic.filter(...)`·`spec.containers[0].image` 필드 경로가 실제로
+      값을 낸다.** `promote.yml`(Capture currently serving revision)과
+      `seed.yml`(Resolve the currently serving image)이 이 gcloud 필드 경로에
+      의존한다 — seed.yml의 주석에도 "실서비스에 아직 실행해보지 않았다"고 남겨뒀다.
+      비어 있으면 워크플로가 아니라 필드 이름을 먼저 의심하라.
+- [ ] **IAM 전파 지연으로 `apply` 재실행이 필요했는가.** 필요했다면 몇 번 걸렸는지
+      적어두면 다음 환경(인스턴스 분리 전환 등) 재현 시 놀라지 않는다.
+- [ ] **첫 배포(CI가 실제 이미지를 처음 배포한) 후 `terraform plan`이 `traffic` diff를
+      잡지 않는가.** `ignore_changes`에 `traffic`을 넣었다는 것 자체가 검증해야 하는
+      주장이다 — diff가 잡히면 ignore_changes가 기대대로 동작하지 않는다는 신호다.
+
 ## 상태(state)
 
 GCS `gs://forin-504711-tfstate/server` + 버전 관리 활성. `*.tfvars`와

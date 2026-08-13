@@ -110,10 +110,21 @@ jobs:
       # Migrations first: the new code may need the new schema. Which migrations
       # to apply is decided by the schema_migrations table in the database, not
       # by this workflow.
+      #
+      # --command and --args are pinned explicitly on every run, even though
+      # Terraform already sets them this way (runtime.tf): `gcloud run jobs
+      # update` only touches the fields you pass and preserves everything
+      # else. If the dirty-recovery runbook (infra/README.md) was ever used
+      # here and its final `--args=up` step was forgotten, this job would
+      # otherwise keep running `force <version>` instead of `up` on every
+      # subsequent deploy — exiting 0, rewinding schema_migrations, and
+      # applying no new migrations, silently. Pinning both flags here means
+      # this step always restores the intended state regardless of what a
+      # previous run left behind.
       - name: Migrate staging
         run: |
           gcloud run jobs update forin-migrate-staging \
-            --region="$REGION" --image="${{ needs.build.outputs.image }}" --quiet
+            --region="$REGION" --image="${{ needs.build.outputs.image }}" --command=/migrate --args=up --quiet
           gcloud run jobs execute forin-migrate-staging --region="$REGION" --wait
 
       - name: Deploy staging

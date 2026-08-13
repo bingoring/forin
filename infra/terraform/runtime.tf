@@ -47,6 +47,14 @@ locals {
   # Production leaves min_instances at 1 so the day's first learner does not pay
   # for a cold start; staging scales to zero because only the smoke test calls it.
   min_instances = { staging = 0, prod = 1 }
+
+  # §3.2 of the deployment spec promises a low, fixed connection-pool ceiling
+  # as the mitigation for sharing one Cloud SQL instance across environments —
+  # the shared instance's max_connections is small (db-f1-micro is ~25), and
+  # without a cap staging scaling out under load could starve prod's
+  # connections (or vice versa). Read by pool.go via DB_MAX_CONNS; prod gets a
+  # slightly larger share since it carries real traffic.
+  db_max_conns = { staging = 2, prod = 4 }
 }
 
 resource "google_cloud_run_v2_service" "api" {
@@ -55,9 +63,18 @@ resource "google_cloud_run_v2_service" "api" {
   location = var.region
 
   # Deployments are driven by the CI pipeline; Terraform owns the shape of the
-  # service, not which image revision is live.
+  # service, not which image revision is live. `traffic` is ignored for the
+  # same reason: promote.yml and the rollback path both pin traffic to a
+  # specific revision with `--to-revisions=<REV>=100`, which is gcloud writing
+  # directly to the service's traffic split outside Terraform. Without this,
+  # `google_cloud_run_v2_service` defaults an unset `traffic` block to "100%
+  # to LATEST" — so an unrelated `terraform apply` run right after a rollback
+  # (traffic pinned to PREV) or a promotion that left a rejected candidate
+  # behind would silently re-advance traffic to LATEST, undoing the rollback
+  # or promoting a candidate that failed verification. That bypasses every
+  # gate in spec §4/§8, so Terraform must never touch this field.
   lifecycle {
-    ignore_changes = [template[0].containers[0].image, client, client_version]
+    ignore_changes = [template[0].containers[0].image, client, client_version, traffic]
   }
 
   template {
@@ -107,6 +124,11 @@ resource "google_cloud_run_v2_service" "api" {
       env {
         name  = "AZURE_SPEECH_REGION"
         value = var.azure_speech_region
+      }
+      # Not a secret — see local.db_max_conns above for why this is capped.
+      env {
+        name  = "DB_MAX_CONNS"
+        value = tostring(local.db_max_conns[each.value])
       }
       dynamic "env" {
         for_each = {

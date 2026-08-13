@@ -42,7 +42,17 @@ func run() error {
 		return fmt.Errorf("aborting seed")
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	// One timeout covers pool creation, the guard query, and Seed() below.
+	// Seed() runs its DELETE+INSERT inside a single transaction with
+	// row-by-row INSERTs — scenarios (~3200) + quizzes (~993) + events (~243)
+	// + phrases + interiors add up to 5,000+ round trips. That passed locally
+	// against a same-host Postgres in well under 30s, but against Cloud SQL
+	// over the Cloud SQL connector's unix socket, even 2-5ms per statement is
+	// 10-25s on its own, before pool creation and the guard query. 10 minutes
+	// matches Cloud Run Job's default task timeout (600s), so no Terraform
+	// change is needed to make use of it. The real fix is batching inserts
+	// via CopyFrom, but that's a separate change.
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
 	defer cancel()
 	pool, err := postgres.NewPool(ctx, dbURL)
 	if err != nil {

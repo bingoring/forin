@@ -34,12 +34,19 @@ print($1)" 2>/dev/null; }
 
 TOK=""; REFRESH=""; BODY=""; CODE=""
 # run METHOD PATH [DATA] — sets globals BODY + CODE (not a subshell, so they stick)
+#
+# X-Dev-Auth is intentionally NOT attached here. Only POST /auth/dev needs it
+# (it's the one route gated by DevAuthSecret; see router.go) — every other
+# call below authenticates with the Bearer token that route issued. Sending
+# the secret on every request means staging would have it in every access
+# log line, forever, the moment anyone turns on request logging; that's a
+# much bigger blast radius than the one call that actually needs it.
 run() {
   local m="$1" p="$2" d="${3:-}" out
   if [ -n "$d" ]; then
-    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H "X-Dev-Auth: $DEV_AUTH" -H 'Content-Type: application/json' -d "$d")
+    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H 'Content-Type: application/json' -d "$d")
   else
-    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H "X-Dev-Auth: $DEV_AUTH")
+    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK")
   fi
   CODE="${out##*$'\n'}"; BODY="${out%$'\n'*}"
 }

@@ -94,6 +94,13 @@ jobs:
       # every run removes both the risk of a stale value surviving from a
       # previous execution and any dependence on --remove-env-vars behaving
       # as a clean no-op on a variable that was never set.
+      # --command is pinned explicitly for the same reason deploy.yml/promote.yml
+      # pin --command/--args on the migrate Job: `gcloud run jobs update` only
+      # changes the fields it's given and preserves the rest, so omitting
+      # --command here would let it silently drift from Terraform's
+      # `/seed` (runtime.tf) if any prior run of this job was ever updated
+      # with a different command. Args are omitted on purpose — /seed takes
+      # none; SEED_ALLOW_REMOVAL is passed as an env var, not an arg.
       - name: Seed
         env:
           ENVIRONMENT: ${{ inputs.environment }}
@@ -103,5 +110,5 @@ jobs:
           VALUE=0
           [ "$ALLOW_REMOVAL" = "true" ] && VALUE=1
           gcloud run jobs update "forin-seed-$ENVIRONMENT" --region="$REGION" \
-            --image="$IMAGE" --update-env-vars="SEED_ALLOW_REMOVAL=$VALUE" --quiet
+            --image="$IMAGE" --command=/seed --update-env-vars="SEED_ALLOW_REMOVAL=$VALUE" --quiet
           gcloud run jobs execute "forin-seed-$ENVIRONMENT" --region="$REGION" --wait
