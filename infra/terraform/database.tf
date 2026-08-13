@@ -13,6 +13,12 @@ resource "google_sql_database_instance" "pg" {
   region           = var.region
 
   settings {
+    # ENTERPRISE must be explicit: new Postgres instances otherwise default to
+    # ENTERPRISE_PLUS, which rejects shared-core tiers outright ("Invalid Tier
+    # (db-f1-micro) for (ENTERPRISE_PLUS) Edition") and only accepts
+    # db-perf-optimized-N-* machines — an order of magnitude more expensive than
+    # this stage's whole budget. Discovered on the first real apply.
+    edition           = "ENTERPRISE"
     tier              = var.sql_tier
     availability_type = "ZONAL"
     disk_size         = 10
