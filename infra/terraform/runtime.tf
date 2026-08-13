@@ -44,9 +44,15 @@ locals {
   # applied again; Terraform owns the service's shape, not its revision.
   bootstrap_image = "us-docker.pkg.dev/cloudrun/container/hello"
 
-  # Production leaves min_instances at 1 so the day's first learner does not pay
-  # for a cold start; staging scales to zero because only the smoke test calls it.
-  min_instances = { staging = 0, prod = 1 }
+  # Both environments scale to zero for now. A warm production instance is a
+  # second standing cost next to Cloud SQL, and it buys nothing before launch:
+  # there is no "day's first learner" to spare a cold start yet.
+  #
+  # Raise prod to 1 when real testers arrive — concretely, when the Play
+  # closed-testing clock starts (12 testers / 14 days, spec §6.1). Editing this
+  # map is the whole change; note that a Terraform-only template change lands on
+  # a revision with 0% traffic, so it reaches production on the next promote.
+  min_instances = { staging = 0, prod = 0 }
 
   # §3.2 of the deployment spec promises a low, fixed connection-pool ceiling
   # as the mitigation for sharing one Cloud SQL instance across environments —
