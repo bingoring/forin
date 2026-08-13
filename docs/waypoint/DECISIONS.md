@@ -1391,8 +1391,10 @@ Build Spec 전 유닛 구현. 서버(6테이블·`colleague` 도메인·`GET /me
 
 ## 2026-08-12 — 콘텐츠 시드 가드 (교체 의미의 위험을 좁힘)
 `ContentRepo.Seed`가 단일 트랜잭션 안에서 `DELETE` 6종 → `INSERT`, 즉 **교체(replace)** 라는 것을 감사에서 확인했다.
-- **진행도는 안전하다**: `user_progress`·`review_cards`·`conversation_sessions`의 `scenario_id`가 **FK 없는 `text`**
-  (`000003_progress.up.sql:21`)라 콘텐츠 삭제가 cascade하지 않는다. 콘텐츠와 진행도를 처음부터 분리해둔 게 여기서 값을 했다.
+- **진행도는 안전하다**: `scenario_attempts`·`review_cards`·`conversation_sessions`의 `scenario_id`가 **FK 없는
+  `text`**(`000003_progress.up.sql:21`)라 콘텐츠 삭제가 cascade하지 않는다. 콘텐츠와 진행도를 처음부터 분리해둔 게
+  여기서 값을 했다. (구현 리뷰에서 정정: 이 셋 중 하나를 `user_progress`로 잘못 적었다 — 그 테이블엔 `scenario_id`
+  컬럼이 없고, 실제 가드가 참조하는 건 `scenario_attempts`다.)
 - **그러나 dangling 참조는 생긴다**: 시드가 ID를 없애면 진행도·복습 카드가 없는 시나리오를 가리킨다. → **시드 전 게이트**:
   새 번들의 시나리오 ID 집합이 **(커리큘럼 참조 173개 ∪ DB에 실재하는 `scenario_id`)를 포함**하는지 검사하고 아니면 실패.
   콘텐츠는 늘어나기만 하는 게 정상이고, 줄어드는 배포는 사고일 확률이 높다.

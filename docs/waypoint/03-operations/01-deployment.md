@@ -126,12 +126,22 @@ Cloud Run **Job** 2종이 `/migrate`·`/seed`를 **같은 이미지 다이제스
   **승인 없이 prod를 배포**한다. 게이트가 리포 밖에만 있고 부재 시 기본값이 "게이트 없음"이었다.
   → **수동 트리거 전용으로 떼면 GitHub 설정이 어떻든 사람이 누르지 않으면 prod는 돌지 않는다.** `environment: production`은
   유지해 승인 게이트를 **2차** 방어로 얹는다. Task 4의 "설정 준수가 아니라 구조로"와 같은 해법이다.
+- **`staging-verified-<sha>` 태그가 이 파이프라인에서 하중이 가장 큰 안전장치다.** `deploy.yml`은 staging 스모크
+  (57 assert)를 통과한 뒤에만 이 태그를 붙이고, `promote.yml`은 입력받은 SHA를 **항상 그 태그로만** 해석한다
+  (`api:staging-verified-<sha>`, 바로 `<sha>`가 아니다) — 태그가 붙지 않았다면 승격할 이미지 자체가 존재하지 않으므로
+  `gcloud`가 여기서 fail-closed로 막힌다. **미검증 SHA는 배포할 이미지가 없다**는 뜻이고, 이 정본에 적어두지 않으면
+  미래의 독자가 이 스텝을 "이미 워크플로 분리로 막았는데 중복"이라며 지울 수 있다 — 분리(사람이 눌러야 한다)와 이
+  태그(누른 사람이 옳은 SHA를 눌렀는가)는 서로 다른 실패 모드를 막는다.
 - 입력은 승격할 커밋 SHA(형식 검증). prod `migrate` Job → `--no-traffic --tag=candidate` 배포 →
-  **후보 태그 URL에서 `/readyz` 200과 `/auth/dev` 404를 전환 전에 검증** → 트래픽 전환(+후보 태그 제거) → 전환 후 재확인.
-  초안은 전환 **뒤에** 불변식을 검사해 "위반을 확인하고도 prod를 노출 상태로 남기는" 순서였다.
-- 실패 시 `if: failure()` 스텝이 **실제 이전 리비전 이름을 넣은 복사 가능한 롤백 명령**과 상황 요약(스키마는 적용됨 /
-  트래픽은 이전 리비전 유지 / 코드만 재배포하면 복구)을 남긴다. 초안은 롤백 안내가 `exit 1` 뒤에 있어
-  **필요한 순간에 절대 출력되지 않았다**.
+  **후보 태그 URL에서 `/readyz` 200과 `/auth/dev` 404를 전환 전에 검증** → 트래픽 전환(+후보 태그 제거) → **전환
+  후에도 같은 두 가지(`/readyz` 200 · `/auth/dev` 404)를 실제 서빙 URL에서 재확인**. 초안은 전환 **뒤에만** 불변식을
+  검사해 "위반을 확인하고도 prod를 노출 상태로 남기는" 순서였다.
+- 실패 시 `if: failure()` 스텝이 **실제 이전 리비전 이름을 넣은 복사 가능한 롤백 명령**을 남기되, 안내 문구는
+  **트래픽 전환(Shift traffic) 스텝이 실제로 성공했는지로 분기한다** — 전환이 성공한 뒤 그 다음 스텝(전환 후 재확인)이
+  실패했다면 트래픽은 이미 새 리비전에 있으므로 "즉시 되돌려라"가 먼저 나오고, 전환 전에 실패했다면 기존 문구(스키마는
+  적용됐을 수 있음 / 트래픽은 이전 리비전에 안전하게 남아 있음 / 코드만 재배포하면 복구)를 쓴다. 초안은 `if: failure()`
+  하나만 보고 **무조건** 후자를 출력해, 트래픽이 이미 넘어간 뒤 실패한 경우에 "prod는 안전하다"는 거짓을 말했다
+  (구현 리뷰에서 정정 — 장애 중 잘못된 방향을 가리키는 문서는 사고를 키운다).
 - 동시성 그룹을 `deploy-staging`/`deploy-prod`로 분리한다 — 하나로 두면 prod 승인 대기가 락을 쥐어 그사이 master 커밋들의
   **staging 배포·스모크가 조용히 취소**된다.
 
@@ -155,12 +165,21 @@ Cloud Run Job 실행, 콜드스타트·타임아웃. 이건 compose로 흉내낼
 
 ### 3.2 staging↔prod 분리 수준 — 논리적으로 완전, 물리적으로 공유
 
-같은 Cloud SQL **인스턴스**의 **다른 데이터베이스**(`forin_staging` / `forin_prod`)이고, **DB 사용자도 환경별로 따로**
-두어 각자 자기 데이터베이스에만 권한을 준다.
+같은 Cloud SQL **인스턴스**의 **다른 데이터베이스**(`forin_staging` / `forin_prod`)다. 데이터베이스 사용자도
+환경별로 따로 만들지만(`forin_staging`/`forin_prod`), **DB 수준 GRANT/REVOKE로 서로의 데이터베이스 접근을 막지는
+않았다** — Terraform(`database.tf`)에 `GRANT`/`REVOKE`가 0건이다. Postgres는 새 데이터베이스에 `CONNECT`를
+PUBLIC에 기본 부여하고, Cloud SQL Admin API로 만든 사용자는 `cloudsqlsuperuser` 역할의 멤버다 — 즉
+**`forin_staging` 자격증명으로 `forin_prod`에 접속·조회하는 것이 기술적으로는 가능하다.** (구현 리뷰에서 정정: 초안은
+"staging 사용자는 `forin_prod`에 붙을 수 없다"고 단언했으나 이를 강제하는 코드가 없었다.)
+
+**분리는 대신 두 층에서 온다: 환경별 DSN 시크릿 + 환경별 IAM 스코프.** `DATABASE_URL`이 시크릿별로 분리돼 있고
+(`secrets.tf`), 런타임 서비스 계정도 환경별로 따로 있어(`runtime.tf`) staging 코드가 prod의 `DATABASE_URL`을 얻을
+경로가 없다. **애플리케이션이 자기 코드 경로로 반대편 데이터를 건드릴 경로는 없다** — 이건 실제로 참이다. 다만 이건
+"자격증명이 새지 않게 막는다"와 "DB가 스스로 접근을 거부한다"의 차이다. 여기서 확보한 건 전자뿐이고, 후자는 하지
+않았다 — 그 잔여 위험은 아래 4번에 있다.
 
 **완전히 분리되는 것**
-- 데이터. Postgres의 database 경계는 단단하다 — 다른 데이터베이스의 테이블은 조회 자체가 불가능하다(FDW를 일부러 걸지 않는 한).
-- 접근 권한. staging 사용자는 `forin_prod`에 붙을 수 없다. **애플리케이션 버그가 반대편 환경 데이터를 건드릴 경로는 없다.**
+- 데이터 저장 위치. Postgres의 database 경계는 단단하다 — 자격증명 없이 다른 데이터베이스의 테이블을 조회할 방법은 없다.
 - 시크릿·서비스 계정·Cloud Run 리비전·Redis(Upstash DB 2개 분리).
 
 **공유되어 남는 것 (이게 이 선택의 실제 대가다)**
@@ -170,6 +189,9 @@ Cloud Run Job 실행, 콜드스타트·타임아웃. 이건 compose로 흉내낼
    적재"가 된다. 복구는 가능하지만 절차가 한 단계 길다.
 3. **인프라 변경을 staging에서 먼저 볼 수 없다.** Postgres 메이저 업그레이드·머신 타입 변경·유지보수 창은 인스턴스 단위라
    두 환경에 동시에 적용된다. 그걸 미리 리허설하려면 인스턴스가 둘이어야 한다.
+4. **DB 수준 접근 격리가 없다.** staging의 DSN(자격증명)이 유출되면 그 자격증명으로 같은 인스턴스의 `forin_prod`에도
+   접속할 수 있다 — DB 자신은 이를 거부하지 않는다. 이 잔여 위험을 닫는 건 위 "환경별 DSN 시크릿"이 새지 않는 것뿐이다
+   (Secret Manager 참조 주입이라 값이 리비전에 박히지 않는다는 것 이상의 방어는 DB 쪽에 없다).
 
 **판단**: 지금은 prod 트래픽이 0이고 검증하려는 건 스키마와 Cloud Run 배선이므로 공유가 맞다. 위 3번이 문제가 되는
 시점(실사용자 + DB 버전 업그레이드)에 인스턴스를 분리한다 — Terraform에서 **tfvar 하나**로 전환되도록 모듈을 쓴다.
@@ -181,7 +203,12 @@ Cloud Run Job 실행, 콜드스타트·타임아웃. 이건 compose로 흉내낼
 | Cloud Run(staging) | scale-to-zero. 스모크 실행 시간만 과금 → **월 $1 미만** |
 | Cloud SQL | **+$0 고정비** — 인스턴스를 공유하므로 늘어나는 건 데이터베이스 하나의 **스토리지**뿐(수백 MB 규모 → 센트 단위) |
 | Upstash Redis(staging) | 요청량 과금. 스모크 수준이면 무료 구간 |
-| Artifact Registry | 같은 이미지를 두 환경이 공유 → **+$0** |
+| Artifact Registry | 같은 이미지를 두 환경이 공유 → **+$0** (단, 아래 각주) |
+
+> **Artifact Registry의 "+$0"은 장기적으로는 사실이 아니다.** 매 배포가 ~80MB 이미지를 새 태그로 쌓기만 하고 지우지
+> 않으면 스토리지가 배포 수에 비례해 계속 늘어난다. 그래서 `cleanup_policies`를 걸었다 — `staging-verified-<sha>`
+> 태그가 붙은 이미지는 무기한 보존(KEEP)하고, 그렇지 않은(승격되지 않았거나 스모크를 통과하지 못한) 이미지는 30일
+> 후 삭제(DELETE)한다. 위 표의 "+$0"은 이 정리 정책이 있다는 전제에서만 유지된다.
 
 즉 **staging을 두는 대가는 월 1~2달러 수준**이고, 이 설계의 고정비는 사실상 **Cloud SQL 인스턴스 하나 + prod의
 `min-instances=1`** 둘이다. 공유 코어(`db-f1-micro`급) 인스턴스는 일반적으로 월 $8~10 구간으로 알려져 있으나
@@ -205,8 +232,10 @@ Cloud Run Job 실행, 콜드스타트·타임아웃. 이건 compose로 흉내낼
 
 `ContentRepo.Seed`는 단일 트랜잭션 안에서 `DELETE` 6종 → `INSERT`, 즉 **교체(replace)** 의미다.
 
-- 사용자 진행도는 안전하다: `user_progress`·`review_cards`·`conversation_sessions`의 `scenario_id`가 **FK 없는 `text`**
-  (`000003_progress.up.sql:21`)라 콘텐츠 삭제가 cascade하지 않는다. 이는 감사로 확인했다.
+- 사용자 진행도는 안전하다: `scenario_attempts`·`review_cards`·`conversation_sessions`의 `scenario_id`가 **FK 없는
+  `text`**(`000003_progress.up.sql:21`)라 콘텐츠 삭제가 cascade하지 않는다. 이는 감사로 확인했다. (구현 리뷰에서
+  정정: 초안은 이 셋 중 하나를 `user_progress`라고 적었는데, `user_progress`에는 `scenario_id` 컬럼이 없다 — 실제
+  가드 쿼리(`cmd/seed/guard.go`)가 참조하는 건 `scenario_attempts`다.)
 - 그러나 시드가 ID를 **없애면** 진행도·복습 카드가 dangling 참조가 된다. 그래서 **시드 전 게이트**를 둔다:
   새 번들의 시나리오 ID 집합이 **(커리큘럼이 참조하는 173개 ∪ DB에 실재하는 `scenario_id`)를 포함**하는지 검사하고,
   아니면 실패시킨다. 콘텐츠는 늘어나기만 하는 게 정상이고, 줄어드는 배포는 사고일 확률이 높다.
@@ -278,7 +307,11 @@ gcloud로 만들고, 그 이후 전부 Terraform. 자격은 로컬 1회 `gcloud 
 - **Redis는 로그인 경로의 경성 의존**이다. `RefreshStore`가 refresh 토큰 해시를 TTL 30일로 들고 있어(`redis/redis.go`),
   Redis 소실 = 전 사용자 재로그인. 캐시로 착각하지 않는다. Upstash의 영속성 옵션을 켜고, 3-2 모니터링에서 가용성을 계측 대상에 넣는다.
 - **`ENV=prod` 필수**. 이 값이 `dev`로 새면 `/auth/dev` 인증 우회가 공개된다. Terraform이 Cloud Run env에 고정하고,
-  배포 워크플로가 매 배포 끝에 prod의 `/auth/dev`가 **404**임을 검사한다.
+  `promote.yml`이 이를 검사한다 — **매 배포 끝에가 아니라, 트래픽을 옮기기 전에** 후보 리비전의 전용 URL
+  (`--tag=candidate`)에서 먼저 `/auth/dev`가 **404**임을 확인하고(§3에서 정정한 순서 — 위반을 확인한 채로 prod를
+  노출시키지 않는다), **트래픽 전환 뒤에도 실제 서빙 URL에서 같은 것을 한 번 더 재확인한다.** (구현 리뷰에서 정정:
+  초안은 "매 배포 끝에" 검사한다고 적었는데, 실제로는 전환 *전* 후보 URL 검사가 원 검증이고 그게 더 나은 설계다 —
+  전환 뒤 재확인은 그 위에 얹은 이중 확인이다.)
 - **staging 스모크의 인증 경로**(구현 계획 수립 중 발견한 공백). 스모크 57 assert는 `POST /auth/dev`로 인증하는데 그 경로는
   `Env == "dev"`에서만 등록된다. staging을 `ENV=dev`로 돌리면 **공개 URL에 인증 우회가 열리고**, `ENV=prod`로 돌리면
   스모크가 인증할 수 없다. → **`DEV_AUTH_SECRET`이 설정된 환경에서만 경로를 등록하고, `dev`가 아니면 일치하는
@@ -296,7 +329,8 @@ gcloud로 만들고, 그 이후 전부 Terraform. 자격은 로컬 1회 `gcloud 
 한 번에 다 하지 않는다. 두 덩어리로 나누면 각각 독립적으로 검증 가능하다.
 
 - **9-A 서버 배포**: `cmd/migrate`(임베드) → Dockerfile 3바이너리 → `infra/terraform`(+ 부트스트랩·시크릿 주입) →
-  `deploy.yml`(staging 자동 → 스모크 → prod 수동 승격) → 시드 가드. 완료 판정 = **staging에 스모크 57/0**.
+  `deploy.yml`(verify → build → staging 자동 → 스모크) + `promote.yml`(prod 승격, 수동 트리거 전용) → 시드 가드.
+  완료 판정 = **staging에 스모크 57/0**.
 - **9-B 모바일 배포**: `mobile.yml`(tsc·jest 게이트) → `eas.json` 환경 분리 → `expo-updates` + fingerprint 정책 →
   테스트 트랙 제출(§6.1). 완료 판정 = **`preview` 설치본이 staging API에 붙어 동작**.
 
