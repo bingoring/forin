@@ -1900,6 +1900,28 @@ git push origin master
 
 ### Task 7: `deploy.yml` — staging 자동 → 스모크 → prod 수동 승격
 
+> ⚠️ **이 태스크의 워크플로는 구현 리뷰에서 재구성됐다.** 아래 YAML은 초안이고 **실제 구현은
+> `.github/workflows/deploy.yml`·`promote.yml`이 정본**이다. 감사 기록은 `docs/dlc/.../DECISIONS.md`와
+> 스테이지 문서 §3. 요약:
+>
+> 1. **prod 승격을 `promote.yml`(`workflow_dispatch` 전용)로 분리.** `environment: production`은 해당 Environment가
+>    없으면 GitHub가 **보호 규칙 없이 즉석 생성**하고 실패하지 않는다 — 게이트가 리포 밖에만 있고 부재 시 기본값이
+>    "게이트 없음"이었다. 수동 트리거 전용이면 설정과 무관하게 사람이 눌러야 돈다
+> 2. **`verify` job 신설**(vet·test·build + 계약 드리프트). 병렬로 도는 `server.yml`·`contract.yml`은 게이트가 아니다 —
+>    배포가 그 결과에 의존하지 않으면 테스트가 빨간 커밋이 배포된다
+> 3. **`staging-verified-<sha>` 태그**를 스모크 통과 후에만 붙이고 `promote.yml`이 그 태그를 해석 — 이미지가
+>    `build`에서 `staging`보다 먼저 푸시되므로, 태그가 없으면 검증 안 된 SHA도 승격 가능했다. 이제 fail-closed
+> 4. `--no-traffic --tag=candidate` 로 배포해 **후보 URL에서 전환 전에** `/readyz`·`/auth/dev` 검증. 초안은 전환 뒤에
+>    검사해 위반을 확인하고도 prod를 노출 상태로 남겼다
+> 5. 롤백 안내를 **`if: failure()` 스텝 + 실제 이전 리비전 이름**으로. 초안은 `exit 1` 뒤에 있어 필요한 순간에
+>    출력되지 않았다
+> 6. Ready 판정을 `conditions[0]` 대신 **`filter("type:Ready")`** 로(배열 순서는 API 계약이 아니다). `grep -q`
+>    파이프도 제거 — `pipefail` 아래 SIGPIPE로 매치했는데도 실패할 수 있다
+> 7. 동시성 그룹을 **`deploy-staging`/`deploy-prod`** 로 분리 — 하나면 prod 승인 대기가 락을 쥐어 그사이 master
+>    커밋들의 staging 배포·스모크가 조용히 취소된다
+> 8. `::add-mask::`로 `DEV_AUTH_SECRET` 마스킹 · `auth`에 `project_id` 명시 · 운영자 입력을 `run:` 셸에 직접
+>    보간하지 않고 `env:` 경유
+
 **Files:**
 - Create: `.github/workflows/deploy.yml`
 - Modify: `docs/dlc/projects/forin/03-operations/01-deployment.md` (체크리스트 체크)
@@ -2136,6 +2158,21 @@ git push origin master
 
 ### Task 8: `seed.yml` — 콘텐츠 시드는 수동 트리거
 
+> ⚠️ **아래 YAML은 초안이고 정본은 `.github/workflows/seed.yml`이다.** 구현 리뷰에서 4곳이 정정됐다:
+>
+> 1. **"실제 돌고 있는 이미지"를 읽지 않았다.** `spec.template.spec.containers[0].image`는 *다음 리비전의 희망
+>    템플릿*이다. `promote.yml`이 `--no-traffic --tag=candidate`로 배포하면 그 필드는 후보 이미지로 갱신되지만
+>    트래픽은 옛 리비전에 남는다 — 승격 실패로 후보가 남은 상태에서 prod를 시드하면 **서비스되지 않는 이미지**의
+>    콘텐츠를 넣는다. → 트래픽 100% 리비전을 찾아 **그 리비전의 이미지**를 쓴다(`promote.yml`의 기존 패턴 재사용)
+> 2. **`concurrency` 그룹이 없었다.** 동시 디스패치 시 A의 `jobs update`와 `execute` 사이에 B가 이미지를 바꿔치울 수
+>    있어 A가 기록한 것과 다른 이미지로 시드된다 → `group: seed-${{ inputs.environment }}`
+> 3. **`--remove-env-vars`가 미설정 변수에 no-op 하는지 검증할 수 없었다.** `cmd/seed`가 `!= "1"`로 판정하므로
+>    `SEED_ALLOW_REMOVAL=0`이 미설정과 동등하다 → **항상 `--update-env-vars=SEED_ALLOW_REMOVAL=0|1`로 명시**해
+>    검증 못 한 도구 동작에 대한 의존을 없앤다
+> 4. 쓰지 않는 `actions/checkout`과 `contents: read` 제거(이 워크플로는 gcloud만 쓴다)
+>
+> 아래 초안의 `environment: ${{ ... || '' }}`는 **이미 본문에서 정정됐다**(빈 환경 이름은 유효하지 않다).
+
 **Files:**
 - Create: `.github/workflows/seed.yml`
 
@@ -2174,8 +2211,15 @@ env:
 jobs:
   seed:
     runs-on: ubuntu-latest
-    # Seeding production goes through the same reviewer gate as deploying it.
-    environment: ${{ inputs.environment == 'prod' && 'production' || '' }}
+    # Prod seeding's primary defence is the same as prod promotion's: this
+    # workflow only ever runs from a manual dispatch. `production` adds the
+    # reviewer gate as a second layer when it is configured.
+    #
+    # Both branches name a real environment. An earlier draft used
+    # `${{ ... || '' }}`, which yields an empty environment name for staging —
+    # not valid. Naming `staging` instead also gives each environment its own
+    # deployment history in the GitHub UI, which is useful for a destructive op.
+    environment: ${{ inputs.environment == 'prod' && 'production' || 'staging' }}
     permissions:
       contents: read
       id-token: write
