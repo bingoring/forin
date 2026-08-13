@@ -29,6 +29,8 @@ jobs:
   # settings being wired correctly in GitHub.
   verify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -131,13 +133,30 @@ jobs:
           export DEV_AUTH_SECRET
           server/scripts/e2e_smoke.sh "$URL"
 
+      # The verified tag is what makes promotion safe: it is applied only after
+      # the smoke passed, so an image that failed (or never ran) verification has
+      # no verified tag and promote cannot resolve it. Without this, every image
+      # that merely built would be promotable — separating prod into its own
+      # workflow_dispatch (see promote.yml) stops an unattended push from
+      # reaching prod, but on its own it does nothing to stop an operator from
+      # promoting a SHA whose staging job never went green.
+      - name: Tag the image as staging-verified
+        env:
+          IMAGE: ${{ needs.build.outputs.image }}
+        run: |
+          gcloud artifacts docker tags add \
+            "$IMAGE" \
+            "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/forin/api:staging-verified-${{ github.sha }}"
+
       # Promotion is a separate, human-triggered workflow (promote.yml) — it
       # takes a commit SHA as input rather than inferring "the latest staging
       # image", so the operator needs this value in front of them to copy.
+      # promote.yml resolves it to the staging-verified-<sha> tag just applied
+      # above, not the bare <sha> tag, so an unverified SHA can't be promoted.
       - name: Promotion hint
         run: |
           {
-            echo "### staging 배포 완료"
+            echo "### staging 배포 완료 — staging-verified-${{ github.sha }} 태그를 붙였다"
             echo ""
             echo "승격하려면 \`promote\` 워크플로를 실행하고 아래 값을 넣어라:"
             echo ""
