@@ -17,6 +17,16 @@ on:
         type: boolean
         default: false
 
+# Two dispatches against the same environment could otherwise interleave: A
+# resolves and logs an image, B's `jobs update` overwrites it before A's
+# `jobs execute` runs, and A silently seeds a different image than the one it
+# reported. Scoped per environment (not globally) because a staging seed has
+# no reason to block a prod seed. cancel-in-progress stays false — this is a
+# replace operation; cutting one off mid-run is worse than queuing the next.
+concurrency:
+  group: seed-${{ inputs.environment }}
+  cancel-in-progress: false
+
 env:
   PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
   REGION: asia-northeast3
@@ -29,12 +39,11 @@ jobs:
     # staging run still records an environment in the GitHub UI — useful
     # history for a replace-style operation.
     environment: ${{ inputs.environment == 'prod' && 'production' || 'staging' }}
+    # No actions/checkout: this job only talks to gcloud, it never reads a
+    # file out of the repo (same reasoning as promote.yml's production job).
     permissions:
-      contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-
       - uses: google-github-actions/auth@v2
         with:
           project_id: ${{ vars.GCP_PROJECT_ID }}
@@ -43,45 +52,56 @@ jobs:
 
       - uses: google-github-actions/setup-gcloud@v2
 
-      # Seed from the image the target service is actually running, so the
-      # content bundle matches the code that will read it (the /seed binary
-      # carries the curriculum reference IDs Task 3's guard checks against).
+      # A service's spec.template is the *desired* template for the next
+      # revision, not necessarily what's serving traffic — a --no-traffic
+      # deploy (promote.yml's candidate step) updates the template while
+      # status.traffic stays on the old revision until the traffic shift
+      # succeeds. If promotion ever fails after landing a candidate, the
+      # template points at an unpromoted image. Content has to match the code
+      # actually reading it, so resolve the revision holding 100% of traffic
+      # first, then read that revision's image — not the service's template.
       #
-      # `gcloud run services describe` returns the v1-style representation
-      # even though Terraform provisions this as a google_cloud_run_v2_service
-      # — deploy.yml/promote.yml read status.url for the same reason instead
-      # of a v2 field name. Not exercised against the real service yet: if
-      # this resolves empty on the first run, the field path is the first
-      # thing to check.
-      - name: Resolve the live image
+      # Not exercised against the real service yet: if either field path
+      # resolves empty on the first run, check the field name against the
+      # actual `gcloud run services describe` / `gcloud run revisions
+      # describe` output for this project.
+      - name: Resolve the currently serving image
         id: image
         env:
           ENVIRONMENT: ${{ inputs.environment }}
         run: |
-          IMAGE_RAW=$(gcloud run services describe "forin-api-$ENVIRONMENT" \
-            --region="$REGION" --format='value(spec.template.spec.containers[0].image)')
-          IMAGE="${IMAGE_RAW%%$'\n'*}"
-          test -n "$IMAGE" || {
-            echo "could not resolve the running image for forin-api-$ENVIRONMENT (empty result from gcloud run services describe)"
+          REV_RAW=$(gcloud run services describe "forin-api-$ENVIRONMENT" \
+            --region="$REGION" --format='value(status.traffic.filter("percent:100").extract(revisionName))')
+          REV="${REV_RAW%%$'\n'*}"
+          test -n "$REV" || {
+            echo "could not resolve the revision serving 100% of traffic for forin-api-$ENVIRONMENT"
             exit 1
           }
-          echo "seeding $ENVIRONMENT from $IMAGE"
+          IMAGE_RAW=$(gcloud run revisions describe "$REV" \
+            --region="$REGION" --format='value(spec.containers[0].image)')
+          IMAGE="${IMAGE_RAW%%$'\n'*}"
+          test -n "$IMAGE" || {
+            echo "could not resolve the image for revision $REV (forin-api-$ENVIRONMENT)"
+            exit 1
+          }
+          echo "seeding $ENVIRONMENT from revision $REV, image $IMAGE"
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
 
-      # SEED_ALLOW_REMOVAL is set on the Job only from this input, and removed
-      # when the input is off — a previous run's value must not linger past
-      # this execution and silently permit a removal nobody asked for here.
+      # Always pass SEED_ALLOW_REMOVAL explicitly rather than branching
+      # between --update-env-vars and --remove-env-vars: the seed binary
+      # (server/cmd/seed/main.go) checks `os.Getenv("SEED_ALLOW_REMOVAL") !=
+      # "1"`, so "0" and unset are already equivalent to the code. Setting it
+      # every run removes both the risk of a stale value surviving from a
+      # previous execution and any dependence on --remove-env-vars behaving
+      # as a clean no-op on a variable that was never set.
       - name: Seed
         env:
           ENVIRONMENT: ${{ inputs.environment }}
           ALLOW_REMOVAL: ${{ inputs.allow_removal }}
           IMAGE: ${{ steps.image.outputs.image }}
         run: |
-          ARGS=(--image="$IMAGE")
-          if [ "$ALLOW_REMOVAL" = "true" ]; then
-            ARGS+=(--update-env-vars=SEED_ALLOW_REMOVAL=1)
-          else
-            ARGS+=(--remove-env-vars=SEED_ALLOW_REMOVAL)
-          fi
-          gcloud run jobs update "forin-seed-$ENVIRONMENT" --region="$REGION" "${ARGS[@]}" --quiet
+          VALUE=0
+          [ "$ALLOW_REMOVAL" = "true" ] && VALUE=1
+          gcloud run jobs update "forin-seed-$ENVIRONMENT" --region="$REGION" \
+            --image="$IMAGE" --update-env-vars="SEED_ALLOW_REMOVAL=$VALUE" --quiet
           gcloud run jobs execute "forin-seed-$ENVIRONMENT" --region="$REGION" --wait
