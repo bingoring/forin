@@ -19,7 +19,8 @@ locals {
   secret_bindings = merge(
     { for pair in setproduct(local.envs, local.shared_secrets) :
     "${pair[0]}-${pair[1]}" => { env = pair[0], secret = pair[1] } },
-    { for e in local.envs : "${e}-db" => { env = e, secret = "db-password-${e}" } },
+    { for e in local.envs : "${e}-jwt" => { env = e, secret = "jwt-signing-key-${e}" } },
+    { for e in local.envs : "${e}-db" => { env = e, secret = "database-url-${e}" } },
     { for e in local.envs : "${e}-redis" => { env = e, secret = "redis-url-${e}" } },
     { "staging-devauth" = { env = "staging", secret = "dev-auth-secret-staging" } },
   )
@@ -35,10 +36,13 @@ resource "google_secret_manager_secret_iam_member" "runtime" {
 locals {
   image = "${var.region}-docker.pkg.dev/${var.project_id}/${google_artifact_registry_repository.forin.repository_id}/api"
 
-  # A unix socket, so the database needs no public IP.
-  db_url = { for e in local.envs :
-    e => "postgres://forin_${e}:${random_password.db[e].result}@/forin_${e}?host=/cloudsql/${google_sql_database_instance.pg[local.sql_owner[e]].connection_name}"
-  }
+  # Cloud Run's create call waits for the revision to become Ready, so the
+  # very first apply — before CI has ever pushed anything to `local.image` —
+  # needs a pullable image or apply fails outright. Google's own hello-world
+  # image is that placeholder. lifecycle.ignore_changes on the image field
+  # (below) means CI's first real digest sticks and this placeholder is never
+  # applied again; Terraform owns the service's shape, not its revision.
+  bootstrap_image = "us-docker.pkg.dev/cloudrun/container/hello"
 
   # Production leaves min_instances at 1 so the day's first learner does not pay
   # for a cold start; staging scales to zero because only the smoke test calls it.
@@ -71,7 +75,7 @@ resource "google_cloud_run_v2_service" "api" {
     }
 
     containers {
-      image = "${local.image}:bootstrap"
+      image = local.bootstrap_image
       ports { container_port = 8080 }
 
       volume_mounts {
@@ -84,14 +88,31 @@ resource "google_cloud_run_v2_service" "api" {
         name  = "ENV"
         value = each.value
       }
+      # Social client IDs are public identifiers (already inside the app
+      # binary), not secrets — plain env is correct here, unlike DATABASE_URL.
       env {
-        name  = "DATABASE_URL"
-        value = local.db_url[each.value]
+        name  = "GOOGLE_CLIENT_ID"
+        value = var.google_client_ids
+      }
+      env {
+        name  = "APPLE_CLIENT_ID"
+        value = var.apple_client_ids
+      }
+      env {
+        name  = "KAKAO_CLIENT_ID"
+        value = var.kakao_client_ids
+      }
+      # Empty is a graceful degrade (config.go disables /pronunciation), unlike
+      # an empty client-id list which is fail-closed for login.
+      env {
+        name  = "AZURE_SPEECH_REGION"
+        value = var.azure_speech_region
       }
       dynamic "env" {
         for_each = {
+          DATABASE_URL      = "database-url-${each.value}"
           REDIS_URL         = "redis-url-${each.value}"
-          JWT_SIGNING_KEY   = "jwt-signing-key"
+          JWT_SIGNING_KEY   = "jwt-signing-key-${each.value}"
           ANTHROPIC_API_KEY = "anthropic-key"
           OPENAI_API_KEY    = "openai-key"
           AZURE_SPEECH_KEY  = "azure-speech-key"
@@ -133,7 +154,12 @@ resource "google_cloud_run_v2_service" "api" {
     }
   }
 
-  depends_on = [google_secret_manager_secret_version.redis_url]
+  # Both versions are Terraform-authored (secrets.tf); the service must not try
+  # to read "latest" on either secret before that version exists.
+  depends_on = [
+    google_secret_manager_secret_version.redis_url,
+    google_secret_manager_secret_version.database_url,
+  ]
 }
 
 # Public: the mobile app calls these directly and does its own auth.
@@ -175,7 +201,7 @@ resource "google_cloud_run_v2_job" "ops" {
       }
 
       containers {
-        image   = "${local.image}:bootstrap"
+        image   = local.bootstrap_image
         command = [each.value.cmd]
         args    = each.value.args
 
@@ -188,11 +214,21 @@ resource "google_cloud_run_v2_job" "ops" {
           name  = "ENV"
           value = each.value.env
         }
+        # Same secret the service reads (database-url-${env}) — the job
+        # connects to the same database, so it must not carry the password in
+        # plain env either.
         env {
-          name  = "DATABASE_URL"
-          value = local.db_url[each.value.env]
+          name = "DATABASE_URL"
+          value_source {
+            secret_key_ref {
+              secret  = google_secret_manager_secret.app["database-url-${each.value.env}"].secret_id
+              version = "latest"
+            }
+          }
         }
       }
     }
   }
+
+  depends_on = [google_secret_manager_secret_version.database_url]
 }

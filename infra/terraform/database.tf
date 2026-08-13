@@ -68,6 +68,16 @@ resource "google_sql_user" "app" {
   password = random_password.db[each.value].result
 }
 
+locals {
+  # A unix socket, so the database needs no public IP. This becomes the
+  # database-url-${e} secret (secrets.tf) and is never written into a Cloud
+  # Run env value directly — runtime.tf and the ops jobs read it back via
+  # secret_key_ref.
+  db_url = { for e in local.envs :
+    e => "postgres://forin_${e}:${random_password.db[e].result}@/forin_${e}?host=/cloudsql/${google_sql_database_instance.pg[local.sql_owner[e]].connection_name}"
+  }
+}
+
 # Redis is not a cache here: RefreshStore keeps refresh-token hashes with a
 # 30-day TTL, so losing it logs everyone out. Serverless Redis in Tokyo — the
 # workload (cache, rate limit, daily reset, token store) is not latency-critical

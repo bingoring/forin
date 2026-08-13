@@ -37,12 +37,33 @@ resource "google_service_account_iam_member" "deployer_wif" {
 
 resource "google_project_iam_member" "deployer" {
   for_each = toset([
-    "roles/run.developer",                # deploy revisions, execute jobs
-    "roles/artifactregistry.writer",      # push images
-    "roles/iam.serviceAccountUser",       # act as the runtime service accounts
-    "roles/secretmanager.secretAccessor", # read the staging smoke secret
+    "roles/run.developer",           # deploy revisions, execute jobs
+    "roles/artifactregistry.writer", # push images
   ])
   project = var.project_id
   role    = each.value
   member  = "serviceAccount:${google_service_account.deployer.email}"
+}
+
+# roles/iam.serviceAccountUser is scoped to the two runtime service accounts,
+# not the project. Combined with the project-wide roles/run.developer above,
+# a project-wide serviceAccountUser would let this externally-triggerable CI
+# identity deploy Cloud Run as ANY service account in the project — including
+# the default compute SA, which commonly carries roles/editor. "Deploy the
+# API" must not become "act as project editor".
+resource "google_service_account_iam_member" "deployer_runtime_sa" {
+  for_each           = toset(local.envs)
+  service_account_id = google_service_account.runtime[each.value].name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.deployer.email}"
+}
+
+# roles/secretmanager.secretAccessor is scoped to the one secret the deploy
+# pipeline actually needs to read (the staging smoke-test bypass), not every
+# secret in the project — the project-wide role would also hand this CI
+# identity every JWT signing key and every DATABASE_URL.
+resource "google_secret_manager_secret_iam_member" "deployer_devauth" {
+  secret_id = google_secret_manager_secret.app["dev-auth-secret-staging"].id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${google_service_account.deployer.email}"
 }

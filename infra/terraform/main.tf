@@ -11,6 +11,7 @@ resource "google_project_service" "required" {
     "iamcredentials.googleapis.com",
     "iam.googleapis.com",
     "cloudresourcemanager.googleapis.com",
+    "sts.googleapis.com", # token exchange for Workload Identity Federation (wif.tf)
   ])
   service = each.value
   # Keep the APIs on if this config is ever destroyed — turning them off would

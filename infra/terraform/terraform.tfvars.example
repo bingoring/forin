@@ -1,3 +1,15 @@
 # Copy to terraform.tfvars (git-ignored) and fill in.
 upstash_email   = "you@example.com"
 upstash_api_key = "..."
+
+# Required, no default: an empty allow-list rejects every login attempt for
+# that provider (config.go), so apply must stop here rather than ship a prod
+# API with no working login path. Comma-separate when a provider issues more
+# than one client ID (e.g. Google's iOS/Android/Web ids).
+google_client_ids = "your-google-client-id.apps.googleusercontent.com"
+apple_client_ids  = "your.apple.bundle.id"
+kakao_client_ids  = "your-kakao-rest-api-key"
+
+# Optional — empty disables /pronunciation gracefully (config.go), so this can
+# be left out entirely until Azure Speech is actually wired up.
+# azure_speech_region = "eastus"
