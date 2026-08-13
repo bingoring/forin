@@ -40,4 +40,7 @@ server/gencontent
 *.tfstate.*
 *.tfvars
 !*.tfvars.example
-.terraform.lock.hcl
+# .terraform.lock.hcl is intentionally NOT ignored: it is committed so every
+# machine and CI run `init` against the same provider hashes within our `~>`
+# ranges. Upgrading a provider is a deliberate `terraform init -upgrade`, not
+# an accident of whoever inits next.

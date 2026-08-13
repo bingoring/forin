@@ -18,7 +18,12 @@ apply:
 	cd terraform && terraform apply
 
 secrets:   ## push secret VALUES that Terraform must not hold. usage: make secrets ANTHROPIC_KEY=... OPENAI_KEY=... AZURE_SPEECH_KEY=...
-	@test -n "$(ANTHROPIC_KEY)" || (echo "ANTHROPIC_KEY is required"; exit 1)
+	@# Guard every key BEFORE pushing any of them: a partial invocation would
+	@# overwrite a live secret with an empty version, and that failure only
+	@# surfaces later as an auth error.
+	@test -n "$(ANTHROPIC_KEY)"    || (echo "ANTHROPIC_KEY is required";    exit 1)
+	@test -n "$(OPENAI_KEY)"       || (echo "OPENAI_KEY is required";       exit 1)
+	@test -n "$(AZURE_SPEECH_KEY)" || (echo "AZURE_SPEECH_KEY is required"; exit 1)
 	@printf '%s' '$(ANTHROPIC_KEY)'    | gcloud secrets versions add forin-anthropic-key    --project=$(PROJECT) --data-file=-
 	@printf '%s' '$(OPENAI_KEY)'       | gcloud secrets versions add forin-openai-key       --project=$(PROJECT) --data-file=-
 	@printf '%s' '$(AZURE_SPEECH_KEY)' | gcloud secrets versions add forin-azure-speech-key --project=$(PROJECT) --data-file=-
