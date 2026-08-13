@@ -213,9 +213,30 @@ PUBLIC에 기본 부여하고, Cloud SQL Admin API로 만든 사용자는 `cloud
 > 후 삭제(DELETE)한다. 위 표의 "+$0"은 이 정리 정책이 있다는 전제에서만 유지된다.
 
 즉 **staging을 두는 대가는 월 1~2달러 수준**이고, **양 환경이 `min-instances=0`인 지금 이 설계의 고정비는 사실상
-`Cloud SQL 인스턴스 하나`뿐이다**(2026-08-13 확정 — §1). 공유 코어(`db-f1-micro`급) 인스턴스는 일반적으로 월 $8~10
-구간으로 알려져 있으나 **서울 리전 실단가는 확인하지 않았다** — 스토리지·백업·이그레스가 별도 과금이고, 공유 코어는
-SLA 대상이 아니라는 점도 함께 감안해야 한다. `terraform plan` 전에 공식 가격 계산기로 확정할 항목으로 남긴다(§10).
+`Cloud SQL 인스턴스 하나`뿐이다**(2026-08-13 확정 — §1).
+
+**서울 실단가 확정(2026-08-13)** — GCP Cloud Billing Catalog API(`services/9662-B51E-5089/skus`)로 직접 조회했다.
+공식 계산기 대신 카탈로그를 쓴 이유: 계산기 페이지는 JS 렌더라 프로그램으로 대조할 수 없고, 카탈로그는 실제 과금 SKU다.
+
+| 항목 | 서울 단가 | 월 환산 |
+|---|---|---|
+| `db-f1-micro` 인스턴스 (Zonal) | $0.0137 / hour | **~$10.00** |
+| SSD 스토리지 10GB (Zonal Standard) | ~$0.221 / GiB·month | **~$2.21** |
+| 백업·PITR | 사용량 과금(WAL + 백업 스토리지) | 초기엔 수 달러 이하 |
+
+**≈ 월 $12~14** 가 이 스테이지의 상시 고정비다. 스펙 초안의 "$8~10 구간" 추정보다 **서울이 조금 비싸다**.
+
+> 단가 도출 근거를 남긴다: 카탈로그에 `PostgreSQL: Zonal - Micro instance in Seoul` SKU가 **없고**
+> `MySQL: Zonal - Micro instance in Seoul`($0.0137)과 `PostgreSQL: Regional - Micro instance in Seoul`($0.0273)만
+> 있다. Regional은 2존이므로 정확히 2배이고, 공유 코어는 엔진 간 단가가 같다는 문서 설명과 맞아떨어진다 —
+> 따라서 Zonal PostgreSQL micro = $0.0137/hour. 스토리지도 같은 방식(Regional Standard $0.442의 절반)이며
+> `SQL Server: Zonal - Standard storage in Seoul`이 실제로 $0.221로 나와 교차 확인된다.
+> `disk_autoresize = true`이므로 스토리지 줄은 데이터가 늘면 따라 오르고 **줄어들지는 않는다.**
+
+> ⚠️ **에디션을 명시하지 않으면 이 단가가 성립하지 않는다**(첫 실제 apply에서 발견). 새 Postgres 인스턴스는
+> `ENTERPRISE_PLUS`로 기본 생성되고, 그 에디션은 공유 코어 티어를 **아예 거부**한다
+> (`Invalid Tier (db-f1-micro) for (ENTERPRISE_PLUS) Edition` — `db-perf-optimized-N-*`만 허용, 이 예산의 자릿수를
+> 넘는다). `settings { edition = "ENTERPRISE" }`를 명시해야 한다.
 
 > **prod를 1로 올리는 시점은 정해져 있다**: 실 테스터가 붙을 때(Play 비공개 테스트 12명/14일 시계가 시작될 때, §6.1).
 > 그때 콜드스타트를 먹는 사람이 처음 생기고, 그 전까지 상시 인스턴스는 아무것도 사지 않는다. 변경은 `runtime.tf`의
@@ -354,7 +375,8 @@ gcloud로 만들고, 그 이후 전부 Terraform. 자격은 로컬 1회 `gcloud 
 - 커스텀 도메인(`api.forin.app` 등)을 3-1에서 붙일지, Cloud Run 기본 URL로 시작할지 — 도메인 보유 여부에 달려 있다.
 - GitHub Environment 승인 규칙 자체를 Terraform GitHub 프로바이더로 관리할지(PAT 필요) 또는 리포 설정으로 둘지.
 - ~~Google Play 개발자 계정 유형~~ → **해소(2026-08-12): 개인 계정.** §6.1의 12명/14일 요건 적용 확정.
-- **Cloud SQL 서울 리전 실단가**(머신 타입·스토리지·백업) — §3.3의 고정비 추정을 `terraform plan` 전에 공식 계산기로 확정.
+- ~~Cloud SQL 서울 리전 실단가~~ → **해소(2026-08-13): 월 ≈$12~14**(인스턴스 ~$10 + 10GB SSD ~$2.21 + 백업).
+  Cloud Billing Catalog API로 직접 조회했다 — 도출 근거와 에디션 함정은 §3.3.
 - ~~prod `min-instances`를 처음부터 1로 둘지~~ → **해소(2026-08-13): 0으로 시작**한다. 결제 계정을 여는 시점에
   고정비를 최소화하고, 실 테스터가 붙을 때(§6.1의 12명/14일 시계) 1로 올린다. 결정 근거는 §1·§3.3.
 

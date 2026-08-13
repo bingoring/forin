@@ -1493,3 +1493,24 @@ Task 6(Cloud Run 런타임 + WIF)의 독립 리뷰가 **Critical 1 + Important 7
   대가로 **Terraform 템플릿 변경은 0% 트래픽 리비전에 실려 다음 승격에 반영된다**(§11 이연 항목 4와 같은 성질).
   즉 1로 올리는 것은 "apply 한 번"이 아니라 "apply + 승격"이다.
 - **결정자:** 사용자.
+
+## 2026-08-13 — 첫 실제 apply에서 드러난 두 가지 (문서로만은 알 수 없던 것)
+계획·리뷰·`terraform validate`를 모두 통과한 구성이 **실제 apply에서 두 곳에서 막혔다.** 둘 다 외부 플랫폼의 제약이고,
+어느 쪽도 정적 검증으로는 알 수 없었다 — 스펙 §11이 "첫 apply 관측"을 체크리스트로 남긴 이유가 이것이다.
+
+**① Cloud SQL 에디션 (코드 수정)**
+- 새 Postgres 인스턴스는 **`ENTERPRISE_PLUS`로 기본 생성**되고, 그 에디션은 공유 코어 티어를 **아예 거부**한다:
+  `Invalid Tier (db-f1-micro) for (ENTERPRISE_PLUS) Edition. Use a predefined Tier like db-perf-optimized-N-*`.
+  `db-perf-optimized-N-*`는 이 스테이지 예산의 자릿수를 넘는다.
+- → `settings { edition = "ENTERPRISE" }`를 명시. 이걸 빼면 §3.3의 월 $12~14 추정이 성립하지 않는다.
+- **교훈**: 클라우드 제공자의 *기본값*은 시간이 지나며 바뀌고, 비용에 직결되는 필드는 기본값에 맡기지 않고 명시해야 한다.
+
+**② Upstash 무료 플랜의 DB 1개 제한 (사용자 결정)**
+- `You cannot have more than 1 database(s). You can add a payment method to create more in pay as you go plan.`
+  우리는 환경별로 2개(staging·prod)를 만든다.
+- **결정: Upstash에 결제 수단을 등록해 pay-as-you-go로 전환**한다. 사용량 과금이고 이 앱의 Redis 용도(캐시·레이트리밋·
+  일일 리셋·refresh 토큰)는 요청량이 적어 유휴·초기 부하에서는 사실상 0에 가깝다.
+- **대안(탈락)**: ①staging을 Memorystore로 — 월 수십 달러 고정비 + VPC 커넥터가 붙어 Upstash 결제보다 비싸다.
+  ②DB 하나를 키 접두사로 공유 — 서버 코드 변경(9-A 범위 밖)이 필요하고, **자격증명이 샐 때 격리가 없어** 스펙 §3.2의
+  격리 이야기가 또 약해진다. Redis가 캐시가 아니라 **refresh 토큰 저장소**라는 점이 이 판단을 갈랐다.
+- **결정자:** 사용자.
