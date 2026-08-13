@@ -1,7 +1,9 @@
 name: deploy
 
-# Deploys happen from master only. staging is automatic; production waits for a
-# human because a schema change rides along with it.
+# Deploys staging only. Promoting to production is a separate, human-triggered
+# workflow (promote.yml) — see that file's header for why prod must never be
+# reachable by a push, even if a GitHub Environment protection rule is
+# missing or misconfigured.
 on:
   push:
     branches: [master]
@@ -11,7 +13,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy
+  group: deploy-staging
   cancel-in-progress: false
 
 env:
@@ -19,7 +21,44 @@ env:
   REGION: asia-northeast3
 
 jobs:
+  # server.yml and contract.yml run in parallel with this workflow on the same
+  # push — that's CI, not a gate. If deploy doesn't depend on their result, a
+  # red commit (failing tests, or a contract that drifted from the Go code)
+  # still gets built and pushed to staging. Re-run the same checks here so the
+  # deploy pipeline is self-certifying and doesn't rely on branch-protection
+  # settings being wired correctly in GitHub.
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+          cache-dependency-path: server/go.sum
+
+      - working-directory: server
+        run: go vet ./...
+      - working-directory: server
+        run: go test ./...
+      - working-directory: server
+        run: go build ./cmd/api
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: go install github.com/swaggo/swag/v2/cmd/swag@latest
+
+      - name: Regenerate contract
+        working-directory: server
+        run: make contract
+
+      - name: Fail on drift
+        run: git diff --exit-code packages/contract
+
   build:
+    needs: verify
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -31,13 +70,14 @@ jobs:
 
       - uses: google-github-actions/auth@v2
         with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
           workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
           service_account: ${{ vars.GCP_DEPLOYER_SA }}
 
       - uses: google-github-actions/setup-gcloud@v2
 
       - name: Configure docker for Artifact Registry
-        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+        run: gcloud auth configure-docker "${{ env.REGION }}-docker.pkg.dev" --quiet
 
       - id: meta
         run: echo "image=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/forin/api:${{ github.sha }}" >> "$GITHUB_OUTPUT"
@@ -59,6 +99,7 @@ jobs:
 
       - uses: google-github-actions/auth@v2
         with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
           workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
           service_account: ${{ vars.GCP_DEPLOYER_SA }}
 
@@ -79,64 +120,26 @@ jobs:
             --region="$REGION" --image="${{ needs.build.outputs.image }}" --quiet
 
       # The script ends with `[ "$FAIL" -eq 0 ] || exit 1`, so its exit code is
-      # the gate — no output parsing needed. A non-zero exit fails this job and
-      # the production job never starts.
+      # the gate — no output parsing needed. A non-zero exit fails this job,
+      # and promote.yml is a separate manual workflow that nobody has reason to
+      # run against a SHA whose staging job never went green.
       - name: Smoke test staging
         run: |
           URL=$(gcloud run services describe forin-api-staging --region="$REGION" --format='value(status.url)')
           DEV_AUTH_SECRET=$(gcloud secrets versions access latest --secret=forin-dev-auth-secret-staging)
+          echo "::add-mask::$DEV_AUTH_SECRET"
           export DEV_AUTH_SECRET
-          chmod +x server/scripts/e2e_smoke.sh
           server/scripts/e2e_smoke.sh "$URL"
 
-  production:
-    needs: [build, staging]
-    runs-on: ubuntu-latest
-    environment: production   # required reviewer gate lives here
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
-          service_account: ${{ vars.GCP_DEPLOYER_SA }}
-
-      - uses: google-github-actions/setup-gcloud@v2
-
-      - name: Migrate production
+      # Promotion is a separate, human-triggered workflow (promote.yml) — it
+      # takes a commit SHA as input rather than inferring "the latest staging
+      # image", so the operator needs this value in front of them to copy.
+      - name: Promotion hint
         run: |
-          gcloud run jobs update forin-migrate-prod \
-            --region="$REGION" --image="${{ needs.build.outputs.image }}" --quiet
-          gcloud run jobs execute forin-migrate-prod --region="$REGION" --wait
-
-      # Land the revision without traffic first, then shift. This is what makes
-      # rollback a traffic change rather than a rebuild.
-      - name: Deploy production without traffic
-        id: rev
-        run: |
-          gcloud run deploy forin-api-prod \
-            --region="$REGION" --image="${{ needs.build.outputs.image }}" --no-traffic --quiet
-          REV=$(gcloud run services describe forin-api-prod --region="$REGION" \
-                --format='value(status.latestCreatedRevisionName)')
-          echo "revision=$REV" >> "$GITHUB_OUTPUT"
-
-      - name: Verify the new revision is ready
-        run: |
-          gcloud run revisions describe "${{ steps.rev.outputs.revision }}" \
-            --region="$REGION" --format='value(status.conditions[0].status)' | grep -q True
-
-      - name: Shift traffic
-        run: |
-          gcloud run services update-traffic forin-api-prod \
-            --region="$REGION" --to-revisions="${{ steps.rev.outputs.revision }}=100" --quiet
-
-      - name: Confirm production health and that the dev bypass is absent
-        run: |
-          URL=$(gcloud run services describe forin-api-prod --region="$REGION" --format='value(status.url)')
-          curl -fsS "$URL/readyz" >/dev/null
-          CODE=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$URL/auth/dev")
-          test "$CODE" = "404" || { echo "/auth/dev answered $CODE, expected 404"; exit 1; }
-          echo "rollback if needed: gcloud run services update-traffic forin-api-prod --region=$REGION --to-revisions=<PREV>=100"
+          {
+            echo "### staging 배포 완료"
+            echo ""
+            echo "승격하려면 \`promote\` 워크플로를 실행하고 아래 값을 넣어라:"
+            echo ""
+            echo "    image_tag: \`${{ github.sha }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"

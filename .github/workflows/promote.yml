@@ -1,0 +1,154 @@
+name: promote
+
+# Production is promoted by a human running this workflow, never by a push.
+#
+# Why not just `environment: production` on a job inside deploy.yml (the
+# original design): a GitHub Environment that doesn't exist yet is
+# auto-created by GitHub with NO protection rules the first time a workflow
+# references it — it does not fail closed. If the human setup step (creating
+# the Environment, adding required reviewers) is skipped or done out of
+# order, a job gated only by `environment: production` deploys prod on the
+# very next push with no approval at all. That's a configuration-dependent
+# gate, and configuration can be missing.
+#
+# The structural fix is this file: it has only a workflow_dispatch trigger,
+# so nothing in this repo can invoke it except a human clicking Run. That
+# holds regardless of what's configured on the GitHub side. `environment:
+# production` is kept below as a second layer on top of that — if the
+# Environment *is* configured with required reviewers, the approval gate
+# still applies here too. Either layer alone is enough; both together degrade
+# gracefully if one is missing.
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Commit SHA of the image to promote (must be the SHA of a deploy.yml run whose staging job went green)'
+        required: true
+        type: string
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+env:
+  PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+  REGION: asia-northeast3
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    environment: production   # second-layer approval gate, see header above
+    permissions:
+      id-token: write   # required to mint the WIF token; no repo checkout needed
+    steps:
+      # No actions/checkout here: this job only talks to gcloud/curl, it never
+      # reads a file out of the repo.
+      - name: Validate image_tag and summarize the promotion
+        run: |
+          TAG="${{ inputs.image_tag }}"
+          echo "$TAG" | grep -qE '^[0-9a-f]{40}$' || {
+            echo "image_tag must be a 40-character hex commit SHA, got: $TAG"
+            exit 1
+          }
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/forin/api:$TAG"
+          echo "promoting $IMAGE"
+
+      - uses: google-github-actions/auth@v2
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER_SA }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      # Migrations are additive/backward-compatible by policy (see
+      # infra/README.md) — the previous revision's code keeps working against
+      # the new schema. That's what makes it safe to run the migration before
+      # the code deploy is confirmed healthy: if the deploy step below fails,
+      # traffic stays on the old revision, which still runs fine against the
+      # already-migrated schema. There is no down migration and no automatic
+      # revert here — recovery is "redeploy the code", not "undo the schema".
+      - name: Migrate production
+        run: |
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/forin/api:${{ inputs.image_tag }}"
+          gcloud run jobs update forin-migrate-prod \
+            --region="$REGION" --image="$IMAGE" --quiet
+          gcloud run jobs execute forin-migrate-prod --region="$REGION" --wait
+
+      # Capture what's serving right now, before we touch traffic, so a
+      # failure later has a concrete revision to roll back to.
+      - name: Capture currently serving revision
+        id: prev
+        run: |
+          PREV=$(gcloud run services describe forin-api-prod --region="$REGION" \
+            --format='value(status.traffic.filter("percent:100").extract(revisionName))' | head -1)
+          echo "revision=$PREV" >> "$GITHUB_OUTPUT"
+
+      # Land the revision without traffic, tagged `candidate` so it has its
+      # own URL we can probe directly before any real request reaches it.
+      - name: Deploy production without traffic
+        id: rev
+        run: |
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/forin/api:${{ inputs.image_tag }}"
+          gcloud run deploy forin-api-prod \
+            --region="$REGION" --image="$IMAGE" --no-traffic --tag=candidate --quiet
+          REV=$(gcloud run services describe forin-api-prod --region="$REGION" \
+                --format='value(status.latestCreatedRevisionName)')
+          echo "revision=$REV" >> "$GITHUB_OUTPUT"
+
+      # Ready is a named condition, not necessarily conditions[0] — the array
+      # order isn't part of the API contract. Comparing the extracted value
+      # directly (no grep) also avoids the classic pipefail flake where a
+      # short-circuiting downstream reader (e.g. `grep -q`) closes the pipe
+      # early and SIGPIPEs gcloud, failing the step even though it matched.
+      - name: Verify the new revision is ready
+        run: |
+          READY=$(gcloud run revisions describe "${{ steps.rev.outputs.revision }}" --region="$REGION" \
+            --format='value(status.conditions.filter("type:Ready").extract(status))')
+          test "$READY" = "True" || { echo "revision is not Ready: $READY"; exit 1; }
+
+      # Check the candidate BEFORE it carries any traffic. Checking after the
+      # traffic shift is too late — by then the bad revision has already
+      # served 100% of production requests, and this workflow doesn't revert
+      # traffic automatically on failure.
+      - name: Confirm candidate health and that the dev bypass is absent
+        run: |
+          CAND=$(gcloud run services describe forin-api-prod --region="$REGION" \
+            --format='value(status.traffic.filter("tag:candidate").extract(url))' | head -1)
+          test -n "$CAND" || { echo "could not find the candidate URL"; exit 1; }
+          curl -fsS "$CAND/readyz" >/dev/null
+          CODE=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$CAND/auth/dev")
+          test "$CODE" = "404" || { echo "/auth/dev on candidate answered $CODE, expected 404"; exit 1; }
+
+      # Only after the candidate proved healthy on its own URL do we move real
+      # traffic to it. --remove-tags drops the candidate URL so it doesn't
+      # linger as an unlisted way to reach whatever revision is tagged next.
+      - name: Shift traffic
+        run: |
+          gcloud run services update-traffic forin-api-prod --region="$REGION" \
+            --to-revisions="${{ steps.rev.outputs.revision }}=100" --remove-tags=candidate --quiet
+
+      - name: Confirm production is serving after the shift
+        run: |
+          URL=$(gcloud run services describe forin-api-prod --region="$REGION" --format='value(status.url)')
+          curl -fsS "$URL/readyz" >/dev/null
+
+      - name: Rollback guidance
+        if: failure()
+        run: |
+          PREV="${{ steps.prev.outputs.revision }}"
+          {
+            echo "### promote 실패"
+            echo ""
+            echo "스키마 마이그레이션은 하위호환 정책이라 이미 적용됐어도 위험하지 않다."
+            echo ""
+            if [ -n "$PREV" ]; then
+              echo "트래픽은 여전히 이전 리비전(\`$PREV\`)에 있다. 코드만 다시 배포하면 복구된다."
+              echo "candidate에 문제가 있어 실패했다면 그 태그를 지워라. 되돌리려면:"
+              echo ""
+              echo "    gcloud run services update-traffic forin-api-prod --region=$REGION --to-revisions=$PREV=100 --remove-tags=candidate"
+            else
+              echo "이전 리비전을 확인하지 못했다(첫 배포였거나, 그 단계 이전에 실패했을 수 있다)."
+              echo "Cloud Run 콘솔에서 forin-api-prod 서비스의 리비전 목록과 현재 트래픽 분배를 확인하라."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
