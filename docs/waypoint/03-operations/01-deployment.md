@@ -2,7 +2,7 @@
 phase: 03-operations
 stage: 01-deployment
 status: AI_PROPOSED
-updated: 2026-08-12
+updated: 2026-08-13
 ---
 
 # [Stage 3-1] Deployment
@@ -22,11 +22,12 @@ forin 서버(Go)와 모바일(RN/Expo)의 배포 파이프라인을 정의·구�
 
 ## 체크리스트
 
-- [ ] 모노레포 경로 필터 CI (mobile/server 독립 배포)
-- [ ] 서버 배포 (호스팅 타깃·컨테이너·환경 변수·DB 마이그레이션)
-- [ ] 모바일 배포 (EAS Build/Submit, 환경 분리, OTA 업데이트 정책)
-- [ ] 계약 코드젠 검증을 릴리스 게이트에 포함
-- [ ] IaC — GCP 리소스 전부를 Terraform으로 (콘솔 수동 작업 배제)
+- [x] 모노레포 경로 필터 CI (mobile/server 독립 배포) — **서버 측 완료**(`server/**` 필터). 모바일 CI는 9-B
+- [x] 서버 배포 (호스팅 타깃·컨테이너·환경 변수·DB 마이그레이션) — **실배포 검증 완료(2026-08-13)**
+- [ ] 모바일 배포 (EAS Build/Submit, 환경 분리, OTA 업데이트 정책) — **9-B**
+- [x] 계약 코드젠 검증을 릴리스 게이트에 포함 — `deploy.yml`의 `verify` job이 드리프트 검사를 돌린다
+- [x] IaC — GCP 리소스 전부를 Terraform으로 (콘솔 수동 작업 배제) — 콘솔 클릭 0회로 66리소스 생성.
+      자동화 못 한 경계는 §7에 명시(Upstash 가입·시크릿 값·Apple/Google 포털·GitHub Variables)
 
 ## AI 제안 (AI Proposal)
 
@@ -418,7 +419,32 @@ assert가 401이었다. 원인은 게이트가 아니라 시크릿이었다: `op
 **verified 태그 게이트가 설계대로 작동했다**: 스모크가 실패하자 `Tag the image as staging-verified`가 `skipped`됐고,
 따라서 그 SHA는 승격할 이미지가 없다. 실패한 빌드가 prod로 갈 경로가 실제로 닫혀 있음이 첫 실행에서 확인됐다.
 
-**남은 완료 판정**: 스펙 §9의 **staging 스모크 57/0**. 그전까지 이 스테이지는 닫지 않는다.
+### 11.2 완료 판정 달성 — staging 스모크 57/0 (2026-08-13)
+
+**파이프라인 전 단계 성공**([run 31681540633](https://github.com/bingoring/forin/actions/runs/31681540633)):
+`verify`(vet·test·build + 계약 드리프트) → `build` → staging `migrate` → 배포 → **`Smoke test staging` 성공** →
+`Tag the image as staging-verified` 성공. 스펙 §9의 완료 판정을 실경로에서 받았다.
+
+스모크가 통과했다는 것은 **Cloud SQL 유닉스 소켓 · Secret Manager 주입 · Upstash TLS · WIF 무키 인증 ·
+`DEV_AUTH_SECRET` 게이트 · SM-2 복습 · 평판 긴급도 · access 게이트가 전부 실경로로 엮여 동작한다**는 뜻이다.
+
+**콘텐츠 시드는 별도 수동 워크플로로 먼저 돌려야 했다.** 배포만으로는 DB가 비어 있어(`/departments` = `[]`) 다이얼로그·
+부서 상황·홈 풀·access가 실패했다(첫 통과 시도 49/57). `seed.yml`을 staging에 돌린 뒤 57/0이 됐다 — 시드를 배포에서
+분리한 설계(§5)의 실제 귀결이며, **첫 환경 구축 순서는 배포 → 시드 → 스모크**임을 기록해 둔다.
+
+**verified 태그 게이트가 양방향으로 확인됐다**: 스모크가 실패한 두 번의 실행에서는 태그 스텝이 `skipped`돼 그 SHA에
+승격할 이미지가 없었고, 통과한 실행에서 `staging-verified-99bccfd…`가 붙었다. 실패한 빌드가 prod로 갈 경로가 실제로
+닫혀 있고 통과한 빌드는 열린다.
+
+**관측④(첫 배포 후 `terraform plan`의 `traffic` diff)**: ✅ **diff 없음** — `ignore_changes`가 작동해 §11 이연 항목 4의
+위험(무관한 apply가 롤백을 되돌리는 것)이 실측으로 닫혔다. 대신 **`scaling` 블록의 영구 diff**가 새로 드러났다
+(`runtime.tf`에 KNOWN PERPETUAL DIFF로 못박음): API가 `manual_instance_count`를 항상 0으로 보고하는데 서비스 레벨
+`scaling` 스키마가 그 인자를 받지 않고 `ignore_changes`도 그 중첩 깊이에 닿지 못한다. 블록을 통째로 무시하면 문서화한
+"prod를 1로 올리기"가 조용히 무력화되므로 Terraform 소유권을 지키고 **이 diff는 대기 중 변경이 아니라는 것**을 코드
+옆에 적었다 — 서비스 plan에 그 밖의 것이 보이면 그건 진짜다.
+
+**남은 것**: 첫 **승격**(`promote.yml`)과 첫 **prod 시드**는 아직 돌지 않았다. prod는 여전히 hello 플레이스홀더를
+서빙한다 — 실사용자가 없으니 급하지 않고, 승격은 사람이 눌러야 도는 구조다(§3). 9-B(모바일)와 3-2(모니터링)가 다음이다.
 
 **이연 항목**(최종 리뷰의 fix 웨이브가 새로 만든 Minor 4건. 전부 load-bearing 아님으로 판정됨):
 1. `promote.yml`의 실패 안내가 **"shift 실패"와 "shift 미실행"을 한 문장으로 합친다.** `update-traffic`은 경로를 바꾼

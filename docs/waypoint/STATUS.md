@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v21/](inputs/design-handoff_v21/README.md) (최신)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-08-12
+**Last updated:** 2026-08-13
 
 > ✅ **홈 탭 + 동료 시스템(핸드오프 v20→v21) 구현 완료(2026-08-10).** Build Spec U1~U10 전부.
 > 서버(마이그레이션·도메인·저장소·`GET /me/home`·동료 API 13종·콘텐츠 시드) + 모바일(탭 5개·홈 10모듈·
@@ -75,7 +75,7 @@
 
 | 스테이지 | 문서 | 상태 |
 |---------|------|------|
-| 3-1 Deployment | [01-deployment.md](03-operations/01-deployment.md) | **AI_PROPOSED(2026-08-12)** — 호스팅 게이트 확정: **Cloud Run + Cloud SQL(서울)**, Redis는 **Upstash(도쿄)**. staging+prod(Cloud SQL 인스턴스 1개에 DB 2개). **이미지 하나·엔트리포인트 셋**(`/api`·`/migrate`·`/seed`, 같은 다이제스트) · 코드는 트래픽 전환으로 즉시 롤백/**스키마는 전진만**(마이그레이션 하위호환 강제) · **무키 CI(WIF)** · staging 자동+스모크 57 → **prod 수동 승격** · 콘텐츠 시드는 ID 축소 금지 게이트 + 수동 트리거 · 모바일은 `mobile.yml` 신설(tsc·jest가 CI에 없었음)·EAS 환경 분리·**OTA fingerprint 정책**·내부 트랙까지 · **IaC 전량 Terraform**(자동화 불가 경계 3종 명시). 구현은 9-A 서버 → 9-B 모바일 순 |
+| 3-1 Deployment | [01-deployment.md](03-operations/01-deployment.md) | **9-A 서버 배포 실배포 완료(2026-08-13) — staging 스모크 57/0**. 콘솔 클릭 0회로 66리소스 생성(Cloud Run 서비스2·Job4·Cloud SQL1+DB2·Upstash2·시크릿10·WIF·Artifact Registry). 파이프라인 전 단계 통과 + `staging-verified` 태그 부착 확인. **첫 실경로가 정적 검증이 못 잡은 결함 3종을 잡았다**(Cloud SQL 에디션 기본값 / gcloud 프로젝션의 `:` 부분매칭·리스트 래핑 / 시크릿 후행 개행) — §11.1. 남음: 첫 승격·prod 시드(미실행, prod는 hello 플레이스홀더), **9-B 모바일**. 이전 설계 요약: AI_PROPOSED(2026-08-12) — 호스팅 게이트 확정: **Cloud Run + Cloud SQL(서울)**, Redis는 **Upstash(도쿄)**. staging+prod(Cloud SQL 인스턴스 1개에 DB 2개). **이미지 하나·엔트리포인트 셋**(`/api`·`/migrate`·`/seed`, 같은 다이제스트) · 코드는 트래픽 전환으로 즉시 롤백/**스키마는 전진만**(마이그레이션 하위호환 강제) · **무키 CI(WIF)** · staging 자동+스모크 57 → **prod 수동 승격** · 콘텐츠 시드는 ID 축소 금지 게이트 + 수동 트리거 · 모바일은 `mobile.yml` 신설(tsc·jest가 CI에 없었음)·EAS 환경 분리·**OTA fingerprint 정책**·내부 트랙까지 · **IaC 전량 Terraform**(자동화 불가 경계 3종 명시). 구현은 9-A 서버 → 9-B 모바일 순 |
 | 3-2 Monitoring | [02-monitoring.md](03-operations/02-monitoring.md) | PENDING |
 
 ---
@@ -83,8 +83,10 @@
 ## AI 진입점
 
 > Construction(2-5~2-8) 완료 + Phase R 리뷰 게이트 통과(R-1 맵 엔진·R-2 런타임/성장/커리큘럼/캠퍼스, 채택 결함 수정·스모크 24/0).
-> **현재: Phase 3 Operations 진입 — 3-1 배포 설계 완료(AI_PROPOSED), 구현 착수 지점은 9-A 서버 배포**
-> (`cmd/migrate` 임베드 → Dockerfile 3바이너리 → `infra/terraform` → `deploy.yml` → 시드 가드; 완료 판정 = staging 스모크 57/0).
-> 그 다음 9-B 모바일(`mobile.yml`·EAS 환경 분리·OTA) → 3-2 모니터링. 병행 **콘텐츠 워크스트림**(커리큘럼 챕터 스텝 시나리오
+> **현재: 3-1의 9-A 서버 배포 실배포 완료(2026-08-13) — staging 스모크 57/0.** 서울 Cloud Run + Cloud SQL에 콘솔 클릭
+> 0회로 인프라를 세우고, `verify`(계약 드리프트 포함) → build → migrate → 배포 → 스모크 → `staging-verified` 태그까지
+> 실경로로 통과했다. **다음 진입점: 9-B 모바일**(`mobile.yml` 신설·EAS 환경 분리·`expo-updates` fingerprint·테스트 트랙).
+> Android는 개인 계정이라 **비공개 테스트 12명/14일이 출시 경로의 선행 조건**(2주 임계 경로)이므로 9-B 직후 시계를 돌린다.
+> 그 다음 3-2 모니터링. 병행 **콘텐츠 워크스트림**(커리큘럼 챕터 스텝 시나리오
 > 저작 · 평판 긴급도 250토픽 전수 검토 — 현재 14개만 태깅).
 > 규칙: [`FRAMEWORK.md`](../../FRAMEWORK.md) 참조
