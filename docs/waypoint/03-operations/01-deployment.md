@@ -109,13 +109,31 @@ Cloud Run **Job** 2종이 `/migrate`·`/seed`를 **같은 이미지 다이제스
 - `contract.yml` — 계약 재생성 후 드리프트 실패 *(기존, 릴리스 게이트로 승격)*
 - **`mobile.yml` 신설** — tsc · jest 213. 지금은 모바일 검증이 CI에 전혀 없다.
 
-**master push → 배포** (`deploy.yml` 신설)
-1. 이미지 빌드 → Artifact Registry `asia-northeast3-docker.pkg.dev/forin-504711/forin/api:<sha>`
-2. staging `migrate` Job 실행
-3. staging Cloud Run 배포
-4. **staging에 `e2e_smoke.sh` 57 assert 실행** — 실패하면 여기서 멈춘다
-5. **prod 승격 = 수동 승인**(GitHub Environment). 솔로라도 스키마가 붙은 배포에는 사람 확인 한 번을 남긴다
-6. prod `migrate` Job → prod `--no-traffic` 배포 → 트래픽 승격
+**master push → staging 배포** (`deploy.yml` 신설)
+1. **`verify`**: `go vet`·`go test`·`go build` + **계약 코드젠 드리프트 검사**. 배포 워크플로가 **자체적으로** 다시 돌린다 —
+   `server.yml`·`contract.yml`이 같은 푸시에서 병렬로 도는 것은 **게이트가 아니다**(배포가 그 결과에 의존하지 않으면
+   테스트가 빨간 커밋이 배포된다). 이 중복이 "계약 검증을 릴리스 게이트에 포함"을 사실로 만든다
+2. 이미지 빌드 → Artifact Registry `asia-northeast3-docker.pkg.dev/forin-504711/forin/api:<sha>`
+3. staging `migrate` Job 실행
+4. staging Cloud Run 배포
+5. **staging에 `e2e_smoke.sh` 57 assert 실행** — 실패하면 여기서 멈춘다. 스크립트가 `[ "$FAIL" -eq 0 ] || exit 1` 이므로
+   **종료코드가 게이트**이고 출력 파싱이 없다
+6. 승격에 쓸 이미지 SHA를 작업 요약에 출력한다
+
+**prod 승격 = 별도 수동 워크플로** (`promote.yml` 신설, `workflow_dispatch` **전용**)
+- **왜 분리했는가**(구현 리뷰에서 채택): `environment: production` 하나로는 부족하다 — 그 Environment가 **없으면 GitHub가
+  보호 규칙 없이 즉석 생성**하고 실패하지 않는다. 즉 Variables만 먼저 등록하고 Environment 생성을 건너뛰면 다음 푸시가
+  **승인 없이 prod를 배포**한다. 게이트가 리포 밖에만 있고 부재 시 기본값이 "게이트 없음"이었다.
+  → **수동 트리거 전용으로 떼면 GitHub 설정이 어떻든 사람이 누르지 않으면 prod는 돌지 않는다.** `environment: production`은
+  유지해 승인 게이트를 **2차** 방어로 얹는다. Task 4의 "설정 준수가 아니라 구조로"와 같은 해법이다.
+- 입력은 승격할 커밋 SHA(형식 검증). prod `migrate` Job → `--no-traffic --tag=candidate` 배포 →
+  **후보 태그 URL에서 `/readyz` 200과 `/auth/dev` 404를 전환 전에 검증** → 트래픽 전환(+후보 태그 제거) → 전환 후 재확인.
+  초안은 전환 **뒤에** 불변식을 검사해 "위반을 확인하고도 prod를 노출 상태로 남기는" 순서였다.
+- 실패 시 `if: failure()` 스텝이 **실제 이전 리비전 이름을 넣은 복사 가능한 롤백 명령**과 상황 요약(스키마는 적용됨 /
+  트래픽은 이전 리비전 유지 / 코드만 재배포하면 복구)을 남긴다. 초안은 롤백 안내가 `exit 1` 뒤에 있어
+  **필요한 순간에 절대 출력되지 않았다**.
+- 동시성 그룹을 `deploy-staging`/`deploy-prod`로 분리한다 — 하나로 두면 prod 승인 대기가 락을 쥐어 그사이 master 커밋들의
+  **staging 배포·스모크가 조용히 취소**된다.
 
 **인증**: Workload Identity Federation. 서비스 계정 JSON 키를 GitHub Secrets에 넣지 않는다 — 키는 유출되면 회수 시점을
 알 수 없고 만료도 없다. GitHub Secrets에는 프로젝트 ID·WIF provider 경로만 둔다.
@@ -281,6 +299,12 @@ gcloud로 만들고, 그 이후 전부 Terraform. 자격은 로컬 1회 `gcloud 
   `deploy.yml`(staging 자동 → 스모크 → prod 수동 승격) → 시드 가드. 완료 판정 = **staging에 스모크 57/0**.
 - **9-B 모바일 배포**: `mobile.yml`(tsc·jest 게이트) → `eas.json` 환경 분리 → `expo-updates` + fingerprint 정책 →
   테스트 트랙 제출(§6.1). 완료 판정 = **`preview` 설치본이 staging API에 붙어 동작**.
+
+> **9-A 구현 중 얻은 교훈**(리뷰가 잡은 결함의 성격): 검증 도구의 통과가 정책의 정합성을 뜻하지 않는다. `terraform validate`가
+> 통과한 구성에 **staging이 prod 토큰을 위조할 수 있는 경로**와 **prod에 로그인 수단이 0개**인 상태가 함께 있었고,
+> `go test`가 전부 그린인 상태에서 **폰트가 조용히 폴백**하고 있었던 것(2026-08-11)과 같은 종류다. 그래서 이 스테이지의
+> 검증은 "명령이 성공했는가"가 아니라 **"의도한 성질이 실제로 성립하는가"**를 묻는다 — 바인딩 그래프를 손으로 전개하고,
+> 프로브 행을 넣어 가드가 막는지 보고, `ENV=prod`에 시크릿을 일부러 흘려 404를 확인하는 식으로.
 
 9-A가 먼저다 — 9-B의 `EXPO_PUBLIC_API_URL`이 9-A가 만드는 staging URL을 필요로 한다.
 
