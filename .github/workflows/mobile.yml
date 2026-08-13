@@ -1,0 +1,45 @@
+name: mobile
+
+# The mobile side had no CI at all until now: tsc and 213 jest tests ran only on
+# whoever remembered to run them. `packages/contract/**` is in the path filter
+# because src/api/client.ts imports @contract/types — regenerating the contract
+# can break mobile types, and a contract-only push must still be type-checked.
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'mobile/**'
+      - 'packages/contract/**'
+      - '.github/workflows/mobile.yml'
+  pull_request:
+    paths:
+      - 'mobile/**'
+      - 'packages/contract/**'
+      - '.github/workflows/mobile.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      # `npm ci` (not install): the lockfile is the contract, and a CI run that
+      # silently resolves different versions than the developer had is not a gate.
+      - run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Test
+        run: npm test
