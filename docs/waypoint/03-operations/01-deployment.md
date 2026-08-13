@@ -385,10 +385,40 @@ gcloud로 만들고, 그 이후 전부 Terraform. 자격은 로컬 1회 `gcloud 
 **코드·설정은 마감됐다**(21커밋, 8태스크 각각 컨텍스트 분리 리뷰 통과, 전체 브랜치 최종 리뷰 통과).
 로컬 검증: `go vet`·`go test` 그린 · `terraform validate` Success · 워크플로 5개 YAML 파싱 · **로컬 스모크 57/0**.
 
-**미실행 구간**: 첫 `apply` → 첫 배포 → 첫 승격 → 첫 시드의 실경로가 한 번도 돌지 않았다. 스펙 §9의 완료 판정
-(**staging 스모크 57/0**)을 받기 전에는 이 스테이지를 닫지 않는다. 필요한 사람 작업은 §7의 "자동화할 수 없는 경계" +
-GitHub Variables 3개(`GCP_PROJECT_ID`·`GCP_WIF_PROVIDER`·`GCP_DEPLOYER_SA`) + 소셜 클라이언트 ID 3종(필수 tfvar,
-fail-closed).
+### 11.1 첫 apply·첫 배포 실측 (2026-08-13) — 정적 검증이 잡을 수 없던 결함 3종
+
+인프라는 올라왔다(Cloud Run 서비스 2 · Job 4 · Cloud SQL 1 + DB 2 · Upstash 2 · 시크릿 10 · WIF · Artifact Registry).
+`verify`(계약 드리프트 포함) → `build` → staging `migrate` → staging 배포까지 통과했다. 그 과정에서 **계획 리뷰도,
+`terraform validate`도, YAML 파싱도, 로컬 스모크 57/0도 잡을 수 없던 결함 세 개**가 드러났다. 셋 다 실제 리소스에
+명령을 쏴봐야만 보이는 부류다 — 이 절이 §11의 "첫 실행 관측" 체크리스트가 존재한 이유의 증거다.
+
+**① Cloud SQL 에디션** (§3.3에 상세) — 새 Postgres 인스턴스가 `ENTERPRISE_PLUS`로 기본 생성돼 공유 코어 티어를 **아예
+거부**했다. `edition = "ENTERPRISE"` 명시로 해결. 이걸 놓치면 월 예산이 자릿수째 달라진다.
+
+**② gcloud 프로젝션 4곳** — JSON에는 데이터가 다 있었고 `--format='value(...)'` 문법이 문제였다.
+- **`:` 는 부분 문자열 매칭이다.** `filter("type:Ready")`가 `ContainerReady`까지 잡아 `['True','True']`를 반환하고
+  deprecation 경고까지 냈다 → `filter("type=Ready")`.
+- **`extract()`는 필터된 리스트를 `['name']` 형태로 감싼다.** 그 값을 `gcloud run revisions describe`에 넘기면 실패하므로
+  `promote.yml`의 준비 확인은 **항상 빈 값을 받아 모든 승격이 실패할 상태**였다 → `.flatten()` 추가.
+- 안쪽에 `'Ready'`처럼 인용부호를 넣으면 셸의 단일 인용부호가 그 자리에서 닫힌다 → 인용부호 없는 `type=Ready` 형태.
+
+**③ 시크릿에 후행 개행이 저장돼 dev-auth 게이트가 항상 거부했다** — 첫 staging 스모크가 **15/56**으로 떨어졌고 거의 모든
+assert가 401이었다. 원인은 게이트가 아니라 시크릿이었다: `openssl rand -hex 32`이 개행을 붙여 출력하고 그게 그대로
+저장돼 **65바이트**가 됐는데, 호출측의 `$(gcloud secrets versions access)`는 후행 개행을 떼어 **64바이트** 헤더를 보낸다
+→ `ConstantTimeCompare`가 길이에서 실패 → 404 → 이후 모든 요청 401.
+- **진단을 가른 것은 응답의 형태였다**: Go 기본 평문 `404 page not found`가 아니라 핸들러의 JSON
+  `{"error":{"message":"not found"}}`가 돌아왔다 → **경로는 등록됐고 게이트가 거부했다**는 뜻. R-2 리뷰가 "staging에서
+  오시크릿 응답이 JSON이라 Go 기본 404와 구별된다"를 Minor로 이연했는데, 그 구별이 여기서 진단 도구가 됐다.
+- 수정: `infra/Makefile`의 `openssl` 출력에 `tr -d '\n'`, 그리고 `config.go`가 `DEV_AUTH_SECRET`을 `TrimSpace`한다
+  (콘솔에서 값을 붙여넣다 개행이 다시 들어오는 경로가 현실적이라 서버 쪽에서도 견디게 했다).
+- **`printf '%s'`로 밀은 시크릿(LLM·Azure 키)은 개행이 없었다** — 문제는 `openssl` 파이프 세 곳에만 있었다.
+
+**관측 결과 ①(hello 이미지가 `/readyz` 프로브를 통과하는가)**: ✅ 통과. 양 서비스 리비전이 Ready이고 트래픽 100%였다.
+
+**verified 태그 게이트가 설계대로 작동했다**: 스모크가 실패하자 `Tag the image as staging-verified`가 `skipped`됐고,
+따라서 그 SHA는 승격할 이미지가 없다. 실패한 빌드가 prod로 갈 경로가 실제로 닫혀 있음이 첫 실행에서 확인됐다.
+
+**남은 완료 판정**: 스펙 §9의 **staging 스모크 57/0**. 그전까지 이 스테이지는 닫지 않는다.
 
 **이연 항목**(최종 리뷰의 fix 웨이브가 새로 만든 Minor 4건. 전부 load-bearing 아님으로 판정됨):
 1. `promote.yml`의 실패 안내가 **"shift 실패"와 "shift 미실행"을 한 문장으로 합친다.** `update-traffic`은 경로를 바꾼
