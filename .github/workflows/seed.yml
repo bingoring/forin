@@ -1,0 +1,87 @@
+name: seed
+
+# Content seeding replaces the whole catalog inside one transaction (Task 3's
+# ContentRepo.Seed: DELETE across 6 tables, then INSERT), so it doesn't belong
+# in every code deploy — a 6.8MB replace is a different risk than shipping a
+# binary. Run this by hand when the content bundle changes.
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Which environment to seed
+        type: choice
+        options: [staging, prod]
+        required: true
+      allow_removal:
+        description: "Allow removing referenced content ids (intentional retirement)"
+        type: boolean
+        default: false
+
+env:
+  PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+  REGION: asia-northeast3
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    # Seeding production goes through the same reviewer gate as deploying it.
+    # Both branches resolve to a real Environment name (never ''), so a
+    # staging run still records an environment in the GitHub UI — useful
+    # history for a replace-style operation.
+    environment: ${{ inputs.environment == 'prod' && 'production' || 'staging' }}
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_DEPLOYER_SA }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      # Seed from the image the target service is actually running, so the
+      # content bundle matches the code that will read it (the /seed binary
+      # carries the curriculum reference IDs Task 3's guard checks against).
+      #
+      # `gcloud run services describe` returns the v1-style representation
+      # even though Terraform provisions this as a google_cloud_run_v2_service
+      # — deploy.yml/promote.yml read status.url for the same reason instead
+      # of a v2 field name. Not exercised against the real service yet: if
+      # this resolves empty on the first run, the field path is the first
+      # thing to check.
+      - name: Resolve the live image
+        id: image
+        env:
+          ENVIRONMENT: ${{ inputs.environment }}
+        run: |
+          IMAGE_RAW=$(gcloud run services describe "forin-api-$ENVIRONMENT" \
+            --region="$REGION" --format='value(spec.template.spec.containers[0].image)')
+          IMAGE="${IMAGE_RAW%%$'\n'*}"
+          test -n "$IMAGE" || {
+            echo "could not resolve the running image for forin-api-$ENVIRONMENT (empty result from gcloud run services describe)"
+            exit 1
+          }
+          echo "seeding $ENVIRONMENT from $IMAGE"
+          echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+
+      # SEED_ALLOW_REMOVAL is set on the Job only from this input, and removed
+      # when the input is off — a previous run's value must not linger past
+      # this execution and silently permit a removal nobody asked for here.
+      - name: Seed
+        env:
+          ENVIRONMENT: ${{ inputs.environment }}
+          ALLOW_REMOVAL: ${{ inputs.allow_removal }}
+          IMAGE: ${{ steps.image.outputs.image }}
+        run: |
+          ARGS=(--image="$IMAGE")
+          if [ "$ALLOW_REMOVAL" = "true" ]; then
+            ARGS+=(--update-env-vars=SEED_ALLOW_REMOVAL=1)
+          else
+            ARGS+=(--remove-env-vars=SEED_ALLOW_REMOVAL)
+          fi
+          gcloud run jobs update "forin-seed-$ENVIRONMENT" --region="$REGION" "${ARGS[@]}" --quiet
+          gcloud run jobs execute "forin-seed-$ENVIRONMENT" --region="$REGION" --wait
