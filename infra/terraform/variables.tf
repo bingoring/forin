@@ -53,16 +53,35 @@ variable "github_repo" {
 variable "google_client_ids" {
   description = "Comma-separated Google OAuth client IDs accepted as token audience"
   type        = string
+
+  # A present-but-empty value (e.g. an unset tfvar interpolated to "") would
+  # otherwise satisfy the "no default" requirement above while still landing
+  # exactly on the state this variable exists to prevent — an empty allow-list
+  # that accepts no tokens.
+  validation {
+    condition     = length(trimspace(var.google_client_ids)) > 0
+    error_message = "google_client_ids must not be empty: an empty allow-list accepts no tokens, so the provider would be silently unusable."
+  }
 }
 
 variable "apple_client_ids" {
   description = "Comma-separated Apple Sign-In client IDs accepted as token audience"
   type        = string
+
+  validation {
+    condition     = length(trimspace(var.apple_client_ids)) > 0
+    error_message = "apple_client_ids must not be empty: an empty allow-list accepts no tokens, so the provider would be silently unusable."
+  }
 }
 
 variable "kakao_client_ids" {
   description = "Comma-separated Kakao OAuth client IDs accepted as token audience"
   type        = string
+
+  validation {
+    condition     = length(trimspace(var.kakao_client_ids)) > 0
+    error_message = "kakao_client_ids must not be empty: an empty allow-list accepts no tokens, so the provider would be silently unusable."
+  }
 }
 
 # Unlike the client IDs above, an empty region is a graceful degrade, not a

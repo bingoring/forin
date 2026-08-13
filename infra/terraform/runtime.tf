@@ -155,10 +155,16 @@ resource "google_cloud_run_v2_service" "api" {
   }
 
   # Both versions are Terraform-authored (secrets.tf); the service must not try
-  # to read "latest" on either secret before that version exists.
+  # to read "latest" on either secret before that version exists. Cloud Run
+  # also refuses to create a revision whose service account cannot yet read a
+  # secret it references, so the secretAccessor grants must land before the
+  # revision does too — without this, Terraform is free to create the service
+  # and the IAM binding in either order (or concurrently), and a first apply
+  # can race and fail.
   depends_on = [
     google_secret_manager_secret_version.redis_url,
     google_secret_manager_secret_version.database_url,
+    google_secret_manager_secret_iam_member.runtime,
   ]
 }
 
@@ -230,5 +236,11 @@ resource "google_cloud_run_v2_job" "ops" {
     }
   }
 
-  depends_on = [google_secret_manager_secret_version.database_url]
+  # Same ordering requirement as the service above: the runtime SA's
+  # secretAccessor grant must exist before the job's revision is created, or
+  # Cloud Run can reject the revision on a first apply.
+  depends_on = [
+    google_secret_manager_secret_version.database_url,
+    google_secret_manager_secret_iam_member.runtime,
+  ]
 }
