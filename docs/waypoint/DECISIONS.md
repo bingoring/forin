@@ -1440,3 +1440,43 @@ Build Spec 전 유닛 구현. 서버(6테이블·`colleague` 도메인·`GET /me
   `lifecycle.ignore_changes`로 CI 소유 · 시드 가드의 참조 출처는 **영속 3곳만**(`user_presence`·일일 풀은 일시적이라 제외,
   스쳐 지난 시나리오로 콘텐츠 은퇴가 막히면 안 된다) · dirty 복구 런북을 `infra/README.md`에 둔다(2번 수동 되돌림을
   3번 force보다 먼저 — 순서를 뒤집으면 "이미 존재함"으로 또 실패한다).
+
+## 2026-08-13 — 9-A 구현 리뷰가 잡은 인프라 결함 8건 (계획서 정정)
+Task 6(Cloud Run 런타임 + WIF)의 독립 리뷰가 **Critical 1 + Important 7**을 올렸고, **전부 계획서가 지시한 코드**였다
+(구현자 이탈이 아니다). 사용자 판단으로 전부 정정. `terraform validate`가 통과한다는 것이 **IAM 그래프가 의도한 보안
+정책을 표현한다는 증거가 아니라는 점**이 이번 라운드의 교훈이다 — 스키마 검증과 정책 검증은 다른 일이다.
+
+**자격 격리**
+- **(Critical) JWT 서명 키가 환경 공유였다 → staging이 prod 토큰을 위조할 수 있었다.** 코드로 확인: `ParseAccess`는
+  HS256 서명 + 발급자만 검증하고(`domain/auth/token.go:47-54`) audience·환경 클레임이 없다. Terraform이 `JWT_ISSUER`를
+  설정하지 않아 양쪽 모두 기본값 `forin`이다. staging의 `/auth/dev`는 의도적으로 열려 있으므로 그 시크릿을 가진 쪽이
+  prod 신원을 만들 수 있었다. → `jwt-signing-key-{env}` **환경별 2개**로 분리(값도 각각 생성).
+  **대안(탈락)**: 토큰에 audience 클레임 추가 — 근원 차단이지만 서버 도메인 변경이라 9-A 범위를 넘는다. 키 분리가
+  압도적으로 짧고 앱 변경이 없다.
+- **배포 SA가 프로젝트 전역 `secretmanager.secretAccessor`** 였다(주석은 "staging 스모크 시크릿 하나"라고 적혀 있었는데
+  11개 전부 읽었다) → `dev-auth-secret-staging` **하나에만** 시크릿 단위 바인딩.
+- **배포 SA가 프로젝트 전역 `iam.serviceAccountUser`** 였다. `run.developer`와 결합하면 **아무 서비스 계정으로든** Cloud Run을
+  띄울 수 있고, 기본 컴퓨트 SA는 흔히 `roles/editor`를 가지므로 "API 배포"가 "프로젝트 편집자로 임의 코드 실행"이 된다
+  → 런타임 SA 2개에만 스코프.
+
+**apply가 실제로 성공하게** (계획서가 틀렸던 부분)
+- `:bootstrap` 태그 이미지는 존재하지 않는데 `google_cloud_run_v2_service`는 생성 시 Ready를 기다린다 → **apply가 실패한다.**
+  계획서의 "리비전이 뜨지 않는다 — 정상이다"는 사실과 달랐다. → 초기 이미지를 Cloud Run 헬로 이미지로. `ignore_changes`가
+  이미 이미지를 무시하므로 CI가 올린 다이제스트는 되돌아가지 않는다.
+- 시크릿이 `version = "latest"`인데 `make secrets`가 apply **뒤**였다 → 버전 0개로 리비전 생성 실패. → **두 단계 apply**:
+  시크릿 컨테이너만 먼저(`-target`) → `make secrets` → 전체 apply. README 순서 정정.
+- `sts.googleapis.com` 미활성 → WIF 토큰 교환 실패. 활성 API 집합에 추가.
+
+**prod가 실제로 동작하게** (기능 공백)
+- **소셜 클라이언트 ID 3종을 아무도 주지 않아 prod에 로그인 경로가 0개였다.** `verifierFor`는 목록이 비면
+  `provider not configured`로 거부하고(`adapters/auth/oidc_verifier.go:74-76`) `audienceAllowed`는 빈 허용목록에 아무것도
+  통과시키지 않는다. `/auth/dev`가 prod에 없으므로 인증 수단이 하나도 없는 상태로 뜰 예정이었다. → 평문 env로 주입하고
+  **기본값 없는 필수 tfvar**로 둔다(fail-closed: 값이 없으면 apply가 멈추는 게 로그인 불가 배포보다 낫다).
+- `AZURE_SPEECH_REGION` 미설정 → 발음 평가 오류. 이건 앱이 "비면 엔드포인트 비활성"으로 우아하게 강등하므로 기본값 `""` 허용.
+
+**DB 자격**
+- `DATABASE_URL`이 비밀번호를 보간해 Cloud Run 설정에 **평문**으로 남았다(`run.viewer`면 읽힌다). 동시에 `db-password-{env}`
+  시크릿과 그 IAM 바인딩은 **아무도 읽지 않는 장식**이었다 — 보안 태세가 실제보다 튼튼해 보이게 만드는 종류의 결함이다.
+  → 시크릿 슬롯을 `database-url-{env}`로 바꿔 **URL 전체**를 시크릿에 넣고 서비스·Job 양쪽이 `secret_key_ref`로 받는다.
+  앱은 `DATABASE_URL` 하나만 읽으므로 앱 변경이 없다. `random_password`가 state에 남는 것은 피할 수 없지만 Cloud Run
+  설정에서의 노출은 없앨 수 있다.
