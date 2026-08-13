@@ -1505,6 +1505,29 @@ git push origin master
 
 ### Task 6: Terraform — 런타임 계층 + 무키 CI 자격 (apply 포함)
 
+> ⚠️ **이 태스크의 HCL 스니펫은 구현 리뷰에서 9곳이 정정됐다.** 아래 코드는 초안이고, **실제 구현은
+> `infra/terraform/`의 파일이 정본**이다. 정정 사유의 감사 기록은 `docs/dlc/projects/forin/DECISIONS.md`
+> 2026-08-13 항목. 요약:
+>
+> 1. **`jwt-signing-key`를 환경별로 분리**(`jwt-signing-key-{env}`) — 공유 키는 staging이 prod 토큰을 위조할 수
+>    있게 했다. 토큰에 환경·audience 클레임이 없고 `JWT_ISSUER`도 양쪽 기본값이 같다
+> 2. 배포 SA의 `secretmanager.secretAccessor`를 **`dev-auth-secret-staging` 하나로** 스코프
+> 3. 배포 SA의 `iam.serviceAccountUser`를 **런타임 SA 2개로** 스코프 — project-wide면 기본 컴퓨트 SA(`roles/editor`)로
+>    임의 코드 실행이 된다
+> 4. 초기 이미지를 **`us-docker.pkg.dev/cloudrun/container/hello`** 로 — `:bootstrap`은 존재하지 않아 서비스 생성이
+>    Ready 대기에서 실패한다(아래 Step 6의 "리비전이 뜨지 않는다 — 정상이다"는 **틀렸다**)
+> 5. **두 단계 apply** — 시크릿 컨테이너만 먼저(`make secrets-containers`) → `make secrets` → 전체 apply.
+>    `version = "latest"`인 시크릿에 버전이 없으면 리비전이 뜨지 못한다
+> 6. `main.tf`의 활성 API에 **`sts.googleapis.com`** 추가 (WIF 토큰 교환)
+> 7. **소셜 클라이언트 ID 3종**을 평문 env로 주입 + 기본값 없는 필수 tfvar(+빈 문자열 `validation`) — 없으면
+>    prod에 로그인 경로가 0개다
+> 8. **`AZURE_SPEECH_REGION`** 주입 (기본값 `""` 허용 — 앱이 우아하게 강등한다)
+> 9. `DATABASE_URL`을 **시크릿으로**(`database-url-{env}`) — 평문 env는 `run.viewer`에게 DB 비밀번호를 노출했고
+>    `db-password-{env}` 시크릿은 아무도 읽지 않는 장식이었다. 서비스와 **Job 양쪽** 모두 `secret_key_ref`
+>
+> 추가로 Cloud Run 리소스의 `depends_on`에 **`google_secret_manager_secret_iam_member.runtime`** 을 넣었다 —
+> 권한 부여가 리비전보다 늦으면 Cloud Run이 그 리비전을 거부한다.
+
 **Files:**
 - Create: `infra/terraform/runtime.tf` (서비스 계정·IAM·Cloud Run 서비스·Job)
 - Create: `infra/terraform/wif.tf` (Workload Identity Federation)
@@ -1887,13 +1910,21 @@ git push origin master
 
 - [ ] **Step 1: GitHub 리포 설정 (사람)**
 
-1. Settings → Environments → **`production`** 생성 → *Required reviewers*에 본인 추가
+1. Settings → Environments → **`production`** 생성 → *Required reviewers*에 본인 추가 → *Deployment branches and tags*를
+   **`master`로 제한**(WIF가 브랜치를 고정하지 않으므로 이 설정이 브랜치 방어를 맡는다)
 2. Settings → Secrets and variables → Actions → **Variables** 에 추가:
    - `GCP_PROJECT_ID` = `forin-504711`
    - `GCP_WIF_PROVIDER` = `terraform output -raw wif_provider` 값
    - `GCP_DEPLOYER_SA` = `terraform output -raw deployer_sa` 값
 
 시크릿이 아니라 **Variables**에 두는 이유: 프로젝트 ID와 WIF provider 경로는 비밀이 아니고, 비밀이 아닌 것을 시크릿에 두면 로그가 불필요하게 마스킹된다.
+
+> **Task 6에서 이관된 고려사항**: WIF의 `attribute_condition`은 `assertion.repository`만 고정하므로 **이 리포의 어느
+> 브랜치에서도** prod 배포 토큰을 받을 수 있다. 아래 워크플로가 `master` push + `workflow_dispatch`로 트리거되고
+> prod는 GitHub Environment 승인 게이트를 지나므로 실질 위험은 그 승인이 막는다. `assertion.ref`를 `refs/heads/master`로
+> 못박으면 `workflow_dispatch`(다른 브랜치에서 실행 가능)가 깨지므로, **승인 게이트를 1차 방어로 두고 ref 고정은
+> 하지 않는다** — 대신 `production` Environment의 *Deployment branches* 설정을 `master`로 제한해 같은 효과를 얻는다.
+> Step 1에 그 설정이 포함돼 있다.
 
 - [ ] **Step 2: 워크플로 작성**
 
