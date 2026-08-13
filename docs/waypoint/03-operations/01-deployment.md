@@ -353,6 +353,31 @@ gcloud로 만들고, 그 이후 전부 Terraform. 자격은 로컬 1회 `gcloud 
 - **Cloud SQL 서울 리전 실단가**(머신 타입·스토리지·백업) — §3.3의 고정비 추정을 `terraform plan` 전에 공식 계산기로 확정.
 - prod `min-instances`를 처음부터 1로 둘지, 베타 테스터를 받는 시점에 0→1로 올릴지.
 
+### 11. 9-A 구현 완료 — 첫 apply 전 남은 것 + 이연 항목
+
+**코드·설정은 마감됐다**(21커밋, 8태스크 각각 컨텍스트 분리 리뷰 통과, 전체 브랜치 최종 리뷰 통과).
+로컬 검증: `go vet`·`go test` 그린 · `terraform validate` Success · 워크플로 5개 YAML 파싱 · **로컬 스모크 57/0**.
+
+**미실행 구간**: 첫 `apply` → 첫 배포 → 첫 승격 → 첫 시드의 실경로가 한 번도 돌지 않았다. 스펙 §9의 완료 판정
+(**staging 스모크 57/0**)을 받기 전에는 이 스테이지를 닫지 않는다. 필요한 사람 작업은 §7의 "자동화할 수 없는 경계" +
+GitHub Variables 3개(`GCP_PROJECT_ID`·`GCP_WIF_PROVIDER`·`GCP_DEPLOYER_SA`) + 소셜 클라이언트 ID 3종(필수 tfvar,
+fail-closed).
+
+**이연 항목**(최종 리뷰의 fix 웨이브가 새로 만든 Minor 4건. 전부 load-bearing 아님으로 판정됨):
+1. `promote.yml`의 실패 안내가 **"shift 실패"와 "shift 미실행"을 한 문장으로 합친다.** `update-traffic`은 경로를 바꾼
+   뒤 Ready를 기다리므로 PATCH 성공 후 대기 실패면 트래픽이 이미 넘어간 상태일 수 있고, 그 경우 "코드만 재배포하면
+   복구"가 거짓이다. C1과 같은 부류지만 롤백 명령은 그 분기에도 출력된다 → 세 번째 분기 추가로 닫힌다.
+2. `cleanup_policies`가 **스모크 실패한 staging 리비전의 이미지**를 30일 후 삭제할 수 있다(verified 태그가 없으므로).
+   다음 배포가 오면 무해해지고 staging 한정이다.
+3. `cmd/seed`의 10분 컨텍스트가 Cloud Run Job 기본 태스크 타임아웃 600초와 **정확히 같아 여유가 0** — 의도한
+   `context deadline exceeded` 메시지가 나올 수 없다(실패는 여전히 실패로 드러나므로 진단 품질만 손해).
+4. `traffic`을 `ignore_changes`에 넣은 대가로 **"Terraform 템플릿 변경(예: `DB_MAX_CONNS`)은 다음 승격까지 prod에
+   반영되지 않는다"** — I1의 의도된 대가인데 어디에도 적혀 있지 않다.
+
+**그 외 관찰**: `if: failure()`는 job 취소에는 발동하지 않는다(`failure() || cancelled()`가 더 넓다) · 양 환경이 동시에
+최대 스케일아웃하면 커넥션 합이 `db-f1-micro`의 ~25를 넘는다(예상 부하에서는 안전) · `apply`가 seed Job의
+`SEED_ALLOW_REMOVAL`을 벗기지만 워크플로가 매 실행 다시 세팅한다.
+
 ## 검토 게이트 (Human Gate)
 
 - [ ] 배포 절차가 재현 가능하고 롤백 가능한가?
