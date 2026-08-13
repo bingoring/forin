@@ -13,12 +13,26 @@
     },
     "preview": {
       "distribution": "internal",
+      "channel": "preview",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://forin-api-staging-5fqcohcf3q-du.a.run.app",
+        "EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID": "326302866749-ch2pgchtvcsgqrprfpcvgk9tvh1oiqq5.apps.googleusercontent.com",
+        "EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID": "326302866749-thrbu7do6rgtrtu6t0squ1hel30dudes.apps.googleusercontent.com",
+        "EXPO_PUBLIC_KAKAO_NATIVE_APP_KEY": "08f72ff4761dd9d698d54e82723c0258"
       }
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "channel": "production",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://forin-api-prod-5fqcohcf3q-du.a.run.app",
+        "EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID": "326302866749-ch2pgchtvcsgqrprfpcvgk9tvh1oiqq5.apps.googleusercontent.com",
+        "EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID": "326302866749-thrbu7do6rgtrtu6t0squ1hel30dudes.apps.googleusercontent.com",
+        "EXPO_PUBLIC_KAKAO_NATIVE_APP_KEY": "08f72ff4761dd9d698d54e82723c0258"
+      }
     }
   },
   "submit": {
