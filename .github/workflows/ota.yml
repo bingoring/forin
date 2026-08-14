@@ -57,6 +57,10 @@ jobs:
               echo ""
               echo "**blocked**: production only publishes from \`master\`; the update job will not run for this ref."
             fi
+            if [ "$CHANNEL" = "production" ]; then
+              echo ""
+              echo "**Before approving**: has the prod server already been promoted to \`$SHA\` (via \`promote.yml\`)? \`master\`'s JS is type-checked against \`master\`'s contract, but the prod server runs whatever image a human last promoted — publishing this OTA ahead of that promotion can point clients at endpoints the running prod server doesn't have yet."
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
   update:
@@ -100,6 +104,30 @@ jobs:
           cache-dependency-path: mobile/package-lock.json
 
       - run: npm ci
+
+      # Same gap as mobile.yml: `.expo/types/router.d.ts` is what makes a typo'd
+      # route (`router.push('/typoo')`) a type error instead of silently
+      # type-checking. It's gitignored, so it isn't here until regenerated —
+      # only `expo start`'s Metro dev server does that (see 01-deployment.md
+      # §12.2). This matters more here than in mobile.yml: a route typo is
+      # exactly the JS-only bug class this workflow exists to ship.
+      - name: Generate typed-routes declarations (for tsc)
+        run: |
+          npx expo start --port 8090 --offline > /tmp/expo-start.log 2>&1 &
+          EXPO_PID=$!
+          FOUND=0
+          for i in $(seq 1 30); do
+            if [ -f .expo/types/router.d.ts ]; then FOUND=1; break; fi
+            sleep 1
+          done
+          kill "$EXPO_PID" 2>/dev/null || true
+          sleep 1
+          pkill -f "expo start --port 8090" 2>/dev/null || true
+          if [ "$FOUND" != "1" ]; then
+            echo "::error::.expo/types/router.d.ts was not generated within 30s — tsc below would run without typed routes."
+            cat /tmp/expo-start.log
+            exit 1
+          fi
 
       # Publishing a bundle that does not type-check or pass tests would reach
       # users faster than any other path in this repo. Re-verify here rather
@@ -213,6 +241,10 @@ jobs:
           # silently a no-op, so every line below that read it would have
           # come up empty while the step still exited 0.
           UPD_GROUPS=$(jq -r '[.[].group] | unique | .[]' "$RESULT")
+          test -n "$UPD_GROUPS" || {
+            echo "eas update produced no update groups — nothing was published, or the result file has an unexpected shape."
+            exit 1
+          }
           {
             echo "### OTA update published"
             echo ""
@@ -231,4 +263,58 @@ jobs:
               echo "    npx eas-cli@21.8.0 update:rollback $GROUP"
               echo "    npx eas-cli@21.8.0 update:republish --group $GROUP"
             done
+            echo ""
+            if [ "$CHANNEL" = "production" ]; then
+              echo "Reminder: this only reaches installs of a binary already promoted to the prod server at this JS's commit — if the prod server hasn't been promoted to this SHA yet (via \`promote.yml\`), clients on it may call endpoints that don't exist."
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
+        env:
+          CHANNEL: ${{ inputs.channel }}
+
+      # §12.1 concluded that comparing the runtimeVersion above against what's
+      # actually running is the only way to know this update reached anyone —
+      # but the step above only prints that value, it never checks it. This
+      # queries EAS for a *finished* build on this channel with that exact
+      # runtimeVersion. Deliberately advisory, not a gate: the update already
+      # published and is irreversible, so a bad result here can only warn, never
+      # fail the run — failing would flag something that can't be undone as if
+      # it could be.
+      - name: Check for a matching build (best-effort)
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          CHANNEL: ${{ inputs.channel }}
+        run: |
+          RESULT="$RUNNER_TEMP/eas-update-result.json"
+          {
+            echo ""
+            echo "### Matching build check (best-effort)"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          PAIRS=$(jq -r '[.[] | {platform, runtimeVersion}] | unique | .[] | "\(.platform) \(.runtimeVersion)"' "$RESULT" 2>/dev/null) || true
+          if [ -z "$PAIRS" ]; then
+            echo "- could not read platform/runtimeVersion pairs from the publish result — skipping." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          echo "$PAIRS" | while read -r PLATFORM RUNTIME_VERSION; do
+            [ -n "$PLATFORM" ] || continue
+            if BUILDS_JSON=$(npx eas-cli@21.8.0 build:list --platform "$PLATFORM" --channel "$CHANNEL" \
+              --runtime-version "$RUNTIME_VERSION" --status finished --json --non-interactive --limit 1 2>/tmp/build-list-err.txt); then
+              COUNT=$(echo "$BUILDS_JSON" | jq 'length' 2>/dev/null)
+              case "$COUNT" in
+                0)
+                  echo "- ⚠️ \`$PLATFORM\`/\`$RUNTIME_VERSION\`: **0 finished builds** on channel \`$CHANNEL\` — this update may not reach any installed binary." >> "$GITHUB_STEP_SUMMARY"
+                  ;;
+                ''|*[!0-9]*)
+                  echo "- \`$PLATFORM\`/\`$RUNTIME_VERSION\`: unexpected \`eas build:list\` output, could not verify — check manually." >> "$GITHUB_STEP_SUMMARY"
+                  ;;
+                *)
+                  echo "- ✅ \`$PLATFORM\`/\`$RUNTIME_VERSION\`: $COUNT finished build(s) found on channel \`$CHANNEL\`." >> "$GITHUB_STEP_SUMMARY"
+                  ;;
+              esac
+            else
+              echo "- \`$PLATFORM\`/\`$RUNTIME_VERSION\`: \`eas build:list\` failed, could not verify (see job log for this step)." >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+          exit 0

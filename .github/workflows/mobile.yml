@@ -38,6 +38,36 @@ jobs:
       # silently resolves different versions than the developer had is not a gate.
       - run: npm ci
 
+      # `.expo/types/router.d.ts` is what narrows expo-router's `Href` type to a
+      # literal union of real routes — without it `Href` degrades to
+      # `string | HrefObject` and a typo'd `router.push('/typoo')` type-checks
+      # clean. The directory is gitignored (`.expo/`), so the tsc step below
+      # would otherwise run without it. Confirmed by deleting the directory and
+      # trying candidates: `expo customize tsconfig.json` and `expo export`
+      # never touch it — only `expo start`'s Metro dev server regenerates it
+      # (the type-generation code is wired into `MetroBundlerDevServer` only).
+      # `expo start` never exits on its own, so this backgrounds it, polls for
+      # the file, then kills it. See 01-deployment.md §12.2 for the full trail,
+      # including a direct before/after repro of a route typo passing tsc
+      # without this file and failing with it.
+      - name: Generate typed-routes declarations (for tsc)
+        run: |
+          npx expo start --port 8090 --offline > /tmp/expo-start.log 2>&1 &
+          EXPO_PID=$!
+          FOUND=0
+          for i in $(seq 1 30); do
+            if [ -f .expo/types/router.d.ts ]; then FOUND=1; break; fi
+            sleep 1
+          done
+          kill "$EXPO_PID" 2>/dev/null || true
+          sleep 1
+          pkill -f "expo start --port 8090" 2>/dev/null || true
+          if [ "$FOUND" != "1" ]; then
+            echo "::error::.expo/types/router.d.ts was not generated within 30s — tsc below would run without typed routes."
+            cat /tmp/expo-start.log
+            exit 1
+          fi
+
       - name: Type-check
         run: npx tsc --noEmit
 
