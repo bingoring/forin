@@ -54,4 +54,24 @@ describe('app.json / eas.json cross-file invariants', () => {
   test.each(BUILD_PROFILES)('%s channel name equals its build profile name', (profile) => {
     expect(easJson.build[profile].channel).toBe(profile);
   });
+
+  // eas-cli documents ascAppId as digits-only, max 30 — but `eas config` does
+  // NOT enforce it: probed with "680158239a" and the config loaded clean while
+  // an unknown key in the same block was rejected. So a typo'd App Store
+  // Connect ID passes every local check and only surfaces when a real
+  // `eas submit` reaches Apple, after a full build has already been spent.
+  test('submit.production.ios.ascAppId is digits-only and within length', () => {
+    const ascAppId: string = easJson.submit.production.ios.ascAppId;
+    expect(ascAppId).toMatch(/^\d+$/);
+    expect(ascAppId.length).toBeLessThanOrEqual(30);
+  });
+
+  // `eas build --profile X` reads build.X while `eas submit --profile X` reads
+  // submit.X. A submit profile with no build twin means the binary being
+  // submitted was configured by a different profile than the one named.
+  test('every submit profile has a build profile of the same name', () => {
+    for (const name of Object.keys(easJson.submit)) {
+      expect(Object.keys(easJson.build)).toContain(name);
+    }
+  });
 });
