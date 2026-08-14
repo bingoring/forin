@@ -430,6 +430,33 @@ git push origin master
 
 ### Task 4: OTA 배포 워크플로 — prod 승격과 같은 승인 게이트
 
+> ⚠️ **이 태스크의 워크플로 초안은 구현 리뷰에서 정정됐다.** 아래 YAML은 초안이고 정본은 `.github/workflows/ota.yml`이다.
+>
+> **Critical — `eas update`가 `EXPO_PUBLIC_*`를 하나도 못 받았다.** 실측으로 확인된 사실:
+> - `eas update --help`: `--environment`는 **SDK 55+에서 필수**이고 **서버측 EAS 환경변수**를 로드한다. 이 프로젝트는 SDK 56
+> - `eas update`에는 **`--build-profile` 플래그가 없다** → `eas.json`의 프로필 `env`를 **읽지 않는다**
+> - `eas env:list`가 `preview`·`production` 둘 다 "No variables found"
+> - 반면 **`eas build`에는 `--environment`가 없고** `eas config --json`의 `buildProfile.env`에 4개 키가 다 해석된다
+>   → **빌드는 멀쩡하고 결함은 OTA 경로 한정**이다
+>
+> 그대로 두면 OTA 번들이 `client.ts:10`의 폴백으로 `http://localhost:8080`을 가리키고 클라이언트 ID가 `''`가 되어
+> **로그인이 죽은 앱이 모든 사용자에게** 밀린다 — Task 2가 없애려던 조용한 폴백이 OTA 경로에서 되살아난 것이다.
+>
+> **채택된 해법**(값을 EAS 서버에 복제하면 같은 값이 두 곳에 살아 드리프트가 생긴다): `ota.yml`이 **`eas.json`에서 값을
+> 읽어 스텝 `env`로 주입**하고 `--environment "$CHANNEL"`을 붙인다. `eas.json`이 단일 진상으로 남고 리포가 번들이 무엇을
+> 받는지 계속 보여준다.
+>
+> **Important 2** — `promote.yml`의 게이트는 두 반쪽(사람이 누름 + verified 태그)인데 OTA엔 뒷 반쪽이 없다. 아무 브랜치나
+> prod 채널로 밀 수 있고 승인자는 SHA도 diff도 못 본다 → `production` 채널은 `master`에서만 돌게 `if:` 가드 + 승인 전
+> 채널·SHA·메시지를 작업 요약에 출력.
+>
+> **Important 3** — 두 가지가 조용하다: ①네이티브가 바뀐 커밋에서 OTA를 밀면 **0명에게 도달하는데 런은 green**이다
+> (안전 성질이 성공처럼 읽힌다) ②`eas update:rollback`·`update:republish`가 존재하는데 스펙·런북 어디에도 없다
+> → 요약에 해석된 runtimeVersion·업데이트 그룹 id·되돌리는 명령·"런타임이 안 맞으면 0명일 수 있다"를 적는다.
+>
+> **교훈**: `eas config`(Task 3)와 `eas update`(Task 4) 둘 다 **브리프가 CLI의 실제 동작을 추측해 쓴 것**이 틀렸다.
+> 도구의 동작은 `--help`로 확인하고 나서 계획에 적어야 한다.
+
 **Files:**
 - Create: `.github/workflows/ota.yml`
 
