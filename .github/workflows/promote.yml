@@ -161,9 +161,16 @@ jobs:
 
       # Ready is a named condition, not necessarily conditions[0] — the array
       # order isn't part of the API contract. Comparing the extracted value
-      # directly (no grep) also avoids the classic pipefail flake where a
-      # short-circuiting downstream reader (e.g. `grep -q`) closes the pipe
-      # early and SIGPIPEs gcloud, failing the step even though it matched.
+      # directly (no grep) avoids that ordering assumption.
+      #
+      # (Not a pipefail concern: this workflow never sets `shell: bash`, so
+      # every `run:` here uses the default shell, which does not enable
+      # pipefail. A downstream reader closing a pipe early and SIGPIPEing an
+      # upstream command wouldn't fail a step either way — the step's exit
+      # code would just be the last command's. An earlier version of this
+      # comment assumed pipefail was on repo-wide; it wasn't, and that wrong
+      # assumption is what let ota.yml ship a step whose failure was silently
+      # swallowed by `| tee`.)
       - name: Verify the new revision is ready
         run: |
           READY=$(gcloud run revisions describe "${{ steps.rev.outputs.revision }}" --region="$REGION" \

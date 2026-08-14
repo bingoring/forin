@@ -66,8 +66,13 @@ jobs:
     # against — workflow_dispatch lets an operator pick any branch, and
     # nothing else in this job confirms that ref was ever reviewed. Pin
     # production to master; preview is internal and isn't restricted.
-    # `success()` is explicit because adding any `if:` to a job with `needs:`
-    # replaces the implicit "only run if needs succeeded" default.
+    #
+    # `success()` here is redundant, not required: unlike a step's `if:`, a
+    # job's `if:` does not replace the implicit "only run if `needs`
+    # succeeded" default just by being present — that default is only
+    # bypassed by always()/failure()/cancelled(). Kept explicit anyway so
+    # this line is correct read on its own, without depending on the reader
+    # already knowing that job- and step-level `if:` defaults differ.
     if: success() && (inputs.channel != 'production' || github.ref == 'refs/heads/master')
     # Only the production channel needs the reviewer gate; preview is internal.
     environment: ${{ inputs.channel == 'production' && 'production' || 'preview' }}
@@ -76,6 +81,15 @@ jobs:
     defaults:
       run:
         working-directory: mobile
+        # GitHub's default shell (when `shell:` is left unset) does not
+        # enable pipefail — only an explicit `shell: bash` does. This job has
+        # two steps that pipe a command's output (the eas.json env checks
+        # below, and `eas update | tee`); without pipefail, a failure on the
+        # left side of any of those pipes is silently swallowed by the
+        # right side's exit code, letting a failed publish print "published"
+        # and exit green. Verified with `bash -e` vs `bash -eo pipefail`
+        # against the same failing pipe before writing this.
+        shell: bash
     steps:
       - uses: actions/checkout@v4
 
@@ -122,16 +136,45 @@ jobs:
             echo "eas.json build.$CHANNEL has no env block — nothing to inject."
             exit 1
           }
+
+          # These four are exactly what client.ts/auth.ts read at runtime.
+          # Checking only for blank values (as this step originally did)
+          # misses a key being deleted outright — that silently reintroduces
+          # the same dead-login/localhost fallback this step exists to
+          # prevent, with no error anywhere in the pipeline.
+          for KEY in EXPO_PUBLIC_API_URL EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID EXPO_PUBLIC_KAKAO_NATIVE_APP_KEY; do
+            echo "$ENV_JSON" | jq -e --arg k "$KEY" 'has($k)' >/dev/null || {
+              echo "eas.json build.$CHANNEL.env is missing required key: $KEY"
+              exit 1
+            }
+          done
+
+          # A non-string value (e.g. `null` from a bad edit) would still get
+          # interpolated into a KEY=VALUE line below and ship as the literal
+          # text "null" — reject it before that can happen.
+          NOT_STRING=$(echo "$ENV_JSON" | jq -r 'to_entries[] | select(.value | type != "string") | .key')
+          test -z "$NOT_STRING" || {
+            echo "eas.json build.$CHANNEL.env values must be strings, got a non-string for: $NOT_STRING"
+            exit 1
+          }
+
           BLANK=$(echo "$ENV_JSON" | jq -r 'to_entries[] | select(.value == "") | .key')
           test -z "$BLANK" || {
             echo "eas.json build.$CHANNEL.env has empty values: $BLANK"
             exit 1
           }
-          UNSAFE=$(echo "$ENV_JSON" | jq -r 'to_entries[] | select(.value | type == "string" and test("\n")) | .key')
+
+          # $GITHUB_ENV is a line-oriented KEY=VALUE file — a newline in
+          # either the key or the value lets one JSON entry inject a second,
+          # unrelated env var into every later step in this job. Checked on
+          # both key and value; the value-only check this step originally had
+          # missed the key side.
+          UNSAFE=$(echo "$ENV_JSON" | jq -r 'to_entries[] | select((.key | test("\n")) or (.value | test("\n"))) | .key')
           test -z "$UNSAFE" || {
-            echo "eas.json build.$CHANNEL.env values must not contain newlines (unsafe for \$GITHUB_ENV): $UNSAFE"
+            echo "eas.json build.$CHANNEL.env has a key or value containing a newline: $UNSAFE"
             exit 1
           }
+
           echo "$ENV_JSON" | jq -r 'to_entries[] | "\(.key)=\(.value)"' >> "$GITHUB_ENV"
 
       # --environment is required on Expo SDK 55+ (this project is on 56) even
@@ -141,7 +184,11 @@ jobs:
       # --json makes the CLI's own stdout the source of truth for what got
       # published (update group id + resolved runtimeVersion per platform) —
       # saved to a file so the next step can parse it independently of this
-      # step's own success/failure handling.
+      # step's own success/failure handling. Written to $RUNNER_TEMP, not the
+      # checked-out mobile/ tree: an untracked file inside the repo, created
+      # by this same command before eas-cli's own git-dirty check has any
+      # reason to have already run, would risk tagging every publish's
+      # gitCommitHash as coming from a dirty tree.
       - name: Publish update
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
@@ -149,7 +196,7 @@ jobs:
           MESSAGE: ${{ inputs.message }}
         run: |
           npx eas-cli@21.8.0 update --channel "$CHANNEL" --message "$MESSAGE" \
-            --environment "$CHANNEL" --non-interactive --json | tee eas-update-result.json
+            --environment "$CHANNEL" --non-interactive --json | tee "$RUNNER_TEMP/eas-update-result.json"
 
       # Fingerprint runtimeVersion fails silent by design (see header comment):
       # if native deps changed since the last build for this channel, this
@@ -160,14 +207,19 @@ jobs:
       # later isn't hunting for either fact.
       - name: Summarize what was published
         run: |
-          GROUPS=$(jq -r '[.[].group] | unique | .[]' eas-update-result.json)
+          RESULT="$RUNNER_TEMP/eas-update-result.json"
+          # Not `GROUPS` — that's a bash special variable (the caller's
+          # supplementary group ids) and a plain assignment to it is
+          # silently a no-op, so every line below that read it would have
+          # come up empty while the step still exited 0.
+          UPD_GROUPS=$(jq -r '[.[].group] | unique | .[]' "$RESULT")
           {
             echo "### OTA update published"
             echo ""
-            for GROUP in $GROUPS; do
+            for GROUP in $UPD_GROUPS; do
               echo "**update group \`$GROUP\`**"
               echo ""
-              jq -r --arg g "$GROUP" '.[] | select(.group == $g) | "- platform `\(.platform)`: runtimeVersion `\(.runtimeVersion)`"' eas-update-result.json
+              jq -r --arg g "$GROUP" '.[] | select(.group == $g) | "- platform `\(.platform)`: runtimeVersion `\(.runtimeVersion)`"' "$RESULT"
               echo ""
             done
             echo "This update only reaches installations whose runtimeVersion matches the value(s) above."
@@ -175,7 +227,7 @@ jobs:
             echo ""
             echo "To roll back a group:"
             echo ""
-            for GROUP in $GROUPS; do
+            for GROUP in $UPD_GROUPS; do
               echo "    npx eas-cli@21.8.0 update:rollback $GROUP"
               echo "    npx eas-cli@21.8.0 update:republish --group $GROUP"
             done
