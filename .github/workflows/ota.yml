@@ -24,6 +24,10 @@ on:
         description: Update message (shown in the EAS dashboard)
         type: string
         required: true
+      allow_fingerprint_mismatch:
+        description: Publish even if the newest build on this channel cannot receive it
+        type: boolean
+        default: false
 
 concurrency:
   group: ota-${{ inputs.channel }}
@@ -46,6 +50,7 @@ jobs:
           MESSAGE: ${{ inputs.message }}
           SHA: ${{ github.sha }}
           REF: ${{ github.ref }}
+          ALLOW_MISMATCH: ${{ inputs.allow_fingerprint_mismatch }}
         run: |
           {
             echo "### OTA dispatch requested"
@@ -53,6 +58,13 @@ jobs:
             echo "- channel: \`$CHANNEL\`"
             echo "- commit: \`$SHA\` (\`$REF\`)"
             echo "- message: $MESSAGE"
+            # An approver needs to see this before approving, not after: it
+            # turns the reachability gate into a warning, which is the one
+            # input here that can let a zero-device publish through.
+            if [ "$ALLOW_MISMATCH" = "true" ]; then
+              echo ""
+              echo "⚠️ **\`allow_fingerprint_mismatch\` is set** — the reachability gate will warn instead of blocking, so this may publish an update that no installed build can receive."
+            fi
             if [ "$CHANNEL" = "production" ] && [ "$REF" != "refs/heads/master" ]; then
               echo ""
               echo "**blocked**: production only publishes from \`master\`; the update job will not run for this ref."
@@ -205,6 +217,86 @@ jobs:
 
           echo "$ENV_JSON" | jq -r 'to_entries[] | "\(.key)=\(.value)"' >> "$GITHUB_ENV"
 
+      # An update is only offered to a binary whose runtimeVersion equals the
+      # update's, so a fingerprint mismatch means this run reaches ZERO devices
+      # while exiting green (01-deployment.md §12.1). §12.4 showed how easily
+      # that happens without anyone touching a native dependency: the first
+      # interactive `eas build` wrote an export-compliance answer into app.json
+      # — itself a fingerprint input — and left uncommitted, so master computed
+      # a different hash than the IPA already uploaded to TestFlight. The
+      # post-publish check further down cannot help there: `eas update` has no
+      # un-publish. So the comparison has to happen here, before publishing.
+      #
+      # `eas fingerprint:compare` is deliberately NOT the gate: it exits 0 on
+      # BOTH match and mismatch (verified by perturbing a fingerprint input —
+      # still exit 0, only the prose changed from "matches" to "differs from"),
+      # so `compare || exit 1` would never once fire. Compare the hashes
+      # directly and print both.
+      - name: Refuse to publish an update no installed build can receive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          CHANNEL: ${{ inputs.channel }}
+          ALLOW_MISMATCH: ${{ inputs.allow_fingerprint_mismatch }}
+        run: |
+          {
+            echo ""
+            echo "### Fingerprint reachability check"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          MISMATCHED=''
+          for PLAT in ios android; do
+            BUILDS=$(npx eas-cli@21.8.0 build:list --platform "$PLAT" --channel "$CHANNEL" \
+              --status finished --limit 1 --json --non-interactive 2>/dev/null) || BUILDS=''
+            BUILD_HASH=$(echo "$BUILDS" | jq -r '.[0].fingerprint.hash // empty' 2>/dev/null) || BUILD_HASH=''
+
+            # No build yet is legitimate (this is how the first preview OTA
+            # ran) — say so plainly instead of blocking, because there is
+            # nothing this update could fail to reach.
+            if [ -z "$BUILD_HASH" ]; then
+              echo "- \`$PLAT\`: no finished build on channel \`$CHANNEL\` — nothing to compare, and nothing to reach." >> "$GITHUB_STEP_SUMMARY"
+              continue
+            fi
+
+            # Channel name == build profile name; deployConfig.test.ts enforces
+            # that pairing on every push, so $CHANNEL is a valid profile here.
+            LOCAL_HASH=$(npx eas-cli@21.8.0 fingerprint:generate --platform "$PLAT" \
+              --build-profile "$CHANNEL" --json --non-interactive 2>/dev/null \
+              | jq -r '.hash // empty') || LOCAL_HASH=''
+            if [ -z "$LOCAL_HASH" ]; then
+              echo "::error::could not compute this commit's $PLAT fingerprint — refusing to publish without knowing what it would reach."
+              exit 1
+            fi
+
+            if [ "$LOCAL_HASH" = "$BUILD_HASH" ]; then
+              echo "- ✅ \`$PLAT\`: \`$LOCAL_HASH\` — matches the newest finished build on \`$CHANNEL\`." >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- ❌ \`$PLAT\`: this commit is \`$LOCAL_HASH\`, newest finished build is \`$BUILD_HASH\`." >> "$GITHUB_STEP_SUMMARY"
+              MISMATCHED="$MISMATCHED $PLAT"
+            fi
+          done
+
+          if [ -n "$MISMATCHED" ]; then
+            {
+              echo ""
+              echo "**Fingerprint mismatch:$MISMATCHED**"
+              echo ""
+              echo "This commit changed a fingerprint input relative to the newest build, so the update would"
+              echo "not be offered to it. Usual causes: an \`app.json\`/\`eas.json\` edit (including ones a tool"
+              echo "wrote for you), a dependency change, or a build that predates the change."
+              echo ""
+              echo "Fix by building for the mismatched platform(s). Re-dispatch with"
+              echo "\`allow_fingerprint_mismatch\` only if you mean to publish for the other platform alone."
+            } >> "$GITHUB_STEP_SUMMARY"
+
+            if [ "$ALLOW_MISMATCH" = "true" ]; then
+              echo "::warning::publishing despite a fingerprint mismatch for:$MISMATCHED — allow_fingerprint_mismatch was set."
+            else
+              echo "::error::fingerprint mismatch for:$MISMATCHED — this update would reach zero devices there. See the run summary."
+              exit 1
+            fi
+          fi
+
       # --environment is required on Expo SDK 55+ (this project is on 56) even
       # though it has nothing to load here — see the env-injection step above
       # for why the actual EXPO_PUBLIC_* values come from eas.json instead.
@@ -279,6 +371,12 @@ jobs:
       # published and is irreversible, so a bad result here can only warn, never
       # fail the run — failing would flag something that can't be undone as if
       # it could be.
+      #
+      # Not redundant with the pre-publish reachability gate above, which asks a
+      # different question: that one checks the hash this commit *would* build
+      # to, this one checks the runtimeVersion `eas update` *actually* stamped.
+      # §12.4's lesson is that tools rewrite fingerprint inputs, so "what we
+      # gated on" and "what shipped" deserve separate evidence.
       - name: Check for a matching build (best-effort)
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
