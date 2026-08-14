@@ -2,7 +2,7 @@
 phase: 03-operations
 stage: 01-deployment
 status: AI_PROPOSED
-updated: 2026-08-14
+updated: 2026-08-15
 ---
 
 # [Stage 3-1] Deployment
@@ -25,7 +25,7 @@ forin 서버(Go)와 모바일(RN/Expo)의 배포 파이프라인을 정의·구�
 - [x] 모노레포 경로 필터 CI (mobile/server 독립 배포) — **서버 측 완료**(`server/**` 필터). 모바일 CI는 **완료**
 - [x] 서버 배포 (호스팅 타깃·컨테이너·환경 변수·DB 마이그레이션) — **실배포 검증 완료(2026-08-13)**
 - [x] 모바일 배포 (EAS Build/Submit, 환경 분리, OTA 업데이트 정책) — **배선 완료(2026-08-13~14)**.
-      실제 빌드·제출은 Play 계정 신원확인·Apple 멤버십 대기
+      실제 빌드·제출은 Play 계정 신원확인 대기. **Apple 멤버십은 2026-08-15 승인돼 iOS 제출 절 배선 완료(§12.3)**
 - [x] 계약 코드젠 검증을 릴리스 게이트에 포함 — `deploy.yml`의 `verify` job이 드리프트 검사를 돌린다
 - [x] IaC — GCP 리소스 전부를 Terraform으로 (콘솔 수동 작업 배제) — 콘솔 클릭 0회로 66리소스 생성.
       자동화 못 한 경계는 §7에 명시(Upstash 가입·시크릿 값·Apple/Google 포털·GitHub Variables)
@@ -540,11 +540,10 @@ runtimeVersion을 계산된 지문으로 해석함을 확인"이라 적었는데
 `internal`로 뒀다면 배선은 맞아 보여도 2주 시계가 영영 시작되지 않았을 것이다. `releaseStatus: "draft"`로 업로드와
 공개를 분리해, 빌드가 Play Console에 올라간 뒤 사람이 확인하고 공개하게 한다. **다만 `draft`는 그 자체로 `alpha`를
 고른 목적(12명/14일 시계)을 무효화할 수 있다** — draft는 롤아웃되지 않으므로 사람이 Console에서 공개 버튼을 누를
-때까지 그 시계가 시작되지 않는다. 업로드가 끝났다고 시계가 도는 게 아니라, **공개까지 사람이 확인해야** 한다. iOS는 의도적으로 비웠다 — Apple
-Developer 멤버십이 없어 제출 경로 자체가 없다(2026-08-13 확인). 멤버십 확보 후 `submit.production.ios.ascAppId`를
-추가한다.
+때까지 그 시계가 시작되지 않는다. 업로드가 끝났다고 시계가 도는 게 아니라, **공개까지 사람이 확인해야** 한다. iOS는
+작성 시점(2026-08-13)에 Apple Developer 멤버십이 없어 의도적으로 비웠다 — **2026-08-15에 멤버십이 승인돼 배선했다(§12.3).**
 
-**미실행으로 남은 것**: Apple Developer 멤버십 없음(iOS 제출 불가) · Play 개발자 계정 신원확인 진행 중(앱 미생성) ·
+**미실행으로 남은 것**: Play 개발자 계정 신원확인 진행 중(앱 미생성) ·
 **Google Play 서비스 계정 JSON 키(Play Developer API용) 미발급** — `eas submit --platform android`가 요구하는
 자격증명이고, `eas.json`의 `submit.production.android`에도 아직 없다. Play 신원확인이 끝나도 이건 별개로 막는
 항목이다. 관련해서 **"최초 Android 릴리스는 Play Console 수동 업로드가 선행해야 하는가"는 실측 전이라 미확정으로
@@ -565,9 +564,18 @@ pipefail을 켠다), `env:`에 4개 값이 **staging URL과 함께** 주입됐�
 증명하지만 `eas update`가 `app.json`의 정책을 소비하는지는 실제 발행 없이 알 수 없다"고 범위를 좁혀 **첫 실제 빌드
 관측 항목**으로 남겼던 것이다. 결과:
 
-- 발행된 업데이트의 `runtimeVersion` = **`d45c0fe445c43a091a8c9bfcfd4e5d432936a856`** — 정책 문자열도 `1.0.0`(appVersion)도
-  아닌 **40자 지문 해시**다. 로컬 `fingerprint:generate`가 같은 시점에 계산한 값과 **정확히 일치**한다
+- 발행된 업데이트의 `runtimeVersion`이 정책 문자열도 `1.0.0`(appVersion)도 아닌 **40자 지문 해시**다. 로컬
+  `fingerprint:generate`가 같은 시점에 계산한 값과 **정확히 일치**한다
   → **`eas update`는 fingerprint 정책을 실제로 소비한다.** 설계 의도가 성립한다
+
+> **정정 (2026-08-15)**: 위 문장을 처음 쓸 때 `runtimeVersion`을 **단수로** 적고 `d45c0fe4…` 하나만 인용했다.
+> 실제로는 **지문이 플랫폼별로 다르고**, 이 발행은 업데이트 그룹을 **둘** 만들었다(`eas update:list --branch preview`로 확인):
+> `android` = `d45c0fe445c43a091a8c9bfcfd4e5d432936a856`, `ios` = `51033673f568246cd175b114b986f16df363f816`.
+> Task 3의 대조 명령이 `--platform android`였으므로(§12.1 위) **대조된 것은 android 한쪽뿐이고 ios 값은 비교조차
+> 하지 않았는데, 문장은 양쪽에 대한 결론처럼 읽혔다.** 결론 자체("`eas update`가 정책을 소비한다")는 android 실측으로
+> 유효하지만, 근거의 범위는 한 플랫폼이었다. `ota.yml`의 요약과 빌드 대조는 원래부터 `(platform, runtimeVersion)`
+> 쌍을 순회하므로 **코드는 옳았고 문서의 서술만 틀렸다.** 이 브랜치가 반복해서 잡아낸 실패 모드를 문서 작성자가
+> 다시 밟은 사례로 남긴다 — 한 플랫폼에서 확인한 것을 "일치한다"로 일반화하지 않는다.
 
 **그리고 예상보다 중요한 성질이 드러났다.** Task 3 당시의 지문은 `3d77aa75…`였는데 지금은 `d45c0fe4…`다. 원인을 좁혀
 확인했다:
@@ -618,6 +626,69 @@ tsconfig.json`·`npx expo export`는 그 디렉터리를 건드리지 않았다.
 **직접 재현해 검증**: `router.push('/review')`를 `router.push('/typoo')`로 임시로 바꾼 뒤 — `.expo/types`가 있으면
 `tsc --noEmit`이 `TS2345`로 실패, 없으면 같은 코드가 **종료코드 0으로 통과**함을 확인했다(원복 완료). CI에 넣은
 스텝이 실제로 이 차이를 메운다.
+
+### 12.3 iOS 제출 절 배선 (2026-08-15) — Apple 멤버십 승인 후
+
+Play 개발자 계정 신원확인이 지연돼 **Apple을 먼저 진행했다.** TestFlight에는 §6.1의 12명/14일 요건이 없어(내부
+테스트는 심사 없이 즉시, 외부 테스트만 가벼운 Beta App Review) iOS가 먼저 실기기 배포에 도달할 가능성이 높다.
+
+**개인(Individual) 등록을 골랐다.** 조직(Organization) 등록은 D-U-N-S 번호가 선행 요건이고 그것만 1~2주라, Play를
+기다리는 상황을 하나 더 만든다. Play도 개인 계정이므로 두 스토어의 개발자명이 일관된다. 대가는 App Store 판매자명이
+법인명이 아닌 **본인 법적 이름**이 되는 것이고, 나중에 조직으로 바꾸려면 별도 요청과 앱 이관이 필요하다.
+
+**포털 등록에서 켠 capability는 `Sign In with Apple` 하나뿐이다.** 추측이 아니라 prebuild가 생성한
+`ios/forin/forin.entitlements`를 읽어 정했다 — entitlement가 `com.apple.developer.applesignin` = `Default`
+하나다. `expo-notifications`가 의존성에 없으므로 Push Notifications는 켜지 않았고, 마이크는 capability가 아니라
+Info.plist 사유 문구 사안이라(`expo-audio` 플러그인이 한국어 문구를 주입하고 생성된 Info.plist에서 확인됨) 포털에서
+할 일이 없다. **필요 없는 capability를 켜면 프로비저닝 프로파일이 entitlements와 어긋나 빌드가 깨진다.**
+
+Apple 심사 지침 4.8(소셜 로그인 제공 앱은 Sign in with Apple을 제공해야 함)은 **이미 충족돼 있었다** — 클라이언트
+(`mobile/src/lib/auth.ts`, `isProviderConfigured('apple')`가 네이티브라 무조건 `true`)와 서버(`APPLE_CLIENT_ID` →
+`cfg.AppleClientIDs`) 양쪽 배선이 되어 있고, 배포된 prod에 `APPLE_CLIENT_ID = app.forin.mobile`이 주입돼 있다
+(Terraform `runtime.tf:131` — 수동 설정이 아니라 IaC 소관). 네이티브 Apple 로그인 id_token의 audience는 번들 ID이므로
+값도 맞다.
+
+**배선한 것**: `eas.json`의 `submit.production.ios.ascAppId = "6801582391"`. **이 한 필드뿐이다.**
+
+- `ascAppId`는 `eas.json`에서 선택이지만 **비대화형에서는 필수**이고, **환경변수 보간 대상이 아니라서**(보간되는 건
+  `ascApiKeyPath`·`ascApiKeyId`·`ascApiKeyIssuerId` 셋뿐) 리터럴로 파일에 있어야 한다. 공개 식별자라 커밋해도 된다
+- ASC API 키는 **EAS credentials 서비스**에 올린다 → `eas.json`에 비밀이 하나도 안 들어간다. 9-A/9-B에서 세운
+  "실제 비밀은 관리형 저장소, `eas.json`/git에는 절대 안 넣는다" 원칙 그대로다
+- `appleTeamId`·`appleId`·`language`·`companyName`도 스키마가 허용함을 실측했지만 **넣지 않았다.** 비대화형 제출에
+  필요한 건 `ascAppId`이고, 팀이 하나라 모호성이 없다. 리터럴이 적을수록 드리프트할 것도 적다.
+  (참고: Team ID = App ID Prefix = `Y92U46899J`)
+
+**`eas config`가 잡는 것과 못 잡는 것을 실측으로 갈랐다.**
+
+- 못 쓰는 키는 **거부한다**: `submit.production.ios.totallyBogusField`를 넣으면 `eas config`·`eas submit` 모두
+  `"...is not allowed"`로 로드 자체를 실패시킨다. 즉 오타 난 **키**는 로컬에서 잡힌다
+- **값의 형식은 검증하지 않는다**: eas-cli가 문서상 `ascAppId`에 `/^\d+$/`(30자 이하)를 걸어두는데, `"680158239a"`를
+  넣고 `eas config`를 돌리면 **깨끗하게 통과한다.** 즉 **App ID 오타는 모든 로컬 검사를 통과하고, 빌드를 하나 다 쓴
+  뒤 실제 `eas submit`이 Apple에 닿을 때야 드러난다**
+
+그래서 그 공백을 §12의 M1 테스트(`mobile/src/config/deployConfig.test.ts`)에 넣었다 — `ascAppId`가 숫자 전용·30자
+이하인지, 그리고 **모든 `submit` 프로필이 같은 이름의 `build` 프로필을 갖는지**(짝이 없으면 제출되는 바이너리가
+이름과 다른 프로필로 설정된 것이다) push 시점에 검사한다. 39 suites / **221 tests**.
+
+**순서가 중요했다: `eas.json`을 먼저 확정하고 그 다음에 빌드한다.** §12.1에서 밝혀진 대로 `eas.json`은 파일 해시로
+지문 입력이므로, 빌드부터 하고 나중에 `ascAppId`를 넣으면 그 빌드의 `runtimeVersion`이 이후 OTA와 어긋나
+**TestFlight에 나간 빌드가 OTA 수정을 영영 못 받는다.** iOS·Android 빌드가 아직 하나도 없어 지금 확정하는 비용은 0이다.
+이 편집으로 지문은 실제로 바뀌었고, **첫 빌드가 가질 값**은 다음이다(플랫폼별로 다르다):
+
+| 플랫폼 | 편집 전(발행된 OTA) | 편집 후(첫 빌드가 가질 값) |
+|---|---|---|
+| ios | `51033673f568246cd175b114b986f16df363f816` | **`4a432b4847a1fc7ff1e56412a98cafbef42b396f`** |
+| android | `d45c0fe445c43a091a8c9bfcfd4e5d432936a856` | **`9ef5e7accb9fd39a5b351c833f82c9015a33b922`** |
+
+즉 §12.1에서 발행한 preview OTA는 **이제 어떤 빌드에도 도달하지 않는다.** 서빙할 빌드가 애초에 없었으므로 손실은
+없지만, 이것이 §12.1의 운영 규칙("`eas.json`을 고쳤으면 OTA로 전달할 수 없다 — 새 빌드가 필요하다")이 실제로
+발동한 첫 사례다.
+
+**남은 미실행**: **ASC API 키(.p8) 미발급** — App Store Connect → Users and Access → Integrations에서 App Manager
+역할로 발급하고 `.p8`은 한 번만 다운로드된다. **리포에 두지 않고 `eas credentials`로 EAS에 올린다.** 그리고 **첫
+`eas build --platform ios`는 반드시 대화형이어야 한다** — eas-cli 소스에서 확인: 비대화형 모드는 Distribution
+Certificate를 **생성할 수 없고**(`MissingCredentialsNonInteractiveError`) 기존 인증서 재사용만 된다. 즉 첫 빌드는
+Apple 로그인 + 2FA가 필요해 사람이 직접 실행해야 하고, CI에서 돌릴 수 없다. 이후 빌드는 비대화형으로 재사용된다.
 
 ## 검토 게이트 (Human Gate)
 
