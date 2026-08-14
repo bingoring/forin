@@ -2,7 +2,7 @@
 phase: 03-operations
 stage: 01-deployment
 status: AI_PROPOSED
-updated: 2026-08-13
+updated: 2026-08-14
 ---
 
 # [Stage 3-1] Deployment
@@ -465,9 +465,11 @@ assert가 401이었다. 원인은 게이트가 아니라 시크릿이었다: `op
 
 ### 12. 9-B 모바일 배포 (2026-08-13~14)
 
-**범위**: `mobile.yml`(CI) · EAS 프로필 환경 분리 · `expo-updates`+fingerprint 정책 · `ota.yml` · 제출 트랙. 4태스크
-7커밋(`d51e1b7`~`ec8a411`), 전부 컨텍스트 분리 리뷰 통과. 9-A와 달리 **아직 실제 배포가 없다** — 아래는 전부 배선과
-로컬/CI 검증이고, 첫 `eas build`는 §11의 "첫 실행 관측"과 같은 성격의 미결 항목으로 남는다.
+**범위**: `mobile.yml`(CI) · EAS 프로필 환경 분리 · `expo-updates`+fingerprint 정책 · `ota.yml` · 제출 트랙. **5태스크
+11커밋**(`d51e1b7`~`87660a9`) — 최종 리뷰가 잡은 카운트 오류를 정정한다: 초안은 "4태스크 7커밋(`d51e1b7`~`ec8a411`)"이라
+적었는데 바로 아래 ①~⑤가 다섯 개이고 ⑤(`87660a9`)가 그 범위 밖이었다. 전부 컨텍스트 분리 리뷰 통과. **9-A와 달리
+착수 시점엔 실제 배포가 없었으나, §12.1에서 첫 실제 OTA 발행까지 갔다** — 아래 ①~⑤는 배선과 로컬/CI 검증이고,
+첫 `eas build`/`eas submit`은 여전히 §11의 "첫 실행 관측"과 같은 성격의 미결 항목으로 남는다.
 
 **① `mobile.yml` 신설**(`d51e1b7`) — 착수 전 감사(§0)가 확인한 공백("모바일 검증이 CI에 하나도 없음")을 닫았다.
 경로 필터에 `mobile/**`뿐 아니라 `packages/contract/**`도 넣었다: `client.ts`가 `@contract/types`를 임포트하므로
@@ -536,14 +538,21 @@ runtimeVersion을 계산된 지문으로 해석함을 확인"이라 적었는데
 **⑤ 제출 트랙 — `alpha`(비공개), `internal` 아님** — 개인 Play 개발자 계정은 프로덕션 접근을 얻기 위해 §6.1의
 **비공개 테스트에서 12명 이상 옵트인 테스터를 14일간** 유지해야 하고, **내부 테스트는 이 요건에 카운트되지 않는다.**
 `internal`로 뒀다면 배선은 맞아 보여도 2주 시계가 영영 시작되지 않았을 것이다. `releaseStatus: "draft"`로 업로드와
-공개를 분리해, 빌드가 Play Console에 올라간 뒤 사람이 확인하고 공개하게 한다. iOS는 의도적으로 비웠다 — Apple
+공개를 분리해, 빌드가 Play Console에 올라간 뒤 사람이 확인하고 공개하게 한다. **다만 `draft`는 그 자체로 `alpha`를
+고른 목적(12명/14일 시계)을 무효화할 수 있다** — draft는 롤아웃되지 않으므로 사람이 Console에서 공개 버튼을 누를
+때까지 그 시계가 시작되지 않는다. 업로드가 끝났다고 시계가 도는 게 아니라, **공개까지 사람이 확인해야** 한다. iOS는 의도적으로 비웠다 — Apple
 Developer 멤버십이 없어 제출 경로 자체가 없다(2026-08-13 확인). 멤버십 확보 후 `submit.production.ios.ascAppId`를
 추가한다.
 
 **미실행으로 남은 것**: Apple Developer 멤버십 없음(iOS 제출 불가) · Play 개발자 계정 신원확인 진행 중(앱 미생성) ·
-`EXPO_TOKEN` 미등록(`ota.yml` 실행 불가) · 실제 `eas build`/`eas submit`은 단 한 번도 실행되지 않았다 — 첫 빌드는
-카카오 SDK·애플 인증 같은 네이티브 의존이 **EAS 빌더에서 처음 컴파일되는 지점**이라 새로운 종류의 실패가 나올 수
-있다. 9-A의 교훈대로 "배선이 맞다"와 "실제로 돈다"는 다른 사건이다.
+**Google Play 서비스 계정 JSON 키(Play Developer API용) 미발급** — `eas submit --platform android`가 요구하는
+자격증명이고, `eas.json`의 `submit.production.android`에도 아직 없다. Play 신원확인이 끝나도 이건 별개로 막는
+항목이다. 관련해서 **"최초 Android 릴리스는 Play Console 수동 업로드가 선행해야 하는가"는 실측 전이라 미확정으로
+남긴다** — §7의 "`eas submit` 자격증명은 1회 수동, 이후 자동"이라는 전제와 상충할 수 있다(신규 앱은 API 제출 전에
+콘솔 수동 업로드가 한 번 필요하다는 보고가 있으나 이 프로젝트에서 확인한 사실은 아니다) · 실제 `eas build`/
+`eas submit`은 단 한 번도 실행되지 않았다 — 첫 빌드는 카카오 SDK·애플 인증 같은 네이티브 의존이 **EAS 빌더에서
+처음 컴파일되는 지점**이라 새로운 종류의 실패가 나올 수 있다. 9-A의 교훈대로 "배선이 맞다"와 "실제로 돈다"는
+다른 사건이다. (`EXPO_TOKEN`은 §12.1에서 등록 완료 — 더 이상 `ota.yml` 실행을 막지 않는다.)
 
 ### 12.1 첫 실제 OTA 발행 (2026-08-14) — fingerprint의 실제 성질
 
@@ -577,6 +586,38 @@ pipefail을 켠다), `env:`에 4개 값이 **staging URL과 함께** 주입됐�
 
 > 이 발견 자체가 §12의 관통 주제의 또 한 사례다 — 배선은 처음부터 맞았고(정책이 소비된다), **실제로 돌려보고서야
 > 그 정책의 대가가 무엇인지 알았다.**
+
+**운영 규칙 추가 (최종 리뷰 반영, 2026-08-14)**:
+
+- **`eas update`를 로컬에서 실행하지 않는다.** `mobile/.env`에는 `EXPO_PUBLIC_API_URL`이 없다(Google/Kakao 키
+  4개뿐). 로컬에서 `npx eas-cli update`를 치면 Metro가 `.env`를 읽고 `client.ts:10`의
+  `?? 'http://localhost:8080'` 폴백이 번들에 확정돼, **localhost를 가리키는 번들이 승인·브랜치 가드·tsc·jest를
+  전부 우회하고 채널에 그대로 발행된다.** OTA를 발행하는 유일한 경로는 `ota.yml`이다(`mobile/package.json`의
+  `ota` 스크립트가 이 실수를 막는 스텁이다 — 실행하면 이유를 출력하고 종료코드 1).
+- **production OTA를 발행하기 전에 서버를 그 SHA로 먼저 승격한다(`promote.yml`).** `master`의 JS는 `master`의
+  계약으로 타입체크되지만 **prod 서버는 사람이 마지막으로 승격한 이미지를 돈다.** 순서를 반대로 하면(서버 승격
+  전에 OTA부터 발행) production 번들이 아직 없는 엔드포인트를 호출해 전원 404를 만들 수 있다.
+- **"닫혔다"의 범위는 `eas update` 한정이다.** 위에서 실증된 건 `eas update`가 fingerprint 정책을 소비한다는
+  것뿐이다. **`eas build`가 그 해시를 바이너리에 실제로 박는지는 아직 실측하지 않았다** — OTA가 어디에 도달하는지는
+  그쪽이 결정하므로, 이건 첫 실제 `eas build` 때 확인할 항목으로 남긴다(하지 않은 검증을 했다고 적지 않는다).
+
+### 12.2 CI의 `tsc`가 라우트 오타를 놓치던 공백 (최종 리뷰 반영, 2026-08-14)
+
+`tsconfig.json:29`가 `.expo/types/**/*.ts`를 include하는데 그 디렉터리는 `.expo/`로 gitignore돼 있다. 이 생성
+파일(`router.d.ts`)이 `expo-router`의 `Href`를 실제 라우트 리터럴 유니온으로 좁히는 역할을 한다 — 없으면 `Href`가
+`string | HrefObject`로 퇴화해 `router.push('/typoo')` 같은 라우트 오타가 타입 에러 없이 통과한다. 라우트 오타는
+JS-only 버그, 즉 **OTA로 밀 수 있는 부류**인데, 하필 그 게이트가 못 보는 걸 OTA로 밀게 되는 셈이었다.
+
+**실행으로 확인**(`--help`가 아니라 실제로 지우고 돌려봄): `.expo/types`를 삭제한 뒤 `npx expo customize
+tsconfig.json`·`npx expo export`는 그 디렉터리를 건드리지 않았다. **`npx expo start`만 재생성한다** —
+`@expo/cli`의 타입 생성(`startTypescriptTypeGenerationAsync`)이 Metro 개발 서버(`MetroBundlerDevServer`)에만
+연결돼 있고 `export`는 그 서버를 띄우지 않기 때문이다(`expo start` 소스 확인). `expo start`는 스스로 종료하지
+않는 대화형 서버이므로, CI 스텝은 백그라운드로 띄우고 `router.d.ts` 생성을 폴링한 뒤 프로세스를 죽이는 방식으로
+`mobile.yml`·`ota.yml`의 `tsc` 앞에 추가했다.
+
+**직접 재현해 검증**: `router.push('/review')`를 `router.push('/typoo')`로 임시로 바꾼 뒤 — `.expo/types`가 있으면
+`tsc --noEmit`이 `TS2345`로 실패, 없으면 같은 코드가 **종료코드 0으로 통과**함을 확인했다(원복 완료). CI에 넣은
+스텝이 실제로 이 차이를 메운다.
 
 ## 검토 게이트 (Human Gate)
 
