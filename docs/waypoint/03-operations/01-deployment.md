@@ -474,7 +474,7 @@ assert가 401이었다. 원인은 게이트가 아니라 시크릿이었다: `op
 **① `mobile.yml` 신설**(`d51e1b7`) — 착수 전 감사(§0)가 확인한 공백("모바일 검증이 CI에 하나도 없음")을 닫았다.
 경로 필터에 `mobile/**`뿐 아니라 `packages/contract/**`도 넣었다: `client.ts`가 `@contract/types`를 임포트하므로
 계약 재생성만으로 모바일 타입이 깨질 수 있는데, `mobile/**` 단독 필터면 그 푸시는 CI를 안 탄다. 실행 확인:
-[run 31692228156](https://github.com/bingoring/forin/actions/runs/31692228156) `completed/success`, 38 suites/213 tests.
+[run 31692228156](https://github.com/bingoring/forin/actions/runs/31692228156) `completed/success`, 38 suites/213 tests. (그 시점 수치다. 최종 리뷰 픽스 웨이브 이후 **39 suites/219 tests**이고 `mobile.yml`에 typed-routes 생성 스텝이 하나 늘었다 — [run 31778313338](https://github.com/bingoring/forin/actions/runs/31778313338)에서 실 러너 green 확인 — typegen 스텝도 `success`이고, 그 스텝은 `router.d.ts`가 30초 안에 없으면 `::error::`로 실패하므로 green은 파일이 실제로 생성됐다는 뜻이다. §12.2.)
 
 **② 조용한 폴백 두 개**(`527caf3`) — §11.1이 잡은 "정적 검증이 못 잡는 결함"과 같은 부류가 모바일에도 있었다.
 `client.ts:10`의 `EXPO_PUBLIC_API_URL ?? 'http://localhost:8080'`은 프로필에 값이 없으면 빌드된 앱이 조용히
