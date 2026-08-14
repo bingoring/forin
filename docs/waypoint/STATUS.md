@@ -94,7 +94,7 @@
 > 바이너리에 박는다는 마지막 미증명 항목이 닫혔다**(`runtimeVersion` = `fingerprintHash` = `020e92a8…`). 동시에
 > **`eas build`가 지문 입력을 스스로 바꾼다**는 함정이 드러났다 — 수출 규정 프롬프트가 `app.json`에 필드를 추가하고
 > 그게 커밋되지 않아, 그 상태로 OTA를 발행하면 출시된 IPA에 도달하지 않으면서 런은 green이었다(`0adfdc9`로 닫음).
-> **남은 건 `eas submit`(TestFlight)와 Android 전량** — Play 개발자 계정 신원확인 진행 중·Google Play 서비스 계정
+> ****첫 `eas submit`도 성공해 바이너리가 App Store Connect에 올라갔다(§12.5)** — 9-B 배선이 전 구간 실경로로 증명됐다. 테스터가 붙을 prod도 확인했다(`/readyz` postgres·redis ok, `contentVersion 2026.06.08-seed1`, `/departments` 실데이터 — 시드 정상). 그 확인 중 **`/healthz`가 공개 URL로 컨테이너에 닿지 않음**을 발견해 3-2 입력에 경고로 남겼다(외부 업타임 체크에 쓰면 산 서비스를 죽음으로 보고한다). 남은 건 TestFlight 테스터 배포와 Android 전량** — Play 개발자 계정 신원확인 진행 중·Google Play 서비스 계정
 > 키 미발급이 계속 막고 있다. **다음 진입점: 3-2 모니터링.** 위 자격증명이 갖춰지는 대로 첫 `eas build`(네이티브
 > 의존이 EAS 빌더에서 처음 컴파일되는 지점이라 새 실패가 나올 수 있음)→테스터 배포로 넘어간다. Android는 개인
 > 계정이라 **비공개 테스트 12명/14일이

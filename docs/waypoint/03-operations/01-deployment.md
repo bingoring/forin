@@ -736,7 +736,43 @@ EAS 빌더에서 처음 컴파일된 지점을 통과했고, IPA가 나왔다.
 아니라 식별자다 — 비밀은 `.p8` 개인키뿐이고 리포 밖에 있다). `.p8`은 `eas.json`에 경로를 박지 않고 첫
 `eas submit` 때 EAS credentials에 올려 이후 제출·CI가 재사용하게 한다.
 
-**남은 미실행**: `eas submit --platform ios`(TestFlight) · Android 전량(Play 신원확인·서비스 계정 키).
+### 12.5 첫 실제 제출 (2026-08-15) — TestFlight 업로드 + prod 실태 확인
+
+**`eas submit --platform ios --latest`가 성공했다**(submission `82830c8d-9f69-46d5-bc41-26ff2b9850a2`, `FINISHED`).
+바이너리가 App Store Connect에 업로드돼 Apple 처리 대기 중이다. **9-B의 배선이 전 구간 실경로로 증명됐다**:
+`eas.json` 프로필 → `eas build`(지문 박힘) → `eas submit`(ASC API 키) → App Store Connect.
+
+ASC API 키는 대화형 프롬프트에서 **"새 키 생성"을 거부하고 기존 키를 등록했다** — 이미 발급한 키가 있는데 생성을
+수락하면 Apple 계정에 두 번째 키가 생기고 받아둔 `.p8`이 유휴가 된다. 키는 EAS credentials에 저장돼 이후 제출과
+CI가 재사용하며, `eas.json`에는 여전히 `ascAppId` 하나뿐이다.
+
+**수출 규정 준수**: `ITSAppUsesNonExemptEncryption = false`가 맞는 선언임을 코드로 확인했다 — API 통신은 HTTPS/TLS,
+토큰 저장은 `expo-secure-store`(Apple Keychain), `expo-crypto`는 **앱 소스에서 직접 사용이 0건**이고
+`expo-auth-session`의 의존성으로 PKCE SHA-256 해싱·난수 state에만 쓰인다(해싱·난수는 암호화가 아니다). `src`
+전체에 직접 암호화(`AES.`/`createCipher`/`CryptoJS`)가 없다. 자체 암호화를 넣게 되면 이 선언을 다시 판단해야 한다.
+
+**테스터가 붙을 prod의 실태를 확인했다** — IPA는 `forin-api-prod`를 가리키므로 이건 이제 가설이 아니다:
+`/readyz` → `{postgres: ok, redis: ok}` · `/content/manifest` → `contentVersion 2026.06.08-seed1` ·
+`/departments` → 실제 부서 반환. **prod는 시드까지 정상이다**(9-A 시점의 "prod 시드 미실행" 메모는 낡은 것이었다).
+
+**그 확인 중에 3-2로 넘길 결함을 하나 찾았다 — `/healthz`가 공개 URL로 도달하지 않는다.** 같은 서비스에서:
+
+| 경로 | 응답 | `server` 헤더 | 판정 |
+|---|---|---|---|
+| `/zzz-does-not-exist` | `404 page not found`(Go 평문) | `Google Frontend` | 앱에 도달 |
+| **`/healthz`** | 구글 HTML 404 | **없음** | **앱에 도달하지 않음** |
+| `/healthz/`(후행 슬래시) | `404 page not found`(Go 평문) | `Google Frontend` | 앱에 도달 |
+| `/readyz` | 200 | `Google Frontend` | 정상 |
+
+`GET /healthz`는 Stage 2-1(`61f9a6c`)부터 `router.go`에 있고 `/readyz`와 **같은 블록에서 같은 mux에 등록**된다.
+즉 코드는 정상이고, **`/healthz`라는 정확한 경로만 Cloud Run 앞단에서 가로채져** 컨테이너에 닿지 않는다(후행
+슬래시를 붙이면 도달한다는 것이 그 증거다). staging도 동일하다.
+
+→ **3-2 모니터링의 외부 업타임 체크는 `/healthz`를 쓰면 안 된다.** 걸면 서비스가 살아 있는데도 404로 "죽음"을
+보고한다. `/readyz`를 쓰거나 라이브니스 경로를 가로채지지 않는 이름(`/livez` 등)으로 바꾼다. 컨테이너 포트로 직접
+가는 Cloud Run 자체 프로브는 GFE를 거치지 않으므로 영향이 다를 수 있으나 **그건 실측하지 않았다.**
+
+**남은 미실행**: TestFlight 테스터 배포(Apple 처리 완료 후) · Android 전량(Play 신원확인·서비스 계정 키).
 
 ## 검토 게이트 (Human Gate)
 
