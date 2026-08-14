@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v21/](inputs/design-handoff_v21/README.md) (최신)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-08-14
+**Last updated:** 2026-08-15
 
 > ✅ **홈 탭 + 동료 시스템(핸드오프 v20→v21) 구현 완료(2026-08-10).** Build Spec U1~U10 전부.
 > 서버(마이그레이션·도메인·저장소·`GET /me/home`·동료 API 13종·콘텐츠 시드) + 모바일(탭 5개·홈 10모듈·
@@ -75,7 +75,7 @@
 
 | 스테이지 | 문서 | 상태 |
 |---------|------|------|
-| 3-1 Deployment | [01-deployment.md](03-operations/01-deployment.md) | **9-A 서버 배포 실배포 완료(2026-08-13) — staging 스모크 57/0**. 콘솔 클릭 0회로 66리소스 생성(Cloud Run 서비스2·Job4·Cloud SQL1+DB2·Upstash2·시크릿10·WIF·Artifact Registry). 파이프라인 전 단계 통과 + `staging-verified` 태그 부착 확인. **첫 실경로가 정적 검증이 못 잡은 결함 3종을 잡았다**(Cloud SQL 에디션 기본값 / gcloud 프로젝션의 `:` 부분매칭·리스트 래핑 / 시크릿 후행 개행) — §11.1. 남음: 첫 승격·prod 시드(미실행, prod는 hello 플레이스홀더). **9-B 모바일 배선 완료(2026-08-13~14)** — `mobile.yml` 신설(tsc·jest CI 게이트, [run 31692228156](https://github.com/bingoring/forin/actions/runs/31692228156) success·38 suites/213 tests → 최종 리뷰 픽스 웨이브 이후 **39 suites/219 tests**)·EAS 프로필 환경 분리(조용한 폴백 2종 차단: `client.ts`의 localhost 폴백 + gitignore된 `mobile/.env`)·`expo-updates`+fingerprint 정책(`eas fingerprint:generate`로 40자 해시 실측)·`ota.yml`(prod 승격과 같은 승인 게이트)·제출 트랙 `alpha`(비공개 테스트, `internal` 아님) — §12. **`EXPO_TOKEN` 등록 후 `preview` 채널로 첫 실제 OTA 발행 완료(2026-08-14, §12.1)** — `eas update`가 fingerprint 정책을 실제로 소비함을 실증(발행된 runtimeVersion이 40자 지문 해시. **단 지문은 플랫폼별로 다르고 당시 대조한 것은 android 한쪽뿐이었다** — §12.1 정정). 동시에 `eas.json` 자체가 지문 입력(파일 해시)이라 설정 편집만으로도 지문이 바뀌어 이전 빌드에 도달하지 못할 수 있음이 드러났다. **iOS 제출 절 배선 완료(2026-08-15, §12.3)** — Apple 멤버십 승인, capability는 entitlements 근거로 `Sign In with Apple` 하나, `eas.json`에는 `ascAppId` 하나. `eas config`가 없는 키는 거부하지만 `ascAppId` 형식은 검증하지 않음을 실측해 그 공백을 jest로 메웠다(39 suites/**221 tests**). **첫 `eas build`/`eas submit`(스토어용 바이너리)는 여전히 미실행** — ASC API 키 미발급 + **첫 iOS 빌드는 대화형 필수**(비대화형은 Distribution Certificate 생성 불가)·Play 개발자 계정 신원확인 진행 중·Google Play 서비스 계정 키 미발급이 막고 있다. 이전 설계 요약: AI_PROPOSED(2026-08-12) — 호스팅 게이트 확정: **Cloud Run + Cloud SQL(서울)**, Redis는 **Upstash(도쿄)**. staging+prod(Cloud SQL 인스턴스 1개에 DB 2개). **이미지 하나·엔트리포인트 셋**(`/api`·`/migrate`·`/seed`, 같은 다이제스트) · 코드는 트래픽 전환으로 즉시 롤백/**스키마는 전진만**(마이그레이션 하위호환 강제) · **무키 CI(WIF)** · staging 자동+스모크 57 → **prod 수동 승격** · 콘텐츠 시드는 ID 축소 금지 게이트 + 수동 트리거 · 모바일은 `mobile.yml` 신설(tsc·jest가 CI에 없었음)·EAS 환경 분리·**OTA fingerprint 정책**·내부 트랙까지 · **IaC 전량 Terraform**(자동화 불가 경계 3종 명시). 구현은 9-A 서버 → 9-B 모바일 순 |
+| 3-1 Deployment | [01-deployment.md](03-operations/01-deployment.md) | **9-A 서버 배포 실배포 완료(2026-08-13) — staging 스모크 57/0**. 콘솔 클릭 0회로 66리소스 생성(Cloud Run 서비스2·Job4·Cloud SQL1+DB2·Upstash2·시크릿10·WIF·Artifact Registry). 파이프라인 전 단계 통과 + `staging-verified` 태그 부착 확인. **첫 실경로가 정적 검증이 못 잡은 결함 3종을 잡았다**(Cloud SQL 에디션 기본값 / gcloud 프로젝션의 `:` 부분매칭·리스트 래핑 / 시크릿 후행 개행) — §11.1. 남음: 첫 승격·prod 시드(미실행, prod는 hello 플레이스홀더). **9-B 모바일 배선 완료(2026-08-13~14)** — `mobile.yml` 신설(tsc·jest CI 게이트, [run 31692228156](https://github.com/bingoring/forin/actions/runs/31692228156) success·38 suites/213 tests → 최종 리뷰 픽스 웨이브 이후 **39 suites/219 tests**)·EAS 프로필 환경 분리(조용한 폴백 2종 차단: `client.ts`의 localhost 폴백 + gitignore된 `mobile/.env`)·`expo-updates`+fingerprint 정책(`eas fingerprint:generate`로 40자 해시 실측)·`ota.yml`(prod 승격과 같은 승인 게이트)·제출 트랙 `alpha`(비공개 테스트, `internal` 아님) — §12. **`EXPO_TOKEN` 등록 후 `preview` 채널로 첫 실제 OTA 발행 완료(2026-08-14, §12.1)** — `eas update`가 fingerprint 정책을 실제로 소비함을 실증(발행된 runtimeVersion이 40자 지문 해시. **단 지문은 플랫폼별로 다르고 당시 대조한 것은 android 한쪽뿐이었다** — §12.1 정정). 동시에 `eas.json` 자체가 지문 입력(파일 해시)이라 설정 편집만으로도 지문이 바뀌어 이전 빌드에 도달하지 못할 수 있음이 드러났다. **iOS 제출 절 배선 완료(2026-08-15, §12.3)** — Apple 멤버십 승인, capability는 entitlements 근거로 `Sign In with Apple` 하나, `eas.json`에는 `ascAppId` 하나. `eas config`가 없는 키는 거부하지만 `ascAppId` 형식은 검증하지 않음을 실측해 그 공백을 jest로 메웠다(39 suites/**221 tests**). **첫 iOS 빌드 성공(2026-08-15, §12.4)** — `eas build`가 지문 해시를 바이너리에 박음이 실증됐고(마지막 미증명 항목 닫힘), 동시에 `eas build`가 수출 규정 프롬프트로 `app.json`을 바꿔 **커밋 전이면 OTA가 출시 빌드에 도달하지 않는다**는 함정이 드러나 `0adfdc9`로 닫았다. 남은 건 `eas submit`(TestFlight)와 **Android 전량** — Play 개발자 계정 신원확인 진행 중·Google Play 서비스 계정 키 미발급이 막고 있다. 이전 설계 요약: AI_PROPOSED(2026-08-12) — 호스팅 게이트 확정: **Cloud Run + Cloud SQL(서울)**, Redis는 **Upstash(도쿄)**. staging+prod(Cloud SQL 인스턴스 1개에 DB 2개). **이미지 하나·엔트리포인트 셋**(`/api`·`/migrate`·`/seed`, 같은 다이제스트) · 코드는 트래픽 전환으로 즉시 롤백/**스키마는 전진만**(마이그레이션 하위호환 강제) · **무키 CI(WIF)** · staging 자동+스모크 57 → **prod 수동 승격** · 콘텐츠 시드는 ID 축소 금지 게이트 + 수동 트리거 · 모바일은 `mobile.yml` 신설(tsc·jest가 CI에 없었음)·EAS 환경 분리·**OTA fingerprint 정책**·내부 트랙까지 · **IaC 전량 Terraform**(자동화 불가 경계 3종 명시). 구현은 9-A 서버 → 9-B 모바일 순 |
 | 3-2 Monitoring | [02-monitoring.md](03-operations/02-monitoring.md) | PENDING |
 
 ---
@@ -89,11 +89,13 @@
 > `expo-updates` fingerprint·`ota.yml` 승인 게이트·제출 트랙 `alpha`(비공개)까지 배선됐다(§12). **`EXPO_TOKEN` 등록
 > 후 `preview` 채널로 첫 실제 OTA도 발행했다(2026-08-14, §12.1)** — `eas update`가 fingerprint 정책을 실제로
 > 소비함을 실증했고, 동시에 `eas.json` 자체가 지문 입력이라 설정 편집만으로 지문이 바뀔 수 있음도 드러났다. 단
-> **OTA는 실행됐어도 스토어용 바이너리는 아직이다**: 실제 `eas build`/`eas submit`은 한 번도 돌지 않았다.
-> **Apple Developer 멤버십은 2026-08-15 승인돼 iOS 제출 절을 배선했다(§12.3)** — 포털 capability는 entitlements
-> 근거로 `Sign In with Apple` 하나만, `eas.json`에는 `ascAppId` 하나만. 남은 건 ASC API 키(.p8) 발급과 **대화형이
-> 필수인 첫 `eas build`**(비대화형은 Distribution Certificate를 만들 수 없다). Android는 Play 개발자 계정 신원확인
-> 진행 중·Google Play 서비스 계정 키 미발급이 계속 막고 있다. **다음 진입점: 3-2 모니터링.** 위 자격증명이 갖춰지는 대로 첫 `eas build`(네이티브
+> **Apple 멤버십 승인(2026-08-15) → iOS 제출 절 배선(§12.3) → 첫 실제 iOS 빌드 성공(§12.4).** 포털 capability는
+> entitlements 근거로 `Sign In with Apple` 하나만, `eas.json`에는 `ascAppId` 하나만. **`eas build`가 지문 해시를
+> 바이너리에 박는다는 마지막 미증명 항목이 닫혔다**(`runtimeVersion` = `fingerprintHash` = `020e92a8…`). 동시에
+> **`eas build`가 지문 입력을 스스로 바꾼다**는 함정이 드러났다 — 수출 규정 프롬프트가 `app.json`에 필드를 추가하고
+> 그게 커밋되지 않아, 그 상태로 OTA를 발행하면 출시된 IPA에 도달하지 않으면서 런은 green이었다(`0adfdc9`로 닫음).
+> **남은 건 `eas submit`(TestFlight)와 Android 전량** — Play 개발자 계정 신원확인 진행 중·Google Play 서비스 계정
+> 키 미발급이 계속 막고 있다. **다음 진입점: 3-2 모니터링.** 위 자격증명이 갖춰지는 대로 첫 `eas build`(네이티브
 > 의존이 EAS 빌더에서 처음 컴파일되는 지점이라 새 실패가 나올 수 있음)→테스터 배포로 넘어간다. Android는 개인
 > 계정이라 **비공개 테스트 12명/14일이
 > 출시 경로의 선행 조건**(2주 임계 경로)이므로 그 시점부터 시계를 돌린다. 병행 **콘텐츠 워크스트림**(커리큘럼 챕터

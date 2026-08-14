@@ -690,6 +690,54 @@ Apple 심사 지침 4.8(소셜 로그인 제공 앱은 Sign in with Apple을 제
 Certificate를 **생성할 수 없고**(`MissingCredentialsNonInteractiveError`) 기존 인증서 재사용만 된다. 즉 첫 빌드는
 Apple 로그인 + 2FA가 필요해 사람이 직접 실행해야 하고, CI에서 돌릴 수 없다. 이후 빌드는 비대화형으로 재사용된다.
 
+### 12.4 첫 실제 iOS 빌드 (2026-08-15) — `eas build`가 지문 입력을 스스로 바꾼다
+
+**첫 `eas build --platform ios --profile production`이 성공했다**(build `8cb53bfa-a43a-4683-b248-6ff7d41a5fea`,
+`FINISHED`/`STORE`, appVersion `1.0.0`·buildNumber `1`, 커밋 `0967981`). 카카오 SDK·애플 인증 같은 네이티브 의존이
+EAS 빌더에서 처음 컴파일된 지점을 통과했고, IPA가 나왔다.
+
+**§12.1이 남긴 마지막 미증명 항목이 여기서 닫혔다.** `build:list --json`이 그 빌드에 대해
+`runtimeVersion = fingerprintHash = 020e92a8a257ed09cdb48f18d0275d66938d30a1`을 보고한다 → **`eas build`는 지문
+해시를 실제로 바이너리의 런타임 버전으로 박는다.** 정책은 발행(§12.1)과 빌드(여기) 양쪽에서 소비된다.
+
+**그런데 그 해시가 git 어디에도 없었다.** 대화형 빌드가 수출 규정 준수 프롬프트에서 `app.json`에
+`ios.infoPlist.ITSAppUsesNonExemptEncryption = false`를 **추가하고**, 그 상태의 트리로 빌드를 올렸다. 그 편집은
+커밋되지 않았다. `app.json`은 지문 입력이므로:
+
+| | ios | android |
+|---|---|---|
+| `master`(그 필드 없음) | `4a432b4847a1fc7ff1e56412a98cafbef42b396f` | `9ef5e7accb9fd39a5b351c833f82c9015a33b922` |
+| 작업 트리(그 필드 있음) = **출시된 IPA** | **`020e92a8a257ed09cdb48f18d0275d66938d30a1`** | `969286d7266eb4efe6eefc335e50265219c9932d` |
+
+즉 **커밋 전에 `ota.yml`로 OTA를 발행하면**(워크플로는 `master`에서 돈다) `4a432b48…`이 계산돼 **출시된 IPA에
+도달하지 않으면서 런은 green으로 끝난다.** §12.1이 규칙으로만 적어둔 무언 실패가 실제로 발생 가능한 상태였다.
+`fix(mobile): eas build가 추가한 수출규정 필드를 커밋`(`0adfdc9`)으로 닫았고, `fingerprint:compare --build-id`가
+이제 **일치**를 보고한다.
+
+**위 §12.3 표를 정정한다.** 거기 적은 `4a432b48…`/`9ef5e7ac…`는 그 시점 `master`에 대해서는 맞았지만 "첫 빌드가
+가질 값"으로는 틀렸다 — 빌드 자체가 지문 입력을 바꿔버리기 때문에, 빌드 전에 예측한 값이 빌드 후에도 유효하다는
+보장이 없다. **지문은 빌드 전에 예측할 것이 아니라 빌드 후에 대조할 것이다.**
+
+그리고 처음 이 불일치를 봤을 때 **`--build-profile` 플래그 누락을 원인으로 의심한 것은 오진이었다.** 실측 결과
+`--build-profile`은 지문에 영향이 없다(`production`과 `preview`가 같은 값). 차이는 오직 `app.json`의 그 한 줄이었다.
+
+**운영 규칙으로 추가한다**:
+
+- **대화형 `eas build` 직후 반드시 `git status`를 확인하고, 생긴 변경을 커밋한다.** `eas build`는 읽기 전용이
+  아니다 — 프롬프트 응답을 `app.json`에 기록하며, 그것이 곧 지문 입력이다
+- **OTA 발행 전 대조 명령은 `eas fingerprint:compare --build-id <채널의 최신 완료 빌드>`다.** §12.1이 "발행 후
+  요약의 `runtimeVersion`이 배포된 빌드의 것과 같은지 확인하는 것이 유일한 방법"이라고 했던 그 확인의 실제 명령이며,
+  **발행 후 경고가 아니라 발행 전 차단**이 가능하다. `ota.yml`의 현재 사후 경고(§12 I4)보다 강하다 —
+  다음 개선 항목으로 남긴다
+- 지문 계산은 `fingerprint:generate` 단독보다 `fingerprint:compare`가 안전하다. 후자는 무엇과 비교하는지가
+  명시되므로 "어떤 트리의 값인가"를 착각할 여지가 적다
+
+**ASC API 키 발급 완료**: Key ID `SF3K6F73B6`, Issuer ID `4a44f9e0-8563-424d-8879-bada2ed8eba1`(둘 다 비밀이
+아니라 식별자다 — 비밀은 `.p8` 개인키뿐이고 리포 밖에 있다). `.p8`은 `eas.json`에 경로를 박지 않고 첫
+`eas submit` 때 EAS credentials에 올려 이후 제출·CI가 재사용하게 한다.
+
+**남은 미실행**: `eas submit --platform ios`(TestFlight) · Android 전량(Play 신원확인·서비스 계정 키).
+
 ## 검토 게이트 (Human Gate)
 
 - [ ] 배포 절차가 재현 가능하고 롤백 가능한가?
