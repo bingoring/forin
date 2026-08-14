@@ -55,12 +55,13 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "jest"
+    "test": "jest",
+    "ota": "echo 'Do not run eas update from a local machine: mobile/.env has no EXPO_PUBLIC_API_URL, so a local publish bundles the localhost fallback (client.ts) to a real channel, bypassing ota.yml approval/branch guards/tsc/jest entirely. Use the ota.yml GitHub Action instead.' 1>&2 && exit 1"
   },
   "jest": {
     "preset": "jest-expo",
     "testMatch": [
-      "**/src/**/*.test.ts"
+      "**/src/**/*.test.ts?(x)"
     ],
     "moduleNameMapper": {
       "^@engine$": "<rootDir>/src/engine/index.ts",
