@@ -8,7 +8,10 @@ name: ota
 #
 # The fingerprint runtimeVersion policy (app.json) is what makes this safe at
 # all: if native dependencies changed, the fingerprint changes and this update
-# simply will not be offered to the old binary.
+# simply will not be offered to the old binary. That safety net is also why
+# the "Summarize what was published" step below calls out runtimeVersion
+# explicitly — a fingerprint mismatch makes this run exit green while reaching
+# zero devices, and that has to be visible somewhere.
 on:
   workflow_dispatch:
     inputs:
@@ -27,8 +30,45 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update:
+  # Runs unconditionally (no environment gate) so its summary is already on
+  # the run page by the time an approver opens the production job's pending
+  # deployment — `environment: production` blocks every step of that job,
+  # including any step that would print this, until someone approves it. This
+  # is the only way to show "here's what you're about to approve" before the
+  # approval happens.
+  summarize:
     runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Record what this dispatch would publish
+        env:
+          CHANNEL: ${{ inputs.channel }}
+          MESSAGE: ${{ inputs.message }}
+          SHA: ${{ github.sha }}
+          REF: ${{ github.ref }}
+        run: |
+          {
+            echo "### OTA dispatch requested"
+            echo ""
+            echo "- channel: \`$CHANNEL\`"
+            echo "- commit: \`$SHA\` (\`$REF\`)"
+            echo "- message: $MESSAGE"
+            if [ "$CHANNEL" = "production" ] && [ "$REF" != "refs/heads/master" ]; then
+              echo ""
+              echo "**blocked**: production only publishes from \`master\`; the update job will not run for this ref."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  update:
+    needs: summarize
+    runs-on: ubuntu-latest
+    # actions/checkout below checks out whatever ref this dispatch was run
+    # against — workflow_dispatch lets an operator pick any branch, and
+    # nothing else in this job confirms that ref was ever reviewed. Pin
+    # production to master; preview is internal and isn't restricted.
+    # `success()` is explicit because adding any `if:` to a job with `needs:`
+    # replaces the implicit "only run if needs succeeded" default.
+    if: success() && (inputs.channel != 'production' || github.ref == 'refs/heads/master')
     # Only the production channel needs the reviewer gate; preview is internal.
     environment: ${{ inputs.channel == 'production' && 'production' || 'preview' }}
     permissions:
@@ -56,9 +96,87 @@ jobs:
       - name: Test
         run: npm test
 
+      # `eas update` cannot read a build profile's `env` block: it has no
+      # --build-profile flag, and its own --environment flag loads server-side
+      # EAS environment variables instead (this project has none registered —
+      # `eas env:list` returns nothing for either environment). Duplicating
+      # eas.json's values into EAS would create a second place to forget, so
+      # this step reads them back out of eas.json and injects them as process
+      # env for the bundler, keeping eas.json the one place that decides what
+      # a bundle points at — the same values `eas build` already resolves for
+      # this channel.
+      #
+      # Channel names and eas.json build-profile names are identical on
+      # purpose (Task 2 set them up that way) — fail loudly if that pairing
+      # ever breaks instead of silently shipping with nothing injected.
+      - name: Load EXPO_PUBLIC_* from the matching build profile
+        env:
+          CHANNEL: ${{ inputs.channel }}
+        run: |
+          jq -e --arg ch "$CHANNEL" '.build | has($ch)' eas.json >/dev/null || {
+            echo "eas.json has no build profile named \"$CHANNEL\" — channel and profile names must match (Task 2)."
+            exit 1
+          }
+          ENV_JSON=$(jq -c --arg ch "$CHANNEL" '.build[$ch].env // {}' eas.json)
+          test "$ENV_JSON" != '{}' || {
+            echo "eas.json build.$CHANNEL has no env block — nothing to inject."
+            exit 1
+          }
+          BLANK=$(echo "$ENV_JSON" | jq -r 'to_entries[] | select(.value == "") | .key')
+          test -z "$BLANK" || {
+            echo "eas.json build.$CHANNEL.env has empty values: $BLANK"
+            exit 1
+          }
+          UNSAFE=$(echo "$ENV_JSON" | jq -r 'to_entries[] | select(.value | type == "string" and test("\n")) | .key')
+          test -z "$UNSAFE" || {
+            echo "eas.json build.$CHANNEL.env values must not contain newlines (unsafe for \$GITHUB_ENV): $UNSAFE"
+            exit 1
+          }
+          echo "$ENV_JSON" | jq -r 'to_entries[] | "\(.key)=\(.value)"' >> "$GITHUB_ENV"
+
+      # --environment is required on Expo SDK 55+ (this project is on 56) even
+      # though it has nothing to load here — see the env-injection step above
+      # for why the actual EXPO_PUBLIC_* values come from eas.json instead.
+      #
+      # --json makes the CLI's own stdout the source of truth for what got
+      # published (update group id + resolved runtimeVersion per platform) —
+      # saved to a file so the next step can parse it independently of this
+      # step's own success/failure handling.
       - name: Publish update
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           CHANNEL: ${{ inputs.channel }}
           MESSAGE: ${{ inputs.message }}
-        run: npx eas-cli@21.8.0 update --channel "$CHANNEL" --message "$MESSAGE" --non-interactive
+        run: |
+          npx eas-cli@21.8.0 update --channel "$CHANNEL" --message "$MESSAGE" \
+            --environment "$CHANNEL" --non-interactive --json | tee eas-update-result.json
+
+      # Fingerprint runtimeVersion fails silent by design (see header comment):
+      # if native deps changed since the last build for this channel, this
+      # update's runtimeVersion won't match any installed binary and it
+      # reaches zero devices while the job still exits green. Surface the
+      # runtimeVersion(s) actually published, plus the two rollback commands
+      # (verified to exist on eas-cli 21.8.0), so an operator reading this
+      # later isn't hunting for either fact.
+      - name: Summarize what was published
+        run: |
+          GROUPS=$(jq -r '[.[].group] | unique | .[]' eas-update-result.json)
+          {
+            echo "### OTA update published"
+            echo ""
+            for GROUP in $GROUPS; do
+              echo "**update group \`$GROUP\`**"
+              echo ""
+              jq -r --arg g "$GROUP" '.[] | select(.group == $g) | "- platform `\(.platform)`: runtimeVersion `\(.runtimeVersion)`"' eas-update-result.json
+              echo ""
+            done
+            echo "This update only reaches installations whose runtimeVersion matches the value(s) above."
+            echo "If native dependencies changed since the last build for this channel, that match can be empty — this run still exits green even though it reached zero devices."
+            echo ""
+            echo "To roll back a group:"
+            echo ""
+            for GROUP in $GROUPS; do
+              echo "    npx eas-cli@21.8.0 update:rollback $GROUP"
+              echo "    npx eas-cli@21.8.0 update:republish --group $GROUP"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
