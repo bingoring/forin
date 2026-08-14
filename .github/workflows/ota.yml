@@ -301,7 +301,13 @@ jobs:
             [ -n "$PLATFORM" ] || continue
             if BUILDS_JSON=$(npx eas-cli@21.8.0 build:list --platform "$PLATFORM" --channel "$CHANNEL" \
               --runtime-version "$RUNTIME_VERSION" --status finished --json --non-interactive --limit 1 2>/tmp/build-list-err.txt); then
-              COUNT=$(echo "$BUILDS_JSON" | jq 'length' 2>/dev/null)
+              # `|| true` is load-bearing: this job runs under `bash -eo
+              # pipefail`, so without it a non-JSON stdout makes jq exit 5,
+              # the failing pipeline trips -e through the assignment, and this
+              # advisory step fails the whole run — the opposite of "can only
+              # warn, never fail" above, and it would also make the
+              # unexpected-output branch below unreachable.
+              COUNT=$(echo "$BUILDS_JSON" | jq 'length' 2>/dev/null) || true
               case "$COUNT" in
                 0)
                   echo "- ⚠️ \`$PLATFORM\`/\`$RUNTIME_VERSION\`: **0 finished builds** on channel \`$CHANNEL\` — this update may not reach any installed binary." >> "$GITHUB_STEP_SUMMARY"
