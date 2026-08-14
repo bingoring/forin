@@ -22,9 +22,10 @@ forin 서버(Go)와 모바일(RN/Expo)의 배포 파이프라인을 정의·구�
 
 ## 체크리스트
 
-- [x] 모노레포 경로 필터 CI (mobile/server 독립 배포) — **서버 측 완료**(`server/**` 필터). 모바일 CI는 9-B
+- [x] 모노레포 경로 필터 CI (mobile/server 독립 배포) — **서버 측 완료**(`server/**` 필터). 모바일 CI는 **완료**
 - [x] 서버 배포 (호스팅 타깃·컨테이너·환경 변수·DB 마이그레이션) — **실배포 검증 완료(2026-08-13)**
-- [ ] 모바일 배포 (EAS Build/Submit, 환경 분리, OTA 업데이트 정책) — **9-B**
+- [x] 모바일 배포 (EAS Build/Submit, 환경 분리, OTA 업데이트 정책) — **배선 완료(2026-08-13)**.
+      실제 빌드·제출은 Play 계정 신원확인·Apple 멤버십 대기
 - [x] 계약 코드젠 검증을 릴리스 게이트에 포함 — `deploy.yml`의 `verify` job이 드리프트 검사를 돌린다
 - [x] IaC — GCP 리소스 전부를 Terraform으로 (콘솔 수동 작업 배제) — 콘솔 클릭 0회로 66리소스 생성.
       자동화 못 한 경계는 §7에 명시(Upstash 가입·시크릿 값·Apple/Google 포털·GitHub Variables)
@@ -460,6 +461,88 @@ assert가 401이었다. 원인은 게이트가 아니라 시크릿이었다: `op
 **그 외 관찰**: `if: failure()`는 job 취소에는 발동하지 않는다(`failure() || cancelled()`가 더 넓다) · 양 환경이 동시에
 최대 스케일아웃하면 커넥션 합이 `db-f1-micro`의 ~25를 넘는다(예상 부하에서는 안전) · `apply`가 seed Job의
 `SEED_ALLOW_REMOVAL`을 벗기지만 워크플로가 매 실행 다시 세팅한다.
+
+### 12. 9-B 모바일 배포 (2026-08-13)
+
+**범위**: `mobile.yml`(CI) · EAS 프로필 환경 분리 · `expo-updates`+fingerprint 정책 · `ota.yml` · 제출 트랙. 4태스크
+7커밋(`d51e1b7`~`ec8a411`), 전부 컨텍스트 분리 리뷰 통과. 9-A와 달리 **아직 실제 배포가 없다** — 아래는 전부 배선과
+로컬/CI 검증이고, 첫 `eas build`는 §11의 "첫 실행 관측"과 같은 성격의 미결 항목으로 남는다.
+
+**① `mobile.yml` 신설**(`d51e1b7`) — 착수 전 감사(§0)가 확인한 공백("모바일 검증이 CI에 하나도 없음")을 닫았다.
+경로 필터에 `mobile/**`뿐 아니라 `packages/contract/**`도 넣었다: `client.ts`가 `@contract/types`를 임포트하므로
+계약 재생성만으로 모바일 타입이 깨질 수 있는데, `mobile/**` 단독 필터면 그 푸시는 CI를 안 탄다. 실행 확인:
+[run 31692228156](https://github.com/bingoring/forin/actions/runs/31692228156) `completed/success`, 38 suites/213 tests.
+
+**② 조용한 폴백 두 개**(`527caf3`) — §11.1이 잡은 "정적 검증이 못 잡는 결함"과 같은 부류가 모바일에도 있었다.
+`client.ts:10`의 `EXPO_PUBLIC_API_URL ?? 'http://localhost:8080'`은 프로필에 값이 없으면 빌드된 앱이 조용히
+localhost를 때린다. 그리고 **`mobile/.env`가 gitignore돼 EAS 빌드에 전달되지 않는다** — 소셜 클라이언트 ID를
+못 읽으면 로그인이 전부 실패하는데, **로컬 `expo start`는 `.env`를 읽어 멀쩡히 동작한다.** "로컬에서만 되는" 함정이
+서버 쪽(§11.1)과 똑같은 모양으로 모바일에도 있었던 셈이다. `eas.json`의 `preview`/`production` 프로필에 `env`
+블록으로 명시 주입해 막았다. 값 자체는 공개 식별자(§0 판정, 앱 바이너리에도 박힘)라 커밋해도 안전하다.
+
+**③ `expo-updates ~56.0.24` + `runtimeVersion: { policy: "fingerprint" }`**(`010826a`) — 카카오 SDK·애플 인증 같은
+네이티브 모듈이 있어 `appVersion` 정책은 위험하다(네이티브 의존이 바뀐 JS를 구버전 바이너리에 밀어넣을 수 있음).
+fingerprint는 네이티브 지문이 바뀌면 런타임 버전이 달라져 그 OTA를 자동 무효화한다. `fallbackToCacheTimeout: 0`은
+시작 시 업데이트를 기다리지 않고 캐시 번들로 즉시 뜨게 한다 — 학습 앱에서 시작 지연은 이탈이고, OTA는 다음 실행에
+적용돼도 충분하다.
+
+같은 커밋이 **검증 수단 자체의 결함**도 하나 냈다가 `e5f1444`로 정정했다: 최초 커밋 메시지는 "`eas config`가
+runtimeVersion을 계산된 지문으로 해석함을 확인"이라 적었는데, `eas config`는 `app.json`/`eas.json`을 그대로 표시할
+뿐 `--json`을 붙여도 `{"policy":"fingerprint"}` 문자열만 돌려준다 — **지문을 계산하지 않는다.** 실제 확인 수단은
+`eas fingerprint:generate --build-profile production --platform android`였고, 이게 네이티브 소스 100개를 해시해
+`3d77aa757221a5949f1db0809572350798d54ae0`(40자)을 산출하고 `accounts/forin/projects/forin`에 등록됐음을 보여줬다.
+하지 않은 검사를 했다고 적힌 이력은 나중에 그 검사를 다시 하지 않게 만들기 때문에, 코드 변경 없이 이력만 정정했다.
+
+**④ `ota.yml`**(`38c8b89`+`67158b4`+`ec8a411`) — OTA는 스토어 심사를 우회하는 경로다: `eas update`는 JS를 전 사용자에게
+즉시 밀고, 새 빌드는 Apple/Google 심사를 거친다. 가장 빠르고 가장 되돌리기 어려운 경로이므로 `promote.yml`의 prod
+승격과 **같은 승인 게이트**(`environment: production`)를 붙였다. `summarize`(게이트 없음, 채널·SHA·메시지를 승인 전에
+노출) → `update`(`needs: summarize`, 게이트) 구조로 나눈 이유는 `environment` 게이트가 **그 job의 모든 스텝**을 승인
+전까지 막기 때문이다 — 같은 job 안에 "승인 전에 보여줄" 스텝을 둘 수 없다. `production` 채널은 `master` 브랜치에서만
+돈다(`workflow_dispatch`는 임의 브랜치를 고를 수 있어 별도 가드가 필요).
+
+이 태스크가 이 세션 최고의 발견 세 개를 냈고, 셋 다 **같은 종류**다 — 9-A(§11.1)는 "도구가 통과시키는 구성"
+(기본값 `ENTERPRISE_PLUS`가 걸린 Cloud SQL, 개행 섞인 시크릿)을 잡았는데, 9-B는 그게 한 층 올라간 사례를 냈다.
+**구성이 아니라 검증 자체가 틀렸는데 그 검증 도구가 그린을 찍었다.**
+
+- **`eas update`는 `eas.json`의 빌드 프로필 `env`를 읽지 않는다.** `--build-profile` 플래그가 없고, `--environment`는
+  서버측 EAS 환경변수만 로드하는데 이 프로젝트엔 등록된 게 없다(`eas env:list`가 양쪽 환경 모두 빈 목록). 고치지
+  않았다면 OTA 번들이 `localhost:8080`을 가리키고 로그인이 죽은 앱이 **모든 사용자에게** 밀렸을 것이다. `eas build`는
+  멀쩡하다 — `--environment` 플래그가 없고 `buildProfile.env`가 그대로 해석된다. 해법: `ota.yml`이 `eas.json`에서
+  값을 읽어 `$GITHUB_ENV`에 주입해, `eas.json`을 단일 진상으로 유지한다.
+  - **이 해법의 전제("process env가 실제로 번들에 반영되는가")를 대조군/실험군 `expo export`로 실측했는데, 그 실측
+    수단 자체가 처음엔 틀린 답을 냈다.** 1차 시도는 `EXPO_PUBLIC_API_URL` 유무만 바꿔 두 번 export했는데 두 산출물의
+    바이트코드가 거의 동일했다 — **Metro 번들러 캐시가 두 실행 사이에 재사용돼 env 값이 반영되지 않은 것.**
+    `--clear`로 캐시를 지우고 재실행하자 실험군에만 staging URL이 리터럴로 박히고 `localhost` 폴백은 상수 폴딩으로
+    사라졌다. 캐시를 지우지 않은 검증이 "차이 없음"이라는, 실제와 반대되는 결론으로 이어질 뻔한 사례다. GitHub
+    Actions `ubuntu-latest`는 잡마다 새 VM이라(Metro 캐시를 잡 간에 영속화하지 않음) CI 경로엔 이 위험이 없지만,
+    로컬에서 반복 검증할 땐 `--clear` 없이는 검증자가 스스로를 속일 수 있다.
+- **`GROUPS`는 bash 특수변수**(호출자의 supplementary group id)라 요약 스텝의 대입이 조용히 no-op이었다. 구현자가
+  로컬에서 **zsh로 검증**해 정상 동작하는 것처럼 보였고(zsh는 `GROUPS`를 특별 취급하지 않음), **GitHub Actions는
+  bash로 돈다** — 그대로였다면 요약에 런너의 gid가 찍히고 runtimeVersion 줄이 사라지고 롤백 명령이 엉뚱한 id를
+  가리켰을 것이다. `UPD_GROUPS`로 개명해 닫았다. 로컬 셸에서 통과한 검증이 CI 셸에서는 다른 결과를 낸 사례다.
+- **`| tee`가 실패를 삼켰다.** GitHub Actions 기본 셸(`shell:` 미지정)은 pipefail이 꺼진 `bash -e`라, 파이프 왼쪽이
+  실패해도 오른쪽(`tee`)의 종료 코드로 스텝 전체가 판정된다 — `eas update`가 실패해도 "OTA update published"를
+  찍고 런이 green으로 끝난다. **침묵 실패를 고치는 수정(env 주입 스텝 추가)이 그 스텝을 파이프로 만들면서 새 침묵
+  실패를 만든 사례**다. `update` job의 `defaults.run`에 `shell: bash`를 명시해 pipefail을 켰다. 원인을 추적하니
+  `promote.yml`의 기존 주석이 "이 리포에 pipefail이 켜져 있다"고 전제하고 있었다(9-A에서 작성) — 그 잘못된 전제가
+  이번 버그의 origin이었다는 것도 같은 커밋(`ec8a411`)에서 정정했다.
+
+세 사례의 공통점: **검증한 사람 자신의 셸·캐시가 검증 결과를 왜곡할 수 있다.** `terraform validate`나 `go test`가
+그린이어도 실제 구성이 틀릴 수 있다는 게 9-A의 교훈이었다면, 9-B의 교훈은 **검증 스크립트 자체가 다른 셸·다른
+캐시 상태에서 다른 답을 낼 수 있다**는 것이다 — 재현 환경(어떤 셸로 돌 것인가, 캐시를 지웠는가)을 실행 대상과
+맞추지 않은 검증은 검증이 아니다.
+
+**⑤ 제출 트랙 — `alpha`(비공개), `internal` 아님** — 개인 Play 개발자 계정은 프로덕션 접근을 얻기 위해 §6.1의
+**비공개 테스트에서 12명 이상 옵트인 테스터를 14일간** 유지해야 하고, **내부 테스트는 이 요건에 카운트되지 않는다.**
+`internal`로 뒀다면 배선은 맞아 보여도 2주 시계가 영영 시작되지 않았을 것이다. `releaseStatus: "draft"`로 업로드와
+공개를 분리해, 빌드가 Play Console에 올라간 뒤 사람이 확인하고 공개하게 한다. iOS는 의도적으로 비웠다 — Apple
+Developer 멤버십이 없어 제출 경로 자체가 없다(2026-08-13 확인). 멤버십 확보 후 `submit.production.ios.ascAppId`를
+추가한다.
+
+**미실행으로 남은 것**: Apple Developer 멤버십 없음(iOS 제출 불가) · Play 개발자 계정 신원확인 진행 중(앱 미생성) ·
+`EXPO_TOKEN` 미등록(`ota.yml` 실행 불가) · 실제 `eas build`/`eas submit`은 단 한 번도 실행되지 않았다 — 첫 빌드는
+카카오 SDK·애플 인증 같은 네이티브 의존이 **EAS 빌더에서 처음 컴파일되는 지점**이라 새로운 종류의 실패가 나올 수
+있다. 9-A의 교훈대로 "배선이 맞다"와 "실제로 돈다"는 다른 사건이다.
 
 ## 검토 게이트 (Human Gate)
 
