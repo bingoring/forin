@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 모바일 검증을 CI 게이트로 올리고, 빌드가 어느 환경을 가리키는지 명시적으로 만들고, OTA를 fingerprint 정책으로 안전하게 배선한다. 완료 판정 = **`mobile.yml`이 green** + **`eas config`가 프로필별로 올바른 API URL·채널·식별자를 해석** + **fingerprint runtimeVersion이 해석됨**.
+**Goal:** 모바일 검증을 CI 게이트로 올리고, 빌드가 어느 환경을 가리키는지 명시적으로 만들고, OTA를 fingerprint 정책으로 안전하게 배선한다. 완료 판정 = **`mobile.yml`이 green** + **`eas config`가 프로필별로 올바른 API URL·채널·식별자를 해석** + **`eas fingerprint:generate`가 네이티브 소스에서 지문 해시를 계산**.
 
 **Architecture:** 9-A가 서버 쪽에서 확립한 원칙을 모바일에 그대로 적용한다 — 조용한 폴백을 없애고(값이 없으면 로컬을 때리는 대신 빌드가 무엇을 가리키는지 파일에 적힌다), 위험한 경로에는 사람의 손이 필요하게 만든다(OTA는 스토어 심사를 우회하므로 prod 승격과 같은 수동 게이트). 네이티브 지문이 바뀌면 OTA가 자동 무효화되므로 구버전 바이너리에 맞지 않는 JS가 밀려들 수 없다.
 
@@ -369,14 +369,23 @@ npx expo-doctor 2>&1 | tail -8
 ```
 Expected: 두 키가 올바르고 projectId가 일치. `expo-doctor`는 통과이거나, 남은 경고가 **이 변경과 무관한 기존 경고**임을 보고서에 적는다
 
-- [ ] **Step 5: fingerprint가 실제로 해석되는지 확인 (이 태스크의 완료 판정)**
+- [ ] **Step 5: fingerprint가 실제로 계산되는지 확인 (이 태스크의 완료 판정)**
+
+> ⚠️ **`eas config`로는 확인할 수 없다**(구현 중 실측으로 정정). 그 명령은 `app.json`·`eas.json`을 **표시**할 뿐이고
+> `--json`을 붙여도 `{"policy":"fingerprint"}` 문자열을 그대로 돌려준다 — 지문을 계산하지 않는다.
 
 Run:
 ```bash
 cd /Users/ywyeom/private/forin/mobile
-npx eas-cli@21.8.0 config --profile production --platform android 2>&1 | grep -iA 2 "runtimeVersion" | head -6
+npx eas-cli@21.8.0 fingerprint:generate --build-profile production --platform android --non-interactive
 ```
-Expected: `runtimeVersion`이 **정책 문자열이 아니라 계산된 지문 해시**로 해석돼 보인다. 형태가 다르면 `--json`으로 파싱하고 무엇을 봤는지 보고서에 적어라. **해석을 확인하지 못했으면 통과로 적지 마라** — 이 태스크의 전부가 "정책이 실제로 지문을 만드는가"다.
+Expected: **40자 지문 해시**가 출력되고 `accounts/<account>/projects/forin/fingerprints/<hash>` URL이 따라온다 —
+이것이 정책이 실제로 네이티브 소스를 읽어 지문을 만든다는 증거다.
+
+**증명 범위를 정확히 적어라**: 이 명령은 "이 프로젝트에서 지문 계산이 동작한다"를 증명한다. **`eas build`/`eas update`가
+`app.json`의 `runtimeVersion.policy`를 소비해 그 해시를 바이너리에 박는지는 실제 빌드가 있어야 알 수 있고 이 태스크
+범위 밖이다.** 리포트 결론을 그 범위로 좁히고, 빌드 시 소비 여부는 **첫 실제 빌드에서 확인할 항목**으로 남겨라
+(9-A의 "첫 실행 관측" 체크리스트가 값을 한 것과 같은 이유다).
 
 - [ ] **Step 6: 기준선이 깨지지 않았는지 확인**
 
@@ -409,8 +418,9 @@ fallbackToCacheTimeout=0: 시작 시 업데이트를 기다리지 않고 캐시 
 
 expo install을 썼다(npm install 아님) — SDK 56에 맞는 버전을 고르게.
 
-검증: projectId와 updates.url 일치 · eas config가 runtimeVersion을 계산된
-지문으로 해석 · tsc 0 · jest 213
+검증: projectId와 updates.url 일치 · eas fingerprint:generate가 네이티브 소스에서
+40자 해시를 계산(eas config는 정책 문자열만 표시하므로 확인 수단이 아니다) ·
+tsc 0 · jest 213. 빌드 시 소비 여부는 첫 실제 빌드에서 확인할 항목이다.
 EOF
 )"
 git push origin master
@@ -697,7 +707,7 @@ Expected: 작업 트리 클린 · `mobile.yml`이 `completed/success`
 
 - [ ] `mobile.yml`이 CI에서 **green** (tsc 0 · jest 38 suites / 213 tests)
 - [ ] `eas config`가 `preview`→staging URL·채널 `preview`, `production`→prod URL·채널 `production`으로 **해석**
-- [ ] `eas config`가 `runtimeVersion`을 **계산된 지문**으로 해석(정책 문자열이 아니라)
+- [ ] **`eas fingerprint:generate`가 40자 지문 해시를 계산**(`eas config`는 정책 문자열만 표시하므로 확인 수단이 아니다 — 실측으로 확인된 사실). 빌드 시 소비 여부는 첫 실제 빌드 관측 항목
 - [ ] `ota.yml`에 자동 트리거가 없고 `inputs`가 `run:` 본문에 없음
 - [ ] 제출 트랙이 `alpha`(비공개) — `internal`이 아님
 - [ ] 스펙 §12·STATUS 갱신, 작업 트리 클린
