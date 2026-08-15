@@ -74,8 +74,16 @@ func parseAssessment(body []byte) (*ports.PronunciationResult, error) {
 		return nil, ErrNoSpeech
 	}
 	b := ar.NBest[0]
+	// Recognized prefers the top-level DisplayText, falling back to
+	// NBest[0].Display when DisplayText is empty — some responses carry the
+	// text only on one of the two. Transcribe (below) uses the same priority
+	// for the same response shape; keep them in sync.
+	recognized := ar.DisplayText
+	if recognized == "" {
+		recognized = b.Display
+	}
 	out := &ports.PronunciationResult{
-		Recognized:   b.Display,
+		Recognized:   recognized,
 		Accuracy:     b.AccuracyScore,
 		Fluency:      b.FluencyScore,
 		Completeness: b.CompletenessScore,
