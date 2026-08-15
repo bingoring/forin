@@ -99,21 +99,46 @@ type ReputationWriter interface {
 	ApplyReputation(ctx context.Context, userID string, dim reputation.Dimension, delta int) error
 }
 
+// SyllableResult is one syllable of a word, as segmented by the scorer.
+type SyllableResult struct {
+	Syllable string  `json:"syllable"`
+	Grapheme string  `json:"grapheme,omitempty"`
+	Accuracy float64 `json:"accuracy"`
+}
+
+// PhonemeResult is one phoneme (IPA) and how well it was produced.
+type PhonemeResult struct {
+	Phoneme  string  `json:"phoneme"`
+	Accuracy float64 `json:"accuracy"`
+}
+
 // WordScore is a per-word pronunciation result.
 type WordScore struct {
-	Word      string  `json:"word"`
-	Accuracy  float64 `json:"accuracy"`
-	ErrorType string  `json:"errorType,omitempty"`
+	Word      string           `json:"word"`
+	Accuracy  float64          `json:"accuracy"`
+	ErrorType string           `json:"errorType,omitempty"`
+	Syllables []SyllableResult `json:"syllables,omitempty"`
+	Phonemes  []PhonemeResult  `json:"phonemes,omitempty"`
 }
 
 // PronunciationResult is the assessment of a spoken utterance vs a reference text.
 type PronunciationResult struct {
-	Recognized   string      `json:"recognized"`
-	Accuracy     float64     `json:"accuracy"`
-	Fluency      float64     `json:"fluency"`
-	Completeness float64     `json:"completeness"`
-	Overall      float64     `json:"overall"`
-	Words        []WordScore `json:"words,omitempty"`
+	Recognized   string  `json:"recognized"`
+	Accuracy     float64 `json:"accuracy"`
+	Fluency      float64 `json:"fluency"`
+	Completeness float64 `json:"completeness"`
+	Overall      float64 `json:"overall"`
+	// Prosody (억양) only arrives when EnableProsodyAssessment is on AND the
+	// locale supports it. ProsodyOK distinguishes "scored 0" from "not scored" —
+	// rendering an absent score as 0 would tell the learner a falsehood.
+	Prosody   float64     `json:"prosody"`
+	ProsodyOK bool        `json:"prosodyAvailable"`
+	Words     []WordScore `json:"words,omitempty"`
+	// DurationMS is the recorded audio's length in milliseconds. Azure's
+	// pronunciation-assessment response does not carry this — it is NOT
+	// populated by the azurespeech adapter. The caller computes it from the
+	// WAV it captured (see business-rules R6 / domain-entities SpeechAttempt).
+	DurationMS int `json:"durationMs"`
 }
 
 // PronunciationPort scores spoken audio against a reference (Azure etc.) and

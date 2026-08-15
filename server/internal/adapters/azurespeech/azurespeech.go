@@ -31,21 +31,72 @@ func New(key, region string) *Client {
 func (c *Client) Configured() bool { return c.key != "" && c.region != "" }
 
 // Azure returns assessment scores flat on each NBest item and each Word.
-type azureResp struct {
+type assessResp struct {
 	RecognitionStatus string `json:"RecognitionStatus"`
 	DisplayText       string `json:"DisplayText"`
 	NBest             []struct {
-		Display           string  `json:"Display"`
-		AccuracyScore     float64 `json:"AccuracyScore"`
-		FluencyScore      float64 `json:"FluencyScore"`
-		CompletenessScore float64 `json:"CompletenessScore"`
-		PronScore         float64 `json:"PronScore"`
+		Display           string   `json:"Display"`
+		AccuracyScore     float64  `json:"AccuracyScore"`
+		FluencyScore      float64  `json:"FluencyScore"`
+		CompletenessScore float64  `json:"CompletenessScore"`
+		PronScore         float64  `json:"PronScore"`
+		ProsodyScore      *float64 `json:"ProsodyScore"` // pointer: absent ≠ zero
 		Words             []struct {
 			Word          string  `json:"Word"`
 			AccuracyScore float64 `json:"AccuracyScore"`
 			ErrorType     string  `json:"ErrorType"`
+			Syllables     []struct {
+				Syllable      string  `json:"Syllable"`
+				Grapheme      string  `json:"Grapheme"`
+				AccuracyScore float64 `json:"AccuracyScore"`
+			} `json:"Syllables"`
+			Phonemes []struct {
+				Phoneme       string  `json:"Phoneme"`
+				AccuracyScore float64 `json:"AccuracyScore"`
+			} `json:"Phonemes"`
 		} `json:"Words"`
 	} `json:"NBest"`
+}
+
+// ErrNoSpeech means the recognizer heard nothing usable. The caller maps this to
+// 422 no_speech_detected rather than storing a meaningless attempt.
+var ErrNoSpeech = errors.New("azurespeech: no speech detected")
+
+// parseAssessment turns a raw pronunciation-assessment response body into a
+// PronunciationResult. Split out from Assess so tests can exercise parsing
+// against fixed JSON without going over HTTP.
+func parseAssessment(body []byte) (*ports.PronunciationResult, error) {
+	var ar assessResp
+	if err := json.Unmarshal(body, &ar); err != nil {
+		return nil, fmt.Errorf("azurespeech: bad response: %s", truncate(body))
+	}
+	if len(ar.NBest) == 0 {
+		return nil, ErrNoSpeech
+	}
+	b := ar.NBest[0]
+	out := &ports.PronunciationResult{
+		Recognized:   b.Display,
+		Accuracy:     b.AccuracyScore,
+		Fluency:      b.FluencyScore,
+		Completeness: b.CompletenessScore,
+		Overall:      b.PronScore,
+	}
+	if b.ProsodyScore != nil {
+		out.Prosody, out.ProsodyOK = *b.ProsodyScore, true
+	}
+	for _, w := range b.Words {
+		ws := ports.WordScore{Word: w.Word, Accuracy: w.AccuracyScore, ErrorType: w.ErrorType}
+		for _, s := range w.Syllables {
+			ws.Syllables = append(ws.Syllables, ports.SyllableResult{
+				Syllable: s.Syllable, Grapheme: s.Grapheme, Accuracy: s.AccuracyScore})
+		}
+		for _, p := range w.Phonemes {
+			ws.Phonemes = append(ws.Phonemes, ports.PhonemeResult{
+				Phoneme: p.Phoneme, Accuracy: p.AccuracyScore})
+		}
+		out.Words = append(out.Words, ws)
+	}
+	return out, nil
 }
 
 // Assess scores audioWav (16kHz mono PCM WAV) against referenceText in the given locale (e.g. en-US).
@@ -53,9 +104,14 @@ func (c *Client) Assess(ctx context.Context, audioWav []byte, referenceText, loc
 	if !c.Configured() {
 		return nil, errors.New("azurespeech: key/region not configured")
 	}
-	cfg, _ := json.Marshal(map[string]string{
+	cfg, _ := json.Marshal(map[string]interface{}{
 		"ReferenceText": referenceText, "GradingSystem": "HundredMark",
-		"Granularity": "Word", "Dimension": "Comprehensive",
+		// Phoneme granularity is what makes the syllable grid and the correction
+		// points possible; Word granularity returns neither. Prosody must be
+		// asked for explicitly and is silently absent on unsupported locales —
+		// that is why PronunciationResult carries ProsodyOK.
+		"Granularity": "Phoneme", "Dimension": "Comprehensive",
+		"EnableProsodyAssessment": true,
 	})
 	url := fmt.Sprintf("https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s&format=detailed",
 		c.region, locale)
@@ -79,26 +135,7 @@ func (c *Client) Assess(ctx context.Context, audioWav []byte, referenceText, loc
 		return nil, fmt.Errorf("azurespeech: status %d: %s", resp.StatusCode, truncate(raw))
 	}
 
-	var ar azureResp
-	if err := json.Unmarshal(raw, &ar); err != nil {
-		return nil, fmt.Errorf("azurespeech: bad response: %s", truncate(raw))
-	}
-	res := &ports.PronunciationResult{Recognized: ar.DisplayText}
-	if len(ar.NBest) == 0 {
-		// No speech recognized (status e.g. InitialSilenceTimeout) — return zeros.
-		return res, nil
-	}
-	b := ar.NBest[0]
-	res.Accuracy, res.Fluency = b.AccuracyScore, b.FluencyScore
-	res.Completeness, res.Overall = b.CompletenessScore, b.PronScore
-	if res.Recognized == "" {
-		res.Recognized = b.Display
-	}
-	for _, w := range b.Words {
-		res.Words = append(res.Words, ports.WordScore{
-			Word: w.Word, Accuracy: w.AccuracyScore, ErrorType: w.ErrorType})
-	}
-	return res, nil
+	return parseAssessment(raw)
 }
 
 // Transcribe returns the recognized text for audioWav (16kHz mono PCM WAV) in the
@@ -126,7 +163,7 @@ func (c *Client) Transcribe(ctx context.Context, audioWav []byte, locale string)
 	if resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("azurespeech: status %d: %s", resp.StatusCode, truncate(raw))
 	}
-	var ar azureResp
+	var ar assessResp
 	if err := json.Unmarshal(raw, &ar); err != nil {
 		return "", fmt.Errorf("azurespeech: bad response: %s", truncate(raw))
 	}
