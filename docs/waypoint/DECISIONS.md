@@ -1547,3 +1547,26 @@ validate`, YAML 파싱, **로컬 스모크 57/0**을 모두 통과한 구성에�
 
 **남은 것**: 첫 승격(`promote.yml`)과 첫 prod 시드는 미실행. prod는 hello 플레이스홀더를 서빙하며, 실사용자가 없으니
 급하지 않고 승격은 사람이 눌러야 도는 구조다. 다음은 **9-B 모바일** → 3-2 모니터링.
+
+## 2026-08-15 — 핸드오프 v22 착수: 발음 루프 먼저, 점수 이력은 독립 테이블
+- **결정:** v22(발음·스피킹 피드백)를 **연습 대기 → 녹음 → 채점 결과 3상태 루프 먼저** 구현하고,
+  `ScreenPronDrill`·`ScreenSpeakList`(11b)·리뷰랩 요약 블록·`ScreenModelAnswerList`(11c)는 다음 단계로 미룬다.
+  점수 이력은 `review_cards` 확장이 아니라 **독립 테이블 `speech_attempts`**(+`review_card_id` nullable FK)에 쌓는다.
+- **근거:**
+  - 드릴 화면은 SoT가 **"지난 2주간 자주 틀린 음소"**를 전제한다 — 이력이 없으면 빈 화면을 만드는 셈이다.
+    이번 범위가 그 이력을 쌓기 시작하므로 순서가 강제된다.
+  - 독립 테이블: ①드릴 발화(최소대립쌍 `sit`/`seat`, 현장 적용 문장)는 교정에서 나온 리뷰 카드가 **없다**
+    ②`ReviewCard`는 SM-2 스케줄 **가변 단일 행**인데 시도는 **append-only 시계열**(1차/2차/3차)이라 성질이 다르다
+    ③음소 단위 결과는 별도 shape가 필요하다.
+- **감사로 확인한 현재 상태:** `POST /pronunciation`은 이미 있으나 **완전 무상태**(`domain/pronunciation`에 repo·insert
+  없음) · Azure 요청이 `"Granularity": "Word"`라 **음소 단위가 없음** · `PronunciationResult`에 **억양(Prosody) 없음** ·
+  Azure Speech는 **prod에 이미 구성됨**(Secret Manager + `eastus`, Terraform `runtime.tf:141`) · `ReviewCard`가
+  `Front`/`Back`/`Note`/`ScenarioID`/`Context`를 이미 가져 **모범답안(11c)은 새 데이터가 거의 불필요**.
+- **참조 IPA 문제와 해법:** 연습 대기 화면은 **녹음 전에** IPA를 보여주는데 Azure는 오디오가 있어야 음소를 준다.
+  3,200 시나리오 손저작은 비현실적이고 **지어내면 안 된다.** → **참조 음성을 우리 TTS로 합성해 그 음성을 같은
+  참조 텍스트에 대해 assess**하면 정준 음소열이 나온다. 문장당 평생 1회 캐시하고, 그 합성물을 "🔊 원어민"·
+  "0.5× 느리게" 재생에도 재사용한다. 이미 있는 부품(`SpeechSynthesizer` + assess)만 쓴다.
+- **대안(탈락):** ①v22 전량 한 번에 — 드릴이 한동안 빈 화면이고 최소대립쌍 콘텐츠 저작이 큰 몫 ②서버만 먼저 —
+  눈에 보이는 결과가 늦다 ③`review_cards` 확장 — 카드 없는 발화를 담을 수 없다.
+- **결정자:** 사용자(범위) / AI(데이터 모델 — 사용자가 위임).
+- **산출:** Build Spec `02-construction/pronunciation/` (index + 4 아티팩트, `depth: comprehensive`).

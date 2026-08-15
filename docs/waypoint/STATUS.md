@@ -2,7 +2,7 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v21/](inputs/design-handoff_v21/README.md) (최신)
+**Design handoff:** [inputs/design-handoff_v22/](inputs/design-handoff_v22/README.md) (최신) · [v21](inputs/design-handoff_v21/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-08-15
 
@@ -42,6 +42,13 @@
 | 2-3 AI 레이어 | [03-ai-layer.md](02-construction/03-ai-layer.md) | HUMAN_APPROVED |
 | 2-4 모바일 기반 | [04-mobile-foundation.md](02-construction/04-mobile-foundation.md) | HUMAN_APPROVED |
 | 2-5 맵/탐험 엔진 | [05-map-engine.md](02-construction/05-map-engine.md) | 재오픈 · v8 계획 HUMAN_APPROVED (5a~5e ✅ 엔진코어 · **5f 캠퍼스/엔진델타 + 5g 부서 마스터블루프린트 ×9** — §5v; 5f ✅ · 5g-a ER ✅ · 5g-b OR ✅ · 5g-c ICU ✅ · **5g-d Peds+NICU ✅**(외래·놀이·계측→4bed 병동→NICU 유리 전실·인큐베이터; pedsEquipment 16종) · **5g-e Pharmacy ✅**(수령창구·기송관→조제실·마약류 금고→무균 전실·에어샤워·무균조제실; pharmaEquipment 21종; 엘리베이터 타워 P1 + ER portal) · **5g-f 내과 병동 ✅**(서비스 스트립→간호 스테이션→4인 만성질환 병실(커튼)→1인실·VRE 격리; wardEquipment 16종; 엘리베이터 타워 8F) · 장비 handoff **v13**(2.5D+접지그림자) 전 부서 반영 · **5g-g 외과 병동 ✅**(처치·드레싱룸→간호 스테이션·보행→4인 수술후 병실→대수술 중증실; surgEquipment 8종·ward2 재사용; 엘리베이터 타워 7F) · **5g-h 정형외과 병동 ✅**(PT통로·석고실→간호 스테이션·보조기→4인 골절/견인 병실→고관절 골절실; orthoEquipment 11종; 엘리베이터 타워 6F) · **입원 병동 3종 완결**(내과 8F·외과 7F·정형 6F) · **5g-i 피부과 센터 ✅**(로비→진료실1/2→광선치료실→레이저 처치실; dermEquipment 11종; 엘리베이터 타워 2F) · **🎉 5g 부서 마스터블루프린트 9종 전부 완결**) |
+> 🎙 **핸드오프 v22 착수(2026-08-15)** — v21 대비 문서는 `04_SCREENS.md`만 +30줄이고 실질은 **발음·스피킹 피드백**
+> 신규(⑤b 4상태 + 11b/11c 목록 + 리뷰랩 확장)다. 감사 결과 `POST /pronunciation`은 있으나 **완전 무상태**이고
+> Azure 요청이 `Granularity: Word`라 음소가 없다 — 즉 UI 포팅이 아니라 **서버 기능 추가**가 필요하다.
+> **범위 분할: 녹음→채점→결과 루프 먼저**(드릴은 "지난 2주 이력"을 전제해 지금 만들면 빈 화면).
+> Build Spec [`pronunciation/`](02-construction/pronunciation/build-spec-index.md) `DRAFT`·`comprehensive`.
+> 결정 근거는 [DECISIONS](DECISIONS.md) 2026-08-15.
+
 | 2-6 화면·플로우 | [06-screens-flows.md](02-construction/06-screens-flows.md) | **완료(2026-08-10)** — 온보딩(splash/login/locale/job/level) ✅ · 캠퍼스/인테리어/상황판 ✅ · 브리핑→**AI 다이얼로그**(🎤 STT/🔊 TTS·번역·QUICK INFO)⇄**퀴즈 10종**→클리어(result) ✅ · **프로필(나) + 성장 리포트(/growth 푸시)** ✅ · **리뷰랩**(PhraseCard·필터·복습 세션·맥락·등급 안내) ✅ · 뱃지/스티커 탭 상세 ✅. **소셜 로그인 마감(2026-08)**: Apple/Google/Kakao 실동작 확인 — Google은 iOS/Android 클라이언트 등록 검증, Kakao는 **공식 SDK(@react-native-kakao)로 전환**(직접 OIDC는 KOE033으로 차단됨). 프로필 탭 **로그아웃** 추가. 앱 아이콘·네이티브 스플래시를 브랜드 픽셀 아트로 교체(Expo 기본값 제거).
 **홈 탭 + 동료 시스템 ✅(2026-08-10)**: 앱 진입 첫 화면을 목록(커리어 탭)에서 **오늘의 한 가지**로 교체. 홈 10모듈 전부 실데이터(`GET /me/home` 1왕복) — 값 없으면 모듈을 숨긴다(더미 금지). 동료는 초대 코드 기반이며 관계 타입 `peer/mentor/mentee`를 처음부터 데이터에 둬 **멘토–멘티 확장 시 화면 수정 불필요**. [Build Spec](02-construction/home-colleagues/build-spec-index.md)
 **온보딩 저장/재진입 ✅(2026-08-10)** — 검증 중 결함 2건 발견·수정: ①선택값이 라우트 파라미터로만 존재해 **중간 이탈 시 3단계가 유실**됐다 → 기기 로컬 드래프트에 단계별 저장 + 게이트가 **중단 지점부터 재개**(부분 저장을 서버에 보내면 `onboarded=true`가 찍혀 나머지를 영영 건너뛴다) ②온보딩 완료·로그인 후 목적지가 여전히 `/campus`였다(홈 탭 도입 시 게이트만 고친 회귀) → `/(tabs)`. 재진입 스킵 자체는 정상이었다(`onboarded: null` 초기값 덕에 깜빡임 없음).
