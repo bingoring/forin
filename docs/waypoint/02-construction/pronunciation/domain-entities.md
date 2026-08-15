@@ -37,6 +37,7 @@ type SpeechAttempt struct {
     Fluency      float64   `json:"fluency"`
     Completeness float64   `json:"completeness"`
     Prosody      float64   `json:"prosody"`      // 억양 — SoT L160 세 번째 지표
+    ProsodyOK    bool      `json:"prosodyAvailable"` // 아래 주석 참조
     DurationMS   int       `json:"durationMs"`   // 내 발음 길이 (SoT L193 "2.9초 · 조금 느려요")
     Words        []WordResult `json:"words"`     // JSONB
     ScenarioID   string    `json:"scenarioId,omitempty"`
@@ -48,6 +49,10 @@ type SpeechAttempt struct {
 
 - `Words`는 JSONB 한 컬럼. 음절·음소는 **표시용**이라 조회 시 통째로 읽고, 집계는 아래 `PhonemeScore`가 맡는다
   (JSONB를 집계하면 드릴 화면이 느려진다).
+- **`ProsodyOK`가 따로 있는 이유**: 억양 점수는 Azure에 `EnableProsodyAssessment`를 켜야 오고, **로케일에 따라
+  아예 오지 않는다**. 그때 `Prosody`는 0인데, 이걸 그대로 그리면 화면이 **"억양 0점"이라는 거짓**을 말한다.
+  `ProsodyOK=false`면 UI는 억양 행 자체를 숨긴다(3지표 → 2지표). DB에서는 `prosody`를 nullable로 두고
+  `NULL ↔ ProsodyOK=false`로 매핑한다.
 
 ### `WordResult` / `SyllableResult` / `PhonemeResult`
 
