@@ -1698,6 +1698,8 @@ export interface components {
         };
         "github_com_bingoring_forin_server_internal_ports.PhonemeResult": {
             accuracy?: number;
+            duration?: number;
+            offset?: number;
             phoneme?: string;
         };
         "github_com_bingoring_forin_server_internal_ports.SentenceReferenceRow": {
@@ -1725,7 +1727,9 @@ export interface components {
         };
         "github_com_bingoring_forin_server_internal_ports.SyllableResult": {
             accuracy?: number;
+            duration?: number;
             grapheme?: string;
+            offset?: number;
             syllable?: string;
         };
         "github_com_bingoring_forin_server_internal_ports.WordScore": {

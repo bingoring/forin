@@ -199,6 +199,10 @@ components:
       properties:
         accuracy:
           type: number
+        duration:
+          type: integer
+        offset:
+          type: integer
         phoneme:
           type: string
       type: object
@@ -256,8 +260,12 @@ components:
       properties:
         accuracy:
           type: number
+        duration:
+          type: integer
         grapheme:
           type: string
+        offset:
+          type: integer
         syllable:
           type: string
       type: object
