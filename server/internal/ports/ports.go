@@ -100,16 +100,32 @@ type ReputationWriter interface {
 }
 
 // SyllableResult is one syllable of a word, as segmented by the scorer.
+//
+// Offset and Duration are the scorer's timing for this syllable, in
+// 100-nanosecond units from the start of the audio. They are what links a
+// syllable to the phonemes inside it: the two arrays arrive flat and
+// unindexed, and a phoneme belongs to the syllable whose [Offset,
+// Offset+Duration) window contains it. A correction point is labeled with the
+// syllable, not the phoneme, so dropping these leaves the caller guessing
+// from array order.
 type SyllableResult struct {
 	Syllable string  `json:"syllable"`
 	Grapheme string  `json:"grapheme,omitempty"`
 	Accuracy float64 `json:"accuracy"`
+	Offset   int64   `json:"offset,omitempty"`
+	Duration int64   `json:"duration,omitempty"`
 }
 
-// PhonemeResult is one phoneme (IPA) and how well it was produced.
+// PhonemeResult is one phoneme and how well it was produced.
+//
+// Phoneme is IPA when the scorer was asked for it — see the notation notes in
+// content/phonemetips, which is the only thing that should be interpreting
+// this string. Offset and Duration are as in SyllableResult.
 type PhonemeResult struct {
 	Phoneme  string  `json:"phoneme"`
 	Accuracy float64 `json:"accuracy"`
+	Offset   int64   `json:"offset,omitempty"`
+	Duration int64   `json:"duration,omitempty"`
 }
 
 // WordScore is a per-word pronunciation result.

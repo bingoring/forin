@@ -40,8 +40,10 @@ const respWithPhonemes = `{"RecognitionStatus":"Success","DisplayText":"I'm givi
 "NBest":[{"Display":"I'm giving you acetaminophen","AccuracyScore":84,"FluencyScore":79,
 "CompletenessScore":100,"PronScore":81,"ProsodyScore":80,
 "Words":[{"Word":"acetaminophen","AccuracyScore":62,"ErrorType":"None",
-"Syllables":[{"Syllable":"cet","Grapheme":"cet","AccuracyScore":70},{"Syllable":"min","AccuracyScore":41}],
-"Phonemes":[{"Phoneme":"s","AccuracyScore":88},{"Phoneme":"ɪ","AccuracyScore":41}]}]}]}`
+"Syllables":[{"Syllable":"cet","Grapheme":"cet","AccuracyScore":70,"Offset":7500000,"Duration":4100000},
+{"Syllable":"min","AccuracyScore":41,"Offset":11700000,"Duration":9600000}],
+"Phonemes":[{"Phoneme":"s","AccuracyScore":88,"Offset":7500000,"Duration":4100000},
+{"Phoneme":"ɪ","AccuracyScore":41,"Offset":11700000,"Duration":500000}]}]}]}`
 
 const respWordOnly = `{"RecognitionStatus":"Success","DisplayText":"hello",
 "NBest":[{"Display":"hello","AccuracyScore":90,"FluencyScore":88,"CompletenessScore":100,"PronScore":89,
@@ -76,6 +78,34 @@ func TestParsePhonemeGranularity(t *testing.T) {
 	}
 	if got.Words[0].Phonemes[1].Phoneme != "ɪ" {
 		t.Fatalf("phoneme detail: %+v", got.Words[0].Phonemes)
+	}
+}
+
+// A correction point is labeled with the *syllable* the bad phoneme sits in
+// (business-logic-model §2: SoT's "min"/"li" are syllables, not phonemes), and
+// Azure hands syllables and phonemes over as two flat sibling arrays with no
+// index linking them. The link is timing: "You can use the Offset and Duration
+// values to align syllables with their corresponding phonemes. For example,
+// the starting offset (11700000) of the second syllable loʊ aligns with the
+// third phoneme, l." (learn.microsoft.com/azure/ai-services/speech-service/
+// how-to-pronunciation-assessment). Dropping these fields at the adapter
+// forces the caller to guess the alignment from array order instead.
+func TestParseKeepsSyllableAndPhonemeTiming(t *testing.T) {
+	got, err := parseAssessment([]byte(respWithPhonemes))
+	if err != nil {
+		t.Fatalf("parse: %v", err)
+	}
+	w := got.Words[0]
+	if w.Syllables[1].Offset != 11700000 || w.Syllables[1].Duration != 9600000 {
+		t.Fatalf("syllable timing dropped — the syllable label for a phoneme can no longer be derived: %+v", w.Syllables[1])
+	}
+	if w.Phonemes[1].Offset != 11700000 || w.Phonemes[1].Duration != 500000 {
+		t.Fatalf("phoneme timing dropped: %+v", w.Phonemes[1])
+	}
+	// The point of keeping both: this phoneme is inside that syllable.
+	syl, ph := w.Syllables[1], w.Phonemes[1]
+	if ph.Offset < syl.Offset || ph.Offset >= syl.Offset+syl.Duration {
+		t.Fatalf("phoneme %q should fall inside syllable %q by offset", ph.Phoneme, syl.Syllable)
 	}
 }
 

@@ -45,14 +45,23 @@ type assessResp struct {
 			Word          string  `json:"Word"`
 			AccuracyScore float64 `json:"AccuracyScore"`
 			ErrorType     string  `json:"ErrorType"`
-			Syllables     []struct {
+			// Offset/Duration (100-ns units from the start of the audio) are how
+			// a phoneme is tied back to the syllable it sits in. Azure sends
+			// Syllables and Phonemes as two flat sibling arrays with no index
+			// between them and documents timing as the join key, so a
+			// correction point cannot be labeled with its syllable without them.
+			Syllables []struct {
 				Syllable      string  `json:"Syllable"`
 				Grapheme      string  `json:"Grapheme"`
 				AccuracyScore float64 `json:"AccuracyScore"`
+				Offset        int64   `json:"Offset"`
+				Duration      int64   `json:"Duration"`
 			} `json:"Syllables"`
 			Phonemes []struct {
 				Phoneme       string  `json:"Phoneme"`
 				AccuracyScore float64 `json:"AccuracyScore"`
+				Offset        int64   `json:"Offset"`
+				Duration      int64   `json:"Duration"`
 			} `json:"Phonemes"`
 		} `json:"Words"`
 	} `json:"NBest"`
@@ -96,11 +105,13 @@ func parseAssessment(body []byte) (*ports.PronunciationResult, error) {
 		ws := ports.WordScore{Word: w.Word, Accuracy: w.AccuracyScore, ErrorType: w.ErrorType}
 		for _, s := range w.Syllables {
 			ws.Syllables = append(ws.Syllables, ports.SyllableResult{
-				Syllable: s.Syllable, Grapheme: s.Grapheme, Accuracy: s.AccuracyScore})
+				Syllable: s.Syllable, Grapheme: s.Grapheme, Accuracy: s.AccuracyScore,
+				Offset: s.Offset, Duration: s.Duration})
 		}
 		for _, p := range w.Phonemes {
 			ws.Phonemes = append(ws.Phonemes, ports.PhonemeResult{
-				Phoneme: p.Phoneme, Accuracy: p.AccuracyScore})
+				Phoneme: p.Phoneme, Accuracy: p.AccuracyScore,
+				Offset: p.Offset, Duration: p.Duration})
 		}
 		out.Words = append(out.Words, ws)
 	}
