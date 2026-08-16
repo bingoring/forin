@@ -713,6 +713,19 @@ Expected: 새 타입 3종이 생성물에 나타난다. `deploy.yml`의 `verify`
 
 ### Task 6: 음소 → 한국어 교정 문구
 
+> **정정됨 (2026-08-17, 구현·리뷰가 발견한 계획서 결함)** — 아래 본문보다 이 블록이 우선한다.
+>
+> 1. **Step 1 테스트가 요구한 필수 키 `iː`와 `r`은 Azure가 절대 반환하지 않는다.** Azure Speech의 en-US IPA는
+>    사전식이 아니다(문서 `speech-ssml-phonetic-sets`의 en-US 표: `iy`→**`i`**, `uw`→**`u`**, `r`→**`ɹ`**).
+>    계획서가 존재하지 않는 키를 필수로 지정했다. 정본 키는 **Azure가 실제로 내는 표기**여야 한다.
+> 2. **Azure 기본 표기는 IPA가 아니라 SAPI다.** 요청에 알파벳을 지정하지 않으면 `h eh l ow` 형태로 온다.
+>    T1이 쓴 픽스처는 손으로 쓴 IPA JSON이라 Azure를 거치지 않아, **실제 반환이 SAPI여도 영원히 초록**이었다.
+> 3. **어조 정본으로 지목한 두 곳이 서로 다른 UI 슬롯이다.** SoT L199-200은 **교정 카드**(28·33자, 좁은 flex 칸),
+>    L256은 **드릴 박스**(긴 설명)다. 한데 섞어 지목한 탓에 카드에 안 들어가는 길이의 문구가 저작됐다.
+>    → `Tip`은 **짧은 `Message`(카드) + 긴 `Detail`(드릴 박스)** 두 필드로 나눈다.
+> 4. **Azure는 음절–음소 정렬 수단을 제공한다.** `Offset`·`Duration`으로 역참조가 가능하다고 문서가 명시한다
+>    (예시 포함). 어댑터가 그 필드를 파싱해야 T7-9가 음절 라벨을 휴리스틱 없이 만든다.
+
 **Files:**
 - Create: `server/internal/content/phonemetips/tips.go`
 - Test: `server/internal/content/phonemetips/tips_test.go`
