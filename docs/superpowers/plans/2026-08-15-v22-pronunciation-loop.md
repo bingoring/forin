@@ -289,6 +289,19 @@ Granularity: Word였다. 억양은 EnableProsodyAssessment를 켜야 오고 로�
 
 ### Task 2: 마이그레이션 + sqlc 쿼리 + 저장소
 
+> **정정됨 (2026-08-16, 착수 전 컨트롤러 확인)** — 아래 본문보다 이 블록이 우선한다.
+>
+> 1. **Step 4의 "`progress_repo_test.go` 참조"는 틀렸다. 그런 파일은 없다.** 이 리포에는 postgres 저장소
+>    테스트가 **하나도 없고**, 저장소는 `scripts/e2e_smoke.sh`가 실 DB로 검증하는 것이 관례다.
+>    → DB가 필요한 테스트는 `TEST_DATABASE_URL`이 없으면 `t.Skip`하는 파일로 새로 만든다(그래야 `go test ./...`가
+>    DB 없이도 그린으로 남는다). **스킵된 테스트는 테스트가 아니므로**, 같은 불변식을 Task 10의 스모크 assert로도
+>    반드시 남긴다. 둘 중 하나만 하면 안 된다.
+> 2. **`INSERT ... SELECT MAX(attempt_no)+1`은 경합을 해결하지 못한다.** 동시 요청 둘이 같은 `MAX`를 읽으면 둘 다
+>    같은 번호를 계산하고, `UNIQUE (user_id, sentence_key, attempt_no)`가 **하나를 에러로 떨군다.** 즉 제약은
+>    데이터 오염을 막을 뿐 요청을 성사시키지 않는다.
+>    → 저장소는 **unique violation(`23505`)을 한 번 재시도**해야 한다. 재시도해도 실패하면 에러를 올린다.
+>    재시도 없이 두면 사용자가 "다시 녹음"을 빨리 두 번 눌렀을 때 두 번째가 이유 없이 실패한다.
+
 **Files:**
 - Create: `server/db/migrations/000021_speech_attempts.up.sql` · `.down.sql`
 - Create: `server/db/queries/speech.sql`
