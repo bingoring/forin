@@ -802,6 +802,57 @@ CI가 재사용하며, `eas.json`에는 여전히 `ascAppId` 하나뿐이다.
 
 **남은 미실행**: TestFlight 테스터 배포(Apple 처리 완료 후) · Android 전량(Play 신원확인·서비스 계정 키).
 
+### 12.7 TestFlight 내부 배포 개시 (2026-08-17) — 병목은 "Apple 처리"가 아니라 그룹 부재였다
+
+§12.5~§12.6은 남은 것을 "TestFlight 테스터 배포(**Apple 처리 완료 후**)"로 적어뒀다. **그 전제가 틀렸다.**
+ASC API에 직접 물으니 빌드 1.0.0 (1)은 이미 `processingState = VALID`였다 — 처리는 그 사이 끝나 있었고,
+문서만 대기 상태로 멈춰 있었다. **비동기 외부 상태는 문서가 아니라 API에 물어야 한다.** 문서는 물어본 결과를
+적는 곳이지 그 자체가 상태의 근거가 아니다.
+
+실제로 막고 있던 것은 **베타 그룹이 0개**라는 사실이었다. 테스터 2명이 등록돼 있었지만 소속 그룹이 없어
+둘 다 `NOT_INVITED`였다 — 등록과 배포는 다른 단계이고, 그룹이 그 사이를 잇는다.
+
+**`buildBetaDetail` 한 리소스가 내부/외부 갈림을 그대로 보여준다.** 같은 바이너리가 두 상태를 동시에 갖는다:
+
+| 필드 | 값 (그룹 생성 전) | 의미 |
+|---|---|---|
+| `internalBuildState` | `READY_FOR_BETA_TESTING` | 내부 배포는 **지금 당장** 가능 |
+| `externalBuildState` | `WAITING_FOR_BETA_REVIEW` | 외부는 Beta App Review 선행 |
+
+즉 "TestFlight에 심사가 없다"는 §12.3의 서술은 **내부에 한해서만** 맞다. 갈림의 기준은 테스터가
+**App Store Connect 사용자인지 여부**다.
+
+**실행한 것** — 내부 그룹 `내부 테스터`(`8f058d80…`) 생성, `isInternalGroup: true`,
+`hasAccessToAllBuilds: true`(= 콘솔의 "자동으로 새 빌드 배포"). 계정 소유자를 추가하자
+`internalBuildState`가 **`IN_BETA_TESTING`으로 바뀌었고** 테스터 상태는 `NOT_INVITED` → `INVITED` →
+`INSTALLED`로 진행했다.
+
+**`hasAccessToAllBuilds` 내부 그룹에는 빌드를 붙일 수 없다.**
+`POST /v1/betaGroups/{id}/relationships/builds`는 **422 `Cannot add internal group to a build`**로 거부된다.
+실패가 아니라 **중복 호출**이었다 — 자동 귀속이 그 자리를 대신하고, 직후 `?include=builds` 검증 조회에
+빌드 1이 실제로 포함돼 있다. **쓰기의 성공 여부가 아니라 되읽은 상태가 근거다.** 이 세션이 반복해서
+확인한 원칙(§12.6의 "exit 0인 `compare`")의 반대 방향 사례다 — 거기선 실패가 성공으로 보였고, 여기선
+성공이 실패로 보였다.
+
+**두 번째 테스터는 사람의 수락이 사이에 낀다.** `ryusklu4u@gmail.com`은 ASC 사용자가 아니라 내부 자격이
+없었다. 두 경로 중 **ASC 사용자 초대**를 골랐다(외부 그룹은 Beta App Review 대기가 붙는다).
+`POST /v1/userInvitations` → 201. 그리고 **수락 전 그룹 추가는 409 `STATE_ERROR`("Tester(s) cannot be
+assigned")로 막힌다** — 초대와 그룹 배정은 원자적이지 않다. 초대 만료는 **2026-08-19**(3일)이고,
+수락 후 그룹에 넣는 것이 남은 단계다.
+
+**역할은 `MARKETING` + `allAppsVisible: false`(이 앱만).** 내부 테스터 자격은 Admin·App Manager·Developer·
+Marketing인데, Developer는 인증서·프로비저닝까지 열린다. **테스터에게 필요한 것은 빌드 설치뿐이므로 그중
+가장 좁은 역할을 고른다.** 9-A/9-B의 최소 권한 원칙(WIF·시크릿)이 사람 계정에도 같게 적용된다.
+
+**OTA 도달성은 이 시점에 정상이다.** 현재 `master`의 iOS 지문이 `020e92a8a257ed09cdb48f18d0275d66938d30a1`로
+출시된 IPA의 `runtimeVersion`과 **일치한다**. 그 빌드 이후 `mobile/`에 커밋이 `0adfdc9` 하나뿐이고 병행
+중인 v22 발음 작업이 아직 서버 쪽이라 그렇다. **발음 기능이 네이티브 의존을 추가하는 순간 이 일치는 깨지고
+새 빌드가 필요해진다** — §12.6의 게이트가 그때 발동한다.
+
+**남은 미실행**: 실기기 검증(소셜 로그인 3종·마이크 권한·prod 커리큘럼) · 두 번째 테스터 수락 후 그룹 배정 ·
+**Android 전량**(Play 신원확인·서비스 계정 키 — 이번 확인에서도 로컬·GCP 어디에도 키가 없음을 재확인했다.
+android 빌드는 여전히 0개다).
+
 ## 검토 게이트 (Human Gate)
 
 - [ ] 배포 절차가 재현 가능하고 롤백 가능한가?
