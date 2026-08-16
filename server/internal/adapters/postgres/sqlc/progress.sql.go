@@ -89,31 +89,16 @@ func (q *Queries) FoundMissions(ctx context.Context, userID string) ([]string, e
 	defer rows.Close()
 	var items []string
 	for rows.Next() {
-		var missionID string
-		if err := rows.Scan(&missionID); err != nil {
+		var mission_id string
+		if err := rows.Scan(&mission_id); err != nil {
 			return nil, err
 		}
-		items = append(items, missionID)
+		items = append(items, mission_id)
 	}
 	if err := rows.Err(); err != nil {
 		return nil, err
 	}
 	return items, nil
-}
-
-const recordMission = `-- name: RecordMission :exec
-INSERT INTO hidden_mission_progress (user_id, mission_id) VALUES ($1, $2)
-ON CONFLICT (user_id, mission_id) DO NOTHING
-`
-
-type RecordMissionParams struct {
-	UserID    string `json:"user_id"`
-	MissionID string `json:"mission_id"`
-}
-
-func (q *Queries) RecordMission(ctx context.Context, arg RecordMissionParams) error {
-	_, err := q.db.Exec(ctx, recordMission, arg.UserID, arg.MissionID)
-	return err
 }
 
 const getCardForUser = `-- name: GetCardForUser :one
@@ -164,21 +149,22 @@ func (q *Queries) GetCardForUser(ctx context.Context, arg GetCardForUserParams) 
 }
 
 const getProgress = `-- name: GetProgress :one
-SELECT xp, level, rank, patient_satisfaction, peer_trust, emergency_response, streak_current, streak_longest
+SELECT xp, level, rank, streak_current, streak_longest
 FROM user_progress WHERE user_id = $1
 `
 
 type GetProgressRow struct {
-	Xp                  int    `json:"xp"`
-	Level               int    `json:"level"`
-	Rank                string `json:"rank"`
-	PatientSatisfaction int    `json:"patient_satisfaction"`
-	PeerTrust           int    `json:"peer_trust"`
-	EmergencyResponse   int    `json:"emergency_response"`
-	StreakCurrent       int    `json:"streak_current"`
-	StreakLongest       int    `json:"streak_longest"`
+	Xp            int    `json:"xp"`
+	Level         int    `json:"level"`
+	Rank          string `json:"rank"`
+	StreakCurrent int    `json:"streak_current"`
+	StreakLongest int    `json:"streak_longest"`
 }
 
+// Unused by any caller (ProgressRepo.GetProgress reads user_progress directly and
+// joins user_reputation for standings) but kept generatable. patient_satisfaction/
+// peer_trust/emergency_response were dropped in 000020_reputation_kv — this query
+// had gone stale (sqlc generate failed) until this fix.
 func (q *Queries) GetProgress(ctx context.Context, userID string) (GetProgressRow, error) {
 	row := q.db.QueryRow(ctx, getProgress, userID)
 	var i GetProgressRow
@@ -186,9 +172,6 @@ func (q *Queries) GetProgress(ctx context.Context, userID string) (GetProgressRo
 		&i.Xp,
 		&i.Level,
 		&i.Rank,
-		&i.PatientSatisfaction,
-		&i.PeerTrust,
-		&i.EmergencyResponse,
 		&i.StreakCurrent,
 		&i.StreakLongest,
 	)
@@ -208,8 +191,32 @@ type InsertAttemptParams struct {
 	Grade      pgtype.Int4 `json:"grade"`
 }
 
+// state is 'cleared' (passed, counts as 완료) or 'attempted' (engaged but below the
+// pass score). grade is the 0..100 AI score (NULL for direct/legacy attempts).
+// cleared_at is set only on a real clear.
 func (q *Queries) InsertAttempt(ctx context.Context, arg InsertAttemptParams) error {
-	_, err := q.db.Exec(ctx, insertAttempt, arg.UserID, arg.ScenarioID, arg.State, arg.Score, arg.Grade)
+	_, err := q.db.Exec(ctx, insertAttempt,
+		arg.UserID,
+		arg.ScenarioID,
+		arg.State,
+		arg.Score,
+		arg.Grade,
+	)
+	return err
+}
+
+const recordMission = `-- name: RecordMission :exec
+INSERT INTO hidden_mission_progress (user_id, mission_id) VALUES ($1, $2)
+ON CONFLICT (user_id, mission_id) DO NOTHING
+`
+
+type RecordMissionParams struct {
+	UserID    string `json:"user_id"`
+	MissionID string `json:"mission_id"`
+}
+
+func (q *Queries) RecordMission(ctx context.Context, arg RecordMissionParams) error {
+	_, err := q.db.Exec(ctx, recordMission, arg.UserID, arg.MissionID)
 	return err
 }
 

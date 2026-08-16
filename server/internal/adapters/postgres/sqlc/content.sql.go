@@ -74,6 +74,27 @@ func (q *Queries) GetContentMeta(ctx context.Context, k string) (string, error) 
 	return v, err
 }
 
+const getDailyEventSet = `-- name: GetDailyEventSet :one
+SELECT scenario_ids, ad_grants FROM daily_event_sets WHERE user_id = $1 AND local_date = $2
+`
+
+type GetDailyEventSetParams struct {
+	UserID    string `json:"user_id"`
+	LocalDate string `json:"local_date"`
+}
+
+type GetDailyEventSetRow struct {
+	ScenarioIds []byte `json:"scenario_ids"`
+	AdGrants    int    `json:"ad_grants"`
+}
+
+func (q *Queries) GetDailyEventSet(ctx context.Context, arg GetDailyEventSetParams) (GetDailyEventSetRow, error) {
+	row := q.db.QueryRow(ctx, getDailyEventSet, arg.UserID, arg.LocalDate)
+	var i GetDailyEventSetRow
+	err := row.Scan(&i.ScenarioIds, &i.AdGrants)
+	return i, err
+}
+
 const getInterior = `-- name: GetInterior :one
 SELECT id, profession, dept_id, cols, rows, player_start, floor_theme, regions, rooms, objects, hotspots, collision
 FROM interiors WHERE id = $1
@@ -95,6 +116,23 @@ func (q *Queries) GetInterior(ctx context.Context, id string) (Interior, error) 
 		&i.Objects,
 		&i.Hotspots,
 		&i.Collision,
+	)
+	return i, err
+}
+
+const getQuiz = `-- name: GetQuiz :one
+SELECT id, profession, type, title, content FROM quizzes WHERE id = $1
+`
+
+func (q *Queries) GetQuiz(ctx context.Context, id string) (Quiz, error) {
+	row := q.db.QueryRow(ctx, getQuiz, id)
+	var i Quiz
+	err := row.Scan(
+		&i.ID,
+		&i.Profession,
+		&i.Type,
+		&i.Title,
+		&i.Content,
 	)
 	return i, err
 }
@@ -137,6 +175,22 @@ func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, e
 		&i.Acuity,
 	)
 	return i, err
+}
+
+const insertDailyEventSet = `-- name: InsertDailyEventSet :exec
+INSERT INTO daily_event_sets (user_id, local_date, scenario_ids) VALUES ($1, $2, $3)
+ON CONFLICT (user_id, local_date) DO NOTHING
+`
+
+type InsertDailyEventSetParams struct {
+	UserID      string `json:"user_id"`
+	LocalDate   string `json:"local_date"`
+	ScenarioIds []byte `json:"scenario_ids"`
+}
+
+func (q *Queries) InsertDailyEventSet(ctx context.Context, arg InsertDailyEventSetParams) error {
+	_, err := q.db.Exec(ctx, insertDailyEventSet, arg.UserID, arg.LocalDate, arg.ScenarioIds)
+	return err
 }
 
 const insertDepartment = `-- name: InsertDepartment :exec
@@ -265,25 +319,6 @@ func (q *Queries) InsertPhrase(ctx context.Context, arg InsertPhraseParams) erro
 	return err
 }
 
-const getQuiz = `-- name: GetQuiz :one
-SELECT id, profession, type, title, content FROM quizzes WHERE id = $1
-`
-
-type GetQuizRow struct {
-	ID         string `json:"id"`
-	Profession string `json:"profession"`
-	Type       string `json:"type"`
-	Title      string `json:"title"`
-	Content    []byte `json:"content"`
-}
-
-func (q *Queries) GetQuiz(ctx context.Context, id string) (GetQuizRow, error) {
-	row := q.db.QueryRow(ctx, getQuiz, id)
-	var i GetQuizRow
-	err := row.Scan(&i.ID, &i.Profession, &i.Type, &i.Title, &i.Content)
-	return i, err
-}
-
 const insertQuiz = `-- name: InsertQuiz :exec
 INSERT INTO quizzes (id, profession, type, title, content) VALUES ($1, $2, $3, $4, $5)
 `
@@ -343,6 +378,47 @@ func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) 
 		arg.Acuity,
 	)
 	return err
+}
+
+const listBoardScenarios = `-- name: ListBoardScenarios :many
+SELECT s.id, s.title, s.tagline, s.briefing, s.persona
+FROM scenarios s JOIN events e ON s.event_id = e.id
+WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common')
+ORDER BY s.id
+`
+
+type ListBoardScenariosRow struct {
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Tagline  string `json:"tagline"`
+	Briefing []byte `json:"briefing"`
+	Persona  []byte `json:"persona"`
+}
+
+func (q *Queries) ListBoardScenarios(ctx context.Context, dollar_1 interface{}) ([]ListBoardScenariosRow, error) {
+	rows, err := q.db.Query(ctx, listBoardScenarios, dollar_1)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListBoardScenariosRow
+	for rows.Next() {
+		var i ListBoardScenariosRow
+		if err := rows.Scan(
+			&i.ID,
+			&i.Title,
+			&i.Tagline,
+			&i.Briefing,
+			&i.Persona,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
 }
 
 const listDepartments = `-- name: ListDepartments :many
@@ -415,89 +491,6 @@ func (q *Queries) ListEvents(ctx context.Context, dollar_1 interface{}) ([]Event
 	return items, nil
 }
 
-const getDailyEventSet = `-- name: GetDailyEventSet :one
-SELECT scenario_ids, ad_grants FROM daily_event_sets WHERE user_id = $1 AND local_date = $2
-`
-
-type GetDailyEventSetRow struct {
-	ScenarioIds []byte `json:"scenario_ids"`
-	AdGrants    int    `json:"ad_grants"`
-}
-
-func (q *Queries) GetDailyEventSet(ctx context.Context, userID string, localDate string) (GetDailyEventSetRow, error) {
-	row := q.db.QueryRow(ctx, getDailyEventSet, userID, localDate)
-	var i GetDailyEventSetRow
-	err := row.Scan(&i.ScenarioIds, &i.AdGrants)
-	return i, err
-}
-
-const insertDailyEventSet = `-- name: InsertDailyEventSet :exec
-INSERT INTO daily_event_sets (user_id, local_date, scenario_ids) VALUES ($1, $2, $3)
-ON CONFLICT (user_id, local_date) DO NOTHING
-`
-
-const updateDailyEventSet = `-- name: UpdateDailyEventSet :exec
-UPDATE daily_event_sets SET scenario_ids = $3, ad_grants = $4 WHERE user_id = $1 AND local_date = $2
-`
-
-type UpdateDailyEventSetParams struct {
-	UserID      string `json:"user_id"`
-	LocalDate   string `json:"local_date"`
-	ScenarioIds []byte `json:"scenario_ids"`
-	AdGrants    int    `json:"ad_grants"`
-}
-
-func (q *Queries) UpdateDailyEventSet(ctx context.Context, arg UpdateDailyEventSetParams) error {
-	_, err := q.db.Exec(ctx, updateDailyEventSet, arg.UserID, arg.LocalDate, arg.ScenarioIds, arg.AdGrants)
-	return err
-}
-
-type InsertDailyEventSetParams struct {
-	UserID      string `json:"user_id"`
-	LocalDate   string `json:"local_date"`
-	ScenarioIds []byte `json:"scenario_ids"`
-}
-
-func (q *Queries) InsertDailyEventSet(ctx context.Context, arg InsertDailyEventSetParams) error {
-	_, err := q.db.Exec(ctx, insertDailyEventSet, arg.UserID, arg.LocalDate, arg.ScenarioIds)
-	return err
-}
-
-const listBoardScenarios = `-- name: ListBoardScenarios :many
-SELECT s.id, s.title, s.tagline, s.briefing, s.persona
-FROM scenarios s JOIN events e ON s.event_id = e.id
-WHERE e.delivery IN ('daily_pool', 'both') AND ($1 = '' OR e.profession = $1 OR e.profession = 'common')
-ORDER BY s.id
-`
-
-type ListBoardScenariosRow struct {
-	ID       string `json:"id"`
-	Title    string `json:"title"`
-	Tagline  string `json:"tagline"`
-	Briefing []byte `json:"briefing"`
-	Persona  []byte `json:"persona"`
-}
-
-func (q *Queries) ListBoardScenarios(ctx context.Context, column1 interface{}) ([]ListBoardScenariosRow, error) {
-	rows, err := q.db.Query(ctx, listBoardScenarios, column1)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	var items []ListBoardScenariosRow
-	for rows.Next() {
-		var i ListBoardScenariosRow
-		if err := rows.Scan(&i.ID, &i.Title, &i.Tagline, &i.Briefing, &i.Persona); err != nil {
-			return nil, err
-		}
-		items = append(items, i)
-	}
-	if err := rows.Err(); err != nil {
-		return nil, err
-	}
-	return items, nil
-}
-
 const todaysBoard = `-- name: TodaysBoard :many
 SELECT id, profession, title, ward, category, tier, tags, delivery, prerequisites, follow_ups, related, scenarios
 FROM events WHERE delivery IN ('daily_pool', 'both') AND ($1 = '' OR profession = $1 OR profession = 'common')
@@ -540,6 +533,27 @@ func (q *Queries) TodaysBoard(ctx context.Context, arg TodaysBoardParams) ([]Eve
 		return nil, err
 	}
 	return items, nil
+}
+
+const updateDailyEventSet = `-- name: UpdateDailyEventSet :exec
+UPDATE daily_event_sets SET scenario_ids = $3, ad_grants = $4 WHERE user_id = $1 AND local_date = $2
+`
+
+type UpdateDailyEventSetParams struct {
+	UserID      string `json:"user_id"`
+	LocalDate   string `json:"local_date"`
+	ScenarioIds []byte `json:"scenario_ids"`
+	AdGrants    int    `json:"ad_grants"`
+}
+
+func (q *Queries) UpdateDailyEventSet(ctx context.Context, arg UpdateDailyEventSetParams) error {
+	_, err := q.db.Exec(ctx, updateDailyEventSet,
+		arg.UserID,
+		arg.LocalDate,
+		arg.ScenarioIds,
+		arg.AdGrants,
+	)
+	return err
 }
 
 const upsertContentMeta = `-- name: UpsertContentMeta :exec

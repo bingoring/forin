@@ -1,5 +1,9 @@
 -- name: GetProgress :one
-SELECT xp, level, rank, patient_satisfaction, peer_trust, emergency_response, streak_current, streak_longest
+-- Unused by any caller (ProgressRepo.GetProgress reads user_progress directly and
+-- joins user_reputation for standings) but kept generatable. patient_satisfaction/
+-- peer_trust/emergency_response were dropped in 000020_reputation_kv — this query
+-- had gone stale (sqlc generate failed) until this fix.
+SELECT xp, level, rank, streak_current, streak_longest
 FROM user_progress WHERE user_id = $1;
 
 -- name: InsertAttempt :exec

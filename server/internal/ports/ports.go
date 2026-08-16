@@ -148,6 +148,95 @@ type PronunciationPort interface {
 	Transcribe(ctx context.Context, audioWav []byte, locale string) (string, error)
 }
 
+// ---- Speech attempt / reference persistence (pronunciation loop, Build Spec
+// docs/dlc/projects/forin/02-construction/pronunciation/) ----
+
+// SpeechAttemptInput is what the domain layer hands to SpeechRepo.InsertAttempt.
+// It mirrors PronunciationResult + the bookkeeping fields the caller adds (which
+// sentence, whose attempt, which card if any). attempt_no and id are NOT here —
+// the store assigns them (business-rules I5), which is why they come back as
+// return values instead of being passed in.
+type SpeechAttemptInput struct {
+	UserID        string
+	SentenceKey   string
+	ReferenceText string
+	Locale        string
+	Recognized    string
+	Overall       float64
+	Accuracy      float64
+	Fluency       float64
+	Completeness  float64
+	// Prosody/ProsodyOK mirror PronunciationResult: ProsodyOK=false means the
+	// locale/scorer did not assess prosody, which is NOT the same fact as scoring
+	// zero (domain-entities SpeechAttempt). The repo maps ProsodyOK=false to a
+	// SQL NULL, never to 0.
+	Prosody      float64
+	ProsodyOK    bool
+	DurationMS   int
+	Words        []WordScore // stored as JSONB; the repo also flattens Words[*].Phonemes into speech_phoneme_scores rows in the SAME transaction (I2) — callers do not pass phonemes separately
+	ScenarioID   string
+	ReviewCardID *string // nil = no linked card (drill/freeform origin, or a correction with no card). Ownership of a non-nil id is the CALLER's responsibility (business-rules §2) — the repo does not check it
+	Origin       string  // allowed-set: dialogue | review | drill | freeform (domain-entities §4)
+}
+
+// SpeechAttemptRow is one row of a sentence's attempt history, as returned by
+// ListAttempts (business-rules R3: caller takes the newest 3). Bookkeeping-only
+// columns (scenario_id, origin, review_card_id, locale, sentence_key,
+// reference_text) are deliberately not surfaced here — the practice screen's
+// history strip only needs scores, the transcript, and the syllable/phoneme
+// breakdown for that attempt.
+type SpeechAttemptRow struct {
+	ID           string
+	AttemptNo    int
+	Recognized   string
+	Overall      float64
+	Accuracy     float64
+	Fluency      float64
+	Completeness float64
+	Prosody      float64
+	ProsodyOK    bool // false = NULL in storage, i.e. prosody was never scored — see SpeechAttemptInput
+	DurationMS   int
+	Words        []WordScore
+	CreatedAt    time.Time
+}
+
+// SentenceReferenceRow is the canonical per-sentence breakdown (business-rules
+// R9: one global row per sentence_key, derived once and shared by every user).
+// Words carries syllable/phoneme segmentation only — accuracy on this row is
+// meaningless because there is no speaker to score (domain-entities §2).
+type SentenceReferenceRow struct {
+	SentenceKey   string
+	ReferenceText string
+	Locale        string
+	IPA           string
+	Words         []WordScore
+	DurationMS    int
+}
+
+// SpeechRepo persists pronunciation-practice attempts and the canonical
+// per-sentence reference breakdown. speech_attempts is append-only (I1): there
+// is no Update/Delete path here, by design.
+type SpeechRepo interface {
+	// InsertAttempt appends one attempt row plus its phoneme observations (0..N,
+	// derived from a.Words) in a single transaction (I2), with attempt_no
+	// assigned by the database as (user_id, sentence_key) MAX+1 (I5). Two
+	// concurrent requests can compute the same MAX and race on the
+	// UNIQUE(user_id, sentence_key, attempt_no) constraint; InsertAttempt retries
+	// once on a 23505 unique-violation before giving up and returning the error.
+	InsertAttempt(ctx context.Context, a SpeechAttemptInput) (id string, attemptNo int, err error)
+	// ListAttempts returns up to `limit` attempts for (userID, sentenceKey),
+	// newest attempt_no first.
+	ListAttempts(ctx context.Context, userID, sentenceKey string, limit int) ([]SpeechAttemptRow, error)
+	// GetReference fetches the cached canonical breakdown for sentenceKey, or nil
+	// if none has been derived yet (business-rules "참조 생성 실패" edge case).
+	GetReference(ctx context.Context, sentenceKey string) (*SentenceReferenceRow, error)
+	// PutReference caches a freshly-derived breakdown. First writer wins — an
+	// existing row for the same sentence_key is left untouched (R9: the
+	// breakdown is deterministic per sentence, so a race just wastes one Azure
+	// call, never corrupts data).
+	PutReference(ctx context.Context, r SentenceReferenceRow) error
+}
+
 // SpeechSynthesizer turns text into speech audio (WAV/PCM16). Used to voice
 // listen-quiz dictation with a real, waveform-analyzable audio clip.
 type SpeechSynthesizer interface {

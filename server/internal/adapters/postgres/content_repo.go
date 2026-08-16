@@ -474,7 +474,7 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 	}
 
 	// Return the persisted set if one exists for this local day.
-	if set, err := r.q.GetDailyEventSet(ctx, userID, localDate); err == nil && len(set.ScenarioIds) > 0 {
+	if set, err := r.q.GetDailyEventSet(ctx, sqlc.GetDailyEventSetParams{UserID: userID, LocalDate: localDate}); err == nil && len(set.ScenarioIds) > 0 {
 		var ids []string
 		if json.Unmarshal(set.ScenarioIds, &ids) == nil {
 			out := make([]content.BoardCard, 0, len(ids))
@@ -521,7 +521,7 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 // grant count, and ErrDailyCapReached when the cap is already spent.
 func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, localDate string, add, cap int) ([]content.BoardCard, int, error) {
 	// Ensure a base set exists so the row lock below has a target (idempotent).
-	if _, err := r.q.GetDailyEventSet(ctx, userID, localDate); errors.Is(err, pgx.ErrNoRows) {
+	if _, err := r.q.GetDailyEventSet(ctx, sqlc.GetDailyEventSetParams{UserID: userID, LocalDate: localDate}); errors.Is(err, pgx.ErrNoRows) {
 		if _, e := r.DailyPool(ctx, userID, profession, localDate, economy.Active.DailyPoolSize); e != nil {
 			return nil, 0, e
 		}

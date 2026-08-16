@@ -18,6 +18,41 @@ type AuthIdentity struct {
 	CreatedAt pgtype.Timestamptz `json:"created_at"`
 }
 
+type Cheer struct {
+	ID         string             `json:"id"`
+	FromUserID string             `json:"from_user_id"`
+	ToUserID   string             `json:"to_user_id"`
+	Preset     string             `json:"preset"`
+	Message    string             `json:"message"`
+	CreatedAt  pgtype.Timestamptz `json:"created_at"`
+	ReadAt     pgtype.Timestamptz `json:"read_at"`
+}
+
+type ColleagueLink struct {
+	OwnerID   string             `json:"owner_id"`
+	OtherID   string             `json:"other_id"`
+	Relation  string             `json:"relation"`
+	CreatedAt pgtype.Timestamptz `json:"created_at"`
+}
+
+type ColleaguePref struct {
+	UserID      string             `json:"user_id"`
+	ShareStatus bool               `json:"share_status"`
+	ShareWeekly bool               `json:"share_weekly"`
+	UpdatedAt   pgtype.Timestamptz `json:"updated_at"`
+}
+
+type ColleagueRequest struct {
+	ID          string             `json:"id"`
+	FromUserID  string             `json:"from_user_id"`
+	ToUserID    string             `json:"to_user_id"`
+	Relation    string             `json:"relation"`
+	Code        string             `json:"code"`
+	Status      string             `json:"status"`
+	CreatedAt   pgtype.Timestamptz `json:"created_at"`
+	RespondedAt pgtype.Timestamptz `json:"responded_at"`
+}
+
 type ContentMetum struct {
 	K string `json:"k"`
 	V string `json:"v"`
@@ -38,6 +73,14 @@ type CorrectionResult struct {
 	Note      string             `json:"note"`
 	TopicTag  string             `json:"topic_tag"`
 	CreatedAt pgtype.Timestamptz `json:"created_at"`
+}
+
+type DailyEventSet struct {
+	UserID      string             `json:"user_id"`
+	LocalDate   string             `json:"local_date"`
+	ScenarioIds []byte             `json:"scenario_ids"`
+	CreatedAt   pgtype.Timestamptz `json:"created_at"`
+	AdGrants    int                `json:"ad_grants"`
 }
 
 type Department struct {
@@ -72,6 +115,12 @@ type Event struct {
 	Scenarios     []byte `json:"scenarios"`
 }
 
+type HiddenMissionProgress struct {
+	UserID    string             `json:"user_id"`
+	MissionID string             `json:"mission_id"`
+	FoundAt   pgtype.Timestamptz `json:"found_at"`
+}
+
 type Interior struct {
 	ID          string `json:"id"`
 	Profession  string `json:"profession"`
@@ -85,6 +134,17 @@ type Interior struct {
 	Objects     []byte `json:"objects"`
 	Hotspots    []byte `json:"hotspots"`
 	Collision   []byte `json:"collision"`
+}
+
+type InviteCode struct {
+	Code      string             `json:"code"`
+	UserID    string             `json:"user_id"`
+	Relation  string             `json:"relation"`
+	CreatedAt pgtype.Timestamptz `json:"created_at"`
+	ExpiresAt pgtype.Timestamptz `json:"expires_at"`
+	MaxUses   int                `json:"max_uses"`
+	Uses      int                `json:"uses"`
+	RevokedAt pgtype.Timestamptz `json:"revoked_at"`
 }
 
 type Phrase struct {
@@ -113,6 +173,7 @@ type Quiz struct {
 	Profession string `json:"profession"`
 	Type       string `json:"type"`
 	Title      string `json:"title"`
+	Content    []byte `json:"content"`
 }
 
 type ReviewCard struct {
@@ -126,6 +187,8 @@ type ReviewCard struct {
 	MasteryPips int                `json:"mastery_pips"`
 	Favorite    bool               `json:"favorite"`
 	CreatedAt   pgtype.Timestamptz `json:"created_at"`
+	ScenarioID  string             `json:"scenario_id"`
+	Context     []byte             `json:"context"`
 }
 
 type ReviewSchedule struct {
@@ -148,6 +211,8 @@ type Scenario struct {
 	KeyPhrases []byte `json:"key_phrases"`
 	Steps      []byte `json:"steps"`
 	Persona    []byte `json:"persona"`
+	Briefing   []byte `json:"briefing"`
+	Acuity     string `json:"acuity"`
 }
 
 type ScenarioAttempt struct {
@@ -159,6 +224,46 @@ type ScenarioAttempt struct {
 	Score          int                `json:"score"`
 	StartedAt      pgtype.Timestamptz `json:"started_at"`
 	ClearedAt      pgtype.Timestamptz `json:"cleared_at"`
+	Grade          pgtype.Int4        `json:"grade"`
+}
+
+type SpeechAttempt struct {
+	ID            string             `json:"id"`
+	UserID        string             `json:"user_id"`
+	SentenceKey   string             `json:"sentence_key"`
+	ReferenceText string             `json:"reference_text"`
+	Locale        string             `json:"locale"`
+	AttemptNo     int                `json:"attempt_no"`
+	Recognized    string             `json:"recognized"`
+	Overall       float64            `json:"overall"`
+	Accuracy      float64            `json:"accuracy"`
+	Fluency       float64            `json:"fluency"`
+	Completeness  float64            `json:"completeness"`
+	Prosody       pgtype.Float4      `json:"prosody"`
+	DurationMs    int                `json:"duration_ms"`
+	Words         []byte             `json:"words"`
+	ScenarioID    string             `json:"scenario_id"`
+	ReviewCardID  pgtype.UUID        `json:"review_card_id"`
+	Origin        string             `json:"origin"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+}
+
+type SpeechPhonemeScore struct {
+	AttemptID string             `json:"attempt_id"`
+	UserID    string             `json:"user_id"`
+	Phoneme   string             `json:"phoneme"`
+	Accuracy  float64            `json:"accuracy"`
+	CreatedAt pgtype.Timestamptz `json:"created_at"`
+}
+
+type SpeechReference struct {
+	SentenceKey   string             `json:"sentence_key"`
+	ReferenceText string             `json:"reference_text"`
+	Locale        string             `json:"locale"`
+	Ipa           string             `json:"ipa"`
+	Words         []byte             `json:"words"`
+	DurationMs    int                `json:"duration_ms"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
 }
 
 type User struct {
@@ -167,16 +272,28 @@ type User struct {
 	CreatedAt pgtype.Timestamptz `json:"created_at"`
 }
 
+type UserPresence struct {
+	UserID     string             `json:"user_id"`
+	LastSeenAt pgtype.Timestamptz `json:"last_seen_at"`
+	ScenarioID string             `json:"scenario_id"`
+	Label      string             `json:"label"`
+	UpdatedAt  pgtype.Timestamptz `json:"updated_at"`
+}
+
 type UserProgress struct {
-	UserID              string             `json:"user_id"`
-	Xp                  int                `json:"xp"`
-	Level               int                `json:"level"`
-	Rank                string             `json:"rank"`
-	PatientSatisfaction int                `json:"patient_satisfaction"`
-	PeerTrust           int                `json:"peer_trust"`
-	EmergencyResponse   int                `json:"emergency_response"`
-	StreakCurrent       int                `json:"streak_current"`
-	StreakLongest       int                `json:"streak_longest"`
-	LastActiveDate      pgtype.Date        `json:"last_active_date"`
-	UpdatedAt           pgtype.Timestamptz `json:"updated_at"`
+	UserID         string             `json:"user_id"`
+	Xp             int                `json:"xp"`
+	Level          int                `json:"level"`
+	Rank           string             `json:"rank"`
+	StreakCurrent  int                `json:"streak_current"`
+	StreakLongest  int                `json:"streak_longest"`
+	LastActiveDate pgtype.Date        `json:"last_active_date"`
+	UpdatedAt      pgtype.Timestamptz `json:"updated_at"`
+}
+
+type UserReputation struct {
+	UserID    string             `json:"user_id"`
+	Dimension string             `json:"dimension"`
+	Value     int                `json:"value"`
+	UpdatedAt pgtype.Timestamptz `json:"updated_at"`
 }

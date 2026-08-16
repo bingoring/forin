@@ -72,50 +72,6 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 	return i, err
 }
 
-const setEquippedTitle = `-- name: SetEquippedTitle :exec
-INSERT INTO profiles (user_id, equipped_title, updated_at) VALUES ($1, $2, now())
-ON CONFLICT (user_id) DO UPDATE SET equipped_title = $2, updated_at = now()
-`
-
-type SetEquippedTitleParams struct {
-	UserID        string `json:"user_id"`
-	EquippedTitle string `json:"equipped_title"`
-}
-
-func (q *Queries) SetEquippedTitle(ctx context.Context, arg SetEquippedTitleParams) error {
-	_, err := q.db.Exec(ctx, setEquippedTitle, arg.UserID, arg.EquippedTitle)
-	return err
-}
-
-const upsertProfile = `-- name: UpsertProfile :exec
-INSERT INTO profiles (user_id, job, native_lang, target_lang, destination, target_level, onboarded, updated_at)
-VALUES ($1, $2, $3, $4, $5, $6, true, now())
-ON CONFLICT (user_id) DO UPDATE SET
-    job = $2, native_lang = $3, target_lang = $4, destination = $5, target_level = $6,
-    onboarded = true, updated_at = now()
-`
-
-type UpsertProfileParams struct {
-	UserID      string `json:"user_id"`
-	Job         string `json:"job"`
-	NativeLang  string `json:"native_lang"`
-	TargetLang  string `json:"target_lang"`
-	Destination string `json:"destination"`
-	TargetLevel string `json:"target_level"`
-}
-
-func (q *Queries) UpsertProfile(ctx context.Context, arg UpsertProfileParams) error {
-	_, err := q.db.Exec(ctx, upsertProfile,
-		arg.UserID,
-		arg.Job,
-		arg.NativeLang,
-		arg.TargetLang,
-		arg.Destination,
-		arg.TargetLevel,
-	)
-	return err
-}
-
 const getUserByID = `-- name: GetUserByID :one
 SELECT id, status, created_at FROM users WHERE id = $1
 `
@@ -145,6 +101,21 @@ func (q *Queries) GetUserByIdentity(ctx context.Context, arg GetUserByIdentityPa
 	return i, err
 }
 
+const setEquippedTitle = `-- name: SetEquippedTitle :exec
+INSERT INTO profiles (user_id, equipped_title, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET equipped_title = $2, updated_at = now()
+`
+
+type SetEquippedTitleParams struct {
+	UserID        string `json:"user_id"`
+	EquippedTitle string `json:"equipped_title"`
+}
+
+func (q *Queries) SetEquippedTitle(ctx context.Context, arg SetEquippedTitleParams) error {
+	_, err := q.db.Exec(ctx, setEquippedTitle, arg.UserID, arg.EquippedTitle)
+	return err
+}
+
 const updateIdentityEmail = `-- name: UpdateIdentityEmail :exec
 UPDATE auth_identities SET email = $3 WHERE provider = $1 AND subject_id = $2
 `
@@ -157,5 +128,34 @@ type UpdateIdentityEmailParams struct {
 
 func (q *Queries) UpdateIdentityEmail(ctx context.Context, arg UpdateIdentityEmailParams) error {
 	_, err := q.db.Exec(ctx, updateIdentityEmail, arg.Provider, arg.SubjectID, arg.Email)
+	return err
+}
+
+const upsertProfile = `-- name: UpsertProfile :exec
+INSERT INTO profiles (user_id, job, native_lang, target_lang, destination, target_level, onboarded, updated_at)
+VALUES ($1, $2, $3, $4, $5, $6, true, now())
+ON CONFLICT (user_id) DO UPDATE SET
+    job = $2, native_lang = $3, target_lang = $4, destination = $5, target_level = $6,
+    onboarded = true, updated_at = now()
+`
+
+type UpsertProfileParams struct {
+	UserID      string `json:"user_id"`
+	Job         string `json:"job"`
+	NativeLang  string `json:"native_lang"`
+	TargetLang  string `json:"target_lang"`
+	Destination string `json:"destination"`
+	TargetLevel string `json:"target_level"`
+}
+
+func (q *Queries) UpsertProfile(ctx context.Context, arg UpsertProfileParams) error {
+	_, err := q.db.Exec(ctx, upsertProfile,
+		arg.UserID,
+		arg.Job,
+		arg.NativeLang,
+		arg.TargetLang,
+		arg.Destination,
+		arg.TargetLevel,
+	)
 	return err
 }
