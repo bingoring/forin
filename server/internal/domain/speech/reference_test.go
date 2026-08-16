@@ -6,21 +6,28 @@ import (
 	"testing"
 
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
+	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
 // fakeSynth is a fake ports.SpeechSynthesizer that counts Synthesize calls, so
 // tests can assert Azure TTS is skipped entirely on a cache hit (NFR: once per
-// sentence, ever).
+// sentence, ever). It also records the last call's arguments so tests can
+// assert voice/locale were passed through as a matched pair, never a
+// hardcoded voice against a varying locale.
 type fakeSynth struct {
 	wav        []byte
 	err        error
 	synthCalls int
 	configured bool
+	lastVoice  string
+	lastLocale string
+	lastText   string
 }
 
 func (f *fakeSynth) Synthesize(ctx context.Context, text, voice, locale string) ([]byte, error) {
 	f.synthCalls++
+	f.lastVoice, f.lastLocale, f.lastText = voice, locale, text
 	if f.err != nil {
 		return nil, f.err
 	}
@@ -31,6 +38,20 @@ func (f *fakeSynth) Configured() bool { return f.configured }
 
 func newTestServiceWithTTS(pron *fakePronPort, repo *fakeSpeechRepo, tts *fakeSynth) *Service {
 	pronSvc := pronunciation.NewService(pron, fakeProfiles{})
+	return NewService(repo, pronSvc, tts)
+}
+
+// fakeProfilesFor resolves TargetLang to whatever lang is given, so tests can
+// drive pronunciation.Service.LocaleFor to a specific non-en-US locale (e.g.
+// "ja" -> "ja-JP") without reaching into pronunciation's unexported localeFor.
+type fakeProfilesFor struct{ lang string }
+
+func (f fakeProfilesFor) GetProfile(ctx context.Context, userID string) (*user.Profile, error) {
+	return &user.Profile{TargetLang: f.lang}, nil
+}
+
+func newTestServiceWithProfile(pron *fakePronPort, repo *fakeSpeechRepo, tts *fakeSynth, lang string) *Service {
+	pronSvc := pronunciation.NewService(pron, fakeProfilesFor{lang: lang})
 	return NewService(repo, pronSvc, tts)
 }
 
@@ -208,5 +229,112 @@ func TestReferenceFailureIsNotFatal(t *testing.T) {
 	// to Record (an entirely separate call path).
 	if _, err := svc.Record(context.Background(), "u1", []byte("wav"), "hello", RecordOptions{Origin: "dialogue"}); err != nil {
 		t.Fatalf("Record must still work after a Reference failure: %v", err)
+	}
+}
+
+// Code review finding (Important 1): a hardcoded voice paired with a
+// *variable* locale can silently mismatch, unlike quiz_audio_handler.go where
+// both are fixed. A user whose target language resolves to ja-JP must get a
+// ja-JP voice, never the en-US one — Azure would otherwise synthesize
+// mismatched audio without ever erroring, and R9 would cache that garbage
+// globally forever.
+func TestReferenceUsesLocaleMatchedVoice(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 100)}
+	svc := newTestServiceWithProfile(pron, repo, tts, "ja")
+
+	if _, err := svc.Reference(context.Background(), "u1", "hello"); err != nil {
+		t.Fatalf("Reference: %v", err)
+	}
+	if tts.lastLocale != "ja-JP" {
+		t.Fatalf("expected locale ja-JP, got %q", tts.lastLocale)
+	}
+	if tts.lastVoice != "ja-JP-NanamiNeural" {
+		t.Fatalf("voice must match the ja-JP locale, got %q — a leftover en-US voice would make Azure synthesize mismatched audio without ever erroring", tts.lastVoice)
+	}
+}
+
+// voiceForLocale is the pure lookup Reference relies on to keep voice/locale
+// paired. Table-tests every locale pronunciation.go's localeFor can produce,
+// plus the "we don't know this one" branch (business-rules R9 discussion:
+// skip derivation rather than guess en-US for an unrecognized locale).
+func TestVoiceForLocaleCoversKnownLocales(t *testing.T) {
+	cases := map[string]string{
+		"en-US": "en-US-JennyNeural",
+		"de-DE": "de-DE-KatjaNeural",
+		"ja-JP": "ja-JP-NanamiNeural",
+		"ko-KR": "ko-KR-SunHiNeural",
+		"zh-CN": "zh-CN-XiaoxiaoNeural",
+		"es-ES": "es-ES-ElviraNeural",
+		"fr-FR": "fr-FR-DeniseNeural",
+	}
+	for locale, want := range cases {
+		got, ok := voiceForLocale(locale)
+		if !ok || got != want {
+			t.Errorf("voiceForLocale(%q) = (%q, %v), want (%q, true)", locale, got, ok, want)
+		}
+	}
+}
+
+func TestVoiceForLocaleUnknownSkipsRatherThanGuessing(t *testing.T) {
+	if _, ok := voiceForLocale("xx-XX"); ok {
+		t.Fatal("an unrecognized locale must not resolve to a voice — Reference must skip derivation, not guess en-US")
+	}
+}
+
+// Code review finding (Important 3): the decision to propagate a GetReference
+// error (rather than swallow it and fall through to a paid re-derivation) was
+// deliberate — it protects the "TTS+assess once per sentence, ever" NFR from
+// a transient repo read failure triggering Azure calls on every request. That
+// deliberate deviation needs its own test, not just a design note.
+func TestReferenceRepoReadErrorPropagatesWithoutRederiving(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	sentinel := errors.New("db: connection reset")
+	repo.getRefErr = sentinel
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 100)}
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.Reference(context.Background(), "u1", "hello")
+	if !errors.Is(err, sentinel) {
+		t.Fatalf("expected GetReference's error to propagate untouched, got %v", err)
+	}
+	if got != nil {
+		t.Fatalf("expected nil reference on a repo read failure, got %+v", got)
+	}
+	if tts.synthCalls != 0 || pron.assessCalls != 0 {
+		t.Fatalf("a repo read failure must not trigger a paid re-derivation, got %d Synthesize / %d Assess calls",
+			tts.synthCalls, pron.assessCalls)
+	}
+}
+
+// R10 edge case (business-rules): Azure can return word-level scores with no
+// syllable/phoneme detail at all. IPA must come back empty (nothing honest to
+// show), but the reference row is still stored — the duration is still
+// valid, and re-deriving on every call would defeat the whole cache.
+func TestReferenceStoresRowWithEmptyIPAWhenAzureOmitsPhonemes(t *testing.T) {
+	pron := &fakePronPort{result: &ports.PronunciationResult{
+		Recognized: "hello",
+		Words: []ports.WordScore{
+			{Word: "hello", Accuracy: 91}, // no Syllables, no Phonemes (R10)
+		},
+	}}
+	repo := newFakeSpeechRepo()
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 100)}
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.Reference(context.Background(), "u1", "hello")
+	if err != nil {
+		t.Fatalf("Reference: %v", err)
+	}
+	if got.IPA != "" {
+		t.Fatalf("IPA must be empty when Azure returned no phonemes (R10), got %q", got.IPA)
+	}
+	if len(repo.putReference) != 1 {
+		t.Fatalf("the reference row must still be cached even with no IPA, got %d PutReference calls", len(repo.putReference))
+	}
+	if repo.putReference[0].DurationMS == 0 {
+		t.Fatal("duration must still be computed from the wav even when IPA is empty")
 	}
 }

@@ -3,25 +3,64 @@ package speech
 import (
 	"context"
 	"errors"
+	"fmt"
 	"strings"
 
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
-// referenceVoice is the neural voice used to synthesize a sentence's reference
-// audio. Mirrors quiz_audio_handler.go's audioVoice constant: that handler is
-// the existing precedent for calling ports.SpeechSynthesizer, and it names a
-// concrete voice rather than passing "" and relying on Synthesize's internal
-// default (see azurespeech.Client.Synthesize) — same call site, same voice,
-// so the two callers don't drift into synthesizing the same text differently.
-const referenceVoice = "en-US-JennyNeural"
+// voicesByLocale maps a BCP-47 locale — exactly the set pronunciation.go's
+// localeFor can produce — to a concrete Azure neural voice for reference
+// synthesis. quiz_audio_handler.go's audioVoice/audioLocale can never drift
+// apart because both are fixed constants (that handler only ever speaks
+// en-US); Reference has no such luxury — locale comes from LocaleFor and
+// varies with the user's target language. A single hardcoded voice constant
+// paired with a variable locale would silently mismatch (e.g. locale=ja-JP,
+// voice=en-US-JennyNeural): Azure's SSML honors the named voice regardless of
+// the declared xml:lang (azurespeech.Client.Synthesize), so it does not
+// reject the mismatch — it quietly synthesizes the wrong-sounding audio, that
+// gets self-scored, and R9 caches the resulting garbage in speech_references
+// globally, forever, with no invalidation path in this codebase. Keeping
+// voice and locale as one hardcoded pair per entry closes that off entirely.
+var voicesByLocale = map[string]string{
+	"en-US": "en-US-JennyNeural",
+	"de-DE": "de-DE-KatjaNeural",
+	"ja-JP": "ja-JP-NanamiNeural",
+	"ko-KR": "ko-KR-SunHiNeural",
+	"zh-CN": "zh-CN-XiaoxiaoNeural",
+	"es-ES": "es-ES-ElviraNeural",
+	"fr-FR": "fr-FR-DeniseNeural",
+}
 
-// errTTSNotConfigured is returned by Reference when the synthesizer cannot run
+// voiceForLocale looks up the voice paired with locale. ok=false means "we
+// have no voice for this locale — do not guess." Reference treats that as a
+// reason to skip derivation (see ErrUnsupportedLocale), not to fall back to
+// en-US: TargetLang has no allow-list validation (me_handler.go's
+// orDefault(req.TargetLang, "en") stores whatever the client sends), and a
+// permanent, sentence_key-global, invalidation-free cache (R9) is the wrong
+// place to paper over that with a guess. In today's codebase LocaleFor's own
+// switch (pronunciation.go's localeFor) always defaults unrecognized
+// TargetLang values to "en-US" — so this branch is not reachable through
+// Reference yet — but it stays as the guard against the day localeFor grows
+// an 8th language before this map is updated in lockstep.
+func voiceForLocale(locale string) (string, bool) {
+	v, ok := voicesByLocale[locale]
+	return v, ok
+}
+
+// ErrUnsupportedLocale is returned by Reference when it has no voice paired
+// with the resolved locale (see voiceForLocale). Exported, like
+// azurespeech.ErrNoSpeech, so a caller (Task 5's HTTP layer) can distinguish
+// it from other failures with errors.Is instead of string-matching.
+var ErrUnsupportedLocale = errors.New("speech: no reference voice for locale")
+
+// ErrTTSNotConfigured is returned by Reference when the synthesizer cannot run
 // at all. This is distinct from a Synthesize *call* failing (network/5xx) —
 // checking Configured() upfront mirrors quizAudioHandler.entry's own guard and
 // gives a clearer error than letting a nil/unconfigured client fail deep
-// inside an HTTP call.
-var errTTSNotConfigured = errors.New("speech: tts not configured, cannot derive reference")
+// inside an HTTP call. Exported (like azurespeech.ErrNoSpeech) so a caller in
+// another package can distinguish it with errors.Is.
+var ErrTTSNotConfigured = errors.New("speech: tts not configured, cannot derive reference")
 
 // Reference returns the canonical syllable/phoneme breakdown of a sentence,
 // deriving it once by scoring our own TTS rendition against the same text
@@ -55,11 +94,16 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 		return existing, nil
 	}
 
-	if s.tts == nil || !s.tts.Configured() {
-		return nil, errTTSNotConfigured
+	voice, ok := voiceForLocale(locale)
+	if !ok {
+		return nil, fmt.Errorf("%w: %s", ErrUnsupportedLocale, locale)
 	}
 
-	wav, err := s.tts.Synthesize(ctx, text, referenceVoice, locale)
+	if s.tts == nil || !s.tts.Configured() {
+		return nil, ErrTTSNotConfigured
+	}
+
+	wav, err := s.tts.Synthesize(ctx, text, voice, locale)
 	if err != nil {
 		return nil, err
 	}
