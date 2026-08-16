@@ -1,9 +1,40 @@
 package azurespeech
 
 import (
+	"encoding/json"
 	"errors"
 	"testing"
 )
+
+// Azure returns SAPI phonemes ("ih", "iy", "th") unless the alphabet is asked
+// for explicitly: "To request IPA phonemes, set the phoneme alphabet to IPA.
+// If you don't specify the alphabet, the phonemes are in SAPI format by
+// default." (learn.microsoft.com/azure/ai-services/speech-service/
+// how-to-pronunciation-assessment). Everything downstream — ports.PhonemeResult's
+// contract, the fixtures in this file, content/phonemetips' canonical keys —
+// is written against IPA. Drop this parameter and Azure silently switches
+// alphabets: nothing errors, but every phoneme tip stops matching and the
+// correction-point section renders empty forever.
+func TestAssessConfigRequestsIPAPhonemes(t *testing.T) {
+	raw, err := assessConfig("good morning")
+	if err != nil {
+		t.Fatalf("assessConfig: %v", err)
+	}
+	var cfg map[string]any
+	if err := json.Unmarshal(raw, &cfg); err != nil {
+		t.Fatalf("config is not JSON: %v", err)
+	}
+	if cfg["PhonemeAlphabet"] != "IPA" {
+		t.Fatalf("PhonemeAlphabet must be IPA or Azure falls back to SAPI and every phoneme tip misses; got %v", cfg["PhonemeAlphabet"])
+	}
+	// Phoneme granularity is what produces the phonemes the alphabet applies to.
+	if cfg["Granularity"] != "Phoneme" {
+		t.Fatalf("Granularity must be Phoneme, got %v", cfg["Granularity"])
+	}
+	if cfg["ReferenceText"] != "good morning" {
+		t.Fatalf("ReferenceText not carried through, got %v", cfg["ReferenceText"])
+	}
+}
 
 const respWithPhonemes = `{"RecognitionStatus":"Success","DisplayText":"I'm giving you acetaminophen",
 "NBest":[{"Display":"I'm giving you acetaminophen","AccuracyScore":84,"FluencyScore":79,

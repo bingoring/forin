@@ -107,12 +107,11 @@ func parseAssessment(body []byte) (*ports.PronunciationResult, error) {
 	return out, nil
 }
 
-// Assess scores audioWav (16kHz mono PCM WAV) against referenceText in the given locale (e.g. en-US).
-func (c *Client) Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*ports.PronunciationResult, error) {
-	if !c.Configured() {
-		return nil, errors.New("azurespeech: key/region not configured")
-	}
-	cfg, _ := json.Marshal(map[string]interface{}{
+// assessConfig builds the JSON that goes into the Pronunciation-Assessment
+// header. Split out from Assess so a test can pin the parameters without
+// going over HTTP — several of them fail silently when wrong.
+func assessConfig(referenceText string) ([]byte, error) {
+	return json.Marshal(map[string]interface{}{
 		"ReferenceText": referenceText, "GradingSystem": "HundredMark",
 		// Phoneme granularity is what makes the syllable grid and the correction
 		// points possible; Word granularity returns neither. Prosody must be
@@ -120,7 +119,27 @@ func (c *Client) Assess(ctx context.Context, audioWav []byte, referenceText, loc
 		// that is why PronunciationResult carries ProsodyOK.
 		"Granularity": "Phoneme", "Dimension": "Comprehensive",
 		"EnableProsodyAssessment": true,
+		// Without this Azure returns SAPI phonemes ("ih", "iy", "th"), not IPA
+		// — SAPI is the documented default. ports.PhonemeResult, the fixtures
+		// in azurespeech_test.go and content/phonemetips are all written
+		// against IPA, and a mismatch produces no error at all: the phoneme
+		// tips simply never match and the correction points stay empty.
+		// IPA phoneme names are documented for en-US only; other locales fall
+		// back to SAPI or to no phoneme name, which phonemetips.Lookup absorbs
+		// by normalizing both alphabets.
+		"PhonemeAlphabet": "IPA",
 	})
+}
+
+// Assess scores audioWav (16kHz mono PCM WAV) against referenceText in the given locale (e.g. en-US).
+func (c *Client) Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*ports.PronunciationResult, error) {
+	if !c.Configured() {
+		return nil, errors.New("azurespeech: key/region not configured")
+	}
+	cfg, err := assessConfig(referenceText)
+	if err != nil {
+		return nil, fmt.Errorf("azurespeech: build assessment config: %w", err)
+	}
 	url := fmt.Sprintf("https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s&format=detailed",
 		c.region, locale)
 
