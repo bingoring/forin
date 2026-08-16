@@ -20,6 +20,10 @@ type SpeechRepo struct {
 	q    *sqlc.Queries
 }
 
+// Not yet wired into any constructor call (Task 3 does that), so nothing else
+// forces the compiler to check this interface is actually satisfied.
+var _ ports.SpeechRepo = (*SpeechRepo)(nil)
+
 func NewSpeechRepo(pool *pgxpool.Pool) *SpeechRepo {
 	return &SpeechRepo{pool: pool, q: sqlc.New(pool)}
 }
