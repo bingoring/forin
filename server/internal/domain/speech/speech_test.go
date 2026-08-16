@@ -45,6 +45,7 @@ type fakeSpeechRepo struct {
 	inserted     []ports.SpeechAttemptInput
 	nextID       int
 	attemptNo    map[string]int // userID|sentenceKey -> next attempt_no
+	insertErr    error          // when set, InsertAttempt fails (persist-after-scoring failure tests)
 	historyRows  []ports.SpeechAttemptRow
 	historyErr   error
 	getRefErr    error
@@ -57,6 +58,9 @@ func newFakeSpeechRepo() *fakeSpeechRepo {
 }
 
 func (f *fakeSpeechRepo) InsertAttempt(ctx context.Context, a ports.SpeechAttemptInput) (string, int, error) {
+	if f.insertErr != nil {
+		return "", 0, f.insertErr
+	}
 	f.inserted = append(f.inserted, a)
 	key := a.UserID + "|" + a.SentenceKey
 	f.attemptNo[key]++
@@ -214,6 +218,36 @@ func TestRecordDowngradesUnknownOrigin(t *testing.T) {
 	}
 	if len(repo.inserted) != 1 || repo.inserted[0].Origin != "freeform" {
 		t.Fatalf("unknown origin must be downgraded to freeform, got %+v", repo.inserted)
+	}
+}
+
+// Review round 2, Important 1: by the time InsertAttempt runs, Assess has
+// already happened — Azure was already paid for (I4) and produced a real
+// score. A storage failure after that must not throw the result away: Record
+// must still return it (with PersistErr set), not an error, so the caller
+// (Task 5's HTTP handler) can show the learner their score instead of a
+// generic "try again" that implies scoring itself failed.
+func TestRecordReturnsScoredResultWhenPersistFails(t *testing.T) {
+	pron := &fakePronPort{result: sampleResult()}
+	repo := newFakeSpeechRepo()
+	repo.insertErr = errors.New("db: connection reset")
+	svc := newTestService(pron, repo)
+
+	rec, err := svc.Record(context.Background(), "u1", []byte("wav"), "I'm giving you acetaminophen", RecordOptions{Origin: "dialogue"})
+	if err != nil {
+		t.Fatalf("Record must not error when only persistence fails (scoring already succeeded), got %v", err)
+	}
+	if rec == nil || rec.Result == nil {
+		t.Fatalf("the scored result must still come back, got %+v", rec)
+	}
+	if rec.Result.Recognized != "I'm giving you acetaminophen" {
+		t.Fatalf("scored result must be the real Assess output, got %+v", rec.Result)
+	}
+	if rec.PersistErr == nil {
+		t.Fatalf("PersistErr must carry the storage failure so the caller can log/warn about it")
+	}
+	if rec.ID != "" || rec.AttemptNo != 0 {
+		t.Fatalf("no row was written, so ID/AttemptNo must stay zero-value, got ID=%q AttemptNo=%d", rec.ID, rec.AttemptNo)
 	}
 }
 

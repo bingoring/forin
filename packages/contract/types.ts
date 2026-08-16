@@ -1701,7 +1701,7 @@ export interface components {
             phoneme?: string;
         };
         "github_com_bingoring_forin_server_internal_ports.SentenceReferenceRow": {
-            durationMS?: number;
+            durationMs?: number;
             ipa?: string;
             locale?: string;
             referenceText?: string;
@@ -1713,13 +1713,13 @@ export interface components {
             attemptNo?: number;
             completeness?: number;
             createdAt?: string;
-            durationMS?: number;
+            durationMs?: number;
             fluency?: number;
             id?: string;
             overall?: number;
             prosody?: number;
             /** @description false = NULL in storage, i.e. prosody was never scored — see SpeechAttemptInput */
-            prosodyOK?: boolean;
+            prosodyAvailable?: boolean;
             recognized?: string;
             words?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.WordScore"][];
         };

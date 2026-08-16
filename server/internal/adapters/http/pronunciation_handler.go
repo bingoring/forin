@@ -3,7 +3,10 @@ package http
 import (
 	"encoding/base64"
 	"errors"
+	"log/slog"
 	"net/http"
+	"regexp"
+	"unicode/utf8"
 
 	"github.com/bingoring/forin/server/internal/adapters/azurespeech"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
@@ -12,8 +15,25 @@ import (
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
-// maxReferenceTextLen is business-rules §2's validation cap on referenceText.
+// maxReferenceTextLen is business-rules §2's validation cap on referenceText,
+// counted in runes (not bytes, via utf8.RuneCountInString) — a Korean or
+// Japanese sentence well under 300 characters can be well over 300 bytes, and
+// len() on a Go string counts bytes.
 const maxReferenceTextLen = 300
+
+// maxRequestBodyBytes bounds the whole POST /pronunciation JSON body. A
+// base64-encoded 1MB WAV (ValidateWAV's own cap) inflates to ~1.37MB on the
+// wire; this leaves generous headroom over that for the rest of the JSON
+// envelope without leaving the body unbounded.
+const maxRequestBodyBytes = 4 << 20 // 4MiB
+
+// reviewCardIDFormat is a canonical-UUID shape check (review_cards.id is a
+// Postgres `uuid` column — db/migrations/000003_progress.up.sql). Checking
+// this BEFORE calling GetCardForUser means a malformed id is rejected as a
+// client input error (400) instead of reaching Postgres, which would reject
+// it as 22P02 (invalid_text_representation) and come back as an opaque 500 —
+// a scored attempt would then be lost over what is really a validation bug.
+var reviewCardIDFormat = regexp.MustCompile(`^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`)
 
 type pronunciationHandler struct {
 	svc *pronunciation.Service
@@ -34,12 +54,14 @@ type pronunciationHandler struct {
 // @Router /pronunciation [post]
 func (h *pronunciationHandler) assess(w http.ResponseWriter, r *http.Request) {
 	uid, _ := UserID(r.Context())
+	r.Body = http.MaxBytesReader(w, r.Body, maxRequestBodyBytes)
+
 	var req pronounceReq
 	if err := httpx.DecodeJSON(r, &req); err != nil || req.ReferenceText == "" || req.AudioBase64 == "" {
 		httpx.Error(w, http.StatusBadRequest, "referenceText and audioBase64 are required")
 		return
 	}
-	if len(req.ReferenceText) > maxReferenceTextLen {
+	if utf8.RuneCountInString(req.ReferenceText) > maxReferenceTextLen {
 		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}
@@ -48,12 +70,29 @@ func (h *pronunciationHandler) assess(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusBadRequest, "audioBase64 is not valid base64")
 		return
 	}
+	// business-rules §2: WAV(RIFF PCM16) 16kHz mono, <=1MB, <=10s (R6).
+	if err := speech.ValidateWAV(audio); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid_audio")
+		return
+	}
 
 	// business-rules §2: reviewCardId, if given, must belong to the caller.
-	// GetCardForUser already filters by (userID, cardID), so "someone else's
-	// card" and "no such card" both come back nil — either way, this caller
-	// may not attach an attempt to it.
-	if req.ReviewCardID != nil && *req.ReviewCardID != "" {
+	// An empty string is normalized to "no card" (same as omitted) rather
+	// than forwarded — Record/the repo would otherwise try to use "" as a
+	// review_card_id. A non-empty value that isn't even UUID-shaped is
+	// rejected as a client error before ever reaching the repo (see
+	// reviewCardIDFormat's doc). Only a well-formed id that resolves to
+	// someone else's card (or no card at all) is a 403 — GetCardForUser
+	// already filters by (userID, cardID), so "someone else's" and "no such
+	// card" both come back nil and are treated alike.
+	if req.ReviewCardID != nil && *req.ReviewCardID == "" {
+		req.ReviewCardID = nil
+	}
+	if req.ReviewCardID != nil {
+		if !reviewCardIDFormat.MatchString(*req.ReviewCardID) {
+			httpx.Error(w, http.StatusBadRequest, "invalid_review_card_id")
+			return
+		}
 		card, err := h.review.GetCardForUser(r.Context(), uid, *req.ReviewCardID)
 		if err != nil {
 			httpx.Error(w, http.StatusInternalServerError, "could not verify review card")
@@ -87,6 +126,14 @@ func (h *pronunciationHandler) assess(w http.ResponseWriter, r *http.Request) {
 		}
 		httpx.Error(w, http.StatusBadGateway, "pronunciation assessment unavailable")
 		return
+	}
+	// rec.PersistErr means Assess already succeeded (Azure already paid for,
+	// I4) but the storage write failed afterward. That must not become a
+	// failure response to the learner who just spoke for up to 10 seconds —
+	// answer 200 with the real score and an empty attemptId/0 attemptNo
+	// (nothing was actually stored), and only warn in the logs.
+	if rec.PersistErr != nil {
+		slog.Warn("pronunciation: attempt scored but not persisted, returning score anyway", "err", rec.PersistErr, "userID", uid)
 	}
 
 	httpx.JSON(w, http.StatusOK, pronounceResp{

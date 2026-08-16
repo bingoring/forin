@@ -185,32 +185,42 @@ type SpeechAttemptInput struct {
 // reference_text) are deliberately not surfaced here — the practice screen's
 // history strip only needs scores, the transcript, and the syllable/phoneme
 // breakdown for that attempt.
+// JSON tags match PronunciationResult's wire convention exactly (durationMs,
+// not DurationMS; prosodyAvailable, not ProsodyOK) — these rows travel over
+// GET /speech/attempts alongside PronunciationResult-shaped data, and a mixed
+// vocabulary (durationMs on one, DurationMS on the other) in the same client
+// is its own bug. Before these tags existed, encoding/json fell back to the
+// exported Go field names verbatim (PascalCase) — caught in code review
+// because the http tests decoded the response back into this same struct,
+// which is case-insensitive on unmarshal and so never noticed the mismatch.
 type SpeechAttemptRow struct {
-	ID           string
-	AttemptNo    int
-	Recognized   string
-	Overall      float64
-	Accuracy     float64
-	Fluency      float64
-	Completeness float64
-	Prosody      float64
-	ProsodyOK    bool // false = NULL in storage, i.e. prosody was never scored — see SpeechAttemptInput
-	DurationMS   int
-	Words        []WordScore
-	CreatedAt    time.Time
+	ID           string      `json:"id"`
+	AttemptNo    int         `json:"attemptNo"`
+	Recognized   string      `json:"recognized"`
+	Overall      float64     `json:"overall"`
+	Accuracy     float64     `json:"accuracy"`
+	Fluency      float64     `json:"fluency"`
+	Completeness float64     `json:"completeness"`
+	Prosody      float64     `json:"prosody"`
+	ProsodyOK    bool        `json:"prosodyAvailable"` // false = NULL in storage, i.e. prosody was never scored — see SpeechAttemptInput
+	DurationMS   int         `json:"durationMs"`
+	Words        []WordScore `json:"words,omitempty"`
+	CreatedAt    time.Time   `json:"createdAt"`
 }
 
 // SentenceReferenceRow is the canonical per-sentence breakdown (business-rules
 // R9: one global row per sentence_key, derived once and shared by every user).
 // Words carries syllable/phoneme segmentation only — accuracy on this row is
 // meaningless because there is no speaker to score (domain-entities §2).
+// JSON tags mirror SpeechAttemptRow's (see its comment) — durationMs, not
+// DurationMS.
 type SentenceReferenceRow struct {
-	SentenceKey   string
-	ReferenceText string
-	Locale        string
-	IPA           string
-	Words         []WordScore
-	DurationMS    int
+	SentenceKey   string      `json:"sentenceKey"`
+	ReferenceText string      `json:"referenceText"`
+	Locale        string      `json:"locale"`
+	IPA           string      `json:"ipa"`
+	Words         []WordScore `json:"words,omitempty"`
+	DurationMS    int         `json:"durationMs"`
 }
 
 // SpeechRepo persists pronunciation-practice attempts and the canonical

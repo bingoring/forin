@@ -33,11 +33,22 @@ type RecordOptions struct {
 // RecordResult is what Record hands back: the score plus the bookkeeping the
 // store assigned, so a caller can both render the result and know where it
 // lands in this sentence's history.
+//
+// PersistErr is non-nil in exactly one situation: Assess succeeded (Azure was
+// already called — I4, that cost is already spent and cannot be undone) but
+// InsertAttempt failed afterward. Result is still populated in that case —
+// Record does NOT turn a storage failure into a total failure, mirroring
+// Reference's own principle (business-rules §5) that a derivation/storage
+// problem must not block a screen the user already paid an Azure call for.
+// ID/AttemptNo are zero-value ("" / 0) when PersistErr is set — there is no
+// row to point to. The caller decides how to surface PersistErr (Task 5's
+// HTTP handler: log it, answer 200 with an empty attemptId anyway).
 type RecordResult struct {
 	ID          string
 	SentenceKey string
 	AttemptNo   int
 	Result      *ports.PronunciationResult
+	PersistErr  error
 }
 
 // Service records pronunciation attempts and serves their history. Scoring
@@ -61,6 +72,12 @@ func NewService(repo ports.SpeechRepo, pron *pronunciation.Service, tts ports.Sp
 // pure profile lookup that never touches Azure. A no-speech result
 // (azurespeech.ErrNoSpeech) is returned as-is — no attempt row is written and
 // no attempt_no is consumed, matching the same treatment for a scorer 5xx.
+//
+// A failure AFTER scoring — InsertAttempt itself erroring — does NOT make
+// Record return an error: the Azure call already happened and produced a real
+// result, so the returned RecordResult carries that Result with PersistErr set
+// instead of discarding it (see RecordResult's doc). Only a scoring failure
+// (pron.Assess erroring, including ErrNoSpeech) is a Record-level error.
 func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, referenceText string, opts RecordOptions) (*RecordResult, error) {
 	locale := s.pron.LocaleFor(ctx, userID)
 
@@ -103,7 +120,8 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 		Origin:        origin,
 	})
 	if err != nil {
-		return nil, err
+		slog.Warn("speech: attempt scored but not persisted", "err", err, "userID", userID, "sentenceKey", key)
+		return &RecordResult{SentenceKey: key, Result: res, PersistErr: err}, nil
 	}
 
 	return &RecordResult{ID: id, SentenceKey: key, AttemptNo: attemptNo, Result: res}, nil

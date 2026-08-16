@@ -4,16 +4,19 @@ import (
 	"bytes"
 	"context"
 	"encoding/base64"
+	"encoding/binary"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/adapters/azurespeech"
 	"github.com/bingoring/forin/server/internal/domain/auth"
-	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/progress"
+	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/speech"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -49,8 +52,13 @@ func (fakeProfiles) GetProfile(ctx context.Context, userID string) (*user.Profil
 // fakeSpeechRepo is an in-memory ports.SpeechRepo. ListAttempts is keyed by
 // userID so tests can assert isolation (business-rules §3: "시도 이력은 본인 것만
 // 조회된다") instead of trusting the handler to ask the right question.
+// inserted records every InsertAttempt call verbatim (review round 2: needed
+// to assert what actually reached the repo — e.g. that an empty-string
+// reviewCardId was normalized to nil before it got there).
 type fakeSpeechRepo struct {
 	rowsByUser map[string][]ports.SpeechAttemptRow
+	inserted   []ports.SpeechAttemptInput
+	insertErr  error // when set, InsertAttempt fails AFTER Assess already ran (persist-failure tests)
 	getRefErr  error
 	refRow     *ports.SentenceReferenceRow
 }
@@ -60,9 +68,17 @@ func newFakeSpeechRepo() *fakeSpeechRepo {
 }
 
 func (f *fakeSpeechRepo) InsertAttempt(ctx context.Context, a ports.SpeechAttemptInput) (string, int, error) {
+	f.inserted = append(f.inserted, a)
+	if f.insertErr != nil {
+		return "", 0, f.insertErr
+	}
 	rows := f.rowsByUser[a.UserID]
 	no := len(rows) + 1
-	rows = append(rows, ports.SpeechAttemptRow{ID: "attempt-x", AttemptNo: no, Recognized: a.Recognized, Overall: a.Overall})
+	rows = append(rows, ports.SpeechAttemptRow{
+		ID: "attempt-x", AttemptNo: no, Recognized: a.Recognized, Overall: a.Overall,
+		Accuracy: a.Accuracy, Fluency: a.Fluency, Completeness: a.Completeness,
+		Prosody: a.Prosody, ProsodyOK: a.ProsodyOK, DurationMS: a.DurationMS, Words: a.Words,
+	})
 	f.rowsByUser[a.UserID] = rows
 	return "attempt-x", no, nil
 }
@@ -158,6 +174,46 @@ func withUser(r *http.Request, uid string) *http.Request {
 	return r.WithContext(context.WithValue(r.Context(), userIDKey, uid))
 }
 
+// testWav builds a minimal canonical RIFF/WAVE PCM16 16kHz mono clip of
+// numSamples all-zero samples. Format/size/duration are all speech.ValidateWAV
+// checks — never sample content — so all-zero data is enough to pass it.
+// testWav(16000) is exactly 1 second, comfortably under both the 10s and 1MB
+// caps.
+func testWav(numSamples int) []byte {
+	const sampleRate, channels, bytesPerSample = 16000, 1, 2
+	dataLen := numSamples * channels * bytesPerSample
+	buf := make([]byte, 44+dataLen)
+	copy(buf[0:4], "RIFF")
+	binary.LittleEndian.PutUint32(buf[4:8], uint32(36+dataLen))
+	copy(buf[8:12], "WAVE")
+	copy(buf[12:16], "fmt ")
+	binary.LittleEndian.PutUint32(buf[16:20], 16)
+	binary.LittleEndian.PutUint16(buf[20:22], 1) // PCM
+	binary.LittleEndian.PutUint16(buf[22:24], uint16(channels))
+	binary.LittleEndian.PutUint32(buf[24:28], uint32(sampleRate))
+	byteRate := sampleRate * channels * bytesPerSample
+	binary.LittleEndian.PutUint32(buf[28:32], uint32(byteRate))
+	binary.LittleEndian.PutUint16(buf[32:34], uint16(channels*bytesPerSample))
+	binary.LittleEndian.PutUint16(buf[34:36], 16) // bits per sample
+	copy(buf[36:40], "data")
+	binary.LittleEndian.PutUint32(buf[40:44], uint32(dataLen))
+	return buf
+}
+
+func testWavBase64(numSamples int) string {
+	return base64.StdEncoding.EncodeToString(testWav(numSamples))
+}
+
+// keysOf is a small helper for readable failure messages when asserting on a
+// decoded JSON object's key set.
+func keysOf(m map[string]any) []string {
+	out := make([]string, 0, len(m))
+	for k := range m {
+		out = append(out, k)
+	}
+	return out
+}
+
 // ---- Step 1: failing handler tests (business-rules §2, §3, §5) ----
 
 // 401: GET /speech/attempts with no Authorization header must be rejected by
@@ -204,6 +260,88 @@ func TestAttemptsOnlyReturnsOwn(t *testing.T) {
 	}
 }
 
+// Review round 2 (Critical): the wire format must use the same camelCase
+// vocabulary PronunciationResult already uses (durationMs, prosodyAvailable),
+// not the bare Go field names (DurationMS, ProsodyOK) encoding/json falls
+// back to without json tags. Decoding into []map[string]any — not back into
+// []ports.SpeechAttemptRow — is deliberate: Go's own json.Unmarshal matches
+// field names case-insensitively, so unmarshaling into the same struct can
+// never catch a tag regression (this is exactly how the bug got through
+// round 1's tests).
+func TestAttemptsResponseUsesCamelCaseKeys(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	repo.rowsByUser["user-a"] = []ports.SpeechAttemptRow{
+		{
+			ID: "a1", AttemptNo: 1, Recognized: "hi", Overall: 81, Accuracy: 84,
+			Fluency: 79, Completeness: 100, Prosody: 80, ProsodyOK: true,
+			DurationMS: 1500, CreatedAt: time.Date(2026, 8, 17, 0, 0, 0, 0, time.UTC),
+		},
+	}
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, nil)
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+
+	req := httptest.NewRequest(http.MethodGet, "/speech/attempts?text=hello", nil)
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	sh.attempts(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d: %s", w.Code, w.Body.String())
+	}
+	var rows []map[string]any
+	if err := json.Unmarshal(w.Body.Bytes(), &rows); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if len(rows) != 1 {
+		t.Fatalf("expected 1 row, got %d: %+v", len(rows), rows)
+	}
+	row := rows[0]
+	for _, key := range []string{"id", "attemptNo", "recognized", "overall", "accuracy", "fluency", "completeness", "prosody", "prosodyAvailable", "durationMs", "createdAt"} {
+		if _, ok := row[key]; !ok {
+			t.Errorf("expected camelCase key %q in the attempts response, got keys %v", key, keysOf(row))
+		}
+	}
+	for _, wrongKey := range []string{"ID", "AttemptNo", "DurationMS", "ProsodyOK", "CreatedAt"} {
+		if _, ok := row[wrongKey]; ok {
+			t.Errorf("PascalCase key %q leaked onto the wire (missing json tag?), got %+v", wrongKey, row)
+		}
+	}
+}
+
+// Same Critical fix, for GET /speech/reference: sentenceKey/referenceText/
+// locale/ipa/durationMs/words must all be camelCase on the wire.
+func TestReferenceResponseUsesCamelCaseKeys(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	repo.refRow = &ports.SentenceReferenceRow{
+		SentenceKey: "key123", ReferenceText: "hello there", Locale: "en-US",
+		IPA: "/heˈloʊ ðɛr/", DurationMS: 900,
+		Words: []ports.WordScore{{Word: "hello"}},
+	}
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, nil)
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+
+	req := httptest.NewRequest(http.MethodGet, "/speech/reference?text=hello+there", nil)
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	sh.reference(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d: %s", w.Code, w.Body.String())
+	}
+	var got map[string]any
+	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	for _, key := range []string{"sentenceKey", "referenceText", "locale", "ipa", "durationMs", "words"} {
+		if _, ok := got[key]; !ok {
+			t.Errorf("expected camelCase key %q in the reference response, got keys %v", key, keysOf(got))
+		}
+	}
+	if _, ok := got["DurationMS"]; ok {
+		t.Errorf("PascalCase key DurationMS leaked onto the wire, got %+v", got)
+	}
+}
+
 // business-rules §2: referenceText over 300 chars -> 400 invalid_reference_text.
 func TestReferenceTextTooLongIs400(t *testing.T) {
 	repo := newFakeSpeechRepo()
@@ -211,13 +349,10 @@ func TestReferenceTextTooLongIs400(t *testing.T) {
 	review := &fakeReviewRepo{owned: map[string]string{}}
 	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
 
-	longText := ""
-	for i := 0; i < 301; i++ {
-		longText += "a"
-	}
+	longText := strings.Repeat("a", 301)
 	body, _ := json.Marshal(map[string]string{
 		"referenceText": longText,
-		"audioBase64":   base64.StdEncoding.EncodeToString([]byte("wav-bytes")),
+		"audioBase64":   testWavBase64(16000),
 	})
 	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
 	req = withUser(req, "user-a")
@@ -226,6 +361,59 @@ func TestReferenceTextTooLongIs400(t *testing.T) {
 
 	if w.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400 for a 301-char referenceText, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
+// Important 2: the 300-char cap is counted in runes, not bytes. A Korean
+// sentence well under 300 characters can be well over 300 UTF-8 bytes; len()
+// on a Go string counts bytes and would wrongly reject it.
+func TestReferenceTextKoreanCountedInRunesNotBytes(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	koreanText := strings.Repeat("가", 101) // 101 runes, 303 bytes in UTF-8
+	if len(koreanText) <= maxReferenceTextLen {
+		t.Fatalf("test fixture must exceed the cap in bytes to be a meaningful regression guard, got %d bytes", len(koreanText))
+	}
+	body, _ := json.Marshal(map[string]string{
+		"referenceText": koreanText,
+		"audioBase64":   testWavBase64(16000),
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("a 101-rune Korean sentence must not be rejected as too long (bytes != runes), got %d: %s", w.Code, w.Body.String())
+	}
+}
+
+// Important 3: business-rules §2's audio row (RIFF PCM16 16kHz mono) must be
+// enforced — non-WAV bytes must never reach the scorer (an Azure call costs
+// money) or storage.
+func TestInvalidAudioIs400(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	body, _ := json.Marshal(map[string]string{
+		"referenceText": "give the patient acetaminophen",
+		"audioBase64":   base64.StdEncoding.EncodeToString([]byte("not actually a wav file, just text")),
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	if w.Code != http.StatusBadRequest {
+		t.Fatalf("non-WAV audio must be 400 invalid_audio, got %d: %s", w.Code, w.Body.String())
+	}
+	if len(repo.inserted) != 0 {
+		t.Fatalf("invalid audio must never reach the scorer/store, got %+v", repo.inserted)
 	}
 }
 
@@ -239,7 +427,7 @@ func TestNoSpeechIs422(t *testing.T) {
 
 	body, _ := json.Marshal(map[string]string{
 		"referenceText": "quiet room",
-		"audioBase64":   base64.StdEncoding.EncodeToString([]byte("silence")),
+		"audioBase64":   testWavBase64(16000),
 	})
 	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
 	req = withUser(req, "user-a")
@@ -258,13 +446,13 @@ func TestNoSpeechIs422(t *testing.T) {
 func TestReviewCardOwnershipEnforced(t *testing.T) {
 	repo := newFakeSpeechRepo()
 	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, nil)
-	review := &fakeReviewRepo{owned: map[string]string{"card-owned-by-someone-else": "user-victim"}}
+	review := &fakeReviewRepo{owned: map[string]string{"c0ffee00-0000-4000-8000-000000000001": "user-victim"}}
 	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
 
-	cardID := "card-owned-by-someone-else"
+	cardID := "c0ffee00-0000-4000-8000-000000000001"
 	body, _ := json.Marshal(map[string]any{
 		"referenceText": "give the patient acetaminophen",
-		"audioBase64":   base64.StdEncoding.EncodeToString([]byte("wav-bytes")),
+		"audioBase64":   testWavBase64(16000),
 		"reviewCardId":  cardID,
 	})
 	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
@@ -280,6 +468,101 @@ func TestReviewCardOwnershipEnforced(t *testing.T) {
 	}
 }
 
+// Important 4a: reviewCardId:"" must be treated as "no card", not forwarded
+// to the repo as a literal empty string.
+func TestReviewCardEmptyStringIsTreatedAsNoCard(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	body, _ := json.Marshal(map[string]any{
+		"referenceText": "give the patient acetaminophen",
+		"audioBase64":   testWavBase64(16000),
+		"reviewCardId":  "",
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("an empty-string reviewCardId must be treated as no card, got %d: %s", w.Code, w.Body.String())
+	}
+	if len(repo.inserted) != 1 {
+		t.Fatalf("expected exactly one InsertAttempt call, got %d", len(repo.inserted))
+	}
+	if repo.inserted[0].ReviewCardID != nil {
+		t.Fatalf("an empty-string reviewCardId must be normalized to nil before reaching the repo, got %+v", *repo.inserted[0].ReviewCardID)
+	}
+}
+
+// Important 4b: a reviewCardId that isn't even UUID-shaped must be rejected
+// as a 400 client error before it ever reaches GetCardForUser — not left to
+// fail deep inside Postgres as a 22P02 and surface as an opaque 500 (which,
+// worse, would happen AFTER Assess already ran and scored the attempt).
+func TestReviewCardMalformedFormatIs400(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	body, _ := json.Marshal(map[string]any{
+		"referenceText": "give the patient acetaminophen",
+		"audioBase64":   testWavBase64(16000),
+		"reviewCardId":  "not-a-uuid-at-all",
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	if w.Code != http.StatusBadRequest {
+		t.Fatalf("a malformed reviewCardId must be 400, not a 500 from a downstream UUID-parse failure, got %d: %s", w.Code, w.Body.String())
+	}
+	if len(repo.inserted) != 0 {
+		t.Fatalf("a rejected malformed reviewCardId must not still persist an attempt, got %+v", repo.inserted)
+	}
+}
+
+// Important 1: a storage failure that happens AFTER Assess already scored the
+// attempt (Azure already paid for, I4) must not become a failure response —
+// the learner already spoke; they must still see their score. attemptId/
+// attemptNo come back empty/zero (nothing was actually stored).
+func TestPronunciationPersistFailureStillReturnsScore(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	repo.insertErr = errors.New("db: connection reset")
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	body, _ := json.Marshal(map[string]string{
+		"referenceText": "give the patient acetaminophen",
+		"audioBase64":   testWavBase64(16000),
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("a storage failure after scoring must still return 200 with the score, got %d: %s", w.Code, w.Body.String())
+	}
+	var got map[string]any
+	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if got["recognized"] != "I'm giving you acetaminophen" {
+		t.Fatalf("the real scored result must still be returned, got %+v", got)
+	}
+	if got["attemptId"] != "" {
+		t.Fatalf("no row was written, attemptId must be empty, got %+v", got["attemptId"])
+	}
+	if n, ok := got["attemptNo"].(float64); !ok || n != 0 {
+		t.Fatalf("no row was written, attemptNo must be 0, got %+v", got["attemptNo"])
+	}
+}
+
 // business-rules §5: AZURE_SPEECH_KEY unset must surface as a disabled signal
 // on a response the app already calls at boot, not a 503 at some new
 // endpoint. This repo picks GET /config/economy (mobile/src/app/_layout.tsx
@@ -290,11 +573,8 @@ func TestPronunciationDisabledWhenAzureUnset(t *testing.T) {
 	w := httptest.NewRecorder()
 	ch.economyConfig(w, req)
 
-	if w.Code != http.StatusServiceUnavailable {
-		// (This check exists to make the negative explicit: it must NOT be 503.)
-	}
 	if w.Code != http.StatusOK {
-		t.Fatalf("Azure unset must still return 200 (feature-disabled signal, not an error), got %d", w.Code)
+		t.Fatalf("Azure unset must still return 200 (feature-disabled signal, not an error, and NOT 503), got %d", w.Code)
 	}
 	var got map[string]any
 	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
@@ -307,12 +587,13 @@ func TestPronunciationDisabledWhenAzureUnset(t *testing.T) {
 
 // ---- extra coverage beyond the brief's 6, per Task 5's own judgment calls ----
 
-// business-rules §5 "참조 생성(TTS→assess) 실패": every failure mode is treated
-// alike — GET /speech/reference must still answer 200 (with the reference
-// omitted) rather than failing the practice-screen request outright.
-func TestReferenceReturns200EvenWhenDerivationFails(t *testing.T) {
+// business-rules §5 "참조 생성(TTS→assess) 실패" path 1/3: ErrTTSNotConfigured.
+// Every failure mode is treated alike — GET /speech/reference must still
+// answer 200 (with the reference omitted) rather than failing the
+// practice-screen request outright.
+func TestReferenceReturns200WhenTTSNotConfigured(t *testing.T) {
 	repo := newFakeSpeechRepo()
-	synth := &fakeSynth{configured: false} // ErrTTSNotConfigured path
+	synth := &fakeSynth{configured: false}
 	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, synth)
 	sh := &speechHandler{svc: svc, pron: pronSvc}
 
@@ -322,7 +603,44 @@ func TestReferenceReturns200EvenWhenDerivationFails(t *testing.T) {
 	sh.reference(w, req)
 
 	if w.Code != http.StatusOK {
-		t.Fatalf("reference derivation failing must not fail the request, got %d: %s", w.Code, w.Body.String())
+		t.Fatalf("TTS not configured must not fail the request, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
+// business-rules §5 "참조 생성(TTS→assess) 실패" path 2/3: the cache read itself
+// fails (a real DB error, not "no row yet").
+func TestReferenceReturns200WhenDBReadFails(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	repo.getRefErr = errors.New("db: connection reset")
+	synth := &fakeSynth{configured: true, wav: testWav(8000)}
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, synth)
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+
+	req := httptest.NewRequest(http.MethodGet, "/speech/reference?text=hello+there", nil)
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	sh.reference(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("a DB read failure while deriving the reference must still return 200, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
+// business-rules §5 "참조 생성(TTS→assess) 실패" path 3/3: synthesis itself fails
+// (e.g. Azure TTS 5xx) even though the synthesizer is configured.
+func TestReferenceReturns200WhenSynthesizeFails(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	synth := &fakeSynth{configured: true, err: errors.New("azure tts: 503")}
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, synth)
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+
+	req := httptest.NewRequest(http.MethodGet, "/speech/reference?text=hello+there", nil)
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	sh.reference(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("a TTS synthesis failure must still return 200, got %d: %s", w.Code, w.Body.String())
 	}
 }
 
@@ -337,7 +655,7 @@ func TestPronunciationResponseKeepsExistingFields(t *testing.T) {
 
 	body, _ := json.Marshal(map[string]string{
 		"referenceText": "give the patient acetaminophen",
-		"audioBase64":   base64.StdEncoding.EncodeToString([]byte("wav-bytes")),
+		"audioBase64":   testWavBase64(16000),
 	})
 	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
 	req = withUser(req, "user-a")
