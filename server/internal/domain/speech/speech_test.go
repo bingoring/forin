@@ -48,6 +48,7 @@ type fakeSpeechRepo struct {
 	historyRows  []ports.SpeechAttemptRow
 	historyErr   error
 	getRefErr    error
+	refRow       *ports.SentenceReferenceRow // pre-seeded cache row, for cache-hit tests
 	putReference []ports.SentenceReferenceRow
 }
 
@@ -72,7 +73,10 @@ func (f *fakeSpeechRepo) ListAttempts(ctx context.Context, userID, sentenceKey s
 }
 
 func (f *fakeSpeechRepo) GetReference(ctx context.Context, sentenceKey string) (*ports.SentenceReferenceRow, error) {
-	return nil, f.getRefErr
+	if f.getRefErr != nil {
+		return nil, f.getRefErr
+	}
+	return f.refRow, nil
 }
 
 func (f *fakeSpeechRepo) PutReference(ctx context.Context, r ports.SentenceReferenceRow) error {
@@ -82,7 +86,7 @@ func (f *fakeSpeechRepo) PutReference(ctx context.Context, r ports.SentenceRefer
 
 func newTestService(pron *fakePronPort, repo *fakeSpeechRepo) *Service {
 	pronSvc := pronunciation.NewService(pron, fakeProfiles{})
-	return NewService(repo, pronSvc)
+	return NewService(repo, pronSvc, nil) // these tests never touch Reference/tts
 }
 
 func sampleResult() *ports.PronunciationResult {

@@ -42,14 +42,17 @@ type RecordResult struct {
 
 // Service records pronunciation attempts and serves their history. Scoring
 // itself lives in domain/pronunciation (business-logic-model §1 PracticeLoop);
-// this package owns persistence and the business rules around it.
+// this package owns persistence and the business rules around it. tts backs
+// Reference (reference.go) — deriving the canonical IPA for a sentence before
+// any audio exists (business-logic-model §1 ReferenceDerivation).
 type Service struct {
 	repo ports.SpeechRepo
 	pron *pronunciation.Service
+	tts  ports.SpeechSynthesizer
 }
 
-func NewService(repo ports.SpeechRepo, pron *pronunciation.Service) *Service {
-	return &Service{repo: repo, pron: pron}
+func NewService(repo ports.SpeechRepo, pron *pronunciation.Service, tts ports.SpeechSynthesizer) *Service {
+	return &Service{repo: repo, pron: pron, tts: tts}
 }
 
 // Record scores one spoken attempt and, unless nothing was heard, persists it.
