@@ -195,6 +195,89 @@ components:
         status:
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_ports.PhonemeResult:
+      properties:
+        accuracy:
+          type: number
+        phoneme:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_ports.SentenceReferenceRow:
+      properties:
+        durationMS:
+          type: integer
+        ipa:
+          type: string
+        locale:
+          type: string
+        referenceText:
+          type: string
+        sentenceKey:
+          type: string
+        words:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.WordScore'
+          type: array
+      type: object
+    github_com_bingoring_forin_server_internal_ports.SpeechAttemptRow:
+      properties:
+        accuracy:
+          type: number
+        attemptNo:
+          type: integer
+        completeness:
+          type: number
+        createdAt:
+          type: string
+        durationMS:
+          type: integer
+        fluency:
+          type: number
+        id:
+          type: string
+        overall:
+          type: number
+        prosody:
+          type: number
+        prosodyOK:
+          description: false = NULL in storage, i.e. prosody was never scored — see
+            SpeechAttemptInput
+          type: boolean
+        recognized:
+          type: string
+        words:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.WordScore'
+          type: array
+      type: object
+    github_com_bingoring_forin_server_internal_ports.SyllableResult:
+      properties:
+        accuracy:
+          type: number
+        grapheme:
+          type: string
+        syllable:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_ports.WordScore:
+      properties:
+        accuracy:
+          type: number
+        errorType:
+          type: string
+        phonemes:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.PhonemeResult'
+          type: array
+          uniqueItems: false
+        syllables:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.SyllableResult'
+          type: array
+          uniqueItems: false
+        word:
+          type: string
+      type: object
     internal_adapters_http.attemptReq:
       properties:
         scenarioId:
@@ -208,6 +291,86 @@ components:
           type: string
         text:
           type: string
+      type: object
+    internal_adapters_http.economyConfigResp:
+      properties:
+        dailyClearedWeight:
+          description: weight multiplier for already-cleared
+          type: number
+        dailyDeptCap:
+          description: max scenarios per dept in a day's set
+          type: integer
+        dailyOffBandWeight:
+          description: weight multiplier for off-level difficulty
+          type: number
+        dailyPoolSize:
+          description: Daily situation pool.
+          type: integer
+        easeDefault:
+          description: Spaced repetition (SM-2).
+          type: number
+        easeFloor:
+          type: number
+        firstInterval:
+          description: days, reps 0 → 1
+          type: integer
+        masteryCap:
+          description: mastery pips ceiling
+          type: integer
+        pronunciationEnabled:
+          type: boolean
+        rankHead:
+          type: integer
+        rankJunior:
+          description: Rank thresholds (level → career title).
+          type: integer
+        rankSenior:
+          type: integer
+        repBandCordial:
+          description: ≥ → neutral/cordial
+          type: integer
+        repBandWarm:
+          description: ≥ → NPC noticeably warm
+          type: integer
+        repBandWary:
+          description: ≥ → slightly wary; below → guarded
+          type: integer
+        repGainMax:
+          description: reputation gained by a perfect clear
+          type: integer
+        repLossMax:
+          description: reputation lost by a zero-score attempt
+          type: integer
+        reputationDefault:
+          description: Reputation (0..100).
+          type: integer
+        scenarioBaseXP:
+          description: default XP for clearing a scenario
+          type: integer
+        scenarioMinXP:
+          description: XP floor for a genuine attempt (score>0)
+          type: integer
+        scenarioPassScore:
+          description: |-
+            Scenario grading (AI-judged completion). A scenario is "cleared" (완료) only
+            when the graded score ≥ ScenarioPassScore; below that it's an engaged attempt
+            (재도전) that still earns score-scaled XP + streak but no clear/스티커.
+          type: integer
+        secondInterval:
+          description: days, reps 1 → 2
+          type: integer
+        titleWarmthBonus:
+          description: equipped "warm" title nudge
+          type: integer
+        topUpAdd:
+          description: Rewarded-ad top-up.
+          type: integer
+        topUpCap:
+          description: rewarded top-ups allowed per local day
+          type: integer
+        xpPerLevel:
+          description: XP for one level (level = 1 + xp/XPPerLevel)
+          type: integer
       type: object
     internal_adapters_http.gate:
       properties:
@@ -320,8 +483,55 @@ components:
       properties:
         audioBase64:
           type: string
+        origin:
+          description: |-
+            Origin/ScenarioID/ReviewCardID are all optional and new in Task 5 —
+            existing clients that omit them get origin="freeform", no scenario,
+            no linked card (business-rules §2, domain-entities §4).
+          type: string
         referenceText:
           type: string
+        reviewCardId:
+          type: string
+        scenarioId:
+          type: string
+      type: object
+    internal_adapters_http.pronounceResp:
+      properties:
+        accuracy:
+          type: number
+        attemptId:
+          type: string
+        attemptNo:
+          type: integer
+        completeness:
+          type: number
+        durationMs:
+          description: |-
+            DurationMS is the recorded audio's length in milliseconds. Azure's
+            pronunciation-assessment response does not carry this — it is NOT
+            populated by the azurespeech adapter. The caller computes it from the
+            WAV it captured (see business-rules R6 / domain-entities SpeechAttempt).
+          type: integer
+        fluency:
+          type: number
+        overall:
+          type: number
+        prosody:
+          description: |-
+            Prosody (억양) only arrives when EnableProsodyAssessment is on AND the
+            locale supports it. ProsodyOK distinguishes "scored 0" from "not scored" —
+            rendering an absent score as 0 would tell the learner a falsehood.
+          type: number
+        prosodyAvailable:
+          type: boolean
+        recognized:
+          type: string
+        words:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.WordScore'
+          type: array
+          uniqueItems: false
       type: object
     internal_adapters_http.refreshReq:
       properties:
@@ -469,8 +679,15 @@ paths:
       - content
   /config/economy:
     get:
-      responses: null
-      summary: Economy config (single source of truth mirrored to the client)
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.economyConfigResp'
+          description: OK
+      summary: Economy config (single source of truth mirrored to the client) + pronunciation
+        feature flag
       tags:
       - content
   /content/manifest:
@@ -894,14 +1111,22 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/internal_adapters_http.pronounceReq'
-              description: base64 WAV (16kHz mono PCM) + reference text
+              description: base64 WAV (16kHz mono PCM) + reference text + optional
+                origin/scenarioId/reviewCardId
               summary: body
-        description: base64 WAV (16kHz mono PCM) + reference text
+        description: base64 WAV (16kHz mono PCM) + reference text + optional origin/scenarioId/reviewCardId
         required: true
-      responses: null
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.pronounceResp'
+          description: OK
       security:
       - Bearer: []
-      summary: Assess pronunciation of recorded audio vs a reference phrase (Azure)
+      summary: Assess pronunciation of recorded audio vs a reference phrase (Azure),
+        and persist the attempt
       tags:
       - pronunciation
   /quizzes/{id}:
@@ -936,6 +1161,58 @@ paths:
       summary: Start a persona-driven conversation for a scenario
       tags:
       - conversation
+  /speech/attempts:
+    get:
+      parameters:
+      - description: sentence text — the server derives sentenceKey from text+locale
+          (business-rules §2); clients cannot compute or send it directly
+        in: query
+        name: text
+        required: true
+        schema:
+          type: string
+      - description: max attempts to return, default 3
+        in: query
+        name: limit
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.SpeechAttemptRow'
+                type: array
+          description: OK
+      security:
+      - Bearer: []
+      summary: 'Recent attempt history for a sentence, oldest first (business-rules
+        R3: screen renders the last 3)'
+      tags:
+      - pronunciation
+  /speech/reference:
+    get:
+      parameters:
+      - description: sentence text to derive the reference for
+        in: query
+        name: text
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.SentenceReferenceRow'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Canonical syllable/phoneme reference for a sentence (TTS-derived, cached
+        globally per business-rules R9)
+      tags:
+      - pronunciation
   /stt:
     post:
       requestBody:

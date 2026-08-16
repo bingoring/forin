@@ -12,7 +12,15 @@ import (
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
-type contentHandler struct{ content ports.ContentReader }
+type contentHandler struct {
+	content ports.ContentReader
+	// pronunciationEnabled mirrors whether Azure Speech is configured
+	// (business-rules §5: "AZURE_SPEECH_KEY 미구성 → ... 설정 응답에 기능 비활성
+	// 플래그를 실어 앱이 진입점을 숨기게 한다. 503을 던지고 화면에서 실패시키지 않는다").
+	// Carried on GET /config/economy — see economyConfig's doc comment for why
+	// that response was chosen over a new endpoint.
+	pronunciationEnabled bool
+}
 
 // atoiDefault parses a query-string int, falling back to def on empty/invalid.
 func atoiDefault(s string, def int) int {
@@ -168,11 +176,28 @@ func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) 
 	httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits, "hasMore": hasMore})
 }
 
-// @Summary Economy config (single source of truth mirrored to the client)
+// economyConfigResp mirrors economy.Active plus a feature-availability signal.
+// GET /config/economy was picked to carry pronunciationEnabled (business-rules
+// §5's "설정 응답에 기능 비활성 플래그를 실어") because it is the one response the
+// mobile app is guaranteed to call on every launch, unconditionally and before
+// login: mobile/src/app/_layout.tsx hydrates it in the same Promise.all as
+// session bootstrap. It also needs no auth and carries no per-user data,
+// which fits Azure Speech's configuredness (a deploy-wide fact, not a
+// per-user one) better than GET /me would.
+type economyConfigResp struct {
+	economy.Economy
+	PronunciationEnabled bool `json:"pronunciationEnabled"`
+}
+
+// @Summary Economy config (single source of truth mirrored to the client) + pronunciation feature flag
 // @Tags content
+// @Success 200 {object} economyConfigResp
 // @Router /config/economy [get]
 func (h *contentHandler) economyConfig(w http.ResponseWriter, r *http.Request) {
-	httpx.JSON(w, http.StatusOK, economy.Active)
+	httpx.JSON(w, http.StatusOK, economyConfigResp{
+		Economy:              economy.Active,
+		PronunciationEnabled: h.pronunciationEnabled,
+	})
 }
 
 // @Summary Personalized daily pool — weighted, persisted, resets 00:00 local (?tz=)

@@ -14,6 +14,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/home"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
+	"github.com/bingoring/forin/server/internal/domain/speech"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -30,11 +31,15 @@ type Deps struct {
 	Review        ports.ReviewRepo
 	Convo         *conversation.Engine
 	Pron          *pronunciation.Service
+	Speech        *speech.Service         // pronunciation-attempt persistence + history + reference (Task 5)
 	Synth         ports.SpeechSynthesizer // TTS for listen-quiz audio (optional)
-	Colleague     ports.ColleagueRepo     // colleague links, cheers, presence
-	HomePools     home.Pools              // authored mentor notes + field phrases
-	PG            *pgxpool.Pool
-	Redis         *redis.Client
+	// PronunciationEnabled mirrors Azure Speech's configuredness (business-rules
+	// §5) — surfaced on GET /config/economy, see economyConfigResp's doc comment.
+	PronunciationEnabled bool
+	Colleague            ports.ColleagueRepo // colleague links, cheers, presence
+	HomePools            home.Pools          // authored mentor notes + field phrases
+	PG                   *pgxpool.Pool
+	Redis                *redis.Client
 }
 
 // NewRouter builds the application handler with global middleware and routes.
@@ -67,7 +72,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("PATCH /me/title", auth(http.HandlerFunc(mh.equipTitle)))
 
 	// Content (public read).
-	ch := &contentHandler{content: d.Content}
+	ch := &contentHandler{content: d.Content, pronunciationEnabled: d.PronunciationEnabled}
 	mux.HandleFunc("GET /content/manifest", ch.manifest)
 	mux.HandleFunc("GET /departments", ch.departments)
 	mux.HandleFunc("GET /interiors/{id}", ch.interior)
@@ -132,9 +137,16 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /correct", auth(http.HandlerFunc(conv.correct)))
 
 	// Pronunciation assessment (authenticated).
-	pron := &pronunciationHandler{svc: d.Pron}
+	pron := &pronunciationHandler{svc: d.Pron, speech: d.Speech, review: d.Review}
 	mux.Handle("POST /pronunciation", auth(http.HandlerFunc(pron.assess)))
 	mux.Handle("POST /stt", auth(http.HandlerFunc(pron.transcribe)))
+
+	// Pronunciation practice: canonical reference + a user's own attempt
+	// history for a sentence (Task 5; recording stays on POST /pronunciation
+	// above, which already existed).
+	sh := &speechHandler{svc: d.Speech, pron: d.Pron}
+	mux.Handle("GET /speech/reference", auth(http.HandlerFunc(sh.reference)))
+	mux.Handle("GET /speech/attempts", auth(http.HandlerFunc(sh.attempts)))
 
 	// Global middleware (outermost first).
 	return chain(mux,

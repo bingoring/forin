@@ -222,7 +222,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Economy config (single source of truth mirrored to the client) */
+        /** Economy config (single source of truth mirrored to the client) + pronunciation feature flag */
         get: {
             parameters: {
                 query?: never;
@@ -231,7 +231,17 @@ export interface paths {
                 cookie?: never;
             };
             requestBody?: never;
-            responses: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.economyConfigResp"];
+                    };
+                };
+            };
         };
         put?: never;
         post?: never;
@@ -1302,7 +1312,7 @@ export interface paths {
         };
         get?: never;
         put?: never;
-        /** Assess pronunciation of recorded audio vs a reference phrase (Azure) */
+        /** Assess pronunciation of recorded audio vs a reference phrase (Azure), and persist the attempt */
         post: {
             parameters: {
                 query?: never;
@@ -1310,13 +1320,23 @@ export interface paths {
                 path?: never;
                 cookie?: never;
             };
-            /** @description base64 WAV (16kHz mono PCM) + reference text */
+            /** @description base64 WAV (16kHz mono PCM) + reference text + optional origin/scenarioId/reviewCardId */
             requestBody: {
                 content: {
                     "application/json": components["schemas"]["internal_adapters_http.pronounceReq"];
                 };
             };
-            responses: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.pronounceResp"];
+                    };
+                };
+            };
         };
         delete?: never;
         options?: never;
@@ -1448,6 +1468,86 @@ export interface paths {
             requestBody?: never;
             responses: never;
         };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/speech/attempts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Recent attempt history for a sentence, oldest first (business-rules R3: screen renders the last 3) */
+        get: {
+            parameters: {
+                query: {
+                    /** @description sentence text — the server derives sentenceKey from text+locale (business-rules §2); clients cannot compute or send it directly */
+                    text: string;
+                    /** @description max attempts to return, default 3 */
+                    limit?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpeechAttemptRow"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/speech/reference": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Canonical syllable/phoneme reference for a sentence (TTS-derived, cached globally per business-rules R9) */
+        get: {
+            parameters: {
+                query: {
+                    /** @description sentence text to derive the reference for */
+                    text: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_ports.SentenceReferenceRow"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -1596,6 +1696,45 @@ export interface components {
             id?: string;
             status?: string;
         };
+        "github_com_bingoring_forin_server_internal_ports.PhonemeResult": {
+            accuracy?: number;
+            phoneme?: string;
+        };
+        "github_com_bingoring_forin_server_internal_ports.SentenceReferenceRow": {
+            durationMS?: number;
+            ipa?: string;
+            locale?: string;
+            referenceText?: string;
+            sentenceKey?: string;
+            words?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.WordScore"][];
+        };
+        "github_com_bingoring_forin_server_internal_ports.SpeechAttemptRow": {
+            accuracy?: number;
+            attemptNo?: number;
+            completeness?: number;
+            createdAt?: string;
+            durationMS?: number;
+            fluency?: number;
+            id?: string;
+            overall?: number;
+            prosody?: number;
+            /** @description false = NULL in storage, i.e. prosody was never scored — see SpeechAttemptInput */
+            prosodyOK?: boolean;
+            recognized?: string;
+            words?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.WordScore"][];
+        };
+        "github_com_bingoring_forin_server_internal_ports.SyllableResult": {
+            accuracy?: number;
+            grapheme?: string;
+            syllable?: string;
+        };
+        "github_com_bingoring_forin_server_internal_ports.WordScore": {
+            accuracy?: number;
+            errorType?: string;
+            phonemes?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.PhonemeResult"][];
+            syllables?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SyllableResult"][];
+            word?: string;
+        };
         "internal_adapters_http.attemptReq": {
             scenarioId?: string;
             score?: number;
@@ -1603,6 +1742,60 @@ export interface components {
         "internal_adapters_http.correctReq": {
             context?: string;
             text?: string;
+        };
+        "internal_adapters_http.economyConfigResp": {
+            /** @description weight multiplier for already-cleared */
+            dailyClearedWeight?: number;
+            /** @description max scenarios per dept in a day's set */
+            dailyDeptCap?: number;
+            /** @description weight multiplier for off-level difficulty */
+            dailyOffBandWeight?: number;
+            /** @description Daily situation pool. */
+            dailyPoolSize?: number;
+            /** @description Spaced repetition (SM-2). */
+            easeDefault?: number;
+            easeFloor?: number;
+            /** @description days, reps 0 → 1 */
+            firstInterval?: number;
+            /** @description mastery pips ceiling */
+            masteryCap?: number;
+            pronunciationEnabled?: boolean;
+            rankHead?: number;
+            /** @description Rank thresholds (level → career title). */
+            rankJunior?: number;
+            rankSenior?: number;
+            /** @description ≥ → neutral/cordial */
+            repBandCordial?: number;
+            /** @description ≥ → NPC noticeably warm */
+            repBandWarm?: number;
+            /** @description ≥ → slightly wary; below → guarded */
+            repBandWary?: number;
+            /** @description reputation gained by a perfect clear */
+            repGainMax?: number;
+            /** @description reputation lost by a zero-score attempt */
+            repLossMax?: number;
+            /** @description Reputation (0..100). */
+            reputationDefault?: number;
+            /** @description default XP for clearing a scenario */
+            scenarioBaseXP?: number;
+            /** @description XP floor for a genuine attempt (score>0) */
+            scenarioMinXP?: number;
+            /**
+             * @description Scenario grading (AI-judged completion). A scenario is "cleared" (완료) only
+             *     when the graded score ≥ ScenarioPassScore; below that it's an engaged attempt
+             *     (재도전) that still earns score-scaled XP + streak but no clear/스티커.
+             */
+            scenarioPassScore?: number;
+            /** @description days, reps 1 → 2 */
+            secondInterval?: number;
+            /** @description equipped "warm" title nudge */
+            titleWarmthBonus?: number;
+            /** @description Rewarded-ad top-up. */
+            topUpAdd?: number;
+            /** @description rewarded top-ups allowed per local day */
+            topUpCap?: number;
+            /** @description XP for one level (level = 1 + xp/XPPerLevel) */
+            xpPerLevel?: number;
         };
         "internal_adapters_http.gate": {
             id?: string;
@@ -1661,7 +1854,39 @@ export interface components {
         };
         "internal_adapters_http.pronounceReq": {
             audioBase64?: string;
+            /**
+             * @description Origin/ScenarioID/ReviewCardID are all optional and new in Task 5 —
+             *     existing clients that omit them get origin="freeform", no scenario,
+             *     no linked card (business-rules §2, domain-entities §4).
+             */
+            origin?: string;
             referenceText?: string;
+            reviewCardId?: string;
+            scenarioId?: string;
+        };
+        "internal_adapters_http.pronounceResp": {
+            accuracy?: number;
+            attemptId?: string;
+            attemptNo?: number;
+            completeness?: number;
+            /**
+             * @description DurationMS is the recorded audio's length in milliseconds. Azure's
+             *     pronunciation-assessment response does not carry this — it is NOT
+             *     populated by the azurespeech adapter. The caller computes it from the
+             *     WAV it captured (see business-rules R6 / domain-entities SpeechAttempt).
+             */
+            durationMs?: number;
+            fluency?: number;
+            overall?: number;
+            /**
+             * @description Prosody (억양) only arrives when EnableProsodyAssessment is on AND the
+             *     locale supports it. ProsodyOK distinguishes "scored 0" from "not scored" —
+             *     rendering an absent score as 0 would tell the learner a falsehood.
+             */
+            prosody?: number;
+            prosodyAvailable?: boolean;
+            recognized?: string;
+            words?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.WordScore"][];
         };
         "internal_adapters_http.refreshReq": {
             refreshToken?: string;

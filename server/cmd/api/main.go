@@ -22,6 +22,10 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
+	// Aliased: main.go already has a local variable named `speech` (the Azure
+	// Speech adapter instance below) — an unaliased import of this package
+	// would collide with it.
+	domainspeech "github.com/bingoring/forin/server/internal/domain/speech"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/platform/log"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -106,15 +110,21 @@ func main() {
 	speech := azurespeech.New(cfg.AzureSpeechKey, cfg.AzureSpeechRegion)
 	pronSvc := pronunciation.NewService(speech, users)
 	if !speech.Configured() {
-		logger.Warn("AZURE_SPEECH_KEY/REGION not set — /pronunciation will return errors")
+		logger.Warn("AZURE_SPEECH_KEY/REGION not set — /pronunciation will return errors, pronunciationEnabled=false")
 	}
+
+	// Pronunciation-attempt persistence + history + reference derivation
+	// (domain/speech, Task 5's own domain layer from Tasks 2-4).
+	speechRepo := postgres.NewSpeechRepo(pool)
+	speechSvc := domainspeech.NewService(speechRepo, pronSvc, speech)
 
 	handler := httpadapter.NewRouter(httpadapter.Deps{
 		Env:           cfg.Env,
 		DevAuthSecret: cfg.DevAuthSecret,
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
-		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Synth: speech,
-		Colleague: colleagueRepo, HomePools: homePools, PG: pool, Redis: rdb,
+		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
+		PronunciationEnabled: speech.Configured(),
+		Colleague:            colleagueRepo, HomePools: homePools, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{
