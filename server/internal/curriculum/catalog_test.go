@@ -1,6 +1,8 @@
 package curriculum
 
 import (
+	"encoding/json"
+	"sort"
 	"strings"
 	"testing"
 )
@@ -239,4 +241,70 @@ func TestGroupPreservesEverything(t *testing.T) {
 	if total != len(states) {
 		t.Errorf("grouped %d curricula, resolved %d", total, len(states))
 	}
+}
+
+// The wire keys, asserted as keys and not by round-tripping through the same Go
+// struct. A prior task shipped PascalCase field names to the client because its
+// tests unmarshalled the response into the type that produced it, so every
+// assertion passed while the client saw nothing it recognised.
+func TestWireKeysAreCamelCase(t *testing.T) {
+	groups := Group(Resolve(map[string]bool{}))
+	raw, err := json.Marshal(map[string]any{"buildings": groups})
+	if err != nil {
+		t.Fatalf("marshal: %v", err)
+	}
+	var got map[string][]map[string]any
+	if err := json.Unmarshal(raw, &got); err != nil {
+		t.Fatalf("unmarshal: %v", err)
+	}
+	b := got["buildings"][0]
+	if _, ok := b["building"]; !ok {
+		t.Errorf("building group keys: %v", keysOf(b))
+	}
+	floors, _ := b["floors"].([]any)
+	if len(floors) == 0 {
+		t.Fatal("first building has no floors")
+	}
+	f, _ := floors[0].(map[string]any)
+	for _, k := range []string{"floor", "where", "curricula"} {
+		if _, ok := f[k]; !ok {
+			t.Errorf("floor missing %q; keys: %v", k, keysOf(f))
+		}
+	}
+	cs, _ := f["curricula"].([]any)
+	if len(cs) == 0 {
+		t.Fatal("first floor has no curricula")
+	}
+	c, _ := cs[0].(map[string]any)
+	for _, k := range []string{"key", "name", "building", "floor", "where", "done", "total", "state", "steps"} {
+		if _, ok := c[k]; !ok {
+			t.Errorf("curriculum missing %q; keys: %v", k, keysOf(c))
+		}
+	}
+	// `ch` and `dept` are the v19 shape. Their absence is the point of v2: the
+	// client must not be able to draw CH.N again.
+	for _, k := range []string{"ch", "dept"} {
+		if _, ok := c[k]; ok {
+			t.Errorf("curriculum still carries the removed key %q", k)
+		}
+	}
+	steps, _ := c["steps"].([]any)
+	if len(steps) == 0 {
+		t.Fatal("first curriculum has no steps")
+	}
+	st, _ := steps[0].(map[string]any)
+	for _, k := range []string{"kind", "name", "scenarioId", "state"} {
+		if _, ok := st[k]; !ok {
+			t.Errorf("step missing %q; keys: %v", k, keysOf(st))
+		}
+	}
+}
+
+func keysOf(m map[string]any) []string {
+	ks := make([]string, 0, len(m))
+	for k := range m {
+		ks = append(ks, k)
+	}
+	sort.Strings(ks)
+	return ks
 }

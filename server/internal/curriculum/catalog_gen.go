@@ -6,5 +6,4 @@
 
 package curriculum
 
-var fallback = []Curriculum{
-}
+var fallback = []Curriculum{}

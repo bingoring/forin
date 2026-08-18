@@ -1,20 +1,34 @@
 components:
   schemas:
-    github_com_bingoring_forin_server_internal_curriculum.ChapterState:
+    github_com_bingoring_forin_server_internal_curriculum.BuildingGroup:
       properties:
-        ch:
-          type: integer
-        dept:
+        building:
+          type: string
+        floors:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.FloorGroup'
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_curriculum.CurriculumState:
+      properties:
+        building:
           type: string
         done:
           type: integer
+        floor:
+          type: string
+        key:
+          type: string
         name:
           type: string
         next:
           description: name of the current (now) step
           type: string
+        resume:
+          type: boolean
         state:
-          description: done | now | lock
+          description: done | doing | todo
           type: string
         steps:
           items:
@@ -23,6 +37,20 @@ components:
           uniqueItems: false
         total:
           type: integer
+        where:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_curriculum.FloorGroup:
+      properties:
+        curricula:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.CurriculumState'
+          type: array
+          uniqueItems: false
+        floor:
+          type: string
+        where:
+          type: string
       type: object
     github_com_bingoring_forin_server_internal_curriculum.StepState:
       properties:
@@ -31,7 +59,7 @@ components:
         name:
           type: string
         optional:
-          description: bonus practice; doesn't gate the chapter
+          description: bonus practice; doesn't gate
           type: boolean
         scenarioId:
           type: string
@@ -964,13 +992,13 @@ paths:
               schema:
                 additionalProperties:
                   items:
-                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.ChapterState'
+                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.BuildingGroup'
                   type: array
                 type: object
           description: OK
       security:
       - Bearer: []
-      summary: Chapter/step curriculum with per-user progress (v19 campus hub)
+      summary: Building/floor/curriculum path with per-user progress
       tags:
       - progress
   /me/daily-board:

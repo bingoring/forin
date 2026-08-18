@@ -170,10 +170,21 @@ export interface CurriculumStep {
   state: 'done' | 'now' | 'lock' | 'optional'; // optional = bonus quiz (doesn't gate)
   optional?: boolean;
 }
-export interface CurriculumChapter {
-  ch: number; name: string; dept: string; done: number; total: number;
-  state: 'done' | 'now' | 'lock'; next?: string; steps?: CurriculumStep[];
+// One themed curriculum on one floor. `state` has no 'lock': every floor and
+// curriculum is open, and the sequence lives inside a curriculum (server
+// business-rules R9) — drawing a padlock here would contradict that on screen.
+// `resume` is set on exactly one curriculum in the whole payload, and the home
+// tab's "오늘의 한 가지" points at the same one; both read the server's flag rather
+// than deciding for themselves, because two screens computing "what's next"
+// separately is how they end up disagreeing.
+export interface Curriculum {
+  key: string; name: string; building: string; floor: string; where: string;
+  done: number; total: number;
+  state: 'done' | 'doing' | 'todo'; next?: string; resume?: boolean;
+  steps?: CurriculumStep[];
 }
+export interface CurriculumFloor { floor: string; where: string; curricula: Curriculum[] }
+export interface CurriculumBuilding { building: string; floors: CurriculumFloor[] }
 
 // One node of the main-route curriculum graph (server: GET /me/route).
 export interface RouteNode {
@@ -542,10 +553,16 @@ export const api = {
     return { situations: d.situations ?? [], hasMore: !!d.hasMore };
   },
 
-  /** Chapter/step curriculum with per-user progress (v19 campus hub). */
-  async curriculum(): Promise<CurriculumChapter[]> {
+  /**
+   * The whole path, grouped building → floor → curriculum, with per-user progress.
+   *
+   * Grouped by the server because the ORDER is the learning order, derived from a
+   * floor tier table the client does not have — a client that regrouped a flat
+   * list would have to reproduce it and would drift.
+   */
+  async curriculum(): Promise<CurriculumBuilding[]> {
     const { data } = await http.get('/me/curriculum');
-    return (data as { chapters: CurriculumChapter[] }).chapters ?? [];
+    return (data as { buildings: CurriculumBuilding[] }).buildings ?? [];
   },
 
   /** Main-route curriculum path (events + unlock states). */

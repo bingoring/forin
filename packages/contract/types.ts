@@ -855,7 +855,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Chapter/step curriculum with per-user progress (v19 campus hub) */
+        /** Building/floor/curriculum path with per-user progress */
         get: {
             parameters: {
                 query?: never;
@@ -872,7 +872,7 @@ export interface paths {
                     };
                     content: {
                         "application/json": {
-                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.ChapterState"][];
+                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.BuildingGroup"][];
                         };
                     };
                 };
@@ -1664,22 +1664,34 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
-        "github_com_bingoring_forin_server_internal_curriculum.ChapterState": {
-            ch?: number;
-            dept?: string;
+        "github_com_bingoring_forin_server_internal_curriculum.BuildingGroup": {
+            building?: string;
+            floors?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.FloorGroup"][];
+        };
+        "github_com_bingoring_forin_server_internal_curriculum.CurriculumState": {
+            building?: string;
             done?: number;
+            floor?: string;
+            key?: string;
             name?: string;
             /** @description name of the current (now) step */
             next?: string;
-            /** @description done | now | lock */
+            resume?: boolean;
+            /** @description done | doing | todo */
             state?: string;
             steps?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.StepState"][];
             total?: number;
+            where?: string;
+        };
+        "github_com_bingoring_forin_server_internal_curriculum.FloorGroup": {
+            curricula?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.CurriculumState"][];
+            floor?: string;
+            where?: string;
         };
         "github_com_bingoring_forin_server_internal_curriculum.StepState": {
             kind?: string;
             name?: string;
-            /** @description bonus practice; doesn't gate the chapter */
+            /** @description bonus practice; doesn't gate */
             optional?: boolean;
             scenarioId?: string;
             /** @description done | now | lock | optional */

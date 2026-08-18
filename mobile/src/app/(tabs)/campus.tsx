@@ -1,36 +1,36 @@
-// 캠퍼스 허브 (tab 1) — v19 handoff screen-campus-hub. Mobile-first: two segmented
-// tabs (커리큘럼 / 건물·층) instead of walk-the-tilemap-first. Curriculum is the
-// main line (이어하기 hero + chapter timeline + roadmap); 건물·층 browses places
-// (building accordions → floor tap opens a dept sheet). The tile-walk campus is
-// demoted to an opt-in ExploreDock. Axis split: 캠퍼스 = 장소·커리큘럼, 상황판 = 시간·피드.
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+// 커리어 탭 — 이어하기 + 건물 → 층 → 커리큘럼.
+//
+// v19 split this screen into two segmented tabs, 커리큘럼 and 건물·층, and showed
+// the same path twice: a 25-row chapter roadmap on one side, a floor list with CH.N
+// chips on the other — from a client fixture that had drifted out of agreement with
+// the server (a "5-8F" row merging four real floors, chips naming the wrong
+// chapters). Choosing a segment also became the first thing the screen asked of
+// you, which is exactly the pressure the home tab was built to avoid.
+//
+// One hierarchy now, one payload, and the hierarchy IS the roadmap. Nothing here is
+// locked: every floor and curriculum is open and the sequence lives inside a
+// curriculum, so "what next" is answered by the resume hero rather than by walls.
+import { useCallback, useState } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { api, type Progress, type CurriculumChapter, type DeptSituation } from '@/api/client';
-import {
-  CURRICULUM, STEP_META, BLD, deptFor,
-  type Building, type Floor, type DeptDetail,
-} from '@/data/campus';
-import { PixelIcon, iconFor } from '@/components/PixelIcon';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { api, type Progress, type Curriculum, type CurriculumBuilding, type CurriculumFloor } from '@/api/client';
+import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE } from '@/data/campus';
 import { PixelButton } from '@/components/PixelButton';
-import { BottomSheet } from '@/components/BottomSheet';
-
-// Bundled fallback in server shape (used only while /me/curriculum is loading or offline).
-const FALLBACK_CHAPTERS: CurriculumChapter[] = CURRICULUM.map((c) => ({
-  ch: c.ch, name: c.name, dept: c.dept, done: c.done, total: c.total, state: c.state, next: c.next,
-  steps: c.steps?.map((s) => ({ kind: s.k, name: s.n, scenarioId: s.scn, state: s.s })),
-}));
+import { colors, fonts, fs } from '@/theme/tokens';
+import { FloorList } from '@/components/campus/FloorList';
+import { StepSheet } from '@/components/campus/StepSheet';
+import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
+import { ProgressBar, Shadowed } from '@/components/campus/parts';
 
 const C = colors.ink;
 
 export default function Campus() {
   const router = useRouter();
-  const [tab, setTab] = useState<'curriculum' | 'buildings'>('curriculum');
-  const [sheet, setSheet] = useState<DeptDetail | null>(null);
   const [enLevel, setEnLevel] = useState('B1');
   const [streak, setStreak] = useState(0);
-  const [chapters, setChapters] = useState<CurriculumChapter[]>(FALLBACK_CHAPTERS);
+  const [buildings, setBuildings] = useState<CurriculumBuilding[]>([]);
+  const [openCur, setOpenCur] = useState<Curriculum | null>(null);
+  const [dept, setDept] = useState<DeptTarget | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -38,26 +38,43 @@ export default function Campus() {
       Promise.all([
         api.progress().catch(() => null),
         api.me().catch(() => null),
-        api.curriculum().catch(() => [] as CurriculumChapter[]),
-      ]).then(([p, me, chs]) => {
+        api.curriculum().catch(() => [] as CurriculumBuilding[]),
+      ]).then(([p, me, bs]) => {
         if (!alive) return;
         if (p) setStreak((p as Progress).streakCurrent);
         const lv = (me as { profile?: { targetLevel?: string } } | null)?.profile?.targetLevel;
         if (lv) setEnLevel(lv);
-        if (chs.length) setChapters(chs);
+        if (bs.length) setBuildings(bs);
       });
       return () => { alive = false; };
     }, []),
   );
 
   // Quiz steps (QZ-*) open the quiz player; scenario steps open the briefing.
-  const openScenario = (scn?: string) => { if (scn) router.push(scn.startsWith('QZ-') ? `/quiz/${scn}` : `/scenario/${scn}`); };
+  const open = (scn?: string) => { if (scn) router.push(scn.startsWith('QZ-') ? `/quiz/${scn}` : `/scenario/${scn}`); };
+
+  // The server flags exactly one curriculum to continue, and the home tab reads the
+  // same flag — neither screen decides for itself, so they cannot disagree.
+  const resume = buildings.flatMap((b) => b.floors).flatMap((f) => f.curricula).find((c) => c.resume);
+  const resumeStep = resume?.steps?.find((s) => s.state === 'now');
+
+  const openDept = (floor: CurriculumFloor, code: string) => {
+    const first = floor.curricula[0];
+    const building = buildings.find((b) => b.floors.includes(floor))?.building ?? '';
+    setDept({
+      deptCode: code,
+      place: (first?.where ?? floor.where).replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where,
+      where: first?.where ?? floor.where,
+      accent: (BUILDING_STYLE[building] ?? DEFAULT_BUILDING_STYLE).accent,
+      curricula: floor.curricula,
+    });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
-      {/* ── fixed header: title + Lv + streak, then segmented tabs ── */}
-      <View style={{ paddingTop: 50, paddingHorizontal: 14, backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+      {/* ── fixed header ── */}
+      <View style={{ paddingTop: 50, paddingHorizontal: 14, paddingBottom: 10, backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C }}>커리어</Text>
           <Shadowed offset={2} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
@@ -67,404 +84,61 @@ export default function Campus() {
           <View style={{ flex: 1 }} />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{streak}일 연속</Text>
         </View>
-        <View style={{ flexDirection: 'row' }}>
-          {([['curriculum', '커리큘럼'], ['buildings', '건물·층']] as const).map(([id, label]) => {
-            const on = id === tab;
-            return (
-              <Pressable key={id} onPress={() => setTab(id)} style={{ flex: 1, alignItems: 'center', paddingTop: 7, paddingBottom: 6, marginBottom: -3, backgroundColor: on ? colors.paper : 'transparent', borderWidth: 3, borderColor: on ? C : 'transparent', borderBottomColor: on ? colors.paper : 'transparent' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: on ? C : colors.textFaint }}>{label}</Text>
-              </Pressable>
-            );
-          })}
-        </View>
       </View>
 
-      {/* ── scroll body ── */}
       <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 150 }}>
-        {tab === 'curriculum'
-          ? <Curriculum chapters={chapters} onResume={openScenario} />
-          : <Buildings onFloor={(b, f) => setSheet(deptFor(b, f))} />}
+        {resume ? (
+          <Shadowed offset={4} shadowColor={colors.mintShadow} style={{ marginBottom: 15 }}>
+            <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 12 }}>
+              <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>이어하기</Text>
+              </View>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, opacity: 0.75, marginTop: 2 }}>{resume.where}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 4, marginBottom: 8 }}>{resume.name}</Text>
+              <ProgressBar done={resume.done} total={resume.total} />
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: C }}>다음 · {resume.next ?? '준비 중'}</Text>
+                <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => open(resumeStep?.scenarioId)} />
+              </View>
+            </View>
+          </Shadowed>
+        ) : buildings.length > 0 ? (
+          // Every curriculum done. Say so instead of pointing at a task.
+          <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', padding: 16, marginBottom: 15 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C, textAlign: 'center' }}>모든 커리큘럼을 마쳤어요</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, textAlign: 'center', marginTop: 4 }}>아무 층이나 다시 열어 복습할 수 있어요.</Text>
+          </View>
+        ) : null}
+
+        {buildings.length === 0 ? (
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 24 }}>
+            커리큘럼을 불러오는 중이에요.
+          </Text>
+        ) : (
+          <FloorList buildings={buildings} onOpenCurriculum={setOpenCur} onOpenDept={openDept} />
+        )}
       </ScrollView>
 
       {/* ── explore dock (opt-in tile walk) ── */}
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 12, paddingHorizontal: 14 }}>
         <Shadowed offset={3}>
-          <Pressable onPress={() => router.push('/interior/CAMPUS-00001')} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
-            <PixelIcon name="map" color={C} size={17} sw={1.7} />
-            <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>커리어 탐험 모드</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 1 }}>직접 걸어다니며 NPC 만나기 · 선택 기능</Text>
-            </View>
-            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>입장 ›</Text>
-            </View>
-          </Pressable>
+          <PixelButton
+            icon="map" label="커리어 탐험 모드" bg={colors.lilac} shadowColor={C}
+            fontSize={12} borderWidth={3} paddingV={11} full
+            onPress={() => router.push('/interior/CAMPUS-00001')}
+          />
         </Shadowed>
       </View>
 
-      {/* close the sheet before navigating — a RN Modal renders above the pushed
-          screen, so leaving it open would hide the scenario/quiz we open. */}
-      <DeptSheet dept={sheet} chapters={chapters} onClose={() => setSheet(null)} onStart={(scn) => { setSheet(null); openScenario(scn); }} onWalk={() => { setSheet(null); router.push('/interior/INT-ER-00001'); }} />
-    </View>
-  );
-}
-
-// ══ TAB 1 · 커리큘럼 ════════════════════════════════════════════════
-function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onResume: (scn?: string) => void }) {
-  const cur = chapters.find((c) => c.state === 'now') ?? chapters[0];
-  // Which chapter's step list is shown below (null = the current one). Tapping a
-  // chapter in the roadmap opens it here — so completed chapters can be revisited.
-  const [viewCh, setViewCh] = useState<number | null>(null);
-  const shown = (viewCh != null ? chapters.find((c) => c.ch === viewCh) : undefined) ?? cur;
-  const reviewing = !!shown && !!cur && shown.ch !== cur.ch;
-  const curNowStep = cur?.steps?.find((s) => s.state === 'now');
-  return (
-    <View>
-      {/* 이어하기 hero */}
-      {cur && (
-        <View style={{ marginTop: 6, marginBottom: 15 }}>
-          <Shadowed offset={4} shadowColor={colors.mintShadow}>
-            <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 12 }}>
-              <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>MAIN CURRICULUM</Text>
-              </View>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, opacity: 0.75, marginTop: 2 }}>CHAPTER {cur.ch} · {cur.dept}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 4, marginBottom: 8 }}>{cur.name}</Text>
-              <ProgressBar done={cur.done} total={cur.total} />
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: C }}>다음 · {cur.next ?? '준비 중'}</Text>
-                <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => onResume(curNowStep?.scenarioId)} />
-              </View>
-            </View>
-          </Shadowed>
-        </View>
-      )}
-
-      {/* chapter timeline (of the chapter being viewed — current, or one reopened from the roadmap) */}
-      {shown?.steps && shown.steps.length > 0 && (
-        <>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>━ CHAPTER {shown.ch} {reviewing ? '복습' : '진행'} ━━━</Text>
-            {reviewing && (
-              <Pressable onPress={() => setViewCh(null)} style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>현재 챕터 ›</Text>
-              </Pressable>
-            )}
-          </View>
-          <View style={{ paddingLeft: 16, marginBottom: 17 }}>
-            <View style={{ position: 'absolute', left: 6, top: 8, bottom: 8, width: 3, backgroundColor: C + '22' }} />
-            {shown.steps.map((s, i) => {
-              const m = STEP_META[s.kind];
-              const opt = s.state === 'optional'; // bonus quiz — playable but not required
-              const bg = s.state === 'done' ? '#fff' : s.state === 'now' ? m.bg : opt ? colors.lilac + '2A' : C + '11';
-              const dot = s.state === 'done' ? colors.mintShadow : s.state === 'now' ? colors.yellowDeep : opt ? '#A78BFA' : C + '33';
-              const tappable = s.state !== 'lock'; // done steps are replayable, now/optional playable
-              const inner = (
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: bg, borderWidth: 2.5, borderColor: s.state === 'lock' ? C + '55' : C, paddingVertical: 8, paddingHorizontal: 9, opacity: s.state === 'lock' ? 0.55 : 1 }}>
-                  {s.state === 'lock'
-                    ? <PixelIcon name="lock" color={colors.textFaint} size={14} sw={1.8} />
-                    : <Text style={{ fontSize: fs(14) }}>{m.icon}</Text>}
-                  <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 15 }}>{s.name}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft, marginTop: 2 }}>{m.label}{opt ? ' · 선택' : ''}</Text>
-                  </View>
-                  {s.state === 'done' && <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.mintShadow }}>✓</Text>}
-                  {s.state === 'now' && <View style={{ backgroundColor: C, paddingVertical: 2, paddingHorizontal: 6 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>NOW</Text></View>}
-                  {opt && <View style={{ backgroundColor: '#A78BFA', borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: '#fff' }}>보너스</Text></View>}
-                </View>
-              );
-              return (
-                <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginBottom: 7 }}>
-                  <View style={{ position: 'absolute', left: -14, width: 11, height: 11, borderRadius: 6, backgroundColor: dot, borderWidth: 2, borderColor: C }} />
-                  {tappable
-                    ? <Pressable style={{ flex: 1, flexDirection: 'row' }} onPress={() => onResume(s.scenarioId)}>{inner}</Pressable>
-                    : inner}
-                </View>
-              );
-            })}
-          </View>
-        </>
-      )}
-
-      {/* full roadmap */}
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 전체 로드맵 ━━━━━━━━</Text>
-      {chapters.map((c, i) => {
-        const lock = c.state === 'lock', now = c.state === 'now';
-        const viewing = shown?.ch === c.ch; // currently shown in the timeline above
-        const row = (
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: now ? colors.yellow : viewing ? colors.paper : '#fff', borderWidth: 2.5, borderColor: lock ? C + '55' : C, paddingVertical: 9, paddingHorizontal: 10, opacity: lock ? 0.6 : 1 }}>
-            <View style={{ width: 26, height: 26, backgroundColor: c.state === 'done' ? colors.mint : now ? C : C + '18', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              {c.state === 'done'
-                ? <PixelIcon name="check" color={now ? colors.cream : C} size={13} sw={2} />
-                : lock
-                  ? <PixelIcon name="lock" color={now ? colors.cream : C} size={13} sw={1.8} />
-                  : <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: now ? colors.cream : C }}>{c.ch}</Text>}
-            </View>
-            <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{c.name}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 2 }}>{c.dept} · {c.done}/{c.total}</Text>
-            </View>
-            {!lock && <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{viewing ? '보는 중' : '›'}</Text>}
-          </View>
-        );
-        return (
-          <Shadowed key={i} offset={lock ? 0 : 2.5} style={{ marginBottom: 8 }}>
-            {/* tapping an unlocked chapter opens its steps in the timeline above */}
-            {lock ? row : <Pressable onPress={() => setViewCh(c.ch)}>{row}</Pressable>}
-          </Shadowed>
-        );
-      })}
-    </View>
-  );
-}
-
-// ══ TAB 2 · 건물·층 ════════════════════════════════════════════════
-function Buildings({ onFloor }: { onFloor: (b: Building, f: Floor) => void }) {
-  const [open, setOpen] = useState<string>('tower');
-  return (
-    <View>
-      {/* axis-split helper */}
-      <Shadowed offset={2.5} style={{ marginBottom: 12 }}>
-        <View style={{ flexDirection: 'row', gap: 7, backgroundColor: colors.blue, borderWidth: 2.5, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
-          <PixelIcon name="pin" color={C} size={14} sw={1.8} />
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C, lineHeight: 15 }}>
-            <Text style={{ fontFamily: fonts.heading }}>여기</Text>는 장소로 찾는 곳 — 층을 누르면 그 부서의 학습 카드가 열려요. 지금 병원 전체에 벌어지는 일은 <Text style={{ fontFamily: fonts.heading }}>상황판</Text> 탭에서 시간순으로 봐요.
-          </Text>
-        </View>
-      </Shadowed>
-
-      {BLD.map((b) => {
-        const isOpen = open === b.id;
-        return (
-          <Shadowed key={b.id} offset={3} style={{ marginBottom: 10 }}>
-            <View style={{ borderWidth: 3, borderColor: C, backgroundColor: '#fff' }}>
-              <Pressable onPress={() => setOpen(isOpen ? '' : b.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 10, paddingHorizontal: 11, backgroundColor: isOpen ? colors.cream : '#fff', borderBottomWidth: isOpen ? 2.5 : 0, borderBottomColor: C }}>
-                <View style={{ width: 28, height: 28, backgroundColor: b.accent, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: fs(14) }}>{b.icon}</Text>
-                </View>
-                <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{b.name}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{b.sub}</Text>
-                </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{isOpen ? '▾' : '▸'}</Text>
-              </Pressable>
-              {isOpen && b.floors.map((f, j) => (
-                <Pressable key={j} onPress={() => onFloor(b, f)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 11, borderBottomWidth: j < b.floors.length - 1 ? 1.5 : 0, borderBottomColor: C + '33', borderStyle: 'dotted' }}>
-                  <View style={{ width: 40, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.cream }}>{f.f}</Text>
-                  </View>
-                  <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 14 }}>{f.d}</Text>
-                    <View style={{ flexDirection: 'row', gap: 4, marginTop: 4 }}>
-                      {!!f.cur && <Chip label={`CH.${f.cur}`} bg={colors.mint} color={C} />}
-                      <Chip label={`상황 ${f.n}`} bg="#fff" color={colors.textSoft} />
-                      {f.hot && <Chip label="긴급" bg={colors.red} color={C} />}
-                    </View>
-                  </View>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>›</Text>
-                </Pressable>
-              ))}
-            </View>
-          </Shadowed>
-        );
-      })}
-    </View>
-  );
-}
-
-// ══ 부서 상세 시트 ══════════════════════════════════════════════════
-function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDetail | null; chapters: CurriculumChapter[]; onClose: () => void; onStart: (scn?: string) => void; onWalk: () => void }) {
-  // link this department to its server curriculum chapter (live progress).
-  const chapter = dept?.chapterCh != null ? chapters.find((c) => c.ch === dept.chapterCh) : undefined;
-  const chapterNowScn = chapter?.steps?.find((s) => s.state === 'now')?.scenarioId;
-
-  // live department situations (fall back to bundled when no dept code / offline).
-  const bundled: DeptSituation[] = (dept?.sits ?? []).map((s) => ({ scenarioId: s.scn ?? '', name: s.name, room: s.room, lv: s.lv, min: s.min, tag: s.tag, urgent: s.urg === 1 }));
-  const PAGE = 20;
-  const [sits, setSits] = useState<DeptSituation[]>(bundled);
-  const [hasMore, setHasMore] = useState(false);
-  const loadingRef = useRef(false); // guards concurrent page fetches
-  const offsetRef = useRef(0);
-  useEffect(() => {
-    let alive = true;
-    setSits(bundled);
-    setHasMore(false);
-    offsetRef.current = 0;
-    if (dept?.deptCode) {
-      loadingRef.current = true;
-      api.deptSituations(dept.deptCode, 0, PAGE)
-        .then((r) => {
-          if (!alive) return;
-          if (r.situations.length) { setSits(r.situations); offsetRef.current = r.situations.length; }
-          setHasMore(r.hasMore);
-        })
-        .catch(() => {})
-        .finally(() => { loadingRef.current = false; });
-    }
-    return () => { alive = false; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dept?.deptCode, dept?.name]);
-
-  // infinite scroll: append the next page as the learner nears the bottom.
-  const loadMoreSits = useCallback(() => {
-    if (!dept?.deptCode || loadingRef.current || !hasMore) return;
-    loadingRef.current = true;
-    api.deptSituations(dept.deptCode, offsetRef.current, PAGE)
-      .then((r) => {
-        setSits((prev) => [...prev, ...r.situations]);
-        offsetRef.current += r.situations.length;
-        setHasMore(r.hasMore);
-      })
-      .catch(() => {})
-      .finally(() => { loadingRef.current = false; });
-  }, [dept?.deptCode, hasMore]);
-
-  // stat tiles: derive from live situations for mapped depts, else authored.
-  const live = !!dept?.deptCode && sits.length > 0;
-  const clearedTile = live ? `${sits.filter((s) => s.tag === '완료').length}/${sits.length}${hasMore ? '+' : ''}` : `${dept?.cleared ?? 0}/${dept?.totalSit ?? 0}`;
-  const lvTile = dept?.lv && dept.lv !== '—' ? dept.lv : live ? modeLv(sits) : '—';
-
-  return (
-    <BottomSheet visible={!!dept} onClose={onClose}>
-      {dept && (
-        <View>
-          {/* header */}
-          <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 4, paddingHorizontal: 14, paddingBottom: 11 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-              <View style={{ width: 34, height: 34, backgroundColor: dept.accent, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                {iconFor(dept.icon) ? (
-                  <PixelIcon name={iconFor(dept.icon)!} color={C} size={19} sw={1.8} />
-                ) : (
-                  <Text style={{ fontSize: fs(17) }}>{dept.icon}</Text>
-                )}
-              </View>
-              <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{dept.name}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{dept.where}{dept.en ? ` · ${dept.en}` : ''}</Text>
-              </View>
-              <Pressable onPress={onClose} style={{ width: 24, height: 24, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>×</Text>
-              </Pressable>
-            </View>
-          </View>
-
-          <ScrollView
-            contentContainerStyle={{ padding: 14, paddingBottom: 96 }}
-            scrollEventThrottle={200}
-            onScroll={(e) => {
-              const { layoutMeasurement, contentOffset, contentSize } = e.nativeEvent;
-              if (contentOffset.y + layoutMeasurement.height >= contentSize.height - 240) loadMoreSits();
-            }}
-          >
-            {/* 3 stat tiles */}
-            <View style={{ flexDirection: 'row', gap: 8, marginBottom: 14 }}>
-              {[['권장 레벨', lvTile], ['해결한 상황', clearedTile], ['커리큘럼', chapter ? `CH.${chapter.ch}` : '—']].map(([k, v], i) => (
-                <Shadowed key={i} offset={2.5} style={{ flex: 1 }}>
-                  <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 7, paddingHorizontal: 6, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8.5), color: colors.textSoft }}>{k}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 2 }}>{v}</Text>
-                  </View>
-                </Shadowed>
-              ))}
-            </View>
-
-            {/* 이 부서의 커리큘럼 — server-driven (live progress) */}
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 이 부서의 커리큘럼 ━━━━━</Text>
-            {chapter && chapter.state !== 'lock' ? (
-              <Shadowed offset={3} shadowColor={colors.mintShadow} style={{ marginBottom: 16 }}>
-                <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 11 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: C, opacity: 0.75 }}>CHAPTER {chapter.ch}{chapter.state === 'done' ? ' · 완료' : ''}</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginTop: 3, marginBottom: 7 }}>{chapter.name}</Text>
-                  <ProgressBar done={chapter.done} total={chapter.total} />
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
-                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C }}>{chapter.state === 'done' ? '이 챕터를 마쳤어요' : `다음 · ${chapter.next ?? '준비 중'}`}</Text>
-                    {chapter.state !== 'done' && (
-                      <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={11.5} borderWidth={2} paddingV={6} paddingH={11} onPress={() => onStart(chapterNowScn)} />
-                    )}
-                  </View>
-                </View>
-              </Shadowed>
-            ) : (
-              <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', padding: 14, marginBottom: 16 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center' }}>{chapter ? '이전 챕터를 완료하면 열려요.' : '이 부서의 학습 콘텐츠가 곧 추가돼요.'}</Text>
-              </View>
-            )}
-
-            {/* 이 부서의 상황 — server-driven (dept-scoped, tagged by cleared) */}
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 이 부서의 상황 ━━━━━━</Text>
-            {sits.length === 0 && (
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 14 }}>준비 중인 상황이에요.</Text>
-            )}
-            {sits.map((s, i) => {
-              const done = s.tag === '완료';
-              return (
-                <Shadowed key={i} offset={2.5} style={{ marginBottom: 8 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>
-                    <View style={{ flex: 1, minWidth: 0 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-                        <View style={{ backgroundColor: done ? colors.mint : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
-                        </View>
-                        {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
-                      </View>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{s.name}</Text>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
-                    </View>
-                    <PixelButton label={done ? '복습' : '시작'} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
-                  </View>
-                </Shadowed>
-              );
-            })}
-            {hasMore && (
-              <Pressable onPress={loadMoreSits} style={{ paddingVertical: 12, alignItems: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft }}>더 많은 상황 불러오기 ▾</Text>
-              </Pressable>
-            )}
-          </ScrollView>
-
-          {/* sticky footer */}
-          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: colors.cream, borderTopWidth: 3, borderTopColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', gap: 8 }}>
-            <View style={{ flex: 1 }}>
-              <PixelButton icon="play" label="다음 상황 시작" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} fontSize={13} borderWidth={2.5} paddingV={10} onPress={() => onStart(sits.find((x) => x.tag !== '완료')?.scenarioId ?? chapterNowScn)} full />
-            </View>
-            <PixelButton icon="map" label="걸어보기" bg={colors.lilac} shadowColor={C} fontSize={12} borderWidth={2.5} paddingV={10} paddingH={12} onPress={onWalk} />
-          </View>
-        </View>
-      )}
-    </BottomSheet>
-  );
-}
-
-// modeLv returns the most common CEFR level among situations (recommended level).
-function modeLv(sits: DeptSituation[]): string {
-  const count: Record<string, number> = {};
-  for (const s of sits) count[s.lv] = (count[s.lv] ?? 0) + 1;
-  return Object.entries(count).sort((a, b) => b[1] - a[1])[0]?.[0] ?? '—';
-}
-
-function ProgressBar({ done, total }: { done: number; total: number }) {
-  const pct = total > 0 ? Math.max(0, Math.min(100, (done / total) * 100)) : 0;
-  return (
-    <View style={{ height: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, justifyContent: 'center' }}>
-      <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${pct}%`, backgroundColor: colors.mintShadow }} />
-      <Text style={{ position: 'absolute', right: 4, fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{done}/{total}</Text>
-    </View>
-  );
-}
-
-function Chip({ label, bg, color }: { label: string; bg: string; color: string }) {
-  return (
-    <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 4 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color }}>{label}</Text>
-    </View>
-  );
-}
-
-function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: object }) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
+      {/* Sheets close before navigating: a RN Modal renders above the pushed screen,
+          so leaving one open would hide the scenario we just opened. */}
+      <StepSheet curriculum={openCur} onClose={() => setOpenCur(null)} onOpen={(scn) => { setOpenCur(null); open(scn); }} />
+      <DeptSheet
+        target={dept}
+        onClose={() => setDept(null)}
+        onStart={(scn) => { setDept(null); open(scn); }}
+        onWalk={(code) => { setDept(null); router.push(`/interior/INT-${code}-00001`); }}
+      />
     </View>
   );
 }
