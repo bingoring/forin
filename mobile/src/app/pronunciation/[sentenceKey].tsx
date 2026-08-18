@@ -22,10 +22,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
-  useAudioRecorder, useAudioRecorderState, requestRecordingPermissionsAsync, setAudioModeAsync,
+  useAudioRecorder, useAudioRecorderState, useAudioPlayer, requestRecordingPermissionsAsync, setAudioModeAsync,
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
-import { readAsStringAsync, EncodingType, deleteAsync } from 'expo-file-system/legacy';
+import {
+  readAsStringAsync, EncodingType, deleteAsync, downloadAsync, getInfoAsync, cacheDirectory,
+} from 'expo-file-system/legacy';
 import { PixelIcon } from '@/components/PixelIcon';
 import { PixelButton } from '@/components/PixelButton';
 import { PronCard } from '@/components/pron/PronCard';
@@ -35,7 +37,7 @@ import { SyllableGrid, type SyllableChip } from '@/components/pron/SyllableGrid'
 import { ScoreBars } from '@/components/pron/ScoreBars';
 import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
-import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmplitude } from '@/lib/pronTokens';
+import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
@@ -93,6 +95,17 @@ function normalizeMetering(db: number | undefined): number {
 
 function statusOf(e: unknown): number | undefined {
   return (e as { response?: { status?: number } } | undefined)?.response?.status;
+}
+
+// A stable, filesystem-safe cache filename for a sentence's reference audio.
+// Collisions are harmless (worst case: two distinct sentences briefly share a
+// cache slot and the newer download overwrites the older) — this is a local
+// player cache, not a keying scheme the server relies on. djb2 keeps the
+// filename short regardless of how long the sentence is.
+function audioCacheKey(text: string): string {
+  let h = 5381;
+  for (let i = 0; i < text.length; i++) h = ((h << 5) + h + text.charCodeAt(i)) | 0;
+  return (h >>> 0).toString(36);
 }
 
 function paceLabel(mineMs: number, nativeMs: number): string {
@@ -274,13 +287,18 @@ function ScoreCard({
   );
 }
 
-// SoT L185-196's two-Wave layout assumes a native waveform that this task has
-// no data for — SentenceReference carries no amplitude envelope, and there is
-// no HTTP route serving the synthesized reference audio's bytes at all (see
-// task-8-report.md). Rather than draw a fabricated native Wave, this shows
-// the real duration-only comparison (SentenceReference.durationMs vs the
-// server-verified PronunciationResult.durationMs — both real numbers) as a
-// caption above the one Wave we DO have real amplitudes for: mine.
+// SoT L185-196's two-Wave layout assumes a native waveform, and this still
+// doesn't draw one: Task 11 added GET /speech/reference/audio.wav (so the
+// bytes now exist and 🔊 원어민/0.5× can play them — see TargetCard above),
+// but no accompanying "amplitude envelope" endpoint the way quiz audio has
+// audio-meta (waveform + durationMs) alongside audio.wav — that would need
+// decoding the downloaded WAV's PCM samples client-side (or a server route
+// mirroring quiz_audio_handler.meta's waveformPeaks) and neither shipped
+// with this task (task-11-report.md's open concerns). Rather than draw a
+// fabricated native Wave, this keeps the real duration-only comparison
+// (SentenceReference.durationMs vs the server-verified
+// PronunciationResult.durationMs — both real numbers) as a caption above the
+// one Wave we DO have real amplitudes for: mine.
 function WaveCompare({ myBars, myDurationMs, nativeDurationMs }: { myBars: number[]; myDurationMs?: number; nativeDurationMs?: number }) {
   const compare = myDurationMs != null && nativeDurationMs != null
     ? `원어민 ${(nativeDurationMs / 1000).toFixed(1)}초 대비 ${paceLabel(myDurationMs, nativeDurationMs)}`
@@ -385,6 +403,15 @@ export default function PronunciationRoute() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const fullSamplesRef = useRef<number[]>([]);
 
+  // Native reference-audio playback ("🔊 원어민" / "0.5× 느리게", Task 11).
+  // Downloaded lazily (on first tap, not on mount) — a learner who never
+  // presses play shouldn't pay for the download, and TargetCard's chips
+  // already show a real disabled state while `nativeAvailable` is false, so
+  // there's nothing useful to show for a background prefetch anyway.
+  const nativePlayer = useAudioPlayer(undefined, { updateInterval: 100 });
+  const nativeAudioPathRef = useRef<string | null>(null);
+  const nativeAudioLoadingRef = useRef(false);
+
   // ── load reference + attempt history whenever the sentence changes ───────
   useEffect(() => {
     let alive = true;
@@ -392,6 +419,13 @@ export default function PronunciationRoute() {
     api.speechReference(referenceText).then((r) => { if (alive) setReference(r); }).catch(() => { if (alive) setReference({}); });
     api.speechAttempts(referenceText, 3).then((rows) => { if (alive) setAttempts(rows); }).catch(() => { if (alive) setAttempts([]); });
     return () => { alive = false; };
+  }, [referenceText]);
+
+  // A new sentence invalidates whatever native clip was cached for the
+  // previous one — without this, tapping 원어민 right after "다음 문장" would
+  // play the OLD sentence's audio (nativeAudioPathRef still pointing at it).
+  useEffect(() => {
+    nativeAudioPathRef.current = null;
   }, [referenceText]);
 
   // ── live waveform while recording (rolling tail + full-clip accumulator) ──
@@ -575,14 +609,58 @@ export default function PronunciationRoute() {
     if (perm.granted) dispatch('PERMISSION_GRANTED');
   }, [dispatch]);
 
+  // Downloads (once) and caches locally the reference audio GET /speech/
+  // reference/audio.wav serves for the current sentence. iOS AVPlayer won't
+  // stream cleartext-http localhost (ATS) — same reason ListenQuiz.tsx
+  // downloads to a local file before playing rather than pointing the player
+  // straight at the URL.
+  const ensureNativeAudioLoaded = useCallback(async (): Promise<boolean> => {
+    if (nativeAudioPathRef.current) return true;
+    if (nativeAudioLoadingRef.current) return false; // a concurrent tap is already loading it
+    nativeAudioLoadingRef.current = true;
+    try {
+      const path = `${cacheDirectory}pron-ref-${audioCacheKey(referenceText)}.wav`;
+      const info = await getInfoAsync(path);
+      if (!info.exists) {
+        await downloadAsync(api.speechReferenceAudioUrl(referenceText), path, { headers: api.authHeaders() });
+      }
+      nativePlayer.replace({ uri: path });
+      nativeAudioPathRef.current = path;
+      return true;
+    } catch {
+      return false;
+    } finally {
+      nativeAudioLoadingRef.current = false;
+    }
+  }, [referenceText, nativePlayer]);
+
+  // "0.5× 느리게" is a client-side playback rate, not a second TTS call with
+  // an SSML prosody rate (task-11-report.md judgment call 3) — mirrors
+  // ListenQuiz.tsx's own 0.7×/1.0× buttons, which already use
+  // player.setPlaybackRate against ONE synthesized clip.
+  const playNativeAudio = useCallback(async (rate: number) => {
+    const ok = await ensureNativeAudioLoaded();
+    if (!ok) {
+      if (__DEV__) console.warn('[pronunciation] reference audio unavailable');
+      return;
+    }
+    try {
+      nativePlayer.setPlaybackRate(rate);
+      nativePlayer.seekTo(0);
+      nativePlayer.play();
+    } catch {
+      if (__DEV__) console.warn('[pronunciation] failed to play reference audio');
+    }
+  }, [ensureNativeAudioLoaded, nativePlayer]);
+
   // ── derived, render-only data ─────────────────────────────────────────────
   const tokens = useMemo(() => splitTargetTokens(referenceText, []), [referenceText]);
-  // Judgment call (task-8-report.md): SentenceReference carries no amplitude
-  // envelope and no HTTP route serves the synthesized reference audio's
-  // bytes, so native playback can never actually work yet — nativeAvailable
-  // stays false regardless of whether the reference metadata (ipa) exists.
-  // The IPA line itself is real, cheap metadata and renders independently.
-  const nativeAvailable = false;
+  // A reference row existing at all (business-rules R9) is the signal that
+  // audio should exist too — Reference() now persists both together (Task
+  // 11). If playback ever 404s despite this (a legacy row predating audio
+  // storage), ensureNativeAudioLoaded's catch just leaves the tap a no-op;
+  // there is no separate probe call to make first.
+  const nativeAvailable = !!reference.sentenceKey;
 
   const hint = `3회 중 ${Math.min(3, attempts.length + 1)}회차`;
 
@@ -618,12 +696,12 @@ export default function PronunciationRoute() {
   const correction = useMemo(
     () => buildCorrectionPoints(
       result?.words ?? [],
-      // server/internal/content/phonemetips exists but is not wired into any
-      // HTTP response yet (task-8-report.md) — nothing to look up until a
-      // response field carries a tip. Kept as a real function call (not
-      // inlined as "always empty") so this starts working the moment that
-      // field ships, with no change needed here.
-      () => undefined
+      // Task 11: result.phonemeTips is the server's deduplicated Korean
+      // coaching map (POST /pronunciation), sourced from content/phonemetips.
+      // T7 left this as `() => undefined` because nothing populated the
+      // field yet (task-8-report.md) — phonemeTipLookup is the real
+      // implementation now that it does.
+      phonemeTipLookup(result?.phonemeTips)
     ),
     [result]
   );
@@ -661,8 +739,8 @@ export default function PronunciationRoute() {
                 ipa={reference.ipa}
                 hint={hint}
                 nativeAvailable={nativeAvailable}
-                onPlayNative={() => { if (__DEV__) console.warn('[pronunciation] no native audio endpoint yet'); }}
-                onPlaySlow={() => { if (__DEV__) console.warn('[pronunciation] no native audio endpoint yet'); }}
+                onPlayNative={() => { void playNativeAudio(1.0); }}
+                onPlaySlow={() => { void playNativeAudio(0.5); }}
               />
             </View>
             <RiskNote />
@@ -748,7 +826,12 @@ export default function PronunciationRoute() {
                         ipa={p.ipa}
                         message={p.message}
                         severe={p.severe}
-                        onPlay={() => { if (__DEV__) console.warn('[pronunciation] no phoneme audio endpoint yet'); }}
+                        // Task 11 added sentence-level reference audio
+                        // (TargetCard's 🔊 원어민/0.5×), not a per-syllable
+                        // clip — slicing just this syllable's span out of the
+                        // full WAV is a distinct feature this task didn't
+                        // build (task-11-report.md's open concerns).
+                        onPlay={() => { if (__DEV__) console.warn('[pronunciation] no per-syllable audio clip yet — see task-11-report.md'); }}
                       />
                     </View>
                   ))}

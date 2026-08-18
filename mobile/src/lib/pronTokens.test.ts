@@ -4,6 +4,7 @@ import {
   matchPhonemesToSyllables,
   buildCorrectionPoints,
   downsampleAmplitude,
+  phonemeTipLookup,
   type CorrectionWord,
 } from './pronTokens';
 
@@ -302,5 +303,29 @@ describe('downsampleAmplitude', () => {
     const bars = downsampleAmplitude([0.2, 0.8], 4);
     expect(bars).toHaveLength(4);
     bars.forEach((v) => expect(Number.isFinite(v)).toBe(true));
+  });
+});
+
+// ── phonemeTipLookup — Task 11 wires content/phonemetips into the response.
+// buildCorrectionPoints already accepted a `lookupTip` callback (T7 stubbed it
+// as `() => undefined` with a comment saying nothing ever populated it); this
+// is the real implementation, sourced from POST /pronunciation's new
+// `phonemeTips` field — never hand-authored on the client (server/internal/
+// content/phonemetips' own doc: it's the only thing that should interpret
+// phoneme notation).
+describe('phonemeTipLookup', () => {
+  test('응답의 phonemeTips에서 그대로 조회한다', () => {
+    const lookup = phonemeTipLookup({ s: { ipa: 's', message: '가늘게 바람을 흘려요.' } });
+    expect(lookup('s')).toEqual({ ipa: 's', message: '가늘게 바람을 흘려요.' });
+  });
+
+  test('없는 음소는 undefined — 지어내지 않는다(R5)', () => {
+    const lookup = phonemeTipLookup({ s: { ipa: 's', message: 'x' } });
+    expect(lookup('zzz')).toBeUndefined();
+  });
+
+  test('phonemeTips 자체가 없어도(undefined) 안전하게 undefined를 반환한다', () => {
+    const lookup = phonemeTipLookup(undefined);
+    expect(lookup('s')).toBeUndefined();
   });
 });

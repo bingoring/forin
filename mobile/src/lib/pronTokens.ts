@@ -162,6 +162,29 @@ export type CorrectionWord = { syllables?: CorrectionSyllable[]; phonemes?: Corr
  *  one) once it is. */
 export type CorrectionTip = { ipa: string; message: string };
 
+/**
+ * Adapts POST /pronunciation's `phonemeTips` field (Task 11) into the
+ * `lookupTip` callback buildCorrectionPoints already expected — T7 stubbed
+ * that callback as `() => undefined` because nothing populated the field
+ * yet; this is the real implementation.
+ *
+ * A plain object index, not a re-derivation: the server (content/
+ * phonemetips) is the only thing that should interpret phoneme notation
+ * (SAPI vs IPA vs dictionary spelling — see that package's own doc), and it
+ * already sends one deduplicated entry per distinct phoneme keyed by the
+ * SAME raw spelling that appears in this response's words[].phonemes[]
+ * (phonemeTipsFor's own doc on the server). Re-normalizing here would risk
+ * silently drifting from that logic.
+ *
+ * Returns undefined for a phoneme with no entry — business-rules R5, same as
+ * every other lookupTip caller: skip it, never fabricate a tip.
+ */
+export function phonemeTipLookup(
+  tips: Record<string, CorrectionTip> | undefined
+): (phoneme: string) => CorrectionTip | undefined {
+  return (phoneme: string) => tips?.[phoneme];
+}
+
 export type CorrectionPoint = {
   /** The SYLLABLE the worst phoneme sits in (SoT's "min"/"li") — not the
    *  phoneme itself; business-logic-model §2. */

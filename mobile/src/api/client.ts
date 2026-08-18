@@ -204,6 +204,13 @@ export interface PronunciationResult {
   // Only present on POST /pronunciation's response (Task 5): the persisted
   // attempt's id and its 1-based attempt number for this sentence.
   attemptId?: string; attemptNo?: number;
+  // Task 11: Korean coaching per DISTINCT phoneme that appears in `words`,
+  // keyed by the same raw phoneme spelling those entries carry — one entry
+  // per sound, not one per occurrence (a sentence repeats phonemes often).
+  // Absent (not `{}`) when no word had any phoneme with a mapped tip
+  // (business-rules R5). See lib/pronTokens.ts's phonemeTipLookup, the only
+  // intended consumer.
+  phonemeTips?: Record<string, { ipa: string; message: string }>;
 }
 
 // GET /speech/reference?text=… — canonical syllable/phoneme reference for a
@@ -604,6 +611,24 @@ export const api = {
   async speechAttempts(text: string, limit = 3): Promise<SpeechAttemptRow[]> {
     const { data } = await http.get('/speech/attempts', { params: { text, limit } });
     return (data as SpeechAttemptRow[] | null) ?? [];
+  },
+
+  /** Absolute URL of a sentence's synthesized reference audio (Task 11 — the
+   *  same TTS render GET /speech/reference derives its IPA from). Unlike
+   *  quizAudioUrl this endpoint is authenticated (locale is derived from the
+   *  caller's profile, business-rules §2), so a raw fetch/download of this
+   *  URL needs `authHeaders()`'s Authorization header attached manually —
+   *  expo-audio's player can't attach one itself. */
+  speechReferenceAudioUrl(text: string): string {
+    return `${baseURL}/speech/reference/audio.wav?text=${encodeURIComponent(text)}`;
+  },
+
+  /** Bearer header for the rare out-of-band request (expo-file-system
+   *  downloads) that bypasses the axios instance above and so needs
+   *  Authorization attached by hand. */
+  authHeaders(): Record<string, string> {
+    const token = useAuthStore.getState().accessToken;
+    return token ? { Authorization: `Bearer ${token}` } : {};
   },
 
   /** Full quiz (playable content). GET /quizzes/{id}. */
