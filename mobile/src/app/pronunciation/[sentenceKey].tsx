@@ -424,8 +424,18 @@ export default function PronunciationRoute() {
   // A new sentence invalidates whatever native clip was cached for the
   // previous one — without this, tapping 원어민 right after "다음 문장" would
   // play the OLD sentence's audio (nativeAudioPathRef still pointing at it).
+  // Review round 2 (minor): this alone only stopped FUTURE taps from reusing
+  // the stale path — a clip already mid-playback from the previous sentence
+  // kept audibly playing straight through the transition. pause() (best-
+  // effort; the player may have nothing loaded yet) stops that.
   useEffect(() => {
     nativeAudioPathRef.current = null;
+    try {
+      nativePlayer.pause();
+    } catch {
+      // no-op — nothing was loaded/playing
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [referenceText]);
 
   // ── live waveform while recording (rolling tail + full-clip accumulator) ──
@@ -622,7 +632,25 @@ export default function PronunciationRoute() {
       const path = `${cacheDirectory}pron-ref-${audioCacheKey(referenceText)}.wav`;
       const info = await getInfoAsync(path);
       if (!info.exists) {
-        await downloadAsync(api.speechReferenceAudioUrl(referenceText), path, { headers: api.authHeaders() });
+        // Review round 2 (Important 2): downloadAsync writes the response
+        // body to disk regardless of status code — a 404/401 JSON error
+        // body would otherwise get cached as if it were the WAV. Worse, the
+        // next tap sees getInfoAsync().exists === true and skips
+        // re-downloading forever, so the device never recovers even after
+        // the server has real audio. Checking status here, and deleting a
+        // bad download, keeps every miss a real retry candidate.
+        //
+        // This request also bypasses axios entirely (expo-file-system, not
+        // http.get), so it does NOT go through client.ts's 401 refresh
+        // interceptor — a genuinely reachable path on an expired access
+        // token. authHeaders() sends whatever token is current, but a 401
+        // here just fails this ensure-call cleanly rather than silently
+        // caching a JSON error body as "audio".
+        const res = await downloadAsync(api.speechReferenceAudioUrl(referenceText), path, { headers: api.authHeaders() });
+        if (res.status !== 200) {
+          await deleteAsync(path, { idempotent: true }).catch(() => {});
+          return false;
+        }
       }
       nativePlayer.replace({ uri: path });
       nativeAudioPathRef.current = path;
