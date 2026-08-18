@@ -881,6 +881,37 @@ Expected: grep 0건, tsc 0.
 
 ---
 
+### Task 11: 음소 팁 + 참조 오디오를 HTTP로 노출 (2026-08-18 추가)
+
+> **왜 추가하는가 — 계획서의 구멍이다.** T8이 조립하고 나서야 드러났다.
+>
+> **① 음소 팁이 앱에 도달하지 못한다.** T6이 49종을 저작했지만 `internal/content/phonemetips`를
+> **import하는 곳이 0곳**이다(주석 언급 2건 외). 그래서 결과 화면의 교정 포인트(SoT L197-210)가
+> 영구히 0개다 — business-rules R5에 따라 "팁 없으면 건너뜀"이 맞게 동작하는 것이지만, 결과적으로
+> 결과 화면의 핵심 블록이 통째로 비어 있다.
+> **② 참조 오디오를 서빙하는 라우트가 없다.** T4가 TTS로 합성해 캐시하며 "원어민 재생에 재사용된다"고
+> 적었는데, 그걸 내보내는 엔드포인트를 어느 태스크도 만들지 않았다(퀴즈용 `/quizzes/{id}/audio.wav`는
+> 있다). 그래서 `🔊 원어민`·`0.5× 느리게`가 영구 비활성이다.
+>
+> T5의 "엔드포인트 3종" 목록이 화면이 실제로 필요한 것을 다 담지 못했다. 두 항목은 **feature의 목적에
+> 직결**되므로(말이 통하게 하려면 무엇이 틀렸는지 알려줘야 한다) 이연이 아니라 태스크로 닫는다.
+
+**Files:**
+- Modify: `server/internal/adapters/http/pronunciation_handler.go` — 채점 응답에 음소별 팁을 실어 보낸다
+- Modify: `server/internal/adapters/http/router.go` — 참조 오디오 라우트
+- Create: `server/internal/adapters/http/speech_audio_handler.go` — 참조 WAV 서빙(`/quizzes/{id}/audio.wav`의 형태를 따른다)
+- Modify: `server/internal/domain/speech/reference.go` — 합성 WAV를 캐시에서 돌려줄 수 있게(현재는 분절만 저장한다)
+- Modify: `mobile/src/api/client.ts` · `mobile/src/app/pronunciation/[sentenceKey].tsx` — 팁 소비 + 오디오 재생 활성화
+- Test: 서버 핸들러 테스트 + 계약 재생성
+
+**설계 판단이 필요한 지점** — 구현자가 정하고 근거를 남길 것:
+- 팁을 **채점 응답에 인라인**할지, 별도 조회로 둘지. 인라인이면 왕복이 줄지만 응답이 커진다. 음소 수는 문장당 수십 개다
+- 참조 WAV를 **DB에 저장**할지(현재 `speech_references`는 분절만 담는다), **요청마다 TTS를 다시 부를지**.
+  후자는 NFR("참조는 문장당 평생 1회")을 깬다 — 저장이 맞을 가능성이 높지만 크기를 확인하라
+- `0.5× 느리게`를 **클라이언트 재생 속도**로 할지 **SSML `prosody rate`로 별도 합성**할지
+
+---
+
 ### Task 10: 검증 — 스모크 + 실 Azure 왕복
 
 **Files:**
