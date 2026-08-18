@@ -10,7 +10,7 @@
 // screen never goes blank between "recording stopped" and "result arrived"
 // (business-logic-model §3/§4). It keeps the dark shell from `recording`.
 //
-// State transitions live in ./pronState.ts as a pure, independently-tested
+// State transitions live in lib/pronState.ts as a pure, independently-tested
 // function — this file only dispatches events from real triggers (mic
 // permission, the 10s timer, the /pronunciation response) and renders.
 //
@@ -25,7 +25,7 @@ import {
   useAudioRecorder, useAudioRecorderState, requestRecordingPermissionsAsync, setAudioModeAsync,
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
-import { readAsStringAsync, EncodingType } from 'expo-file-system/legacy';
+import { readAsStringAsync, EncodingType, deleteAsync } from 'expo-file-system/legacy';
 import { PixelIcon } from '@/components/PixelIcon';
 import { PixelButton } from '@/components/PixelButton';
 import { PronCard } from '@/components/pron/PronCard';
@@ -35,15 +35,24 @@ import { SyllableGrid, type SyllableChip } from '@/components/pron/SyllableGrid'
 import { ScoreBars } from '@/components/pron/ScoreBars';
 import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
-import { splitTargetTokens, syllableBand, buildCorrectionPoints } from '@/lib/pronTokens';
+import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmplitude } from '@/lib/pronTokens';
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 
 const C = colors.ink;
 const WAVE_DARK = '#0F1A24'; // SoT's dark wave-panel fill — not in theme/tokens
-const RECORD_MAX_MS = 10_000; // business-rules R6
 const BAR_COUNT = 20; // matches SoT's mock W1 array length
+
+// business-rules R6 says "최대 10초" and that's what the countdown/copy show,
+// but the AUTO-stop fires a little earlier: speech.ValidateWAV rejects a WAV
+// over 10s as 400 invalid_audio (server/internal/domain/speech/validate.go:
+// 37-39), and `await recorder.stop()` + its flush routinely adds tens to a
+// few hundred ms on top of a `setTimeout(10000)` — enough to push a
+// literally-10s recording over that hard cap and get every auto-stopped
+// attempt rejected (review finding). Firing at 9.5s leaves that margin.
+const RECORD_DISPLAY_MS = 10_000;
+const RECORD_AUTO_STOP_MS = 9_500;
 
 // 16kHz mono PCM WAV — the only shape speech.ValidateWAV accepts server-side.
 // Metering is on so the live Wave panel reflects the actual mic input instead
@@ -66,8 +75,12 @@ const WAV_16K_MONO: RecordingOptions = {
   web: {},
 };
 
-const NO_SPEECH_MSG = '소리가 잘 안 잡혔어요. 조용한 곳에서 다시 해볼까요?'; // business-rules §5
-const SERVER_ERROR_MSG = '채점 서버가 응답하지 않아요. 잠시 후 다시.'; // business-rules §5
+const NO_SPEECH_MSG = '소리가 잘 안 잡혔어요. 조용한 곳에서 다시 해볼까요?'; // business-rules §5, 422
+const SERVER_ERROR_MSG = '채점 서버가 응답하지 않아요. 잠시 후 다시.'; // business-rules §5, 5xx/네트워크
+// 4xx(invalid_audio/invalid_reference_text/invalid_review_card_id/소유권 403)는
+// SERVER_ERROR_MSG로 뭉뚱그리면 "일시적" 문제처럼 보이지만 실제로는 같은
+// 입력으로 재시도해도 매번 재현되는 결함이다(review finding) — 문구를 분리한다.
+const CLIENT_ERROR_MSG = '요청을 처리할 수 없어요. 같은 문제가 반복되면 문장을 바꿔서 시도해 주세요.';
 
 // iOS/Android metering is dBFS, roughly -160 (silence) to 0 (max). Normal
 // speech in a quiet room sits well above -50dB; clamping there keeps talking
@@ -143,16 +156,35 @@ function Banner({ text }: { text: string }) {
 }
 
 function BigButton({
-  size, bg, icon, label, sub, onPress, disabled,
-}: { size: number; bg: string; icon: React.ReactNode; label: string; sub?: string; onPress: () => void; disabled?: boolean }) {
+  size, bg, icon, label, labelColor = C, sub, onPress, disabled,
+}: {
+  size: number; bg: string; icon: React.ReactNode; label: string;
+  /** SoT L89 (idle, light shell) is dark ink text; L138 (recording, dark
+   *  shell) is cream — a fixed `color: C` label is invisible on the dark
+   *  shell (review finding). Callers on a dark backdrop must pass cream. */
+  labelColor?: string;
+  sub?: string; onPress: () => void; disabled?: boolean;
+}) {
+  const offset = 5; // SoT L88/L136
   return (
     <View style={styles.bigButtonWrap}>
       <Pressable onPress={disabled ? undefined : onPress} disabled={disabled} style={{ alignItems: 'center', gap: 9 }}>
-        <View style={styles.bigButtonShadow} />
-        <View style={[styles.bigButtonCap, { width: size, height: size, backgroundColor: disabled ? colors.textFaint : bg }]}>
-          {icon}
+        <View style={{ width: size, height: size }}>
+          {/* Hard offset shadow — was a bare `{position:'absolute'}` with no
+              size/fill (review finding: rendered nothing). Sized/filled like
+              PronCard's shadow layer, just anchored to a fixed square instead
+              of a stretched card. */}
+          <View
+            style={[
+              styles.bigButtonShadow,
+              { left: offset, top: offset, width: size, height: size, backgroundColor: disabled ? colors.textFaint : C },
+            ]}
+          />
+          <View style={[styles.bigButtonCap, { width: size, height: size, backgroundColor: disabled ? colors.textFaint : bg }]}>
+            {icon}
+          </View>
         </View>
-        <Text style={styles.bigButtonLabel}>{label}</Text>
+        <Text style={[styles.bigButtonLabel, { color: disabled ? colors.textFaint : labelColor }]}>{label}</Text>
         {!!sub && <Text style={styles.bigButtonSub}>{sub}</Text>}
       </Pressable>
     </View>
@@ -338,12 +370,20 @@ export default function PronunciationRoute() {
   const [reference, setReference] = useState<SentenceReference>({});
   const [attempts, setAttempts] = useState<SpeechAttemptRow[]>([]);
   const [result, setResult] = useState<PronunciationResult | null>(null);
-  const [bars, setBars] = useState<number[]>(() => Array(BAR_COUNT).fill(0.05));
+  // Rolling window (last ~2s at 100ms polling) for the LIVE meter — a VU-meter
+  // read is supposed to show only recent input, not the whole clip.
+  const [liveBars, setLiveBars] = useState<number[]>(() => Array(BAR_COUNT).fill(0.05));
+  // Fixed-size, FULL-recording waveform for the result screen's "내 발음" row
+  // — review finding: reusing liveBars there rendered only the recording's
+  // last ~2 seconds as if that were the whole utterance. Computed once, at
+  // stop time, from every sample collected (fullSamplesRef below).
+  const [myWaveform, setMyWaveform] = useState<number[]>(() => Array(BAR_COUNT).fill(0.05));
 
   const recorder = useAudioRecorder(WAV_16K_MONO);
   const recorderState = useAudioRecorderState(recorder, 100);
   const stoppedRef = useRef(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fullSamplesRef = useRef<number[]>([]);
 
   // ── load reference + attempt history whenever the sentence changes ───────
   useEffect(() => {
@@ -354,53 +394,87 @@ export default function PronunciationRoute() {
     return () => { alive = false; };
   }, [referenceText]);
 
-  // ── live waveform while recording ────────────────────────────────────────
+  // ── live waveform while recording (rolling tail + full-clip accumulator) ──
   useEffect(() => {
     if (pron !== 'recording') return;
-    setBars((prev) => [...prev.slice(1), normalizeMetering(recorderState.metering)]);
+    const amp = normalizeMetering(recorderState.metering);
+    fullSamplesRef.current.push(amp);
+    setLiveBars((prev) => [...prev.slice(1), amp]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pron, recorderState.metering]);
 
-  // ── 10s auto-stop (business-rules R6) ────────────────────────────────────
+  // ── auto-stop before the server's hard cap (business-rules R6, margin above) ─
   useEffect(() => {
     if (pron !== 'recording') return undefined;
     stoppedRef.current = false;
-    timeoutRef.current = setTimeout(() => { void stopAndScore('TIMEOUT'); }, RECORD_MAX_MS);
+    timeoutRef.current = setTimeout(() => { void stopAndScore('TIMEOUT'); }, RECORD_AUTO_STOP_MS);
     return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pron]);
 
-  // stop the native recorder on unmount if the learner navigated away mid-recording
-  useEffect(() => () => { recorder.stop().catch(() => {}); }, [recorder]);
+  // Review finding (Critical 1's guard): if pron ever says 'recording' while
+  // the hardware genuinely isn't — the exact shape of the retry bug this
+  // round fixed (state transitioned, recorder never started) — don't let the
+  // screen sit there showing a fake countdown over dead air. Checked once,
+  // shortly after entry, via `getStatus()` directly rather than the polled
+  // `recorderState` to avoid a stale closure.
+  useEffect(() => {
+    if (pron !== 'recording') return undefined;
+    const id = setTimeout(() => {
+      if (!recorder.getStatus().isRecording) {
+        if (__DEV__) console.warn('[pronunciation] pron===recording but the hardware never started — bailing out');
+        Alert.alert('녹음을 시작하지 못했습니다.');
+        dispatch('CANCEL');
+      }
+    }, 400);
+    return () => clearTimeout(id);
+  }, [pron, recorder, dispatch]);
+
+  // stop (and discard) the native recorder on unmount if the learner navigated away mid-recording
+  useEffect(() => () => {
+    recorder.stop().then(() => {
+      const uri = recorder.uri;
+      if (uri) deleteAsync(uri, { idempotent: true }).catch(() => {}); // R7
+    }).catch(() => {});
+  }, [recorder]);
+
+  // Shared hardware start: permission → audio mode → prepare → record. Both
+  // the idle/noSpeech record button AND "다시 녹음" must call this — Critical
+  // 1 was exactly the case where a caller dispatched an FSM event that says
+  // "recording" without ever calling this, so the screen shows a countdown
+  // over a recorder that was never told to start.
+  const beginRecordingHardware = useCallback(async (): Promise<boolean> => {
+    const perm = await requestRecordingPermissionsAsync();
+    if (!perm.granted) return false;
+    await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
+    await recorder.prepareToRecordAsync();
+    recorder.record();
+    fullSamplesRef.current = [];
+    setLiveBars(Array(BAR_COUNT).fill(0.05));
+    setBanner(null);
+    return true;
+  }, [recorder]);
 
   const startRecording = useCallback(async () => {
     try {
-      const perm = await requestRecordingPermissionsAsync();
-      if (!perm.granted) { dispatch('MIC_DENIED'); return; }
-      await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
-      await recorder.prepareToRecordAsync();
-      recorder.record();
-      setBars(Array(BAR_COUNT).fill(0.05));
-      setBanner(null);
-      dispatch('START_RECORDING');
+      const ok = await beginRecordingHardware();
+      dispatch(ok ? 'START_RECORDING' : 'MIC_DENIED');
     } catch {
       Alert.alert('녹음을 시작하지 못했습니다.');
     }
-  }, [dispatch, recorder]);
+  }, [dispatch, beginRecordingHardware]);
 
   const stopAndScore = useCallback(async (reason: 'STOP' | 'TIMEOUT') => {
     if (stoppedRef.current) return;
     stoppedRef.current = true;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     dispatch(reason);
+    setMyWaveform(downsampleAmplitude(fullSamplesRef.current, BAR_COUNT));
+    let uri: string | null = null;
     try {
       await recorder.stop();
-      const uri = recorder.uri;
+      uri = recorder.uri;
       if (!uri) throw new Error('no audio uri');
-      // R7: only the base64 goes over the wire; nothing persists the WAV
-      // locally past this read (readAsStringAsync reads expo-audio's own
-      // scratch file, which the OS/expo-audio manages — this route never
-      // writes a copy of its own).
       const b64 = await readAsStringAsync(uri, { encoding: EncodingType.Base64 });
       const res = await api.assessPronunciation(referenceText, b64, {
         origin,
@@ -410,13 +484,24 @@ export default function PronunciationRoute() {
       setResult(res);
       dispatch('SUCCESS');
     } catch (e) {
-      if (statusOf(e) === 422) {
+      const status = statusOf(e);
+      if (status === 422) {
         setBanner(NO_SPEECH_MSG);
         dispatch('NO_SPEECH');
+      } else if (status !== undefined && status >= 400 && status < 500) {
+        // Not transient — the same referenceText/audio will fail again.
+        // Distinct copy + a dev warning so this doesn't masquerade as a
+        // passing "server hiccup" (review finding).
+        if (__DEV__) console.warn('[pronunciation] /pronunciation rejected the request (4xx) — this will recur, not a transient failure', status);
+        setBanner(CLIENT_ERROR_MSG);
+        dispatch('ERROR');
       } else {
         setBanner(SERVER_ERROR_MSG);
         dispatch('ERROR');
       }
+    } finally {
+      // R7: the WAV never persists past scoring, success or failure alike.
+      if (uri) await deleteAsync(uri, { idempotent: true }).catch(() => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, recorder, referenceText, origin, params.scenarioId, params.reviewCardId]);
@@ -425,13 +510,31 @@ export default function PronunciationRoute() {
     if (pron === 'scoring') return; // no escape once the request is in flight
     if (pron === 'recording') {
       stoppedRef.current = true;
-      recorder.stop().catch(() => {});
+      recorder.stop().then(() => {
+        const uri = recorder.uri;
+        if (uri) deleteAsync(uri, { idempotent: true }).catch(() => {}); // R7: discard, don't upload
+      }).catch(() => {});
       dispatch('CANCEL');
     }
     router.back();
   }, [pron, recorder, dispatch, router]);
 
-  const retry = useCallback(() => { setResult(null); dispatch('RETRY'); }, [dispatch]);
+  // Critical 1 fix: RETRY used to only move the FSM to 'recording' without
+  // ever calling the hardware — the dark shell/wave/countdown all rendered
+  // over a recorder that was never started, and the eventual auto-stop
+  // re-sent the PREVIOUS attempt's leftover file (recorder.uri still pointed
+  // at it), silently double-submitting a scored attempt to an append-only
+  // table (I1). "다시 녹음" must start real hardware exactly like the
+  // idle/noSpeech record button does.
+  const retry = useCallback(async () => {
+    setResult(null);
+    try {
+      const ok = await beginRecordingHardware();
+      dispatch(ok ? 'RETRY' : 'MIC_DENIED');
+    } catch {
+      Alert.alert('녹음을 시작하지 못했습니다.');
+    }
+  }, [dispatch, beginRecordingHardware]);
 
   const goNext = useCallback(() => {
     if (!params.nextText) return;
@@ -479,10 +582,13 @@ export default function PronunciationRoute() {
     if (fromRef && fromRef.length) return fromRef;
     return referenceText.split(/\s+/).filter(Boolean);
   }, [reference, referenceText]);
+  // Display uses the SoT's "최대 10초" copy (RECORD_DISPLAY_MS); the actual
+  // auto-stop fires a bit earlier (RECORD_AUTO_STOP_MS) so recorder.stop()'s
+  // flush latency doesn't push the WAV past the server's hard 10s cap.
   const elapsedSec = Math.min(10, Math.floor(recorderState.durationMillis / 1000));
-  const remainingSec = Math.max(0, 10 - elapsedSec);
+  const remainingSec = Math.max(0, RECORD_DISPLAY_MS / 1000 - elapsedSec);
   const doneCount = progressSegments.length
-    ? Math.min(progressSegments.length, Math.floor((recorderState.durationMillis / RECORD_MAX_MS) * progressSegments.length))
+    ? Math.min(progressSegments.length, Math.floor((recorderState.durationMillis / RECORD_AUTO_STOP_MS) * progressSegments.length))
     : 0;
 
   const syllableChips = useMemo((): SyllableChip[] =>
@@ -524,14 +630,21 @@ export default function PronunciationRoute() {
         {(pron === 'idle' || pron === 'noSpeech') && (
           <>
             {pron === 'noSpeech' && !!banner && <Banner text={banner} />}
-            <TargetCard
-              tokens={tokens}
-              ipa={reference.ipa}
-              hint={hint}
-              nativeAvailable={nativeAvailable}
-              onPlayNative={() => { if (__DEV__) console.warn('[pronunciation] no native audio endpoint yet'); }}
-              onPlaySlow={() => { if (__DEV__) console.warn('[pronunciation] no native audio endpoint yet'); }}
-            />
+            {/* review finding: these two cards had no horizontal margin, so
+                they sat flush against the screen edge (unlike every result-
+                screen card, which all wrap in marginHorizontal:16) — and
+                PronCard's negative-offset shadow (right/bottom: -offset) had
+                no room to render and got clipped at the screen edge. */}
+            <View style={{ marginHorizontal: 16, marginTop: 14 }}>
+              <TargetCard
+                tokens={tokens}
+                ipa={reference.ipa}
+                hint={hint}
+                nativeAvailable={nativeAvailable}
+                onPlayNative={() => { if (__DEV__) console.warn('[pronunciation] no native audio endpoint yet'); }}
+                onPlaySlow={() => { if (__DEV__) console.warn('[pronunciation] no native audio endpoint yet'); }}
+              />
+            </View>
             <RiskNote />
             <BigButton
               size={92}
@@ -539,9 +652,11 @@ export default function PronunciationRoute() {
               icon={<PixelIcon name="mic" color={C} size={38} sw={2.4} />}
               label="눌러서 녹음"
               sub="조용한 곳에서 · 최대 10초"
-              onPress={startRecording}
+              onPress={() => { void startRecording(); }}
             />
-            <AttemptHistory attempts={historyRows} />
+            <View style={{ marginHorizontal: 16, marginTop: 20 }}>
+              <AttemptHistory attempts={historyRows} />
+            </View>
           </>
         )}
 
@@ -551,7 +666,7 @@ export default function PronunciationRoute() {
           <>
             <TargetLine tokens={tokens} />
             <View style={{ marginHorizontal: 16, marginTop: 20 }}>
-              <WavePanel bars={bars} elapsedSec={elapsedSec} remainingSec={remainingSec} scoring={false} />
+              <WavePanel bars={liveBars} elapsedSec={elapsedSec} remainingSec={remainingSec} scoring={false} />
             </View>
             <View style={{ marginHorizontal: 16, marginTop: 14 }}>
               <SyllableProgress segments={progressSegments} doneCount={doneCount} />
@@ -561,6 +676,7 @@ export default function PronunciationRoute() {
               bg={colors.cream}
               icon={<View style={styles.stopGlyph} />}
               label="눌러서 끝내기"
+              labelColor={colors.cream}
               onPress={() => { void stopAndScore('STOP'); }}
             />
           </>
@@ -568,7 +684,7 @@ export default function PronunciationRoute() {
 
         {pron === 'scoring' && (
           <View style={{ marginHorizontal: 16, marginTop: 20 }}>
-            <WavePanel bars={bars} elapsedSec={elapsedSec} remainingSec={0} scoring />
+            <WavePanel bars={liveBars} elapsedSec={elapsedSec} remainingSec={0} scoring />
           </View>
         )}
 
@@ -587,15 +703,22 @@ export default function PronunciationRoute() {
               <SyllableGrid syllables={syllableChips} />
             </View>
             <View style={{ marginHorizontal: 16, marginTop: 13 }}>
-              <WaveCompare myBars={bars} myDurationMs={result.durationMs} nativeDurationMs={reference.durationMs} />
+              <WaveCompare myBars={myWaveform} myDurationMs={result.durationMs} nativeDurationMs={reference.durationMs} />
             </View>
             <View style={{ marginHorizontal: 16, marginTop: 13 }}>
-              {correction.suspectAllZero ? (
+              {/* review finding: these used to be mutually exclusive (an if/
+                  else-if), so ANY word's suspectAllZero hid every OTHER
+                  word's already-valid correction points, not just the
+                  affected word's own (which buildCorrectionPoints already
+                  excludes on its own). The banner and any surviving points
+                  are independent facts and both render when true. */}
+              {correction.suspectAllZero && (
                 <View style={styles.suspectBanner}>
                   <PixelIcon name="alert" color={C} size={13} sw={1.8} />
-                  <Text style={styles.suspectText}>교정 데이터 이상 — 지금은 표시할 수 없어요</Text>
+                  <Text style={styles.suspectText}>교정 데이터 이상 — 일부 단어는 지금 표시할 수 없어요</Text>
                 </View>
-              ) : correction.points.length > 0 ? (
+              )}
+              {correction.points.length > 0 && (
                 <>
                   <Text style={styles.correctionHeader}>{`━ 교정 포인트 ${correction.points.length} ━━━━━━`}</Text>
                   {correction.points.map((p) => (
@@ -610,9 +733,9 @@ export default function PronunciationRoute() {
                     </View>
                   ))}
                 </>
-              ) : null}
+              )}
             </View>
-            <ResultActions onRetry={retry} onNext={goNext} nextDisabled={!params.nextText} />
+            <ResultActions onRetry={() => { void retry(); }} onNext={goNext} nextDisabled={!params.nextText} />
           </>
         )}
       </ScrollView>
@@ -681,7 +804,7 @@ const styles = StyleSheet.create({
 
   correctionHeader: { fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 },
   suspectBanner: {
-    flexDirection: 'row', alignItems: 'center', gap: 8,
+    flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8,
     backgroundColor: colors.peach, borderWidth: 2, borderColor: C, padding: 10,
   },
   suspectText: { flex: 1, fontFamily: fonts.body, fontSize: 11, color: colors.text },
