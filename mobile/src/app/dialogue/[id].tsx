@@ -16,7 +16,6 @@ import {
 import { readAsStringAsync, EncodingType } from 'expo-file-system/legacy';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
-import { PronunciationPractice } from '@/components/PronunciationPractice';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts } from '@/theme/tokens';
@@ -131,6 +130,23 @@ export default function DialogueRoute() {
       return;
     }
     router.replace(`/result/${id}?session=${sessionRef.current ?? ''}`);
+  };
+
+  // Bottom rail 🎤 직접 말하기 (04_SCREENS.md:324) — pushes to the standalone
+  // pronunciation route (T8) with the scenario's first key phrase as the
+  // target sentence. This replaces the old inline <PronunciationPractice/>
+  // widget that used to render under HINT ON (scenario.keyPhrases[0] was its
+  // only referenceText source too, so the target phrase is unchanged).
+  const openPronunciationPractice = () => {
+    const phrase = scenario?.keyPhrases?.[0];
+    if (!phrase) return;
+    // One single template literal (not string concatenation) — expo-router's
+    // typed-routes generator statically matches against a single backtick
+    // expression; splitting it across `+`-joined pieces breaks that match
+    // (same rule pronunciation/[sentenceKey].tsx's goNext follows).
+    router.push(
+      `/pronunciation/${encodeURIComponent(phrase.slice(0, 40))}?referenceText=${encodeURIComponent(phrase)}&origin=dialogue&scenarioId=${encodeURIComponent(id)}&ctx=${encodeURIComponent(scenario?.title ?? '')}&step=${encodeURIComponent('핵심 표현 발음 연습')}`
+    );
   };
 
   const p = scenario?.persona ?? {};
@@ -311,8 +327,6 @@ export default function DialogueRoute() {
                 return <ChoiceRow key={i} num={i + 1} text={phrase} suggested={i === 0 && !risky} risky={risky} onPress={() => { setDraft(phrase); setHintOn(false); }} />;
               })}
             </View>
-            {/* pronunciation practice for the suggested phrase */}
-            <PronunciationPractice referenceText={scenario.keyPhrases[0]} />
           </View>
         )}
 
@@ -361,6 +375,9 @@ export default function DialogueRoute() {
                 <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.yellow }}>●</Text>
               </View>
             )}
+          </View>
+          <View style={{ flex: 1 }}>
+            <PixelButton icon="mic" label="직접 말하기" bg="#fff" shadowColor={C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={openPronunciationPractice} disabled={!scenario?.keyPhrases?.length} full />
           </View>
           {quizIds.length > 0 && (
             <PixelButton

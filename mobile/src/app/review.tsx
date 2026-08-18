@@ -71,6 +71,21 @@ export default function ReviewSession() {
 
   const back = () => { Speech.stop(); router.replace('/lab'); };
 
+  // 🎤 따라 말하기 (04_SCREENS.md:397, PhraseCard actions) — pushes to the
+  // standalone pronunciation route (T8) so the learner records themselves
+  // saying the CORRECTED line (card.back), not the original mistake
+  // (card.front). reviewCardId is the server's ownership-checked param
+  // (business-rules: a foreign card's id 403s), so this only ever sends the
+  // id of the card actually being reviewed right now.
+  const practicePronunciation = (c: ReviewCard) => {
+    Speech.stop();
+    // One single template literal (not string concatenation) — see the same
+    // note in dialogue/[id].tsx's openPronunciationPractice.
+    router.push(
+      `/pronunciation/${encodeURIComponent(c.back.slice(0, 40))}?referenceText=${encodeURIComponent(c.back)}&origin=review&reviewCardId=${encodeURIComponent(c.id)}&ctx=${encodeURIComponent(c.context?.title || c.topicTag || '')}&step=${encodeURIComponent('현지인처럼 말하기')}`
+    );
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
       <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
@@ -125,6 +140,7 @@ export default function ReviewSession() {
                   <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
                     <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 16, color: C, lineHeight: 24 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
                     <Pressable onPress={() => Speech.speak(card.back, { language: 'en-US', rate: 0.92 })} hitSlop={8}><PixelIcon name="volume" color={C} size={20} sw={1.8} /></Pressable>
+                    <Pressable onPress={() => practicePronunciation(card)} hitSlop={8}><PixelIcon name="mic" color={C} size={20} sw={1.8} /></Pressable>
                   </View>
                   {!!card.note && (
                     <View style={{ marginTop: 12, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
