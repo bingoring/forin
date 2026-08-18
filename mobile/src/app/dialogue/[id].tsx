@@ -7,7 +7,7 @@
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
   useAudioRecorder, requestRecordingPermissionsAsync, setAudioModeAsync,
@@ -40,6 +40,8 @@ export default function DialogueRoute() {
   const sessionRef = useRef<string | null>(null);
   const turnsRef = useRef(0); // learner turns sent — gates grading (0 turns → 중단)
 
+  // Window height is stable while the keyboard animates; the container's is not.
+  const { height: winH } = useWindowDimensions();
   const [npcLine, setNpcLine] = useState(''); // latest NPC utterance (VN box)
   // The VN box only ever showed the CURRENT line, and every previous turn was
   // thrown away — the learner could not look back at what was said, which is
@@ -261,7 +263,16 @@ export default function DialogueRoute() {
 
       {/* status bar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}>
-        <PixelButton label="호출 받기" icon="alert" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={stepAway} />
+        {/* A bare ×. Renaming this to "호출 받기" put the fiction on the button,
+            where it read as a feature rather than an exit; the framing belongs in
+            the sheet it opens ("다른 곳에서 호출이 왔어요", and the promise that
+            the conversation is kept). The affordance stays a plain close. */}
+        <Pressable onPress={stepAway} hitSlop={8}>
+          <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
+          <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+            <PixelIcon name="x" color={C} size={15} sw={2} />
+          </View>
+        </Pressable>
         <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
           {!!mission && (
             <>
@@ -296,8 +307,13 @@ export default function DialogueRoute() {
         </PortraitFrame>
       </View>
 
-      {/* QUICK INFO dock — bedside reference tools (차트 / 약물 / 활력) */}
-      <View style={{ position: 'absolute', left: 14, right: 14, top: '41%', flexDirection: 'row', alignItems: 'center', gap: 6, zIndex: 4 }}>
+      {/* QUICK INFO dock — bedside reference tools (차트 / 약물 / 활력).
+          Anchored off the WINDOW height, not a percentage of this container: the
+          KeyboardAvoidingView shrinks the container by the keyboard's height, so
+          `top: '41%'` was 41% of a moving number and the dock rode up with the
+          keyboard. The dialogue box below it is bottom-anchored and SHOULD rise
+          (it holds the input); a bedside reference has no reason to. */}
+      <View style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41, flexDirection: 'row', alignItems: 'center', gap: 6, zIndex: 4 }}>
         <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
         </View>
