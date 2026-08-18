@@ -182,10 +182,57 @@ export interface RouteNode {
   scenarioId?: string; prerequisites?: string[];
 }
 
-export interface WordScore { word: string; accuracy: number; errorType?: string }
+// Syllable/phoneme spans as scored by Azure, in 100-ns ticks from the start of
+// the audio (offset/duration). Both are optional per business-rules R10: an
+// older/degraded response may carry a word's accuracy without this detail.
+export interface SyllableScore { syllable: string; grapheme?: string; accuracy: number; offset?: number; duration?: number }
+export interface PhonemeScore { phoneme: string; accuracy: number; offset?: number; duration?: number }
+export interface WordScore {
+  word: string; accuracy: number; errorType?: string;
+  syllables?: SyllableScore[]; phonemes?: PhonemeScore[];
+}
 export interface PronunciationResult {
   recognized: string; accuracy: number; fluency: number; completeness: number; overall: number;
+  // Prosody (억양) only arrives when Azure scored it (locale + config
+  // dependent) — prosodyAvailable distinguishes "scored 0" from "not scored"
+  // (business-logic-model §2, ScoreBars.tsx).
+  prosody?: number; prosodyAvailable?: boolean;
+  // DurationMS is the recorded clip's length in ms (server computes it from
+  // the WAV it received; Azure's own response does not carry it).
+  durationMs?: number;
   words?: WordScore[];
+  // Only present on POST /pronunciation's response (Task 5): the persisted
+  // attempt's id and its 1-based attempt number for this sentence.
+  attemptId?: string; attemptNo?: number;
+}
+
+// GET /speech/reference?text=… — canonical syllable/phoneme reference for a
+// sentence, TTS-derived and cached globally (business-rules R9). A sentence
+// the server could not derive a reference for comes back as HTTP 200 with an
+// empty object — every field below is absent, not an error.
+export interface SentenceReference {
+  sentenceKey?: string;
+  referenceText?: string;
+  locale?: string;
+  ipa?: string;
+  words?: WordScore[];
+  durationMs?: number;
+}
+
+// One row of GET /speech/attempts?text=…&limit=… (oldest first, business-rules R3).
+export interface SpeechAttemptRow {
+  id?: string;
+  attemptNo?: number;
+  recognized?: string;
+  overall?: number;
+  accuracy?: number;
+  fluency?: number;
+  completeness?: number;
+  prosody?: number;
+  prosodyAvailable?: boolean;
+  durationMs?: number;
+  words?: WordScore[];
+  createdAt?: string;
 }
 
 // A user's growth snapshot (server: GET /me/progress, POST /attempts).
@@ -533,6 +580,22 @@ export const api = {
   async assessPronunciation(referenceText: string, audioBase64: string): Promise<PronunciationResult> {
     const { data } = await http.post('/pronunciation', { referenceText, audioBase64 });
     return data as PronunciationResult;
+  },
+
+  /** Canonical IPA/syllable reference for a sentence (business-rules R9). A
+   *  miss comes back as 200 + `{}` (server business-logic-model §2) rather
+   *  than an error — the caller must treat an empty result as "no reference
+   *  available" (hide the IPA line + native waveform), not retry/fail. */
+  async speechReference(text: string): Promise<SentenceReference> {
+    const { data } = await http.get('/speech/reference', { params: { text } });
+    return (data ?? {}) as SentenceReference;
+  },
+
+  /** Recent attempt history for a sentence, oldest first (business-rules R3:
+   *  the practice screen renders the last 3). */
+  async speechAttempts(text: string, limit = 3): Promise<SpeechAttemptRow[]> {
+    const { data } = await http.get('/speech/attempts', { params: { text, limit } });
+    return (data as SpeechAttemptRow[] | null) ?? [];
   },
 
   /** Full quiz (playable content). GET /quizzes/{id}. */
