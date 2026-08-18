@@ -18,7 +18,7 @@ import * as Google from 'expo-auth-session/providers/google';
 import { completeSocialLogin, signInApple, signInKakao, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured } from '@/lib/auth';
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 // Lets the auth popup redirect back and dismiss the in-app browser.
 WebBrowser.maybeCompleteAuthSession();
@@ -42,7 +42,7 @@ function OneTap({ bg, color, shadow, icon, label, disabled, onPress }: {
       shadowColor: shadow, shadowOffset: { width: pressed ? 0 : 4, height: pressed ? 0 : 4 }, shadowOpacity: 1, shadowRadius: 0,
     })}>
       <View style={{ width: 26, height: 26, alignItems: 'center', justifyContent: 'center' }}>{icon}</View>
-      <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 14, color }}>{label}</Text>
+      <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(14), color }}>{label}</Text>
     </Pressable>
   );
 }
@@ -101,8 +101,8 @@ export default function Login() {
 
       {/* hero wordmark */}
       <View style={{ position: 'absolute', top: 150, left: 0, right: 0, alignItems: 'center' }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 48, color: C, letterSpacing: 3, textShadowColor: colors.yellow, textShadowOffset: { width: 4, height: 4 }, textShadowRadius: 0 }}>forin</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 12 }}>한 번의 탭으로 시작하세요.</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(48), color: C, letterSpacing: 3, textShadowColor: colors.yellow, textShadowOffset: { width: 4, height: 4 }, textShadowRadius: 0 }}>forin</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 12 }}>한 번의 탭으로 시작하세요.</Text>
       </View>
 
       {/* providers — a provider's real (hook-owning) button mounts only when its
@@ -118,14 +118,14 @@ export default function Login() {
             : <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy} onPress={() => notConfigured('카카오')} />}
         </View>
 
-        <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, textAlign: 'center', marginTop: 16, lineHeight: 16 }}>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, textAlign: 'center', marginTop: 16, lineHeight: 16 }}>
           계속 진행하면 <Text style={{ color: C, textDecorationLine: 'underline' }}>이용약관</Text> 및 <Text style={{ color: C, textDecorationLine: 'underline' }}>개인정보처리방침</Text>에{'\n'}동의하는 것으로 간주됩니다.
         </Text>
 
         {/* Dev-only bypass — real provider auth needs a dev build + credentials. */}
         {__DEV__ && (
           <Pressable onPress={() => complete('개발자', devSignIn)} disabled={busy} style={{ marginTop: 14, alignSelf: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textFaint }}>개발자 로그인 (둘러보기)</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textFaint }}>개발자 로그인 (둘러보기)</Text>
           </Pressable>
         )}
       </SafeAreaView>

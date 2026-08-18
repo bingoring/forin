@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -44,11 +44,11 @@ export function CheckQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
             return (
               <Pressable key={i} onPress={() => toggle(i)} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 8, paddingHorizontal: 6, borderBottomWidth: i < items.length - 1 ? 1.5 : 0, borderBottomColor: '#2A252233', borderStyle: 'dotted' }}>
                 <View style={{ width: 19, height: 19, borderWidth: 2.5, borderColor: C, backgroundColor: box, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{(checked ? it.correct : on) ? '✓' : wrong ? '✕' : ''}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{(checked ? it.correct : on) ? '✓' : wrong ? '✕' : ''}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{it.text}</Text>
-                  {!!it.ko && <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, marginTop: 1 }}>{it.ko}</Text>}
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{it.text}</Text>
+                  {!!it.ko && <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 1 }}>{it.ko}</Text>}
                 </View>
               </Pressable>
             );
@@ -59,7 +59,7 @@ export function CheckQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       {checked && <ResultBanner correct={allCorrect} />}
       {checked && !!c.note && (
         <View style={{ marginTop: 10, backgroundColor: colors.cream, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
         </View>
       )}
       {!!c.hint && <HintRow text={c.hint} />}

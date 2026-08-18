@@ -15,7 +15,7 @@ import { signOut } from '@/lib/auth';
 import { earnedBadges } from '@/data/badges';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
 import { ECON, careerFor } from '@/data/economy';
-import { colors, fonts, space, type as t } from '@/theme/tokens';
+import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -183,21 +183,21 @@ export default function Me() {
                 </View>
               </Shadowed>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>RANK</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C }}>{career.label}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>RANK</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C }}>{career.label}</Text>
                 {!!equippedTitle && (
                   <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-                    {iconFor(equippedTitle.emoji) ? <PixelIcon name={iconFor(equippedTitle.emoji)!} color={C} size={13} sw={1.6} /> : <Text style={{ fontSize: 10 }}>{equippedTitle.emoji}</Text>}
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{equippedTitle.name}</Text>
+                    {iconFor(equippedTitle.emoji) ? <PixelIcon name={iconFor(equippedTitle.emoji)!} color={C} size={13} sw={1.6} /> : <Text style={{ fontSize: fs(10) }}>{equippedTitle.emoji}</Text>}
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{equippedTitle.name}</Text>
                   </View>
                 )}
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 2 }}>EN-US · 미국 종합병원</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 2 }}>EN-US · 미국 종합병원</Text>
                 {/* xp bar */}
                 <View style={{ marginTop: 10 }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>LV {level}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>{inLevel} / {ECON.xpPerLevel}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>LV {level + 1}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>LV {level}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>{inLevel} / {ECON.xpPerLevel}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>LV {level + 1}</Text>
                   </View>
                   <View style={{ height: 10, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, marginTop: 3 }}>
                     <View style={{ width: `${(inLevel / ECON.xpPerLevel) * 100}%`, height: '100%', backgroundColor: colors.mint }} />
@@ -227,8 +227,8 @@ export default function Me() {
                 <PixelIcon name="chart" color={C} size={20} sw={1.7} />
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>오늘의 성장 리포트</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 3, opacity: 0.8 }}>Lv.{level} · {xp.toLocaleString()} XP · {streakCurrent}일 연속</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>오늘의 성장 리포트</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 3, opacity: 0.8 }}>Lv.{level} · {xp.toLocaleString()} XP · {streakCurrent}일 연속</Text>
               </View>
               <PixelIcon name="chevron-right" color={C} size={18} sw={2} />
             </View>
@@ -240,16 +240,16 @@ export default function Me() {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <PixelIcon name="handshake" color={C} size={16} sw={1.7} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>내 동료</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>내 동료</Text>
             </View>
             <Pressable onPress={() => router.push('/colleagues')}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{colleagues.length}명 · 전체 ›</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{colleagues.length}명 · 전체 ›</Text>
             </Pressable>
           </View>
           <Shadowed offset={3}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
               {colleagues.length === 0 ? (
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, lineHeight: 17 }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, lineHeight: 17 }}>
                   아직 동료가 없어요. 코드를 주고받아 서로의 학습을 응원해보세요.
                 </Text>
               ) : (
@@ -263,18 +263,18 @@ export default function Me() {
                       <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                         <PixelIcon name="people" color={C} size={22} sw={1.7} />
                       </View>
-                      <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 9, color: C, marginTop: 3 }}>{c.name}</Text>
+                      <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(9), color: C, marginTop: 3 }}>{c.name}</Text>
                     </Pressable>
                   ))}
                 </View>
               )}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 11, borderTopWidth: 2, borderTopColor: C + '22' }}>
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft }}>내 초대 코드</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C, letterSpacing: 2, marginTop: 2 }}>{invite?.code ?? '· · · ·'}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft }}>내 초대 코드</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, letterSpacing: 2, marginTop: 2 }}>{invite?.code ?? '· · · ·'}</Text>
                 </View>
                 <Pressable onPress={() => router.push('/colleagues/add')} style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>+ 추가</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>+ 추가</Text>
                 </Pressable>
               </View>
             </View>
@@ -284,7 +284,7 @@ export default function Me() {
         {/* career path */}
         <Shadowed offset={3}>
           <View style={{ backgroundColor: colors.paper, borderWidth: 3, borderColor: C, padding: 12 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft, marginBottom: 10 }}>CAREER PATH</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, marginBottom: 10 }}>CAREER PATH</Text>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
               {['Learner', 'Junior', 'Senior', 'Head Nurse'].map((s, i) => {
                 const here = i === career.step;
@@ -294,11 +294,11 @@ export default function Me() {
                     <View style={{ alignItems: 'center', width: 52 }}>
                       <Shadowed offset={here ? 3 : 0} shadowColor={colors.yellowShadow}>
                         <View style={{ width: 20, height: 20, borderWidth: 2, borderColor: C, backgroundColor: done || here ? colors.mint : '#fff', alignItems: 'center', justifyContent: 'center' }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{done ? '✓' : i + 1}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{done ? '✓' : i + 1}</Text>
                         </View>
                       </Shadowed>
-                      <Text style={{ fontFamily: fonts.body, fontSize: 8, color: done || here ? C : colors.textFaint, marginTop: 4, textAlign: 'center' }}>{s}</Text>
-                      {here && <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: colors.yellowShadow, marginTop: 1 }}>● HERE</Text>}
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: done || here ? C : colors.textFaint, marginTop: 4, textAlign: 'center' }}>{s}</Text>
+                      {here && <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: colors.yellowShadow, marginTop: 1 }}>● HERE</Text>}
                     </View>
                     {i < 3 && <View style={{ flex: 1, height: 2, backgroundColor: done ? colors.mint : '#2A252233', marginTop: 9 }} />}
                   </View>
@@ -313,9 +313,9 @@ export default function Me() {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <PixelIcon name="medal" color={C} size={16} sw={1.6} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>커리어 뱃지</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>커리어 뱃지</Text>
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{gotCount} / {BADGE_TOTAL}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{gotCount} / {BADGE_TOTAL}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {badges.map((b, i) => {
@@ -331,11 +331,11 @@ export default function Me() {
               return (
                 <Shadowed key={i} offset={b.got ? 3 : 0} shadowColor={b.special ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
                   <Pressable onPress={open} style={{ aspectRatio: 1, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
-                    {ic ? <PixelIcon name={ic} color={iconColor} size={24} /> : <Text style={{ fontSize: 22, opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>}
-                    <Text style={{ fontFamily: fonts.body, fontSize: 8, color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
+                    {ic ? <PixelIcon name={ic} color={iconColor} size={24} /> : <Text style={{ fontSize: fs(22), opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>}
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
                     {b.got && b.special && (
                       <View style={{ position: 'absolute', top: -4, right: -4, backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 3 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: '#fff' }}>NEW</Text>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: '#fff' }}>NEW</Text>
                       </View>
                     )}
                   </Pressable>
@@ -350,9 +350,9 @@ export default function Me() {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <PixelIcon name="tag" color={C} size={16} sw={1.6} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>칭호</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>칭호</Text>
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
           </View>
           <View style={{ gap: 8 }}>
             {titles.map((tt) => {
@@ -360,13 +360,13 @@ export default function Me() {
               return (
                 <Shadowed key={tt.id} offset={tt.got ? 3 : 0} shadowColor={isEq ? colors.yellowShadow : C + '33'}>
                   <Pressable onPress={() => openTitle(tt.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream, borderWidth: isEq ? 3 : 2, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
-                    {iconFor(tt.emoji) ? <PixelIcon name={iconFor(tt.emoji)!} color={tt.got ? C : colors.textFaint} size={24} /> : <Text style={{ fontSize: 22, opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
+                    {iconFor(tt.emoji) ? <PixelIcon name={iconFor(tt.emoji)!} color={tt.got ? C : colors.textFaint} size={24} /> : <Text style={{ fontSize: fs(22), opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
                     <View style={{ flex: 1 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: tt.got ? C : colors.textFaint }}>{tt.got ? tt.name : '???'}{''}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>{tt.got ? tt.desc : tt.how}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: tt.got ? C : colors.textFaint }}>{tt.got ? tt.name : '???'}{''}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{tt.got ? tt.desc : tt.how}</Text>
                     </View>
                     {isEq
-                      ? <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>장착</Text></View>
+                      ? <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>장착</Text></View>
                       : tt.got && <PixelIcon name="chevron-right" color={C} size={16} sw={2} />}
                   </Pressable>
                 </Shadowed>
@@ -380,9 +380,9 @@ export default function Me() {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <PixelIcon name="search" color={C} size={16} sw={1.6} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>히든 미션</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>히든 미션</Text>
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{foundIds.size} / {MISSIONS.length}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{foundIds.size} / {MISSIONS.length}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {MISSIONS.map((m) => {
@@ -391,7 +391,7 @@ export default function Me() {
                 <Shadowed key={m.id} offset={done ? 3 : 0} shadowColor={done ? colors.mintShadow : C + '33'} style={{ width: '31.5%' }}>
                   <Pressable onPress={() => openMission(m.id)} style={{ aspectRatio: 1, borderWidth: done ? 3 : 2, borderColor: C, backgroundColor: done ? colors.mint : colors.cream, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 }}>
                     <PixelIcon name={done ? 'burst' : 'question'} color={done ? C : colors.textFaint} size={24} />
-                    <Text style={{ fontFamily: fonts.body, fontSize: 8, color: done ? C : colors.textFaint, marginTop: 3, textAlign: 'center' }}>{done ? m.name : '???'}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: done ? C : colors.textFaint, marginTop: 3, textAlign: 'center' }}>{done ? m.name : '???'}</Text>
                   </Pressable>
                 </Shadowed>
               );
@@ -408,14 +408,14 @@ export default function Me() {
                   <PixelIcon name="note" color={C} size={22} sw={1.7} />
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>리뷰랩 · 오답노트</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 변환됐어요.</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>리뷰랩 · 오답노트</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 변환됐어요.</Text>
                 </View>
               </View>
               {/* corrected-phrase example box */}
               <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textFaint, textDecorationLine: 'line-through' }}>I want to ask about your pain.</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 2 }}>→ <Text style={{ backgroundColor: colors.mint }}>Can you tell me about your pain?</Text></Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textFaint, textDecorationLine: 'line-through' }}>I want to ask about your pain.</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>→ <Text style={{ backgroundColor: colors.mint }}>Can you tell me about your pain?</Text></Text>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
                 <PixelButton icon="chevron-right" label="리뷰랩 열기" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={5} paddingH={10} onPress={() => router.push('/lab')} />
@@ -428,7 +428,7 @@ export default function Me() {
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
             <PixelIcon name="lock" color={C} size={16} sw={1.6} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>계정</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>계정</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
             <Pressable
@@ -437,8 +437,8 @@ export default function Me() {
               style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12, opacity: signingOut ? 0.6 : 1 }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>로그아웃</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>이 기기에서 로그아웃하고 로그인 화면으로 돌아가요.</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>로그아웃</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>이 기기에서 로그아웃하고 로그인 화면으로 돌아가요.</Text>
               </View>
               {signingOut
                 ? <ActivityIndicator color={C} />
@@ -453,9 +453,9 @@ export default function Me() {
         <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 28, alignItems: 'center', paddingHorizontal: 18 }}>
           <Shadowed offset={4} shadowColor={colors.yellowShadow}>
             <View style={{ backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 18, alignItems: 'center', minWidth: 260 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>히든 미션 발견!</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, marginTop: 4 }}>{toast.name}</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 4 }}>보상: {toast.reward}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>히든 미션 발견!</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, marginTop: 4 }}>{toast.name}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 4 }}>보상: {toast.reward}</Text>
             </View>
           </Shadowed>
         </View>
@@ -470,11 +470,11 @@ function RepRow({ label, value, color }: { label: string; value: number; color: 
   const pct = Math.max(0, Math.min(100, value));
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 5 }}>
-      <Text style={{ width: 78, fontFamily: fonts.body, fontSize: 11, color: C }}>{label}</Text>
+      <Text style={{ width: 78, fontFamily: fonts.body, fontSize: fs(11), color: C }}>{label}</Text>
       <View style={{ flex: 1, height: 12, backgroundColor: colors.cream, borderWidth: 2, borderColor: C }}>
         <View style={{ width: `${pct}%`, height: '100%', backgroundColor: color }} />
       </View>
-      <Text style={{ width: 34, textAlign: 'right', fontFamily: fonts.heading, fontSize: 11, color: C }}>{pct}%</Text>
+      <Text style={{ width: 34, textAlign: 'right', fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{pct}%</Text>
     </View>
   );
 }

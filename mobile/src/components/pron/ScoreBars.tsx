@@ -6,7 +6,7 @@
 // would tell the learner their intonation failed when it was never measured —
 // the row is dropped instead, leaving two bars.
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 type Props = {
   accuracy: number;
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   wrap: { flex: 1, minWidth: 0 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 7 },
   gap: { marginBottom: 6 },
-  label: { fontFamily: fonts.heading, fontSize: 9.5, color: colors.ink, width: 34 },
+  label: { fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.ink, width: 34 },
   track: {
     flex: 1,
     height: 8,
@@ -54,5 +54,5 @@ const styles = StyleSheet.create({
     borderColor: colors.ink,
   },
   fill: { position: 'absolute', left: 0, top: 0, bottom: 0, backgroundColor: colors.ink },
-  value: { fontFamily: fonts.heading, fontSize: 9.5, color: colors.ink, width: 18, textAlign: 'right' },
+  value: { fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.ink, width: 18, textAlign: 'right' },
 });

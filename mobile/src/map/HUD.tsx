@@ -2,7 +2,7 @@
 // button. A is enabled only when the player is on/next to an interactable; its
 // label shows what A will do.
 import { Pressable, Text, View } from 'react-native';
-import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
+import { border, colors, fonts, type as typeScale, fs } from '@/theme/tokens';
 import type { Dir } from '@engine';
 import { PixelIcon } from '@/components/PixelIcon';
 
@@ -109,7 +109,7 @@ export function HUD({
               borderWidth: border.card,
             }}
           >
-            <Text style={{ fontFamily: fonts.heading, fontSize: 24, color: canAct ? colors.ink : colors.textFaint }}>A</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(24), color: canAct ? colors.ink : colors.textFaint }}>A</Text>
           </Pressable>
         </View>
       </View>

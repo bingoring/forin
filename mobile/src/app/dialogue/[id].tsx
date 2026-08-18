@@ -18,7 +18,7 @@ import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -176,7 +176,7 @@ export default function DialogueRoute() {
     return (
       <View style={{ flex: 1, backgroundColor: '#1F2937', alignItems: 'center', justifyContent: 'center', gap: 16, padding: 24 }}>
         <Stack.Screen options={{ headerShown: false }} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: '#fff' }}>대화를 시작하지 못했습니다</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff' }}>대화를 시작하지 못했습니다</Text>
         <PixelButton label="‹ 돌아가기" onPress={() => router.back()} />
       </View>
     );
@@ -200,11 +200,11 @@ export default function DialogueRoute() {
             <>
               <Shadowed offset={2}>
                 <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>MISSION 1/{Math.max(1, goals.length)}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>MISSION 1/{Math.max(1, goals.length)}</Text>
                 </View>
               </Shadowed>
               <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, textAlign: 'right', lineHeight: 14 }}>{mission}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, textAlign: 'right', lineHeight: 14 }}>{mission}</Text>
               </View>
             </>
           )}
@@ -232,15 +232,15 @@ export default function DialogueRoute() {
       {/* QUICK INFO dock — bedside reference tools (차트 / 약물 / 활력) */}
       <View style={{ position: 'absolute', left: 14, right: 14, top: '41%', flexDirection: 'row', alignItems: 'center', gap: 6, zIndex: 4 }}>
         <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C, opacity: 0.75 }}>QUICK INFO</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
         </View>
         <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
         {([['chart', 'clipboard', '차트'], ['meds', 'pill', '약물'], ['vitals', 'stethoscope', '활력']] as const).map(([k, icon, label]) => (
           <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
             <Shadowed offset={2}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontSize: 13 }}>{icon}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{label}</Text>
+                <Text style={{ fontSize: fs(13) }}>{icon}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{label}</Text>
               </View>
             </Shadowed>
           </Pressable>
@@ -254,8 +254,8 @@ export default function DialogueRoute() {
             <Shadowed offset={5}>
               <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{tool === 'chart' ? '환자 차트' : tool === 'meds' ? '투약 정보' : '활력징후'}</Text>
-                  <Pressable onPress={() => setTool(null)}><Text style={{ fontFamily: fonts.heading, fontSize: 14, color: colors.textSoft }}>✕</Text></Pressable>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{tool === 'chart' ? '환자 차트' : tool === 'meds' ? '투약 정보' : '활력징후'}</Text>
+                  <Pressable onPress={() => setTool(null)}><Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.textSoft }}>✕</Text></Pressable>
                 </View>
                 <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
               </View>
@@ -270,7 +270,7 @@ export default function DialogueRoute() {
         <View style={{ alignSelf: 'flex-start', marginLeft: 12 }}>
           <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
           <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{npcName} · {roleKo(kind)}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleKo(kind)}</Text>
           </View>
         </View>
 
@@ -278,20 +278,20 @@ export default function DialogueRoute() {
         <Shadowed offset={4}>
           <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingHorizontal: 16, paddingTop: 14, paddingBottom: 12, minHeight: 76 }}>
             {npcLine ? (
-              <Text style={{ fontFamily: fonts.body, fontSize: 14, color: C, lineHeight: 22 }}>{showKo && npcLineKo ? npcLineKo : npcLine}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(14), color: C, lineHeight: 22 }}>{showKo && npcLineKo ? npcLineKo : npcLine}</Text>
             ) : (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <ActivityIndicator color={C} size="small" />
-                <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>{npcName} 응답 중…</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>{npcName} 응답 중…</Text>
               </View>
             )}
             {/* translate row — available for scripted lines that carry a Korean translation */}
             {!!npcLine && !!npcLineKo && (
               <View style={{ marginTop: 10, paddingTop: 10, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 14 }}>{showKo ? '원문 English' : '한국어 번역'}</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>{showKo ? '원문 English' : '한국어 번역'}</Text>
                 <Pressable onPress={() => setShowKo((v) => !v)}>
                   <View style={{ backgroundColor: showKo ? colors.yellow : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{showKo ? '원문 보기' : 'tap to 번역'}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{showKo ? '원문 보기' : 'tap to 번역'}</Text>
                   </View>
                 </Pressable>
               </View>
@@ -315,11 +315,11 @@ export default function DialogueRoute() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
               <Shadowed offset={2}>
                 <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>HINT ON</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>HINT ON</Text>
                 </View>
               </Shadowed>
               <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
-              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.cream, opacity: 0.85 }}>{scenario.keyPhrases.length}가지 추천 답변</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.cream, opacity: 0.85 }}>{scenario.keyPhrases.length}가지 추천 답변</Text>
             </View>
             <View style={{ gap: 8 }}>
               {scenario.keyPhrases.map((phrase, i) => {
@@ -333,7 +333,7 @@ export default function DialogueRoute() {
         {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
         {!hintOn && (
           <View style={{ marginTop: 14 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? '듣는 중… (마이크 탭하면 완료)' : rec === 'transcribing' ? '받아쓰는 중…' : 'SPEAK FREELY · 마이크를 눌러 말하기'}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? '듣는 중… (마이크 탭하면 완료)' : rec === 'transcribing' ? '받아쓰는 중…' : 'SPEAK FREELY · 마이크를 눌러 말하기'}</Text>
             <Shadowed offset={3}>
               <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <Pressable onPress={toggleMic} disabled={pending}>
@@ -342,7 +342,7 @@ export default function DialogueRoute() {
                       {rec === 'transcribing'
                         ? <ActivityIndicator color={C} size="small" />
                         : rec === 'recording'
-                          ? <Text style={{ fontSize: 16 }}>■</Text>
+                          ? <Text style={{ fontSize: fs(16) }}>■</Text>
                           : <PixelIcon name="mic" color={C} size={18} sw={1.8} />}
                     </View>
                   </Shadowed>
@@ -353,7 +353,7 @@ export default function DialogueRoute() {
                   editable={!pending && rec === 'idle'}
                   placeholder={rec === 'recording' ? '말한 뒤 마이크를 다시 누르세요…' : '자유롭게 영어로 답하거나 마이크로 말해보세요…'}
                   placeholderTextColor={colors.textFaint}
-                  style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, paddingVertical: 4 }}
+                  style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C, paddingVertical: 4 }}
                   onSubmitEditing={send}
                   returnKeyType="send"
                   multiline
@@ -372,7 +372,7 @@ export default function DialogueRoute() {
             <PixelButton icon="bulb" label="힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
             {hintOn && (
               <View style={{ position: 'absolute', top: -6, right: -6, width: 14, height: 14, backgroundColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.yellow }}>●</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.yellow }}>●</Text>
               </View>
             )}
           </View>
@@ -427,13 +427,13 @@ function PortraitFrame({ children, name, status, hue, sweat }: { children: React
       )}
       <Shadowed offset={2} style={{ marginTop: 6, alignSelf: 'flex-start' }}>
         <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{name}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{name}</Text>
         </View>
       </Shadowed>
       {!!status && (
         <Shadowed offset={2} style={{ marginTop: 4, alignSelf: 'flex-start' }}>
           <View style={{ backgroundColor: '#EF4444', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{status}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{status}</Text>
           </View>
         </Shadowed>
       )}
@@ -450,12 +450,12 @@ function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text
     <Shadowed offset={suggested ? 3 : 2} shadowColor={shadow}>
       <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
         <View style={{ width: 28, backgroundColor: tabBg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{num}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{num}</Text>
         </View>
         <View style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 10 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{text}</Text>
-          {suggested && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.mintShadow, marginTop: 3 }}>AI 추천 · 미션 진행</Text>}
-          {risky && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#B91C1C', marginTop: 3 }}>평판 −2 위험</Text>}
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>{text}</Text>
+          {suggested && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.mintShadow, marginTop: 3 }}>AI 추천 · 미션 진행</Text>}
+          {risky && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#B91C1C', marginTop: 3 }}>평판 −2 위험</Text>}
         </View>
       </Pressable>
     </Shadowed>
@@ -477,13 +477,13 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
       <View style={{ gap: 6 }}>
         {rows.map(([k, v], i) => (
           <View key={i} style={{ flexDirection: 'row', gap: 8 }}>
-            <Text style={{ width: 68, fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft }}>{k}</Text>
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{v}</Text>
+            <Text style={{ width: 68, fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft }}>{k}</Text>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>{v}</Text>
           </View>
         ))}
         {!!(chart?.notes || brief) && (
           <View style={{ marginTop: 4, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252244', borderStyle: 'dashed', padding: 8 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>{chart?.notes || brief}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{chart?.notes || brief}</Text>
           </View>
         )}
       </View>
@@ -491,13 +491,13 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   }
   if (tool === 'meds') {
     const meds = chart?.meds ?? [];
-    if (meds.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요.</Text>;
+    if (meds.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요.</Text>;
     return (
       <View style={{ gap: 6 }}>
         {meds.map((m, i) => (
           <View key={i} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
             <PixelIcon name="pill" color={C} size={14} sw={1.8} />
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{m}</Text>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>{m}</Text>
           </View>
         ))}
       </View>
@@ -505,14 +505,14 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   }
   // vitals
   const vitals = chart?.vitals ?? [];
-  if (vitals.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요.</Text>;
+  if (vitals.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요.</Text>;
   return (
     <View style={{ flexDirection: 'row', gap: 6 }}>
       {vitals.map((v, i) => (
         <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FEE2E2' : colors.paper, borderWidth: 1.5, borderColor: C, paddingVertical: 6, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft }}>{v.label}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
-          {!!v.unit && <Text style={{ fontFamily: fonts.body, fontSize: 8, color: colors.textSoft, marginTop: 1 }}>{v.unit}</Text>}
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>{v.label}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
+          {!!v.unit && <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: colors.textSoft, marginTop: 1 }}>{v.unit}</Text>}
         </View>
       ))}
     </View>

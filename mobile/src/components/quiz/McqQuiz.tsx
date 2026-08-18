@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -29,9 +29,9 @@ export function McqQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDeta
       {!!scene && (
         <View style={{ backgroundColor: C, borderWidth: 3, borderColor: C, padding: 12, marginBottom: 13, position: 'relative' }}>
           <View style={{ position: 'absolute', top: -7, left: 10, backgroundColor: colors.peach, borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>SCENE</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>SCENE</Text>
           </View>
-          <Text style={{ fontFamily: fonts.body, fontSize: 12.5, color: colors.cream, lineHeight: 19 }}>{scene}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(12.5), color: colors.cream, lineHeight: 19 }}>{scene}</Text>
         </View>
       )}
 
@@ -47,11 +47,11 @@ export function McqQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDeta
             <Shadowed key={i} offset={2} shadowColor={showRight ? colors.mintShadow : showWrong ? '#EF4444' : C}>
               <Pressable onPress={() => !checked && setPicked(i)} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: bg, borderWidth: 2.5, borderColor: C, padding: 9 }}>
                 <View style={{ width: 20, height: 20, backgroundColor: isPicked || showRight || showWrong ? C : colors.paper, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: C }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: isPicked || showRight || showWrong ? '#fff' : C }}>{mark}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: isPicked || showRight || showWrong ? '#fff' : C }}>{mark}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12.5, color: C, lineHeight: 17 }}>{o.text}</Text>
-                  {!!o.ko && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>{o.ko}</Text>}
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C, lineHeight: 17 }}>{o.text}</Text>
+                  {!!o.ko && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{o.ko}</Text>}
                 </View>
               </Pressable>
             </Shadowed>
@@ -62,7 +62,7 @@ export function McqQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDeta
       {checked && !!c.note && (
         <Shadowed offset={2} shadowColor={colors.mintShadow} style={{ marginTop: 12 }}>
           <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 10.5, color: C, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading }}>왜? </Text>{c.note}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: C, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading }}>왜? </Text>{c.note}</Text>
           </View>
         </Shadowed>
       )}

@@ -7,7 +7,7 @@ import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -64,7 +64,7 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
           : (
             <>
               <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>
                   선택: {sel ? <Text style={{ color: LEVELS[sel - 1].color }}>LV {sel}</Text> : <Text style={{ color: colors.textFaint }}>—</Text>}
                 </Text>
               </View>
@@ -81,18 +81,18 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
         <Shadowed offset={3}>
           <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 10, paddingTop: 14 }}>
             <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: '#DC2626', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>PATIENT CASE</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>PATIENT CASE</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
               <View style={{ width: 56, height: 64, backgroundColor: colors.peach, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center', padding: 4 }}>
                 <PatientHeadPixel />
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{p.age} y / {p.sex}</Text>
-                {!!p.arrival && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>{p.arrival}</Text>}
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{p.age} y / {p.sex}</Text>
+                {!!p.arrival && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{p.arrival}</Text>}
                 {!!p.cc && (
                   <View style={{ marginTop: 5, backgroundColor: colors.cream, borderWidth: 1.5, borderColor: C, paddingVertical: 4, paddingHorizontal: 6 }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, lineHeight: 15 }}>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, lineHeight: 15 }}>
                       <Text style={{ fontFamily: fonts.heading, backgroundColor: colors.yellow }}>CC. </Text>"{p.cc}"
                     </Text>
                   </View>
@@ -104,9 +104,9 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
               <View style={{ flexDirection: 'row', gap: 4, marginTop: 8 }}>
                 {p.vitals.map((v, i) => (
                   <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FEE2E2' : colors.paper, borderWidth: 1.5, borderColor: C, paddingVertical: 4, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft }}>{v.label}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
-                    {!!v.unit && <Text style={{ fontFamily: fonts.body, fontSize: 8, color: colors.textSoft, marginTop: 1 }}>{v.unit}</Text>}
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>{v.label}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
+                    {!!v.unit && <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: colors.textSoft, marginTop: 1 }}>{v.unit}</Text>}
                   </View>
                 ))}
               </View>
@@ -116,7 +116,7 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
                 {p.obs.map((o, i) => (
                   <View key={i} style={{ backgroundColor: o.warn ? '#DC2626' : '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5, paddingVertical: 2 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: o.warn ? '#fff' : C }}>{o.text}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: o.warn ? '#fff' : C }}>{o.text}</Text>
                   </View>
                 ))}
               </View>
@@ -140,21 +140,21 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
                 style={{ flexDirection: 'row', alignItems: 'stretch', backgroundColor: showWrong ? '#FEE2E2' : active ? l.color + '22' : '#fff', borderWidth: 2.5, borderColor: active ? l.color : showWrong ? '#DC2626' : C }}
               >
                 <View style={{ width: 38, backgroundColor: l.color, alignItems: 'center', justifyContent: 'center', borderRightWidth: 2.5, borderRightColor: C }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 20, color: '#fff' }}>{l.n}</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: '#fff' }}>LV</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(20), color: '#fff' }}>{l.n}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: '#fff' }}>LV</Text>
                 </View>
                 <View style={{ flex: 1, paddingVertical: 6, paddingHorizontal: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{l.name}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft }}>{l.time}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{l.name}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>{l.time}</Text>
                 </View>
                 {(showCorrect || (selected && !checked)) && (
                   <View style={{ justifyContent: 'center', paddingHorizontal: 8 }}>
                     <View style={{ backgroundColor: l.color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 6, paddingVertical: 1 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{showCorrect ? '✓ 정답' : '✓ 선택'}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{showCorrect ? '✓ 정답' : '✓ 선택'}</Text>
                     </View>
                   </View>
                 )}
-                {showWrong && <View style={{ justifyContent: 'center', paddingHorizontal: 10 }}><Text style={{ fontFamily: fonts.heading, fontSize: 12, color: '#DC2626' }}>✗</Text></View>}
+                {showWrong && <View style={{ justifyContent: 'center', paddingHorizontal: 10 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: '#DC2626' }}>✗</Text></View>}
               </Pressable>
             </Shadowed>
           );
@@ -165,19 +165,19 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
       {checked && (
         <View style={{ marginTop: 12 }}>
           <View style={{ backgroundColor: isRight ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{isRight ? '✓ 정확한 판정이에요!' : `✗ 정답은 LV ${correct} 예요. 근거를 확인하세요.`}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{isRight ? '✓ 정확한 판정이에요!' : `✗ 정답은 LV ${correct} 예요. 근거를 확인하세요.`}</Text>
           </View>
           {!!c.reasoning?.length && (
             <View style={{ marginTop: 10 }}>
               <Shadowed offset={2}>
                 <View style={{ backgroundColor: '#FFF7ED', borderWidth: 2, borderColor: C, padding: 10, paddingTop: 14 }}>
                   <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#F97316', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>WHY LV {correct}?</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>WHY LV {correct}?</Text>
                   </View>
                   {c.reasoning.map((r, i) => (
                     <View key={i} style={{ flexDirection: 'row', gap: 5, marginBottom: 3 }}>
-                      <Text style={{ width: 14, fontFamily: fonts.heading, fontSize: 10, color: r.kind === 'ok' ? '#16A34A' : r.kind === 'bad' ? '#DC2626' : C }}>{r.kind === 'ok' ? '✓' : r.kind === 'bad' ? '✗' : ''}</Text>
-                      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C, lineHeight: 15, textDecorationLine: r.kind === 'bad' ? 'line-through' : 'none' }}>{r.text}</Text>
+                      <Text style={{ width: 14, fontFamily: fonts.heading, fontSize: fs(10), color: r.kind === 'ok' ? '#16A34A' : r.kind === 'bad' ? '#DC2626' : C }}>{r.kind === 'ok' ? '✓' : r.kind === 'bad' ? '✗' : ''}</Text>
+                      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C, lineHeight: 15, textDecorationLine: r.kind === 'bad' ? 'line-through' : 'none' }}>{r.text}</Text>
                     </View>
                   ))}
                 </View>
@@ -217,7 +217,7 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
-      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 우선순위 (1 = 가장 급함) ━</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 우선순위 (1 = 가장 급함) ━</Text>
       <View style={{ gap: 6 }}>
         {cards.map((_, slot) => {
           const ci = placed[slot];
@@ -227,15 +227,15 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
           return (
             <View key={slot} style={{ flexDirection: 'row', alignItems: 'stretch', gap: 6 }}>
               <View style={{ width: 30, backgroundColor: RANK_COLOR[slot] ?? '#94A3B8', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: '#fff' }}>{slot + 1}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: '#fff' }}>{slot + 1}</Text>
               </View>
               {card ? (
                 <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, backgroundColor: ok ? colors.mint : bad ? '#FEE2E2' : '#fff', borderWidth: 2, borderColor: C, justifyContent: 'center', paddingHorizontal: 8, paddingVertical: 7 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 15 }}>{card.text}{checked ? (ok ? '  ✓' : '  ✕') : ''}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 15 }}>{card.text}{checked ? (ok ? '  ✓' : '  ✕') : ''}</Text>
                 </Pressable>
               ) : (
                 <View style={{ flex: 1, borderWidth: 2, borderColor: '#2A252255', borderStyle: 'dashed', padding: 10 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textFaint }}>비어 있음</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textFaint }}>비어 있음</Text>
                 </View>
               )}
             </View>
@@ -244,12 +244,12 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
       </View>
       {inBank.length > 0 && (
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 환자 카드 ━</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 환자 카드 ━</Text>
           <View style={{ gap: 6 }}>
             {inBank.map((ci) => (
               <Shadowed key={ci} offset={2}>
                 <Pressable onPress={() => !checked && setPlaced([...placed, ci])} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 15 }}>{cards[ci].text}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 15 }}>{cards[ci].text}</Text>
                 </Pressable>
               </Shadowed>
             ))}

@@ -8,7 +8,7 @@ import { Stack, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { FLAGS } from '@/components/onboardingArt';
 import { loadDraft, saveDraft } from '@/lib/onboardingDraft';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 const NATIVE = [
@@ -46,13 +46,13 @@ export default function Locale() {
       <Stack.Screen options={{ headerShown: false }} />
       <OnbTopBar title="LANGUAGE" step="1/4" onBack={() => router.replace('/login')} />
       <ScrollView contentContainerStyle={{ padding: 22, paddingBottom: 40 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 21, color: C, lineHeight: 30 }}>어디서 오셨나요?</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 6, marginBottom: 20 }}>앱이 사용할 모국어를 골라주세요.</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(21), color: C, lineHeight: 30 }}>어디서 오셨나요?</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 6, marginBottom: 20 }}>앱이 사용할 모국어를 골라주세요.</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
           {NATIVE.map((o) => <LocaleCard key={o.code} {...o} selected={native === o.code} onPress={() => setNative(o.code)} />)}
         </View>
 
-        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 28, marginBottom: 12 }}>⇨ 어디로 가시나요?</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 28, marginBottom: 12 }}>⇨ 어디로 가시나요?</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
           {DEST.map((o) => <LocaleCard key={o.code} {...o} selected={dest === o.code} onPress={() => setDest(o.code)} />)}
         </View>
@@ -74,12 +74,12 @@ function LocaleCard({ flag, name, sub, selected, onPress }: { flag: string; name
           {Flag ? <Flag size={38} /> : null}
           {selected && (
             <View style={{ marginLeft: 'auto', width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>✓</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>✓</Text>
             </View>
           )}
         </View>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C }}>{name}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 4 }}>{sub}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{name}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 4 }}>{sub}</Text>
       </Pressable>
     </Shadowed>
   );
@@ -88,9 +88,9 @@ function LocaleCard({ flag, name, sub, selected, onPress }: { flag: string; name
 export function OnbTopBar({ title, step, onBack }: { title: string; step: string; onBack: () => void }) {
   return (
     <View style={{ paddingTop: 52, paddingHorizontal: 18, paddingBottom: 6, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-      <Pressable onPress={onBack} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: 20, color: C }}>‹</Text></Pressable>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{title}</Text>
-      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, width: 28, textAlign: 'right' }}>{step}</Text>
+      <Pressable onPress={onBack} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: fs(20), color: C }}>‹</Text></Pressable>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{title}</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, width: 28, textAlign: 'right' }}>{step}</Text>
     </View>
   );
 }

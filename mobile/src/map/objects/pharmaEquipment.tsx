@@ -10,6 +10,7 @@ import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import type { MapObject } from '@engine';
+import { fs } from '@/theme/tokens';
 
 const C = '#2A2522';
 const S = TILE / 16;
@@ -48,7 +49,7 @@ export function CounterSign({ x, y, text = '', color = '#10B981' }: { x: number;
     <Box x={x} y={y} offY={-14} w={16} h={20} z={3}>
       <View style={{ alignItems: 'center' }}>
         <View style={{ backgroundColor: color, borderWidth: 2, borderColor: C, paddingHorizontal: 4, paddingVertical: 1 }}>
-          <Text style={{ fontFamily: FONT, fontSize: 8, color: C }}>{text}</Text>
+          <Text style={{ fontFamily: FONT, fontSize: fs(8), color: C }}>{text}</Text>
         </View>
         <View style={{ width: 2, height: 8, backgroundColor: C }} />
       </View>
@@ -61,7 +62,7 @@ export function ShelfLabel({ x, y, text = '', warn = false }: { x: number; y: nu
   return (
     <Box x={x} y={y} offX={2} offY={-9} w={80} h={12} z={4}>
       <View style={{ alignSelf: 'flex-start', backgroundColor: warn ? '#DC2626' : '#1F2937', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-        <Text style={{ fontFamily: FONT, fontSize: 6, color: warn ? '#fff' : '#FACC15' }}>{text}</Text>
+        <Text style={{ fontFamily: FONT, fontSize: fs(6), color: warn ? '#fff' : '#FACC15' }}>{text}</Text>
       </View>
     </Box>
   );
@@ -72,7 +73,7 @@ export function FloorTape({ x, y, w = 12, text = '' }: { x: number; y: number; w
   return (
     <Box x={x} y={y} w={w * 16} h={12}>
       <View style={{ flex: 1, backgroundColor: '#FACC15', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={{ fontFamily: FONT, fontSize: 7, color: C, letterSpacing: 1 }} numberOfLines={1}>{text}</Text>
+        <Text style={{ fontFamily: FONT, fontSize: fs(7), color: C, letterSpacing: 1 }} numberOfLines={1}>{text}</Text>
       </View>
     </Box>
   );
@@ -87,8 +88,8 @@ export function WallPhone({ x, y, ringing = false }: { x: number; y: number; rin
       <View style={{ position: 'absolute', left: 4, top: 18, width: 24, height: 16, backgroundColor: '#6B7280', borderWidth: 1, borderColor: '#00000088' }} />
       {ringing ? (
         <>
-          <Text style={{ position: 'absolute', top: -10, left: -6, fontFamily: FONT, fontSize: 9, color: '#EF4444' }}>♪</Text>
-          <Text style={{ position: 'absolute', top: -10, right: -6, fontFamily: FONT, fontSize: 9, color: '#EF4444' }}>♫</Text>
+          <Text style={{ position: 'absolute', top: -10, left: -6, fontFamily: FONT, fontSize: fs(9), color: '#EF4444' }}>♪</Text>
+          <Text style={{ position: 'absolute', top: -10, right: -6, fontFamily: FONT, fontSize: fs(9), color: '#EF4444' }}>♫</Text>
         </>
       ) : null}
     </Box>

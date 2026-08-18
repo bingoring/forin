@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Text, useWindowDimensions, View } from 'react-native';
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { PixelIcon } from '@/components/PixelIcon';
+import { fs } from '@/theme/tokens';
 
 const INK = '#2A2522';
 
@@ -94,18 +95,18 @@ export function DoorReveal({
       {/* LED floor readout above the seam */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', zIndex: 3 }} pointerEvents="none">
         <View style={{ backgroundColor: '#0F1A24', borderWidth: 3, borderColor: INK, paddingHorizontal: 18, paddingVertical: 10, minWidth: 148, alignItems: 'center', shadowColor: INK, shadowOffset: { width: 4, height: 4 }, shadowOpacity: 1, shadowRadius: 0 }}>
-          <Text style={{ fontFamily: 'DungGeunMo', fontSize: 9, color: '#64748B', letterSpacing: 2 }}>{arrived ? 'ARRIVED · 도착' : 'RIDING · 이동 중'}</Text>
+          <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(9), color: '#64748B', letterSpacing: 2 }}>{arrived ? 'ARRIVED · 도착' : 'RIDING · 이동 중'}</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             {arrived ? (
-              <Text style={{ fontFamily: 'DungGeunMo', fontSize: 40, lineHeight: 46, color: '#4ADE80' }}>›‹</Text>
+              <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(40), lineHeight: 46, color: '#4ADE80' }}>›‹</Text>
             ) : arrowDir ? (
               <PixelIcon name={arrowDir === 'up' ? 'chevron-up' : 'chevron-down'} color="#22D3EE" size={34} sw={2.4} />
             ) : (
-              <Text style={{ fontFamily: 'DungGeunMo', fontSize: 40, lineHeight: 46, color: '#22D3EE' }}>·</Text>
+              <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(40), lineHeight: 46, color: '#22D3EE' }}>·</Text>
             )}
-            <Text style={{ fontFamily: 'DungGeunMo', fontSize: 40, lineHeight: 46, color: arrived ? '#4ADE80' : '#22D3EE' }}>{dispLabel}</Text>
+            <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(40), lineHeight: 46, color: arrived ? '#4ADE80' : '#22D3EE' }}>{dispLabel}</Text>
           </View>
-          {dept ? <Text style={{ fontFamily: 'DungGeunMo', fontSize: 11, color: '#CBD5E1' }}>{dept}</Text> : null}
+          {dept ? <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(11), color: '#CBD5E1' }}>{dept}</Text> : null}
         </View>
       </View>
 

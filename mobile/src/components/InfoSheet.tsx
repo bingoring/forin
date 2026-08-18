@@ -3,7 +3,7 @@
 // status chip (획득/잠김), and a short "무엇인지 / 어떻게 얻는지" body.
 import type { ReactNode } from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 
 const C = colors.ink;
@@ -30,13 +30,13 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
 
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
             <View style={{ width: 64, height: 64, backgroundColor: data?.iconBg || '#fff', borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              {data?.iconNode ?? <Text style={{ fontSize: 34 }}>{data?.icon}</Text>}
+              {data?.iconNode ?? <Text style={{ fontSize: fs(34) }}>{data?.icon}</Text>}
             </View>
             <View style={{ flex: 1, gap: 6 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C }}>{data?.title}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C }}>{data?.title}</Text>
               {!!data?.status && (
                 <View style={{ alignSelf: 'flex-start', backgroundColor: data.status.bg, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{data.status.label}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{data.status.label}</Text>
                 </View>
               )}
             </View>
@@ -44,14 +44,14 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
 
           {!!data?.what && (
             <View style={{ gap: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>무엇인가요?</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 13, color: colors.text, lineHeight: 19 }}>{data.what}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>무엇인가요?</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.text, lineHeight: 19 }}>{data.what}</Text>
             </View>
           )}
           {!!data?.how && (
             <View style={{ gap: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>어떻게 얻나요?</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 13, color: colors.text, lineHeight: 19 }}>{data.how}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>어떻게 얻나요?</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.text, lineHeight: 19 }}>{data.how}</Text>
             </View>
           )}
 

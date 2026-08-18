@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -45,11 +45,11 @@ export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
         {unplaced.map((p) => (
           <Shadowed key={p} offset={2} shadowColor={sel === p ? C : colors.yellowShadow}>
             <Pressable onPress={() => setSel(sel === p ? null : p)} style={{ backgroundColor: sel === p ? colors.mint : colors.yellow, borderWidth: 2.5, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11.5, color: C }}>{p}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11.5), color: C }}>{p}</Text>
             </Pressable>
           </Shadowed>
         ))}
-        {unplaced.length === 0 && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textFaint }}>모든 물품을 분류했어요</Text>}
+        {unplaced.length === 0 && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textFaint }}>모든 물품을 분류했어요</Text>}
       </View>
 
       {/* buckets */}
@@ -59,7 +59,7 @@ export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
             <Shadowed offset={3}>
               <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
                 <View style={{ backgroundColor: b.color || colors.paper, borderBottomWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10.5, color: C, textAlign: 'center' }}>{b.name}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C, textAlign: 'center' }}>{b.name}</Text>
                 </View>
                 <View style={{ padding: 6, gap: 5, minHeight: 96 }}>
                   {pool.filter((p) => placed[p] === bi).map((chip) => {
@@ -67,7 +67,7 @@ export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
                     const bad = checked && !b.items.includes(chip);
                     return (
                       <Pressable key={chip} onPress={() => pull(chip)} style={{ backgroundColor: ok ? colors.mint : bad ? '#FEE2E2' : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 6 }}>
-                        <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, textAlign: 'center' }}>{chip}{ok ? ' ✓' : bad ? ' ✕' : ''}</Text>
+                        <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, textAlign: 'center' }}>{chip}{ok ? ' ✓' : bad ? ' ✕' : ''}</Text>
                       </Pressable>
                     );
                   })}

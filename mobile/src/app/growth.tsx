@@ -12,7 +12,7 @@ import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { api, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 const WD = ['월', '화', '수', '목', '금', '토', '일']; // Monday-first week strip
@@ -78,14 +78,14 @@ export default function Growth() {
       {/* top bar */}
       <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <PixelButton label="‹ 뒤로" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={back} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>TODAY · {dateLabel}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.textSoft, width: 44, textAlign: 'right' }}>{dow}요일</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>TODAY · {dateLabel}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, width: 44, textAlign: 'right' }}>{dow}요일</Text>
       </View>
 
       {state === 'loading' && <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>}
       {state === 'error' && (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 13, color: colors.textSoft, textAlign: 'center' }}>리포트를 불러오지 못했어요.</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.textSoft, textAlign: 'center' }}>리포트를 불러오지 못했어요.</Text>
           <PixelButton label="‹ 돌아가기" onPress={back} />
         </View>
       )}
@@ -95,14 +95,14 @@ export default function Growth() {
           {/* hero report card */}
           <Shadowed offset={4} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 16 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C, opacity: 0.7 }}>오늘의 성장 리포트</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 성장 리포트</Text>
               {progress.streakCurrent > 0 ? (
-                <Text style={{ fontFamily: fonts.heading, fontSize: 19, color: C, lineHeight: 27, marginTop: 6 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, lineHeight: 27, marginTop: 6 }}>
                   오늘도 출근했어요!{'\n'}
                   <Text style={{ backgroundColor: colors.yellow }}> {progress.streakCurrent}일 연속 </Text> 성장 중이에요
                 </Text>
               ) : (
-                <Text style={{ fontFamily: fonts.heading, fontSize: 19, color: C, lineHeight: 27, marginTop: 6 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, lineHeight: 27, marginTop: 6 }}>
                   다시 만나 반가워요!{'\n'}오늘 <Text style={{ backgroundColor: colors.yellow }}> 첫 걸음 </Text>을 떼어볼까요?
                 </Text>
               )}
@@ -120,16 +120,16 @@ export default function Growth() {
           <Shadowed offset={3}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>이번 주 출석</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{attended}/7일</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>이번 주 출석</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{attended}/7일</Text>
               </View>
               <View style={{ flexDirection: 'row', gap: 4 }}>
                 {week.map((d) => (
                   <View key={d.label} style={{ flex: 1, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 4 }}>{d.label}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 4 }}>{d.label}</Text>
                     <Shadowed offset={d.today ? 2 : 0} shadowColor={colors.yellowShadow} style={{ alignSelf: 'stretch' }}>
                       <View style={{ height: 30, backgroundColor: d.filled ? colors.mint : '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{d.filled ? '✓' : d.today ? '!' : '·'}</Text>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{d.filled ? '✓' : d.today ? '!' : '·'}</Text>
                       </View>
                     </Shadowed>
                   </View>
@@ -164,9 +164,9 @@ function StatTile({ label, value, sub, color }: { label: string; value: string; 
   return (
     <Shadowed offset={3} shadowColor={C + '66'} style={{ width: '47.5%' }}>
       <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{label}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 24, color: C, marginTop: 4 }}>{value}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 2 }}>{sub}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(24), color: C, marginTop: 4 }}>{value}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{sub}</Text>
         <View style={{ position: 'absolute', right: 8, top: 8, width: 12, height: 12, backgroundColor: color, borderWidth: 2, borderColor: C }} />
       </View>
     </Shadowed>
@@ -201,9 +201,9 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
           <PixelIcon name="star" color={C} size={16} sw={1.6} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>칭찬 스티커 보드</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>칭찬 스티커 보드</Text>
         </View>
-        <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{earned} / {CAPACITY}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{earned} / {CAPACITY}</Text>
       </View>
       <Shadowed offset={3}>
         <View style={{ backgroundColor: colors.paper, borderWidth: 3, borderColor: C, padding: 14, overflow: 'hidden' }}>
@@ -225,7 +225,7 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
                       how: howText,
                     })}
                     style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
-                    {iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={24} /> : <Text style={{ fontSize: 22, color: C }}>{s.e}</Text>}
+                    {iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={24} /> : <Text style={{ fontSize: fs(22), color: C }}>{s.e}</Text>}
                   </Pressable>
                 </Shadowed>
               ) : (
@@ -241,7 +241,7 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
               );
             })}
           </View>
-          <Text style={{ marginTop: 12, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, textAlign: 'center' }}>· · · 빈 칸이 채워질 때마다 새 자격증이 열려요 · · ·</Text>
+          <Text style={{ marginTop: 12, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, textAlign: 'center' }}>· · · 빈 칸이 채워질 때마다 새 자격증이 열려요 · · ·</Text>
         </View>
       </Shadowed>
     </View>

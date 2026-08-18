@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -37,18 +37,18 @@ export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       <View style={{ backgroundColor: '#0F1A24', borderWidth: 4, borderColor: C, padding: 14, alignItems: 'center', position: 'relative' }}>
         {!!c.device && (
           <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{c.device}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{c.device}</Text>
           </View>
         )}
-        <Text style={{ fontFamily: fonts.heading, fontSize: 32, color: atTarget ? '#34D399' : '#FB923C' }}>{val}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#94A3B8', marginTop: 2 }}>{g.unit}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(32), color: atTarget ? '#34D399' : '#FB923C' }}>{val}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: '#94A3B8', marginTop: 2 }}>{g.unit}</Text>
         {/* bar */}
         <View style={{ marginTop: 12, height: 14, alignSelf: 'stretch', backgroundColor: '#0A1320', borderWidth: 2, borderColor: C }}>
           <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${Math.max(0, Math.min(100, pct))}%`, backgroundColor: atTarget ? '#34D399' : '#FB923C' }} />
           <View style={{ position: 'absolute', left: `${targetPct}%`, top: -3, bottom: -3, width: 3, backgroundColor: '#22D3EE' }} />
         </View>
         <View style={{ marginTop: 8, backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 10 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>목표 {g.target} {g.unit}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>목표 {g.target} {g.unit}</Text>
         </View>
       </View>
 

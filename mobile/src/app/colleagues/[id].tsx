@@ -12,7 +12,7 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { CheerSheet } from '@/components/CheerSheet';
 import { Header, RelTag, Shadowed } from './index';
 import { api, type ColleagueDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
@@ -49,7 +49,7 @@ export default function ColleagueDetailScreen() {
         <Stack.Screen options={{ headerShown: false }} />
         <Header title="동료" onBack={() => router.back()} />
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>찾을 수 없어요.</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>찾을 수 없어요.</Text>
         </View>
       </View>
     );
@@ -76,7 +76,7 @@ export default function ColleagueDetailScreen() {
             </View>
             <View style={{ flex: 1, minWidth: 0 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>{c.name}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>{c.name}</Text>
                 <RelTag relation={c.relation} />
               </View>
               <View style={{ flexDirection: 'row', gap: 14, marginTop: 8 }}>
@@ -94,7 +94,7 @@ export default function ColleagueDetailScreen() {
           <Shadowed offset={3} shadowColor={colors.mintShadow} style={{ marginBottom: 13 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
               <View style={{ width: 8, height: 8, backgroundColor: colors.mintShadow, borderWidth: 1.5, borderColor: C }} />
-              <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>
+              <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>
                 지금 <Text style={{ fontFamily: fonts.heading }}>{c.activity}</Text> 진행 중
               </Text>
             </View>
@@ -107,7 +107,7 @@ export default function ColleagueDetailScreen() {
         ) : (
           <Shadowed offset={3} style={{ marginBottom: 13 }}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 9 }}>이번 주 학습</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 9 }}>이번 주 학습</Text>
               <View style={{ flexDirection: 'row', gap: 6 }}>
                 {week.map((d, i) => (
                   <View key={i} style={{
@@ -115,7 +115,7 @@ export default function ColleagueDetailScreen() {
                     backgroundColor: d ? colors.mint : '#fff',
                     borderWidth: 2, borderColor: d ? C : C + '44',
                   }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C, opacity: 0.55, paddingBottom: 2 }}>{DAYS[i]}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.55, paddingBottom: 2 }}>{DAYS[i]}</Text>
                   </View>
                 ))}
               </View>
@@ -124,9 +124,9 @@ export default function ColleagueDetailScreen() {
         )}
 
         {/* 주고받은 응원 */}
-        <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 주고받은 응원 ━━━━━━</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 주고받은 응원 ━━━━━━</Text>
         {c.cheers.length === 0 ? (
-          <Text style={{ fontFamily: fonts.body, fontSize: 10.5, color: colors.textFaint, paddingVertical: 14, textAlign: 'center' }}>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textFaint, paddingVertical: 14, textAlign: 'center' }}>
             아직 주고받은 응원이 없어요.
           </Text>
         ) : c.cheers.map((ch) => {
@@ -136,11 +136,11 @@ export default function ColleagueDetailScreen() {
               <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                   <View style={{ backgroundColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.cream }}>{mine ? '보냄' : '받음'}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.cream }}>{mine ? '보냄' : '받음'}</Text>
                   </View>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{mine ? '나' : c.name}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{mine ? '나' : c.name}</Text>
                 </View>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 17 }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }}>
                   {[ch.presetText, ch.message].filter(Boolean).join(' · ')}
                 </Text>
               </View>
@@ -153,7 +153,7 @@ export default function ColleagueDetailScreen() {
           style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 7, marginTop: 13, backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 12 }}
         >
           <PixelIcon name="clap" color={C} size={17} sw={1.7} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>응원 보내기</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>응원 보내기</Text>
         </Pressable>
 
         <Pressable
@@ -166,7 +166,7 @@ export default function ColleagueDetailScreen() {
           ])}
           style={{ marginTop: 10, paddingVertical: 10, alignItems: 'center' }}
         >
-          <Text style={{ fontFamily: fonts.body, fontSize: 10.5, color: colors.textFaint }}>동료에서 삭제</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textFaint }}>동료에서 삭제</Text>
         </Pressable>
       </ScrollView>
 
@@ -193,8 +193,8 @@ const REL_LABEL = { peer: '동료', mentor: '멘토', mentee: '멘티' } as cons
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <View>
-      <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft }}>{label}</Text>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C, marginTop: 2 }}>{value}</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>{label}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 2 }}>{value}</Text>
     </View>
   );
 }
@@ -202,7 +202,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 function Hidden({ text }: { text: string }) {
   return (
     <View style={{ backgroundColor: colors.cream, borderWidth: 2, borderColor: C + '55', paddingVertical: 10, paddingHorizontal: 12, marginBottom: 13 }}>
-      <Text style={{ fontFamily: fonts.body, fontSize: 10.5, color: colors.textSoft }}>{text}</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft }}>{text}</Text>
     </View>
   );
 }

@@ -9,7 +9,7 @@ import { api } from '@/api/client';
 import { clearDraft, loadDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
 
 const C = colors.ink;
@@ -62,21 +62,21 @@ export default function Level() {
       <Stack.Screen options={{ headerShown: false }} />
       <OnbTopBar title="LEVEL CHECK" step="3/4" onBack={() => router.back()} />
       <ScrollView contentContainerStyle={{ padding: 22, paddingBottom: 40 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 21, color: C, lineHeight: 30 }}>지금 영어 실력은?</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 6, marginBottom: 18 }}>시나리오 난이도가 자동으로 맞춰져요.</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(21), color: C, lineHeight: 30 }}>지금 영어 실력은?</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 6, marginBottom: 18 }}>시나리오 난이도가 자동으로 맞춰져요.</Text>
 
         {/* CEFR bar visualization */}
         <Shadowed offset={3} shadowColor={C + '22'}>
           <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 }}>
-              {CEFR.map((l) => <Text key={l} style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{l}</Text>)}
+              {CEFR.map((l) => <Text key={l} style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{l}</Text>)}
             </View>
             <View style={{ height: 14, flexDirection: 'row', borderWidth: 2, borderColor: C, backgroundColor: colors.cream }}>
               {CEFR.map((l, i) => (
                 <View key={l} style={{ flex: 1, borderRightWidth: i < 5 ? 2 : 0, borderColor: C, backgroundColor: i <= activeIdx ? colors.mint : 'transparent' }} />
               ))}
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 8 }}>추정 레벨 · <Text style={{ fontFamily: fonts.heading }}>{level}</Text> 정도부터 시작해볼게요</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 8 }}>추정 레벨 · <Text style={{ fontFamily: fonts.heading }}>{level}</Text> 정도부터 시작해볼게요</Text>
           </View>
         </Shadowed>
 
@@ -87,15 +87,15 @@ export default function Level() {
               <Shadowed key={l.code} offset={sel ? 3 : 0} shadowColor={colors.mintShadow}>
                 <Pressable onPress={() => setLevel(l.code)} style={{ backgroundColor: sel ? l.tone : '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                   <View style={{ width: 36, height: 36, backgroundColor: l.tone, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{l.code}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{l.code}</Text>
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{l.name}</Text>
-                    <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 2 }}>{l.desc}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{l.name}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 2 }}>{l.desc}</Text>
                   </View>
                   {sel && (
                     <View style={{ width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>✓</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>✓</Text>
                     </View>
                   )}
                 </Pressable>

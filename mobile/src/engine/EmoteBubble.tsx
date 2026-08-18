@@ -4,6 +4,7 @@
 import { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
+import { fs } from '@/theme/tokens';
 
 const INK = '#2A2522'; // engine default outline (kept local so the engine has no app-theme dep)
 
@@ -28,7 +29,7 @@ export function EmoteBubble({ emote }: { emote: string }) {
           paddingVertical: 2,
         }}
       >
-        <Text style={{ fontSize: 13, lineHeight: 16 }}>{emote}</Text>
+        <Text style={{ fontSize: fs(13), lineHeight: 16 }}>{emote}</Text>
       </View>
       {/* tail */}
       <View style={{ width: 4, height: 4, backgroundColor: INK, marginTop: -1 }} />

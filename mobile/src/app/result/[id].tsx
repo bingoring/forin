@@ -13,7 +13,7 @@ import { api, type Progress, type ScenarioDetail, type ScenarioGrade } from '@/a
 import { newlyEarned, type BadgeDef } from '@/data/badges';
 import { ECON } from '@/data/economy';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -118,12 +118,12 @@ export default function ResultRoute() {
       </View>
 
       <View style={{ paddingHorizontal: 22, paddingTop: 80, alignItems: 'center', zIndex: 2 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>{passed ? 'SCENARIO CLEAR!' : 'GOOD TRY · 재도전'}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? 'SCENARIO CLEAR!' : 'GOOD TRY · 재도전'}</Text>
         <View style={{ marginTop: 6 }}>
-          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: 34, color: titleColor }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 34, color: C }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
+          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: fs(34), color: titleColor }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(34), color: C }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
         </View>
-        {!!subtitle && <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, marginTop: 8 }}>{subtitle}</Text>}
+        {!!subtitle && <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 8 }}>{subtitle}</Text>}
 
         {/* AI grade detail (score, goals, feedback) — only for graded runs */}
         {graded && <GradeDetail grade={grade!} />}
@@ -132,7 +132,7 @@ export default function ResultRoute() {
         {leveledUp && (
           <Shadowed offset={4} style={{ alignSelf: 'stretch', marginTop: 14 }}>
             <View style={{ backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C }}>레벨 업!  Lv.{before!.level} → Lv.{after!.level}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>레벨 업!  Lv.{before!.level} → Lv.{after!.level}</Text>
             </View>
           </Shadowed>
         )}
@@ -141,10 +141,10 @@ export default function ResultRoute() {
         {newBadges.map((b) => (
           <Shadowed key={b.name} offset={4} style={{ alignSelf: 'stretch', marginTop: 10 }}>
             <View style={{ backgroundColor: b.special ? colors.yellow : colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Text style={{ fontSize: 24 }}>{b.e}</Text>
+              <Text style={{ fontSize: fs(24) }}>{b.e}</Text>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>새 뱃지 획득!</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, marginTop: 2 }}>{b.name}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>새 뱃지 획득!</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>{b.name}</Text>
               </View>
             </View>
           </Shadowed>
@@ -155,16 +155,16 @@ export default function ResultRoute() {
           <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
             <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
               <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 32 }}>⭐</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 4 }}>참잘했</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>어요</Text>
+                <Text style={{ fontSize: fs(32) }}>⭐</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginTop: 4 }}>참잘했</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>어요</Text>
               </View>
             </View>
           </Shadowed>
         ) : (
           <View style={{ marginTop: 16, marginBottom: 16, alignItems: 'center', gap: 4 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>다시 도전하면 완료로 인정돼요</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>이 상황은 아직 '재도전'이에요</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>다시 도전하면 완료로 인정돼요</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>이 상황은 아직 '재도전'이에요</Text>
           </View>
         )}
 
@@ -178,13 +178,13 @@ export default function ResultRoute() {
             ) : (
               <View style={{ paddingVertical: 18, alignItems: 'center' }}>
                 <ActivityIndicator color={C} />
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 8 }}>보상 적립 중…</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 8 }}>보상 적립 중…</Text>
               </View>
             )}
 
             {!graded && (
               <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다."</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다."</Text>
               </View>
             )}
           </View>
@@ -214,14 +214,14 @@ function GradeDetail({ grade }: { grade: ScenarioGrade }) {
         {/* score row */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <View style={{ backgroundColor: accent, borderWidth: 2.5, borderColor: C, paddingVertical: 6, paddingHorizontal: 10, alignItems: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 22, color: C }}>{grade.score}</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 8, color: C, marginTop: -2 }}>/ 100</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(22), color: C }}>{grade.score}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: C, marginTop: -2 }}>/ 100</Text>
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <View style={{ alignSelf: 'flex-start', backgroundColor: good ? colors.mint : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 6, marginBottom: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{good ? '완료 · PASS' : '재도전 · RETRY'}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{good ? '완료 · PASS' : '재도전 · RETRY'}</Text>
             </View>
-            {!!grade.headline && <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{grade.headline}</Text>}
+            {!!grade.headline && <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{grade.headline}</Text>}
           </View>
         </View>
 
@@ -230,8 +230,8 @@ function GradeDetail({ grade }: { grade: ScenarioGrade }) {
           <View style={{ marginTop: 12, gap: 5 }}>
             {grade.goals.map((g, i) => (
               <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: g.met ? '#10B981' : colors.textFaint }}>{g.met ? '✓' : '✗'}</Text>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 11.5, color: g.met ? C : colors.textSoft }}>{g.goal}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: g.met ? '#10B981' : colors.textFaint }}>{g.met ? '✓' : '✗'}</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11.5), color: g.met ? C : colors.textSoft }}>{g.goal}</Text>
               </View>
             ))}
           </View>
@@ -240,7 +240,7 @@ function GradeDetail({ grade }: { grade: ScenarioGrade }) {
         {/* feedback */}
         {!!grade.feedback && (
           <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1.5, borderTopColor: '#2A252222', borderStyle: 'dotted' }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 17 }}>{grade.feedback}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 17 }}>{grade.feedback}</Text>
           </View>
         )}
 
@@ -248,11 +248,11 @@ function GradeDetail({ grade }: { grade: ScenarioGrade }) {
         {grade.tips?.length > 0 && (
           <View style={{ marginTop: 10, gap: 4 }}>
             {grade.tips.map((t, i) => (
-              <Text key={i} style={{ fontFamily: fonts.body, fontSize: 10.5, color: colors.textSoft, lineHeight: 15 }}>
+              <Text key={i} style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 15 }}>
                 <Text style={{ color: C }}>“{t.en}”</Text>{t.ko ? ` — ${t.ko}` : ''}
               </Text>
             ))}
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textFaint, marginTop: 2 }}>↳ 리뷰랩에 복습 카드로 저장됐어요</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textFaint, marginTop: 2 }}>↳ 리뷰랩에 복습 카드로 저장됐어요</Text>
           </View>
         )}
       </View>
@@ -268,10 +268,10 @@ function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { b
     <View>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 }}>
         <View style={{ width: 30, height: 30, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 15 }}>⭐</Text>
+          <Text style={{ fontSize: fs(15) }}>⭐</Text>
         </View>
-        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>경험치 획득</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: '#10B981' }}>+{baseXp} XP</Text>
+        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>경험치 획득</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: '#10B981' }}>+{baseXp} XP</Text>
       </View>
 
       {/* praise sticker earned (only a real clear/완료 earns it) */}
@@ -280,26 +280,26 @@ function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { b
           <View style={{ width: 30, height: 30, backgroundColor: colors.pink, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
             <PixelIcon name="medal" color={C} size={16} sw={1.7} />
           </View>
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>칭찬 스티커{stickerTotal != null ? ` (누적 ${stickerTotal}장)` : ''}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: '#10B981' }}>+1</Text>
+          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>칭찬 스티커{stickerTotal != null ? ` (누적 ${stickerTotal}장)` : ''}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: '#10B981' }}>+1</Text>
         </View>
       )}
 
       {/* level + progress bar */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>Lv. {after.level}</Text>
-        <CountUp from={startXp} to={after.xp} suffix=" XP" style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }} />
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>Lv. {after.level}</Text>
+        <CountUp from={startXp} to={after.xp} suffix=" XP" style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }} />
       </View>
       <LevelBar ratio={inLevel / ECON.xpPerLevel} />
-      <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 5, textAlign: 'right' }}>다음 레벨까지 {toNext} XP</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 5, textAlign: 'right' }}>다음 레벨까지 {toNext} XP</Text>
 
       {/* streak */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 12, borderTopWidth: 1.5, borderTopColor: '#2A252222', borderStyle: 'dotted' }}>
         <View style={{ width: 28, height: 28, backgroundColor: colors.peach, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
           <PixelIcon name="flame" color={C} size={15} sw={1.7} />
         </View>
-        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>연속 학습</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{after.streakCurrent}일{after.streakCurrent >= after.streakLongest && after.streakCurrent > 1 ? ' 최고' : ''}</Text>
+        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>연속 학습</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{after.streakCurrent}일{after.streakCurrent >= after.streakLongest && after.streakCurrent > 1 ? ' 최고' : ''}</Text>
       </View>
     </View>
   );
@@ -333,14 +333,14 @@ function StaticRewards({ scenario, baseXp }: { scenario: ScenarioDetail | null; 
   const rewards = scenario?.briefing?.rewards ?? [{ icon: '⭐', label: '경험치', value: `+ ${baseXp} XP` }];
   return (
     <View>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft, marginBottom: 10 }}>REWARDS</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft, marginBottom: 10 }}>REWARDS</Text>
       {rewards.map((r, i) => (
         <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 6, borderBottomWidth: i < rewards.length - 1 ? 1.5 : 0, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
           <View style={{ width: 28, height: 28, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 14 }}>{r.icon}</Text>
+            <Text style={{ fontSize: fs(14) }}>{r.icon}</Text>
           </View>
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: C }}>{r.label}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{r.value}</Text>
+          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>{r.label}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{r.value}</Text>
         </View>
       ))}
     </View>

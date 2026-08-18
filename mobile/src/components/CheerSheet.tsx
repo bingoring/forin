@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, Text, TextInput, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
 import type { CheerPreset } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 const MAX = 60;
@@ -53,9 +53,9 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
             <PixelIcon name="clap" color={C} size={22} sw={1.7} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{name}에게 응원 보내기</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{name}에게 응원 보내기</Text>
             {!!activity && (
-              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{activity}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{activity}</Text>
             )}
           </View>
         </View>
@@ -74,7 +74,7 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
                 }}
               >
                 <PixelIcon name={p.key === 'rest' ? 'moon' : p.key === 'streak' ? 'flame' : 'clap'} color={C} size={15} sw={1.7} />
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C }}>{p.label}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C }}>{p.label}</Text>
               </Pressable>
             );
           })}
@@ -87,9 +87,9 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
             placeholder="한마디 남기기 (선택)"
             placeholderTextColor={colors.textFaint}
             multiline
-            style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 17, minHeight: 40 }}
+            style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17, minHeight: 40 }}
           />
-          <Text style={{ textAlign: 'right', fontFamily: fonts.heading, fontSize: 9, color: colors.textFaint, marginTop: 6 }}>
+          <Text style={{ textAlign: 'right', fontFamily: fonts.heading, fontSize: fs(9), color: colors.textFaint, marginTop: 6 }}>
             {[...message].length} / {MAX}
           </Text>
         </View>
@@ -104,7 +104,7 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
         >
           {sending
             ? <ActivityIndicator color={colors.cream} />
-            : <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: colors.cream }}>보내기</Text>}
+            : <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.cream }}>보내기</Text>}
         </Pressable>
       </View>
     </Modal>

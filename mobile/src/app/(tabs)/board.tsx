@@ -10,7 +10,7 @@ import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'rea
 import { useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { colors, fonts, space, type as t } from '@/theme/tokens';
+import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 
 const C = colors.ink;
@@ -122,9 +122,9 @@ export default function Board() {
       {/* ── pinned header: title + summary + counters + filter tabs ── */}
       <View style={{ paddingTop: 52, paddingHorizontal: space.lg, paddingBottom: 8, backgroundColor: colors.cream, borderBottomWidth: 2, borderBottomColor: '#2A252222', zIndex: 2 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>≡</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>≡</Text>
           <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>오늘의 상황판</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{todayLabel()}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{todayLabel()}</Text>
         </View>
 
         {/* date + summary card */}
@@ -133,13 +133,13 @@ export default function Board() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <PixelIcon name="clipboard" color={C} size={28} sw={1.6} />
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
               </View>
               <Shadowed offset={2}>
                 <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 7, alignItems: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft }}>새로고침</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>⏱ {nowTime()}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>새로고침</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>⏱ {nowTime()}</Text>
                 </View>
               </Shadowed>
             </View>
@@ -175,8 +175,8 @@ export default function Board() {
                     <PixelIcon name={m?.icon ?? 'hospital'} color={C} size={17} sw={1.7} />
                   </View>
                 </Shadowed>
-                <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 13, color: C }}>{m?.name ?? dept}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{list.length}건</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{m?.name ?? dept}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{list.length}건</Text>
               </View>
               <View style={{ gap: 8 }}>
                 {list.map((c) => <EventCard key={c.id} c={c} onPress={() => router.push(`/scenario/${c.id}`)} />)}
@@ -198,8 +198,8 @@ export default function Board() {
             <Pressable onPress={onTopUp} disabled={topping || capReached} style={{ backgroundColor: capReached ? colors.paper : colors.yellow, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
               <PixelIcon name={capReached ? 'check' : 'play'} color={C} size={26} sw={1.7} />
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C }}>{capReached ? '오늘의 보상을 다 받았어요' : '광고 보고 새 상황 3건 열기'}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: capReached ? colors.textSoft : C, marginTop: 3, lineHeight: 15 }}>{capReached ? '자정이 지나면 새로운 현장이 열려요.' : '현장이 잠잠한가요? 짧은 광고를 보고 시나리오를 더 받아요.'}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{capReached ? '오늘의 보상을 다 받았어요' : '광고 보고 새 상황 3건 열기'}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: capReached ? colors.textSoft : C, marginTop: 3, lineHeight: 15 }}>{capReached ? '자정이 지나면 새로운 현장이 열려요.' : '현장이 잠잠한가요? 짧은 광고를 보고 시나리오를 더 받아요.'}</Text>
               </View>
               {topping ? <ActivityIndicator color={C} /> : !capReached && <PixelIcon name="play" color={C} size={18} sw={1.9} />}
             </Pressable>
@@ -208,7 +208,7 @@ export default function Board() {
 
         {/* daily rotation note */}
         <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>
             <Text style={{ fontFamily: fonts.heading, color: C }}>매일 자정마다 </Text>새로운 현장 상황이 부서별로 골고루 발생해요. 저장된 300+ 시나리오 중에서 오늘의 {cards.length}건을 골랐어요.
           </Text>
         </View>
@@ -218,9 +218,9 @@ export default function Board() {
       <Modal visible={adPlaying} transparent animationType="fade">
         <View style={{ flex: 1, backgroundColor: '#000A', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
           <PixelIcon name="clipboard" color={colors.textFaint} size={40} sw={1.5} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: '#fff' }}>광고 시청 중…</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff' }}>광고 시청 중…</Text>
           <ActivityIndicator color="#fff" />
-          <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#fff', opacity: 0.7 }}>(개발 모드 · 실제 광고는 dev build 필요)</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: '#fff', opacity: 0.7 }}>(개발 모드 · 실제 광고는 dev build 필요)</Text>
         </View>
       </Modal>
     </View>
@@ -238,22 +238,22 @@ function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, flex: 1 }}>
             <Shadowed offset={1.5}>
               <View style={{ backgroundColor: u.accent, borderWidth: 1.5, borderColor: C, paddingHorizontal: 6, paddingVertical: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{u.label}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{u.label}</Text>
               </View>
             </Shadowed>
-            {!!c.room && <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }} numberOfLines={1}>{c.room}</Text>}
+            {!!c.room && <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }} numberOfLines={1}>{c.room}</Text>}
           </View>
           <DifficultyMini n={c.difficulty ?? 1} />
         </View>
 
         {/* title + npc */}
-        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C, lineHeight: 17 }}>{c.title}</Text>
-        {!!c.npcName && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{c.npcName}{c.npcSub ? ` · ${c.npcSub}` : ''}</Text>}
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, lineHeight: 17 }}>{c.title}</Text>
+        {!!c.npcName && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{c.npcName}{c.npcSub ? ` · ${c.npcSub}` : ''}</Text>}
 
         {/* tagline */}
         {!!c.tagline && (
           <View style={{ marginTop: 6, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C + '44', paddingVertical: 4, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.text, fontStyle: 'italic', lineHeight: 14 }} numberOfLines={2}>{c.tagline}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, fontStyle: 'italic', lineHeight: 14 }} numberOfLines={2}>{c.tagline}</Text>
           </View>
         )}
 
@@ -262,11 +262,11 @@ function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 8, flexWrap: 'wrap' }}>
             {(c.skills ?? []).slice(0, 2).map((sk, i) => (
               <View key={i} style={{ backgroundColor: colors.mint, borderWidth: 1.5, borderColor: C, paddingHorizontal: 5, paddingVertical: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{sk}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{sk}</Text>
               </View>
             ))}
-            {(c.skills?.length ?? 0) > 2 && <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft }}>+{(c.skills!.length) - 2}</Text>}
-            {!!c.timeLabel && <Text style={{ marginLeft: 'auto', fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>⏱ {c.timeLabel}</Text>}
+            {(c.skills?.length ?? 0) > 2 && <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>+{(c.skills!.length) - 2}</Text>}
+            {!!c.timeLabel && <Text style={{ marginLeft: 'auto', fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>⏱ {c.timeLabel}</Text>}
           </View>
         )}
 
@@ -299,8 +299,8 @@ function Counter({ label, value, accent }: { label: string; value: number; accen
   return (
     <Shadowed offset={2} shadowColor={C + '77'} style={{ flex: 1 }}>
       <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: accent }}>{label}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 2 }}>{value}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: accent }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 2 }}>{value}</Text>
       </View>
     </Shadowed>
   );
@@ -312,10 +312,10 @@ function DeptTab({ label, icon, color, active, count, onPress }: { id: string; l
       <Shadowed offset={active ? 2.5 : 2} shadowColor={active ? C : C + '66'}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: active ? color : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 8 }}>
           <PixelIcon name={icon} color={active ? '#fff' : C} size={14} sw={1.8} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: active ? '#fff' : C }}>{label}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: active ? '#fff' : C }}>{label}</Text>
           {count > 0 && (
             <View style={{ backgroundColor: active ? '#fff' : color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: active ? color : '#fff' }}>{count}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: active ? color : '#fff' }}>{count}</Text>
             </View>
           )}
         </View>

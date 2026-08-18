@@ -12,7 +12,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { FacePlayer } from '@engine';
 import { api, type Home } from '@/api/client';
-import { colors, fonts, space, type as t } from '@/theme/tokens';
+import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -107,8 +107,8 @@ function Greeting({ date, done }: { date: string; done: boolean }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: space.lg, paddingTop: 56, paddingBottom: 12 }}>
       <View style={{ flex: 1, minWidth: 0 }}>
-        <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{label}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 19, color: C, marginTop: 5, lineHeight: 25 }}>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, marginTop: 5, lineHeight: 25 }}>
           {done ? '오늘 몫은 끝냈어요' : '천천히 시작해요'}
         </Text>
       </View>
@@ -127,10 +127,10 @@ function ShiftBadge({ shift, deptLabel }: { shift: string; deptLabel: string }) 
     <Shadowed offset={3} style={{ marginHorizontal: space.lg }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
         <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{shift}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{shift}</Text>
         </View>
         <PixelIcon name="shift" color={colors.cream} size={14} sw={1.6} />
-        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: fonts.body, fontSize: 10.5, color: colors.cream }}>
+        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.cream }}>
           오늘 배치 · {deptLabel}
         </Text>
       </View>
@@ -145,12 +145,12 @@ function StreakStrip({ streak, week }: { streak: number; week: number[] }) {
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 13 }}>
         <View style={{ alignItems: 'center' }}>
           <PixelIcon name="flame" color={C} size={20} sw={1.7} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C, marginTop: 3 }}>{streak}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft }}>연속</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C, marginTop: 3 }}>{streak}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>연속</Text>
         </View>
         <View style={{ width: 3, alignSelf: 'stretch', backgroundColor: C + '22' }} />
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginBottom: 7 }}>이번 주</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginBottom: 7 }}>이번 주</Text>
           <View style={{ flexDirection: 'row', gap: 6 }}>
             {week.map((d, i) => (
               <View key={i} style={{
@@ -178,8 +178,8 @@ function TodayOne({ one, onStart }: { one: NonNullable<Home['todayOne']>; onStar
               <PixelIcon name={icon} color={C} size={24} sw={1.7} />
             </View>
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 10, color: C, opacity: 0.75 }}>{one.chapter}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C, marginTop: 3, lineHeight: 20 }}>{one.title}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, opacity: 0.75 }}>{one.chapter}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, marginTop: 3, lineHeight: 20 }}>{one.title}</Text>
             </View>
           </View>
           <Pressable onPress={onStart} style={({ pressed }) => ({
@@ -188,13 +188,13 @@ function TodayOne({ one, onStart }: { one: NonNullable<Home['todayOne']>; onStar
             opacity: pressed ? 0.85 : 1,
           })}>
             <PixelIcon name="play" color={colors.cream} size={16} sw={1.9} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: colors.cream }}>시작하기</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.cream }}>시작하기</Text>
           </Pressable>
         </View>
       </Shadowed>
       {/* 라벨 탭 — 카드 위로 걸친다 */}
       <View style={{ position: 'absolute', top: -9, left: 12, backgroundColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>오늘의 한 가지</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>오늘의 한 가지</Text>
       </View>
     </View>
   );
@@ -206,15 +206,15 @@ function RestCard({ streakNext, onMore }: { streakNext: number; onMore: () => vo
     <Shadowed offset={4} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
       <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingVertical: 18, paddingHorizontal: 14, alignItems: 'center' }}>
         <PixelIcon name="moon" color={C} size={34} sw={1.6} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 9 }}>오늘 목표를 다 채웠어요</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 6, lineHeight: 18, textAlign: 'center' }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginTop: 9 }}>오늘 목표를 다 채웠어요</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 6, lineHeight: 18, textAlign: 'center' }}>
           {streakNext}일째 연속이 눈앞이에요.{'\n'}여기서 멈춰도 괜찮아요.
         </Text>
         <Pressable onPress={onMore} style={({ pressed }) => ({
           marginTop: 12, backgroundColor: '#fff', borderWidth: 2.5, borderColor: C,
           paddingVertical: 8, paddingHorizontal: 16, opacity: pressed ? 0.85 : 1,
         })}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>+ 한 판 더 하기</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>+ 한 판 더 하기</Text>
         </Pressable>
       </View>
     </Shadowed>
@@ -231,15 +231,15 @@ function MentorNote({ note }: { note: NonNullable<Home['mentorNote']> }) {
             <PixelIcon name="nurse-cap" color={C} size={20} sw={1.6} />
           </View>
           <View style={{ flex: 1, minWidth: 0, marginTop: 2 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 18 }}>{note.text}</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginTop: 5 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 18 }}>{note.text}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 5 }}>
               — {note.npc.role} {note.npc.name} · {note.npc.dept}
             </Text>
           </View>
         </View>
       </Shadowed>
       <View style={{ position: 'absolute', top: -9, left: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingHorizontal: 6 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>멘토 쪽지</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>멘토 쪽지</Text>
       </View>
     </View>
   );
@@ -252,18 +252,18 @@ function PhraseOfDay({ phrase, flipped, onFlip }: { phrase: NonNullable<Home['ph
       <Pressable onPress={onFlip} style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 13 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
           <PixelIcon name="bulb" color={C} size={14} sw={1.7} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 10.5, color: C }}>오늘의 한마디</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C }}>오늘의 한마디</Text>
           <View style={{ flex: 1 }} />
-          <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textFaint }}>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textFaint }}>
             {flipped ? '탭하면 접기' : '탭하면 뜻 보기'}
           </Text>
         </View>
         <View style={{ backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C + '66', paddingVertical: 13, paddingHorizontal: 10, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C, lineHeight: 21, textAlign: 'center' }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, lineHeight: 21, textAlign: 'center' }}>
             “{phrase.en}”
           </Text>
           {flipped && (
-            <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>
               {phrase.ko}{phrase.note ? ` · ${phrase.note}` : ''}
             </Text>
           )}
@@ -279,8 +279,8 @@ function Doors({ waiting, onExplore, onBoard }: { waiting: number; onExplore: ()
     <Shadowed offset={3} style={{ flex: 1 }}>
       <Pressable onPress={onPress} style={{ backgroundColor: bg, borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 11 }}>
         <PixelIcon name={icon} color={C} size={20} sw={1.7} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C, marginTop: 7 }}>{title}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, marginTop: 3, lineHeight: 14 }}>{sub}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C, marginTop: 7 }}>{title}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 3, lineHeight: 14 }}>{sub}</Text>
       </Pressable>
     </Shadowed>
   );
@@ -301,8 +301,8 @@ function OneReview({ front, onPress }: { front: string; onPress: () => void }) {
           <PixelIcon name="note" color={C} size={15} sw={1.7} />
         </View>
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 15 }}>틀린 표현 하나만 다시 볼까요?</Text>
-          <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: 9.5, color: colors.textSoft, marginTop: 3 }}>“{front}” · 1분</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 15 }}>틀린 표현 하나만 다시 볼까요?</Text>
+          <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft, marginTop: 3 }}>“{front}” · 1분</Text>
         </View>
         <PixelIcon name="chevron-right" color={C} size={16} sw={2} />
       </Pressable>
@@ -320,26 +320,26 @@ function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }
       <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C }}>
         <Pressable onPress={onOpenAll} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingTop: 8, paddingBottom: 6, paddingHorizontal: 12, borderBottomWidth: 2, borderBottomColor: C + '33' }}>
           <PixelIcon name="handshake" color={C} size={14} sw={1.7} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 10.5, color: C }}>내 동료</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C }}>내 동료</Text>
           {total > 0 && (
             <View style={{ backgroundColor: colors.mint, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: C }}>{total}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{total}</Text>
             </View>
           )}
           {(unread > 0 || pending > 0) && (
             <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: C }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>
                 {unread > 0 ? `응원 ${unread}` : `요청 ${pending}`}
               </Text>
             </View>
           )}
           <View style={{ flex: 1 }} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 9.5, color: colors.textSoft }}>전체 ›</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft }}>전체 ›</Text>
         </Pressable>
 
         {colleagues.length === 0 ? (
           <View style={{ paddingVertical: 14, paddingHorizontal: 12, alignItems: 'center' }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 10.5, color: colors.textSoft, textAlign: 'center', lineHeight: 16 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, textAlign: 'center', lineHeight: 16 }}>
               코드를 주고받아 동료를 추가해보세요.{'\n'}서로의 학습 현황을 보고 응원할 수 있어요.
             </Text>
           </View>
@@ -350,8 +350,8 @@ function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }
               borderBottomWidth: i < colleagues.length - 1 ? 1.5 : 0, borderBottomColor: C + '22',
             }}>
               <View style={{ width: 6, height: 6, backgroundColor: c.activeToday ? colors.mintShadow : 'transparent', borderWidth: c.activeToday ? 1.5 : 0, borderColor: C }} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{c.name}</Text>
-              <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 14 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{c.name}</Text>
+              <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>
                 {c.activity || '학습 현황 비공개'}
               </Text>
             </Pressable>
@@ -359,9 +359,9 @@ function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }
         )}
 
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, paddingVertical: 8, paddingHorizontal: 12, borderTopWidth: 2, borderTopColor: C + '33' }}>
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft }}>동료 관리는 프로필에서</Text>
+          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft }}>동료 관리는 프로필에서</Text>
           <Pressable onPress={onAdd} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>+ 추가</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>+ 추가</Text>
           </Pressable>
         </View>
       </View>

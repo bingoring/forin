@@ -15,7 +15,7 @@ import { useEffect, useState, type ReactElement } from 'react';
 import { Text, View } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, Line, Path, Pattern, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
-import { fonts } from '@/theme/tokens';
+import { fonts, fs } from '@/theme/tokens';
 import type { MapObject } from '@engine';
 
 const INK = '#2A2522';
@@ -65,14 +65,14 @@ function Plaque({ sign, signColor, label }: { sign?: string; signColor?: string;
       {sign ? (
         <View style={{ position: 'absolute', left: 0, right: 0, bottom: 27, alignItems: 'center' }}>
           <View style={{ backgroundColor: signColor ?? '#D14B3D', borderWidth: 1.5, borderColor: INK, paddingHorizontal: 6, paddingVertical: 2 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{sign}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{sign}</Text>
           </View>
         </View>
       ) : null}
       {label ? (
         <View style={{ position: 'absolute', left: 0, right: 0, bottom: 43, alignItems: 'center' }}>
           <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: INK, paddingHorizontal: 4, paddingVertical: 1 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: INK }}>{label}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: INK }}>{label}</Text>
           </View>
         </View>
       ) : null}

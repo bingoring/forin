@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ColorValue } from 'react-native';
 import { Tabs } from 'expo-router';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { CampusIcon, BoardIcon, LabIcon, MeIcon } from '@/components/TabIcons';
 import { PixelIcon } from '@/components/PixelIcon';
 
@@ -23,7 +23,7 @@ export default function TabsLayout() {
         tabBarInactiveTintColor: colors.textFaint,
         tabBarActiveBackgroundColor: colors.mint,
         tabBarStyle: { backgroundColor: colors.paper, borderTopColor: colors.ink, borderTopWidth: 3 },
-        tabBarLabelStyle: { fontFamily: fonts.heading, fontSize: 11 },
+        tabBarLabelStyle: { fontFamily: fonts.heading, fontSize: fs(11) },
         tabBarIconStyle: { marginBottom: -2 },
       }}
     >

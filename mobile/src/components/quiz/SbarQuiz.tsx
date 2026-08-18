@@ -4,7 +4,7 @@
 import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -43,7 +43,7 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
             ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시 정렬" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
             : (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{placed.length}/{cards.length} 배치됨</Text>
+              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{placed.length}/{cards.length} 배치됨</Text>
               <PixelButton label={hasTracks ? '콜 시작' : '✓ 순서 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} />
             </View>
           )
@@ -56,15 +56,15 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
         <View style={{ flexDirection: 'row', gap: 4, marginBottom: 12 }}>
           {Object.entries(TRACKS).map(([k, tr]) => (
             <View key={k} style={{ flex: 1, backgroundColor: tr.color, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 2, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: '#fff', lineHeight: 13 }}>{k}</Text>
-              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 7, color: '#fff', opacity: 0.9, marginTop: 1 }}>{tr.name}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: '#fff', lineHeight: 13 }}>{k}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(7), color: '#fff', opacity: 0.9, marginTop: 1 }}>{tr.name}</Text>
             </View>
           ))}
         </View>
       )}
 
       {/* ordered slots */}
-      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ {hasTracks ? '인계 순서' : '순서'} (탭하여 배치/해제) ━</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ {hasTracks ? '인계 순서' : '순서'} (탭하여 배치/해제) ━</Text>
       <View style={{ gap: 6 }}>
         {cards.map((_, slot) => {
           const ci = placed[slot];
@@ -75,20 +75,20 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
           return (
             <View key={slot} style={{ flexDirection: 'row', alignItems: 'stretch', gap: 6 }}>
               <View style={{ width: 22, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{slot + 1}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{slot + 1}</Text>
               </View>
               {card ? (
                 <Pressable onPress={() => removeAt(slot)} style={{ flex: 1, flexDirection: 'row', backgroundColor: ok ? colors.mint : bad ? '#FEE2E2' : '#fff', borderWidth: 2, borderColor: C }}>
                   {hasTracks && (
                     <View style={{ width: 22, backgroundColor: tr?.color, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{card.track}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: '#fff' }}>{card.track}</Text>
                     </View>
                   )}
-                  <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C, padding: 6, lineHeight: 14 }}>{card.text}</Text>
+                  <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C, padding: 6, lineHeight: 14 }}>{card.text}</Text>
                 </Pressable>
               ) : (
                 <View style={{ flex: 1, borderWidth: 2, borderColor: '#2A252255', borderStyle: 'dashed', padding: 10, backgroundColor: 'transparent' }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textFaint }}>비어 있음</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textFaint }}>비어 있음</Text>
                 </View>
               )}
             </View>
@@ -99,7 +99,7 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       {/* bank */}
       {inBank.length > 0 && (
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 문장 카드 ━</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 문장 카드 ━</Text>
           <View style={{ gap: 6 }}>
             {inBank.map((ci) => {
               const card = cards[ci]; const tr = TRACKS[card.track];
@@ -108,10 +108,10 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
                   <Pressable onPress={() => place(ci)} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
                     {hasTracks && (
                       <View style={{ width: 22, backgroundColor: tr?.color, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: '#fff' }}>{card.track}</Text>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: '#fff' }}>{card.track}</Text>
                       </View>
                     )}
-                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C, padding: 6, lineHeight: 14 }}>{card.text}</Text>
+                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C, padding: 6, lineHeight: 14 }}>{card.text}</Text>
                   </Pressable>
                 </Shadowed>
               );

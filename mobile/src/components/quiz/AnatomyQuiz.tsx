@@ -7,7 +7,7 @@ import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, Path, Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -67,7 +67,7 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
         <Shadowed offset={3}>
           <View style={{ width: BODY_W, height: BODY_H, backgroundColor: colors.paper, borderWidth: 3, borderColor: C, position: 'relative' }}>
             <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, zIndex: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>PATIENT</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>PATIENT</Text>
             </View>
             <View style={{ flex: 1, padding: 8 }}>
               <PatientBody />
@@ -80,18 +80,18 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
                 <Pressable key={i} onPress={() => tapDot(i)} style={{ position: 'absolute', left: `${d.x}%`, top: `${d.y}%`, marginLeft: -10, marginTop: -10, zIndex: 4 }}>
                   {/* dot — fixed 20×20, always centered on the point */}
                   <View style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: dotBg, borderWidth: 2.5, borderColor: st === 'empty' ? '#9CA3AF' : C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{i + 1}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{i + 1}</Text>
                   </View>
                   {/* tag — absolute + centered under the dot so its width never shifts the dot */}
                   {(a || sel === i) && (
                     <View pointerEvents="none" style={{ position: 'absolute', top: 22, left: -40, width: 100, alignItems: 'center' }}>
                       {a ? (
                         <View style={{ backgroundColor: dotBg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 4 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}{st === 'correct' ? ' ✓' : st === 'wrong' ? ' ✕' : ''}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}{st === 'correct' ? ' ✓' : st === 'wrong' ? ' ✕' : ''}</Text>
                         </View>
                       ) : (
                         <View style={{ borderWidth: 1.5, borderColor: colors.yellowShadow, borderStyle: 'dashed', paddingVertical: 1, paddingHorizontal: 4 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.yellowShadow }}>여기에</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.yellowShadow }}>여기에</Text>
                         </View>
                       )}
                     </View>
@@ -104,14 +104,14 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
 
         {/* word bank + feedback */}
         <View style={{ flex: 1, gap: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>━ 단어 카드 ━</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>━ 단어 카드 ━</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
             {bank.map((w, i) => {
               const isUsed = used.has(w);
               return (
                 <Shadowed key={i} offset={isUsed ? 0 : 2}>
                   <Pressable onPress={() => tapWord(w)} style={{ backgroundColor: isUsed ? '#2A252222' : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 8 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 10.5, color: isUsed ? colors.textFaint : C, textDecorationLine: isUsed ? 'line-through' : 'none' }}>{w}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: isUsed ? colors.textFaint : C, textDecorationLine: isUsed ? 'line-through' : 'none' }}>{w}</Text>
                   </Pressable>
                 </Shadowed>
               );
@@ -123,9 +123,9 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
             <Shadowed offset={2}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 7 }}>
                 <View style={{ backgroundColor: '#EF4444', paddingHorizontal: 4 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#fff' }}>✕</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#fff' }}>✕</Text>
                 </View>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 9.5, color: C, lineHeight: 13 }}>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(9.5), color: C, lineHeight: 13 }}>
                   <Text style={{ fontFamily: fonts.heading }}>#{firstWrongIdx + 1}</Text> — 여기는 <Text style={{ fontFamily: fonts.heading }}>{dots[firstWrongIdx]?.label}</Text>이에요!
                 </Text>
               </View>
@@ -134,7 +134,7 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
 
           {!!c.note && (
             <View style={{ backgroundColor: colors.cream, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 5, paddingHorizontal: 7 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, lineHeight: 14 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, lineHeight: 14 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
             </View>
           )}
         </View>

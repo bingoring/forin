@@ -8,7 +8,7 @@
 import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
-import { fonts } from '@/theme/tokens';
+import { fonts, fs } from '@/theme/tokens';
 import type { MapObject } from '@engine';
 
 const INK = '#2A2522';
@@ -111,14 +111,14 @@ function CBuilding({ o }: { o: MapObject }) {
       {/* facility emblem (emoji) plate — game signage, not a reward glyph */}
       {emblem && !redCross && (
         <View style={{ position: 'absolute', left: (W / 2 - 9) * S, top: (6) * S, width: 18 * S, height: 18 * S, backgroundColor: '#fff', borderWidth: 1.6, borderColor: INK, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 11 * S * 0.5 }}>{emblem}</Text>
+          <Text style={{ fontSize: fs(11) * S * 0.5 }}>{emblem}</Text>
         </View>
       )}
       {/* wall sign plaque */}
       {sign && (
         <View style={{ position: 'absolute', left: 0, right: 0, top: (PADT + H - wallH - 4) * S, alignItems: 'center' }}>
           <View style={{ backgroundColor: signColor, borderWidth: 1.4, borderColor: INK, paddingHorizontal: 4, paddingVertical: 1 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#fff' }} numberOfLines={1}>{sign}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#fff' }} numberOfLines={1}>{sign}</Text>
           </View>
         </View>
       )}
@@ -126,7 +126,7 @@ function CBuilding({ o }: { o: MapObject }) {
       {label && (
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, alignItems: 'center' }}>
           <View style={{ backgroundColor: '#fff', borderWidth: 1.4, borderColor: INK, paddingHorizontal: 4, paddingVertical: 1 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 7.5, color: INK }} numberOfLines={1}>{label}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(7.5), color: INK }} numberOfLines={1}>{label}</Text>
           </View>
         </View>
       )}

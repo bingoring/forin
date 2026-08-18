@@ -10,7 +10,7 @@
 // `message` is the server tip's short card copy (Tip.Message, ~25 chars). The
 // long form (Tip.Detail) belongs to the drill screen, which is not built yet.
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelIcon } from '@/components/PixelIcon';
 import { PronCard } from './PronCard';
 
@@ -57,10 +57,10 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     alignItems: 'center',
   },
-  labelText: { fontFamily: fonts.heading, fontSize: 11, color: colors.ink },
+  labelText: { fontFamily: fonts.heading, fontSize: fs(11), color: colors.ink },
   body: { flex: 1, minWidth: 0 },
-  ipa: { fontFamily: fonts.heading, fontSize: 9.5, color: colors.textSoft },
-  message: { fontFamily: fonts.body, fontSize: 11, color: colors.ink, marginTop: 3, lineHeight: 15 },
+  ipa: { fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft },
+  message: { fontFamily: fonts.body, fontSize: fs(11), color: colors.ink, marginTop: 3, lineHeight: 15 },
   play: {
     backgroundColor: colors.blue,
     borderWidth: 2,

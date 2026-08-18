@@ -6,6 +6,7 @@
 //                 decon/OR/ICU lighting). Non-blocking; drawn above the floor.
 import { Text, View } from 'react-native';
 import { TILE } from '@engine';
+import { fs } from '@/theme/tokens';
 
 const INK = '#2A2522';
 
@@ -43,7 +44,7 @@ export function IThreshold({ x, y, w = 1, h = 1, tone, label }: { x: number; y: 
       {label ? (
         <View style={{ position: 'absolute', left: 0, right: 0, top: -12, alignItems: 'center' }}>
           <View style={{ backgroundColor: '#fff', borderWidth: 1, borderColor: INK, paddingHorizontal: 3 }}>
-            <Text style={{ fontFamily: 'DungGeunMo', fontSize: 7, color: INK }}>{label}</Text>
+            <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(7), color: INK }}>{label}</Text>
           </View>
         </View>
       ) : null}

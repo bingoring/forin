@@ -8,7 +8,7 @@ import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { G, Path, Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -53,10 +53,10 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
           <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
             {pairs.map((_, i) => (
               <View key={i} style={{ width: 15, height: 15, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center', backgroundColor: matched.has(i) ? colors.mint : '#fff' }}>
-                {matched.has(i) && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>✓</Text>}
+                {matched.has(i) && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>✓</Text>}
               </View>
             ))}
-            <Text style={{ marginLeft: 4, fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{matched.size}/{pairs.length}</Text>
+            <Text style={{ marginLeft: 4, fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{matched.size}/{pairs.length}</Text>
           </View>
           <PixelButton label="↺ 다시" bg="#fff" shadowColor={C} fontSize={11} disabled={matched.size === 0} onPress={reset} />
           <PixelButton label="✓ 완료" bg={done ? colors.mint : colors.cream} shadowColor={done ? colors.mintShadow : C} fontSize={12} disabled={!done} onPress={onComplete} />
@@ -64,7 +64,7 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
-      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, textAlign: 'center', marginBottom: 10 }}>왼쪽 단어와 오른쪽 의미를 짝지어 보세요.</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', marginBottom: 10 }}>왼쪽 단어와 오른쪽 의미를 짝지어 보세요.</Text>
 
       {/* matching board: left chips | SVG connectors | right chips */}
       <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
@@ -120,9 +120,9 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
         <Shadowed offset={2} style={{ marginTop: 12 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
             <View style={{ backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>✕</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>✕</Text>
             </View>
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 15 }}>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 15 }}>
               <Text style={{ fontFamily: fonts.heading }}>{pairs[wrong.l]?.left}</Text>은 "{pairs[wrong.l]?.right}"이에요. 다시 시도!
             </Text>
           </View>
@@ -146,13 +146,13 @@ function MatchChip({ side, text, sub, status, picked, onPress }: { side: 'L' | '
   return (
     <Shadowed offset={picked ? 3 : 2} shadowColor={shadow}>
       <Pressable onPress={onPress} disabled={status === 'correct'} style={{ height: ROW_H, backgroundColor: bg, borderWidth: 2.5, borderColor: C, paddingHorizontal: 8, alignItems: 'center', justifyContent: 'center' }}>
-        <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: 13, color: C, textAlign: 'center' }}>
+        <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, textAlign: 'center' }}>
           {side === 'R' && !!sub ? `${sub} ` : ''}{text}
         </Text>
-        {!!sub && side === 'L' && <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{sub}</Text>}
+        {!!sub && side === 'L' && <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft, marginTop: 2 }}>{sub}</Text>}
         {!!badge && (
           <View style={{ position: 'absolute', top: -7, ...cornerSide, width: 15, height: 15, backgroundColor: badgeBg, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>{badge}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{badge}</Text>
           </View>
         )}
       </Pressable>

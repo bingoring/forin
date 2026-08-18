@@ -4,7 +4,7 @@
 // a word-granularity response must still show the total, just without this
 // block). An empty grid with a legend would imply "all syllables fine".
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { PronCard } from './PronCard';
 
 export type SyllableChip = { label: string; band: 'ok' | 'weak' | 'bad' };
@@ -48,10 +48,10 @@ export function SyllableGrid({ syllables }: { syllables: SyllableChip[] }) {
 
 const styles = StyleSheet.create({
   card: { paddingVertical: 12, paddingHorizontal: 11 },
-  title: { fontFamily: fonts.heading, fontSize: 10.5, color: colors.ink, marginBottom: 9 },
+  title: { fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.ink, marginBottom: 9 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 4 },
   chip: { borderWidth: 2, borderColor: colors.ink, paddingVertical: 4, paddingHorizontal: 6 },
-  chipText: { fontFamily: fonts.heading, fontSize: 11, color: colors.ink },
+  chipText: { fontFamily: fonts.heading, fontSize: fs(11), color: colors.ink },
   legend: {
     flexDirection: 'row',
     gap: 11,
@@ -63,5 +63,5 @@ const styles = StyleSheet.create({
   },
   legendItem: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   swatch: { width: 11, height: 11, borderWidth: 2, borderColor: colors.ink },
-  legendText: { fontFamily: fonts.body, fontSize: 9.5, color: colors.text },
+  legendText: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.text },
 });

@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 import { deptCounts, type Dept } from '@/content/scenarios';
 import { api } from '@/api/client';
@@ -194,16 +194,16 @@ export function ElevatorScreen({
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.paper }} edges={['top', 'bottom']}>
       {/* top bar */}
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingVertical: 10 }}>
-        <Pressable onPress={onClose} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: 18, color: INK }}>‹ 커리어</Text></Pressable>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: INK }}>🛗 엘리베이터</Text>
-        <Text style={{ fontSize: 16 }}>　</Text>
+        <Pressable onPress={onClose} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: INK }}>‹ 커리어</Text></Pressable>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: INK }}>🛗 엘리베이터</Text>
+        <Text style={{ fontSize: fs(16) }}>　</Text>
       </View>
 
       {/* building tabs */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ maxHeight: 40, flexGrow: 0 }} contentContainerStyle={{ gap: 4, paddingHorizontal: 10, paddingBottom: 4 }}>
         {Object.entries(ELEVATOR_BUILDINGS).map(([k, v]) => (
           <Pressable key={k} onPress={() => setBk(k)} style={{ paddingHorizontal: 8, paddingVertical: 4, backgroundColor: k === bk ? v.accent : '#fff', borderWidth: 2, borderColor: INK }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: k === bk ? '#fff' : INK }}>{v.name}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: k === bk ? '#fff' : INK }}>{v.name}</Text>
           </Pressable>
         ))}
       </ScrollView>
@@ -214,22 +214,22 @@ export function ElevatorScreen({
               panel look) — no door preview; the doors are the full-screen shut. */}
           <View style={{ backgroundColor: '#20262B', borderWidth: 3, borderColor: INK, padding: 12, marginBottom: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: '#E7ECEF' }}>{b.name}</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 9, color: '#8A97A0', marginTop: 2 }}>{b.sub}</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 8.5, color: '#6C7A83', marginTop: 6 }}>현재 {cur} · 정원 15인 · 630kg</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: '#E7ECEF' }}>{b.name}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: '#8A97A0', marginTop: 2 }}>{b.sub}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(8.5), color: '#6C7A83', marginTop: 6 }}>현재 {cur} · 정원 15인 · 630kg</Text>
             </View>
             {/* LCD readout */}
             <View style={{ backgroundColor: '#0A1016', borderWidth: 2, borderColor: '#000', paddingHorizontal: 12, paddingVertical: 6, minWidth: 66, alignItems: 'center' }}>
               <TravelMark riding={riding} dir={dir} travel={travel} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: 30, lineHeight: 32, color: riding ? '#FCD34D' : '#39D98A' }}>{sel}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 6.5, color: '#3E5A46', marginTop: 2 }}>{riding ? '이동 중' : '대기'}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(30), lineHeight: 32, color: riding ? '#FCD34D' : '#39D98A' }}>{sel}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(6.5), color: '#3E5A46', marginTop: 2 }}>{riding ? '이동 중' : '대기'}</Text>
             </View>
           </View>
 
           {/* floor directory */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>층 선택 · 진료과 & 현황</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 8, color: colors.textSoft }}>🔴긴급 🟡진행 🟢정상 · 상황판 연동</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>층 선택 · 진료과 & 현황</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: colors.textSoft }}>🔴긴급 🟡진행 🟢정상 · 상황판 연동</Text>
           </View>
           <View style={{ gap: 11 }}>
             {b.floors.map((fl) => {
@@ -244,17 +244,17 @@ export function ElevatorScreen({
                     <View style={{ position: 'absolute', left: 4, top: 4, width: '100%', height: '100%', backgroundColor: INK }} />
                     <Pressable onPress={() => { setSel(fl.f); setSelRoom(0); }} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'stretch', backgroundColor: selected ? b.accent : '#fff', borderWidth: 2.5, borderColor: INK, overflow: 'hidden', transform: pressed || selected ? [{ translateX: 4 }, { translateY: 4 }] : [] })}>
                       <View style={{ width: 42, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? '#fff' : colors.cream, borderRightWidth: 2, borderColor: INK, paddingVertical: 8 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: INK, lineHeight: 18 }}>{fl.f}</Text>
-                        {fl.lobby ? <Text style={{ fontFamily: fonts.body, fontSize: 7, color: colors.textSoft, marginTop: 2 }}>LOBBY</Text> : null}
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: INK, lineHeight: 18 }}>{fl.f}</Text>
+                        {fl.lobby ? <Text style={{ fontFamily: fonts.body, fontSize: fs(7), color: colors.textSoft, marginTop: 2 }}>LOBBY</Text> : null}
                       </View>
                       <View style={{ flex: 1, paddingHorizontal: 6, paddingVertical: 7, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                         <FloorIcon emoji={fl.icon} />
-                        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: selected ? '#fff' : INK }}>{fl.depts.join(' · ')}</Text>
+                        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: selected ? '#fff' : INK }}>{fl.depts.join(' · ')}</Text>
                       </View>
                       {chip ? (
                         <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 7, backgroundColor: chip.bg, borderLeftWidth: 2, borderColor: INK }}>
                           <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: chip.dot, marginRight: 4 }} />
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: INK }}>{chip.label}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: INK }}>{chip.label}</Text>
                         </View>
                       ) : null}
                     </Pressable>
@@ -267,8 +267,8 @@ export function ElevatorScreen({
                         const built = !!rm.interior;
                         return (
                           <Pressable key={rm.dept} onPress={() => setSelRoom(i)} style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, paddingVertical: 5, backgroundColor: picked ? b.accent : '#fff', borderWidth: 2, borderColor: INK, opacity: built ? 1 : 0.6 }}>
-                            <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: picked ? '#fff' : INK }}>{rm.dept}</Text>
-                            {!built ? <Text style={{ fontFamily: fonts.heading, fontSize: 7, color: picked ? '#fff' : colors.textSoft }}>준비 중</Text> : null}
+                            <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: picked ? '#fff' : INK }}>{rm.dept}</Text>
+                            {!built ? <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: picked ? '#fff' : colors.textSoft }}>준비 중</Text> : null}
                           </Pressable>
                         );
                       })}
@@ -321,7 +321,7 @@ function FloorIcon({ emoji }: { emoji: string }) {
   const name = iconFor(emoji);
   if (!name) {
     if (__DEV__) console.warn(`[map] no PixelIcon mapping for floor emoji ${emoji} — add it to EMOJI_ICON`);
-    return <Text style={{ fontSize: 12 }}>{emoji}</Text>;
+    return <Text style={{ fontSize: fs(12) }}>{emoji}</Text>;
   }
   return <PixelIcon name={name} color={colors.ink} size={14} sw={1.8} />;
 }
@@ -341,7 +341,7 @@ function TravelMark({ riding, dir, travel }: { riding: boolean; dir: string; tra
     );
   }
   if (dir === 'same') {
-    return <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#3E5A46' }}>＝</Text>;
+    return <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#3E5A46' }}>＝</Text>;
   }
   if (!travel) return null;
   return <PixelIcon name={name} color="#3E5A46" size={11} sw={2} />;

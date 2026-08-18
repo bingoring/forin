@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -35,10 +35,10 @@ export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Qu
             const bg = showErr ? '#FEE2E2' : showWrongPick ? colors.yellow : isPicked ? colors.yellow : 'transparent';
             return (
               <Pressable key={i} onPress={() => !checked && setPicked(i)} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 8, backgroundColor: bg, borderBottomWidth: i < rows.length - 1 ? 1.5 : 0, borderBottomColor: '#2A252233', borderStyle: 'dotted' }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>{r.label}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{r.label}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexShrink: 1 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12.5, color: C, textAlign: 'right' }}>{r.text}</Text>
-                  {showErr && <View style={{ backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>✕</Text></View>}
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C, textAlign: 'right' }}>{r.text}</Text>
+                  {showErr && <View style={{ backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>✕</Text></View>}
                 </View>
               </Pressable>
             );
@@ -46,12 +46,12 @@ export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Qu
         </View>
       </Shadowed>
 
-      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#fff', textAlign: 'center', marginTop: 10 }}>위 항목 중 <Text style={{ fontFamily: fonts.heading }}>잘못된 하나</Text>를 찾으세요.</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: '#fff', textAlign: 'center', marginTop: 10 }}>위 항목 중 <Text style={{ fontFamily: fonts.heading }}>잘못된 하나</Text>를 찾으세요.</Text>
 
       {checked && !!c.note && (
         <Shadowed offset={2} shadowColor={colors.mintShadow} style={{ marginTop: 10 }}>
           <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: 10.5, color: C, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading }}>정답 </Text>{c.note}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: C, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading }}>정답 </Text>{c.note}</Text>
           </View>
         </Shadowed>
       )}

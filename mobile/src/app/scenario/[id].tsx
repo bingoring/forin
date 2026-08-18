@@ -12,7 +12,7 @@ import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -40,10 +40,10 @@ export default function ScenarioBriefingRoute() {
           <ActivityIndicator color={colors.mint} />
         ) : (
           <>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: '#fff', textAlign: 'center' }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff', textAlign: 'center' }}>
               시나리오를 불러오지 못했습니다
             </Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: 12, color: '#9CA3AF' }}>{id}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: '#9CA3AF' }}>{id}</Text>
             <PixelButton label="‹ 돌아가기" onPress={() => router.back()} />
           </>
         )}
@@ -70,7 +70,7 @@ export default function ScenarioBriefingRoute() {
         <PixelButton label="× 닫기" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
         <Shadowed offset={2}>
           <View style={{ backgroundColor: deptColor, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: '#fff' }}>{b.dept || scenario.title}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: '#fff' }}>{b.dept || scenario.title}</Text>
           </View>
         </Shadowed>
       </View>
@@ -83,12 +83,12 @@ export default function ScenarioBriefingRoute() {
 
             {/* ribbon header */}
             <View style={{ backgroundColor: tone, borderBottomWidth: 3, borderBottomColor: C, paddingVertical: 10, paddingHorizontal: 14 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: accent, letterSpacing: 1 }}>❗ NEW SCENARIO</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C, marginTop: 4 }}>{scenario.title}</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, opacity: 0.8, fontStyle: 'italic', marginTop: 3 }}>{scenario.tagline}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: accent, letterSpacing: 1 }}>❗ NEW SCENARIO</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C, marginTop: 4 }}>{scenario.title}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, opacity: 0.8, fontStyle: 'italic', marginTop: 3 }}>{scenario.tagline}</Text>
               <Shadowed offset={2} style={{ position: 'absolute', top: -10, right: 14 }}>
                 <View style={{ width: 22, height: 22, backgroundColor: colors.yellow, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>!</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>!</Text>
                 </View>
               </Shadowed>
             </View>
@@ -98,11 +98,11 @@ export default function ScenarioBriefingRoute() {
               <View style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
                 <BriefingPortrait role={p.role} hair={p.hair} mood={p.mood} />
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{p.name || 'NPC'}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{p.sub || p.ageRange || ''}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{p.name || 'NPC'}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{p.sub || p.ageRange || ''}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 6 }}>
                     <DifficultyStars n={b.difficulty || 1} />
-                    {!!b.timeLabel && <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft }}>⏱ {b.timeLabel}</Text>}
+                    {!!b.timeLabel && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>⏱ {b.timeLabel}</Text>}
                   </View>
                 </View>
               </View>
@@ -112,9 +112,9 @@ export default function ScenarioBriefingRoute() {
                 <Shadowed offset={3} style={{ marginBottom: 12 }}>
                   <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
                     <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: C, paddingHorizontal: 6 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.yellow }}>SITUATION</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.yellow }}>SITUATION</Text>
                     </View>
-                    <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.text, lineHeight: 19, marginTop: 3 }}>{b.brief}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.text, lineHeight: 19, marginTop: 3 }}>{b.brief}</Text>
                   </View>
                 </Shadowed>
               )}
@@ -122,12 +122,12 @@ export default function ScenarioBriefingRoute() {
               {/* skills */}
               {!!b.skills?.length && (
                 <View style={{ marginBottom: 12 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 연습할 스킬 ━━━━━━</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 연습할 스킬 ━━━━━━</Text>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 5 }}>
                     {b.skills.map((sk, i) => (
                       <Shadowed key={i} offset={2} shadowColor={colors.mintShadow}>
                         <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 7 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{sk}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{sk}</Text>
                         </View>
                       </Shadowed>
                     ))}
@@ -138,16 +138,16 @@ export default function ScenarioBriefingRoute() {
               {/* rewards */}
               {!!b.rewards?.length && (
                 <View style={{ marginBottom: 12 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 완료 시 보상 ━━━━━━</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 완료 시 보상 ━━━━━━</Text>
                   <Shadowed offset={2}>
                     <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
                       {b.rewards.map((r, i) => (
                         <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 4, borderBottomWidth: i < b.rewards!.length - 1 ? 1.5 : 0, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
                           <View style={{ width: 20, height: 20, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 12 }}>{r.icon}</Text>
+                            <Text style={{ fontSize: fs(12) }}>{r.icon}</Text>
                           </View>
-                          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 11, color: colors.text }}>{r.label}</Text>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{r.value}</Text>
+                          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: colors.text }}>{r.label}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{r.value}</Text>
                         </View>
                       ))}
                     </View>
@@ -158,13 +158,13 @@ export default function ScenarioBriefingRoute() {
               {/* entry requirements */}
               {!!reqs.length && (
                 <View>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 입장 조건 ━━━━━━━</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 입장 조건 ━━━━━━━</Text>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
                     {reqs.map((r, i) => (
                       <Shadowed key={i} offset={1.5}>
                         <View style={{ backgroundColor: r.met ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: r.met ? '#16A34A' : '#DC2626' }}>{r.met ? '✓' : '✗'}</Text>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{r.label}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: r.met ? '#16A34A' : '#DC2626' }}>{r.met ? '✓' : '✗'}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{r.label}</Text>
                         </View>
                       </Shadowed>
                     ))}
@@ -189,7 +189,7 @@ export default function ScenarioBriefingRoute() {
                   <View style={{ position: 'absolute', top: -6, right: -6 }}>
                     <View style={{ position: 'absolute', left: 1.5, top: 1.5, right: -1.5, bottom: -1.5, backgroundColor: C }} />
                     <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingHorizontal: 4 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{xpBadge}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{xpBadge}</Text>
                     </View>
                   </View>
                 )}
@@ -237,7 +237,7 @@ function DifficultyStars({ n }: { n: number }) {
           <View key={i} style={{ width: 11, height: 11, borderWidth: 1.5, borderColor: C, backgroundColor: i <= idx ? palette[idx] : '#fff' }} />
         ))}
       </View>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{labels[idx]}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{labels[idx]}</Text>
     </View>
   );
 }

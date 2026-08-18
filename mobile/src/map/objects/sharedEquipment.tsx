@@ -12,6 +12,7 @@ import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import type { MapObject } from '@engine';
+import { fs } from '@/theme/tokens';
 
 const C = '#2A2522';
 const S = TILE / 16;
@@ -725,7 +726,7 @@ export function ICabinet({ x, y, w = 2, h = 1, variant = 'supply', label }: { x:
       {label ? (
         <View style={{ position: 'absolute', left: 2 * S, top: -2 * S }}>
           <View style={{ backgroundColor: v.tag, borderWidth: 1, borderColor: C, paddingHorizontal: 3 }}>
-            <Text style={{ fontFamily: 'DungGeunMo', fontSize: 7, color: v.tagText }}>{label}</Text>
+            <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(7), color: v.tagText }}>{label}</Text>
           </View>
         </View>
       ) : null}

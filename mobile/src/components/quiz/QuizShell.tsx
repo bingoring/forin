@@ -6,7 +6,7 @@ import { ScrollView, Text, View, type ViewStyle } from 'react-native';
 import { Stack } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 export const C = colors.ink;
 
@@ -49,13 +49,13 @@ export function QuizShell({ title, sub, zone, onExit, progress, children, footer
           {!!progress && progress.total > 1 && (
             <Shadowed offset={2} shadowColor={colors.mintShadow}>
               <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{progress.cur}/{progress.total}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{progress.cur}/{progress.total}</Text>
               </View>
             </Shadowed>
           )}
           <Shadowed offset={2}>
             <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{zone || 'QUIZ'} · {title}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{zone || 'QUIZ'} · {title}</Text>
             </View>
           </Shadowed>
         </View>
@@ -69,19 +69,19 @@ export function QuizShell({ title, sub, zone, onExit, progress, children, footer
             <View style={{ paddingHorizontal: 14, paddingTop: 12, paddingBottom: 10, borderBottomWidth: 3, borderBottomColor: '#2A252244', borderStyle: 'dotted', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Shadowed offset={2} shadowColor={colors.peachShadow}>
                 <View style={{ backgroundColor: colors.peach, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>정형 학습</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>정형 학습</Text>
                 </View>
               </Shadowed>
               <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                   {!!zone && (
                     <View style={{ backgroundColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#fff' }}>{zone}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#fff' }}>{zone}</Text>
                     </View>
                   )}
-                  <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 13, color: C }}>{title}</Text>
+                  <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{title}</Text>
                 </View>
-                {!!sub && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{sub}</Text>}
+                {!!sub && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{sub}</Text>}
               </View>
             </View>
 
@@ -102,9 +102,9 @@ export function ContextBox({ text }: { text: string }) {
   return (
     <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, marginBottom: 14, position: 'relative' }}>
       <View style={{ position: 'absolute', top: -6, left: 12, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>CONTEXT</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>CONTEXT</Text>
       </View>
-      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>{text}</Text>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{text}</Text>
     </View>
   );
 }
@@ -115,7 +115,7 @@ export function HintRow({ text }: { text: string }) {
       <View style={{ width: 18, height: 18, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
         <PixelIcon name="bulb" color={colors.ink} size={12} sw={1.8} />
       </View>
-      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>{text}</Text>
+      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>{text}</Text>
     </View>
   );
 }
@@ -123,7 +123,7 @@ export function HintRow({ text }: { text: string }) {
 export function ResultBanner({ correct }: { correct: boolean }) {
   return (
     <View style={{ marginTop: 16, backgroundColor: correct ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{correct ? '✓ 정답입니다!' : '✗ 다시 시도해 보세요'}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{correct ? '✓ 정답입니다!' : '✗ 다시 시도해 보세요'}</Text>
     </View>
   );
 }

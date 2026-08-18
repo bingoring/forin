@@ -12,7 +12,7 @@ import {
   type Building, type Floor, type DeptDetail,
 } from '@/data/campus';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 
 // Bundled fallback in server shape (used only while /me/curriculum is loading or offline).
@@ -57,21 +57,21 @@ export default function Campus() {
       {/* ── fixed header: title + Lv + streak, then segmented tabs ── */}
       <View style={{ paddingTop: 50, paddingHorizontal: 14, backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 17, color: C }}>커리어</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C }}>커리어</Text>
           <Shadowed offset={2} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>Lv.{enLevel}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>Lv.{enLevel}</Text>
             </View>
           </Shadowed>
           <View style={{ flex: 1 }} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{streak}일 연속</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{streak}일 연속</Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
           {([['curriculum', '커리큘럼'], ['buildings', '건물·층']] as const).map(([id, label]) => {
             const on = id === tab;
             return (
               <Pressable key={id} onPress={() => setTab(id)} style={{ flex: 1, alignItems: 'center', paddingTop: 7, paddingBottom: 6, marginBottom: -3, backgroundColor: on ? colors.paper : 'transparent', borderWidth: 3, borderColor: on ? C : 'transparent', borderBottomColor: on ? colors.paper : 'transparent' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: on ? C : colors.textFaint }}>{label}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: on ? C : colors.textFaint }}>{label}</Text>
               </Pressable>
             );
           })}
@@ -91,11 +91,11 @@ export default function Campus() {
           <Pressable onPress={() => router.push('/interior/CAMPUS-00001')} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
             <PixelIcon name="map" color={C} size={17} sw={1.7} />
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>커리어 탐험 모드</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, marginTop: 1 }}>직접 걸어다니며 NPC 만나기 · 선택 기능</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>커리어 탐험 모드</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 1 }}>직접 걸어다니며 NPC 만나기 · 선택 기능</Text>
             </View>
             <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>입장 ›</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>입장 ›</Text>
             </View>
           </Pressable>
         </Shadowed>
@@ -125,13 +125,13 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
           <Shadowed offset={4} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 12 }}>
               <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>MAIN CURRICULUM</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>MAIN CURRICULUM</Text>
               </View>
-              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: C, opacity: 0.75, marginTop: 2 }}>CHAPTER {cur.ch} · {cur.dept}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C, marginTop: 4, marginBottom: 8 }}>{cur.name}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, opacity: 0.75, marginTop: 2 }}>CHAPTER {cur.ch} · {cur.dept}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 4, marginBottom: 8 }}>{cur.name}</Text>
               <ProgressBar done={cur.done} total={cur.total} />
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: C }}>다음 · {cur.next ?? '준비 중'}</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: C }}>다음 · {cur.next ?? '준비 중'}</Text>
                 <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => onResume(curNowStep?.scenarioId)} />
               </View>
             </View>
@@ -143,10 +143,10 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
       {shown?.steps && shown.steps.length > 0 && (
         <>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>━ CHAPTER {shown.ch} {reviewing ? '복습' : '진행'} ━━━</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>━ CHAPTER {shown.ch} {reviewing ? '복습' : '진행'} ━━━</Text>
             {reviewing && (
               <Pressable onPress={() => setViewCh(null)} style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 6 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>현재 챕터 ›</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>현재 챕터 ›</Text>
               </Pressable>
             )}
           </View>
@@ -162,14 +162,14 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: bg, borderWidth: 2.5, borderColor: s.state === 'lock' ? C + '55' : C, paddingVertical: 8, paddingHorizontal: 9, opacity: s.state === 'lock' ? 0.55 : 1 }}>
                   {s.state === 'lock'
                     ? <PixelIcon name="lock" color={colors.textFaint} size={14} sw={1.8} />
-                    : <Text style={{ fontSize: 14 }}>{m.icon}</Text>}
+                    : <Text style={{ fontSize: fs(14) }}>{m.icon}</Text>}
                   <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: 11.5, color: C, lineHeight: 15 }}>{s.name}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: colors.textSoft, marginTop: 2 }}>{m.label}{opt ? ' · 선택' : ''}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 15 }}>{s.name}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft, marginTop: 2 }}>{m.label}{opt ? ' · 선택' : ''}</Text>
                   </View>
-                  {s.state === 'done' && <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.mintShadow }}>✓</Text>}
-                  {s.state === 'now' && <View style={{ backgroundColor: C, paddingVertical: 2, paddingHorizontal: 6 }}><Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.cream }}>NOW</Text></View>}
-                  {opt && <View style={{ backgroundColor: '#A78BFA', borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: '#fff' }}>보너스</Text></View>}
+                  {s.state === 'done' && <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.mintShadow }}>✓</Text>}
+                  {s.state === 'now' && <View style={{ backgroundColor: C, paddingVertical: 2, paddingHorizontal: 6 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>NOW</Text></View>}
+                  {opt && <View style={{ backgroundColor: '#A78BFA', borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: '#fff' }}>보너스</Text></View>}
                 </View>
               );
               return (
@@ -186,7 +186,7 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
       )}
 
       {/* full roadmap */}
-      <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 전체 로드맵 ━━━━━━━━</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 전체 로드맵 ━━━━━━━━</Text>
       {chapters.map((c, i) => {
         const lock = c.state === 'lock', now = c.state === 'now';
         const viewing = shown?.ch === c.ch; // currently shown in the timeline above
@@ -197,13 +197,13 @@ function Curriculum({ chapters, onResume }: { chapters: CurriculumChapter[]; onR
                 ? <PixelIcon name="check" color={now ? colors.cream : C} size={13} sw={2} />
                 : lock
                   ? <PixelIcon name="lock" color={now ? colors.cream : C} size={13} sw={1.8} />
-                  : <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: now ? colors.cream : C }}>{c.ch}</Text>}
+                  : <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: now ? colors.cream : C }}>{c.ch}</Text>}
             </View>
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 15 }}>{c.name}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{c.dept} · {c.done}/{c.total}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{c.name}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 2 }}>{c.dept} · {c.done}/{c.total}</Text>
             </View>
-            {!lock && <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{viewing ? '보는 중' : '›'}</Text>}
+            {!lock && <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{viewing ? '보는 중' : '›'}</Text>}
           </View>
         );
         return (
@@ -226,7 +226,7 @@ function Buildings({ onFloor }: { onFloor: (b: Building, f: Floor) => void }) {
       <Shadowed offset={2.5} style={{ marginBottom: 12 }}>
         <View style={{ flexDirection: 'row', gap: 7, backgroundColor: colors.blue, borderWidth: 2.5, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
           <PixelIcon name="pin" color={C} size={14} sw={1.8} />
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C, lineHeight: 15 }}>
+          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C, lineHeight: 15 }}>
             <Text style={{ fontFamily: fonts.heading }}>여기</Text>는 장소로 찾는 곳 — 층을 누르면 그 부서의 학습 카드가 열려요. 지금 병원 전체에 벌어지는 일은 <Text style={{ fontFamily: fonts.heading }}>상황판</Text> 탭에서 시간순으로 봐요.
           </Text>
         </View>
@@ -239,28 +239,28 @@ function Buildings({ onFloor }: { onFloor: (b: Building, f: Floor) => void }) {
             <View style={{ borderWidth: 3, borderColor: C, backgroundColor: '#fff' }}>
               <Pressable onPress={() => setOpen(isOpen ? '' : b.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 10, paddingHorizontal: 11, backgroundColor: isOpen ? colors.cream : '#fff', borderBottomWidth: isOpen ? 2.5 : 0, borderBottomColor: C }}>
                 <View style={{ width: 28, height: 28, backgroundColor: b.accent, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 14 }}>{b.icon}</Text>
+                  <Text style={{ fontSize: fs(14) }}>{b.icon}</Text>
                 </View>
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12.5, color: C }}>{b.name}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, marginTop: 2 }}>{b.sub}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{b.name}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{b.sub}</Text>
                 </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{isOpen ? '▾' : '▸'}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{isOpen ? '▾' : '▸'}</Text>
               </Pressable>
               {isOpen && b.floors.map((f, j) => (
                 <Pressable key={j} onPress={() => onFloor(b, f)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 11, borderBottomWidth: j < b.floors.length - 1 ? 1.5 : 0, borderBottomColor: C + '33', borderStyle: 'dotted' }}>
                   <View style={{ width: 40, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9.5, color: colors.cream }}>{f.f}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.cream }}>{f.f}</Text>
                   </View>
                   <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 14 }}>{f.d}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 14 }}>{f.d}</Text>
                     <View style={{ flexDirection: 'row', gap: 4, marginTop: 4 }}>
                       {!!f.cur && <Chip label={`CH.${f.cur}`} bg={colors.mint} color={C} />}
                       <Chip label={`상황 ${f.n}`} bg="#fff" color={colors.textSoft} />
                       {f.hot && <Chip label="긴급" bg={colors.red} color={C} />}
                     </View>
                   </View>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>›</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>›</Text>
                 </Pressable>
               ))}
             </View>
@@ -333,14 +333,14 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
             <View style={{ width: 40, height: 4, backgroundColor: C + '44', alignSelf: 'center', marginBottom: 9 }} />
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
               <View style={{ width: 34, height: 34, backgroundColor: dept.accent, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 17 }}>{dept.icon}</Text>
+                <Text style={{ fontSize: fs(17) }}>{dept.icon}</Text>
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: C }}>{dept.name}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, marginTop: 2 }}>{dept.where}{dept.en ? ` · ${dept.en}` : ''}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{dept.name}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{dept.where}{dept.en ? ` · ${dept.en}` : ''}</Text>
               </View>
               <Pressable onPress={onClose} style={{ width: 24, height: 24, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>×</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>×</Text>
               </Pressable>
             </View>
           </View>
@@ -358,23 +358,23 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
               {[['권장 레벨', lvTile], ['해결한 상황', clearedTile], ['커리큘럼', chapter ? `CH.${chapter.ch}` : '—']].map(([k, v], i) => (
                 <Shadowed key={i} offset={2.5} style={{ flex: 1 }}>
                   <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 7, paddingHorizontal: 6, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: 8.5, color: colors.textSoft }}>{k}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C, marginTop: 2 }}>{v}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8.5), color: colors.textSoft }}>{k}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 2 }}>{v}</Text>
                   </View>
                 </Shadowed>
               ))}
             </View>
 
             {/* 이 부서의 커리큘럼 — server-driven (live progress) */}
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 이 부서의 커리큘럼 ━━━━━</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 이 부서의 커리큘럼 ━━━━━</Text>
             {chapter && chapter.state !== 'lock' ? (
               <Shadowed offset={3} shadowColor={colors.mintShadow} style={{ marginBottom: 16 }}>
                 <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 11 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: C, opacity: 0.75 }}>CHAPTER {chapter.ch}{chapter.state === 'done' ? ' · 완료' : ''}</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 14, color: C, marginTop: 3, marginBottom: 7 }}>{chapter.name}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: C, opacity: 0.75 }}>CHAPTER {chapter.ch}{chapter.state === 'done' ? ' · 완료' : ''}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginTop: 3, marginBottom: 7 }}>{chapter.name}</Text>
                   <ProgressBar done={chapter.done} total={chapter.total} />
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
-                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: C }}>{chapter.state === 'done' ? '이 챕터를 마쳤어요' : `다음 · ${chapter.next ?? '준비 중'}`}</Text>
+                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C }}>{chapter.state === 'done' ? '이 챕터를 마쳤어요' : `다음 · ${chapter.next ?? '준비 중'}`}</Text>
                     {chapter.state !== 'done' && (
                       <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={11.5} borderWidth={2} paddingV={6} paddingH={11} onPress={() => onStart(chapterNowScn)} />
                     )}
@@ -383,14 +383,14 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
               </Shadowed>
             ) : (
               <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', padding: 14, marginBottom: 16 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, textAlign: 'center' }}>{chapter ? '이전 챕터를 완료하면 열려요.' : '이 부서의 학습 콘텐츠가 곧 추가돼요.'}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center' }}>{chapter ? '이전 챕터를 완료하면 열려요.' : '이 부서의 학습 콘텐츠가 곧 추가돼요.'}</Text>
               </View>
             )}
 
             {/* 이 부서의 상황 — server-driven (dept-scoped, tagged by cleared) */}
-            <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 이 부서의 상황 ━━━━━━</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 이 부서의 상황 ━━━━━━</Text>
             {sits.length === 0 && (
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, textAlign: 'center', paddingVertical: 14 }}>준비 중인 상황이에요.</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 14 }}>준비 중인 상황이에요.</Text>
             )}
             {sits.map((s, i) => {
               const done = s.tag === '완료';
@@ -400,12 +400,12 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
                     <View style={{ flex: 1, minWidth: 0 }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
                         <View style={{ backgroundColor: done ? colors.mint : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
                         </View>
-                        {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
+                        {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
                       </View>
-                      <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 15 }}>{s.name}</Text>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{s.name}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
                     </View>
                     <PixelButton label={done ? '복습' : '시작'} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
                   </View>
@@ -414,7 +414,7 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
             })}
             {hasMore && (
               <Pressable onPress={loadMoreSits} style={{ paddingVertical: 12, alignItems: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10.5, color: colors.textSoft }}>더 많은 상황 불러오기 ▾</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft }}>더 많은 상황 불러오기 ▾</Text>
               </Pressable>
             )}
           </ScrollView>
@@ -444,7 +444,7 @@ function ProgressBar({ done, total }: { done: number; total: number }) {
   return (
     <View style={{ height: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, justifyContent: 'center' }}>
       <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${pct}%`, backgroundColor: colors.mintShadow }} />
-      <Text style={{ position: 'absolute', right: 4, fontFamily: fonts.heading, fontSize: 8.5, color: C }}>{done}/{total}</Text>
+      <Text style={{ position: 'absolute', right: 4, fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{done}/{total}</Text>
     </View>
   );
 }
@@ -452,7 +452,7 @@ function ProgressBar({ done, total }: { done: number; total: number }) {
 function Chip({ label, bg, color }: { label: string; bg: string; color: string }) {
   return (
     <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 4 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color }}>{label}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color }}>{label}</Text>
     </View>
   );
 }

@@ -6,7 +6,7 @@ import { Stack, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PixelButton } from '@/components/PixelButton';
 import { VertGradient, Cloud, PixelSun, PixelPlane } from '@/components/onboardingArt';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -27,10 +27,10 @@ export default function Splash() {
 
       {/* logo + tagline */}
       <View style={{ position: 'absolute', top: 402, left: 0, right: 0, alignItems: 'center', paddingHorizontal: 24 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 60, color: C, letterSpacing: 3, textShadowColor: colors.yellow, textShadowOffset: { width: 4, height: 4 }, textShadowRadius: 0 }}>forin</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 13, color: colors.text, marginTop: 16, textAlign: 'center', lineHeight: 21 }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(60), color: C, letterSpacing: 3, textShadowColor: colors.yellow, textShadowOffset: { width: 4, height: 4 }, textShadowRadius: 0 }}>forin</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.text, marginTop: 16, textAlign: 'center', lineHeight: 21 }}>
           해외 이직, 언어로 막막할 때{'\n'}
-          <Text style={{ color: C, fontSize: 14 }}>가장 따뜻한 현장 시뮬레이션</Text>
+          <Text style={{ color: C, fontSize: fs(14) }}>가장 따뜻한 현장 시뮬레이션</Text>
         </Text>
       </View>
 
@@ -38,7 +38,7 @@ export default function Splash() {
       <SafeAreaView edges={['bottom']} style={{ position: 'absolute', left: 0, right: 0, bottom: 24, paddingHorizontal: 32 }}>
         <PixelButton label="처음 시작하기" icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} paddingV={15} fontSize={15} full onPress={() => router.push('/login')} />
         <Pressable onPress={() => router.push('/login')} hitSlop={8} style={{ marginTop: 14, alignSelf: 'center' }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft }}>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>
             이미 계정이 있다면 · <Text style={{ color: C, textDecorationLine: 'underline' }}>로그인</Text>
           </Text>
         </Pressable>

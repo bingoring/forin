@@ -12,6 +12,7 @@ import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import type { MapObject } from '@engine';
+import { fs } from '@/theme/tokens';
 
 const C = '#2A2522';
 const S = TILE / 16;
@@ -364,7 +365,7 @@ export function IsoSign({ x, y }: { x: number; y: number }) {
   return (
     <Box x={x} y={y} offX={-4} offY={-14} w={40} h={22} z={4}>
       <View style={{ alignSelf: 'flex-start', backgroundColor: '#FACC15', borderWidth: 2.5, borderColor: '#DC2626', paddingHorizontal: 5, paddingVertical: 2 }}>
-        <Text style={{ fontFamily: FONT, fontSize: 8, color: '#7F1D1D', textAlign: 'center', lineHeight: 10 }}>CONTACT{'\n'}ISOLATION</Text>
+        <Text style={{ fontFamily: FONT, fontSize: fs(8), color: '#7F1D1D', textAlign: 'center', lineHeight: 10 }}>CONTACT{'\n'}ISOLATION</Text>
       </View>
     </Box>
   );

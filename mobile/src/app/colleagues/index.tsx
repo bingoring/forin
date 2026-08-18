@@ -8,7 +8,7 @@ import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { CheerSheet } from '@/components/CheerSheet';
 import { api, type Colleague, type ColleagueRelation, type ColleagueRequest, type InviteCode } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -24,7 +24,7 @@ export function RelTag({ relation }: { relation: ColleagueRelation }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: r.bg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
       <PixelIcon name={r.icon} color={C} size={9} sw={1.8} />
-      <Text style={{ fontFamily: fonts.heading, fontSize: 8.5, color: C }}>{r.label}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{r.label}</Text>
     </View>
   );
 }
@@ -78,7 +78,7 @@ export default function ColleaguesScreen() {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>
       ) : state === 'error' ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft }}>동료를 불러오지 못했어요.</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>동료를 불러오지 못했어요.</Text>
         </View>
       ) : (
         <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 32 }}>
@@ -87,11 +87,11 @@ export default function ColleaguesScreen() {
             <Shadowed offset={3} style={{ marginBottom: 13 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 9.5, color: colors.cream, opacity: 0.75 }}>내 초대 코드</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 19, color: colors.mint, letterSpacing: 2, marginTop: 3 }}>{code.code}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.cream, opacity: 0.75 }}>내 초대 코드</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: colors.mint, letterSpacing: 2, marginTop: 3 }}>{code.code}</Text>
                 </View>
                 <Pressable onPress={() => router.push('/colleagues/add')} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 9 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>+ 추가</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>+ 추가</Text>
                 </Pressable>
               </View>
             </Shadowed>
@@ -101,15 +101,15 @@ export default function ColleaguesScreen() {
           {requests.map((q) => (
             <Shadowed key={q.id} offset={3} shadowColor={colors.peachShadow} style={{ marginBottom: 10 }}>
               <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: C, lineHeight: 16 }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>
                   <Text style={{ fontFamily: fonts.heading }}>{q.name}</Text>님이 동료 요청을 보냈어요
                 </Text>
                 <View style={{ flexDirection: 'row', gap: 8, marginTop: 9 }}>
                   <Pressable onPress={() => respond(q.id, true)} style={{ flex: 1, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 7, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: colors.cream }}>수락</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.cream }}>수락</Text>
                   </Pressable>
                   <Pressable onPress={() => respond(q.id, false)} style={{ flex: 1, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 7, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>거절</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>거절</Text>
                   </Pressable>
                 </View>
               </View>
@@ -124,17 +124,17 @@ export default function ColleaguesScreen() {
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}
               >
                 <PixelIcon name="clap" color={C} size={18} sw={1.7} />
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 11, color: C }}>받은 응원 {unread}건</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>확인</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: C }}>받은 응원 {unread}건</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>확인</Text>
               </Pressable>
             </Shadowed>
           )}
 
-          <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 }}>━ 내 동료 ━━━━━━━━━</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 내 동료 ━━━━━━━━━</Text>
 
           {rows.length === 0 ? (
             <View style={{ paddingVertical: 26, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>
                 아직 동료가 없어요.{'\n'}코드를 주고받아 연결해보세요.
               </Text>
             </View>
@@ -152,13 +152,13 @@ export default function ColleaguesScreen() {
                 </View>
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{c.name}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{c.name}</Text>
                     <RelTag relation={c.relation} />
                   </View>
-                  <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: 10.5, color: colors.textSoft, lineHeight: 15 }}>
+                  <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 15 }}>
                     {c.statusHidden ? '학습 현황 비공개' : c.activity || '조용한 하루'}
                   </Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginTop: 3 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 3 }}>
                     {c.relation === 'mentor' ? (c.targetLevel || '멘토') : `Lv.${c.targetLevel || '-'}`}
                     {c.streak ? ` · 연속 ${c.streak}일` : ''}
                   </Text>
@@ -173,7 +173,7 @@ export default function ColleaguesScreen() {
             </Shadowed>
           ))}
 
-          <Text style={{ marginTop: 6, textAlign: 'center', fontFamily: fonts.body, fontSize: 9.5, color: colors.textFaint, lineHeight: 15 }}>
+          <Text style={{ marginTop: 6, textAlign: 'center', fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textFaint, lineHeight: 15 }}>
             현지 간호사 멘토 매칭은 준비 중이에요
           </Text>
         </ScrollView>
@@ -203,12 +203,12 @@ export function Header({ title, sub, onBack }: { title: string; sub?: string; on
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
         {!!onBack && (
           <Pressable onPress={onBack} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>‹</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>‹</Text>
           </Pressable>
         )}
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>{title}</Text>
-          {!!sub && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{sub}</Text>}
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>{title}</Text>
+          {!!sub && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{sub}</Text>}
         </View>
       </View>
     </View>

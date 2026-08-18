@@ -11,7 +11,7 @@ import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts, space, type as t } from '@/theme/tokens';
+import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 const GRADES: { g: ReviewGrade; label: string; bg: string; blurb: string; guide: string }[] = [
@@ -91,15 +91,15 @@ export default function Lab() {
         {/* hero */}
         <Shadowed offset={4}>
           <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C, opacity: 0.7 }}>오늘의 복습</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 복습</Text>
             {cards.length > 0 ? (
-              <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C, marginTop: 6, lineHeight: 25 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>
                 <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
               </Text>
             ) : (
-              <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
             )}
-            <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, marginTop: 8, lineHeight: 16 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
               AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
             </Text>
             {cards.length > 0 && (
@@ -117,23 +117,23 @@ export default function Lab() {
         <Shadowed offset={3}>
           <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
             <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
-              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 12, color: C }}>복습 등급이 뭔가요?</Text>
+              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(12), color: C }}>복습 등급이 뭔가요?</Text>
               <PixelIcon name={guideOpen ? 'chevron-up' : 'chevron-down'} color={colors.textSoft} size={14} sw={1.8} />
             </Pressable>
             {guideOpen && (
               <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8, borderTopWidth: 2, borderTopColor: C }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16, marginTop: 10 }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
                   카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
                 </Text>
                 {GRADES.map(({ g, label, bg, guide }) => (
                   <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
                     <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{label}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{label}</Text>
                     </View>
-                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: colors.text, lineHeight: 15 }}>{guide}</Text>
+                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{guide}</Text>
                   </View>
                 ))}
-                <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
                   숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 '마스터'로 분류돼요.
                 </Text>
               </View>
@@ -158,9 +158,9 @@ export default function Lab() {
                 <Pressable key={c.id} onPress={() => setFilter(c.id)}>
                   <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: active ? C : C }}>{c.label}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: active ? C : C }}>{c.label}</Text>
                       <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{c.count}</Text>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{c.count}</Text>
                       </View>
                     </View>
                   </Shadowed>
@@ -174,7 +174,7 @@ export default function Lab() {
         {shown.length === 0 ? (
           <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
             <PixelIcon name="note" color={colors.textFaint} size={40} sw={1.5} />
-            <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
           </View>
         ) : (
           shown.map((c) => <PhraseCard key={c.id} card={c} onGrade={grade} />)
@@ -188,11 +188,11 @@ export default function Lab() {
             <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 11, paddingHorizontal: 16, minWidth: 250, alignItems: 'center' }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <View style={{ backgroundColor: toast.bg, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>{toast.label}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{toast.label}</Text>
                 </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{toast.next}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{toast.next}</Text>
               </View>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
             </View>
           </Shadowed>
         </View>
@@ -227,13 +227,13 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
       <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
         {/* header: per-topic tone + dept label + 복습 badge + tag chip */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 7, paddingHorizontal: 10, backgroundColor: toneOf(card.topicTag), borderBottomWidth: 2.5, borderBottomColor: C }}>
-          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 10, color: C }}>{dept}</Text>
+          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{dept}</Text>
           <View style={{ backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#fff' }}>복습</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#fff' }}>복습</Text>
           </View>
           {!!tag && (
             <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{tag}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{tag}</Text>
             </View>
           )}
         </View>
@@ -242,12 +242,12 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           {/* bad */}
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start' }}>
             <Badge text="✕" bg="#FEE2E2" color="#B91C1C" />
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 12, color: colors.textFaint, textDecorationLine: 'line-through', lineHeight: 17 }}>{card.front}</Text>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: colors.textFaint, textDecorationLine: 'line-through', lineHeight: 17 }}>{card.front}</Text>
           </View>
           {/* good */}
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start', marginTop: 8 }}>
             <Badge text="✓" bg={colors.mint} color={C} />
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, lineHeight: 18 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 18 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
             <Pressable onPress={speak} hitSlop={8}><PixelIcon name="volume" color={C} size={16} sw={1.8} /></Pressable>
             <Pressable onPress={practicePronunciation} hitSlop={8}><PixelIcon name="mic" color={C} size={16} sw={1.8} /></Pressable>
           </View>
@@ -255,7 +255,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           {/* note */}
           {!!card.note && (
             <View style={{ marginTop: 10, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.text, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>왜? </Text>{card.note}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>왜? </Text>{card.note}</Text>
             </View>
           )}
 
@@ -265,23 +265,23 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
               <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                 <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>맥락</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>맥락</Text>
                     <PixelIcon name={showCtx ? 'chevron-up' : 'chevron-down'} color={C} size={11} sw={1.8} />
                   </View>
                 </View>
                 {!showCtx && !!ctx?.title && (
-                  <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft }}>{ctx.title}</Text>
+                  <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft }}>{ctx.title}</Text>
                 )}
               </Pressable>
               {showCtx && (
                 <View style={{ marginTop: 8, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
-                  {!!ctx?.title && <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 4 }}>{ctx.title}</Text>}
-                  {!!ctx?.situation && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.text, lineHeight: 15 }}>{ctx.situation}</Text>}
+                  {!!ctx?.title && <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 4 }}>{ctx.title}</Text>}
+                  {!!ctx?.situation && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, lineHeight: 15 }}>{ctx.situation}</Text>}
                   {!!ctx?.npc && (
                     <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: '#2A252233' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: colors.textSoft, marginBottom: 2 }}>상대가 이렇게 말했고</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>{ctx.npc}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15, marginTop: 3 }}>→ 여기에 답하며 한 말이에요.</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginBottom: 2 }}>상대가 이렇게 말했고</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{ctx.npc}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 3 }}>→ 여기에 답하며 한 말이에요.</Text>
                     </View>
                   )}
                 </View>
@@ -291,7 +291,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
 
           {/* mastery pips */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 10 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginRight: 2 }}>숙련</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginRight: 2 }}>숙련</Text>
             {[0, 1, 2].map((i) => (
               <View key={i} style={{ width: 9, height: 9, borderWidth: 1.5, borderColor: C, backgroundColor: i < card.masteryPips ? colors.mint : '#fff' }} />
             ))}
@@ -314,7 +314,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
 function Badge({ text, bg, color }: { text: string; bg: string; color: string }) {
   return (
     <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, marginTop: 1 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color }}>{text}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color }}>{text}</Text>
     </View>
   );
 }
@@ -324,8 +324,8 @@ function MiniStat({ label, value, color }: { label: string; value: number; color
     <Shadowed offset={2} shadowColor={C + '66'} style={{ flex: 1 }}>
       <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
         <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, backgroundColor: color }} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: 22, color: C }}>{value}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: 9, color: colors.textSoft, marginTop: 2 }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(22), color: C }}>{value}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft, marginTop: 2 }}>{label}</Text>
       </View>
     </Shadowed>
   );

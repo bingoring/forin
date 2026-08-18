@@ -25,7 +25,7 @@ import { AbbrQuiz } from '@/components/quiz/AbbrQuiz';
 import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -49,7 +49,7 @@ export default function QuizRoute() {
           <ActivityIndicator color={colors.mint} />
         ) : (
           <>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 15, color: '#fff' }}>퀴즈를 불러오지 못했습니다</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff' }}>퀴즈를 불러오지 못했습니다</Text>
             <PixelButton label="‹ 돌아가기" onPress={() => router.back()} />
           </>
         )}
@@ -139,13 +139,13 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
           {!!progress && progress.total > 1 && (
             <Shadowed offset={2} shadowColor={colors.mintShadow}>
               <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{progress.cur}/{progress.total}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{progress.cur}/{progress.total}</Text>
               </View>
             </Shadowed>
           )}
           <Shadowed offset={2}>
             <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{c.zone || 'QUIZ'} · {quiz.title}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{c.zone || 'QUIZ'} · {quiz.title}</Text>
             </View>
           </Shadowed>
         </View>
@@ -161,12 +161,12 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
             <View style={{ paddingHorizontal: 14, paddingTop: 12, paddingBottom: 10, borderBottomWidth: 3, borderBottomColor: '#2A252244', borderStyle: 'dotted', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Shadowed offset={2} shadowColor={colors.peachShadow}>
                 <View style={{ backgroundColor: colors.peach, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>정형 학습</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>정형 학습</Text>
                 </View>
               </Shadowed>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{quiz.title}</Text>
-                {!!c.sub && <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginTop: 3 }}>{c.sub}</Text>}
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{quiz.title}</Text>
+                {!!c.sub && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{c.sub}</Text>}
               </View>
             </View>
 
@@ -175,9 +175,9 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
               {!!c.context && (
                 <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, marginBottom: 14, position: 'relative' }}>
                   <View style={{ position: 'absolute', top: -6, left: 12, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>CONTEXT</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>CONTEXT</Text>
                   </View>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 16 }}>{c.context}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{c.context}</Text>
                 </View>
               )}
 
@@ -188,7 +188,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
                     {segments.map((seg, si) => (
                       <View key={si} style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' }}>
                         {seg.split(' ').filter(Boolean).map((word, wi) => (
-                          <Text key={wi} style={{ fontFamily: fonts.body, fontSize: 14, color: C, lineHeight: 30 }}> {word} </Text>
+                          <Text key={wi} style={{ fontFamily: fonts.body, fontSize: fs(14), color: C, lineHeight: 30 }}> {word} </Text>
                         ))}
                         {si < blankCount && (
                           <Slot
@@ -207,7 +207,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
 
               {/* word bank */}
               <View style={{ marginTop: 16 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft, marginBottom: 6 }}>━ 단어 카드 ━━━━━━━━</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 6 }}>━ 단어 카드 ━━━━━━━━</Text>
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
                   {tiles.map((tile, ti) => (
                     <WordTile key={ti} word={tile.word} used={usedTiles.has(ti)} onPress={() => placeTile(ti)} />
@@ -221,14 +221,14 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
                   <View style={{ width: 18, height: 18, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                     <PixelIcon name="bulb" color={C} size={12} sw={1.8} />
                   </View>
-                  <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}>{c.hint}</Text>
+                  <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>{c.hint}</Text>
                 </View>
               )}
 
               {/* result banner */}
               {checked && (
                 <View style={{ marginTop: 16, backgroundColor: allCorrect ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: C }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>
                     {allCorrect ? '✓ 정답입니다!' : '✗ 다시 시도해 보세요'}
                   </Text>
                 </View>
@@ -261,7 +261,7 @@ function Slot({ word, checked, correct, active, onPress }: { word: string | null
   const border = active ? colors.yellowShadow : C;
   return (
     <Pressable onPress={onPress} style={{ marginHorizontal: 3, minWidth: 54, paddingVertical: 4, paddingHorizontal: 10, borderWidth: 2.5, borderColor: border, borderStyle: word ? 'solid' : 'dashed', backgroundColor: bg, alignItems: 'center' }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: word ? C : colors.yellowShadow }}>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: word ? C : colors.yellowShadow }}>
         {word ?? '?'}{checked && word && (correct ? ' ✓' : ' ✗')}
       </Text>
     </Pressable>
@@ -272,14 +272,14 @@ function WordTile({ word, used, onPress }: { word: string; used: boolean; onPres
   if (used) {
     return (
       <View style={{ paddingVertical: 8, paddingHorizontal: 14, borderWidth: 3, borderColor: C, backgroundColor: '#2A252222' }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: colors.textFaint, textDecorationLine: 'line-through' }}>{word}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: colors.textFaint, textDecorationLine: 'line-through' }}>{word}</Text>
       </View>
     );
   }
   return (
     <Shadowed offset={3}>
       <Pressable onPress={onPress} style={{ paddingVertical: 8, paddingHorizontal: 14, borderWidth: 3, borderColor: C, backgroundColor: '#fff' }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: C }}>{word}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{word}</Text>
       </Pressable>
     </Shadowed>
   );

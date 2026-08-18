@@ -8,6 +8,7 @@ import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
 import type { MapObject } from '@engine';
+import { fs } from '@/theme/tokens';
 
 const C = '#2A2522';
 const S = TILE / 16;
@@ -1240,7 +1241,7 @@ export function BayLabel({ x, y, text, highlight }: { x: number; y: number; text
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: x * TILE + 2, top: y * TILE + 1 }}>
       <View style={{ backgroundColor: highlight ? '#FEF08A' : '#FFFFFFDD', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, paddingVertical: 1 }}>
-        <Text style={{ fontFamily: 'DungGeunMo', fontSize: 7, color: C }}>{text}</Text>
+        <Text style={{ fontFamily: 'DungGeunMo', fontSize: fs(7), color: C }}>{text}</Text>
       </View>
     </View>
   );

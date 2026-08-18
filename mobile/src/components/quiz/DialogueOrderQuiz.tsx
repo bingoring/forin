@@ -5,7 +5,7 @@
 import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -32,9 +32,9 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
     return (
       <View style={{ flexDirection: 'row', alignItems: 'stretch' }}>
         <View style={{ width: 46, backgroundColor: sp.bg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center', opacity: faded ? 0.6 : 1 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>{sp.label}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{sp.label}</Text>
         </View>
-        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: C, padding: 7, lineHeight: 15 }}>{card.text}</Text>
+        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: C, padding: 7, lineHeight: 15 }}>{card.text}</Text>
       </View>
     );
   };
@@ -52,7 +52,7 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
     >
       {!!c.context && <ContextBox text={c.context} />}
 
-      <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 대화 순서 (1→{cards.length}) ━</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 대화 순서 (1→{cards.length}) ━</Text>
       <View style={{ gap: 6 }}>
         {cards.map((_, slot) => {
           const ci = placed[slot];
@@ -61,7 +61,7 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
           return (
             <View key={slot} style={{ flexDirection: 'row', alignItems: 'stretch', gap: 6 }}>
               <View style={{ width: 22, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{slot + 1}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{slot + 1}</Text>
               </View>
               {ci !== undefined ? (
                 <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, borderWidth: 2, borderColor: C, backgroundColor: ok ? '#DCFCE7' : bad ? '#FEE2E2' : '#fff' }}>
@@ -69,7 +69,7 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
                 </Pressable>
               ) : (
                 <View style={{ flex: 1, borderWidth: 2, borderColor: '#2A252555', borderStyle: 'dashed', padding: 9 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textFaint }}>비어 있음</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textFaint }}>비어 있음</Text>
                 </View>
               )}
             </View>
@@ -79,7 +79,7 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
 
       {inBank.length > 0 && (
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: colors.textSoft, marginBottom: 5 }}>━ 대사 카드 ━</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 대사 카드 ━</Text>
           <View style={{ gap: 6 }}>
             {inBank.map((ci) => (
               <Shadowed key={ci} offset={2}>

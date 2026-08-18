@@ -5,7 +5,7 @@ import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, Text, View, type LayoutChangeEvent, type GestureResponderEvent } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
+import { border, colors, fonts, type as typeScale, fs } from '@/theme/tokens';
 import { TILE, coordToPx, type Coord } from '@engine';
 import { regionAt } from '@engine';
 import { boxInView, OBJECT_FOOTPRINT } from '@engine';
@@ -67,7 +67,7 @@ function HotspotMarker({ h }: { h: MarkerT }) {
           shadowRadius: 0,
         }}
       >
-        <Text style={{ fontFamily: fonts.heading, fontSize: 22, lineHeight: 26, color: fg }}>{glyph}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(22), lineHeight: 26, color: fg }}>{glyph}</Text>
       </View>
     </Animated.View>
   );

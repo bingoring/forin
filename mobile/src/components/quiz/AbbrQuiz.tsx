@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -54,14 +54,14 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
         {deck.map((_, i) => (
           <View key={i} style={{ width: 14, height: 14, borderWidth: 2, borderColor: C, backgroundColor: solved[i] ? colors.mint : i === idx ? colors.yellow : '#fff' }} />
         ))}
-        <Text style={{ marginLeft: 'auto', fontFamily: fonts.heading, fontSize: 10, color: colors.textSoft }}>{idx + 1} / {deck.length} · {score}점</Text>
+        <Text style={{ marginLeft: 'auto', fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{idx + 1} / {deck.length} · {score}점</Text>
       </View>
 
       {/* the abbreviation */}
       <Shadowed offset={4}>
         <View style={{ backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 22, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 40, color: colors.cream, letterSpacing: 2 }}>{card?.term}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: '#94A3B8', marginTop: 4 }}>{cardSolved ? '정답! 다음으로' : '이 약어의 뜻은?'}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(40), color: colors.cream, letterSpacing: 2 }}>{card?.term}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: '#94A3B8', marginTop: 4 }}>{cardSolved ? '정답! 다음으로' : '이 약어의 뜻은?'}</Text>
         </View>
       </Shadowed>
 
@@ -75,9 +75,9 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
             <Shadowed key={i} offset={2} shadowColor={showRight ? colors.mintShadow : showWrong ? '#EF4444' : C}>
               <Pressable onPress={() => pick(opt)} disabled={cardSolved || showWrong} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: bg, borderWidth: 2.5, borderColor: C, padding: 11, opacity: showWrong ? 0.6 : 1 }}>
                 <View style={{ width: 20, height: 20, backgroundColor: colors.paper, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>{showRight ? '✓' : showWrong ? '✕' : String.fromCharCode(65 + i)}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{showRight ? '✓' : showWrong ? '✕' : String.fromCharCode(65 + i)}</Text>
                 </View>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C }}>{opt}</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C }}>{opt}</Text>
               </Pressable>
             </Shadowed>
           );
@@ -86,7 +86,7 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
 
       {cardSolved && !!c.note && isLast && (
         <View style={{ marginTop: 12, backgroundColor: colors.cream, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
         </View>
       )}
     </QuizShell>

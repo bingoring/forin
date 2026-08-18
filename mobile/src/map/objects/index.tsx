@@ -6,7 +6,7 @@
 import { Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 import { TILE } from '@engine';
-import { fonts } from '@/theme/tokens';
+import { fonts, fs } from '@/theme/tokens';
 import { ClinicObjectView } from './clinicEquipment';
 import { LandmarkView } from './landmarks';
 import { CampusObjectView } from './campusEquipment';
@@ -271,7 +271,7 @@ function Building({ x, y, w = 4, h = 4, roofKey = 'blue', roofPattern = 'solid',
         </View>
       ) : emblem ? (
         <View style={{ position: 'absolute', left: pw / 2 - 12, top: 6, width: 24, height: 24, backgroundColor: '#fff', borderWidth: 2, borderColor: INK, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 13, lineHeight: 16 }}>{emblem}</Text>
+          <Text style={{ fontSize: fs(13), lineHeight: 16 }}>{emblem}</Text>
         </View>
       ) : null}
       {/* front wall */}
@@ -293,7 +293,7 @@ function Building({ x, y, w = 4, h = 4, roofKey = 'blue', roofPattern = 'solid',
       {label ? (
         <View style={{ position: 'absolute', left: -20, right: -20, top: -22, alignItems: 'center' }}>
           <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: INK, paddingHorizontal: 7, paddingVertical: 3 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 13, color: INK, letterSpacing: 0.3 }}>{label}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: INK, letterSpacing: 0.3 }}>{label}</Text>
           </View>
         </View>
       ) : null}

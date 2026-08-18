@@ -39,7 +39,7 @@ import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
 import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 
 const C = colors.ink;
@@ -349,7 +349,7 @@ function ResultActions({ onRetry, onNext, nextDisabled }: { onRetry: () => void;
 function PermissionBody({ onOpenSettings, onRecheck }: { onOpenSettings: () => void; onRecheck: () => void }) {
   return (
     <View style={{ marginHorizontal: 16, marginTop: 20, gap: 12 }}>
-      <Text style={{ fontFamily: fonts.body, fontSize: 12, color: colors.text, lineHeight: 18 }}>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.text, lineHeight: 18 }}>
         발음을 채점하려면 마이크 권한이 필요해요. 설정에서 마이크 접근을 허용한 뒤 다시 시도해 주세요.
       </Text>
       <PixelButton label="설정 열기" bg={colors.blue} shadowColor={C} onPress={onOpenSettings} full />
@@ -883,67 +883,67 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', gap: 4,
     backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8,
   },
-  badgeText: { fontFamily: fonts.heading, fontSize: 10, color: C },
-  ctx: { fontFamily: fonts.body, fontSize: 10, marginTop: 11 },
-  step: { fontFamily: fonts.heading, fontSize: 15, marginTop: 4 },
+  badgeText: { fontFamily: fonts.heading, fontSize: fs(10), color: C },
+  ctx: { fontFamily: fonts.body, fontSize: fs(10), marginTop: 11 },
+  step: { fontFamily: fonts.heading, fontSize: fs(15), marginTop: 4 },
 
   riskBox: {
     flexDirection: 'row', gap: 9, margin: 16, marginTop: 13,
     backgroundColor: colors.peach, borderWidth: 3, borderColor: C, padding: 11,
   },
-  riskText: { flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: colors.text, lineHeight: 15 },
+  riskText: { flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 },
 
   banner: {
     flexDirection: 'row', alignItems: 'center', gap: 8, margin: 16, marginBottom: 0,
     backgroundColor: colors.peach, borderWidth: 2, borderColor: C, padding: 10,
   },
-  bannerText: { flex: 1, fontFamily: fonts.body, fontSize: 11, color: colors.text, lineHeight: 15 },
+  bannerText: { flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 15 },
 
   bigButtonWrap: { alignItems: 'center', marginTop: 22, marginBottom: 6 },
   bigButtonShadow: { position: 'absolute' },
   bigButtonCap: { borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' },
-  bigButtonLabel: { fontFamily: fonts.heading, fontSize: 12.5, color: C },
-  bigButtonSub: { fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft },
+  bigButtonLabel: { fontFamily: fonts.heading, fontSize: fs(12.5), color: C },
+  bigButtonSub: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft },
   stopGlyph: { width: 22, height: 22, backgroundColor: C },
 
   targetLine: { marginHorizontal: 16, marginTop: 16, padding: 13 },
-  targetLineText: { fontFamily: fonts.body, fontSize: 14, color: C, lineHeight: 22, textAlign: 'center' },
+  targetLineText: { fontFamily: fonts.body, fontSize: fs(14), color: C, lineHeight: 22, textAlign: 'center' },
   targetLineHi: { borderWidth: 2, borderColor: C, paddingHorizontal: 5, paddingVertical: 1 },
 
   wavePanel: { padding: 12 },
   wavePanelFooter: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12 },
   recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: '#EF4444' },
-  recTimer: { fontFamily: fonts.heading, fontSize: 12, color: '#22D3EE' },
-  remaining: { fontFamily: fonts.body, fontSize: 10, color: '#94A3B8' },
+  recTimer: { fontFamily: fonts.heading, fontSize: fs(12), color: '#22D3EE' },
+  remaining: { fontFamily: fonts.body, fontSize: fs(10), color: '#94A3B8' },
 
   syllableRow: { flexDirection: 'row', gap: 5 },
   syllableCell: { flex: 1, borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 2, alignItems: 'center' },
-  syllableCellText: { fontFamily: fonts.heading, fontSize: 8, lineHeight: 10 },
+  syllableCellText: { fontFamily: fonts.heading, fontSize: fs(8), lineHeight: 10 },
 
   scoreCard: { flexDirection: 'row', alignItems: 'center', gap: 13, padding: 14 },
   scoreTotal: { alignItems: 'center', flexShrink: 0 },
-  scoreTotalNum: { fontFamily: fonts.heading, fontSize: 34, color: C, lineHeight: 34 },
-  scoreTotalMax: { fontFamily: fonts.body, fontSize: 9.5, color: C, opacity: 0.8, marginTop: 3 },
+  scoreTotalNum: { fontFamily: fonts.heading, fontSize: fs(34), color: C, lineHeight: 34 },
+  scoreTotalMax: { fontFamily: fonts.body, fontSize: fs(9.5), color: C, opacity: 0.8, marginTop: 3 },
   scoreDivider: { width: 3, alignSelf: 'stretch', backgroundColor: C + '33' },
 
   waveCompare: { padding: 11 },
-  waveCompareCaption: { fontFamily: fonts.body, fontSize: 9, color: '#94A3B8', marginBottom: 6 },
+  waveCompareCaption: { fontFamily: fonts.body, fontSize: fs(9), color: '#94A3B8', marginBottom: 6 },
   waveCompareRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 },
   waveCompareTag: { borderWidth: 1.5, borderColor: C, paddingHorizontal: 5, paddingVertical: 1 },
-  waveCompareTagText: { fontFamily: fonts.heading, fontSize: 8.5, color: C },
-  waveCompareDuration: { fontFamily: fonts.body, fontSize: 9, color: '#94A3B8' },
+  waveCompareTagText: { fontFamily: fonts.heading, fontSize: fs(8.5), color: C },
+  waveCompareDuration: { fontFamily: fonts.body, fontSize: fs(9), color: '#94A3B8' },
 
-  correctionHeader: { fontFamily: fonts.heading, fontSize: 11, color: C, marginBottom: 8 },
+  correctionHeader: { fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 },
   suspectBanner: {
     flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8,
     backgroundColor: colors.peach, borderWidth: 2, borderColor: C, padding: 10,
   },
-  suspectText: { flex: 1, fontFamily: fonts.body, fontSize: 11, color: colors.text },
+  suspectText: { flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: colors.text },
 
   drillButton: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
     backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, paddingVertical: 11, opacity: 0.5,
   },
-  drillButtonText: { fontFamily: fonts.heading, fontSize: 12, color: colors.textFaint },
-  drillNote: { fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft, textAlign: 'center' },
+  drillButtonText: { fontFamily: fonts.heading, fontSize: fs(12), color: colors.textFaint },
+  drillNote: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, textAlign: 'center' },
 });

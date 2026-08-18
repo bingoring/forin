@@ -4,7 +4,7 @@
 // dose amounts yellow because those are the two spans where a mishearing
 // becomes a medication error (L83 of the same file spells that out).
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import type { TargetToken } from '@/lib/pronTokens';
 import { PixelIcon } from '@/components/PixelIcon';
 import { PronCard } from './PronCard';
@@ -82,11 +82,11 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 7,
   },
-  tagText: { fontFamily: fonts.heading, fontSize: 9, color: colors.cream },
-  line: { fontFamily: fonts.body, fontSize: 16, color: colors.ink, lineHeight: 30, marginTop: 4 },
+  tagText: { fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream },
+  line: { fontFamily: fonts.body, fontSize: fs(16), color: colors.ink, lineHeight: 30, marginTop: 4 },
   hi: {
     fontFamily: fonts.heading,
-    fontSize: 15,
+    fontSize: fs(15),
     borderWidth: 2,
     borderColor: colors.ink,
     paddingHorizontal: 5,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   ipa: {
     fontFamily: fonts.heading,
-    fontSize: 10.5,
+    fontSize: fs(10.5),
     color: colors.textSoft,
     marginTop: 9,
     letterSpacing: 0.3,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
   },
   flat: { opacity: 0.4 },
-  chipText: { fontFamily: fonts.heading, fontSize: 11, color: colors.ink },
+  chipText: { fontFamily: fonts.heading, fontSize: fs(11), color: colors.ink },
   spacer: { flex: 1 },
-  hint: { fontFamily: fonts.body, fontSize: 9.5, color: colors.textSoft },
+  hint: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft },
 });

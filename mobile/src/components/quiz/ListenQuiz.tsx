@@ -12,7 +12,7 @@ import * as Speech from 'expo-speech';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import { api, type QuizDetail } from '@/api/client';
-import { colors, fonts } from '@/theme/tokens';
+import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 
@@ -103,7 +103,7 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
       <Shadowed offset={3}>
         <View style={{ backgroundColor: '#0F1A24', borderWidth: 3, borderColor: C, padding: 10, paddingTop: 14 }}>
           <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>AUDIO · {durationSec > 0 ? mmss(durationSec) : (c.duration || '0:00')}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>AUDIO · {durationSec > 0 ? mmss(durationSec) : (c.duration || '0:00')}</Text>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
             {/* speaker (▶ when idle, ❚❚ pulse while playing) */}
@@ -137,8 +137,8 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
                 )}
               </Svg>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 2 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#FEF08A' }}>{ttsFallback ? '0:00' : mmss(status.currentTime)}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#94A3B8' }}>{durationSec > 0 ? mmss(durationSec) : (c.duration || '0:00')}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#FEF08A' }}>{ttsFallback ? '0:00' : mmss(status.currentTime)}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#94A3B8' }}>{durationSec > 0 ? mmss(durationSec) : (c.duration || '0:00')}</Text>
               </View>
             </View>
           </View>
@@ -152,14 +152,14 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
           {/* subtitle reveal */}
           {subtitle && !!c.audioText && (
             <View style={{ marginTop: 10, backgroundColor: '#1E2A38', borderWidth: 1.5, borderColor: '#475569', paddingVertical: 6, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 11, color: '#E2E8F0', lineHeight: 16 }}>"{c.audioText}"</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: '#E2E8F0', lineHeight: 16 }}>"{c.audioText}"</Text>
             </View>
           )}
         </View>
       </Shadowed>
 
       {/* instruction */}
-      <Text style={{ fontFamily: fonts.body, fontSize: 11, color: colors.text, textAlign: 'center', marginTop: 12, marginBottom: 8 }}>
+      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, textAlign: 'center', marginTop: 12, marginBottom: 8 }}>
         닥터가 뭐라고 말했나요? <Text style={{ fontFamily: fonts.heading }}>가장 정확한 것</Text>을 고르세요.
       </Text>
 
@@ -174,15 +174,15 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
             <Shadowed key={i} offset={isPicked ? 3 : 2} shadowColor={isPicked ? colors.yellowShadow : C}>
               <Pressable onPress={() => !checked && setPicked(i)} style={{ backgroundColor: bg, borderWidth: 2.5, borderColor: isPicked ? colors.yellowShadow : C, flexDirection: 'row' }}>
                 <View style={{ width: 30, backgroundColor: isPicked || showRight ? colors.yellow : colors.peach, borderRightWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 16, color: C }}>{String.fromCharCode(65 + i)}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>{String.fromCharCode(65 + i)}</Text>
                 </View>
                 <View style={{ flex: 1, paddingVertical: 7, paddingHorizontal: 9 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: 12, color: C, lineHeight: 17 }}>"{ch.text}"{showRight ? ' ✓' : showWrong ? ' ✗' : ''}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>"{ch.text}"{showRight ? ' ✓' : showWrong ? ' ✗' : ''}</Text>
                   {!!ch.tags?.length && (
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 3, marginTop: 4 }}>
                       {ch.tags.map((t, ti) => (
                         <View key={ti} style={{ backgroundColor: '#fff', borderWidth: 1, borderColor: C + '55', paddingHorizontal: 4, paddingVertical: 1 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: C }}>{t}</Text>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{t}</Text>
                         </View>
                       ))}
                     </View>
@@ -190,7 +190,7 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
                 </View>
                 {isPicked && !checked && (
                   <View style={{ position: 'absolute', top: -7, right: -7, width: 15, height: 15, backgroundColor: colors.yellowShadow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: '#fff' }}>?</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>?</Text>
                   </View>
                 )}
               </Pressable>
@@ -202,9 +202,9 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
       {/* glossary */}
       {!!c.glossary?.length && (
         <View style={{ marginTop: 10, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: C + '55', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>약어.  </Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>약어.  </Text>
           {c.glossary.map((g, i) => (
-            <Text key={i} style={{ fontFamily: fonts.body, fontSize: 10, color: colors.textSoft, marginRight: 8 }}>
+            <Text key={i} style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginRight: 8 }}>
               <Text style={{ fontFamily: fonts.heading, color: C }}>{g.abbr}</Text> {g.meaning}
             </Text>
           ))}
@@ -221,7 +221,7 @@ function SpeedBtn({ label, active, onPress }: { label: string; active?: boolean;
   return (
     <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? colors.yellowShadow : C}>
       <Pressable onPress={onPress} style={{ backgroundColor: active ? colors.yellow : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: 10, color: C }}>{label}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{label}</Text>
       </Pressable>
     </Shadowed>
   );
