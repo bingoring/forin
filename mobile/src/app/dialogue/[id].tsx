@@ -7,7 +7,7 @@
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
   useAudioRecorder, requestRecordingPermissionsAsync, setAudioModeAsync,
@@ -19,6 +19,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { BottomSheet } from '@/components/BottomSheet';
 
 const C = colors.ink;
 
@@ -40,6 +41,13 @@ export default function DialogueRoute() {
   const turnsRef = useRef(0); // learner turns sent — gates grading (0 turns → 중단)
 
   const [npcLine, setNpcLine] = useState(''); // latest NPC utterance (VN box)
+  // The VN box only ever showed the CURRENT line, and every previous turn was
+  // thrown away — the learner could not look back at what was said, which is
+  // exactly what makes a role-play hard to follow. The server already persists
+  // every turn (dialogue_turns); this keeps the same history client-side so the
+  // transcript sheet can show it without another round trip.
+  const [transcript, setTranscript] = useState<{ role: 'user' | 'npc'; text: string }[]>([]);
+  const [logOpen, setLogOpen] = useState(false);
   const [npcLineKo, setNpcLineKo] = useState(''); // Korean of the scripted line (for 번역)
   const [showKo, setShowKo] = useState(false);
   const [draft, setDraft] = useState('');
@@ -103,6 +111,8 @@ export default function DialogueRoute() {
     turnsRef.current += 1; // the server persists this turn in prepare(); count it for grading
     setDraft('');
     setPending(true);
+    // Park the line the box is about to lose, then the learner's own line.
+    setTranscript((t) => (npcLine ? [...t, { role: 'npc' as const, text: npcLine }, { role: 'user' as const, text }] : [...t, { role: 'user' as const, text }]));
     setNpcLine(''); setNpcLineKo(''); setShowKo(false); // clear for the streaming reply (no Ko for AI lines)
     try {
       await api.sendMessageStream(sessionRef.current, text, (chunk) => {
@@ -130,6 +140,17 @@ export default function DialogueRoute() {
       return;
     }
     router.replace(`/result/${id}?session=${sessionRef.current ?? ''}`);
+  };
+
+  // Leaving mid-conversation used to be a bare "× 나가기" — a UI escape hatch
+  // that let the learner drop a patient mid-sentence with no fiction attached,
+  // which is exactly what made it easy to break the thread. On a real ward you
+  // do not "exit" a patient; you get pulled away. So the exit is framed as being
+  // called elsewhere, and it says plainly that the conversation is kept.
+  const [pagedOut, setPagedOut] = useState(false);
+  const stepAway = () => {
+    Keyboard.dismiss();
+    setPagedOut(true);
   };
 
   // Bottom rail 🎤 직접 말하기 (04_SCREENS.md:324) — pushes to the standalone
@@ -200,7 +221,7 @@ export default function DialogueRoute() {
 
       {/* status bar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}>
-        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
+        <PixelButton label="호출 받기" icon="alert" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={stepAway} />
         <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
           {!!mission && (
             <>
@@ -273,11 +294,21 @@ export default function DialogueRoute() {
       {/* dialogue box */}
       <View style={{ position: 'absolute', left: 14, right: 14, bottom: 20, zIndex: 6 }}>
         {/* speaker tab (with an upward peach shadow) */}
-        <View style={{ alignSelf: 'flex-start', marginLeft: 12 }}>
-          <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
-          <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleKo(kind)}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 6, marginLeft: 12 }}>
+          <View>
+            <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
+            <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleKo(kind)}</Text>
+            </View>
           </View>
+          {transcript.length > 0 && (
+            <Pressable onPress={() => { Keyboard.dismiss(); setLogOpen(true); }} hitSlop={6}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C, borderBottomWidth: 0, paddingVertical: 3, paddingHorizontal: 8 }}>
+                <PixelIcon name="note" color={C} size={11} sw={1.8} />
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>기록 {Math.ceil(transcript.length / 2)}</Text>
+              </View>
+            </Pressable>
+          )}
         </View>
 
         {/* NPC utterance */}
@@ -406,6 +437,60 @@ export default function DialogueRoute() {
           )}
         </View>
       </View>
+      {/* 긴급 호출 — 이탈에 서사를 붙인다. 나가는 것은 같지만, 대화를 버리는
+          것이 아니라 자리를 비우는 것이라고 말한다(기록은 남는다). */}
+      <BottomSheet visible={pagedOut} onClose={() => setPagedOut(false)} expandable={false}>
+        <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+            <PixelIcon name="alert" color={C} size={18} sw={1.9} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>다른 곳에서 호출이 왔어요</Text>
+          </View>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.text, lineHeight: 19, marginBottom: 16 }}>
+            {npcName} 님과의 대화를 잠시 멈추고 자리를 비우게 됩니다.{'\n'}
+            지금까지 나눈 대화는 남아 있어요.
+          </Text>
+          <View style={{ gap: 8 }}>
+            <PixelButton
+              label="자리를 비운다"
+              icon="alert"
+              bg={colors.peach}
+              shadowColor={colors.peachShadow}
+              full
+              onPress={() => { setPagedOut(false); router.back(); }}
+            />
+            <PixelButton
+              label="대화를 계속한다"
+              icon="play"
+              bg={colors.mint}
+              shadowColor={colors.mintShadow}
+              full
+              onPress={() => setPagedOut(false)}
+            />
+          </View>
+        </View>
+      </BottomSheet>
+
+      {/* 대화 기록 — VN 박스는 현재 대사 하나만 보여주는 것이 핸드오프 설계이므로
+          기록은 걷어내지 않고 시트로 연다. 확장 가능: 긴 대화는 위로 스와이프. */}
+      <BottomSheet visible={logOpen} onClose={() => setLogOpen(false)}>
+        <View style={{ paddingHorizontal: 14, paddingTop: 4, paddingBottom: 20 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginBottom: 12 }}>
+            <PixelIcon name="note" color={C} size={16} sw={1.8} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>지금까지의 대화</Text>
+            <View style={{ flex: 1 }} />
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft }}>{npcName}</Text>
+          </View>
+          <ScrollView style={{ maxHeight: 420 }} showsVerticalScrollIndicator={false}>
+            {[...transcript, ...(npcLine ? [{ role: 'npc' as const, text: npcLine }] : [])].map((t, i) => (
+              <View key={i} style={{ flexDirection: 'row', justifyContent: t.role === 'user' ? 'flex-end' : 'flex-start', marginBottom: 8 }}>
+                <View style={{ maxWidth: '84%', backgroundColor: t.role === 'user' ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 8, paddingHorizontal: 11 }}>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }}>{t.text}</Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      </BottomSheet>
     </KeyboardAvoidingView>
   );
 }
