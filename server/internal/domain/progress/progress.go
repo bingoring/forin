@@ -30,6 +30,13 @@ type Progress struct {
 // GrowthStats is the aggregated activity behind the "성장 리포트" screen:
 // scenario clears, new review cards, and active conversation time for today and
 // the current (Monday-first) week, plus the distinct active dates this week.
+// StreakWindowDays is how many days the home/growth attendance strips show.
+// A rolling window ending today, not a calendar week: the week number told the
+// learner nothing, and a Monday anchor makes a Sunday start look like a broken
+// streak. The activeDates query, the rhythm builder and the client strip all
+// read this one number.
+const StreakWindowDays = 10
+
 type GrowthStats struct {
 	ScenariosToday           int      `json:"scenariosToday"`
 	ScenariosWeek            int      `json:"scenariosWeek"`
@@ -38,7 +45,7 @@ type GrowthStats struct {
 	NewCardsWeek             int      `json:"newCardsWeek"`
 	ConversationSecondsToday int      `json:"conversationSecondsToday"`
 	ConversationSecondsWeek  int      `json:"conversationSecondsWeek"`
-	ActiveDates              []string `json:"activeDates"` // yyyy-mm-dd (tz), current week
+	ActiveDates              []string `json:"activeDates"` // yyyy-mm-dd (tz), the StreakWindowDays ending today
 }
 
 // ReviewCard is one spaced-repetition phrase card (oops-note).

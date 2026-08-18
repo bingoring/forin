@@ -93,6 +93,9 @@ func (r *ProgressRepo) standings(ctx context.Context, userID, job string) ([]pro
 // directly on the pool (outside the sqlc CRUD surface).
 func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time, tzName string) (*progress.GrowthStats, error) {
 	s := &progress.GrowthStats{ActiveDates: []string{}}
+	// The strips are StreakWindowDays long and end today, so look back that far
+	// from the start of today rather than from Monday.
+	stripStart := dayStart.AddDate(0, 0, -(progress.StreakWindowDays - 1))
 
 	countScenarios := func(since time.Time) (int, error) {
 		var n int
@@ -152,8 +155,12 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 		return nil, err
 	}
 
-	// Distinct active dates this week, bucketed as calendar dates in the caller's
-	// timezone — a scenario clear counts, and any dialogue turn counts.
+	// Distinct active dates over the STREAK WINDOW, not the calendar week: the
+	// home/growth strips show a rolling window ending today, so a Monday-anchored
+	// query would leave the first cells permanently blank. Bucketed as calendar
+	// dates in the caller's timezone — a scenario clear counts, and any dialogue
+	// turn counts. The weekly aggregates above still use weekStart; those really
+	// are weekly.
 	rows, err := r.pool.Query(ctx,
 		`SELECT DISTINCT (d AT TIME ZONE $3)::date FROM (
 		   SELECT COALESCE(cleared_at, started_at) AS d FROM scenario_attempts
@@ -163,7 +170,7 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 		     JOIN conversation_sessions cs ON cs.id = dt.session_id
 		     WHERE cs.user_id = $1 AND dt.created_at >= $2
 		 ) x ORDER BY 1`,
-		userID, weekStart, tzName)
+		userID, stripStart, tzName)
 	if err != nil {
 		return nil, err
 	}

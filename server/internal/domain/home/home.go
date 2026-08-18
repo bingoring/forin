@@ -7,6 +7,7 @@
 package home
 
 import (
+	"github.com/bingoring/forin/server/internal/domain/progress"
 	"hash/fnv"
 	"time"
 )
@@ -139,9 +140,12 @@ func filterPhrases(all []Phrase, dept string) []Phrase {
 	return common
 }
 
-// WeekRhythm turns the week's active dates into the handoff's 7 blocks:
-// 0 = no study, 1 = studied, 2 = today. Monday-first, matching /me/stats.
-func WeekRhythm(activeDates []string, now time.Time, loc *time.Location) [7]int {
+// RecentRhythm turns the active dates into the attendance strip's blocks:
+// 0 = no study, 1 = studied, 2 = today. The window is ROLLING and ends today
+// (progress.StreakWindowDays long), replacing the old Monday-anchored week —
+// a week number told the learner nothing, and a Monday anchor made a Sunday
+// start read as a broken streak. Index 0 is the oldest day, the last is today.
+func RecentRhythm(activeDates []string, now time.Time, loc *time.Location) []int {
 	if loc == nil {
 		loc = time.UTC
 	}
@@ -150,14 +154,12 @@ func WeekRhythm(activeDates []string, now time.Time, loc *time.Location) [7]int 
 		active[d] = true
 	}
 	local := now.In(loc)
-	// Go's Sunday=0 → shift so Monday is index 0.
-	offset := (int(local.Weekday()) + 6) % 7
-	monday := local.AddDate(0, 0, -offset)
 	today := local.Format("2006-01-02")
 
-	var out [7]int
-	for i := 0; i < 7; i++ {
-		day := monday.AddDate(0, 0, i).Format("2006-01-02")
+	n := progress.StreakWindowDays
+	out := make([]int, n)
+	for i := 0; i < n; i++ {
+		day := local.AddDate(0, 0, -(n - 1 - i)).Format("2006-01-02")
 		switch {
 		case day == today:
 			out[i] = 2

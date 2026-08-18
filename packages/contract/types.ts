@@ -1674,7 +1674,7 @@ export interface components {
             shift?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_progress.GrowthStats": {
-            /** @description yyyy-mm-dd (tz), current week */
+            /** @description yyyy-mm-dd (tz), the StreakWindowDays ending today */
             activeDates?: string[];
             conversationSecondsToday?: number;
             conversationSecondsWeek?: number;
@@ -1861,6 +1861,11 @@ export interface components {
             targetLevel?: string;
             todayOne?: components["schemas"]["internal_adapters_http.homeTodayOne"];
             unreadCheers?: number;
+            /**
+             * @description A rolling window ending today (progress.StreakWindowDays long), not a
+             *     calendar week. Kept as `week` on the wire so already-shipped clients keep
+             *     parsing it; the length is what changed, and the client reads .length.
+             */
             week?: number[];
             xp?: number;
         };

@@ -51,14 +51,17 @@ type homeReview struct {
 }
 
 type homeResp struct {
-	Date        string      `json:"date"`
-	Done        bool        `json:"done"`
-	Shift       *home.Shift `json:"shift,omitempty"`
-	Streak      int         `json:"streak"`
-	Week        [7]int      `json:"week"`
-	Level       int         `json:"level"`
-	XP          int         `json:"xp"`
-	TargetLevel string      `json:"targetLevel,omitempty"`
+	Date   string      `json:"date"`
+	Done   bool        `json:"done"`
+	Shift  *home.Shift `json:"shift,omitempty"`
+	Streak int         `json:"streak"`
+	// A rolling window ending today (progress.StreakWindowDays long), not a
+	// calendar week. Kept as `week` on the wire so already-shipped clients keep
+	// parsing it; the length is what changed, and the client reads .length.
+	Week        []int  `json:"week"`
+	Level       int    `json:"level"`
+	XP          int    `json:"xp"`
+	TargetLevel string `json:"targetLevel,omitempty"`
 
 	TodayOne   *homeTodayOne    `json:"todayOne,omitempty"`
 	MentorNote *home.MentorNote `json:"mentorNote,omitempty"`
@@ -122,7 +125,7 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		week := home.WeekRhythm(s.ActiveDates, now, loc)
+		week := home.RecentRhythm(s.ActiveDates, now, loc)
 		mu.Lock()
 		resp.Week = week
 		mu.Unlock()

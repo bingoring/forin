@@ -15,7 +15,9 @@ import { careerFor } from '@/data/economy';
 import { colors, fonts, fs } from '@/theme/tokens';
 
 const C = colors.ink;
-const WD = ['월', '화', '수', '목', '금', '토', '일']; // Monday-first week strip
+const WD = ['월', '화', '수', '목', '금', '토', '일'];
+// The attendance strip is a rolling window ending today — 10 days, not a week.
+const STRIP_DAYS = 10;
 
 // Local yyyy-mm-dd for a Date. The server buckets activeDates in the device
 // timezone (sent by the client), so the week grid is built in local time too.
@@ -55,18 +57,25 @@ export default function Growth() {
 
   // today's date + weekday, and the current-week attendance from the server's
   // activeDates (bucketed in the device timezone → built in local time here).
-  const { dateLabel, dow, week, attended } = useMemo(() => {
+  // A rolling window ending today, not a calendar week. Feedback: the week
+  // number told the learner nothing — "how many days in a row" is the thing
+  // they actually care about, and a Mon-anchored strip makes a Sunday start
+  // look like a broken streak.
+  const { dateLabel, dow, days, attended } = useMemo(() => {
     const now = new Date();
     const d = `${now.getMonth() + 1}월 ${now.getDate()}일`;
     const todayIdx = (now.getDay() + 6) % 7; // Mon=0 … Sun=6
-    const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - todayIdx);
     const active = new Set(stats?.activeDates ?? []);
-    const w = WD.map((label, i) => {
-      const cell = new Date(monday);
-      cell.setDate(monday.getDate() + i);
-      return { label, today: i === todayIdx, filled: active.has(localDate(cell)) };
+    const ds = Array.from({ length: STRIP_DAYS }, (_, i) => {
+      const cell = new Date(now.getFullYear(), now.getMonth(), now.getDate() - (STRIP_DAYS - 1 - i));
+      return {
+        key: localDate(cell),
+        label: `${cell.getDate()}`,
+        today: i === STRIP_DAYS - 1,
+        filled: active.has(localDate(cell)),
+      };
     });
-    return { dateLabel: d, dow: WD[todayIdx], week: w, attended: w.filter((x) => x.filled).length };
+    return { dateLabel: d, dow: WD[todayIdx], days: ds, attended: ds.filter((x) => x.filled).length };
   }, [stats]);
 
   const back = () => router.back();
@@ -120,16 +129,22 @@ export default function Growth() {
           <Shadowed offset={3}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>이번 주 출석</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{attended}/7일</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>
+                  {progress.streakCurrent > 0 ? `${progress.streakCurrent}일 연속 학습` : '연속 학습'}
+                </Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>최근 {STRIP_DAYS}일 중 {attended}일</Text>
               </View>
-              <View style={{ flexDirection: 'row', gap: 4 }}>
-                {week.map((d) => (
-                  <View key={d.label} style={{ flex: 1, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 4 }}>{d.label}</Text>
+              <View style={{ flexDirection: 'row', gap: 3 }}>
+                {days.map((d) => (
+                  <View key={d.key} style={{ flex: 1, alignItems: 'center' }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginBottom: 4 }}>{d.label}</Text>
                     <Shadowed offset={d.today ? 2 : 0} shadowColor={colors.yellowShadow} style={{ alignSelf: 'stretch' }}>
                       <View style={{ height: 30, backgroundColor: d.filled ? colors.mint : '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{d.filled ? '✓' : d.today ? '!' : '·'}</Text>
+                        {d.filled ? (
+                          <PixelIcon name="check" color={C} size={13} sw={2} />
+                        ) : (
+                          <View style={{ width: 4, height: 4, backgroundColor: d.today ? colors.yellowDeep : colors.textFaint }} />
+                        )}
                       </View>
                     </Shadowed>
                   </View>

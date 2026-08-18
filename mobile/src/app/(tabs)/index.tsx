@@ -138,7 +138,7 @@ function ShiftBadge({ shift, deptLabel }: { shift: string; deptLabel: string }) 
   );
 }
 
-// ── 연속 + 주간 리듬 (성취를 과제보다 먼저) ────────────────────────────────
+// ── 연속 + 최근 학습 리듬 (성취를 과제보다 먼저) ───────────────────────────
 function StreakStrip({ streak, week }: { streak: number; week: number[] }) {
   return (
     <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 12 }}>
@@ -150,8 +150,10 @@ function StreakStrip({ streak, week }: { streak: number; week: number[] }) {
         </View>
         <View style={{ width: 3, alignSelf: 'stretch', backgroundColor: C + '22' }} />
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginBottom: 7 }}>이번 주</Text>
-          <View style={{ flexDirection: 'row', gap: 6 }}>
+          {/* A rolling window ending today, not a calendar week — the server
+              sends progress.StreakWindowDays cells and we read the length. */}
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginBottom: 7 }}>최근 {week.length}일</Text>
+          <View style={{ flexDirection: 'row', gap: 3 }}>
             {week.map((d, i) => (
               <View key={i} style={{
                 flex: 1, height: 14,
