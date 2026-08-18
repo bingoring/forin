@@ -366,7 +366,7 @@ export default function DialogueRoute() {
         {/* action rail */}
         <View style={{ marginTop: 12, flexDirection: 'row', gap: 8 }}>
           <View style={{ flex: 2 }}>
-            <PixelButton label={pending ? '전송 중…' : '▶ 보내기'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
+            <PixelButton label={pending ? '전송 중…' : '보내기'} icon={pending ? undefined : 'play'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
           <View style={{ flex: 1 }}>
             <PixelButton icon="bulb" label="힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />

@@ -44,7 +44,7 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
           ? <View style={{ flex: 1 }}><PixelButton label="정답을 고르세요" bg="#fff" shadowColor={C} disabled onPress={() => {}} full /></View>
           : isLast
             ? <View style={{ flex: 1 }}><PixelButton label={`✓ 완료 · ${score}/${deck.length}`} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allSolved} onPress={onComplete} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="다음 ▶" bg={colors.mint} shadowColor={colors.mintShadow} onPress={next} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton label="다음" icon="play" bg={colors.mint} shadowColor={colors.mintShadow} onPress={next} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
@@ -61,7 +61,7 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       <Shadowed offset={4}>
         <View style={{ backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 22, alignItems: 'center' }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: 40, color: colors.cream, letterSpacing: 2 }}>{card?.term}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: '#94A3B8', marginTop: 4 }}>{cardSolved ? '정답! ▶ 다음으로' : '이 약어의 뜻은?'}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: 10, color: '#94A3B8', marginTop: 4 }}>{cardSolved ? '정답! 다음으로' : '이 약어의 뜻은?'}</Text>
         </View>
       </Shadowed>
 

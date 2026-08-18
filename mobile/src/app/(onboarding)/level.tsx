@@ -105,7 +105,7 @@ export default function Level() {
         </View>
 
         <View style={{ marginTop: 24 }}>
-          <PixelButton label={busy ? '' : '이대로 시작 ▶'} bg={colors.yellow} shadowColor={colors.yellowShadow} full disabled={busy} onPress={start} />
+          <PixelButton label={busy ? '' : '이대로 시작'} icon={busy ? undefined : 'play'} bg={colors.yellow} shadowColor={colors.yellowShadow} full disabled={busy} onPress={start} />
           {busy && <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>}
         </View>
       </ScrollView>

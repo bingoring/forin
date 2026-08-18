@@ -18,7 +18,7 @@ export type IconName =
   | 'home' | 'handshake' | 'clap' | 'moon' | 'bulb' | 'map' | 'clipboard'
   | 'note' | 'people' | 'shift' | 'send' | 'copy' | 'share' | 'plus-box'
   // navigation + actions (replacing ▶ / › / ✓ glyphs in buttons and rows)
-  | 'play' | 'chevron-right' | 'chevron-left' | 'refresh' | 'pause'
+  | 'play' | 'chevron-right' | 'chevron-left' | 'chevron-up' | 'chevron-down' | 'refresh' | 'pause'
   // board / growth / review surfaces
   | 'chart' | 'calendar' | 'target' | 'book' | 'mic' | 'volume' | 'clock' | 'pin' | 'bed' | 'alert'
   // departments — one per ward/unit, so board/campus/lift stop leaning on emoji
@@ -220,6 +220,12 @@ function body(name: IconName, color: string): ReactNode {
       return <Path d="M9 5 l7 7 -7 7" />;
     case 'chevron-left':
       return <Path d="M15 5 l-7 7 7 7" />;
+    // Disclosure arrows. Same stroke as the horizontal pair so a row that
+    // expands downward reads as the same control rotated, not a different one.
+    case 'chevron-up':
+      return <Path d="M5 15 l7 -7 7 7" />;
+    case 'chevron-down':
+      return <Path d="M5 9 l7 7 7 -7" />;
     case 'refresh':
       return (<>
         <Path d="M20 12 a8 8 0 1 1 -2.4 -5.7" />

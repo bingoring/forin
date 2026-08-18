@@ -50,14 +50,14 @@ export default function Job() {
                       : <PixelChip label="곧 열림" bg="#fff" />}
                   </View>
                 </View>
-                {j.ready && <Text style={{ fontFamily: fonts.heading, fontSize: 18, color: C }}>▶</Text>}
+                {j.ready && <PixelIcon name="play" color={C} size={16} sw={1.8} />}
               </View>
             </Shadowed>
           ))}
         </View>
 
         <View style={{ marginTop: 22 }}>
-          <PixelButton label="간호사로 계속 ▶" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
+          <PixelButton label="간호사로 계속" icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
         </View>
       </View>
     </View>

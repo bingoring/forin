@@ -54,8 +54,8 @@ export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
 
       {/* steppers */}
       <View style={{ flexDirection: 'row', gap: 8, marginTop: 12 }}>
-        <View style={{ flex: 1 }}><PixelButton label="▼ 낮춤" bg="#fff" shadowColor={C} onPress={() => step(-1)} disabled={checked} full /></View>
-        <View style={{ flex: 1 }}><PixelButton label="▲ 올림" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={() => step(1)} disabled={checked} full /></View>
+        <View style={{ flex: 1 }}><PixelButton label="낮춤" icon="chevron-down" bg="#fff" shadowColor={C} onPress={() => step(-1)} disabled={checked} full /></View>
+        <View style={{ flex: 1 }}><PixelButton label="올림" icon="chevron-up" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={() => step(1)} disabled={checked} full /></View>
       </View>
 
       {checked && <ResultBanner correct={correct} />}

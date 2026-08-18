@@ -58,7 +58,7 @@ export default function Locale() {
         </View>
 
         <View style={{ marginTop: 30 }}>
-          <PixelButton label="다음 ▶" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
+          <PixelButton label="다음" icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
         </View>
       </ScrollView>
     </View>
