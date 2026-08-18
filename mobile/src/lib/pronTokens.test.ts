@@ -1,4 +1,10 @@
-import { splitTargetTokens, syllableBand, matchPhonemesToSyllables } from './pronTokens';
+import {
+  splitTargetTokens,
+  syllableBand,
+  matchPhonemesToSyllables,
+  buildCorrectionPoints,
+  type CorrectionWord,
+} from './pronTokens';
 
 // ── splitTargetTokens — verbatim from task-7-brief.md Step 1 ──────────────
 describe('splitTargetTokens', () => {
@@ -162,5 +168,109 @@ describe('matchPhonemesToSyllables', () => {
     expect(matchPhonemesToSyllables([], [])).toEqual({ matches: [], suspectAllZero: false });
     expect(matchPhonemesToSyllables([{ offset: 5 }], [])).toEqual({ matches: [null], suspectAllZero: false });
     expect(matchPhonemesToSyllables([], [{ offset: 0, duration: 10 }])).toEqual({ matches: [], suspectAllZero: false });
+  });
+});
+
+// ── buildCorrectionPoints — business-logic-model.md §2 `CorrectionPoints` ──
+//
+// The tip lookup is a fake table standing in for server/internal/content/
+// phonemetips (that mapping is server-only and, as of this task, not yet
+// wired into any HTTP response — see task-8-report.md). These tests only
+// verify the SELECTION algorithm; they must keep working unchanged once a
+// real lookup is wired in.
+describe('buildCorrectionPoints', () => {
+  const TIPS: Record<string, { ipa: string; message: string }> = {
+    ɪ: { ipa: 'ɪ', message: '짧게' },
+    l: { ipa: 'l', message: '혀끝을 붙여요' },
+  };
+  const lookup = (p: string) => TIPS[p];
+
+  test('정확도 최저 2개, 문장 순 동점 처리, 팁이 있는 것만', () => {
+    const words: CorrectionWord[] = [
+      {
+        syllables: [{ syllable: 'min', offset: 0, duration: 10 }],
+        phonemes: [{ phoneme: 'm', accuracy: 90, offset: 0 }, { phoneme: 'ɪ', accuracy: 40, offset: 5 }],
+      },
+      {
+        syllables: [{ syllable: 'li', offset: 10, duration: 10 }],
+        phonemes: [{ phoneme: 'l', accuracy: 65, offset: 10 }],
+      },
+    ];
+    const { points, suspectAllZero } = buildCorrectionPoints(words, lookup);
+    expect(suspectAllZero).toBe(false);
+    expect(points).toHaveLength(2);
+    // ɪ(40)이 l(65)보다 낮으니 먼저 온다.
+    expect(points[0]).toMatchObject({ syllable: 'min', message: '짧게', severe: true });
+    expect(points[1]).toMatchObject({ syllable: 'li', message: '혀끝을 붙여요', severe: false });
+  });
+
+  test('팁이 없는 음소는 건너뛰고 다음으로 내려간다 (R5)', () => {
+    const words: CorrectionWord[] = [
+      {
+        syllables: [{ syllable: 'a', offset: 0, duration: 10 }],
+        phonemes: [
+          { phoneme: 'z', accuracy: 10, offset: 0 }, // 최저지만 팁 없음
+          { phoneme: 'ɪ', accuracy: 50, offset: 5 },
+        ],
+      },
+    ];
+    const { points } = buildCorrectionPoints(words, lookup);
+    expect(points).toHaveLength(1);
+    expect(points[0].message).toBe('짧게');
+  });
+
+  test('채울 수 있는 만큼만 렌더한다 — 2개를 억지로 채우지 않는다', () => {
+    const words: CorrectionWord[] = [
+      {
+        syllables: [{ syllable: 'a', offset: 0, duration: 10 }],
+        phonemes: [{ phoneme: 'ɪ', accuracy: 50, offset: 0 }],
+      },
+    ];
+    expect(buildCorrectionPoints(words, lookup).points).toHaveLength(1);
+    expect(buildCorrectionPoints([], lookup).points).toHaveLength(0);
+  });
+
+  test('어떤 음절 창에도 안 들어가는 음소는 라벨을 붙이지 못해 건너뛴다', () => {
+    const words: CorrectionWord[] = [
+      {
+        syllables: [{ syllable: 'a', offset: 0, duration: 5 }],
+        phonemes: [{ phoneme: 'ɪ', accuracy: 20, offset: 999 }], // 창 밖
+      },
+    ];
+    expect(buildCorrectionPoints(words, lookup).points).toHaveLength(0);
+  });
+
+  test('suspectAllZero가 서면 그 단어에서는 correction point를 만들지 않는다', () => {
+    const words: CorrectionWord[] = [
+      {
+        syllables: [
+          { syllable: 'a', offset: 0, duration: 0 },
+          { syllable: 'b', offset: 0, duration: 0 },
+        ],
+        phonemes: [
+          { phoneme: 'ɪ', accuracy: 10, offset: 0 },
+          { phoneme: 'l', accuracy: 20, offset: 0 },
+        ],
+      },
+    ];
+    const { points, suspectAllZero } = buildCorrectionPoints(words, lookup);
+    expect(suspectAllZero).toBe(true);
+    // 정확도만 보면 팁도 있고 최악인 후보들이지만, 라벨을 신뢰할 수 없어 0개.
+    expect(points).toHaveLength(0);
+  });
+
+  test('음절의 IPA는 그 음절에 속하는 모든 음소를 이어붙여 조립한다', () => {
+    const words: CorrectionWord[] = [
+      {
+        syllables: [{ syllable: 'min', offset: 0, duration: 10 }],
+        phonemes: [
+          { phoneme: 'm', accuracy: 90, offset: 0 },
+          { phoneme: 'ɪ', accuracy: 30, offset: 3 },
+          { phoneme: 'n', accuracy: 95, offset: 6 },
+        ],
+      },
+    ];
+    const { points } = buildCorrectionPoints(words, lookup);
+    expect(points[0].ipa).toBe('/mɪn/');
   });
 });

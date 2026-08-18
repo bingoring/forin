@@ -144,3 +144,111 @@ export function matchPhonemesToSyllables(
 
   return { matches, suspectAllZero: false };
 }
+
+// ── CorrectionPoints — business-logic-model.md §2 ───────────────────────────
+//
+// Structural (not imported from @/api/client) so this stays a dependency-free
+// pure-logic module; the shapes line up with WordScore/SyllableScore/
+// PhonemeScore there by construction.
+export type CorrectionPhoneme = TimedSpan & { phoneme: string; accuracy: number };
+export type CorrectionSyllable = TimedSpan & { syllable: string };
+export type CorrectionWord = { syllables?: CorrectionSyllable[]; phonemes?: CorrectionPhoneme[] };
+
+/** The Korean coaching for one phoneme. Sourced from the server's phoneme-tip
+ *  mapping (server/internal/content/phonemetips) — NEVER hand-authored here.
+ *  As of this task that mapping is not yet wired into any HTTP response, so
+ *  every real caller's lookup returns undefined for every phoneme; this
+ *  function still has to behave correctly (render fewer than 2, never a fake
+ *  one) once it is. */
+export type CorrectionTip = { ipa: string; message: string };
+
+export type CorrectionPoint = {
+  /** The SYLLABLE the worst phoneme sits in (SoT's "min"/"li") — not the
+   *  phoneme itself; business-logic-model §2. */
+  syllable: string;
+  /** Assembled from every phoneme whose time window falls in that same
+   *  syllable (SyllableResult itself carries no ipa field), not just the one
+   *  flagged phoneme — see CorrectionCard.tsx's doc comment. */
+  ipa: string;
+  message: string;
+  /** true → red label (accuracy < 60), false → yellow (business-rules R1's
+   *  bad/weak split, reused here since CorrectionCard has no third color). */
+  severe: boolean;
+};
+
+export type CorrectionResult = {
+  points: CorrectionPoint[];
+  /** OR'd across every word's matchPhonemesToSyllables call. See that
+   *  function's doc for what this means and why it must not be silently
+   *  swallowed — the caller (the route) is responsible for surfacing it
+   *  (requirement: __DEV__ warning + an on-screen, distinguishable marker),
+   *  never just rendering an empty correction-points section as if there
+   *  were genuinely nothing to correct. */
+  suspectAllZero: boolean;
+};
+
+/**
+ * Picks the (up to) 2 lowest-accuracy phonemes across the whole sentence that
+ * both (a) land inside a syllable window and (b) have a Korean tip mapped,
+ * per business-logic-model §2 `CorrectionPoints`:
+ *
+ *   1. flatten every word's phonemes, tagged with sentence order
+ *   2. sort by accuracy ascending, ties broken by that order
+ *   3. walk the sorted list; skip anything with no syllable match (R5's
+ *      spirit — nothing to label) or no tip (R5 itself); stop at `max`
+ *
+ * Never pads to `max` with a placeholder: business-rules R5 explicitly
+ * prefers fewer real cards over any empty one.
+ */
+export function buildCorrectionPoints(
+  words: CorrectionWord[],
+  lookupTip: (phoneme: string) => CorrectionTip | undefined,
+  max = 2
+): CorrectionResult {
+  type Candidate = { wordIdx: number; phonemeIdx: number; phoneme: string; accuracy: number; order: number };
+
+  const candidates: Candidate[] = [];
+  const syllableIndexByWord: (number | null)[][] = [];
+  let order = 0;
+  let suspectAllZero = false;
+
+  words.forEach((w, wi) => {
+    const phonemes = w.phonemes ?? [];
+    const syllables = w.syllables ?? [];
+    const { matches, suspectAllZero: sus } = matchPhonemesToSyllables(phonemes, syllables);
+    syllableIndexByWord[wi] = matches;
+    if (sus) suspectAllZero = true;
+    phonemes.forEach((p, pi) => {
+      candidates.push({ wordIdx: wi, phonemeIdx: pi, phoneme: p.phoneme, accuracy: p.accuracy, order: order++ });
+    });
+  });
+
+  candidates.sort((a, b) => a.accuracy - b.accuracy || a.order - b.order);
+
+  const points: CorrectionPoint[] = [];
+  for (const c of candidates) {
+    if (points.length >= max) break;
+
+    const sylIdx = syllableIndexByWord[c.wordIdx]?.[c.phonemeIdx];
+    if (sylIdx === null || sylIdx === undefined) continue; // no window contains it — can't label
+
+    const tip = lookupTip(c.phoneme);
+    if (!tip) continue; // R5: no Korean tip for this phoneme, move down the list
+
+    const syllable = words[c.wordIdx].syllables?.[sylIdx];
+    if (!syllable) continue;
+
+    const wordPhonemes = words[c.wordIdx].phonemes ?? [];
+    const wordMatches = syllableIndexByWord[c.wordIdx];
+    const sylPhonemes = wordPhonemes.filter((_, pi) => wordMatches[pi] === sylIdx).map((p) => p.phoneme);
+
+    points.push({
+      syllable: syllable.syllable,
+      ipa: `/${sylPhonemes.length ? sylPhonemes.join('') : c.phoneme}/`,
+      message: tip.message,
+      severe: c.accuracy < 60,
+    });
+  }
+
+  return { points, suspectAllZero };
+}
