@@ -84,7 +84,14 @@ ow.close()
 run() {
   local m="$1" p="$2" d="${3:-}" out
   if [ -n "$d" ]; then
-    out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H 'Content-Type: application/json' -d "$d")
+    # Body goes over STDIN (--data-binary @-), never as a `-d "$d"` argv
+    # string — Task 10 caught this against the real staging runner (a
+    # base64-encoded WAV body is ~85KB): macOS's shell tolerates a
+    # multi-hundred-KB argv, GitHub Actions' Linux runner does not, and it
+    # failed with "curl: Argument list too long" there while passing clean
+    # locally. This form has no argv-size ceiling and is identical in
+    # behavior for every existing small-body call site.
+    out=$(printf '%s' "$d" | curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H 'Content-Type: application/json' --data-binary @-)
   else
     out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK")
   fi
