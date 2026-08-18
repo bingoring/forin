@@ -423,6 +423,17 @@ export default function PronunciationRoute() {
     const id = setTimeout(() => {
       if (!recorder.getStatus().isRecording) {
         if (__DEV__) console.warn('[pronunciation] pron===recording but the hardware never started — bailing out');
+        // Stop and discard unconditionally. If the check is right there is
+        // nothing to clean up and this is a no-op; if it is a false positive
+        // on a slow device that started late, this is what keeps a native
+        // session (and its file, R7) from being orphaned by the CANCEL below.
+        recorder
+          .stop()
+          .then(() => {
+            const uri = recorder.uri;
+            if (uri) deleteAsync(uri, { idempotent: true }).catch(() => {});
+          })
+          .catch(() => {});
         Alert.alert('녹음을 시작하지 못했습니다.');
         dispatch('CANCEL');
       }
@@ -527,10 +538,19 @@ export default function PronunciationRoute() {
   // table (I1). "다시 녹음" must start real hardware exactly like the
   // idle/noSpeech record button does.
   const retry = useCallback(async () => {
-    setResult(null);
+    // Clear the previous score only AFTER the mic is actually live. Doing it
+    // first meant a native failure here (anything other than the handled
+    // permission denial) left the FSM in `result` with `result === null`, so
+    // the result branch's `pron === 'result' && result` guard failed and the
+    // learner got a blank screen with their score gone from view.
     try {
       const ok = await beginRecordingHardware();
-      dispatch(ok ? 'RETRY' : 'MIC_DENIED');
+      if (!ok) {
+        dispatch('MIC_DENIED');
+        return;
+      }
+      setResult(null);
+      dispatch('RETRY');
     } catch {
       Alert.alert('녹음을 시작하지 못했습니다.');
     }
