@@ -577,8 +577,16 @@ export const api = {
     return (data as { text?: string })?.text ?? '';
   },
 
-  async assessPronunciation(referenceText: string, audioBase64: string): Promise<PronunciationResult> {
-    const { data } = await http.post('/pronunciation', { referenceText, audioBase64 });
+  /** `opts` forwards Task 5's origin/scenarioId/reviewCardId (business-rules
+   *  §2/domain-entities §4) so an attempt is attributed correctly; all three
+   *  are optional and omitted entirely means the same as before Task 5
+   *  (server defaults origin to "freeform"). */
+  async assessPronunciation(
+    referenceText: string,
+    audioBase64: string,
+    opts?: { origin?: string; scenarioId?: string; reviewCardId?: string }
+  ): Promise<PronunciationResult> {
+    const { data } = await http.post('/pronunciation', { referenceText, audioBase64, ...opts });
     return data as PronunciationResult;
   },
 
