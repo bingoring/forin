@@ -3,6 +3,7 @@ package http
 import (
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 	"time"
 
@@ -105,10 +106,11 @@ func TestSpeechAudioUnavailableIs404(t *testing.T) {
 	}
 }
 
-// A legacy reference row (segmentation exists, no audio_wav — predates Task
-// 11) must also 404, not synthesize a mismatched clip out of band — the same
-// "does not retroactively backfill" contract as domain/speech.ReferenceAudio.
-func TestSpeechAudioLegacyRowWithNoAudioIs404(t *testing.T) {
+// Review round 2, Important 1: a legacy reference row (segmentation exists,
+// no audio_wav — predates Task 11) must be backfilled and served as 200, not
+// 404 forever — domain/speech.ReferenceAudio now re-synthesizes just the
+// audio against the row's own stored locale and persists it.
+func TestSpeechAudioBackfillsLegacyRowAndServes200(t *testing.T) {
 	repo := newFakeSpeechRepo()
 	repo.refRow = &ports.SentenceReferenceRow{
 		SentenceKey:   speech.SentenceKey("hello there", "en-US"),
@@ -116,7 +118,8 @@ func TestSpeechAudioLegacyRowWithNoAudioIs404(t *testing.T) {
 		Locale:        "en-US",
 		IPA:           "/heˈloʊ ðɛr/",
 	}
-	synth := &fakeSynth{configured: true}
+	wav := []byte("backfilled-wav-bytes")
+	synth := &fakeSynth{configured: true, wav: wav}
 	svc, _ := newTestSpeechService(&fakePronPort{}, repo, synth)
 	sa := &speechAudioHandler{speech: svc}
 
@@ -125,7 +128,64 @@ func TestSpeechAudioLegacyRowWithNoAudioIs404(t *testing.T) {
 	w := httptest.NewRecorder()
 	sa.audio(w, req)
 
-	if w.Code != http.StatusNotFound {
-		t.Fatalf("expected 404 for a legacy row with no stored audio, got %d: %s", w.Code, w.Body.String())
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected 200 for a legacy row that gets backfilled, got %d: %s", w.Code, w.Body.String())
+	}
+	if w.Body.String() != string(wav) {
+		t.Fatalf("expected the freshly backfilled bytes, got %q", w.Body.String())
+	}
+	if len(repo.updatedAudio) != 1 {
+		t.Fatalf("expected exactly one UpdateReferenceAudio call, got %d", len(repo.updatedAudio))
+	}
+}
+
+// Review round 2, Important 4: this route had no length cap on `text` either
+// — same rationale as GET /speech/reference's own new guard.
+func TestSpeechAudioTextTooLongIs400(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, _ := newTestSpeechService(&fakePronPort{}, repo, nil)
+	sa := &speechAudioHandler{speech: svc}
+
+	longText := strings.Repeat("a", 301)
+	req := httptest.NewRequest(http.MethodGet, "/speech/reference/audio.wav?text="+longText, nil)
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	sa.audio(w, req)
+
+	if w.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400 for a 301-char text, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
+// Review round 2, Important 3: this response depends on the CALLER's locale
+// (no locale in the URL, no Vary header), so it must never be cached as
+// `public` — a shared cache/proxy could serve user A's clip to user B on a
+// locale mismatch. Quiz audio is `public` correctly (public + en-US-fixed);
+// this route is neither.
+func TestSpeechAudioCacheControlIsPrivate(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	repo.refRow = &ports.SentenceReferenceRow{
+		SentenceKey:    speech.SentenceKey("hello there", "en-US"),
+		ReferenceText:  "hello there",
+		Locale:         "en-US",
+		ReferenceAudio: []byte("wav-bytes"),
+	}
+	svc, _ := newTestSpeechService(&fakePronPort{}, repo, &fakeSynth{configured: true})
+	sa := &speechAudioHandler{speech: svc}
+
+	req := httptest.NewRequest(http.MethodGet, "/speech/reference/audio.wav?text=hello+there", nil)
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	sa.audio(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d: %s", w.Code, w.Body.String())
+	}
+	cc := w.Header().Get("Cache-Control")
+	if !strings.Contains(cc, "private") {
+		t.Fatalf("expected a `private` Cache-Control for this locale-dependent response, got %q", cc)
+	}
+	if strings.Contains(cc, "public") {
+		t.Fatalf("must not be `public` — a shared cache could serve one user's locale clip to another, got %q", cc)
 	}
 }

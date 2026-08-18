@@ -63,6 +63,11 @@ type fakeSpeechRepo struct {
 	refRow         *ports.SentenceReferenceRow
 	putReference   []ports.SentenceReferenceRow
 	getRefAudioErr error
+	updatedAudio   []struct {
+		SentenceKey string
+		Wav         []byte
+	}
+	updateAudioErr error
 }
 
 func newFakeSpeechRepo() *fakeSpeechRepo {
@@ -123,6 +128,23 @@ func (f *fakeSpeechRepo) GetReferenceAudio(ctx context.Context, sentenceKey stri
 		}
 	}
 	return nil, nil
+}
+
+// UpdateReferenceAudio mirrors the real repo's guard by mutating refRow in
+// place — a subsequent GetReferenceAudio call in the same test sees the
+// backfilled bytes (review round 2, Important 1).
+func (f *fakeSpeechRepo) UpdateReferenceAudio(ctx context.Context, sentenceKey string, wav []byte) error {
+	if f.updateAudioErr != nil {
+		return f.updateAudioErr
+	}
+	f.updatedAudio = append(f.updatedAudio, struct {
+		SentenceKey string
+		Wav         []byte
+	}{SentenceKey: sentenceKey, Wav: wav})
+	if f.refRow != nil && f.refRow.SentenceKey == sentenceKey && len(f.refRow.ReferenceAudio) == 0 {
+		f.refRow.ReferenceAudio = wav
+	}
+	return nil
 }
 
 // fakeReviewRepo implements ports.ReviewRepo. owned marks which cardID belongs
@@ -381,6 +403,27 @@ func TestReferenceTextTooLongIs400(t *testing.T) {
 
 	if w.Code != http.StatusBadRequest {
 		t.Fatalf("expected 400 for a 301-char referenceText, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
+// Review round 2, Important 4: GET /speech/reference had no length cap on
+// `text` at all — an authenticated caller could trigger unbounded
+// Synthesize+Assess cost via arbitrarily large query values, each landing a
+// new, never-invalidated speech_references row (R9). Same cap POST
+// /pronunciation already enforces.
+func TestSpeechReferenceTextTooLongIs400(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, nil)
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+
+	longText := strings.Repeat("a", 301)
+	req := httptest.NewRequest(http.MethodGet, "/speech/reference?text="+longText, nil)
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	sh.reference(w, req)
+
+	if w.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400 for a 301-char text, got %d: %s", w.Code, w.Body.String())
 	}
 }
 
