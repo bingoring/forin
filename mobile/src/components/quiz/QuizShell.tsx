@@ -7,6 +7,8 @@ import { Stack } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { useEffect } from 'react';
+import { playSfx } from '@/lib/sfx';
 
 export const C = colors.ink;
 
@@ -44,7 +46,7 @@ export function QuizShell({ title, sub, zone, onExit, progress, children, footer
 
       {/* top exit / zone */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 7 }}>
-        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} onPress={onExit} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
+        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} sfx={false} onPress={() => { playSfx('back'); onExit(); }} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
           {!!progress && progress.total > 1 && (
             <Shadowed offset={2} shadowColor={colors.mintShadow}>
@@ -121,6 +123,14 @@ export function HintRow({ text }: { text: string }) {
 }
 
 export function ResultBanner({ correct }: { correct: boolean }) {
+  // The verdict sound lives here rather than in each quiz's submit handler: this
+  // banner is exactly the moment a submit-style quiz reveals its answer, so the
+  // 10 quizzes that render it get audio feedback from one place. Keyed on
+  // `correct` so a retry that flips the verdict re-sounds.
+  useEffect(() => {
+    playSfx(correct ? 'confirm' : 'wrong');
+  }, [correct]);
+
   return (
     <View style={{ marginTop: 16, backgroundColor: correct ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
       <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{correct ? '✓ 정답입니다!' : '✗ 다시 시도해 보세요'}</Text>

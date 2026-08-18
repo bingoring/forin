@@ -14,6 +14,7 @@ import { newlyEarned, type BadgeDef } from '@/data/badges';
 import { ECON } from '@/data/economy';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { playSfx } from '@/lib/sfx';
 
 const C = colors.ink;
 
@@ -93,6 +94,20 @@ export default function ResultRoute() {
   const baseXp = baseXpOf(scenario);
   const subtitle = scenario?.briefing?.dept || scenario?.title || '';
   const leveledUp = !!before && !!after && after.level > before.level;
+  // Two distinct moments, two sounds. The clear fanfare fires once the server has
+  // judged the run (`after` is what proves the attempt landed), and only for a
+  // pass — a failed attempt still awards XP, so celebrating it would lie. A new
+  // badge or a level-up is a second, rarer beat and gets the reward arpeggio;
+  // when both happen the fanfare plays first and the reward lands on top of its
+  // tail rather than cutting it off.
+  const sounded = useRef(false);
+  useEffect(() => {
+    if (!after || sounded.current) return;
+    sounded.current = true;
+    if (passed) playSfx('success');
+    if (newBadges.length > 0 || leveledUp) playSfx('reward');
+  }, [after, passed, newBadges, leveledUp]);
+
 
   const onShare = () => {
     const lv = after ? ` (Lv.${after.level}${after.streakCurrent > 1 ? ` · ${after.streakCurrent}일 연속` : ''})` : '';

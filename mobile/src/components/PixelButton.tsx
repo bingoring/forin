@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { border, colors, fonts, radius, type as typeScale } from '@/theme/tokens';
+import { playSfx } from '@/lib/sfx';
 
 type Props = {
   label: string;
@@ -25,6 +26,8 @@ type Props = {
   borderWidth?: number; // override border weight (some handoff buttons are 2px)
   paddingV?: number;
   paddingH?: number;
+  /** Set false where the action plays its own, louder sound. */
+  sfx?: boolean;
   style?: ViewStyle;
 };
 
@@ -42,6 +45,7 @@ export function PixelButton({
   borderWidth,
   paddingV,
   paddingH,
+  sfx = true,
   style,
 }: Props) {
   const [pressed, setPressed] = useState(false);
@@ -54,7 +58,11 @@ export function PixelButton({
       <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: disabled ? colors.textFaint : shadowColor }} />
       <Pressable
         disabled={disabled}
-        onPressIn={() => setPressed(true)}
+        // The blip fires on press-IN, with the cap dropping into its shadow — the
+        // sound and the movement are the same event, so a late sound would read
+        // as lag. Callers can opt out (sfx={false}) where a button already has a
+        // louder sound of its own, e.g. the result screen's reward.
+        onPressIn={() => { setPressed(true); if (sfx) playSfx('tap'); }}
         onPressOut={() => setPressed(false)}
         onPress={onPress}
         style={[

@@ -21,6 +21,7 @@ import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
+import { playSfx } from '@/lib/sfx';
 
 const C = colors.ink;
 
@@ -303,7 +304,7 @@ export default function DialogueRoute() {
             the sheet it opens ("다른 곳에서 호출이 왔어요", and the promise that
             the conversation is kept). The affordance stays a plain close. */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <Pressable onPress={stepAway} hitSlop={8}>
+          <Pressable onPress={() => { playSfx('back'); stepAway(); }} hitSlop={8}>
             <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
             <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
               <PixelIcon name="x" color={C} size={15} sw={2} />

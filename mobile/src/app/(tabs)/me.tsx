@@ -16,6 +16,7 @@ import { earnedBadges } from '@/data/badges';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
 import { ECON, careerFor } from '@/data/economy';
 import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
+import { isSfxMuted, playSfx, setSfxMuted } from '@/lib/sfx';
 
 const C = colors.ink;
 
@@ -93,6 +94,15 @@ export default function Me() {
 
   // Sign out — drops the session on this device, so confirm first. On success we
   // navigate away and the screen unmounts, so `signingOut` is only cleared on failure.
+  // 효과음 on/off. 저장 실패해도 이 세션에는 반영되므로 낙관적으로 그린다.
+  const [sfxOn, setSfxOn] = useState(!isSfxMuted());
+  const toggleSfx = () => {
+    const next = !sfxOn;
+    setSfxOn(next);
+    void setSfxMuted(!next);
+    if (next) playSfx('confirm'); // 켠 직후엔 소리로 확인시켜준다
+  };
+
   const confirmSignOut = () => {
     Alert.alert('로그아웃', '이 기기에서 로그아웃할까요?\n다시 로그인하면 학습 기록은 그대로예요.', [
       { text: '취소', style: 'cancel' },
@@ -423,6 +433,32 @@ export default function Me() {
             </View>
           </Shadowed>
         </Pressable>
+
+        {/* 소리 — 효과음이 생겼으니 끌 수단도 있어야 한다. 병원/야근 환경에서
+            무음으로 쓰는 사람이 있고, 껐다는 사실은 기기에 남는다. */}
+        <View style={{ marginTop: space.sm }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+            <PixelIcon name="volume" color={C} size={16} sw={1.6} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>소리</Text>
+          </View>
+          <Shadowed offset={3} shadowColor={C + '33'}>
+            <Pressable
+              onPress={toggleSfx}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>효과음</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>
+                  {sfxOn ? '탭·정답·클리어에 소리가 나요.' : '모든 효과음이 꺼져 있어요.'}
+                </Text>
+              </View>
+              {/* 픽셀 토글 — 앱에 Switch를 쓴 곳이 없어 테두리 박스로 맞췄다 */}
+              <View style={{ width: 40, height: 22, borderWidth: 2, borderColor: C, backgroundColor: sfxOn ? colors.mint : colors.cream, justifyContent: 'center', alignItems: sfxOn ? 'flex-end' : 'flex-start', paddingHorizontal: 2 }}>
+                <View style={{ width: 14, height: 14, backgroundColor: C }} />
+              </View>
+            </Pressable>
+          </Shadowed>
+        </View>
 
         {/* 계정 — 로그아웃 (그 전까진 로그인 화면으로 돌아갈 경로가 없었다) */}
         <View style={{ marginTop: space.sm }}>

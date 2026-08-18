@@ -11,6 +11,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { playSfx } from '@/lib/sfx';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 
@@ -34,6 +35,7 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
 
   const tapRight = (pairIdx: number) => {
     if (sel === null || matched.has(pairIdx)) return;
+    playSfx(sel === pairIdx ? 'confirm' : 'wrong');
     if (sel === pairIdx) {
       setMatched((m) => new Set(m).add(pairIdx));
       setSel(null); setWrong(null);

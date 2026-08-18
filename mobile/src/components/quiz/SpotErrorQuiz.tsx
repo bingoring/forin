@@ -7,6 +7,8 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { useEffect } from 'react';
+import { playSfx } from '@/lib/sfx';
 
 export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -14,6 +16,12 @@ export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Qu
   const [picked, setPicked] = useState<number | null>(null);
   const [checked, setChecked] = useState(false);
   const correct = checked && picked !== null && !!rows[picked]?.error;
+
+  // These two reveal inline instead of via ResultBanner, so the verdict sound
+  // hangs off `checked` flipping true.
+  useEffect(() => {
+    if (checked) playSfx(correct ? 'confirm' : 'wrong');
+  }, [checked, correct]);
 
   return (
     <QuizShell

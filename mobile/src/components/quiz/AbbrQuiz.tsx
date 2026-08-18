@@ -9,6 +9,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { playSfx } from '@/lib/sfx';
 
 export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -26,6 +27,7 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
 
   const pick = (opt: string) => {
     if (!card || cardSolved || wrong.includes(opt)) return;
+    playSfx(opt === card.answer ? 'confirm' : 'wrong');
     if (opt === card.answer) {
       setSolved((s) => { const g = [...s]; g[idx] = true; return g; });
       setFirstTry((f) => { const g = [...f]; if (g[idx] === null) g[idx] = wrong.length === 0; return g; });
