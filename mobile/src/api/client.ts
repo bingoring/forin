@@ -623,6 +623,13 @@ export const api = {
     return `${baseURL}/speech/reference/audio.wav?text=${encodeURIComponent(text)}`;
   },
 
+  /** URL for the latest NPC line of a session, spoken in the persona's voice.
+   *  404 when there is nothing appropriate to speak (no turn yet, TTS off, or no
+   *  voice for the locale) — the caller should treat that as silence, not error. */
+  npcSpeechUrl(sessionId: string): string {
+    return `${baseURL}/conversation/${encodeURIComponent(sessionId)}/speech.wav`;
+  },
+
   /** Bearer header for the rare out-of-band request (expo-file-system
    *  downloads) that bypasses the axios instance above and so needs
    *  Authorization attached by hand. */

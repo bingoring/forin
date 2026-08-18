@@ -2,7 +2,9 @@ package speech
 
 import (
 	"context"
+	"errors"
 	"log/slog"
+	"strings"
 
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -131,6 +133,33 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 // first. ListAttempts hands rows back newest attempt_no first; the practice
 // screen renders 1st -> 2nd -> 3rd (business-rules R3), so this reverses here
 // rather than making every caller remember to.
+// SpeakLine synthesizes one NPC utterance in the persona's voice.
+//
+// Deliberately NOT a general "speak this text" endpoint: the caller passes text
+// that the server itself already stored as a dialogue turn, so there is no path
+// for a client to run up an unbounded TTS bill on arbitrary strings (the same
+// reason the reference routes cap their text).
+func (s *Service) SpeakLine(ctx context.Context, userID, text string, p PersonaVoice) ([]byte, error) {
+	if s.tts == nil || !s.tts.Configured() {
+		return nil, ErrTTSNotConfigured
+	}
+	if strings.TrimSpace(text) == "" {
+		return nil, ErrNothingToSpeak
+	}
+	p.Locale = s.pron.LocaleFor(ctx, userID)
+	voice, ok := VoiceForPersona(p)
+	if !ok {
+		// No appropriate voice: stay silent rather than speak in a voice that
+		// contradicts the character.
+		return nil, ErrUnsupportedLocale
+	}
+	return s.tts.Synthesize(ctx, text, voice, p.Locale)
+}
+
+// ErrNothingToSpeak means the turn had no text — nothing to synthesize, and not
+// a failure the learner should see as an error.
+var ErrNothingToSpeak = errors.New("speech: nothing to speak")
+
 func (s *Service) History(ctx context.Context, userID, sentenceKey string, limit int) ([]ports.SpeechAttemptRow, error) {
 	rows, err := s.repo.ListAttempts(ctx, userID, sentenceKey, limit)
 	if err != nil {

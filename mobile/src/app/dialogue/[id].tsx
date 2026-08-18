@@ -6,14 +6,15 @@
 // persona. Includes the v17 handoff affordances: MISSION counter, 💧 distress cue,
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
+  useAudioPlayer,
   useAudioRecorder, requestRecordingPermissionsAsync, setAudioModeAsync,
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
-import { readAsStringAsync, EncodingType } from 'expo-file-system/legacy';
+import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteAsync } from 'expo-file-system/legacy';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
@@ -50,6 +51,12 @@ export default function DialogueRoute() {
   // transcript sheet can show it without another round trip.
   const [transcript, setTranscript] = useState<{ role: 'user' | 'npc'; text: string }[]>([]);
   const [logOpen, setLogOpen] = useState(false);
+  // Patient lines are spoken aloud. Auto-play is the point (#17: hearing the line
+  // is half of understanding it), so it needs a visible off switch — audio that
+  // starts on its own and cannot be stopped is worse than no audio.
+  const [voiceOn, setVoiceOn] = useState(true);
+  const npcPlayer = useAudioPlayer(undefined, { updateInterval: 200 });
+  const voiceSeqRef = useRef(0);
   // Set when a previous conversation exists for this scenario. While it is set no
   // session is open yet — the learner picks resume or fresh first.
   const [resumable, setResumable] = useState<{ sessionId: string; turns: { role: string; content: string }[] } | null>(null);
@@ -133,6 +140,7 @@ export default function DialogueRoute() {
       await api.sendMessageStream(sessionRef.current, text, (chunk) => {
         setNpcLine((prev) => prev + chunk);
       });
+      void speakNpc();
     } catch {
       setNpcLine('(응답을 불러오지 못했습니다. 다시 시도해 주세요.)');
     } finally {
@@ -163,6 +171,33 @@ export default function DialogueRoute() {
   // do not "exit" a patient; you get pulled away. So the exit is framed as being
   // called elsewhere, and it says plainly that the conversation is kept.
   const [pagedOut, setPagedOut] = useState(false);
+  // Speaks the session's latest NPC turn. 404 means "nothing appropriate to
+  // speak" (no turn yet, TTS unconfigured, no voice for this locale) and is
+  // silence, not an error — the screen must never show a failure for it.
+  const speakNpc = useCallback(async () => {
+    if (!voiceOn || !sessionRef.current) return;
+    const seq = ++voiceSeqRef.current;
+    const path = `${cacheDirectory}npc-${seq}.wav`;
+    try {
+      const res = await downloadAsync(api.npcSpeechUrl(sessionRef.current), path, { headers: api.authHeaders() });
+      if (res.status !== 200) {
+        await deleteAsync(path, { idempotent: true }).catch(() => {});
+        return;
+      }
+      // A newer turn started while this one downloaded — drop it rather than
+      // speaking a line the learner has already moved past.
+      if (seq !== voiceSeqRef.current) {
+        await deleteAsync(path, { idempotent: true }).catch(() => {});
+        return;
+      }
+      npcPlayer.replace({ uri: path });
+      npcPlayer.seekTo(0);
+      npcPlayer.play();
+    } catch {
+      /* silence */
+    }
+  }, [voiceOn, npcPlayer]);
+
   const resumePrevious = async () => {
     if (!resumable) return;
     const prev = resumable;
@@ -267,12 +302,25 @@ export default function DialogueRoute() {
             where it read as a feature rather than an exit; the framing belongs in
             the sheet it opens ("다른 곳에서 호출이 왔어요", and the promise that
             the conversation is kept). The affordance stays a plain close. */}
-        <Pressable onPress={stepAway} hitSlop={8}>
-          <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
-          <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <PixelIcon name="x" color={C} size={15} sw={2} />
-          </View>
-        </Pressable>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <Pressable onPress={stepAway} hitSlop={8}>
+            <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
+            <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+              <PixelIcon name="x" color={C} size={15} sw={2} />
+            </View>
+          </Pressable>
+          {/* Voice on/off. Auto-play needs a switch in reach, not buried in
+              settings — and tapping it while a line is playing stops it. */}
+          <Pressable
+            onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
+            hitSlop={8}
+          >
+            <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
+            <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+              <PixelIcon name="volume" color={C} size={15} sw={2} />
+            </View>
+          </Pressable>
+        </View>
         <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
           {!!mission && (
             <>

@@ -140,6 +140,50 @@ func (e *Engine) ResumeSession(ctx context.Context, userID, scenarioID, sessionI
 	return nil
 }
 
+// NPCLine is the latest thing the character said, plus the persona facts a voice
+// picker needs. Returned as raw fields rather than a speech.PersonaVoice so this
+// package does not have to import domain/speech — the HTTP layer assembles it.
+type NPCLine struct {
+	Text     string
+	Role     string
+	Gender   string
+	AgeRange string
+}
+
+// LatestNPCLine returns the most recent assistant turn of a session the caller
+// owns. Ownership is checked for the same reason ResumeSession checks it: a
+// session id would otherwise read out someone else's conversation.
+func (e *Engine) LatestNPCLine(ctx context.Context, userID, sessionID string) (NPCLine, error) {
+	sess, err := e.convo.GetSession(ctx, sessionID)
+	if err != nil {
+		return NPCLine{}, err
+	}
+	if sess == nil || sess.UserID != userID {
+		return NPCLine{}, ErrSessionNotFound
+	}
+	turns, err := e.convo.History(ctx, sessionID, TranscriptLimit)
+	if err != nil {
+		return NPCLine{}, err
+	}
+	text := ""
+	for i := len(turns) - 1; i >= 0; i-- {
+		if turns[i].Role != "user" {
+			text = turns[i].Content
+			break
+		}
+	}
+	if text == "" {
+		return NPCLine{}, nil // no NPC turn yet — silence, not an error
+	}
+	sc, err := e.content.GetScenario(ctx, sess.ScenarioID)
+	if err != nil || sc == nil {
+		// The line is worth speaking even if we cannot read the persona; the voice
+		// picker falls back on locale.
+		return NPCLine{Text: text}, nil
+	}
+	return NPCLine{Text: text, Role: sc.Persona.Role, Gender: sc.Persona.Gender, AgeRange: sc.Persona.AgeRange}, nil
+}
+
 // prepare validates the session/scenario, records the user's line, and builds the
 // system prompt + message history for the LLM. Shared by SendMessage(+Stream).
 func (e *Engine) prepare(ctx context.Context, userID, sessionID, text string) (string, []ports.LLMMessage, *content.Scenario, string, error) {

@@ -767,6 +767,18 @@ paths:
       summary: Send a message; NPC replies in persona (LLM)
       tags:
       - conversation
+  /conversation/{sessionId}/speech.wav:
+    get:
+      responses:
+        "200":
+          content:
+            audio/wav:
+              schema:
+                type: file
+          description: OK
+      summary: Speak the latest NPC line of a conversation
+      tags:
+      - conversation
   /conversation/{sessionId}/stream:
     post:
       requestBody:

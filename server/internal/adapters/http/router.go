@@ -153,8 +153,11 @@ func NewRouter(d Deps) http.Handler {
 	// The reference sentence's synthesized audio (Task 11 — see
 	// speech_audio_handler.go's doc for why this closes a real gap: "🔊
 	// 원어민"/"0.5× 느리게" had no route to call).
-	sa := &speechAudioHandler{speech: d.Speech}
+	sa := &speechAudioHandler{speech: d.Speech, convo: d.Convo}
 	mux.Handle("GET /speech/reference/audio.wav", auth(http.HandlerFunc(sa.audio)))
+	// Reads the session's latest NPC line aloud in the persona's voice. Session
+	// scoped so the text always comes from a stored turn, never from the client.
+	mux.Handle("GET /conversation/{sessionId}/speech.wav", auth(http.HandlerFunc(sa.npcSpeech)))
 
 	// Global middleware (outermost first).
 	return chain(mux,

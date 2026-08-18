@@ -203,10 +203,15 @@ type Persona struct {
 	AgeRange      string `yaml:"ageRange" json:"ageRange,omitempty"` // e.g. "60s"
 	Personality   string `yaml:"personality" json:"personality,omitempty"`
 	SpeakingStyle string `yaml:"speakingStyle" json:"speakingStyle,omitempty"`
-	Mood          string `yaml:"mood" json:"mood,omitempty"`           // matches expression: pain, worried, panic...
-	Sub           string `yaml:"sub" json:"sub,omitempty"`             // display, e.g. "67y / Female"
-	Hair          string `yaml:"hair" json:"hair,omitempty"`           // portrait hair color, e.g. "#9A6B3F"
-	HairStyle     string `yaml:"hairStyle" json:"hairStyle,omitempty"` // portrait hair style, e.g. "bob"
+	Mood          string `yaml:"mood" json:"mood,omitempty"` // matches expression: pain, worried, panic...
+	Sub           string `yaml:"sub" json:"sub,omitempty"`   // display, e.g. "67y / Female"
+	// Gender is optional and exists for VOICE selection, not display: "male" |
+	// "female". Most authored personas leave it empty (30 of 300 hint at it only
+	// inside the display `sub` string), so speech falls back to role — filling
+	// this in is what makes an individual character sound right.
+	Gender    string `yaml:"gender" json:"gender,omitempty"`
+	Hair      string `yaml:"hair" json:"hair,omitempty"`           // portrait hair color, e.g. "#9A6B3F"
+	HairStyle string `yaml:"hairStyle" json:"hairStyle,omitempty"` // portrait hair style, e.g. "bob"
 }
 
 // Briefing is the pre-dialogue scenario card (situation, difficulty, skills,

@@ -2,6 +2,7 @@ package http
 
 import (
 	"bytes"
+	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"log/slog"
 	"net/http"
 	"time"
@@ -44,6 +45,7 @@ import (
 // mechanism against this one clip (task-11-report.md judgment call 3).
 type speechAudioHandler struct {
 	speech *speech.Service
+	convo  *conversation.Engine
 }
 
 // @Summary Synthesized reference audio for a sentence (WAV) — the same TTS render GET /speech/reference derives its IPA from
@@ -98,4 +100,46 @@ func (h *speechAudioHandler) audio(w http.ResponseWriter, r *http.Request) {
 	// the URL/response carry no Vary to make a shared cache safe.
 	w.Header().Set("Cache-Control", "private, max-age=86400")
 	http.ServeContent(w, r, "reference.wav", time.Time{}, bytes.NewReader(wav))
+}
+
+// npcSpeech — GET /conversation/{sessionId}/speech.wav
+//
+// Speaks the session's most recent NPC line in the persona's voice. Session
+// scoped on purpose: the text comes from a stored dialogue turn, so a client
+// cannot post arbitrary strings at a paid TTS. 404 (not 500) whenever there is
+// nothing appropriate to speak — no turn yet, TTS unconfigured, or no voice for
+// the locale — because silence is a normal outcome here, not a failure.
+//
+// @Summary Speak the latest NPC line of a conversation
+// @Tags conversation
+// @Produce audio/wav
+// @Success 200 {file} binary
+// @Router /conversation/{sessionId}/speech.wav [get]
+func (h *speechAudioHandler) npcSpeech(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	npc, err := h.convo.LatestNPCLine(r.Context(), uid, r.PathValue("sessionId"))
+	line := npc.Text
+	persona := speech.PersonaVoice{Role: npc.Role, Gender: npc.Gender, AgeRange: npc.AgeRange}
+	if err != nil || line == "" {
+		if err != nil {
+			slog.Warn("speech: no NPC line to speak", "err", err)
+		}
+		httpx.Error(w, http.StatusNotFound, "nothing to speak")
+		return
+	}
+	wav, err := h.speech.SpeakLine(r.Context(), uid, line, persona)
+	if err != nil {
+		slog.Warn("speech: NPC line synthesis unavailable, serving 404", "err", err)
+		httpx.Error(w, http.StatusNotFound, "nothing to speak")
+		return
+	}
+	w.Header().Set("Content-Type", "audio/wav")
+	// Per-user (locale-dependent) and short-lived: an NPC line changes with every
+	// turn, so this must not be cached by a shared proxy.
+	w.Header().Set("Cache-Control", "private, max-age=60")
+	http.ServeContent(w, r, "speech.wav", time.Time{}, bytes.NewReader(wav))
 }
