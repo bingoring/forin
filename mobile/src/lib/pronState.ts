@@ -1,13 +1,21 @@
 // Pure state machine for the pronunciation loop route (one route, 6 screen
 // states — frontend-components.md §4). Mirrors the transition diagram in
-// business-logic-model.md §3 exactly; do not add a shortcut edge that isn't
-// drawn there.
+// business-logic-model.md §3; the one addition beyond that diagram (result's
+// MIC_DENIED edge) is commented at its own entry below.
 //
 // This file is deliberately free of side effects: requesting mic permission,
 // running the 10s countdown, and calling POST /pronunciation all happen in
-// the route component, which dispatches the OUTCOME as an event. That split
-// is what makes "scoring cannot be cancelled" and "10s always lands in
-// scoring" testable without mounting a screen or mocking expo-audio.
+// the route component (app/pronunciation/[sentenceKey].tsx), which dispatches
+// the OUTCOME as an event. That split is what makes "scoring cannot be
+// cancelled" and "10s always lands in scoring" testable without mounting a
+// screen or mocking expo-audio.
+//
+// Lives under src/lib/, not src/app/pronunciation/: expo-router's
+// require.context collects every .ts file under src/app/ as a route module
+// and (in dev + sync import mode) require()s each one eagerly to validate its
+// exports. A file with a top-level `describe(...)` (this one's .test.ts) or
+// without a default export (this one) breaks that scan — see task-8-report.md
+// §"이번 라운드" for how that surfaced.
 export type PronState = 'idle' | 'recording' | 'scoring' | 'result' | 'permissionDenied' | 'noSpeech';
 
 export type PronEventType =
@@ -52,6 +60,11 @@ const TRANSITIONS: Table = {
   result: {
     RETRY: 'recording',
     NEXT: 'idle',
+    // "다시 녹음" re-checks mic permission before it re-starts the recorder
+    // (retry can't assume permission granted at first record still holds —
+    // it can be revoked from Settings between attempts). If it comes back
+    // denied, land on the same permission screen idle would.
+    MIC_DENIED: 'permissionDenied',
   },
   permissionDenied: {
     PERMISSION_GRANTED: 'idle', // back to idle, not straight into recording —

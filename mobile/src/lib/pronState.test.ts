@@ -50,6 +50,12 @@ describe('result actions', () => {
   test('다음 문장은 대기 화면(새 sentenceKey)으로 넘어간다', () => {
     expect(next('result', { type: 'NEXT' })).toBe('idle');
   });
+
+  // 리뷰 지적: 재녹음은 매번 마이크 권한을 다시 확인해야 한다(첫 녹음 이후
+  // 설정에서 권한이 회수됐을 수 있다) — 거부되면 idle과 같은 권한 안내로.
+  test('다시 녹음 중 권한이 거부되면 권한 안내로 간다', () => {
+    expect(next('result', { type: 'MIC_DENIED' })).toBe('permissionDenied');
+  });
 });
 
 describe('microphone permission', () => {

@@ -38,7 +38,7 @@ import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/componen
 import { splitTargetTokens, syllableBand, buildCorrectionPoints } from '@/lib/pronTokens';
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { colors, fonts } from '@/theme/tokens';
-import { next, initialPronState, type PronState, type PronEventType } from './pronState';
+import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 
 const C = colors.ink;
 const WAVE_DARK = '#0F1A24'; // SoT's dark wave-panel fill — not in theme/tokens
