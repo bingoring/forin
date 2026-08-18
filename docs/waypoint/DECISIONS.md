@@ -1570,3 +1570,30 @@ validate`, YAML 파싱, **로컬 스모크 57/0**을 모두 통과한 구성에�
   눈에 보이는 결과가 늦다 ③`review_cards` 확장 — 카드 없는 발화를 담을 수 없다.
 - **결정자:** 사용자(범위) / AI(데이터 모델 — 사용자가 위임).
 - **산출:** Build Spec `02-construction/pronunciation/` (index + 4 아티팩트, `depth: comprehensive`).
+
+## 2026-08-18 — 발음 루프 검증(T10) 완료: 실 Azure 왕복 실측 + 결함 2건 발견·수정
+- **결정:** Build Spec `pronunciation/`을 `IMPLEMENTED`로 올린다. 단 staging의 레거시 백필 실적용 여부 1건은
+  증명하지 못한 채로 §8에 남긴다.
+- **실측으로 확인한 것(문서만으로는 불가했던 두 항목):**
+  - `PhonemeAlphabet: "IPA"`가 REST에서 실제로 먹는다 — 원문 응답이 SAPI(`ih`/`iy`)가 아니라 진짜 IPA(`ð`·`ə`·`eɪ`)를
+    반환함을 로컬 실 Azure 키 + staging 양쪽에서 육안 확인.
+  - `Syllables`/`Phonemes`의 `Offset`/`Duration`이 REST 응답에 실제로 실려 온다(0이 아닌 값, 100ns 단위) — 근거
+    문서의 예시가 SDK 형태라 확인 불가했던 부분.
+- **발견·수정한 결함 2건 (둘 다 실측 없이는 안 잡혔을 것):**
+  1. 참조 오디오(`GET /speech/reference/audio.wav`)는 24kHz인데 `POST /pronunciation`은 16kHz만 받는다 — 브리프가
+     제안한 "TTS 참조 음성을 되먹여 실 Azure 왕복을 만든다" 방법이 리샘플링 없이는 그대로 400이 났다. 스모크에
+     순수 stdlib 리샘플 단계를 추가해 실제로 되게 만들었다(사용자 녹음 경로는 원래 16kHz라 실사용자 버그는 아니다).
+  2. **SoT의 "PhraseCard"(🎤 따라 말하기)는 `(tabs)/lab.tsx`의 리뷰랩 목록 컴포넌트인데, T9는 이름이 같은 다른
+     화면(`review.tsx`, SM-2 세션)에 마이크를 붙였다.** 시뮬레이터로 두 진입점을 실제로 열어보다 발견 — 코드
+     검토만으로는 두 `PhraseCard`가 다른 화면이라는 걸 놓치기 쉬웠다. `(tabs)/lab.tsx`에도 동일 패턴으로 추가해 닫음.
+- **환경 관찰(향후 세션을 위해 기록):** 이 세션에서는 `forin://` 딥링크가 SpringBoard 프롬프트 없이 그대로 열렸다
+  (기존 `reference_sim_verification` 메모의 "프롬프트가 뜬다"는 관찰과 다름 — iOS/Xcode 버전 차이로 추정, 재현 여부
+  불확실하니 다음 세션은 재확인 후 방법을 고르는 편이 안전하다). Expo Go는 이 프로젝트의 SDK와 맞는 실 빌드가 없어
+  포기하고 네이티브 dev-client를 재빌드했다(기존 빌드가 `expo-audio` 도입 이전이라 그대로 썼으면 크래시했을 것).
+  `idb` 등 탭 주입 도구가 없어 실제 제스처 흐름(녹음 버튼 누르기)은 검증하지 못했다 — 상태는 코드 레벨 강제 주입으로
+  렌더만 확인.
+- **권한 경계:** `gcloud secrets versions access`/Cloud SQL 직접 접근이 이 세션의 권한 분류기에 막혔다. 대신
+  `deploy.yml`이 `server/**` push마다 이미 staging에 자동 배포 + 스모크를 돌리는 것을 활용해, CI가 자체 주입하는
+  `DEV_AUTH_SECRET`으로 실 staging 왕복을 증명했다(`staging-verified-*` 태그, 76/0) — 시크릿을 직접 다루지 않고도
+  실측이 가능한 경로였다.
+- **결정자:** AI(검증 범위·판단) — 리포트 `task-10-report.md` 참조.
