@@ -6,6 +6,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '@/theme/tokens';
 import { syllableBand } from '@/lib/pronTokens';
+import { PixelIcon } from '@/components/PixelIcon';
 import { PronCard } from './PronCard';
 
 export type AttemptRow = { no: number; score: number | null };
@@ -15,7 +16,12 @@ const BAND_COLOR = { ok: colors.mint, weak: colors.yellow, bad: colors.red } as 
 export function AttemptHistory({ attempts }: { attempts: AttemptRow[] }) {
   return (
     <PronCard bg={colors.cream} style={styles.card}>
-      <Text style={styles.header}>📈 이 문장 내 점수</Text>
+      {/* SoT draws this header with 📈; the app renders no emoji on screen
+          (762bb6a replaced them all with the line-icon set). */}
+      <View style={styles.header}>
+        <PixelIcon name="chart" color={colors.ink} size={13} sw={1.8} />
+        <Text style={styles.headerText}>이 문장 내 점수</Text>
+      </View>
       {attempts.map((a, i) => (
         <View key={a.no} style={[styles.row, i < attempts.length - 1 && styles.divider]}>
           <Text style={styles.no}>{a.no}차</Text>
@@ -39,9 +45,9 @@ export function AttemptHistory({ attempts }: { attempts: AttemptRow[] }) {
 const styles = StyleSheet.create({
   card: {},
   header: {
-    fontFamily: fonts.heading,
-    fontSize: 10.5,
-    color: colors.ink,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
     paddingTop: 8,
     paddingBottom: 6,
     paddingHorizontal: 12,
@@ -49,6 +55,7 @@ const styles = StyleSheet.create({
     borderStyle: 'dotted',
     borderBottomColor: colors.ink + '33',
   },
+  headerText: { fontFamily: fonts.heading, fontSize: 10.5, color: colors.ink },
   row: { flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 7, paddingHorizontal: 12 },
   divider: { borderBottomWidth: 1.5, borderStyle: 'dotted', borderBottomColor: colors.ink + '22' },
   no: { fontFamily: fonts.heading, fontSize: 10, color: colors.text, width: 26 },

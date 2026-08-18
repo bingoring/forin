@@ -45,20 +45,27 @@ export function splitTargetTokens(text: string, drugNames: string[]): TargetToke
 
   // Drug names win over dose spans: they are explicit input, the dose regex is
   // a heuristic. Collect them first so the overlap check below drops the guess.
-  for (const name of drugNames) {
-    if (!name) continue;
+  //
+  // Longest first, and every candidate is overlap-checked — including against
+  // OTHER drug names. Combination products share substrings ("amoxicillin
+  // clavulanate" contains "clavulanate"), and without this the shared part gets
+  // emitted twice, so joining the tokens no longer reproduces the sentence.
+  const byLength = [...drugNames].filter(Boolean).sort((a, b) => b.length - a.length);
+  const claim = (start: number, end: number, hi: 'drug' | 'num'): void => {
+    if (ranges.some((r) => start < r.end && end > r.start)) return;
+    ranges.push({ start, end, hi });
+  };
+
+  for (const name of byLength) {
     const re = new RegExp(`\\b${escapeRe(name)}\\b`, 'gi');
     for (let m = re.exec(text); m !== null; m = re.exec(text)) {
-      ranges.push({ start: m.index, end: m.index + m[0].length, hi: 'drug' });
+      claim(m.index, m.index + m[0].length, 'drug');
     }
   }
 
   NUM_UNIT.lastIndex = 0;
   for (let m = NUM_UNIT.exec(text); m !== null; m = NUM_UNIT.exec(text)) {
-    const start = m.index;
-    const end = start + m[0].length;
-    const overlaps = ranges.some((r) => start < r.end && end > r.start);
-    if (!overlaps) ranges.push({ start, end, hi: 'num' });
+    claim(m.index, m.index + m[0].length, 'num');
   }
 
   if (ranges.length === 0) return [{ w: text }];
@@ -98,14 +105,29 @@ export function syllableBand(accuracy: number): 'ok' | 'weak' | 'bad' {
  *
  * `suspectAllZero` flags the case that motivated the policy: whether Azure's
  * REST response actually carries these offsets is UNVERIFIED (the documented
- * example JSON is SDK-shaped). If it does not, every value arrives as 0, every
- * window is empty, and nothing matches. The caller should surface that as a
- * defect signal — not as "this recording had no correction points".
+ * example JSON is SDK-shaped). If it does not, every value arrives as 0.
+ *
+ * The detection rule is physical, not structural: spans of real speech are
+ * strictly ordered in time, so TWO OR MORE spans all reporting offset 0 means
+ * the field is absent, not that they genuinely coincide. Checking each array
+ * independently matters — if only the phonemes lose their offsets while the
+ * syllables keep real timing, every phoneme still lands inside the first
+ * syllable's window (which usually starts at 0) and would be mislabeled with
+ * no complaint at all. When the flag is up we return no matches rather than
+ * those plausible-looking ones: refusing to guess is the whole point.
  */
 export function matchPhonemesToSyllables(
   phonemes: TimedSpan[],
   syllables: TimedSpan[]
 ): SyllableMatch {
+  const allAtZero = (spans: TimedSpan[]): boolean =>
+    spans.length > 1 && spans.every((s) => !s.offset);
+  const suspectAllZero = allAtZero(phonemes) || allAtZero(syllables);
+
+  if (suspectAllZero) {
+    return { matches: phonemes.map(() => null), suspectAllZero: true };
+  }
+
   const matches = phonemes.map((p) => {
     const at = p.offset ?? 0;
     const i = syllables.findIndex((s) => {
@@ -116,11 +138,5 @@ export function matchPhonemesToSyllables(
     return i === -1 ? null : i;
   });
 
-  const suspectAllZero =
-    phonemes.length > 0 &&
-    syllables.length > 0 &&
-    phonemes.every((p) => !p.offset) &&
-    syllables.every((s) => !s.offset && !s.duration);
-
-  return { matches, suspectAllZero };
+  return { matches, suspectAllZero: false };
 }

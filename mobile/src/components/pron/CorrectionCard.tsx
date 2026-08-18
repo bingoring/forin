@@ -9,8 +9,9 @@
 //
 // `message` is the server tip's short card copy (Tip.Message, ~25 chars). The
 // long form (Tip.Detail) belongs to the drill screen, which is not built yet.
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '@/theme/tokens';
+import { PixelIcon } from '@/components/PixelIcon';
 import { PronCard } from './PronCard';
 
 type Props = {
@@ -32,11 +33,10 @@ export function CorrectionCard({ syllable, ipa, message, severe, onPlay }: Props
         <Text style={styles.ipa}>{ipa}</Text>
         <Text style={styles.message}>{message}</Text>
       </View>
-      <View style={styles.play}>
-        <Text style={styles.playText} onPress={onPlay}>
-          🔊
-        </Text>
-      </View>
+      {/* SoT draws 🔊 here; the app renders no emoji on screen (762bb6a). */}
+      <Pressable onPress={onPlay} hitSlop={8} style={styles.play}>
+        <PixelIcon name="volume" color={colors.ink} size={14} sw={1.8} />
+      </Pressable>
     </PronCard>
   );
 }

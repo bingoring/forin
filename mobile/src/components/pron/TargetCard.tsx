@@ -3,9 +3,10 @@
 // Highlight colours carry meaning, not decoration: drug names are lilac and
 // dose amounts yellow because those are the two spans where a mishearing
 // becomes a medication error (L83 of the same file spells that out).
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts } from '@/theme/tokens';
 import type { TargetToken } from '@/lib/pronTokens';
+import { PixelIcon } from '@/components/PixelIcon';
 import { PronCard } from './PronCard';
 
 type Props = {
@@ -46,16 +47,24 @@ export function TargetCard({ tokens, ipa, hint, onPlayNative, onPlaySlow, native
       {ipa ? <Text style={styles.ipa}>{ipa}</Text> : null}
 
       <View style={styles.actions}>
-        <View style={[styles.playChip, !nativeAvailable && styles.flat]}>
-          <Text style={styles.chipText} onPress={nativeAvailable ? onPlayNative : undefined}>
-            🔊 원어민
-          </Text>
-        </View>
-        <View style={[styles.slowChip, !nativeAvailable && styles.flat]}>
-          <Text style={styles.chipText} onPress={nativeAvailable ? onPlaySlow : undefined}>
-            0.5× 느리게
-          </Text>
-        </View>
+        {/* SoT labels this 🔊 원어민; the app draws no emoji on screen (762bb6a). */}
+        <Pressable
+          onPress={onPlayNative}
+          disabled={!nativeAvailable}
+          hitSlop={8}
+          style={[styles.playChip, !nativeAvailable && styles.flat]}
+        >
+          <PixelIcon name="volume" color={colors.ink} size={13} sw={1.8} />
+          <Text style={styles.chipText}>원어민</Text>
+        </Pressable>
+        <Pressable
+          onPress={onPlaySlow}
+          disabled={!nativeAvailable}
+          hitSlop={8}
+          style={[styles.slowChip, !nativeAvailable && styles.flat]}
+        >
+          <Text style={styles.chipText}>0.5× 느리게</Text>
+        </Pressable>
         <View style={styles.spacer} />
         <Text style={styles.hint}>{hint}</Text>
       </View>
@@ -82,6 +91,7 @@ const styles = StyleSheet.create({
     borderColor: colors.ink,
     paddingHorizontal: 5,
     paddingVertical: 1,
+    marginHorizontal: 1, // SoT L43 `margin: '0 1px'` — keeps chips off adjacent words
   },
   ipa: {
     fontFamily: fonts.heading,
@@ -101,6 +111,9 @@ const styles = StyleSheet.create({
     borderTopColor: colors.ink + '22',
   },
   playChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
     backgroundColor: colors.blue,
     borderWidth: 2,
     borderColor: colors.ink,
