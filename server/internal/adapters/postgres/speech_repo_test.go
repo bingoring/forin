@@ -596,3 +596,71 @@ func TestReferenceRoundTrip(t *testing.T) {
 		t.Fatalf("want the first Put to win (ON CONFLICT DO NOTHING), got %+v", afterSecond)
 	}
 }
+
+// TestUpdateReferenceAudioBackfillsLegacyRow: Task 10 carry-forward item ④
+// ("does the backfill actually apply to real rows?") asked whether staging
+// has any genuinely legacy speech_references rows (audio_wav = an empty string) left over
+// from before Task 11 added that column, and whether UpdateReferenceAudio
+// really closes them over a real connection — not just against the
+// in-memory fake repo domain/speech.reference_test.go already covers
+// (TestReferenceAudioBackfillsLegacyRow). This test could not establish
+// whether staging currently HAS such a row (that needs direct DB access,
+// which was not available to this task — see the Task 10 report), but it can
+// and does prove the SQL itself (UpdateSpeechReferenceAudio's `WHERE
+// audio_wav = ”` guard) behaves correctly against a real Postgres row shaped
+// exactly like a legacy one: inserted directly via SQL with an empty
+// audio_wav, bypassing PutReference entirely (mirroring what a pre-Task-11
+// PutReference call would have left behind).
+func TestUpdateReferenceAudioBackfillsLegacyRow(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewSpeechRepo(pool)
+	ctx := context.Background()
+	sentenceKey := fmt.Sprintf("sk-legacy-backfill-%d", time.Now().UnixNano())
+	t.Cleanup(func() {
+		_, _ = pool.Exec(context.Background(), `DELETE FROM speech_references WHERE sentence_key = $1`, sentenceKey)
+	})
+
+	// A legacy row: audio_wav explicitly '' (the column's own DEFAULT), never
+	// touched by PutReference/ReferenceAudio's synthesis path.
+	if _, err := pool.Exec(ctx,
+		`INSERT INTO speech_references (sentence_key, reference_text, locale, ipa, duration_ms)
+		 VALUES ($1, 'The patient is stable.', 'en-US', 'ðə ˈpeɪʃənt ɪz ˈsteɪbəl', 2100)`,
+		sentenceKey); err != nil {
+		t.Fatalf("insert legacy row: %v", err)
+	}
+
+	before, err := repo.GetReferenceAudio(ctx, sentenceKey)
+	if err != nil {
+		t.Fatalf("get before backfill: %v", err)
+	}
+	if len(before) != 0 {
+		t.Fatalf("want the legacy row to start with no audio, got %d bytes", len(before))
+	}
+
+	backfilled := []byte("re-synthesized wav bytes")
+	if err := repo.UpdateReferenceAudio(ctx, sentenceKey, backfilled); err != nil {
+		t.Fatalf("backfill: %v", err)
+	}
+	after, err := repo.GetReferenceAudio(ctx, sentenceKey)
+	if err != nil {
+		t.Fatalf("get after backfill: %v", err)
+	}
+	if string(after) != string(backfilled) {
+		t.Fatalf("want the backfilled bytes, got %d bytes want %d", len(after), len(backfilled))
+	}
+
+	// First-writer-wins (same spirit as PutReference's ON CONFLICT DO
+	// NOTHING): once audio_wav is non-empty, a second backfill attempt must
+	// not overwrite it — the `WHERE audio_wav = ''` guard is what makes a
+	// race between two concurrent backfills harmless.
+	if err := repo.UpdateReferenceAudio(ctx, sentenceKey, []byte("SHOULD NOT WIN")); err != nil {
+		t.Fatalf("second backfill call: %v", err)
+	}
+	stillAfter, err := repo.GetReferenceAudio(ctx, sentenceKey)
+	if err != nil {
+		t.Fatalf("get after second backfill: %v", err)
+	}
+	if string(stillAfter) != string(backfilled) {
+		t.Fatalf("want the first backfill to win, got %q", stillAfter)
+	}
+}
