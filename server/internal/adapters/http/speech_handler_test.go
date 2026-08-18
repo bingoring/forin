@@ -157,9 +157,11 @@ type fakeSynth struct {
 	configured bool
 	wav        []byte
 	err        error
+	synthCalls int
 }
 
 func (f *fakeSynth) Synthesize(ctx context.Context, text, voice, locale string) ([]byte, error) {
+	f.synthCalls++
 	if f.err != nil {
 		return nil, f.err
 	}
@@ -697,5 +699,138 @@ func TestPronunciationResponseKeepsExistingFields(t *testing.T) {
 	}
 	if _, ok := got["attemptNo"]; !ok {
 		t.Errorf("attemptNo missing from response: %+v", got)
+	}
+}
+
+// ── phonemeTips (Task 11) ────────────────────────────────────────────────
+// Closes task-11-brief.md item ①: content/phonemetips had zero importers, so
+// the result screen's correction points (SoT L197-210) were permanently
+// empty. These assert POST /pronunciation now carries the Korean coaching
+// inline, deduplicated by phoneme (business-rules R5: skip anything with no
+// tip, never fabricate one).
+
+func resultWithPhonemes(phonemesByWord ...[]string) *ports.PronunciationResult {
+	words := make([]ports.WordScore, len(phonemesByWord))
+	for i, phs := range phonemesByWord {
+		ps := make([]ports.PhonemeResult, len(phs))
+		for j, p := range phs {
+			ps[j] = ports.PhonemeResult{Phoneme: p, Accuracy: 50}
+		}
+		words[i] = ports.WordScore{Word: "w", Phonemes: ps}
+	}
+	return &ports.PronunciationResult{Recognized: "test", Words: words}
+}
+
+// The wire format must be camelCase (ipa/message), matching every other
+// field this handler already emits — a PascalCase leak here would silently
+// render nothing on mobile (see maxReferenceTextLen's sibling tests' own
+// rationale for asserting via map[string]any, not back into a Go struct).
+func TestPronunciationResponseIncludesPhonemeTips(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	body, _ := json.Marshal(map[string]string{
+		"referenceText": "give the patient acetaminophen",
+		"audioBase64":   testWavBase64(16000),
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d: %s", w.Code, w.Body.String())
+	}
+	var got map[string]any
+	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	tips, ok := got["phonemeTips"].(map[string]any)
+	if !ok {
+		t.Fatalf("expected a phonemeTips object in the response, got %+v", got)
+	}
+	// sampleAssessResult's one phoneme is "s", which has a tip in content/phonemetips.
+	tip, ok := tips["s"].(map[string]any)
+	if !ok {
+		t.Fatalf(`expected phonemeTips["s"], got %+v`, tips)
+	}
+	for _, key := range []string{"ipa", "message"} {
+		if _, ok := tip[key]; !ok {
+			t.Errorf("expected camelCase key %q on phonemeTips[\"s\"], got %+v", key, tip)
+		}
+	}
+	for _, wrongKey := range []string{"IPA", "Message", "Detail", "Example"} {
+		if _, ok := tip[wrongKey]; ok {
+			t.Errorf("unexpected key %q leaked onto the wire, got %+v", wrongKey, tip)
+		}
+	}
+}
+
+// A phoneme appearing multiple times across the sentence (acetaminophen alone
+// has three schwas) must produce exactly ONE entry, not one per occurrence —
+// the brief's own call-out ("중복을 줄이는 방법도 생각하라").
+func TestPronunciationResponsePhonemeTipsDeduplicatesRepeatedPhoneme(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	result := resultWithPhonemes([]string{"s", "s"}, []string{"s", "z"})
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: result}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	body, _ := json.Marshal(map[string]string{
+		"referenceText": "test sentence",
+		"audioBase64":   testWavBase64(16000),
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	var got map[string]any
+	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	tips, ok := got["phonemeTips"].(map[string]any)
+	if !ok {
+		t.Fatalf("expected a phonemeTips object, got %+v", got)
+	}
+	if len(tips) != 2 {
+		t.Fatalf("expected exactly 2 deduplicated entries (s, z), got %d: %+v", len(tips), tips)
+	}
+	if _, ok := tips["s"]; !ok {
+		t.Errorf("expected a single deduplicated \"s\" entry, got %+v", tips)
+	}
+	if _, ok := tips["z"]; !ok {
+		t.Errorf("expected a \"z\" entry, got %+v", tips)
+	}
+}
+
+// business-rules R5: a phoneme with no Korean tip must be skipped entirely,
+// never rendered as an empty/fabricated entry.
+func TestPronunciationResponseOmitsUnknownPhoneme(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	result := resultWithPhonemes([]string{"not-a-real-phoneme"})
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: result}, repo, nil)
+	review := &fakeReviewRepo{owned: map[string]string{}}
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: review}
+
+	body, _ := json.Marshal(map[string]string{
+		"referenceText": "test sentence",
+		"audioBase64":   testWavBase64(16000),
+	})
+	req := httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.assess(w, req)
+
+	var got map[string]any
+	if err := json.Unmarshal(w.Body.Bytes(), &got); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if tips, ok := got["phonemeTips"]; ok {
+		if m, ok := tips.(map[string]any); ok && len(m) != 0 {
+			t.Fatalf("expected no entries for an unrecognized phoneme, got %+v", m)
+		}
 	}
 }

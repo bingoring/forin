@@ -489,6 +489,13 @@ components:
         text:
           type: string
       type: object
+    internal_adapters_http.phonemeTipDTO:
+      properties:
+        ipa:
+          type: string
+        message:
+          type: string
+      type: object
     internal_adapters_http.pronounceReq:
       properties:
         audioBase64:
@@ -527,6 +534,14 @@ components:
           type: number
         overall:
           type: number
+        phonemeTips:
+          additionalProperties:
+            $ref: '#/components/schemas/internal_adapters_http.phonemeTipDTO'
+          description: |-
+            PhonemeTips is new in Task 11 — see phonemeTipsFor's doc for the shape
+            and dedup rationale. omitempty: a scored attempt with no words at all
+            (or no phoneme with a mapped tip) sends no field rather than `{}`.
+          type: object
         prosody:
           description: |-
             Prosody (억양) only arrives when EnableProsodyAssessment is on AND the
@@ -1221,6 +1236,22 @@ paths:
       - Bearer: []
       summary: Canonical syllable/phoneme reference for a sentence (TTS-derived, cached
         globally per business-rules R9)
+      tags:
+      - pronunciation
+  /speech/reference/audio.wav:
+    get:
+      parameters:
+      - description: sentence text — same text passed to GET /speech/reference
+        in: query
+        name: text
+        required: true
+        schema:
+          type: string
+      responses: null
+      security:
+      - Bearer: []
+      summary: Synthesized reference audio for a sentence (WAV) — the same TTS render
+        GET /speech/reference derives its IPA from
       tags:
       - pronunciation
   /stt:

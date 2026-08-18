@@ -9,6 +9,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/bingoring/forin/server/internal/adapters/azurespeech"
+	"github.com/bingoring/forin/server/internal/content/phonemetips"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/speech"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -140,7 +141,70 @@ func (h *pronunciationHandler) assess(w http.ResponseWriter, r *http.Request) {
 		PronunciationResult: rec.Result,
 		AttemptID:           rec.ID,
 		AttemptNo:           rec.AttemptNo,
+		PhonemeTips:         phonemeTipsFor(rec.Result),
 	})
+}
+
+// phonemeTipDTO is the wire shape of one phoneme's Korean coaching —
+// deliberately a subset of phonemetips.Tip: Message is what the SoT's
+// correction card actually renders (screen-pronunciation.jsx L199-200) and
+// IPA is the phoneme's own dictionary spelling (the package doc's own
+// warning: NOT the syllable ipa the card shows — the mobile client already
+// assembles that from PhonemeResult/SyllableResult). Detail/Example exist in
+// the content package for a future drill screen (out of this task's scope,
+// SoT L221-274) and are left off the wire until something reads them —
+// shipping unused fields invites drift between the DTO and what actually
+// renders.
+type phonemeTipDTO struct {
+	IPA     string `json:"ipa"`
+	Message string `json:"message"`
+}
+
+// phonemeTipsFor builds the deduplicated phoneme->tip map Task 11 adds to
+// POST /pronunciation's response (task-11-brief.md item ①: content/
+// phonemetips existed but nothing imported it, so the result screen's
+// correction points were permanently empty).
+//
+// Design judgment (task-11-brief.md's first open question): inlined here
+// rather than served from a separate endpoint — the practice screen needs
+// this exactly once per scored attempt and never independently of a score,
+// so a second round trip would only add latency for no reuse. The map is
+// keyed by the RAW phoneme spelling as it appears in Words[*].Phonemes[*]
+// (not renormalized) so the mobile client can index straight into it with
+// the same string buildCorrectionPoints already carries per candidate —
+// content/phonemetips is the only thing that should be interpreting phoneme
+// notation (its own package doc), so normalization happens once, here, via
+// Lookup, never reimplemented in TypeScript.
+//
+// One entry per DISTINCT phoneme, not one per occurrence — a single sentence
+// repeats phonemes constantly ("acetaminophen" alone has three schwas), and
+// Message/Detail/Example text is identical for every occurrence of the same
+// sound, so shipping it once instead of per-position measurably shrinks the
+// response instead of growing it with word count.
+//
+// business-rules R5: a phoneme with no mapped tip is left out of the map
+// entirely — never a fabricated or empty entry.
+func phonemeTipsFor(res *ports.PronunciationResult) map[string]phonemeTipDTO {
+	if res == nil {
+		return nil
+	}
+	var out map[string]phonemeTipDTO
+	for _, w := range res.Words {
+		for _, p := range w.Phonemes {
+			if _, seen := out[p.Phoneme]; seen {
+				continue
+			}
+			tip, ok := phonemetips.Lookup(p.Phoneme)
+			if !ok {
+				continue
+			}
+			if out == nil {
+				out = make(map[string]phonemeTipDTO)
+			}
+			out[p.Phoneme] = phonemeTipDTO{IPA: tip.IPA, Message: tip.Message}
+		}
+	}
+	return out
 }
 
 type pronounceReq struct {
@@ -162,6 +226,10 @@ type pronounceResp struct {
 	*ports.PronunciationResult
 	AttemptID string `json:"attemptId"`
 	AttemptNo int    `json:"attemptNo"`
+	// PhonemeTips is new in Task 11 — see phonemeTipsFor's doc for the shape
+	// and dedup rationale. omitempty: a scored attempt with no words at all
+	// (or no phoneme with a mapped tip) sends no field rather than `{}`.
+	PhonemeTips map[string]phonemeTipDTO `json:"phonemeTips,omitempty"`
 }
 
 // @Summary Transcribe recorded audio to text (dictation, Azure STT)

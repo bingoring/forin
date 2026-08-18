@@ -1554,6 +1554,35 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/speech/reference/audio.wav": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Synthesized reference audio for a sentence (WAV) — the same TTS render GET /speech/reference derives its IPA from */
+        get: {
+            parameters: {
+                query: {
+                    /** @description sentence text — same text passed to GET /speech/reference */
+                    text: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/stt": {
         parameters: {
             query?: never;
@@ -1856,6 +1885,10 @@ export interface components {
         "internal_adapters_http.messageReq": {
             text?: string;
         };
+        "internal_adapters_http.phonemeTipDTO": {
+            ipa?: string;
+            message?: string;
+        };
         "internal_adapters_http.pronounceReq": {
             audioBase64?: string;
             /**
@@ -1882,6 +1915,14 @@ export interface components {
             durationMs?: number;
             fluency?: number;
             overall?: number;
+            /**
+             * @description PhonemeTips is new in Task 11 — see phonemeTipsFor's doc for the shape
+             *     and dedup rationale. omitempty: a scored attempt with no words at all
+             *     (or no phoneme with a mapped tip) sends no field rather than `{}`.
+             */
+            phonemeTips?: {
+                [key: string]: components["schemas"]["internal_adapters_http.phonemeTipDTO"];
+            };
             /**
              * @description Prosody (억양) only arrives when EnableProsodyAssessment is on AND the
              *     locale supports it. ProsodyOK distinguishes "scored 0" from "not scored" —

@@ -147,6 +147,11 @@ func NewRouter(d Deps) http.Handler {
 	sh := &speechHandler{svc: d.Speech, pron: d.Pron}
 	mux.Handle("GET /speech/reference", auth(http.HandlerFunc(sh.reference)))
 	mux.Handle("GET /speech/attempts", auth(http.HandlerFunc(sh.attempts)))
+	// The reference sentence's synthesized audio (Task 11 — see
+	// speech_audio_handler.go's doc for why this closes a real gap: "🔊
+	// 원어민"/"0.5× 느리게" had no route to call).
+	sa := &speechAudioHandler{speech: d.Speech}
+	mux.Handle("GET /speech/reference/audio.wav", auth(http.HandlerFunc(sa.audio)))
 
 	// Global middleware (outermost first).
 	return chain(mux,
