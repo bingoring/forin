@@ -237,6 +237,15 @@ type SentenceReferenceRow struct {
 	IPA           string      `json:"ipa"`
 	Words         []WordScore `json:"words,omitempty"`
 	DurationMS    int         `json:"durationMs"`
+	// ReferenceAudio is the exact WAV Reference synthesized to derive this
+	// row (Task 11) — an INPUT to PutReference only, so the same TTS render
+	// backs both the segmentation and native playback (one Synthesize call,
+	// not two). json:"-" because GET /speech/reference must keep returning
+	// small JSON metadata, never an inline ~320KB base64 blob; GetReference
+	// (the row read used by that endpoint) does NOT populate this field —
+	// serving audio bytes goes through the separate GetReferenceAudio call
+	// (speech_audio_handler.go), which fetches only the bytea column.
+	ReferenceAudio []byte `json:"-"`
 }
 
 // SpeechRepo persists pronunciation-practice attempts and the canonical
@@ -259,8 +268,14 @@ type SpeechRepo interface {
 	// PutReference caches a freshly-derived breakdown. First writer wins — an
 	// existing row for the same sentence_key is left untouched (R9: the
 	// breakdown is deterministic per sentence, so a race just wastes one Azure
-	// call, never corrupts data).
+	// call, never corrupts data). r.ReferenceAudio is persisted alongside it
+	// (Task 11) so the same TTS render backs both segmentation and playback.
 	PutReference(ctx context.Context, r SentenceReferenceRow) error
+	// GetReferenceAudio fetches the cached reference WAV for sentenceKey, or a
+	// nil/empty slice if none is stored (no reference derived yet, or a row
+	// that predates Task 11's audio_wav column). Never returns an error for
+	// "not found" — same convention as GetReference.
+	GetReferenceAudio(ctx context.Context, sentenceKey string) ([]byte, error)
 }
 
 // SpeechSynthesizer turns text into speech audio (WAV/PCM16). Used to voice

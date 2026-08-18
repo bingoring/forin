@@ -25,6 +25,10 @@ type GetSpeechReferenceRow struct {
 	DurationMs    int    `json:"duration_ms"`
 }
 
+// Deliberately does NOT select audio_wav: this is read on every practice-
+// screen mount (GET /speech/reference) and the segmentation is all that path
+// needs. Fetching a ~320KB blob on every such call would be pure waste — see
+// GetSpeechReferenceAudio, used only by the audio route.
 func (q *Queries) GetSpeechReference(ctx context.Context, sentenceKey string) (GetSpeechReferenceRow, error) {
 	row := q.db.QueryRow(ctx, getSpeechReference, sentenceKey)
 	var i GetSpeechReferenceRow
@@ -37,6 +41,17 @@ func (q *Queries) GetSpeechReference(ctx context.Context, sentenceKey string) (G
 		&i.DurationMs,
 	)
 	return i, err
+}
+
+const getSpeechReferenceAudio = `-- name: GetSpeechReferenceAudio :one
+SELECT audio_wav FROM speech_references WHERE sentence_key = $1
+`
+
+func (q *Queries) GetSpeechReferenceAudio(ctx context.Context, sentenceKey string) ([]byte, error) {
+	row := q.db.QueryRow(ctx, getSpeechReferenceAudio, sentenceKey)
+	var audio_wav []byte
+	err := row.Scan(&audio_wav)
+	return audio_wav, err
 }
 
 const insertPhonemeScore = `-- name: InsertPhonemeScore :exec
@@ -187,8 +202,8 @@ func (q *Queries) ListSpeechAttempts(ctx context.Context, arg ListSpeechAttempts
 }
 
 const putSpeechReference = `-- name: PutSpeechReference :exec
-INSERT INTO speech_references (sentence_key, reference_text, locale, ipa, words, duration_ms)
-VALUES ($1, $2, $3, $4, $5, $6)
+INSERT INTO speech_references (sentence_key, reference_text, locale, ipa, words, duration_ms, audio_wav)
+VALUES ($1, $2, $3, $4, $5, $6, $7)
 ON CONFLICT (sentence_key) DO NOTHING
 `
 
@@ -199,6 +214,7 @@ type PutSpeechReferenceParams struct {
 	Ipa           string `json:"ipa"`
 	Words         []byte `json:"words"`
 	DurationMs    int    `json:"duration_ms"`
+	AudioWav      []byte `json:"audio_wav"`
 }
 
 func (q *Queries) PutSpeechReference(ctx context.Context, arg PutSpeechReferenceParams) error {
@@ -209,6 +225,7 @@ func (q *Queries) PutSpeechReference(ctx context.Context, arg PutSpeechReference
 		arg.Ipa,
 		arg.Words,
 		arg.DurationMs,
+		arg.AudioWav,
 	)
 	return err
 }

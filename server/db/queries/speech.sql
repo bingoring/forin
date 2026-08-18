@@ -28,10 +28,17 @@ SELECT id, attempt_no, overall, accuracy, fluency, completeness, prosody,
  LIMIT $3;
 
 -- name: GetSpeechReference :one
+-- Deliberately does NOT select audio_wav: this is read on every practice-
+-- screen mount (GET /speech/reference) and the segmentation is all that path
+-- needs. Fetching a ~320KB blob on every such call would be pure waste — see
+-- GetSpeechReferenceAudio, used only by the audio route.
 SELECT sentence_key, reference_text, locale, ipa, words, duration_ms
   FROM speech_references WHERE sentence_key = $1;
 
+-- name: GetSpeechReferenceAudio :one
+SELECT audio_wav FROM speech_references WHERE sentence_key = $1;
+
 -- name: PutSpeechReference :exec
-INSERT INTO speech_references (sentence_key, reference_text, locale, ipa, words, duration_ms)
-VALUES ($1, $2, $3, $4, $5, $6)
+INSERT INTO speech_references (sentence_key, reference_text, locale, ipa, words, duration_ms, audio_wav)
+VALUES ($1, $2, $3, $4, $5, $6, $7)
 ON CONFLICT (sentence_key) DO NOTHING;

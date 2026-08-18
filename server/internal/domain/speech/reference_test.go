@@ -309,6 +309,107 @@ func TestReferenceRepoReadErrorPropagatesWithoutRederiving(t *testing.T) {
 	}
 }
 
+// ── ReferenceAudio (Task 11) ────────────────────────────────────────────────
+// Closes task-11-brief.md item ②: T4 synthesized the WAV to derive Reference
+// and discarded it. These assert the audio is now persisted alongside the
+// row and served back WITHOUT a second Synthesize call — the whole point of
+// "reused in native playback" (reference.go's own doc, predating this task).
+
+// A cache hit (row + audio already stored) must not touch the synthesizer.
+func TestReferenceAudioCacheHit(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	wav := []byte("cached-wav-bytes")
+	repo.refRow = &ports.SentenceReferenceRow{
+		SentenceKey:    SentenceKey("hello there", "en-US"),
+		ReferenceText:  "hello there",
+		Locale:         "en-US",
+		ReferenceAudio: wav,
+	}
+	tts := &fakeSynth{configured: true}
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.ReferenceAudio(context.Background(), "u1", "hello there")
+	if err != nil {
+		t.Fatalf("ReferenceAudio: %v", err)
+	}
+	if string(got) != string(wav) {
+		t.Fatalf("ReferenceAudio = %q, want the cached bytes %q", got, wav)
+	}
+	if tts.synthCalls != 0 {
+		t.Fatalf("a cache hit must not call Synthesize, got %d calls", tts.synthCalls)
+	}
+}
+
+// A miss (nothing derived yet) must derive via Reference — exactly one
+// Synthesize/Assess pair — and the audio from that SAME call must come back.
+func TestReferenceAudioMissDerivesAndReturnsSameWav(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	wav := buildWav(24000, 1, 24000)
+	tts := &fakeSynth{configured: true, wav: wav}
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.ReferenceAudio(context.Background(), "u1", "I'm giving you acetaminophen")
+	if err != nil {
+		t.Fatalf("ReferenceAudio: %v", err)
+	}
+	if string(got) != string(wav) {
+		t.Fatalf("ReferenceAudio returned different bytes than the one Synthesize call produced")
+	}
+	if tts.synthCalls != 1 {
+		t.Fatalf("Synthesize called %d times, want exactly 1 on a miss", tts.synthCalls)
+	}
+	if len(repo.putReference) != 1 || len(repo.putReference[0].ReferenceAudio) == 0 {
+		t.Fatalf("the derived row must persist ReferenceAudio, got %+v", repo.putReference)
+	}
+}
+
+// A legacy row (reference exists, no audio_wav — predates Task 11) must not
+// be silently treated as a fresh derivation opportunity: Reference() hits its
+// own cache and returns without ever calling Synthesize, so ReferenceAudio
+// must come back empty rather than fabricate or loop.
+func TestReferenceAudioLegacyRowWithNoAudioStaysEmpty(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	repo.refRow = &ports.SentenceReferenceRow{
+		SentenceKey:   SentenceKey("hello there", "en-US"),
+		ReferenceText: "hello there",
+		Locale:        "en-US",
+		IPA:           "/heˈloʊ ðɛr/",
+		// ReferenceAudio deliberately empty — a row from before this column existed.
+	}
+	tts := &fakeSynth{configured: true}
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.ReferenceAudio(context.Background(), "u1", "hello there")
+	if err != nil {
+		t.Fatalf("ReferenceAudio: %v", err)
+	}
+	if len(got) != 0 {
+		t.Fatalf("expected no audio for a legacy row, got %d bytes", len(got))
+	}
+	if tts.synthCalls != 0 {
+		t.Fatalf("must not call Synthesize for a row that already exists (Reference() hits its own cache), got %d calls", tts.synthCalls)
+	}
+}
+
+// TTS failure on a true miss must propagate as an honest error, not a fabricated clip.
+func TestReferenceAudioPropagatesDerivationFailure(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	tts := &fakeSynth{configured: false} // ErrTTSNotConfigured
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.ReferenceAudio(context.Background(), "u1", "hello there")
+	if err == nil {
+		t.Fatal("expected an error when TTS is not configured and no reference is cached")
+	}
+	if len(got) != 0 {
+		t.Fatalf("expected no audio on failure, got %d bytes", len(got))
+	}
+}
+
 // R10 edge case (business-rules): Azure can return word-level scores with no
 // syllable/phoneme detail at all. IPA must come back empty (nothing honest to
 // show), but the reference row is still stored — the duration is still

@@ -120,9 +120,49 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 		IPA:           ipaLine(scored.Words),
 		Words:         stripScores(scored.Words),
 		DurationMS:    DurationMS(wav),
+		// Task 11: the same WAV this derivation just synthesized is persisted
+		// alongside the segmentation, so native playback (ReferenceAudio,
+		// below) never pays for a second Synthesize call — "reused in native
+		// playback" was this package's own doc promise from the start.
+		ReferenceAudio: wav,
 	}
 	_ = s.repo.PutReference(ctx, ref) // best-effort: first-writer-wins (R9), a race just wastes one Azure call
 	return &ref, nil
+}
+
+// ReferenceAudio returns the synthesized WAV backing a sentence's canonical
+// reference — the exact clip Reference (above) produced when it derived the
+// segmentation, never a fresh Synthesize call on a cache hit (Task 11 closes
+// task-11-brief.md item ②: T4 synthesized this audio and then discarded it).
+//
+// A nil/empty return (with a nil error) means "no audio to serve" — either no
+// reference has ever been derived for this sentence, or the stored row
+// predates the audio_wav column (a legacy row with no audio; this does not
+// retroactively backfill it). The caller (speech_audio_handler.go) treats
+// that identically to a derivation failure: leave the playback button/route
+// inert, never fabricate a clip.
+func (s *Service) ReferenceAudio(ctx context.Context, userID, text string) ([]byte, error) {
+	locale := s.pron.LocaleFor(ctx, userID)
+	key := SentenceKey(text, locale)
+
+	wav, err := s.repo.GetReferenceAudio(ctx, key)
+	if err != nil {
+		return nil, err
+	}
+	if len(wav) > 0 {
+		return wav, nil
+	}
+
+	// Miss: most likely no reference has been derived yet. Reference() is the
+	// single code path that produces a row + its audio together (see its own
+	// PutReference call above) — reusing it here, rather than calling
+	// Synthesize directly, means this can never end up with audio recorded in
+	// a different voice/locale pairing than the segmentation it plays back
+	// alongside (voiceForLocale's own doc explains why that pairing matters).
+	if _, err := s.Reference(ctx, userID, text); err != nil {
+		return nil, err
+	}
+	return s.repo.GetReferenceAudio(ctx, key)
 }
 
 // ipaLine assembles one IPA line from per-word phoneme segmentation, matching

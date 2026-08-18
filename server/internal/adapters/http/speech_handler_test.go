@@ -56,11 +56,13 @@ func (fakeProfiles) GetProfile(ctx context.Context, userID string) (*user.Profil
 // to assert what actually reached the repo — e.g. that an empty-string
 // reviewCardId was normalized to nil before it got there).
 type fakeSpeechRepo struct {
-	rowsByUser map[string][]ports.SpeechAttemptRow
-	inserted   []ports.SpeechAttemptInput
-	insertErr  error // when set, InsertAttempt fails AFTER Assess already ran (persist-failure tests)
-	getRefErr  error
-	refRow     *ports.SentenceReferenceRow
+	rowsByUser     map[string][]ports.SpeechAttemptRow
+	inserted       []ports.SpeechAttemptInput
+	insertErr      error // when set, InsertAttempt fails AFTER Assess already ran (persist-failure tests)
+	getRefErr      error
+	refRow         *ports.SentenceReferenceRow
+	putReference   []ports.SentenceReferenceRow
+	getRefAudioErr error
 }
 
 func newFakeSpeechRepo() *fakeSpeechRepo {
@@ -104,7 +106,23 @@ func (f *fakeSpeechRepo) GetReference(ctx context.Context, sentenceKey string) (
 }
 
 func (f *fakeSpeechRepo) PutReference(ctx context.Context, r ports.SentenceReferenceRow) error {
+	f.putReference = append(f.putReference, r)
 	return nil
+}
+
+func (f *fakeSpeechRepo) GetReferenceAudio(ctx context.Context, sentenceKey string) ([]byte, error) {
+	if f.getRefAudioErr != nil {
+		return nil, f.getRefAudioErr
+	}
+	if f.refRow != nil && f.refRow.SentenceKey == sentenceKey && len(f.refRow.ReferenceAudio) > 0 {
+		return f.refRow.ReferenceAudio, nil
+	}
+	for _, r := range f.putReference {
+		if r.SentenceKey == sentenceKey {
+			return r.ReferenceAudio, nil
+		}
+	}
+	return nil, nil
 }
 
 // fakeReviewRepo implements ports.ReviewRepo. owned marks which cardID belongs

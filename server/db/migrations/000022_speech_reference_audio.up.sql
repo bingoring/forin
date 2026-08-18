@@ -1,0 +1,14 @@
+-- The synthesized reference clip itself, alongside the segmentation
+-- speech_references already stored. Task 4 synthesized this WAV to derive the
+-- reference (domain/speech.Reference calls Synthesize then Assess) and then
+-- discarded it — nothing ever served it, so the practice screen's "🔊 원어민" /
+-- "0.5× 느리게" playback buttons had no audio to play (task-11-brief.md ②).
+--
+-- Stored alongside the row it was derived with, in the SAME permanent,
+-- no-invalidation cache (business-rules R9) — a 10s 16kHz mono PCM16 clip is
+-- ~320KB and most reference sentences are well under 10s, so this is a small
+-- per-row cost against a bounded, curriculum-sized sentence set.
+--
+-- Default '' (not NULL) so a row inserted before this column existed reads
+-- back as "no audio" (len 0) rather than requiring a NULL check everywhere.
+ALTER TABLE speech_references ADD COLUMN audio_wav bytea NOT NULL DEFAULT '';

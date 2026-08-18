@@ -187,6 +187,8 @@ func (r *SpeechRepo) GetReference(ctx context.Context, sentenceKey string) (*por
 // PutReference caches a freshly-derived breakdown. First writer wins (R9: the
 // breakdown is deterministic per sentence_key, so ON CONFLICT DO NOTHING is
 // safe — a race just means one caller's Azure round trip goes unused).
+// ref.ReferenceAudio (Task 11) is stored in the same row/statement so the
+// segmentation and the audio bytes it was derived from can never drift apart.
 func (r *SpeechRepo) PutReference(ctx context.Context, ref ports.SentenceReferenceRow) error {
 	wordsJSON, err := json.Marshal(ref.Words)
 	if err != nil {
@@ -199,5 +201,24 @@ func (r *SpeechRepo) PutReference(ctx context.Context, ref ports.SentenceReferen
 		Ipa:           ref.IPA,
 		Words:         wordsJSON,
 		DurationMs:    ref.DurationMS,
+		AudioWav:      ref.ReferenceAudio,
 	})
+}
+
+// GetReferenceAudio fetches the cached reference WAV, or nil if none is
+// stored (no reference derived yet, or a row that predates the audio_wav
+// column — its default is '' which decodes to a zero-length, non-nil slice;
+// normalized to nil here so callers have one "absent" value to check).
+func (r *SpeechRepo) GetReferenceAudio(ctx context.Context, sentenceKey string) ([]byte, error) {
+	wav, err := r.q.GetSpeechReferenceAudio(ctx, sentenceKey)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	if len(wav) == 0 {
+		return nil, nil
+	}
+	return wav, nil
 }

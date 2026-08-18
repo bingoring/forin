@@ -48,9 +48,10 @@ type fakeSpeechRepo struct {
 	insertErr    error          // when set, InsertAttempt fails (persist-after-scoring failure tests)
 	historyRows  []ports.SpeechAttemptRow
 	historyErr   error
-	getRefErr    error
-	refRow       *ports.SentenceReferenceRow // pre-seeded cache row, for cache-hit tests
-	putReference []ports.SentenceReferenceRow
+	getRefErr      error
+	refRow         *ports.SentenceReferenceRow // pre-seeded cache row, for cache-hit tests
+	putReference   []ports.SentenceReferenceRow
+	getRefAudioErr error
 }
 
 func newFakeSpeechRepo() *fakeSpeechRepo {
@@ -86,6 +87,24 @@ func (f *fakeSpeechRepo) GetReference(ctx context.Context, sentenceKey string) (
 func (f *fakeSpeechRepo) PutReference(ctx context.Context, r ports.SentenceReferenceRow) error {
 	f.putReference = append(f.putReference, r)
 	return nil
+}
+
+// GetReferenceAudio mirrors the real repo's "check the pre-seeded row, then
+// anything PutReference stored" — cache-hit tests pre-seed refRow.ReferenceAudio
+// directly; derive-and-cache tests find it in putReference after Reference runs.
+func (f *fakeSpeechRepo) GetReferenceAudio(ctx context.Context, sentenceKey string) ([]byte, error) {
+	if f.getRefAudioErr != nil {
+		return nil, f.getRefAudioErr
+	}
+	if f.refRow != nil && f.refRow.SentenceKey == sentenceKey && len(f.refRow.ReferenceAudio) > 0 {
+		return f.refRow.ReferenceAudio, nil
+	}
+	for _, r := range f.putReference {
+		if r.SentenceKey == sentenceKey {
+			return r.ReferenceAudio, nil
+		}
+	}
+	return nil, nil
 }
 
 func newTestService(pron *fakePronPort, repo *fakeSpeechRepo) *Service {
