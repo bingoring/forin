@@ -1,6 +1,8 @@
 package conversation
 
 import (
+	"context"
+	"github.com/bingoring/forin/server/internal/ports"
 	"strings"
 	"testing"
 
@@ -46,5 +48,115 @@ func TestLangName(t *testing.T) {
 		if got := langName(code); got != want {
 			t.Errorf("langName(%q)=%q want %q", code, got, want)
 		}
+	}
+}
+
+// ── resume ──────────────────────────────────────────────────────────────────
+// A session id is effectively a bearer token for someone's conversation, so the
+// tests below are mostly about refusing to hand one over.
+
+type fakeConvoRepo struct {
+	latestID    string
+	latestTurns int
+	latestErr   error
+	sessions    map[string]*ports.ConversationSession
+	history     []ports.ConversationTurn
+	historyFor  string // records which session History was asked for
+}
+
+func (f *fakeConvoRepo) CreateSession(context.Context, string, string) (string, error) {
+	return "new-session", nil
+}
+func (f *fakeConvoRepo) GetSession(_ context.Context, id string) (*ports.ConversationSession, error) {
+	return f.sessions[id], nil
+}
+func (f *fakeConvoRepo) AppendTurn(context.Context, string, string, string) error { return nil }
+func (f *fakeConvoRepo) History(_ context.Context, sessionID string, _ int) ([]ports.ConversationTurn, error) {
+	f.historyFor = sessionID
+	return f.history, nil
+}
+func (f *fakeConvoRepo) SaveCorrection(context.Context, string, string, string, string, string) error {
+	return nil
+}
+func (f *fakeConvoRepo) LatestSessionWithTurns(context.Context, string, string) (string, int, error) {
+	return f.latestID, f.latestTurns, f.latestErr
+}
+
+func engineWith(repo ports.ConversationRepo) *Engine {
+	// Strategy is an interface and none of the resume paths touch it.
+	return NewEngine(nil, repo, nil, nil, nil, nil, nil, nil, "", "")
+}
+
+func TestResumableReturnsNothingWhenThereIsNoPriorTurn(t *testing.T) {
+	// A learner opening a scenario for the first time is the normal case, so an
+	// empty result must not read as an error — otherwise the client shows a
+	// failure on every fresh start.
+	e := engineWith(&fakeConvoRepo{})
+	id, turns, err := e.Resumable(context.Background(), "u1", "SCN-1")
+	if err != nil || id != "" || turns != nil {
+		t.Fatalf("want empty and no error, got (%q, %v, %v)", id, turns, err)
+	}
+}
+
+// A session row with zero turns is not resumable — there is nothing to come
+// back to, and offering "이어서 대화" on it would be a lie.
+func TestResumableIgnoresSessionWithZeroTurns(t *testing.T) {
+	repo := &fakeConvoRepo{latestID: "s1", latestTurns: 0}
+	id, _, err := engineWith(repo).Resumable(context.Background(), "u1", "SCN-1")
+	if err != nil || id != "" {
+		t.Fatalf("zero-turn session must not be resumable, got %q (%v)", id, err)
+	}
+	if repo.historyFor != "" {
+		t.Fatal("History should not be queried for a session with no turns")
+	}
+}
+
+func TestResumableReturnsTheHistoryOfThatSession(t *testing.T) {
+	repo := &fakeConvoRepo{
+		latestID: "s7", latestTurns: 2,
+		history: []ports.ConversationTurn{{Role: "user", Content: "hi"}, {Role: "assistant", Content: "hello"}},
+	}
+	id, turns, err := engineWith(repo).Resumable(context.Background(), "u1", "SCN-1")
+	if err != nil || id != "s7" || len(turns) != 2 {
+		t.Fatalf("got (%q, %d turns, %v)", id, len(turns), err)
+	}
+	if repo.historyFor != "s7" {
+		t.Fatalf("History was asked for %q, want the resumable session s7", repo.historyFor)
+	}
+}
+
+func TestResumeSessionRefusesAnotherUsersSession(t *testing.T) {
+	repo := &fakeConvoRepo{sessions: map[string]*ports.ConversationSession{
+		"s1": {UserID: "someone-else", ScenarioID: "SCN-1"},
+	}}
+	if err := engineWith(repo).ResumeSession(context.Background(), "u1", "SCN-1", "s1"); err == nil {
+		t.Fatal("resuming another learner's session must fail")
+	}
+}
+
+// Same id, wrong scenario: resuming would continue a completely different
+// conversation under the current scenario's framing.
+func TestResumeSessionRefusesWrongScenario(t *testing.T) {
+	repo := &fakeConvoRepo{sessions: map[string]*ports.ConversationSession{
+		"s1": {UserID: "u1", ScenarioID: "SCN-OTHER"},
+	}}
+	if err := engineWith(repo).ResumeSession(context.Background(), "u1", "SCN-1", "s1"); err == nil {
+		t.Fatal("resuming a session from another scenario must fail")
+	}
+}
+
+func TestResumeSessionAcceptsOwnSession(t *testing.T) {
+	repo := &fakeConvoRepo{sessions: map[string]*ports.ConversationSession{
+		"s1": {UserID: "u1", ScenarioID: "SCN-1"},
+	}}
+	if err := engineWith(repo).ResumeSession(context.Background(), "u1", "SCN-1", "s1"); err != nil {
+		t.Fatalf("own session must resume, got %v", err)
+	}
+}
+
+func TestResumeSessionRefusesUnknownSession(t *testing.T) {
+	repo := &fakeConvoRepo{sessions: map[string]*ports.ConversationSession{}}
+	if err := engineWith(repo).ResumeSession(context.Background(), "u1", "SCN-1", "nope"); err == nil {
+		t.Fatal("unknown session must fail rather than resume nothing")
 	}
 }

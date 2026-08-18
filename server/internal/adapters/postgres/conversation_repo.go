@@ -52,6 +52,20 @@ func (r *ConversationRepo) History(ctx context.Context, sessionID string, limit 
 	return out, nil
 }
 
+// LatestSessionWithTurns treats "no rows" as "nothing to resume" rather than an
+// error: a learner opening a scenario for the first time is the normal case, and
+// the caller should not have to distinguish that from a real failure.
+func (r *ConversationRepo) LatestSessionWithTurns(ctx context.Context, userID, scenarioID string) (string, int, error) {
+	row, err := r.q.LatestSessionWithTurns(ctx, sqlc.LatestSessionWithTurnsParams{UserID: userID, ScenarioID: scenarioID})
+	if errors.Is(err, pgx.ErrNoRows) {
+		return "", 0, nil
+	}
+	if err != nil {
+		return "", 0, err
+	}
+	return row.ID, int(row.TurnCount), nil
+}
+
 func (r *ConversationRepo) SaveCorrection(ctx context.Context, userID, original, corrected, note, topicTag string) error {
 	return r.q.InsertCorrection(ctx, sqlc.InsertCorrectionParams{
 		UserID: userID, Original: original, Corrected: corrected, Note: note, TopicTag: topicTag})

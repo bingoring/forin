@@ -131,6 +131,9 @@ func NewRouter(d Deps) http.Handler {
 	// AI conversation + correction (authenticated).
 	conv := &conversationHandler{engine: d.Convo, progress: d.Progress, content: d.Content, colleague: d.Colleague}
 	mux.Handle("POST /scenarios/{id}/conversation", auth(http.HandlerFunc(conv.start)))
+	// Lets the client offer "이어서 대화" instead of silently orphaning the
+	// previous conversation every time a scenario is opened.
+	mux.Handle("GET /scenarios/{id}/conversation/last", auth(http.HandlerFunc(conv.resumable)))
 	mux.Handle("POST /conversation/{sessionId}/message", auth(http.HandlerFunc(conv.message)))
 	mux.Handle("POST /conversation/{sessionId}/stream", auth(http.HandlerFunc(conv.stream)))
 	mux.Handle("POST /conversation/{sessionId}/complete", auth(http.HandlerFunc(conv.complete)))

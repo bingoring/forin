@@ -105,6 +105,41 @@ func (e *Engine) StartSession(ctx context.Context, userID, scenarioID string) (s
 	return e.convo.CreateSession(ctx, userID, scenarioID)
 }
 
+// TranscriptLimit is how many turns a resumed conversation hands back. Generous
+// on purpose: this is for the learner reading their own history, not for the LLM
+// context window (prepare() uses its own, smaller limit).
+const TranscriptLimit = 200
+
+// Resumable reports the conversation this learner can pick up for a scenario:
+// the newest session that has turns, plus those turns. Returns ("", nil, nil)
+// when there is nothing to resume.
+func (e *Engine) Resumable(ctx context.Context, userID, scenarioID string) (string, []ports.ConversationTurn, error) {
+	sessionID, n, err := e.convo.LatestSessionWithTurns(ctx, userID, scenarioID)
+	if err != nil || sessionID == "" || n == 0 {
+		return "", nil, err
+	}
+	turns, err := e.convo.History(ctx, sessionID, TranscriptLimit)
+	if err != nil {
+		return "", nil, err
+	}
+	return sessionID, turns, nil
+}
+
+// ResumeSession re-enters an existing session instead of starting a new one.
+// The ownership + scenario check is the point: a session id is a bearer token
+// for someone's conversation, so resuming one that is not yours (or belongs to a
+// different scenario) must fail rather than silently continue the wrong thread.
+func (e *Engine) ResumeSession(ctx context.Context, userID, scenarioID, sessionID string) error {
+	sess, err := e.convo.GetSession(ctx, sessionID)
+	if err != nil {
+		return err
+	}
+	if sess == nil || sess.UserID != userID || sess.ScenarioID != scenarioID {
+		return ErrSessionNotFound
+	}
+	return nil
+}
+
 // prepare validates the session/scenario, records the user's line, and builds the
 // system prompt + message history for the LLM. Shared by SendMessage(+Stream).
 func (e *Engine) prepare(ctx context.Context, userID, sessionID, text string) (string, []ports.LLMMessage, *content.Scenario, string, error) {

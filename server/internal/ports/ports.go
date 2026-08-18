@@ -304,6 +304,11 @@ type ConversationRepo interface {
 	GetSession(ctx context.Context, sessionID string) (*ConversationSession, error)
 	AppendTurn(ctx context.Context, sessionID, role, content string) error
 	History(ctx context.Context, sessionID string, limit int) ([]ConversationTurn, error)
+	// LatestSessionWithTurns finds the newest session for this learner+scenario
+	// that has at least one turn, so a half-finished conversation can be picked
+	// up instead of being orphaned in the table. Returns ("", 0, nil) when there
+	// is nothing to resume — absence is not an error.
+	LatestSessionWithTurns(ctx context.Context, userID, scenarioID string) (sessionID string, turns int, err error)
 	SaveCorrection(ctx context.Context, userID, original, corrected, note, topicTag string) error
 }
 

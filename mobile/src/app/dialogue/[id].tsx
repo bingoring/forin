@@ -48,6 +48,9 @@ export default function DialogueRoute() {
   // transcript sheet can show it without another round trip.
   const [transcript, setTranscript] = useState<{ role: 'user' | 'npc'; text: string }[]>([]);
   const [logOpen, setLogOpen] = useState(false);
+  // Set when a previous conversation exists for this scenario. While it is set no
+  // session is open yet — the learner picks resume or fresh first.
+  const [resumable, setResumable] = useState<{ sessionId: string; turns: { role: string; content: string }[] } | null>(null);
   const [npcLineKo, setNpcLineKo] = useState(''); // Korean of the scripted line (for 번역)
   const [showKo, setShowKo] = useState(false);
   const [draft, setDraft] = useState('');
@@ -94,6 +97,16 @@ export default function DialogueRoute() {
         const opening = (s.steps ?? []).find((st) => st.type === 'dialogue');
         setNpcLine((opening?.payload?.lineEn as string) || s.tagline || '');
         setNpcLineKo((opening?.payload?.lineKo as string) || '');
+        // Before opening a fresh session, check whether this learner already has
+        // a conversation here. Starting unconditionally is what orphaned every
+        // previous one — it stayed in the table and became unreachable.
+        const prev = await api.resumableConversation(id).catch(() => ({ sessionId: '', turns: [] }));
+        if (!alive) return;
+        if (prev.sessionId && prev.turns.length > 0) {
+          setResumable(prev);
+          setState('ready');
+          return; // the session is opened by the learner's choice below
+        }
         const sid = await api.startConversation(id);
         if (!alive) return;
         sessionRef.current = sid;
@@ -148,6 +161,33 @@ export default function DialogueRoute() {
   // do not "exit" a patient; you get pulled away. So the exit is framed as being
   // called elsewhere, and it says plainly that the conversation is kept.
   const [pagedOut, setPagedOut] = useState(false);
+  const resumePrevious = async () => {
+    if (!resumable) return;
+    const prev = resumable;
+    setResumable(null);
+    try {
+      sessionRef.current = await api.startConversation(id, prev.sessionId);
+    } catch {
+      setState('error');
+      return;
+    }
+    // Rehydrate the transcript so the history sheet shows the earlier turns, and
+    // count them so leaving grades instead of asking "아직 대화를 시작하지 않았어요".
+    setTranscript(prev.turns.map((t) => ({ role: t.role === 'user' ? ('user' as const) : ('npc' as const), text: t.content })));
+    turnsRef.current = prev.turns.filter((t) => t.role === 'user').length;
+    const lastNpc = [...prev.turns].reverse().find((t) => t.role !== 'user');
+    if (lastNpc) { setNpcLine(lastNpc.content); setNpcLineKo(''); }
+  };
+
+  const startFresh = async () => {
+    setResumable(null);
+    try {
+      sessionRef.current = await api.startConversation(id);
+    } catch {
+      setState('error');
+    }
+  };
+
   const stepAway = () => {
     Keyboard.dismiss();
     setPagedOut(true);
@@ -437,6 +477,37 @@ export default function DialogueRoute() {
           )}
         </View>
       </View>
+      {/* 이어하기 — 이전 대화가 있으면 세션을 열기 전에 먼저 묻는다. 마지막
+          대사를 보여줘서 무엇을 이어받는지 알고 고르게 한다(닫기로 회피할 수
+          없다: 아직 세션이 없으므로 둘 중 하나를 반드시 골라야 한다). */}
+      <BottomSheet visible={!!resumable} onClose={() => { void startFresh(); }} expandable={false}>
+        <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+            <PixelIcon name="note" color={C} size={17} sw={1.8} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>이어서 대화할까요?</Text>
+          </View>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginBottom: 10 }}>
+            {npcName} 님과 {resumable?.turns.filter((t) => t.role === 'user').length ?? 0}번 주고받은 기록이 있어요.
+          </Text>
+          {(() => {
+            const last = resumable ? [...resumable.turns].reverse()[0] : undefined;
+            if (!last) return null;
+            return (
+              <View style={{ backgroundColor: last.role === 'user' ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11, marginBottom: 16 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 3 }}>
+                  {last.role === 'user' ? '내가 마지막으로' : `${npcName} 님이 마지막으로`}
+                </Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }} numberOfLines={3}>{last.content}</Text>
+              </View>
+            );
+          })()}
+          <View style={{ gap: 8 }}>
+            <PixelButton label="이어서 대화한다" icon="play" bg={colors.mint} shadowColor={colors.mintShadow} full onPress={() => { void resumePrevious(); }} />
+            <PixelButton label="처음부터 다시" icon="refresh" bg="#fff" shadowColor={C} full onPress={() => { void startFresh(); }} />
+          </View>
+        </View>
+      </BottomSheet>
+
       {/* 긴급 호출 — 이탈에 서사를 붙인다. 나가는 것은 같지만, 대화를 버리는
           것이 아니라 자리를 비우는 것이라고 말한다(기록은 남는다). */}
       <BottomSheet visible={pagedOut} onClose={() => setPagedOut(false)} expandable={false}>

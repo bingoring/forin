@@ -1448,17 +1448,15 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/scenarios/{id}/conversation": {
+    "/scenarios/{id}/conversation/last": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get?: never;
-        put?: never;
-        /** Start a persona-driven conversation for a scenario */
-        post: {
+        /** Previous conversation for a scenario, if any */
+        get: {
             parameters: {
                 query?: never;
                 header?: never;
@@ -1466,8 +1464,20 @@ export interface paths {
                 cookie?: never;
             };
             requestBody?: never;
-            responses: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.resumableResp"];
+                    };
+                };
+            };
         };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -1940,6 +1950,14 @@ export interface components {
         };
         "internal_adapters_http.refreshReq": {
             refreshToken?: string;
+        };
+        "internal_adapters_http.resumableResp": {
+            sessionId?: string;
+            turns?: components["schemas"]["internal_adapters_http.resumableTurn"][];
+        };
+        "internal_adapters_http.resumableTurn": {
+            content?: string;
+            role?: string;
         };
         "internal_adapters_http.socialLoginReq": {
             idToken?: string;

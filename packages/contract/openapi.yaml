@@ -567,6 +567,23 @@ components:
         refreshToken:
           type: string
       type: object
+    internal_adapters_http.resumableResp:
+      properties:
+        sessionId:
+          type: string
+        turns:
+          items:
+            $ref: '#/components/schemas/internal_adapters_http.resumableTurn'
+          type: array
+          uniqueItems: false
+      type: object
+    internal_adapters_http.resumableTurn:
+      properties:
+        content:
+          type: string
+        role:
+          type: string
+      type: object
     internal_adapters_http.socialLoginReq:
       properties:
         idToken:
@@ -1182,12 +1199,16 @@ paths:
       summary: Get a scenario (dialogue/quiz/effect steps)
       tags:
       - content
-  /scenarios/{id}/conversation:
-    post:
-      responses: null
-      security:
-      - Bearer: []
-      summary: Start a persona-driven conversation for a scenario
+  /scenarios/{id}/conversation/last:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.resumableResp'
+          description: OK
+      summary: Previous conversation for a scenario, if any
       tags:
       - conversation
   /speech/attempts:

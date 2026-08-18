@@ -23,8 +23,65 @@ type conversationHandler struct {
 // @Tags conversation
 // @Security Bearer
 // @Router /scenarios/{id}/conversation [post]
+// resumableResp is what the client needs to offer "이어서 대화 / 새로 시작":
+// the session to resume and the turns already said. `role` is the stored role
+// (user | assistant) — the client maps it to its own speaker labels.
+type resumableTurn struct {
+	Role    string `json:"role"`
+	Content string `json:"content"`
+}
+
+type resumableResp struct {
+	SessionID string          `json:"sessionId"`
+	Turns     []resumableTurn `json:"turns"`
+}
+
+// resumable — GET /scenarios/{id}/conversation/last
+//
+// @Summary Previous conversation for a scenario, if any
+// @Tags conversation
+// @Success 200 {object} resumableResp
+// @Router /scenarios/{id}/conversation/last [get]
+func (h *conversationHandler) resumable(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	sessionID, turns, err := h.engine.Resumable(r.Context(), uid, r.PathValue("id"))
+	if err != nil {
+		httpx.Error(w, http.StatusBadGateway, "could not read the previous conversation")
+		return
+	}
+	// Nothing to resume is a normal 200 with an empty payload, not a 404: the
+	// client asks this on every entry and a 404 would look like a failure.
+	out := resumableResp{SessionID: sessionID, Turns: make([]resumableTurn, 0, len(turns))}
+	for _, t := range turns {
+		out.Turns = append(out.Turns, resumableTurn{Role: t.Role, Content: t.Content})
+	}
+	httpx.JSON(w, http.StatusOK, out)
+}
+
 func (h *conversationHandler) start(w http.ResponseWriter, r *http.Request) {
 	uid, _ := UserID(r.Context())
+	// An explicit resumeSessionId re-enters that conversation instead of opening
+	// a new one. Default stays "fresh session" so existing callers are unchanged.
+	var req struct {
+		ResumeSessionID string `json:"resumeSessionId"`
+	}
+	// The error is deliberately ignored: an absent body is the normal case (start
+	// fresh), so a decode failure just leaves ResumeSessionID empty. A malformed
+	// body cannot smuggle a resume through — it would have to decode first.
+	_ = httpx.DecodeJSON(r, &req)
+	if req.ResumeSessionID != "" {
+		if err := h.engine.ResumeSession(r.Context(), uid, r.PathValue("id"), req.ResumeSessionID); err != nil {
+			httpx.Error(w, http.StatusForbidden, "that conversation is not yours to resume")
+			return
+		}
+		h.touchPresence(r, uid, r.PathValue("id"))
+		httpx.JSON(w, http.StatusOK, map[string]string{"sessionId": req.ResumeSessionID})
+		return
+	}
 	sessionID, err := h.engine.StartSession(r.Context(), uid, r.PathValue("id"))
 	if errors.Is(err, conversation.ErrScenarioNotFound) {
 		httpx.Error(w, http.StatusNotFound, "scenario not found")

@@ -122,6 +122,36 @@ func (q *Queries) InsertReviewCard(ctx context.Context, arg InsertReviewCardPara
 	return id, err
 }
 
+const latestSessionWithTurns = `-- name: LatestSessionWithTurns :one
+SELECT s.id, count(t.id)::int AS turn_count
+  FROM conversation_sessions s
+  JOIN dialogue_turns t ON t.session_id = s.id
+ WHERE s.user_id = $1 AND s.scenario_id = $2
+ GROUP BY s.id, s.started_at
+ ORDER BY s.started_at DESC
+ LIMIT 1
+`
+
+type LatestSessionWithTurnsParams struct {
+	UserID     string `json:"user_id"`
+	ScenarioID string `json:"scenario_id"`
+}
+
+type LatestSessionWithTurnsRow struct {
+	ID        string `json:"id"`
+	TurnCount int    `json:"turn_count"`
+}
+
+// The most recent session for this learner + scenario that actually has turns.
+// Sessions carry no completion flag (only started_at), so "resumable" is defined
+// by having said something — an empty session is nothing to come back to.
+func (q *Queries) LatestSessionWithTurns(ctx context.Context, arg LatestSessionWithTurnsParams) (LatestSessionWithTurnsRow, error) {
+	row := q.db.QueryRow(ctx, latestSessionWithTurns, arg.UserID, arg.ScenarioID)
+	var i LatestSessionWithTurnsRow
+	err := row.Scan(&i.ID, &i.TurnCount)
+	return i, err
+}
+
 const sessionHistory = `-- name: SessionHistory :many
 SELECT role, content FROM dialogue_turns WHERE session_id = $1 ORDER BY created_at LIMIT $2
 `

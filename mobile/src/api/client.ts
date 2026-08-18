@@ -650,9 +650,18 @@ export const api = {
   },
 
   /** Open a persona-driven session for a scenario. Returns its sessionId. */
-  async startConversation(scenarioId: string): Promise<string> {
-    const { data } = await http.post(`/scenarios/${scenarioId}/conversation`, {});
+  async startConversation(scenarioId: string, resumeSessionId?: string): Promise<string> {
+    const { data } = await http.post(`/scenarios/${scenarioId}/conversation`, resumeSessionId ? { resumeSessionId } : {});
     return (data as { sessionId: string }).sessionId;
+  },
+
+  /** The conversation this learner can pick up for a scenario, if any. Empty
+   *  sessionId means "nothing to resume" — a normal 200, not an error, since the
+   *  screen asks this on every entry. `role` is the stored role (user|assistant). */
+  async resumableConversation(scenarioId: string): Promise<{ sessionId: string; turns: { role: string; content: string }[] }> {
+    const { data } = await http.get(`/scenarios/${scenarioId}/conversation/last`);
+    const d = data as { sessionId?: string; turns?: { role: string; content: string }[] };
+    return { sessionId: d.sessionId ?? '', turns: d.turns ?? [] };
   },
 
   /** Finish + AI-grade a conversation: awards score-scaled XP, records the clear
