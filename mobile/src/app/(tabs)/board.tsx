@@ -10,7 +10,7 @@ import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'rea
 import { useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
+import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 
 const C = colors.ink;
@@ -112,7 +112,7 @@ export default function Board() {
   if (state !== 'ok') {
     return (
       <View style={{ flex: 1, backgroundColor: colors.cream, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.textSoft, textAlign: 'center' }}>상황판을 불러오지 못했어요. (서버 확인)</Text>}
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>상황판을 불러오지 못했어요. (서버 확인)</Text>}
       </View>
     );
   }
@@ -123,7 +123,7 @@ export default function Board() {
       <View style={{ paddingTop: 52, paddingHorizontal: space.lg, paddingBottom: 8, backgroundColor: colors.cream, borderBottomWidth: 2, borderBottomColor: '#2A252222', zIndex: 2 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>≡</Text>
-          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>오늘의 상황판</Text>
+          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>오늘의 상황판</Text>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{todayLabel()}</Text>
         </View>
 
@@ -187,8 +187,8 @@ export default function Board() {
         {shownDepts.length === 0 && (
           <View style={{ alignItems: 'center', gap: 6, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', backgroundColor: colors.paper, paddingVertical: 28 }}>
             <PixelIcon name={DEPT_META[filter]?.icon ?? 'calendar'} color={C} size={28} sw={1.6} />
-            <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textSoft, textAlign: 'center' }}>{DEPT_META[filter]?.name ?? filter}에 오늘 발생한 상황이 없어요.</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: t.caption, color: colors.textFaint }}>내일 다시 확인해보세요!</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: typeScale.caption, color: colors.textSoft, textAlign: 'center' }}>{DEPT_META[filter]?.name ?? filter}에 오늘 발생한 상황이 없어요.</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: typeScale.caption, color: colors.textFaint }}>내일 다시 확인해보세요!</Text>
           </View>
         )}
 

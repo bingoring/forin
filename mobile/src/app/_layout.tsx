@@ -7,6 +7,7 @@ import { api } from '@/api/client';
 import { hydrateEconomy } from '@/data/economy';
 import { colors } from '@/theme/tokens';
 import { loadSfxPreference } from '@/lib/sfx';
+import { loadLocale } from '@/i18n';
 
 // The two pixel fonts the whole design is drawn in. The KEYS are what
 // `fontFamily` resolves against, so they must match theme/tokens exactly — every
@@ -30,7 +31,7 @@ export default function RootLayout() {
   useEffect(() => {
     initKakao(); // must run before the login screen can call Kakao's SDK
     // Hydrate the economy config (single source of truth) alongside the session.
-    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference()]).finally(() => setHydrated(true));
+    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale()]).finally(() => setHydrated(true));
   }, []);
 
   // Wait for the fonts too: rendering first and swapping later reflows every

@@ -12,7 +12,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { FacePlayer } from '@engine';
 import { api, type Home } from '@/api/client';
-import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
+import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 
@@ -44,7 +44,7 @@ export default function HomeTab() {
       <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         {state === 'loading'
           ? <ActivityIndicator color={C} />
-          : <Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.textSoft, textAlign: 'center' }}>
+          : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>
               홈을 불러오지 못했어요. (로그인·서버 확인)
             </Text>}
       </View>

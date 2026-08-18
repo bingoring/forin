@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { api } from '@/api/client';
-import { colors, fonts, type as t } from '@/theme/tokens';
+import { colors, fonts, type as typeScale } from '@/theme/tokens';
 import { InteriorScreen } from '@/map/InteriorScreen';
 import { DoorReveal } from '@/map/DoorReveal';
 import { FIXTURES } from '@/map/fixtures/er';
@@ -91,7 +91,7 @@ export default function InteriorRoute() {
   if (error) {
     return (
       <>
-        {center(<Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.text }}>맵을 불러오지 못했습니다.</Text>)}
+        {center(<Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.text }}>맵을 불러오지 못했습니다.</Text>)}
         {reveal}
       </>
     );

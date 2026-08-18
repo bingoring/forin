@@ -15,8 +15,10 @@ import { signOut } from '@/lib/auth';
 import { earnedBadges } from '@/data/badges';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
 import { ECON, careerFor } from '@/data/economy';
-import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
+import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { isSfxMuted, playSfx, setSfxMuted } from '@/lib/sfx';
+import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale, t, useLocale, type Locale } from '@/i18n';
+import { BottomSheet } from '@/components/BottomSheet';
 
 const C = colors.ink;
 
@@ -54,9 +56,13 @@ export default function Me() {
           ]);
           if (!alive) return;
           setProgress(p);
-          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string } } | null)?.profile;
+          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string } } | null)?.profile;
           setEnLevel(prof?.targetLevel || '');
           setEquipped(prof?.equippedTitle || '');
+          setTargetLang(prof?.targetLang || '');
+          // 온보딩에서 고른 모국어를 UI 언어로 채택하되, 아래 설정을 한 번이라도
+          // 만졌다면 그쪽이 이긴다(R2).
+          adoptProfileLocale(prof?.nativeLang);
           setScenariosTotal(stats?.scenariosTotal ?? 0);
           setColleagues(mates.colleagues);
           setInvite(code);
@@ -94,6 +100,12 @@ export default function Me() {
 
   // Sign out — drops the session on this device, so confirm first. On success we
   // navigate away and the screen unmounts, so `signingOut` is only cleared on failure.
+  // 앱 언어. useLocale()을 구독하므로 여기서 바꾸면 화면이 즉시 다시 그려진다 —
+  // 재시작이 필요하면 "설정에서 바꿀 수 있다"가 절반만 참이다.
+  const locale = useLocale();
+  const [langOpen, setLangOpen] = useState(false);
+  const [targetLang, setTargetLang] = useState('');
+
   // 효과음 on/off. 저장 실패해도 이 세션에는 반영되므로 낙관적으로 그린다.
   const [sfxOn, setSfxOn] = useState(!isSfxMuted());
   const toggleSfx = () => {
@@ -126,7 +138,7 @@ export default function Me() {
   if (state !== 'ok' || !progress) {
     return (
       <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.textSoft, textAlign: 'center' }}>프로필을 불러오지 못했어요. (로그인·서버 확인)</Text>}
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>프로필을 불러오지 못했어요. (로그인·서버 확인)</Text>}
       </View>
     );
   }
@@ -173,7 +185,7 @@ export default function Me() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
       <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>MY CARD</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>MY CARD</Text>
 
         {/* ── ID card ── */}
         <Shadowed offset={5}>
@@ -434,12 +446,48 @@ export default function Me() {
           </Shadowed>
         </Pressable>
 
+        {/* 언어 — UI 언어와 배우는 언어는 별개 축이다(R1). UI는 여기서 바꾸고,
+            배우는 언어는 온보딩에서 고른 나라가 정하므로 읽기 전용으로 보여준다(R3). */}
+        <View style={{ marginTop: space.sm }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+            <PixelIcon name="speech" color={C} size={16} sw={1.6} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.language.section')}</Text>
+          </View>
+          <Shadowed offset={3} shadowColor={C + '33'}>
+            <View>
+              <Pressable
+                onPress={() => setLangOpen(true)}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}
+              >
+                <View style={{ flex: 1 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('settings.language.appTitle')}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>
+                    {t('settings.language.appSubOn', { name: LOCALE_META[locale].name })}
+                  </Text>
+                </View>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{LOCALE_META[locale].name}</Text>
+                <PixelIcon name="chevron-right" color={C} size={16} sw={2} />
+              </Pressable>
+              {!!targetLang && (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.cream, borderWidth: 2, borderTopWidth: 0, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
+                  <View style={{ flex: 1 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('settings.language.learning')}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>
+                      {t('settings.language.learningSub', { name: LOCALE_META[targetLang as Locale]?.name ?? targetLang })}
+                    </Text>
+                  </View>
+                </View>
+              )}
+            </View>
+          </Shadowed>
+        </View>
+
         {/* 소리 — 효과음이 생겼으니 끌 수단도 있어야 한다. 병원/야근 환경에서
             무음으로 쓰는 사람이 있고, 껐다는 사실은 기기에 남는다. */}
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
             <PixelIcon name="volume" color={C} size={16} sw={1.6} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>소리</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.sound.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
             <Pressable
@@ -447,9 +495,9 @@ export default function Me() {
               style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>효과음</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('settings.sound.title')}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>
-                  {sfxOn ? '탭·정답·클리어에 소리가 나요.' : '모든 효과음이 꺼져 있어요.'}
+                  {sfxOn ? t('settings.sound.on') : t('settings.sound.off')}
                 </Text>
               </View>
               {/* 픽셀 토글 — 앱에 Switch를 쓴 곳이 없어 테두리 박스로 맞췄다 */}
@@ -464,7 +512,7 @@ export default function Me() {
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
             <PixelIcon name="lock" color={C} size={16} sw={1.6} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>계정</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.account.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
             <Pressable
@@ -473,8 +521,8 @@ export default function Me() {
               style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12, opacity: signingOut ? 0.6 : 1 }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>로그아웃</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>이 기기에서 로그아웃하고 로그인 화면으로 돌아가요.</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('settings.account.signOut')}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{t('settings.account.signOutSub')}</Text>
               </View>
               {signingOut
                 ? <ActivityIndicator color={C} />
@@ -498,6 +546,39 @@ export default function Me() {
       )}
 
       <InfoSheet data={sheet} onClose={() => setSheet(null)} />
+
+      {/* 앱 언어 고르기. 번역 완성도를 계산값 그대로 보여준다(R8·R9) — 부분 번역을
+          완전한 것처럼 제시하지 않기 위해서다. */}
+      <BottomSheet visible={langOpen} onClose={() => setLangOpen(false)} expandable={false}>
+        <View style={{ padding: 14 }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginBottom: 4 }}>{t('settings.language.pickTitle')}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginBottom: 12, lineHeight: 15 }}>{t('settings.language.pickNote')}</Text>
+          {LOCALES.map((code) => {
+            const meta = LOCALE_META[code];
+            const done = completenessLabel(code);
+            const on = code === locale;
+            return (
+              <Shadowed key={code} offset={2.5} style={{ marginBottom: 8 }}>
+                <Pressable
+                  onPress={() => { void setLocale(code); playSfx('confirm'); setLangOpen(false); }}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: on ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 11 }}
+                >
+                  <View style={{ flex: 1, minWidth: 0 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{meta.name}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{meta.sub}</Text>
+                  </View>
+                  {!done.full && (
+                    <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{done.text}</Text>
+                    </View>
+                  )}
+                  {on && <PixelIcon name="check" color={C} size={14} sw={2.2} />}
+                </Pressable>
+              </Shadowed>
+            );
+          })}
+        </View>
+      </BottomSheet>
     </View>
   );
 }

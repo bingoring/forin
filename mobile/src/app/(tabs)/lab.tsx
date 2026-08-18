@@ -11,7 +11,7 @@ import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts, space, type as t, fs } from '@/theme/tokens';
+import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 
 const C = colors.ink;
 const GRADES: { g: ReviewGrade; label: string; bg: string; blurb: string; guide: string }[] = [
@@ -76,7 +76,7 @@ export default function Lab() {
   if (state !== 'ok') {
     return (
       <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: t.body, color: colors.textSoft, textAlign: 'center' }}>리뷰 카드를 불러오지 못했어요. (로그인·서버 확인)</Text>}
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>리뷰 카드를 불러오지 못했어요. (로그인·서버 확인)</Text>}
       </View>
     );
   }
@@ -86,7 +86,7 @@ export default function Lab() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
       <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: t.screenHeading, color: C }}>리뷰랩 · 오답노트</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>리뷰랩 · 오답노트</Text>
 
         {/* hero */}
         <Shadowed offset={4}>
