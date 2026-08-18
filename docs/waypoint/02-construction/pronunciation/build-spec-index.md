@@ -97,9 +97,12 @@ updated: 2026-08-18
       시뮬레이터 실측**: `idle`·`permissionDenied` 렌더 확인(강제 상태 주입 — 탭 입력 불가 환경, 아래 §5 참고)
 - [x] `components/pron/`: `TargetCard` · `Wave` · `SyllableGrid` · `ScoreBars` · `CorrectionCard` · `AttemptHistory`
 - [x] 진입점 2곳 배선: `dialogue/[id].tsx`(🎤 직접 말하기) · 리뷰랩 PhraseCard(🎤 따라 말하기) — **T10에서 결함 발견 후
-      수정**: T9가 마이크 액션을 붙인 곳은 `review.tsx`(SM-2 세션 화면)였는데, SoT `04_SCREENS.md:397`이 말하는
-      "PhraseCard"는 실제로는 `(tabs)/lab.tsx:204`의 동명 컴포넌트(리뷰랩 탭 목록)였다 — 이름이 같은 두 컴포넌트를
-      혼동한 것으로 보인다. T10에서 `(tabs)/lab.tsx`에도 동일 패턴(`practicePronunciation`)으로 🎤를 추가해 닫음.
+      수정**: 마이크 액션이 붙은 곳은 `review.tsx`(SM-2 세션 화면)였는데, SoT `04_SCREENS.md:397`이 말하는
+      "PhraseCard"는 실제로는 `(tabs)/lab.tsx:204`의 동명 컴포넌트(리뷰랩 탭 목록)였다. **원인은 T9 구현자의 착오가
+      아니라 계획서다** — 착수 전 정정 블록(`17cb8d1`)이 `review.tsx:127`을 명시적으로 지목했고 구현자는 그대로
+      따랐다. 이 간극은 T9 리뷰에서 이미 지적됐고 컨트롤러가 범위 밖으로 이연한 것이었다. T10에서
+      `(tabs)/lab.tsx`에도 동일 패턴(`practicePronunciation`)으로 마이크를 추가해 닫았다(`review.tsx`의 것은
+      남겼다 — 세션 화면에서도 따라 말하기가 자연스럽다).
       시뮬레이터에서 아이콘 렌더 확인(`106cdd2`)
 - [x] `PronunciationPractice.tsx` 제거 + 참조 정리 (grep 0건 확인, Task 9)
 - [x] 마이크 권한 거부 경로 화면 처리 — **T10 시뮬레이터 실측**: "마이크 권한이 필요해요" + 설정 열기/권한 다시 확인
@@ -129,6 +132,15 @@ updated: 2026-08-18
       리뷰랩 PhraseCard) 렌더 확인. **탭/터치 주입 자체는 이 환경에 수단이 없어(idb 없음, `simctl`엔 탭 API가 없고
       osascript 좌표 클릭은 신뢰할 수 없었다) 녹음→채점→결과로 이어지는 실제 제스처 주도 전이는 확인하지 못했다**
       — `permissionDenied`는 코드 레벨에서 초기 상태를 일시적으로 주입해(hot-reload, 커밋 안 함) 렌더만 확인
+- [ ] **T2 정정블록이 요구한 4개 불변식 중 2개는 스모크로 덮지 못했다** — 정직하게 남긴다.
+      `시도번호 증가`·`카드 삭제 후 시도 생존`은 스모크에 있다. 그러나 **원자성**(시도 행과 음소 행이 같은
+      트랜잭션)과 **prosody NULL ↔ `prosodyAvailable:false`**(0점과 구분)는 **블랙박스로 강제할 수단이 없다**:
+      전자는 음소 삽입 실패를 외부에서 유발할 방법이 없고, 후자는 Azure가 억양 채점을 건너뛰도록 요청할 방법이
+      없다(로케일 의존이며 en-US에서는 항상 온다). 두 불변식은 실 DB 테스트(`TestAttemptAndPhonemesAreAtomic`,
+      `TestProsodyNullRoundTrip`)가 덮지만 **그 테스트는 `TEST_DATABASE_URL`이 있어야 돌고 CI에는 그 변수가 없다**
+      (grep 0건). 즉 T2가 경계한 "스킵된 테스트는 테스트가 아니다"가 이 둘에 대해서는 **아직 해소되지 않았다.**
+      → 후속: CI에 Postgres 서비스 컨테이너를 붙여 `TEST_DATABASE_URL`을 주입하는 것이 정답이다(스모크로 우회할
+      문제가 아니다).
 - [x] 스모크 스크립트에 발음 경로 assert 추가 — 22건, 로컬 79/0·staging 76/0(review-card 삭제 검사는 로컬 전용 DB
       직결이라 staging에서는 구조상 스킵)
 
