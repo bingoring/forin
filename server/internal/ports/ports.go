@@ -276,6 +276,14 @@ type SpeechRepo interface {
 	// that predates Task 11's audio_wav column). Never returns an error for
 	// "not found" — same convention as GetReference.
 	GetReferenceAudio(ctx context.Context, sentenceKey string) ([]byte, error)
+	// UpdateReferenceAudio backfills audio_wav for a row that already exists
+	// but has none (review round 2, Important 1: a legacy row predating this
+	// column, or one left behind by running migration 000022 down and back
+	// up). Conditioned on the CURRENT audio_wav still being empty — first
+	// writer wins, same spirit as PutReference's ON CONFLICT DO NOTHING for
+	// the row as a whole — so a race between two backfills just wastes one
+	// extra Azure call, never corrupts data.
+	UpdateReferenceAudio(ctx context.Context, sentenceKey string, wav []byte) error
 }
 
 // SpeechSynthesizer turns text into speech audio (WAV/PCM16). Used to voice

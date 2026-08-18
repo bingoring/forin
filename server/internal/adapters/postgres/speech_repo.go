@@ -207,8 +207,9 @@ func (r *SpeechRepo) PutReference(ctx context.Context, ref ports.SentenceReferen
 
 // GetReferenceAudio fetches the cached reference WAV, or nil if none is
 // stored (no reference derived yet, or a row that predates the audio_wav
-// column — its default is '' which decodes to a zero-length, non-nil slice;
-// normalized to nil here so callers have one "absent" value to check).
+// column — its default is an empty string, which decodes to a zero-length,
+// non-nil slice; normalized to nil here so callers have one "absent" value
+// to check).
 func (r *SpeechRepo) GetReferenceAudio(ctx context.Context, sentenceKey string) ([]byte, error) {
 	wav, err := r.q.GetSpeechReferenceAudio(ctx, sentenceKey)
 	if errors.Is(err, pgx.ErrNoRows) {
@@ -221,4 +222,16 @@ func (r *SpeechRepo) GetReferenceAudio(ctx context.Context, sentenceKey string) 
 		return nil, nil
 	}
 	return wav, nil
+}
+
+// UpdateReferenceAudio backfills audio_wav for a row that has none yet
+// (review round 2, Important 1) — a no-op (not an error) if the row was
+// already backfilled by a concurrent caller, or if the row doesn't exist at
+// all (the WHERE clause simply matches zero rows either way; pgx does not
+// treat "0 rows affected" as an error for :exec).
+func (r *SpeechRepo) UpdateReferenceAudio(ctx context.Context, sentenceKey string, wav []byte) error {
+	return r.q.UpdateSpeechReferenceAudio(ctx, sqlc.UpdateSpeechReferenceAudioParams{
+		SentenceKey: sentenceKey,
+		AudioWav:    wav,
+	})
 }

@@ -42,16 +42,26 @@ func (fakeProfiles) GetProfile(ctx context.Context, userID string) (*user.Profil
 // was asked to insert, so tests can assert on both "was InsertAttempt called"
 // and "with what".
 type fakeSpeechRepo struct {
-	inserted     []ports.SpeechAttemptInput
-	nextID       int
-	attemptNo    map[string]int // userID|sentenceKey -> next attempt_no
-	insertErr    error          // when set, InsertAttempt fails (persist-after-scoring failure tests)
-	historyRows  []ports.SpeechAttemptRow
-	historyErr   error
+	inserted       []ports.SpeechAttemptInput
+	nextID         int
+	attemptNo      map[string]int // userID|sentenceKey -> next attempt_no
+	insertErr      error          // when set, InsertAttempt fails (persist-after-scoring failure tests)
+	historyRows    []ports.SpeechAttemptRow
+	historyErr     error
 	getRefErr      error
 	refRow         *ports.SentenceReferenceRow // pre-seeded cache row, for cache-hit tests
 	putReference   []ports.SentenceReferenceRow
 	getRefAudioErr error
+	updatedAudio   []updatedAudioCall // every UpdateReferenceAudio call, in order
+	updateAudioErr error
+}
+
+// updatedAudioCall records one UpdateReferenceAudio invocation, for tests
+// asserting a legacy row was backfilled exactly once (review round 2,
+// Important 1).
+type updatedAudioCall struct {
+	SentenceKey string
+	Wav         []byte
 }
 
 func newFakeSpeechRepo() *fakeSpeechRepo {
@@ -105,6 +115,21 @@ func (f *fakeSpeechRepo) GetReferenceAudio(ctx context.Context, sentenceKey stri
 		}
 	}
 	return nil, nil
+}
+
+// UpdateReferenceAudio mirrors the real repo's guard (only writes if the row
+// still has no audio) by mutating refRow in place — so a subsequent
+// GetReferenceAudio call in the SAME test sees the backfilled bytes, exactly
+// as a real second query against Postgres would after the UPDATE commits.
+func (f *fakeSpeechRepo) UpdateReferenceAudio(ctx context.Context, sentenceKey string, wav []byte) error {
+	if f.updateAudioErr != nil {
+		return f.updateAudioErr
+	}
+	f.updatedAudio = append(f.updatedAudio, updatedAudioCall{SentenceKey: sentenceKey, Wav: wav})
+	if f.refRow != nil && f.refRow.SentenceKey == sentenceKey && len(f.refRow.ReferenceAudio) == 0 {
+		f.refRow.ReferenceAudio = wav
+	}
+	return nil
 }
 
 func newTestService(pron *fakePronPort, repo *fakeSpeechRepo) *Service {

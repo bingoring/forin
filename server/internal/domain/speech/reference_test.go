@@ -365,11 +365,15 @@ func TestReferenceAudioMissDerivesAndReturnsSameWav(t *testing.T) {
 	}
 }
 
-// A legacy row (reference exists, no audio_wav — predates Task 11) must not
-// be silently treated as a fresh derivation opportunity: Reference() hits its
-// own cache and returns without ever calling Synthesize, so ReferenceAudio
-// must come back empty rather than fabricate or loop.
-func TestReferenceAudioLegacyRowWithNoAudioStaysEmpty(t *testing.T) {
+// Review round 2, Important 1: a legacy row (reference exists, no audio_wav
+// — predates Task 11, OR left behind by running migration 000022 down and
+// back up) must be BACKFILLED, not left permanently empty. Reference() alone
+// cannot do this (it hits its own cache and returns before ever calling
+// Synthesize again) — ReferenceAudio must re-synthesize just the audio
+// against the row's own stored voice/locale and write it back, WITHOUT
+// re-deriving segmentation (no second Assess call: that work is done and
+// permanent, R9).
+func TestReferenceAudioBackfillsLegacyRow(t *testing.T) {
 	pron := &fakePronPort{result: referenceScoredResult()}
 	repo := newFakeSpeechRepo()
 	repo.refRow = &ports.SentenceReferenceRow{
@@ -379,18 +383,91 @@ func TestReferenceAudioLegacyRowWithNoAudioStaysEmpty(t *testing.T) {
 		IPA:           "/heˈloʊ ðɛr/",
 		// ReferenceAudio deliberately empty — a row from before this column existed.
 	}
-	tts := &fakeSynth{configured: true}
+	newWav := buildWav(24000, 1, 100)
+	tts := &fakeSynth{configured: true, wav: newWav}
 	svc := newTestServiceWithTTS(pron, repo, tts)
 
 	got, err := svc.ReferenceAudio(context.Background(), "u1", "hello there")
 	if err != nil {
 		t.Fatalf("ReferenceAudio: %v", err)
 	}
-	if len(got) != 0 {
-		t.Fatalf("expected no audio for a legacy row, got %d bytes", len(got))
+	if string(got) != string(newWav) {
+		t.Fatalf("expected the freshly backfilled audio, got %d bytes", len(got))
 	}
-	if tts.synthCalls != 0 {
-		t.Fatalf("must not call Synthesize for a row that already exists (Reference() hits its own cache), got %d calls", tts.synthCalls)
+	if tts.synthCalls != 1 {
+		t.Fatalf("expected exactly 1 Synthesize call to backfill the legacy row, got %d", tts.synthCalls)
+	}
+	if pron.assessCalls != 0 {
+		t.Fatalf("backfill must NOT re-Assess — segmentation is already derived and permanent (R9), got %d Assess calls", pron.assessCalls)
+	}
+	if len(repo.updatedAudio) != 1 {
+		t.Fatalf("expected exactly one UpdateReferenceAudio call, got %d: %+v", len(repo.updatedAudio), repo.updatedAudio)
+	}
+	if repo.updatedAudio[0].SentenceKey != SentenceKey("hello there", "en-US") {
+		t.Fatalf("backfill wrote to the wrong sentence_key: %+v", repo.updatedAudio[0])
+	}
+
+	// A second call must now be a pure cache hit — no more Synthesize calls.
+	got2, err := svc.ReferenceAudio(context.Background(), "u1", "hello there")
+	if err != nil {
+		t.Fatalf("ReferenceAudio (2nd call): %v", err)
+	}
+	if string(got2) != string(newWav) {
+		t.Fatalf("second call must return the now-backfilled audio, got %d bytes", len(got2))
+	}
+	if tts.synthCalls != 1 {
+		t.Fatalf("second call must be a cache hit — no additional Synthesize call, got %d total calls", tts.synthCalls)
+	}
+}
+
+// Backfill must surface the same honest failures Reference() itself would —
+// e.g. TTS unconfigured — rather than silently staying empty forever.
+func TestReferenceAudioBackfillPropagatesFailure(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	repo.refRow = &ports.SentenceReferenceRow{
+		SentenceKey:   SentenceKey("hello there", "en-US"),
+		ReferenceText: "hello there",
+		Locale:        "en-US",
+	}
+	tts := &fakeSynth{configured: false} // ErrTTSNotConfigured
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.ReferenceAudio(context.Background(), "u1", "hello there")
+	if err == nil {
+		t.Fatal("expected an error when backfill's TTS is not configured")
+	}
+	if len(got) != 0 {
+		t.Fatalf("expected no audio on a failed backfill, got %d bytes", len(got))
+	}
+	if len(repo.updatedAudio) != 0 {
+		t.Fatalf("a failed backfill must not write anything, got %+v", repo.updatedAudio)
+	}
+}
+
+// An oversized synthesized clip must be rejected before it is ever persisted
+// — via Reference()'s main derivation path (review round 2, Important 4: no
+// invalidation path exists for speech_references, so a bad row would be
+// permanent).
+func TestReferenceRejectsOversizedAudio(t *testing.T) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	oversized := make([]byte, maxReferenceAudioBytes+1)
+	tts := &fakeSynth{configured: true, wav: oversized}
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.Reference(context.Background(), "u1", "hello there")
+	if !errors.Is(err, ErrReferenceAudioTooLarge) {
+		t.Fatalf("expected ErrReferenceAudioTooLarge, got %v", err)
+	}
+	if got != nil {
+		t.Fatalf("expected nil reference when the synthesized audio is oversized, got %+v", got)
+	}
+	if pron.assessCalls != 0 {
+		t.Fatalf("must not pay for Assess on a clip that will be rejected anyway, got %d calls", pron.assessCalls)
+	}
+	if len(repo.putReference) != 0 {
+		t.Fatalf("an oversized clip must never be persisted, got %d PutReference calls", len(repo.putReference))
 	}
 }
 

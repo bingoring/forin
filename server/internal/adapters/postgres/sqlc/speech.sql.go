@@ -229,3 +229,22 @@ func (q *Queries) PutSpeechReference(ctx context.Context, arg PutSpeechReference
 	)
 	return err
 }
+
+const updateSpeechReferenceAudio = `-- name: UpdateSpeechReferenceAudio :exec
+UPDATE speech_references SET audio_wav = $2
+ WHERE sentence_key = $1 AND audio_wav = ''
+`
+
+type UpdateSpeechReferenceAudioParams struct {
+	SentenceKey string `json:"sentence_key"`
+	AudioWav    []byte `json:"audio_wav"`
+}
+
+// Backfills a row that already exists but has no audio yet (review round 2,
+// Important 1) — the empty-audio guard makes this first-writer-wins, same as
+// PutSpeechReference's ON CONFLICT DO NOTHING: a race between two backfills
+// just means one Synthesize call goes unused, never corruption.
+func (q *Queries) UpdateSpeechReferenceAudio(ctx context.Context, arg UpdateSpeechReferenceAudioParams) error {
+	_, err := q.db.Exec(ctx, updateSpeechReferenceAudio, arg.SentenceKey, arg.AudioWav)
+	return err
+}

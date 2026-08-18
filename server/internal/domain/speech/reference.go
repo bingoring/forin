@@ -54,6 +54,31 @@ func voiceForLocale(locale string) (string, bool) {
 // it from other failures with errors.Is instead of string-matching.
 var ErrUnsupportedLocale = errors.New("speech: no reference voice for locale")
 
+// maxReferenceAudioBytes bounds a synthesized reference clip before it is
+// EVER persisted (review round 2, Important 4). Text length alone (the HTTP
+// layer's maxReferenceTextLen, 300 runes) does not bound synthesized AUDIO
+// size directly — Azure's spoken rate and sample rate vary by voice/locale —
+// and speech_references has no invalidation path (R9): an oversized clip
+// written once sits there forever. 2MiB is a generous multiple of the
+// ~320KB a full 10s/16kHz mono clip costs (business-rules R6's own cap on
+// USER-recorded audio), leaving headroom for Azure TTS's own higher sample
+// rate (24kHz in this package's own tests) while still refusing anything
+// pathological.
+const maxReferenceAudioBytes = 2 << 20 // 2MiB
+
+// ErrReferenceAudioTooLarge is returned when a synthesized reference clip
+// exceeds maxReferenceAudioBytes — checked BEFORE the clip is written
+// anywhere (PutReference or UpdateReferenceAudio), so an oversized clip
+// never becomes a permanent, unrecoverable row.
+var ErrReferenceAudioTooLarge = errors.New("speech: synthesized reference audio exceeds the size cap")
+
+func checkReferenceAudioSize(wav []byte) error {
+	if len(wav) > maxReferenceAudioBytes {
+		return fmt.Errorf("%w: %d bytes (cap %d)", ErrReferenceAudioTooLarge, len(wav), maxReferenceAudioBytes)
+	}
+	return nil
+}
+
 // ErrTTSNotConfigured is returned by Reference when the synthesizer cannot run
 // at all. This is distinct from a Synthesize *call* failing (network/5xx) —
 // checking Configured() upfront mirrors quizAudioHandler.entry's own guard and
@@ -107,6 +132,11 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 	if err != nil {
 		return nil, err
 	}
+	// Checked before Assess: no reason to pay for scoring a clip that will
+	// never be persisted anyway (review round 2, Important 4).
+	if err := checkReferenceAudioSize(wav); err != nil {
+		return nil, err
+	}
 
 	scored, err := s.pron.Assess(ctx, userID, wav, text)
 	if err != nil {
@@ -135,12 +165,23 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 // segmentation, never a fresh Synthesize call on a cache hit (Task 11 closes
 // task-11-brief.md item ②: T4 synthesized this audio and then discarded it).
 //
-// A nil/empty return (with a nil error) means "no audio to serve" — either no
-// reference has ever been derived for this sentence, or the stored row
-// predates the audio_wav column (a legacy row with no audio; this does not
-// retroactively backfill it). The caller (speech_audio_handler.go) treats
-// that identically to a derivation failure: leave the playback button/route
-// inert, never fabricate a clip.
+// Review round 2 (Important 1): a row that predates the audio_wav column (or
+// one left behind by an audio-cap rejection, or by running migration 000022's
+// down and back up) is BACKFILLED here, not left permanently empty — Reference
+// itself cannot do this because it hits its own cache (GetReference) and
+// returns before ever calling Synthesize again; PutReference's ON CONFLICT DO
+// NOTHING would not touch an existing row's audio_wav either way. Backfilling
+// re-synthesizes ONLY the audio, against the row's own already-stored
+// Locale/ReferenceText (never re-derives segmentation, never calls Assess
+// again — that work is done and permanent, R9) and writes it back with
+// UpdateReferenceAudio, which is itself conditioned on audio_wav still being
+// empty (first-writer-wins, matching R9's spirit for the row as a whole).
+//
+// A nil/empty return (with a nil error) means "no audio to serve" — only when
+// backfilling itself fails (TTS unconfigured, unsupported locale, an
+// oversized clip, or a Synthesize/repo error). The caller
+// (speech_audio_handler.go) treats that identically to any other derivation
+// failure: leave the playback button/route inert, never fabricate a clip.
 func (s *Service) ReferenceAudio(ctx context.Context, userID, text string) ([]byte, error) {
 	locale := s.pron.LocaleFor(ctx, userID)
 	key := SentenceKey(text, locale)
@@ -153,16 +194,45 @@ func (s *Service) ReferenceAudio(ctx context.Context, userID, text string) ([]by
 		return wav, nil
 	}
 
-	// Miss: most likely no reference has been derived yet. Reference() is the
-	// single code path that produces a row + its audio together (see its own
-	// PutReference call above) — reusing it here, rather than calling
-	// Synthesize directly, means this can never end up with audio recorded in
-	// a different voice/locale pairing than the segmentation it plays back
-	// alongside (voiceForLocale's own doc explains why that pairing matters).
-	if _, err := s.Reference(ctx, userID, text); err != nil {
+	existing, err := s.repo.GetReference(ctx, key)
+	if err != nil {
 		return nil, err
 	}
-	return s.repo.GetReferenceAudio(ctx, key)
+	if existing == nil {
+		// No reference derived at all yet. Reference() is the single code
+		// path that produces a row + its audio together (see its own
+		// PutReference call above) — reusing it here, rather than calling
+		// Synthesize directly, means this can never end up with audio
+		// recorded in a different voice/locale pairing than the
+		// segmentation it plays back alongside (voiceForLocale's own doc
+		// explains why that pairing matters).
+		if _, err := s.Reference(ctx, userID, text); err != nil {
+			return nil, err
+		}
+		return s.repo.GetReferenceAudio(ctx, key)
+	}
+
+	// Backfill path: the row exists (segmentation already derived and
+	// permanent) but audio_wav is empty. Re-synthesize against the SAME
+	// voice/locale pairing the row itself already committed to.
+	voice, ok := voiceForLocale(existing.Locale)
+	if !ok {
+		return nil, fmt.Errorf("%w: %s", ErrUnsupportedLocale, existing.Locale)
+	}
+	if s.tts == nil || !s.tts.Configured() {
+		return nil, ErrTTSNotConfigured
+	}
+	newWav, err := s.tts.Synthesize(ctx, existing.ReferenceText, voice, existing.Locale)
+	if err != nil {
+		return nil, err
+	}
+	if err := checkReferenceAudioSize(newWav); err != nil {
+		return nil, err
+	}
+	if err := s.repo.UpdateReferenceAudio(ctx, key, newWav); err != nil {
+		return nil, err
+	}
+	return newWav, nil
 }
 
 // ipaLine assembles one IPA line from per-word phoneme segmentation, matching

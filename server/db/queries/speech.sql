@@ -42,3 +42,11 @@ SELECT audio_wav FROM speech_references WHERE sentence_key = $1;
 INSERT INTO speech_references (sentence_key, reference_text, locale, ipa, words, duration_ms, audio_wav)
 VALUES ($1, $2, $3, $4, $5, $6, $7)
 ON CONFLICT (sentence_key) DO NOTHING;
+
+-- name: UpdateSpeechReferenceAudio :exec
+-- Backfills a row that already exists but has no audio yet (review round 2,
+-- Important 1) — the empty-audio guard makes this first-writer-wins, same as
+-- PutSpeechReference's ON CONFLICT DO NOTHING: a race between two backfills
+-- just means one Synthesize call goes unused, never corruption.
+UPDATE speech_references SET audio_wav = $2
+ WHERE sentence_key = $1 AND audio_wav = '';
