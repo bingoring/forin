@@ -252,3 +252,28 @@ export function buildCorrectionPoints(
 
   return { points, suspectAllZero };
 }
+
+// ── downsampleAmplitude — collapse a full recording's amplitude samples into
+// a fixed-length bar array for retrospective display ────────────────────────
+//
+// The live WavePanel keeps only a short rolling window of recent samples (a
+// real-time meter, by design). That same rolling array is NOT what the result
+// screen's "내 발음" waveform should show — a 10s utterance rendered from only
+// its last ~2s of samples silently mislabels the whole clip as its tail
+// (review finding, task-8-report.md). This is the retrospective counterpart:
+// call it once, at stop time, over every sample collected during the
+// recording, to get a fixed-size array spanning the FULL clip.
+export function downsampleAmplitude(samples: number[], count: number): number[] {
+  if (count <= 0) return [];
+  if (samples.length === 0) return Array(count).fill(0.05);
+
+  const out: number[] = [];
+  for (let i = 0; i < count; i++) {
+    const start = Math.floor((i / count) * samples.length);
+    const end = Math.max(start + 1, Math.floor(((i + 1) / count) * samples.length));
+    const bucket = samples.slice(start, Math.min(end, samples.length));
+    const avg = bucket.length ? bucket.reduce((a, b) => a + b, 0) / bucket.length : samples[samples.length - 1];
+    out.push(avg);
+  }
+  return out;
+}

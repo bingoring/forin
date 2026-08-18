@@ -3,6 +3,7 @@ import {
   syllableBand,
   matchPhonemesToSyllables,
   buildCorrectionPoints,
+  downsampleAmplitude,
   type CorrectionWord,
 } from './pronTokens';
 
@@ -272,5 +273,34 @@ describe('buildCorrectionPoints', () => {
     ];
     const { points } = buildCorrectionPoints(words, lookup);
     expect(points[0].ipa).toBe('/mɪn/');
+  });
+});
+
+// ── downsampleAmplitude — review finding: the result screen's "내 발음" wave
+// must reflect the whole recording, not just its last ~2s rolling window.
+describe('downsampleAmplitude', () => {
+  test('정확히 count개를 반환한다', () => {
+    expect(downsampleAmplitude([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)).toHaveLength(5);
+    expect(downsampleAmplitude([1, 2, 3], 5)).toHaveLength(5);
+    expect(downsampleAmplitude([], 20)).toHaveLength(20);
+  });
+
+  test('표본이 없으면 무음에 가까운 상수로 채운다(0으로 찌부러지지 않게)', () => {
+    expect(downsampleAmplitude([], 4)).toEqual([0.05, 0.05, 0.05, 0.05]);
+  });
+
+  test('전체 구간을 고르게 나눠 평균한다 — 끝부분만 남지 않는다', () => {
+    // 앞 절반은 0, 뒷 절반은 1: 2버킷으로 내리면 [0,1]이어야 한다(뒷부분만
+    // 남는 롤링 윈도우 버그라면 두 버킷 다 1에 가까워진다).
+    const samples = [...Array(50).fill(0), ...Array(50).fill(1)];
+    const bars = downsampleAmplitude(samples, 2);
+    expect(bars[0]).toBeCloseTo(0);
+    expect(bars[1]).toBeCloseTo(1);
+  });
+
+  test('표본 수가 count보다 적어도 안전하게 늘린다', () => {
+    const bars = downsampleAmplitude([0.2, 0.8], 4);
+    expect(bars).toHaveLength(4);
+    bars.forEach((v) => expect(Number.isFinite(v)).toBe(true));
   });
 });
