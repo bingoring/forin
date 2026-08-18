@@ -4,10 +4,18 @@
 import { Pressable, Text, View } from 'react-native';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import type { Dir } from '@engine';
+import { PixelIcon } from '@/components/PixelIcon';
 
 const PAD = 52; // D-pad button size
 
-function PadBtn({ glyph, onPress, col, row }: { glyph: string; onPress: () => void; col: number; row: number }) {
+// The D-pad wants filled triangles, not chevrons — `play` is the only solid
+// wedge in the icon set, so rotate it for the other three directions rather
+// than authoring three near-duplicates.
+const ROT: Record<'up' | 'down' | 'left' | 'right', string> = {
+  right: '0deg', down: '90deg', left: '180deg', up: '270deg',
+};
+
+function PadBtn({ dir, onPress, col, row }: { dir: 'up' | 'down' | 'left' | 'right'; onPress: () => void; col: number; row: number }) {
   return (
     <Pressable
       onPress={onPress}
@@ -24,7 +32,9 @@ function PadBtn({ glyph, onPress, col, row }: { glyph: string; onPress: () => vo
         borderWidth: border.card,
       }}
     >
-      <Text style={{ fontFamily: fonts.heading, fontSize: 20, color: colors.ink }}>{glyph}</Text>
+      <View style={{ transform: [{ rotate: ROT[dir] }] }}>
+        <PixelIcon name="play" color={colors.ink} size={18} sw={1.8} />
+      </View>
     </Pressable>
   );
 }
@@ -72,10 +82,10 @@ export function HUD({
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
         {/* D-pad cross */}
         <View style={{ width: PAD * 3, height: PAD * 3 }}>
-          <PadBtn glyph="▲" col={1} row={0} onPress={() => onMove('up')} />
-          <PadBtn glyph="◀" col={0} row={1} onPress={() => onMove('left')} />
-          <PadBtn glyph="▶" col={2} row={1} onPress={() => onMove('right')} />
-          <PadBtn glyph="▼" col={1} row={2} onPress={() => onMove('down')} />
+          <PadBtn dir="up" col={1} row={0} onPress={() => onMove('up')} />
+          <PadBtn dir="left" col={0} row={1} onPress={() => onMove('left')} />
+          <PadBtn dir="right" col={2} row={1} onPress={() => onMove('right')} />
+          <PadBtn dir="down" col={1} row={2} onPress={() => onMove('down')} />
         </View>
 
         {/* A button */}

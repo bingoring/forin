@@ -2,6 +2,7 @@
 import { Modal, Pressable, Text, View } from 'react-native';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import type { Room } from '@engine';
+import { PixelIcon, iconFor } from '@/components/PixelIcon';
 
 export function FastTravelModal({
   visible,
@@ -40,10 +41,10 @@ export function FastTravelModal({
                   gap: 2,
                 }}
               >
-                <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.body, color: colors.ink }}>
-                  {r.icon ? `${r.icon} ` : ''}
-                  {r.name}
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                  {rowIcon(r.icon)}
+                  <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.body, color: colors.ink }}>{r.name}</Text>
+                </View>
                 {!!r.sub && (
                   <Text style={{ fontFamily: fonts.body, fontSize: typeScale.caption, color: colors.text }}>{r.sub}</Text>
                 )}
@@ -54,4 +55,16 @@ export function FastTravelModal({
       </Pressable>
     </Modal>
   );
+}
+
+// Same bridge as the elevator's floor list: fixture emoji -> line icon, with a
+// visible fallback rather than a blank when a mapping is missing.
+function rowIcon(emoji?: string) {
+  if (!emoji) return null;
+  const name = iconFor(emoji);
+  if (!name) {
+    if (__DEV__) console.warn(`[map] no PixelIcon mapping for row emoji ${emoji} — add it to EMOJI_ICON`);
+    return <Text style={{ fontSize: typeScale.body }}>{emoji}</Text>;
+  }
+  return <PixelIcon name={name} color={colors.ink} size={16} sw={1.8} />;
 }

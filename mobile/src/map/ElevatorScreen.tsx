@@ -11,6 +11,7 @@ import { colors, fonts } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 import { deptCounts, type Dept } from '@/content/scenarios';
 import { api } from '@/api/client';
+import { PixelIcon, iconFor } from '@/components/PixelIcon';
 
 export interface ElevFloor {
   f: string;
@@ -151,7 +152,7 @@ export function ElevatorScreen({
 
   const idx = (x: string) => b.floors.findIndex((f) => f.f === x);
   const dir = idx(sel) < idx(cur) ? 'up' : idx(sel) > idx(cur) ? 'down' : 'same';
-  const arrow = dir === 'up' ? '▲' : dir === 'down' ? '▼' : '';
+  const travel: 'up' | 'down' | null = dir === 'up' ? 'up' : dir === 'down' ? 'down' : null;
   const roomLabel = b.floors.find((f) => f.f === sel)?.rooms?.[selRoom]?.dept;
 
   const half = width / 2 + 2;
@@ -219,7 +220,7 @@ export function ElevatorScreen({
             </View>
             {/* LCD readout */}
             <View style={{ backgroundColor: '#0A1016', borderWidth: 2, borderColor: '#000', paddingHorizontal: 12, paddingVertical: 6, minWidth: 66, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#3E5A46' }}>{riding ? `${arrow || '▲'}${arrow || '▲'}` : dir === 'same' ? '＝' : arrow}</Text>
+              <TravelMark riding={riding} dir={dir} travel={travel} />
               <Text style={{ fontFamily: fonts.heading, fontSize: 30, lineHeight: 32, color: riding ? '#FCD34D' : '#39D98A' }}>{sel}</Text>
               <Text style={{ fontFamily: fonts.heading, fontSize: 6.5, color: '#3E5A46', marginTop: 2 }}>{riding ? '이동 중' : '대기'}</Text>
             </View>
@@ -247,7 +248,7 @@ export function ElevatorScreen({
                         {fl.lobby ? <Text style={{ fontFamily: fonts.body, fontSize: 7, color: colors.textSoft, marginTop: 2 }}>LOBBY</Text> : null}
                       </View>
                       <View style={{ flex: 1, paddingHorizontal: 6, paddingVertical: 7, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                        <Text style={{ fontSize: 12 }}>{fl.icon}</Text>
+                        <FloorIcon emoji={fl.icon} />
                         <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 10.5, color: selected ? '#fff' : INK }}>{fl.depts.join(' · ')}</Text>
                       </View>
                       {chip ? (
@@ -282,7 +283,8 @@ export function ElevatorScreen({
         {/* GO bar */}
         <View style={{ padding: 12, borderTopWidth: 2, borderColor: INK, backgroundColor: colors.paper }}>
           <PixelButton
-            label={riding ? '이동 중…' : `${sel} 층${roomLabel ? ` · ${roomLabel}` : ''}${dir === 'same' ? ' (현재 위치)' : `으로 이동 ${arrow}`}`}
+            label={riding ? '이동 중…' : `${sel} 층${roomLabel ? ` · ${roomLabel}` : ''}${dir === 'same' ? ' (현재 위치)' : '으로 이동'}`}
+            icon={riding || dir === 'same' ? undefined : travel === 'down' ? 'chevron-down' : 'chevron-up'}
             bg={b.accent}
             shadowColor={INK}
             textColor="#fff"
@@ -309,4 +311,38 @@ export function ElevatorScreen({
       ) : null}
     </SafeAreaView>
   );
+}
+
+// A floor's icon comes from the fixture as an emoji string. The app draws line
+// icons, so bridge it — and fall back to the raw emoji rather than rendering
+// nothing when a mapping is missing, with a dev warning so the gap is visible
+// instead of silently blank.
+function FloorIcon({ emoji }: { emoji: string }) {
+  const name = iconFor(emoji);
+  if (!name) {
+    if (__DEV__) console.warn(`[map] no PixelIcon mapping for floor emoji ${emoji} — add it to EMOJI_ICON`);
+    return <Text style={{ fontSize: 12 }}>{emoji}</Text>;
+  }
+  return <PixelIcon name={name} color={colors.ink} size={14} sw={1.8} />;
+}
+
+// The floor indicator's direction mark. The rest of the panel keeps its
+// simulated-display typography ('＝' for same floor), but the arrows become
+// icons like everywhere else — drawn a little larger than the 8px text they
+// replace, since an 8px stroke muddies.
+function TravelMark({ riding, dir, travel }: { riding: boolean; dir: string; travel: 'up' | 'down' | null }) {
+  const name = (travel ?? 'up') === 'up' ? 'chevron-up' : 'chevron-down';
+  if (riding) {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <PixelIcon name={name} color="#3E5A46" size={11} sw={2} />
+        <PixelIcon name={name} color="#3E5A46" size={11} sw={2} />
+      </View>
+    );
+  }
+  if (dir === 'same') {
+    return <Text style={{ fontFamily: fonts.heading, fontSize: 8, color: '#3E5A46' }}>＝</Text>;
+  }
+  if (!travel) return null;
+  return <PixelIcon name={name} color="#3E5A46" size={11} sw={2} />;
 }

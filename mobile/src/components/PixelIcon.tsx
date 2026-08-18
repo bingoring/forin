@@ -436,6 +436,14 @@ const EMOJI_ICON: Record<string, IconName> = {
   '🌱': 'sprout', '💗': 'heart', '⚡': 'bolt', '🗣': 'speech', '🦸': 'shield',
   '⭐': 'star', '★': 'star', '❤': 'heart', '♡': 'heart', '🌸': 'flower', '✿': 'flower', '✚': 'plus', '➕': 'plus', '☺': 'flower',
   '🎉': 'burst', '❔': 'question', '🎖': 'medal', '🏷': 'tag', '🔍': 'search', '✨': 'sparkle',
+  // Elevator floors / fast-travel rows. The dept icons already existed in this
+  // set; only the bridge entries were missing, which is why 762bb6a's sweep
+  // left the map surfaces still drawing emoji.
+  '🚑': 'ambulance', '🔪': 'scalpel', '🩹': 'plus', '🛏': 'bed', '🫀': 'heart',
+  '🦴': 'prosthesis', '💊': 'pill', '👶': 'baby', '🤰': 'pregnant',
+  '🧸': 'teddy', '🎈': 'teddy', '🩻': 'xray', '🔭': 'microscope', '👁': 'eye',
+  '🎗': 'ribbon', '🕊': 'dove', '🦮': 'cane', '🧠': 'brain', '🎓': 'cap',
+  '☕': 'cup', '📦': 'box', '🔧': 'prosthesis',
 };
 export function iconFor(emoji?: string): IconName | undefined {
   return emoji ? EMOJI_ICON[emoji.trim()] : undefined;

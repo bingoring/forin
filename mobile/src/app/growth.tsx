@@ -110,7 +110,9 @@ export default function Growth() {
                 <PixelChip icon="flame" label={`최장 ${progress.streakLongest}일`} bg={colors.yellow} />
                 <PixelChip label={`${progress.xp.toLocaleString()} XP`} bg="#fff" />
               </View>
-              <Text style={{ position: 'absolute', top: -6, right: -2, fontSize: 24, transform: [{ rotate: '12deg' }] }}>✨</Text>
+              <View style={{ position: 'absolute', top: -6, right: -2, transform: [{ rotate: '12deg' }] }}>
+                <PixelIcon name="sparkle" color={colors.yellowDeep} size={24} sw={1.8} />
+              </View>
             </View>
           </Shadowed>
 

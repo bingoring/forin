@@ -301,7 +301,7 @@ export default function DialogueRoute() {
               <View style={{ position: 'absolute', right: 10, bottom: -8 }}>
                 <Shadowed offset={2}>
                   <View style={{ width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: 11, color: C }}>▼</Text>
+                    <PixelIcon name="chevron-down" color={C} size={13} sw={1.8} />
                   </View>
                 </Shadowed>
               </View>

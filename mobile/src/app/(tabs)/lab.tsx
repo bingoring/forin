@@ -118,7 +118,7 @@ export default function Lab() {
           <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
             <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
               <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: 12, color: C }}>복습 등급이 뭔가요?</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: 12, color: colors.textSoft }}>{guideOpen ? '▲' : '▼'}</Text>
+              <PixelIcon name={guideOpen ? 'chevron-up' : 'chevron-down'} color={colors.textSoft} size={14} sw={1.8} />
             </Pressable>
             {guideOpen && (
               <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8, borderTopWidth: 2, borderTopColor: C }}>
@@ -264,7 +264,10 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
             <View style={{ marginTop: 10 }}>
               <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                 <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>맥락 {showCtx ? '▲' : '▼'}</Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: 9, color: C }}>맥락</Text>
+                    <PixelIcon name={showCtx ? 'chevron-up' : 'chevron-down'} color={C} size={11} sw={1.8} />
+                  </View>
                 </View>
                 {!showCtx && !!ctx?.title && (
                   <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.body, fontSize: 10, color: colors.textSoft }}>{ctx.title}</Text>
