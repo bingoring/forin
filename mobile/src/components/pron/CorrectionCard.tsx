@@ -69,5 +69,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     flexShrink: 0,
   },
-  playText: { fontFamily: fonts.heading, fontSize: 11, color: colors.ink },
 });

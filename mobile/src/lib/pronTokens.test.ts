@@ -145,6 +145,19 @@ describe('matchPhonemesToSyllables', () => {
     expect(matches).toEqual([0]);
   });
 
+  // offset은 정상인데 duration만 전부 0이면 어떤 창도 아무것도 담지 못해
+  // 결과가 똑같이 비는데, offset만 보는 규칙으로는 신호가 서지 않았다.
+  test('duration만 전부 0이어도 이상 신호가 선다', () => {
+    const syllables = [
+      { offset: 0, duration: 0 },
+      { offset: 10, duration: 0 },
+    ];
+    const phonemes = [{ offset: 2 }, { offset: 12 }];
+    const { matches, suspectAllZero } = matchPhonemesToSyllables(phonemes, syllables);
+    expect(suspectAllZero).toBe(true);
+    expect(matches).toEqual([null, null]);
+  });
+
   test('빈 배열: 음소나 음절이 없으면 빈 결과, 이상 신호는 서지 않는다', () => {
     expect(matchPhonemesToSyllables([], [])).toEqual({ matches: [], suspectAllZero: false });
     expect(matchPhonemesToSyllables([{ offset: 5 }], [])).toEqual({ matches: [null], suspectAllZero: false });

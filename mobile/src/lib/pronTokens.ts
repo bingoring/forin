@@ -122,7 +122,11 @@ export function matchPhonemesToSyllables(
 ): SyllableMatch {
   const allAtZero = (spans: TimedSpan[]): boolean =>
     spans.length > 1 && spans.every((s) => !s.offset);
-  const suspectAllZero = allAtZero(phonemes) || allAtZero(syllables);
+  // Durations get the same treatment for a simpler reason: a syllable that lasts
+  // zero ticks has an empty window and can hold nothing, so an array where every
+  // one of them is zero produces the identical "no correction points" silence.
+  const noDurations = syllables.length > 0 && syllables.every((s) => !s.duration);
+  const suspectAllZero = allAtZero(phonemes) || allAtZero(syllables) || noDurations;
 
   if (suspectAllZero) {
     return { matches: phonemes.map(() => null), suspectAllZero: true };
