@@ -11,9 +11,10 @@ import {
   CURRICULUM, STEP_META, BLD, deptFor,
   type Building, type Floor, type DeptDetail,
 } from '@/data/campus';
-import { PixelIcon } from '@/components/PixelIcon';
+import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
+import { BottomSheet } from '@/components/BottomSheet';
 
 // Bundled fallback in server shape (used only while /me/curriculum is loading or offline).
 const FALLBACK_CHAPTERS: CurriculumChapter[] = CURRICULUM.map((c) => ({
@@ -324,16 +325,18 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
   const lvTile = dept?.lv && dept.lv !== '—' ? dept.lv : live ? modeLv(sits) : '—';
 
   return (
-    <Modal visible={!!dept} transparent animationType="slide" onRequestClose={onClose}>
-      <Pressable onPress={onClose} style={{ flex: 1, backgroundColor: '#000A' }} />
+    <BottomSheet visible={!!dept} onClose={onClose}>
       {dept && (
-        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: 74, backgroundColor: colors.paper, borderWidth: 3, borderBottomWidth: 0, borderColor: C }}>
+        <View>
           {/* header */}
-          <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 8, paddingHorizontal: 14, paddingBottom: 11 }}>
-            <View style={{ width: 40, height: 4, backgroundColor: C + '44', alignSelf: 'center', marginBottom: 9 }} />
+          <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 4, paddingHorizontal: 14, paddingBottom: 11 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
               <View style={{ width: 34, height: 34, backgroundColor: dept.accent, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: fs(17) }}>{dept.icon}</Text>
+                {iconFor(dept.icon) ? (
+                  <PixelIcon name={iconFor(dept.icon)!} color={C} size={19} sw={1.8} />
+                ) : (
+                  <Text style={{ fontSize: fs(17) }}>{dept.icon}</Text>
+                )}
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{dept.name}</Text>
@@ -428,7 +431,7 @@ function DeptSheet({ dept, chapters, onClose, onStart, onWalk }: { dept: DeptDet
           </View>
         </View>
       )}
-    </Modal>
+    </BottomSheet>
   );
 }
 

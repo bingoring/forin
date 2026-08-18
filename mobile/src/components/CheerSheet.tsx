@@ -3,10 +3,11 @@
 // 프리셋 4개 + 60자 한마디. 프리셋 문구는 서버가 소유하므로 여기서는 키만 보내고,
 // 표시 문구는 화면 사본을 쓴다(서버 PresetText와 동일 — 어긋나면 서버가 진실).
 import { useState } from 'react';
-import { ActivityIndicator, Modal, Pressable, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
 import type { CheerPreset } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { BottomSheet } from '@/components/BottomSheet';
 
 const C = colors.ink;
 const MAX = 60;
@@ -43,10 +44,8 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
   };
 
   return (
-    <Modal visible={visible} transparent animationType="slide" onRequestClose={close}>
-      <Pressable onPress={close} style={{ flex: 1, backgroundColor: 'rgba(42,37,34,0.55)' }} />
-      <View style={{ backgroundColor: colors.paper, borderTopWidth: 4, borderTopColor: C, paddingHorizontal: 16, paddingTop: 14, paddingBottom: 24 }}>
-        <View style={{ width: 44, height: 5, backgroundColor: C + '33', alignSelf: 'center', marginBottom: 14 }} />
+    <BottomSheet visible={visible} onClose={close} expandable={false}>
+      <View style={{ paddingHorizontal: 16, paddingTop: 4, paddingBottom: 24 }}>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
           <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
@@ -107,6 +106,6 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
             : <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.cream }}>보내기</Text>}
         </Pressable>
       </View>
-    </Modal>
+    </BottomSheet>
   );
 }

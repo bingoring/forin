@@ -7,7 +7,7 @@
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
   useAudioRecorder, requestRecordingPermissionsAsync, setAudioModeAsync,
@@ -186,11 +186,17 @@ export default function DialogueRoute() {
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#1F2937' }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
 
-      {/* room backdrop: peach (patient room) over cream (working area) */}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+      {/* room backdrop: peach (patient room) over cream (working area).
+          Also the keyboard's escape hatch — a full-screen chat has nowhere
+          obvious to tap, so the room itself dismisses it. */}
+      <Pressable
+        onPress={() => Keyboard.dismiss()}
+        accessible={false}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+      >
         <View style={{ flex: 4, backgroundColor: colors.peach }} />
         <View style={{ flex: 6, backgroundColor: colors.cream }} />
-      </View>
+      </Pressable>
 
       {/* status bar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}>
@@ -342,7 +348,7 @@ export default function DialogueRoute() {
                       {rec === 'transcribing'
                         ? <ActivityIndicator color={C} size="small" />
                         : rec === 'recording'
-                          ? <Text style={{ fontSize: fs(16) }}>■</Text>
+                          ? <View style={{ width: 12, height: 12, backgroundColor: C }} />
                           : <PixelIcon name="mic" color={C} size={18} sw={1.8} />}
                     </View>
                   </Shadowed>
@@ -357,6 +363,11 @@ export default function DialogueRoute() {
                   onSubmitEditing={send}
                   returnKeyType="send"
                   multiline
+                  // With `multiline`, RN defaults to keeping focus on return, so
+                  // the "send" key inserted a newline and the keyboard could
+                  // never be dismissed. Blur AND submit instead — that is what
+                  // the key says it does.
+                  submitBehavior="blurAndSubmit"
                 />
               </View>
             </Shadowed>
