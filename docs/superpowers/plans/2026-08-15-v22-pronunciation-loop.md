@@ -859,6 +859,17 @@ Expo Go `exp://` 딥링크로 3상태에 각각 진입해 SoT와 대조한다(`f
 
 ### Task 9: 진입점 배선 + 구 컴포넌트 제거
 
+> **정정됨 (2026-08-18, 착수 전 컨트롤러 확인)** — 아래 본문보다 이 블록이 우선한다.
+>
+> **"진입점 2곳 배선"이라고 적었지만 리뷰랩 쪽은 배선이 아니라 신설이다.** 실제 코드를 확인했다:
+> - `mobile/src/app/dialogue/[id].tsx:315` — `<PronunciationPractice referenceText={scenario.keyPhrases[0]} />`를
+>   **인라인으로 렌더**한다. SoT `04_SCREENS.md:324`는 바텀레일 `🎤 직접 말하기`를 요구한다 → **전환**.
+> - `mobile/src/app/review.tsx:127` — 카드에 `volume`(TTS 듣기) 액션만 있고 **`🎤 따라 말하기`가 아예 없다.**
+>   SoT `04_SCREENS.md:397`이 요구하는 액션이므로 **새로 추가**해야 한다.
+>
+> 그리고 새 액션은 **이모지가 아니라 `PixelIcon name="mic"`** 을 써야 한다(`762bb6a`가 화면 렌더 이모지를 전면
+> 제거했고, T7에서 그 규칙을 어겼다가 리뷰에 잡힌 전례가 있다).
+
 **Files:**
 - Modify: `mobile/src/app/dialogue/[id].tsx:315` · 리뷰랩 PhraseCard
 - Delete: `mobile/src/components/PronunciationPractice.tsx` · `PronunciationScore.tsx`
