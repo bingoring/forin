@@ -54,11 +54,12 @@ func main() {
 	// The curriculum is derived from the same banks, so a new department extends
 	// the learning path without anyone remembering to edit a catalog.
 	const curriculumOut = "internal/curriculum/catalog_gen.go"
-	if err := generateCurriculum(curriculumOut); err != nil {
+	uncovered, err := generateCurriculum(curriculumOut)
+	if err != nil {
 		fmt.Fprintf(os.Stderr, "curriculum: %v\n", err)
 		os.Exit(1)
 	}
-	fmt.Printf("  %-10s %3d chapters → %s\n", "CURRICULUM", len(Floors), curriculumOut)
+	fmt.Printf("  %-10s %3d departments need the fallback → %s\n", "CURRICULUM", uncovered, curriculumOut)
 	fmt.Printf("done: %d scenarios · %d events · %d quizzes across %d departments\n", totalScn, totalEvt, totalQz, len(Depts))
 }
 

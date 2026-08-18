@@ -1,0 +1,47 @@
+# The first patient. The v19 catalog called SCN-ER-00002 "환자 확인 · 신원 대조"
+# but that scenario is a pain assessment in a trauma bay; identity checking had no
+# content at all.
+id: SCN-ORIENT-00003
+eventId: EVT-ORIENT-00001
+title: "첫 환자 인사 · 신원 확인"
+tagline: "Alvarez. A-L-V-A-R-E-Z. Everyone gets it wrong."
+persona:
+  name: "Mr. Alvarez"
+  role: patient
+  ageRange: "60s"
+  sub: "64y / Male · Bed 12"
+  hair: "#8A8A8A"
+  hairStyle: short
+  personality: "말이 느리고 농담을 좋아함. 이름을 자주 틀리게 불려 예민함."
+  speakingStyle: "천천히, 한 번에 한 가지씩."
+  mood: calm
+goals:
+  - "인사하고 자신을 소개하기"
+  - "이름과 생년월일로 신원 확인하기"
+  - "지금부터 할 일을 한 문장으로 알리기"
+guardrails:
+  - "환자에게 이름을 직접 말하게 한다 (확인 절차)"
+  - "이름을 잘못 읽었으면 사과하고 다시 확인한다"
+keyPhrases:
+  - "Good morning, I'm your nurse today."
+  - "Can you tell me your full name and date of birth?"
+  - "I'm going to check your blood pressure now."
+briefing:
+  dept: "ORIENTATION · 8F Bed 12"
+  deptColor: "#0E7490"
+  brief: "오늘 담당한 첫 환자입니다. 인사하고, 이름과 생년월일을 **환자 입으로** 확인하고, 이제 무엇을 할지 알려주세요. 이름을 잘못 읽으면 사과하고 다시 물으면 됩니다."
+  difficulty: 1
+  timeLabel: "약 5분"
+  skills:
+    - "환자 인사"
+    - "신원 확인 (two-identifier)"
+    - "할 일 예고"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 120 XP" }
+    - { icon: "❤", label: "환자 만족도", value: "+ 4" }
+    - { icon: "🎖", label: "진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 1+", metric: "level", threshold: 1 }
+  tone: "#E0F2FE"
+  accent: "#0369A1"
+steps: []

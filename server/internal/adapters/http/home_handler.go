@@ -101,9 +101,9 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 
 	// Independent reads, run together — the slowest one sets the latency, not the sum.
 	var (
-		wg       sync.WaitGroup
-		mu       sync.Mutex
-		chapters []curriculum.ChapterState
+		wg        sync.WaitGroup
+		mu        sync.Mutex
+		curricula []curriculum.CurriculumState
 	)
 	run := func(f func()) { wg.Add(1); go func() { defer wg.Done(); f() }() }
 
@@ -136,9 +136,15 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		cs := curriculum.Resolve(cleared)
+		// Where the learner actually was, which is not the same as the front of the
+		// path. Before v2 this screen always pointed at the first unfinished step in
+		// the whole catalog, so someone working on the 8th floor was told to go back
+		// to the 1st. A failed lookup is not fatal: resume then falls back to the
+		// first unfinished curriculum, which is the old behaviour.
+		last, _ := h.progress.LatestAttemptScenarioID(ctx, uid)
+		cs := curriculum.ResolveWithResume(cleared, curriculum.KeyForScenario(last))
 		mu.Lock()
-		chapters = cs
+		curricula = cs
 		mu.Unlock()
 	})
 
@@ -175,7 +181,7 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 	wg.Wait()
 
 	// Derived — needs the curriculum result, so it happens after the fan-in.
-	dept, deptLabel, today := currentStep(chapters)
+	dept, deptLabel, today := currentStep(curricula)
 	resp.TodayOne = today
 	resp.Done = today == nil // no next step today → the rest card
 	if deptLabel != "" {
@@ -246,28 +252,33 @@ func displayName(userID string) string {
 	return userID
 }
 
-// currentStep finds the chapter in progress and its active step. Returns
-// ("", "", nil) when the curriculum is finished — the caller then shows the rest
-// card instead of a task.
-func currentStep(chapters []curriculum.ChapterState) (dept, deptLabel string, one *homeTodayOne) {
-	for _, ch := range chapters {
-		if ch.State != "now" {
+// currentStep finds the curriculum to continue and its active step. Returns
+// ("", "", nil) when everything is finished — the caller then shows the rest card
+// instead of inventing a task.
+//
+// It reads the Resume flag rather than searching for the first unfinished
+// curriculum itself: the career tab draws its hero from the same flag, and two
+// screens computing "what's next" separately is how they end up disagreeing.
+func currentStep(curricula []curriculum.CurriculumState) (dept, deptLabel string, one *homeTodayOne) {
+	for _, c := range curricula {
+		if !c.Resume {
 			continue
 		}
-		deptLabel = ch.Dept
-		dept = deptTag(ch.Dept)
-		for _, st := range ch.Steps {
+		deptLabel = c.Where
+		dept = deptTag(c.Where)
+		for _, st := range c.Steps {
 			if st.State == "now" {
 				return dept, deptLabel, &homeTodayOne{
-					Chapter:    "CHAPTER " + itoa(ch.Ch) + " · " + ch.Name,
+					Chapter:    c.Where + " · " + c.Name,
 					Title:      st.Name,
 					Kind:       st.Kind,
 					ScenarioID: st.ScenarioID,
 				}
 			}
 		}
-		// Chapter is active but has no authored steps yet — still a real posting,
-		// just nothing to start.
+		// Reachable only if a curriculum has no required steps at all, which
+		// catalog_test.go forbids. Kept so a future authoring slip degrades to "no
+		// task today" rather than a nil deref.
 		return dept, deptLabel, nil
 	}
 	return "", "", nil

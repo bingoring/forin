@@ -206,6 +206,26 @@ func (r *ProgressRepo) ClearedScenarioIDs(ctx context.Context, userID string) (m
 	return out, rows.Err()
 }
 
+// LatestAttemptScenarioID returns the scenario the user started most recently.
+//
+// Ordered by started_at rather than cleared_at because an abandoned run is still
+// where the learner was — that is the whole point of the home screen's continue
+// card. No new table or column: scenario_attempts already records every start, and
+// idx_attempts_user covers the lookup.
+func (r *ProgressRepo) LatestAttemptScenarioID(ctx context.Context, userID string) (string, error) {
+	var id string
+	err := r.pool.QueryRow(ctx,
+		`SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 ORDER BY started_at DESC LIMIT 1`,
+		userID).Scan(&id)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return "", nil // never played — not an error, just no preference
+	}
+	if err != nil {
+		return "", err
+	}
+	return id, nil
+}
+
 // FoundMissions returns the ids of hidden missions the user has permanently discovered.
 func (r *ProgressRepo) FoundMissions(ctx context.Context, userID string) ([]string, error) {
 	ids, err := r.q.FoundMissions(ctx, userID)

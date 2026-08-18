@@ -34,6 +34,11 @@ type ProgressRepo interface {
 	// the period lower bounds (already computed in tzName); ActiveDates are bucketed
 	// as calendar dates in tzName (an IANA zone, e.g. "Asia/Seoul") over the week.
 	GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time, tzName string) (*progress.GrowthStats, error)
+	// LatestAttemptScenarioID returns the scenario the user most recently STARTED,
+	// or "" when they have never played. started_at, not cleared_at: a run the user
+	// walked out of is still the place they were, and the home screen's "continue"
+	// has to point there (business-rules R11).
+	LatestAttemptScenarioID(ctx context.Context, userID string) (string, error)
 	// ClearedScenarioIDs returns the set of scenario ids the user has cleared.
 	ClearedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error)
 	// FoundMissions lists permanently-discovered hidden mission ids.

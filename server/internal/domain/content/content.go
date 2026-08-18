@@ -209,7 +209,7 @@ type Persona struct {
 	// "female". Most authored personas leave it empty (30 of 300 hint at it only
 	// inside the display `sub` string), so speech falls back to role — filling
 	// this in is what makes an individual character sound right.
-	Gender    string `yaml:"gender" json:"gender,omitempty"`
+	Gender    string `yaml:"gender,omitempty" json:"gender,omitempty"`
 	Hair      string `yaml:"hair" json:"hair,omitempty"`           // portrait hair color, e.g. "#9A6B3F"
 	HairStyle string `yaml:"hairStyle" json:"hairStyle,omitempty"` // portrait hair style, e.g. "bob"
 }

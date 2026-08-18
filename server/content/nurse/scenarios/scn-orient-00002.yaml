@@ -1,0 +1,48 @@
+# Receiving a handover, not giving one. The catalog had eleven scenarios about
+# giving SBAR and none about being on the listening end, which is the side a
+# newcomer is actually on for weeks — and the side that requires interrupting to
+# ask.
+id: SCN-ORIENT-00002
+eventId: EVT-ORIENT-00001
+title: "인계 받기 · 오늘 배정"
+tagline: "Okay — bed 12, 14, and the new admit in 16. Ready?"
+persona:
+  name: "Dana Okoro"
+  role: nurse
+  ageRange: "30s"
+  sub: "Night shift / 8F"
+  hair: "#2E2A28"
+  hairStyle: braids
+  personality: "밤샘 끝이라 빠르게 말함. 물어보면 기꺼이 다시 말해준다."
+  speakingStyle: "약어를 섞어 빠르게. 숫자를 먼저 말함."
+  mood: tired
+goals:
+  - "인계 내용을 듣고 환자 수·병실을 되짚어 확인하기"
+  - "못 들은 부분을 끊고 다시 묻기"
+  - "받은 내용을 한 문장으로 요약해 확인받기"
+guardrails:
+  - "다시 물어보는 것은 실수가 아니라 안전 행동"
+  - "모두 알아듣지 못해도 통과할 수 있다"
+keyPhrases:
+  - "Sorry, can you repeat the bed number?"
+  - "So that's three patients — 12, 14, and 16?"
+  - "Let me read that back to you."
+briefing:
+  dept: "ORIENTATION · 8F 인계 데스크"
+  deptColor: "#0E7490"
+  brief: "야간 근무 Dana에게서 오늘 담당 환자를 인계받습니다. 빠르게 말하고 약어를 섞습니다. 목표는 전부 알아듣는 것이 아니라 **못 들은 것을 되묻고 되읽어 확인하는 것**입니다."
+  difficulty: 1
+  timeLabel: "약 5분"
+  skills:
+    - "인계 청취"
+    - "되묻기"
+    - "read-back 확인"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 110 XP" }
+    - { icon: "❤", label: "동료 신뢰", value: "+ 4" }
+    - { icon: "🎖", label: "진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 1+", metric: "level", threshold: 1 }
+  tone: "#E0F2FE"
+  accent: "#0369A1"
+steps: []

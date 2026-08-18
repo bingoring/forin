@@ -19,10 +19,10 @@ type progressHandler struct {
 // constraint). Kept in sync with the mobile mission catalog.
 var allowedMissions = map[string]bool{"veteran": true, "iron_will": true, "beloved": true}
 
-// @Summary Chapter/step curriculum with per-user progress (v19 campus hub)
+// @Summary Building/floor/curriculum path with per-user progress
 // @Tags progress
 // @Security Bearer
-// @Success 200 {object} map[string][]curriculum.ChapterState
+// @Success 200 {object} map[string][]curriculum.BuildingGroup
 // @Router /me/curriculum [get]
 func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
 	uid, _ := UserID(r.Context())
@@ -31,7 +31,12 @@ func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusInternalServerError, "could not load curriculum")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]any{"chapters": curriculum.Resolve(cleared)})
+	// Same resume target the home screen gets, from the same call, so the career
+	// tab's hero and the home card cannot drift apart. A failed lookup degrades to
+	// "first unfinished", not to an error: the path is still fully browsable.
+	last, _ := h.progress.LatestAttemptScenarioID(r.Context(), uid)
+	states := curriculum.ResolveWithResume(cleared, curriculum.KeyForScenario(last))
+	httpx.JSON(w, http.StatusOK, map[string]any{"buildings": curriculum.Group(states)})
 }
 
 // @Summary Discovered hidden missions

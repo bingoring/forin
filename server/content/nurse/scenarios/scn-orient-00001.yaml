@@ -1,0 +1,51 @@
+# The app's very first scenario. It did not exist until 2026-08-18: the v19
+# curriculum promised "출근 · 인사와 자기소개" and pointed at SCN-ER-00001, which is
+# chest-pain triage — so a newcomer's first tap opened an emergency.
+#
+# Deliberately the easiest thing in the catalog. difficulty 1 and a level-1 gate:
+# the first step of the first curriculum cannot be locked behind a level the user
+# does not have yet, which is what SCN-ER-00001's "레벨 B1+" (threshold 3) did.
+id: SCN-ORIENT-00001
+eventId: EVT-ORIENT-00001
+title: "첫 출근 · 자기소개"
+tagline: "You must be the new nurse. Come on in."
+persona:
+  name: "Grace Whitfield"
+  role: nurse
+  ageRange: "40s"
+  sub: "Charge Nurse / 8F"
+  hair: "#6B4A2F"
+  hairStyle: bob
+  personality: "바쁘지만 신입에게 다정함. 이름을 한 번 더 물어봐 준다."
+  speakingStyle: "짧고 분명하게. 다음에 할 일을 먼저 알려줌."
+  mood: warm
+goals:
+  - "이름·직함·소속을 영어로 말하기"
+  - "선임의 이름을 확인하고 부르기"
+  - "모르는 것을 묻는 문장 하나 쓰기"
+guardrails:
+  - "완벽한 문장보다 알아듣게 말하는 것이 목표"
+  - "의학용어를 쓸 필요가 없는 대화"
+keyPhrases:
+  - "Hi, I'm the new nurse on this floor."
+  - "Sorry, could you say your name again?"
+  - "Where should I put my things?"
+briefing:
+  dept: "ORIENTATION · 8F 간호사 스테이션"
+  deptColor: "#0E7490"
+  brief: "첫 출근일입니다. 8F 병동 스테이션에서 책임간호사 Grace를 처음 만납니다. 이름과 직함을 말하고, 상대의 이름을 확인하고, 모르는 것을 물어보세요. 임상 지식은 필요하지 않습니다."
+  difficulty: 1
+  timeLabel: "약 4분"
+  skills:
+    - "자기소개"
+    - "이름 확인"
+    - "질문하기"
+  rewards:
+    - { icon: "⭐", label: "경험치", value: "+ 100 XP" }
+    - { icon: "❤", label: "동료 신뢰", value: "+ 3" }
+    - { icon: "🎖", label: "진척", value: "+ 1" }
+  reqs:
+    - { label: "레벨 1+", metric: "level", threshold: 1 }
+  tone: "#E0F2FE"
+  accent: "#0369A1"
+steps: []
