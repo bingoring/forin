@@ -32,7 +32,47 @@ try: d=json.load(sys.stdin)
 except Exception: d={}
 print($1)" 2>/dev/null; }
 
-TOK=""; REFRESH=""; BODY=""; CODE=""
+TOK=""; REFRESH=""; MYID=""; BODY=""; CODE=""
+# urlenc STR — percent-encode a query-string value (python3 is already a hard
+# dependency of this script via pj()).
+urlenc() { python3 -c "import sys,urllib.parse; print(urllib.parse.quote(sys.argv[1]))" "$1"; }
+# resample16k SRC DST — Task 10 discovery: the reference-audio route serves the
+# TTS clip at 24kHz (azurespeech.Synthesize's own fixed output format, chosen
+# for native-playback quality), but POST /pronunciation's ValidateWAV requires
+# EXACTLY 16kHz mono (business-rules §2). Feeding audio.wav straight back in,
+# as the Task 10 brief's own "self-referee" method literally describes, 400s
+# with invalid_audio — this was only caught by actually trying the round trip,
+# not by reading either code path in isolation. Not a user-facing bug (a real
+# recording is captured at 16kHz to begin with), but this script needs the
+# resample step to exercise the real Assess call at all. Pure stdlib
+# (no audioop/numpy/ffmpeg): linear interpolation is more than sufficient
+# fidelity for feeding a scorer, and audioop is removed in Python 3.13+.
+resample16k() {
+  python3 -c "
+import wave, array, sys
+src, dst = sys.argv[1], sys.argv[2]
+w = wave.open(src, 'rb')
+assert w.getsampwidth() == 2 and w.getnchannels() == 1, 'expected mono 16-bit PCM'
+data = w.readframes(w.getnframes())
+src_rate = w.getframerate()
+dst_rate = 16000
+samples = array.array('h'); samples.frombytes(data)
+n_src = len(samples)
+n_dst = int(n_src * dst_rate / src_rate)
+out = array.array('h', bytes(2 * n_dst))
+for i in range(n_dst):
+    pos = i * src_rate / dst_rate
+    idx = int(pos)
+    frac = pos - idx
+    s0 = samples[idx] if idx < n_src else samples[-1]
+    s1 = samples[idx + 1] if idx + 1 < n_src else samples[-1]
+    out[i] = int(s0 + (s1 - s0) * frac)
+ow = wave.open(dst, 'wb')
+ow.setnchannels(1); ow.setsampwidth(2); ow.setframerate(dst_rate)
+ow.writeframes(out.tobytes())
+ow.close()
+" "$1" "$2"
+}
 # run METHOD PATH [DATA] — sets globals BODY + CODE (not a subshell, so they stick)
 #
 # X-Dev-Auth is intentionally NOT attached here. Only POST /auth/dev needs it
@@ -55,6 +95,7 @@ hd "① AUTH · dev login"
 BODY=$(curl -s -X POST "$B/auth/dev" -H "X-Dev-Auth: $DEV_AUTH")
 TOK=$(pj "d['tokens']['accessToken']")
 REFRESH=$(pj "d['tokens']['refreshToken']")
+MYID=$(pj "d.get('user',{}).get('id','')")
 [ -n "$TOK" ] && ok "access token issued" || bad "no access token (is ENV=dev + server up?)"
 [ -n "$REFRESH" ] && ok "refresh token issued" || bad "no refresh token"
 
@@ -240,6 +281,163 @@ reasoned=$(pj "all(g.get('reason') for g in d.get('rooms',[]) + d.get('hotspots'
 # gates must be open — i.e. the reward actually turned into a key.
 trauma=$(pj "next((g['locked'] for g in d.get('rooms',[]) if g['id']=='trauma'), None)")
 [ "$trauma" = "False" ] && ok "requirement met → gated room open (reward = key)" || bad "trauma locked=$trauma after clearing its requirement"
+
+hd "⑰ SPEECH · reference + empty history + no-speech guard (Task 10 carry-forward from Task 2)"
+# A per-run nonce keeps this sentence's attempt history genuinely empty at
+# the start — speech_attempts is append-only (I1), so a fixed sentence text
+# would accumulate rows across reruns and the "starts empty" assertion below
+# would only ever pass once.
+NONCE=$(date +%s)
+STEXT="Testing pronunciation smoke check number ${NONCE} now."
+QTEXT=$(urlenc "$STEXT")
+
+run GET "/speech/reference?text=$QTEXT"
+ipa=$(pj "d.get('ipa','')")
+[ "$CODE" = 200 ] && ok "GET /speech/reference 200" || bad "reference → $CODE"
+[ -n "$ipa" ] && ok "reference ipa non-empty: $ipa" || bad "reference ipa empty (Azure TTS/assess misconfigured or unreachable?)"
+
+run GET "/speech/attempts?text=$QTEXT"
+n0=$(pj "len(d) if isinstance(d, list) else -1")
+[ "$CODE" = 200 ] && [ "$n0" = "0" ] && ok "GET /speech/attempts starts empty for a fresh sentence" || bad "attempts start not empty (code=$CODE, n=$n0)"
+
+# Silent WAV (a genuinely valid RIFF/PCM16/16kHz/mono header wrapping all-zero
+# samples) must be rejected by AZURE as no-speech — this exercises the real
+# 422 path end to end, not just ValidateWAV's own header checks.
+SILENT_WAV_B64=$(python3 -c "
+import struct, base64
+sr = 16000
+data = b'\x00\x00' * sr  # 1s of digital silence
+hdr = (b'RIFF' + struct.pack('<I', 36 + len(data)) + b'WAVEfmt ' +
+       struct.pack('<IHHIIHH', 16, 1, 1, sr, sr * 2, 2, 16) +
+       b'data' + struct.pack('<I', len(data)))
+print(base64.b64encode(hdr + data).decode())
+")
+run POST /pronunciation "{\"referenceText\":\"$STEXT\",\"audioBase64\":\"$SILENT_WAV_B64\",\"origin\":\"freeform\"}"
+errmsg=$(pj "d.get('error',{}).get('message','')")
+[ "$CODE" = 422 ] && ok "silent WAV → 422" || bad "silent WAV → $CODE (want 422)"
+[ "$errmsg" = "no_speech_detected" ] && ok "422 body: no_speech_detected" || bad "422 body message: '$errmsg'"
+
+run GET "/speech/attempts?text=$QTEXT"
+n1=$(pj "len(d) if isinstance(d, list) else -1")
+[ "$n1" = "0" ] && ok "no-speech attempt was NOT persisted (attempts still 0, no attempt_no consumed)" || bad "attempts=$n1 after a no-speech call (should stay 0)"
+
+hd "⑱ SPEECH · real Azure round trip (self-spoken: TTS reference audio fed back in) — not a fixture"
+# There is no recorded human voice available in this script, so this follows
+# the Build Spec's own prescribed method: fetch the reference clip GET
+# /speech/reference/audio.wav ALREADY produced by a real TTS call above, then
+# feed those exact bytes back into POST /pronunciation. The SCORE is
+# meaningless (a machine grading its own speech) but the response SHAPE —
+# words[].syllables/phonemes, prosody, attempt numbering — is real Azure
+# output, not a hand-written fixture. This is the project's own repeated
+# lesson: "배선이 맞다" and "실제로 돈다" are different events.
+REFWAV="/tmp/forin_smoke_ref_${NONCE}.wav"
+AUDIO_CODE=$(curl -s -o "$REFWAV" -w '%{http_code}' "$B/speech/reference/audio.wav?text=$QTEXT" -H "Authorization: Bearer $TOK")
+CTYPE=$(curl -s -o /dev/null -D - "$B/speech/reference/audio.wav?text=$QTEXT" -H "Authorization: Bearer $TOK" \
+  | tr -d '\r' | grep -i '^content-type:' | head -1 | sed 's/^[Cc]ontent-[Tt]ype: *//')
+[ "$AUDIO_CODE" = 200 ] && ok "GET /speech/reference/audio.wav 200" || bad "audio.wav → $AUDIO_CODE"
+printf '%s' "$CTYPE" | grep -qi '^audio/wav' && ok "audio.wav Content-Type: $CTYPE" || bad "audio.wav Content-Type: '$CTYPE'"
+
+REFWAV16="/tmp/forin_smoke_ref16k_${NONCE}.wav"
+A1NO=""
+if [ "$AUDIO_CODE" = 200 ] && [ -s "$REFWAV" ] && resample16k "$REFWAV" "$REFWAV16"; then
+  BODY1=$(python3 -c "
+import base64, json, sys
+with open(sys.argv[1], 'rb') as f:
+    b64 = base64.b64encode(f.read()).decode()
+print(json.dumps({'referenceText': sys.argv[2], 'audioBase64': b64, 'origin': 'freeform'}))
+" "$REFWAV16" "$STEXT")
+
+  run POST /pronunciation "$BODY1"
+  [ "$CODE" = 200 ] && ok "POST /pronunciation on real TTS audio → 200 (real Azure Assess, not a fixture)" || bad "pronunciation (real audio) → $CODE"
+  A1NO=$(pj "d.get('attemptNo',0)")
+  a1words=$(pj "len(d.get('words',[]))")
+  a1prosody=$(pj "d.get('prosodyAvailable')")
+  a1tips=$(pj "bool(d.get('phonemeTips'))")
+  a1syll=$(pj "sum(len(w.get('syllables',[])) for w in d.get('words',[]))")
+  a1phon=$(pj "sum(len(w.get('phonemes',[])) for w in d.get('words',[]))")
+  A1ID=$(pj "d.get('attemptId','')")
+  [ "${A1NO:-0}" -ge 1 ] && ok "first attempt numbered $A1NO" || bad "attemptNo=$A1NO"
+  [ "${a1words:-0}" -ge 1 ] && ok "real response carries word scores ($a1words words)" || bad "no words in real Azure response"
+  [ "${a1syll:-0}" -ge 1 ] && ok "real response carries syllable segmentation ($a1syll syllables) — Phoneme granularity confirmed live" || bad "no syllables in real Azure response (still Word granularity?)"
+  [ "${a1phon:-0}" -ge 1 ] && ok "real response carries phoneme segmentation ($a1phon phonemes)" || bad "no phonemes in real Azure response"
+  [ "$a1prosody" = "True" ] && ok "prosodyAvailable=true for en-US (real Azure)" || bad "prosodyAvailable=$a1prosody (want true for en-US)"
+  [ "$a1tips" = "True" ] && ok "phonemeTips present in real response" || bad "phonemeTips absent from real response"
+
+  run POST /pronunciation "$BODY1"
+  a2no=$(pj "d.get('attemptNo',0)")
+  [ "$CODE" = 200 ] && [ "${a2no:-0}" -eq "$((A1NO+1))" ] && ok "attempt numbering increments on the same sentence: ${A1NO}→${a2no}" || bad "attempt numbering: ${A1NO}→${a2no} (code=$CODE)"
+
+  run GET "/speech/attempts?text=$QTEXT"
+  hcount=$(pj "len(d) if isinstance(d, list) else -1")
+  horder=$(pj "[a['attemptNo'] for a in d]")
+  [ "$hcount" = "2" ] && ok "GET /speech/attempts has 2 rows after 2 real recordings" || bad "attempt history has $hcount rows (want 2)"
+  [ "$horder" = "[1, 2]" ] && ok "history ordered oldest-first: $horder" || bad "history order: $horder"
+else
+  bad "skipped the real-audio round trip — no reference audio to feed back, or 24kHz→16kHz resample failed"
+fi
+
+hd "⑲ SPEECH · review-card deletion severs the link but keeps the attempt (DB-direct, local docker compose only)"
+# There is no HTTP DELETE for review_cards — a card degrades through SM-2
+# grading, it never disappears through the API — so this invariant cannot be
+# driven by HTTP alone. ON DELETE SET NULL is already proven deterministically
+# by postgres.TestAttemptSurvivesCardDeletion (speech_repo_test.go), but that
+# test SKIPS whenever TEST_DATABASE_URL is unset — and per this task's own
+# carry-forward mandate, a skippable test is not a substitute for this smoke
+# assert. This block re-derives the SAME fact through THIS script's real
+# server + real authenticated user, best-effort, only when a local
+# docker-compose postgres is reachable AND we're pointed at localhost
+# (staging's Cloud SQL is not reachable this way, so this legitimately no-ops
+# there — the DB test remains the only coverage on staging/CI).
+COMPOSE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+case "$B" in
+  http://localhost*|http://127.0.0.1*) LOCALHOST_TARGET=1 ;;
+  *) LOCALHOST_TARGET=0 ;;
+esac
+if [ "$LOCALHOST_TARGET" = 1 ] && [ -n "$MYID" ] && [ -s "$REFWAV16" ] && command -v docker >/dev/null 2>&1 && \
+   docker compose -f "$COMPOSE_DIR/docker-compose.yml" exec -T postgres psql -U forin -d forin -tAc "SELECT 1" >/dev/null 2>&1; then
+  # -q (quiet) matters here, not just -tA: without it, an INSERT ... RETURNING
+  # still prints a trailing "INSERT 0 1" completion tag AFTER the returned
+  # row even in tuples-only mode, which silently corrupted CARDID the first
+  # time this was tried (a two-line value that failed reviewCardIDFormat's
+  # regex with a 400 that looked like an ownership-check bug, not a shell
+  # quoting one).
+  PSQL() { docker compose -f "$COMPOSE_DIR/docker-compose.yml" exec -T postgres psql -qU forin -d forin -tAc "$1" 2>/dev/null | tr -d '\r'; }
+  CARDID=$(PSQL "INSERT INTO review_cards (user_id, front, back) VALUES ('$MYID', 'smoke front $NONCE', 'smoke back $NONCE') RETURNING id")
+  # GetCardForUser (the ownership check POST /pronunciation calls) JOINs
+  # review_schedules — a card with no schedule row is invisible to it and
+  # comes back 403 "not yours" even for the card's real owner. Discovered by
+  # actually driving this through the HTTP handler: the existing DB-only test
+  # (TestAttemptSurvivesCardDeletion) never hits this because it never goes
+  # through GetCardForUser at all.
+  [ -n "$CARDID" ] && PSQL "INSERT INTO review_schedules (card_id) VALUES ('$CARDID')" >/dev/null
+  if [ -n "$CARDID" ]; then
+    BODY3=$(python3 -c "
+import base64, json, sys
+with open(sys.argv[1], 'rb') as f:
+    b64 = base64.b64encode(f.read()).decode()
+print(json.dumps({'referenceText': sys.argv[2], 'audioBase64': b64, 'origin': 'review', 'reviewCardId': sys.argv[3]}))
+" "$REFWAV16" "$STEXT" "$CARDID")
+    run POST /pronunciation "$BODY3"
+    A3ID=$(pj "d.get('attemptId','')")
+    [ "$CODE" = 200 ] && [ -n "$A3ID" ] && ok "attempt linked to a real review card (own card → 200, not 403)" || bad "linking attempt to own review card → $CODE"
+
+    if [ -n "$A3ID" ]; then
+      linked=$(PSQL "SELECT review_card_id = '$CARDID' FROM speech_attempts WHERE id = '$A3ID'")
+      [ "$linked" = "t" ] && ok "speech_attempts.review_card_id set to the card before deletion" || bad "review_card_id not linked before deletion (got: $linked)"
+
+      PSQL "DELETE FROM review_cards WHERE id = '$CARDID'" >/dev/null
+      survived=$(PSQL "SELECT EXISTS(SELECT 1 FROM speech_attempts WHERE id = '$A3ID')")
+      severed=$(PSQL "SELECT review_card_id IS NULL FROM speech_attempts WHERE id = '$A3ID'")
+      [ "$survived" = "t" ] && ok "attempt row survives review-card deletion" || bad "attempt row vanished after card deletion (survived=$survived)"
+      [ "$severed" = "t" ] && ok "review_card_id severed to NULL after the card is gone" || bad "review_card_id not NULL after card deletion (severed=$severed)"
+    fi
+  else
+    bad "could not insert a throwaway review_cards row for the deletion check"
+  fi
+else
+  ok "review-card-deletion check skipped (needs localhost + local docker-compose postgres — not applicable here)"
+fi
+rm -f "$REFWAV" "$REFWAV16"
 
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"

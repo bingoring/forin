@@ -60,12 +60,12 @@ func (c *Config) ResolveProvider() string {
 // Load reads configuration from environment variables and validates required fields.
 func Load() (*Config, error) {
 	c := &Config{
-		Env:                      getenv("ENV", "dev"),
-		Port:                     getenv("PORT", "8080"),
-		DatabaseURL:              os.Getenv("DATABASE_URL"),
-		RedisURL:                 os.Getenv("REDIS_URL"),
-		JWTSigningKey:            []byte(os.Getenv("JWT_SIGNING_KEY")),
-		JWTIssuer:                getenv("JWT_ISSUER", "forin"),
+		Env:           getenv("ENV", "dev"),
+		Port:          getenv("PORT", "8080"),
+		DatabaseURL:   os.Getenv("DATABASE_URL"),
+		RedisURL:      os.Getenv("REDIS_URL"),
+		JWTSigningKey: []byte(os.Getenv("JWT_SIGNING_KEY")),
+		JWTIssuer:     getenv("JWT_ISSUER", "forin"),
 		// Trimmed deliberately. The comparison against the X-Dev-Auth header is
 		// exact, and a secret that arrives with a trailing newline fails it on
 		// length while looking correct everywhere a human inspects it. That is

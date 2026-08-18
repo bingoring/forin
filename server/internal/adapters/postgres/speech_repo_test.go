@@ -530,6 +530,17 @@ func TestReferenceRoundTrip(t *testing.T) {
 			{Word: "stable", Syllables: []ports.SyllableResult{{Syllable: "sta"}, {Syllable: "ble"}}},
 		},
 		DurationMS: 2100,
+		// Task 10 (real-DB run) caught this test failing outright against a
+		// live database: migration 000022 made audio_wav NOT NULL (with a
+		// DEFAULT of '' for INSERTs that omit the column, which this one
+		// doesn't — PutReference always supplies it), and a nil []byte here
+		// binds as SQL NULL, not the default, so the INSERT 23502-violated on
+		// every real run. This fixture predates that migration and was never
+		// exercised against Postgres afterward — go test ./... stayed green
+		// the whole time because TEST_DATABASE_URL was unset, which is
+		// exactly the failure mode Task 2's carry-forward note warned about
+		// ("a skipped test is not a test").
+		ReferenceAudio: []byte("fake reference wav bytes for round-trip test"),
 	}
 	if err := repo.PutReference(ctx, first); err != nil {
 		t.Fatalf("put first: %v", err)
@@ -547,6 +558,25 @@ func TestReferenceRoundTrip(t *testing.T) {
 	}
 	if len(got.Words) != 1 || got.Words[0].Word != "stable" {
 		t.Fatalf("want Words to round-trip through JSONB, got %+v", got.Words)
+	}
+	// GetReference itself must NOT return the audio bytes (ports.
+	// SentenceReferenceRow.ReferenceAudio is json:"-" and GetSpeechReference's
+	// own query deliberately excludes the column — see db/queries/speech.sql —
+	// so every GET /speech/reference call skips fetching a ~320KB blob it
+	// never needed).
+	if len(got.ReferenceAudio) != 0 {
+		t.Fatalf("want GetReference to leave ReferenceAudio empty, got %d bytes", len(got.ReferenceAudio))
+	}
+	// GetReferenceAudio (the separate, dedicated call speech_audio_handler.go
+	// actually uses) is where those bytes come back — untested before Task 10,
+	// which is exactly the gap that let PutReference's NULL-vs-default bug
+	// (see the ReferenceAudio field comment above) go unnoticed.
+	audio, err := repo.GetReferenceAudio(ctx, sentenceKey)
+	if err != nil {
+		t.Fatalf("get reference audio: %v", err)
+	}
+	if string(audio) != string(first.ReferenceAudio) {
+		t.Fatalf("want GetReferenceAudio to round-trip the persisted bytes, got %d bytes want %d", len(audio), len(first.ReferenceAudio))
 	}
 
 	// First writer wins: a second Put for the same sentence_key must not
