@@ -131,20 +131,23 @@ export default function ColleagueDetailScreen() {
           </Text>
         ) : c.cheers.map((ch) => {
           const mine = ch.toUserId === c.id; // I sent it to them
+          // Sent on the right, received on the left — the DM convention, so
+          // position carries the direction. That makes the old 보냄/받음 badge
+          // redundant: it was labelling what the layout now says. The colour
+          // difference stays as a second, redundant cue.
           return (
-            <Shadowed key={ch.id} offset={2.5} style={{ marginBottom: 8 }}>
-              <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                  <View style={{ backgroundColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.cream }}>{mine ? '보냄' : '받음'}</Text>
-                  </View>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{mine ? '나' : c.name}</Text>
+            <View key={ch.id} style={{ flexDirection: 'row', justifyContent: mine ? 'flex-end' : 'flex-start', marginBottom: 8 }}>
+              <Shadowed offset={2.5} style={{ maxWidth: '82%' }}>
+                <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
+                  {!mine && (
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, marginBottom: 4 }}>{c.name}</Text>
+                  )}
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }}>
+                    {[ch.presetText, ch.message].filter(Boolean).join(' · ')}
+                  </Text>
                 </View>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }}>
-                  {[ch.presetText, ch.message].filter(Boolean).join(' · ')}
-                </Text>
-              </View>
-            </Shadowed>
+              </Shadowed>
+            </View>
           );
         })}
 
