@@ -202,7 +202,22 @@ export default function Lab() {
 }
 
 function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string, g: ReviewGrade) => void }) {
+  const router = useRouter();
   const speak = () => Speech.speak(card.back, { language: 'en-US', rate: 0.92 });
+  // Task 10 fix: SoT 04_SCREENS.md:397 describes THIS card (the review-lab
+  // list's PhraseCard) as carrying "🎤 따라 말하기" — Task 9 wired a mic action
+  // onto review.tsx's ContextCard instead (a different screen: the one-card-
+  // at-a-time SM-2 grading session), which left the literal PhraseCard named
+  // in the spec with only its 🔊 button. Same pattern as review.tsx's
+  // practicePronunciation: referenceText is the CORRECTED line (card.back),
+  // origin=review + reviewCardId links the attempt back to this card, and
+  // Speech.stop() first so TTS doesn't keep playing under the new screen.
+  const practicePronunciation = () => {
+    Speech.stop();
+    router.push(
+      `/pronunciation/${encodeURIComponent(card.back.slice(0, 40))}?referenceText=${encodeURIComponent(card.back)}&origin=review&reviewCardId=${encodeURIComponent(card.id)}&ctx=${encodeURIComponent(card.context?.title || card.topicTag || '')}&step=${encodeURIComponent('현지인처럼 말하기')}`
+    );
+  };
   const { dept, tag } = splitTag(card.topicTag);
   const [showCtx, setShowCtx] = useState(false);
   const ctx = card.context;
@@ -234,6 +249,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
             <Badge text="✓" bg={colors.mint} color={C} />
             <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 13, color: C, lineHeight: 18 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
             <Pressable onPress={speak} hitSlop={8}><PixelIcon name="volume" color={C} size={16} sw={1.8} /></Pressable>
+            <Pressable onPress={practicePronunciation} hitSlop={8}><PixelIcon name="mic" color={C} size={16} sw={1.8} /></Pressable>
           </View>
 
           {/* note */}
