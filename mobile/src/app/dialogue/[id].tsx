@@ -134,10 +134,10 @@ export default function DialogueRoute() {
 
   // Bottom rail 🎤 직접 말하기 (04_SCREENS.md:324) — pushes to the standalone
   // pronunciation route (T8) with the scenario's first key phrase as the
-  // target sentence. This replaces the old inline <PronunciationPractice/>
+  // target sentence. This replaces the old inline pronunciation-recording
   // widget that used to render under HINT ON (scenario.keyPhrases[0] was its
   // only referenceText source too, so the target phrase is unchanged).
-  const openPronunciationPractice = () => {
+  const openPronunciation = () => {
     const phrase = scenario?.keyPhrases?.[0];
     if (!phrase) return;
     // One single template literal (not string concatenation) — expo-router's
@@ -377,7 +377,7 @@ export default function DialogueRoute() {
             )}
           </View>
           <View style={{ flex: 1 }}>
-            <PixelButton icon="mic" label="직접 말하기" bg="#fff" shadowColor={C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={openPronunciationPractice} disabled={!scenario?.keyPhrases?.length} full />
+            <PixelButton icon="mic" label="직접 말하기" bg="#fff" shadowColor={C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={openPronunciation} disabled={!scenario?.keyPhrases?.length} full />
           </View>
           {quizIds.length > 0 && (
             <PixelButton

@@ -80,7 +80,7 @@ export default function ReviewSession() {
   const practicePronunciation = (c: ReviewCard) => {
     Speech.stop();
     // One single template literal (not string concatenation) — see the same
-    // note in dialogue/[id].tsx's openPronunciationPractice.
+    // note in dialogue/[id].tsx's openPronunciation.
     router.push(
       `/pronunciation/${encodeURIComponent(c.back.slice(0, 40))}?referenceText=${encodeURIComponent(c.back)}&origin=review&reviewCardId=${encodeURIComponent(c.id)}&ctx=${encodeURIComponent(c.context?.title || c.topicTag || '')}&step=${encodeURIComponent('현지인처럼 말하기')}`
     );
