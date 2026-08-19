@@ -14,6 +14,7 @@ import { FacePlayer } from '@engine';
 import { api, type Home } from '@/api/client';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { t, useLocale } from '@/i18n';
+import { useAvatar } from '@/hooks/useAvatar';
 
 const C = colors.ink;
 
@@ -102,6 +103,7 @@ export default function HomeTab() {
 // ── 인사 ───────────────────────────────────────────────────────────────────
 function Greeting({ date, done }: { date: string; done: boolean }) {
   const locale = useLocale();
+  const avatar = useAvatar();
   const d = new Date(date + 'T00:00:00');
   // Formatted by Intl rather than assembled from a Korean weekday array: the order
   // of month, day and weekday differs per language, so a translated template would
@@ -120,7 +122,7 @@ function Greeting({ date, done }: { date: string; done: boolean }) {
       </View>
       <Shadowed offset={3} style={{ alignSelf: 'flex-end' }}>
         <View style={{ width: 58, height: 58, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <FacePlayer size={62} />
+          <FacePlayer size={62} avatar={avatar} />
         </View>
       </Shadowed>
     </View>

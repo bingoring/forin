@@ -589,9 +589,36 @@ export function RoleFace({ kind, expression, size = 80, hair }: { kind: RoleKind
   return <Face {...preset} hair={hair || preset.hair} expression={expression} size={size} />;
 }
 
-/** The player's portrait (nurse identity, focused by default). */
-export function FacePlayer({ expression = 'focused' as Expression, size = 80 }: { expression?: Expression; size?: number }) {
-  return <RoleFace kind="nurse" hair="#3C2A18" expression={expression} size={size} />;
+/**
+ * The player's portrait — nurse identity, focused by default, drawn from the saved
+ * avatar.
+ *
+ * It used to hardcode a single hair colour, so every learner wore the same face while
+ * this very renderer already took hairStyle/skin/shirt for NPCs. `avatar` is passed
+ * in rather than read here: engine/ knows how to draw a face and has no business
+ * knowing where a preference is stored.
+ */
+export function FacePlayer({
+  expression = 'focused' as Expression,
+  size = 80,
+  avatar,
+}: {
+  expression?: Expression;
+  size?: number;
+  avatar?: { hairStyle?: HairStyle; hair?: string; skin?: string; scrub?: string };
+}) {
+  const preset = FACE_ROLE.nurse;
+  return (
+    <Face
+      {...preset}
+      hairStyle={avatar?.hairStyle ?? preset.hairStyle}
+      hair={avatar?.hair ?? '#3C2A18'}
+      skin={avatar?.skin ?? preset.skin}
+      shirt={avatar?.scrub ?? preset.shirt}
+      expression={expression}
+      size={size}
+    />
+  );
 }
 
 export const FORIN_EXPRESSIONS: { id: Expression; ko: string; en: string }[] = [

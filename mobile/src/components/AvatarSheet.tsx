@@ -1,0 +1,125 @@
+// Build your portrait: hair, hair colour, skin tone, scrub colour.
+//
+// Four short axes rather than colour wheels. The Face renderer draws pixel plates for
+// a limited palette, so an arbitrary hex reads as a mistake rather than as expression
+// — and six skin tones someone can see themselves in beat a million they cannot.
+//
+// What this is NOT: a likeness. The feedback asked for a face scan, and what a photo
+// can honestly give here is a starting point for these same four values — see the
+// note at the bottom of the sheet, and build-spec i18n's sibling entry for why the
+// camera is a separate native build rather than part of this change.
+import { Pressable, ScrollView, Text, View } from 'react-native';
+import { FacePlayer } from '@engine';
+import { BottomSheet } from '@/components/BottomSheet';
+import { PixelIcon } from '@/components/PixelIcon';
+import { PixelButton } from '@/components/PixelButton';
+import { colors, fonts, fs } from '@/theme/tokens';
+import { t } from '@/i18n';
+import { playSfx } from '@/lib/sfx';
+import { useAvatar } from '@/hooks/useAvatar';
+import { HAIR_COLORS, HAIR_STYLES, SCRUB_COLORS, SKIN_TONES, setAvatar } from '@/lib/avatar';
+
+const C = colors.ink;
+
+export function AvatarSheet({ visible, onClose }: { visible: boolean; onClose(): void }) {
+  const avatar = useAvatar();
+
+  return (
+    <BottomSheet visible={visible} onClose={onClose} expandable>
+      <View>
+        {/* Live preview pinned above the controls: every tap changes this face, and a
+            preview you have to scroll to is a preview nobody uses. */}
+        <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 6, paddingBottom: 12, alignItems: 'center' }}>
+          <View style={{ width: 96, height: 112, backgroundColor: avatar.scrub, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
+            <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
+            <FacePlayer size={102} avatar={avatar} />
+          </View>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 9 }}>{t('avatar.title')}</Text>
+        </View>
+
+        <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 28, gap: 16 }}>
+          <Axis label={t('avatar.hairStyle')}>
+            {HAIR_STYLES.map((style) => (
+              <Swatch
+                key={style}
+                selected={avatar.hairStyle === style}
+                onPress={() => void setAvatar({ hairStyle: style })}
+              >
+                {/* Each option previews itself, drawn small with the current colours —
+                    a text label like "pigtails" makes you tap to find out. */}
+                <View style={{ width: 34, height: 34, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
+                  <FacePlayer size={36} avatar={{ ...avatar, hairStyle: style }} />
+                </View>
+              </Swatch>
+            ))}
+          </Axis>
+
+          <Axis label={t('avatar.hairColor')}>
+            {HAIR_COLORS.map((hair) => (
+              <Swatch key={hair} selected={avatar.hair === hair} onPress={() => void setAvatar({ hair })}>
+                <View style={{ width: 30, height: 30, backgroundColor: hair }} />
+              </Swatch>
+            ))}
+          </Axis>
+
+          <Axis label={t('avatar.skin')}>
+            {SKIN_TONES.map((skin) => (
+              <Swatch key={skin} selected={avatar.skin === skin} onPress={() => void setAvatar({ skin })}>
+                <View style={{ width: 30, height: 30, backgroundColor: skin }} />
+              </Swatch>
+            ))}
+          </Axis>
+
+          <Axis label={t('avatar.scrub')}>
+            {SCRUB_COLORS.map((scrub) => (
+              <Swatch key={scrub} selected={avatar.scrub === scrub} onPress={() => void setAvatar({ scrub })}>
+                <View style={{ width: 30, height: 30, backgroundColor: scrub }} />
+              </Swatch>
+            ))}
+          </Axis>
+
+          <View style={{ borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', padding: 11 }}>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>
+              {t('avatar.scanNote')}
+            </Text>
+          </View>
+
+          <PixelButton
+            label={t('common.done')} icon="check" bg={colors.mint} shadowColor={colors.mintShadow}
+            fontSize={13} borderWidth={2.5} paddingV={10} full
+            onPress={() => { playSfx('confirm'); onClose(); }}
+          />
+        </ScrollView>
+      </View>
+    </BottomSheet>
+  );
+}
+
+function Axis({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <View>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 7 }}>{label}</Text>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 7 }}>{children}</View>
+    </View>
+  );
+}
+
+function Swatch({ selected, onPress, children }: { selected: boolean; onPress(): void; children: React.ReactNode }) {
+  return (
+    <Pressable
+      onPress={() => { playSfx('tap'); onPress(); }}
+      style={{
+        borderWidth: selected ? 3 : 2, borderColor: C,
+        backgroundColor: selected ? colors.yellow : '#fff',
+        padding: 3, alignItems: 'center', justifyContent: 'center',
+      }}
+    >
+      {children}
+      {selected && (
+        <View style={{ position: 'absolute', top: -5, right: -5, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, width: 14, height: 14, alignItems: 'center', justifyContent: 'center' }}>
+          <PixelIcon name="check" color={C} size={9} sw={2.2} />
+        </View>
+      )}
+    </Pressable>
+  );
+}

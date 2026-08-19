@@ -10,7 +10,7 @@ import { ActivityIndicator, Animated, Easing, Pressable, Share, Text, View, type
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type Progress, type ScenarioDetail, type ScenarioGrade } from '@/api/client';
-import { newlyEarned, type BadgeDef } from '@/data/badges';
+import { newlyEarnedTitles, type GrowthInput, type TitleDef } from '@/data/titles';
 import { ECON } from '@/data/economy';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -18,6 +18,30 @@ import { playSfx } from '@/lib/sfx';
 import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
+
+/**
+ * Titles that arrived with this clear.
+ *
+ * The clear screen has two progress snapshots but no growth stats, so the day/week
+ * signals the light-hearted titles read are absent here — those turn up on the
+ * profile instead, which is where the collection lives. `delta` is how many
+ * scenarios this run added (1 on a pass), making the "before" total exact rather
+ * than assumed.
+ */
+function earnedBetween(before: Progress, after: Progress, totalAfter: number, delta: number): TitleDef[] {
+  const asInput = (p: Progress, total: number): GrowthInput => ({
+    level: p.level, xp: p.xp, streakLongest: p.streakLongest, streakCurrent: p.streakCurrent,
+    rep: Object.fromEntries((p.reputation ?? []).map((r) => [r.key, r.value])),
+    scenariosTotal: total,
+  });
+  return newlyEarnedTitles(
+    asInput(before, Math.max(0, totalAfter - delta)),
+    asInput(after, totalAfter),
+    // hiddenFound is a server fact this screen does not fetch; treating it as 0 means
+    // 숨은 영웅 is celebrated on the profile, not here — it cannot be earned BY a clear.
+    { hiddenFound: 0 },
+  );
+}
 
 // Parse the scenario's authored XP reward ("+ 120 XP" → 120); default 100.
 function baseXpOf(s: ScenarioDetail | null): number {
@@ -34,7 +58,7 @@ export default function ResultRoute() {
   const [after, setAfter] = useState<Progress | null>(null);
   const [grade, setGrade] = useState<ScenarioGrade | null>(null);
   const [stickerTotal, setStickerTotal] = useState<number | null>(null);
-  const [newBadges, setNewBadges] = useState<BadgeDef[]>([]);
+  const [newTitles, setNewTitles] = useState<TitleDef[]>([]);
   const [failed, setFailed] = useState(false);
   const recorded = useRef(false);
   // Whether this run was AI-graded (had a session) and whether it passed (완료).
@@ -73,16 +97,28 @@ export default function ResultRoute() {
           if (!alive) return;
           setGrade(res.grade);
           setAfter(res.progress);
-          setNewBadges(newlyEarned(b, res.progress));
-          // Praise sticker only when it counts as a clear (완료).
-          if (res.grade.passed) api.growthStats().then((st) => { if (alive) setStickerTotal(st.scenariosTotal); }).catch(() => {});
+          // Praise sticker only when it counts as a clear (완료). The same call gives
+          // the scenario total the title predicates need — and since a clear adds
+          // exactly one, `total - 1` is the honest "before" rather than a guess.
+          if (res.grade.passed) {
+            api.growthStats().then((st) => {
+              if (!alive) return;
+              setStickerTotal(st.scenariosTotal);
+              setNewTitles(earnedBetween(b, res.progress, st.scenariosTotal, 1));
+            }).catch(() => { if (alive) setNewTitles(earnedBetween(b, res.progress, 0, 0)); });
+          } else {
+            setNewTitles(earnedBetween(b, res.progress, 0, 0));
+          }
         } else {
           // Legacy / deep-link path (no dialogue session): a plain clear.
           const a = await api.recordAttempt(id, baseXpOf(s));
           if (!alive) return;
           setAfter(a);
-          setNewBadges(newlyEarned(b, a));
-          api.growthStats().then((st) => { if (alive) setStickerTotal(st.scenariosTotal); }).catch(() => {});
+          api.growthStats().then((st) => {
+            if (!alive) return;
+            setStickerTotal(st.scenariosTotal);
+            setNewTitles(earnedBetween(b, a, st.scenariosTotal, 1));
+          }).catch(() => { if (alive) setNewTitles(earnedBetween(b, a, 0, 0)); });
         }
       } catch {
         if (alive) setFailed(true); // not authed / offline → static fallback
@@ -107,8 +143,8 @@ export default function ResultRoute() {
     if (!after || sounded.current) return;
     sounded.current = true;
     if (passed) playSfx('success');
-    if (newBadges.length > 0 || leveledUp) playSfx('reward');
-  }, [after, passed, newBadges, leveledUp]);
+    if (newTitles.length > 0 || leveledUp) playSfx('reward');
+  }, [after, passed, newTitles, leveledUp]);
 
 
   const onShare = () => {
@@ -155,12 +191,12 @@ export default function ResultRoute() {
         )}
 
         {/* new-badge unlock banner(s) */}
-        {newBadges.map((b) => (
+        {newTitles.map((b) => (
           <Shadowed key={b.id} offset={4} style={{ alignSelf: 'stretch', marginTop: 10 }}>
-            <View style={{ backgroundColor: b.special ? colors.yellow : colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Text style={{ fontSize: fs(24) }}>{b.e}</Text>
+            <View style={{ backgroundColor: b.hidden ? colors.yellow : colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <Text style={{ fontSize: fs(24) }}>{b.emoji}</Text>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('result.newBadge')}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('result.newTitle')}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>{t(b.nameKey)}</Text>
               </View>
             </View>

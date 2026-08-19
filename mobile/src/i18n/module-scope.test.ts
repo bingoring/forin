@@ -8,7 +8,7 @@
 // It already happened twice while extracting strings (JOBS in the onboarding job
 // screen, and DEPT_META in the board tab), which is why this is a test and not a
 // note in a comment. The fix in both cases was to store a KEY and resolve it at
-// render — see data/badges.ts for the pattern.
+// render — see data/titles.ts for the pattern.
 import { readdirSync, readFileSync, statSync } from 'fs';
 import { join, relative } from 'path';
 

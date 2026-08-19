@@ -96,9 +96,19 @@ func orDefault(v, def string) string {
 
 // allowedTitles is the code-side set of equippable career title ids (extensible,
 // no DB constraint). "" un-equips. Kept in sync with the mobile title catalog.
+//
+// Grew when the badge collection merged into titles: the eight milestone badges were
+// display-only, and folding them in made them equippable, so their ids arrive here.
+// A user who equipped a title that later disappears keeps a value this set rejects —
+// the handler answers 400 and the profile simply shows no title, which is why the
+// merge dropped only duplicate CONDITIONS and never an id that had been equippable.
 var allowedTitles = map[string]bool{
 	"": true, "learner": true, "ward_friend": true, "diligent": true,
 	"er_ace": true, "polyglot": true, "hidden_hero": true,
+	// from the merged badge collection
+	"cap": true, "stethoscope": true, "syringe": true, "streak3": true, "crown": true,
+	// light-hearted hidden titles
+	"chatterbox": true, "marathoner": true, "collector": true, "returner": true,
 }
 
 type titleReq struct {

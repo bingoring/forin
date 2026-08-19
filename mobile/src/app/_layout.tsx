@@ -8,6 +8,7 @@ import { hydrateEconomy } from '@/data/economy';
 import { colors } from '@/theme/tokens';
 import { loadSfxPreference } from '@/lib/sfx';
 import { loadLocale, onLocaleChange } from '@/i18n';
+import { loadAvatar } from '@/lib/avatar';
 
 // The two pixel fonts the whole design is drawn in. The KEYS are what
 // `fontFamily` resolves against, so they must match theme/tokens exactly — every
@@ -35,7 +36,7 @@ export default function RootLayout() {
     // effort: the local setting has already applied, and a failed sync costs a
     // preference rather than a session.
     onLocaleChange((l) => { void api.setUILang(l).catch(() => {}); });
-    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale()])
+    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar()])
       .finally(() => setHydrated(true));
   }, []);
 

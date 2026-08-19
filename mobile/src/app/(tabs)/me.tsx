@@ -1,6 +1,6 @@
 // 나 (profile) tab — the player's ID card wired to the real growth system
 // (GET /me + /me/progress): rank, level + XP bar, reputation stats, a growth
-// summary, a career-path stepper, milestone badges, and a review-lab teaser.
+// summary, a career-path stepper, the title collection, and a review-lab teaser.
 // 1:1 in spirit with the v17 handoff ScreenProfile, scaled to live data.
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
@@ -10,15 +10,16 @@ import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { FacePlayer } from '@engine';
-import { api, type Colleague, type InviteCode, type Progress } from '@/api/client';
+import { api, type Colleague, type GrowthStats, type InviteCode, type Progress } from '@/api/client';
 import { signOut } from '@/lib/auth';
-import { earnedBadges } from '@/data/badges';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
 import { ECON, careerFor } from '@/data/economy';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { isSfxMuted, playSfx, setSfxMuted } from '@/lib/sfx';
 import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale, t, useLocale, type Locale } from '@/i18n';
 import { BottomSheet } from '@/components/BottomSheet';
+import { useAvatar } from '@/hooks/useAvatar';
+import { AvatarSheet } from '@/components/AvatarSheet';
 
 const C = colors.ink;
 
@@ -31,10 +32,15 @@ const repMap = (st: Progress['reputation']) =>
   Object.fromEntries(st.map((s) => [s.key, s.value]));
 
 export default function Me() {
+  const avatar = useAvatar();
+  const [avatarOpen, setAvatarOpen] = useState(false);
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [enLevel, setEnLevel] = useState<string>('');
   const [scenariosTotal, setScenariosTotal] = useState(0);
+  // The whole growth snapshot, not just the total: the hidden titles read today's
+  // and this week's activity, and those live nowhere else on this screen.
+  const [stats, setStats] = useState<GrowthStats | null>(null);
   const [equipped, setEquipped] = useState<string>('');
   const [foundIds, setFoundIds] = useState<Set<string>>(new Set());
   const [toast, setToast] = useState<{ name: string; reward: string } | null>(null);
@@ -63,13 +69,14 @@ export default function Me() {
           // 온보딩에서 고른 모국어를 UI 언어로 채택하되, 아래 설정을 한 번이라도
           // 만졌다면 그쪽이 이긴다(R2).
           adoptProfileLocale(prof?.nativeLang);
+          setStats(stats);
           setScenariosTotal(stats?.scenariosTotal ?? 0);
           setColleagues(mates.colleagues);
           setInvite(code);
 
           // Detect newly-met missions not yet recorded → persist + celebrate.
           const g: GrowthInput = {
-            level: p.level, xp: p.xp, streakLongest: p.streakLongest,
+            level: p.level, xp: p.xp, streakLongest: p.streakLongest, streakCurrent: p.streakCurrent,
             rep: repMap(p.reputation),
             scenariosTotal: stats?.scenariosTotal ?? 0,
           };
@@ -147,11 +154,16 @@ export default function Me() {
   const career = careerFor(level);
   const inLevel = xp % ECON.xpPerLevel;
 
-  const badges = earnedBadges({ xp, level, streakLongest });
-  const gotCount = badges.filter((b) => b.got).length;
-  const BADGE_TOTAL = 24; // full career-badge pool (handoff shows collection vs 24)
 
-  const growth: GrowthInput = { level, xp, streakLongest, rep: repMap(progress.reputation), scenariosTotal };
+  // The day/week signals are what the light-hearted hidden titles read. Without them
+  // those titles could never fire on the one screen that displays the collection.
+  const growth: GrowthInput = {
+    level, xp, streakLongest, streakCurrent,
+    rep: repMap(progress.reputation), scenariosTotal,
+    scenariosToday: stats?.scenariosToday,
+    conversationSecondsToday: stats?.conversationSecondsToday,
+    newCardsWeek: stats?.newCardsWeek,
+  };
   const titles = earnedTitles(growth, foundIds.size); // hidden_hero earned = permanent discoveries
   const equippedTitle = titleById(equipped);
 
@@ -198,11 +210,18 @@ export default function Me() {
               {/* avatar — same pixel portrait as the dialogue player frame.
                   alignSelf flex-start stops the shadow box from stretching to
                   the row's full height (the row defaults to alignItems:stretch). */}
+              {/* Tapping the portrait edits it. The pencil badge is the only thing
+                  that says so — an ID photo does not otherwise look interactive. */}
               <Shadowed offset={3} style={{ alignSelf: 'flex-start' }}>
-                <View style={{ width: 80, height: 96, backgroundColor: colors.peach, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-                  <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
-                  <FacePlayer size={86} />
-                </View>
+                <Pressable onPress={() => { playSfx('tap'); setAvatarOpen(true); }}>
+                  <View style={{ width: 80, height: 96, backgroundColor: avatar.scrub, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
+                    <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
+                    <FacePlayer size={86} avatar={avatar} />
+                  </View>
+                  <View style={{ position: 'absolute', bottom: -3, right: -3, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, width: 20, height: 20, alignItems: 'center', justifyContent: 'center' }}>
+                    <PixelIcon name="note" color={C} size={11} sw={1.8} />
+                  </View>
+                </Pressable>
               </Shadowed>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>RANK</Text>
@@ -330,49 +349,14 @@ export default function Me() {
           </View>
         </Shadowed>
 
-        {/* badges */}
-        <View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <PixelIcon name="medal" color={C} size={16} sw={1.6} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>커리어 뱃지</Text>
-            </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{gotCount} / {BADGE_TOTAL}</Text>
-          </View>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            {badges.map((b, i) => {
-              // earned = white tile + ink shadow; special earned = yellow + NEW ribbon; locked = flat cream.
-              const bg = !b.got ? colors.cream : b.special ? colors.yellow : '#fff';
-              const ic = iconFor(b.e);
-              const iconColor = b.got ? C : colors.textFaint;
-              const open = () => setSheet({
-                icon: b.e, iconNode: ic ? <PixelIcon name={ic} color={C} size={34} sw={1.6} /> : undefined, iconBg: bg, title: b.got ? t(b.nameKey) : '???',
-                status: { label: b.got ? t('badge.earned') : t('badge.locked'), bg: b.got ? colors.mint : colors.cream },
-                what: t(b.whatKey), how: t(b.howKey),
-              });
-              return (
-                <Shadowed key={i} offset={b.got ? 3 : 0} shadowColor={b.special ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
-                  <Pressable onPress={open} style={{ aspectRatio: 1, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
-                    {ic ? <PixelIcon name={ic} color={iconColor} size={24} /> : <Text style={{ fontSize: fs(22), opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>}
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: b.got ? C : colors.textFaint, marginTop: 3 }}>{t(b.labelKey)}</Text>
-                    {b.got && b.special && (
-                      <View style={{ position: 'absolute', top: -4, right: -4, backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 3 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: '#fff' }}>NEW</Text>
-                      </View>
-                    )}
-                  </Pressable>
-                </Shadowed>
-              );
-            })}
-          </View>
-        </View>
-
-        {/* titles (칭호) — tap to view / equip */}
+        {/* The one collection. Badges used to sit above this as a second grid you
+            could look at but not use; feedback asked for a single thing, so they
+            moved into the catalog and this is the only place they live. */}
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <PixelIcon name="tag" color={C} size={16} sw={1.6} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>칭호</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('title.section')}</Text>
             </View>
             <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
           </View>
@@ -384,8 +368,8 @@ export default function Me() {
                   <Pressable onPress={() => openTitle(tt.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream, borderWidth: isEq ? 3 : 2, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
                     {iconFor(tt.emoji) ? <PixelIcon name={iconFor(tt.emoji)!} color={tt.got ? C : colors.textFaint} size={24} /> : <Text style={{ fontSize: fs(22), opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
                     <View style={{ flex: 1 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: tt.got ? C : colors.textFaint }}>{tt.got ? t(tt.nameKey) : '???'}{''}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{tt.got ? t(tt.descKey) : t(tt.howKey)}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: tt.got ? C : colors.textFaint }}>{tt.got ? t(tt.nameKey) : '???'}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{tt.got ? t(tt.descKey) : tt.hidden ? t('title.hiddenHint') : t(tt.howKey)}</Text>
                     </View>
                     {isEq
                       ? <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>장착</Text></View>
@@ -546,6 +530,7 @@ export default function Me() {
       )}
 
       <InfoSheet data={sheet} onClose={() => setSheet(null)} />
+      <AvatarSheet visible={avatarOpen} onClose={() => setAvatarOpen(false)} />
 
       {/* 앱 언어 고르기. 번역 완성도를 계산값 그대로 보여준다(R8·R9) — 부분 번역을
           완전한 것처럼 제시하지 않기 위해서다. */}

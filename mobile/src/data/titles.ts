@@ -1,22 +1,32 @@
-// Career titles (칭호) + hidden missions (히든미션) — single source of truth for
-// the profile UI. Titles are earned by predicates over the growth snapshot (like
-// badges); one can be equipped (persisted server-side). "warm" titles nudge NPC
-// disposition (server mirrors the warm set). Hidden missions stay hidden (hint
-// only) until their condition is met; finding any unlocks the 숨은 영웅 title.
+// Career titles (칭호) + hidden missions — the single collection on the profile.
+//
+// Badges used to be a second, parallel collection: eight milestone markers you could
+// look at but not use, sitting next to six titles you could equip. TestFlight
+// feedback asked for one thing, so the badges moved in here. Two pairs collided on
+// the way (both a badge and a title fired at a 7-day streak, and both at level 10) —
+// the title kept its name because it says something, and the badge's duplicate
+// condition was dropped rather than renamed onto a level nobody chose.
+//
+// Text lives in the i18n catalogs (title.<id>.*): this array is a module constant, so
+// a t() call here would freeze it to the language at startup.
 export type GrowthInput = {
   level: number;
   xp: number;
   streakLongest: number;
+  streakCurrent: number;
   // Keyed by the server's reputation dimension (see api Standing). Titles are
   // themselves profession content, so naming nurse dimensions here is fine —
   // a second profession brings its own title catalog.
   rep: Record<string, number>;
   scenariosTotal: number;
+  // Day/week activity, for the light-hearted hidden titles. Optional because the
+  // clear screen knows a user's progress but not their week — a title that needs a
+  // signal the caller lacks simply stays unearned there and turns up on the profile.
+  scenariosToday?: number;
+  conversationSecondsToday?: number;
+  newCardsWeek?: number;
 };
 
-// Text lives in the i18n catalogs (title.<id>.*): this array is a module constant,
-// so a t() call here would freeze the strings to the startup language. The data
-// holds keys; screens resolve them at render.
 export type TitleDef = {
   id: string;
   emoji: string;
@@ -25,16 +35,37 @@ export type TitleDef = {
   howKey: string;
   effectKey?: string;
   warm?: boolean;
+  /** Masked as ??? until earned. The reveal IS the reward. */
+  hidden?: boolean;
   earned: (g: GrowthInput, ctx: { hiddenFound: number }) => boolean;
 };
 
 export const TITLES: TitleDef[] = [
+  // ── the visible spine, in the order they arrive ───────────────────────────
   { id: 'learner', emoji: '🌱', nameKey: 'title.learner.name', descKey: 'title.learner.desc', howKey: 'title.learner.how', earned: () => true },
+  { id: 'cap', emoji: '👒', nameKey: 'title.cap.name', descKey: 'title.cap.desc', howKey: 'title.cap.how', earned: (g) => g.xp > 0 },
+  { id: 'stethoscope', emoji: '🩺', nameKey: 'title.stethoscope.name', descKey: 'title.stethoscope.desc', howKey: 'title.stethoscope.how', earned: (g) => g.level >= 3 },
+  { id: 'streak3', emoji: '🔥', nameKey: 'title.streak3.name', descKey: 'title.streak3.desc', howKey: 'title.streak3.how', earned: (g) => g.streakLongest >= 3 },
+  { id: 'syringe', emoji: '💉', nameKey: 'title.syringe.name', descKey: 'title.syringe.desc', howKey: 'title.syringe.how', earned: (g) => g.level >= 5 },
+  { id: 'diligent', emoji: '🏅', nameKey: 'title.diligent.name', descKey: 'title.diligent.desc', howKey: 'title.diligent.how', earned: (g) => g.streakLongest >= 7 },
   { id: 'ward_friend', emoji: '💗', nameKey: 'title.ward_friend.name', descKey: 'title.ward_friend.desc', howKey: 'title.ward_friend.how', effectKey: 'title.ward_friend.effect', warm: true, earned: (g) => (g.rep.patient_satisfaction ?? 0) >= 70 },
-  { id: 'diligent', emoji: '🔥', nameKey: 'title.diligent.name', descKey: 'title.diligent.desc', howKey: 'title.diligent.how', earned: (g) => g.streakLongest >= 7 },
   { id: 'er_ace', emoji: '⚡', nameKey: 'title.er_ace.name', descKey: 'title.er_ace.desc', howKey: 'title.er_ace.how', earned: (g) => g.scenariosTotal >= 10 },
   { id: 'polyglot', emoji: '🗣', nameKey: 'title.polyglot.name', descKey: 'title.polyglot.desc', howKey: 'title.polyglot.how', earned: (g) => g.level >= 10 },
+  { id: 'crown', emoji: '👑', nameKey: 'title.crown.name', descKey: 'title.crown.desc', howKey: 'title.crown.how', earned: (g) => g.level >= 20 },
   { id: 'hidden_hero', emoji: '🦸', nameKey: 'title.hidden_hero.name', descKey: 'title.hidden_hero.desc', howKey: 'title.hidden_hero.how', effectKey: 'title.hidden_hero.effect', warm: true, earned: (_g, c) => c.hiddenFound >= 1 },
+
+  // ── the light-hearted ones, masked until they fire ─────────────────────────
+  //
+  // Every condition here is a signal the app already records — a title that cannot
+  // be earned is a joke with no punchline. They are deliberately about being a
+  // person rather than being good: talking too long, doing too much in one evening,
+  // hoarding phrases, coming back after falling off.
+  { id: 'chatterbox', emoji: '💬', nameKey: 'title.chatterbox.name', descKey: 'title.chatterbox.desc', howKey: 'title.chatterbox.how', hidden: true, earned: (g) => (g.conversationSecondsToday ?? 0) >= 1800 },
+  { id: 'marathoner', emoji: '🏃', nameKey: 'title.marathoner.name', descKey: 'title.marathoner.desc', howKey: 'title.marathoner.how', hidden: true, earned: (g) => (g.scenariosToday ?? 0) >= 5 },
+  { id: 'collector', emoji: '📚', nameKey: 'title.collector.name', descKey: 'title.collector.desc', howKey: 'title.collector.how', hidden: true, earned: (g) => (g.newCardsWeek ?? 0) >= 30 },
+  // Broke a long run and came back. streakCurrent === 1 with a real history behind it
+  // is exactly "today is day one again", which is the moment worth naming.
+  { id: 'returner', emoji: '🌤', nameKey: 'title.returner.name', descKey: 'title.returner.desc', howKey: 'title.returner.how', hidden: true, earned: (g) => g.scenariosTotal >= 20 && g.streakCurrent === 1 && g.streakLongest >= 5 },
 ];
 
 export type MissionDef = {
@@ -64,4 +95,20 @@ export function earnedTitles(g: GrowthInput, hiddenFound?: number): (TitleDef & 
 
 export function titleById(id: string): TitleDef | undefined {
   return TITLES.find((t) => t.id === id);
+}
+
+/**
+ * Titles that flip from unearned to earned between two snapshots — what the clear
+ * screen celebrates.
+ *
+ * Replaces the deleted badges catalog's newlyEarned. Hidden titles are included:
+ * their whole point is turning up unannounced, and the clear screen is where that
+ * lands.
+ */
+export function newlyEarnedTitles(
+  before: GrowthInput,
+  after: GrowthInput,
+  ctx: { hiddenFound: number },
+): TitleDef[] {
+  return TITLES.filter((t) => !t.earned(before, ctx) && t.earned(after, ctx));
 }
