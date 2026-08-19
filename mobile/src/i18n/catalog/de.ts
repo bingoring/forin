@@ -460,4 +460,7 @@ export const de: Record<string, string> = {
   'result.praiseSticker': 'Gut gemacht',
   'lab.pipsHelp': 'Die Punkte (■■■) zählen richtige Antworten in Folge. Alle drei gefüllt heißt {mastered}.',
   'avatar.scanNeedBuild': 'Der Gesichtsscan funktioniert nur in einem App-Build mit Kameramodul. Unten kannst du alles selbst wählen.',
+  'me.cardCode': 'Einladungscode',
+  'me.standing': 'Ansehen',
+  'campus.floorCurricula': '━ Curricula auf dieser Etage ━',
 };

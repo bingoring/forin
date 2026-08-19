@@ -460,4 +460,7 @@ export const ja: Record<string, string> = {
   'result.praiseSticker': 'よくできました',
   'lab.pipsHelp': '熟練の枠（■■■）は連続で正解した回数です。3つ埋まると{mastered}に分類されます。',
   'avatar.scanNeedBuild': '顔スキャンはカメラモジュールを含むアプリビルドでのみ動作します。下から手動で選べます。',
+  'me.cardCode': '招待コード',
+  'me.standing': '評判',
+  'campus.floorCurricula': '━ この階のカリキュラム ━',
 };

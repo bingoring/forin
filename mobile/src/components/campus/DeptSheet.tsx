@@ -1,15 +1,25 @@
-// 이 층의 다른 상황 — the department's full situation list, beyond its curricula.
+// A floor, opened from the career tab: its curricula first, then everything else
+// happening there, scrolling on.
+//
+// This is the shape the tab had before the v2 rewrite, and it was better: one gesture
+// from a floor to both of the things you can do on it. The rewrite expanded curricula
+// inline in the list and left the situations behind a second, smaller link, which put
+// the two at different depths for no reason. What v2 keeps is that a floor now holds
+// SEVERAL curricula rather than one — so the top of the sheet is a list, and each row
+// expands in place to show its steps. In place, not in another modal: a RN Modal over a
+// Modal leaves the lower one's scrim across the screen.
 //
 // Situations come from GET /me/situations (paged, tagged by cleared). The bundled
-// fallback list this sheet used to fall back on is gone: its entries named
-// scenarios they did not point at (흉통 환자 트리아지 → SCN-ER-00002, a pain
-// assessment), the same defect the curriculum had. An empty list now says so.
+// fallback list this sheet used to fall back on is gone: its entries named scenarios
+// they did not point at (흉통 환자 트리아지 → SCN-ER-00002, a pain assessment), the
+// same defect the curriculum had. An empty list now says so.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { api, type Curriculum, type DeptSituation } from '@/api/client';
 import { BottomSheet } from '@/components/BottomSheet';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon } from '@/components/PixelIcon';
+import { STEP_META, type StepKind } from '@/data/campus';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { Shadowed } from './parts';
 import { t, useLocale } from '@/i18n';
@@ -31,6 +41,9 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
   onStart(scenarioID?: string): void;
   onWalk(deptCode: string): void;
 }) {
+  // Which curriculum is expanded. Defaults to the one being resumed, so opening the
+  // floor you are working on already shows the next step.
+  const [openKey, setOpenKey] = useState<string | null>(null);
   const [sits, setSits] = useState<DeptSituation[]>([]);
   const [hasMore, setHasMore] = useState(false);
   const loadingRef = useRef(false); // guards concurrent page fetches
@@ -42,6 +55,7 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
     setSits([]);
     setHasMore(false);
     offsetRef.current = 0;
+    setOpenKey(target?.curricula.find((c) => c.resume)?.key ?? null);
     if (!code) return;
     loadingRef.current = true;
     api.deptSituations(code, 0, PAGE)
@@ -54,6 +68,7 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
       .catch(() => {})
       .finally(() => { loadingRef.current = false; });
     return () => { alive = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code]);
 
   const loadMore = useCallback(() => {
@@ -117,7 +132,76 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
               ))}
             </View>
 
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 커리큘럼 밖의 상황 ━━━━</Text>
+            {/* ── this floor's curricula ── */}
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>{t('campus.floorCurricula')}</Text>
+            {target.curricula.map((c) => {
+              const on = openKey === c.key;
+              return (
+                <Shadowed key={c.key} offset={on ? 3 : 2.5} shadowColor={c.resume ? colors.yellowShadow : C} style={{ marginBottom: 8 }}>
+                  <View style={{ borderWidth: c.resume ? 3 : 2.5, borderColor: c.resume ? colors.yellowDeep : C, backgroundColor: c.state === 'done' ? colors.mint : '#fff' }}>
+                    <Pressable
+                      onPress={() => setOpenKey(on ? null : c.key)}
+                      style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 10 }}
+                    >
+                      <View style={{ flex: 1, minWidth: 0 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{c.name}</Text>
+                        {!!c.next && c.state !== 'done' && (
+                          <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>
+                            {t('campus.resumeNext', { name: c.next })}
+                          </Text>
+                        )}
+                      </View>
+                      {c.resume && (
+                        <View style={{ backgroundColor: colors.yellowDeep, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{t('step.now')}</Text>
+                        </View>
+                      )}
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{c.done}/{c.total}</Text>
+                      <PixelIcon name={on ? 'chevron-up' : 'chevron-down'} color={C} size={12} sw={2} />
+                    </Pressable>
+
+                    {on && (
+                      <View style={{ borderTopWidth: 2, borderTopColor: C + '33', borderStyle: 'dotted', paddingVertical: 7, paddingHorizontal: 10, gap: 6 }}>
+                        {(c.steps ?? []).map((st, i) => {
+                          const meta = STEP_META[st.kind as StepKind] ?? STEP_META.dlg;
+                          const locked = st.state === 'lock';
+                          const optional = st.state === 'optional';
+                          return (
+                            <Pressable
+                              key={i}
+                              disabled={locked}
+                              onPress={() => onStart(st.scenarioId)}
+                              style={{
+                                flexDirection: 'row', alignItems: 'center', gap: 7,
+                                backgroundColor: st.state === 'done' ? '#fff' : st.state === 'now' ? meta.bg : optional ? colors.lilac + '2A' : C + '11',
+                                borderWidth: 2, borderColor: locked ? C + '55' : C,
+                                paddingVertical: 6, paddingHorizontal: 8, opacity: locked ? 0.55 : 1,
+                              }}
+                            >
+                              <PixelIcon name={locked ? 'lock' : meta.icon} color={locked ? colors.textFaint : C} size={12} sw={1.8} />
+                              <View style={{ flex: 1, minWidth: 0 }}>
+                                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 14 }}>{st.name}</Text>
+                                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginTop: 1 }}>
+                                  {t(meta.labelKey)}{optional ? ` · ${t('step.optional')}` : ''}
+                                </Text>
+                              </View>
+                              {st.state === 'done' && <PixelIcon name="check" color={colors.mintShadow} size={12} sw={2.2} />}
+                              {st.state === 'now' && (
+                                <View style={{ backgroundColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.cream }}>{t('step.now')}</Text>
+                                </View>
+                              )}
+                            </Pressable>
+                          );
+                        })}
+                      </View>
+                    )}
+                  </View>
+                </Shadowed>
+              );
+            })}
+
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginTop: 6, marginBottom: 8 }}>{t('campus.deptSituations')}</Text>
             {sits.length === 0 && (
               <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 14 }}>
                 지금은 불러올 상황이 없어요.

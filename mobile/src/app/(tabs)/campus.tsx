@@ -18,7 +18,6 @@ import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE } from '@/data/campus';
 import { PixelButton } from '@/components/PixelButton';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { FloorList } from '@/components/campus/FloorList';
-import { StepSheet } from '@/components/campus/StepSheet';
 import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
 import { ProgressBar, Shadowed } from '@/components/campus/parts';
 import { t, useLocale } from '@/i18n';
@@ -30,7 +29,6 @@ export default function Campus() {
   const [enLevel, setEnLevel] = useState('B1');
   const [streak, setStreak] = useState(0);
   const [buildings, setBuildings] = useState<CurriculumBuilding[]>([]);
-  const [openCur, setOpenCur] = useState<Curriculum | null>(null);
   const [dept, setDept] = useState<DeptTarget | null>(null);
 
   useFocusEffect(
@@ -59,11 +57,15 @@ export default function Campus() {
   const resume = buildings.flatMap((b) => b.floors).flatMap((f) => f.curricula).find((c) => c.resume);
   const resumeStep = resume?.steps?.find((s) => s.state === 'now');
 
-  const openDept = (floor: CurriculumFloor, code: string) => {
+  // One gesture from a floor to everything on it: the sheet carries the floor's
+  // curricula AND its situations. `deptCode` may be absent for a floor whose steps have
+  // no bank prefix — the sheet then shows the curricula and says the situation list is
+  // empty rather than refusing to open.
+  const openFloor = (floor: CurriculumFloor, code?: string) => {
     const first = floor.curricula[0];
     const building = buildings.find((b) => b.floors.includes(floor))?.building ?? '';
     setDept({
-      deptCode: code,
+      deptCode: code ?? '',
       place: (first?.where ?? floor.where).replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where,
       where: first?.where ?? floor.where,
       accent: (BUILDING_STYLE[building] ?? DEFAULT_BUILDING_STYLE).accent,
@@ -116,7 +118,7 @@ export default function Campus() {
             커리큘럼을 불러오는 중이에요.
           </Text>
         ) : (
-          <FloorList buildings={buildings} onOpenCurriculum={setOpenCur} onOpenDept={openDept} />
+          <FloorList buildings={buildings} onOpenFloor={openFloor} />
         )}
       </ScrollView>
 
@@ -133,7 +135,6 @@ export default function Campus() {
 
       {/* Sheets close before navigating: a RN Modal renders above the pushed screen,
           so leaving one open would hide the scenario we just opened. */}
-      <StepSheet curriculum={openCur} onClose={() => setOpenCur(null)} onOpen={(scn) => { setOpenCur(null); open(scn); }} />
       <DeptSheet
         target={dept}
         onClose={() => setDept(null)}

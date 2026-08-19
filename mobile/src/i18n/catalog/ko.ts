@@ -491,4 +491,7 @@ export const ko: Record<string, string> = {
   'result.praiseSticker': '참 잘했어요',
   'lab.pipsHelp': '숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 {mastered}로 분류돼요.',
   'avatar.scanNeedBuild': '얼굴 스캔은 카메라 모듈이 포함된 앱 빌드에서만 동작해요. 아래에서 직접 고를 수 있어요.',
+  'me.cardCode': '초대 코드',
+  'me.standing': '평판',
+  'campus.floorCurricula': '━ 이 층의 커리큘럼 ━━━━━',
 };

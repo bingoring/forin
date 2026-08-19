@@ -253,14 +253,36 @@ export default function Me() {
               </View>
             </View>
 
-            {/* reputation */}
-            <View style={{ marginTop: 14, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dashed' }}>
+            {/* A card, not a dashboard. Reputation gauges lived here and were asked to
+                leave twice: a business card says who you are and how to reach you, and
+                three progress bars say how you are doing — a different question, and it
+                has its own block below. What replaces them is the thing a card actually
+                carries: the code someone types to add you. */}
+            <View style={{ marginTop: 12, paddingTop: 10, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dashed', flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
+              <View style={{ flex: 1, minWidth: 0 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>{t('me.cardCode')}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, letterSpacing: 2, marginTop: 2 }}>{invite?.code ?? '· · · ·'}</Text>
+              </View>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textFaint }}>FORIN</Text>
+            </View>
+          </View>
+        </Shadowed>
+
+        {/* Reputation, moved out of the card. Still worth showing — it is what the
+            scenarios move — just not on the thing meant to read like a name card. */}
+        <View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+            <PixelIcon name="heart" color={C} size={16} sw={1.6} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('me.standing')}</Text>
+          </View>
+          <Shadowed offset={3} shadowColor={C + '33'}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
               {progress.reputation.map((st, i) => (
                 <RepRow key={st.key} label={st.label} value={st.value} color={REP_COLORS[i % REP_COLORS.length]} />
               ))}
             </View>
-          </View>
-        </Shadowed>
+          </Shadowed>
+        </View>
 
         {/* growth summary → 성장 리포트 상세 (/growth) */}
         <Pressable onPress={() => router.push('/growth')}>
