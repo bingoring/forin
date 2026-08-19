@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PixelButton } from '@/components/PixelButton';
 import { VertGradient, Cloud, PixelSun, PixelPlane } from '@/components/onboardingArt';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -36,7 +37,7 @@ export default function Splash() {
 
       {/* CTA */}
       <SafeAreaView edges={['bottom']} style={{ position: 'absolute', left: 0, right: 0, bottom: 24, paddingHorizontal: 32 }}>
-        <PixelButton label="처음 시작하기" icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} paddingV={15} fontSize={15} full onPress={() => router.push('/login')} />
+        <PixelButton label={t('onboarding.begin')} icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} paddingV={15} fontSize={15} full onPress={() => router.push('/login')} />
         <Pressable onPress={() => router.push('/login')} hitSlop={8} style={{ marginTop: 14, alignSelf: 'center' }}>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>
             이미 계정이 있다면 · <Text style={{ color: C, textDecorationLine: 'underline' }}>로그인</Text>

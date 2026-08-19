@@ -9,17 +9,17 @@ import { PixelButton } from '@/components/PixelButton';
 import { FLAGS } from '@/components/onboardingArt';
 import { loadDraft, saveDraft } from '@/lib/onboardingDraft';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { LOCALES, LOCALE_META, t, useLocale } from '@/i18n';
 
 const C = colors.ink;
-const NATIVE = [
-  { code: 'ko', flag: 'kr', name: '한국어', sub: 'Korean' },
-  { code: 'ja', flag: 'jp', name: '日本語', sub: 'Japanese' },
-  { code: 'en', flag: 'us', name: 'English', sub: 'US' },
-  { code: 'de', flag: 'de', name: 'Deutsch', sub: 'Germany' },
-];
+// A language is named in its own language — that is how someone finds their own
+// row — so these come straight from LOCALE_META and are never translated.
+const NATIVE = LOCALES.map((code) => ({ code, ...LOCALE_META[code] }));
+
+// Countries ARE translated (미국 / United States / アメリカ), so they carry keys.
 const DEST = [
-  { code: 'us', targetLang: 'en', flag: 'us', name: '미국', sub: 'English-US' },
-  { code: 'de', targetLang: 'de', flag: 'de', name: '독일', sub: 'Deutsch' },
+  { code: 'us', targetLang: 'en', flag: 'us', nameKey: 'country.us', sub: 'English-US' },
+  { code: 'de', targetLang: 'de', flag: 'de', nameKey: 'country.de', sub: 'Deutsch' },
 ];
 
 export default function Locale() {
@@ -47,18 +47,18 @@ export default function Locale() {
       <OnbTopBar title="LANGUAGE" step="1/4" onBack={() => router.replace('/login')} />
       <ScrollView contentContainerStyle={{ padding: 22, paddingBottom: 40 }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(21), color: C, lineHeight: 30 }}>어디서 오셨나요?</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 6, marginBottom: 20 }}>앱이 사용할 모국어를 골라주세요.</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 6, marginBottom: 20 }}>{t('onboarding.pickNative')}</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
           {NATIVE.map((o) => <LocaleCard key={o.code} {...o} selected={native === o.code} onPress={() => setNative(o.code)} />)}
         </View>
 
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 28, marginBottom: 12 }}>⇨ 어디로 가시나요?</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 28, marginBottom: 12 }}>{t('onboarding.pickDest')}</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
-          {DEST.map((o) => <LocaleCard key={o.code} {...o} selected={dest === o.code} onPress={() => setDest(o.code)} />)}
+          {DEST.map((o) => <LocaleCard key={o.code} flag={o.flag} name={t(o.nameKey)} sub={o.sub} selected={dest === o.code} onPress={() => setDest(o.code)} />)}
         </View>
 
         <View style={{ marginTop: 30 }}>
-          <PixelButton label="다음" icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
+          <PixelButton label={t('common.next')} icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
         </View>
       </ScrollView>
     </View>

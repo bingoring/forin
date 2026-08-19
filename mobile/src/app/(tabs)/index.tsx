@@ -13,6 +13,7 @@ import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { FacePlayer } from '@engine';
 import { api, type Home } from '@/api/client';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -100,16 +101,21 @@ export default function HomeTab() {
 
 // ── 인사 ───────────────────────────────────────────────────────────────────
 function Greeting({ date, done }: { date: string; done: boolean }) {
+  const locale = useLocale();
   const d = new Date(date + 'T00:00:00');
+  // Formatted by Intl rather than assembled from a Korean weekday array: the order
+  // of month, day and weekday differs per language, so a translated template would
+  // still be wrong ("18 Monday August" in German). Hermes ships Intl and this file
+  // already leans on it for the timezone.
   const label = Number.isNaN(d.getTime())
     ? date
-    : `${d.getMonth() + 1}월 ${d.getDate()}일 ${['일', '월', '화', '수', '목', '금', '토'][d.getDay()]}요일`;
+    : dateLabel(d, locale);
   return (
     <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: space.lg, paddingTop: 56, paddingBottom: 12 }}>
       <View style={{ flex: 1, minWidth: 0 }}>
         <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{label}</Text>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, marginTop: 5, lineHeight: 25 }}>
-          {done ? '오늘 몫은 끝냈어요' : '천천히 시작해요'}
+          {done ? t('home.greetingDone') : t('home.greetingStart')}
         </Text>
       </View>
       <Shadowed offset={3} style={{ alignSelf: 'flex-end' }}>
@@ -119,6 +125,15 @@ function Greeting({ date, done }: { date: string; done: boolean }) {
       </Shadowed>
     </View>
   );
+}
+
+/** "8월 18일 월요일" in the reader's language, or the raw date if Intl is absent. */
+function dateLabel(d: Date, locale: string): string {
+  try {
+    return new Intl.DateTimeFormat(locale, { month: 'long', day: 'numeric', weekday: 'long' }).format(d);
+  } catch {
+    return d.toDateString();
+  }
 }
 
 // ── 근무 배지 — 화면에서 유일하게 어두운 카드 (시선이 한 번 끊긴다) ─────────
@@ -257,7 +272,7 @@ function PhraseOfDay({ phrase, flipped, onFlip }: { phrase: NonNullable<Home['ph
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C }}>오늘의 한마디</Text>
           <View style={{ flex: 1 }} />
           <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textFaint }}>
-            {flipped ? '탭하면 접기' : '탭하면 뜻 보기'}
+            {flipped ? t('home.phraseCollapse') : t('home.phraseReveal')}
           </Text>
         </View>
         <View style={{ backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C + '66', paddingVertical: 13, paddingHorizontal: 10, alignItems: 'center' }}>
@@ -288,8 +303,8 @@ function Doors({ waiting, onExplore, onBoard }: { waiting: number; onExplore: ()
   );
   return (
     <View style={{ flexDirection: 'row', gap: 10, marginHorizontal: space.lg, marginTop: 13 }}>
-      <Door icon="map" title="둘러보기" sub={'건물·층에서\n원하는 과 고르기'} bg="#fff" onPress={onExplore} />
-      <Door icon="clipboard" title="오늘의 상황" sub={`지금 벌어진 일\n${waiting}건 대기중`} bg={colors.blue} onPress={onBoard} />
+      <Door icon="map" title={t('home.doorExplore')} sub={t('home.doorExploreSub')} bg="#fff" onPress={onExplore} />
+      <Door icon="clipboard" title={t('home.doorBoard')} sub={t('home.doorBoardSub', { n: waiting })} bg={colors.blue} onPress={onBoard} />
     </View>
   );
 }
@@ -331,7 +346,7 @@ function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }
           {(unread > 0 || pending > 0) && (
             <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>
-                {unread > 0 ? `응원 ${unread}` : `요청 ${pending}`}
+                {unread > 0 ? t('home.cheers', { n: unread }) : t('home.requests', { n: pending })}
               </Text>
             </View>
           )}
@@ -354,7 +369,7 @@ function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }
               <View style={{ width: 6, height: 6, backgroundColor: c.activeToday ? colors.mintShadow : 'transparent', borderWidth: c.activeToday ? 1.5 : 0, borderColor: C }} />
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{c.name}</Text>
               <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>
-                {c.activity || '학습 현황 비공개'}
+                {c.activity || t('home.privateProgress')}
               </Text>
             </Pressable>
           ))

@@ -12,36 +12,40 @@ import { api, type BoardCard } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
-// dept code → label (한글 ENG) + short code + icon + color. Canonical order first.
-const DEPT_META: Record<string, { name: string; short: string; icon: IconName; color: string }> = {
-  ER: { name: '응급실 ER', short: 'ER', icon: 'ambulance', color: '#DC2626' },
-  ICU: { name: '중환자실 ICU', short: 'ICU', icon: 'bed', color: '#7F1D1D' },
-  OR: { name: '수술실 OR', short: 'OR', icon: 'scalpel', color: '#9333EA' },
-  PEDS: { name: '소아과 Peds', short: 'PEDS', icon: 'teddy', color: '#3B82F6' },
-  PHARMA: { name: '약국 Pharma', short: 'PHARMA', icon: 'pill', color: '#16A34A' },
-  LD: { name: '분만실 L&D', short: 'LD', icon: 'pregnant', color: '#DB2777' },
-  NICU: { name: '신생아중환자실 NICU', short: 'NICU', icon: 'bottle', color: '#0EA5E9' },
-  PICU: { name: '소아중환자실 PICU', short: 'PICU', icon: 'teddy', color: '#6366F1' },
-  NURSERY: { name: '신생아실 Nursery', short: 'NURSERY', icon: 'baby', color: '#F472B6' },
-  WOMENKIDS: { name: '여성소아외래', short: 'W&K', icon: 'flower', color: '#EC4899' },
-  RAD: { name: '영상의학 Rad', short: 'RAD', icon: 'xray', color: '#0891B2' },
-  ENDO: { name: '내시경 Endo', short: 'ENDO', icon: 'microscope', color: '#0D9488' },
-  DIAL: { name: '인공신장실 Dialysis', short: 'DIAL', icon: 'droplet', color: '#2563EB' },
-  SPECIALTY: { name: '특수외래 Specialty', short: 'SPEC', icon: 'eye', color: '#7C3AED' },
-  INFUSION: { name: '주사센터 Infusion', short: 'INFU', icon: 'syringe', color: '#059669' },
-  ONCO: { name: '암센터 Oncology', short: 'ONCO', icon: 'ribbon', color: '#9333EA' },
-  HOSPICE: { name: '호스피스 Hospice', short: 'HOSP', icon: 'dove', color: '#64748B' },
-  GERI: { name: '노인병동 Geriatrics', short: 'GERI', icon: 'cane', color: '#B45309' },
-  PSYCH: { name: '정신과 Psych', short: 'PSYCH', icon: 'brain', color: '#7C3AED' },
-  REHAB: { name: '재활 Rehab', short: 'REHAB', icon: 'prosthesis', color: '#0284C7' },
-  SIM: { name: '시뮬레이션랩 Sim', short: 'SIM', icon: 'cap', color: '#4F46E5' },
-  LOUNGE: { name: '라운지 Lounge', short: 'LOUNGE', icon: 'cup', color: '#A16207' },
-  SPD: { name: '중앙공급 SPD', short: 'SPD', icon: 'box', color: '#525252' },
-  MORGUE: { name: '영안실 Morgue', short: 'MORGUE', icon: 'candle', color: '#334155' },
-  GEN: { name: '공통 General', short: 'GEN', icon: 'hospital', color: '#6B7280' },
+// dept code → label key + short code + icon + color. Canonical order first.
+//
+// `nameKey` rather than a Korean literal: this map is a module constant, so a t()
+// call here would freeze the labels to the language at startup.
+const DEPT_META: Record<string, { nameKey: string; short: string; icon: IconName; color: string }> = {
+  ER: { nameKey: 'dept.ER', short: 'ER', icon: 'ambulance', color: '#DC2626' },
+  ICU: { nameKey: 'dept.ICU', short: 'ICU', icon: 'bed', color: '#7F1D1D' },
+  OR: { nameKey: 'dept.OR', short: 'OR', icon: 'scalpel', color: '#9333EA' },
+  PEDS: { nameKey: 'dept.PEDS', short: 'PEDS', icon: 'teddy', color: '#3B82F6' },
+  PHARMA: { nameKey: 'dept.PHARMA', short: 'PHARMA', icon: 'pill', color: '#16A34A' },
+  LD: { nameKey: 'dept.LD', short: 'LD', icon: 'pregnant', color: '#DB2777' },
+  NICU: { nameKey: 'dept.NICU', short: 'NICU', icon: 'bottle', color: '#0EA5E9' },
+  PICU: { nameKey: 'dept.PICU', short: 'PICU', icon: 'teddy', color: '#6366F1' },
+  NURSERY: { nameKey: 'dept.NURSERY', short: 'NURSERY', icon: 'baby', color: '#F472B6' },
+  WOMENKIDS: { nameKey: 'dept.WOMENKIDS', short: 'W&K', icon: 'flower', color: '#EC4899' },
+  RAD: { nameKey: 'dept.RAD', short: 'RAD', icon: 'xray', color: '#0891B2' },
+  ENDO: { nameKey: 'dept.ENDO', short: 'ENDO', icon: 'microscope', color: '#0D9488' },
+  DIAL: { nameKey: 'dept.DIAL', short: 'DIAL', icon: 'droplet', color: '#2563EB' },
+  SPECIALTY: { nameKey: 'dept.SPECIALTY', short: 'SPEC', icon: 'eye', color: '#7C3AED' },
+  INFUSION: { nameKey: 'dept.INFUSION', short: 'INFU', icon: 'syringe', color: '#059669' },
+  ONCO: { nameKey: 'dept.ONCO', short: 'ONCO', icon: 'ribbon', color: '#9333EA' },
+  HOSPICE: { nameKey: 'dept.HOSPICE', short: 'HOSP', icon: 'dove', color: '#64748B' },
+  GERI: { nameKey: 'dept.GERI', short: 'GERI', icon: 'cane', color: '#B45309' },
+  PSYCH: { nameKey: 'dept.PSYCH', short: 'PSYCH', icon: 'brain', color: '#7C3AED' },
+  REHAB: { nameKey: 'dept.REHAB', short: 'REHAB', icon: 'prosthesis', color: '#0284C7' },
+  SIM: { nameKey: 'dept.SIM', short: 'SIM', icon: 'cap', color: '#4F46E5' },
+  LOUNGE: { nameKey: 'dept.LOUNGE', short: 'LOUNGE', icon: 'cup', color: '#A16207' },
+  SPD: { nameKey: 'dept.SPD', short: 'SPD', icon: 'box', color: '#525252' },
+  MORGUE: { nameKey: 'dept.MORGUE', short: 'MORGUE', icon: 'candle', color: '#334155' },
+  GEN: { nameKey: 'dept.GEN', short: 'GEN', icon: 'hospital', color: '#6B7280' },
 };
 const DEPT_ORDER = Object.keys(DEPT_META);
 // urgency → card tint, accent, tag (1:1 with the handoff scheme).
@@ -53,6 +57,7 @@ const URGENCY: Record<string, { tint: string; accent: string; label: string }> =
 const urg = (u: string) => URGENCY[u] ?? URGENCY.quest;
 
 export default function Board() {
+  useLocale(); // 언어가 바뀌면 부서 라벨까지 다시 그려져야 한다
   const router = useRouter();
   const [cards, setCards] = useState<BoardCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -146,15 +151,15 @@ export default function Board() {
             <View style={{ flexDirection: 'row', gap: 6, marginTop: 10 }}>
               <Counter label="URGENT" value={urgent} accent="#EF4444" />
               <Counter label="QUEST" value={quest} accent="#FACC15" />
-              <Counter label="완료" value={0} accent={colors.mintShadow} />
-              <Counter label="남은" value={cards.length} accent={C} />
+              <Counter label={t('board.cleared')} value={0} accent={colors.mintShadow} />
+              <Counter label={t('board.remaining')} value={cards.length} accent={C} />
             </View>
           </View>
         </Shadowed>
 
         {/* filter tabs */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 5, paddingVertical: 2, paddingTop: 10 }}>
-          <DeptTab id="ALL" label="전체" icon="sparkle" color={C} active={filter === 'ALL'} count={cards.length} onPress={() => setFilter('ALL')} />
+          <DeptTab id="ALL" label={t('board.all')} icon="sparkle" color={C} active={filter === 'ALL'} count={cards.length} onPress={() => setFilter('ALL')} />
           {presentDepts.map((d) => (
             <DeptTab key={d} id={d} label={DEPT_META[d]?.short ?? d} icon={DEPT_META[d]?.icon ?? 'hospital'} color={DEPT_META[d]?.color ?? C} active={filter === d} count={byDept[d].length} onPress={() => setFilter(d)} />
           ))}
@@ -175,7 +180,7 @@ export default function Board() {
                     <PixelIcon name={m?.icon ?? 'hospital'} color={C} size={17} sw={1.7} />
                   </View>
                 </Shadowed>
-                <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{m?.name ?? dept}</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{m ? t(m.nameKey) : dept}</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{list.length}건</Text>
               </View>
               <View style={{ gap: 8 }}>
@@ -187,7 +192,7 @@ export default function Board() {
         {shownDepts.length === 0 && (
           <View style={{ alignItems: 'center', gap: 6, borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', backgroundColor: colors.paper, paddingVertical: 28 }}>
             <PixelIcon name={DEPT_META[filter]?.icon ?? 'calendar'} color={C} size={28} sw={1.6} />
-            <Text style={{ fontFamily: fonts.body, fontSize: typeScale.caption, color: colors.textSoft, textAlign: 'center' }}>{DEPT_META[filter]?.name ?? filter}에 오늘 발생한 상황이 없어요.</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: typeScale.caption, color: colors.textSoft, textAlign: 'center' }}>{t('board.emptyDept', { dept: DEPT_META[filter] ? t(DEPT_META[filter].nameKey) : filter })}</Text>
             <Text style={{ fontFamily: fonts.body, fontSize: typeScale.caption, color: colors.textFaint }}>내일 다시 확인해보세요!</Text>
           </View>
         )}
@@ -198,8 +203,8 @@ export default function Board() {
             <Pressable onPress={onTopUp} disabled={topping || capReached} style={{ backgroundColor: capReached ? colors.paper : colors.yellow, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
               <PixelIcon name={capReached ? 'check' : 'play'} color={C} size={26} sw={1.7} />
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{capReached ? '오늘의 보상을 다 받았어요' : '광고 보고 새 상황 3건 열기'}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: capReached ? colors.textSoft : C, marginTop: 3, lineHeight: 15 }}>{capReached ? '자정이 지나면 새로운 현장이 열려요.' : '현장이 잠잠한가요? 짧은 광고를 보고 시나리오를 더 받아요.'}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{capReached ? t('board.rewardsDone') : t('board.watchAd')}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: capReached ? colors.textSoft : C, marginTop: 3, lineHeight: 15 }}>{capReached ? t('board.midnight') : t('board.quietHint')}</Text>
               </View>
               {topping ? <ActivityIndicator color={C} /> : !capReached && <PixelIcon name="play" color={C} size={18} sw={1.9} />}
             </Pressable>
@@ -273,10 +278,10 @@ function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
         {/* action rail */}
         <View style={{ flexDirection: 'row', gap: 6, marginTop: 9 }}>
           <View style={{ flex: 1 }}>
-            <PixelButton icon="pin" label="위치 보기" bg="#fff" shadowColor={C} fontSize={10} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
+            <PixelButton icon="pin" label={t('board.showPlace')} bg="#fff" shadowColor={C} fontSize={10} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
           </View>
           <View style={{ flex: 2 }}>
-            <PixelButton icon="play" label="진행하기" bg={colors.mint} shadowColor={colors.mintShadow} fontSize={11} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
+            <PixelButton icon="play" label={t('board.proceed')} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={11} borderWidth={2} paddingV={5} offset={2} onPress={onPress} full />
           </View>
         </View>
       </View>

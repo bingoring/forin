@@ -4,6 +4,7 @@ import { Tabs } from 'expo-router';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { CampusIcon, BoardIcon, LabIcon, MeIcon } from '@/components/TabIcons';
 import { PixelIcon } from '@/components/PixelIcon';
+import { t, useLocale } from '@/i18n';
 
 // Bottom nav: 홈 / 커리어 / 상황판 / 리뷰랩 / 프로필. 홈이 최좌측이자 앱의 기본
 // 진입 화면이다(handoff v21) — expo-router가 (tabs)/index.tsx를 첫 탭으로 잡는다. Black-line SVG icons (app's ink-outline
@@ -29,12 +30,12 @@ export default function TabsLayout() {
     >
       <Tabs.Screen
         name="index"
-        options={{ title: '홈', tabBarIcon: ({ color }) => <PixelIcon name="home" color={color as string} size={22} sw={1.8} /> }}
+        options={{ title: t('tab.home'), tabBarIcon: ({ color }) => <PixelIcon name="home" color={color as string} size={22} sw={1.8} /> }}
       />
-      <Tabs.Screen name="campus" options={{ title: '커리어', tabBarIcon: tabIcon(CampusIcon) }} />
-      <Tabs.Screen name="board" options={{ title: '상황판', tabBarIcon: tabIcon(BoardIcon) }} />
-      <Tabs.Screen name="lab" options={{ title: '리뷰랩', tabBarIcon: tabIcon(LabIcon) }} />
-      <Tabs.Screen name="me" options={{ title: '프로필', tabBarIcon: tabIcon(MeIcon) }} />
+      <Tabs.Screen name="campus" options={{ title: t('tab.career'), tabBarIcon: tabIcon(CampusIcon) }} />
+      <Tabs.Screen name="board" options={{ title: t('tab.board'), tabBarIcon: tabIcon(BoardIcon) }} />
+      <Tabs.Screen name="lab" options={{ title: t('tab.lab'), tabBarIcon: tabIcon(LabIcon) }} />
+      <Tabs.Screen name="me" options={{ title: t('tab.me'), tabBarIcon: tabIcon(MeIcon) }} />
     </Tabs>
   );
 }

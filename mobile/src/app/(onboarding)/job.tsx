@@ -1,5 +1,5 @@
 // Onboarding 2/4 — career path (handoff ScreenJob). MVP ships the nurse track;
-// others show "곧 열림" and aren't selectable. Carries selections to the level step.
+// others show t('job.comingSoon') and aren't selectable. Carries selections to the level step.
 import { Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
@@ -8,13 +8,16 @@ import { saveDraft } from '@/lib/onboardingDraft';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
+// nameKey, not t(...): this array is evaluated once at import, so a call here
+// would pin the labels to whatever language was active at startup.
 const JOBS = [
-  { code: 'nurse', name: '간호사', sub: 'Nurse · 종합병원', scenarios: 124, icon: 'hospital' as IconName, ready: true },
-  { code: 'swe', name: '소프트웨어 엔지니어', sub: 'SW Engineer · 스타트업', icon: 'chart' as IconName, ready: false },
-  { code: 'barista', name: '바리스타', sub: 'Barista · 카페', icon: 'cup' as IconName, ready: false },
-  { code: 'hotelier', name: '호텔리어', sub: 'Hotelier · 프론트', icon: 'pin' as IconName, ready: false },
+  { code: 'nurse', nameKey: 'job.nurse', sub: 'Nurse · General hospital', scenarios: 124, icon: 'hospital' as IconName, ready: true },
+  { code: 'swe', nameKey: 'job.swe', sub: 'SW Engineer · Startup', icon: 'chart' as IconName, ready: false },
+  { code: 'barista', nameKey: 'job.barista', sub: 'Barista · Café', icon: 'cup' as IconName, ready: false },
+  { code: 'hotelier', nameKey: 'job.hotelier', sub: 'Hotelier · Front desk', icon: 'pin' as IconName, ready: false },
 ];
 
 export default function Job() {
@@ -42,12 +45,12 @@ export default function Job() {
                   <PixelIcon name={j.icon} color={C} size={26} sw={1.6} />
                 </View>
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{j.name}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{t(j.nameKey)}</Text>
                   <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 2 }}>{j.sub}</Text>
                   <View style={{ flexDirection: 'row', gap: 6, marginTop: 6 }}>
                     {j.ready
-                      ? <><PixelChip label={`● ${j.scenarios}개 시나리오`} bg={colors.mint} /><PixelChip label="MVP" bg={colors.yellow} /></>
-                      : <PixelChip label="곧 열림" bg="#fff" />}
+                      ? <><PixelChip label={t('job.scenarioCount', { n: j.scenarios ?? 0 })} bg={colors.mint} /><PixelChip label="MVP" bg={colors.yellow} /></>
+                      : <PixelChip label={t('job.comingSoon')} bg="#fff" />}
                   </View>
                 </View>
                 {j.ready && <PixelIcon name="play" color={C} size={16} sw={1.8} />}
@@ -57,7 +60,7 @@ export default function Job() {
         </View>
 
         <View style={{ marginTop: 22 }}>
-          <PixelButton label="간호사로 계속" icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
+          <PixelButton label={t('job.continueNurse')} icon="play" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={next} />
         </View>
       </View>
     </View>

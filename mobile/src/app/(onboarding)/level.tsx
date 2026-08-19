@@ -11,15 +11,17 @@ import { syncOnboarded } from '@/lib/auth';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 const CEFR = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+// descKey, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
 const LEVELS = [
-  { code: 'A1', name: 'Beginner', desc: '인사 정도만 가능해요', tone: colors.peach },
-  { code: 'A2', name: 'Elementary', desc: '간단한 일상 대화가 가능해요', tone: colors.peach },
-  { code: 'B1', name: 'Intermediate', desc: '업무 대화는 떠듬떠듬...', tone: colors.mint },
-  { code: 'B2', name: 'Upper-Int', desc: '회의에서 의견을 낼 수 있어요', tone: colors.mint },
-  { code: 'C1', name: 'Advanced', desc: '전문 용어도 자신 있어요', tone: colors.yellow },
+  { code: 'A1', name: 'Beginner', descKey: 'level.a1', tone: colors.peach },
+  { code: 'A2', name: 'Elementary', descKey: 'level.a2', tone: colors.peach },
+  { code: 'B1', name: 'Intermediate', descKey: 'level.b1', tone: colors.mint },
+  { code: 'B2', name: 'Upper-Int', descKey: 'level.b2', tone: colors.mint },
+  { code: 'C1', name: 'Advanced', descKey: 'level.c1', tone: colors.yellow },
 ];
 
 export default function Level() {
@@ -50,7 +52,7 @@ export default function Level() {
       // today's ONE thing, not the curriculum list (handoff v21 §①b).
       router.replace('/(tabs)');
     } catch (e) {
-      Alert.alert('저장 실패', e instanceof Error ? e.message : '다시 시도해 주세요.');
+      Alert.alert(t('onboarding.saveFailed'), e instanceof Error ? e.message : t('common.retryHint'));
       setBusy(false);
     }
   };
@@ -91,7 +93,7 @@ export default function Level() {
                   </View>
                   <View style={{ flex: 1 }}>
                     <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{l.name}</Text>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 2 }}>{l.desc}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 2 }}>{t(l.descKey)}</Text>
                   </View>
                   {sel && (
                     <View style={{ width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
@@ -105,7 +107,7 @@ export default function Level() {
         </View>
 
         <View style={{ marginTop: 24 }}>
-          <PixelButton label={busy ? '' : '이대로 시작'} icon={busy ? undefined : 'play'} bg={colors.yellow} shadowColor={colors.yellowShadow} full disabled={busy} onPress={start} />
+          <PixelButton label={busy ? '' : t('onboarding.startNow')} icon={busy ? undefined : 'play'} bg={colors.yellow} shadowColor={colors.yellowShadow} full disabled={busy} onPress={start} />
           {busy && <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>}
         </View>
       </ScrollView>
