@@ -7,9 +7,14 @@ import { colors, fonts, type as typeScale } from '@/theme/tokens';
 import { InteriorScreen } from '@/map/InteriorScreen';
 import { DoorReveal } from '@/map/DoorReveal';
 import { FIXTURES } from '@/map/fixtures/er';
+import { localizeInterior } from '@/map/localize';
+import { useLocale } from '@/i18n';
 import type { Interior } from '@engine';
 
 export default function InteriorRoute() {
+  // Signage is derived from the fixture at load, so a language change has to
+  // re-derive it — hence `locale` in the effect's dependencies below.
+  const locale = useLocale();
   const { id, via, c, ex, ey, from, to, dept, dir } = useLocalSearchParams<{
     id: string; via?: string; c?: string; ex?: string; ey?: string;
     from?: string; to?: string; dept?: string; dir?: string;
@@ -51,21 +56,21 @@ export default function InteriorRoute() {
     // the server.
     const fixture = FIXTURES[id];
     if (fixture) {
-      setInterior(fixture);
+      setInterior(localizeInterior(fixture));
       return () => {
         alive = false;
       };
     }
     api
       .interior(id)
-      .then((data) => alive && setInterior(data))
+      .then((data) => alive && setInterior(localizeInterior(data)))
       .catch(() => {
         if (alive) setError(true);
       });
     return () => {
       alive = false;
     };
-  }, [id]);
+  }, [id, locale]);
 
   const center = (child: React.ReactNode) => (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cream, gap: 12 }}>

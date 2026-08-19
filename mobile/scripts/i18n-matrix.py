@@ -21,6 +21,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "src" / "i18n" / "catalog"
 LOCALES = ["ko", "en", "ja", "de"]
+FIXTURES = ROOT / "src" / "map"
+# The fields in a map fixture that hold display text (mirrors map/localize.ts).
+TEXT_KEYS = ("name", "sub", "label", "text", "markerLabel", "dept", "procedureLabel", "procedureSub")
+HANGUL_LIT = re.compile(
+    r"\b(?:" + "|".join(TEXT_KEYS) + r")\s*:\s*(?P<q>['\"])(?P<v>[^'\"\n]*[\uAC00-\uD7A3][^'\"\n]*)(?P=q)"
+)
+MAP_ENTRY = re.compile(
+    r"""^\s*(?P<kq>['"])(?P<key>[^'"\n]*[\uAC00-\uD7A3][^'"\n]*)(?P=kq)\s*:\s*"""
+    r"""(?P<vq>['"])(?P<val>[^'"\n]*)(?P=vq)\s*,\s*$"""
+)
 LOCALE_NAMES = {"ko": "한국어", "en": "English", "ja": "日本語", "de": "Deutsch"}
 
 # One entry per line: 'key': 'value',  — either quote style, escapes allowed.
@@ -77,6 +87,38 @@ def translated(cats: dict, base: dict, loc: str, key: str) -> bool:
     return v != base[key] or not HANGUL.search(base[key] or "")
 
 
+def fixture_strings() -> list[str]:
+    """Every distinct Korean display string in the interior fixtures.
+
+    This is the universe the map catalogs are measured against. Without it the page
+    would report "100%" for a catalog holding 90 of 1,035 strings — a number that
+    claims the work is done because it only counted what was already there.
+    """
+    seen: dict[str, None] = {}
+    for path in sorted(FIXTURES.rglob("*.ts")) + sorted(FIXTURES.rglob("*.tsx")):
+        if ".test." in path.name:
+            continue
+        text = path.read_text(encoding="utf-8")
+        text = re.sub(r"//[^\n]*", "", text)
+        text = re.sub(r"/\*.*?\*/", "", text, flags=re.S)
+        for m in HANGUL_LIT.finditer(text):
+            seen.setdefault(m.group("v"), None)
+    return list(seen)
+
+
+def map_catalog(locale: str) -> dict:
+    """Parse a value-keyed interior catalog (map_en.ts and friends)."""
+    path = CATALOG / f"map_{locale}.ts"
+    if not path.exists():
+        return {}
+    out = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        m = MAP_ENTRY.match(line)
+        if m:
+            out[unescape(m.group("key"))] = unescape(m.group("val"))
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("-o", "--out", default=str(ROOT / "scripts" / "out" / "i18n-matrix.html"))
@@ -96,6 +138,25 @@ def main() -> None:
         done = len(keys) if loc == "ko" else sum(1 for k in keys if translated(cats, base, loc, k))
         stats[loc] = {"done": done, "total": len(keys)}
 
+    # Interior signage is a second, value-keyed catalog: the Korean IS the key.
+    map_keys = fixture_strings()
+    map_cats = {"ko": {k: k for k in map_keys}}
+    map_stats = {"ko": {"done": len(map_keys), "total": len(map_keys)}}
+    for loc in LOCALES:
+        if loc == "ko":
+            continue
+        cat = map_catalog(loc)
+        map_cats[loc] = cat
+        map_stats[loc] = {"done": sum(1 for k in map_keys if cat.get(k)), "total": len(map_keys)}
+
+    for k in map_keys:
+        groups.setdefault("interior", []).append(k)
+    keys = keys + map_keys
+    for loc in LOCALES:
+        cats[loc] = {**cats[loc], **map_cats[loc]}
+        stats[loc] = {"done": stats[loc]["done"] + map_stats[loc]["done"],
+                      "total": stats[loc]["total"] + map_stats[loc]["total"]}
+
     data = {"locales": LOCALES, "names": LOCALE_NAMES, "keys": keys,
             "groups": {g: ks for g, ks in groups.items()},
             "cats": cats, "stats": stats}
@@ -104,7 +165,8 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page(data), encoding="utf-8")
     verify(out)
-    print(f"{out}  ·  {len(keys)} keys × {len(LOCALES)} locales")
+    print(f"{out}  ·  {len(keys)} keys × {len(LOCALES)} locales"
+          f"  (UI {len(keys) - len(map_keys)} + interior {len(map_keys)})")
     for loc in LOCALES:
         s = stats[loc]
         print(f"  {loc}  {s['done']:>4}/{s['total']}  {100 * s['done'] // max(1, s['total']):>3}%")

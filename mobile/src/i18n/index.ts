@@ -6,7 +6,7 @@
 // ends up half-translated. Screens call useLocale() once so a language change
 // repaints them, then use t() freely.
 import { useSyncExternalStore } from 'react';
-import { BASE_LOCALE, CATALOGS, type Locale } from './locales';
+import { BASE_LOCALE, CATALOGS, MAP_CATALOGS, type Locale } from './locales';
 import { getLocale, subscribe } from './store';
 
 export { getLocale, setLocale, loadLocale, adoptProfileLocale, localeWasChosen, onLocaleChange } from './store';
@@ -56,4 +56,18 @@ function interpolate(s: string, vars: Vars): string {
     // the caller forgot, and it shows up in review instead of shipping silently.
     return v === undefined ? whole : String(v);
   });
+}
+
+/**
+ * Interior signage and object labels, keyed by the authored Korean itself.
+ *
+ * A separate catalog from the UI keys, and keyed by value rather than by name: the
+ * map fixtures are pixel-verified ports, so the alternative — rewriting 1,131 field
+ * values into key strings — would be a large edit through the files a test suite
+ * guards byte for byte. See map/localize.ts for the full reasoning.
+ */
+export function mapText(ko: string): string {
+  const locale = getLocale();
+  if (locale === BASE_LOCALE) return ko;
+  return MAP_CATALOGS[locale]?.[ko] ?? ko;
 }

@@ -8,6 +8,9 @@ import { ko } from './catalog/ko';
 import { en } from './catalog/en';
 import { ja } from './catalog/ja';
 import { de } from './catalog/de';
+import { mapEn } from './catalog/map_en';
+import { mapJa } from './catalog/map_ja';
+import { mapDe } from './catalog/map_de';
 
 /** The canonical locale. Its catalog defines the key set everything else is measured against. */
 export const BASE_LOCALE = 'ko';
@@ -15,6 +18,14 @@ export const BASE_LOCALE = 'ko';
 export type Locale = 'ko' | 'en' | 'ja' | 'de';
 
 export const CATALOGS: Record<Locale, Record<string, string>> = { ko, en, ja, de };
+
+/**
+ * Interior signage, keyed by the authored Korean. No `ko` entry by design — the
+ * fallback IS the Korean, so an entry for it would duplicate the fixture.
+ */
+export const MAP_CATALOGS: Partial<Record<Locale, Record<string, string>>> = {
+  en: mapEn, ja: mapJa, de: mapDe,
+};
 
 // Statically imported, all four. Metro resolves imports statically, so a computed
 // path would not be bundled at all — the same constraint that made sfx.ts spell

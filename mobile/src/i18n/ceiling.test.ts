@@ -12,6 +12,13 @@ import { join } from 'path';
 
 // Per-area ceilings. LOWER these as extraction proceeds; never raise one to make a
 // commit pass — put the string in the catalog instead.
+//
+// src/map is the exception and does not fall: the interior fixtures keep their
+// Korean because that string IS the catalog key (map/localize.ts explains why the
+// alternative — rewriting 1,131 values in pixel-verified files — is worse). Its
+// ceiling therefore guards against NEW hardcoded Korean in the map engine rather
+// than tracking translation progress; that progress is measured by
+// scripts/i18n-matrix.py and the orphan test in map/localize.test.ts.
 const CEILINGS: Record<string, number> = {
   'src/app': 0,
   'src/components': 0,
