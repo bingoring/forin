@@ -26,6 +26,7 @@ import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -50,7 +51,7 @@ export default function QuizRoute() {
         ) : (
           <>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff' }}>퀴즈를 불러오지 못했습니다</Text>
-            <PixelButton label="‹ 돌아가기" onPress={() => router.back()} />
+            <PixelButton label={t('common.back')} onPress={() => router.back()} />
           </>
         )}
       </View>
@@ -134,7 +135,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
 
       {/* top exit / zone */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 7 }}>
-        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} onPress={onExit} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
+        <PixelButton label={t('quiz.exit')} bg="#fff" shadowColor={C} offset={2} onPress={onExit} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
           {!!progress && progress.total > 1 && (
             <Shadowed offset={2} shadowColor={colors.mintShadow}>
@@ -229,7 +230,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
               {checked && (
                 <View style={{ marginTop: 16, backgroundColor: allCorrect ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>
-                    {allCorrect ? '✓ 정답입니다!' : '✗ 다시 시도해 보세요'}
+                    {allCorrect ? t('quiz.correct') : t('quiz.wrong')}
                   </Text>
                 </View>
               )}
@@ -237,14 +238,14 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
 
             {/* footer */}
             <View style={{ paddingHorizontal: 14, paddingTop: 10, paddingBottom: 12, borderTopWidth: 3, borderTopColor: '#2A252244', borderStyle: 'dotted', backgroundColor: colors.paper, flexDirection: 'row', gap: 8 }}>
-              <PixelButton label="건너뛰기" bg="#fff" shadowColor={C} onPress={onExit} style={{ flex: 1 }} />
+              <PixelButton label={t('quiz.skip')} bg="#fff" shadowColor={C} onPress={onExit} style={{ flex: 1 }} />
               <View style={{ flex: 2 }}>
                 {allCorrect ? (
-                  <PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full />
+                  <PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full />
                 ) : checked ? (
-                  <PixelButton label="↻ 다시 풀기" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => { setChecked(false); setSlots(Array(blankCount).fill(null)); }} full />
+                  <PixelButton label={t('quiz.retry')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => { setChecked(false); setSlots(Array(blankCount).fill(null)); }} full />
                 ) : (
-                  <PixelButton label="✓ 제출하기" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allFilled} onPress={() => setChecked(true)} full />
+                  <PixelButton label={t('quiz.submit')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allFilled} onPress={() => setChecked(true)} full />
                 )}
               </View>
             </View>

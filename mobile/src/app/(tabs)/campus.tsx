@@ -21,6 +21,7 @@ import { FloorList } from '@/components/campus/FloorList';
 import { StepSheet } from '@/components/campus/StepSheet';
 import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
 import { ProgressBar, Shadowed } from '@/components/campus/parts';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -97,8 +98,8 @@ export default function Campus() {
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 4, marginBottom: 8 }}>{resume.name}</Text>
               <ProgressBar done={resume.done} total={resume.total} />
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 9 }}>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: C }}>다음 · {resume.next ?? '준비 중'}</Text>
-                <PixelButton icon="play" label="이어하기" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => open(resumeStep?.scenarioId)} />
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: C }}>다음 · {resume.next ?? t('campus.resumePending')}</Text>
+                <PixelButton icon="play" label={t('campus.resume')} bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} offset={2} fontSize={12.5} borderWidth={2} paddingV={7} paddingH={13} onPress={() => open(resumeStep?.scenarioId)} />
               </View>
             </View>
           </Shadowed>
@@ -123,7 +124,7 @@ export default function Campus() {
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 12, paddingHorizontal: 14 }}>
         <Shadowed offset={3}>
           <PixelButton
-            icon="map" label="커리어 탐험 모드" bg={colors.lilac} shadowColor={C}
+            icon="map" label={t('campus.exploreTitle')} bg={colors.lilac} shadowColor={C}
             fontSize={12} borderWidth={3} paddingV={11} full
             onPress={() => router.push('/interior/CAMPUS-00001')}
           />

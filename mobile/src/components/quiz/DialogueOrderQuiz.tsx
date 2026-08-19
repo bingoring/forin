@@ -8,12 +8,13 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { t } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 const speakerStyle = (track?: string) =>
   track === 'nurse' || track === 'player'
-    ? { bg: colors.mint, label: '간호사' }
-    : { bg: colors.peach, label: '환자' };
+    ? { bg: colors.mint, label: t('role.nurse') }
+    : { bg: colors.peach, label: t('role.patient') };
 
 export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -44,10 +45,10 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="순서 제출" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton label={t('quiz.submitOrder')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}

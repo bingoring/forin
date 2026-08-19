@@ -7,6 +7,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { t } from '@/i18n';
 
 export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -25,10 +26,10 @@ export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && correct
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setVal(g.start); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="✓ 설정 제출" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setVal(g.start); }} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton label={t('quiz.submitSetting')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => setChecked(true)} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
@@ -54,8 +55,8 @@ export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
 
       {/* steppers */}
       <View style={{ flexDirection: 'row', gap: 8, marginTop: 12 }}>
-        <View style={{ flex: 1 }}><PixelButton label="낮춤" icon="chevron-down" bg="#fff" shadowColor={C} onPress={() => step(-1)} disabled={checked} full /></View>
-        <View style={{ flex: 1 }}><PixelButton label="올림" icon="chevron-up" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={() => step(1)} disabled={checked} full /></View>
+        <View style={{ flex: 1 }}><PixelButton label={t('quiz.down')} icon="chevron-down" bg="#fff" shadowColor={C} onPress={() => step(-1)} disabled={checked} full /></View>
+        <View style={{ flex: 1 }}><PixelButton label={t('quiz.up')} icon="chevron-up" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={() => step(1)} disabled={checked} full /></View>
       </View>
 
       {checked && <ResultBanner correct={correct} />}

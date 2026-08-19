@@ -9,6 +9,7 @@ import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/compone
 import { PixelButton } from '@/components/PixelButton';
 import { useEffect } from 'react';
 import { playSfx } from '@/lib/sfx';
+import { t } from '@/i18n';
 
 export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -28,8 +29,8 @@ export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: Qu
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && correct
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
-          : <View style={{ flex: 1 }}><PixelButton label={checked ? '↻ 다시' : '✓ 답 확인'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={picked === null} onPress={() => (checked ? (setChecked(false), setPicked(null)) : setChecked(true))} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          : <View style={{ flex: 1 }}><PixelButton label={checked ? t('quiz.retry') : t('quiz.check')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={picked === null} onPress={() => (checked ? (setChecked(false), setPicked(null)) : setChecked(true))} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}

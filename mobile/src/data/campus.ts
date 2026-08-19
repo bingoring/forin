@@ -12,24 +12,32 @@ import { colors } from '@/theme/tokens';
 import type { IconName } from '@/components/PixelIcon';
 
 export type StepKind = 'dlg' | 'quiz' | 'event' | 'boss';
-export const STEP_META: Record<StepKind, { icon: IconName; label: string; bg: string }> = {
-  dlg: { icon: 'speech', label: '대화', bg: colors.blue },
-  quiz: { icon: 'clipboard', label: '퀴즈', bg: colors.yellow },
-  event: { icon: 'bolt', label: '돌발 이벤트', bg: colors.peach },
-  boss: { icon: 'trophy', label: '챕터 시험', bg: colors.pink },
+// labelKey, not a label: this is a module constant, so a t() call would freeze the
+// text to the language at startup (see i18n/module-scope.test.ts).
+export const STEP_META: Record<StepKind, { icon: IconName; labelKey: string; bg: string }> = {
+  dlg: { icon: 'speech', labelKey: 'step.kind.dlg', bg: colors.blue },
+  quiz: { icon: 'clipboard', labelKey: 'step.kind.quiz', bg: colors.yellow },
+  event: { icon: 'bolt', labelKey: 'step.kind.event', bg: colors.peach },
+  boss: { icon: 'trophy', labelKey: 'step.kind.boss', bg: colors.pink },
 };
 
-/** Per-building colour + icon, keyed by the server's building name. */
-export const BUILDING_STYLE: Record<string, { icon: IconName; accent: string; sub: string }> = {
-  '본관': { icon: 'hospital', accent: '#D14B3D', sub: '응급 · 수술 · 중환자 · 병동' },
-  '별관 1': { icon: 'baby', accent: '#C2487E', sub: '여성 · 소아 · 신생아' },
-  '별관 2': { icon: 'sprout', accent: '#1E8A5B', sub: '재활 · 정신 · 종양 · 완화' },
-  '별관 3': { icon: 'microscope', accent: '#0E7490', sub: '영상 · 외래 · 주사 · 내시경' },
-  '지원동': { icon: 'box', accent: '#6E6354', sub: '영안실 · 공급 · 휴게 · 시뮬랩' },
+/**
+ * Per-building colour + icon, keyed by the server's building name.
+ *
+ * The KEYS stay Korean because they are not display text — they are the exact
+ * strings GET /me/curriculum sends, and the lookup has to match them. The subtitle
+ * is display text, so it carries a translation key.
+ */
+export const BUILDING_STYLE: Record<string, { icon: IconName; accent: string; subKey: string }> = {
+  '본관': { icon: 'hospital', accent: '#D14B3D', subKey: 'building.main.sub' },
+  '별관 1': { icon: 'baby', accent: '#C2487E', subKey: 'building.annex1.sub' },
+  '별관 2': { icon: 'sprout', accent: '#1E8A5B', subKey: 'building.annex2.sub' },
+  '별관 3': { icon: 'microscope', accent: '#0E7490', subKey: 'building.annex3.sub' },
+  '지원동': { icon: 'box', accent: '#6E6354', subKey: 'building.support.sub' },
 };
 
 /** Fallback for a building the server adds before this file learns its colour. */
-export const DEFAULT_BUILDING_STYLE = { icon: 'hospital' as IconName, accent: colors.textSoft, sub: '' };
+export const DEFAULT_BUILDING_STYLE = { icon: 'hospital' as IconName, accent: colors.textSoft, subKey: '' };
 
 // Departments with a walkable interior (INT-<CODE>-00001). Listed rather than
 // derived because the tile fixtures are bundled per-department modules — a walk

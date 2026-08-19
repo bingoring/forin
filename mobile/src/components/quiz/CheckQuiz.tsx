@@ -7,6 +7,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { t } from '@/i18n';
 
 export function CheckQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -25,10 +26,10 @@ export function CheckQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setSel(new Set()); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="✓ 제출하기" bg={colors.mint} shadowColor={colors.mintShadow} disabled={sel.size === 0} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setSel(new Set()); }} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton label={t('quiz.submit')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={sel.size === 0} onPress={() => setChecked(true)} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}

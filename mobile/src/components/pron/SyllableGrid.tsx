@@ -6,6 +6,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PronCard } from './PronCard';
+import { t, useLocale } from '@/i18n';
 
 export type SyllableChip = { label: string; band: 'ok' | 'weak' | 'bad' };
 
@@ -15,10 +16,11 @@ const BAND_COLOR: Record<SyllableChip['band'], string> = {
   bad: colors.red,
 };
 
+// Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
 const LEGEND: [string, string][] = [
-  ['좋아요', colors.mint],
-  ['애매해요', colors.yellow],
-  ['다시!', colors.red],
+  ['pron.bandOk', colors.mint],
+  ['pron.bandWeak', colors.yellow],
+  ['pron.bandBad', colors.red],
 ];
 
 export function SyllableGrid({ syllables }: { syllables: SyllableChip[] }) {
@@ -35,10 +37,10 @@ export function SyllableGrid({ syllables }: { syllables: SyllableChip[] }) {
         ))}
       </View>
       <View style={styles.legend}>
-        {LEGEND.map(([label, color]) => (
-          <View key={label} style={styles.legendItem}>
+        {LEGEND.map(([labelKey, color]) => (
+          <View key={labelKey} style={styles.legendItem}>
             <View style={[styles.swatch, { backgroundColor: color }]} />
-            <Text style={styles.legendText}>{label}</Text>
+            <Text style={styles.legendText}>{t(labelKey)}</Text>
           </View>
         ))}
       </View>

@@ -116,10 +116,10 @@ export default function Me() {
   };
 
   const confirmSignOut = () => {
-    Alert.alert('로그아웃', '이 기기에서 로그아웃할까요?\n다시 로그인하면 학습 기록은 그대로예요.', [
-      { text: '취소', style: 'cancel' },
+    Alert.alert(t('settings.account.signOut'), t('settings.account.signOutConfirm'), [
+      { text: t('common.cancel'), style: 'cancel' },
       {
-        text: '로그아웃',
+        text: t('settings.account.signOut'),
         style: 'destructive',
         onPress: async () => {
           setSigningOut(true);
@@ -128,7 +128,7 @@ export default function Me() {
             router.replace('/login');
           } catch {
             setSigningOut(false);
-            Alert.alert('로그아웃 실패', '잠시 후 다시 시도해 주세요.');
+            Alert.alert(t('settings.account.signOutFailed'), t('common.retryHint'));
           }
         },
       },
@@ -431,7 +431,7 @@ export default function Me() {
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>리뷰랩 · 오답노트</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 변환됐어요.</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>t('lab.likeALocal')</Text> 카드로 변환됐어요.</Text>
                 </View>
               </View>
               {/* corrected-phrase example box */}
@@ -440,7 +440,7 @@ export default function Me() {
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>→ <Text style={{ backgroundColor: colors.mint }}>Can you tell me about your pain?</Text></Text>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
-                <PixelButton icon="chevron-right" label="리뷰랩 열기" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={5} paddingH={10} onPress={() => router.push('/lab')} />
+                <PixelButton icon="chevron-right" label={t('me.openLab')} bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={5} paddingH={10} onPress={() => router.push('/lab')} />
               </View>
             </View>
           </Shadowed>

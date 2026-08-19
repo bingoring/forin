@@ -10,6 +10,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { t } from '@/i18n';
 
 const RANK_COLOR = ['#EF4444', '#F97316', '#FACC15', '#34D399', '#60A5FA'];
 // Fixed 5-level Emergency Severity Index.
@@ -60,7 +61,7 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         isRight
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : (
             <>
               <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -68,8 +69,8 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
                   선택: {sel ? <Text style={{ color: LEVELS[sel - 1].color }}>LV {sel}</Text> : <Text style={{ color: colors.textFaint }}>—</Text>}
                 </Text>
               </View>
-              <PixelButton label="↺ 다시" bg="#fff" shadowColor={C} fontSize={11} disabled={sel === null && !checked} onPress={() => { setSel(null); setChecked(false); }} style={{ flex: 1 }} />
-              <PixelButton label="✓ 확정" bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} disabled={sel === null} onPress={() => setChecked(true)} style={{ flex: 1 }} />
+              <PixelButton label={t('quiz.reset')} bg="#fff" shadowColor={C} fontSize={11} disabled={sel === null && !checked} onPress={() => { setSel(null); setChecked(false); }} style={{ flex: 1 }} />
+              <PixelButton label={t('quiz.confirm')} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} disabled={sel === null} onPress={() => setChecked(true)} style={{ flex: 1 }} />
             </>
           )
       }
@@ -150,7 +151,7 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
                 {(showCorrect || (selected && !checked)) && (
                   <View style={{ justifyContent: 'center', paddingHorizontal: 8 }}>
                     <View style={{ backgroundColor: l.color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 6, paddingVertical: 1 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{showCorrect ? '✓ 정답' : '✓ 선택'}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{showCorrect ? t('quiz.answer') : t('quiz.picked')}</Text>
                     </View>
                   </View>
                 )}
@@ -165,7 +166,7 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
       {checked && (
         <View style={{ marginTop: 12 }}>
           <View style={{ backgroundColor: isRight ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{isRight ? '✓ 정확한 판정이에요!' : `✗ 정답은 LV ${correct} 예요. 근거를 확인하세요.`}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{isRight ? t('quiz.triageRight') : t('quiz.triageWrong', { level: correct })}</Text>
           </View>
           {!!c.reasoning?.length && (
             <View style={{ marginTop: 10 }}>
@@ -210,10 +211,10 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton icon="alert" label="우선순위 제출" bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton icon="alert" label={t('quiz.submitPriority')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}

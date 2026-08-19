@@ -10,6 +10,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { t } from '@/i18n';
 
 const KEYS = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', '⌫'];
 
@@ -47,13 +48,13 @@ export function CalcQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && correct
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setEntry(''); }} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setEntry(''); }} full /></View>
             : (
               <>
                 {!!c.secondCheck && <View style={{ flex: 1, justifyContent: 'center' }}><Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>2nd check: <Text style={{ fontFamily: fonts.heading, color: C }}>{c.secondCheck}</Text></Text></View>}
-                <View style={{ flex: 1 }}><PixelButton label={rich ? '✓ 더블체크' : '✓ 계산 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!entry} onPress={() => setChecked(true)} full /></View>
+                <View style={{ flex: 1 }}><PixelButton label={rich ? t('quiz.doubleCheck') : t('quiz.submitCalc')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!entry} onPress={() => setChecked(true)} full /></View>
               </>
             )
       }

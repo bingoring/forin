@@ -9,6 +9,7 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useEffect } from 'react';
 import { playSfx } from '@/lib/sfx';
+import { t } from '@/i18n';
 
 export const C = colors.ink;
 
@@ -46,7 +47,7 @@ export function QuizShell({ title, sub, zone, onExit, progress, children, footer
 
       {/* top exit / zone */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 7 }}>
-        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} sfx={false} onPress={() => { playSfx('back'); onExit(); }} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
+        <PixelButton label={t('quiz.exit')} bg="#fff" shadowColor={C} offset={2} sfx={false} onPress={() => { playSfx('back'); onExit(); }} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
           {!!progress && progress.total > 1 && (
             <Shadowed offset={2} shadowColor={colors.mintShadow}>
@@ -133,7 +134,7 @@ export function ResultBanner({ correct }: { correct: boolean }) {
 
   return (
     <View style={{ marginTop: 16, backgroundColor: correct ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{correct ? '✓ 정답입니다!' : '✗ 다시 시도해 보세요'}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{correct ? t('quiz.correct') : t('quiz.wrong')}</Text>
     </View>
   );
 }

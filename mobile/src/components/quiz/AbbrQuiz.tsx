@@ -10,6 +10,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 import { playSfx } from '@/lib/sfx';
+import { t } from '@/i18n';
 
 export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const c = quiz.content!;
@@ -43,10 +44,10 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         !cardSolved
-          ? <View style={{ flex: 1 }}><PixelButton label="정답을 고르세요" bg="#fff" shadowColor={C} disabled onPress={() => {}} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.pickAnswer')} bg="#fff" shadowColor={C} disabled onPress={() => {}} full /></View>
           : isLast
-            ? <View style={{ flex: 1 }}><PixelButton label={`✓ 완료 · ${score}/${deck.length}`} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allSolved} onPress={onComplete} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label="다음" icon="play" bg={colors.mint} shadowColor={colors.mintShadow} onPress={next} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finishScore', { score, total: deck.length })} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allSolved} onPress={onComplete} full /></View>
+            : <View style={{ flex: 1 }}><PixelButton label={t('common.next')} icon="play" bg={colors.mint} shadowColor={colors.mintShadow} onPress={next} full /></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
@@ -63,7 +64,7 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       <Shadowed offset={4}>
         <View style={{ backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 22, alignItems: 'center' }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(40), color: colors.cream, letterSpacing: 2 }}>{card?.term}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: '#94A3B8', marginTop: 4 }}>{cardSolved ? '정답! 다음으로' : '이 약어의 뜻은?'}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: '#94A3B8', marginTop: 4 }}>{cardSolved ? t('quiz.correctNext') : t('quiz.abbrPrompt')}</Text>
         </View>
       </Shadowed>
 

@@ -12,6 +12,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { Shadowed } from './parts';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 const PAGE = 20;
@@ -68,6 +69,11 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
       .finally(() => { loadingRef.current = false; });
   }, [code, hasMore]);
 
+  // '완료' is not a label here — it is the value GET /me/situations puts in `tag`,
+  // and the same string is then rendered. Translating these three comparisons would
+  // break the match while leaving the display Korean, so they stay until the server
+  // sends a tag CODE alongside its label (i18n build-spec P3). The ratchet's
+  // components ceiling accounts for exactly these three.
   const cleared = sits.filter((s) => s.tag === '완료').length;
   const nextSit = sits.find((s) => s.tag !== '완료')?.scenarioId;
   const curDone = target ? target.curricula.filter((c) => c.state === 'done').length : 0;
@@ -101,8 +107,8 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
           >
             <View style={{ flexDirection: 'row', gap: 8, marginBottom: 14 }}>
               {[
-                ['커리큘럼', `${curDone}/${target.curricula.length}`],
-                ['해결한 상황', sits.length ? `${cleared}/${sits.length}${hasMore ? '+' : ''}` : '—'],
+                [t('campus.deptCurricula'), `${curDone}/${target.curricula.length}`],
+                [t('campus.deptCleared'), sits.length ? `${cleared}/${sits.length}${hasMore ? '+' : ''}` : '—'],
               ].map(([k, v], i) => (
                 <Shadowed key={i} offset={2.5} style={{ flex: 1 }}>
                   <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 7, paddingHorizontal: 6, alignItems: 'center' }}>
@@ -134,7 +140,7 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
                       <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{s.name}</Text>
                       <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
                     </View>
-                    <PixelButton label={done ? '복습' : '시작'} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
+                    <PixelButton label={done ? t('common.review') : t('common.start')} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
                   </View>
                 </Shadowed>
               );
@@ -148,9 +154,9 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
 
           <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: colors.cream, borderTopWidth: 3, borderTopColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', gap: 8 }}>
             <View style={{ flex: 1 }}>
-              <PixelButton icon="play" label="다음 상황 시작" bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} fontSize={13} borderWidth={2.5} paddingV={10} disabled={!nextSit} onPress={() => onStart(nextSit)} full />
+              <PixelButton icon="play" label={t('campus.deptNextSituation')} bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} fontSize={13} borderWidth={2.5} paddingV={10} disabled={!nextSit} onPress={() => onStart(nextSit)} full />
             </View>
-            <PixelButton icon="map" label="걸어보기" bg={colors.lilac} shadowColor={C} fontSize={12} borderWidth={2.5} paddingV={10} paddingH={12} onPress={() => onWalk(target.deptCode)} />
+            <PixelButton icon="map" label={t('campus.deptWalk')} bg={colors.lilac} shadowColor={C} fontSize={12} borderWidth={2.5} paddingV={10} paddingH={12} onPress={() => onWalk(target.deptCode)} />
           </View>
         </View>
       )}

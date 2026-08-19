@@ -8,15 +8,17 @@ import { PixelIcon } from '@/components/PixelIcon';
 import type { CheerPreset } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 const MAX = 60;
 
-const PRESETS: { key: CheerPreset; label: string }[] = [
-  { key: 'well_done', label: '잘하고 있어요' },
-  { key: 'fighting', label: '오늘도 화이팅' },
-  { key: 'streak', label: '연속 대단해요' },
-  { key: 'rest', label: '무리하지 말아요' },
+// labelKey, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
+const PRESETS: { key: CheerPreset; labelKey: string }[] = [
+  { key: 'well_done', labelKey: 'cheer.doingWell' },
+  { key: 'fighting', labelKey: 'cheer.goToday' },
+  { key: 'streak', labelKey: 'cheer.streakGreat' },
+  { key: 'rest', labelKey: 'cheer.takeItEasy' },
 ];
 
 export function CheerSheet({ visible, name, activity, onSend, onClose }: {
@@ -73,7 +75,7 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
                 }}
               >
                 <PixelIcon name={p.key === 'rest' ? 'moon' : p.key === 'streak' ? 'flame' : 'clap'} color={C} size={15} sw={1.7} />
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C }}>{p.label}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C }}>{t(p.labelKey)}</Text>
               </Pressable>
             );
           })}
@@ -83,7 +85,7 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
           <TextInput
             value={message}
             onChangeText={(v) => setMessage([...v].slice(0, MAX).join(''))}
-            placeholder="한마디 남기기 (선택)"
+            placeholder={t('cheer.notePlaceholder')}
             placeholderTextColor={colors.textFaint}
             multiline
             style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17, minHeight: 40 }}

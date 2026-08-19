@@ -21,7 +21,7 @@ const C = colors.ink;
 
 // Parse the scenario's authored XP reward ("+ 120 XP" → 120); default 100.
 function baseXpOf(s: ScenarioDetail | null): number {
-  const r = s?.briefing?.rewards?.find((x) => x.label.includes('경험치') || /xp/i.test(x.value));
+  const r = s?.briefing?.rewards?.find((x) => x.label.includes(t('result.xp')) || /xp/i.test(x.value));
   const n = r ? parseInt(r.value.replace(/[^0-9]/g, ''), 10) : NaN;
   return Number.isFinite(n) && n > 0 ? n : ECON.scenarioBaseXP;
 }
@@ -113,8 +113,8 @@ export default function ResultRoute() {
 
   const onShare = () => {
     const lv = after ? ` (Lv.${after.level}${after.streakCurrent > 1 ? ` · ${after.streakCurrent}일 연속` : ''})` : '';
-    const verb = passed ? '클리어하고' : '연습하고';
-    Share.share({ message: `forin에서 "${scenario?.title || '시나리오'}"를 ${verb} +${awardedXp} XP를 얻었어요!${lv}` }).catch(() => {});
+    const verb = passed ? t('result.verbCleared') : t('result.verbPracticed');
+    Share.share({ message: t('result.shareBody', { title: scenario?.title || t('result.aScenario'), verb, xp: awardedXp, lv }) }).catch(() => {});
   };
 
   const titleColor = passed ? colors.yellow : colors.peachShadow;
@@ -130,15 +130,15 @@ export default function ResultRoute() {
 
       {/* topbar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, flexDirection: 'row', justifyContent: 'space-between', zIndex: 3 }}>
-        <PixelButton label="‹ 맵으로" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.replace('/campus')} />
-        <PixelButton label="↗ 공유" bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={onShare} />
+        <PixelButton label={t('result.backToMap')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.replace('/campus')} />
+        <PixelButton label={t('result.share')} bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={onShare} />
       </View>
 
       <View style={{ paddingHorizontal: 22, paddingTop: 80, alignItems: 'center', zIndex: 2 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? 'SCENARIO CLEAR!' : 'GOOD TRY · 재도전'}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? 'SCENARIO CLEAR!' : t('result.goodTry')}</Text>
         <View style={{ marginTop: 6 }}>
-          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: fs(34), color: titleColor }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(34), color: C }}>{passed ? '참 잘했어요!' : '조금 더!'}</Text>
+          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: fs(34), color: titleColor }}>{passed ? t('result.wellDone') : t('result.almost')}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(34), color: C }}>{passed ? t('result.wellDone') : t('result.almost')}</Text>
         </View>
         {!!subtitle && <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 8 }}>{subtitle}</Text>}
 
@@ -181,7 +181,7 @@ export default function ResultRoute() {
         ) : (
           <View style={{ marginTop: 16, marginBottom: 16, alignItems: 'center', gap: 4 }}>
             <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>다시 도전하면 완료로 인정돼요</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>이 상황은 아직 '재도전'이에요</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>이 상황은 아직 t('result.retry')이에요</Text>
           </View>
         )}
 
@@ -201,7 +201,7 @@ export default function ResultRoute() {
 
             {!graded && (
               <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>"오늘 당신은 환자에게 따뜻한 미소를 주었습니다."</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>t('result.warmSmile')</Text>
               </View>
             )}
           </View>
@@ -209,9 +209,9 @@ export default function ResultRoute() {
 
         {/* footer */}
         <View style={{ flexDirection: 'row', gap: 8, marginTop: 16, alignSelf: 'stretch' }}>
-          <PixelButton icon="note" label="오답노트 보기" bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
+          <PixelButton icon="note" label={t('result.openNotes')} bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
           <View style={{ flex: 1 }}>
-            <PixelButton icon="play" label="다음 시나리오" bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
+            <PixelButton icon="play" label={t('result.nextScenario')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
           </View>
         </View>
       </View>
@@ -236,7 +236,7 @@ function GradeDetail({ grade }: { grade: ScenarioGrade }) {
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <View style={{ alignSelf: 'flex-start', backgroundColor: good ? colors.mint : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 6, marginBottom: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{good ? '완료 · PASS' : '재도전 · RETRY'}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{good ? t('result.pass') : t('result.retryLabel')}</Text>
             </View>
             {!!grade.headline && <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{grade.headline}</Text>}
           </View>
@@ -297,7 +297,7 @@ function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { b
           <View style={{ width: 30, height: 30, backgroundColor: colors.pink, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
             <PixelIcon name="medal" color={C} size={16} sw={1.7} />
           </View>
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>칭찬 스티커{stickerTotal != null ? ` (누적 ${stickerTotal}장)` : ''}</Text>
+          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>칭찬 스티커{stickerTotal != null ? t('result.stickerTotal', { n: stickerTotal }) : ''}</Text>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: '#10B981' }}>+1</Text>
         </View>
       )}
@@ -316,7 +316,7 @@ function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { b
           <PixelIcon name="flame" color={C} size={15} sw={1.7} />
         </View>
         <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>연속 학습</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{after.streakCurrent}일{after.streakCurrent >= after.streakLongest && after.streakCurrent > 1 ? ' 최고' : ''}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{after.streakCurrent}일{after.streakCurrent >= after.streakLongest && after.streakCurrent > 1 ? t('result.best') : ''}</Text>
       </View>
     </View>
   );
@@ -347,7 +347,7 @@ function CountUp({ from, to, suffix = '', style }: { from: number; to: number; s
 
 // ── static fallback (offline / not authed) ────────────────────────────
 function StaticRewards({ scenario, baseXp }: { scenario: ScenarioDetail | null; baseXp: number }) {
-  const rewards = scenario?.briefing?.rewards ?? [{ icon: '⭐', label: '경험치', value: `+ ${baseXp} XP` }];
+  const rewards = scenario?.briefing?.rewards ?? [{ icon: '⭐', label: t('result.xp'), value: `+ ${baseXp} XP` }];
   return (
     <View>
       <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft, marginBottom: 10 }}>REWARDS</Text>

@@ -13,6 +13,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -44,7 +45,7 @@ export default function ScenarioBriefingRoute() {
               시나리오를 불러오지 못했습니다
             </Text>
             <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: '#9CA3AF' }}>{id}</Text>
-            <PixelButton label="‹ 돌아가기" onPress={() => router.back()} />
+            <PixelButton label={t('common.back')} onPress={() => router.back()} />
           </>
         )}
       </View>
@@ -57,7 +58,7 @@ export default function ScenarioBriefingRoute() {
   const accent = b.accent || colors.peachShadow;
   const deptColor = b.deptColor || '#DC2626';
   const reqs = (b.reqs ?? []).map((r) => ({ ...r, met: true })); // pilot: optimistic gating
-  const xpBadge = (b.rewards?.find((r) => r.label.includes('경험치') || /xp/i.test(r.value))?.value || '').replace(/\s+/g, ''); // e.g. "+120XP"
+  const xpBadge = (b.rewards?.find((r) => r.label.includes(t('result.xp')) || /xp/i.test(r.value))?.value || '').replace(/\s+/g, ''); // e.g. "+120XP"
 
   return (
     <View style={{ flex: 1, backgroundColor: '#1F2937' }}>
@@ -67,7 +68,7 @@ export default function ScenarioBriefingRoute() {
 
       {/* topbar */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 8 }}>
-        <PixelButton label="× 닫기" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
+        <PixelButton label={t('common.close')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
         <Shadowed offset={2}>
           <View style={{ backgroundColor: deptColor, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: '#fff' }}>{b.dept || scenario.title}</Text>
@@ -175,10 +176,10 @@ export default function ScenarioBriefingRoute() {
 
             {/* footer */}
             <View style={{ borderTopWidth: 3, borderTopColor: '#2A252244', borderStyle: 'dotted', backgroundColor: colors.paper, paddingHorizontal: 14, paddingTop: 10, paddingBottom: 12, flexDirection: 'row', gap: 8 }}>
-              <PixelButton label="나중에 하기" bg="#fff" shadowColor={C} fontSize={12} onPress={() => router.back()} style={{ flex: 1 }} />
+              <PixelButton label={t('scenario.later')} bg="#fff" shadowColor={C} fontSize={12} onPress={() => router.back()} style={{ flex: 1 }} />
               <View style={{ flex: 2 }}>
                 <PixelButton
-                  icon="play" label="지금 진행"
+                  icon="play" label={t('scenario.startNow')}
                   bg={colors.mint}
                   shadowColor={colors.mintShadow}
                   onPress={() => router.push(`/dialogue/${id}`)}

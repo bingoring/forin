@@ -10,6 +10,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { t } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 
@@ -49,13 +50,13 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); restart(); }} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); restart(); }} full /></View>
             : (
               <>
-                <PixelButton label="↺ 처음부터" bg="#fff" shadowColor={C} fontSize={12} disabled={filled === 0} onPress={restart} style={{ flex: 1 }} />
-                <View style={{ flex: 2 }}><PixelButton label={`✓ 제출 (${filled}/${dots.length})`} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+                <PixelButton label={t('quiz.restart')} bg="#fff" shadowColor={C} fontSize={12} disabled={filled === 0} onPress={restart} style={{ flex: 1 }} />
+                <View style={{ flex: 2 }}><PixelButton label={t('quiz.submitCount', { filled, total: dots.length })} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
               </>
             )
       }

@@ -11,13 +11,28 @@ import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-rou
 import { PixelIcon } from '@/components/PixelIcon';
 import { CheerSheet } from '@/components/CheerSheet';
 import { Header, RelTag, Shadowed } from './index';
-import { api, type ColleagueDetail } from '@/api/client';
+import { api, type ColleagueDetail, type ColleagueRelation } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
-const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
+/** Weekday initials for a Mon-first strip, in the reader's language.
+ *
+ *  Intl rather than a Korean array: the letters differ per language and a hardcoded
+ *  set would stay Korean under every other locale. 2026-01-05 is a Monday, so
+ *  adding the index walks Mon → Sun regardless of where the locale's week starts. */
+function weekdayInitials(locale: string): string[] {
+  try {
+    const fmt = new Intl.DateTimeFormat(locale, { weekday: 'narrow' });
+    return Array.from({ length: 7 }, (_, i) => fmt.format(new Date(2026, 0, 5 + i)));
+  } catch {
+    return ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+  }
+}
 
 export default function ColleagueDetailScreen() {
+  const locale = useLocale();
+  const days = weekdayInitials(locale);
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [c, setC] = useState<ColleagueDetail | null>(null);
@@ -47,7 +62,7 @@ export default function ColleagueDetailScreen() {
     return (
       <View style={{ flex: 1, backgroundColor: colors.paper }}>
         <Stack.Screen options={{ headerShown: false }} />
-        <Header title="동료" onBack={() => router.back()} />
+        <Header title={t('colleague.title')} onBack={() => router.back()} />
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>찾을 수 없어요.</Text>
         </View>
@@ -63,7 +78,7 @@ export default function ColleagueDetailScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <Header
         title={c.name}
-        sub={[c.destination?.toUpperCase(), REL_LABEL[c.relation]].filter(Boolean).join(' · ')}
+        sub={[c.destination?.toUpperCase(), relLabel(c.relation)].filter(Boolean).join(' · ')}
         onBack={() => router.back()}
       />
 
@@ -81,7 +96,7 @@ export default function ColleagueDetailScreen() {
               </View>
               <View style={{ flexDirection: 'row', gap: 14, marginTop: 8 }}>
                 <Stat label="Lv." value={c.targetLevel || String(c.level ?? '-')} />
-                <Stat label="연속" value={`${c.streak ?? 0}일`} />
+                <Stat label={t('growth.streak')} value={t('colleague.days', { n: c.streak ?? 0 })} />
               </View>
             </View>
           </View>
@@ -89,7 +104,7 @@ export default function ColleagueDetailScreen() {
 
         {/* 지금 학습 중 */}
         {c.statusHidden ? (
-          <Hidden text="학습 현황을 공개하지 않았어요" />
+          <Hidden text={t('colleague.progressHidden')} />
         ) : !!c.activity && (
           <Shadowed offset={3} shadowColor={colors.mintShadow} style={{ marginBottom: 13 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
@@ -103,7 +118,7 @@ export default function ColleagueDetailScreen() {
 
         {/* 주간 학습 */}
         {c.weeklyHidden ? (
-          <Hidden text="주간 학습을 공개하지 않았어요" />
+          <Hidden text={t('colleague.weekHidden')} />
         ) : (
           <Shadowed offset={3} style={{ marginBottom: 13 }}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
@@ -115,7 +130,7 @@ export default function ColleagueDetailScreen() {
                     backgroundColor: d ? colors.mint : '#fff',
                     borderWidth: 2, borderColor: d ? C : C + '44',
                   }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.55, paddingBottom: 2 }}>{DAYS[i]}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.55, paddingBottom: 2 }}>{days[i]}</Text>
                   </View>
                 ))}
               </View>
@@ -160,10 +175,10 @@ export default function ColleagueDetailScreen() {
         </Pressable>
 
         <Pressable
-          onPress={() => Alert.alert('동료 삭제', `${c.name}님을 동료에서 삭제할까요?`, [
-            { text: '취소', style: 'cancel' },
+          onPress={() => Alert.alert(t('colleague.removeTitle'), t('colleague.removeBody', { name: c.name }), [
+            { text: t('common.cancel'), style: 'cancel' },
             {
-              text: '삭제', style: 'destructive',
+              text: t('colleague.remove'), style: 'destructive',
               onPress: async () => { await api.removeColleague(c.id).catch(() => {}); router.back(); },
             },
           ])}
@@ -183,7 +198,7 @@ export default function ColleagueDetailScreen() {
             await api.sendCheer(c.id, { preset, message: message || undefined });
             await load();
           } catch {
-            Alert.alert('응원을 보내지 못했어요', '하루에 보낼 수 있는 횟수를 넘었을 수 있어요.');
+            Alert.alert(t('colleague.cheerFailed'), t('colleague.cheerLimit'));
           }
         }}
       />
@@ -191,7 +206,10 @@ export default function ColleagueDetailScreen() {
   );
 }
 
-const REL_LABEL = { peer: '동료', mentor: '멘토', mentee: '멘티' } as const;
+/** The relation in the reader's language. A function, so it re-resolves per render. */
+function relLabel(rel: ColleagueRelation): string {
+  return t(`colleague.relation${rel[0].toUpperCase()}${rel.slice(1)}`);
+}
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (

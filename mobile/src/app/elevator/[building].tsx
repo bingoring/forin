@@ -4,6 +4,7 @@
 import { Alert } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { ElevatorScreen, ELEVATOR_BUILDINGS, type ElevFloor } from '@/map/ElevatorScreen';
+import { t, useLocale } from '@/i18n';
 
 export default function ElevatorRoute() {
   const { building } = useLocalSearchParams<{ building: string }>();
@@ -25,7 +26,7 @@ export default function ElevatorRoute() {
         (dir ? `&dir=${dir}` : '');
       router.replace(`/interior/${floor.interior}?via=elevator&c=${encodeURIComponent(wall)}${at}${trip}`);
     } else {
-      Alert.alert(`${floor.f} · ${floor.depts[0]}`, '이 층은 곧 공개됩니다. (준비 중)');
+      Alert.alert(`${floor.f} · ${floor.depts[0]}`, t('elevator.comingSoon'));
     }
   };
 

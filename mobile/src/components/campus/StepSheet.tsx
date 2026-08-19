@@ -11,6 +11,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { STEP_META, type StepKind } from '@/data/campus';
 import type { Curriculum } from '@/api/client';
 import { ProgressBar, Shadowed } from './parts';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -56,7 +57,7 @@ export function StepSheet({ curriculum, onClose, onOpen }: {
                     <PixelIcon name={locked ? 'lock' : meta.icon} color={locked ? colors.textFaint : C} size={14} sw={1.8} />
                     <View style={{ flex: 1, minWidth: 0 }}>
                       <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 15 }}>{s.name}</Text>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft, marginTop: 2 }}>{meta.label}{optional ? ' · 선택' : ''}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft, marginTop: 2 }}>{t(meta.labelKey)}{optional ? ` · ${t('step.optional')}` : ''}</Text>
                     </View>
                     {s.state === 'done' && <PixelIcon name="check" color={colors.mintShadow} size={13} sw={2.2} />}
                     {s.state === 'now' && (

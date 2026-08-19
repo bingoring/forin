@@ -9,14 +9,16 @@ import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { CheerSheet } from '@/components/CheerSheet';
 import { api, type Colleague, type ColleagueRelation, type ColleagueRequest, type InviteCode } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
 // 관계 표시 — mentor/mentee는 지금도 렌더된다(확장 슬롯이 아니라 실제 지원).
-export const REL: Record<ColleagueRelation, { label: string; icon: IconName; bg: string }> = {
-  peer: { label: '동료', icon: 'handshake', bg: colors.mint },
-  mentor: { label: '멘토', icon: 'star', bg: colors.yellow },
-  mentee: { label: '멘티', icon: 'sprout', bg: colors.blue },
+// labelKey, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
+export const REL: Record<ColleagueRelation, { labelKey: string; icon: IconName; bg: string }> = {
+  peer: { labelKey: 'colleague.relationPeer', icon: 'handshake', bg: colors.mint },
+  mentor: { labelKey: 'colleague.relationMentor', icon: 'star', bg: colors.yellow },
+  mentee: { labelKey: 'colleague.relationMentee', icon: 'sprout', bg: colors.blue },
 };
 
 export function RelTag({ relation }: { relation: ColleagueRelation }) {
@@ -24,12 +26,13 @@ export function RelTag({ relation }: { relation: ColleagueRelation }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: r.bg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
       <PixelIcon name={r.icon} color={C} size={9} sw={1.8} />
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{r.label}</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{t(r.labelKey)}</Text>
     </View>
   );
 }
 
 export default function ColleaguesScreen() {
+  useLocale();
   const router = useRouter();
   const [rows, setRows] = useState<Colleague[]>([]);
   const [requests, setRequests] = useState<ColleagueRequest[]>([]);
@@ -65,14 +68,14 @@ export default function ColleaguesScreen() {
       else await api.declineColleagueRequest(id);
       await load();
     } catch {
-      Alert.alert('처리하지 못했어요', '잠시 후 다시 시도해 주세요.');
+      Alert.alert(t('colleague.actionFailed'), t('common.retryHint'));
     }
   };
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
       <Stack.Screen options={{ headerShown: false }} />
-      <Header title="동료" sub={`함께 준비하는 사람들 · ${rows.length}명`} onBack={() => router.back()} />
+      <Header title={t('colleague.title')} sub={t('colleague.subCount', { n: rows.length })} onBack={() => router.back()} />
 
       {state === 'loading' ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>
@@ -156,11 +159,11 @@ export default function ColleaguesScreen() {
                     <RelTag relation={c.relation} />
                   </View>
                   <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 15 }}>
-                    {c.statusHidden ? '학습 현황 비공개' : c.activity || '조용한 하루'}
+                    {c.statusHidden ? t('home.privateProgress') : c.activity || t('colleague.quietDay')}
                   </Text>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 3 }}>
-                    {c.relation === 'mentor' ? (c.targetLevel || '멘토') : `Lv.${c.targetLevel || '-'}`}
-                    {c.streak ? ` · 연속 ${c.streak}일` : ''}
+                    {c.relation === 'mentor' ? (c.targetLevel || t('colleague.relationMentor')) : `Lv.${c.targetLevel || '-'}`}
+                    {c.streak ? t('colleague.streakSuffix', { n: c.streak }) : ''}
                   </Text>
                 </View>
                 <Pressable
@@ -189,7 +192,7 @@ export default function ColleaguesScreen() {
           try {
             await api.sendCheer(cheerTo.id, { preset, message: message || undefined });
           } catch {
-            Alert.alert('응원을 보내지 못했어요', '하루에 보낼 수 있는 횟수를 넘었을 수 있어요.');
+            Alert.alert(t('colleague.cheerFailed'), t('colleague.cheerLimit'));
           }
         }}
       />

@@ -19,6 +19,7 @@ import { completeSocialLogin, signInApple, signInKakao, devSignIn, syncOnboarded
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 // Lets the auth popup redirect back and dismiss the in-app browser.
 WebBrowser.maybeCompleteAuthSession();
@@ -58,18 +59,19 @@ function GoogleButton({ busy, complete }: { busy: boolean; complete: Complete })
     if (res?.type !== 'success') return;
     const idToken = res.authentication?.idToken ?? (res.params as Record<string, string> | undefined)?.id_token;
     if (idToken) complete('Google', () => completeSocialLogin('google', idToken));
-    else Alert.alert('Google 로그인 실패', 'ID 토큰을 받지 못했어요.');
+    else Alert.alert(t('login.googleFailed'), t('login.noIdToken'));
   }, [res]); // eslint-disable-line react-hooks/exhaustive-deps
-  return <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label="Google로 계속하기" disabled={busy || !prompt} onPress={() => prompt?.()} />;
+  return <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label={t('login.google')} disabled={busy || !prompt} onPress={() => prompt?.()} />;
 }
 
 // Kakao — official SDK (KakaoTalk app when installed, account web login when not).
 // No auth hook to own, so unlike Google this needs no conditional mounting.
 function KakaoButton({ busy, complete }: { busy: boolean; complete: Complete }) {
-  return <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy} onPress={() => complete('카카오', signInKakao)} />;
+  return <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label={t('login.kakao')} disabled={busy} onPress={() => complete(t('provider.kakao'), signInKakao)} />;
 }
 
 export default function Login() {
+  useLocale();
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 
@@ -83,14 +85,14 @@ export default function Login() {
       await run();
       await enter();
     } catch (e) {
-      Alert.alert(`${label} 로그인 실패`, e instanceof Error ? e.message : '다시 시도해 주세요.');
+      Alert.alert(t('login.failed', { provider: label }), e instanceof Error ? e.message : t('common.retryHint'));
     } finally {
       setBusy(false);
     }
   };
 
   const notConfigured = (label: string) =>
-    Alert.alert(`${label} 로그인 준비 중`, `${label} 클라이언트 ID가 설정되면 사용할 수 있어요. (env)`);
+    Alert.alert(t('login.notReady', { provider: label }), t('login.notReadyBody', { provider: label }));
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.mint }}>
@@ -111,11 +113,11 @@ export default function Login() {
         <View style={{ gap: 10 }}>
           {isProviderConfigured('google')
             ? <GoogleButton busy={busy} complete={complete} />
-            : <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label="Google로 계속하기" disabled={busy} onPress={() => notConfigured('Google')} />}
-          <OneTap bg="#000" color="#fff" shadow="#000" icon={<AppleGlyph />} label="Apple로 계속하기" disabled={busy} onPress={() => complete('Apple', signInApple)} />
+            : <OneTap bg="#fff" color={C} shadow={C + '55'} icon={<GoogleGlyph />} label={t('login.google')} disabled={busy} onPress={() => notConfigured('Google')} />}
+          <OneTap bg="#000" color="#fff" shadow="#000" icon={<AppleGlyph />} label={t('login.apple')} disabled={busy} onPress={() => complete('Apple', signInApple)} />
           {isProviderConfigured('kakao')
             ? <KakaoButton busy={busy} complete={complete} />
-            : <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label="카카오로 시작하기" disabled={busy} onPress={() => notConfigured('카카오')} />}
+            : <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label={t('login.kakao')} disabled={busy} onPress={() => notConfigured(t('provider.kakao'))} />}
         </View>
 
         <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, textAlign: 'center', marginTop: 16, lineHeight: 16 }}>
@@ -124,7 +126,7 @@ export default function Login() {
 
         {/* Dev-only bypass — real provider auth needs a dev build + credentials. */}
         {__DEV__ && (
-          <Pressable onPress={() => complete('개발자', devSignIn)} disabled={busy} style={{ marginTop: 14, alignSelf: 'center' }}>
+          <Pressable onPress={() => complete(t('login.developer'), devSignIn)} disabled={busy} style={{ marginTop: 14, alignSelf: 'center' }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textFaint }}>개발자 로그인 (둘러보기)</Text>
           </Pressable>
         )}

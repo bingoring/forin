@@ -11,10 +11,12 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { Header, Shadowed } from './index';
 import { api, type CodePreview, type InviteCode } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
 export default function ColleagueAddScreen() {
+  useLocale();
   const router = useRouter();
   const [mine, setMine] = useState<InviteCode | null>(null);
   const [input, setInput] = useState('');
@@ -46,13 +48,13 @@ export default function ColleagueAddScreen() {
     setSending(true);
     try {
       const res = await api.addColleague(pretty(input));
-      if (res.autoAccepted) Alert.alert('동료가 되었어요', '서로 요청을 보냈기에 바로 연결했어요.');
-      else if (res.alreadyLinked) Alert.alert('이미 동료예요');
-      else if (res.alreadyRequested) Alert.alert('이미 요청을 보냈어요', '상대의 수락을 기다리는 중이에요.');
-      else Alert.alert('요청을 보냈어요', '상대가 수락하면 서로의 학습 현황을 볼 수 있어요.');
+      if (res.autoAccepted) Alert.alert(t('colleagueAdd.connected'), t('colleagueAdd.connectedBody'));
+      else if (res.alreadyLinked) Alert.alert(t('colleagueAdd.already'));
+      else if (res.alreadyRequested) Alert.alert(t('colleagueAdd.alreadySent'), t('colleagueAdd.waiting'));
+      else Alert.alert(t('colleagueAdd.sent'), t('colleagueAdd.sentBody'));
       router.back();
     } catch {
-      Alert.alert('추가하지 못했어요', '코드가 만료됐거나 잘못됐을 수 있어요.');
+      Alert.alert(t('colleagueAdd.failed'), t('colleagueAdd.failedBody'));
     } finally {
       setSending(false);
     }
@@ -61,7 +63,7 @@ export default function ColleagueAddScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
       <Stack.Screen options={{ headerShown: false }} />
-      <Header title="동료 추가" sub="초대 코드를 주고받아 연결해요" onBack={() => router.back()} />
+      <Header title={t('colleagueAdd.title')} sub={t('colleagueAdd.sub')} onBack={() => router.back()} />
 
       <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 32 }}>
         {/* 내 코드 */}
@@ -79,7 +81,7 @@ export default function ColleagueAddScreen() {
             <View style={{ flexDirection: 'row', gap: 8, marginTop: 12, alignSelf: 'stretch' }}>
               <Pressable
                 disabled={!mine}
-                onPress={async () => { if (mine) { await Clipboard.setStringAsync(mine.code); Alert.alert('복사했어요', mine.code); } }}
+                onPress={async () => { if (mine) { await Clipboard.setStringAsync(mine.code); Alert.alert(t('colleagueAdd.copied'), mine.code); } }}
                 style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 6, backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9 }}
               >
                 <PixelIcon name="copy" color={C} size={14} sw={1.7} />
@@ -87,7 +89,7 @@ export default function ColleagueAddScreen() {
               </Pressable>
               <Pressable
                 disabled={!mine}
-                onPress={() => { if (mine) Share.share({ message: `forin에서 같이 공부해요! 내 초대 코드: ${mine.code}` }); }}
+                onPress={() => { if (mine) Share.share({ message: t('colleagueAdd.shareBody', { code: mine.code }) }); }}
                 style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 6, backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 9 }}
               >
                 <PixelIcon name="share" color={colors.cream} size={14} sw={1.7} />
@@ -137,7 +139,7 @@ export default function ColleagueAddScreen() {
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{preview.name}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>
-                  {[preview.targetLevel && `Lv.${preview.targetLevel}`, preview.destination?.toUpperCase(), preview.streak ? `연속 ${preview.streak}일` : null]
+                  {[preview.targetLevel && `Lv.${preview.targetLevel}`, preview.destination?.toUpperCase(), preview.streak ? t('colleague.streakDays', { n: preview.streak }) : null]
                     .filter(Boolean).join(' · ')}
                 </Text>
               </View>

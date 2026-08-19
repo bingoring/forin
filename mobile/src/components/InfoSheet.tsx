@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { Modal, Pressable, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -61,7 +62,7 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
             </View>
           )}
           <View style={{ marginTop: data?.action ? 8 : 4 }}>
-            <PixelButton label="닫기" bg={data?.action ? '#fff' : colors.mint} shadowColor={data?.action ? C : colors.mintShadow} borderWidth={2} paddingV={10} fontSize={13} onPress={onClose} full />
+            <PixelButton label={t('common.close')} bg={data?.action ? '#fff' : colors.mint} shadowColor={data?.action ? C : colors.mintShadow} borderWidth={2} paddingV={10} fontSize={13} onPress={onClose} full />
           </View>
         </Pressable>
       </Pressable>

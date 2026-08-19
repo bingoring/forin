@@ -11,6 +11,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, INTERIOR_DEPTS, deptCodeOf } from '@/data/campus';
 import type { Curriculum, CurriculumBuilding, CurriculumFloor } from '@/api/client';
 import { Chip, CurriculumDots, Shadowed } from './parts';
+import { t } from '@/i18n';
 
 const C = colors.ink;
 
@@ -49,7 +50,7 @@ export function FloorList({ buildings, onOpenCurriculum, onOpenDept }: {
                 </View>
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{b.building}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{style.sub}</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{style.subKey ? t(style.subKey) : ''}</Text>
                 </View>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{done}/{total}</Text>
                 <PixelIcon name={isOpen ? 'chevron-up' : 'chevron-down'} color={C} size={13} sw={2} />

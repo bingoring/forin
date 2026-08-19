@@ -12,6 +12,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 import { playSfx } from '@/lib/sfx';
+import { t } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 
@@ -60,8 +61,8 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
             ))}
             <Text style={{ marginLeft: 4, fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{matched.size}/{pairs.length}</Text>
           </View>
-          <PixelButton label="↺ 다시" bg="#fff" shadowColor={C} fontSize={11} disabled={matched.size === 0} onPress={reset} />
-          <PixelButton label="✓ 완료" bg={done ? colors.mint : colors.cream} shadowColor={done ? colors.mintShadow : C} fontSize={12} disabled={!done} onPress={onComplete} />
+          <PixelButton label={t('quiz.reset')} bg="#fff" shadowColor={C} fontSize={11} disabled={matched.size === 0} onPress={reset} />
+          <PixelButton label={t('quiz.finish')} bg={done ? colors.mint : colors.cream} shadowColor={done ? colors.mintShadow : C} fontSize={12} disabled={!done} onPress={onComplete} />
         </View>
       }
     >

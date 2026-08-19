@@ -9,6 +9,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type RouteNode } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -33,7 +34,7 @@ export default function Route() {
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
       <Stack.Screen options={{ headerShown: false, animation: 'slide_from_right' }} />
       <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <PixelButton label="‹ 뒤로" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
+        <PixelButton label={t('common.back')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>메인 루트</Text>
         <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, width: 44, textAlign: 'right' }}>{done}/{nodes.length}</Text>
       </View>
@@ -42,7 +43,7 @@ export default function Route() {
       {state === 'error' && (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.textSoft }}>루트를 불러오지 못했어요.</Text>
-          <PixelButton label="‹ 돌아가기" onPress={() => router.back()} />
+          <PixelButton label={t('common.back')} onPress={() => router.back()} />
         </View>
       )}
 

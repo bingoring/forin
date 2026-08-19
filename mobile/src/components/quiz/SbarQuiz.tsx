@@ -7,6 +7,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
+import { t } from '@/i18n';
 
 const TRACKS: Record<string, { name: string; color: string }> = {
   S: { name: 'Situation', color: '#EF4444' },
@@ -38,13 +39,13 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label="✓ 완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label="↻ 다시 정렬" bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
+            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.reorder')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
             : (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{placed.length}/{cards.length} 배치됨</Text>
-              <PixelButton label={hasTracks ? '콜 시작' : '✓ 순서 제출'} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} />
+              <PixelButton label={hasTracks ? t('quiz.startCall') : t('quiz.submitOrder')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} />
             </View>
           )
       }
@@ -64,7 +65,7 @@ export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       )}
 
       {/* ordered slots */}
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ {hasTracks ? '인계 순서' : '순서'} (탭하여 배치/해제) ━</Text>
+      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ {hasTracks ? t('quiz.handoffOrder') : t('quiz.order')} (탭하여 배치/해제) ━</Text>
       <View style={{ gap: 6 }}>
         {cards.map((_, slot) => {
           const ci = placed[slot];

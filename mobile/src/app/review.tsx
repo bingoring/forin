@@ -11,24 +11,27 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
-const GRADES: { g: ReviewGrade; label: string; bg: string; blurb: string }[] = [
-  { g: 'again', label: '다시', bg: '#FCA5A5', blurb: '기억이 안 났어요 — 곧 다시 보여줄게요' },
-  { g: 'hard', label: '어려움', bg: colors.peach, blurb: '겨우 기억했어요 — 간격을 짧게 잡아요' },
-  { g: 'good', label: '알맞음', bg: colors.mint, blurb: '잘 기억했어요 — 표준 간격으로 넘어가요' },
-  { g: 'easy', label: '쉬움', bg: colors.yellow, blurb: '아주 쉬웠어요 — 한참 뒤에 다시 봐요' },
+// Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
+const GRADES: { g: ReviewGrade; labelKey: string; bg: string; blurbKey: string }[] = [
+  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', blurbKey: 'lab.againSub' },
+  { g: 'hard', labelKey: 'lab.hard', bg: colors.peach, blurbKey: 'lab.hardSub' },
+  { g: 'good', labelKey: 'lab.good', bg: colors.mint, blurbKey: 'lab.goodSub' },
+  { g: 'easy', labelKey: 'lab.easy', bg: colors.yellow, blurbKey: 'lab.easySub' },
 ];
 
-// humanize the SM-2 next-interval into a friendly Korean "다음 복습" label.
+// humanize the SM-2 next-interval into a friendly "next review" label.
 function nextLabel(days: number): string {
-  if (days <= 1) return '내일 다시';
-  if (days < 14) return `${days}일 후`;
-  if (days < 60) return `약 ${Math.round(days / 7)}주 후`;
-  return `약 ${Math.round(days / 30)}개월 후`;
+  if (days <= 1) return t('lab.tomorrow');
+  if (days < 14) return t('lab.inDays', { n: days });
+  if (days < 60) return t('lab.inWeeks', { n: Math.round(days / 7) });
+  return t('lab.inMonths', { n: Math.round(days / 30) });
 }
 
 export default function ReviewSession() {
+  useLocale();
   const router = useRouter();
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -59,7 +62,7 @@ export default function ReviewSession() {
     let interval = 1;
     try { const r = await api.gradeReview(card.id, g); interval = r.intervalDays; } catch { /* best-effort */ }
     // Show a short confirmation so the card doesn't just vanish silently, then advance.
-    setToast({ label: meta.label, bg: meta.bg, blurb: meta.blurb, next: nextLabel(interval) });
+    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(interval) });
     setTimeout(() => {
       setToast(null);
       setBusy(false);
@@ -82,7 +85,7 @@ export default function ReviewSession() {
     // One single template literal (not string concatenation) — see the same
     // note in dialogue/[id].tsx's openPronunciation.
     router.push(
-      `/pronunciation/${encodeURIComponent(c.back.slice(0, 40))}?referenceText=${encodeURIComponent(c.back)}&origin=review&reviewCardId=${encodeURIComponent(c.id)}&ctx=${encodeURIComponent(c.context?.title || c.topicTag || '')}&step=${encodeURIComponent('현지인처럼 말하기')}`
+      `/pronunciation/${encodeURIComponent(c.back.slice(0, 40))}?referenceText=${encodeURIComponent(c.back)}&origin=review&reviewCardId=${encodeURIComponent(c.id)}&ctx=${encodeURIComponent(c.context?.title || c.topicTag || '')}&step=${encodeURIComponent(t('lab.likeALocal'))}`
     );
   };
 
@@ -92,7 +95,7 @@ export default function ReviewSession() {
 
       {/* top bar: exit + progress */}
       <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <PixelButton label="× 나가기" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={back} />
+        <PixelButton label={t('quiz.exit')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={back} />
         {state === 'ok' && cards.length > 0 && !done && (
           <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{idx + 1} / {cards.length}</Text>
@@ -104,7 +107,7 @@ export default function ReviewSession() {
       {state === 'error' && (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.textSoft, textAlign: 'center' }}>복습 카드를 불러오지 못했어요.</Text>
-          <PixelButton label="‹ 리뷰랩" onPress={back} />
+          <PixelButton label={t('review.backToLab')} onPress={back} />
         </View>
       )}
 
@@ -112,16 +115,16 @@ export default function ReviewSession() {
       {done && (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 14, padding: 24 }}>
           <PixelIcon name={graded > 0 ? 'burst' : 'note'} color={C} size={52} sw={1.5} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(20), color: C, textAlign: 'center' }}>{graded > 0 ? '오늘의 복습 완료!' : '복습할 카드가 없어요'}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(20), color: C, textAlign: 'center' }}>{graded > 0 ? t('review.doneToday') : t('review.noCards')}</Text>
           {graded > 0 && <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.textSoft }}>{graded}개 카드를 복습했어요. 내일 또 만나요!</Text>}
-          <View style={{ marginTop: 8, width: 200 }}><PixelButton icon="check" label="완료" bg={colors.mint} shadowColor={colors.mintShadow} onPress={back} full /></View>
+          <View style={{ marginTop: 8, width: 200 }}><PixelButton icon="check" label={t('common.done')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={back} full /></View>
         </View>
       )}
 
       {/* current card */}
       {state === 'ok' && !done && card && (
         <ScrollView contentContainerStyle={{ paddingHorizontal: 18, paddingTop: 8, paddingBottom: 24, flexGrow: 1 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, marginBottom: 10 }}>{card.topicTag || '교정 노트'}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, marginBottom: 10 }}>{card.topicTag || t('lab.correctionNote')}</Text>
 
           {/* 맥락: which situation / dialogue this correction came from */}
           <ContextCard card={card} />
@@ -157,15 +160,15 @@ export default function ReviewSession() {
           {/* footer action */}
           {!revealed ? (
             <View style={{ marginTop: 16 }}>
-              <PixelButton icon="eye" label="정답 보기" bg={colors.mint} shadowColor={colors.mintShadow} full onPress={() => { setRevealed(true); Speech.speak(card.back, { language: 'en-US', rate: 0.92 }); }} />
+              <PixelButton icon="eye" label={t('review.showAnswer')} bg={colors.mint} shadowColor={colors.mintShadow} full onPress={() => { setRevealed(true); Speech.speak(card.back, { language: 'en-US', rate: 0.92 }); }} />
             </View>
           ) : (
             <View style={{ marginTop: 16, gap: 8 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, textAlign: 'center' }}>얼마나 잘 기억했나요?</Text>
               <View style={{ flexDirection: 'row', gap: 6 }}>
-                {GRADES.map(({ g, label, bg }) => (
+                {GRADES.map(({ g, labelKey, bg }) => (
                   <View key={g} style={{ flex: 1 }}>
-                    <PixelButton label={label} bg={bg} shadowColor={C} offset={2} fontSize={12} borderWidth={2} paddingV={9} onPress={() => grade(g)} full />
+                    <PixelButton label={t(labelKey)} bg={bg} shadowColor={C} offset={2} fontSize={12} borderWidth={2} paddingV={9} onPress={() => grade(g)} full />
                   </View>
                 ))}
               </View>

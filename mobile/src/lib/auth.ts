@@ -14,6 +14,7 @@ import { login as kakaoLogin } from '@react-native-kakao/user';
 import { api } from '@/api/client';
 import { clearTokens, loadTokens, saveTokens } from '@/lib/secureStore';
 import { useAuthStore } from '@/store/authStore';
+import { t } from '@/i18n';
 
 export type Provider = 'google' | 'apple' | 'kakao';
 
@@ -69,7 +70,7 @@ export function initKakao(): void {
 // only issued when OpenID Connect is enabled for the app in Kakao's console.
 export async function signInKakao(): Promise<void> {
   const token = await kakaoLogin();
-  if (!token.idToken) throw new Error('카카오 ID 토큰을 받지 못했어요. (콘솔에서 OpenID Connect 활성화 필요)');
+  if (!token.idToken) throw new Error(t('login.kakaoNoIdToken'));
   await completeSocialLogin('kakao', token.idToken);
 }
 
