@@ -17,6 +17,7 @@ import { t } from '@/i18n';
 import { playSfx } from '@/lib/sfx';
 import { useAvatar } from '@/hooks/useAvatar';
 import { HAIR_COLORS, HAIR_STYLES, SCRUB_COLORS, SKIN_TONES, setAvatar } from '@/lib/avatar';
+import { faceScanAvailable } from '@/components/FaceScanSheet';
 
 const C = colors.ink;
 
@@ -37,11 +38,15 @@ export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; on
         </View>
 
         <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 28, gap: 16 }}>
-          <PixelButton
-            label={t('avatar.scanCta')} icon="target" bg={colors.blue} shadowColor={C}
-            fontSize={12.5} borderWidth={2.5} paddingV={9} full
-            onPress={() => { playSfx('tap'); onScan(); }}
-          />
+          {/* Hidden entirely on a binary without the camera module. A shortcut that
+              cannot work is worse than an absent one — it reads as a broken feature. */}
+          {faceScanAvailable && (
+            <PixelButton
+              label={t('avatar.scanCta')} icon="target" bg={colors.blue} shadowColor={C}
+              fontSize={12.5} borderWidth={2.5} paddingV={9} full
+              onPress={() => { playSfx('tap'); onScan(); }}
+            />
+          )}
 
           <Axis label={t('avatar.hairStyle')}>
             {HAIR_STYLES.map((style) => (

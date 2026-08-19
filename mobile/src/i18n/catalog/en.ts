@@ -460,4 +460,5 @@ export const en: Record<string, string> = {
   'result.notYetCleared': 'This one is not cleared yet',
   'result.praiseSticker': 'Well done',
   'lab.pipsHelp': 'The pips (■■■) count correct answers in a row. Fill all three and the card is {mastered}.',
+  'avatar.scanNeedBuild': 'The face scan only works in an app build that includes the camera module. You can pick everything by hand below.',
 };

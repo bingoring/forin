@@ -10,8 +10,6 @@
 // return or a decode failure cannot leave an image of someone's face on disk.
 import { useRef, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { CameraView, useCameraPermissions } from 'expo-camera';
-import { SaveFormat, manipulateAsync } from 'expo-image-manipulator';
 import { deleteAsync } from 'expo-file-system/legacy';
 import { BottomSheet } from '@/components/BottomSheet';
 import { PixelButton } from '@/components/PixelButton';
@@ -27,14 +25,49 @@ const C = colors.ink;
 // the JavaScript decode instant.
 const SAMPLE_PX = 24;
 
+/**
+ * expo-camera and expo-image-manipulator, loaded defensively.
+ *
+ * These are NATIVE modules, so a binary built before they were installed throws
+ * "Cannot find native module 'ExpoCamera'" the moment this file is imported — not when
+ * the sheet opens. A static import therefore takes the whole app down on any older
+ * build, which is exactly what an OTA update reaches: JS ships, the native side does
+ * not, and every installed copy crashes on a screen that merely imports this one.
+ *
+ * So the requires are wrapped and their absence is a fact the UI reports. The manual
+ * avatar builder never needed the camera, and it keeps working.
+ */
+type CameraModule = typeof import('expo-camera');
+type ManipulatorModule = typeof import('expo-image-manipulator');
+
+const native = (() => {
+  try {
+    return {
+      camera: require('expo-camera') as CameraModule,
+      manip: require('expo-image-manipulator') as ManipulatorModule,
+    };
+  } catch {
+    return null;
+  }
+})();
+
+/** Whether a face scan is possible on this binary. Read by AvatarSheet to decide
+ *  whether to offer the shortcut at all — a button that cannot work is worse than an
+ *  absent one. */
+export const faceScanAvailable = native !== null;
+
 export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(): void }) {
-  const [permission, requestPermission] = useCameraPermissions();
-  const cam = useRef<CameraView>(null);
+  // Hooks must run unconditionally, so the module check gates the RENDER below rather
+  // than an early return above the hooks.
+  const [permission, requestPermission] = native
+    ? native.camera.useCameraPermissions()
+    : [null, async () => null as never];
+  const cam = useRef<InstanceType<CameraModule['CameraView']> | null>(null);
   const [busy, setBusy] = useState(false);
   const [failed, setFailed] = useState(false);
 
   const scan = async () => {
-    if (!cam.current || busy) return;
+    if (!native || !cam.current || busy) return;
     setBusy(true);
     setFailed(false);
     let shotUri: string | undefined;
@@ -47,13 +80,13 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
       // Square-crop to the guide oval before resizing: the sampler's regions are
       // fractions of the image, so a 4:3 frame would put the cheeks off to the sides.
       const side = Math.min(shot!.width, shot!.height);
-      const small = await manipulateAsync(
+      const small = await native.manip.manipulateAsync(
         shotUri,
         [
           { crop: { originX: (shot!.width - side) / 2, originY: (shot!.height - side) / 2, width: side, height: side } },
           { resize: { width: SAMPLE_PX, height: SAMPLE_PX } },
         ],
-        { base64: true, compress: 0.9, format: SaveFormat.JPEG },
+        { base64: true, compress: 0.9, format: native.manip.SaveFormat.JPEG },
       );
       smallUri = small.uri;
 
@@ -78,7 +111,8 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
     }
   };
 
-  const granted = permission?.granted === true;
+  const granted = !!native && permission?.granted === true;
+  const CameraView = native?.camera.CameraView;
 
   return (
     <BottomSheet visible={visible} onClose={onClose} expandable={false}>
@@ -91,7 +125,7 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
         </View>
 
         <View style={{ aspectRatio: 1, borderWidth: 3, borderColor: C, overflow: 'hidden', backgroundColor: colors.cream }}>
-          {granted ? (
+          {granted && CameraView ? (
             <>
               <CameraView ref={cam} style={{ flex: 1 }} facing="front" />
               {/* The guide is what makes fixed sampling geometry legitimate: line your
@@ -105,7 +139,7 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10, padding: 18 }}>
               <PixelIcon name="alert" color={colors.textSoft} size={26} sw={1.8} />
               <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', lineHeight: 16 }}>
-                {t('avatar.scanNeedCamera')}
+                {native ? t('avatar.scanNeedCamera') : t('avatar.scanNeedBuild')}
               </Text>
             </View>
           )}
@@ -117,7 +151,7 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
           </View>
         )}
 
-        {granted ? (
+        {!native ? null : granted ? (
           <PixelButton
             label={busy ? t('avatar.scanning') : t('avatar.scanShoot')}
             icon="target" bg={colors.mint} shadowColor={colors.mintShadow}
