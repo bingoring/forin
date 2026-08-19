@@ -471,5 +471,12 @@ export const ko: Record<string, string> = {
   'avatar.hairColor': '머리 색',
   'avatar.skin': '피부 톤',
   'avatar.scrub': '수술복 색',
-  'avatar.scanNote': '사진으로 얼굴을 스캔하는 기능은 카메라 권한이 필요해서 다음 앱 빌드에 들어갑니다. 사진에서 머리·피부 색을 읽어 여기 값의 출발점을 잡아주는 방식이고, 사진은 기기를 떠나지 않고 저장되지도 않아요.',
+  'avatar.scanCta': '사진으로 색 잡기',
+  'avatar.scanTitle': '얼굴 스캔',
+  'avatar.scanBody': '얼굴을 노란 타원에 맞추고 찍으면 머리·피부 색을 읽어 값을 잡아줘요. 닮은 얼굴을 그리는 건 아니고, 나머지는 직접 고르면 돼요. 사진은 기기를 떠나지 않고 저장되지도 않아요.',
+  'avatar.scanShoot': '찍어서 색 읽기',
+  'avatar.scanning': '읽는 중…',
+  'avatar.scanAllow': '카메라 권한 허용',
+  'avatar.scanNeedCamera': '얼굴 스캔에는 카메라 권한이 필요해요.',
+  'avatar.scanFailed': '색을 읽지 못했어요. 밝은 곳에서 얼굴을 타원에 맞춰 다시 찍어보세요.',
 };

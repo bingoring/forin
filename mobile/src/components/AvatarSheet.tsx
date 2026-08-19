@@ -4,10 +4,9 @@
 // a limited palette, so an arbitrary hex reads as a mistake rather than as expression
 // — and six skin tones someone can see themselves in beat a million they cannot.
 //
-// What this is NOT: a likeness. The feedback asked for a face scan, and what a photo
-// can honestly give here is a starting point for these same four values — see the
-// note at the bottom of the sheet, and build-spec i18n's sibling entry for why the
-// camera is a separate native build rather than part of this change.
+// The face scan sits at the top rather than the bottom: it sets two of the four axes
+// in one tap, so it is the shortcut, and burying a shortcut under the long way round
+// is how nobody finds it. It is NOT a likeness — see lib/faceScan.ts.
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { FacePlayer } from '@engine';
 import { BottomSheet } from '@/components/BottomSheet';
@@ -21,7 +20,7 @@ import { HAIR_COLORS, HAIR_STYLES, SCRUB_COLORS, SKIN_TONES, setAvatar } from '@
 
 const C = colors.ink;
 
-export function AvatarSheet({ visible, onClose }: { visible: boolean; onClose(): void }) {
+export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; onClose(): void; onScan(): void }) {
   const avatar = useAvatar();
 
   return (
@@ -38,6 +37,12 @@ export function AvatarSheet({ visible, onClose }: { visible: boolean; onClose():
         </View>
 
         <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 28, gap: 16 }}>
+          <PixelButton
+            label={t('avatar.scanCta')} icon="target" bg={colors.blue} shadowColor={C}
+            fontSize={12.5} borderWidth={2.5} paddingV={9} full
+            onPress={() => { playSfx('tap'); onScan(); }}
+          />
+
           <Axis label={t('avatar.hairStyle')}>
             {HAIR_STYLES.map((style) => (
               <Swatch
@@ -77,12 +82,6 @@ export function AvatarSheet({ visible, onClose }: { visible: boolean; onClose():
               </Swatch>
             ))}
           </Axis>
-
-          <View style={{ borderWidth: 2, borderColor: C + '55', borderStyle: 'dashed', padding: 11 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>
-              {t('avatar.scanNote')}
-            </Text>
-          </View>
 
           <PixelButton
             label={t('common.done')} icon="check" bg={colors.mint} shadowColor={colors.mintShadow}

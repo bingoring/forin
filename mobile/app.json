@@ -32,6 +32,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "permissions": [
+        "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO",
         "android.permission.MODIFY_AUDIO_SETTINGS",
         "android.permission.FOREGROUND_SERVICE",
@@ -63,6 +64,13 @@
         "expo-audio",
         {
           "microphonePermission": "발음 연습을 위해 마이크 접근이 필요합니다."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "아바타 얼굴 스캔에만 카메라를 씁니다. 사진은 기기를 떠나지 않고 저장되지 않아요.",
+          "recordAudioAndroid": false
         }
       ],
       [

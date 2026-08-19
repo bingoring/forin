@@ -440,5 +440,12 @@ export const ja: Record<string, string> = {
   'avatar.hairColor': '髪の色',
   'avatar.skin': '肌の色',
   'avatar.scrub': '手術着の色',
-  'avatar.scanNote': '写真から顔をスキャンする機能はカメラ権限が必要なため、次のアプリビルドに入ります。写真から髪と肌の色を読み取ってここの値の出発点にする方式で、写真は端末を離れず保存もされません。',
+  'avatar.scanCta': '写真から色を取る',
+  'avatar.scanTitle': '顔スキャン',
+  'avatar.scanBody': '顔を黄色い楕円に合わせて撮ると、髪と肌の色を読んで値を設定します。似顔絵を描くわけではないので、残りは自分で選んでください。写真は端末を離れず保存もされません。',
+  'avatar.scanShoot': '撮って色を読む',
+  'avatar.scanning': '読み込み中…',
+  'avatar.scanAllow': 'カメラ権限を許可',
+  'avatar.scanNeedCamera': '顔スキャンにはカメラ権限が必要です。',
+  'avatar.scanFailed': '色を読めませんでした。明るい場所で顔を楕円に合わせてもう一度撮ってください。',
 };

@@ -440,5 +440,12 @@ export const de: Record<string, string> = {
   'avatar.hairColor': 'Haarfarbe',
   'avatar.skin': 'Hautton',
   'avatar.scrub': 'Kittelfarbe',
-  'avatar.scanNote': 'Das Scannen deines Gesichts von einem Foto braucht Kamerazugriff und kommt daher im nächsten App-Build. Es liest Haar- und Hautfarbe aus dem Foto als Startpunkt für diese Werte — das Foto verlässt das Gerät nicht und wird nicht gespeichert.',
+  'avatar.scanCta': 'Farben aus einem Foto',
+  'avatar.scanTitle': 'Gesichtsscan',
+  'avatar.scanBody': 'Richte dein Gesicht im Oval aus und mach ein Foto; es liest Haar- und Hautfarbe und setzt diese Werte. Es zeichnet kein Abbild — den Rest wählst du selbst. Das Foto verlässt das Gerät nicht und wird nicht gespeichert.',
+  'avatar.scanShoot': 'Foto machen',
+  'avatar.scanning': 'Wird gelesen …',
+  'avatar.scanAllow': 'Kamerazugriff erlauben',
+  'avatar.scanNeedCamera': 'Der Gesichtsscan braucht Kamerazugriff.',
+  'avatar.scanFailed': 'Farben konnten nicht gelesen werden. Versuche es heller und mit dem Gesicht im Oval.',
 };

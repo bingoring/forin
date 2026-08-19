@@ -20,6 +20,7 @@ import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale,
 import { BottomSheet } from '@/components/BottomSheet';
 import { useAvatar } from '@/hooks/useAvatar';
 import { AvatarSheet } from '@/components/AvatarSheet';
+import { FaceScanSheet } from '@/components/FaceScanSheet';
 
 const C = colors.ink;
 
@@ -34,6 +35,7 @@ const repMap = (st: Progress['reputation']) =>
 export default function Me() {
   const avatar = useAvatar();
   const [avatarOpen, setAvatarOpen] = useState(false);
+  const [scanOpen, setScanOpen] = useState(false);
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [enLevel, setEnLevel] = useState<string>('');
@@ -530,7 +532,14 @@ export default function Me() {
       )}
 
       <InfoSheet data={sheet} onClose={() => setSheet(null)} />
-      <AvatarSheet visible={avatarOpen} onClose={() => setAvatarOpen(false)} />
+      <AvatarSheet
+        visible={avatarOpen}
+        onClose={() => setAvatarOpen(false)}
+        // Close the builder before opening the camera: two RN Modals stacked leaves the
+        // camera preview behind a scrim.
+        onScan={() => { setAvatarOpen(false); setScanOpen(true); }}
+      />
+      <FaceScanSheet visible={scanOpen} onClose={() => setScanOpen(false)} />
 
       {/* 앱 언어 고르기. 번역 완성도를 계산값 그대로 보여준다(R8·R9) — 부분 번역을
           완전한 것처럼 제시하지 않기 위해서다. */}

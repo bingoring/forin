@@ -441,5 +441,12 @@ export const en: Record<string, string> = {
   'avatar.hairColor': 'Hair colour',
   'avatar.skin': 'Skin tone',
   'avatar.scrub': 'Scrub colour',
-  'avatar.scanNote': 'Scanning your face from a photo needs camera access, so it arrives in the next app build. It reads the hair and skin colour from the photo to set a starting point for these values — the photo never leaves the device and is not stored.',
+  'avatar.scanCta': 'Pick colours from a photo',
+  'avatar.scanTitle': 'Face scan',
+  'avatar.scanBody': 'Line your face up with the oval and take a shot; it reads the hair and skin colour and sets those values. It does not draw a likeness — pick the rest yourself. The photo never leaves the device and is not stored.',
+  'avatar.scanShoot': 'Take a shot',
+  'avatar.scanning': 'Reading…',
+  'avatar.scanAllow': 'Allow camera access',
+  'avatar.scanNeedCamera': 'The face scan needs camera access.',
+  'avatar.scanFailed': 'Could not read the colours. Try again somewhere brighter with your face inside the oval.',
 };
