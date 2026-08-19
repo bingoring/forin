@@ -199,6 +199,24 @@ export interface Curriculum {
 export interface CurriculumFloor { floor: string; where: string; curricula: Curriculum[] }
 export interface CurriculumBuilding { building: string; floors: CurriculumFloor[] }
 
+/** One thing the learner touched on a day. `hour` is local, 0-23. */
+export interface CalendarEntry {
+  scenarioId: string; title: string; cleared: boolean; hour: number;
+}
+
+/**
+ * A day of activity. `band` is the day's DOMINANT band — a day split across two
+ * reports the busier one, because the calendar cell has room for one mark and the
+ * entries carry the detail.
+ */
+export interface CalendarDay {
+  date: string;            // YYYY-MM-DD in the caller's timezone
+  band: 'day' | 'evening' | 'night';
+  sessions: number;
+  cleared: number;
+  entries: CalendarEntry[];
+}
+
 // One node of the main-route curriculum graph (server: GET /me/route).
 export interface RouteNode {
   eventId: string; title: string; tier: number;
@@ -594,6 +612,21 @@ export const api = {
    */
   async setUILang(uiLang: string): Promise<void> {
     await http.patch('/me/ui-lang', { uiLang });
+  },
+
+  /**
+   * Activity calendar for one month: which days had sessions, which band they fell in,
+   * and what was studied on each.
+   *
+   * A month at a time because the screen draws a month. Asking for "everything" would
+   * grow without bound for a long-time learner while the grid can only show 31 cells.
+   */
+  async calendar(month?: string): Promise<{ month: string; days: CalendarDay[] }> {
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    const { data } = await http.get('/me/calendar', { params: { month, tz } });
+    const d = data as { month?: string; days?: CalendarDay[] };
+    return { month: d.month ?? (month ?? ''), days: d.days ?? [] };
   },
 
   /** Main-route curriculum path (events + unlock states). */

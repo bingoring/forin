@@ -94,6 +94,7 @@ func NewRouter(d Deps) http.Handler {
 	ph := &progressHandler{progress: d.Progress, review: d.Review}
 	mux.Handle("GET /me/progress", auth(http.HandlerFunc(ph.get)))
 	mux.Handle("GET /me/stats", auth(http.HandlerFunc(ph.stats)))
+	mux.Handle("GET /me/calendar", auth(http.HandlerFunc(ph.calendar)))
 	mux.Handle("GET /me/curriculum", auth(http.HandlerFunc(ph.curriculum)))
 	mux.Handle("GET /me/missions", auth(http.HandlerFunc(ph.missions)))
 	mux.Handle("POST /me/missions/{id}", auth(http.HandlerFunc(ph.recordMission)))

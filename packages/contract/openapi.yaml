@@ -158,6 +158,53 @@ components:
           description: DAY | EVENING
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_progress.Band:
+      description: |-
+        Band is the day's dominant band — where most of the work happened. A day split
+        across two bands reports the busier one rather than both: the calendar cell has
+        room for one mark, and the entries below it carry the detail.
+      enum:
+      - day
+      - evening
+      - night
+      type: string
+      x-enum-comments:
+        BandDay: 06:00–13:59
+        BandEvening: 14:00–21:59
+        BandNight: 22:00–05:59
+      x-enum-varnames:
+      - BandDay
+      - BandEvening
+      - BandNight
+    github_com_bingoring_forin_server_internal_domain_progress.CalendarDay:
+      properties:
+        band:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.Band'
+        cleared:
+          type: integer
+        date:
+          description: YYYY-MM-DD in the caller's timezone
+          type: string
+        entries:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.CalendarEntry'
+          type: array
+          uniqueItems: false
+        sessions:
+          type: integer
+      type: object
+    github_com_bingoring_forin_server_internal_domain_progress.CalendarEntry:
+      properties:
+        cleared:
+          type: boolean
+        hour:
+          description: local hour it started, 0-23
+          type: integer
+        scenarioId:
+          type: string
+        title:
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_domain_progress.GrowthStats:
       properties:
         activeDates:
@@ -958,6 +1005,31 @@ paths:
       summary: What the learner may enter in one interior
       tags:
       - access
+  /me/calendar:
+    get:
+      parameters:
+      - description: YYYY-MM (defaults to the current month in tz)
+        in: query
+        name: month
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.CalendarDay'
+                  type: array
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: Activity calendar — per-day sessions with the shift band they fell
+        in
+      tags:
+      - progress
   /me/cheers:
     get:
       responses: null

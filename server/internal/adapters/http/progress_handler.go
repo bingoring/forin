@@ -122,6 +122,49 @@ func (h *progressHandler) stats(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, s)
 }
 
+// @Summary Activity calendar — per-day sessions with the shift band they fell in
+// @Tags progress
+// @Security Bearer
+// @Param month query string false "YYYY-MM (defaults to the current month in tz)"
+// @Success 200 {object} map[string][]progress.CalendarDay
+// @Router /me/calendar [get]
+func (h *progressHandler) calendar(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	loc := time.UTC
+	if tz := r.URL.Query().Get("tz"); tz != "" {
+		if l, err := time.LoadLocation(tz); err == nil {
+			loc = l
+		}
+	}
+	// A month at a time. The screen shows one month and pages between them, so a range
+	// wide enough for "everything" would grow without bound for a long-time learner
+	// while the calendar can only ever draw 31 cells.
+	from := monthStart(time.Now().In(loc), loc)
+	if m := r.URL.Query().Get("month"); m != "" {
+		parsed, err := time.ParseInLocation("2006-01", m, loc)
+		if err != nil {
+			httpx.Error(w, http.StatusBadRequest, "month must be YYYY-MM")
+			return
+		}
+		from = parsed
+	}
+	to := from.AddDate(0, 1, 0)
+
+	entries, dates, err := h.progress.CalendarEntries(r.Context(), uid, from, to, loc.String())
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load calendar")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{
+		"month": from.Format("2006-01"),
+		"days":  progress.BuildCalendar(entries, dates),
+	})
+}
+
+func monthStart(t time.Time, loc *time.Location) time.Time {
+	return time.Date(t.Year(), t.Month(), 1, 0, 0, 0, 0, loc)
+}
+
 // @Summary Record a cleared scenario (awards XP, advances streak)
 // @Tags progress
 // @Security Bearer

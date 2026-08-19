@@ -620,6 +620,47 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/calendar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Activity calendar — per-day sessions with the shift band they fell in */
+        get: {
+            parameters: {
+                query?: {
+                    /** @description YYYY-MM (defaults to the current month in tz) */
+                    month?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.CalendarDay"][];
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/cheers": {
         parameters: {
             query?: never;
@@ -1800,6 +1841,28 @@ export interface components {
             deptLabel?: string;
             /** @description DAY | EVENING */
             shift?: string;
+        };
+        /**
+         * @description Band is the day's dominant band — where most of the work happened. A day split
+         *     across two bands reports the busier one rather than both: the calendar cell has
+         *     room for one mark, and the entries below it carry the detail.
+         * @enum {string}
+         */
+        "github_com_bingoring_forin_server_internal_domain_progress.Band": "day" | "evening" | "night";
+        "github_com_bingoring_forin_server_internal_domain_progress.CalendarDay": {
+            band?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.Band"];
+            cleared?: number;
+            /** @description YYYY-MM-DD in the caller's timezone */
+            date?: string;
+            entries?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.CalendarEntry"][];
+            sessions?: number;
+        };
+        "github_com_bingoring_forin_server_internal_domain_progress.CalendarEntry": {
+            cleared?: boolean;
+            /** @description local hour it started, 0-23 */
+            hour?: number;
+            scenarioId?: string;
+            title?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_progress.GrowthStats": {
             /** @description yyyy-mm-dd (tz), the StreakWindowDays ending today */

@@ -10,10 +10,12 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
-import { api, type Progress, type GrowthStats } from '@/api/client';
+import { api, type CalendarDay, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale } from '@/i18n';
+import { ActivityCalendar } from '@/components/growth/ActivityCalendar';
+import { DayDetail } from '@/components/growth/DayDetail';
 
 const C = colors.ink;
 /** Today's weekday and date in the reader's language.
@@ -54,6 +56,12 @@ export default function Growth() {
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [stats, setStats] = useState<GrowthStats | null>(null);
+  // The calendar is the report's new opening: it answers when and what, which the
+  // counters never did. Month is what the SERVER answered with, so paging cannot drift
+  // from what is drawn.
+  const [cal, setCal] = useState<{ month: string; days: CalendarDay[] }>({ month: '', days: [] });
+  const [pickedDay, setPickedDay] = useState<string | null>(null);
+  const [job, setJob] = useState<string | undefined>(undefined);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [sheet, setSheet] = useState<InfoSheetData | null>(null);
 
@@ -62,10 +70,17 @@ export default function Growth() {
       let alive = true;
       (async () => {
         try {
-          const [p, s] = await Promise.all([api.progress(), api.growthStats()]);
+          const [p, s, c, me] = await Promise.all([
+            api.progress(), api.growthStats(), api.calendar(),
+            api.me().catch(() => null),
+          ]);
           if (!alive) return;
           setProgress(p);
           setStats(s);
+          setCal(c);
+          // The job decides what the bands are CALLED — a nurse reads shifts, everyone
+          // else reads the time of day (data/shifts.ts).
+          setJob((me as { profile?: { job?: string } } | null)?.profile?.job);
           setState('ok');
         } catch {
           if (alive) setState('error');
@@ -74,6 +89,20 @@ export default function Growth() {
       return () => { alive = false; };
     }, []),
   );
+
+  // Paging asks the server for a month and takes the month it answers with. Computing
+  // the next month locally and then trusting it would drift the moment the server
+  // clamps or normalises the range.
+  const shiftMonth = async (delta: number) => {
+    const [y, m] = (cal.month || monthNow()).split('-').map(Number);
+    const d = new Date(y, m - 1 + delta, 1);
+    const next = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const got = await api.calendar(next).catch(() => null);
+    if (got) {
+      setCal(got);
+      setPickedDay(null);
+    }
+  };
 
   // today's date + weekday, and the current-week attendance from the server's
   // activeDates (bucketed in the device timezone → built in local time here).
@@ -120,10 +149,38 @@ export default function Growth() {
 
       {state === 'ok' && progress && stats && (
         <ScrollView contentContainerStyle={{ paddingHorizontal: 18, paddingBottom: 40, gap: 16 }}>
+          {/* The calendar opens the report. The counters below still answer "how much",
+              but "when, and what" is the question a roster-shaped week actually asks,
+              and it had no answer here before. */}
+          <Shadowed offset={4}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
+              <ActivityCalendar
+                month={cal.month || monthNow()}
+                days={cal.days}
+                job={job}
+                selected={pickedDay}
+                onSelect={setPickedDay}
+                onMonth={(d) => void shiftMonth(d)}
+              />
+              {(() => {
+                const day = cal.days.find((x) => x.date === pickedDay);
+                return day ? (
+                  <DayDetail
+                    day={day}
+                    job={job}
+                    // Straight into the thing they studied — the report is a way back in,
+                    // not a dead end.
+                    onOpen={(id) => router.push(id.startsWith('QZ-') ? `/quiz/${id}` : `/scenario/${id}`)}
+                  />
+                ) : null;
+              })()}
+            </View>
+          </Shadowed>
+
           {/* hero report card */}
           <Shadowed offset={4} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 16 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 성장 리포트</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>{t('growth.reportTitle')}</Text>
               {progress.streakCurrent > 0 ? (
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, lineHeight: 27, marginTop: 6 }}>
                   오늘도 출근했어요!{'\n'}
@@ -289,4 +346,10 @@ function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: 
       {children}
     </View>
   );
+}
+
+/** Current month as YYYY-MM, for the first page when the server has said nothing yet. */
+function monthNow(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }

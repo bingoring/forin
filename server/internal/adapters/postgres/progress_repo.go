@@ -206,6 +206,49 @@ func (r *ProgressRepo) ClearedScenarioIDs(ctx context.Context, userID string) (m
 	return out, rows.Err()
 }
 
+// CalendarEntries returns every attempt between two dates, with the local date and
+// hour it started, for the calendar report.
+//
+// The date and hour are bucketed in SQL because only the database knows the timezone
+// conversion; the BAND those hours mean is decided in the domain, where it is one
+// testable rule rather than a string inside a query.
+//
+// Titles are joined here rather than fetched per row by the client: a month of activity
+// is one request, and the alternative is a screen that fans out N lookups to render a
+// list it already has the ids for.
+func (r *ProgressRepo) CalendarEntries(
+	ctx context.Context, userID string, from, to time.Time, tzName string,
+) ([]progress.CalendarEntry, []string, error) {
+	rows, err := r.pool.Query(ctx,
+		`SELECT (a.started_at AT TIME ZONE $4)::date::text AS d,
+		        EXTRACT(HOUR FROM (a.started_at AT TIME ZONE $4))::int AS h,
+		        a.scenario_id,
+		        COALESCE(s.title, a.scenario_id) AS title,
+		        (a.state = 'cleared') AS cleared
+		   FROM scenario_attempts a
+		   LEFT JOIN scenarios s ON s.id = a.scenario_id
+		  WHERE a.user_id = $1 AND a.started_at >= $2 AND a.started_at < $3
+		  ORDER BY a.started_at`,
+		userID, from, to, tzName)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer rows.Close()
+
+	var entries []progress.CalendarEntry
+	var dates []string
+	for rows.Next() {
+		var e progress.CalendarEntry
+		var d string
+		if err := rows.Scan(&d, &e.Hour, &e.ScenarioID, &e.Title, &e.Cleared); err != nil {
+			return nil, nil, err
+		}
+		entries = append(entries, e)
+		dates = append(dates, d)
+	}
+	return entries, dates, rows.Err()
+}
+
 // LatestAttemptScenarioID returns the scenario the user started most recently.
 //
 // Ordered by started_at rather than cleared_at because an abandoned run is still

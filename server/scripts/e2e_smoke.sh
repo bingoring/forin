@@ -290,6 +290,29 @@ if [ "$(pj "'shift' in d")" = "True" ]; then
   [ "$sdept" = "$cdept" ] && ok "shift dept matches resume curriculum: $sdept" || bad "shift '$sdept' ≠ resume '$cdept'"
 fi
 
+hd "⑫b CALENDAR · per-day activity with the shift band it fell in"
+run GET "/me/calendar?tz=Asia/Seoul"
+[ "$CODE" = 200 ] && ok "GET /me/calendar 200" || bad "calendar → $CODE"
+cmonth=$(pj "d.get('month','')")
+printf '%s' "$cmonth" | grep -qE '^[0-9]{4}-[0-9]{2}$' && ok "month echoed as YYYY-MM: $cmonth" || bad "month=$cmonth"
+# A scenario was cleared earlier in this run, so today must appear — asserting the
+# array merely EXISTS would pass on a handler that always returns [].
+ndays=$(pj "len(d.get('days',[]))")
+[ "${ndays:-0}" -ge 1 ] && ok "calendar has $ndays active day(s)" || bad "calendar days=$ndays after clearing a scenario"
+bands=$(pj "','.join(sorted({x['band'] for x in d.get('days',[])}))")
+printf '%s' "$bands" | grep -qE '^(day|evening|night)(,(day|evening|night))*$' && ok "bands are codes, not labels ($bands)" || bad "bad bands: $bands"
+# Entries must carry what was studied, not just a count: the day detail is the point.
+hasentry=$(pj "all(len(x.get('entries',[])) == x.get('sessions') for x in d.get('days',[]))")
+[ "$hasentry" = "True" ] && ok "every day's entries match its session count" || bad "entries/sessions disagree"
+titled=$(pj "all(e.get('title') for x in d.get('days',[]) for e in x['entries'])")
+[ "$titled" = "True" ] && ok "every entry carries a title (joined server-side)" || bad "entry without a title"
+hours=$(pj "all(0 <= e.get('hour', -1) <= 23 for x in d.get('days',[]) for e in x['entries'])")
+[ "$hours" = "True" ] && ok "hours are local 0-23" || bad "hour out of range"
+run GET "/me/calendar?month=2020-01&tz=Asia/Seoul"
+[ "$CODE" = 200 ] && [ "$(pj "d.get('month')")" = "2020-01" ] && ok "past month returns that month" || bad "month param ignored"
+run GET "/me/calendar?month=nope&tz=Asia/Seoul"
+[ "$CODE" = 400 ] && ok "malformed month rejected (400)" || bad "month=nope → $CODE"
+
 hd "⑬ COLLEAGUES · code, boundaries, privacy"
 run POST /me/invite-code
 [ "$CODE" = 200 ] && ok "POST /me/invite-code 200" || bad "invite-code → $CODE"

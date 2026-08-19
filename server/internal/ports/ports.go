@@ -34,6 +34,10 @@ type ProgressRepo interface {
 	// the period lower bounds (already computed in tzName); ActiveDates are bucketed
 	// as calendar dates in tzName (an IANA zone, e.g. "Asia/Seoul") over the week.
 	GrowthStats(ctx context.Context, userID string, dayStart, weekStart time.Time, tzName string) (*progress.GrowthStats, error)
+	// CalendarEntries returns each attempt in [from, to) with the local date and hour
+	// it started, for the calendar report. The band those hours mean is the domain's
+	// decision (progress.BandForHour), not this query's.
+	CalendarEntries(ctx context.Context, userID string, from, to time.Time, tzName string) ([]progress.CalendarEntry, []string, error)
 	// LatestAttemptScenarioID returns the scenario the user most recently STARTED,
 	// or "" when they have never played. started_at, not cleared_at: a run the user
 	// walked out of is still the place they were, and the home screen's "continue"
