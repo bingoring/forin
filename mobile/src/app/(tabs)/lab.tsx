@@ -12,20 +12,22 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
-const GRADES: { g: ReviewGrade; label: string; bg: string; blurb: string; guide: string }[] = [
-  { g: 'again', label: '다시', bg: '#FCA5A5', blurb: '기억이 안 났어요 — 곧 다시 보여줄게요', guide: '기억이 전혀 안 났을 때. 진행도를 초기화하고 곧바로(내일) 다시 보여줘요.' },
-  { g: 'hard', label: '어려움', bg: colors.peach, blurb: '겨우 기억했어요 — 간격을 짧게 잡아요', guide: '겨우 떠올렸을 때. 다음 복습까지의 간격을 평소보다 짧게 잡아요.' },
-  { g: 'good', label: '알맞음', bg: colors.mint, blurb: '잘 기억했어요 — 표준 간격으로 넘어가요', guide: '무난하게 기억했을 때. 표준 간격(1일 → 6일 → 그 이상)으로 늘려가요.' },
-  { g: 'easy', label: '쉬움', bg: colors.yellow, blurb: '아주 쉬웠어요 — 한참 뒤에 다시 봐요', guide: '너무 쉬웠을 때. 간격을 크게 늘려 한참 뒤에 다시 보여줘요.' },
+// Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
+const GRADES: { g: ReviewGrade; labelKey: string; bg: string; blurbKey: string; guideKey: string }[] = [
+  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', blurbKey: 'lab.againSub', guideKey: 'lab.againBody' },
+  { g: 'hard', labelKey: 'lab.hard', bg: colors.peach, blurbKey: 'lab.hardSub', guideKey: 'lab.hardBody' },
+  { g: 'good', labelKey: 'lab.good', bg: colors.mint, blurbKey: 'lab.goodSub', guideKey: 'lab.goodBody' },
+  { g: 'easy', labelKey: 'lab.easy', bg: colors.yellow, blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
 ];
-// humanize the SM-2 next-interval into a friendly Korean "다음 복습" label.
+// humanize the SM-2 next-interval into a friendly "next review" label.
 function nextLabel(days: number): string {
-  if (days <= 1) return '내일 다시';
-  if (days < 14) return `${days}일 후`;
-  if (days < 60) return `약 ${Math.round(days / 7)}주 후`;
-  return `약 ${Math.round(days / 30)}개월 후`;
+  if (days <= 1) return t('lab.tomorrow');
+  if (days < 14) return t('lab.inDays', { n: days });
+  if (days < 60) return t('lab.inWeeks', { n: Math.round(days / 7) });
+  return t('lab.inMonths', { n: Math.round(days / 30) });
 }
 // Per-topic tone for the card header strip (v17 uses a per-dept tone background).
 const TONES = [colors.mint, colors.peach, colors.blue, colors.lilac, colors.yellow];
@@ -34,10 +36,11 @@ const toneOf = (tag: string) => TONES[[...tag].reduce((s, ch) => s + ch.charCode
 function splitTag(topicTag: string): { dept: string; tag: string } {
   const parts = (topicTag || '').split('·').map((s) => s.trim());
   if (parts.length >= 2) return { dept: parts[0], tag: parts.slice(1).join(' · ') };
-  return { dept: topicTag || '교정 노트', tag: '' };
+  return { dept: topicTag || t('lab.correctionNote'), tag: '' };
 }
 
 export default function Lab() {
+  useLocale();
   const router = useRouter();
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -61,7 +64,7 @@ export default function Lab() {
     let interval = 1;
     try { const r = await api.gradeReview(id, g); interval = r.intervalDays; } catch { /* best-effort; refreshes on next focus */ }
     // Confirm the grade so the card doesn't just silently disappear.
-    setToast({ label: meta.label, bg: meta.bg, blurb: meta.blurb, next: nextLabel(interval) });
+    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(interval) });
     setTimeout(() => setToast(null), 1600);
   };
 
@@ -69,7 +72,7 @@ export default function Lab() {
   const cats = useMemo(() => {
     const counts = new Map<string, number>();
     for (const c of cards) { const d = splitTag(c.topicTag).dept; counts.set(d, (counts.get(d) ?? 0) + 1); }
-    return [{ id: 'ALL', label: '전체', count: cards.length }, ...Array.from(counts, ([id, count]) => ({ id, label: id, count }))];
+    return [{ id: 'ALL', label: t('board.all'), count: cards.length }, ...Array.from(counts, ([id, count]) => ({ id, label: id, count }))];
   }, [cards]);
   const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(c.topicTag).dept === filter);
 
@@ -100,11 +103,11 @@ export default function Lab() {
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
             )}
             <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
-              AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>'현지인처럼 말하기'</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
+              AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>t('lab.likeALocal')</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
             </Text>
             {cards.length > 0 && (
               <View style={{ marginTop: 12 }}>
-                <PixelButton icon="play" label={`오늘의 복습 시작 (${cards.length})`} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
+                <PixelButton icon="play" label={t('lab.startReview', { n: cards.length })} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
               </View>
             )}
             <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
@@ -125,16 +128,16 @@ export default function Lab() {
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
                   카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
                 </Text>
-                {GRADES.map(({ g, label, bg, guide }) => (
+                {GRADES.map(({ g, labelKey, bg, guideKey }) => (
                   <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
                     <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{label}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t(labelKey)}</Text>
                     </View>
-                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{guide}</Text>
+                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{t(guideKey)}</Text>
                   </View>
                 ))}
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
-                  숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 '마스터'로 분류돼요.
+                  숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 t('lab.mastered')로 분류돼요.
                 </Text>
               </View>
             )}
@@ -143,9 +146,9 @@ export default function Lab() {
 
         {/* mini stats */}
         <View style={{ flexDirection: 'row', gap: 8 }}>
-          <MiniStat label="저장된 카드" value={cards.length} color={colors.mint} />
-          <MiniStat label="마스터" value={mastered} color={colors.yellow} />
-          <MiniStat label="복습 대기" value={cards.length} color="#FCA5A5" />
+          <MiniStat label={t('lab.savedCards')} value={cards.length} color={colors.mint} />
+          <MiniStat label={t('lab.mastered')} value={mastered} color={colors.yellow} />
+          <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
         </View>
 
         {/* category filter */}
@@ -215,7 +218,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
   const practicePronunciation = () => {
     Speech.stop();
     router.push(
-      `/pronunciation/${encodeURIComponent(card.back.slice(0, 40))}?referenceText=${encodeURIComponent(card.back)}&origin=review&reviewCardId=${encodeURIComponent(card.id)}&ctx=${encodeURIComponent(card.context?.title || card.topicTag || '')}&step=${encodeURIComponent('현지인처럼 말하기')}`
+      `/pronunciation/${encodeURIComponent(card.back.slice(0, 40))}?referenceText=${encodeURIComponent(card.back)}&origin=review&reviewCardId=${encodeURIComponent(card.id)}&ctx=${encodeURIComponent(card.context?.title || card.topicTag || '')}&step=${encodeURIComponent(t('lab.likeALocal'))}`
     );
   };
   const { dept, tag } = splitTag(card.topicTag);
@@ -299,9 +302,9 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
 
           {/* grade buttons */}
           <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
-            {GRADES.map(({ g, label, bg }) => (
+            {GRADES.map(({ g, labelKey, bg }) => (
               <View key={g} style={{ flex: 1 }}>
-                <PixelButton label={label} bg={bg} shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={7} onPress={() => onGrade(card.id, g)} full />
+                <PixelButton label={t(labelKey)} bg={bg} shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={7} onPress={() => onGrade(card.id, g)} full />
               </View>
             ))}
           </View>

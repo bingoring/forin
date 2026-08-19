@@ -13,9 +13,28 @@ import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { api, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
 import { colors, fonts, fs } from '@/theme/tokens';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
-const WD = ['월', '화', '수', '목', '금', '토', '일'];
+/** Today's weekday and date in the reader's language.
+ *
+ *  Intl rather than a Korean array plus a "월 일" template: the order of month and
+ *  day differs per language, so a translated template would still read wrong. */
+function weekdayLabel(d: Date, locale: string): string {
+  try {
+    return new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(d);
+  } catch {
+    return '';
+  }
+}
+
+function monthDayLabel(d: Date, locale: string): string {
+  try {
+    return new Intl.DateTimeFormat(locale, { month: 'long', day: 'numeric' }).format(d);
+  } catch {
+    return d.toDateString();
+  }
+}
 // The attendance strip is a rolling window ending today — 10 days, not a week.
 const STRIP_DAYS = 10;
 
@@ -26,11 +45,12 @@ function localDate(d: Date): string {
 }
 function fmtMinutes(seconds: number): string {
   const m = Math.round(seconds / 60);
-  if (m < 60) return `${m}분`;
-  return `${Math.floor(m / 60)}시간 ${m % 60}분`;
+  if (m < 60) return t('growth.minutes', { n: m });
+  return t('growth.hoursMinutes', { h: Math.floor(m / 60), m: m % 60 });
 }
 
 export default function Growth() {
+  const locale = useLocale();
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [stats, setStats] = useState<GrowthStats | null>(null);
@@ -63,8 +83,7 @@ export default function Growth() {
   // look like a broken streak.
   const { dateLabel, dow, days, attended } = useMemo(() => {
     const now = new Date();
-    const d = `${now.getMonth() + 1}월 ${now.getDate()}일`;
-    const todayIdx = (now.getDay() + 6) % 7; // Mon=0 … Sun=6
+    const d = monthDayLabel(now, locale);
     const active = new Set(stats?.activeDates ?? []);
     const ds = Array.from({ length: STRIP_DAYS }, (_, i) => {
       const cell = new Date(now.getFullYear(), now.getMonth(), now.getDate() - (STRIP_DAYS - 1 - i));
@@ -75,8 +94,8 @@ export default function Growth() {
         filled: active.has(localDate(cell)),
       };
     });
-    return { dateLabel: d, dow: WD[todayIdx], days: ds, attended: ds.filter((x) => x.filled).length };
-  }, [stats]);
+    return { dateLabel: d, dow: weekdayLabel(now, locale), days: ds, attended: ds.filter((x) => x.filled).length };
+  }, [stats, locale]);
 
   const back = () => router.back();
 
@@ -86,7 +105,7 @@ export default function Growth() {
 
       {/* top bar */}
       <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <PixelButton label="‹ 뒤로" bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={back} />
+        <PixelButton label={t('common.back')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={back} />
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>TODAY · {dateLabel}</Text>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, width: 44, textAlign: 'right' }}>{dow}요일</Text>
       </View>
@@ -95,7 +114,7 @@ export default function Growth() {
       {state === 'error' && (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.textSoft, textAlign: 'center' }}>리포트를 불러오지 못했어요.</Text>
-          <PixelButton label="‹ 돌아가기" onPress={back} />
+          <PixelButton label={t('common.back')} onPress={back} />
         </View>
       )}
 
@@ -116,7 +135,7 @@ export default function Growth() {
                 </Text>
               )}
               <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
-                <PixelChip icon="flame" label={`최장 ${progress.streakLongest}일`} bg={colors.yellow} />
+                <PixelChip icon="flame" label={t('growth.longest', { n: progress.streakLongest })} bg={colors.yellow} />
                 <PixelChip label={`${progress.xp.toLocaleString()} XP`} bg="#fff" />
               </View>
               <View style={{ position: 'absolute', top: -6, right: -2, transform: [{ rotate: '12deg' }] }}>
@@ -130,7 +149,7 @@ export default function Growth() {
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>
-                  {progress.streakCurrent > 0 ? `${progress.streakCurrent}일 연속 학습` : '연속 학습'}
+                  {progress.streakCurrent > 0 ? t('growth.streakLearning', { n: progress.streakCurrent }) : t('growth.streak')}
                 </Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>최근 {STRIP_DAYS}일 중 {attended}일</Text>
               </View>
@@ -155,10 +174,10 @@ export default function Growth() {
 
           {/* stat grid — this week's live activity (GET /me/stats) */}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            <StatTile label="시나리오" value={`${stats.scenariosWeek}`} sub="이번 주 완료" color={colors.mint} />
-            <StatTile label="새 표현" value={`${stats.newCardsWeek}`} sub="이번 주 배움" color={colors.peach} />
-            <StatTile label="대화 시간" value={fmtMinutes(stats.conversationSecondsWeek)} sub="이번 주 현장" color={colors.pink} />
-            <StatTile label="레벨" value={`Lv.${progress.level}`} sub={careerFor(progress.level).label} color={colors.yellow} />
+            <StatTile label={t('growth.scenarios')} value={`${stats.scenariosWeek}`} sub={t('growth.thisWeekDone')} color={colors.mint} />
+            <StatTile label={t('growth.newPhrases')} value={`${stats.newCardsWeek}`} sub={t('growth.thisWeekLearned')} color={colors.peach} />
+            <StatTile label={t('growth.talkTime')} value={fmtMinutes(stats.conversationSecondsWeek)} sub={t('growth.thisWeekFloor')} color={colors.pink} />
+            <StatTile label={t('growth.level')} value={`Lv.${progress.level}`} sub={careerFor(progress.level).label} color={colors.yellow} />
           </View>
 
           {/* 칭찬 스티커 보드 — 시나리오 클리어 1회당 스티커 1장(누적) */}
@@ -166,7 +185,7 @@ export default function Growth() {
 
           {/* go practice */}
           <View style={{ marginTop: 2 }}>
-            <PixelButton icon="play" label="오늘의 근무 시작하기" bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.replace('/campus')} />
+            <PixelButton icon="play" label={t('growth.startShift')} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.replace('/campus')} />
           </View>
         </ScrollView>
       )}
@@ -210,7 +229,7 @@ const TILE = Math.floor((Dimensions.get('window').width - 36 /*page*/ - 34 /*car
 
 function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoSheetData) => void }) {
   const filled = Math.max(0, Math.min(SLOTS, earned));
-  const howText = '시나리오를 클리어할 때마다 환자에게서 칭찬 스티커를 한 장씩 받아요. 100장을 모으면 새 자격증이 열려요.';
+  const howText = t('growth.stickerIntro');
   return (
     <View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
@@ -234,9 +253,9 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
                 <Shadowed key={i} offset={3} style={{ width: TILE, height: TILE }}>
                   <Pressable
                     onPress={() => onPick({
-                      icon: s.e, iconNode: iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={34} sw={1.6} /> : undefined, iconBg: s.bg, title: `칭찬 스티커 #${i + 1}`,
-                      status: { label: '획득', bg: colors.mint },
-                      what: `시나리오를 성공적으로 마치고 환자에게서 받은 칭찬 스티커예요. 지금까지 ${earned}장 모았어요.`,
+                      icon: s.e, iconNode: iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={34} sw={1.6} /> : undefined, iconBg: s.bg, title: t('growth.stickerNo', { n: i + 1 }),
+                      status: { label: t('badge.earned'), bg: colors.mint },
+                      what: t('growth.stickerBody', { n: earned }),
                       how: howText,
                     })}
                     style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
@@ -247,9 +266,9 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
                 <Pressable
                   key={i}
                   onPress={() => onPick({
-                    icon: '➕', iconNode: <PixelIcon name="plus" color={C} size={30} sw={1.8} />, iconBg: colors.cream, title: '빈 스티커 칸',
-                    status: { label: '잠김', bg: colors.cream },
-                    what: '아직 비어 있는 칸이에요. 시나리오를 클리어하면 이 칸이 칭찬 스티커로 채워져요.',
+                    icon: '➕', iconNode: <PixelIcon name="plus" color={C} size={30} sw={1.8} />, iconBg: colors.cream, title: t('growth.emptySticker'),
+                    status: { label: t('badge.locked'), bg: colors.cream },
+                    what: t('growth.emptyStickerBody'),
                     how: howText,
                   })}
                   style={{ width: TILE, height: TILE, borderWidth: 2, borderColor: C + '33', borderStyle: 'dashed' }} />

@@ -22,6 +22,7 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { playSfx } from '@/lib/sfx';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -34,6 +35,7 @@ const WAV_16K_MONO: RecordingOptions = {
 };
 
 export default function DialogueRoute() {
+  useLocale(); // 언어가 바뀌면 이 화면도 다시 그려져야 한다
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
 
@@ -143,7 +145,7 @@ export default function DialogueRoute() {
       });
       void speakNpc();
     } catch {
-      setNpcLine('(응답을 불러오지 못했습니다. 다시 시도해 주세요.)');
+      setNpcLine(t('dialogue.replyFailed'));
     } finally {
       setPending(false);
     }
@@ -154,11 +156,11 @@ export default function DialogueRoute() {
   const endSituation = () => {
     if (turnsRef.current === 0) {
       Alert.alert(
-        '아직 대화를 시작하지 않았어요',
-        '대화를 나눠야 평가와 보상을 받을 수 있어요. 그냥 나갈까요?',
+        t('dialogue.notStartedTitle'),
+        t('dialogue.notStartedBody'),
         [
-          { text: '계속하기', style: 'cancel' },
-          { text: '나가기', style: 'destructive', onPress: () => router.back() },
+          { text: t('dialogue.keepGoing'), style: 'cancel' },
+          { text: t('dialogue.leave'), style: 'destructive', onPress: () => router.back() },
         ],
       );
       return;
@@ -244,7 +246,7 @@ export default function DialogueRoute() {
     // expression; splitting it across `+`-joined pieces breaks that match
     // (same rule pronunciation/[sentenceKey].tsx's goNext follows).
     router.push(
-      `/pronunciation/${encodeURIComponent(phrase.slice(0, 40))}?referenceText=${encodeURIComponent(phrase)}&origin=dialogue&scenarioId=${encodeURIComponent(id)}&ctx=${encodeURIComponent(scenario?.title ?? '')}&step=${encodeURIComponent('핵심 표현 발음 연습')}`
+      `/pronunciation/${encodeURIComponent(phrase.slice(0, 40))}?referenceText=${encodeURIComponent(phrase)}&origin=dialogue&scenarioId=${encodeURIComponent(id)}&ctx=${encodeURIComponent(scenario?.title ?? '')}&step=${encodeURIComponent(t('dialogue.pronStep'))}`
     );
   };
 
@@ -276,7 +278,7 @@ export default function DialogueRoute() {
       <View style={{ flex: 1, backgroundColor: '#1F2937', alignItems: 'center', justifyContent: 'center', gap: 16, padding: 24 }}>
         <Stack.Screen options={{ headerShown: false }} />
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff' }}>대화를 시작하지 못했습니다</Text>
-        <PixelButton label="‹ 돌아가기" onPress={() => router.back()} />
+        <PixelButton label={t('common.back')} onPress={() => router.back()} />
       </View>
     );
   }
@@ -338,7 +340,7 @@ export default function DialogueRoute() {
           {/* Main completion: resolving the situation via dialogue ends the scenario.
               Ending with no dialogue is "중단" — no grade, no reward; ending after
               speaking hands the sessionId to the result screen for AI grading. */}
-          <PixelButton icon="check" label="상황 종료" bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={endSituation} />
+          <PixelButton icon="check" label={t('dialogue.endSituation')} bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={endSituation} />
         </View>
       </View>
 
@@ -367,7 +369,7 @@ export default function DialogueRoute() {
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
         </View>
         <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
-        {([['chart', 'clipboard', '차트'], ['meds', 'pill', '약물'], ['vitals', 'stethoscope', '활력']] as const).map(([k, icon, label]) => (
+        {([['chart', 'clipboard', t('dialogue.tabChart')], ['meds', 'pill', t('dialogue.tabMeds')], ['vitals', 'stethoscope', t('dialogue.tabVitals')]] as const).map(([k, icon, label]) => (
           <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
             <Shadowed offset={2}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
@@ -386,7 +388,7 @@ export default function DialogueRoute() {
             <Shadowed offset={5}>
               <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{tool === 'chart' ? '환자 차트' : tool === 'meds' ? '투약 정보' : '활력징후'}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{tool === 'chart' ? t('dialogue.chartTitle') : tool === 'meds' ? t('dialogue.medsTitle') : t('dialogue.vitalsTitle')}</Text>
                   <Pressable onPress={() => setTool(null)}><Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.textSoft }}>✕</Text></Pressable>
                 </View>
                 <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
@@ -403,7 +405,7 @@ export default function DialogueRoute() {
           <View>
             <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
             <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleKo(kind)}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleLabel(kind)}</Text>
             </View>
           </View>
           {transcript.length > 0 && (
@@ -430,10 +432,10 @@ export default function DialogueRoute() {
             {/* translate row — available for scripted lines that carry a Korean translation */}
             {!!npcLine && !!npcLineKo && (
               <View style={{ marginTop: 10, paddingTop: 10, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>{showKo ? '원문 English' : '한국어 번역'}</Text>
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>{showKo ? t('dialogue.sourceEn') : t('dialogue.translation')}</Text>
                 <Pressable onPress={() => setShowKo((v) => !v)}>
                   <View style={{ backgroundColor: showKo ? colors.yellow : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{showKo ? '원문 보기' : 'tap to 번역'}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{showKo ? t('dialogue.showSource') : t('dialogue.tapTranslate')}</Text>
                   </View>
                 </Pressable>
               </View>
@@ -475,7 +477,7 @@ export default function DialogueRoute() {
         {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
         {!hintOn && (
           <View style={{ marginTop: 14 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? '듣는 중… (마이크 탭하면 완료)' : rec === 'transcribing' ? '받아쓰는 중…' : 'SPEAK FREELY · 마이크를 눌러 말하기'}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}</Text>
             <Shadowed offset={3}>
               <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <Pressable onPress={toggleMic} disabled={pending}>
@@ -493,7 +495,7 @@ export default function DialogueRoute() {
                   value={draft}
                   onChangeText={setDraft}
                   editable={!pending && rec === 'idle'}
-                  placeholder={rec === 'recording' ? '말한 뒤 마이크를 다시 누르세요…' : '자유롭게 영어로 답하거나 마이크로 말해보세요…'}
+                  placeholder={rec === 'recording' ? t('dialogue.tapMicAgain') : t('dialogue.inputPlaceholder')}
                   placeholderTextColor={colors.textFaint}
                   style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C, paddingVertical: 4 }}
                   onSubmitEditing={send}
@@ -513,10 +515,10 @@ export default function DialogueRoute() {
         {/* action rail */}
         <View style={{ marginTop: 12, flexDirection: 'row', gap: 8 }}>
           <View style={{ flex: 2 }}>
-            <PixelButton label={pending ? '전송 중…' : '보내기'} icon={pending ? undefined : 'play'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
+            <PixelButton label={pending ? t('dialogue.sending') : t('dialogue.send')} icon={pending ? undefined : 'play'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
           <View style={{ flex: 1 }}>
-            <PixelButton icon="bulb" label="힌트" bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
+            <PixelButton icon="bulb" label={t('dialogue.hint')} bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
             {hintOn && (
               <View style={{ position: 'absolute', top: -6, right: -6, width: 14, height: 14, backgroundColor: C, alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.yellow }}>●</Text>
@@ -524,7 +526,7 @@ export default function DialogueRoute() {
             )}
           </View>
           <View style={{ flex: 1 }}>
-            <PixelButton icon="mic" label="직접 말하기" bg="#fff" shadowColor={C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={openPronunciation} disabled={!scenario?.keyPhrases?.length} full />
+            <PixelButton icon="mic" label={t('dialogue.speakSelf')} bg="#fff" shadowColor={C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={openPronunciation} disabled={!scenario?.keyPhrases?.length} full />
           </View>
           {quizIds.length > 0 && (
             <PixelButton
@@ -560,15 +562,15 @@ export default function DialogueRoute() {
             return (
               <View style={{ backgroundColor: last.role === 'user' ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11, marginBottom: 16 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 3 }}>
-                  {last.role === 'user' ? '내가 마지막으로' : `${npcName} 님이 마지막으로`}
+                  {last.role === 'user' ? t('dialogue.lastMine') : t('dialogue.lastNpc', { name: npcName })}
                 </Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }} numberOfLines={3}>{last.content}</Text>
               </View>
             );
           })()}
           <View style={{ gap: 8 }}>
-            <PixelButton label="이어서 대화한다" icon="play" bg={colors.mint} shadowColor={colors.mintShadow} full onPress={() => { void resumePrevious(); }} />
-            <PixelButton label="처음부터 다시" icon="refresh" bg="#fff" shadowColor={C} full onPress={() => { void startFresh(); }} />
+            <PixelButton label={t('dialogue.resume')} icon="play" bg={colors.mint} shadowColor={colors.mintShadow} full onPress={() => { void resumePrevious(); }} />
+            <PixelButton label={t('dialogue.restart')} icon="refresh" bg="#fff" shadowColor={C} full onPress={() => { void startFresh(); }} />
           </View>
         </View>
       </BottomSheet>
@@ -587,7 +589,7 @@ export default function DialogueRoute() {
           </Text>
           <View style={{ gap: 8 }}>
             <PixelButton
-              label="자리를 비운다"
+              label={t('dialogue.stepAway')}
               icon="alert"
               bg={colors.peach}
               shadowColor={colors.peachShadow}
@@ -595,7 +597,7 @@ export default function DialogueRoute() {
               onPress={() => { setPagedOut(false); router.back(); }}
             />
             <PixelButton
-              label="대화를 계속한다"
+              label={t('dialogue.stay')}
               icon="play"
               bg={colors.mint}
               shadowColor={colors.mintShadow}
@@ -699,11 +701,11 @@ function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text
 function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | 'meds' | 'vitals'; p: { name?: string; sub?: string }; kind: RoleKind; chart?: import('@/api/client').ScenarioChart; brief?: string; tagline?: string }) {
   if (tool === 'chart') {
     const rows: [string, string][] = [
-      ['환자', p.name || '—'],
-      ['역할', roleKo(kind)],
-      ...(p.sub ? ([['정보', p.sub]] as [string, string][]) : []),
-      ['주요 호소', tagline || '—'],
-      ['알레르기', chart?.allergies || '확인 필요'],
+      [t('role.patient'), p.name || '—'],
+      [t('dialogue.role'), roleLabel(kind)],
+      ...(p.sub ? ([[t('dialogue.info'), p.sub]] as [string, string][]) : []),
+      [t('dialogue.chiefComplaint'), tagline || '—'],
+      [t('dialogue.allergies'), chart?.allergies || t('dialogue.toVerify')],
     ];
     return (
       <View style={{ gap: 6 }}>
@@ -751,8 +753,10 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   );
 }
 
-function roleKo(kind: RoleKind): string {
-  return ({ patient: '환자', doctor: '의사', surgeon: '외과의', paramedic: '구급대원', police: '경찰', nurse: '간호사', child: '아동', parent: '보호자', visitor: '방문객', pharmacist: '약사' } as Record<RoleKind, string>)[kind];
+/** The persona's role in the reader's language. A function, so it re-resolves on
+ *  every render — unlike a module constant, which would freeze at import. */
+function roleLabel(kind: RoleKind): string {
+  return t(`role.${kind}`);
 }
 
 const ROLE_KINDS = new Set<RoleKind>(['nurse', 'doctor', 'surgeon', 'paramedic', 'police', 'patient', 'child', 'parent', 'visitor', 'pharmacist']);

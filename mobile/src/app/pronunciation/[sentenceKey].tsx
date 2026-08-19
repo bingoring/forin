@@ -41,6 +41,7 @@ import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmpli
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 const WAVE_DARK = '#0F1A24'; // SoT's dark wave-panel fill — not in theme/tokens
@@ -77,12 +78,12 @@ const WAV_16K_MONO: RecordingOptions = {
   web: {},
 };
 
-const NO_SPEECH_MSG = '소리가 잘 안 잡혔어요. 조용한 곳에서 다시 해볼까요?'; // business-rules §5, 422
-const SERVER_ERROR_MSG = '채점 서버가 응답하지 않아요. 잠시 후 다시.'; // business-rules §5, 5xx/네트워크
+const NO_SPEECH_MSG = t('pron.noSpeech'); // business-rules §5, 422
+const SERVER_ERROR_MSG = t('pron.serverDown'); // business-rules §5, 5xx/네트워크
 // 4xx(invalid_audio/invalid_reference_text/invalid_review_card_id/소유권 403)는
 // SERVER_ERROR_MSG로 뭉뚱그리면 "일시적" 문제처럼 보이지만 실제로는 같은
 // 입력으로 재시도해도 매번 재현되는 결함이다(review finding) — 문구를 분리한다.
-const CLIENT_ERROR_MSG = '요청을 처리할 수 없어요. 같은 문제가 반복되면 문장을 바꿔서 시도해 주세요.';
+const CLIENT_ERROR_MSG = t('pron.badRequest');
 
 // iOS/Android metering is dBFS, roughly -160 (silence) to 0 (max). Normal
 // speech in a quiet room sits well above -50dB; clamping there keeps talking
@@ -111,9 +112,9 @@ function audioCacheKey(text: string): string {
 function paceLabel(mineMs: number, nativeMs: number): string {
   if (nativeMs <= 0) return '';
   const ratio = mineMs / nativeMs;
-  if (ratio > 1.15) return '조금 느려요';
-  if (ratio < 0.85) return '조금 빨라요';
-  return '비슷해요';
+  if (ratio > 1.15) return t('pron.paceSlow');
+  if (ratio < 0.85) return t('pron.paceFast');
+  return t('pron.paceSame');
 }
 
 // ── small SoT-mapped pieces kept local to this route (frontend-components §1
@@ -244,7 +245,7 @@ function WavePanel({
             <View style={styles.recDot} />
             <Text style={styles.recTimer}>{`REC ${String(Math.floor(elapsedSec / 60)).padStart(2, '0')}:${String(elapsedSec % 60).padStart(2, '0')}`}</Text>
             <View style={{ flex: 1 }} />
-            <Text style={styles.remaining}>{`남은 ${remainingSec}초`}</Text>
+            <Text style={styles.remaining}>{t('pron.secondsLeft', { n: remainingSec })}</Text>
           </>
         )}
       </View>
@@ -301,7 +302,7 @@ function ScoreCard({
 // one Wave we DO have real amplitudes for: mine.
 function WaveCompare({ myBars, myDurationMs, nativeDurationMs }: { myBars: number[]; myDurationMs?: number; nativeDurationMs?: number }) {
   const compare = myDurationMs != null && nativeDurationMs != null
-    ? `원어민 ${(nativeDurationMs / 1000).toFixed(1)}초 대비 ${paceLabel(myDurationMs, nativeDurationMs)}`
+    ? t('pron.vsNative', { sec: (nativeDurationMs / 1000).toFixed(1), pace: paceLabel(myDurationMs, nativeDurationMs) })
     : null;
   return (
     <PronCard bg={WAVE_DARK} style={styles.waveCompare}>
@@ -321,9 +322,9 @@ function ResultActions({ onRetry, onNext, nextDisabled }: { onRetry: () => void;
   return (
     <View style={{ marginTop: 15, marginHorizontal: 16, gap: 9 }}>
       <View style={{ flexDirection: 'row', gap: 9 }}>
-        <PixelButton label="다시 녹음" icon="mic" bg="#fff" shadowColor={C} borderWidth={3} offset={3} fontSize={12} onPress={onRetry} style={{ flex: 1 }} />
+        <PixelButton label={t('pron.recordAgain')} icon="mic" bg="#fff" shadowColor={C} borderWidth={3} offset={3} fontSize={12} onPress={onRetry} style={{ flex: 1 }} />
         <PixelButton
-          label="다음 문장 ›"
+          label={t('pron.nextSentence')}
           bg={colors.mint}
           shadowColor={colors.mintShadow}
           borderWidth={3}
@@ -352,13 +353,14 @@ function PermissionBody({ onOpenSettings, onRecheck }: { onOpenSettings: () => v
       <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.text, lineHeight: 18 }}>
         발음을 채점하려면 마이크 권한이 필요해요. 설정에서 마이크 접근을 허용한 뒤 다시 시도해 주세요.
       </Text>
-      <PixelButton label="설정 열기" bg={colors.blue} shadowColor={C} onPress={onOpenSettings} full />
-      <PixelButton label="권한 다시 확인" bg="#fff" shadowColor={C} onPress={onRecheck} full />
+      <PixelButton label={t('pron.openSettings')} bg={colors.blue} shadowColor={C} onPress={onOpenSettings} full />
+      <PixelButton label={t('pron.recheckPermission')} bg="#fff" shadowColor={C} onPress={onRecheck} full />
     </View>
   );
 }
 
 export default function PronunciationRoute() {
+  useLocale();
   const params = useLocalSearchParams<{
     sentenceKey: string;
     referenceText?: string;
@@ -378,7 +380,7 @@ export default function PronunciationRoute() {
 
   const referenceText = params.referenceText ?? '';
   const ctx = params.ctx ?? '';
-  const idleStep = params.step ?? '발음 연습';
+  const idleStep = params.step ?? t('pron.practice');
   const origin = params.origin || 'freeform';
 
   const [pron, setPron] = useState<PronState>(initialPronState);
@@ -478,7 +480,7 @@ export default function PronunciationRoute() {
             if (uri) deleteAsync(uri, { idempotent: true }).catch(() => {});
           })
           .catch(() => {});
-        Alert.alert('녹음을 시작하지 못했습니다.');
+        Alert.alert(t('pron.recordFailed'));
         dispatch('CANCEL');
       }
     }, 400);
@@ -494,7 +496,7 @@ export default function PronunciationRoute() {
   }, [recorder]);
 
   // Shared hardware start: permission → audio mode → prepare → record. Both
-  // the idle/noSpeech record button AND "다시 녹음" must call this — Critical
+  // the idle/noSpeech record button AND t('pron.recordAgain') must call this — Critical
   // 1 was exactly the case where a caller dispatched an FSM event that says
   // "recording" without ever calling this, so the screen shows a countdown
   // over a recorder that was never told to start.
@@ -515,7 +517,7 @@ export default function PronunciationRoute() {
       const ok = await beginRecordingHardware();
       dispatch(ok ? 'START_RECORDING' : 'MIC_DENIED');
     } catch {
-      Alert.alert('녹음을 시작하지 못했습니다.');
+      Alert.alert(t('pron.recordFailed'));
     }
   }, [dispatch, beginRecordingHardware]);
 
@@ -579,7 +581,7 @@ export default function PronunciationRoute() {
   // over a recorder that was never started, and the eventual auto-stop
   // re-sent the PREVIOUS attempt's leftover file (recorder.uri still pointed
   // at it), silently double-submitting a scored attempt to an append-only
-  // table (I1). "다시 녹음" must start real hardware exactly like the
+  // table (I1). t('pron.recordAgain') must start real hardware exactly like the
   // idle/noSpeech record button does.
   const retry = useCallback(async () => {
     // Clear the previous score only AFTER the mic is actually live. Doing it
@@ -596,7 +598,7 @@ export default function PronunciationRoute() {
       setResult(null);
       dispatch('RETRY');
     } catch {
-      Alert.alert('녹음을 시작하지 못했습니다.');
+      Alert.alert(t('pron.recordFailed'));
     }
   }, [dispatch, beginRecordingHardware]);
 
@@ -690,7 +692,7 @@ export default function PronunciationRoute() {
   // there is no separate probe call to make first.
   const nativeAvailable = !!reference.sentenceKey;
 
-  const hint = `3회 중 ${Math.min(3, attempts.length + 1)}회차`;
+  const hint = t('pron.attemptOf', { n: Math.min(3, attempts.length + 1) });
 
   // AttemptHistory always shows 3 rows (business-rules R3). `attempts` is
   // already the server's most-recent-3-oldest-first window, so any slot past
@@ -741,10 +743,10 @@ export default function PronunciationRoute() {
   }, [correction.suspectAllZero]);
 
   const dark = pron === 'recording' || pron === 'scoring';
-  const step = pron === 'recording' ? '듣고 있어요…'
-    : pron === 'scoring' ? '채점 중…'
-    : pron === 'result' ? '발음 채점'
-    : pron === 'permissionDenied' ? '마이크 권한이 필요해요'
+  const step = pron === 'recording' ? t('pron.listening')
+    : pron === 'scoring' ? t('pron.scoring')
+    : pron === 'result' ? t('pron.scoreTitle')
+    : pron === 'permissionDenied' ? t('pron.needMic')
     : idleStep;
 
   return (
@@ -776,8 +778,8 @@ export default function PronunciationRoute() {
               size={92}
               bg={colors.red}
               icon={<PixelIcon name="mic" color={C} size={38} sw={2.4} />}
-              label="눌러서 녹음"
-              sub="조용한 곳에서 · 최대 10초"
+              label={t('pron.tapToRecord')}
+              sub={t('pron.recordHint')}
               onPress={() => { void startRecording(); }}
             />
             <View style={{ marginHorizontal: 16, marginTop: 20 }}>
@@ -801,7 +803,7 @@ export default function PronunciationRoute() {
               size={84}
               bg={colors.cream}
               icon={<View style={styles.stopGlyph} />}
-              label="눌러서 끝내기"
+              label={t('pron.tapToStop')}
               labelColor={colors.cream}
               onPress={() => { void stopAndScore('STOP'); }}
             />
@@ -846,7 +848,7 @@ export default function PronunciationRoute() {
               )}
               {correction.points.length > 0 && (
                 <>
-                  <Text style={styles.correctionHeader}>{`━ 교정 포인트 ${correction.points.length} ━━━━━━`}</Text>
+                  <Text style={styles.correctionHeader}>{t('pron.correctionPoints', { n: correction.points.length })}</Text>
                   {correction.points.map((p) => (
                     <View key={`${p.syllable}-${p.ipa}`} style={{ marginBottom: 8 }}>
                       <CorrectionCard
