@@ -121,7 +121,6 @@ TEMPLATE = r"""<title>forin 번역표</title>
     --soft: #6B6255; --faint: #A39B8C; --mint: #BFE3C6; --yellow: #F4D98A;
     --red: #F3C0BC; --white: #fff;
   }
-  :root:not([data-theme="light"]) { }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --ink: #F2EDE3; --paper: #171512; --cream: #1F1C17; --line: #4A443A;
@@ -145,7 +144,7 @@ TEMPLATE = r"""<title>forin 번역표</title>
   }
   h1 { margin: 0 0 8px; font-size: 17px; letter-spacing: .02em; }
   .bars { display: flex; flex-wrap: wrap; gap: 10px; }
-  .bar { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .bar { display: flex; align-items: center; gap: 6px; font-size: 12px; font-variant-numeric: tabular-nums; }
   .track { width: 90px; height: 9px; border: 2px solid var(--line); background: var(--white); position: relative; }
   .fill { position: absolute; inset: 0 auto 0 0; background: var(--ink); }
   .tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
@@ -155,6 +154,7 @@ TEMPLATE = r"""<title>forin 번역표</title>
   }
   button { cursor: pointer; }
   button:hover { background: var(--yellow); }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
   label.chk { display: flex; align-items: center; gap: 5px; font-size: 12px; }
   .wrap { overflow-x: auto; padding: 0 16px 60px; }
   table { border-collapse: collapse; width: 100%; min-width: 900px; }
@@ -168,8 +168,13 @@ TEMPLATE = r"""<title>forin 번역표</title>
   td[contenteditable] { min-width: 190px; background: var(--white); }
   td[contenteditable]:focus { outline: 3px solid var(--yellow); outline-offset: -3px; }
   td.missing { background: var(--red); }
+  /* Colour alone would be the only signal for anyone who cannot separate the red
+     from the yellow, and this table is read for exactly that distinction. */
+  td.missing::after { content: '비어 있음'; color: var(--soft); font-size: 11px; }
+  td.same::after { content: ' · 한국어와 같음'; color: var(--soft); font-size: 11px; }
   td.same { background: var(--yellow); }
   td.dirty { box-shadow: inset 0 0 0 3px var(--ink); }
+  #count { font-size: 12px; color: var(--soft); align-self: center; font-variant-numeric: tabular-nums; }
   .note { margin: 12px 16px; padding: 10px 12px; border: 2px dashed var(--line); font-size: 12px; color: var(--soft); max-width: 70ch; }
   footer { padding: 0 16px 40px; font-size: 12px; color: var(--soft); }
 </style>
@@ -182,7 +187,7 @@ TEMPLATE = r"""<title>forin 번역표</title>
     <label class="chk"><input type="checkbox" id="onlyGaps" /> 빈 칸만</label>
     <button id="export">고친 것 내보내기</button>
     <button id="reset">고친 것 버리기</button>
-    <span id="count" style="font-size:12px;color:var(--soft);align-self:center"></span>
+    <span id="count"></span>
   </div>
 </header>
 
