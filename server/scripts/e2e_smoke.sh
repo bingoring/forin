@@ -122,12 +122,76 @@ reuse=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$B/auth/refresh" -H 'Con
 [ "$reuse" != 200 ] && ok "old refresh token rejected on reuse ($reuse)" || bad "old refresh reused → 200 (no rotation)"
 [ -n "$NEWREF" ] && REFRESH="$NEWREF"
 
+# One request with an explicit UI language. The locale pipeline is header-driven
+# (middleware never reads the profile — that would put a DB round trip on every
+# request), so this is the only way to prove it end to end against a real server.
+runlang() {
+  local lang="$1" m="$2" p="$3" out
+  out=$(curl -s -w $'\n%{http_code}' -X "$m" "$B$p" -H "Authorization: Bearer $TOK" -H "Accept-Language: $lang")
+  CODE="${out##*$'\n'}"; BODY="${out%$'\n'*}"
+}
+
 hd "④ CURRICULUM · structure"
 run GET /me/curriculum
-nch=$(pj "len(d.get('chapters',[]))")
-[ "${nch:-0}" -ge 5 ] && ok "curriculum has $nch chapters" || bad "curriculum chapters=$nch"
-states=$(pj "','.join(c['state'] for c in d['chapters'])")
-printf '%s' "$states" | grep -q "now\|done" && ok "chapter states resolved ($states)" || bad "no now/done state"
+# v2 shape: buildings → floors → curricula. The old assertions read `.chapters`,
+# which no longer exists — and because they only checked a length, they went red on
+# the contract change rather than on anything being wrong.
+nb=$(pj "len(d.get('buildings',[]))")
+[ "${nb:-0}" -ge 4 ] && ok "curriculum spans $nb buildings" || bad "curriculum buildings=$nb"
+ncur=$(pj "sum(len(f['curricula']) for b in d.get('buildings',[]) for f in b['floors'])")
+[ "${ncur:-0}" -ge 60 ] && ok "curriculum has $ncur curricula" || bad "curriculum curricula=$ncur"
+# Exactly one resume target across the whole path — the home hero and the career tab
+# both read it, so two (or none, before everything is done) would split them.
+nres=$(pj "sum(1 for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula'] if c.get('resume'))")
+[ "${nres:-0}" = 1 ] && ok "exactly one resume target" || bad "resume targets=$nres"
+states=$(pj "','.join(sorted({c['state'] for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula']}))")
+printf '%s' "$states" | grep -q "todo\|doing\|done" && ok "curriculum states resolved ($states)" || bad "no todo/doing/done state"
+# Floors and curricula are all open in v2; a `lock` here would mean the server still
+# gates them and the client's padlock-free rows would be lying.
+printf '%s' "$states" | grep -q "lock" && bad "curriculum still reports lock: $states" || ok "no locked curriculum (floors are all open)"
+
+hd "④b I18N · the request's language reaches the payload"
+run GET /me/curriculum
+ko_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
+ko_where=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['where']")
+runlang en GET /me/curriculum
+en_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
+en_where=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['where']")
+[ "$CODE" = 200 ] && ok "GET /me/curriculum with Accept-Language: en → 200" || bad "locale request → $CODE"
+# Asserting the strings DIFFER, not that they exist: a pipeline that silently ignored
+# the header would return identical Korean and pass any presence check.
+[ -n "$en_name" ] && [ "$ko_name" != "$en_name" ] && ok "curriculum name localized: '$ko_name' → '$en_name'" || bad "name not localized: ko='$ko_name' en='$en_name'"
+[ -n "$en_where" ] && [ "$ko_where" != "$en_where" ] && ok "floor heading localized: '$en_where'" || bad "floor heading not localized: ko='$ko_where' en='$en_where'"
+# An unsupported language must render the authored Korean, not an empty label.
+runlang pt-BR GET /me/curriculum
+pt_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
+[ "$pt_name" = "$ko_name" ] && ok "unsupported locale falls back to authored Korean" || bad "pt-BR gave '$pt_name', want '$ko_name'"
+# The display language is persisted so a reinstall restores it; kept apart from
+# nativeLang, which tells the AI which language to explain corrections in.
+run PATCH /me/ui-lang '{"uiLang":"en"}'
+[ "$CODE" = 200 ] && [ "$(pj "d.get('uiLang')")" = "en" ] && ok "PATCH /me/ui-lang persists" || bad "ui-lang patch → $CODE $(pj "d.get('uiLang')")"
+run PATCH /me/ui-lang '{"uiLang":"zz"}'
+[ "$CODE" = 400 ] && ok "unsupported ui-lang rejected (400)" || bad "ui-lang zz → $CODE"
+run PATCH /me/ui-lang '{"uiLang":""}'
+[ "$CODE" = 200 ] && ok "empty ui-lang accepted (follow nativeLang)" || bad "ui-lang '' → $CODE"
+
+hd "④c CONTENT · situation tag carries a code, and destinations state readiness"
+run GET "/me/situations?dept=ER&limit=3"
+[ "$CODE" = 200 ] && ok "GET /me/situations 200" || bad "situations → $CODE"
+allcoded=$(pj "all(s.get('tagCode') in ('cleared','urgent','new') for s in d.get('situations',[]))")
+[ "$allcoded" = "True" ] && ok "every situation carries a tagCode" || bad "situations missing tagCode"
+# Label and code must be separate: the client compares the code and renders the label,
+# and before they split the label was Korean the client had to compare against.
+runlang en GET "/me/situations?dept=ER&limit=3"
+entag=$(pj "d['situations'][0]['tag'] if d.get('situations') else ''")
+[ -n "$entag" ] && printf '%s' "$entag" | grep -qv '[가-힣]' && ok "situation tag localized: '$entag'" || bad "tag not localized: '$entag'"
+out=$(curl -s "$B/config/economy"); BODY="$out"
+readyus=$(pj "'us' in d.get('readyDestinations',[])")
+[ "$readyus" = "True" ] && ok "config lists us as a ready destination" || bad "readyDestinations=$(pj "d.get('readyDestinations')")"
+# Germany must NOT be offered as ready: the AI would hold a German consultation, but
+# every authored key phrase is English, and the phrases are what is being taught.
+readyde=$(pj "'de' in d.get('readyDestinations',[])")
+[ "$readyde" = "False" ] && ok "de withheld until its phrases exist" || bad "de reported ready with no German content"
 
 hd "⑤ DIALOGUE · reply + background correction → review card"
 run GET /me/review; before=$(pj "len(d.get('cards',[]))")
@@ -187,9 +251,12 @@ run GET "/me/home?tz=Asia/Seoul"
 [ "$CODE" = 200 ] && ok "GET /me/home 200" || bad "home → $CODE"
 hdate=$(pj "d.get('date','')")
 [ -n "$hdate" ] && ok "home date bucketed in tz: $hdate" || bad "no date"
+# 10, not 7: the strip became a rolling window ending today (progress.StreakWindowDays)
+# because a Mon-anchored week made a Sunday start look like a broken streak. The field
+# is still called `week` on the wire so shipped clients keep parsing it.
 wk=$(pj "len(d.get('week',[]))")
-[ "${wk:-0}" = 7 ] && ok "week rhythm has 7 blocks" || bad "week blocks=$wk"
-todaymark=$(pj "d.get('week',[0]*7).count(2)")
+[ "${wk:-0}" = 10 ] && ok "rhythm strip has 10 blocks (rolling window)" || bad "week blocks=$wk"
+todaymark=$(pj "d.get('week',[0]*10).count(2)")
 [ "${todaymark:-0}" = 1 ] && ok "exactly one block marked today" || bad "today blocks=$todaymark"
 # 더미 금지: a module is either absent or fully populated — never a stub.
 mn=$(pj "('mentorNote' not in d) or bool(d['mentorNote'].get('text') and d['mentorNote'].get('npc',{}).get('name'))")
@@ -201,12 +268,21 @@ t1=$(pj "('todayOne' not in d) or bool(d['todayOne'].get('title'))")
 # done is the inverse of having a next step — the rest card replaces the hero.
 inv=$(pj "d.get('done') == ('todayOne' not in d)")
 [ "$inv" = "True" ] && ok "done ⇔ no todayOne (rest card state)" || bad "done/todayOne disagree"
+# firstRun reorders the home to lead with the task. Derived from cleared content, so by
+# this point in the smoke (a scenario was already cleared above) it must be false —
+# which is a stronger check than "the field exists".
+fr=$(pj "d.get('firstRun')")
+[ "$fr" = "False" ] && ok "firstRun false after a clear" || bad "firstRun=$fr after clearing a scenario"
 # The shift department must be the curriculum's current one, not a random pick.
 if [ "$(pj "'shift' in d")" = "True" ]; then
   sdept=$(pj "d['shift']['deptLabel']")
   run GET /me/curriculum
-  cdept=$(pj "next((c['dept'] for c in d.get('chapters',[]) if c.get('state')=='now'), '')")
-  [ "$sdept" = "$cdept" ] && ok "shift dept matches curriculum: $sdept" || bad "shift '$sdept' ≠ curriculum '$cdept'"
+  # The shift label comes from the RESUME curriculum's `where`, not from a chapter's
+  # `dept` (that field is gone). Comparing against the resume target is also stricter
+  # than the old "first chapter in state=now": every curriculum is now unlocked, so
+  # "the first one not done" is not the same thing as "the one you were on".
+  cdept=$(pj "next((c['where'] for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula'] if c.get('resume')), '')")
+  [ "$sdept" = "$cdept" ] && ok "shift dept matches resume curriculum: $sdept" || bad "shift '$sdept' ≠ resume '$cdept'"
 fi
 
 hd "⑬ COLLEAGUES · code, boundaries, privacy"
