@@ -175,11 +175,21 @@ type Directive struct {
 }
 
 type Scenario struct {
-	ID         string   `yaml:"id" json:"id"`
-	Profession string   `yaml:"profession" json:"profession"`
-	EventID    string   `yaml:"eventId" json:"eventId"`
-	Title      string   `yaml:"title" json:"title"`
-	Tagline    string   `yaml:"tagline" json:"tagline"`
+	ID         string `yaml:"id" json:"id"`
+	Profession string `yaml:"profession" json:"profession"`
+	EventID    string `yaml:"eventId" json:"eventId"`
+	Title      string `yaml:"title" json:"title"`
+	Tagline    string `yaml:"tagline" json:"tagline"`
+	// Lang is the TARGET language this scenario's authored phrases are written in —
+	// Tagline, KeyPhrases, and the patient lines a learner is meant to acquire. It is
+	// not the interface language and not the learner's own.
+	//
+	// It exists so "which destinations can we actually offer" is a measured fact
+	// rather than a claim. The AI conversation follows the profile's TargetLang
+	// through the prompt, so German dialogue already works; the authored example
+	// phrases do not follow, and shipping a German destination whose every key phrase
+	// is English teaches the wrong sentences. Empty defaults to "en" at load.
+	Lang       string   `yaml:"lang,omitempty" json:"lang,omitempty"`
 	Persona    Persona  `yaml:"persona" json:"persona"`
 	Goals      []string `yaml:"goals" json:"goals"`
 	Guardrails []string `yaml:"guardrails" json:"guardrails"`

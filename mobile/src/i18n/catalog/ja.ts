@@ -434,4 +434,6 @@ export const ja: Record<string, string> = {
   'building.annex2.sub': 'リハビリ · 精神 · 腫瘍 · 緩和',
   'building.annex3.sub': '画像 · 外来 · 注射 · 内視鏡',
   'building.support.sub': '霊安室 · 供給 · 休憩 · シミュレーションラボ',
+  'onboarding.whereFrom': 'どこから来ましたか？',
+  'onboarding.destNotReady': '準備中',
 };

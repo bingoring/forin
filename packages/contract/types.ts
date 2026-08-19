@@ -1932,6 +1932,13 @@ export interface components {
             /** @description Rank thresholds (level → career title). */
             rankJunior?: number;
             rankSenior?: number;
+            /**
+             * @description ReadyDestinations are the countries whose authored learning phrases exist, so
+             *     the onboarding can offer the rest as intentions rather than as choices. It
+             *     rides on this response for the same reason pronunciationEnabled does: the app
+             *     fetches it on every launch, before login, and it is a deploy-wide fact.
+             */
+            readyDestinations?: string[];
             /** @description ≥ → neutral/cordial */
             repBandCordial?: number;
             /** @description ≥ → NPC noticeably warm */

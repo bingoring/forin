@@ -435,4 +435,6 @@ export const en: Record<string, string> = {
   'building.annex2.sub': 'Rehab · psychiatry · oncology · palliative',
   'building.annex3.sub': 'Imaging · clinics · infusion · endoscopy',
   'building.support.sub': 'Morgue · supply · lounge · simulation lab',
+  'onboarding.whereFrom': 'Where are you from?',
+  'onboarding.destNotReady': 'Not ready yet',
 };

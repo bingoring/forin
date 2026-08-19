@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
+	"sort"
 	"strconv"
 	"time"
 
@@ -199,6 +200,24 @@ var tagKo = map[string]string{"cleared": "완료", "urgent": "긴급", "new": "�
 type economyConfigResp struct {
 	economy.Economy
 	PronunciationEnabled bool `json:"pronunciationEnabled"`
+	// ReadyDestinations are the countries whose authored learning phrases exist, so
+	// the onboarding can offer the rest as intentions rather than as choices. It
+	// rides on this response for the same reason pronunciationEnabled does: the app
+	// fetches it on every launch, before login, and it is a deploy-wide fact.
+	ReadyDestinations []string `json:"readyDestinations"`
+}
+
+// readyDestinations lists destination codes whose target language has authored
+// content, sorted so the response is stable.
+func readyDestinations() []string {
+	out := make([]string, 0, len(content.Destination))
+	for code := range content.Destination {
+		if content.IsDestinationReady(code) {
+			out = append(out, code)
+		}
+	}
+	sort.Strings(out) // map iteration is random; a config response must not be
+	return out
 }
 
 // @Summary Economy config (single source of truth mirrored to the client) + pronunciation feature flag
@@ -207,6 +226,7 @@ type economyConfigResp struct {
 // @Router /config/economy [get]
 func (h *contentHandler) economyConfig(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, economyConfigResp{
+		ReadyDestinations:    readyDestinations(),
 		Economy:              economy.Active,
 		PronunciationEnabled: h.pronunciationEnabled,
 	})

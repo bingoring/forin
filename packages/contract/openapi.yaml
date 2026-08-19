@@ -396,6 +396,16 @@ components:
           type: integer
         rankSenior:
           type: integer
+        readyDestinations:
+          description: |-
+            ReadyDestinations are the countries whose authored learning phrases exist, so
+            the onboarding can offer the rest as intentions rather than as choices. It
+            rides on this response for the same reason pronunciationEnabled does: the app
+            fetches it on every launch, before login, and it is a deploy-wide fact.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         repBandCordial:
           description: ≥ → neutral/cordial
           type: integer

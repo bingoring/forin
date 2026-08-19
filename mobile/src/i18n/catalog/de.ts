@@ -434,4 +434,6 @@ export const de: Record<string, string> = {
   'building.annex2.sub': 'Reha · Psychiatrie · Onkologie · Palliativ',
   'building.annex3.sub': 'Bildgebung · Ambulanz · Infusion · Endoskopie',
   'building.support.sub': 'Leichenhalle · Versorgung · Aufenthalt · Simulationslabor',
+  'onboarding.whereFrom': 'Woher kommst du?',
+  'onboarding.destNotReady': 'Noch nicht bereit',
 };

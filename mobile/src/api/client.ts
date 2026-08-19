@@ -7,6 +7,7 @@ import { saveTokens } from '@/lib/secureStore';
 import type { paths } from '@contract/types';
 import type { Interior } from '@engine';
 import { getLocale } from '@/i18n';
+import { hydrateDestinations } from '@/data/destinations';
 
 const baseURL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080';
 
@@ -383,6 +384,10 @@ export const api = {
   /** Server economy config (single source of truth) — mirrored into ECON at boot. */
   async economyConfig(): Promise<Record<string, number>> {
     const { data } = await http.get('/config/economy');
+    // The same response carries deploy-wide flags that are not economy numbers
+    // (pronunciationEnabled, readyDestinations). Hand the destinations to their own
+    // module rather than letting an array land in ECON's number map.
+    hydrateDestinations((data as { readyDestinations?: unknown }).readyDestinations);
     return data as Record<string, number>;
   },
 

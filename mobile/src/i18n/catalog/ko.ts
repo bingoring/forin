@@ -463,4 +463,6 @@ export const ko: Record<string, string> = {
   'building.annex2.sub': '재활 · 정신 · 종양 · 완화',
   'building.annex3.sub': '영상 · 외래 · 주사 · 내시경',
   'building.support.sub': '영안실 · 공급 · 휴게 · 시뮬랩',
+  'onboarding.whereFrom': '어디서 오셨나요?',
+  'onboarding.destNotReady': '준비 중',
 };

@@ -74,6 +74,7 @@ func loadType[T any](pdir, typeDir, prof string, collect func(T)) error {
 		if err := yaml.Unmarshal(data, &list); err == nil && len(list) > 0 {
 			for i := range list {
 				setProfessionIfEmpty(&list[i], prof)
+				setLangIfEmpty(&list[i])
 				collect(list[i])
 			}
 			continue
@@ -83,6 +84,7 @@ func loadType[T any](pdir, typeDir, prof string, collect func(T)) error {
 			return fmt.Errorf("%s: %w", f, err)
 		}
 		setProfessionIfEmpty(&item, prof)
+		setLangIfEmpty(&item)
 		collect(item)
 	}
 	return nil
@@ -94,6 +96,15 @@ func readYAML(path string, dst any) error {
 		return err
 	}
 	return yaml.Unmarshal(data, dst)
+}
+
+// setLangIfEmpty fills a scenario's target language when omitted. Every authored
+// scenario today is English, so defaulting keeps 303 files free of a field that would
+// say the same thing 303 times — and makes adding a German bank an explicit act.
+func setLangIfEmpty(item any) {
+	if s, ok := item.(*content.Scenario); ok && s.Lang == "" {
+		s.Lang = content.DefaultTargetLang
+	}
 }
 
 // setProfessionIfEmpty fills the Profession field from the directory when omitted.

@@ -6,11 +6,13 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/adapters/contentfile"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
 	"github.com/bingoring/forin/server/internal/curriculum"
+	"github.com/bingoring/forin/server/internal/domain/content"
 )
 
 func main() {
@@ -94,6 +96,19 @@ func run() error {
 		fmt.Fprintf(os.Stderr, "seed: SEED_ALLOW_REMOVAL=1 — removing %d referenced id(s) anyway\n", len(missing))
 	}
 
+	// A declared-ready target language must actually cover the whole learning path.
+	//
+	// content.ReadyTargetLangs decides which destinations the onboarding offers for
+	// real, so a wrong entry there ships a country whose every example phrase is in
+	// another language. Checking it here makes the declaration a verified fact rather
+	// than a comment somebody forgot to update.
+	if bad := unreadyLangs(bundle); len(bad) > 0 {
+		for _, b := range bad {
+			fmt.Fprintf(os.Stderr, "seed: %s\n", b)
+		}
+		return fmt.Errorf("aborting: content.ReadyTargetLangs claims coverage the bundle does not have")
+	}
+
 	if err := postgres.NewContentRepo(pool).Seed(ctx, bundle); err != nil {
 		return err
 	}
@@ -101,4 +116,44 @@ func run() error {
 		bundle.Manifest.ContentVersion, len(bundle.Departments), len(bundle.Events),
 		len(bundle.Scenarios), len(bundle.Quizzes), len(bundle.Phrases))
 	return nil
+}
+
+// unreadyLangs returns a message per declared-ready language that does not cover
+// every scenario the curriculum path references.
+//
+// Quizzes are excluded: they carry no target-language sentences of their own — the
+// phrases live in the scenario banks — so requiring a per-language quiz set would
+// block a language for content it does not need.
+func unreadyLangs(bundle *content.Bundle) []string {
+	byLang := map[string]map[string]bool{}
+	for _, s := range bundle.Scenarios {
+		lang := s.Lang
+		if lang == "" {
+			lang = content.DefaultTargetLang
+		}
+		if byLang[lang] == nil {
+			byLang[lang] = map[string]bool{}
+		}
+		byLang[lang][s.ID] = true
+	}
+
+	var out []string
+	for _, lang := range content.ReadyTargetLangs {
+		have := byLang[lang]
+		var missing int
+		for _, id := range curriculum.ReferencedIDs() {
+			if strings.HasPrefix(id, "QZ-") {
+				continue
+			}
+			if !have[id] {
+				missing++
+			}
+		}
+		if missing > 0 {
+			out = append(out, fmt.Sprintf(
+				"target language %q is declared ready but %d path scenario(s) are missing in it (has %d)",
+				lang, missing, len(have)))
+		}
+	}
+	return out
 }
