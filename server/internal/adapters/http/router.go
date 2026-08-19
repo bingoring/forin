@@ -70,6 +70,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("GET /me", auth(http.HandlerFunc(mh.me)))
 	mux.Handle("PATCH /me/profile", auth(http.HandlerFunc(mh.updateProfile)))
 	mux.Handle("PATCH /me/title", auth(http.HandlerFunc(mh.equipTitle)))
+	mux.Handle("PATCH /me/ui-lang", auth(http.HandlerFunc(mh.setUILang)))
 
 	// Content (public read).
 	ch := &contentHandler{content: d.Content, pronunciationEnabled: d.PronunciationEnabled}
@@ -164,6 +165,7 @@ func NewRouter(d Deps) http.Handler {
 		recoverMW(d.Log),
 		requestLog(d.Log),
 		cors,
+		localeMW,
 		rateLimit(rate.Limit(20), 40),
 	)
 }

@@ -71,11 +71,20 @@ export async function loadLocale(): Promise<void> {
   emit();
 }
 
+/** Called by setLocale to mirror the choice server-side. Injected rather than
+ *  imported so this module stays free of the api client, which imports the store. */
+let sync: ((locale: Locale) => void) | undefined;
+
+export function onLocaleChange(fn: (locale: Locale) => void): void {
+  sync = fn;
+}
+
 export async function setLocale(next: Locale): Promise<void> {
   if (next === current && explicit) return;
   current = next;
   explicit = true;
   emit();
+  sync?.(next); // best effort; a failed sync costs a preference, not a session
   try {
     await SecureStore.setItemAsync(KEY, next);
   } catch {

@@ -14,7 +14,7 @@ import { join } from 'path';
 // commit pass — put the string in the catalog instead.
 const CEILINGS: Record<string, number> = {
   'src/app': 0,
-  'src/components': 3,
+  'src/components': 0,
   'src/data': 5,
   'src/lib': 0,
   'src/map': 1203,

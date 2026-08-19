@@ -16,7 +16,7 @@ UPDATE auth_identities SET email = $3 WHERE provider = $1 AND subject_id = $2;
 SELECT id, status, created_at FROM users WHERE id = $1;
 
 -- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title FROM profiles WHERE user_id = $1;
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang FROM profiles WHERE user_id = $1;
 
 -- name: SetEquippedTitle :exec
 INSERT INTO profiles (user_id, equipped_title, updated_at) VALUES ($1, $2, now())
@@ -28,3 +28,10 @@ VALUES ($1, $2, $3, $4, $5, $6, true, now())
 ON CONFLICT (user_id) DO UPDATE SET
     job = $2, native_lang = $3, target_lang = $4, destination = $5, target_level = $6,
     onboarded = true, updated_at = now();
+
+-- name: SetUILang :exec
+-- Single-field patch, like SetEquippedTitle: the full UpsertProfile fills omitted
+-- columns with onboarding defaults, so reusing it to save one setting would reset
+-- job and languages.
+INSERT INTO profiles (user_id, ui_lang, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET ui_lang = $2, updated_at = now();

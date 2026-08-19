@@ -265,8 +265,13 @@ type DeptSituation struct {
 	Room       string `json:"room,omitempty"`
 	Lv         string `json:"lv"`
 	Min        int    `json:"min"`
-	Tag        string `json:"tag"`    // 완료 | 긴급 | 신규
-	Urgent     bool   `json:"urgent"` // high difficulty
+	// TagCode is the STATE ("cleared" | "urgent" | "new"); Tag is its label in the
+	// request's language. They were one Korean field, which forced the client to
+	// compare against "완료" — so the string could never be translated without
+	// breaking the comparison that decided which situations count as done.
+	TagCode string `json:"tagCode"`
+	Tag     string `json:"tag"`
+	Urgent  bool   `json:"urgent"` // high difficulty
 }
 
 // RouteNode is one step of the main-route curriculum graph for a user: an event

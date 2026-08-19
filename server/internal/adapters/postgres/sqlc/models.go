@@ -166,6 +166,7 @@ type Profile struct {
 	TargetLang    string             `json:"target_lang"`
 	Onboarded     bool               `json:"onboarded"`
 	EquippedTitle string             `json:"equipped_title"`
+	UiLang        string             `json:"ui_lang"`
 }
 
 type Quiz struct {

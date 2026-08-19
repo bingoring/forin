@@ -1252,7 +1252,19 @@ export interface paths {
                 cookie?: never;
             };
             requestBody?: never;
-            responses: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.DeptSituation"][];
+                        };
+                    };
+                };
+            };
         };
         put?: never;
         post?: never;
@@ -1323,6 +1335,47 @@ export interface paths {
             requestBody: {
                 content: {
                     "application/json": components["schemas"]["internal_adapters_http.titleReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
+                    };
+                };
+            };
+        };
+        trace?: never;
+    };
+    "/me/ui-lang": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Set the app's display language */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description locale code, or \ */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.uiLangReq"];
                 };
             };
             responses: {
@@ -1705,6 +1758,23 @@ export interface components {
         };
         /** @enum {string} */
         "github_com_bingoring_forin_server_internal_domain_colleague.Relation": "peer" | "mentor" | "mentee";
+        "github_com_bingoring_forin_server_internal_domain_content.DeptSituation": {
+            lv?: string;
+            min?: number;
+            name?: string;
+            room?: string;
+            scenarioId?: string;
+            tag?: string;
+            /**
+             * @description TagCode is the STATE ("cleared" | "urgent" | "new"); Tag is its label in the
+             *     request's language. They were one Korean field, which forced the client to
+             *     compare against "완료" — so the string could never be translated without
+             *     breaking the comparison that decided which situations count as done.
+             */
+            tagCode?: string;
+            /** @description high difficulty */
+            urgent?: boolean;
+        };
         "github_com_bingoring_forin_server_internal_domain_conversation.Correction": {
             cardId?: string;
             corrected?: string;
@@ -1775,6 +1845,13 @@ export interface components {
             targetLang?: string;
             /** @description level in TargetLang, e.g. "B1" */
             targetLevel?: string;
+            /**
+             * @description UILang is the language the SCREENS are drawn in, which is not NativeLang:
+             *     NativeLang tells the AI which language to explain corrections in, so a user
+             *     who wants an English interface must not thereby get English explanations.
+             *     "" means follow NativeLang.
+             */
+            uiLang?: string;
             userId?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_user.User": {
@@ -2016,6 +2093,9 @@ export interface components {
         };
         "internal_adapters_http.titleReq": {
             titleId?: string;
+        };
+        "internal_adapters_http.uiLangReq": {
+            uiLang?: string;
         };
         "internal_adapters_http.updateProfileReq": {
             destination?: string;

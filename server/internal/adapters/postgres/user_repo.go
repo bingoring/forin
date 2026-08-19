@@ -76,13 +76,20 @@ func (r *UserRepo) GetProfile(ctx context.Context, userID string) (*user.Profile
 	return &user.Profile{
 		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
 		Destination: p.Destination, TargetLevel: p.TargetLevel, Onboarded: p.Onboarded,
-		EquippedTitle: p.EquippedTitle,
+		EquippedTitle: p.EquippedTitle, UILang: p.UiLang,
 	}, nil
 }
 
 // SetEquippedTitle persists the user's currently-equipped career title.
 func (r *UserRepo) SetEquippedTitle(ctx context.Context, userID, titleID string) error {
 	return r.q.SetEquippedTitle(ctx, sqlc.SetEquippedTitleParams{UserID: userID, EquippedTitle: titleID})
+}
+
+// SetUILang persists the app's display language. A single-field patch, like
+// SetEquippedTitle: UpdateProfile fills omitted columns with onboarding defaults, so
+// reusing it to save one setting would silently reset job and languages.
+func (r *UserRepo) SetUILang(ctx context.Context, userID, lang string) error {
+	return r.q.SetUILang(ctx, sqlc.SetUILangParams{UserID: userID, UiLang: lang})
 }
 
 // UpdateProfile upserts the onboarding-derived profile and marks it onboarded.

@@ -87,6 +87,31 @@ components:
       - RelationPeer
       - RelationMentor
       - RelationMentee
+    github_com_bingoring_forin_server_internal_domain_content.DeptSituation:
+      properties:
+        lv:
+          type: string
+        min:
+          type: integer
+        name:
+          type: string
+        room:
+          type: string
+        scenarioId:
+          type: string
+        tag:
+          type: string
+        tagCode:
+          description: |-
+            TagCode is the STATE ("cleared" | "urgent" | "new"); Tag is its label in the
+            request's language. They were one Korean field, which forced the client to
+            compare against "완료" — so the string could never be translated without
+            breaking the comparison that decided which situations count as done.
+          type: string
+        urgent:
+          description: high difficulty
+          type: boolean
+      type: object
     github_com_bingoring_forin_server_internal_domain_conversation.Correction:
       properties:
         cardId:
@@ -209,6 +234,13 @@ components:
           type: string
         targetLevel:
           description: level in TargetLang, e.g. "B1"
+          type: string
+        uiLang:
+          description: |-
+            UILang is the language the SCREENS are drawn in, which is not NativeLang:
+            NativeLang tells the AI which language to explain corrections in, so a user
+            who wants an English interface must not thereby get English explanations.
+            "" means follow NativeLang.
           type: string
         userId:
           type: string
@@ -627,6 +659,11 @@ components:
     internal_adapters_http.titleReq:
       properties:
         titleId:
+          type: string
+      type: object
+    internal_adapters_http.uiLangReq:
+      properties:
+        uiLang:
           type: string
       type: object
     internal_adapters_http.updateProfileReq:
@@ -1147,7 +1184,17 @@ paths:
       - content
   /me/situations:
     get:
-      responses: null
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.DeptSituation'
+                  type: array
+                type: object
+          description: OK
       security:
       - Bearer: []
       summary: Department situation cards (?dept=ER) — dept-scoped scenarios
@@ -1188,6 +1235,29 @@ paths:
       security:
       - Bearer: []
       summary: Equip a career title
+      tags:
+      - user
+  /me/ui-lang:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.uiLangReq'
+              description: locale code, or \
+              summary: body
+        description: locale code, or \
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.Profile'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Set the app's display language
       tags:
       - user
   /pronunciation:

@@ -69,13 +69,11 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
       .finally(() => { loadingRef.current = false; });
   }, [code, hasMore]);
 
-  // '완료' is not a label here — it is the value GET /me/situations puts in `tag`,
-  // and the same string is then rendered. Translating these three comparisons would
-  // break the match while leaving the display Korean, so they stay until the server
-  // sends a tag CODE alongside its label (i18n build-spec P3). The ratchet's
-  // components ceiling accounts for exactly these three.
-  const cleared = sits.filter((s) => s.tag === '완료').length;
-  const nextSit = sits.find((s) => s.tag !== '완료')?.scenarioId;
+  // Compare on the code, render the label. These three used to test against '완료',
+  // the Korean the server put in `tag` — which is exactly why that string could not
+  // be translated: doing so would have broken the match and left the display Korean.
+  const cleared = sits.filter((s) => s.tagCode === 'cleared').length;
+  const nextSit = sits.find((s) => s.tagCode !== 'cleared')?.scenarioId;
   const curDone = target ? target.curricula.filter((c) => c.state === 'done').length : 0;
 
   return (
@@ -126,7 +124,7 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
               </Text>
             )}
             {sits.map((s, i) => {
-              const done = s.tag === '완료';
+              const done = s.tagCode === 'cleared';
               return (
                 <Shadowed key={i} offset={2.5} style={{ marginBottom: 8 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>

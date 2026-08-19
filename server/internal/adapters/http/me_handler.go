@@ -1,6 +1,7 @@
 package http
 
 import (
+	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
 
 	"github.com/bingoring/forin/server/internal/domain/user"
@@ -102,6 +103,45 @@ var allowedTitles = map[string]bool{
 
 type titleReq struct {
 	TitleID string `json:"titleId"`
+}
+
+type uiLangReq struct {
+	UILang string `json:"uiLang"`
+}
+
+// @Summary Set the app's display language
+// @Tags user
+// @Security Bearer
+// @Param body body uiLangReq true "locale code, or \"\" to follow nativeLang"
+// @Success 200 {object} user.Profile
+// @Router /me/ui-lang [patch]
+func (h *meHandler) setUILang(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	var req uiLangReq
+	if err := httpx.DecodeJSON(r, &req); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid body")
+		return
+	}
+	// Code-side allowed set, no DB constraint — adding a language must not need a
+	// migration. "" is valid and means "follow nativeLang".
+	if req.UILang != "" && !i18n.Supported[req.UILang] {
+		httpx.Error(w, http.StatusBadRequest, "unsupported language")
+		return
+	}
+	if err := h.users.SetUILang(r.Context(), uid, req.UILang); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not save language")
+		return
+	}
+	saved, err := h.users.GetProfile(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, saved)
 }
 
 // @Summary Equip a career title

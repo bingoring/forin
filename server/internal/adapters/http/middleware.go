@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"github.com/bingoring/forin/server/internal/i18n"
 	"log/slog"
 	"net"
 	"net/http"
@@ -128,4 +129,18 @@ func requireAuth(tokens *auth.TokenService) middleware {
 			next.ServeHTTP(w, r.WithContext(ctx))
 		})
 	}
+}
+
+// localeMW resolves the request's display language and puts it on the context.
+//
+// Header only — it does not read the profile. Loading a row to learn a language
+// would add a database round trip to every request including the app's first screen,
+// and the client already knows its own setting: it sends Accept-Language from the
+// value it persisted. The profile's ui_lang exists so a reinstall can restore that
+// setting, not so the server can look it up per request.
+func localeMW(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		loc := i18n.Resolve("", r.Header.Get("Accept-Language"))
+		next.ServeHTTP(w, r.WithContext(i18n.WithLocale(r.Context(), loc)))
+	})
 }

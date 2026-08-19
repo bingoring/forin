@@ -1,6 +1,7 @@
 package http
 
 import (
+	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
 	"time"
 
@@ -35,7 +36,7 @@ func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
 	// tab's hero and the home card cannot drift apart. A failed lookup degrades to
 	// "first unfinished", not to an error: the path is still fully browsable.
 	last, _ := h.progress.LatestAttemptScenarioID(r.Context(), uid)
-	states := curriculum.ResolveWithResume(cleared, curriculum.KeyForScenario(last))
+	states := curriculum.ResolveLocalized(cleared, curriculum.KeyForScenario(last), i18n.FromContext(r.Context()))
 	httpx.JSON(w, http.StatusOK, map[string]any{"buildings": curriculum.Group(states)})
 }
 

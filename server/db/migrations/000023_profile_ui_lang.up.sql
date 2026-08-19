@@ -1,0 +1,11 @@
+-- The app's UI language, kept separate from native_lang.
+--
+-- They look like the same thing and are not: native_lang tells the AI which
+-- language to explain corrections in ("the learner's first language is Korean"),
+-- while ui_lang is only what the screens are drawn in. A Korean nurse who prefers
+-- an English interface still needs corrections in Korean, and conflating the two
+-- would quietly change every prompt when she flips a display setting.
+--
+-- '' means "follow native_lang", which is what every existing row wants: nobody has
+-- chosen a UI language yet, and native_lang is the answer they gave at onboarding.
+ALTER TABLE profiles ADD COLUMN ui_lang text NOT NULL DEFAULT '';

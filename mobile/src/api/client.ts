@@ -6,15 +6,22 @@ import { useAuthStore } from '@/store/authStore';
 import { saveTokens } from '@/lib/secureStore';
 import type { paths } from '@contract/types';
 import type { Interior } from '@engine';
+import { getLocale } from '@/i18n';
 
 const baseURL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080';
 
 const http: AxiosInstance = axios.create({ baseURL, timeout: 30_000 });
 
-// Attach the access token to every request.
+// Attach the access token — and the UI language — to every request.
+//
+// Accept-Language carries the app's display language so the server can localize the
+// strings it renders (curriculum names, floor headings). Sent as a header rather than
+// read from the profile server-side: the profile lookup would add a database round
+// trip to every request, and the client already knows the answer.
 http.interceptors.request.use((config) => {
   const token = useAuthStore.getState().accessToken;
   if (token) config.headers.Authorization = `Bearer ${token}`;
+  config.headers['Accept-Language'] = getLocale();
   return config;
 });
 
@@ -160,7 +167,12 @@ export interface BoardCard {
 // A department-scoped situation card (server: GET /me/situations?dept=).
 export interface DeptSituation {
   scenarioId: string; name: string; room?: string;
-  lv: string; min: number; tag: string; urgent: boolean;
+  lv: string; min: number; urgent: boolean;
+  /** State to compare on: 'cleared' | 'urgent' | 'new'. */
+  tagCode: string;
+  /** The same state as a label in the app's language. Never compare against it —
+   *  that is what forced this field to stay Korean until the server split the two. */
+  tag: string;
 }
 
 // Chapter/step curriculum with per-user progress (server: GET /me/curriculum).
@@ -563,6 +575,18 @@ export const api = {
   async curriculum(): Promise<CurriculumBuilding[]> {
     const { data } = await http.get('/me/curriculum');
     return (data as { buildings: CurriculumBuilding[] }).buildings ?? [];
+  },
+
+  /**
+   * Persist the app's display language so a reinstall restores it.
+   *
+   * Separate from the onboarding PATCH /me/profile, which is a full upsert that
+   * would reset job and languages to defaults when called with one field. Fire and
+   * forget at the call site: the local setting already applied, and losing the sync
+   * costs a preference, not a session.
+   */
+  async setUILang(uiLang: string): Promise<void> {
+    await http.patch('/me/ui-lang', { uiLang });
   },
 
   /** Main-route curriculum path (events + unlock states). */

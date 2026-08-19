@@ -367,6 +367,9 @@ type UserRepo interface {
 	UpdateProfile(ctx context.Context, p user.Profile) error
 	// SetEquippedTitle persists the user's equipped career title.
 	SetEquippedTitle(ctx context.Context, userID, titleID string) error
+	// SetUILang persists the app's display language ("" = follow NativeLang). Kept
+	// apart from UpdateProfile, which is a full onboarding upsert.
+	SetUILang(ctx context.Context, userID, lang string) error
 }
 
 // RefreshStore stores hashed refresh tokens with TTL and supports rotation.

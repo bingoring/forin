@@ -18,6 +18,8 @@
 //     building → floor → curriculum hierarchy IS the roadmap.
 package curriculum
 
+import "github.com/bingoring/forin/server/internal/i18n"
+
 // Step is one authored step. Kind ∈ dlg | quiz | event | boss.
 //
 // Name must MEAN the same thing as the title of the scenario ScenarioID points
@@ -108,31 +110,45 @@ var catalog = func() []Curriculum {
 // and the "now" pointer walks them. Optional steps (quizzes) are playable at any
 // time and are `done` once cleared.
 func Resolve(cleared map[string]bool) []CurriculumState {
-	out := make([]CurriculumState, 0, len(catalog))
-	for _, c := range catalog {
-		out = append(out, resolveOne(c, cleared))
-	}
-	markResume(out, "")
-	return out
+	return ResolveLocalized(cleared, "", i18n.BaseLocale)
 }
 
 // ResolveWithResume is Resolve with an explicit resume target — the key of the
 // curriculum holding the user's most recent attempt (resume.go). Passing "" or a
 // key that is already complete falls back to the first unfinished curriculum.
 func ResolveWithResume(cleared map[string]bool, preferKey string) []CurriculumState {
+	return ResolveLocalized(cleared, preferKey, i18n.BaseLocale)
+}
+
+// ResolveLocalized is ResolveWithResume with the names rendered in `locale`.
+//
+// Names are translated at the edge rather than stored per language: the authored
+// Korean stays in authored_*.go as the single source, and a locale with no entry
+// renders exactly what it renders today (i18n.Tr's fallback). That keeps adding a
+// language additive — it touches no content file — and keeps the invariant tests,
+// which read the authored names, meaningful.
+func ResolveLocalized(cleared map[string]bool, preferKey, locale string) []CurriculumState {
 	out := make([]CurriculumState, 0, len(catalog))
 	for _, c := range catalog {
-		out = append(out, resolveOne(c, cleared))
+		out = append(out, resolveOne(c, cleared, locale))
 	}
 	markResume(out, preferKey)
 	return out
 }
 
-func resolveOne(c Curriculum, cleared map[string]bool) CurriculumState {
-	cs := CurriculumState{Key: c.Key, Name: c.Name, Building: c.Building, Floor: c.Floor, Where: c.Where}
+func resolveOne(c Curriculum, cleared map[string]bool, locale string) CurriculumState {
+	cs := CurriculumState{
+		Key: c.Key, Name: i18n.Tr(locale, c.Key, c.Name),
+		Building: c.Building, Floor: c.Floor,
+		// The floor heading is keyed by building|floor so the two curricula of a
+		// shared floor cannot disagree about where they are.
+		Where: i18n.Tr(locale, c.Building+"|"+c.Floor, c.Where),
+	}
 	nowUsed := false
 	for _, s := range c.Steps {
-		st := StepState{Kind: s.Kind, Name: s.Name, ScenarioID: s.ScenarioID, Optional: isOptional(s.Kind)}
+		// Step names are keyed by content id: the id is what the step already carries,
+		// so there is no second key space to keep in step with a rewording.
+		st := StepState{Kind: s.Kind, Name: i18n.Tr(locale, s.ScenarioID, s.Name), ScenarioID: s.ScenarioID, Optional: isOptional(s.Kind)}
 		switch {
 		case s.ScenarioID != "" && cleared[s.ScenarioID]:
 			st.State = "done"

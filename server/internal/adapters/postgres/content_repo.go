@@ -321,7 +321,7 @@ func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) 
 }
 
 // DeptSituations lists a department's scenarios as situation cards (v19 dept
-// sheet), tagged 완료/긴급/신규 from difficulty + the user's cleared attempts.
+// sheet), tagged cleared/urgent/new from difficulty + the user's cleared attempts.
 // Department = the id prefix (SCN-<DEPT>-*), so a new dept needs no new query.
 // Paginated by offset/limit (stable ORDER BY id) so a single-department learner
 // can scroll the full bank; hasMore is true when more rows follow this page.
@@ -378,13 +378,15 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, o
 			s.Min = 4 + diff // fall back to a difficulty-based estimate
 		}
 		s.Urgent = diff >= 3
+		// Code only — the repo has no request locale, and inventing one here is how a
+		// display string ends up baked into storage. The handler renders the label.
 		switch {
 		case cleared[id]:
-			s.Tag = "완료"
+			s.TagCode = "cleared"
 		case s.Urgent:
-			s.Tag = "긴급"
+			s.TagCode = "urgent"
 		default:
-			s.Tag = "신규"
+			s.TagCode = "new"
 		}
 		out = append(out, s)
 	}

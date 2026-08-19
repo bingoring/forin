@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
 	"strings"
 	"sync"
@@ -97,6 +98,7 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 	}
 	now := time.Now()
 	day := home.DayKey(now, loc)
+	locale := i18n.FromContext(ctx)
 	resp := homeResp{Date: day, Colleagues: []homeColleague{}}
 
 	// Independent reads, run together — the slowest one sets the latency, not the sum.
@@ -142,7 +144,7 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		// to the 1st. A failed lookup is not fatal: resume then falls back to the
 		// first unfinished curriculum, which is the old behaviour.
 		last, _ := h.progress.LatestAttemptScenarioID(ctx, uid)
-		cs := curriculum.ResolveWithResume(cleared, curriculum.KeyForScenario(last))
+		cs := curriculum.ResolveLocalized(cleared, curriculum.KeyForScenario(last), locale)
 		mu.Lock()
 		curricula = cs
 		mu.Unlock()

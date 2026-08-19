@@ -2,6 +2,7 @@ package http
 
 import (
 	"errors"
+	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
 	"strconv"
 	"time"
@@ -151,6 +152,7 @@ func (h *contentHandler) mainRoute(w http.ResponseWriter, r *http.Request) {
 // @Summary Department situation cards (?dept=ER) — dept-scoped scenarios
 // @Tags content
 // @Security Bearer
+// @Success 200 {object} map[string][]content.DeptSituation
 // @Router /me/situations [get]
 func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) {
 	uid, ok := UserID(r.Context())
@@ -173,8 +175,18 @@ func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) 
 		httpx.Error(w, http.StatusInternalServerError, "could not load situations")
 		return
 	}
+	// Label the state in the request's language. The code travels alongside so the
+	// client compares on the code and renders the label — see content.DeptSituation.
+	loc := i18n.FromContext(r.Context())
+	for i := range sits {
+		sits[i].Tag = i18n.Tr(loc, "tag."+sits[i].TagCode, tagKo[sits[i].TagCode])
+	}
 	httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits, "hasMore": hasMore})
 }
+
+// tagKo is the authored Korean for a situation state — the fallback i18n.Tr renders
+// when a locale has no entry, kept next to the only place that needs it.
+var tagKo = map[string]string{"cleared": "완료", "urgent": "긴급", "new": "신규"}
 
 // economyConfigResp mirrors economy.Active plus a feature-availability signal.
 // GET /config/economy was picked to carry pronunciationEnabled (business-rules

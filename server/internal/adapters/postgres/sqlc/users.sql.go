@@ -42,7 +42,7 @@ func (q *Queries) CreateUser(ctx context.Context, status string) (User, error) {
 }
 
 const getProfile = `-- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title FROM profiles WHERE user_id = $1
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang FROM profiles WHERE user_id = $1
 `
 
 type GetProfileRow struct {
@@ -54,6 +54,7 @@ type GetProfileRow struct {
 	TargetLevel   string `json:"target_level"`
 	Onboarded     bool   `json:"onboarded"`
 	EquippedTitle string `json:"equipped_title"`
+	UiLang        string `json:"ui_lang"`
 }
 
 func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow, error) {
@@ -68,6 +69,7 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 		&i.TargetLevel,
 		&i.Onboarded,
 		&i.EquippedTitle,
+		&i.UiLang,
 	)
 	return i, err
 }
@@ -113,6 +115,24 @@ type SetEquippedTitleParams struct {
 
 func (q *Queries) SetEquippedTitle(ctx context.Context, arg SetEquippedTitleParams) error {
 	_, err := q.db.Exec(ctx, setEquippedTitle, arg.UserID, arg.EquippedTitle)
+	return err
+}
+
+const setUILang = `-- name: SetUILang :exec
+INSERT INTO profiles (user_id, ui_lang, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET ui_lang = $2, updated_at = now()
+`
+
+type SetUILangParams struct {
+	UserID string `json:"user_id"`
+	UiLang string `json:"ui_lang"`
+}
+
+// Single-field patch, like SetEquippedTitle: the full UpsertProfile fills omitted
+// columns with onboarding defaults, so reusing it to save one setting would reset
+// job and languages.
+func (q *Queries) SetUILang(ctx context.Context, arg SetUILangParams) error {
+	_, err := q.db.Exec(ctx, setUILang, arg.UserID, arg.UiLang)
 	return err
 }
 

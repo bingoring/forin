@@ -9,7 +9,7 @@ import { useSyncExternalStore } from 'react';
 import { BASE_LOCALE, CATALOGS, type Locale } from './locales';
 import { getLocale, subscribe } from './store';
 
-export { getLocale, setLocale, loadLocale, adoptProfileLocale, localeWasChosen } from './store';
+export { getLocale, setLocale, loadLocale, adoptProfileLocale, localeWasChosen, onLocaleChange } from './store';
 export { LOCALES, LOCALE_META, completeness, completenessLabel, asLocale, type Locale } from './locales';
 
 /** Variables interpolated into a string as {name}. */
