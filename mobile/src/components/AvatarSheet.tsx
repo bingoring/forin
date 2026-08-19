@@ -8,7 +8,7 @@
 // in one tap, so it is the shortcut, and burying a shortcut under the long way round
 // is how nobody finds it. It is NOT a likeness — see lib/faceScan.ts.
 import { Pressable, ScrollView, Text, View } from 'react-native';
-import { FacePlayer } from '@engine';
+import { AnimatedFace, FacePlayer } from '@engine';
 import { BottomSheet } from '@/components/BottomSheet';
 import { PixelIcon } from '@/components/PixelIcon';
 import { PixelButton } from '@/components/PixelButton';
@@ -31,7 +31,7 @@ export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; on
         <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 6, paddingBottom: 12, alignItems: 'center' }}>
           <View style={{ width: 96, height: 112, backgroundColor: avatar.scrub, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
             <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
-            <FacePlayer size={102} avatar={avatar} />
+            <AnimatedFace size={102} avatar={avatar} expression="happy" />
           </View>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 9 }}>{t('avatar.title')}</Text>
         </View>

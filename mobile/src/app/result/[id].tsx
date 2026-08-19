@@ -16,6 +16,8 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { playSfx } from '@/lib/sfx';
 import { t, useLocale } from '@/i18n';
+import { AnimatedFace } from '@engine';
+import { useAvatar } from '@/hooks/useAvatar';
 
 const C = colors.ink;
 
@@ -138,6 +140,7 @@ export default function ResultRoute() {
   // when both happen the fanfare plays first and the reward lands on top of its
   // tail rather than cutting it off.
   useLocale(); // 언어가 바뀌면 이 화면도 다시 그려져야 한다
+  const avatar = useAvatar();
   const sounded = useRef(false);
   useEffect(() => {
     if (!after || sounded.current) return;
@@ -171,7 +174,23 @@ export default function ResultRoute() {
       </View>
 
       <View style={{ paddingHorizontal: 22, paddingTop: 80, alignItems: 'center', zIndex: 2 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? 'SCENARIO CLEAR!' : t('result.goodTry')}</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? t('result.clear') : t('result.goodTry')}</Text>
+
+        {/* The character reacts. Sound already marked this moment (#16); motion is the
+            visual half, and a portrait that cheers when you passed and slumps when you
+            did not is the whole of what "a character like Duolingo's" asks for here.
+            Keyed on `after` so it fires once the server has actually judged the run —
+            reacting before that would celebrate a result nobody has yet. */}
+        {after && (
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <AnimatedFace
+              size={92}
+              avatar={avatar}
+              expression={passed ? 'happy' : 'sad'}
+              reaction={passed ? 'cheer' : 'slump'}
+            />
+          </View>
+        )}
         <View style={{ marginTop: 6 }}>
           <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: fs(34), color: titleColor }}>{passed ? t('result.wellDone') : t('result.almost')}</Text>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(34), color: C }}>{passed ? t('result.wellDone') : t('result.almost')}</Text>
@@ -209,15 +228,14 @@ export default function ResultRoute() {
             <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
               <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontSize: fs(32) }}>⭐</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginTop: 4 }}>참잘했</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>어요</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 4, textAlign: 'center' }}>{t('result.praiseSticker')}</Text>
               </View>
             </View>
           </Shadowed>
         ) : (
           <View style={{ marginTop: 16, marginBottom: 16, alignItems: 'center', gap: 4 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>다시 도전하면 완료로 인정돼요</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>이 상황은 아직 t('result.retry')이에요</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>{t('result.retryHint')}</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('result.notYetCleared')}</Text>
           </View>
         )}
 

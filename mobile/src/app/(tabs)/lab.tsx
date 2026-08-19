@@ -137,7 +137,7 @@ export default function Lab() {
                   </View>
                 ))}
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
-                  숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 t('lab.mastered')로 분류돼요.
+                  {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
                 </Text>
               </View>
             )}

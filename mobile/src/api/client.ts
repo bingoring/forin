@@ -324,9 +324,11 @@ export interface HomeColleague {
 export interface Home {
   date: string;
   done: boolean;               // curriculum has no next step today → rest card
+  /** True until the learner clears anything. Reorders the home to lead with the task. */
+  firstRun?: boolean;
   shift?: HomeShift;
   streak: number;
-  week: number[];              // 7 blocks, Monday-first: 0 none | 1 studied | 2 today
+  week: number[];              // rolling window ending today: 0 none | 1 studied | 2 today
   level: number; xp: number; targetLevel?: string;
   todayOne?: HomeTodayOne;
   mentorNote?: HomeMentorNote;

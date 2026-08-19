@@ -68,3 +68,24 @@ test('no module-level constant calls t()', () => {
   }
   expect(offenders).toEqual([]);
 });
+
+// A t() call that ended up INSIDE a string literal renders as source code on screen.
+//
+// It happened twice while extracting: a blanket replace of '재도전' hit the word inside
+// a Korean sentence, so the clear screen displayed `이 상황은 아직 t('result.retry')
+// 이에요` — grammatical Korean wrapped around a function call. tsc is perfectly happy
+// with it and it reads as normal text in a diff.
+test("no t() call is trapped inside a string literal", () => {
+  const offenders: string[] = [];
+  for (const file of walk(SRC)) {
+    if (file.includes(`${'/'}i18n${'/'}`)) continue;
+    const src = readFileSync(file, 'utf8').replace(/\/\/[^\n]*/g, '');
+    for (const lit of src.match(/'[^'\n]*'|"[^"\n]*"|`[^`]*`/g) ?? []) {
+      // A template literal legitimately interpolates: `${t('x')}`. A t( that is NOT
+      // inside ${...} is the bug.
+      const inner = lit.slice(1, -1).replace(/\$\{[^}]*\}/g, '');
+      if (/(^|[^.\w])t\(/.test(inner)) offenders.push(`${relative(SRC, file)}: ${lit.slice(0, 60)}`);
+    }
+  }
+  expect(offenders).toEqual([]);
+});

@@ -31,6 +31,7 @@ export * from './useGridMover';
 // character sprite + motion system
 export * from './Sprite';
 export * from './Face';
+export * from './AnimatedFace';
 
 // stateless map-layer components
 export * from './TileFloor';

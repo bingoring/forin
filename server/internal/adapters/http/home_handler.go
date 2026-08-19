@@ -52,10 +52,14 @@ type homeReview struct {
 }
 
 type homeResp struct {
-	Date   string      `json:"date"`
-	Done   bool        `json:"done"`
-	Shift  *home.Shift `json:"shift,omitempty"`
-	Streak int         `json:"streak"`
+	Date string `json:"date"`
+	Done bool   `json:"done"`
+	// FirstRun is true until the learner clears anything. The home screen leads with
+	// the task instead of the streak in that state: a row of ten empty day-boxes is
+	// the first thing a new user would otherwise see, and it teaches nothing.
+	FirstRun bool        `json:"firstRun"`
+	Shift    *home.Shift `json:"shift,omitempty"`
+	Streak   int         `json:"streak"`
 	// A rolling window ending today (progress.StreakWindowDays long), not a
 	// calendar week. Kept as `week` on the wire so already-shipped clients keep
 	// parsing it; the length is what changed, and the client reads .length.
@@ -147,6 +151,10 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		cs := curriculum.ResolveLocalized(cleared, curriculum.KeyForScenario(last), locale)
 		mu.Lock()
 		curricula = cs
+		// Derived from cleared content rather than from XP or level: those move for
+		// reasons other than finishing something, so a user who earned a little XP and
+		// stopped would stop counting as new while still never having completed a step.
+		resp.FirstRun = len(cleared) == 0
 		mu.Unlock()
 	})
 

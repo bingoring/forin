@@ -1992,6 +1992,12 @@ export interface components {
             colleagues?: components["schemas"]["internal_adapters_http.homeColleague"][];
             date?: string;
             done?: boolean;
+            /**
+             * @description FirstRun is true until the learner clears anything. The home screen leads with
+             *     the task instead of the streak in that state: a row of ten empty day-boxes is
+             *     the first thing a new user would otherwise see, and it teaches nothing.
+             */
+            firstRun?: boolean;
             level?: number;
             mentorNote?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_home.MentorNote"];
             pendingRequests?: number;

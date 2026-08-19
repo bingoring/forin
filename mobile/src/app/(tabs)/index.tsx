@@ -10,7 +10,7 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { FacePlayer } from '@engine';
+import { AnimatedFace } from '@engine';
 import { api, type Home } from '@/api/client';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { t, useLocale } from '@/i18n';
@@ -47,7 +47,7 @@ export default function HomeTab() {
         {state === 'loading'
           ? <ActivityIndicator color={C} />
           : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>
-              홈을 불러오지 못했어요. (로그인·서버 확인)
+{t('home.loadFailed')}
             </Text>}
       </View>
     );
@@ -65,12 +65,23 @@ export default function HomeTab() {
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
       <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
         <Greeting date={home.date} done={home.done} />
-        {!!home.shift && <ShiftBadge shift={home.shift.shift} deptLabel={home.shift.deptLabel} />}
-        <StreakStrip streak={home.streak} week={home.week} />
 
-        {home.todayOne
-          ? <TodayOne one={home.todayOne} onStart={startToday} />
-          : <RestCard streakNext={home.streak + 1} onMore={() => router.push('/board')} />}
+        {/* On a first run the order flips: the task comes before the streak.
+            Achievements-before-tasks is the right default (see the file header), but a
+            learner who has cleared nothing has no achievements — leading with a row of
+            ten empty day-boxes and a "0일 연속" puts their own emptiness first and
+            pushes the one thing they should tap below the fold. */}
+        {home.firstRun ? (
+          home.todayOne ? <TodayOne one={home.todayOne} onStart={startToday} firstRun /> : null
+        ) : (
+          <>
+            {!!home.shift && <ShiftBadge shift={home.shift.shift} deptLabel={home.shift.deptLabel} />}
+            <StreakStrip streak={home.streak} week={home.week} />
+            {home.todayOne
+              ? <TodayOne one={home.todayOne} onStart={startToday} />
+              : <RestCard streakNext={home.streak + 1} onMore={() => router.push('/board')} />}
+          </>
+        )}
 
         {!!home.mentorNote && <MentorNote note={home.mentorNote} />}
         {!!home.phrase && (
@@ -122,7 +133,7 @@ function Greeting({ date, done }: { date: string; done: boolean }) {
       </View>
       <Shadowed offset={3} style={{ alignSelf: 'flex-end' }}>
         <View style={{ width: 58, height: 58, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <FacePlayer size={62} avatar={avatar} />
+          <AnimatedFace size={62} avatar={avatar} expression={done ? 'happy' : 'focused'} />
         </View>
       </Shadowed>
     </View>
@@ -186,7 +197,11 @@ function StreakStrip({ streak, week }: { streak: number; week: number[] }) {
 }
 
 // ── 오늘의 한 가지 — 화면에서 가장 큰 단 하나 ──────────────────────────────
-function TodayOne({ one, onStart }: { one: NonNullable<Home['todayOne']>; onStart: () => void }) {
+function TodayOne({ one, onStart, firstRun }: {
+  one: NonNullable<Home['todayOne']>;
+  onStart: () => void;
+  firstRun?: boolean;
+}) {
   const icon: IconName = one.kind === 'quiz' ? 'question' : 'speech';
   return (
     <View style={{ marginHorizontal: space.lg, marginTop: 17 }}>
@@ -201,19 +216,30 @@ function TodayOne({ one, onStart }: { one: NonNullable<Home['todayOne']>; onStar
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, marginTop: 3, lineHeight: 20 }}>{one.title}</Text>
             </View>
           </View>
+          {/* One line saying what is about to happen. A scenario title alone tells a
+              newcomer nothing about whether they are about to read, type or speak. */}
+          {firstRun && (
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, opacity: 0.8, marginTop: 10, lineHeight: 16 }}>
+              {t('home.firstRunHint')}
+            </Text>
+          )}
           <Pressable onPress={onStart} style={({ pressed }) => ({
             marginTop: 12, backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 11,
             flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7,
             opacity: pressed ? 0.85 : 1,
           })}>
             <PixelIcon name="play" color={colors.cream} size={16} sw={1.9} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.cream }}>시작하기</Text>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.cream }}>
+              {firstRun ? t('home.firstRunCta') : t('home.startCta')}
+            </Text>
           </Pressable>
         </View>
       </Shadowed>
       {/* 라벨 탭 — 카드 위로 걸친다 */}
       <View style={{ position: 'absolute', top: -9, left: 12, backgroundColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>오늘의 한 가지</Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>
+          {firstRun ? t('home.firstRunTab') : t('home.todayOneTab')}
+        </Text>
       </View>
     </View>
   );

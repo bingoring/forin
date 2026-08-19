@@ -9,7 +9,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
-import { FacePlayer } from '@engine';
+import { AnimatedFace } from '@engine';
 import { api, type Colleague, type GrowthStats, type InviteCode, type Progress } from '@/api/client';
 import { signOut } from '@/lib/auth';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
@@ -218,7 +218,7 @@ export default function Me() {
                 <Pressable onPress={() => { playSfx('tap'); setAvatarOpen(true); }}>
                   <View style={{ width: 80, height: 96, backgroundColor: avatar.scrub, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
                     <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
-                    <FacePlayer size={86} avatar={avatar} />
+                    <AnimatedFace size={86} avatar={avatar} />
                   </View>
                   <View style={{ position: 'absolute', bottom: -3, right: -3, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, width: 20, height: 20, alignItems: 'center', justifyContent: 'center' }}>
                     <PixelIcon name="note" color={C} size={11} sw={1.8} />
