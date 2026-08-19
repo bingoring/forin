@@ -103,6 +103,7 @@ def main() -> None:
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page(data), encoding="utf-8")
+    verify(out)
     print(f"{out}  ·  {len(keys)} keys × {len(LOCALES)} locales")
     for loc in LOCALES:
         s = stats[loc]
@@ -110,8 +111,41 @@ def main() -> None:
 
 
 def page(d: dict) -> str:
-    payload = html.escape(json.dumps(d, ensure_ascii=False), quote=True)
+    """Embed the catalogs as JSON inside a <script> block.
+
+    NOT html.escape: the content of a script element is raw text, so a browser
+    never decodes entities there — escaping turned every quote into &quot; and
+    JSON.parse died on the first character, which killed the whole script and left
+    a blank page. The only thing that needs neutralising is a sequence that could
+    end the element early, and "\u003c" is a valid JSON escape, so replacing "<"
+    covers both </script> and <!-- while staying parseable.
+    """
+    payload = (
+        json.dumps(d, ensure_ascii=False)
+        .replace("<", "\\u003c")
+        .replace("\u2028", "\\u2028")
+        .replace("\u2029", "\\u2029")
+    )
     return TEMPLATE.replace("__DATA__", payload)
+
+
+def verify(path: Path) -> None:
+    """Read the payload back exactly as a browser would and parse it.
+
+    The blank-page bug shipped because nothing checked that the page's own data
+    survived being written. This is that check: raw text out of the script element,
+    straight into a JSON parser, loud failure if it does not round-trip.
+    """
+    text = path.read_text(encoding="utf-8")
+    m = re.search(r'<script id="payload" type="application/json">(.*?)</script>', text, re.S)
+    if not m:
+        raise SystemExit(f"{path}: payload script block missing")
+    try:
+        back = json.loads(m.group(1))
+    except json.JSONDecodeError as e:
+        raise SystemExit(f"{path}: payload is not valid JSON as written — {e}")
+    if not back.get("keys"):
+        raise SystemExit(f"{path}: payload parsed but carries no keys")
 
 
 TEMPLATE = r"""<title>forin 번역표</title>
@@ -264,6 +298,14 @@ function drawBody() {
   document.querySelector('#t tbody').innerHTML = rows.join('');
   document.getElementById('count').textContent = `${shown} / ${D.keys.length} 키`;
 }
+
+// Drop the "비어 있음" / "한국어와 같음" markers the moment typing starts. They are
+// ::after pseudo-elements, so they cannot corrupt the text, but leaving them beside
+// what you are typing reads as if the cell still counted as empty.
+document.querySelector('#t tbody').addEventListener('input', (e) => {
+  const td = e.target.closest('td[contenteditable]');
+  if (td) td.classList.remove('missing', 'same');
+});
 
 document.querySelector('#t tbody').addEventListener('blur', (e) => {
   const td = e.target.closest('td[contenteditable]');
