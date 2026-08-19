@@ -184,7 +184,12 @@ allcoded=$(pj "all(s.get('tagCode') in ('cleared','urgent','new') for s in d.get
 # and before they split the label was Korean the client had to compare against.
 runlang en GET "/me/situations?dept=ER&limit=3"
 entag=$(pj "d['situations'][0]['tag'] if d.get('situations') else ''")
-[ -n "$entag" ] && printf '%s' "$entag" | grep -qv '[가-힣]' && ok "situation tag localized: '$entag'" || bad "tag not localized: '$entag'"
+# The Hangul test runs in python, not `grep '[가-힣]'`: a multibyte range inside a
+# bracket expression is rejected as "Invalid collation character" in the runner's
+# locale while working fine on a developer's UTF-8 macOS shell. The first version of
+# this assertion did exactly that and failed on a correctly-localized 'Done'.
+enko=$(pj "any('\uac00' <= ch <= '\ud7a3' for ch in (d['situations'][0]['tag'] if d.get('situations') else 'x'))")
+[ -n "$entag" ] && [ "$enko" = "False" ] && ok "situation tag localized: '$entag'" || bad "tag not localized: '$entag'"
 out=$(curl -s "$B/config/economy"); BODY="$out"
 readyus=$(pj "'us' in d.get('readyDestinations',[])")
 [ "$readyus" = "True" ] && ok "config lists us as a ready destination" || bad "readyDestinations=$(pj "d.get('readyDestinations')")"
