@@ -14,38 +14,41 @@ export type GrowthInput = {
   scenariosTotal: number;
 };
 
+// Text lives in the i18n catalogs (title.<id>.*): this array is a module constant,
+// so a t() call here would freeze the strings to the startup language. The data
+// holds keys; screens resolve them at render.
 export type TitleDef = {
   id: string;
   emoji: string;
-  name: string;
-  desc: string;
-  how: string;
-  effect?: string;
+  nameKey: string;
+  descKey: string;
+  howKey: string;
+  effectKey?: string;
   warm?: boolean;
   earned: (g: GrowthInput, ctx: { hiddenFound: number }) => boolean;
 };
 
 export const TITLES: TitleDef[] = [
-  { id: 'learner', emoji: '🌱', name: '새내기', desc: '이제 막 현장에 발을 들인 간호사예요.', how: '기본으로 주어지는 칭호예요.', earned: () => true },
-  { id: 'ward_friend', emoji: '💗', name: '병동의 벗', desc: '환자들이 편안해하는 따뜻한 손길이에요.', how: '환자 만족도 70 이상이면 얻어요.', effect: '환자 NPC가 처음부터 조금 더 우호적으로 반응해요.', warm: true, earned: (g) => (g.rep.patient_satisfaction ?? 0) >= 70 },
-  { id: 'diligent', emoji: '🔥', name: '성실한 손길', desc: '하루도 빠짐없이 근무한 성실함의 증표예요.', how: '7일 연속 출석하면 얻어요.', earned: (g) => g.streakLongest >= 7 },
-  { id: 'er_ace', emoji: '⚡', name: '응급실의 에이스', desc: '수많은 현장을 지켜낸 베테랑이에요.', how: '시나리오를 10회 클리어하면 얻어요.', earned: (g) => g.scenariosTotal >= 10 },
-  { id: 'polyglot', emoji: '🗣', name: '언어의 달인', desc: '영어가 몸에 밴 실력자예요.', how: '레벨 10에 도달하면 얻어요.', earned: (g) => g.level >= 10 },
-  { id: 'hidden_hero', emoji: '🦸', name: '숨은 영웅', desc: '아무도 모르게 빛나는 히든 업적의 주인이에요.', how: '히든 미션을 하나라도 발견하면 얻어요.', effect: '환자 NPC가 처음부터 조금 더 우호적으로 반응해요.', warm: true, earned: (_g, c) => c.hiddenFound >= 1 },
+  { id: 'learner', emoji: '🌱', nameKey: 'title.learner.name', descKey: 'title.learner.desc', howKey: 'title.learner.how', earned: () => true },
+  { id: 'ward_friend', emoji: '💗', nameKey: 'title.ward_friend.name', descKey: 'title.ward_friend.desc', howKey: 'title.ward_friend.how', effectKey: 'title.ward_friend.effect', warm: true, earned: (g) => (g.rep.patient_satisfaction ?? 0) >= 70 },
+  { id: 'diligent', emoji: '🔥', nameKey: 'title.diligent.name', descKey: 'title.diligent.desc', howKey: 'title.diligent.how', earned: (g) => g.streakLongest >= 7 },
+  { id: 'er_ace', emoji: '⚡', nameKey: 'title.er_ace.name', descKey: 'title.er_ace.desc', howKey: 'title.er_ace.how', earned: (g) => g.scenariosTotal >= 10 },
+  { id: 'polyglot', emoji: '🗣', nameKey: 'title.polyglot.name', descKey: 'title.polyglot.desc', howKey: 'title.polyglot.how', earned: (g) => g.level >= 10 },
+  { id: 'hidden_hero', emoji: '🦸', nameKey: 'title.hidden_hero.name', descKey: 'title.hidden_hero.desc', howKey: 'title.hidden_hero.how', effectKey: 'title.hidden_hero.effect', warm: true, earned: (_g, c) => c.hiddenFound >= 1 },
 ];
 
 export type MissionDef = {
   id: string;
-  name: string;
-  hint: string;
-  reward: string;
+  nameKey: string;
+  hintKey: string;
+  rewardKey: string;
   met: (g: GrowthInput) => boolean;
 };
 
 export const MISSIONS: MissionDef[] = [
-  { id: 'veteran', name: '베테랑', hint: '현장을 아주 많이 누비다 보면…', reward: '숨은 영웅 칭호', met: (g) => g.scenariosTotal >= 25 },
-  { id: 'iron_will', name: '철인', hint: '2주를 하루도 빠짐없이…', reward: '숨은 영웅 칭호', met: (g) => g.streakLongest >= 14 },
-  { id: 'beloved', name: '신망', hint: '모두에게 사랑받는 간호사가 되면…', reward: '숨은 영웅 칭호', met: (g) => (g.rep.patient_satisfaction ?? 0) >= 80 && (g.rep.peer_trust ?? 0) >= 80 && (g.rep.emergency_response ?? 0) >= 80 },
+  { id: 'veteran', nameKey: 'mission.veteran.name', hintKey: 'mission.veteran.hint', rewardKey: 'mission.veteran.reward', met: (g) => g.scenariosTotal >= 25 },
+  { id: 'iron_will', nameKey: 'mission.iron_will.name', hintKey: 'mission.iron_will.hint', rewardKey: 'mission.iron_will.reward', met: (g) => g.streakLongest >= 14 },
+  { id: 'beloved', nameKey: 'mission.beloved.name', hintKey: 'mission.beloved.hint', rewardKey: 'mission.beloved.reward', met: (g) => (g.rep.patient_satisfaction ?? 0) >= 80 && (g.rep.peer_trust ?? 0) >= 80 && (g.rep.emergency_response ?? 0) >= 80 },
 ];
 
 export function foundMissions(g: GrowthInput): MissionDef[] {

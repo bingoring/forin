@@ -29,23 +29,31 @@ export const LOCALE_META: Record<Locale, { name: string; sub: string; flag: stri
 
 export const LOCALES = Object.keys(LOCALE_META) as Locale[];
 
+const HANGUL = /[가-힣]/;
+
 /**
  * Share of the base catalog this locale actually translates, 0..1.
  *
- * A key present but equal to the Korean string counts as untranslated: that is
- * what a half-finished catalog looks like, and calling it done would be the
- * "야매" this feature was explicitly told not to be.
+ * A value equal to the Korean one usually means nobody translated it yet, and
+ * counting that as done would be exactly the "야매" this feature was told not to
+ * be. But only when there was something to translate: "Lv.3", "???" and "NOW"
+ * are correctly identical in every language, and treating them as gaps would cap
+ * every locale below 100% forever and teach the reader to ignore the number.
+ * So sameness is a gap only when the Korean string contains Hangul.
  */
+export function isTranslated(locale: Locale, key: string): boolean {
+  if (locale === BASE_LOCALE) return true;
+  const v = CATALOGS[locale][key];
+  if (v === undefined || v === '') return false;
+  return v !== ko[key] || !HANGUL.test(ko[key] ?? '');
+}
+
 export function completeness(locale: Locale): number {
   if (locale === BASE_LOCALE) return 1;
   const base = Object.keys(ko);
   if (base.length === 0) return 1;
   let n = 0;
-  const cat = CATALOGS[locale];
-  for (const k of base) {
-    const v = cat[k];
-    if (v !== undefined && v !== '' && v !== ko[k]) n++;
-  }
+  for (const k of base) if (isTranslated(locale, k)) n++;
   return n / base.length;
 }
 

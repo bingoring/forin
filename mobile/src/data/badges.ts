@@ -3,26 +3,31 @@
 // what it is and how it's earned, plus a pure predicate over the growth snapshot.
 export type BadgeInput = { xp: number; level: number; streakLongest: number };
 
+// Text lives in the i18n catalogs, not here: this array is a module constant
+// evaluated once at import, so a t() call inside it would freeze the strings to
+// whichever language was active at startup and never follow a language change.
+// The data holds KEYS; the screens resolve them at render.
 export type BadgeDef = {
+  id: string; // stable identity for i18n keys (badge.<id>.*)
   e: string; // emoji icon
-  l: string; // short tile label
-  name: string; // full name (shown in detail / unlock)
-  what: string; // 무엇인가요?
-  how: string; // 어떻게 얻나요?
+  labelKey: string; // short tile label
+  nameKey: string; // full name (shown in detail / unlock)
+  whatKey: string; // 무엇인가요?
+  howKey: string; // 어떻게 얻나요?
   earned: (p: BadgeInput) => boolean;
   special?: boolean; // highlighted (yellow + NEW ribbon)
   hidden?: boolean; // not yet revealed (locked, title masked)
 };
 
 export const BADGES: BadgeDef[] = [
-  { e: '👒', l: '첫 근무', name: '간호사 캡', what: '첫 근무를 시작하며 받은 간호사 캡이에요. 여정의 출발점을 기념해요.', how: '첫 시나리오에서 XP를 획득하면 열려요.', earned: (p) => p.xp > 0 },
-  { e: '🩺', l: 'Lv.3', name: '청진기', what: '기본기를 다졌다는 표시예요. 환자의 소리에 귀 기울일 준비가 됐어요.', how: '레벨 3에 도달하면 열려요.', earned: (p) => p.level >= 3 },
-  { e: '💉', l: 'Lv.5', name: '주사기', what: '술기에 익숙해진 주니어 간호사의 증표예요.', how: '레벨 5에 도달하면 열려요.', earned: (p) => p.level >= 5 },
-  { e: '🔥', l: '3일 연속', name: '3일 연속 출석', what: '사흘 연속 근무한 성실함의 상징이에요.', how: '3일 연속 출석하면 열려요.', earned: (p) => p.streakLongest >= 3 },
-  { e: '🏅', l: '7일 연속', name: '일주일 개근', what: '일주일 내내 빠짐없이 나온 열정의 메달이에요.', how: '7일 연속 출석하면 열려요.', earned: (p) => p.streakLongest >= 7, special: true },
-  { e: '🏆', l: 'Lv.10', name: '병동 트로피', what: '한 병동을 능숙히 누비는 실력자의 트로피예요.', how: '레벨 10에 도달하면 열려요.', earned: (p) => p.level >= 10 },
-  { e: '👑', l: 'Lv.20', name: '헤드 간호사 왕관', what: '팀을 이끄는 시니어의 왕관이에요.', how: '레벨 20에 도달하면 열려요.', earned: (p) => p.level >= 20 },
-  { e: '🔒', l: '???', name: '숨겨진 뱃지', what: '아직 공개되지 않은 뱃지예요. 계속 성장하다 보면 만나게 돼요.', how: '조건은 아직 비밀이에요.', earned: () => false, hidden: true },
+  { id: 'cap', e: '👒', labelKey: 'badge.cap.label', nameKey: 'badge.cap.name', whatKey: 'badge.cap.what', howKey: 'badge.cap.how', earned: (p) => p.xp > 0 },
+  { id: 'stethoscope', e: '🩺', labelKey: 'badge.stethoscope.label', nameKey: 'badge.stethoscope.name', whatKey: 'badge.stethoscope.what', howKey: 'badge.stethoscope.how', earned: (p) => p.level >= 3 },
+  { id: 'syringe', e: '💉', labelKey: 'badge.syringe.label', nameKey: 'badge.syringe.name', whatKey: 'badge.syringe.what', howKey: 'badge.syringe.how', earned: (p) => p.level >= 5 },
+  { id: 'streak3', e: '🔥', labelKey: 'badge.streak3.label', nameKey: 'badge.streak3.name', whatKey: 'badge.streak3.what', howKey: 'badge.streak3.how', earned: (p) => p.streakLongest >= 3 },
+  { id: 'streak7', e: '🏅', labelKey: 'badge.streak7.label', nameKey: 'badge.streak7.name', whatKey: 'badge.streak7.what', howKey: 'badge.streak7.how', earned: (p) => p.streakLongest >= 7, special: true },
+  { id: 'trophy', e: '🏆', labelKey: 'badge.trophy.label', nameKey: 'badge.trophy.name', whatKey: 'badge.trophy.what', howKey: 'badge.trophy.how', earned: (p) => p.level >= 10 },
+  { id: 'crown', e: '👑', labelKey: 'badge.crown.label', nameKey: 'badge.crown.name', whatKey: 'badge.crown.what', howKey: 'badge.crown.how', earned: (p) => p.level >= 20 },
+  { id: 'hidden', e: '🔒', labelKey: 'badge.hidden.label', nameKey: 'badge.hidden.name', whatKey: 'badge.hidden.what', howKey: 'badge.hidden.how', earned: () => false, hidden: true },
 ];
 
 /** BADGES with a resolved `got` flag for the given snapshot. */

@@ -15,6 +15,7 @@ import { ECON } from '@/data/economy';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { playSfx } from '@/lib/sfx';
+import { t, useLocale } from '@/i18n';
 
 const C = colors.ink;
 
@@ -100,6 +101,7 @@ export default function ResultRoute() {
   // badge or a level-up is a second, rarer beat and gets the reward arpeggio;
   // when both happen the fanfare plays first and the reward lands on top of its
   // tail rather than cutting it off.
+  useLocale(); // 언어가 바뀌면 이 화면도 다시 그려져야 한다
   const sounded = useRef(false);
   useEffect(() => {
     if (!after || sounded.current) return;
@@ -154,12 +156,12 @@ export default function ResultRoute() {
 
         {/* new-badge unlock banner(s) */}
         {newBadges.map((b) => (
-          <Shadowed key={b.name} offset={4} style={{ alignSelf: 'stretch', marginTop: 10 }}>
+          <Shadowed key={b.id} offset={4} style={{ alignSelf: 'stretch', marginTop: 10 }}>
             <View style={{ backgroundColor: b.special ? colors.yellow : colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Text style={{ fontSize: fs(24) }}>{b.e}</Text>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>새 뱃지 획득!</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>{b.name}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('result.newBadge')}</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>{t(b.nameKey)}</Text>
               </View>
             </View>
           </Shadowed>

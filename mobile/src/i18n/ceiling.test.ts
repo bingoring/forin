@@ -13,9 +13,9 @@ import { join } from 'path';
 // Per-area ceilings. LOWER these as extraction proceeds; never raise one to make a
 // commit pass — put the string in the catalog instead.
 const CEILINGS: Record<string, number> = {
-  'src/app': 348,
+  'src/app': 333,
   'src/components': 87,
-  'src/data': 70,
+  'src/data': 14,
   'src/lib': 1,
   'src/map': 1203,
 };

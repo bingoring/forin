@@ -81,7 +81,7 @@ export default function Me() {
           }
           if (alive) {
             setFoundIds(set);
-            if (fresh.length) { setToast({ name: fresh[0].name, reward: fresh[0].reward }); setTimeout(() => alive && setToast(null), 3200); }
+            if (fresh.length) { setToast({ name: t(fresh[0].nameKey), reward: t(fresh[0].rewardKey) }); setTimeout(() => alive && setToast(null), 3200); }
             setState('ok');
           }
         } catch {
@@ -162,11 +162,11 @@ export default function Me() {
     const isEquipped = equipped === id;
     const tIc = iconFor(tdef.emoji);
     setSheet({
-      icon: tdef.emoji, iconNode: tIc ? <PixelIcon name={tIc} color={C} size={34} sw={1.6} /> : undefined, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? tdef.name : '???',
-      status: { label: isEquipped ? '● 장착 중' : tdef.got ? '보유' : '미보유', bg: isEquipped ? colors.yellow : tdef.got ? colors.mint : colors.cream },
-      what: tdef.got ? tdef.desc + (tdef.effect ? `\n\n효과: ${tdef.effect}` : '') : '아직 보유하지 않은 칭호예요.',
-      how: tdef.how,
-      action: tdef.got ? { label: isEquipped ? '장착 해제' : '장착하기', bg: isEquipped ? '#fff' : colors.yellow, onPress: () => equip(isEquipped ? '' : id) } : undefined,
+      icon: tdef.emoji, iconNode: tIc ? <PixelIcon name={tIc} color={C} size={34} sw={1.6} /> : undefined, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? t(tdef.nameKey) : '???',
+      status: { label: isEquipped ? t('title.equipped') : tdef.got ? t('title.owned') : t('title.notOwned'), bg: isEquipped ? colors.yellow : tdef.got ? colors.mint : colors.cream },
+      what: tdef.got ? t(tdef.descKey) + (tdef.effectKey ? `\n\n${t('title.effectLabel')}: ${t(tdef.effectKey)}` : '') : t('title.notOwnedBody'),
+      how: t(tdef.howKey),
+      action: tdef.got ? { label: isEquipped ? t('title.unequip') : t('title.equip'), bg: isEquipped ? '#fff' : colors.yellow, onPress: () => equip(isEquipped ? '' : id) } : undefined,
     });
   };
 
@@ -175,10 +175,10 @@ export default function Me() {
     if (!m) return;
     const done = foundIds.has(id);
     setSheet({
-      icon: '', iconNode: <PixelIcon name={done ? 'burst' : 'question'} color={C} size={34} sw={1.6} />, iconBg: done ? colors.mint : colors.cream, title: done ? m.name : '숨겨진 미션',
-      status: { label: done ? '발견!' : '미발견', bg: done ? colors.mint : colors.cream },
-      what: done ? `히든 미션 '${m.name}'을 발견했어요!` : `힌트: ${m.hint}`,
-      how: `보상: ${m.reward}`,
+      icon: '', iconNode: <PixelIcon name={done ? 'burst' : 'question'} color={C} size={34} sw={1.6} />, iconBg: done ? colors.mint : colors.cream, title: done ? t(m.nameKey) : t('mission.hiddenTitle'),
+      status: { label: done ? t('mission.found') : t('mission.notFound'), bg: done ? colors.mint : colors.cream },
+      what: done ? t('mission.foundBody', { name: t(m.nameKey) }) : t('mission.hintBody', { hint: t(m.hintKey) }),
+      how: t('mission.rewardBody', { reward: t(m.rewardKey) }),
     });
   };
 
@@ -210,7 +210,7 @@ export default function Me() {
                 {!!equippedTitle && (
                   <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
                     {iconFor(equippedTitle.emoji) ? <PixelIcon name={iconFor(equippedTitle.emoji)!} color={C} size={13} sw={1.6} /> : <Text style={{ fontSize: fs(10) }}>{equippedTitle.emoji}</Text>}
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{equippedTitle.name}</Text>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{t(equippedTitle.nameKey)}</Text>
                   </View>
                 )}
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 2 }}>EN-US · 미국 종합병원</Text>
@@ -346,15 +346,15 @@ export default function Me() {
               const ic = iconFor(b.e);
               const iconColor = b.got ? C : colors.textFaint;
               const open = () => setSheet({
-                icon: b.e, iconNode: ic ? <PixelIcon name={ic} color={C} size={34} sw={1.6} /> : undefined, iconBg: bg, title: b.got ? b.name : '???',
-                status: { label: b.got ? '획득' : '잠김', bg: b.got ? colors.mint : colors.cream },
-                what: b.what, how: b.how,
+                icon: b.e, iconNode: ic ? <PixelIcon name={ic} color={C} size={34} sw={1.6} /> : undefined, iconBg: bg, title: b.got ? t(b.nameKey) : '???',
+                status: { label: b.got ? t('badge.earned') : t('badge.locked'), bg: b.got ? colors.mint : colors.cream },
+                what: t(b.whatKey), how: t(b.howKey),
               });
               return (
                 <Shadowed key={i} offset={b.got ? 3 : 0} shadowColor={b.special ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
                   <Pressable onPress={open} style={{ aspectRatio: 1, borderWidth: b.got ? 3 : 2, borderColor: C, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
                     {ic ? <PixelIcon name={ic} color={iconColor} size={24} /> : <Text style={{ fontSize: fs(22), opacity: b.got ? 1 : 0.35 }}>{b.e}</Text>}
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: b.got ? C : colors.textFaint, marginTop: 3 }}>{b.l}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: b.got ? C : colors.textFaint, marginTop: 3 }}>{t(b.labelKey)}</Text>
                     {b.got && b.special && (
                       <View style={{ position: 'absolute', top: -4, right: -4, backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 3 }}>
                         <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: '#fff' }}>NEW</Text>
@@ -384,8 +384,8 @@ export default function Me() {
                   <Pressable onPress={() => openTitle(tt.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream, borderWidth: isEq ? 3 : 2, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
                     {iconFor(tt.emoji) ? <PixelIcon name={iconFor(tt.emoji)!} color={tt.got ? C : colors.textFaint} size={24} /> : <Text style={{ fontSize: fs(22), opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
                     <View style={{ flex: 1 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: tt.got ? C : colors.textFaint }}>{tt.got ? tt.name : '???'}{''}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{tt.got ? tt.desc : tt.how}</Text>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: tt.got ? C : colors.textFaint }}>{tt.got ? t(tt.nameKey) : '???'}{''}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{tt.got ? t(tt.descKey) : t(tt.howKey)}</Text>
                     </View>
                     {isEq
                       ? <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>장착</Text></View>
@@ -413,7 +413,7 @@ export default function Me() {
                 <Shadowed key={m.id} offset={done ? 3 : 0} shadowColor={done ? colors.mintShadow : C + '33'} style={{ width: '31.5%' }}>
                   <Pressable onPress={() => openMission(m.id)} style={{ aspectRatio: 1, borderWidth: done ? 3 : 2, borderColor: C, backgroundColor: done ? colors.mint : colors.cream, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 }}>
                     <PixelIcon name={done ? 'burst' : 'question'} color={done ? C : colors.textFaint} size={24} />
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: done ? C : colors.textFaint, marginTop: 3, textAlign: 'center' }}>{done ? m.name : '???'}</Text>
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: done ? C : colors.textFaint, marginTop: 3, textAlign: 'center' }}>{done ? t(m.nameKey) : '???'}</Text>
                   </Pressable>
                 </Shadowed>
               );
