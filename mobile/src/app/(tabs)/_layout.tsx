@@ -4,6 +4,7 @@ import { Tabs } from 'expo-router';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { CampusIcon, BoardIcon, LabIcon, MeIcon } from '@/components/TabIcons';
 import { PixelIcon } from '@/components/PixelIcon';
+import { SheetOverlayHost } from '@/components/SheetOverlay';
 import { t, useLocale } from '@/i18n';
 
 // Bottom nav: 홈 / 커리어 / 상황판 / 리뷰랩 / 프로필. 홈이 최좌측이자 앱의 기본
@@ -17,6 +18,10 @@ const tabIcon = (Icon: IconCmp) =>
 
 export default function TabsLayout() {
   return (
+    // Sheets from any tab render inside this host — above the tab bar, and below whatever
+    // screen the stack pushes on top of the tabs. See SheetOverlay for why that beats a
+    // Modal, which is above both.
+    <SheetOverlayHost>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -37,5 +42,6 @@ export default function TabsLayout() {
       <Tabs.Screen name="lab" options={{ title: t('tab.lab'), tabBarIcon: tabIcon(LabIcon) }} />
       <Tabs.Screen name="me" options={{ title: t('tab.me'), tabBarIcon: tabIcon(MeIcon) }} />
     </Tabs>
+    </SheetOverlayHost>
   );
 }

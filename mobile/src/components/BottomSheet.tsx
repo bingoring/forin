@@ -16,11 +16,12 @@
 // What was wrong here was the amount: a flat 0.55 reads as a grey wash. This
 // fades in to a lighter value and tracks the drag, so pulling the sheet down
 // brightens the screen behind as it goes.
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import {
   Animated,
   Dimensions,
   Keyboard,
+  BackHandler,
   Modal,
   PanResponder,
   Platform,
@@ -29,6 +30,7 @@ import {
   type LayoutChangeEvent,
 } from 'react-native';
 import { colors } from '@/theme/tokens';
+import { useSheetOverlay } from '@/components/SheetOverlay';
 
 const SCREEN_H = Dimensions.get('window').height;
 /** Collapsed sheets never take more than this much of the screen. */
@@ -72,9 +74,22 @@ type Props = {
    * and the difference is what lets the way back land where you left.
    */
   suspended?: boolean;
+  /**
+   * Render into the tab-level overlay host (SheetOverlay) when there is one.
+   *
+   * Opt in for sheets you navigate OUT of. A Modal sits above the pushed screen, so those
+   * sheets had to be taken down before navigating and put back afterwards, which showed
+   * the bare screen underneath for an instant each way. In the host the sheet is simply
+   * below the pushed screen, so it stays put — and keeps its scroll position, which the
+   * take-down could not.
+   *
+   * Sheets that never navigate have nothing to gain and stay on Modal, which needs no
+   * host to exist wherever it is mounted.
+   */
+  overlay?: boolean;
 };
 
-export function BottomSheet({ visible, onClose, children, expandable = true, suspended = false }: Props) {
+export function BottomSheet({ visible, onClose, children, expandable = true, suspended = false, overlay = false }: Props) {
   // Measured once the content lays out; until then the sheet sits offscreen so
   // it never flashes at the wrong height.
   const [contentH, setContentH] = useState(0);
@@ -249,15 +264,11 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
     })
   ).current;
 
-  if (!visible || suspended) return null;
+  const shown = visible && !suspended;
 
-  return (
-    // Hosted in a Modal rather than an absolute overlay in the caller's tree:
-    // that guarantees it covers the screen wherever it is mounted (an overlay
-    // nested in a ScrollView would not), and gives Android's back button a
-    // handler. animationType is 'none' because the drag animation is ours.
-    <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={close}>
-      <View style={{ flex: 1 }}>
+  // The sheet itself, independent of what presents it.
+  const body = (
+    <View style={{ flex: 1 }}>
       <Animated.View
         style={{
           flex: 1,
@@ -321,7 +332,34 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
         {children}
         </View>
       </Animated.View>
-      </View>
+    </View>
+  );
+
+  // Hoisted into the tab-level host when one is offered and the caller asked for it.
+  // Hooks run either way — a presentation choice must not change the hook order.
+  const hosted = useSheetOverlay(useId(), body, overlay && shown);
+
+  // Android's back button. The Modal path gets this for free through onRequestClose; in
+  // the host the sheet is an ordinary view, so it has to ask. Registered only while the
+  // sheet is actually on screen, so it never swallows a back press meant for the screen.
+  useEffect(() => {
+    if (!overlay || !hosted || !shown) return;
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      close();
+      return true;
+    });
+    return () => sub.remove();
+  }, [overlay, hosted, shown, close]);
+
+  if (overlay && hosted) return null; // it is rendering over there
+  if (!shown) return null;
+
+  return (
+    // Modal, for sheets with no host: it covers the screen wherever it is mounted (an
+    // overlay nested in a ScrollView would not) and answers Android's back button.
+    // animationType is 'none' because the drag animation is ours.
+    <Modal visible transparent animationType="none" statusBarTranslucent onRequestClose={close}>
+      {body}
     </Modal>
   );
 }
