@@ -18,6 +18,7 @@ import { playSfx } from '@/lib/sfx';
 import { t, useLocale } from '@/i18n';
 import { AnimatedFace } from '@engine';
 import { useAvatar } from '@/hooks/useAvatar';
+import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 
@@ -160,7 +161,7 @@ export default function ResultRoute() {
 
   return (
     <Pressable onPress={onBgTap} style={{ flex: 1, backgroundColor: colors.cream }}>
-      <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
+      <Stack.Screen options={TASK_SCREEN} />
 
       {/* confetti layer — above background, below content, tap-transparent */}
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, overflow: 'hidden' }}>

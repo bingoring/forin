@@ -108,10 +108,6 @@ function FloorRow({ floor, last, onOpenFloor }: {
         </View>
       </View>
       {resuming && <Chip label={t('step.now')} bg={colors.yellowDeep} color={C} />}
-      {/* Up, not right. A right chevron is the standard promise that a new screen is
-          about to slide in from that side; tapping a floor opens a sheet from the bottom.
-          The arrow should point the way the thing actually arrives. */}
-      <PixelIcon name="chevron-up" color={C} size={12} sw={2} />
     </Pressable>
   );
 }

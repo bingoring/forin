@@ -10,6 +10,7 @@ import { api, type RouteNode } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale } from '@/i18n';
+import { PLACE_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 
@@ -32,7 +33,7 @@ export default function Route() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
-      <Stack.Screen options={{ headerShown: false, animation: 'slide_from_right' }} />
+      <Stack.Screen options={PLACE_SCREEN} />
       <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <PixelButton label={t('common.back')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>메인 루트</Text>

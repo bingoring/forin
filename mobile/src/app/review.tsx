@@ -12,6 +12,7 @@ import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale } from '@/i18n';
+import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 // Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
@@ -91,7 +92,7 @@ export default function ReviewSession() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
-      <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
+      <Stack.Screen options={TASK_SCREEN} />
 
       {/* top bar: exit + progress */}
       <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>

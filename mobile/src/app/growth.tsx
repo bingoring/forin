@@ -16,6 +16,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale } from '@/i18n';
 import { ActivityCalendar } from '@/components/growth/ActivityCalendar';
 import { DayDetail } from '@/components/growth/DayDetail';
+import { PLACE_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 /** Today's weekday and date in the reader's language.
@@ -144,7 +145,7 @@ export default function Growth() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
-      <Stack.Screen options={{ headerShown: false, animation: 'slide_from_right' }} />
+      <Stack.Screen options={PLACE_SCREEN} />
 
       {/* top bar */}
       <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>

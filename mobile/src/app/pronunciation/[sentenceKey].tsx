@@ -42,6 +42,7 @@ import { api, type PronunciationResult, type SentenceReference, type SpeechAttem
 import { colors, fonts, fs } from '@/theme/tokens';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 import { t, useLocale } from '@/i18n';
+import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 const WAVE_DARK = '#0F1A24'; // SoT's dark wave-panel fill — not in theme/tokens
@@ -751,7 +752,7 @@ export default function PronunciationRoute() {
 
   return (
     <View style={{ flex: 1, backgroundColor: dark ? C : colors.paper }}>
-      <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
+      <Stack.Screen options={TASK_SCREEN} />
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <Head ctx={ctx} step={step} dark={dark} onBack={handleBack} backDisabled={pron === 'scoring'} />
 

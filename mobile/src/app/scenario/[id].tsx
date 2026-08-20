@@ -14,6 +14,7 @@ import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale } from '@/i18n';
+import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 
@@ -36,7 +37,7 @@ export default function ScenarioBriefingRoute() {
   if (state !== 'ok' || !scenario) {
     return (
       <View style={{ flex: 1, backgroundColor: '#1F2937', alignItems: 'center', justifyContent: 'center', gap: 16, padding: 24 }}>
-        <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
+        <Stack.Screen options={TASK_SCREEN} />
         {state === 'loading' ? (
           <ActivityIndicator color={colors.mint} />
         ) : (
@@ -62,7 +63,7 @@ export default function ScenarioBriefingRoute() {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#1F2937' }}>
-      <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
+      <Stack.Screen options={TASK_SCREEN} />
       {/* faded tone backdrop */}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: tone, opacity: 0.18 }} />
 

@@ -23,6 +23,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { playSfx } from '@/lib/sfx';
 import { t, useLocale } from '@/i18n';
+import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 
@@ -285,7 +286,7 @@ export default function DialogueRoute() {
 
   return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#1F2937' }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
+      <Stack.Screen options={TASK_SCREEN} />
 
       {/* room backdrop: peach (patient room) over cream (working area).
           Also the keyboard's escape hatch — a full-screen chat has nowhere
