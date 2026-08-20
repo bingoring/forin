@@ -133,6 +133,10 @@ export const ja: Record<string, string> = {
 
   'board.cleared': '完了',
   'board.remaining': '残り',
+  'board.resetLabel': 'リセットまで',
+  'board.resetHM': '{h}時間{m}分',
+  'board.resetM': '{m}分',
+  'board.resetSoon': 'まもなく',
   'board.all': 'すべて',
   'board.rewardsDone': '今日の報酬はすべて受け取りました',
   'board.watchAd': '広告を見て3件開く',

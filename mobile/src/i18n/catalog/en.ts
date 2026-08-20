@@ -134,6 +134,10 @@ export const en: Record<string, string> = {
 
   'board.cleared': 'Done',
   'board.remaining': 'Left',
+  'board.resetLabel': 'Resets in',
+  'board.resetHM': '{h}h {m}m',
+  'board.resetM': '{m}m',
+  'board.resetSoon': 'any moment',
   'board.all': 'All',
   'board.rewardsDone': "You have taken today's rewards",
   'board.watchAd': 'Watch an ad to open 3 more',

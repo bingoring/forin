@@ -133,6 +133,10 @@ export const de: Record<string, string> = {
 
   'board.cleared': 'Fertig',
   'board.remaining': 'Offen',
+  'board.resetLabel': 'Zurücksetzen in',
+  'board.resetHM': '{h} Std. {m} Min.',
+  'board.resetM': '{m} Min.',
+  'board.resetSoon': 'jeden Moment',
   'board.all': 'Alle',
   'board.rewardsDone': 'Du hast die heutigen Belohnungen abgeholt',
   'board.watchAd': 'Werbung ansehen und 3 weitere öffnen',

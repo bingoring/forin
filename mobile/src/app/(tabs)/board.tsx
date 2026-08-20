@@ -5,11 +5,12 @@
 // sections (colored header + count) of rich EventCards (urgency tag · room ·
 // difficulty meter · title · NPC · tagline · skill chips · time · action rail).
 // The summary + filter bar stay pinned at the top while the sections scroll.
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { resetLabel } from '@/data/boardReset';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 import { t, useLocale } from '@/i18n';
@@ -88,6 +89,20 @@ export default function Board() {
     }
   };
 
+  // Ticked while this tab is on screen, and only then: an interval that keeps running
+  // behind four other tabs is spending battery to keep a chip nobody is looking at
+  // current. Re-reading the clock on focus is what makes it right again on return.
+  const [now, setNow] = useState(() => new Date());
+  useFocusEffect(
+    useCallback(() => {
+      setNow(new Date());
+      // Half a minute for a chip that shows minutes: fine enough that it is never more
+      // than 30s stale, coarse enough to be free.
+      const id = setInterval(() => setNow(new Date()), 30_000);
+      return () => clearInterval(id);
+    }, []),
+  );
+
   useEffect(() => {
     let alive = true;
     // Personalized daily pool (weighted, per-user, resets 00:00 local); fall back
@@ -99,6 +114,8 @@ export default function Board() {
         .catch(() => { if (alive) setState('error'); }));
     return () => { alive = false; };
   }, []);
+
+  const reset = resetLabel(now);
 
   const byDept = useMemo(() => {
     const m: Record<string, BoardCard[]> = {};
@@ -141,12 +158,13 @@ export default function Board() {
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
               </View>
-              <Shadowed offset={2}>
-                <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 7, alignItems: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>새로고침</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>⏱ {nowTime()}</Text>
-                </View>
-              </Shadowed>
+              {/* Flat, not raised: this reports, it does not respond. The raised white box
+                  it used to sit in read as a button, which is half of why a static clock
+                  in it was confusing — the other half being that it was a static clock. */}
+              <View style={{ backgroundColor: '#ffffffcc', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 7, alignItems: 'center' }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>{t('board.resetLabel')}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t(reset.key, reset.params)}</Text>
+              </View>
             </View>
             <View style={{ flexDirection: 'row', gap: 6, marginTop: 10 }}>
               <Counter label="URGENT" value={urgent} accent="#EF4444" />
@@ -348,8 +366,4 @@ function monthDay(): string {
   const d = new Date();
   const mon = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()];
   return `${mon} ${d.getDate()}`;
-}
-function nowTime(): string {
-  const d = new Date();
-  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }

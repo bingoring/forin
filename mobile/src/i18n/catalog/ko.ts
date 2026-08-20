@@ -149,6 +149,10 @@ export const ko: Record<string, string> = {
   // ── board tab ────────────────────────────────────────────────────────────
   'board.cleared': '완료',
   'board.remaining': '남은',
+  'board.resetLabel': '초기화까지',
+  'board.resetHM': '{h}시간 {m}분',
+  'board.resetM': '{m}분',
+  'board.resetSoon': '곧',
   'board.all': '전체',
   'board.rewardsDone': '오늘의 보상을 다 받았어요',
   'board.watchAd': '광고 보고 새 상황 3건 열기',
