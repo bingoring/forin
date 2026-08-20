@@ -71,7 +71,12 @@ export default function Growth() {
       (async () => {
         try {
           const [p, s, c, me] = await Promise.all([
-            api.progress(), api.growthStats(), api.calendar(),
+            api.progress(), api.growthStats(),
+            // Caught, not awaited bare: GET /me/calendar is newer than some deployed
+            // servers, and a 404 here used to reject the whole Promise.all and put the
+            // screen into its error state — the report vanished because ONE optional
+            // panel could not load. An empty calendar is the correct degradation.
+            api.calendar().catch(() => ({ month: '', days: [] as CalendarDay[] })),
             api.me().catch(() => null),
           ]);
           if (!alive) return;

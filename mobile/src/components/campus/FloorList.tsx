@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, deptCodeOf } from '@/data/campus';
+import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, floorDeptCode } from '@/data/campus';
 import type { CurriculumBuilding, CurriculumFloor } from '@/api/client';
 import { Chip, CurriculumDots, Shadowed } from './parts';
 import { t } from '@/i18n';
@@ -80,7 +80,7 @@ function FloorRow({ floor, last, onOpenFloor }: {
   // curricula in the list and left the floor's other situations behind a second,
   // smaller link — so the two things you can do on a floor sat at different depths.
   // The sheet shows both: curricula first, then the situations, scrolling on.
-  const code = deptCodeOf(floor.curricula[0]?.steps?.[0]?.scenarioId);
+  const code = floorDeptCode(floor.curricula);
   // Strip the "본관 1F " prefix the server sends for the lift's benefit — the building
   // and floor are already the two rows above this one.
   const place = floor.curricula[0]?.where.replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where;

@@ -60,3 +60,36 @@ export function deptCodeOf(contentID?: string): string | undefined {
   const parts = contentID.split('-');
   return parts.length >= 3 ? parts[1] : undefined;
 }
+
+/**
+ * The department a FLOOR belongs to: the code most of its steps come from.
+ *
+ * Not the first step's code. 본관 1F opens with the three authored orientation
+ * scenarios (SCN-ORIENT-*), so reading the first step gave "ORIENT" — a bank that does
+ * not exist — and that floor's situation list came back empty while all 23 others
+ * worked. Counting over every step is right for the same reason it is obvious in
+ * hindsight: a floor is where most of its content is, not where its first step is.
+ *
+ * Ties break toward the code seen first, so a two-department floor answers the same way
+ * every time instead of flipping with iteration order.
+ */
+export function floorDeptCode(
+  curricula: { steps?: { scenarioId?: string }[] }[],
+): string | undefined {
+  const count = new Map<string, number>();
+  for (const c of curricula) {
+    for (const st of c.steps ?? []) {
+      const code = deptCodeOf(st.scenarioId);
+      if (code) count.set(code, (count.get(code) ?? 0) + 1);
+    }
+  }
+  let best: string | undefined;
+  let bestN = 0;
+  for (const [code, n] of count) {
+    if (n > bestN) {
+      best = code;
+      bestN = n;
+    }
+  }
+  return best;
+}
