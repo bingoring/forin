@@ -16,19 +16,23 @@ type ScreenOptions = Extract<NonNullable<ComponentProps<typeof Stack.Screen>['op
  * Screens you enter to DO something and then put away — briefing, role-play, quiz,
  * result, review, pronunciation.
  *
- * No transition at all, and that is the considered answer rather than an omission.
+ * A fade, quicker than the platform's.
  *
- * These screens are launched FROM the bottom sheet, which closes itself on the way out.
- * A cross-fade was wrong because nothing else in this app dissolves — 4px borders, flat
- * fills, pixel type, and one soft opacity ramp with no counterpart anywhere. But sliding
- * up from the bottom was wrong for a more specific reason: the sheet is travelling DOWN
- * that same axis at that same moment, so the two motions collide and the screen appears
- * to fight the thing that opened it. Cutting also happens to be how the games this looks
- * like change screens.
+ * The one thing that was definitely wrong here is gone: these screens are launched FROM
+ * the bottom sheet, which is travelling DOWN as they arrive, so a slide up from the
+ * bottom put two motions on the same axis pulling opposite ways and the screen appeared
+ * to fight the thing that opened it. A fade shares no axis with that, so it does not
+ * collide — what it needed was to stop lingering.
+ *
+ * animationDuration is milliseconds and iOS-only. The platform default is 500ms, of
+ * which a fade uses roughly 0.57 (RNSFadeOpenTransitionDurationProportion), so ~285ms of
+ * visible dissolve; 250 brings that to ~145ms. Android has no equivalent knob and keeps
+ * its own fade timing.
  */
 export const TASK_SCREEN: ScreenOptions = {
   headerShown: false,
-  animation: 'none',
+  animation: 'fade',
+  animationDuration: 250,
 };
 
 /**
