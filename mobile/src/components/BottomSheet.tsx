@@ -39,6 +39,22 @@ const EXPANDED_H = SCREEN_H * 0.9;
 const CLOSE_THRESHOLD = 90;
 /** Or flick faster than this. */
 const FLICK = 0.6;
+/**
+ * A flick only counts once the finger has actually travelled this far.
+ *
+ * Velocity alone made the sheet twitchy: a 20px jerk on the handle clears 0.6 easily,
+ * so the sheet pinned at the top would vanish on a movement the person read as "barely
+ * touched it". Distance OR velocity still dismisses — velocity just has to be going
+ * somewhere.
+ */
+const FLICK_MIN_DY = 40;
+/**
+ * Slack at the top detent, in points — roughly 2cm on a phone.
+ *
+ * From the expanded position a downward drag inside this range springs back to the top
+ * instead of leaving it. The top is a place you have to mean to leave.
+ */
+const SLACK_EXPANDED = 120;
 const SCRIM_MAX = 0.38;
 
 type Props = {
@@ -79,17 +95,41 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
   //
   // A ref rather than rebuilding the responder on every change: recreating it mid-drag
   // drops the gesture, and the handlers would be reinstalled while a finger is down.
-  const live = useRef({ restH, kbH, canExpand, onClose });
-  live.current = { restH, kbH, canExpand, onClose };
+  const live = useRef({ restH, kbH, canExpand, onClose, expanded });
+  live.current = { restH, kbH, canExpand, onClose, expanded };
 
+  // The sheet's visible height, animated.
+  //
+  // Expansion used to be a `maxHeight` SWITCH between two constants while the spring
+  // moved translateY a few rubber-banded pixels. So the only thing that actually
+  // changed on screen was a layout, instantly — the sheet appeared to teleport to the
+  // top no matter how the spring was tuned. The spring was animating the wrong
+  // property. Height is what changes, so height is what animates.
+  const h = useRef(new Animated.Value(COLLAPSED_MAX)).current;
+
+  // useNativeDriver is OFF, and has to be: height is a layout prop the native driver
+  // cannot touch, and a view may not mix a natively-driven prop with a JS-driven one.
+  // One sheet's transform on the JS driver is cheap; a teleporting sheet is not.
   const springTo = useCallback(
     (to: number, cb?: () => void) => {
-      Animated.spring(y, { toValue: to, useNativeDriver: true, damping: 22, stiffness: 240, mass: 0.7 }).start(
+      Animated.spring(y, { toValue: to, useNativeDriver: false, damping: 24, stiffness: 190, mass: 0.9 }).start(
         ({ finished }) => finished && cb?.()
       );
     },
     [y]
   );
+
+  // Height follows the detent. Slightly softer than the drag spring: it is travelling
+  // further, and a fast height change reads as a snap even when it is animated.
+  useEffect(() => {
+    Animated.spring(h, {
+      toValue: expanded && canExpand ? EXPANDED_H : collapsedH,
+      useNativeDriver: false,
+      damping: 26,
+      stiffness: 160,
+      mass: 1,
+    }).start();
+  }, [expanded, canExpand, collapsedH, h]);
 
   useEffect(() => {
     if (visible) {
@@ -157,18 +197,25 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
         y.setValue(g.dy > 0 ? g.dy : g.dy * 0.35);
       },
       onPanResponderRelease: (_e, g) => {
-        const { restH: rh, kbH: kb, canExpand: grow, onClose: done } = live.current;
-        // Thrown down → closed. Thrown up → pinned to the top. Velocity counts on its
-        // own so a short flick works: requiring distance would mean a fast, small
-        // gesture springs back, which reads as the sheet refusing to obey.
-        if (g.dy > CLOSE_THRESHOLD || g.vy > FLICK) {
+        const { restH: rh, kbH: kb, canExpand: grow, onClose: done, expanded: up } = live.current;
+        const flungDown = g.vy > FLICK && g.dy > FLICK_MIN_DY;
+        const flungUp = g.vy < -FLICK && g.dy < -FLICK_MIN_DY;
+
+        // From the top, down goes to the middle detent — not straight out. Two steps
+        // out of a sheet you deliberately expanded, with slack before the first one.
+        if (up) {
+          if (g.dy > SLACK_EXPANDED || flungDown) setExpanded(false);
+          springTo(0);
+          return;
+        }
+
+        if (g.dy > CLOSE_THRESHOLD || flungDown) {
           springTo(rh + kb, done);
           return;
         }
-        if (g.dy < -CLOSE_THRESHOLD / 2 || g.vy < -FLICK) {
-          // Only where the caller declared it can grow — `maxHeight` clamps onLayout, so
-          // a sheet that cannot expand would otherwise animate to a height it never
-          // reaches and sit there looking stuck.
+        if (g.dy < -CLOSE_THRESHOLD / 2 || flungUp) {
+          // Only where the caller declared it can grow: a sheet with nothing more to
+          // reveal would animate to a height it never fills and sit there looking stuck.
           if (grow) setExpanded(true);
         }
         springTo(0);
@@ -203,16 +250,12 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
       </Animated.View>
 
       <Animated.View
-        onLayout={(e: LayoutChangeEvent) => {
-          const h = e.nativeEvent.layout.height;
-          if (h > 0 && Math.abs(h - contentH) > 1) setContentH(h);
-        }}
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
           bottom: kbH,
-          maxHeight: expanded && canExpand ? EXPANDED_H : COLLAPSED_MAX,
+          maxHeight: h,
           backgroundColor: colors.paper,
           borderTopWidth: 4,
           borderTopColor: colors.ink,
@@ -228,6 +271,18 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
             time.
             The touch area is padded well past the 5px bar so it is grabbable without
             aiming — the bar is the sign, this View is the target. */}
+        {/* Measured here rather than on the sheet itself.
+            The sheet's height is animated now, so onLayout on the sheet reported the
+            in-flight animation value and fed it straight back into the collapsed height
+            it was animating towards. Measuring the CONTENT gives a number that does not
+            move while the sheet does, which is what "how tall does this sheet want to
+            be" always meant. */}
+        <View
+          onLayout={(e: LayoutChangeEvent) => {
+            const measured = e.nativeEvent.layout.height;
+            if (measured > 0 && Math.abs(measured - contentH) > 1) setContentH(measured);
+          }}
+        >
         <View
           {...pan.panHandlers}
           // hitSlop extends the touch target past the padding without moving the bar or
@@ -239,6 +294,7 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
           <View style={{ width: 52, height: 5, backgroundColor: colors.ink + '55' }} />
         </View>
         {children}
+        </View>
       </Animated.View>
       </View>
     </Modal>

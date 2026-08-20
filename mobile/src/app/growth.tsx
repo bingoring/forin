@@ -59,7 +59,10 @@ export default function Growth() {
   // The calendar is the report's new opening: it answers when and what, which the
   // counters never did. Month is what the SERVER answered with, so paging cannot drift
   // from what is drawn.
-  const [cal, setCal] = useState<{ month: string; days: CalendarDay[] }>({ month: '', days: [] });
+  // null means the calendar could not be loaded at all — deliberately NOT the same value
+  // as a month with no study in it. Collapsing the two is what produced the report the
+  // user saw: a full grid of pale, dead cells that looked like data and answered nothing.
+  const [cal, setCal] = useState<{ month: string; days: CalendarDay[] } | null>(null);
   const [pickedDay, setPickedDay] = useState<string | null>(null);
   const [job, setJob] = useState<string | undefined>(undefined);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -72,11 +75,12 @@ export default function Growth() {
         try {
           const [p, s, c, me] = await Promise.all([
             api.progress(), api.growthStats(),
-            // Caught, not awaited bare: GET /me/calendar is newer than some deployed
+            // Caught, not awaited bare: GET /me/calendar is newer than some running
             // servers, and a 404 here used to reject the whole Promise.all and put the
             // screen into its error state — the report vanished because ONE optional
-            // panel could not load. An empty calendar is the correct degradation.
-            api.calendar().catch(() => ({ month: '', days: [] as CalendarDay[] })),
+            // panel could not load. Degrading to null keeps the rest of the report while
+            // letting the panel say what happened.
+            api.calendar().catch(() => null),
             api.me().catch(() => null),
           ]);
           if (!alive) return;
@@ -99,14 +103,19 @@ export default function Growth() {
   // the next month locally and then trusting it would drift the moment the server
   // clamps or normalises the range.
   const shiftMonth = async (delta: number) => {
-    const [y, m] = (cal.month || monthNow()).split('-').map(Number);
+    const [y, m] = (cal?.month || monthNow()).split('-').map(Number);
     const d = new Date(y, m - 1 + delta, 1);
     const next = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    // A failed page used to be swallowed, so the arrows looked broken rather than
+    // unavailable — the same silence that made the first load unreadable.
     const got = await api.calendar(next).catch(() => null);
-    if (got) {
-      setCal(got);
-      setPickedDay(null);
-    }
+    setCal(got);
+    setPickedDay(null);
+  };
+
+  const reloadCalendar = async () => {
+    setCal(await api.calendar().catch(() => null));
+    setPickedDay(null);
   };
 
   // today's date + weekday, and the current-week attendance from the server's
@@ -159,6 +168,15 @@ export default function Growth() {
               and it had no answer here before. */}
           <Shadowed offset={4}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
+              {!cal ? (
+                <View style={{ paddingVertical: 22, alignItems: 'center', gap: 10 }}>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.textSoft, textAlign: 'center', lineHeight: 17 }}>
+                    {t('growth.calendarUnavailable')}
+                  </Text>
+                  <PixelButton label={t('common.retry')} bg="#fff" shadowColor={C} borderWidth={2} paddingV={7} paddingH={14} fontSize={11} onPress={() => void reloadCalendar()} />
+                </View>
+              ) : (
+                <>
               <ActivityCalendar
                 month={cal.month || monthNow()}
                 days={cal.days}
@@ -167,6 +185,13 @@ export default function Growth() {
                 onSelect={setPickedDay}
                 onMonth={(d) => void shiftMonth(d)}
               />
+              {cal.days.length === 0 && (
+                /* An empty grid needs to say it is empty. Without this the month reads
+                   as a loading failure, which is exactly how it was read. */
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textFaint, textAlign: 'center', marginTop: 9 }}>
+                  {t('growth.calendarEmpty')}
+                </Text>
+              )}
               {(() => {
                 const day = cal.days.find((x) => x.date === pickedDay);
                 return day ? (
@@ -179,6 +204,8 @@ export default function Growth() {
                   />
                 ) : null;
               })()}
+                </>
+              )}
             </View>
           </Shadowed>
 

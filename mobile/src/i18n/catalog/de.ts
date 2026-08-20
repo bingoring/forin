@@ -10,6 +10,8 @@ export const de: Record<string, string> = {
   'common.loading': 'Wird geladen …',
   'common.streakDays': '{n} Tage in Folge',
   'common.level': 'Lv.{level}',
+  'growth.calendarUnavailable': 'Die Daten dieses Monats konnten nicht geladen werden.',
+  'growth.calendarEmpty': 'In diesem Monat noch nichts gelernt.',
   'info.what': 'Was ist das?',
   'info.how': 'Wie bekommt man das?',
 

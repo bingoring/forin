@@ -24,8 +24,11 @@ it('has a handle that actually drags, and closes on a downward fling', () => {
   const onClose = jest.fn();
   // Native-driver springs never finish under jest; stand in so the decision is visible.
   const spring = jest.spyOn(Animated, 'spring').mockImplementation(
-    (() => ({
-      start: (cb?: (r: { finished: boolean }) => void) => cb?.({ finished: true }),
+    ((v: Animated.Value, cfg: { toValue: number }) => ({
+      start: (cb?: (r: { finished: boolean }) => void) => {
+        v.setValue(cfg.toValue);
+        cb?.({ finished: true });
+      },
       stop: () => {},
     })) as never
   );
@@ -37,12 +40,12 @@ it('has a handle that actually drags, and closes on a downward fling', () => {
     const nodes = draggables(tree.root);
     expect(nodes).toHaveLength(1);
 
-    const pan = panDriver(nodes[0].props);
+    // 160px, delivered slowly: past the distance threshold with no reliance on velocity.
+    const pan = panDriver(nodes[0].props, { frameMs: 400 });
     act(() => {
       pan.down();
     });
-    act(() => pan.move(12));
-    act(() => pan.move(12));
+    for (let i = 0; i < 4; i++) act(() => pan.move(40));
     act(() => pan.up());
     expect(onClose).toHaveBeenCalled();
   } finally {

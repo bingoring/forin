@@ -10,6 +10,8 @@ export const ja: Record<string, string> = {
   'common.loading': '読み込み中です。',
   'common.streakDays': '{n}日連続',
   'common.level': 'Lv.{level}',
+  'growth.calendarUnavailable': 'この月の記録を読み込めませんでした。',
+  'growth.calendarEmpty': 'この月はまだ学習記録がありません。',
   'info.what': 'これは何ですか？',
   'info.how': 'どうすれば手に入りますか？',
 

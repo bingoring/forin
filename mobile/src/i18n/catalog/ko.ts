@@ -15,6 +15,8 @@ export const ko: Record<string, string> = {
   'common.loading': '불러오는 중이에요.',
   'common.streakDays': '{n}일 연속',
   'common.level': 'Lv.{level}',
+  'growth.calendarUnavailable': '이 달의 기록을 불러오지 못했어요.',
+  'growth.calendarEmpty': '이 달에는 아직 학습 기록이 없어요.',
   'info.what': '무엇인가요?',
   'info.how': '어떻게 얻나요?',
 

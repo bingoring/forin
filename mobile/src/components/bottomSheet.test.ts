@@ -30,19 +30,18 @@ test('the grabber claims the gesture on touch start', () => {
   expect(SRC).toMatch(/onStartShouldSetPanResponder: \(\) => true/);
 });
 
-// A fling has to work on velocity alone. Requiring distance means a fast, small flick
-// springs back, which reads as the sheet refusing to obey.
-test('release reacts to velocity as well as distance, in both directions', () => {
-  expect(SRC).toMatch(/g\.dy > CLOSE_THRESHOLD \|\| g\.vy > FLICK/);
-  expect(SRC).toMatch(/g\.dy < -CLOSE_THRESHOLD \/ 2 \|\| g\.vy < -FLICK/);
-});
+// Release semantics — which gesture dismisses, which is slack, which detent it lands on
+// — are asserted by driving real gestures in bottomSheet.render.test.tsx. They used to be
+// matched as source patterns here, which pinned the spelling of a condition rather than
+// its behaviour: the patterns broke the moment the thresholds gained a travel gate, while
+// saying nothing about whether the gate worked.
 
 // The handlers close over the first render's values because the responder is built in a
 // useRef. Reading them through a ref that is refreshed each render is what keeps the
 // close animation travelling the right distance once the keyboard is up.
 test('the release handler reads live values, not the first render', () => {
-  expect(SRC).toMatch(/live\.current = \{ restH, kbH, canExpand, onClose \}/);
-  expect(SRC).toMatch(/const \{ restH: rh, kbH: kb, canExpand: grow, onClose: done \} = live\.current/);
+  expect(SRC).toMatch(/live\.current = \{ restH, kbH, canExpand, onClose, expanded \}/);
+  expect(SRC).toMatch(/= live\.current;/);
 });
 
 
