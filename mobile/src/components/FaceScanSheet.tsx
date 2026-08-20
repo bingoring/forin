@@ -9,7 +9,7 @@
 // and the resize writes another; both are deleted in a finally block, so an early
 // return or a decode failure cannot leave an image of someone's face on disk.
 import { useRef, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { deleteAsync } from 'expo-file-system/legacy';
 import { BottomSheet } from '@/components/BottomSheet';
 import { PixelButton } from '@/components/PixelButton';
@@ -166,9 +166,6 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
           />
         )}
 
-        <Pressable onPress={onClose} hitSlop={8} style={{ alignItems: 'center', paddingVertical: 4 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft }}>{t('common.cancel')}</Text>
-        </Pressable>
       </View>
     </BottomSheet>
   );

@@ -68,6 +68,20 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
   const dragStart = useRef(0);
   const [kbH, setKbH] = useState(0);
 
+  // Everything the gesture reads, refreshed every render.
+  //
+  // The PanResponder is built once in a useRef, so its handlers close over the FIRST
+  // render's values — restH was the pre-measurement default, kbH was 0, and onClose was
+  // whatever the caller passed initially. The close animation therefore travelled the
+  // wrong distance once the keyboard was up or the content had measured. It was survivable
+  // while the whole sheet was draggable and mostly closed by other means; now that the
+  // handle is the only way to move the sheet, the gesture has to read live values.
+  //
+  // A ref rather than rebuilding the responder on every change: recreating it mid-drag
+  // drops the gesture, and the handlers would be reinstalled while a finger is down.
+  const live = useRef({ restH, kbH, canExpand, onClose });
+  live.current = { restH, kbH, canExpand, onClose };
+
   const springTo = useCallback(
     (to: number, cb?: () => void) => {
       Animated.spring(y, { toValue: to, useNativeDriver: true, damping: 22, stiffness: 240, mass: 0.7 }).start(
@@ -129,13 +143,20 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
         y.setValue(g.dy > 0 ? g.dy : g.dy * 0.35);
       },
       onPanResponderRelease: (_e, g) => {
-        const dismiss = g.dy > CLOSE_THRESHOLD || g.vy > FLICK;
-        const grow = g.dy < -CLOSE_THRESHOLD / 2 || g.vy < -FLICK;
-        if (dismiss) {
-          springTo(restH + kbH, onClose);
+        const { restH: rh, kbH: kb, canExpand: grow, onClose: done } = live.current;
+        // Thrown down → closed. Thrown up → pinned to the top. Velocity counts on its
+        // own so a short flick works: requiring distance would mean a fast, small
+        // gesture springs back, which reads as the sheet refusing to obey.
+        if (g.dy > CLOSE_THRESHOLD || g.vy > FLICK) {
+          springTo(rh + kb, done);
           return;
         }
-        if (grow) setExpanded(true);
+        if (g.dy < -CLOSE_THRESHOLD / 2 || g.vy < -FLICK) {
+          // Only where the caller declared it can grow — `maxHeight` clamps onLayout, so
+          // a sheet that cannot expand would otherwise animate to a height it never
+          // reaches and sit there looking stuck.
+          if (grow) setExpanded(true);
+        }
         springTo(0);
       },
       onPanResponderTerminate: () => springTo(0),
@@ -168,7 +189,6 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
       </Animated.View>
 
       <Animated.View
-        {...pan.panHandlers}
         onLayout={(e: LayoutChangeEvent) => {
           const h = e.nativeEvent.layout.height;
           if (h > 0 && Math.abs(h - contentH) > 1) setContentH(h);
@@ -185,10 +205,20 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
           transform: [{ translateY: y }],
         }}
       >
-        {/* The grabber. Was decoration before — now it is the affordance the
-            gesture is attached to (the whole sheet responds, this just shows it). */}
-        <View style={{ paddingTop: 10, paddingBottom: 4, alignItems: 'center' }}>
-          <View style={{ width: 44, height: 5, backgroundColor: colors.ink + '33' }} />
+        {/* The grabber, and the ONLY thing the drag is attached to.
+            The handlers used to sit on the whole sheet, which meant any vertical
+            movement inside it — including scrolling a list — was claimed as a sheet
+            drag once it passed 6px. Scrolling a long situation list dragged the sheet
+            up and down with it. A gesture that competes with scrolling is a gesture in
+            the wrong place: the sheet moves when you grab its handle, and at no other
+            time.
+            The touch area is padded well past the 5px bar so it is grabbable without
+            aiming — the bar is the sign, this View is the target. */}
+        <View
+          {...pan.panHandlers}
+          style={{ paddingTop: 12, paddingBottom: 10, alignItems: 'center' }}
+        >
+          <View style={{ width: 52, height: 5, backgroundColor: colors.ink + '55' }} />
         </View>
         {children}
       </Animated.View>

@@ -9,6 +9,10 @@
 // expands in place to show its steps. In place, not in another modal: a RN Modal over a
 // Modal leaves the lower one's scrim across the screen.
 //
+// No close button. The handle above and a tap outside both dismiss it, and by now those
+// are the two things people try first — a third affordance for the same action just took
+// up the corner where the day's numbers belong.
+//
 // Situations come from GET /me/situations (paged, tagged by cleared). The bundled
 // fallback list this sheet used to fall back on is gone: its entries named scenarios
 // they did not point at (흉통 환자 트리아지 → SCN-ER-00002, a pain assessment), the
@@ -104,9 +108,6 @@ export function DeptSheet({ target, onClose, onStart, onWalk }: {
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{target.place}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{target.where}</Text>
               </View>
-              <Pressable onPress={onClose} hitSlop={8} style={{ width: 24, height: 24, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <PixelIcon name="x" color={C} size={12} sw={2} />
-              </Pressable>
             </View>
           </View>
 
