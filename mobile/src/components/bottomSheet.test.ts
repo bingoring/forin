@@ -76,3 +76,27 @@ test('every sheet component is built on this one', () => {
     .filter((p) => !readFileSync(p, 'utf8').includes("from '@/components/BottomSheet'"));
   expect(offenders).toEqual([]);
 });
+
+// Nothing inside the responder config may close over a per-render value.
+//
+// The config is built once, in a useRef, and Fast Refresh preserves ref state — so
+// whatever the handlers captured at mount is what a running app keeps calling. That is
+// not theoretical: springTo was captured directly, and switching its driver from JS to
+// native left the app with an open effect that made the value native and a release
+// handler still animating it with the JS driver. The drag threw as soon as it finished.
+// Everything the handlers need arrives through `live.current`, which is refreshed every
+// render, and this is the check that it stays that way.
+test('the gesture handlers capture nothing from the render scope', () => {
+  const open = SRC.indexOf('PanResponder.create({');
+  expect(open).toBeGreaterThan(-1);
+  const block = SRC.slice(open, SRC.indexOf('  ).current;', open));
+
+  // Names defined per render that the handlers must not reach for directly.
+  for (const name of ['springTo', 'restH', 'kbH', 'onClose', 'offscreenY', 'contentH']) {
+    const bare = new RegExp(`(?<!live\\.current\\.)(?<!: )\\b${name}\\b(?!:)`, 'g');
+    const hits = (block.match(bare) ?? []).filter((h) => h.length > 0);
+    expect({ name, hits: hits.length }).toEqual({ name, hits: 0 });
+  }
+  // And it does read the ref, so the loop above is not passing over an empty block.
+  expect(block).toMatch(/live\.current/);
+});

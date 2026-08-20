@@ -138,20 +138,6 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
   const [kbH, setKbH] = useState(0);
   const offscreenY = restH + kbH;
 
-  // Everything the gesture reads, refreshed every render.
-  //
-  // The PanResponder is built once in a useRef, so its handlers close over the FIRST
-  // render's values — restH was the pre-measurement default, kbH was 0, and onClose was
-  // whatever the caller passed initially. The close animation therefore travelled the
-  // wrong distance once the keyboard was up or the content had measured. It was survivable
-  // while the whole sheet was draggable and mostly closed by other means; now that the
-  // handle is the only way to move the sheet, the gesture has to read live values.
-  //
-  // A ref rather than rebuilding the responder on every change: recreating it mid-drag
-  // drops the gesture, and the handlers would be reinstalled while a finger is down.
-  const live = useRef({ restH, kbH, tall, onClose });
-  live.current = { restH, kbH, tall, onClose };
-
   // On the native driver, and that is the point.
   //
   // A JS-driven spring advances on the JS thread, which is exactly the thread that is
@@ -173,6 +159,27 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
     },
     [y]
   );
+
+  // Everything the gesture reads, refreshed every render.
+  //
+  // The PanResponder is built once in a useRef, so its handlers close over the FIRST
+  // render's values — restH was the pre-measurement default, kbH was 0, and onClose was
+  // whatever the caller passed initially. The close animation therefore travelled the
+  // wrong distance once the keyboard was up or the content had measured. It was survivable
+  // while the whole sheet was draggable and mostly closed by other means; now that the
+  // handle is the only way to move the sheet, the gesture has to read live values.
+  //
+  // A ref rather than rebuilding the responder on every change: recreating it mid-drag
+  // drops the gesture, and the handlers would be reinstalled while a finger is down.
+  //
+  // springTo goes through here too, and that is not decoration. It used to be called
+  // directly from the handlers, which means the frozen responder held whichever version
+  // of it existed at mount. Change the driver from JS to native and a running app ends up
+  // with an open effect that makes the value native and a release handler that still
+  // animates it with the JS driver — which throws. Nothing the responder touches may be
+  // captured; this ref is the whole reason it works.
+  const live = useRef({ restH, kbH, tall, onClose, springTo });
+  live.current = { restH, kbH, tall, onClose, springTo };
 
   // Is the sheet logically open — opened by someone and not yet dismissed?
   //
@@ -277,7 +284,7 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
         y.setValue(g.dy > 0 ? g.dy : g.dy * 0.35);
       },
       onPanResponderRelease: (_e, g) => {
-        const { restH: rh, kbH: kb, tall: isTall, onClose: done } = live.current;
+        const { restH: rh, kbH: kb, tall: isTall, onClose: done, springTo: spring } = live.current;
         const flungDown = g.vy > FLICK && g.dy > FLICK_MIN_DY;
         // How far it has to be hauled down to count as leaving. A tall sheet is measured
         // against the middle of the screen; a content sheet against a short nudge, since
@@ -285,14 +292,14 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
         const leaveAt = isTall ? TALL_CLOSE_TRAVEL : CLOSE_THRESHOLD;
 
         if (g.dy > leaveAt || flungDown) {
-          springTo(rh + kb, done);
+          spring(rh + kb, done);
           return;
         }
         // Anything short of that returns to where it was — including a haul most of the
         // way down, which is the point of measuring against the midpoint.
-        springTo(0);
+        spring(0);
       },
-      onPanResponderTerminate: () => springTo(0),
+      onPanResponderTerminate: () => live.current.springTo(0),
     })
   ).current;
 
