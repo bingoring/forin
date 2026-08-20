@@ -160,6 +160,36 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
     [y]
   );
 
+  /**
+   * Animate out and report the dismissal — whatever happens to the animation.
+   *
+   * The decision was made when the finger left the glass; the animation is how it looks,
+   * not whether it happened. Reporting it only from a completion callback that only runs
+   * on `finished` made every way of losing that callback — an interruption, an exception
+   * thrown mid-flight — leave the sheet logically OPEN and parked offscreen. That state is
+   * unrecoverable from the outside: the caller still thinks the sheet is up, so opening it
+   * again changes no prop the sheet watches, and nothing the user can do brings it back.
+   * A dismissal must not be able to go missing.
+   */
+  const dismiss = useCallback(
+    (to: number, done: () => void) => {
+      let fired = false;
+      const fire = () => {
+        if (fired) return;
+        fired = true;
+        done();
+      };
+      const watchdog = setTimeout(fire, 600);
+      Animated.spring(y, { toValue: to, useNativeDriver: true, damping: 24, stiffness: 190, mass: 0.9 }).start(
+        () => {
+          clearTimeout(watchdog);
+          fire();
+        }
+      );
+    },
+    [y]
+  );
+
   // Everything the gesture reads, refreshed every render.
   //
   // The PanResponder is built once in a useRef, so its handlers close over the FIRST
@@ -178,8 +208,8 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
   // with an open effect that makes the value native and a release handler that still
   // animates it with the JS driver — which throws. Nothing the responder touches may be
   // captured; this ref is the whole reason it works.
-  const live = useRef({ restH, kbH, tall, onClose, springTo });
-  live.current = { restH, kbH, tall, onClose, springTo };
+  const live = useRef({ restH, kbH, tall, onClose, springTo, dismiss });
+  live.current = { restH, kbH, tall, onClose, springTo, dismiss };
 
   // Is the sheet logically open — opened by someone and not yet dismissed?
   //
@@ -243,8 +273,8 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
 
   const close = useCallback(() => {
     Keyboard.dismiss();
-    springTo(restH + kbH, onClose);
-  }, [springTo, restH, kbH, onClose]);
+    dismiss(restH + kbH, onClose);
+  }, [dismiss, restH, kbH, onClose]);
 
   // The backdrop dismisses the KEYBOARD first when it is up. Closing the whole
   // sheet on that tap is what silently discarded half-written messages.
@@ -284,7 +314,7 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
         y.setValue(g.dy > 0 ? g.dy : g.dy * 0.35);
       },
       onPanResponderRelease: (_e, g) => {
-        const { restH: rh, kbH: kb, tall: isTall, onClose: done, springTo: spring } = live.current;
+        const { restH: rh, kbH: kb, tall: isTall, onClose: done, springTo: spring, dismiss: leave } = live.current;
         const flungDown = g.vy > FLICK && g.dy > FLICK_MIN_DY;
         // How far it has to be hauled down to count as leaving. A tall sheet is measured
         // against the middle of the screen; a content sheet against a short nudge, since
@@ -292,7 +322,7 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
         const leaveAt = isTall ? TALL_CLOSE_TRAVEL : CLOSE_THRESHOLD;
 
         if (g.dy > leaveAt || flungDown) {
-          spring(rh + kb, done);
+          leave(rh + kb, done);
           return;
         }
         // Anything short of that returns to where it was — including a haul most of the

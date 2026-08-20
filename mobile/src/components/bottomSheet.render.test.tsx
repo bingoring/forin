@@ -372,3 +372,46 @@ describe('entering', () => {
     }
   });
 });
+
+describe('a dismissal cannot go missing', () => {
+  /** A spring that starts and never reports back — an interruption, or a throw mid-flight. */
+  function silentSprings() {
+    return jest.spyOn(Animated, 'spring').mockImplementation(
+      (() => ({ start: () => {}, stop: () => {} })) as never
+    );
+  }
+
+  it('closes even when the animation never completes', () => {
+    // The state this prevents is worse than a missing animation: the caller still thinks
+    // the sheet is up, so re-opening it changes no prop the sheet watches, and the sheet
+    // sits parked offscreen with no gesture or tap able to bring it back.
+    const spring = silentSprings();
+    const onClose = jest.fn();
+    try {
+      drag(mount(onClose), 160, 400);
+      expect(onClose).not.toHaveBeenCalled(); // the animation is still notionally running
+      act(() => {
+        jest.advanceTimersByTime(700);
+      });
+      expect(onClose).toHaveBeenCalledTimes(1);
+    } finally {
+      spring.mockRestore();
+    }
+  });
+
+  it('reports it exactly once when the animation does complete', () => {
+    const spring = instantSprings();
+    const onClose = jest.fn();
+    try {
+      drag(mount(onClose), 160, 400);
+      expect(onClose).toHaveBeenCalledTimes(1);
+      // The watchdog must not fire a second time behind the completed animation.
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+      expect(onClose).toHaveBeenCalledTimes(1);
+    } finally {
+      spring.mockRestore();
+    }
+  });
+});
