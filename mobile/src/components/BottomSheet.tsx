@@ -128,6 +128,15 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
     close();
   }, [kbH, close]);
 
+  // WARNING — editing anything inside this config does NOT take effect on a running app.
+  // PanResponder.create() runs once, inside a useRef, and Fast Refresh preserves ref
+  // state: a mounted sheet keeps driving the responder built when it first mounted. This
+  // cost three rounds of debugging a gesture that was already fixed in source and had
+  // never once run on the device. The spread of `panHandlers` onto an element IS a normal
+  // prop and does refresh, which makes the situation especially misleading — the handlers
+  // move, their behaviour does not. Reload the app fully (not Fast Refresh) after touching
+  // this block. The ref itself is correct for production, where the config never changes;
+  // everything mutable is read through `live.current` for exactly that reason.
   const pan = useRef(
     PanResponder.create({
       // Claim the touch the instant it lands. The grabber is a dedicated strip: nothing
