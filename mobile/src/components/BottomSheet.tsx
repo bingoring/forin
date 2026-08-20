@@ -126,9 +126,17 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
   // content IS the point should already be where you were going.
   const restH = tall ? TALL_H : Math.min(contentH || CONTENT_MAX, CONTENT_MAX);
 
-  // translateY is measured from "resting at restH", so 0 = shown, restH = gone.
-  const y = useRef(new Animated.Value(SCREEN_H)).current;
+  // translateY is measured from "resting at restH", so 0 = shown and restH = gone.
+  //
+  // `gone` is exactly restH: at that offset the sheet's top edge sits on the screen's
+  // bottom edge, flush, with nothing of it showing. It used to be parked a further 8% of
+  // the screen below that, which made the first stretch of every entry a move nobody
+  // could see — the sheet looked like it started partway up because that is where it
+  // first became visible. It is also where closing leaves it, so there is one offscreen
+  // position rather than two.
+  const y = useRef(new Animated.Value(restH)).current;
   const [kbH, setKbH] = useState(0);
+  const offscreenY = restH + kbH;
 
   // Everything the gesture reads, refreshed every render.
   //
@@ -144,13 +152,22 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
   const live = useRef({ restH, kbH, tall, onClose });
   live.current = { restH, kbH, tall, onClose };
 
-  // useNativeDriver stays OFF. With a single resting height nothing layout-driven
-  // animates any more, so the transform could go native — but that path has never been
-  // watched on a device here, and one sheet's transform on the JS driver is cheap. Not a
-  // change to make blind.
+  // On the native driver, and that is the point.
+  //
+  // A JS-driven spring advances on the JS thread, which is exactly the thread that is
+  // busy mounting a floor's worth of content at the moment the sheet opens. The frames
+  // are not rendered but its clock still runs, so the first frame that DID render was
+  // already well along and the sheet seemed to pop into view partway up. Waiting for
+  // layout shrank that; it could not remove it, because the contention is after layout.
+  // On the UI thread the travel is unaffected by whatever JS is doing.
+  //
+  // Possible now only because a single resting height means nothing layout-driven
+  // animates: `height` is a constant and the two animated props — this transform and the
+  // scrim's opacity — are both native-capable. A view may not mix the two drivers, which
+  // is why the height animation ruled this out before.
   const springTo = useCallback(
     (to: number, cb?: () => void) => {
-      Animated.spring(y, { toValue: to, useNativeDriver: false, damping: 24, stiffness: 190, mass: 0.9 }).start(
+      Animated.spring(y, { toValue: to, useNativeDriver: true, damping: 24, stiffness: 190, mass: 0.9 }).start(
         ({ finished }) => finished && cb?.()
       );
     },
@@ -170,13 +187,16 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
   const beginEntry = useCallback(() => {
     if (!pendingOpen.current) return;
     pendingOpen.current = false;
-    springTo(0);
+    // One frame after layout. Layout is not paint — the same lesson the elevator
+    // transition records — and travelling from a position that has not been drawn yet
+    // spends the first stretch of the trip on an empty stage.
+    requestAnimationFrame(() => springTo(0));
   }, [springTo]);
 
   useEffect(() => {
     if (!visible) {
       openedRef.current = false;
-      y.setValue(SCREEN_H);
+      y.setValue(offscreenY);
       return;
     }
     if (suspended) return; // covered: leave the position and the detent exactly as they are
@@ -185,7 +205,7 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
       return;
     }
     openedRef.current = true;
-    y.setValue(SCREEN_H);
+    y.setValue(offscreenY);
     // Parked offscreen, and it stays there until the content has actually laid out.
     //
     // Starting the spring here instead is why the sheet seemed to appear a quarter of the
@@ -199,7 +219,7 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
     // for a mounted view, so this is a floor, not a schedule.
     const fallback = setTimeout(() => beginEntry(), 250);
     return () => clearTimeout(fallback);
-  }, [visible, suspended, beginEntry, y]);
+  }, [visible, suspended, beginEntry, offscreenY, y]);
 
   // Lift the sheet above the keyboard instead of letting it cover the input —
   // the reason the cheer sheet's text field was unusable.

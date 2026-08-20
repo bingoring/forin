@@ -62,13 +62,22 @@ function mount(onClose = () => {}, size: 'content' | 'tall' = 'content') {
   return tree;
 }
 
-/** Tell the sheet its content has laid out, the way the platform would. */
+// Fake timers throughout: the entry waits a frame after layout, and requestAnimationFrame
+// is timer-backed here, so without them nothing would ever set off.
+beforeEach(() => jest.useFakeTimers());
+afterEach(() => jest.useRealTimers());
+
+/** Tell the sheet its content has laid out, the way the platform would, and let the
+ *  one-frame beat that follows elapse. */
 function reportLayout(tree: ReturnType<typeof create>, height = 400) {
   const node = tree.root.findAll(
     (n) => typeof n.type === 'string' && typeof n.props?.onLayout === 'function',
     { deep: true }
   )[0];
   act(() => node.props.onLayout({ nativeEvent: { layout: { height, width: 320, x: 0, y: 0 } } }));
+  act(() => {
+    jest.advanceTimersByTime(32);
+  });
 }
 
 /** Drag the grabber by `total` px, delivered in `steps` frames of `frameMs`. */
@@ -301,7 +310,6 @@ describe('entering', () => {
 
   it('travels anyway if layout never reports', () => {
     // Waiting must not be able to strand the sheet offscreen.
-    jest.useFakeTimers();
     const spring = instantSprings();
     try {
       mount(() => {}, 'tall');
@@ -312,7 +320,43 @@ describe('entering', () => {
       expect(entries(spring)).toBe(1);
     } finally {
       spring.mockRestore();
-      jest.useRealTimers();
+    }
+  });
+
+  it('animates on the UI thread', () => {
+    // Load-bearing, not a preference. A JS-driven spring advances on the thread that is
+    // busy mounting the sheet's content, so its frames are skipped while its clock runs
+    // and the first frame drawn is already partway along. It is only possible because a
+    // single resting height means no layout property animates.
+    const spring = instantSprings();
+    try {
+      reportLayout(mount(() => {}, 'tall'));
+      expect(spring.mock.calls.length).toBeGreaterThan(0);
+      for (const [, cfg] of spring.mock.calls) {
+        expect((cfg as { useNativeDriver: boolean }).useNativeDriver).toBe(true);
+      }
+    } finally {
+      spring.mockRestore();
+    }
+  });
+
+  it('starts flush with the bottom edge, not below it', () => {
+    // The entry used to be parked a further 8% of the screen down, so the first stretch of
+    // travel happened where nobody could see it and the sheet appeared to start partway
+    // up. Flush means the first visible pixel of motion is also the first pixel of motion.
+    const spring = instantSprings();
+    const setValue = jest.spyOn(Animated.Value.prototype, 'setValue');
+    try {
+      const tree = mount(() => {}, 'tall');
+      const parked = setValue.mock.calls.map(([v]) => v as number);
+      // TALL_H, exactly: top edge on the screen's bottom edge. Anything larger is below it.
+      expect(Math.max(...parked)).toBeCloseTo(SCREEN_H * 0.92, 0);
+      expect(Math.max(...parked)).toBeLessThan(SCREEN_H);
+      reportLayout(tree);
+      expect(entries(spring)).toBe(1);
+    } finally {
+      setValue.mockRestore();
+      spring.mockRestore();
     }
   });
 
