@@ -63,9 +63,18 @@ type Props = {
   children: React.ReactNode;
   /** False for short sheets that have nothing more to reveal when dragged up. */
   expandable?: boolean;
+  /**
+   * Covered by a pushed screen — still open, just not on screen.
+   *
+   * Distinct from `visible: false`, which means dismissed. A RN Modal renders above
+   * whatever screen is pushed on top of the caller, so a sheet that stays mounted hides
+   * the screen it just opened; the caller sets this instead of throwing the sheet away,
+   * and the difference is what lets the way back land where you left.
+   */
+  suspended?: boolean;
 };
 
-export function BottomSheet({ visible, onClose, children, expandable = true }: Props) {
+export function BottomSheet({ visible, onClose, children, expandable = true, suspended = false }: Props) {
   // Measured once the content lays out; until then the sheet sits offscreen so
   // it never flashes at the wrong height.
   const [contentH, setContentH] = useState(0);
@@ -131,14 +140,30 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
     }).start();
   }, [expanded, canExpand, collapsedH, h]);
 
+  // Is the sheet logically open — opened by someone and not yet dismissed?
+  //
+  // Separate from whether it is on screen, because being covered is not being closed.
+  // Sliding up again on the way back is a lie about what happened: nothing was dismissed,
+  // a screen was simply taken off the top. It also announces itself for no reason, which
+  // is what it looked like.
+  const openedRef = useRef(false);
+
   useEffect(() => {
-    if (visible) {
-      setExpanded(false);
-      springTo(0);
-    } else {
+    if (!visible) {
+      openedRef.current = false;
       y.setValue(SCREEN_H);
+      return;
     }
-  }, [visible, springTo, y]);
+    if (suspended) return; // covered: leave the position and the detent exactly as they are
+    if (openedRef.current) {
+      y.setValue(0); // uncovered — already open, so just be there
+      return;
+    }
+    openedRef.current = true;
+    setExpanded(false);
+    y.setValue(SCREEN_H);
+    springTo(0);
+  }, [visible, suspended, springTo, y]);
 
   // Lift the sheet above the keyboard instead of letting it cover the input —
   // the reason the cheer sheet's text field was unusable.
@@ -224,7 +249,7 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
     })
   ).current;
 
-  if (!visible) return null;
+  if (!visible || suspended) return null;
 
   return (
     // Hosted in a Modal rather than an absolute overlay in the caller's tree:

@@ -98,7 +98,7 @@ export function DeptSheet({ target, suspended, onClose, onStart, onWalk }: {
   const curDone = target ? target.curricula.filter((c) => c.state === 'done').length : 0;
 
   return (
-    <BottomSheet visible={!!target && !suspended} onClose={onClose} expandable>
+    <BottomSheet visible={!!target} suspended={suspended} onClose={onClose} expandable>
       {target && (
         <View>
           <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 4, paddingHorizontal: 14, paddingBottom: 11 }}>

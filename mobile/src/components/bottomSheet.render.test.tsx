@@ -195,3 +195,71 @@ describe('the expanded detent', () => {
     }
   });
 });
+
+describe('being covered is not being closed', () => {
+  /** Entry animations are the springs aimed at the resting position. */
+  const entries = (spring: jest.SpyInstance) =>
+    spring.mock.calls.filter(([, cfg]) => (cfg as { toValue: number }).toValue === 0).length;
+
+  it('slides up when opened, and is simply there when uncovered', () => {
+    const spring = instantSprings();
+    const setValue = jest.spyOn(Animated.Value.prototype, 'setValue');
+    try {
+      let tree!: ReturnType<typeof create>;
+      const render = (suspended: boolean) =>
+        act(() => {
+          const el = (
+            <BottomSheet visible suspended={suspended} onClose={() => {}}>
+              <Text>content</Text>
+            </BottomSheet>
+          );
+          if (tree) tree.update(el);
+          else tree = create(el);
+        });
+
+      render(false);
+      const onOpen = entries(spring);
+      expect(onOpen).toBeGreaterThan(0); // opening is an arrival and animates
+
+      render(true); // a screen was pushed on top
+      expect(draggables(tree.root)).toHaveLength(0);
+
+      setValue.mockClear();
+      render(false); // that screen went away
+      expect(draggables(tree.root)).toHaveLength(1);
+      // No new arrival: sliding up again would claim it had been dismissed and would
+      // announce itself on the way back from a screen the person just declined.
+      expect(entries(spring)).toBe(onOpen);
+      expect(setValue).toHaveBeenCalledWith(0);
+    } finally {
+      setValue.mockRestore();
+      spring.mockRestore();
+    }
+  });
+
+  it('does animate in again after a real dismissal', () => {
+    // The counterpart: without this, a sheet that never animates at all would pass above.
+    const spring = instantSprings();
+    try {
+      let tree!: ReturnType<typeof create>;
+      const render = (visible: boolean) =>
+        act(() => {
+          const el = (
+            <BottomSheet visible={visible} onClose={() => {}}>
+              <Text>content</Text>
+            </BottomSheet>
+          );
+          if (tree) tree.update(el);
+          else tree = create(el);
+        });
+
+      render(true);
+      const first = entries(spring);
+      render(false);
+      render(true);
+      expect(entries(spring)).toBeGreaterThan(first);
+    } finally {
+      spring.mockRestore();
+    }
+  });
+});
