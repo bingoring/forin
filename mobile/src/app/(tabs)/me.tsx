@@ -563,7 +563,7 @@ export default function Me() {
 
       {/* 앱 언어 고르기. 번역 완성도를 계산값 그대로 보여준다(R8·R9) — 부분 번역을
           완전한 것처럼 제시하지 않기 위해서다. */}
-      <BottomSheet visible={langOpen} onClose={() => setLangOpen(false)} expandable={false}>
+      <BottomSheet visible={langOpen} onClose={() => setLangOpen(false)}>
         <View style={{ padding: 14 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginBottom: 4 }}>{t('settings.language.pickTitle')}</Text>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginBottom: 12, lineHeight: 15 }}>{t('settings.language.pickNote')}</Text>

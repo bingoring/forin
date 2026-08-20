@@ -40,7 +40,11 @@ test('the grabber claims the gesture on touch start', () => {
 // useRef. Reading them through a ref that is refreshed each render is what keeps the
 // close animation travelling the right distance once the keyboard is up.
 test('the release handler reads live values, not the first render', () => {
-  expect(SRC).toMatch(/live\.current = \{ restH, kbH, canExpand, onClose, expanded \}/);
+  // Deliberately not pinning the member list: which values the gesture needs changes as
+  // the sheet does, and a test that spells them out breaks on every such change while
+  // saying nothing about the property that matters — that they are refreshed per render
+  // and read at release time rather than captured once.
+  expect(SRC).toMatch(/live\.current = \{[^}]+\};/);
   expect(SRC).toMatch(/= live\.current;/);
 });
 

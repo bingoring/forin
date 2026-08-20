@@ -46,7 +46,7 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
   };
 
   return (
-    <BottomSheet visible={visible} onClose={close} expandable={false}>
+    <BottomSheet visible={visible} onClose={close}>
       <View style={{ paddingHorizontal: 16, paddingTop: 4, paddingBottom: 24 }}>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>

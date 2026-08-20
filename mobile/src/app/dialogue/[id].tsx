@@ -548,7 +548,7 @@ export default function DialogueRoute() {
       {/* 이어하기 — 이전 대화가 있으면 세션을 열기 전에 먼저 묻는다. 마지막
           대사를 보여줘서 무엇을 이어받는지 알고 고르게 한다(닫기로 회피할 수
           없다: 아직 세션이 없으므로 둘 중 하나를 반드시 골라야 한다). */}
-      <BottomSheet visible={!!resumable} onClose={() => { void startFresh(); }} expandable={false}>
+      <BottomSheet visible={!!resumable} onClose={() => { void startFresh(); }}>
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <PixelIcon name="note" color={C} size={17} sw={1.8} />
@@ -578,7 +578,7 @@ export default function DialogueRoute() {
 
       {/* 긴급 호출 — 이탈에 서사를 붙인다. 나가는 것은 같지만, 대화를 버리는
           것이 아니라 자리를 비우는 것이라고 말한다(기록은 남는다). */}
-      <BottomSheet visible={pagedOut} onClose={() => setPagedOut(false)} expandable={false}>
+      <BottomSheet visible={pagedOut} onClose={() => setPagedOut(false)}>
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
             <PixelIcon name="alert" color={C} size={18} sw={1.9} />

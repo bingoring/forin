@@ -115,7 +115,7 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
   const CameraView = native?.camera.CameraView;
 
   return (
-    <BottomSheet visible={visible} onClose={onClose} expandable={false}>
+    <BottomSheet visible={visible} onClose={onClose}>
       <View style={{ padding: 14, gap: 12 }}>
         <View>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('avatar.scanTitle')}</Text>

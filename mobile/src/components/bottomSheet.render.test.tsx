@@ -4,10 +4,12 @@
 // wired. Everything about how the sheet BEHAVES lives here: which gestures dismiss it,
 // which ones are treated as slack, and which detent it lands on. Those are the things
 // that were wrong on the device, and a string match cannot see any of them.
-import { Animated, Text } from 'react-native';
+import { Animated, Dimensions, Text } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { BottomSheet } from '@/components/BottomSheet';
 import { panDriver } from '@/testing/panDriver';
+
+const SCREEN_H = Dimensions.get('window').height;
 
 /** Host nodes carrying pan handlers. Composite wrappers pass the same props down, so
  *  filtering to string types is what keeps the count honest. */
@@ -18,13 +20,15 @@ function draggables(root: ReactTestInstance): ReactTestInstance[] {
   );
 }
 
-/** The sheet's animated height cap — the observable form of "which detent is it on". */
-function detentHeight(root: ReactTestInstance): number {
+/** The sheet's resting height — the observable form of "how big did it open". */
+function restingHeight(root: ReactTestInstance): number {
   const node = root.findAll(
-    (n) => typeof n.type === 'string' && typeof n.props?.style?.maxHeight === 'number',
+    (n) =>
+      typeof n.type === 'string' &&
+      (typeof n.props?.style?.height === 'number' || typeof n.props?.style?.maxHeight === 'number'),
     { deep: true }
   )[0];
-  return node.props.style.maxHeight;
+  return node.props.style.height ?? node.props.style.maxHeight;
 }
 
 /**
@@ -46,11 +50,11 @@ function instantSprings() {
   );
 }
 
-function mount(onClose = () => {}, expandable = true) {
+function mount(onClose = () => {}, size: 'content' | 'tall' = 'content') {
   let tree!: ReturnType<typeof create>;
   act(() => {
     tree = create(
-      <BottomSheet visible onClose={onClose} expandable={expandable}>
+      <BottomSheet visible onClose={onClose} size={size}>
         <Text>content</Text>
       </BottomSheet>
     );
@@ -142,54 +146,53 @@ describe('dismissing from the collapsed detent', () => {
   });
 });
 
-describe('the expanded detent', () => {
-  /** Fling up, then confirm the sheet actually grew. */
-  function expand(onClose = () => {}) {
-    const tree = mount(onClose);
-    const collapsed = detentHeight(tree.root);
-    drag(tree, -160, 16);
-    const grown = detentHeight(tree.root);
-    expect(grown).toBeGreaterThan(collapsed);
-    return { tree, collapsed, grown };
-  }
-
-  it('expands smoothly by animating height, not by switching it', () => {
+describe('a tall sheet', () => {
+  it('opens at the top rather than partway', () => {
+    // The floor sheet's content IS the point: a middle stop showed a slice of a long
+    // list and asked for a second gesture to see the rest.
     const spring = instantSprings();
     try {
-      const { grown } = expand();
-      // Height reaching the taller detent through Animated.spring is what makes the
-      // expansion a motion at all: as a plain style switch it was an instant layout
-      // change, and the sheet appeared to teleport however the spring was tuned.
-      const heightSprings = spring.mock.calls.filter(([, cfg]) => (cfg as { toValue: number }).toValue === grown);
-      expect(heightSprings.length).toBeGreaterThan(0);
-      expect((heightSprings[0][1] as { useNativeDriver: boolean }).useNativeDriver).toBe(false);
+      const content = restingHeight(mount(() => {}, 'content').root);
+      const tall = restingHeight(mount(() => {}, 'tall').root);
+      expect(tall).toBeGreaterThan(content);
+      // Not flush to the top: pinned there, tapping outside — one of the two exits people
+      // already reach for — has no outside left to tap.
+      expect(tall).toBeLessThan(SCREEN_H);
     } finally {
       spring.mockRestore();
     }
   });
 
-  it('springs back to the top when nudged down within the slack', () => {
+  it('springs back to the top from most of the way down', () => {
     const spring = instantSprings();
     const onClose = jest.fn();
     try {
-      const { tree, grown } = expand(onClose);
-      drag(tree, 90, 400); // ~1.5cm, slowly: inside the slack
+      // Well past the 90px that dismisses a content sheet, and still nowhere near the
+      // middle of the screen. On a tall sheet that is a haul, not a decision.
+      drag(mount(onClose, 'tall'), SCREEN_H * 0.3, 400);
       expect(onClose).not.toHaveBeenCalled();
-      expect(detentHeight(tree.root)).toBe(grown); // still pinned to the top
     } finally {
       spring.mockRestore();
     }
   });
 
-  it('steps down to the collapsed detent past the slack, without closing', () => {
+  it('closes once its top edge is dragged past the middle of the screen', () => {
     const spring = instantSprings();
     const onClose = jest.fn();
     try {
-      const { tree, collapsed } = expand(onClose);
-      drag(tree, 200, 400); // past the slack
-      // Two steps out of a sheet you deliberately expanded: the first one is not the exit.
-      expect(onClose).not.toHaveBeenCalled();
-      expect(detentHeight(tree.root)).toBe(collapsed);
+      drag(mount(onClose, 'tall'), SCREEN_H * 0.55, 400);
+      expect(onClose).toHaveBeenCalled();
+    } finally {
+      spring.mockRestore();
+    }
+  });
+
+  it('still closes on a flick, without the haul', () => {
+    const spring = instantSprings();
+    const onClose = jest.fn();
+    try {
+      drag(mount(onClose, 'tall'), 80, 16); // 80px at 1px/ms
+      expect(onClose).toHaveBeenCalled();
     } finally {
       spring.mockRestore();
     }

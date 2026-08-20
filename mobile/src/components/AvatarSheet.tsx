@@ -25,7 +25,7 @@ export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; on
   const avatar = useAvatar();
 
   return (
-    <BottomSheet visible={visible} onClose={onClose} expandable>
+    <BottomSheet visible={visible} onClose={onClose} size="tall">
       <View>
         {/* Live preview pinned above the controls: every tap changes this face, and a
             preview you have to scroll to is a preview nobody uses. */}

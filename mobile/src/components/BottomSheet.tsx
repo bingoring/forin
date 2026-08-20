@@ -33,11 +33,18 @@ import { colors } from '@/theme/tokens';
 import { useSheetOverlay } from '@/components/SheetOverlay';
 
 const SCREEN_H = Dimensions.get('window').height;
-/** Collapsed sheets never take more than this much of the screen. */
-const COLLAPSED_MAX = SCREEN_H * 0.6;
-/** Expanded snap — leaves the status bar and a sliver of context visible. */
-const EXPANDED_H = SCREEN_H * 0.9;
-/** Drag further than this and the gesture is a dismiss, not a nudge. */
+/** A content-sized sheet never takes more than this much of the screen. */
+const CONTENT_MAX = SCREEN_H * 0.6;
+/**
+ * How tall a `tall` sheet is.
+ *
+ * Not the whole screen on purpose. Pinned flush to the top there is no "outside" left to
+ * tap, and tapping outside is one of the two ways out that people already reach for. The
+ * strip that remains is what keeps that exit, and reads the sheet as a sheet rather than
+ * as a screen.
+ */
+const TALL_H = SCREEN_H * 0.92;
+/** Drag a content-sized sheet further than this and the gesture is a dismiss. */
 const CLOSE_THRESHOLD = 90;
 /** Or flick faster than this. */
 const FLICK = 0.6;
@@ -51,20 +58,36 @@ const FLICK = 0.6;
  */
 const FLICK_MIN_DY = 40;
 /**
- * Slack at the top detent, in points — roughly 2cm on a phone.
+ * A tall sheet closes once its top edge has been dragged past the middle of the screen.
  *
- * From the expanded position a downward drag inside this range springs back to the top
- * instead of leaving it. The top is a place you have to mean to leave.
+ * Half the screen of slack, rather than the ~2cm a fixed threshold gave: the top is
+ * where a tall sheet lives, so leaving it should take a deliberate haul, and the halfway
+ * line is a target you can see without measuring. Expressed as the distance the sheet has
+ * to travel for its top edge to reach the midpoint, because that is the rule — the number
+ * is just where this height puts it.
  */
-const SLACK_EXPANDED = 120;
+const TALL_CLOSE_TRAVEL = TALL_H - SCREEN_H / 2;
 const SCRIM_MAX = 0.38;
+
+/** What the sheet is for, which decides how tall it opens and how hard it is to leave. */
+export type SheetSize = 'content' | 'tall';
 
 type Props = {
   visible: boolean;
   onClose: () => void;
   children: React.ReactNode;
-  /** False for short sheets that have nothing more to reveal when dragged up. */
-  expandable?: boolean;
+  /**
+   * How much room the sheet asks for, and therefore how it behaves.
+   *
+   * `content` hugs its content up to 60% of the screen and closes on a short downward
+   * drag. Right for a sheet you glance at and dismiss — a message box, a detail card.
+   *
+   * `tall` opens at the top and stays there. There is no middle detent to stop at, and it
+   * takes a drag past the middle of the screen to close. Right where the content is the
+   * point rather than a summary: stopping such a sheet halfway shows a fraction of a long
+   * list and asks for a second gesture to see the rest.
+   */
+  size?: SheetSize;
   /**
    * Covered by a pushed screen — still open, just not on screen.
    *
@@ -89,23 +112,22 @@ type Props = {
   overlay?: boolean;
 };
 
-export function BottomSheet({ visible, onClose, children, expandable = true, suspended = false, overlay = false }: Props) {
+export function BottomSheet({ visible, onClose, children, size = 'content', suspended = false, overlay = false }: Props) {
   // Measured once the content lays out; until then the sheet sits offscreen so
   // it never flashes at the wrong height.
   const [contentH, setContentH] = useState(0);
-  const [expanded, setExpanded] = useState(false);
+  const tall = size === 'tall';
 
-  const collapsedH = Math.min(contentH || COLLAPSED_MAX, COLLAPSED_MAX);
-  // Trust the caller rather than the measurement: the sheet clamps its own
-  // height with maxHeight, so onLayout can never report a content taller than
-  // the collapsed cap — deriving "is there more to reveal" from it would always
-  // say no for exactly the long lists that need expanding.
-  const canExpand = expandable;
-  const restH = expanded && canExpand ? EXPANDED_H : collapsedH;
+  // One resting height per sheet, decided by the caller.
+  //
+  // There used to be two — a content-sized detent and a taller one you dragged up to —
+  // and that middle stop is what made the floor sheet awkward: it opened showing a
+  // fraction of a long list and asked for a second gesture to see the rest. A sheet whose
+  // content IS the point should already be where you were going.
+  const restH = tall ? TALL_H : Math.min(contentH || CONTENT_MAX, CONTENT_MAX);
 
   // translateY is measured from "resting at restH", so 0 = shown, restH = gone.
   const y = useRef(new Animated.Value(SCREEN_H)).current;
-  const dragStart = useRef(0);
   const [kbH, setKbH] = useState(0);
 
   // Everything the gesture reads, refreshed every render.
@@ -119,21 +141,13 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
   //
   // A ref rather than rebuilding the responder on every change: recreating it mid-drag
   // drops the gesture, and the handlers would be reinstalled while a finger is down.
-  const live = useRef({ restH, kbH, canExpand, onClose, expanded });
-  live.current = { restH, kbH, canExpand, onClose, expanded };
+  const live = useRef({ restH, kbH, tall, onClose });
+  live.current = { restH, kbH, tall, onClose };
 
-  // The sheet's visible height, animated.
-  //
-  // Expansion used to be a `maxHeight` SWITCH between two constants while the spring
-  // moved translateY a few rubber-banded pixels. So the only thing that actually
-  // changed on screen was a layout, instantly — the sheet appeared to teleport to the
-  // top no matter how the spring was tuned. The spring was animating the wrong
-  // property. Height is what changes, so height is what animates.
-  const h = useRef(new Animated.Value(COLLAPSED_MAX)).current;
-
-  // useNativeDriver is OFF, and has to be: height is a layout prop the native driver
-  // cannot touch, and a view may not mix a natively-driven prop with a JS-driven one.
-  // One sheet's transform on the JS driver is cheap; a teleporting sheet is not.
+  // useNativeDriver stays OFF. With a single resting height nothing layout-driven
+  // animates any more, so the transform could go native — but that path has never been
+  // watched on a device here, and one sheet's transform on the JS driver is cheap. Not a
+  // change to make blind.
   const springTo = useCallback(
     (to: number, cb?: () => void) => {
       Animated.spring(y, { toValue: to, useNativeDriver: false, damping: 24, stiffness: 190, mass: 0.9 }).start(
@@ -142,18 +156,6 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
     },
     [y]
   );
-
-  // Height follows the detent. Slightly softer than the drag spring: it is travelling
-  // further, and a fast height change reads as a snap even when it is animated.
-  useEffect(() => {
-    Animated.spring(h, {
-      toValue: expanded && canExpand ? EXPANDED_H : collapsedH,
-      useNativeDriver: false,
-      damping: 26,
-      stiffness: 160,
-      mass: 1,
-    }).start();
-  }, [expanded, canExpand, collapsedH, h]);
 
   // Is the sheet logically open — opened by someone and not yet dismissed?
   //
@@ -175,7 +177,6 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
       return;
     }
     openedRef.current = true;
-    setExpanded(false);
     y.setValue(SCREEN_H);
     springTo(0);
   }, [visible, suspended, springTo, y]);
@@ -228,7 +229,6 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
       // be a drag: only vertical movement is ours, so a horizontal swipe is left alone.
       onMoveShouldSetPanResponder: (_e, g) => Math.abs(g.dy) > 6 && Math.abs(g.dy) > Math.abs(g.dx),
       onPanResponderGrant: () => {
-        dragStart.current = 0;
         y.setValue(0);
       },
       onPanResponderMove: (_e, g) => {
@@ -237,27 +237,19 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
         y.setValue(g.dy > 0 ? g.dy : g.dy * 0.35);
       },
       onPanResponderRelease: (_e, g) => {
-        const { restH: rh, kbH: kb, canExpand: grow, onClose: done, expanded: up } = live.current;
+        const { restH: rh, kbH: kb, tall: isTall, onClose: done } = live.current;
         const flungDown = g.vy > FLICK && g.dy > FLICK_MIN_DY;
-        const flungUp = g.vy < -FLICK && g.dy < -FLICK_MIN_DY;
+        // How far it has to be hauled down to count as leaving. A tall sheet is measured
+        // against the middle of the screen; a content sheet against a short nudge, since
+        // it is a glance-and-dismiss surface and its whole height may be less than that.
+        const leaveAt = isTall ? TALL_CLOSE_TRAVEL : CLOSE_THRESHOLD;
 
-        // From the top, down goes to the middle detent — not straight out. Two steps
-        // out of a sheet you deliberately expanded, with slack before the first one.
-        if (up) {
-          if (g.dy > SLACK_EXPANDED || flungDown) setExpanded(false);
-          springTo(0);
-          return;
-        }
-
-        if (g.dy > CLOSE_THRESHOLD || flungDown) {
+        if (g.dy > leaveAt || flungDown) {
           springTo(rh + kb, done);
           return;
         }
-        if (g.dy < -CLOSE_THRESHOLD / 2 || flungUp) {
-          // Only where the caller declared it can grow: a sheet with nothing more to
-          // reveal would animate to a height it never fills and sit there looking stuck.
-          if (grow) setExpanded(true);
-        }
+        // Anything short of that returns to where it was — including a haul most of the
+        // way down, which is the point of measuring against the midpoint.
         springTo(0);
       },
       onPanResponderTerminate: () => springTo(0),
@@ -291,7 +283,11 @@ export function BottomSheet({ visible, onClose, children, expandable = true, sus
           left: 0,
           right: 0,
           bottom: kbH,
-          maxHeight: h,
+          // Straight off restH, not a second copy of the same constant. Writing the
+          // rendered height and the height the gesture measures against as two separate
+          // expressions let them disagree — and a test that read only the rendered one
+          // passed while the drag was measuring the wrong sheet.
+          ...(tall ? { height: restH } : { maxHeight: CONTENT_MAX }),
           backgroundColor: colors.paper,
           borderTopWidth: 4,
           borderTopColor: colors.ink,

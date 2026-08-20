@@ -32,9 +32,9 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
   // Re-render when the app language changes; the body strings below are translated.
   useLocale();
   return (
-    // Not expandable: this sheet says everything it has to say at rest, so a drag
-    // upward has nothing to reveal and would just leave it stuck taller.
-    <BottomSheet visible={!!data} onClose={onClose} expandable={false}>
+    // Content-sized: this sheet says everything it has to say at rest, so opening it at
+    // the top would be mostly empty paper.
+    <BottomSheet visible={!!data} onClose={onClose}>
       <View style={{ backgroundColor: colors.cream, padding: 20, paddingBottom: 36, gap: 14 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
           <View style={{ width: 64, height: 64, backgroundColor: data?.iconBg || '#fff', borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
