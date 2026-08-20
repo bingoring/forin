@@ -164,6 +164,14 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
   // a screen was simply taken off the top. It also announces itself for no reason, which
   // is what it looked like.
   const openedRef = useRef(false);
+  /** Opened, offscreen, waiting for the content to exist before it travels. */
+  const pendingOpen = useRef(false);
+
+  const beginEntry = useCallback(() => {
+    if (!pendingOpen.current) return;
+    pendingOpen.current = false;
+    springTo(0);
+  }, [springTo]);
 
   useEffect(() => {
     if (!visible) {
@@ -178,8 +186,20 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
     }
     openedRef.current = true;
     y.setValue(SCREEN_H);
-    springTo(0);
-  }, [visible, suspended, springTo, y]);
+    // Parked offscreen, and it stays there until the content has actually laid out.
+    //
+    // Starting the spring here instead is why the sheet seemed to appear a quarter of the
+    // way up and rise from there: the animation began immediately while the content — a
+    // whole floor's worth of curricula and situations — was still mounting. The spring's
+    // clock does not wait, so by the time there was anything to see it had already
+    // travelled. Nothing was skipping; the first quarter of the trip was played to an
+    // empty stage.
+    pendingOpen.current = true;
+    // If layout never arrives the sheet must not be stranded offscreen. It always does
+    // for a mounted view, so this is a floor, not a schedule.
+    const fallback = setTimeout(() => beginEntry(), 250);
+    return () => clearTimeout(fallback);
+  }, [visible, suspended, beginEntry, y]);
 
   // Lift the sheet above the keyboard instead of letting it cover the input —
   // the reason the cheer sheet's text field was unusable.
@@ -313,6 +333,9 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
           onLayout={(e: LayoutChangeEvent) => {
             const measured = e.nativeEvent.layout.height;
             if (measured > 0 && Math.abs(measured - contentH) > 1) setContentH(measured);
+            // The content exists now, so the sheet can travel. Also the moment a
+            // content-sized sheet learns how tall it is, which is the same moment.
+            beginEntry();
           }}
         >
         <View

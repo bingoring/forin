@@ -62,6 +62,15 @@ function mount(onClose = () => {}, size: 'content' | 'tall' = 'content') {
   return tree;
 }
 
+/** Tell the sheet its content has laid out, the way the platform would. */
+function reportLayout(tree: ReturnType<typeof create>, height = 400) {
+  const node = tree.root.findAll(
+    (n) => typeof n.type === 'string' && typeof n.props?.onLayout === 'function',
+    { deep: true }
+  )[0];
+  act(() => node.props.onLayout({ nativeEvent: { layout: { height, width: 320, x: 0, y: 0 } } }));
+}
+
 /** Drag the grabber by `total` px, delivered in `steps` frames of `frameMs`. */
 function drag(tree: ReturnType<typeof create>, total: number, frameMs = 16, steps = 4) {
   const pan = panDriver(draggables(tree.root)[0].props, { frameMs });
@@ -221,6 +230,7 @@ describe('being covered is not being closed', () => {
         });
 
       render(false);
+      reportLayout(tree);
       const onOpen = entries(spring);
       expect(onOpen).toBeGreaterThan(0); // opening is an arrival and animates
 
@@ -257,10 +267,62 @@ describe('being covered is not being closed', () => {
         });
 
       render(true);
+      reportLayout(tree);
       const first = entries(spring);
       render(false);
       render(true);
+      reportLayout(tree);
       expect(entries(spring)).toBeGreaterThan(first);
+    } finally {
+      spring.mockRestore();
+    }
+  });
+});
+
+describe('entering', () => {
+  const entries = (spring: jest.SpyInstance) =>
+    spring.mock.calls.filter(([, cfg]) => (cfg as { toValue: number }).toValue === 0).length;
+
+  it('waits offscreen until the content exists before travelling', () => {
+    // The bug this pins: the spring started the moment the sheet opened, while a floor's
+    // worth of content was still mounting. Its clock does not wait, so the sheet seemed to
+    // appear a quarter of the way up — the first stretch of the trip had been played to an
+    // empty stage.
+    const spring = instantSprings();
+    try {
+      const tree = mount(() => {}, 'tall');
+      expect(entries(spring)).toBe(0);
+      reportLayout(tree);
+      expect(entries(spring)).toBe(1);
+    } finally {
+      spring.mockRestore();
+    }
+  });
+
+  it('travels anyway if layout never reports', () => {
+    // Waiting must not be able to strand the sheet offscreen.
+    jest.useFakeTimers();
+    const spring = instantSprings();
+    try {
+      mount(() => {}, 'tall');
+      expect(entries(spring)).toBe(0);
+      act(() => {
+        jest.advanceTimersByTime(400);
+      });
+      expect(entries(spring)).toBe(1);
+    } finally {
+      spring.mockRestore();
+      jest.useRealTimers();
+    }
+  });
+
+  it('does not travel twice when layout reports more than once', () => {
+    const spring = instantSprings();
+    try {
+      const tree = mount(() => {}, 'content');
+      reportLayout(tree, 300);
+      reportLayout(tree, 320); // content settling, not a second opening
+      expect(entries(spring)).toBe(1);
     } finally {
       spring.mockRestore();
     }
