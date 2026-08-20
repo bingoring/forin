@@ -30,9 +30,20 @@ export default function Campus() {
   const [streak, setStreak] = useState(0);
   const [buildings, setBuildings] = useState<CurriculumBuilding[]>([]);
   const [dept, setDept] = useState<DeptTarget | null>(null);
+  // The sheet is HIDDEN while a pushed screen is on top — not thrown away.
+  //
+  // A RN Modal renders above the pushed screen, so an open sheet would cover the
+  // briefing we just opened. The fix for that was to clear `dept` on the way out, which
+  // solved the covering and broke the way back: coming out of a briefing you did not
+  // want left you at the building list, having to pick the floor again to see the list
+  // you were reading a second ago. Keeping the subject and hiding the view means back
+  // lands where you left.
+  const [away, setAway] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
+      // Regaining focus means the pushed screen is gone, so the sheet can come back.
+      setAway(false);
       let alive = true;
       Promise.all([
         api.progress().catch(() => null),
@@ -133,13 +144,13 @@ export default function Campus() {
         </Shadowed>
       </View>
 
-      {/* Sheets close before navigating: a RN Modal renders above the pushed screen,
-          so leaving one open would hide the scenario we just opened. */}
       <DeptSheet
         target={dept}
-        onClose={() => setDept(null)}
-        onStart={(scn) => { setDept(null); open(scn); }}
-        onWalk={(code) => { setDept(null); router.push(`/interior/INT-${code}-00001`); }}
+        suspended={away}
+        // Closing is the user's decision and forgets the floor. Navigating is not.
+        onClose={() => { setDept(null); setAway(false); }}
+        onStart={(scn) => { setAway(true); open(scn); }}
+        onWalk={(code) => { setAway(true); router.push(`/interior/INT-${code}-00001`); }}
       />
     </View>
   );
