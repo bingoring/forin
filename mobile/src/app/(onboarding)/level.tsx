@@ -9,6 +9,7 @@ import { api } from '@/api/client';
 import { clearDraft, loadDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { PressCard } from '@/components/PressCard';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
 import { t, useLocale } from '@/i18n';
@@ -86,8 +87,13 @@ export default function Level() {
           {LEVELS.map((l) => {
             const sel = level === l.code;
             return (
-              <Shadowed key={l.code} offset={sel ? 3 : 0} shadowColor={colors.mintShadow}>
-                <Pressable onPress={() => setLevel(l.code)} style={{ backgroundColor: sel ? l.tone : '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <PressCard
+                key={l.code}
+                selected={sel}
+                onPress={() => setLevel(l.code)}
+                shadowColor={colors.mintShadow}
+                contentStyle={{ backgroundColor: sel ? l.tone : '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}
+              >
                   <View style={{ width: 36, height: 36, backgroundColor: l.tone, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{l.code}</Text>
                   </View>
@@ -97,11 +103,10 @@ export default function Level() {
                   </View>
                   {sel && (
                     <View style={{ width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>✓</Text>
+                      <PixelIcon name="check" color={C} size={12} sw={2.2} />
                     </View>
                   )}
-                </Pressable>
-              </Shadowed>
+              </PressCard>
             );
           })}
         </View>

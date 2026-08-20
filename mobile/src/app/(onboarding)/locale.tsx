@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
+import { PixelIcon } from '@/components/PixelIcon';
+import { PressCard } from '@/components/PressCard';
 import { FLAGS } from '@/components/onboardingArt';
 import { loadDraft, saveDraft } from '@/lib/onboardingDraft';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -101,17 +103,26 @@ function LocaleCard({ flag, name, sub, note, disabled, selected, onPress }: {
 }) {
   const Flag = FLAGS[flag];
   return (
-    <Shadowed offset={selected ? 4 : disabled ? 0 : 3} shadowColor={selected ? colors.mintShadow : C + '33'} style={{ width: '45%', flexGrow: 1 }}>
-      <Pressable
-        onPress={onPress}
-        disabled={disabled}
-        style={{ backgroundColor: selected ? colors.mint : disabled ? colors.paper : '#fff', borderWidth: 3, borderColor: disabled ? C + '55' : C, paddingVertical: 14, paddingHorizontal: 12, opacity: disabled ? 0.6 : 1 }}
-      >
+    <PressCard
+      selected={selected}
+      disabled={disabled}
+      onPress={onPress}
+      shadowColor={selected ? colors.mintShadow : C + '33'}
+      style={{ width: '45%', flexGrow: 1 }}
+      contentStyle={{
+        backgroundColor: selected ? colors.mint : disabled ? colors.paper : '#fff',
+        borderWidth: 3,
+        borderColor: disabled ? C + '55' : C,
+        paddingVertical: 14,
+        paddingHorizontal: 12,
+        opacity: disabled ? 0.6 : 1,
+      }}
+    >
         <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
           {Flag ? <Flag size={38} /> : null}
           {selected && (
             <View style={{ marginLeft: 'auto', width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>✓</Text>
+              <PixelIcon name="check" color={C} size={12} sw={2.2} />
             </View>
           )}
         </View>
@@ -122,15 +133,18 @@ function LocaleCard({ flag, name, sub, note, disabled, selected, onPress }: {
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{note}</Text>
           </View>
         )}
-      </Pressable>
-    </Shadowed>
+    </PressCard>
   );
 }
 
 export function OnbTopBar({ title, step, onBack }: { title: string; step: string; onBack: () => void }) {
   return (
     <View style={{ paddingTop: 52, paddingHorizontal: 18, paddingBottom: 6, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-      <Pressable onPress={onBack} hitSlop={10}><Text style={{ fontFamily: fonts.heading, fontSize: fs(20), color: C }}>‹</Text></Pressable>
+      {/* An icon, not a ‹. The app replaced its glyph arrows with drawn ones so they
+          share the line weight of everything else; this one was left behind. */}
+      <Pressable onPress={onBack} hitSlop={10} style={{ width: 28 }}>
+        <PixelIcon name="chevron-left" color={C} size={18} sw={2} />
+      </Pressable>
       <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{title}</Text>
       <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, width: 28, textAlign: 'right' }}>{step}</Text>
     </View>
