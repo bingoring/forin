@@ -55,3 +55,42 @@ describe('typographic stand-ins for icons stay capped', () => {
     expect(onb.filter((f) => countGlyphs(f) > 0)).toEqual([]);
   });
 });
+
+// The same rule, applied to the catalogs.
+//
+// This is where the onboarding heading's ⇨ was hiding: a decoration baked into the
+// translated string, so it rendered in the pixel font at the type's weight rather than the
+// icon set's, and every locale carried its own copy of it. The area scan above could not
+// see it — it only reads src/app and src/components.
+//
+// A glyph at the EDGE of a label is doing an icon's job; the ones in ALWAYS are never
+// punctuation wherever they sit. Interior signage (map_*) is excluded for the same reason
+// as before: an arrow painted on a wall is content. A middot between two words is
+// punctuation and is not counted at all.
+const CATALOG_CEILING = 100;
+
+const EDGE_GLYPH = '‹›✓✗≡▶◀●○★☆✕✔→←↑↓⇨⇦➔➜»«';
+const ALWAYS_GLYPH = '‹›●▶◀⇨⇦✓✗✔✕';
+
+test(`catalog labels carry at most ${CATALOG_CEILING} glyph decorations`, () => {
+  const dir = join(__dirname, '..', 'i18n', 'catalog');
+  const files = readdirSync(dir).filter((f) => f.endsWith('.ts') && !f.startsWith('map_'));
+  expect(files.length).toBeGreaterThanOrEqual(4);
+
+  let total = 0;
+  for (const f of files) {
+    const src = readFileSync(join(dir, f), 'utf8');
+    for (const m of src.matchAll(/:\s*'((?:[^'\\]|\\.)*)'|:\s*"((?:[^"\\]|\\.)*)"/g)) {
+      const v = (m[1] ?? m[2] ?? '').trim();
+      if (!v) continue;
+      const edged = EDGE_GLYPH.includes(v[0]) || EDGE_GLYPH.includes(v[v.length - 1]);
+      const always = [...ALWAYS_GLYPH].some((c) => v.includes(c));
+      if (edged || always) total += 1;
+    }
+  }
+  expect({ total, ceiling: CATALOG_CEILING, within: total <= CATALOG_CEILING }).toEqual({
+    total,
+    ceiling: CATALOG_CEILING,
+    within: true,
+  });
+});

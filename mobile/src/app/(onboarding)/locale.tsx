@@ -70,7 +70,13 @@ export default function Locale() {
           })}
         </View>
 
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 28, marginBottom: 12 }}>{t('onboarding.pickDest')}</Text>
+        {/* The marker was a ⇨ inside the translated string, so it rendered in the pixel
+            font at the type's weight instead of the icon set's, and every locale carried
+            its own copy of a decoration. Drawn beside the text, once. */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 28, marginBottom: 12 }}>
+          <PixelIcon name="pin" color={C} size={16} sw={1.9} />
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>{t('onboarding.pickDest')}</Text>
+        </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
           {DEST.map((o) => {
             // A destination is offered for real only when its authored learning

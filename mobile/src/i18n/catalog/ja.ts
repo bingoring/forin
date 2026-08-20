@@ -166,7 +166,7 @@ export const ja: Record<string, string> = {
 
   'onboarding.begin': 'はじめる',
   'onboarding.pickNative': 'アプリで使う母語を選んでください。',
-  'onboarding.pickDest': '⇨ どこへ行きますか？',
+  'onboarding.pickDest': 'どこへ行きますか？',
   'onboarding.saveFailed': '保存に失敗しました',
   'onboarding.startNow': 'このまま始める',
   'common.retryHint': 'もう一度お試しください。',

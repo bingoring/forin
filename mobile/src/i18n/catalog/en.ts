@@ -167,7 +167,7 @@ export const en: Record<string, string> = {
 
   'onboarding.begin': 'Get started',
   'onboarding.pickNative': 'Choose the language the app should use.',
-  'onboarding.pickDest': '⇨ Where are you heading?',
+  'onboarding.pickDest': 'Where are you heading?',
   'onboarding.saveFailed': 'Could not save',
   'onboarding.startNow': 'Start as is',
   'common.retryHint': 'Please try again.',

@@ -185,7 +185,7 @@ export const ko: Record<string, string> = {
   // ── onboarding ───────────────────────────────────────────────────────────
   'onboarding.begin': '처음 시작하기',
   'onboarding.pickNative': '앱이 사용할 모국어를 골라주세요.',
-  'onboarding.pickDest': '⇨ 어디로 가시나요?',
+  'onboarding.pickDest': '어디로 가시나요?',
   'onboarding.saveFailed': '저장 실패',
   'onboarding.startNow': '이대로 시작',
   'common.retryHint': '다시 시도해 주세요.',
