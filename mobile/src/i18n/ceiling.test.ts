@@ -27,6 +27,22 @@ const CEILINGS: Record<string, number> = {
   'src/map': 1203,
 };
 
+// JSX TEXT ceilings — a SEPARATE measurement, not a relaxation of the ones above.
+//
+// countKoreanLiterals only ever saw quoted strings, so `<Text>오늘의 성장 리포T</Text>`
+// was invisible to it: 190 strings that reach the screen in Korean regardless of the
+// app language, while this file reported src/app and src/components at zero. The
+// literal ceilings stay at 0 — that guarantee is intact and unchanged. These numbers
+// are the debt the old regex was hiding, measured. They are a floor to drive DOWN to
+// zero, never a budget to spend.
+const JSX_CEILINGS: Record<string, number> = {
+  'src/app': 154,
+  'src/components': 34,
+  'src/data': 0,
+  'src/lib': 0,
+  'src/map': 7,
+};
+
 const HANGUL = /[가-힣]/;
 
 function walk(dir: string): string[] {
@@ -56,6 +72,19 @@ function countKoreanLiterals(file: string): number {
   return literals.filter((l: string) => HANGUL.test(l)).length;
 }
 
+/**
+ * Korean sitting directly between JSX tags — `<Text>따라 말해보세요</Text>`.
+ *
+ * This is the same user-visible string as t('pron.repeat'), but it carries no quotes,
+ * so the literal scan above walks straight past it. Braces are excluded from the match
+ * so `{t('k')}` and other expressions are not counted as text.
+ */
+function countKoreanJsxText(file: string): number {
+  let src = readFileSync(file, 'utf8');
+  src = src.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  return (src.match(/>[^<>{}]*</g) ?? []).filter((m: string) => HANGUL.test(m)).length;
+}
+
 describe('hardcoded Korean stays capped', () => {
   for (const [area, ceiling] of Object.entries(CEILINGS)) {
     test(`${area} has at most ${ceiling} Korean string literals`, () => {
@@ -66,6 +95,17 @@ describe('hardcoded Korean stays capped', () => {
       const total = files.reduce((n, f) => n + countKoreanLiterals(f), 0);
       // Reported as an object so a failure prints both numbers, which is what tells
       // you whether to extract or to lower the ceiling.
+      expect({ area, total, ceiling, within: total <= ceiling }).toEqual({ area, total, ceiling, within: true });
+    });
+  }
+});
+
+describe('Korean in JSX text stays capped', () => {
+  for (const [area, ceiling] of Object.entries(JSX_CEILINGS)) {
+    test(`${area} has at most ${ceiling} Korean JSX text nodes`, () => {
+      const files = walk(join(__dirname, '..', '..', area));
+      expect(files.length).toBeGreaterThan(0);
+      const total = files.reduce((n, f) => n + countKoreanJsxText(f), 0);
       expect({ area, total, ceiling, within: total <= ceiling }).toEqual({ area, total, ceiling, within: true });
     });
   }

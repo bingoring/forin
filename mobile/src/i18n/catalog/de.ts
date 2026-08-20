@@ -10,6 +10,8 @@ export const de: Record<string, string> = {
   'common.loading': 'Wird geladen …',
   'common.streakDays': '{n} Tage in Folge',
   'common.level': 'Lv.{level}',
+  'info.what': 'Was ist das?',
+  'info.how': 'Wie bekommt man das?',
 
   'settings.language.section': 'Sprache',
   'settings.language.appTitle': 'App-Sprache',

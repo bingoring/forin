@@ -15,6 +15,8 @@ export const ko: Record<string, string> = {
   'common.loading': '불러오는 중이에요.',
   'common.streakDays': '{n}일 연속',
   'common.level': 'Lv.{level}',
+  'info.what': '무엇인가요?',
+  'info.how': '어떻게 얻나요?',
 
   // ── settings · language ──────────────────────────────────────────────────
   'settings.language.section': '언어',

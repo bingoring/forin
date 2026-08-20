@@ -11,6 +11,8 @@ export const en: Record<string, string> = {
   'common.loading': 'Loading…',
   'common.streakDays': '{n}-day streak',
   'common.level': 'Lv.{level}',
+  'info.what': 'What is it?',
+  'info.how': 'How do you earn it?',
 
   'settings.language.section': 'Language',
   'settings.language.appTitle': 'App language',

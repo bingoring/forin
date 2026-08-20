@@ -10,6 +10,8 @@ export const ja: Record<string, string> = {
   'common.loading': '読み込み中です。',
   'common.streakDays': '{n}日連続',
   'common.level': 'Lv.{level}',
+  'info.what': 'これは何ですか？',
+  'info.how': 'どうすれば手に入りますか？',
 
   'settings.language.section': '言語',
   'settings.language.appTitle': 'アプリの言語',
