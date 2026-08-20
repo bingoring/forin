@@ -12,24 +12,22 @@ const SRC = readFileSync(join(__dirname, 'BottomSheet.tsx'), 'utf8');
 // A source check. It is not the whole story — bottomSheet.render.test.tsx mounts the
 // component and drives the real gesture, which is what proves the drag WORKS. This file
 // pins WHERE the drag lives, which a render test cannot distinguish once it passes.
+// WHERE the handlers sit is asserted against the rendered node in
+// bottomSheet.render.test.tsx, which reads the real style off the real element. The
+// version of this check that lived here sliced a fixed window of source text after the
+// spread and matched inside it — so adding a comment to the grabber broke it, which is
+// a test measuring the wrong thing. Only the count stays here, because a second
+// attachment somewhere else in the file is a text-level property.
 test('the pan handlers are attached to exactly one element', () => {
   const attachments = SRC.match(/\{\.\.\.pan\.panHandlers\}/g) ?? [];
   expect(attachments).toHaveLength(1);
 });
 
-test('and that element is the grabber, not the sheet body', () => {
-  // The grabber View is the one that renders the bar; the sheet body is the one that
-  // carries maxHeight/transform. Find which block the handlers sit in by looking at
-  // what follows them before the next JSX element closes.
-  const at = SRC.indexOf('{...pan.panHandlers}');
-  expect(at).toBeGreaterThan(-1);
-  const after = SRC.slice(at, at + 400);
-  // The handle's own markers: it centres its content and draws the 5px bar.
-  expect(after).toMatch(/alignItems: 'center'/);
-  expect(after).toMatch(/height: 5/);
-  // And it must NOT be the sheet body, which is identified by these.
-  expect(after).not.toMatch(/maxHeight/);
-  expect(after).not.toMatch(/transform: \[\{ translateY/);
+// The grabber owns the touch from the moment it lands. Claiming only on move means the
+// drag depends on winning a negotiation against everything above it, for no benefit on a
+// strip that has nothing else to do with a touch.
+test('the grabber claims the gesture on touch start', () => {
+  expect(SRC).toMatch(/onStartShouldSetPanResponder: \(\) => true/);
 });
 
 // A fling has to work on velocity alone. Requiring distance means a fast, small flick

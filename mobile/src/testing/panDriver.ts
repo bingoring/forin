@@ -54,10 +54,13 @@ export function panDriver(h: Handlers, opts: { frameMs?: number } = {}) {
   };
 
   return {
-    /** Finger down. Returns whether anything claimed the touch on start. */
+    /** Finger down. Grants immediately if the view claims on start, as the platform
+     *  does, and reports whether it did. */
     down(): boolean {
       h.onStartShouldSetResponderCapture?.(evt());
-      return h.onStartShouldSetResponder?.(evt()) === true;
+      const won = h.onStartShouldSetResponder?.(evt()) === true;
+      if (won) h.onResponderGrant?.(evt());
+      return won;
     },
     /** Finger moves before anyone owns the gesture. Returns "did the view claim it". */
     claim(dy: number): boolean {

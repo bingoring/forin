@@ -40,8 +40,8 @@ it('has a handle that actually drags, and closes on a downward fling', () => {
     const pan = panDriver(nodes[0].props);
     act(() => {
       pan.down();
-      pan.claim(12);
     });
+    act(() => pan.move(12));
     act(() => pan.move(12));
     act(() => pan.up());
     expect(onClose).toHaveBeenCalled();

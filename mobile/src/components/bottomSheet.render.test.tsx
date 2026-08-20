@@ -52,35 +52,29 @@ describe('BottomSheet drag', () => {
       const pan = panDriver(draggables(tree.root)[0].props);
 
       let claimed = false;
-      // 20px is past the 6px slop, so the grabber must take the gesture.
+      // The grabber takes the touch the moment it lands — it is a dedicated strip.
       act(() => {
-        pan.down();
-        claimed = pan.claim(20);
+        claimed = pan.down();
       });
       expect(claimed).toBe(true);
       act(() => pan.move(20));
 
-      // Distance is measured from the moment the gesture was granted, not from
-      // touch-down: PanResponder zeroes dy on grant, so the 20px that won the
-      // gesture is the anchor and this reports the 20px travelled since.
       expect(setValue).toHaveBeenLastCalledWith(20);
     } finally {
       setValue.mockRestore();
     }
   });
 
-  it('ignores a horizontal swipe', () => {
+  it('takes the touch on contact rather than waiting to win a negotiation', () => {
+    // The previous version claimed only during the move phase, which means the drag
+    // works only if every view above the grabber declines the touch first. On a strip
+    // with nothing to tap and nothing to scroll there is no reason to depend on that.
     const tree = mount();
-    const nodes = draggables(tree.root);
-    // dx dominant → not a sheet drag. Driven through the same config the app uses.
-    expect(nodes[0].props.onMoveShouldSetResponder).toBeDefined();
-    const pan = panDriver(nodes[0].props);
-    let claimed = true;
+    let claimed = false;
     act(() => {
-      pan.down();
-      claimed = pan.claim(3);
+      claimed = panDriver(draggables(tree.root)[0].props).down();
     });
-    expect(claimed).toBe(false);
+    expect(claimed).toBe(true);
   });
 
   it('closes when the grabber is flung down a short distance', () => {
@@ -100,9 +94,9 @@ describe('BottomSheet drag', () => {
       const tree = mount(onClose);
       const pan = panDriver(draggables(tree.root)[0].props);
       act(() => {
-        pan.down();
-        pan.claim(12);
-      });
+      pan.down();
+    });
+      act(() => pan.move(12));
       act(() => pan.move(12));
       // 24px total — well under the 90px distance threshold — but thrown at
       // 12px/16ms = 0.75, past the 0.6 flick. Velocity alone has to be enough.
@@ -123,9 +117,9 @@ describe('BottomSheet drag', () => {
       // 400ms per 10px = 0.025 px/ms, and 30px total: neither threshold is met.
       const pan = panDriver(draggables(tree.root)[0].props, { frameMs: 400 });
       act(() => {
-        pan.down();
-        pan.claim(10);
-      });
+      pan.down();
+    });
+      act(() => pan.move(10));
       act(() => pan.move(10));
       act(() => pan.move(10));
       act(() => pan.up());

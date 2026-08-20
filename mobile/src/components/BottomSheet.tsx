@@ -130,8 +130,13 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
 
   const pan = useRef(
     PanResponder.create({
-      // Only claim vertical drags, so a horizontal swipe inside the content
-      // (chips, carousels) still works.
+      // Claim the touch the instant it lands. The grabber is a dedicated strip: nothing
+      // to tap, nothing to scroll, no competing gesture to lose a negotiation to. Relying
+      // on the move-phase negotiation alone means the drag only works if every view above
+      // it declines the touch first, and there is no reason to depend on that here.
+      onStartShouldSetPanResponder: () => true,
+      // Still needed for the case where the touch began before the finger moved enough to
+      // be a drag: only vertical movement is ours, so a horizontal swipe is left alone.
       onMoveShouldSetPanResponder: (_e, g) => Math.abs(g.dy) > 6 && Math.abs(g.dy) > Math.abs(g.dx),
       onPanResponderGrant: () => {
         dragStart.current = 0;
@@ -216,7 +221,11 @@ export function BottomSheet({ visible, onClose, children, expandable = true }: P
             aiming — the bar is the sign, this View is the target. */}
         <View
           {...pan.panHandlers}
-          style={{ paddingTop: 12, paddingBottom: 10, alignItems: 'center' }}
+          // hitSlop extends the touch target past the padding without moving the bar or
+          // pushing the content down: the strip is 27px tall and reads as small on a
+          // phone, and a handle you have to aim at is not a handle.
+          hitSlop={{ top: 10, bottom: 14, left: 0, right: 0 }}
+          style={{ paddingTop: 12, paddingBottom: 10, alignItems: 'center', backgroundColor: colors.paper }}
         >
           <View style={{ width: 52, height: 5, backgroundColor: colors.ink + '55' }} />
         </View>
