@@ -491,8 +491,6 @@ export const ko: Record<string, string> = {
   'result.praiseSticker': '참 잘했어요',
   'lab.pipsHelp': '숙련 칸(■■■)은 연속으로 잘 맞힌 횟수예요. 3칸을 채우면 {mastered}로 분류돼요.',
   'avatar.scanNeedBuild': '얼굴 스캔은 카메라 모듈이 포함된 앱 빌드에서만 동작해요. 아래에서 직접 고를 수 있어요.',
-  'me.cardCode': '초대 코드',
-  'me.standing': '평판',
   'campus.floorCurricula': '━ 이 층의 커리큘럼 ━━━━━',
   'growth.reportTitle': '오늘의 성장 리포트',
   'growth.bandHint': '학습을 시작한 시각으로 근무대를 표시해요. 하루가 걸치면 더 많이 한 쪽으로 보여요.',
@@ -504,4 +502,5 @@ export const ko: Record<string, string> = {
   'band.plain.day': '오전',
   'band.plain.evening': '오후',
   'band.plain.night': '밤',
+  'title.equippedShort': '장착',
 };

@@ -461,8 +461,6 @@ export const en: Record<string, string> = {
   'result.praiseSticker': 'Well done',
   'lab.pipsHelp': 'The pips (■■■) count correct answers in a row. Fill all three and the card is {mastered}.',
   'avatar.scanNeedBuild': 'The face scan only works in an app build that includes the camera module. You can pick everything by hand below.',
-  'me.cardCode': 'Invite code',
-  'me.standing': 'Standing',
   'campus.floorCurricula': '━ Curricula on this floor ━',
   'growth.reportTitle': "Today's growth report",
   'growth.bandHint': 'The shift comes from when you started. A day split across two shows the busier one.',
@@ -474,4 +472,5 @@ export const en: Record<string, string> = {
   'band.plain.day': 'Morning',
   'band.plain.evening': 'Afternoon',
   'band.plain.night': 'Night',
+  'title.equippedShort': 'ON',
 };

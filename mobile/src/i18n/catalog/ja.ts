@@ -460,8 +460,6 @@ export const ja: Record<string, string> = {
   'result.praiseSticker': 'よくできました',
   'lab.pipsHelp': '熟練の枠（■■■）は連続で正解した回数です。3つ埋まると{mastered}に分類されます。',
   'avatar.scanNeedBuild': '顔スキャンはカメラモジュールを含むアプリビルドでのみ動作します。下から手動で選べます。',
-  'me.cardCode': '招待コード',
-  'me.standing': '評判',
   'campus.floorCurricula': '━ この階のカリキュラム ━',
   'growth.reportTitle': '今日の成長レポート',
   'growth.bandHint': '学習を始めた時刻から勤務帯を表示します。一日が跨る場合は多い方を表示します。',
@@ -473,4 +471,5 @@ export const ja: Record<string, string> = {
   'band.plain.day': '午前',
   'band.plain.evening': '午後',
   'band.plain.night': '夜',
+  'title.equippedShort': '装備',
 };

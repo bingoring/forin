@@ -460,8 +460,6 @@ export const de: Record<string, string> = {
   'result.praiseSticker': 'Gut gemacht',
   'lab.pipsHelp': 'Die Punkte (■■■) zählen richtige Antworten in Folge. Alle drei gefüllt heißt {mastered}.',
   'avatar.scanNeedBuild': 'Der Gesichtsscan funktioniert nur in einem App-Build mit Kameramodul. Unten kannst du alles selbst wählen.',
-  'me.cardCode': 'Einladungscode',
-  'me.standing': 'Ansehen',
   'campus.floorCurricula': '━ Curricula auf dieser Etage ━',
   'growth.reportTitle': 'Heutiger Fortschrittsbericht',
   'growth.bandHint': 'Die Schicht ergibt sich aus der Startzeit. Verteilt sich ein Tag, zeigt er die häufigere.',
@@ -473,4 +471,5 @@ export const de: Record<string, string> = {
   'band.plain.day': 'Vormittag',
   'band.plain.evening': 'Nachmittag',
   'band.plain.night': 'Nacht',
+  'title.equippedShort': 'AN',
 };

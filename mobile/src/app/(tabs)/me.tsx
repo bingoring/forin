@@ -26,7 +26,6 @@ const C = colors.ink;
 
 // Bars cycle this palette, so a profession with more (or fewer) dimensions than
 // nursing's three still renders without a code change.
-const REP_COLORS = [colors.mint, colors.peach, colors.yellow, colors.lilac, colors.blue];
 
 // repMap flattens the server's ordered standings for threshold checks.
 const repMap = (st: Progress['reputation']) =>
@@ -253,36 +252,12 @@ export default function Me() {
               </View>
             </View>
 
-            {/* A card, not a dashboard. Reputation gauges lived here and were asked to
-                leave twice: a business card says who you are and how to reach you, and
-                three progress bars say how you are doing — a different question, and it
-                has its own block below. What replaces them is the thing a card actually
-                carries: the code someone types to add you. */}
-            <View style={{ marginTop: 12, paddingTop: 10, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dashed', flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
-              <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>{t('me.cardCode')}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, letterSpacing: 2, marginTop: 2 }}>{invite?.code ?? '· · · ·'}</Text>
-              </View>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textFaint }}>FORIN</Text>
-            </View>
+            {/* Nothing below the identity block. Reputation gauges lived here and were
+                asked to go; an invite code briefly replaced them, which was worse — it
+                was never asked for, and a card does not need a field just because the
+                space opened up. The code already has its own row further down. */}
           </View>
         </Shadowed>
-
-        {/* Reputation, moved out of the card. Still worth showing — it is what the
-            scenarios move — just not on the thing meant to read like a name card. */}
-        <View>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <PixelIcon name="heart" color={C} size={16} sw={1.6} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('me.standing')}</Text>
-          </View>
-          <Shadowed offset={3} shadowColor={C + '33'}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
-              {progress.reputation.map((st, i) => (
-                <RepRow key={st.key} label={st.label} value={st.value} color={REP_COLORS[i % REP_COLORS.length]} />
-              ))}
-            </View>
-          </Shadowed>
-        </View>
 
         {/* growth summary → 성장 리포트 상세 (/growth) */}
         <Pressable onPress={() => router.push('/growth')}>
@@ -384,20 +359,43 @@ export default function Me() {
             </View>
             <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
           </View>
-          <View style={{ gap: 8 }}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {/* A grid, not a list. Fifteen full-width rows ran to roughly 700px and
+                pushed everything under it off the screen; four per row is about 280.
+                Nothing is lost — the description and the equip button already lived in
+                the detail sheet a tap away, so the row was carrying text nobody could
+                act on from there. */}
             {titles.map((tt) => {
               const isEq = equipped === tt.id;
+              const ic = iconFor(tt.emoji);
               return (
-                <Shadowed key={tt.id} offset={tt.got ? 3 : 0} shadowColor={isEq ? colors.yellowShadow : C + '33'}>
-                  <Pressable onPress={() => openTitle(tt.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream, borderWidth: isEq ? 3 : 2, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
-                    {iconFor(tt.emoji) ? <PixelIcon name={iconFor(tt.emoji)!} color={tt.got ? C : colors.textFaint} size={24} /> : <Text style={{ fontSize: fs(22), opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
-                    <View style={{ flex: 1 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: tt.got ? C : colors.textFaint }}>{tt.got ? t(tt.nameKey) : '???'}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{tt.got ? t(tt.descKey) : tt.hidden ? t('title.hiddenHint') : t(tt.howKey)}</Text>
-                    </View>
-                    {isEq
-                      ? <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>장착</Text></View>
-                      : tt.got && <PixelIcon name="chevron-right" color={C} size={16} sw={2} />}
+                <Shadowed key={tt.id} offset={tt.got ? 3 : 0} shadowColor={isEq ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
+                  <Pressable
+                    onPress={() => openTitle(tt.id)}
+                    style={{
+                      aspectRatio: 0.86, alignItems: 'center', justifyContent: 'center', gap: 3,
+                      paddingHorizontal: 3,
+                      borderWidth: isEq ? 3 : tt.got ? 2.5 : 2, borderColor: C,
+                      backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream,
+                    }}
+                  >
+                    {ic
+                      ? <PixelIcon name={ic} color={tt.got ? C : colors.textFaint} size={22} />
+                      : <Text style={{ fontSize: fs(20), opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
+                    <Text
+                      numberOfLines={2}
+                      style={{ fontFamily: fonts.body, fontSize: fs(8), lineHeight: 11, textAlign: 'center', color: tt.got ? C : colors.textFaint }}
+                    >
+                      {tt.got ? t(tt.nameKey) : '???'}
+                    </Text>
+                    {/* The equipped one says so on the tile: it is the single title the
+                        card shows, and hunting for it in a grid of fifteen is the one
+                        thing the list did better. */}
+                    {isEq && (
+                      <View style={{ position: 'absolute', top: -4, right: -4, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingHorizontal: 3 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: C }}>{t('title.equippedShort')}</Text>
+                      </View>
+                    )}
                   </Pressable>
                 </Shadowed>
               );
@@ -595,19 +593,6 @@ export default function Me() {
           })}
         </View>
       </BottomSheet>
-    </View>
-  );
-}
-
-function RepRow({ label, value, color }: { label: string; value: number; color: string }) {
-  const pct = Math.max(0, Math.min(100, value));
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 5 }}>
-      <Text style={{ width: 78, fontFamily: fonts.body, fontSize: fs(11), color: C }}>{label}</Text>
-      <View style={{ flex: 1, height: 12, backgroundColor: colors.cream, borderWidth: 2, borderColor: C }}>
-        <View style={{ width: `${pct}%`, height: '100%', backgroundColor: color }} />
-      </View>
-      <Text style={{ width: 34, textAlign: 'right', fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{pct}%</Text>
     </View>
   );
 }
