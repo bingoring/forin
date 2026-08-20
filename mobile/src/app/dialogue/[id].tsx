@@ -320,25 +320,17 @@ export default function DialogueRoute() {
             where it read as a feature rather than an exit; the framing belongs in
             the sheet it opens ("다른 곳에서 호출이 왔어요", and the promise that
             the conversation is kept). The affordance stays a plain close. */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <Pressable onPress={() => { playSfx('back'); stepAway(); }} hitSlop={8}>
-            <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
-            <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <PixelIcon name="x" color={C} size={15} sw={2} />
-            </View>
-          </Pressable>
-          {/* Voice on/off. Auto-play needs a switch in reach, not buried in
-              settings — and tapping it while a line is playing stops it. */}
-          <Pressable
-            onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
-            hitSlop={8}
-          >
-            <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
-            <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <PixelIcon name="volume" color={C} size={15} sw={2} />
-            </View>
-          </Pressable>
-        </View>
+        {/* The exit stands alone up here, with nothing beside it to catch a thumb.
+            The voice toggle used to sit 8px to its right — and both carried hitSlop 8, so
+            their touch areas MET: there was no dead zone at all between a benign toggle
+            and the way out, however far apart they looked. The toggle moved to the NPC's
+            name plate, where the voice it controls comes from. */}
+        <Pressable onPress={() => { playSfx('back'); stepAway(); }} hitSlop={8}>
+          <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
+          <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+            <PixelIcon name="x" color={C} size={15} sw={2} />
+          </View>
+        </Pressable>
         <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
           {!!mission && (
             <>
@@ -416,18 +408,35 @@ export default function DialogueRoute() {
       {/* dialogue box */}
       <View style={{ position: 'absolute', left: 14, right: 14, bottom: 20, zIndex: 6 }}>
         {/* speaker tab (with an upward peach shadow) */}
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 6, marginLeft: 12 }}>
+        {/* Gap 12 against horizontal hitSlop 4 leaves 4px of dead space between these
+            chips. The rule is what matters, not the numbers: horizontal slop must stay
+            under half the gap, or neighbouring controls become one continuous target.
+            Vertical slop stays generous — there is nothing above or below to hit. */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, marginLeft: 12 }}>
           <View>
             <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
             <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleLabel(kind)}</Text>
             </View>
           </View>
+          {/* Voice on/off, on the name plate of the voice it belongs to. Tapping it while
+              a line is playing stops that line. */}
+          <Pressable
+            onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
+            hitSlop={{ top: 8, bottom: 8, left: 4, right: 4 }}
+            accessibilityRole="switch"
+            accessibilityState={{ checked: voiceOn }}
+            accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: voiceOn ? colors.mint : colors.cream, borderWidth: 2.5, borderColor: C, borderBottomWidth: 0, paddingVertical: 3, paddingHorizontal: 8 }}>
+              <PixelIcon name="volume" color={C} size={11} sw={1.8} />
+            </View>
+          </Pressable>
           {transcript.length > 0 && (
-            <Pressable onPress={() => { Keyboard.dismiss(); setLogOpen(true); }} hitSlop={6}>
+            <Pressable onPress={() => { Keyboard.dismiss(); setLogOpen(true); }} hitSlop={{ top: 8, bottom: 8, left: 4, right: 4 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C, borderBottomWidth: 0, paddingVertical: 3, paddingHorizontal: 8 }}>
                 <PixelIcon name="note" color={C} size={11} sw={1.8} />
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>기록 {Math.ceil(transcript.length / 2)}</Text>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t('dialogue.logCount', { n: Math.ceil(transcript.length / 2) })}</Text>
               </View>
             </Pressable>
           )}

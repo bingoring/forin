@@ -29,18 +29,24 @@ const CEILINGS: Record<string, number> = {
 
 // JSX TEXT ceilings — a SEPARATE measurement, not a relaxation of the ones above.
 //
-// countKoreanLiterals only ever saw quoted strings, so `<Text>오늘의 성장 리포T</Text>`
-// was invisible to it: 190 strings that reach the screen in Korean regardless of the
-// app language, while this file reported src/app and src/components at zero. The
-// literal ceilings stay at 0 — that guarantee is intact and unchanged. These numbers
-// are the debt the old regex was hiding, measured. They are a floor to drive DOWN to
-// zero, never a budget to spend.
+// countKoreanLiterals only ever saw quoted strings, so `<Text>오늘의 성장 리포트</Text>`
+// was invisible to it: strings that reach the screen in Korean regardless of the app
+// language, while this file reported src/app and src/components at zero. The literal
+// ceilings stay at 0 — that guarantee is intact and unchanged. These numbers are the debt
+// the old regex was hiding, measured. They are a floor to drive DOWN to zero, never a
+// budget to spend.
+//
+// Twice now the count went up because the DETECTOR was blind, not because the code got
+// worse: first quoted-only, then text-without-interpolation. `기록 {n}` was extracted to
+// the catalog and the number did not move, which is how the second hole surfaced. When
+// these ceilings rise, check which of the two happened before treating it as a
+// regression.
 const JSX_CEILINGS: Record<string, number> = {
-  'src/app': 153,
-  'src/components': 34,
+  'src/app': 171,
+  'src/components': 41,
   'src/data': 0,
   'src/lib': 0,
-  'src/map': 7,
+  'src/map': 8,
 };
 
 const HANGUL = /[가-힣]/;
@@ -75,14 +81,24 @@ function countKoreanLiterals(file: string): number {
 /**
  * Korean sitting directly between JSX tags — `<Text>따라 말해보세요</Text>`.
  *
- * This is the same user-visible string as t('pron.repeat'), but it carries no quotes,
- * so the literal scan above walks straight past it. Braces are excluded from the match
- * so `{t('k')}` and other expressions are not counted as text.
+ * This is the same user-visible string as t('pron.repeat'), but it carries no quotes, so
+ * the literal scan above walks straight past it.
+ *
+ * Two details are load-bearing. The segment must be followed by a CLOSING tag, which is
+ * what real JSX text is followed by — matching any `>...<` also swept up object literals
+ * and comparisons spanning lines. And `{...}` spans are stripped from the segment rather
+ * than disqualifying it: an earlier version skipped any segment containing braces, so
+ * `기록 {n}` and `{name} 님과의 대화` were invisible — a mixed line is exactly where
+ * hardcoded Korean hides.
  */
 function countKoreanJsxText(file: string): number {
   let src = readFileSync(file, 'utf8');
   src = src.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
-  return (src.match(/>[^<>{}]*</g) ?? []).filter((m: string) => HANGUL.test(m)).length;
+  let n = 0;
+  for (const [, text] of src.matchAll(/>([^<>]*)<\//g)) {
+    if (HANGUL.test(text.replace(/\{[^{}]*\}/g, ''))) n += 1;
+  }
+  return n;
 }
 
 describe('hardcoded Korean stays capped', () => {
