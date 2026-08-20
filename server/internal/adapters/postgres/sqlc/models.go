@@ -59,10 +59,11 @@ type ContentMetum struct {
 }
 
 type ConversationSession struct {
-	ID         string             `json:"id"`
-	UserID     string             `json:"user_id"`
-	ScenarioID string             `json:"scenario_id"`
-	StartedAt  pgtype.Timestamptz `json:"started_at"`
+	ID          string             `json:"id"`
+	UserID      string             `json:"user_id"`
+	ScenarioID  string             `json:"scenario_id"`
+	StartedAt   pgtype.Timestamptz `json:"started_at"`
+	DiscardedAt pgtype.Timestamptz `json:"discarded_at"`
 }
 
 type CorrectionResult struct {

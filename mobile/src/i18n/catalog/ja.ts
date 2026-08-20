@@ -211,8 +211,12 @@ export const ja: Record<string, string> = {
   'dialogue.lastNpc': '{name}さんが最後に',
   'dialogue.resume': '続けて会話する',
   'dialogue.restart': '最初からやり直す',
-  'dialogue.stepAway': '席を外す',
   'dialogue.stay': '会話を続ける',
+  'dialogue.exitTitle': '会話から出ますか？',
+  'dialogue.exitBody': '{name} さんとの会話は残ります。次回に続けられます。',
+  'dialogue.exitKeep': '記録を残して出る',
+  'dialogue.exitDiscard': '記録を消して出る',
+  'dialogue.exitDiscardNote': '消すと次回に続けられません。',
   'dialogue.role': '役割', 'dialogue.info': '情報',
   'dialogue.chiefComplaint': '主訴', 'dialogue.allergies': 'アレルギー', 'dialogue.toVerify': '確認が必要',
 

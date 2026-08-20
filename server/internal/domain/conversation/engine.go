@@ -113,6 +113,16 @@ const TranscriptLimit = 200
 // Resumable reports the conversation this learner can pick up for a scenario:
 // the newest session that has turns, plus those turns. Returns ("", nil, nil)
 // when there is nothing to resume.
+// Discard throws a conversation away: it stops being offered for resuming, and the
+// learner's next visit to the scenario starts clean.
+//
+// The turns are left in place. Study time is derived from them, and the learner did spend
+// those minutes — discarding is a statement about what should come back, not a licence to
+// unmake what happened.
+func (e *Engine) Discard(ctx context.Context, userID, sessionID string) (bool, error) {
+	return e.convo.DiscardSession(ctx, userID, sessionID)
+}
+
 func (e *Engine) Resumable(ctx context.Context, userID, scenarioID string) (string, []ports.ConversationTurn, error) {
 	sessionID, n, err := e.convo.LatestSessionWithTurns(ctx, userID, scenarioID)
 	if err != nil || sessionID == "" || n == 0 {

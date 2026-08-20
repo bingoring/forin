@@ -36,7 +36,7 @@ const CEILINGS: Record<string, number> = {
 // are the debt the old regex was hiding, measured. They are a floor to drive DOWN to
 // zero, never a budget to spend.
 const JSX_CEILINGS: Record<string, number> = {
-  'src/app': 154,
+  'src/app': 153,
   'src/components': 34,
   'src/data': 0,
   'src/lib': 0,

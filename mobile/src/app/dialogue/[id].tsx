@@ -234,6 +234,20 @@ export default function DialogueRoute() {
     setPagedOut(true);
   };
 
+  // Leave and throw the conversation away, so the next visit starts clean instead of
+  // offering to pick this one up.
+  //
+  // The navigation does not wait on the request and does not care whether it succeeded:
+  // the learner asked to go. A failed discard leaves a resumable conversation they will
+  // be offered again, which is recoverable; a spinner or an error in front of someone on
+  // their way out is not what they asked for.
+  const leaveAndDiscard = async () => {
+    setPagedOut(false);
+    const sid = sessionRef.current;
+    router.back();
+    if (sid) await api.discardConversation(sid).catch(() => {});
+  };
+
   // Bottom rail 🎤 직접 말하기 (04_SCREENS.md:324) — pushes to the standalone
   // pronunciation route (T8) with the scenario's first key phrase as the
   // target sentence. This replaces the old inline pronunciation-recording
@@ -576,27 +590,22 @@ export default function DialogueRoute() {
         </View>
       </BottomSheet>
 
-      {/* 긴급 호출 — 이탈에 서사를 붙인다. 나가는 것은 같지만, 대화를 버리는
-          것이 아니라 자리를 비우는 것이라고 말한다(기록은 남는다). */}
+      {/* Leaving, said plainly.
+          This used to be framed as a page from elsewhere — "다른 곳에서 호출이 왔어요" —
+          on the theory that a ward nurse does not "exit" a patient, they get pulled away.
+          The fiction was doing the wrong job: someone tapping × has already decided to
+          leave, and being told a story about why is one more thing to read before a door
+          opens. The three answers are the three things a person actually wants here. */}
       <BottomSheet visible={pagedOut} onClose={() => setPagedOut(false)}>
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <PixelIcon name="alert" color={C} size={18} sw={1.9} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>다른 곳에서 호출이 왔어요</Text>
+            <PixelIcon name="x" color={C} size={18} sw={1.9} />
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{t('dialogue.exitTitle')}</Text>
           </View>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.text, lineHeight: 19, marginBottom: 16 }}>
-            {npcName} 님과의 대화를 잠시 멈추고 자리를 비우게 됩니다.{'\n'}
-            지금까지 나눈 대화는 남아 있어요.
+            {t('dialogue.exitBody', { name: npcName })}
           </Text>
           <View style={{ gap: 8 }}>
-            <PixelButton
-              label={t('dialogue.stepAway')}
-              icon="alert"
-              bg={colors.peach}
-              shadowColor={colors.peachShadow}
-              full
-              onPress={() => { setPagedOut(false); router.back(); }}
-            />
             <PixelButton
               label={t('dialogue.stay')}
               icon="play"
@@ -605,6 +614,25 @@ export default function DialogueRoute() {
               full
               onPress={() => setPagedOut(false)}
             />
+            <PixelButton
+              label={t('dialogue.exitKeep')}
+              icon="x"
+              bg="#fff"
+              shadowColor={C}
+              full
+              onPress={() => { setPagedOut(false); router.back(); }}
+            />
+            <PixelButton
+              label={t('dialogue.exitDiscard')}
+              icon="trash"
+              bg={colors.peach}
+              shadowColor={colors.peachShadow}
+              full
+              onPress={() => { void leaveAndDiscard(); }}
+            />
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, textAlign: 'center' }}>
+              {t('dialogue.exitDiscardNote')}
+            </Text>
           </View>
         </View>
       </BottomSheet>

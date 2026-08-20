@@ -209,6 +209,22 @@ sleep 6
 run GET /me/review; after=$(pj "len(d.get('cards',[]))")
 [ "${after:-0}" -ge "${before:-0}" ] && ok "review cards ${before}→${after} (correction filed)" || bad "review cards shrank ${before}→${after}"
 
+# Resuming, and throwing away. A conversation with turns is offered back; a discarded one
+# never is. Asserted against the real endpoint because the whole feature is "what does the
+# next visit see", and that question is answered by the database, not by the client.
+run "GET" "/scenarios/SCN-ER-00001/conversation/last"; last=$(pj "d.get('sessionId','')")
+[ "$last" = "$sid" ] && ok "conversation offered for resuming" || bad "resumable said '$last', expected '$sid'"
+run "POST" "/conversation/$sid/discard"; gone=$(pj "str(d.get('discarded'))")
+[ "$CODE" = 200 ] && [ "$gone" = "True" ] && ok "conversation discarded" || bad "discard → $CODE discarded=$gone"
+run "GET" "/scenarios/SCN-ER-00001/conversation/last"; last2=$(pj "d.get('sessionId','')")
+[ -z "$last2" ] && ok "discarded conversation is not offered back" || bad "still offered: '$last2'"
+# Asking twice is not an error — the learner wanted it gone and it is gone.
+run "POST" "/conversation/$sid/discard"; again=$(pj "str(d.get('discarded'))")
+[ "$CODE" = 200 ] && [ "$again" = "False" ] && ok "second discard is a no-op, not a failure" || bad "re-discard → $CODE discarded=$again"
+# The turns stay: study time is derived from them and those minutes were really spent.
+run "GET" "/me/stats?tz=Asia/Seoul"; secs=$(pj "d.get('conversationSecondsToday',0)")
+[ -n "$secs" ] && ok "conversation seconds still counted after discard (${secs}s)" || bad "conversation seconds missing"
+
 hd "⑥ CLEAR · attempt awards XP"
 run GET /me/progress; xp0=$(pj "d.get('xp',0)")
 run POST /attempts '{"scenarioId":"SCN-ER-00001","score":50}'

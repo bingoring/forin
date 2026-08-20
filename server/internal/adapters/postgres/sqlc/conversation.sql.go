@@ -40,6 +40,29 @@ func (q *Queries) CreateSession(ctx context.Context, arg CreateSessionParams) (s
 	return id, err
 }
 
+const discardSession = `-- name: DiscardSession :execrows
+UPDATE conversation_sessions
+   SET discarded_at = now()
+ WHERE id = $1 AND user_id = $2 AND discarded_at IS NULL
+`
+
+type DiscardSessionParams struct {
+	ID     string `json:"id"`
+	UserID string `json:"user_id"`
+}
+
+// Marks a session as thrown away so it is never offered back. The user_id is part of the
+// predicate, not checked beforehand: one statement that cannot touch someone else's
+// session beats two that can disagree. execrows so the caller can tell "not yours / does
+// not exist" from "done".
+func (q *Queries) DiscardSession(ctx context.Context, arg DiscardSessionParams) (int64, error) {
+	result, err := q.db.Exec(ctx, discardSession, arg.ID, arg.UserID)
+	if err != nil {
+		return 0, err
+	}
+	return result.RowsAffected(), nil
+}
+
 const getSession = `-- name: GetSession :one
 SELECT id, user_id, scenario_id FROM conversation_sessions WHERE id = $1
 `
@@ -126,7 +149,7 @@ const latestSessionWithTurns = `-- name: LatestSessionWithTurns :one
 SELECT s.id, count(t.id)::int AS turn_count
   FROM conversation_sessions s
   JOIN dialogue_turns t ON t.session_id = s.id
- WHERE s.user_id = $1 AND s.scenario_id = $2
+ WHERE s.user_id = $1 AND s.scenario_id = $2 AND s.discarded_at IS NULL
  GROUP BY s.id, s.started_at
  ORDER BY s.started_at DESC
  LIMIT 1

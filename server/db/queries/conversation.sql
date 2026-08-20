@@ -17,10 +17,19 @@ SELECT role, content FROM dialogue_turns WHERE session_id = $1 ORDER BY created_
 SELECT s.id, count(t.id)::int AS turn_count
   FROM conversation_sessions s
   JOIN dialogue_turns t ON t.session_id = s.id
- WHERE s.user_id = $1 AND s.scenario_id = $2
+ WHERE s.user_id = $1 AND s.scenario_id = $2 AND s.discarded_at IS NULL
  GROUP BY s.id, s.started_at
  ORDER BY s.started_at DESC
  LIMIT 1;
+
+-- name: DiscardSession :execrows
+-- Marks a session as thrown away so it is never offered back. The user_id is part of the
+-- predicate, not checked beforehand: one statement that cannot touch someone else's
+-- session beats two that can disagree. execrows so the caller can tell "not yours / does
+-- not exist" from "done".
+UPDATE conversation_sessions
+   SET discarded_at = now()
+ WHERE id = $1 AND user_id = $2 AND discarded_at IS NULL;
 
 -- name: InsertCorrection :exec
 INSERT INTO correction_results (user_id, original, corrected, note, topic_tag)

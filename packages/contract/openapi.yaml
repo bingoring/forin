@@ -409,6 +409,11 @@ components:
         text:
           type: string
       type: object
+    internal_adapters_http.discardResp:
+      properties:
+        discarded:
+          type: boolean
+      type: object
     internal_adapters_http.economyConfigResp:
       properties:
         dailyClearedWeight:
@@ -876,6 +881,18 @@ paths:
       security:
       - Bearer: []
       summary: Grade the finished conversation, award scaled XP, return the result
+      tags:
+      - conversation
+  /conversation/{sessionId}/discard:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.discardResp'
+          description: OK
+      summary: Throw a conversation away so it is not offered for resuming
       tags:
       - conversation
   /conversation/{sessionId}/message:

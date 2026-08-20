@@ -212,8 +212,12 @@ export const en: Record<string, string> = {
   'dialogue.lastNpc': '{name} last said',
   'dialogue.resume': 'Pick the conversation back up',
   'dialogue.restart': 'Start over',
-  'dialogue.stepAway': 'Step away',
   'dialogue.stay': 'Stay in the conversation',
+  'dialogue.exitTitle': 'Leave this conversation?',
+  'dialogue.exitBody': 'Your conversation with {name} is kept. You can pick it up next time.',
+  'dialogue.exitKeep': 'Leave and keep it',
+  'dialogue.exitDiscard': 'Leave and erase it',
+  'dialogue.exitDiscardNote': 'Erased conversations cannot be picked up again.',
   'dialogue.role': 'Role', 'dialogue.info': 'Info',
   'dialogue.chiefComplaint': 'Chief complaint', 'dialogue.allergies': 'Allergies', 'dialogue.toVerify': 'To verify',
 

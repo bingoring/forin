@@ -760,6 +760,15 @@ export const api = {
     return data as CompleteResult;
   },
 
+  /**
+   * Throw a conversation away: it stops being offered for resuming, so the next visit to
+   * the scenario starts clean. The turns stay on the server — study time is derived from
+   * them and the learner did spend those minutes.
+   */
+  async discardConversation(sessionId: string): Promise<void> {
+    await http.post(`/conversation/${sessionId}/discard`, {});
+  },
+
   /** Send a message; the NPC replies in persona (non-streaming). */
   async sendMessage(sessionId: string, text: string): Promise<string> {
     const { data } = await http.post(`/conversation/${sessionId}/message`, { text });

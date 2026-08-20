@@ -211,8 +211,12 @@ export const de: Record<string, string> = {
   'dialogue.lastNpc': '{name} sagte zuletzt',
   'dialogue.resume': 'Gespräch fortsetzen',
   'dialogue.restart': 'Von vorn beginnen',
-  'dialogue.stepAway': 'Kurz weggehen',
   'dialogue.stay': 'Im Gespräch bleiben',
+  'dialogue.exitTitle': 'Gespräch verlassen?',
+  'dialogue.exitBody': 'Das Gespräch mit {name} bleibt erhalten. Du kannst später weitermachen.',
+  'dialogue.exitKeep': 'Verlassen und behalten',
+  'dialogue.exitDiscard': 'Verlassen und löschen',
+  'dialogue.exitDiscardNote': 'Gelöschte Gespräche lassen sich nicht fortsetzen.',
   'dialogue.role': 'Rolle', 'dialogue.info': 'Info',
   'dialogue.chiefComplaint': 'Hauptbeschwerde', 'dialogue.allergies': 'Allergien', 'dialogue.toVerify': 'Zu prüfen',
 

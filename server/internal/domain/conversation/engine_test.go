@@ -56,9 +56,12 @@ func TestLangName(t *testing.T) {
 // tests below are mostly about refusing to hand one over.
 
 type fakeConvoRepo struct {
-	latestID    string
-	latestTurns int
-	latestErr   error
+	latestID     string
+	latestTurns  int
+	latestErr    error
+	discardedFor string
+	discardHit   bool
+	discardErr   error
 	sessions    map[string]*ports.ConversationSession
 	history     []ports.ConversationTurn
 	historyFor  string // records which session History was asked for
@@ -80,6 +83,10 @@ func (f *fakeConvoRepo) SaveCorrection(context.Context, string, string, string, 
 }
 func (f *fakeConvoRepo) LatestSessionWithTurns(context.Context, string, string) (string, int, error) {
 	return f.latestID, f.latestTurns, f.latestErr
+}
+func (f *fakeConvoRepo) DiscardSession(_ context.Context, userID, sessionID string) (bool, error) {
+	f.discardedFor = userID + "/" + sessionID
+	return f.discardHit, f.discardErr
 }
 
 func engineWith(repo ports.ConversationRepo) *Engine {
@@ -158,5 +165,33 @@ func TestResumeSessionRefusesUnknownSession(t *testing.T) {
 	repo := &fakeConvoRepo{sessions: map[string]*ports.ConversationSession{}}
 	if err := engineWith(repo).ResumeSession(context.Background(), "u1", "SCN-1", "nope"); err == nil {
 		t.Fatal("unknown session must fail rather than resume nothing")
+	}
+}
+
+// Discarding is scoped to the learner who asked, and "nothing to discard" is not a
+// failure. Both halves matter: the first is what stops one learner clearing another's
+// conversation, and the second is what keeps an error out of the way of someone leaving.
+func TestDiscardPassesTheLearnerThrough(t *testing.T) {
+	repo := &fakeConvoRepo{discardHit: true}
+	got, err := engineWith(repo).Discard(context.Background(), "user-1", "sess-9")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if !got {
+		t.Fatalf("expected the discard to be reported as done")
+	}
+	if repo.discardedFor != "user-1/sess-9" {
+		t.Fatalf("discard was not scoped to the caller: %q", repo.discardedFor)
+	}
+}
+
+func TestDiscardOfSomethingAbsentIsNotAnError(t *testing.T) {
+	repo := &fakeConvoRepo{discardHit: false}
+	got, err := engineWith(repo).Discard(context.Background(), "user-1", "gone")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got {
+		t.Fatalf("expected no row to be reported")
 	}
 }

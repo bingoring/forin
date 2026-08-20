@@ -24,7 +24,9 @@ export type IconName =
   // departments — one per ward/unit, so board/campus/lift stop leaning on emoji
   | 'ambulance' | 'scalpel' | 'baby' | 'pill' | 'pregnant' | 'bottle' | 'teddy'
   | 'xray' | 'microscope' | 'droplet' | 'eye' | 'ribbon' | 'dove' | 'cane'
-  | 'brain' | 'prosthesis' | 'cap' | 'cup' | 'box' | 'candle' | 'hospital' | 'x';
+  | 'brain' | 'prosthesis' | 'cap' | 'cup' | 'box' | 'candle' | 'hospital' | 'x'
+  // destructive actions
+  | 'trash';
 
 function body(name: IconName, color: string): ReactNode {
   switch (name) {
@@ -405,6 +407,16 @@ function body(name: IconName, color: string): ReactNode {
         <Path d="M3 7 l9 -4 9 4 v10 l-9 4 -9 -4 z" />
         <Path d="M3 7 l9 4 9 -4" />
         <Path d="M12 11 v10" />
+      </>);
+    case 'trash':
+      // Lid, can, two ribs. Drawn on the same 24-unit grid as the rest, and squared off
+      // rather than tapered so it reads at 16px like the others do.
+      return (<>
+        <Path d="M4 7 h16" />
+        <Path d="M9 7 v-2 h6 v2" />
+        <Path d="M6 7 v13 h12 v-13" />
+        <Path d="M10 11 v6" />
+        <Path d="M14 11 v6" />
       </>);
     case 'candle':
       return (<>

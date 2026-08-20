@@ -231,8 +231,12 @@ export const ko: Record<string, string> = {
   'dialogue.lastNpc': '{name} 님이 마지막으로',
   'dialogue.resume': '이어서 대화한다',
   'dialogue.restart': '처음부터 다시',
-  'dialogue.stepAway': '자리를 비운다',
   'dialogue.stay': '대화를 계속한다',
+  'dialogue.exitTitle': '대화를 나갈까요?',
+  'dialogue.exitBody': '{name} 님과 나눈 대화는 남아 있어요. 다음에 이어서 할 수 있어요.',
+  'dialogue.exitKeep': '나가기 (기록 남기기)',
+  'dialogue.exitDiscard': '기록 지우고 나가기',
+  'dialogue.exitDiscardNote': '지우면 다음에 이어서 할 수 없어요.',
   'dialogue.role': '역할', 'dialogue.info': '정보',
   'dialogue.chiefComplaint': '주요 호소', 'dialogue.allergies': '알레르기', 'dialogue.toVerify': '확인 필요',
 

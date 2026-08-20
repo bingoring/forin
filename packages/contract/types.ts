@@ -303,6 +303,42 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/{sessionId}/discard": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Throw a conversation away so it is not offered for resuming */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.discardResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversation/{sessionId}/message": {
         parameters: {
             query?: never;
@@ -1973,6 +2009,9 @@ export interface components {
         "internal_adapters_http.correctReq": {
             context?: string;
             text?: string;
+        };
+        "internal_adapters_http.discardResp": {
+            discarded?: boolean;
         };
         "internal_adapters_http.economyConfigResp": {
             /** @description weight multiplier for already-cleared */

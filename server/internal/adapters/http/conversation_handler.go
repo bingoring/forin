@@ -36,6 +36,37 @@ type resumableResp struct {
 	Turns     []resumableTurn `json:"turns"`
 }
 
+type discardResp struct {
+	Discarded bool `json:"discarded"`
+}
+
+// discard — POST /conversation/{sessionId}/discard
+//
+// Leaving a role-play can mean "throw this away", not just "step out". A discarded
+// session is never offered back for resuming, so the next visit starts clean. The turns
+// stay: study time is derived from them and the learner did spend those minutes.
+//
+// @Summary Throw a conversation away so it is not offered for resuming
+// @Tags conversation
+// @Success 200 {object} discardResp
+// @Router /conversation/{sessionId}/discard [post]
+func (h *conversationHandler) discard(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	// Nothing to discard is a 200, not a 404. The learner asked for it to be gone and it
+	// is gone; whether a row moved is the server's business, and a failure here would put
+	// an error in front of someone who is on their way out.
+	ok, err := h.engine.Discard(r.Context(), uid, r.PathValue("sessionId"))
+	if err != nil {
+		httpx.Error(w, http.StatusBadGateway, "could not discard the conversation")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, discardResp{Discarded: ok})
+}
+
 // resumable — GET /scenarios/{id}/conversation/last
 //
 // @Summary Previous conversation for a scenario, if any

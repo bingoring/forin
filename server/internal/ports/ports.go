@@ -318,6 +318,11 @@ type ConversationRepo interface {
 	// up instead of being orphaned in the table. Returns ("", 0, nil) when there
 	// is nothing to resume — absence is not an error.
 	LatestSessionWithTurns(ctx context.Context, userID, scenarioID string) (sessionID string, turns int, err error)
+	// DiscardSession marks one of this learner's sessions as thrown away, so it is
+	// never offered back for resuming. Returns false when there is nothing to
+	// discard — no such session, not theirs, or already discarded — which is not an
+	// error: the caller wanted it gone and it is gone.
+	DiscardSession(ctx context.Context, userID, sessionID string) (bool, error)
 	SaveCorrection(ctx context.Context, userID, original, corrected, note, topicTag string) error
 }
 
