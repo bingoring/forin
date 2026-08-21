@@ -209,7 +209,7 @@ export const en: Record<string, string> = {
   'dialogue.leave': 'Leave',
   'dialogue.pronStep': 'Key phrase practice',
   'dialogue.endSituation': 'End situation',
-  'dialogue.logCount': 'Log {n}',
+  'dialogue.npcThinking': '{name} is replying…',
   'dialogue.voiceOn': 'Voice on',
   'dialogue.voiceOff': 'Voice off',
   'dialogue.tabChart': 'Chart', 'dialogue.tabMeds': 'Meds', 'dialogue.tabVitals': 'Vitals',

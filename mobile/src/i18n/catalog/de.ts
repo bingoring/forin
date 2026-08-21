@@ -208,7 +208,7 @@ export const de: Record<string, string> = {
   'dialogue.leave': 'Verlassen',
   'dialogue.pronStep': 'Aussprache der Kernsätze',
   'dialogue.endSituation': 'Situation beenden',
-  'dialogue.logCount': 'Verlauf {n}',
+  'dialogue.npcThinking': '{name} antwortet …',
   'dialogue.voiceOn': 'Stimme an',
   'dialogue.voiceOff': 'Stimme aus',
   'dialogue.tabChart': 'Kurve', 'dialogue.tabMeds': 'Medikation', 'dialogue.tabVitals': 'Vitalwerte',

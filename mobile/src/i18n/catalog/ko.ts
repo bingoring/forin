@@ -228,7 +228,7 @@ export const ko: Record<string, string> = {
   'dialogue.leave': '나가기',
   'dialogue.pronStep': '핵심 표현 발음 연습',
   'dialogue.endSituation': '상황 종료',
-  'dialogue.logCount': '기록 {n}',
+  'dialogue.npcThinking': '{name} 님이 대답하고 있어요…',
   'dialogue.voiceOn': '목소리 켜짐',
   'dialogue.voiceOff': '목소리 꺼짐',
   'dialogue.tabChart': '차트', 'dialogue.tabMeds': '약물', 'dialogue.tabVitals': '활력',

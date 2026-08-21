@@ -208,7 +208,7 @@ export const ja: Record<string, string> = {
   'dialogue.leave': '出る',
   'dialogue.pronStep': '重要表現の発音練習',
   'dialogue.endSituation': '状況を終える',
-  'dialogue.logCount': '記録 {n}',
+  'dialogue.npcThinking': '{name} さんが返信中です…',
   'dialogue.voiceOn': '音声オン',
   'dialogue.voiceOff': '音声オフ',
   'dialogue.tabChart': 'チャート', 'dialogue.tabMeds': '薬剤', 'dialogue.tabVitals': 'バイタル',

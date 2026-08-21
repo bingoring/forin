@@ -21,6 +21,7 @@ import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
+import { threadOf } from '@/data/thread';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -54,7 +55,6 @@ export default function DialogueRoute() {
   // every turn (dialogue_turns); this keeps the same history client-side so the
   // transcript sheet can show it without another round trip.
   const [transcript, setTranscript] = useState<{ role: 'user' | 'npc'; text: string }[]>([]);
-  const [logOpen, setLogOpen] = useState(false);
   // Patient lines are spoken aloud. Auto-play is the point (#17: hearing the line
   // is half of understanding it), so it needs a visible off switch — audio that
   // starts on its own and cannot be stopped is worse than no audio.
@@ -70,6 +70,8 @@ export default function DialogueRoute() {
   const [pending, setPending] = useState(false);
   const [hintOn, setHintOn] = useState(false);
   const [tool, setTool] = useState<'chart' | 'meds' | 'vitals' | null>(null); // QUICK INFO panel
+  const logRef = useRef<ScrollView>(null);
+  const messages = threadOf(transcript, npcLine);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
 
@@ -405,8 +407,15 @@ export default function DialogueRoute() {
         </Pressable>
       )}
 
-      {/* dialogue box */}
-      <View style={{ position: 'absolute', left: 14, right: 14, bottom: 20, zIndex: 6 }}>
+      {/* The conversation, from below QUICK INFO down to the input.
+          This used to be a VN box: one NPC line at a time, with everything said before it
+          behind a 기록 chip and a sheet. Reading back a turn meant leaving the conversation
+          to look at it, and a role-play is the one screen where what was already said is
+          the thing you need — you are being graded on the thread.
+          So the column fills the space instead: the exchange scrolls in the middle, the
+          input stays put at the bottom, newest at the bottom. A messaging screen, because
+          that is what this is. */}
+      <View style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41 + 34, bottom: 20, zIndex: 6 }}>
         {/* speaker tab (with an upward peach shadow) */}
         {/* Gap 12 against horizontal hitSlop 4 leaves 4px of dead space between these
             chips. The rule is what matters, not the numbers: horizontal slop must stay
@@ -432,50 +441,57 @@ export default function DialogueRoute() {
               <PixelIcon name="volume" color={C} size={11} sw={1.8} />
             </View>
           </Pressable>
-          {transcript.length > 0 && (
-            <Pressable onPress={() => { Keyboard.dismiss(); setLogOpen(true); }} hitSlop={{ top: 8, bottom: 8, left: 4, right: 4 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C, borderBottomWidth: 0, paddingVertical: 3, paddingHorizontal: 8 }}>
-                <PixelIcon name="note" color={C} size={11} sw={1.8} />
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t('dialogue.logCount', { n: Math.ceil(transcript.length / 2) })}</Text>
-              </View>
-            </Pressable>
-          )}
         </View>
 
-        {/* NPC utterance */}
-        <Shadowed offset={4}>
-          <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingHorizontal: 16, paddingTop: 14, paddingBottom: 12, minHeight: 76 }}>
-            {npcLine ? (
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(14), color: C, lineHeight: 22 }}>{showKo && npcLineKo ? npcLineKo : npcLine}</Text>
-            ) : (
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+        {/* the exchange */}
+        <ScrollView
+          ref={logRef}
+          style={{ flex: 1 }}
+          contentContainerStyle={{ paddingTop: 12, paddingBottom: 6 }}
+          showsVerticalScrollIndicator={false}
+          // Anchored to the bottom, like every messaging app: a new line arriving off
+          // screen is a line the learner does not know arrived.
+          onContentSizeChange={() => logRef.current?.scrollToEnd({ animated: true })}
+          keyboardShouldPersistTaps="handled"
+        >
+          {messages.map((m, i) => {
+            const mine = m.role === 'user';
+            const last = i === messages.length - 1;
+            return (
+              <View key={i} style={{ flexDirection: 'row', justifyContent: mine ? 'flex-end' : 'flex-start', marginBottom: 8 }}>
+                <View style={{ maxWidth: '86%' }}>
+                  <Shadowed offset={2.5} shadowColor={mine ? C : colors.peachShadow}>
+                    <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 20 }}>
+                        {last && !mine && showKo && npcLineKo ? npcLineKo : m.text}
+                      </Text>
+                      {/* Translation belongs to the line being worked on, so it is offered on
+                          the newest NPC bubble only — on every bubble it would be four buttons
+                          asking the same question. */}
+                      {last && !mine && !!npcLineKo && (
+                        <Pressable onPress={() => setShowKo((v) => !v)} style={{ marginTop: 8, alignSelf: 'flex-start' }}>
+                          <View style={{ backgroundColor: showKo ? colors.yellow : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
+                            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: C }}>{showKo ? t('dialogue.showSource') : t('dialogue.tapTranslate')}</Text>
+                          </View>
+                        </Pressable>
+                      )}
+                    </View>
+                  </Shadowed>
+                </View>
+              </View>
+            );
+          })}
+          {/* Waiting for the reply. In the thread rather than in a box of its own, so the
+              answer lands where the waiting was. */}
+          {!npcLine && (
+            <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginBottom: 8 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
                 <ActivityIndicator color={C} size="small" />
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>{npcName} 응답 중…</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C }}>{t('dialogue.npcThinking', { name: npcName })}</Text>
               </View>
-            )}
-            {/* translate row — available for scripted lines that carry a Korean translation */}
-            {!!npcLine && !!npcLineKo && (
-              <View style={{ marginTop: 10, paddingTop: 10, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>{showKo ? t('dialogue.sourceEn') : t('dialogue.translation')}</Text>
-                <Pressable onPress={() => setShowKo((v) => !v)}>
-                  <View style={{ backgroundColor: showKo ? colors.yellow : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{showKo ? t('dialogue.showSource') : t('dialogue.tapTranslate')}</Text>
-                  </View>
-                </Pressable>
-              </View>
-            )}
-            {/* next-turn cue */}
-            {!!npcLine && (
-              <View style={{ position: 'absolute', right: 10, bottom: -8 }}>
-                <Shadowed offset={2}>
-                  <View style={{ width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <PixelIcon name="chevron-down" color={C} size={13} sw={1.8} />
-                  </View>
-                </Shadowed>
-              </View>
-            )}
-          </View>
-        </Shadowed>
+            </View>
+          )}
+        </ScrollView>
 
         {/* HINT ON: suggested responses (from the scenario's key phrases) */}
         {hintOn && !!scenario?.keyPhrases?.length && (
@@ -646,27 +662,6 @@ export default function DialogueRoute() {
         </View>
       </BottomSheet>
 
-      {/* 대화 기록 — VN 박스는 현재 대사 하나만 보여주는 것이 핸드오프 설계이므로
-          기록은 걷어내지 않고 시트로 연다. 확장 가능: 긴 대화는 위로 스와이프. */}
-      <BottomSheet visible={logOpen} onClose={() => setLogOpen(false)}>
-        <View style={{ paddingHorizontal: 14, paddingTop: 4, paddingBottom: 20 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginBottom: 12 }}>
-            <PixelIcon name="note" color={C} size={16} sw={1.8} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>지금까지의 대화</Text>
-            <View style={{ flex: 1 }} />
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft }}>{npcName}</Text>
-          </View>
-          <ScrollView style={{ maxHeight: 420 }} showsVerticalScrollIndicator={false}>
-            {[...transcript, ...(npcLine ? [{ role: 'npc' as const, text: npcLine }] : [])].map((t, i) => (
-              <View key={i} style={{ flexDirection: 'row', justifyContent: t.role === 'user' ? 'flex-end' : 'flex-start', marginBottom: 8 }}>
-                <View style={{ maxWidth: '84%', backgroundColor: t.role === 'user' ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 8, paddingHorizontal: 11 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }}>{t.text}</Text>
-                </View>
-              </View>
-            ))}
-          </ScrollView>
-        </View>
-      </BottomSheet>
     </KeyboardAvoidingView>
   );
 }
