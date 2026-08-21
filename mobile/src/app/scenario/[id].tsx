@@ -13,12 +13,13 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 
 export default function ScenarioBriefingRoute() {
+  const t = useT();
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);

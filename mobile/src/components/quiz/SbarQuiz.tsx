@@ -7,7 +7,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 const TRACKS: Record<string, { name: string; color: string }> = {
   S: { name: 'Situation', color: '#EF4444' },
@@ -19,6 +19,7 @@ const TRACKS: Record<string, { name: string; color: string }> = {
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 
 export function SbarQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const cards = c.cards ?? [];
   const bankOrder = useMemo(() => shuffle(cards.map((_, i) => i)), [cards]); // stable shuffled bank

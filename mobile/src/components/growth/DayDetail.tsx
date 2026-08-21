@@ -6,7 +6,7 @@
 import { Pressable, Text, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 import { BAND_STYLE, bandLabelKey, type Band } from '@/data/shifts';
 import type { CalendarDay } from '@/api/client';
 
@@ -17,6 +17,7 @@ export function DayDetail({ day, job, onOpen }: {
   job?: string;
   onOpen(scenarioID: string): void;
 }) {
+  const t = useT();
   const style = BAND_STYLE[day.band as Band];
   return (
     <View style={{ marginTop: 12, borderWidth: 3, borderColor: C, backgroundColor: '#fff' }}>

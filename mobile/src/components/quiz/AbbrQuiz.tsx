@@ -10,9 +10,10 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 import { playSfx } from '@/lib/sfx';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const deck = c.deck ?? [];
   const [idx, setIdx] = useState(0);

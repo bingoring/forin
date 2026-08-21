@@ -10,7 +10,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 const KEYS = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', '⌫'];
 
@@ -28,6 +28,7 @@ function numEqual(entry: string, answer: string): boolean {
 }
 
 export function CalcQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const [entry, setEntry] = useState('');
   const [checked, setChecked] = useState(false);

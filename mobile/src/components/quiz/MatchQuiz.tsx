@@ -12,7 +12,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
 import { playSfx } from '@/lib/sfx';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 
@@ -22,6 +22,7 @@ const PITCH = ROW_H + GAP;
 const rowCenter = (i: number) => ROW_H / 2 + i * PITCH; // y-center of row i
 
 export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const pairs = c.pairs ?? [];
   // rights shuffled; each keeps its original pair index.

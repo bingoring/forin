@@ -26,7 +26,7 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { STEP_META, type StepKind } from '@/data/campus';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { Shadowed } from './parts';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 import { toggleSituationFavorite, useIsSituationFavorite } from '@/lib/favorites';
 
 const C = colors.ink;
@@ -56,6 +56,7 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
   onStart(scenarioID?: string): void;
   onWalk(deptCode: string): void;
 }) {
+  const t = useT();
   // Which curriculum is expanded. Defaults to the one being resumed, so opening the
   // floor you are working on already shows the next step.
   const [openKey, setOpenKey] = useState<string | null>(null);
@@ -259,6 +260,7 @@ function SituationRow({ s, onStart, highlight }: {
   onStart(scenarioID?: string): void;
   highlight?: boolean;
 }) {
+  const t = useT();
   const done = s.tagCode === 'cleared';
   const starred = useIsSituationFavorite(s.scenarioId);
   return (

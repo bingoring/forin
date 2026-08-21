@@ -12,7 +12,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, type Translate, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 // Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
@@ -23,7 +23,7 @@ const GRADES: { g: ReviewGrade; labelKey: string; bg: string; blurbKey: string; 
   { g: 'easy', labelKey: 'lab.easy', bg: colors.yellow, blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
 ];
 // humanize the SM-2 next-interval into a friendly "next review" label.
-function nextLabel(days: number): string {
+function nextLabel(t: Translate, days: number): string {
   if (days <= 1) return t('lab.tomorrow');
   if (days < 14) return t('lab.inDays', { n: days });
   if (days < 60) return t('lab.inWeeks', { n: Math.round(days / 7) });
@@ -33,14 +33,14 @@ function nextLabel(days: number): string {
 const TONES = [colors.mint, colors.peach, colors.blue, colors.lilac, colors.yellow];
 const toneOf = (tag: string) => TONES[[...tag].reduce((s, ch) => s + ch.charCodeAt(0), 0) % TONES.length];
 // A topicTag like "ER · 통증 사정" → { dept: "ER", tag: "통증 사정" }.
-function splitTag(topicTag: string): { dept: string; tag: string } {
+function splitTag(t: Translate, topicTag: string): { dept: string; tag: string } {
   const parts = (topicTag || '').split('·').map((s) => s.trim());
   if (parts.length >= 2) return { dept: parts[0], tag: parts.slice(1).join(' · ') };
   return { dept: topicTag || t('lab.correctionNote'), tag: '' };
 }
 
 export default function Lab() {
-  useLocale();
+  const t = useT();
   const router = useRouter();
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -64,17 +64,17 @@ export default function Lab() {
     let interval = 1;
     try { const r = await api.gradeReview(id, g); interval = r.intervalDays; } catch { /* best-effort; refreshes on next focus */ }
     // Confirm the grade so the card doesn't just silently disappear.
-    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(interval) });
+    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(t, interval) });
     setTimeout(() => setToast(null), 1600);
   };
 
   // Category filter tabs derived from card topicTags (handoff has a FilterTab row).
   const cats = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const c of cards) { const d = splitTag(c.topicTag).dept; counts.set(d, (counts.get(d) ?? 0) + 1); }
+    for (const c of cards) { const d = splitTag(t, c.topicTag).dept; counts.set(d, (counts.get(d) ?? 0) + 1); }
     return [{ id: 'ALL', label: t('board.all'), count: cards.length }, ...Array.from(counts, ([id, count]) => ({ id, label: id, count }))];
   }, [cards]);
-  const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(c.topicTag).dept === filter);
+  const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(t, c.topicTag).dept === filter);
 
   if (state !== 'ok') {
     return (
@@ -205,6 +205,7 @@ export default function Lab() {
 }
 
 function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string, g: ReviewGrade) => void }) {
+  const t = useT();
   const router = useRouter();
   const speak = () => Speech.speak(card.back, { language: 'en-US', rate: 0.92 });
   // Task 10 fix: SoT 04_SCREENS.md:397 describes THIS card (the review-lab
@@ -221,7 +222,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
       `/pronunciation/${encodeURIComponent(card.back.slice(0, 40))}?referenceText=${encodeURIComponent(card.back)}&origin=review&reviewCardId=${encodeURIComponent(card.id)}&ctx=${encodeURIComponent(card.context?.title || card.topicTag || '')}&step=${encodeURIComponent(t('lab.likeALocal'))}`
     );
   };
-  const { dept, tag } = splitTag(card.topicTag);
+  const { dept, tag } = splitTag(t, card.topicTag);
   const [showCtx, setShowCtx] = useState(false);
   const ctx = card.context;
   const hasCtx = !!ctx && (!!ctx.title || !!ctx.situation || !!ctx.npc);

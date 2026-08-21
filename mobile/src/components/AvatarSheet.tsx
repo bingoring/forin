@@ -13,7 +13,7 @@ import { BottomSheet } from '@/components/BottomSheet';
 import { PixelIcon } from '@/components/PixelIcon';
 import { PixelButton } from '@/components/PixelButton';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 import { playSfx } from '@/lib/sfx';
 import { useAvatar } from '@/hooks/useAvatar';
 import { HAIR_COLORS, HAIR_STYLES, SCRUB_COLORS, SKIN_TONES, setAvatar } from '@/lib/avatar';
@@ -22,6 +22,7 @@ import { faceScanAvailable } from '@/components/FaceScanSheet';
 const C = colors.ink;
 
 export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; onClose(): void; onScan(): void }) {
+  const t = useT();
   const avatar = useAvatar();
 
   return (

@@ -10,7 +10,7 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 const RANK_COLOR = ['#EF4444', '#F97316', '#FACC15', '#34D399', '#60A5FA'];
 // Fixed 5-level Emergency Severity Index.
@@ -49,6 +49,7 @@ export function TriageQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
 }
 
 function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const p = c.patient!;
   const correct = c.correctLevel!;
@@ -195,6 +196,7 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
 
 // ── legacy priority-ranking fallback (cards with order) ──
 function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const cards = c.cards ?? [];
   const bankOrder = useMemo(() => shuffle(cards.map((_, i) => i)), [cards]);

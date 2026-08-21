@@ -15,7 +15,7 @@ import { api, type QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 // Fallback bar heights, only used when real audio/waveform can't be fetched.
 const WAVE = [6, 12, 18, 10, 22, 14, 8, 16, 28, 18, 24, 12, 8, 14, 20, 30, 22, 16, 8, 12, 18, 26, 14, 8, 10, 16, 22, 28, 18, 12, 8, 14, 20, 16, 10, 18, 24, 12, 8, 14, 20, 16, 10, 6, 12, 18, 8, 14, 20, 10];
@@ -28,6 +28,7 @@ const mmss = (sec: number) => {
 };
 
 export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const choices = c.choices ?? [];
   const [picked, setPicked] = useState<number | null>(null);

@@ -12,7 +12,7 @@ import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { PressCard } from '@/components/PressCard';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 const CEFR = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -26,6 +26,7 @@ const LEVELS = [
 ];
 
 export default function Level() {
+  const t = useT();
   const router = useRouter();
   const params = useLocalSearchParams<{ nativeLang: string; destination: string; targetLang: string; job: string }>();
   const [level, setLevel] = useState('B1');

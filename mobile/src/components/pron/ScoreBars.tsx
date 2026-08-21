@@ -7,7 +7,7 @@
 // the row is dropped instead, leaving two bars.
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 type Props = {
   accuracy: number;
@@ -17,6 +17,7 @@ type Props = {
 };
 
 export function ScoreBars({ accuracy, fluency, prosody, prosodyAvailable }: Props) {
+  const t = useT();
   const rows: [string, number][] = [
     [t('pron.accuracy'), accuracy],
     [t('pron.fluency'), fluency],

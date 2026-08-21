@@ -13,7 +13,7 @@ import { Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 import { BottomSheet } from '@/components/BottomSheet';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 
@@ -29,8 +29,8 @@ export type InfoSheetData = {
 };
 
 export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClose: () => void }) {
+  const t = useT();
   // Re-render when the app language changes; the body strings below are translated.
-  useLocale();
   return (
     // Content-sized: this sheet says everything it has to say at rest, so opening it at
     // the top would be mostly empty paper.

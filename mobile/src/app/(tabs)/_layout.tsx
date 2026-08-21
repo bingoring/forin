@@ -5,7 +5,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { CampusIcon, BoardIcon, LabIcon, MeIcon } from '@/components/TabIcons';
 import { PixelIcon } from '@/components/PixelIcon';
 import { SheetOverlayHost } from '@/components/SheetOverlay';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 // Bottom nav: 홈 / 커리어 / 상황판 / 리뷰랩 / 프로필. 홈이 최좌측이자 앱의 기본
 // 진입 화면이다(handoff v21) — expo-router가 (tabs)/index.tsx를 첫 탭으로 잡는다. Black-line SVG icons (app's ink-outline
@@ -17,6 +17,7 @@ const tabIcon = (Icon: IconCmp) =>
   };
 
 export default function TabsLayout() {
+  const t = useT();
   return (
     // Sheets from any tab render inside this host — above the tab bar, and below whatever
     // screen the stack pushes on top of the tabs. See SheetOverlay for why that beats a

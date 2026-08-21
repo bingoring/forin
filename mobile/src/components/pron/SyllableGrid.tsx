@@ -6,7 +6,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PronCard } from './PronCard';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 export type SyllableChip = { label: string; band: 'ok' | 'weak' | 'bad' };
 
@@ -24,6 +24,7 @@ const LEGEND: [string, string][] = [
 ];
 
 export function SyllableGrid({ syllables }: { syllables: SyllableChip[] }) {
+  const t = useT();
   if (syllables.length === 0) return null;
 
   return (

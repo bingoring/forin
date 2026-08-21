@@ -13,7 +13,7 @@ import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { resetLabel } from '@/data/boardReset';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 
@@ -58,7 +58,7 @@ const URGENCY: Record<string, { tint: string; accent: string; label: string }> =
 const urg = (u: string) => URGENCY[u] ?? URGENCY.quest;
 
 export default function Board() {
-  useLocale(); // 언어가 바뀌면 부서 라벨까지 다시 그려져야 한다
+  const t = useT();
   const router = useRouter();
   const [cards, setCards] = useState<BoardCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -252,6 +252,7 @@ export default function Board() {
 
 // ── rich event card ──
 function EventCard({ c, onPress }: { c: BoardCard; onPress: () => void }) {
+  const t = useT();
   const u = urg(c.urgency);
   return (
     <Shadowed offset={3}>

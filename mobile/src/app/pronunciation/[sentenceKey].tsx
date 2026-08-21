@@ -41,7 +41,7 @@ import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmpli
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
-import { t, useLocale } from '@/i18n';
+import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
@@ -79,12 +79,19 @@ const WAV_16K_MONO: RecordingOptions = {
   web: {},
 };
 
-const NO_SPEECH_MSG = t('pron.noSpeech'); // business-rules §5, 422
-const SERVER_ERROR_MSG = t('pron.serverDown'); // business-rules §5, 5xx/네트워크
+// The three banner messages are KEYS here, resolved where they are shown.
+//
+// They used to be `const X = t('...')` at module scope — evaluated once when the module
+// was imported, so they were pinned to whatever language the app started in and ignored
+// every change after. The module-scope guard did not catch them because it only looked
+// inside array and object initializers; a scalar const was invisible to it.
+//
 // 4xx(invalid_audio/invalid_reference_text/invalid_review_card_id/소유권 403)는
-// SERVER_ERROR_MSG로 뭉뚱그리면 "일시적" 문제처럼 보이지만 실제로는 같은
+// SERVER_ERROR로 뭉뚱그리면 "일시적" 문제처럼 보이지만 실제로는 같은
 // 입력으로 재시도해도 매번 재현되는 결함이다(review finding) — 문구를 분리한다.
-const CLIENT_ERROR_MSG = t('pron.badRequest');
+const NO_SPEECH_KEY = 'pron.noSpeech'; // business-rules §5, 422
+const SERVER_ERROR_KEY = 'pron.serverDown'; // business-rules §5, 5xx/네트워크
+const CLIENT_ERROR_KEY = 'pron.badRequest';
 
 // iOS/Android metering is dBFS, roughly -160 (silence) to 0 (max). Normal
 // speech in a quiet room sits well above -50dB; clamping there keeps talking
@@ -110,7 +117,7 @@ function audioCacheKey(text: string): string {
   return (h >>> 0).toString(36);
 }
 
-function paceLabel(mineMs: number, nativeMs: number): string {
+function paceLabel(t: Translate, mineMs: number, nativeMs: number): string {
   if (nativeMs <= 0) return '';
   const ratio = mineMs / nativeMs;
   if (ratio > 1.15) return t('pron.paceSlow');
@@ -232,6 +239,7 @@ function TargetLine({ tokens }: { tokens: { w: string; hi?: 'drug' | 'num' }[] }
 function WavePanel({
   bars, elapsedSec, remainingSec, scoring,
 }: { bars: number[]; elapsedSec: number; remainingSec: number; scoring: boolean }) {
+  const t = useT();
   return (
     <PronCard bg={WAVE_DARK} style={styles.wavePanel}>
       <Wave bars={bars} color="#22D3EE" height={52} live={!scoring} />
@@ -302,8 +310,9 @@ function ScoreCard({
 // PronunciationResult.durationMs — both real numbers) as a caption above the
 // one Wave we DO have real amplitudes for: mine.
 function WaveCompare({ myBars, myDurationMs, nativeDurationMs }: { myBars: number[]; myDurationMs?: number; nativeDurationMs?: number }) {
+  const t = useT();
   const compare = myDurationMs != null && nativeDurationMs != null
-    ? t('pron.vsNative', { sec: (nativeDurationMs / 1000).toFixed(1), pace: paceLabel(myDurationMs, nativeDurationMs) })
+    ? t('pron.vsNative', { sec: (nativeDurationMs / 1000).toFixed(1), pace: paceLabel(t, myDurationMs, nativeDurationMs) })
     : null;
   return (
     <PronCard bg={WAVE_DARK} style={styles.waveCompare}>
@@ -320,6 +329,7 @@ function WaveCompare({ myBars, myDurationMs, nativeDurationMs }: { myBars: numbe
 }
 
 function ResultActions({ onRetry, onNext, nextDisabled }: { onRetry: () => void; onNext: () => void; nextDisabled: boolean }) {
+  const t = useT();
   return (
     <View style={{ marginTop: 15, marginHorizontal: 16, gap: 9 }}>
       <View style={{ flexDirection: 'row', gap: 9 }}>
@@ -349,6 +359,7 @@ function ResultActions({ onRetry, onNext, nextDisabled }: { onRetry: () => void;
 }
 
 function PermissionBody({ onOpenSettings, onRecheck }: { onOpenSettings: () => void; onRecheck: () => void }) {
+  const t = useT();
   return (
     <View style={{ marginHorizontal: 16, marginTop: 20, gap: 12 }}>
       <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.text, lineHeight: 18 }}>
@@ -361,7 +372,7 @@ function PermissionBody({ onOpenSettings, onRecheck }: { onOpenSettings: () => v
 }
 
 export default function PronunciationRoute() {
-  useLocale();
+  const t = useT();
   const params = useLocalSearchParams<{
     sentenceKey: string;
     referenceText?: string;
@@ -544,17 +555,17 @@ export default function PronunciationRoute() {
     } catch (e) {
       const status = statusOf(e);
       if (status === 422) {
-        setBanner(NO_SPEECH_MSG);
+        setBanner(t(NO_SPEECH_KEY));
         dispatch('NO_SPEECH');
       } else if (status !== undefined && status >= 400 && status < 500) {
         // Not transient — the same referenceText/audio will fail again.
         // Distinct copy + a dev warning so this doesn't masquerade as a
         // passing "server hiccup" (review finding).
         if (__DEV__) console.warn('[pronunciation] /pronunciation rejected the request (4xx) — this will recur, not a transient failure', status);
-        setBanner(CLIENT_ERROR_MSG);
+        setBanner(t(CLIENT_ERROR_KEY));
         dispatch('ERROR');
       } else {
-        setBanner(SERVER_ERROR_MSG);
+        setBanner(t(SERVER_ERROR_KEY));
         dispatch('ERROR');
       }
     } finally {

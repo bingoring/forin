@@ -26,12 +26,13 @@ import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 
 export default function QuizRoute() {
+  const t = useT();
   const { id, scenario, q, i } = useLocalSearchParams<{ id: string; scenario?: string; q?: string; i?: string }>();
   const router = useRouter();
   const { quiz, state } = useQuizData(id);
@@ -101,6 +102,7 @@ export default function QuizRoute() {
 
 // ── sentence-build quiz ───────────────────────────────────────────────
 function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullable<ReturnType<typeof useQuizData>['quiz']>; onExit: () => void; onComplete: () => void; progress?: { cur: number; total: number } }) {
+  const t = useT();
   const c = quiz.content!;
   const answers = c.answers ?? [];
   // Split the template into text segments; N answers → N slots between them.

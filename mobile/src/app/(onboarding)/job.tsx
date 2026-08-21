@@ -8,7 +8,7 @@ import { saveDraft } from '@/lib/onboardingDraft';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 // nameKey, not t(...): this array is evaluated once at import, so a call here
@@ -21,6 +21,7 @@ const JOBS = [
 ];
 
 export default function Job() {
+  const t = useT();
   const router = useRouter();
   const params = useLocalSearchParams<{ nativeLang: string; destination: string; targetLang: string }>();
 

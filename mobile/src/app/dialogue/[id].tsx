@@ -22,7 +22,7 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { playSfx } from '@/lib/sfx';
-import { t, useLocale } from '@/i18n';
+import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
@@ -36,7 +36,7 @@ const WAV_16K_MONO: RecordingOptions = {
 };
 
 export default function DialogueRoute() {
-  useLocale(); // 언어가 바뀌면 이 화면도 다시 그려져야 한다
+  const t = useT();
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
 
@@ -416,7 +416,7 @@ export default function DialogueRoute() {
           <View>
             <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
             <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleLabel(kind)}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleLabel(t, kind)}</Text>
             </View>
           </View>
           {/* Voice on/off, on the name plate of the voice it belongs to. Tapping it while
@@ -737,10 +737,11 @@ function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text
 /** QUICK INFO panel body — bedside reference derived from the scenario chart,
  *  with sensible fallbacks so a tool is never empty (prompts the nurse to assess). */
 function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | 'meds' | 'vitals'; p: { name?: string; sub?: string }; kind: RoleKind; chart?: import('@/api/client').ScenarioChart; brief?: string; tagline?: string }) {
+  const t = useT();
   if (tool === 'chart') {
     const rows: [string, string][] = [
       [t('role.patient'), p.name || '—'],
-      [t('dialogue.role'), roleLabel(kind)],
+      [t('dialogue.role'), roleLabel(t, kind)],
       ...(p.sub ? ([[t('dialogue.info'), p.sub]] as [string, string][]) : []),
       [t('dialogue.chiefComplaint'), tagline || '—'],
       [t('dialogue.allergies'), chart?.allergies || t('dialogue.toVerify')],
@@ -793,7 +794,7 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
 
 /** The persona's role in the reader's language. A function, so it re-resolves on
  *  every render — unlike a module constant, which would freeze at import. */
-function roleLabel(kind: RoleKind): string {
+function roleLabel(t: Translate, kind: RoleKind): string {
   return t(`role.${kind}`);
 }
 

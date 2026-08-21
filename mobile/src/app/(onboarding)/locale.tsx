@@ -11,7 +11,7 @@ import { PressCard } from '@/components/PressCard';
 import { FLAGS } from '@/components/onboardingArt';
 import { loadDraft, saveDraft } from '@/lib/onboardingDraft';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { LOCALES, LOCALE_META, completenessLabel, t, useLocale } from '@/i18n';
+import { LOCALES, LOCALE_META, completenessLabel, t, useLocale, useT } from '@/i18n';
 import { isDestinationReady } from '@/data/destinations';
 
 const C = colors.ink;
@@ -26,6 +26,7 @@ const DEST = [
 ];
 
 export default function Locale() {
+  const t = useT();
   const router = useRouter();
   const [native, setNative] = useState('ko');
   const [dest, setDest] = useState('us');

@@ -4,9 +4,10 @@
 import { Alert } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { ElevatorScreen, ELEVATOR_BUILDINGS, type ElevFloor } from '@/map/ElevatorScreen';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 export default function ElevatorRoute() {
+  const t = useT();
   const { building } = useLocalSearchParams<{ building: string }>();
   const router = useRouter();
 

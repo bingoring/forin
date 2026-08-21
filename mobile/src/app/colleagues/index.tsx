@@ -9,7 +9,7 @@ import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { CheerSheet } from '@/components/CheerSheet';
 import { api, type Colleague, type ColleagueRelation, type ColleagueRequest, type InviteCode } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 
@@ -22,6 +22,7 @@ export const REL: Record<ColleagueRelation, { labelKey: string; icon: IconName; 
 };
 
 export function RelTag({ relation }: { relation: ColleagueRelation }) {
+  const t = useT();
   const r = REL[relation] ?? REL.peer;
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: r.bg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
@@ -32,7 +33,7 @@ export function RelTag({ relation }: { relation: ColleagueRelation }) {
 }
 
 export default function ColleaguesScreen() {
-  useLocale();
+  const t = useT();
   const router = useRouter();
   const [rows, setRows] = useState<Colleague[]>([]);
   const [requests, setRequests] = useState<ColleagueRequest[]>([]);

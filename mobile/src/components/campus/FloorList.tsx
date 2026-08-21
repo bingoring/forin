@@ -11,7 +11,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, floorDeptCode, floorPlace } from '@/data/campus';
 import type { CurriculumBuilding, CurriculumFloor } from '@/api/client';
 import { Chip, CurriculumDots, Shadowed } from './parts';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 import { toggleFloorFavorite, useIsFloorFavorite } from '@/lib/favorites';
 
 const C = colors.ink;
@@ -22,6 +22,7 @@ export function FloorList({ buildings, onOpenFloor, focus }: {
   /** A floor arrived at from search or favourites: open its building and mark the row. */
   focus?: { building: string; floor: string } | null;
 }) {
+  const t = useT();
   // The building holding the resume target opens first — the learner's own place,
   // not a fixed default.
   const [open, setOpen] = useState<string>(() => {
@@ -89,6 +90,7 @@ function FloorRow({ floor, last, building, focused, onOpenFloor }: {
   focused?: boolean;
   onOpenFloor(floor: CurriculumFloor, deptCode?: string): void;
 }) {
+  const t = useT();
   // Tapping a floor opens the sheet. It used to expand inline instead, which put the
   // curricula in the list and left the floor's other situations behind a second,
   // smaller link — so the two things you can do on a floor sat at different depths.

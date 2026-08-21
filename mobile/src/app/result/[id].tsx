@@ -15,7 +15,7 @@ import { ECON } from '@/data/economy';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { playSfx } from '@/lib/sfx';
-import { t, useLocale } from '@/i18n';
+import { t, type Translate, useLocale, useT } from '@/i18n';
 import { AnimatedFace } from '@engine';
 import { useAvatar } from '@/hooks/useAvatar';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -47,13 +47,14 @@ function earnedBetween(before: Progress, after: Progress, totalAfter: number, de
 }
 
 // Parse the scenario's authored XP reward ("+ 120 XP" → 120); default 100.
-function baseXpOf(s: ScenarioDetail | null): number {
+function baseXpOf(t: Translate, s: ScenarioDetail | null): number {
   const r = s?.briefing?.rewards?.find((x) => x.label.includes(t('result.xp')) || /xp/i.test(x.value));
   const n = r ? parseInt(r.value.replace(/[^0-9]/g, ''), 10) : NaN;
   return Number.isFinite(n) && n > 0 ? n : ECON.scenarioBaseXP;
 }
 
 export default function ResultRoute() {
+  const t = useT();
   const { id, session } = useLocalSearchParams<{ id: string; session?: string }>();
   const router = useRouter();
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
@@ -114,7 +115,7 @@ export default function ResultRoute() {
           }
         } else {
           // Legacy / deep-link path (no dialogue session): a plain clear.
-          const a = await api.recordAttempt(id, baseXpOf(s));
+          const a = await api.recordAttempt(id, baseXpOf(t, s));
           if (!alive) return;
           setAfter(a);
           api.growthStats().then((st) => {
@@ -130,8 +131,8 @@ export default function ResultRoute() {
     return () => { alive = false; };
   }, [id, session]);
 
-  const awardedXp = grade ? grade.xpAwarded : baseXpOf(scenario);
-  const baseXp = baseXpOf(scenario);
+  const awardedXp = grade ? grade.xpAwarded : baseXpOf(t, scenario);
+  const baseXp = baseXpOf(t, scenario);
   const subtitle = scenario?.briefing?.dept || scenario?.title || '';
   const leveledUp = !!before && !!after && after.level > before.level;
   // Two distinct moments, two sounds. The clear fanfare fires once the server has
@@ -140,7 +141,6 @@ export default function ResultRoute() {
   // badge or a level-up is a second, rarer beat and gets the reward arpeggio;
   // when both happen the fanfare plays first and the reward lands on top of its
   // tail rather than cutting it off.
-  useLocale(); // 언어가 바뀌면 이 화면도 다시 그려져야 한다
   const avatar = useAvatar();
   const sounded = useRef(false);
   useEffect(() => {
@@ -277,6 +277,7 @@ export default function ResultRoute() {
 // ── XP + level card (real progress) ───────────────────────────────────
 // ── AI grade detail (score + goals + feedback) ────────────────────────
 function GradeDetail({ grade }: { grade: ScenarioGrade }) {
+  const t = useT();
   const good = grade.passed;
   const accent = good ? colors.mint : colors.peach;
   const shadow = good ? colors.mintShadow : colors.peachShadow;
@@ -333,6 +334,7 @@ function GradeDetail({ grade }: { grade: ScenarioGrade }) {
 }
 
 function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { baseXp: number; before: Progress | null; after: Progress; stickerTotal: number | null; showSticker?: boolean }) {
+  const t = useT();
   const startXp = before?.xp ?? Math.max(0, after.xp - baseXp);
   const inLevel = after.xp % ECON.xpPerLevel;
   const toNext = ECON.xpPerLevel - inLevel;
@@ -402,6 +404,7 @@ function CountUp({ from, to, suffix = '', style }: { from: number; to: number; s
 
 // ── static fallback (offline / not authed) ────────────────────────────
 function StaticRewards({ scenario, baseXp }: { scenario: ScenarioDetail | null; baseXp: number }) {
+  const t = useT();
   const rewards = scenario?.briefing?.rewards ?? [{ icon: '⭐', label: t('result.xp'), value: `+ ${baseXp} XP` }];
   return (
     <View>

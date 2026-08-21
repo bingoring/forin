@@ -13,7 +13,7 @@ import { CheerSheet } from '@/components/CheerSheet';
 import { Header, RelTag, Shadowed } from './index';
 import { api, type ColleagueDetail, type ColleagueRelation } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, type Translate, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 /** Weekday initials for a Mon-first strip, in the reader's language.
@@ -31,6 +31,7 @@ function weekdayInitials(locale: string): string[] {
 }
 
 export default function ColleagueDetailScreen() {
+  const t = useT();
   const locale = useLocale();
   const days = weekdayInitials(locale);
   const router = useRouter();
@@ -78,7 +79,7 @@ export default function ColleagueDetailScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <Header
         title={c.name}
-        sub={[c.destination?.toUpperCase(), relLabel(c.relation)].filter(Boolean).join(' · ')}
+        sub={[c.destination?.toUpperCase(), relLabel(t, c.relation)].filter(Boolean).join(' · ')}
         onBack={() => router.back()}
       />
 
@@ -207,7 +208,7 @@ export default function ColleagueDetailScreen() {
 }
 
 /** The relation in the reader's language. A function, so it re-resolves per render. */
-function relLabel(rel: ColleagueRelation): string {
+function relLabel(t: Translate, rel: ColleagueRelation): string {
   return t(`colleague.relation${rel[0].toUpperCase()}${rel.slice(1)}`);
 }
 

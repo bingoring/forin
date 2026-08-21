@@ -7,9 +7,10 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const g = c.gauge ?? { min: 0, max: 100, start: 0, target: 50, step: 1, unit: '' };
   const [val, setVal] = useState(g.start);

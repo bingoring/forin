@@ -19,7 +19,7 @@ import { completeSocialLogin, signInApple, signInKakao, devSignIn, syncOnboarded
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 // Lets the auth popup redirect back and dismiss the in-app browser.
 WebBrowser.maybeCompleteAuthSession();
@@ -50,6 +50,7 @@ function OneTap({ bg, color, shadow, icon, label, disabled, onPress }: {
 
 // Google — owns the auth hook, so it mounts ONLY when configured (see Login).
 function GoogleButton({ busy, complete }: { busy: boolean; complete: Complete }) {
+  const t = useT();
   const [, res, prompt] = Google.useAuthRequest({
     iosClientId: SOCIAL_CONFIG.googleIosClientId || undefined,
     androidClientId: SOCIAL_CONFIG.googleAndroidClientId || undefined,
@@ -67,11 +68,12 @@ function GoogleButton({ busy, complete }: { busy: boolean; complete: Complete })
 // Kakao — official SDK (KakaoTalk app when installed, account web login when not).
 // No auth hook to own, so unlike Google this needs no conditional mounting.
 function KakaoButton({ busy, complete }: { busy: boolean; complete: Complete }) {
+  const t = useT();
   return <OneTap bg="#FEE500" color="#3C1E1E" shadow="#CCB800" icon={<KakaoGlyph />} label={t('login.kakao')} disabled={busy} onPress={() => complete(t('provider.kakao'), signInKakao)} />;
 }
 
 export default function Login() {
-  useLocale();
+  const t = useT();
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 

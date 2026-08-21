@@ -15,7 +15,7 @@ import { BottomSheet } from '@/components/BottomSheet';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 import { playSfx } from '@/lib/sfx';
 import { sampleFace } from '@/lib/faceScan';
 import { setAvatar } from '@/lib/avatar';
@@ -57,6 +57,7 @@ const native = (() => {
 export const faceScanAvailable = native !== null;
 
 export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(): void }) {
+  const t = useT();
   // Hooks must run unconditionally, so the module check gates the RENDER below rather
   // than an early return above the hooks.
   const [permission, requestPermission] = native

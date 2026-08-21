@@ -13,12 +13,13 @@ import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { AnimatedFace } from '@engine';
 import { api, type Home } from '@/api/client';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 import { useAvatar } from '@/hooks/useAvatar';
 
 const C = colors.ink;
 
 export default function HomeTab() {
+  const t = useT();
   const router = useRouter();
   const [home, setHome] = useState<Home | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -113,6 +114,7 @@ export default function HomeTab() {
 
 // ── 인사 ───────────────────────────────────────────────────────────────────
 function Greeting({ date, done }: { date: string; done: boolean }) {
+  const t = useT();
   const locale = useLocale();
   const avatar = useAvatar();
   const d = new Date(date + 'T00:00:00');
@@ -202,6 +204,7 @@ function TodayOne({ one, onStart, firstRun }: {
   onStart: () => void;
   firstRun?: boolean;
 }) {
+  const t = useT();
   const icon: IconName = one.kind === 'quiz' ? 'question' : 'speech';
   return (
     <View style={{ marginHorizontal: space.lg, marginTop: 17 }}>
@@ -292,6 +295,7 @@ function MentorNote({ note }: { note: NonNullable<Home['mentorNote']> }) {
 
 // ── 오늘의 한마디 (탭하면 뜻) ──────────────────────────────────────────────
 function PhraseOfDay({ phrase, flipped, onFlip }: { phrase: NonNullable<Home['phrase']>; flipped: boolean; onFlip: () => void }) {
+  const t = useT();
   return (
     <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
       <Pressable onPress={onFlip} style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 13 }}>
@@ -320,6 +324,7 @@ function PhraseOfDay({ phrase, flipped, onFlip }: { phrase: NonNullable<Home['ph
 
 // ── 얕은 문 2개 ────────────────────────────────────────────────────────────
 function Doors({ waiting, onExplore, onBoard }: { waiting: number; onExplore: () => void; onBoard: () => void }) {
+  const t = useT();
   const Door = ({ icon, title, sub, bg, onPress }: { icon: IconName; title: string; sub: string; bg: string; onPress: () => void }) => (
     <Shadowed offset={3} style={{ flex: 1 }}>
       <Pressable onPress={onPress} style={{ backgroundColor: bg, borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 11 }}>
@@ -360,6 +365,7 @@ function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }
   colleagues: Home['colleagues']; total: number; unread: number; pending: number;
   onOpenAll: () => void; onAdd: () => void;
 }) {
+  const t = useT();
   return (
     <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
       <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C }}>

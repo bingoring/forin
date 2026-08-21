@@ -26,11 +26,12 @@ import { toggleFloorFavorite, toggleSituationFavorite, useFavorites, type FavFlo
 import type { DeptSituation } from '@/api/client';
 import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
 import { Shadowed } from '@/components/campus/parts';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 
 export default function Campus() {
+  const t = useT();
   const router = useRouter();
   const [enLevel, setEnLevel] = useState('B1');
   const [streak, setStreak] = useState(0);
@@ -332,6 +333,7 @@ export default function Campus() {
 /** The filled star that removes a favourite. Its own target, so tapping it does not
  *  also open the row it sits in. */
 function FavStar({ onPress }: { onPress: () => void }) {
+  const t = useT();
   return (
     <Pressable
       onPress={onPress}

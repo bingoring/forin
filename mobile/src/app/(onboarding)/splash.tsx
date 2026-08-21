@@ -7,11 +7,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PixelButton } from '@/components/PixelButton';
 import { VertGradient, Cloud, PixelSun, PixelPlane } from '@/components/onboardingArt';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 
 export default function Splash() {
+  const t = useT();
   const router = useRouter();
   return (
     <View style={{ flex: 1, backgroundColor: colors.peach }}>

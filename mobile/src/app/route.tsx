@@ -9,12 +9,13 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type RouteNode } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 import { PLACE_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
 
 export default function Route() {
+  const t = useT();
   const router = useRouter();
   const [nodes, setNodes] = useState<RouteNode[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');

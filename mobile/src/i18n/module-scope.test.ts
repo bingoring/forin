@@ -89,3 +89,22 @@ test("no t() call is trapped inside a string literal", () => {
   }
   expect(offenders).toEqual([]);
 });
+
+// A SCALAR module constant is the same bug in a smaller shape.
+//
+// The scan above matches `const NAME = [` and `const NAME = {`, so `const MSG = t('key')`
+// walked past it — three of them sat in the pronunciation screen, pinned to whatever
+// language the app started in and ignoring every change after. Nothing about being a
+// string rather than an array makes it evaluate later.
+test('no top-level `const X = t(...)`', () => {
+  const offenders: string[] = [];
+  for (const file of walk(SRC)) {
+    const src = readFileSync(file, 'utf8')
+      .replace(/\/\/[^\n]*/g, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '');
+    for (const m of src.matchAll(/^const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*t\(/gm)) {
+      offenders.push(`${relative(SRC, file)}: ${m[1]}`);
+    }
+  }
+  expect(offenders).toEqual([]);
+});

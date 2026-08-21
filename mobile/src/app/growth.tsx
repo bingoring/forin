@@ -13,7 +13,7 @@ import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { api, type CalendarDay, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, type Translate, useLocale, useT } from '@/i18n';
 import { ActivityCalendar } from '@/components/growth/ActivityCalendar';
 import { DayDetail } from '@/components/growth/DayDetail';
 import { PLACE_SCREEN } from '@/theme/transitions';
@@ -46,13 +46,14 @@ const STRIP_DAYS = 10;
 function localDate(d: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
-function fmtMinutes(seconds: number): string {
+function fmtMinutes(t: Translate, seconds: number): string {
   const m = Math.round(seconds / 60);
   if (m < 60) return t('growth.minutes', { n: m });
   return t('growth.hoursMinutes', { h: Math.floor(m / 60), m: m % 60 });
 }
 
 export default function Growth() {
+  const t = useT();
   const locale = useLocale();
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
@@ -266,7 +267,7 @@ export default function Growth() {
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             <StatTile label={t('growth.scenarios')} value={`${stats.scenariosWeek}`} sub={t('growth.thisWeekDone')} color={colors.mint} />
             <StatTile label={t('growth.newPhrases')} value={`${stats.newCardsWeek}`} sub={t('growth.thisWeekLearned')} color={colors.peach} />
-            <StatTile label={t('growth.talkTime')} value={fmtMinutes(stats.conversationSecondsWeek)} sub={t('growth.thisWeekFloor')} color={colors.pink} />
+            <StatTile label={t('growth.talkTime')} value={fmtMinutes(t, stats.conversationSecondsWeek)} sub={t('growth.thisWeekFloor')} color={colors.pink} />
             <StatTile label={t('growth.level')} value={`Lv.${progress.level}`} sub={careerFor(progress.level).label} color={colors.yellow} />
           </View>
 
@@ -318,6 +319,7 @@ const GAP = 12;
 const TILE = Math.floor((Dimensions.get('window').width - 36 /*page*/ - 34 /*card*/ - GAP * 3) / 4);
 
 function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoSheetData) => void }) {
+  const t = useT();
   const filled = Math.max(0, Math.min(SLOTS, earned));
   const howText = t('growth.stickerIntro');
   return (

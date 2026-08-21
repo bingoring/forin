@@ -8,7 +8,7 @@ import { PixelIcon } from '@/components/PixelIcon';
 import type { CheerPreset } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 const MAX = 60;
@@ -28,6 +28,7 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
   onSend: (preset: CheerPreset | undefined, message: string) => Promise<void>;
   onClose: () => void;
 }) {
+  const t = useT();
   const [preset, setPreset] = useState<CheerPreset | undefined>();
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);

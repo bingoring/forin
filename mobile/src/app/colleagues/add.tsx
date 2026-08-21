@@ -11,12 +11,12 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { Header, Shadowed } from './index';
 import { api, type CodePreview, type InviteCode } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, useLocale, useT } from '@/i18n';
 
 const C = colors.ink;
 
 export default function ColleagueAddScreen() {
-  useLocale();
+  const t = useT();
   const router = useRouter();
   const [mine, setMine] = useState<InviteCode | null>(null);
   const [input, setInput] = useState('');

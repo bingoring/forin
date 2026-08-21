@@ -9,9 +9,10 @@ import { QuizShell, type QuizProgress, Shadowed, C } from '@/components/quiz/Qui
 import { PixelButton } from '@/components/PixelButton';
 import { useEffect } from 'react';
 import { playSfx } from '@/lib/sfx';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 export function McqQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const opts = c.choices ?? [];
   const scene = c.scene || c.context || ''; // generated MCQs carry the situation in `context`

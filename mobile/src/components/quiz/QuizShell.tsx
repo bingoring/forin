@@ -9,7 +9,7 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useEffect } from 'react';
 import { playSfx } from '@/lib/sfx';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 export const C = colors.ink;
 
@@ -41,6 +41,7 @@ export type QuizProgress = { cur: number; total: number };
 export function QuizShell({ title, sub, zone, onExit, progress, children, footer }: {
   title: string; sub?: string; zone?: string; onExit: () => void; progress?: QuizProgress; children: React.ReactNode; footer: React.ReactNode;
 }) {
+  const t = useT();
   return (
     <View style={{ flex: 1, backgroundColor: '#1F2937' }}>
       <Stack.Screen options={{ headerShown: false, animation: 'fade' }} />
@@ -124,6 +125,7 @@ export function HintRow({ text }: { text: string }) {
 }
 
 export function ResultBanner({ correct }: { correct: boolean }) {
+  const t = useT();
   // The verdict sound lives here rather than in each quiz's submit handler: this
   // banner is exactly the moment a submit-style quiz reveals its answer, so the
   // 10 quizzes that render it get audio feedback from one place. Keyed on

@@ -9,9 +9,10 @@ import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/compone
 import { PixelButton } from '@/components/PixelButton';
 import { useEffect } from 'react';
 import { playSfx } from '@/lib/sfx';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 
 export function SpotErrorQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const rows = c.rows ?? [];
   const [picked, setPicked] = useState<number | null>(null);

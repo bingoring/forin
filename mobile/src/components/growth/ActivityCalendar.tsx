@@ -12,7 +12,7 @@ import { useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t } from '@/i18n';
+import { t, useT } from '@/i18n';
 import { BAND_STYLE, BANDS, bandLabelKey, usesShifts, type Band } from '@/data/shifts';
 import type { CalendarDay } from '@/api/client';
 
@@ -27,6 +27,7 @@ export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth
   onSelect(date: string | null): void;
   onMonth(delta: number): void;
 }) {
+  const t = useT();
   const byDate = useMemo(() => {
     const m: Record<string, CalendarDay> = {};
     for (const d of days) m[d.date] = d;

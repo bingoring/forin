@@ -8,15 +8,18 @@ import type { QuizDetail } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { PixelButton } from '@/components/PixelButton';
-import { t } from '@/i18n';
+import { useT, type Translate } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
-const speakerStyle = (track?: string) =>
+// Takes the translate function, like every other non-component helper: called from a
+// render, it is cached by its arguments, so the language has to be one of them.
+const speakerStyle = (t: Translate, track?: string) =>
   track === 'nurse' || track === 'player'
     ? { bg: colors.mint, label: t('role.nurse') }
     : { bg: colors.peach, label: t('role.patient') };
 
 export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
+  const t = useT();
   const c = quiz.content!;
   const cards = c.cards ?? [];
   const bankOrder = useMemo(() => shuffle(cards.map((_, i) => i)), [cards]);
@@ -29,7 +32,7 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
   const allCorrect = checked && correctness.every(Boolean);
 
   const turn = (ci: number, faded?: boolean) => {
-    const card = cards[ci]; const sp = speakerStyle(card.track);
+    const card = cards[ci]; const sp = speakerStyle(t, card.track);
     return (
       <View style={{ flexDirection: 'row', alignItems: 'stretch' }}>
         <View style={{ width: 46, backgroundColor: sp.bg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center', opacity: faded ? 0.6 : 1 }}>

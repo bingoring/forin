@@ -11,7 +11,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale } from '@/i18n';
+import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 const C = colors.ink;
@@ -24,7 +24,7 @@ const GRADES: { g: ReviewGrade; labelKey: string; bg: string; blurbKey: string }
 ];
 
 // humanize the SM-2 next-interval into a friendly "next review" label.
-function nextLabel(days: number): string {
+function nextLabel(t: Translate, days: number): string {
   if (days <= 1) return t('lab.tomorrow');
   if (days < 14) return t('lab.inDays', { n: days });
   if (days < 60) return t('lab.inWeeks', { n: Math.round(days / 7) });
@@ -32,7 +32,7 @@ function nextLabel(days: number): string {
 }
 
 export default function ReviewSession() {
-  useLocale();
+  const t = useT();
   const router = useRouter();
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -63,7 +63,7 @@ export default function ReviewSession() {
     let interval = 1;
     try { const r = await api.gradeReview(card.id, g); interval = r.intervalDays; } catch { /* best-effort */ }
     // Show a short confirmation so the card doesn't just vanish silently, then advance.
-    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(interval) });
+    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(t, interval) });
     setTimeout(() => {
       setToast(null);
       setBusy(false);

@@ -1,11 +1,20 @@
 // Translation lookup.
 //
-// `t()` is a plain function, not a hook, because module-level constants need it —
-// STEP_META, error mappers, the tab titles in a layout. A hook-only API forces
-// those into components or leaves them permanently Korean, which is how a codebase
-// ends up half-translated. Screens call useLocale() once so a language change
-// repaints them, then use t() freely.
-import { useSyncExternalStore } from 'react';
+// Two entry points, and which one to use is not a preference.
+//
+// `useT()` for anything a component renders. React Compiler is on (app.json
+// experiments) and caches expressions by their reactive inputs, so the plain `t("key")`
+// below — a constant argument reading a module store — was computed once per component
+// instance and reused: 66 of these calls sat in memo slots in the shipped bundle, and a
+// screen that re-rendered on a language change re-rendered with the strings it was first
+// mounted with. Subscribing with useLocale() and calling t() did NOT fix that; the
+// subscription re-rendered the component while the cached string stayed. The dependency
+// has to be visible to React, and useT() is what makes it visible.
+//
+// `t()` for code that is not rendering: an Alert in a handler, a module-level map of
+// labels. It reads the locale at call time, which is correct there — nothing is being
+// cached because nothing is being rendered.
+import { useMemo, useSyncExternalStore } from 'react';
 import { BASE_LOCALE, CATALOGS, MAP_CATALOGS, type Locale } from './locales';
 import { getLocale, subscribe } from './store';
 
@@ -23,7 +32,11 @@ export type Vars = Record<string, string | number>;
  * because catalogs are filled in over time and the app ships during that.
  */
 export function t(key: string, vars?: Vars): string {
-  const locale = getLocale();
+  return translateIn(getLocale(), key, vars);
+}
+
+/** The lookup itself, with the language named. Both entry points go through here. */
+function translateIn(locale: Locale, key: string, vars?: Vars): string {
   let s = CATALOGS[locale]?.[key];
   if (s === undefined && locale !== BASE_LOCALE) {
     s = CATALOGS[BASE_LOCALE][key];
@@ -36,6 +49,29 @@ export function t(key: string, vars?: Vars): string {
     return key;
   }
   return vars ? interpolate(s, vars) : s;
+}
+
+/** A translate function, same shape as `t`. */
+export type Translate = (key: string, vars?: Vars) => string;
+
+/**
+ * The translate function for the CURRENT language, as a value.
+ *
+ * Shaped like react-i18next's `const { t } = useTranslation()` on purpose: named `t` at
+ * the call site, every existing `t("key")` inside the component keeps working unchanged,
+ * and the identity changes when the language does — which is the whole point. The
+ * compiler can see that every string derived from it must be recomputed.
+ *
+ * Helpers that are not components take one of these as a parameter (`function
+ * nextLabel(t: Translate, ...)`) rather than reaching for the module-level t: a helper
+ * called from a render is cached by its arguments like anything else, so the translate
+ * function has to be one of them.
+ */
+export function useT(): Translate {
+  const locale = useLocale();
+  // Keyed on the locale, so the identity is stable while the language is and changes the
+  // moment it is not.
+  return useMemo(() => (key: string, vars?: Vars) => translateIn(locale, key, vars), [locale]);
 }
 
 /**

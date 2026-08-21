@@ -16,7 +16,7 @@ import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } fr
 import { ECON, careerFor } from '@/data/economy';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { isSfxMuted, playSfx, setSfxMuted } from '@/lib/sfx';
-import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale, t, useLocale, type Locale } from '@/i18n';
+import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale, t, type Locale, useLocale, useT } from '@/i18n';
 import { BottomSheet } from '@/components/BottomSheet';
 import { useAvatar } from '@/hooks/useAvatar';
 import { AvatarSheet } from '@/components/AvatarSheet';
@@ -32,6 +32,7 @@ const repMap = (st: Progress['reputation']) =>
   Object.fromEntries(st.map((s) => [s.key, s.value]));
 
 export default function Me() {
+  const t = useT();
   const avatar = useAvatar();
   const [avatarOpen, setAvatarOpen] = useState(false);
   const [scanOpen, setScanOpen] = useState(false);
