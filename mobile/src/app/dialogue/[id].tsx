@@ -353,11 +353,31 @@ export default function DialogueRoute() {
         </View>
       </View>
 
-      {/* patient portrait (L) */}
+      {/* patient portrait (L), with the voice control on it */}
       <View style={{ position: 'absolute', left: 16, top: 128, zIndex: 3 }}>
         <PortraitFrame name={p.name || 'NPC'} status={p.mood ? p.mood.toUpperCase() : undefined} sweat={showSweat}>
           <RoleFace kind={kind} hair={p.hair} expression={expr} size={120} />
         </PortraitFrame>
+        {/* On the portrait, because that is whose voice it turns off.
+            It used to sit beside a name plate above the dialogue box — and that plate was
+            the VN speaker tab, naming a person whose face and name are already on screen
+            twice over. With the exchange scrolling as bubbles, who is speaking is the side
+            the bubble is on, so the plate said nothing and the button was the only reason
+            it was still there. Tapping it while a line is playing stops that line. */}
+        <Pressable
+          onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          accessibilityRole="switch"
+          accessibilityState={{ checked: voiceOn }}
+          accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
+          style={{ position: 'absolute', right: -10, bottom: 26 }}
+        >
+          <Shadowed offset={2}>
+            <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+              <PixelIcon name="volume" color={voiceOn ? C : C + '66'} size={15} sw={1.9} />
+            </View>
+          </Shadowed>
+        </Pressable>
       </View>
 
       {/* player portrait (R) */}
@@ -416,33 +436,6 @@ export default function DialogueRoute() {
           input stays put at the bottom, newest at the bottom. A messaging screen, because
           that is what this is. */}
       <View style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41 + 34, bottom: 20, zIndex: 6 }}>
-        {/* speaker tab (with an upward peach shadow) */}
-        {/* Gap 12 against horizontal hitSlop 4 leaves 4px of dead space between these
-            chips. The rule is what matters, not the numbers: horizontal slop must stay
-            under half the gap, or neighbouring controls become one continuous target.
-            Vertical slop stays generous — there is nothing above or below to hit. */}
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, marginLeft: 12 }}>
-          <View>
-            <View style={{ position: 'absolute', left: 3, top: -2, right: -3, bottom: 2, backgroundColor: colors.peachShadow }} />
-            <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, borderBottomWidth: 0, paddingVertical: 4, paddingHorizontal: 12 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{npcName} · {roleLabel(t, kind)}</Text>
-            </View>
-          </View>
-          {/* Voice on/off, on the name plate of the voice it belongs to. Tapping it while
-              a line is playing stops that line. */}
-          <Pressable
-            onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
-            hitSlop={{ top: 8, bottom: 8, left: 4, right: 4 }}
-            accessibilityRole="switch"
-            accessibilityState={{ checked: voiceOn }}
-            accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: voiceOn ? colors.mint : colors.cream, borderWidth: 2.5, borderColor: C, borderBottomWidth: 0, paddingVertical: 3, paddingHorizontal: 8 }}>
-              <PixelIcon name="volume" color={C} size={11} sw={1.8} />
-            </View>
-          </Pressable>
-        </View>
-
         {/* the exchange */}
         <ScrollView
           ref={logRef}

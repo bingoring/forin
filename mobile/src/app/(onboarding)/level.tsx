@@ -64,7 +64,7 @@ export default function Level() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
       <Stack.Screen options={{ headerShown: false }} />
-      <OnbTopBar title="LEVEL CHECK" step="3/4" onBack={() => router.back()} />
+      <OnbTopBar title="LEVEL CHECK" step="3/4" onBack={() => (router.canGoBack() ? router.back() : router.replace('/job'))} />
       <ScrollView contentContainerStyle={{ padding: 22, paddingBottom: 40 }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(21), color: C, lineHeight: 30 }}>지금 영어 실력은?</Text>
         <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 6, marginBottom: 18 }}>시나리오 난이도가 자동으로 맞춰져요.</Text>

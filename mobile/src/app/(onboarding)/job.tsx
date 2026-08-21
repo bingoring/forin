@@ -21,6 +21,13 @@ const JOBS = [
 ];
 
 export default function Job() {
+  // Back has to work when there is nothing to pop.
+  //
+  // `router.back()` on its own throws when this screen is the whole stack, and it is the
+  // whole stack more often than the happy path suggests: a reload during development
+  // restores the current URL and nothing else, and a deep link into the middle of
+  // onboarding does the same to a real user. The step before this one is a known place,
+  // so naming it is better than asking the navigator to remember.
   const t = useT();
   const router = useRouter();
   const params = useLocalSearchParams<{ nativeLang: string; destination: string; targetLang: string }>();
@@ -33,7 +40,7 @@ export default function Job() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
       <Stack.Screen options={{ headerShown: false }} />
-      <OnbTopBar title="CAREER PATH" step="2/4" onBack={() => router.back()} />
+      <OnbTopBar title="CAREER PATH" step="2/4" onBack={() => (router.canGoBack() ? router.back() : router.replace('/locale'))} />
       <View style={{ paddingHorizontal: 22, paddingTop: 8 }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(21), color: C, lineHeight: 30 }}>어떤 일터로 떠날까요?</Text>
         <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 6, marginBottom: 18 }}>직무에 맞춘 현장 시나리오가 열립니다.</Text>
