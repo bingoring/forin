@@ -7,7 +7,7 @@ import { api } from '@/api/client';
 import { hydrateEconomy } from '@/data/economy';
 import { colors } from '@/theme/tokens';
 import { loadSfxPreference } from '@/lib/sfx';
-import { loadLocale, onLocaleChange } from '@/i18n';
+import { loadLocale, onLocaleChange, useLocale } from '@/i18n';
 import { loadAvatar } from '@/lib/avatar';
 import { loadFavorites } from '@/lib/favorites';
 
@@ -27,6 +27,20 @@ const FONTS = {
 // authed screen — or a Fast-Refresh reload that wipes the in-memory store —
 // still restores the token instead of failing with 401.
 export default function RootLayout() {
+  // Keyed on the language, which remounts every screen when it changes.
+  //
+  // Not decoration. React Compiler is on (app.json experiments) and it caches expressions
+  // by their reactive inputs — `t("campus.favTitle")` takes a constant, so 66 of these
+  // calls sit in memo slots in the bundle, computed once per component instance. A screen
+  // that re-renders on a language change therefore re-renders with the strings it was
+  // first mounted with. Subscribing to the locale is not enough; the cached value has to
+  // be thrown away, and remounting is what throws it away.
+  //
+  // The thorough alternative is a locale-bound translate function (`const tr = useT()`),
+  // which gives the compiler a reactive input at every call site — several hundred of them.
+  // Worth doing; not worth doing blind. Changing language costs the screens' scroll
+  // positions here, which for a setting people touch once is the right trade.
+  const locale = useLocale();
   const [hydrated, setHydrated] = useState(false);
   const [fontsLoaded, fontError] = useFonts(FONTS);
 
@@ -53,7 +67,7 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack key={locale} screenOptions={{ headerShown: false }}>
       <Stack.Screen name="(onboarding)" />
       <Stack.Screen name="(tabs)" />
     </Stack>

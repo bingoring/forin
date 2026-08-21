@@ -131,3 +131,28 @@ function sanitize(f: Partial<Favorites>): Favorites {
 export function useFavorites(): Favorites {
   return useSyncExternalStore(subscribeFavorites, getFavorites);
 }
+
+/**
+ * Is this floor starred — as a value DERIVED from the subscription.
+ *
+ * Components must use this rather than isFloorFavorite(), and the difference is not
+ * style. React Compiler is on (app.json experiments), so it memoises expressions by their
+ * reactive inputs. `isFloorFavorite({building, floor})` is a call whose arguments never
+ * change, so the compiler computed it once and reused it for the row's lifetime — calling
+ * useFavorites() alongside and throwing the result away subscribed the row to re-render
+ * but put nothing in the memo graph for the star to depend on. The row re-rendered with a
+ * cached answer, and the star only caught up when collapsing the building remounted it.
+ *
+ * Reading the snapshot the hook returns makes the dependency real.
+ */
+export function useIsFloorFavorite(f: { building: string; floor: string }): boolean {
+  const favorites = useFavorites();
+  const k = floorKey(f);
+  return favorites.floors.some((x) => floorKey(x) === k);
+}
+
+/** Is this situation starred. Same reason as useIsFloorFavorite. */
+export function useIsSituationFavorite(scenarioId: string): boolean {
+  const favorites = useFavorites();
+  return favorites.situations.some((x) => x.scenarioId === scenarioId);
+}

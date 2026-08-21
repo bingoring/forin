@@ -12,7 +12,7 @@ import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, floorDeptCode, floorPlace } fro
 import type { CurriculumBuilding, CurriculumFloor } from '@/api/client';
 import { Chip, CurriculumDots, Shadowed } from './parts';
 import { t } from '@/i18n';
-import { isFloorFavorite, toggleFloorFavorite, useFavorites } from '@/lib/favorites';
+import { toggleFloorFavorite, useIsFloorFavorite } from '@/lib/favorites';
 
 const C = colors.ink;
 
@@ -89,7 +89,6 @@ function FloorRow({ floor, last, building, focused, onOpenFloor }: {
   focused?: boolean;
   onOpenFloor(floor: CurriculumFloor, deptCode?: string): void;
 }) {
-  useFavorites(); // re-render when the star is tapped
   // Tapping a floor opens the sheet. It used to expand inline instead, which put the
   // curricula in the list and left the floor's other situations behind a second,
   // smaller link — so the two things you can do on a floor sat at different depths.
@@ -97,7 +96,7 @@ function FloorRow({ floor, last, building, focused, onOpenFloor }: {
   const code = floorDeptCode(floor.curricula);
   const place = floorPlace(floor);
   const resuming = floor.curricula.some((c) => c.resume);
-  const starred = isFloorFavorite({ building, floor: floor.floor });
+  const starred = useIsFloorFavorite({ building, floor: floor.floor });
 
   return (
     <Pressable

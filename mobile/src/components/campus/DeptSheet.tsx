@@ -27,7 +27,7 @@ import { STEP_META, type StepKind } from '@/data/campus';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { Shadowed } from './parts';
 import { t, useLocale } from '@/i18n';
-import { isSituationFavorite, toggleSituationFavorite, useFavorites } from '@/lib/favorites';
+import { toggleSituationFavorite, useIsSituationFavorite } from '@/lib/favorites';
 
 const C = colors.ink;
 const PAGE = 20;
@@ -58,7 +58,6 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
 }) {
   // Which curriculum is expanded. Defaults to the one being resumed, so opening the
   // floor you are working on already shows the next step.
-  useFavorites(); // re-render when a star is tapped
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [sits, setSits] = useState<DeptSituation[]>([]);
   const [hasMore, setHasMore] = useState(false);
@@ -261,7 +260,7 @@ function SituationRow({ s, onStart, highlight }: {
   highlight?: boolean;
 }) {
   const done = s.tagCode === 'cleared';
-  const starred = isSituationFavorite(s.scenarioId);
+  const starred = useIsSituationFavorite(s.scenarioId);
   return (
     <Shadowed offset={2.5} style={{ marginBottom: 8 }} shadowColor={highlight ? colors.yellowDeep : undefined}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: highlight ? colors.yellow : s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>

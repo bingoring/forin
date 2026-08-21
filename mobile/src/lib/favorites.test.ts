@@ -107,3 +107,37 @@ test('notifies subscribers so the star flips under the finger', async () => {
   off();
   expect(seen).toEqual([true]);
 });
+
+// Components must derive the star from the subscription, not from a bare module read.
+//
+// React Compiler is on (app.json experiments), so it caches expressions by their reactive
+// inputs. `isFloorFavorite({building, floor})` takes arguments that never change, so it was
+// computed once per row and reused; calling useFavorites() beside it and discarding the
+// result subscribed the row to re-render but left nothing for the star to depend on. The
+// row re-rendered with a cached answer and the star only caught up when the building was
+// collapsed and the row remounted.
+//
+// A source rule because the failure cannot be reproduced here: jest's transform does not
+// run the compiler, so the render test for this passed the whole time the device was wrong.
+test('screens read favourites through the hooks', () => {
+  const { readdirSync, readFileSync, statSync } = require('fs') as typeof import('fs');
+  const { join } = require('path') as typeof import('path');
+
+  const walk = (dir: string): string[] =>
+    readdirSync(dir).flatMap((n) => {
+      const p = join(dir, n);
+      if (statSync(p).isDirectory()) return walk(p);
+      return (p.endsWith('.tsx') || p.endsWith('.ts')) && !p.includes('.test.') ? [p] : [];
+    });
+
+  const root = join(__dirname, '..');
+  const offenders: string[] = [];
+  for (const p of [...walk(join(root, 'app')), ...walk(join(root, 'components'))]) {
+    const src = readFileSync(p, 'utf8').replace(/\/\/[^\n]*/g, '');
+    // The bare readers, called rather than merely imported for a test.
+    if (/(?<!use)\b(isFloorFavorite|isSituationFavorite)\s*\(/.test(src)) {
+      offenders.push(p.slice(root.length + 1));
+    }
+  }
+  expect(offenders).toEqual([]);
+});
