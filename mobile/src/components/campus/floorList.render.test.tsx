@@ -13,6 +13,7 @@ jest.mock('expo-audio', () => ({
   createAudioPlayer: () => ({ play: () => {}, pause: () => {}, seekTo: () => {}, remove: () => {} }),
 }));
 
+import { Animated } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { FloorList } from '@/components/campus/FloorList';
 import { loadFavorites } from '@/lib/favorites';
@@ -31,6 +32,27 @@ const BUILDINGS = [
             key: 'k', name: '중환자 투약', building: '본관', floor: '5F', where: '본관 5F 중환자실',
             done: 0, total: 1, state: 'todo',
             steps: [{ scenarioId: 'SCN-ICU-00001', name: 'a', state: 'todo', kind: 'dlg' }],
+          },
+        ],
+      },
+    ],
+  },
+] as unknown as CurriculumBuilding[];
+
+/** Two buildings: only one can be open, so the other's rows test the clipping. */
+const TWO = [
+  ...(BUILDINGS as unknown as { building: string; floors: unknown[] }[]),
+  {
+    building: '여성의료',
+    floors: [
+      {
+        floor: '3F',
+        where: '여성의료 3F 분만실',
+        curricula: [
+          {
+            key: 'k2', name: '분만 투약', building: '여성의료', floor: '3F', where: '여성의료 3F 분만실',
+            done: 0, total: 1, state: 'todo',
+            steps: [{ scenarioId: 'SCN-LD-00001', name: 'a', state: 'todo', kind: 'dlg' }],
           },
         ],
       },
@@ -103,4 +125,69 @@ it('does not open the floor when the star is tapped', async () => {
   });
   await act(async () => { await starButton(tree.root).props.onPress(); });
   expect(opened).toEqual([]);
+});
+
+describe('the building dropdown', () => {
+  /** The clipping container: the only view with overflow hidden and an animated height. */
+  function drawer(root: ReactTestInstance) {
+    return root.findAll(
+      (n) => typeof n.type === 'string' && n.props?.style?.overflow === 'hidden',
+      { deep: true }
+    )[0];
+  }
+
+  it('keeps a CLOSED building\'s floors mounted, and clips them', () => {
+    // `isOpen && rows` attached and detached the rows, so the list changed height in one
+    // frame and the rows arrived already in place — and the height was unknowable, which is
+    // what an animation needs.
+    //
+    // Two buildings on purpose: only one is open, so a test with one building would find
+    // its rows mounted either way and say nothing. That is exactly what the first version
+    // of this test did.
+    let tree!: ReturnType<typeof create>;
+    act(() => {
+      tree = create(<FloorList buildings={TWO} onOpenFloor={() => {}} />);
+    });
+    expect(drawer(tree.root)).toBeDefined();
+    // One star per floor across BOTH buildings, including the collapsed one.
+    expect(stars(tree.root)).toHaveLength(2);
+  });
+
+  it('animates the height on the JS driver, because height is a layout property', () => {
+    const spring = jest.spyOn(Animated, 'timing').mockImplementation(
+      ((v: Animated.Value, cfg: { toValue: number }) => ({
+        start: (cb?: () => void) => {
+          v.setValue(cfg.toValue);
+          cb?.();
+        },
+        stop: () => {},
+      })) as never
+    );
+    try {
+      let tree!: ReturnType<typeof create>;
+      act(() => {
+        tree = create(<FloorList buildings={BUILDINGS} onOpenFloor={() => {}} />);
+      });
+      // Report a content height, then collapse the building.
+      const inner = drawer(tree.root).children[0] as ReactTestInstance;
+      act(() => {
+        inner.props.onLayout({ nativeEvent: { layout: { height: 220, width: 320, x: 0, y: 0 } } });
+      });
+      const header = tree.root.findAll(
+        (n) => typeof n.type !== 'string' && typeof n.props?.onPress === 'function' && n.props?.accessibilityRole === 'button',
+        { deep: true }
+      )[0];
+      act(() => header.props.onPress());
+
+      expect(spring.mock.calls.length).toBeGreaterThan(0);
+      for (const [, cfg] of spring.mock.calls) {
+        // The native driver cannot touch height, and mixing drivers on one view throws.
+        expect((cfg as { useNativeDriver: boolean }).useNativeDriver).toBe(false);
+        // Fast enough not to stand between a tap and the list.
+        expect((cfg as { duration: number }).duration).toBeLessThanOrEqual(250);
+      }
+    } finally {
+      spring.mockRestore();
+    }
+  });
 });

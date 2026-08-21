@@ -4,8 +4,8 @@
 // of chapters, and a floor list whose CH.N chips pointed at those chapters — from a
 // client fixture that had drifted out of agreement with the server. The hierarchy
 // now IS the roadmap, and every row comes from one payload.
-import { useEffect, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { Animated, Easing, Pressable, Text, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, floorDeptCode, floorPlace } from '@/data/campus';
@@ -42,44 +42,120 @@ export function FloorList({ buildings, onOpenFloor, focus }: {
 
   return (
     <View>
-      {buildings.map((b) => {
-        const style = BUILDING_STYLE[b.building] ?? DEFAULT_BUILDING_STYLE;
-        const isOpen = open === b.building;
-        const total = b.floors.reduce((n, f) => n + f.curricula.length, 0);
-        const done = b.floors.reduce((n, f) => n + f.curricula.filter((c) => c.state === 'done').length, 0);
-        return (
-          <Shadowed key={b.building} offset={3} style={{ marginBottom: 10 }}>
-            <View style={{ borderWidth: 3, borderColor: C, backgroundColor: '#fff' }}>
-              <Pressable
-                onPress={() => setOpen(isOpen ? '' : b.building)}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 10, paddingHorizontal: 11, backgroundColor: isOpen ? colors.cream : '#fff', borderBottomWidth: isOpen ? 2.5 : 0, borderBottomColor: C }}
-              >
-                <View style={{ width: 28, height: 28, backgroundColor: style.accent, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <PixelIcon name={style.icon} color={C} size={16} sw={1.7} />
-                </View>
-                <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{b.building}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{style.subKey ? t(style.subKey) : ''}</Text>
-                </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{done}/{total}</Text>
-                <PixelIcon name={isOpen ? 'chevron-up' : 'chevron-down'} color={C} size={13} sw={2} />
-              </Pressable>
-
-              {isOpen && b.floors.map((f, fi) => (
-                <FloorRow
-                  key={f.floor}
-                  floor={f}
-                  last={fi === b.floors.length - 1}
-                  building={b.building}
-                  focused={focus?.building === b.building && focus?.floor === f.floor}
-                  onOpenFloor={onOpenFloor}
-                />
-              ))}
-            </View>
-          </Shadowed>
-        );
-      })}
+      {buildings.map((b) => (
+        <BuildingCard
+          key={b.building}
+          building={b}
+          isOpen={open === b.building}
+          onToggle={() => setOpen(open === b.building ? '' : b.building)}
+          focus={focus}
+          onOpenFloor={onOpenFloor}
+        />
+      ))}
     </View>
+  );
+}
+
+/**
+ * One building, with its floors sliding out rather than appearing.
+ *
+ * The floors used to be `isOpen && …`, so they were attached and detached — the list
+ * changed height in one frame and the rows arrived already in place. Nothing said which
+ * part of the screen had just changed, which on a five-row list means finding your place
+ * again on every tap.
+ *
+ * Height is animated, so the rows are always mounted and clipped. That is also what makes
+ * the height knowable: `height: auto` cannot be animated, so the content is measured at
+ * its natural size — overflow does not affect layout, so onLayout reports the full height
+ * even while the container is clipped to nothing.
+ *
+ * 190ms with an ease-out: long enough to read as movement, short enough that it never
+ * stands between a tap and the list. A layout property cannot go on the native driver, and
+ * one accordion's height on the JS driver is cheap.
+ */
+function BuildingCard({ building: b, isOpen, onToggle, focus, onOpenFloor }: {
+  building: CurriculumBuilding;
+  isOpen: boolean;
+  onToggle(): void;
+  focus?: { building: string; floor: string } | null;
+  onOpenFloor(floor: CurriculumFloor, deptCode?: string): void;
+}) {
+  const t = useT();
+  const style = BUILDING_STYLE[b.building] ?? DEFAULT_BUILDING_STYLE;
+  const total = b.floors.reduce((n, f) => n + f.curricula.length, 0);
+  const done = b.floors.reduce((n, f) => n + f.curricula.filter((c) => c.state === 'done').length, 0);
+
+  const [contentH, setContentH] = useState(0);
+  const anim = useRef(new Animated.Value(isOpen ? 1 : 0)).current;
+  // No animation on the first paint: the value starts where the state already is, so the
+  // building that opens by default is simply open rather than unfolding at you.
+  useEffect(() => {
+    Animated.timing(anim, {
+      toValue: isOpen ? 1 : 0,
+      duration: 190,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [isOpen, anim]);
+
+  return (
+    <Shadowed offset={3} style={{ marginBottom: 10 }}>
+      <View style={{ borderWidth: 3, borderColor: C, backgroundColor: '#fff' }}>
+        <Pressable
+          onPress={onToggle}
+          accessibilityRole="button"
+          accessibilityState={{ expanded: isOpen }}
+          style={{ flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 10, paddingHorizontal: 11, backgroundColor: isOpen ? colors.cream : '#fff' }}
+        >
+          <View style={{ width: 28, height: 28, backgroundColor: style.accent, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+            <PixelIcon name={style.icon} color={C} size={16} sw={1.7} />
+          </View>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{b.building}</Text>
+            <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{style.subKey ? t(style.subKey) : ''}</Text>
+          </View>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{done}/{total}</Text>
+          {/* One chevron that turns, rather than two that swap. Swapping says the state
+              changed; turning says it is changing, alongside the rows. */}
+          <Animated.View
+            style={{ transform: [{ rotate: anim.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '180deg'] }) }] }}
+          >
+            <PixelIcon name="chevron-down" color={C} size={13} sw={2} />
+          </Animated.View>
+        </Pressable>
+
+        <Animated.View
+          style={{
+            overflow: 'hidden',
+            // Until the content has been measured there is no height to interpolate to, and
+            // `undefined` would mean "natural" — which is the closed building showing its
+            // floors for a frame. Zero is the honest placeholder; the measurement still
+            // happens, because clipping does not change layout.
+            height: contentH === 0 ? (isOpen ? undefined : 0) : anim.interpolate({ inputRange: [0, 1], outputRange: [0, contentH] }),
+            borderTopWidth: isOpen ? 2.5 : 0,
+            borderTopColor: C,
+          }}
+        >
+          <View
+            onLayout={(e) => {
+              const h = e.nativeEvent.layout.height;
+              if (h > 0 && Math.abs(h - contentH) > 1) setContentH(h);
+            }}
+          >
+            {b.floors.map((f, fi) => (
+              <FloorRow
+                key={f.floor}
+                floor={f}
+                last={fi === b.floors.length - 1}
+                building={b.building}
+                focused={focus?.building === b.building && focus?.floor === f.floor}
+                onOpenFloor={onOpenFloor}
+              />
+            ))}
+          </View>
+        </Animated.View>
+      </View>
+    </Shadowed>
   );
 }
 
