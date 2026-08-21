@@ -217,7 +217,11 @@ run "GET" "/scenarios/SCN-ER-00001/conversation/last"; last=$(pj "d.get('session
 run "POST" "/conversation/$sid/discard"; gone=$(pj "str(d.get('discarded'))")
 [ "$CODE" = 200 ] && [ "$gone" = "True" ] && ok "conversation discarded" || bad "discard → $CODE discarded=$gone"
 run "GET" "/scenarios/SCN-ER-00001/conversation/last"; last2=$(pj "d.get('sessionId','')")
-[ -z "$last2" ] && ok "discarded conversation is not offered back" || bad "still offered: '$last2'"
+# Not "nothing is offered" — THIS session is not offered. A database with earlier
+# conversations in it (staging accumulates them across smoke runs) correctly surfaces the
+# next-newest one, and asserting emptiness made the feature look broken on the only
+# environment where the assertion ran against real history.
+[ "$last2" != "$sid" ] && ok "discarded conversation is not offered back (now: '${last2:-none}')" || bad "still offering the discarded session '$last2'"
 # Asking twice is not an error — the learner wanted it gone and it is gone.
 run "POST" "/conversation/$sid/discard"; again=$(pj "str(d.get('discarded'))")
 [ "$CODE" = 200 ] && [ "$again" = "False" ] && ok "second discard is a no-op, not a failure" || bad "re-discard → $CODE discarded=$again"
