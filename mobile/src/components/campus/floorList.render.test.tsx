@@ -13,6 +13,8 @@ jest.mock('expo-audio', () => ({
   createAudioPlayer: () => ({ play: () => {}, pause: () => {}, seekTo: () => {}, remove: () => {} }),
 }));
 
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { Animated } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { FloorList } from '@/components/campus/FloorList';
@@ -153,41 +155,13 @@ describe('the building dropdown', () => {
     expect(stars(tree.root)).toHaveLength(2);
   });
 
-  it('animates the height on the JS driver, because height is a layout property', () => {
-    const spring = jest.spyOn(Animated, 'timing').mockImplementation(
-      ((v: Animated.Value, cfg: { toValue: number }) => ({
-        start: (cb?: () => void) => {
-          v.setValue(cfg.toValue);
-          cb?.();
-        },
-        stop: () => {},
-      })) as never
-    );
-    try {
-      let tree!: ReturnType<typeof create>;
-      act(() => {
-        tree = create(<FloorList buildings={BUILDINGS} onOpenFloor={() => {}} />);
-      });
-      // Report a content height, then collapse the building.
-      const inner = drawer(tree.root).children[0] as ReactTestInstance;
-      act(() => {
-        inner.props.onLayout({ nativeEvent: { layout: { height: 220, width: 320, x: 0, y: 0 } } });
-      });
-      const header = tree.root.findAll(
-        (n) => typeof n.type !== 'string' && typeof n.props?.onPress === 'function' && n.props?.accessibilityRole === 'button',
-        { deep: true }
-      )[0];
-      act(() => header.props.onPress());
-
-      expect(spring.mock.calls.length).toBeGreaterThan(0);
-      for (const [, cfg] of spring.mock.calls) {
-        // The native driver cannot touch height, and mixing drivers on one view throws.
-        expect((cfg as { useNativeDriver: boolean }).useNativeDriver).toBe(false);
-        // Fast enough not to stand between a tap and the list.
-        expect((cfg as { duration: number }).duration).toBeLessThanOrEqual(250);
-      }
-    } finally {
-      spring.mockRestore();
-    }
+  it('uses the shared disclosure rather than its own animation', () => {
+    // Timing and driver are asserted where they live, in collapsible.test.tsx. What this
+    // file cares about is that the building dropdown goes through it — a screen that grows
+    // its own accordion is how the two drift apart.
+    const src = readFileSync(join(__dirname, 'FloorList.tsx'), 'utf8');
+    expect(src).toMatch(/<Collapsible open=\{isOpen\}/);
+    expect(src).toMatch(/<DisclosureChevron open=\{isOpen\}/);
+    expect(src).not.toMatch(/Animated\.timing/);
   });
 });

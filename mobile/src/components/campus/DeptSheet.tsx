@@ -27,6 +27,7 @@ import { STEP_META, type StepKind } from '@/data/campus';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { Shadowed } from './parts';
 import { t, useLocale, useT } from '@/i18n';
+import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { toggleSituationFavorite, useIsSituationFavorite } from '@/lib/favorites';
 
 const C = colors.ink;
@@ -170,11 +171,11 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
                         </View>
                       )}
                       <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{c.done}/{c.total}</Text>
-                      <PixelIcon name={on ? 'chevron-up' : 'chevron-down'} color={C} size={12} sw={2} />
+                      <DisclosureChevron open={on} color={C} size={12} />
                     </Pressable>
 
-                    {on && (
-                      <View style={{ borderTopWidth: 2, borderTopColor: C + '33', borderStyle: 'dotted', paddingVertical: 7, paddingHorizontal: 10, gap: 6 }}>
+                    <Collapsible open={on}>
+                      <View style={{ borderTopWidth: on ? 2 : 0, borderTopColor: C + '33', borderStyle: 'dotted', paddingVertical: 7, paddingHorizontal: 10, gap: 6 }}>
                         {(c.steps ?? []).map((st, i) => {
                           const meta = STEP_META[st.kind as StepKind] ?? STEP_META.dlg;
                           const locked = st.state === 'lock';
@@ -208,7 +209,7 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
                           );
                         })}
                       </View>
-                    )}
+                    </Collapsible>
                   </View>
                 </Shadowed>
               );

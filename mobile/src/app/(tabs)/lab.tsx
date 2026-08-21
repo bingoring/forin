@@ -12,6 +12,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { faceOf } from '@/data/reviewCardFace';
+import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 
@@ -122,10 +123,10 @@ export default function Lab() {
           <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
             <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
               <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(12), color: C }}>복습 등급이 뭔가요?</Text>
-              <PixelIcon name={guideOpen ? 'chevron-up' : 'chevron-down'} color={colors.textSoft} size={14} sw={1.8} />
+              <DisclosureChevron open={guideOpen} color={colors.textSoft} size={14} sw={1.8} />
             </Pressable>
-            {guideOpen && (
-              <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8, borderTopWidth: 2, borderTopColor: C }}>
+            <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 2 : 0, borderTopColor: C }}>
+              <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8 }}>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
                   카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
                 </Text>
@@ -141,7 +142,7 @@ export default function Lab() {
                   {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
                 </Text>
               </View>
-            )}
+            </Collapsible>
           </View>
         </Shadowed>
 
@@ -286,14 +287,14 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
                 <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
                     <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>맥락</Text>
-                    <PixelIcon name={showCtx ? 'chevron-up' : 'chevron-down'} color={C} size={11} sw={1.8} />
+                    <DisclosureChevron open={showCtx} color={C} size={11} sw={1.8} />
                   </View>
                 </View>
                 {!showCtx && !!ctx?.title && (
                   <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft }}>{ctx.title}</Text>
                 )}
               </Pressable>
-              {showCtx && (
+              <Collapsible open={showCtx}>
                 <View style={{ marginTop: 8, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
                   {!!ctx?.title && <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 4 }}>{ctx.title}</Text>}
                   {!!ctx?.situation && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, lineHeight: 15 }}>{ctx.situation}</Text>}
@@ -305,7 +306,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
                     </View>
                   )}
                 </View>
-              )}
+              </Collapsible>
             </View>
           )}
 
