@@ -209,6 +209,7 @@ export const de: Record<string, string> = {
   'dialogue.pronStep': 'Aussprache der Kernsätze',
   'dialogue.endSituation': 'Situation beenden',
   'dialogue.npcThinking': '{name} antwortet …',
+  'dialogue.you': 'ICH · Pflegekraft (neu)',
   'dialogue.voiceOn': 'Stimme an',
   'dialogue.voiceOff': 'Stimme aus',
   'dialogue.tabChart': 'Kurve', 'dialogue.tabMeds': 'Medikation', 'dialogue.tabVitals': 'Vitalwerte',

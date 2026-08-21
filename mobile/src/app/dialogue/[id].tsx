@@ -15,13 +15,14 @@ import {
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
 import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteAsync } from 'expo-file-system/legacy';
-import { RoleFace, type RoleKind, type Expression } from '@engine';
+import { FacePlayer, RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
+import { useAvatar } from '@/hooks/useAvatar';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -71,6 +72,7 @@ export default function DialogueRoute() {
   const [hintOn, setHintOn] = useState(false);
   const [tool, setTool] = useState<'chart' | 'meds' | 'vitals' | null>(null); // QUICK INFO panel
   const logRef = useRef<ScrollView>(null);
+  const avatar = useAvatar();
   const messages = threadOf(transcript, npcLine);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
@@ -370,7 +372,11 @@ export default function DialogueRoute() {
           accessibilityRole="switch"
           accessibilityState={{ checked: voiceOn }}
           accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
-          style={{ position: 'absolute', right: -10, bottom: 26 }}
+          // Beside the frame, clear of it: `bottom: 26` put it over the name plate, which
+          // is the portrait's own label. The frame is 110 wide, so 118 starts 8px past its
+          // edge — adjacent enough to read as belonging to the portrait, outside enough not
+          // to sit on it.
+          style={{ position: 'absolute', left: 118, top: 96 }}
         >
           <Shadowed offset={2}>
             <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
@@ -380,10 +386,15 @@ export default function DialogueRoute() {
         </Pressable>
       </View>
 
-      {/* player portrait (R) */}
+      {/* player portrait (R) — the face the learner built, not a stock nurse.
+          It was RoleFace with a hardcoded hair colour, so editing your portrait in the
+          profile tab changed the profile tab. FacePlayer already takes the four saved
+          values and the profile tab already draws it that way; this screen was the one
+          that had not been told. The frame takes the chosen scrub colour for the same
+          reason it does there. */}
       <View style={{ position: 'absolute', right: 16, top: 158, zIndex: 2, opacity: 0.85 }}>
-        <PortraitFrame name="YOU · Junior Nurse" hue={colors.mint}>
-          <RoleFace kind="nurse" hair="#3C2A18" expression="focused" size={120} />
+        <PortraitFrame name={t('dialogue.you')} hue={avatar.scrub}>
+          <FacePlayer size={120} expression="focused" avatar={avatar} />
         </PortraitFrame>
       </View>
 

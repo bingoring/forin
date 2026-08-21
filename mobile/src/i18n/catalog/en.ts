@@ -210,6 +210,7 @@ export const en: Record<string, string> = {
   'dialogue.pronStep': 'Key phrase practice',
   'dialogue.endSituation': 'End situation',
   'dialogue.npcThinking': '{name} is replying…',
+  'dialogue.you': 'YOU · Junior Nurse',
   'dialogue.voiceOn': 'Voice on',
   'dialogue.voiceOff': 'Voice off',
   'dialogue.tabChart': 'Chart', 'dialogue.tabMeds': 'Meds', 'dialogue.tabVitals': 'Vitals',
