@@ -93,3 +93,16 @@ export function floorDeptCode(
   }
   return best;
 }
+
+/**
+ * The floor's place name, with the building and floor prefix stripped.
+ *
+ * "본관 1F 응급의료센터" → "응급의료센터". The two rows above already say which building
+ * and floor this is, so repeating them inside the row is noise. Lives here rather than in
+ * the screen because the search results need exactly the same name — two copies of this
+ * expression is two places for it to drift.
+ */
+export function floorPlace(floor: { floor: string; where: string; curricula: { where: string }[] }): string {
+  const raw = floor.curricula[0]?.where ?? floor.where;
+  return raw.replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where;
+}

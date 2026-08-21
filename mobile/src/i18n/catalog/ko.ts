@@ -44,6 +44,10 @@ export const ko: Record<string, string> = {
   // ── career tab ───────────────────────────────────────────────────────────
   'campus.title': '커리어',
   'campus.resume': '이어하기',
+  'campus.searchPlaceholder': '과·병동·커리큘럼 이름으로 찾기',
+  'campus.searchNone': "'{q}'와 맞는 곳이 없어요.",
+  'campus.searchMore': '이 밖에 {n}곳 더 있어요. 더 좁혀서 찾아보세요.',
+  'campus.searchClear': '지우기',
   'campus.resumeNext': '다음 · {name}',
   'campus.resumePending': '준비 중',
   'campus.allDone': '모든 커리큘럼을 마쳤어요',

@@ -35,6 +35,10 @@ export const de: Record<string, string> = {
 
   'campus.title': 'Karriere',
   'campus.resume': 'Fortsetzen',
+  'campus.searchPlaceholder': 'Station, Bereich oder Kursreihe finden',
+  'campus.searchNone': "Nichts passt zu '{q}'.",
+  'campus.searchMore': '{n} weitere. Suche etwas eingrenzen.',
+  'campus.searchClear': 'Leeren',
   'campus.resumeNext': 'Als Nächstes · {name}',
   'campus.resumePending': 'In Vorbereitung',
   'campus.allDone': 'Du hast alle Curricula abgeschlossen',

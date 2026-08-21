@@ -36,6 +36,10 @@ export const en: Record<string, string> = {
 
   'campus.title': 'Career',
   'campus.resume': 'Continue',
+  'campus.searchPlaceholder': 'Find a ward, unit, or curriculum',
+  'campus.searchNone': "Nothing matches '{q}'.",
+  'campus.searchMore': '{n} more beyond these. Try narrowing it down.',
+  'campus.searchClear': 'Clear',
   'campus.resumeNext': 'Next · {name}',
   'campus.resumePending': 'Coming soon',
   'campus.allDone': 'You finished every curriculum',

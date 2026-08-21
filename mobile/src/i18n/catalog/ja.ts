@@ -35,6 +35,10 @@ export const ja: Record<string, string> = {
 
   'campus.title': 'キャリア',
   'campus.resume': '続ける',
+  'campus.searchPlaceholder': '科・病棟・カリキュラム名で探す',
+  'campus.searchNone': "'{q}' に一致する場所がありません。",
+  'campus.searchMore': 'ほかに{n}件あります。もう少し絞ってください。',
+  'campus.searchClear': 'クリア',
   'campus.resumeNext': '次 · {name}',
   'campus.resumePending': '準備中',
   'campus.allDone': 'すべてのカリキュラムを終えました',
