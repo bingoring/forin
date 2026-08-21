@@ -591,6 +591,18 @@ export const api = {
   },
 
   /**
+   * Situations matching a title, across every department.
+   *
+   * The dept listing above needs to be told which ward to look in; this does not, which
+   * is the point — the learner has one search box and no reason to know that the ward is
+   * how the bank is organised.
+   */
+  async searchSituations(q: string, limit = 20): Promise<DeptSituation[]> {
+    const { data } = await http.get('/me/situations', { params: { q, limit } });
+    return (data as { situations?: DeptSituation[] }).situations ?? [];
+  },
+
+  /**
    * The whole path, grouped building → floor → curriculum, with per-user progress.
    *
    * Grouped by the server because the ORDER is the learning order, derived from a

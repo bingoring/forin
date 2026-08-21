@@ -4,20 +4,23 @@
 // of chapters, and a floor list whose CH.N chips pointed at those chapters — from a
 // client fixture that had drifted out of agreement with the server. The hierarchy
 // now IS the roadmap, and every row comes from one payload.
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, floorDeptCode } from '@/data/campus';
+import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, floorDeptCode, floorPlace } from '@/data/campus';
 import type { CurriculumBuilding, CurriculumFloor } from '@/api/client';
 import { Chip, CurriculumDots, Shadowed } from './parts';
 import { t } from '@/i18n';
+import { isFloorFavorite, toggleFloorFavorite, useFavorites } from '@/lib/favorites';
 
 const C = colors.ink;
 
-export function FloorList({ buildings, onOpenFloor }: {
+export function FloorList({ buildings, onOpenFloor, focus }: {
   buildings: CurriculumBuilding[];
   onOpenFloor(floor: CurriculumFloor, deptCode?: string): void;
+  /** A floor arrived at from search or favourites: open its building and mark the row. */
+  focus?: { building: string; floor: string } | null;
 }) {
   // The building holding the resume target opens first — the learner's own place,
   // not a fixed default.
@@ -29,6 +32,12 @@ export function FloorList({ buildings, onOpenFloor }: {
     }
     return buildings[0]?.building ?? '';
   });
+
+  // Arriving from search or a favourite opens the building it is in, so the row can be
+  // seen in its place rather than only in the sheet that covers it.
+  useEffect(() => {
+    if (focus?.building) setOpen(focus.building);
+  }, [focus?.building, focus?.floor]);
 
   return (
     <View>
@@ -60,6 +69,8 @@ export function FloorList({ buildings, onOpenFloor }: {
                   key={f.floor}
                   floor={f}
                   last={fi === b.floors.length - 1}
+                  building={b.building}
+                  focused={focus?.building === b.building && focus?.floor === f.floor}
                   onOpenFloor={onOpenFloor}
                 />
               ))}
@@ -71,20 +82,22 @@ export function FloorList({ buildings, onOpenFloor }: {
   );
 }
 
-function FloorRow({ floor, last, onOpenFloor }: {
+function FloorRow({ floor, last, building, focused, onOpenFloor }: {
   floor: CurriculumFloor;
   last: boolean;
+  building: string;
+  focused?: boolean;
   onOpenFloor(floor: CurriculumFloor, deptCode?: string): void;
 }) {
+  useFavorites(); // re-render when the star is tapped
   // Tapping a floor opens the sheet. It used to expand inline instead, which put the
   // curricula in the list and left the floor's other situations behind a second,
   // smaller link — so the two things you can do on a floor sat at different depths.
   // The sheet shows both: curricula first, then the situations, scrolling on.
   const code = floorDeptCode(floor.curricula);
-  // Strip the "본관 1F " prefix the server sends for the lift's benefit — the building
-  // and floor are already the two rows above this one.
-  const place = floor.curricula[0]?.where.replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where;
+  const place = floorPlace(floor);
   const resuming = floor.curricula.some((c) => c.resume);
+  const starred = isFloorFavorite({ building, floor: floor.floor });
 
   return (
     <Pressable
@@ -92,7 +105,9 @@ function FloorRow({ floor, last, onOpenFloor }: {
       style={{
         flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 11,
         borderBottomWidth: last ? 0 : 1.5, borderBottomColor: C + '33', borderStyle: 'dotted',
-        backgroundColor: resuming ? colors.paper : 'transparent',
+        // Focused beats resuming: you were just sent here, and that is the row you are
+        // looking for. It fades on the next tap because focus is cleared then.
+        backgroundColor: focused ? colors.yellow : resuming ? colors.paper : 'transparent',
       }}
     >
       <View style={{ width: 40, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
@@ -108,6 +123,17 @@ function FloorRow({ floor, last, onOpenFloor }: {
         </View>
       </View>
       {resuming && <Chip label={t('step.now')} bg={colors.yellowDeep} color={C} />}
+      {/* The star is its own target, not part of the row: tapping it must not open the
+          floor. hitSlop stays inside half the gap so the two never merge. */}
+      <Pressable
+        onPress={() => void toggleFloorFavorite({ building, floor: floor.floor, place, code })}
+        hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
+        accessibilityRole="switch"
+        accessibilityState={{ checked: starred }}
+        accessibilityLabel={t(starred ? 'campus.favRemove' : 'campus.favAdd')}
+      >
+        <PixelIcon name="star" color={starred ? colors.yellowDeep : C + '44'} size={17} sw={2} />
+      </Pressable>
     </Pressable>
   );
 }

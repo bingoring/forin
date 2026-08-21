@@ -11,17 +11,19 @@
 // locked: every floor and curriculum is open and the sequence lives inside a
 // curriculum, so "what next" is answered by the home tab rather than by walls here — this
 // tab answers "where is it", which is the question a 24-floor building actually raises.
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type Progress, type Curriculum, type CurriculumBuilding, type CurriculumFloor } from '@/api/client';
-import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE } from '@/data/campus';
+import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, deptCodeOf, floorDeptCode, floorPlace } from '@/data/campus';
 import { PixelButton } from '@/components/PixelButton';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { FloorList } from '@/components/campus/FloorList';
 import { useIsActiveTab } from '@/lib/nav';
 import { PixelIcon } from '@/components/PixelIcon';
 import { searchCampus, type CampusHit } from '@/data/campusSearch';
+import { toggleFloorFavorite, toggleSituationFavorite, useFavorites, type FavFloor } from '@/lib/favorites';
+import type { DeptSituation } from '@/api/client';
 import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
 import { Shadowed } from '@/components/campus/parts';
 import { t, useLocale } from '@/i18n';
@@ -41,13 +43,69 @@ export default function Campus() {
   const onThisTab = useIsActiveTab('campus');
   const [query, setQuery] = useState('');
   const found = useMemo(() => searchCampus(buildings, query.trim()), [buildings, query]);
+  const favorites = useFavorites();
+
+  // A floor arrived at from search or a favourite: the building opens and the row is lit.
+  const [focus, setFocus] = useState<{ building: string; floor: string } | null>(null);
+  const [focusSit, setFocusSit] = useState<DeptSituation | null>(null);
+
+  // Situations live on the server — 3,203 of them — so this half of the search is a
+  // request, not a filter. Debounced because it fires per keystroke, and sequenced so a
+  // slow answer for "흉" cannot land after the answer for "흉통".
+  const [sitHits, setSitHits] = useState<DeptSituation[]>([]);
+  const sitSeq = useRef(0);
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) { setSitHits([]); return; } // one letter matches most of the bank
+    const seq = ++sitSeq.current;
+    const timer = setTimeout(() => {
+      api.searchSituations(q, 12)
+        .then((r) => { if (seq === sitSeq.current) setSitHits(r); })
+        .catch(() => { if (seq === sitSeq.current) setSitHits([]); });
+    }, 220);
+    return () => clearTimeout(timer);
+  }, [query]);
 
   // A hit opens the same sheet a floor row does, so search is a shortcut to the existing
   // surface rather than a second way of showing a floor.
   const openHit = (h: CampusHit) => {
-    const b = buildings.find((x) => x.building === h.building);
-    const f = b?.floors.find((x) => x.floor === h.floor);
-    if (f) openFloor(f, h.code);
+    goToFloor({ building: h.building, floor: h.floor, place: h.place, code: h.code });
+  };
+
+  /**
+   * Leave the search and land on the floor: the query clears, the building opens, the row
+   * lights up, and the sheet comes up over it. Clearing the query matters — coming back
+   * out of the sheet onto a list of search results, rather than the place you were sent
+   * to, is the part that would feel like nothing happened.
+   */
+  const goToFloor = (target: FavFloor, situation?: DeptSituation) => {
+    const b = buildings.find((x) => x.building === target.building);
+    const f = b?.floors.find((x) => x.floor === target.floor);
+    setQuery('');
+    setFocus({ building: target.building, floor: target.floor });
+    setFocusSit(situation ?? null);
+    if (f) openFloor(f, target.code ?? undefined);
+  };
+
+  /** Where a situation id lives: the floor whose department matches its bank. */
+  const floorOfScenario = (scenarioId: string): FavFloor | undefined => {
+    const dept = deptCodeOf(scenarioId);
+    if (!dept) return undefined;
+    for (const b of buildings) {
+      for (const f of b.floors) {
+        if (floorDeptCode(f.curricula) === dept) {
+          return { building: b.building, floor: f.floor, place: floorPlace(f), code: dept };
+        }
+      }
+    }
+    return undefined;
+  };
+
+  const openSituation = (s: DeptSituation) => {
+    const home = floorOfScenario(s.scenarioId);
+    // No floor teaches this bank — open it directly rather than refusing to move.
+    if (!home) { open(s.scenarioId); return; }
+    goToFloor(home, s);
   };
 
   useFocusEffect(
@@ -134,7 +192,7 @@ export default function Campus() {
 
         {query.trim().length > 0 ? (
           <View style={{ gap: 7 }}>
-            {found.hits.length === 0 ? (
+            {found.hits.length === 0 && sitHits.length === 0 ? (
               <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 22 }}>
                 {t('campus.searchNone', { q: query.trim() })}
               </Text>
@@ -157,6 +215,30 @@ export default function Campus() {
                     </View>
                   </Pressable>
                 ))}
+                {sitHits.length > 0 && (
+                  <>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginTop: 8 }}>
+                      {t('campus.favSituations')}
+                    </Text>
+                    {sitHits.map((s) => (
+                      <Pressable
+                        key={s.scenarioId}
+                        onPress={() => openSituation(s)}
+                        style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
+                      >
+                        <View style={{ width: 44, backgroundColor: s.urgent ? colors.red : colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{s.lv}</Text>
+                        </View>
+                        <View style={{ flex: 1, minWidth: 0 }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{s.name}</Text>
+                          <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>
+                            {floorOfScenario(s.scenarioId)?.place ?? s.room ?? ''}
+                          </Text>
+                        </View>
+                      </Pressable>
+                    ))}
+                  </>
+                )}
                 {found.truncated > 0 && (
                   <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textFaint, textAlign: 'center', marginTop: 4 }}>
                     {t('campus.searchMore', { n: found.truncated })}
@@ -170,10 +252,58 @@ export default function Campus() {
             {t('campus.loading')}
           </Text>
         ) : (
-          <FloorList buildings={buildings} onOpenFloor={openFloor} />
+          <>
+            {(favorites.floors.length > 0 || favorites.situations.length > 0) && (
+              /* One flat block, deliberately: a starred ward and a starred situation are
+                 both "take me back there", and splitting them into two sections doubles
+                 the chrome to say the same thing. The row's badge says which it is. */
+              <View style={{ marginBottom: 16 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                  <PixelIcon name="star" color={colors.yellowDeep} size={14} sw={2} />
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('campus.favTitle')}</Text>
+                </View>
+                <View style={{ gap: 7 }}>
+                  {favorites.floors.map((f) => (
+                    <Pressable
+                      key={`f/${f.building}/${f.floor}`}
+                      onPress={() => goToFloor(f)}
+                      style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
+                    >
+                      <View style={{ width: 44, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>{f.floor}</Text>
+                      </View>
+                      <View style={{ flex: 1, minWidth: 0 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{f.place}</Text>
+                        <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{f.building}</Text>
+                      </View>
+                      <FavStar onPress={() => void toggleFloorFavorite(f)} />
+                    </Pressable>
+                  ))}
+                  {favorites.situations.map((sv) => (
+                    <Pressable
+                      key={`s/${sv.scenarioId}`}
+                      onPress={() => open(sv.scenarioId)}
+                      style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
+                    >
+                      <View style={{ width: 44, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
+                        <PixelIcon name="play" color={C} size={11} sw={1.9} />
+                      </View>
+                      <View style={{ flex: 1, minWidth: 0 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{sv.name}</Text>
+                        <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>
+                          {floorOfScenario(sv.scenarioId)?.place ?? sv.where ?? ''}
+                        </Text>
+                      </View>
+                      <FavStar onPress={() => void toggleSituationFavorite(sv)} />
+                    </Pressable>
+                  ))}
+                </View>
+              </View>
+            )}
+            <FloorList buildings={buildings} onOpenFloor={openFloor} focus={focus} />
+          </>
         )}
       </ScrollView>
-
       {/* ── explore dock (opt-in tile walk) ── */}
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 12, paddingHorizontal: 14 }}>
         <Shadowed offset={3}>
@@ -188,10 +318,29 @@ export default function Campus() {
       <DeptSheet
         target={dept}
         suspended={!onThisTab}
-        onClose={() => setDept(null)}
+        focusSituation={focusSit}
+        // Closing clears the highlight too: it marked where you were sent, and you have
+        // been. Leaving it lit would make the next visit look like another arrival.
+        onClose={() => { setDept(null); setFocusSit(null); setFocus(null); }}
         onStart={open}
         onWalk={(code) => router.push(`/interior/INT-${code}-00001`)}
       />
     </View>
+  );
+}
+
+/** The filled star that removes a favourite. Its own target, so tapping it does not
+ *  also open the row it sits in. */
+function FavStar({ onPress }: { onPress: () => void }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
+      accessibilityRole="switch"
+      accessibilityState={{ checked: true }}
+      accessibilityLabel={t('campus.favRemove')}
+    >
+      <PixelIcon name="star" color={colors.yellowDeep} size={17} sw={2} />
+    </Pressable>
   );
 }

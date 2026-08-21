@@ -27,6 +27,7 @@ import { STEP_META, type StepKind } from '@/data/campus';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { Shadowed } from './parts';
 import { t, useLocale } from '@/i18n';
+import { isSituationFavorite, toggleSituationFavorite, useFavorites } from '@/lib/favorites';
 
 const C = colors.ink;
 const PAGE = 20;
@@ -39,16 +40,25 @@ export type DeptTarget = {
   curricula: Curriculum[];
 };
 
-export function DeptSheet({ target, suspended, onClose, onStart, onWalk }: {
+export function DeptSheet({ target, suspended, focusSituation, onClose, onStart, onWalk }: {
   target: DeptTarget | null;
   /** Hidden because a screen was pushed on top, NOT dismissed. See campus.tsx. */
   suspended?: boolean;
+  /**
+   * A situation the learner arrived at from search, shown at the top and marked.
+   *
+   * Carried in rather than hunted for: the dept list pages 20 at a time, so scrolling to
+   * an arbitrary situation could mean chasing pages until it turns up. The search already
+   * has the card — handing it over costs one row and no requests.
+   */
+  focusSituation?: DeptSituation | null;
   onClose(): void;
   onStart(scenarioID?: string): void;
   onWalk(deptCode: string): void;
 }) {
   // Which curriculum is expanded. Defaults to the one being resumed, so opening the
   // floor you are working on already shows the next step.
+  useFavorites(); // re-render when a star is tapped
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [sits, setSits] = useState<DeptSituation[]>([]);
   const [hasMore, setHasMore] = useState(false);
@@ -204,32 +214,21 @@ export function DeptSheet({ target, suspended, onClose, onStart, onWalk }: {
               );
             })}
 
+            {!!focusSituation && (
+              <View style={{ marginBottom: 12 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginTop: 6, marginBottom: 8 }}>{t('campus.foundSituation')}</Text>
+                <SituationRow s={focusSituation} onStart={onStart} highlight />
+              </View>
+            )}
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginTop: 6, marginBottom: 8 }}>{t('campus.deptSituations')}</Text>
             {sits.length === 0 && (
               <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 14 }}>
                 지금은 불러올 상황이 없어요.
               </Text>
             )}
-            {sits.map((s, i) => {
-              const done = s.tagCode === 'cleared';
-              return (
-                <Shadowed key={i} offset={2.5} style={{ marginBottom: 8 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>
-                    <View style={{ flex: 1, minWidth: 0 }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-                        <View style={{ backgroundColor: done ? colors.mint : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
-                        </View>
-                        {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
-                      </View>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{s.name}</Text>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>Lv.{s.lv} · 약 {s.min}분</Text>
-                    </View>
-                    <PixelButton label={done ? t('common.review') : t('common.start')} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
-                  </View>
-                </Shadowed>
-              );
-            })}
+            {sits.map((s, i) => (
+              <SituationRow key={i} s={s} onStart={onStart} />
+            ))}
             {hasMore && (
               <Pressable onPress={loadMore} style={{ paddingVertical: 12, alignItems: 'center' }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft }}>더 많은 상황 불러오기</Text>
@@ -246,5 +245,49 @@ export function DeptSheet({ target, suspended, onClose, onStart, onWalk }: {
         </View>
       )}
     </BottomSheet>
+  );
+}
+
+/**
+ * One situation card — the list's rows and the one search sent you to.
+ *
+ * Extracted rather than copied: the tag colour, the urgency, the cleared dimming and the
+ * star are four states, and a second copy is a second place for the same situation to look
+ * different depending on how you reached it.
+ */
+function SituationRow({ s, onStart, highlight }: {
+  s: DeptSituation;
+  onStart(scenarioID?: string): void;
+  highlight?: boolean;
+}) {
+  const done = s.tagCode === 'cleared';
+  const starred = isSituationFavorite(s.scenarioId);
+  return (
+    <Shadowed offset={2.5} style={{ marginBottom: 8 }} shadowColor={highlight ? colors.yellowDeep : undefined}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: highlight ? colors.yellow : s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
+            <View style={{ backgroundColor: done ? colors.mint : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
+            </View>
+            {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
+          </View>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{s.name}</Text>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>
+            {t('campus.situationMeta', { lv: s.lv, min: s.min })}
+          </Text>
+        </View>
+        <Pressable
+          onPress={() => void toggleSituationFavorite({ scenarioId: s.scenarioId, name: s.name, where: s.room })}
+          hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
+          accessibilityRole="switch"
+          accessibilityState={{ checked: starred }}
+          accessibilityLabel={t(starred ? 'campus.favRemove' : 'campus.favAdd')}
+        >
+          <PixelIcon name="star" color={starred ? colors.yellowDeep : C + '44'} size={17} sw={2} />
+        </Pressable>
+        <PixelButton label={done ? t('common.review') : t('common.start')} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
+      </View>
+    </Shadowed>
   );
 }
