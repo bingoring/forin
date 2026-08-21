@@ -10,7 +10,8 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
-import { PixelIcon } from '@/components/PixelIcon';
+import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { faceOf } from '@/data/reviewCardFace';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 
@@ -223,6 +224,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
     );
   };
   const { dept, tag } = splitTag(t, card.topicTag);
+  const face = faceOf(card.source);
   const [showCtx, setShowCtx] = useState(false);
   const ctx = card.context;
   const hasCtx = !!ctx && (!!ctx.title || !!ctx.situation || !!ctx.npc);
@@ -243,10 +245,24 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
         </View>
 
         <View style={{ paddingVertical: 10, paddingHorizontal: 12 }}>
-          {/* bad */}
+          {/* the front — struck out only when it is something that WAS said. See
+              data/reviewCardFace: a graded scenario also files "you could have said this",
+              and drawing one of those behind a red ✕ claims the learner said a sentence
+              they never said. */}
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start' }}>
-            <Badge text="✕" bg="#FEE2E2" color="#B91C1C" />
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: colors.textFaint, textDecorationLine: 'line-through', lineHeight: 17 }}>{card.front}</Text>
+            <Badge icon={face.badgeIcon} bg={face.correction ? '#FEE2E2' : colors.yellow} color={face.correction ? '#B91C1C' : C} />
+            <Text
+              style={{
+                flex: 1,
+                fontFamily: fonts.body,
+                fontSize: fs(12),
+                color: face.correction ? colors.textFaint : C,
+                textDecorationLine: face.strike ? 'line-through' : 'none',
+                lineHeight: 17,
+              }}
+            >
+              {card.front}
+            </Text>
           </View>
           {/* good */}
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start', marginTop: 8 }}>
@@ -315,10 +331,10 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
   );
 }
 
-function Badge({ text, bg, color }: { text: string; bg: string; color: string }) {
+function Badge({ text, icon, bg, color }: { text?: string; icon?: IconName; bg: string; color: string }) {
   return (
-    <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, marginTop: 1 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color }}>{text}</Text>
+    <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, paddingVertical: icon ? 2 : 0, marginTop: 1 }}>
+      {icon ? <PixelIcon name={icon} color={color} size={10} sw={2} /> : <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color }}>{text}</Text>}
     </View>
   );
 }

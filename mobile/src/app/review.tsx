@@ -8,6 +8,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
+import { faceOf } from '@/data/reviewCardFace';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -53,6 +54,7 @@ export default function ReviewSession() {
   );
 
   const card = cards[idx];
+  const face = faceOf(card?.source ?? '');
   const done = state === 'ok' && idx >= cards.length;
 
   const grade = async (g: ReviewGrade) => {
@@ -133,8 +135,23 @@ export default function ReviewSession() {
           {/* prompt: what you said → recall the natural version */}
           <Shadowed offset={4}>
             <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 16 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 6 }}>이렇게 말했어요</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(15), color: colors.textFaint, textDecorationLine: 'line-through', lineHeight: 22 }}>{card.front}</Text>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 6 }}>{t(face.promptKey)}</Text>
+              <Text
+                style={{
+                  fontFamily: fonts.body,
+                  fontSize: fs(15),
+                  color: face.correction ? colors.textFaint : C,
+                  textDecorationLine: face.strike ? 'line-through' : 'none',
+                  lineHeight: 22,
+                }}
+              >
+                {card.front}
+              </Text>
+              {!face.correction && (
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, marginTop: 6, lineHeight: 15 }}>
+                  {t('lab.faceSuggestHint')}
+                </Text>
+              )}
 
               {!revealed ? (
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, marginTop: 14, lineHeight: 18 }}>더 자연스러운 표현이 떠오르나요? 머릿속으로 말해본 뒤 정답을 확인하세요.</Text>

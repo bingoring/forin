@@ -30,9 +30,17 @@ type GoalResult struct {
 }
 
 // GradeTip is one concrete "you could have said…" suggestion → becomes a review card.
+//
+// Three fields because a review card needs three different things, and two of them were
+// being served by one. `Ko` is the REASON — it belongs on the result screen next to the
+// phrase, and as the card's note. `Cue` is what the card asks you to translate: the
+// Korean meaning of the phrase. Using the reason as the cue is what put
+// "자신의 이름과 직책을 영어로 말하세요" on the front of a review card — an instruction
+// where a prompt should be, because a reason is not a prompt.
 type GradeTip struct {
-	En string `json:"en"` // the better English phrasing
-	Ko string `json:"ko"` // short native-language explanation
+	En  string `json:"en"`  // the better English phrasing — a sentence, sayable verbatim
+	Ko  string `json:"ko"`  // short native-language explanation of WHY it is better
+	Cue string `json:"cue"` // the phrase's meaning in the native language — the card's front
 }
 
 // Grade is the AI assessment of a learner's performance in a scenario dialogue.
@@ -196,8 +204,13 @@ func buildGradingPrompt(sc *content.Scenario, lc langContext) string {
 	b.WriteString("\"goals\": [{\"goal\": <string>, \"met\": <bool>}], ")
 	b.WriteString(fmt.Sprintf("\"headline\": <%s, at most 18 characters, a short verdict>, ", lc.Native))
 	b.WriteString(fmt.Sprintf("\"feedback\": <%s, 2-3 specific, encouraging sentences>, ", lc.Native))
-	b.WriteString(fmt.Sprintf("\"tips\": [{\"en\": <a better %[1]s phrasing they could have used>, \"ko\": <%[2]s reason>}]}", lc.Target, lc.Native))
+	b.WriteString(fmt.Sprintf("\"tips\": [{\"en\": <a better %[1]s phrasing they could have used>, \"ko\": <%[2]s reason>, \"cue\": <%[2]s meaning of that exact phrase>}]}", lc.Target, lc.Native))
 	b.WriteString(" — up to 3 tips, each a concrete phrase from THIS situation. If they did great, tips may be empty.")
+	// Said explicitly because the failure mode is specific: an instruction ("say your name
+	// and role in English") is advice about a phrase, not a phrase, and it cannot be
+	// reviewed — there is nothing to recall.
+	b.WriteString(" `en` MUST be a sentence the learner could say word-for-word to this person")
+	b.WriteString(", never an instruction about what to say. `cue` MUST be that sentence's meaning, not the reason.")
 	return b.String()
 }
 
@@ -215,15 +228,28 @@ func (e *Engine) fileGradeTips(ctx context.Context, userID string, sc *content.S
 		}
 	}
 	for _, t := range tips {
-		front := strings.TrimSpace(t.Ko)
-		if front == "" {
-			front = rc.Situation // fall back to the situation as the recall cue
+		card, ok := tipCard(t, rc)
+		if !ok {
+			continue
 		}
-		_, _ = e.review.CreateCard(ctx, ports.NewReviewCard{
-			UserID: userID, Source: "grade", Front: front, Back: t.En, Note: t.Ko,
-			ScenarioID: sc.ID, Context: rc,
-		})
+		card.UserID, card.Source, card.ScenarioID, card.Context = userID, "grade", sc.ID, rc
+		_, _ = e.review.CreateCard(ctx, card)
 	}
+}
+
+// tipCard turns a tip into a well-formed card, or reports that it is not one.
+//
+// Front is the meaning, back is the phrase, note is the reason. A tip missing either the
+// phrase or its meaning is dropped rather than patched: the previous version fell back to
+// the scenario's situation text as the front, which produced cards asking the learner to
+// recall a phrase from a description of the room.
+func tipCard(t GradeTip, rc progress.ReviewContext) (ports.NewReviewCard, bool) {
+	en := strings.TrimSpace(t.En)
+	cue := strings.TrimSpace(t.Cue)
+	if en == "" || cue == "" {
+		return ports.NewReviewCard{}, false
+	}
+	return ports.NewReviewCard{Front: cue, Back: en, Note: strings.TrimSpace(t.Ko)}, true
 }
 
 // baseXPOf reads the scenario's authored XP reward ("+ 120 XP" → 120), else the

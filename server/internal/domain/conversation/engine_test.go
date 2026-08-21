@@ -62,9 +62,9 @@ type fakeConvoRepo struct {
 	discardedFor string
 	discardHit   bool
 	discardErr   error
-	sessions    map[string]*ports.ConversationSession
-	history     []ports.ConversationTurn
-	historyFor  string // records which session History was asked for
+	sessions     map[string]*ports.ConversationSession
+	history      []ports.ConversationTurn
+	historyFor   string // records which session History was asked for
 }
 
 func (f *fakeConvoRepo) CreateSession(context.Context, string, string) (string, error) {

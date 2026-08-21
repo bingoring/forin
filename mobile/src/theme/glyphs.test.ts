@@ -13,7 +13,7 @@ import { readdirSync, readFileSync, statSync } from 'fs';
 import { join } from 'path';
 
 const CEILINGS: Record<string, number> = {
-  'src/app': 23,
+  'src/app': 22,
   'src/components': 27,
 };
 
