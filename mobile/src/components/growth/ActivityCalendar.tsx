@@ -15,6 +15,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useT } from '@/i18n';
 import { BAND_STYLE, BANDS, bandLabelKey, usesShifts, type Band } from '@/data/shifts';
 import type { CalendarDay } from '@/api/client';
+import { monthWeeks } from '@/data/monthGrid';
 
 const C = colors.ink;
 
@@ -37,7 +38,7 @@ export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth
   // Cells come from the month itself rather than from the returned days: a month with
   // three active days still needs its other twenty-eight boxes, and an empty month must
   // render a grid instead of nothing.
-  const cells = useMemo(() => monthCells(month), [month]);
+  const weeks = useMemo(() => monthWeeks(month), [month]);
   const weekdays = useMemo(() => weekdayInitials(), []);
 
   return (
@@ -62,34 +63,38 @@ export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth
         ))}
       </View>
 
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-        {cells.map((date, i) => {
-          if (!date) return <View key={`b${i}`} style={{ width: `${100 / 7}%`, aspectRatio: 1, padding: 2 }} />;
-          const day = byDate[date];
-          const on = selected === date;
-          const style = day ? BAND_STYLE[day.band as Band] : null;
-          return (
-            <View key={date} style={{ width: `${100 / 7}%`, aspectRatio: 1, padding: 2 }}>
-              <Pressable
-                // A day with nothing on it is not tappable: a detail panel that opens
-                // empty is worse than a cell that plainly did not respond.
-                disabled={!day}
-                onPress={() => onSelect(on ? null : date)}
-                style={{
-                  flex: 1, alignItems: 'center', justifyContent: 'center',
-                  borderWidth: on ? 3 : 2, borderColor: day ? C : C + '33',
-                  backgroundColor: style ? style.bg : colors.cream,
-                }}
-              >
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: day ? C : colors.textFaint }}>
-                  {Number(date.slice(8, 10))}
-                </Text>
-                {day && <PixelIcon name={style!.icon} color={C} size={9} sw={1.8} />}
-              </Pressable>
-            </View>
-          );
-        })}
-      </View>
+      {/* Rows of seven with flex cells — see data/monthGrid for why this is not one
+          wrapping row of percentage widths. */}
+      {weeks.map((week, wi) => (
+        <View key={wi} style={{ flexDirection: 'row' }}>
+          {week.map((date, di) => {
+            if (!date) return <View key={`b${di}`} style={{ flex: 1, aspectRatio: 1, padding: 2 }} />;
+            const day = byDate[date];
+            const on = selected === date;
+            const style = day ? BAND_STYLE[day.band as Band] : null;
+            return (
+              <View key={date} style={{ flex: 1, aspectRatio: 1, padding: 2 }}>
+                <Pressable
+                  // A day with nothing on it is not tappable: a detail panel that opens
+                  // empty is worse than a cell that plainly did not respond.
+                  disabled={!day}
+                  onPress={() => onSelect(on ? null : date)}
+                  style={{
+                    flex: 1, alignItems: 'center', justifyContent: 'center',
+                    borderWidth: on ? 3 : 2, borderColor: day ? C : C + '33',
+                    backgroundColor: style ? style.bg : colors.cream,
+                  }}
+                >
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: day ? C : colors.textFaint }}>
+                    {Number(date.slice(8, 10))}
+                  </Text>
+                  {day && <PixelIcon name={style!.icon} color={C} size={9} sw={1.8} />}
+                </Pressable>
+              </View>
+            );
+          })}
+        </View>
+      ))}
 
       {/* Legend, named for this job. Without it the colours are decoration. */}
       <View style={{ flexDirection: 'row', gap: 10, marginTop: 9, flexWrap: 'wrap' }}>
@@ -113,19 +118,6 @@ const arrow = {
   width: 26, height: 26, borderWidth: 2, borderColor: C,
   backgroundColor: '#fff', alignItems: 'center' as const, justifyContent: 'center' as const,
 };
-
-/** The month's cells, Monday-first, with leading blanks. */
-function monthCells(month: string): (string | null)[] {
-  const [y, m] = month.split('-').map(Number);
-  if (!y || !m) return [];
-  const lead = (new Date(y, m - 1, 1).getDay() + 6) % 7; // Monday=0
-  const total = new Date(y, m, 0).getDate();
-  const out: (string | null)[] = Array.from({ length: lead }, () => null);
-  for (let d = 1; d <= total; d++) {
-    out.push(`${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`);
-  }
-  return out;
-}
 
 function monthLabel(month: string): string {
   const [y, m] = month.split('-').map(Number);
