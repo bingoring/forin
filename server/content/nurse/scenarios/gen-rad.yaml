@@ -55,18 +55,18 @@
 - id: SCN-RAD-00102
   profession: ""
   eventId: EVT-RAD-00101
-  title: MRI 폐소공포 지원 · Mr. Reyes
+  title: MRI 폐소공포 지원 · Ms. Ivanova
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Reyes
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 불안 완화
     - 대처 방법 제공
@@ -82,11 +82,64 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 불안 완화
         - MRI 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00103
+  profession: ""
+  eventId: EVT-RAD-00101
+  title: MRI 안전 스크리닝 · Ms. Ivanova
+  tagline: I have a metal plate in my arm.
+  persona:
+    name: Ms. Ivanova
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 금속·이식물 확인
+    - 안전 확보
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Any implants or pacemaker?
+    - Metal must stay out of the room.
+    - Let's confirm the plate is MRI-safe.
+  steps: []
+  briefing:
+    dept: RAD · MRI SCREEN
+    deptColor: '#0891B2'
+    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - MRI 안전
+        - 스크리닝
     rewards:
         - icon: ⭐
           label: 경험치
@@ -105,74 +158,21 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00103
-  profession: ""
-  eventId: EVT-RAD-00101
-  title: MRI 안전 스크리닝 · Mr. Robinson
-  tagline: I have a metal plate in my arm.
-  persona:
-    name: Mr. Robinson
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
-  goals:
-    - 금속·이식물 확인
-    - 안전 확보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Any implants or pacemaker?
-    - Metal must stay out of the room.
-    - Let's confirm the plate is MRI-safe.
-  steps: []
-  briefing:
-    dept: RAD · MRI SCREEN
-    deptColor: '#0891B2'
-    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - MRI 안전
-        - 스크리닝
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
 - id: SCN-RAD-00104
   profession: ""
   eventId: EVT-RAD-00101
-  title: X-ray 자세 협조 · Mrs. Hopkins
+  title: X-ray 자세 협조 · Ms. Ivanova
   tagline: Like this? It hurts to move.
   persona:
-    name: Mrs. Hopkins
+    name: Ms. Ivanova
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 자세 유도
     - 통증 배려
@@ -214,17 +214,17 @@
 - id: SCN-RAD-00105
   profession: ""
   eventId: EVT-RAD-00101
-  title: 임신 여부 확인 · Ms. Alvarez
+  title: 임신 여부 확인 · Ms. Ivanova
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Ms. Alvarez
+    name: Ms. Ivanova
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 34y / Female
-    hair: '#2A1E14'
+    sub: 31y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 임신 가능성 확인
@@ -241,25 +241,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -267,18 +267,18 @@
 - id: SCN-RAD-00106
   profession: ""
   eventId: EVT-RAD-00101
-  title: 검사 결과 대기 안내 · Mr. Chen
+  title: 검사 결과 대기 안내 · Ms. Ivanova
   tagline: When will I know the results?
   persona:
-    name: Mr. Chen
+    name: Ms. Ivanova
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 결과 경로 설명
     - 기대 조율
@@ -294,25 +294,25 @@
     dept: RAD · WAITING
     deptColor: '#0891B2'
     brief: 영상 결과 전달 경로와 시점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 결과 안내
         - 기대 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -320,18 +320,18 @@
 - id: SCN-RAD-00107
   profession: ""
   eventId: EVT-RAD-00101
-  title: 소아 영상 검사 안심 · Mrs. Kelly
+  title: 소아 영상 검사 안심 · Ms. Ivanova
   tagline: Is the machine going to eat me?
   persona:
-    name: Mrs. Kelly
+    name: Ms. Ivanova
     role: child
-    ageRange: 70s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -373,18 +373,18 @@
 - id: SCN-RAD-00108
   profession: ""
   eventId: EVT-RAD-00101
-  title: 중재적 시술 전 설명 · Mr. Okafor
+  title: 중재적 시술 전 설명 · Ms. Ivanova
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Okafor
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 절차 설명
     - 주의사항 안내
@@ -400,11 +400,65 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 중재 시술 어휘
         - 동의
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00109
+  profession: ""
+  eventId: EVT-RAD-00101
+  title: 조영제 이상반응 대응 · Ms. Ivanova
+  tagline: My throat feels tight...
+  persona:
+    name: Ms. Ivanova
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 이상반응 인지
+    - 신속 대응
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Tell me exactly what you feel.
+    - I'm getting help now.
+    - We can treat this quickly.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: RAD · CT
+    deptColor: '#0891B2'
+    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 이상반응 대응
+        - 긴급
     rewards:
         - icon: ⭐
           label: 경험치
@@ -423,74 +477,20 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00109
-  profession: ""
-  eventId: EVT-RAD-00101
-  title: 조영제 이상반응 대응 · Ms. Nguyen
-  tagline: My throat feels tight...
-  persona:
-    name: Ms. Nguyen
-    role: patient
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
-  goals:
-    - 이상반응 인지
-    - 신속 대응
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Tell me exactly what you feel.
-    - I'm getting help now.
-    - We can treat this quickly.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: RAD · CT
-    deptColor: '#0891B2'
-    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 이상반응 대응
-        - 긴급
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
 - id: SCN-RAD-00110
   profession: ""
   eventId: EVT-RAD-00101
-  title: 검사실 인계 · Dr. Weber
+  title: 검사실 인계 · RN Marcus
   tagline: Handoff on the imaging schedule.
   persona:
-    name: Dr. Weber
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 일정·대기 인계
@@ -533,18 +533,18 @@
 - id: SCN-RAD-00111
   profession: ""
   eventId: EVT-RAD-00101
-  title: CT 조영 전 설명 · Mrs. Rossi
+  title: CT 조영 전 설명 · Mr. Reyes
   tagline: Will the dye make me feel weird?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 알레르기·신기능 확인
     - 느낌 미리 설명
@@ -586,17 +586,17 @@
 - id: SCN-RAD-00112
   profession: ""
   eventId: EVT-RAD-00101
-  title: MRI 폐소공포 지원 · Mr. Johnson
+  title: MRI 폐소공포 지원 · Mr. Reyes
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Johnson
+    name: Mr. Reyes
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: panic
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 불안 완화
@@ -613,64 +613,11 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 불안 완화
         - MRI 안내
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
-- id: SCN-RAD-00113
-  profession: ""
-  eventId: EVT-RAD-00101
-  title: MRI 안전 스크리닝 · Ms. Bauer
-  tagline: I have a metal plate in my arm.
-  persona:
-    name: Ms. Bauer
-    role: patient
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
-  goals:
-    - 금속·이식물 확인
-    - 안전 확보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Any implants or pacemaker?
-    - Metal must stay out of the room.
-    - Let's confirm the plate is MRI-safe.
-  steps: []
-  briefing:
-    dept: RAD · MRI SCREEN
-    deptColor: '#0891B2'
-    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - MRI 안전
-        - 스크리닝
     rewards:
         - icon: ⭐
           label: 경험치
@@ -689,20 +636,73 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00114
+- id: SCN-RAD-00113
   profession: ""
-  eventId: EVT-RAD-00102
-  title: X-ray 자세 협조 · Mr. Silva
-  tagline: Like this? It hurts to move.
+  eventId: EVT-RAD-00101
+  title: MRI 안전 스크리닝 · Mr. Reyes
+  tagline: I have a metal plate in my arm.
   persona:
-    name: Mr. Silva
+    name: Mr. Reyes
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 금속·이식물 확인
+    - 안전 확보
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Any implants or pacemaker?
+    - Metal must stay out of the room.
+    - Let's confirm the plate is MRI-safe.
+  steps: []
+  briefing:
+    dept: RAD · MRI SCREEN
+    deptColor: '#0891B2'
+    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - MRI 안전
+        - 스크리닝
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00114
+  profession: ""
+  eventId: EVT-RAD-00102
+  title: X-ray 자세 협조 · Mr. Reyes
+  tagline: Like this? It hurts to move.
+  persona:
+    name: Mr. Reyes
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 자세 유도
@@ -745,18 +745,18 @@
 - id: SCN-RAD-00115
   profession: ""
   eventId: EVT-RAD-00102
-  title: 임신 여부 확인 · Mrs. Adeyemi
+  title: 임신 여부 확인 · Mr. Reyes
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Reyes
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 임신 가능성 확인
     - 방사선 안전
@@ -772,25 +772,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -798,17 +798,17 @@
 - id: SCN-RAD-00116
   profession: ""
   eventId: EVT-RAD-00102
-  title: 검사 결과 대기 안내 · Mr. Larsson
+  title: 검사 결과 대기 안내 · Mr. Reyes
   tagline: When will I know the results?
   persona:
-    name: Mr. Larsson
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 결과 경로 설명
@@ -851,18 +851,18 @@
 - id: SCN-RAD-00117
   profession: ""
   eventId: EVT-RAD-00102
-  title: 소아 영상 검사 안심 · Ms. Park
+  title: 소아 영상 검사 안심 · Mr. Reyes
   tagline: Is the machine going to eat me?
   persona:
-    name: Ms. Park
+    name: Mr. Reyes
     role: child
-    ageRange: 20s
+    ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -904,17 +904,17 @@
 - id: SCN-RAD-00118
   profession: ""
   eventId: EVT-RAD-00102
-  title: 중재적 시술 전 설명 · Mr. Thompson
+  title: 중재적 시술 전 설명 · Mr. Reyes
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Thompson
+    name: Mr. Reyes
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 절차 설명
@@ -931,65 +931,11 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 중재 시술 어휘
         - 동의
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
-- id: SCN-RAD-00119
-  profession: ""
-  eventId: EVT-RAD-00102
-  title: 조영제 이상반응 대응 · Mrs. Haddad
-  tagline: My throat feels tight...
-  persona:
-    name: Mrs. Haddad
-    role: patient
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 이상반응 인지
-    - 신속 대응
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Tell me exactly what you feel.
-    - I'm getting help now.
-    - We can treat this quickly.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: RAD · CT
-    deptColor: '#0891B2'
-    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 이상반응 대응
-        - 긴급
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1008,21 +954,75 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
+- id: SCN-RAD-00119
+  profession: ""
+  eventId: EVT-RAD-00102
+  title: 조영제 이상반응 대응 · Mr. Reyes
+  tagline: My throat feels tight...
+  persona:
+    name: Mr. Reyes
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 이상반응 인지
+    - 신속 대응
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Tell me exactly what you feel.
+    - I'm getting help now.
+    - We can treat this quickly.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: RAD · CT
+    deptColor: '#0891B2'
+    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 이상반응 대응
+        - 긴급
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
 - id: SCN-RAD-00120
   profession: ""
   eventId: EVT-RAD-00102
-  title: 검사실 인계 · Charge Nurse Kim
+  title: 검사실 인계 · Dr. Weber
   tagline: Handoff on the imaging schedule.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 일정·대기 인계
     - 특이사항 공유
@@ -1064,18 +1064,18 @@
 - id: SCN-RAD-00121
   profession: ""
   eventId: EVT-RAD-00102
-  title: CT 조영 전 설명 · Ms. O'Brien
+  title: CT 조영 전 설명 · Mr. Robinson
   tagline: Will the dye make me feel weird?
   persona:
-    name: Ms. O'Brien
+    name: Mr. Robinson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 알레르기·신기능 확인
     - 느낌 미리 설명
@@ -1117,17 +1117,17 @@
 - id: SCN-RAD-00122
   profession: ""
   eventId: EVT-RAD-00102
-  title: MRI 폐소공포 지원 · Mr. Dubois
+  title: MRI 폐소공포 지원 · Mr. Robinson
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Dubois
+    name: Mr. Robinson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 불안 완화
@@ -1144,25 +1144,25 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 불안 완화
         - MRI 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -1170,18 +1170,18 @@
 - id: SCN-RAD-00123
   profession: ""
   eventId: EVT-RAD-00102
-  title: MRI 안전 스크리닝 · Mrs. Santos
+  title: MRI 안전 스크리닝 · Mr. Robinson
   tagline: I have a metal plate in my arm.
   persona:
-    name: Mrs. Santos
+    name: Mr. Robinson
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 금속·이식물 확인
     - 안전 확보
@@ -1223,17 +1223,17 @@
 - id: SCN-RAD-00124
   profession: ""
   eventId: EVT-RAD-00102
-  title: X-ray 자세 협조 · Mr. Wagner
+  title: X-ray 자세 협조 · Mr. Robinson
   tagline: Like this? It hurts to move.
   persona:
-    name: Mr. Wagner
+    name: Mr. Robinson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 자세 유도
@@ -1276,18 +1276,18 @@
 - id: SCN-RAD-00125
   profession: ""
   eventId: EVT-RAD-00102
-  title: 임신 여부 확인 · Ms. Ivanova
+  title: 임신 여부 확인 · Mr. Robinson
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Robinson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 임신 가능성 확인
     - 방사선 안전
@@ -1303,25 +1303,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -1329,17 +1329,17 @@
 - id: SCN-RAD-00126
   profession: ""
   eventId: EVT-RAD-00102
-  title: 검사 결과 대기 안내 · Mr. Reyes
+  title: 검사 결과 대기 안내 · Mr. Robinson
   tagline: When will I know the results?
   persona:
-    name: Mr. Reyes
+    name: Mr. Robinson
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 결과 경로 설명
@@ -1356,25 +1356,25 @@
     dept: RAD · WAITING
     deptColor: '#0891B2'
     brief: 영상 결과 전달 경로와 시점을 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 결과 안내
         - 기대 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -1435,18 +1435,18 @@
 - id: SCN-RAD-00128
   profession: ""
   eventId: EVT-RAD-00103
-  title: 중재적 시술 전 설명 · Mrs. Hopkins
+  title: 중재적 시술 전 설명 · Mr. Robinson
   tagline: What happens during the biopsy?
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Robinson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 절차 설명
     - 주의사항 안내
@@ -1462,25 +1462,25 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 중재 시술 어휘
         - 동의
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -1488,18 +1488,18 @@
 - id: SCN-RAD-00129
   profession: ""
   eventId: EVT-RAD-00103
-  title: 조영제 이상반응 대응 · Ms. Alvarez
+  title: 조영제 이상반응 대응 · Mr. Robinson
   tagline: My throat feels tight...
   persona:
-    name: Ms. Alvarez
+    name: Mr. Robinson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 이상반응 인지
     - 신속 대응
@@ -1542,18 +1542,18 @@
 - id: SCN-RAD-00130
   profession: ""
   eventId: EVT-RAD-00103
-  title: 검사실 인계 · RN Sofia
+  title: 검사실 인계 · Dr. Lee
   tagline: Handoff on the imaging schedule.
   persona:
-    name: RN Sofia
+    name: Dr. Lee
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 일정·대기 인계
     - 특이사항 공유
@@ -1595,17 +1595,17 @@
 - id: SCN-RAD-00131
   profession: ""
   eventId: EVT-RAD-00103
-  title: CT 조영 전 설명 · Mrs. Kelly
+  title: CT 조영 전 설명 · Mrs. Hopkins
   tagline: Will the dye make me feel weird?
   persona:
-    name: Mrs. Kelly
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 72y / Female
-    hair: '#B0B0B0'
+    sub: 67y / Female
+    hair: '#9A6B3F'
     hairStyle: bob
   goals:
     - 알레르기·신기능 확인
@@ -1648,18 +1648,18 @@
 - id: SCN-RAD-00132
   profession: ""
   eventId: EVT-RAD-00103
-  title: MRI 폐소공포 지원 · Mr. Okafor
+  title: MRI 폐소공포 지원 · Mrs. Hopkins
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Okafor
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: panic
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 불안 완화
     - 대처 방법 제공
@@ -1675,11 +1675,64 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 불안 완화
         - MRI 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00133
+  profession: ""
+  eventId: EVT-RAD-00103
+  title: MRI 안전 스크리닝 · Mrs. Hopkins
+  tagline: I have a metal plate in my arm.
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 금속·이식물 확인
+    - 안전 확보
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Any implants or pacemaker?
+    - Metal must stay out of the room.
+    - Let's confirm the plate is MRI-safe.
+  steps: []
+  briefing:
+    dept: RAD · MRI SCREEN
+    deptColor: '#0891B2'
+    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - MRI 안전
+        - 스크리닝
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1698,74 +1751,21 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00133
-  profession: ""
-  eventId: EVT-RAD-00103
-  title: MRI 안전 스크리닝 · Ms. Nguyen
-  tagline: I have a metal plate in my arm.
-  persona:
-    name: Ms. Nguyen
-    role: patient
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
-  goals:
-    - 금속·이식물 확인
-    - 안전 확보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Any implants or pacemaker?
-    - Metal must stay out of the room.
-    - Let's confirm the plate is MRI-safe.
-  steps: []
-  briefing:
-    dept: RAD · MRI SCREEN
-    deptColor: '#0891B2'
-    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - MRI 안전
-        - 스크리닝
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
 - id: SCN-RAD-00134
   profession: ""
   eventId: EVT-RAD-00103
-  title: X-ray 자세 협조 · Mr. Patel
+  title: X-ray 자세 협조 · Mrs. Hopkins
   tagline: Like this? It hurts to move.
   persona:
-    name: Mr. Patel
+    name: Mrs. Hopkins
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 자세 유도
     - 통증 배려
@@ -1807,17 +1807,17 @@
 - id: SCN-RAD-00135
   profession: ""
   eventId: EVT-RAD-00103
-  title: 임신 여부 확인 · Mrs. Rossi
+  title: 임신 여부 확인 · Mrs. Hopkins
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Mrs. Rossi
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 51y / Female
-    hair: '#5A3A22'
+    sub: 67y / Female
+    hair: '#9A6B3F'
     hairStyle: bob
   goals:
     - 임신 가능성 확인
@@ -1834,25 +1834,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -1860,18 +1860,18 @@
 - id: SCN-RAD-00136
   profession: ""
   eventId: EVT-RAD-00103
-  title: 검사 결과 대기 안내 · Mr. Johnson
+  title: 검사 결과 대기 안내 · Mrs. Hopkins
   tagline: When will I know the results?
   persona:
-    name: Mr. Johnson
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 결과 경로 설명
     - 기대 조율
@@ -1887,25 +1887,25 @@
     dept: RAD · WAITING
     deptColor: '#0891B2'
     brief: 영상 결과 전달 경로와 시점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 결과 안내
         - 기대 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -1913,18 +1913,18 @@
 - id: SCN-RAD-00137
   profession: ""
   eventId: EVT-RAD-00103
-  title: 소아 영상 검사 안심 · Ms. Bauer
+  title: 소아 영상 검사 안심 · Mrs. Hopkins
   tagline: Is the machine going to eat me?
   persona:
-    name: Ms. Bauer
+    name: Mrs. Hopkins
     role: child
-    ageRange: 30s
+    ageRange: 60s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -1966,18 +1966,18 @@
 - id: SCN-RAD-00138
   profession: ""
   eventId: EVT-RAD-00103
-  title: 중재적 시술 전 설명 · Mr. Silva
+  title: 중재적 시술 전 설명 · Mrs. Hopkins
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Silva
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 절차 설명
     - 주의사항 안내
@@ -1993,11 +1993,65 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 중재 시술 어휘
         - 동의
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00139
+  profession: ""
+  eventId: EVT-RAD-00103
+  title: 조영제 이상반응 대응 · Mrs. Hopkins
+  tagline: My throat feels tight...
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 이상반응 인지
+    - 신속 대응
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Tell me exactly what you feel.
+    - I'm getting help now.
+    - We can treat this quickly.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: RAD · CT
+    deptColor: '#0891B2'
+    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 이상반응 대응
+        - 긴급
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2016,74 +2070,20 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00139
-  profession: ""
-  eventId: EVT-RAD-00103
-  title: 조영제 이상반응 대응 · Mrs. Adeyemi
-  tagline: My throat feels tight...
-  persona:
-    name: Mrs. Adeyemi
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
-  goals:
-    - 이상반응 인지
-    - 신속 대응
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Tell me exactly what you feel.
-    - I'm getting help now.
-    - We can treat this quickly.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: RAD · CT
-    deptColor: '#0891B2'
-    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 이상반응 대응
-        - 긴급
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
 - id: SCN-RAD-00140
   profession: ""
   eventId: EVT-RAD-00104
-  title: 검사실 인계 · Pharmacist Cho
+  title: 검사실 인계 · Charge Nurse Kim
   tagline: Handoff on the imaging schedule.
   persona:
-    name: Pharmacist Cho
+    name: Charge Nurse Kim
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
+    sub: Charge RN
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 일정·대기 인계
@@ -2126,17 +2126,17 @@
 - id: SCN-RAD-00141
   profession: ""
   eventId: EVT-RAD-00104
-  title: CT 조영 전 설명 · Ms. Park
+  title: CT 조영 전 설명 · Ms. Alvarez
   tagline: Will the dye make me feel weird?
   persona:
-    name: Ms. Park
+    name: Ms. Alvarez
     role: patient
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 34y / Female
+    hair: '#2A1E14'
     hairStyle: long
   goals:
     - 알레르기·신기능 확인
@@ -2179,18 +2179,18 @@
 - id: SCN-RAD-00142
   profession: ""
   eventId: EVT-RAD-00104
-  title: MRI 폐소공포 지원 · Mr. Thompson
+  title: MRI 폐소공포 지원 · Ms. Alvarez
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Thompson
+    name: Ms. Alvarez
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 불안 완화
     - 대처 방법 제공
@@ -2206,64 +2206,11 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 불안 완화
         - MRI 안내
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
-- id: SCN-RAD-00143
-  profession: ""
-  eventId: EVT-RAD-00104
-  title: MRI 안전 스크리닝 · Mrs. Haddad
-  tagline: I have a metal plate in my arm.
-  persona:
-    name: Mrs. Haddad
-    role: patient
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 금속·이식물 확인
-    - 안전 확보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Any implants or pacemaker?
-    - Metal must stay out of the room.
-    - Let's confirm the plate is MRI-safe.
-  steps: []
-  briefing:
-    dept: RAD · MRI SCREEN
-    deptColor: '#0891B2'
-    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - MRI 안전
-        - 스크리닝
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2282,21 +2229,74 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00144
+- id: SCN-RAD-00143
   profession: ""
   eventId: EVT-RAD-00104
-  title: X-ray 자세 협조 · Mr. Yamamoto
-  tagline: Like this? It hurts to move.
+  title: MRI 안전 스크리닝 · Ms. Alvarez
+  tagline: I have a metal plate in my arm.
   persona:
-    name: Mr. Yamamoto
+    name: Ms. Alvarez
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 금속·이식물 확인
+    - 안전 확보
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Any implants or pacemaker?
+    - Metal must stay out of the room.
+    - Let's confirm the plate is MRI-safe.
+  steps: []
+  briefing:
+    dept: RAD · MRI SCREEN
+    deptColor: '#0891B2'
+    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - MRI 안전
+        - 스크리닝
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00144
+  profession: ""
+  eventId: EVT-RAD-00104
+  title: X-ray 자세 협조 · Ms. Alvarez
+  tagline: Like this? It hurts to move.
+  persona:
+    name: Ms. Alvarez
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 자세 유도
     - 통증 배려
@@ -2338,17 +2338,17 @@
 - id: SCN-RAD-00145
   profession: ""
   eventId: EVT-RAD-00104
-  title: 임신 여부 확인 · Ms. O'Brien
+  title: 임신 여부 확인 · Ms. Alvarez
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Ms. O'Brien
+    name: Ms. Alvarez
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 41y / Female
-    hair: '#7A4A22'
+    sub: 34y / Female
+    hair: '#2A1E14'
     hairStyle: long
   goals:
     - 임신 가능성 확인
@@ -2365,25 +2365,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -2391,18 +2391,18 @@
 - id: SCN-RAD-00146
   profession: ""
   eventId: EVT-RAD-00104
-  title: 검사 결과 대기 안내 · Mr. Dubois
+  title: 검사 결과 대기 안내 · Ms. Alvarez
   tagline: When will I know the results?
   persona:
-    name: Mr. Dubois
+    name: Ms. Alvarez
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 결과 경로 설명
     - 기대 조율
@@ -2444,18 +2444,18 @@
 - id: SCN-RAD-00147
   profession: ""
   eventId: EVT-RAD-00104
-  title: 소아 영상 검사 안심 · Mrs. Santos
+  title: 소아 영상 검사 안심 · Ms. Alvarez
   tagline: Is the machine going to eat me?
   persona:
-    name: Mrs. Santos
+    name: Ms. Alvarez
     role: child
-    ageRange: 70s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -2497,18 +2497,18 @@
 - id: SCN-RAD-00148
   profession: ""
   eventId: EVT-RAD-00104
-  title: 중재적 시술 전 설명 · Mr. Wagner
+  title: 중재적 시술 전 설명 · Ms. Alvarez
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Wagner
+    name: Ms. Alvarez
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 절차 설명
     - 주의사항 안내
@@ -2524,65 +2524,11 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 중재 시술 어휘
         - 동의
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
-- id: SCN-RAD-00149
-  profession: ""
-  eventId: EVT-RAD-00104
-  title: 조영제 이상반응 대응 · Ms. Ivanova
-  tagline: My throat feels tight...
-  persona:
-    name: Ms. Ivanova
-    role: patient
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
-  goals:
-    - 이상반응 인지
-    - 신속 대응
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Tell me exactly what you feel.
-    - I'm getting help now.
-    - We can treat this quickly.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: RAD · CT
-    deptColor: '#0891B2'
-    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 이상반응 대응
-        - 긴급
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2601,20 +2547,74 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
+- id: SCN-RAD-00149
+  profession: ""
+  eventId: EVT-RAD-00104
+  title: 조영제 이상반응 대응 · Ms. Alvarez
+  tagline: My throat feels tight...
+  persona:
+    name: Ms. Alvarez
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 이상반응 인지
+    - 신속 대응
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Tell me exactly what you feel.
+    - I'm getting help now.
+    - We can treat this quickly.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: RAD · CT
+    deptColor: '#0891B2'
+    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 이상반응 대응
+        - 긴급
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
 - id: SCN-RAD-00150
   profession: ""
   eventId: EVT-RAD-00104
-  title: 검사실 인계 · Dr. Weber
+  title: 검사실 인계 · Dr. Novak
   tagline: Handoff on the imaging schedule.
   persona:
-    name: Dr. Weber
+    name: Dr. Novak
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 일정·대기 인계
@@ -2657,17 +2657,17 @@
 - id: SCN-RAD-00151
   profession: ""
   eventId: EVT-RAD-00104
-  title: CT 조영 전 설명 · Mr. Robinson
+  title: CT 조영 전 설명 · Mr. Chen
   tagline: Will the dye make me feel weird?
   persona:
-    name: Mr. Robinson
+    name: Mr. Chen
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 45y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 알레르기·신기능 확인
@@ -2710,18 +2710,18 @@
 - id: SCN-RAD-00152
   profession: ""
   eventId: EVT-RAD-00104
-  title: MRI 폐소공포 지원 · Mrs. Hopkins
+  title: MRI 폐소공포 지원 · Mr. Chen
   tagline: I don't think I can stay in there.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Chen
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: panic
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 불안 완화
     - 대처 방법 제공
@@ -2737,25 +2737,25 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 불안 완화
         - MRI 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -2763,18 +2763,18 @@
 - id: SCN-RAD-00153
   profession: ""
   eventId: EVT-RAD-00105
-  title: MRI 안전 스크리닝 · Ms. Alvarez
+  title: MRI 안전 스크리닝 · Mr. Chen
   tagline: I have a metal plate in my arm.
   persona:
-    name: Ms. Alvarez
+    name: Mr. Chen
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 금속·이식물 확인
     - 안전 확보
@@ -2869,18 +2869,18 @@
 - id: SCN-RAD-00155
   profession: ""
   eventId: EVT-RAD-00105
-  title: 임신 여부 확인 · Mrs. Kelly
+  title: 임신 여부 확인 · Mr. Chen
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Mrs. Kelly
+    name: Mr. Chen
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 임신 가능성 확인
     - 방사선 안전
@@ -2896,25 +2896,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -2922,17 +2922,17 @@
 - id: SCN-RAD-00156
   profession: ""
   eventId: EVT-RAD-00105
-  title: 검사 결과 대기 안내 · Mr. Okafor
+  title: 검사 결과 대기 안내 · Mr. Chen
   tagline: When will I know the results?
   persona:
-    name: Mr. Okafor
+    name: Mr. Chen
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 45y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 결과 경로 설명
@@ -2949,25 +2949,25 @@
     dept: RAD · WAITING
     deptColor: '#0891B2'
     brief: 영상 결과 전달 경로와 시점을 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 결과 안내
         - 기대 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -2975,18 +2975,18 @@
 - id: SCN-RAD-00157
   profession: ""
   eventId: EVT-RAD-00105
-  title: 소아 영상 검사 안심 · Ms. Nguyen
+  title: 소아 영상 검사 안심 · Mr. Chen
   tagline: Is the machine going to eat me?
   persona:
-    name: Ms. Nguyen
+    name: Mr. Chen
     role: child
-    ageRange: 20s
+    ageRange: 40s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -3028,17 +3028,17 @@
 - id: SCN-RAD-00158
   profession: ""
   eventId: EVT-RAD-00105
-  title: 중재적 시술 전 설명 · Mr. Patel
+  title: 중재적 시술 전 설명 · Mr. Chen
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Patel
+    name: Mr. Chen
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 45y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 절차 설명
@@ -3055,25 +3055,25 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 중재 시술 어휘
         - 동의
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -3081,18 +3081,18 @@
 - id: SCN-RAD-00159
   profession: ""
   eventId: EVT-RAD-00105
-  title: 조영제 이상반응 대응 · Mrs. Rossi
+  title: 조영제 이상반응 대응 · Mr. Chen
   tagline: My throat feels tight...
   persona:
-    name: Mrs. Rossi
+    name: Mr. Chen
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 이상반응 인지
     - 신속 대응
@@ -3135,18 +3135,18 @@
 - id: SCN-RAD-00160
   profession: ""
   eventId: EVT-RAD-00105
-  title: 검사실 인계 · Charge Nurse Kim
+  title: 검사실 인계 · RN Sofia
   tagline: Handoff on the imaging schedule.
   persona:
-    name: Charge Nurse Kim
+    name: RN Sofia
     role: colleague
-    ageRange: 30s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 일정·대기 인계
     - 특이사항 공유
@@ -3188,18 +3188,18 @@
 - id: SCN-RAD-00161
   profession: ""
   eventId: EVT-RAD-00105
-  title: CT 조영 전 설명 · Ms. Bauer
+  title: CT 조영 전 설명 · Mrs. Kelly
   tagline: Will the dye make me feel weird?
   persona:
-    name: Ms. Bauer
+    name: Mrs. Kelly
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 알레르기·신기능 확인
     - 느낌 미리 설명
@@ -3241,18 +3241,18 @@
 - id: SCN-RAD-00162
   profession: ""
   eventId: EVT-RAD-00105
-  title: MRI 폐소공포 지원 · Mr. Silva
+  title: MRI 폐소공포 지원 · Mrs. Kelly
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Silva
+    name: Mrs. Kelly
     role: patient
     ageRange: 70s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 불안 완화
     - 대처 방법 제공
@@ -3268,11 +3268,64 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 불안 완화
         - MRI 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00163
+  profession: ""
+  eventId: EVT-RAD-00105
+  title: MRI 안전 스크리닝 · Mrs. Kelly
+  tagline: I have a metal plate in my arm.
+  persona:
+    name: Mrs. Kelly
+    role: patient
+    ageRange: 70s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
+  goals:
+    - 금속·이식물 확인
+    - 안전 확보
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Any implants or pacemaker?
+    - Metal must stay out of the room.
+    - Let's confirm the plate is MRI-safe.
+  steps: []
+  briefing:
+    dept: RAD · MRI SCREEN
+    deptColor: '#0891B2'
+    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - MRI 안전
+        - 스크리닝
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3291,74 +3344,21 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00163
-  profession: ""
-  eventId: EVT-RAD-00105
-  title: MRI 안전 스크리닝 · Mrs. Adeyemi
-  tagline: I have a metal plate in my arm.
-  persona:
-    name: Mrs. Adeyemi
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
-  goals:
-    - 금속·이식물 확인
-    - 안전 확보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Any implants or pacemaker?
-    - Metal must stay out of the room.
-    - Let's confirm the plate is MRI-safe.
-  steps: []
-  briefing:
-    dept: RAD · MRI SCREEN
-    deptColor: '#0891B2'
-    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - MRI 안전
-        - 스크리닝
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
 - id: SCN-RAD-00164
   profession: ""
   eventId: EVT-RAD-00105
-  title: X-ray 자세 협조 · Mr. Larsson
+  title: X-ray 자세 협조 · Mrs. Kelly
   tagline: Like this? It hurts to move.
   persona:
-    name: Mr. Larsson
+    name: Mrs. Kelly
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 자세 유도
     - 통증 배려
@@ -3400,18 +3400,18 @@
 - id: SCN-RAD-00165
   profession: ""
   eventId: EVT-RAD-00105
-  title: 임신 여부 확인 · Ms. Park
+  title: 임신 여부 확인 · Mrs. Kelly
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Ms. Park
+    name: Mrs. Kelly
     role: patient
-    ageRange: 20s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 임신 가능성 확인
     - 방사선 안전
@@ -3427,25 +3427,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -3453,18 +3453,18 @@
 - id: SCN-RAD-00166
   profession: ""
   eventId: EVT-RAD-00106
-  title: 검사 결과 대기 안내 · Mr. Thompson
+  title: 검사 결과 대기 안내 · Mrs. Kelly
   tagline: When will I know the results?
   persona:
-    name: Mr. Thompson
+    name: Mrs. Kelly
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 결과 경로 설명
     - 기대 조율
@@ -3480,25 +3480,25 @@
     dept: RAD · WAITING
     deptColor: '#0891B2'
     brief: 영상 결과 전달 경로와 시점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 결과 안내
         - 기대 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -3506,17 +3506,17 @@
 - id: SCN-RAD-00167
   profession: ""
   eventId: EVT-RAD-00106
-  title: 소아 영상 검사 안심 · Mrs. Haddad
+  title: 소아 영상 검사 안심 · Mrs. Kelly
   tagline: Is the machine going to eat me?
   persona:
-    name: Mrs. Haddad
+    name: Mrs. Kelly
     role: child
-    ageRange: 30s
+    ageRange: 70s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 33y / Female
-    hair: '#241812'
+    sub: 72y / Female
+    hair: '#B0B0B0'
     hairStyle: bob
   goals:
     - 눈높이 설명
@@ -3559,18 +3559,18 @@
 - id: SCN-RAD-00168
   profession: ""
   eventId: EVT-RAD-00106
-  title: 중재적 시술 전 설명 · Mr. Yamamoto
+  title: 중재적 시술 전 설명 · Mrs. Kelly
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Kelly
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 절차 설명
     - 주의사항 안내
@@ -3586,11 +3586,65 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 중재 시술 어휘
         - 동의
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00169
+  profession: ""
+  eventId: EVT-RAD-00106
+  title: 조영제 이상반응 대응 · Mrs. Kelly
+  tagline: My throat feels tight...
+  persona:
+    name: Mrs. Kelly
+    role: patient
+    ageRange: 70s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
+  goals:
+    - 이상반응 인지
+    - 신속 대응
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Tell me exactly what you feel.
+    - I'm getting help now.
+    - We can treat this quickly.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: RAD · CT
+    deptColor: '#0891B2'
+    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 이상반응 대응
+        - 긴급
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3609,75 +3663,21 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00169
-  profession: ""
-  eventId: EVT-RAD-00106
-  title: 조영제 이상반응 대응 · Ms. O'Brien
-  tagline: My throat feels tight...
-  persona:
-    name: Ms. O'Brien
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
-  goals:
-    - 이상반응 인지
-    - 신속 대응
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Tell me exactly what you feel.
-    - I'm getting help now.
-    - We can treat this quickly.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: RAD · CT
-    deptColor: '#0891B2'
-    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 이상반응 대응
-        - 긴급
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
 - id: SCN-RAD-00170
   profession: ""
   eventId: EVT-RAD-00106
-  title: 검사실 인계 · RN Sofia
+  title: 검사실 인계 · Dr. Ahmed
   tagline: Handoff on the imaging schedule.
   persona:
-    name: RN Sofia
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 일정·대기 인계
     - 특이사항 공유
@@ -3719,18 +3719,18 @@
 - id: SCN-RAD-00171
   profession: ""
   eventId: EVT-RAD-00106
-  title: CT 조영 전 설명 · Mrs. Santos
+  title: CT 조영 전 설명 · Mr. Okafor
   tagline: Will the dye make me feel weird?
   persona:
-    name: Mrs. Santos
+    name: Mr. Okafor
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 알레르기·신기능 확인
     - 느낌 미리 설명
@@ -3772,17 +3772,17 @@
 - id: SCN-RAD-00172
   profession: ""
   eventId: EVT-RAD-00106
-  title: MRI 폐소공포 지원 · Mr. Wagner
+  title: MRI 폐소공포 지원 · Mr. Okafor
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Wagner
+    name: Mr. Okafor
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: panic
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 불안 완화
@@ -3799,64 +3799,11 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 불안 완화
         - MRI 안내
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
-- id: SCN-RAD-00173
-  profession: ""
-  eventId: EVT-RAD-00106
-  title: MRI 안전 스크리닝 · Ms. Ivanova
-  tagline: I have a metal plate in my arm.
-  persona:
-    name: Ms. Ivanova
-    role: patient
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
-  goals:
-    - 금속·이식물 확인
-    - 안전 확보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Any implants or pacemaker?
-    - Metal must stay out of the room.
-    - Let's confirm the plate is MRI-safe.
-  steps: []
-  briefing:
-    dept: RAD · MRI SCREEN
-    deptColor: '#0891B2'
-    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - MRI 안전
-        - 스크리닝
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3875,20 +3822,73 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00174
+- id: SCN-RAD-00173
   profession: ""
   eventId: EVT-RAD-00106
-  title: X-ray 자세 협조 · Mr. Reyes
-  tagline: Like this? It hurts to move.
+  title: MRI 안전 스크리닝 · Mr. Okafor
+  tagline: I have a metal plate in my arm.
   persona:
-    name: Mr. Reyes
+    name: Mr. Okafor
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
+  goals:
+    - 금속·이식물 확인
+    - 안전 확보
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Any implants or pacemaker?
+    - Metal must stay out of the room.
+    - Let's confirm the plate is MRI-safe.
+  steps: []
+  briefing:
+    dept: RAD · MRI SCREEN
+    deptColor: '#0891B2'
+    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - MRI 안전
+        - 스크리닝
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00174
+  profession: ""
+  eventId: EVT-RAD-00106
+  title: X-ray 자세 협조 · Mr. Okafor
+  tagline: Like this? It hurts to move.
+  persona:
+    name: Mr. Okafor
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 자세 유도
@@ -3931,17 +3931,17 @@
 - id: SCN-RAD-00175
   profession: ""
   eventId: EVT-RAD-00106
-  title: 임신 여부 확인 · Mr. Robinson
+  title: 임신 여부 확인 · Mr. Okafor
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Mr. Robinson
+    name: Mr. Okafor
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 임신 가능성 확인
@@ -3958,25 +3958,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -3984,18 +3984,18 @@
 - id: SCN-RAD-00176
   profession: ""
   eventId: EVT-RAD-00106
-  title: 검사 결과 대기 안내 · Mrs. Hopkins
+  title: 검사 결과 대기 안내 · Mr. Okafor
   tagline: When will I know the results?
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Okafor
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 결과 경로 설명
     - 기대 조율
@@ -4037,18 +4037,18 @@
 - id: SCN-RAD-00177
   profession: ""
   eventId: EVT-RAD-00106
-  title: 소아 영상 검사 안심 · Ms. Alvarez
+  title: 소아 영상 검사 안심 · Mr. Okafor
   tagline: Is the machine going to eat me?
   persona:
-    name: Ms. Alvarez
+    name: Mr. Okafor
     role: child
-    ageRange: 30s
+    ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -4090,17 +4090,17 @@
 - id: SCN-RAD-00178
   profession: ""
   eventId: EVT-RAD-00106
-  title: 중재적 시술 전 설명 · Mr. Chen
+  title: 중재적 시술 전 설명 · Mr. Okafor
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Chen
+    name: Mr. Okafor
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 절차 설명
@@ -4117,25 +4117,25 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 중재 시술 어휘
         - 동의
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -4143,18 +4143,18 @@
 - id: SCN-RAD-00179
   profession: ""
   eventId: EVT-RAD-00107
-  title: 조영제 이상반응 대응 · Mrs. Kelly
+  title: 조영제 이상반응 대응 · Mr. Okafor
   tagline: My throat feels tight...
   persona:
-    name: Mrs. Kelly
+    name: Mr. Okafor
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 이상반응 인지
     - 신속 대응
@@ -4171,25 +4171,25 @@
     dept: RAD · CT
     deptColor: '#0891B2'
     brief: 조영제 이상반응을 조기 인지하고 대응하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 이상반응 대응
         - 긴급
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -4303,18 +4303,18 @@
 - id: SCN-RAD-00182
   profession: ""
   eventId: EVT-RAD-00107
-  title: MRI 폐소공포 지원 · Mr. Patel
+  title: MRI 폐소공포 지원 · Ms. Nguyen
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Patel
+    name: Ms. Nguyen
     role: patient
-    ageRange: 60s
+    ageRange: 20s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 불안 완화
     - 대처 방법 제공
@@ -4330,25 +4330,25 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 불안 완화
         - MRI 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -4356,18 +4356,18 @@
 - id: SCN-RAD-00183
   profession: ""
   eventId: EVT-RAD-00107
-  title: MRI 안전 스크리닝 · Mrs. Rossi
+  title: MRI 안전 스크리닝 · Ms. Nguyen
   tagline: I have a metal plate in my arm.
   persona:
-    name: Mrs. Rossi
+    name: Ms. Nguyen
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 금속·이식물 확인
     - 안전 확보
@@ -4409,18 +4409,18 @@
 - id: SCN-RAD-00184
   profession: ""
   eventId: EVT-RAD-00107
-  title: X-ray 자세 협조 · Mr. Johnson
+  title: X-ray 자세 협조 · Ms. Nguyen
   tagline: Like this? It hurts to move.
   persona:
-    name: Mr. Johnson
+    name: Ms. Nguyen
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 자세 유도
     - 통증 배려
@@ -4462,17 +4462,17 @@
 - id: SCN-RAD-00185
   profession: ""
   eventId: EVT-RAD-00107
-  title: 임신 여부 확인 · Ms. Bauer
+  title: 임신 여부 확인 · Ms. Nguyen
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Ms. Bauer
+    name: Ms. Nguyen
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 38y / Female
-    hair: '#C9A24B'
+    sub: 26y / Female
+    hair: '#1A1A1A'
     hairStyle: long
   goals:
     - 임신 가능성 확인
@@ -4489,25 +4489,25 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -4515,18 +4515,18 @@
 - id: SCN-RAD-00186
   profession: ""
   eventId: EVT-RAD-00107
-  title: 검사 결과 대기 안내 · Mr. Silva
+  title: 검사 결과 대기 안내 · Ms. Nguyen
   tagline: When will I know the results?
   persona:
-    name: Mr. Silva
+    name: Ms. Nguyen
     role: patient
-    ageRange: 70s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 결과 경로 설명
     - 기대 조율
@@ -4542,25 +4542,25 @@
     dept: RAD · WAITING
     deptColor: '#0891B2'
     brief: 영상 결과 전달 경로와 시점을 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 결과 안내
         - 기대 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -4568,18 +4568,18 @@
 - id: SCN-RAD-00187
   profession: ""
   eventId: EVT-RAD-00107
-  title: 소아 영상 검사 안심 · Mrs. Adeyemi
+  title: 소아 영상 검사 안심 · Ms. Nguyen
   tagline: Is the machine going to eat me?
   persona:
-    name: Mrs. Adeyemi
+    name: Ms. Nguyen
     role: child
-    ageRange: 40s
+    ageRange: 20s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -4621,18 +4621,18 @@
 - id: SCN-RAD-00188
   profession: ""
   eventId: EVT-RAD-00107
-  title: 중재적 시술 전 설명 · Mr. Larsson
+  title: 중재적 시술 전 설명 · Ms. Nguyen
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Larsson
+    name: Ms. Nguyen
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 절차 설명
     - 주의사항 안내
@@ -4648,25 +4648,25 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 중재 시술 어휘
         - 동의
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -4674,17 +4674,17 @@
 - id: SCN-RAD-00189
   profession: ""
   eventId: EVT-RAD-00107
-  title: 조영제 이상반응 대응 · Ms. Park
+  title: 조영제 이상반응 대응 · Ms. Nguyen
   tagline: My throat feels tight...
   persona:
-    name: Ms. Park
+    name: Ms. Nguyen
     role: patient
     ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 26y / Female
+    hair: '#1A1A1A'
     hairStyle: long
   goals:
     - 이상반응 인지
@@ -4728,71 +4728,18 @@
 - id: SCN-RAD-00190
   profession: ""
   eventId: EVT-RAD-00107
-  title: 검사실 인계 · Dr. Weber
-  tagline: Handoff on the imaging schedule.
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 일정·대기 인계
-    - 특이사항 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Two CTs with contrast pending.
-    - Room 1 needs IV access.
-    - MRI running behind by 20 minutes.
-  steps: []
-  briefing:
-    dept: RAD · STATION
-    deptColor: '#0891B2'
-    brief: 영상 검사 일정과 대기 환자를 인계하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 인계
-        - 스케줄
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
-- id: SCN-RAD-00191
-  profession: ""
-  eventId: EVT-RAD-00107
-  title: CT 조영 전 설명 · Mrs. Haddad
+  title: CT 조영 전 설명 · Mr. Patel
   tagline: Will the dye make me feel weird?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Patel
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 알레르기·신기능 확인
     - 느낌 미리 설명
@@ -4831,20 +4778,20 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00192
+- id: SCN-RAD-00191
   profession: ""
-  eventId: EVT-RAD-00108
-  title: MRI 폐소공포 지원 · Mr. Yamamoto
+  eventId: EVT-RAD-00107
+  title: MRI 폐소공포 지원 · Mr. Patel
   tagline: I don't think I can stay in there.
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: panic
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 불안 완화
@@ -4861,11 +4808,64 @@
     dept: RAD · MRI
     deptColor: '#0891B2'
     brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 불안 완화
         - MRI 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00192
+  profession: ""
+  eventId: EVT-RAD-00108
+  title: MRI 안전 스크리닝 · Mr. Patel
+  tagline: I have a metal plate in my arm.
+  persona:
+    name: Mr. Patel
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
+  goals:
+    - 금속·이식물 확인
+    - 안전 확보
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Any implants or pacemaker?
+    - Metal must stay out of the room.
+    - Let's confirm the plate is MRI-safe.
+  steps: []
+  briefing:
+    dept: RAD · MRI SCREEN
+    deptColor: '#0891B2'
+    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - MRI 안전
+        - 스크리닝
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4887,70 +4887,17 @@
 - id: SCN-RAD-00193
   profession: ""
   eventId: EVT-RAD-00108
-  title: MRI 안전 스크리닝 · Ms. O'Brien
-  tagline: I have a metal plate in my arm.
-  persona:
-    name: Ms. O'Brien
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
-  goals:
-    - 금속·이식물 확인
-    - 안전 확보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Any implants or pacemaker?
-    - Metal must stay out of the room.
-    - Let's confirm the plate is MRI-safe.
-  steps: []
-  briefing:
-    dept: RAD · MRI SCREEN
-    deptColor: '#0891B2'
-    brief: MRI 전 금속·이식물 안전 스크리닝을 철저히 하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - MRI 안전
-        - 스크리닝
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#CFFAFE'
-    accent: '#0E7490'
-    chart: null
-    riskyPhrases: []
-- id: SCN-RAD-00194
-  profession: ""
-  eventId: EVT-RAD-00108
-  title: X-ray 자세 협조 · Mr. Dubois
+  title: X-ray 자세 협조 · Mr. Patel
   tagline: Like this? It hurts to move.
   persona:
-    name: Mr. Dubois
+    name: Mr. Patel
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 자세 유도
@@ -4990,21 +4937,21 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00195
+- id: SCN-RAD-00194
   profession: ""
   eventId: EVT-RAD-00108
-  title: 임신 여부 확인 · Mrs. Santos
+  title: 임신 여부 확인 · Mr. Patel
   tagline: Could I be pregnant? Not sure.
   persona:
-    name: Mrs. Santos
+    name: Mr. Patel
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 임신 가능성 확인
     - 방사선 안전
@@ -5020,43 +4967,43 @@
     dept: RAD · X-RAY
     deptColor: '#0891B2'
     brief: 방사선 검사 전 임신 가능성을 민감하게 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 안전 확인
         - 민감한 문진
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00196
+- id: SCN-RAD-00195
   profession: ""
   eventId: EVT-RAD-00108
-  title: 검사 결과 대기 안내 · Mr. Wagner
+  title: 검사 결과 대기 안내 · Mr. Patel
   tagline: When will I know the results?
   persona:
-    name: Mr. Wagner
+    name: Mr. Patel
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 결과 경로 설명
@@ -5073,44 +5020,44 @@
     dept: RAD · WAITING
     deptColor: '#0891B2'
     brief: 영상 결과 전달 경로와 시점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 결과 안내
         - 기대 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00197
+- id: SCN-RAD-00196
   profession: ""
   eventId: EVT-RAD-00108
-  title: 소아 영상 검사 안심 · Ms. Ivanova
+  title: 소아 영상 검사 안심 · Mr. Patel
   tagline: Is the machine going to eat me?
   persona:
-    name: Ms. Ivanova
+    name: Mr. Patel
     role: child
-    ageRange: 30s
+    ageRange: 60s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 눈높이 설명
     - 협조 유도
@@ -5149,20 +5096,20 @@
     accent: '#0E7490'
     chart: null
     riskyPhrases: []
-- id: SCN-RAD-00198
+- id: SCN-RAD-00197
   profession: ""
   eventId: EVT-RAD-00108
-  title: 중재적 시술 전 설명 · Mr. Reyes
+  title: 중재적 시술 전 설명 · Mr. Patel
   tagline: What happens during the biopsy?
   persona:
-    name: Mr. Reyes
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 절차 설명
@@ -5179,11 +5126,65 @@
     dept: RAD · IR
     deptColor: '#0891B2'
     brief: 영상 유도 생검 전 절차와 주의사항을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 중재 시술 어휘
         - 동의
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#CFFAFE'
+    accent: '#0E7490'
+    chart: null
+    riskyPhrases: []
+- id: SCN-RAD-00198
+  profession: ""
+  eventId: EVT-RAD-00108
+  title: 조영제 이상반응 대응 · Mr. Patel
+  tagline: My throat feels tight...
+  persona:
+    name: Mr. Patel
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
+  goals:
+    - 이상반응 인지
+    - 신속 대응
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Tell me exactly what you feel.
+    - I'm getting help now.
+    - We can treat this quickly.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: RAD · CT
+    deptColor: '#0891B2'
+    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 이상반응 대응
+        - 긴급
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5205,53 +5206,52 @@
 - id: SCN-RAD-00199
   profession: ""
   eventId: EVT-RAD-00108
-  title: 조영제 이상반응 대응 · Mr. Robinson
-  tagline: My throat feels tight...
+  title: CT 조영 전 설명 · Mrs. Rossi
+  tagline: Will the dye make me feel weird?
   persona:
-    name: Mr. Robinson
+    name: Mrs. Rossi
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    mood: worried
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
-    - 이상반응 인지
-    - 신속 대응
+    - 알레르기·신기능 확인
+    - 느낌 미리 설명
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Tell me exactly what you feel.
-    - I'm getting help now.
-    - We can treat this quickly.
-  acuity: critical
+    - You may feel warm briefly.
+    - Any allergy to contrast or iodine?
+    - Tell me if you feel itchy.
   steps: []
   briefing:
     dept: RAD · CT
     deptColor: '#0891B2'
-    brief: 조영제 이상반응을 조기 인지하고 대응하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    brief: 조영제 CT 전 알레르기·신기능·느낌을 확인·설명하세요.
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
-        - 이상반응 대응
-        - 긴급
+        - 조영제 어휘
+        - 안전 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null
@@ -5259,52 +5259,52 @@
 - id: SCN-RAD-00200
   profession: ""
   eventId: EVT-RAD-00108
-  title: 검사실 인계 · Charge Nurse Kim
-  tagline: Handoff on the imaging schedule.
+  title: MRI 폐소공포 지원 · Mrs. Rossi
+  tagline: I don't think I can stay in there.
   persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#241812'
+    name: Mrs. Rossi
+    role: patient
+    ageRange: 50s
+    personality: 긴장해 질문이 많음.
+    speakingStyle: 빠르게 여러 질문을 함.
+    mood: anxious
+    sub: 51y / Female
+    hair: '#5A3A22'
     hairStyle: bob
   goals:
-    - 일정·대기 인계
-    - 특이사항 공유
+    - 불안 완화
+    - 대처 방법 제공
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Two CTs with contrast pending.
-    - Room 1 needs IV access.
-    - MRI running behind by 20 minutes.
+    - You'll have a call button.
+    - I can talk to you the whole time.
+    - Let's try some slow breathing.
   steps: []
   briefing:
-    dept: RAD · STATION
+    dept: RAD · MRI
     deptColor: '#0891B2'
-    brief: 영상 검사 일정과 대기 환자를 인계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    brief: MRI 폐소공포 환자를 안심시키고 대처를 안내하세요.
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
-        - 인계
-        - 스케줄
+        - 불안 완화
+        - MRI 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#CFFAFE'
     accent: '#0E7490'
     chart: null

@@ -55,18 +55,18 @@
 - id: SCN-PEDS-00102
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 예방접종 이상반응 안내 · Mrs. Bello
+  title: 예방접종 이상반응 안내 · Mr. Delgado
   tagline: He got a fever after his shots.
   persona:
-    name: Mrs. Bello
+    name: Mr. Delgado
     role: parent
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    sub: Father
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 흔한 반응 설명
     - 대처·경고 신호 교육
@@ -108,17 +108,17 @@
 - id: SCN-PEDS-00103
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 천식 발작 아동 진정 · Mr. Reyes
+  title: 천식 발작 아동 진정 · Mr. Wagner
   tagline: I can't... breathe...
   persona:
-    name: Mr. Reyes
+    name: Mr. Wagner
     role: child
-    ageRange: 50s
+    ageRange: 40s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 아동을 진정시키며 흡입 치료
@@ -136,25 +136,25 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 소아 호흡
         - 아동 눈높이 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -162,18 +162,18 @@
 - id: SCN-PEDS-00104
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 탈수 아동 수분 교육 · Mrs. Coleman
+  title: 탈수 아동 수분 교육 · Mr. Delgado
   tagline: She won't drink anything.
   persona:
-    name: Mrs. Coleman
+    name: Mr. Delgado
     role: parent
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
+    sub: Father
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 탈수 징후 확인
     - 경구수액 요령 교육
@@ -215,18 +215,18 @@
 - id: SCN-PEDS-00105
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 채혈 전 아동 안심 · Mrs. Hopkins
+  title: 채혈 전 아동 안심 · Mr. Wagner
   tagline: Is it going to hurt?
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Wagner
     role: child
-    ageRange: 60s
+    ageRange: 40s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 절차를 눈높이로 설명
     - 대처 전략 제공
@@ -242,25 +242,25 @@
     dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 아동 대처 지원
         - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -268,18 +268,18 @@
 - id: SCN-PEDS-00106
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 중이염 항생제 교육 · Mrs. Aoki
+  title: 중이염 항생제 교육 · Mr. Delgado
   tagline: Does she really need antibiotics?
   persona:
-    name: Mrs. Aoki
+    name: Mr. Delgado
     role: parent
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    sub: Father
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 복약 순응 교육
     - 경과 관찰 안내
@@ -295,25 +295,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 항생제 복약
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -375,18 +375,18 @@
 - id: SCN-PEDS-00108
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 소아 통증 사정 · Mrs. Kelly
+  title: 소아 통증 사정 · Mr. Wagner
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mrs. Kelly
+    name: Mr. Wagner
     role: child
-    ageRange: 70s
+    ageRange: 40s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 얼굴 척도로 통증 사정
     - 안심 제공
@@ -428,17 +428,17 @@
 - id: SCN-PEDS-00109
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 보호자 불안 공감 · Mr. Novak
+  title: 보호자 불안 공감 · Mr. Delgado
   tagline: I feel like a bad parent.
   persona:
-    name: Mr. Novak
+    name: Mr. Delgado
     role: parent
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
     sub: Father
-    hair: '#3B2A1A'
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 보호자 감정 공감
@@ -455,25 +455,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 공감
         - 보호자 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -481,18 +481,18 @@
 - id: SCN-PEDS-00110
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 퇴원 가정간호 교육 · Mrs. Coleman
+  title: 퇴원 가정간호 교육 · Mr. Delgado
   tagline: How do I care for him at home?
   persona:
-    name: Mrs. Coleman
+    name: Mr. Delgado
     role: parent
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
+    sub: Father
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 가정간호·투약 교육
     - 재방문 기준 안내
@@ -534,18 +534,18 @@
 - id: SCN-PEDS-00111
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 아동 발열 부모 상담 · Mr. Fischer
+  title: 아동 발열 부모 상담 · Mrs. Bello
   tagline: His fever won't come down.
   persona:
-    name: Mr. Fischer
+    name: Mrs. Bello
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Mother
+    hair: '#0F0F0F'
+    hairStyle: long
   goals:
     - 체중 기반 해열 안내
     - 경고 신호 교육
@@ -587,18 +587,18 @@
 - id: SCN-PEDS-00112
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 예방접종 이상반응 안내 · Mrs. Aoki
+  title: 예방접종 이상반응 안내 · Mrs. Bello
   tagline: He got a fever after his shots.
   persona:
-    name: Mrs. Aoki
+    name: Mrs. Bello
     role: parent
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    hair: '#0F0F0F'
+    hairStyle: long
   goals:
     - 흔한 반응 설명
     - 대처·경고 신호 교육
@@ -614,25 +614,25 @@
     dept: PEDS · WELL CHILD
     deptColor: '#3B82F6'
     brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 접종 반응
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -640,18 +640,18 @@
 - id: SCN-PEDS-00113
   profession: ""
   eventId: EVT-PEDS-00101
-  title: 천식 발작 아동 진정 · Mr. Johnson
+  title: 천식 발작 아동 진정 · Ms. Ivanova
   tagline: I can't... breathe...
   persona:
-    name: Mr. Johnson
+    name: Ms. Ivanova
     role: child
-    ageRange: 40s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 아동을 진정시키며 흡입 치료
     - 부모 동참 유도
@@ -668,25 +668,25 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 소아 호흡
         - 아동 눈높이 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -747,18 +747,18 @@
 - id: SCN-PEDS-00115
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 채혈 전 아동 안심 · Mr. Silva
+  title: 채혈 전 아동 안심 · Ms. Ivanova
   tagline: Is it going to hurt?
   persona:
-    name: Mr. Silva
+    name: Ms. Ivanova
     role: child
-    ageRange: 70s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 절차를 눈높이로 설명
     - 대처 전략 제공
@@ -774,25 +774,25 @@
     dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 아동 대처 지원
         - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -800,17 +800,17 @@
 - id: SCN-PEDS-00116
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 중이염 항생제 교육 · Mrs. Coleman
+  title: 중이염 항생제 교육 · Mrs. Bello
   tagline: Does she really need antibiotics?
   persona:
-    name: Mrs. Coleman
+    name: Mrs. Bello
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Mother
-    hair: '#241812'
+    hair: '#0F0F0F'
     hairStyle: long
   goals:
     - 복약 순응 교육
@@ -853,18 +853,18 @@
 - id: SCN-PEDS-00117
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 낙상·머리 손상 관찰 · Mr. Fischer
+  title: 낙상·머리 손상 관찰 · Mrs. Bello
   tagline: He fell off the couch — should I worry?
   persona:
-    name: Mr. Fischer
+    name: Mrs. Bello
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Mother
+    hair: '#0F0F0F'
+    hairStyle: long
   goals:
     - 경고 신호 교육
     - 가정 관찰 지도
@@ -907,17 +907,17 @@
 - id: SCN-PEDS-00118
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 소아 통증 사정 · Ms. Park
+  title: 소아 통증 사정 · Ms. Ivanova
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Ms. Park
+    name: Ms. Ivanova
     role: child
-    ageRange: 20s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 31y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 얼굴 척도로 통증 사정
@@ -934,25 +934,25 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - FACES 척도
         - 아동 사정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -960,18 +960,18 @@
 - id: SCN-PEDS-00119
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 보호자 불안 공감 · Mr. Delgado
+  title: 보호자 불안 공감 · Mrs. Bello
   tagline: I feel like a bad parent.
   persona:
-    name: Mr. Delgado
+    name: Mrs. Bello
     role: parent
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Mother
+    hair: '#0F0F0F'
+    hairStyle: long
   goals:
     - 보호자 감정 공감
     - 지지·정보 제공
@@ -987,25 +987,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 공감
         - 보호자 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -1119,18 +1119,18 @@
 - id: SCN-PEDS-00122
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 예방접종 이상반응 안내 · Mrs. Coleman
+  title: 예방접종 이상반응 안내 · Mr. Novak
   tagline: He got a fever after his shots.
   persona:
-    name: Mrs. Coleman
+    name: Mr. Novak
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: panic
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
+    sub: Father
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 흔한 반응 설명
     - 대처·경고 신호 교육
@@ -1146,25 +1146,25 @@
     dept: PEDS · WELL CHILD
     deptColor: '#3B82F6'
     brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 접종 반응
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -1172,17 +1172,17 @@
 - id: SCN-PEDS-00123
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 천식 발작 아동 진정 · Mr. Dubois
+  title: 천식 발작 아동 진정 · Mr. Reyes
   tagline: I can't... breathe...
   persona:
-    name: Mr. Dubois
+    name: Mr. Reyes
     role: child
-    ageRange: 60s
+    ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 아동을 진정시키며 흡입 치료
@@ -1226,18 +1226,18 @@
 - id: SCN-PEDS-00124
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 탈수 아동 수분 교육 · Mrs. Aoki
+  title: 탈수 아동 수분 교육 · Mr. Novak
   tagline: She won't drink anything.
   persona:
-    name: Mrs. Aoki
+    name: Mr. Novak
     role: parent
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: panic
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    sub: Father
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 탈수 징후 확인
     - 경구수액 요령 교육
@@ -1279,17 +1279,17 @@
 - id: SCN-PEDS-00125
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 채혈 전 아동 안심 · Mr. Wagner
+  title: 채혈 전 아동 안심 · Mr. Reyes
   tagline: Is it going to hurt?
   persona:
-    name: Mr. Wagner
+    name: Mr. Reyes
     role: child
-    ageRange: 40s
+    ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 절차를 눈높이로 설명
@@ -1306,25 +1306,25 @@
     dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 아동 대처 지원
         - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -1332,18 +1332,18 @@
 - id: SCN-PEDS-00126
   profession: ""
   eventId: EVT-PEDS-00102
-  title: 중이염 항생제 교육 · Mrs. Bello
+  title: 중이염 항생제 교육 · Mr. Novak
   tagline: Does she really need antibiotics?
   persona:
-    name: Mrs. Bello
+    name: Mr. Novak
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: panic
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    sub: Father
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 복약 순응 교육
     - 경과 관찰 안내
@@ -1359,25 +1359,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 항생제 복약
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -1439,17 +1439,17 @@
 - id: SCN-PEDS-00128
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 소아 통증 사정 · Mr. Robinson
+  title: 소아 통증 사정 · Mr. Reyes
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mr. Robinson
+    name: Mr. Reyes
     role: child
     ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 얼굴 척도로 통증 사정
@@ -1466,64 +1466,11 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - FACES 척도
         - 아동 사정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00129
-  profession: ""
-  eventId: EVT-PEDS-00103
-  title: 보호자 불안 공감 · Mr. Fischer
-  tagline: I feel like a bad parent.
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 보호자 감정 공감
-    - 지지·정보 제공
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - You did the right thing bringing her in.
-    - This can happen to anyone.
-    - Let's take it one step at a time.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 공감
-        - 보호자 지지
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1542,21 +1489,74 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00130
+- id: SCN-PEDS-00129
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 퇴원 가정간호 교육 · Mrs. Aoki
-  tagline: How do I care for him at home?
+  title: 보호자 불안 공감 · Mr. Novak
+  tagline: I feel like a bad parent.
   persona:
-    name: Mrs. Aoki
+    name: Mr. Novak
     role: parent
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: panic
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    sub: Father
+    hair: '#3B2A1A'
+    hairStyle: short
+  goals:
+    - 보호자 감정 공감
+    - 지지·정보 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - You did the right thing bringing her in.
+    - This can happen to anyone.
+    - Let's take it one step at a time.
+  steps: []
+  briefing:
+    dept: PEDS · EXAM 1
+    deptColor: '#3B82F6'
+    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 공감
+        - 보호자 지지
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00130
+  profession: ""
+  eventId: EVT-PEDS-00103
+  title: 퇴원 가정간호 교육 · Mr. Novak
+  tagline: How do I care for him at home?
+  persona:
+    name: Mr. Novak
+    role: parent
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: panic
+    sub: Father
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 가정간호·투약 교육
     - 재방문 기준 안내
@@ -1598,18 +1598,18 @@
 - id: SCN-PEDS-00131
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 아동 발열 부모 상담 · Mr. Delgado
+  title: 아동 발열 부모 상담 · Mrs. Coleman
   tagline: His fever won't come down.
   persona:
-    name: Mr. Delgado
+    name: Mrs. Coleman
     role: parent
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Mother
+    hair: '#241812'
+    hairStyle: long
   goals:
     - 체중 기반 해열 안내
     - 경고 신호 교육
@@ -1651,17 +1651,17 @@
 - id: SCN-PEDS-00132
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 예방접종 이상반응 안내 · Mrs. Bello
+  title: 예방접종 이상반응 안내 · Mrs. Coleman
   tagline: He got a fever after his shots.
   persona:
-    name: Mrs. Bello
+    name: Mrs. Coleman
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
     sub: Mother
-    hair: '#0F0F0F'
+    hair: '#241812'
     hairStyle: long
   goals:
     - 흔한 반응 설명
@@ -1704,17 +1704,17 @@
 - id: SCN-PEDS-00133
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 천식 발작 아동 진정 · Mr. Okafor
+  title: 천식 발작 아동 진정 · Mr. Robinson
   tagline: I can't... breathe...
   persona:
-    name: Mr. Okafor
+    name: Mr. Robinson
     role: child
     ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 아동을 진정시키며 흡입 치료
@@ -1732,25 +1732,25 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 소아 호흡
         - 아동 눈높이 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -1811,17 +1811,17 @@
 - id: SCN-PEDS-00135
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 채혈 전 아동 안심 · Mr. Patel
+  title: 채혈 전 아동 안심 · Mr. Robinson
   tagline: Is it going to hurt?
   persona:
-    name: Mr. Patel
+    name: Mr. Robinson
     role: child
-    ageRange: 60s
+    ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 절차를 눈높이로 설명
@@ -1838,25 +1838,25 @@
     dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 아동 대처 지원
         - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -1864,18 +1864,18 @@
 - id: SCN-PEDS-00136
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 중이염 항생제 교육 · Mrs. Aoki
+  title: 중이염 항생제 교육 · Mrs. Coleman
   tagline: Does she really need antibiotics?
   persona:
-    name: Mrs. Aoki
+    name: Mrs. Coleman
     role: parent
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
     sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    hair: '#241812'
+    hairStyle: long
   goals:
     - 복약 순응 교육
     - 경과 관찰 안내
@@ -1891,25 +1891,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 항생제 복약
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -1917,18 +1917,18 @@
 - id: SCN-PEDS-00137
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 낙상·머리 손상 관찰 · Mr. Delgado
+  title: 낙상·머리 손상 관찰 · Mrs. Coleman
   tagline: He fell off the couch — should I worry?
   persona:
-    name: Mr. Delgado
+    name: Mrs. Coleman
     role: parent
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Mother
+    hair: '#241812'
+    hairStyle: long
   goals:
     - 경고 신호 교육
     - 가정 관찰 지도
@@ -1971,18 +1971,18 @@
 - id: SCN-PEDS-00138
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 소아 통증 사정 · Ms. Bauer
+  title: 소아 통증 사정 · Mr. Robinson
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Ms. Bauer
+    name: Mr. Robinson
     role: child
-    ageRange: 30s
+    ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 얼굴 척도로 통증 사정
     - 안심 제공
@@ -2024,18 +2024,18 @@
 - id: SCN-PEDS-00139
   profession: ""
   eventId: EVT-PEDS-00103
-  title: 보호자 불안 공감 · Mr. Novak
+  title: 보호자 불안 공감 · Mrs. Coleman
   tagline: I feel like a bad parent.
   persona:
-    name: Mr. Novak
+    name: Mrs. Coleman
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: Mother
+    hair: '#241812'
+    hairStyle: long
   goals:
     - 보호자 감정 공감
     - 지지·정보 제공
@@ -2051,25 +2051,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 공감
         - 보호자 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -2183,18 +2183,18 @@
 - id: SCN-PEDS-00142
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 예방접종 이상반응 안내 · Mrs. Aoki
+  title: 예방접종 이상반응 안내 · Mr. Fischer
   tagline: He got a fever after his shots.
   persona:
-    name: Mrs. Aoki
+    name: Mr. Fischer
     role: parent
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    sub: Father
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 흔한 반응 설명
     - 대처·경고 신호 교육
@@ -2210,25 +2210,25 @@
     dept: PEDS · WELL CHILD
     deptColor: '#3B82F6'
     brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 접종 반응
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -2236,18 +2236,18 @@
 - id: SCN-PEDS-00143
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 천식 발작 아동 진정 · Mr. Thompson
+  title: 천식 발작 아동 진정 · Mrs. Hopkins
   tagline: I can't... breathe...
   persona:
-    name: Mr. Thompson
+    name: Mrs. Hopkins
     role: child
     ageRange: 60s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 아동을 진정시키며 흡입 치료
     - 부모 동참 유도
@@ -2264,25 +2264,25 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 소아 호흡
         - 아동 눈높이 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -2290,18 +2290,18 @@
 - id: SCN-PEDS-00144
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 탈수 아동 수분 교육 · Mrs. Bello
+  title: 탈수 아동 수분 교육 · Mr. Fischer
   tagline: She won't drink anything.
   persona:
-    name: Mrs. Bello
+    name: Mr. Fischer
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    sub: Father
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 탈수 징후 확인
     - 경구수액 요령 교육
@@ -2343,18 +2343,18 @@
 - id: SCN-PEDS-00145
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 채혈 전 아동 안심 · Mr. Yamamoto
+  title: 채혈 전 아동 안심 · Mrs. Hopkins
   tagline: Is it going to hurt?
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Hopkins
     role: child
-    ageRange: 50s
+    ageRange: 60s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 절차를 눈높이로 설명
     - 대처 전략 제공
@@ -2370,25 +2370,25 @@
     dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 아동 대처 지원
         - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -2396,18 +2396,18 @@
 - id: SCN-PEDS-00146
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 중이염 항생제 교육 · Mrs. Coleman
+  title: 중이염 항생제 교육 · Mr. Fischer
   tagline: Does she really need antibiotics?
   persona:
-    name: Mrs. Coleman
+    name: Mr. Fischer
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
+    sub: Father
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 복약 순응 교육
     - 경과 관찰 안내
@@ -2503,17 +2503,17 @@
 - id: SCN-PEDS-00148
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 소아 통증 사정 · Mrs. Santos
+  title: 소아 통증 사정 · Mrs. Hopkins
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mrs. Santos
+    name: Mrs. Hopkins
     role: child
-    ageRange: 70s
+    ageRange: 60s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: shy
-    sub: 74y / Female
-    hair: '#A0A0A0'
+    sub: 67y / Female
+    hair: '#9A6B3F'
     hairStyle: bob
   goals:
     - 얼굴 척도로 통증 사정
@@ -2530,64 +2530,11 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - FACES 척도
         - 아동 사정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00149
-  profession: ""
-  eventId: EVT-PEDS-00104
-  title: 보호자 불안 공감 · Mr. Delgado
-  tagline: I feel like a bad parent.
-  persona:
-    name: Mr. Delgado
-    role: parent
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 보호자 감정 공감
-    - 지지·정보 제공
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - You did the right thing bringing her in.
-    - This can happen to anyone.
-    - Let's take it one step at a time.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 공감
-        - 보호자 지지
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2606,21 +2553,74 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00150
+- id: SCN-PEDS-00149
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 퇴원 가정간호 교육 · Mrs. Bello
-  tagline: How do I care for him at home?
+  title: 보호자 불안 공감 · Mr. Fischer
+  tagline: I feel like a bad parent.
   persona:
-    name: Mrs. Bello
+    name: Mr. Fischer
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    sub: Father
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 보호자 감정 공감
+    - 지지·정보 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - You did the right thing bringing her in.
+    - This can happen to anyone.
+    - Let's take it one step at a time.
+  steps: []
+  briefing:
+    dept: PEDS · EXAM 1
+    deptColor: '#3B82F6'
+    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 공감
+        - 보호자 지지
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00150
+  profession: ""
+  eventId: EVT-PEDS-00104
+  title: 퇴원 가정간호 교육 · Mr. Fischer
+  tagline: How do I care for him at home?
+  persona:
+    name: Mr. Fischer
+    role: parent
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: Father
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 가정간호·투약 교육
     - 재방문 기준 안내
@@ -2662,18 +2662,18 @@
 - id: SCN-PEDS-00151
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 아동 발열 부모 상담 · Mr. Novak
+  title: 아동 발열 부모 상담 · Mrs. Aoki
   tagline: His fever won't come down.
   persona:
-    name: Mr. Novak
+    name: Mrs. Aoki
     role: parent
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: Mother
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 체중 기반 해열 안내
     - 경고 신호 교육
@@ -2715,18 +2715,18 @@
 - id: SCN-PEDS-00152
   profession: ""
   eventId: EVT-PEDS-00104
-  title: 예방접종 이상반응 안내 · Mrs. Coleman
+  title: 예방접종 이상반응 안내 · Mrs. Aoki
   tagline: He got a fever after his shots.
   persona:
-    name: Mrs. Coleman
+    name: Mrs. Aoki
     role: parent
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Mother
-    hair: '#241812'
-    hairStyle: long
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 흔한 반응 설명
     - 대처·경고 신호 교육
@@ -2742,25 +2742,25 @@
     dept: PEDS · WELL CHILD
     deptColor: '#3B82F6'
     brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 접종 반응
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -2768,18 +2768,18 @@
 - id: SCN-PEDS-00153
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 천식 발작 아동 진정 · Mrs. Hopkins
+  title: 천식 발작 아동 진정 · Ms. Alvarez
   tagline: I can't... breathe...
   persona:
-    name: Mrs. Hopkins
+    name: Ms. Alvarez
     role: child
-    ageRange: 60s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 아동을 진정시키며 흡입 치료
     - 부모 동참 유도
@@ -2875,18 +2875,18 @@
 - id: SCN-PEDS-00155
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 채혈 전 아동 안심 · Mr. Chen
+  title: 채혈 전 아동 안심 · Ms. Alvarez
   tagline: Is it going to hurt?
   persona:
-    name: Mr. Chen
+    name: Ms. Alvarez
     role: child
-    ageRange: 40s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 절차를 눈높이로 설명
     - 대처 전략 제공
@@ -2902,25 +2902,25 @@
     dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 아동 대처 지원
         - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -2928,18 +2928,18 @@
 - id: SCN-PEDS-00156
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 중이염 항생제 교육 · Mrs. Bello
+  title: 중이염 항생제 교육 · Mrs. Aoki
   tagline: Does she really need antibiotics?
   persona:
-    name: Mrs. Bello
+    name: Mrs. Aoki
     role: parent
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 복약 순응 교육
     - 경과 관찰 안내
@@ -2955,25 +2955,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 항생제 복약
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -2981,18 +2981,18 @@
 - id: SCN-PEDS-00157
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 낙상·머리 손상 관찰 · Mr. Novak
+  title: 낙상·머리 손상 관찰 · Mrs. Aoki
   tagline: He fell off the couch — should I worry?
   persona:
-    name: Mr. Novak
+    name: Mrs. Aoki
     role: parent
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: Mother
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 경고 신호 교육
     - 가정 관찰 지도
@@ -3035,17 +3035,17 @@
 - id: SCN-PEDS-00158
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 소아 통증 사정 · Ms. Nguyen
+  title: 소아 통증 사정 · Ms. Alvarez
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Ms. Nguyen
+    name: Ms. Alvarez
     role: child
-    ageRange: 20s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: sad
-    sub: 26y / Female
-    hair: '#1A1A1A'
+    sub: 34y / Female
+    hair: '#2A1E14'
     hairStyle: long
   goals:
     - 얼굴 척도로 통증 사정
@@ -3062,25 +3062,25 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - FACES 척도
         - 아동 사정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -3088,18 +3088,18 @@
 - id: SCN-PEDS-00159
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 보호자 불안 공감 · Mr. Fischer
+  title: 보호자 불안 공감 · Mrs. Aoki
   tagline: I feel like a bad parent.
   persona:
-    name: Mr. Fischer
+    name: Mrs. Aoki
     role: parent
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Mother
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 보호자 감정 공감
     - 지지·정보 제공
@@ -3115,25 +3115,25 @@
     dept: PEDS · EXAM 1
     deptColor: '#3B82F6'
     brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 공감
         - 보호자 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -3194,52 +3194,53 @@
 - id: SCN-PEDS-00161
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 아동 발열 부모 상담 · Mr. Delgado
-  tagline: His fever won't come down.
+  title: 천식 발작 아동 진정 · Mr. Chen
+  tagline: I can't... breathe...
   persona:
-    name: Mr. Delgado
-    role: parent
+    name: Mr. Chen
+    role: child
     ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Father
-    hair: '#2E2E2E'
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 45y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
-    - 체중 기반 해열 안내
-    - 경고 신호 교육
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Give the correct dose for his weight.
-    - Keep him hydrated.
-    - Come back if he seems lethargic.
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
   steps: []
   briefing:
-    dept: PEDS · EXAM 1
+    dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
-    brief: 발열 아동 보호자에게 해열·수분·관찰을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
-        - 소아 발열
-        - 보호자 교육
+        - 소아 호흡
+        - 아동 눈높이 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
@@ -3247,38 +3248,38 @@
 - id: SCN-PEDS-00162
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 예방접종 이상반응 안내 · Mrs. Bello
-  tagline: He got a fever after his shots.
+  title: 채혈 전 아동 안심 · Mr. Chen
+  tagline: Is it going to hurt?
   persona:
-    name: Mrs. Bello
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    name: Mr. Chen
+    role: child
+    ageRange: 40s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
-    - 흔한 반응 설명
-    - 대처·경고 신호 교육
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - A mild fever is common after shots.
-    - You can give infant acetaminophen.
-    - Call us if it lasts over two days.
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
   steps: []
   briefing:
-    dept: PEDS · WELL CHILD
+    dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
-    brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
     difficulty: 1
     timeLabel: 약 6분
     skills:
-        - 접종 반응
-        - 안심
+        - 아동 대처 지원
+        - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3300,18 +3301,71 @@
 - id: SCN-PEDS-00163
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 천식 발작 아동 진정 · Mr. Silva
+  title: 소아 통증 사정 · Mr. Chen
+  tagline: (아동이 얼굴 척도를 가리킴)
+  persona:
+    name: Mr. Chen
+    role: child
+    ageRange: 40s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - FACES 척도
+        - 아동 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00164
+  profession: ""
+  eventId: EVT-PEDS-00105
+  title: 천식 발작 아동 진정 · Mrs. Kelly
   tagline: I can't... breathe...
   persona:
-    name: Mr. Silva
+    name: Mrs. Kelly
     role: child
     ageRange: 70s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: scared
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    mood: shy
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 아동을 진정시키며 흡입 치료
     - 부모 동참 유도
@@ -3329,7 +3383,7 @@
     deptColor: '#3B82F6'
     brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
     difficulty: 3
-    timeLabel: 약 9분
+    timeLabel: 약 7분
     skills:
         - 소아 호흡
         - 아동 눈높이 설명
@@ -3351,74 +3405,21 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00164
-  profession: ""
-  eventId: EVT-PEDS-00105
-  title: 탈수 아동 수분 교육 · Mrs. Coleman
-  tagline: She won't drink anything.
-  persona:
-    name: Mrs. Coleman
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
-  goals:
-    - 탈수 징후 확인
-    - 경구수액 요령 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Try small sips every few minutes.
-    - Watch for fewer wet diapers.
-    - This oral solution helps.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 2
-    deptColor: '#3B82F6'
-    brief: 탈수 아동의 경구수액 요령을 보호자에게 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 탈수 사정
-        - ORS 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
 - id: SCN-PEDS-00165
   profession: ""
   eventId: EVT-PEDS-00105
-  title: 채혈 전 아동 안심 · Mr. Larsson
+  title: 채혈 전 아동 안심 · Mrs. Kelly
   tagline: Is it going to hurt?
   persona:
-    name: Mr. Larsson
+    name: Mrs. Kelly
     role: child
-    ageRange: 50s
+    ageRange: 70s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: scared
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    mood: shy
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 절차를 눈높이로 설명
     - 대처 전략 제공
@@ -3435,7 +3436,7 @@
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
     difficulty: 2
-    timeLabel: 약 7분
+    timeLabel: 약 8분
     skills:
         - 아동 대처 지원
         - 통증 완화
@@ -3460,92 +3461,38 @@
 - id: SCN-PEDS-00166
   profession: ""
   eventId: EVT-PEDS-00106
-  title: 중이염 항생제 교육 · Mrs. Aoki
-  tagline: Does she really need antibiotics?
+  title: 소아 통증 사정 · Mrs. Kelly
+  tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mrs. Aoki
-    role: parent
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Mother
-    hair: '#141414'
+    name: Mrs. Kelly
+    role: child
+    ageRange: 70s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 72y / Female
+    hair: '#B0B0B0'
     hairStyle: bob
   goals:
-    - 복약 순응 교육
-    - 경과 관찰 안내
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Finish the full course.
-    - Give it at the same times daily.
-    - Come back if the ear pain worsens.
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
   steps: []
   briefing:
-    dept: PEDS · EXAM 1
+    dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
-    brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 항생제 복약
-        - 보호자 상담
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00167
-  profession: ""
-  eventId: EVT-PEDS-00106
-  title: 낙상·머리 손상 관찰 · Mr. Delgado
-  tagline: He fell off the couch — should I worry?
-  persona:
-    name: Mr. Delgado
-    role: parent
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 경고 신호 교육
-    - 가정 관찰 지도
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Watch for vomiting or drowsiness.
-    - Wake him gently tonight to check.
-    - Come back right away if he seems off.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 3
-    deptColor: '#3B82F6'
-    brief: 머리를 부딪친 아동의 경고 신호와 가정 관찰을 교육하세요.
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
     difficulty: 1
-    timeLabel: 약 5분
+    timeLabel: 약 7분
     skills:
-        - 두부 손상 관찰
-        - 경고 신호
+        - FACES 척도
+        - 아동 사정
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3564,21 +3511,288 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
+- id: SCN-PEDS-00167
+  profession: ""
+  eventId: EVT-PEDS-00106
+  title: 천식 발작 아동 진정 · Mr. Okafor
+  tagline: I can't... breathe...
+  persona:
+    name: Mr. Okafor
+    role: child
+    ageRange: 50s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
+  goals:
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
 - id: SCN-PEDS-00168
   profession: ""
   eventId: EVT-PEDS-00106
-  title: 소아 통증 사정 · Mrs. Haddad
+  title: 채혈 전 아동 안심 · Mr. Okafor
+  tagline: Is it going to hurt?
+  persona:
+    name: Mr. Okafor
+    role: child
+    ageRange: 50s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
+  goals:
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
+  steps: []
+  briefing:
+    dept: PEDS · LAB DRAW
+    deptColor: '#3B82F6'
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 아동 대처 지원
+        - 통증 완화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00169
+  profession: ""
+  eventId: EVT-PEDS-00106
+  title: 소아 통증 사정 · Mr. Okafor
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mrs. Haddad
+    name: Mr. Okafor
     role: child
-    ageRange: 30s
+    ageRange: 50s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
+  goals:
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - FACES 척도
+        - 아동 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00170
+  profession: ""
+  eventId: EVT-PEDS-00106
+  title: 천식 발작 아동 진정 · Ms. Nguyen
+  tagline: I can't... breathe...
+  persona:
+    name: Ms. Nguyen
+    role: child
+    ageRange: 20s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
+  goals:
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00171
+  profession: ""
+  eventId: EVT-PEDS-00106
+  title: 채혈 전 아동 안심 · Ms. Nguyen
+  tagline: Is it going to hurt?
+  persona:
+    name: Ms. Nguyen
+    role: child
+    ageRange: 20s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
+  goals:
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
+  steps: []
+  briefing:
+    dept: PEDS · LAB DRAW
+    deptColor: '#3B82F6'
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 아동 대처 지원
+        - 통증 완화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00172
+  profession: ""
+  eventId: EVT-PEDS-00106
+  title: 소아 통증 사정 · Ms. Nguyen
+  tagline: (아동이 얼굴 척도를 가리킴)
+  persona:
+    name: Ms. Nguyen
+    role: child
+    ageRange: 20s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 얼굴 척도로 통증 사정
     - 안심 제공
@@ -3617,41 +3831,42 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00169
+- id: SCN-PEDS-00173
   profession: ""
   eventId: EVT-PEDS-00106
-  title: 보호자 불안 공감 · Mr. Novak
-  tagline: I feel like a bad parent.
+  title: 천식 발작 아동 진정 · Mr. Patel
+  tagline: I can't... breathe...
   persona:
-    name: Mr. Novak
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Father
+    name: Mr. Patel
+    role: child
+    ageRange: 60s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 63y / Male
     hair: '#3B2A1A'
     hairStyle: short
   goals:
-    - 보호자 감정 공감
-    - 지지·정보 제공
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - You did the right thing bringing her in.
-    - This can happen to anyone.
-    - Let's take it one step at a time.
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
   steps: []
   briefing:
-    dept: PEDS · EXAM 1
+    dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
-    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
     difficulty: 3
-    timeLabel: 약 9분
+    timeLabel: 약 7분
     skills:
-        - 공감
-        - 보호자 지지
+        - 소아 호흡
+        - 아동 눈높이 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3670,254 +3885,41 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00170
-  profession: ""
-  eventId: EVT-PEDS-00106
-  title: 퇴원 가정간호 교육 · Mrs. Coleman
-  tagline: How do I care for him at home?
-  persona:
-    name: Mrs. Coleman
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
-  goals:
-    - 가정간호·투약 교육
-    - 재방문 기준 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Give this medicine twice a day.
-    - These are the warning signs.
-    - Your follow-up is next Tuesday.
-  steps: []
-  briefing:
-    dept: PEDS · DISCHARGE
-    deptColor: '#3B82F6'
-    brief: 퇴원 아동의 가정간호·투약·재방문 기준을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 퇴원 교육
-        - 복약
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00171
-  profession: ""
-  eventId: EVT-PEDS-00106
-  title: 아동 발열 부모 상담 · Mr. Fischer
-  tagline: His fever won't come down.
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 체중 기반 해열 안내
-    - 경고 신호 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Give the correct dose for his weight.
-    - Keep him hydrated.
-    - Come back if he seems lethargic.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 발열 아동 보호자에게 해열·수분·관찰을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 소아 발열
-        - 보호자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00172
-  profession: ""
-  eventId: EVT-PEDS-00106
-  title: 예방접종 이상반응 안내 · Mrs. Aoki
-  tagline: He got a fever after his shots.
-  persona:
-    name: Mrs. Aoki
-    role: parent
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
-  goals:
-    - 흔한 반응 설명
-    - 대처·경고 신호 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - A mild fever is common after shots.
-    - You can give infant acetaminophen.
-    - Call us if it lasts over two days.
-  steps: []
-  briefing:
-    dept: PEDS · WELL CHILD
-    deptColor: '#3B82F6'
-    brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 접종 반응
-        - 안심
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00173
-  profession: ""
-  eventId: EVT-PEDS-00106
-  title: 천식 발작 아동 진정 · Mr. Wagner
-  tagline: I can't... breathe...
-  persona:
-    name: Mr. Wagner
-    role: child
-    ageRange: 40s
-    personality: 겁먹어 위축됨.
-    speakingStyle: 작은 목소리로 더듬음.
-    mood: shy
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
-  goals:
-    - 아동을 진정시키며 흡입 치료
-    - 부모 동참 유도
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Let's breathe with the mask together.
-    - You're doing so well.
-    - In through the nose, out slow.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: PEDS · TREATMENT
-    deptColor: '#3B82F6'
-    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 소아 호흡
-        - 아동 눈높이 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
 - id: SCN-PEDS-00174
   profession: ""
   eventId: EVT-PEDS-00106
-  title: 탈수 아동 수분 교육 · Mrs. Bello
-  tagline: She won't drink anything.
+  title: 채혈 전 아동 안심 · Mr. Patel
+  tagline: Is it going to hurt?
   persona:
-    name: Mrs. Bello
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    name: Mr. Patel
+    role: child
+    ageRange: 60s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
-    - 탈수 징후 확인
-    - 경구수액 요령 교육
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Try small sips every few minutes.
-    - Watch for fewer wet diapers.
-    - This oral solution helps.
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
   steps: []
   briefing:
-    dept: PEDS · EXAM 2
+    dept: PEDS · LAB DRAW
     deptColor: '#3B82F6'
-    brief: 탈수 아동의 경구수액 요령을 보호자에게 교육하세요.
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
     difficulty: 2
-    timeLabel: 약 7분
+    timeLabel: 약 8분
     skills:
-        - 탈수 사정
-        - ORS 교육
+        - 아동 대처 지원
+        - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3939,18 +3941,125 @@
 - id: SCN-PEDS-00175
   profession: ""
   eventId: EVT-PEDS-00106
-  title: 채혈 전 아동 안심 · Mr. Reyes
-  tagline: Is it going to hurt?
+  title: 소아 통증 사정 · Mr. Patel
+  tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mr. Reyes
+    name: Mr. Patel
+    role: child
+    ageRange: 60s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
+  goals:
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - FACES 척도
+        - 아동 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00176
+  profession: ""
+  eventId: EVT-PEDS-00106
+  title: 천식 발작 아동 진정 · Mrs. Rossi
+  tagline: I can't... breathe...
+  persona:
+    name: Mrs. Rossi
     role: child
     ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: shy
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    mood: sad
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
+  goals:
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00177
+  profession: ""
+  eventId: EVT-PEDS-00106
+  title: 채혈 전 아동 안심 · Mrs. Rossi
+  tagline: Is it going to hurt?
+  persona:
+    name: Mrs. Rossi
+    role: child
+    ageRange: 50s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 절차를 눈높이로 설명
     - 대처 전략 제공
@@ -3967,7 +4076,7 @@
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
     difficulty: 3
-    timeLabel: 약 9분
+    timeLabel: 약 7분
     skills:
         - 아동 대처 지원
         - 통증 완화
@@ -3989,128 +4098,21 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00176
-  profession: ""
-  eventId: EVT-PEDS-00106
-  title: 중이염 항생제 교육 · Mrs. Coleman
-  tagline: Does she really need antibiotics?
-  persona:
-    name: Mrs. Coleman
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
-  goals:
-    - 복약 순응 교육
-    - 경과 관찰 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Finish the full course.
-    - Give it at the same times daily.
-    - Come back if the ear pain worsens.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 항생제 복약
-        - 보호자 상담
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00177
-  profession: ""
-  eventId: EVT-PEDS-00106
-  title: 낙상·머리 손상 관찰 · Mr. Fischer
-  tagline: He fell off the couch — should I worry?
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 경고 신호 교육
-    - 가정 관찰 지도
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Watch for vomiting or drowsiness.
-    - Wake him gently tonight to check.
-    - Come back right away if he seems off.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 3
-    deptColor: '#3B82F6'
-    brief: 머리를 부딪친 아동의 경고 신호와 가정 관찰을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 두부 손상 관찰
-        - 경고 신호
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
 - id: SCN-PEDS-00178
   profession: ""
   eventId: EVT-PEDS-00106
-  title: 소아 통증 사정 · Ms. Alvarez
+  title: 소아 통증 사정 · Mrs. Rossi
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Ms. Alvarez
+    name: Mrs. Rossi
     role: child
-    ageRange: 30s
+    ageRange: 50s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: shy
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    mood: sad
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 얼굴 척도로 통증 사정
     - 안심 제공
@@ -4127,7 +4129,7 @@
     deptColor: '#3B82F6'
     brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
     difficulty: 2
-    timeLabel: 약 8분
+    timeLabel: 약 6분
     skills:
         - FACES 척도
         - 아동 사정
@@ -4152,229 +4154,17 @@
 - id: SCN-PEDS-00179
   profession: ""
   eventId: EVT-PEDS-00107
-  title: 보호자 불안 공감 · Mr. Delgado
-  tagline: I feel like a bad parent.
-  persona:
-    name: Mr. Delgado
-    role: parent
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 보호자 감정 공감
-    - 지지·정보 제공
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - You did the right thing bringing her in.
-    - This can happen to anyone.
-    - Let's take it one step at a time.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 공감
-        - 보호자 지지
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00180
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 퇴원 가정간호 교육 · Mrs. Bello
-  tagline: How do I care for him at home?
-  persona:
-    name: Mrs. Bello
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
-  goals:
-    - 가정간호·투약 교육
-    - 재방문 기준 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Give this medicine twice a day.
-    - These are the warning signs.
-    - Your follow-up is next Tuesday.
-  steps: []
-  briefing:
-    dept: PEDS · DISCHARGE
-    deptColor: '#3B82F6'
-    brief: 퇴원 아동의 가정간호·투약·재방문 기준을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 퇴원 교육
-        - 복약
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00181
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 아동 발열 부모 상담 · Mr. Novak
-  tagline: His fever won't come down.
-  persona:
-    name: Mr. Novak
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
-  goals:
-    - 체중 기반 해열 안내
-    - 경고 신호 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Give the correct dose for his weight.
-    - Keep him hydrated.
-    - Come back if he seems lethargic.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 발열 아동 보호자에게 해열·수분·관찰을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 소아 발열
-        - 보호자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00182
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 예방접종 이상반응 안내 · Mrs. Coleman
-  tagline: He got a fever after his shots.
-  persona:
-    name: Mrs. Coleman
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
-  goals:
-    - 흔한 반응 설명
-    - 대처·경고 신호 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - A mild fever is common after shots.
-    - You can give infant acetaminophen.
-    - Call us if it lasts over two days.
-  steps: []
-  briefing:
-    dept: PEDS · WELL CHILD
-    deptColor: '#3B82F6'
-    brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 접종 반응
-        - 안심
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00183
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 천식 발작 아동 진정 · Mr. Patel
+  title: 천식 발작 아동 진정 · Mr. Johnson
   tagline: I can't... breathe...
   persona:
-    name: Mr. Patel
+    name: Mr. Johnson
     role: child
-    ageRange: 60s
+    ageRange: 40s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    mood: scared
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 아동을 진정시키며 흡입 치료
@@ -4392,7 +4182,7 @@
     dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
     brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
-    difficulty: 3
+    difficulty: 2
     timeLabel: 약 8분
     skills:
         - 소아 호흡
@@ -4400,75 +4190,22 @@
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00184
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 탈수 아동 수분 교육 · Mrs. Aoki
-  tagline: She won't drink anything.
-  persona:
-    name: Mrs. Aoki
-    role: parent
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
-  goals:
-    - 탈수 징후 확인
-    - 경구수액 요령 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Try small sips every few minutes.
-    - Watch for fewer wet diapers.
-    - This oral solution helps.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 2
-    deptColor: '#3B82F6'
-    brief: 탈수 아동의 경구수액 요령을 보호자에게 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 탈수 사정
-        - ORS 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00185
+- id: SCN-PEDS-00180
   profession: ""
   eventId: EVT-PEDS-00107
   title: 채혈 전 아동 안심 · Mr. Johnson
@@ -4479,7 +4216,7 @@
     ageRange: 40s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: sad
+    mood: scared
     sub: 42y / Male
     hair: '#2E2E2E'
     hairStyle: short
@@ -4499,7 +4236,7 @@
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
     difficulty: 1
-    timeLabel: 약 5분
+    timeLabel: 약 6분
     skills:
         - 아동 대처 지원
         - 통증 완화
@@ -4521,128 +4258,21 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00186
+- id: SCN-PEDS-00181
   profession: ""
   eventId: EVT-PEDS-00107
-  title: 중이염 항생제 교육 · Mrs. Bello
-  tagline: Does she really need antibiotics?
-  persona:
-    name: Mrs. Bello
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
-  goals:
-    - 복약 순응 교육
-    - 경과 관찰 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Finish the full course.
-    - Give it at the same times daily.
-    - Come back if the ear pain worsens.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 항생제 복약
-        - 보호자 상담
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00187
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 낙상·머리 손상 관찰 · Mr. Novak
-  tagline: He fell off the couch — should I worry?
-  persona:
-    name: Mr. Novak
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
-  goals:
-    - 경고 신호 교육
-    - 가정 관찰 지도
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Watch for vomiting or drowsiness.
-    - Wake him gently tonight to check.
-    - Come back right away if he seems off.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 3
-    deptColor: '#3B82F6'
-    brief: 머리를 부딪친 아동의 경고 신호와 가정 관찰을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 두부 손상 관찰
-        - 경고 신호
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00188
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 소아 통증 사정 · Mrs. Adeyemi
+  title: 소아 통증 사정 · Mr. Johnson
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Johnson
     role: child
     ageRange: 40s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: sad
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    mood: scared
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 얼굴 척도로 통증 사정
     - 안심 제공
@@ -4659,7 +4289,7 @@
     deptColor: '#3B82F6'
     brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
     difficulty: 1
-    timeLabel: 약 5분
+    timeLabel: 약 6분
     skills:
         - FACES 척도
         - 아동 사정
@@ -4681,233 +4311,21 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00189
+- id: SCN-PEDS-00182
   profession: ""
   eventId: EVT-PEDS-00107
-  title: 보호자 불안 공감 · Mr. Fischer
-  tagline: I feel like a bad parent.
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 보호자 감정 공감
-    - 지지·정보 제공
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - You did the right thing bringing her in.
-    - This can happen to anyone.
-    - Let's take it one step at a time.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 공감
-        - 보호자 지지
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00190
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 퇴원 가정간호 교육 · Mrs. Aoki
-  tagline: How do I care for him at home?
-  persona:
-    name: Mrs. Aoki
-    role: parent
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
-  goals:
-    - 가정간호·투약 교육
-    - 재방문 기준 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Give this medicine twice a day.
-    - These are the warning signs.
-    - Your follow-up is next Tuesday.
-  steps: []
-  briefing:
-    dept: PEDS · DISCHARGE
-    deptColor: '#3B82F6'
-    brief: 퇴원 아동의 가정간호·투약·재방문 기준을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 퇴원 교육
-        - 복약
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00191
-  profession: ""
-  eventId: EVT-PEDS-00107
-  title: 아동 발열 부모 상담 · Mr. Delgado
-  tagline: His fever won't come down.
-  persona:
-    name: Mr. Delgado
-    role: parent
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 체중 기반 해열 안내
-    - 경고 신호 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Give the correct dose for his weight.
-    - Keep him hydrated.
-    - Come back if he seems lethargic.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 1
-    deptColor: '#3B82F6'
-    brief: 발열 아동 보호자에게 해열·수분·관찰을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 소아 발열
-        - 보호자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00192
-  profession: ""
-  eventId: EVT-PEDS-00108
-  title: 예방접종 이상반응 안내 · Mrs. Bello
-  tagline: He got a fever after his shots.
-  persona:
-    name: Mrs. Bello
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
-  goals:
-    - 흔한 반응 설명
-    - 대처·경고 신호 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - A mild fever is common after shots.
-    - You can give infant acetaminophen.
-    - Call us if it lasts over two days.
-  steps: []
-  briefing:
-    dept: PEDS · WELL CHILD
-    deptColor: '#3B82F6'
-    brief: 접종 후 흔한 반응과 대처를 보호자에게 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 접종 반응
-        - 안심
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00193
-  profession: ""
-  eventId: EVT-PEDS-00108
-  title: 천식 발작 아동 진정 · Mr. Yamamoto
+  title: 천식 발작 아동 진정 · Ms. Bauer
   tagline: I can't... breathe...
   persona:
-    name: Mr. Yamamoto
+    name: Ms. Bauer
     role: child
-    ageRange: 50s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: scared
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    mood: shy
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 아동을 진정시키며 흡입 치료
     - 부모 동참 유도
@@ -4925,7 +4343,7 @@
     deptColor: '#3B82F6'
     brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
     difficulty: 3
-    timeLabel: 약 9분
+    timeLabel: 약 7분
     skills:
         - 소아 호흡
         - 아동 눈높이 설명
@@ -4947,74 +4365,21 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00194
+- id: SCN-PEDS-00183
   profession: ""
-  eventId: EVT-PEDS-00108
-  title: 탈수 아동 수분 교육 · Mrs. Coleman
-  tagline: She won't drink anything.
-  persona:
-    name: Mrs. Coleman
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
-  goals:
-    - 탈수 징후 확인
-    - 경구수액 요령 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Try small sips every few minutes.
-    - Watch for fewer wet diapers.
-    - This oral solution helps.
-  steps: []
-  briefing:
-    dept: PEDS · EXAM 2
-    deptColor: '#3B82F6'
-    brief: 탈수 아동의 경구수액 요령을 보호자에게 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 탈수 사정
-        - ORS 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00195
-  profession: ""
-  eventId: EVT-PEDS-00108
-  title: 채혈 전 아동 안심 · Mr. Dubois
+  eventId: EVT-PEDS-00107
+  title: 채혈 전 아동 안심 · Ms. Bauer
   tagline: Is it going to hurt?
   persona:
-    name: Mr. Dubois
+    name: Ms. Bauer
     role: child
-    ageRange: 60s
+    ageRange: 30s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
-    mood: scared
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    mood: shy
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 절차를 눈높이로 설명
     - 대처 전략 제공
@@ -5031,7 +4396,7 @@
     deptColor: '#3B82F6'
     brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
     difficulty: 2
-    timeLabel: 약 7분
+    timeLabel: 약 8분
     skills:
         - 아동 대처 지원
         - 통증 완화
@@ -5053,41 +4418,681 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00196
+- id: SCN-PEDS-00184
   profession: ""
-  eventId: EVT-PEDS-00108
-  title: 중이염 항생제 교육 · Mrs. Aoki
-  tagline: Does she really need antibiotics?
+  eventId: EVT-PEDS-00107
+  title: 소아 통증 사정 · Ms. Bauer
+  tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Mrs. Aoki
-    role: parent
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    name: Ms. Bauer
+    role: child
+    ageRange: 30s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
-    - 복약 순응 교육
-    - 경과 관찰 안내
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Finish the full course.
-    - Give it at the same times daily.
-    - Come back if the ear pain worsens.
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
   steps: []
   briefing:
-    dept: PEDS · EXAM 1
+    dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
-    brief: 중이염 항생제 복용의 필요성과 완수를 교육하세요.
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - FACES 척도
+        - 아동 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00185
+  profession: ""
+  eventId: EVT-PEDS-00107
+  title: 천식 발작 아동 진정 · Mr. Silva
+  tagline: I can't... breathe...
+  persona:
+    name: Mr. Silva
+    role: child
+    ageRange: 70s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
+  goals:
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00186
+  profession: ""
+  eventId: EVT-PEDS-00107
+  title: 채혈 전 아동 안심 · Mr. Silva
+  tagline: Is it going to hurt?
+  persona:
+    name: Mr. Silva
+    role: child
+    ageRange: 70s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
+  goals:
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
+  steps: []
+  briefing:
+    dept: PEDS · LAB DRAW
+    deptColor: '#3B82F6'
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 아동 대처 지원
+        - 통증 완화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00187
+  profession: ""
+  eventId: EVT-PEDS-00107
+  title: 소아 통증 사정 · Mr. Silva
+  tagline: (아동이 얼굴 척도를 가리킴)
+  persona:
+    name: Mr. Silva
+    role: child
+    ageRange: 70s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
+  goals:
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - FACES 척도
+        - 아동 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00188
+  profession: ""
+  eventId: EVT-PEDS-00107
+  title: 천식 발작 아동 진정 · Mrs. Adeyemi
+  tagline: I can't... breathe...
+  persona:
+    name: Mrs. Adeyemi
+    role: child
+    ageRange: 40s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
+  goals:
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
     difficulty: 2
     timeLabel: 약 8분
     skills:
-        - 항생제 복약
-        - 보호자 상담
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00189
+  profession: ""
+  eventId: EVT-PEDS-00107
+  title: 채혈 전 아동 안심 · Mrs. Adeyemi
+  tagline: Is it going to hurt?
+  persona:
+    name: Mrs. Adeyemi
+    role: child
+    ageRange: 40s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
+  goals:
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
+  steps: []
+  briefing:
+    dept: PEDS · LAB DRAW
+    deptColor: '#3B82F6'
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 아동 대처 지원
+        - 통증 완화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00190
+  profession: ""
+  eventId: EVT-PEDS-00107
+  title: 소아 통증 사정 · Mrs. Adeyemi
+  tagline: (아동이 얼굴 척도를 가리킴)
+  persona:
+    name: Mrs. Adeyemi
+    role: child
+    ageRange: 40s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
+  goals:
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - FACES 척도
+        - 아동 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00191
+  profession: ""
+  eventId: EVT-PEDS-00107
+  title: 천식 발작 아동 진정 · Mr. Larsson
+  tagline: I can't... breathe...
+  persona:
+    name: Mr. Larsson
+    role: child
+    ageRange: 50s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00192
+  profession: ""
+  eventId: EVT-PEDS-00108
+  title: 채혈 전 아동 안심 · Mr. Larsson
+  tagline: Is it going to hurt?
+  persona:
+    name: Mr. Larsson
+    role: child
+    ageRange: 50s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
+  steps: []
+  briefing:
+    dept: PEDS · LAB DRAW
+    deptColor: '#3B82F6'
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 아동 대처 지원
+        - 통증 완화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00193
+  profession: ""
+  eventId: EVT-PEDS-00108
+  title: 소아 통증 사정 · Mr. Larsson
+  tagline: (아동이 얼굴 척도를 가리킴)
+  persona:
+    name: Mr. Larsson
+    role: child
+    ageRange: 50s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - FACES 척도
+        - 아동 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00194
+  profession: ""
+  eventId: EVT-PEDS-00108
+  title: 천식 발작 아동 진정 · Ms. Park
+  tagline: I can't... breathe...
+  persona:
+    name: Ms. Park
+    role: child
+    ageRange: 20s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00195
+  profession: ""
+  eventId: EVT-PEDS-00108
+  title: 채혈 전 아동 안심 · Ms. Park
+  tagline: Is it going to hurt?
+  persona:
+    name: Ms. Park
+    role: child
+    ageRange: 20s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
+  steps: []
+  briefing:
+    dept: PEDS · LAB DRAW
+    deptColor: '#3B82F6'
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 아동 대처 지원
+        - 통증 완화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00196
+  profession: ""
+  eventId: EVT-PEDS-00108
+  title: 소아 통증 사정 · Ms. Park
+  tagline: (아동이 얼굴 척도를 가리킴)
+  persona:
+    name: Ms. Park
+    role: child
+    ageRange: 20s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: sad
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 얼굴 척도로 통증 사정
+    - 안심 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Point to the face that matches.
+    - Where does it hurt?
+    - I'll help make it better.
+  steps: []
+  briefing:
+    dept: PEDS · TREATMENT
+    deptColor: '#3B82F6'
+    brief: 얼굴 통증 척도로 아동의 통증을 사정하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - FACES 척도
+        - 아동 사정
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5109,39 +5114,92 @@
 - id: SCN-PEDS-00197
   profession: ""
   eventId: EVT-PEDS-00108
-  title: 낙상·머리 손상 관찰 · Mr. Delgado
-  tagline: He fell off the couch — should I worry?
+  title: 천식 발작 아동 진정 · Mr. Thompson
+  tagline: I can't... breathe...
   persona:
-    name: Mr. Delgado
-    role: parent
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Father
-    hair: '#2E2E2E'
+    name: Mr. Thompson
+    role: child
+    ageRange: 60s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
-    - 경고 신호 교육
-    - 가정 관찰 지도
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Watch for vomiting or drowsiness.
-    - Wake him gently tonight to check.
-    - Come back right away if he seems off.
-  acuity: urgent
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
   steps: []
   briefing:
-    dept: PEDS · EXAM 3
+    dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
-    brief: 머리를 부딪친 아동의 경고 신호와 가정 관찰을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
-        - 두부 손상 관찰
-        - 경고 신호
+        - 소아 호흡
+        - 아동 눈높이 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DBEAFE'
+    accent: '#2563EB'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PEDS-00198
+  profession: ""
+  eventId: EVT-PEDS-00108
+  title: 채혈 전 아동 안심 · Mr. Thompson
+  tagline: Is it going to hurt?
+  persona:
+    name: Mr. Thompson
+    role: child
+    ageRange: 60s
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: scared
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 절차를 눈높이로 설명
+    - 대처 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - It's a quick little pinch.
+    - You can squeeze this toy.
+    - You were so brave!
+  steps: []
+  briefing:
+    dept: PEDS · LAB DRAW
+    deptColor: '#3B82F6'
+    brief: 채혈을 앞둔 아동을 놀이·설명으로 안심시키세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 아동 대처 지원
+        - 통증 완화
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5160,21 +5218,21 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00198
+- id: SCN-PEDS-00199
   profession: ""
   eventId: EVT-PEDS-00108
-  title: 소아 통증 사정 · Ms. Ivanova
+  title: 소아 통증 사정 · Mr. Thompson
   tagline: (아동이 얼굴 척도를 가리킴)
   persona:
-    name: Ms. Ivanova
+    name: Mr. Thompson
     role: child
-    ageRange: 30s
+    ageRange: 60s
     personality: 겁먹어 위축됨.
     speakingStyle: 작은 목소리로 더듬음.
     mood: scared
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 얼굴 척도로 통증 사정
     - 안심 제공
@@ -5213,41 +5271,42 @@
     accent: '#2563EB'
     chart: null
     riskyPhrases: []
-- id: SCN-PEDS-00199
+- id: SCN-PEDS-00200
   profession: ""
   eventId: EVT-PEDS-00108
-  title: 보호자 불안 공감 · Mr. Novak
-  tagline: I feel like a bad parent.
+  title: 천식 발작 아동 진정 · Mrs. Haddad
+  tagline: I can't... breathe...
   persona:
-    name: Mr. Novak
-    role: parent
+    name: Mrs. Haddad
+    role: child
     ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
+    personality: 겁먹어 위축됨.
+    speakingStyle: 작은 목소리로 더듬음.
+    mood: shy
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
-    - 보호자 감정 공감
-    - 지지·정보 제공
+    - 아동을 진정시키며 흡입 치료
+    - 부모 동참 유도
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - You did the right thing bringing her in.
-    - This can happen to anyone.
-    - Let's take it one step at a time.
+    - Let's breathe with the mask together.
+    - You're doing so well.
+    - In through the nose, out slow.
+  acuity: critical
   steps: []
   briefing:
-    dept: PEDS · EXAM 1
+    dept: PEDS · TREATMENT
     deptColor: '#3B82F6'
-    brief: 죄책감을 느끼는 보호자를 공감적으로 지지하세요.
+    brief: 천식 발작 아동을 진정시키며 흡입 치료를 설명하세요.
     difficulty: 3
-    timeLabel: 약 9분
+    timeLabel: 약 7분
     skills:
-        - 공감
-        - 보호자 지지
+        - 소아 호흡
+        - 아동 눈높이 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5262,59 +5321,6 @@
         - label: 레벨 6+
           metric: level
           threshold: 6
-    tone: '#DBEAFE'
-    accent: '#2563EB'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PEDS-00200
-  profession: ""
-  eventId: EVT-PEDS-00108
-  title: 퇴원 가정간호 교육 · Mrs. Coleman
-  tagline: How do I care for him at home?
-  persona:
-    name: Mrs. Coleman
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
-  goals:
-    - 가정간호·투약 교육
-    - 재방문 기준 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Give this medicine twice a day.
-    - These are the warning signs.
-    - Your follow-up is next Tuesday.
-  steps: []
-  briefing:
-    dept: PEDS · DISCHARGE
-    deptColor: '#3B82F6'
-    brief: 퇴원 아동의 가정간호·투약·재방문 기준을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 퇴원 교육
-        - 복약
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
     tone: '#DBEAFE'
     accent: '#2563EB'
     chart: null

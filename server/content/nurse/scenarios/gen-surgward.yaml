@@ -55,18 +55,18 @@
 - id: SCN-SURGWARD-00102
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 통증 자가조절 장치 교육 · Mr. Thompson
+  title: 통증 자가조절 장치 교육 · Ms. Park
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Thompson
+    name: Ms. Park
     role: patient
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 사용법 교육
     - 가족 대리 사용 금지
@@ -82,25 +82,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -108,18 +108,18 @@
 - id: SCN-SURGWARD-00103
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 조기 보행 격려 · Mrs. Haddad
+  title: 조기 보행 격려 · Ms. Park
   tagline: It hurts too much to stand up.
   persona:
-    name: Mrs. Haddad
+    name: Ms. Park
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -135,25 +135,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -161,18 +161,18 @@
 - id: SCN-SURGWARD-00104
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 수술 부위 드레싱 관찰 · Mr. Yamamoto
+  title: 수술 부위 드레싱 관찰 · Ms. Park
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Yamamoto
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 정상·이상 구분 설명
     - 보고 기준 제시
@@ -214,17 +214,17 @@
 - id: SCN-SURGWARD-00105
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 배액관 관리 설명 · Ms. O'Brien
+  title: 배액관 관리 설명 · Ms. Park
   tagline: How long will this tube stay in?
   persona:
-    name: Ms. O'Brien
+    name: Ms. Park
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 41y / Female
-    hair: '#7A4A22'
+    sub: 29y / Female
+    hair: '#141414'
     hairStyle: long
   goals:
     - 목적 설명
@@ -241,11 +241,65 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 배액관
         - 환자 교육
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00106
+  profession: ""
+  eventId: EVT-SURGWARD-00101
+  title: 수술 후 출혈 의심 · Ms. Park
+  tagline: The dressing is soaked through.
+  persona:
+    name: Ms. Park
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 출혈 사정
+    - 즉시 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I need to look at this right now.
+    - Stay flat for me.
+    - I'm calling the surgical team.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 출혈 징후를 사정하고 즉시 보고하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 출혈 사정
+        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
@@ -264,75 +318,21 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00106
-  profession: ""
-  eventId: EVT-SURGWARD-00101
-  title: 수술 후 출혈 의심 · Mr. Dubois
-  tagline: The dressing is soaked through.
-  persona:
-    name: Mr. Dubois
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 출혈 사정
-    - 즉시 보고
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I need to look at this right now.
-    - Stay flat for me.
-    - I'm calling the surgical team.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 출혈 징후를 사정하고 즉시 보고하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 출혈 사정
-        - 에스컬레이션
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
 - id: SCN-SURGWARD-00107
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 장운동 회복 안내 · Mrs. Santos
+  title: 장운동 회복 안내 · Ms. Park
   tagline: When can I eat real food?
   persona:
-    name: Mrs. Santos
+    name: Ms. Park
     role: patient
-    ageRange: 70s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 단계 설명
     - 기대 조정
@@ -374,18 +374,18 @@
 - id: SCN-SURGWARD-00108
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 수술 후 섬망 관찰 · Mr. Wagner
+  title: 수술 후 섬망 관찰 · Ms. Park
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Wagner
+    name: Ms. Park
     role: family
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 섬망 설명
     - 가족 참여 유도
@@ -402,25 +402,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 술후 섬망을 가족에게 설명하고 함께 대응하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 섬망
         - 가족 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -428,17 +428,17 @@
 - id: SCN-SURGWARD-00109
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 퇴원 상처 관리 교육 · Ms. Ivanova
+  title: 퇴원 상처 관리 교육 · Ms. Park
   tagline: Can I shower with this?
   persona:
-    name: Ms. Ivanova
+    name: Ms. Park
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 31y / Female
-    hair: '#C9A24B'
+    sub: 29y / Female
+    hair: '#141414'
     hairStyle: long
   goals:
     - 관리법 교육
@@ -455,25 +455,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -481,17 +481,17 @@
 - id: SCN-SURGWARD-00110
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 외과 병동 인계 · Dr. Weber
+  title: 외과 병동 인계 · RN Marcus
   tagline: Three post-ops, one for theatre tomorrow.
   persona:
-    name: Dr. Weber
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 술후 상태 인계
@@ -534,17 +534,17 @@
 - id: SCN-SURGWARD-00111
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 수술 후 첫 사정 · Mr. Robinson
+  title: 수술 후 첫 사정 · Mr. Thompson
   tagline: I just woke up — where am I?
   persona:
-    name: Mr. Robinson
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 의식·통증 사정
@@ -587,18 +587,18 @@
 - id: SCN-SURGWARD-00112
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 통증 자가조절 장치 교육 · Mrs. Hopkins
+  title: 통증 자가조절 장치 교육 · Mr. Thompson
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Thompson
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 사용법 교육
     - 가족 대리 사용 금지
@@ -614,25 +614,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -640,18 +640,18 @@
 - id: SCN-SURGWARD-00113
   profession: ""
   eventId: EVT-SURGWARD-00101
-  title: 조기 보행 격려 · Ms. Alvarez
+  title: 조기 보행 격려 · Mr. Thompson
   tagline: It hurts too much to stand up.
   persona:
-    name: Ms. Alvarez
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -667,25 +667,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -693,17 +693,17 @@
 - id: SCN-SURGWARD-00114
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 수술 부위 드레싱 관찰 · Mr. Chen
+  title: 수술 부위 드레싱 관찰 · Mr. Thompson
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Chen
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 정상·이상 구분 설명
@@ -746,18 +746,18 @@
 - id: SCN-SURGWARD-00115
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 배액관 관리 설명 · Mrs. Kelly
+  title: 배액관 관리 설명 · Mr. Thompson
   tagline: How long will this tube stay in?
   persona:
-    name: Mrs. Kelly
+    name: Mr. Thompson
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 목적 설명
     - 취급 주의 교육
@@ -773,65 +773,11 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 배액관
         - 환자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SURGWARD-00116
-  profession: ""
-  eventId: EVT-SURGWARD-00102
-  title: 수술 후 출혈 의심 · Mr. Okafor
-  tagline: The dressing is soaked through.
-  persona:
-    name: Mr. Okafor
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 출혈 사정
-    - 즉시 보고
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I need to look at this right now.
-    - Stay flat for me.
-    - I'm calling the surgical team.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 출혈 징후를 사정하고 즉시 보고하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 출혈 사정
-        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
@@ -850,21 +796,75 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00117
+- id: SCN-SURGWARD-00116
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 장운동 회복 안내 · Ms. Nguyen
-  tagline: When can I eat real food?
+  title: 수술 후 출혈 의심 · Mr. Thompson
+  tagline: The dressing is soaked through.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Thompson
     role: patient
-    ageRange: 20s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 출혈 사정
+    - 즉시 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I need to look at this right now.
+    - Stay flat for me.
+    - I'm calling the surgical team.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 출혈 징후를 사정하고 즉시 보고하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 출혈 사정
+        - 에스컬레이션
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00117
+  profession: ""
+  eventId: EVT-SURGWARD-00102
+  title: 장운동 회복 안내 · Mr. Thompson
+  tagline: When can I eat real food?
+  persona:
+    name: Mr. Thompson
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 단계 설명
     - 기대 조정
@@ -906,17 +906,17 @@
 - id: SCN-SURGWARD-00118
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 수술 후 섬망 관찰 · Mr. Patel
+  title: 수술 후 섬망 관찰 · Mr. Thompson
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Patel
+    name: Mr. Thompson
     role: family
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 섬망 설명
@@ -960,18 +960,18 @@
 - id: SCN-SURGWARD-00119
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 퇴원 상처 관리 교육 · Mrs. Rossi
+  title: 퇴원 상처 관리 교육 · Mr. Thompson
   tagline: Can I shower with this?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 관리법 교육
     - 재방문 기준 제시
@@ -987,25 +987,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1013,18 +1013,18 @@
 - id: SCN-SURGWARD-00120
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 외과 병동 인계 · Charge Nurse Kim
+  title: 외과 병동 인계 · Dr. Weber
   tagline: Three post-ops, one for theatre tomorrow.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 술후 상태 인계
     - 수술 준비 공유
@@ -1066,18 +1066,18 @@
 - id: SCN-SURGWARD-00121
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 수술 후 첫 사정 · Ms. Bauer
+  title: 수술 후 첫 사정 · Mrs. Haddad
   tagline: I just woke up — where am I?
   persona:
-    name: Ms. Bauer
+    name: Mrs. Haddad
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 의식·통증 사정
     - 환자 안심
@@ -1119,18 +1119,18 @@
 - id: SCN-SURGWARD-00122
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 통증 자가조절 장치 교육 · Mr. Silva
+  title: 통증 자가조절 장치 교육 · Mrs. Haddad
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Silva
+    name: Mrs. Haddad
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 사용법 교육
     - 가족 대리 사용 금지
@@ -1146,25 +1146,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1172,17 +1172,17 @@
 - id: SCN-SURGWARD-00123
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 조기 보행 격려 · Mrs. Adeyemi
+  title: 조기 보행 격려 · Mrs. Haddad
   tagline: It hurts too much to stand up.
   persona:
-    name: Mrs. Adeyemi
+    name: Mrs. Haddad
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 통증 선처치
@@ -1199,25 +1199,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1225,18 +1225,18 @@
 - id: SCN-SURGWARD-00124
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 수술 부위 드레싱 관찰 · Mr. Larsson
+  title: 수술 부위 드레싱 관찰 · Mrs. Haddad
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Larsson
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 정상·이상 구분 설명
     - 보고 기준 제시
@@ -1278,18 +1278,18 @@
 - id: SCN-SURGWARD-00125
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 배액관 관리 설명 · Ms. Park
+  title: 배액관 관리 설명 · Mrs. Haddad
   tagline: How long will this tube stay in?
   persona:
-    name: Ms. Park
+    name: Mrs. Haddad
     role: patient
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 목적 설명
     - 취급 주의 교육
@@ -1305,25 +1305,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 배액관
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1331,18 +1331,18 @@
 - id: SCN-SURGWARD-00126
   profession: ""
   eventId: EVT-SURGWARD-00102
-  title: 수술 후 출혈 의심 · Mr. Thompson
+  title: 수술 후 출혈 의심 · Mrs. Haddad
   tagline: The dressing is soaked through.
   persona:
-    name: Mr. Thompson
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 출혈 사정
     - 즉시 보고
@@ -1438,18 +1438,18 @@
 - id: SCN-SURGWARD-00128
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 수술 후 섬망 관찰 · Mr. Yamamoto
+  title: 수술 후 섬망 관찰 · Mrs. Haddad
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Haddad
     role: family
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 섬망 설명
     - 가족 참여 유도
@@ -1466,25 +1466,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 술후 섬망을 가족에게 설명하고 함께 대응하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 섬망
         - 가족 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1492,18 +1492,18 @@
 - id: SCN-SURGWARD-00129
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 퇴원 상처 관리 교육 · Ms. O'Brien
+  title: 퇴원 상처 관리 교육 · Mrs. Haddad
   tagline: Can I shower with this?
   persona:
-    name: Ms. O'Brien
+    name: Mrs. Haddad
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 관리법 교육
     - 재방문 기준 제시
@@ -1519,25 +1519,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1545,18 +1545,18 @@
 - id: SCN-SURGWARD-00130
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 외과 병동 인계 · RN Sofia
+  title: 외과 병동 인계 · Dr. Lee
   tagline: Three post-ops, one for theatre tomorrow.
   persona:
-    name: RN Sofia
+    name: Dr. Lee
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 술후 상태 인계
     - 수술 준비 공유
@@ -1598,18 +1598,18 @@
 - id: SCN-SURGWARD-00131
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 수술 후 첫 사정 · Mrs. Santos
+  title: 수술 후 첫 사정 · Mr. Yamamoto
   tagline: I just woke up — where am I?
   persona:
-    name: Mrs. Santos
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 의식·통증 사정
     - 환자 안심
@@ -1651,17 +1651,17 @@
 - id: SCN-SURGWARD-00132
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 통증 자가조절 장치 교육 · Mr. Wagner
+  title: 통증 자가조절 장치 교육 · Mr. Yamamoto
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Wagner
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 사용법 교육
@@ -1678,25 +1678,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1704,18 +1704,18 @@
 - id: SCN-SURGWARD-00133
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 조기 보행 격려 · Ms. Ivanova
+  title: 조기 보행 격려 · Mr. Yamamoto
   tagline: It hurts too much to stand up.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -1731,25 +1731,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -1757,17 +1757,17 @@
 - id: SCN-SURGWARD-00134
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 수술 부위 드레싱 관찰 · Mr. Reyes
+  title: 수술 부위 드레싱 관찰 · Mr. Yamamoto
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Reyes
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 정상·이상 구분 설명
@@ -1810,17 +1810,17 @@
 - id: SCN-SURGWARD-00135
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 배액관 관리 설명 · Mr. Robinson
+  title: 배액관 관리 설명 · Mr. Yamamoto
   tagline: How long will this tube stay in?
   persona:
-    name: Mr. Robinson
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 목적 설명
@@ -1837,11 +1837,65 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 배액관
         - 환자 교육
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00136
+  profession: ""
+  eventId: EVT-SURGWARD-00103
+  title: 수술 후 출혈 의심 · Mr. Yamamoto
+  tagline: The dressing is soaked through.
+  persona:
+    name: Mr. Yamamoto
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
+  goals:
+    - 출혈 사정
+    - 즉시 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I need to look at this right now.
+    - Stay flat for me.
+    - I'm calling the surgical team.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 출혈 징후를 사정하고 즉시 보고하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 출혈 사정
+        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1860,75 +1914,21 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00136
-  profession: ""
-  eventId: EVT-SURGWARD-00103
-  title: 수술 후 출혈 의심 · Mrs. Hopkins
-  tagline: The dressing is soaked through.
-  persona:
-    name: Mrs. Hopkins
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
-  goals:
-    - 출혈 사정
-    - 즉시 보고
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I need to look at this right now.
-    - Stay flat for me.
-    - I'm calling the surgical team.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 출혈 징후를 사정하고 즉시 보고하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 출혈 사정
-        - 에스컬레이션
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
 - id: SCN-SURGWARD-00137
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 장운동 회복 안내 · Ms. Alvarez
+  title: 장운동 회복 안내 · Mr. Yamamoto
   tagline: When can I eat real food?
   persona:
-    name: Ms. Alvarez
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 단계 설명
     - 기대 조정
@@ -1970,17 +1970,17 @@
 - id: SCN-SURGWARD-00138
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 수술 후 섬망 관찰 · Mr. Chen
+  title: 수술 후 섬망 관찰 · Mr. Yamamoto
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Chen
+    name: Mr. Yamamoto
     role: family
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 섬망 설명
@@ -1998,25 +1998,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 술후 섬망을 가족에게 설명하고 함께 대응하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 섬망
         - 가족 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2024,18 +2024,18 @@
 - id: SCN-SURGWARD-00139
   profession: ""
   eventId: EVT-SURGWARD-00103
-  title: 퇴원 상처 관리 교육 · Mrs. Kelly
+  title: 퇴원 상처 관리 교육 · Mr. Yamamoto
   tagline: Can I shower with this?
   persona:
-    name: Mrs. Kelly
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 관리법 교육
     - 재방문 기준 제시
@@ -2051,25 +2051,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2077,17 +2077,17 @@
 - id: SCN-SURGWARD-00140
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 외과 병동 인계 · Pharmacist Cho
+  title: 외과 병동 인계 · Charge Nurse Kim
   tagline: Three post-ops, one for theatre tomorrow.
   persona:
-    name: Pharmacist Cho
+    name: Charge Nurse Kim
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
+    sub: Charge RN
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 술후 상태 인계
@@ -2130,17 +2130,17 @@
 - id: SCN-SURGWARD-00141
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 수술 후 첫 사정 · Ms. Nguyen
+  title: 수술 후 첫 사정 · Ms. O'Brien
   tagline: I just woke up — where am I?
   persona:
-    name: Ms. Nguyen
+    name: Ms. O'Brien
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 26y / Female
-    hair: '#1A1A1A'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 의식·통증 사정
@@ -2183,18 +2183,18 @@
 - id: SCN-SURGWARD-00142
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 통증 자가조절 장치 교육 · Mr. Patel
+  title: 통증 자가조절 장치 교육 · Ms. O'Brien
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Patel
+    name: Ms. O'Brien
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 사용법 교육
     - 가족 대리 사용 금지
@@ -2210,25 +2210,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2236,18 +2236,18 @@
 - id: SCN-SURGWARD-00143
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 조기 보행 격려 · Mrs. Rossi
+  title: 조기 보행 격려 · Ms. O'Brien
   tagline: It hurts too much to stand up.
   persona:
-    name: Mrs. Rossi
+    name: Ms. O'Brien
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -2263,25 +2263,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2289,18 +2289,18 @@
 - id: SCN-SURGWARD-00144
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 수술 부위 드레싱 관찰 · Mr. Johnson
+  title: 수술 부위 드레싱 관찰 · Ms. O'Brien
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Johnson
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 정상·이상 구분 설명
     - 보고 기준 제시
@@ -2342,17 +2342,17 @@
 - id: SCN-SURGWARD-00145
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 배액관 관리 설명 · Ms. Bauer
+  title: 배액관 관리 설명 · Ms. O'Brien
   tagline: How long will this tube stay in?
   persona:
-    name: Ms. Bauer
+    name: Ms. O'Brien
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 38y / Female
-    hair: '#C9A24B'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 목적 설명
@@ -2369,65 +2369,11 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 배액관
         - 환자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SURGWARD-00146
-  profession: ""
-  eventId: EVT-SURGWARD-00104
-  title: 수술 후 출혈 의심 · Mr. Silva
-  tagline: The dressing is soaked through.
-  persona:
-    name: Mr. Silva
-    role: patient
-    ageRange: 70s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
-  goals:
-    - 출혈 사정
-    - 즉시 보고
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I need to look at this right now.
-    - Stay flat for me.
-    - I'm calling the surgical team.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 출혈 징후를 사정하고 즉시 보고하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 출혈 사정
-        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2446,21 +2392,75 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00147
+- id: SCN-SURGWARD-00146
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 장운동 회복 안내 · Mrs. Adeyemi
-  tagline: When can I eat real food?
+  title: 수술 후 출혈 의심 · Ms. O'Brien
+  tagline: The dressing is soaked through.
   persona:
-    name: Mrs. Adeyemi
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
+  goals:
+    - 출혈 사정
+    - 즉시 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I need to look at this right now.
+    - Stay flat for me.
+    - I'm calling the surgical team.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 출혈 징후를 사정하고 즉시 보고하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 출혈 사정
+        - 에스컬레이션
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00147
+  profession: ""
+  eventId: EVT-SURGWARD-00104
+  title: 장운동 회복 안내 · Ms. O'Brien
+  tagline: When can I eat real food?
+  persona:
+    name: Ms. O'Brien
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 단계 설명
     - 기대 조정
@@ -2502,18 +2502,18 @@
 - id: SCN-SURGWARD-00148
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 수술 후 섬망 관찰 · Mr. Larsson
+  title: 수술 후 섬망 관찰 · Ms. O'Brien
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Larsson
+    name: Ms. O'Brien
     role: family
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 섬망 설명
     - 가족 참여 유도
@@ -2556,17 +2556,17 @@
 - id: SCN-SURGWARD-00149
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 퇴원 상처 관리 교육 · Ms. Park
+  title: 퇴원 상처 관리 교육 · Ms. O'Brien
   tagline: Can I shower with this?
   persona:
-    name: Ms. Park
+    name: Ms. O'Brien
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 관리법 교육
@@ -2583,25 +2583,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2609,17 +2609,17 @@
 - id: SCN-SURGWARD-00150
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 외과 병동 인계 · Dr. Weber
+  title: 외과 병동 인계 · Dr. Novak
   tagline: Three post-ops, one for theatre tomorrow.
   persona:
-    name: Dr. Weber
+    name: Dr. Novak
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 술후 상태 인계
@@ -2662,18 +2662,18 @@
 - id: SCN-SURGWARD-00151
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 수술 후 첫 사정 · Mrs. Haddad
+  title: 수술 후 첫 사정 · Mr. Dubois
   tagline: I just woke up — where am I?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Dubois
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 의식·통증 사정
     - 환자 안심
@@ -2715,17 +2715,17 @@
 - id: SCN-SURGWARD-00152
   profession: ""
   eventId: EVT-SURGWARD-00104
-  title: 통증 자가조절 장치 교육 · Mr. Yamamoto
+  title: 통증 자가조절 장치 교육 · Mr. Dubois
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 사용법 교육
@@ -2742,25 +2742,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2768,18 +2768,18 @@
 - id: SCN-SURGWARD-00153
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 조기 보행 격려 · Ms. O'Brien
+  title: 조기 보행 격려 · Mr. Dubois
   tagline: It hurts too much to stand up.
   persona:
-    name: Ms. O'Brien
+    name: Mr. Dubois
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -2795,25 +2795,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2874,18 +2874,18 @@
 - id: SCN-SURGWARD-00155
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 배액관 관리 설명 · Mrs. Santos
+  title: 배액관 관리 설명 · Mr. Dubois
   tagline: How long will this tube stay in?
   persona:
-    name: Mrs. Santos
+    name: Mr. Dubois
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 목적 설명
     - 취급 주의 교육
@@ -2901,25 +2901,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 배액관
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -2927,17 +2927,17 @@
 - id: SCN-SURGWARD-00156
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 수술 후 출혈 의심 · Mr. Wagner
+  title: 수술 후 출혈 의심 · Mr. Dubois
   tagline: The dressing is soaked through.
   persona:
-    name: Mr. Wagner
+    name: Mr. Dubois
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 출혈 사정
@@ -2981,18 +2981,18 @@
 - id: SCN-SURGWARD-00157
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 장운동 회복 안내 · Ms. Ivanova
+  title: 장운동 회복 안내 · Mr. Dubois
   tagline: When can I eat real food?
   persona:
-    name: Ms. Ivanova
+    name: Mr. Dubois
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 단계 설명
     - 기대 조정
@@ -3034,17 +3034,17 @@
 - id: SCN-SURGWARD-00158
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 수술 후 섬망 관찰 · Mr. Reyes
+  title: 수술 후 섬망 관찰 · Mr. Dubois
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Reyes
+    name: Mr. Dubois
     role: family
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 섬망 설명
@@ -3062,25 +3062,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 술후 섬망을 가족에게 설명하고 함께 대응하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 섬망
         - 가족 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3088,17 +3088,17 @@
 - id: SCN-SURGWARD-00159
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 퇴원 상처 관리 교육 · Mr. Robinson
+  title: 퇴원 상처 관리 교육 · Mr. Dubois
   tagline: Can I shower with this?
   persona:
-    name: Mr. Robinson
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 관리법 교육
@@ -3115,25 +3115,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3141,18 +3141,18 @@
 - id: SCN-SURGWARD-00160
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 외과 병동 인계 · Charge Nurse Kim
+  title: 외과 병동 인계 · RN Sofia
   tagline: Three post-ops, one for theatre tomorrow.
   persona:
-    name: Charge Nurse Kim
+    name: RN Sofia
     role: colleague
-    ageRange: 30s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 술후 상태 인계
     - 수술 준비 공유
@@ -3194,18 +3194,18 @@
 - id: SCN-SURGWARD-00161
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 수술 후 첫 사정 · Ms. Alvarez
+  title: 수술 후 첫 사정 · Mrs. Santos
   tagline: I just woke up — where am I?
   persona:
-    name: Ms. Alvarez
+    name: Mrs. Santos
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 의식·통증 사정
     - 환자 안심
@@ -3247,18 +3247,18 @@
 - id: SCN-SURGWARD-00162
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 통증 자가조절 장치 교육 · Mr. Chen
+  title: 통증 자가조절 장치 교육 · Mrs. Santos
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Chen
+    name: Mrs. Santos
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 사용법 교육
     - 가족 대리 사용 금지
@@ -3274,25 +3274,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3300,17 +3300,17 @@
 - id: SCN-SURGWARD-00163
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 조기 보행 격려 · Mrs. Kelly
+  title: 조기 보행 격려 · Mrs. Santos
   tagline: It hurts too much to stand up.
   persona:
-    name: Mrs. Kelly
+    name: Mrs. Santos
     role: patient
     ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 72y / Female
-    hair: '#B0B0B0'
+    sub: 74y / Female
+    hair: '#A0A0A0'
     hairStyle: bob
   goals:
     - 통증 선처치
@@ -3327,25 +3327,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3353,18 +3353,18 @@
 - id: SCN-SURGWARD-00164
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 수술 부위 드레싱 관찰 · Mr. Okafor
+  title: 수술 부위 드레싱 관찰 · Mrs. Santos
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Okafor
+    name: Mrs. Santos
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 정상·이상 구분 설명
     - 보고 기준 제시
@@ -3406,18 +3406,18 @@
 - id: SCN-SURGWARD-00165
   profession: ""
   eventId: EVT-SURGWARD-00105
-  title: 배액관 관리 설명 · Ms. Nguyen
+  title: 배액관 관리 설명 · Mrs. Santos
   tagline: How long will this tube stay in?
   persona:
-    name: Ms. Nguyen
+    name: Mrs. Santos
     role: patient
-    ageRange: 20s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 목적 설명
     - 취급 주의 교육
@@ -3433,11 +3433,65 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 배액관
         - 환자 교육
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00166
+  profession: ""
+  eventId: EVT-SURGWARD-00106
+  title: 수술 후 출혈 의심 · Mrs. Santos
+  tagline: The dressing is soaked through.
+  persona:
+    name: Mrs. Santos
+    role: patient
+    ageRange: 70s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
+  goals:
+    - 출혈 사정
+    - 즉시 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I need to look at this right now.
+    - Stay flat for me.
+    - I'm calling the surgical team.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 출혈 징후를 사정하고 즉시 보고하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 출혈 사정
+        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3456,74 +3510,20 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00166
-  profession: ""
-  eventId: EVT-SURGWARD-00106
-  title: 수술 후 출혈 의심 · Mr. Patel
-  tagline: The dressing is soaked through.
-  persona:
-    name: Mr. Patel
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
-  goals:
-    - 출혈 사정
-    - 즉시 보고
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I need to look at this right now.
-    - Stay flat for me.
-    - I'm calling the surgical team.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 출혈 징후를 사정하고 즉시 보고하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 출혈 사정
-        - 에스컬레이션
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
 - id: SCN-SURGWARD-00167
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 장운동 회복 안내 · Mrs. Rossi
+  title: 장운동 회복 안내 · Mrs. Santos
   tagline: When can I eat real food?
   persona:
-    name: Mrs. Rossi
+    name: Mrs. Santos
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 51y / Female
-    hair: '#5A3A22'
+    sub: 74y / Female
+    hair: '#A0A0A0'
     hairStyle: bob
   goals:
     - 단계 설명
@@ -3566,18 +3566,18 @@
 - id: SCN-SURGWARD-00168
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 수술 후 섬망 관찰 · Mr. Johnson
+  title: 수술 후 섬망 관찰 · Mrs. Santos
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Johnson
+    name: Mrs. Santos
     role: family
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 섬망 설명
     - 가족 참여 유도
@@ -3594,25 +3594,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 술후 섬망을 가족에게 설명하고 함께 대응하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 섬망
         - 가족 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3620,18 +3620,18 @@
 - id: SCN-SURGWARD-00169
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 퇴원 상처 관리 교육 · Ms. Bauer
+  title: 퇴원 상처 관리 교육 · Mrs. Santos
   tagline: Can I shower with this?
   persona:
-    name: Ms. Bauer
+    name: Mrs. Santos
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 관리법 교육
     - 재방문 기준 제시
@@ -3647,25 +3647,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3673,18 +3673,18 @@
 - id: SCN-SURGWARD-00170
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 외과 병동 인계 · RN Sofia
+  title: 외과 병동 인계 · Dr. Ahmed
   tagline: Three post-ops, one for theatre tomorrow.
   persona:
-    name: RN Sofia
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 술후 상태 인계
     - 수술 준비 공유
@@ -3726,18 +3726,18 @@
 - id: SCN-SURGWARD-00171
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 수술 후 첫 사정 · Mrs. Adeyemi
+  title: 수술 후 첫 사정 · Mr. Wagner
   tagline: I just woke up — where am I?
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Wagner
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 의식·통증 사정
     - 환자 안심
@@ -3779,17 +3779,17 @@
 - id: SCN-SURGWARD-00172
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 통증 자가조절 장치 교육 · Mr. Larsson
+  title: 통증 자가조절 장치 교육 · Mr. Wagner
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Larsson
+    name: Mr. Wagner
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 사용법 교육
@@ -3806,25 +3806,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3832,18 +3832,18 @@
 - id: SCN-SURGWARD-00173
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 조기 보행 격려 · Ms. Park
+  title: 조기 보행 격려 · Mr. Wagner
   tagline: It hurts too much to stand up.
   persona:
-    name: Ms. Park
+    name: Mr. Wagner
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -3859,25 +3859,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -3885,17 +3885,17 @@
 - id: SCN-SURGWARD-00174
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 수술 부위 드레싱 관찰 · Mr. Thompson
+  title: 수술 부위 드레싱 관찰 · Mr. Wagner
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Thompson
+    name: Mr. Wagner
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 정상·이상 구분 설명
@@ -3938,18 +3938,18 @@
 - id: SCN-SURGWARD-00175
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 배액관 관리 설명 · Mrs. Haddad
+  title: 배액관 관리 설명 · Mr. Wagner
   tagline: How long will this tube stay in?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Wagner
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 목적 설명
     - 취급 주의 교육
@@ -3965,65 +3965,11 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 배액관
         - 환자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SURGWARD-00176
-  profession: ""
-  eventId: EVT-SURGWARD-00106
-  title: 수술 후 출혈 의심 · Mr. Yamamoto
-  tagline: The dressing is soaked through.
-  persona:
-    name: Mr. Yamamoto
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
-  goals:
-    - 출혈 사정
-    - 즉시 보고
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I need to look at this right now.
-    - Stay flat for me.
-    - I'm calling the surgical team.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 출혈 징후를 사정하고 즉시 보고하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 출혈 사정
-        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4042,21 +3988,75 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00177
+- id: SCN-SURGWARD-00176
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 장운동 회복 안내 · Ms. O'Brien
-  tagline: When can I eat real food?
+  title: 수술 후 출혈 의심 · Mr. Wagner
+  tagline: The dressing is soaked through.
   persona:
-    name: Ms. O'Brien
+    name: Mr. Wagner
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
+  goals:
+    - 출혈 사정
+    - 즉시 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I need to look at this right now.
+    - Stay flat for me.
+    - I'm calling the surgical team.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 출혈 징후를 사정하고 즉시 보고하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 출혈 사정
+        - 에스컬레이션
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00177
+  profession: ""
+  eventId: EVT-SURGWARD-00106
+  title: 장운동 회복 안내 · Mr. Wagner
+  tagline: When can I eat real food?
+  persona:
+    name: Mr. Wagner
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 단계 설명
     - 기대 조정
@@ -4098,17 +4098,17 @@
 - id: SCN-SURGWARD-00178
   profession: ""
   eventId: EVT-SURGWARD-00106
-  title: 수술 후 섬망 관찰 · Mr. Dubois
+  title: 수술 후 섬망 관찰 · Mr. Wagner
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Dubois
+    name: Mr. Wagner
     role: family
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 섬망 설명
@@ -4152,18 +4152,18 @@
 - id: SCN-SURGWARD-00179
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 퇴원 상처 관리 교육 · Mrs. Santos
+  title: 퇴원 상처 관리 교육 · Mr. Wagner
   tagline: Can I shower with this?
   persona:
-    name: Mrs. Santos
+    name: Mr. Wagner
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 관리법 교육
     - 재방문 기준 제시
@@ -4179,25 +4179,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -4311,18 +4311,18 @@
 - id: SCN-SURGWARD-00182
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 통증 자가조절 장치 교육 · Mr. Reyes
+  title: 통증 자가조절 장치 교육 · Ms. Ivanova
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Reyes
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 사용법 교육
     - 가족 대리 사용 금지
@@ -4338,25 +4338,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -4364,18 +4364,18 @@
 - id: SCN-SURGWARD-00183
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 조기 보행 격려 · Mr. Robinson
+  title: 조기 보행 격려 · Ms. Ivanova
   tagline: It hurts too much to stand up.
   persona:
-    name: Mr. Robinson
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -4391,25 +4391,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -4417,18 +4417,18 @@
 - id: SCN-SURGWARD-00184
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 수술 부위 드레싱 관찰 · Mrs. Hopkins
+  title: 수술 부위 드레싱 관찰 · Ms. Ivanova
   tagline: Is it supposed to look like that?
   persona:
-    name: Mrs. Hopkins
+    name: Ms. Ivanova
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 정상·이상 구분 설명
     - 보고 기준 제시
@@ -4470,17 +4470,17 @@
 - id: SCN-SURGWARD-00185
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 배액관 관리 설명 · Ms. Alvarez
+  title: 배액관 관리 설명 · Ms. Ivanova
   tagline: How long will this tube stay in?
   persona:
-    name: Ms. Alvarez
+    name: Ms. Ivanova
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 34y / Female
-    hair: '#2A1E14'
+    sub: 31y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 목적 설명
@@ -4497,25 +4497,25 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 배액관
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -4523,18 +4523,18 @@
 - id: SCN-SURGWARD-00186
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 수술 후 출혈 의심 · Mr. Chen
+  title: 수술 후 출혈 의심 · Ms. Ivanova
   tagline: The dressing is soaked through.
   persona:
-    name: Mr. Chen
+    name: Ms. Ivanova
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 출혈 사정
     - 즉시 보고
@@ -4577,18 +4577,18 @@
 - id: SCN-SURGWARD-00187
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 장운동 회복 안내 · Mrs. Kelly
+  title: 장운동 회복 안내 · Ms. Ivanova
   tagline: When can I eat real food?
   persona:
-    name: Mrs. Kelly
+    name: Ms. Ivanova
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 단계 설명
     - 기대 조정
@@ -4630,18 +4630,18 @@
 - id: SCN-SURGWARD-00188
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 수술 후 섬망 관찰 · Mr. Okafor
+  title: 수술 후 섬망 관찰 · Ms. Ivanova
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Okafor
+    name: Ms. Ivanova
     role: family
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 섬망 설명
     - 가족 참여 유도
@@ -4658,117 +4658,11 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 술후 섬망을 가족에게 설명하고 함께 대응하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 섬망
         - 가족 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SURGWARD-00189
-  profession: ""
-  eventId: EVT-SURGWARD-00107
-  title: 퇴원 상처 관리 교육 · Ms. Nguyen
-  tagline: Can I shower with this?
-  persona:
-    name: Ms. Nguyen
-    role: patient
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
-  goals:
-    - 관리법 교육
-    - 재방문 기준 제시
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Shower after 48 hours, don't soak.
-    - Come back if it's red and hot.
-    - Your stitches come out next Tuesday.
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 퇴원 교육
-        - 상처 관리
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SURGWARD-00190
-  profession: ""
-  eventId: EVT-SURGWARD-00107
-  title: 외과 병동 인계 · Dr. Weber
-  tagline: Three post-ops, one for theatre tomorrow.
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 술후 상태 인계
-    - 수술 준비 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Bed 6 is day one, drain still heavy.
-    - Bed 2 is nil by mouth from midnight.
-    - Bed 4's pain isn't controlled yet.
-  steps: []
-  briefing:
-    dept: SURG · STATION
-    deptColor: '#B45309'
-    brief: 수술 일정과 술후 상태를 함께 인계하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - SBAR
-        - 술후 인계
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4787,21 +4681,74 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00191
+- id: SCN-SURGWARD-00189
   profession: ""
   eventId: EVT-SURGWARD-00107
-  title: 수술 후 첫 사정 · Mrs. Rossi
+  title: 퇴원 상처 관리 교육 · Ms. Ivanova
+  tagline: Can I shower with this?
+  persona:
+    name: Ms. Ivanova
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 관리법 교육
+    - 재방문 기준 제시
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Shower after 48 hours, don't soak.
+    - Come back if it's red and hot.
+    - Your stitches come out next Tuesday.
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 퇴원 교육
+        - 상처 관리
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00190
+  profession: ""
+  eventId: EVT-SURGWARD-00107
+  title: 수술 후 첫 사정 · Mr. Reyes
   tagline: I just woke up — where am I?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 의식·통증 사정
     - 환자 안심
@@ -4840,20 +4787,20 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00192
+- id: SCN-SURGWARD-00191
   profession: ""
-  eventId: EVT-SURGWARD-00108
-  title: 통증 자가조절 장치 교육 · Mr. Johnson
+  eventId: EVT-SURGWARD-00107
+  title: 통증 자가조절 장치 교육 · Mr. Reyes
   tagline: Am I allowed to press it that often?
   persona:
-    name: Mr. Johnson
+    name: Mr. Reyes
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 사용법 교육
@@ -4870,44 +4817,44 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: PCA 사용법과 안전장치를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - PCA 교육
         - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00193
+- id: SCN-SURGWARD-00192
   profession: ""
   eventId: EVT-SURGWARD-00108
-  title: 조기 보행 격려 · Ms. Bauer
+  title: 조기 보행 격려 · Mr. Reyes
   tagline: It hurts too much to stand up.
   persona:
-    name: Ms. Bauer
+    name: Mr. Reyes
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 통증 선처치
     - 단계적 목표 제시
@@ -4923,43 +4870,43 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 통증을 인정하면서 조기 보행의 필요를 설득하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 조기 보행
         - 동기부여
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00194
+- id: SCN-SURGWARD-00193
   profession: ""
   eventId: EVT-SURGWARD-00108
-  title: 수술 부위 드레싱 관찰 · Mr. Silva
+  title: 수술 부위 드레싱 관찰 · Mr. Reyes
   tagline: Is it supposed to look like that?
   persona:
-    name: Mr. Silva
+    name: Mr. Reyes
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 정상·이상 구분 설명
@@ -4999,21 +4946,21 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00195
+- id: SCN-SURGWARD-00194
   profession: ""
   eventId: EVT-SURGWARD-00108
-  title: 배액관 관리 설명 · Mrs. Adeyemi
+  title: 배액관 관리 설명 · Mr. Reyes
   tagline: How long will this tube stay in?
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Reyes
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 목적 설명
     - 취급 주의 교육
@@ -5029,11 +4976,65 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 배액관의 목적과 제거 기준을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 배액관
         - 환자 교육
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00195
+  profession: ""
+  eventId: EVT-SURGWARD-00108
+  title: 수술 후 출혈 의심 · Mr. Reyes
+  tagline: The dressing is soaked through.
+  persona:
+    name: Mr. Reyes
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 출혈 사정
+    - 즉시 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I need to look at this right now.
+    - Stay flat for me.
+    - I'm calling the surgical team.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: 출혈 징후를 사정하고 즉시 보고하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 출혈 사정
+        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5055,72 +5056,18 @@
 - id: SCN-SURGWARD-00196
   profession: ""
   eventId: EVT-SURGWARD-00108
-  title: 수술 후 출혈 의심 · Mr. Larsson
-  tagline: The dressing is soaked through.
+  title: 장운동 회복 안내 · Mr. Reyes
+  tagline: When can I eat real food?
   persona:
-    name: Mr. Larsson
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
-  goals:
-    - 출혈 사정
-    - 즉시 보고
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I need to look at this right now.
-    - Stay flat for me.
-    - I'm calling the surgical team.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: SURG · WARD
-    deptColor: '#B45309'
-    brief: 출혈 징후를 사정하고 즉시 보고하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 출혈 사정
-        - 에스컬레이션
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF3C7'
-    accent: '#92400E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SURGWARD-00197
-  profession: ""
-  eventId: EVT-SURGWARD-00108
-  title: 장운동 회복 안내 · Ms. Park
-  tagline: When can I eat real food?
-  persona:
-    name: Ms. Park
-    role: patient
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
   goals:
     - 단계 설명
     - 기대 조정
@@ -5159,20 +5106,20 @@
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00198
+- id: SCN-SURGWARD-00197
   profession: ""
   eventId: EVT-SURGWARD-00108
-  title: 수술 후 섬망 관찰 · Mr. Thompson
+  title: 수술 후 섬망 관찰 · Mr. Reyes
   tagline: My father is talking to people who aren't there.
   persona:
-    name: Mr. Thompson
+    name: Mr. Reyes
     role: family
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 섬망 설명
@@ -5190,44 +5137,44 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 술후 섬망을 가족에게 설명하고 함께 대응하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 섬망
         - 가족 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
     riskyPhrases: []
-- id: SCN-SURGWARD-00199
+- id: SCN-SURGWARD-00198
   profession: ""
   eventId: EVT-SURGWARD-00108
-  title: 퇴원 상처 관리 교육 · Mrs. Haddad
+  title: 퇴원 상처 관리 교육 · Mr. Reyes
   tagline: Can I shower with this?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Reyes
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 관리법 교육
     - 재방문 기준 제시
@@ -5243,25 +5190,78 @@
     dept: SURG · WARD
     deptColor: '#B45309'
     brief: 귀가 후 상처 관리와 재방문 기준을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 퇴원 교육
         - 상처 관리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
+    tone: '#FEF3C7'
+    accent: '#92400E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SURGWARD-00199
+  profession: ""
+  eventId: EVT-SURGWARD-00108
+  title: 수술 후 첫 사정 · Mr. Robinson
+  tagline: I just woke up — where am I?
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 의식·통증 사정
+    - 환자 안심
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - You're on the surgical ward now.
+    - Can you tell me your name?
+    - I'm checking your dressing.
+  steps: []
+  briefing:
+    dept: SURG · WARD
+    deptColor: '#B45309'
+    brief: PACU에서 올라온 환자의 의식·통증·출혈을 사정하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 술후 사정
+        - 지남력
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
     tone: '#FEF3C7'
     accent: '#92400E'
     chart: null
@@ -5269,38 +5269,38 @@
 - id: SCN-SURGWARD-00200
   profession: ""
   eventId: EVT-SURGWARD-00108
-  title: 외과 병동 인계 · Charge Nurse Kim
-  tagline: Three post-ops, one for theatre tomorrow.
+  title: 통증 자가조절 장치 교육 · Mr. Robinson
+  tagline: Am I allowed to press it that often?
   persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
-    - 술후 상태 인계
-    - 수술 준비 공유
+    - 사용법 교육
+    - 가족 대리 사용 금지
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Bed 6 is day one, drain still heavy.
-    - Bed 2 is nil by mouth from midnight.
-    - Bed 4's pain isn't controlled yet.
+    - Only you press this button — never family.
+    - It locks out so you can't overdose.
+    - Press before the pain gets bad.
   steps: []
   briefing:
-    dept: SURG · STATION
+    dept: SURG · WARD
     deptColor: '#B45309'
-    brief: 수술 일정과 술후 상태를 함께 인계하세요.
+    brief: PCA 사용법과 안전장치를 설명하세요.
     difficulty: 2
-    timeLabel: 약 6분
+    timeLabel: 약 8분
     skills:
-        - SBAR
-        - 술후 인계
+        - PCA 교육
+        - 통증 관리
     rewards:
         - icon: ⭐
           label: 경험치

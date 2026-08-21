@@ -132,7 +132,9 @@ function FloorRow({ floor, last, building, focused, onOpenFloor }: {
         accessibilityState={{ checked: starred }}
         accessibilityLabel={t(starred ? 'campus.favRemove' : 'campus.favAdd')}
       >
-        <PixelIcon name="star" color={starred ? colors.yellowDeep : C + '44'} size={17} sw={2} />
+        {/* Filled when on. See PixelIcon's `fill`: two outline colours at this size read
+            as the same star, which is why the on state looked like nothing happened. */}
+        <PixelIcon name="star" color={starred ? C : C + '44'} fill={starred ? colors.yellowDeep : 'none'} size={17} sw={2} />
       </Pressable>
     </Pressable>
   );

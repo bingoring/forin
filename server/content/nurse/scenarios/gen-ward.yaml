@@ -55,18 +55,18 @@
 - id: SCN-WARD-00102
   profession: ""
   eventId: EVT-WARD-00101
-  title: 혈당 변동 설명 · Mrs. Rossi
+  title: 혈당 변동 설명 · Mr. Patel
   tagline: Why is my sugar high again?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 변동 원인 설명
     - 자책 완화
@@ -82,25 +82,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -108,17 +108,17 @@
 - id: SCN-WARD-00103
   profession: ""
   eventId: EVT-WARD-00101
-  title: 심부전 체중·부종 교육 · Mr. Johnson
+  title: 심부전 체중·부종 교육 · Mr. Patel
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Johnson
+    name: Mr. Patel
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 자가 모니터링 교육
@@ -135,25 +135,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -161,18 +161,18 @@
 - id: SCN-WARD-00104
   profession: ""
   eventId: EVT-WARD-00101
-  title: 산소 요구 증가 사정 · Ms. Bauer
+  title: 산소 요구 증가 사정 · Mr. Patel
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Ms. Bauer
+    name: Mr. Patel
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 악화 사정
     - 적시 보고
@@ -215,17 +215,17 @@
 - id: SCN-WARD-00105
   profession: ""
   eventId: EVT-WARD-00101
-  title: 이뇨제 복용 상담 · Mr. Silva
+  title: 이뇨제 복용 상담 · Mr. Patel
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Silva
+    name: Mr. Patel
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 비순응 이유 청취
@@ -242,11 +242,64 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 복약 순응
         - 협상
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WARD-00106
+  profession: ""
+  eventId: EVT-WARD-00101
+  title: 다학제 회진 참여 · Dr. Weber
+  tagline: What's the plan for Mr. Kim today?
+  persona:
+    name: Dr. Weber
+    role: colleague
+    ageRange: 50s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 관찰 공유
+    - 우선순위 제안
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Overnight he needed two extra liters.
+    - His intake is down since Tuesday.
+    - My concern is his mobility at discharge.
+  steps: []
+  briefing:
+    dept: WARD · STATION
+    deptColor: '#0E7490'
+    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 회진 발표
+        - SBAR
     rewards:
         - icon: ⭐
           label: 경험치
@@ -265,73 +318,20 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00106
-  profession: ""
-  eventId: EVT-WARD-00101
-  title: 다학제 회진 참여 · Dr. Ahmed
-  tagline: What's the plan for Mr. Kim today?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 관찰 공유
-    - 우선순위 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Overnight he needed two extra liters.
-    - His intake is down since Tuesday.
-    - My concern is his mobility at discharge.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 회진 발표
-        - SBAR
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
 - id: SCN-WARD-00107
   profession: ""
   eventId: EVT-WARD-00101
-  title: 혈액검사 결과 설명 · Mr. Larsson
+  title: 혈액검사 결과 설명 · Mr. Patel
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Larsson
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 수치 설명
@@ -374,18 +374,18 @@
 - id: SCN-WARD-00108
   profession: ""
   eventId: EVT-WARD-00101
-  title: 감염 격리 안내 · Ms. Park
+  title: 감염 격리 안내 · Mr. Patel
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Ms. Park
+    name: Mr. Patel
     role: patient
-    ageRange: 20s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -401,25 +401,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -427,17 +427,17 @@
 - id: SCN-WARD-00109
   profession: ""
   eventId: EVT-WARD-00101
-  title: 야간 불면 대응 · Mr. Thompson
+  title: 야간 불면 대응 · Mr. Patel
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mr. Thompson
+    name: Mr. Patel
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 원인 탐색
@@ -454,25 +454,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 약에 앞서 환경 요인을 먼저 다루세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 수면 위생
         - 비약물 중재
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -480,17 +480,17 @@
 - id: SCN-WARD-00110
   profession: ""
   eventId: EVT-WARD-00101
-  title: 내과 병동 인계 · Dr. Lee
+  title: 내과 병동 인계 · Dr. Weber
   tagline: Handoff — eight patients, two unstable.
   persona:
-    name: Dr. Lee
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Attending
-    hair: '#1C1C1C'
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 우선순위 인계
@@ -533,18 +533,18 @@
 - id: SCN-WARD-00111
   profession: ""
   eventId: EVT-WARD-00101
-  title: 만성질환 입원 사정 · Mr. Yamamoto
+  title: 만성질환 입원 사정 · Mrs. Rossi
   tagline: I've had diabetes for twenty years.
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Rossi
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 병력 청취
     - 복약 현황 파악
@@ -586,18 +586,18 @@
 - id: SCN-WARD-00112
   profession: ""
   eventId: EVT-WARD-00101
-  title: 혈당 변동 설명 · Ms. O'Brien
+  title: 혈당 변동 설명 · Mrs. Rossi
   tagline: Why is my sugar high again?
   persona:
-    name: Ms. O'Brien
+    name: Mrs. Rossi
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 변동 원인 설명
     - 자책 완화
@@ -613,25 +613,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -639,18 +639,18 @@
 - id: SCN-WARD-00113
   profession: ""
   eventId: EVT-WARD-00101
-  title: 심부전 체중·부종 교육 · Mr. Dubois
+  title: 심부전 체중·부종 교육 · Mrs. Rossi
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Dubois
+    name: Mrs. Rossi
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 자가 모니터링 교육
     - 경고 신호 설명
@@ -666,25 +666,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -692,17 +692,17 @@
 - id: SCN-WARD-00114
   profession: ""
   eventId: EVT-WARD-00102
-  title: 산소 요구 증가 사정 · Mrs. Santos
+  title: 산소 요구 증가 사정 · Mrs. Rossi
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Mrs. Santos
+    name: Mrs. Rossi
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 74y / Female
-    hair: '#A0A0A0'
+    sub: 51y / Female
+    hair: '#5A3A22'
     hairStyle: bob
   goals:
     - 악화 사정
@@ -746,18 +746,18 @@
 - id: SCN-WARD-00115
   profession: ""
   eventId: EVT-WARD-00102
-  title: 이뇨제 복용 상담 · Mr. Wagner
+  title: 이뇨제 복용 상담 · Mrs. Rossi
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Wagner
+    name: Mrs. Rossi
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 비순응 이유 청취
     - 대안 제시
@@ -773,64 +773,11 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 복약 순응
         - 협상
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WARD-00116
-  profession: ""
-  eventId: EVT-WARD-00102
-  title: 다학제 회진 참여 · RN Marcus
-  tagline: What's the plan for Mr. Kim today?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 관찰 공유
-    - 우선순위 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Overnight he needed two extra liters.
-    - His intake is down since Tuesday.
-    - My concern is his mobility at discharge.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 회진 발표
-        - SBAR
     rewards:
         - icon: ⭐
           label: 경험치
@@ -849,21 +796,74 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
+- id: SCN-WARD-00116
+  profession: ""
+  eventId: EVT-WARD-00102
+  title: 다학제 회진 참여 · Dr. Lee
+  tagline: What's the plan for Mr. Kim today?
+  persona:
+    name: Dr. Lee
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 관찰 공유
+    - 우선순위 제안
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Overnight he needed two extra liters.
+    - His intake is down since Tuesday.
+    - My concern is his mobility at discharge.
+  steps: []
+  briefing:
+    dept: WARD · STATION
+    deptColor: '#0E7490'
+    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 회진 발표
+        - SBAR
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
 - id: SCN-WARD-00117
   profession: ""
   eventId: EVT-WARD-00102
-  title: 혈액검사 결과 설명 · Mr. Reyes
+  title: 혈액검사 결과 설명 · Mrs. Rossi
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Reyes
+    name: Mrs. Rossi
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 수치 설명
     - 다음 단계 안내
@@ -905,18 +905,18 @@
 - id: SCN-WARD-00118
   profession: ""
   eventId: EVT-WARD-00102
-  title: 감염 격리 안내 · Mr. Robinson
+  title: 감염 격리 안내 · Mrs. Rossi
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Mr. Robinson
+    name: Mrs. Rossi
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -932,25 +932,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -958,17 +958,17 @@
 - id: SCN-WARD-00119
   profession: ""
   eventId: EVT-WARD-00102
-  title: 야간 불면 대응 · Mrs. Hopkins
+  title: 야간 불면 대응 · Mrs. Rossi
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mrs. Hopkins
+    name: Mrs. Rossi
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
+    sub: 51y / Female
+    hair: '#5A3A22'
     hairStyle: bob
   goals:
     - 원인 탐색
@@ -1011,17 +1011,17 @@
 - id: SCN-WARD-00120
   profession: ""
   eventId: EVT-WARD-00102
-  title: 내과 병동 인계 · Dr. Novak
+  title: 내과 병동 인계 · Dr. Lee
   tagline: Handoff — eight patients, two unstable.
   persona:
-    name: Dr. Novak
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 우선순위 인계
@@ -1064,17 +1064,17 @@
 - id: SCN-WARD-00121
   profession: ""
   eventId: EVT-WARD-00102
-  title: 만성질환 입원 사정 · Mr. Chen
+  title: 만성질환 입원 사정 · Mr. Johnson
   tagline: I've had diabetes for twenty years.
   persona:
-    name: Mr. Chen
+    name: Mr. Johnson
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 병력 청취
@@ -1117,18 +1117,18 @@
 - id: SCN-WARD-00122
   profession: ""
   eventId: EVT-WARD-00102
-  title: 혈당 변동 설명 · Mrs. Kelly
+  title: 혈당 변동 설명 · Mr. Johnson
   tagline: Why is my sugar high again?
   persona:
-    name: Mrs. Kelly
+    name: Mr. Johnson
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 변동 원인 설명
     - 자책 완화
@@ -1144,25 +1144,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1170,17 +1170,17 @@
 - id: SCN-WARD-00123
   profession: ""
   eventId: EVT-WARD-00102
-  title: 심부전 체중·부종 교육 · Mr. Okafor
+  title: 심부전 체중·부종 교육 · Mr. Johnson
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Okafor
+    name: Mr. Johnson
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 자가 모니터링 교육
@@ -1197,25 +1197,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1223,18 +1223,18 @@
 - id: SCN-WARD-00124
   profession: ""
   eventId: EVT-WARD-00102
-  title: 산소 요구 증가 사정 · Ms. Nguyen
+  title: 산소 요구 증가 사정 · Mr. Johnson
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Johnson
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 악화 사정
     - 적시 보고
@@ -1277,17 +1277,17 @@
 - id: SCN-WARD-00125
   profession: ""
   eventId: EVT-WARD-00102
-  title: 이뇨제 복용 상담 · Mr. Patel
+  title: 이뇨제 복용 상담 · Mr. Johnson
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Patel
+    name: Mr. Johnson
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 비순응 이유 청취
@@ -1304,25 +1304,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 복약 순응
         - 협상
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1330,18 +1330,18 @@
 - id: SCN-WARD-00126
   profession: ""
   eventId: EVT-WARD-00102
-  title: 다학제 회진 참여 · Dr. Lee
+  title: 다학제 회진 참여 · Charge Nurse Kim
   tagline: What's the plan for Mr. Kim today?
   persona:
-    name: Dr. Lee
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 관찰 공유
     - 우선순위 제안
@@ -1436,18 +1436,18 @@
 - id: SCN-WARD-00128
   profession: ""
   eventId: EVT-WARD-00103
-  title: 감염 격리 안내 · Ms. Bauer
+  title: 감염 격리 안내 · Mr. Johnson
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Ms. Bauer
+    name: Mr. Johnson
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -1463,25 +1463,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1489,17 +1489,17 @@
 - id: SCN-WARD-00129
   profession: ""
   eventId: EVT-WARD-00103
-  title: 야간 불면 대응 · Mr. Silva
+  title: 야간 불면 대응 · Mr. Johnson
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mr. Silva
+    name: Mr. Johnson
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 원인 탐색
@@ -1516,25 +1516,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 약에 앞서 환경 요인을 먼저 다루세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 수면 위생
         - 비약물 중재
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1542,18 +1542,18 @@
 - id: SCN-WARD-00130
   profession: ""
   eventId: EVT-WARD-00103
-  title: 내과 병동 인계 · Dr. Ahmed
+  title: 내과 병동 인계 · Charge Nurse Kim
   tagline: Handoff — eight patients, two unstable.
   persona:
-    name: Dr. Ahmed
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 우선순위 인계
     - 미결 사항 전달
@@ -1595,18 +1595,18 @@
 - id: SCN-WARD-00131
   profession: ""
   eventId: EVT-WARD-00103
-  title: 만성질환 입원 사정 · Mr. Larsson
+  title: 만성질환 입원 사정 · Ms. Bauer
   tagline: I've had diabetes for twenty years.
   persona:
-    name: Mr. Larsson
+    name: Ms. Bauer
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 병력 청취
     - 복약 현황 파악
@@ -1648,17 +1648,17 @@
 - id: SCN-WARD-00132
   profession: ""
   eventId: EVT-WARD-00103
-  title: 혈당 변동 설명 · Ms. Park
+  title: 혈당 변동 설명 · Ms. Bauer
   tagline: Why is my sugar high again?
   persona:
-    name: Ms. Park
+    name: Ms. Bauer
     role: patient
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 38y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 변동 원인 설명
@@ -1675,25 +1675,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1701,18 +1701,18 @@
 - id: SCN-WARD-00133
   profession: ""
   eventId: EVT-WARD-00103
-  title: 심부전 체중·부종 교육 · Mr. Thompson
+  title: 심부전 체중·부종 교육 · Ms. Bauer
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Thompson
+    name: Ms. Bauer
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 자가 모니터링 교육
     - 경고 신호 설명
@@ -1728,25 +1728,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1754,18 +1754,18 @@
 - id: SCN-WARD-00134
   profession: ""
   eventId: EVT-WARD-00103
-  title: 산소 요구 증가 사정 · Mrs. Haddad
+  title: 산소 요구 증가 사정 · Ms. Bauer
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Mrs. Haddad
+    name: Ms. Bauer
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 악화 사정
     - 적시 보고
@@ -1808,18 +1808,18 @@
 - id: SCN-WARD-00135
   profession: ""
   eventId: EVT-WARD-00103
-  title: 이뇨제 복용 상담 · Mr. Yamamoto
+  title: 이뇨제 복용 상담 · Ms. Bauer
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Yamamoto
+    name: Ms. Bauer
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 비순응 이유 청취
     - 대안 제시
@@ -1835,25 +1835,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 복약 순응
         - 협상
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1888,25 +1888,25 @@
     dept: WARD · STATION
     deptColor: '#0E7490'
     brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 회진 발표
         - SBAR
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1914,18 +1914,18 @@
 - id: SCN-WARD-00137
   profession: ""
   eventId: EVT-WARD-00103
-  title: 혈액검사 결과 설명 · Mr. Dubois
+  title: 혈액검사 결과 설명 · Ms. Bauer
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Dubois
+    name: Ms. Bauer
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 수치 설명
     - 다음 단계 안내
@@ -1967,18 +1967,18 @@
 - id: SCN-WARD-00138
   profession: ""
   eventId: EVT-WARD-00103
-  title: 감염 격리 안내 · Mrs. Santos
+  title: 감염 격리 안내 · Ms. Bauer
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Mrs. Santos
+    name: Ms. Bauer
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -1994,25 +1994,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2020,18 +2020,18 @@
 - id: SCN-WARD-00139
   profession: ""
   eventId: EVT-WARD-00103
-  title: 야간 불면 대응 · Mr. Wagner
+  title: 야간 불면 대응 · Ms. Bauer
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mr. Wagner
+    name: Ms. Bauer
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 원인 탐색
     - 비약물 중재 제안
@@ -2047,25 +2047,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 약에 앞서 환경 요인을 먼저 다루세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 수면 위생
         - 비약물 중재
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2073,17 +2073,17 @@
 - id: SCN-WARD-00140
   profession: ""
   eventId: EVT-WARD-00104
-  title: 내과 병동 인계 · RN Marcus
+  title: 내과 병동 인계 · Dr. Novak
   tagline: Handoff — eight patients, two unstable.
   persona:
-    name: RN Marcus
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 우선순위 인계
@@ -2126,17 +2126,17 @@
 - id: SCN-WARD-00141
   profession: ""
   eventId: EVT-WARD-00104
-  title: 만성질환 입원 사정 · Mr. Reyes
+  title: 만성질환 입원 사정 · Mr. Silva
   tagline: I've had diabetes for twenty years.
   persona:
-    name: Mr. Reyes
+    name: Mr. Silva
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 병력 청취
@@ -2179,17 +2179,17 @@
 - id: SCN-WARD-00142
   profession: ""
   eventId: EVT-WARD-00104
-  title: 혈당 변동 설명 · Mr. Robinson
+  title: 혈당 변동 설명 · Mr. Silva
   tagline: Why is my sugar high again?
   persona:
-    name: Mr. Robinson
+    name: Mr. Silva
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 변동 원인 설명
@@ -2206,25 +2206,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2232,18 +2232,18 @@
 - id: SCN-WARD-00143
   profession: ""
   eventId: EVT-WARD-00104
-  title: 심부전 체중·부종 교육 · Mrs. Hopkins
+  title: 심부전 체중·부종 교육 · Mr. Silva
   tagline: My legs are swollen again.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Silva
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 자가 모니터링 교육
     - 경고 신호 설명
@@ -2259,25 +2259,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2285,18 +2285,18 @@
 - id: SCN-WARD-00144
   profession: ""
   eventId: EVT-WARD-00104
-  title: 산소 요구 증가 사정 · Ms. Alvarez
+  title: 산소 요구 증가 사정 · Mr. Silva
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Ms. Alvarez
+    name: Mr. Silva
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 악화 사정
     - 적시 보고
@@ -2339,17 +2339,17 @@
 - id: SCN-WARD-00145
   profession: ""
   eventId: EVT-WARD-00104
-  title: 이뇨제 복용 상담 · Mr. Chen
+  title: 이뇨제 복용 상담 · Mr. Silva
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Chen
+    name: Mr. Silva
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 비순응 이유 청취
@@ -2366,64 +2366,11 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 복약 순응
         - 협상
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WARD-00146
-  profession: ""
-  eventId: EVT-WARD-00104
-  title: 다학제 회진 참여 · Dr. Ahmed
-  tagline: What's the plan for Mr. Kim today?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 관찰 공유
-    - 우선순위 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Overnight he needed two extra liters.
-    - His intake is down since Tuesday.
-    - My concern is his mobility at discharge.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 회진 발표
-        - SBAR
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2442,20 +2389,73 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
+- id: SCN-WARD-00146
+  profession: ""
+  eventId: EVT-WARD-00104
+  title: 다학제 회진 참여 · RN Sofia
+  tagline: What's the plan for Mr. Kim today?
+  persona:
+    name: RN Sofia
+    role: colleague
+    ageRange: 20s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 관찰 공유
+    - 우선순위 제안
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Overnight he needed two extra liters.
+    - His intake is down since Tuesday.
+    - My concern is his mobility at discharge.
+  steps: []
+  briefing:
+    dept: WARD · STATION
+    deptColor: '#0E7490'
+    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 회진 발표
+        - SBAR
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
 - id: SCN-WARD-00147
   profession: ""
   eventId: EVT-WARD-00104
-  title: 혈액검사 결과 설명 · Mr. Okafor
+  title: 혈액검사 결과 설명 · Mr. Silva
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Okafor
+    name: Mr. Silva
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 수치 설명
@@ -2498,18 +2498,18 @@
 - id: SCN-WARD-00148
   profession: ""
   eventId: EVT-WARD-00104
-  title: 감염 격리 안내 · Ms. Nguyen
+  title: 감염 격리 안내 · Mr. Silva
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Ms. Nguyen
+    name: Mr. Silva
     role: patient
-    ageRange: 20s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -2525,25 +2525,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2551,17 +2551,17 @@
 - id: SCN-WARD-00149
   profession: ""
   eventId: EVT-WARD-00104
-  title: 야간 불면 대응 · Mr. Patel
+  title: 야간 불면 대응 · Mr. Silva
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mr. Patel
+    name: Mr. Silva
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 원인 탐색
@@ -2604,18 +2604,18 @@
 - id: SCN-WARD-00150
   profession: ""
   eventId: EVT-WARD-00104
-  title: 내과 병동 인계 · Dr. Lee
+  title: 내과 병동 인계 · RN Sofia
   tagline: Handoff — eight patients, two unstable.
   persona:
-    name: Dr. Lee
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 우선순위 인계
     - 미결 사항 전달
@@ -2657,18 +2657,18 @@
 - id: SCN-WARD-00151
   profession: ""
   eventId: EVT-WARD-00104
-  title: 만성질환 입원 사정 · Mr. Johnson
+  title: 만성질환 입원 사정 · Mrs. Adeyemi
   tagline: I've had diabetes for twenty years.
   persona:
-    name: Mr. Johnson
+    name: Mrs. Adeyemi
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 병력 청취
     - 복약 현황 파악
@@ -2710,18 +2710,18 @@
 - id: SCN-WARD-00152
   profession: ""
   eventId: EVT-WARD-00104
-  title: 혈당 변동 설명 · Ms. Bauer
+  title: 혈당 변동 설명 · Mrs. Adeyemi
   tagline: Why is my sugar high again?
   persona:
-    name: Ms. Bauer
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 변동 원인 설명
     - 자책 완화
@@ -2737,25 +2737,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2763,18 +2763,18 @@
 - id: SCN-WARD-00153
   profession: ""
   eventId: EVT-WARD-00105
-  title: 심부전 체중·부종 교육 · Mr. Silva
+  title: 심부전 체중·부종 교육 · Mrs. Adeyemi
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Silva
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 자가 모니터링 교육
     - 경고 신호 설명
@@ -2790,25 +2790,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2870,18 +2870,18 @@
 - id: SCN-WARD-00155
   profession: ""
   eventId: EVT-WARD-00105
-  title: 이뇨제 복용 상담 · Mr. Larsson
+  title: 이뇨제 복용 상담 · Mrs. Adeyemi
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Larsson
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 비순응 이유 청취
     - 대안 제시
@@ -2897,25 +2897,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 복약 순응
         - 협상
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2923,17 +2923,17 @@
 - id: SCN-WARD-00156
   profession: ""
   eventId: EVT-WARD-00105
-  title: 다학제 회진 참여 · RN Marcus
+  title: 다학제 회진 참여 · Dr. Ahmed
   tagline: What's the plan for Mr. Kim today?
   persona:
-    name: RN Marcus
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 관찰 공유
@@ -2976,18 +2976,18 @@
 - id: SCN-WARD-00157
   profession: ""
   eventId: EVT-WARD-00105
-  title: 혈액검사 결과 설명 · Mr. Thompson
+  title: 혈액검사 결과 설명 · Mrs. Adeyemi
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Thompson
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 수치 설명
     - 다음 단계 안내
@@ -3029,17 +3029,17 @@
 - id: SCN-WARD-00158
   profession: ""
   eventId: EVT-WARD-00105
-  title: 감염 격리 안내 · Mrs. Haddad
+  title: 감염 격리 안내 · Mrs. Adeyemi
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Mrs. Haddad
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
+    sub: 47y / Female
+    hair: '#0F0F0F'
     hairStyle: bob
   goals:
     - 격리 이유 설명
@@ -3056,25 +3056,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3082,18 +3082,18 @@
 - id: SCN-WARD-00159
   profession: ""
   eventId: EVT-WARD-00105
-  title: 야간 불면 대응 · Mr. Yamamoto
+  title: 야간 불면 대응 · Mrs. Adeyemi
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 원인 탐색
     - 비약물 중재 제안
@@ -3109,25 +3109,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 약에 앞서 환경 요인을 먼저 다루세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 수면 위생
         - 비약물 중재
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3135,17 +3135,17 @@
 - id: SCN-WARD-00160
   profession: ""
   eventId: EVT-WARD-00105
-  title: 내과 병동 인계 · Dr. Novak
+  title: 내과 병동 인계 · Dr. Ahmed
   tagline: Handoff — eight patients, two unstable.
   persona:
-    name: Dr. Novak
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 우선순위 인계
@@ -3188,17 +3188,17 @@
 - id: SCN-WARD-00161
   profession: ""
   eventId: EVT-WARD-00105
-  title: 만성질환 입원 사정 · Mr. Dubois
+  title: 만성질환 입원 사정 · Mr. Larsson
   tagline: I've had diabetes for twenty years.
   persona:
-    name: Mr. Dubois
+    name: Mr. Larsson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 병력 청취
@@ -3241,18 +3241,18 @@
 - id: SCN-WARD-00162
   profession: ""
   eventId: EVT-WARD-00105
-  title: 혈당 변동 설명 · Mrs. Santos
+  title: 혈당 변동 설명 · Mr. Larsson
   tagline: Why is my sugar high again?
   persona:
-    name: Mrs. Santos
+    name: Mr. Larsson
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 변동 원인 설명
     - 자책 완화
@@ -3268,25 +3268,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3294,17 +3294,17 @@
 - id: SCN-WARD-00163
   profession: ""
   eventId: EVT-WARD-00105
-  title: 심부전 체중·부종 교육 · Mr. Wagner
+  title: 심부전 체중·부종 교육 · Mr. Larsson
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Wagner
+    name: Mr. Larsson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 자가 모니터링 교육
@@ -3321,25 +3321,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3347,18 +3347,18 @@
 - id: SCN-WARD-00164
   profession: ""
   eventId: EVT-WARD-00105
-  title: 산소 요구 증가 사정 · Ms. Ivanova
+  title: 산소 요구 증가 사정 · Mr. Larsson
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Larsson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 악화 사정
     - 적시 보고
@@ -3401,17 +3401,17 @@
 - id: SCN-WARD-00165
   profession: ""
   eventId: EVT-WARD-00105
-  title: 이뇨제 복용 상담 · Mr. Reyes
+  title: 이뇨제 복용 상담 · Mr. Larsson
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Reyes
+    name: Mr. Larsson
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 비순응 이유 청취
@@ -3428,11 +3428,64 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 복약 순응
         - 협상
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WARD-00166
+  profession: ""
+  eventId: EVT-WARD-00106
+  title: 다학제 회진 참여 · Pharmacist Cho
+  tagline: What's the plan for Mr. Kim today?
+  persona:
+    name: Pharmacist Cho
+    role: colleague
+    ageRange: 30s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
+  goals:
+    - 관찰 공유
+    - 우선순위 제안
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Overnight he needed two extra liters.
+    - His intake is down since Tuesday.
+    - My concern is his mobility at discharge.
+  steps: []
+  briefing:
+    dept: WARD · STATION
+    deptColor: '#0E7490'
+    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 회진 발표
+        - SBAR
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3451,74 +3504,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00166
-  profession: ""
-  eventId: EVT-WARD-00106
-  title: 다학제 회진 참여 · Dr. Lee
-  tagline: What's the plan for Mr. Kim today?
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 관찰 공유
-    - 우선순위 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Overnight he needed two extra liters.
-    - His intake is down since Tuesday.
-    - My concern is his mobility at discharge.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 회진 발표
-        - SBAR
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
 - id: SCN-WARD-00167
   profession: ""
   eventId: EVT-WARD-00106
-  title: 혈액검사 결과 설명 · Mrs. Hopkins
+  title: 혈액검사 결과 설명 · Mr. Larsson
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Larsson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 수치 설명
     - 다음 단계 안내
@@ -3560,18 +3560,18 @@
 - id: SCN-WARD-00168
   profession: ""
   eventId: EVT-WARD-00106
-  title: 감염 격리 안내 · Ms. Alvarez
+  title: 감염 격리 안내 · Mr. Larsson
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Ms. Alvarez
+    name: Mr. Larsson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -3587,25 +3587,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3613,17 +3613,17 @@
 - id: SCN-WARD-00169
   profession: ""
   eventId: EVT-WARD-00106
-  title: 야간 불면 대응 · Mr. Chen
+  title: 야간 불면 대응 · Mr. Larsson
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mr. Chen
+    name: Mr. Larsson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 원인 탐색
@@ -3640,25 +3640,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 약에 앞서 환경 요인을 먼저 다루세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 수면 위생
         - 비약물 중재
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3666,18 +3666,18 @@
 - id: SCN-WARD-00170
   profession: ""
   eventId: EVT-WARD-00106
-  title: 내과 병동 인계 · Dr. Ahmed
+  title: 내과 병동 인계 · Pharmacist Cho
   tagline: Handoff — eight patients, two unstable.
   persona:
-    name: Dr. Ahmed
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 우선순위 인계
     - 미결 사항 전달
@@ -3719,18 +3719,18 @@
 - id: SCN-WARD-00171
   profession: ""
   eventId: EVT-WARD-00106
-  title: 만성질환 입원 사정 · Mr. Okafor
+  title: 만성질환 입원 사정 · Ms. Park
   tagline: I've had diabetes for twenty years.
   persona:
-    name: Mr. Okafor
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 병력 청취
     - 복약 현황 파악
@@ -3772,17 +3772,17 @@
 - id: SCN-WARD-00172
   profession: ""
   eventId: EVT-WARD-00106
-  title: 혈당 변동 설명 · Ms. Nguyen
+  title: 혈당 변동 설명 · Ms. Park
   tagline: Why is my sugar high again?
   persona:
-    name: Ms. Nguyen
+    name: Ms. Park
     role: patient
     ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 26y / Female
-    hair: '#1A1A1A'
+    sub: 29y / Female
+    hair: '#141414'
     hairStyle: long
   goals:
     - 변동 원인 설명
@@ -3799,25 +3799,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3825,18 +3825,18 @@
 - id: SCN-WARD-00173
   profession: ""
   eventId: EVT-WARD-00106
-  title: 심부전 체중·부종 교육 · Mr. Patel
+  title: 심부전 체중·부종 교육 · Ms. Park
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Patel
+    name: Ms. Park
     role: patient
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 자가 모니터링 교육
     - 경고 신호 설명
@@ -3852,25 +3852,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3878,18 +3878,18 @@
 - id: SCN-WARD-00174
   profession: ""
   eventId: EVT-WARD-00106
-  title: 산소 요구 증가 사정 · Mrs. Rossi
+  title: 산소 요구 증가 사정 · Ms. Park
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Mrs. Rossi
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 악화 사정
     - 적시 보고
@@ -3932,18 +3932,18 @@
 - id: SCN-WARD-00175
   profession: ""
   eventId: EVT-WARD-00106
-  title: 이뇨제 복용 상담 · Mr. Johnson
+  title: 이뇨제 복용 상담 · Ms. Park
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Johnson
+    name: Ms. Park
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 비순응 이유 청취
     - 대안 제시
@@ -3959,64 +3959,11 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 복약 순응
         - 협상
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WARD-00176
-  profession: ""
-  eventId: EVT-WARD-00106
-  title: 다학제 회진 참여 · Dr. Novak
-  tagline: What's the plan for Mr. Kim today?
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 관찰 공유
-    - 우선순위 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Overnight he needed two extra liters.
-    - His intake is down since Tuesday.
-    - My concern is his mobility at discharge.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 회진 발표
-        - SBAR
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4035,21 +3982,74 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
+- id: SCN-WARD-00176
+  profession: ""
+  eventId: EVT-WARD-00106
+  title: 다학제 회진 참여 · RN Marcus
+  tagline: What's the plan for Mr. Kim today?
+  persona:
+    name: RN Marcus
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
+  goals:
+    - 관찰 공유
+    - 우선순위 제안
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Overnight he needed two extra liters.
+    - His intake is down since Tuesday.
+    - My concern is his mobility at discharge.
+  steps: []
+  briefing:
+    dept: WARD · STATION
+    deptColor: '#0E7490'
+    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 회진 발표
+        - SBAR
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
 - id: SCN-WARD-00177
   profession: ""
   eventId: EVT-WARD-00106
-  title: 혈액검사 결과 설명 · Mr. Silva
+  title: 혈액검사 결과 설명 · Ms. Park
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Silva
+    name: Ms. Park
     role: patient
-    ageRange: 70s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 수치 설명
     - 다음 단계 안내
@@ -4091,18 +4091,18 @@
 - id: SCN-WARD-00178
   profession: ""
   eventId: EVT-WARD-00106
-  title: 감염 격리 안내 · Mrs. Adeyemi
+  title: 감염 격리 안내 · Ms. Park
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Mrs. Adeyemi
+    name: Ms. Park
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -4118,25 +4118,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 감염관리
         - 존엄
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4144,18 +4144,18 @@
 - id: SCN-WARD-00179
   profession: ""
   eventId: EVT-WARD-00107
-  title: 야간 불면 대응 · Mr. Larsson
+  title: 야간 불면 대응 · Ms. Park
   tagline: I haven't slept properly in three nights.
   persona:
-    name: Mr. Larsson
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 원인 탐색
     - 비약물 중재 제안
@@ -4303,18 +4303,18 @@
 - id: SCN-WARD-00182
   profession: ""
   eventId: EVT-WARD-00107
-  title: 혈당 변동 설명 · Mrs. Haddad
+  title: 혈당 변동 설명 · Mr. Thompson
   tagline: Why is my sugar high again?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 변동 원인 설명
     - 자책 완화
@@ -4330,25 +4330,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4356,17 +4356,17 @@
 - id: SCN-WARD-00183
   profession: ""
   eventId: EVT-WARD-00107
-  title: 심부전 체중·부종 교육 · Mr. Yamamoto
+  title: 심부전 체중·부종 교육 · Mr. Thompson
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 자가 모니터링 교육
@@ -4383,25 +4383,25 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4409,18 +4409,18 @@
 - id: SCN-WARD-00184
   profession: ""
   eventId: EVT-WARD-00107
-  title: 산소 요구 증가 사정 · Ms. O'Brien
+  title: 산소 요구 증가 사정 · Mr. Thompson
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Ms. O'Brien
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 악화 사정
     - 적시 보고
@@ -4463,17 +4463,17 @@
 - id: SCN-WARD-00185
   profession: ""
   eventId: EVT-WARD-00107
-  title: 이뇨제 복용 상담 · Mr. Dubois
+  title: 이뇨제 복용 상담 · Mr. Thompson
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Dubois
+    name: Mr. Thompson
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 비순응 이유 청취
@@ -4490,64 +4490,11 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 복약 순응
         - 협상
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WARD-00186
-  profession: ""
-  eventId: EVT-WARD-00107
-  title: 다학제 회진 참여 · Dr. Ahmed
-  tagline: What's the plan for Mr. Kim today?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 관찰 공유
-    - 우선순위 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Overnight he needed two extra liters.
-    - His intake is down since Tuesday.
-    - My concern is his mobility at discharge.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 3
-    timeLabel: 약 8분
-    skills:
-        - 회진 발표
-        - SBAR
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4566,20 +4513,20 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00187
+- id: SCN-WARD-00186
   profession: ""
   eventId: EVT-WARD-00107
-  title: 혈액검사 결과 설명 · Mr. Wagner
+  title: 혈액검사 결과 설명 · Mr. Thompson
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Wagner
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 수치 설명
@@ -4619,21 +4566,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00188
+- id: SCN-WARD-00187
   profession: ""
   eventId: EVT-WARD-00107
-  title: 감염 격리 안내 · Ms. Ivanova
+  title: 감염 격리 안내 · Mr. Thompson
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Ms. Ivanova
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 격리 이유 설명
     - 낙인 완화
@@ -4649,117 +4596,11 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 감염관리
         - 존엄
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WARD-00189
-  profession: ""
-  eventId: EVT-WARD-00107
-  title: 야간 불면 대응 · Mr. Reyes
-  tagline: I haven't slept properly in three nights.
-  persona:
-    name: Mr. Reyes
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 원인 탐색
-    - 비약물 중재 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Would dimming the light help?
-    - I can move your vitals check later.
-    - Let's try that before a sleeping pill.
-  steps: []
-  briefing:
-    dept: WARD · WARD
-    deptColor: '#0E7490'
-    brief: 약에 앞서 환경 요인을 먼저 다루세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 수면 위생
-        - 비약물 중재
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WARD-00190
-  profession: ""
-  eventId: EVT-WARD-00107
-  title: 내과 병동 인계 · Dr. Lee
-  tagline: Handoff — eight patients, two unstable.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 우선순위 인계
-    - 미결 사항 전달
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Start with room 4 — he's the one I'd watch.
-    - Room 2 is stable, discharge pending labs.
-    - Nothing outstanding on the rest.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 우선순위를 드러내는 인계를 하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - SBAR
-        - 우선순위
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4778,20 +4619,73 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00191
+- id: SCN-WARD-00188
   profession: ""
   eventId: EVT-WARD-00107
-  title: 만성질환 입원 사정 · Mrs. Hopkins
-  tagline: I've had diabetes for twenty years.
+  title: 야간 불면 대응 · Mr. Thompson
+  tagline: I haven't slept properly in three nights.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Thompson
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 원인 탐색
+    - 비약물 중재 제안
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Would dimming the light help?
+    - I can move your vitals check later.
+    - Let's try that before a sleeping pill.
+  steps: []
+  briefing:
+    dept: WARD · WARD
+    deptColor: '#0E7490'
+    brief: 약에 앞서 환경 요인을 먼저 다루세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 수면 위생
+        - 비약물 중재
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WARD-00189
+  profession: ""
+  eventId: EVT-WARD-00107
+  title: 만성질환 입원 사정 · Mrs. Haddad
+  tagline: I've had diabetes for twenty years.
+  persona:
+    name: Mrs. Haddad
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 67y / Female
-    hair: '#9A6B3F'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 병력 청취
@@ -4831,21 +4725,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00192
+- id: SCN-WARD-00190
   profession: ""
-  eventId: EVT-WARD-00108
-  title: 혈당 변동 설명 · Ms. Alvarez
+  eventId: EVT-WARD-00107
+  title: 혈당 변동 설명 · Mrs. Haddad
   tagline: Why is my sugar high again?
   persona:
-    name: Ms. Alvarez
+    name: Mrs. Haddad
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 변동 원인 설명
     - 자책 완화
@@ -4861,44 +4755,44 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 혈당 교육
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00193
+- id: SCN-WARD-00191
   profession: ""
-  eventId: EVT-WARD-00108
-  title: 심부전 체중·부종 교육 · Mr. Chen
+  eventId: EVT-WARD-00107
+  title: 심부전 체중·부종 교육 · Mrs. Haddad
   tagline: My legs are swollen again.
   persona:
-    name: Mr. Chen
+    name: Mrs. Haddad
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 자가 모니터링 교육
     - 경고 신호 설명
@@ -4914,43 +4808,43 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 심부전 교육
         - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00194
+- id: SCN-WARD-00192
   profession: ""
   eventId: EVT-WARD-00108
-  title: 산소 요구 증가 사정 · Mrs. Kelly
+  title: 산소 요구 증가 사정 · Mrs. Haddad
   tagline: I feel more short of breath than yesterday.
   persona:
-    name: Mrs. Kelly
+    name: Mrs. Haddad
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 72y / Female
-    hair: '#B0B0B0'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 악화 사정
@@ -4991,21 +4885,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00195
+- id: SCN-WARD-00193
   profession: ""
   eventId: EVT-WARD-00108
-  title: 이뇨제 복용 상담 · Mr. Okafor
+  title: 이뇨제 복용 상담 · Mrs. Haddad
   tagline: I skip it when I go out.
   persona:
-    name: Mr. Okafor
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 비순응 이유 청취
     - 대안 제시
@@ -5021,97 +4915,44 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 이뇨제를 거르는 이유를 듣고 현실적인 대안을 찾으세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 복약 순응
         - 협상
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00196
+- id: SCN-WARD-00194
   profession: ""
   eventId: EVT-WARD-00108
-  title: 다학제 회진 참여 · RN Marcus
-  tagline: What's the plan for Mr. Kim today?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 관찰 공유
-    - 우선순위 제안
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Overnight he needed two extra liters.
-    - His intake is down since Tuesday.
-    - My concern is his mobility at discharge.
-  steps: []
-  briefing:
-    dept: WARD · STATION
-    deptColor: '#0E7490'
-    brief: 회진에서 간호사 관점의 관찰을 간결히 전달하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 회진 발표
-        - SBAR
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WARD-00197
-  profession: ""
-  eventId: EVT-WARD-00108
-  title: 혈액검사 결과 설명 · Mr. Patel
+  title: 혈액검사 결과 설명 · Mrs. Haddad
   tagline: The doctor said my kidney numbers changed.
   persona:
-    name: Mr. Patel
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 수치 설명
     - 다음 단계 안내
@@ -5150,20 +4991,20 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-WARD-00198
+- id: SCN-WARD-00195
   profession: ""
   eventId: EVT-WARD-00108
-  title: 감염 격리 안내 · Mrs. Rossi
+  title: 감염 격리 안내 · Mrs. Haddad
   tagline: Why is everyone wearing a gown for me?
   persona:
-    name: Mrs. Rossi
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 격리 이유 설명
@@ -5180,11 +5021,170 @@
     dept: WARD · WARD
     deptColor: '#0E7490'
     brief: 격리 이유를 설명하고 낙인감을 덜어주세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 감염관리
         - 존엄
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WARD-00196
+  profession: ""
+  eventId: EVT-WARD-00108
+  title: 야간 불면 대응 · Mrs. Haddad
+  tagline: I haven't slept properly in three nights.
+  persona:
+    name: Mrs. Haddad
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
+  goals:
+    - 원인 탐색
+    - 비약물 중재 제안
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Would dimming the light help?
+    - I can move your vitals check later.
+    - Let's try that before a sleeping pill.
+  steps: []
+  briefing:
+    dept: WARD · WARD
+    deptColor: '#0E7490'
+    brief: 약에 앞서 환경 요인을 먼저 다루세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 수면 위생
+        - 비약물 중재
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WARD-00197
+  profession: ""
+  eventId: EVT-WARD-00108
+  title: 만성질환 입원 사정 · Mr. Yamamoto
+  tagline: I've had diabetes for twenty years.
+  persona:
+    name: Mr. Yamamoto
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
+  goals:
+    - 병력 청취
+    - 복약 현황 파악
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - How long have you been on insulin?
+    - Any hospital stays this year?
+    - Who manages your medications at home?
+  steps: []
+  briefing:
+    dept: WARD · WARD
+    deptColor: '#0E7490'
+    brief: 만성질환 병력을 가진 신규 입원 환자를 사정하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 입원 사정
+        - 병력 청취
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WARD-00198
+  profession: ""
+  eventId: EVT-WARD-00108
+  title: 혈당 변동 설명 · Mr. Yamamoto
+  tagline: Why is my sugar high again?
+  persona:
+    name: Mr. Yamamoto
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
+  goals:
+    - 변동 원인 설명
+    - 자책 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Illness itself raises your sugar.
+    - We'll adjust the dose, not blame you.
+    - Let's look at the pattern together.
+  steps: []
+  briefing:
+    dept: WARD · WARD
+    deptColor: '#0E7490'
+    brief: 입원 중 혈당이 흔들리는 이유를 이해할 수 있게 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 혈당 교육
+        - 공감
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5206,38 +5206,38 @@
 - id: SCN-WARD-00199
   profession: ""
   eventId: EVT-WARD-00108
-  title: 야간 불면 대응 · Mr. Johnson
-  tagline: I haven't slept properly in three nights.
+  title: 심부전 체중·부종 교육 · Mr. Yamamoto
+  tagline: My legs are swollen again.
   persona:
-    name: Mr. Johnson
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    mood: worried
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
-    - 원인 탐색
-    - 비약물 중재 제안
+    - 자가 모니터링 교육
+    - 경고 신호 설명
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Would dimming the light help?
-    - I can move your vitals check later.
-    - Let's try that before a sleeping pill.
+    - Weigh yourself at the same time each morning.
+    - Two kilos in three days — call us.
+    - Press here and see if it leaves a dent.
   steps: []
   briefing:
     dept: WARD · WARD
     deptColor: '#0E7490'
-    brief: 약에 앞서 환경 요인을 먼저 다루세요.
+    brief: 매일 체중과 부종을 확인해야 하는 이유를 교육하세요.
     difficulty: 2
-    timeLabel: 약 8분
+    timeLabel: 약 6분
     skills:
-        - 수면 위생
-        - 비약물 중재
+        - 심부전 교육
+        - 자가 모니터링
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5259,52 +5259,53 @@
 - id: SCN-WARD-00200
   profession: ""
   eventId: EVT-WARD-00108
-  title: 내과 병동 인계 · Dr. Novak
-  tagline: Handoff — eight patients, two unstable.
+  title: 산소 요구 증가 사정 · Mr. Yamamoto
+  tagline: I feel more short of breath than yesterday.
   persona:
-    name: Dr. Novak
-    role: colleague
+    name: Mr. Yamamoto
+    role: patient
     ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
-    - 우선순위 인계
-    - 미결 사항 전달
+    - 악화 사정
+    - 적시 보고
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Start with room 4 — he's the one I'd watch.
-    - Room 2 is stable, discharge pending labs.
-    - Nothing outstanding on the rest.
+    - Is it worse lying flat?
+    - Your oxygen has dropped since this morning.
+    - I'm going to call the doctor now.
+  acuity: urgent
   steps: []
   briefing:
-    dept: WARD · STATION
+    dept: WARD · WARD
     deptColor: '#0E7490'
-    brief: 우선순위를 드러내는 인계를 하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    brief: 호흡 악화를 사정하고 보고 여부를 판단하세요.
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
-        - SBAR
-        - 우선순위
+        - 호흡 사정
+        - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null

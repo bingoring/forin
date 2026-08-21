@@ -55,18 +55,18 @@
 - id: SCN-SPD-00102
   profession: ""
   eventId: EVT-SPD-00101
-  title: 멸균 실패 보고 대응 · RN Sofia
+  title: 멸균 실패 보고 대응 · Dr. Novak
   tagline: This indicator didn't change color.
   persona:
-    name: RN Sofia
+    name: Dr. Novak
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 멸균 실패 인지
     - 회수·재처리 소통
@@ -83,25 +83,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 멸균 실패를 인지하고 회수·재처리를 소통하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 멸균 검증
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -109,17 +109,17 @@
 - id: SCN-SPD-00103
   profession: ""
   eventId: EVT-SPD-00101
-  title: 긴급 기구 재처리 · Dr. Ahmed
+  title: 긴급 기구 재처리 · Dr. Novak
   tagline: We need that scope back in 20 minutes!
   persona:
-    name: Dr. Ahmed
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 우선순위 협의
@@ -137,25 +137,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -163,18 +163,18 @@
 - id: SCN-SPD-00104
   profession: ""
   eventId: EVT-SPD-00101
-  title: 재고 부족 알림 · Pharmacist Cho
+  title: 재고 부족 알림 · Dr. Novak
   tagline: We're critically low on suture kits.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 부족 알림
     - 대체 안내
@@ -216,17 +216,17 @@
 - id: SCN-SPD-00105
   profession: ""
   eventId: EVT-SPD-00101
-  title: 물품 추적 문의 응대 · RN Marcus
+  title: 물품 추적 문의 응대 · Dr. Novak
   tagline: Where did the ortho set go?
   persona:
-    name: RN Marcus
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 상태 확인·안내
@@ -269,17 +269,17 @@
 - id: SCN-SPD-00106
   profession: ""
   eventId: EVT-SPD-00101
-  title: 신규 직원 무균 교육 · Dr. Weber
+  title: 신규 직원 무균 교육 · Dr. Novak
   tagline: How do I load this sterilizer?
   persona:
-    name: Dr. Weber
+    name: Dr. Novak
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 적재 교육
@@ -296,25 +296,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 무균 교육
         - 장비
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -322,17 +322,17 @@
 - id: SCN-SPD-00107
   profession: ""
   eventId: EVT-SPD-00101
-  title: 오염 기구 처리 소통 · Dr. Lee
+  title: 오염 기구 처리 소통 · Dr. Novak
   tagline: This came up without being bagged.
   persona:
-    name: Dr. Lee
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 안전 처리 소통
@@ -375,18 +375,18 @@
 - id: SCN-SPD-00108
   profession: ""
   eventId: EVT-SPD-00101
-  title: 장비 고장 에스컬레이션 · Charge Nurse Kim
+  title: 장비 고장 에스컬레이션 · Dr. Novak
   tagline: The washer is throwing an error.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 고장 보고
     - 대안 마련
@@ -403,25 +403,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -456,25 +456,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 수술 케이스 카트의 완전성을 확인·소통하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 케이스 카트
         - 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -482,18 +482,18 @@
 - id: SCN-SPD-00110
   profession: ""
   eventId: EVT-SPD-00101
-  title: 공급실 인계 · RN Sofia
+  title: 공급실 인계 · Dr. Novak
   tagline: SPD shift handoff.
   persona:
-    name: RN Sofia
+    name: Dr. Novak
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 대기 물량 인계
     - 우선순위 공유
@@ -535,18 +535,18 @@
 - id: SCN-SPD-00111
   profession: ""
   eventId: EVT-SPD-00101
-  title: 멸균 물품 요청 · Dr. Ahmed
+  title: 멸균 물품 요청 · RN Sofia
   tagline: We're out of sterile trays up here.
   persona:
-    name: Dr. Ahmed
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 요청 확인
     - 신속 처리 소통
@@ -588,18 +588,18 @@
 - id: SCN-SPD-00112
   profession: ""
   eventId: EVT-SPD-00101
-  title: 멸균 실패 보고 대응 · Pharmacist Cho
+  title: 멸균 실패 보고 대응 · RN Sofia
   tagline: This indicator didn't change color.
   persona:
-    name: Pharmacist Cho
+    name: RN Sofia
     role: colleague
-    ageRange: 30s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 멸균 실패 인지
     - 회수·재처리 소통
@@ -642,18 +642,18 @@
 - id: SCN-SPD-00113
   profession: ""
   eventId: EVT-SPD-00101
-  title: 긴급 기구 재처리 · RN Marcus
+  title: 긴급 기구 재처리 · RN Sofia
   tagline: We need that scope back in 20 minutes!
   persona:
-    name: RN Marcus
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 우선순위 협의
     - 현실적 시간 소통
@@ -670,25 +670,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -696,18 +696,18 @@
 - id: SCN-SPD-00114
   profession: ""
   eventId: EVT-SPD-00102
-  title: 재고 부족 알림 · Dr. Weber
+  title: 재고 부족 알림 · RN Sofia
   tagline: We're critically low on suture kits.
   persona:
-    name: Dr. Weber
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 부족 알림
     - 대체 안내
@@ -749,18 +749,18 @@
 - id: SCN-SPD-00115
   profession: ""
   eventId: EVT-SPD-00102
-  title: 물품 추적 문의 응대 · Dr. Lee
+  title: 물품 추적 문의 응대 · RN Sofia
   tagline: Where did the ortho set go?
   persona:
-    name: Dr. Lee
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 상태 확인·안내
     - 정확한 정보
@@ -776,64 +776,11 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 물품 위치·상태 문의에 정확히 응대하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 추적
         - 응대
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00116
-  profession: ""
-  eventId: EVT-SPD-00102
-  title: 신규 직원 무균 교육 · Charge Nurse Kim
-  tagline: How do I load this sterilizer?
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 적재 교육
-    - 검증 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Don't overload the chamber.
-    - Peel packs face the same way.
-    - Check the indicator every load.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 무균 교육
-        - 장비
     rewards:
         - icon: ⭐
           label: 경험치
@@ -852,21 +799,74 @@
     accent: '#404040'
     chart: null
     riskyPhrases: []
-- id: SCN-SPD-00117
+- id: SCN-SPD-00116
   profession: ""
   eventId: EVT-SPD-00102
-  title: 오염 기구 처리 소통 · Dr. Novak
-  tagline: This came up without being bagged.
+  title: 신규 직원 무균 교육 · RN Sofia
+  tagline: How do I load this sterilizer?
   persona:
-    name: Dr. Novak
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 적재 교육
+    - 검증 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Don't overload the chamber.
+    - Peel packs face the same way.
+    - Check the indicator every load.
+  steps: []
+  briefing:
+    dept: SPD · SPD
+    deptColor: '#525252'
+    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 무균 교육
+        - 장비
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#F5F5F5'
+    accent: '#404040'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SPD-00117
+  profession: ""
+  eventId: EVT-SPD-00102
+  title: 오염 기구 처리 소통 · RN Sofia
+  tagline: This came up without being bagged.
+  persona:
+    name: RN Sofia
+    role: colleague
+    ageRange: 20s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 안전 처리 소통
     - 재발 방지 교육
@@ -936,25 +936,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -962,18 +962,18 @@
 - id: SCN-SPD-00119
   profession: ""
   eventId: EVT-SPD-00102
-  title: 수술 케이스 카트 확인 · Dr. Ahmed
+  title: 수술 케이스 카트 확인 · RN Sofia
   tagline: Is the case cart ready for OR 3?
   persona:
-    name: Dr. Ahmed
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 카트 완전성 확인
     - 누락 소통
@@ -1015,18 +1015,18 @@
 - id: SCN-SPD-00120
   profession: ""
   eventId: EVT-SPD-00102
-  title: 공급실 인계 · Pharmacist Cho
+  title: 공급실 인계 · RN Sofia
   tagline: SPD shift handoff.
   persona:
-    name: Pharmacist Cho
+    name: RN Sofia
     role: colleague
-    ageRange: 30s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 대기 물량 인계
     - 우선순위 공유
@@ -1068,17 +1068,17 @@
 - id: SCN-SPD-00121
   profession: ""
   eventId: EVT-SPD-00102
-  title: 멸균 물품 요청 · RN Marcus
+  title: 멸균 물품 요청 · Dr. Ahmed
   tagline: We're out of sterile trays up here.
   persona:
-    name: RN Marcus
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 요청 확인
@@ -1121,17 +1121,17 @@
 - id: SCN-SPD-00122
   profession: ""
   eventId: EVT-SPD-00102
-  title: 멸균 실패 보고 대응 · Dr. Weber
+  title: 멸균 실패 보고 대응 · Dr. Ahmed
   tagline: This indicator didn't change color.
   persona:
-    name: Dr. Weber
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 멸균 실패 인지
@@ -1149,25 +1149,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 멸균 실패를 인지하고 회수·재처리를 소통하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 멸균 검증
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1175,17 +1175,17 @@
 - id: SCN-SPD-00123
   profession: ""
   eventId: EVT-SPD-00102
-  title: 긴급 기구 재처리 · Dr. Lee
+  title: 긴급 기구 재처리 · Dr. Ahmed
   tagline: We need that scope back in 20 minutes!
   persona:
-    name: Dr. Lee
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 우선순위 협의
@@ -1203,25 +1203,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1229,18 +1229,18 @@
 - id: SCN-SPD-00124
   profession: ""
   eventId: EVT-SPD-00102
-  title: 재고 부족 알림 · Charge Nurse Kim
+  title: 재고 부족 알림 · Dr. Ahmed
   tagline: We're critically low on suture kits.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 부족 알림
     - 대체 안내
@@ -1282,17 +1282,17 @@
 - id: SCN-SPD-00125
   profession: ""
   eventId: EVT-SPD-00102
-  title: 물품 추적 문의 응대 · Dr. Novak
+  title: 물품 추적 문의 응대 · Dr. Ahmed
   tagline: Where did the ortho set go?
   persona:
-    name: Dr. Novak
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 상태 확인·안내
@@ -1309,25 +1309,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 물품 위치·상태 문의에 정확히 응대하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 추적
         - 응대
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1335,18 +1335,18 @@
 - id: SCN-SPD-00126
   profession: ""
   eventId: EVT-SPD-00102
-  title: 신규 직원 무균 교육 · RN Sofia
+  title: 신규 직원 무균 교육 · Dr. Ahmed
   tagline: How do I load this sterilizer?
   persona:
-    name: RN Sofia
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 적재 교육
     - 검증 강조
@@ -1362,25 +1362,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 무균 교육
         - 장비
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1441,18 +1441,18 @@
 - id: SCN-SPD-00128
   profession: ""
   eventId: EVT-SPD-00103
-  title: 장비 고장 에스컬레이션 · Pharmacist Cho
+  title: 장비 고장 에스컬레이션 · Dr. Ahmed
   tagline: The washer is throwing an error.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 고장 보고
     - 대안 마련
@@ -1469,25 +1469,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1495,17 +1495,17 @@
 - id: SCN-SPD-00129
   profession: ""
   eventId: EVT-SPD-00103
-  title: 수술 케이스 카트 확인 · RN Marcus
+  title: 수술 케이스 카트 확인 · Dr. Ahmed
   tagline: Is the case cart ready for OR 3?
   persona:
-    name: RN Marcus
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 카트 완전성 확인
@@ -1522,25 +1522,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 수술 케이스 카트의 완전성을 확인·소통하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 케이스 카트
         - 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1548,17 +1548,17 @@
 - id: SCN-SPD-00130
   profession: ""
   eventId: EVT-SPD-00103
-  title: 공급실 인계 · Dr. Weber
+  title: 공급실 인계 · Dr. Ahmed
   tagline: SPD shift handoff.
   persona:
-    name: Dr. Weber
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 대기 물량 인계
@@ -1601,18 +1601,18 @@
 - id: SCN-SPD-00131
   profession: ""
   eventId: EVT-SPD-00103
-  title: 멸균 물품 요청 · Dr. Lee
+  title: 멸균 물품 요청 · Pharmacist Cho
   tagline: We're out of sterile trays up here.
   persona:
-    name: Dr. Lee
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 요청 확인
     - 신속 처리 소통
@@ -1654,17 +1654,17 @@
 - id: SCN-SPD-00132
   profession: ""
   eventId: EVT-SPD-00103
-  title: 멸균 실패 보고 대응 · Charge Nurse Kim
+  title: 멸균 실패 보고 대응 · Pharmacist Cho
   tagline: This indicator didn't change color.
   persona:
-    name: Charge Nurse Kim
+    name: Pharmacist Cho
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
+    sub: PharmD
+    hair: '#3B2A1A'
     hairStyle: bob
   goals:
     - 멸균 실패 인지
@@ -1682,25 +1682,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 멸균 실패를 인지하고 회수·재처리를 소통하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 멸균 검증
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1708,18 +1708,18 @@
 - id: SCN-SPD-00133
   profession: ""
   eventId: EVT-SPD-00103
-  title: 긴급 기구 재처리 · Dr. Novak
+  title: 긴급 기구 재처리 · Pharmacist Cho
   tagline: We need that scope back in 20 minutes!
   persona:
-    name: Dr. Novak
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 우선순위 협의
     - 현실적 시간 소통
@@ -1736,25 +1736,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1762,18 +1762,18 @@
 - id: SCN-SPD-00134
   profession: ""
   eventId: EVT-SPD-00103
-  title: 재고 부족 알림 · RN Sofia
+  title: 재고 부족 알림 · Pharmacist Cho
   tagline: We're critically low on suture kits.
   persona:
-    name: RN Sofia
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 20s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 부족 알림
     - 대체 안내
@@ -1815,18 +1815,18 @@
 - id: SCN-SPD-00135
   profession: ""
   eventId: EVT-SPD-00103
-  title: 물품 추적 문의 응대 · Dr. Ahmed
+  title: 물품 추적 문의 응대 · Pharmacist Cho
   tagline: Where did the ortho set go?
   persona:
-    name: Dr. Ahmed
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 상태 확인·안내
     - 정확한 정보
@@ -1895,25 +1895,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 무균 교육
         - 장비
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -1921,18 +1921,18 @@
 - id: SCN-SPD-00137
   profession: ""
   eventId: EVT-SPD-00103
-  title: 오염 기구 처리 소통 · RN Marcus
+  title: 오염 기구 처리 소통 · Pharmacist Cho
   tagline: This came up without being bagged.
   persona:
-    name: RN Marcus
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 안전 처리 소통
     - 재발 방지 교육
@@ -1974,18 +1974,18 @@
 - id: SCN-SPD-00138
   profession: ""
   eventId: EVT-SPD-00103
-  title: 장비 고장 에스컬레이션 · Dr. Weber
+  title: 장비 고장 에스컬레이션 · Pharmacist Cho
   tagline: The washer is throwing an error.
   persona:
-    name: Dr. Weber
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 고장 보고
     - 대안 마련
@@ -2002,25 +2002,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -2028,18 +2028,18 @@
 - id: SCN-SPD-00139
   profession: ""
   eventId: EVT-SPD-00103
-  title: 수술 케이스 카트 확인 · Dr. Lee
+  title: 수술 케이스 카트 확인 · Pharmacist Cho
   tagline: Is the case cart ready for OR 3?
   persona:
-    name: Dr. Lee
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 카트 완전성 확인
     - 누락 소통
@@ -2055,25 +2055,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 수술 케이스 카트의 완전성을 확인·소통하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 케이스 카트
         - 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -2081,17 +2081,17 @@
 - id: SCN-SPD-00140
   profession: ""
   eventId: EVT-SPD-00104
-  title: 공급실 인계 · Charge Nurse Kim
+  title: 공급실 인계 · Pharmacist Cho
   tagline: SPD shift handoff.
   persona:
-    name: Charge Nurse Kim
+    name: Pharmacist Cho
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
+    sub: PharmD
+    hair: '#3B2A1A'
     hairStyle: bob
   goals:
     - 대기 물량 인계
@@ -2134,17 +2134,17 @@
 - id: SCN-SPD-00141
   profession: ""
   eventId: EVT-SPD-00104
-  title: 멸균 물품 요청 · Dr. Novak
+  title: 멸균 물품 요청 · RN Marcus
   tagline: We're out of sterile trays up here.
   persona:
-    name: Dr. Novak
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 요청 확인
@@ -2187,18 +2187,18 @@
 - id: SCN-SPD-00142
   profession: ""
   eventId: EVT-SPD-00104
-  title: 멸균 실패 보고 대응 · RN Sofia
+  title: 멸균 실패 보고 대응 · RN Marcus
   tagline: This indicator didn't change color.
   persona:
-    name: RN Sofia
+    name: RN Marcus
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 멸균 실패 인지
     - 회수·재처리 소통
@@ -2241,17 +2241,17 @@
 - id: SCN-SPD-00143
   profession: ""
   eventId: EVT-SPD-00104
-  title: 긴급 기구 재처리 · Dr. Ahmed
+  title: 긴급 기구 재처리 · RN Marcus
   tagline: We need that scope back in 20 minutes!
   persona:
-    name: Dr. Ahmed
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 우선순위 협의
@@ -2269,25 +2269,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -2295,18 +2295,18 @@
 - id: SCN-SPD-00144
   profession: ""
   eventId: EVT-SPD-00104
-  title: 재고 부족 알림 · Pharmacist Cho
+  title: 재고 부족 알림 · RN Marcus
   tagline: We're critically low on suture kits.
   persona:
-    name: Pharmacist Cho
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 부족 알림
     - 대체 안내
@@ -2375,64 +2375,11 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 물품 위치·상태 문의에 정확히 응대하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 추적
         - 응대
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00146
-  profession: ""
-  eventId: EVT-SPD-00104
-  title: 신규 직원 무균 교육 · Dr. Weber
-  tagline: How do I load this sterilizer?
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 적재 교육
-    - 검증 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Don't overload the chamber.
-    - Peel packs face the same way.
-    - Check the indicator every load.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 무균 교육
-        - 장비
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2451,20 +2398,73 @@
     accent: '#404040'
     chart: null
     riskyPhrases: []
-- id: SCN-SPD-00147
+- id: SCN-SPD-00146
   profession: ""
   eventId: EVT-SPD-00104
-  title: 오염 기구 처리 소통 · Dr. Lee
-  tagline: This came up without being bagged.
+  title: 신규 직원 무균 교육 · RN Marcus
+  tagline: How do I load this sterilizer?
   persona:
-    name: Dr. Lee
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
+  goals:
+    - 적재 교육
+    - 검증 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Don't overload the chamber.
+    - Peel packs face the same way.
+    - Check the indicator every load.
+  steps: []
+  briefing:
+    dept: SPD · SPD
+    deptColor: '#525252'
+    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 무균 교육
+        - 장비
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#F5F5F5'
+    accent: '#404040'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SPD-00147
+  profession: ""
+  eventId: EVT-SPD-00104
+  title: 오염 기구 처리 소통 · RN Marcus
+  tagline: This came up without being bagged.
+  persona:
+    name: RN Marcus
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 안전 처리 소통
@@ -2507,18 +2507,18 @@
 - id: SCN-SPD-00148
   profession: ""
   eventId: EVT-SPD-00104
-  title: 장비 고장 에스컬레이션 · Charge Nurse Kim
+  title: 장비 고장 에스컬레이션 · RN Marcus
   tagline: The washer is throwing an error.
   persona:
-    name: Charge Nurse Kim
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 고장 보고
     - 대안 마련
@@ -2535,25 +2535,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -2561,17 +2561,17 @@
 - id: SCN-SPD-00149
   profession: ""
   eventId: EVT-SPD-00104
-  title: 수술 케이스 카트 확인 · Dr. Novak
+  title: 수술 케이스 카트 확인 · RN Marcus
   tagline: Is the case cart ready for OR 3?
   persona:
-    name: Dr. Novak
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 카트 완전성 확인
@@ -2614,18 +2614,18 @@
 - id: SCN-SPD-00150
   profession: ""
   eventId: EVT-SPD-00104
-  title: 공급실 인계 · RN Sofia
+  title: 공급실 인계 · RN Marcus
   tagline: SPD shift handoff.
   persona:
-    name: RN Sofia
+    name: RN Marcus
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 대기 물량 인계
     - 우선순위 공유
@@ -2667,17 +2667,17 @@
 - id: SCN-SPD-00151
   profession: ""
   eventId: EVT-SPD-00104
-  title: 멸균 물품 요청 · Dr. Ahmed
+  title: 멸균 물품 요청 · Dr. Weber
   tagline: We're out of sterile trays up here.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 요청 확인
@@ -2720,18 +2720,18 @@
 - id: SCN-SPD-00152
   profession: ""
   eventId: EVT-SPD-00104
-  title: 멸균 실패 보고 대응 · Pharmacist Cho
+  title: 멸균 실패 보고 대응 · Dr. Weber
   tagline: This indicator didn't change color.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 멸균 실패 인지
     - 회수·재처리 소통
@@ -2748,25 +2748,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 멸균 실패를 인지하고 회수·재처리를 소통하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 멸균 검증
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -2774,17 +2774,17 @@
 - id: SCN-SPD-00153
   profession: ""
   eventId: EVT-SPD-00105
-  title: 긴급 기구 재처리 · RN Marcus
+  title: 긴급 기구 재처리 · Dr. Weber
   tagline: We need that scope back in 20 minutes!
   persona:
-    name: RN Marcus
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 우선순위 협의
@@ -2802,25 +2802,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -2881,17 +2881,17 @@
 - id: SCN-SPD-00155
   profession: ""
   eventId: EVT-SPD-00105
-  title: 물품 추적 문의 응대 · Dr. Lee
+  title: 물품 추적 문의 응대 · Dr. Weber
   tagline: Where did the ortho set go?
   persona:
-    name: Dr. Lee
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Attending
-    hair: '#1C1C1C'
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 상태 확인·안내
@@ -2908,64 +2908,11 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 물품 위치·상태 문의에 정확히 응대하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 추적
         - 응대
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00156
-  profession: ""
-  eventId: EVT-SPD-00105
-  title: 신규 직원 무균 교육 · Charge Nurse Kim
-  tagline: How do I load this sterilizer?
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 적재 교육
-    - 검증 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Don't overload the chamber.
-    - Peel packs face the same way.
-    - Check the indicator every load.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 무균 교육
-        - 장비
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2984,20 +2931,73 @@
     accent: '#404040'
     chart: null
     riskyPhrases: []
-- id: SCN-SPD-00157
+- id: SCN-SPD-00156
   profession: ""
   eventId: EVT-SPD-00105
-  title: 오염 기구 처리 소통 · Dr. Novak
-  tagline: This came up without being bagged.
+  title: 신규 직원 무균 교육 · Dr. Weber
+  tagline: How do I load this sterilizer?
   persona:
-    name: Dr. Novak
+    name: Dr. Weber
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 적재 교육
+    - 검증 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Don't overload the chamber.
+    - Peel packs face the same way.
+    - Check the indicator every load.
+  steps: []
+  briefing:
+    dept: SPD · SPD
+    deptColor: '#525252'
+    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 무균 교육
+        - 장비
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#F5F5F5'
+    accent: '#404040'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SPD-00157
+  profession: ""
+  eventId: EVT-SPD-00105
+  title: 오염 기구 처리 소통 · Dr. Weber
+  tagline: This came up without being bagged.
+  persona:
+    name: Dr. Weber
+    role: colleague
+    ageRange: 50s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 안전 처리 소통
@@ -3040,18 +3040,18 @@
 - id: SCN-SPD-00158
   profession: ""
   eventId: EVT-SPD-00105
-  title: 장비 고장 에스컬레이션 · RN Sofia
+  title: 장비 고장 에스컬레이션 · Dr. Weber
   tagline: The washer is throwing an error.
   persona:
-    name: RN Sofia
+    name: Dr. Weber
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 고장 보고
     - 대안 마련
@@ -3068,25 +3068,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3094,17 +3094,17 @@
 - id: SCN-SPD-00159
   profession: ""
   eventId: EVT-SPD-00105
-  title: 수술 케이스 카트 확인 · Dr. Ahmed
+  title: 수술 케이스 카트 확인 · Dr. Weber
   tagline: Is the case cart ready for OR 3?
   persona:
-    name: Dr. Ahmed
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 카트 완전성 확인
@@ -3121,25 +3121,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 수술 케이스 카트의 완전성을 확인·소통하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 케이스 카트
         - 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3147,18 +3147,18 @@
 - id: SCN-SPD-00160
   profession: ""
   eventId: EVT-SPD-00105
-  title: 공급실 인계 · Pharmacist Cho
+  title: 공급실 인계 · Dr. Weber
   tagline: SPD shift handoff.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 대기 물량 인계
     - 우선순위 공유
@@ -3200,17 +3200,17 @@
 - id: SCN-SPD-00161
   profession: ""
   eventId: EVT-SPD-00105
-  title: 멸균 물품 요청 · RN Marcus
+  title: 멸균 물품 요청 · Dr. Lee
   tagline: We're out of sterile trays up here.
   persona:
-    name: RN Marcus
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 요청 확인
@@ -3253,17 +3253,17 @@
 - id: SCN-SPD-00162
   profession: ""
   eventId: EVT-SPD-00105
-  title: 멸균 실패 보고 대응 · Dr. Weber
+  title: 멸균 실패 보고 대응 · Dr. Lee
   tagline: This indicator didn't change color.
   persona:
-    name: Dr. Weber
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Attending
-    hair: '#8A8A8A'
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 멸균 실패 인지
@@ -3281,25 +3281,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 멸균 실패를 인지하고 회수·재처리를 소통하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 멸균 검증
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3335,25 +3335,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3361,18 +3361,18 @@
 - id: SCN-SPD-00164
   profession: ""
   eventId: EVT-SPD-00105
-  title: 재고 부족 알림 · Charge Nurse Kim
+  title: 재고 부족 알림 · Dr. Lee
   tagline: We're critically low on suture kits.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 부족 알림
     - 대체 안내
@@ -3414,17 +3414,17 @@
 - id: SCN-SPD-00165
   profession: ""
   eventId: EVT-SPD-00105
-  title: 물품 추적 문의 응대 · Dr. Novak
+  title: 물품 추적 문의 응대 · Dr. Lee
   tagline: Where did the ortho set go?
   persona:
-    name: Dr. Novak
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 상태 확인·안내
@@ -3467,18 +3467,18 @@
 - id: SCN-SPD-00166
   profession: ""
   eventId: EVT-SPD-00106
-  title: 신규 직원 무균 교육 · RN Sofia
+  title: 신규 직원 무균 교육 · Dr. Lee
   tagline: How do I load this sterilizer?
   persona:
-    name: RN Sofia
+    name: Dr. Lee
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 적재 교육
     - 검증 강조
@@ -3494,25 +3494,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 무균 교육
         - 장비
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3520,17 +3520,17 @@
 - id: SCN-SPD-00167
   profession: ""
   eventId: EVT-SPD-00106
-  title: 오염 기구 처리 소통 · Dr. Ahmed
+  title: 오염 기구 처리 소통 · Dr. Lee
   tagline: This came up without being bagged.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 안전 처리 소통
@@ -3573,18 +3573,18 @@
 - id: SCN-SPD-00168
   profession: ""
   eventId: EVT-SPD-00106
-  title: 장비 고장 에스컬레이션 · Pharmacist Cho
+  title: 장비 고장 에스컬레이션 · Dr. Lee
   tagline: The washer is throwing an error.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 고장 보고
     - 대안 마련
@@ -3601,25 +3601,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3627,17 +3627,17 @@
 - id: SCN-SPD-00169
   profession: ""
   eventId: EVT-SPD-00106
-  title: 수술 케이스 카트 확인 · RN Marcus
+  title: 수술 케이스 카트 확인 · Dr. Lee
   tagline: Is the case cart ready for OR 3?
   persona:
-    name: RN Marcus
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 카트 완전성 확인
@@ -3654,25 +3654,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 수술 케이스 카트의 완전성을 확인·소통하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 케이스 카트
         - 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3680,17 +3680,17 @@
 - id: SCN-SPD-00170
   profession: ""
   eventId: EVT-SPD-00106
-  title: 공급실 인계 · Dr. Weber
+  title: 공급실 인계 · Dr. Lee
   tagline: SPD shift handoff.
   persona:
-    name: Dr. Weber
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Attending
-    hair: '#8A8A8A'
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 대기 물량 인계
@@ -3733,18 +3733,18 @@
 - id: SCN-SPD-00171
   profession: ""
   eventId: EVT-SPD-00106
-  title: 멸균 물품 요청 · Dr. Lee
+  title: 멸균 물품 요청 · Charge Nurse Kim
   tagline: We're out of sterile trays up here.
   persona:
-    name: Dr. Lee
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 요청 확인
     - 신속 처리 소통
@@ -3840,18 +3840,18 @@
 - id: SCN-SPD-00173
   profession: ""
   eventId: EVT-SPD-00106
-  title: 긴급 기구 재처리 · Dr. Novak
+  title: 긴급 기구 재처리 · Charge Nurse Kim
   tagline: We need that scope back in 20 minutes!
   persona:
-    name: Dr. Novak
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 우선순위 협의
     - 현실적 시간 소통
@@ -3868,25 +3868,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 우선순위
         - 재처리
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -3894,18 +3894,18 @@
 - id: SCN-SPD-00174
   profession: ""
   eventId: EVT-SPD-00106
-  title: 재고 부족 알림 · RN Sofia
+  title: 재고 부족 알림 · Charge Nurse Kim
   tagline: We're critically low on suture kits.
   persona:
-    name: RN Sofia
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 20s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 부족 알림
     - 대체 안내
@@ -3947,18 +3947,18 @@
 - id: SCN-SPD-00175
   profession: ""
   eventId: EVT-SPD-00106
-  title: 물품 추적 문의 응대 · Dr. Ahmed
+  title: 물품 추적 문의 응대 · Charge Nurse Kim
   tagline: Where did the ortho set go?
   persona:
-    name: Dr. Ahmed
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 상태 확인·안내
     - 정확한 정보
@@ -3974,64 +3974,11 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 물품 위치·상태 문의에 정확히 응대하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 추적
         - 응대
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00176
-  profession: ""
-  eventId: EVT-SPD-00106
-  title: 신규 직원 무균 교육 · Pharmacist Cho
-  tagline: How do I load this sterilizer?
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 적재 교육
-    - 검증 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Don't overload the chamber.
-    - Peel packs face the same way.
-    - Check the indicator every load.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 무균 교육
-        - 장비
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4050,21 +3997,74 @@
     accent: '#404040'
     chart: null
     riskyPhrases: []
-- id: SCN-SPD-00177
+- id: SCN-SPD-00176
   profession: ""
   eventId: EVT-SPD-00106
-  title: 오염 기구 처리 소통 · RN Marcus
-  tagline: This came up without being bagged.
+  title: 신규 직원 무균 교육 · Charge Nurse Kim
+  tagline: How do I load this sterilizer?
   persona:
-    name: RN Marcus
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    hair: '#241812'
+    hairStyle: bob
+  goals:
+    - 적재 교육
+    - 검증 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Don't overload the chamber.
+    - Peel packs face the same way.
+    - Check the indicator every load.
+  steps: []
+  briefing:
+    dept: SPD · SPD
+    deptColor: '#525252'
+    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 무균 교육
+        - 장비
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#F5F5F5'
+    accent: '#404040'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SPD-00177
+  profession: ""
+  eventId: EVT-SPD-00106
+  title: 오염 기구 처리 소통 · Charge Nurse Kim
+  tagline: This came up without being bagged.
+  persona:
+    name: Charge Nurse Kim
+    role: colleague
+    ageRange: 30s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 안전 처리 소통
     - 재발 방지 교육
@@ -4106,18 +4106,18 @@
 - id: SCN-SPD-00178
   profession: ""
   eventId: EVT-SPD-00106
-  title: 장비 고장 에스컬레이션 · Dr. Weber
+  title: 장비 고장 에스컬레이션 · Charge Nurse Kim
   tagline: The washer is throwing an error.
   persona:
-    name: Dr. Weber
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 고장 보고
     - 대안 마련
@@ -4134,25 +4134,25 @@
     dept: SPD · SPD
     deptColor: '#525252'
     brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 장비 고장
         - 에스컬레이션
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F5F5F5'
     accent: '#404040'
     chart: null
@@ -4160,18 +4160,18 @@
 - id: SCN-SPD-00179
   profession: ""
   eventId: EVT-SPD-00107
-  title: 수술 케이스 카트 확인 · Dr. Lee
+  title: 수술 케이스 카트 확인 · Charge Nurse Kim
   tagline: Is the case cart ready for OR 3?
   persona:
-    name: Dr. Lee
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 카트 완전성 확인
     - 누락 소통
@@ -4242,1072 +4242,6 @@
     brief: 재처리 대기 물량과 우선순위를 인계하세요.
     difficulty: 1
     timeLabel: 약 6분
-    skills:
-        - 인계
-        - 우선순위
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00181
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 멸균 물품 요청 · Dr. Novak
-  tagline: We're out of sterile trays up here.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 요청 확인
-    - 신속 처리 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - How many trays do you need?
-    - I'll send them stat.
-    - Confirming the item number.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 병동의 멸균 물품 요청을 정확히 처리·소통하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 물품 요청
-        - 재고
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00182
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 멸균 실패 보고 대응 · RN Sofia
-  tagline: This indicator didn't change color.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 멸균 실패 인지
-    - 회수·재처리 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - That load is quarantined.
-    - Do not use those instruments.
-    - We're recalling and reprocessing.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 멸균 실패를 인지하고 회수·재처리를 소통하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 멸균 검증
-        - 안전
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00183
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 긴급 기구 재처리 · Dr. Ahmed
-  tagline: We need that scope back in 20 minutes!
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 우선순위 협의
-    - 현실적 시간 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll flash-prioritize it.
-    - It needs full cycle time, though.
-    - I'll call you the moment it's ready.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 우선순위
-        - 재처리
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00184
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 재고 부족 알림 · Pharmacist Cho
-  tagline: We're critically low on suture kits.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 부족 알림
-    - 대체 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - We'll run out by tonight.
-    - I've placed an urgent order.
-    - Please conserve for now.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 재고 부족을 상급자·병동에 선제적으로 알리세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 재고 관리
-        - 선제 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00185
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 물품 추적 문의 응대 · RN Marcus
-  tagline: Where did the ortho set go?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 상태 확인·안내
-    - 정확한 정보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - It's in reprocessing now.
-    - Ready in about an hour.
-    - I'll flag it for you.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 물품 위치·상태 문의에 정확히 응대하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 추적
-        - 응대
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00186
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 신규 직원 무균 교육 · Dr. Weber
-  tagline: How do I load this sterilizer?
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 적재 교육
-    - 검증 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Don't overload the chamber.
-    - Peel packs face the same way.
-    - Check the indicator every load.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 무균 교육
-        - 장비
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00187
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 오염 기구 처리 소통 · Dr. Lee
-  tagline: This came up without being bagged.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 안전 처리 소통
-    - 재발 방지 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Contaminated items must be bagged.
-    - It protects everyone downstream.
-    - Let's re-educate the unit.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 오염 기구의 안전 처리를 소통·교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 오염 관리
-        - 안전
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00188
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 장비 고장 에스컬레이션 · Charge Nurse Kim
-  tagline: The washer is throwing an error.
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 고장 보고
-    - 대안 마련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I've logged the error code.
-    - Biomed is on the way.
-    - We'll route loads to the backup.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 장비 고장
-        - 에스컬레이션
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00189
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 수술 케이스 카트 확인 · Dr. Novak
-  tagline: Is the case cart ready for OR 3?
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 카트 완전성 확인
-    - 누락 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - All trays accounted for.
-    - One item is backordered.
-    - Cart is staged for OR 3.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 수술 케이스 카트의 완전성을 확인·소통하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 케이스 카트
-        - 확인
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00190
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 공급실 인계 · RN Sofia
-  tagline: SPD shift handoff.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 대기 물량 인계
-    - 우선순위 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Two urgent scopes pending.
-    - Washer 2 is down.
-    - OR carts done through case 5.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 재처리 대기 물량과 우선순위를 인계하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 인계
-        - 우선순위
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00191
-  profession: ""
-  eventId: EVT-SPD-00107
-  title: 멸균 물품 요청 · Dr. Ahmed
-  tagline: We're out of sterile trays up here.
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 요청 확인
-    - 신속 처리 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - How many trays do you need?
-    - I'll send them stat.
-    - Confirming the item number.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 병동의 멸균 물품 요청을 정확히 처리·소통하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 물품 요청
-        - 재고
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00192
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 멸균 실패 보고 대응 · Pharmacist Cho
-  tagline: This indicator didn't change color.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 멸균 실패 인지
-    - 회수·재처리 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - That load is quarantined.
-    - Do not use those instruments.
-    - We're recalling and reprocessing.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 멸균 실패를 인지하고 회수·재처리를 소통하세요.
-    difficulty: 3
-    timeLabel: 약 8분
-    skills:
-        - 멸균 검증
-        - 안전
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00193
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 긴급 기구 재처리 · RN Marcus
-  tagline: We need that scope back in 20 minutes!
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 우선순위 협의
-    - 현실적 시간 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll flash-prioritize it.
-    - It needs full cycle time, though.
-    - I'll call you the moment it's ready.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 긴급 기구 재처리 요청을 우선순위화·소통하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 우선순위
-        - 재처리
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00194
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 재고 부족 알림 · Dr. Weber
-  tagline: We're critically low on suture kits.
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 부족 알림
-    - 대체 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - We'll run out by tonight.
-    - I've placed an urgent order.
-    - Please conserve for now.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 재고 부족을 상급자·병동에 선제적으로 알리세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 재고 관리
-        - 선제 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00195
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 물품 추적 문의 응대 · Dr. Lee
-  tagline: Where did the ortho set go?
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 상태 확인·안내
-    - 정확한 정보
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - It's in reprocessing now.
-    - Ready in about an hour.
-    - I'll flag it for you.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 물품 위치·상태 문의에 정확히 응대하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 추적
-        - 응대
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00196
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 신규 직원 무균 교육 · Charge Nurse Kim
-  tagline: How do I load this sterilizer?
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 적재 교육
-    - 검증 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Don't overload the chamber.
-    - Peel packs face the same way.
-    - Check the indicator every load.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 신규 직원에게 멸균기 적재와 무균 원칙을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 무균 교육
-        - 장비
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00197
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 오염 기구 처리 소통 · Dr. Novak
-  tagline: This came up without being bagged.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 안전 처리 소통
-    - 재발 방지 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Contaminated items must be bagged.
-    - It protects everyone downstream.
-    - Let's re-educate the unit.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 오염 기구의 안전 처리를 소통·교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 오염 관리
-        - 안전
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00198
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 장비 고장 에스컬레이션 · RN Sofia
-  tagline: The washer is throwing an error.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 고장 보고
-    - 대안 마련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I've logged the error code.
-    - Biomed is on the way.
-    - We'll route loads to the backup.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 장비 고장을 에스컬레이션하고 대안을 마련하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 장비 고장
-        - 에스컬레이션
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00199
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 수술 케이스 카트 확인 · Dr. Ahmed
-  tagline: Is the case cart ready for OR 3?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 카트 완전성 확인
-    - 누락 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - All trays accounted for.
-    - One item is backordered.
-    - Cart is staged for OR 3.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 수술 케이스 카트의 완전성을 확인·소통하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 케이스 카트
-        - 확인
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F5F5F5'
-    accent: '#404040'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SPD-00200
-  profession: ""
-  eventId: EVT-SPD-00108
-  title: 공급실 인계 · Pharmacist Cho
-  tagline: SPD shift handoff.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 대기 물량 인계
-    - 우선순위 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Two urgent scopes pending.
-    - Washer 2 is down.
-    - OR carts done through case 5.
-  steps: []
-  briefing:
-    dept: SPD · SPD
-    deptColor: '#525252'
-    brief: 재처리 대기 물량과 우선순위를 인계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
     skills:
         - 인계
         - 우선순위

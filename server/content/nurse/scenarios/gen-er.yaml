@@ -57,18 +57,18 @@
 - id: SCN-ER-00102
   profession: ""
   eventId: EVT-ER-00101
-  title: 호흡곤란 초기 평가 · Mrs. Hopkins
+  title: 호흡곤란 초기 평가 · Mr. Robinson
   tagline: I can't catch my breath…
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Robinson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 호흡곤란 발생·악화 요인 청취
     - 산소 적용을 안심시키며 설명
@@ -85,65 +85,12 @@
     dept: ER · RESUS
     deptColor: '#DC2626'
     brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - ABC 평가
         - SpO2 어휘
         - 산소 적용 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00103
-  profession: ""
-  eventId: EVT-ER-00101
-  title: 복통 문진 · Ms. Alvarez
-  tagline: It hurts down here, and it's getting worse.
-  persona:
-    name: Ms. Alvarez
-    role: patient
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 복통 위치·양상·동반증상 청취
-    - 적색 신호 증상 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Where exactly does it hurt?
-    - Have you had any nausea or vomiting?
-    - When did you last eat?
-  steps: []
-  briefing:
-    dept: ER · EXAM 2
-    deptColor: '#DC2626'
-    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 복통 OPQRST
-        - 소화기 어휘
     rewards:
         - icon: ⭐
           label: 경험치
@@ -162,20 +109,73 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00104
+- id: SCN-ER-00103
   profession: ""
   eventId: EVT-ER-00101
-  title: 열성 환자 감염 선별 · Mr. Chen
-  tagline: I've had a fever for three days.
+  title: 복통 문진 · Mr. Robinson
+  tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Mr. Chen
+    name: Mr. Robinson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 복통 위치·양상·동반증상 청취
+    - 적색 신호 증상 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Where exactly does it hurt?
+    - Have you had any nausea or vomiting?
+    - When did you last eat?
+  steps: []
+  briefing:
+    dept: ER · EXAM 2
+    deptColor: '#DC2626'
+    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 복통 OPQRST
+        - 소화기 어휘
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00104
+  profession: ""
+  eventId: EVT-ER-00101
+  title: 열성 환자 감염 선별 · Mr. Robinson
+  tagline: I've had a fever for three days.
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 발열 경과·감염 위험 요인 청취
@@ -218,18 +218,18 @@
 - id: SCN-ER-00105
   profession: ""
   eventId: EVT-ER-00101
-  title: 낙상 외상 사정 · Mrs. Kelly
+  title: 낙상 외상 사정 · Mr. Robinson
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Mrs. Kelly
+    name: Mr. Robinson
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -246,11 +246,65 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00106
+  profession: ""
+  eventId: EVT-ER-00101
+  title: 알레르기 반응 대응 · Mr. Robinson
+  tagline: My lips are swelling up!
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -269,75 +323,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00106
-  profession: ""
-  eventId: EVT-ER-00101
-  title: 알레르기 반응 대응 · Mr. Okafor
-  tagline: My lips are swelling up!
-  persona:
-    name: Mr. Okafor
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 알레르겐 노출·증상 진행 확인
-    - 응급 처치를 안심시키며 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What did you eat or take?
-    - I'm giving you epinephrine now.
-    - Your throat may feel better soon.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: 'ER · RESUS BAY #1'
-    deptColor: '#DC2626'
-    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 알레르기 어휘
-        - 에피네프린 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
 - id: SCN-ER-00107
   profession: ""
   eventId: EVT-ER-00101
-  title: 주취 환자 진정 · Ms. Nguyen
+  title: 주취 환자 진정 · Mr. Robinson
   tagline: I'm fine, leave me alone!
   persona:
-    name: Ms. Nguyen
+    name: Mr. Robinson
     role: patient
-    ageRange: 20s
+    ageRange: 50s
     personality: ""
     speakingStyle: ""
     mood: angry
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 비폭력적으로 진정 유도
     - 안전하게 사정 협조 확보
@@ -380,18 +380,18 @@
 - id: SCN-ER-00108
   profession: ""
   eventId: EVT-ER-00101
-  title: 소아 열경련 부모 안내 · Mr. Fischer
+  title: 소아 열경련 부모 안내 · Mrs. Coleman
   tagline: My baby was shaking — is she okay?
   persona:
-    name: Mr. Fischer
+    name: Mrs. Coleman
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Mother
+    hair: '#241812'
+    hairStyle: long
   goals:
     - 보호자를 안심시키며 설명
     - 가정 관찰 포인트 교육
@@ -408,25 +408,25 @@
     dept: ER · PEDS CORNER
     deptColor: '#DC2626'
     brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 소아 발열 교육
         - 보호자 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -461,25 +461,25 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -487,17 +487,17 @@
 - id: SCN-ER-00110
   profession: ""
   eventId: EVT-ER-00101
-  title: 언어 장벽 · 통역 호출 · Mr. Johnson
+  title: 언어 장벽 · 통역 호출 · Mr. Robinson
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Johnson
+    name: Mr. Robinson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 통역 연계 안내
@@ -540,18 +540,18 @@
 - id: SCN-ER-00111
   profession: ""
   eventId: EVT-ER-00101
-  title: 흉통 트리아지 · Ms. Bauer
+  title: 흉통 트리아지 · Mrs. Hopkins
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Ms. Bauer
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 흉통 양상·방사통·동반증상 사정
     - STEMI 배제 위해 트리아지
@@ -595,18 +595,18 @@
 - id: SCN-ER-00112
   profession: ""
   eventId: EVT-ER-00101
-  title: 호흡곤란 초기 평가 · Mr. Silva
+  title: 호흡곤란 초기 평가 · Mrs. Hopkins
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Silva
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 호흡곤란 발생·악화 요인 청취
     - 산소 적용을 안심시키며 설명
@@ -650,17 +650,17 @@
 - id: SCN-ER-00113
   profession: ""
   eventId: EVT-ER-00101
-  title: 복통 문진 · Mrs. Adeyemi
+  title: 복통 문진 · Mrs. Hopkins
   tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Mrs. Adeyemi
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 47y / Female
-    hair: '#0F0F0F'
+    sub: 67y / Female
+    hair: '#9A6B3F'
     hairStyle: bob
   goals:
     - 복통 위치·양상·동반증상 청취
@@ -703,18 +703,18 @@
 - id: SCN-ER-00114
   profession: ""
   eventId: EVT-ER-00102
-  title: 열성 환자 감염 선별 · Mr. Larsson
+  title: 열성 환자 감염 선별 · Mrs. Hopkins
   tagline: I've had a fever for three days.
   persona:
-    name: Mr. Larsson
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 발열 경과·감염 위험 요인 청취
     - 격리 필요성 판단·안내
@@ -756,18 +756,18 @@
 - id: SCN-ER-00115
   profession: ""
   eventId: EVT-ER-00102
-  title: 낙상 외상 사정 · Ms. Park
+  title: 낙상 외상 사정 · Mrs. Hopkins
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Ms. Park
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 20s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -784,65 +784,11 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00116
-  profession: ""
-  eventId: EVT-ER-00102
-  title: 알레르기 반응 대응 · Mr. Thompson
-  tagline: My lips are swelling up!
-  persona:
-    name: Mr. Thompson
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 알레르겐 노출·증상 진행 확인
-    - 응급 처치를 안심시키며 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What did you eat or take?
-    - I'm giving you epinephrine now.
-    - Your throat may feel better soon.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: 'ER · RESUS BAY #1'
-    deptColor: '#DC2626'
-    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 알레르기 어휘
-        - 에피네프린 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -861,20 +807,74 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
+- id: SCN-ER-00116
+  profession: ""
+  eventId: EVT-ER-00102
+  title: 알레르기 반응 대응 · Mrs. Hopkins
+  tagline: My lips are swelling up!
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
 - id: SCN-ER-00117
   profession: ""
   eventId: EVT-ER-00102
-  title: 주취 환자 진정 · Mrs. Haddad
+  title: 주취 환자 진정 · Mrs. Hopkins
   tagline: I'm fine, leave me alone!
   persona:
-    name: Mrs. Haddad
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: ""
     speakingStyle: ""
     mood: anxious
-    sub: 33y / Female
-    hair: '#241812'
+    sub: 67y / Female
+    hair: '#9A6B3F'
     hairStyle: bob
   goals:
     - 비폭력적으로 진정 유도
@@ -918,17 +918,17 @@
 - id: SCN-ER-00118
   profession: ""
   eventId: EVT-ER-00102
-  title: 소아 열경련 부모 안내 · Mr. Novak
+  title: 소아 열경련 부모 안내 · Mr. Fischer
   tagline: My baby was shaking — is she okay?
   persona:
-    name: Mr. Novak
+    name: Mr. Fischer
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Father
-    hair: '#3B2A1A'
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 보호자를 안심시키며 설명
@@ -946,25 +946,25 @@
     dept: ER · PEDS CORNER
     deptColor: '#DC2626'
     brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 소아 발열 교육
         - 보호자 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -972,18 +972,18 @@
 - id: SCN-ER-00119
   profession: ""
   eventId: EVT-ER-00102
-  title: 경찰 동행 환자 인계 · Dr. Novak
+  title: 경찰 동행 환자 인계 · Charge Nurse Kim
   tagline: Officer, what happened here?
   persona:
-    name: Dr. Novak
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 동행자에게 상황 인계 청취
     - 사정 우선순위 결정
@@ -999,25 +999,25 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -1025,18 +1025,18 @@
 - id: SCN-ER-00120
   profession: ""
   eventId: EVT-ER-00102
-  title: 언어 장벽 · 통역 호출 · Mr. Dubois
+  title: 언어 장벽 · 통역 호출 · Mrs. Hopkins
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Dubois
+    name: Mrs. Hopkins
     role: patient
     ageRange: 60s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: worried
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 통역 연계 안내
     - 쉬운 표현으로 핵심 증상 확인
@@ -1078,18 +1078,18 @@
 - id: SCN-ER-00121
   profession: ""
   eventId: EVT-ER-00102
-  title: 흉통 트리아지 · Mrs. Santos
+  title: 흉통 트리아지 · Ms. Alvarez
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Mrs. Santos
+    name: Ms. Alvarez
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 흉통 양상·방사통·동반증상 사정
     - STEMI 배제 위해 트리아지
@@ -1133,18 +1133,18 @@
 - id: SCN-ER-00122
   profession: ""
   eventId: EVT-ER-00102
-  title: 호흡곤란 초기 평가 · Mr. Wagner
+  title: 호흡곤란 초기 평가 · Ms. Alvarez
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Wagner
+    name: Ms. Alvarez
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 호흡곤란 발생·악화 요인 청취
     - 산소 적용을 안심시키며 설명
@@ -1161,12 +1161,65 @@
     dept: ER · RESUS
     deptColor: '#DC2626'
     brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - ABC 평가
         - SpO2 어휘
         - 산소 적용 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00123
+  profession: ""
+  eventId: EVT-ER-00102
+  title: 복통 문진 · Ms. Alvarez
+  tagline: It hurts down here, and it's getting worse.
+  persona:
+    name: Ms. Alvarez
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 복통 위치·양상·동반증상 청취
+    - 적색 신호 증상 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Where exactly does it hurt?
+    - Have you had any nausea or vomiting?
+    - When did you last eat?
+  steps: []
+  briefing:
+    dept: ER · EXAM 2
+    deptColor: '#DC2626'
+    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 복통 OPQRST
+        - 소화기 어휘
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1185,74 +1238,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00123
+- id: SCN-ER-00124
   profession: ""
   eventId: EVT-ER-00102
-  title: 복통 문진 · Ms. Ivanova
-  tagline: It hurts down here, and it's getting worse.
+  title: 열성 환자 감염 선별 · Ms. Alvarez
+  tagline: I've had a fever for three days.
   persona:
-    name: Ms. Ivanova
+    name: Ms. Alvarez
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 31y / Female
-    hair: '#C9A24B'
+    sub: 34y / Female
+    hair: '#2A1E14'
     hairStyle: long
-  goals:
-    - 복통 위치·양상·동반증상 청취
-    - 적색 신호 증상 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Where exactly does it hurt?
-    - Have you had any nausea or vomiting?
-    - When did you last eat?
-  steps: []
-  briefing:
-    dept: ER · EXAM 2
-    deptColor: '#DC2626'
-    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 복통 OPQRST
-        - 소화기 어휘
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00124
-  profession: ""
-  eventId: EVT-ER-00102
-  title: 열성 환자 감염 선별 · Mr. Reyes
-  tagline: I've had a fever for three days.
-  persona:
-    name: Mr. Reyes
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
   goals:
     - 발열 경과·감염 위험 요인 청취
     - 격리 필요성 판단·안내
@@ -1294,18 +1294,18 @@
 - id: SCN-ER-00125
   profession: ""
   eventId: EVT-ER-00102
-  title: 낙상 외상 사정 · Mr. Robinson
+  title: 낙상 외상 사정 · Ms. Alvarez
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Mr. Robinson
+    name: Ms. Alvarez
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -1322,25 +1322,25 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -1348,18 +1348,18 @@
 - id: SCN-ER-00126
   profession: ""
   eventId: EVT-ER-00102
-  title: 알레르기 반응 대응 · Mrs. Hopkins
+  title: 알레르기 반응 대응 · Ms. Alvarez
   tagline: My lips are swelling up!
   persona:
-    name: Mrs. Hopkins
+    name: Ms. Alvarez
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 알레르겐 노출·증상 진행 확인
     - 응급 처치를 안심시키며 설명
@@ -1456,18 +1456,18 @@
 - id: SCN-ER-00128
   profession: ""
   eventId: EVT-ER-00103
-  title: 소아 열경련 부모 안내 · Mr. Delgado
+  title: 소아 열경련 부모 안내 · Mrs. Aoki
   tagline: My baby was shaking — is she okay?
   persona:
-    name: Mr. Delgado
+    name: Mrs. Aoki
     role: parent
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: panic
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Mother
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 보호자를 안심시키며 설명
     - 가정 관찰 포인트 교육
@@ -1484,25 +1484,25 @@
     dept: ER · PEDS CORNER
     deptColor: '#DC2626'
     brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 소아 발열 교육
         - 보호자 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -1510,17 +1510,17 @@
 - id: SCN-ER-00129
   profession: ""
   eventId: EVT-ER-00103
-  title: 경찰 동행 환자 인계 · Dr. Ahmed
+  title: 경찰 동행 환자 인계 · Dr. Novak
   tagline: Officer, what happened here?
   persona:
-    name: Dr. Ahmed
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 동행자에게 상황 인계 청취
@@ -1537,25 +1537,25 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -1563,18 +1563,18 @@
 - id: SCN-ER-00130
   profession: ""
   eventId: EVT-ER-00103
-  title: 언어 장벽 · 통역 호출 · Mr. Okafor
+  title: 언어 장벽 · 통역 호출 · Ms. Alvarez
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Okafor
+    name: Ms. Alvarez
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 통역 연계 안내
     - 쉬운 표현으로 핵심 증상 확인
@@ -1616,18 +1616,18 @@
 - id: SCN-ER-00131
   profession: ""
   eventId: EVT-ER-00103
-  title: 흉통 트리아지 · Ms. Nguyen
+  title: 흉통 트리아지 · Mr. Chen
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Ms. Nguyen
+    name: Mr. Chen
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 흉통 양상·방사통·동반증상 사정
     - STEMI 배제 위해 트리아지
@@ -1671,17 +1671,17 @@
 - id: SCN-ER-00132
   profession: ""
   eventId: EVT-ER-00103
-  title: 호흡곤란 초기 평가 · Mr. Patel
+  title: 호흡곤란 초기 평가 · Mr. Chen
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Patel
+    name: Mr. Chen
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 45y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 호흡곤란 발생·악화 요인 청취
@@ -1699,65 +1699,12 @@
     dept: ER · RESUS
     deptColor: '#DC2626'
     brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - ABC 평가
         - SpO2 어휘
         - 산소 적용 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00133
-  profession: ""
-  eventId: EVT-ER-00103
-  title: 복통 문진 · Mrs. Rossi
-  tagline: It hurts down here, and it's getting worse.
-  persona:
-    name: Mrs. Rossi
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
-  goals:
-    - 복통 위치·양상·동반증상 청취
-    - 적색 신호 증상 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Where exactly does it hurt?
-    - Have you had any nausea or vomiting?
-    - When did you last eat?
-  steps: []
-  briefing:
-    dept: ER · EXAM 2
-    deptColor: '#DC2626'
-    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 복통 OPQRST
-        - 소화기 어휘
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1776,20 +1723,73 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00134
+- id: SCN-ER-00133
   profession: ""
   eventId: EVT-ER-00103
-  title: 열성 환자 감염 선별 · Mr. Johnson
-  tagline: I've had a fever for three days.
+  title: 복통 문진 · Mr. Chen
+  tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Mr. Johnson
+    name: Mr. Chen
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 복통 위치·양상·동반증상 청취
+    - 적색 신호 증상 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Where exactly does it hurt?
+    - Have you had any nausea or vomiting?
+    - When did you last eat?
+  steps: []
+  briefing:
+    dept: ER · EXAM 2
+    deptColor: '#DC2626'
+    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 복통 OPQRST
+        - 소화기 어휘
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00134
+  profession: ""
+  eventId: EVT-ER-00103
+  title: 열성 환자 감염 선별 · Mr. Chen
+  tagline: I've had a fever for three days.
+  persona:
+    name: Mr. Chen
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 45y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 발열 경과·감염 위험 요인 청취
@@ -1832,18 +1832,18 @@
 - id: SCN-ER-00135
   profession: ""
   eventId: EVT-ER-00103
-  title: 낙상 외상 사정 · Ms. Bauer
+  title: 낙상 외상 사정 · Mr. Chen
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Ms. Bauer
+    name: Mr. Chen
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -1860,11 +1860,65 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00136
+  profession: ""
+  eventId: EVT-ER-00103
+  title: 알레르기 반응 대응 · Mr. Chen
+  tagline: My lips are swelling up!
+  persona:
+    name: Mr. Chen
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1883,75 +1937,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00136
-  profession: ""
-  eventId: EVT-ER-00103
-  title: 알레르기 반응 대응 · Mr. Silva
-  tagline: My lips are swelling up!
-  persona:
-    name: Mr. Silva
-    role: patient
-    ageRange: 70s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
-  goals:
-    - 알레르겐 노출·증상 진행 확인
-    - 응급 처치를 안심시키며 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What did you eat or take?
-    - I'm giving you epinephrine now.
-    - Your throat may feel better soon.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: 'ER · RESUS BAY #1'
-    deptColor: '#DC2626'
-    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 알레르기 어휘
-        - 에피네프린 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
 - id: SCN-ER-00137
   profession: ""
   eventId: EVT-ER-00103
-  title: 주취 환자 진정 · Mrs. Adeyemi
+  title: 주취 환자 진정 · Mr. Chen
   tagline: I'm fine, leave me alone!
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Chen
     role: patient
     ageRange: 40s
     personality: ""
     speakingStyle: ""
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 45y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 비폭력적으로 진정 유도
     - 안전하게 사정 협조 확보
@@ -1994,17 +1994,17 @@
 - id: SCN-ER-00138
   profession: ""
   eventId: EVT-ER-00103
-  title: 소아 열경련 부모 안내 · Mr. Fischer
+  title: 소아 열경련 부모 안내 · Mr. Delgado
   tagline: My baby was shaking — is she okay?
   persona:
-    name: Mr. Fischer
+    name: Mr. Delgado
     role: parent
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
     sub: Father
-    hair: '#1C1C1C'
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 보호자를 안심시키며 설명
@@ -2022,25 +2022,25 @@
     dept: ER · PEDS CORNER
     deptColor: '#DC2626'
     brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 소아 발열 교육
         - 보호자 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -2048,18 +2048,18 @@
 - id: SCN-ER-00139
   profession: ""
   eventId: EVT-ER-00103
-  title: 경찰 동행 환자 인계 · RN Marcus
+  title: 경찰 동행 환자 인계 · RN Sofia
   tagline: Officer, what happened here?
   persona:
-    name: RN Marcus
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 동행자에게 상황 인계 청취
     - 사정 우선순위 결정
@@ -2075,25 +2075,25 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -2101,17 +2101,17 @@
 - id: SCN-ER-00140
   profession: ""
   eventId: EVT-ER-00104
-  title: 언어 장벽 · 통역 호출 · Mr. Thompson
+  title: 언어 장벽 · 통역 호출 · Mr. Chen
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Thompson
+    name: Mr. Chen
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 45y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 통역 연계 안내
@@ -2154,17 +2154,17 @@
 - id: SCN-ER-00141
   profession: ""
   eventId: EVT-ER-00104
-  title: 흉통 트리아지 · Mrs. Haddad
+  title: 흉통 트리아지 · Mrs. Kelly
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Mrs. Haddad
+    name: Mrs. Kelly
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 33y / Female
-    hair: '#241812'
+    sub: 72y / Female
+    hair: '#B0B0B0'
     hairStyle: bob
   goals:
     - 흉통 양상·방사통·동반증상 사정
@@ -2209,18 +2209,18 @@
 - id: SCN-ER-00142
   profession: ""
   eventId: EVT-ER-00104
-  title: 호흡곤란 초기 평가 · Mr. Yamamoto
+  title: 호흡곤란 초기 평가 · Mrs. Kelly
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Kelly
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 호흡곤란 발생·악화 요인 청취
     - 산소 적용을 안심시키며 설명
@@ -2264,18 +2264,18 @@
 - id: SCN-ER-00143
   profession: ""
   eventId: EVT-ER-00104
-  title: 복통 문진 · Ms. O'Brien
+  title: 복통 문진 · Mrs. Kelly
   tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Ms. O'Brien
+    name: Mrs. Kelly
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 복통 위치·양상·동반증상 청취
     - 적색 신호 증상 확인
@@ -2317,18 +2317,18 @@
 - id: SCN-ER-00144
   profession: ""
   eventId: EVT-ER-00104
-  title: 열성 환자 감염 선별 · Mr. Dubois
+  title: 열성 환자 감염 선별 · Mrs. Kelly
   tagline: I've had a fever for three days.
   persona:
-    name: Mr. Dubois
+    name: Mrs. Kelly
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 발열 경과·감염 위험 요인 청취
     - 격리 필요성 판단·안내
@@ -2370,17 +2370,17 @@
 - id: SCN-ER-00145
   profession: ""
   eventId: EVT-ER-00104
-  title: 낙상 외상 사정 · Mrs. Santos
+  title: 낙상 외상 사정 · Mrs. Kelly
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Mrs. Santos
+    name: Mrs. Kelly
     role: patient
     ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 74y / Female
-    hair: '#A0A0A0'
+    sub: 72y / Female
+    hair: '#B0B0B0'
     hairStyle: bob
   goals:
     - 손상 기전·부위 청취
@@ -2398,65 +2398,11 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00146
-  profession: ""
-  eventId: EVT-ER-00104
-  title: 알레르기 반응 대응 · Mr. Wagner
-  tagline: My lips are swelling up!
-  persona:
-    name: Mr. Wagner
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
-  goals:
-    - 알레르겐 노출·증상 진행 확인
-    - 응급 처치를 안심시키며 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What did you eat or take?
-    - I'm giving you epinephrine now.
-    - Your throat may feel better soon.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: 'ER · RESUS BAY #1'
-    deptColor: '#DC2626'
-    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 알레르기 어휘
-        - 에피네프린 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2475,21 +2421,75 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
+- id: SCN-ER-00146
+  profession: ""
+  eventId: EVT-ER-00104
+  title: 알레르기 반응 대응 · Mrs. Kelly
+  tagline: My lips are swelling up!
+  persona:
+    name: Mrs. Kelly
+    role: patient
+    ageRange: 70s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
 - id: SCN-ER-00147
   profession: ""
   eventId: EVT-ER-00104
-  title: 주취 환자 진정 · Ms. Ivanova
+  title: 주취 환자 진정 · Mrs. Kelly
   tagline: I'm fine, leave me alone!
   persona:
-    name: Ms. Ivanova
+    name: Mrs. Kelly
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: ""
     speakingStyle: ""
     mood: angry
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 비폭력적으로 진정 유도
     - 안전하게 사정 협조 확보
@@ -2532,18 +2532,18 @@
 - id: SCN-ER-00148
   profession: ""
   eventId: EVT-ER-00104
-  title: 소아 열경련 부모 안내 · Mr. Novak
+  title: 소아 열경련 부모 안내 · Mrs. Bello
   tagline: My baby was shaking — is she okay?
   persona:
-    name: Mr. Novak
+    name: Mrs. Bello
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: Mother
+    hair: '#0F0F0F'
+    hairStyle: long
   goals:
     - 보호자를 안심시키며 설명
     - 가정 관찰 포인트 교육
@@ -2560,25 +2560,25 @@
     dept: ER · PEDS CORNER
     deptColor: '#DC2626'
     brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 소아 발열 교육
         - 보호자 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -2586,17 +2586,17 @@
 - id: SCN-ER-00149
   profession: ""
   eventId: EVT-ER-00104
-  title: 경찰 동행 환자 인계 · Dr. Lee
+  title: 경찰 동행 환자 인계 · Dr. Ahmed
   tagline: Officer, what happened here?
   persona:
-    name: Dr. Lee
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 동행자에게 상황 인계 청취
@@ -2613,25 +2613,25 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -2639,17 +2639,17 @@
 - id: SCN-ER-00150
   profession: ""
   eventId: EVT-ER-00104
-  title: 언어 장벽 · 통역 호출 · Mrs. Hopkins
+  title: 언어 장벽 · 통역 호출 · Mrs. Kelly
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mrs. Hopkins
+    name: Mrs. Kelly
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 67y / Female
-    hair: '#9A6B3F'
+    sub: 72y / Female
+    hair: '#B0B0B0'
     hairStyle: bob
   goals:
     - 통역 연계 안내
@@ -2692,18 +2692,18 @@
 - id: SCN-ER-00151
   profession: ""
   eventId: EVT-ER-00104
-  title: 흉통 트리아지 · Ms. Alvarez
+  title: 흉통 트리아지 · Mr. Okafor
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Ms. Alvarez
+    name: Mr. Okafor
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 흉통 양상·방사통·동반증상 사정
     - STEMI 배제 위해 트리아지
@@ -2747,17 +2747,17 @@
 - id: SCN-ER-00152
   profession: ""
   eventId: EVT-ER-00104
-  title: 호흡곤란 초기 평가 · Mr. Chen
+  title: 호흡곤란 초기 평가 · Mr. Okafor
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Chen
+    name: Mr. Okafor
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 호흡곤란 발생·악화 요인 청취
@@ -2775,8 +2775,8 @@
     dept: ER · RESUS
     deptColor: '#DC2626'
     brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - ABC 평가
         - SpO2 어휘
@@ -2784,17 +2784,17 @@
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -2802,18 +2802,18 @@
 - id: SCN-ER-00153
   profession: ""
   eventId: EVT-ER-00105
-  title: 복통 문진 · Mrs. Kelly
+  title: 복통 문진 · Mr. Okafor
   tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Mrs. Kelly
+    name: Mr. Okafor
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 복통 위치·양상·동반증상 청취
     - 적색 신호 증상 확인
@@ -2829,25 +2829,25 @@
     dept: ER · EXAM 2
     deptColor: '#DC2626'
     brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 복통 OPQRST
         - 소화기 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -2908,18 +2908,18 @@
 - id: SCN-ER-00155
   profession: ""
   eventId: EVT-ER-00105
-  title: 낙상 외상 사정 · Ms. Nguyen
+  title: 낙상 외상 사정 · Mr. Okafor
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Okafor
     role: patient
-    ageRange: 20s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -2936,25 +2936,25 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -2962,17 +2962,17 @@
 - id: SCN-ER-00156
   profession: ""
   eventId: EVT-ER-00105
-  title: 알레르기 반응 대응 · Mr. Patel
+  title: 알레르기 반응 대응 · Mr. Okafor
   tagline: My lips are swelling up!
   persona:
-    name: Mr. Patel
+    name: Mr. Okafor
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 알레르겐 노출·증상 진행 확인
@@ -3016,18 +3016,18 @@
 - id: SCN-ER-00157
   profession: ""
   eventId: EVT-ER-00105
-  title: 주취 환자 진정 · Mrs. Rossi
+  title: 주취 환자 진정 · Mr. Okafor
   tagline: I'm fine, leave me alone!
   persona:
-    name: Mrs. Rossi
+    name: Mr. Okafor
     role: patient
     ageRange: 50s
     personality: ""
     speakingStyle: ""
     mood: anxious
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 비폭력적으로 진정 유도
     - 안전하게 사정 협조 확보
@@ -3070,17 +3070,17 @@
 - id: SCN-ER-00158
   profession: ""
   eventId: EVT-ER-00105
-  title: 소아 열경련 부모 안내 · Mr. Delgado
+  title: 소아 열경련 부모 안내 · Mr. Novak
   tagline: My baby was shaking — is she okay?
   persona:
-    name: Mr. Delgado
+    name: Mr. Novak
     role: parent
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Father
-    hair: '#2E2E2E'
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 보호자를 안심시키며 설명
@@ -3098,25 +3098,25 @@
     dept: ER · PEDS CORNER
     deptColor: '#DC2626'
     brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 소아 발열 교육
         - 보호자 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -3124,18 +3124,18 @@
 - id: SCN-ER-00159
   profession: ""
   eventId: EVT-ER-00105
-  title: 경찰 동행 환자 인계 · Dr. Novak
+  title: 경찰 동행 환자 인계 · Pharmacist Cho
   tagline: Officer, what happened here?
   persona:
-    name: Dr. Novak
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 동행자에게 상황 인계 청취
     - 사정 우선순위 결정
@@ -3151,25 +3151,25 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
@@ -3177,17 +3177,17 @@
 - id: SCN-ER-00160
   profession: ""
   eventId: EVT-ER-00105
-  title: 언어 장벽 · 통역 호출 · Mr. Silva
+  title: 언어 장벽 · 통역 호출 · Mr. Okafor
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Silva
+    name: Mr. Okafor
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: worried
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 통역 연계 안내
@@ -3230,18 +3230,18 @@
 - id: SCN-ER-00161
   profession: ""
   eventId: EVT-ER-00105
-  title: 흉통 트리아지 · Mrs. Adeyemi
+  title: 흉통 트리아지 · Ms. Nguyen
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Mrs. Adeyemi
+    name: Ms. Nguyen
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 흉통 양상·방사통·동반증상 사정
     - STEMI 배제 위해 트리아지
@@ -3285,18 +3285,18 @@
 - id: SCN-ER-00162
   profession: ""
   eventId: EVT-ER-00105
-  title: 호흡곤란 초기 평가 · Mr. Larsson
+  title: 호흡곤란 초기 평가 · Ms. Nguyen
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Larsson
+    name: Ms. Nguyen
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 호흡곤란 발생·악화 요인 청취
     - 산소 적용을 안심시키며 설명
@@ -3313,65 +3313,12 @@
     dept: ER · RESUS
     deptColor: '#DC2626'
     brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - ABC 평가
         - SpO2 어휘
         - 산소 적용 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00163
-  profession: ""
-  eventId: EVT-ER-00105
-  title: 복통 문진 · Ms. Park
-  tagline: It hurts down here, and it's getting worse.
-  persona:
-    name: Ms. Park
-    role: patient
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
-  goals:
-    - 복통 위치·양상·동반증상 청취
-    - 적색 신호 증상 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Where exactly does it hurt?
-    - Have you had any nausea or vomiting?
-    - When did you last eat?
-  steps: []
-  briefing:
-    dept: ER · EXAM 2
-    deptColor: '#DC2626'
-    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 복통 OPQRST
-        - 소화기 어휘
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3390,21 +3337,74 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00164
+- id: SCN-ER-00163
   profession: ""
   eventId: EVT-ER-00105
-  title: 열성 환자 감염 선별 · Mr. Thompson
-  tagline: I've had a fever for three days.
+  title: 복통 문진 · Ms. Nguyen
+  tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Mr. Thompson
+    name: Ms. Nguyen
     role: patient
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
+  goals:
+    - 복통 위치·양상·동반증상 청취
+    - 적색 신호 증상 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Where exactly does it hurt?
+    - Have you had any nausea or vomiting?
+    - When did you last eat?
+  steps: []
+  briefing:
+    dept: ER · EXAM 2
+    deptColor: '#DC2626'
+    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 복통 OPQRST
+        - 소화기 어휘
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00164
+  profession: ""
+  eventId: EVT-ER-00105
+  title: 열성 환자 감염 선별 · Ms. Nguyen
+  tagline: I've had a fever for three days.
+  persona:
+    name: Ms. Nguyen
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 발열 경과·감염 위험 요인 청취
     - 격리 필요성 판단·안내
@@ -3446,18 +3446,18 @@
 - id: SCN-ER-00165
   profession: ""
   eventId: EVT-ER-00105
-  title: 낙상 외상 사정 · Mrs. Haddad
+  title: 낙상 외상 사정 · Ms. Nguyen
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Mrs. Haddad
+    name: Ms. Nguyen
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -3474,11 +3474,65 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00166
+  profession: ""
+  eventId: EVT-ER-00106
+  title: 알레르기 반응 대응 · Ms. Nguyen
+  tagline: My lips are swelling up!
+  persona:
+    name: Ms. Nguyen
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3497,74 +3551,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00166
-  profession: ""
-  eventId: EVT-ER-00106
-  title: 알레르기 반응 대응 · Mr. Yamamoto
-  tagline: My lips are swelling up!
-  persona:
-    name: Mr. Yamamoto
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
-  goals:
-    - 알레르겐 노출·증상 진행 확인
-    - 응급 처치를 안심시키며 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What did you eat or take?
-    - I'm giving you epinephrine now.
-    - Your throat may feel better soon.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: 'ER · RESUS BAY #1'
-    deptColor: '#DC2626'
-    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 알레르기 어휘
-        - 에피네프린 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
 - id: SCN-ER-00167
   profession: ""
   eventId: EVT-ER-00106
-  title: 주취 환자 진정 · Ms. O'Brien
+  title: 주취 환자 진정 · Ms. Nguyen
   tagline: I'm fine, leave me alone!
   persona:
-    name: Ms. O'Brien
+    name: Ms. Nguyen
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: ""
     speakingStyle: ""
     mood: angry
-    sub: 41y / Female
-    hair: '#7A4A22'
+    sub: 26y / Female
+    hair: '#1A1A1A'
     hairStyle: long
   goals:
     - 비폭력적으로 진정 유도
@@ -3608,71 +3608,17 @@
 - id: SCN-ER-00168
   profession: ""
   eventId: EVT-ER-00106
-  title: 소아 열경련 부모 안내 · Mr. Fischer
-  tagline: My baby was shaking — is she okay?
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 보호자를 안심시키며 설명
-    - 가정 관찰 포인트 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Febrile seizures are usually not harmful.
-    - Let's bring the fever down.
-    - Watch for these warning signs at home.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: ER · PEDS CORNER
-    deptColor: '#DC2626'
-    brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 소아 발열 교육
-        - 보호자 안심
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00169
-  profession: ""
-  eventId: EVT-ER-00106
-  title: 경찰 동행 환자 인계 · Dr. Ahmed
+  title: 경찰 동행 환자 인계 · RN Marcus
   tagline: Officer, what happened here?
   persona:
-    name: Dr. Ahmed
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 동행자에게 상황 인계 청취
@@ -3689,44 +3635,44 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00170
+- id: SCN-ER-00169
   profession: ""
   eventId: EVT-ER-00106
-  title: 언어 장벽 · 통역 호출 · Mr. Wagner
+  title: 언어 장벽 · 통역 호출 · Ms. Nguyen
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Wagner
+    name: Ms. Nguyen
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 통역 연계 안내
     - 쉬운 표현으로 핵심 증상 확인
@@ -3765,21 +3711,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00171
+- id: SCN-ER-00170
   profession: ""
   eventId: EVT-ER-00106
-  title: 흉통 트리아지 · Ms. Ivanova
+  title: 흉통 트리아지 · Mr. Patel
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Ms. Ivanova
+    name: Mr. Patel
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 흉통 양상·방사통·동반증상 사정
     - STEMI 배제 위해 트리아지
@@ -3820,20 +3766,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00172
+- id: SCN-ER-00171
   profession: ""
   eventId: EVT-ER-00106
-  title: 호흡곤란 초기 평가 · Mr. Reyes
+  title: 호흡곤란 초기 평가 · Mr. Patel
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Reyes
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 호흡곤란 발생·악화 요인 청취
@@ -3875,20 +3821,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00173
+- id: SCN-ER-00172
   profession: ""
   eventId: EVT-ER-00106
-  title: 복통 문진 · Mr. Robinson
+  title: 복통 문진 · Mr. Patel
   tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Mr. Robinson
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 복통 위치·양상·동반증상 청취
@@ -3928,21 +3874,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00174
+- id: SCN-ER-00173
   profession: ""
   eventId: EVT-ER-00106
-  title: 열성 환자 감염 선별 · Mrs. Hopkins
+  title: 열성 환자 감염 선별 · Mr. Patel
   tagline: I've had a fever for three days.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Patel
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 발열 경과·감염 위험 요인 청취
     - 격리 필요성 판단·안내
@@ -3981,21 +3927,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00175
+- id: SCN-ER-00174
   profession: ""
   eventId: EVT-ER-00106
-  title: 낙상 외상 사정 · Ms. Alvarez
+  title: 낙상 외상 사정 · Mr. Patel
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Ms. Alvarez
+    name: Mr. Patel
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -4012,11 +3958,65 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00175
+  profession: ""
+  eventId: EVT-ER-00106
+  title: 알레르기 반응 대응 · Mr. Patel
+  tagline: My lips are swelling up!
+  persona:
+    name: Mr. Patel
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4038,72 +4038,18 @@
 - id: SCN-ER-00176
   profession: ""
   eventId: EVT-ER-00106
-  title: 알레르기 반응 대응 · Mr. Chen
-  tagline: My lips are swelling up!
-  persona:
-    name: Mr. Chen
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 알레르겐 노출·증상 진행 확인
-    - 응급 처치를 안심시키며 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What did you eat or take?
-    - I'm giving you epinephrine now.
-    - Your throat may feel better soon.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: 'ER · RESUS BAY #1'
-    deptColor: '#DC2626'
-    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 알레르기 어휘
-        - 에피네프린 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00177
-  profession: ""
-  eventId: EVT-ER-00106
-  title: 주취 환자 진정 · Mrs. Kelly
+  title: 주취 환자 진정 · Mr. Patel
   tagline: I'm fine, leave me alone!
   persona:
-    name: Mrs. Kelly
+    name: Mr. Patel
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: ""
     speakingStyle: ""
     mood: anxious
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 비폭력적으로 진정 유도
     - 안전하게 사정 협조 확보
@@ -4143,74 +4089,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00178
+- id: SCN-ER-00177
   profession: ""
   eventId: EVT-ER-00106
-  title: 소아 열경련 부모 안내 · Mr. Novak
-  tagline: My baby was shaking — is she okay?
-  persona:
-    name: Mr. Novak
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
-  goals:
-    - 보호자를 안심시키며 설명
-    - 가정 관찰 포인트 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Febrile seizures are usually not harmful.
-    - Let's bring the fever down.
-    - Watch for these warning signs at home.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: ER · PEDS CORNER
-    deptColor: '#DC2626'
-    brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 소아 발열 교육
-        - 보호자 안심
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00179
-  profession: ""
-  eventId: EVT-ER-00107
-  title: 경찰 동행 환자 인계 · RN Marcus
+  title: 경찰 동행 환자 인계 · Dr. Weber
   tagline: Officer, what happened here?
   persona:
-    name: RN Marcus
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 동행자에게 상황 인계 청취
@@ -4227,32 +4119,32 @@
     dept: ER · RECEPTION
     deptColor: '#DC2626'
     brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 기관 간 인계
         - 우선순위 결정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00180
+- id: SCN-ER-00178
   profession: ""
-  eventId: EVT-ER-00107
+  eventId: EVT-ER-00106
   title: 언어 장벽 · 통역 호출 · Mr. Patel
   tagline: (환자가 영어를 거의 못 함)
   persona:
@@ -4303,7 +4195,7 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00181
+- id: SCN-ER-00179
   profession: ""
   eventId: EVT-ER-00107
   title: 흉통 트리아지 · Mrs. Rossi
@@ -4358,21 +4250,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00182
+- id: SCN-ER-00180
   profession: ""
   eventId: EVT-ER-00107
-  title: 호흡곤란 초기 평가 · Mr. Johnson
+  title: 호흡곤란 초기 평가 · Mrs. Rossi
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Johnson
+    name: Mrs. Rossi
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 호흡곤란 발생·악화 요인 청취
     - 산소 적용을 안심시키며 설명
@@ -4389,12 +4281,65 @@
     dept: ER · RESUS
     deptColor: '#DC2626'
     brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - ABC 평가
         - SpO2 어휘
         - 산소 적용 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00181
+  profession: ""
+  eventId: EVT-ER-00107
+  title: 복통 문진 · Mrs. Rossi
+  tagline: It hurts down here, and it's getting worse.
+  persona:
+    name: Mrs. Rossi
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
+  goals:
+    - 복통 위치·양상·동반증상 청취
+    - 적색 신호 증상 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Where exactly does it hurt?
+    - Have you had any nausea or vomiting?
+    - When did you last eat?
+  steps: []
+  briefing:
+    dept: ER · EXAM 2
+    deptColor: '#DC2626'
+    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 복통 OPQRST
+        - 소화기 어휘
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4413,74 +4358,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00183
+- id: SCN-ER-00182
   profession: ""
   eventId: EVT-ER-00107
-  title: 복통 문진 · Ms. Bauer
-  tagline: It hurts down here, and it's getting worse.
-  persona:
-    name: Ms. Bauer
-    role: patient
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
-  goals:
-    - 복통 위치·양상·동반증상 청취
-    - 적색 신호 증상 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Where exactly does it hurt?
-    - Have you had any nausea or vomiting?
-    - When did you last eat?
-  steps: []
-  briefing:
-    dept: ER · EXAM 2
-    deptColor: '#DC2626'
-    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 복통 OPQRST
-        - 소화기 어휘
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00184
-  profession: ""
-  eventId: EVT-ER-00107
-  title: 열성 환자 감염 선별 · Mr. Silva
+  title: 열성 환자 감염 선별 · Mrs. Rossi
   tagline: I've had a fever for three days.
   persona:
-    name: Mr. Silva
+    name: Mrs. Rossi
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 발열 경과·감염 위험 요인 청취
     - 격리 필요성 판단·안내
@@ -4519,20 +4411,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00185
+- id: SCN-ER-00183
   profession: ""
   eventId: EVT-ER-00107
-  title: 낙상 외상 사정 · Mrs. Adeyemi
+  title: 낙상 외상 사정 · Mrs. Rossi
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Mrs. Adeyemi
+    name: Mrs. Rossi
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 47y / Female
-    hair: '#0F0F0F'
+    sub: 51y / Female
+    hair: '#5A3A22'
     hairStyle: bob
   goals:
     - 손상 기전·부위 청취
@@ -4550,44 +4442,44 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00186
+- id: SCN-ER-00184
   profession: ""
   eventId: EVT-ER-00107
-  title: 알레르기 반응 대응 · Mr. Larsson
+  title: 알레르기 반응 대응 · Mrs. Rossi
   tagline: My lips are swelling up!
   persona:
-    name: Mr. Larsson
+    name: Mrs. Rossi
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 알레르겐 노출·증상 진행 확인
     - 응급 처치를 안심시키며 설명
@@ -4627,21 +4519,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00187
+- id: SCN-ER-00185
   profession: ""
   eventId: EVT-ER-00107
-  title: 주취 환자 진정 · Ms. Park
+  title: 주취 환자 진정 · Mrs. Rossi
   tagline: I'm fine, leave me alone!
   persona:
-    name: Ms. Park
+    name: Mrs. Rossi
     role: patient
-    ageRange: 20s
+    ageRange: 50s
     personality: ""
     speakingStyle: ""
     mood: angry
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 비폭력적으로 진정 유도
     - 안전하게 사정 협조 확보
@@ -4681,128 +4573,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00188
+- id: SCN-ER-00186
   profession: ""
   eventId: EVT-ER-00107
-  title: 소아 열경련 부모 안내 · Mr. Delgado
-  tagline: My baby was shaking — is she okay?
-  persona:
-    name: Mr. Delgado
-    role: parent
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 보호자를 안심시키며 설명
-    - 가정 관찰 포인트 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Febrile seizures are usually not harmful.
-    - Let's bring the fever down.
-    - Watch for these warning signs at home.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: ER · PEDS CORNER
-    deptColor: '#DC2626'
-    brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 소아 발열 교육
-        - 보호자 안심
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00189
-  profession: ""
-  eventId: EVT-ER-00107
-  title: 경찰 동행 환자 인계 · Dr. Lee
-  tagline: Officer, what happened here?
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 동행자에게 상황 인계 청취
-    - 사정 우선순위 결정
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Can you tell me what happened?
-    - Is the patient stable?
-    - We'll take it from here.
-  steps: []
-  briefing:
-    dept: ER · RECEPTION
-    deptColor: '#DC2626'
-    brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 기관 간 인계
-        - 우선순위 결정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00190
-  profession: ""
-  eventId: EVT-ER-00107
-  title: 언어 장벽 · 통역 호출 · Mr. Yamamoto
+  title: 언어 장벽 · 통역 호출 · Mrs. Rossi
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Rossi
     role: patient
     ageRange: 50s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 통역 연계 안내
     - 쉬운 표현으로 핵심 증상 확인
@@ -4841,21 +4626,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00191
+- id: SCN-ER-00187
   profession: ""
   eventId: EVT-ER-00107
-  title: 흉통 트리아지 · Ms. O'Brien
+  title: 흉통 트리아지 · Mr. Johnson
   tagline: It feels like an elephant on my chest…
   persona:
-    name: Ms. O'Brien
+    name: Mr. Johnson
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 흉통 양상·방사통·동반증상 사정
     - STEMI 배제 위해 트리아지
@@ -4896,20 +4681,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00192
+- id: SCN-ER-00188
   profession: ""
-  eventId: EVT-ER-00108
-  title: 호흡곤란 초기 평가 · Mr. Dubois
+  eventId: EVT-ER-00107
+  title: 호흡곤란 초기 평가 · Mr. Johnson
   tagline: I can't catch my breath…
   persona:
-    name: Mr. Dubois
+    name: Mr. Johnson
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 호흡곤란 발생·악화 요인 청취
@@ -4927,65 +4712,12 @@
     dept: ER · RESUS
     deptColor: '#DC2626'
     brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - ABC 평가
         - SpO2 어휘
         - 산소 적용 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00193
-  profession: ""
-  eventId: EVT-ER-00108
-  title: 복통 문진 · Mrs. Santos
-  tagline: It hurts down here, and it's getting worse.
-  persona:
-    name: Mrs. Santos
-    role: patient
-    ageRange: 70s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
-  goals:
-    - 복통 위치·양상·동반증상 청취
-    - 적색 신호 증상 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Where exactly does it hurt?
-    - Have you had any nausea or vomiting?
-    - When did you last eat?
-  steps: []
-  briefing:
-    dept: ER · EXAM 2
-    deptColor: '#DC2626'
-    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 복통 OPQRST
-        - 소화기 어휘
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5004,20 +4736,73 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00194
+- id: SCN-ER-00189
   profession: ""
-  eventId: EVT-ER-00108
-  title: 열성 환자 감염 선별 · Mr. Wagner
-  tagline: I've had a fever for three days.
+  eventId: EVT-ER-00107
+  title: 복통 문진 · Mr. Johnson
+  tagline: It hurts down here, and it's getting worse.
   persona:
-    name: Mr. Wagner
+    name: Mr. Johnson
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
+  goals:
+    - 복통 위치·양상·동반증상 청취
+    - 적색 신호 증상 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Where exactly does it hurt?
+    - Have you had any nausea or vomiting?
+    - When did you last eat?
+  steps: []
+  briefing:
+    dept: ER · EXAM 2
+    deptColor: '#DC2626'
+    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 복통 OPQRST
+        - 소화기 어휘
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00190
+  profession: ""
+  eventId: EVT-ER-00107
+  title: 열성 환자 감염 선별 · Mr. Johnson
+  tagline: I've had a fever for three days.
+  persona:
+    name: Mr. Johnson
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 발열 경과·감염 위험 요인 청취
@@ -5057,21 +4842,21 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00195
+- id: SCN-ER-00191
   profession: ""
-  eventId: EVT-ER-00108
-  title: 낙상 외상 사정 · Ms. Ivanova
+  eventId: EVT-ER-00107
+  title: 낙상 외상 사정 · Mr. Johnson
   tagline: I slipped and I can't move my wrist.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Johnson
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 손상 기전·부위 청취
     - 신경혈관 상태 확인
@@ -5088,11 +4873,65 @@
     dept: 'ER · TRAUMA BAY #3'
     deptColor: '#DC2626'
     brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 외상 기전 청취
         - 신경혈관 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00192
+  profession: ""
+  eventId: EVT-ER-00108
+  title: 알레르기 반응 대응 · Mr. Johnson
+  tagline: My lips are swelling up!
+  persona:
+    name: Mr. Johnson
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5111,74 +4950,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00196
+- id: SCN-ER-00193
   profession: ""
   eventId: EVT-ER-00108
-  title: 알레르기 반응 대응 · Mr. Reyes
-  tagline: My lips are swelling up!
-  persona:
-    name: Mr. Reyes
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 알레르겐 노출·증상 진행 확인
-    - 응급 처치를 안심시키며 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What did you eat or take?
-    - I'm giving you epinephrine now.
-    - Your throat may feel better soon.
-  acuity: critical
-  steps: []
-  briefing:
-    dept: 'ER · RESUS BAY #1'
-    deptColor: '#DC2626'
-    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 알레르기 어휘
-        - 에피네프린 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00197
-  profession: ""
-  eventId: EVT-ER-00108
-  title: 주취 환자 진정 · Mr. Robinson
+  title: 주취 환자 진정 · Mr. Johnson
   tagline: I'm fine, leave me alone!
   persona:
-    name: Mr. Robinson
+    name: Mr. Johnson
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: ""
     speakingStyle: ""
     mood: anxious
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 비폭력적으로 진정 유도
@@ -5219,127 +5004,20 @@
     accent: '#B91C1C'
     chart: null
     riskyPhrases: []
-- id: SCN-ER-00198
+- id: SCN-ER-00194
   profession: ""
   eventId: EVT-ER-00108
-  title: 소아 열경련 부모 안내 · Mr. Fischer
-  tagline: My baby was shaking — is she okay?
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 보호자를 안심시키며 설명
-    - 가정 관찰 포인트 교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Febrile seizures are usually not harmful.
-    - Let's bring the fever down.
-    - Watch for these warning signs at home.
-  acuity: urgent
-  steps: []
-  briefing:
-    dept: ER · PEDS CORNER
-    deptColor: '#DC2626'
-    brief: 열경련을 목격한 보호자를 안심시키고 경과·주의점을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 소아 발열 교육
-        - 보호자 안심
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00199
-  profession: ""
-  eventId: EVT-ER-00108
-  title: 경찰 동행 환자 인계 · Dr. Novak
-  tagline: Officer, what happened here?
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 동행자에게 상황 인계 청취
-    - 사정 우선순위 결정
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Can you tell me what happened?
-    - Is the patient stable?
-    - We'll take it from here.
-  steps: []
-  briefing:
-    dept: ER · RECEPTION
-    deptColor: '#DC2626'
-    brief: 경찰과 함께 온 환자의 상황을 인계받고 사정 우선순위를 정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 기관 간 인계
-        - 우선순위 결정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEE2E2'
-    accent: '#B91C1C'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ER-00200
-  profession: ""
-  eventId: EVT-ER-00108
-  title: 언어 장벽 · 통역 호출 · Mr. Chen
+  title: 언어 장벽 · 통역 호출 · Mr. Johnson
   tagline: (환자가 영어를 거의 못 함)
   persona:
-    name: Mr. Chen
+    name: Mr. Johnson
     role: patient
     ageRange: 40s
     personality: 긴장해 질문이 많음.
     speakingStyle: 빠르게 여러 질문을 함.
     mood: worried
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 통역 연계 안내
@@ -5375,6 +5053,330 @@
         - label: 레벨 2+
           metric: level
           threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00195
+  profession: ""
+  eventId: EVT-ER-00108
+  title: 흉통 트리아지 · Ms. Bauer
+  tagline: It feels like an elephant on my chest…
+  persona:
+    name: Ms. Bauer
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 흉통 양상·방사통·동반증상 사정
+    - STEMI 배제 위해 트리아지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Can you describe the chest pain?
+    - Does it spread to your arm or jaw?
+    - On a scale of 0 to 10?
+  acuity: urgent
+  steps: []
+  briefing:
+    dept: ER · TRIAGE
+    deptColor: '#DC2626'
+    brief: 운동 후 흉통 환자를 PQRST로 사정하고 ESI 등급을 정하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 흉통 PQRST
+        - 심혈관 어휘
+        - ESI 트리아지
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00196
+  profession: ""
+  eventId: EVT-ER-00108
+  title: 호흡곤란 초기 평가 · Ms. Bauer
+  tagline: I can't catch my breath…
+  persona:
+    name: Ms. Bauer
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 호흡곤란 발생·악화 요인 청취
+    - 산소 적용을 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - When did the breathing get worse?
+    - I'm putting oxygen on you now.
+    - Try to take slow breaths with me.
+  acuity: urgent
+  steps: []
+  briefing:
+    dept: ER · RESUS
+    deptColor: '#DC2626'
+    brief: 급성 호흡곤란 환자의 기도·호흡·순환을 빠르게 평가하고 안심시키세요.
+    difficulty: 3
+    timeLabel: 약 9분
+    skills:
+        - ABC 평가
+        - SpO2 어휘
+        - 산소 적용 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00197
+  profession: ""
+  eventId: EVT-ER-00108
+  title: 복통 문진 · Ms. Bauer
+  tagline: It hurts down here, and it's getting worse.
+  persona:
+    name: Ms. Bauer
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 복통 위치·양상·동반증상 청취
+    - 적색 신호 증상 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Where exactly does it hurt?
+    - Have you had any nausea or vomiting?
+    - When did you last eat?
+  steps: []
+  briefing:
+    dept: ER · EXAM 2
+    deptColor: '#DC2626'
+    brief: 복통 환자의 위치·양상·동반증상을 OPQRST로 문진하세요.
+    difficulty: 1
+    timeLabel: 약 5분
+    skills:
+        - 복통 OPQRST
+        - 소화기 어휘
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00198
+  profession: ""
+  eventId: EVT-ER-00108
+  title: 열성 환자 감염 선별 · Ms. Bauer
+  tagline: I've had a fever for three days.
+  persona:
+    name: Ms. Bauer
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 발열 경과·감염 위험 요인 청취
+    - 격리 필요성 판단·안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - How high has your fever been?
+    - Any recent travel or sick contacts?
+    - We may need to place you in isolation.
+  steps: []
+  briefing:
+    dept: ER · FAST TRACK
+    deptColor: '#DC2626'
+    brief: 발열 환자의 감염원·여행력·접촉력을 선별하고 격리 필요성을 판단하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 감염 선별 어휘
+        - 격리 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00199
+  profession: ""
+  eventId: EVT-ER-00108
+  title: 낙상 외상 사정 · Ms. Bauer
+  tagline: I slipped and I can't move my wrist.
+  persona:
+    name: Ms. Bauer
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 손상 기전·부위 청취
+    - 신경혈관 상태 확인
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - How did you fall?
+    - Can you wiggle your fingers?
+    - Does it hurt when I press here?
+  acuity: urgent
+  steps: []
+  briefing:
+    dept: 'ER · TRAUMA BAY #3'
+    deptColor: '#DC2626'
+    brief: 낙상 환자의 손상 부위·기전·신경혈관 상태를 사정하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 외상 기전 청취
+        - 신경혈관 사정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#FEE2E2'
+    accent: '#B91C1C'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ER-00200
+  profession: ""
+  eventId: EVT-ER-00108
+  title: 알레르기 반응 대응 · Ms. Bauer
+  tagline: My lips are swelling up!
+  persona:
+    name: Ms. Bauer
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 알레르겐 노출·증상 진행 확인
+    - 응급 처치를 안심시키며 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What did you eat or take?
+    - I'm giving you epinephrine now.
+    - Your throat may feel better soon.
+  acuity: critical
+  steps: []
+  briefing:
+    dept: 'ER · RESUS BAY #1'
+    deptColor: '#DC2626'
+    brief: 아나필락시스 의심 환자의 노출·증상을 빠르게 확인하고 처치를 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 알레르기 어휘
+        - 에피네프린 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
     tone: '#FEE2E2'
     accent: '#B91C1C'
     chart: null

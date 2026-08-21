@@ -55,18 +55,18 @@
 - id: SCN-WOMENKIDS-00102
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 산후 우울 선별 · Mrs. Haddad
+  title: 산후 우울 선별 · Mr. Thompson
   tagline: I just don't feel like myself.
   persona:
-    name: Mrs. Haddad
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 기분 변화 선별
     - 지지·연계
@@ -82,64 +82,11 @@
     dept: W&K · CLINIC 2
     deptColor: '#EC4899'
     brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 산후 우울 선별
         - 공감
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00103
-  profession: ""
-  eventId: EVT-WOMENKIDS-00101
-  title: 여성 건강 검진 안내 · Mr. Yamamoto
-  tagline: I'm nervous about the exam.
-  persona:
-    name: Mr. Yamamoto
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
-  goals:
-    - 절차 설명
-    - 불안 완화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll explain each step.
-    - You can stop anytime.
-    - Your comfort matters.
-  steps: []
-  briefing:
-    dept: W&K · CLINIC 3
-    deptColor: '#EC4899'
-    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 검진 설명
-        - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
@@ -158,21 +105,74 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00104
+- id: SCN-WOMENKIDS-00103
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 피임 상담 · Ms. O'Brien
-  tagline: What are my options?
+  title: 여성 건강 검진 안내 · Mr. Thompson
+  tagline: I'm nervous about the exam.
   persona:
-    name: Ms. O'Brien
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 절차 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 3
+    deptColor: '#EC4899'
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 검진 설명
+        - 프라이버시
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00104
+  profession: ""
+  eventId: EVT-WOMENKIDS-00101
+  title: 피임 상담 · Mr. Thompson
+  tagline: What are my options?
+  persona:
+    name: Mr. Thompson
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -214,17 +214,17 @@
 - id: SCN-WOMENKIDS-00105
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 소아 성장발달 상담 · Mr. Fischer
+  title: 소아 성장발달 상담 · Mr. Delgado
   tagline: Is she growing normally?
   persona:
-    name: Mr. Fischer
+    name: Mr. Delgado
     role: parent
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
     sub: Father
-    hair: '#1C1C1C'
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 성장발달 설명
@@ -267,18 +267,18 @@
 - id: SCN-WOMENKIDS-00106
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 소아 접종 일정 안내 · Mrs. Aoki
+  title: 소아 접종 일정 안내 · Mr. Delgado
   tagline: Which shots are due today?
   persona:
-    name: Mrs. Aoki
+    name: Mr. Delgado
     role: parent
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    sub: Father
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 접종 일정 안내
     - 이점 설명
@@ -294,25 +294,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 접종 일정
         - 보호자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -320,17 +320,17 @@
 - id: SCN-WOMENKIDS-00107
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 임신성 당뇨 교육 · Mr. Wagner
+  title: 임신성 당뇨 교육 · Mr. Thompson
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Wagner
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 혈당 관리 교육
@@ -373,18 +373,18 @@
 - id: SCN-WOMENKIDS-00108
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 모유수유 외래 상담 · Ms. Ivanova
+  title: 모유수유 외래 상담 · Mr. Thompson
   tagline: It hurts when he feeds.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -400,25 +400,25 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -426,17 +426,17 @@
 - id: SCN-WOMENKIDS-00109
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 청소년 건강 상담 · Mr. Reyes
+  title: 청소년 건강 상담 · Mr. Thompson
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Reyes
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: shy
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 신뢰 형성
@@ -453,25 +453,25 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -479,17 +479,17 @@
 - id: SCN-WOMENKIDS-00110
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 외래 진료 인계 · Dr. Lee
+  title: 외래 진료 인계 · Dr. Weber
   tagline: Passing the clinic list.
   persona:
-    name: Dr. Lee
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Attending
-    hair: '#1C1C1C'
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 대기·특이사항 인계
@@ -532,17 +532,17 @@
 - id: SCN-WOMENKIDS-00111
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 산전 진료 상담 · Mrs. Hopkins
+  title: 산전 진료 상담 · Mrs. Haddad
   tagline: Is everything normal with the baby?
   persona:
-    name: Mrs. Hopkins
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 경과 설명
@@ -585,18 +585,18 @@
 - id: SCN-WOMENKIDS-00112
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 산후 우울 선별 · Ms. Alvarez
+  title: 산후 우울 선별 · Mrs. Haddad
   tagline: I just don't feel like myself.
   persona:
-    name: Ms. Alvarez
+    name: Mrs. Haddad
     role: patient
     ageRange: 30s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: anxious
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 기분 변화 선별
     - 지지·연계
@@ -638,18 +638,18 @@
 - id: SCN-WOMENKIDS-00113
   profession: ""
   eventId: EVT-WOMENKIDS-00101
-  title: 여성 건강 검진 안내 · Mr. Chen
+  title: 여성 건강 검진 안내 · Mrs. Haddad
   tagline: I'm nervous about the exam.
   persona:
-    name: Mr. Chen
+    name: Mrs. Haddad
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 절차 설명
     - 불안 완화
@@ -691,17 +691,17 @@
 - id: SCN-WOMENKIDS-00114
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 피임 상담 · Mrs. Kelly
+  title: 피임 상담 · Mrs. Haddad
   tagline: What are my options?
   persona:
-    name: Mrs. Kelly
+    name: Mrs. Haddad
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 72y / Female
-    hair: '#B0B0B0'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 옵션 정보 제공
@@ -744,18 +744,18 @@
 - id: SCN-WOMENKIDS-00115
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 소아 성장발달 상담 · Mr. Novak
+  title: 소아 성장발달 상담 · Mrs. Bello
   tagline: Is she growing normally?
   persona:
-    name: Mr. Novak
+    name: Mrs. Bello
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: Mother
+    hair: '#0F0F0F'
+    hairStyle: long
   goals:
     - 성장발달 설명
     - 보호자 안심
@@ -771,25 +771,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 성장발달
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -797,17 +797,17 @@
 - id: SCN-WOMENKIDS-00116
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 소아 접종 일정 안내 · Mrs. Coleman
+  title: 소아 접종 일정 안내 · Mrs. Bello
   tagline: Which shots are due today?
   persona:
-    name: Mrs. Coleman
+    name: Mrs. Bello
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Mother
-    hair: '#241812'
+    hair: '#0F0F0F'
     hairStyle: long
   goals:
     - 접종 일정 안내
@@ -850,18 +850,18 @@
 - id: SCN-WOMENKIDS-00117
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 임신성 당뇨 교육 · Mr. Patel
+  title: 임신성 당뇨 교육 · Mrs. Haddad
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Patel
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 혈당 관리 교육
     - 식이 안내
@@ -903,17 +903,17 @@
 - id: SCN-WOMENKIDS-00118
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 모유수유 외래 상담 · Mrs. Rossi
+  title: 모유수유 외래 상담 · Mrs. Haddad
   tagline: It hurts when he feeds.
   persona:
-    name: Mrs. Rossi
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 51y / Female
-    hair: '#5A3A22'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 통증 원인 사정
@@ -930,25 +930,25 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -956,18 +956,18 @@
 - id: SCN-WOMENKIDS-00119
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 청소년 건강 상담 · Mr. Johnson
+  title: 청소년 건강 상담 · Mrs. Haddad
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Johnson
+    name: Mrs. Haddad
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: anxious
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 신뢰 형성
     - 비밀보장 안내
@@ -983,25 +983,25 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -1009,17 +1009,17 @@
 - id: SCN-WOMENKIDS-00120
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 외래 진료 인계 · Dr. Novak
+  title: 외래 진료 인계 · Dr. Lee
   tagline: Passing the clinic list.
   persona:
-    name: Dr. Novak
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 대기·특이사항 인계
@@ -1062,17 +1062,17 @@
 - id: SCN-WOMENKIDS-00121
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 산전 진료 상담 · Mr. Silva
+  title: 산전 진료 상담 · Mr. Yamamoto
   tagline: Is everything normal with the baby?
   persona:
-    name: Mr. Silva
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 경과 설명
@@ -1115,18 +1115,18 @@
 - id: SCN-WOMENKIDS-00122
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 산후 우울 선별 · Mrs. Adeyemi
+  title: 산후 우울 선별 · Mr. Yamamoto
   tagline: I just don't feel like myself.
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 기분 변화 선별
     - 지지·연계
@@ -1142,11 +1142,64 @@
     dept: W&K · CLINIC 2
     deptColor: '#EC4899'
     brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 산후 우울 선별
         - 공감
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00123
+  profession: ""
+  eventId: EVT-WOMENKIDS-00102
+  title: 여성 건강 검진 안내 · Mr. Yamamoto
+  tagline: I'm nervous about the exam.
+  persona:
+    name: Mr. Yamamoto
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
+  goals:
+    - 절차 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 3
+    deptColor: '#EC4899'
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 검진 설명
+        - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1165,74 +1218,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00123
+- id: SCN-WOMENKIDS-00124
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 여성 건강 검진 안내 · Mr. Larsson
-  tagline: I'm nervous about the exam.
+  title: 피임 상담 · Mr. Yamamoto
+  tagline: What are my options?
   persona:
-    name: Mr. Larsson
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
-  goals:
-    - 절차 설명
-    - 불안 완화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll explain each step.
-    - You can stop anytime.
-    - Your comfort matters.
-  steps: []
-  briefing:
-    dept: W&K · CLINIC 3
-    deptColor: '#EC4899'
-    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 검진 설명
-        - 프라이버시
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00124
-  profession: ""
-  eventId: EVT-WOMENKIDS-00102
-  title: 피임 상담 · Ms. Park
-  tagline: What are my options?
-  persona:
-    name: Ms. Park
-    role: patient
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -1274,17 +1274,17 @@
 - id: SCN-WOMENKIDS-00125
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 소아 성장발달 상담 · Mr. Delgado
+  title: 소아 성장발달 상담 · Mr. Novak
   tagline: Is she growing normally?
   persona:
-    name: Mr. Delgado
+    name: Mr. Novak
     role: parent
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: panic
     sub: Father
-    hair: '#2E2E2E'
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 성장발달 설명
@@ -1301,25 +1301,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 성장발달
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -1327,18 +1327,18 @@
 - id: SCN-WOMENKIDS-00126
   profession: ""
   eventId: EVT-WOMENKIDS-00102
-  title: 소아 접종 일정 안내 · Mrs. Bello
+  title: 소아 접종 일정 안내 · Mr. Novak
   tagline: Which shots are due today?
   persona:
-    name: Mrs. Bello
+    name: Mr. Novak
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: panic
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    sub: Father
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 접종 일정 안내
     - 이점 설명
@@ -1354,25 +1354,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 접종 일정
         - 보호자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -1433,18 +1433,18 @@
 - id: SCN-WOMENKIDS-00128
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 모유수유 외래 상담 · Ms. O'Brien
+  title: 모유수유 외래 상담 · Mr. Yamamoto
   tagline: It hurts when he feeds.
   persona:
-    name: Ms. O'Brien
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -1460,25 +1460,25 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -1486,17 +1486,17 @@
 - id: SCN-WOMENKIDS-00129
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 청소년 건강 상담 · Mr. Dubois
+  title: 청소년 건강 상담 · Mr. Yamamoto
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Dubois
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: shy
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 신뢰 형성
@@ -1513,25 +1513,25 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -1539,18 +1539,18 @@
 - id: SCN-WOMENKIDS-00130
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 외래 진료 인계 · Dr. Ahmed
+  title: 외래 진료 인계 · Charge Nurse Kim
   tagline: Passing the clinic list.
   persona:
-    name: Dr. Ahmed
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 대기·특이사항 인계
     - 우선순위 공유
@@ -1592,18 +1592,18 @@
 - id: SCN-WOMENKIDS-00131
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 산전 진료 상담 · Mr. Wagner
+  title: 산전 진료 상담 · Ms. O'Brien
   tagline: Is everything normal with the baby?
   persona:
-    name: Mr. Wagner
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 경과 설명
     - 우려 청취
@@ -1645,17 +1645,17 @@
 - id: SCN-WOMENKIDS-00132
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 산후 우울 선별 · Ms. Ivanova
+  title: 산후 우울 선별 · Ms. O'Brien
   tagline: I just don't feel like myself.
   persona:
-    name: Ms. Ivanova
+    name: Ms. O'Brien
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: anxious
-    sub: 31y / Female
-    hair: '#C9A24B'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 기분 변화 선별
@@ -1672,64 +1672,11 @@
     dept: W&K · CLINIC 2
     deptColor: '#EC4899'
     brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 산후 우울 선별
         - 공감
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00133
-  profession: ""
-  eventId: EVT-WOMENKIDS-00103
-  title: 여성 건강 검진 안내 · Mr. Reyes
-  tagline: I'm nervous about the exam.
-  persona:
-    name: Mr. Reyes
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 절차 설명
-    - 불안 완화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll explain each step.
-    - You can stop anytime.
-    - Your comfort matters.
-  steps: []
-  briefing:
-    dept: W&K · CLINIC 3
-    deptColor: '#EC4899'
-    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 검진 설명
-        - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1748,21 +1695,74 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00134
+- id: SCN-WOMENKIDS-00133
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 피임 상담 · Mr. Robinson
-  tagline: What are my options?
+  title: 여성 건강 검진 안내 · Ms. O'Brien
+  tagline: I'm nervous about the exam.
   persona:
-    name: Mr. Robinson
+    name: Ms. O'Brien
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
+  goals:
+    - 절차 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 3
+    deptColor: '#EC4899'
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 검진 설명
+        - 프라이버시
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00134
+  profession: ""
+  eventId: EVT-WOMENKIDS-00103
+  title: 피임 상담 · Ms. O'Brien
+  tagline: What are my options?
+  persona:
+    name: Ms. O'Brien
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -1804,18 +1804,18 @@
 - id: SCN-WOMENKIDS-00135
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 소아 성장발달 상담 · Mr. Fischer
+  title: 소아 성장발달 상담 · Mrs. Coleman
   tagline: Is she growing normally?
   persona:
-    name: Mr. Fischer
+    name: Mrs. Coleman
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Mother
+    hair: '#241812'
+    hairStyle: long
   goals:
     - 성장발달 설명
     - 보호자 안심
@@ -1857,18 +1857,18 @@
 - id: SCN-WOMENKIDS-00136
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 소아 접종 일정 안내 · Mrs. Aoki
+  title: 소아 접종 일정 안내 · Mrs. Coleman
   tagline: Which shots are due today?
   persona:
-    name: Mrs. Aoki
+    name: Mrs. Coleman
     role: parent
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
     sub: Mother
-    hair: '#141414'
-    hairStyle: bob
+    hair: '#241812'
+    hairStyle: long
   goals:
     - 접종 일정 안내
     - 이점 설명
@@ -1884,25 +1884,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 접종 일정
         - 보호자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -1910,18 +1910,18 @@
 - id: SCN-WOMENKIDS-00137
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 임신성 당뇨 교육 · Mr. Chen
+  title: 임신성 당뇨 교육 · Ms. O'Brien
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Chen
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 혈당 관리 교육
     - 식이 안내
@@ -1963,18 +1963,18 @@
 - id: SCN-WOMENKIDS-00138
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 모유수유 외래 상담 · Mrs. Kelly
+  title: 모유수유 외래 상담 · Ms. O'Brien
   tagline: It hurts when he feeds.
   persona:
-    name: Mrs. Kelly
+    name: Ms. O'Brien
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -1990,25 +1990,25 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2016,18 +2016,18 @@
 - id: SCN-WOMENKIDS-00139
   profession: ""
   eventId: EVT-WOMENKIDS-00103
-  title: 청소년 건강 상담 · Mr. Okafor
+  title: 청소년 건강 상담 · Ms. O'Brien
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Okafor
+    name: Ms. O'Brien
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 신뢰 형성
     - 비밀보장 안내
@@ -2043,25 +2043,25 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2069,17 +2069,17 @@
 - id: SCN-WOMENKIDS-00140
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 외래 진료 인계 · RN Marcus
+  title: 외래 진료 인계 · Dr. Novak
   tagline: Passing the clinic list.
   persona:
-    name: RN Marcus
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 대기·특이사항 인계
@@ -2122,17 +2122,17 @@
 - id: SCN-WOMENKIDS-00141
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 산전 진료 상담 · Mr. Patel
+  title: 산전 진료 상담 · Mr. Dubois
   tagline: Is everything normal with the baby?
   persona:
-    name: Mr. Patel
+    name: Mr. Dubois
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 경과 설명
@@ -2175,18 +2175,18 @@
 - id: SCN-WOMENKIDS-00142
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 산후 우울 선별 · Mrs. Rossi
+  title: 산후 우울 선별 · Mr. Dubois
   tagline: I just don't feel like myself.
   persona:
-    name: Mrs. Rossi
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 기분 변화 선별
     - 지지·연계
@@ -2228,17 +2228,17 @@
 - id: SCN-WOMENKIDS-00143
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 여성 건강 검진 안내 · Mr. Johnson
+  title: 여성 건강 검진 안내 · Mr. Dubois
   tagline: I'm nervous about the exam.
   persona:
-    name: Mr. Johnson
+    name: Mr. Dubois
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 절차 설명
@@ -2281,18 +2281,18 @@
 - id: SCN-WOMENKIDS-00144
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 피임 상담 · Ms. Bauer
+  title: 피임 상담 · Mr. Dubois
   tagline: What are my options?
   persona:
-    name: Ms. Bauer
+    name: Mr. Dubois
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -2334,17 +2334,17 @@
 - id: SCN-WOMENKIDS-00145
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 소아 성장발달 상담 · Mr. Novak
+  title: 소아 성장발달 상담 · Mr. Fischer
   tagline: Is she growing normally?
   persona:
-    name: Mr. Novak
+    name: Mr. Fischer
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
     sub: Father
-    hair: '#3B2A1A'
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 성장발달 설명
@@ -2361,25 +2361,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 성장발달
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2387,18 +2387,18 @@
 - id: SCN-WOMENKIDS-00146
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 소아 접종 일정 안내 · Mrs. Coleman
+  title: 소아 접종 일정 안내 · Mr. Fischer
   tagline: Which shots are due today?
   persona:
-    name: Mrs. Coleman
+    name: Mr. Fischer
     role: parent
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
+    sub: Father
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 접종 일정 안내
     - 이점 설명
@@ -2440,17 +2440,17 @@
 - id: SCN-WOMENKIDS-00147
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 임신성 당뇨 교육 · Mr. Larsson
+  title: 임신성 당뇨 교육 · Mr. Dubois
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Larsson
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 혈당 관리 교육
@@ -2493,18 +2493,18 @@
 - id: SCN-WOMENKIDS-00148
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 모유수유 외래 상담 · Ms. Park
+  title: 모유수유 외래 상담 · Mr. Dubois
   tagline: It hurts when he feeds.
   persona:
-    name: Ms. Park
+    name: Mr. Dubois
     role: patient
-    ageRange: 20s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -2520,25 +2520,25 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2546,17 +2546,17 @@
 - id: SCN-WOMENKIDS-00149
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 청소년 건강 상담 · Mr. Thompson
+  title: 청소년 건강 상담 · Mr. Dubois
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Thompson
+    name: Mr. Dubois
     role: patient
     ageRange: 60s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: shy
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 신뢰 형성
@@ -2573,25 +2573,25 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2599,18 +2599,18 @@
 - id: SCN-WOMENKIDS-00150
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 외래 진료 인계 · Dr. Lee
+  title: 외래 진료 인계 · RN Sofia
   tagline: Passing the clinic list.
   persona:
-    name: Dr. Lee
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 대기·특이사항 인계
     - 우선순위 공유
@@ -2652,18 +2652,18 @@
 - id: SCN-WOMENKIDS-00151
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 산전 진료 상담 · Mr. Yamamoto
+  title: 산전 진료 상담 · Mrs. Santos
   tagline: Is everything normal with the baby?
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Santos
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 경과 설명
     - 우려 청취
@@ -2705,18 +2705,18 @@
 - id: SCN-WOMENKIDS-00152
   profession: ""
   eventId: EVT-WOMENKIDS-00104
-  title: 산후 우울 선별 · Ms. O'Brien
+  title: 산후 우울 선별 · Mrs. Santos
   tagline: I just don't feel like myself.
   persona:
-    name: Ms. O'Brien
+    name: Mrs. Santos
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: anxious
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 기분 변화 선별
     - 지지·연계
@@ -2732,25 +2732,25 @@
     dept: W&K · CLINIC 2
     deptColor: '#EC4899'
     brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 산후 우울 선별
         - 공감
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2758,18 +2758,18 @@
 - id: SCN-WOMENKIDS-00153
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 여성 건강 검진 안내 · Mr. Dubois
+  title: 여성 건강 검진 안내 · Mrs. Santos
   tagline: I'm nervous about the exam.
   persona:
-    name: Mr. Dubois
+    name: Mrs. Santos
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 절차 설명
     - 불안 완화
@@ -2785,25 +2785,25 @@
     dept: W&K · CLINIC 3
     deptColor: '#EC4899'
     brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 검진 설명
         - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2864,18 +2864,18 @@
 - id: SCN-WOMENKIDS-00155
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 소아 성장발달 상담 · Mr. Delgado
+  title: 소아 성장발달 상담 · Mrs. Aoki
   tagline: Is she growing normally?
   persona:
-    name: Mr. Delgado
+    name: Mrs. Aoki
     role: parent
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Mother
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 성장발달 설명
     - 보호자 안심
@@ -2891,25 +2891,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 성장발달
         - 보호자 상담
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2917,18 +2917,18 @@
 - id: SCN-WOMENKIDS-00156
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 소아 접종 일정 안내 · Mrs. Bello
+  title: 소아 접종 일정 안내 · Mrs. Aoki
   tagline: Which shots are due today?
   persona:
-    name: Mrs. Bello
+    name: Mrs. Aoki
     role: parent
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
     sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
+    hair: '#141414'
+    hairStyle: bob
   goals:
     - 접종 일정 안내
     - 이점 설명
@@ -2944,25 +2944,25 @@
     dept: W&K · PEDS CLINIC
     deptColor: '#EC4899'
     brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 접종 일정
         - 보호자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -2970,18 +2970,18 @@
 - id: SCN-WOMENKIDS-00157
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 임신성 당뇨 교육 · Mr. Reyes
+  title: 임신성 당뇨 교육 · Mrs. Santos
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Reyes
+    name: Mrs. Santos
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 혈당 관리 교육
     - 식이 안내
@@ -3023,18 +3023,18 @@
 - id: SCN-WOMENKIDS-00158
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 모유수유 외래 상담 · Mr. Robinson
+  title: 모유수유 외래 상담 · Mrs. Santos
   tagline: It hurts when he feeds.
   persona:
-    name: Mr. Robinson
+    name: Mrs. Santos
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -3050,25 +3050,25 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -3076,17 +3076,17 @@
 - id: SCN-WOMENKIDS-00159
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 청소년 건강 상담 · Mrs. Hopkins
+  title: 청소년 건강 상담 · Mrs. Santos
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mrs. Hopkins
+    name: Mrs. Santos
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: anxious
-    sub: 67y / Female
-    hair: '#9A6B3F'
+    sub: 74y / Female
+    hair: '#A0A0A0'
     hairStyle: bob
   goals:
     - 신뢰 형성
@@ -3103,25 +3103,25 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
@@ -3129,17 +3129,17 @@
 - id: SCN-WOMENKIDS-00160
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 외래 진료 인계 · Dr. Novak
+  title: 외래 진료 인계 · Dr. Ahmed
   tagline: Passing the clinic list.
   persona:
-    name: Dr. Novak
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 대기·특이사항 인계
@@ -3182,17 +3182,17 @@
 - id: SCN-WOMENKIDS-00161
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 산전 진료 상담 · Mr. Chen
+  title: 산전 진료 상담 · Mr. Wagner
   tagline: Is everything normal with the baby?
   persona:
-    name: Mr. Chen
+    name: Mr. Wagner
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 경과 설명
@@ -3235,18 +3235,18 @@
 - id: SCN-WOMENKIDS-00162
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 산후 우울 선별 · Mrs. Kelly
+  title: 산후 우울 선별 · Mr. Wagner
   tagline: I just don't feel like myself.
   persona:
-    name: Mrs. Kelly
+    name: Mr. Wagner
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 기분 변화 선별
     - 지지·연계
@@ -3262,64 +3262,11 @@
     dept: W&K · CLINIC 2
     deptColor: '#EC4899'
     brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 산후 우울 선별
         - 공감
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00163
-  profession: ""
-  eventId: EVT-WOMENKIDS-00105
-  title: 여성 건강 검진 안내 · Mr. Okafor
-  tagline: I'm nervous about the exam.
-  persona:
-    name: Mr. Okafor
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 절차 설명
-    - 불안 완화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll explain each step.
-    - You can stop anytime.
-    - Your comfort matters.
-  steps: []
-  briefing:
-    dept: W&K · CLINIC 3
-    deptColor: '#EC4899'
-    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 검진 설명
-        - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3338,21 +3285,74 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00164
+- id: SCN-WOMENKIDS-00163
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 피임 상담 · Ms. Nguyen
-  tagline: What are my options?
+  title: 여성 건강 검진 안내 · Mr. Wagner
+  tagline: I'm nervous about the exam.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Wagner
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
+  goals:
+    - 절차 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 3
+    deptColor: '#EC4899'
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 검진 설명
+        - 프라이버시
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00164
+  profession: ""
+  eventId: EVT-WOMENKIDS-00105
+  title: 피임 상담 · Mr. Wagner
+  tagline: What are my options?
+  persona:
+    name: Mr. Wagner
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -3394,123 +3394,17 @@
 - id: SCN-WOMENKIDS-00165
   profession: ""
   eventId: EVT-WOMENKIDS-00105
-  title: 소아 성장발달 상담 · Mr. Fischer
-  tagline: Is she growing normally?
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 성장발달 설명
-    - 보호자 안심
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - She's on her growth curve.
-    - These milestones look great.
-    - Every child develops at their pace.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 성장발달
-        - 보호자 상담
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00166
-  profession: ""
-  eventId: EVT-WOMENKIDS-00106
-  title: 소아 접종 일정 안내 · Mrs. Aoki
-  tagline: Which shots are due today?
-  persona:
-    name: Mrs. Aoki
-    role: parent
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: panic
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
-  goals:
-    - 접종 일정 안내
-    - 이점 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today she's due for two.
-    - They protect against serious illness.
-    - A little fever after is normal.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 접종 일정
-        - 보호자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00167
-  profession: ""
-  eventId: EVT-WOMENKIDS-00106
-  title: 임신성 당뇨 교육 · Mr. Johnson
+  title: 임신성 당뇨 교육 · Mr. Wagner
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Johnson
+    name: Mr. Wagner
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 혈당 관리 교육
@@ -3550,21 +3444,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00168
+- id: SCN-WOMENKIDS-00166
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 모유수유 외래 상담 · Ms. Bauer
+  title: 모유수유 외래 상담 · Mr. Wagner
   tagline: It hurts when he feeds.
   persona:
-    name: Ms. Bauer
+    name: Mr. Wagner
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -3580,43 +3474,43 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00169
+- id: SCN-WOMENKIDS-00167
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 청소년 건강 상담 · Mr. Silva
+  title: 청소년 건강 상담 · Mr. Wagner
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Silva
+    name: Mr. Wagner
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: shy
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 신뢰 형성
@@ -3633,44 +3527,44 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00170
+- id: SCN-WOMENKIDS-00168
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 외래 진료 인계 · Dr. Ahmed
+  title: 외래 진료 인계 · Pharmacist Cho
   tagline: Passing the clinic list.
   persona:
-    name: Dr. Ahmed
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 대기·특이사항 인계
     - 우선순위 공유
@@ -3709,21 +3603,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00171
+- id: SCN-WOMENKIDS-00169
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 산전 진료 상담 · Mr. Larsson
+  title: 산전 진료 상담 · Ms. Ivanova
   tagline: Is everything normal with the baby?
   persona:
-    name: Mr. Larsson
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 경과 설명
     - 우려 청취
@@ -3762,20 +3656,20 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00172
+- id: SCN-WOMENKIDS-00170
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 산후 우울 선별 · Ms. Park
+  title: 산후 우울 선별 · Ms. Ivanova
   tagline: I just don't feel like myself.
   persona:
-    name: Ms. Park
+    name: Ms. Ivanova
     role: patient
-    ageRange: 20s
+    ageRange: 30s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: anxious
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 31y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 기분 변화 선별
@@ -3815,21 +3709,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00173
+- id: SCN-WOMENKIDS-00171
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 여성 건강 검진 안내 · Mr. Thompson
+  title: 여성 건강 검진 안내 · Ms. Ivanova
   tagline: I'm nervous about the exam.
   persona:
-    name: Mr. Thompson
+    name: Ms. Ivanova
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 절차 설명
     - 불안 완화
@@ -3868,21 +3762,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00174
+- id: SCN-WOMENKIDS-00172
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 피임 상담 · Mrs. Haddad
+  title: 피임 상담 · Ms. Ivanova
   tagline: What are my options?
   persona:
-    name: Mrs. Haddad
+    name: Ms. Ivanova
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -3921,127 +3815,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00175
+- id: SCN-WOMENKIDS-00173
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 소아 성장발달 상담 · Mr. Novak
-  tagline: Is she growing normally?
-  persona:
-    name: Mr. Novak
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Father
-    hair: '#3B2A1A'
-    hairStyle: short
-  goals:
-    - 성장발달 설명
-    - 보호자 안심
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - She's on her growth curve.
-    - These milestones look great.
-    - Every child develops at their pace.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 성장발달
-        - 보호자 상담
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00176
-  profession: ""
-  eventId: EVT-WOMENKIDS-00106
-  title: 소아 접종 일정 안내 · Mrs. Coleman
-  tagline: Which shots are due today?
-  persona:
-    name: Mrs. Coleman
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: Mother
-    hair: '#241812'
-    hairStyle: long
-  goals:
-    - 접종 일정 안내
-    - 이점 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today she's due for two.
-    - They protect against serious illness.
-    - A little fever after is normal.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 접종 일정
-        - 보호자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00177
-  profession: ""
-  eventId: EVT-WOMENKIDS-00106
-  title: 임신성 당뇨 교육 · Mr. Dubois
+  title: 임신성 당뇨 교육 · Ms. Ivanova
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Dubois
+    name: Ms. Ivanova
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 혈당 관리 교육
     - 식이 안내
@@ -4080,21 +3868,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00178
+- id: SCN-WOMENKIDS-00174
   profession: ""
   eventId: EVT-WOMENKIDS-00106
-  title: 모유수유 외래 상담 · Mrs. Santos
+  title: 모유수유 외래 상담 · Ms. Ivanova
   tagline: It hurts when he feeds.
   persona:
-    name: Mrs. Santos
+    name: Ms. Ivanova
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -4110,44 +3898,44 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00179
+- id: SCN-WOMENKIDS-00175
   profession: ""
-  eventId: EVT-WOMENKIDS-00107
-  title: 청소년 건강 상담 · Mr. Wagner
+  eventId: EVT-WOMENKIDS-00106
+  title: 청소년 건강 상담 · Ms. Ivanova
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Wagner
+    name: Ms. Ivanova
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: anxious
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 신뢰 형성
     - 비밀보장 안내
@@ -4163,32 +3951,32 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00180
+- id: SCN-WOMENKIDS-00176
   profession: ""
-  eventId: EVT-WOMENKIDS-00107
+  eventId: EVT-WOMENKIDS-00106
   title: 외래 진료 인계 · RN Marcus
   tagline: Passing the clinic list.
   persona:
@@ -4239,9 +4027,9 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00181
+- id: SCN-WOMENKIDS-00177
   profession: ""
-  eventId: EVT-WOMENKIDS-00107
+  eventId: EVT-WOMENKIDS-00106
   title: 산전 진료 상담 · Mr. Reyes
   tagline: Is everything normal with the baby?
   persona:
@@ -4292,20 +4080,20 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00182
+- id: SCN-WOMENKIDS-00178
   profession: ""
-  eventId: EVT-WOMENKIDS-00107
-  title: 산후 우울 선별 · Mr. Robinson
+  eventId: EVT-WOMENKIDS-00106
+  title: 산후 우울 선별 · Mr. Reyes
   tagline: I just don't feel like myself.
   persona:
-    name: Mr. Robinson
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 기분 변화 선별
@@ -4322,11 +4110,64 @@
     dept: W&K · CLINIC 2
     deptColor: '#EC4899'
     brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 산후 우울 선별
         - 공감
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00179
+  profession: ""
+  eventId: EVT-WOMENKIDS-00107
+  title: 여성 건강 검진 안내 · Mr. Reyes
+  tagline: I'm nervous about the exam.
+  persona:
+    name: Mr. Reyes
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 절차 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 3
+    deptColor: '#EC4899'
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 검진 설명
+        - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4345,74 +4186,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00183
+- id: SCN-WOMENKIDS-00180
   profession: ""
   eventId: EVT-WOMENKIDS-00107
-  title: 여성 건강 검진 안내 · Mrs. Hopkins
-  tagline: I'm nervous about the exam.
-  persona:
-    name: Mrs. Hopkins
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
-  goals:
-    - 절차 설명
-    - 불안 완화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll explain each step.
-    - You can stop anytime.
-    - Your comfort matters.
-  steps: []
-  briefing:
-    dept: W&K · CLINIC 3
-    deptColor: '#EC4899'
-    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 검진 설명
-        - 프라이버시
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00184
-  profession: ""
-  eventId: EVT-WOMENKIDS-00107
-  title: 피임 상담 · Ms. Alvarez
+  title: 피임 상담 · Mr. Reyes
   tagline: What are my options?
   persona:
-    name: Ms. Alvarez
+    name: Mr. Reyes
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -4451,126 +4239,20 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00185
+- id: SCN-WOMENKIDS-00181
   profession: ""
   eventId: EVT-WOMENKIDS-00107
-  title: 소아 성장발달 상담 · Mr. Delgado
-  tagline: Is she growing normally?
-  persona:
-    name: Mr. Delgado
-    role: parent
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Father
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 성장발달 설명
-    - 보호자 안심
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - She's on her growth curve.
-    - These milestones look great.
-    - Every child develops at their pace.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 성장발달
-        - 보호자 상담
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00186
-  profession: ""
-  eventId: EVT-WOMENKIDS-00107
-  title: 소아 접종 일정 안내 · Mrs. Bello
-  tagline: Which shots are due today?
-  persona:
-    name: Mrs. Bello
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: Mother
-    hair: '#0F0F0F'
-    hairStyle: long
-  goals:
-    - 접종 일정 안내
-    - 이점 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today she's due for two.
-    - They protect against serious illness.
-    - A little fever after is normal.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 접종 일정
-        - 보호자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00187
-  profession: ""
-  eventId: EVT-WOMENKIDS-00107
-  title: 임신성 당뇨 교육 · Mr. Okafor
+  title: 임신성 당뇨 교육 · Mr. Reyes
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Okafor
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 혈당 관리 교육
@@ -4610,21 +4292,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00188
+- id: SCN-WOMENKIDS-00182
   profession: ""
   eventId: EVT-WOMENKIDS-00107
-  title: 모유수유 외래 상담 · Ms. Nguyen
+  title: 모유수유 외래 상담 · Mr. Reyes
   tagline: It hurts when he feeds.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Reyes
     role: patient
-    ageRange: 20s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 통증 원인 사정
     - 자세·젖물림 교정
@@ -4640,43 +4322,43 @@
     dept: W&K · LACTATION
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 모유수유 상담
         - 자세 교정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00189
+- id: SCN-WOMENKIDS-00183
   profession: ""
   eventId: EVT-WOMENKIDS-00107
-  title: 청소년 건강 상담 · Mr. Patel
+  title: 청소년 건강 상담 · Mr. Reyes
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Patel
+    name: Mr. Reyes
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
     mood: shy
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 신뢰 형성
@@ -4693,96 +4375,43 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 청소년 상담
         - 비밀보장
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00190
+- id: SCN-WOMENKIDS-00184
   profession: ""
   eventId: EVT-WOMENKIDS-00107
-  title: 외래 진료 인계 · Dr. Lee
-  tagline: Passing the clinic list.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 대기·특이사항 인계
-    - 우선순위 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Three prenatal, two peds waiting.
-    - Room 2 needs a follow-up call.
-    - Lab results pending for room 1.
-  steps: []
-  briefing:
-    dept: W&K · STATION
-    deptColor: '#EC4899'
-    brief: 외래 교대 시 대기 환자와 특이사항을 인계하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 외래 인계
-        - 우선순위
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00191
-  profession: ""
-  eventId: EVT-WOMENKIDS-00107
-  title: 산전 진료 상담 · Mr. Johnson
+  title: 산전 진료 상담 · Mr. Robinson
   tagline: Is everything normal with the baby?
   persona:
-    name: Mr. Johnson
+    name: Mr. Robinson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 경과 설명
@@ -4822,21 +4451,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00192
+- id: SCN-WOMENKIDS-00185
   profession: ""
-  eventId: EVT-WOMENKIDS-00108
-  title: 산후 우울 선별 · Ms. Bauer
+  eventId: EVT-WOMENKIDS-00107
+  title: 산후 우울 선별 · Mr. Robinson
   tagline: I just don't feel like myself.
   persona:
-    name: Ms. Bauer
+    name: Mr. Robinson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 기분 변화 선별
     - 지지·연계
@@ -4852,64 +4481,11 @@
     dept: W&K · CLINIC 2
     deptColor: '#EC4899'
     brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 산후 우울 선별
         - 공감
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00193
-  profession: ""
-  eventId: EVT-WOMENKIDS-00108
-  title: 여성 건강 검진 안내 · Mr. Silva
-  tagline: I'm nervous about the exam.
-  persona:
-    name: Mr. Silva
-    role: patient
-    ageRange: 70s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
-  goals:
-    - 절차 설명
-    - 불안 완화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll explain each step.
-    - You can stop anytime.
-    - Your comfort matters.
-  steps: []
-  briefing:
-    dept: W&K · CLINIC 3
-    deptColor: '#EC4899'
-    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 검진 설명
-        - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4928,21 +4504,74 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00194
+- id: SCN-WOMENKIDS-00186
   profession: ""
-  eventId: EVT-WOMENKIDS-00108
-  title: 피임 상담 · Mrs. Adeyemi
-  tagline: What are my options?
+  eventId: EVT-WOMENKIDS-00107
+  title: 여성 건강 검진 안내 · Mr. Robinson
+  tagline: I'm nervous about the exam.
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Robinson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 절차 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 3
+    deptColor: '#EC4899'
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 검진 설명
+        - 프라이버시
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00187
+  profession: ""
+  eventId: EVT-WOMENKIDS-00107
+  title: 피임 상담 · Mr. Robinson
+  tagline: What are my options?
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
   goals:
     - 옵션 정보 제공
     - 선택 지지
@@ -4981,126 +4610,20 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00195
+- id: SCN-WOMENKIDS-00188
   profession: ""
-  eventId: EVT-WOMENKIDS-00108
-  title: 소아 성장발달 상담 · Mr. Fischer
-  tagline: Is she growing normally?
-  persona:
-    name: Mr. Fischer
-    role: parent
-    ageRange: 30s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Father
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 성장발달 설명
-    - 보호자 안심
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - She's on her growth curve.
-    - These milestones look great.
-    - Every child develops at their pace.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 성장발달 지표를 보호자에게 설명하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 성장발달
-        - 보호자 상담
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00196
-  profession: ""
-  eventId: EVT-WOMENKIDS-00108
-  title: 소아 접종 일정 안내 · Mrs. Aoki
-  tagline: Which shots are due today?
-  persona:
-    name: Mrs. Aoki
-    role: parent
-    ageRange: 20s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: Mother
-    hair: '#141414'
-    hairStyle: bob
-  goals:
-    - 접종 일정 안내
-    - 이점 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today she's due for two.
-    - They protect against serious illness.
-    - A little fever after is normal.
-  steps: []
-  briefing:
-    dept: W&K · PEDS CLINIC
-    deptColor: '#EC4899'
-    brief: 소아 예방접종 일정과 이점을 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 접종 일정
-        - 보호자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FCE7F3'
-    accent: '#BE185D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-WOMENKIDS-00197
-  profession: ""
-  eventId: EVT-WOMENKIDS-00108
-  title: 임신성 당뇨 교육 · Mr. Thompson
+  eventId: EVT-WOMENKIDS-00107
+  title: 임신성 당뇨 교육 · Mr. Robinson
   tagline: I have to check my sugar now?
   persona:
-    name: Mr. Thompson
+    name: Mr. Robinson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 58y / Male
+    hair: '#4A4A4A'
     hairStyle: short
   goals:
     - 혈당 관리 교육
@@ -5140,20 +4663,391 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00198
+- id: SCN-WOMENKIDS-00189
   profession: ""
-  eventId: EVT-WOMENKIDS-00108
-  title: 모유수유 외래 상담 · Mrs. Haddad
+  eventId: EVT-WOMENKIDS-00107
+  title: 모유수유 외래 상담 · Mr. Robinson
   tagline: It hurts when he feeds.
   persona:
-    name: Mrs. Haddad
+    name: Mr. Robinson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 33y / Female
-    hair: '#241812'
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 통증 원인 사정
+    - 자세·젖물림 교정
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's check his latch.
+    - A deep latch reduces pain.
+    - You're doing well.
+  steps: []
+  briefing:
+    dept: W&K · LACTATION
+    deptColor: '#EC4899'
+    brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 모유수유 상담
+        - 자세 교정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00190
+  profession: ""
+  eventId: EVT-WOMENKIDS-00107
+  title: 청소년 건강 상담 · Mr. Robinson
+  tagline: (청소년이 부모 없이 상담을 원함)
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 낯을 가리며 조심스러움.
+    speakingStyle: 짧게 대답함.
+    mood: anxious
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 신뢰 형성
+    - 비밀보장 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - What we discuss is confidential.
+    - You can be honest with me.
+    - I'm here to help, not judge.
+  steps: []
+  briefing:
+    dept: W&K · TEEN CLINIC
+    deptColor: '#EC4899'
+    brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 청소년 상담
+        - 비밀보장
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00191
+  profession: ""
+  eventId: EVT-WOMENKIDS-00107
+  title: 산전 진료 상담 · Mrs. Hopkins
+  tagline: Is everything normal with the baby?
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 경과 설명
+    - 우려 청취
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your measurements look on track.
+    - Let's hear the heartbeat.
+    - Any concerns since last visit?
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 1
+    deptColor: '#EC4899'
+    brief: 산전 정기 진료에서 산모의 우려를 청취하고 안내하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 산전 상담
+        - 안심
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00192
+  profession: ""
+  eventId: EVT-WOMENKIDS-00108
+  title: 산후 우울 선별 · Mrs. Hopkins
+  tagline: I just don't feel like myself.
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: sad
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 기분 변화 선별
+    - 지지·연계
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Many new mothers feel this way.
+    - You're not alone.
+    - Let's talk about getting support.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 2
+    deptColor: '#EC4899'
+    brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
+    difficulty: 3
+    timeLabel: 약 9분
+    skills:
+        - 산후 우울 선별
+        - 공감
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00193
+  profession: ""
+  eventId: EVT-WOMENKIDS-00108
+  title: 여성 건강 검진 안내 · Mrs. Hopkins
+  tagline: I'm nervous about the exam.
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 절차 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 3
+    deptColor: '#EC4899'
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 1
+    timeLabel: 약 5분
+    skills:
+        - 검진 설명
+        - 프라이버시
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00194
+  profession: ""
+  eventId: EVT-WOMENKIDS-00108
+  title: 피임 상담 · Mrs. Hopkins
+  tagline: What are my options?
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 옵션 정보 제공
+    - 선택 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - There are several safe options.
+    - Let's find what fits your life.
+    - No pressure — it's your choice.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 1
+    deptColor: '#EC4899'
+    brief: 피임 방법의 선택지를 비판단적으로 상담하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 피임 상담
+        - 정보 제공
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00195
+  profession: ""
+  eventId: EVT-WOMENKIDS-00108
+  title: 임신성 당뇨 교육 · Mrs. Hopkins
+  tagline: I have to check my sugar now?
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
+  goals:
+    - 혈당 관리 교육
+    - 식이 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Check your sugar after meals.
+    - Balanced meals help a lot.
+    - It usually resolves after birth.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 2
+    deptColor: '#EC4899'
+    brief: 임신성 당뇨 산모에게 혈당 관리와 식이를 교육하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 임신성 당뇨
+        - 혈당 관리
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00196
+  profession: ""
+  eventId: EVT-WOMENKIDS-00108
+  title: 모유수유 외래 상담 · Mrs. Hopkins
+  tagline: It hurts when he feeds.
+  persona:
+    name: Mrs. Hopkins
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 67y / Female
+    hair: '#9A6B3F'
     hairStyle: bob
   goals:
     - 통증 원인 사정
@@ -5171,7 +5065,7 @@
     deptColor: '#EC4899'
     brief: 수유 통증을 사정하고 자세·젖물림을 교정하세요.
     difficulty: 2
-    timeLabel: 약 7분
+    timeLabel: 약 8분
     skills:
         - 모유수유 상담
         - 자세 교정
@@ -5193,21 +5087,21 @@
     accent: '#BE185D'
     chart: null
     riskyPhrases: []
-- id: SCN-WOMENKIDS-00199
+- id: SCN-WOMENKIDS-00197
   profession: ""
   eventId: EVT-WOMENKIDS-00108
-  title: 청소년 건강 상담 · Mr. Yamamoto
+  title: 청소년 건강 상담 · Mrs. Hopkins
   tagline: (청소년이 부모 없이 상담을 원함)
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Hopkins
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 낯을 가리며 조심스러움.
     speakingStyle: 짧게 대답함.
-    mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    mood: shy
+    sub: 67y / Female
+    hair: '#9A6B3F'
+    hairStyle: bob
   goals:
     - 신뢰 형성
     - 비밀보장 안내
@@ -5223,11 +5117,117 @@
     dept: W&K · TEEN CLINIC
     deptColor: '#EC4899'
     brief: 청소년의 비밀보장을 존중하며 건강 상담을 진행하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 청소년 상담
         - 비밀보장
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00198
+  profession: ""
+  eventId: EVT-WOMENKIDS-00108
+  title: 산전 진료 상담 · Ms. Alvarez
+  tagline: Is everything normal with the baby?
+  persona:
+    name: Ms. Alvarez
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 경과 설명
+    - 우려 청취
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your measurements look on track.
+    - Let's hear the heartbeat.
+    - Any concerns since last visit?
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 1
+    deptColor: '#EC4899'
+    brief: 산전 정기 진료에서 산모의 우려를 청취하고 안내하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 산전 상담
+        - 안심
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#FCE7F3'
+    accent: '#BE185D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-WOMENKIDS-00199
+  profession: ""
+  eventId: EVT-WOMENKIDS-00108
+  title: 산후 우울 선별 · Ms. Alvarez
+  tagline: I just don't feel like myself.
+  persona:
+    name: Ms. Alvarez
+    role: patient
+    ageRange: 30s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: anxious
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 기분 변화 선별
+    - 지지·연계
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Many new mothers feel this way.
+    - You're not alone.
+    - Let's talk about getting support.
+  steps: []
+  briefing:
+    dept: W&K · CLINIC 2
+    deptColor: '#EC4899'
+    brief: 산후 산모의 기분 변화를 민감하게 선별하고 지지하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 산후 우울 선별
+        - 공감
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5249,52 +5249,52 @@
 - id: SCN-WOMENKIDS-00200
   profession: ""
   eventId: EVT-WOMENKIDS-00108
-  title: 외래 진료 인계 · Dr. Novak
-  tagline: Passing the clinic list.
+  title: 여성 건강 검진 안내 · Ms. Alvarez
+  tagline: I'm nervous about the exam.
   persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    name: Ms. Alvarez
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 34y / Female
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
-    - 대기·특이사항 인계
-    - 우선순위 공유
+    - 절차 설명
+    - 불안 완화
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Three prenatal, two peds waiting.
-    - Room 2 needs a follow-up call.
-    - Lab results pending for room 1.
+    - I'll explain each step.
+    - You can stop anytime.
+    - Your comfort matters.
   steps: []
   briefing:
-    dept: W&K · STATION
+    dept: W&K · CLINIC 3
     deptColor: '#EC4899'
-    brief: 외래 교대 시 대기 환자와 특이사항을 인계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    brief: 부인과 검진 절차를 설명하고 불안을 낮추세요.
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
-        - 외래 인계
-        - 우선순위
+        - 검진 설명
+        - 프라이버시
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FCE7F3'
     accent: '#BE185D'
     chart: null

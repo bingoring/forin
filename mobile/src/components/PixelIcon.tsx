@@ -433,9 +433,20 @@ function body(name: IconName, color: string): ReactNode {
   }
 }
 
-export function PixelIcon({ name, color, size = 22, sw = 1.8 }: { name: IconName; color: string; size?: number; sw?: number }) {
+/**
+ * `fill` exists for icons that carry a STATE rather than a label.
+ *
+ * A favourite star drawn as an outline in one colour and an outline in another colour is
+ * a distinction of a couple of pixels at 17px — the on state was reported as "the star
+ * does not change", and it was changing. Filled versus hollow is the difference you can
+ * see across a list without looking for it. Defaults to none, so every existing icon is
+ * untouched; the Svg's fill is inherited by the paths below.
+ */
+export function PixelIcon({ name, color, size = 22, sw = 1.8, fill = 'none' }: {
+  name: IconName; color: string; size?: number; sw?: number; fill?: string;
+}) {
   return (
-    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
       {body(name, color)}
     </Svg>
   );

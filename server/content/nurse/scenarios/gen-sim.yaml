@@ -55,18 +55,18 @@
 - id: SCN-SIM-00102
   profession: ""
   eventId: EVT-SIM-00101
-  title: 술기 피드백 · Pharmacist Cho
+  title: 술기 피드백 · Dr. Ahmed
   tagline: Did I place the IV correctly?
   persona:
-    name: Pharmacist Cho
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 구체적 피드백
     - 재시도 격려
@@ -108,17 +108,17 @@
 - id: SCN-SIM-00103
   profession: ""
   eventId: EVT-SIM-00101
-  title: 팀 커뮤니케이션 훈련 · RN Marcus
+  title: 팀 커뮤니케이션 훈련 · Dr. Ahmed
   tagline: Nobody knew who was leading.
   persona:
-    name: RN Marcus
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 역할 명확화
@@ -135,25 +135,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 팀 소통
         - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -161,17 +161,17 @@
 - id: SCN-SIM-00104
   profession: ""
   eventId: EVT-SIM-00101
-  title: SBAR 연습 · Dr. Weber
+  title: SBAR 연습 · Dr. Ahmed
   tagline: Let me try the handoff again.
   persona:
-    name: Dr. Weber
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - SBAR 구조 연습
@@ -214,17 +214,17 @@
 - id: SCN-SIM-00105
   profession: ""
   eventId: EVT-SIM-00101
-  title: 위기 상황 역할극 · Dr. Lee
+  title: 위기 상황 역할극 · Dr. Ahmed
   tagline: The mannequin is crashing!
   persona:
-    name: Dr. Lee
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 우선순위 결정
@@ -241,64 +241,11 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 위기 시뮬레이션에서 우선순위와 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 위기 대응
         - 우선순위
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00106
-  profession: ""
-  eventId: EVT-SIM-00101
-  title: 학습 목표 브리핑 · Charge Nurse Kim
-  tagline: What are we practicing today?
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 학습 목표 명확화
-    - 심리적 안전
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today's focus is communication.
-    - This is a safe space to try.
-    - Mistakes are how we learn.
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 브리핑
-        - 목표 설정
     rewards:
         - icon: ⭐
           label: 경험치
@@ -317,20 +264,73 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00107
+- id: SCN-SIM-00106
   profession: ""
   eventId: EVT-SIM-00101
-  title: 신입 오리엔테이션 · Dr. Novak
-  tagline: I'm nervous about my first shift.
+  title: 학습 목표 브리핑 · Dr. Ahmed
+  tagline: What are we practicing today?
   persona:
-    name: Dr. Novak
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
+  goals:
+    - 학습 목표 명확화
+    - 심리적 안전
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Today's focus is communication.
+    - This is a safe space to try.
+    - Mistakes are how we learn.
+  steps: []
+  briefing:
+    dept: SIM · DEBRIEF
+    deptColor: '#4F46E5'
+    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 브리핑
+        - 목표 설정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00107
+  profession: ""
+  eventId: EVT-SIM-00101
+  title: 신입 오리엔테이션 · Dr. Ahmed
+  tagline: I'm nervous about my first shift.
+  persona:
+    name: Dr. Ahmed
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 오리엔테이션
@@ -373,18 +373,18 @@
 - id: SCN-SIM-00108
   profession: ""
   eventId: EVT-SIM-00101
-  title: 실수 보고 문화 교육 · RN Sofia
+  title: 실수 보고 문화 교육 · Dr. Ahmed
   tagline: I think I made a med error.
   persona:
-    name: RN Sofia
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 보고 격려
     - 시스템 개선 지향
@@ -400,25 +400,25 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 안전 문화
         - 오류 보고
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -453,25 +453,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 어려운 소통
         - SPIKES
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -479,18 +479,18 @@
 - id: SCN-SIM-00110
   profession: ""
   eventId: EVT-SIM-00101
-  title: 시뮬랩 세션 인계 · Pharmacist Cho
+  title: 시뮬랩 세션 인계 · Dr. Ahmed
   tagline: Handoff the lab schedule.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 일정·장비 인계
     - 준비 공유
@@ -532,18 +532,18 @@
 - id: SCN-SIM-00111
   profession: ""
   eventId: EVT-SIM-00101
-  title: 시뮬레이션 디브리핑 · RN Marcus
+  title: 시뮬레이션 디브리핑 · Pharmacist Cho
   tagline: I froze during the code.
   persona:
-    name: RN Marcus
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 성찰 촉진
     - 심리적 안전
@@ -585,18 +585,18 @@
 - id: SCN-SIM-00112
   profession: ""
   eventId: EVT-SIM-00101
-  title: 술기 피드백 · Dr. Weber
+  title: 술기 피드백 · Pharmacist Cho
   tagline: Did I place the IV correctly?
   persona:
-    name: Dr. Weber
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 구체적 피드백
     - 재시도 격려
@@ -612,64 +612,11 @@
     dept: SIM · SKILLS LAB
     deptColor: '#4F46E5'
     brief: 술기 연습 학습자에게 구체적 피드백을 주세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 술기 피드백
         - 코칭
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00113
-  profession: ""
-  eventId: EVT-SIM-00101
-  title: 팀 커뮤니케이션 훈련 · Dr. Lee
-  tagline: Nobody knew who was leading.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 역할 명확화
-    - 폐쇄루프 훈련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - State the leader clearly.
-    - Close the loop on every order.
-    - Call out what you see.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 팀 소통
-        - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
@@ -688,20 +635,73 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00114
+- id: SCN-SIM-00113
   profession: ""
-  eventId: EVT-SIM-00102
-  title: SBAR 연습 · Charge Nurse Kim
-  tagline: Let me try the handoff again.
+  eventId: EVT-SIM-00101
+  title: 팀 커뮤니케이션 훈련 · Pharmacist Cho
+  tagline: Nobody knew who was leading.
   persona:
-    name: Charge Nurse Kim
+    name: Pharmacist Cho
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
+  goals:
+    - 역할 명확화
+    - 폐쇄루프 훈련
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - State the leader clearly.
+    - Close the loop on every order.
+    - Call out what you see.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 팀 소통
+        - 폐쇄루프
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00114
+  profession: ""
+  eventId: EVT-SIM-00102
+  title: SBAR 연습 · Pharmacist Cho
+  tagline: Let me try the handoff again.
+  persona:
+    name: Pharmacist Cho
+    role: colleague
+    ageRange: 30s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: PharmD
+    hair: '#3B2A1A'
     hairStyle: bob
   goals:
     - SBAR 구조 연습
@@ -744,18 +744,18 @@
 - id: SCN-SIM-00115
   profession: ""
   eventId: EVT-SIM-00102
-  title: 위기 상황 역할극 · Dr. Novak
+  title: 위기 상황 역할극 · Pharmacist Cho
   tagline: The mannequin is crashing!
   persona:
-    name: Dr. Novak
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 우선순위 결정
     - 팀 소통
@@ -797,18 +797,18 @@
 - id: SCN-SIM-00116
   profession: ""
   eventId: EVT-SIM-00102
-  title: 학습 목표 브리핑 · RN Sofia
+  title: 학습 목표 브리핑 · Pharmacist Cho
   tagline: What are we practicing today?
   persona:
-    name: RN Sofia
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 20s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 학습 목표 명확화
     - 심리적 안전
@@ -850,18 +850,18 @@
 - id: SCN-SIM-00117
   profession: ""
   eventId: EVT-SIM-00102
-  title: 신입 오리엔테이션 · Dr. Ahmed
+  title: 신입 오리엔테이션 · Pharmacist Cho
   tagline: I'm nervous about my first shift.
   persona:
-    name: Dr. Ahmed
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 오리엔테이션
     - 정서 지지
@@ -930,64 +930,11 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 안전 문화
         - 오류 보고
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00119
-  profession: ""
-  eventId: EVT-SIM-00102
-  title: 의사소통 시나리오 코칭 · RN Marcus
-  tagline: How do I break bad news?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 단계별 소통 코칭
-    - 공감 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Set the setting first.
-    - Ask what they already know.
-    - Give a warning shot.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 어려운 소통
-        - SPIKES
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1006,21 +953,74 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00120
+- id: SCN-SIM-00119
   profession: ""
   eventId: EVT-SIM-00102
-  title: 시뮬랩 세션 인계 · Dr. Weber
-  tagline: Handoff the lab schedule.
+  title: 의사소통 시나리오 코칭 · Pharmacist Cho
+  tagline: How do I break bad news?
   persona:
-    name: Dr. Weber
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
+  goals:
+    - 단계별 소통 코칭
+    - 공감 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Set the setting first.
+    - Ask what they already know.
+    - Give a warning shot.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 어려운 소식 전달을 단계별로 코칭하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 어려운 소통
+        - SPIKES
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00120
+  profession: ""
+  eventId: EVT-SIM-00102
+  title: 시뮬랩 세션 인계 · Pharmacist Cho
+  tagline: Handoff the lab schedule.
+  persona:
+    name: Pharmacist Cho
+    role: colleague
+    ageRange: 30s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 일정·장비 인계
     - 준비 공유
@@ -1062,17 +1062,17 @@
 - id: SCN-SIM-00121
   profession: ""
   eventId: EVT-SIM-00102
-  title: 시뮬레이션 디브리핑 · Dr. Lee
+  title: 시뮬레이션 디브리핑 · RN Marcus
   tagline: I froze during the code.
   persona:
-    name: Dr. Lee
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 성찰 촉진
@@ -1115,18 +1115,18 @@
 - id: SCN-SIM-00122
   profession: ""
   eventId: EVT-SIM-00102
-  title: 술기 피드백 · Charge Nurse Kim
+  title: 술기 피드백 · RN Marcus
   tagline: Did I place the IV correctly?
   persona:
-    name: Charge Nurse Kim
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 구체적 피드백
     - 재시도 격려
@@ -1142,64 +1142,11 @@
     dept: SIM · SKILLS LAB
     deptColor: '#4F46E5'
     brief: 술기 연습 학습자에게 구체적 피드백을 주세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 술기 피드백
         - 코칭
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00123
-  profession: ""
-  eventId: EVT-SIM-00102
-  title: 팀 커뮤니케이션 훈련 · Dr. Novak
-  tagline: Nobody knew who was leading.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 역할 명확화
-    - 폐쇄루프 훈련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - State the leader clearly.
-    - Close the loop on every order.
-    - Call out what you see.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 팀 소통
-        - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1218,21 +1165,74 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00124
+- id: SCN-SIM-00123
   profession: ""
   eventId: EVT-SIM-00102
-  title: SBAR 연습 · RN Sofia
-  tagline: Let me try the handoff again.
+  title: 팀 커뮤니케이션 훈련 · RN Marcus
+  tagline: Nobody knew who was leading.
   persona:
-    name: RN Sofia
+    name: RN Marcus
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
+  goals:
+    - 역할 명확화
+    - 폐쇄루프 훈련
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - State the leader clearly.
+    - Close the loop on every order.
+    - Call out what you see.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 팀 소통
+        - 폐쇄루프
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00124
+  profession: ""
+  eventId: EVT-SIM-00102
+  title: SBAR 연습 · RN Marcus
+  tagline: Let me try the handoff again.
+  persona:
+    name: RN Marcus
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - SBAR 구조 연습
     - 명확성 개선
@@ -1274,17 +1274,17 @@
 - id: SCN-SIM-00125
   profession: ""
   eventId: EVT-SIM-00102
-  title: 위기 상황 역할극 · Dr. Ahmed
+  title: 위기 상황 역할극 · RN Marcus
   tagline: The mannequin is crashing!
   persona:
-    name: Dr. Ahmed
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 우선순위 결정
@@ -1301,25 +1301,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 위기 시뮬레이션에서 우선순위와 소통을 훈련하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 위기 대응
         - 우선순위
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -1327,18 +1327,18 @@
 - id: SCN-SIM-00126
   profession: ""
   eventId: EVT-SIM-00102
-  title: 학습 목표 브리핑 · Pharmacist Cho
+  title: 학습 목표 브리핑 · RN Marcus
   tagline: What are we practicing today?
   persona:
-    name: Pharmacist Cho
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 학습 목표 명확화
     - 심리적 안전
@@ -1354,25 +1354,25 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 브리핑
         - 목표 설정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -1433,17 +1433,17 @@
 - id: SCN-SIM-00128
   profession: ""
   eventId: EVT-SIM-00103
-  title: 실수 보고 문화 교육 · Dr. Weber
+  title: 실수 보고 문화 교육 · RN Marcus
   tagline: I think I made a med error.
   persona:
-    name: Dr. Weber
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 보고 격려
@@ -1460,25 +1460,25 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 안전 문화
         - 오류 보고
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -1486,17 +1486,17 @@
 - id: SCN-SIM-00129
   profession: ""
   eventId: EVT-SIM-00103
-  title: 의사소통 시나리오 코칭 · Dr. Lee
+  title: 의사소통 시나리오 코칭 · RN Marcus
   tagline: How do I break bad news?
   persona:
-    name: Dr. Lee
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 단계별 소통 코칭
@@ -1539,18 +1539,18 @@
 - id: SCN-SIM-00130
   profession: ""
   eventId: EVT-SIM-00103
-  title: 시뮬랩 세션 인계 · Charge Nurse Kim
+  title: 시뮬랩 세션 인계 · RN Marcus
   tagline: Handoff the lab schedule.
   persona:
-    name: Charge Nurse Kim
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 일정·장비 인계
     - 준비 공유
@@ -1592,17 +1592,17 @@
 - id: SCN-SIM-00131
   profession: ""
   eventId: EVT-SIM-00103
-  title: 시뮬레이션 디브리핑 · Dr. Novak
+  title: 시뮬레이션 디브리핑 · Dr. Weber
   tagline: I froze during the code.
   persona:
-    name: Dr. Novak
+    name: Dr. Weber
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 성찰 촉진
@@ -1645,18 +1645,18 @@
 - id: SCN-SIM-00132
   profession: ""
   eventId: EVT-SIM-00103
-  title: 술기 피드백 · RN Sofia
+  title: 술기 피드백 · Dr. Weber
   tagline: Did I place the IV correctly?
   persona:
-    name: RN Sofia
+    name: Dr. Weber
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 구체적 피드백
     - 재시도 격려
@@ -1698,17 +1698,17 @@
 - id: SCN-SIM-00133
   profession: ""
   eventId: EVT-SIM-00103
-  title: 팀 커뮤니케이션 훈련 · Dr. Ahmed
+  title: 팀 커뮤니케이션 훈련 · Dr. Weber
   tagline: Nobody knew who was leading.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 역할 명확화
@@ -1725,25 +1725,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 팀 소통
         - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -1751,18 +1751,18 @@
 - id: SCN-SIM-00134
   profession: ""
   eventId: EVT-SIM-00103
-  title: SBAR 연습 · Pharmacist Cho
+  title: SBAR 연습 · Dr. Weber
   tagline: Let me try the handoff again.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - SBAR 구조 연습
     - 명확성 개선
@@ -1804,17 +1804,17 @@
 - id: SCN-SIM-00135
   profession: ""
   eventId: EVT-SIM-00103
-  title: 위기 상황 역할극 · RN Marcus
+  title: 위기 상황 역할극 · Dr. Weber
   tagline: The mannequin is crashing!
   persona:
-    name: RN Marcus
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 우선순위 결정
@@ -1831,25 +1831,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 위기 시뮬레이션에서 우선순위와 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 위기 대응
         - 우선순위
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -1884,25 +1884,25 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 브리핑
         - 목표 설정
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -1910,17 +1910,17 @@
 - id: SCN-SIM-00137
   profession: ""
   eventId: EVT-SIM-00103
-  title: 신입 오리엔테이션 · Dr. Lee
+  title: 신입 오리엔테이션 · Dr. Weber
   tagline: I'm nervous about my first shift.
   persona:
-    name: Dr. Lee
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Attending
-    hair: '#1C1C1C'
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 오리엔테이션
@@ -1963,18 +1963,18 @@
 - id: SCN-SIM-00138
   profession: ""
   eventId: EVT-SIM-00103
-  title: 실수 보고 문화 교육 · Charge Nurse Kim
+  title: 실수 보고 문화 교육 · Dr. Weber
   tagline: I think I made a med error.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 보고 격려
     - 시스템 개선 지향
@@ -1990,11 +1990,64 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 안전 문화
         - 오류 보고
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00139
+  profession: ""
+  eventId: EVT-SIM-00103
+  title: 의사소통 시나리오 코칭 · Dr. Weber
+  tagline: How do I break bad news?
+  persona:
+    name: Dr. Weber
+    role: colleague
+    ageRange: 50s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 단계별 소통 코칭
+    - 공감 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Set the setting first.
+    - Ask what they already know.
+    - Give a warning shot.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 어려운 소식 전달을 단계별로 코칭하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 어려운 소통
+        - SPIKES
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2013,74 +2066,21 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00139
+- id: SCN-SIM-00140
   profession: ""
-  eventId: EVT-SIM-00103
-  title: 의사소통 시나리오 코칭 · Dr. Novak
-  tagline: How do I break bad news?
+  eventId: EVT-SIM-00104
+  title: 시뮬랩 세션 인계 · Dr. Weber
+  tagline: Handoff the lab schedule.
   persona:
-    name: Dr. Novak
+    name: Dr. Weber
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
-  goals:
-    - 단계별 소통 코칭
-    - 공감 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Set the setting first.
-    - Ask what they already know.
-    - Give a warning shot.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 어려운 소통
-        - SPIKES
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00140
-  profession: ""
-  eventId: EVT-SIM-00104
-  title: 시뮬랩 세션 인계 · RN Sofia
-  tagline: Handoff the lab schedule.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
   goals:
     - 일정·장비 인계
     - 준비 공유
@@ -2122,17 +2122,17 @@
 - id: SCN-SIM-00141
   profession: ""
   eventId: EVT-SIM-00104
-  title: 시뮬레이션 디브리핑 · Dr. Ahmed
+  title: 시뮬레이션 디브리핑 · Dr. Lee
   tagline: I froze during the code.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 성찰 촉진
@@ -2175,18 +2175,18 @@
 - id: SCN-SIM-00142
   profession: ""
   eventId: EVT-SIM-00104
-  title: 술기 피드백 · Pharmacist Cho
+  title: 술기 피드백 · Dr. Lee
   tagline: Did I place the IV correctly?
   persona:
-    name: Pharmacist Cho
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 구체적 피드백
     - 재시도 격려
@@ -2202,64 +2202,11 @@
     dept: SIM · SKILLS LAB
     deptColor: '#4F46E5'
     brief: 술기 연습 학습자에게 구체적 피드백을 주세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 술기 피드백
         - 코칭
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00143
-  profession: ""
-  eventId: EVT-SIM-00104
-  title: 팀 커뮤니케이션 훈련 · RN Marcus
-  tagline: Nobody knew who was leading.
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 역할 명확화
-    - 폐쇄루프 훈련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - State the leader clearly.
-    - Close the loop on every order.
-    - Call out what you see.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 팀 소통
-        - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2278,20 +2225,73 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00144
+- id: SCN-SIM-00143
   profession: ""
   eventId: EVT-SIM-00104
-  title: SBAR 연습 · Dr. Weber
-  tagline: Let me try the handoff again.
+  title: 팀 커뮤니케이션 훈련 · Dr. Lee
+  tagline: Nobody knew who was leading.
   persona:
-    name: Dr. Weber
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Attending
-    hair: '#8A8A8A'
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 역할 명확화
+    - 폐쇄루프 훈련
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - State the leader clearly.
+    - Close the loop on every order.
+    - Call out what you see.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 팀 소통
+        - 폐쇄루프
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00144
+  profession: ""
+  eventId: EVT-SIM-00104
+  title: SBAR 연습 · Dr. Lee
+  tagline: Let me try the handoff again.
+  persona:
+    name: Dr. Lee
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - SBAR 구조 연습
@@ -2387,18 +2387,18 @@
 - id: SCN-SIM-00146
   profession: ""
   eventId: EVT-SIM-00104
-  title: 학습 목표 브리핑 · Charge Nurse Kim
+  title: 학습 목표 브리핑 · Dr. Lee
   tagline: What are we practicing today?
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 학습 목표 명확화
     - 심리적 안전
@@ -2440,17 +2440,17 @@
 - id: SCN-SIM-00147
   profession: ""
   eventId: EVT-SIM-00104
-  title: 신입 오리엔테이션 · Dr. Novak
+  title: 신입 오리엔테이션 · Dr. Lee
   tagline: I'm nervous about my first shift.
   persona:
-    name: Dr. Novak
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 오리엔테이션
@@ -2493,18 +2493,18 @@
 - id: SCN-SIM-00148
   profession: ""
   eventId: EVT-SIM-00104
-  title: 실수 보고 문화 교육 · RN Sofia
+  title: 실수 보고 문화 교육 · Dr. Lee
   tagline: I think I made a med error.
   persona:
-    name: RN Sofia
+    name: Dr. Lee
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 보고 격려
     - 시스템 개선 지향
@@ -2520,64 +2520,11 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 안전 문화
         - 오류 보고
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00149
-  profession: ""
-  eventId: EVT-SIM-00104
-  title: 의사소통 시나리오 코칭 · Dr. Ahmed
-  tagline: How do I break bad news?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 단계별 소통 코칭
-    - 공감 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Set the setting first.
-    - Ask what they already know.
-    - Give a warning shot.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 어려운 소통
-        - SPIKES
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2596,21 +2543,74 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00150
+- id: SCN-SIM-00149
   profession: ""
   eventId: EVT-SIM-00104
-  title: 시뮬랩 세션 인계 · Pharmacist Cho
-  tagline: Handoff the lab schedule.
+  title: 의사소통 시나리오 코칭 · Dr. Lee
+  tagline: How do I break bad news?
   persona:
-    name: Pharmacist Cho
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 단계별 소통 코칭
+    - 공감 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Set the setting first.
+    - Ask what they already know.
+    - Give a warning shot.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 어려운 소식 전달을 단계별로 코칭하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 어려운 소통
+        - SPIKES
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00150
+  profession: ""
+  eventId: EVT-SIM-00104
+  title: 시뮬랩 세션 인계 · Dr. Lee
+  tagline: Handoff the lab schedule.
+  persona:
+    name: Dr. Lee
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 일정·장비 인계
     - 준비 공유
@@ -2652,18 +2652,18 @@
 - id: SCN-SIM-00151
   profession: ""
   eventId: EVT-SIM-00104
-  title: 시뮬레이션 디브리핑 · RN Marcus
+  title: 시뮬레이션 디브리핑 · Charge Nurse Kim
   tagline: I froze during the code.
   persona:
-    name: RN Marcus
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 성찰 촉진
     - 심리적 안전
@@ -2705,18 +2705,18 @@
 - id: SCN-SIM-00152
   profession: ""
   eventId: EVT-SIM-00104
-  title: 술기 피드백 · Dr. Weber
+  title: 술기 피드백 · Charge Nurse Kim
   tagline: Did I place the IV correctly?
   persona:
-    name: Dr. Weber
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 구체적 피드백
     - 재시도 격려
@@ -2732,25 +2732,25 @@
     dept: SIM · SKILLS LAB
     deptColor: '#4F46E5'
     brief: 술기 연습 학습자에게 구체적 피드백을 주세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 술기 피드백
         - 코칭
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -2758,18 +2758,18 @@
 - id: SCN-SIM-00153
   profession: ""
   eventId: EVT-SIM-00105
-  title: 팀 커뮤니케이션 훈련 · Dr. Lee
+  title: 팀 커뮤니케이션 훈련 · Charge Nurse Kim
   tagline: Nobody knew who was leading.
   persona:
-    name: Dr. Lee
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 역할 명확화
     - 폐쇄루프 훈련
@@ -2785,25 +2785,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 팀 소통
         - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -2864,18 +2864,18 @@
 - id: SCN-SIM-00155
   profession: ""
   eventId: EVT-SIM-00105
-  title: 위기 상황 역할극 · Dr. Novak
+  title: 위기 상황 역할극 · Charge Nurse Kim
   tagline: The mannequin is crashing!
   persona:
-    name: Dr. Novak
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 우선순위 결정
     - 팀 소통
@@ -2891,11 +2891,64 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 위기 시뮬레이션에서 우선순위와 소통을 훈련하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 위기 대응
         - 우선순위
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00156
+  profession: ""
+  eventId: EVT-SIM-00105
+  title: 학습 목표 브리핑 · Charge Nurse Kim
+  tagline: What are we practicing today?
+  persona:
+    name: Charge Nurse Kim
+    role: colleague
+    ageRange: 30s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
+  goals:
+    - 학습 목표 명확화
+    - 심리적 안전
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Today's focus is communication.
+    - This is a safe space to try.
+    - Mistakes are how we learn.
+  steps: []
+  briefing:
+    dept: SIM · DEBRIEF
+    deptColor: '#4F46E5'
+    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 브리핑
+        - 목표 설정
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2914,74 +2967,21 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00156
-  profession: ""
-  eventId: EVT-SIM-00105
-  title: 학습 목표 브리핑 · RN Sofia
-  tagline: What are we practicing today?
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 학습 목표 명확화
-    - 심리적 안전
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today's focus is communication.
-    - This is a safe space to try.
-    - Mistakes are how we learn.
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 브리핑
-        - 목표 설정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
 - id: SCN-SIM-00157
   profession: ""
   eventId: EVT-SIM-00105
-  title: 신입 오리엔테이션 · Dr. Ahmed
+  title: 신입 오리엔테이션 · Charge Nurse Kim
   tagline: I'm nervous about my first shift.
   persona:
-    name: Dr. Ahmed
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 오리엔테이션
     - 정서 지지
@@ -3023,17 +3023,17 @@
 - id: SCN-SIM-00158
   profession: ""
   eventId: EVT-SIM-00105
-  title: 실수 보고 문화 교육 · Pharmacist Cho
+  title: 실수 보고 문화 교육 · Charge Nurse Kim
   tagline: I think I made a med error.
   persona:
-    name: Pharmacist Cho
+    name: Charge Nurse Kim
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
+    sub: Charge RN
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 보고 격려
@@ -3050,25 +3050,25 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 안전 문화
         - 오류 보고
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -3076,18 +3076,18 @@
 - id: SCN-SIM-00159
   profession: ""
   eventId: EVT-SIM-00105
-  title: 의사소통 시나리오 코칭 · RN Marcus
+  title: 의사소통 시나리오 코칭 · Charge Nurse Kim
   tagline: How do I break bad news?
   persona:
-    name: RN Marcus
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 단계별 소통 코칭
     - 공감 강조
@@ -3129,18 +3129,18 @@
 - id: SCN-SIM-00160
   profession: ""
   eventId: EVT-SIM-00105
-  title: 시뮬랩 세션 인계 · Dr. Weber
+  title: 시뮬랩 세션 인계 · Charge Nurse Kim
   tagline: Handoff the lab schedule.
   persona:
-    name: Dr. Weber
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 일정·장비 인계
     - 준비 공유
@@ -3182,17 +3182,17 @@
 - id: SCN-SIM-00161
   profession: ""
   eventId: EVT-SIM-00105
-  title: 시뮬레이션 디브리핑 · Dr. Lee
+  title: 시뮬레이션 디브리핑 · Dr. Novak
   tagline: I froze during the code.
   persona:
-    name: Dr. Lee
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 성찰 촉진
@@ -3235,18 +3235,18 @@
 - id: SCN-SIM-00162
   profession: ""
   eventId: EVT-SIM-00105
-  title: 술기 피드백 · Charge Nurse Kim
+  title: 술기 피드백 · Dr. Novak
   tagline: Did I place the IV correctly?
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 구체적 피드백
     - 재시도 격려
@@ -3315,25 +3315,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 팀 소통
         - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -3341,18 +3341,18 @@
 - id: SCN-SIM-00164
   profession: ""
   eventId: EVT-SIM-00105
-  title: SBAR 연습 · RN Sofia
+  title: SBAR 연습 · Dr. Novak
   tagline: Let me try the handoff again.
   persona:
-    name: RN Sofia
+    name: Dr. Novak
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - SBAR 구조 연습
     - 명확성 개선
@@ -3394,17 +3394,17 @@
 - id: SCN-SIM-00165
   profession: ""
   eventId: EVT-SIM-00105
-  title: 위기 상황 역할극 · Dr. Ahmed
+  title: 위기 상황 역할극 · Dr. Novak
   tagline: The mannequin is crashing!
   persona:
-    name: Dr. Ahmed
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 우선순위 결정
@@ -3421,64 +3421,11 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 위기 시뮬레이션에서 우선순위와 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 위기 대응
         - 우선순위
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00166
-  profession: ""
-  eventId: EVT-SIM-00106
-  title: 학습 목표 브리핑 · Pharmacist Cho
-  tagline: What are we practicing today?
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 학습 목표 명확화
-    - 심리적 안전
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today's focus is communication.
-    - This is a safe space to try.
-    - Mistakes are how we learn.
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 브리핑
-        - 목표 설정
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3497,20 +3444,73 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00167
+- id: SCN-SIM-00166
   profession: ""
   eventId: EVT-SIM-00106
-  title: 신입 오리엔테이션 · RN Marcus
-  tagline: I'm nervous about my first shift.
+  title: 학습 목표 브리핑 · Dr. Novak
+  tagline: What are we practicing today?
   persona:
-    name: RN Marcus
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
+  goals:
+    - 학습 목표 명확화
+    - 심리적 안전
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Today's focus is communication.
+    - This is a safe space to try.
+    - Mistakes are how we learn.
+  steps: []
+  briefing:
+    dept: SIM · DEBRIEF
+    deptColor: '#4F46E5'
+    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 브리핑
+        - 목표 설정
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00167
+  profession: ""
+  eventId: EVT-SIM-00106
+  title: 신입 오리엔테이션 · Dr. Novak
+  tagline: I'm nervous about my first shift.
+  persona:
+    name: Dr. Novak
+    role: colleague
+    ageRange: 50s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 오리엔테이션
@@ -3553,17 +3553,17 @@
 - id: SCN-SIM-00168
   profession: ""
   eventId: EVT-SIM-00106
-  title: 실수 보고 문화 교육 · Dr. Weber
+  title: 실수 보고 문화 교육 · Dr. Novak
   tagline: I think I made a med error.
   persona:
-    name: Dr. Weber
+    name: Dr. Novak
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 보고 격려
@@ -3580,11 +3580,64 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 안전 문화
         - 오류 보고
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00169
+  profession: ""
+  eventId: EVT-SIM-00106
+  title: 의사소통 시나리오 코칭 · Dr. Novak
+  tagline: How do I break bad news?
+  persona:
+    name: Dr. Novak
+    role: colleague
+    ageRange: 50s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
+  goals:
+    - 단계별 소통 코칭
+    - 공감 강조
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Set the setting first.
+    - Ask what they already know.
+    - Give a warning shot.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 어려운 소식 전달을 단계별로 코칭하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 어려운 소통
+        - SPIKES
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3603,74 +3656,21 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00169
-  profession: ""
-  eventId: EVT-SIM-00106
-  title: 의사소통 시나리오 코칭 · Dr. Lee
-  tagline: How do I break bad news?
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 단계별 소통 코칭
-    - 공감 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Set the setting first.
-    - Ask what they already know.
-    - Give a warning shot.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 어려운 소통
-        - SPIKES
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
 - id: SCN-SIM-00170
   profession: ""
   eventId: EVT-SIM-00106
-  title: 시뮬랩 세션 인계 · Charge Nurse Kim
+  title: 시뮬랩 세션 인계 · Dr. Novak
   tagline: Handoff the lab schedule.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 일정·장비 인계
     - 준비 공유
@@ -3712,18 +3712,18 @@
 - id: SCN-SIM-00171
   profession: ""
   eventId: EVT-SIM-00106
-  title: 시뮬레이션 디브리핑 · Dr. Novak
+  title: 시뮬레이션 디브리핑 · RN Sofia
   tagline: I froze during the code.
   persona:
-    name: Dr. Novak
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 성찰 촉진
     - 심리적 안전
@@ -3792,64 +3792,11 @@
     dept: SIM · SKILLS LAB
     deptColor: '#4F46E5'
     brief: 술기 연습 학습자에게 구체적 피드백을 주세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 술기 피드백
         - 코칭
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00173
-  profession: ""
-  eventId: EVT-SIM-00106
-  title: 팀 커뮤니케이션 훈련 · Dr. Ahmed
-  tagline: Nobody knew who was leading.
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 역할 명확화
-    - 폐쇄루프 훈련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - State the leader clearly.
-    - Close the loop on every order.
-    - Call out what you see.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 팀 소통
-        - 폐쇄루프
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3868,21 +3815,74 @@
     accent: '#4338CA'
     chart: null
     riskyPhrases: []
-- id: SCN-SIM-00174
+- id: SCN-SIM-00173
   profession: ""
   eventId: EVT-SIM-00106
-  title: SBAR 연습 · Pharmacist Cho
-  tagline: Let me try the handoff again.
+  title: 팀 커뮤니케이션 훈련 · RN Sofia
+  tagline: Nobody knew who was leading.
   persona:
-    name: Pharmacist Cho
+    name: RN Sofia
     role: colleague
-    ageRange: 30s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 역할 명확화
+    - 폐쇄루프 훈련
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - State the leader clearly.
+    - Close the loop on every order.
+    - Call out what you see.
+  steps: []
+  briefing:
+    dept: SIM · SIM ROOM
+    deptColor: '#4F46E5'
+    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 팀 소통
+        - 폐쇄루프
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#E0E7FF'
+    accent: '#4338CA'
+    chart: null
+    riskyPhrases: []
+- id: SCN-SIM-00174
+  profession: ""
+  eventId: EVT-SIM-00106
+  title: SBAR 연습 · RN Sofia
+  tagline: Let me try the handoff again.
+  persona:
+    name: RN Sofia
+    role: colleague
+    ageRange: 20s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - SBAR 구조 연습
     - 명확성 개선
@@ -3924,18 +3924,18 @@
 - id: SCN-SIM-00175
   profession: ""
   eventId: EVT-SIM-00106
-  title: 위기 상황 역할극 · RN Marcus
+  title: 위기 상황 역할극 · RN Sofia
   tagline: The mannequin is crashing!
   persona:
-    name: RN Marcus
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 우선순위 결정
     - 팀 소통
@@ -3977,18 +3977,18 @@
 - id: SCN-SIM-00176
   profession: ""
   eventId: EVT-SIM-00106
-  title: 학습 목표 브리핑 · Dr. Weber
+  title: 학습 목표 브리핑 · RN Sofia
   tagline: What are we practicing today?
   persona:
-    name: Dr. Weber
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 학습 목표 명확화
     - 심리적 안전
@@ -4030,18 +4030,18 @@
 - id: SCN-SIM-00177
   profession: ""
   eventId: EVT-SIM-00106
-  title: 신입 오리엔테이션 · Dr. Lee
+  title: 신입 오리엔테이션 · RN Sofia
   tagline: I'm nervous about my first shift.
   persona:
-    name: Dr. Lee
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 오리엔테이션
     - 정서 지지
@@ -4083,18 +4083,18 @@
 - id: SCN-SIM-00178
   profession: ""
   eventId: EVT-SIM-00106
-  title: 실수 보고 문화 교육 · Charge Nurse Kim
+  title: 실수 보고 문화 교육 · RN Sofia
   tagline: I think I made a med error.
   persona:
-    name: Charge Nurse Kim
+    name: RN Sofia
     role: colleague
-    ageRange: 30s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 보고 격려
     - 시스템 개선 지향
@@ -4110,25 +4110,25 @@
     dept: SIM · DEBRIEF
     deptColor: '#4F46E5'
     brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 안전 문화
         - 오류 보고
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -4136,18 +4136,18 @@
 - id: SCN-SIM-00179
   profession: ""
   eventId: EVT-SIM-00107
-  title: 의사소통 시나리오 코칭 · Dr. Novak
+  title: 의사소통 시나리오 코칭 · RN Sofia
   tagline: How do I break bad news?
   persona:
-    name: Dr. Novak
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 단계별 소통 코칭
     - 공감 강조
@@ -4163,25 +4163,25 @@
     dept: SIM · SIM ROOM
     deptColor: '#4F46E5'
     brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 어려운 소통
         - SPIKES
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0E7FF'
     accent: '#4338CA'
     chart: null
@@ -4218,1066 +4218,6 @@
     brief: 시뮬레이션 세션 일정과 장비를 인계하세요.
     difficulty: 1
     timeLabel: 약 6분
-    skills:
-        - 인계
-        - 일정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00181
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 시뮬레이션 디브리핑 · Dr. Ahmed
-  tagline: I froze during the code.
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 성찰 촉진
-    - 심리적 안전
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What went well in that scenario?
-    - What would you change next time?
-    - Freezing is common — let's learn from it.
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 후 학습자를 비난 없이 디브리핑하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 디브리핑
-        - 성찰 촉진
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00182
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 술기 피드백 · Pharmacist Cho
-  tagline: Did I place the IV correctly?
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 구체적 피드백
-    - 재시도 격려
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your angle was good.
-    - Anchor the vein next time.
-    - Let's run it once more.
-  steps: []
-  briefing:
-    dept: SIM · SKILLS LAB
-    deptColor: '#4F46E5'
-    brief: 술기 연습 학습자에게 구체적 피드백을 주세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 술기 피드백
-        - 코칭
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00183
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 팀 커뮤니케이션 훈련 · RN Marcus
-  tagline: Nobody knew who was leading.
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 역할 명확화
-    - 폐쇄루프 훈련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - State the leader clearly.
-    - Close the loop on every order.
-    - Call out what you see.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 팀 소통
-        - 폐쇄루프
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00184
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: SBAR 연습 · Dr. Weber
-  tagline: Let me try the handoff again.
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - SBAR 구조 연습
-    - 명확성 개선
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Start with the situation.
-    - Keep the background brief.
-    - End with a clear request.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: SBAR 인계를 반복 연습하고 다듬으세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - SBAR
-        - 연습
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00185
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 위기 상황 역할극 · Dr. Lee
-  tagline: The mannequin is crashing!
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 우선순위 결정
-    - 팀 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Airway first.
-    - Someone call for help.
-    - I need vitals now.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 위기 시뮬레이션에서 우선순위와 소통을 훈련하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 위기 대응
-        - 우선순위
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00186
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 학습 목표 브리핑 · Charge Nurse Kim
-  tagline: What are we practicing today?
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 학습 목표 명확화
-    - 심리적 안전
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today's focus is communication.
-    - This is a safe space to try.
-    - Mistakes are how we learn.
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 브리핑
-        - 목표 설정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00187
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 신입 오리엔테이션 · Dr. Novak
-  tagline: I'm nervous about my first shift.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 오리엔테이션
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Everyone starts here.
-    - Ask questions anytime.
-    - I'll be right beside you.
-  steps: []
-  briefing:
-    dept: SIM · SKILLS LAB
-    deptColor: '#4F46E5'
-    brief: 신입 간호사를 지지적으로 오리엔테이션하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 오리엔테이션
-        - 멘토링
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00188
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 실수 보고 문화 교육 · RN Sofia
-  tagline: I think I made a med error.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 보고 격려
-    - 시스템 개선 지향
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Thank you for reporting it.
-    - Let's focus on the system, not blame.
-    - How can we prevent this?
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 안전 문화
-        - 오류 보고
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00189
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 의사소통 시나리오 코칭 · Dr. Ahmed
-  tagline: How do I break bad news?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 단계별 소통 코칭
-    - 공감 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Set the setting first.
-    - Ask what they already know.
-    - Give a warning shot.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 3
-    timeLabel: 약 8분
-    skills:
-        - 어려운 소통
-        - SPIKES
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00190
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 시뮬랩 세션 인계 · Pharmacist Cho
-  tagline: Handoff the lab schedule.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 일정·장비 인계
-    - 준비 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Two code sims this afternoon.
-    - Mannequin B needs a reset.
-    - Debrief room is booked at 3.
-  steps: []
-  briefing:
-    dept: SIM · STATION
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 세션 일정과 장비를 인계하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 인계
-        - 일정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00191
-  profession: ""
-  eventId: EVT-SIM-00107
-  title: 시뮬레이션 디브리핑 · RN Marcus
-  tagline: I froze during the code.
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 성찰 촉진
-    - 심리적 안전
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - What went well in that scenario?
-    - What would you change next time?
-    - Freezing is common — let's learn from it.
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 후 학습자를 비난 없이 디브리핑하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 디브리핑
-        - 성찰 촉진
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00192
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 술기 피드백 · Dr. Weber
-  tagline: Did I place the IV correctly?
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 구체적 피드백
-    - 재시도 격려
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your angle was good.
-    - Anchor the vein next time.
-    - Let's run it once more.
-  steps: []
-  briefing:
-    dept: SIM · SKILLS LAB
-    deptColor: '#4F46E5'
-    brief: 술기 연습 학습자에게 구체적 피드백을 주세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 술기 피드백
-        - 코칭
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00193
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 팀 커뮤니케이션 훈련 · Dr. Lee
-  tagline: Nobody knew who was leading.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 역할 명확화
-    - 폐쇄루프 훈련
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - State the leader clearly.
-    - Close the loop on every order.
-    - Call out what you see.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 팀 리더십·폐쇄루프 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 팀 소통
-        - 폐쇄루프
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00194
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: SBAR 연습 · Charge Nurse Kim
-  tagline: Let me try the handoff again.
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - SBAR 구조 연습
-    - 명확성 개선
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Start with the situation.
-    - Keep the background brief.
-    - End with a clear request.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: SBAR 인계를 반복 연습하고 다듬으세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - SBAR
-        - 연습
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00195
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 위기 상황 역할극 · Dr. Novak
-  tagline: The mannequin is crashing!
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 우선순위 결정
-    - 팀 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Airway first.
-    - Someone call for help.
-    - I need vitals now.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 위기 시뮬레이션에서 우선순위와 소통을 훈련하세요.
-    difficulty: 3
-    timeLabel: 약 8분
-    skills:
-        - 위기 대응
-        - 우선순위
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00196
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 학습 목표 브리핑 · RN Sofia
-  tagline: What are we practicing today?
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 학습 목표 명확화
-    - 심리적 안전
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Today's focus is communication.
-    - This is a safe space to try.
-    - Mistakes are how we learn.
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 전 학습 목표를 브리핑하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 브리핑
-        - 목표 설정
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00197
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 신입 오리엔테이션 · Dr. Ahmed
-  tagline: I'm nervous about my first shift.
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 오리엔테이션
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Everyone starts here.
-    - Ask questions anytime.
-    - I'll be right beside you.
-  steps: []
-  briefing:
-    dept: SIM · SKILLS LAB
-    deptColor: '#4F46E5'
-    brief: 신입 간호사를 지지적으로 오리엔테이션하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 오리엔테이션
-        - 멘토링
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00198
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 실수 보고 문화 교육 · Pharmacist Cho
-  tagline: I think I made a med error.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 보고 격려
-    - 시스템 개선 지향
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Thank you for reporting it.
-    - Let's focus on the system, not blame.
-    - How can we prevent this?
-  steps: []
-  briefing:
-    dept: SIM · DEBRIEF
-    deptColor: '#4F46E5'
-    brief: 비난 없는 오류 보고 문화를 모델링하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 안전 문화
-        - 오류 보고
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00199
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 의사소통 시나리오 코칭 · RN Marcus
-  tagline: How do I break bad news?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 단계별 소통 코칭
-    - 공감 강조
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Set the setting first.
-    - Ask what they already know.
-    - Give a warning shot.
-  steps: []
-  briefing:
-    dept: SIM · SIM ROOM
-    deptColor: '#4F46E5'
-    brief: 어려운 소식 전달을 단계별로 코칭하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 어려운 소통
-        - SPIKES
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0E7FF'
-    accent: '#4338CA'
-    chart: null
-    riskyPhrases: []
-- id: SCN-SIM-00200
-  profession: ""
-  eventId: EVT-SIM-00108
-  title: 시뮬랩 세션 인계 · Dr. Weber
-  tagline: Handoff the lab schedule.
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 일정·장비 인계
-    - 준비 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Two code sims this afternoon.
-    - Mannequin B needs a reset.
-    - Debrief room is booked at 3.
-  steps: []
-  briefing:
-    dept: SIM · STATION
-    deptColor: '#4F46E5'
-    brief: 시뮬레이션 세션 일정과 장비를 인계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
     skills:
         - 인계
         - 일정

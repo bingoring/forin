@@ -55,18 +55,18 @@
 - id: SCN-PHARMA-00102
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 구두 처방 받아쓰기 · Pharmacist Cho
+  title: 구두 처방 받아쓰기 · Dr. Ahmed
   tagline: Give me a read-back on that order.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Ahmed
     role: doctor
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 처방 받아쓰기·복창
     - 오류 방지
@@ -82,25 +82,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -108,18 +108,18 @@
 - id: SCN-PHARMA-00103
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 인슐린 자가주사 교육 · Ms. Nguyen
+  title: 인슐린 자가주사 교육 · Mrs. Kelly
   tagline: I'm scared of needles.
   persona:
-    name: Ms. Nguyen
+    name: Mrs. Kelly
     role: patient
-    ageRange: 20s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 자가주사 단계 교육
     - 저혈당 대처 안내
@@ -135,25 +135,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -161,18 +161,18 @@
 - id: SCN-PHARMA-00104
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 와파린 복약 상담 · Mr. Patel
+  title: 와파린 복약 상담 · Mrs. Kelly
   tagline: Can I still eat my vegetables?
   persona:
-    name: Mr. Patel
+    name: Mrs. Kelly
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 식이·상호작용 교육
     - 출혈 경고 신호
@@ -214,17 +214,17 @@
 - id: SCN-PHARMA-00105
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 마약류 픽업 2인 인증 · Dr. Lee
+  title: 마약류 픽업 2인 인증 · Dr. Ahmed
   tagline: Two-witness sign-out for Schedule II.
   persona:
-    name: Dr. Lee
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 2인 인증 수행
@@ -241,25 +241,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -267,18 +267,18 @@
 - id: SCN-PHARMA-00106
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 다약제 복용 검토 · Mr. Johnson
+  title: 다약제 복용 검토 · Mrs. Kelly
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Johnson
+    name: Mrs. Kelly
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 상호작용·중복 확인
     - 복약 정리·교육
@@ -294,25 +294,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -320,17 +320,17 @@
 - id: SCN-PHARMA-00107
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 소아 용량 환산 · Dr. Novak
+  title: 소아 용량 환산 · Dr. Ahmed
   tagline: How much for a 14-kilo child?
   persona:
-    name: Dr. Novak
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 체중 기반 용량 계산
@@ -373,18 +373,18 @@
 - id: SCN-PHARMA-00108
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 항생제 복약 순응 상담 · Mr. Silva
+  title: 항생제 복약 순응 상담 · Mrs. Kelly
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Silva
+    name: Mrs. Kelly
     role: patient
     ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 72y / Female
+    hair: '#B0B0B0'
+    hairStyle: bob
   goals:
     - 완수 필요성 설명
     - 순응 전략 제공
@@ -426,17 +426,17 @@
 - id: SCN-PHARMA-00109
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 부작용 상담 · Mrs. Adeyemi
+  title: 부작용 상담 · Mrs. Kelly
   tagline: This pill makes me nauseous.
   persona:
-    name: Mrs. Adeyemi
+    name: Mrs. Kelly
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 47y / Female
-    hair: '#0F0F0F'
+    sub: 72y / Female
+    hair: '#B0B0B0'
     hairStyle: bob
   goals:
     - 부작용 청취·평가
@@ -453,25 +453,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 부작용 상담
         - 보고 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -479,18 +479,18 @@
 - id: SCN-PHARMA-00110
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 고위험 약물 이중확인 · Pharmacist Cho
+  title: 고위험 약물 이중확인 · Dr. Ahmed
   tagline: Independent double-check, please.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 독립 이중확인 수행
     - 5 rights 확인
@@ -532,18 +532,18 @@
 - id: SCN-PHARMA-00111
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 헤파린 더블 체크 · RN Marcus
+  title: 헤파린 더블 체크 · Pharmacist Cho
   tagline: Can you verify this heparin dose?
   persona:
-    name: RN Marcus
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 용량·속도 이중 확인
     - 안전 문서화
@@ -585,18 +585,18 @@
 - id: SCN-PHARMA-00112
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 구두 처방 받아쓰기 · Dr. Weber
+  title: 구두 처방 받아쓰기 · Pharmacist Cho
   tagline: Give me a read-back on that order.
   persona:
-    name: Dr. Weber
+    name: Pharmacist Cho
     role: doctor
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 처방 받아쓰기·복창
     - 오류 방지
@@ -612,25 +612,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -638,18 +638,18 @@
 - id: SCN-PHARMA-00113
   profession: ""
   eventId: EVT-PHARMA-00101
-  title: 인슐린 자가주사 교육 · Mrs. Haddad
+  title: 인슐린 자가주사 교육 · Mr. Okafor
   tagline: I'm scared of needles.
   persona:
-    name: Mrs. Haddad
+    name: Mr. Okafor
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 자가주사 단계 교육
     - 저혈당 대처 안내
@@ -665,25 +665,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -691,17 +691,17 @@
 - id: SCN-PHARMA-00114
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 와파린 복약 상담 · Mr. Yamamoto
+  title: 와파린 복약 상담 · Mr. Okafor
   tagline: Can I still eat my vegetables?
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Okafor
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 식이·상호작용 교육
@@ -744,18 +744,18 @@
 - id: SCN-PHARMA-00115
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 마약류 픽업 2인 인증 · Dr. Novak
+  title: 마약류 픽업 2인 인증 · Pharmacist Cho
   tagline: Two-witness sign-out for Schedule II.
   persona:
-    name: Dr. Novak
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 2인 인증 수행
     - 재고·폐기 문서화
@@ -771,25 +771,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -797,17 +797,17 @@
 - id: SCN-PHARMA-00116
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 다약제 복용 검토 · Mr. Dubois
+  title: 다약제 복용 검토 · Mr. Okafor
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Dubois
+    name: Mr. Okafor
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 상호작용·중복 확인
@@ -824,25 +824,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -850,18 +850,18 @@
 - id: SCN-PHARMA-00117
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 소아 용량 환산 · Dr. Ahmed
+  title: 소아 용량 환산 · Pharmacist Cho
   tagline: How much for a 14-kilo child?
   persona:
-    name: Dr. Ahmed
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 체중 기반 용량 계산
     - 안전 범위 확인
@@ -903,17 +903,17 @@
 - id: SCN-PHARMA-00118
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 항생제 복약 순응 상담 · Mr. Wagner
+  title: 항생제 복약 순응 상담 · Mr. Okafor
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Wagner
+    name: Mr. Okafor
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 54y / Male
+    hair: '#111111'
     hairStyle: short
   goals:
     - 완수 필요성 설명
@@ -930,25 +930,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 항생제 순응
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -956,18 +956,18 @@
 - id: SCN-PHARMA-00119
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 부작용 상담 · Ms. Ivanova
+  title: 부작용 상담 · Mr. Okafor
   tagline: This pill makes me nauseous.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Okafor
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 54y / Male
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 부작용 청취·평가
     - 대처·보고 안내
@@ -1009,18 +1009,18 @@
 - id: SCN-PHARMA-00120
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 고위험 약물 이중확인 · Dr. Weber
+  title: 고위험 약물 이중확인 · Pharmacist Cho
   tagline: Independent double-check, please.
   persona:
-    name: Dr. Weber
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 독립 이중확인 수행
     - 5 rights 확인
@@ -1062,17 +1062,17 @@
 - id: SCN-PHARMA-00121
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 헤파린 더블 체크 · Dr. Lee
+  title: 헤파린 더블 체크 · RN Marcus
   tagline: Can you verify this heparin dose?
   persona:
-    name: Dr. Lee
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 용량·속도 이중 확인
@@ -1115,18 +1115,18 @@
 - id: SCN-PHARMA-00122
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 구두 처방 받아쓰기 · Charge Nurse Kim
+  title: 구두 처방 받아쓰기 · RN Marcus
   tagline: Give me a read-back on that order.
   persona:
-    name: Charge Nurse Kim
+    name: RN Marcus
     role: doctor
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 처방 받아쓰기·복창
     - 오류 방지
@@ -1142,25 +1142,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1168,17 +1168,17 @@
 - id: SCN-PHARMA-00123
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 인슐린 자가주사 교육 · Ms. Alvarez
+  title: 인슐린 자가주사 교육 · Ms. Nguyen
   tagline: I'm scared of needles.
   persona:
-    name: Ms. Alvarez
+    name: Ms. Nguyen
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 34y / Female
-    hair: '#2A1E14'
+    sub: 26y / Female
+    hair: '#1A1A1A'
     hairStyle: long
   goals:
     - 자가주사 단계 교육
@@ -1195,25 +1195,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1221,18 +1221,18 @@
 - id: SCN-PHARMA-00124
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 와파린 복약 상담 · Mr. Chen
+  title: 와파린 복약 상담 · Ms. Nguyen
   tagline: Can I still eat my vegetables?
   persona:
-    name: Mr. Chen
+    name: Ms. Nguyen
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 식이·상호작용 교육
     - 출혈 경고 신호
@@ -1274,17 +1274,17 @@
 - id: SCN-PHARMA-00125
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 마약류 픽업 2인 인증 · Dr. Ahmed
+  title: 마약류 픽업 2인 인증 · RN Marcus
   tagline: Two-witness sign-out for Schedule II.
   persona:
-    name: Dr. Ahmed
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 2인 인증 수행
@@ -1301,25 +1301,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1327,18 +1327,18 @@
 - id: SCN-PHARMA-00126
   profession: ""
   eventId: EVT-PHARMA-00102
-  title: 다약제 복용 검토 · Mr. Okafor
+  title: 다약제 복용 검토 · Ms. Nguyen
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Okafor
+    name: Ms. Nguyen
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 상호작용·중복 확인
     - 복약 정리·교육
@@ -1354,25 +1354,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1433,18 +1433,18 @@
 - id: SCN-PHARMA-00128
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 항생제 복약 순응 상담 · Mr. Patel
+  title: 항생제 복약 순응 상담 · Ms. Nguyen
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Patel
+    name: Ms. Nguyen
     role: patient
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 완수 필요성 설명
     - 순응 전략 제공
@@ -1460,25 +1460,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 항생제 순응
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1486,18 +1486,18 @@
 - id: SCN-PHARMA-00129
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 부작용 상담 · Mrs. Rossi
+  title: 부작용 상담 · Ms. Nguyen
   tagline: This pill makes me nauseous.
   persona:
-    name: Mrs. Rossi
+    name: Ms. Nguyen
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 26y / Female
+    hair: '#1A1A1A'
+    hairStyle: long
   goals:
     - 부작용 청취·평가
     - 대처·보고 안내
@@ -1513,25 +1513,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 부작용 상담
         - 보고 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1539,18 +1539,18 @@
 - id: SCN-PHARMA-00130
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 고위험 약물 이중확인 · Charge Nurse Kim
+  title: 고위험 약물 이중확인 · RN Marcus
   tagline: Independent double-check, please.
   persona:
-    name: Charge Nurse Kim
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 독립 이중확인 수행
     - 5 rights 확인
@@ -1592,17 +1592,17 @@
 - id: SCN-PHARMA-00131
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 헤파린 더블 체크 · Dr. Novak
+  title: 헤파린 더블 체크 · Dr. Weber
   tagline: Can you verify this heparin dose?
   persona:
-    name: Dr. Novak
+    name: Dr. Weber
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 용량·속도 이중 확인
@@ -1645,18 +1645,18 @@
 - id: SCN-PHARMA-00132
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 구두 처방 받아쓰기 · RN Sofia
+  title: 구두 처방 받아쓰기 · Dr. Weber
   tagline: Give me a read-back on that order.
   persona:
-    name: RN Sofia
+    name: Dr. Weber
     role: doctor
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 처방 받아쓰기·복창
     - 오류 방지
@@ -1672,25 +1672,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1698,18 +1698,18 @@
 - id: SCN-PHARMA-00133
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 인슐린 자가주사 교육 · Mrs. Adeyemi
+  title: 인슐린 자가주사 교육 · Mr. Patel
   tagline: I'm scared of needles.
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Patel
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 자가주사 단계 교육
     - 저혈당 대처 안내
@@ -1725,25 +1725,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1751,17 +1751,17 @@
 - id: SCN-PHARMA-00134
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 와파린 복약 상담 · Mr. Larsson
+  title: 와파린 복약 상담 · Mr. Patel
   tagline: Can I still eat my vegetables?
   persona:
-    name: Mr. Larsson
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 식이·상호작용 교육
@@ -1804,17 +1804,17 @@
 - id: SCN-PHARMA-00135
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 마약류 픽업 2인 인증 · RN Marcus
+  title: 마약류 픽업 2인 인증 · Dr. Weber
   tagline: Two-witness sign-out for Schedule II.
   persona:
-    name: RN Marcus
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 2인 인증 수행
@@ -1831,25 +1831,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1857,17 +1857,17 @@
 - id: SCN-PHARMA-00136
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 다약제 복용 검토 · Mr. Thompson
+  title: 다약제 복용 검토 · Mr. Patel
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Thompson
+    name: Mr. Patel
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 상호작용·중복 확인
@@ -1884,25 +1884,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -1910,17 +1910,17 @@
 - id: SCN-PHARMA-00137
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 소아 용량 환산 · Dr. Lee
+  title: 소아 용량 환산 · Dr. Weber
   tagline: How much for a 14-kilo child?
   persona:
-    name: Dr. Lee
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Attending
-    hair: '#1C1C1C'
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 체중 기반 용량 계산
@@ -1963,17 +1963,17 @@
 - id: SCN-PHARMA-00138
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 항생제 복약 순응 상담 · Mr. Yamamoto
+  title: 항생제 복약 순응 상담 · Mr. Patel
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Patel
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 63y / Male
+    hair: '#3B2A1A'
     hairStyle: short
   goals:
     - 완수 필요성 설명
@@ -2016,18 +2016,18 @@
 - id: SCN-PHARMA-00139
   profession: ""
   eventId: EVT-PHARMA-00103
-  title: 부작용 상담 · Ms. O'Brien
+  title: 부작용 상담 · Mr. Patel
   tagline: This pill makes me nauseous.
   persona:
-    name: Ms. O'Brien
+    name: Mr. Patel
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 63y / Male
+    hair: '#3B2A1A'
+    hairStyle: short
   goals:
     - 부작용 청취·평가
     - 대처·보고 안내
@@ -2043,25 +2043,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 부작용 상담
         - 보고 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2069,18 +2069,18 @@
 - id: SCN-PHARMA-00140
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 고위험 약물 이중확인 · RN Sofia
+  title: 고위험 약물 이중확인 · Dr. Weber
   tagline: Independent double-check, please.
   persona:
-    name: RN Sofia
+    name: Dr. Weber
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 독립 이중확인 수행
     - 5 rights 확인
@@ -2122,17 +2122,17 @@
 - id: SCN-PHARMA-00141
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 헤파린 더블 체크 · Dr. Ahmed
+  title: 헤파린 더블 체크 · Dr. Lee
   tagline: Can you verify this heparin dose?
   persona:
-    name: Dr. Ahmed
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 용량·속도 이중 확인
@@ -2175,18 +2175,18 @@
 - id: SCN-PHARMA-00142
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 구두 처방 받아쓰기 · Pharmacist Cho
+  title: 구두 처방 받아쓰기 · Dr. Lee
   tagline: Give me a read-back on that order.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Lee
     role: doctor
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 처방 받아쓰기·복창
     - 오류 방지
@@ -2202,25 +2202,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2228,18 +2228,18 @@
 - id: SCN-PHARMA-00143
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 인슐린 자가주사 교육 · Ms. Ivanova
+  title: 인슐린 자가주사 교육 · Mrs. Rossi
   tagline: I'm scared of needles.
   persona:
-    name: Ms. Ivanova
+    name: Mrs. Rossi
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 자가주사 단계 교육
     - 저혈당 대처 안내
@@ -2255,25 +2255,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2281,18 +2281,18 @@
 - id: SCN-PHARMA-00144
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 와파린 복약 상담 · Mr. Reyes
+  title: 와파린 복약 상담 · Mrs. Rossi
   tagline: Can I still eat my vegetables?
   persona:
-    name: Mr. Reyes
+    name: Mrs. Rossi
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 식이·상호작용 교육
     - 출혈 경고 신호
@@ -2361,25 +2361,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2387,17 +2387,17 @@
 - id: SCN-PHARMA-00146
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 다약제 복용 검토 · Mrs. Hopkins
+  title: 다약제 복용 검토 · Mrs. Rossi
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mrs. Hopkins
+    name: Mrs. Rossi
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 67y / Female
-    hair: '#9A6B3F'
+    sub: 51y / Female
+    hair: '#5A3A22'
     hairStyle: bob
   goals:
     - 상호작용·중복 확인
@@ -2414,25 +2414,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2440,17 +2440,17 @@
 - id: SCN-PHARMA-00147
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 소아 용량 환산 · Dr. Novak
+  title: 소아 용량 환산 · Dr. Lee
   tagline: How much for a 14-kilo child?
   persona:
-    name: Dr. Novak
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 체중 기반 용량 계산
@@ -2493,18 +2493,18 @@
 - id: SCN-PHARMA-00148
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 항생제 복약 순응 상담 · Mr. Chen
+  title: 항생제 복약 순응 상담 · Mrs. Rossi
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Chen
+    name: Mrs. Rossi
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 51y / Female
+    hair: '#5A3A22'
+    hairStyle: bob
   goals:
     - 완수 필요성 설명
     - 순응 전략 제공
@@ -2520,25 +2520,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 항생제 순응
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2546,17 +2546,17 @@
 - id: SCN-PHARMA-00149
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 부작용 상담 · Mrs. Kelly
+  title: 부작용 상담 · Mrs. Rossi
   tagline: This pill makes me nauseous.
   persona:
-    name: Mrs. Kelly
+    name: Mrs. Rossi
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 72y / Female
-    hair: '#B0B0B0'
+    sub: 51y / Female
+    hair: '#5A3A22'
     hairStyle: bob
   goals:
     - 부작용 청취·평가
@@ -2599,18 +2599,18 @@
 - id: SCN-PHARMA-00150
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 고위험 약물 이중확인 · Pharmacist Cho
+  title: 고위험 약물 이중확인 · Dr. Lee
   tagline: Independent double-check, please.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 독립 이중확인 수행
     - 5 rights 확인
@@ -2652,18 +2652,18 @@
 - id: SCN-PHARMA-00151
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 헤파린 더블 체크 · RN Marcus
+  title: 헤파린 더블 체크 · Charge Nurse Kim
   tagline: Can you verify this heparin dose?
   persona:
-    name: RN Marcus
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 용량·속도 이중 확인
     - 안전 문서화
@@ -2705,18 +2705,18 @@
 - id: SCN-PHARMA-00152
   profession: ""
   eventId: EVT-PHARMA-00104
-  title: 구두 처방 받아쓰기 · Dr. Weber
+  title: 구두 처방 받아쓰기 · Charge Nurse Kim
   tagline: Give me a read-back on that order.
   persona:
-    name: Dr. Weber
+    name: Charge Nurse Kim
     role: doctor
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 처방 받아쓰기·복창
     - 오류 방지
@@ -2732,25 +2732,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2758,18 +2758,18 @@
 - id: SCN-PHARMA-00153
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 인슐린 자가주사 교육 · Mrs. Rossi
+  title: 인슐린 자가주사 교육 · Mr. Johnson
   tagline: I'm scared of needles.
   persona:
-    name: Mrs. Rossi
+    name: Mr. Johnson
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 자가주사 단계 교육
     - 저혈당 대처 안내
@@ -2785,25 +2785,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2864,18 +2864,18 @@
 - id: SCN-PHARMA-00155
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 마약류 픽업 2인 인증 · Dr. Novak
+  title: 마약류 픽업 2인 인증 · Charge Nurse Kim
   tagline: Two-witness sign-out for Schedule II.
   persona:
-    name: Dr. Novak
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 2인 인증 수행
     - 재고·폐기 문서화
@@ -2891,25 +2891,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2917,17 +2917,17 @@
 - id: SCN-PHARMA-00156
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 다약제 복용 검토 · Mr. Silva
+  title: 다약제 복용 검토 · Mr. Johnson
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Silva
+    name: Mr. Johnson
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 상호작용·중복 확인
@@ -2944,25 +2944,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -2970,18 +2970,18 @@
 - id: SCN-PHARMA-00157
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 소아 용량 환산 · Dr. Ahmed
+  title: 소아 용량 환산 · Charge Nurse Kim
   tagline: How much for a 14-kilo child?
   persona:
-    name: Dr. Ahmed
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 체중 기반 용량 계산
     - 안전 범위 확인
@@ -3023,17 +3023,17 @@
 - id: SCN-PHARMA-00158
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 항생제 복약 순응 상담 · Mr. Larsson
+  title: 항생제 복약 순응 상담 · Mr. Johnson
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Larsson
+    name: Mr. Johnson
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 완수 필요성 설명
@@ -3050,25 +3050,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 항생제 순응
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3076,18 +3076,18 @@
 - id: SCN-PHARMA-00159
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 부작용 상담 · Ms. Park
+  title: 부작용 상담 · Mr. Johnson
   tagline: This pill makes me nauseous.
   persona:
-    name: Ms. Park
+    name: Mr. Johnson
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 부작용 청취·평가
     - 대처·보고 안내
@@ -3103,25 +3103,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 부작용 상담
         - 보고 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3129,18 +3129,18 @@
 - id: SCN-PHARMA-00160
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 고위험 약물 이중확인 · Dr. Weber
+  title: 고위험 약물 이중확인 · Charge Nurse Kim
   tagline: Independent double-check, please.
   persona:
-    name: Dr. Weber
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 독립 이중확인 수행
     - 5 rights 확인
@@ -3182,17 +3182,17 @@
 - id: SCN-PHARMA-00161
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 헤파린 더블 체크 · Dr. Lee
+  title: 헤파린 더블 체크 · Dr. Novak
   tagline: Can you verify this heparin dose?
   persona:
-    name: Dr. Lee
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 용량·속도 이중 확인
@@ -3235,18 +3235,18 @@
 - id: SCN-PHARMA-00162
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 구두 처방 받아쓰기 · Charge Nurse Kim
+  title: 구두 처방 받아쓰기 · Dr. Novak
   tagline: Give me a read-back on that order.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Novak
     role: doctor
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 처방 받아쓰기·복창
     - 오류 방지
@@ -3262,25 +3262,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3288,17 +3288,17 @@
 - id: SCN-PHARMA-00163
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 인슐린 자가주사 교육 · Ms. O'Brien
+  title: 인슐린 자가주사 교육 · Ms. Bauer
   tagline: I'm scared of needles.
   persona:
-    name: Ms. O'Brien
+    name: Ms. Bauer
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 41y / Female
-    hair: '#7A4A22'
+    sub: 38y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 자가주사 단계 교육
@@ -3315,25 +3315,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3341,18 +3341,18 @@
 - id: SCN-PHARMA-00164
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 와파린 복약 상담 · Mr. Dubois
+  title: 와파린 복약 상담 · Ms. Bauer
   tagline: Can I still eat my vegetables?
   persona:
-    name: Mr. Dubois
+    name: Ms. Bauer
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 식이·상호작용 교육
     - 출혈 경고 신호
@@ -3394,17 +3394,17 @@
 - id: SCN-PHARMA-00165
   profession: ""
   eventId: EVT-PHARMA-00105
-  title: 마약류 픽업 2인 인증 · Dr. Ahmed
+  title: 마약류 픽업 2인 인증 · Dr. Novak
   tagline: Two-witness sign-out for Schedule II.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 2인 인증 수행
@@ -3421,25 +3421,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3447,18 +3447,18 @@
 - id: SCN-PHARMA-00166
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 다약제 복용 검토 · Mr. Wagner
+  title: 다약제 복용 검토 · Ms. Bauer
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Wagner
+    name: Ms. Bauer
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 상호작용·중복 확인
     - 복약 정리·교육
@@ -3474,25 +3474,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3500,17 +3500,17 @@
 - id: SCN-PHARMA-00167
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 소아 용량 환산 · RN Marcus
+  title: 소아 용량 환산 · Dr. Novak
   tagline: How much for a 14-kilo child?
   persona:
-    name: RN Marcus
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 체중 기반 용량 계산
@@ -3553,18 +3553,18 @@
 - id: SCN-PHARMA-00168
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 항생제 복약 순응 상담 · Mr. Reyes
+  title: 항생제 복약 순응 상담 · Ms. Bauer
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Reyes
+    name: Ms. Bauer
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 완수 필요성 설명
     - 순응 전략 제공
@@ -3606,18 +3606,18 @@
 - id: SCN-PHARMA-00169
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 부작용 상담 · Mr. Robinson
+  title: 부작용 상담 · Ms. Bauer
   tagline: This pill makes me nauseous.
   persona:
-    name: Mr. Robinson
+    name: Ms. Bauer
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 부작용 청취·평가
     - 대처·보고 안내
@@ -3633,25 +3633,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 부작용 상담
         - 보고 안내
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3659,18 +3659,18 @@
 - id: SCN-PHARMA-00170
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 고위험 약물 이중확인 · Charge Nurse Kim
+  title: 고위험 약물 이중확인 · Dr. Novak
   tagline: Independent double-check, please.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 독립 이중확인 수행
     - 5 rights 확인
@@ -3712,18 +3712,18 @@
 - id: SCN-PHARMA-00171
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 헤파린 더블 체크 · Dr. Novak
+  title: 헤파린 더블 체크 · RN Sofia
   tagline: Can you verify this heparin dose?
   persona:
-    name: Dr. Novak
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 용량·속도 이중 확인
     - 안전 문서화
@@ -3792,25 +3792,25 @@
     dept: PHARMA · STATION
     deptColor: '#16A34A'
     brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - read-back
         - 처방 어휘
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3818,18 +3818,18 @@
 - id: SCN-PHARMA-00173
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 인슐린 자가주사 교육 · Mrs. Kelly
+  title: 인슐린 자가주사 교육 · Mr. Silva
   tagline: I'm scared of needles.
   persona:
-    name: Mrs. Kelly
+    name: Mr. Silva
     role: patient
     ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 자가주사 단계 교육
     - 저혈당 대처 안내
@@ -3845,25 +3845,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 인슐린 교육
         - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3871,17 +3871,17 @@
 - id: SCN-PHARMA-00174
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 와파린 복약 상담 · Mr. Okafor
+  title: 와파린 복약 상담 · Mr. Silva
   tagline: Can I still eat my vegetables?
   persona:
-    name: Mr. Okafor
+    name: Mr. Silva
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 식이·상호작용 교육
@@ -3924,18 +3924,18 @@
 - id: SCN-PHARMA-00175
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 마약류 픽업 2인 인증 · RN Marcus
+  title: 마약류 픽업 2인 인증 · RN Sofia
   tagline: Two-witness sign-out for Schedule II.
   persona:
-    name: RN Marcus
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 2인 인증 수행
     - 재고·폐기 문서화
@@ -3951,25 +3951,25 @@
     dept: PHARMA · NARC SAFE
     deptColor: '#16A34A'
     brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 마약류 관리
         - 2인 검증
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -3977,17 +3977,17 @@
 - id: SCN-PHARMA-00176
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 다약제 복용 검토 · Mr. Patel
+  title: 다약제 복용 검토 · Mr. Silva
   tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Patel
+    name: Mr. Silva
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 상호작용·중복 확인
@@ -4004,25 +4004,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 약물 검토
         - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -4030,18 +4030,18 @@
 - id: SCN-PHARMA-00177
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 소아 용량 환산 · Dr. Lee
+  title: 소아 용량 환산 · RN Sofia
   tagline: How much for a 14-kilo child?
   persona:
-    name: Dr. Lee
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 체중 기반 용량 계산
     - 안전 범위 확인
@@ -4083,17 +4083,17 @@
 - id: SCN-PHARMA-00178
   profession: ""
   eventId: EVT-PHARMA-00106
-  title: 항생제 복약 순응 상담 · Mr. Johnson
+  title: 항생제 복약 순응 상담 · Mr. Silva
   tagline: I feel better, can I stop?
   persona:
-    name: Mr. Johnson
+    name: Mr. Silva
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 완수 필요성 설명
@@ -4110,25 +4110,25 @@
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
     brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 항생제 순응
         - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -4136,18 +4136,18 @@
 - id: SCN-PHARMA-00179
   profession: ""
   eventId: EVT-PHARMA-00107
-  title: 부작용 상담 · Ms. Bauer
+  title: 부작용 상담 · Mr. Silva
   tagline: This pill makes me nauseous.
   persona:
-    name: Ms. Bauer
+    name: Mr. Silva
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 부작용 청취·평가
     - 대처·보고 안내
@@ -4242,38 +4242,38 @@
 - id: SCN-PHARMA-00181
   profession: ""
   eventId: EVT-PHARMA-00107
-  title: 헤파린 더블 체크 · Dr. Ahmed
-  tagline: Can you verify this heparin dose?
+  title: 인슐린 자가주사 교육 · Mrs. Adeyemi
+  tagline: I'm scared of needles.
   persona:
-    name: Dr. Ahmed
-    role: colleague
+    name: Mrs. Adeyemi
+    role: patient
     ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
-    - 용량·속도 이중 확인
-    - 안전 문서화
+    - 자가주사 단계 교육
+    - 저혈당 대처 안내
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Confirming units and rate.
-    - Weight-based dose checks out.
-    - Both of us verified.
+    - Rotate your injection sites.
+    - Pinch the skin gently.
+    - Let's practice together.
   steps: []
   briefing:
-    dept: PHARMA · COUNTER
+    dept: PHARMA · CONSULT
     deptColor: '#16A34A'
-    brief: 고위험 약물 헤파린 용량을 동료와 이중 확인하세요.
+    brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
     difficulty: 3
-    timeLabel: 약 9분
+    timeLabel: 약 8분
     skills:
-        - 고위험 약물
-        - 이중 확인
+        - 인슐린 교육
+        - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4295,38 +4295,250 @@
 - id: SCN-PHARMA-00182
   profession: ""
   eventId: EVT-PHARMA-00107
-  title: 구두 처방 받아쓰기 · Pharmacist Cho
-  tagline: Give me a read-back on that order.
+  title: 와파린 복약 상담 · Mrs. Adeyemi
+  tagline: Can I still eat my vegetables?
   persona:
-    name: Pharmacist Cho
-    role: doctor
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
+    name: Mrs. Adeyemi
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 47y / Female
+    hair: '#0F0F0F'
     hairStyle: bob
   goals:
-    - 처방 받아쓰기·복창
-    - 오류 방지
+    - 식이·상호작용 교육
+    - 출혈 경고 신호
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - 'Read-back: 4 milligrams IV, once.'
-    - Spelling the drug name to confirm.
-    - Order confirmed.
+    - Keep your vitamin K intake steady.
+    - Watch for unusual bruising.
+    - Don't skip your INR checks.
   steps: []
   briefing:
-    dept: PHARMA · STATION
+    dept: PHARMA · CONSULT
     deptColor: '#16A34A'
-    brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    brief: 와파린 복용 환자의 식이·상호작용·모니터링을 상담하세요.
+    difficulty: 3
+    timeLabel: 약 9분
     skills:
-        - read-back
-        - 처방 어휘
+        - 항응고 상담
+        - 상호작용
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00183
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 다약제 복용 검토 · Mrs. Adeyemi
+  tagline: I take a lot of pills — is that okay?
+  persona:
+    name: Mrs. Adeyemi
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
+  goals:
+    - 상호작용·중복 확인
+    - 복약 정리·교육
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's review everything you take.
+    - These two may interact.
+    - Here's a simplified schedule.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 약물 검토
+        - 복약 단순화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00184
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 항생제 복약 순응 상담 · Mrs. Adeyemi
+  tagline: I feel better, can I stop?
+  persona:
+    name: Mrs. Adeyemi
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
+  goals:
+    - 완수 필요성 설명
+    - 순응 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Finish the whole course.
+    - Stopping early can cause resistance.
+    - Set a daily reminder.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 항생제 순응
+        - 환자 교육
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00185
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 부작용 상담 · Mrs. Adeyemi
+  tagline: This pill makes me nauseous.
+  persona:
+    name: Mrs. Adeyemi
+    role: patient
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
+  goals:
+    - 부작용 청취·평가
+    - 대처·보고 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Taking it with food may help.
+    - That side effect is common.
+    - Call us if it gets worse.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 부작용 상담
+        - 보고 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00186
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 인슐린 자가주사 교육 · Mr. Larsson
+  tagline: I'm scared of needles.
+  persona:
+    name: Mr. Larsson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 자가주사 단계 교육
+    - 저혈당 대처 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Rotate your injection sites.
+    - Pinch the skin gently.
+    - Let's practice together.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 인슐린 교육
+        - 환자 시연
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4345,7 +4557,219 @@
     accent: '#15803D'
     chart: null
     riskyPhrases: []
-- id: SCN-PHARMA-00183
+- id: SCN-PHARMA-00187
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 와파린 복약 상담 · Mr. Larsson
+  tagline: Can I still eat my vegetables?
+  persona:
+    name: Mr. Larsson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 식이·상호작용 교육
+    - 출혈 경고 신호
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Keep your vitamin K intake steady.
+    - Watch for unusual bruising.
+    - Don't skip your INR checks.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 와파린 복용 환자의 식이·상호작용·모니터링을 상담하세요.
+    difficulty: 1
+    timeLabel: 약 5분
+    skills:
+        - 항응고 상담
+        - 상호작용
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00188
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 다약제 복용 검토 · Mr. Larsson
+  tagline: I take a lot of pills — is that okay?
+  persona:
+    name: Mr. Larsson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 상호작용·중복 확인
+    - 복약 정리·교육
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's review everything you take.
+    - These two may interact.
+    - Here's a simplified schedule.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 약물 검토
+        - 복약 단순화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00189
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 항생제 복약 순응 상담 · Mr. Larsson
+  tagline: I feel better, can I stop?
+  persona:
+    name: Mr. Larsson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 완수 필요성 설명
+    - 순응 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Finish the whole course.
+    - Stopping early can cause resistance.
+    - Set a daily reminder.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 항생제 순응
+        - 환자 교육
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00190
+  profession: ""
+  eventId: EVT-PHARMA-00107
+  title: 부작용 상담 · Mr. Larsson
+  tagline: This pill makes me nauseous.
+  persona:
+    name: Mr. Larsson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 부작용 청취·평가
+    - 대처·보고 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Taking it with food may help.
+    - That side effect is common.
+    - Call us if it gets worse.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 부작용 상담
+        - 보고 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00191
   profession: ""
   eventId: EVT-PHARMA-00107
   title: 인슐린 자가주사 교육 · Ms. Park
@@ -4356,7 +4780,7 @@
     ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
+    mood: worried
     sub: 29y / Female
     hair: '#141414'
     hairStyle: long
@@ -4376,7 +4800,7 @@
     deptColor: '#16A34A'
     brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
     difficulty: 2
-    timeLabel: 약 7분
+    timeLabel: 약 6분
     skills:
         - 인슐린 교육
         - 환자 시연
@@ -4398,9 +4822,274 @@
     accent: '#15803D'
     chart: null
     riskyPhrases: []
-- id: SCN-PHARMA-00184
+- id: SCN-PHARMA-00192
   profession: ""
-  eventId: EVT-PHARMA-00107
+  eventId: EVT-PHARMA-00108
+  title: 와파린 복약 상담 · Ms. Park
+  tagline: Can I still eat my vegetables?
+  persona:
+    name: Ms. Park
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 식이·상호작용 교육
+    - 출혈 경고 신호
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Keep your vitamin K intake steady.
+    - Watch for unusual bruising.
+    - Don't skip your INR checks.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 와파린 복용 환자의 식이·상호작용·모니터링을 상담하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 항응고 상담
+        - 상호작용
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00193
+  profession: ""
+  eventId: EVT-PHARMA-00108
+  title: 다약제 복용 검토 · Ms. Park
+  tagline: I take a lot of pills — is that okay?
+  persona:
+    name: Ms. Park
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 상호작용·중복 확인
+    - 복약 정리·교육
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's review everything you take.
+    - These two may interact.
+    - Here's a simplified schedule.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 약물 검토
+        - 복약 단순화
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00194
+  profession: ""
+  eventId: EVT-PHARMA-00108
+  title: 항생제 복약 순응 상담 · Ms. Park
+  tagline: I feel better, can I stop?
+  persona:
+    name: Ms. Park
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 완수 필요성 설명
+    - 순응 전략 제공
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Finish the whole course.
+    - Stopping early can cause resistance.
+    - Set a daily reminder.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 항생제 순응
+        - 환자 교육
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00195
+  profession: ""
+  eventId: EVT-PHARMA-00108
+  title: 부작용 상담 · Ms. Park
+  tagline: This pill makes me nauseous.
+  persona:
+    name: Ms. Park
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 부작용 청취·평가
+    - 대처·보고 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Taking it with food may help.
+    - That side effect is common.
+    - Call us if it gets worse.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
+    difficulty: 1
+    timeLabel: 약 5분
+    skills:
+        - 부작용 상담
+        - 보고 안내
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00196
+  profession: ""
+  eventId: EVT-PHARMA-00108
+  title: 인슐린 자가주사 교육 · Mr. Thompson
+  tagline: I'm scared of needles.
+  persona:
+    name: Mr. Thompson
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 자가주사 단계 교육
+    - 저혈당 대처 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Rotate your injection sites.
+    - Pinch the skin gently.
+    - Let's practice together.
+  steps: []
+  briefing:
+    dept: PHARMA · CONSULT
+    deptColor: '#16A34A'
+    brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 인슐린 교육
+        - 환자 시연
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#DCFCE7'
+    accent: '#15803D'
+    chart: null
+    riskyPhrases: []
+- id: SCN-PHARMA-00197
+  profession: ""
+  eventId: EVT-PHARMA-00108
   title: 와파린 복약 상담 · Mr. Thompson
   tagline: Can I still eat my vegetables?
   persona:
@@ -4409,7 +5098,7 @@
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
+    mood: pain
     sub: 68y / Male
     hair: '#8A8A8A'
     hairStyle: short
@@ -4451,744 +5140,55 @@
     accent: '#15803D'
     chart: null
     riskyPhrases: []
-- id: SCN-PHARMA-00185
-  profession: ""
-  eventId: EVT-PHARMA-00107
-  title: 마약류 픽업 2인 인증 · Dr. Lee
-  tagline: Two-witness sign-out for Schedule II.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 2인 인증 수행
-    - 재고·폐기 문서화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Count matches the record.
-    - Both witnesses signing.
-    - Waste documented together.
-  steps: []
-  briefing:
-    dept: PHARMA · NARC SAFE
-    deptColor: '#16A34A'
-    brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 마약류 관리
-        - 2인 검증
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00186
-  profession: ""
-  eventId: EVT-PHARMA-00107
-  title: 다약제 복용 검토 · Mr. Yamamoto
-  tagline: I take a lot of pills — is that okay?
-  persona:
-    name: Mr. Yamamoto
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
-  goals:
-    - 상호작용·중복 확인
-    - 복약 정리·교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Let's review everything you take.
-    - These two may interact.
-    - Here's a simplified schedule.
-  steps: []
-  briefing:
-    dept: PHARMA · CONSULT
-    deptColor: '#16A34A'
-    brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 약물 검토
-        - 복약 단순화
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00187
-  profession: ""
-  eventId: EVT-PHARMA-00107
-  title: 소아 용량 환산 · Dr. Novak
-  tagline: How much for a 14-kilo child?
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 체중 기반 용량 계산
-    - 안전 범위 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Dose is per kilogram.
-    - Double-checking the math.
-    - That's within the safe range.
-  steps: []
-  briefing:
-    dept: PHARMA · COUNTER
-    deptColor: '#16A34A'
-    brief: 체중 기반 소아 용량을 계산하고 검증하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 용량 계산
-        - 체중 기반
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00188
-  profession: ""
-  eventId: EVT-PHARMA-00107
-  title: 항생제 복약 순응 상담 · Mr. Dubois
-  tagline: I feel better, can I stop?
-  persona:
-    name: Mr. Dubois
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 완수 필요성 설명
-    - 순응 전략 제공
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Finish the whole course.
-    - Stopping early can cause resistance.
-    - Set a daily reminder.
-  steps: []
-  briefing:
-    dept: PHARMA · CONSULT
-    deptColor: '#16A34A'
-    brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 항생제 순응
-        - 환자 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00189
-  profession: ""
-  eventId: EVT-PHARMA-00107
-  title: 부작용 상담 · Mrs. Santos
-  tagline: This pill makes me nauseous.
-  persona:
-    name: Mrs. Santos
-    role: patient
-    ageRange: 70s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
-  goals:
-    - 부작용 청취·평가
-    - 대처·보고 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Taking it with food may help.
-    - That side effect is common.
-    - Call us if it gets worse.
-  steps: []
-  briefing:
-    dept: PHARMA · CONSULT
-    deptColor: '#16A34A'
-    brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 부작용 상담
-        - 보고 안내
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00190
-  profession: ""
-  eventId: EVT-PHARMA-00107
-  title: 고위험 약물 이중확인 · Pharmacist Cho
-  tagline: Independent double-check, please.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 독립 이중확인 수행
-    - 5 rights 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I'll check independently.
-    - Patient, drug, dose, route, time.
-    - Confirmed, all five rights.
-  steps: []
-  briefing:
-    dept: PHARMA · COUNTER
-    deptColor: '#16A34A'
-    brief: 고위험 약물을 독립 이중확인 절차로 검증하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 이중 확인
-        - 안전 문화
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00191
-  profession: ""
-  eventId: EVT-PHARMA-00107
-  title: 헤파린 더블 체크 · RN Marcus
-  tagline: Can you verify this heparin dose?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 용량·속도 이중 확인
-    - 안전 문서화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Confirming units and rate.
-    - Weight-based dose checks out.
-    - Both of us verified.
-  steps: []
-  briefing:
-    dept: PHARMA · COUNTER
-    deptColor: '#16A34A'
-    brief: 고위험 약물 헤파린 용량을 동료와 이중 확인하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 고위험 약물
-        - 이중 확인
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00192
-  profession: ""
-  eventId: EVT-PHARMA-00108
-  title: 구두 처방 받아쓰기 · Dr. Weber
-  tagline: Give me a read-back on that order.
-  persona:
-    name: Dr. Weber
-    role: doctor
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 처방 받아쓰기·복창
-    - 오류 방지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - 'Read-back: 4 milligrams IV, once.'
-    - Spelling the drug name to confirm.
-    - Order confirmed.
-  steps: []
-  briefing:
-    dept: PHARMA · STATION
-    deptColor: '#16A34A'
-    brief: 구두 처방을 받아 적고 복창 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - read-back
-        - 처방 어휘
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00193
-  profession: ""
-  eventId: EVT-PHARMA-00108
-  title: 인슐린 자가주사 교육 · Mr. Robinson
-  tagline: I'm scared of needles.
-  persona:
-    name: Mr. Robinson
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
-  goals:
-    - 자가주사 단계 교육
-    - 저혈당 대처 안내
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Rotate your injection sites.
-    - Pinch the skin gently.
-    - Let's practice together.
-  steps: []
-  briefing:
-    dept: PHARMA · CONSULT
-    deptColor: '#16A34A'
-    brief: 당뇨 환자에게 인슐린 자가주사법을 단계별로 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 인슐린 교육
-        - 환자 시연
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00194
-  profession: ""
-  eventId: EVT-PHARMA-00108
-  title: 와파린 복약 상담 · Mrs. Hopkins
-  tagline: Can I still eat my vegetables?
-  persona:
-    name: Mrs. Hopkins
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
-  goals:
-    - 식이·상호작용 교육
-    - 출혈 경고 신호
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Keep your vitamin K intake steady.
-    - Watch for unusual bruising.
-    - Don't skip your INR checks.
-  steps: []
-  briefing:
-    dept: PHARMA · CONSULT
-    deptColor: '#16A34A'
-    brief: 와파린 복용 환자의 식이·상호작용·모니터링을 상담하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 항응고 상담
-        - 상호작용
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00195
-  profession: ""
-  eventId: EVT-PHARMA-00108
-  title: 마약류 픽업 2인 인증 · Dr. Novak
-  tagline: Two-witness sign-out for Schedule II.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 2인 인증 수행
-    - 재고·폐기 문서화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Count matches the record.
-    - Both witnesses signing.
-    - Waste documented together.
-  steps: []
-  briefing:
-    dept: PHARMA · NARC SAFE
-    deptColor: '#16A34A'
-    brief: 마약류 불출을 2인 인증 절차로 처리하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 마약류 관리
-        - 2인 검증
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00196
-  profession: ""
-  eventId: EVT-PHARMA-00108
-  title: 다약제 복용 검토 · Mr. Chen
-  tagline: I take a lot of pills — is that okay?
-  persona:
-    name: Mr. Chen
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 상호작용·중복 확인
-    - 복약 정리·교육
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Let's review everything you take.
-    - These two may interact.
-    - Here's a simplified schedule.
-  steps: []
-  briefing:
-    dept: PHARMA · CONSULT
-    deptColor: '#16A34A'
-    brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 약물 검토
-        - 복약 단순화
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
-- id: SCN-PHARMA-00197
-  profession: ""
-  eventId: EVT-PHARMA-00108
-  title: 소아 용량 환산 · Dr. Ahmed
-  tagline: How much for a 14-kilo child?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 체중 기반 용량 계산
-    - 안전 범위 확인
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Dose is per kilogram.
-    - Double-checking the math.
-    - That's within the safe range.
-  steps: []
-  briefing:
-    dept: PHARMA · COUNTER
-    deptColor: '#16A34A'
-    brief: 체중 기반 소아 용량을 계산하고 검증하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 용량 계산
-        - 체중 기반
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#DCFCE7'
-    accent: '#15803D'
-    chart: null
-    riskyPhrases: []
 - id: SCN-PHARMA-00198
   profession: ""
   eventId: EVT-PHARMA-00108
-  title: 항생제 복약 순응 상담 · Mr. Okafor
-  tagline: I feel better, can I stop?
+  title: 다약제 복용 검토 · Mr. Thompson
+  tagline: I take a lot of pills — is that okay?
   persona:
-    name: Mr. Okafor
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 54y / Male
-    hair: '#111111'
+    mood: pain
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
-    - 완수 필요성 설명
-    - 순응 전략 제공
+    - 상호작용·중복 확인
+    - 복약 정리·교육
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Finish the whole course.
-    - Stopping early can cause resistance.
-    - Set a daily reminder.
+    - Let's review everything you take.
+    - These two may interact.
+    - Here's a simplified schedule.
   steps: []
   briefing:
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
-    brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    brief: 다약제 복용 환자의 상호작용·중복을 검토하고 정리하세요.
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
-        - 항생제 순응
-        - 환자 교육
+        - 약물 검토
+        - 복약 단순화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#DCFCE7'
     accent: '#15803D'
     chart: null
@@ -5196,38 +5196,38 @@
 - id: SCN-PHARMA-00199
   profession: ""
   eventId: EVT-PHARMA-00108
-  title: 부작용 상담 · Ms. Nguyen
-  tagline: This pill makes me nauseous.
+  title: 항생제 복약 순응 상담 · Mr. Thompson
+  tagline: I feel better, can I stop?
   persona:
-    name: Ms. Nguyen
+    name: Mr. Thompson
     role: patient
-    ageRange: 20s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    mood: pain
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
-    - 부작용 청취·평가
-    - 대처·보고 안내
+    - 완수 필요성 설명
+    - 순응 전략 제공
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Taking it with food may help.
-    - That side effect is common.
-    - Call us if it gets worse.
+    - Finish the whole course.
+    - Stopping early can cause resistance.
+    - Set a daily reminder.
   steps: []
   briefing:
     dept: PHARMA · CONSULT
     deptColor: '#16A34A'
-    brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
+    brief: 증상 호전에도 항생제를 완수해야 함을 교육하세요.
     difficulty: 2
-    timeLabel: 약 8분
+    timeLabel: 약 6분
     skills:
-        - 부작용 상담
-        - 보고 안내
+        - 항생제 순응
+        - 환자 교육
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5249,38 +5249,38 @@
 - id: SCN-PHARMA-00200
   profession: ""
   eventId: EVT-PHARMA-00108
-  title: 고위험 약물 이중확인 · Dr. Weber
-  tagline: Independent double-check, please.
+  title: 부작용 상담 · Mr. Thompson
+  tagline: This pill makes me nauseous.
   persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
+    name: Mr. Thompson
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 68y / Male
     hair: '#8A8A8A'
     hairStyle: short
   goals:
-    - 독립 이중확인 수행
-    - 5 rights 확인
+    - 부작용 청취·평가
+    - 대처·보고 안내
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - I'll check independently.
-    - Patient, drug, dose, route, time.
-    - Confirmed, all five rights.
+    - Taking it with food may help.
+    - That side effect is common.
+    - Call us if it gets worse.
   steps: []
   briefing:
-    dept: PHARMA · COUNTER
+    dept: PHARMA · CONSULT
     deptColor: '#16A34A'
-    brief: 고위험 약물을 독립 이중확인 절차로 검증하세요.
+    brief: 약물 부작용을 청취하고 대처·보고를 안내하세요.
     difficulty: 2
-    timeLabel: 약 6분
+    timeLabel: 약 7분
     skills:
-        - 이중 확인
-        - 안전 문화
+        - 부작용 상담
+        - 보고 안내
     rewards:
         - icon: ⭐
           label: 경험치

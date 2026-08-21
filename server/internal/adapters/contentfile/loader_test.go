@@ -1,7 +1,9 @@
 package contentfile
 
 import (
+	"fmt"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -78,5 +80,54 @@ func TestLoadRealContentAndBriefing(t *testing.T) {
 	}
 	if !quizFound {
 		t.Fatal("QZ-ER-00001 quiz not loaded")
+	}
+}
+
+// No two scenarios in the same department may carry the same title.
+//
+// gencontent expands "topic × patient × difficulty", but the three axes were three
+// functions of one counter — topic k%nt, persona k, difficulty k%3 — so whenever the topic
+// count was a multiple of the persona pool and of 3 (NICU: 10 topics, 6 parent personas)
+// all three returned to their starting values together. The same topic met the same patient
+// again with only a mood word changed: 387 titles duplicated across 1,050 of 3,203
+// scenarios, a third of the bank. It surfaced as a search for 흉통 returning five rows that
+// looked identical.
+//
+// Asserted over the committed content rather than inside the generator, because the
+// committed content is what ships — a generator that is right and a tree that was written
+// by an older one look the same to everybody downstream.
+//
+// Titles shared ACROSS departments are allowed and listed: 다학제 회진 인계 happens in the
+// NICU and in the PICU, they are different scenarios, and every screen that lists one shows
+// the ward beside it.
+func TestNoDuplicateScenarioTitlesWithinADepartment(t *testing.T) {
+	b, err := Load(filepath.Join("..", "..", "..", "content"))
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	if len(b.Scenarios) < 100 {
+		t.Fatalf("expected the real content tree, got %d scenarios", len(b.Scenarios))
+	}
+
+	seen := map[string]string{} // dept|title -> first id
+	dupes := []string{}
+	for _, s := range b.Scenarios {
+		parts := strings.Split(s.ID, "-")
+		if len(parts) < 3 {
+			continue
+		}
+		key := parts[1] + "|" + s.Title
+		if first, ok := seen[key]; ok {
+			dupes = append(dupes, fmt.Sprintf("%s and %s both titled %q", first, s.ID, s.Title))
+			continue
+		}
+		seen[key] = s.ID
+	}
+	if len(dupes) > 0 {
+		show := dupes
+		if len(show) > 10 {
+			show = show[:10]
+		}
+		t.Fatalf("%d duplicate titles within a department:\n  %s", len(dupes), strings.Join(show, "\n  "))
 	}
 }

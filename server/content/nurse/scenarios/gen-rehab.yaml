@@ -55,18 +55,18 @@
 - id: SCN-REHAB-00102
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 보행 훈련 지원 · Ms. Park
+  title: 보행 훈련 지원 · Mr. Larsson
   tagline: My legs feel like jelly.
   persona:
-    name: Ms. Park
+    name: Mr. Larsson
     role: patient
-    ageRange: 20s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 안전한 보행 지원
     - 격려
@@ -82,11 +82,64 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 보행 훈련
         - 안전
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00103
+  profession: ""
+  eventId: EVT-REHAB-00101
+  title: 뇌졸중 후 재활 교육 · Mr. Larsson
+  tagline: Will my arm ever work again?
+  persona:
+    name: Mr. Larsson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 회복 과정 설명
+    - 희망·현실 균형
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Recovery takes time and repetition.
+    - Small gains are real gains.
+    - We'll work on it together.
+  steps: []
+  briefing:
+    dept: REHAB · OT ROOM
+    deptColor: '#0284C7'
+    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 뇌졸중 재활
+        - 희망 소통
     rewards:
         - icon: ⭐
           label: 경험치
@@ -105,74 +158,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00103
-  profession: ""
-  eventId: EVT-REHAB-00101
-  title: 뇌졸중 후 재활 교육 · Mr. Thompson
-  tagline: Will my arm ever work again?
-  persona:
-    name: Mr. Thompson
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 회복 과정 설명
-    - 희망·현실 균형
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Recovery takes time and repetition.
-    - Small gains are real gains.
-    - We'll work on it together.
-  steps: []
-  briefing:
-    dept: REHAB · OT ROOM
-    deptColor: '#0284C7'
-    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 뇌졸중 재활
-        - 희망 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
 - id: SCN-REHAB-00104
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 보조기구 사용 교육 · Mrs. Haddad
+  title: 보조기구 사용 교육 · Mr. Larsson
   tagline: This walker feels so awkward.
   persona:
-    name: Mrs. Haddad
+    name: Mr. Larsson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 보조기구 사용 교육
     - 안전 강조
@@ -214,17 +214,17 @@
 - id: SCN-REHAB-00105
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 통증·피로 조절 상담 · Mr. Yamamoto
+  title: 통증·피로 조절 상담 · Mr. Larsson
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Larsson
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 통증·피로 사정
@@ -241,25 +241,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -267,18 +267,18 @@
 - id: SCN-REHAB-00106
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 낙상 후 자신감 회복 · Ms. O'Brien
+  title: 낙상 후 자신감 회복 · Mr. Larsson
   tagline: I'm scared I'll fall again.
   persona:
-    name: Ms. O'Brien
+    name: Mr. Larsson
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -294,25 +294,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -320,17 +320,17 @@
 - id: SCN-REHAB-00107
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 일상생활동작 훈련 · Mr. Dubois
+  title: 일상생활동작 훈련 · Mr. Larsson
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Dubois
+    name: Mr. Larsson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - ADL 재훈련
@@ -373,18 +373,18 @@
 - id: SCN-REHAB-00108
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 가정 운동 프로그램 교육 · Mrs. Santos
+  title: 가정 운동 프로그램 교육 · Mr. Larsson
   tagline: What should I do at home?
   persona:
-    name: Mrs. Santos
+    name: Mr. Larsson
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 가정 운동 교육
     - 순응 지원
@@ -426,17 +426,17 @@
 - id: SCN-REHAB-00109
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 가족 돌봄 훈련 · Mr. Wagner
+  title: 가족 돌봄 훈련 · Mr. Larsson
   tagline: How do I help him transfer safely?
   persona:
-    name: Mr. Wagner
+    name: Mr. Larsson
     role: family
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 이동 보조 교육
@@ -453,25 +453,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 교육
         - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -479,18 +479,18 @@
 - id: SCN-REHAB-00110
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 재활팀 인계 · RN Marcus
+  title: 재활팀 인계 · Pharmacist Cho
   tagline: Rehab handoff.
   persona:
-    name: RN Marcus
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 진전·주의 인계
     - 목표 공유
@@ -532,18 +532,18 @@
 - id: SCN-REHAB-00111
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 재활 목표 설정 · Mr. Reyes
+  title: 재활 목표 설정 · Ms. Park
   tagline: I just want to walk again.
   persona:
-    name: Mr. Reyes
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 현실적 목표 수립
     - 동기 부여
@@ -585,18 +585,18 @@
 - id: SCN-REHAB-00112
   profession: ""
   eventId: EVT-REHAB-00101
-  title: 보행 훈련 지원 · Mr. Robinson
+  title: 보행 훈련 지원 · Ms. Park
   tagline: My legs feel like jelly.
   persona:
-    name: Mr. Robinson
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 안전한 보행 지원
     - 격려
@@ -612,64 +612,11 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 보행 훈련
         - 안전
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00113
-  profession: ""
-  eventId: EVT-REHAB-00101
-  title: 뇌졸중 후 재활 교육 · Mrs. Hopkins
-  tagline: Will my arm ever work again?
-  persona:
-    name: Mrs. Hopkins
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
-  goals:
-    - 회복 과정 설명
-    - 희망·현실 균형
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Recovery takes time and repetition.
-    - Small gains are real gains.
-    - We'll work on it together.
-  steps: []
-  briefing:
-    dept: REHAB · OT ROOM
-    deptColor: '#0284C7'
-    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 뇌졸중 재활
-        - 희망 소통
     rewards:
         - icon: ⭐
           label: 경험치
@@ -688,20 +635,73 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00114
+- id: SCN-REHAB-00113
   profession: ""
-  eventId: EVT-REHAB-00102
-  title: 보조기구 사용 교육 · Ms. Alvarez
-  tagline: This walker feels so awkward.
+  eventId: EVT-REHAB-00101
+  title: 뇌졸중 후 재활 교육 · Ms. Park
+  tagline: Will my arm ever work again?
   persona:
-    name: Ms. Alvarez
+    name: Ms. Park
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 회복 과정 설명
+    - 희망·현실 균형
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Recovery takes time and repetition.
+    - Small gains are real gains.
+    - We'll work on it together.
+  steps: []
+  briefing:
+    dept: REHAB · OT ROOM
+    deptColor: '#0284C7'
+    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 뇌졸중 재활
+        - 희망 소통
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00114
+  profession: ""
+  eventId: EVT-REHAB-00102
+  title: 보조기구 사용 교육 · Ms. Park
+  tagline: This walker feels so awkward.
+  persona:
+    name: Ms. Park
+    role: patient
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 29y / Female
+    hair: '#141414'
     hairStyle: long
   goals:
     - 보조기구 사용 교육
@@ -744,18 +744,18 @@
 - id: SCN-REHAB-00115
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 통증·피로 조절 상담 · Mr. Chen
+  title: 통증·피로 조절 상담 · Ms. Park
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Chen
+    name: Ms. Park
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 통증·피로 사정
     - 페이싱 조율
@@ -771,25 +771,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -797,18 +797,18 @@
 - id: SCN-REHAB-00116
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 낙상 후 자신감 회복 · Mrs. Kelly
+  title: 낙상 후 자신감 회복 · Ms. Park
   tagline: I'm scared I'll fall again.
   persona:
-    name: Mrs. Kelly
+    name: Ms. Park
     role: patient
-    ageRange: 70s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -824,25 +824,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -850,18 +850,18 @@
 - id: SCN-REHAB-00117
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 일상생활동작 훈련 · Mr. Okafor
+  title: 일상생활동작 훈련 · Ms. Park
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Okafor
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - ADL 재훈련
     - 독립성 지지
@@ -903,17 +903,17 @@
 - id: SCN-REHAB-00118
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 가정 운동 프로그램 교육 · Ms. Nguyen
+  title: 가정 운동 프로그램 교육 · Ms. Park
   tagline: What should I do at home?
   persona:
-    name: Ms. Nguyen
+    name: Ms. Park
     role: patient
     ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 26y / Female
-    hair: '#1A1A1A'
+    sub: 29y / Female
+    hair: '#141414'
     hairStyle: long
   goals:
     - 가정 운동 교육
@@ -930,64 +930,11 @@
     dept: REHAB · OT ROOM
     deptColor: '#0284C7'
     brief: 퇴원 후 가정 운동 프로그램을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 홈 프로그램
         - 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00119
-  profession: ""
-  eventId: EVT-REHAB-00102
-  title: 가족 돌봄 훈련 · Mr. Patel
-  tagline: How do I help him transfer safely?
-  persona:
-    name: Mr. Patel
-    role: family
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
-  goals:
-    - 이동 보조 교육
-    - 가족 참여
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Bend your knees, not your back.
-    - Let him do what he can.
-    - Let's practice together.
-  steps: []
-  briefing:
-    dept: REHAB · PT GYM
-    deptColor: '#0284C7'
-    brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 가족 교육
-        - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1006,20 +953,73 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
+- id: SCN-REHAB-00119
+  profession: ""
+  eventId: EVT-REHAB-00102
+  title: 가족 돌봄 훈련 · Ms. Park
+  tagline: How do I help him transfer safely?
+  persona:
+    name: Ms. Park
+    role: family
+    ageRange: 20s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
+  goals:
+    - 이동 보조 교육
+    - 가족 참여
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Bend your knees, not your back.
+    - Let him do what he can.
+    - Let's practice together.
+  steps: []
+  briefing:
+    dept: REHAB · PT GYM
+    deptColor: '#0284C7'
+    brief: 가족에게 안전한 이동 보조법을 교육하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 가족 교육
+        - 이동 보조
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
 - id: SCN-REHAB-00120
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 재활팀 인계 · Dr. Lee
+  title: 재활팀 인계 · RN Marcus
   tagline: Rehab handoff.
   persona:
-    name: Dr. Lee
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 진전·주의 인계
@@ -1062,17 +1062,17 @@
 - id: SCN-REHAB-00121
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 재활 목표 설정 · Mr. Johnson
+  title: 재활 목표 설정 · Mr. Thompson
   tagline: I just want to walk again.
   persona:
-    name: Mr. Johnson
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 현실적 목표 수립
@@ -1115,18 +1115,18 @@
 - id: SCN-REHAB-00122
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 보행 훈련 지원 · Ms. Bauer
+  title: 보행 훈련 지원 · Mr. Thompson
   tagline: My legs feel like jelly.
   persona:
-    name: Ms. Bauer
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 안전한 보행 지원
     - 격려
@@ -1142,25 +1142,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 보행 훈련
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1168,17 +1168,17 @@
 - id: SCN-REHAB-00123
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 뇌졸중 후 재활 교육 · Mr. Silva
+  title: 뇌졸중 후 재활 교육 · Mr. Thompson
   tagline: Will my arm ever work again?
   persona:
-    name: Mr. Silva
+    name: Mr. Thompson
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 회복 과정 설명
@@ -1221,18 +1221,18 @@
 - id: SCN-REHAB-00124
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 보조기구 사용 교육 · Mrs. Adeyemi
+  title: 보조기구 사용 교육 · Mr. Thompson
   tagline: This walker feels so awkward.
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 보조기구 사용 교육
     - 안전 강조
@@ -1274,17 +1274,17 @@
 - id: SCN-REHAB-00125
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 통증·피로 조절 상담 · Mr. Larsson
+  title: 통증·피로 조절 상담 · Mr. Thompson
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Larsson
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 통증·피로 사정
@@ -1301,25 +1301,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1327,18 +1327,18 @@
 - id: SCN-REHAB-00126
   profession: ""
   eventId: EVT-REHAB-00102
-  title: 낙상 후 자신감 회복 · Ms. Park
+  title: 낙상 후 자신감 회복 · Mr. Thompson
   tagline: I'm scared I'll fall again.
   persona:
-    name: Ms. Park
+    name: Mr. Thompson
     role: patient
-    ageRange: 20s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -1354,25 +1354,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1433,18 +1433,18 @@
 - id: SCN-REHAB-00128
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 가정 운동 프로그램 교육 · Mrs. Haddad
+  title: 가정 운동 프로그램 교육 · Mr. Thompson
   tagline: What should I do at home?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 가정 운동 교육
     - 순응 지원
@@ -1460,64 +1460,11 @@
     dept: REHAB · OT ROOM
     deptColor: '#0284C7'
     brief: 퇴원 후 가정 운동 프로그램을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 홈 프로그램
         - 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00129
-  profession: ""
-  eventId: EVT-REHAB-00103
-  title: 가족 돌봄 훈련 · Mr. Yamamoto
-  tagline: How do I help him transfer safely?
-  persona:
-    name: Mr. Yamamoto
-    role: family
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
-  goals:
-    - 이동 보조 교육
-    - 가족 참여
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Bend your knees, not your back.
-    - Let him do what he can.
-    - Let's practice together.
-  steps: []
-  briefing:
-    dept: REHAB · PT GYM
-    deptColor: '#0284C7'
-    brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 가족 교육
-        - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1536,20 +1483,73 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
+- id: SCN-REHAB-00129
+  profession: ""
+  eventId: EVT-REHAB-00103
+  title: 가족 돌봄 훈련 · Mr. Thompson
+  tagline: How do I help him transfer safely?
+  persona:
+    name: Mr. Thompson
+    role: family
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 이동 보조 교육
+    - 가족 참여
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Bend your knees, not your back.
+    - Let him do what he can.
+    - Let's practice together.
+  steps: []
+  briefing:
+    dept: REHAB · PT GYM
+    deptColor: '#0284C7'
+    brief: 가족에게 안전한 이동 보조법을 교육하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 가족 교육
+        - 이동 보조
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
 - id: SCN-REHAB-00130
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 재활팀 인계 · Dr. Novak
+  title: 재활팀 인계 · Dr. Weber
   tagline: Rehab handoff.
   persona:
-    name: Dr. Novak
+    name: Dr. Weber
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 진전·주의 인계
@@ -1592,18 +1592,18 @@
 - id: SCN-REHAB-00131
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 재활 목표 설정 · Mr. Dubois
+  title: 재활 목표 설정 · Mrs. Haddad
   tagline: I just want to walk again.
   persona:
-    name: Mr. Dubois
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 현실적 목표 수립
     - 동기 부여
@@ -1645,17 +1645,17 @@
 - id: SCN-REHAB-00132
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 보행 훈련 지원 · Mrs. Santos
+  title: 보행 훈련 지원 · Mrs. Haddad
   tagline: My legs feel like jelly.
   persona:
-    name: Mrs. Santos
+    name: Mrs. Haddad
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 74y / Female
-    hair: '#A0A0A0'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 안전한 보행 지원
@@ -1672,11 +1672,64 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 보행 훈련
         - 안전
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00133
+  profession: ""
+  eventId: EVT-REHAB-00103
+  title: 뇌졸중 후 재활 교육 · Mrs. Haddad
+  tagline: Will my arm ever work again?
+  persona:
+    name: Mrs. Haddad
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
+  goals:
+    - 회복 과정 설명
+    - 희망·현실 균형
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Recovery takes time and repetition.
+    - Small gains are real gains.
+    - We'll work on it together.
+  steps: []
+  briefing:
+    dept: REHAB · OT ROOM
+    deptColor: '#0284C7'
+    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 뇌졸중 재활
+        - 희망 소통
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1695,74 +1748,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00133
-  profession: ""
-  eventId: EVT-REHAB-00103
-  title: 뇌졸중 후 재활 교육 · Mr. Wagner
-  tagline: Will my arm ever work again?
-  persona:
-    name: Mr. Wagner
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
-  goals:
-    - 회복 과정 설명
-    - 희망·현실 균형
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Recovery takes time and repetition.
-    - Small gains are real gains.
-    - We'll work on it together.
-  steps: []
-  briefing:
-    dept: REHAB · OT ROOM
-    deptColor: '#0284C7'
-    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 뇌졸중 재활
-        - 희망 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
 - id: SCN-REHAB-00134
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 보조기구 사용 교육 · Ms. Ivanova
+  title: 보조기구 사용 교육 · Mrs. Haddad
   tagline: This walker feels so awkward.
   persona:
-    name: Ms. Ivanova
+    name: Mrs. Haddad
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 보조기구 사용 교육
     - 안전 강조
@@ -1804,18 +1804,18 @@
 - id: SCN-REHAB-00135
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 통증·피로 조절 상담 · Mr. Reyes
+  title: 통증·피로 조절 상담 · Mrs. Haddad
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Reyes
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 통증·피로 사정
     - 페이싱 조율
@@ -1831,25 +1831,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1857,18 +1857,18 @@
 - id: SCN-REHAB-00136
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 낙상 후 자신감 회복 · Mr. Robinson
+  title: 낙상 후 자신감 회복 · Mrs. Haddad
   tagline: I'm scared I'll fall again.
   persona:
-    name: Mr. Robinson
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -1884,25 +1884,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -1910,17 +1910,17 @@
 - id: SCN-REHAB-00137
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 일상생활동작 훈련 · Mrs. Hopkins
+  title: 일상생활동작 훈련 · Mrs. Haddad
   tagline: I can't even button my shirt.
   persona:
-    name: Mrs. Hopkins
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 67y / Female
-    hair: '#9A6B3F'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - ADL 재훈련
@@ -1963,18 +1963,18 @@
 - id: SCN-REHAB-00138
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 가정 운동 프로그램 교육 · Ms. Alvarez
+  title: 가정 운동 프로그램 교육 · Mrs. Haddad
   tagline: What should I do at home?
   persona:
-    name: Ms. Alvarez
+    name: Mrs. Haddad
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 가정 운동 교육
     - 순응 지원
@@ -2016,18 +2016,18 @@
 - id: SCN-REHAB-00139
   profession: ""
   eventId: EVT-REHAB-00103
-  title: 가족 돌봄 훈련 · Mr. Chen
+  title: 가족 돌봄 훈련 · Mrs. Haddad
   tagline: How do I help him transfer safely?
   persona:
-    name: Mr. Chen
+    name: Mrs. Haddad
     role: family
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 이동 보조 교육
     - 가족 참여
@@ -2043,25 +2043,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 교육
         - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2069,17 +2069,17 @@
 - id: SCN-REHAB-00140
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 재활팀 인계 · Dr. Ahmed
+  title: 재활팀 인계 · Dr. Lee
   tagline: Rehab handoff.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 진전·주의 인계
@@ -2122,17 +2122,17 @@
 - id: SCN-REHAB-00141
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 재활 목표 설정 · Mr. Okafor
+  title: 재활 목표 설정 · Mr. Yamamoto
   tagline: I just want to walk again.
   persona:
-    name: Mr. Okafor
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 현실적 목표 수립
@@ -2175,18 +2175,18 @@
 - id: SCN-REHAB-00142
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 보행 훈련 지원 · Ms. Nguyen
+  title: 보행 훈련 지원 · Mr. Yamamoto
   tagline: My legs feel like jelly.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 20s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 안전한 보행 지원
     - 격려
@@ -2202,64 +2202,11 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 보행 훈련
         - 안전
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00143
-  profession: ""
-  eventId: EVT-REHAB-00104
-  title: 뇌졸중 후 재활 교육 · Mr. Patel
-  tagline: Will my arm ever work again?
-  persona:
-    name: Mr. Patel
-    role: patient
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
-  goals:
-    - 회복 과정 설명
-    - 희망·현실 균형
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Recovery takes time and repetition.
-    - Small gains are real gains.
-    - We'll work on it together.
-  steps: []
-  briefing:
-    dept: REHAB · OT ROOM
-    deptColor: '#0284C7'
-    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 뇌졸중 재활
-        - 희망 소통
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2278,21 +2225,74 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00144
+- id: SCN-REHAB-00143
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 보조기구 사용 교육 · Mrs. Rossi
-  tagline: This walker feels so awkward.
+  title: 뇌졸중 후 재활 교육 · Mr. Yamamoto
+  tagline: Will my arm ever work again?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
+  goals:
+    - 회복 과정 설명
+    - 희망·현실 균형
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Recovery takes time and repetition.
+    - Small gains are real gains.
+    - We'll work on it together.
+  steps: []
+  briefing:
+    dept: REHAB · OT ROOM
+    deptColor: '#0284C7'
+    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 뇌졸중 재활
+        - 희망 소통
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00144
+  profession: ""
+  eventId: EVT-REHAB-00104
+  title: 보조기구 사용 교육 · Mr. Yamamoto
+  tagline: This walker feels so awkward.
+  persona:
+    name: Mr. Yamamoto
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 보조기구 사용 교육
     - 안전 강조
@@ -2334,17 +2334,17 @@
 - id: SCN-REHAB-00145
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 통증·피로 조절 상담 · Mr. Johnson
+  title: 통증·피로 조절 상담 · Mr. Yamamoto
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Johnson
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 통증·피로 사정
@@ -2361,25 +2361,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2387,18 +2387,18 @@
 - id: SCN-REHAB-00146
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 낙상 후 자신감 회복 · Ms. Bauer
+  title: 낙상 후 자신감 회복 · Mr. Yamamoto
   tagline: I'm scared I'll fall again.
   persona:
-    name: Ms. Bauer
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -2414,25 +2414,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2440,17 +2440,17 @@
 - id: SCN-REHAB-00147
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 일상생활동작 훈련 · Mr. Silva
+  title: 일상생활동작 훈련 · Mr. Yamamoto
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Silva
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - ADL 재훈련
@@ -2493,18 +2493,18 @@
 - id: SCN-REHAB-00148
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 가정 운동 프로그램 교육 · Mrs. Adeyemi
+  title: 가정 운동 프로그램 교육 · Mr. Yamamoto
   tagline: What should I do at home?
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 가정 운동 교육
     - 순응 지원
@@ -2520,64 +2520,11 @@
     dept: REHAB · OT ROOM
     deptColor: '#0284C7'
     brief: 퇴원 후 가정 운동 프로그램을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 홈 프로그램
         - 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00149
-  profession: ""
-  eventId: EVT-REHAB-00104
-  title: 가족 돌봄 훈련 · Mr. Larsson
-  tagline: How do I help him transfer safely?
-  persona:
-    name: Mr. Larsson
-    role: family
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
-  goals:
-    - 이동 보조 교육
-    - 가족 참여
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Bend your knees, not your back.
-    - Let him do what he can.
-    - Let's practice together.
-  steps: []
-  briefing:
-    dept: REHAB · PT GYM
-    deptColor: '#0284C7'
-    brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 가족 교육
-        - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2596,21 +2543,74 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
+- id: SCN-REHAB-00149
+  profession: ""
+  eventId: EVT-REHAB-00104
+  title: 가족 돌봄 훈련 · Mr. Yamamoto
+  tagline: How do I help him transfer safely?
+  persona:
+    name: Mr. Yamamoto
+    role: family
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
+  goals:
+    - 이동 보조 교육
+    - 가족 참여
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Bend your knees, not your back.
+    - Let him do what he can.
+    - Let's practice together.
+  steps: []
+  briefing:
+    dept: REHAB · PT GYM
+    deptColor: '#0284C7'
+    brief: 가족에게 안전한 이동 보조법을 교육하세요.
+    difficulty: 2
+    timeLabel: 약 6분
+    skills:
+        - 가족 교육
+        - 이동 보조
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
 - id: SCN-REHAB-00150
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 재활팀 인계 · RN Marcus
+  title: 재활팀 인계 · Charge Nurse Kim
   tagline: Rehab handoff.
   persona:
-    name: RN Marcus
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 진전·주의 인계
     - 목표 공유
@@ -2652,18 +2652,18 @@
 - id: SCN-REHAB-00151
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 재활 목표 설정 · Mr. Thompson
+  title: 재활 목표 설정 · Ms. O'Brien
   tagline: I just want to walk again.
   persona:
-    name: Mr. Thompson
+    name: Ms. O'Brien
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 현실적 목표 수립
     - 동기 부여
@@ -2705,18 +2705,18 @@
 - id: SCN-REHAB-00152
   profession: ""
   eventId: EVT-REHAB-00104
-  title: 보행 훈련 지원 · Mrs. Haddad
+  title: 보행 훈련 지원 · Ms. O'Brien
   tagline: My legs feel like jelly.
   persona:
-    name: Mrs. Haddad
+    name: Ms. O'Brien
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 안전한 보행 지원
     - 격려
@@ -2732,25 +2732,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 보행 훈련
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2758,18 +2758,18 @@
 - id: SCN-REHAB-00153
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 뇌졸중 후 재활 교육 · Mr. Yamamoto
+  title: 뇌졸중 후 재활 교육 · Ms. O'Brien
   tagline: Will my arm ever work again?
   persona:
-    name: Mr. Yamamoto
+    name: Ms. O'Brien
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 회복 과정 설명
     - 희망·현실 균형
@@ -2864,18 +2864,18 @@
 - id: SCN-REHAB-00155
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 통증·피로 조절 상담 · Mr. Dubois
+  title: 통증·피로 조절 상담 · Ms. O'Brien
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Dubois
+    name: Ms. O'Brien
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 통증·피로 사정
     - 페이싱 조율
@@ -2891,25 +2891,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2917,18 +2917,18 @@
 - id: SCN-REHAB-00156
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 낙상 후 자신감 회복 · Mrs. Santos
+  title: 낙상 후 자신감 회복 · Ms. O'Brien
   tagline: I'm scared I'll fall again.
   persona:
-    name: Mrs. Santos
+    name: Ms. O'Brien
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -2944,25 +2944,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -2970,18 +2970,18 @@
 - id: SCN-REHAB-00157
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 일상생활동작 훈련 · Mr. Wagner
+  title: 일상생활동작 훈련 · Ms. O'Brien
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Wagner
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - ADL 재훈련
     - 독립성 지지
@@ -3023,17 +3023,17 @@
 - id: SCN-REHAB-00158
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 가정 운동 프로그램 교육 · Ms. Ivanova
+  title: 가정 운동 프로그램 교육 · Ms. O'Brien
   tagline: What should I do at home?
   persona:
-    name: Ms. Ivanova
+    name: Ms. O'Brien
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 31y / Female
-    hair: '#C9A24B'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 가정 운동 교육
@@ -3050,64 +3050,11 @@
     dept: REHAB · OT ROOM
     deptColor: '#0284C7'
     brief: 퇴원 후 가정 운동 프로그램을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 홈 프로그램
         - 교육
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00159
-  profession: ""
-  eventId: EVT-REHAB-00105
-  title: 가족 돌봄 훈련 · Mr. Reyes
-  tagline: How do I help him transfer safely?
-  persona:
-    name: Mr. Reyes
-    role: family
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 이동 보조 교육
-    - 가족 참여
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Bend your knees, not your back.
-    - Let him do what he can.
-    - Let's practice together.
-  steps: []
-  briefing:
-    dept: REHAB · PT GYM
-    deptColor: '#0284C7'
-    brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 가족 교육
-        - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3126,20 +3073,73 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
+- id: SCN-REHAB-00159
+  profession: ""
+  eventId: EVT-REHAB-00105
+  title: 가족 돌봄 훈련 · Ms. O'Brien
+  tagline: How do I help him transfer safely?
+  persona:
+    name: Ms. O'Brien
+    role: family
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
+  goals:
+    - 이동 보조 교육
+    - 가족 참여
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Bend your knees, not your back.
+    - Let him do what he can.
+    - Let's practice together.
+  steps: []
+  briefing:
+    dept: REHAB · PT GYM
+    deptColor: '#0284C7'
+    brief: 가족에게 안전한 이동 보조법을 교육하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 가족 교육
+        - 이동 보조
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
 - id: SCN-REHAB-00160
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 재활팀 인계 · Dr. Lee
+  title: 재활팀 인계 · Dr. Novak
   tagline: Rehab handoff.
   persona:
-    name: Dr. Lee
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 진전·주의 인계
@@ -3182,18 +3182,18 @@
 - id: SCN-REHAB-00161
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 재활 목표 설정 · Mrs. Hopkins
+  title: 재활 목표 설정 · Mr. Dubois
   tagline: I just want to walk again.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Dubois
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 현실적 목표 수립
     - 동기 부여
@@ -3235,18 +3235,18 @@
 - id: SCN-REHAB-00162
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 보행 훈련 지원 · Ms. Alvarez
+  title: 보행 훈련 지원 · Mr. Dubois
   tagline: My legs feel like jelly.
   persona:
-    name: Ms. Alvarez
+    name: Mr. Dubois
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 안전한 보행 지원
     - 격려
@@ -3262,11 +3262,64 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 보행 훈련
         - 안전
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00163
+  profession: ""
+  eventId: EVT-REHAB-00105
+  title: 뇌졸중 후 재활 교육 · Mr. Dubois
+  tagline: Will my arm ever work again?
+  persona:
+    name: Mr. Dubois
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: pain
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
+  goals:
+    - 회복 과정 설명
+    - 희망·현실 균형
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Recovery takes time and repetition.
+    - Small gains are real gains.
+    - We'll work on it together.
+  steps: []
+  briefing:
+    dept: REHAB · OT ROOM
+    deptColor: '#0284C7'
+    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 뇌졸중 재활
+        - 희망 소통
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3285,74 +3338,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00163
-  profession: ""
-  eventId: EVT-REHAB-00105
-  title: 뇌졸중 후 재활 교육 · Mr. Chen
-  tagline: Will my arm ever work again?
-  persona:
-    name: Mr. Chen
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 회복 과정 설명
-    - 희망·현실 균형
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Recovery takes time and repetition.
-    - Small gains are real gains.
-    - We'll work on it together.
-  steps: []
-  briefing:
-    dept: REHAB · OT ROOM
-    deptColor: '#0284C7'
-    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 뇌졸중 재활
-        - 희망 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
 - id: SCN-REHAB-00164
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 보조기구 사용 교육 · Mrs. Kelly
+  title: 보조기구 사용 교육 · Mr. Dubois
   tagline: This walker feels so awkward.
   persona:
-    name: Mrs. Kelly
+    name: Mr. Dubois
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 보조기구 사용 교육
     - 안전 강조
@@ -3394,17 +3394,17 @@
 - id: SCN-REHAB-00165
   profession: ""
   eventId: EVT-REHAB-00105
-  title: 통증·피로 조절 상담 · Mr. Okafor
+  title: 통증·피로 조절 상담 · Mr. Dubois
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Okafor
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 통증·피로 사정
@@ -3421,25 +3421,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3447,18 +3447,18 @@
 - id: SCN-REHAB-00166
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 낙상 후 자신감 회복 · Ms. Nguyen
+  title: 낙상 후 자신감 회복 · Mr. Dubois
   tagline: I'm scared I'll fall again.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Dubois
     role: patient
-    ageRange: 20s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -3474,25 +3474,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3500,17 +3500,17 @@
 - id: SCN-REHAB-00167
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 일상생활동작 훈련 · Mr. Patel
+  title: 일상생활동작 훈련 · Mr. Dubois
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Patel
+    name: Mr. Dubois
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - ADL 재훈련
@@ -3553,18 +3553,18 @@
 - id: SCN-REHAB-00168
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 가정 운동 프로그램 교육 · Mrs. Rossi
+  title: 가정 운동 프로그램 교육 · Mr. Dubois
   tagline: What should I do at home?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 가정 운동 교육
     - 순응 지원
@@ -3606,17 +3606,17 @@
 - id: SCN-REHAB-00169
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 가족 돌봄 훈련 · Mr. Johnson
+  title: 가족 돌봄 훈련 · Mr. Dubois
   tagline: How do I help him transfer safely?
   persona:
-    name: Mr. Johnson
+    name: Mr. Dubois
     role: family
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 이동 보조 교육
@@ -3633,25 +3633,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 교육
         - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3659,18 +3659,18 @@
 - id: SCN-REHAB-00170
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 재활팀 인계 · Dr. Novak
+  title: 재활팀 인계 · RN Sofia
   tagline: Rehab handoff.
   persona:
-    name: Dr. Novak
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 진전·주의 인계
     - 목표 공유
@@ -3712,18 +3712,18 @@
 - id: SCN-REHAB-00171
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 재활 목표 설정 · Mr. Silva
+  title: 재활 목표 설정 · Mrs. Santos
   tagline: I just want to walk again.
   persona:
-    name: Mr. Silva
+    name: Mrs. Santos
     role: patient
     ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 현실적 목표 수립
     - 동기 부여
@@ -3765,17 +3765,17 @@
 - id: SCN-REHAB-00172
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 보행 훈련 지원 · Mrs. Adeyemi
+  title: 보행 훈련 지원 · Mrs. Santos
   tagline: My legs feel like jelly.
   persona:
-    name: Mrs. Adeyemi
+    name: Mrs. Santos
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
+    sub: 74y / Female
+    hair: '#A0A0A0'
     hairStyle: bob
   goals:
     - 안전한 보행 지원
@@ -3792,64 +3792,11 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 보행 훈련
         - 안전
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00173
-  profession: ""
-  eventId: EVT-REHAB-00106
-  title: 뇌졸중 후 재활 교육 · Mr. Larsson
-  tagline: Will my arm ever work again?
-  persona:
-    name: Mr. Larsson
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
-  goals:
-    - 회복 과정 설명
-    - 희망·현실 균형
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Recovery takes time and repetition.
-    - Small gains are real gains.
-    - We'll work on it together.
-  steps: []
-  briefing:
-    dept: REHAB · OT ROOM
-    deptColor: '#0284C7'
-    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 뇌졸중 재활
-        - 희망 소통
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3868,21 +3815,74 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00174
+- id: SCN-REHAB-00173
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 보조기구 사용 교육 · Ms. Park
-  tagline: This walker feels so awkward.
+  title: 뇌졸중 후 재활 교육 · Mrs. Santos
+  tagline: Will my arm ever work again?
   persona:
-    name: Ms. Park
+    name: Mrs. Santos
     role: patient
-    ageRange: 20s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
+  goals:
+    - 회복 과정 설명
+    - 희망·현실 균형
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Recovery takes time and repetition.
+    - Small gains are real gains.
+    - We'll work on it together.
+  steps: []
+  briefing:
+    dept: REHAB · OT ROOM
+    deptColor: '#0284C7'
+    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - 뇌졸중 재활
+        - 희망 소통
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00174
+  profession: ""
+  eventId: EVT-REHAB-00106
+  title: 보조기구 사용 교육 · Mrs. Santos
+  tagline: This walker feels so awkward.
+  persona:
+    name: Mrs. Santos
+    role: patient
+    ageRange: 70s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 보조기구 사용 교육
     - 안전 강조
@@ -3924,18 +3924,18 @@
 - id: SCN-REHAB-00175
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 통증·피로 조절 상담 · Mr. Thompson
+  title: 통증·피로 조절 상담 · Mrs. Santos
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Thompson
+    name: Mrs. Santos
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 통증·피로 사정
     - 페이싱 조율
@@ -3951,25 +3951,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -3977,17 +3977,17 @@
 - id: SCN-REHAB-00176
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 낙상 후 자신감 회복 · Mrs. Haddad
+  title: 낙상 후 자신감 회복 · Mrs. Santos
   tagline: I'm scared I'll fall again.
   persona:
-    name: Mrs. Haddad
+    name: Mrs. Santos
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 33y / Female
-    hair: '#241812'
+    sub: 74y / Female
+    hair: '#A0A0A0'
     hairStyle: bob
   goals:
     - 두려움 공감
@@ -4004,25 +4004,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4030,18 +4030,18 @@
 - id: SCN-REHAB-00177
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 일상생활동작 훈련 · Mr. Yamamoto
+  title: 일상생활동작 훈련 · Mrs. Santos
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Santos
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - ADL 재훈련
     - 독립성 지지
@@ -4083,18 +4083,18 @@
 - id: SCN-REHAB-00178
   profession: ""
   eventId: EVT-REHAB-00106
-  title: 가정 운동 프로그램 교육 · Ms. O'Brien
+  title: 가정 운동 프로그램 교육 · Mrs. Santos
   tagline: What should I do at home?
   persona:
-    name: Ms. O'Brien
+    name: Mrs. Santos
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 가정 운동 교육
     - 순응 지원
@@ -4110,25 +4110,25 @@
     dept: REHAB · OT ROOM
     deptColor: '#0284C7'
     brief: 퇴원 후 가정 운동 프로그램을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 홈 프로그램
         - 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4136,18 +4136,18 @@
 - id: SCN-REHAB-00179
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 가족 돌봄 훈련 · Mr. Dubois
+  title: 가족 돌봄 훈련 · Mrs. Santos
   tagline: How do I help him transfer safely?
   persona:
-    name: Mr. Dubois
+    name: Mrs. Santos
     role: family
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 이동 보조 교육
     - 가족 참여
@@ -4163,25 +4163,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 가족 교육
         - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4295,18 +4295,18 @@
 - id: SCN-REHAB-00182
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 보행 훈련 지원 · Ms. Ivanova
+  title: 보행 훈련 지원 · Mr. Wagner
   tagline: My legs feel like jelly.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Wagner
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 안전한 보행 지원
     - 격려
@@ -4322,25 +4322,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 보행 훈련
         - 안전
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4348,17 +4348,17 @@
 - id: SCN-REHAB-00183
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 뇌졸중 후 재활 교육 · Mr. Reyes
+  title: 뇌졸중 후 재활 교육 · Mr. Wagner
   tagline: Will my arm ever work again?
   persona:
-    name: Mr. Reyes
+    name: Mr. Wagner
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 회복 과정 설명
@@ -4401,17 +4401,17 @@
 - id: SCN-REHAB-00184
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 보조기구 사용 교육 · Mr. Robinson
+  title: 보조기구 사용 교육 · Mr. Wagner
   tagline: This walker feels so awkward.
   persona:
-    name: Mr. Robinson
+    name: Mr. Wagner
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 보조기구 사용 교육
@@ -4454,18 +4454,18 @@
 - id: SCN-REHAB-00185
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 통증·피로 조절 상담 · Mrs. Hopkins
+  title: 통증·피로 조절 상담 · Mr. Wagner
   tagline: It hurts too much to keep going.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Wagner
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 통증·피로 사정
     - 페이싱 조율
@@ -4481,25 +4481,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4507,18 +4507,18 @@
 - id: SCN-REHAB-00186
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 낙상 후 자신감 회복 · Ms. Alvarez
+  title: 낙상 후 자신감 회복 · Mr. Wagner
   tagline: I'm scared I'll fall again.
   persona:
-    name: Ms. Alvarez
+    name: Mr. Wagner
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -4534,25 +4534,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4560,17 +4560,17 @@
 - id: SCN-REHAB-00187
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 일상생활동작 훈련 · Mr. Chen
+  title: 일상생활동작 훈련 · Mr. Wagner
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Chen
+    name: Mr. Wagner
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - ADL 재훈련
@@ -4613,18 +4613,18 @@
 - id: SCN-REHAB-00188
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 가정 운동 프로그램 교육 · Mrs. Kelly
+  title: 가정 운동 프로그램 교육 · Mr. Wagner
   tagline: What should I do at home?
   persona:
-    name: Mrs. Kelly
+    name: Mr. Wagner
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 가정 운동 교육
     - 순응 지원
@@ -4640,25 +4640,25 @@
     dept: REHAB · OT ROOM
     deptColor: '#0284C7'
     brief: 퇴원 후 가정 운동 프로그램을 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 홈 프로그램
         - 교육
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4666,17 +4666,17 @@
 - id: SCN-REHAB-00189
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 가족 돌봄 훈련 · Mr. Okafor
+  title: 가족 돌봄 훈련 · Mr. Wagner
   tagline: How do I help him transfer safely?
   persona:
-    name: Mr. Okafor
+    name: Mr. Wagner
     role: family
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 이동 보조 교육
@@ -4693,25 +4693,25 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 가족 교육
         - 이동 보조
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
@@ -4719,71 +4719,18 @@
 - id: SCN-REHAB-00190
   profession: ""
   eventId: EVT-REHAB-00107
-  title: 재활팀 인계 · RN Marcus
-  tagline: Rehab handoff.
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 진전·주의 인계
-    - 목표 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Room 2 walked 20 meters today.
-    - Room 4 needs two-person transfer.
-    - Room 1 fall risk, supervise.
-  steps: []
-  briefing:
-    dept: REHAB · STATION
-    deptColor: '#0284C7'
-    brief: 재활 환자의 진전과 주의사항을 인계하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 인계
-        - 진전 공유
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00191
-  profession: ""
-  eventId: EVT-REHAB-00107
-  title: 재활 목표 설정 · Mr. Patel
+  title: 재활 목표 설정 · Ms. Ivanova
   tagline: I just want to walk again.
   persona:
-    name: Mr. Patel
+    name: Ms. Ivanova
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 현실적 목표 수립
     - 동기 부여
@@ -4822,21 +4769,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00192
+- id: SCN-REHAB-00191
   profession: ""
-  eventId: EVT-REHAB-00108
-  title: 보행 훈련 지원 · Mrs. Rossi
+  eventId: EVT-REHAB-00107
+  title: 보행 훈련 지원 · Ms. Ivanova
   tagline: My legs feel like jelly.
   persona:
-    name: Mrs. Rossi
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 안전한 보행 지원
     - 격려
@@ -4852,11 +4799,64 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 보행 훈련
         - 안전
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00192
+  profession: ""
+  eventId: EVT-REHAB-00108
+  title: 뇌졸중 후 재활 교육 · Ms. Ivanova
+  tagline: Will my arm ever work again?
+  persona:
+    name: Ms. Ivanova
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: neutral
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 회복 과정 설명
+    - 희망·현실 균형
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Recovery takes time and repetition.
+    - Small gains are real gains.
+    - We'll work on it together.
+  steps: []
+  briefing:
+    dept: REHAB · OT ROOM
+    deptColor: '#0284C7'
+    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 뇌졸중 재활
+        - 희망 소통
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4878,69 +4878,16 @@
 - id: SCN-REHAB-00193
   profession: ""
   eventId: EVT-REHAB-00108
-  title: 뇌졸중 후 재활 교육 · Mr. Johnson
-  tagline: Will my arm ever work again?
-  persona:
-    name: Mr. Johnson
-    role: patient
-    ageRange: 40s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 회복 과정 설명
-    - 희망·현실 균형
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Recovery takes time and repetition.
-    - Small gains are real gains.
-    - We'll work on it together.
-  steps: []
-  briefing:
-    dept: REHAB · OT ROOM
-    deptColor: '#0284C7'
-    brief: 뇌졸중 후 기능 회복 과정을 현실적이되 희망적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 뇌졸중 재활
-        - 희망 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00194
-  profession: ""
-  eventId: EVT-REHAB-00108
-  title: 보조기구 사용 교육 · Ms. Bauer
+  title: 보조기구 사용 교육 · Ms. Ivanova
   tagline: This walker feels so awkward.
   persona:
-    name: Ms. Bauer
+    name: Ms. Ivanova
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 38y / Female
+    sub: 31y / Female
     hair: '#C9A24B'
     hairStyle: long
   goals:
@@ -4981,21 +4928,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00195
+- id: SCN-REHAB-00194
   profession: ""
   eventId: EVT-REHAB-00108
-  title: 통증·피로 조절 상담 · Mr. Silva
+  title: 통증·피로 조절 상담 · Ms. Ivanova
   tagline: It hurts too much to keep going.
   persona:
-    name: Mr. Silva
+    name: Ms. Ivanova
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 통증·피로 사정
     - 페이싱 조율
@@ -5011,44 +4958,44 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 재활 중 통증·피로를 사정하고 페이싱을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 조율
         - 페이싱
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00196
+- id: SCN-REHAB-00195
   profession: ""
   eventId: EVT-REHAB-00108
-  title: 낙상 후 자신감 회복 · Mrs. Adeyemi
+  title: 낙상 후 자신감 회복 · Ms. Ivanova
   tagline: I'm scared I'll fall again.
   persona:
-    name: Mrs. Adeyemi
+    name: Ms. Ivanova
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 두려움 공감
     - 점진적 자신감
@@ -5064,44 +5011,44 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 낙상 경험 후 두려움을 다루며 자신감을 회복시키세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 자신감 회복
         - 심리 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00197
+- id: SCN-REHAB-00196
   profession: ""
   eventId: EVT-REHAB-00108
-  title: 일상생활동작 훈련 · Mr. Larsson
+  title: 일상생활동작 훈련 · Ms. Ivanova
   tagline: I can't even button my shirt.
   persona:
-    name: Mr. Larsson
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - ADL 재훈련
     - 독립성 지지
@@ -5140,20 +5087,20 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00198
+- id: SCN-REHAB-00197
   profession: ""
   eventId: EVT-REHAB-00108
-  title: 가정 운동 프로그램 교육 · Ms. Park
+  title: 가정 운동 프로그램 교육 · Ms. Ivanova
   tagline: What should I do at home?
   persona:
-    name: Ms. Park
+    name: Ms. Ivanova
     role: patient
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 31y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 가정 운동 교육
@@ -5193,21 +5140,21 @@
     accent: '#0369A1'
     chart: null
     riskyPhrases: []
-- id: SCN-REHAB-00199
+- id: SCN-REHAB-00198
   profession: ""
   eventId: EVT-REHAB-00108
-  title: 가족 돌봄 훈련 · Mr. Thompson
+  title: 가족 돌봄 훈련 · Ms. Ivanova
   tagline: How do I help him transfer safely?
   persona:
-    name: Mr. Thompson
+    name: Ms. Ivanova
     role: family
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 이동 보조 교육
     - 가족 참여
@@ -5223,64 +5170,11 @@
     dept: REHAB · PT GYM
     deptColor: '#0284C7'
     brief: 가족에게 안전한 이동 보조법을 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 교육
         - 이동 보조
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#E0F2FE'
-    accent: '#0369A1'
-    chart: null
-    riskyPhrases: []
-- id: SCN-REHAB-00200
-  profession: ""
-  eventId: EVT-REHAB-00108
-  title: 재활팀 인계 · Dr. Lee
-  tagline: Rehab handoff.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 진전·주의 인계
-    - 목표 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Room 2 walked 20 meters today.
-    - Room 4 needs two-person transfer.
-    - Room 1 fall risk, supervise.
-  steps: []
-  briefing:
-    dept: REHAB · STATION
-    deptColor: '#0284C7'
-    brief: 재활 환자의 진전과 주의사항을 인계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 인계
-        - 진전 공유
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5295,6 +5189,112 @@
         - label: 레벨 2+
           metric: level
           threshold: 2
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00199
+  profession: ""
+  eventId: EVT-REHAB-00108
+  title: 재활 목표 설정 · Mr. Reyes
+  tagline: I just want to walk again.
+  persona:
+    name: Mr. Reyes
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 현실적 목표 수립
+    - 동기 부여
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Let's set a goal for this week.
+    - Every session builds toward it.
+    - You're stronger than you think.
+  steps: []
+  briefing:
+    dept: REHAB · PT GYM
+    deptColor: '#0284C7'
+    brief: 환자와 함께 현실적이고 동기부여되는 재활 목표를 세우세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 목표 설정
+        - 동기 부여
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#E0F2FE'
+    accent: '#0369A1'
+    chart: null
+    riskyPhrases: []
+- id: SCN-REHAB-00200
+  profession: ""
+  eventId: EVT-REHAB-00108
+  title: 보행 훈련 지원 · Mr. Reyes
+  tagline: My legs feel like jelly.
+  persona:
+    name: Mr. Reyes
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
+  goals:
+    - 안전한 보행 지원
+    - 격려
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I've got the gait belt.
+    - One step at a time.
+    - Tell me if you feel dizzy.
+  steps: []
+  briefing:
+    dept: REHAB · PT GYM
+    deptColor: '#0284C7'
+    brief: 보행 훈련 중인 환자를 안전하게 지지하고 격려하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 보행 훈련
+        - 안전
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
     tone: '#E0F2FE'
     accent: '#0369A1'
     chart: null

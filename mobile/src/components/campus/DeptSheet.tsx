@@ -284,7 +284,9 @@ function SituationRow({ s, onStart, highlight }: {
           accessibilityState={{ checked: starred }}
           accessibilityLabel={t(starred ? 'campus.favRemove' : 'campus.favAdd')}
         >
-          <PixelIcon name="star" color={starred ? colors.yellowDeep : C + '44'} size={17} sw={2} />
+          {/* Filled when on. See PixelIcon's `fill`: two outline colours at this size read
+            as the same star, which is why the on state looked like nothing happened. */}
+        <PixelIcon name="star" color={starred ? C : C + '44'} fill={starred ? colors.yellowDeep : 'none'} size={17} sw={2} />
         </Pressable>
         <PixelButton label={done ? t('common.review') : t('common.start')} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
       </View>

@@ -55,18 +55,18 @@
 - id: SCN-LOUNGE-00102
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 번아웃 대화 · Dr. Ahmed
+  title: 번아웃 대화 · RN Sofia
   tagline: I don't know how much longer I can do this.
   persona:
-    name: Dr. Ahmed
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 번아웃 청취
     - 자원 연계
@@ -82,64 +82,11 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 번아웃을 겪는 동료의 이야기를 듣고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 번아웃
         - 자원 연계
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00103
-  profession: ""
-  eventId: EVT-LOUNGE-00101
-  title: 교대 조율 협의 · Pharmacist Cho
-  tagline: Can anyone cover Friday night?
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 교대 협의
-    - 상호 배려
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I can take part of it.
-    - Let's split the shift.
-    - Thanks for being flexible.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 교대 근무를 정중하게 협의·조율하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 교대 조율
-        - 협상
     rewards:
         - icon: ⭐
           label: 경험치
@@ -158,21 +105,74 @@
     accent: '#854D0E'
     chart: null
     riskyPhrases: []
-- id: SCN-LOUNGE-00104
+- id: SCN-LOUNGE-00103
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 갈등 중재 · RN Marcus
-  tagline: We keep butting heads on the unit.
+  title: 교대 조율 협의 · RN Sofia
+  tagline: Can anyone cover Friday night?
   persona:
-    name: RN Marcus
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
+  goals:
+    - 교대 협의
+    - 상호 배려
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I can take part of it.
+    - Let's split the shift.
+    - Thanks for being flexible.
+  steps: []
+  briefing:
+    dept: LOUNGE · BREAK ROOM
+    deptColor: '#A16207'
+    brief: 교대 근무를 정중하게 협의·조율하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 교대 조율
+        - 협상
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEF9C3'
+    accent: '#854D0E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-LOUNGE-00104
+  profession: ""
+  eventId: EVT-LOUNGE-00101
+  title: 갈등 중재 · RN Sofia
+  tagline: We keep butting heads on the unit.
+  persona:
+    name: RN Sofia
+    role: colleague
+    ageRange: 20s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 갈등 청취
     - 해결 지향 중재
@@ -214,18 +214,18 @@
 - id: SCN-LOUNGE-00105
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 신입 멘토링 · Dr. Weber
+  title: 신입 멘토링 · RN Sofia
   tagline: Everyone seems so much faster than me.
   persona:
-    name: Dr. Weber
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 격려
     - 실용 조언
@@ -267,18 +267,18 @@
 - id: SCN-LOUNGE-00106
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 긍정 피드백 문화 · Dr. Lee
+  title: 긍정 피드백 문화 · RN Sofia
   tagline: You handled that family really well.
   persona:
-    name: Dr. Lee
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 구체적 인정
     - 긍정 문화 조성
@@ -294,25 +294,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 동료에게 구체적이고 진심 어린 인정을 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 인정 표현
         - 긍정 문화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -320,18 +320,18 @@
 - id: SCN-LOUNGE-00107
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 휴식·자기돌봄 권유 · Charge Nurse Kim
+  title: 휴식·자기돌봄 권유 · RN Sofia
   tagline: I haven't had lunch — no time.
   persona:
-    name: Charge Nurse Kim
+    name: RN Sofia
     role: colleague
-    ageRange: 30s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 휴식 권유
     - 부담 분담
@@ -373,18 +373,18 @@
 - id: SCN-LOUNGE-00108
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 어려운 지시 전달 · Dr. Novak
+  title: 어려운 지시 전달 · RN Sofia
   tagline: Management wants us to change the routine.
   persona:
-    name: Dr. Novak
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 변경 투명 전달
     - 우려 수렴
@@ -400,25 +400,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -453,25 +453,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 팀워크에 대한 감사를 진심으로 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 감사 표현
         - 팀워크
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -479,18 +479,18 @@
 - id: SCN-LOUNGE-00110
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 근무 인계 잡담 · Dr. Ahmed
+  title: 근무 인계 잡담 · RN Sofia
   tagline: Anything I should know before you go?
   persona:
-    name: Dr. Ahmed
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 비공식 정보 공유
     - 라포 형성
@@ -532,18 +532,18 @@
 - id: SCN-LOUNGE-00111
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 동료 정서 지지 · Pharmacist Cho
+  title: 동료 정서 지지 · Dr. Ahmed
   tagline: I lost a patient today.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 동료 공감
     - 지지 제공
@@ -585,17 +585,17 @@
 - id: SCN-LOUNGE-00112
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 번아웃 대화 · RN Marcus
+  title: 번아웃 대화 · Dr. Ahmed
   tagline: I don't know how much longer I can do this.
   persona:
-    name: RN Marcus
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 번아웃 청취
@@ -638,17 +638,17 @@
 - id: SCN-LOUNGE-00113
   profession: ""
   eventId: EVT-LOUNGE-00101
-  title: 교대 조율 협의 · Dr. Weber
+  title: 교대 조율 협의 · Dr. Ahmed
   tagline: Can anyone cover Friday night?
   persona:
-    name: Dr. Weber
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 교대 협의
@@ -691,17 +691,17 @@
 - id: SCN-LOUNGE-00114
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 갈등 중재 · Dr. Lee
+  title: 갈등 중재 · Dr. Ahmed
   tagline: We keep butting heads on the unit.
   persona:
-    name: Dr. Lee
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 갈등 청취
@@ -744,18 +744,18 @@
 - id: SCN-LOUNGE-00115
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 신입 멘토링 · Charge Nurse Kim
+  title: 신입 멘토링 · Dr. Ahmed
   tagline: Everyone seems so much faster than me.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 격려
     - 실용 조언
@@ -771,25 +771,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 신입 동료를 격려하고 실용적 조언을 주세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 멘토링
         - 격려
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -797,17 +797,17 @@
 - id: SCN-LOUNGE-00116
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 긍정 피드백 문화 · Dr. Novak
+  title: 긍정 피드백 문화 · Dr. Ahmed
   tagline: You handled that family really well.
   persona:
-    name: Dr. Novak
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 구체적 인정
@@ -850,18 +850,18 @@
 - id: SCN-LOUNGE-00117
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 휴식·자기돌봄 권유 · RN Sofia
+  title: 휴식·자기돌봄 권유 · Dr. Ahmed
   tagline: I haven't had lunch — no time.
   persona:
-    name: RN Sofia
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 휴식 권유
     - 부담 분담
@@ -930,25 +930,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -956,18 +956,18 @@
 - id: SCN-LOUNGE-00119
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 감사 표현 · Pharmacist Cho
+  title: 감사 표현 · Dr. Ahmed
   tagline: Thanks for having my back today.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Ahmed
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Resident
+    hair: '#111111'
+    hairStyle: short
   goals:
     - 감사 표현
     - 관계 강화
@@ -1009,17 +1009,17 @@
 - id: SCN-LOUNGE-00120
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 근무 인계 잡담 · RN Marcus
+  title: 근무 인계 잡담 · Dr. Ahmed
   tagline: Anything I should know before you go?
   persona:
-    name: RN Marcus
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 비공식 정보 공유
@@ -1062,18 +1062,18 @@
 - id: SCN-LOUNGE-00121
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 동료 정서 지지 · Dr. Weber
+  title: 동료 정서 지지 · Pharmacist Cho
   tagline: I lost a patient today.
   persona:
-    name: Dr. Weber
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 동료 공감
     - 지지 제공
@@ -1115,18 +1115,18 @@
 - id: SCN-LOUNGE-00122
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 번아웃 대화 · Dr. Lee
+  title: 번아웃 대화 · Pharmacist Cho
   tagline: I don't know how much longer I can do this.
   persona:
-    name: Dr. Lee
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 번아웃 청취
     - 자원 연계
@@ -1142,11 +1142,64 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 번아웃을 겪는 동료의 이야기를 듣고 자원을 연계하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 번아웃
         - 자원 연계
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#FEF9C3'
+    accent: '#854D0E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-LOUNGE-00123
+  profession: ""
+  eventId: EVT-LOUNGE-00102
+  title: 교대 조율 협의 · Pharmacist Cho
+  tagline: Can anyone cover Friday night?
+  persona:
+    name: Pharmacist Cho
+    role: colleague
+    ageRange: 30s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: focused
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
+  goals:
+    - 교대 협의
+    - 상호 배려
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I can take part of it.
+    - Let's split the shift.
+    - Thanks for being flexible.
+  steps: []
+  briefing:
+    dept: LOUNGE · BREAK ROOM
+    deptColor: '#A16207'
+    brief: 교대 근무를 정중하게 협의·조율하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 교대 조율
+        - 협상
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1165,74 +1218,21 @@
     accent: '#854D0E'
     chart: null
     riskyPhrases: []
-- id: SCN-LOUNGE-00123
+- id: SCN-LOUNGE-00124
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 교대 조율 협의 · Charge Nurse Kim
-  tagline: Can anyone cover Friday night?
+  title: 갈등 중재 · Pharmacist Cho
+  tagline: We keep butting heads on the unit.
   persona:
-    name: Charge Nurse Kim
+    name: Pharmacist Cho
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
+    sub: PharmD
+    hair: '#3B2A1A'
     hairStyle: bob
-  goals:
-    - 교대 협의
-    - 상호 배려
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I can take part of it.
-    - Let's split the shift.
-    - Thanks for being flexible.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 교대 근무를 정중하게 협의·조율하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 교대 조율
-        - 협상
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00124
-  profession: ""
-  eventId: EVT-LOUNGE-00102
-  title: 갈등 중재 · Dr. Novak
-  tagline: We keep butting heads on the unit.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
   goals:
     - 갈등 청취
     - 해결 지향 중재
@@ -1274,18 +1274,18 @@
 - id: SCN-LOUNGE-00125
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 신입 멘토링 · RN Sofia
+  title: 신입 멘토링 · Pharmacist Cho
   tagline: Everyone seems so much faster than me.
   persona:
-    name: RN Sofia
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 20s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 격려
     - 실용 조언
@@ -1301,25 +1301,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 신입 동료를 격려하고 실용적 조언을 주세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 멘토링
         - 격려
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -1327,18 +1327,18 @@
 - id: SCN-LOUNGE-00126
   profession: ""
   eventId: EVT-LOUNGE-00102
-  title: 긍정 피드백 문화 · Dr. Ahmed
+  title: 긍정 피드백 문화 · Pharmacist Cho
   tagline: You handled that family really well.
   persona:
-    name: Dr. Ahmed
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 구체적 인정
     - 긍정 문화 조성
@@ -1354,25 +1354,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 동료에게 구체적이고 진심 어린 인정을 표현하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 인정 표현
         - 긍정 문화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -1433,18 +1433,18 @@
 - id: SCN-LOUNGE-00128
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 어려운 지시 전달 · RN Marcus
+  title: 어려운 지시 전달 · Pharmacist Cho
   tagline: Management wants us to change the routine.
   persona:
-    name: RN Marcus
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 변경 투명 전달
     - 우려 수렴
@@ -1460,25 +1460,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -1486,18 +1486,18 @@
 - id: SCN-LOUNGE-00129
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 감사 표현 · Dr. Weber
+  title: 감사 표현 · Pharmacist Cho
   tagline: Thanks for having my back today.
   persona:
-    name: Dr. Weber
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 감사 표현
     - 관계 강화
@@ -1513,25 +1513,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 팀워크에 대한 감사를 진심으로 표현하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 감사 표현
         - 팀워크
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -1539,18 +1539,18 @@
 - id: SCN-LOUNGE-00130
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 근무 인계 잡담 · Dr. Lee
+  title: 근무 인계 잡담 · Pharmacist Cho
   tagline: Anything I should know before you go?
   persona:
-    name: Dr. Lee
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 비공식 정보 공유
     - 라포 형성
@@ -1592,18 +1592,18 @@
 - id: SCN-LOUNGE-00131
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 동료 정서 지지 · Charge Nurse Kim
+  title: 동료 정서 지지 · RN Marcus
   tagline: I lost a patient today.
   persona:
-    name: Charge Nurse Kim
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
     sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 동료 공감
     - 지지 제공
@@ -1645,17 +1645,17 @@
 - id: SCN-LOUNGE-00132
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 번아웃 대화 · Dr. Novak
+  title: 번아웃 대화 · RN Marcus
   tagline: I don't know how much longer I can do this.
   persona:
-    name: Dr. Novak
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 번아웃 청취
@@ -1672,64 +1672,11 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 번아웃을 겪는 동료의 이야기를 듣고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 번아웃
         - 자원 연계
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00133
-  profession: ""
-  eventId: EVT-LOUNGE-00103
-  title: 교대 조율 협의 · RN Sofia
-  tagline: Can anyone cover Friday night?
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 교대 협의
-    - 상호 배려
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I can take part of it.
-    - Let's split the shift.
-    - Thanks for being flexible.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 교대 근무를 정중하게 협의·조율하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 교대 조율
-        - 협상
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1748,20 +1695,73 @@
     accent: '#854D0E'
     chart: null
     riskyPhrases: []
-- id: SCN-LOUNGE-00134
+- id: SCN-LOUNGE-00133
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 갈등 중재 · Dr. Ahmed
-  tagline: We keep butting heads on the unit.
+  title: 교대 조율 협의 · RN Marcus
+  tagline: Can anyone cover Friday night?
   persona:
-    name: Dr. Ahmed
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
+  goals:
+    - 교대 협의
+    - 상호 배려
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - I can take part of it.
+    - Let's split the shift.
+    - Thanks for being flexible.
+  steps: []
+  briefing:
+    dept: LOUNGE · BREAK ROOM
+    deptColor: '#A16207'
+    brief: 교대 근무를 정중하게 협의·조율하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 교대 조율
+        - 협상
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#FEF9C3'
+    accent: '#854D0E'
+    chart: null
+    riskyPhrases: []
+- id: SCN-LOUNGE-00134
+  profession: ""
+  eventId: EVT-LOUNGE-00103
+  title: 갈등 중재 · RN Marcus
+  tagline: We keep butting heads on the unit.
+  persona:
+    name: RN Marcus
+    role: colleague
+    ageRange: 40s
+    personality: 전문적이고 간결하게 소통함.
+    speakingStyle: 요점 위주로 빠르게.
+    mood: neutral
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 갈등 청취
@@ -1804,18 +1804,18 @@
 - id: SCN-LOUNGE-00135
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 신입 멘토링 · Pharmacist Cho
+  title: 신입 멘토링 · RN Marcus
   tagline: Everyone seems so much faster than me.
   persona:
-    name: Pharmacist Cho
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Charge RN
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 격려
     - 실용 조언
@@ -1884,25 +1884,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 동료에게 구체적이고 진심 어린 인정을 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 인정 표현
         - 긍정 문화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -1910,17 +1910,17 @@
 - id: SCN-LOUNGE-00137
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 휴식·자기돌봄 권유 · Dr. Weber
+  title: 휴식·자기돌봄 권유 · RN Marcus
   tagline: I haven't had lunch — no time.
   persona:
-    name: Dr. Weber
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 휴식 권유
@@ -1963,17 +1963,17 @@
 - id: SCN-LOUNGE-00138
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 어려운 지시 전달 · Dr. Lee
+  title: 어려운 지시 전달 · RN Marcus
   tagline: Management wants us to change the routine.
   persona:
-    name: Dr. Lee
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 변경 투명 전달
@@ -1990,25 +1990,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2016,18 +2016,18 @@
 - id: SCN-LOUNGE-00139
   profession: ""
   eventId: EVT-LOUNGE-00103
-  title: 감사 표현 · Charge Nurse Kim
+  title: 감사 표현 · RN Marcus
   tagline: Thanks for having my back today.
   persona:
-    name: Charge Nurse Kim
+    name: RN Marcus
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
     sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 감사 표현
     - 관계 강화
@@ -2043,25 +2043,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 팀워크에 대한 감사를 진심으로 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 감사 표현
         - 팀워크
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2069,17 +2069,17 @@
 - id: SCN-LOUNGE-00140
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 근무 인계 잡담 · Dr. Novak
+  title: 근무 인계 잡담 · RN Marcus
   tagline: Anything I should know before you go?
   persona:
-    name: Dr. Novak
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 비공식 정보 공유
@@ -2122,18 +2122,18 @@
 - id: SCN-LOUNGE-00141
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 동료 정서 지지 · RN Sofia
+  title: 동료 정서 지지 · Dr. Weber
   tagline: I lost a patient today.
   persona:
-    name: RN Sofia
+    name: Dr. Weber
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 동료 공감
     - 지지 제공
@@ -2175,17 +2175,17 @@
 - id: SCN-LOUNGE-00142
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 번아웃 대화 · Dr. Ahmed
+  title: 번아웃 대화 · Dr. Weber
   tagline: I don't know how much longer I can do this.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 번아웃 청취
@@ -2228,18 +2228,18 @@
 - id: SCN-LOUNGE-00143
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 교대 조율 협의 · Pharmacist Cho
+  title: 교대 조율 협의 · Dr. Weber
   tagline: Can anyone cover Friday night?
   persona:
-    name: Pharmacist Cho
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 교대 협의
     - 상호 배려
@@ -2281,17 +2281,17 @@
 - id: SCN-LOUNGE-00144
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 갈등 중재 · RN Marcus
+  title: 갈등 중재 · Dr. Weber
   tagline: We keep butting heads on the unit.
   persona:
-    name: RN Marcus
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 갈등 청취
@@ -2361,25 +2361,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 신입 동료를 격려하고 실용적 조언을 주세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 멘토링
         - 격려
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2387,17 +2387,17 @@
 - id: SCN-LOUNGE-00146
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 긍정 피드백 문화 · Dr. Lee
+  title: 긍정 피드백 문화 · Dr. Weber
   tagline: You handled that family really well.
   persona:
-    name: Dr. Lee
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
     sub: Attending
-    hair: '#1C1C1C'
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 구체적 인정
@@ -2440,18 +2440,18 @@
 - id: SCN-LOUNGE-00147
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 휴식·자기돌봄 권유 · Charge Nurse Kim
+  title: 휴식·자기돌봄 권유 · Dr. Weber
   tagline: I haven't had lunch — no time.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Weber
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 휴식 권유
     - 부담 분담
@@ -2493,17 +2493,17 @@
 - id: SCN-LOUNGE-00148
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 어려운 지시 전달 · Dr. Novak
+  title: 어려운 지시 전달 · Dr. Weber
   tagline: Management wants us to change the routine.
   persona:
-    name: Dr. Novak
+    name: Dr. Weber
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 변경 투명 전달
@@ -2520,25 +2520,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2546,18 +2546,18 @@
 - id: SCN-LOUNGE-00149
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 감사 표현 · RN Sofia
+  title: 감사 표현 · Dr. Weber
   tagline: Thanks for having my back today.
   persona:
-    name: RN Sofia
+    name: Dr. Weber
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 감사 표현
     - 관계 강화
@@ -2599,17 +2599,17 @@
 - id: SCN-LOUNGE-00150
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 근무 인계 잡담 · Dr. Ahmed
+  title: 근무 인계 잡담 · Dr. Weber
   tagline: Anything I should know before you go?
   persona:
-    name: Dr. Ahmed
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 비공식 정보 공유
@@ -2652,18 +2652,18 @@
 - id: SCN-LOUNGE-00151
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 동료 정서 지지 · Pharmacist Cho
+  title: 동료 정서 지지 · Dr. Lee
   tagline: I lost a patient today.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 동료 공감
     - 지지 제공
@@ -2705,17 +2705,17 @@
 - id: SCN-LOUNGE-00152
   profession: ""
   eventId: EVT-LOUNGE-00104
-  title: 번아웃 대화 · RN Marcus
+  title: 번아웃 대화 · Dr. Lee
   tagline: I don't know how much longer I can do this.
   persona:
-    name: RN Marcus
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 번아웃 청취
@@ -2732,25 +2732,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 번아웃을 겪는 동료의 이야기를 듣고 자원을 연계하세요.
-    difficulty: 2
-    timeLabel: 약 6분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 번아웃
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2758,17 +2758,17 @@
 - id: SCN-LOUNGE-00153
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 교대 조율 협의 · Dr. Weber
+  title: 교대 조율 협의 · Dr. Lee
   tagline: Can anyone cover Friday night?
   persona:
-    name: Dr. Weber
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Attending
-    hair: '#8A8A8A'
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 교대 협의
@@ -2785,25 +2785,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 교대 근무를 정중하게 협의·조율하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 교대 조율
         - 협상
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2864,18 +2864,18 @@
 - id: SCN-LOUNGE-00155
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 신입 멘토링 · Charge Nurse Kim
+  title: 신입 멘토링 · Dr. Lee
   tagline: Everyone seems so much faster than me.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 격려
     - 실용 조언
@@ -2891,25 +2891,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 신입 동료를 격려하고 실용적 조언을 주세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 멘토링
         - 격려
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2917,17 +2917,17 @@
 - id: SCN-LOUNGE-00156
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 긍정 피드백 문화 · Dr. Novak
+  title: 긍정 피드백 문화 · Dr. Lee
   tagline: You handled that family really well.
   persona:
-    name: Dr. Novak
+    name: Dr. Lee
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 구체적 인정
@@ -2944,25 +2944,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 동료에게 구체적이고 진심 어린 인정을 표현하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 인정 표현
         - 긍정 문화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -2970,18 +2970,18 @@
 - id: SCN-LOUNGE-00157
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 휴식·자기돌봄 권유 · RN Sofia
+  title: 휴식·자기돌봄 권유 · Dr. Lee
   tagline: I haven't had lunch — no time.
   persona:
-    name: RN Sofia
+    name: Dr. Lee
     role: colleague
-    ageRange: 20s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 휴식 권유
     - 부담 분담
@@ -3023,17 +3023,17 @@
 - id: SCN-LOUNGE-00158
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 어려운 지시 전달 · Dr. Ahmed
+  title: 어려운 지시 전달 · Dr. Lee
   tagline: Management wants us to change the routine.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 변경 투명 전달
@@ -3050,25 +3050,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3076,18 +3076,18 @@
 - id: SCN-LOUNGE-00159
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 감사 표현 · Pharmacist Cho
+  title: 감사 표현 · Dr. Lee
   tagline: Thanks for having my back today.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Lee
     role: colleague
-    ageRange: 30s
+    ageRange: 40s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Attending
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 감사 표현
     - 관계 강화
@@ -3103,25 +3103,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 팀워크에 대한 감사를 진심으로 표현하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 감사 표현
         - 팀워크
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3129,17 +3129,17 @@
 - id: SCN-LOUNGE-00160
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 근무 인계 잡담 · RN Marcus
+  title: 근무 인계 잡담 · Dr. Lee
   tagline: Anything I should know before you go?
   persona:
-    name: RN Marcus
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 비공식 정보 공유
@@ -3182,18 +3182,18 @@
 - id: SCN-LOUNGE-00161
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 동료 정서 지지 · Dr. Weber
+  title: 동료 정서 지지 · Charge Nurse Kim
   tagline: I lost a patient today.
   persona:
-    name: Dr. Weber
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 동료 공감
     - 지지 제공
@@ -3235,18 +3235,18 @@
 - id: SCN-LOUNGE-00162
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 번아웃 대화 · Dr. Lee
+  title: 번아웃 대화 · Charge Nurse Kim
   tagline: I don't know how much longer I can do this.
   persona:
-    name: Dr. Lee
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 번아웃 청취
     - 자원 연계
@@ -3262,25 +3262,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 번아웃을 겪는 동료의 이야기를 듣고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 8분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 번아웃
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3315,25 +3315,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 교대 근무를 정중하게 협의·조율하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 교대 조율
         - 협상
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3341,18 +3341,18 @@
 - id: SCN-LOUNGE-00164
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 갈등 중재 · Dr. Novak
+  title: 갈등 중재 · Charge Nurse Kim
   tagline: We keep butting heads on the unit.
   persona:
-    name: Dr. Novak
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 갈등 청취
     - 해결 지향 중재
@@ -3394,18 +3394,18 @@
 - id: SCN-LOUNGE-00165
   profession: ""
   eventId: EVT-LOUNGE-00105
-  title: 신입 멘토링 · RN Sofia
+  title: 신입 멘토링 · Charge Nurse Kim
   tagline: Everyone seems so much faster than me.
   persona:
-    name: RN Sofia
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 20s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 격려
     - 실용 조언
@@ -3447,18 +3447,18 @@
 - id: SCN-LOUNGE-00166
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 긍정 피드백 문화 · Dr. Ahmed
+  title: 긍정 피드백 문화 · Charge Nurse Kim
   tagline: You handled that family really well.
   persona:
-    name: Dr. Ahmed
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 구체적 인정
     - 긍정 문화 조성
@@ -3474,25 +3474,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 동료에게 구체적이고 진심 어린 인정을 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 인정 표현
         - 긍정 문화
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3500,17 +3500,17 @@
 - id: SCN-LOUNGE-00167
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 휴식·자기돌봄 권유 · Pharmacist Cho
+  title: 휴식·자기돌봄 권유 · Charge Nurse Kim
   tagline: I haven't had lunch — no time.
   persona:
-    name: Pharmacist Cho
+    name: Charge Nurse Kim
     role: colleague
     ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
+    sub: Charge RN
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 휴식 권유
@@ -3553,18 +3553,18 @@
 - id: SCN-LOUNGE-00168
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 어려운 지시 전달 · RN Marcus
+  title: 어려운 지시 전달 · Charge Nurse Kim
   tagline: Management wants us to change the routine.
   persona:
-    name: RN Marcus
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
     sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 변경 투명 전달
     - 우려 수렴
@@ -3580,25 +3580,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3606,18 +3606,18 @@
 - id: SCN-LOUNGE-00169
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 감사 표현 · Dr. Weber
+  title: 감사 표현 · Charge Nurse Kim
   tagline: Thanks for having my back today.
   persona:
-    name: Dr. Weber
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 감사 표현
     - 관계 강화
@@ -3633,25 +3633,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 팀워크에 대한 감사를 진심으로 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 감사 표현
         - 팀워크
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3659,18 +3659,18 @@
 - id: SCN-LOUNGE-00170
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 근무 인계 잡담 · Dr. Lee
+  title: 근무 인계 잡담 · Charge Nurse Kim
   tagline: Anything I should know before you go?
   persona:
-    name: Dr. Lee
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 비공식 정보 공유
     - 라포 형성
@@ -3712,18 +3712,18 @@
 - id: SCN-LOUNGE-00171
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 동료 정서 지지 · Charge Nurse Kim
+  title: 동료 정서 지지 · Dr. Novak
   tagline: I lost a patient today.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 동료 공감
     - 지지 제공
@@ -3818,18 +3818,18 @@
 - id: SCN-LOUNGE-00173
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 교대 조율 협의 · RN Sofia
+  title: 교대 조율 협의 · Dr. Novak
   tagline: Can anyone cover Friday night?
   persona:
-    name: RN Sofia
+    name: Dr. Novak
     role: colleague
-    ageRange: 20s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 교대 협의
     - 상호 배려
@@ -3871,17 +3871,17 @@
 - id: SCN-LOUNGE-00174
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 갈등 중재 · Dr. Ahmed
+  title: 갈등 중재 · Dr. Novak
   tagline: We keep butting heads on the unit.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 갈등 청취
@@ -3924,18 +3924,18 @@
 - id: SCN-LOUNGE-00175
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 신입 멘토링 · Pharmacist Cho
+  title: 신입 멘토링 · Dr. Novak
   tagline: Everyone seems so much faster than me.
   persona:
-    name: Pharmacist Cho
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 격려
     - 실용 조언
@@ -3951,25 +3951,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 신입 동료를 격려하고 실용적 조언을 주세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 멘토링
         - 격려
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -3977,17 +3977,17 @@
 - id: SCN-LOUNGE-00176
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 긍정 피드백 문화 · RN Marcus
+  title: 긍정 피드백 문화 · Dr. Novak
   tagline: You handled that family really well.
   persona:
-    name: RN Marcus
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 구체적 인정
@@ -4030,17 +4030,17 @@
 - id: SCN-LOUNGE-00177
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 휴식·자기돌봄 권유 · Dr. Weber
+  title: 휴식·자기돌봄 권유 · Dr. Novak
   tagline: I haven't had lunch — no time.
   persona:
-    name: Dr. Weber
+    name: Dr. Novak
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 휴식 권유
@@ -4083,17 +4083,17 @@
 - id: SCN-LOUNGE-00178
   profession: ""
   eventId: EVT-LOUNGE-00106
-  title: 어려운 지시 전달 · Dr. Lee
+  title: 어려운 지시 전달 · Dr. Novak
   tagline: Management wants us to change the routine.
   persona:
-    name: Dr. Lee
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 변경 투명 전달
@@ -4110,25 +4110,25 @@
     dept: LOUNGE · BREAK ROOM
     deptColor: '#A16207'
     brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 변화 소통
         - 투명성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#FEF9C3'
     accent: '#854D0E'
     chart: null
@@ -4136,18 +4136,18 @@
 - id: SCN-LOUNGE-00179
   profession: ""
   eventId: EVT-LOUNGE-00107
-  title: 감사 표현 · Charge Nurse Kim
+  title: 감사 표현 · Dr. Novak
   tagline: Thanks for having my back today.
   persona:
-    name: Charge Nurse Kim
+    name: Dr. Novak
     role: colleague
-    ageRange: 30s
+    ageRange: 50s
     personality: 차분하고 협조적임.
     speakingStyle: 또박또박 명확히.
     mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
+    sub: Surgeon
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 감사 표현
     - 관계 강화
@@ -4218,1066 +4218,6 @@
     brief: 교대 전 비공식 인계와 팀 분위기를 나누세요.
     difficulty: 1
     timeLabel: 약 6분
-    skills:
-        - 비공식 인계
-        - 라포
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00181
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 동료 정서 지지 · RN Sofia
-  tagline: I lost a patient today.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: sad
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 동료 공감
-    - 지지 제공
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - That's so hard, I'm sorry.
-    - Do you want to talk about it?
-    - You don't have to carry it alone.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 힘든 하루를 보낸 동료를 정서적으로 지지하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 동료 지지
-        - 공감
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00182
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 번아웃 대화 · Dr. Ahmed
-  tagline: I don't know how much longer I can do this.
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 번아웃 청취
-    - 자원 연계
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - It sounds like you're exhausted.
-    - There's support available.
-    - Your wellbeing matters too.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 번아웃을 겪는 동료의 이야기를 듣고 자원을 연계하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 번아웃
-        - 자원 연계
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00183
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 교대 조율 협의 · Pharmacist Cho
-  tagline: Can anyone cover Friday night?
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 교대 협의
-    - 상호 배려
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I can take part of it.
-    - Let's split the shift.
-    - Thanks for being flexible.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 교대 근무를 정중하게 협의·조율하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 교대 조율
-        - 협상
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00184
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 갈등 중재 · RN Marcus
-  tagline: We keep butting heads on the unit.
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 갈등 청취
-    - 해결 지향 중재
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Let's hear both sides.
-    - I think you both want the same thing.
-    - Can we agree on next steps?
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 동료 간 갈등을 건설적으로 중재하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 갈등 중재
-        - 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00185
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 신입 멘토링 · Dr. Weber
-  tagline: Everyone seems so much faster than me.
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 격려
-    - 실용 조언
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Speed comes with time.
-    - You're doing better than you think.
-    - Ask me anything, anytime.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 신입 동료를 격려하고 실용적 조언을 주세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 멘토링
-        - 격려
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00186
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 긍정 피드백 문화 · Dr. Lee
-  tagline: You handled that family really well.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 차분하고 협조적임.
-    speakingStyle: 또박또박 명확히.
-    mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 구체적 인정
-    - 긍정 문화 조성
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - You stayed so calm.
-    - That took real skill.
-    - The team noticed.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 동료에게 구체적이고 진심 어린 인정을 표현하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 인정 표현
-        - 긍정 문화
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00187
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 휴식·자기돌봄 권유 · Charge Nurse Kim
-  tagline: I haven't had lunch — no time.
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 휴식 권유
-    - 부담 분담
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Go eat, I'll watch your patients.
-    - You can't pour from an empty cup.
-    - Ten minutes will help.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 동료에게 휴식과 자기돌봄을 권유하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 자기돌봄
-        - 동료 배려
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00188
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 어려운 지시 전달 · Dr. Novak
-  tagline: Management wants us to change the routine.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 변경 투명 전달
-    - 우려 수렴
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Here's what's changing and why.
-    - I know it's not ideal.
-    - Let's raise concerns together.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 변화 소통
-        - 투명성
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00189
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 감사 표현 · RN Sofia
-  tagline: Thanks for having my back today.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 차분하고 협조적임.
-    speakingStyle: 또박또박 명확히.
-    mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 감사 표현
-    - 관계 강화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I couldn't have done it without you.
-    - We make a good team.
-    - I owe you one.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 팀워크에 대한 감사를 진심으로 표현하세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 감사 표현
-        - 팀워크
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00190
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 근무 인계 잡담 · Dr. Ahmed
-  tagline: Anything I should know before you go?
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 비공식 정보 공유
-    - 라포 형성
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Room 3 family is anxious.
-    - Supplies are low in the closet.
-    - Have a good one!
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 교대 전 비공식 인계와 팀 분위기를 나누세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 비공식 인계
-        - 라포
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00191
-  profession: ""
-  eventId: EVT-LOUNGE-00107
-  title: 동료 정서 지지 · Pharmacist Cho
-  tagline: I lost a patient today.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: sad
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 동료 공감
-    - 지지 제공
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - That's so hard, I'm sorry.
-    - Do you want to talk about it?
-    - You don't have to carry it alone.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 힘든 하루를 보낸 동료를 정서적으로 지지하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 동료 지지
-        - 공감
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00192
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 번아웃 대화 · RN Marcus
-  tagline: I don't know how much longer I can do this.
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 번아웃 청취
-    - 자원 연계
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - It sounds like you're exhausted.
-    - There's support available.
-    - Your wellbeing matters too.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 번아웃을 겪는 동료의 이야기를 듣고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 8분
-    skills:
-        - 번아웃
-        - 자원 연계
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00193
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 교대 조율 협의 · Dr. Weber
-  tagline: Can anyone cover Friday night?
-  persona:
-    name: Dr. Weber
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#8A8A8A'
-    hairStyle: short
-  goals:
-    - 교대 협의
-    - 상호 배려
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I can take part of it.
-    - Let's split the shift.
-    - Thanks for being flexible.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 교대 근무를 정중하게 협의·조율하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 교대 조율
-        - 협상
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00194
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 갈등 중재 · Dr. Lee
-  tagline: We keep butting heads on the unit.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 갈등 청취
-    - 해결 지향 중재
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Let's hear both sides.
-    - I think you both want the same thing.
-    - Can we agree on next steps?
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 동료 간 갈등을 건설적으로 중재하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - 갈등 중재
-        - 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00195
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 신입 멘토링 · Charge Nurse Kim
-  tagline: Everyone seems so much faster than me.
-  persona:
-    name: Charge Nurse Kim
-    role: colleague
-    ageRange: 30s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#241812'
-    hairStyle: bob
-  goals:
-    - 격려
-    - 실용 조언
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Speed comes with time.
-    - You're doing better than you think.
-    - Ask me anything, anytime.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 신입 동료를 격려하고 실용적 조언을 주세요.
-    difficulty: 1
-    timeLabel: 약 6분
-    skills:
-        - 멘토링
-        - 격려
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00196
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 긍정 피드백 문화 · Dr. Novak
-  tagline: You handled that family really well.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 차분하고 협조적임.
-    speakingStyle: 또박또박 명확히.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 구체적 인정
-    - 긍정 문화 조성
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - You stayed so calm.
-    - That took real skill.
-    - The team noticed.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 동료에게 구체적이고 진심 어린 인정을 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 인정 표현
-        - 긍정 문화
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00197
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 휴식·자기돌봄 권유 · RN Sofia
-  tagline: I haven't had lunch — no time.
-  persona:
-    name: RN Sofia
-    role: colleague
-    ageRange: 20s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Staff RN
-    hair: '#2A1E14'
-    hairStyle: long
-  goals:
-    - 휴식 권유
-    - 부담 분담
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Go eat, I'll watch your patients.
-    - You can't pour from an empty cup.
-    - Ten minutes will help.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 동료에게 휴식과 자기돌봄을 권유하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 자기돌봄
-        - 동료 배려
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00198
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 어려운 지시 전달 · Dr. Ahmed
-  tagline: Management wants us to change the routine.
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 변경 투명 전달
-    - 우려 수렴
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Here's what's changing and why.
-    - I know it's not ideal.
-    - Let's raise concerns together.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 달갑지 않은 변경사항을 팀에 투명하게 전달하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 변화 소통
-        - 투명성
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00199
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 감사 표현 · Pharmacist Cho
-  tagline: Thanks for having my back today.
-  persona:
-    name: Pharmacist Cho
-    role: colleague
-    ageRange: 30s
-    personality: 차분하고 협조적임.
-    speakingStyle: 또박또박 명확히.
-    mood: neutral
-    sub: PharmD
-    hair: '#3B2A1A'
-    hairStyle: bob
-  goals:
-    - 감사 표현
-    - 관계 강화
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - I couldn't have done it without you.
-    - We make a good team.
-    - I owe you one.
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 팀워크에 대한 감사를 진심으로 표현하세요.
-    difficulty: 2
-    timeLabel: 약 8분
-    skills:
-        - 감사 표현
-        - 팀워크
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#FEF9C3'
-    accent: '#854D0E'
-    chart: null
-    riskyPhrases: []
-- id: SCN-LOUNGE-00200
-  profession: ""
-  eventId: EVT-LOUNGE-00108
-  title: 근무 인계 잡담 · RN Marcus
-  tagline: Anything I should know before you go?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 비공식 정보 공유
-    - 라포 형성
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Room 3 family is anxious.
-    - Supplies are low in the closet.
-    - Have a good one!
-  steps: []
-  briefing:
-    dept: LOUNGE · BREAK ROOM
-    deptColor: '#A16207'
-    brief: 교대 전 비공식 인계와 팀 분위기를 나누세요.
-    difficulty: 1
-    timeLabel: 약 5분
     skills:
         - 비공식 인계
         - 라포

@@ -55,18 +55,18 @@
 - id: SCN-ONCO-00102
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 중심정맥관 관리 교육 · Ms. Bauer
+  title: 중심정맥관 관리 교육 · Mr. Johnson
   tagline: How do I keep this line clean?
   persona:
-    name: Ms. Bauer
+    name: Mr. Johnson
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -82,11 +82,64 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - CVC 관리
         - 감염 신호
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ONCO-00103
+  profession: ""
+  eventId: EVT-ONCO-00101
+  title: 골수이식 격리 안내 · Mr. Johnson
+  tagline: Why can't my kids visit?
+  persona:
+    name: Mr. Johnson
+    role: patient
+    ageRange: 40s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: sad
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
+  goals:
+    - 격리 이유 설명
+    - 정서 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your immune system is very low.
+    - Visitors must be healthy and few.
+    - It's temporary, to keep you safe.
+  steps: []
+  briefing:
+    dept: ONCO · BMT
+    deptColor: '#9333EA'
+    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - BMT 격리
+        - 감염 예방
     rewards:
         - icon: ⭐
           label: 경험치
@@ -105,74 +158,21 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00103
-  profession: ""
-  eventId: EVT-ONCO-00101
-  title: 골수이식 격리 안내 · Mr. Silva
-  tagline: Why can't my kids visit?
-  persona:
-    name: Mr. Silva
-    role: patient
-    ageRange: 70s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: sad
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
-  goals:
-    - 격리 이유 설명
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your immune system is very low.
-    - Visitors must be healthy and few.
-    - It's temporary, to keep you safe.
-  steps: []
-  briefing:
-    dept: ONCO · BMT
-    deptColor: '#9333EA'
-    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - BMT 격리
-        - 감염 예방
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
 - id: SCN-ONCO-00104
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 방사선치료 안내 · Mrs. Adeyemi
+  title: 방사선치료 안내 · Mr. Johnson
   tagline: Will the radiation burn my skin?
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Johnson
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 치료 과정 설명
     - 피부 관리 교육
@@ -214,17 +214,17 @@
 - id: SCN-ONCO-00105
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 통증 관리 상담 · Mr. Larsson
+  title: 통증 관리 상담 · Mr. Johnson
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Larsson
+    name: Mr. Johnson
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 통증·부작용 사정
@@ -241,25 +241,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -267,18 +267,18 @@
 - id: SCN-ONCO-00106
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 영양·식욕부진 상담 · Ms. Park
+  title: 영양·식욕부진 상담 · Mr. Johnson
   tagline: Nothing tastes good anymore.
   persona:
-    name: Ms. Park
+    name: Mr. Johnson
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -294,25 +294,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 치료 중 식욕부진과 영양을 상담하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 영양 상담
         - 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -320,17 +320,17 @@
 - id: SCN-ONCO-00107
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 치료 목표 상담 · Mr. Thompson
+  title: 치료 목표 상담 · Mr. Johnson
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Thompson
+    name: Mr. Johnson
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 치료 목표 대화
@@ -373,18 +373,18 @@
 - id: SCN-ONCO-00108
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 임상시험 정보 안내 · Mrs. Haddad
+  title: 임상시험 정보 안내 · Mr. Johnson
   tagline: Should I join a clinical trial?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Johnson
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 42y / Male
+    hair: '#2E2E2E'
+    hairStyle: short
   goals:
     - 임상시험 개념 설명
     - 자발성 강조
@@ -400,25 +400,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -426,17 +426,17 @@
 - id: SCN-ONCO-00109
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 가족 돌봄자 지지 · Mr. Yamamoto
+  title: 가족 돌봄자 지지 · Mr. Johnson
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Johnson
     role: family
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 42y / Male
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 돌봄자 정서 지지
@@ -453,25 +453,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -479,18 +479,18 @@
 - id: SCN-ONCO-00110
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 종양내과 인계 · Dr. Novak
+  title: 종양내과 인계 · Charge Nurse Kim
   tagline: Onco unit handoff.
   persona:
-    name: Dr. Novak
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 환자·일정 인계
     - 주의사항 공유
@@ -532,18 +532,18 @@
 - id: SCN-ONCO-00111
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 항암 부작용 상담 · Mr. Dubois
+  title: 항암 부작용 상담 · Ms. Bauer
   tagline: Will I lose my hair?
   persona:
-    name: Mr. Dubois
+    name: Ms. Bauer
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 부작용 우려 청취
     - 대처 안내
@@ -585,18 +585,18 @@
 - id: SCN-ONCO-00112
   profession: ""
   eventId: EVT-ONCO-00101
-  title: 중심정맥관 관리 교육 · Mrs. Santos
+  title: 중심정맥관 관리 교육 · Ms. Bauer
   tagline: How do I keep this line clean?
   persona:
-    name: Mrs. Santos
+    name: Ms. Bauer
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -612,64 +612,11 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - CVC 관리
         - 감염 신호
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ONCO-00113
-  profession: ""
-  eventId: EVT-ONCO-00101
-  title: 골수이식 격리 안내 · Mr. Wagner
-  tagline: Why can't my kids visit?
-  persona:
-    name: Mr. Wagner
-    role: patient
-    ageRange: 40s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: anxious
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
-  goals:
-    - 격리 이유 설명
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your immune system is very low.
-    - Visitors must be healthy and few.
-    - It's temporary, to keep you safe.
-  steps: []
-  briefing:
-    dept: ONCO · BMT
-    deptColor: '#9333EA'
-    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - BMT 격리
-        - 감염 예방
     rewards:
         - icon: ⭐
           label: 경험치
@@ -688,19 +635,72 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
+- id: SCN-ONCO-00113
+  profession: ""
+  eventId: EVT-ONCO-00101
+  title: 골수이식 격리 안내 · Ms. Bauer
+  tagline: Why can't my kids visit?
+  persona:
+    name: Ms. Bauer
+    role: patient
+    ageRange: 30s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: anxious
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
+  goals:
+    - 격리 이유 설명
+    - 정서 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your immune system is very low.
+    - Visitors must be healthy and few.
+    - It's temporary, to keep you safe.
+  steps: []
+  briefing:
+    dept: ONCO · BMT
+    deptColor: '#9333EA'
+    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - BMT 격리
+        - 감염 예방
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
 - id: SCN-ONCO-00114
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 방사선치료 안내 · Ms. Ivanova
+  title: 방사선치료 안내 · Ms. Bauer
   tagline: Will the radiation burn my skin?
   persona:
-    name: Ms. Ivanova
+    name: Ms. Bauer
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 31y / Female
+    sub: 38y / Female
     hair: '#C9A24B'
     hairStyle: long
   goals:
@@ -744,18 +744,18 @@
 - id: SCN-ONCO-00115
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 통증 관리 상담 · Mr. Reyes
+  title: 통증 관리 상담 · Ms. Bauer
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Reyes
+    name: Ms. Bauer
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 통증·부작용 사정
     - 계획 조율
@@ -771,25 +771,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -797,18 +797,18 @@
 - id: SCN-ONCO-00116
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 영양·식욕부진 상담 · Mr. Robinson
+  title: 영양·식욕부진 상담 · Ms. Bauer
   tagline: Nothing tastes good anymore.
   persona:
-    name: Mr. Robinson
+    name: Ms. Bauer
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 58y / Male
-    hair: '#4A4A4A'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -850,18 +850,18 @@
 - id: SCN-ONCO-00117
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 치료 목표 상담 · Mrs. Hopkins
+  title: 치료 목표 상담 · Ms. Bauer
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mrs. Hopkins
+    name: Ms. Bauer
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: worried
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 치료 목표 대화
     - 가치 존중
@@ -903,17 +903,17 @@
 - id: SCN-ONCO-00118
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 임상시험 정보 안내 · Ms. Alvarez
+  title: 임상시험 정보 안내 · Ms. Bauer
   tagline: Should I join a clinical trial?
   persona:
-    name: Ms. Alvarez
+    name: Ms. Bauer
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
+    sub: 38y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 임상시험 개념 설명
@@ -930,25 +930,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -956,18 +956,18 @@
 - id: SCN-ONCO-00119
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 가족 돌봄자 지지 · Mr. Chen
+  title: 가족 돌봄자 지지 · Ms. Bauer
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Chen
+    name: Ms. Bauer
     role: family
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 38y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 돌봄자 정서 지지
     - 자원 연계
@@ -983,25 +983,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1009,17 +1009,17 @@
 - id: SCN-ONCO-00120
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 종양내과 인계 · Dr. Ahmed
+  title: 종양내과 인계 · Dr. Novak
   tagline: Onco unit handoff.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 환자·일정 인계
@@ -1062,17 +1062,17 @@
 - id: SCN-ONCO-00121
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 항암 부작용 상담 · Mr. Okafor
+  title: 항암 부작용 상담 · Mr. Silva
   tagline: Will I lose my hair?
   persona:
-    name: Mr. Okafor
+    name: Mr. Silva
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 부작용 우려 청취
@@ -1115,18 +1115,18 @@
 - id: SCN-ONCO-00122
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 중심정맥관 관리 교육 · Ms. Nguyen
+  title: 중심정맥관 관리 교육 · Mr. Silva
   tagline: How do I keep this line clean?
   persona:
-    name: Ms. Nguyen
+    name: Mr. Silva
     role: patient
-    ageRange: 20s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -1142,25 +1142,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - CVC 관리
         - 감염 신호
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1168,17 +1168,17 @@
 - id: SCN-ONCO-00123
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 골수이식 격리 안내 · Mr. Patel
+  title: 골수이식 격리 안내 · Mr. Silva
   tagline: Why can't my kids visit?
   persona:
-    name: Mr. Patel
+    name: Mr. Silva
     role: patient
-    ageRange: 60s
+    ageRange: 70s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 격리 이유 설명
@@ -1221,18 +1221,18 @@
 - id: SCN-ONCO-00124
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 방사선치료 안내 · Mrs. Rossi
+  title: 방사선치료 안내 · Mr. Silva
   tagline: Will the radiation burn my skin?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Silva
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 치료 과정 설명
     - 피부 관리 교육
@@ -1274,17 +1274,17 @@
 - id: SCN-ONCO-00125
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 통증 관리 상담 · Mr. Johnson
+  title: 통증 관리 상담 · Mr. Silva
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Johnson
+    name: Mr. Silva
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 통증·부작용 사정
@@ -1301,25 +1301,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1327,18 +1327,18 @@
 - id: SCN-ONCO-00126
   profession: ""
   eventId: EVT-ONCO-00102
-  title: 영양·식욕부진 상담 · Ms. Bauer
+  title: 영양·식욕부진 상담 · Mr. Silva
   tagline: Nothing tastes good anymore.
   persona:
-    name: Ms. Bauer
+    name: Mr. Silva
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -1354,25 +1354,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 치료 중 식욕부진과 영양을 상담하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 영양 상담
         - 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1433,18 +1433,18 @@
 - id: SCN-ONCO-00128
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 임상시험 정보 안내 · Mrs. Adeyemi
+  title: 임상시험 정보 안내 · Mr. Silva
   tagline: Should I join a clinical trial?
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Silva
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 76y / Male
+    hair: '#9C9C9C'
+    hairStyle: short
   goals:
     - 임상시험 개념 설명
     - 자발성 강조
@@ -1460,25 +1460,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1486,17 +1486,17 @@
 - id: SCN-ONCO-00129
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 가족 돌봄자 지지 · Mr. Larsson
+  title: 가족 돌봄자 지지 · Mr. Silva
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Larsson
+    name: Mr. Silva
     role: family
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 76y / Male
+    hair: '#9C9C9C'
     hairStyle: short
   goals:
     - 돌봄자 정서 지지
@@ -1513,25 +1513,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1539,18 +1539,18 @@
 - id: SCN-ONCO-00130
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 종양내과 인계 · RN Marcus
+  title: 종양내과 인계 · RN Sofia
   tagline: Onco unit handoff.
   persona:
-    name: RN Marcus
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 환자·일정 인계
     - 주의사항 공유
@@ -1592,18 +1592,18 @@
 - id: SCN-ONCO-00131
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 항암 부작용 상담 · Mr. Thompson
+  title: 항암 부작용 상담 · Mrs. Adeyemi
   tagline: Will I lose my hair?
   persona:
-    name: Mr. Thompson
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 부작용 우려 청취
     - 대처 안내
@@ -1645,17 +1645,17 @@
 - id: SCN-ONCO-00132
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 중심정맥관 관리 교육 · Mrs. Haddad
+  title: 중심정맥관 관리 교육 · Mrs. Adeyemi
   tagline: How do I keep this line clean?
   persona:
-    name: Mrs. Haddad
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 33y / Female
-    hair: '#241812'
+    sub: 47y / Female
+    hair: '#0F0F0F'
     hairStyle: bob
   goals:
     - CVC 관리 교육
@@ -1672,11 +1672,64 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - CVC 관리
         - 감염 신호
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ONCO-00133
+  profession: ""
+  eventId: EVT-ONCO-00103
+  title: 골수이식 격리 안내 · Mrs. Adeyemi
+  tagline: Why can't my kids visit?
+  persona:
+    name: Mrs. Adeyemi
+    role: patient
+    ageRange: 40s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: anxious
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
+  goals:
+    - 격리 이유 설명
+    - 정서 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your immune system is very low.
+    - Visitors must be healthy and few.
+    - It's temporary, to keep you safe.
+  steps: []
+  briefing:
+    dept: ONCO · BMT
+    deptColor: '#9333EA'
+    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - BMT 격리
+        - 감염 예방
     rewards:
         - icon: ⭐
           label: 경험치
@@ -1695,74 +1748,21 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00133
-  profession: ""
-  eventId: EVT-ONCO-00103
-  title: 골수이식 격리 안내 · Mr. Yamamoto
-  tagline: Why can't my kids visit?
-  persona:
-    name: Mr. Yamamoto
-    role: patient
-    ageRange: 50s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
-  goals:
-    - 격리 이유 설명
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your immune system is very low.
-    - Visitors must be healthy and few.
-    - It's temporary, to keep you safe.
-  steps: []
-  briefing:
-    dept: ONCO · BMT
-    deptColor: '#9333EA'
-    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - BMT 격리
-        - 감염 예방
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
 - id: SCN-ONCO-00134
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 방사선치료 안내 · Ms. O'Brien
+  title: 방사선치료 안내 · Mrs. Adeyemi
   tagline: Will the radiation burn my skin?
   persona:
-    name: Ms. O'Brien
+    name: Mrs. Adeyemi
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 치료 과정 설명
     - 피부 관리 교육
@@ -1804,18 +1804,18 @@
 - id: SCN-ONCO-00135
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 통증 관리 상담 · Mr. Dubois
+  title: 통증 관리 상담 · Mrs. Adeyemi
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Dubois
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 통증·부작용 사정
     - 계획 조율
@@ -1831,25 +1831,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1857,17 +1857,17 @@
 - id: SCN-ONCO-00136
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 영양·식욕부진 상담 · Mrs. Santos
+  title: 영양·식욕부진 상담 · Mrs. Adeyemi
   tagline: Nothing tastes good anymore.
   persona:
-    name: Mrs. Santos
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 74y / Female
-    hair: '#A0A0A0'
+    sub: 47y / Female
+    hair: '#0F0F0F'
     hairStyle: bob
   goals:
     - 식욕부진 대처
@@ -1884,25 +1884,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 치료 중 식욕부진과 영양을 상담하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 영양 상담
         - 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1910,18 +1910,18 @@
 - id: SCN-ONCO-00137
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 치료 목표 상담 · Mr. Wagner
+  title: 치료 목표 상담 · Mrs. Adeyemi
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Wagner
+    name: Mrs. Adeyemi
     role: patient
     ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: worried
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 치료 목표 대화
     - 가치 존중
@@ -1963,18 +1963,18 @@
 - id: SCN-ONCO-00138
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 임상시험 정보 안내 · Ms. Ivanova
+  title: 임상시험 정보 안내 · Mrs. Adeyemi
   tagline: Should I join a clinical trial?
   persona:
-    name: Ms. Ivanova
+    name: Mrs. Adeyemi
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 임상시험 개념 설명
     - 자발성 강조
@@ -1990,25 +1990,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2016,18 +2016,18 @@
 - id: SCN-ONCO-00139
   profession: ""
   eventId: EVT-ONCO-00103
-  title: 가족 돌봄자 지지 · Mr. Reyes
+  title: 가족 돌봄자 지지 · Mrs. Adeyemi
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Reyes
+    name: Mrs. Adeyemi
     role: family
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 47y / Female
+    hair: '#0F0F0F'
+    hairStyle: bob
   goals:
     - 돌봄자 정서 지지
     - 자원 연계
@@ -2043,25 +2043,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2069,17 +2069,17 @@
 - id: SCN-ONCO-00140
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 종양내과 인계 · Dr. Lee
+  title: 종양내과 인계 · Dr. Ahmed
   tagline: Onco unit handoff.
   persona:
-    name: Dr. Lee
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 환자·일정 인계
@@ -2122,18 +2122,18 @@
 - id: SCN-ONCO-00141
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 항암 부작용 상담 · Mrs. Hopkins
+  title: 항암 부작용 상담 · Mr. Larsson
   tagline: Will I lose my hair?
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Larsson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 부작용 우려 청취
     - 대처 안내
@@ -2175,18 +2175,18 @@
 - id: SCN-ONCO-00142
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 중심정맥관 관리 교육 · Ms. Alvarez
+  title: 중심정맥관 관리 교육 · Mr. Larsson
   tagline: How do I keep this line clean?
   persona:
-    name: Ms. Alvarez
+    name: Mr. Larsson
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -2202,64 +2202,11 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - CVC 관리
         - 감염 신호
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ONCO-00143
-  profession: ""
-  eventId: EVT-ONCO-00104
-  title: 골수이식 격리 안내 · Mr. Chen
-  tagline: Why can't my kids visit?
-  persona:
-    name: Mr. Chen
-    role: patient
-    ageRange: 40s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 격리 이유 설명
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your immune system is very low.
-    - Visitors must be healthy and few.
-    - It's temporary, to keep you safe.
-  steps: []
-  briefing:
-    dept: ONCO · BMT
-    deptColor: '#9333EA'
-    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - BMT 격리
-        - 감염 예방
     rewards:
         - icon: ⭐
           label: 경험치
@@ -2278,21 +2225,74 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
+- id: SCN-ONCO-00143
+  profession: ""
+  eventId: EVT-ONCO-00104
+  title: 골수이식 격리 안내 · Mr. Larsson
+  tagline: Why can't my kids visit?
+  persona:
+    name: Mr. Larsson
+    role: patient
+    ageRange: 50s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: sad
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
+  goals:
+    - 격리 이유 설명
+    - 정서 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your immune system is very low.
+    - Visitors must be healthy and few.
+    - It's temporary, to keep you safe.
+  steps: []
+  briefing:
+    dept: ONCO · BMT
+    deptColor: '#9333EA'
+    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - BMT 격리
+        - 감염 예방
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
 - id: SCN-ONCO-00144
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 방사선치료 안내 · Mrs. Kelly
+  title: 방사선치료 안내 · Mr. Larsson
   tagline: Will the radiation burn my skin?
   persona:
-    name: Mrs. Kelly
+    name: Mr. Larsson
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 치료 과정 설명
     - 피부 관리 교육
@@ -2334,17 +2334,17 @@
 - id: SCN-ONCO-00145
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 통증 관리 상담 · Mr. Okafor
+  title: 통증 관리 상담 · Mr. Larsson
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Okafor
+    name: Mr. Larsson
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 통증·부작용 사정
@@ -2361,25 +2361,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2387,18 +2387,18 @@
 - id: SCN-ONCO-00146
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 영양·식욕부진 상담 · Ms. Nguyen
+  title: 영양·식욕부진 상담 · Mr. Larsson
   tagline: Nothing tastes good anymore.
   persona:
-    name: Ms. Nguyen
+    name: Mr. Larsson
     role: patient
-    ageRange: 20s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 26y / Female
-    hair: '#1A1A1A'
-    hairStyle: long
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -2440,17 +2440,17 @@
 - id: SCN-ONCO-00147
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 치료 목표 상담 · Mr. Patel
+  title: 치료 목표 상담 · Mr. Larsson
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Patel
+    name: Mr. Larsson
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 치료 목표 대화
@@ -2493,18 +2493,18 @@
 - id: SCN-ONCO-00148
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 임상시험 정보 안내 · Mrs. Rossi
+  title: 임상시험 정보 안내 · Mr. Larsson
   tagline: Should I join a clinical trial?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Larsson
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 59y / Male
+    hair: '#D8B26A'
+    hairStyle: short
   goals:
     - 임상시험 개념 설명
     - 자발성 강조
@@ -2520,25 +2520,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2546,17 +2546,17 @@
 - id: SCN-ONCO-00149
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 가족 돌봄자 지지 · Mr. Johnson
+  title: 가족 돌봄자 지지 · Mr. Larsson
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Johnson
+    name: Mr. Larsson
     role: family
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 59y / Male
+    hair: '#D8B26A'
     hairStyle: short
   goals:
     - 돌봄자 정서 지지
@@ -2573,25 +2573,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2599,18 +2599,18 @@
 - id: SCN-ONCO-00150
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 종양내과 인계 · Dr. Novak
+  title: 종양내과 인계 · Pharmacist Cho
   tagline: Onco unit handoff.
   persona:
-    name: Dr. Novak
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 환자·일정 인계
     - 주의사항 공유
@@ -2652,18 +2652,18 @@
 - id: SCN-ONCO-00151
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 항암 부작용 상담 · Mr. Silva
+  title: 항암 부작용 상담 · Ms. Park
   tagline: Will I lose my hair?
   persona:
-    name: Mr. Silva
+    name: Ms. Park
     role: patient
-    ageRange: 70s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 부작용 우려 청취
     - 대처 안내
@@ -2705,18 +2705,18 @@
 - id: SCN-ONCO-00152
   profession: ""
   eventId: EVT-ONCO-00104
-  title: 중심정맥관 관리 교육 · Mrs. Adeyemi
+  title: 중심정맥관 관리 교육 · Ms. Park
   tagline: How do I keep this line clean?
   persona:
-    name: Mrs. Adeyemi
+    name: Ms. Park
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -2732,25 +2732,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - CVC 관리
         - 감염 신호
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2758,18 +2758,18 @@
 - id: SCN-ONCO-00153
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 골수이식 격리 안내 · Mr. Larsson
+  title: 골수이식 격리 안내 · Ms. Park
   tagline: Why can't my kids visit?
   persona:
-    name: Mr. Larsson
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 격리 이유 설명
     - 정서 지지
@@ -2864,18 +2864,18 @@
 - id: SCN-ONCO-00155
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 통증 관리 상담 · Mr. Thompson
+  title: 통증 관리 상담 · Ms. Park
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Thompson
+    name: Ms. Park
     role: patient
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 통증·부작용 사정
     - 계획 조율
@@ -2891,25 +2891,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2917,18 +2917,18 @@
 - id: SCN-ONCO-00156
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 영양·식욕부진 상담 · Mrs. Haddad
+  title: 영양·식욕부진 상담 · Ms. Park
   tagline: Nothing tastes good anymore.
   persona:
-    name: Mrs. Haddad
+    name: Ms. Park
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -2944,25 +2944,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 치료 중 식욕부진과 영양을 상담하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 영양 상담
         - 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2970,18 +2970,18 @@
 - id: SCN-ONCO-00157
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 치료 목표 상담 · Mr. Yamamoto
+  title: 치료 목표 상담 · Ms. Park
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Yamamoto
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 치료 목표 대화
     - 가치 존중
@@ -3023,17 +3023,17 @@
 - id: SCN-ONCO-00158
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 임상시험 정보 안내 · Ms. O'Brien
+  title: 임상시험 정보 안내 · Ms. Park
   tagline: Should I join a clinical trial?
   persona:
-    name: Ms. O'Brien
+    name: Ms. Park
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 41y / Female
-    hair: '#7A4A22'
+    sub: 29y / Female
+    hair: '#141414'
     hairStyle: long
   goals:
     - 임상시험 개념 설명
@@ -3050,25 +3050,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3076,18 +3076,18 @@
 - id: SCN-ONCO-00159
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 가족 돌봄자 지지 · Mr. Dubois
+  title: 가족 돌봄자 지지 · Ms. Park
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Dubois
+    name: Ms. Park
     role: family
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 돌봄자 정서 지지
     - 자원 연계
@@ -3103,25 +3103,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3129,17 +3129,17 @@
 - id: SCN-ONCO-00160
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 종양내과 인계 · Dr. Ahmed
+  title: 종양내과 인계 · RN Marcus
   tagline: Onco unit handoff.
   persona:
-    name: Dr. Ahmed
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 환자·일정 인계
@@ -3182,17 +3182,17 @@
 - id: SCN-ONCO-00161
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 항암 부작용 상담 · Mr. Wagner
+  title: 항암 부작용 상담 · Mr. Thompson
   tagline: Will I lose my hair?
   persona:
-    name: Mr. Wagner
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 부작용 우려 청취
@@ -3235,18 +3235,18 @@
 - id: SCN-ONCO-00162
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 중심정맥관 관리 교육 · Ms. Ivanova
+  title: 중심정맥관 관리 교육 · Mr. Thompson
   tagline: How do I keep this line clean?
   persona:
-    name: Ms. Ivanova
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -3262,11 +3262,64 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - CVC 관리
         - 감염 신호
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ONCO-00163
+  profession: ""
+  eventId: EVT-ONCO-00105
+  title: 골수이식 격리 안내 · Mr. Thompson
+  tagline: Why can't my kids visit?
+  persona:
+    name: Mr. Thompson
+    role: patient
+    ageRange: 60s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: sad
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
+  goals:
+    - 격리 이유 설명
+    - 정서 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your immune system is very low.
+    - Visitors must be healthy and few.
+    - It's temporary, to keep you safe.
+  steps: []
+  briefing:
+    dept: ONCO · BMT
+    deptColor: '#9333EA'
+    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - BMT 격리
+        - 감염 예방
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3285,73 +3338,20 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00163
-  profession: ""
-  eventId: EVT-ONCO-00105
-  title: 골수이식 격리 안내 · Mr. Reyes
-  tagline: Why can't my kids visit?
-  persona:
-    name: Mr. Reyes
-    role: patient
-    ageRange: 50s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 격리 이유 설명
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your immune system is very low.
-    - Visitors must be healthy and few.
-    - It's temporary, to keep you safe.
-  steps: []
-  briefing:
-    dept: ONCO · BMT
-    deptColor: '#9333EA'
-    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - BMT 격리
-        - 감염 예방
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
 - id: SCN-ONCO-00164
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 방사선치료 안내 · Mr. Robinson
+  title: 방사선치료 안내 · Mr. Thompson
   tagline: Will the radiation burn my skin?
   persona:
-    name: Mr. Robinson
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 치료 과정 설명
@@ -3394,18 +3394,18 @@
 - id: SCN-ONCO-00165
   profession: ""
   eventId: EVT-ONCO-00105
-  title: 통증 관리 상담 · Mrs. Hopkins
+  title: 통증 관리 상담 · Mr. Thompson
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Thompson
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 통증·부작용 사정
     - 계획 조율
@@ -3421,25 +3421,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3447,18 +3447,18 @@
 - id: SCN-ONCO-00166
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 영양·식욕부진 상담 · Ms. Alvarez
+  title: 영양·식욕부진 상담 · Mr. Thompson
   tagline: Nothing tastes good anymore.
   persona:
-    name: Ms. Alvarez
+    name: Mr. Thompson
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -3474,25 +3474,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 치료 중 식욕부진과 영양을 상담하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 영양 상담
         - 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3500,17 +3500,17 @@
 - id: SCN-ONCO-00167
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 치료 목표 상담 · Mr. Chen
+  title: 치료 목표 상담 · Mr. Thompson
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Chen
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 치료 목표 대화
@@ -3553,18 +3553,18 @@
 - id: SCN-ONCO-00168
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 임상시험 정보 안내 · Mrs. Kelly
+  title: 임상시험 정보 안내 · Mr. Thompson
   tagline: Should I join a clinical trial?
   persona:
-    name: Mrs. Kelly
+    name: Mr. Thompson
     role: patient
-    ageRange: 70s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 임상시험 개념 설명
     - 자발성 강조
@@ -3580,25 +3580,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3606,17 +3606,17 @@
 - id: SCN-ONCO-00169
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 가족 돌봄자 지지 · Mr. Okafor
+  title: 가족 돌봄자 지지 · Mr. Thompson
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Okafor
+    name: Mr. Thompson
     role: family
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 돌봄자 정서 지지
@@ -3633,25 +3633,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3659,17 +3659,17 @@
 - id: SCN-ONCO-00170
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 종양내과 인계 · RN Marcus
+  title: 종양내과 인계 · Dr. Weber
   tagline: Onco unit handoff.
   persona:
-    name: RN Marcus
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 환자·일정 인계
@@ -3712,18 +3712,18 @@
 - id: SCN-ONCO-00171
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 항암 부작용 상담 · Mr. Patel
+  title: 항암 부작용 상담 · Mrs. Haddad
   tagline: Will I lose my hair?
   persona:
-    name: Mr. Patel
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 부작용 우려 청취
     - 대처 안내
@@ -3765,17 +3765,17 @@
 - id: SCN-ONCO-00172
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 중심정맥관 관리 교육 · Mrs. Rossi
+  title: 중심정맥관 관리 교육 · Mrs. Haddad
   tagline: How do I keep this line clean?
   persona:
-    name: Mrs. Rossi
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 51y / Female
-    hair: '#5A3A22'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - CVC 관리 교육
@@ -3792,64 +3792,11 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - CVC 관리
         - 감염 신호
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ONCO-00173
-  profession: ""
-  eventId: EVT-ONCO-00106
-  title: 골수이식 격리 안내 · Mr. Johnson
-  tagline: Why can't my kids visit?
-  persona:
-    name: Mr. Johnson
-    role: patient
-    ageRange: 40s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: anxious
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 격리 이유 설명
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your immune system is very low.
-    - Visitors must be healthy and few.
-    - It's temporary, to keep you safe.
-  steps: []
-  briefing:
-    dept: ONCO · BMT
-    deptColor: '#9333EA'
-    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - BMT 격리
-        - 감염 예방
     rewards:
         - icon: ⭐
           label: 경험치
@@ -3868,21 +3815,74 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
+- id: SCN-ONCO-00173
+  profession: ""
+  eventId: EVT-ONCO-00106
+  title: 골수이식 격리 안내 · Mrs. Haddad
+  tagline: Why can't my kids visit?
+  persona:
+    name: Mrs. Haddad
+    role: patient
+    ageRange: 30s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: anxious
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
+  goals:
+    - 격리 이유 설명
+    - 정서 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your immune system is very low.
+    - Visitors must be healthy and few.
+    - It's temporary, to keep you safe.
+  steps: []
+  briefing:
+    dept: ONCO · BMT
+    deptColor: '#9333EA'
+    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
+    difficulty: 3
+    timeLabel: 약 7분
+    skills:
+        - BMT 격리
+        - 감염 예방
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
 - id: SCN-ONCO-00174
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 방사선치료 안내 · Ms. Bauer
+  title: 방사선치료 안내 · Mrs. Haddad
   tagline: Will the radiation burn my skin?
   persona:
-    name: Ms. Bauer
+    name: Mrs. Haddad
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 치료 과정 설명
     - 피부 관리 교육
@@ -3924,18 +3924,18 @@
 - id: SCN-ONCO-00175
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 통증 관리 상담 · Mr. Silva
+  title: 통증 관리 상담 · Mrs. Haddad
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Silva
+    name: Mrs. Haddad
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 통증·부작용 사정
     - 계획 조율
@@ -3951,25 +3951,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3977,17 +3977,17 @@
 - id: SCN-ONCO-00176
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 영양·식욕부진 상담 · Mrs. Adeyemi
+  title: 영양·식욕부진 상담 · Mrs. Haddad
   tagline: Nothing tastes good anymore.
   persona:
-    name: Mrs. Adeyemi
+    name: Mrs. Haddad
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
+    sub: 33y / Female
+    hair: '#241812'
     hairStyle: bob
   goals:
     - 식욕부진 대처
@@ -4030,18 +4030,18 @@
 - id: SCN-ONCO-00177
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 치료 목표 상담 · Mr. Larsson
+  title: 치료 목표 상담 · Mrs. Haddad
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Larsson
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: worried
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 치료 목표 대화
     - 가치 존중
@@ -4083,18 +4083,18 @@
 - id: SCN-ONCO-00178
   profession: ""
   eventId: EVT-ONCO-00106
-  title: 임상시험 정보 안내 · Ms. Park
+  title: 임상시험 정보 안내 · Mrs. Haddad
   tagline: Should I join a clinical trial?
   persona:
-    name: Ms. Park
+    name: Mrs. Haddad
     role: patient
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 29y / Female
-    hair: '#141414'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 임상시험 개념 설명
     - 자발성 강조
@@ -4110,25 +4110,25 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 임상시험 안내
         - 자발성
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -4136,18 +4136,18 @@
 - id: SCN-ONCO-00179
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 가족 돌봄자 지지 · Mr. Thompson
+  title: 가족 돌봄자 지지 · Mrs. Haddad
   tagline: I don't know how to help him.
   persona:
-    name: Mr. Thompson
+    name: Mrs. Haddad
     role: family
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 돌봄자 정서 지지
     - 자원 연계
@@ -4163,25 +4163,25 @@
     dept: ONCO · FAMILY ROOM
     deptColor: '#9333EA'
     brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - 돌봄자 지지
         - 자원 연계
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -4295,18 +4295,18 @@
 - id: SCN-ONCO-00182
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 중심정맥관 관리 교육 · Ms. O'Brien
+  title: 중심정맥관 관리 교육 · Mr. Yamamoto
   tagline: How do I keep this line clean?
   persona:
-    name: Ms. O'Brien
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -4322,25 +4322,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - CVC 관리
         - 감염 신호
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -4348,17 +4348,17 @@
 - id: SCN-ONCO-00183
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 골수이식 격리 안내 · Mr. Dubois
+  title: 골수이식 격리 안내 · Mr. Yamamoto
   tagline: Why can't my kids visit?
   persona:
-    name: Mr. Dubois
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 격리 이유 설명
@@ -4401,18 +4401,18 @@
 - id: SCN-ONCO-00184
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 방사선치료 안내 · Mrs. Santos
+  title: 방사선치료 안내 · Mr. Yamamoto
   tagline: Will the radiation burn my skin?
   persona:
-    name: Mrs. Santos
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 치료 과정 설명
     - 피부 관리 교육
@@ -4454,17 +4454,17 @@
 - id: SCN-ONCO-00185
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 통증 관리 상담 · Mr. Wagner
+  title: 통증 관리 상담 · Mr. Yamamoto
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Wagner
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 통증·부작용 사정
@@ -4481,25 +4481,25 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -4507,18 +4507,18 @@
 - id: SCN-ONCO-00186
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 영양·식욕부진 상담 · Ms. Ivanova
+  title: 영양·식욕부진 상담 · Mr. Yamamoto
   tagline: Nothing tastes good anymore.
   persona:
-    name: Ms. Ivanova
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 31y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -4534,25 +4534,25 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 치료 중 식욕부진과 영양을 상담하세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 영양 상담
         - 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -4560,17 +4560,17 @@
 - id: SCN-ONCO-00187
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 치료 목표 상담 · Mr. Reyes
+  title: 치료 목표 상담 · Mr. Yamamoto
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Reyes
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 치료 목표 대화
@@ -4613,17 +4613,17 @@
 - id: SCN-ONCO-00188
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 임상시험 정보 안내 · Mr. Robinson
+  title: 임상시험 정보 안내 · Mr. Yamamoto
   tagline: Should I join a clinical trial?
   persona:
-    name: Mr. Robinson
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 임상시험 개념 설명
@@ -4640,117 +4640,11 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 임상시험 안내
         - 자발성
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ONCO-00189
-  profession: ""
-  eventId: EVT-ONCO-00107
-  title: 가족 돌봄자 지지 · Mrs. Hopkins
-  tagline: I don't know how to help him.
-  persona:
-    name: Mrs. Hopkins
-    role: family
-    ageRange: 60s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: anxious
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
-  goals:
-    - 돌봄자 정서 지지
-    - 자원 연계
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Caring for yourself matters too.
-    - Support groups can help.
-    - You're doing a hard job well.
-  steps: []
-  briefing:
-    dept: ONCO · FAMILY ROOM
-    deptColor: '#9333EA'
-    brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 돌봄자 지지
-        - 자원 연계
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ONCO-00190
-  profession: ""
-  eventId: EVT-ONCO-00107
-  title: 종양내과 인계 · Dr. Novak
-  tagline: Onco unit handoff.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 환자·일정 인계
-    - 주의사항 공유
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Bed 3, day 2 of chemo.
-    - Bed 5 neutropenic, on precautions.
-    - Bed 1 pain not controlled.
-  steps: []
-  briefing:
-    dept: ONCO · STATION
-    deptColor: '#9333EA'
-    brief: 종양 병동 환자와 치료 일정을 인계하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 인계
-        - 항암 일정
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4769,21 +4663,74 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00191
+- id: SCN-ONCO-00189
   profession: ""
   eventId: EVT-ONCO-00107
-  title: 항암 부작용 상담 · Mr. Chen
+  title: 가족 돌봄자 지지 · Mr. Yamamoto
+  tagline: I don't know how to help him.
+  persona:
+    name: Mr. Yamamoto
+    role: family
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: anxious
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
+  goals:
+    - 돌봄자 정서 지지
+    - 자원 연계
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Caring for yourself matters too.
+    - Support groups can help.
+    - You're doing a hard job well.
+  steps: []
+  briefing:
+    dept: ONCO · FAMILY ROOM
+    deptColor: '#9333EA'
+    brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
+    difficulty: 3
+    timeLabel: 약 8분
+    skills:
+        - 돌봄자 지지
+        - 자원 연계
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 160 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 5
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 6+
+          metric: level
+          threshold: 6
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ONCO-00190
+  profession: ""
+  eventId: EVT-ONCO-00107
+  title: 항암 부작용 상담 · Ms. O'Brien
   tagline: Will I lose my hair?
   persona:
-    name: Mr. Chen
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 부작용 우려 청취
     - 대처 안내
@@ -4822,21 +4769,21 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00192
+- id: SCN-ONCO-00191
   profession: ""
-  eventId: EVT-ONCO-00108
-  title: 중심정맥관 관리 교육 · Mrs. Kelly
+  eventId: EVT-ONCO-00107
+  title: 중심정맥관 관리 교육 · Ms. O'Brien
   tagline: How do I keep this line clean?
   persona:
-    name: Mrs. Kelly
+    name: Ms. O'Brien
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - CVC 관리 교육
     - 감염 신호
@@ -4852,11 +4799,64 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 중심정맥관 관리와 감염 신호를 교육하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - CVC 관리
         - 감염 신호
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ONCO-00192
+  profession: ""
+  eventId: EVT-ONCO-00108
+  title: 골수이식 격리 안내 · Ms. O'Brien
+  tagline: Why can't my kids visit?
+  persona:
+    name: Ms. O'Brien
+    role: patient
+    ageRange: 40s
+    personality: 가라앉아 조용히 반응함.
+    speakingStyle: 느리고 낮은 목소리.
+    mood: anxious
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
+  goals:
+    - 격리 이유 설명
+    - 정서 지지
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Your immune system is very low.
+    - Visitors must be healthy and few.
+    - It's temporary, to keep you safe.
+  steps: []
+  briefing:
+    dept: ONCO · BMT
+    deptColor: '#9333EA'
+    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - BMT 격리
+        - 감염 예방
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4878,70 +4878,17 @@
 - id: SCN-ONCO-00193
   profession: ""
   eventId: EVT-ONCO-00108
-  title: 골수이식 격리 안내 · Mr. Okafor
-  tagline: Why can't my kids visit?
-  persona:
-    name: Mr. Okafor
-    role: patient
-    ageRange: 50s
-    personality: 가라앉아 조용히 반응함.
-    speakingStyle: 느리고 낮은 목소리.
-    mood: anxious
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 격리 이유 설명
-    - 정서 지지
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Your immune system is very low.
-    - Visitors must be healthy and few.
-    - It's temporary, to keep you safe.
-  steps: []
-  briefing:
-    dept: ONCO · BMT
-    deptColor: '#9333EA'
-    brief: 골수이식 후 격리의 이유와 규칙을 공감적으로 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - BMT 격리
-        - 감염 예방
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-ONCO-00194
-  profession: ""
-  eventId: EVT-ONCO-00108
-  title: 방사선치료 안내 · Ms. Nguyen
+  title: 방사선치료 안내 · Ms. O'Brien
   tagline: Will the radiation burn my skin?
   persona:
-    name: Ms. Nguyen
+    name: Ms. O'Brien
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 26y / Female
-    hair: '#1A1A1A'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 치료 과정 설명
@@ -4981,21 +4928,21 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00195
+- id: SCN-ONCO-00194
   profession: ""
   eventId: EVT-ONCO-00108
-  title: 통증 관리 상담 · Mr. Patel
+  title: 통증 관리 상담 · Ms. O'Brien
   tagline: The pain medicine makes me foggy.
   persona:
-    name: Mr. Patel
+    name: Ms. O'Brien
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 통증·부작용 사정
     - 계획 조율
@@ -5011,44 +4958,44 @@
     dept: ONCO · CLINIC 1
     deptColor: '#9333EA'
     brief: 암성 통증과 진통제 부작용을 조율하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 암성 통증
         - 진통 조율
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00196
+- id: SCN-ONCO-00195
   profession: ""
   eventId: EVT-ONCO-00108
-  title: 영양·식욕부진 상담 · Mrs. Rossi
+  title: 영양·식욕부진 상담 · Ms. O'Brien
   tagline: Nothing tastes good anymore.
   persona:
-    name: Mrs. Rossi
+    name: Ms. O'Brien
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 식욕부진 대처
     - 영양 교육
@@ -5064,44 +5011,44 @@
     dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
     brief: 치료 중 식욕부진과 영양을 상담하세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 영양 상담
         - 지지
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00197
+- id: SCN-ONCO-00196
   profession: ""
   eventId: EVT-ONCO-00108
-  title: 치료 목표 상담 · Mr. Johnson
+  title: 치료 목표 상담 · Ms. O'Brien
   tagline: Is this to cure it, or just help?
   persona:
-    name: Mr. Johnson
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 가라앉아 조용히 반응함.
     speakingStyle: 느리고 낮은 목소리.
     mood: worried
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 치료 목표 대화
     - 가치 존중
@@ -5140,20 +5087,20 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00198
+- id: SCN-ONCO-00197
   profession: ""
   eventId: EVT-ONCO-00108
-  title: 임상시험 정보 안내 · Ms. Bauer
+  title: 임상시험 정보 안내 · Ms. O'Brien
   tagline: Should I join a clinical trial?
   persona:
-    name: Ms. Bauer
+    name: Ms. O'Brien
     role: patient
-    ageRange: 30s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 38y / Female
-    hair: '#C9A24B'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 임상시험 개념 설명
@@ -5170,11 +5117,117 @@
     dept: ONCO · CLINIC 3
     deptColor: '#9333EA'
     brief: 임상시험의 개념과 자발성을 중립적으로 안내하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 임상시험 안내
         - 자발성
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ONCO-00198
+  profession: ""
+  eventId: EVT-ONCO-00108
+  title: 가족 돌봄자 지지 · Ms. O'Brien
+  tagline: I don't know how to help him.
+  persona:
+    name: Ms. O'Brien
+    role: family
+    ageRange: 40s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
+  goals:
+    - 돌봄자 정서 지지
+    - 자원 연계
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Caring for yourself matters too.
+    - Support groups can help.
+    - You're doing a hard job well.
+  steps: []
+  briefing:
+    dept: ONCO · FAMILY ROOM
+    deptColor: '#9333EA'
+    brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
+    difficulty: 1
+    timeLabel: 약 7분
+    skills:
+        - 돌봄자 지지
+        - 자원 연계
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-ONCO-00199
+  profession: ""
+  eventId: EVT-ONCO-00108
+  title: 항암 부작용 상담 · Mr. Dubois
+  tagline: Will I lose my hair?
+  persona:
+    name: Mr. Dubois
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
+  goals:
+    - 부작용 우려 청취
+    - 대처 안내
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Some treatments cause hair loss.
+    - It usually grows back.
+    - Let's talk about coping.
+  steps: []
+  briefing:
+    dept: ONCO · CLINIC 1
+    deptColor: '#9333EA'
+    brief: 항암 부작용에 대한 우려를 청취하고 대처를 안내하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 부작용 상담
+        - 공감
     rewards:
         - icon: ⭐
           label: 경험치
@@ -5193,108 +5246,55 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-ONCO-00199
-  profession: ""
-  eventId: EVT-ONCO-00108
-  title: 가족 돌봄자 지지 · Mr. Silva
-  tagline: I don't know how to help him.
-  persona:
-    name: Mr. Silva
-    role: family
-    ageRange: 70s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: worried
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
-  goals:
-    - 돌봄자 정서 지지
-    - 자원 연계
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Caring for yourself matters too.
-    - Support groups can help.
-    - You're doing a hard job well.
-  steps: []
-  briefing:
-    dept: ONCO · FAMILY ROOM
-    deptColor: '#9333EA'
-    brief: 지친 돌봄 가족을 지지하고 자원을 연계하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - 돌봄자 지지
-        - 자원 연계
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
 - id: SCN-ONCO-00200
   profession: ""
   eventId: EVT-ONCO-00108
-  title: 종양내과 인계 · Dr. Ahmed
-  tagline: Onco unit handoff.
+  title: 중심정맥관 관리 교육 · Mr. Dubois
+  tagline: How do I keep this line clean?
   persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
+    name: Mr. Dubois
+    role: patient
+    ageRange: 60s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
-    - 환자·일정 인계
-    - 주의사항 공유
+    - CVC 관리 교육
+    - 감염 신호
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Bed 3, day 2 of chemo.
-    - Bed 5 neutropenic, on precautions.
-    - Bed 1 pain not controlled.
+    - Keep the dressing dry.
+    - Watch for fever or redness.
+    - Never touch the connections.
   steps: []
   briefing:
-    dept: ONCO · STATION
+    dept: ONCO · CLINIC 2
     deptColor: '#9333EA'
-    brief: 종양 병동 환자와 치료 일정을 인계하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    brief: 중심정맥관 관리와 감염 신호를 교육하세요.
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
-        - 인계
-        - 항암 일정
+        - CVC 관리
+        - 감염 신호
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null

@@ -68,17 +68,68 @@ func main() {
 func generateDept(deptIdx int, d Dept, target int) ([]content.Scenario, []content.Event) {
 	scns := make([]content.Scenario, 0, target)
 	nt := len(d.Topics)
-	for k := 0; len(scns) < target; k++ {
+	// k is read as a MIXED-RADIX number — topic, then persona, then difficulty — so the
+	// three axes actually multiply.
+	//
+	// They used to be three functions of k directly: topic k%nt, persona k, difficulty
+	// k%3. Whenever nt was a multiple of the persona pool and of 3 — NICU has 30 topics
+	// and 6 parent personas — all three returned to their starting value together every
+	// nt scenarios. The result was the same topic, the same patient and the same
+	// difficulty over again, differing only in the persona's mood word: 387 titles
+	// duplicated across 1,050 of 3,203 scenarios, a third of the bank. Axes driven by one
+	// counter do not multiply, they move in lockstep.
+	// How many distinct scenarios this department's banks can actually express: each topic
+	// can be put to each patient its role can draw from, once.
+	//
+	// Generating past that is where the duplicates came from. Asking for 100 when the banks
+	// hold 60 does not produce 100 scenarios; it produces 60 and then says 40 of them
+	// twice. Difficulty was supposed to be the third axis but clampDiff collapses it at the
+	// ends, so "the same thing, harder" was frequently the same thing. A bank is as deep as
+	// its content, and the honest answer to "how many" is however many there are.
+	pairs := 0
+	deepestPool := 0
+	for _, t := range d.Topics {
+		l := personaPoolLen(t.Role)
+		pairs += l
+		if l > deepestPool {
+			deepestPool = l
+		}
+	}
+	limit := target
+	if pairs < limit {
+		limit = pairs
+	}
+
+	// k reads as a mixed-radix number: topic first, then which patient. They used to be two
+	// functions of k directly — topic k%nt, persona k — so whenever nt was a multiple of the
+	// pool size (NICU: 10 topics, 6 parent personas) both returned to their starting values
+	// together and the same topic met the same patient again, differing only in a mood word.
+	// 387 titles were duplicated across 1,050 of 3,203 scenarios, a third of the bank. Axes
+	// driven by one counter do not multiply; they move in lockstep.
+	for k := 0; len(scns) < limit && k < nt*deepestPool; k++ {
 		t := d.Topics[k%nt]
-		variant := k / nt
-		p := personaFor(t.Role, deptIdx, k)
-		diff := clampDiff(t.Diff + (k%3 - 1)) // spread 1..3 around the topic base
+		pass := k / nt // how many times the topic list has been walked
+		variant := pass
+		if pass >= personaPoolLen(t.Role) {
+			continue // this topic has met everyone its role can draw from
+		}
+		p := personaFor(t.Role, deptIdx, pass)
+		// Spread around the topic's own difficulty. Safe to vary freely now: the pair above
+		// is already unique, so this is texture rather than the thing keeping them apart.
+		diff := clampDiff(t.Diff + (pass%3 - 1))
 		mins := 4 + diff + (k % 3)
-		n := idStart + k
-		id := fmt.Sprintf("SCN-%s-%05d", d.Code, n)
+		// Numbered by POSITION, not by k.
+		//
+		// k now skips topics whose patients are used up, so k and the position in scns
+		// diverge. Both the id and the event id were derived from k, and the events below
+		// are grouped by position — so a skipped k pointed a scenario at an event that was
+		// never created. Validate caught it as an unknown eventId; the invariant is simply
+		// that the Nth scenario belongs to the (N/eventSize)th event, so N is what to use.
+		idx := len(scns)
+		id := fmt.Sprintf("SCN-%s-%05d", d.Code, idStart+idx)
 		scns = append(scns, content.Scenario{
 			ID:      id,
-			EventID: fmt.Sprintf("EVT-%s-%05d", d.Code, idStart+(k/eventSize)),
+			EventID: fmt.Sprintf("EVT-%s-%05d", d.Code, idStart+(idx/eventSize)),
 			Title:   t.Title + " · " + p.Name,
 			Tagline: t.Tagline,
 			Persona: content.Persona{

@@ -55,18 +55,18 @@
 - id: SCN-OR-00102
   profession: ""
   eventId: EVT-OR-00101
-  title: 마취 전 문진 · Mr. Thompson
+  title: 마취 전 문진 · Ms. Park
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Thompson
+    name: Ms. Park
     role: patient
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 금식·알레르기·과거력 확인
     - 위험 요인 보고
@@ -82,25 +82,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -108,17 +108,17 @@
 - id: SCN-OR-00103
   profession: ""
   eventId: EVT-OR-00101
-  title: 수술 전 Time-out · Dr. Lee
+  title: 수술 전 Time-out · RN Marcus
   tagline: Everyone, let's confirm.
   persona:
-    name: Dr. Lee
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 환자·부위·시술 확인
@@ -135,25 +135,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -161,18 +161,18 @@
 - id: SCN-OR-00104
   profession: ""
   eventId: EVT-OR-00101
-  title: 수술 부위 표시 확인 · Mr. Yamamoto
+  title: 수술 부위 표시 확인 · Ms. Park
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Yamamoto
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 부위 재확인
     - 환자 참여 유도
@@ -214,17 +214,17 @@
 - id: SCN-OR-00105
   profession: ""
   eventId: EVT-OR-00101
-  title: 무균술 유지 소통 · Dr. Novak
+  title: 무균술 유지 소통 · RN Marcus
   tagline: Watch the sterile field!
   persona:
-    name: Dr. Novak
+    name: RN Marcus
     role: colleague
-    ageRange: 50s
+    ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 무균 위반 지적·정정
@@ -241,25 +241,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -267,18 +267,18 @@
 - id: SCN-OR-00106
   profession: ""
   eventId: EVT-OR-00101
-  title: 수술 중 가족 업데이트 · Mr. Dubois
+  title: 수술 중 가족 업데이트 · Ms. Park
   tagline: How's the surgery going?
   persona:
-    name: Mr. Dubois
+    name: Ms. Park
     role: family
-    ageRange: 60s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 진행 상황 업데이트
     - 불안 완화
@@ -294,25 +294,25 @@
     dept: OR · WAITING
     deptColor: '#9333EA'
     brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 소통
         - 진행 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -320,17 +320,17 @@
 - id: SCN-OR-00107
   profession: ""
   eventId: EVT-OR-00101
-  title: PACU 인계 · Dr. Ahmed
+  title: PACU 인계 · RN Marcus
   tagline: Receiving from OR — status?
   persona:
-    name: Dr. Ahmed
+    name: RN Marcus
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Charge RN
+    hair: '#2E2E2E'
     hairStyle: short
   goals:
     - 수술·마취·활력 인계
@@ -373,18 +373,18 @@
 - id: SCN-OR-00108
   profession: ""
   eventId: EVT-OR-00101
-  title: 회복 후 통증 사정 · Mr. Wagner
+  title: 회복 후 통증 사정 · Ms. Park
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Wagner
+    name: Ms. Park
     role: patient
-    ageRange: 40s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 48y / Male
-    hair: '#3A2A1A'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 통증 사정
     - 진통 조절 설명
@@ -400,25 +400,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -426,17 +426,17 @@
 - id: SCN-OR-00109
   profession: ""
   eventId: EVT-OR-00101
-  title: 수술 지연 설명 · Ms. Ivanova
+  title: 수술 지연 설명 · Ms. Park
   tagline: Why is it taking so long to start?
   persona:
-    name: Ms. Ivanova
+    name: Ms. Park
     role: patient
-    ageRange: 30s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 31y / Female
-    hair: '#C9A24B'
+    sub: 29y / Female
+    hair: '#141414'
     hairStyle: long
   goals:
     - 지연 사유 설명
@@ -453,25 +453,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 지연 설명
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -479,18 +479,18 @@
 - id: SCN-OR-00110
   profession: ""
   eventId: EVT-OR-00101
-  title: 수술 후 조기 이상 격려 · Mr. Reyes
+  title: 수술 후 조기 이상 격려 · Ms. Park
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Reyes
+    name: Ms. Park
     role: patient
-    ageRange: 50s
+    ageRange: 20s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 29y / Female
+    hair: '#141414'
+    hairStyle: long
   goals:
     - 조기 이상 필요성 설명
     - 안전하게 보행 지원
@@ -532,17 +532,17 @@
 - id: SCN-OR-00111
   profession: ""
   eventId: EVT-OR-00101
-  title: 수술 동의 확인 · Mr. Robinson
+  title: 수술 동의 확인 · Mr. Thompson
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Mr. Robinson
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 동의·시술 이해 확인
@@ -585,18 +585,18 @@
 - id: SCN-OR-00112
   profession: ""
   eventId: EVT-OR-00101
-  title: 마취 전 문진 · Mrs. Hopkins
+  title: 마취 전 문진 · Mr. Thompson
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Thompson
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 금식·알레르기·과거력 확인
     - 위험 요인 보고
@@ -612,25 +612,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -638,17 +638,17 @@
 - id: SCN-OR-00113
   profession: ""
   eventId: EVT-OR-00101
-  title: 수술 전 Time-out · Dr. Novak
+  title: 수술 전 Time-out · Dr. Weber
   tagline: Everyone, let's confirm.
   persona:
-    name: Dr. Novak
+    name: Dr. Weber
     role: colleague
     ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 환자·부위·시술 확인
@@ -665,25 +665,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -691,17 +691,17 @@
 - id: SCN-OR-00114
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 부위 표시 확인 · Mr. Chen
+  title: 수술 부위 표시 확인 · Mr. Thompson
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Chen
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 부위 재확인
@@ -744,17 +744,17 @@
 - id: SCN-OR-00115
   profession: ""
   eventId: EVT-OR-00102
-  title: 무균술 유지 소통 · Dr. Ahmed
+  title: 무균술 유지 소통 · Dr. Weber
   tagline: Watch the sterile field!
   persona:
-    name: Dr. Ahmed
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 무균 위반 지적·정정
@@ -771,25 +771,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -797,17 +797,17 @@
 - id: SCN-OR-00116
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 중 가족 업데이트 · Mr. Okafor
+  title: 수술 중 가족 업데이트 · Mr. Thompson
   tagline: How's the surgery going?
   persona:
-    name: Mr. Okafor
+    name: Mr. Thompson
     role: family
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 진행 상황 업데이트
@@ -850,17 +850,17 @@
 - id: SCN-OR-00117
   profession: ""
   eventId: EVT-OR-00102
-  title: PACU 인계 · RN Marcus
+  title: PACU 인계 · Dr. Weber
   tagline: Receiving from OR — status?
   persona:
-    name: RN Marcus
+    name: Dr. Weber
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 수술·마취·활력 인계
@@ -903,17 +903,17 @@
 - id: SCN-OR-00118
   profession: ""
   eventId: EVT-OR-00102
-  title: 회복 후 통증 사정 · Mr. Patel
+  title: 회복 후 통증 사정 · Mr. Thompson
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Patel
+    name: Mr. Thompson
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 63y / Male
-    hair: '#3B2A1A'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 통증 사정
@@ -930,25 +930,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -956,18 +956,18 @@
 - id: SCN-OR-00119
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 지연 설명 · Mrs. Rossi
+  title: 수술 지연 설명 · Mr. Thompson
   tagline: Why is it taking so long to start?
   persona:
-    name: Mrs. Rossi
+    name: Mr. Thompson
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 68y / Male
+    hair: '#8A8A8A'
+    hairStyle: short
   goals:
     - 지연 사유 설명
     - 불안 완화
@@ -1009,17 +1009,17 @@
 - id: SCN-OR-00120
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 후 조기 이상 격려 · Mr. Johnson
+  title: 수술 후 조기 이상 격려 · Mr. Thompson
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Johnson
+    name: Mr. Thompson
     role: patient
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 68y / Male
+    hair: '#8A8A8A'
     hairStyle: short
   goals:
     - 조기 이상 필요성 설명
@@ -1062,18 +1062,18 @@
 - id: SCN-OR-00121
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 동의 확인 · Ms. Bauer
+  title: 수술 동의 확인 · Mrs. Haddad
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Ms. Bauer
+    name: Mrs. Haddad
     role: patient
     ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 동의·시술 이해 확인
     - 불안 완화
@@ -1115,18 +1115,18 @@
 - id: SCN-OR-00122
   profession: ""
   eventId: EVT-OR-00102
-  title: 마취 전 문진 · Mr. Silva
+  title: 마취 전 문진 · Mrs. Haddad
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Silva
+    name: Mrs. Haddad
     role: patient
-    ageRange: 70s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 금식·알레르기·과거력 확인
     - 위험 요인 보고
@@ -1142,25 +1142,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1168,17 +1168,17 @@
 - id: SCN-OR-00123
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 전 Time-out · Dr. Ahmed
+  title: 수술 전 Time-out · Dr. Lee
   tagline: Everyone, let's confirm.
   persona:
-    name: Dr. Ahmed
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 환자·부위·시술 확인
@@ -1195,25 +1195,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1221,18 +1221,18 @@
 - id: SCN-OR-00124
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 부위 표시 확인 · Mr. Larsson
+  title: 수술 부위 표시 확인 · Mrs. Haddad
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Larsson
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 부위 재확인
     - 환자 참여 유도
@@ -1274,17 +1274,17 @@
 - id: SCN-OR-00125
   profession: ""
   eventId: EVT-OR-00102
-  title: 무균술 유지 소통 · RN Marcus
+  title: 무균술 유지 소통 · Dr. Lee
   tagline: Watch the sterile field!
   persona:
-    name: RN Marcus
+    name: Dr. Lee
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Attending
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 무균 위반 지적·정정
@@ -1301,25 +1301,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1327,18 +1327,18 @@
 - id: SCN-OR-00126
   profession: ""
   eventId: EVT-OR-00102
-  title: 수술 중 가족 업데이트 · Mr. Thompson
+  title: 수술 중 가족 업데이트 · Mrs. Haddad
   tagline: How's the surgery going?
   persona:
-    name: Mr. Thompson
+    name: Mrs. Haddad
     role: family
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 진행 상황 업데이트
     - 불안 완화
@@ -1354,25 +1354,25 @@
     dept: OR · WAITING
     deptColor: '#9333EA'
     brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 가족 소통
         - 진행 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1433,18 +1433,18 @@
 - id: SCN-OR-00128
   profession: ""
   eventId: EVT-OR-00103
-  title: 회복 후 통증 사정 · Mr. Yamamoto
+  title: 회복 후 통증 사정 · Mrs. Haddad
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Yamamoto
+    name: Mrs. Haddad
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 56y / Male
-    hair: '#161616'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 통증 사정
     - 진통 조절 설명
@@ -1460,25 +1460,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1486,18 +1486,18 @@
 - id: SCN-OR-00129
   profession: ""
   eventId: EVT-OR-00103
-  title: 수술 지연 설명 · Ms. O'Brien
+  title: 수술 지연 설명 · Mrs. Haddad
   tagline: Why is it taking so long to start?
   persona:
-    name: Ms. O'Brien
+    name: Mrs. Haddad
     role: patient
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 41y / Female
-    hair: '#7A4A22'
-    hairStyle: long
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 지연 사유 설명
     - 불안 완화
@@ -1513,25 +1513,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 지연 설명
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1539,18 +1539,18 @@
 - id: SCN-OR-00130
   profession: ""
   eventId: EVT-OR-00103
-  title: 수술 후 조기 이상 격려 · Mr. Dubois
+  title: 수술 후 조기 이상 격려 · Mrs. Haddad
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Dubois
+    name: Mrs. Haddad
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 64y / Male
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: 33y / Female
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 조기 이상 필요성 설명
     - 안전하게 보행 지원
@@ -1592,18 +1592,18 @@
 - id: SCN-OR-00131
   profession: ""
   eventId: EVT-OR-00103
-  title: 수술 동의 확인 · Mrs. Santos
+  title: 수술 동의 확인 · Mr. Yamamoto
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Mrs. Santos
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 동의·시술 이해 확인
     - 불안 완화
@@ -1645,17 +1645,17 @@
 - id: SCN-OR-00132
   profession: ""
   eventId: EVT-OR-00103
-  title: 마취 전 문진 · Mr. Wagner
+  title: 마취 전 문진 · Mr. Yamamoto
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Wagner
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 금식·알레르기·과거력 확인
@@ -1672,25 +1672,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1698,18 +1698,18 @@
 - id: SCN-OR-00133
   profession: ""
   eventId: EVT-OR-00103
-  title: 수술 전 Time-out · RN Marcus
+  title: 수술 전 Time-out · Charge Nurse Kim
   tagline: Everyone, let's confirm.
   persona:
-    name: RN Marcus
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
     sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 환자·부위·시술 확인
     - 안전 체크
@@ -1725,25 +1725,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1751,17 +1751,17 @@
 - id: SCN-OR-00134
   profession: ""
   eventId: EVT-OR-00103
-  title: 수술 부위 표시 확인 · Mr. Reyes
+  title: 수술 부위 표시 확인 · Mr. Yamamoto
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Reyes
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 부위 재확인
@@ -1804,18 +1804,18 @@
 - id: SCN-OR-00135
   profession: ""
   eventId: EVT-OR-00103
-  title: 무균술 유지 소통 · Dr. Lee
+  title: 무균술 유지 소통 · Charge Nurse Kim
   tagline: Watch the sterile field!
   persona:
-    name: Dr. Lee
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 무균 위반 지적·정정
     - 기구 전달 소통
@@ -1831,25 +1831,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1857,18 +1857,18 @@
 - id: SCN-OR-00136
   profession: ""
   eventId: EVT-OR-00103
-  title: 수술 중 가족 업데이트 · Mrs. Hopkins
+  title: 수술 중 가족 업데이트 · Mr. Yamamoto
   tagline: How's the surgery going?
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Yamamoto
     role: family
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 진행 상황 업데이트
     - 불안 완화
@@ -1884,25 +1884,25 @@
     dept: OR · WAITING
     deptColor: '#9333EA'
     brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 소통
         - 진행 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -1910,18 +1910,18 @@
 - id: SCN-OR-00137
   profession: ""
   eventId: EVT-OR-00103
-  title: PACU 인계 · Dr. Novak
+  title: PACU 인계 · Charge Nurse Kim
   tagline: Receiving from OR — status?
   persona:
-    name: Dr. Novak
+    name: Charge Nurse Kim
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Charge RN
+    hair: '#241812'
+    hairStyle: bob
   goals:
     - 수술·마취·활력 인계
     - 주의사항 전달
@@ -1963,17 +1963,17 @@
 - id: SCN-OR-00138
   profession: ""
   eventId: EVT-OR-00103
-  title: 회복 후 통증 사정 · Mr. Chen
+  title: 회복 후 통증 사정 · Mr. Yamamoto
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Chen
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 45y / Male
-    hair: '#1C1C1C'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 통증 사정
@@ -1990,25 +1990,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2016,18 +2016,18 @@
 - id: SCN-OR-00139
   profession: ""
   eventId: EVT-OR-00103
-  title: 수술 지연 설명 · Mrs. Kelly
+  title: 수술 지연 설명 · Mr. Yamamoto
   tagline: Why is it taking so long to start?
   persona:
-    name: Mrs. Kelly
+    name: Mr. Yamamoto
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 72y / Female
-    hair: '#B0B0B0'
-    hairStyle: bob
+    sub: 56y / Male
+    hair: '#161616'
+    hairStyle: short
   goals:
     - 지연 사유 설명
     - 불안 완화
@@ -2043,25 +2043,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 지연 설명
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2069,17 +2069,17 @@
 - id: SCN-OR-00140
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 후 조기 이상 격려 · Mr. Okafor
+  title: 수술 후 조기 이상 격려 · Mr. Yamamoto
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Okafor
+    name: Mr. Yamamoto
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 54y / Male
-    hair: '#111111'
+    sub: 56y / Male
+    hair: '#161616'
     hairStyle: short
   goals:
     - 조기 이상 필요성 설명
@@ -2122,17 +2122,17 @@
 - id: SCN-OR-00141
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 동의 확인 · Ms. Nguyen
+  title: 수술 동의 확인 · Ms. O'Brien
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Ms. Nguyen
+    name: Ms. O'Brien
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 26y / Female
-    hair: '#1A1A1A'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 동의·시술 이해 확인
@@ -2175,18 +2175,18 @@
 - id: SCN-OR-00142
   profession: ""
   eventId: EVT-OR-00104
-  title: 마취 전 문진 · Mr. Patel
+  title: 마취 전 문진 · Ms. O'Brien
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Patel
+    name: Ms. O'Brien
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 금식·알레르기·과거력 확인
     - 위험 요인 보고
@@ -2202,25 +2202,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2228,17 +2228,17 @@
 - id: SCN-OR-00143
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 전 Time-out · Dr. Lee
+  title: 수술 전 Time-out · Dr. Novak
   tagline: Everyone, let's confirm.
   persona:
-    name: Dr. Lee
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 환자·부위·시술 확인
@@ -2255,25 +2255,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2281,18 +2281,18 @@
 - id: SCN-OR-00144
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 부위 표시 확인 · Mr. Johnson
+  title: 수술 부위 표시 확인 · Ms. O'Brien
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Johnson
+    name: Ms. O'Brien
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 부위 재확인
     - 환자 참여 유도
@@ -2361,25 +2361,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2387,18 +2387,18 @@
 - id: SCN-OR-00146
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 중 가족 업데이트 · Mr. Silva
+  title: 수술 중 가족 업데이트 · Ms. O'Brien
   tagline: How's the surgery going?
   persona:
-    name: Mr. Silva
+    name: Ms. O'Brien
     role: family
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 진행 상황 업데이트
     - 불안 완화
@@ -2440,17 +2440,17 @@
 - id: SCN-OR-00147
   profession: ""
   eventId: EVT-OR-00104
-  title: PACU 인계 · Dr. Ahmed
+  title: PACU 인계 · Dr. Novak
   tagline: Receiving from OR — status?
   persona:
-    name: Dr. Ahmed
+    name: Dr. Novak
     role: colleague
-    ageRange: 40s
+    ageRange: 50s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Resident
-    hair: '#111111'
+    sub: Surgeon
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 수술·마취·활력 인계
@@ -2493,18 +2493,18 @@
 - id: SCN-OR-00148
   profession: ""
   eventId: EVT-OR-00104
-  title: 회복 후 통증 사정 · Mr. Larsson
+  title: 회복 후 통증 사정 · Ms. O'Brien
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Larsson
+    name: Ms. O'Brien
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 59y / Male
-    hair: '#D8B26A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 통증 사정
     - 진통 조절 설명
@@ -2520,25 +2520,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2546,17 +2546,17 @@
 - id: SCN-OR-00149
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 지연 설명 · Ms. Park
+  title: 수술 지연 설명 · Ms. O'Brien
   tagline: Why is it taking so long to start?
   persona:
-    name: Ms. Park
+    name: Ms. O'Brien
     role: patient
-    ageRange: 20s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 29y / Female
-    hair: '#141414'
+    sub: 41y / Female
+    hair: '#7A4A22'
     hairStyle: long
   goals:
     - 지연 사유 설명
@@ -2599,18 +2599,18 @@
 - id: SCN-OR-00150
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 후 조기 이상 격려 · Mr. Thompson
+  title: 수술 후 조기 이상 격려 · Ms. O'Brien
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Thompson
+    name: Ms. O'Brien
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 68y / Male
-    hair: '#8A8A8A'
-    hairStyle: short
+    sub: 41y / Female
+    hair: '#7A4A22'
+    hairStyle: long
   goals:
     - 조기 이상 필요성 설명
     - 안전하게 보행 지원
@@ -2652,18 +2652,18 @@
 - id: SCN-OR-00151
   profession: ""
   eventId: EVT-OR-00104
-  title: 수술 동의 확인 · Mrs. Haddad
+  title: 수술 동의 확인 · Mr. Dubois
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Mrs. Haddad
+    name: Mr. Dubois
     role: patient
-    ageRange: 30s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 동의·시술 이해 확인
     - 불안 완화
@@ -2705,17 +2705,17 @@
 - id: SCN-OR-00152
   profession: ""
   eventId: EVT-OR-00104
-  title: 마취 전 문진 · Mr. Yamamoto
+  title: 마취 전 문진 · Mr. Dubois
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 금식·알레르기·과거력 확인
@@ -2732,25 +2732,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2758,18 +2758,18 @@
 - id: SCN-OR-00153
   profession: ""
   eventId: EVT-OR-00105
-  title: 수술 전 Time-out · Dr. Novak
+  title: 수술 전 Time-out · RN Sofia
   tagline: Everyone, let's confirm.
   persona:
-    name: Dr. Novak
+    name: RN Sofia
     role: colleague
-    ageRange: 50s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 환자·부위·시술 확인
     - 안전 체크
@@ -2785,25 +2785,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 3
+    timeLabel: 약 8분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 6+
           metric: level
-          threshold: 4
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2864,18 +2864,18 @@
 - id: SCN-OR-00155
   profession: ""
   eventId: EVT-OR-00105
-  title: 무균술 유지 소통 · Dr. Ahmed
+  title: 무균술 유지 소통 · RN Sofia
   tagline: Watch the sterile field!
   persona:
-    name: Dr. Ahmed
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 무균 위반 지적·정정
     - 기구 전달 소통
@@ -2891,25 +2891,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2917,17 +2917,17 @@
 - id: SCN-OR-00156
   profession: ""
   eventId: EVT-OR-00105
-  title: 수술 중 가족 업데이트 · Mr. Wagner
+  title: 수술 중 가족 업데이트 · Mr. Dubois
   tagline: How's the surgery going?
   persona:
-    name: Mr. Wagner
+    name: Mr. Dubois
     role: family
-    ageRange: 40s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 48y / Male
-    hair: '#3A2A1A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 진행 상황 업데이트
@@ -2944,25 +2944,25 @@
     dept: OR · WAITING
     deptColor: '#9333EA'
     brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 가족 소통
         - 진행 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -2970,18 +2970,18 @@
 - id: SCN-OR-00157
   profession: ""
   eventId: EVT-OR-00105
-  title: PACU 인계 · RN Marcus
+  title: PACU 인계 · RN Sofia
   tagline: Receiving from OR — status?
   persona:
-    name: RN Marcus
+    name: RN Sofia
     role: colleague
-    ageRange: 40s
+    ageRange: 20s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: Staff RN
+    hair: '#2A1E14'
+    hairStyle: long
   goals:
     - 수술·마취·활력 인계
     - 주의사항 전달
@@ -3023,17 +3023,17 @@
 - id: SCN-OR-00158
   profession: ""
   eventId: EVT-OR-00105
-  title: 회복 후 통증 사정 · Mr. Reyes
+  title: 회복 후 통증 사정 · Mr. Dubois
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Reyes
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 53y / Male
-    hair: '#1C1C1C'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 통증 사정
@@ -3050,25 +3050,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3076,17 +3076,17 @@
 - id: SCN-OR-00159
   profession: ""
   eventId: EVT-OR-00105
-  title: 수술 지연 설명 · Mr. Robinson
+  title: 수술 지연 설명 · Mr. Dubois
   tagline: Why is it taking so long to start?
   persona:
-    name: Mr. Robinson
+    name: Mr. Dubois
     role: patient
-    ageRange: 50s
+    ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 58y / Male
-    hair: '#4A4A4A'
+    sub: 64y / Male
+    hair: '#5A5A5A'
     hairStyle: short
   goals:
     - 지연 사유 설명
@@ -3103,25 +3103,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 지연 설명
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3129,18 +3129,18 @@
 - id: SCN-OR-00160
   profession: ""
   eventId: EVT-OR-00105
-  title: 수술 후 조기 이상 격려 · Mrs. Hopkins
+  title: 수술 후 조기 이상 격려 · Mr. Dubois
   tagline: I don't think I can stand yet.
   persona:
-    name: Mrs. Hopkins
+    name: Mr. Dubois
     role: patient
     ageRange: 60s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 64y / Male
+    hair: '#5A5A5A'
+    hairStyle: short
   goals:
     - 조기 이상 필요성 설명
     - 안전하게 보행 지원
@@ -3182,18 +3182,18 @@
 - id: SCN-OR-00161
   profession: ""
   eventId: EVT-OR-00105
-  title: 수술 동의 확인 · Ms. Alvarez
+  title: 수술 동의 확인 · Mrs. Santos
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Ms. Alvarez
+    name: Mrs. Santos
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 34y / Female
-    hair: '#2A1E14'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 동의·시술 이해 확인
     - 불안 완화
@@ -3235,18 +3235,18 @@
 - id: SCN-OR-00162
   profession: ""
   eventId: EVT-OR-00105
-  title: 마취 전 문진 · Mr. Chen
+  title: 마취 전 문진 · Mrs. Santos
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Chen
+    name: Mrs. Santos
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 금식·알레르기·과거력 확인
     - 위험 요인 보고
@@ -3262,25 +3262,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3315,25 +3315,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 2+
           metric: level
-          threshold: 6
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3341,18 +3341,18 @@
 - id: SCN-OR-00164
   profession: ""
   eventId: EVT-OR-00105
-  title: 수술 부위 표시 확인 · Mr. Okafor
+  title: 수술 부위 표시 확인 · Mrs. Santos
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Okafor
+    name: Mrs. Santos
     role: patient
-    ageRange: 50s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 부위 재확인
     - 환자 참여 유도
@@ -3394,17 +3394,17 @@
 - id: SCN-OR-00165
   profession: ""
   eventId: EVT-OR-00105
-  title: 무균술 유지 소통 · RN Marcus
+  title: 무균술 유지 소통 · Dr. Ahmed
   tagline: Watch the sterile field!
   persona:
-    name: RN Marcus
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Charge RN
-    hair: '#2E2E2E'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 무균 위반 지적·정정
@@ -3421,25 +3421,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3447,18 +3447,18 @@
 - id: SCN-OR-00166
   profession: ""
   eventId: EVT-OR-00106
-  title: 수술 중 가족 업데이트 · Mr. Patel
+  title: 수술 중 가족 업데이트 · Mrs. Santos
   tagline: How's the surgery going?
   persona:
-    name: Mr. Patel
+    name: Mrs. Santos
     role: family
-    ageRange: 60s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 진행 상황 업데이트
     - 불안 완화
@@ -3474,25 +3474,25 @@
     dept: OR · WAITING
     deptColor: '#9333EA'
     brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 소통
         - 진행 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3500,17 +3500,17 @@
 - id: SCN-OR-00167
   profession: ""
   eventId: EVT-OR-00106
-  title: PACU 인계 · Dr. Lee
+  title: PACU 인계 · Dr. Ahmed
   tagline: Receiving from OR — status?
   persona:
-    name: Dr. Lee
+    name: Dr. Ahmed
     role: colleague
     ageRange: 40s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
+    sub: Resident
+    hair: '#111111'
     hairStyle: short
   goals:
     - 수술·마취·활력 인계
@@ -3553,18 +3553,18 @@
 - id: SCN-OR-00168
   profession: ""
   eventId: EVT-OR-00106
-  title: 회복 후 통증 사정 · Mr. Johnson
+  title: 회복 후 통증 사정 · Mrs. Santos
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Johnson
+    name: Mrs. Santos
     role: patient
-    ageRange: 40s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 42y / Male
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 통증 사정
     - 진통 조절 설명
@@ -3580,25 +3580,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3606,18 +3606,18 @@
 - id: SCN-OR-00169
   profession: ""
   eventId: EVT-OR-00106
-  title: 수술 지연 설명 · Ms. Bauer
+  title: 수술 지연 설명 · Mrs. Santos
   tagline: Why is it taking so long to start?
   persona:
-    name: Ms. Bauer
+    name: Mrs. Santos
     role: patient
-    ageRange: 30s
+    ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 38y / Female
-    hair: '#C9A24B'
-    hairStyle: long
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 지연 사유 설명
     - 불안 완화
@@ -3633,25 +3633,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 지연 설명
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3659,18 +3659,18 @@
 - id: SCN-OR-00170
   profession: ""
   eventId: EVT-OR-00106
-  title: 수술 후 조기 이상 격려 · Mr. Silva
+  title: 수술 후 조기 이상 격려 · Mrs. Santos
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Silva
+    name: Mrs. Santos
     role: patient
     ageRange: 70s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: pain
-    sub: 76y / Male
-    hair: '#9C9C9C'
-    hairStyle: short
+    sub: 74y / Female
+    hair: '#A0A0A0'
+    hairStyle: bob
   goals:
     - 조기 이상 필요성 설명
     - 안전하게 보행 지원
@@ -3712,18 +3712,18 @@
 - id: SCN-OR-00171
   profession: ""
   eventId: EVT-OR-00106
-  title: 수술 동의 확인 · Mrs. Adeyemi
+  title: 수술 동의 확인 · Mr. Wagner
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Mrs. Adeyemi
+    name: Mr. Wagner
     role: patient
     ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 47y / Female
-    hair: '#0F0F0F'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 동의·시술 이해 확인
     - 불안 완화
@@ -3765,17 +3765,17 @@
 - id: SCN-OR-00172
   profession: ""
   eventId: EVT-OR-00106
-  title: 마취 전 문진 · Mr. Larsson
+  title: 마취 전 문진 · Mr. Wagner
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Larsson
+    name: Mr. Wagner
     role: patient
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 금식·알레르기·과거력 확인
@@ -3792,25 +3792,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3818,18 +3818,18 @@
 - id: SCN-OR-00173
   profession: ""
   eventId: EVT-OR-00106
-  title: 수술 전 Time-out · RN Marcus
+  title: 수술 전 Time-out · Pharmacist Cho
   tagline: Everyone, let's confirm.
   persona:
-    name: RN Marcus
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 환자·부위·시술 확인
     - 안전 체크
@@ -3845,25 +3845,25 @@
     dept: OR · OR 2
     deptColor: '#9333EA'
     brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 2
+    timeLabel: 약 6분
     skills:
         - Time-out
         - 팀 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3871,17 +3871,17 @@
 - id: SCN-OR-00174
   profession: ""
   eventId: EVT-OR-00106
-  title: 수술 부위 표시 확인 · Mr. Thompson
+  title: 수술 부위 표시 확인 · Mr. Wagner
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Thompson
+    name: Mr. Wagner
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 부위 재확인
@@ -3924,18 +3924,18 @@
 - id: SCN-OR-00175
   profession: ""
   eventId: EVT-OR-00106
-  title: 무균술 유지 소통 · Dr. Lee
+  title: 무균술 유지 소통 · Pharmacist Cho
   tagline: Watch the sterile field!
   persona:
-    name: Dr. Lee
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 40s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 무균 위반 지적·정정
     - 기구 전달 소통
@@ -3951,25 +3951,25 @@
     dept: OR · OR 1
     deptColor: '#9333EA'
     brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 무균술 어휘
         - 팀 소통
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -3977,17 +3977,17 @@
 - id: SCN-OR-00176
   profession: ""
   eventId: EVT-OR-00106
-  title: 수술 중 가족 업데이트 · Mr. Yamamoto
+  title: 수술 중 가족 업데이트 · Mr. Wagner
   tagline: How's the surgery going?
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Wagner
     role: family
-    ageRange: 50s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 진행 상황 업데이트
@@ -4030,18 +4030,18 @@
 - id: SCN-OR-00177
   profession: ""
   eventId: EVT-OR-00106
-  title: PACU 인계 · Dr. Novak
+  title: PACU 인계 · Pharmacist Cho
   tagline: Receiving from OR — status?
   persona:
-    name: Dr. Novak
+    name: Pharmacist Cho
     role: colleague
-    ageRange: 50s
+    ageRange: 30s
     personality: 전문적이고 간결하게 소통함.
     speakingStyle: 요점 위주로 빠르게.
     mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
+    sub: PharmD
+    hair: '#3B2A1A'
+    hairStyle: bob
   goals:
     - 수술·마취·활력 인계
     - 주의사항 전달
@@ -4083,17 +4083,17 @@
 - id: SCN-OR-00178
   profession: ""
   eventId: EVT-OR-00106
-  title: 회복 후 통증 사정 · Mr. Dubois
+  title: 회복 후 통증 사정 · Mr. Wagner
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Dubois
+    name: Mr. Wagner
     role: patient
-    ageRange: 60s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 64y / Male
-    hair: '#5A5A5A'
+    sub: 48y / Male
+    hair: '#3A2A1A'
     hairStyle: short
   goals:
     - 통증 사정
@@ -4110,25 +4110,25 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 3
-    timeLabel: 약 9분
+    difficulty: 2
+    timeLabel: 약 8분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 160 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 5
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 6+
+        - label: 레벨 4+
           metric: level
-          threshold: 6
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -4136,18 +4136,18 @@
 - id: SCN-OR-00179
   profession: ""
   eventId: EVT-OR-00107
-  title: 수술 지연 설명 · Mrs. Santos
+  title: 수술 지연 설명 · Mr. Wagner
   tagline: Why is it taking so long to start?
   persona:
-    name: Mrs. Santos
+    name: Mr. Wagner
     role: patient
-    ageRange: 70s
+    ageRange: 40s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 74y / Female
-    hair: '#A0A0A0'
-    hairStyle: bob
+    sub: 48y / Male
+    hair: '#3A2A1A'
+    hairStyle: short
   goals:
     - 지연 사유 설명
     - 불안 완화
@@ -4295,18 +4295,18 @@
 - id: SCN-OR-00182
   profession: ""
   eventId: EVT-OR-00107
-  title: 마취 전 문진 · Mr. Reyes
+  title: 마취 전 문진 · Ms. Ivanova
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Reyes
+    name: Ms. Ivanova
     role: patient
-    ageRange: 50s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 53y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 금식·알레르기·과거력 확인
     - 위험 요인 보고
@@ -4322,25 +4322,25 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 1
-    timeLabel: 약 5분
+    difficulty: 3
+    timeLabel: 약 7분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 160 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 5
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 6+
           metric: level
-          threshold: 2
+          threshold: 6
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
@@ -4348,71 +4348,18 @@
 - id: SCN-OR-00183
   profession: ""
   eventId: EVT-OR-00107
-  title: 수술 전 Time-out · Dr. Lee
-  tagline: Everyone, let's confirm.
-  persona:
-    name: Dr. Lee
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Attending
-    hair: '#1C1C1C'
-    hairStyle: short
-  goals:
-    - 환자·부위·시술 확인
-    - 안전 체크
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - 'Confirming: correct patient, correct site.'
-    - Any concerns before we start?
-    - Antibiotics given?
-  steps: []
-  briefing:
-    dept: OR · OR 2
-    deptColor: '#9333EA'
-    brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - Time-out
-        - 팀 확인
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-OR-00184
-  profession: ""
-  eventId: EVT-OR-00107
-  title: 수술 부위 표시 확인 · Mrs. Hopkins
+  title: 수술 부위 표시 확인 · Ms. Ivanova
   tagline: Is the left or the right knee?
   persona:
-    name: Mrs. Hopkins
+    name: Ms. Ivanova
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 67y / Female
-    hair: '#9A6B3F'
-    hairStyle: bob
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 부위 재확인
     - 환자 참여 유도
@@ -4451,74 +4398,21 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00185
+- id: SCN-OR-00184
   profession: ""
   eventId: EVT-OR-00107
-  title: 무균술 유지 소통 · Dr. Novak
-  tagline: Watch the sterile field!
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 무균 위반 지적·정정
-    - 기구 전달 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - That's contaminated, please re-glove.
-    - Keep the field sterile.
-    - Passing the scalpel, sharp.
-  steps: []
-  briefing:
-    dept: OR · OR 1
-    deptColor: '#9333EA'
-    brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 무균술 어휘
-        - 팀 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-OR-00186
-  profession: ""
-  eventId: EVT-OR-00107
-  title: 수술 중 가족 업데이트 · Mr. Chen
+  title: 수술 중 가족 업데이트 · Ms. Ivanova
   tagline: How's the surgery going?
   persona:
-    name: Mr. Chen
+    name: Ms. Ivanova
     role: family
-    ageRange: 40s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: anxious
-    sub: 45y / Male
-    hair: '#1C1C1C'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 진행 상황 업데이트
     - 불안 완화
@@ -4534,64 +4428,64 @@
     dept: OR · WAITING
     deptColor: '#9333EA'
     brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 가족 소통
         - 진행 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00187
+- id: SCN-OR-00185
   profession: ""
   eventId: EVT-OR-00107
-  title: PACU 인계 · Dr. Ahmed
-  tagline: Receiving from OR — status?
+  title: 회복 후 통증 사정 · Ms. Ivanova
+  tagline: It really hurts when I wake up.
   persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: focused
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
+    name: Ms. Ivanova
+    role: patient
+    ageRange: 30s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
-    - 수술·마취·활력 인계
-    - 주의사항 전달
+    - 통증 사정
+    - 진통 조절 설명
   guardrails:
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - Post-op knee replacement, stable.
-    - Estimated blood loss minimal.
-    - Pain managed with fentanyl.
+    - On a scale of 0 to 10?
+    - I can give you something for the pain.
+    - Take slow breaths.
   steps: []
   briefing:
     dept: OR · PACU
     deptColor: '#9333EA'
-    brief: 회복실로 환자를 SBAR로 인계하세요.
+    brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
     difficulty: 3
-    timeLabel: 약 9분
+    timeLabel: 약 7분
     skills:
-        - PACU 인계
-        - SBAR
+        - 통증 사정
+        - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
@@ -4610,73 +4504,20 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00188
+- id: SCN-OR-00186
   profession: ""
   eventId: EVT-OR-00107
-  title: 회복 후 통증 사정 · Mr. Okafor
-  tagline: It really hurts when I wake up.
-  persona:
-    name: Mr. Okafor
-    role: patient
-    ageRange: 50s
-    personality: 불안해하며 상황을 이해하려 애씀.
-    speakingStyle: 머뭇거리며 확인을 반복함.
-    mood: sad
-    sub: 54y / Male
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 통증 사정
-    - 진통 조절 설명
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - On a scale of 0 to 10?
-    - I can give you something for the pain.
-    - Take slow breaths.
-  steps: []
-  briefing:
-    dept: OR · PACU
-    deptColor: '#9333EA'
-    brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 1
-    timeLabel: 약 5분
-    skills:
-        - 통증 사정
-        - 진통 설명
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 120 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 3
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 2+
-          metric: level
-          threshold: 2
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-OR-00189
-  profession: ""
-  eventId: EVT-OR-00107
-  title: 수술 지연 설명 · Ms. Nguyen
+  title: 수술 지연 설명 · Ms. Ivanova
   tagline: Why is it taking so long to start?
   persona:
-    name: Ms. Nguyen
+    name: Ms. Ivanova
     role: patient
-    ageRange: 20s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 26y / Female
-    hair: '#1A1A1A'
+    sub: 31y / Female
+    hair: '#C9A24B'
     hairStyle: long
   goals:
     - 지연 사유 설명
@@ -4693,44 +4534,44 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
-    difficulty: 1
-    timeLabel: 약 6분
+    difficulty: 2
+    timeLabel: 약 7분
     skills:
         - 지연 설명
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 120 XP
+          value: + 140 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 3
+          value: + 4
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 2+
+        - label: 레벨 4+
           metric: level
-          threshold: 2
+          threshold: 4
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00190
+- id: SCN-OR-00187
   profession: ""
   eventId: EVT-OR-00107
-  title: 수술 후 조기 이상 격려 · Mr. Patel
+  title: 수술 후 조기 이상 격려 · Ms. Ivanova
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Patel
+    name: Ms. Ivanova
     role: patient
-    ageRange: 60s
+    ageRange: 30s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: sad
-    sub: 63y / Male
-    hair: '#3B2A1A'
-    hairStyle: short
+    sub: 31y / Female
+    hair: '#C9A24B'
+    hairStyle: long
   goals:
     - 조기 이상 필요성 설명
     - 안전하게 보행 지원
@@ -4769,21 +4610,21 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00191
+- id: SCN-OR-00188
   profession: ""
   eventId: EVT-OR-00107
-  title: 수술 동의 확인 · Mrs. Rossi
+  title: 수술 동의 확인 · Mr. Reyes
   tagline: I'm not sure what they're doing to me.
   persona:
-    name: Mrs. Rossi
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 51y / Female
-    hair: '#5A3A22'
-    hairStyle: bob
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 동의·시술 이해 확인
     - 불안 완화
@@ -4822,20 +4663,20 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00192
+- id: SCN-OR-00189
   profession: ""
-  eventId: EVT-OR-00108
-  title: 마취 전 문진 · Mr. Johnson
+  eventId: EVT-OR-00107
+  title: 마취 전 문진 · Mr. Reyes
   tagline: I had a bad reaction to anesthesia once.
   persona:
-    name: Mr. Johnson
+    name: Mr. Reyes
     role: patient
-    ageRange: 40s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 42y / Male
-    hair: '#2E2E2E'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 금식·알레르기·과거력 확인
@@ -4852,96 +4693,43 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 마취 전 금식·알레르기·과거력을 확인하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 마취 전 문진
         - 알레르기 확인
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00193
+- id: SCN-OR-00190
   profession: ""
-  eventId: EVT-OR-00108
-  title: 수술 전 Time-out · Dr. Novak
-  tagline: Everyone, let's confirm.
-  persona:
-    name: Dr. Novak
-    role: colleague
-    ageRange: 50s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Surgeon
-    hair: '#5A5A5A'
-    hairStyle: short
-  goals:
-    - 환자·부위·시술 확인
-    - 안전 체크
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - 'Confirming: correct patient, correct site.'
-    - Any concerns before we start?
-    - Antibiotics given?
-  steps: []
-  briefing:
-    dept: OR · OR 2
-    deptColor: '#9333EA'
-    brief: 팀과 함께 환자·부위·시술을 Time-out으로 확인하세요.
-    difficulty: 3
-    timeLabel: 약 9분
-    skills:
-        - Time-out
-        - 팀 확인
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 160 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 5
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 6+
-          metric: level
-          threshold: 6
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-OR-00194
-  profession: ""
-  eventId: EVT-OR-00108
-  title: 수술 부위 표시 확인 · Mr. Silva
+  eventId: EVT-OR-00107
+  title: 수술 부위 표시 확인 · Mr. Reyes
   tagline: Is the left or the right knee?
   persona:
-    name: Mr. Silva
+    name: Mr. Reyes
     role: patient
-    ageRange: 70s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 76y / Male
-    hair: '#9C9C9C'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 부위 재확인
@@ -4981,73 +4769,20 @@
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00195
+- id: SCN-OR-00191
   profession: ""
-  eventId: EVT-OR-00108
-  title: 무균술 유지 소통 · Dr. Ahmed
-  tagline: Watch the sterile field!
-  persona:
-    name: Dr. Ahmed
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Resident
-    hair: '#111111'
-    hairStyle: short
-  goals:
-    - 무균 위반 지적·정정
-    - 기구 전달 소통
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - That's contaminated, please re-glove.
-    - Keep the field sterile.
-    - Passing the scalpel, sharp.
-  steps: []
-  briefing:
-    dept: OR · OR 1
-    deptColor: '#9333EA'
-    brief: 무균 영역을 유지하며 팀에 명확히 알리세요.
-    difficulty: 2
-    timeLabel: 약 7분
-    skills:
-        - 무균술 어휘
-        - 팀 소통
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-OR-00196
-  profession: ""
-  eventId: EVT-OR-00108
-  title: 수술 중 가족 업데이트 · Mr. Larsson
+  eventId: EVT-OR-00107
+  title: 수술 중 가족 업데이트 · Mr. Reyes
   tagline: How's the surgery going?
   persona:
-    name: Mr. Larsson
+    name: Mr. Reyes
     role: family
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: worried
-    sub: 59y / Male
-    hair: '#D8B26A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 진행 상황 업데이트
@@ -5064,96 +4799,43 @@
     dept: OR · WAITING
     deptColor: '#9333EA'
     brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 가족 소통
         - 진행 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00197
+- id: SCN-OR-00192
   profession: ""
   eventId: EVT-OR-00108
-  title: PACU 인계 · RN Marcus
-  tagline: Receiving from OR — status?
-  persona:
-    name: RN Marcus
-    role: colleague
-    ageRange: 40s
-    personality: 전문적이고 간결하게 소통함.
-    speakingStyle: 요점 위주로 빠르게.
-    mood: neutral
-    sub: Charge RN
-    hair: '#2E2E2E'
-    hairStyle: short
-  goals:
-    - 수술·마취·활력 인계
-    - 주의사항 전달
-  guardrails:
-    - 환자를 배려하며 명확히 소통
-    - 의학용어 과용 금지
-  keyPhrases:
-    - Post-op knee replacement, stable.
-    - Estimated blood loss minimal.
-    - Pain managed with fentanyl.
-  steps: []
-  briefing:
-    dept: OR · PACU
-    deptColor: '#9333EA'
-    brief: 회복실로 환자를 SBAR로 인계하세요.
-    difficulty: 2
-    timeLabel: 약 6분
-    skills:
-        - PACU 인계
-        - SBAR
-    rewards:
-        - icon: ⭐
-          label: 경험치
-          value: + 140 XP
-        - icon: ❤
-          label: 환자 만족도
-          value: + 4
-        - icon: "\U0001F396"
-          label: 진척
-          value: + 1
-    reqs:
-        - label: 레벨 4+
-          metric: level
-          threshold: 4
-    tone: '#F3E8FF'
-    accent: '#7E22CE'
-    chart: null
-    riskyPhrases: []
-- id: SCN-OR-00198
-  profession: ""
-  eventId: EVT-OR-00108
-  title: 회복 후 통증 사정 · Mr. Thompson
+  title: 회복 후 통증 사정 · Mr. Reyes
   tagline: It really hurts when I wake up.
   persona:
-    name: Mr. Thompson
+    name: Mr. Reyes
     role: patient
-    ageRange: 60s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 68y / Male
-    hair: '#8A8A8A'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 통증 사정
@@ -5170,44 +4852,44 @@
     dept: OR · PACU
     deptColor: '#9333EA'
     brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
-    difficulty: 2
-    timeLabel: 약 7분
+    difficulty: 1
+    timeLabel: 약 6분
     skills:
         - 통증 사정
         - 진통 설명
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00199
+- id: SCN-OR-00193
   profession: ""
   eventId: EVT-OR-00108
-  title: 수술 지연 설명 · Mrs. Haddad
+  title: 수술 지연 설명 · Mr. Reyes
   tagline: Why is it taking so long to start?
   persona:
-    name: Mrs. Haddad
+    name: Mr. Reyes
     role: patient
-    ageRange: 30s
+    ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 33y / Female
-    hair: '#241812'
-    hairStyle: bob
+    sub: 53y / Male
+    hair: '#1C1C1C'
+    hairStyle: short
   goals:
     - 지연 사유 설명
     - 불안 완화
@@ -5223,43 +4905,43 @@
     dept: OR · PRE-OP
     deptColor: '#9333EA'
     brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
-    difficulty: 2
-    timeLabel: 약 8분
+    difficulty: 1
+    timeLabel: 약 7분
     skills:
         - 지연 설명
         - 안심
     rewards:
         - icon: ⭐
           label: 경험치
-          value: + 140 XP
+          value: + 120 XP
         - icon: ❤
           label: 환자 만족도
-          value: + 4
+          value: + 3
         - icon: "\U0001F396"
           label: 진척
           value: + 1
     reqs:
-        - label: 레벨 4+
+        - label: 레벨 2+
           metric: level
-          threshold: 4
+          threshold: 2
     tone: '#F3E8FF'
     accent: '#7E22CE'
     chart: null
     riskyPhrases: []
-- id: SCN-OR-00200
+- id: SCN-OR-00194
   profession: ""
   eventId: EVT-OR-00108
-  title: 수술 후 조기 이상 격려 · Mr. Yamamoto
+  title: 수술 후 조기 이상 격려 · Mr. Reyes
   tagline: I don't think I can stand yet.
   persona:
-    name: Mr. Yamamoto
+    name: Mr. Reyes
     role: patient
     ageRange: 50s
     personality: 불안해하며 상황을 이해하려 애씀.
     speakingStyle: 머뭇거리며 확인을 반복함.
     mood: neutral
-    sub: 56y / Male
-    hair: '#161616'
+    sub: 53y / Male
+    hair: '#1C1C1C'
     hairStyle: short
   goals:
     - 조기 이상 필요성 설명
@@ -5281,6 +4963,324 @@
     skills:
         - 조기 이상 교육
         - 낙상 예방
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-OR-00195
+  profession: ""
+  eventId: EVT-OR-00108
+  title: 수술 동의 확인 · Mr. Robinson
+  tagline: I'm not sure what they're doing to me.
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 동의·시술 이해 확인
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Can you tell me which procedure you're having?
+    - Do you have any questions?
+    - We'll take good care of you.
+  steps: []
+  briefing:
+    dept: OR · PRE-OP
+    deptColor: '#9333EA'
+    brief: 수술 전 동의 내용을 확인하고 환자의 이해와 불안을 점검하세요.
+    difficulty: 2
+    timeLabel: 약 7분
+    skills:
+        - 동의 확인
+        - 수술 어휘
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-OR-00196
+  profession: ""
+  eventId: EVT-OR-00108
+  title: 마취 전 문진 · Mr. Robinson
+  tagline: I had a bad reaction to anesthesia once.
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 금식·알레르기·과거력 확인
+    - 위험 요인 보고
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - When did you last eat or drink?
+    - Any allergies to medications?
+    - Tell me about that reaction.
+  steps: []
+  briefing:
+    dept: OR · PRE-OP
+    deptColor: '#9333EA'
+    brief: 마취 전 금식·알레르기·과거력을 확인하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 마취 전 문진
+        - 알레르기 확인
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-OR-00197
+  profession: ""
+  eventId: EVT-OR-00108
+  title: 수술 부위 표시 확인 · Mr. Robinson
+  tagline: Is the left or the right knee?
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 부위 재확인
+    - 환자 참여 유도
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - Can you point to the correct side?
+    - I'll mark it with you.
+    - We double-check for your safety.
+  steps: []
+  briefing:
+    dept: OR · PRE-OP
+    deptColor: '#9333EA'
+    brief: 환자와 함께 수술 부위를 확인하고 표시하세요.
+    difficulty: 1
+    timeLabel: 약 6분
+    skills:
+        - 부위 확인
+        - 환자 참여
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-OR-00198
+  profession: ""
+  eventId: EVT-OR-00108
+  title: 수술 중 가족 업데이트 · Mr. Robinson
+  tagline: How's the surgery going?
+  persona:
+    name: Mr. Robinson
+    role: family
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: sad
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 진행 상황 업데이트
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - The surgery is going well so far.
+    - It should take about two hours.
+    - I'll update you again soon.
+  steps: []
+  briefing:
+    dept: OR · WAITING
+    deptColor: '#9333EA'
+    brief: 수술 중 가족에게 진행 상황을 업데이트하고 안심시키세요.
+    difficulty: 1
+    timeLabel: 약 5분
+    skills:
+        - 가족 소통
+        - 진행 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 120 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 3
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 2+
+          metric: level
+          threshold: 2
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-OR-00199
+  profession: ""
+  eventId: EVT-OR-00108
+  title: 회복 후 통증 사정 · Mr. Robinson
+  tagline: It really hurts when I wake up.
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 통증 사정
+    - 진통 조절 설명
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - On a scale of 0 to 10?
+    - I can give you something for the pain.
+    - Take slow breaths.
+  steps: []
+  briefing:
+    dept: OR · PACU
+    deptColor: '#9333EA'
+    brief: 마취에서 깬 환자의 통증을 사정하고 조절을 설명하세요.
+    difficulty: 2
+    timeLabel: 약 8분
+    skills:
+        - 통증 사정
+        - 진통 설명
+    rewards:
+        - icon: ⭐
+          label: 경험치
+          value: + 140 XP
+        - icon: ❤
+          label: 환자 만족도
+          value: + 4
+        - icon: "\U0001F396"
+          label: 진척
+          value: + 1
+    reqs:
+        - label: 레벨 4+
+          metric: level
+          threshold: 4
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
+    chart: null
+    riskyPhrases: []
+- id: SCN-OR-00200
+  profession: ""
+  eventId: EVT-OR-00108
+  title: 수술 지연 설명 · Mr. Robinson
+  tagline: Why is it taking so long to start?
+  persona:
+    name: Mr. Robinson
+    role: patient
+    ageRange: 50s
+    personality: 불안해하며 상황을 이해하려 애씀.
+    speakingStyle: 머뭇거리며 확인을 반복함.
+    mood: worried
+    sub: 58y / Male
+    hair: '#4A4A4A'
+    hairStyle: short
+  goals:
+    - 지연 사유 설명
+    - 불안 완화
+  guardrails:
+    - 환자를 배려하며 명확히 소통
+    - 의학용어 과용 금지
+  keyPhrases:
+    - The previous case ran long.
+    - You're still first priority.
+    - I'll keep you updated.
+  steps: []
+  briefing:
+    dept: OR · PRE-OP
+    deptColor: '#9333EA'
+    brief: 수술 지연 사유를 설명하고 환자의 불안을 낮추세요.
+    difficulty: 1
+    timeLabel: 약 5분
+    skills:
+        - 지연 설명
+        - 안심
     rewards:
         - icon: ⭐
           label: 경험치

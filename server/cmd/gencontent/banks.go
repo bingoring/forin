@@ -157,3 +157,16 @@ func personaFor(role string, deptIdx, k int) Persona {
 	}
 	return pool[(deptIdx*7+k)%len(pool)]
 }
+
+// personaPoolLen is how many personas the role can draw from — the second radix of the
+// topic × persona × difficulty expansion, so the caller can tell when it has wrapped.
+func personaPoolLen(role string) int {
+	switch role {
+	case "colleague", "doctor", "nurse", "pharmacist":
+		return len(colleagues)
+	case "parent":
+		return len(parents)
+	default:
+		return len(patients)
+	}
+}
