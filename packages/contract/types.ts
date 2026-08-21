@@ -1320,10 +1320,19 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** Department situation cards (?dept=ER) — dept-scoped scenarios */
+        /** Situation cards — one department (?dept=ER) or a title search (?q=) */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    /** @description Department code; ignored when q is present */
+                    dept?: string;
+                    /** @description Title search across every department */
+                    q?: string;
+                    /** @description Page offset (dept listing only) */
+                    offset?: number;
+                    /** @description Page size, 1-50 (default 20) */
+                    limit?: number;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;

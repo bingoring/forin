@@ -325,6 +325,66 @@ func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) 
 // Department = the id prefix (SCN-<DEPT>-*), so a new dept needs no new query.
 // Paginated by offset/limit (stable ORDER BY id) so a single-department learner
 // can scroll the full bank; hasMore is true when more rows follow this page.
+// clearedSet is the learner's cleared scenario ids, for tagging cards.
+//
+// Absence is not an error here: a failed read means "nothing known to be cleared", which
+// renders every card as new rather than failing a list the learner asked for.
+func (r *ContentRepo) clearedSet(ctx context.Context, userID string) map[string]bool {
+	cleared := map[string]bool{}
+	rows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID)
+	if err != nil {
+		return cleared
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var id string
+		if rows.Scan(&id) == nil {
+			cleared[id] = true
+		}
+	}
+	return cleared
+}
+
+// situationCard turns one scenario row into the card both the per-department list and
+// the search share.
+//
+// Extracted rather than copied: the level, the minutes, the urgency and the tag are four
+// derivations, and a second inline copy of them is a second place for the same card to
+// come out differently depending on which list you found it in.
+func situationCard(id, title string, briefing []byte, cleared map[string]bool) content.DeptSituation {
+	s := content.DeptSituation{ScenarioID: id, Name: title, Lv: "B1", Min: 6}
+	diff := 2
+	if len(briefing) > 0 && string(briefing) != "{}" {
+		var b content.Briefing
+		unjson(briefing, &b)
+		if b.Difficulty > 0 {
+			diff = b.Difficulty
+		}
+		if b.Dept != "" {
+			s.Room = b.Dept
+		}
+		if m := minutesOf(b.TimeLabel); m > 0 {
+			s.Min = m
+		}
+	}
+	s.Lv = cefrForDifficulty(diff)
+	if s.Min == 6 {
+		s.Min = 4 + diff // fall back to a difficulty-based estimate
+	}
+	s.Urgent = diff >= 3
+	// Code only — the repo has no request locale, and inventing one here is how a
+	// display string ends up baked into storage. The handler renders the label.
+	switch {
+	case cleared[id]:
+		s.TagCode = "cleared"
+	case s.Urgent:
+		s.TagCode = "urgent"
+	default:
+		s.TagCode = "new"
+	}
+	return s
+}
+
 func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, offset, limit int) ([]content.DeptSituation, bool, error) {
 	if limit <= 0 {
 		limit = 20
@@ -332,16 +392,7 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, o
 	if offset < 0 {
 		offset = 0
 	}
-	cleared := map[string]bool{}
-	if crows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
-		defer crows.Close()
-		for crows.Next() {
-			var id string
-			if crows.Scan(&id) == nil {
-				cleared[id] = true
-			}
-		}
-	}
+	cleared := r.clearedSet(ctx, userID)
 
 	// Fetch limit+1 to detect whether another page follows, then trim.
 	rows, err := r.pool.Query(ctx,
@@ -358,37 +409,7 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, o
 		if err := rows.Scan(&id, &title, &briefing); err != nil {
 			return nil, false, err
 		}
-		s := content.DeptSituation{ScenarioID: id, Name: title, Lv: "B1", Min: 6}
-		diff := 2
-		if len(briefing) > 0 && string(briefing) != "{}" {
-			var b content.Briefing
-			unjson(briefing, &b)
-			if b.Difficulty > 0 {
-				diff = b.Difficulty
-			}
-			if b.Dept != "" {
-				s.Room = b.Dept
-			}
-			if m := minutesOf(b.TimeLabel); m > 0 {
-				s.Min = m
-			}
-		}
-		s.Lv = cefrForDifficulty(diff)
-		if s.Min == 6 {
-			s.Min = 4 + diff // fall back to a difficulty-based estimate
-		}
-		s.Urgent = diff >= 3
-		// Code only — the repo has no request locale, and inventing one here is how a
-		// display string ends up baked into storage. The handler renders the label.
-		switch {
-		case cleared[id]:
-			s.TagCode = "cleared"
-		case s.Urgent:
-			s.TagCode = "urgent"
-		default:
-			s.TagCode = "new"
-		}
-		out = append(out, s)
+		out = append(out, situationCard(id, title, briefing, cleared))
 	}
 	if err := rows.Err(); err != nil {
 		return nil, false, err
@@ -398,6 +419,45 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, o
 		out = out[:limit] // drop the probe row
 	}
 	return out, hasMore, nil
+}
+
+// SearchSituations finds situations by title, across every department.
+//
+// One search box instead of "which ward would you like to look in first" — the client
+// cannot answer that on the learner's behalf, and asking is the whole cost search was
+// meant to remove.
+func (r *ContentRepo) SearchSituations(ctx context.Context, userID, q string, limit int) ([]content.DeptSituation, error) {
+	q = strings.TrimSpace(q)
+	if q == "" {
+		return []content.DeptSituation{}, nil
+	}
+	if limit <= 0 || limit > 50 {
+		limit = 20
+	}
+	cleared := r.clearedSet(ctx, userID)
+	// ILIKE with the pattern built by the driver, never by string concatenation. Percent
+	// and underscore in the query are escaped so a learner typing "50%" searches for
+	// "50%" instead of matching everything.
+	pattern := "%" + strings.NewReplacer("\\", "\\\\", "%", "\\%", "_", "\\_").Replace(q) + "%"
+	rows, err := r.pool.Query(ctx,
+		`SELECT id, title, briefing FROM scenarios
+		  WHERE id LIKE 'SCN-%' AND title ILIKE $1
+		  ORDER BY id LIMIT $2`,
+		pattern, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := []content.DeptSituation{}
+	for rows.Next() {
+		var id, title string
+		var briefing []byte
+		if err := rows.Scan(&id, &title, &briefing); err != nil {
+			return nil, err
+		}
+		out = append(out, situationCard(id, title, briefing, cleared))
+	}
+	return out, rows.Err()
 }
 
 // cefrForDifficulty maps an authored difficulty (1..3) to a CEFR band for display.

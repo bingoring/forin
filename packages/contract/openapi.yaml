@@ -1289,6 +1289,27 @@ paths:
       - content
   /me/situations:
     get:
+      parameters:
+      - description: Department code; ignored when q is present
+        in: query
+        name: dept
+        schema:
+          type: string
+      - description: Title search across every department
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Page offset (dept listing only)
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: Page size, 1-50 (default 20)
+        in: query
+        name: limit
+        schema:
+          type: integer
       responses:
         "200":
           content:
@@ -1302,7 +1323,7 @@ paths:
           description: OK
       security:
       - Bearer: []
-      summary: Department situation cards (?dept=ER) — dept-scoped scenarios
+      summary: Situation cards — one department (?dept=ER) or a title search (?q=)
       tags:
       - content
   /me/stats:

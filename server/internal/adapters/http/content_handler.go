@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
@@ -150,9 +151,13 @@ func (h *contentHandler) mainRoute(w http.ResponseWriter, r *http.Request) {
 	httpx.JSON(w, http.StatusOK, map[string]any{"nodes": nodes})
 }
 
-// @Summary Department situation cards (?dept=ER) — dept-scoped scenarios
+// @Summary Situation cards — one department (?dept=ER) or a title search (?q=)
 // @Tags content
 // @Security Bearer
+// @Param dept query string false "Department code; ignored when q is present"
+// @Param q query string false "Title search across every department"
+// @Param offset query int false "Page offset (dept listing only)"
+// @Param limit query int false "Page size, 1-50 (default 20)"
 // @Success 200 {object} map[string][]content.DeptSituation
 // @Router /me/situations [get]
 func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) {
@@ -161,6 +166,22 @@ func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) 
 		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
 		return
 	}
+	loc0 := i18n.FromContext(r.Context())
+	// A `q` turns this into a search across every department: the client has one box and
+	// no way to know which ward to look in, which is the cost search exists to remove.
+	if q := strings.TrimSpace(r.URL.Query().Get("q")); q != "" {
+		sits, err := h.content.SearchSituations(r.Context(), uid, q, atoiDefault(r.URL.Query().Get("limit"), 20))
+		if err != nil {
+			httpx.Error(w, http.StatusInternalServerError, "could not search situations")
+			return
+		}
+		for i := range sits {
+			sits[i].Tag = i18n.Tr(loc0, "tag."+sits[i].TagCode, tagKo[sits[i].TagCode])
+		}
+		httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits, "hasMore": false})
+		return
+	}
+
 	dept := r.URL.Query().Get("dept")
 	if dept == "" {
 		httpx.JSON(w, http.StatusOK, map[string]any{"situations": []content.DeptSituation{}, "hasMore": false})

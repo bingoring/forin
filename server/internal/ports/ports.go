@@ -348,6 +348,10 @@ type ContentReader interface {
 	// difficulty + the user's cleared attempts), paginated by offset/limit so a
 	// single-department learner can browse the full bank. Returns hasMore.
 	DeptSituations(ctx context.Context, userID, dept string, offset, limit int) ([]content.DeptSituation, bool, error)
+	// SearchSituations finds situations by title across every department, so the
+	// client can offer one search box instead of asking which ward to look in
+	// first. Same card shape as DeptSituations; capped by limit.
+	SearchSituations(ctx context.Context, userID, q string, limit int) ([]content.DeptSituation, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).
