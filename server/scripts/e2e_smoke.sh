@@ -507,6 +507,63 @@ else
   bad "skipped the real-audio round trip — no reference audio to feed back, or 24kHz→16kHz resample failed"
 fi
 
+hd "⑱-b SPEECH · 발화 종합 리뷰 (다이얼로그 받아쓰기 채점 → 결과 화면 읽기 → 리뷰랩 집계)"
+# The gap this closes: before this feature the dialogue mic only transcribed, so
+# every review list was permanently empty no matter what the screens did. The
+# check that matters is therefore the ROUND TRIP — POST /stt with a session must
+# leave a scored row that GET /conversation/{id}/speech-review reads back — not
+# that the endpoints merely answer 200.
+if [ -s "$REFWAV16" ]; then
+  SESS="smoke-speech-${NONCE}"
+  STTBODY=$(python3 -c "
+import base64, json, sys
+with open(sys.argv[1], 'rb') as f:
+    b64 = base64.b64encode(f.read()).decode()
+print(json.dumps({'audioBase64': b64, 'sessionId': sys.argv[2], 'scenarioId': 'SCN-ER-00002'}))
+" "$REFWAV16" "$SESS")
+
+  run POST /stt "$STTBODY"
+  stt_text=$(pj "bool(d.get('text'))")
+  stt_scored=$(pj "d.get('scored')")
+  stt_overall=$(pj "d.get('overall',0)")
+  [ "$CODE" = 200 ] && [ "$stt_text" = "True" ] && ok "POST /stt transcribed the clip" || bad "POST /stt → $CODE (text=$stt_text)"
+  [ "$stt_scored" = "True" ] && ok "the dialogue utterance was ALSO scored (overall=$stt_overall) — the review pipeline has data to review" || bad "scored=$stt_scored — a dialogue utterance left no score, so every review list stays empty"
+
+  run GET "/conversation/$SESS/speech-review"
+  rev_n=$(pj "len(d.get('sentences',[]))")
+  rev_avg=$(pj "round(d.get('average',0))")
+  rev_weak=$(pj "len(d.get('weakest',[]))")
+  [ "$CODE" = 200 ] && [ "${rev_n:-0}" -ge 1 ] && ok "GET speech-review reads that utterance back ($rev_n sentence(s), average $rev_avg)" || bad "speech-review returned $rev_n sentences (code=$CODE) — the round trip is broken"
+  [ "${rev_weak:-0}" -ge 1 ] && ok "weakest carries the 다시 연습 target ($rev_weak)" || bad "weakest is empty despite $rev_n spoken sentence(s)"
+
+  # A session that is not ours must read as an empty run, which is what makes the
+  # endpoint safe without a separate ownership check.
+  run GET "/conversation/not-my-session-${NONCE}/speech-review"
+  other_n=$(pj "len(d.get('sentences',[]))")
+  [ "$CODE" = 200 ] && [ "$other_n" = "0" ] && ok "an unknown session reads as an empty run, not another user's data" || bad "unknown session returned $other_n sentences (code=$CODE)"
+
+  run GET /speech/summary
+  sum_total=$(pj "d.get('total',0)")
+  sum_bands=$(pj "d.get('low',0)+d.get('mid',0)+d.get('high',0)")
+  [ "$CODE" = 200 ] && [ "${sum_total:-0}" -ge 1 ] && ok "GET /speech/summary counts $sum_total sentence(s)" || bad "speech/summary total=$sum_total (code=$CODE)"
+  [ "${sum_bands:-0}" = "${sum_total:-0}" ] && ok "band counts add up to the total ($sum_bands = $sum_total)" || bad "bands sum to $sum_bands but total is $sum_total"
+
+  run GET "/speech/sentences?sort=weak&limit=2"
+  lw_n=$(pj "len(d.get('sentences',[]))")
+  lw_total=$(pj "d.get('total',0)")
+  lw_sorted=$(pj "'yes' if [x['overall'] for x in d.get('sentences',[])] == sorted(x['overall'] for x in d.get('sentences',[])) else 'no'")
+  [ "$CODE" = 200 ] && [ "${lw_n:-0}" -ge 1 ] && ok "GET /speech/sentences?sort=weak returned $lw_n row(s) of $lw_total" || bad "speech/sentences → $CODE ($lw_n rows)"
+  [ "$lw_sorted" = "yes" ] && ok "약한 순 really is ascending by score" || bad "약한 순 page was not ascending"
+  # The unpaged total must not be the page size, or the list's "N문장 중 M개" lies.
+  [ "${lw_total:-0}" -ge "${lw_n:-0}" ] && ok "total ($lw_total) is the unpaged count, not the page size" || bad "total=$lw_total < page=$lw_n"
+
+  run GET "/speech/sentences?sort=recent&limit=2"
+  lr_sorted=$(pj "'yes' if [x['createdAt'] for x in d.get('sentences',[])] == sorted((x['createdAt'] for x in d.get('sentences',[])), reverse=True) else 'no'")
+  [ "$CODE" = 200 ] && [ "$lr_sorted" = "yes" ] && ok "최신 really is newest-first" || bad "최신 page was not newest-first (code=$CODE)"
+else
+  bad "skipped the speech-review round trip — no 16kHz clip to dictate"
+fi
+
 hd "⑲ SPEECH · review-card deletion severs the link but keeps the attempt (DB-direct, local docker compose only)"
 # There is no HTTP DELETE for review_cards — a card degrades through SM-2
 # grading, it never disappears through the API — so this invariant cannot be
