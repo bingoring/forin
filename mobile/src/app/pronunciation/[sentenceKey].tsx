@@ -731,8 +731,24 @@ export default function PronunciationRoute() {
     ? Math.min(progressSegments.length, Math.floor((recorderState.durationMillis / RECORD_AUTO_STOP_MS) * progressSegments.length))
     : 0;
 
+  // Labelled with the GRAPHEME — the spelling — not the phonetic syllable.
+  //
+  // Azure returns both per syllable, and we ask for PhonemeAlphabet: IPA, which makes its
+  // `syllable` field an IPA string: "pronunciation" came back as prə · nʌn · si · eɪ · ʃən
+  // and read as a different word entirely. The learner is looking at a chip to find which
+  // PART of the word they missed, and they navigate by spelling. `grapheme` is exactly
+  // that, and it was already carried through the port and the contract — only the screen
+  // had not asked. IPA still has its place: the correction cards below show it beside the
+  // spelling, where it is labelled as pronunciation rather than mistaken for the word.
   const syllableChips = useMemo((): SyllableChip[] =>
-    (result?.words ?? []).flatMap((w) => (w.syllables ?? []).map((s): SyllableChip => ({ label: s.syllable, band: syllableBand(s.accuracy) }))),
+    (result?.words ?? []).flatMap((w) =>
+      (w.syllables ?? []).map((s): SyllableChip => ({
+        // Falls back to the phonetic form rather than rendering an empty chip: a locale
+        // without grapheme segmentation should still show where the syllables divide.
+        label: s.grapheme?.trim() || s.syllable,
+        band: syllableBand(s.accuracy),
+      }))
+    ),
   [result]);
 
   const correction = useMemo(
