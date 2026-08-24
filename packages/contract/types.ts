@@ -370,6 +370,45 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/{sessionId}/speech-review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Comprehensive review of the sentences spoken aloud during one dialogue run */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description conversation session id */
+                    sessionId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.sessionReviewResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversation/{sessionId}/speech.wav": {
         parameters: {
             query?: never;
@@ -1768,6 +1807,85 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/speech/sentences": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** One page of every sentence the player has spoken aloud (ScreenSpeakList) */
+        get: {
+            parameters: {
+                query?: {
+                    /** @description weak (약한 순, default) or recent (최신) */
+                    sort?: string;
+                    /** @description page size, default 20, clamped to 100 */
+                    limit?: number;
+                    /** @description rows to skip */
+                    offset?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.spokenSentencesResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/speech/summary": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Score-band summary of everything the player has spoken aloud (Review Lab 직접 말하기 연습 block) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.speakSummaryResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/stt": {
         parameters: {
             query?: never;
@@ -1997,6 +2115,27 @@ export interface components {
             recognized?: string;
             words?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.WordScore"][];
         };
+        "github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow": {
+            accuracy?: number;
+            /**
+             * @description Attempts is the newest attempt_no, which IS the number of tries: attempt
+             *     numbers are assigned 1..N per (user, sentence) with no gaps (I5).
+             */
+            attempts?: number;
+            completeness?: number;
+            createdAt?: string;
+            fluency?: number;
+            origin?: string;
+            overall?: number;
+            recognized?: string;
+            referenceText?: string;
+            /**
+             * @description ScenarioID lets the list derive its department chip (SCN-ER-00002 → ER)
+             *     without a second lookup. "" for a sentence practised outside a scenario.
+             */
+            scenarioId?: string;
+            sentenceKey?: string;
+        };
         "github_com_bingoring_forin_server_internal_ports.SyllableResult": {
             accuracy?: number;
             duration?: number;
@@ -2208,12 +2347,35 @@ export interface components {
             content?: string;
             role?: string;
         };
+        "internal_adapters_http.sessionReviewResp": {
+            average?: number;
+            sentences?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
+            weakest?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
+        };
         "internal_adapters_http.socialLoginReq": {
             idToken?: string;
             provider?: string;
         };
+        "internal_adapters_http.speakSummaryResp": {
+            high?: number;
+            low?: number;
+            mid?: number;
+            total?: number;
+            weakest?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
+        };
+        "internal_adapters_http.spokenSentencesResp": {
+            sentences?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
+            total?: number;
+        };
         "internal_adapters_http.sttReq": {
             audioBase64?: string;
+            scenarioId?: string;
+            /**
+             * @description SessionID/ScenarioID are optional: present when the audio came from a
+             *     dialogue turn, in which case the utterance is also scored and filed under
+             *     that run. Absent for any other dictation.
+             */
+            sessionId?: string;
         };
         "internal_adapters_http.titleReq": {
             titleId?: string;

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"time"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
@@ -91,6 +92,7 @@ func (r *SpeechRepo) insertAttemptOnce(ctx context.Context, a ports.SpeechAttemp
 		ScenarioID:    a.ScenarioID,
 		ReviewCardID:  reviewCard,
 		Origin:        a.Origin,
+		SessionID:     a.SessionID,
 	})
 	if err != nil {
 		return "", 0, err
@@ -234,4 +236,100 @@ func (r *SpeechRepo) UpdateReferenceAudio(ctx context.Context, sentenceKey strin
 		SentenceKey: sentenceKey,
 		AudioWav:    wav,
 	})
+}
+
+// ListSessionSpeech returns the sentences spoken during one dialogue run, in the
+// order they were said.
+func (r *SpeechRepo) ListSessionSpeech(ctx context.Context, userID, sessionID string) ([]ports.SpokenSentenceRow, error) {
+	rows, err := r.q.ListSessionSpeech(ctx, sqlc.ListSessionSpeechParams{UserID: userID, SessionID: sessionID})
+	if err != nil {
+		return nil, err
+	}
+	out := make([]ports.SpokenSentenceRow, 0, len(rows))
+	for _, d := range rows {
+		out = append(out, ports.SpokenSentenceRow{
+			SentenceKey:   d.SentenceKey,
+			ReferenceText: d.ReferenceText,
+			Recognized:    d.Recognized,
+			Overall:       d.Overall,
+			Accuracy:      d.Accuracy,
+			Fluency:       d.Fluency,
+			Completeness:  d.Completeness,
+			Attempts:      d.AttemptNo,
+			CreatedAt:     d.CreatedAt.Time,
+		})
+	}
+	return out, nil
+}
+
+// SpeakBands returns the player's score-band distribution over every sentence
+// they have spoken.
+func (r *SpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.SpeakBandCounts, error) {
+	d, err := r.q.SpeakBands(ctx, userID)
+	if err != nil {
+		return ports.SpeakBandCounts{}, err
+	}
+	return ports.SpeakBandCounts{Total: d.Total, Low: d.Low, Mid: d.Mid, High: d.High}, nil
+}
+
+// ListSpokenSentences returns one page of the player's spoken sentences, plus the
+// unpaged total so the caller can render "N문장 중 M개 표시" without a second query.
+//
+// weakestFirst picks between the two sorts the list screen offers (약한 순 /
+// 최신). They are separate SQL statements rather than one with a computed ORDER
+// BY: an ORDER BY built from a parameter cannot use an index, and sqlc would not
+// type-check it.
+func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+	type row struct {
+		sentenceKey, referenceText, recognized, scenarioID, origin string
+		overall, accuracy, fluency, completeness                   float64
+		attemptNo, total                                           int
+		createdAt                                                  time.Time
+	}
+	var raw []row
+	if weakestFirst {
+		rows, err := r.q.ListSpeakSentencesWeak(ctx, sqlc.ListSpeakSentencesWeakParams{
+			UserID: userID, Limit: int32(limit), Offset: int32(offset),
+		})
+		if err != nil {
+			return nil, 0, err
+		}
+		for _, d := range rows {
+			raw = append(raw, row{d.SentenceKey, d.ReferenceText, d.Recognized, d.ScenarioID, d.Origin,
+				d.Overall, d.Accuracy, d.Fluency, d.Completeness, d.AttemptNo, int(d.Total), d.CreatedAt.Time})
+		}
+	} else {
+		rows, err := r.q.ListSpeakSentencesRecent(ctx, sqlc.ListSpeakSentencesRecentParams{
+			UserID: userID, Limit: int32(limit), Offset: int32(offset),
+		})
+		if err != nil {
+			return nil, 0, err
+		}
+		for _, d := range rows {
+			raw = append(raw, row{d.SentenceKey, d.ReferenceText, d.Recognized, d.ScenarioID, d.Origin,
+				d.Overall, d.Accuracy, d.Fluency, d.Completeness, d.AttemptNo, int(d.Total), d.CreatedAt.Time})
+		}
+	}
+
+	// total rides on every row, so an empty page (offset past the end) reports 0.
+	// The caller already holds the real total from page 1 in that case.
+	total := 0
+	out := make([]ports.SpokenSentenceRow, 0, len(raw))
+	for _, d := range raw {
+		total = d.total
+		out = append(out, ports.SpokenSentenceRow{
+			SentenceKey:   d.sentenceKey,
+			ReferenceText: d.referenceText,
+			Recognized:    d.recognized,
+			Overall:       d.overall,
+			Accuracy:      d.accuracy,
+			Fluency:       d.fluency,
+			Completeness:  d.completeness,
+			Attempts:      d.attemptNo,
+			ScenarioID:    d.scenarioID,
+			Origin:        d.origin,
+			CreatedAt:     d.createdAt,
+		})
+	}
+	return out, total, nil
 }

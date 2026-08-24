@@ -54,6 +54,50 @@ type fakeSpeechRepo struct {
 	getRefAudioErr error
 	updatedAudio   []updatedAudioCall // every UpdateReferenceAudio call, in order
 	updateAudioErr error
+	// The review aggregates (Scenario Clear read-back, Review Lab 직접 말하기
+	// 연습) read these back instead of deriving them from `inserted`: the real
+	// queries collapse re-tries and sort in SQL, so a fake that re-implemented
+	// that logic would be testing itself.
+	sessionRows []ports.SpokenSentenceRow
+	sessionErr  error
+	bands       ports.SpeakBandCounts
+	bandsErr    error
+	spokenRows  []ports.SpokenSentenceRow
+	spokenTotal int
+	spokenErr   error
+	// spokenCalls records (weakestFirst, limit, offset) per call so a test can
+	// assert the summary asks for the weakest two through the same paged query
+	// the full list uses.
+	spokenCalls []spokenCall
+}
+
+type spokenCall struct {
+	WeakestFirst  bool
+	Limit, Offset int
+}
+
+func (f *fakeSpeechRepo) ListSessionSpeech(ctx context.Context, userID, sessionID string) ([]ports.SpokenSentenceRow, error) {
+	return f.sessionRows, f.sessionErr
+}
+
+func (f *fakeSpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.SpeakBandCounts, error) {
+	return f.bands, f.bandsErr
+}
+
+func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+	f.spokenCalls = append(f.spokenCalls, spokenCall{weakestFirst, limit, offset})
+	if f.spokenErr != nil {
+		return nil, 0, f.spokenErr
+	}
+	rows := f.spokenRows
+	if offset >= len(rows) {
+		return nil, 0, nil
+	}
+	rows = rows[offset:]
+	if len(rows) > limit {
+		rows = rows[:limit]
+	}
+	return rows, f.spokenTotal, nil
 }
 
 // updatedAudioCall records one UpdateReferenceAudio invocation, for tests

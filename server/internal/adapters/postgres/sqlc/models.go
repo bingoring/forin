@@ -248,6 +248,7 @@ type SpeechAttempt struct {
 	ReviewCardID  pgtype.UUID        `json:"review_card_id"`
 	Origin        string             `json:"origin"`
 	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+	SessionID     string             `json:"session_id"`
 }
 
 type SpeechPhonemeScore struct {

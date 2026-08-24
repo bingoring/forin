@@ -153,6 +153,11 @@ func NewRouter(d Deps) http.Handler {
 	sh := &speechHandler{svc: d.Speech, pron: d.Pron}
 	mux.Handle("GET /speech/reference", auth(http.HandlerFunc(sh.reference)))
 	mux.Handle("GET /speech/attempts", auth(http.HandlerFunc(sh.attempts)))
+	// The comprehensive speech read-back for one dialogue run (Scenario Clear)
+	// and its two Review Lab aggregates (직접 말하기 연습 block + full list).
+	mux.Handle("GET /conversation/{sessionId}/speech-review", auth(http.HandlerFunc(sh.sessionReview)))
+	mux.Handle("GET /speech/summary", auth(http.HandlerFunc(sh.speakSummary)))
+	mux.Handle("GET /speech/sentences", auth(http.HandlerFunc(sh.spokenSentences)))
 	// The reference sentence's synthesized audio (Task 11 — see
 	// speech_audio_handler.go's doc for why this closes a real gap: "🔊
 	// 원어민"/"0.5× 느리게" had no route to call).

@@ -363,6 +363,37 @@ components:
           type: array
           uniqueItems: false
       type: object
+    github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow:
+      properties:
+        accuracy:
+          type: number
+        attempts:
+          description: |-
+            Attempts is the newest attempt_no, which IS the number of tries: attempt
+            numbers are assigned 1..N per (user, sentence) with no gaps (I5).
+          type: integer
+        completeness:
+          type: number
+        createdAt:
+          type: string
+        fluency:
+          type: number
+        origin:
+          type: string
+        overall:
+          type: number
+        recognized:
+          type: string
+        referenceText:
+          type: string
+        scenarioId:
+          description: |-
+            ScenarioID lets the list derive its department chip (SCN-ER-00002 → ER)
+            without a second lookup. "" for a sentence practised outside a scenario.
+          type: string
+        sentenceKey:
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_ports.SyllableResult:
       properties:
         accuracy:
@@ -712,6 +743,21 @@ components:
         role:
           type: string
       type: object
+    internal_adapters_http.sessionReviewResp:
+      properties:
+        average:
+          type: number
+        sentences:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow'
+          type: array
+          uniqueItems: false
+        weakest:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow'
+          type: array
+          uniqueItems: false
+      type: object
     internal_adapters_http.socialLoginReq:
       properties:
         idToken:
@@ -719,9 +765,43 @@ components:
         provider:
           type: string
       type: object
+    internal_adapters_http.speakSummaryResp:
+      properties:
+        high:
+          type: integer
+        low:
+          type: integer
+        mid:
+          type: integer
+        total:
+          type: integer
+        weakest:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow'
+          type: array
+          uniqueItems: false
+      type: object
+    internal_adapters_http.spokenSentencesResp:
+      properties:
+        sentences:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow'
+          type: array
+          uniqueItems: false
+        total:
+          type: integer
+      type: object
     internal_adapters_http.sttReq:
       properties:
         audioBase64:
+          type: string
+        scenarioId:
+          type: string
+        sessionId:
+          description: |-
+            SessionID/ScenarioID are optional: present when the audio came from a
+            dialogue turn, in which case the utterance is also scored and filed under
+            that run. Absent for any other dictation.
           type: string
       type: object
     internal_adapters_http.titleReq:
@@ -912,6 +992,28 @@ paths:
       summary: Send a message; NPC replies in persona (LLM)
       tags:
       - conversation
+  /conversation/{sessionId}/speech-review:
+    get:
+      parameters:
+      - description: conversation session id
+        in: path
+        name: sessionId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.sessionReviewResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Comprehensive review of the sentences spoken aloud during one dialogue
+        run
+      tags:
+      - pronunciation
   /conversation/{sessionId}/speech.wav:
     get:
       responses:
@@ -1513,6 +1615,51 @@ paths:
       - Bearer: []
       summary: Synthesized reference audio for a sentence (WAV) — the same TTS render
         GET /speech/reference derives its IPA from
+      tags:
+      - pronunciation
+  /speech/sentences:
+    get:
+      parameters:
+      - description: weak (약한 순, default) or recent (최신)
+        in: query
+        name: sort
+        schema:
+          type: string
+      - description: page size, default 20, clamped to 100
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: rows to skip
+        in: query
+        name: offset
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.spokenSentencesResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: One page of every sentence the player has spoken aloud (ScreenSpeakList)
+      tags:
+      - pronunciation
+  /speech/summary:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.speakSummaryResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Score-band summary of everything the player has spoken aloud (Review
+        Lab 직접 말하기 연습 block)
       tags:
       - pronunciation
   /stt:

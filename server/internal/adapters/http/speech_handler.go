@@ -121,3 +121,127 @@ func (h *speechHandler) attempts(w http.ResponseWriter, r *http.Request) {
 	}
 	httpx.JSON(w, http.StatusOK, rows)
 }
+
+// spokenListLimit is the page size the 직접 말하기 연습 list asks for when it
+// sends none. The handoff's soft count ("128문장 중 24개 표시") implies pages
+// well under the total, and infinite scroll fetches again as the user reaches
+// the bottom, so a small page keeps the first paint fast.
+const spokenListLimit = 20
+
+// sessionReviewResp is the Scenario Clear read-back (04_SCREENS ⑤ → ⑨): the
+// sentences spoken in the run that just ended, the run average, and the two
+// weakest for the 다시 연습 button.
+//
+// average is sent as a number, not a pre-formatted badge string: the badge's
+// rounding is a display decision and the client's locale owns it.
+type sessionReviewResp struct {
+	Sentences []ports.SpokenSentenceRow `json:"sentences"`
+	Average   float64                   `json:"average"`
+	Weakest   []ports.SpokenSentenceRow `json:"weakest"`
+}
+
+// @Summary Comprehensive review of the sentences spoken aloud during one dialogue run
+// @Tags pronunciation
+// @Security Bearer
+// @Param sessionId path string true "conversation session id"
+// @Success 200 {object} sessionReviewResp
+// @Router /conversation/{sessionId}/speech-review [get]
+func (h *speechHandler) sessionReview(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	sessionID := r.PathValue("sessionId")
+	if sessionID == "" {
+		httpx.Error(w, http.StatusBadRequest, "sessionId is required")
+		return
+	}
+	// No separate ownership check: the query is scoped to (user_id, session_id),
+	// so another user's session id simply reads as a run with no sentences.
+	rev, err := h.svc.SessionSpeechReview(r.Context(), uid, sessionID)
+	if err != nil {
+		slog.Error("speech: session review failed", "err", err, "sessionID", sessionID)
+		httpx.Error(w, http.StatusInternalServerError, "could not load the speech review")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, sessionReviewResp{
+		Sentences: nonNil(rev.Sentences), Average: rev.Average, Weakest: nonNil(rev.Weakest),
+	})
+}
+
+// speakSummaryResp is the Review Lab 🎙 직접 말하기 연습 block: band counts plus
+// the most urgent sentences only.
+type speakSummaryResp struct {
+	Total   int                       `json:"total"`
+	Low     int                       `json:"low"`
+	Mid     int                       `json:"mid"`
+	High    int                       `json:"high"`
+	Weakest []ports.SpokenSentenceRow `json:"weakest"`
+}
+
+// @Summary Score-band summary of everything the player has spoken aloud (Review Lab 직접 말하기 연습 block)
+// @Tags pronunciation
+// @Security Bearer
+// @Success 200 {object} speakSummaryResp
+// @Router /speech/summary [get]
+func (h *speechHandler) speakSummary(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	sum, err := h.svc.SpeakSummary(r.Context(), uid)
+	if err != nil {
+		slog.Error("speech: speak summary failed", "err", err)
+		httpx.Error(w, http.StatusInternalServerError, "could not load the speaking summary")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, speakSummaryResp{
+		Total: sum.Bands.Total, Low: sum.Bands.Low, Mid: sum.Bands.Mid, High: sum.Bands.High,
+		Weakest: nonNil(sum.Weakest),
+	})
+}
+
+// spokenSentencesResp pairs the page with the UNPAGED total, which the list's
+// "N문장 중 M개 표시" line needs and infinite scroll cannot derive from the page.
+type spokenSentencesResp struct {
+	Sentences []ports.SpokenSentenceRow `json:"sentences"`
+	Total     int                       `json:"total"`
+}
+
+// @Summary One page of every sentence the player has spoken aloud (ScreenSpeakList)
+// @Tags pronunciation
+// @Security Bearer
+// @Param sort query string false "weak (약한 순, default) or recent (최신)"
+// @Param limit query int false "page size, default 20, clamped to 100"
+// @Param offset query int false "rows to skip"
+// @Success 200 {object} spokenSentencesResp
+// @Router /speech/sentences [get]
+func (h *speechHandler) spokenSentences(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	// Anything other than an explicit "recent" is the 약한 순 default: the list
+	// opens on what needs work, and an unrecognized value must not silently
+	// reorder the screen into the other sort.
+	weakestFirst := r.URL.Query().Get("sort") != "recent"
+	limit := spokenListLimit
+	if v := r.URL.Query().Get("limit"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil {
+			limit = n // domain clamps; see speech.SpokenSentences
+		}
+	}
+	offset := 0
+	if v := r.URL.Query().Get("offset"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil {
+			offset = n
+		}
+	}
+	rows, total, err := h.svc.SpokenSentences(r.Context(), uid, weakestFirst, limit, offset)
+	if err != nil {
+		slog.Error("speech: spoken sentence list failed", "err", err)
+		httpx.Error(w, http.StatusInternalServerError, "could not load your spoken sentences")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, spokenSentencesResp{Sentences: nonNil(rows), Total: total})
+}
+
+// nonNil turns a nil slice into an empty one so the JSON says [] rather than
+// null. A client that maps over the field should not have to guard for both.
+func nonNil(rows []ports.SpokenSentenceRow) []ports.SpokenSentenceRow {
+	if rows == nil {
+		return []ports.SpokenSentenceRow{}
+	}
+	return rows
+}

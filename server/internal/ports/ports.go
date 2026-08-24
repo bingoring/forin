@@ -202,6 +202,48 @@ type SpeechAttemptInput struct {
 	ScenarioID   string
 	ReviewCardID *string // nil = no linked card (drill/freeform origin, or a correction with no card). Ownership of a non-nil id is the CALLER's responsibility (business-rules §2) — the repo does not check it
 	Origin       string  // allowed-set: dialogue | review | drill | freeform (domain-entities §4)
+	// SessionID names the dialogue RUN this utterance belongs to, where
+	// ScenarioID only names the scenario. The Scenario Clear review lists the
+	// run that just ended, so a replay must not pull in the previous run's
+	// sentences. "" for attempts made outside a dialogue.
+	SessionID string
+}
+
+// SpokenSentenceRow is one sentence the player said out loud, at the score they
+// currently stand at (newest attempt per sentence) — the unit of both the
+// Scenario Clear review list and the Review Lab 직접 말하기 연습 list.
+//
+// Deliberately not SpeechAttemptRow: that type is one TRY at a known sentence
+// and carries the syllable/phoneme breakdown for the practice strip. This is one
+// SENTENCE across tries, and the lists that render it need the text and the
+// provenance (which scenario, how many tries) instead — sending words[] for 128
+// rows would dwarf the payload with data no list draws.
+type SpokenSentenceRow struct {
+	SentenceKey   string  `json:"sentenceKey"`
+	ReferenceText string  `json:"referenceText"`
+	Recognized    string  `json:"recognized"`
+	Overall       float64 `json:"overall"`
+	Accuracy      float64 `json:"accuracy"`
+	Fluency       float64 `json:"fluency"`
+	Completeness  float64 `json:"completeness"`
+	// Attempts is the newest attempt_no, which IS the number of tries: attempt
+	// numbers are assigned 1..N per (user, sentence) with no gaps (I5).
+	Attempts int `json:"attempts"`
+	// ScenarioID lets the list derive its department chip (SCN-ER-00002 → ER)
+	// without a second lookup. "" for a sentence practised outside a scenario.
+	ScenarioID string    `json:"scenarioId,omitempty"`
+	Origin     string    `json:"origin,omitempty"`
+	CreatedAt  time.Time `json:"createdAt"`
+}
+
+// SpeakBandCounts is the 60↓ / 60–79 / 80+ distribution of the player's current
+// standing, one count per band over sentences (not attempts) — see the SpeakBands
+// query for why attempts would be the wrong denominator.
+type SpeakBandCounts struct {
+	Total int `json:"total"`
+	Low   int `json:"low"`
+	Mid   int `json:"mid"`
+	High  int `json:"high"`
 }
 
 // SpeechAttemptRow is one row of a sentence's attempt history, as returned by
@@ -271,6 +313,19 @@ type SpeechRepo interface {
 	// ListAttempts returns up to `limit` attempts for (userID, sentenceKey),
 	// newest attempt_no first.
 	ListAttempts(ctx context.Context, userID, sentenceKey string, limit int) ([]SpeechAttemptRow, error)
+	// ListSessionSpeech returns the sentences spoken during ONE dialogue run
+	// (userID, sessionID), oldest first, collapsed to the newest attempt per
+	// sentence. Empty slice — never an error — when that run recorded nothing.
+	ListSessionSpeech(ctx context.Context, userID, sessionID string) ([]SpokenSentenceRow, error)
+	// SpeakBands returns the score-band distribution of the player's current
+	// standing across every sentence they have spoken (one per sentence, newest
+	// attempt). Zero counts for a player who has never spoken.
+	SpeakBands(ctx context.Context, userID string) (SpeakBandCounts, error)
+	// ListSpokenSentences returns one page of the player's spoken sentences,
+	// newest attempt per sentence, plus the UNPAGED total. weakestFirst selects
+	// the sort (약한 순 / 최신). total is 0 on an empty page — the caller holds
+	// the real total from the first page.
+	ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, limit, offset int) (rows []SpokenSentenceRow, total int, err error)
 	// GetReference fetches the cached canonical breakdown for sentenceKey, or nil
 	// if none has been derived yet (business-rules "참조 생성 실패" edge case).
 	GetReference(ctx context.Context, sentenceKey string) (*SentenceReferenceRow, error)

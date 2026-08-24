@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"log/slog"
+	"sort"
 	"strings"
 
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
@@ -25,6 +26,9 @@ var allowedOrigins = map[string]bool{
 // (business-rules §2, §4).
 type RecordOptions struct {
 	ScenarioID string
+	// SessionID names the dialogue run (see ports.SpeechAttemptInput.SessionID).
+	// "" outside a dialogue.
+	SessionID string
 	// ReviewCardID: nil means no linked card. Ownership of a non-nil id is the
 	// CALLER's responsibility (ports.SpeechAttemptInput doc, business-rules
 	// §2) — that check belongs to the HTTP layer (Task 5), not here.
@@ -118,6 +122,7 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 		DurationMS:    DurationMS(audioWav),
 		Words:         res.Words,
 		ScenarioID:    opts.ScenarioID,
+		SessionID:     opts.SessionID,
 		ReviewCardID:  reviewCardID,
 		Origin:        origin,
 	})
@@ -169,4 +174,94 @@ func (s *Service) History(ctx context.Context, userID, sentenceKey string, limit
 		rows[i], rows[j] = rows[j], rows[i]
 	}
 	return rows, nil
+}
+
+// SessionReview is the comprehensive read-back of one dialogue run: every
+// sentence the player said aloud, at the score they reached, with the run's
+// average.
+//
+// Average is over Sentences, so a player who kept re-trying one line is judged
+// on where they ended up, not on the tries it took. It is 0 with no sentences —
+// the screen shows the empty state rather than a badge.
+type SessionReview struct {
+	Sentences []ports.SpokenSentenceRow
+	Average   float64
+	// Weakest holds the lowest-scoring sentences (at most two), which the
+	// "🎯 낮은 점수 2문장 다시 연습하기" button practises. Empty when the run had
+	// nothing to review. A single spoken sentence yields one entry, not two.
+	Weakest []ports.SpokenSentenceRow
+}
+
+// SessionSpeechReview assembles the Scenario Clear review for one dialogue run.
+func (s *Service) SessionSpeechReview(ctx context.Context, userID, sessionID string) (*SessionReview, error) {
+	rows, err := s.repo.ListSessionSpeech(ctx, userID, sessionID)
+	if err != nil {
+		return nil, err
+	}
+	out := &SessionReview{Sentences: rows}
+	if len(rows) == 0 {
+		return out, nil
+	}
+	sum := 0.0
+	for _, r := range rows {
+		sum += r.Overall
+	}
+	out.Average = sum / float64(len(rows))
+
+	// Copy before sorting: Sentences is in conversation order and the screen
+	// renders it that way. Sorting in place would silently reorder it.
+	weak := make([]ports.SpokenSentenceRow, len(rows))
+	copy(weak, rows)
+	sort.SliceStable(weak, func(i, j int) bool { return weak[i].Overall < weak[j].Overall })
+	if len(weak) > weakestCount {
+		weak = weak[:weakestCount]
+	}
+	out.Weakest = weak
+	return out, nil
+}
+
+// weakestCount is the handoff's "낮은 점수 2문장" / "가장 급한 2문장" — the same
+// number in both places, so it is one constant.
+const weakestCount = 2
+
+// SpeakSummary is the Review Lab 직접 말하기 연습 block: the band distribution
+// plus only the most urgent sentences. Summary-only by design — the handoff
+// keeps the block bounded because the list grows past 100 items.
+type SpeakSummary struct {
+	Bands   ports.SpeakBandCounts
+	Weakest []ports.SpokenSentenceRow
+}
+
+// SpeakSummary reads the block's two halves. The weakest rows come from the same
+// paged query the full list uses, asked for its first two — so the block and the
+// list can never disagree about which sentences are worst.
+func (s *Service) SpeakSummary(ctx context.Context, userID string) (*SpeakSummary, error) {
+	bands, err := s.repo.SpeakBands(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	weak, _, err := s.repo.ListSpokenSentences(ctx, userID, true, weakestCount, 0)
+	if err != nil {
+		return nil, err
+	}
+	return &SpeakSummary{Bands: bands, Weakest: weak}, nil
+}
+
+// SpokenSentences serves one page of the full 직접 말하기 연습 list.
+//
+// limit is clamped rather than rejected: an over-large page is a client bug that
+// should degrade to a big-but-bounded page, not a 400 that leaves the list
+// stuck. Offsets past the end return an empty page, which is how the client's
+// infinite scroll learns it has reached the bottom.
+func (s *Service) SpokenSentences(ctx context.Context, userID string, weakestFirst bool, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+	if limit <= 0 {
+		limit = 20
+	}
+	if limit > 100 {
+		limit = 100
+	}
+	if offset < 0 {
+		offset = 0
+	}
+	return s.repo.ListSpokenSentences(ctx, userID, weakestFirst, limit, offset)
 }

@@ -80,11 +80,11 @@ const insertSpeechAttempt = `-- name: InsertSpeechAttempt :one
 INSERT INTO speech_attempts (
     user_id, sentence_key, reference_text, locale, attempt_no,
     recognized, overall, accuracy, fluency, completeness, prosody,
-    duration_ms, words, scenario_id, review_card_id, origin
+    duration_ms, words, scenario_id, review_card_id, origin, session_id
 )
 SELECT $1, $2, $3, $4,
        COALESCE(MAX(attempt_no), 0) + 1,
-       $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15
+       $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16
   FROM speech_attempts
  WHERE user_id = $1 AND sentence_key = $2
 RETURNING id, attempt_no
@@ -106,6 +106,7 @@ type InsertSpeechAttemptParams struct {
 	ScenarioID    string        `json:"scenario_id"`
 	ReviewCardID  pgtype.UUID   `json:"review_card_id"`
 	Origin        string        `json:"origin"`
+	SessionID     string        `json:"session_id"`
 }
 
 type InsertSpeechAttemptRow struct {
@@ -134,10 +135,229 @@ func (q *Queries) InsertSpeechAttempt(ctx context.Context, arg InsertSpeechAttem
 		arg.ScenarioID,
 		arg.ReviewCardID,
 		arg.Origin,
+		arg.SessionID,
 	)
 	var i InsertSpeechAttemptRow
 	err := row.Scan(&i.ID, &i.AttemptNo)
 	return i, err
+}
+
+const listSessionSpeech = `-- name: ListSessionSpeech :many
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, attempt_no, created_at
+  FROM (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1 AND session_id = $2
+     ORDER BY sentence_key, attempt_no DESC
+  ) newest
+ ORDER BY created_at
+`
+
+type ListSessionSpeechParams struct {
+	UserID    string `json:"user_id"`
+	SessionID string `json:"session_id"`
+}
+
+type ListSessionSpeechRow struct {
+	SentenceKey   string             `json:"sentence_key"`
+	ReferenceText string             `json:"reference_text"`
+	Recognized    string             `json:"recognized"`
+	Overall       float64            `json:"overall"`
+	Accuracy      float64            `json:"accuracy"`
+	Fluency       float64            `json:"fluency"`
+	Completeness  float64            `json:"completeness"`
+	AttemptNo     int                `json:"attempt_no"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+}
+
+// Every sentence the player spoke aloud during ONE dialogue run, oldest first,
+// for the Scenario Clear review list.
+//
+// DISTINCT ON collapses re-tries: saying the same sentence three times in one
+// session is one sentence with the score they finally reached, not three rows —
+// the list is a review of what they said, not of how many attempts it took
+// (attempt_no carries that). The outer ORDER BY restores conversation order,
+// which DISTINCT ON had to break to pick the newest per key.
+func (q *Queries) ListSessionSpeech(ctx context.Context, arg ListSessionSpeechParams) ([]ListSessionSpeechRow, error) {
+	rows, err := q.db.Query(ctx, listSessionSpeech, arg.UserID, arg.SessionID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListSessionSpeechRow
+	for rows.Next() {
+		var i ListSessionSpeechRow
+		if err := rows.Scan(
+			&i.SentenceKey,
+			&i.ReferenceText,
+			&i.Recognized,
+			&i.Overall,
+			&i.Accuracy,
+			&i.Fluency,
+			&i.Completeness,
+			&i.AttemptNo,
+			&i.CreatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listSpeakSentencesRecent = `-- name: ListSpeakSentencesRecent :many
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, scenario_id, origin, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, scenario_id, origin, attempt_no, created_at,
+       (SELECT COUNT(*)::int FROM latest) AS total
+  FROM latest
+ ORDER BY created_at DESC
+ LIMIT $2 OFFSET $3
+`
+
+type ListSpeakSentencesRecentParams struct {
+	UserID string `json:"user_id"`
+	Limit  int32  `json:"limit"`
+	Offset int32  `json:"offset"`
+}
+
+type ListSpeakSentencesRecentRow struct {
+	SentenceKey   string             `json:"sentence_key"`
+	ReferenceText string             `json:"reference_text"`
+	Recognized    string             `json:"recognized"`
+	Overall       float64            `json:"overall"`
+	Accuracy      float64            `json:"accuracy"`
+	Fluency       float64            `json:"fluency"`
+	Completeness  float64            `json:"completeness"`
+	ScenarioID    string             `json:"scenario_id"`
+	Origin        string             `json:"origin"`
+	AttemptNo     int                `json:"attempt_no"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+	Total         int                `json:"total"`
+}
+
+// 최신: newest first. Same projection as ListSpeakSentencesWeak so one repo
+// mapper serves both sorts.
+func (q *Queries) ListSpeakSentencesRecent(ctx context.Context, arg ListSpeakSentencesRecentParams) ([]ListSpeakSentencesRecentRow, error) {
+	rows, err := q.db.Query(ctx, listSpeakSentencesRecent, arg.UserID, arg.Limit, arg.Offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListSpeakSentencesRecentRow
+	for rows.Next() {
+		var i ListSpeakSentencesRecentRow
+		if err := rows.Scan(
+			&i.SentenceKey,
+			&i.ReferenceText,
+			&i.Recognized,
+			&i.Overall,
+			&i.Accuracy,
+			&i.Fluency,
+			&i.Completeness,
+			&i.ScenarioID,
+			&i.Origin,
+			&i.AttemptNo,
+			&i.CreatedAt,
+			&i.Total,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listSpeakSentencesWeak = `-- name: ListSpeakSentencesWeak :many
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, scenario_id, origin, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, scenario_id, origin, attempt_no, created_at,
+       (SELECT COUNT(*)::int FROM latest) AS total
+  FROM latest
+ ORDER BY overall, created_at DESC
+ LIMIT $2 OFFSET $3
+`
+
+type ListSpeakSentencesWeakParams struct {
+	UserID string `json:"user_id"`
+	Limit  int32  `json:"limit"`
+	Offset int32  `json:"offset"`
+}
+
+type ListSpeakSentencesWeakRow struct {
+	SentenceKey   string             `json:"sentence_key"`
+	ReferenceText string             `json:"reference_text"`
+	Recognized    string             `json:"recognized"`
+	Overall       float64            `json:"overall"`
+	Accuracy      float64            `json:"accuracy"`
+	Fluency       float64            `json:"fluency"`
+	Completeness  float64            `json:"completeness"`
+	ScenarioID    string             `json:"scenario_id"`
+	Origin        string             `json:"origin"`
+	AttemptNo     int                `json:"attempt_no"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+	Total         int                `json:"total"`
+}
+
+// 약한 순: worst standing first. Ties break by recency so the sentence they hit
+// most recently is the one they are shown first.
+//
+// `total` rides along on every row so the list's "N문장 중 M개 표시" needs no
+// second round trip per page.
+func (q *Queries) ListSpeakSentencesWeak(ctx context.Context, arg ListSpeakSentencesWeakParams) ([]ListSpeakSentencesWeakRow, error) {
+	rows, err := q.db.Query(ctx, listSpeakSentencesWeak, arg.UserID, arg.Limit, arg.Offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListSpeakSentencesWeakRow
+	for rows.Next() {
+		var i ListSpeakSentencesWeakRow
+		if err := rows.Scan(
+			&i.SentenceKey,
+			&i.ReferenceText,
+			&i.Recognized,
+			&i.Overall,
+			&i.Accuracy,
+			&i.Fluency,
+			&i.Completeness,
+			&i.ScenarioID,
+			&i.Origin,
+			&i.AttemptNo,
+			&i.CreatedAt,
+			&i.Total,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
 }
 
 const listSpeechAttempts = `-- name: ListSpeechAttempts :many
@@ -228,6 +448,45 @@ func (q *Queries) PutSpeechReference(ctx context.Context, arg PutSpeechReference
 		arg.AudioWav,
 	)
 	return err
+}
+
+const speakBands = `-- name: SpeakBands :one
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key) sentence_key, overall
+      FROM speech_attempts
+     WHERE user_id = $1
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT COUNT(*)::int                                            AS total,
+       COUNT(*) FILTER (WHERE overall < 60)::int                AS low,
+       COUNT(*) FILTER (WHERE overall >= 60 AND overall < 80)::int AS mid,
+       COUNT(*) FILTER (WHERE overall >= 80)::int               AS high
+  FROM latest
+`
+
+type SpeakBandsRow struct {
+	Total int `json:"total"`
+	Low   int `json:"low"`
+	Mid   int `json:"mid"`
+	High  int `json:"high"`
+}
+
+// Score-band distribution over the player's CURRENT standing on each sentence:
+// one row per sentence_key at its newest attempt, bucketed 60↓ / 60–79 / 80+.
+//
+// Counting attempts instead of sentences would let one heavily-drilled sentence
+// dominate the distribution, and would keep punishing the player for the early
+// bad tries they have since fixed.
+func (q *Queries) SpeakBands(ctx context.Context, userID string) (SpeakBandsRow, error) {
+	row := q.db.QueryRow(ctx, speakBands, userID)
+	var i SpeakBandsRow
+	err := row.Scan(
+		&i.Total,
+		&i.Low,
+		&i.Mid,
+		&i.High,
+	)
+	return i, err
 }
 
 const updateSpeechReferenceAudio = `-- name: UpdateSpeechReferenceAudio :exec

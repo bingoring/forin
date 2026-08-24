@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"net/http"
 	"regexp"
+	"strings"
 	"unicode/utf8"
 
 	"github.com/bingoring/forin/server/internal/adapters/azurespeech"
@@ -254,9 +255,63 @@ func (h *pronunciationHandler) transcribe(w http.ResponseWriter, r *http.Request
 		httpx.Error(w, http.StatusBadGateway, "speech-to-text unavailable")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]string{"text": text})
+
+	out := sttResp{Text: text}
+	if score := h.scoreDictation(r, uid, audio, text, req); score != nil {
+		out.Overall, out.Accuracy, out.Fluency = score.Overall, score.Accuracy, score.Fluency
+		out.Scored = true
+	}
+	httpx.JSON(w, http.StatusOK, out)
+}
+
+// scoreDictation scores a dialogue utterance so the Scenario Clear screen and
+// the Review Lab have per-sentence numbers to review. It returns nil when there
+// is nothing to score or scoring failed — a dialogue turn must never fail
+// because the review pipeline did.
+//
+// The reference text is the RECOGNIZED text, which is the only reference free
+// dialogue can have: the player chose their own words, so there is no script to
+// compare against. Azure then scores how clearly each of those words was
+// pronounced against that word's canonical pronunciation — which is the question
+// the review answers ("how well did I say what I said"), not a circular one.
+// Completeness is meaningless under this arrangement (the reference is by
+// construction exactly what was heard) and the review screens do not show it.
+//
+// Scoring is skipped entirely outside a dialogue: without a sessionId there is
+// no run to attribute the utterance to, and paying for a second Azure call per
+// dictation with nowhere to file the result is pure cost.
+func (h *pronunciationHandler) scoreDictation(r *http.Request, uid string, audio []byte, text string, req sttReq) *ports.PronunciationResult {
+	if h.speech == nil || req.SessionID == "" || strings.TrimSpace(text) == "" {
+		return nil
+	}
+	res, err := h.speech.Record(r.Context(), uid, audio, text, speech.RecordOptions{
+		Origin: "dialogue", ScenarioID: req.ScenarioID, SessionID: req.SessionID,
+	})
+	if err != nil {
+		// Includes ErrNoSpeech, which STT already contradicted by returning
+		// text — either way the turn proceeds with no score attached.
+		slog.Warn("stt: utterance transcribed but not scored", "err", err, "sessionID", req.SessionID)
+		return nil
+	}
+	return res.Result
 }
 
 type sttReq struct {
 	AudioBase64 string `json:"audioBase64"`
+	// SessionID/ScenarioID are optional: present when the audio came from a
+	// dialogue turn, in which case the utterance is also scored and filed under
+	// that run. Absent for any other dictation.
+	SessionID  string `json:"sessionId,omitempty"`
+	ScenarioID string `json:"scenarioId,omitempty"`
+}
+
+// sttResp carries the transcript plus, for a dialogue turn, that utterance's
+// score. scored distinguishes "0 points" from "not scored", which zero values
+// alone cannot.
+type sttResp struct {
+	Text     string  `json:"text"`
+	Scored   bool    `json:"scored"`
+	Overall  float64 `json:"overall,omitempty"`
+	Accuracy float64 `json:"accuracy,omitempty"`
+	Fluency  float64 `json:"fluency,omitempty"`
 }

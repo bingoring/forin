@@ -30,9 +30,19 @@ import (
 type fakePronPort struct {
 	result *ports.PronunciationResult
 	err    error
+	// transcript is what Transcribe hands back; assessedRefs records every
+	// reference text Assess was scored against, so a dictation test can assert
+	// free speech is scored against the transcript itself.
+	transcript   string
+	assessedRefs []string
+	assessErr    error
 }
 
 func (f *fakePronPort) Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*ports.PronunciationResult, error) {
+	f.assessedRefs = append(f.assessedRefs, referenceText)
+	if f.assessErr != nil {
+		return nil, f.assessErr
+	}
 	if f.err != nil {
 		return nil, f.err
 	}
@@ -40,7 +50,10 @@ func (f *fakePronPort) Assess(ctx context.Context, audioWav []byte, referenceTex
 }
 
 func (f *fakePronPort) Transcribe(ctx context.Context, audioWav []byte, locale string) (string, error) {
-	return "", nil
+	if f.err != nil {
+		return "", f.err
+	}
+	return f.transcript, nil
 }
 
 type fakeProfiles struct{}
@@ -68,6 +81,44 @@ type fakeSpeechRepo struct {
 		Wav         []byte
 	}
 	updateAudioErr error
+	bands          ports.SpeakBandCounts
+	// spokenCalls records the (weakestFirst, limit, offset) the handler asked
+	// for, so a query-string test can assert the sort actually reached the repo.
+	spokenCalls []struct {
+		WeakestFirst  bool
+		Limit, Offset int
+	}
+}
+
+// ListSessionSpeech derives the run's sentences from what was actually inserted,
+// so a test can drive POST /stt and then read the review back through the same
+// fake — the wiring under test is exactly that round trip.
+func (f *fakeSpeechRepo) ListSessionSpeech(ctx context.Context, userID, sessionID string) ([]ports.SpokenSentenceRow, error) {
+	var out []ports.SpokenSentenceRow
+	for _, a := range f.inserted {
+		if a.UserID != userID || a.SessionID != sessionID {
+			continue
+		}
+		out = append(out, ports.SpokenSentenceRow{
+			SentenceKey: a.SentenceKey, ReferenceText: a.ReferenceText, Recognized: a.Recognized,
+			Overall: a.Overall, Accuracy: a.Accuracy, Fluency: a.Fluency,
+			ScenarioID: a.ScenarioID, Origin: a.Origin, Attempts: 1,
+		})
+	}
+	return out, nil
+}
+
+func (f *fakeSpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.SpeakBandCounts, error) {
+	return f.bands, nil
+}
+
+func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+	f.spokenCalls = append(f.spokenCalls, struct {
+		WeakestFirst  bool
+		Limit, Offset int
+	}{weakestFirst, limit, offset})
+	rows, err := f.ListSessionSpeech(ctx, userID, "")
+	return rows, len(rows), err
 }
 
 func newFakeSpeechRepo() *fakeSpeechRepo {

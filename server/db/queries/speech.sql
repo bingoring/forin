@@ -6,11 +6,11 @@
 INSERT INTO speech_attempts (
     user_id, sentence_key, reference_text, locale, attempt_no,
     recognized, overall, accuracy, fluency, completeness, prosody,
-    duration_ms, words, scenario_id, review_card_id, origin
+    duration_ms, words, scenario_id, review_card_id, origin, session_id
 )
 SELECT $1, $2, $3, $4,
        COALESCE(MAX(attempt_no), 0) + 1,
-       $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15
+       $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16
   FROM speech_attempts
  WHERE user_id = $1 AND sentence_key = $2
 RETURNING id, attempt_no;
@@ -50,3 +50,82 @@ ON CONFLICT (sentence_key) DO NOTHING;
 -- just means one Synthesize call goes unused, never corruption.
 UPDATE speech_references SET audio_wav = $2
  WHERE sentence_key = $1 AND audio_wav = '';
+
+-- name: ListSessionSpeech :many
+-- Every sentence the player spoke aloud during ONE dialogue run, oldest first,
+-- for the Scenario Clear review list.
+--
+-- DISTINCT ON collapses re-tries: saying the same sentence three times in one
+-- session is one sentence with the score they finally reached, not three rows —
+-- the list is a review of what they said, not of how many attempts it took
+-- (attempt_no carries that). The outer ORDER BY restores conversation order,
+-- which DISTINCT ON had to break to pick the newest per key.
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, attempt_no, created_at
+  FROM (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1 AND session_id = $2
+     ORDER BY sentence_key, attempt_no DESC
+  ) newest
+ ORDER BY created_at;
+
+-- name: SpeakBands :one
+-- Score-band distribution over the player's CURRENT standing on each sentence:
+-- one row per sentence_key at its newest attempt, bucketed 60↓ / 60–79 / 80+.
+--
+-- Counting attempts instead of sentences would let one heavily-drilled sentence
+-- dominate the distribution, and would keep punishing the player for the early
+-- bad tries they have since fixed.
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key) sentence_key, overall
+      FROM speech_attempts
+     WHERE user_id = $1
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT COUNT(*)::int                                            AS total,
+       COUNT(*) FILTER (WHERE overall < 60)::int                AS low,
+       COUNT(*) FILTER (WHERE overall >= 60 AND overall < 80)::int AS mid,
+       COUNT(*) FILTER (WHERE overall >= 80)::int               AS high
+  FROM latest;
+
+-- name: ListSpeakSentencesWeak :many
+-- 약한 순: worst standing first. Ties break by recency so the sentence they hit
+-- most recently is the one they are shown first.
+--
+-- `total` rides along on every row so the list's "N문장 중 M개 표시" needs no
+-- second round trip per page.
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, scenario_id, origin, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, scenario_id, origin, attempt_no, created_at,
+       (SELECT COUNT(*)::int FROM latest) AS total
+  FROM latest
+ ORDER BY overall, created_at DESC
+ LIMIT $2 OFFSET $3;
+
+-- name: ListSpeakSentencesRecent :many
+-- 최신: newest first. Same projection as ListSpeakSentencesWeak so one repo
+-- mapper serves both sorts.
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, scenario_id, origin, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, scenario_id, origin, attempt_no, created_at,
+       (SELECT COUNT(*)::int FROM latest) AS total
+  FROM latest
+ ORDER BY created_at DESC
+ LIMIT $2 OFFSET $3;
