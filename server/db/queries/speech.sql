@@ -60,17 +60,25 @@ UPDATE speech_references SET audio_wav = $2
 -- the list is a review of what they said, not of how many attempts it took
 -- (attempt_no carries that). The outer ORDER BY restores conversation order,
 -- which DISTINCT ON had to break to pick the newest per key.
+--
+-- That order is by when the sentence was FIRST said, not by the retained row's
+-- created_at. Ordering by the retained row put a re-tried sentence wherever its
+-- LAST attempt landed: say A, say B, fix A, and the review listed B before A —
+-- caught by the Postgres-backed test, and invisible to any fake repo. The window
+-- function is evaluated before DISTINCT ON, so MIN sees every attempt in the
+-- session, not just the surviving one.
 SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
        completeness, attempt_no, created_at
   FROM (
     SELECT DISTINCT ON (sentence_key)
            sentence_key, reference_text, recognized, overall, accuracy, fluency,
-           completeness, attempt_no, created_at
+           completeness, attempt_no, created_at,
+           MIN(created_at) OVER (PARTITION BY sentence_key) AS first_said
       FROM speech_attempts
      WHERE user_id = $1 AND session_id = $2
      ORDER BY sentence_key, attempt_no DESC
   ) newest
- ORDER BY created_at;
+ ORDER BY first_said;
 
 -- name: SpeakBands :one
 -- Score-band distribution over the player's CURRENT standing on each sentence:
