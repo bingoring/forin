@@ -268,6 +268,49 @@ export interface SentenceReference {
   durationMs?: number;
 }
 
+/** One sentence the player said out loud, at the score they currently stand at.
+ *  Distinct from SpeechAttemptRow, which is one TRY at a known sentence and
+ *  carries the syllable breakdown; this is one SENTENCE across tries and the
+ *  lists that render it need the text and provenance instead. */
+export interface SpokenSentence {
+  sentenceKey: string;
+  referenceText: string;
+  recognized: string;
+  overall: number;
+  accuracy: number;
+  fluency: number;
+  completeness: number;
+  /** Number of tries — attempt numbers run 1..N with no gaps. */
+  attempts: number;
+  /** Present when the sentence came from a scenario; the list derives its
+   *  department chip from it (SCN-ER-00002 → ER). */
+  scenarioId?: string;
+  origin?: string;
+  createdAt: string;
+}
+
+/** GET /conversation/{sessionId}/speech-review — the Scenario Clear read-back.
+ *  `average` is a raw number: the badge's rounding is the client's decision. */
+export interface SessionSpeechReview {
+  sentences: SpokenSentence[];
+  average: number;
+  /** At most two, for 낮은 점수 2문장 다시 연습하기. */
+  weakest: SpokenSentence[];
+}
+
+/** GET /speech/summary — band counts over SENTENCES (not attempts). */
+export interface SpeakSummary {
+  total: number;
+  /** 60↓ / 60–79 / 80+ */
+  low: number;
+  mid: number;
+  high: number;
+  weakest: SpokenSentence[];
+}
+
+/** ScreenSpeakList's segmented sort: 약한 순 / 최신. */
+export type SpeakSort = 'weak' | 'recent';
+
 // One row of GET /speech/attempts?text=…&limit=… (oldest first, business-rules R3).
 export interface SpeechAttemptRow {
   id?: string;
@@ -683,9 +726,44 @@ export const api = {
 
   /** Assess pronunciation of recorded audio (base64 16kHz mono WAV) vs a reference. */
   /** Transcribe recorded audio to text (dictation, Azure STT). */
-  async transcribe(audioBase64: string): Promise<string> {
-    const { data } = await http.post('/stt', { audioBase64 });
+  /** Passing `session` makes the server ALSO score this utterance and file it
+   *  under that dialogue run, which is what feeds the Scenario Clear review and
+   *  the Review Lab 직접 말하기 연습 block. Omit it and the audio is only
+   *  transcribed, exactly as before. */
+  async transcribe(audioBase64: string, session?: { sessionId: string; scenarioId?: string }): Promise<string> {
+    const { data } = await http.post('/stt', {
+      audioBase64,
+      ...(session ? { sessionId: session.sessionId, scenarioId: session.scenarioId } : null),
+    });
     return (data as { text?: string })?.text ?? '';
+  },
+
+  /** The sentences spoken aloud during ONE dialogue run, for Scenario Clear. */
+  async sessionSpeechReview(sessionId: string): Promise<SessionSpeechReview> {
+    const { data } = await http.get(`/conversation/${encodeURIComponent(sessionId)}/speech-review`);
+    const d = data as Partial<SessionSpeechReview> | null;
+    return { sentences: d?.sentences ?? [], average: d?.average ?? 0, weakest: d?.weakest ?? [] };
+  },
+
+  /** Score-band summary for the Review Lab 🎙 직접 말하기 연습 block. */
+  async speakSummary(): Promise<SpeakSummary> {
+    const { data } = await http.get('/speech/summary');
+    const d = data as Partial<SpeakSummary> | null;
+    return {
+      total: d?.total ?? 0, low: d?.low ?? 0, mid: d?.mid ?? 0, high: d?.high ?? 0,
+      weakest: d?.weakest ?? [],
+    };
+  },
+
+  /** One page of ScreenSpeakList. `total` is the UNPAGED count the list's
+   *  "N문장 중 M개 표시" line needs — an empty page reports 0, so the caller keeps
+   *  the total it already has. */
+  async speakSentences(opts: { sort: SpeakSort; limit?: number; offset?: number }): Promise<{ sentences: SpokenSentence[]; total: number }> {
+    const { data } = await http.get('/speech/sentences', {
+      params: { sort: opts.sort, limit: opts.limit ?? 20, offset: opts.offset ?? 0 },
+    });
+    const d = data as { sentences?: SpokenSentence[]; total?: number } | null;
+    return { sentences: d?.sentences ?? [], total: d?.total ?? 0 };
   },
 
   /** `opts` forwards Task 5's origin/scenarioId/reviewCardId (business-rules

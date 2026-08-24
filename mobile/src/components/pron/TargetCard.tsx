@@ -17,12 +17,11 @@ type Props = {
   /** e.g. "3회 중 1회차" */
   hint: string;
   onPlayNative(): void;
-  onPlaySlow(): void;
   /** False when no reference audio exists; both playback chips go flat. */
   nativeAvailable: boolean;
 };
 
-export function TargetCard({ tokens, ipa, hint, onPlayNative, onPlaySlow, nativeAvailable }: Props) {
+export function TargetCard({ tokens, ipa, hint, onPlayNative, nativeAvailable }: Props) {
   return (
     <PronCard offset={4} style={styles.card}>
       <View style={styles.tag}>
@@ -56,14 +55,6 @@ export function TargetCard({ tokens, ipa, hint, onPlayNative, onPlaySlow, native
         >
           <PixelIcon name="volume" color={colors.ink} size={13} sw={1.8} />
           <Text style={styles.chipText}>원어민</Text>
-        </Pressable>
-        <Pressable
-          onPress={onPlaySlow}
-          disabled={!nativeAvailable}
-          hitSlop={8}
-          style={[styles.slowChip, !nativeAvailable && styles.flat]}
-        >
-          <Text style={styles.chipText}>0.5× 느리게</Text>
         </Pressable>
         <View style={styles.spacer} />
         <Text style={styles.hint}>{hint}</Text>
@@ -115,13 +106,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 4,
     backgroundColor: colors.blue,
-    borderWidth: 2,
-    borderColor: colors.ink,
-    paddingVertical: 5,
-    paddingHorizontal: 9,
-  },
-  slowChip: {
-    backgroundColor: '#fff',
     borderWidth: 2,
     borderColor: colors.ink,
     paddingVertical: 5,

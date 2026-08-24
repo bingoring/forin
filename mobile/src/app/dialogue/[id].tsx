@@ -87,7 +87,14 @@ export default function DialogueRoute() {
         const uri = recorder.uri;
         if (!uri) throw new Error('no audio');
         const b64 = await readAsStringAsync(uri, { encoding: EncodingType.Base64 });
-        const text = await api.transcribe(b64);
+        // The session id makes the server score this utterance too, filed under
+        // this run — that is what the Scenario Clear review and the Review Lab
+        // 직접 말하기 연습 block read back. Without it they would be permanently
+        // empty, since free dialogue produces no other pronunciation record.
+        const text = await api.transcribe(
+          b64,
+          sessionRef.current ? { sessionId: sessionRef.current, scenarioId: id } : undefined,
+        );
         if (text) setDraft((d) => (d.trim() ? `${d.trim()} ${text}` : text));
       } catch { /* mic/STT unavailable — leave draft as-is */ }
       finally { setRec('idle'); }

@@ -9,10 +9,11 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Animated, Easing, Pressable, Share, Text, View, type GestureResponderEvent, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
-import { api, type Progress, type ScenarioDetail, type ScenarioGrade } from '@/api/client';
+import { api, type Progress, type ScenarioDetail, type ScenarioGrade, type SessionSpeechReview, type SpokenSentence } from '@/api/client';
 import { newlyEarnedTitles, type GrowthInput, type TitleDef } from '@/data/titles';
 import { ECON } from '@/data/economy';
 import { PixelIcon } from '@/components/PixelIcon';
+import { SessionSpeechReviewCard } from '@/components/speak/SessionSpeechReviewCard';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
@@ -64,6 +65,10 @@ export default function ResultRoute() {
   const [stickerTotal, setStickerTotal] = useState<number | null>(null);
   const [newTitles, setNewTitles] = useState<TitleDef[]>([]);
   const [failed, setFailed] = useState(false);
+  // What the player said out loud this run. null until the read-back lands (or
+  // if it fails) — the card is simply absent rather than showing a stub, since a
+  // celebration screen must never wait on a secondary read.
+  const [speech, setSpeech] = useState<SessionSpeechReview | null>(null);
   const recorded = useRef(false);
   // Whether this run was AI-graded (had a session) and whether it passed (완료).
   const graded = !!grade;
@@ -83,6 +88,18 @@ export default function ResultRoute() {
   const onStickerLayout = () => {
     stickerRef.current?.measureInWindow((x, y, w, h) => spawnBurst(x + w / 2, y + h / 2));
   };
+
+  // Its own effect, not folded into the award effect above: this read is
+  // independent of grading and must not be able to fail it (that effect's catch
+  // sets `failed`, which swaps the whole screen for the offline fallback).
+  useEffect(() => {
+    if (!session) return;
+    let alive = true;
+    api.sessionSpeechReview(session)
+      .then((r) => { if (alive) setSpeech(r); })
+      .catch(() => { /* no read-back — the card stays absent */ });
+    return () => { alive = false; };
+  }, [session]);
 
   useEffect(() => {
     let alive = true;
@@ -157,6 +174,19 @@ export default function ResultRoute() {
     Share.share({ message: t('result.shareBody', { title: scenario?.title || t('result.aScenario'), verb, xp: awardedXp, lv }) }).catch(() => {});
   };
 
+  // Practising the weakest sentences starts with the worst one. The rest are not
+  // queued: the pronunciation screen owns its own next-sentence flow, and
+  // inventing a second queue here would compete with it.
+  const practiseWeakest = (sentences: SpokenSentence[]) => {
+    const worst = sentences[0];
+    if (!worst) return;
+    // One single template literal — expo-router's typed-routes generator matches
+    // statically against one backtick expression (see dialogue's openPronunciation).
+    router.push(
+      `/pronunciation/${encodeURIComponent(worst.referenceText.slice(0, 40))}?referenceText=${encodeURIComponent(worst.referenceText)}&origin=review&scenarioId=${encodeURIComponent(id)}`
+    );
+  };
+
   const titleColor = passed ? colors.yellow : colors.peachShadow;
 
   return (
@@ -200,6 +230,14 @@ export default function ResultRoute() {
 
         {/* AI grade detail (score, goals, feedback) — only for graded runs */}
         {graded && <GradeDetail grade={grade!} />}
+
+        {/* Comprehensive review of what the player said aloud. Rendered only
+            once the read-back arrives AND only when the run actually recorded
+            something: a fully-typed run has nothing to review, and an empty
+            card on the celebration screen reads as a failure. */}
+        {speech && speech.sentences.length > 0 && (
+          <SessionSpeechReviewCard review={speech} onPractise={practiseWeakest} />
+        )}
 
         {/* level-up banner */}
         {leveledUp && (

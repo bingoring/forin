@@ -9,8 +9,9 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
-import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
+import { api, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { SpeakSummaryBlock } from '@/components/speak/SpeakSummaryBlock';
 import { faceOf } from '@/data/reviewCardFace';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
@@ -41,6 +42,10 @@ function splitTag(t: Translate, topicTag: string): { dept: string; tag: string }
   return { dept: topicTag || t('lab.correctionNote'), tag: '' };
 }
 
+// The 말하기 chip's id. A sentinel rather than a real filter value — see where
+// `cats` is built for why this chip navigates instead of filtering.
+const SPEAK_CHIP = '__SPEAK__';
+
 export default function Lab() {
   const t = useT();
   const router = useRouter();
@@ -49,6 +54,10 @@ export default function Lab() {
   const [filter, setFilter] = useState('ALL');
   const [guideOpen, setGuideOpen] = useState(false);
   const [toast, setToast] = useState<{ label: string; bg: string; blurb: string; next: string } | null>(null);
+  // The 🎙 직접 말하기 연습 summary. null while unknown or unavailable — the block
+  // is simply absent then, rather than drawing an empty distribution that reads
+  // as "you scored nothing".
+  const [speak, setSpeak] = useState<SpeakSummary | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -56,9 +65,22 @@ export default function Lab() {
       api.reviewDue()
         .then((c) => { if (alive) { setCards(c); setState('ok'); } })
         .catch(() => { if (alive) setState('error'); });
+      // Separate from the card read and deliberately not awaited with it: the
+      // speaking summary failing must not turn the whole tab into the error state.
+      api.speakSummary()
+        .then((sum) => { if (alive) setSpeak(sum); })
+        .catch(() => { /* block stays absent */ });
       return () => { alive = false; };
     }, []),
   );
+
+  const practiseSentence = (s: SpokenSentence) => {
+    // One single template literal — expo-router's typed-routes generator matches
+    // statically against one backtick expression.
+    router.push(
+      `/pronunciation/${encodeURIComponent(s.referenceText.slice(0, 40))}?referenceText=${encodeURIComponent(s.referenceText)}&origin=review&scenarioId=${encodeURIComponent(s.scenarioId ?? '')}`
+    );
+  };
 
   const grade = async (id: string, g: ReviewGrade) => {
     const meta = GRADES.find((x) => x.g === g)!;
@@ -74,8 +96,16 @@ export default function Lab() {
   const cats = useMemo(() => {
     const counts = new Map<string, number>();
     for (const c of cards) { const d = splitTag(t, c.topicTag).dept; counts.set(d, (counts.get(d) ?? 0) + 1); }
-    return [{ id: 'ALL', label: t('board.all'), count: cards.length }, ...Array.from(counts, ([id, count]) => ({ id, label: id, count }))];
-  }, [cards]);
+    return [
+      { id: 'ALL', label: t('board.all'), count: cards.length },
+      ...Array.from(counts, ([id, count]) => ({ id, label: id, count })),
+      // 말하기 is in the handoff's chip row, but unlike the others it is not a
+      // filter over the card list: spoken sentences are not PhraseCards, so
+      // filtering to them would always show an empty list. Tapping it opens the
+      // list screen the handoff says 100+ items must live on.
+      ...(speak && speak.total > 0 ? [{ id: SPEAK_CHIP, label: t('speak.blockTitle'), count: speak.total }] : []),
+    ];
+  }, [cards, speak]);
   const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(t, c.topicTag).dept === filter);
 
   if (state !== 'ok') {
@@ -153,6 +183,16 @@ export default function Lab() {
           <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
         </View>
 
+        {/* 🎙 직접 말하기 연습 — the summary half of the handoff's pair of blocks.
+            Shown only once the player has actually spoken something. */}
+        {speak && speak.total > 0 && (
+          <SpeakSummaryBlock
+            summary={speak}
+            onOpenAll={(sort: 'weak' | 'recent') => router.push(sort === 'weak' ? '/speak?sort=weak' : '/speak?sort=recent')}
+            onPractise={practiseSentence}
+          />
+        )}
+
         {/* category filter */}
         {cats.length > 1 && (
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
@@ -160,7 +200,7 @@ export default function Lab() {
               const active = filter === c.id;
               const catColor = c.id === 'ALL' ? C : toneOf(c.id);
               return (
-                <Pressable key={c.id} onPress={() => setFilter(c.id)}>
+                <Pressable key={c.id} onPress={() => (c.id === SPEAK_CHIP ? router.push('/speak?sort=weak') : setFilter(c.id))}>
                   <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
                       <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: active ? C : C }}>{c.label}</Text>

@@ -680,6 +680,9 @@ export default function PronunciationRoute() {
   // an SSML prosody rate (task-11-report.md judgment call 3) — mirrors
   // ListenQuiz.tsx's own 0.7×/1.0× buttons, which already use
   // player.setPlaybackRate against ONE synthesized clip.
+  // rate stays a parameter although every caller now passes 1.0: the 0.5×
+  // 느리게 chip was removed as unusably slow ("0.5배속은 너무 느려. 1배속으로 해줘"),
+  // and a future speed control belongs here rather than in a second player.
   const playNativeAudio = useCallback(async (rate: number) => {
     const ok = await ensureNativeAudioLoaded();
     if (!ok) {
@@ -798,7 +801,6 @@ export default function PronunciationRoute() {
                 hint={hint}
                 nativeAvailable={nativeAvailable}
                 onPlayNative={() => { void playNativeAudio(1.0); }}
-                onPlaySlow={() => { void playNativeAudio(0.5); }}
               />
             </View>
             <RiskNote />
