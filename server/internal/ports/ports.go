@@ -413,6 +413,9 @@ type ColleagueRepo interface {
 	// Linked reports whether the two users are connected (either direction implies
 	// both, given the mirrored-pair invariant).
 	Linked(ctx context.Context, userID, otherID string) (bool, error)
+	// LinkRelation is how the other person relates to this learner, or "" when there is
+	// no link. The detail response needs it and the link row already carries it.
+	LinkRelation(ctx context.Context, userID, otherID string) (colleague.Relation, error)
 	// LinkCount is used to enforce the colleague cap.
 	LinkCount(ctx context.Context, userID string) (int, error)
 	// Unlink removes both rows of the pair.

@@ -367,7 +367,18 @@ export interface Colleague {
   targetLevel?: string; destination?: string; streak?: number;
   activity?: string; activeToday?: boolean; statusHidden?: boolean;
 }
-export interface ColleagueDetail extends Colleague {
+/**
+ * One colleague, in detail.
+ *
+ * `relation` is optional here and required on Colleague, and the difference is not
+ * cosmetic: the list endpoint sends it, and the detail endpoint did not. The type claimed
+ * otherwise, so the screen's label helper indexed into the missing string and took the app
+ * down. The server now sends it — this stays optional because a type is not a runtime
+ * guarantee for a value that crossed a network, and the compiler pointing at every use is
+ * the only thing that keeps the next screen from assuming again.
+ */
+export type ColleagueDetail = Omit<Colleague, 'relation'> & {
+  relation?: ColleagueRelation;
   level?: number; lastSeenAt?: string; activeDates?: string[]; weeklyHidden?: boolean; cheers: Cheer[];
 }
 export type CheerPreset = 'well_done' | 'fighting' | 'streak' | 'rest';

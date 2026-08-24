@@ -160,18 +160,22 @@ func (h *colleagueHandler) detail(w http.ResponseWriter, r *http.Request) {
 	other := r.PathValue("id")
 	ctx := r.Context()
 
-	linked, err := h.repo.Linked(ctx, uid, other)
+	rel, err := h.repo.LinkRelation(ctx, uid, other)
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not load colleague")
 		return
 	}
 	// Not linked → 404, not 403: a 403 would confirm the account exists.
-	if !linked {
+	if rel == "" {
 		httpx.Error(w, http.StatusNotFound, "not found")
 		return
 	}
 
-	out := map[string]any{"id": other, "name": displayName(other)}
+	// `relation` is not optional here, whatever the rest of this map does. The client's
+	// type declares it as always present and its label helper indexes into the string, so
+	// omitting it crashed the colleague screen — the response has to carry what the
+	// contract promises.
+	out := map[string]any{"id": other, "name": displayName(other), "relation": rel}
 	if prof, err := h.users.GetProfile(ctx, other); err == nil && prof != nil {
 		out["targetLevel"] = prof.TargetLevel
 		out["destination"] = prof.Destination

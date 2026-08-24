@@ -21,9 +21,12 @@ export const REL: Record<ColleagueRelation, { labelKey: string; icon: IconName; 
   mentee: { labelKey: 'colleague.relationMentee', icon: 'sprout', bg: colors.blue },
 };
 
-export function RelTag({ relation }: { relation: ColleagueRelation }) {
+/** Nothing renders when the relation is unknown — see ColleagueDetail.relation. Falling
+ *  back to "peer" would state a relationship the server never claimed. */
+export function RelTag({ relation }: { relation?: ColleagueRelation }) {
   const t = useT();
-  const r = REL[relation] ?? REL.peer;
+  const r = relation ? REL[relation] : undefined;
+  if (!r) return null;
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: r.bg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
       <PixelIcon name={r.icon} color={C} size={9} sw={1.8} />

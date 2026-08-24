@@ -93,10 +93,28 @@ func (r *ColleagueRepo) Links(ctx context.Context, userID string) ([]colleague.L
 }
 
 func (r *ColleagueRepo) Linked(ctx context.Context, userID, otherID string) (bool, error) {
-	var n int
+	rel, err := r.LinkRelation(ctx, userID, otherID)
+	return rel != "", err
+}
+
+// LinkRelation is how the other person relates to this learner, or "" when they are not
+// linked at all.
+//
+// Split out from Linked because the link row already carried the relation and Linked threw
+// it away: the detail endpoint then built a response without it, and the client — whose
+// type declares relation as always present — indexed into the missing string and crashed
+// the screen. One query answering both questions is also one fewer round trip.
+func (r *ColleagueRepo) LinkRelation(ctx context.Context, userID, otherID string) (colleague.Relation, error) {
+	var rel string
 	err := r.pool.QueryRow(ctx,
-		`SELECT count(*) FROM colleague_links WHERE owner_id = $1 AND other_id = $2`, userID, otherID).Scan(&n)
-	return n > 0, err
+		`SELECT relation FROM colleague_links WHERE owner_id = $1 AND other_id = $2`, userID, otherID).Scan(&rel)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return "", nil
+	}
+	if err != nil {
+		return "", err
+	}
+	return colleague.Relation(rel), nil
 }
 
 func (r *ColleagueRepo) LinkCount(ctx context.Context, userID string) (int, error) {

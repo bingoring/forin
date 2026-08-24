@@ -208,7 +208,16 @@ export default function ColleagueDetailScreen() {
 }
 
 /** The relation in the reader's language. A function, so it re-resolves per render. */
-function relLabel(t: Translate, rel: ColleagueRelation): string {
+/**
+ * The relation's label, or nothing when there is no relation.
+ *
+ * `rel[0]` on an absent value is what crashed the colleague screen: the detail endpoint did
+ * not send `relation`, the type said it always would, and indexing into undefined threw
+ * before anything rendered. An empty string is dropped by the caller's filter(Boolean), so
+ * the header simply omits the part it cannot say.
+ */
+function relLabel(t: Translate, rel?: ColleagueRelation): string {
+  if (!rel) return '';
   return t(`colleague.relation${rel[0].toUpperCase()}${rel.slice(1)}`);
 }
 
