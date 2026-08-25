@@ -85,3 +85,18 @@ test('the list header height and the scroller offset are one constant', () => {
   expect(src.match(/\b186\b/g)).toHaveLength(2); // the comment and the constant
   expect(src).toMatch(/height:\s*HEADER_H/);
 });
+
+// Both Review Lab blocks must be on the page BEFORE the player has used the
+// feature. Hiding them until there was data is why the tab did not look like the
+// handoff on a fresh account — the feature was invisible until after first use.
+test('the model-answer block still renders with nothing in it', () => {
+  const out = texts(draw(
+    <ModelAnswerBlock summary={{ total: 0, more: 0, groups: [] }} onOpenAll={() => {}} />
+  ));
+  expect(out).toContain('시나리오 모범답안');
+  // It explains how to fill it rather than showing "완료한 시나리오 0개".
+  expect(out.some((x) => x.includes('완료한 시나리오'))).toBe(false);
+  expect(out.some((x) => x.includes('완료하면'))).toBe(true);
+  // And offers no entry into an empty list.
+  expect(out).not.toContain('전체');
+});

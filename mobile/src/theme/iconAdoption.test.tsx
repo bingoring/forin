@@ -80,10 +80,42 @@ test('a colour the artwork cannot become keeps the line icon', () => {
 });
 
 test('a two-state fill keeps the line icon', () => {
-  // The favourites star: filled when pinned, hollow when not. One fixed drawing
-  // cannot say both, which is why the star survives at all.
+  // Any name with a fill is using presence-of-fill to say something one fixed
+  // drawing cannot.
+  expect(artwork(draw(<PixelIcon name="heart" color={colors.ink} fill={colors.pink} />))).toBe('line');
+});
+
+test('every favourites star says its state with a fill', () => {
+  // Lost twice: the codemod dropped `fill` on its way to FIcon, and restoring the
+  // star did not put it back — so a pinned ward showed a hollow star, which reads
+  // as not pinned. The mark is the whole feedback for the toggle.
+  const walkAll = (d: string): string[] => {
+    const o: string[] = [];
+    for (const n of readdirSync(d)) {
+      const p = join(d, n);
+      if (statSync(p).isDirectory()) o.push(...walkAll(p));
+      else if (p.endsWith('.tsx') && !p.includes('.test.')) o.push(p);
+    }
+    return o;
+  };
+  const bare: string[] = [];
+  for (const f of walkAll(join(__dirname, '..'))) {
+    for (const m of readFileSync(f, 'utf8').matchAll(/<PixelIcon\b[^>]*name="star"[^>]*?\/>/gs)) {
+      if (!/fill=/.test(m[0])) bare.push(`${relative(join(__dirname, '..'), f)}: ${m[0].replace(/\s+/g, ' ')}`);
+    }
+  }
+  expect(bare).toEqual([]);
+});
+
+test('the favourites star is never swapped for the reward badge', () => {
+  // The regression this exists for: aliasing star → xp turned every favourite —
+  // the pinned-list heading, each pinned situation, the toggles — into an XP badge.
+  // v25 retires the star as the REWARD symbol (⭐🌟★ → xp), which the reward
+  // surfaces draw directly; favourites is a different mark and stays a star.
+  for (const color of [colors.ink, colors.ink + '44', colors.textFaint]) {
+    expect(artwork(draw(<PixelIcon name="star" color={color} />))).toBe('line');
+  }
   expect(artwork(draw(<PixelIcon name="star" color={colors.ink} fill={colors.yellowDeep} />))).toBe('line');
-  expect(artwork(draw(<PixelIcon name="star" color={colors.ink + '44'} fill="none" />))).toBe('ficon');
 });
 
 test('a name FIcon has no equivalent for keeps the line icon even in ink', () => {

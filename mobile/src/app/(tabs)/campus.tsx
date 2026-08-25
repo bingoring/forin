@@ -261,7 +261,7 @@ export default function Campus() {
                  the chrome to say the same thing. The row's badge says which it is. */
               <View style={{ marginBottom: 16 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-                  <FIcon name="xp" size={14} />
+                  <PixelIcon name="star" color={C} fill={colors.yellowDeep} size={14} sw={2} />
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('campus.favTitle')}</Text>
                 </View>
                 <View style={{ gap: 7 }}>
@@ -343,7 +343,7 @@ function FavStar({ onPress }: { onPress: () => void }) {
       accessibilityState={{ checked: true }}
       accessibilityLabel={t('campus.favRemove')}
     >
-      <FIcon name="xp" size={17} />
+      <PixelIcon name="star" color={C} fill={colors.yellowDeep} size={17} sw={2} />
     </Pressable>
   );
 }

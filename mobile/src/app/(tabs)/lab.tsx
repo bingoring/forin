@@ -204,7 +204,11 @@ export default function Lab() {
 
         {/* 🎙 직접 말하기 연습 — the summary half of the handoff's pair of blocks.
             Shown only once the player has actually spoken something. */}
-        {speak && speak.total > 0 && (
+        {/* Rendered as soon as the summary is KNOWN, empty or not — the handoff has
+            these two blocks on the page, and hiding them until the player has already
+            spoken meant a new user never learned the feature existed. `null` still
+            means unknown (the read failed), and then the block stays absent. */}
+        {speak && (
           <SpeakSummaryBlock
             summary={speak}
             onOpenAll={(sort: 'weak' | 'recent') => router.push(sort === 'weak' ? '/speak?sort=weak' : '/speak?sort=recent')}
@@ -213,7 +217,7 @@ export default function Lab() {
         )}
 
         {/* 📄 시나리오 모범답안 — the other half of the handoff's pair of blocks. */}
-        {models && models.total > 0 && (
+        {models && (
           <ModelAnswerBlock summary={models} onOpenAll={() => router.push('/model-answers')} />
         )}
 

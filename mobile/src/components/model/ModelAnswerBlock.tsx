@@ -26,13 +26,17 @@ export function ModelAnswerBlock({
           <FIcon name="doc" size={13} />
           <Text style={styles.title}>{t('model.blockTitle')}</Text>
           <View style={styles.spacer} />
-          <Pressable onPress={onOpenAll} hitSlop={8} style={styles.allLink}>
-            <Text style={styles.allText}>{t('model.seeAll')}</Text>
-            <PixelIcon name="chevron-right" color={colors.ink} size={10} sw={2} />
-          </Pressable>
+          {summary.total > 0 && (
+            <Pressable onPress={onOpenAll} hitSlop={8} style={styles.allLink}>
+              <Text style={styles.allText}>{t('model.seeAll')}</Text>
+              <PixelIcon name="chevron-right" color={colors.ink} size={10} sw={2} />
+            </Pressable>
+          )}
         </View>
 
-        <Text style={styles.count}>{t('model.scenarioCount', { n: summary.total })}</Text>
+        <Text style={styles.count}>
+          {summary.total > 0 ? t('model.scenarioCount', { n: summary.total }) : t('model.emptyHint')}
+        </Text>
 
         {/* The most recent scenario, always open: the block's whole job is to put
             one worked example in front of the player without a tap. It carries no

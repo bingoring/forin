@@ -31,14 +31,24 @@ export function SpeakSummaryBlock({
           <Text style={styles.title}>{t('speak.blockTitle')}</Text>
           <View style={styles.spacer} />
           {/* 전체 N › — the entry the handoff specifies for this block. */}
-          <Pressable onPress={() => onOpenAll('recent')} hitSlop={8} style={styles.allLink}>
-            <Text style={styles.allText}>{t('speak.seeAll', { n: summary.total })}</Text>
-            <PixelIcon name="chevron-right" color={colors.ink} size={10} sw={2} />
-          </Pressable>
+          {/* The entry is offered only once there is something to browse. */}
+          {summary.total > 0 && (
+            <Pressable onPress={() => onOpenAll('recent')} hitSlop={8} style={styles.allLink}>
+              <Text style={styles.allText}>{t('speak.seeAll', { n: summary.total })}</Text>
+              <PixelIcon name="chevron-right" color={colors.ink} size={10} sw={2} />
+            </Pressable>
+          )}
         </View>
 
         <View style={styles.body}>
-          <BandBar counts={summary} />
+          {summary.total > 0 ? (
+            <BandBar counts={summary} />
+          ) : (
+            // Shown rather than hidden. The block disappearing when there is nothing
+            // in it yet is why this page did not look like the handoff on a fresh
+            // account: the feature was invisible until after you had already used it.
+            <Text style={styles.emptyHint}>{t('speak.listEmptyHint')}</Text>
+          )}
         </View>
 
         {summary.weakest.length > 0 && (
@@ -99,5 +109,6 @@ const styles = StyleSheet.create({
     borderTopColor: colors.ink + '33',
     backgroundColor: colors.cream,
   },
+  emptyHint: { fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 16 },
   weakEntryText: { flex: 1, fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.ink },
 });

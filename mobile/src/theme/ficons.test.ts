@@ -1,7 +1,7 @@
 // The generated icon table must stay identical to the handoff's own file.
 //
 // This is the guard that makes "1:1 port" a checkable claim rather than a promise:
-// it re-parses design-handoff_v23/reference/forin-pixel-icons.jsx and compares
+// it re-parses design-handoff_v25/reference/forin-pixel-icons.jsx and compares
 // every rect. A hand-edit to the generated file, or a handoff bump that nobody
 // regenerated for, fails here — which is the only way either would be noticed,
 // since a wrong coordinate still renders a plausible-looking icon.
@@ -12,7 +12,7 @@ import { FEMOJI, FICONS } from './ficons';
 
 const REF = join(
   __dirname, '..', '..', '..', 'docs', 'dlc', 'projects', 'forin', 'inputs',
-  'design-handoff_v23', 'reference', 'forin-pixel-icons.jsx',
+  'design-handoff_v25', 'reference', 'forin-pixel-icons.jsx',
 );
 
 /** Re-extracts the tables from the reference by running the generator's own
@@ -50,7 +50,7 @@ const handoff = fromHandoff();
 test('the reference file is still readable and carries the whole set', () => {
   // If the handoff's internal layout changes, everything below would compare two
   // empty objects and pass. This is the assertion that stops that.
-  expect(Object.keys(handoff.icons).length).toBe(87);
+  expect(Object.keys(handoff.icons).length).toBe(88); // v25 added ivbag
   expect(Object.keys(handoff.emoji).length).toBeGreaterThan(100);
 });
 

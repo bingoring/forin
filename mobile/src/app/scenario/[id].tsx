@@ -7,6 +7,7 @@
 // effort (pilot: optimistic — full /me gating is a follow-up).
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView, Text, View, type ViewStyle } from 'react-native';
+import { EmojiIcon } from '@/components/EmojiIcon';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
@@ -147,7 +148,11 @@ export default function ScenarioBriefingRoute() {
                       {b.rewards.map((r, i) => (
                         <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 4, borderBottomWidth: i < b.rewards!.length - 1 ? 1.5 : 0, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
                           <View style={{ width: 20, height: 20, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: fs(12) }}>{r.icon}</Text>
+                            {/* The reward icons arrive from content as emoji (⭐ 경험치,
+                                ❤ 환자 만족도, 🎖 부서 진척). EmojiIcon resolves them to the
+                                v25 artwork — the XP badge, the heart, the badge — the same
+                                way the result screen's REWARDS card does. */}
+                            <EmojiIcon emoji={r.icon} size={14} />
                           </View>
                           <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: colors.text }}>{r.label}</Text>
                           <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{r.value}</Text>

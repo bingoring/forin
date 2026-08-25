@@ -12,6 +12,12 @@
 //   tag, share, copy, shift     UI affordances the catalogue does not cover
 //   plus                        FIcon has no plus
 //   crown, shield, sprout, ...  title badges with no FIcon counterpart
+//   star                        the FAVOURITES mark. v25 retires the star as the
+//                               REWARD symbol (⭐🌟★ → xp, now a yellow XP badge),
+//                               and the reward surfaces draw that. Favourites is a
+//                               different thing: it needs filled and unfilled states,
+//                               and aliasing it turned every pin into an XP badge —
+//                               a real regression this table caused once already.
 //
 // The other reason a call site legitimately keeps PixelIcon is COLOUR. FIcon
 // artwork carries its own fixed palette and takes no tint, so anywhere the icon
@@ -78,9 +84,6 @@ export const LINE_TO_FICON: Record<string, string> = {
   map: 'compass',
   // v23 maps 💧 to wave.
   droplet: 'wave',
-  // The star shape is retired outright (v23 02_COMPONENTS: 별 도형 폐기) — every
-  // star becomes the reward gem.
-  star: 'xp',
   flame: 'fire',
 };
 

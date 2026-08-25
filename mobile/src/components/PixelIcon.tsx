@@ -8,6 +8,7 @@ import Svg, { Circle, Path } from 'react-native-svg';
 import { FIcon } from './FIcon';
 import { ficonFor } from '@/theme/lineToFIcon';
 import { colors } from '@/theme/tokens';
+import { inkOpacity } from '@/theme/inkShade';
 
 export type IconName =
   // badges
@@ -446,30 +447,6 @@ function body(name: IconName, color: string): ReactNode {
  * see across a list without looking for it. Defaults to none, so every existing icon is
  * untouched; the Svg's fill is inherited by the paths below.
  */
-// How opaque the v23 artwork is for each de-emphasis colour the app uses.
-//
-// These greys are not different colours — they are the SAME ink, quieter: a faded
-// tab label, a placeholder in an empty state. Fixed-palette artwork expresses that
-// with opacity, and the result is the same icon reading as secondary, which is
-// exactly what the line icon's grey stroke was doing.
-const INK_OPACITY: Record<string, number> = {
-  [colors.ink.toLowerCase()]: 1,
-  [colors.textSoft.toLowerCase()]: 0.62,
-  [colors.textFaint.toLowerCase()]: 0.42,
-};
-
-/** The opacity to draw FIcon artwork at for `color`, or undefined when `color` is
- *  a real colour rather than a shade of ink — an accent, or something light meant
- *  to read on a dark ground, neither of which fixed-palette artwork can become. */
-function inkOpacity(color: string): number | undefined {
-  const c = color.trim().toLowerCase();
-  if (INK_OPACITY[c] !== undefined) return INK_OPACITY[c];
-  // '#2A252244' — ink carrying an alpha suffix, which the app writes as C + '44'.
-  const ink = colors.ink.toLowerCase();
-  if (c.length === 9 && c.startsWith(ink)) return parseInt(c.slice(7), 16) / 255;
-  return undefined;
-}
-
 // PixelIcon is the app's single icon entry point, and since v23 it RESOLVES rather
 // than draws: when the requested name exists in the FIcon set and the requested
 // colour is a shade of ink, it renders the v23 artwork. Everything else keeps the

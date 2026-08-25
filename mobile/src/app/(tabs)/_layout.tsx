@@ -2,14 +2,13 @@ import type { ReactNode } from 'react';
 import type { ColorValue } from 'react-native';
 import { Tabs } from 'expo-router';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { CampusIcon, BoardIcon, LabIcon, MeIcon } from '@/components/TabIcons';
-import { PixelIcon } from '@/components/PixelIcon';
+import { HomeIcon, CampusIcon, BoardIcon, LabIcon, MeIcon } from '@/components/TabIcons';
 import { SheetOverlayHost } from '@/components/SheetOverlay';
 import { t, useLocale, useT } from '@/i18n';
 
 // Bottom nav: 홈 / 커리어 / 상황판 / 리뷰랩 / 프로필. 홈이 최좌측이자 앱의 기본
-// 진입 화면이다(handoff v21) — expo-router가 (tabs)/index.tsx를 첫 탭으로 잡는다. Black-line SVG icons (app's ink-outline
-// style) above the label, active tab on a mint cell.
+// 진입 화면이다(handoff v21) — expo-router가 (tabs)/index.tsx를 첫 탭으로 잡는다.
+// Icons are the v23+ FIcon set (see TabIcons); active tab sits on a mint cell.
 type IconCmp = (p: { color: string; size?: number }) => ReactNode;
 const tabIcon = (Icon: IconCmp) =>
   function TabIcon({ color }: { color: ColorValue }) {
@@ -36,7 +35,7 @@ export default function TabsLayout() {
     >
       <Tabs.Screen
         name="index"
-        options={{ title: t('tab.home'), tabBarIcon: ({ color }) => <PixelIcon name="home" color={color as string} size={22} sw={1.8} /> }}
+        options={{ title: t('tab.home'), tabBarIcon: tabIcon(HomeIcon) }}
       />
       <Tabs.Screen name="campus" options={{ title: t('tab.career'), tabBarIcon: tabIcon(CampusIcon) }} />
       <Tabs.Screen name="board" options={{ title: t('tab.board'), tabBarIcon: tabIcon(BoardIcon) }} />
