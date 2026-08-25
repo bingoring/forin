@@ -1326,6 +1326,85 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/review/model-answers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** One page of every scenario the player has model answers for (ScreenModelAnswerList) */
+        get: {
+            parameters: {
+                query?: {
+                    /** @description recent (최신, default) or needs-work (개선 필요) */
+                    sort?: string;
+                    /** @description page size, default 10, clamped to 50 */
+                    limit?: number;
+                    /** @description groups to skip */
+                    offset?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.modelAnswerPage"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/review/model-answers/summary": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 시나리오 모범답안 summary block (Review Lab): recent scenario expanded, three collapsed, "+ N개 더" */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerSummary"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/route": {
         parameters: {
             query?: never;
@@ -2039,6 +2118,39 @@ export interface components {
             scenariosTotal?: number;
             scenariosWeek?: number;
         };
+        "github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerCard": {
+            createdAt?: string;
+            model?: string;
+            /**
+             * @description Note is the "왜 이 표현이 더 나은가" explanation. Often empty — the block
+             *     simply omits the box then rather than drawing an empty one.
+             */
+            note?: string;
+            said?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup": {
+            cards?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerCard"][];
+            corrections?: number;
+            lastAt?: string;
+            scenarioId?: string;
+            /**
+             * @description Title is "" when the scenario is not in the content set the server is
+             *     serving (an old card whose scenario was renamed or removed). The screen
+             *     falls back to the id rather than showing a blank row.
+             */
+            title?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerSummary": {
+            /** @description Groups is at most ModelAnswerPageSize entries; only the first carries Cards. */
+            groups?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup"][];
+            /**
+             * @description More is what "+ N개 더" says. 0 means the block showed everything and the
+             *     row is omitted — never "+ 0개 더".
+             */
+            more?: number;
+            /** @description Total is every scenario the player has corrections for, not just this page. */
+            total?: number;
+        };
         "github_com_bingoring_forin_server_internal_domain_progress.Progress": {
             level?: number;
             rank?: string;
@@ -2287,6 +2399,10 @@ export interface components {
         };
         "internal_adapters_http.messageReq": {
             text?: string;
+        };
+        "internal_adapters_http.modelAnswerPage": {
+            groups?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup"][];
+            total?: number;
         };
         "internal_adapters_http.phonemeTipDTO": {
             ipa?: string;

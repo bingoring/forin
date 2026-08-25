@@ -205,6 +205,43 @@ func (f *fakeSpeechRepo) UpdateReferenceAudio(ctx context.Context, sentenceKey s
 // that to 403 (business-rules §2), not leak which case it was.
 type fakeReviewRepo struct {
 	owned map[string]string // cardID -> ownerUserID
+	// The 시나리오 모범답안 fixtures: `groups` is the page the repo hands back and
+	// `cards` its corrections, keyed by scenario id.
+	groups     []progress.ModelAnswerGroup
+	groupTotal int
+	cards      map[string][]progress.ModelAnswerCard
+	// cardCalls records the scenario ids each ListModelAnswerCards call asked
+	// for, so a test can assert the summary fetches ONE group's cards.
+	cardCalls [][]string
+	needsWork []bool
+}
+
+func (f *fakeReviewRepo) ListModelAnswerScenarios(ctx context.Context, userID string, needsWorkFirst bool, limit, offset int) ([]progress.ModelAnswerGroup, int, error) {
+	f.needsWork = append(f.needsWork, needsWorkFirst)
+	g := f.groups
+	if offset >= len(g) {
+		return nil, 0, nil
+	}
+	g = g[offset:]
+	if len(g) > limit {
+		g = g[:limit]
+	}
+	// Copy: the handler writes Cards onto the rows it gets back, and a fake that
+	// handed out its own slice would accumulate cards across calls.
+	out := make([]progress.ModelAnswerGroup, len(g))
+	copy(out, g)
+	return out, f.groupTotal, nil
+}
+
+func (f *fakeReviewRepo) ListModelAnswerCards(ctx context.Context, userID string, scenarioIDs []string) (map[string][]progress.ModelAnswerCard, error) {
+	f.cardCalls = append(f.cardCalls, scenarioIDs)
+	out := map[string][]progress.ModelAnswerCard{}
+	for _, id := range scenarioIDs {
+		if c, ok := f.cards[id]; ok {
+			out[id] = c
+		}
+	}
+	return out, nil
 }
 
 func (f *fakeReviewRepo) DueCards(ctx context.Context, userID string, today time.Time, limit int) ([]progress.ReviewCard, error) {

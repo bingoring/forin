@@ -55,3 +55,62 @@ SELECT mission_id FROM hidden_mission_progress WHERE user_id = $1 ORDER BY found
 -- name: RecordMission :exec
 INSERT INTO hidden_mission_progress (user_id, mission_id) VALUES ($1, $2)
 ON CONFLICT (user_id, mission_id) DO NOTHING;
+
+-- name: ListModelAnswerScenariosRecent :many
+-- 시나리오 모범답안, grouped by the scenario the corrections came from
+-- (04_SCREENS ⑨). One row per scenario, newest activity first.
+--
+-- source <> 'grade' is the whole point of the grouping: a 'grade' card is a
+-- "you could have said this" suggestion for a sentence the learner never spoke,
+-- so it has no 내 답변 to strike through and does not belong in a block built on
+-- 내 답변 vs 모범. Everything else is a real correction (the same rule the app's
+-- faceOf() applies when drawing a card).
+--
+-- scenario_id <> '' drops cards made outside a scenario: they cannot be grouped
+-- under one, and a group keyed on '' would collect unrelated cards together.
+--
+-- `total` rides along on every row so the list's count needs no second query.
+WITH grouped AS (
+    SELECT scenario_id,
+           COUNT(*)::int  AS corrections,
+           MAX(created_at)::timestamptz AS last_at
+      FROM review_cards
+     WHERE user_id = $1 AND scenario_id <> '' AND source <> 'grade'
+     GROUP BY scenario_id
+)
+SELECT g.scenario_id, g.corrections, g.last_at,
+       COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM grouped) AS total
+  FROM grouped g
+  LEFT JOIN scenarios s ON s.id = g.scenario_id
+ ORDER BY g.last_at DESC
+ LIMIT $2 OFFSET $3;
+
+-- name: ListModelAnswerScenariosNeedsWork :many
+-- 개선 필요: most corrections first. Ties break by recency so two scenarios with
+-- the same count are still in a stable, meaningful order. Same projection as the
+-- recent sort so one repo mapper serves both.
+WITH grouped AS (
+    SELECT scenario_id,
+           COUNT(*)::int  AS corrections,
+           MAX(created_at)::timestamptz AS last_at
+      FROM review_cards
+     WHERE user_id = $1 AND scenario_id <> '' AND source <> 'grade'
+     GROUP BY scenario_id
+)
+SELECT g.scenario_id, g.corrections, g.last_at,
+       COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM grouped) AS total
+  FROM grouped g
+  LEFT JOIN scenarios s ON s.id = g.scenario_id
+ ORDER BY g.corrections DESC, g.last_at DESC
+ LIMIT $2 OFFSET $3;
+
+-- name: ListModelAnswerCards :many
+-- The cards for a page of scenarios, fetched in ONE query rather than per group:
+-- a page of ten groups would otherwise be ten round trips, and the block's most
+-- recent group alone would be a second one.
+SELECT scenario_id, front, back, note, created_at
+  FROM review_cards
+ WHERE user_id = $1 AND scenario_id = ANY(sqlc.arg(scenario_ids)::text[]) AND source <> 'grade'
+ ORDER BY scenario_id, created_at;

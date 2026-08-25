@@ -410,3 +410,74 @@ func (r *ProgressRepo) ApplyReputation(ctx context.Context, userID string, dim r
 		userID, string(dim), economy.Active.ReputationDefault, delta)
 	return err
 }
+
+// ListModelAnswerScenarios returns one page of the scenarios the player has
+// corrections for, plus the unpaged total.
+//
+// weakestFirst/needsWorkFirst are separate SQL statements rather than one with a
+// computed ORDER BY: an ORDER BY built from a parameter cannot use an index and
+// sqlc cannot type-check it.
+func (r *ProgressRepo) ListModelAnswerScenarios(ctx context.Context, userID string, needsWorkFirst bool, limit, offset int) ([]progress.ModelAnswerGroup, int, error) {
+	type raw struct {
+		scenarioID, title string
+		corrections       int
+		lastAt            time.Time
+		total             int
+	}
+	var rows []raw
+	if needsWorkFirst {
+		got, err := r.q.ListModelAnswerScenariosNeedsWork(ctx, sqlc.ListModelAnswerScenariosNeedsWorkParams{
+			UserID: userID, Limit: int32(limit), Offset: int32(offset),
+		})
+		if err != nil {
+			return nil, 0, err
+		}
+		for _, d := range got {
+			rows = append(rows, raw{d.ScenarioID, d.Title, d.Corrections, d.LastAt.Time, int(d.Total)})
+		}
+	} else {
+		got, err := r.q.ListModelAnswerScenariosRecent(ctx, sqlc.ListModelAnswerScenariosRecentParams{
+			UserID: userID, Limit: int32(limit), Offset: int32(offset),
+		})
+		if err != nil {
+			return nil, 0, err
+		}
+		for _, d := range got {
+			rows = append(rows, raw{d.ScenarioID, d.Title, d.Corrections, d.LastAt.Time, int(d.Total)})
+		}
+	}
+
+	// total rides on every row, so an empty page (offset past the end) reports 0.
+	// The caller already holds the real total from the first page.
+	total := 0
+	out := make([]progress.ModelAnswerGroup, 0, len(rows))
+	for _, d := range rows {
+		total = d.total
+		out = append(out, progress.ModelAnswerGroup{
+			ScenarioID: d.scenarioID, Title: d.title, Corrections: d.corrections, LastAt: d.lastAt,
+		})
+	}
+	return out, total, nil
+}
+
+// ListModelAnswerCards fetches the corrections for a whole page of scenarios in
+// one query, keyed by scenario id.
+func (r *ProgressRepo) ListModelAnswerCards(ctx context.Context, userID string, scenarioIDs []string) (map[string][]progress.ModelAnswerCard, error) {
+	if len(scenarioIDs) == 0 {
+		// = ANY('{}') is a valid but pointless round trip.
+		return map[string][]progress.ModelAnswerCard{}, nil
+	}
+	rows, err := r.q.ListModelAnswerCards(ctx, sqlc.ListModelAnswerCardsParams{
+		UserID: userID, ScenarioIds: scenarioIDs,
+	})
+	if err != nil {
+		return nil, err
+	}
+	out := make(map[string][]progress.ModelAnswerCard, len(scenarioIDs))
+	for _, d := range rows {
+		out[d.ScenarioID] = append(out[d.ScenarioID], progress.ModelAnswerCard{
+			Said: d.Front, Model: d.Back, Note: d.Note, CreatedAt: d.CreatedAt.Time,
+		})
+	}
+	return out, nil
+}

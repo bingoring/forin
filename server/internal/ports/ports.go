@@ -58,6 +58,13 @@ type ReviewRepo interface {
 	SaveSchedule(ctx context.Context, cardID string, s progress.Schedule, masteryPips int) error
 	// CreateCard inserts a card + its initial (due-today) schedule, returns the card id.
 	CreateCard(ctx context.Context, c NewReviewCard) (string, error)
+	// ListModelAnswerScenarios returns one page of the scenarios the player has
+	// corrections for, WITHOUT their cards, plus the unpaged total.
+	// needsWorkFirst selects the sort (개선 필요 / 최신).
+	ListModelAnswerScenarios(ctx context.Context, userID string, needsWorkFirst bool, limit, offset int) (groups []progress.ModelAnswerGroup, total int, err error)
+	// ListModelAnswerCards returns the corrections for the given scenarios,
+	// keyed by scenario id — one query for a whole page rather than one per group.
+	ListModelAnswerCards(ctx context.Context, userID string, scenarioIDs []string) (map[string][]progress.ModelAnswerCard, error)
 }
 
 // NewReviewCard is the input for creating a review card (e.g. from an AI correction).

@@ -101,6 +101,12 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /attempts", auth(http.HandlerFunc(ph.attempt)))
 	mux.Handle("GET /me/review", auth(http.HandlerFunc(ph.due)))
 	mux.Handle("POST /me/review/{id}/grade", auth(http.HandlerFunc(ph.grade)))
+	// 시나리오 모범답안 — the summary block in Review Lab and its full list.
+	// The summary route is registered before the bare one so it is not swallowed
+	// by it; net/http's mux picks the more specific pattern regardless, but the
+	// order also documents which is which.
+	mux.Handle("GET /me/review/model-answers/summary", auth(http.HandlerFunc(ph.modelAnswerSummary)))
+	mux.Handle("GET /me/review/model-answers", auth(http.HandlerFunc(ph.modelAnswers)))
 
 	// Access — what this learner may enter (kept out of the cached interior payload).
 	acc := &accessHandler{content: d.Content, progress: d.Progress, users: d.Users}

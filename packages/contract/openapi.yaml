@@ -229,6 +229,59 @@ components:
         scenariosWeek:
           type: integer
       type: object
+    github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerCard:
+      properties:
+        createdAt:
+          type: string
+        model:
+          type: string
+        note:
+          description: |-
+            Note is the "왜 이 표현이 더 나은가" explanation. Often empty — the block
+            simply omits the box then rather than drawing an empty one.
+          type: string
+        said:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup:
+      properties:
+        cards:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerCard'
+          type: array
+          uniqueItems: false
+        corrections:
+          type: integer
+        lastAt:
+          type: string
+        scenarioId:
+          type: string
+        title:
+          description: |-
+            Title is "" when the scenario is not in the content set the server is
+            serving (an old card whose scenario was renamed or removed). The screen
+            falls back to the id rather than showing a blank row.
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerSummary:
+      properties:
+        groups:
+          description: Groups is at most ModelAnswerPageSize entries; only the first
+            carries Cards.
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup'
+          type: array
+          uniqueItems: false
+        more:
+          description: |-
+            More is what "+ N개 더" says. 0 means the block showed everything and the
+            row is omitted — never "+ 0개 더".
+          type: integer
+        total:
+          description: Total is every scenario the player has corrections for, not
+            just this page.
+          type: integer
+      type: object
     github_com_bingoring_forin_server_internal_domain_progress.Progress:
       properties:
         level:
@@ -651,6 +704,16 @@ components:
       properties:
         text:
           type: string
+      type: object
+    internal_adapters_http.modelAnswerPage:
+      properties:
+        groups:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup'
+          type: array
+          uniqueItems: false
+        total:
+          type: integer
       type: object
     internal_adapters_http.phonemeTipDTO:
       properties:
@@ -1379,6 +1442,51 @@ paths:
       security:
       - Bearer: []
       summary: Grade a review card (SM-2 spaced repetition)
+      tags:
+      - review
+  /me/review/model-answers:
+    get:
+      parameters:
+      - description: recent (최신, default) or needs-work (개선 필요)
+        in: query
+        name: sort
+        schema:
+          type: string
+      - description: page size, default 10, clamped to 50
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: groups to skip
+        in: query
+        name: offset
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.modelAnswerPage'
+          description: OK
+      security:
+      - Bearer: []
+      summary: One page of every scenario the player has model answers for (ScreenModelAnswerList)
+      tags:
+      - review
+  /me/review/model-answers/summary:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerSummary'
+          description: OK
+      security:
+      - Bearer: []
+      summary: '시나리오 모범답안 summary block (Review Lab): recent scenario expanded, three
+        collapsed, "+ N개 더"'
       tags:
       - review
   /me/route:

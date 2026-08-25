@@ -1,9 +1,12 @@
 package http
 
 import (
-	"github.com/bingoring/forin/server/internal/i18n"
+	"log/slog"
 	"net/http"
+	"strconv"
 	"time"
+
+	"github.com/bingoring/forin/server/internal/i18n"
 
 	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/progress"
@@ -242,4 +245,111 @@ type attemptReq struct {
 
 type gradeReq struct {
 	Grade string `json:"grade"`
+}
+
+// modelAnswerListLimit is the page size ScreenModelAnswerList asks for when it
+// sends none. Groups carry their cards, so a page is heavier than a flat row
+// list — small pages keep the first paint fast and infinite scroll fetches more.
+const modelAnswerListLimit = 10
+
+// @Summary 시나리오 모범답안 summary block (Review Lab): recent scenario expanded, three collapsed, "+ N개 더"
+// @Tags review
+// @Security Bearer
+// @Success 200 {object} progress.ModelAnswerSummary
+// @Router /me/review/model-answers/summary [get]
+func (h *progressHandler) modelAnswerSummary(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	ctx := r.Context()
+
+	// Exactly the four groups the block has room for — asking for more would buy
+	// rows it cannot draw.
+	groups, total, err := h.review.ListModelAnswerScenarios(ctx, uid, false, progress.ModelAnswerPageSize, 0)
+	if err != nil {
+		slog.Error("review: model-answer summary failed", "err", err)
+		httpx.Error(w, http.StatusInternalServerError, "could not load the model answers")
+		return
+	}
+	// Cards only for the group that is actually expanded. Fetching all four
+	// groups' cards would be four times the payload for one visible panel.
+	var cards []progress.ModelAnswerCard
+	if len(groups) > 0 {
+		byScenario, err := h.review.ListModelAnswerCards(ctx, uid, []string{groups[0].ScenarioID})
+		if err != nil {
+			slog.Error("review: model-answer cards failed", "err", err)
+			httpx.Error(w, http.StatusInternalServerError, "could not load the model answers")
+			return
+		}
+		cards = byScenario[groups[0].ScenarioID]
+	}
+	out := progress.BuildModelAnswerSummary(groups, total, cards)
+	if out.Groups == nil {
+		out.Groups = []progress.ModelAnswerGroup{}
+	}
+	httpx.JSON(w, http.StatusOK, out)
+}
+
+// modelAnswerPage is one page of ScreenModelAnswerList. Every group carries its
+// cards here — unlike the summary block, each row on this screen is expandable,
+// and a per-row fetch on tap would make the list feel broken on a slow network.
+type modelAnswerPage struct {
+	Groups []progress.ModelAnswerGroup `json:"groups"`
+	Total  int                         `json:"total"`
+}
+
+// @Summary One page of every scenario the player has model answers for (ScreenModelAnswerList)
+// @Tags review
+// @Security Bearer
+// @Param sort query string false "recent (최신, default) or needs-work (개선 필요)"
+// @Param limit query int false "page size, default 10, clamped to 50"
+// @Param offset query int false "groups to skip"
+// @Success 200 {object} modelAnswerPage
+// @Router /me/review/model-answers [get]
+func (h *progressHandler) modelAnswers(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	ctx := r.Context()
+	// Anything other than an explicit "needs-work" is the 최신 default: an
+	// unrecognized value must not silently reorder the screen.
+	needsWork := r.URL.Query().Get("sort") == "needs-work"
+	limit := modelAnswerListLimit
+	if v := r.URL.Query().Get("limit"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil && n > 0 {
+			limit = n
+		}
+	}
+	// Clamped, not rejected: an over-large page is a client bug that should
+	// degrade to a bounded page rather than a 400 that leaves the list stuck.
+	if limit > 50 {
+		limit = 50
+	}
+	offset := 0
+	if v := r.URL.Query().Get("offset"); v != "" {
+		if n, err := strconv.Atoi(v); err == nil && n > 0 {
+			offset = n
+		}
+	}
+
+	groups, total, err := h.review.ListModelAnswerScenarios(ctx, uid, needsWork, limit, offset)
+	if err != nil {
+		slog.Error("review: model-answer list failed", "err", err)
+		httpx.Error(w, http.StatusInternalServerError, "could not load the model answers")
+		return
+	}
+	if len(groups) > 0 {
+		ids := make([]string, 0, len(groups))
+		for _, g := range groups {
+			ids = append(ids, g.ScenarioID)
+		}
+		byScenario, err := h.review.ListModelAnswerCards(ctx, uid, ids)
+		if err != nil {
+			slog.Error("review: model-answer cards failed", "err", err)
+			httpx.Error(w, http.StatusInternalServerError, "could not load the model answers")
+			return
+		}
+		for i := range groups {
+			groups[i].Cards = byScenario[groups[i].ScenarioID]
+		}
+	} else {
+		groups = []progress.ModelAnswerGroup{}
+	}
+	httpx.JSON(w, http.StatusOK, modelAnswerPage{Groups: groups, Total: total})
 }

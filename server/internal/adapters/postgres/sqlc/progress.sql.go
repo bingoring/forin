@@ -205,6 +205,187 @@ func (q *Queries) InsertAttempt(ctx context.Context, arg InsertAttemptParams) er
 	return err
 }
 
+const listModelAnswerCards = `-- name: ListModelAnswerCards :many
+SELECT scenario_id, front, back, note, created_at
+  FROM review_cards
+ WHERE user_id = $1 AND scenario_id = ANY($2::text[]) AND source <> 'grade'
+ ORDER BY scenario_id, created_at
+`
+
+type ListModelAnswerCardsParams struct {
+	UserID      string   `json:"user_id"`
+	ScenarioIds []string `json:"scenario_ids"`
+}
+
+type ListModelAnswerCardsRow struct {
+	ScenarioID string             `json:"scenario_id"`
+	Front      string             `json:"front"`
+	Back       string             `json:"back"`
+	Note       string             `json:"note"`
+	CreatedAt  pgtype.Timestamptz `json:"created_at"`
+}
+
+// The cards for a page of scenarios, fetched in ONE query rather than per group:
+// a page of ten groups would otherwise be ten round trips, and the block's most
+// recent group alone would be a second one.
+func (q *Queries) ListModelAnswerCards(ctx context.Context, arg ListModelAnswerCardsParams) ([]ListModelAnswerCardsRow, error) {
+	rows, err := q.db.Query(ctx, listModelAnswerCards, arg.UserID, arg.ScenarioIds)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListModelAnswerCardsRow
+	for rows.Next() {
+		var i ListModelAnswerCardsRow
+		if err := rows.Scan(
+			&i.ScenarioID,
+			&i.Front,
+			&i.Back,
+			&i.Note,
+			&i.CreatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listModelAnswerScenariosNeedsWork = `-- name: ListModelAnswerScenariosNeedsWork :many
+WITH grouped AS (
+    SELECT scenario_id,
+           COUNT(*)::int  AS corrections,
+           MAX(created_at)::timestamptz AS last_at
+      FROM review_cards
+     WHERE user_id = $1 AND scenario_id <> '' AND source <> 'grade'
+     GROUP BY scenario_id
+)
+SELECT g.scenario_id, g.corrections, g.last_at,
+       COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM grouped) AS total
+  FROM grouped g
+  LEFT JOIN scenarios s ON s.id = g.scenario_id
+ ORDER BY g.corrections DESC, g.last_at DESC
+ LIMIT $2 OFFSET $3
+`
+
+type ListModelAnswerScenariosNeedsWorkParams struct {
+	UserID string `json:"user_id"`
+	Limit  int32  `json:"limit"`
+	Offset int32  `json:"offset"`
+}
+
+type ListModelAnswerScenariosNeedsWorkRow struct {
+	ScenarioID  string             `json:"scenario_id"`
+	Corrections int                `json:"corrections"`
+	LastAt      pgtype.Timestamptz `json:"last_at"`
+	Title       string             `json:"title"`
+	Total       int                `json:"total"`
+}
+
+// 개선 필요: most corrections first. Ties break by recency so two scenarios with
+// the same count are still in a stable, meaningful order. Same projection as the
+// recent sort so one repo mapper serves both.
+func (q *Queries) ListModelAnswerScenariosNeedsWork(ctx context.Context, arg ListModelAnswerScenariosNeedsWorkParams) ([]ListModelAnswerScenariosNeedsWorkRow, error) {
+	rows, err := q.db.Query(ctx, listModelAnswerScenariosNeedsWork, arg.UserID, arg.Limit, arg.Offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListModelAnswerScenariosNeedsWorkRow
+	for rows.Next() {
+		var i ListModelAnswerScenariosNeedsWorkRow
+		if err := rows.Scan(
+			&i.ScenarioID,
+			&i.Corrections,
+			&i.LastAt,
+			&i.Title,
+			&i.Total,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listModelAnswerScenariosRecent = `-- name: ListModelAnswerScenariosRecent :many
+WITH grouped AS (
+    SELECT scenario_id,
+           COUNT(*)::int  AS corrections,
+           MAX(created_at)::timestamptz AS last_at
+      FROM review_cards
+     WHERE user_id = $1 AND scenario_id <> '' AND source <> 'grade'
+     GROUP BY scenario_id
+)
+SELECT g.scenario_id, g.corrections, g.last_at,
+       COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM grouped) AS total
+  FROM grouped g
+  LEFT JOIN scenarios s ON s.id = g.scenario_id
+ ORDER BY g.last_at DESC
+ LIMIT $2 OFFSET $3
+`
+
+type ListModelAnswerScenariosRecentParams struct {
+	UserID string `json:"user_id"`
+	Limit  int32  `json:"limit"`
+	Offset int32  `json:"offset"`
+}
+
+type ListModelAnswerScenariosRecentRow struct {
+	ScenarioID  string             `json:"scenario_id"`
+	Corrections int                `json:"corrections"`
+	LastAt      pgtype.Timestamptz `json:"last_at"`
+	Title       string             `json:"title"`
+	Total       int                `json:"total"`
+}
+
+// 시나리오 모범답안, grouped by the scenario the corrections came from
+// (04_SCREENS ⑨). One row per scenario, newest activity first.
+//
+// source <> 'grade' is the whole point of the grouping: a 'grade' card is a
+// "you could have said this" suggestion for a sentence the learner never spoke,
+// so it has no 내 답변 to strike through and does not belong in a block built on
+// 내 답변 vs 모범. Everything else is a real correction (the same rule the app's
+// faceOf() applies when drawing a card).
+//
+// scenario_id <> ” drops cards made outside a scenario: they cannot be grouped
+// under one, and a group keyed on ” would collect unrelated cards together.
+//
+// `total` rides along on every row so the list's count needs no second query.
+func (q *Queries) ListModelAnswerScenariosRecent(ctx context.Context, arg ListModelAnswerScenariosRecentParams) ([]ListModelAnswerScenariosRecentRow, error) {
+	rows, err := q.db.Query(ctx, listModelAnswerScenariosRecent, arg.UserID, arg.Limit, arg.Offset)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListModelAnswerScenariosRecentRow
+	for rows.Next() {
+		var i ListModelAnswerScenariosRecentRow
+		if err := rows.Scan(
+			&i.ScenarioID,
+			&i.Corrections,
+			&i.LastAt,
+			&i.Title,
+			&i.Total,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const recordMission = `-- name: RecordMission :exec
 INSERT INTO hidden_mission_progress (user_id, mission_id) VALUES ($1, $2)
 ON CONFLICT (user_id, mission_id) DO NOTHING

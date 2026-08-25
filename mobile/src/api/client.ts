@@ -311,6 +311,41 @@ export interface SpeakSummary {
 /** ScreenSpeakList's segmented sort: 약한 순 / 최신. */
 export type SpeakSort = 'weak' | 'recent';
 
+/** One correction as the 시나리오 모범답안 block draws it: 내 답변 struck through
+ *  against the 모범, with the "왜?" note. `said`/`model` rather than front/back —
+ *  in this block their meaning is fixed and a reader should not have to know
+ *  which way round the storage columns are. */
+export interface ModelAnswerCard {
+  said: string;
+  model: string;
+  /** Often absent; the block omits the box rather than drawing an empty one. */
+  note?: string;
+  createdAt: string;
+}
+
+/** One scenario's worth of corrections. `cards` is absent on a collapsed row. */
+export interface ModelAnswerGroup {
+  scenarioId: string;
+  /** '' when the scenario is no longer in the served content set; the row falls
+   *  back to the id rather than rendering blank. */
+  title: string;
+  corrections: number;
+  lastAt: string;
+  cards?: ModelAnswerCard[];
+}
+
+/** GET /me/review/model-answers/summary — the Review Lab block. */
+export interface ModelAnswerSummary {
+  total: number;
+  /** At most four: the expanded one plus three collapsed. */
+  groups: ModelAnswerGroup[];
+  /** What "+ N개 더" says. 0 means the block showed everything. */
+  more: number;
+}
+
+/** ScreenModelAnswerList's segmented sort: 최신 / 개선 필요. */
+export type ModelAnswerSort = 'recent' | 'needs-work';
+
 // One row of GET /speech/attempts?text=…&limit=… (oldest first, business-rules R3).
 export interface SpeechAttemptRow {
   id?: string;
@@ -743,6 +778,23 @@ export const api = {
     const { data } = await http.get(`/conversation/${encodeURIComponent(sessionId)}/speech-review`);
     const d = data as Partial<SessionSpeechReview> | null;
     return { sentences: d?.sentences ?? [], average: d?.average ?? 0, weakest: d?.weakest ?? [] };
+  },
+
+  /** The 시나리오 모범답안 summary block. */
+  async modelAnswerSummary(): Promise<ModelAnswerSummary> {
+    const { data } = await http.get('/me/review/model-answers/summary');
+    const d = data as Partial<ModelAnswerSummary> | null;
+    return { total: d?.total ?? 0, groups: d?.groups ?? [], more: d?.more ?? 0 };
+  },
+
+  /** One page of ScreenModelAnswerList. Every group carries its cards, so a row
+   *  expands without another request. */
+  async modelAnswers(opts: { sort: ModelAnswerSort; limit?: number; offset?: number }): Promise<{ groups: ModelAnswerGroup[]; total: number }> {
+    const { data } = await http.get('/me/review/model-answers', {
+      params: { sort: opts.sort, limit: opts.limit ?? 10, offset: opts.offset ?? 0 },
+    });
+    const d = data as { groups?: ModelAnswerGroup[]; total?: number } | null;
+    return { groups: d?.groups ?? [], total: d?.total ?? 0 };
   },
 
   /** Score-band summary for the Review Lab 🎙 직접 말하기 연습 block. */

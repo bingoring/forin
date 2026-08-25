@@ -9,9 +9,10 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
-import { api, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
+import { api, type ModelAnswerSummary, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { SpeakSummaryBlock } from '@/components/speak/SpeakSummaryBlock';
+import { ModelAnswerBlock } from '@/components/model/ModelAnswerBlock';
 import { faceOf } from '@/data/reviewCardFace';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
@@ -45,6 +46,10 @@ function splitTag(t: Translate, topicTag: string): { dept: string; tag: string }
 // The 말하기 chip's id. A sentinel rather than a real filter value — see where
 // `cats` is built for why this chip navigates instead of filtering.
 const SPEAK_CHIP = '__SPEAK__';
+// Same sentinel treatment for 모범답안: it is in the handoff's chip row but its
+// items are scenario groups, not PhraseCards, so filtering the card list to them
+// would always show nothing. The chip opens the list screen instead.
+const MODEL_CHIP = '__MODEL__';
 
 export default function Lab() {
   const t = useT();
@@ -58,6 +63,9 @@ export default function Lab() {
   // is simply absent then, rather than drawing an empty distribution that reads
   // as "you scored nothing".
   const [speak, setSpeak] = useState<SpeakSummary | null>(null);
+  // The 📄 시나리오 모범답안 summary. Same rule as `speak`: null means unknown or
+  // unavailable, and the block is absent rather than drawn empty.
+  const [models, setModels] = useState<ModelAnswerSummary | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -70,9 +78,18 @@ export default function Lab() {
       api.speakSummary()
         .then((sum) => { if (alive) setSpeak(sum); })
         .catch(() => { /* block stays absent */ });
+      api.modelAnswerSummary()
+        .then((sum) => { if (alive) setModels(sum); })
+        .catch(() => { /* block stays absent */ });
       return () => { alive = false; };
     }, []),
   );
+
+  const openChip = (id: string) => {
+    if (id === SPEAK_CHIP) { router.push('/speak?sort=weak'); return; }
+    if (id === MODEL_CHIP) { router.push('/model-answers'); return; }
+    setFilter(id);
+  };
 
   const practiseSentence = (s: SpokenSentence) => {
     // One single template literal — expo-router's typed-routes generator matches
@@ -104,8 +121,9 @@ export default function Lab() {
       // filtering to them would always show an empty list. Tapping it opens the
       // list screen the handoff says 100+ items must live on.
       ...(speak && speak.total > 0 ? [{ id: SPEAK_CHIP, label: t('speak.blockTitle'), count: speak.total }] : []),
+      ...(models && models.total > 0 ? [{ id: MODEL_CHIP, label: t('model.blockTitle'), count: models.total }] : []),
     ];
-  }, [cards, speak]);
+  }, [cards, speak, models]);
   const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(t, c.topicTag).dept === filter);
 
   if (state !== 'ok') {
@@ -193,6 +211,11 @@ export default function Lab() {
           />
         )}
 
+        {/* 📄 시나리오 모범답안 — the other half of the handoff's pair of blocks. */}
+        {models && models.total > 0 && (
+          <ModelAnswerBlock summary={models} onOpenAll={() => router.push('/model-answers')} />
+        )}
+
         {/* category filter */}
         {cats.length > 1 && (
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
@@ -200,7 +223,7 @@ export default function Lab() {
               const active = filter === c.id;
               const catColor = c.id === 'ALL' ? C : toneOf(c.id);
               return (
-                <Pressable key={c.id} onPress={() => (c.id === SPEAK_CHIP ? router.push('/speak?sort=weak') : setFilter(c.id))}>
+                <Pressable key={c.id} onPress={() => openChip(c.id)}>
                   <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
                       <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: active ? C : C }}>{c.label}</Text>

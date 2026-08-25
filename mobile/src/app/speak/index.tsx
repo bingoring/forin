@@ -148,7 +148,7 @@ export default function SpeakList() {
               <Pressable onPress={() => setDept(item)}>
                 <View style={[styles.chip, active && styles.chipActive]}>
                   {active && <PixelIcon name="check" color={colors.ink} size={9} sw={2.2} />}
-                  <Text style={styles.chipText}>{item || t('speak.allDepts')}</Text>
+                  <Text style={styles.chipText}>{item || t('list.allDepts')}</Text>
                 </View>
               </Pressable>
             );
@@ -190,7 +190,7 @@ export default function SpeakList() {
                 <View style={styles.pips}>
                   {[0, 1, 2].map((i) => <View key={i} style={styles.pip} />)}
                 </View>
-                <Text style={styles.footerText}>{t('speak.loading')}</Text>
+                <Text style={styles.footerText}>{t('list.loading')}</Text>
               </View>
             ) : null
           }
