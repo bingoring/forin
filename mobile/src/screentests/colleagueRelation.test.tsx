@@ -1,5 +1,13 @@
 // The colleague screen must survive a response that omits `relation`.
 //
+// Lives here, NOT beside the screen it tests, and that is not a style choice:
+// expo-router bundles every .ts/.tsx under the app root as a route
+// (expo-router/_ctx.js matches `.*\.[tj]sx?$`, excluding only +api/+html/
+// +middleware). A test file inside src/app therefore ships in the app bundle,
+// and its top-level jest.mock calls crash the app on launch with
+// "Property 'jest' doesn't exist" — before any screen renders. Tests that must
+// import a route belong outside src/app; routeHygiene.test.ts enforces it.
+//
 // This is the crash: the detail endpoint built its JSON as a map and never set `relation`,
 // while the client's type declared it as always present. The label helper did
 // `rel[0].toUpperCase()`, which throws on undefined — before anything rendered, so the
