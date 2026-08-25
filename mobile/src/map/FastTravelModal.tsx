@@ -2,7 +2,9 @@
 import { Modal, Pressable, Text, View } from 'react-native';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import type { Room } from '@engine';
-import { PixelIcon, iconFor } from '@/components/PixelIcon';
+import { PixelIcon } from '@/components/PixelIcon';
+import { EmojiIcon } from '@/components/EmojiIcon';
+import { artFor } from '@/theme/emojiIcon';
 
 export function FastTravelModal({
   visible,
@@ -57,14 +59,11 @@ export function FastTravelModal({
   );
 }
 
-// Same bridge as the elevator's floor list: fixture emoji -> line icon, with a
-// visible fallback rather than a blank when a mapping is missing.
+// Same bridge as the elevator's floor list, through the shared resolver.
 function rowIcon(emoji?: string) {
   if (!emoji) return null;
-  const name = iconFor(emoji);
-  if (!name) {
-    if (__DEV__) console.warn(`[map] no PixelIcon mapping for row emoji ${emoji} — add it to EMOJI_ICON`);
-    return <Text style={{ fontSize: typeScale.body }}>{emoji}</Text>;
+  if (__DEV__ && !artFor(emoji)) {
+    console.warn(`[map] no icon for row emoji ${emoji} — add it to FEMOJI's tier or EMOJI_ICON`);
   }
-  return <PixelIcon name={name} color={colors.ink} size={16} sw={1.8} />;
+  return <EmojiIcon emoji={emoji} size={16} sw={1.8} />;
 }

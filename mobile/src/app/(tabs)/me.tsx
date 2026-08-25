@@ -8,7 +8,8 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
-import { PixelIcon, iconFor } from '@/components/PixelIcon';
+import { PixelIcon } from '@/components/PixelIcon';
+import { EmojiIcon } from '@/components/EmojiIcon';
 import { AnimatedFace } from '@engine';
 import { api, type Colleague, type GrowthStats, type InviteCode, type Progress } from '@/api/client';
 import { signOut } from '@/lib/auth';
@@ -174,9 +175,8 @@ export default function Me() {
     const tdef = titles.find((x) => x.id === id);
     if (!tdef) return;
     const isEquipped = equipped === id;
-    const tIc = iconFor(tdef.emoji);
     setSheet({
-      icon: tdef.emoji, iconNode: tIc ? <PixelIcon name={tIc} color={C} size={34} sw={1.6} /> : undefined, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? t(tdef.nameKey) : '???',
+      icon: tdef.emoji, iconNode: <EmojiIcon emoji={tdef.emoji} size={34} color={C} sw={1.6} />, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? t(tdef.nameKey) : '???',
       status: { label: isEquipped ? t('title.equipped') : tdef.got ? t('title.owned') : t('title.notOwned'), bg: isEquipped ? colors.yellow : tdef.got ? colors.mint : colors.cream },
       what: tdef.got ? t(tdef.descKey) + (tdef.effectKey ? `\n\n${t('title.effectLabel')}: ${t(tdef.effectKey)}` : '') : t('title.notOwnedBody'),
       how: t(tdef.howKey),
@@ -230,7 +230,7 @@ export default function Me() {
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C }}>{career.label}</Text>
                 {!!equippedTitle && (
                   <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-                    {iconFor(equippedTitle.emoji) ? <PixelIcon name={iconFor(equippedTitle.emoji)!} color={C} size={13} sw={1.6} /> : <Text style={{ fontSize: fs(10) }}>{equippedTitle.emoji}</Text>}
+                    <EmojiIcon emoji={equippedTitle.emoji} size={13} color={C} sw={1.6} />
                     <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{t(equippedTitle.nameKey)}</Text>
                   </View>
                 )}
@@ -368,7 +368,6 @@ export default function Me() {
                 act on from there. */}
             {titles.map((tt) => {
               const isEq = equipped === tt.id;
-              const ic = iconFor(tt.emoji);
               return (
                 <Shadowed key={tt.id} offset={tt.got ? 3 : 0} shadowColor={isEq ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
                   <Pressable
@@ -380,9 +379,12 @@ export default function Me() {
                       backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream,
                     }}
                   >
-                    {ic
-                      ? <PixelIcon name={ic} color={tt.got ? C : colors.textFaint} size={22} />
-                      : <Text style={{ fontSize: fs(20), opacity: tt.got ? 1 : 0.35 }}>{tt.emoji}</Text>}
+                    {/* A locked title is dimmed. FIcon artwork carries its own
+                        colours, so the dimming is opacity on the wrapper rather
+                        than a tint that would only reach the line-icon tier. */}
+                    <View style={{ opacity: tt.got ? 1 : 0.35 }}>
+                      <EmojiIcon emoji={tt.emoji} size={22} color={tt.got ? C : colors.textFaint} />
+                    </View>
                     <Text
                       numberOfLines={2}
                       style={{ fontFamily: fonts.body, fontSize: fs(8), lineHeight: 11, textAlign: 'center', color: tt.got ? C : colors.textFaint }}

@@ -13,7 +13,9 @@ import { api, type Progress, type ScenarioDetail, type ScenarioGrade, type Sessi
 import { newlyEarnedTitles, type GrowthInput, type TitleDef } from '@/data/titles';
 import { ECON } from '@/data/economy';
 import { PixelIcon } from '@/components/PixelIcon';
+import { EmojiIcon } from '@/components/EmojiIcon';
 import { SessionSpeechReviewCard } from '@/components/speak/SessionSpeechReviewCard';
+import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
@@ -266,7 +268,10 @@ export default function ResultRoute() {
           <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
             <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
               <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: fs(32) }}>⭐</Text>
+                {/* v23 04_SCREENS changed this from a star to the FIcon 엄지척:
+                    "(FIcon thumb 엄지척 + 참잘했어요)". The star shape is retired
+                    across the app (02_COMPONENTS: 별 도형 폐기). */}
+                <FIcon name="thumb" size={40} />
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 4, textAlign: 'center' }}>{t('result.praiseSticker')}</Text>
               </View>
             </View>
@@ -380,7 +385,8 @@ function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { b
     <View>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 }}>
         <View style={{ width: 30, height: 30, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: fs(15) }}>⭐</Text>
+          {/* 별 도형 폐기, 보석으로 통일 (v23 02_COMPONENTS). */}
+          <FIcon name="gem" size={18} />
         </View>
         <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>경험치 획득</Text>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: '#10B981' }}>+{baseXp} XP</Text>
@@ -450,7 +456,7 @@ function StaticRewards({ scenario, baseXp }: { scenario: ScenarioDetail | null; 
       {rewards.map((r, i) => (
         <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 6, borderBottomWidth: i < rewards.length - 1 ? 1.5 : 0, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
           <View style={{ width: 28, height: 28, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: fs(14) }}>{r.icon}</Text>
+            <EmojiIcon emoji={r.icon} size={16} />
           </View>
           <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>{r.label}</Text>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{r.value}</Text>

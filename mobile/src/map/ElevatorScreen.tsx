@@ -11,7 +11,9 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
 import { deptCounts, type Dept } from '@/content/scenarios';
 import { api } from '@/api/client';
-import { PixelIcon, iconFor } from '@/components/PixelIcon';
+import { PixelIcon } from '@/components/PixelIcon';
+import { EmojiIcon } from '@/components/EmojiIcon';
+import { artFor } from '@/theme/emojiIcon';
 
 export interface ElevFloor {
   f: string;
@@ -313,17 +315,15 @@ export function ElevatorScreen({
   );
 }
 
-// A floor's icon comes from the fixture as an emoji string. The app draws line
-// icons, so bridge it — and fall back to the raw emoji rather than rendering
-// nothing when a mapping is missing, with a dev warning so the gap is visible
-// instead of silently blank.
+// A floor's icon comes from the fixture as an emoji string; EmojiIcon resolves it
+// through v23's FIcon map first and the line set second, and falls back to the
+// emoji itself. The dev warning stays: a floor with no artwork is a content gap
+// worth seeing, even though the fallback keeps the row legible.
 function FloorIcon({ emoji }: { emoji: string }) {
-  const name = iconFor(emoji);
-  if (!name) {
-    if (__DEV__) console.warn(`[map] no PixelIcon mapping for floor emoji ${emoji} — add it to EMOJI_ICON`);
-    return <Text style={{ fontSize: fs(12) }}>{emoji}</Text>;
+  if (__DEV__ && !artFor(emoji)) {
+    console.warn(`[map] no icon for floor emoji ${emoji} — add it to FEMOJI's tier or EMOJI_ICON`);
   }
-  return <PixelIcon name={name} color={colors.ink} size={14} sw={1.8} />;
+  return <EmojiIcon emoji={emoji} size={14} sw={1.8} />;
 }
 
 // The floor indicator's direction mark. The rest of the panel keeps its

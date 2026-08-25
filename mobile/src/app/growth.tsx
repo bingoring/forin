@@ -10,6 +10,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
+import { EmojiIcon } from '@/components/EmojiIcon';
 import { api, type CalendarDay, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -345,13 +346,13 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
                 <Shadowed key={i} offset={3} style={{ width: TILE, height: TILE }}>
                   <Pressable
                     onPress={() => onPick({
-                      icon: s.e, iconNode: iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={34} sw={1.6} /> : undefined, iconBg: s.bg, title: t('growth.stickerNo', { n: i + 1 }),
+                      icon: s.e, iconNode: <EmojiIcon emoji={s.e} size={34} color={C} sw={1.6} />, iconBg: s.bg, title: t('growth.stickerNo', { n: i + 1 }),
                       status: { label: t('badge.earned'), bg: colors.mint },
                       what: t('growth.stickerBody', { n: earned }),
                       how: howText,
                     })}
                     style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
-                    {iconFor(s.e) ? <PixelIcon name={iconFor(s.e)!} color={C} size={24} /> : <Text style={{ fontSize: fs(22), color: C }}>{s.e}</Text>}
+                    <EmojiIcon emoji={s.e} size={24} color={C} />
                   </Pressable>
                 </Shadowed>
               ) : (
