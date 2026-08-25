@@ -336,7 +336,11 @@ function DeptTab({ label, icon, color, active, count, onPress }: { id: string; l
     <Pressable onPress={onPress}>
       <Shadowed offset={active ? 2.5 : 2} shadowColor={active ? C : C + '66'}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: active ? color : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 8 }}>
-          <PixelIcon name={icon} color={active ? '#fff' : C} size={14} sw={1.8} />
+          {/* variant="line" on purpose: this tab's icon is white when selected and
+              ink when not, and letting each state resolve on its own would draw the
+              v23 artwork while inactive and the line icon while active — the drawing
+              would change as you tap. One consistent control beats a mixed one. */}
+          <PixelIcon name={icon} color={active ? '#fff' : C} size={14} sw={1.8} variant="line" />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: active ? '#fff' : C }}>{label}</Text>
           {count > 0 && (
             <View style={{ backgroundColor: active ? '#fff' : color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>

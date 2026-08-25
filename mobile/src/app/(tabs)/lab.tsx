@@ -315,7 +315,12 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
               and drawing one of those behind a red ✕ claims the learner said a sentence
               they never said. */}
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start' }}>
-            <Badge icon={face.badgeIcon} bg={face.correction ? '#FEE2E2' : colors.yellow} color={face.correction ? '#B91C1C' : C} />
+            {/* Ink for both, so both badges resolve to the v23 artwork. The red used
+                to be passed in; FIcon's `cross` is already drawn red and `hint` yellow,
+                so the colour prop was duplicating what the artwork encodes — and while
+                it was there, a correction badge drew the line icon and a suggestion
+                badge the pixel one, side by side in the same list. */}
+            <Badge icon={face.badgeIcon} bg={face.correction ? '#FEE2E2' : colors.yellow} color={C} />
             <Text
               style={{
                 flex: 1,

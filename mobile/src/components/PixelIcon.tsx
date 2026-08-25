@@ -3,7 +3,11 @@
 // missions) so they read as a designed set rather than OS emoji. Stroke-only
 // (fill none); the caller passes a color (ink when earned, faint when locked).
 import type { ReactNode } from 'react';
+import { View } from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
+import { FIcon } from './FIcon';
+import { ficonFor } from '@/theme/lineToFIcon';
+import { colors } from '@/theme/tokens';
 
 export type IconName =
   // badges
@@ -442,9 +446,72 @@ function body(name: IconName, color: string): ReactNode {
  * see across a list without looking for it. Defaults to none, so every existing icon is
  * untouched; the Svg's fill is inherited by the paths below.
  */
-export function PixelIcon({ name, color, size = 22, sw = 1.8, fill = 'none' }: {
+// How opaque the v23 artwork is for each de-emphasis colour the app uses.
+//
+// These greys are not different colours — they are the SAME ink, quieter: a faded
+// tab label, a placeholder in an empty state. Fixed-palette artwork expresses that
+// with opacity, and the result is the same icon reading as secondary, which is
+// exactly what the line icon's grey stroke was doing.
+const INK_OPACITY: Record<string, number> = {
+  [colors.ink.toLowerCase()]: 1,
+  [colors.textSoft.toLowerCase()]: 0.62,
+  [colors.textFaint.toLowerCase()]: 0.42,
+};
+
+/** The opacity to draw FIcon artwork at for `color`, or undefined when `color` is
+ *  a real colour rather than a shade of ink — an accent, or something light meant
+ *  to read on a dark ground, neither of which fixed-palette artwork can become. */
+function inkOpacity(color: string): number | undefined {
+  const c = color.trim().toLowerCase();
+  if (INK_OPACITY[c] !== undefined) return INK_OPACITY[c];
+  // '#2A252244' — ink carrying an alpha suffix, which the app writes as C + '44'.
+  const ink = colors.ink.toLowerCase();
+  if (c.length === 9 && c.startsWith(ink)) return parseInt(c.slice(7), 16) / 255;
+  return undefined;
+}
+
+// PixelIcon is the app's single icon entry point, and since v23 it RESOLVES rather
+// than draws: when the requested name exists in the FIcon set and the requested
+// colour is a shade of ink, it renders the v23 artwork. Everything else keeps the
+// line icon.
+//
+// This is a chokepoint on purpose. The first attempt at adopting v23 converted call
+// sites one at a time and left 92% of the app on the old set — because "port the
+// set" and "use the set" are different jobs, and 134 call sites is 134 chances to
+// miss one. Resolving here means every current site and every future one gets the
+// new artwork without being edited, and the two legitimate escapes are one rule
+// instead of dozens of judgement calls:
+//
+//   · a colour FIcon cannot become — an accent (mint check, blue drop) or a light
+//     tint meant to read on a dark ground (cream on an ink button). The artwork is
+//     ink-outlined pastel; recolouring it is not available, and drawing it anyway
+//     would put a dark icon on a dark button.
+//   · a two-state `fill` — the favourites star is filled when pinned and hollow
+//     when not, and one fixed drawing cannot say both.
+export function PixelIcon({ name, color, size = 22, sw = 1.8, fill = 'none', variant = 'auto' }: {
   name: IconName; color: string; size?: number; sw?: number; fill?: string;
+  /**
+   * 'line' opts this site out of the v23 artwork.
+   *
+   * The one case that needs it: a control whose icon is ink in one state and white
+   * in another. Resolving per-colour would then draw v23 artwork when inactive and
+   * the line icon when active, so selecting the control would change the drawing —
+   * worse than either choice made consistently. Opting the whole control out keeps
+   * it coherent, and says so at the call site.
+   */
+  variant?: 'auto' | 'line';
 }) {
+  const ficon = variant === 'line' ? undefined : ficonFor(name);
+  const opacity = ficon ? inkOpacity(color) : undefined;
+  // fill is the two-state escape: anything other than the default means the caller
+  // is using presence-of-fill to say something the artwork cannot.
+  if (ficon && opacity !== undefined && fill === 'none') {
+    return (
+      <View style={opacity === 1 ? undefined : { opacity }}>
+        <FIcon name={ficon} size={size} />
+      </View>
+    );
+  }
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke={color} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
       {body(name, color)}
