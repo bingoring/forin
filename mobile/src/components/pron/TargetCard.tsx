@@ -6,7 +6,8 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import type { TargetToken } from '@/lib/pronTokens';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { PronCard } from './PronCard';
 
 type Props = {
@@ -53,7 +54,7 @@ export function TargetCard({ tokens, ipa, hint, onPlayNative, nativeAvailable }:
           hitSlop={8}
           style={[styles.playChip, !nativeAvailable && styles.flat]}
         >
-          <PixelIcon name="volume" color={colors.ink} size={13} sw={1.8} />
+          <FIcon name="speaker" size={13} />
           <Text style={styles.chipText}>원어민</Text>
         </Pressable>
         <View style={styles.spacer} />

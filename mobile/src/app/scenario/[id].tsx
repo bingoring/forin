@@ -11,7 +11,7 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
-import { PixelIcon } from '@/components/PixelIcon';
+
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';

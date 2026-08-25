@@ -2,7 +2,7 @@
 import { Modal, Pressable, Text, View } from 'react-native';
 import { border, colors, fonts, type as typeScale } from '@/theme/tokens';
 import type { Room } from '@engine';
-import { PixelIcon } from '@/components/PixelIcon';
+
 import { EmojiIcon } from '@/components/EmojiIcon';
 import { artFor } from '@/theme/emojiIcon';
 

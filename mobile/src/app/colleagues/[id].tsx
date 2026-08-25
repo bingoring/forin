@@ -8,7 +8,8 @@
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { CheerSheet } from '@/components/CheerSheet';
 import { Header, RelTag, Shadowed } from './index';
 import { api, type ColleagueDetail, type ColleagueRelation } from '@/api/client';
@@ -88,7 +89,7 @@ export default function ColleagueDetailScreen() {
         <Shadowed offset={4} style={{ marginBottom: 13 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 13 }}>
             <View style={{ width: 62, height: 62, backgroundColor: '#fff', borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <PixelIcon name="people" color={C} size={34} sw={1.7} />
+              <FIcon name="me" size={34} />
             </View>
             <View style={{ flex: 1, minWidth: 0 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
@@ -171,7 +172,7 @@ export default function ColleagueDetailScreen() {
           onPress={() => setCheering(true)}
           style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 7, marginTop: 13, backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 12 }}
         >
-          <PixelIcon name="clap" color={C} size={17} sw={1.7} />
+          <FIcon name="sparkle" size={17} />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>응원 보내기</Text>
         </Pressable>
 

@@ -10,6 +10,7 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { AnimatedFace } from '@engine';
 import { api, type Home } from '@/api/client';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
@@ -174,7 +175,7 @@ function StreakStrip({ streak, week }: { streak: number; week: number[] }) {
     <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 12 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 13 }}>
         <View style={{ alignItems: 'center' }}>
-          <PixelIcon name="flame" color={C} size={20} sw={1.7} />
+          <FIcon name="fire" size={20} />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C, marginTop: 3 }}>{streak}</Text>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>연속</Text>
         </View>
@@ -253,7 +254,7 @@ function RestCard({ streakNext, onMore }: { streakNext: number; onMore: () => vo
   return (
     <Shadowed offset={4} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
       <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingVertical: 18, paddingHorizontal: 14, alignItems: 'center' }}>
-        <PixelIcon name="moon" color={C} size={34} sw={1.6} />
+        <FIcon name="moon" size={34} />
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginTop: 9 }}>오늘 목표를 다 채웠어요</Text>
         <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 6, lineHeight: 18, textAlign: 'center' }}>
           {streakNext}일째 연속이 눈앞이에요.{'\n'}여기서 멈춰도 괜찮아요.
@@ -276,7 +277,7 @@ function MentorNote({ note }: { note: NonNullable<Home['mentorNote']> }) {
       <Shadowed offset={3} shadowColor={colors.peachShadow}>
         <View style={{ flexDirection: 'row', gap: 10, backgroundColor: colors.peach, borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
           <View style={{ width: 34, height: 34, marginTop: 3, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <PixelIcon name="nurse-cap" color={C} size={20} sw={1.6} />
+            <FIcon name="nurse" size={20} />
           </View>
           <View style={{ flex: 1, minWidth: 0, marginTop: 2 }}>
             <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 18 }}>{note.text}</Text>
@@ -300,7 +301,7 @@ function PhraseOfDay({ phrase, flipped, onFlip }: { phrase: NonNullable<Home['ph
     <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
       <Pressable onPress={onFlip} style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 13 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-          <PixelIcon name="bulb" color={C} size={14} sw={1.7} />
+          <FIcon name="hint" size={14} />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C }}>오늘의 한마디</Text>
           <View style={{ flex: 1 }} />
           <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textFaint }}>
@@ -348,7 +349,7 @@ function OneReview({ front, onPress }: { front: string; onPress: () => void }) {
     <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
       <Pressable onPress={onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
         <View style={{ width: 26, height: 26, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <PixelIcon name="note" color={C} size={15} sw={1.7} />
+          <FIcon name="doc" size={15} />
         </View>
         <View style={{ flex: 1, minWidth: 0 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 15 }}>틀린 표현 하나만 다시 볼까요?</Text>
@@ -370,7 +371,7 @@ function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }
     <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
       <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C }}>
         <Pressable onPress={onOpenAll} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingTop: 8, paddingBottom: 6, paddingHorizontal: 12, borderBottomWidth: 2, borderBottomColor: C + '33' }}>
-          <PixelIcon name="handshake" color={C} size={14} sw={1.7} />
+          <FIcon name="handshake" size={14} />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C }}>내 동료</Text>
           {total > 0 && (
             <View style={{ backgroundColor: colors.mint, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>

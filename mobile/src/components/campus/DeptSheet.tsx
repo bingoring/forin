@@ -23,6 +23,7 @@ import { api, type Curriculum, type DeptSituation } from '@/api/client';
 import { BottomSheet } from '@/components/BottomSheet';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { STEP_META, type StepKind } from '@/data/campus';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { Shadowed } from './parts';
@@ -115,7 +116,7 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
           <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 4, paddingHorizontal: 14, paddingBottom: 11 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
               <View style={{ width: 34, height: 34, backgroundColor: target.accent, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <PixelIcon name="pin" color={C} size={18} sw={1.8} />
+                <FIcon name="pin" size={18} />
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{target.place}</Text>

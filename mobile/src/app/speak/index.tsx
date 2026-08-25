@@ -8,6 +8,7 @@ import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from '
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { api, type SpeakSort, type SpokenSentence } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { Shadowed } from '@/components/campus/parts';
 import { SpokenRow } from '@/components/speak/SpokenRow';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -147,7 +148,7 @@ export default function SpeakList() {
             return (
               <Pressable onPress={() => setDept(item)}>
                 <View style={[styles.chip, active && styles.chipActive]}>
-                  {active && <PixelIcon name="check" color={colors.ink} size={9} sw={2.2} />}
+                  {active && <FIcon name="check" size={9} />}
                   <Text style={styles.chipText}>{item || t('list.allDepts')}</Text>
                 </View>
               </Pressable>

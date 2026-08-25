@@ -19,6 +19,7 @@ import { FacePlayer, RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
@@ -339,7 +340,7 @@ export default function DialogueRoute() {
         <Pressable onPress={() => { playSfx('back'); stepAway(); }} hitSlop={8}>
           <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
           <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <PixelIcon name="x" color={C} size={15} sw={2} />
+            <FIcon name="cross" size={15} />
           </View>
         </Pressable>
         <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
@@ -538,7 +539,7 @@ export default function DialogueRoute() {
                         ? <ActivityIndicator color={C} size="small" />
                         : rec === 'recording'
                           ? <View style={{ width: 12, height: 12, backgroundColor: C }} />
-                          : <PixelIcon name="mic" color={C} size={18} sw={1.8} />}
+                          : <FIcon name="mic" size={18} />}
                     </View>
                   </Shadowed>
                 </Pressable>
@@ -601,7 +602,7 @@ export default function DialogueRoute() {
       <BottomSheet visible={!!resumable} onClose={() => { void startFresh(); }}>
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <PixelIcon name="note" color={C} size={17} sw={1.8} />
+            <FIcon name="doc" size={17} />
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>이어서 대화할까요?</Text>
           </View>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginBottom: 10 }}>
@@ -635,7 +636,7 @@ export default function DialogueRoute() {
       <BottomSheet visible={pagedOut} onClose={() => setPagedOut(false)}>
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <PixelIcon name="x" color={C} size={18} sw={1.9} />
+            <FIcon name="cross" size={18} />
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{t('dialogue.exitTitle')}</Text>
           </View>
           <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.text, lineHeight: 19, marginBottom: 16 }}>
@@ -775,7 +776,7 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
       <View style={{ gap: 6 }}>
         {meds.map((m, i) => (
           <View key={i} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
-            <PixelIcon name="pill" color={C} size={14} sw={1.8} />
+            <FIcon name="pill" size={14} />
             <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>{m}</Text>
           </View>
         ))}

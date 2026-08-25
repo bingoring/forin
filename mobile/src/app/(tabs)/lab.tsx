@@ -11,6 +11,7 @@ import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ModelAnswerSummary, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { SpeakSummaryBlock } from '@/components/speak/SpeakSummaryBlock';
 import { ModelAnswerBlock } from '@/components/model/ModelAnswerBlock';
 import { faceOf } from '@/data/reviewCardFace';
@@ -161,7 +162,7 @@ export default function Lab() {
               </View>
             )}
             <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
-              <PixelIcon name="note" color={C} size={26} sw={1.7} />
+              <FIcon name="doc" size={26} />
             </View>
           </View>
         </Shadowed>
@@ -332,8 +333,8 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start', marginTop: 8 }}>
             <Badge text="✓" bg={colors.mint} color={C} />
             <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 18 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
-            <Pressable onPress={speak} hitSlop={8}><PixelIcon name="volume" color={C} size={16} sw={1.8} /></Pressable>
-            <Pressable onPress={practicePronunciation} hitSlop={8}><PixelIcon name="mic" color={C} size={16} sw={1.8} /></Pressable>
+            <Pressable onPress={speak} hitSlop={8}><FIcon name="speaker" size={16} /></Pressable>
+            <Pressable onPress={practicePronunciation} hitSlop={8}><FIcon name="mic" size={16} /></Pressable>
           </View>
 
           {/* note */}

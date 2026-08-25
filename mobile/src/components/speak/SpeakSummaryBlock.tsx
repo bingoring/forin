@@ -5,6 +5,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { Shadowed } from '@/components/campus/parts';
 import { BandBar } from './BandBar';
 import { SpokenRow } from './SpokenRow';
@@ -26,7 +27,7 @@ export function SpeakSummaryBlock({
     <Shadowed offset={4}>
       <View style={styles.card}>
         <View style={styles.header}>
-          <PixelIcon name="mic" color={colors.ink} size={13} sw={1.8} />
+          <FIcon name="mic" size={13} />
           <Text style={styles.title}>{t('speak.blockTitle')}</Text>
           <View style={styles.spacer} />
           {/* 전체 N › — the entry the handoff specifies for this block. */}
@@ -43,14 +44,14 @@ export function SpeakSummaryBlock({
         {summary.weakest.length > 0 && (
           <>
             <View style={styles.urgentHeader}>
-              <PixelIcon name="target" color={colors.ink} size={11} sw={1.8} />
+              <FIcon name="target" size={11} />
               <Text style={styles.urgentText}>{t('speak.urgent', { n: summary.weakest.length })}</Text>
             </View>
             {summary.weakest.map((s, i) => (
               <SpokenRow key={s.sentenceKey} sentence={s} onPractise={onPractise} divider={i < summary.weakest.length - 1} />
             ))}
             <Pressable onPress={() => onOpenAll('weak')} style={styles.weakEntry}>
-              <PixelIcon name="target" color={colors.ink} size={11} sw={1.8} />
+              <FIcon name="target" size={11} />
               <Text style={styles.weakEntryText}>{t('speak.weakestFirst', { n: summary.low + summary.mid })}</Text>
               <PixelIcon name="chevron-right" color={colors.ink} size={10} sw={2} />
             </Pressable>

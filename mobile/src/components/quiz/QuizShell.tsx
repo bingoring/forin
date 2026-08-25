@@ -5,7 +5,8 @@
 import { ScrollView, Text, View, type ViewStyle } from 'react-native';
 import { Stack } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useEffect } from 'react';
 import { playSfx } from '@/lib/sfx';
@@ -117,7 +118,7 @@ export function HintRow({ text }: { text: string }) {
   return (
     <View style={{ marginTop: 16, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
       <View style={{ width: 18, height: 18, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-        <PixelIcon name="bulb" color={colors.ink} size={12} sw={1.8} />
+        <FIcon name="hint" size={12} />
       </View>
       <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>{text}</Text>
     </View>

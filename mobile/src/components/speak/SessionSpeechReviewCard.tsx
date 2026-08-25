@@ -8,7 +8,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 // The shared drop-shadow wrapper lives in campus/parts (extracted there when
 // campus.tsx was split); reused rather than re-declared for a fourth time.
 import { Shadowed } from '@/components/campus/parts';
@@ -31,7 +32,7 @@ export function SessionSpeechReviewCard({
     <Shadowed offset={4} style={styles.wrap}>
       <View style={styles.card}>
         <View style={styles.header}>
-          <PixelIcon name="mic" color={colors.ink} size={13} sw={1.8} />
+          <FIcon name="mic" size={13} />
           <Text style={styles.headerText}>{t('speak.reviewTitle')}</Text>
           <View style={styles.spacer} />
           {spoken && (

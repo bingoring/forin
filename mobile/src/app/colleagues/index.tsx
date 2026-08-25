@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { CheerSheet } from '@/components/CheerSheet';
 import { api, type Colleague, type ColleagueRelation, type ColleagueRequest, type InviteCode } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -130,7 +131,7 @@ export default function ColleaguesScreen() {
                 onPress={async () => { await api.cheerInbox(true); setUnread(0); }}
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}
               >
-                <PixelIcon name="clap" color={C} size={18} sw={1.7} />
+                <FIcon name="sparkle" size={18} />
                 <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: C }}>받은 응원 {unread}건</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>확인</Text>
               </Pressable>
@@ -152,7 +153,7 @@ export default function ColleaguesScreen() {
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 11 }}
               >
                 <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <PixelIcon name="people" color={C} size={22} sw={1.7} />
+                  <FIcon name="me" size={22} />
                   {c.activeToday && (
                     <View style={{ position: 'absolute', top: 2, right: 2, width: 7, height: 7, backgroundColor: colors.mintShadow, borderWidth: 1.5, borderColor: C }} />
                   )}
@@ -174,7 +175,7 @@ export default function ColleaguesScreen() {
                   onPress={() => setCheerTo(c)}
                   style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 8 }}
                 >
-                  <PixelIcon name="clap" color={C} size={16} sw={1.7} />
+                  <FIcon name="sparkle" size={16} />
                 </Pressable>
               </Pressable>
             </Shadowed>

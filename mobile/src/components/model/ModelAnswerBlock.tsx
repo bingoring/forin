@@ -4,6 +4,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { Shadowed } from '@/components/campus/parts';
 import { ModelAnswerGroupRow } from './ModelAnswerGroupRow';
 import { useT } from '@/i18n';
@@ -22,7 +23,7 @@ export function ModelAnswerBlock({
     <Shadowed offset={4}>
       <View style={styles.card}>
         <View style={styles.header}>
-          <PixelIcon name="note" color={colors.ink} size={13} sw={1.8} />
+          <FIcon name="doc" size={13} />
           <Text style={styles.title}>{t('model.blockTitle')}</Text>
           <View style={styles.spacer} />
           <Pressable onPress={onOpenAll} hitSlop={8} style={styles.allLink}>

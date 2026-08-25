@@ -11,6 +11,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { faceOf } from '@/data/reviewCardFace';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -160,8 +161,8 @@ export default function ReviewSession() {
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 6 }}>현지인처럼 말하기</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
                     <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(16), color: C, lineHeight: 24 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
-                    <Pressable onPress={() => Speech.speak(card.back, { language: 'en-US', rate: 0.92 })} hitSlop={8}><PixelIcon name="volume" color={C} size={20} sw={1.8} /></Pressable>
-                    <Pressable onPress={() => practicePronunciation(card)} hitSlop={8}><PixelIcon name="mic" color={C} size={20} sw={1.8} /></Pressable>
+                    <Pressable onPress={() => Speech.speak(card.back, { language: 'en-US', rate: 0.92 })} hitSlop={8}><FIcon name="speaker" size={20} /></Pressable>
+                    <Pressable onPress={() => practicePronunciation(card)} hitSlop={8}><FIcon name="mic" size={20} /></Pressable>
                   </View>
                   {!!card.note && (
                     <View style={{ marginTop: 12, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>

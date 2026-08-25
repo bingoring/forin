@@ -4,7 +4,8 @@
 // that must render the same fact the same way.
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { bandColor, bandOf, deptOf, scoreLabel } from '@/data/speakBands';
 import { useT } from '@/i18n';
 import type { SpokenSentence } from '@/api/client';
@@ -41,7 +42,7 @@ export function SpokenRow({
       </View>
       {onPractise && (
         <Pressable onPress={() => onPractise(sentence)} hitSlop={8} style={styles.practise}>
-          <PixelIcon name="mic" color={colors.ink} size={14} sw={2} />
+          <FIcon name="mic" size={14} />
         </Pressable>
       )}
     </View>

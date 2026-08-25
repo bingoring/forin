@@ -10,7 +10,8 @@
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { AnimatedFace, FacePlayer } from '@engine';
 import { BottomSheet } from '@/components/BottomSheet';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { PixelButton } from '@/components/PixelButton';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useT } from '@/i18n';
@@ -122,7 +123,7 @@ function Swatch({ selected, onPress, children }: { selected: boolean; onPress():
       {children}
       {selected && (
         <View style={{ position: 'absolute', top: -5, right: -5, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, width: 14, height: 14, alignItems: 'center', justifyContent: 'center' }}>
-          <PixelIcon name="check" color={C} size={9} sw={2.2} />
+          <FIcon name="check" size={9} />
         </View>
       )}
     </Pressable>

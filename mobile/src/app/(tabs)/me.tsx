@@ -9,6 +9,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { EmojiIcon } from '@/components/EmojiIcon';
 import { AnimatedFace } from '@engine';
 import { api, type Colleague, type GrowthStats, type InviteCode, type Progress } from '@/api/client';
@@ -221,7 +222,7 @@ export default function Me() {
                     <AnimatedFace size={86} avatar={avatar} />
                   </View>
                   <View style={{ position: 'absolute', bottom: -3, right: -3, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, width: 20, height: 20, alignItems: 'center', justifyContent: 'center' }}>
-                    <PixelIcon name="note" color={C} size={11} sw={1.8} />
+                    <FIcon name="doc" size={11} />
                   </View>
                 </Pressable>
               </Shadowed>
@@ -265,7 +266,7 @@ export default function Me() {
           <Shadowed offset={4} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
               <View style={{ width: 38, height: 38, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <PixelIcon name="chart" color={C} size={20} sw={1.7} />
+                <FIcon name="chartup" size={20} />
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>오늘의 성장 리포트</Text>
@@ -280,7 +281,7 @@ export default function Me() {
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <PixelIcon name="handshake" color={C} size={16} sw={1.7} />
+              <FIcon name="handshake" size={16} />
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>내 동료</Text>
             </View>
             <Pressable onPress={() => router.push('/colleagues')}>
@@ -302,7 +303,7 @@ export default function Me() {
                       style={{ alignItems: 'center', width: '21%' }}
                     >
                       <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                        <PixelIcon name="people" color={C} size={22} sw={1.7} />
+                        <FIcon name="me" size={22} />
                       </View>
                       <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(9), color: C, marginTop: 3 }}>{c.name}</Text>
                     </Pressable>
@@ -410,7 +411,7 @@ export default function Me() {
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <PixelIcon name="search" color={C} size={16} sw={1.6} />
+              <FIcon name="magnify" size={16} />
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>히든 미션</Text>
             </View>
             <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{foundIds.size} / {MISSIONS.length}</Text>
@@ -436,7 +437,7 @@ export default function Me() {
             <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14, gap: 10 }}>
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
                 <View style={{ width: 40, height: 40, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <PixelIcon name="note" color={C} size={22} sw={1.7} />
+                  <FIcon name="doc" size={22} />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>리뷰랩 · 오답노트</Text>
@@ -459,7 +460,7 @@ export default function Me() {
             배우는 언어는 온보딩에서 고른 나라가 정하므로 읽기 전용으로 보여준다(R3). */}
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <PixelIcon name="speech" color={C} size={16} sw={1.6} />
+            <FIcon name="speech" size={16} />
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.language.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
@@ -495,7 +496,7 @@ export default function Me() {
             무음으로 쓰는 사람이 있고, 껐다는 사실은 기기에 남는다. */}
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <PixelIcon name="volume" color={C} size={16} sw={1.6} />
+            <FIcon name="speaker" size={16} />
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.sound.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
@@ -520,7 +521,7 @@ export default function Me() {
         {/* 계정 — 로그아웃 (그 전까진 로그인 화면으로 돌아갈 경로가 없었다) */}
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <PixelIcon name="lock" color={C} size={16} sw={1.6} />
+            <FIcon name="lock" size={16} />
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.account.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
@@ -589,7 +590,7 @@ export default function Me() {
                       <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{done.text}</Text>
                     </View>
                   )}
-                  {on && <PixelIcon name="check" color={C} size={14} sw={2.2} />}
+                  {on && <FIcon name="check" size={14} />}
                 </Pressable>
               </Shadowed>
             );

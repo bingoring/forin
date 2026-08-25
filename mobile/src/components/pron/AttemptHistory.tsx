@@ -6,7 +6,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { syllableBand } from '@/lib/pronTokens';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { PronCard } from './PronCard';
 
 export type AttemptRow = { no: number; score: number | null };
@@ -19,7 +20,7 @@ export function AttemptHistory({ attempts }: { attempts: AttemptRow[] }) {
       {/* SoT draws this header with 📈; the app renders no emoji on screen
           (762bb6a replaced them all with the line-icon set). */}
       <View style={styles.header}>
-        <PixelIcon name="chart" color={colors.ink} size={13} sw={1.8} />
+        <FIcon name="chartup" size={13} />
         <Text style={styles.headerText}>이 문장 내 점수</Text>
       </View>
       {attempts.map((a, i) => (

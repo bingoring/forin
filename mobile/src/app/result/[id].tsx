@@ -12,7 +12,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type Progress, type ScenarioDetail, type ScenarioGrade, type SessionSpeechReview, type SpokenSentence } from '@/api/client';
 import { newlyEarnedTitles, type GrowthInput, type TitleDef } from '@/data/titles';
 import { ECON } from '@/data/economy';
-import { PixelIcon } from '@/components/PixelIcon';
+
 import { EmojiIcon } from '@/components/EmojiIcon';
 import { SessionSpeechReviewCard } from '@/components/speak/SessionSpeechReviewCard';
 import { FIcon } from '@/components/FIcon';
@@ -168,7 +168,6 @@ export default function ResultRoute() {
     if (passed) playSfx('success');
     if (newTitles.length > 0 || leveledUp) playSfx('reward');
   }, [after, passed, newTitles, leveledUp]);
-
 
   const onShare = () => {
     const lv = after ? ` (Lv.${after.level}${after.streakCurrent > 1 ? ` · ${after.streakCurrent}일 연속` : ''})` : '';
@@ -396,7 +395,7 @@ function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { b
       {showSticker && (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12, paddingBottom: 12, borderBottomWidth: 1.5, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
           <View style={{ width: 30, height: 30, backgroundColor: colors.pink, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <PixelIcon name="medal" color={C} size={16} sw={1.7} />
+            <FIcon name="badge" size={16} />
           </View>
           <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>칭찬 스티커{stickerTotal != null ? t('result.stickerTotal', { n: stickerTotal }) : ''}</Text>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: '#10B981' }}>+1</Text>
@@ -414,7 +413,7 @@ function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { b
       {/* streak */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 12, borderTopWidth: 1.5, borderTopColor: '#2A252222', borderStyle: 'dotted' }}>
         <View style={{ width: 28, height: 28, backgroundColor: colors.peach, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <PixelIcon name="flame" color={C} size={15} sw={1.7} />
+          <FIcon name="fire" size={15} />
         </View>
         <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>연속 학습</Text>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{after.streakCurrent}일{after.streakCurrent >= after.streakLongest && after.streakCurrent > 1 ? t('result.best') : ''}</Text>

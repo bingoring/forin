@@ -6,6 +6,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { saveDraft } from '@/lib/onboardingDraft';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
 import { t, useLocale, useT } from '@/i18n';
@@ -61,7 +62,7 @@ export default function Job() {
                       : <PixelChip label={t('job.comingSoon')} bg="#fff" />}
                   </View>
                 </View>
-                {j.ready && <PixelIcon name="play" color={C} size={16} sw={1.8} />}
+                {j.ready && <FIcon name="play" size={16} />}
               </View>
             </Shadowed>
           ))}

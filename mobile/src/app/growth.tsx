@@ -10,6 +10,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { EmojiIcon } from '@/components/EmojiIcon';
 import { api, type CalendarDay, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
@@ -252,7 +253,7 @@ export default function Growth() {
                     <Shadowed offset={d.today ? 2 : 0} shadowColor={colors.yellowShadow} style={{ alignSelf: 'stretch' }}>
                       <View style={{ height: 30, backgroundColor: d.filled ? colors.mint : '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                         {d.filled ? (
-                          <PixelIcon name="check" color={C} size={13} sw={2} />
+                          <FIcon name="check" size={13} />
                         ) : (
                           <View style={{ width: 4, height: 4, backgroundColor: d.today ? colors.yellowDeep : colors.textFaint }} />
                         )}
@@ -327,7 +328,7 @@ function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoShee
     <View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          <PixelIcon name="star" color={C} size={16} sw={1.6} />
+          <FIcon name="xp" size={16} />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>칭찬 스티커 보드</Text>
         </View>
         <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{earned} / {CAPACITY}</Text>

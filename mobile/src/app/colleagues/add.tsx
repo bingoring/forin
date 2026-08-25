@@ -8,6 +8,7 @@ import { ActivityIndicator, Alert, Pressable, ScrollView, Share, Text, TextInput
 import { Stack, useRouter } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { Header, Shadowed } from './index';
 import { api, type CodePreview, type InviteCode } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -134,7 +135,7 @@ export default function ColleagueAddScreen() {
           <Shadowed offset={3} style={{ marginBottom: 12 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
               <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <PixelIcon name="people" color={C} size={22} sw={1.7} />
+                <FIcon name="me" size={22} />
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{preview.name}</Text>

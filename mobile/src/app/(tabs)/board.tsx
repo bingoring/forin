@@ -10,6 +10,7 @@ import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'rea
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { resetLabel } from '@/data/boardReset';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { PixelButton } from '@/components/PixelButton';
@@ -153,7 +154,7 @@ export default function Board() {
         <Shadowed offset={4} shadowColor={colors.mintShadow} style={{ marginTop: 10 }}>
           <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <PixelIcon name="clipboard" color={C} size={28} sw={1.6} />
+              <FIcon name="board" size={28} />
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>TODAY · {monthDay()}</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C, marginTop: 2 }}>현장 상황 {cards.length}건 발생</Text>
@@ -224,7 +225,7 @@ export default function Board() {
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{capReached ? t('board.rewardsDone') : t('board.watchAd')}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: capReached ? colors.textSoft : C, marginTop: 3, lineHeight: 15 }}>{capReached ? t('board.midnight') : t('board.quietHint')}</Text>
               </View>
-              {topping ? <ActivityIndicator color={C} /> : !capReached && <PixelIcon name="play" color={C} size={18} sw={1.9} />}
+              {topping ? <ActivityIndicator color={C} /> : !capReached && <FIcon name="play" size={18} />}
             </Pressable>
           </Shadowed>
         )}

@@ -7,6 +7,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { PressCard } from '@/components/PressCard';
 import { FLAGS } from '@/components/onboardingArt';
 import { loadDraft, saveDraft } from '@/lib/onboardingDraft';
@@ -75,7 +76,7 @@ export default function Locale() {
             font at the type's weight instead of the icon set's, and every locale carried
             its own copy of a decoration. Drawn beside the text, once. */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 28, marginBottom: 12 }}>
-          <PixelIcon name="pin" color={C} size={16} sw={1.9} />
+          <FIcon name="pin" size={16} />
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>{t('onboarding.pickDest')}</Text>
         </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14 }}>
@@ -129,7 +130,7 @@ function LocaleCard({ flag, name, sub, note, disabled, selected, onPress }: {
           {Flag ? <Flag size={38} /> : null}
           {selected && (
             <View style={{ marginLeft: 'auto', width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <PixelIcon name="check" color={C} size={12} sw={2.2} />
+              <FIcon name="check" size={12} />
             </View>
           )}
         </View>

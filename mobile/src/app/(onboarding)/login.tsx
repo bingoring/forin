@@ -17,7 +17,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import { completeSocialLogin, signInApple, signInKakao, devSignIn, syncOnboarded, SOCIAL_CONFIG, isProviderConfigured } from '@/lib/auth';
 import { VertGradient, Cloud, GoogleGlyph, AppleGlyph, KakaoGlyph } from '@/components/onboardingArt';
-import { PixelIcon } from '@/components/PixelIcon';
+
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale, useT } from '@/i18n';
 

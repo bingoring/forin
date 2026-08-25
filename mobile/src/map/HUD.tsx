@@ -4,7 +4,8 @@
 import { Pressable, Text, View } from 'react-native';
 import { border, colors, fonts, type as typeScale, fs } from '@/theme/tokens';
 import type { Dir } from '@engine';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 
 const PAD = 52; // D-pad button size
 
@@ -33,7 +34,7 @@ function PadBtn({ dir, onPress, col, row }: { dir: 'up' | 'down' | 'left' | 'rig
       }}
     >
       <View style={{ transform: [{ rotate: ROT[dir] }] }}>
-        <PixelIcon name="play" color={colors.ink} size={18} sw={1.8} />
+        <FIcon name="play" size={18} />
       </View>
     </Pressable>
   );

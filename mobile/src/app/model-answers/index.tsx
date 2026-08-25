@@ -7,6 +7,7 @@ import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, V
 import { Stack, useRouter } from 'expo-router';
 import { api, type ModelAnswerGroup, type ModelAnswerSort } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { PixelButton } from '@/components/PixelButton';
 import { BottomSheet } from '@/components/BottomSheet';
 import { Shadowed } from '@/components/campus/parts';
@@ -146,7 +147,7 @@ export default function ModelAnswerList() {
             return (
               <Pressable key={d} onPress={() => toggleDept(d)}>
                 <View style={[styles.chip, active && styles.chipActive]}>
-                  {active && <PixelIcon name="check" color={colors.ink} size={9} sw={2.2} />}
+                  {active && <FIcon name="check" size={9} />}
                   <Text style={styles.chipText}>{d}</Text>
                 </View>
               </Pressable>
@@ -206,7 +207,7 @@ export default function ModelAnswerList() {
               return (
                 <Pressable key={d} onPress={() => toggleDept(d)}>
                   <View style={[styles.chip, active && styles.chipActive]}>
-                    {active && <PixelIcon name="check" color={colors.ink} size={9} sw={2.2} />}
+                    {active && <FIcon name="check" size={9} />}
                     <Text style={styles.chipText}>{d}</Text>
                   </View>
                 </Pressable>

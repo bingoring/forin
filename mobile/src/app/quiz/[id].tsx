@@ -24,7 +24,8 @@ import { TriageQuiz } from '@/components/quiz/TriageQuiz';
 import { AbbrQuiz } from '@/components/quiz/AbbrQuiz';
 import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -223,7 +224,7 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
               {!!c.hint && (
                 <View style={{ marginTop: 16, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                   <View style={{ width: 18, height: 18, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <PixelIcon name="bulb" color={C} size={12} sw={1.8} />
+                    <FIcon name="hint" size={12} />
                   </View>
                   <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>{c.hint}</Text>
                 </View>

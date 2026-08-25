@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import type { CheerPreset } from '@/api/client';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
@@ -52,7 +53,7 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
 
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
           <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <PixelIcon name="clap" color={C} size={22} sw={1.7} />
+            <FIcon name="sparkle" size={22} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{name}에게 응원 보내기</Text>

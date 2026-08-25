@@ -21,6 +21,7 @@ import { colors, fonts, fs } from '@/theme/tokens';
 import { FloorList } from '@/components/campus/FloorList';
 import { useIsActiveTab } from '@/lib/nav';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { searchCampus, type CampusHit } from '@/data/campusSearch';
 import { toggleFloorFavorite, toggleSituationFavorite, useFavorites, type FavFloor } from '@/lib/favorites';
 import type { DeptSituation } from '@/api/client';
@@ -172,7 +173,7 @@ export default function Campus() {
             for a ward they will never be assigned to. */}
         <View style={{ marginBottom: 14 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
-            <PixelIcon name="search" color={C} size={15} sw={1.9} />
+            <FIcon name="magnify" size={15} />
             <TextInput
               value={query}
               onChangeText={setQuery}
@@ -260,7 +261,7 @@ export default function Campus() {
                  the chrome to say the same thing. The row's badge says which it is. */
               <View style={{ marginBottom: 16 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-                  <PixelIcon name="star" color={C} fill={colors.yellowDeep} size={14} sw={2} />
+                  <FIcon name="xp" size={14} />
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('campus.favTitle')}</Text>
                 </View>
                 <View style={{ gap: 7 }}>
@@ -287,7 +288,7 @@ export default function Campus() {
                       style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
                     >
                       <View style={{ width: 44, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-                        <PixelIcon name="play" color={C} size={11} sw={1.9} />
+                        <FIcon name="play" size={11} />
                       </View>
                       <View style={{ flex: 1, minWidth: 0 }}>
                         <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{sv.name}</Text>
@@ -342,7 +343,7 @@ function FavStar({ onPress }: { onPress: () => void }) {
       accessibilityState={{ checked: true }}
       accessibilityLabel={t('campus.favRemove')}
     >
-      <PixelIcon name="star" color={C} fill={colors.yellowDeep} size={17} sw={2} />
+      <FIcon name="xp" size={17} />
     </Pressable>
   );
 }

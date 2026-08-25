@@ -29,6 +29,7 @@ import {
   readAsStringAsync, EncodingType, deleteAsync, downloadAsync, getInfoAsync, cacheDirectory,
 } from 'expo-file-system/legacy';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { PixelButton } from '@/components/PixelButton';
 import { PronCard } from '@/components/pron/PronCard';
 import { TargetCard } from '@/components/pron/TargetCard';
@@ -147,7 +148,7 @@ function Head({
         </Pressable>
         <View style={{ flex: 1 }} />
         <View style={styles.badge}>
-          <PixelIcon name="mic" color={C} size={11} sw={1.8} />
+          <FIcon name="mic" size={11} />
           <Text style={styles.badgeText}>발음</Text>
         </View>
       </View>
@@ -160,7 +161,7 @@ function Head({
 function RiskNote() {
   return (
     <View style={styles.riskBox}>
-      <PixelIcon name="alert" color={C} size={15} sw={1.8} />
+      <FIcon name="warn" size={15} />
       <Text style={styles.riskText}>
         약물명과 용량은 잘못 들리면 <Text style={{ color: C, fontFamily: fonts.heading }}>투약 사고</Text>로 이어져요. 음절을 끊어서 또박또박.
       </Text>
@@ -171,7 +172,7 @@ function RiskNote() {
 function Banner({ text }: { text: string }) {
   return (
     <View style={styles.banner}>
-      <PixelIcon name="alert" color={C} size={14} sw={1.8} />
+      <FIcon name="warn" size={14} />
       <Text style={styles.bannerText}>{text}</Text>
     </View>
   );
@@ -807,7 +808,7 @@ export default function PronunciationRoute() {
             <BigButton
               size={92}
               bg={colors.red}
-              icon={<PixelIcon name="mic" color={C} size={38} sw={2.4} />}
+              icon={<FIcon name="mic" size={38} />}
               label={t('pron.tapToRecord')}
               sub={t('pron.recordHint')}
               onPress={() => { void startRecording(); }}
@@ -872,7 +873,7 @@ export default function PronunciationRoute() {
                   are independent facts and both render when true. */}
               {correction.suspectAllZero && (
                 <View style={styles.suspectBanner}>
-                  <PixelIcon name="alert" color={C} size={13} sw={1.8} />
+                  <FIcon name="warn" size={13} />
                   <Text style={styles.suspectText}>교정 데이터 이상 — 일부 단어는 지금 표시할 수 없어요</Text>
                 </View>
               )}

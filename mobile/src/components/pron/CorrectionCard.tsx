@@ -11,7 +11,8 @@
 // long form (Tip.Detail) belongs to the drill screen, which is not built yet.
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, fonts, fs } from '@/theme/tokens';
-import { PixelIcon } from '@/components/PixelIcon';
+
+import { FIcon } from '@/components/FIcon';
 import { PronCard } from './PronCard';
 
 type Props = {
@@ -35,7 +36,7 @@ export function CorrectionCard({ syllable, ipa, message, severe, onPlay }: Props
       </View>
       {/* SoT draws 🔊 here; the app renders no emoji on screen (762bb6a). */}
       <Pressable onPress={onPlay} hitSlop={8} style={styles.play}>
-        <PixelIcon name="volume" color={colors.ink} size={14} sw={1.8} />
+        <FIcon name="speaker" size={14} />
       </Pressable>
     </PronCard>
   );

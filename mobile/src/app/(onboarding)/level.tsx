@@ -8,7 +8,8 @@ import { PixelButton } from '@/components/PixelButton';
 import { api } from '@/api/client';
 import { clearDraft, loadDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
-import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { type IconName } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { PressCard } from '@/components/PressCard';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { OnbTopBar, Shadowed } from './locale';
@@ -104,7 +105,7 @@ export default function Level() {
                   </View>
                   {sel && (
                     <View style={{ width: 20, height: 20, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                      <PixelIcon name="check" color={C} size={12} sw={2.2} />
+                      <FIcon name="check" size={12} />
                     </View>
                   )}
               </PressCard>
