@@ -44,6 +44,15 @@ const (
 	ModelAnswerExpanded = 1
 	// ModelAnswerCollapsed is how many title-only rows follow the expanded one.
 	ModelAnswerCollapsed = 3
+	// ModelAnswerSummaryCards caps the expanded panel.
+	//
+	// The block is summary-only for a stated reason — a full inline list grows the
+	// page without bound — and the expanded group is part of the same page. Real
+	// data made this concrete: replaying one scenario put 13 corrections in the
+	// panel, all variations on the same sentence, which is exactly the unbounded
+	// growth the block exists to avoid. Three is enough to show what a corrected
+	// answer looks like; the rest are one tap away on the full list.
+	ModelAnswerSummaryCards = 3
 )
 
 // ModelAnswerPageSize is how many groups the summary needs to fill itself: the
@@ -77,6 +86,9 @@ func BuildModelAnswerSummary(groups []ModelAnswerGroup, total int, cards []Model
 	copy(out, groups)
 	// Only the most recent group is expanded. Copying first means an accidental
 	// second expanded group cannot be introduced by a caller reusing the slice.
+	if len(cards) > ModelAnswerSummaryCards {
+		cards = cards[:ModelAnswerSummaryCards]
+	}
 	for i := range out {
 		if i < ModelAnswerExpanded {
 			out[i].Cards = cards

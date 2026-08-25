@@ -85,3 +85,23 @@ func TestBuildModelAnswerSummaryDoesNotMutateItsInput(t *testing.T) {
 		}
 	}
 }
+
+// The block is summary-only for a stated reason, and the expanded group is part
+// of the same page: replaying one scenario really did put 13 corrections in the
+// panel. Three is what the panel shows; the rest live on the full list.
+func TestBuildModelAnswerSummaryCapsTheExpandedPanel(t *testing.T) {
+	many := make([]ModelAnswerCard, 13)
+	for i := range many {
+		many[i] = ModelAnswerCard{Said: "said", Model: "model"}
+	}
+	s := BuildModelAnswerSummary(groups(1), 1, many)
+	if got := len(s.Groups[0].Cards); got != ModelAnswerSummaryCards {
+		t.Errorf("expanded panel carried %d cards, want the %d cap", got, ModelAnswerSummaryCards)
+	}
+	// A panel already within the cap is untouched.
+	few := many[:2]
+	s2 := BuildModelAnswerSummary(groups(1), 1, few)
+	if got := len(s2.Groups[0].Cards); got != 2 {
+		t.Errorf("a short panel was altered: %d cards", got)
+	}
+}
