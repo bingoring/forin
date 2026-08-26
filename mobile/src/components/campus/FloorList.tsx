@@ -7,6 +7,7 @@
 import { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { PixelIcon } from '@/components/PixelIcon';
+import { FIcon } from '@/components/FIcon';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, floorDeptCode, floorPlace } from '@/data/campus';
@@ -80,7 +81,9 @@ function BuildingCard({ building: b, isOpen, onToggle, focus, onOpenFloor }: {
           style={{ flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 10, paddingHorizontal: 11, backgroundColor: isOpen ? colors.cream : '#fff' }}
         >
           <View style={{ width: 28, height: 28, backgroundColor: style.accent, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <PixelIcon name={style.icon} color={C} size={16} sw={1.7} />
+            {/* An FIcon name, not a line-icon one: the building list draws v25's
+                symbol artwork directly (see BUILDING_STYLE). */}
+            <FIcon name={style.icon} size={16} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{b.building}</Text>

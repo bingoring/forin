@@ -61,7 +61,10 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
         { dept: '신생아 중환자실 NICU', interior: 'INT-NICU-00001', entry: { x: 1, y: 6 } },
         { dept: '소아 중환자실 PICU', interior: 'INT-PICU-00001', entry: { x: 1, y: 6 } },
       ] },
-      { f: '3F', depts: ['가족 분만실 L&D', '산후 병동', '신생아실'], icon: '🤰', interior: 'INT-LD-00001', entry: { x: 1, y: 15 } },
+      // 🍼, not 🤰: that one resolves to the `women` BUILDING icon, and v25 bars
+      // building shapes from lists (02_COMPONENTS 건물 아이콘 원칙). A bottle is the
+      // object this floor is about — 분만·산후·신생아실.
+      { f: '3F', depts: ['가족 분만실 L&D', '산후 병동', '신생아실'], icon: '🍼', interior: 'INT-LD-00001', entry: { x: 1, y: 15 } },
       { f: '2F', depts: ['소아 일반 병동'], icon: '🧸', sdepts: ['PEDS'] },
       { f: '1F', depts: ['소아청소년과 외래', '산부인과 외래', '키즈 놀이광장'], icon: '🎈', lobby: true, sdepts: ['PEDS'], interior: 'INT-WOMENKIDS-OPD-00001', entry: { x: 13, y: 1 } },
     ],
@@ -87,7 +90,9 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
         { dept: '인공신장실 Dialysis', interior: 'INT-DIAL-00001', entry: { x: 1, y: 8 } },
       ] },
       { f: '2F', depts: ['안과 · 이비인후과 · 비뇨 · 신경과'], icon: '👁', interior: 'INT-SPECIALTY-00001', entry: { x: 1, y: 10 } },
-      { f: '1F', depts: ['영상의학과', '진단검사의학과', '혈액은행'], icon: '🩻', lobby: true, interior: 'INT-RAD-00001', entry: { x: 1, y: 14 } },
+      // 🖥, not 🩻: 🩻 resolves to `dx`, which v25 lists as a building shape. The
+      // reading monitor is the object this floor is about.
+      { f: '1F', depts: ['영상의학과', '진단검사의학과', '혈액은행'], icon: '🖥', lobby: true, interior: 'INT-RAD-00001', entry: { x: 1, y: 14 } },
     ],
   },
   admin: {
