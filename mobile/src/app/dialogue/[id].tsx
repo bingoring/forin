@@ -367,7 +367,6 @@ export default function DialogueRoute() {
   const expr = moodExpression(turnMood) ?? authored;
   const npcName = (p.name || 'NPC').toUpperCase();
   const goals = scenario?.goals ?? [];
-  const mission = goals[0];
   const chart = scenario?.briefing?.chart;
   const riskyPhrases = scenario?.briefing?.riskyPhrases ?? [];
   const showSweat = moodShowsSweat(turnMood) || (!turnMood && (expr === 'pain' || expr === 'panic' || expr === 'worried'));
@@ -432,15 +431,32 @@ export default function DialogueRoute() {
           </View>
         </Pressable>
         <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
-          {!!mission && (
+          {goals.length > 0 && (
             <>
+              {/* Every goal, not "MISSION 1/N" with a hardcoded 1.
+                  The counter used to read `MISSION 1/{goals.length}` and show goals[0]
+                  — the position never moved and the other goals were never named, so a
+                  learner watching it had no way to know what was still outstanding.
+                  That is the reported "언제 해소됐는지 모른다" in its most literal form:
+                  the tracker was decorative.
+                  Progress is not shown because it is not known mid-conversation —
+                  whether a goal was met is judged at the end, from the transcript. So
+                  this lists what the situation asks for and claims nothing about how
+                  far along it is; the character's own "everything is handled" is what
+                  triggers the wrap-up question. */}
               <Shadowed offset={2}>
                 <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>MISSION 1/{Math.max(1, goals.length)}</Text>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>
+                    {t('dialogue.missionCount', { n: goals.length })}
+                  </Text>
                 </View>
               </Shadowed>
-              <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, textAlign: 'right', lineHeight: 14 }}>{mission}</Text>
+              <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8, gap: 2 }}>
+                {goals.slice(0, 3).map((g, i) => (
+                  <Text key={i} style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, textAlign: 'right', lineHeight: 14 }}>
+                    {g}
+                  </Text>
+                ))}
               </View>
             </>
           )}

@@ -112,3 +112,22 @@ test('the prompt is driven by the server signal, not by a turn count', () => {
   // resolved, and miss ones that resolved in three lines.
   expect(SRC).toMatch(/onResolved: \(\) => \{/);
 });
+
+// The mission tracker must not claim progress it does not have.
+//
+// It read `MISSION 1/{goals.length}` with a hardcoded 1 and showed only goals[0]: the
+// position never moved and the other goals were never named. A learner watching it had
+// no way to know what was still outstanding — the reported "언제 해소됐는지 모른다" in
+// its most literal form.
+test('the mission tracker names every goal and claims no position', () => {
+  // Comments stripped: a comment explaining what `MISSION 1/` used to be is not it.
+  const code = SRC.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  expect(code).not.toMatch(/MISSION 1\//);
+  expect(code).not.toMatch(/const mission = goals\[0\]/);
+  // Lists the goals, capped so a three-goal scenario cannot push the tracker over the
+  // portrait below it.
+  expect(SRC).toMatch(/goals\.slice\(0, 3\)\.map/);
+  // A count, not a fraction: progress is judged at the end from the transcript, so
+  // there is nothing honest to put in the numerator mid-conversation.
+  expect(SRC).toMatch(/dialogue\.missionCount/);
+});

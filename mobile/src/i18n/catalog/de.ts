@@ -574,4 +574,5 @@ export const de: Record<string, string> = {
   'dialogue.wrapUpBody': 'Es klingt, als wäre alles besprochen. Hier abschließen? Wenn du noch etwas prüfen willst, mach weiter.',
   'dialogue.wrapUpKeepGoing': 'Weiterreden',
   'dialogue.wrapUpFinish': 'Hier abschließen',
+  'dialogue.missionCount': '{n} MISSIONEN',
 };

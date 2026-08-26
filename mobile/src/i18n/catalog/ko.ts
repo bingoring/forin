@@ -605,4 +605,5 @@ export const ko: Record<string, string> = {
   'dialogue.wrapUpBody': '필요한 이야기는 다 나눈 것 같아요. 여기서 마무리할까요? 더 확인할 게 있으면 계속 이어가도 괜찮아요.',
   'dialogue.wrapUpKeepGoing': '더 이야기하기',
   'dialogue.wrapUpFinish': '여기서 마무리',
+  'dialogue.missionCount': '미션 {n}',
 };
