@@ -10,17 +10,23 @@ import (
 )
 
 const appendTurn = `-- name: AppendTurn :exec
-INSERT INTO dialogue_turns (session_id, role, content) VALUES ($1, $2, $3)
+INSERT INTO dialogue_turns (session_id, role, content, mood) VALUES ($1, $2, $3, $4)
 `
 
 type AppendTurnParams struct {
 	SessionID string `json:"session_id"`
 	Role      string `json:"role"`
 	Content   string `json:"content"`
+	Mood      string `json:"mood"`
 }
 
 func (q *Queries) AppendTurn(ctx context.Context, arg AppendTurnParams) error {
-	_, err := q.db.Exec(ctx, appendTurn, arg.SessionID, arg.Role, arg.Content)
+	_, err := q.db.Exec(ctx, appendTurn,
+		arg.SessionID,
+		arg.Role,
+		arg.Content,
+		arg.Mood,
+	)
 	return err
 }
 
@@ -145,6 +151,23 @@ func (q *Queries) InsertReviewCard(ctx context.Context, arg InsertReviewCardPara
 	return id, err
 }
 
+const latestAssistantMood = `-- name: LatestAssistantMood :one
+SELECT COALESCE(mood, '') FROM dialogue_turns
+ WHERE session_id = $1 AND role <> 'user'
+ ORDER BY created_at DESC LIMIT 1
+`
+
+// The mood of the last thing the NPC said, for comparing the next turn against.
+// Empty when the NPC has not spoken yet, or spoke before this column existed —
+// either way there is nothing to have improved on, which MoodImproved treats as
+// "no change" rather than as a win.
+func (q *Queries) LatestAssistantMood(ctx context.Context, sessionID string) (string, error) {
+	row := q.db.QueryRow(ctx, latestAssistantMood, sessionID)
+	var mood string
+	err := row.Scan(&mood)
+	return mood, err
+}
+
 const latestSessionWithTurns = `-- name: LatestSessionWithTurns :one
 SELECT s.id, count(t.id)::int AS turn_count
   FROM conversation_sessions s
@@ -176,7 +199,7 @@ func (q *Queries) LatestSessionWithTurns(ctx context.Context, arg LatestSessionW
 }
 
 const sessionHistory = `-- name: SessionHistory :many
-SELECT role, content FROM dialogue_turns WHERE session_id = $1 ORDER BY created_at LIMIT $2
+SELECT role, content, mood FROM dialogue_turns WHERE session_id = $1 ORDER BY created_at LIMIT $2
 `
 
 type SessionHistoryParams struct {
@@ -187,6 +210,7 @@ type SessionHistoryParams struct {
 type SessionHistoryRow struct {
 	Role    string `json:"role"`
 	Content string `json:"content"`
+	Mood    string `json:"mood"`
 }
 
 func (q *Queries) SessionHistory(ctx context.Context, arg SessionHistoryParams) ([]SessionHistoryRow, error) {
@@ -198,7 +222,7 @@ func (q *Queries) SessionHistory(ctx context.Context, arg SessionHistoryParams) 
 	var items []SessionHistoryRow
 	for rows.Next() {
 		var i SessionHistoryRow
-		if err := rows.Scan(&i.Role, &i.Content); err != nil {
+		if err := rows.Scan(&i.Role, &i.Content, &i.Mood); err != nil {
 			return nil, err
 		}
 		items = append(items, i)

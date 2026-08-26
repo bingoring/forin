@@ -99,6 +99,7 @@ type DialogueTurn struct {
 	Role      string             `json:"role"`
 	Content   string             `json:"content"`
 	CreatedAt pgtype.Timestamptz `json:"created_at"`
+	Mood      string             `json:"mood"`
 }
 
 type Event struct {

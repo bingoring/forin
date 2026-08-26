@@ -371,13 +371,23 @@ type SpeechSynthesizer interface {
 
 // ConversationSession / Turn are persistence DTOs for dialogue.
 type ConversationSession struct{ ID, UserID, ScenarioID string }
-type ConversationTurn struct{ Role, Content string }
+type ConversationTurn struct {
+	Role, Content string
+	// Mood is the NPC's mood at this turn, "" for a user turn (and for assistant
+	// turns recorded before the column existed).
+	Mood string
+}
 
 // ConversationRepo persists dialogue sessions and turns.
 type ConversationRepo interface {
 	CreateSession(ctx context.Context, userID, scenarioID string) (string, error)
 	GetSession(ctx context.Context, sessionID string) (*ConversationSession, error)
-	AppendTurn(ctx context.Context, sessionID, role, content string) error
+	// AppendTurn records one turn. `mood` is "" for user turns and for an assistant
+	// reply whose mood could not be read.
+	AppendTurn(ctx context.Context, sessionID, role, content, mood string) error
+	// LatestAssistantMood returns the mood of the NPC's most recent turn, or "" when
+	// it has not spoken yet. Used to decide whether THIS turn made things better.
+	LatestAssistantMood(ctx context.Context, sessionID string) (string, error)
 	History(ctx context.Context, sessionID string, limit int) ([]ConversationTurn, error)
 	// LatestSessionWithTurns finds the newest session for this learner+scenario
 	// that has at least one turn, so a half-finished conversation can be picked

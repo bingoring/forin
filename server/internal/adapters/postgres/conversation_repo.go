@@ -36,8 +36,8 @@ func (r *ConversationRepo) GetSession(ctx context.Context, sessionID string) (*p
 	return &ports.ConversationSession{ID: s.ID, UserID: s.UserID, ScenarioID: s.ScenarioID}, nil
 }
 
-func (r *ConversationRepo) AppendTurn(ctx context.Context, sessionID, role, content string) error {
-	return r.q.AppendTurn(ctx, sqlc.AppendTurnParams{SessionID: sessionID, Role: role, Content: content})
+func (r *ConversationRepo) AppendTurn(ctx context.Context, sessionID, role, content, mood string) error {
+	return r.q.AppendTurn(ctx, sqlc.AppendTurnParams{SessionID: sessionID, Role: role, Content: content, Mood: mood})
 }
 
 func (r *ConversationRepo) History(ctx context.Context, sessionID string, limit int) ([]ports.ConversationTurn, error) {
@@ -47,7 +47,7 @@ func (r *ConversationRepo) History(ctx context.Context, sessionID string, limit 
 	}
 	out := make([]ports.ConversationTurn, 0, len(rows))
 	for _, t := range rows {
-		out = append(out, ports.ConversationTurn{Role: t.Role, Content: t.Content})
+		out = append(out, ports.ConversationTurn{Role: t.Role, Content: t.Content, Mood: t.Mood})
 	}
 	return out, nil
 }
@@ -77,4 +77,20 @@ func (r *ConversationRepo) LatestSessionWithTurns(ctx context.Context, userID, s
 func (r *ConversationRepo) SaveCorrection(ctx context.Context, userID, original, corrected, note, topicTag string) error {
 	return r.q.InsertCorrection(ctx, sqlc.InsertCorrectionParams{
 		UserID: userID, Original: original, Corrected: corrected, Note: note, TopicTag: topicTag})
+}
+
+// LatestAssistantMood returns the mood of the NPC's most recent turn, or "".
+//
+// A missing row is not an error: a session where the NPC has not spoken yet has no
+// mood to report, and treating that as a failure would break the first turn of every
+// conversation.
+func (r *ConversationRepo) LatestAssistantMood(ctx context.Context, sessionID string) (string, error) {
+	mood, err := r.q.LatestAssistantMood(ctx, sessionID)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return "", nil
+	}
+	if err != nil {
+		return "", err
+	}
+	return mood, nil
 }

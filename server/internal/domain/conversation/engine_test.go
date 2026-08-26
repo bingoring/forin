@@ -65,6 +65,8 @@ type fakeConvoRepo struct {
 	sessions     map[string]*ports.ConversationSession
 	history      []ports.ConversationTurn
 	historyFor   string // records which session History was asked for
+	appended     []ports.ConversationTurn
+	priorMood    string
 }
 
 func (f *fakeConvoRepo) CreateSession(context.Context, string, string) (string, error) {
@@ -73,7 +75,26 @@ func (f *fakeConvoRepo) CreateSession(context.Context, string, string) (string, 
 func (f *fakeConvoRepo) GetSession(_ context.Context, id string) (*ports.ConversationSession, error) {
 	return f.sessions[id], nil
 }
-func (f *fakeConvoRepo) AppendTurn(context.Context, string, string, string) error { return nil }
+
+// Records what was appended, so a mood test can assert the turn stored the mood the
+// stream reported — and stored the reader's text, not the tagged raw reply.
+func (f *fakeConvoRepo) AppendTurn(_ context.Context, _, role, content, mood string) error {
+	f.appended = append(f.appended, ports.ConversationTurn{Role: role, Content: content, Mood: mood})
+	return nil
+}
+
+// The mood of the last assistant turn, from whatever the test seeded as history.
+func (f *fakeConvoRepo) LatestAssistantMood(_ context.Context, _ string) (string, error) {
+	if f.priorMood != "" {
+		return f.priorMood, nil
+	}
+	for i := len(f.history) - 1; i >= 0; i-- {
+		if f.history[i].Role != "user" {
+			return f.history[i].Mood, nil
+		}
+	}
+	return "", nil
+}
 func (f *fakeConvoRepo) History(_ context.Context, sessionID string, _ int) ([]ports.ConversationTurn, error) {
 	f.historyFor = sessionID
 	return f.history, nil

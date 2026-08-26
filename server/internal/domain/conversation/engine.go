@@ -221,7 +221,7 @@ func (e *Engine) prepare(ctx context.Context, userID, sessionID, text string) (s
 			}
 		}
 	}
-	if err := e.convo.AppendTurn(ctx, sessionID, "user", text); err != nil {
+	if err := e.convo.AppendTurn(ctx, sessionID, "user", text, ""); err != nil {
 		return "", nil, nil, "", err
 	}
 	hist, err := e.convo.History(ctx, sessionID, historyLimit)
@@ -292,39 +292,88 @@ func (e *Engine) reputationDisposition(ctx context.Context, userID string, sc *c
 }
 
 // SendMessage records the user's line, generates the NPC reply in persona, persists both.
-func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (string, error) {
-	system, msgs, sc, priorNpc, err := e.prepare(ctx, userID, sessionID, text)
-	if err != nil {
-		return "", err
-	}
-	reply, err := e.strategy.Generate(ctx, system, msgs)
-	if err != nil {
-		return "", err
-	}
-	reply = strings.TrimSpace(reply)
-	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply); err != nil {
-		return "", err
-	}
-	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
-	return reply, nil
+// Reply is one NPC turn: what was said, how the character feels having heard the
+// learner, and whether that is better than a moment ago.
+//
+// Improved is computed on the server rather than left to the client because it needs
+// the PREVIOUS turn's mood, which lives in storage — a client would have to remember
+// it across an app restart, and a resumed conversation would celebrate its first turn.
+type Reply struct {
+	Text string
+	// Mood is "" when the model did not tag its reply (or tagged it unreadably). The
+	// screen then leaves the portrait as it was, which is how it behaved before moods
+	// existed.
+	Mood string
+	// Improved is true only when this turn moved the character to a better place.
+	// Never true on a first turn, a decline, or no change — the app celebrates
+	// improvement and stays silent otherwise.
+	Improved bool
 }
 
-// SendMessageStream streams the NPC reply (onDelta per chunk) and persists the full turn.
-func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text string, onDelta func(string) error) (string, error) {
+func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (Reply, error) {
+	// Read BEFORE prepare appends the user turn — prepare does not touch assistant
+	// turns, but reading first makes the ordering independent of that detail.
+	prevMood, _ := e.convo.LatestAssistantMood(ctx, sessionID)
 	system, msgs, sc, priorNpc, err := e.prepare(ctx, userID, sessionID, text)
 	if err != nil {
-		return "", err
+		return Reply{}, err
 	}
-	reply, err := e.strategy.GenerateStream(ctx, system, msgs, onDelta)
+	raw, err := e.strategy.Generate(ctx, system, msgs)
 	if err != nil {
-		return "", err
+		return Reply{}, err
 	}
+	mood, reply := SplitMood(strings.TrimSpace(raw))
 	reply = strings.TrimSpace(reply)
-	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply); err != nil {
-		return "", err
+	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply, mood); err != nil {
+		return Reply{}, err
 	}
 	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
-	return reply, nil
+	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood)}, nil
+}
+
+// SendMessageStream streams the NPC reply and persists the full turn.
+//
+// `onMood` fires at most once, as soon as the tag at the head of the reply is read —
+// before any text reaches the learner, so the portrait and the bubble's border are
+// already right when the first words appear. It may not fire at all (an untagged
+// reply), and the screen then keeps what it was showing.
+//
+// `onDelta` never sees the tag: the stripper holds the head of the stream back until
+// it is resolved. What the model produced and what the learner reads differ by
+// exactly that tag, and the persisted turn stores the reader's version.
+func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text string, onMood func(string), onDelta func(string) error) (Reply, error) {
+	prevMood, _ := e.convo.LatestAssistantMood(ctx, sessionID)
+	system, msgs, sc, priorNpc, err := e.prepare(ctx, userID, sessionID, text)
+	if err != nil {
+		return Reply{}, err
+	}
+	mood := ""
+	strip := newMoodStripper(func(m string) {
+		mood = m
+		if onMood != nil {
+			onMood(m)
+		}
+	}, onDelta)
+	raw, err := e.strategy.GenerateStream(ctx, system, msgs, strip.Write)
+	if err != nil {
+		return Reply{}, err
+	}
+	if err := strip.Flush(); err != nil {
+		return Reply{}, err
+	}
+	// The persisted text comes from the full raw reply, not from the streamed pieces:
+	// a provider that returns the whole reply and calls onDelta zero times is allowed,
+	// and the stored turn must be the same sentence either way.
+	tagged, reply := SplitMood(strings.TrimSpace(raw))
+	if mood == "" {
+		mood = tagged
+	}
+	reply = strings.TrimSpace(reply)
+	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply, mood); err != nil {
+		return Reply{}, err
+	}
+	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
+	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood)}, nil
 }
 
 // fileCorrection runs an AI correction on the learner's utterance in the background
@@ -452,7 +501,10 @@ func buildSystemPrompt(sc *content.Scenario, lc langContext, disposition string)
 	if disposition != "" {
 		b.WriteString("Baseline disposition (reputation): " + disposition + "\n")
 	}
-	b.WriteString(fmt.Sprintf("Reply in %s only, as 1-3 short spoken sentences your character would actually say in a real hospital.", lc.Target))
+	b.WriteString(fmt.Sprintf("Reply in %s only, as 1-3 short spoken sentences your character would actually say in a real hospital.\n", lc.Target))
+	// Last, so it is the instruction closest to the reply the model is about to write —
+	// the tag is a formatting rule and the ones above are character rules.
+	b.WriteString(moodInstruction)
 	return b.String()
 }
 

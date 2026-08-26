@@ -1,0 +1,11 @@
+-- The NPC's mood at each assistant turn.
+--
+-- Needed for the "did this turn make things better" signal, which compares a turn
+-- against the PREVIOUS one. An in-memory variable cannot serve that: a dialogue is
+-- resumable (POST /conversation/{id}/message continues a session across app restarts
+-- and even devices), so the prior mood has to survive the process that produced it.
+--
+-- Empty string, not NULL: a user turn has no mood, and neither does an assistant
+-- turn from before this column existed. '' says "none" without the three-valued
+-- logic, matching how scenario_id and session_id already spell absence here.
+ALTER TABLE dialogue_turns ADD COLUMN mood text NOT NULL DEFAULT '';

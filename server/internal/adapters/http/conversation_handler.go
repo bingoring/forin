@@ -163,7 +163,16 @@ func (h *conversationHandler) message(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusBadGateway, "ai unavailable")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]string{"reply": reply})
+	// mood/moodImproved are omitted when absent, so a client that only reads `reply`
+	// is unaffected and an untagged turn sends neither.
+	out := map[string]any{"reply": reply.Text}
+	if reply.Mood != "" {
+		out["mood"] = reply.Mood
+	}
+	if reply.Improved {
+		out["moodImproved"] = true
+	}
+	httpx.JSON(w, http.StatusOK, out)
 }
 
 // @Summary AI-correct an English utterance (creates a review card)
@@ -242,8 +251,21 @@ func (h *conversationHandler) stream(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	flusher.Flush()
 
+	// The mood rides its own named SSE event, ahead of the text.
+	//
+	// A named event rather than an inline marker in the text stream: the deltas are
+	// what the learner reads, and putting protocol in them means every client has to
+	// parse it out correctly or show the learner a tag. Unnamed `data:` frames stay
+	// exactly what they were, so a client that ignores this event behaves as before.
+	onMood := func(mood string) {
+		b, _ := json.Marshal(mood)
+		if _, err := fmt.Fprintf(w, "event: mood\ndata: %s\n\n", b); err != nil {
+			return // the write error surfaces on the next delta
+		}
+		flusher.Flush()
+	}
 	// Each chunk is JSON-encoded so newlines don't break SSE framing.
-	_, err := h.engine.SendMessageStream(r.Context(), uid, r.PathValue("sessionId"), req.Text, func(chunk string) error {
+	reply, err := h.engine.SendMessageStream(r.Context(), uid, r.PathValue("sessionId"), req.Text, onMood, func(chunk string) error {
 		b, _ := json.Marshal(chunk)
 		if _, err := fmt.Fprintf(w, "data: %s\n\n", b); err != nil {
 			return err
@@ -256,6 +278,14 @@ func (h *conversationHandler) stream(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "event: error\ndata: \"ai unavailable\"\n\n")
 		flusher.Flush()
 		return
+	}
+	// Sent last, after the text: the celebration belongs to a line the learner has
+	// finished reading. Only on improvement — see MoodImproved for why there is no
+	// event for getting worse.
+	if reply.Improved {
+		b, _ := json.Marshal(reply.Mood)
+		fmt.Fprintf(w, "event: moodImproved\ndata: %s\n\n", b)
+		flusher.Flush()
 	}
 	fmt.Fprint(w, "event: done\ndata: \"[DONE]\"\n\n")
 	flusher.Flush()

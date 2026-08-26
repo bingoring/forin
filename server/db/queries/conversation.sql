@@ -5,10 +5,19 @@ INSERT INTO conversation_sessions (user_id, scenario_id) VALUES ($1, $2) RETURNI
 SELECT id, user_id, scenario_id FROM conversation_sessions WHERE id = $1;
 
 -- name: AppendTurn :exec
-INSERT INTO dialogue_turns (session_id, role, content) VALUES ($1, $2, $3);
+INSERT INTO dialogue_turns (session_id, role, content, mood) VALUES ($1, $2, $3, $4);
 
 -- name: SessionHistory :many
-SELECT role, content FROM dialogue_turns WHERE session_id = $1 ORDER BY created_at LIMIT $2;
+SELECT role, content, mood FROM dialogue_turns WHERE session_id = $1 ORDER BY created_at LIMIT $2;
+
+-- name: LatestAssistantMood :one
+-- The mood of the last thing the NPC said, for comparing the next turn against.
+-- Empty when the NPC has not spoken yet, or spoke before this column existed —
+-- either way there is nothing to have improved on, which MoodImproved treats as
+-- "no change" rather than as a win.
+SELECT COALESCE(mood, '') FROM dialogue_turns
+ WHERE session_id = $1 AND role <> 'user'
+ ORDER BY created_at DESC LIMIT 1;
 
 -- name: LatestSessionWithTurns :one
 -- The most recent session for this learner + scenario that actually has turns.
