@@ -219,6 +219,12 @@ export default function ResultRoute() {
         style={{ zIndex: 2 }}
         contentContainerStyle={{ paddingHorizontal: 22, paddingTop: 80, paddingBottom: 48, alignItems: 'center' }}
         showsVerticalScrollIndicator={false}
+        // The scroller fills the screen, so it sits on top of the background Pressable
+        // that spawns a confetti burst wherever you tap — the handoff's "bursts again
+        // wherever the user taps". A plain ScrollView swallowed those taps and the
+        // feature silently died when this column started scrolling. onTouchEnd fires
+        // for a tap and not for a drag, so scrolling still scrolls.
+        onTouchEnd={(e) => spawnBurst(e.nativeEvent.locationX, e.nativeEvent.locationY)}
       >
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? t('result.clear') : t('result.goodTry')}</Text>
 
