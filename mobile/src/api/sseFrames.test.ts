@@ -60,3 +60,10 @@ test('a partial or non-string payload is ignored', () => {
   expect(parseSseLines(['data: {"half'])).toEqual([]);
   expect(parseSseLines(['data: 42'])).toEqual([]);
 });
+
+// The character saying "everything I needed is handled". Its payload is a JSON string
+// like every other frame's — the parser has one rule, and a bare `true` would be
+// dropped by it silently.
+test('the resolved frame is recognised and is not speech', () => {
+  expect(parseSseLines(['event: resolved', 'data: "resolved"', ''])).toEqual([{ kind: 'resolved' }]);
+});

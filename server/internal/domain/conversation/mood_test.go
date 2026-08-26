@@ -107,7 +107,7 @@ func TestSplitMood(t *testing.T) {
 		// An unterminated tag is left alone rather than swallowing the whole reply.
 		{"[mood: worried the patient is upset and keeps talking without closing", "", "[mood: worried the patient is upset and keeps talking without closing"},
 	} {
-		mood, text := SplitMood(tc.in)
+		mood, _, text := SplitMood(tc.in)
 		if mood != tc.wantMood || text != tc.wantText {
 			t.Errorf("SplitMood(%q) = (%q, %q), want (%q, %q)", tc.in, mood, text, tc.wantMood, tc.wantText)
 		}
@@ -125,5 +125,50 @@ func TestMoodInstructionIsStableAndComplete(t *testing.T) {
 	// Sorted, hence stable across process restarts (map iteration is not).
 	if !strings.Contains(moodInstruction, "angry, derp, focused, happy") {
 		t.Errorf("mood list is not sorted: %s", moodInstruction)
+	}
+}
+
+// The resolution flag: the character saying "everything I needed is handled". It is
+// what lets the app tell the learner they are done — without it they cannot know, and
+// the reported behaviour was carrying on well past the point of resolution.
+func TestSplitMoodReadsTheResolvedFlag(t *testing.T) {
+	for _, tc := range []struct {
+		in       string
+		wantMood string
+		wantDone bool
+		wantText string
+	}{
+		{"[mood: happy | resolved] Thank you, that's everything.", "happy", true, "Thank you, that's everything."},
+		{"[mood:happy|resolved]Thanks.", "happy", true, "Thanks."},
+		{"[MOOD: Happy | RESOLVED] Thanks.", "happy", true, "Thanks."},
+		// Absent means not resolved — the common case, and the safe default.
+		{"[mood: worried] Where is the doctor?", "worried", false, "Where is the doctor?"},
+		// A mood we cannot draw still leaves a readable flag: the two halves are
+		// independent, and dropping the flag because of the mood would lose the more
+		// important of the two.
+		{"[mood: bemused | resolved] Done.", "", true, "Done."},
+		// No tag at all: nothing claimed.
+		{"Where is the doctor?", "", false, "Where is the doctor?"},
+		// A reply that merely says the word must not be read as the flag.
+		{"[mood: happy] The problem is resolved now.", "happy", false, "The problem is resolved now."},
+	} {
+		mood, done, text := SplitMood(tc.in)
+		if mood != tc.wantMood || done != tc.wantDone || text != tc.wantText {
+			t.Errorf("SplitMood(%q) = (%q, %v, %q), want (%q, %v, %q)",
+				tc.in, mood, done, text, tc.wantMood, tc.wantDone, tc.wantText)
+		}
+	}
+}
+
+// The instruction has to ask for it, and has to say when NOT to use it — a flag on
+// every pleasant exchange would end conversations that had not been handled.
+func TestMoodInstructionAsksForResolutionCarefully(t *testing.T) {
+	if !strings.Contains(moodInstruction, "resolved") {
+		t.Error("the instruction never asks for the resolution flag")
+	}
+	for _, guard := range []string{"only if", "never on your first reply"} {
+		if !strings.Contains(strings.ToLower(moodInstruction), guard) {
+			t.Errorf("the instruction omits the %q guard: %s", guard, moodInstruction)
+		}
 	}
 }

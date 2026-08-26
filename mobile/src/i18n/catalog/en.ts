@@ -571,4 +571,8 @@ export const en: Record<string, string> = {
   'list.retry': 'Try again',
   'list.emptyInDept': 'Nothing in {dept} yet',
   'list.emptyInDeptHint': 'Try another department, or view all',
+  'dialogue.wrapUpTitle': 'This looks handled',
+  'dialogue.wrapUpBody': 'It sounds like everything has been covered. Wrap up here? If there is more you want to check, keep going.',
+  'dialogue.wrapUpKeepGoing': 'Keep talking',
+  'dialogue.wrapUpFinish': 'Wrap up here',
 };

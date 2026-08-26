@@ -81,3 +81,34 @@ test('the bubble does not open with the space the mood tag left behind', () => {
   // trimming every chunk would glue words together.
   expect(SRC).toMatch(/prev \? prev \+ chunk : chunk\.replace\(\/\^\\s\+\/, ''\)/);
 });
+
+// The wrap-up prompt: asked once, never deciding.
+//
+// The learner could not tell when a situation was resolved and kept talking past it.
+// But the character's "everything is handled" is not the grade — that is goal
+// coverage, computed at the end — so the two can disagree, and the honest move is a
+// question rather than ending the conversation for them.
+test('the wrap-up prompt is asked at most once per conversation', () => {
+  // A ref, not state: it must survive the re-render that showing the sheet causes,
+  // and declining must not re-arm it.
+  expect(SRC).toMatch(/askedWrapUp = useRef\(false\)/);
+  expect(SRC).toMatch(/if \(askedWrapUp\.current\) return;\s*\n\s*askedWrapUp\.current = true;/);
+});
+
+test('declining keeps the conversation open, and it never asks again', () => {
+  // Keep-talking only closes the sheet — it does not end, and does not reset the ref.
+  expect(SRC).toMatch(/wrapUpKeepGoing[\s\S]{0,400}?onPress=\{\(\) => setWrapUp\(false\)\}/);
+  expect(SRC).not.toMatch(/askedWrapUp\.current = false/);
+});
+
+test('accepting grades the conversation rather than abandoning it', () => {
+  // endSituation is the same path as the 상황 종료 button: it routes to the result
+  // screen with the session, which is what gets graded.
+  expect(SRC).toMatch(/setWrapUp\(false\); endSituation\(\)/);
+});
+
+test('the prompt is driven by the server signal, not by a turn count', () => {
+  // Guessing from turn count would fire on conversations that were nowhere near
+  // resolved, and miss ones that resolved in three lines.
+  expect(SRC).toMatch(/onResolved: \(\) => \{/);
+});

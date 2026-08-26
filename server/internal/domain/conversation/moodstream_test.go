@@ -8,28 +8,34 @@ import (
 // drive feeds chunks through a stripper and returns what reached the learner and
 // which mood was announced.
 func drive(chunks []string) (text, mood string, err error) {
+	t, m, _, e := driveFull(chunks)
+	return t, m, e
+}
+
+// driveFull also reports the resolution flag.
+func driveFull(chunks []string) (text, mood string, resolved bool, err error) {
 	var out strings.Builder
-	m := newMoodStripper(func(x string) { mood = x }, func(s string) error {
+	m := newMoodStripper(func(x string, done bool) { mood, resolved = x, done }, func(s string) error {
 		out.WriteString(s)
 		return nil
 	})
 	for _, c := range chunks {
 		if err = m.Write(c); err != nil {
-			return out.String(), mood, err
+			return out.String(), mood, resolved, err
 		}
 	}
 	err = m.Flush()
-	return out.String(), mood, err
+	return out.String(), mood, resolved, err
 }
 
 // The learner must never see the tag. A bubble that flashes "[mood: worried]" before
 // the sentence is worse than having no mood at all.
 func TestStreamedTagNeverReachesTheLearner(t *testing.T) {
 	for _, chunks := range [][]string{
-		{"[mood: worried] Where is the doctor?"},              // one chunk
-		{"[mood:", " worried]", " Where is the doctor?"},      // split on the tag
+		{"[mood: worried] Where is the doctor?"},                                                       // one chunk
+		{"[mood:", " worried]", " Where is the doctor?"},                                               // split on the tag
 		{"[", "m", "o", "o", "d", ":", "w", "o", "r", "r", "i", "e", "d", "]", "Where is the doctor?"}, // per character
-		{"[mood: worried]", "Where is ", "the doctor?"},       // tag alone in its chunk
+		{"[mood: worried]", "Where is ", "the doctor?"},                                                // tag alone in its chunk
 	} {
 		text, mood, err := drive(chunks)
 		if err != nil {
@@ -51,7 +57,7 @@ func TestStreamedTagNeverReachesTheLearner(t *testing.T) {
 // be held back waiting for a tag that is never coming.
 func TestUntaggedReplyStreamsUnchangedAndImmediately(t *testing.T) {
 	var got []string
-	m := newMoodStripper(func(string) { t.Error("announced a mood for an untagged reply") }, func(s string) error {
+	m := newMoodStripper(func(string, bool) { t.Error("announced a mood for an untagged reply") }, func(s string) error {
 		got = append(got, s)
 		return nil
 	})
@@ -145,5 +151,39 @@ func TestLeadingWhitespaceDoesNotDefeatTheTag(t *testing.T) {
 	}
 	if mood != "happy" || strings.TrimSpace(text) != "Thanks." {
 		t.Errorf("text = %q, mood = %q", text, mood)
+	}
+}
+
+// The resolution flag has to survive being split across chunks, exactly like the
+// mood: the tag arrives in whatever pieces the provider chooses.
+func TestStreamedResolvedFlagSurvivesChunking(t *testing.T) {
+	for _, chunks := range [][]string{
+		{"[mood: happy | resolved] All done, thank you."},
+		{"[mood: happy", " | resolved]", " All done, thank you."},
+		{"[mood:", " happy", " |", " resolved", "]", "All done, thank you."},
+	} {
+		text, mood, resolved, err := driveFull(chunks)
+		if err != nil {
+			t.Fatalf("%v: %v", chunks, err)
+		}
+		if !resolved {
+			t.Errorf("%v lost the resolved flag", chunks)
+		}
+		if mood != "happy" {
+			t.Errorf("%v -> mood %q", chunks, mood)
+		}
+		if strings.Contains(text, "resolved") || strings.Contains(text, "[") {
+			t.Errorf("%v leaked the tag: %q", chunks, text)
+		}
+	}
+}
+
+// The longer tag must still fit inside the hold-back bound, or it releases as text
+// and the learner reads "[mood: happy | resolved]".
+func TestResolvedTagFitsWithinTheHoldBackBound(t *testing.T) {
+	longest := "[mood: surprised | resolved]"
+	if len(longest) > maxMoodPrefix {
+		t.Fatalf("the longest tag is %d chars but the bound is %d — it would leak as text",
+			len(longest), maxMoodPrefix)
 	}
 }

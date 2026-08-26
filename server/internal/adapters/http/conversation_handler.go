@@ -173,6 +173,9 @@ func (h *conversationHandler) message(w http.ResponseWriter, r *http.Request) {
 	if reply.Improved {
 		out["moodImproved"] = true
 	}
+	if reply.Resolved {
+		out["resolved"] = true
+	}
 	httpx.JSON(w, http.StatusOK, out)
 }
 
@@ -297,6 +300,15 @@ func (h *conversationHandler) stream(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "event: error\ndata: \"ai unavailable\"\n\n")
 		flusher.Flush()
 		return
+	}
+	// After the text: the character has just said the thing that resolved it, and the
+	// learner should read that before being asked whether to wrap up.
+	if reply.Resolved {
+		// A JSON STRING, like every other payload on this stream. The client's parser
+		// has one rule — every frame's data is a JSON string — and a bare `true` would
+		// be dropped by it silently.
+		fmt.Fprint(w, "event: resolved\ndata: \"resolved\"\n\n")
+		flusher.Flush()
 	}
 	// Sent last, after the text: the celebration belongs to a line the learner has
 	// finished reading. Only on improvement — see MoodImproved for why there is no

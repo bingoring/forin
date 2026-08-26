@@ -308,6 +308,15 @@ type Reply struct {
 	// Never true on a first turn, a decline, or no change — the app celebrates
 	// improvement and stays silent otherwise.
 	Improved bool
+	// Resolved: the character considers everything they needed handled. This is what
+	// lets the app tell the learner they are done — without it they cannot know, and
+	// the reported behaviour was carrying on well past the point of resolution.
+	//
+	// It is the CHARACTER's view, not a grade. Whether the run actually clears is
+	// still decided at the end by goal coverage (score.go), and the two can disagree:
+	// a patient can be satisfied by a conversation that skipped a goal. So the app
+	// asks rather than ends.
+	Resolved bool
 }
 
 func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (Reply, error) {
@@ -322,13 +331,13 @@ func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string
 	if err != nil {
 		return Reply{}, err
 	}
-	mood, reply := SplitMood(strings.TrimSpace(raw))
+	mood, resolved, reply := SplitMood(strings.TrimSpace(raw))
 	reply = strings.TrimSpace(reply)
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply, mood); err != nil {
 		return Reply{}, err
 	}
 	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
-	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood)}, nil
+	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood), Resolved: resolved}, nil
 }
 
 // SendMessageStream streams the NPC reply and persists the full turn.
@@ -347,9 +356,9 @@ func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text 
 	if err != nil {
 		return Reply{}, err
 	}
-	mood := ""
-	strip := newMoodStripper(func(m string) {
-		mood = m
+	mood, resolved := "", false
+	strip := newMoodStripper(func(m string, done bool) {
+		mood, resolved = m, done
 		if onMood != nil {
 			onMood(m)
 		}
@@ -364,16 +373,18 @@ func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text 
 	// The persisted text comes from the full raw reply, not from the streamed pieces:
 	// a provider that returns the whole reply and calls onDelta zero times is allowed,
 	// and the stored turn must be the same sentence either way.
-	tagged, reply := SplitMood(strings.TrimSpace(raw))
+	tagged, taggedResolved, reply := SplitMood(strings.TrimSpace(raw))
 	if mood == "" {
 		mood = tagged
 	}
+	// A provider that streamed nothing still tagged its reply.
+	resolved = resolved || taggedResolved
 	reply = strings.TrimSpace(reply)
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply, mood); err != nil {
 		return Reply{}, err
 	}
 	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
-	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood)}, nil
+	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood), Resolved: resolved}, nil
 }
 
 // fileCorrection runs an AI correction on the learner's utterance in the background

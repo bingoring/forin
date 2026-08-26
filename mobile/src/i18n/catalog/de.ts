@@ -570,4 +570,8 @@ export const de: Record<string, string> = {
   'list.retry': 'Erneut versuchen',
   'list.emptyInDept': 'Noch nichts in {dept}',
   'list.emptyInDeptHint': 'Probier eine andere Abteilung oder alle',
+  'dialogue.wrapUpTitle': 'Das scheint geklärt',
+  'dialogue.wrapUpBody': 'Es klingt, als wäre alles besprochen. Hier abschließen? Wenn du noch etwas prüfen willst, mach weiter.',
+  'dialogue.wrapUpKeepGoing': 'Weiterreden',
+  'dialogue.wrapUpFinish': 'Hier abschließen',
 };

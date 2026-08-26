@@ -130,6 +130,15 @@ export default function DialogueRoute() {
   // Set when this turn moved the character to a better place. Cleared when the next
   // turn starts, so the banner belongs to the line that earned it.
   const [improved, setImproved] = useState<Mood | undefined>(undefined);
+  // The character has said everything they needed is handled.
+  //
+  // Asked ONCE per conversation, and only asked — never decided. The learner could
+  // not tell when a situation was resolved and kept talking past it; but the
+  // character's view is not the grade (that is goal coverage, computed at the end),
+  // so the two can disagree and the honest move is a question. `asked` is what stops
+  // it becoming a nag: declining once means it never appears again.
+  const [wrapUp, setWrapUp] = useState(false);
+  const askedWrapUp = useRef(false);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
 
@@ -223,6 +232,11 @@ export default function DialogueRoute() {
         // when the learner starts reading.
         onMood: (m) => setTurnMood(asMood(m)),
         onImproved: (m) => setImproved(asMood(m)),
+        onResolved: () => {
+          if (askedWrapUp.current) return;
+          askedWrapUp.current = true;
+          setWrapUp(true);
+        },
       });
       void speakNpc();
     } catch {
@@ -677,6 +691,40 @@ export default function DialogueRoute() {
           )}
         </View>
       </Animated.View>
+      {/* 상황이 해소된 것 같을 때 한 번 묻는다. 판단이 아니라 질문이다 — 마무리를
+          누르면 지금까지의 대화로 채점하고, 계속을 누르면 다시 묻지 않는다. */}
+      <BottomSheet visible={wrapUp} onClose={() => setWrapUp(false)}>
+        <View style={{ padding: 18, gap: 12 }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{t('dialogue.wrapUpTitle')}</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.text, lineHeight: 18 }}>{t('dialogue.wrapUpBody')}</Text>
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <PixelButton
+              label={t('dialogue.wrapUpKeepGoing')}
+              bg="#fff"
+              shadowColor={C}
+              fontSize={12}
+              paddingV={9}
+              borderWidth={2}
+              offset={2}
+              onPress={() => setWrapUp(false)}
+              style={{ flex: 1 }}
+            />
+            <PixelButton
+              icon="check"
+              label={t('dialogue.wrapUpFinish')}
+              bg={colors.mint}
+              shadowColor={colors.mintShadow}
+              fontSize={12}
+              paddingV={9}
+              borderWidth={2}
+              offset={2}
+              onPress={() => { setWrapUp(false); endSituation(); }}
+              style={{ flex: 1 }}
+            />
+          </View>
+        </View>
+      </BottomSheet>
+
       {/* 이어하기 — 이전 대화가 있으면 세션을 열기 전에 먼저 묻는다. 마지막
           대사를 보여줘서 무엇을 이어받는지 알고 고르게 한다(닫기로 회피할 수
           없다: 아직 세션이 없으므로 둘 중 하나를 반드시 골라야 한다). */}

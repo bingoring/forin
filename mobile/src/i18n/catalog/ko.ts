@@ -601,4 +601,8 @@ export const ko: Record<string, string> = {
   'list.retry': '다시 시도',
   'list.emptyInDept': '{dept}에는 아직 없어요',
   'list.emptyInDeptHint': '다른 부서를 눌러보거나 전체를 보세요',
+  'dialogue.wrapUpTitle': '상황이 마무리된 것 같아요',
+  'dialogue.wrapUpBody': '필요한 이야기는 다 나눈 것 같아요. 여기서 마무리할까요? 더 확인할 게 있으면 계속 이어가도 괜찮아요.',
+  'dialogue.wrapUpKeepGoing': '더 이야기하기',
+  'dialogue.wrapUpFinish': '여기서 마무리',
 };

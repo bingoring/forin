@@ -8,6 +8,7 @@ export type SseFrame =
   | { kind: 'delta'; text: string }
   | { kind: 'mood'; mood: string }
   | { kind: 'improved'; mood: string }
+  | { kind: 'resolved' }
   | { kind: 'error' }
   | { kind: 'done' };
 
@@ -28,6 +29,7 @@ export function parseSseLines(lines: string[]): SseFrame[] {
     if (typeof value !== 'string') continue;
     if (event === 'mood') out.push({ kind: 'mood', mood: value });
     else if (event === 'moodImproved') out.push({ kind: 'improved', mood: value });
+    else if (event === 'resolved') out.push({ kind: 'resolved' });
     else if (event === 'error') out.push({ kind: 'error' });
     else if (event === '') out.push({ kind: 'delta', text: value });
     // An event name we do not know is dropped rather than shown: a future server

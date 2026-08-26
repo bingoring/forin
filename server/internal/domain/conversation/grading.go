@@ -27,6 +27,10 @@ var ErrNoTurns = errors.New("no user turns to grade")
 type GoalResult struct {
 	Goal string `json:"goal"`
 	Met  bool   `json:"met"`
+	// Evidence is the learner's own words that met this goal, quoted by the grader.
+	// A goal marked met with nothing quoted does not count (see EvidencedGoals):
+	// requiring the quote is what makes claiming a goal expensive.
+	Evidence string `json:"evidence,omitempty"`
 }
 
 // GradeTip is one concrete "you could have said…" suggestion → becomes a review card.
@@ -150,7 +154,10 @@ func (e *Engine) gradeTranscript(ctx context.Context, userID string, sc *content
 		return neutralGrade()
 	}
 	var parsed struct {
+		// Score is still read, but only as a fallback for a model that answers in the
+		// old shape: the number the app uses is computed from goals + clarity.
 		Score    int          `json:"score"`
+		Clarity  string       `json:"clarity"`
 		Goals    []GoalResult `json:"goals"`
 		Headline string       `json:"headline"`
 		Feedback string       `json:"feedback"`
@@ -159,11 +166,20 @@ func (e *Engine) gradeTranscript(ctx context.Context, userID string, sc *content
 	if i, j := strings.IndexByte(raw, '{'), strings.LastIndexByte(raw, '}'); i >= 0 && j > i {
 		_ = json.Unmarshal([]byte(raw[i:j+1]), &parsed)
 	}
-	if parsed.Headline == "" && parsed.Feedback == "" && parsed.Score == 0 {
+	if parsed.Headline == "" && parsed.Feedback == "" && parsed.Clarity == "" && len(parsed.Goals) == 0 {
 		return neutralGrade() // model returned nothing usable
 	}
+	// The score is DERIVED. A goal claimed without the learner's words behind it does
+	// not count, which is what stops a generous grader inflating everything at once.
+	met, total := EvidencedGoals(parsed.Goals)
+	score := ScoreOf(met, total, NormalizeClarity(parsed.Clarity))
+	if parsed.Clarity == "" && total == 0 && parsed.Score > 0 {
+		// Nothing to derive from — an old-shaped answer with neither goals nor a band.
+		// Its own number is better than a made-up one.
+		score = clampScore(parsed.Score)
+	}
 	g := &Grade{
-		Score:    clampScore(parsed.Score),
+		Score:    score,
 		Goals:    parsed.Goals,
 		Headline: strings.TrimSpace(parsed.Headline),
 		Feedback: strings.TrimSpace(parsed.Feedback),
@@ -197,11 +213,24 @@ func buildGradingPrompt(sc *content.Scenario, lc langContext) string {
 	if len(sc.KeyPhrases) > 0 {
 		b.WriteString("Useful reference phrases (not required verbatim): " + strings.Join(sc.KeyPhrases, "; ") + "\n")
 	}
-	b.WriteString(fmt.Sprintf("Judge whether they addressed the goals and communicated in clear, natural, clinically appropriate, empathetic %s. ", lc.Target))
-	b.WriteString("If they barely engaged, were off-topic, or unclear, score low honestly. If they handled it well, score high.\n")
+	// No score is asked for. A model told to pick 0-100 has nothing to calibrate
+	// against and rounds toward generous — one hint-shaped line was scoring 90+. It is
+	// asked instead for the two things it judges reliably: whether each goal was
+	// addressed, WITH the learner's words as evidence, and a named clarity band. The
+	// number is computed from those (see score.go).
+	b.WriteString(fmt.Sprintf("Judge whether they addressed each goal and how clearly they communicated in %s.\n", lc.Target))
+	b.WriteString("For every goal listed above, decide `met` and, when met, quote the learner's OWN WORDS that met it in `evidence`. ")
+	// Both halves are needed and they pull opposite ways. Without the first, the
+	// grader marks everything met because the exchange went well. Without the second,
+	// it demands the goal's own wording: a full PQRST assessment plus a structured
+	// hand-off summary was scored as NOT having "gathered information for the doctor",
+	// because the learner never used those words. Judge the substance, require the
+	// quote.
+	b.WriteString("Judge SUBSTANCE, not vocabulary: a goal is met if the learner actually accomplished it in their own words, across as many turns as it took, even if they never used the goal's terminology. ")
+	b.WriteString("A goal with no quotable line is NOT met — do not mark it met because the conversation went well overall, and do not credit a goal the other character handled.\n")
 	b.WriteString("Respond ONLY with JSON, no prose:\n")
-	b.WriteString("{\"score\": <0-100 integer>, ")
-	b.WriteString("\"goals\": [{\"goal\": <string>, \"met\": <bool>}], ")
+	b.WriteString("{\"clarity\": <one of \"excellent\", \"good\", \"fair\", \"poor\" — how clear and natural the learner's own sentences were>, ")
+	b.WriteString("\"goals\": [{\"goal\": <string>, \"met\": <bool>, \"evidence\": <the learner's exact words, or \"\">}], ")
 	b.WriteString(fmt.Sprintf("\"headline\": <%s, at most 18 characters, a short verdict>, ", lc.Native))
 	b.WriteString(fmt.Sprintf("\"feedback\": <%s, 2-3 specific, encouraging sentences>, ", lc.Native))
 	b.WriteString(fmt.Sprintf("\"tips\": [{\"en\": <a better %[1]s phrasing they could have used>, \"ko\": <%[2]s reason>, \"cue\": <%[2]s meaning of that exact phrase>}]}", lc.Target, lc.Native))

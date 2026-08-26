@@ -570,4 +570,8 @@ export const ja: Record<string, string> = {
   'list.retry': '再試行',
   'list.emptyInDept': '{dept}にはまだありません',
   'list.emptyInDeptHint': '他の部署か、すべてを見てください',
+  'dialogue.wrapUpTitle': '状況が落ち着いたようです',
+  'dialogue.wrapUpBody': '必要な話はできたようです。ここで終えますか？確認したいことがあれば続けても大丈夫です。',
+  'dialogue.wrapUpKeepGoing': 'もう少し話す',
+  'dialogue.wrapUpFinish': 'ここで終える',
 };

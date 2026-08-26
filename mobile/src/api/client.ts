@@ -964,7 +964,7 @@ export const api = {
     sessionId: string,
     text: string,
     onDelta: (chunk: string) => void,
-    handlers?: { onMood?: (mood: string) => void; onImproved?: (mood: string) => void },
+    handlers?: { onMood?: (mood: string) => void; onImproved?: (mood: string) => void; onResolved?: () => void },
   ): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       const token = useAuthStore.getState().accessToken;
@@ -993,6 +993,7 @@ export const api = {
             case 'delta': full += frame.text; onDelta(frame.text); break;
             case 'mood': handlers?.onMood?.(frame.mood); break;
             case 'improved': handlers?.onImproved?.(frame.mood); break;
+            case 'resolved': handlers?.onResolved?.(); break;
             // error/done: the promise's resolve/reject path already covers both, and
             // neither is anything the learner should read as speech.
             case 'error':
