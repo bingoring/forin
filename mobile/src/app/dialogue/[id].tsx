@@ -23,6 +23,8 @@ import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
+import { asMood, moodBorder, moodExpression, moodShowsSweat, type Mood } from '@/data/moodTone';
+import { MoodLift } from '@/components/dialogue/MoodLift';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -121,6 +123,13 @@ export default function DialogueRoute() {
     [threadTop, restingTop, raisedTop],
   );
   const messages = threadOf(transcript, npcLine);
+  // The NPC's mood for the CURRENT turn, from the server. undefined means the reply
+  // carried no mood, and the portrait then keeps the scenario's authored expression —
+  // a turn the model did not tag must not blank the patient's face.
+  const [turnMood, setTurnMood] = useState<Mood | undefined>(undefined);
+  // Set when this turn moved the character to a better place. Cleared when the next
+  // turn starts, so the banner belongs to the line that earned it.
+  const [improved, setImproved] = useState<Mood | undefined>(undefined);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
 
@@ -198,9 +207,22 @@ export default function DialogueRoute() {
     // Park the line the box is about to lose, then the learner's own line.
     setTranscript((t) => (npcLine ? [...t, { role: 'npc' as const, text: npcLine }, { role: 'user' as const, text }] : [...t, { role: 'user' as const, text }]));
     setNpcLine(''); setNpcLineKo(''); setShowKo(false); // clear for the streaming reply (no Ko for AI lines)
+    // The celebration belongs to the line that earned it, so it clears when the next
+    // turn begins. The MOOD does not clear here: until the reply arrives the character
+    // still feels what they felt, and blanking the portrait mid-turn would read as the
+    // patient going vacant while they wait for an answer.
+    setImproved(undefined);
     try {
       await api.sendMessageStream(sessionRef.current, text, (chunk) => {
-        setNpcLine((prev) => prev + chunk);
+        // trimStart on the FIRST chunk only. The mood tag is stripped server-side at
+        // the `]`, so the chunk after it usually begins with the space that separated
+        // them — and a bubble that opens with a space reads as a typo.
+        setNpcLine((prev) => (prev ? prev + chunk : chunk.replace(/^\s+/, '')));
+      }, {
+        // Arrives before the first word, so the face and the border are already right
+        // when the learner starts reading.
+        onMood: (m) => setTurnMood(asMood(m)),
+        onImproved: (m) => setImproved(asMood(m)),
       });
       void speakNpc();
     } catch {
@@ -325,13 +347,16 @@ export default function DialogueRoute() {
 
   const p = scenario?.persona ?? {};
   const kind = (ROLE_KINDS.has(p.role as RoleKind) ? p.role : 'patient') as RoleKind;
-  const expr = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
+  // The turn's mood wins; the scenario's authored mood is the opening state and the
+  // fallback for a reply that carried none.
+  const authored = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
+  const expr = moodExpression(turnMood) ?? authored;
   const npcName = (p.name || 'NPC').toUpperCase();
   const goals = scenario?.goals ?? [];
   const mission = goals[0];
   const chart = scenario?.briefing?.chart;
   const riskyPhrases = scenario?.briefing?.riskyPhrases ?? [];
-  const showSweat = expr === 'pain' || expr === 'panic' || expr === 'worried';
+  const showSweat = moodShowsSweat(turnMood) || (!turnMood && (expr === 'pain' || expr === 'panic' || expr === 'worried'));
   // A scenario can embed several quiz steps; surface them all as one sequence.
   const quizIds = (scenario?.steps ?? [])
     .filter((s) => s.type === 'quiz')
@@ -519,8 +544,13 @@ export default function DialogueRoute() {
             return (
               <View key={i} style={{ flexDirection: 'row', justifyContent: mine ? 'flex-end' : 'flex-start', marginBottom: 8 }}>
                 <View style={{ maxWidth: '86%' }}>
+                  {/* The NEWEST NPC bubble carries the mood in its outline. Only the
+                      newest: the mood belongs to the turn, and colouring the whole
+                      history would repaint lines whose mood is no longer known (the
+                      server stores it per turn, but the transcript this screen keeps
+                      is text) and turn the thread into a colour chart. */}
                   <Shadowed offset={2.5} shadowColor={mine ? C : colors.peachShadow}>
-                    <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
+                    <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: !mine && last ? moodBorder(turnMood) : C, paddingVertical: 9, paddingHorizontal: 12 }}>
                       <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 20 }}>
                         {last && !mine && showKo && npcLineKo ? npcLineKo : m.text}
                       </Text>
@@ -551,6 +581,10 @@ export default function DialogueRoute() {
             </View>
           )}
         </ScrollView>
+
+        {/* Between the thread and the input: in the reading path without covering
+            anything, and gone on its own before the next reply lands. */}
+        <MoodLift mood={improved} onDone={() => setImproved(undefined)} />
 
         {/* HINT ON: suggested responses (from the scenario's key phrases) */}
         {hintOn && !!scenario?.keyPhrases?.length && (

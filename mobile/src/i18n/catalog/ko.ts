@@ -582,4 +582,8 @@ export const ko: Record<string, string> = {
   'route.tryAgain': '다시 도전',
   'route.lockedHint': '이전 단계를 통과하면 열려요.',
   'route.now': '지금 도전',
+  'mood.lift.relieved': '환자가 안심했어요',
+  'mood.lift.calmed': '환자가 진정됐어요',
+  'mood.lift.settled': '상황이 안정됐어요',
+  'mood.lift.eased': '환자가 조금 나아졌어요',
 };

@@ -551,4 +551,8 @@ export const ja: Record<string, string> = {
   'route.tryAgain': '再挑戦',
   'route.lockedHint': '前の段階に合格すると開きます。',
   'route.now': '今すぐ挑戦',
+  'mood.lift.relieved': '患者が安心しました',
+  'mood.lift.calmed': '患者が落ち着きました',
+  'mood.lift.settled': '状況が安定しました',
+  'mood.lift.eased': '患者が少し良くなりました',
 };

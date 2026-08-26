@@ -552,4 +552,8 @@ export const en: Record<string, string> = {
   'route.tryAgain': 'Try again',
   'route.lockedHint': 'Opens once you pass the step before it.',
   'route.now': 'Do it now',
+  'mood.lift.relieved': 'They look relieved',
+  'mood.lift.calmed': 'They have calmed down',
+  'mood.lift.settled': 'The situation has settled',
+  'mood.lift.eased': 'They seem a little better',
 };

@@ -2,6 +2,7 @@
 // is swappable (1-3 decision: no direct fetch). Endpoint/response types come from
 // the generated contract (packages/contract), keeping mobile↔server type-safe.
 import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios';
+import { parseSseLines } from './sseFrames';
 import { useAuthStore } from '@/store/authStore';
 import { saveTokens } from '@/lib/secureStore';
 import type { paths } from '@contract/types';
@@ -943,7 +944,18 @@ export const api = {
    * incrementally and parse newly-arrived `data:` frames. onDelta receives each
    * chunk; resolves with the full reply. Falls back to sendMessage on failure.
    */
-  sendMessageStream(sessionId: string, text: string, onDelta: (chunk: string) => void): Promise<string> {
+  /** One NPC turn as it streams.
+   *
+   *  `onMood` fires at most once, before any text, so the portrait and the bubble's
+   *  border are already right when the first words appear. `onImproved` fires after
+   *  the text, and only when this turn moved the character to a better place.
+   */
+  sendMessageStream(
+    sessionId: string,
+    text: string,
+    onDelta: (chunk: string) => void,
+    handlers?: { onMood?: (mood: string) => void; onImproved?: (mood: string) => void },
+  ): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       const token = useAuthStore.getState().accessToken;
       const xhr = new XMLHttpRequest();
@@ -961,16 +973,20 @@ export const api = {
         if (lastNL === -1 && !flush) return;
         if (!flush && lastNL !== -1) { seen += lastNL + 1; chunkText = chunkText.slice(0, lastNL + 1); }
         else { seen = buf.length; }
-        for (const line of chunkText.split('\n')) {
-          const l = line.trim();
-          if (!l.startsWith('data:')) continue;
-          const payload = l.slice(5).trim();
-          if (payload === '"[DONE]"' || payload === '[DONE]') continue;
-          try {
-            const chunk = JSON.parse(payload) as string; // server JSON-encodes each chunk
-            if (typeof chunk === 'string') { full += chunk; onDelta(chunk); }
-          } catch {
-            /* not valid JSON yet; ignore */
+        // Framing lives in sseFrames.ts, tested without an XMLHttpRequest. This used
+        // to be inline and read only `data:` lines, ignoring `event:` — so every
+        // frame's payload was appended to the bubble as if the patient had said it.
+        // That was already wrong for `event: error` ("ai unavailable" in the
+        // patient's mouth) before moods gave it a second way to show.
+        for (const frame of parseSseLines(chunkText.split('\n'))) {
+          switch (frame.kind) {
+            case 'delta': full += frame.text; onDelta(frame.text); break;
+            case 'mood': handlers?.onMood?.(frame.mood); break;
+            case 'improved': handlers?.onImproved?.(frame.mood); break;
+            // error/done: the promise's resolve/reject path already covers both, and
+            // neither is anything the learner should read as speech.
+            case 'error':
+            case 'done': break;
           }
         }
       };
