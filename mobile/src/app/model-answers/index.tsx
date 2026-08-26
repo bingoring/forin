@@ -8,18 +8,12 @@ import { Stack, useRouter } from 'expo-router';
 import { api, type ModelAnswerGroup, type ModelAnswerSort } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
-import { PixelButton } from '@/components/PixelButton';
-import { BottomSheet } from '@/components/BottomSheet';
 import { Shadowed } from '@/components/campus/parts';
 import { ModelAnswerGroupRow } from '@/components/model/ModelAnswerGroupRow';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { PLACE_SCREEN } from '@/theme/transitions';
 import { useT } from '@/i18n';
 
-// The handoff pins the sticky header at 186 and starts the scroller at the same
-// number, warning that a header taller than that offset paints over the first
-// (highest-priority) row. One constant, so the two cannot drift apart.
-const HEADER_H = 186;
 const PAGE = 10;
 
 /** Department code from a scenario id (SCN-ER-00002 → ER); '' when there is none. */
@@ -41,7 +35,6 @@ export default function ModelAnswerList() {
   // Department filter, applied client-side. Lives in the sheet AND on the chip
   // row: the chips are the one-tap case, the sheet the compound one.
   const [depts, setDepts] = useState<string[]>([]);
-  const [filterOpen, setFilterOpen] = useState(false);
 
   const reload = useCallback((nextSort: ModelAnswerSort) => {
     setState('loading');
@@ -112,7 +105,7 @@ export default function ModelAnswerList() {
           <Pressable onPress={() => router.back()} hitSlop={10} style={styles.back}>
             <PixelIcon name="chevron-left" color={colors.ink} size={14} sw={2.2} />
           </Pressable>
-          <Text style={styles.title}>{t('model.listTitle')}</Text>
+          <Text style={styles.title}>{t('list.modelTitle')}</Text>
         </View>
 
         <View style={styles.controls}>
@@ -122,23 +115,13 @@ export default function ModelAnswerList() {
               {(['recent', 'needs-work'] as ModelAnswerSort[]).map((s) => (
                 <Pressable key={s} onPress={() => onSort(s)} style={[styles.segHalf, sort === s && styles.segActive]}>
                   <Text style={[styles.segText, sort === s && styles.segTextActive]}>
-                    {t(s === 'recent' ? 'model.sortRecent' : 'model.sortNeedsWork')}
+                    {t(s === 'recent' ? 'list.sortRecent' : 'list.sortNeedsWork')}
                   </Text>
                 </Pressable>
               ))}
             </View>
           </Shadowed>
           <View style={styles.spacer} />
-          {/* ⚙ 필터 N — the mobile stand-in for a filter bar. N is the applied
-              count, so the button itself says whether a filter is hiding rows. */}
-          <Pressable onPress={() => setFilterOpen(true)} hitSlop={6} style={styles.filterBtn}>
-            {/* The SoT draws ⚙; the app renders no glyphs (762bb6a) and has no gear
-                in its icon set, so `tag` carries the "filter by category" meaning. */}
-            <PixelIcon name="tag" color={colors.ink} size={11} sw={2} />
-            <Text style={styles.filterText}>
-              {depts.length > 0 ? t('list.filterCount', { n: depts.length }) : t('list.filter')}
-            </Text>
-          </Pressable>
         </View>
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
@@ -155,7 +138,15 @@ export default function ModelAnswerList() {
           })}
         </ScrollView>
 
-        <Text style={styles.count}>{t('model.shown', { shown: shown.length, total })}</Text>
+        {/* `total` is the unfiltered group count and the department filter is still
+            client-side here, so the count names what is SHOWN rather than implying a
+            ratio. (The speak list filters server-side; groups carry their cards, so
+            paging them per department is a bigger change than this screen needs.) */}
+        {total > 0 && (
+          <Text style={styles.count}>
+            {done ? t('list.countAllGroups', { total }) : t('list.countPartialGroups', { shown: groups.length, total })}
+          </Text>
+        )}
       </View>
 
       {state === 'loading' ? (
@@ -198,48 +189,6 @@ export default function ModelAnswerList() {
         />
       )}
 
-      <BottomSheet visible={filterOpen} onClose={() => setFilterOpen(false)} size="content">
-        <View style={styles.sheet}>
-          <Text style={styles.sheetTitle}>{t('list.filter')}</Text>
-          <View style={styles.sheetChips}>
-            {available.map((d) => {
-              const active = depts.includes(d);
-              return (
-                <Pressable key={d} onPress={() => toggleDept(d)}>
-                  <View style={[styles.chip, active && styles.chipActive]}>
-                    {active && <FIcon name="check" size={11} />}
-                    <Text style={styles.chipText}>{d}</Text>
-                  </View>
-                </Pressable>
-              );
-            })}
-          </View>
-          <View style={styles.sheetActions}>
-            <PixelButton
-              label={t('list.allDepts')}
-              bg="#fff"
-              shadowColor={colors.ink}
-              fontSize={11}
-              paddingV={8}
-              borderWidth={2}
-              offset={2}
-              onPress={() => setDepts([])}
-              style={{ flex: 1 }}
-            />
-            <PixelButton
-              label={t('list.apply')}
-              bg={colors.mint}
-              shadowColor={colors.mintShadow}
-              fontSize={11}
-              paddingV={8}
-              borderWidth={2}
-              offset={2}
-              onPress={() => setFilterOpen(false)}
-              style={{ flex: 1 }}
-            />
-          </View>
-        </View>
-      </BottomSheet>
     </View>
   );
 }
@@ -247,8 +196,9 @@ export default function ModelAnswerList() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.cream },
   header: {
-    height: HEADER_H,
+    // No fixed height — see the speak list for why the handoff's 186 does not port.
     paddingTop: 52,
+    paddingBottom: 9,
     paddingHorizontal: 14,
     backgroundColor: colors.cream,
     borderBottomWidth: 3,

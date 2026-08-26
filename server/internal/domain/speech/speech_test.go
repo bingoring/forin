@@ -69,10 +69,12 @@ type fakeSpeechRepo struct {
 	// assert the summary asks for the weakest two through the same paged query
 	// the full list uses.
 	spokenCalls []spokenCall
+	depts       []string
 }
 
 type spokenCall struct {
 	WeakestFirst  bool
+	Dept          string
 	Limit, Offset int
 }
 
@@ -84,8 +86,12 @@ func (f *fakeSpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.S
 	return f.bands, f.bandsErr
 }
 
-func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
-	f.spokenCalls = append(f.spokenCalls, spokenCall{weakestFirst, limit, offset})
+func (f *fakeSpeechRepo) SpokenDepartments(context.Context, string) ([]string, error) {
+	return f.depts, nil
+}
+
+func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+	f.spokenCalls = append(f.spokenCalls, spokenCall{weakestFirst, dept, limit, offset})
 	if f.spokenErr != nil {
 		return nil, 0, f.spokenErr
 	}

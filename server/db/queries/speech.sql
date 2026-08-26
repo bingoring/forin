@@ -111,6 +111,11 @@ WITH latest AS (
            completeness, scenario_id, origin, attempt_no, created_at
       FROM speech_attempts
      WHERE user_id = $1
+       -- '' means every department. Filtering HERE rather than on the client is what
+       -- makes `total` and the paging honest: a client-side filter reported "3 of 128"
+       -- for "3 matched among the pages loaded so far", and pulled more in as the
+       -- learner scrolled.
+       AND (sqlc.arg(dept)::text = '' OR split_part(scenario_id, '-', 2) = sqlc.arg(dept)::text)
      ORDER BY sentence_key, attempt_no DESC
 )
 SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
@@ -118,7 +123,7 @@ SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
        (SELECT COUNT(*)::int FROM latest) AS total
   FROM latest
  ORDER BY overall, created_at DESC
- LIMIT $2 OFFSET $3;
+ LIMIT sqlc.arg(lim) OFFSET sqlc.arg(off);
 
 -- name: ListSpeakSentencesRecent :many
 -- 최신: newest first. Same projection as ListSpeakSentencesWeak so one repo
@@ -129,6 +134,11 @@ WITH latest AS (
            completeness, scenario_id, origin, attempt_no, created_at
       FROM speech_attempts
      WHERE user_id = $1
+       -- '' means every department. Filtering HERE rather than on the client is what
+       -- makes `total` and the paging honest: a client-side filter reported "3 of 128"
+       -- for "3 matched among the pages loaded so far", and pulled more in as the
+       -- learner scrolled.
+       AND (sqlc.arg(dept)::text = '' OR split_part(scenario_id, '-', 2) = sqlc.arg(dept)::text)
      ORDER BY sentence_key, attempt_no DESC
 )
 SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
@@ -136,4 +146,17 @@ SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
        (SELECT COUNT(*)::int FROM latest) AS total
   FROM latest
  ORDER BY created_at DESC
- LIMIT $2 OFFSET $3;
+ LIMIT sqlc.arg(lim) OFFSET sqlc.arg(off);
+
+-- name: SpokenDepartments :many
+-- Every department the learner has spoken in, derived from the scenario id prefix
+-- (SCN-ER-00002 -> ER).
+--
+-- Sent with the list so the department chips are COMPLETE. Deriving them from the
+-- loaded pages instead made chips appear as the learner scrolled, and filtering to
+-- one showed only its rows among the pages fetched so far — the rest arrived later,
+-- which reads as the filter being broken.
+SELECT DISTINCT split_part(scenario_id, '-', 2) AS dept
+  FROM speech_attempts
+ WHERE user_id = $1 AND scenario_id LIKE 'SCN-%-%'
+ ORDER BY dept;

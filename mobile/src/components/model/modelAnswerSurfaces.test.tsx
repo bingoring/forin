@@ -77,13 +77,24 @@ test('a group with no title falls back to its scenario id', () => {
   expect(out).toContain('SCN-ER-00002');
 });
 
-// The handoff warns that a header taller than the scroller's offset paints over
-// the first row. Both list screens must keep it as a single constant.
-test('the list header height and the scroller offset are one constant', () => {
+// The handoff pins the sticky header at `height: 186` and starts the scroller at the
+// same offset. That number is a workaround for a CSS content-box bug — a header with
+// padding growing past its declared height and painting over the first row — and RN
+// has no such bug. Carried over literally it spent a quarter of the screen on a
+// title, a segment and a chip row, and it could not shrink when the chip row was
+// absent or grow when it wrapped.
+//
+// So the rule is now the opposite one: the header must NOT be a fixed height. What
+// the handoff was protecting (the first row staying visible) is what a
+// content-sized header gives for free.
+test('the list header sizes to its content rather than a fixed web height', () => {
   const src = readFileSync(join(__dirname, '..', '..', 'app', 'model-answers', 'index.tsx'), 'utf8');
-  expect(/const HEADER_H = 186;/.test(src)).toBe(true);
-  expect(src.match(/\b186\b/g)).toHaveLength(2); // the comment and the constant
-  expect(src).toMatch(/height:\s*HEADER_H/);
+  // Comments stripped: a comment EXPLAINING that 186 does not port is not a 186.
+  const code = src.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  expect(code).not.toMatch(/\bHEADER_H\b/);
+  expect(code).not.toMatch(/\b186\b/);
+  // The app's own status-bar inset is still respected — every other screen uses 52.
+  expect(code).toMatch(/paddingTop: 52/);
 });
 
 // Both Review Lab blocks must be on the page BEFORE the player has used the

@@ -141,7 +141,7 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 		}
 	}
 
-	weak, total, err := repo.ListSpokenSentences(ctx, uid, true, 2, 0)
+	weak, total, err := repo.ListSpokenSentences(ctx, uid, true, "", 2, 0)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(weak): %v", err)
 	}
@@ -156,7 +156,7 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 		t.Errorf("scenarioId = %q", weak[1].ScenarioID)
 	}
 
-	recent, _, err := repo.ListSpokenSentences(ctx, uid, false, 1, 0)
+	recent, _, err := repo.ListSpokenSentences(ctx, uid, false, "", 1, 0)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(recent): %v", err)
 	}
@@ -166,11 +166,91 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 
 	// Offset past the end is how infinite scroll learns it has reached the
 	// bottom: an empty page, not an error.
-	tail, _, err := repo.ListSpokenSentences(ctx, uid, true, 20, 99)
+	tail, _, err := repo.ListSpokenSentences(ctx, uid, true, "", 20, 99)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(offset past end): %v", err)
 	}
 	if len(tail) != 0 {
 		t.Errorf("offset past the end returned %d rows", len(tail))
+	}
+}
+
+// Filtering by department must happen in SQL, or the list's count lies.
+//
+// It used to be client-side: the screen fetched a page, kept the rows whose scenario
+// id started with the chosen department, and printed "3 of 128". That reads as "3 of
+// 128 loaded" when it means "3 matched among the pages fetched so far" — and more
+// arrived as the learner scrolled, which reads as the filter being broken.
+func TestListSpokenSentencesFiltersByDepartment(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewSpeechRepo(pool)
+	uid := speechTestUser(t, pool)
+	ctx := context.Background()
+
+	for _, a := range []ports.SpeechAttemptInput{
+		attemptAt(uid, "k-er1", "er one", 40, "run-1", "SCN-ER-00002"),
+		attemptAt(uid, "k-er2", "er two", 60, "run-1", "SCN-ER-00003"),
+		attemptAt(uid, "k-icu", "icu one", 80, "run-1", "SCN-ICU-00001"),
+		attemptAt(uid, "k-none", "no scenario", 90, "run-1", ""),
+	} {
+		if _, _, err := repo.InsertAttempt(ctx, a); err != nil {
+			t.Fatalf("InsertAttempt: %v", err)
+		}
+	}
+
+	// Filtered: only that department, and `total` counts only it.
+	rows, total, err := repo.ListSpokenSentences(ctx, uid, true, "ER", 20, 0)
+	if err != nil {
+		t.Fatalf("filtered: %v", err)
+	}
+	if len(rows) != 2 || total != 2 {
+		t.Errorf("ER filter = %d rows, total %d; want 2 / 2", len(rows), total)
+	}
+	for _, r := range rows {
+		if r.ScenarioID != "SCN-ER-00002" && r.ScenarioID != "SCN-ER-00003" {
+			t.Errorf("ER filter returned %s", r.ScenarioID)
+		}
+	}
+
+	// Unfiltered: everything, including the sentence with no scenario.
+	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, true, "", 20, 0)
+	if err != nil {
+		t.Fatalf("unfiltered: %v", err)
+	}
+	if len(all) != 4 || allTotal != 4 {
+		t.Errorf("unfiltered = %d rows, total %d; want 4 / 4", len(all), allTotal)
+	}
+}
+
+// The chip row has to be complete regardless of paging: chips that appear as the
+// learner scrolls look like the screen changing its mind.
+func TestSpokenDepartmentsIsCompleteAndScoped(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewSpeechRepo(pool)
+	mine := speechTestUser(t, pool)
+	theirs := speechTestUser(t, pool)
+	ctx := context.Background()
+
+	for _, a := range []ports.SpeechAttemptInput{
+		attemptAt(mine, "d-1", "a", 50, "r", "SCN-ER-00002"),
+		attemptAt(mine, "d-2", "b", 50, "r", "SCN-ICU-00001"),
+		attemptAt(mine, "d-3", "c", 50, "r", "SCN-ER-00009"), // same dept twice
+		attemptAt(mine, "d-4", "d", 50, "r", ""),             // no scenario: no dept
+	} {
+		if _, _, err := repo.InsertAttempt(ctx, a); err != nil {
+			t.Fatalf("InsertAttempt: %v", err)
+		}
+	}
+	if _, _, err := repo.InsertAttempt(ctx, attemptAt(theirs, "d-x", "x", 50, "r", "SCN-OR-00001")); err != nil {
+		t.Fatalf("InsertAttempt: %v", err)
+	}
+
+	got, err := repo.SpokenDepartments(ctx, mine)
+	if err != nil {
+		t.Fatalf("SpokenDepartments: %v", err)
+	}
+	// Deduplicated, sorted, and only this learner's.
+	if len(got) != 2 || got[0] != "ER" || got[1] != "ICU" {
+		t.Errorf("departments = %v, want [ER ICU]", got)
 	}
 }

@@ -226,6 +226,11 @@ WITH latest AS (
            completeness, scenario_id, origin, attempt_no, created_at
       FROM speech_attempts
      WHERE user_id = $1
+       -- '' means every department. Filtering HERE rather than on the client is what
+       -- makes ` + "`" + `total` + "`" + ` and the paging honest: a client-side filter reported "3 of 128"
+       -- for "3 matched among the pages loaded so far", and pulled more in as the
+       -- learner scrolled.
+       AND ($4::text = '' OR split_part(scenario_id, '-', 2) = $4::text)
      ORDER BY sentence_key, attempt_no DESC
 )
 SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
@@ -233,13 +238,14 @@ SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
        (SELECT COUNT(*)::int FROM latest) AS total
   FROM latest
  ORDER BY created_at DESC
- LIMIT $2 OFFSET $3
+ LIMIT $3 OFFSET $2
 `
 
 type ListSpeakSentencesRecentParams struct {
 	UserID string `json:"user_id"`
-	Limit  int32  `json:"limit"`
-	Offset int32  `json:"offset"`
+	Off    int32  `json:"off"`
+	Lim    int32  `json:"lim"`
+	Dept   string `json:"dept"`
 }
 
 type ListSpeakSentencesRecentRow struct {
@@ -260,7 +266,12 @@ type ListSpeakSentencesRecentRow struct {
 // 최신: newest first. Same projection as ListSpeakSentencesWeak so one repo
 // mapper serves both sorts.
 func (q *Queries) ListSpeakSentencesRecent(ctx context.Context, arg ListSpeakSentencesRecentParams) ([]ListSpeakSentencesRecentRow, error) {
-	rows, err := q.db.Query(ctx, listSpeakSentencesRecent, arg.UserID, arg.Limit, arg.Offset)
+	rows, err := q.db.Query(ctx, listSpeakSentencesRecent,
+		arg.UserID,
+		arg.Off,
+		arg.Lim,
+		arg.Dept,
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -299,6 +310,11 @@ WITH latest AS (
            completeness, scenario_id, origin, attempt_no, created_at
       FROM speech_attempts
      WHERE user_id = $1
+       -- '' means every department. Filtering HERE rather than on the client is what
+       -- makes ` + "`" + `total` + "`" + ` and the paging honest: a client-side filter reported "3 of 128"
+       -- for "3 matched among the pages loaded so far", and pulled more in as the
+       -- learner scrolled.
+       AND ($4::text = '' OR split_part(scenario_id, '-', 2) = $4::text)
      ORDER BY sentence_key, attempt_no DESC
 )
 SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
@@ -306,13 +322,14 @@ SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
        (SELECT COUNT(*)::int FROM latest) AS total
   FROM latest
  ORDER BY overall, created_at DESC
- LIMIT $2 OFFSET $3
+ LIMIT $3 OFFSET $2
 `
 
 type ListSpeakSentencesWeakParams struct {
 	UserID string `json:"user_id"`
-	Limit  int32  `json:"limit"`
-	Offset int32  `json:"offset"`
+	Off    int32  `json:"off"`
+	Lim    int32  `json:"lim"`
+	Dept   string `json:"dept"`
 }
 
 type ListSpeakSentencesWeakRow struct {
@@ -336,7 +353,12 @@ type ListSpeakSentencesWeakRow struct {
 // `total` rides along on every row so the list's "N문장 중 M개 표시" needs no
 // second round trip per page.
 func (q *Queries) ListSpeakSentencesWeak(ctx context.Context, arg ListSpeakSentencesWeakParams) ([]ListSpeakSentencesWeakRow, error) {
-	rows, err := q.db.Query(ctx, listSpeakSentencesWeak, arg.UserID, arg.Limit, arg.Offset)
+	rows, err := q.db.Query(ctx, listSpeakSentencesWeak,
+		arg.UserID,
+		arg.Off,
+		arg.Lim,
+		arg.Dept,
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -495,6 +517,40 @@ func (q *Queries) SpeakBands(ctx context.Context, userID string) (SpeakBandsRow,
 		&i.High,
 	)
 	return i, err
+}
+
+const spokenDepartments = `-- name: SpokenDepartments :many
+SELECT DISTINCT split_part(scenario_id, '-', 2) AS dept
+  FROM speech_attempts
+ WHERE user_id = $1 AND scenario_id LIKE 'SCN-%-%'
+ ORDER BY dept
+`
+
+// Every department the learner has spoken in, derived from the scenario id prefix
+// (SCN-ER-00002 -> ER).
+//
+// Sent with the list so the department chips are COMPLETE. Deriving them from the
+// loaded pages instead made chips appear as the learner scrolled, and filtering to
+// one showed only its rows among the pages fetched so far — the rest arrived later,
+// which reads as the filter being broken.
+func (q *Queries) SpokenDepartments(ctx context.Context, userID string) ([]string, error) {
+	rows, err := q.db.Query(ctx, spokenDepartments, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []string
+	for rows.Next() {
+		var dept string
+		if err := rows.Scan(&dept); err != nil {
+			return nil, err
+		}
+		items = append(items, dept)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
 }
 
 const updateSpeechReferenceAudio = `-- name: UpdateSpeechReferenceAudio :exec

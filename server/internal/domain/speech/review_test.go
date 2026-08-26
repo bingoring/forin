@@ -108,8 +108,8 @@ func TestSpeakSummaryTakesWeakestThroughTheListQuery(t *testing.T) {
 	if len(repo.spokenCalls) != 1 {
 		t.Fatalf("expected one list query, got %d", len(repo.spokenCalls))
 	}
-	if c := repo.spokenCalls[0]; !c.WeakestFirst || c.Limit != 2 || c.Offset != 0 {
-		t.Errorf("summary asked for %+v; want weakest-first, limit 2, offset 0", c)
+	if c := repo.spokenCalls[0]; !c.WeakestFirst || c.Limit != 2 || c.Offset != 0 || c.Dept != "" {
+		t.Errorf("summary asked for %+v; want weakest-first, every department, limit 2, offset 0", c)
 	}
 }
 
@@ -130,7 +130,7 @@ func TestSpokenSentencesClampsPageSize(t *testing.T) {
 	svc := NewService(repo, nil, nil)
 	for _, tc := range []struct{ asked, want int }{{0, 20}, {-5, 20}, {50, 50}, {5000, 100}} {
 		repo.spokenCalls = nil
-		if _, _, err := svc.SpokenSentences(context.Background(), "u1", true, tc.asked, 0); err != nil {
+		if _, _, err := svc.SpokenSentences(context.Background(), "u1", true, "", tc.asked, 0); err != nil {
 			t.Fatalf("SpokenSentences(%d): %v", tc.asked, err)
 		}
 		if got := repo.spokenCalls[0].Limit; got != tc.want {
@@ -139,7 +139,7 @@ func TestSpokenSentencesClampsPageSize(t *testing.T) {
 	}
 	// A negative offset would make Postgres error rather than start at the top.
 	repo.spokenCalls = nil
-	if _, _, err := svc.SpokenSentences(context.Background(), "u1", true, 20, -3); err != nil {
+	if _, _, err := svc.SpokenSentences(context.Background(), "u1", true, "", 20, -3); err != nil {
 		t.Fatalf("negative offset: %v", err)
 	}
 	if got := repo.spokenCalls[0].Offset; got != 0 {

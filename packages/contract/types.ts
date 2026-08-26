@@ -1899,6 +1899,8 @@ export interface paths {
                 query?: {
                     /** @description weak (약한 순, default) or recent (최신) */
                     sort?: string;
+                    /** @description department code (ER, ICU, …); omit for every department */
+                    dept?: string;
                     /** @description page size, default 20, clamped to 100 */
                     limit?: number;
                     /** @description rows to skip */
@@ -2488,7 +2490,18 @@ export interface components {
             weakest?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
         };
         "internal_adapters_http.spokenSentencesResp": {
+            /**
+             * @description Depts is every department the learner has spoken in, regardless of the filter or
+             *     how far they have scrolled. Sent so the chip row is complete and stable —
+             *     deriving it from the loaded pages made chips appear mid-scroll.
+             */
+            depts?: string[];
             sentences?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
+            /**
+             * @description Total counts the sentences that match the CURRENT filter, not the whole bank:
+             *     the list's count line reads "N문장 중 M개 표시", and reporting an unfiltered
+             *     total there said "3 of 128" for a filter that matched 3.
+             */
             total?: number;
         };
         "internal_adapters_http.sttReq": {

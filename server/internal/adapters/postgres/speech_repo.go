@@ -279,7 +279,7 @@ func (r *SpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.Speak
 // 최신). They are separate SQL statements rather than one with a computed ORDER
 // BY: an ORDER BY built from a parameter cannot use an index, and sqlc would not
 // type-check it.
-func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
 	type row struct {
 		sentenceKey, referenceText, recognized, scenarioID, origin string
 		overall, accuracy, fluency, completeness                   float64
@@ -289,7 +289,7 @@ func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, wea
 	var raw []row
 	if weakestFirst {
 		rows, err := r.q.ListSpeakSentencesWeak(ctx, sqlc.ListSpeakSentencesWeakParams{
-			UserID: userID, Limit: int32(limit), Offset: int32(offset),
+			UserID: userID, Dept: dept, Lim: int32(limit), Off: int32(offset),
 		})
 		if err != nil {
 			return nil, 0, err
@@ -300,7 +300,7 @@ func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, wea
 		}
 	} else {
 		rows, err := r.q.ListSpeakSentencesRecent(ctx, sqlc.ListSpeakSentencesRecentParams{
-			UserID: userID, Limit: int32(limit), Offset: int32(offset),
+			UserID: userID, Dept: dept, Lim: int32(limit), Off: int32(offset),
 		})
 		if err != nil {
 			return nil, 0, err
@@ -332,4 +332,19 @@ func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, wea
 		})
 	}
 	return out, total, nil
+}
+
+// SpokenDepartments lists every department the learner has spoken in.
+func (r *SpeechRepo) SpokenDepartments(ctx context.Context, userID string) ([]string, error) {
+	rows, err := r.q.SpokenDepartments(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	out := make([]string, 0, len(rows))
+	for _, d := range rows {
+		if d != "" {
+			out = append(out, d)
+		}
+	}
+	return out, nil
 }

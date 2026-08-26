@@ -67,6 +67,11 @@ export default function Lab() {
   // The 📄 시나리오 모범답안 summary. Same rule as `speak`: null means unknown or
   // unavailable, and the block is absent rather than drawn empty.
   const [models, setModels] = useState<ModelAnswerSummary | null>(null);
+  // Separate from `null` on purpose: absent-because-loading and absent-because-broken
+  // look identical on screen otherwise, and that ambiguity is what made "the block
+  // isn't there" impossible to diagnose without reading the server logs.
+  const [speakFailed, setSpeakFailed] = useState(false);
+  const [modelsFailed, setModelsFailed] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -76,12 +81,17 @@ export default function Lab() {
         .catch(() => { if (alive) setState('error'); });
       // Separate from the card read and deliberately not awaited with it: the
       // speaking summary failing must not turn the whole tab into the error state.
+      // A failed read is reported, not swallowed. Swallowing it made "the request
+      // failed" and "you have nothing yet" the same blank space — which is exactly
+      // the state that had to be debugged from the outside when the block did not
+      // appear. An empty summary is a legitimate answer and renders its own hint;
+      // `null` now means only "still loading".
       api.speakSummary()
         .then((sum) => { if (alive) setSpeak(sum); })
-        .catch(() => { /* block stays absent */ });
+        .catch(() => { if (alive) setSpeakFailed(true); });
       api.modelAnswerSummary()
         .then((sum) => { if (alive) setModels(sum); })
-        .catch(() => { /* block stays absent */ });
+        .catch(() => { if (alive) setModelsFailed(true); });
       return () => { alive = false; };
     }, []),
   );
@@ -208,6 +218,7 @@ export default function Lab() {
             these two blocks on the page, and hiding them until the player has already
             spoken meant a new user never learned the feature existed. `null` still
             means unknown (the read failed), and then the block stays absent. */}
+        {speakFailed && <BlockUnavailable titleKey="speak.blockTitle" />}
         {speak && (
           <SpeakSummaryBlock
             summary={speak}
@@ -217,9 +228,11 @@ export default function Lab() {
         )}
 
         {/* 📄 시나리오 모범답안 — the other half of the handoff's pair of blocks. */}
-        {models && (
+        {models ? (
           <ModelAnswerBlock summary={models} onOpenAll={() => router.push('/model-answers')} />
-        )}
+        ) : modelsFailed ? (
+          <BlockUnavailable titleKey="model.blockTitle" />
+        ) : null}
 
         {/* category filter */}
         {cats.length > 1 && (
@@ -410,6 +423,22 @@ function Badge({ text, icon, bg, color }: { text?: string; icon?: IconName; bg: 
     <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, paddingVertical: icon ? 2 : 0, marginTop: 1 }}>
       {icon ? <PixelIcon name={icon} color={color} size={10} sw={2} /> : <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color }}>{text}</Text>}
     </View>
+  );
+}
+
+/** A block whose data could not be read. Says so, rather than leaving a gap: a
+ *  missing block reads as a missing FEATURE, and the learner then looks for it in the
+ *  wrong place. Same frame as the real block so the page does not jump when it
+ *  recovers on the next focus. */
+function BlockUnavailable({ titleKey }: { titleKey: string }) {
+  const t = useT();
+  return (
+    <Shadowed offset={4}>
+      <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12, gap: 3 }}>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t(titleKey)}</Text>
+        <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 16 }}>{t('lab.blockUnavailable')}</Text>
+      </View>
+    </Shadowed>
   );
 }
 

@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"net/http"
 	"strconv"
+	"strings"
 	"unicode/utf8"
 
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
@@ -199,13 +200,21 @@ func (h *speechHandler) speakSummary(w http.ResponseWriter, r *http.Request) {
 // "N문장 중 M개 표시" line needs and infinite scroll cannot derive from the page.
 type spokenSentencesResp struct {
 	Sentences []ports.SpokenSentenceRow `json:"sentences"`
-	Total     int                       `json:"total"`
+	// Total counts the sentences that match the CURRENT filter, not the whole bank:
+	// the list's count line reads "N문장 중 M개 표시", and reporting an unfiltered
+	// total there said "3 of 128" for a filter that matched 3.
+	Total int `json:"total"`
+	// Depts is every department the learner has spoken in, regardless of the filter or
+	// how far they have scrolled. Sent so the chip row is complete and stable —
+	// deriving it from the loaded pages made chips appear mid-scroll.
+	Depts []string `json:"depts"`
 }
 
 // @Summary One page of every sentence the player has spoken aloud (ScreenSpeakList)
 // @Tags pronunciation
 // @Security Bearer
 // @Param sort query string false "weak (약한 순, default) or recent (최신)"
+// @Param dept query string false "department code (ER, ICU, …); omit for every department"
 // @Param limit query int false "page size, default 20, clamped to 100"
 // @Param offset query int false "rows to skip"
 // @Success 200 {object} spokenSentencesResp
@@ -228,13 +237,21 @@ func (h *speechHandler) spokenSentences(w http.ResponseWriter, r *http.Request) 
 			offset = n
 		}
 	}
-	rows, total, err := h.svc.SpokenSentences(r.Context(), uid, weakestFirst, limit, offset)
+	// Uppercased so a chip tapped as "er" still matches SCN-ER-*; the codes are
+	// upper-case by construction.
+	dept := strings.ToUpper(strings.TrimSpace(r.URL.Query().Get("dept")))
+	rows, total, err := h.svc.SpokenSentences(r.Context(), uid, weakestFirst, dept, limit, offset)
 	if err != nil {
 		slog.Error("speech: spoken sentence list failed", "err", err)
 		httpx.Error(w, http.StatusInternalServerError, "could not load your spoken sentences")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, spokenSentencesResp{Sentences: nonNil(rows), Total: total})
+	// Best-effort: without the chip row the list still works, filtered or not.
+	depts, _ := h.svc.SpokenDepartments(r.Context(), uid)
+	if depts == nil {
+		depts = []string{}
+	}
+	httpx.JSON(w, http.StatusOK, spokenSentencesResp{Sentences: nonNil(rows), Total: total, Depts: depts})
 }
 
 // nonNil turns a nil slice into an empty one so the JSON says [] rather than

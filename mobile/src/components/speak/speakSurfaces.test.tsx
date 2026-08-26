@@ -80,13 +80,24 @@ test('the summary block reports the total on its 전체 entry', () => {
 
 // The handoff warns that a header taller than the offset the scroller starts at
 // paints over the first — highest-priority — row. The two must be one number.
-test('the list header height and the scroller offset are a single constant', () => {
+// The handoff pins the sticky header at `height: 186` and starts the scroller at the
+// same offset. That number is a workaround for a CSS content-box bug — a header with
+// padding growing past its declared height and painting over the first row — and RN
+// has no such bug. Carried over literally it spent a quarter of the screen on a
+// title, a segment and a chip row, and it could not shrink when the chip row was
+// absent or grow when it wrapped.
+//
+// So the rule is now the opposite one: the header must NOT be a fixed height. What
+// the handoff was protecting (the first row staying visible) is what a
+// content-sized header gives for free.
+test('the list header sizes to its content rather than a fixed web height', () => {
   const src = readFileSync(join(__dirname, '..', '..', 'app', 'speak', 'index.tsx'), 'utf8');
-  const decl = /const HEADER_H = (\d+);/.exec(src);
-  expect(decl?.[1]).toBe('186');
-  // Any other bare 186 would be a second copy of the same fact, free to drift.
-  expect(src.match(/\b186\b/g)).toHaveLength(2); // the comment and the constant
-  expect(src).toMatch(/height:\s*HEADER_H/);
+  // Comments stripped: a comment EXPLAINING that 186 does not port is not a 186.
+  const code = src.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  expect(code).not.toMatch(/\bHEADER_H\b/);
+  expect(code).not.toMatch(/\b186\b/);
+  // The app's own status-bar inset is still respected — every other screen uses 52.
+  expect(code).toMatch(/paddingTop: 52/);
 });
 
 test('the speaking block still renders with nothing in it', () => {

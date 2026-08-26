@@ -824,15 +824,18 @@ export const api = {
     };
   },
 
-  /** One page of ScreenSpeakList. `total` is the UNPAGED count the list's
-   *  "N문장 중 M개 표시" line needs — an empty page reports 0, so the caller keeps
-   *  the total it already has. */
-  async speakSentences(opts: { sort: SpeakSort; limit?: number; offset?: number }): Promise<{ sentences: SpokenSentence[]; total: number }> {
+  /** One page of the spoken-sentence list.
+   *
+   *  `total` counts what matches the CURRENT filter, so the count line means what it
+   *  says. `depts` is every department the learner has spoken in, regardless of filter
+   *  or scroll position — the chip row is built from it rather than from the loaded
+   *  rows, which made chips appear mid-scroll. */
+  async speakSentences(opts: { sort: SpeakSort; dept?: string; limit?: number; offset?: number }): Promise<{ sentences: SpokenSentence[]; total: number; depts: string[] }> {
     const { data } = await http.get('/speech/sentences', {
-      params: { sort: opts.sort, limit: opts.limit ?? 20, offset: opts.offset ?? 0 },
+      params: { sort: opts.sort, dept: opts.dept || undefined, limit: opts.limit ?? 20, offset: opts.offset ?? 0 },
     });
-    const d = data as { sentences?: SpokenSentence[]; total?: number } | null;
-    return { sentences: d?.sentences ?? [], total: d?.total ?? 0 };
+    const d = data as { sentences?: SpokenSentence[]; total?: number; depts?: string[] } | null;
+    return { sentences: d?.sentences ?? [], total: d?.total ?? 0, depts: d?.depts ?? [] };
   },
 
   /** `opts` forwards Task 5's origin/scenarioId/reviewCardId (business-rules
