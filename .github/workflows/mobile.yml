@@ -4,17 +4,25 @@ name: mobile
 # whoever remembered to run them. `packages/contract/**` is in the path filter
 # because src/api/client.ts imports @contract/types — regenerating the contract
 # can break mobile types, and a contract-only push must still be type-checked.
+#
+# `server/content/**` is here for the same reason one step removed: the reward icons
+# on the briefing screen come from the scenario YAML, and contentIcons.test.ts reads
+# that directory to check every value resolves to artwork. A content-only push can
+# therefore break a mobile screen, and without this filter the test that catches it
+# would not run.
 on:
   push:
     branches: [master]
     paths:
       - 'mobile/**'
       - 'packages/contract/**'
+      - 'server/content/**'
       - '.github/workflows/mobile.yml'
   pull_request:
     paths:
       - 'mobile/**'
       - 'packages/contract/**'
+      - 'server/content/**'
       - '.github/workflows/mobile.yml'
 
 jobs:
