@@ -147,7 +147,7 @@ export default function ModelAnswerList() {
             return (
               <Pressable key={d} onPress={() => toggleDept(d)}>
                 <View style={[styles.chip, active && styles.chipActive]}>
-                  {active && <FIcon name="check" size={9} />}
+                  {active && <FIcon name="check" size={11} />}
                   <Text style={styles.chipText}>{d}</Text>
                 </View>
               </Pressable>
@@ -207,7 +207,7 @@ export default function ModelAnswerList() {
               return (
                 <Pressable key={d} onPress={() => toggleDept(d)}>
                   <View style={[styles.chip, active && styles.chipActive]}>
-                    {active && <FIcon name="check" size={9} />}
+                    {active && <FIcon name="check" size={11} />}
                     <Text style={styles.chipText}>{d}</Text>
                   </View>
                 </Pressable>

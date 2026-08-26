@@ -123,7 +123,7 @@ function Swatch({ selected, onPress, children }: { selected: boolean; onPress():
       {children}
       {selected && (
         <View style={{ position: 'absolute', top: -5, right: -5, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, width: 14, height: 14, alignItems: 'center', justifyContent: 'center' }}>
-          <FIcon name="check" size={9} />
+          <FIcon name="check" size={11} />
         </View>
       )}
     </Pressable>

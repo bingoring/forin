@@ -148,7 +148,7 @@ export default function SpeakList() {
             return (
               <Pressable onPress={() => setDept(item)}>
                 <View style={[styles.chip, active && styles.chipActive]}>
-                  {active && <FIcon name="check" size={9} />}
+                  {active && <FIcon name="check" size={11} />}
                   <Text style={styles.chipText}>{item || t('list.allDepts')}</Text>
                 </View>
               </Pressable>

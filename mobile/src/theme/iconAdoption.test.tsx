@@ -182,3 +182,37 @@ test('the tab bar renders v23 artwork in both its states', () => {
   expect(opacityOf(inactive)).toBeLessThan(1);
   expect(opacityOf(active)).toBe(1);
 });
+
+// FIcon artwork has a floor below which it stops reading as artwork.
+//
+// The set is 16×16 and its finest feature is a 3-unit block — `check` is twelve of
+// them, an ink stair with a mint highlight one block off it. At size 9 a block is
+// 1.69pt, so the highlight and the ink land on the same physical pixels and the
+// mark turns to mush. The v25 catalogue draws these at 26px and the component
+// defaults to 18.
+//
+// 11 is where a 3-unit block clears 2pt, which is the smallest a two-tone stair can
+// be and still show both tones. Below that, use the line icon: a single-stroke glyph
+// is what small sizes are for.
+const MIN_FICON_SIZE = 11;
+
+test(`no FIcon is drawn below ${MIN_FICON_SIZE}pt`, () => {
+  const walkAll = (d: string): string[] => {
+    const o: string[] = [];
+    for (const n of readdirSync(d)) {
+      const p = join(d, n);
+      if (statSync(p).isDirectory()) o.push(...walkAll(p));
+      else if (p.endsWith('.tsx') && !p.includes('.test.')) o.push(p);
+    }
+    return o;
+  };
+  const tooSmall: string[] = [];
+  for (const f of walkAll(join(__dirname, '..'))) {
+    for (const m of readFileSync(f, 'utf8').matchAll(/<FIcon\b[^>]*size=\{([\d.]+)\}[^>]*\/>/gs)) {
+      if (Number(m[1]) < MIN_FICON_SIZE) {
+        tooSmall.push(`${relative(join(__dirname, '..'), f)}: ${m[0].replace(/\s+/g, ' ')}`);
+      }
+    }
+  }
+  expect(tooSmall).toEqual([]);
+});
