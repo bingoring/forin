@@ -69,6 +69,7 @@ export const ja: Record<string, string> = {
   'step.kind.boss': '章テスト',
   'step.optional': '任意',
   'step.now': 'NOW',
+  'step.retry': '再',
 
   'badge.earned': '獲得',
   'badge.locked': 'ロック',
@@ -547,4 +548,7 @@ export const ja: Record<string, string> = {
   'model.emptyHint': 'シナリオを完了すると修正された文と模範解答がここに溜まります',
   'list.reset': 'リセット',
   'list.apply': '適用',
+  'route.tryAgain': '再挑戦',
+  'route.lockedHint': '前の段階に合格すると開きます。',
+  'route.now': '今すぐ挑戦',
 };

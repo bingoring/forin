@@ -33,11 +33,19 @@ test('every FacePlayer is given an avatar', () => {
   expect(offenders).toEqual([]);
 });
 
-test('and the dialogue screen draws the player that way', () => {
-  // Named directly: this is the screen that was wrong, and the rule above cannot notice a
-  // screen that renders someone else's face for the player instead.
+test('the dialogue screen draws the NPC only, and no stock face for the player', () => {
+  // This screen used to draw the learner as `RoleFace kind="nurse"` — a stock nurse
+  // with one hair colour — which is the bug the rule above exists for. It was then
+  // fixed to FacePlayer + avatar, and has since been cut entirely: one portrait, the
+  // person being spoken to, centred (the learner is the one typing; a second frame
+  // cost the top third of the screen to say what you look like).
+  //
+  // So the assertion is no longer "it passes the avatar" but "it draws no player face
+  // at all" — which also catches the original bug, since a stock RoleFace for the
+  // player would have to be a second portrait frame.
   const src = readFileSync(join(SRC, 'app', 'dialogue', '[id].tsx'), 'utf8');
-  expect(src).toMatch(/<FacePlayer[^>]*avatar=\{avatar\}/);
-  // A hardcoded player hair colour is what this replaced.
-  expect(src).not.toMatch(/hair="#3C2A18"/);
+  expect(src).not.toMatch(/<FacePlayer/);
+  // Exactly one portrait frame, and it takes the scenario's own character.
+  expect(src.match(/<PortraitFrame/g) ?? []).toHaveLength(1);
+  expect(src).toMatch(/<PortraitFrame[^>]*name=\{p\.name/);
 });

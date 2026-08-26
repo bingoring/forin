@@ -181,6 +181,11 @@ export interface CurriculumStep {
   kind: 'dlg' | 'quiz' | 'event' | 'boss';
   name: string; scenarioId?: string;
   state: 'done' | 'now' | 'lock' | 'optional'; // optional = bonus quiz (doesn't gate)
+  /** Played, graded below the bar. Orthogonal to `state`: a step you failed is still
+   *  'now' (it is what to do next) and its successors are still 'lock' (clearing is
+   *  what unlocks). The server only sets it where it means something — never on a
+   *  'done' or 'lock' step. */
+  attempted?: boolean;
   optional?: boolean;
 }
 // One themed curriculum on one floor. `state` has no 'lock': every floor and
@@ -222,6 +227,10 @@ export interface RouteNode {
   eventId: string; title: string; tier: number;
   state: 'locked' | 'available' | 'completed';
   scenarioId?: string; prerequisites?: string[];
+  /** Played but graded below the bar. Separate from `state` because unlocking needs a
+   *  CLEAR — an attempted node is still 'available' and its successors still locked —
+   *  while the learner still needs to see that they have been here. */
+  attempted?: boolean;
 }
 
 // Syllable/phoneme spans as scored by Azure, in 100-ns ticks from the start of

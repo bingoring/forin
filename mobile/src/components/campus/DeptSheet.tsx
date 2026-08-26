@@ -201,9 +201,14 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
                                 </Text>
                               </View>
                               {st.state === 'done' && <PixelIcon name="check" color={colors.mintShadow} size={12} sw={2.2} />}
+                              {/* The same chip, one word different — 다시 when this step
+                                  has been played and not passed. No extra row and no
+                                  second badge: this list is already four lines deep per
+                                  curriculum, and the learner only needs to know whether
+                                  they have been here. */}
                               {st.state === 'now' && (
-                                <View style={{ backgroundColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.cream }}>{t('step.now')}</Text>
+                                <View style={{ backgroundColor: st.attempted ? colors.peachShadow : C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.cream }}>{t(st.attempted ? 'step.retry' : 'step.now')}</Text>
                                 </View>
                               )}
                             </Pressable>
@@ -264,13 +269,19 @@ function SituationRow({ s, onStart, highlight }: {
 }) {
   const t = useT();
   const done = s.tagCode === 'cleared';
+  // Played but not passed. Deliberately NOT folded into `done`: it still needs doing,
+  // so it is neither dimmed nor labelled 복습 — the learner's next move is another go.
+  const tried = s.tagCode === 'attempted';
   const starred = useIsSituationFavorite(s.scenarioId);
   return (
     <Shadowed offset={2.5} style={{ marginBottom: 8 }} shadowColor={highlight ? colors.yellowDeep : undefined}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: highlight ? colors.yellow : s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>
         <View style={{ flex: 1, minWidth: 0 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-            <View style={{ backgroundColor: done ? colors.mint : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+            {/* One chip, four states. 완료 mint / 시도 lilac / 긴급 ink / 신규 yellow —
+                enough to tell them apart at a glance without adding a second badge to
+                a row that already carries a room, a level and a duration. */}
+            <View style={{ backgroundColor: done ? colors.mint : tried ? colors.lilac : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
             </View>
             {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
@@ -291,7 +302,9 @@ function SituationRow({ s, onStart, highlight }: {
             as the same star, which is why the on state looked like nothing happened. */}
         <PixelIcon name="star" color={starred ? C : C + '44'} fill={starred ? colors.yellowDeep : 'none'} size={17} sw={2} />
         </Pressable>
-        <PixelButton label={done ? t('common.review') : t('common.start')} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
+        {/* The verb says what this tap is: 시작 for untouched, 다시 도전 for a run that
+            did not pass, 복습 for one that did. */}
+        <PixelButton label={done ? t('common.review') : tried ? t('common.retry') : t('common.start')} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
       </View>
     </Shadowed>
   );

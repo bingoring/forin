@@ -45,6 +45,10 @@ type ProgressRepo interface {
 	LatestAttemptScenarioID(ctx context.Context, userID string) (string, error)
 	// ClearedScenarioIDs returns the set of scenario ids the user has cleared.
 	ClearedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error)
+	// AttemptedScenarioIDs returns the ids the user has PLAYED but not cleared.
+	// Disjoint from ClearedScenarioIDs on purpose: a scenario appears in exactly one
+	// of the two, so the caller never has to decide which wins.
+	AttemptedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error)
 	// FoundMissions lists permanently-discovered hidden mission ids.
 	FoundMissions(ctx context.Context, userID string) ([]string, error)
 	// RecordMission permanently records a hidden-mission discovery (idempotent).

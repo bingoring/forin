@@ -69,6 +69,9 @@ export default function Route() {
 }
 
 function RouteStep({ node, last, onPress }: { node: RouteNode; last: boolean; onPress: () => void }) {
+  // Its own useT, not the module-level t(): a component that reads the module
+  // singleton is not re-rendered when the locale changes (see i18n/useT.test.ts).
+  const t = useT();
   const completed = node.state === 'completed';
   const available = node.state === 'available';
   const noScenario = available && !node.scenarioId; // graph node authored ahead of its content
@@ -99,12 +102,22 @@ function RouteStep({ node, last, onPress }: { node: RouteNode; last: boolean; on
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>TIER {node.tier}</Text>
               </View>
               {completed && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.mintShadow }}>✓ 완료</Text>}
-              {available && !noScenario && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.yellowShadow }}>● 지금 도전</Text>}
+              {/* Same row, different word — a node you already tried says so instead of
+                  inviting you as if it were new. No extra badge: this list is a column of
+                  cards and a second mark per card is how it stops being scannable. */}
+              {available && !noScenario && (
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: node.attempted ? colors.peachShadow : colors.yellowShadow }}>
+                  {t(node.attempted ? 'route.tryAgain' : 'route.now')}
+                </Text>
+              )}
               {noScenario && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>준비 중</Text>}
               {node.state === 'locked' && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>잠김</Text>}
             </View>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{node.title}</Text>
-            {node.state === 'locked' && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>이전 단계를 완료하면 열려요.</Text>}
+            {/* "통과", not "완료": unlocking needs a CLEAR, and a learner who played the
+                previous step and did not pass it was told to complete something they
+                thought they had. */}
+            {node.state === 'locked' && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{t('route.lockedHint')}</Text>}
             {noScenario && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>곧 새로운 시나리오가 추가돼요.</Text>}
           </View>
         </Shadowed>

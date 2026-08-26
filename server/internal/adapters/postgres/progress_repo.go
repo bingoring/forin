@@ -188,6 +188,34 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 	return s, nil
 }
 
+// AttemptedScenarioIDs returns the ids played but never cleared.
+//
+// The NOT EXISTS is what keeps the two sets disjoint: a scenario you failed twice and
+// then passed is cleared, full stop, and must not also report as attempted — the
+// curriculum would then show "tried" on a step it has already ticked off.
+func (r *ProgressRepo) AttemptedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error) {
+	rows, err := r.pool.Query(ctx,
+		`SELECT DISTINCT a.scenario_id FROM scenario_attempts a
+		  WHERE a.user_id = $1 AND a.state = 'attempted'
+		    AND NOT EXISTS (
+		      SELECT 1 FROM scenario_attempts c
+		       WHERE c.user_id = a.user_id AND c.scenario_id = a.scenario_id AND c.state = 'cleared')`,
+		userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := map[string]bool{}
+	for rows.Next() {
+		var id string
+		if err := rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		out[id] = true
+	}
+	return out, rows.Err()
+}
+
 // ClearedScenarioIDs returns the set of scenario ids the user has cleared.
 func (r *ProgressRepo) ClearedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error) {
 	rows, err := r.pool.Query(ctx, `SELECT DISTINCT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID)

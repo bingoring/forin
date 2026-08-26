@@ -293,6 +293,12 @@ type RouteNode struct {
 	State         string   `json:"state"`                // locked | available | completed
 	ScenarioID    string   `json:"scenarioId,omitempty"` // entry scenario to launch
 	Prerequisites []string `json:"prerequisites,omitempty"`
+	// Attempted is true when the learner has played this node's scenario and been
+	// graded below the bar. Separate from State on purpose: unlocking needs a CLEAR
+	// (so an attempted node is still "available", and its successors still locked),
+	// but the learner needs to see the difference between "not tried" and "tried,
+	// did not pass" — otherwise a node they failed looks untouched.
+	Attempted bool `json:"attempted,omitempty"`
 }
 
 // BoardCard is a compact scenario entry for the daily situation board — enough

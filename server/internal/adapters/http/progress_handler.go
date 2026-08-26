@@ -39,7 +39,10 @@ func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
 	// tab's hero and the home card cannot drift apart. A failed lookup degrades to
 	// "first unfinished", not to an error: the path is still fully browsable.
 	last, _ := h.progress.LatestAttemptScenarioID(r.Context(), uid)
-	states := curriculum.ResolveLocalized(cleared, curriculum.KeyForScenario(last), i18n.FromContext(r.Context()))
+	// Best-effort: a failed read means no step reports as tried, which is the old
+	// behaviour — not worth failing a path the learner asked to browse.
+	attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
+	states := curriculum.ResolveLocalized(cleared, attempted, curriculum.KeyForScenario(last), i18n.FromContext(r.Context()))
 	httpx.JSON(w, http.StatusOK, map[string]any{"buildings": curriculum.Group(states)})
 }
 

@@ -7,7 +7,7 @@
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Alert, Animated, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
   useAudioPlayer,
@@ -15,7 +15,7 @@ import {
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
 import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteAsync } from 'expo-file-system/legacy';
-import { FacePlayer, RoleFace, type RoleKind, type Expression } from '@engine';
+import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
@@ -23,7 +23,6 @@ import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
-import { useAvatar } from '@/hooks/useAvatar';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -73,7 +72,42 @@ export default function DialogueRoute() {
   const [hintOn, setHintOn] = useState(false);
   const [tool, setTool] = useState<'chart' | 'meds' | 'vitals' | null>(null); // QUICK INFO panel
   const logRef = useRef<ScrollView>(null);
-  const avatar = useAvatar();
+
+  // Typing raises the conversation over the portrait.
+  //
+  // A messenger can simply lift its list and input above the keyboard because the list
+  // IS the screen. Here the top third is the NPC's portrait, so lifting only the bottom
+  // left the thread squeezed into whatever was left — a few lines tall. Instead the
+  // chrome (portrait, QUICK INFO dock) fades out and the thread's top edge travels up
+  // into the space it vacated, so the conversation grows rather than shrinks. Closing
+  // the keyboard reverses it and the portrait comes back.
+  const [typing, setTyping] = useState(false);
+  const chromeOpacity = useRef(new Animated.Value(1)).current;
+  // `top` is a layout prop, so this one cannot use the native driver (opacity can).
+  const threadTop = useRef(new Animated.Value(0)).current;
+  const restingTop = winH * 0.41 + 34;
+  // Just under the status bar. The exit and the mission cluster stay reachable — they
+  // are what you need if the keyboard opened by accident.
+  const raisedTop = 96;
+
+  useEffect(() => {
+    // will* on iOS so the motion rides the system animation; did* on Android, which
+    // has no will* events.
+    const showEvt = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+    const hideEvt = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
+    const animate = (up: boolean, duration: number) => {
+      setTyping(up);
+      Animated.parallel([
+        Animated.timing(chromeOpacity, { toValue: up ? 0 : 1, duration, useNativeDriver: true }),
+        Animated.timing(threadTop, { toValue: up ? 1 : 0, duration, useNativeDriver: false }),
+      ]).start();
+    };
+    const show = Keyboard.addListener(showEvt, (e) => animate(true, e.duration || 220));
+    const hide = Keyboard.addListener(hideEvt, (e) => animate(false, e.duration || 220));
+    return () => { show.remove(); hide.remove(); };
+  }, [chromeOpacity, threadTop]);
+
+  const threadTopStyle = threadTop.interpolate({ inputRange: [0, 1], outputRange: [restingTop, raisedTop] });
   const messages = threadOf(transcript, npcLine);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
@@ -363,8 +397,14 @@ export default function DialogueRoute() {
         </View>
       </View>
 
-      {/* patient portrait (L), with the voice control on it */}
-      <View style={{ position: 'absolute', left: 16, top: 128, zIndex: 3 }}>
+      {/* The NPC portrait, centred. Fades out while the keyboard is up — see `typing`.
+
+          There used to be a second frame on the right holding the LEARNER's own face.
+          It cost the top third of the screen to tell you what you look like, in a
+          conversation where you are the one typing, and it pushed the NPC — the person
+          being spoken to, whose expression is the feedback — off to one side. One
+          portrait, in the middle, is the whole of what this strip is for. */}
+      <Animated.View style={{ position: 'absolute', left: 0, right: 0, top: 128, alignItems: 'center', zIndex: 3, opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
         <PortraitFrame name={p.name || 'NPC'} status={p.mood ? p.mood.toUpperCase() : undefined} sweat={showSweat}>
           <RoleFace kind={kind} hair={p.hair} expression={expr} size={120} />
         </PortraitFrame>
@@ -380,11 +420,10 @@ export default function DialogueRoute() {
           accessibilityRole="switch"
           accessibilityState={{ checked: voiceOn }}
           accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
-          // Beside the frame, clear of it: `bottom: 26` put it over the name plate, which
-          // is the portrait's own label. The frame is 110 wide, so 118 starts 8px past its
-          // edge — adjacent enough to read as belonging to the portrait, outside enough not
-          // to sit on it.
-          style={{ position: 'absolute', left: 118, top: 96 }}
+          // The frame is centred now, so the button hangs off its right edge rather than
+          // being measured from the screen's left. Same relationship as before — adjacent
+          // to the portrait, clear of the name plate underneath it.
+          style={{ position: 'absolute', right: -38, top: 96 }}
         >
           <Shadowed offset={2}>
             <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
@@ -392,19 +431,7 @@ export default function DialogueRoute() {
             </View>
           </Shadowed>
         </Pressable>
-      </View>
-
-      {/* player portrait (R) — the face the learner built, not a stock nurse.
-          It was RoleFace with a hardcoded hair colour, so editing your portrait in the
-          profile tab changed the profile tab. FacePlayer already takes the four saved
-          values and the profile tab already draws it that way; this screen was the one
-          that had not been told. The frame takes the chosen scrub colour for the same
-          reason it does there. */}
-      <View style={{ position: 'absolute', right: 16, top: 158, zIndex: 2, opacity: 0.85 }}>
-        <PortraitFrame name={t('dialogue.you')} hue={avatar.scrub}>
-          <FacePlayer size={120} expression="focused" avatar={avatar} />
-        </PortraitFrame>
-      </View>
+      </Animated.View>
 
       {/* QUICK INFO dock — bedside reference tools (차트 / 약물 / 활력).
           Anchored off the WINDOW height, not a percentage of this container: the
@@ -412,7 +439,12 @@ export default function DialogueRoute() {
           `top: '41%'` was 41% of a moving number and the dock rode up with the
           keyboard. The dialogue box below it is bottom-anchored and SHOULD rise
           (it holds the input); a bedside reference has no reason to. */}
-      <View style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41, flexDirection: 'row', alignItems: 'center', gap: 6, zIndex: 4 }}>
+      <Animated.View
+        style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41, flexDirection: 'row', alignItems: 'center', gap: 6, zIndex: 4, opacity: chromeOpacity }}
+        // Not just faded — unhittable, so a tool cannot be opened by a tap aimed at the
+        // thread that now covers this strip.
+        pointerEvents={typing ? 'none' : 'auto'}
+      >
         <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
         </View>
@@ -427,7 +459,7 @@ export default function DialogueRoute() {
             </Shadowed>
           </Pressable>
         ))}
-      </View>
+      </Animated.View>
 
       {/* QUICK INFO panel — modal card over a scrim */}
       {tool && (
@@ -454,7 +486,7 @@ export default function DialogueRoute() {
           So the column fills the space instead: the exchange scrolls in the middle, the
           input stays put at the bottom, newest at the bottom. A messaging screen, because
           that is what this is. */}
-      <View style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41 + 34, bottom: 20, zIndex: 6 }}>
+      <Animated.View style={{ position: 'absolute', left: 14, right: 14, top: threadTopStyle, bottom: 20, zIndex: 6 }}>
         {/* the exchange */}
         <ScrollView
           ref={logRef}
@@ -595,7 +627,7 @@ export default function DialogueRoute() {
             />
           )}
         </View>
-      </View>
+      </Animated.View>
       {/* 이어하기 — 이전 대화가 있으면 세션을 열기 전에 먼저 묻는다. 마지막
           대사를 보여줘서 무엇을 이어받는지 알고 고르게 한다(닫기로 회피할 수
           없다: 아직 세션이 없으므로 둘 중 하나를 반드시 골라야 한다). */}

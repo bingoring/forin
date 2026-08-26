@@ -208,7 +208,9 @@ func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) 
 
 // tagKo is the authored Korean for a situation state — the fallback i18n.Tr renders
 // when a locale has no entry, kept next to the only place that needs it.
-var tagKo = map[string]string{"cleared": "완료", "urgent": "긴급", "new": "신규"}
+// "시도" rather than "실패": the learner played it and was graded below the bar,
+// and a list of failures is not something anyone opens twice.
+var tagKo = map[string]string{"cleared": "완료", "attempted": "시도", "urgent": "긴급", "new": "신규"}
 
 // economyConfigResp mirrors economy.Active plus a feature-availability signal.
 // GET /config/economy was picked to carry pronunciationEnabled (business-rules

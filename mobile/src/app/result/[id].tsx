@@ -6,7 +6,7 @@
 // level ticks over, and the current streak. Falls back to the scenario's static
 // briefing rewards if the progress API is unavailable (offline / not authed).
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Animated, Easing, Pressable, Share, Text, View, type GestureResponderEvent, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Animated, Easing, Pressable, ScrollView, Share, Text, View, type GestureResponderEvent, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type Progress, type ScenarioDetail, type ScenarioGrade, type SessionSpeechReview, type SpokenSentence } from '@/api/client';
@@ -205,7 +205,21 @@ export default function ResultRoute() {
         <PixelButton label={t('result.share')} bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={onShare} />
       </View>
 
-      <View style={{ paddingHorizontal: 22, paddingTop: 80, alignItems: 'center', zIndex: 2 }}>
+      {/* Scrolls. This column used to be a plain View, so anything past the fold was
+          simply unreachable — and the column grows: the AI grade detail, a level-up
+          banner, one row per new badge, the spoken-sentence review, the REWARDS card
+          and the footer buttons. The footer was the part being cut off, which is the
+          worst thing to lose here since it holds 다음 시나리오.
+
+          The background Pressable still spawns confetti on tap: taps that are not
+          scroll gestures pass through, and the buttons keep working because the
+          scroller does not claim them (keyboardShouldPersistTaps is irrelevant — no
+          keyboard — but tap-through is the same mechanism). */}
+      <ScrollView
+        style={{ zIndex: 2 }}
+        contentContainerStyle={{ paddingHorizontal: 22, paddingTop: 80, paddingBottom: 48, alignItems: 'center' }}
+        showsVerticalScrollIndicator={false}
+      >
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? t('result.clear') : t('result.goodTry')}</Text>
 
         {/* The character reacts. Sound already marked this moment (#16); motion is the
@@ -298,7 +312,7 @@ export default function ResultRoute() {
 
             {!graded && (
               <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>t('result.warmSmile')</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>{t('result.warmSmile')}</Text>
               </View>
             )}
           </View>
@@ -311,7 +325,7 @@ export default function ResultRoute() {
             <PixelButton icon="play" label={t('result.nextScenario')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
           </View>
         </View>
-      </View>
+      </ScrollView>
     </Pressable>
   );
 }

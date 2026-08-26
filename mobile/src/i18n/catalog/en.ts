@@ -70,6 +70,7 @@ export const en: Record<string, string> = {
   'step.kind.boss': 'Chapter test',
   'step.optional': 'Optional',
   'step.now': 'NOW',
+  'step.retry': 'AGAIN',
 
   'badge.earned': 'Earned',
   'badge.locked': 'Locked',
@@ -548,4 +549,7 @@ export const en: Record<string, string> = {
   'model.emptyHint': 'Finish a scenario and its corrections collect here',
   'list.reset': 'Reset',
   'list.apply': 'Apply',
+  'route.tryAgain': 'Try again',
+  'route.lockedHint': 'Opens once you pass the step before it.',
+  'route.now': 'Do it now',
 };

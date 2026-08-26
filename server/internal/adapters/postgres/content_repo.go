@@ -285,16 +285,24 @@ func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) 
 		}
 	}
 
-	// Events the user has completed (cleared any of their scenarios).
+	// Events the user has completed (cleared any of their scenarios), and events they
+	// have merely played. `tried` does NOT unlock anything — prerequisites are checked
+	// against `done` — it only lets the list say "you have been here".
 	done := map[string]bool{}
+	tried := map[string]bool{}
 	if crows, err := r.pool.Query(ctx,
-		`SELECT DISTINCT s.event_id FROM scenario_attempts a JOIN scenarios s ON s.id = a.scenario_id
-		 WHERE a.user_id = $1 AND a.state = 'cleared'`, userID); err == nil {
+		`SELECT DISTINCT s.event_id, a.state FROM scenario_attempts a JOIN scenarios s ON s.id = a.scenario_id
+		 WHERE a.user_id = $1 AND a.state IN ('cleared', 'attempted')`, userID); err == nil {
 		defer crows.Close()
 		for crows.Next() {
-			var eid string
-			if crows.Scan(&eid) == nil {
+			var eid, st string
+			if crows.Scan(&eid, &st) != nil {
+				continue
+			}
+			if st == "cleared" {
 				done[eid] = true
+			} else {
+				tried[eid] = true
 			}
 		}
 	}
@@ -315,6 +323,9 @@ func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) 
 		out = append(out, content.RouteNode{
 			EventID: e.id, Title: e.title, Tier: e.tier, State: state,
 			ScenarioID: scenByEvent[e.id], Prerequisites: e.prereqs,
+			// Only meaningful where it adds something: a completed node was obviously
+			// attempted, and a locked one cannot have been.
+			Attempted: state == "available" && tried[e.id],
 		})
 	}
 	return out, nil
@@ -329,20 +340,37 @@ func (r *ContentRepo) MainRoute(ctx context.Context, userID, profession string) 
 //
 // Absence is not an error here: a failed read means "nothing known to be cleared", which
 // renders every card as new rather than failing a list the learner asked for.
-func (r *ContentRepo) clearedSet(ctx context.Context, userID string) map[string]bool {
-	cleared := map[string]bool{}
-	rows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID)
+// attemptStates maps a scenario to how far the learner has got with it: "cleared"
+// (passed) or "attempted" (played, graded below the bar). Absent = never opened.
+//
+// It used to read only the cleared rows, which made "tried it and did not pass"
+// indistinguishable from "never seen it" — a situation you failed yesterday came back
+// tagged NEW. The learner cannot decide what to do next from that.
+//
+// cleared outranks attempted per scenario: replaying a passed situation and doing worse
+// does not un-pass it. MAX() over the two literals happens to order them correctly
+// ('cleared' > 'attempted' alphabetically), but relying on that is a trap for the next
+// state name, so the precedence is explicit.
+func (r *ContentRepo) attemptStates(ctx context.Context, userID string) map[string]string {
+	states := map[string]string{}
+	rows, err := r.pool.Query(ctx,
+		`SELECT scenario_id, state FROM scenario_attempts
+		  WHERE user_id = $1 AND state IN ('cleared', 'attempted')`, userID)
 	if err != nil {
-		return cleared
+		return states
 	}
 	defer rows.Close()
 	for rows.Next() {
-		var id string
-		if rows.Scan(&id) == nil {
-			cleared[id] = true
+		var id, st string
+		if rows.Scan(&id, &st) != nil {
+			continue
 		}
+		if states[id] == "cleared" {
+			continue // already the strongest state for this scenario
+		}
+		states[id] = st
 	}
-	return cleared
+	return states
 }
 
 // situationCard turns one scenario row into the card both the per-department list and
@@ -351,7 +379,7 @@ func (r *ContentRepo) clearedSet(ctx context.Context, userID string) map[string]
 // Extracted rather than copied: the level, the minutes, the urgency and the tag are four
 // derivations, and a second inline copy of them is a second place for the same card to
 // come out differently depending on which list you found it in.
-func situationCard(id, title string, briefing []byte, cleared map[string]bool) content.DeptSituation {
+func situationCard(id, title string, briefing []byte, states map[string]string) content.DeptSituation {
 	s := content.DeptSituation{ScenarioID: id, Name: title, Lv: "B1", Min: 6}
 	diff := 2
 	if len(briefing) > 0 && string(briefing) != "{}" {
@@ -374,9 +402,15 @@ func situationCard(id, title string, briefing []byte, cleared map[string]bool) c
 	s.Urgent = diff >= 3
 	// Code only — the repo has no request locale, and inventing one here is how a
 	// display string ends up baked into storage. The handler renders the label.
+	// Progress outranks urgency, because urgency is already carried separately on
+	// s.Urgent (the client keeps its own accent for that). What the single tag is FOR is
+	// telling the learner whether they have been here — which is the thing they cannot
+	// get from anywhere else on the card.
 	switch {
-	case cleared[id]:
+	case states[id] == "cleared":
 		s.TagCode = "cleared"
+	case states[id] == "attempted":
+		s.TagCode = "attempted"
 	case s.Urgent:
 		s.TagCode = "urgent"
 	default:
@@ -392,7 +426,7 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, o
 	if offset < 0 {
 		offset = 0
 	}
-	cleared := r.clearedSet(ctx, userID)
+	states := r.attemptStates(ctx, userID)
 
 	// Fetch limit+1 to detect whether another page follows, then trim.
 	rows, err := r.pool.Query(ctx,
@@ -409,7 +443,7 @@ func (r *ContentRepo) DeptSituations(ctx context.Context, userID, dept string, o
 		if err := rows.Scan(&id, &title, &briefing); err != nil {
 			return nil, false, err
 		}
-		out = append(out, situationCard(id, title, briefing, cleared))
+		out = append(out, situationCard(id, title, briefing, states))
 	}
 	if err := rows.Err(); err != nil {
 		return nil, false, err
@@ -434,7 +468,7 @@ func (r *ContentRepo) SearchSituations(ctx context.Context, userID, q string, li
 	if limit <= 0 || limit > 50 {
 		limit = 20
 	}
-	cleared := r.clearedSet(ctx, userID)
+	states := r.attemptStates(ctx, userID)
 	// ILIKE with the pattern built by the driver, never by string concatenation. Percent
 	// and underscore in the query are escaped so a learner typing "50%" searches for
 	// "50%" instead of matching everything.
@@ -455,7 +489,7 @@ func (r *ContentRepo) SearchSituations(ctx context.Context, userID, q string, li
 		if err := rows.Scan(&id, &title, &briefing); err != nil {
 			return nil, err
 		}
-		out = append(out, situationCard(id, title, briefing, cleared))
+		out = append(out, situationCard(id, title, briefing, states))
 	}
 	return out, rows.Err()
 }

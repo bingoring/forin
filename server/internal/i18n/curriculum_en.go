@@ -8,9 +8,10 @@ package i18n
 func init() {
 	register("en", map[string]string{
 		// ── situation state labels ───────────────────────────────────────────
-		"tag.cleared": "Done",
-		"tag.urgent":  "Urgent",
-		"tag.new":     "New",
+		"tag.cleared":   "Done",
+		"tag.attempted": "Tried",
+		"tag.urgent":    "Urgent",
+		"tag.new":       "New",
 
 		// ── floor headings (building|floor) ──────────────────────────────────
 		"본관|1F":   "Main 1F · Emergency Centre",

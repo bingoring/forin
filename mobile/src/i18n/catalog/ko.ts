@@ -79,6 +79,7 @@ export const ko: Record<string, string> = {
   'step.kind.boss': '챕터 시험',
   'step.optional': '선택',
   'step.now': 'NOW',
+  'step.retry': '다시',
 
   // ── collection status labels ─────────────────────────────────────────────
   'badge.earned': '획득',
@@ -578,4 +579,7 @@ export const ko: Record<string, string> = {
   'model.emptyHint': '상황을 완료하면 교정된 문장과 모범답안이 여기에 쌓입니다',
   'list.reset': '초기화',
   'list.apply': '적용',
+  'route.tryAgain': '다시 도전',
+  'route.lockedHint': '이전 단계를 통과하면 열려요.',
+  'route.now': '지금 도전',
 };

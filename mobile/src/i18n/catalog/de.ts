@@ -69,6 +69,7 @@ export const de: Record<string, string> = {
   'step.kind.boss': 'Kapiteltest',
   'step.optional': 'Optional',
   'step.now': 'NOW',
+  'step.retry': 'ERNEUT',
 
   'badge.earned': 'Erhalten',
   'badge.locked': 'Gesperrt',
@@ -547,4 +548,7 @@ export const de: Record<string, string> = {
   'model.emptyHint': 'Schließe ein Szenario ab, dann sammeln sich die Korrekturen hier',
   'list.reset': 'Zurücksetzen',
   'list.apply': 'Übernehmen',
+  'route.tryAgain': 'Nochmal',
+  'route.lockedHint': 'Öffnet sich, sobald du den Schritt davor bestehst.',
+  'route.now': 'Jetzt starten',
 };

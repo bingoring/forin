@@ -148,7 +148,8 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		// to the 1st. A failed lookup is not fatal: resume then falls back to the
 		// first unfinished curriculum, which is the old behaviour.
 		last, _ := h.progress.LatestAttemptScenarioID(ctx, uid)
-		cs := curriculum.ResolveLocalized(cleared, curriculum.KeyForScenario(last), locale)
+		attempted, _ := h.progress.AttemptedScenarioIDs(ctx, uid)
+		cs := curriculum.ResolveLocalized(cleared, attempted, curriculum.KeyForScenario(last), locale)
 		mu.Lock()
 		curricula = cs
 		// Derived from cleared content rather than from XP or level: those move for

@@ -441,7 +441,7 @@ export default function Me() {
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>리뷰랩 · 오답노트</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>t('lab.likeALocal')</Text> 카드로 변환됐어요.</Text>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 변환됐어요.</Text>
                 </View>
               </View>
               {/* corrected-phrase example box */}

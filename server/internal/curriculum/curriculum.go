@@ -64,6 +64,12 @@ type StepState struct {
 	ScenarioID string `json:"scenarioId,omitempty"`
 	State      string `json:"state"`              // done | now | lock | optional
 	Optional   bool   `json:"optional,omitempty"` // bonus practice; doesn't gate
+	// Attempted: played, graded below the bar. Orthogonal to State — a step you
+	// failed is still "now" (it is what you should do next) and its successors are
+	// still "lock" (clearing is what unlocks). Without this, a step you tried and a
+	// step you have never opened look identical, which is the one thing the learner
+	// cannot infer from anywhere else on the screen.
+	Attempted bool `json:"attempted,omitempty"`
 }
 
 // CurriculumState is a curriculum with resolved progress.
@@ -110,14 +116,14 @@ var catalog = func() []Curriculum {
 // and the "now" pointer walks them. Optional steps (quizzes) are playable at any
 // time and are `done` once cleared.
 func Resolve(cleared map[string]bool) []CurriculumState {
-	return ResolveLocalized(cleared, "", i18n.BaseLocale)
+	return ResolveLocalized(cleared, nil, "", i18n.BaseLocale)
 }
 
 // ResolveWithResume is Resolve with an explicit resume target — the key of the
 // curriculum holding the user's most recent attempt (resume.go). Passing "" or a
 // key that is already complete falls back to the first unfinished curriculum.
 func ResolveWithResume(cleared map[string]bool, preferKey string) []CurriculumState {
-	return ResolveLocalized(cleared, preferKey, i18n.BaseLocale)
+	return ResolveLocalized(cleared, nil, preferKey, i18n.BaseLocale)
 }
 
 // ResolveLocalized is ResolveWithResume with the names rendered in `locale`.
@@ -127,16 +133,17 @@ func ResolveWithResume(cleared map[string]bool, preferKey string) []CurriculumSt
 // renders exactly what it renders today (i18n.Tr's fallback). That keeps adding a
 // language additive — it touches no content file — and keeps the invariant tests,
 // which read the authored names, meaningful.
-func ResolveLocalized(cleared map[string]bool, preferKey, locale string) []CurriculumState {
+// `attempted` may be nil, which simply means no step reports as tried.
+func ResolveLocalized(cleared, attempted map[string]bool, preferKey, locale string) []CurriculumState {
 	out := make([]CurriculumState, 0, len(catalog))
 	for _, c := range catalog {
-		out = append(out, resolveOne(c, cleared, locale))
+		out = append(out, resolveOne(c, cleared, attempted, locale))
 	}
 	markResume(out, preferKey)
 	return out
 }
 
-func resolveOne(c Curriculum, cleared map[string]bool, locale string) CurriculumState {
+func resolveOne(c Curriculum, cleared, attempted map[string]bool, locale string) CurriculumState {
 	cs := CurriculumState{
 		Key: c.Key, Name: i18n.Tr(locale, c.Key, c.Name),
 		Building: c.Building, Floor: c.Floor,
@@ -149,6 +156,7 @@ func resolveOne(c Curriculum, cleared map[string]bool, locale string) Curriculum
 		// Step names are keyed by content id: the id is what the step already carries,
 		// so there is no second key space to keep in step with a rewording.
 		st := StepState{Kind: s.Kind, Name: i18n.Tr(locale, s.ScenarioID, s.Name), ScenarioID: s.ScenarioID, Optional: isOptional(s.Kind)}
+		st.Attempted = s.ScenarioID != "" && attempted[s.ScenarioID]
 		switch {
 		case s.ScenarioID != "" && cleared[s.ScenarioID]:
 			st.State = "done"
@@ -163,6 +171,14 @@ func resolveOne(c Curriculum, cleared map[string]bool, locale string) Curriculum
 			cs.Next = s.Name
 		default:
 			st.State = "lock"
+		}
+		// Only where it says something. A "done" step was obviously attempted, and a
+		// "lock" step marked tried reads as a contradiction — you cannot have played
+		// what has not opened (it happens: an id can be reached directly, or the
+		// catalog order can change under an old attempt). Either way the badge would
+		// confuse rather than inform.
+		if st.State != "now" && st.State != "optional" {
+			st.Attempted = false
 		}
 		if !st.Optional {
 			cs.Total++

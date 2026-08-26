@@ -154,7 +154,7 @@ export default function Lab() {
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
             )}
             <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
-              AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>t('lab.likeALocal')</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
+              AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
             </Text>
             {cards.length > 0 && (
               <View style={{ marginTop: 12 }}>

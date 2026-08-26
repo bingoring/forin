@@ -6,8 +6,8 @@ import "testing"
 // something" is the failure this project keeps hitting: a check that passes because
 // it never examined the thing it claims to guard.
 func TestResolveLocalizedChangesNames(t *testing.T) {
-	ko := ResolveLocalized(map[string]bool{}, "", "ko")
-	en := ResolveLocalized(map[string]bool{}, "", "en")
+	ko := ResolveLocalized(map[string]bool{}, nil, "", "ko")
+	en := ResolveLocalized(map[string]bool{}, nil, "", "en")
 	if len(ko) != len(en) || len(ko) == 0 {
 		t.Fatalf("length mismatch: ko=%d en=%d", len(ko), len(en))
 	}
@@ -38,8 +38,8 @@ func TestResolveLocalizedChangesNames(t *testing.T) {
 
 // An unknown locale must render exactly what Korean renders — not empty names.
 func TestUnknownLocaleRendersAuthored(t *testing.T) {
-	ko := ResolveLocalized(map[string]bool{}, "", "ko")
-	xx := ResolveLocalized(map[string]bool{}, "", "pt")
+	ko := ResolveLocalized(map[string]bool{}, nil, "", "ko")
+	xx := ResolveLocalized(map[string]bool{}, nil, "", "pt")
 	for i := range ko {
 		if ko[i].Name != xx[i].Name || ko[i].Where != xx[i].Where {
 			t.Fatalf("%s: %q/%q vs %q/%q", ko[i].Key, ko[i].Name, ko[i].Where, xx[i].Name, xx[i].Where)

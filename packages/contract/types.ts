@@ -2025,6 +2025,14 @@ export interface components {
             where?: string;
         };
         "github_com_bingoring_forin_server_internal_curriculum.StepState": {
+            /**
+             * @description Attempted: played, graded below the bar. Orthogonal to State — a step you
+             *     failed is still "now" (it is what you should do next) and its successors are
+             *     still "lock" (clearing is what unlocks). Without this, a step you tried and a
+             *     step you have never opened look identical, which is the one thing the learner
+             *     cannot infer from anywhere else on the screen.
+             */
+            attempted?: boolean;
             kind?: string;
             name?: string;
             /** @description bonus practice; doesn't gate */
