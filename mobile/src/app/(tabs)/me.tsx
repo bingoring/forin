@@ -122,8 +122,22 @@ export default function Me() {
   const toggleSfx = () => {
     const next = !sfxOn;
     setSfxOn(next);
-    void setSfxMuted(!next);
-    if (next) playSfx('confirm'); // 켠 직후엔 소리로 확인시켜준다
+    // Both directions make a sound, and the OFF one has to be played BEFORE muting —
+    // playSfx checks the flag when it is called.
+    //
+    // Reported as "every second tap makes a sound, one tap makes none", and this
+    // control was producing exactly that: turning sound off cannot be confirmed by a
+    // sound if you mute first, so alternate taps were silent by construction. A
+    // switch that only answers half its taps reads as broken, and a farewell blip on
+    // the way out is the last thing the speaker does — which is itself the
+    // confirmation.
+    if (next) {
+      void setSfxMuted(false);
+      playSfx('confirm');
+    } else {
+      playSfx('back');
+      void setSfxMuted(true);
+    }
   };
 
   const confirmSignOut = () => {

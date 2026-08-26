@@ -6,7 +6,7 @@ import { bootstrapSession, initKakao } from '@/lib/auth';
 import { api } from '@/api/client';
 import { hydrateEconomy } from '@/data/economy';
 import { colors } from '@/theme/tokens';
-import { loadSfxPreference } from '@/lib/sfx';
+import { loadSfxPreference, primeSfx } from '@/lib/sfx';
 import { loadLocale, onLocaleChange, useLocale, useT } from '@/i18n';
 import { loadAvatar } from '@/lib/avatar';
 import { loadFavorites } from '@/lib/favorites';
@@ -38,6 +38,10 @@ export default function RootLayout() {
     // effort: the local setting has already applied, and a failed sync costs a
     // preference rather than a session.
     onLocaleChange((l) => { void api.setUILang(l).catch(() => {}); });
+    // Create the sound players now, not on the first tap. createAudioPlayer loads
+    // asynchronously and play() on a player that has not finished loading is dropped,
+    // which is why the first tap on each sound was silent. Six short blips.
+    primeSfx();
     Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites()])
       .finally(() => setHydrated(true));
   }, []);

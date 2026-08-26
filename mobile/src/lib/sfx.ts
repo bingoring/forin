@@ -53,11 +53,42 @@ export async function setSfxMuted(next: boolean): Promise<void> {
 }
 
 /**
+ * Create every player up front.
+ *
+ * `createAudioPlayer` starts loading asynchronously and `play()` on a player that has
+ * not finished loading is DROPPED — which is why the first tap on each sound was
+ * silent. Creating them at startup means the asset is loaded long before a finger
+ * arrives. Six short blips, created once.
+ *
+ * Safe to call more than once: existing players are kept.
+ */
+export function primeSfx(): void {
+  for (const name of Object.keys(SOURCES) as SfxName[]) {
+    if (players[name]) continue;
+    try {
+      players[name] = createAudioPlayer(SOURCES[name]);
+    } catch {
+      /* one unavailable sound must not stop the rest */
+    }
+  }
+}
+
+/**
  * Play a sound. Fire-and-forget by design — callers are tap handlers.
  *
  * Players are created once and reused: creating one per tap leaks native audio
- * objects, and `seekTo(0)` before `play()` is what lets the same short blip
- * retrigger while it is still ringing (otherwise a fast double-tap is silent).
+ * objects.
+ *
+ * The rewind is AWAITED, and that is the fix for "only every second tap makes a
+ * sound". `play()` at the end of a clip does nothing, so a replay has to rewind
+ * first — and `seekTo` is a Promise because `currentTime` is read-only on the native
+ * side. The old code fired the seek without awaiting, so `play()` ran at the old
+ * end-of-clip position and was dropped; the seek then landed a moment later and left
+ * the player at 0, which is exactly why the NEXT tap worked. Every second tap.
+ *
+ * The latency this was avoiding is a fraction of a frame, and only on a REPLAY: a
+ * player already at the start skips the seek entirely. A few milliseconds is not
+ * something a finger can feel. Silence is.
  */
 export function playSfx(name: SfxName): void {
   if (muted) return;
@@ -67,13 +98,19 @@ export function playSfx(name: SfxName): void {
       p = createAudioPlayer(SOURCES[name]);
       players[name] = p;
     }
-    // seekTo() is async but is deliberately not awaited: awaiting it would put a
-    // round-trip between the finger and the blip, and a late tap sound reads as
-    // lag. If the seek lands after play() has started, the clip restarts from 0 —
-    // audible either way, which is all this needs to be. The rejection is caught
-    // so a failed seek cannot surface as an unhandled promise.
-    void p.seekTo(0).catch(() => {});
-    p.play();
+    // At the start already (a fresh player, or one rewound by a previous call):
+    // play immediately, no round trip.
+    if (p.currentTime <= 0) {
+      p.play();
+      return;
+    }
+    const player = p;
+    void player
+      .seekTo(0)
+      .then(() => player.play())
+      // A failed seek still gets a play attempt: at worst it is the silence we
+      // already had, at best the clip had finished and resets itself.
+      .catch(() => { try { player.play(); } catch { /* decoration */ } });
   } catch {
     /* audio is decoration; never let it surface as a failure */
   }
