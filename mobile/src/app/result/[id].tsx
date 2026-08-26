@@ -67,6 +67,10 @@ export default function ResultRoute() {
   const [stickerTotal, setStickerTotal] = useState<number | null>(null);
   const [newTitles, setNewTitles] = useState<TitleDef[]>([]);
   const [failed, setFailed] = useState(false);
+  // Where 다음 시나리오 goes, from the server (see CompleteResult.nextScenarioId).
+  // Undefined means the button falls back to the career tab, which is where it always
+  // went — a missing "next" must not produce a dead button.
+  const [nextScenario, setNextScenario] = useState<string | undefined>(undefined);
   // What the player said out loud this run. null until the read-back lands (or
   // if it fails) — the card is simply absent rather than showing a stub, since a
   // celebration screen must never wait on a secondary read.
@@ -119,6 +123,7 @@ export default function ResultRoute() {
           const res = await api.completeScenario(session);
           if (!alive) return;
           setGrade(res.grade);
+          setNextScenario(res.nextScenarioId);
           setAfter(res.progress);
           // Praise sticker only when it counts as a clear (완료). The same call gives
           // the scenario total the title predicates need — and since a clear adds
@@ -328,7 +333,23 @@ export default function ResultRoute() {
         <View style={{ flexDirection: 'row', gap: 8, marginTop: 16, alignSelf: 'stretch' }}>
           <PixelButton icon="note" label={t('result.openNotes')} bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
           <View style={{ flex: 1 }}>
-            <PixelButton icon="play" label={t('result.nextScenario')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => router.replace('/campus')} full />
+            {/* Into the next briefing, not the career tab. The learner just finished
+                something; making them navigate to find what follows is the button
+                failing at its one job.
+                `replace`, not `push`: the result screen is not somewhere to come back
+                to, and leaving it on the stack would put a completed scenario behind
+                the back gesture of the next one.
+                When the server hands back the scenario just finished, the run did not
+                pass and the next step is locked behind it — so the button says 다시
+                도전 rather than pretending to advance. */}
+            <PixelButton
+              icon="play"
+              label={t(nextScenario === id ? 'result.retryScenario' : 'result.nextScenario')}
+              bg={colors.mint}
+              shadowColor={colors.mintShadow}
+              onPress={() => router.replace(nextScenario ? `/scenario/${nextScenario}` : '/campus')}
+              full
+            />
           </View>
         </View>
       </ScrollView>

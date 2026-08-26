@@ -389,6 +389,7 @@ export const ko: Record<string, string> = {
   'result.warmSmile': '오늘 당신은 환자에게 따뜻한 미소를 주었습니다.',
   'result.openNotes': '오답노트 보기',
   'result.nextScenario': '다음 시나리오',
+  'result.retryScenario': '다시 도전',
   'result.pass': '완료 · PASS',
   'result.retryLabel': '재도전 · RETRY',
   'result.stickerTotal': ' (누적 {n}장)',

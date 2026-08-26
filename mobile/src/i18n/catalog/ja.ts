@@ -363,6 +363,7 @@ export const ja: Record<string, string> = {
   'result.warmSmile': '今日あなたは患者に温かい笑顔を届けました。',
   'result.openNotes': '復習ノートを見る',
   'result.nextScenario': '次のシナリオ',
+  'result.retryScenario': '再挑戦',
   'result.pass': '完了 · PASS',
   'result.retryLabel': '再挑戦 · RETRY',
   'result.stickerTotal': '（累計{n}枚）',

@@ -391,7 +391,14 @@ export interface ScenarioGrade {
   tips: { en: string; ko: string }[];
   turns: number;
 }
-export interface CompleteResult { progress: Progress; grade: ScenarioGrade; xpAwarded: number; }
+export interface CompleteResult {
+  progress: Progress; grade: ScenarioGrade; xpAwarded: number;
+  /** What to do next, decided by the server at the moment it recorded this attempt.
+   *  Equals the scenario just finished when the run did NOT pass — the step after it
+   *  is locked precisely because of that, so retrying is the honest next move and the
+   *  button says so. Absent when there is nothing left to do. */
+  nextScenarioId?: string;
+}
 
 // Aggregated activity for the growth report. activeDates are UTC yyyy-mm-dd
 // within the current (Monday-first) week.

@@ -34,3 +34,37 @@ test('the sticker burst on mount is untouched', () => {
   // mount — but if this ever moves inside the scroller it would need rethinking.
   expect(SRC).toMatch(/measureInWindow\(\(x, y, w, h\) => spawnBurst/);
 });
+
+// 다음 시나리오 must go INTO the next briefing, not to the career tab.
+//
+// It used to `replace('/campus')` — the learner finished something and was handed a
+// building list to find what follows in. That is the button failing at its one job.
+test('the next-scenario button opens the next briefing', () => {
+  expect(SRC).toMatch(/router\.replace\(nextScenario \? `\/scenario\/\$\{nextScenario\}` : '\/campus'\)/);
+});
+
+test('a missing next falls back to the career tab rather than a dead route', () => {
+  // The server omits nextScenarioId when there is nothing left; pushing
+  // `/scenario/undefined` would be a route that can only error.
+  expect(SRC).toMatch(/nextScenario \? .* : '\/campus'/);
+});
+
+test('the target comes from the server, not from the client walking the curriculum', () => {
+  // Two screens computing "what's next" separately is how they end up disagreeing —
+  // the home tab and the career tab already read the server's own resolution.
+  expect(SRC).toMatch(/setNextScenario\(res\.nextScenarioId\)/);
+});
+
+test('a failed run offers a retry instead of pretending to advance', () => {
+  // The server hands back the same scenario when the run did not pass, because the
+  // step after it is locked precisely because of that.
+  expect(SRC).toMatch(/nextScenario === id \? 'result\.retryScenario' : 'result\.nextScenario'/);
+});
+
+test('it replaces rather than pushes', () => {
+  // The result screen is not somewhere to come back to: leaving it on the stack puts
+  // a completed scenario behind the next one's back gesture.
+  const btn = SRC.slice(SRC.indexOf('result.retryScenario'), SRC.indexOf('result.retryScenario') + 500);
+  expect(btn).toMatch(/router\.replace\(/);
+  expect(btn).not.toMatch(/router\.push\(/);
+});

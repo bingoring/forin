@@ -248,3 +248,80 @@ func Group(states []CurriculumState) []BuildingGroup {
 	}
 	return out
 }
+
+// NextScenarioAfter answers "what should the learner do next", for the button on the
+// result screen.
+//
+// Defined as: the next required step of the curriculum the finished scenario belongs
+// to; and when that curriculum is complete, the first required step of the next
+// unfinished one — which is the SAME target the home tab's "오늘의 한 가지" and the
+// career tab's 이어하기 point at, because all three read this resolution rather than
+// each walking the catalog. Two screens computing "what's next" separately is how
+// they end up disagreeing.
+//
+// On a run that did NOT pass, the answer is that scenario again. The step after it is
+// locked precisely because this one was not cleared, so offering the next step would
+// contradict the lock, and offering nothing would leave the button dead. Retrying is
+// the honest next move — the caller sees the returned id equals what just finished and
+// labels the button accordingly.
+//
+// Returns "" only when there is genuinely nothing left, and the caller then sends the
+// learner somewhere they can choose for themselves rather than to a dead route.
+func NextScenarioAfter(cleared, attempted map[string]bool, justFinished string) string {
+	states := ResolveLocalized(cleared, attempted, KeyForScenario(justFinished), i18n.BaseLocale)
+
+	// Not cleared: this scenario is still the curriculum's "now" step and the way
+	// forward is through it.
+	if justFinished != "" && !cleared[justFinished] {
+		if key := KeyForScenario(justFinished); key != "" {
+			for _, cs := range states {
+				if cs.Key != key {
+					continue
+				}
+				for _, st := range cs.Steps {
+					if st.ScenarioID == justFinished && st.State == "now" {
+						return justFinished
+					}
+				}
+			}
+		}
+	}
+
+	// Prefer the curriculum the learner is already in: finishing step 2 of 5 should
+	// offer step 3, not jump them to another ward.
+	if key := KeyForScenario(justFinished); key != "" {
+		for _, cs := range states {
+			if cs.Key != key {
+				continue
+			}
+			if id := firstActionable(cs, justFinished); id != "" {
+				return id
+			}
+			break // this curriculum is done; fall through to the next one
+		}
+	}
+	// Otherwise the resume target — the one flag the whole app already agrees on.
+	for _, cs := range states {
+		if !cs.Resume {
+			continue
+		}
+		if id := firstActionable(cs, justFinished); id != "" {
+			return id
+		}
+	}
+	return ""
+}
+
+// firstActionable is the step the learner can start now, skipping the one they just
+// finished (which the caller has already handled).
+func firstActionable(cs CurriculumState, exclude string) string {
+	for _, st := range cs.Steps {
+		if st.ScenarioID == "" || st.ScenarioID == exclude {
+			continue
+		}
+		if st.State == "now" {
+			return st.ScenarioID
+		}
+	}
+	return ""
+}

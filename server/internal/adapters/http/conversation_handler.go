@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -225,7 +226,25 @@ func (h *conversationHandler) complete(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusInternalServerError, "could not record attempt")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]any{"progress": p, "grade": g, "xpAwarded": g.XPAwarded})
+	out := map[string]any{"progress": p, "grade": g, "xpAwarded": g.XPAwarded}
+	// What to do next, decided HERE — the one place that knows the attempt was just
+	// recorded. The result screen's 다음 시나리오 used to send the learner to the career
+	// tab to find it themselves; sending them into the next briefing is the whole
+	// point of the button.
+	//
+	// Read after RecordAttempt so the just-finished scenario is already counted:
+	// resolving before it would offer the scenario they just cleared.
+	//
+	// Best-effort. A failed read means the button falls back to the career tab, which
+	// is where it went before — a broken "next" must not fail the completion the
+	// learner just earned.
+	if cleared, err := h.progress.ClearedScenarioIDs(r.Context(), uid); err == nil {
+		attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
+		if next := curriculum.NextScenarioAfter(cleared, attempted, g.ScenarioID); next != "" {
+			out["nextScenarioId"] = next
+		}
+	}
+	httpx.JSON(w, http.StatusOK, out)
 }
 
 // @Summary Send a message; NPC reply streamed as Server-Sent Events (LLM)

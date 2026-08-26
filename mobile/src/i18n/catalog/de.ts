@@ -363,6 +363,7 @@ export const de: Record<string, string> = {
   'result.warmSmile': 'Heute hast du einem Patienten ein warmes Lächeln geschenkt.',
   'result.openNotes': 'Notizen öffnen',
   'result.nextScenario': 'Nächstes Szenario',
+  'result.retryScenario': 'Nochmal versuchen',
   'result.pass': 'FERTIG · PASS',
   'result.retryLabel': 'NOCHMAL · RETRY',
   'result.stickerTotal': ' (insgesamt {n})',
