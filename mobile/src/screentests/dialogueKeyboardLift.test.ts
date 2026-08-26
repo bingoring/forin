@@ -19,7 +19,14 @@ test('the thread column has an animated top, not a fixed one', () => {
   expect(SRC).toMatch(/top:\s*threadTopStyle/);
   // The resting position is still the dock's offset; the raised one is under the status bar.
   expect(SRC).toMatch(/const restingTop = winH \* 0\.41 \+ 34;/);
-  expect(SRC).toMatch(/const raisedTop = 96;/);
+  // Measured, not a constant: with a mission on screen the status bar is ~152pt, so a
+  // fixed 96 put the raised thread over the mission text and the 상황 종료 button —
+  // the two things you need if the keyboard opened by accident.
+  expect(SRC).toMatch(/const raisedTop = Math\.max\(96, barH \+ 6\);/);
+  expect(SRC).toMatch(/onLayout=\{\(e\) => setBarH\(e\.nativeEvent\.layout\.height\)\}/);
+  // interpolate captures its outputRange, so it has to be rebuilt when the
+  // measurement lands or the pre-measurement guess sticks forever.
+  expect(SRC).toMatch(/useMemo\(\s*\(\) => threadTop\.interpolate/);
   expect(SRC).toMatch(/outputRange: \[restingTop, raisedTop\]/);
 });
 

@@ -6,7 +6,7 @@
 // persona. Includes the v17 handoff affordances: MISSION counter, 💧 distress cue,
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Animated, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
@@ -86,9 +86,16 @@ export default function DialogueRoute() {
   // `top` is a layout prop, so this one cannot use the native driver (opacity can).
   const threadTop = useRef(new Animated.Value(0)).current;
   const restingTop = winH * 0.41 + 34;
-  // Just under the status bar. The exit and the mission cluster stay reachable — they
-  // are what you need if the keyboard opened by accident.
-  const raisedTop = 96;
+  // Just under the status bar — MEASURED, not guessed.
+  //
+  // A constant was wrong: the bar is the exit button on the left and, on the right, a
+  // MISSION chip, the mission text (which wraps) and the 상황 종료 button. That stack
+  // is ~152pt with a mission and ~90 without, so any single number either covers the
+  // mission and the way out, or wastes half the space it was meant to reclaim. The
+  // exit and 상황 종료 are exactly what you need if the keyboard opened by accident,
+  // so they must stay reachable.
+  const [barH, setBarH] = useState(0);
+  const raisedTop = Math.max(96, barH + 6);
 
   useEffect(() => {
     // will* on iOS so the motion rides the system animation; did* on Android, which
@@ -107,7 +114,12 @@ export default function DialogueRoute() {
     return () => { show.remove(); hide.remove(); };
   }, [chromeOpacity, threadTop]);
 
-  const threadTopStyle = threadTop.interpolate({ inputRange: [0, 1], outputRange: [restingTop, raisedTop] });
+  // Re-derived when the measurement lands: interpolate() captures its outputRange, so
+  // a value read once at mount would keep the pre-measurement guess forever.
+  const threadTopStyle = useMemo(
+    () => threadTop.interpolate({ inputRange: [0, 1], outputRange: [restingTop, raisedTop] }),
+    [threadTop, restingTop, raisedTop],
+  );
   const messages = threadOf(transcript, npcLine);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
@@ -361,7 +373,10 @@ export default function DialogueRoute() {
       </Pressable>
 
       {/* status bar */}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}>
+      <View
+        onLayout={(e) => setBarH(e.nativeEvent.layout.height)}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}
+      >
         {/* A bare ×. Renaming this to "호출 받기" put the fiction on the button,
             where it read as a feature rather than an exit; the framing belongs in
             the sheet it opens ("다른 곳에서 호출이 왔어요", and the promise that
