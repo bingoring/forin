@@ -169,7 +169,10 @@ export default function Lab() {
     }
     const splits = (count: number) => count > 0 && count < cards.length;
     return [
-      { id: 'ALL', label: t('board.all'), count: cards.length, tone: C },
+      // mint, not ink — the chip's own text and its count are both drawn in ink, so a
+      // tone of ink paints the label out when the chip is active and the count out when
+      // it is not. The handoff's cats list gives 전체 T.mint for the same reason.
+      { id: 'ALL', label: t('board.all'), count: cards.length, tone: colors.mint },
       ...Array.from(byKind)
         .filter(([, count]) => splits(count))
         .map(([k, count]) => ({ id: `kind:${k}`, label: t(KIND_LABEL[k]), count, tone: KIND_TONE[k] })),
@@ -313,7 +316,7 @@ export default function Lab() {
                   <Pressable key={c.id} onPress={() => setFilter(c.id)}>
                     <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: active ? C : C }}>{c.label}</Text>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{c.label}</Text>
                         <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
                           <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{c.count}</Text>
                         </View>
@@ -541,10 +544,6 @@ function Badge({ text, icon, bg, color }: { text?: string; icon?: IconName; bg: 
   );
 }
 
-/** A block whose data could not be read. Says so, rather than leaving a gap: a
- *  missing block reads as a missing FEATURE, and the learner then looks for it in the
- *  wrong place. Same frame as the real block so the page does not jump when it
- *  recovers on the next focus. */
 /** The number under a section tab. `'…'` while the summary is still unknown: a
  *  tab that reads 0 and then jumps to 128 looks like the feature was empty, and
  *  0 is also a legitimate answer once the read lands — so the two states cannot
@@ -570,6 +569,10 @@ function SectionLoading() {
   );
 }
 
+/** A block whose data could not be read. Says so, rather than leaving a gap: a
+ *  missing block reads as a missing FEATURE, and the learner then looks for it in the
+ *  wrong place. Same frame as the real block so the page does not jump when it
+ *  recovers on the next focus. */
 function BlockUnavailable({ titleKey }: { titleKey: string }) {
   const t = useT();
   return (

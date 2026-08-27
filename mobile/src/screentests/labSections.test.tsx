@@ -273,3 +273,55 @@ test('a tab whose count is still loading shows no number at all', async () => {
     mockPending.on = false;
   }
 });
+
+/** Flattens a style prop (object, array, or nested arrays) into one object. */
+function flat(style: unknown): Record<string, unknown> {
+  if (Array.isArray(style)) return Object.assign({}, ...style.map(flat));
+  return (style ?? {}) as Record<string, unknown>;
+}
+
+/** Every Text inside `node` whose colour equals the nearest painted background
+ *  behind it — i.e. text that is invisible. */
+function invisibleText(node: ReactTestInstance): string[] {
+  const bad: string[] = [];
+  for (const txt of node.findAll((n) => String(n.type) === 'Text', { deep: true })) {
+    const color = flat(txt.props?.style).color;
+    let p: ReactTestInstance | null = txt.parent;
+    let bg: unknown;
+    while (p) {
+      const s = flat(p.props?.style);
+      if (s.backgroundColor) { bg = s.backgroundColor; break; }
+      p = p.parent;
+    }
+    if (color && bg && String(color).toLowerCase() === String(bg).toLowerCase()) {
+      bad.push(`${txt.children.filter((c) => typeof c === 'string').join('')} (${String(color)} on ${String(bg)})`);
+    }
+  }
+  return bad;
+}
+
+test('no chip paints its label or its count in its own colour', async () => {
+  // The 전체 chip's tone was the ink colour, which the chip draws BOTH its label and
+  // its count in: inactive, the count box was a black square with black digits;
+  // active, the whole chip went black and swallowed the word 전체. Nothing in the
+  // component guards against that — the tone is data — so the check is here.
+  const tree = await mount();
+  const labels = ['전체', 'ER', 'ICU', '교정', '제안'];
+  for (const label of labels) {
+    const row = chipRow(tree.root);
+    const hits = row.findAll(
+      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
+      { deep: true },
+    );
+    const chip = hits[hits.length - 1];
+    // Inactive: the count box is filled with the tone.
+    expect(invisibleText(chip)).toEqual([]);
+    // Active: the whole chip is filled with the tone.
+    await act(async () => { chip.props.onPress(); });
+    const active = chipRow(tree.root).findAll(
+      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
+      { deep: true },
+    ).slice(-1)[0];
+    expect(invisibleText(active)).toEqual([]);
+  }
+});
