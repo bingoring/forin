@@ -284,6 +284,8 @@ export const en: Record<string, string> = {
   'lab.likeALocal': 'Say it like a local',
   'lab.startReview': "Start today's review ({n})",
   'lab.mastered': 'Mastered',
+  'lab.kindCorrection': 'Fixed',
+  'lab.kindSuggestion': 'Suggested',
   'lab.tabNotes': 'Corrections',
   'lab.tabSpeak': 'Speaking',
   'lab.tabModels': 'Model answers',

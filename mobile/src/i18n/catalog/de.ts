@@ -283,6 +283,8 @@ export const de: Record<string, string> = {
   'lab.likeALocal': 'Sag es wie ein Einheimischer',
   'lab.startReview': 'Heutige Wiederholung starten ({n})',
   'lab.mastered': 'Gemeistert',
+  'lab.kindCorrection': 'Korrigiert',
+  'lab.kindSuggestion': 'Vorschlag',
   'lab.tabNotes': 'Korrekturen',
   'lab.tabSpeak': 'Sprechen',
   'lab.tabModels': 'Musterantworten',

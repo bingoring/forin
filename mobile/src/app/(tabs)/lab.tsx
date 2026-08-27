@@ -37,12 +37,39 @@ function nextLabel(t: Translate, days: number): string {
 // Per-topic tone for the card header strip (v17 uses a per-dept tone background).
 const TONES = [colors.mint, colors.peach, colors.blue, colors.lilac, colors.yellow];
 const toneOf = (tag: string) => TONES[[...tag].reduce((s, ch) => s + ch.charCodeAt(0), 0) % TONES.length];
-// A topicTag like "ER · 통증 사정" → { dept: "ER", tag: "통증 사정" }.
-function splitTag(t: Translate, topicTag: string): { dept: string; tag: string } {
-  const parts = (topicTag || '').split('·').map((s) => s.trim());
+// A topicTag like "ER · 통증 사정" → { dept: "ER", tag: "통증 사정" }. May be empty:
+// nothing writes topic_tag today (both card-creation sites leave it blank), which is
+// why the filter row used to collapse to a single "교정 노트" chip — it was built from
+// a field with no values in it. Kept, rather than deleted, because the column is real
+// and a card that DOES carry one should still label itself from it.
+function splitTag(topicTag: string): { dept: string; tag: string } {
+  const parts = (topicTag || '').split('·').map((s) => s.trim()).filter(Boolean);
   if (parts.length >= 2) return { dept: parts[0], tag: parts.slice(1).join(' · ') };
-  return { dept: topicTag || t('lab.correctionNote'), tag: '' };
+  return { dept: '', tag: '' };
 }
+
+/** The department a card came from — "SURG · WARD" → "SURG".
+ *
+ *  From `context.dept`, which BOTH card sources fill in from the scenario briefing
+ *  (engine.go files corrections, grading.go files suggestions). This is the axis that
+ *  actually has values in it. */
+function deptOf(card: ReviewCard): string {
+  const fromCtx = (card.context?.dept || '').split('·')[0].trim();
+  return fromCtx || splitTag(card.topicTag).dept;
+}
+
+/** What kind of card this is — the one other thing that genuinely varies.
+ *
+ *  `correction` is something the learner said and got fixed; `suggestion` is the
+ *  end-of-scenario "you could have said this", which was never said at all. The card
+ *  already draws them differently (✕ vs 💡, struck through vs not); this makes the
+ *  same distinction filterable. */
+type Kind = 'correction' | 'suggestion';
+function kindOf(card: ReviewCard): Kind {
+  return faceOf(card.source).correction ? 'correction' : 'suggestion';
+}
+const KIND_LABEL: Record<Kind, string> = { correction: 'lab.kindCorrection', suggestion: 'lab.kindSuggestion' };
+const KIND_TONE: Record<Kind, string> = { correction: colors.peach, suggestion: colors.yellow };
 
 // The three halves of this tab, per v26: 교정 노트 / 말하기 / 모범답안.
 //
@@ -123,16 +150,44 @@ export default function Lab() {
     setTimeout(() => setToast(null), 1600);
   };
 
-  // Category filter tabs derived from card topicTags (handoff has a FilterTab row).
+  // The filter row, over the two axes a card actually varies on: which department it
+  // came from, and whether it is a correction or a suggestion.
+  //
+  // A chip is only offered when it SPLITS the list — `0 < count < cards.length`. A chip
+  // matching every card is what 전체 already is, and a chip matching none is a dead end;
+  // both were on screen before, and between them the row had nothing to filter. Ids are
+  // namespaced (`dept:ER`, `kind:correction`) because the two axes share one row and one
+  // selection: last tap wins, like the handoff's row.
   const cats = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const c of cards) { const d = splitTag(t, c.topicTag).dept; counts.set(d, (counts.get(d) ?? 0) + 1); }
+    const byDept = new Map<string, number>();
+    const byKind = new Map<Kind, number>();
+    for (const c of cards) {
+      const d = deptOf(c);
+      if (d) byDept.set(d, (byDept.get(d) ?? 0) + 1);
+      const k = kindOf(c);
+      byKind.set(k, (byKind.get(k) ?? 0) + 1);
+    }
+    const splits = (count: number) => count > 0 && count < cards.length;
     return [
-      { id: 'ALL', label: t('board.all'), count: cards.length },
-      ...Array.from(counts, ([id, count]) => ({ id, label: id, count })),
+      { id: 'ALL', label: t('board.all'), count: cards.length, tone: C },
+      ...Array.from(byKind)
+        .filter(([, count]) => splits(count))
+        .map(([k, count]) => ({ id: `kind:${k}`, label: t(KIND_LABEL[k]), count, tone: KIND_TONE[k] })),
+      ...Array.from(byDept)
+        .filter(([, count]) => splits(count))
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .map(([d, count]) => ({ id: `dept:${d}`, label: d, count, tone: toneOf(d) })),
     ];
-  }, [cards]);
-  const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(t, c.topicTag).dept === filter);
+  }, [cards, t]);
+  const shown = useMemo(() => {
+    // A filter left over from a previous set of cards (its chip is no longer offered)
+    // falls back to 전체 rather than showing an empty list with nothing highlighted.
+    if (filter === 'ALL' || !cats.some((c) => c.id === filter)) return cards;
+    const [axis, value] = filter.split(':');
+    if (axis === 'kind') return cards.filter((c) => kindOf(c) === value);
+    if (axis === 'dept') return cards.filter((c) => deptOf(c) === value);
+    return cards;
+  }, [cards, cats, filter]);
 
   if (state !== 'ok') {
     return (
@@ -253,7 +308,7 @@ export default function Lab() {
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
               {cats.map((c) => {
                 const active = filter === c.id;
-                const catColor = c.id === 'ALL' ? C : toneOf(c.id);
+                const catColor = c.tone;
                 return (
                   <Pressable key={c.id} onPress={() => setFilter(c.id)}>
                     <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
@@ -347,7 +402,13 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
       `/pronunciation/${encodeURIComponent(card.back.slice(0, 40))}?referenceText=${encodeURIComponent(card.back)}&origin=review&reviewCardId=${encodeURIComponent(card.id)}&ctx=${encodeURIComponent(card.context?.title || card.topicTag || '')}&step=${encodeURIComponent(t('lab.likeALocal'))}`
     );
   };
-  const { dept, tag } = splitTag(t, card.topicTag);
+  const { tag } = splitTag(card.topicTag);
+  const dept = deptOf(card);
+  const kind = kindOf(card);
+  // The strip has to say SOMETHING about where the card came from. Department when we
+  // know it, else the scenario's own title — never the old fallback, which labelled
+  // every card "교정 노트" (the name of the screen it was already on).
+  const headerLabel = dept || card.context?.title || t('lab.correctionNote');
   const face = faceOf(card.source);
   const [showCtx, setShowCtx] = useState(false);
   const ctx = card.context;
@@ -355,17 +416,23 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
   return (
     <Shadowed offset={4}>
       <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
-        {/* header: per-topic tone + dept label + 복습 badge + tag chip */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 7, paddingHorizontal: 10, backgroundColor: toneOf(card.topicTag), borderBottomWidth: 2.5, borderBottomColor: C }}>
-          <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{dept}</Text>
-          <View style={{ backgroundColor: '#EF4444', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#fff' }}>복습</Text>
-          </View>
+        {/* header: per-dept tone + where it came from + which kind of card.
+            The red 복습 badge that used to sit on the right is gone. It was drawn on
+            every card and could never be anything else — this list is GET /me/review,
+            which returns only what is due today, so the badge said "due" to a screen
+            where being due is the entry condition. Its place goes to the kind (교정 /
+            제안), which does vary and is one of the filter chips, the way the
+            handoff's header carries a chip from its own filter row. */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 7, paddingHorizontal: 10, backgroundColor: toneOf(dept || card.topicTag), borderBottomWidth: 2.5, borderBottomColor: C }}>
+          <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{headerLabel}</Text>
           {!!tag && (
             <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{tag}</Text>
             </View>
           )}
+          <View style={{ backgroundColor: KIND_TONE[kind], borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{t(KIND_LABEL[kind])}</Text>
+          </View>
         </View>
 
         <View style={{ paddingVertical: 10, paddingHorizontal: 12 }}>

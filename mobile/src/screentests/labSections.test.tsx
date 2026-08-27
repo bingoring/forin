@@ -27,37 +27,59 @@ jest.mock('expo-router', () => {
   };
 });
 
-const CARD = {
+// Shaped like the real thing: topic_tag is EMPTY (nothing writes it — see deptOf),
+// the department lives in context.dept as "DEPT · ROOM", and both card kinds exist.
+const mockCard = {
   id: 'r1',
   source: 'correction',
   front: 'I want to ask about your pain.',
   back: 'Can you tell me about your pain?',
   note: '"I want to ask"는 직역체예요.',
-  topicTag: 'ER · 통증 사정',
+  topicTag: '',
   masteryPips: 1,
   favorite: false,
-  context: { title: '흉통 환자 트리아지', dept: 'ER', situation: '흉통 환자에게 통증 양상을 묻는 장면', npc: 'It hurts right here.' },
+  context: { title: '흉통 환자 트리아지', dept: 'ER · TRIAGE', situation: '흉통 환자에게 통증 양상을 묻는 장면', npc: 'It hurts right here.' },
+};
+const mockCardIcu = {
+  ...mockCard,
+  id: 'r2',
+  front: 'The patient condition is not good.',
+  back: 'The patient is deteriorating.',
+  context: { title: 'SBAR 인계', dept: 'ICU · BEDSIDE', situation: '야간 당직 의사에게 보고하는 장면', npc: '' },
+};
+// source 'grade' = the end-of-scenario "you could have said this". Never said aloud,
+// so it is not a correction and the card does not strike it through.
+const mockCardTip = {
+  ...mockCard,
+  id: 'r3',
+  source: 'grade',
+  front: '통증이 어디로 퍼지는지 묻기',
+  back: 'Does the pain spread anywhere?',
+  context: { ...mockCard.context, title: '흉통 환자 트리아지' },
 };
 
-// Flipped by the loading test. `mock`-prefixed so the jest.mock factory below may
-// close over it (jest hoists the factory above every other binding).
+// Flipped by the "nothing to filter" test: every card in one department, one kind.
+const mockUniform = { on: false };
+// Flipped by the loading test. `mock`-prefixed, like every other fixture here, because
+// the jest.mock factory below is hoisted above them all and may only close over names
+// with that prefix.
 const mockPending = { on: false };
-const SPEAK = {
+const mockSpeak = {
   total: 128,
   low: 12,
   mid: 40,
   high: 76,
   weakest: [{ sentenceKey: 's1', referenceText: 'Please bear with me for a moment.', recognized: '', overall: 64, accuracy: 64, fluency: 64, completeness: 64, attempts: 2 }],
 };
-const MODELS = { total: 34, groups: [], more: 30 };
+const mockModels = { total: 34, groups: [], more: 30 };
 
 jest.mock('@/api/client', () => ({
   api: {
-    reviewDue: async () => [{ ...CARD }],
+    reviewDue: async () => (mockUniform.on ? [{ ...mockCard }, { ...mockCard, id: 'r9' }] : [{ ...mockCard }, { ...mockCardIcu }, { ...mockCardTip }]),
     // A promise that never settles is what "still in flight" actually is. Returning
     // undefined or rejecting would test a different state.
-    speakSummary: () => (mockPending.on ? new Promise(() => {}) : Promise.resolve(SPEAK)),
-    modelAnswerSummary: () => (mockPending.on ? new Promise(() => {}) : Promise.resolve(MODELS)),
+    speakSummary: () => (mockPending.on ? new Promise(() => {}) : Promise.resolve(mockSpeak)),
+    modelAnswerSummary: () => (mockPending.on ? new Promise(() => {}) : Promise.resolve(mockModels)),
     gradeReview: async () => ({ intervalDays: 3 }),
   },
 }));
@@ -76,6 +98,11 @@ async function mount() {
   let tree!: ReturnType<typeof create>;
   await act(async () => { tree = create(<Lab />); });
   return tree;
+}
+
+/** The category chip row — the one horizontal scroller on this screen. */
+function chipRow(root: ReactTestInstance): ReactTestInstance {
+  return root.findAll((n) => n.props?.horizontal === true, { deep: true })[0];
 }
 
 /** The section TAB carrying `label`. Scoped to the tab row by testID rather than
@@ -111,7 +138,7 @@ test('each tab carries its own count, and an unknown count is not 0', async () =
   const out = texts(tree.root);
   expect(out).toContain('128'); // 말하기
   expect(out).toContain('34');  // 모범답안
-  expect(out).toContain('1');   // 교정 노트 — one card due
+  expect(out).toContain('3');   // 교정 노트 — three cards due
 });
 
 test('말하기 and 모범답안 are no longer entries in the category chip row', async () => {
@@ -120,16 +147,75 @@ test('말하기 and 모범답안 are no longer entries in the category chip row'
   // the words "직접 말하기 연습" as its title, so a page-wide search for that string
   // fails whenever the block is on screen — which is a test that reports the chip
   // row as fixed or broken for a reason that has nothing to do with the chip row.
-  const row = tree.root.findAll((n) => n.props?.horizontal === true, { deep: true })[0];
-  const chips = texts(row);
-  // The chips filter the card list. A chip that cannot filter it — spoken sentences
-  // and scenario groups are not PhraseCards — has no business in that row.
-  expect(chips).toContain('전체');
-  expect(chips).toContain('ER'); // a real filter is still there
+  const chips = texts(chipRow(tree.root));
   expect(chips).not.toContain('직접 말하기 연습');
   expect(chips).not.toContain('시나리오 모범답안');
   expect(chips).not.toContain('말하기');
   expect(chips).not.toContain('모범답안');
+});
+
+test('the chips are the axes a card actually varies on', async () => {
+  const tree = await mount();
+  const chips = texts(chipRow(tree.root));
+  expect(chips).toContain('전체');
+  // department, from context.dept's leading segment ("ER · TRIAGE" → "ER")…
+  expect(chips).toContain('ER');
+  expect(chips).toContain('ICU');
+  // …and kind, which the card already draws differently but could not be filtered on.
+  expect(chips).toContain('교정');
+  expect(chips).toContain('제안');
+  // NOT the old chip: it came from topic_tag, which nothing writes, so every card fell
+  // into it and the row filtered nothing.
+  expect(chips).not.toContain('교정 노트');
+});
+
+test('a chip that would match every card is not offered', async () => {
+  // 전체 already is that chip. Two cards, one department, one kind → nothing splits the
+  // list, so there is no row at all rather than a row of no-ops.
+  mockUniform.on = true;
+  try {
+    const tree = await mount();
+    expect(tree.root.findAll((n) => n.props?.horizontal === true, { deep: true })).toHaveLength(0);
+  } finally {
+    mockUniform.on = false;
+  }
+});
+
+test('tapping a chip narrows the list to that chip', async () => {
+  const tree = await mount();
+  const chip = (label: string) => {
+    const hits = chipRow(tree.root).findAll(
+      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
+      { deep: true },
+    );
+    expect(hits.length).toBeGreaterThan(0);
+    return hits[hits.length - 1];
+  };
+
+  await act(async () => { chip('ICU').props.onPress(); });
+  let out = texts(tree.root);
+  expect(out.some((x) => x.includes('The patient is deteriorating.'))).toBe(true);
+  expect(out.some((x) => x.includes('Can you tell me about your pain?'))).toBe(false);
+
+  await act(async () => { chip('제안').props.onPress(); });
+  out = texts(tree.root);
+  // Only the 'grade' card, and the two corrections are gone — the axes are independent,
+  // and a single selection switches between them rather than intersecting.
+  expect(out.some((x) => x.includes('Does the pain spread anywhere?'))).toBe(true);
+  expect(out.some((x) => x.includes('The patient is deteriorating.'))).toBe(false);
+});
+
+test('the card header names the kind, not that it is due', async () => {
+  const tree = await mount();
+  const out = texts(tree.root);
+  // Every card in this list is due — it is GET /me/review. A badge saying so on all of
+  // them carried no information, and it sat where something varying belongs.
+  expect(out).not.toContain('복습');
+  expect(out).toContain('교정');
+  expect(out).toContain('제안');
+  // …and the strip says where the card came from.
+  expect(out).toContain('ER');
+  expect(out).toContain('ICU');
 });
 
 test('tapping 말하기 swaps the content for the speaking summary', async () => {
