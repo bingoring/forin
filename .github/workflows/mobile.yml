@@ -35,6 +35,17 @@ jobs:
         working-directory: mobile
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The design handoff lives in the `docs/dlc` submodule, and
+          # src/theme/ficons.test.ts re-parses its forin-pixel-icons.jsx to compare all
+          # 88 icons and 813 rects against the generated table. Without the submodule
+          # that comparison skips, which means the one check that can catch a hand-edit
+          # or a missed regeneration only ever ran on one laptop.
+          #
+          # No token needed: bingoring/waypoint is public and the submodule URL is
+          # https, so the anonymous clone works. (I had assumed it was private and said
+          # so — it is not.)
+          submodules: true
 
       - uses: actions/setup-node@v4
         with:
