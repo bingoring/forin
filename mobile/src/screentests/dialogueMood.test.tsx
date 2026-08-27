@@ -124,10 +124,12 @@ test('the mission tracker names every goal and claims no position', () => {
   const code = SRC.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
   expect(code).not.toMatch(/MISSION 1\//);
   expect(code).not.toMatch(/const mission = goals\[0\]/);
-  // Lists the goals, capped so a five-goal scenario cannot push the tracker over the
-  // portrait below it. Four is the standard shape now (opening + body + closing), so
-  // the cap has to clear it or the closing mission would never be visible.
-  expect(SRC).toMatch(/goals\.slice\(0, 4\)\.map/);
+  // Every goal, behind a tap. A permanent list grew tall enough at four or five goals
+  // — the shape all content has now — to cover the portrait and crowd the thread, so
+  // it is collapsed by default and there is no cap to clip the last mission.
+  expect(SRC).toMatch(/goals\.map\(\(g, i\) => \{/);
+  expect(SRC).toMatch(/setMissionsOpen\(\(v\) => !v\)/);
+  expect(SRC).toMatch(/<Collapsible open=\{missionsOpen\}>/);
   // A count, not a fraction: progress is judged at the end from the transcript, so
   // there is nothing honest to put in the numerator mid-conversation.
   expect(SRC).toMatch(/dialogue\.missionCount/);
@@ -150,7 +152,14 @@ test('an unchanged tick does not re-render the tracker', () => {
 test('a covered mission is struck through, not removed', () => {
   // A list that shrinks as you work loses the shape of the exchange.
   expect(SRC).toMatch(/textDecorationLine: done \? 'line-through' : 'none'/);
-  expect(SRC).toMatch(/\{done && <FIcon name="check"/);
+  // The tick REPLACES the bullet rather than joining it — two marks in a row is noise.
+  expect(SRC).toMatch(/done\s*\n?\s*\? <FIcon name="check"/);
+});
+
+test('mission items are bulleted, so they read as a list', () => {
+  // They were separated by nothing but line breaks, which at four items reads as one
+  // paragraph that happens to wrap.
+  expect(SRC).toMatch(/>·<\/Text>/);
 });
 
 test('the tracker works with no progress data at all', () => {

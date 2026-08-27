@@ -96,6 +96,15 @@ type Props = {
    * the screen it just opened; the caller sets this instead of throwing the sheet away,
    * and the difference is what lets the way back land where you left.
    */
+  /**
+   * Rendered directly under the grabber, and DRAGGABLE with it.
+   *
+   * The 27px strip is a target you have to aim at; a sheet's title is right there and
+   * is what a hand reaches for. Passing the title here makes the whole top of the sheet
+   * the handle. It claims only on vertical MOVEMENT, so anything interactive inside it
+   * still gets its taps.
+   */
+  header?: React.ReactNode;
   suspended?: boolean;
   /**
    * Render into the tab-level overlay host (SheetOverlay) when there is one.
@@ -112,7 +121,7 @@ type Props = {
   overlay?: boolean;
 };
 
-export function BottomSheet({ visible, onClose, children, size = 'content', suspended = false, overlay = false }: Props) {
+export function BottomSheet({ visible, onClose, children, header, size = 'content', suspended = false, overlay = false }: Props) {
   // Measured once the content lays out; until then the sheet sits offscreen so
   // it never flashes at the wrong height.
   const [contentH, setContentH] = useState(0);
@@ -295,6 +304,26 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
   // move, their behaviour does not. Reload the app fully (not Fast Refresh) after touching
   // this block. The ref itself is correct for production, where the config never changes;
   // everything mutable is read through `live.current` for exactly that reason.
+  // What a released drag does. Shared by BOTH responders — the grabber strip and the
+  // header area below it — so the two cannot disagree about what counts as leaving.
+  // Read through live.current for the same reason everything else here is: the
+  // responder configs are built once and frozen (see the WARNING above).
+  const release = useCallback((_e: unknown, g: { dy: number; vy: number }) => {
+    const { restH: rh, kbH: kb, tall: isTall, onClose: done, springTo: spring, dismiss: leave } = live.current;
+    const flungDown = g.vy > FLICK && g.dy > FLICK_MIN_DY;
+    // How far it has to be hauled down to count as leaving. A tall sheet is measured
+    // against the middle of the screen; a content sheet against a short nudge, since it
+    // is a glance-and-dismiss surface and its whole height may be less than that.
+    const leaveAt = isTall ? TALL_CLOSE_TRAVEL : CLOSE_THRESHOLD;
+    if (g.dy > leaveAt || flungDown) {
+      leave(rh + kb, done);
+      return;
+    }
+    // Anything short of that returns to where it was — including a haul most of the way
+    // down, which is the point of measuring against the midpoint.
+    spring(0);
+  }, [live]);
+
   const pan = useRef(
     PanResponder.create({
       // Claim the touch the instant it lands. The grabber is a dedicated strip: nothing
@@ -313,24 +342,29 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
         // nothing more to reveal, so the sheet never detaches from the bottom.
         y.setValue(g.dy > 0 ? g.dy : g.dy * 0.35);
       },
-      onPanResponderRelease: (_e, g) => {
-        const { restH: rh, kbH: kb, tall: isTall, onClose: done, springTo: spring, dismiss: leave } = live.current;
-        const flungDown = g.vy > FLICK && g.dy > FLICK_MIN_DY;
-        // How far it has to be hauled down to count as leaving. A tall sheet is measured
-        // against the middle of the screen; a content sheet against a short nudge, since
-        // it is a glance-and-dismiss surface and its whole height may be less than that.
-        const leaveAt = isTall ? TALL_CLOSE_TRAVEL : CLOSE_THRESHOLD;
-
-        if (g.dy > leaveAt || flungDown) {
-          leave(rh + kb, done);
-          return;
-        }
-        // Anything short of that returns to where it was — including a haul most of the
-        // way down, which is the point of measuring against the midpoint.
-        spring(0);
-      },
+      onPanResponderRelease: (e, g) => release(e, g),
       onPanResponderTerminate: () => live.current.springTo(0),
     })
+  ).current;
+
+  // A SECOND responder, for the area below the strip that the caller marks as its
+  // header.
+  //
+  // The 27px strip alone is a target you have to aim at, and the sheet's own comment
+  // already admitted as much with a hitSlop. Extending the strip's responder over the
+  // header is not the same thing though: it claims on TOUCH START, which would steal a
+  // tap from anything interactive a header grows later — a close button, a pin toggle.
+  // So this one claims only once the finger has actually moved vertically. A tap goes
+  // to whatever is under it; a drag becomes the sheet's.
+  const headerPan = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => false,
+      onMoveShouldSetPanResponder: (_e, g) => Math.abs(g.dy) > 6 && Math.abs(g.dy) > Math.abs(g.dx),
+      onPanResponderGrant: () => { y.setValue(0); },
+      onPanResponderMove: (_e, g) => { y.setValue(g.dy > 0 ? g.dy : g.dy * 0.35); },
+      onPanResponderRelease: (e, g) => release(e, g),
+      onPanResponderTerminate: () => { live.current.springTo(0); },
+    }),
   ).current;
 
   const shown = visible && !suspended;
@@ -405,6 +439,7 @@ export function BottomSheet({ visible, onClose, children, size = 'content', susp
         >
           <View style={{ width: 52, height: 5, backgroundColor: colors.ink + '55' }} />
         </View>
+        {header != null && <View {...headerPan.panHandlers}>{header}</View>}
         {children}
         </View>
       </Animated.View>

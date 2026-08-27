@@ -20,10 +20,12 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
+import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
 import { asMood, moodBorder, moodExpression, moodShowsSweat, type Mood } from '@/data/moodTone';
+import { deptWash } from '@/data/deptWash';
 import { MoodLift } from '@/components/dialogue/MoodLift';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
@@ -87,6 +89,12 @@ export default function DialogueRoute() {
   const chromeOpacity = useRef(new Animated.Value(1)).current;
   // `top` is a layout prop, so this one cannot use the native driver (opacity can).
   const threadTop = useRef(new Animated.Value(0)).current;
+  // How far the column's BOTTOM edge lifts. The input lives inside that column, and
+  // it was staying under the keyboard: KeyboardAvoidingView's `padding` behaviour
+  // does not move an absolutely-positioned child reliably, so the height is taken
+  // from the keyboard event and applied directly. Deterministic, and it rides the
+  // same timing as the top edge — the column moves as one thing.
+  const keyboardLift = useRef(new Animated.Value(0)).current;
   const restingTop = winH * 0.41 + 34;
   // Just under the status bar — MEASURED, not guessed.
   //
@@ -104,23 +112,29 @@ export default function DialogueRoute() {
     // has no will* events.
     const showEvt = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
     const hideEvt = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
-    const animate = (up: boolean, duration: number) => {
+    const animate = (up: boolean, duration: number, height: number) => {
       setTyping(up);
       Animated.parallel([
         Animated.timing(chromeOpacity, { toValue: up ? 0 : 1, duration, useNativeDriver: true }),
         Animated.timing(threadTop, { toValue: up ? 1 : 0, duration, useNativeDriver: false }),
+        Animated.timing(keyboardLift, { toValue: up ? height : 0, duration, useNativeDriver: false }),
       ]).start();
     };
-    const show = Keyboard.addListener(showEvt, (e) => animate(true, e.duration || 220));
-    const hide = Keyboard.addListener(hideEvt, (e) => animate(false, e.duration || 220));
+    const show = Keyboard.addListener(showEvt, (e) => animate(true, e.duration || 220, e.endCoordinates?.height ?? 0));
+    const hide = Keyboard.addListener(hideEvt, (e) => animate(false, e.duration || 220, 0));
     return () => { show.remove(); hide.remove(); };
-  }, [chromeOpacity, threadTop]);
+  }, [chromeOpacity, threadTop, keyboardLift]);
 
   // Re-derived when the measurement lands: interpolate() captures its outputRange, so
   // a value read once at mount would keep the pre-measurement guess forever.
   const threadTopStyle = useMemo(
     () => threadTop.interpolate({ inputRange: [0, 1], outputRange: [restingTop, raisedTop] }),
     [threadTop, restingTop, raisedTop],
+  );
+  // 20 is the resting gap above the home indicator.
+  const threadBottomStyle = useMemo(
+    () => Animated.add(new Animated.Value(20), keyboardLift),
+    [keyboardLift],
   );
   const messages = threadOf(transcript, npcLine);
   // The NPC's mood for the CURRENT turn, from the server. undefined means the reply
@@ -150,6 +164,8 @@ export default function DialogueRoute() {
   // the feature is switched off, so the tracker falls back to the plain goal list
   // with no code path of its own.
   const [doneMissions, setDoneMissions] = useState<Set<number>>(new Set());
+  // Closed by default — see the chip's own comment for why.
+  const [missionsOpen, setMissionsOpen] = useState(false);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
 
@@ -367,22 +383,13 @@ export default function DialogueRoute() {
   // target sentence. This replaces the old inline pronunciation-recording
   // widget that used to render under HINT ON (scenario.keyPhrases[0] was its
   // only referenceText source too, so the target phrase is unchanged).
-  const openPronunciation = () => {
-    const phrase = scenario?.keyPhrases?.[0];
-    if (!phrase) return;
-    // One single template literal (not string concatenation) — expo-router's
-    // typed-routes generator statically matches against a single backtick
-    // expression; splitting it across `+`-joined pieces breaks that match
-    // (same rule pronunciation/[sentenceKey].tsx's goNext follows).
-    router.push(
-      `/pronunciation/${encodeURIComponent(phrase.slice(0, 40))}?referenceText=${encodeURIComponent(phrase)}&origin=dialogue&scenarioId=${encodeURIComponent(id)}&ctx=${encodeURIComponent(scenario?.title ?? '')}&step=${encodeURIComponent(t('dialogue.pronStep'))}`
-    );
-  };
 
   const p = scenario?.persona ?? {};
   const kind = (ROLE_KINDS.has(p.role as RoleKind) ? p.role : 'patient') as RoleKind;
   // The turn's mood wins; the scenario's authored mood is the opening state and the
   // fallback for a reply that carried none.
+  // The scenario's own background tone, from its department colour (see deptWash).
+  const wash = deptWash(scenario?.briefing?.deptColor);
   const authored = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
   const expr = moodExpression(turnMood) ?? authored;
   const npcName = (p.name || 'NPC').toUpperCase();
@@ -415,7 +422,10 @@ export default function DialogueRoute() {
   }
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#1F2937' }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    // No `behavior` prop: the thread column lifts itself by the keyboard's measured
+    // height, and KeyboardAvoidingView's padding would move it a second time — the
+    // input then travels past the top of the keyboard and off the thread entirely.
+    <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#1F2937' }}>
       <Stack.Screen options={TASK_SCREEN} />
 
       {/* room backdrop: peach (patient room) over cream (working area).
@@ -426,8 +436,15 @@ export default function DialogueRoute() {
         accessible={false}
         style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
       >
-        <View style={{ flex: 4, backgroundColor: colors.peach }} />
-        <View style={{ flex: 6, backgroundColor: colors.cream }} />
+        {/* Ivory underneath, the department's wash on top of the upper band.
+            The wash fades on the same timing as the thread rising, so the ivory the
+            conversation sits on grows to fill the screen as the keyboard opens instead
+            of leaving a band of another colour above it.
+            The colour is the scenario's own department (deptWash) — an ER conversation
+            reads warm, an ICU one cool — washed most of the way to cream so it cannot
+            fight the bubbles drawn on it. */}
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: colors.cream }} />
+        <Animated.View style={{ height: '40%', backgroundColor: wash, opacity: chromeOpacity }} />
       </Pressable>
 
       {/* status bar */}
@@ -450,59 +467,79 @@ export default function DialogueRoute() {
             <FIcon name="cross" size={15} />
           </View>
         </Pressable>
-        <View style={{ alignItems: 'flex-end', gap: 4, maxWidth: 200 }}>
+        {/* Mission cluster + 상황 종료. Fades with the rest of the chrome while typing:
+            the thread rises over this corner, and a mission box sitting on top of the
+            conversation is the thing the learner is trying to read past.
+            The × stays — it is the way out, and it must not vanish because a keyboard
+            opened.
+            alignItems: 'flex-end' pins everything to the right WALL. The end button used
+            to line up with the left edge of the mission box, so it drifted left and right
+            as the mission text changed length. */}
+        <Animated.View
+          style={{ alignItems: 'flex-end', gap: 4, maxWidth: 240, opacity: chromeOpacity }}
+          pointerEvents={typing ? 'none' : 'auto'}
+        >
           {goals.length > 0 && (
             <>
-              {/* Every goal, not "MISSION 1/N" with a hardcoded 1.
-                  The counter used to read `MISSION 1/{goals.length}` and show goals[0]
-                  — the position never moved and the other goals were never named, so a
-                  learner watching it had no way to know what was still outstanding.
-                  That is the reported "언제 해소됐는지 모른다" in its most literal form:
-                  the tracker was decorative.
-                  Progress is not shown because it is not known mid-conversation —
-                  whether a goal was met is judged at the end, from the transcript. So
-                  this lists what the situation asks for and claims nothing about how
-                  far along it is; the character's own "everything is handled" is what
-                  triggers the wrap-up question. */}
-              <Shadowed offset={2}>
-                <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>
-                    {t('dialogue.missionCount', { n: goals.length })}
-                  </Text>
-                </View>
-              </Shadowed>
-              <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8, gap: 2 }}>
-                {goals.slice(0, 4).map((g, i) => {
-                  const done = doneMissions.has(i + 1);
-                  return (
-                    <View key={i} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: 4 }}>
-                      <Text
-                        style={{
-                          fontFamily: fonts.body, fontSize: fs(10), textAlign: 'right', lineHeight: 14,
-                          // Struck through and dimmed, not removed: the learner should
-                          // still see what the situation asked for, and a list that
-                          // shrinks as you work loses the shape of the exchange.
-                          color: done ? colors.textSoft : C,
-                          textDecorationLine: done ? 'line-through' : 'none',
-                        }}
-                      >
-                        {g}
+              {/* The chip is the whole control: it says how many missions there are and
+                  opens them.
+                  They used to be listed permanently in a white box, which at four or five
+                  goals — the shape all content has now — grew tall enough to cover the
+                  portrait and crowd the thread. A learner glances at this; they do not
+                  read it continuously. So it is closed by default and one tap away. */}
+              <Pressable onPress={() => setMissionsOpen((v) => !v)} hitSlop={6}>
+                <Shadowed offset={2}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>
+                      {t('dialogue.missionCount', { n: goals.length })}
+                    </Text>
+                    {/* Says how far along, when the character has reported anything —
+                        the number is the reason to open it or not. */}
+                    {doneMissions.size > 0 && (
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>
+                        {doneMissions.size}/{goals.length}
                       </Text>
-                      {/* The tick is the only thing that appears, so an untouched
-                          mission has no marker rather than an empty box — a column of
-                          empty boxes reads as a form to fill in. */}
-                      {done && <FIcon name="check" size={11} />}
-                    </View>
-                  );
-                })}
-              </View>
+                    )}
+                    <DisclosureChevron open={missionsOpen} color={C} size={11} />
+                  </View>
+                </Shadowed>
+              </Pressable>
+
+              {/* Children stay mounted and clipped by Collapsible, so opening does not
+                  re-lay-out the list or lose a tick mid-animation. */}
+              <Collapsible open={missionsOpen}>
+                <View style={{ backgroundColor: 'rgba(255,255,255,0.96)', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 8, gap: 3, marginTop: 3 }}>
+                  {goals.map((g, i) => {
+                    const done = doneMissions.has(i + 1);
+                    return (
+                      <View key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 5 }}>
+                        {/* A bullet, so the items read as a list rather than as one
+                            paragraph that happens to wrap. The tick replaces it when
+                            covered — two marks in a row would be noise. */}
+                        {done
+                          ? <FIcon name="check" size={11} />
+                          : <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>·</Text>}
+                        <Text
+                          style={{
+                            flex: 1, fontFamily: fonts.body, fontSize: fs(10), lineHeight: 14,
+                            color: done ? colors.textSoft : C,
+                            textDecorationLine: done ? 'line-through' : 'none',
+                          }}
+                        >
+                          {g}
+                        </Text>
+                      </View>
+                    );
+                  })}
+                </View>
+              </Collapsible>
             </>
           )}
           {/* Main completion: resolving the situation via dialogue ends the scenario.
               Ending with no dialogue is "중단" — no grade, no reward; ending after
               speaking hands the sessionId to the result screen for AI grading. */}
           <PixelButton icon="check" label={t('dialogue.endSituation')} bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={endSituation} />
-        </View>
+        </Animated.View>
       </View>
 
       {/* The NPC portrait, centred. Fades out while the keyboard is up — see `typing`.
@@ -548,25 +585,39 @@ export default function DialogueRoute() {
           keyboard. The dialogue box below it is bottom-anchored and SHOULD rise
           (it holds the input); a bedside reference has no reason to. */}
       <Animated.View
-        style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41, flexDirection: 'row', alignItems: 'center', gap: 6, zIndex: 4, opacity: chromeOpacity }}
+        style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41, zIndex: 4, opacity: chromeOpacity }}
         // Not just faded — unhittable, so a tool cannot be opened by a tap aimed at the
         // thread that now covers this strip.
         pointerEvents={typing ? 'none' : 'auto'}
       >
+        {/* Scrolls rather than wrapping. Wrapping was the other option and it costs a
+            whole row of the thread every time it happens; scrolling costs nothing until
+            the row is actually too wide, and then it costs a swipe. */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingRight: 4 }}
+        >
         <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
         </View>
-        <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
+        {/* The chips used to be preceded by a `flex: 1` dotted rule, which took every
+            spare pixel and squeezed them until the last label clipped — 활력 lost its
+            last character. The rule is gone: the chips get their natural width, and the
+            row scrolls if a longer translation still overflows.
+            The real cause of the clipping was worse than the squeeze: each chip drew its
+            icon NAME as text, so the row literally read "stethoscope 활력". */}
         {([['chart', 'clipboard', t('dialogue.tabChart')], ['meds', 'pill', t('dialogue.tabMeds')], ['vitals', 'stethoscope', t('dialogue.tabVitals')]] as const).map(([k, icon, label]) => (
           <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
             <Shadowed offset={2}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontSize: fs(13) }}>{icon}</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{label}</Text>
+                <PixelIcon name={icon} color={C} size={13} sw={1.9} />
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }} numberOfLines={1}>{label}</Text>
               </View>
             </Shadowed>
           </Pressable>
         ))}
+        </ScrollView>
       </Animated.View>
 
       {/* QUICK INFO panel — modal card over a scrim */}
@@ -594,7 +645,7 @@ export default function DialogueRoute() {
           So the column fills the space instead: the exchange scrolls in the middle, the
           input stays put at the bottom, newest at the bottom. A messaging screen, because
           that is what this is. */}
-      <Animated.View style={{ position: 'absolute', left: 14, right: 14, top: threadTopStyle, bottom: 20, zIndex: 6 }}>
+      <Animated.View style={{ position: 'absolute', left: 14, right: 14, top: threadTopStyle, bottom: threadBottomStyle, zIndex: 6 }}>
         {/* the exchange */}
         <ScrollView
           ref={logRef}
@@ -726,9 +777,13 @@ export default function DialogueRoute() {
               </View>
             )}
           </View>
-          <View style={{ flex: 1 }}>
-            <PixelButton icon="mic" label={t('dialogue.speakSelf')} bg="#fff" shadowColor={C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={openPronunciation} disabled={!scenario?.keyPhrases?.length} full />
-          </View>
+          {/* 핵심 표현 발음 연습 lived here and has been removed. It sent the learner
+              OUT of a conversation they were in the middle of, to drill a phrase from the
+              scenario's key-phrase list — and the same practice is now reachable from
+              where it belongs: the result screen lists every sentence they actually spoke
+              with its score, and the Review Lab's 직접 말하기 연습 holds the whole history.
+              Practising a phrase you were handed is a weaker exercise than practising the
+              sentence you chose yourself. */}
           {quizIds.length > 0 && (
             <PixelButton
               icon="note"

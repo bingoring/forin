@@ -48,10 +48,13 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
   };
 
   return (
-    <BottomSheet visible={visible} onClose={close}>
-      <View style={{ paddingHorizontal: 16, paddingTop: 4, paddingBottom: 24 }}>
-
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+    <BottomSheet
+      visible={visible}
+      onClose={close}
+      // The title drags the sheet along with the grabber: the 27px strip is a target you
+      // have to aim at, and this is what a hand actually reaches for.
+      header={(
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 16, paddingTop: 2, paddingBottom: 12 }}>
           <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
             <FIcon name="sparkle" size={22} />
           </View>
@@ -62,6 +65,9 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
             )}
           </View>
         </View>
+      )}
+    >
+      <View style={{ paddingHorizontal: 16, paddingBottom: 24 }}>
 
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 13 }}>
           {PRESETS.map((p) => {

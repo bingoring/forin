@@ -110,20 +110,31 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
   const curDone = target ? target.curricula.filter((c) => c.state === 'done').length : 0;
 
   return (
-    <BottomSheet visible={!!target} suspended={suspended} overlay onClose={onClose} size="tall">
-      {target && (
-        <View>
-          <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 4, paddingHorizontal: 14, paddingBottom: 11 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-              <View style={{ width: 34, height: 34, backgroundColor: target.accent, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <FIcon name="pin" size={18} />
-              </View>
-              <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{target.place}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{target.where}</Text>
-              </View>
+    <BottomSheet
+      visible={!!target}
+      suspended={suspended}
+      overlay
+      onClose={onClose}
+      size="tall"
+      // The place name drags the sheet along with the grabber. It matters more here than
+      // on a short sheet: this one opens at the top of the screen, so the strip is as far
+      // from the thumb as a control gets.
+      header={target ? (
+        <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 2, paddingHorizontal: 14, paddingBottom: 11 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <View style={{ width: 34, height: 34, backgroundColor: target.accent, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+              <FIcon name="pin" size={18} />
+            </View>
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{target.place}</Text>
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{target.where}</Text>
             </View>
           </View>
+        </View>
+      ) : null}
+    >
+      {target && (
+        <View>
 
           <ScrollView
             contentContainerStyle={{ padding: 14, paddingBottom: 96 }}

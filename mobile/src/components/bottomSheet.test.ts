@@ -100,3 +100,41 @@ test('the gesture handlers capture nothing from the render scope', () => {
   // And it does read the ref, so the loop above is not passing over an empty block.
   expect(block).toMatch(/live\.current/);
 });
+
+// The header drags the sheet, and still lets its own controls be tapped.
+//
+// The grabber is a 27px strip — a target you have to aim at, which the file's own
+// hitSlop comment already conceded. Extending the grabber's responder over the header
+// would not do: it claims on TOUCH START, so it would swallow a tap from anything
+// interactive a header grows later (a close button, a pin toggle). The header's
+// responder claims only once the finger has moved vertically.
+describe('the header is part of the handle', () => {
+  const src = readFileSync(join(__dirname, 'BottomSheet.tsx'), 'utf8');
+
+  test('there is a second responder for the header', () => {
+    expect(src).toMatch(/const headerPan = useRef\(/);
+    expect(src).toMatch(/\{\.\.\.headerPan\.panHandlers\}/);
+  });
+
+  test('the header claims on movement, never on touch', () => {
+    // The whole point: a tap goes to whatever is under it.
+    const block = src.slice(src.indexOf('const headerPan = useRef('), src.indexOf(').current;', src.indexOf('const headerPan = useRef(')));
+    expect(block).toMatch(/onStartShouldSetPanResponder: \(\) => false/);
+    expect(block).toMatch(/onMoveShouldSetPanResponder: \(_e, g\) => Math\.abs\(g\.dy\) > 6/);
+  });
+
+  test('the grabber still claims immediately', () => {
+    // It is a dedicated strip with nothing to tap, so waiting for movement there would
+    // only make it feel unresponsive.
+    const block = src.slice(src.indexOf('const pan = useRef('), src.indexOf('const headerPan = useRef('));
+    expect(block).toMatch(/onStartShouldSetPanResponder: \(\) => true/);
+  });
+
+  test('both responders release through the same code', () => {
+    // Two copies of "how far counts as leaving" is two thresholds that can drift, and
+    // the sheet would then close from the strip but not from the title.
+    expect(src).toMatch(/const release = useCallback\(/);
+    const releases = src.match(/onPanResponderRelease: \(e, g\) => release\(e, g\)/g) ?? [];
+    expect(releases.length).toBe(2);
+  });
+});

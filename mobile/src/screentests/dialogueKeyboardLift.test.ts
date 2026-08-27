@@ -47,10 +47,31 @@ test('both keyboard directions are wired, per platform', () => {
 });
 
 test('the covered chrome stops taking taps', () => {
-  // Faded-but-hittable means a tap aimed at the thread opens a QUICK INFO tool, or
-  // toggles the NPC's voice, from behind it.
+  // Faded-but-hittable means a tap aimed at the thread opens a QUICK INFO tool,
+  // toggles the NPC's voice, or ends the situation from behind it.
   const hits = SRC.match(/pointerEvents=\{typing \? 'none' : 'auto'\}/g) ?? [];
-  expect(hits.length).toBe(2); // the portrait and the QUICK INFO dock
+  // The portrait, the QUICK INFO dock, and the mission + 상황 종료 cluster.
+  expect(hits.length).toBe(3);
+});
+
+test('the input rises with the keyboard, by its measured height', () => {
+  // It stayed under the keyboard: KeyboardAvoidingView's `padding` behaviour does not
+  // move an absolutely-positioned child reliably, and the input lives inside the
+  // absolutely-positioned thread column. So the column's BOTTOM edge is animated by
+  // the height the keyboard event reports.
+  expect(SRC).toMatch(/const keyboardLift = useRef\(new Animated\.Value\(0\)\)\.current/);
+  expect(SRC).toMatch(/e\.endCoordinates\?\.height \?\? 0/);
+  expect(SRC).toMatch(/bottom: threadBottomStyle/);
+  // And KeyboardAvoidingView must NOT also pad, or the input travels past the top of
+  // the keyboard and off the thread.
+  expect(SRC).not.toMatch(/behavior=\{Platform\.OS === 'ios' \? 'padding'/);
+});
+
+test('the background ivory grows to fill the screen as the thread rises', () => {
+  // Ivory underneath, the department wash on top, fading on the same driver — so the
+  // colour the conversation sits on grows instead of leaving a band above it.
+  expect(SRC).toMatch(/backgroundColor: colors\.cream \}\} \/>/);
+  expect(SRC).toMatch(/backgroundColor: wash, opacity: chromeOpacity/);
 });
 
 test('the listeners are removed on unmount', () => {
