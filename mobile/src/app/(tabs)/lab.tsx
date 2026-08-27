@@ -11,7 +11,7 @@ import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ModelAnswerSummary, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
+import { FIcon, type FIconName } from '@/components/FIcon';
 import { SpeakSummaryBlock } from '@/components/speak/SpeakSummaryBlock';
 import { ModelAnswerBlock } from '@/components/model/ModelAnswerBlock';
 import { faceOf } from '@/data/reviewCardFace';
@@ -44,13 +44,21 @@ function splitTag(t: Translate, topicTag: string): { dept: string; tag: string }
   return { dept: topicTag || t('lab.correctionNote'), tag: '' };
 }
 
-// The 말하기 chip's id. A sentinel rather than a real filter value — see where
-// `cats` is built for why this chip navigates instead of filtering.
-const SPEAK_CHIP = '__SPEAK__';
-// Same sentinel treatment for 모범답안: it is in the handoff's chip row but its
-// items are scenario groups, not PhraseCards, so filtering the card list to them
-// would always show nothing. The chip opens the list screen instead.
-const MODEL_CHIP = '__MODEL__';
+// The three halves of this tab, per v26: 교정 노트 / 말하기 / 모범답안.
+//
+// These used to be sentinel chips in the category row (`__SPEAK__`, `__MODEL__`)
+// sitting beside real filters like "ER" and "통증" — two entries in a filter row
+// that navigated away instead of filtering, because spoken sentences and scenario
+// groups are not PhraseCards and filtering the card list to them always showed
+// nothing. v26 makes them what they always were: sections, not filters. The
+// category chips now filter only the thing they can filter, and each section's
+// content lives under its own tab rather than stacked on one scroll.
+type Section = 'notes' | 'speak' | 'models';
+const SECTIONS: { id: Section; icon: FIconName; labelKey: string }[] = [
+  { id: 'notes', icon: 'pen', labelKey: 'lab.tabNotes' },
+  { id: 'speak', icon: 'mic', labelKey: 'lab.tabSpeak' },
+  { id: 'models', icon: 'doc', labelKey: 'lab.tabModels' },
+];
 
 export default function Lab() {
   const t = useT();
@@ -58,6 +66,7 @@ export default function Lab() {
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [filter, setFilter] = useState('ALL');
+  const [section, setSection] = useState<Section>('notes');
   const [guideOpen, setGuideOpen] = useState(false);
   const [toast, setToast] = useState<{ label: string; bg: string; blurb: string; next: string } | null>(null);
   // The 🎙 직접 말하기 연습 summary. null while unknown or unavailable — the block
@@ -96,12 +105,6 @@ export default function Lab() {
     }, []),
   );
 
-  const openChip = (id: string) => {
-    if (id === SPEAK_CHIP) { router.push('/speak?sort=weak'); return; }
-    if (id === MODEL_CHIP) { router.push('/model-answers'); return; }
-    setFilter(id);
-  };
-
   const practiseSentence = (s: SpokenSentence) => {
     // One single template literal — expo-router's typed-routes generator matches
     // statically against one backtick expression.
@@ -127,14 +130,8 @@ export default function Lab() {
     return [
       { id: 'ALL', label: t('board.all'), count: cards.length },
       ...Array.from(counts, ([id, count]) => ({ id, label: id, count })),
-      // 말하기 is in the handoff's chip row, but unlike the others it is not a
-      // filter over the card list: spoken sentences are not PhraseCards, so
-      // filtering to them would always show an empty list. Tapping it opens the
-      // list screen the handoff says 100+ items must live on.
-      ...(speak && speak.total > 0 ? [{ id: SPEAK_CHIP, label: t('speak.blockTitle'), count: speak.total }] : []),
-      ...(models && models.total > 0 ? [{ id: MODEL_CHIP, label: t('model.blockTitle'), count: models.total }] : []),
     ];
-  }, [cards, speak, models]);
+  }, [cards]);
   const shown = filter === 'ALL' ? cards : cards.filter((c) => splitTag(t, c.topicTag).dept === filter);
 
   if (state !== 'ok') {
@@ -152,118 +149,163 @@ export default function Lab() {
       <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>리뷰랩 · 오답노트</Text>
 
-        {/* hero */}
-        <Shadowed offset={4}>
-          <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 복습</Text>
-            {cards.length > 0 ? (
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>
-                <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
-              </Text>
-            ) : (
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
-            )}
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
-              AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
-            </Text>
-            {cards.length > 0 && (
-              <View style={{ marginTop: 12 }}>
-                <PixelButton icon="play" label={t('lab.startReview', { n: cards.length })} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
-              </View>
-            )}
-            <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
-              <FIcon name="doc" size={26} />
-            </View>
-          </View>
-        </Shadowed>
-
-        {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
+        {/* 섹션 탭 — 교정 노트 / 말하기 / 모범답안. One box with 2.5 dividers, not
+            three buttons: the row IS one control, and a gap between the thirds
+            reads as three unrelated cards. */}
         <Shadowed offset={3}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
-            <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
-              <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(12), color: C }}>복습 등급이 뭔가요?</Text>
-              <DisclosureChevron open={guideOpen} color={colors.textSoft} size={14} sw={1.8} />
-            </Pressable>
-            <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 2 : 0, borderTopColor: C }}>
-              <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
-                  카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
-                </Text>
-                {GRADES.map(({ g, labelKey, bg, guideKey }) => (
-                  <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
-                    <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t(labelKey)}</Text>
-                    </View>
-                    <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{t(guideKey)}</Text>
-                  </View>
-                ))}
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
-                  {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
-                </Text>
-              </View>
-            </Collapsible>
-          </View>
-        </Shadowed>
-
-        {/* mini stats */}
-        <View style={{ flexDirection: 'row', gap: 8 }}>
-          <MiniStat label={t('lab.savedCards')} value={cards.length} color={colors.mint} />
-          <MiniStat label={t('lab.mastered')} value={mastered} color={colors.yellow} />
-          <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
-        </View>
-
-        {/* 🎙 직접 말하기 연습 — the summary half of the handoff's pair of blocks.
-            Shown only once the player has actually spoken something. */}
-        {/* Rendered as soon as the summary is KNOWN, empty or not — the handoff has
-            these two blocks on the page, and hiding them until the player has already
-            spoken meant a new user never learned the feature existed. `null` still
-            means unknown (the read failed), and then the block stays absent. */}
-        {speakFailed && <BlockUnavailable titleKey="speak.blockTitle" />}
-        {speak && (
-          <SpeakSummaryBlock
-            summary={speak}
-            onOpenAll={(sort: 'weak' | 'recent') => router.push(sort === 'weak' ? '/speak?sort=weak' : '/speak?sort=recent')}
-            onPractise={practiseSentence}
-          />
-        )}
-
-        {/* 📄 시나리오 모범답안 — the other half of the handoff's pair of blocks. */}
-        {models ? (
-          <ModelAnswerBlock summary={models} onOpenAll={() => router.push('/model-answers')} />
-        ) : modelsFailed ? (
-          <BlockUnavailable titleKey="model.blockTitle" />
-        ) : null}
-
-        {/* category filter */}
-        {cats.length > 1 && (
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
-            {cats.map((c) => {
-              const active = filter === c.id;
-              const catColor = c.id === 'ALL' ? C : toneOf(c.id);
+          <View testID="lab-sections" style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
+            {SECTIONS.map((sec, i) => {
+              const active = section === sec.id;
               return (
-                <Pressable key={c.id} onPress={() => openChip(c.id)}>
-                  <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: active ? C : C }}>{c.label}</Text>
-                      <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{c.count}</Text>
-                      </View>
-                    </View>
-                  </Shadowed>
+                <Pressable
+                  key={sec.id}
+                  onPress={() => setSection(sec.id)}
+                  style={{
+                    flex: 1,
+                    backgroundColor: active ? colors.lilac : '#fff',
+                    borderLeftWidth: i ? 2.5 : 0,
+                    borderLeftColor: C,
+                    paddingTop: 9,
+                    paddingBottom: 7,
+                    alignItems: 'center',
+                    gap: 3,
+                  }}
+                >
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                    <FIcon name={sec.icon} size={13} />
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
+                  </View>
+                  {/* The count, or an ellipsis while it is still unknown — a 0 that
+                      means "not loaded yet" is the one number this row must not show. */}
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
+                    {sectionCount(sec.id, cards.length, speak, models)}
+                  </Text>
                 </Pressable>
               );
             })}
-          </ScrollView>
+          </View>
+        </Shadowed>
+
+        {section === 'notes' && (
+          <>
+          {/* hero */}
+          <Shadowed offset={4}>
+            <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 복습</Text>
+              {cards.length > 0 ? (
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>
+                  <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
+                </Text>
+              ) : (
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
+              )}
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
+                AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
+              </Text>
+              {cards.length > 0 && (
+                <View style={{ marginTop: 12 }}>
+                  <PixelButton icon="play" label={t('lab.startReview', { n: cards.length })} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
+                </View>
+              )}
+              <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
+                <FIcon name="doc" size={26} />
+              </View>
+            </View>
+          </Shadowed>
+
+          {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
+          <Shadowed offset={3}>
+            <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
+              <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
+                <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(12), color: C }}>복습 등급이 뭔가요?</Text>
+                <DisclosureChevron open={guideOpen} color={colors.textSoft} size={14} sw={1.8} />
+              </Pressable>
+              <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 2 : 0, borderTopColor: C }}>
+                <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8 }}>
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
+                    카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
+                  </Text>
+                  {GRADES.map(({ g, labelKey, bg, guideKey }) => (
+                    <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+                      <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t(labelKey)}</Text>
+                      </View>
+                      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{t(guideKey)}</Text>
+                    </View>
+                  ))}
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
+                    {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
+                  </Text>
+                </View>
+              </Collapsible>
+            </View>
+          </Shadowed>
+
+          {/* mini stats */}
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <MiniStat label={t('lab.savedCards')} value={cards.length} color={colors.mint} />
+            <MiniStat label={t('lab.mastered')} value={mastered} color={colors.yellow} />
+            <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
+          </View>
+
+          {/* category filter */}
+          {cats.length > 1 && (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
+              {cats.map((c) => {
+                const active = filter === c.id;
+                const catColor = c.id === 'ALL' ? C : toneOf(c.id);
+                return (
+                  <Pressable key={c.id} onPress={() => setFilter(c.id)}>
+                    <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
+                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: active ? C : C }}>{c.label}</Text>
+                        <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
+                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{c.count}</Text>
+                        </View>
+                      </View>
+                    </Shadowed>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+          )}
+
+          {/* cards */}
+          {shown.length === 0 ? (
+            <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
+              <PixelIcon name="note" color={colors.textFaint} size={40} sw={1.5} />
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
+            </View>
+          ) : (
+            shown.map((c) => <PhraseCard key={c.id} card={c} onGrade={grade} />)
+          )}
+          </>
         )}
 
-        {/* cards */}
-        {shown.length === 0 ? (
-          <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
-            <PixelIcon name="note" color={colors.textFaint} size={40} sw={1.5} />
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
-          </View>
-        ) : (
-          shown.map((c) => <PhraseCard key={c.id} card={c} onGrade={grade} />)
+        {section === 'speak' && (
+          <>
+            {speakFailed && <BlockUnavailable titleKey="speak.blockTitle" />}
+            {speak && (
+              <SpeakSummaryBlock
+                summary={speak}
+                onOpenAll={(sort: 'weak' | 'recent') => router.push(sort === 'weak' ? '/speak?sort=weak' : '/speak?sort=recent')}
+                onPractise={practiseSentence}
+              />
+            )}
+            {!speak && !speakFailed && <SectionLoading />}
+          </>
+        )}
+
+        {section === 'models' && (
+          <>
+            {models ? (
+              <ModelAnswerBlock summary={models} onOpenAll={() => router.push('/model-answers')} />
+            ) : modelsFailed ? (
+              <BlockUnavailable titleKey="model.blockTitle" />
+            ) : (
+              <SectionLoading />
+            )}
+          </>
         )}
       </ScrollView>
 
@@ -327,6 +369,42 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
         </View>
 
         <View style={{ paddingVertical: 10, paddingHorizontal: 12 }}>
+          {/* 맥락 — which scene this correction came from. First thing in the body,
+              per v26: the corrected line means little without the situation that
+              prompted it. The scene line always shows; the tap expands to the NPC
+              turn the learner was answering, which the handoff's mock has no data
+              for and we do. */}
+          {hasCtx && (
+            <View style={{ marginBottom: 9 }}>
+              <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>맥락</Text>
+                    <DisclosureChevron open={showCtx} color={C} size={11} sw={1.8} />
+                  </View>
+                </View>
+                {!showCtx && !!(ctx?.situation || ctx?.title) && (
+                  <Text numberOfLines={2} style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>
+                    {ctx?.situation || ctx?.title}
+                  </Text>
+                )}
+              </Pressable>
+              <Collapsible open={showCtx}>
+                <View style={{ marginTop: 8, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
+                  {!!ctx?.title && <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 4 }}>{ctx.title}</Text>}
+                  {!!ctx?.situation && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, lineHeight: 15 }}>{ctx.situation}</Text>}
+                  {!!ctx?.npc && (
+                    <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: '#2A252233' }}>
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginBottom: 2 }}>상대가 이렇게 말했고</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{ctx.npc}</Text>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 3 }}>→ 여기에 답하며 한 말이에요.</Text>
+                    </View>
+                  )}
+                </View>
+              </Collapsible>
+            </View>
+          )}
+
           {/* the front — struck out only when it is something that WAS said. See
               data/reviewCardFace: a graded scenario also files "you could have said this",
               and drawing one of those behind a red ✕ claims the learner said a sentence
@@ -366,36 +444,6 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
             </View>
           )}
 
-          {/* 맥락: which situation / dialogue this correction came from (collapsible) */}
-          {hasCtx && (
-            <View style={{ marginTop: 10 }}>
-              <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>맥락</Text>
-                    <DisclosureChevron open={showCtx} color={C} size={11} sw={1.8} />
-                  </View>
-                </View>
-                {!showCtx && !!ctx?.title && (
-                  <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft }}>{ctx.title}</Text>
-                )}
-              </Pressable>
-              <Collapsible open={showCtx}>
-                <View style={{ marginTop: 8, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
-                  {!!ctx?.title && <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 4 }}>{ctx.title}</Text>}
-                  {!!ctx?.situation && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, lineHeight: 15 }}>{ctx.situation}</Text>}
-                  {!!ctx?.npc && (
-                    <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: '#2A252233' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginBottom: 2 }}>상대가 이렇게 말했고</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{ctx.npc}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 3 }}>→ 여기에 답하며 한 말이에요.</Text>
-                    </View>
-                  )}
-                </View>
-              </Collapsible>
-            </View>
-          )}
-
           {/* mastery pips */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 10 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginRight: 2 }}>숙련</Text>
@@ -430,6 +478,31 @@ function Badge({ text, icon, bg, color }: { text?: string; icon?: IconName; bg: 
  *  missing block reads as a missing FEATURE, and the learner then looks for it in the
  *  wrong place. Same frame as the real block so the page does not jump when it
  *  recovers on the next focus. */
+/** The number under a section tab. `'…'` while the summary is still unknown: a
+ *  tab that reads 0 and then jumps to 128 looks like the feature was empty, and
+ *  0 is also a legitimate answer once the read lands — so the two states cannot
+ *  share a glyph. */
+function sectionCount(
+  id: Section,
+  cardCount: number,
+  speak: SpeakSummary | null,
+  models: ModelAnswerSummary | null,
+): string {
+  if (id === 'notes') return String(cardCount);
+  const sum = id === 'speak' ? speak : models;
+  return sum ? String(sum.total) : '…';
+}
+
+/** A tab whose summary is still in flight. Its own component so the section
+ *  reads the same as the others: the tab is switched to, something is there. */
+function SectionLoading() {
+  return (
+    <View style={{ paddingVertical: 40, alignItems: 'center' }}>
+      <ActivityIndicator color={C} />
+    </View>
+  );
+}
+
 function BlockUnavailable({ titleKey }: { titleKey: string }) {
   const t = useT();
   return (

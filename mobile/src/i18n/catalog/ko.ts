@@ -305,6 +305,9 @@ export const ko: Record<string, string> = {
   'lab.likeALocal': '현지인처럼 말하기',
   'lab.startReview': '오늘의 복습 시작 ({n})',
   'lab.mastered': '마스터',
+  'lab.tabNotes': '교정 노트',
+  'lab.tabSpeak': '말하기',
+  'lab.tabModels': '모범답안',
   'lab.savedCards': '저장된 카드',
   'lab.dueCards': '복습 대기',
 

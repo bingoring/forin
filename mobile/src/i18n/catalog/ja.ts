@@ -283,6 +283,9 @@ export const ja: Record<string, string> = {
   'lab.likeALocal': '現地の人のように話す',
   'lab.startReview': '今日の復習を始める（{n}）',
   'lab.mastered': 'マスター',
+  'lab.tabNotes': '添削ノート',
+  'lab.tabSpeak': '発話',
+  'lab.tabModels': '模範解答',
   'lab.savedCards': '保存したカード',
   'lab.dueCards': '復習待ち',
 
