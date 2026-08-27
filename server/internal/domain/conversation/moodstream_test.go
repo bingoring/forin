@@ -15,7 +15,7 @@ func drive(chunks []string) (text, mood string, err error) {
 // driveFull also reports the resolution flag.
 func driveFull(chunks []string) (text, mood string, resolved bool, err error) {
 	var out strings.Builder
-	m := newMoodStripper(func(x string, done bool) { mood, resolved = x, done }, func(s string) error {
+	m := newMoodStripper(func(x string, done bool, _ string) { mood, resolved = x, done }, func(s string) error {
 		out.WriteString(s)
 		return nil
 	})
@@ -57,7 +57,7 @@ func TestStreamedTagNeverReachesTheLearner(t *testing.T) {
 // be held back waiting for a tag that is never coming.
 func TestUntaggedReplyStreamsUnchangedAndImmediately(t *testing.T) {
 	var got []string
-	m := newMoodStripper(func(string, bool) { t.Error("announced a mood for an untagged reply") }, func(s string) error {
+	m := newMoodStripper(func(string, bool, string) { t.Error("announced a mood for an untagged reply") }, func(s string) error {
 		got = append(got, s)
 		return nil
 	})

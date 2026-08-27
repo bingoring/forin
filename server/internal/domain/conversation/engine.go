@@ -317,6 +317,14 @@ type Reply struct {
 	// a patient can be satisfied by a conversation that skipped a goal. So the app
 	// asks rather than ends.
 	Resolved bool
+	// Missions are the 1-based scenario goal numbers the character says have been
+	// covered so far, cumulative. Empty when none, and always empty while
+	// MissionProgressEnabled is false — see missions.go for how to remove the feature.
+	//
+	// Also the character's view, and for the same reason: it drives a live tracker,
+	// not the grade. The score is still computed at the end from the transcript, with
+	// evidence required per goal.
+	Missions []int
 }
 
 func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (Reply, error) {
@@ -331,13 +339,14 @@ func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string
 	if err != nil {
 		return Reply{}, err
 	}
-	mood, resolved, reply := SplitMood(strings.TrimSpace(raw))
+	mood, resolved, flags, reply := splitTag(strings.TrimSpace(raw))
 	reply = strings.TrimSpace(reply)
+	missions := parseMissions(flags, len(sc.Goals))
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply, mood); err != nil {
 		return Reply{}, err
 	}
 	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
-	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood), Resolved: resolved}, nil
+	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood), Resolved: resolved, Missions: missions}, nil
 }
 
 // SendMessageStream streams the NPC reply and persists the full turn.
@@ -356,9 +365,9 @@ func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text 
 	if err != nil {
 		return Reply{}, err
 	}
-	mood, resolved := "", false
-	strip := newMoodStripper(func(m string, done bool) {
-		mood, resolved = m, done
+	mood, resolved, flags := "", false, ""
+	strip := newMoodStripper(func(m string, done bool, f string) {
+		mood, resolved, flags = m, done, f
 		if onMood != nil {
 			onMood(m)
 		}
@@ -373,18 +382,22 @@ func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text 
 	// The persisted text comes from the full raw reply, not from the streamed pieces:
 	// a provider that returns the whole reply and calls onDelta zero times is allowed,
 	// and the stored turn must be the same sentence either way.
-	tagged, taggedResolved, reply := SplitMood(strings.TrimSpace(raw))
+	tagged, taggedResolved, taggedFlags, reply := splitTag(strings.TrimSpace(raw))
 	if mood == "" {
 		mood = tagged
 	}
 	// A provider that streamed nothing still tagged its reply.
 	resolved = resolved || taggedResolved
+	if flags == "" {
+		flags = taggedFlags
+	}
 	reply = strings.TrimSpace(reply)
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply, mood); err != nil {
 		return Reply{}, err
 	}
 	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
-	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood), Resolved: resolved}, nil
+	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood), Resolved: resolved,
+		Missions: parseMissions(flags, len(sc.Goals))}, nil
 }
 
 // fileCorrection runs an AI correction on the learner's utterance in the background
@@ -516,6 +529,9 @@ func buildSystemPrompt(sc *content.Scenario, lc langContext, disposition string)
 	// Last, so it is the instruction closest to the reply the model is about to write —
 	// the tag is a formatting rule and the ones above are character rules.
 	b.WriteString(moodInstruction)
+	// Numbered goals + the bookkeeping request. Empty string while the feature is off
+	// (missions.go), so the prompt is byte-identical to before it existed.
+	b.WriteString(missionInstruction(sc.Goals))
 	return b.String()
 }
 

@@ -67,3 +67,28 @@ test('a partial or non-string payload is ignored', () => {
 test('the resolved frame is recognised and is not speech', () => {
   expect(parseSseLines(['event: resolved', 'data: "resolved"', ''])).toEqual([{ kind: 'resolved' }]);
 });
+
+// Live mission progress. Comma-joined string, not a JSON array — the server keeps this
+// stream's one rule (every frame's data is a JSON string) because that rule is what
+// caught a bare `true` being dropped here silently.
+test('the missions frame parses its numbers', () => {
+  expect(parseSseLines(['event: missions', 'data: "1,3"', ''])).toEqual([
+    { kind: 'missions', numbers: [1, 3] },
+  ]);
+});
+
+test('the missions frame tolerates whitespace and drops nonsense', () => {
+  expect(parseSseLines(['event: missions', 'data: " 2 , 4 "', ''])).toEqual([
+    { kind: 'missions', numbers: [2, 4] },
+  ]);
+  // Nothing usable in it: no frame at all rather than a frame that ticks nothing.
+  expect(parseSseLines(['event: missions', 'data: "x,,0,-1"', ''])).toEqual([]);
+});
+
+test('a missions frame never becomes speech', () => {
+  const frames = parseSseLines([
+    'event: missions', 'data: "1"', '',
+    'data: "Thank you."', '',
+  ]);
+  expect(frames.filter((f) => f.kind === 'delta')).toEqual([{ kind: 'delta', text: 'Thank you.' }]);
+});

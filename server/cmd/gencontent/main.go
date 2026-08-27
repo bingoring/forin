@@ -138,7 +138,7 @@ func generateDept(deptIdx int, d Dept, target int) ([]content.Scenario, []conten
 				SpeakingStyle: moodSpeaking[t.Mood()],
 				Mood:          moodForVariant(t, variant),
 			},
-			Goals:      t.Goals,
+			Goals:      content.ComposeGoals(t.Role, t.Goals),
 			Guardrails: orDefault(t.Guard, defaultGuard),
 			KeyPhrases: t.Phrases,
 			Acuity:     t.acuityOf(),

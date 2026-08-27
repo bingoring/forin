@@ -88,10 +88,12 @@ func MoodImproved(prev, next string) bool {
 // learner had already read the line, and the border would change colour late.
 const MoodPrefix = "[mood:"
 
-// maxMoodPrefix caps how far in we look for the closing bracket. Long enough for
-// "[mood: surprised]" plus slack, short enough that a reply which merely opens with
-// a bracket does not get held back while we wait.
-const maxMoodPrefix = 32
+// maxMoodPrefix caps how far in we look for the closing bracket. It has to fit the
+// longest tag the model is asked for — "[mood: surprised | resolved | goals: 1,2,3,4,5]"
+// is 44 — with slack, while staying short enough that a reply which merely opens with
+// a bracket is not held back for long. A tag longer than this releases as text, which
+// is how the learner would end up reading it.
+const maxMoodPrefix = 72
 
 // resolvedMark is the optional second half of the tag: "[mood: happy | resolved]".
 //
@@ -108,30 +110,44 @@ const resolvedMark = "resolved"
 // can be held to. A missing tag, a misspelled mood, a stray space — all degrade to
 // "no mood", which renders exactly as the app did before this existed.
 func SplitMood(reply string) (mood string, resolved bool, text string) {
+	mood, resolved, _, text = splitTag(reply)
+	return mood, resolved, text
+}
+
+// splitTag is SplitMood plus the raw flag section, which the caller needs to read
+// mission numbers (those require the scenario's goal count to validate against, which
+// this file has no business knowing).
+func splitTag(reply string) (mood string, resolved bool, flags, text string) {
 	s := strings.TrimLeft(reply, " \t\n")
 	if !strings.HasPrefix(strings.ToLower(s), MoodPrefix) {
-		return "", false, reply
+		return "", false, "", reply
 	}
 	end := strings.IndexByte(s, ']')
 	if end < 0 || end > maxMoodPrefix {
-		return "", false, reply
+		return "", false, "", reply
 	}
 	body := s[len(MoodPrefix):end]
 	text = strings.TrimLeft(s[end+1:], " \t\n")
-	// The mood is the part before the separator; anything after it is flags.
-	moodPart, flagPart := body, ""
+	// The mood is the part before the first separator; everything after it is flags.
+	moodPart := body
 	if i := strings.IndexByte(body, '|'); i >= 0 {
-		moodPart, flagPart = body[:i], body[i+1:]
+		moodPart, flags = body[:i], body[i+1:]
 	}
-	resolved = strings.Contains(strings.ToLower(flagPart), resolvedMark)
+	// `resolved` must be its own section, not a substring: "goals: 1" contains no
+	// "resolved", but a future flag might, and matching anywhere would set it.
+	for _, sec := range strings.Split(flags, "|") {
+		if strings.TrimSpace(strings.ToLower(sec)) == resolvedMark {
+			resolved = true
+		}
+	}
 	mood = NormalizeMood(moodPart)
 	if mood == "" {
 		// A tag we could not read is still a tag: strip it rather than showing the
-		// learner "[mood: bemused]" in a speech bubble. The flag survives — it was
+		// learner "[mood: bemused]" in a speech bubble. The flags survive — they were
 		// readable even if the mood was not.
-		return "", resolved, text
+		return "", resolved, flags, text
 	}
-	return mood, resolved, text
+	return mood, resolved, flags, text
 }
 
 // moodInstruction is appended to the system prompt.
@@ -177,13 +193,13 @@ func sortStrings(s []string) {
 // flushes once it passes maxMoodPrefix, and a resolved stream never buffers again.
 // Each bound is a case where a naive implementation would swallow the whole reply.
 type moodStripper struct {
-	onMood  func(string, bool) // called once, if a tag is found: (mood, resolved)
-	onText  func(string) error // downstream
+	onMood  func(string, bool, string) // called once, if a tag is found: (mood, resolved, flags)
+	onText  func(string) error         // downstream
 	buf     strings.Builder
 	settled bool
 }
 
-func newMoodStripper(onMood func(string, bool), onText func(string) error) *moodStripper {
+func newMoodStripper(onMood func(string, bool, string), onText func(string) error) *moodStripper {
 	return &moodStripper{onMood: onMood, onText: onText}
 }
 
@@ -215,9 +231,9 @@ func (m *moodStripper) Write(chunk string) error {
 	// Tag closed: hand over the mood, then the text after it.
 	if strings.IndexByte(s, ']') >= 0 {
 		m.settled = true
-		mood, resolved, text := SplitMood(s)
-		if (mood != "" || resolved) && m.onMood != nil {
-			m.onMood(mood, resolved)
+		mood, resolved, flags, text := splitTag(s)
+		if (mood != "" || resolved || flags != "") && m.onMood != nil {
+			m.onMood(mood, resolved, flags)
 		}
 		if text == "" {
 			return nil // the whole chunk was the tag; the sentence follows

@@ -139,6 +139,17 @@ export default function DialogueRoute() {
   // it becoming a nag: declining once means it never appears again.
   const [wrapUp, setWrapUp] = useState(false);
   const askedWrapUp = useRef(false);
+  // Which missions the character says are covered, 1-based, cumulative.
+  //
+  // UNIONED, never replaced: a turn where the character does not mention mission 1
+  // must not un-tick it. The learner did that thing; the character forgetting to
+  // list it does not undo it, and a tracker that flickers backwards is worse than
+  // one that is slightly generous.
+  //
+  // Empty while the server does not send the field — which is exactly the state when
+  // the feature is switched off, so the tracker falls back to the plain goal list
+  // with no code path of its own.
+  const [doneMissions, setDoneMissions] = useState<Set<number>>(new Set());
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
 
@@ -236,6 +247,15 @@ export default function DialogueRoute() {
           if (askedWrapUp.current) return;
           askedWrapUp.current = true;
           setWrapUp(true);
+        },
+        onMissions: (numbers) => {
+          setDoneMissions((prev) => {
+            const next = new Set(prev);
+            for (const n of numbers) next.add(n);
+            // Same set means no re-render: this fires on every turn and the tracker
+            // re-rendering for an unchanged tick is churn behind a streaming reply.
+            return next.size === prev.size ? prev : next;
+          });
         },
       });
       void speakNpc();
@@ -452,11 +472,29 @@ export default function DialogueRoute() {
                 </View>
               </Shadowed>
               <View style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8, gap: 2 }}>
-                {goals.slice(0, 3).map((g, i) => (
-                  <Text key={i} style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, textAlign: 'right', lineHeight: 14 }}>
-                    {g}
-                  </Text>
-                ))}
+                {goals.slice(0, 4).map((g, i) => {
+                  const done = doneMissions.has(i + 1);
+                  return (
+                    <View key={i} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: 4 }}>
+                      <Text
+                        style={{
+                          fontFamily: fonts.body, fontSize: fs(10), textAlign: 'right', lineHeight: 14,
+                          // Struck through and dimmed, not removed: the learner should
+                          // still see what the situation asked for, and a list that
+                          // shrinks as you work loses the shape of the exchange.
+                          color: done ? colors.textSoft : C,
+                          textDecorationLine: done ? 'line-through' : 'none',
+                        }}
+                      >
+                        {g}
+                      </Text>
+                      {/* The tick is the only thing that appears, so an untouched
+                          mission has no marker rather than an empty box — a column of
+                          empty boxes reads as a form to fill in. */}
+                      {done && <FIcon name="check" size={11} />}
+                    </View>
+                  );
+                })}
               </View>
             </>
           )}

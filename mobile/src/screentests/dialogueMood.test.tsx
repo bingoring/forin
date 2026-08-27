@@ -124,10 +124,39 @@ test('the mission tracker names every goal and claims no position', () => {
   const code = SRC.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
   expect(code).not.toMatch(/MISSION 1\//);
   expect(code).not.toMatch(/const mission = goals\[0\]/);
-  // Lists the goals, capped so a three-goal scenario cannot push the tracker over the
-  // portrait below it.
-  expect(SRC).toMatch(/goals\.slice\(0, 3\)\.map/);
+  // Lists the goals, capped so a five-goal scenario cannot push the tracker over the
+  // portrait below it. Four is the standard shape now (opening + body + closing), so
+  // the cap has to clear it or the closing mission would never be visible.
+  expect(SRC).toMatch(/goals\.slice\(0, 4\)\.map/);
   // A count, not a fraction: progress is judged at the end from the transcript, so
   // there is nothing honest to put in the numerator mid-conversation.
   expect(SRC).toMatch(/dialogue\.missionCount/);
+});
+
+// Live mission progress on the tracker.
+test('missions accumulate and are never un-ticked', () => {
+  // A turn where the character does not mention mission 1 must not undo it: the
+  // learner did that thing, and a tracker that flickers backwards is worse than one
+  // that is slightly generous.
+  expect(SRC).toMatch(/const next = new Set\(prev\);\s*\n\s*for \(const n of numbers\) next\.add\(n\);/);
+  expect(SRC).not.toMatch(/setDoneMissions\(new Set\(numbers\)\)/);
+});
+
+test('an unchanged tick does not re-render the tracker', () => {
+  // This fires every turn, and re-rendering behind a streaming reply is churn.
+  expect(SRC).toMatch(/next\.size === prev\.size \? prev : next/);
+});
+
+test('a covered mission is struck through, not removed', () => {
+  // A list that shrinks as you work loses the shape of the exchange.
+  expect(SRC).toMatch(/textDecorationLine: done \? 'line-through' : 'none'/);
+  expect(SRC).toMatch(/\{done && <FIcon name="check"/);
+});
+
+test('the tracker works with no progress data at all', () => {
+  // Which is exactly the state when the feature is switched off server-side: the
+  // field never arrives, the set stays empty, and the tracker is the plain goal list
+  // it was before. No client flag, no second code path.
+  expect(SRC).toMatch(/useState<Set<number>>\(new Set\(\)\)/);
+  expect(SRC).toMatch(/doneMissions\.has\(i \+ 1\)/);
 });

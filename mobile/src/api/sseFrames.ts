@@ -9,6 +9,7 @@ export type SseFrame =
   | { kind: 'mood'; mood: string }
   | { kind: 'improved'; mood: string }
   | { kind: 'resolved' }
+  | { kind: 'missions'; numbers: number[] }
   | { kind: 'error' }
   | { kind: 'done' };
 
@@ -30,6 +31,13 @@ export function parseSseLines(lines: string[]): SseFrame[] {
     if (event === 'mood') out.push({ kind: 'mood', mood: value });
     else if (event === 'moodImproved') out.push({ kind: 'improved', mood: value });
     else if (event === 'resolved') out.push({ kind: 'resolved' });
+    else if (event === 'missions') {
+      // A comma-joined string, not a JSON array: the server keeps this stream's one
+      // rule — every frame's data is a JSON string — because that rule is what caught
+      // a bare `true` being dropped here silently.
+      const numbers = value.split(',').map((n) => Number(n.trim())).filter((n) => Number.isInteger(n) && n > 0);
+      if (numbers.length > 0) out.push({ kind: 'missions', numbers });
+    }
     else if (event === 'error') out.push({ kind: 'error' });
     else if (event === '') out.push({ kind: 'delta', text: value });
     // An event name we do not know is dropped rather than shown: a future server

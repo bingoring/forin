@@ -5,6 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strconv"
+	"strings"
 
 	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
@@ -176,6 +178,9 @@ func (h *conversationHandler) message(w http.ResponseWriter, r *http.Request) {
 	if reply.Resolved {
 		out["resolved"] = true
 	}
+	if len(reply.Missions) > 0 {
+		out["missions"] = reply.Missions
+	}
 	httpx.JSON(w, http.StatusOK, out)
 }
 
@@ -300,6 +305,22 @@ func (h *conversationHandler) stream(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "event: error\ndata: \"ai unavailable\"\n\n")
 		flusher.Flush()
 		return
+	}
+	// Before the text would be wrong and after is right: the tracker ticking a mission
+	// is a consequence of the line the learner is about to read, and a tick that lands
+	// first reads as the app knowing something it has not shown yet.
+	if len(reply.Missions) > 0 {
+		// A comma-joined STRING, not a JSON array. The client's parser has exactly one
+		// rule — every frame's data is a JSON string — and that rule is what caught a
+		// bare `true` being dropped silently. An array would be a second shape to
+		// handle for the sake of looking tidier on the wire.
+		nums := make([]string, 0, len(reply.Missions))
+		for _, n := range reply.Missions {
+			nums = append(nums, strconv.Itoa(n))
+		}
+		b, _ := json.Marshal(strings.Join(nums, ","))
+		fmt.Fprintf(w, "event: missions\ndata: %s\n\n", b)
+		flusher.Flush()
 	}
 	// After the text: the character has just said the thing that resolved it, and the
 	// learner should read that before being asked whether to wrap up.

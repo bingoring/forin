@@ -131,3 +131,55 @@ func TestNoDuplicateScenarioTitlesWithinADepartment(t *testing.T) {
 		t.Fatalf("%d duplicate titles within a department:\n  %s", len(dupes), strings.Join(show, "\n  "))
 	}
 }
+
+// Every scenario is a multi-step conversation.
+//
+// The whole bank shipped with exactly two goals per scenario, and two goals is one
+// good question plus a summary — which is how "힌트 한 번 누르고 상황 종료" reached 90+.
+// Four goals against the 0.75 coverage floor means three must land, and three cannot
+// be one sentence.
+//
+// Reads the real content rather than a fixture: the point is that no scenario in the
+// shipped bank is thin, and a fixture cannot say that.
+func TestEveryScenarioHasEnoughGoalsToBeMultiStep(t *testing.T) {
+	b, err := Load(filepath.Join("..", "..", "..", "content"))
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	if len(b.Scenarios) < 1000 {
+		t.Fatalf("only %d scenarios loaded — the bank is not being read", len(b.Scenarios))
+	}
+	thin, blank := []string{}, []string{}
+	for _, sc := range b.Scenarios {
+		if len(sc.Goals) < 4 {
+			thin = append(thin, fmt.Sprintf("%s (%d goals)", sc.ID, len(sc.Goals)))
+		}
+		for _, g := range sc.Goals {
+			if strings.TrimSpace(g) == "" {
+				blank = append(blank, sc.ID)
+			}
+		}
+		// A duplicate counts twice toward coverage, so a learner could clear by doing
+		// one thing well.
+		seen := map[string]bool{}
+		for _, g := range sc.Goals {
+			if seen[g] {
+				thin = append(thin, fmt.Sprintf("%s (duplicate goal %q)", sc.ID, g))
+			}
+			seen[g] = true
+		}
+	}
+	if len(thin) > 0 {
+		// Capped: 3085 lines of failure is not a report.
+		show := thin
+		if len(show) > 8 {
+			show = show[:8]
+		}
+		t.Errorf("%d scenarios are not multi-step: %v", len(thin), show)
+	}
+	if len(blank) > 0 {
+		// A blank goal is skipped by the grader's evidence check, which shrinks the
+		// denominator and silently makes every other goal worth more.
+		t.Errorf("%d scenarios carry a blank goal: %v", len(blank), blank[:1])
+	}
+}
