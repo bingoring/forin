@@ -234,14 +234,33 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
    *  any re-run could do it. */
   const wasSuspended = useRef(false);
 
+  /** The pending entry frame, so it can be cancelled. */
+  const entryFrame = useRef<number | null>(null);
+
   const beginEntry = useCallback(() => {
     if (!pendingOpen.current) return;
     pendingOpen.current = false;
     // One frame after layout. Layout is not paint — the same lesson the elevator
     // transition records — and travelling from a position that has not been drawn yet
     // spends the first stretch of the trip on an empty stage.
-    requestAnimationFrame(() => springTo(0));
+    //
+    // The handle is kept because this frame outlives the sheet otherwise. The effect's
+    // 250ms fallback was already cleared on cleanup, but the frame it schedules was not:
+    // a sheet unmounted in between would start a spring on a gone component. On CI that
+    // surfaced as `Cannot read properties of undefined (reading 'spring')` in an
+    // unrelated suite — the callback ran after jest had torn the module registry down,
+    // so `Animated` itself was gone. Locally it never fired, which is exactly what a
+    // teardown race looks like.
+    entryFrame.current = requestAnimationFrame(() => {
+      entryFrame.current = null;
+      springTo(0);
+    });
   }, [springTo]);
+
+  // Nothing scheduled may outlive the sheet.
+  useEffect(() => () => {
+    if (entryFrame.current !== null) cancelAnimationFrame(entryFrame.current);
+  }, []);
 
   useEffect(() => {
     if (!visible) {

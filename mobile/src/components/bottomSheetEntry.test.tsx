@@ -13,6 +13,8 @@
 // Three behaviours have to hold together, and they pull against each other: an entry
 // animates, a measurement does not cancel it, and a sheet coming back from being
 // covered is planted rather than re-animated.
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Animated, Text, View } from 'react-native';
 
@@ -151,4 +153,20 @@ test('a sheet uncovered after being suspended IS planted, not re-animated', () =
   expect(setValues).toContain(0);
   expect(targets).not.toContain(0);
   restore();
+});
+
+test('nothing the entry schedules outlives the sheet', () => {
+  // The effect's 250ms fallback was cleared on cleanup; the frame it schedules was not.
+  // A sheet unmounted in between started a spring on a gone component — which on CI
+  // surfaced as `Cannot read properties of undefined (reading 'spring')` inside an
+  // unrelated suite, because the callback ran after jest had torn the module registry
+  // down and `Animated` itself was gone. Locally it never fired: a teardown race only
+  // shows up where the timing differs.
+  const src = readFileSync(join(__dirname, 'BottomSheet.tsx'), 'utf8');
+  // The frame is held so it can be cancelled…
+  expect(src).toMatch(/entryFrame\.current = requestAnimationFrame\(/);
+  // …and it is, on unmount.
+  expect(src).toMatch(/cancelAnimationFrame\(entryFrame\.current\)/);
+  // The fallback timer keeps its own cleanup.
+  expect(src).toMatch(/return \(\) => clearTimeout\(fallback\)/);
 });
