@@ -77,8 +77,13 @@ func main() {
 	fmt.Printf("goals backfilled: %d changed, %d already structured, %d skipped\n", changed, already, skipped)
 }
 
-// migrate returns the rewritten file and what happened: "ok", "already" (both
-// structural goals present), or "skip" (nothing to do safely).
+// migrate returns the rewritten file and what happened: "ok", "already" (the correct
+// structural pair is present and nothing stale is), or "skip" (nothing to do safely).
+//
+// Removes stale structural goals as well as adding the right ones. The groups changed
+// once already — three became seven when the content showed that a newborn cannot
+// confirm their own identity — and an add-only migration would leave these files
+// opening with another group's answer.
 func migrate(src string) (string, string, error) {
 	// Read-only parse, purely to learn the persona role and the current goals.
 	var doc struct {
@@ -88,17 +93,21 @@ func migrate(src string) (string, string, error) {
 	if err := yaml.Unmarshal([]byte(src), &doc); err != nil {
 		return "", "", fmt.Errorf("parse: %w", err)
 	}
-	open, close := content.OpenGoal(doc.Persona.Role), content.CloseGoal(doc.Persona.Role)
-	hasOpen, hasClose := false, false
+	wantOpen, wantClose := content.OpenGoal(doc.Persona.Role), content.CloseGoal(doc.Persona.Role)
+
+	hasOpen, hasClose, stale := false, false, false
 	for _, g := range doc.Goals {
-		if strings.TrimSpace(g) == open {
+		g = strings.TrimSpace(g)
+		switch {
+		case g == wantOpen:
 			hasOpen = true
-		}
-		if strings.TrimSpace(g) == close {
+		case g == wantClose:
 			hasClose = true
+		case content.IsStructuralGoal(g):
+			stale = true // a structural goal from a group this scenario is not in
 		}
 	}
-	if hasOpen && hasClose {
+	if hasOpen && hasClose && !stale {
 		return src, "already", nil
 	}
 
@@ -111,7 +120,7 @@ func migrate(src string) (string, string, error) {
 		}
 	}
 	if start < 0 {
-		return "", "skip", nil // no goals block to extend
+		return "", "skip", nil // no goals block to rewrite
 	}
 	// The block runs while lines are list items. Its indentation is copied from the
 	// first item rather than assumed: these files use 2- and 4-space styles both.
@@ -133,16 +142,31 @@ func migrate(src string) (string, string, error) {
 		return "", "skip", nil // an empty goals block: leave it to a human
 	}
 
+	// Keep the AUTHORED items in their original lines — comments, quoting style and
+	// spacing intact — and drop only the structural ones, which this tool wrote.
+	body := make([]string, 0, last-first+1)
+	for i := first; i <= last; i++ {
+		if content.IsStructuralGoal(goalTextOf(lines[i])) {
+			continue
+		}
+		body = append(body, lines[i])
+	}
+
 	quote := func(s string) string { return indent + "- " + `"` + s + `"` }
 	out := make([]string, 0, len(lines)+2)
 	out = append(out, lines[:first]...)
-	if !hasOpen {
-		out = append(out, quote(open))
-	}
-	out = append(out, lines[first:last+1]...)
-	if !hasClose {
-		out = append(out, quote(close))
-	}
+	out = append(out, quote(wantOpen))
+	out = append(out, body...)
+	out = append(out, quote(wantClose))
 	out = append(out, lines[last+1:]...)
 	return strings.Join(out, "\n"), "ok", nil
+}
+
+// goalTextOf pulls the value out of a "- \"…\"" list line, so a structural goal can be
+// recognised from the raw text without re-parsing the document.
+func goalTextOf(line string) string {
+	t := strings.TrimSpace(line)
+	t = strings.TrimPrefix(t, "-")
+	t = strings.TrimSpace(t)
+	return strings.Trim(t, `"'`)
 }

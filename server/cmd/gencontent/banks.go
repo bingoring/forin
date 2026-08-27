@@ -145,6 +145,23 @@ var parents = []Persona{
 	{"Mrs. Bello", "30s", "Mother", "#0F0F0F", "long"}, {"Mr. Novak", "30s", "Father", "#3B2A1A", "short"},
 }
 
+// children is the pool for topics where the nurse genuinely talks to the CHILD —
+// calming a crying toddler, a school-age pain score, easing a scan.
+//
+// It exists because `child` had no case in personaFor and fell through to `patients`:
+// 116 scenarios shipped with a 50-year-old called Mrs. Rossi cast as the child. The
+// role-play could not work — the model was told to be a frightened toddler and given
+// the persona of a woman in her fifties.
+//
+// Ages are the child's own, and `sub` says the age in years the way the patient pool
+// does, because the briefing shows it.
+var children = []Persona{
+	{"Ellie", "3-6", "4y / Female", "#8A5A2B", "bob"}, {"Noah", "7-12", "9y / Male", "#2E2E2E", "short"},
+	{"Mia", "3-6", "5y / Female", "#241812", "long"}, {"Liam", "7-12", "11y / Male", "#3B2A1A", "short"},
+	{"Sofia", "0-2", "2y / Female", "#1C1C1C", "bob"}, {"Ethan", "3-6", "6y / Male", "#111111", "short"},
+	{"Ava", "7-12", "8y / Female", "#5A3A22", "long"}, {"Kai", "3-6", "4y / Male", "#161616", "short"},
+}
+
 func personaFor(role string, deptIdx, k int) Persona {
 	var pool []Persona
 	switch role {
@@ -152,6 +169,8 @@ func personaFor(role string, deptIdx, k int) Persona {
 		pool = colleagues
 	case "parent":
 		pool = parents
+	case "child":
+		pool = children
 	default:
 		pool = patients
 	}
@@ -164,6 +183,8 @@ func personaPoolLen(role string) int {
 	switch role {
 	case "colleague", "doctor", "nurse", "pharmacist":
 		return len(colleagues)
+	case "child":
+		return len(children)
 	case "parent":
 		return len(parents)
 	default:

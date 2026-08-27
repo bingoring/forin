@@ -25,36 +25,79 @@ func TestComposeGoalsAddsTheStructuralPair(t *testing.T) {
 	}
 }
 
-// The roles the CONTENT actually uses, not just the generator's. The hand-authored
-// scenarios carry pharmacist, nurse, visitor, police and paramedic — a mapping that
-// only knew the generator's six would have given them the patient form, which is
-// wrong for a professional handoff.
+// Every role the CONTENT actually uses, grouped by what the opening and closing
+// competence IS. A first pass had three groups and the content proved two of them
+// wrong; these assertions are the evidence, kept.
 func TestEveryRoleInTheContentIsGrouped(t *testing.T) {
-	professional := []string{"colleague", "doctor", "nurse", "pharmacist", "paramedic", "police"}
-	guardian := []string{"parent", "family", "visitor"}
-	patient := []string{"patient", "child"}
+	// A newborn cannot confirm their own identity. 127 scenarios are 신생아 활력 사정,
+	// and an unachievable goal against the 0.75 coverage floor makes a scenario harder
+	// than intended rather than merely odd.
+	for _, r := range []string{"child", "infant", "neonate"} {
+		if strings.Contains(OpenGoal(r), "본인 확인") {
+			t.Errorf("%s opens with self-identification, which a child cannot do: %q", r, OpenGoal(r))
+		}
+		if !strings.Contains(OpenGoal(r), "보호자") {
+			t.Errorf("%s should confirm identity via the guardian, got %q", r, OpenGoal(r))
+		}
+	}
 
-	for _, r := range professional {
+	// This content's "visitor" is 부검 동의, 사별 후 자원 연계, 보호자 소진 — what is owed
+	// at the end is presence and support, not a phone number.
+	if strings.Contains(CloseGoal("visitor"), "연락 방법") {
+		t.Errorf("a bereavement conversation should not close on contact details: %q", CloseGoal("visitor"))
+	}
+	if !strings.Contains(CloseGoal("visitor"), "지원") {
+		t.Errorf("visitor closing should offer support, got %q", CloseGoal("visitor"))
+	}
+
+	// Escalation to a doctor is SBAR's R plus closed-loop confirmation — the reason
+	// read-back exists is that a misheard order is a medication error.
+	if !strings.Contains(CloseGoal("doctor"), "복창") {
+		t.Errorf("escalation should close on a read-back, got %q", CloseGoal("doctor"))
+	}
+
+	// An outside authority is the one conversation where saying less is correct.
+	if !strings.Contains(CloseGoal("police"), "범위") {
+		t.Errorf("an external request should close on disclosure limits, got %q", CloseGoal("police"))
+	}
+
+	// Professionals lead with the point (SBAR's S).
+	for _, r := range []string{"colleague", "nurse", "pharmacist", "paramedic"} {
 		if !strings.Contains(OpenGoal(r), "용건") {
 			t.Errorf("%s should open with the purpose, got %q", r, OpenGoal(r))
 		}
 	}
-	for _, r := range guardian {
+
+	// A guardian is not the patient: the relationship has to be established.
+	for _, r := range []string{"parent", "family"} {
 		if !strings.Contains(OpenGoal(r), "관계") {
 			t.Errorf("%s should establish the relationship, got %q", r, OpenGoal(r))
 		}
 	}
-	for _, r := range patient {
-		if !strings.Contains(OpenGoal(r), "본인 확인") {
-			t.Errorf("%s should confirm identity, got %q", r, OpenGoal(r))
+
+	// An adult patient confirms their own identity.
+	if !strings.Contains(OpenGoal("patient"), "본인 확인") {
+		t.Errorf("patient should confirm identity, got %q", OpenGoal("patient"))
+	}
+}
+
+// Seven groups, and each pair actually distinct — otherwise the grouping is
+// decorative and the content would be better off with one.
+func TestTheGroupsAreAllDifferent(t *testing.T) {
+	roles := []string{"patient", "child", "parent", "visitor", "doctor", "police", "colleague"}
+	opens, closes := map[string]string{}, map[string]string{}
+	for _, r := range roles {
+		o, c := OpenGoal(r), CloseGoal(r)
+		if prev, dup := opens[o]; dup {
+			t.Errorf("%s and %s share an opening: %q", prev, r, o)
 		}
+		if prev, dup := closes[c]; dup {
+			t.Errorf("%s and %s share a closing: %q", prev, r, c)
+		}
+		opens[o], closes[c] = r, r
 	}
-	// The three groups must actually differ, or the role-awareness is decorative.
-	if OpenGoal("nurse") == OpenGoal("patient") || OpenGoal("parent") == OpenGoal("patient") {
-		t.Error("the role groups produce the same opening")
-	}
-	if CloseGoal("nurse") == CloseGoal("patient") || CloseGoal("parent") == CloseGoal("patient") {
-		t.Error("the role groups produce the same closing")
+	if len(opens) != len(roles) || len(closes) != len(roles) {
+		t.Errorf("got %d distinct openings and %d closings for %d groups", len(opens), len(closes), len(roles))
 	}
 }
 
@@ -85,8 +128,8 @@ func TestDuplicateAndBlankGoalsAreDropped(t *testing.T) {
 	got := ComposeGoals("patient", []string{
 		CloseGoal("patient"), // collides with the structural closing
 		"통증 사정",
-		"",     // blank
-		"  ",   // whitespace only
+		"",      // blank
+		"  ",    // whitespace only
 		"통증 사정", // repeated authored goal
 	})
 	seen := map[string]bool{}

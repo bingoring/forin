@@ -29,36 +29,33 @@ func TestComposedGoalsAreFourSteps(t *testing.T) {
 	}
 }
 
-// Who you are talking to changes what opening and closing mean. A colleague handoff
-// does not begin with confirming their identity, and a patient encounter does not
-// begin by stating your agenda.
+// Who you are talking to changes what opening and closing mean.
+//
+// The group detail lives with the mapping (internal/domain/content/goalshape_test.go);
+// what this checks is the generator's own contract — every role its topic tables use
+// produces a usable pair, and the pairs are not all the same string.
 func TestOpenAndCloseAreRoleAware(t *testing.T) {
-	for _, role := range []string{"patient", "child", "parent", "family", "colleague", "doctor"} {
-		if content.OpenGoal(role) == "" || content.CloseGoal(role) == "" {
-			t.Fatalf("%s has an empty opening or closing", role)
+	roles := map[string]bool{}
+	for _, d := range Depts {
+		for _, tp := range d.Topics {
+			roles[tp.Role] = true
 		}
 	}
-	// A colleague conversation leads with the point (SBAR's S).
-	if !strings.Contains(content.OpenGoal("colleague"), "용건") {
-		t.Errorf("colleague opening = %q; want it to lead with the purpose", content.OpenGoal("colleague"))
+	if len(roles) < 3 {
+		t.Fatalf("only %d roles in the topic tables — they are not being read", len(roles))
 	}
-	if content.OpenGoal("doctor") != content.OpenGoal("colleague") {
-		t.Error("doctor and colleague are both professional handoffs; they should open the same way")
+	opens := map[string]bool{}
+	for r := range roles {
+		o, c := content.OpenGoal(r), content.CloseGoal(r)
+		if o == "" || c == "" {
+			t.Errorf("role %q produced an empty goal", r)
+		}
+		opens[o] = true
 	}
-	// A guardian is not the patient: the relationship has to be established.
-	if !strings.Contains(content.OpenGoal("parent"), "관계") {
-		t.Errorf("parent opening = %q; want the relationship established", content.OpenGoal("parent"))
-	}
-	if content.OpenGoal("family") != content.OpenGoal("parent") {
-		t.Error("parent and family are both guardians; they should open the same way")
-	}
-	// A patient encounter confirms who you are speaking to.
-	if !strings.Contains(content.OpenGoal("patient"), "본인 확인") {
-		t.Errorf("patient opening = %q; want identity confirmed", content.OpenGoal("patient"))
-	}
-	// The three groups must actually differ, or the role-awareness is decorative.
-	if content.OpenGoal("patient") == content.OpenGoal("parent") || content.OpenGoal("patient") == content.OpenGoal("colleague") {
-		t.Error("the role groups produce the same opening")
+	// The topic tables use patient, parent, child, colleague and doctor: at least four
+	// distinct openings, or the role-awareness is not reaching the generated content.
+	if len(opens) < 4 {
+		t.Errorf("%d roles collapsed to %d openings — the grouping is not reaching the content", len(roles), len(opens))
 	}
 }
 
@@ -136,4 +133,60 @@ func TestEveryAuthoredTopicComposesToFourOrMore(t *testing.T) {
 		t.Fatalf("only %d topics scanned — the tables are not being read", total)
 	}
 	t.Logf("%d topics, %d thin", total, thin)
+}
+
+// A child-role topic must be cast with a child.
+//
+// `child` had no case in personaFor and fell through to the adult patient pool, so 116
+// scenarios shipped with a 50-year-old called Mrs. Rossi cast as the child. The
+// role-play could not work: the model was told to be a frightened toddler and handed
+// the persona of a woman in her fifties.
+func TestChildRoleDrawsFromTheChildPool(t *testing.T) {
+	if len(children) == 0 {
+		t.Fatal("there is no child persona pool")
+	}
+	adult := map[string]bool{}
+	for _, p := range patients {
+		adult[p.Name] = true
+	}
+	for k := 0; k < personaPoolLen("child"); k++ {
+		p := personaFor("child", 3, k)
+		if adult[p.Name] {
+			t.Errorf("child persona %d is an adult patient: %s", k, p.Name)
+		}
+		// The age has to be a child's, or the briefing shows "4y / Female" next to "50s".
+		switch p.Age {
+		case "0-2", "3-6", "7-12":
+		default:
+			t.Errorf("child persona %s has age range %q", p.Name, p.Age)
+		}
+	}
+}
+
+// A neonate cannot hold a conversation in any language, so a topic set in the nursery
+// is a conversation with the PARENT. Casting it as the patient made the whole exchange
+// incoherent, and gave it an opening goal ("환자 본인 확인") no learner could satisfy.
+func TestNeonatalTopicsAddressTheGuardian(t *testing.T) {
+	for _, d := range Depts {
+		for _, tp := range d.Topics {
+			if !strings.Contains(tp.Title, "신생아") {
+				continue
+			}
+			if tp.Role == "child" {
+				t.Errorf("%q is cast as the child; a newborn cannot converse — the partner is the parent", tp.Title)
+			}
+		}
+	}
+}
+
+// Whoever a topic is cast as, its persona pool must be non-empty — an empty pool
+// panics the generator at index time, which is a build-breaking way to add a role.
+func TestEveryTopicRoleHasAPersonaPool(t *testing.T) {
+	for _, d := range Depts {
+		for _, tp := range d.Topics {
+			if personaPoolLen(tp.Role) == 0 {
+				t.Errorf("role %q (topic %q) has no persona pool", tp.Role, tp.Title)
+			}
+		}
+	}
 }
