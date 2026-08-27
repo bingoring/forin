@@ -229,6 +229,10 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
   const openedRef = useRef(false);
   /** Opened, offscreen, waiting for the content to exist before it travels. */
   const pendingOpen = useRef(false);
+  /** Was covered by a pushed screen. Only a sheet coming back from THAT should be
+   *  planted at its resting position; see the effect below for what went wrong when
+   *  any re-run could do it. */
+  const wasSuspended = useRef(false);
 
   const beginEntry = useCallback(() => {
     if (!pendingOpen.current) return;
@@ -245,9 +249,33 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
       y.setValue(offscreenY);
       return;
     }
-    if (suspended) return; // covered: leave the position and the detent exactly as they are
+    if (suspended) {
+      wasSuspended.current = true;
+      return; // covered: leave the position and the detent exactly as they are
+    }
     if (openedRef.current) {
-      y.setValue(0); // uncovered — already open, so just be there
+      // Uncovered after being suspended — already open, so just be there.
+      //
+      // Guarded by wasSuspended, and that guard is the whole fix for a content-sized
+      // sheet appearing fully formed instead of sliding up. This effect also re-runs
+      // when `offscreenY` changes, and offscreenY moves the moment the content is
+      // MEASURED (restH is derived from contentH for a content-sized sheet). So the
+      // sequence was:
+      //
+      //   1. visible -> park offscreen with the old restH, arm the entry
+      //   2. content lays out at a different height -> restH changes -> offscreenY
+      //      changes -> effect re-runs
+      //   3. openedRef is already true, so this branch fires and plants the sheet at
+      //      its resting position mid-entry
+      //
+      // The closing animation was untouched, which is exactly the reported shape: it
+      // appeared instantly and left smoothly. A size="tall" sheet never hit it because
+      // TALL_H is a constant, so its offscreenY never moves — which is why the career
+      // tab looked right and the profile's badge sheet did not.
+      if (wasSuspended.current) {
+        wasSuspended.current = false;
+        y.setValue(0);
+      }
       return;
     }
     openedRef.current = true;

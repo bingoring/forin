@@ -1,0 +1,154 @@
+// How the sheet ENTERS, which is the part that broke silently.
+//
+// Reported as: a profile badge sheet appears fully formed instead of sliding up, and
+// closes smoothly — every time, until you drag it down once by the handle, after which
+// it behaves. The career tab's sheet was always fine.
+//
+// The cause was an effect re-run. `offscreenY` is a dependency and it MOVES the moment
+// a content-sized sheet is measured (restH derives from contentH), so the effect ran a
+// second time mid-entry, found the sheet already open, and planted it at its resting
+// position. A size="tall" sheet has a constant restH, so its offscreenY never moves —
+// hence the career tab looking right.
+//
+// Three behaviours have to hold together, and they pull against each other: an entry
+// animates, a measurement does not cancel it, and a sheet coming back from being
+// covered is planted rather than re-animated.
+import { act, create, type ReactTestInstance } from 'react-test-renderer';
+import { Animated, Text, View } from 'react-native';
+
+jest.mock('expo-audio', () => ({
+  createAudioPlayer: () => ({ play: () => {}, pause: () => {}, seekTo: () => {}, remove: () => {} }),
+}));
+
+import { BottomSheet } from '@/components/BottomSheet';
+
+// beginEntry defers the spring by one frame; jest's rAF does not run on its own.
+beforeEach(() => {
+  jest.useFakeTimers();
+  jest.spyOn(global, 'requestAnimationFrame').mockImplementation(((cb: FrameRequestCallback) => {
+    cb(0);
+    return 0;
+  }) as never);
+});
+afterEach(() => {
+  jest.useRealTimers();
+  jest.restoreAllMocks();
+});
+
+/** Records every spring/timing target the sheet animates `y` to. */
+function trackAnimations() {
+  const targets: number[] = [];
+  const spring = jest.spyOn(Animated, 'spring').mockImplementation(((_v: unknown, cfg: { toValue: number }) => {
+    targets.push(cfg.toValue);
+    return { start: (cb?: (r: { finished: boolean }) => void) => cb?.({ finished: true }), stop: () => {} } as never;
+  }) as never);
+  return { targets, restore: () => spring.mockRestore() };
+}
+
+/** Fires onLayout on every view that has one, the way the native layout pass would. */
+function layout(root: ReactTestInstance, height = 300) {
+  const nodes = root.findAll((n) => typeof n.props?.onLayout === 'function', { deep: true });
+  act(() => {
+    for (const n of nodes) n.props.onLayout({ nativeEvent: { layout: { height, width: 390 } } });
+  });
+}
+
+test('a reopened sheet animates in again', () => {
+  const { targets, restore } = trackAnimations();
+  let tree!: ReturnType<typeof create>;
+
+  // Open.
+  act(() => {
+    tree = create(<BottomSheet visible onClose={() => {}}><View><Text>hi</Text></View></BottomSheet>);
+  });
+  layout(tree.root);
+  act(() => { jest.advanceTimersByTime(400); });
+  const first = [...targets];
+
+  // Close, then reopen with the SAME content — the profile's badge sheet is one
+  // component whose children never change shape.
+  act(() => {
+    tree.update(<BottomSheet visible={false} onClose={() => {}}><View><Text>hi</Text></View></BottomSheet>);
+  });
+  targets.length = 0;
+  act(() => {
+    tree.update(<BottomSheet visible onClose={() => {}}><View><Text>hi</Text></View></BottomSheet>);
+  });
+  layout(tree.root);
+  act(() => { jest.advanceTimersByTime(400); });
+
+  console.log('first open animated to:', first, ' reopen animated to:', targets);
+  expect(targets).toContain(0); // travelled to the resting position = it animated in
+  restore();
+});
+
+test('the measurement arriving must not slam the sheet to its resting place', () => {
+  // The reported bug: a content-sized sheet appears fully formed instead of sliding up,
+  // and closes smoothly. Reproduced by letting the measured height CHANGE — which is
+  // what happens on a profile badge sheet, whose text length differs per badge:
+  //
+  //   1. visible -> effect parks y offscreen (using the OLD restH) and arms the entry
+  //   2. content lays out taller -> setContentH -> restH changes -> offscreenY changes
+  //   3. offscreenY is an effect dep, so the effect RE-RUNS, sees openedRef already
+  //      true, and takes the "uncovered, just be there" branch: y.setValue(0)
+  //
+  // The career sheet is size="tall", whose restH is a constant, so its offscreenY never
+  // moves and it never hits this.
+  const setValues: number[] = [];
+  const { targets, restore } = trackAnimations();
+  const realSetValue = Animated.Value.prototype.setValue;
+  jest.spyOn(Animated.Value.prototype, 'setValue').mockImplementation(function (this: Animated.Value, v: number) {
+    setValues.push(v);
+    return realSetValue.call(this, v);
+  } as never);
+
+  let tree!: ReturnType<typeof create>;
+  act(() => {
+    tree = create(<BottomSheet visible onClose={() => {}}><View><Text>hi</Text></View></BottomSheet>);
+  });
+  // The measurement lands at a height the sheet did not have before.
+  layout(tree.root, 420);
+  act(() => { jest.advanceTimersByTime(400); });
+
+  // It must have travelled to 0, not been placed there.
+  expect(targets).toContain(0);
+  const jumpedToRest = setValues.filter((v) => v === 0).length;
+  expect(jumpedToRest).toBe(0);
+  restore();
+});
+
+test('a sheet uncovered after being suspended IS planted, not re-animated', () => {
+  // The branch's actual purpose, and the reason it cannot simply be deleted: a sheet
+  // covered by a pushed screen was never dismissed, so coming back it should already be
+  // where it was. Re-animating it would make returning from a briefing look like the
+  // sheet opening for the first time.
+  const setValues: number[] = [];
+  const { targets, restore } = trackAnimations();
+  const realSetValue = Animated.Value.prototype.setValue;
+  jest.spyOn(Animated.Value.prototype, 'setValue').mockImplementation(function (this: Animated.Value, v: number) {
+    setValues.push(v);
+    return realSetValue.call(this, v);
+  } as never);
+
+  const sheet = (props: { visible: boolean; suspended: boolean }) => (
+    <BottomSheet visible={props.visible} suspended={props.suspended} onClose={() => {}}>
+      <View><Text>hi</Text></View>
+    </BottomSheet>
+  );
+  let tree!: ReturnType<typeof create>;
+  act(() => { tree = create(sheet({ visible: true, suspended: false })); });
+  layout(tree.root, 300);
+  act(() => { jest.advanceTimersByTime(400); });
+
+  // Covered by a pushed screen, then uncovered.
+  act(() => { tree.update(sheet({ visible: true, suspended: true })); });
+  setValues.length = 0;
+  targets.length = 0;
+  act(() => { tree.update(sheet({ visible: true, suspended: false })); });
+  act(() => { jest.advanceTimersByTime(400); });
+
+  // Planted at rest, and NOT animated in again.
+  expect(setValues).toContain(0);
+  expect(targets).not.toContain(0);
+  restore();
+});
