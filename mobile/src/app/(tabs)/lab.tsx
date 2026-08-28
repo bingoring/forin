@@ -82,10 +82,14 @@ const KIND_TONE: Record<Kind, string> = { correction: colors.peach, suggestion: 
 // category chips now filter only the thing they can filter, and each section's
 // content lives under its own tab rather than stacked on one scroll.
 type Section = 'notes' | 'speak' | 'models';
-/** How far a tab's face travels on press. Smaller than PixelButton's 4: the face is
- *  only 2.5px from its neighbour's divider, and a 4px drop would eat the label's
- *  breathing room on a third of the screen. */
-const TAB_PRESS_OFFSET = 2;
+/** How far a tab's cap travels on press, and how deep its shadow is. Three rather than
+ *  PixelButton's four: a third of the screen is a small cap, and four reads as a lurch
+ *  on something this size. */
+const TAB_PRESS_OFFSET = 3;
+/** Space between the caps. MUST exceed TAB_PRESS_OFFSET: the shadow already occupies
+ *  that much to the right of each cap, and a pressed cap lands exactly on its shadow —
+ *  with a gap of 3 or less, pressing 교정 노트 would touch 말하기. */
+const TAB_GAP = 6;
 const SECTIONS: { id: Section; icon: FIconName; labelKey: string }[] = [
   { id: 'notes', icon: 'pen', labelKey: 'lab.tabNotes' },
   { id: 'speak', icon: 'mic', labelKey: 'lab.tabSpeak' },
@@ -399,18 +403,22 @@ export default function Lab() {
   );
 }
 
-// 섹션 탭 — 교정 노트 / 말하기 / 모범답안. One box with 2.5 dividers, not
-// three buttons: the row IS one control, and a gap between the thirds
-// reads as three unrelated cards.
+// 섹션 탭 — 교정 노트 / 말하기 / 모범답안.
 //
-// Each third presses like a PixelButton, by the same mechanic: the face
-// translates by the press offset so a hard shadow shows where it left. The
-// difference is that the shadow lives INSIDE the cell, behind the face, and
-// the cell clips — the row already sits on its own shadow, and a per-tab one
-// poking past that outer border would read as a broken box. Dropping the whole
-// row instead was the other option and it is worse: tapping one third would
-// move all three, which says the row is one button when it is three.
+// Three boxes, each pressing exactly like a PixelButton: a bordered cap sitting on a
+// hard offset shadow, and pressing translates the WHOLE cap — border and all — by that
+// offset so it covers its own shadow. That is the app's press, and it is what the tabs
+// were asked to feel like.
 //
+// They started as one box with 2.5px dividers, which is what the handoff draws, and the
+// press was faked inside it: each third clipped its contents and shifted them, so only
+// the label appeared to move while the black outline stayed put. A cap can only drop
+// into a shadow if it has somewhere to drop, and inside a tightly packed single box
+// there is nowhere — so the row gives up its shared outline and each third gets its own.
+//
+// TAB_GAP is what keeps the movement from touching the neighbour: the shadow already
+// extends TAB_PRESS_OFFSET to the right of each cap, and a pressed cap lands exactly on
+// it, so the gap has to be larger than the offset. tabGeometry.test enforces that.
 /** The three section tabs. A component because both branches of the screen draw it —
  *  the notes list has it inside ListHeaderComponent, the other two inside a ScrollView —
  *  and a second copy of this JSX is a second thing to keep in step. */
@@ -425,56 +433,56 @@ function SectionTabs({ section, onSelect, pressed, onPressedChange, cardCount, s
 }) {
   const t = useT();
   return (
-    <Shadowed offset={3}>
-      <View testID="lab-sections" style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
-        {SECTIONS.map((sec, i) => {
-          const active = section === sec.id;
-          const isDown = pressed === sec.id;
-          const dx = isDown ? TAB_PRESS_OFFSET : 0;
-          return (
+    <View testID="lab-sections" style={{ flexDirection: 'row', gap: TAB_GAP }}>
+      {SECTIONS.map((sec) => {
+        const active = section === sec.id;
+        const isDown = pressed === sec.id;
+        const dx = isDown ? TAB_PRESS_OFFSET : 0;
+        return (
+          <View key={sec.id} style={{ flex: 1 }}>
+            {/* The hard offset shadow the cap drops into. Sized by insets rather than
+                width/height so a percentage cannot resolve against a stretched flex
+                ancestor and smear past the tab — the same reason PixelButton does it
+                this way. */}
             <View
-              key={sec.id}
               style={{
-                flex: 1,
-                borderLeftWidth: i ? 2.5 : 0,
-                borderLeftColor: C,
-                // What keeps the press inside the box.
-                overflow: 'hidden',
+                position: 'absolute',
+                left: TAB_PRESS_OFFSET,
+                top: TAB_PRESS_OFFSET,
+                right: -TAB_PRESS_OFFSET,
+                bottom: -TAB_PRESS_OFFSET,
+                backgroundColor: C,
+              }}
+            />
+            <Pressable
+              onPressIn={() => { onPressedChange(sec.id); playSfx('tap'); }}
+              onPressOut={() => onPressedChange(null)}
+              onPress={() => onSelect(sec.id)}
+              style={{
+                backgroundColor: active ? colors.lilac : '#fff',
+                borderWidth: 3,
+                borderColor: C,
+                paddingTop: 9,
+                paddingBottom: 7,
+                alignItems: 'center',
+                gap: 3,
+                transform: [{ translateX: dx }, { translateY: dx }],
               }}
             >
-              {/* The face drops onto this. Ink at low alpha rather than a new
-                  `lilacShadow` token: it has to sit under BOTH an active (lilac)
-                  and an inactive (white) face, and a tinted shadow only works
-                  under one of them. */}
-              <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: C + '33' }} />
-              <Pressable
-                onPressIn={() => { onPressedChange(sec.id); playSfx('tap'); }}
-                onPressOut={() => onPressedChange(null)}
-                onPress={() => onSelect(sec.id)}
-                style={{
-                  backgroundColor: active ? colors.lilac : '#fff',
-                  paddingTop: 9,
-                  paddingBottom: 7,
-                  alignItems: 'center',
-                  gap: 3,
-                  transform: [{ translateX: dx }, { translateY: dx }],
-                }}
-              >
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                  <FIcon name={sec.icon} size={13} />
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
-                </View>
-                {/* The count, or an ellipsis while it is still unknown — a 0 that
-                    means "not loaded yet" is the one number this row must not show. */}
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
-                  {sectionCount(sec.id, cardCount, speak, models)}
-                </Text>
-              </Pressable>
-            </View>
-          );
-        })}
-      </View>
-    </Shadowed>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                <FIcon name={sec.icon} size={13} />
+                <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
+              </View>
+              {/* The count, or an ellipsis while it is still unknown — a 0 that means
+                  "not loaded yet" is the one number this row must not show. */}
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
+                {sectionCount(sec.id, cardCount, speak, models)}
+              </Text>
+            </Pressable>
+          </View>
+        );
+      })}
+    </View>
   );
 }
 

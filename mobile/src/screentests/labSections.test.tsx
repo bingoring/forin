@@ -423,14 +423,55 @@ test('only the pressed third moves', async () => {
   expect(moved('모범답안')).toBe(false);
 });
 
-test('the press cannot escape the tab box', async () => {
+test('the whole cap moves — border and all — onto its own shadow', async () => {
   const tree = await mount();
-  // The face travels down-right onto a shadow drawn inside the cell; without the clip
-  // it would poke past the row's own 3px border, over the outer shadow.
-  const cells = tree.root
-    .findByProps({ testID: 'lab-sections' })
-    .findAll((n) => String(n.type) === 'View' && flat(n.props?.style).overflow === 'hidden', { deep: true });
-  expect(cells.length).toBe(3);
+  const row = tree.root.findByProps({ testID: 'lab-sections' });
+
+  // Each tab has its own hard shadow, offset down-right, in the ink colour. Without one
+  // there is nothing for the cap to drop onto and the press has no depth — which is
+  // what the first version looked like: the label shifted inside a cell that clipped
+  // it, while the black outline never moved.
+  const shadows = row.findAll((n) => {
+    const st = flat(n.props?.style);
+    return String(n.type) === 'View' && st.position === 'absolute' && st.backgroundColor === '#2A2522'
+      && typeof st.left === 'number' && st.left > 0 && st.right === -st.left;
+  }, { deep: true });
+  expect(shadows).toHaveLength(3);
+
+  // The thing that moves carries the border. A cap whose outline stays behind is the
+  // defect this replaced.
+  const cap = tabFace(tree.root, '말하기');
+  expect(flat(cap.props.style).borderWidth).toBe(3);
+  await act(async () => { tab(tree.root, '말하기').props.onPressIn(); });
+  const moved = flat(tabFace(tree.root, '말하기').props.style) as {
+    borderWidth?: number;
+    transform?: { translateX?: number; translateY?: number }[];
+  };
+  expect(moved.borderWidth).toBe(3);
+  // Exactly the shadow's depth, so the cap lands ON it rather than short of or past it.
+  const depth = flat(shadows[0].props.style).left as number;
+  expect(moved.transform?.[0].translateX).toBe(depth);
+  expect(moved.transform?.[1].translateY).toBe(depth);
+
+  // …and it is no longer faked by clipping.
+  const clipped = row.findAll((n) => String(n.type) === 'View' && flat(n.props?.style).overflow === 'hidden', { deep: true });
+  expect(clipped).toHaveLength(0);
+});
+
+test('a pressed tab cannot reach its neighbour', async () => {
+  const tree = await mount();
+  const row = tree.root.findByProps({ testID: 'lab-sections' });
+  const gap = flat(row.props.style).gap as number;
+  const shadow = row.findAll((n) => {
+    const st = flat(n.props?.style);
+    return String(n.type) === 'View' && st.position === 'absolute' && typeof st.left === 'number' && st.left > 0;
+  }, { deep: true })[0];
+  const depth = flat(shadow.props.style).left as number;
+
+  // The shadow already sits `depth` to the right of its cap, and a pressed cap lands on
+  // it. So the space between caps has to be MORE than that, or pressing 교정 노트 puts
+  // its edge inside 말하기.
+  expect(gap).toBeGreaterThan(depth);
 });
 
 test('the card list is virtualized — a window of cards is mounted, not the pile', async () => {
