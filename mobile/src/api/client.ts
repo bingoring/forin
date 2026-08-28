@@ -1,10 +1,11 @@
 // API client — an axios instance wrapped in a small module so the HTTP library
 // is swappable (1-3 decision: no direct fetch). Endpoint/response types come from
 // the generated contract (packages/contract), keeping mobile↔server type-safe.
-import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios';
+import axios, { type AxiosInstance } from 'axios';
 import { parseSseLines } from './sseFrames';
+import { endSession, handleResponseError, rotate } from './session';
 import { useAuthStore } from '@/store/authStore';
-import { saveTokens } from '@/lib/secureStore';
+
 import type { paths } from '@contract/types';
 import type { Interior } from '@engine';
 import { getLocale } from '@/i18n';
@@ -27,64 +28,18 @@ http.interceptors.request.use((config) => {
   return config;
 });
 
-// On 401: rotate the refresh token once and retry; if that fails, log out.
-let refreshing: Promise<string | null> | null = null;
-
-async function rotate(): Promise<string | null> {
-  if (!refreshing) {
-    refreshing = (async () => {
-      const rt = useAuthStore.getState().refreshToken;
-      try {
-        if (rt) {
-          // raw axios (no interceptors) to avoid recursion
-          const { data } = await axios.post(`${baseURL}/auth/refresh`, { refreshToken: rt });
-          const pair = data as TokenPair;
-          if (pair.accessToken && pair.refreshToken) {
-            useAuthStore.setState({ accessToken: pair.accessToken, refreshToken: pair.refreshToken });
-            await saveTokens(pair.accessToken, pair.refreshToken);
-            return pair.accessToken;
-          }
-        }
-        throw new Error('refresh unavailable');
-      } catch {
-        // In dev, a missing/stale refresh token shouldn't strand the session:
-        // silently re-run the dev login (server registers /auth/dev only in dev).
-        if (__DEV__) {
-          try {
-            const { data } = await axios.post(`${baseURL}/auth/dev`, {});
-            const pair = (data as { tokens?: TokenPair })?.tokens;
-            if (pair?.accessToken && pair?.refreshToken) {
-              useAuthStore.setState({ accessToken: pair.accessToken, refreshToken: pair.refreshToken });
-              await saveTokens(pair.accessToken, pair.refreshToken);
-              return pair.accessToken;
-            }
-          } catch { /* fall through to logout */ }
-        }
-        return null;
-      } finally {
-        refreshing = null;
-      }
-    })();
-  }
-  return refreshing;
-}
-
+// The 401 / cold-start policy lives in ./session — it is the piece that took the app
+// down when it was wrong, and it is testable there without a network. This is only the
+// wiring: the axios instance is what replays a request, and setTimeout is the clock.
 http.interceptors.response.use(
   (res) => res,
-  async (error) => {
-    const original = error?.config as (InternalAxiosRequestConfig & { _retry?: boolean }) | undefined;
-    const is401 = error?.response?.status === 401;
-    if (is401 && original && !original._retry && !original.url?.includes('/auth/refresh')) {
-      original._retry = true;
-      const token = await rotate();
-      if (token) {
-        original.headers.Authorization = `Bearer ${token}`;
-        return http(original);
-      }
-      useAuthStore.getState().logout();
-    }
-    return Promise.reject(error);
-  },
+  (error) =>
+    handleResponseError(error, {
+      rotate: () => rotate(baseURL),
+      endSession,
+      replay: (config) => http(config),
+      sleep: (ms) => new Promise((r) => setTimeout(r, ms)),
+    }),
 );
 
 // --- types extracted from the generated contract ---

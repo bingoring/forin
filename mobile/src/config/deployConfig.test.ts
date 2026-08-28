@@ -75,3 +75,67 @@ describe('app.json / eas.json cross-file invariants', () => {
     }
   });
 });
+
+// ── OTA has exactly one door ──────────────────────────────────────────────
+//
+// `.github/workflows/ota.yml` is the sanctioned path: it injects EXPO_PUBLIC_* from
+// eas.json, re-runs tsc and the test suite, gates on the fingerprint actually being
+// reachable by an installed build, and requires a reviewer. package.json's `ota` script
+// is a stub whose only job is to say so.
+//
+// That stub was already here and it did not stop a local publish, because nothing
+// stopped a NEW script from being added beside it. One was — and the two publishes it
+// made went out without the type-check, without the approval, and one of them with a
+// changed fingerprint, so it reached zero devices while reporting success. The
+// reachability gate in ota.yml is precisely the check that would have refused it.
+//
+// fs/path here, unlike the imports above: the point is to see every file, including
+// ones that do not exist yet.
+describe('eas update is only reachable through ota.yml', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { readdirSync, readFileSync, statSync } = require('fs') as typeof import('fs');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { join } = require('path') as typeof import('path');
+
+  const REPO = join(__dirname, '..', '..', '..');
+  const SKIP = new Set(['node_modules', '.git', '.expo', 'dist', 'ios', 'android', '.github']);
+
+  function files(dir: string): string[] {
+    return readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+      if (SKIP.has(e.name)) return [];
+      const p = join(dir, e.name);
+      if (e.isDirectory()) return files(p);
+      return /\.(mjs|cjs|js|ts|tsx|sh|ya?ml|json)$/.test(e.name) && statSync(p).size < 400_000 ? [p] : [];
+    });
+  }
+
+  test('no script or workflow outside .github publishes an update', () => {
+    const offenders: string[] = [];
+    for (const file of files(REPO)) {
+      const src = readFileSync(file, 'utf8');
+      // `eas update` / `eas-cli update` / `eas-cli@x update` as an actual invocation.
+      // The package.json stub is allowed to NAME it — that string is the warning.
+      // Two files are allowed to contain the phrase without invoking it: the
+      // package.json stub, whose whole content is the warning, and this test, which
+      // has to spell out what it is looking for.
+      if (file === __filename || file.endsWith(join('mobile', 'package.json'))) continue;
+      // Both call shapes. The first version of this pattern required whitespace
+      // between the binary and the subcommand, which matched a shell line
+      // (`npx eas-cli@21.8.0 update …`) and missed an argv array
+      // (`['eas-cli@latest', 'update', …]`) — the exact form the script this guard
+      // exists to prevent actually used, so the guard passed while the offender sat
+      // two directories away.
+      if (/eas(-cli)?(@[\w.]+)?['"`]?[\s,]+['"`]?update\b/.test(src)) {
+        offenders.push(file.slice(REPO.length + 1));
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  test('the package.json stub still refuses and still points at the workflow', () => {
+    const script = (appJson as unknown as Record<string, never>) && require('../../package.json').scripts?.ota as string;
+    expect(script).toBeDefined();
+    expect(script).toMatch(/exit 1/);
+    expect(script).toMatch(/ota\.yml/);
+  });
+});

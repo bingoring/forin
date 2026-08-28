@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
 import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { bootstrapSession, initKakao } from '@/lib/auth';
 import { api } from '@/api/client';
 import { hydrateEconomy } from '@/data/economy';
-import { colors } from '@/theme/tokens';
+import { BootSplash } from '@/components/BootSplash';
 import { loadSfxPreference, primeSfx } from '@/lib/sfx';
 import { loadLocale, onLocaleChange, useLocale, useT } from '@/i18n';
 import { loadAvatar } from '@/lib/avatar';
 import { loadFavorites } from '@/lib/favorites';
+
+/** How long before the splash admits it is waiting on something. Long enough that a
+ *  warm launch never shows it, short enough to land before a cold start's first
+ *  retry. */
+const SLOW_BOOT_MS = 2_500;
 
 // The two pixel fonts the whole design is drawn in. The KEYS are what
 // `fontFamily` resolves against, so they must match theme/tokens exactly — every
@@ -29,6 +33,10 @@ const FONTS = {
 export default function RootLayout() {
   const t = useT();
   const [hydrated, setHydrated] = useState(false);
+  // Boot taking long enough to wonder about. The server scales to zero, so the first
+  // launch after an idle period waits on a cold start — and a silent wait is what makes
+  // a working app look broken.
+  const [slow, setSlow] = useState(false);
   const [fontsLoaded, fontError] = useFonts(FONTS);
 
   useEffect(() => {
@@ -42,19 +50,20 @@ export default function RootLayout() {
     // asynchronously and play() on a player that has not finished loading is dropped,
     // which is why the first tap on each sound was silent. Six short blips.
     primeSfx();
+    const slowTimer = setTimeout(() => setSlow(true), SLOW_BOOT_MS);
     Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites()])
-      .finally(() => setHydrated(true));
+      .finally(() => { clearTimeout(slowTimer); setHydrated(true); });
+    return () => clearTimeout(slowTimer);
   }, []);
 
   // Wait for the fonts too: rendering first and swapping later reflows every
   // screen. A font that fails to load must NOT block the app — falling back to
   // the system face is ugly, being unable to start is worse.
   if (!hydrated || (!fontsLoaded && !fontError)) {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.paper }}>
-        <ActivityIndicator color={colors.ink} />
-      </View>
-    );
+    // The wordmark is drawn in DungGeunMo, which may not have loaded yet — the sky and
+    // the plane are pure geometry and do not care, so the splash is worth showing
+    // either way rather than holding a blank frame until the fonts land.
+    return <BootSplash slow={slow} />;
   }
 
   return (
