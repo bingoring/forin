@@ -20,6 +20,7 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import {
   Animated,
   Dimensions,
+  Easing,
   Keyboard,
   BackHandler,
   Modal,
@@ -144,7 +145,15 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
   // first became visible. It is also where closing leaves it, so there is one offscreen
   // position rather than two.
   const y = useRef(new Animated.Value(restH)).current;
+  // Two representations of the same thing, on purpose.
+  //
+  // `kbH` is the number the gesture math and the offscreen position are computed from —
+  // it has to be a plain value a callback can read. `kbLift` is what the sheet is
+  // actually drawn with, and it is animated: the sheet used to be positioned with
+  // `bottom: kbH`, a layout property, so it TELEPORTED to its lifted place the instant
+  // the state changed while the keyboard was still gliding up behind it.
   const [kbH, setKbH] = useState(0);
+  const kbLift = useRef(new Animated.Value(0)).current;
   const offscreenY = restH + kbH;
 
   // On the native driver, and that is the point.
@@ -326,15 +335,37 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
   // Lift the sheet above the keyboard instead of letting it cover the input —
   // the reason the cheer sheet's text field was unusable.
   useEffect(() => {
-    const showEvt = Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
-    const hideEvt = Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide';
-    const s = Keyboard.addListener(showEvt, (e) => setKbH(e.endCoordinates.height));
-    const h = Keyboard.addListener(hideEvt, () => setKbH(0));
-    return () => {
-      s.remove();
-      h.remove();
+    // Both `will*` and `did*`, on both platforms, first one wins.
+    //
+    // iOS emits `keyboardWillShow` BEFORE the keyboard moves, and the event carries the
+    // system's own `duration` — matching it is what makes the sheet travel with the
+    // keyboard rather than after it. Android emits `keyboardDidShow` (and, with
+    // adjustResize, sometimes `keyboardWillShow` too), and `did` fires when the keyboard
+    // has already arrived; animating from there still beats teleporting, it just starts
+    // late. `moveTo` is idempotent for a target already in flight, so whichever event
+    // arrives second changes nothing.
+    const moveTo = (height: number, duration?: number) => {
+      setKbH(height);
+      Animated.timing(kbLift, {
+        toValue: height,
+        // The keyboard's own duration when we are told it (iOS); otherwise a value in
+        // the same range as the platform's keyboard animation.
+        duration: duration && duration > 0 ? duration : 250,
+        // The system curve is private; this is the usual approximation of it, and at
+        // matching durations the difference is not something you can see.
+        easing: Easing.bezier(0.17, 0.59, 0.4, 0.77),
+        useNativeDriver: true,
+      }).start();
     };
-  }, []);
+    const subs = [
+      Keyboard.addListener('keyboardWillShow', (e) => moveTo(e.endCoordinates.height, e.duration)),
+      Keyboard.addListener('keyboardDidShow', (e) => moveTo(e.endCoordinates.height, e.duration)),
+      Keyboard.addListener('keyboardWillHide', (e) => moveTo(0, e.duration)),
+      Keyboard.addListener('keyboardDidHide', (e) => moveTo(0, e.duration)),
+    ];
+    return () => subs.forEach((x) => x.remove());
+  }, [kbLift]);
+
 
   const close = useCallback(() => {
     Keyboard.dismiss();
@@ -449,7 +480,11 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
           position: 'absolute',
           left: 0,
           right: 0,
-          bottom: kbH,
+          // Pinned to the bottom and LIFTED by the transform, not positioned at
+          // `bottom: kbH`. `bottom` is a layout property: setting it from state moved
+          // the sheet in a single frame, so the sheet arrived at its lifted place while
+          // the keyboard was still on its way up.
+          bottom: 0,
           // Straight off restH, not a second copy of the same constant. Writing the
           // rendered height and the height the gesture measures against as two separate
           // expressions let them disagree — and a test that read only the rendered one
@@ -458,9 +493,31 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
           backgroundColor: colors.paper,
           borderTopWidth: 4,
           borderTopColor: colors.ink,
-          transform: [{ translateY: y }],
+          // `y` is the sheet's own position (0 = resting, restH = gone); `kbLift` is how
+          // far the keyboard has pushed it up. Subtracting keeps the two independent —
+          // the drag still speaks in the same numbers it always did, and the offscreen
+          // target stays restH + kbH.
+          transform: [{ translateY: Animated.subtract(y, kbLift) }],
         }}
       >
+        {/* Painted BEHIND the keyboard, in the sheet's own colour.
+            The keyboard's top edge is rounded on iOS (and on some Android OEM
+            keyboards), so the lifted sheet left two slivers of backdrop showing at its
+            bottom corners, where the curve cut away from the sheet's square edge. This
+            strip fills the whole keyboard area, so what shows through the curve is more
+            sheet. Zero-height when there is no keyboard, and it can never be seen
+            anywhere else: it starts exactly where the sheet ends. */}
+        <View
+          pointerEvents="none"
+          style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            height: kbH,
+            backgroundColor: colors.paper,
+          }}
+        />
         {/* The grabber, and the ONLY thing the drag is attached to.
             The handlers used to sit on the whole sheet, which meant any vertical
             movement inside it — including scrolling a list — was claimed as a sheet
