@@ -236,6 +236,8 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
 
   /** The pending entry frame, so it can be cancelled. */
   const entryFrame = useRef<number | null>(null);
+  /** False once unmounted. Read by anything that was scheduled before that. */
+  const alive = useRef(true);
 
   const beginEntry = useCallback(() => {
     if (!pendingOpen.current) return;
@@ -253,12 +255,19 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
     // teardown race looks like.
     entryFrame.current = requestAnimationFrame(() => {
       entryFrame.current = null;
+      // Belt and braces with the cancel below. Cancelling depends on the host's
+      // cancelAnimationFrame actually cancelling — under jest's preset rAF is a
+      // setTimeout shim, and the same crash came back from CI after the cancel was in
+      // place. A callback that checks whether the sheet is still there cannot be
+      // defeated by an environment where the cancel is a no-op.
+      if (!alive.current) return;
       springTo(0);
     });
   }, [springTo]);
 
   // Nothing scheduled may outlive the sheet.
   useEffect(() => () => {
+    alive.current = false;
     if (entryFrame.current !== null) cancelAnimationFrame(entryFrame.current);
   }, []);
 

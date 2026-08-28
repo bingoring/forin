@@ -52,13 +52,32 @@ beforeEach(() => {
   mockServer.fail = false;
 });
 
+/** Trees mounted by this file, torn down in afterEach. */
+const mounted: ReturnType<typeof create>[] = [];
+
 async function open(current = '', onSaved: (n: string) => void = () => {}, onClose: () => void = () => {}) {
   let tree!: ReturnType<typeof create>;
   await act(async () => {
     tree = create(<NameSheet visible current={current} onClose={onClose} onSaved={onSaved} />);
   });
+  mounted.push(tree);
   return tree;
 }
+
+// Every tree this file mounts gets torn down.
+//
+// Not hygiene — correctness of the SUITE. BottomSheet schedules its entry animation in
+// a requestAnimationFrame, and jest's preset polyfills rAF with setTimeout. A tree left
+// mounted keeps that timer alive past the end of the test, and when it finally fires
+// jest has already torn down the module registry: `Animated.spring` is undefined and
+// whichever unrelated test happens to be running gets the crash. Locally the ordering
+// happened to be benign; CI caught it.
+afterEach(() => {
+  for (const tree of mounted.splice(0)) {
+    act(() => { tree.unmount(); });
+  }
+});
+
 
 test('the count is in the same unit the server counts in', () => {
   // The server's limit is utf8.RuneCountInString. A .length-based counter would tell a
@@ -135,6 +154,7 @@ test('reopening after a cancel shows the name in force, not the abandoned edit',
   await act(async () => {
     tree = create(<NameSheet visible={false} current="김민아" onClose={() => {}} onSaved={() => {}} />);
   });
+  mounted.push(tree);
   await act(async () => {
     tree.update(<NameSheet visible current="김민아" onClose={() => {}} onSaved={() => {}} />);
   });

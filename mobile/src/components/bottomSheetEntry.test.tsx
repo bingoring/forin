@@ -170,3 +170,44 @@ test('nothing the entry schedules outlives the sheet', () => {
   // The fallback timer keeps its own cleanup.
   expect(src).toMatch(/return \(\) => clearTimeout\(fallback\)/);
 });
+
+test('nothing the sheet scheduled runs after it unmounts', () => {
+  // The CI-only crash, twice over: `Cannot read properties of undefined (reading
+  // 'spring')` in an unrelated suite, because a frame the sheet had scheduled fired
+  // after jest tore the module registry down and `Animated` was gone.
+  //
+  // The first fix cancelled the frame on unmount. It came back — cancelling relies on
+  // the host's cancelAnimationFrame actually cancelling, and under jest's preset rAF is
+  // a setTimeout shim. So the callback checks for itself.
+  //
+  // rAF is NOT auto-run here (unlike the other tests in this file): the whole point is
+  // to fire it after the unmount, the way the real leak did.
+  jest.restoreAllMocks();
+  jest.useFakeTimers();
+  const frames: FrameRequestCallback[] = [];
+  jest.spyOn(global, 'requestAnimationFrame').mockImplementation(((cb: FrameRequestCallback) => {
+    frames.push(cb);
+    return frames.length;
+  }) as never);
+  // A cancel that does nothing — exactly the environment the second crash came from.
+  jest.spyOn(global, 'cancelAnimationFrame').mockImplementation((() => {}) as never);
+  const { targets } = trackAnimations();
+
+  let tree!: ReturnType<typeof create>;
+  act(() => { tree = create(<BottomSheet visible onClose={() => {}}><Text>x</Text></BottomSheet>); });
+  // Layout is what calls beginEntry, and beginEntry is what schedules the frame. Without
+  // it nothing is pending and this test passes no matter what the callback does — which
+  // is exactly how the first version of it passed with the guard deleted.
+  layout(tree.root);
+  expect(frames.length).toBeGreaterThan(0);
+
+  act(() => { tree.unmount(); });
+
+  const before = targets.length;
+  // Fire everything the sheet left behind.
+  act(() => { frames.splice(0).forEach((cb) => cb(0)); jest.runOnlyPendingTimers(); });
+
+  // Not one more animation than before the unmount. In the real failure this extra
+  // spring is what touched a torn-down `Animated`.
+  expect(targets.length).toBe(before);
+});

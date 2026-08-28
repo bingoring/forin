@@ -34,11 +34,30 @@ function texts(root: ReactTestInstance): string[] {
  *  and the clouds are drawn as rows of Rects. */
 const rects = (root: ReactTestInstance) => root.findAll((n) => String(n.type) === 'RNSVGRect', { deep: true }).length;
 
+/** Trees mounted by this file, torn down in afterEach. */
+const mounted: ReturnType<typeof create>[] = [];
+
 function mount(slow = false) {
   let tree!: ReturnType<typeof create>;
   act(() => { tree = create(<BootSplash slow={slow} />); });
+  mounted.push(tree);
   return tree;
 }
+
+// Every tree this file mounts gets torn down.
+//
+// Not hygiene — correctness of the SUITE. BottomSheet schedules its entry animation in
+// a requestAnimationFrame, and jest's preset polyfills rAF with setTimeout. A tree left
+// mounted keeps that timer alive past the end of the test, and when it finally fires
+// jest has already torn down the module registry: `Animated.spring` is undefined and
+// whichever unrelated test happens to be running gets the crash. Locally the ordering
+// happened to be benign; CI caught it.
+afterEach(() => {
+  for (const tree of mounted.splice(0)) {
+    act(() => { tree.unmount(); });
+  }
+});
+
 
 test('the plane and the clouds are on screen', () => {
   const tree = mount();

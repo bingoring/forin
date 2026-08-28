@@ -93,12 +93,31 @@ function texts(root: ReactTestInstance): string[] {
     .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'));
 }
 
+/** Trees mounted by this file, torn down in afterEach. */
+const mounted: ReturnType<typeof create>[] = [];
+
 /** Renders the tab with every summary already resolved. */
 async function mount() {
   let tree!: ReturnType<typeof create>;
   await act(async () => { tree = create(<Lab />); });
+  mounted.push(tree);
   return tree;
 }
+
+// Every tree this file mounts gets torn down.
+//
+// Not hygiene — correctness of the SUITE. BottomSheet schedules its entry animation in
+// a requestAnimationFrame, and jest's preset polyfills rAF with setTimeout. A tree left
+// mounted keeps that timer alive past the end of the test, and when it finally fires
+// jest has already torn down the module registry: `Animated.spring` is undefined and
+// whichever unrelated test happens to be running gets the crash. Locally the ordering
+// happened to be benign; CI caught it.
+afterEach(() => {
+  for (const tree of mounted.splice(0)) {
+    act(() => { tree.unmount(); });
+  }
+});
+
 
 /** The category chip row — the one horizontal scroller on this screen. */
 function chipRow(root: ReactTestInstance): ReactTestInstance {
