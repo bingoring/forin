@@ -20,6 +20,7 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
+import { MissionCluster } from '@/components/dialogue/MissionCluster';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
@@ -450,7 +451,12 @@ export default function DialogueRoute() {
       {/* status bar */}
       <View
         onLayout={(e) => setBarH(e.nativeEvent.layout.height)}
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}
+        // alignItems: 'flex-start', not 'center'. Centred, this row re-centred its
+        // children every time the mission cluster on the right grew — so opening the
+        // missions slid the × in the opposite corner downwards. The exit is the one
+        // control on this screen that must be in the same place every time it is
+        // needed.
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', zIndex: 5 }}
       >
         {/* A bare ×. Renaming this to "호출 받기" put the fiction on the button,
             where it read as a feature rather than an exit; the framing belongs in
@@ -467,79 +473,17 @@ export default function DialogueRoute() {
             <FIcon name="cross" size={15} />
           </View>
         </Pressable>
-        {/* Mission cluster + 상황 종료. Fades with the rest of the chrome while typing:
-            the thread rises over this corner, and a mission box sitting on top of the
-            conversation is the thing the learner is trying to read past.
-            The × stays — it is the way out, and it must not vanish because a keyboard
-            opened.
-            alignItems: 'flex-end' pins everything to the right WALL. The end button used
-            to line up with the left edge of the mission box, so it drifted left and right
-            as the mission text changed length. */}
-        <Animated.View
-          style={{ alignItems: 'flex-end', gap: 4, maxWidth: 240, opacity: chromeOpacity }}
-          pointerEvents={typing ? 'none' : 'auto'}
-        >
-          {goals.length > 0 && (
-            <>
-              {/* The chip is the whole control: it says how many missions there are and
-                  opens them.
-                  They used to be listed permanently in a white box, which at four or five
-                  goals — the shape all content has now — grew tall enough to cover the
-                  portrait and crowd the thread. A learner glances at this; they do not
-                  read it continuously. So it is closed by default and one tap away. */}
-              <Pressable onPress={() => setMissionsOpen((v) => !v)} hitSlop={6}>
-                <Shadowed offset={2}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>
-                      {t('dialogue.missionCount', { n: goals.length })}
-                    </Text>
-                    {/* Says how far along, when the character has reported anything —
-                        the number is the reason to open it or not. */}
-                    {doneMissions.size > 0 && (
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>
-                        {doneMissions.size}/{goals.length}
-                      </Text>
-                    )}
-                    <DisclosureChevron open={missionsOpen} color={C} size={11} />
-                  </View>
-                </Shadowed>
-              </Pressable>
-
-              {/* Children stay mounted and clipped by Collapsible, so opening does not
-                  re-lay-out the list or lose a tick mid-animation. */}
-              <Collapsible open={missionsOpen}>
-                <View style={{ backgroundColor: 'rgba(255,255,255,0.96)', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 8, gap: 3, marginTop: 3 }}>
-                  {goals.map((g, i) => {
-                    const done = doneMissions.has(i + 1);
-                    return (
-                      <View key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 5 }}>
-                        {/* A bullet, so the items read as a list rather than as one
-                            paragraph that happens to wrap. The tick replaces it when
-                            covered — two marks in a row would be noise. */}
-                        {done
-                          ? <FIcon name="check" size={11} />
-                          : <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>·</Text>}
-                        <Text
-                          style={{
-                            flex: 1, fontFamily: fonts.body, fontSize: fs(10), lineHeight: 14,
-                            color: done ? colors.textSoft : C,
-                            textDecorationLine: done ? 'line-through' : 'none',
-                          }}
-                        >
-                          {g}
-                        </Text>
-                      </View>
-                    );
-                  })}
-                </View>
-              </Collapsible>
-            </>
-          )}
-          {/* Main completion: resolving the situation via dialogue ends the scenario.
-              Ending with no dialogue is "중단" — no grade, no reward; ending after
-              speaking hands the sessionId to the result screen for AI grading. */}
-          <PixelButton icon="check" label={t('dialogue.endSituation')} bg={colors.mint} shadowColor={colors.mintShadow} offset={2} fontSize={10} borderWidth={2} paddingV={4} paddingH={9} onPress={endSituation} />
-        </Animated.View>
+        {/* The way out, then the missions under it. Everything about this cluster —
+            including why its width is a fixed number — is in MissionCluster. */}
+        <MissionCluster
+          goals={goals}
+          done={doneMissions}
+          open={missionsOpen}
+          onToggle={() => setMissionsOpen((v) => !v)}
+          onEnd={endSituation}
+          opacity={chromeOpacity}
+          disabled={typing}
+        />
       </View>
 
       {/* The NPC portrait, centred. Fades out while the keyboard is up — see `typing`.

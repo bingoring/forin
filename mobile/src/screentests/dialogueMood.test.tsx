@@ -119,23 +119,6 @@ test('the prompt is driven by the server signal, not by a turn count', () => {
 // position never moved and the other goals were never named. A learner watching it had
 // no way to know what was still outstanding — the reported "언제 해소됐는지 모른다" in
 // its most literal form.
-test('the mission tracker names every goal and claims no position', () => {
-  // Comments stripped: a comment explaining what `MISSION 1/` used to be is not it.
-  const code = SRC.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
-  expect(code).not.toMatch(/MISSION 1\//);
-  expect(code).not.toMatch(/const mission = goals\[0\]/);
-  // Every goal, behind a tap. A permanent list grew tall enough at four or five goals
-  // — the shape all content has now — to cover the portrait and crowd the thread, so
-  // it is collapsed by default and there is no cap to clip the last mission.
-  expect(SRC).toMatch(/goals\.map\(\(g, i\) => \{/);
-  expect(SRC).toMatch(/setMissionsOpen\(\(v\) => !v\)/);
-  expect(SRC).toMatch(/<Collapsible open=\{missionsOpen\}>/);
-  // A count, not a fraction: progress is judged at the end from the transcript, so
-  // there is nothing honest to put in the numerator mid-conversation.
-  expect(SRC).toMatch(/dialogue\.missionCount/);
-});
-
-// Live mission progress on the tracker.
 test('missions accumulate and are never un-ticked', () => {
   // A turn where the character does not mention mission 1 must not undo it: the
   // learner did that thing, and a tracker that flickers backwards is worse than one
@@ -149,23 +132,21 @@ test('an unchanged tick does not re-render the tracker', () => {
   expect(SRC).toMatch(/next\.size === prev\.size \? prev : next/);
 });
 
-test('a covered mission is struck through, not removed', () => {
-  // A list that shrinks as you work loses the shape of the exchange.
-  expect(SRC).toMatch(/textDecorationLine: done \? 'line-through' : 'none'/);
-  // The tick REPLACES the bullet rather than joining it — two marks in a row is noise.
-  expect(SRC).toMatch(/done\s*\n?\s*\? <FIcon name="check"/);
-});
-
-test('mission items are bulleted, so they read as a list', () => {
-  // They were separated by nothing but line breaks, which at four items reads as one
-  // paragraph that happens to wrap.
-  expect(SRC).toMatch(/>·<\/Text>/);
-});
-
-test('the tracker works with no progress data at all', () => {
-  // Which is exactly the state when the feature is switched off server-side: the
-  // field never arrives, the set stays empty, and the tracker is the plain goal list
-  // it was before. No client flag, no second code path.
-  expect(SRC).toMatch(/useState<Set<number>>\(new Set\(\)\)/);
-  expect(SRC).toMatch(/doneMissions\.has\(i \+ 1\)/);
+test('the mission tracker is delegated, not re-inlined', () => {
+  // It lived here as 70 lines and carried three defects nothing could reach: a panel
+  // that laid out at no width (so it showed nothing, and measured taller than it looked),
+  // and an exit in the opposite corner that moved when it opened. It is a component with
+  // its own render tests now — missionCluster.test.tsx — and this is the guard that it
+  // stays one.
+  expect(SRC).toMatch(/<MissionCluster/);
+  const code = SRC.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  expect(code).not.toMatch(/goals\.map\(/);
+  expect(code).not.toMatch(/<Collapsible open=\{missionsOpen\}>/);
+  // The lie this replaced, in either file: a hardcoded "MISSION 1/N" that showed only
+  // the first goal.
+  const cluster = readFileSync(join(__dirname, '..', 'components', 'dialogue', 'MissionCluster.tsx'), 'utf8');
+  for (const src of [code, cluster]) {
+    expect(src).not.toMatch(/MISSION 1\//);
+    expect(src).not.toMatch(/const mission = goals\[0\]/);
+  }
 });
