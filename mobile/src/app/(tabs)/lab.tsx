@@ -16,6 +16,7 @@ import { SpeakSummaryBlock } from '@/components/speak/SpeakSummaryBlock';
 import { ModelAnswerBlock } from '@/components/model/ModelAnswerBlock';
 import { faceOf } from '@/data/reviewCardFace';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
+import { playSfx } from '@/lib/sfx';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 
@@ -81,6 +82,10 @@ const KIND_TONE: Record<Kind, string> = { correction: colors.peach, suggestion: 
 // category chips now filter only the thing they can filter, and each section's
 // content lives under its own tab rather than stacked on one scroll.
 type Section = 'notes' | 'speak' | 'models';
+/** How far a tab's face travels on press. Smaller than PixelButton's 4: the face is
+ *  only 2.5px from its neighbour's divider, and a 4px drop would eat the label's
+ *  breathing room on a third of the screen. */
+const TAB_PRESS_OFFSET = 2;
 const SECTIONS: { id: Section; icon: FIconName; labelKey: string }[] = [
   { id: 'notes', icon: 'pen', labelKey: 'lab.tabNotes' },
   { id: 'speak', icon: 'mic', labelKey: 'lab.tabSpeak' },
@@ -94,6 +99,9 @@ export default function Lab() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [filter, setFilter] = useState('ALL');
   const [section, setSection] = useState<Section>('notes');
+  // Which third is under a finger right now. Held here rather than in each tab so
+  // the row cannot end up with two faces down at once.
+  const [pressedTab, setPressedTab] = useState<Section | null>(null);
   const [guideOpen, setGuideOpen] = useState(false);
   const [toast, setToast] = useState<{ label: string; bg: string; blurb: string; next: string } | null>(null);
   // The 🎙 직접 말하기 연습 summary. null while unknown or unavailable — the block
@@ -209,36 +217,61 @@ export default function Lab() {
 
         {/* 섹션 탭 — 교정 노트 / 말하기 / 모범답안. One box with 2.5 dividers, not
             three buttons: the row IS one control, and a gap between the thirds
-            reads as three unrelated cards. */}
+            reads as three unrelated cards.
+
+            Each third presses like a PixelButton, by the same mechanic: the face
+            translates by the press offset so a hard shadow shows where it left. The
+            difference is that the shadow lives INSIDE the cell, behind the face, and
+            the cell clips — the row already sits on its own shadow, and a per-tab one
+            poking past that outer border would read as a broken box. Dropping the whole
+            row instead was the other option and it is worse: tapping one third would
+            move all three, which says the row is one button when it is three. */}
         <Shadowed offset={3}>
           <View testID="lab-sections" style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
             {SECTIONS.map((sec, i) => {
               const active = section === sec.id;
+              const pressed = pressedTab === sec.id;
+              const dx = pressed ? TAB_PRESS_OFFSET : 0;
               return (
-                <Pressable
+                <View
                   key={sec.id}
-                  onPress={() => setSection(sec.id)}
                   style={{
                     flex: 1,
-                    backgroundColor: active ? colors.lilac : '#fff',
                     borderLeftWidth: i ? 2.5 : 0,
                     borderLeftColor: C,
-                    paddingTop: 9,
-                    paddingBottom: 7,
-                    alignItems: 'center',
-                    gap: 3,
+                    // What keeps the press inside the box.
+                    overflow: 'hidden',
                   }}
                 >
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                    <FIcon name={sec.icon} size={13} />
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
-                  </View>
-                  {/* The count, or an ellipsis while it is still unknown — a 0 that
-                      means "not loaded yet" is the one number this row must not show. */}
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
-                    {sectionCount(sec.id, cards.length, speak, models)}
-                  </Text>
-                </Pressable>
+                  {/* The face drops onto this. Ink at low alpha rather than a new
+                      `lilacShadow` token: it has to sit under BOTH an active (lilac)
+                      and an inactive (white) face, and a tinted shadow only works
+                      under one of them. */}
+                  <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: C + '33' }} />
+                  <Pressable
+                    onPressIn={() => { setPressedTab(sec.id); playSfx('tap'); }}
+                    onPressOut={() => setPressedTab(null)}
+                    onPress={() => setSection(sec.id)}
+                    style={{
+                      backgroundColor: active ? colors.lilac : '#fff',
+                      paddingTop: 9,
+                      paddingBottom: 7,
+                      alignItems: 'center',
+                      gap: 3,
+                      transform: [{ translateX: dx }, { translateY: dx }],
+                    }}
+                  >
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                      <FIcon name={sec.icon} size={13} />
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
+                    </View>
+                    {/* The count, or an ellipsis while it is still unknown — a 0 that
+                        means "not loaded yet" is the one number this row must not show. */}
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
+                      {sectionCount(sec.id, cards.length, speak, models)}
+                    </Text>
+                  </Pressable>
+                </View>
               );
             })}
           </View>

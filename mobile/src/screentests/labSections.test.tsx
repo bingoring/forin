@@ -15,6 +15,13 @@ jest.mock('expo-audio', () => ({ createAudioPlayer: () => ({ play: () => {}, pau
 jest.mock('expo-secure-store', () => ({ getItemAsync: async () => null, setItemAsync: async () => {}, deleteItemAsync: async () => {} }));
 jest.mock('expo-speech', () => ({ speak: () => {}, stop: () => {} }));
 
+const mockSounds: string[] = [];
+jest.mock('@/lib/sfx', () => ({
+  playSfx: (name: string) => { mockSounds.push(name); },
+  primeSfx: () => {},
+  loadSfxPreference: async () => {},
+}));
+
 // useFocusEffect RUNS. Mocked as a no-op it renders the spinner forever, and every
 // assertion below would pass against a loading screen.
 jest.mock('expo-router', () => {
@@ -118,6 +125,18 @@ afterEach(() => {
   }
 });
 
+
+/** The pressable face of a section tab — the node whose own style carries the press
+ *  transform, as opposed to the cell that clips it. */
+function tabFace(root: ReactTestInstance, label: string): ReactTestInstance {
+  const row = root.findByProps({ testID: 'lab-sections' });
+  const hits = row.findAll(
+    (n) => String(n.type) === 'View' && n.props?.onStartShouldSetResponder !== undefined && texts(n).includes(label),
+    { deep: true },
+  );
+  expect(hits.length).toBeGreaterThan(0);
+  return hits[0];
+}
 
 /** The category chip row — the one horizontal scroller on this screen. */
 function chipRow(root: ReactTestInstance): ReactTestInstance {
@@ -343,4 +362,56 @@ test('no chip paints its label or its count in its own colour', async () => {
     ).slice(-1)[0];
     expect(invisibleText(active)).toEqual([]);
   }
+});
+
+test('a tab presses like the app\'s buttons: the face drops, and it blips', async () => {
+  const tree = await mount();
+  const t = tab(tree.root, '말하기');
+  const face = () => {
+    const st = flat(
+      tabFace(tree.root, '말하기').props.style,
+    ) as { transform?: { translateX?: number; translateY?: number }[] };
+    return st.transform ?? [];
+  };
+
+  // At rest the face sits flush.
+  expect(face()).toEqual([{ translateX: 0 }, { translateY: 0 }]);
+
+  mockSounds.length = 0;
+  await act(async () => { t.props.onPressIn(); });
+  // Dropped onto its shadow, both axes — the same mechanic PixelButton uses, which is
+  // what makes it feel like the rest of the app rather than like a link.
+  const down = face() as { translateX?: number; translateY?: number }[];
+  expect(down[0].translateX).toBeGreaterThan(0);
+  expect(down[1].translateY).toBe(down[0].translateX);
+  // The blip fires on press-IN, with the movement: a sound on press-out would read as lag.
+  expect(mockSounds).toEqual(['tap']);
+
+  await act(async () => { t.props.onPressOut(); });
+  expect(face()).toEqual([{ translateX: 0 }, { translateY: 0 }]);
+});
+
+test('only the pressed third moves', async () => {
+  const tree = await mount();
+  await act(async () => { tab(tree.root, '말하기').props.onPressIn(); });
+  const moved = (label: string) => {
+    const st = flat(tabFace(tree.root, label).props.style) as {
+      transform?: { translateX?: number }[];
+    };
+    return (st.transform?.[0]?.translateX ?? 0) > 0;
+  };
+  expect(moved('말하기')).toBe(true);
+  // Dropping the whole row would say the row is one button. It is three.
+  expect(moved('교정 노트')).toBe(false);
+  expect(moved('모범답안')).toBe(false);
+});
+
+test('the press cannot escape the tab box', async () => {
+  const tree = await mount();
+  // The face travels down-right onto a shadow drawn inside the cell; without the clip
+  // it would poke past the row's own 3px border, over the outer shadow.
+  const cells = tree.root
+    .findByProps({ testID: 'lab-sections' })
+    .findAll((n) => String(n.type) === 'View' && flat(n.props?.style).overflow === 'hidden', { deep: true });
+  expect(cells.length).toBe(3);
 });
