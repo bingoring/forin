@@ -44,14 +44,27 @@ locals {
   # applied again; Terraform owns the service's shape, not its revision.
   bootstrap_image = "us-docker.pkg.dev/cloudrun/container/hello"
 
-  # Both environments scale to zero for now. A warm production instance is a
-  # second standing cost next to Cloud SQL, and it buys nothing before launch:
-  # there is no "day's first learner" to spare a cold start yet.
+  # Both environments scale to zero. A warm production instance is a second
+  # standing cost next to Cloud SQL, and the cold start it buys away is worth
+  # less than that cost at this stage.
   #
-  # Raise prod to 1 when real testers arrive — concretely, when the Play
-  # closed-testing clock starts (12 testers / 14 days, spec §6.1). Editing this
-  # map is the whole change; note that a Terraform-only template change lands on
-  # a revision with 0% traffic, so it reaches production on the next promote.
+  # DECIDED, not pending. This block used to say "raise prod to 1 when real
+  # testers arrive". Testers have arrived — TestFlight internal testing is
+  # running — and the answer was to stay at 0 and keep the saving. Do not read
+  # this as an open task.
+  #
+  # What made that affordable is that the cold start no longer breaks anything.
+  # It used to: the app treated a refresh request that failed against a starting
+  # instance as a rejected token, cleared the session in memory only, and then
+  # rendered every tab empty until the app was force-quit (mobile/src/api/session.ts
+  # carries the full account). Now a transport failure leaves the session alone,
+  # idempotent reads retry with backoff, and the launch screen says it is waking
+  # the server. A cold start costs a few seconds, which is a price; it is no
+  # longer a broken app, which was not.
+  #
+  # If it ever becomes worth paying: editing this map is the whole change, and a
+  # Terraform-only template change lands on a revision with 0% traffic, so it
+  # reaches production on the next promote.
   min_instances = { staging = 0, prod = 0 }
 
   # §3.2 of the deployment spec promises a low, fixed connection-pool ceiling
