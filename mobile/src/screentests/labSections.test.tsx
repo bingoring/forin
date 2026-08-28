@@ -67,6 +67,19 @@ const mockCardTip = {
 
 // Flipped by the "nothing to filter" test: every card in one department, one kind.
 const mockUniform = { on: false };
+// Flipped by the virtualization test: a realistic pile of due cards.
+const mockManyCards = { on: false };
+const mockBulk = Array.from({ length: 50 }, (_, i) => ({
+  id: `bulk${i}`,
+  source: 'correction',
+  front: `bulk said ${i}`,
+  back: `bulk sentence ${i}`,
+  note: 'why',
+  topicTag: '',
+  masteryPips: i % 4,
+  favorite: false,
+  context: { title: `t${i}`, dept: 'ER · TRIAGE', situation: `장면 ${i}`, npc: '' },
+}));
 // Flipped by the loading test. `mock`-prefixed, like every other fixture here, because
 // the jest.mock factory below is hoisted above them all and may only close over names
 // with that prefix.
@@ -82,7 +95,11 @@ const mockModels = { total: 34, groups: [], more: 30 };
 
 jest.mock('@/api/client', () => ({
   api: {
-    reviewDue: async () => (mockUniform.on ? [{ ...mockCard }, { ...mockCard, id: 'r9' }] : [{ ...mockCard }, { ...mockCardIcu }, { ...mockCardTip }]),
+    reviewDue: async () => {
+      if (mockManyCards.on) return mockBulk.map((c) => ({ ...c }));
+      if (mockUniform.on) return [{ ...mockCard }, { ...mockCard, id: 'r9' }];
+      return [{ ...mockCard }, { ...mockCardIcu }, { ...mockCardTip }];
+    },
     // A promise that never settles is what "still in flight" actually is. Returning
     // undefined or rejecting would test a different state.
     speakSummary: () => (mockPending.on ? new Promise(() => {}) : Promise.resolve(mockSpeak)),
@@ -414,4 +431,37 @@ test('the press cannot escape the tab box', async () => {
     .findByProps({ testID: 'lab-sections' })
     .findAll((n) => String(n.type) === 'View' && flat(n.props?.style).overflow === 'hidden', { deep: true });
   expect(cells.length).toBe(3);
+});
+
+test('the card list is virtualized — a window of cards is mounted, not the pile', async () => {
+  // Fifty due cards is an ordinary week of practice. Mounting all of them cost 5,431
+  // host nodes, and the "복습 등급이 뭔가요?" disclosure animates a HEIGHT — a layout
+  // property the native driver cannot touch — so every frame of that animation re-laid
+  // out the whole scroll content. That was the lag this tab was reported for.
+  // Memoizing would not have helped: the work is layout, not render.
+  mockManyCards.on = true;
+  try {
+    const tree = await mount();
+    const drawn = texts(tree.root).filter((x) => x.startsWith('bulk sentence ')).length;
+    expect(drawn).toBeGreaterThan(0); // the list is not empty
+    // Far short of 50. The exact window depends on FlatList's batching, which is why
+    // this is a bound rather than an equality.
+    expect(drawn).toBeLessThan(20);
+  } finally {
+    mockManyCards.on = false;
+  }
+});
+
+test('the disclosure toggle does not re-lay-out the whole pile', async () => {
+  // The same claim from the other side: with 50 cards loaded, the number of mounted
+  // host nodes stays in the hundreds. A ScrollView + map put it above five thousand,
+  // and every frame of the height animation walked all of them.
+  mockManyCards.on = true;
+  try {
+    const tree = await mount();
+    const hosts = tree.root.findAll((n) => typeof n.type === 'string', { deep: true }).length;
+    expect(hosts).toBeLessThan(1500);
+  } finally {
+    mockManyCards.on = false;
+  }
 });

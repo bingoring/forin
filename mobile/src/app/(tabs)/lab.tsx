@@ -5,7 +5,7 @@
 // advances the spaced-repetition schedule; graded cards leave today's queue.
 // A speaker button reads the corrected line (expo-speech). 1:1 in spirit with v17 ScreenReviewLab.
 import { useCallback, useMemo, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
@@ -210,169 +210,147 @@ export default function Lab() {
 
   const mastered = cards.filter((c) => c.masteryPips >= 3).length;
 
+  // The notes list is VIRTUALIZED, and that is a performance fix, not a style choice.
+  //
+  // Fifty due cards is an ordinary week of practice, and the screen mounted all of them:
+  // 5,431 host nodes, because each card carries a Shadowed frame, a Collapsible (whose
+  // children are always mounted so their height can be measured), four PixelButtons and
+  // several FIcons. Opening the "복습 등급이 뭔가요?" disclosure then animates a HEIGHT,
+  // which the native driver cannot touch — so every frame of that animation re-laid out
+  // the entire scroll content. That is the lag, and memoizing does not touch it: the
+  // work is layout, not render.
+  //
+  // A FlatList mounts a window of rows instead. The header — title, tabs, hero, grade
+  // guide, mini stats, filter chips — rides along as ListHeaderComponent so it still
+  // scrolls with the list rather than becoming a fixed bar the design never asked for.
+  const title = <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>리뷰랩 · 오답노트</Text>;
+  const tabs = (
+    <SectionTabs
+      section={section}
+      onSelect={setSection}
+      pressed={pressedTab}
+      onPressedChange={setPressedTab}
+      cardCount={cards.length}
+      speak={speak}
+      models={models}
+    />
+  );
+
   return (
     <View style={{ flex: 1, backgroundColor: colors.cream }}>
-      <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>리뷰랩 · 오답노트</Text>
-
-        {/* 섹션 탭 — 교정 노트 / 말하기 / 모범답안. One box with 2.5 dividers, not
-            three buttons: the row IS one control, and a gap between the thirds
-            reads as three unrelated cards.
-
-            Each third presses like a PixelButton, by the same mechanic: the face
-            translates by the press offset so a hard shadow shows where it left. The
-            difference is that the shadow lives INSIDE the cell, behind the face, and
-            the cell clips — the row already sits on its own shadow, and a per-tab one
-            poking past that outer border would read as a broken box. Dropping the whole
-            row instead was the other option and it is worse: tapping one third would
-            move all three, which says the row is one button when it is three. */}
-        <Shadowed offset={3}>
-          <View testID="lab-sections" style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
-            {SECTIONS.map((sec, i) => {
-              const active = section === sec.id;
-              const pressed = pressedTab === sec.id;
-              const dx = pressed ? TAB_PRESS_OFFSET : 0;
-              return (
-                <View
-                  key={sec.id}
-                  style={{
-                    flex: 1,
-                    borderLeftWidth: i ? 2.5 : 0,
-                    borderLeftColor: C,
-                    // What keeps the press inside the box.
-                    overflow: 'hidden',
-                  }}
-                >
-                  {/* The face drops onto this. Ink at low alpha rather than a new
-                      `lilacShadow` token: it has to sit under BOTH an active (lilac)
-                      and an inactive (white) face, and a tinted shadow only works
-                      under one of them. */}
-                  <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: C + '33' }} />
-                  <Pressable
-                    onPressIn={() => { setPressedTab(sec.id); playSfx('tap'); }}
-                    onPressOut={() => setPressedTab(null)}
-                    onPress={() => setSection(sec.id)}
-                    style={{
-                      backgroundColor: active ? colors.lilac : '#fff',
-                      paddingTop: 9,
-                      paddingBottom: 7,
-                      alignItems: 'center',
-                      gap: 3,
-                      transform: [{ translateX: dx }, { translateY: dx }],
-                    }}
-                  >
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                      <FIcon name={sec.icon} size={13} />
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
-                    </View>
-                    {/* The count, or an ellipsis while it is still unknown — a 0 that
-                        means "not loaded yet" is the one number this row must not show. */}
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
-                      {sectionCount(sec.id, cards.length, speak, models)}
+      {section === 'notes' ? (
+        <FlatList
+          data={shown}
+          keyExtractor={(c) => c.id}
+          ListHeaderComponent={
+            <View style={{ gap: space.md }}>
+              {title}
+              {tabs}
+              {/* hero */}
+              <Shadowed offset={4}>
+                <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14 }}>
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 복습</Text>
+                  {cards.length > 0 ? (
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>
+                      <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
                     </Text>
-                  </Pressable>
-                </View>
-              );
-            })}
-          </View>
-        </Shadowed>
-
-        {section === 'notes' && (
-          <>
-          {/* hero */}
-          <Shadowed offset={4}>
-            <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 복습</Text>
-              {cards.length > 0 ? (
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>
-                  <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
-                </Text>
-              ) : (
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
-              )}
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
-                AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
-              </Text>
-              {cards.length > 0 && (
-                <View style={{ marginTop: 12 }}>
-                  <PixelButton icon="play" label={t('lab.startReview', { n: cards.length })} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
-                </View>
-              )}
-              <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
-                <FIcon name="doc" size={26} />
-              </View>
-            </View>
-          </Shadowed>
-
-          {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
-          <Shadowed offset={3}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
-              <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
-                <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(12), color: C }}>복습 등급이 뭔가요?</Text>
-                <DisclosureChevron open={guideOpen} color={colors.textSoft} size={14} sw={1.8} />
-              </Pressable>
-              <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 2 : 0, borderTopColor: C }}>
-                <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
-                    카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
+                  ) : (
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
+                  )}
+                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
+                    AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
                   </Text>
-                  {GRADES.map(({ g, labelKey, bg, guideKey }) => (
-                    <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
-                      <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t(labelKey)}</Text>
-                      </View>
-                      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{t(guideKey)}</Text>
+                  {cards.length > 0 && (
+                    <View style={{ marginTop: 12 }}>
+                      <PixelButton icon="play" label={t('lab.startReview', { n: cards.length })} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
                     </View>
-                  ))}
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
-                    {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
-                  </Text>
+                  )}
+                  <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
+                    <FIcon name="doc" size={26} />
+                  </View>
                 </View>
-              </Collapsible>
-            </View>
-          </Shadowed>
+              </Shadowed>
 
-          {/* mini stats */}
-          <View style={{ flexDirection: 'row', gap: 8 }}>
-            <MiniStat label={t('lab.savedCards')} value={cards.length} color={colors.mint} />
-            <MiniStat label={t('lab.mastered')} value={mastered} color={colors.yellow} />
-            <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
-          </View>
-
-          {/* category filter */}
-          {cats.length > 1 && (
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
-              {cats.map((c) => {
-                const active = filter === c.id;
-                const catColor = c.tone;
-                return (
-                  <Pressable key={c.id} onPress={() => setFilter(c.id)}>
-                    <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{c.label}</Text>
-                        <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{c.count}</Text>
-                        </View>
-                      </View>
-                    </Shadowed>
+              {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
+              <Shadowed offset={3}>
+                <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
+                  <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
+                    <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(12), color: C }}>복습 등급이 뭔가요?</Text>
+                    <DisclosureChevron open={guideOpen} color={colors.textSoft} size={14} sw={1.8} />
                   </Pressable>
-                );
-              })}
-            </ScrollView>
-          )}
+                  <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 2 : 0, borderTopColor: C }}>
+                    <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8 }}>
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
+                        카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
+                      </Text>
+                      {GRADES.map(({ g, labelKey, bg, guideKey }) => (
+                        <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+                          <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
+                            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t(labelKey)}</Text>
+                          </View>
+                          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{t(guideKey)}</Text>
+                        </View>
+                      ))}
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
+                        {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
+                      </Text>
+                    </View>
+                  </Collapsible>
+                </View>
+              </Shadowed>
 
-          {/* cards */}
-          {shown.length === 0 ? (
+              {/* mini stats */}
+              <View style={{ flexDirection: 'row', gap: 8 }}>
+                <MiniStat label={t('lab.savedCards')} value={cards.length} color={colors.mint} />
+                <MiniStat label={t('lab.mastered')} value={mastered} color={colors.yellow} />
+                <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
+              </View>
+
+              {/* category filter */}
+              {cats.length > 1 && (
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
+                  {cats.map((c) => {
+                    const active = filter === c.id;
+                    const catColor = c.tone;
+                    return (
+                      <Pressable key={c.id} onPress={() => setFilter(c.id)}>
+                        <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
+                            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{c.label}</Text>
+                            <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
+                              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{c.count}</Text>
+                            </View>
+                          </View>
+                        </Shadowed>
+                      </Pressable>
+                    );
+                  })}
+                </ScrollView>
+              )}
+            </View>
+          }
+          // The old ScrollView spaced everything with one `gap`. A FlatList's rows are
+          // separate children, so the two gaps it used to cover are set explicitly.
+          ListHeaderComponentStyle={{ marginBottom: space.md }}
+          ItemSeparatorComponent={() => <View style={{ height: space.md }} />}
+          renderItem={({ item }) => <PhraseCard card={item} onGrade={grade} />}
+          ListEmptyComponent={
             <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
               <PixelIcon name="note" color={colors.textFaint} size={40} sw={1.5} />
               <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
             </View>
-          ) : (
-            shown.map((c) => <PhraseCard key={c.id} card={c} onGrade={grade} />)
-          )}
-          </>
-        )}
-
+          }
+          contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40 }}
+          // A card is tall — four grade buttons and a note — so a small window covers
+          // the screen with room to spare and the first paint stays cheap.
+          initialNumToRender={3}
+          maxToRenderPerBatch={3}
+          windowSize={5}
+        />
+      ) : (
+        <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
+          {title}
+          {tabs}
         {section === 'speak' && (
           <>
             {speakFailed && <BlockUnavailable titleKey="speak.blockTitle" />}
@@ -398,7 +376,8 @@ export default function Lab() {
             )}
           </>
         )}
-      </ScrollView>
+        </ScrollView>
+      )}
 
       {/* grade confirmation — so cards don't just silently disappear from the list */}
       {toast && (
@@ -417,6 +396,85 @@ export default function Lab() {
         </View>
       )}
     </View>
+  );
+}
+
+// 섹션 탭 — 교정 노트 / 말하기 / 모범답안. One box with 2.5 dividers, not
+// three buttons: the row IS one control, and a gap between the thirds
+// reads as three unrelated cards.
+//
+// Each third presses like a PixelButton, by the same mechanic: the face
+// translates by the press offset so a hard shadow shows where it left. The
+// difference is that the shadow lives INSIDE the cell, behind the face, and
+// the cell clips — the row already sits on its own shadow, and a per-tab one
+// poking past that outer border would read as a broken box. Dropping the whole
+// row instead was the other option and it is worse: tapping one third would
+// move all three, which says the row is one button when it is three.
+//
+/** The three section tabs. A component because both branches of the screen draw it —
+ *  the notes list has it inside ListHeaderComponent, the other two inside a ScrollView —
+ *  and a second copy of this JSX is a second thing to keep in step. */
+function SectionTabs({ section, onSelect, pressed, onPressedChange, cardCount, speak, models }: {
+  section: Section;
+  onSelect: (s: Section) => void;
+  pressed: Section | null;
+  onPressedChange: (s: Section | null) => void;
+  cardCount: number;
+  speak: SpeakSummary | null;
+  models: ModelAnswerSummary | null;
+}) {
+  const t = useT();
+  return (
+    <Shadowed offset={3}>
+      <View testID="lab-sections" style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
+        {SECTIONS.map((sec, i) => {
+          const active = section === sec.id;
+          const isDown = pressed === sec.id;
+          const dx = isDown ? TAB_PRESS_OFFSET : 0;
+          return (
+            <View
+              key={sec.id}
+              style={{
+                flex: 1,
+                borderLeftWidth: i ? 2.5 : 0,
+                borderLeftColor: C,
+                // What keeps the press inside the box.
+                overflow: 'hidden',
+              }}
+            >
+              {/* The face drops onto this. Ink at low alpha rather than a new
+                  `lilacShadow` token: it has to sit under BOTH an active (lilac)
+                  and an inactive (white) face, and a tinted shadow only works
+                  under one of them. */}
+              <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: C + '33' }} />
+              <Pressable
+                onPressIn={() => { onPressedChange(sec.id); playSfx('tap'); }}
+                onPressOut={() => onPressedChange(null)}
+                onPress={() => onSelect(sec.id)}
+                style={{
+                  backgroundColor: active ? colors.lilac : '#fff',
+                  paddingTop: 9,
+                  paddingBottom: 7,
+                  alignItems: 'center',
+                  gap: 3,
+                  transform: [{ translateX: dx }, { translateY: dx }],
+                }}
+              >
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                  <FIcon name={sec.icon} size={13} />
+                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
+                </View>
+                {/* The count, or an ellipsis while it is still unknown — a 0 that
+                    means "not loaded yet" is the one number this row must not show. */}
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
+                  {sectionCount(sec.id, cardCount, speak, models)}
+                </Text>
+              </Pressable>
+            </View>
+          );
+        })}
+      </View>
+    </Shadowed>
   );
 }
 
