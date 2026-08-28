@@ -325,6 +325,11 @@ components:
         destination:
           description: e.g. "us"
           type: string
+        displayName:
+          description: |-
+            DisplayName is what other people see. "" means the learner has not chosen one,
+            and callers fall back to a short form of the user id — see ShortID.
+          type: string
         equippedTitle:
           description: equipped career title id (may be empty)
           type: string
@@ -505,6 +510,11 @@ components:
       properties:
         discarded:
           type: boolean
+      type: object
+    internal_adapters_http.displayNameReq:
+      properties:
+        displayName:
+          type: string
       type: object
     internal_adapters_http.economyConfigResp:
       properties:
@@ -1345,6 +1355,29 @@ paths:
       summary: Rewarded-ad top-up of today's daily pool (+N, up to a daily cap)
       tags:
       - content
+  /me/display-name:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.displayNameReq'
+              description: name, or \
+              summary: body
+        description: name, or \
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.Profile'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Set the learner's display name
+      tags:
+      - user
   /me/home:
     get:
       responses:

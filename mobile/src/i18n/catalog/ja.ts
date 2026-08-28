@@ -1,6 +1,13 @@
 // 日本語. Keys absent here fall back to Korean and count as untranslated.
 export const ja: Record<string, string> = {
   'common.cancel': 'キャンセル',
+  'common.save': '保存',
+  'profile.nameSheetTitle': '名前を変更',
+  'profile.nameSheetWhy': '同僚リストや応援で他の人に表示される名前です。設定しない場合はIDの先頭6文字で表示されます。',
+  'profile.namePlaceholder': '名前を決めてください',
+  'profile.nameUnset': '名前なし',
+  'profile.nameClearHint': '空欄で保存すると名前が削除され、再びIDで表示されます。',
+  'profile.nameSaveFailed': '保存できませんでした。名前が長すぎるか、表示できない文字が含まれている可能性があります。',
   'common.done': '完了',
   'common.close': '閉じる',
   'common.retry': 'もう一度',

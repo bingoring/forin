@@ -1054,6 +1054,47 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/display-name": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Set the learner's display name */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description name, or \ */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.displayNameReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
+                    };
+                };
+            };
+        };
+        trace?: never;
+    };
     "/me/home": {
         parameters: {
             query?: never;
@@ -2181,6 +2222,11 @@ export interface components {
         "github_com_bingoring_forin_server_internal_domain_user.Profile": {
             /** @description e.g. "us" */
             destination?: string;
+            /**
+             * @description DisplayName is what other people see. "" means the learner has not chosen one,
+             *     and callers fall back to a short form of the user id — see ShortID.
+             */
+            displayName?: string;
             /** @description equipped career title id (may be empty) */
             equippedTitle?: string;
             /** @description MVP: "nurse" */
@@ -2282,6 +2328,9 @@ export interface components {
         };
         "internal_adapters_http.discardResp": {
             discarded?: boolean;
+        };
+        "internal_adapters_http.displayNameReq": {
+            displayName?: string;
         };
         "internal_adapters_http.economyConfigResp": {
             /** @description weight multiplier for already-cleared */

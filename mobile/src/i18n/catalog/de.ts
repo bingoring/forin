@@ -1,6 +1,13 @@
 // Deutsch. Keys absent here fall back to Korean and count as untranslated.
 export const de: Record<string, string> = {
   'common.cancel': 'Abbrechen',
+  'common.save': 'Speichern',
+  'profile.nameSheetTitle': 'Namen ändern',
+  'profile.nameSheetWhy': 'Diesen Namen sehen andere in Kolleg:innenlisten und Anfeuerungen. Ohne Namen erscheinen die ersten sechs Zeichen deiner ID.',
+  'profile.namePlaceholder': 'Namen wählen',
+  'profile.nameUnset': 'Noch kein Name',
+  'profile.nameClearHint': 'Leer gespeichert löscht den Namen und zeigt wieder die ID.',
+  'profile.nameSaveFailed': 'Konnte nicht gespeichert werden. Der Name ist zu lang oder enthält nicht darstellbare Zeichen.',
   'common.done': 'Fertig',
   'common.close': 'Schließen',
   'common.retry': 'Erneut versuchen',

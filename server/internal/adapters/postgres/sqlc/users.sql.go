@@ -41,8 +41,42 @@ func (q *Queries) CreateUser(ctx context.Context, status string) (User, error) {
 	return i, err
 }
 
+const displayNames = `-- name: DisplayNames :many
+SELECT user_id, display_name FROM profiles
+WHERE user_id = ANY ($1::uuid[]) AND display_name <> ''
+`
+
+type DisplayNamesRow struct {
+	UserID      string `json:"user_id"`
+	DisplayName string `json:"display_name"`
+}
+
+// Names for a set of users, in ONE query. Colleague lists render many people at
+// once, and a per-row lookup is how a list of ten becomes ten round trips. Rows
+// with no name set are omitted rather than returned blank — the caller already
+// has a fallback for "not set", and an empty string would make it choose twice.
+func (q *Queries) DisplayNames(ctx context.Context, userIds []string) ([]DisplayNamesRow, error) {
+	rows, err := q.db.Query(ctx, displayNames, userIds)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []DisplayNamesRow
+	for rows.Next() {
+		var i DisplayNamesRow
+		if err := rows.Scan(&i.UserID, &i.DisplayName); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const getProfile = `-- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang FROM profiles WHERE user_id = $1
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name FROM profiles WHERE user_id = $1
 `
 
 type GetProfileRow struct {
@@ -55,6 +89,7 @@ type GetProfileRow struct {
 	Onboarded     bool   `json:"onboarded"`
 	EquippedTitle string `json:"equipped_title"`
 	UiLang        string `json:"ui_lang"`
+	DisplayName   string `json:"display_name"`
 }
 
 func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow, error) {
@@ -70,6 +105,7 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 		&i.Onboarded,
 		&i.EquippedTitle,
 		&i.UiLang,
+		&i.DisplayName,
 	)
 	return i, err
 }
@@ -101,6 +137,24 @@ func (q *Queries) GetUserByIdentity(ctx context.Context, arg GetUserByIdentityPa
 	var i User
 	err := row.Scan(&i.ID, &i.Status, &i.CreatedAt)
 	return i, err
+}
+
+const setDisplayName = `-- name: SetDisplayName :exec
+INSERT INTO profiles (user_id, display_name, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET display_name = $2, updated_at = now()
+`
+
+type SetDisplayNameParams struct {
+	UserID      string `json:"user_id"`
+	DisplayName string `json:"display_name"`
+}
+
+// Single-field patch, like SetEquippedTitle and SetUILang. Never UpsertProfile:
+// that one fills omitted columns with onboarding defaults, so saving a name
+// through it would reset job and languages.
+func (q *Queries) SetDisplayName(ctx context.Context, arg SetDisplayNameParams) error {
+	_, err := q.db.Exec(ctx, setDisplayName, arg.UserID, arg.DisplayName)
+	return err
 }
 
 const setEquippedTitle = `-- name: SetEquippedTitle :exec

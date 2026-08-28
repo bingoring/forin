@@ -11,6 +11,7 @@ import (
 	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/home"
+	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -233,9 +234,13 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 		if len(out) == 3 {
 			break
 		}
-		c := homeColleague{ID: l.OtherID, Relation: l.Relation}
+		// The fallback is set FIRST, so a failed or missing profile leaves a name the
+		// row can draw rather than an empty string. It used to be assigned inside the
+		// `prof != nil` branch, which meant a colleague whose profile did not load was
+		// listed with no name at all.
+		c := homeColleague{ID: l.OtherID, Relation: l.Relation, Name: user.ShortID(l.OtherID)}
 		if prof, err := h.users.GetProfile(ctx, l.OtherID); err == nil && prof != nil {
-			c.Name = displayName(prof.UserID)
+			c.Name = user.NameOr(prof.DisplayName, l.OtherID)
 		}
 		if prefs, err := h.colleague.Prefs(ctx, l.OtherID); err == nil && prefs.ShareStatus {
 			if p, ok := presences[l.OtherID]; ok {
@@ -256,13 +261,6 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 
 // displayName is a placeholder until profiles carry a nickname: the UI needs
 // something stable and non-identifying, so we use a short id prefix.
-func displayName(userID string) string {
-	if len(userID) >= 6 {
-		return strings.ToUpper(userID[:6])
-	}
-	return userID
-}
-
 // currentStep finds the curriculum to continue and its active step. Returns
 // ("", "", nil) when everything is finished — the caller then shows the rest card
 // instead of inventing a task.

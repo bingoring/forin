@@ -16,7 +16,7 @@ UPDATE auth_identities SET email = $3 WHERE provider = $1 AND subject_id = $2;
 SELECT id, status, created_at FROM users WHERE id = $1;
 
 -- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang FROM profiles WHERE user_id = $1;
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name FROM profiles WHERE user_id = $1;
 
 -- name: SetEquippedTitle :exec
 INSERT INTO profiles (user_id, equipped_title, updated_at) VALUES ($1, $2, now())
@@ -35,3 +35,18 @@ ON CONFLICT (user_id) DO UPDATE SET
 -- job and languages.
 INSERT INTO profiles (user_id, ui_lang, updated_at) VALUES ($1, $2, now())
 ON CONFLICT (user_id) DO UPDATE SET ui_lang = $2, updated_at = now();
+
+-- name: SetDisplayName :exec
+-- Single-field patch, like SetEquippedTitle and SetUILang. Never UpsertProfile:
+-- that one fills omitted columns with onboarding defaults, so saving a name
+-- through it would reset job and languages.
+INSERT INTO profiles (user_id, display_name, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET display_name = $2, updated_at = now();
+
+-- name: DisplayNames :many
+-- Names for a set of users, in ONE query. Colleague lists render many people at
+-- once, and a per-row lookup is how a list of ten becomes ten round trips. Rows
+-- with no name set are omitted rather than returned blank — the caller already
+-- has a fallback for "not set", and an empty string would make it choose twice.
+SELECT user_id, display_name FROM profiles
+WHERE user_id = ANY (@user_ids::uuid[]) AND display_name <> '';

@@ -461,6 +461,12 @@ type UserRepo interface {
 	UpdateProfile(ctx context.Context, p user.Profile) error
 	// SetEquippedTitle persists the user's equipped career title.
 	SetEquippedTitle(ctx context.Context, userID, titleID string) error
+	// SetDisplayName persists the learner's chosen name ("" = cleared, fall back to
+	// user.ShortID).
+	SetDisplayName(ctx context.Context, userID, name string) error
+	// DisplayNames resolves many users' names at once. Users with no name set are
+	// ABSENT from the returned map, not present with "".
+	DisplayNames(ctx context.Context, userIDs []string) (map[string]string, error)
 	// SetUILang persists the app's display language ("" = follow NativeLang). Kept
 	// apart from UpdateProfile, which is a full onboarding upsert.
 	SetUILang(ctx context.Context, userID, lang string) error

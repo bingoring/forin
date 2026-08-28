@@ -119,6 +119,47 @@ type uiLangReq struct {
 	UILang string `json:"uiLang"`
 }
 
+type displayNameReq struct {
+	DisplayName string `json:"displayName"`
+}
+
+// @Summary Set the learner's display name
+// @Tags user
+// @Security Bearer
+// @Param body body displayNameReq true "name, or \"\" to clear it"
+// @Success 200 {object} user.Profile
+// @Router /me/display-name [patch]
+func (h *meHandler) setDisplayName(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	var req displayNameReq
+	if err := httpx.DecodeJSON(r, &req); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid body")
+		return
+	}
+	// Normalized SERVER-side, not trusted from the client: the same name has to look
+	// the same in a colleague's list as in the owner's profile, and the client that
+	// trimmed it is not the client that draws it.
+	name, ok := user.NormalizeDisplayName(req.DisplayName)
+	if !ok {
+		httpx.Error(w, http.StatusBadRequest, "name is too long or contains characters that cannot be shown")
+		return
+	}
+	if err := h.users.SetDisplayName(r.Context(), uid, name); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not save name")
+		return
+	}
+	saved, err := h.users.GetProfile(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, saved)
+}
+
 // @Summary Set the app's display language
 // @Tags user
 // @Security Bearer

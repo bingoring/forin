@@ -732,6 +732,18 @@ export const api = {
     await http.patch('/me/ui-lang', { uiLang });
   },
 
+  /** Save the learner's own display name. `''` clears it, and the server then falls
+   *  back to a short form of the user id — the same fallback other people's rows use.
+   *
+   *  Returns the SERVER's version of the name, not the submitted one: the server
+   *  trims and collapses whitespace, so echoing what was typed would show a
+   *  different name here than the one a colleague sees. Throws on a rejected name
+   *  (too long, or characters that cannot be drawn). */
+  async setDisplayName(displayName: string): Promise<string> {
+    const { data } = await http.patch('/me/display-name', { displayName });
+    return (data as { displayName?: string } | null)?.displayName ?? '';
+  },
+
   /**
    * Activity calendar for one month: which days had sessions, which band they fell in,
    * and what was studied on each.

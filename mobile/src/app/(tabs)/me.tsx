@@ -22,6 +22,7 @@ import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale,
 import { BottomSheet } from '@/components/BottomSheet';
 import { useAvatar } from '@/hooks/useAvatar';
 import { AvatarSheet } from '@/components/AvatarSheet';
+import { NameSheet } from '@/components/me/NameSheet';
 import { FaceScanSheet } from '@/components/FaceScanSheet';
 
 const C = colors.ink;
@@ -46,6 +47,10 @@ export default function Me() {
   // and this week's activity, and those live nowhere else on this screen.
   const [stats, setStats] = useState<GrowthStats | null>(null);
   const [equipped, setEquipped] = useState<string>('');
+  // '' means the learner has not chosen one; the row then shows the placeholder and
+  // other people see user.ShortID.
+  const [displayName, setDisplayName] = useState<string>('');
+  const [nameOpen, setNameOpen] = useState(false);
   const [foundIds, setFoundIds] = useState<Set<string>>(new Set());
   const [toast, setToast] = useState<{ name: string; reward: string } | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -66,9 +71,10 @@ export default function Me() {
           ]);
           if (!alive) return;
           setProgress(p);
-          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string } } | null)?.profile;
+          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string; displayName?: string } } | null)?.profile;
           setEnLevel(prof?.targetLevel || '');
           setEquipped(prof?.equippedTitle || '');
+          setDisplayName(prof?.displayName || '');
           setTargetLang(prof?.targetLang || '');
           // 온보딩에서 고른 모국어를 UI 언어로 채택하되, 아래 설정을 한 번이라도
           // 만졌다면 그쪽이 이긴다(R2).
@@ -241,7 +247,29 @@ export default function Me() {
                 </Pressable>
               </Shadowed>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>RANK</Text>
+                {/* The name goes ABOVE the rank, and the handoff has no slot for it —
+                    there was no name in the product at all. Rank is what you are;
+                    this is who you are, and it is the thing a colleague list needs.
+                    The pencil is the only affordance, same as the portrait's. */}
+                <Pressable
+                  onPress={() => { playSfx('tap'); setNameOpen(true); }}
+                  hitSlop={6}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={{
+                      flexShrink: 1,
+                      fontFamily: fonts.heading,
+                      fontSize: fs(15),
+                      color: displayName ? C : colors.textFaint,
+                    }}
+                  >
+                    {displayName || t('profile.namePlaceholder')}
+                  </Text>
+                  <FIcon name="pen" size={12} />
+                </Pressable>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginTop: 4 }}>RANK</Text>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C }}>{career.label}</Text>
                 {!!equippedTitle && (
                   <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
@@ -570,6 +598,12 @@ export default function Me() {
       )}
 
       <InfoSheet data={sheet} onClose={() => setSheet(null)} />
+      <NameSheet
+        visible={nameOpen}
+        current={displayName}
+        onClose={() => setNameOpen(false)}
+        onSaved={setDisplayName}
+      />
       <AvatarSheet
         visible={avatarOpen}
         onClose={() => setAvatarOpen(false)}

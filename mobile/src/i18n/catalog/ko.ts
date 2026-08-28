@@ -6,6 +6,13 @@
 export const ko: Record<string, string> = {
   // ── common ───────────────────────────────────────────────────────────────
   'common.cancel': '취소',
+  'common.save': '저장',
+  'profile.nameSheetTitle': '이름 바꾸기',
+  'profile.nameSheetWhy': '동료 목록과 응원에서 다른 사람에게 보이는 이름이에요. 정하지 않으면 아이디 앞 6자로 표시됩니다.',
+  'profile.namePlaceholder': '이름을 정해주세요',
+  'profile.nameUnset': '이름 없음',
+  'profile.nameClearHint': '비워서 저장하면 이름이 지워지고 다시 아이디로 표시돼요.',
+  'profile.nameSaveFailed': '저장하지 못했어요. 이름이 너무 길거나 표시할 수 없는 문자가 있을 수 있어요.',
   'common.done': '완료',
   'common.close': '닫기',
   'common.retry': '다시 시도',

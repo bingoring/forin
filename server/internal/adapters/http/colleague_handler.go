@@ -8,6 +8,7 @@ import (
 	"github.com/jackc/pgx/v5"
 
 	"github.com/bingoring/forin/server/internal/domain/colleague"
+	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -59,8 +60,9 @@ func (h *colleagueHandler) lookup(w http.ResponseWriter, r *http.Request) {
 	}
 	// Preview carries the minimum needed to recognise a person — never their
 	// activity, which is only shared once the link exists.
-	out := map[string]any{"id": rec.UserID, "name": displayName(rec.UserID)}
+	out := map[string]any{"id": rec.UserID, "name": user.ShortID(rec.UserID)}
 	if prof, err := h.users.GetProfile(r.Context(), rec.UserID); err == nil && prof != nil {
+		out["name"] = user.NameOr(prof.DisplayName, rec.UserID)
 		out["targetLevel"] = prof.TargetLevel
 		out["destination"] = prof.Destination
 	}
@@ -124,9 +126,10 @@ func (h *colleagueHandler) list(w http.ResponseWriter, r *http.Request) {
 	out := make([]map[string]any, 0, len(links))
 	for _, l := range links {
 		row := map[string]any{
-			"id": l.OtherID, "relation": l.Relation, "name": displayName(l.OtherID),
+			"id": l.OtherID, "relation": l.Relation, "name": user.ShortID(l.OtherID),
 		}
 		if prof, err := h.users.GetProfile(ctx, l.OtherID); err == nil && prof != nil {
+			row["name"] = user.NameOr(prof.DisplayName, l.OtherID)
 			row["targetLevel"] = prof.TargetLevel
 			row["destination"] = prof.Destination
 		}
@@ -175,8 +178,9 @@ func (h *colleagueHandler) detail(w http.ResponseWriter, r *http.Request) {
 	// type declares it as always present and its label helper indexes into the string, so
 	// omitting it crashed the colleague screen — the response has to carry what the
 	// contract promises.
-	out := map[string]any{"id": other, "name": displayName(other), "relation": rel}
+	out := map[string]any{"id": other, "name": user.ShortID(other), "relation": rel}
 	if prof, err := h.users.GetProfile(ctx, other); err == nil && prof != nil {
+		out["name"] = user.NameOr(prof.DisplayName, other)
 		out["targetLevel"] = prof.TargetLevel
 		out["destination"] = prof.Destination
 	}
@@ -268,10 +272,18 @@ func (h *colleagueHandler) requests(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusInternalServerError, "could not load requests")
 		return
 	}
+	// One query for every requester's name, not one per row: an inbox draws several
+	// people at once.
+	ids := make([]string, 0, len(reqs))
+	for _, q := range reqs {
+		ids = append(ids, q.FromUserID)
+	}
+	names, _ := h.users.DisplayNames(r.Context(), ids)
+
 	out := make([]map[string]any, 0, len(reqs))
 	for _, q := range reqs {
 		out = append(out, map[string]any{
-			"id": q.ID, "from": q.FromUserID, "name": displayName(q.FromUserID),
+			"id": q.ID, "from": q.FromUserID, "name": user.NameOr(names[q.FromUserID], q.FromUserID),
 			"relation": q.Relation, "createdAt": q.CreatedAt,
 		})
 	}

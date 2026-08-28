@@ -1,0 +1,11 @@
+-- A name the learner chooses for themselves.
+--
+-- There was none: colleague lists and cheer feeds called people by the first six
+-- characters of their UUID (see displayName in home_handler.go), so a linked
+-- colleague read as "A3F2B1" and nobody could tell who anybody was.
+--
+-- Lives on profiles rather than users: it is user-facing profile data like the
+-- equipped title and the UI language, and it is edited through the same PATCH
+-- family. Empty string = not set, and the code falls back to the short id — a
+-- NULL would mean the same thing with an extra case to handle everywhere.
+ALTER TABLE profiles ADD COLUMN IF NOT EXISTS display_name text NOT NULL DEFAULT '';

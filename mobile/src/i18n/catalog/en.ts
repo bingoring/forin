@@ -2,6 +2,13 @@
 // completeness figure the settings screen shows.
 export const en: Record<string, string> = {
   'common.cancel': 'Cancel',
+  'common.save': 'Save',
+  'profile.nameSheetTitle': 'Change your name',
+  'profile.nameSheetWhy': 'This is the name other people see in colleague lists and cheers. Without one, you show up as the first six characters of your id.',
+  'profile.namePlaceholder': 'Choose a name',
+  'profile.nameUnset': 'No name yet',
+  'profile.nameClearHint': 'Saving an empty field clears your name and shows your id again.',
+  'profile.nameSaveFailed': "Could not save. The name may be too long or contain characters that can't be shown.",
   'common.done': 'Done',
   'common.close': 'Close',
   'common.retry': 'Try again',

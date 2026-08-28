@@ -76,7 +76,7 @@ func (r *UserRepo) GetProfile(ctx context.Context, userID string) (*user.Profile
 	return &user.Profile{
 		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
 		Destination: p.Destination, TargetLevel: p.TargetLevel, Onboarded: p.Onboarded,
-		EquippedTitle: p.EquippedTitle, UILang: p.UiLang,
+		EquippedTitle: p.EquippedTitle, UILang: p.UiLang, DisplayName: p.DisplayName,
 	}, nil
 }
 
@@ -90,6 +90,29 @@ func (r *UserRepo) SetEquippedTitle(ctx context.Context, userID, titleID string)
 // reusing it to save one setting would silently reset job and languages.
 func (r *UserRepo) SetUILang(ctx context.Context, userID, lang string) error {
 	return r.q.SetUILang(ctx, sqlc.SetUILangParams{UserID: userID, UiLang: lang})
+}
+
+// SetDisplayName persists the learner's chosen name ("" clears it).
+func (r *UserRepo) SetDisplayName(ctx context.Context, userID, name string) error {
+	return r.q.SetDisplayName(ctx, sqlc.SetDisplayNameParams{UserID: userID, DisplayName: name})
+}
+
+// DisplayNames resolves many users' names in one query. Users with no name set are
+// absent from the map rather than present-and-empty, so a caller iterating the map
+// never has to re-check for "".
+func (r *UserRepo) DisplayNames(ctx context.Context, userIDs []string) (map[string]string, error) {
+	if len(userIDs) == 0 {
+		return map[string]string{}, nil
+	}
+	rows, err := r.q.DisplayNames(ctx, userIDs)
+	if err != nil {
+		return nil, err
+	}
+	out := make(map[string]string, len(rows))
+	for _, row := range rows {
+		out[row.UserID] = row.DisplayName
+	}
+	return out, nil
 }
 
 // UpdateProfile upserts the onboarding-derived profile and marks it onboarded.
