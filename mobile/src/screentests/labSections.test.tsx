@@ -104,6 +104,16 @@ jest.mock('@/api/client', () => ({
     // undefined or rejecting would test a different state.
     speakSummary: () => (mockPending.on ? new Promise(() => {}) : Promise.resolve(mockSpeak)),
     modelAnswerSummary: () => (mockPending.on ? new Promise(() => {}) : Promise.resolve(mockModels)),
+    // The 말하기 / 모범답안 tabs render the real lists now, so they read these.
+    speakSentences: async () => ({
+      sentences: [{ sentenceKey: 's1', referenceText: 'Please bear with me for a moment.', recognized: '', overall: 64, accuracy: 64, fluency: 64, completeness: 64, attempts: 2 }],
+      total: 128,
+      depts: ['ER'],
+    }),
+    modelAnswers: async () => ({
+      groups: [{ scenarioId: 'SCN-ER-00002', title: '흉통 환자 트리아지', corrections: 3, lastAt: '2026-08-01T00:00:00Z', cards: [] }],
+      total: 34,
+    }),
     gradeReview: async () => ({ intervalDays: 3 }),
   },
 }));
@@ -273,12 +283,15 @@ test('the card header names the kind, not that it is due', async () => {
   expect(out).toContain('ICU');
 });
 
-test('tapping 말하기 swaps the content for the speaking summary', async () => {
+test('tapping 말하기 lands on the LIST, not a summary of it', async () => {
   const tree = await mount();
   await act(async () => { tab(tree.root, '말하기').props.onPress(); });
   const out = texts(tree.root);
-  // The speaking block is up…
+  // A spoken sentence, straight away. It used to be a summary block whose "전체 ›" link
+  // was the only way to the list — one tap too many for the thing the tab is named after.
   expect(out.some((x) => x.includes('Please bear with me'))).toBe(true);
+  // The list's own controls come with it.
+  expect(out.some((x) => x === '약한 순' || x === '최신')).toBe(true);
   // …and the 교정 노트 content is gone rather than merely scrolled past.
   expect(out).not.toContain('오늘의 복습');
   expect(out.some((x) => x.includes('Can you tell me about your pain?'))).toBe(false);
@@ -287,6 +300,8 @@ test('tapping 말하기 swaps the content for the speaking summary', async () =>
 test('tapping 모범답안 swaps again, and 교정 노트 comes back', async () => {
   const tree = await mount();
   await act(async () => { tab(tree.root, '모범답안').props.onPress(); });
+  // Again the list itself: a scenario group, not a block linking to one.
+  expect(texts(tree.root).some((x) => x.includes('흉통 환자 트리아지'))).toBe(true);
   expect(texts(tree.root)).not.toContain('오늘의 복습');
   await act(async () => { tab(tree.root, '교정 노트').props.onPress(); });
   const back = texts(tree.root);
@@ -408,19 +423,31 @@ test('a tab presses like the app\'s buttons: the face drops, and it blips', asyn
   expect(face()).toEqual([{ translateX: 0 }, { translateY: 0 }]);
 });
 
+/** True when a tab's cap is sitting down on its shadow. */
+function isDown(root: ReactTestInstance, label: string): boolean {
+  const st = flat(tabFace(root, label).props.style) as { transform?: { translateX?: number }[] };
+  return (st.transform?.[0]?.translateX ?? 0) > 0;
+}
+
+test('the tab you are ON stays pressed in', async () => {
+  const tree = await mount();
+  // 교정 노트 is the section in view, and its cap is down without anyone touching it. A
+  // cap that springs back when the finger lifts says nothing happened.
+  expect(isDown(tree.root, '교정 노트')).toBe(true);
+  expect(isDown(tree.root, '말하기')).toBe(false);
+
+  await act(async () => { tab(tree.root, '말하기').props.onPress(); });
+  expect(isDown(tree.root, '말하기')).toBe(true);
+  expect(isDown(tree.root, '교정 노트')).toBe(false);
+});
+
 test('only the pressed third moves', async () => {
   const tree = await mount();
+  // 모범답안 is neither active nor pressed, so it is the one that must not move when a
+  // different tab is held. Dropping the whole row would say the row is one button.
   await act(async () => { tab(tree.root, '말하기').props.onPressIn(); });
-  const moved = (label: string) => {
-    const st = flat(tabFace(tree.root, label).props.style) as {
-      transform?: { translateX?: number }[];
-    };
-    return (st.transform?.[0]?.translateX ?? 0) > 0;
-  };
-  expect(moved('말하기')).toBe(true);
-  // Dropping the whole row would say the row is one button. It is three.
-  expect(moved('교정 노트')).toBe(false);
-  expect(moved('모범답안')).toBe(false);
+  expect(isDown(tree.root, '말하기')).toBe(true);
+  expect(isDown(tree.root, '모범답안')).toBe(false);
 });
 
 test('the whole cap moves — border and all — onto its own shadow', async () => {

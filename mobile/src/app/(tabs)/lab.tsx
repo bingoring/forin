@@ -12,8 +12,8 @@ import { PixelButton } from '@/components/PixelButton';
 import { api, type ModelAnswerSummary, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { FIcon, type FIconName } from '@/components/FIcon';
-import { SpeakSummaryBlock } from '@/components/speak/SpeakSummaryBlock';
-import { ModelAnswerBlock } from '@/components/model/ModelAnswerBlock';
+import { SpeakList } from '@/components/speak/SpeakList';
+import { ModelAnswerList } from '@/components/model/ModelAnswerList';
 import { faceOf } from '@/data/reviewCardFace';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { playSfx } from '@/lib/sfx';
@@ -351,36 +351,13 @@ export default function Lab() {
           maxToRenderPerBatch={3}
           windowSize={5}
         />
+      ) : section === 'speak' ? (
+        // The list itself, not a summary with a "전체 ›" link into it. The tab's own
+        // header (sort, department chips, count) and the lab's title + tabs ride at the
+        // top of the same scroll — see SpeakList's `embedded`.
+        <SpeakList embedded above={<View style={{ gap: space.md, marginBottom: space.md }}>{title}{tabs}</View>} />
       ) : (
-        <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
-          {title}
-          {tabs}
-        {section === 'speak' && (
-          <>
-            {speakFailed && <BlockUnavailable titleKey="speak.blockTitle" />}
-            {speak && (
-              <SpeakSummaryBlock
-                summary={speak}
-                onOpenAll={(sort: 'weak' | 'recent') => router.push(sort === 'weak' ? '/speak?sort=weak' : '/speak?sort=recent')}
-                onPractise={practiseSentence}
-              />
-            )}
-            {!speak && !speakFailed && <SectionLoading />}
-          </>
-        )}
-
-        {section === 'models' && (
-          <>
-            {models ? (
-              <ModelAnswerBlock summary={models} onOpenAll={() => router.push('/model-answers')} />
-            ) : modelsFailed ? (
-              <BlockUnavailable titleKey="model.blockTitle" />
-            ) : (
-              <SectionLoading />
-            )}
-          </>
-        )}
-        </ScrollView>
+        <ModelAnswerList embedded above={<View style={{ gap: space.md, marginBottom: space.md }}>{title}{tabs}</View>} />
       )}
 
       {/* grade confirmation — so cards don't just silently disappear from the list */}
@@ -437,7 +414,10 @@ function SectionTabs({ section, onSelect, pressed, onPressedChange, cardCount, s
       {SECTIONS.map((sec) => {
         const active = section === sec.id;
         const isDown = pressed === sec.id;
-        const dx = isDown ? TAB_PRESS_OFFSET : 0;
+        // The ACTIVE tab stays down. A cap that springs back the moment the finger
+        // lifts says "nothing happened"; the tab you are on is the one that is pressed
+        // in, and that is the whole point of a segmented control drawn as buttons.
+        const dx = isDown || active ? TAB_PRESS_OFFSET : 0;
         return (
           <View key={sec.id} style={{ flex: 1 }}>
             {/* The hard offset shadow the cap drops into. Sized by insets rather than

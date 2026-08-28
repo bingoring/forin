@@ -11,7 +11,7 @@ jest.mock('expo-audio', () => ({
 }));
 
 import { ModelAnswerCardRow } from './ModelAnswerCardRow';
-import { ModelAnswerBlock } from './ModelAnswerBlock';
+import { ModelAnswerGroupRow } from './ModelAnswerGroupRow';
 import type { ModelAnswerCard, ModelAnswerGroup } from '@/api/client';
 
 function draw(node: React.ReactElement): ReactTestInstance {
@@ -56,22 +56,15 @@ test('the 왜? box is absent when there is no note, not empty', () => {
   expect(texts(draw(<ModelAnswerCardRow card={card({ note: undefined })} />))).not.toContain('왜?');
 });
 
-// "+ 0개 더" is a row that promises more and delivers nothing.
-test('the more-row is omitted at zero', () => {
-  const shown = { total: 4, more: 0, groups: [group({ cards: [card()] })] };
-  expect(texts(draw(<ModelAnswerBlock summary={shown} onOpenAll={() => {}} />)).some((x) => x.includes('개 더'))).toBe(false);
-
-  const hidden = { total: 12, more: 8, groups: [group({ cards: [card()] })] };
-  expect(texts(draw(<ModelAnswerBlock summary={hidden} onOpenAll={() => {}} />))).toContain('+ 8개 더');
-});
-
-// A card whose scenario left the served content set still belongs to the player;
-// a blank row would look like a bug.
 test('a group with no title falls back to its scenario id', () => {
+  // Asserted against the ROW, which is what the list draws. It used to go through the
+  // summary block, and that block is gone: the 모범답안 tab renders the list itself now
+  // rather than a summary with a link into it.
   const out = texts(draw(
-    <ModelAnswerBlock
-      summary={{ total: 1, more: 0, groups: [group({ title: '', cards: [card()] })] }}
-      onOpenAll={() => {}}
+    <ModelAnswerGroupRow
+      group={group({ title: '', cards: [card()] })}
+      open
+      onToggle={() => {}}
     />
   ));
   expect(out).toContain('SCN-ER-00002');
@@ -88,7 +81,7 @@ test('a group with no title falls back to its scenario id', () => {
 // the handoff was protecting (the first row staying visible) is what a
 // content-sized header gives for free.
 test('the list header sizes to its content rather than a fixed web height', () => {
-  const src = readFileSync(join(__dirname, '..', '..', 'app', 'model-answers', 'index.tsx'), 'utf8');
+  const src = readFileSync(join(__dirname, 'ModelAnswerList.tsx'), 'utf8');
   // Comments stripped: a comment EXPLAINING that 186 does not port is not a 186.
   const code = src.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
   expect(code).not.toMatch(/\bHEADER_H\b/);
@@ -100,14 +93,3 @@ test('the list header sizes to its content rather than a fixed web height', () =
 // Both Review Lab blocks must be on the page BEFORE the player has used the
 // feature. Hiding them until there was data is why the tab did not look like the
 // handoff on a fresh account — the feature was invisible until after first use.
-test('the model-answer block still renders with nothing in it', () => {
-  const out = texts(draw(
-    <ModelAnswerBlock summary={{ total: 0, more: 0, groups: [] }} onOpenAll={() => {}} />
-  ));
-  expect(out).toContain('시나리오 모범답안');
-  // It explains how to fill it rather than showing "완료한 시나리오 0개".
-  expect(out.some((x) => x.includes('완료한 시나리오'))).toBe(false);
-  expect(out.some((x) => x.includes('완료하면'))).toBe(true);
-  // And offers no entry into an empty list.
-  expect(out).not.toContain('전체');
-});

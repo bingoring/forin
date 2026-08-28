@@ -12,7 +12,6 @@ jest.mock('expo-audio', () => ({
 }));
 
 import { SessionSpeechReviewCard } from './SessionSpeechReviewCard';
-import { SpeakSummaryBlock } from './SpeakSummaryBlock';
 import type { SpokenSentence } from '@/api/client';
 
 /** Every string this tree renders, flattened — the assertions below only care
@@ -67,31 +66,10 @@ test('다시 연습 appears, and names the count, once something is actually wea
   expect(out).toContain('낮은 점수 1문장 다시 연습하기');
 });
 
-test('the summary block reports the total on its 전체 entry', () => {
-  const out = texts(draw(
-    <SpeakSummaryBlock
-      summary={{ total: 128, low: 10, mid: 40, high: 78, weakest: [row({ referenceText: 'worst', overall: 12 })] }}
-      onOpenAll={() => {}}
-      onPractise={() => {}}
-    />
-  ));
-  expect(out).toContain('전체 128');
-});
-
-// The handoff warns that a header taller than the offset the scroller starts at
-// paints over the first — highest-priority — row. The two must be one number.
-// The handoff pins the sticky header at `height: 186` and starts the scroller at the
-// same offset. That number is a workaround for a CSS content-box bug — a header with
-// padding growing past its declared height and painting over the first row — and RN
-// has no such bug. Carried over literally it spent a quarter of the screen on a
-// title, a segment and a chip row, and it could not shrink when the chip row was
-// absent or grow when it wrapped.
-//
-// So the rule is now the opposite one: the header must NOT be a fixed height. What
-// the handoff was protecting (the first row staying visible) is what a
-// content-sized header gives for free.
 test('the list header sizes to its content rather than a fixed web height', () => {
-  const src = readFileSync(join(__dirname, '..', '..', 'app', 'speak', 'index.tsx'), 'utf8');
+  // The implementation moved out of the route: the review-lab 말하기 tab renders the
+  // same list inline, so it lives in a component and the route is three lines.
+  const src = readFileSync(join(__dirname, 'SpeakList.tsx'), 'utf8');
   // Comments stripped: a comment EXPLAINING that 186 does not port is not a 186.
   const code = src.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
   expect(code).not.toMatch(/\bHEADER_H\b/);
@@ -100,12 +78,15 @@ test('the list header sizes to its content rather than a fixed web height', () =
   expect(code).toMatch(/paddingTop: 52/);
 });
 
-test('the speaking block still renders with nothing in it', () => {
-  const out = texts(draw(
-    <SpeakSummaryBlock summary={{ total: 0, low: 0, mid: 0, high: 0, weakest: [] }} onOpenAll={() => {}} onPractise={() => {}} />
-  ));
-  expect(out).toContain('직접 말하기 연습');
-  expect(out.some((x) => x.includes('마이크로 답하면'))).toBe(true);
-  // No 전체 0 entry into an empty list.
-  expect(out.some((x) => x.startsWith('전체'))).toBe(false);
+
+test('the band distribution survives in the embedded list header', () => {
+  // It was the one thing the summary block could say that a list of sentences cannot:
+  // how the scores are spread across 60↓ / 60–79 / 80+. The block is gone — the 말하기
+  // tab renders the list itself now — so the bar rides in the list's own header instead
+  // of being lost with it.
+  const src = readFileSync(join(__dirname, 'SpeakList.tsx'), 'utf8');
+  expect(src).toMatch(/<BandBar counts=\{bands\} \/>/);
+  // …and only where it is drawn: on its own screen the header is already three controls
+  // deep, so the extra read would be spent on nothing.
+  expect(src).toMatch(/if \(!embedded\) return;/);
 });
