@@ -114,3 +114,32 @@ SELECT scenario_id, front, back, note, created_at
   FROM review_cards
  WHERE user_id = $1 AND scenario_id = ANY(sqlc.arg(scenario_ids)::text[]) AND source <> 'grade'
  ORDER BY scenario_id, created_at;
+
+-- name: GetDailyPage :one
+SELECT user_id, local_date, scenario_id, issued_at, answered_at
+  FROM daily_pages WHERE user_id = $1 AND local_date = $2;
+
+-- name: InsertDailyPage :one
+-- DO NOTHING then RETURNING would give no row on a conflict, so the caller could not
+-- tell "already issued" from "insert failed". DO UPDATE on its own key returns the
+-- existing row untouched, which is exactly "give me today's call, issuing it if this is
+-- the first look".
+INSERT INTO daily_pages (user_id, local_date, scenario_id)
+VALUES ($1, $2, $3)
+ON CONFLICT (user_id, local_date) DO UPDATE SET local_date = daily_pages.local_date
+RETURNING user_id, local_date, scenario_id, issued_at, answered_at;
+
+-- name: AnswerDailyPage :one
+-- The WHERE answered_at IS NULL is what makes the bonus payable exactly once: a second
+-- POST returns no row, and the caller then knows not to award XP again.
+UPDATE daily_pages SET answered_at = now()
+ WHERE user_id = $1 AND local_date = $2 AND answered_at IS NULL
+RETURNING scenario_id;
+
+-- name: AddBonusXP :one
+-- A bare XP grant, for rewards that are not a scenario attempt. RecordAttempt is the
+-- only other XP path and it logs an attempt row, which would put a phantom run in the
+-- learner's history.
+UPDATE user_progress SET xp = xp + $2, updated_at = now()
+ WHERE user_id = $1
+RETURNING xp;

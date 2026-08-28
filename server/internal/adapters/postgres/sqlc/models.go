@@ -84,6 +84,14 @@ type DailyEventSet struct {
 	AdGrants    int                `json:"ad_grants"`
 }
 
+type DailyPage struct {
+	UserID     string             `json:"user_id"`
+	LocalDate  string             `json:"local_date"`
+	ScenarioID string             `json:"scenario_id"`
+	IssuedAt   pgtype.Timestamptz `json:"issued_at"`
+	AnsweredAt pgtype.Timestamptz `json:"answered_at"`
+}
+
 type Department struct {
 	ID         string `json:"id"`
 	Profession string `json:"profession"`

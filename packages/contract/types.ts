@@ -1131,6 +1131,42 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/home/page/answer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Answer today's 오늘의 호출 (+bonus XP, once) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.pageAnswerResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/invite-code": {
         parameters: {
             query?: never;
@@ -2124,6 +2160,34 @@ export interface components {
             };
             text?: string;
         };
+        /**
+         * @description 오늘의 호출 (v27). Absent when there is nothing live: no candidates to point it
+         *     at, or it expired unanswered. The client draws nothing rather than a dead pager.
+         */
+        "github_com_bingoring_forin_server_internal_domain_home.Page": {
+            answered?: boolean;
+            bonusXp?: number;
+            hint?: string;
+            /**
+             * @description * The pager's own two lines. Authored per department below rather than per
+             *     	 *  scenario: the call is a summons, and it has to read the same whichever short
+             *     	 *  scenario it happens to point at.
+             */
+            line?: string;
+            scenarioId?: string;
+            /**
+             * @description SecondsLeft is 0 once it has expired; the client then hides the card rather than
+             *     drawing a dead one.
+             */
+            secondsLeft?: number;
+            /**
+             * @description TotalSeconds is the whole window, so the time bar is a fraction of something.
+             *     Without it the client can only draw "of what was left when the screen loaded",
+             *     which always starts full however late the learner opened the app — and the
+             *     window is NOT a constant: a call issued near midnight is clipped short.
+             */
+            totalSeconds?: number;
+        };
         "github_com_bingoring_forin_server_internal_domain_home.Phrase": {
             en?: string;
             id?: string;
@@ -2421,6 +2485,7 @@ export interface components {
             firstRun?: boolean;
             level?: number;
             mentorNote?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_home.MentorNote"];
+            page?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_home.Page"];
             pendingRequests?: number;
             phrase?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_home.Phrase"];
             review?: components["schemas"]["internal_adapters_http.homeReview"];
@@ -2462,6 +2527,15 @@ export interface components {
         "internal_adapters_http.modelAnswerPage": {
             groups?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup"][];
             total?: number;
+        };
+        "internal_adapters_http.pageAnswerResp": {
+            /**
+             * @description Already is true when this call had been answered before, in which case no XP was
+             *     granted. The client still navigates — re-entering the scenario is harmless.
+             */
+            already?: boolean;
+            bonusXp?: number;
+            scenarioId?: string;
         };
         "internal_adapters_http.phonemeTipDTO": {
             ipa?: string;

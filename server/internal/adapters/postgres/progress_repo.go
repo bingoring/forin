@@ -509,3 +509,56 @@ func (r *ProgressRepo) ListModelAnswerCards(ctx context.Context, userID string, 
 	}
 	return out, nil
 }
+
+// TodaysPage returns today's 오늘의 호출, issuing it on the first look of the day.
+func (r *ProgressRepo) TodaysPage(ctx context.Context, userID, localDate, scenarioID string) (*progress.DailyPage, error) {
+	if scenarioID == "" {
+		// Nothing to point the call at. Read-only then: an existing call still shows,
+		// but a missing one is not invented with an empty target.
+		row, err := r.q.GetDailyPage(ctx, sqlc.GetDailyPageParams{UserID: userID, LocalDate: localDate})
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, nil
+		}
+		if err != nil {
+			return nil, err
+		}
+		return pageFrom(row.ScenarioID, row.IssuedAt, row.AnsweredAt), nil
+	}
+	row, err := r.q.InsertDailyPage(ctx, sqlc.InsertDailyPageParams{
+		UserID: userID, LocalDate: localDate, ScenarioID: scenarioID})
+	if err != nil {
+		return nil, err
+	}
+	return pageFrom(row.ScenarioID, row.IssuedAt, row.AnsweredAt), nil
+}
+
+func pageFrom(scenarioID string, issued, answered pgtype.Timestamptz) *progress.DailyPage {
+	p := &progress.DailyPage{ScenarioID: scenarioID, IssuedAt: issued.Time}
+	if answered.Valid {
+		at := answered.Time
+		p.AnsweredAt = &at
+	}
+	return p
+}
+
+// AnswerPage marks today's call answered, reporting whether this call was the one that
+// did it — the UPDATE's `answered_at IS NULL` is what makes the bonus payable once.
+func (r *ProgressRepo) AnswerPage(ctx context.Context, userID, localDate string) (string, bool, error) {
+	id, err := r.q.AnswerDailyPage(ctx, sqlc.AnswerDailyPageParams{UserID: userID, LocalDate: localDate})
+	if errors.Is(err, pgx.ErrNoRows) {
+		return "", false, nil
+	}
+	if err != nil {
+		return "", false, err
+	}
+	return id, true, nil
+}
+
+// AddBonusXP grants XP with no attempt attached.
+func (r *ProgressRepo) AddBonusXP(ctx context.Context, userID string, xp int) error {
+	_, err := r.q.AddBonusXP(ctx, sqlc.AddBonusXPParams{UserID: userID, Xp: xp})
+	if errors.Is(err, pgx.ErrNoRows) {
+		return nil // no progress row yet: nothing earned, nothing to add to
+	}
+	return err
+}

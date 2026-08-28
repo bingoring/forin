@@ -49,6 +49,16 @@ type ProgressRepo interface {
 	// Disjoint from ClearedScenarioIDs on purpose: a scenario appears in exactly one
 	// of the two, so the caller never has to decide which wins.
 	AttemptedScenarioIDs(ctx context.Context, userID string) (map[string]bool, error)
+	// TodaysPage returns today's 오늘의 호출, ISSUING it on the first look of the day.
+	// `scenarioID` is what the call should point at if there is no row yet; it is
+	// ignored once one exists, so the call cannot change under a learner who reloads.
+	TodaysPage(ctx context.Context, userID, localDate, scenarioID string) (*progress.DailyPage, error)
+	// AnswerPage marks today's call answered and reports whether THIS call did it.
+	// False means it was already answered — the caller must not pay the bonus twice.
+	AnswerPage(ctx context.Context, userID, localDate string) (scenarioID string, first bool, err error)
+	// AddBonusXP grants XP that is not a scenario attempt. RecordAttempt is the other
+	// XP path and it logs an attempt row, which would put a phantom run in the history.
+	AddBonusXP(ctx context.Context, userID string, xp int) error
 	// FoundMissions lists permanently-discovered hidden mission ids.
 	FoundMissions(ctx context.Context, userID string) ([]string, error)
 	// RecordMission permanently records a hidden-mission discovery (idempotent).

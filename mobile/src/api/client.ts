@@ -385,6 +385,19 @@ export interface HomeTodayOne { chapter: string; title: string; kind: string; sc
 export interface HomeMentorNote { id: string; npc: { name: string; role: string; dept: string }; text: string }
 export interface HomePhrase { id: string; en: string; ko: string; note?: string }
 export interface HomeReviewPeek { id: string; front: string }
+/** 오늘의 호출 (v27). `secondsLeft` counts down to the sooner of the one-hour window and
+ *  the learner's local midnight; the server omits the whole field once a call has
+ *  expired unanswered, so the card is never drawn dead. */
+export interface HomePage {
+  scenarioId: string;
+  line: string;
+  hint: string;
+  secondsLeft: number;
+  /** The whole window, so the time bar is a fraction of something real. */
+  totalSeconds: number;
+  answered: boolean;
+  bonusXp: number;
+}
 export type ColleagueRelation = 'peer' | 'mentor' | 'mentee';
 export interface HomeColleague {
   id: string; name: string; relation: ColleagueRelation; activity?: string; activeToday: boolean;
@@ -402,6 +415,7 @@ export interface Home {
   mentorNote?: HomeMentorNote;
   phrase?: HomePhrase;
   review?: HomeReviewPeek;
+  page?: HomePage;
   situationsWaiting: number;
   colleagues: HomeColleague[];
   colleagueTotal: number;
@@ -683,6 +697,18 @@ export const api = {
    * forget at the call site: the local setting already applied, and losing the sync
    * costs a preference, not a session.
    */
+  /** Answer today's 오늘의 호출. Returns the scenario to enter and the XP granted —
+   *  `bonusXp` is 0 when it had already been answered, which the server decides: the
+   *  UPDATE only pays on the transition, so tapping twice cannot farm it. `tz` so the
+   *  server judges the deadline against the learner's own midnight. */
+  async answerPage(): Promise<{ scenarioId: string; bonusXp: number; already: boolean }> {
+    const { data } = await http.post('/me/home/page/answer', null, {
+      params: { tz: Intl.DateTimeFormat().resolvedOptions().timeZone },
+    });
+    const d = data as { scenarioId?: string; bonusXp?: number; already?: boolean } | null;
+    return { scenarioId: d?.scenarioId ?? '', bonusXp: d?.bonusXp ?? 0, already: !!d?.already };
+  },
+
   async setUILang(uiLang: string): Promise<void> {
     await http.patch('/me/ui-lang', { uiLang });
   },

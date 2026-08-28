@@ -73,6 +73,9 @@ type homeResp struct {
 	MentorNote *home.MentorNote `json:"mentorNote,omitempty"`
 	Phrase     *home.Phrase     `json:"phrase,omitempty"`
 	Review     *homeReview      `json:"review,omitempty"`
+	// 오늘의 호출 (v27). Absent when there is nothing live: no candidates to point it
+	// at, or it expired unanswered. The client draws nothing rather than a dead pager.
+	Page *home.Page `json:"page,omitempty"`
 
 	SituationsWaiting int `json:"situationsWaiting"`
 
@@ -170,13 +173,32 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		mu.Unlock()
 	})
 
+	// The day's pool serves twice: how many situations are waiting, and what today's
+	// 오늘의 호출 can point at. One read — the call has to come from content the learner
+	// is actually being offered, not from a second, unrelated draw.
+	var poolIDs []string
 	run(func() {
 		cards, err := h.content.DailyPool(ctx, uid, "", day, economy.Active.DailyPoolSize)
 		if err != nil {
 			return
 		}
+		// The SHORT ones, because the pager promises "약 3분". Difficulty 1 is the
+		// board's own shortest band; if today's pool has none, any card is better than
+		// no call at all — the alternative is a module that silently never appears.
+		ids := make([]string, 0, len(cards))
+		for _, c := range cards {
+			if c.Difficulty <= 1 {
+				ids = append(ids, c.ID)
+			}
+		}
+		if len(ids) == 0 {
+			for _, c := range cards {
+				ids = append(ids, c.ID)
+			}
+		}
 		mu.Lock()
 		resp.SituationsWaiting = len(cards)
+		poolIDs = ids
 		mu.Unlock()
 	})
 
@@ -200,6 +222,10 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		s := home.DeriveShift(uid, day, deptLabel)
 		resp.Shift = &s
 	}
+	// 오늘의 호출 — after the fan-in because it needs both the day's pool and the
+	// department label the shift badge shows.
+	resp.Page = h.todaysPage(ctx, uid, day, deptLabel, poolIDs, loc, now)
+
 	resp.MentorNote = home.PickMentorNote(h.pools, uid, day, dept)
 	resp.Phrase = home.PickPhrase(h.pools, uid, day, dept)
 
@@ -326,4 +352,94 @@ func itoa(n int) string {
 		n /= 10
 	}
 	return string(b[i:])
+}
+
+// todaysPage assembles 오늘의 호출, issuing it on the first look of the day.
+//
+// Returns nil for every state where there is nothing to draw: no candidate scenario, no
+// row, or a call whose time ran out unanswered. An answered call DOES come back — the
+// card collapses to its "✓ 응답함" line rather than vanishing, so the learner can see
+// they already took it.
+func (h *homeHandler) todaysPage(ctx context.Context, uid, day, deptLabel string, pool []string, loc *time.Location, now time.Time) *home.Page {
+	if h.progress == nil {
+		return nil
+	}
+	target := home.PageScenario(uid, day, pool)
+	rec, err := h.progress.TodaysPage(ctx, uid, day, target)
+	if err != nil || rec == nil {
+		return nil
+	}
+	left := home.PageSecondsLeft(rec.IssuedAt, now, loc)
+	answered := rec.AnsweredAt != nil
+	if left == 0 && !answered {
+		// Missed. "오늘 놓치면 소멸" — and a dead pager on screen is worse than none:
+		// it offers an action that cannot be taken.
+		return nil
+	}
+	line, hint := home.PageLines(deptLabel)
+	return &home.Page{
+		ScenarioID:   rec.ScenarioID,
+		Line:         line,
+		Hint:         hint,
+		SecondsLeft:  left,
+		TotalSeconds: home.PageTotalSeconds(rec.IssuedAt, loc),
+		Answered:     answered,
+		BonusXP:      home.PageBonusXP,
+	}
+}
+
+type pageAnswerResp struct {
+	ScenarioID string `json:"scenarioId"`
+	BonusXP    int    `json:"bonusXp"`
+	// Already is true when this call had been answered before, in which case no XP was
+	// granted. The client still navigates — re-entering the scenario is harmless.
+	Already bool `json:"already"`
+}
+
+// @Summary Answer today's 오늘의 호출 (+bonus XP, once)
+// @Tags home
+// @Security Bearer
+// @Success 200 {object} pageAnswerResp
+// @Router /me/home/page/answer [post]
+func (h *homeHandler) answerPage(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	loc := time.UTC
+	if tz := r.URL.Query().Get("tz"); tz != "" {
+		if l, err := time.LoadLocation(tz); err == nil {
+			loc = l
+		}
+	}
+	now := time.Now()
+	day := home.DayKey(now, loc)
+
+	// Read before writing, so an expired call cannot be answered late. The window is
+	// the server's to enforce: a client that kept the card on screen past its deadline
+	// would otherwise still collect the bonus.
+	rec, err := h.progress.TodaysPage(r.Context(), uid, day, "")
+	if err != nil || rec == nil {
+		httpx.Error(w, http.StatusNotFound, "no call today")
+		return
+	}
+	if rec.AnsweredAt == nil && home.PageSecondsLeft(rec.IssuedAt, now, loc) == 0 {
+		httpx.Error(w, http.StatusGone, "today's call has expired")
+		return
+	}
+
+	id, first, err := h.progress.AnswerPage(r.Context(), uid, day)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not answer")
+		return
+	}
+	if !first {
+		httpx.JSON(w, http.StatusOK, pageAnswerResp{ScenarioID: rec.ScenarioID, BonusXP: 0, Already: true})
+		return
+	}
+	// Best-effort: the answer is recorded either way, and losing the bonus to a failed
+	// update is better than refusing an answer that already happened.
+	_ = h.progress.AddBonusXP(r.Context(), uid, home.PageBonusXP)
+	httpx.JSON(w, http.StatusOK, pageAnswerResp{ScenarioID: id, BonusXP: home.PageBonusXP})
 }

@@ -11,6 +11,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { LiveWard } from '@/components/home/LiveWard';
+import { PagingCall } from '@/components/home/PagingCall';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { FIcon } from '@/components/FIcon';
 import { AnimatedFace } from '@engine';
@@ -65,6 +66,28 @@ export default function HomeTab() {
     router.push(id.startsWith('QZ-') ? `/quiz/${id}` : `/scenario/${id}`);
   };
 
+  /** Answer today's 호출, then enter the scenario it points at.
+   *
+   *  The server is asked FIRST and the navigation follows its answer: it is what decides
+   *  whether the bonus is payable (once) and whether the window is still open, and
+   *  entering the scenario before hearing back would let an expired call still be
+   *  played. A refusal leaves the card up rather than navigating — the learner tapped
+   *  something with a deadline and deserves to know it did not take.
+   *
+   *  `already` is not an error: the call was answered before, no XP is granted, and
+   *  re-entering the scenario is harmless. */
+  const answerPage = async () => {
+    try {
+      const { scenarioId } = await api.answerPage();
+      const id = scenarioId || home.page?.scenarioId;
+      if (!id) return;
+      setHome({ ...home, page: { ...home.page!, answered: true } });
+      router.push(id.startsWith('QZ-') ? `/quiz/${id}` : `/scenario/${id}`);
+    } catch {
+      // Expired or gone: the next home load drops the card on its own.
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
       <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
@@ -75,6 +98,16 @@ export default function HomeTab() {
             between DAY and EVENING with a hash of (userID, day), so the badge was a
             dice roll and could not express NIGHT. One source now, in data/wardMood. */}
         <LiveWard />
+
+        {/* 오늘의 호출 (v27). Above the day's task on purpose: it is the one module with
+            a deadline, and everything else on this screen is still there tomorrow. */}
+        {!!home.page && (
+          <PagingCall
+            page={home.page}
+            onAnswer={answerPage}
+            onIgnore={() => {}}
+          />
+        )}
 
         {/* On a first run the order flips: the task comes before the streak.
             Achievements-before-tasks is the right default (see the file header), but a

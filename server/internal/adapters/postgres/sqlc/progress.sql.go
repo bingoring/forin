@@ -12,6 +12,47 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
+const addBonusXP = `-- name: AddBonusXP :one
+UPDATE user_progress SET xp = xp + $2, updated_at = now()
+ WHERE user_id = $1
+RETURNING xp
+`
+
+type AddBonusXPParams struct {
+	UserID string `json:"user_id"`
+	Xp     int    `json:"xp"`
+}
+
+// A bare XP grant, for rewards that are not a scenario attempt. RecordAttempt is the
+// only other XP path and it logs an attempt row, which would put a phantom run in the
+// learner's history.
+func (q *Queries) AddBonusXP(ctx context.Context, arg AddBonusXPParams) (int, error) {
+	row := q.db.QueryRow(ctx, addBonusXP, arg.UserID, arg.Xp)
+	var xp int
+	err := row.Scan(&xp)
+	return xp, err
+}
+
+const answerDailyPage = `-- name: AnswerDailyPage :one
+UPDATE daily_pages SET answered_at = now()
+ WHERE user_id = $1 AND local_date = $2 AND answered_at IS NULL
+RETURNING scenario_id
+`
+
+type AnswerDailyPageParams struct {
+	UserID    string `json:"user_id"`
+	LocalDate string `json:"local_date"`
+}
+
+// The WHERE answered_at IS NULL is what makes the bonus payable exactly once: a second
+// POST returns no row, and the caller then knows not to award XP again.
+func (q *Queries) AnswerDailyPage(ctx context.Context, arg AnswerDailyPageParams) (string, error) {
+	row := q.db.QueryRow(ctx, answerDailyPage, arg.UserID, arg.LocalDate)
+	var scenario_id string
+	err := row.Scan(&scenario_id)
+	return scenario_id, err
+}
+
 const dueCards = `-- name: DueCards :many
 SELECT c.id, c.source, c.front, c.back, c.note, c.topic_tag, c.mastery_pips, c.favorite,
        s.ease, s.interval_days, s.reps, s.due_date, c.scenario_id, c.context
@@ -148,6 +189,29 @@ func (q *Queries) GetCardForUser(ctx context.Context, arg GetCardForUserParams) 
 	return i, err
 }
 
+const getDailyPage = `-- name: GetDailyPage :one
+SELECT user_id, local_date, scenario_id, issued_at, answered_at
+  FROM daily_pages WHERE user_id = $1 AND local_date = $2
+`
+
+type GetDailyPageParams struct {
+	UserID    string `json:"user_id"`
+	LocalDate string `json:"local_date"`
+}
+
+func (q *Queries) GetDailyPage(ctx context.Context, arg GetDailyPageParams) (DailyPage, error) {
+	row := q.db.QueryRow(ctx, getDailyPage, arg.UserID, arg.LocalDate)
+	var i DailyPage
+	err := row.Scan(
+		&i.UserID,
+		&i.LocalDate,
+		&i.ScenarioID,
+		&i.IssuedAt,
+		&i.AnsweredAt,
+	)
+	return i, err
+}
+
 const getProgress = `-- name: GetProgress :one
 SELECT xp, level, rank, streak_current, streak_longest
 FROM user_progress WHERE user_id = $1
@@ -203,6 +267,36 @@ func (q *Queries) InsertAttempt(ctx context.Context, arg InsertAttemptParams) er
 		arg.Grade,
 	)
 	return err
+}
+
+const insertDailyPage = `-- name: InsertDailyPage :one
+INSERT INTO daily_pages (user_id, local_date, scenario_id)
+VALUES ($1, $2, $3)
+ON CONFLICT (user_id, local_date) DO UPDATE SET local_date = daily_pages.local_date
+RETURNING user_id, local_date, scenario_id, issued_at, answered_at
+`
+
+type InsertDailyPageParams struct {
+	UserID     string `json:"user_id"`
+	LocalDate  string `json:"local_date"`
+	ScenarioID string `json:"scenario_id"`
+}
+
+// DO NOTHING then RETURNING would give no row on a conflict, so the caller could not
+// tell "already issued" from "insert failed". DO UPDATE on its own key returns the
+// existing row untouched, which is exactly "give me today's call, issuing it if this is
+// the first look".
+func (q *Queries) InsertDailyPage(ctx context.Context, arg InsertDailyPageParams) (DailyPage, error) {
+	row := q.db.QueryRow(ctx, insertDailyPage, arg.UserID, arg.LocalDate, arg.ScenarioID)
+	var i DailyPage
+	err := row.Scan(
+		&i.UserID,
+		&i.LocalDate,
+		&i.ScenarioID,
+		&i.IssuedAt,
+		&i.AnsweredAt,
+	)
+	return i, err
 }
 
 const listModelAnswerCards = `-- name: ListModelAnswerCards :many

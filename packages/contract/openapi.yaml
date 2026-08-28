@@ -147,6 +147,37 @@ components:
         text:
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_home.Page:
+      description: |-
+        오늘의 호출 (v27). Absent when there is nothing live: no candidates to point it
+        at, or it expired unanswered. The client draws nothing rather than a dead pager.
+      properties:
+        answered:
+          type: boolean
+        bonusXp:
+          type: integer
+        hint:
+          type: string
+        line:
+          description: "* The pager's own two lines. Authored per department below
+            rather than per\n\t *  scenario: the call is a summons, and it has to
+            read the same whichever short\n\t *  scenario it happens to point at."
+          type: string
+        scenarioId:
+          type: string
+        secondsLeft:
+          description: |-
+            SecondsLeft is 0 once it has expired; the client then hides the card rather than
+            drawing a dead one.
+          type: integer
+        totalSeconds:
+          description: |-
+            TotalSeconds is the whole window, so the time bar is a fraction of something.
+            Without it the client can only draw "of what was left when the screen loaded",
+            which always starts full however late the learner opened the app — and the
+            window is NOT a constant: a call issued near midnight is clipped short.
+          type: integer
+      type: object
     github_com_bingoring_forin_server_internal_domain_home.Phrase:
       properties:
         en:
@@ -656,6 +687,8 @@ components:
           type: integer
         mentorNote:
           $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_home.MentorNote'
+        page:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_home.Page'
         pendingRequests:
           type: integer
         phrase:
@@ -732,6 +765,18 @@ components:
           uniqueItems: false
         total:
           type: integer
+      type: object
+    internal_adapters_http.pageAnswerResp:
+      properties:
+        already:
+          description: |-
+            Already is true when this call had been answered before, in which case no XP was
+            granted. The client still navigates — re-entering the scenario is harmless.
+          type: boolean
+        bonusXp:
+          type: integer
+        scenarioId:
+          type: string
       type: object
     internal_adapters_http.phonemeTipDTO:
       properties:
@@ -1390,6 +1435,20 @@ paths:
       security:
       - Bearer: []
       summary: Home tab (one round trip)
+      tags:
+      - home
+  /me/home/page/answer:
+    post:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.pageAnswerResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Answer today's 오늘의 호출 (+bonus XP, once)
       tags:
       - home
   /me/invite-code:

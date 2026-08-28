@@ -117,6 +117,7 @@ func NewRouter(d Deps) http.Handler {
 	hh := &homeHandler{progress: d.Progress, review: d.Review, content: d.Content,
 		users: d.Users, colleague: d.Colleague, pools: d.HomePools}
 	mux.Handle("GET /me/home", auth(http.HandlerFunc(hh.get)))
+	mux.Handle("POST /me/home/page/answer", auth(http.HandlerFunc(hh.answerPage)))
 
 	// Colleagues (authenticated).
 	if d.Colleague != nil {

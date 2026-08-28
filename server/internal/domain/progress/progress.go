@@ -81,6 +81,14 @@ type Schedule struct {
 	DueDate      time.Time `json:"dueDate"`
 }
 
+// DailyPage is one day's 오늘의 호출 as stored: which scenario it points at, when the
+// learner first saw it (the countdown's origin) and whether they answered.
+type DailyPage struct {
+	ScenarioID string
+	IssuedAt   time.Time
+	AnsweredAt *time.Time
+}
+
 // Grade is the user's self-rating after a review. Code-side allowed set.
 type Grade string
 
