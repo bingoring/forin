@@ -53,10 +53,23 @@ import { act, create } from 'react-test-renderer';
 import ColleagueDetail from '@/app/colleagues/[id]';
 import { RelTag } from '@/app/colleagues/index';
 
+/** Trees mounted by this file, torn down in afterEach.
+ *
+ *  A tree left mounted keeps whatever it scheduled alive past the end of the test — the
+ *  screen it renders has timers and animations — and when those fire jest has already
+ *  torn the module registry down, so an UNRELATED suite takes the crash. This file was
+ *  caught doing exactly that: a full run went red with a failure reported here that did
+ *  not reproduce when the file ran on its own. */
+const mountedTrees: ReturnType<typeof create>[] = [];
+afterEach(() => {
+  for (const tree of mountedTrees.splice(0)) act(() => { tree.unmount(); });
+});
+
 it('renders a colleague whose relation the server did not send', async () => {
   let tree!: ReturnType<typeof create>;
   await act(async () => {
     tree = create(<ColleagueDetail />);
+    mountedTrees.push(tree);
   });
   expect(tree.toJSON()).toBeTruthy();
   // The name still shows — the screen degrades by omitting the relation, not by failing.
@@ -76,6 +89,7 @@ it('the relation tag renders nothing rather than inventing "peer"', async () => 
   let tree!: ReturnType<typeof create>;
   await act(async () => {
     tree = create(<RelTag relation={undefined} />);
+    mountedTrees.push(tree);
   });
   expect(tree.toJSON()).toBeNull();
 });
