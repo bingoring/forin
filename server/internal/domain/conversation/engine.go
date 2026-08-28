@@ -10,6 +10,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/reputation"
+	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -47,6 +48,10 @@ type langContext struct {
 	Native string // human name, e.g. "Korean"
 	Target string // human name, e.g. "English"
 	Job    string
+	// Level is the learner's CEFR band, normalized (never ""). It decides the
+	// character's REGISTER — how plainly they speak — and nothing else. See
+	// user.SpeechRegister for what it may and may not touch.
+	Level string
 }
 
 // langName maps an ISO-ish code to a human language name for the prompt.
@@ -76,11 +81,14 @@ func langName(code string) string {
 // langFor loads the user's profile and derives native/target languages + job.
 // Falls back to the launch market (Korean→English nurse) only when the profile is absent.
 func (e *Engine) langFor(ctx context.Context, userID string) langContext {
-	lc := langContext{Native: "Korean", Target: "English", Job: "healthcare worker"}
+	lc := langContext{Native: "Korean", Target: "English", Job: "healthcare worker", Level: user.DefaultLevel}
 	p, err := e.profiles.GetProfile(ctx, userID)
 	if err != nil || p == nil {
 		return lc
 	}
+	// Normalized here rather than at each use: an unanswered question and a missing
+	// profile then behave identically, and no prompt builder has to know the default.
+	lc.Level = user.NormalizeLevel(p.TargetLevel)
 	if n := langName(p.NativeLang); n != "" {
 		lc.Native = n
 	}
@@ -498,6 +506,9 @@ func buildSystemPrompt(sc *content.Scenario, lc langContext, disposition string)
 	var b strings.Builder
 	b.WriteString(fmt.Sprintf("You are role-playing a character in a clinical %s-language practice scenario "+
 		"for a %s-speaking %s preparing to work abroad.\n", lc.Target, lc.Native, lc.Job))
+	// How to speak, not what to say. Placed before the character sheet so the
+	// persona's own speaking style, which follows, can still narrow it.
+	b.WriteString(user.SpeechRegister(lc.Level) + "\n")
 	b.WriteString(fmt.Sprintf("Scenario: %s — %s\n", sc.Title, sc.Tagline))
 	p := sc.Persona
 	b.WriteString("Your character:\n")

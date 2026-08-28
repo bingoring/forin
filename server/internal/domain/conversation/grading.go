@@ -11,6 +11,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/reputation"
+	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -219,6 +220,11 @@ func buildGradingPrompt(sc *content.Scenario, lc langContext) string {
 	// addressed, WITH the learner's words as evidence, and a named clarity band. The
 	// number is computed from those (see score.go).
 	b.WriteString(fmt.Sprintf("Judge whether they addressed each goal and how clearly they communicated in %s.\n", lc.Target))
+	// Calibration, not leniency. The examiner used to grade a beginner's transcript
+	// against the same standard as an advanced speaker's, which made `clarity` a
+	// measure of how long they had been studying rather than of this conversation.
+	// The clinical bar does not move — see user.GradingExpectation.
+	b.WriteString(user.GradingExpectation(lc.Level) + "\n")
 	b.WriteString("For every goal listed above, decide `met` and, when met, quote the learner's OWN WORDS that met it in `evidence`. ")
 	// Both halves are needed and they pull opposite ways. Without the first, the
 	// grader marks everything met because the exchange went well. Without the second,

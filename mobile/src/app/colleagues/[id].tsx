@@ -97,7 +97,12 @@ export default function ColleagueDetailScreen() {
                 <RelTag relation={c.relation} />
               </View>
               <View style={{ flexDirection: 'row', gap: 14, marginTop: 8 }}>
-                <Stat label="Lv." value={c.targetLevel || String(c.level ?? '-')} />
+                {/* Two stats, not one. This was `c.targetLevel || String(c.level ?? '-')`
+                    under the label "Lv." — a CEFR band and an XP level taking turns in
+                    one field, so the same row meant "B1" for one colleague and "12" for
+                    the next. */}
+                <Stat label={t('colleague.langLevel')} value={c.targetLevel || '-'} />
+                <Stat label="LV" value={String(c.level ?? '-')} />
                 <Stat label={t('growth.streak')} value={t('colleague.days', { n: c.streak ?? 0 })} />
               </View>
             </View>

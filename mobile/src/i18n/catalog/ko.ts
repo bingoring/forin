@@ -346,6 +346,7 @@ export const ko: Record<string, string> = {
   // ── colleagues ───────────────────────────────────────────────────────────
   'colleague.title': '동료',
   'colleague.days': '{n}일',
+  'colleague.langLevel': '어학 실력',
   'colleague.streakDays': '연속 {n}일',
   'colleague.streakSuffix': ' · 연속 {n}일',
   'colleague.subCount': '함께 준비하는 사람들 · {n}명',

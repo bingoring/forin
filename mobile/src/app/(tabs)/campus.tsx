@@ -35,6 +35,9 @@ export default function Campus() {
   const t = useT();
   const router = useRouter();
   const [enLevel, setEnLevel] = useState('B1');
+  // The language the band is IN. The chip used to hardcode nothing at all and read
+  // "Lv.B1"; a German-track learner's B1 is not an English B1.
+  const [targetLang, setTargetLang] = useState('en');
   const [streak, setStreak] = useState(0);
   const [buildings, setBuildings] = useState<CurriculumBuilding[]>([]);
   const [dept, setDept] = useState<DeptTarget | null>(null);
@@ -120,8 +123,9 @@ export default function Campus() {
       ]).then(([p, me, bs]) => {
         if (!alive) return;
         if (p) setStreak((p as Progress).streakCurrent);
-        const lv = (me as { profile?: { targetLevel?: string } } | null)?.profile?.targetLevel;
-        if (lv) setEnLevel(lv);
+        const prof = (me as { profile?: { targetLevel?: string; targetLang?: string } } | null)?.profile;
+        if (prof?.targetLevel) setEnLevel(prof.targetLevel);
+        if (prof?.targetLang) setTargetLang(prof.targetLang);
         if (bs.length) setBuildings(bs);
       });
       return () => { alive = false; };
@@ -155,7 +159,10 @@ export default function Campus() {
           <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C }}>커리어</Text>
           <Shadowed offset={2} shadowColor={colors.mintShadow}>
             <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>Lv.{enLevel}</Text>
+              {/* The learner's CEFR band, labelled by the language it is in. It used to
+                  read "Lv.{enLevel}", one dot away from the XP level's "LV 12" on the
+                  profile card — two unrelated numbers under one abbreviation. */}
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{(targetLang || 'en').toUpperCase()} {enLevel}</Text>
             </View>
           </Shadowed>
           <View style={{ flex: 1 }} />

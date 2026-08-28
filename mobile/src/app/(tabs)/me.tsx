@@ -312,7 +312,7 @@ export default function Me() {
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>오늘의 성장 리포트</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 3, opacity: 0.8 }}>Lv.{level} · {xp.toLocaleString()} XP · {streakCurrent}일 연속</Text>
+                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 3, opacity: 0.8 }}>LV {level} · {xp.toLocaleString()} XP · {streakCurrent}일 연속</Text>
               </View>
               <PixelIcon name="chevron-right" color={C} size={18} sw={2} />
             </View>

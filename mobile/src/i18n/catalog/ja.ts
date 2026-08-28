@@ -322,6 +322,7 @@ export const ja: Record<string, string> = {
 
   'colleague.title': '同僚',
   'colleague.days': '{n}日',
+  'colleague.langLevel': '語学力',
   'colleague.streakDays': '連続{n}日',
   'colleague.streakSuffix': ' · 連続{n}日',
   'colleague.subCount': '一緒に準備する人たち · {n}名',

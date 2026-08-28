@@ -323,6 +323,7 @@ export const en: Record<string, string> = {
 
   'colleague.title': 'Colleagues',
   'colleague.days': '{n} days',
+  'colleague.langLevel': 'Language',
   'colleague.streakDays': '{n}-day streak',
   'colleague.streakSuffix': ' · {n}-day streak',
   'colleague.subCount': 'People preparing alongside you · {n}',

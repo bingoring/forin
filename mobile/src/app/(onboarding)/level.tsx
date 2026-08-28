@@ -1,6 +1,18 @@
-// Onboarding 3/4 — target-language level (handoff ScreenLevel). Picking a CEFR
-// band tunes scenario difficulty. "이대로 시작" saves the whole onboarding profile
-// (PATCH /me/profile → onboarded=true) and enters the app.
+// Onboarding 3/4 — target-language level (handoff ScreenLevel). "이대로 시작" saves
+// the whole onboarding profile (PATCH /me/profile → onboarded=true) and enters the app.
+//
+// What the answer actually does, all three server-side (domain/user/level.go owns the
+// interpretation, so the same band cannot mean three things):
+//
+//   1. the NPC's speech register — how plainly the character speaks, never what they
+//      say, and never the clinical situation
+//   2. the examiner's calibration — `clarity` is judged against this level, while the
+//      clinical bar stays identical at every level
+//   3. the daily scenario sample — authored difficulty is weighted toward this band,
+//      intersected with the XP-level band
+//
+// This comment used to claim it "tunes scenario difficulty" while nothing read the
+// column at all: it was stored, drawn in a profile chip, and never looked at again.
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';

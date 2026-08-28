@@ -140,7 +140,7 @@ export default function ColleagueAddScreen() {
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(12.5), color: C }}>{preview.name}</Text>
                 <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>
-                  {[preview.targetLevel && `Lv.${preview.targetLevel}`, preview.destination?.toUpperCase(), preview.streak ? t('colleague.streakDays', { n: preview.streak }) : null]
+                  {[preview.targetLevel, preview.destination?.toUpperCase(), preview.streak ? t('colleague.streakDays', { n: preview.streak }) : null]
                     .filter(Boolean).join(' · ')}
                 </Text>
               </View>

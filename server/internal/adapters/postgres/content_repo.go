@@ -15,6 +15,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -585,9 +586,14 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 		}
 	}
 
-	// Sample a fresh set. Learner level + already-cleared scenarios drive weights.
+	// Sample a fresh set. XP level, CEFR band and already-cleared scenarios drive weights.
 	level := 1
 	_ = r.pool.QueryRow(ctx, `SELECT level FROM user_progress WHERE user_id = $1`, userID).Scan(&level)
+	// A missing profile row is not an error here — the sampler's default band covers
+	// it (user.NormalizeLevel turns "" into B1), and refusing to build a daily set
+	// because someone has not finished onboarding would empty the board.
+	cefr := ""
+	_ = r.pool.QueryRow(ctx, `SELECT target_level FROM profiles WHERE user_id = $1`, userID).Scan(&cefr)
 	cleared := map[string]bool{}
 	if crows, err := r.pool.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
 		defer crows.Close()
@@ -598,7 +604,7 @@ func (r *ContentRepo) DailyPool(ctx context.Context, userID, profession, localDa
 			}
 		}
 	}
-	ids := sampleDailyPool(rows, level, cleared, localDate+userID, limit, nil)
+	ids := sampleDailyPool(rows, level, cefr, cleared, localDate+userID, limit, nil)
 
 	if payload, err := json.Marshal(ids); err == nil {
 		_ = r.q.InsertDailyEventSet(ctx, sqlc.InsertDailyEventSetParams{UserID: userID, LocalDate: localDate, ScenarioIds: payload})
@@ -668,6 +674,10 @@ func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, lo
 
 	level := 1
 	_ = tx.QueryRow(ctx, `SELECT level FROM user_progress WHERE user_id = $1`, userID).Scan(&level)
+	// Read in the same transaction as the level, so a top-up is sampled against the
+	// same profile the base set was.
+	cefr := ""
+	_ = tx.QueryRow(ctx, `SELECT target_level FROM profiles WHERE user_id = $1`, userID).Scan(&cefr)
 	cleared := map[string]bool{}
 	if crows, err := tx.Query(ctx, `SELECT scenario_id FROM scenario_attempts WHERE user_id = $1 AND state = 'cleared'`, userID); err == nil {
 		for crows.Next() {
@@ -681,7 +691,7 @@ func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, lo
 
 	grant := grants + 1
 	// Vary the seed per grant so repeated top-ups don't resample the same ids.
-	picked := sampleDailyPool(fresh, level, cleared, localDate+userID+"topup"+strconv.Itoa(grant), add, deptSeed)
+	picked := sampleDailyPool(fresh, level, cefr, cleared, localDate+userID+"topup"+strconv.Itoa(grant), add, deptSeed)
 	ids = append(ids, picked...)
 
 	payload, _ := json.Marshal(ids)
@@ -703,17 +713,42 @@ func (r *ContentRepo) TopUpDailyPool(ctx context.Context, userID, profession, lo
 	return out, grant, nil
 }
 
+// preferredBand is the authored-difficulty range (1..3) today's sample should favour,
+// from the two axes that legitimately bear on it:
+//
+//   - XP level: how far through the game they are. This was the only axis, which meant
+//     a learner who had ground out XP got hard scenarios regardless of whether they
+//     could hold the conversation.
+//   - CEFR band: what they can actually say. This is the one the onboarding question
+//     asks about and, until now, the one nothing read.
+//
+// The two are intersected. When they disagree with no overlap — an A2 speaker who has
+// reached Junior rank, or a C1 speaker on day one — the CEFR band wins: language is
+// the binding constraint on a language role-play, and the mismatch this whole change
+// exists to fix is precisely the confident-on-paper learner being handed a level-3
+// handover. Off-band scenarios stay reachable (DailyOffBandWeight), so this steers the
+// sample rather than gating content.
+func preferredBand(xpLevel int, cefr string) (lo, hi int) {
+	xpLo, xpHi := 1, 2
+	if xpLevel >= economy.Active.RankJunior {
+		xpLo, xpHi = 2, 3
+	}
+	cLo, cHi := user.DifficultyBand(cefr)
+
+	lo, hi = max(xpLo, cLo), min(xpHi, cHi)
+	if lo > hi {
+		return cLo, cHi
+	}
+	return lo, hi
+}
+
 // sampleDailyPool picks `limit` scenario ids by weighted sampling-without-
 // replacement, seeded deterministically by `seed` so an un-persisted resample is
 // stable. Weight = unclearedBoost × levelFit; the per-dept cap is enforced
 // cumulatively — deptSeed carries counts already in the day's set so a top-up
 // can't push a dept past the cap across base + grants.
-func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cleared map[string]bool, seed string, limit int, deptSeed map[string]int) []string {
-	// preferred difficulty band by level (difficulty is 1..3 on the board)
-	lo, hi := 1, 2
-	if level >= economy.Active.RankJunior {
-		lo, hi = 2, 3
-	}
+func sampleDailyPool(rows []sqlc.ListBoardScenariosRow, level int, cefr string, cleared map[string]bool, seed string, limit int, deptSeed map[string]int) []string {
+	lo, hi := preferredBand(level, cefr)
 	type cand struct {
 		id, dept string
 		weight   float64

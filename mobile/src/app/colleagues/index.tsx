@@ -167,7 +167,10 @@ export default function ColleaguesScreen() {
                     {c.statusHidden ? t('home.privateProgress') : c.activity || t('colleague.quietDay')}
                   </Text>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 3 }}>
-                    {c.relation === 'mentor' ? (c.targetLevel || t('colleague.relationMentor')) : `Lv.${c.targetLevel || '-'}`}
+                    {/* The band alone. "Lv." collided with the XP level's "LV", and we do
+                        not know which language THIS person is learning, so there is no
+                        code to prefix it with — A1..C2 identifies itself. */}
+                    {c.relation === 'mentor' ? (c.targetLevel || t('colleague.relationMentor')) : (c.targetLevel || '-')}
                     {c.streak ? t('colleague.streakSuffix', { n: c.streak }) : ''}
                   </Text>
                 </View>
