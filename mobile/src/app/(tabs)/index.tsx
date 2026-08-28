@@ -10,6 +10,8 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
+import { LiveWard } from '@/components/home/LiveWard';
+import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { FIcon } from '@/components/FIcon';
 import { AnimatedFace } from '@engine';
 import { api, type Home } from '@/api/client';
@@ -68,6 +70,12 @@ export default function HomeTab() {
       <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
         <Greeting date={home.date} done={home.done} />
 
+        {/* 라이브 병동 (v27). Above everything, and driven by the DEVICE clock rather
+            than the server: home.DeriveShift never read a clock at all — it picked
+            between DAY and EVENING with a hash of (userID, day), so the badge was a
+            dice roll and could not express NIGHT. One source now, in data/wardMood. */}
+        <LiveWard />
+
         {/* On a first run the order flips: the task comes before the streak.
             Achievements-before-tasks is the right default (see the file header), but a
             learner who has cleared nothing has no achievements — leading with a row of
@@ -77,7 +85,11 @@ export default function HomeTab() {
           home.todayOne ? <TodayOne one={home.todayOne} onStart={startToday} firstRun /> : null
         ) : (
           <>
-            {!!home.shift && <ShiftBadge shift={home.shift.shift} deptLabel={home.shift.deptLabel} />}
+            {/* The DEPT still comes from the server — it is the department of the
+                current curriculum step, which the phone cannot know. The shift name
+                comes from the same clock the ward above it reads, so the two cannot
+                disagree. */}
+            {!!home.shift && <ShiftBadge shift={SHIFT_LABEL[moodAt(new Date())]} deptLabel={home.shift.deptLabel} />}
             <StreakStrip streak={home.streak} week={home.week} />
             {home.todayOne
               ? <TodayOne one={home.todayOne} onStart={startToday} />
@@ -215,9 +227,15 @@ function TodayOne({ one, onStart, firstRun }: {
             <View style={{ width: 44, height: 44, backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
               <PixelIcon name={icon} color={C} size={24} sw={1.7} />
             </View>
+            {/* The CURRICULUM is the subject, and the step is what happens next in
+                it. It used to be the other way round — the step's title was the big
+                line and the curriculum a caption — which said "today's one thing" and
+                left the learner to work out where that thing was. The card names the
+                path they are on; `one.chapter` is the curriculum the server resumed
+                (the one holding their LAST attempt, see markResume). */}
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, opacity: 0.75 }}>{one.chapter}</Text>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, marginTop: 3, lineHeight: 20 }}>{one.title}</Text>
+              <Text numberOfLines={2} style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, lineHeight: 20 }}>{one.chapter}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, opacity: 0.8, marginTop: 4 }}>{t('home.nextUp', { title: one.title })}</Text>
             </View>
           </View>
           {/* One line saying what is about to happen. A scenario title alone tells a
@@ -242,7 +260,7 @@ function TodayOne({ one, onStart, firstRun }: {
       {/* 라벨 탭 — 카드 위로 걸친다 */}
       <View style={{ position: 'absolute', top: -9, left: 12, backgroundColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>
-          {firstRun ? t('home.firstRunTab') : t('home.todayOneTab')}
+          {firstRun ? t('home.firstRunTab') : t('home.curriculumTab')}
         </Text>
       </View>
     </View>
