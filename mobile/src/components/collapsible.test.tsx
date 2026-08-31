@@ -82,6 +82,49 @@ it('turns the chevron on the UI thread — a transform belongs there', () => {
   }
 });
 
+/** The clipping container's height, and the measured child's opacity. */
+function boxAndContent(tree: ReturnType<typeof create>) {
+  const flat = (st: unknown) => (Array.isArray(st) ? Object.assign({}, ...st) : (st ?? {})) as Record<string, unknown>;
+  const box = tree.root.findAll(
+    (n) => typeof n.type === 'string' && flat(n.props?.style).overflow === 'hidden',
+    { deep: true },
+  )[0];
+  const inner = tree.root.findAll((n) => typeof n.props?.onLayout === 'function', { deep: true })[0];
+  return { height: flat(box.props.style).height, opacity: flat(inner.props.style).opacity, inner };
+}
+
+test('a dropdown that mounts CLOSED can still open', () => {
+  // This is the regression that broke every dropdown in the app — building, floor and
+  // curriculum all at once.
+  //
+  // An attempt at killing the open-flash pinned the height to 0 until a measurement
+  // arrived. But the block is CLIPPED to that height, so onLayout reports 0, the `h > 0`
+  // guard rejects it, and the content's real height is never learned. The natural-height
+  // frame was not decoration: it was the only frame in which the content could be
+  // measured at all.
+  let tree!: ReturnType<typeof create>;
+  act(() => { tree = track(create(<Collapsible open={false}><Text>c</Text></Collapsible>)); });
+
+  // Shut, and a device reports the clipped child as zero-height.
+  expect(boxAndContent(tree).height).toBe(0);
+  act(() => { boxAndContent(tree).inner.props.onLayout({ nativeEvent: { layout: { height: 0, width: 300 } } }); });
+
+  act(() => { tree.update(<Collapsible open><Text>c</Text></Collapsible>); });
+  const open = boxAndContent(tree);
+  // Natural height — i.e. there is a frame in which the content can be measured. Zero
+  // here is the bug: the dropdown would never open.
+  expect(open.height).toBeUndefined();
+  // …and that frame is INVISIBLE, which is what stops it flashing.
+  expect(open.opacity).toBe(0);
+
+  // The measurement lands and the slide takes over.
+  act(() => { open.inner.props.onLayout({ nativeEvent: { layout: { height: 140, width: 300 } } }); });
+  const sliding = boxAndContent(tree);
+  expect(typeof sliding.height).toBe('number');
+  expect(sliding.height as number).toBeLessThan(140);
+  expect(sliding.opacity).toBe(1);
+});
+
 test('opening slides — it does not flash at full height first', () => {
   // Reported as "한번 빠르게 깜빡하고 스르륵 내려와", and that is exactly what it was.
   // Before the content had been measured the height was `undefined`, which means
@@ -108,9 +151,10 @@ test('opening slides — it does not flash at full height first', () => {
       </Collapsible>,
     ));
   });
-  // The frame before any measurement: shut, not full-size. `undefined` here is the bug.
+  // The frame before any measurement is at natural height — that is where the content
+  // gets measured — but its CONTENT is invisible, so nothing flashes. Asserted in "a
+  // dropdown that mounts CLOSED can still open"; here we only need the slide.
   record(tree);
-  expect(heights[0]).toBe(0);
 
   // The measurement lands, and now there is something to travel to.
   const inner = tree.root.findAll((n) => typeof n.props?.onLayout === 'function', { deep: true })[0];

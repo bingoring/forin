@@ -65,20 +65,31 @@ export function Collapsible({ open, children, style }: {
       style={{
         ...style,
         overflow: 'hidden',
-        // ZERO until measured, open or not.
+        // Unmeasured: natural height when open, 0 when shut. Measured: animated.
         //
-        // It used to be `open ? undefined : 0`, and `undefined` means natural height: on
-        // the first open the block appeared at full size for one frame, then the effect
-        // animated it from 0 — a flash followed by a slide, which is exactly what it
-        // looked like. Clipping does not change layout, so the children are measured at
-        // height 0 all the same and the animation starts the moment the number lands.
-        height: contentH === 0 ? 0 : anim.interpolate({ inputRange: [0, 1], outputRange: [0, contentH] }),
+        // The natural-height frame is not decoration — it is the only frame in which the
+        // content can be MEASURED. A previous attempt at killing the open-flash pinned
+        // this to 0 until a measurement arrived, and that broke every dropdown in the
+        // app: clipped to zero height, onLayout reports 0, the `h > 0` guard rejects it,
+        // and the block never learns how tall it is. It stayed shut forever.
+        //
+        // So the frame stays and the CONTENT is hidden for it instead — see the wrapper
+        // below. Nothing flashes, and the measurement still happens.
+        height: contentH === 0 ? (open ? undefined : 0) : anim.interpolate({ inputRange: [0, 1], outputRange: [0, contentH] }),
       }}
     >
       <View
-        // Inherits the container's width, so the chain has no auto link inside this
-        // component either.
-        style={{ alignSelf: 'stretch' }}
+        style={{
+          // Inherits the container's width, so the chain has no auto link inside this
+          // component either.
+          alignSelf: 'stretch',
+          // Invisible for the one frame where the container is at natural height and
+          // waiting to be measured. That frame is what made the block appear whole and
+          // then slide — the flash. Hiding the content keeps the measurement and loses
+          // the flash; `opacity` does not affect layout, so onLayout still reports the
+          // real height.
+          opacity: contentH === 0 && open ? 0 : 1,
+        }}
         onLayout={(e) => {
           const h = e.nativeEvent.layout.height;
           if (h > 0 && Math.abs(h - contentH) > 1) setContentH(h);
