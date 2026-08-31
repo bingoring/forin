@@ -397,7 +397,15 @@ type SpeechSynthesizer interface {
 }
 
 // ConversationSession / Turn are persistence DTOs for dialogue.
-type ConversationSession struct{ ID, UserID, ScenarioID string }
+type ConversationSession struct {
+	ID, UserID, ScenarioID string
+	// Guide is which rung of the ladder opened this session (curriculum.GuideLevel:
+	// "choices" | "free"). "" is a session from before the column existed, read as
+	// "free". The server needs it because the guided pass is answered from an authored
+	// tree when the scenario has one, and a model called on a turn the tree owns would
+	// walk the conversation off the script.
+	Guide string
+}
 type ConversationTurn struct {
 	Role, Content string
 	// Mood is the NPC's mood at this turn, "" for a user turn (and for assistant
@@ -407,7 +415,7 @@ type ConversationTurn struct {
 
 // ConversationRepo persists dialogue sessions and turns.
 type ConversationRepo interface {
-	CreateSession(ctx context.Context, userID, scenarioID string) (string, error)
+	CreateSession(ctx context.Context, userID, scenarioID, guide string) (string, error)
 	GetSession(ctx context.Context, sessionID string) (*ConversationSession, error)
 	// AppendTurn records one turn. `mood` is "" for user turns and for an assistant
 	// reply whose mood could not be read.

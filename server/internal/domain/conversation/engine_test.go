@@ -69,7 +69,7 @@ type fakeConvoRepo struct {
 	priorMood    string
 }
 
-func (f *fakeConvoRepo) CreateSession(context.Context, string, string) (string, error) {
+func (f *fakeConvoRepo) CreateSession(context.Context, string, string, string) (string, error) {
 	return "new-session", nil
 }
 func (f *fakeConvoRepo) GetSession(_ context.Context, id string) (*ports.ConversationSession, error) {
@@ -95,9 +95,14 @@ func (f *fakeConvoRepo) LatestAssistantMood(_ context.Context, _ string) (string
 	}
 	return "", nil
 }
+// Seeded history FOLLOWED BY whatever was appended during the test. A fake that forgot
+// its own writes reads back a transcript that never grows, and the scripted pass derives
+// which beat the learner is on from exactly that count — so a forgetful fake would report
+// the same beat forever and a test could not tell a working script from a stuck one.
 func (f *fakeConvoRepo) History(_ context.Context, sessionID string, _ int) ([]ports.ConversationTurn, error) {
 	f.historyFor = sessionID
-	return f.history, nil
+	out := append([]ports.ConversationTurn{}, f.history...)
+	return append(out, f.appended...), nil
 }
 func (f *fakeConvoRepo) SaveCorrection(context.Context, string, string, string, string, string) error {
 	return nil

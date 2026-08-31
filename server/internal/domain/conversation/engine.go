@@ -102,7 +102,10 @@ func (e *Engine) langFor(ctx context.Context, userID string) langContext {
 }
 
 // StartSession validates the scenario and opens a conversation session.
-func (e *Engine) StartSession(ctx context.Context, userID, scenarioID string) (string, error) {
+// StartSession opens a conversation. `guide` is the rung the learner tapped
+// (curriculum.GuideLevel: "choices" | "free") and is persisted, because the guided pass
+// is answered from an authored tree where one exists — see script.go.
+func (e *Engine) StartSession(ctx context.Context, userID, scenarioID, guide string) (string, error) {
 	sc, err := e.content.GetScenario(ctx, scenarioID)
 	if err != nil {
 		return "", err
@@ -110,7 +113,7 @@ func (e *Engine) StartSession(ctx context.Context, userID, scenarioID string) (s
 	if sc == nil {
 		return "", ErrScenarioNotFound
 	}
-	return e.convo.CreateSession(ctx, userID, scenarioID)
+	return e.convo.CreateSession(ctx, userID, scenarioID, guide)
 }
 
 // TranscriptLimit is how many turns a resumed conversation hands back. Generous
@@ -336,6 +339,11 @@ type Reply struct {
 }
 
 func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (Reply, error) {
+	// The authored guided pass first. When a script owns this turn the character's next
+	// line is already written, and calling the model would walk the conversation off it.
+	if r, handled, err := e.scriptedReply(ctx, userID, sessionID, text); err != nil || handled {
+		return r, err
+	}
 	// Read BEFORE prepare appends the user turn — prepare does not touch assistant
 	// turns, but reading first makes the ordering independent of that detail.
 	prevMood, _ := e.convo.LatestAssistantMood(ctx, sessionID)
@@ -368,6 +376,22 @@ func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string
 // it is resolved. What the model produced and what the learner reads differ by
 // exactly that tag, and the persisted turn stores the reader's version.
 func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text string, onMood func(string), onDelta func(string) error) (Reply, error) {
+	// The authored guided pass. Delivered through the same callbacks as a streamed
+	// reply — mood first, then the line in one piece — so the screen has no idea it is
+	// reading a file instead of a model, and there is one code path on the client.
+	if r, handled, err := e.scriptedReply(ctx, userID, sessionID, text); err != nil || handled {
+		if handled {
+			if onMood != nil {
+				onMood(r.Mood)
+			}
+			if onDelta != nil {
+				if derr := onDelta(r.Text); derr != nil {
+					return Reply{}, derr
+				}
+			}
+		}
+		return r, err
+	}
 	prevMood, _ := e.convo.LatestAssistantMood(ctx, sessionID)
 	system, msgs, sc, priorNpc, err := e.prepare(ctx, userID, sessionID, text)
 	if err != nil {

@@ -49,6 +49,11 @@ type Choice struct {
 	Why string `json:"why"`
 }
 
+// AllowedTiers is the code-side set, so an authored script naming an unknown tier is
+// dropped rather than shown as an unlabelled card. Extensible on purpose: a new tier
+// needs an entry here and nothing else.
+var AllowedTiers = map[ChoiceTier]bool{TierBest: true, TierStrong: true, TierFair: true}
+
 // ChoiceCount is how many are offered. Three: two is a coin toss with no middle, four
 // is a menu to read rather than a decision to make.
 const ChoiceCount = 3
@@ -62,6 +67,13 @@ func (e *Engine) SuggestReplies(ctx context.Context, userID, sessionID string) (
 	// Read-only: `prepare` is the other way to get here and it RECORDS a user turn,
 	// which would put an empty line in the transcript every time the screen asked for
 	// suggestions.
+	// An authored script wins. Its three are a decision somebody made and reviewed;
+	// the model's three are a sample. See script.go.
+	if st, scripted, err := e.ScriptedChoices(ctx, userID, sessionID); err != nil {
+		return nil, err
+	} else if scripted {
+		return st.Choices, nil
+	}
 	sess, err := e.convo.GetSession(ctx, sessionID)
 	if err != nil {
 		return nil, err

@@ -2454,6 +2454,21 @@ export interface components {
         };
         "internal_adapters_http.choicesResp": {
             choices?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Choice"][];
+            /** @description Done: the closing line has been reached, so there is nothing left to pick. */
+            done?: boolean;
+            /**
+             * @description Scripted: these three were authored for this beat of this conversation, and the
+             *     character's next line is authored too. The screen uses it to drop the text box —
+             *     in a scripted run there is nothing to type, and the free pass is where typing
+             *     belongs.
+             */
+            scripted?: boolean;
+            total?: number;
+            /**
+             * @description Turn/Total place the learner in the authored conversation (0-based beat).
+             *     Meaningless when Scripted is false.
+             */
+            turn?: number;
         };
         "internal_adapters_http.correctReq": {
             context?: string;

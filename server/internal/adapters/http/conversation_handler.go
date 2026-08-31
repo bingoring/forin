@@ -102,6 +102,10 @@ func (h *conversationHandler) start(w http.ResponseWriter, r *http.Request) {
 	// a new one. Default stays "fresh session" so existing callers are unchanged.
 	var req struct {
 		ResumeSessionID string `json:"resumeSessionId"`
+		// Which rung of the ladder the learner tapped: "choices" for the guided pass,
+		// "free" (or absent) for doing it alone. Absent is read as free — the value only
+		// ever ADDS scaffolding, so an old client loses help rather than gaining it.
+		Guide string `json:"guide"`
 	}
 	// The error is deliberately ignored: an absent body is the normal case (start
 	// fresh), so a decode failure just leaves ResumeSessionID empty. A malformed
@@ -116,7 +120,7 @@ func (h *conversationHandler) start(w http.ResponseWriter, r *http.Request) {
 		httpx.JSON(w, http.StatusOK, map[string]string{"sessionId": req.ResumeSessionID})
 		return
 	}
-	sessionID, err := h.engine.StartSession(r.Context(), uid, r.PathValue("id"))
+	sessionID, err := h.engine.StartSession(r.Context(), uid, r.PathValue("id"), req.Guide)
 	if errors.Is(err, conversation.ErrScenarioNotFound) {
 		httpx.Error(w, http.StatusNotFound, "scenario not found")
 		return
@@ -359,6 +363,17 @@ type correctReq struct {
 
 type choicesResp struct {
 	Choices []conversation.Choice `json:"choices"`
+	// Scripted: these three were authored for this beat of this conversation, and the
+	// character's next line is authored too. The screen uses it to drop the text box —
+	// in a scripted run there is nothing to type, and the free pass is where typing
+	// belongs.
+	Scripted bool `json:"scripted"`
+	// Turn/Total place the learner in the authored conversation (0-based beat).
+	// Meaningless when Scripted is false.
+	Turn  int `json:"turn"`
+	Total int `json:"total"`
+	// Done: the closing line has been reached, so there is nothing left to pick.
+	Done bool `json:"done"`
 }
 
 // @Summary Three replies the learner could give next (guided steps only)
@@ -370,6 +385,19 @@ func (h *conversationHandler) choices(w http.ResponseWriter, r *http.Request) {
 	uid, ok := UserID(r.Context())
 	if !ok {
 		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	// The authored pass first, and it answers with its own shape: the screen needs to
+	// know it is scripted BEFORE it decides whether to draw a text box.
+	if st, scripted, err := h.engine.ScriptedChoices(r.Context(), uid, r.PathValue("sessionId")); err == nil && scripted {
+		cs := st.Choices
+		if cs == nil {
+			cs = []conversation.Choice{}
+		}
+		httpx.JSON(w, http.StatusOK, choicesResp{Choices: cs, Scripted: true, Turn: st.Turn, Total: st.Total, Done: st.Done})
+		return
+	} else if errors.Is(err, conversation.ErrSessionNotFound) {
+		httpx.Error(w, http.StatusNotFound, "session not found")
 		return
 	}
 	out, err := h.engine.SuggestReplies(r.Context(), uid, r.PathValue("sessionId"))

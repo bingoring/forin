@@ -64,6 +64,7 @@ type ConversationSession struct {
 	ScenarioID  string             `json:"scenario_id"`
 	StartedAt   pgtype.Timestamptz `json:"started_at"`
 	DiscardedAt pgtype.Timestamptz `json:"discarded_at"`
+	Guide       string             `json:"guide"`
 }
 
 type CorrectionResult struct {

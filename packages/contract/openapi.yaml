@@ -580,6 +580,24 @@ components:
             $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_conversation.Choice'
           type: array
           uniqueItems: false
+        done:
+          description: 'Done: the closing line has been reached, so there is nothing
+            left to pick.'
+          type: boolean
+        scripted:
+          description: |-
+            Scripted: these three were authored for this beat of this conversation, and the
+            character's next line is authored too. The screen uses it to drop the text box —
+            in a scripted run there is nothing to type, and the free pass is where typing
+            belongs.
+          type: boolean
+        total:
+          type: integer
+        turn:
+          description: |-
+            Turn/Total place the learner in the authored conversation (0-based beat).
+            Meaningless when Scripted is false.
+          type: integer
       type: object
     internal_adapters_http.correctReq:
       properties:

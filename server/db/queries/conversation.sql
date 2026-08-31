@@ -1,8 +1,8 @@
 -- name: CreateSession :one
-INSERT INTO conversation_sessions (user_id, scenario_id) VALUES ($1, $2) RETURNING id;
+INSERT INTO conversation_sessions (user_id, scenario_id, guide) VALUES ($1, $2, $3) RETURNING id;
 
 -- name: GetSession :one
-SELECT id, user_id, scenario_id FROM conversation_sessions WHERE id = $1;
+SELECT id, user_id, scenario_id, guide FROM conversation_sessions WHERE id = $1;
 
 -- name: AppendTurn :exec
 INSERT INTO dialogue_turns (session_id, role, content, mood) VALUES ($1, $2, $3, $4);

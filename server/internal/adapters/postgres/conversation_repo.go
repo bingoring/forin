@@ -21,8 +21,8 @@ func NewConversationRepo(pool *pgxpool.Pool) *ConversationRepo {
 	return &ConversationRepo{pool: pool, q: sqlc.New(pool)}
 }
 
-func (r *ConversationRepo) CreateSession(ctx context.Context, userID, scenarioID string) (string, error) {
-	return r.q.CreateSession(ctx, sqlc.CreateSessionParams{UserID: userID, ScenarioID: scenarioID})
+func (r *ConversationRepo) CreateSession(ctx context.Context, userID, scenarioID, guide string) (string, error) {
+	return r.q.CreateSession(ctx, sqlc.CreateSessionParams{UserID: userID, ScenarioID: scenarioID, Guide: guide})
 }
 
 func (r *ConversationRepo) GetSession(ctx context.Context, sessionID string) (*ports.ConversationSession, error) {
@@ -33,7 +33,7 @@ func (r *ConversationRepo) GetSession(ctx context.Context, sessionID string) (*p
 	if err != nil {
 		return nil, err
 	}
-	return &ports.ConversationSession{ID: s.ID, UserID: s.UserID, ScenarioID: s.ScenarioID}, nil
+	return &ports.ConversationSession{ID: s.ID, UserID: s.UserID, ScenarioID: s.ScenarioID, Guide: s.Guide}, nil
 }
 
 func (r *ConversationRepo) AppendTurn(ctx context.Context, sessionID, role, content, mood string) error {

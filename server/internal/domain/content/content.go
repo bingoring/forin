@@ -35,6 +35,20 @@ const (
 
 var AllowedStepTypes = set(StepDialogue, StepQuiz, StepEffect, StepBranch)
 
+// ChoiceTier ranks an authored reply without calling any of them wrong. Mirrors
+// conversation.ChoiceTier — declared here too because content validation cannot import
+// the conversation domain (that direction of dependency would make the loader need the
+// engine).
+type ChoiceTier string
+
+const (
+	TierBest   ChoiceTier = "best"
+	TierStrong ChoiceTier = "strong"
+	TierFair   ChoiceTier = "fair"
+)
+
+var AllowedTiers = set(TierBest, TierStrong, TierFair)
+
 // EffectType is interpreted by the client's effect registry (extensible).
 type EffectType string
 

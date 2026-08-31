@@ -31,16 +31,17 @@ func (q *Queries) AppendTurn(ctx context.Context, arg AppendTurnParams) error {
 }
 
 const createSession = `-- name: CreateSession :one
-INSERT INTO conversation_sessions (user_id, scenario_id) VALUES ($1, $2) RETURNING id
+INSERT INTO conversation_sessions (user_id, scenario_id, guide) VALUES ($1, $2, $3) RETURNING id
 `
 
 type CreateSessionParams struct {
 	UserID     string `json:"user_id"`
 	ScenarioID string `json:"scenario_id"`
+	Guide      string `json:"guide"`
 }
 
 func (q *Queries) CreateSession(ctx context.Context, arg CreateSessionParams) (string, error) {
-	row := q.db.QueryRow(ctx, createSession, arg.UserID, arg.ScenarioID)
+	row := q.db.QueryRow(ctx, createSession, arg.UserID, arg.ScenarioID, arg.Guide)
 	var id string
 	err := row.Scan(&id)
 	return id, err
@@ -70,19 +71,25 @@ func (q *Queries) DiscardSession(ctx context.Context, arg DiscardSessionParams) 
 }
 
 const getSession = `-- name: GetSession :one
-SELECT id, user_id, scenario_id FROM conversation_sessions WHERE id = $1
+SELECT id, user_id, scenario_id, guide FROM conversation_sessions WHERE id = $1
 `
 
 type GetSessionRow struct {
 	ID         string `json:"id"`
 	UserID     string `json:"user_id"`
 	ScenarioID string `json:"scenario_id"`
+	Guide      string `json:"guide"`
 }
 
 func (q *Queries) GetSession(ctx context.Context, id string) (GetSessionRow, error) {
 	row := q.db.QueryRow(ctx, getSession, id)
 	var i GetSessionRow
-	err := row.Scan(&i.ID, &i.UserID, &i.ScenarioID)
+	err := row.Scan(
+		&i.ID,
+		&i.UserID,
+		&i.ScenarioID,
+		&i.Guide,
+	)
 	return i, err
 }
 
