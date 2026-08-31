@@ -238,6 +238,7 @@ type ScenarioAttempt struct {
 	StartedAt      pgtype.Timestamptz `json:"started_at"`
 	ClearedAt      pgtype.Timestamptz `json:"cleared_at"`
 	Grade          pgtype.Int4        `json:"grade"`
+	Guide          string             `json:"guide"`
 }
 
 type SpeechAttempt struct {

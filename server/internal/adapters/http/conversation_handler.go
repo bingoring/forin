@@ -229,7 +229,12 @@ func (h *conversationHandler) complete(w http.ResponseWriter, r *http.Request) {
 	if g.Passed {
 		state = "cleared"
 	}
-	p, err := h.progress.RecordAttempt(r.Context(), uid, g.ScenarioID, g.XPAwarded, state, g.Score)
+	// Which rung this run was on. A clear made with three replies on screen is not a
+	// clear made alone, and recording them the same would mean the free pass unlocked
+	// itself.
+	guided, _ := h.progress.GuidedPassesCleared(r.Context(), uid)
+	guide := curriculum.GuideForScenario(g.ScenarioID, guided[g.ScenarioID])
+	p, err := h.progress.RecordAttempt(r.Context(), uid, g.ScenarioID, g.XPAwarded, state, g.Score, string(guide))
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not record attempt")
 		return

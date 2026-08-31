@@ -2,128 +2,109 @@ package curriculum
 
 import "testing"
 
-// The shape of a run: guided at the front, a nudge in the middle, unaided at the end.
-func TestGuideForWalksFromChoicesToFree(t *testing.T) {
-	// A five-step run: 2 guided, 1 hinted, 2 free.
-	got := make([]GuideLevel, 5)
-	for i := range got {
-		got[i] = GuideFor(i, 5, "dlg")
-	}
-	want := []GuideLevel{GuideChoices, GuideChoices, GuideHint, GuideFree, GuideFree}
-	for i := range want {
-		if got[i] != want[i] {
-			t.Fatalf("step %d = %q, want %q (whole run %v)", i, got[i], want[i], got)
-		}
-	}
-}
-
-func TestAShortRunStillLoosensItsGrip(t *testing.T) {
-	// Two steps have no room for a middle, so it is one guided and one free rather than
-	// two of the same — a run that never lets go teaches nothing about doing it alone.
-	if a, b := GuideFor(0, 2, "dlg"), GuideFor(1, 2, "dlg"); a != GuideChoices || b != GuideFree {
-		t.Fatalf("two-step run = (%q, %q), want (choices, free)", a, b)
-	}
-	// One step has nothing to lean on. Choices beat a blank box, which is the state this
-	// whole feature exists to fix.
-	if got := GuideFor(0, 1, "dlg"); got != GuideChoices {
-		t.Fatalf("single-step run = %q, want choices", got)
-	}
-}
-
-func TestABossIsAlwaysUnaided(t *testing.T) {
-	// It is the curriculum's test. A test with three answers printed under the question
-	// is not one — wherever it sits in the run.
-	for _, i := range []int{0, 1, 4} {
-		if got := GuideFor(i, 5, "boss"); got != GuideFree {
-			t.Fatalf("boss at %d = %q, want free", i, got)
-		}
-	}
-	// Including a curriculum that is only a boss: there is nothing before it to have
-	// learned from, so there is nothing to be tested on either way.
-	if got := GuideFor(0, 1, "boss"); got != GuideFree {
-		t.Fatalf("lone boss = %q, want free", got)
-	}
-}
-
-func TestGuidedStepsComeFirstAndNeverFewerThanTheRest(t *testing.T) {
-	// Whatever the length, the front of a run is the part that helps. A rounding that
-	// guided fewer steps than it left free would put the hardest half first.
-	for total := 1; total <= 12; total++ {
-		var choices, free int
-		var seen []GuideLevel
-		for i := 0; i < total; i++ {
-			g := GuideFor(i, total, "dlg")
-			seen = append(seen, g)
-			switch g {
-			case GuideChoices:
-				choices++
-			case GuideFree:
-				free++
-			}
-		}
-		if choices < free {
-			t.Fatalf("run of %d guides %d and frees %d: %v", total, choices, free, seen)
-		}
-		// And it never tightens: once it has stopped offering choices it must not start
-		// again, or the run reads as random rather than as a course.
-		for i := 1; i < len(seen); i++ {
-			if rank(seen[i]) < rank(seen[i-1]) {
-				t.Fatalf("run of %d goes backwards at step %d: %v", total, i, seen)
-			}
-		}
-	}
-}
-
-func rank(g GuideLevel) int {
-	switch g {
-	case GuideChoices:
-		return 0
-	case GuideHint:
-		return 1
-	default:
-		return 2
-	}
-}
-
-func TestGuideForStepUsesTheCurriculumItIsIn(t *testing.T) {
+// The ladder is on ONE situation, not across different ones.
+func TestADialogueIsPlayedTwice(t *testing.T) {
 	c := Curriculum{Steps: []Step{
-		{Kind: "dlg", ScenarioID: "A"},
-		{Kind: "dlg", ScenarioID: "B"},
-		{Kind: "dlg", ScenarioID: "C"},
-		{Kind: "boss", ScenarioID: "D"},
+		{Kind: "dlg", Name: "첫 출근 · 자기소개", ScenarioID: "SCN-ORIENT-00001"},
 	}}
-	if got := c.GuideForStep("A"); got != GuideChoices {
-		t.Fatalf("first step = %q, want choices", got)
+	runs := c.Runs()
+	if len(runs) != 2 {
+		t.Fatalf("a dialogue produced %d runs, want 2: %+v", len(runs), runs)
 	}
-	if got := c.GuideForStep("D"); got != GuideFree {
-		t.Fatalf("boss = %q, want free", got)
+	// Guided first, free second. The other order would be a lesson after the exam.
+	if runs[0].Guide != GuideChoices || runs[1].Guide != GuideFree {
+		t.Fatalf("runs = %q then %q, want choices then free", runs[0].Guide, runs[1].Guide)
 	}
-	// A scenario this curriculum does not contain gets the unassisted app: an unknown
-	// context is not a place to invent help for.
-	if got := c.GuideForStep("ZZZ"); got != GuideFree {
-		t.Fatalf("unknown scenario = %q, want free", got)
+	// Same situation both times. Learning to introduce yourself and then being turned
+	// loose on a burns case is not practice, it is a new problem.
+	if runs[0].ScenarioID != runs[1].ScenarioID {
+		t.Fatalf("the two passes are different scenarios: %q vs %q", runs[0].ScenarioID, runs[1].ScenarioID)
+	}
+	if runs[0].Pass != PassGuided || runs[1].Pass != PassFree {
+		t.Fatalf("passes = %d, %d", runs[0].Pass, runs[1].Pass)
 	}
 }
 
-// The catalog as authored: every curriculum should actually walk the learner down, or
-// the feature is only true in the abstract.
-func TestTheRealCatalogGuidesItsOpeners(t *testing.T) {
-	var guided, runs int
-	for _, c := range authored {
-		if len(c.Steps) == 0 {
-			continue
-		}
-		runs++
-		if c.GuideForStep(c.Steps[0].ScenarioID) == GuideChoices {
-			guided++
+func TestABossIsPlayedOnceAndUnaided(t *testing.T) {
+	c := Curriculum{Steps: []Step{{Kind: "boss", ScenarioID: "SCN-ER-00001"}}}
+	runs := c.Runs()
+	if len(runs) != 1 {
+		t.Fatalf("a boss produced %d runs, want 1", len(runs))
+	}
+	// It is the test. Three answers printed under the question is not one — and playing
+	// it twice would make the run's ending drag, which is the last place to lose someone.
+	if runs[0].Guide != GuideFree {
+		t.Fatalf("boss guide = %q, want free", runs[0].Guide)
+	}
+	// A quiz is not a conversation and has nothing to scaffold.
+	if got := Passes("quiz"); got != 1 {
+		t.Fatalf("quiz passes = %d, want 1", got)
+	}
+	if got := GuideForPass("quiz", PassGuided); got != GuideFree {
+		t.Fatalf("quiz guide = %q, want free", got)
+	}
+}
+
+func TestThereIsNoThirdRung(t *testing.T) {
+	// A middle hint-only pass was the obvious third rung and it is one too many: nobody
+	// wants to do their first shift three times. The hint survives as something reached
+	// for DURING the free pass, which is also what makes it worth anything.
+	if got := Passes("dlg"); got != 2 {
+		t.Fatalf("dialogue passes = %d, want 2", got)
+	}
+	for _, p := range []Pass{PassGuided, PassFree} {
+		if g := GuideForPass("dlg", p); g != GuideChoices && g != GuideFree {
+			t.Fatalf("pass %d = %q, which is neither rung", p, g)
 		}
 	}
-	if runs == 0 {
+}
+
+func TestGuideForScenarioTurnsOnWhatTheyHaveDone(t *testing.T) {
+	const opener = "SCN-ORIENT-00001" // 본관 1F, the first dialogue in the catalog
+
+	// First time through a conversation: choices.
+	if got := GuideForScenario(opener, false); got != GuideChoices {
+		t.Fatalf("first run = %q, want choices", got)
+	}
+	// Having finished the guided pass, the same situation comes back unaided. That is
+	// the whole ladder: the second time, it is theirs.
+	if got := GuideForScenario(opener, true); got != GuideFree {
+		t.Fatalf("second run = %q, want free", got)
+	}
+	// A scenario the catalog does not contain — a board situation, a paged call — is
+	// always free. Help is a property of a COURSE, and outside one there is none.
+	if got := GuideForScenario("SCN-NOT-IN-CATALOG", false); got != GuideFree {
+		t.Fatalf("uncatalogued scenario = %q, want free", got)
+	}
+}
+
+// The catalog as authored, since the claim is about the product and not the arithmetic.
+func TestTheLadderRoughlyDoublesTheCatalog(t *testing.T) {
+	var steps, runs, guided int
+	for _, c := range authored {
+		steps += len(c.Steps)
+		for _, r := range c.Runs() {
+			runs++
+			if r.Guide == GuideChoices {
+				guided++
+			}
+		}
+	}
+	if steps == 0 {
 		t.Fatal("the catalog is empty")
 	}
-	// The only openers that are not guided are curricula that open on a boss, which is
-	// a deliberate authoring choice and rare.
-	if guided*10 < runs*8 {
-		t.Fatalf("only %d of %d curricula open with choices", guided, runs)
+	// Not exactly double — bosses and quizzes are played once — but close to it, which
+	// is the point: the second pass is the same content with the scaffolding removed,
+	// and it costs no new authoring.
+	if runs <= steps {
+		t.Fatalf("%d steps produced %d runs; the ladder added nothing", steps, runs)
+	}
+	if runs*10 < steps*15 {
+		t.Fatalf("%d steps produced only %d runs, well short of doubling", steps, runs)
+	}
+	// And a real share of the catalog is now guided, or the feature is only true on
+	// paper.
+	if guided*3 < runs {
+		t.Fatalf("only %d of %d runs are guided", guided, runs)
 	}
 }

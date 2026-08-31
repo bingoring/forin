@@ -314,7 +314,7 @@ func (r *ProgressRepo) RecordMission(ctx context.Context, userID, missionID stri
 	return r.q.RecordMission(ctx, sqlc.RecordMissionParams{UserID: userID, MissionID: missionID})
 }
 
-func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int) (*progress.Progress, error) {
+func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int, guide string) (*progress.Progress, error) {
 	if state == "" {
 		state = "cleared"
 	}
@@ -329,7 +329,7 @@ func (r *ProgressRepo) RecordAttempt(ctx context.Context, userID, scenarioID str
 	if grade >= 0 {
 		gradeCol = pgtype.Int4{Int32: int32(grade), Valid: true}
 	}
-	if err := q.InsertAttempt(ctx, sqlc.InsertAttemptParams{UserID: userID, ScenarioID: scenarioID, State: state, Score: score, Grade: gradeCol}); err != nil {
+	if err := q.InsertAttempt(ctx, sqlc.InsertAttemptParams{UserID: userID, ScenarioID: scenarioID, State: state, Score: score, Grade: gradeCol, Guide: guide}); err != nil {
 		return nil, err
 	}
 	today := pgtype.Date{Time: time.Now().UTC(), Valid: true}
@@ -580,4 +580,17 @@ func (r *ProgressRepo) AddBonusXP(ctx context.Context, userID string, xp int) er
 		return nil // no progress row yet: nothing earned, nothing to add to
 	}
 	return err
+}
+
+// GuidedPassesCleared is the set of scenarios the learner finished with help.
+func (r *ProgressRepo) GuidedPassesCleared(ctx context.Context, userID string) (map[string]bool, error) {
+	ids, err := r.q.GuidedPassesCleared(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	out := make(map[string]bool, len(ids))
+	for _, id := range ids {
+		out[id] = true
+	}
+	return out, nil
 }

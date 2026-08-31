@@ -74,7 +74,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("PATCH /me/display-name", auth(http.HandlerFunc(mh.setDisplayName)))
 
 	// Content (public read).
-	ch := &contentHandler{content: d.Content, pronunciationEnabled: d.PronunciationEnabled}
+	ch := &contentHandler{content: d.Content, progress: d.Progress, pronunciationEnabled: d.PronunciationEnabled}
 	mux.HandleFunc("GET /content/manifest", ch.manifest)
 	mux.HandleFunc("GET /departments", ch.departments)
 	mux.HandleFunc("GET /interiors/{id}", ch.interior)

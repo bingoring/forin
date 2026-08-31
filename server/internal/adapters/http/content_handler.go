@@ -18,6 +18,9 @@ import (
 
 type contentHandler struct {
 	content ports.ContentReader
+	// Read only to answer "has this learner already done the guided pass of this
+	// scenario?" — which is what decides whether the next run offers choices.
+	progress ports.ProgressRepo
 	// pronunciationEnabled mirrors whether Azure Speech is configured
 	// (business-rules §5: "AZURE_SPEECH_KEY 미구성 → ... 설정 응답에 기능 비활성
 	// 플래그를 실어 앱이 진입점을 숨기게 한다. 503을 던지고 화면에서 실패시키지 않는다").
@@ -103,14 +106,24 @@ func (h *contentHandler) scenario(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusNotFound, "scenario not found")
 		return
 	}
-	// How much help this scenario's dialogue offers, from where it sits in its
-	// curriculum. Sent with the scenario so the screen knows what to draw before the
-	// conversation starts — asking afterwards would show a text box for a moment and
+	// How much help this run gets: choices the first time through a conversation, and
+	// nothing the second. Sent WITH the scenario so the screen knows what to draw before
+	// the conversation starts — asking afterwards would show a text box for a moment and
 	// then replace it, which reads as the app changing its mind.
+	//
+	// Anonymous reads (there are none today, but the route does not require auth to be
+	// meaningful) fall through to the unguided app rather than guessing.
+	guide := curriculum.GuideFree
+	if uid, ok := UserID(r.Context()); ok && h.progress != nil {
+		guided, err := h.progress.GuidedPassesCleared(r.Context(), uid)
+		if err == nil {
+			guide = curriculum.GuideForScenario(s.ID, guided[s.ID])
+		}
+	}
 	httpx.JSON(w, http.StatusOK, struct {
 		*content.Scenario
 		Guide string `json:"guide"`
-	}{s, string(curriculum.GuideForScenario(s.ID))})
+	}{s, string(guide)})
 }
 
 // @Summary Get a quiz (playable content)

@@ -97,7 +97,7 @@ func TestAcceptingIsNotAnswering(t *testing.T) {
 	}
 
 	// Now they actually go.
-	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80); err != nil {
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80, "free"); err != nil {
 		t.Fatalf("RecordAttempt: %v", err)
 	}
 	paid, err = repo.CompletePageIfAttempted(ctx, uid, day)
@@ -125,7 +125,7 @@ func TestAnAttemptBeforeAcceptingDoesNotCount(t *testing.T) {
 	// Played the scenario earlier today, THEN the call arrived pointing at it. Answering
 	// a call means going now; an attempt from before it was taken is not that, and
 	// counting it would pay the bonus for doing nothing.
-	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80); err != nil {
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80, "free"); err != nil {
 		t.Fatalf("RecordAttempt: %v", err)
 	}
 	if _, err := repo.TodaysPage(ctx, uid, day, "SCN-ER-00001"); err != nil {
@@ -153,7 +153,7 @@ func TestCompleteWithoutAcceptingPaysNothing(t *testing.T) {
 	if _, err := repo.TodaysPage(ctx, uid, day, "SCN-ER-00001"); err != nil {
 		t.Fatalf("TodaysPage: %v", err)
 	}
-	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80); err != nil {
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80, "free"); err != nil {
 		t.Fatalf("RecordAttempt: %v", err)
 	}
 	// Played it on their own, never took the call. No bonus: the call was not answered.
@@ -189,7 +189,7 @@ func TestAddBonusXPAddsWithoutLoggingAnAttempt(t *testing.T) {
 	ctx := context.Background()
 
 	// A progress row has to exist for XP to land anywhere; RecordAttempt creates it.
-	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80); err != nil {
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80, "free"); err != nil {
 		t.Fatalf("RecordAttempt: %v", err)
 	}
 	before, err := repo.GetProgress(ctx, uid)

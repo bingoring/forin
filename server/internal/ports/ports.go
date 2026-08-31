@@ -24,7 +24,13 @@ type ProgressRepo interface {
 	// returns new progress. state is 'cleared' (passed → counts as 완료) or
 	// 'attempted' (engaged but below pass). grade is the 0..100 AI score, or <0 for
 	// a direct/legacy attempt with no grade (stored NULL).
-	RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int) (*progress.Progress, error)
+	// `guide` is the help this run had (curriculum.GuideLevel: "choices" | "free").
+	// Without it a clear made with three replies on screen counts the same as one made
+	// alone, which deletes the second rung of the ladder.
+	RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int, guide string) (*progress.Progress, error)
+	// GuidedPassesCleared is the set of scenarios finished WITH help, which is what
+	// decides whether the next run of one is guided or free.
+	GuidedPassesCleared(ctx context.Context, userID string) (map[string]bool, error)
 	// ApplyReputation nudges ONE standing dimension by delta, clamped to 0..100.
 	// The dimension is passed by name (reputation.Dimension) so the column layout
 	// stays an implementation detail of the repo — a future per-profession

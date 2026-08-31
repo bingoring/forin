@@ -289,9 +289,37 @@ func (q *Queries) GetProgress(ctx context.Context, userID string) (GetProgressRo
 	return i, err
 }
 
+const guidedPassesCleared = `-- name: GuidedPassesCleared :many
+SELECT DISTINCT scenario_id FROM scenario_attempts
+ WHERE user_id = $1 AND state = 'cleared' AND guide = 'choices'
+`
+
+// Which scenarios the learner has finished WITH help. The second pass of a step is only
+// unlocked by the first, and a clear that used choices is not a clear on their own —
+// counting it as one would delete the ladder's second rung.
+func (q *Queries) GuidedPassesCleared(ctx context.Context, userID string) ([]string, error) {
+	rows, err := q.db.Query(ctx, guidedPassesCleared, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []string
+	for rows.Next() {
+		var scenario_id string
+		if err := rows.Scan(&scenario_id); err != nil {
+			return nil, err
+		}
+		items = append(items, scenario_id)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const insertAttempt = `-- name: InsertAttempt :exec
-INSERT INTO scenario_attempts (user_id, scenario_id, state, score, grade, cleared_at)
-VALUES ($1, $2, $3, $4, $5, CASE WHEN $3 = 'cleared' THEN now() ELSE NULL END)
+INSERT INTO scenario_attempts (user_id, scenario_id, state, score, grade, guide, cleared_at)
+VALUES ($1, $2, $3, $4, $5, $6, CASE WHEN $3 = 'cleared' THEN now() ELSE NULL END)
 `
 
 type InsertAttemptParams struct {
@@ -300,6 +328,7 @@ type InsertAttemptParams struct {
 	State      string      `json:"state"`
 	Score      int         `json:"score"`
 	Grade      pgtype.Int4 `json:"grade"`
+	Guide      string      `json:"guide"`
 }
 
 // state is 'cleared' (passed, counts as 완료) or 'attempted' (engaged but below the
@@ -312,6 +341,7 @@ func (q *Queries) InsertAttempt(ctx context.Context, arg InsertAttemptParams) er
 		arg.State,
 		arg.Score,
 		arg.Grade,
+		arg.Guide,
 	)
 	return err
 }

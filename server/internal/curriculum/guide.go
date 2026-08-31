@@ -1,90 +1,124 @@
 package curriculum
 
-// How much help a step gives, and why it is derived rather than authored.
+// How much help a step gives, and why the same situation is played twice.
 //
-// Testers reported the real problem plainly: faced with a patient and an empty text
-// box, they did not know what to say. The app was giving them total freedom before it
-// had given them anything to be free with.
+// Testers said the honest thing: facing a patient and an empty text box, they did not
+// know what to say. The app gave total freedom before it had given anything to be free
+// with.
 //
-// So a curriculum now teaches the same situation three times over, loosening its grip:
+// The fix is a LADDER ON ONE SITUATION, not across different ones. Learning how to
+// introduce yourself on your first shift and then being turned loose on a burns case is
+// not practice, it is a new problem — what was learned has nowhere to go. So every
+// dialogue step is played twice:
 //
-//	choices — every NPC turn offers three replies to pick from
-//	hint    — no replies, just a nudge about what this turn needs
-//	free    — say it yourself, which is what the whole app is for
+//	pass 1 — GUIDED: every NPC turn offers three replies to pick from
+//	pass 2 — FREE:   say it yourself, with a hint available if you want one
 //
-// Derived from the step's POSITION rather than authored on each step, for two reasons.
-// There are two hundred-odd steps already written and re-authoring them all to add one
-// field is a migration nobody would finish; and the level is a fact about where the
-// learner is in the run, not about the scenario — the same scenario can be the guided
-// opener of one curriculum and the free-form test of another.
+// Two passes rather than three. A middle "hint-only" pass was the obvious third rung and
+// it is one rung too many: nobody wants to do their first shift three times. The hint
+// survives as something you can reach for during the free pass, which is also what makes
+// it worth anything — a hint nobody paid attention to because it was always on screen
+// taught nothing.
+//
+// Doing it this way doubles the length of the existing catalog without authoring a
+// single new scenario, because the second pass is the same content with the scaffolding
+// taken away.
 type GuideLevel string
 
 const (
 	// GuideChoices offers three candidate replies per NPC turn.
 	GuideChoices GuideLevel = "choices"
-	// GuideHint says what the turn needs without saying the words.
-	GuideHint GuideLevel = "hint"
-	// GuideFree is the app as it was: an empty box and a patient waiting.
+	// GuideFree is an empty box and a patient waiting — with a hint within reach.
 	GuideFree GuideLevel = "free"
 )
 
-// GuideFor returns the scaffolding for step `i` (0-based) of a run of `total`, given
-// its kind.
+// Pass is one run at a step: the guided one, then the free one.
+type Pass int
+
+const (
+	PassGuided Pass = 1
+	PassFree   Pass = 2
+)
+
+// Passes is how many runs a step of this kind gets.
 //
-// A boss step is ALWAYS free, whatever its position. It is the curriculum's test — the
-// point at which the learner does unaided what the run has been teaching — and a test
-// with three answers printed under the question is not one. This is also why a
-// curriculum that is nothing but a boss gives no help at all: there is nothing before
-// it to have learned from.
+// A boss gets ONE, and it is free. It is the curriculum's test — the point at which the
+// learner does unaided what the run has been teaching — and a test with three answers
+// printed under the question is not one. Playing it twice would also make the run's
+// ending drag, which is the last place to lose someone.
 //
-// Everything else splits the run in three, rounded so that the guided part is never
-// shorter than the parts after it. With two steps that is one guided and one free: a
-// two-step run has no room for a middle.
-func GuideFor(i, total int, kind string) GuideLevel {
-	if kind == "boss" {
-		return GuideFree
-	}
-	if total <= 1 {
-		// One step and nothing to lean on. Choices are better than a blank box here,
-		// which is the state the whole feature exists to fix.
-		return GuideChoices
-	}
-	// Ceiling division, so a run of 4 guides 2 rather than 1.
-	third := (total + 2) / 3
-	switch {
-	case i < third:
-		return GuideChoices
-	case i < total-third:
-		return GuideHint
+// A quiz is not a conversation and has nothing to scaffold.
+func Passes(kind string) int {
+	switch kind {
+	case "boss", "quiz":
+		return 1
 	default:
-		return GuideFree
+		return 2
 	}
 }
 
-// GuideForStep is GuideFor applied to a curriculum's own step list — the form callers
-// actually have. Returns GuideFree for a scenario the curriculum does not contain,
-// which is the safe answer: an unknown context gets the unassisted app.
-func (c Curriculum) GuideForStep(scenarioID string) GuideLevel {
-	for i, s := range c.Steps {
-		if s.ScenarioID == scenarioID {
-			return GuideFor(i, len(c.Steps), s.Kind)
-		}
+// GuideForPass is the help offered on run `p` of a step of this kind.
+func GuideForPass(kind string, p Pass) GuideLevel {
+	if kind == "boss" || kind == "quiz" {
+		return GuideFree
+	}
+	if p == PassGuided {
+		return GuideChoices
 	}
 	return GuideFree
 }
 
-// GuideForScenario is the level the catalog gives a scenario, wherever it appears.
+// StepRun is one playable run: which scenario, and how much help it gives.
 //
-// The lookup is by scenario id because that is all a caller opening a scenario has —
-// the client asks for "SCN-ER-00002", not for a position in a run. A scenario the
-// catalog does not contain (a board-only situation, a paged call) gets GuideFree: help
-// is a property of a COURSE, and outside one there is no course to be at the start of.
-func GuideForScenario(scenarioID string) GuideLevel {
+// The catalog authors steps; the learner plays runs. Keeping them as separate types is
+// what lets the ladder exist without touching a single authored file.
+type StepRun struct {
+	Kind       string
+	Name       string
+	ScenarioID string
+	Pass       Pass
+	// Passes is how many runs this step has in total, so a caller can say "1/2" without
+	// re-deriving it.
+	Passes int
+	Guide  GuideLevel
+}
+
+// Runs expands a curriculum's authored steps into the runs a learner actually plays.
+func (c Curriculum) Runs() []StepRun {
+	out := make([]StepRun, 0, len(c.Steps)*2)
+	for _, s := range c.Steps {
+		n := Passes(s.Kind)
+		for p := 1; p <= n; p++ {
+			out = append(out, StepRun{
+				Kind:       s.Kind,
+				Name:       s.Name,
+				ScenarioID: s.ScenarioID,
+				Pass:       Pass(p),
+				Passes:     n,
+				Guide:      GuideForPass(s.Kind, Pass(p)),
+			})
+		}
+	}
+	return out
+}
+
+// GuideForScenario is the help a scenario gets on a learner's NEXT run of it.
+//
+// `clearedGuided` says whether they have already finished its guided pass. That is the
+// only thing that decides it: the first time through a conversation you get choices, the
+// second time you are on your own. A scenario the catalog does not contain (a board-only
+// situation, a paged call) is always free — help is a property of a COURSE, and outside
+// one there is no course to be at the start of.
+func GuideForScenario(scenarioID string, clearedGuided bool) GuideLevel {
 	for _, c := range authored {
-		for i, s := range c.Steps {
-			if s.ScenarioID == scenarioID {
-				return GuideFor(i, len(c.Steps), s.Kind)
+		for _, s := range c.Steps {
+			if s.ScenarioID != scenarioID {
+				continue
 			}
+			if Passes(s.Kind) == 1 || clearedGuided {
+				return GuideFree
+			}
+			return GuideChoices
 		}
 	}
 	return GuideFree
