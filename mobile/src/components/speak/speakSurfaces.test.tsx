@@ -13,6 +13,10 @@ jest.mock('expo-audio', () => ({
 
 import { SessionSpeechReviewCard } from './SessionSpeechReviewCard';
 import type { SpokenSentence } from '@/api/client';
+import { trackMounts } from '../../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 /** Every string this tree renders, flattened — the assertions below only care
  *  whether a given piece of text is on screen. */
@@ -24,7 +28,7 @@ function texts(root: ReactTestInstance): string[] {
 
 function draw(node: React.ReactElement): ReactTestInstance {
   let tree!: ReturnType<typeof create>;
-  act(() => { tree = create(node); });
+  act(() => { tree = track(create(node)); });
   return tree.root;
 }
 

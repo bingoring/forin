@@ -36,13 +36,12 @@ const C = colors.ink;
  *  the panel came to be laid out at no width at all. */
 export const MISSION_CLUSTER_W = 240;
 
-export function MissionCluster({ goals, done, open, onToggle, onEnd, opacity, disabled }: {
+export function MissionCluster({ goals, done, open, onToggle, opacity, disabled }: {
   goals: string[];
   /** 1-based mission numbers the character has reported as covered. */
   done: Set<number>;
   open: boolean;
   onToggle: () => void;
-  onEnd: () => void;
   /** Fades with the rest of the chrome while the keyboard is up. */
   opacity: Animated.AnimatedInterpolation<number> | number;
   /** True while typing: the cluster is faded, so it must not take touches either. */
@@ -58,22 +57,6 @@ export function MissionCluster({ goals, done, open, onToggle, onEnd, opacity, di
       style={{ alignItems: 'flex-end', gap: 4, width: MISSION_CLUSTER_W, opacity }}
       pointerEvents={disabled ? 'none' : 'auto'}
     >
-      {/* Main completion: resolving the situation via dialogue ends the scenario. Ending
-          with no dialogue is "중단" — no grade, no reward; ending after speaking hands
-          the sessionId to the result screen for AI grading. */}
-      <PixelButton
-        icon="check"
-        label={t('dialogue.endSituation')}
-        bg={colors.mint}
-        shadowColor={colors.mintShadow}
-        offset={2}
-        fontSize={10}
-        borderWidth={2}
-        paddingV={4}
-        paddingH={9}
-        onPress={onEnd}
-      />
-
       {goals.length > 0 && (
         <>
           {/* The chip is the whole control: it says how many missions there are and opens
@@ -98,11 +81,15 @@ export function MissionCluster({ goals, done, open, onToggle, onEnd, opacity, di
             </View>
           </Pressable>
 
-          {/* Children stay mounted and clipped by Collapsible, so opening does not
-              re-lay-out the list or lose a tick mid-animation.
-              `alignSelf: 'stretch'` is what gives the panel the cluster's width — without
-              a definite width the text inside cannot lay out at all. */}
-          <Collapsible open={open} style={{ marginTop: 3 }}>
+          {/* The WIDTH CHAIN, and every link of it matters.
+              The panel's text is a `flex: 1` child, so it needs a parent with a definite
+              width or it resolves to a basis of zero and lays out invisibly. Putting the
+              width on the cluster alone was not enough — and that is exactly what the
+              first attempt did: Collapsible sits between them, the cluster pins its
+              children to the right wall rather than stretching them, so Collapsible's
+              own width stayed auto and the panel's `alignSelf: 'stretch'` stretched to
+              nothing. The width is repeated HERE so the chain has no auto link in it. */}
+          <Collapsible open={open} style={{ marginTop: 3, width: MISSION_CLUSTER_W }}>
             <View
               testID="mission-panel"
               style={{

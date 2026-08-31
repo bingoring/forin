@@ -13,10 +13,14 @@ import { PixelIcon } from '@/components/PixelIcon';
 import { colors } from './tokens';
 import { FICONS } from './ficons';
 import { LINE_TO_FICON } from './lineToFIcon';
+import { trackMounts } from '../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 function draw(node: React.ReactElement): ReactTestInstance {
   let tree!: ReturnType<typeof create>;
-  act(() => { tree = create(node); });
+  act(() => { tree = track(create(node)); });
   return tree.root;
 }
 

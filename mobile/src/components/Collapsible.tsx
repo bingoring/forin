@@ -28,7 +28,16 @@ export function Collapsible({ open, children, style }: {
   open: boolean;
   children: ReactNode;
   /** Applied to the clipping container — borders that should only show when open, etc. */
-  style?: { borderTopWidth?: number; borderTopColor?: string; marginTop?: number };
+  /** Applied to the clipping container — borders that should only show when open, and
+   *  a WIDTH where the caller needs one.
+   *
+   *  Width matters more than it looks: this component sits between a caller and its
+   *  content, and its own box is auto-width. A caller whose content is a `flex: 1` child
+   *  needs a definite width all the way down, and a parent's width does not reach
+   *  through an auto-width link. The mission panel laid out at ~0pt for exactly that
+   *  reason — the width was set above this and stretched below it, with nothing in
+   *  between. */
+  style?: { borderTopWidth?: number; borderTopColor?: string; marginTop?: number; width?: number; alignSelf?: 'stretch' };
 }) {
   const [contentH, setContentH] = useState(0);
   // Starts where the state already is, so a block that begins open is simply open rather
@@ -57,6 +66,9 @@ export function Collapsible({ open, children, style }: {
       }}
     >
       <View
+        // Inherits the container's width, so the chain has no auto link inside this
+        // component either.
+        style={{ alignSelf: 'stretch' }}
         onLayout={(e) => {
           const h = e.nativeEvent.layout.height;
           if (h > 0 && Math.abs(h - contentH) > 1) setContentH(h);

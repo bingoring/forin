@@ -21,6 +21,10 @@ import { FloorList } from '@/components/campus/FloorList';
 import { loadFavorites } from '@/lib/favorites';
 import { colors } from '@/theme/tokens';
 import type { CurriculumBuilding } from '@/api/client';
+import { trackMounts } from '../../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 const BUILDINGS = [
   {
@@ -92,7 +96,7 @@ beforeEach(async () => {
 it('fills the star the moment it is tapped', async () => {
   let tree!: ReturnType<typeof create>;
   await act(async () => {
-    tree = create(<FloorList buildings={BUILDINGS} onOpenFloor={() => {}} />);
+    tree = track(create(<FloorList buildings={BUILDINGS} onOpenFloor={() => {}} />));
   });
 
   expect(stars(tree.root)).toHaveLength(1);
@@ -110,7 +114,7 @@ it('fills the star the moment it is tapped', async () => {
 it('empties it again on a second tap', async () => {
   let tree!: ReturnType<typeof create>;
   await act(async () => {
-    tree = create(<FloorList buildings={BUILDINGS} onOpenFloor={() => {}} />);
+    tree = track(create(<FloorList buildings={BUILDINGS} onOpenFloor={() => {}} />));
   });
   await act(async () => { await starButton(tree.root).props.onPress(); });
   await act(async () => { await starButton(tree.root).props.onPress(); });
@@ -123,7 +127,7 @@ it('does not open the floor when the star is tapped', async () => {
   const opened: string[] = [];
   let tree!: ReturnType<typeof create>;
   await act(async () => {
-    tree = create(<FloorList buildings={BUILDINGS} onOpenFloor={(f) => opened.push(f.floor)} />);
+    tree = track(create(<FloorList buildings={BUILDINGS} onOpenFloor={(f) => opened.push(f.floor)} />));
   });
   await act(async () => { await starButton(tree.root).props.onPress(); });
   expect(opened).toEqual([]);
@@ -148,7 +152,7 @@ describe('the building dropdown', () => {
     // of this test did.
     let tree!: ReturnType<typeof create>;
     act(() => {
-      tree = create(<FloorList buildings={TWO} onOpenFloor={() => {}} />);
+      tree = track(create(<FloorList buildings={TWO} onOpenFloor={() => {}} />));
     });
     expect(drawer(tree.root)).toBeDefined();
     // One star per floor across BOTH buildings, including the collapsed one.

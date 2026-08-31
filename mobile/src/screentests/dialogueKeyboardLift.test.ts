@@ -50,10 +50,11 @@ test('the covered chrome stops taking taps', () => {
   // Faded-but-hittable means a tap aimed at the thread opens a QUICK INFO tool,
   // toggles the NPC's voice, or ends the situation from behind it.
   const hits = SRC.match(/pointerEvents=\{typing \? 'none' : 'auto'\}/g) ?? [];
-  // The portrait and the QUICK INFO dock. The mission + 상황 종료 cluster moved into
-  // MissionCluster and takes the same fact as a prop — asserted where it is now, in
-  // missionCluster.test.tsx ("faded chrome does not take touches").
-  expect(hits.length).toBe(2);
+  // The portrait, the QUICK INFO dock, and 상황 종료 — which is its own child of the
+  // status row now that it is centred on the screen rather than stacked with the
+  // missions. The mission cluster takes the same fact as a prop instead; that one is
+  // asserted where it lives, in missionCluster.test.tsx.
+  expect(hits.length).toBe(3);
   expect(SRC).toMatch(/<MissionCluster[\s\S]*?disabled=\{typing\}/);
 });
 

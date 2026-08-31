@@ -167,6 +167,9 @@ export default function DialogueRoute() {
   const [doneMissions, setDoneMissions] = useState<Set<number>>(new Set());
   // Closed by default — see the chip's own comment for why.
   const [missionsOpen, setMissionsOpen] = useState(false);
+  // The exit's pressed state — it is hand-drawn rather than a PixelButton because it is
+  // a 30pt square with an icon and no label.
+  const [exitDown, setExitDown] = useState(false);
   const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
   const recorder = useAudioRecorder(WAV_16K_MONO);
 
@@ -467,20 +470,54 @@ export default function DialogueRoute() {
             their touch areas MET: there was no dead zone at all between a benign toggle
             and the way out, however far apart they looked. The toggle moved to the NPC's
             name plate, where the voice it controls comes from. */}
-        <Pressable onPress={() => { playSfx('back'); stepAway(); }} hitSlop={8}>
+        {/* The way out. It had a shadow but no press: tapping it moved nothing, so on a
+            slow frame there was no sign the tap had landed at all. Same mechanic as
+            PixelButton now — the cap drops onto its own shadow. */}
+        <Pressable
+          onPressIn={() => setExitDown(true)}
+          onPressOut={() => setExitDown(false)}
+          onPress={() => { playSfx('back'); stepAway(); }}
+          hitSlop={8}
+        >
           <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
-          <View style={{ width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{
+            width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C,
+            alignItems: 'center', justifyContent: 'center',
+            transform: [{ translateX: exitDown ? 2 : 0 }, { translateY: exitDown ? 2 : 0 }],
+          }}>
             <FIcon name="cross" size={15} />
           </View>
         </Pressable>
-        {/* The way out, then the missions under it. Everything about this cluster —
-            including why its width is a fixed number — is in MissionCluster. */}
+        {/* 상황 종료, in the CENTRE OF THE SCREEN.
+            Absolutely positioned across the row rather than laid out between its
+            neighbours: with space-between it sat whereever the × and the mission chip
+            left it, which drifted as the chip's count changed and read as "almost
+            centred". Pinned across the full width it is centred on the screen, full
+            stop. pointerEvents box-none so the row's own children stay tappable. */}
+        <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center' }}>
+          <Animated.View style={{ opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
+            <PixelButton
+              icon="check"
+              label={t('dialogue.endSituation')}
+              bg={colors.mint}
+              shadowColor={colors.mintShadow}
+              offset={2}
+              fontSize={10}
+              borderWidth={2}
+              paddingV={4}
+              paddingH={9}
+              onPress={endSituation}
+            />
+          </Animated.View>
+        </View>
+
+        {/* The missions, top-right. Everything about this cluster — including why its
+            width is repeated down the chain — is in MissionCluster. */}
         <MissionCluster
           goals={goals}
           done={doneMissions}
           open={missionsOpen}
           onToggle={() => setMissionsOpen((v) => !v)}
-          onEnd={endSituation}
           opacity={chromeOpacity}
           disabled={typing}
         />

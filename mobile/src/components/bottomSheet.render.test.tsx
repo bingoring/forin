@@ -8,6 +8,10 @@ import { Animated, Dimensions, Text } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { BottomSheet } from '@/components/BottomSheet';
 import { panDriver } from '@/testing/panDriver';
+import { trackMounts } from '../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 const SCREEN_H = Dimensions.get('window').height;
 
@@ -53,11 +57,11 @@ function instantSprings() {
 function mount(onClose = () => {}, size: 'content' | 'tall' = 'content') {
   let tree!: ReturnType<typeof create>;
   act(() => {
-    tree = create(
+    tree = track(create(
       <BottomSheet visible onClose={onClose} size={size}>
         <Text>content</Text>
       </BottomSheet>
-    );
+    ));
   });
   return tree;
 }
@@ -235,7 +239,7 @@ describe('being covered is not being closed', () => {
             </BottomSheet>
           );
           if (tree) tree.update(el);
-          else tree = create(el);
+          else tree = track(create(el));
         });
 
       render(false);
@@ -272,7 +276,7 @@ describe('being covered is not being closed', () => {
             </BottomSheet>
           );
           if (tree) tree.update(el);
-          else tree = create(el);
+          else tree = track(create(el));
         });
 
       render(true);

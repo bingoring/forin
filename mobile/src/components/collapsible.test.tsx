@@ -2,6 +2,10 @@
 import { Animated, Text, View } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
+import { trackMounts } from '../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 function timings() {
   return jest.spyOn(Animated, 'timing').mockImplementation(
@@ -24,11 +28,11 @@ it('keeps its children mounted when closed, and clips them', () => {
   // AND made the height unknowable, which is what an animation needs.
   let tree!: ReturnType<typeof create>;
   act(() => {
-    tree = create(
+    tree = track(create(
       <Collapsible open={false}>
         <Text>hidden but present</Text>
       </Collapsible>
-    );
+    ));
   });
   expect(clipper(tree.root)).toBeDefined();
   expect(tree.root.findAll((n) => typeof n.type === 'string' && n.props?.children === 'hidden but present', { deep: true })).toHaveLength(1);
@@ -39,7 +43,7 @@ it('animates height on the JS driver, quickly', () => {
   try {
     let tree!: ReturnType<typeof create>;
     act(() => {
-      tree = create(<Collapsible open={false}><View /></Collapsible>);
+      tree = track(create(<Collapsible open={false}><View /></Collapsible>));
     });
     act(() => {
       tree.update(<Collapsible open><View /></Collapsible>);
@@ -62,7 +66,7 @@ it('turns the chevron on the UI thread — a transform belongs there', () => {
   try {
     let tree!: ReturnType<typeof create>;
     act(() => {
-      tree = create(<DisclosureChevron open={false} color="#000" />);
+      tree = track(create(<DisclosureChevron open={false} color="#000" />));
     });
     act(() => {
       tree.update(<DisclosureChevron open color="#000" />);

@@ -50,7 +50,6 @@ function mount(over: Partial<Parameters<typeof MissionCluster>[0]> = {}) {
         done={new Set()}
         open={false}
         onToggle={() => {}}
-        onEnd={() => {}}
         opacity={1}
         {...over}
       />,
@@ -61,21 +60,27 @@ function mount(over: Partial<Parameters<typeof MissionCluster>[0]> = {}) {
 }
 afterEach(() => { for (const tree of mounted.splice(0)) act(() => { tree.unmount(); }); });
 
-test('the panel has a width to lay out in', () => {
+test('every link of the width chain is definite', () => {
+  // The FIRST version of this test checked the two ends — a number on the cluster, a
+  // stretch on the panel — and passed while the panel was still laying out at no width,
+  // because Collapsible sits between them and its own width stayed auto. jest has no
+  // layout engine, so the honest check is the CHAIN: walk from the panel up to the
+  // cluster and refuse any link that neither has a width nor stretches to its parent.
   const tree = mount({ open: true });
   const cluster = tree.root.findByProps({ testID: 'mission-cluster' });
   const panel = tree.root.findByProps({ testID: 'mission-panel' });
 
-  // A NUMBER, not maxWidth. With only a maximum, the width comes from the content, and
-  // the content is a flex child — which then has nothing to flex into.
-  expect(typeof flat(cluster.props.style).width).toBe('number');
   expect(flat(cluster.props.style).width).toBe(MISSION_CLUSTER_W);
   expect(flat(cluster.props.style).maxWidth).toBeUndefined();
 
-  // …and the panel takes that width, rather than hugging its own (zero-width) content.
-  // The cluster pins its other children to the right wall, so without this the panel
-  // would size itself.
-  expect(flat(panel.props.style).alignSelf).toBe('stretch');
+  const weak: string[] = [];
+  for (let n: ReactTestInstance | null = panel; n && n !== cluster; n = n.parent) {
+    if (typeof n.type !== 'string' && n !== panel) continue; // composites carry no style
+    const st = flat(n.props?.style);
+    const sized = typeof st.width === 'number' || st.alignSelf === 'stretch' || st.flex === 1;
+    if (!sized) weak.push(`${String(n.type)} ${JSON.stringify(st).slice(0, 80)}`);
+  }
+  expect(weak).toEqual([]);
 });
 
 test('every mission is rendered, so opening shows something', () => {
@@ -84,13 +89,16 @@ test('every mission is rendered, so opening shows something', () => {
   for (const g of GOALS) expect(drawn).toContain(g);
 });
 
-test('the missions come AFTER the way out', () => {
-  const tree = mount({ open: true });
-  const order = texts(tree.root);
-  // Asked for directly. It also puts the exit at a fixed distance from the corner
-  // instead of one that moves with the mission count.
-  expect(order.indexOf('상황 종료')).toBeGreaterThan(-1);
-  expect(order.indexOf(GOALS[0])).toBeGreaterThan(order.indexOf('상황 종료'));
+test('상황 종료 is centred on the SCREEN, in the same top row as the exit', () => {
+  // It used to sit inside this cluster, which put it wherever the right-hand column
+  // left it — "almost centred", and drifting as the mission count changed the chip's
+  // width. It is its own child of the status row now, pinned across the full width so
+  // the centre is the screen's centre.
+  const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
+  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center'/);
+  expect(src).toMatch(/label=\{t\('dialogue\.endSituation'\)\}/);
+  // …and it is a real button, not a hand-drawn box.
+  expect(src).toMatch(/<PixelButton\s+icon="check"/);
 });
 
 test('a covered mission is ticked and struck through', () => {
@@ -103,10 +111,12 @@ test('a covered mission is ticked and struck through', () => {
   expect(bullets).toHaveLength(GOALS.length - 1);
 });
 
-test('no missions, no chip — but still a way out', () => {
+test('no missions, no chip', () => {
+  // A scenario with no goals draws nothing here at all — an empty panel behind a chip
+  // reading "미션 0" is a control that opens onto nothing.
   const tree = mount({ goals: [] });
-  expect(texts(tree.root)).toContain('상황 종료');
   expect(tree.root.findAllByProps({ testID: 'mission-panel' })).toHaveLength(0);
+  expect(texts(tree.root)).toEqual([]);
 });
 
 test('faded chrome does not take touches', () => {
@@ -116,11 +126,14 @@ test('faded chrome does not take touches', () => {
   expect(tree.root.findByProps({ testID: 'mission-cluster' }).props.pointerEvents).toBe('none');
 });
 
-test('the exit in the opposite corner is pinned to the top', () => {
-  // The × is not in this component — it is the other child of the screen's status row,
-  // which centred its children vertically. Growing this cluster therefore re-centred the
-  // exit and slid it down. The row pins to the top now.
+test('the exit is pinned to the top, and presses', () => {
   const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
+  // The row centred its children vertically, so growing this cluster re-centred the ×
+  // and slid it down. It pins to the top now.
   const row = /paddingTop: 52[^}]*alignItems: '([a-z-]+)'/.exec(src);
   expect(row?.[1]).toBe('flex-start');
+  // And the × had a shadow but no press — tapping it moved nothing, so on a slow frame
+  // there was no sign the tap had landed. Same mechanic as PixelButton now.
+  expect(src).toMatch(/onPressIn=\{\(\) => setExitDown\(true\)\}/);
+  expect(src).toMatch(/translateX: exitDown \? 2 : 0/);
 });

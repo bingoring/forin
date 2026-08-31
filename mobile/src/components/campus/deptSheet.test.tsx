@@ -8,6 +8,10 @@
 // the observable form of "the subject survived" is that nothing is fetched again.
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
+import { trackMounts } from '../../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 jest.mock('expo-audio', () => ({
   createAudioPlayer: () => ({ play: () => {}, pause: () => {}, seekTo: () => {}, remove: () => {} }),
@@ -52,7 +56,7 @@ it('hides while suspended and comes back without refetching', () => {
         <DeptSheet target={TARGET} suspended={suspended} onClose={noop} onStart={noop} onWalk={noop} />
       );
       if (tree) tree.update(el);
-      else tree = create(el);
+      else tree = track(create(el));
     });
 
   render(false);
@@ -79,7 +83,7 @@ it('starts over when the floor itself changes', () => {
     act(() => {
       const el = <DeptSheet target={target} onClose={noop} onStart={noop} onWalk={noop} />;
       if (tree) tree.update(el);
-      else tree = create(el);
+      else tree = track(create(el));
     });
 
   render(TARGET);

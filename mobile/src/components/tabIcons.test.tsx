@@ -10,10 +10,14 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { BoardIcon, CampusIcon, HomeIcon, LabIcon, MeIcon } from './TabIcons';
 import { colors } from '@/theme/tokens';
+import { trackMounts } from '../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 function draw(node: React.ReactElement): ReactTestInstance {
   let tree!: ReturnType<typeof create>;
-  act(() => { tree = create(node); });
+  act(() => { tree = track(create(node)); });
   return tree.root;
 }
 

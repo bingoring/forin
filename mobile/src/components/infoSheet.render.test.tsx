@@ -10,6 +10,10 @@ jest.mock('expo-audio', () => ({
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { InfoSheet } from '@/components/InfoSheet';
 import { panDriver } from '@/testing/panDriver';
+import { trackMounts } from '../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 function draggables(root: ReactTestInstance) {
   return root.findAll(
@@ -35,7 +39,7 @@ it('has a handle that actually drags, and closes on a downward fling', () => {
   try {
     let tree!: ReturnType<typeof create>;
     act(() => {
-      tree = create(<InfoSheet data={DATA} onClose={onClose} />);
+      tree = track(create(<InfoSheet data={DATA} onClose={onClose} />));
     });
     const nodes = draggables(tree.root);
     expect(nodes).toHaveLength(1);

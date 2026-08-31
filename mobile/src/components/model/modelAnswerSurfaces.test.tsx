@@ -13,10 +13,14 @@ jest.mock('expo-audio', () => ({
 import { ModelAnswerCardRow } from './ModelAnswerCardRow';
 import { ModelAnswerGroupRow } from './ModelAnswerGroupRow';
 import type { ModelAnswerCard, ModelAnswerGroup } from '@/api/client';
+import { trackMounts } from '../../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 function draw(node: React.ReactElement): ReactTestInstance {
   let tree!: ReturnType<typeof create>;
-  act(() => { tree = create(node); });
+  act(() => { tree = track(create(node)); });
   return tree.root;
 }
 

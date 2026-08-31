@@ -8,6 +8,10 @@ jest.mock('expo-audio', () => ({
 }));
 
 import { MoodLift, liftKey } from '@/components/dialogue/MoodLift';
+import { trackMounts } from '../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts — see mountRegistry for why. */
+const track = trackMounts();
 
 // Outside src/app on purpose — expo-router bundles every file under the app root as
 // a route (see routeHygiene.test.ts).
@@ -21,7 +25,7 @@ function texts(root: ReactTestInstance): string[] {
 
 test('the celebration is silent without an improvement', () => {
   let tree!: ReturnType<typeof create>;
-  act(() => { tree = create(<MoodLift mood={undefined} onDone={() => {}} />); });
+  act(() => { tree = track(create(<MoodLift mood={undefined} onDone={() => {}} />)); });
   // Not a hidden banner — nothing at all. A strip that renders at opacity 0 still
   // takes layout, which would shift the input up and down between turns.
   expect(tree.toJSON()).toBeNull();
@@ -29,7 +33,7 @@ test('the celebration is silent without an improvement', () => {
 
 test('the celebration names what changed, not how well the learner did', () => {
   let tree!: ReturnType<typeof create>;
-  act(() => { tree = create(<MoodLift mood="happy" onDone={() => {}} />); });
+  act(() => { tree = track(create(<MoodLift mood="happy" onDone={() => {}} />)); });
   const out = texts(tree.root);
   expect(out).toContain('환자가 안심했어요');
   // "잘했어요" belongs to the result screen. Mid-conversation the situation reports
