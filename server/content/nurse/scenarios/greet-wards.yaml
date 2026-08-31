@@ -17,1269 +17,3382 @@
 
 - id: SCN-PHARMA-00900
   eventId: EVT-PHARMA-00900
-  title: "첫 인사 · 약제부"
-  tagline: "You must be the new nurse. Which ward are you picking up for?"
+  title: 첫 인사 · 약제부
+  tagline: You must be the new nurse. Which ward are you picking up for?
   persona:
-    name: "Daniel Osei"
+    name: Daniel Osei
     role: pharmacist
-    ageRange: "30s"
-    sub: "Pharmacist / Central Pharmacy"
-    hair: "#1F2937"
+    ageRange: 30s
+    sub: Pharmacist / Central Pharmacy
+    hair: '#1F2937'
     hairStyle: short
-    personality: "정확한 것을 좋아하고, 물어보면 끝까지 설명해 준다."
-    speakingStyle: "짧게 되묻고 확인한다. 약 이름은 또박또박."
+    personality: 정확한 것을 좋아하고, 물어보면 끝까지 설명해 준다.
+    speakingStyle: 짧게 되묻고 확인한다. 약 이름은 또박또박.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함·소속 병동을 영어로 말하기"
-    - "상대 약사의 이름과 호칭 확인하기"
-    - "픽업 절차를 어디서·누구에게 확인하면 되는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함·소속 병동을 영어로 말하기
+  - 상대 약사의 이름과 호칭 확인하기
+  - 픽업 절차를 어디서·누구에게 확인하면 되는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "Hi, I'm the new nurse on 8F."
-    - "Sorry, could you say your name again?"
-    - "Who should I ask when I'm not sure about a pickup?"
-  steps: []
+  - Hi, I'm the new nurse on 8F.
+  - Sorry, could you say your name again?
+  - Who should I ask when I'm not sure about a pickup?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: You must be the new nurse. Which ward are you picking up for?
+      lineKo: 새로 온 간호사죠? 어느 병동 약 받으러 왔어요?
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in the pharmacy today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for the pharmacy.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Eight — that's a busy floor. Have you picked up from a central pharmacy before?
+      lineKo: 8층이면 바쁜 곳이네요. 중앙약제부에서 약 받아본 적 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Then start here at the window, not at the door. I'll hand you the tray and the list together.
+      lineKo: 그럼 문이 아니라 이 창구로 오세요. 트레이랑 목록을 같이 드릴게요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Anything you want to ask before I start pulling for eight?
+      lineKo: 8층 것 꺼내기 전에 물어볼 거 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Daniel. Daniel Osei. Everyone here just says Daniel.
+      lineKo: Daniel이에요. Daniel Osei. 여기선 다 그냥 Daniel이라고 불러요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thank you, Daniel. Can I ask — what do I need to bring when I pick up a controlled drug?
+        why: 이름을 부르고, 이 부서에서 가장 중요한 절차를 먼저 물었어요.
+      - tier: strong
+        text: Thank you, Daniel. Is there anything I should bring with me?
+        why: 물어본 건 좋지만 범위가 넓어요. 구체적으로 물으면 답도 구체적입니다.
+      - tier: fair
+        text: Nice to meet you, Daniel.
+        why: 인사로 끝났어요. 여기서 한 가지를 물어두면 다음번이 훨씬 쉬워집니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Two nurses, always, and both of you sign. If a controlled drug is on the list, don't take
+        it alone.
+      lineKo: 간호사 두 명, 항상. 둘 다 서명해요. 마약류가 목록에 있으면 혼자 가져가지 마세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: So two nurses, and we both sign. I'll bring someone with me.
+        why: 규칙을 되짚고 무엇을 할지 말했어요. 지시가 행동으로 이어집니다.
+      - tier: strong
+        text: Two nurses. Understood.
+        why: 확인은 했지만 다음 행동이 없어요.
+      - tier: fair
+        text: Okay, I'll be careful.
+        why: '''조심하겠다''는 규칙을 확인해주지 않아요.'
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: The mistake I see most is signing before counting. Count in front of me, then sign.
+      lineKo: 제일 많이 보는 실수는 세기 전에 서명하는 거예요. 제 앞에서 세고, 그다음 서명하세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: Understood — count first, then sign. What should I do if the count doesn't match?
+        why: 실수를 확인하고, 그 실수가 실제로 벌어졌을 때를 물었어요.
+      - tier: strong
+        text: Understood. I'll count first.
+        why: 맞는 답이에요. 어긋났을 때가 남습니다.
+      - tier: fair
+        text: I won't do that.
+        why: 다짐만 남고 절차가 남지 않았어요.
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Ask me. If I'm not at the window, the pharmacist on call is on the board — and page the
+        charge nurse before you guess.
+      lineKo: 저한테 물어요. 창구에 없으면 당직 약사가 게시판에 있어요. 그리고 추측하기 전에 책임간호사 호출하세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Good. Anything else?
+      lineKo: 좋아요. 더 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Lockers are behind you, on the left. Right — let's get eight's tray.
+      lineKo: 사물함은 뒤쪽 왼편이에요. 자, 8층 트레이 갑시다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome to the hospital. You'll be down here often.
+      lineKo: 병원에 온 걸 환영해요. 여기 자주 내려올 거예요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "PHARMA · 픽업 카운터"
-    deptColor: "#16A34A"
-    brief: "약제부에 처음 내려왔습니다. 카운터의 약사 Daniel에게 이름과 소속 병동을 밝히고, 앞으로 무엇을 어떻게 받아 가면 되는지 물어보세요. 약 이름을 말할 일은 아직 없습니다. 본관 P1 중앙 약제부입니다."
+    dept: PHARMA · 픽업 카운터
+    deptColor: '#16A34A'
+    brief: 약제부에 처음 내려왔습니다. 카운터의 약사 Daniel에게 이름과 소속 병동을 밝히고, 앞으로 무엇을 어떻게 받아 가면 되는지 물어보세요. 약 이름을 말할 일은 아직
+      없습니다. 본관 P1 중앙 약제부입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "이름 확인"
-      - "절차 묻기"
+    - 자기소개
+    - 이름 확인
+    - 절차 묻기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#DCFCE7"
-    accent: "#16A34A"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#DCFCE7'
+    accent: '#16A34A'
 - id: SCN-OR-00900
   eventId: EVT-OR-00900
-  title: "첫 인사 · 수술실"
-  tagline: "First day in the OR? Don't touch anything blue just yet."
+  title: 첫 인사 · 수술실
+  tagline: First day in the OR? Don't touch anything blue just yet.
   persona:
-    name: "Marta Lindqvist"
+    name: Marta Lindqvist
     role: nurse
-    ageRange: "40s"
-    sub: "Circulating Nurse / OR 2"
-    hair: "#C2A878"
+    ageRange: 40s
+    sub: Circulating Nurse / OR 2
+    hair: '#C2A878'
     hairStyle: bob
-    personality: "규칙에 엄격하지만 신입에게는 먼저 알려주는 편."
-    speakingStyle: "지시를 먼저, 이유를 뒤에. 문장이 짧다."
+    personality: 규칙에 엄격하지만 신입에게는 먼저 알려주는 편.
+    speakingStyle: 지시를 먼저, 이유를 뒤에. 문장이 짧다.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 오늘 배정 확인하기"
-    - "어디에 서 있어야 하는지 묻기"
-    - "만지면 안 되는 것을 하나 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 오늘 배정 확인하기
+  - 어디에 서 있어야 하는지 묻기
+  - 만지면 안 되는 것을 하나 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse — it's my first day in the OR."
-    - "Where should I stand during the case?"
-    - "What shouldn't I touch?"
-  steps: []
+  - I'm the new nurse — it's my first day in the OR.
+  - Where should I stand during the case?
+  - What shouldn't I touch?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: First day in the OR? Don't touch anything blue just yet.
+      lineKo: 수술실 첫날이에요? 파란 건 아직 아무것도 만지지 마세요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in the OR today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for the OR.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Good. Have you circulated before, or is this all new?
+      lineKo: 좋아요. 순회 해본 적 있어요, 아니면 다 처음이에요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Then you're with me on room two all morning. Stand where you can see the door and the back
+        table.
+      lineKo: 그럼 오전엔 저랑 2번 방이에요. 문이랑 백테이블이 보이는 자리에 서세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Questions before we open?
+      lineKo: 시작 전에 물어볼 거 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Marta. Marta Lindqvist. Just Marta in the room.
+      lineKo: Marta예요. Marta Lindqvist. 방 안에선 그냥 Marta.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thank you, Marta. Before we start — what shouldn't I touch in the room?
+        why: 이름을 부르고, 이 방에서 가장 중요한 금기를 먼저 물었어요.
+      - tier: strong
+        text: Thank you, Marta. Is there anything I should be careful about?
+        why: 물음이 넓어요. '무엇을 만지면 안 되나'가 여기선 정확한 질문입니다.
+      - tier: fair
+        text: Nice to meet you, Marta.
+        why: 인사로 끝났어요. 수술실에서는 금기를 먼저 확인하는 게 안전합니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Anything draped in blue is sterile. If you're not sure whether you touched it, you touched
+        it — say so.
+      lineKo: 파란 천이 덮인 건 다 멸균이에요. 만졌는지 확실치 않으면 만진 거예요. 말하세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: So blue means sterile, and if I'm unsure I say I touched it. I'll say it.
+        why: 규칙을 되짚고 말하겠다고 약속했어요. 이 병동에서 가장 중요한 약속입니다.
+      - tier: strong
+        text: Blue is sterile. Understood.
+        why: 절반이에요. '확실치 않으면 말한다'가 규칙의 핵심입니다.
+      - tier: fair
+        text: I'll stay away from the blue.
+        why: 피하는 건 방법이지만, 깨졌을 때 말하는 것이 규칙입니다.
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: What newcomers get wrong is staying quiet about a break in sterility. Nobody is ever angry
+        that you said it.
+      lineKo: 신입이 틀리는 건 멸균이 깨진 걸 말하지 않는 거예요. 말했다고 화내는 사람은 없어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: Understood. If I break sterility, who do I tell — you, or the scrub nurse?
+        why: 누구에게 말하는지가 실제로 필요한 정보예요.
+      - tier: strong
+        text: Understood. I'll speak up.
+        why: 맞아요. 누구에게인지가 남습니다.
+      - tier: fair
+        text: I'll try not to.
+        why: 노력은 절차가 아니에요.
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Say it out loud to me. If I'm scrubbed, tell the scrub nurse — and the surgeon hears it
+        either way.
+      lineKo: 저한테 크게 말하세요. 제가 손 씻고 들어가 있으면 스크럽 간호사에게. 어차피 집도의도 듣게 됩니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Right. Anything else?
+      lineKo: 좋아요. 더 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Bags go in the sub-sterile room, not the corridor. Gown up — we're on in ten.
+      lineKo: 가방은 복도가 아니라 준비실에 두세요. 가운 입어요, 10분 뒤 시작입니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome to room two.
+      lineKo: 2번 방에 온 걸 환영해요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "수술실"
-    deptColor: "#9333EA"
-    brief: "수술실에 처음 들어왔습니다. 순회간호사 Marta가 맞아 줍니다. 이름과 직함을 말하고, 오늘 어디에 서 있어야 하는지, 만지면 안 되는 것이 무엇인지 물어보세요. 본관 3F 수술실입니다."
+    dept: 수술실
+    deptColor: '#9333EA'
+    brief: 수술실에 처음 들어왔습니다. 순회간호사 Marta가 맞아 줍니다. 이름과 직함을 말하고, 오늘 어디에 서 있어야 하는지, 만지면 안 되는 것이 무엇인지 물어보세요.
+      본관 3F 수술실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "위치 확인"
-      - "금기 확인"
+    - 자기소개
+    - 위치 확인
+    - 금기 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#E9D5FF"
-    accent: "#9333EA"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#E9D5FF'
+    accent: '#9333EA'
 - id: SCN-ICU-00900
   eventId: EVT-ICU-00900
-  title: "첫 인사 · 중환자실"
-  tagline: "You're with me today. Have you worked in an ICU before?"
+  title: 첫 인사 · 중환자실
+  tagline: You're with me today. Have you worked in an ICU before?
   persona:
-    name: "Andre Boateng"
+    name: Andre Boateng
     role: nurse
-    ageRange: "30s"
-    sub: "Charge Nurse / ICU"
-    hair: "#1F2937"
+    ageRange: 30s
+    sub: Charge Nurse / ICU
+    hair: '#1F2937'
     hairStyle: short
-    personality: "차분하고 빠르다. 질문을 반갑게 받는다."
-    speakingStyle: "핵심만. 되물어 확인하는 습관."
+    personality: 차분하고 빠르다. 질문을 반갑게 받는다.
+    speakingStyle: 핵심만. 되물어 확인하는 습관.
     mood: focused
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 경험 수준을 솔직히 말하기"
-    - "오늘 무엇을 맡는지 확인하기"
-    - "알람이 울렸을 때 누구를 부르는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 경험 수준을 솔직히 말하기
+  - 오늘 무엇을 맡는지 확인하기
+  - 알람이 울렸을 때 누구를 부르는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm new here — I haven't worked in an ICU before."
-    - "What will I be doing today?"
-    - "If an alarm goes off, who do I call first?"
-  steps: []
+  - I'm new here — I haven't worked in an ICU before.
+  - What will I be doing today?
+  - If an alarm goes off, who do I call first?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: You're with me today. Have you worked in an ICU before?
+      lineKo: 오늘 저랑 같이 다녀요. 중환자실 근무해본 적 있어요?
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in the ICU today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for the ICU.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Honest answer, good. Where were you before this?
+      lineKo: 솔직해서 좋아요. 그전엔 어디 있었어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Then you'll take bed three with me — one patient, ventilated, and we do everything together
+        today.
+      lineKo: 그럼 저랑 3번 침대예요. 환자 한 명, 인공호흡기, 오늘은 전부 같이 합니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Ask me anything now, while it's quiet.
+      lineKo: 조용한 동안 뭐든 물어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Andre. Andre Boateng. I'm the charge nurse today.
+      lineKo: Andre예요. Andre Boateng. 오늘 책임간호사입니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thank you, Andre. If an alarm goes off while I'm alone with him, what do I do first?
+        why: 가장 무서운 순간을 먼저 물었어요. 중환자실에서 이건 첫날에 반드시 물을 질문입니다.
+      - tier: strong
+        text: Thank you, Andre. What should I do about the alarms?
+        why: 물음이 넓어요. '혼자 있을 때 먼저 무엇을'이 정확합니다.
+      - tier: fair
+        text: Nice to meet you, Andre.
+        why: 인사로 끝났어요. 알람은 첫날 물어두는 게 안전합니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Not every alarm is an emergency. Look at the patient first, then the monitor — the patient
+        tells you which it is.
+      lineKo: 모든 알람이 응급은 아니에요. 모니터보다 환자를 먼저 보세요. 어느 쪽인지는 환자가 알려줍니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: So the patient first, then the monitor. I'll look at him before I touch anything.
+        why: 순서를 되짚고 행동으로 옮겼어요. 이 순서가 이 병동의 규칙입니다.
+      - tier: strong
+        text: Patient first. Understood.
+        why: 확인은 됐어요. 무엇을 하겠다는 말이 남습니다.
+      - tier: fair
+        text: Okay, I won't panic.
+        why: 침착함은 순서를 대신하지 않아요.
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: What newcomers do is silence the alarm and then look. Never in that order.
+      lineKo: 신입이 하는 건 알람을 끄고 나서 보는 거예요. 그 순서는 절대 안 됩니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: Understood — look, then silence. And if I can't tell what the alarm means, I'll call you.
+        why: 실수를 확인하고, 판단이 안 될 때를 미리 정했어요.
+      - tier: strong
+        text: Understood. I'll look first.
+        why: 맞아요. 판단이 안 될 때가 남습니다.
+      - tier: fair
+        text: I'll be careful with the alarms.
+        why: '''조심''은 순서가 아니에요.'
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Call me by name across the unit — we don't use the bell for each other. If I'm in a room,
+        the second nurse on the board comes.
+      lineKo: 병동 안에서는 제 이름을 부르세요. 서로 벨은 안 씁니다. 제가 방에 있으면 게시판의 두 번째 간호사가 옵니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Good. Anything else before we start?
+      lineKo: 좋아요. 시작 전에 더 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Put your bag in the break room, and keep your phone out of the rooms. Let's go and meet
+        him.
+      lineKo: 가방은 휴게실에, 휴대폰은 병실에 들고 들어가지 마세요. 가서 환자 봅시다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome to the unit.
+      lineKo: 병동에 온 걸 환영해요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "중환자실"
-    deptColor: "#0891B2"
-    brief: "중환자실 첫 근무입니다. 책임간호사 Andre가 오늘 당신을 데리고 다닙니다. 이름을 밝히고, 경험을 솔직하게 말하고, 알람이 울리면 어떻게 해야 하는지 물어보세요. 본관 4F 중환자실입니다."
+    dept: 중환자실
+    deptColor: '#0891B2'
+    brief: 중환자실 첫 근무입니다. 책임간호사 Andre가 오늘 당신을 데리고 다닙니다. 이름을 밝히고, 경험을 솔직하게 말하고, 알람이 울리면 어떻게 해야 하는지 물어보세요.
+      본관 4F 중환자실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "경험 말하기"
-      - "보고 경로 확인"
+    - 자기소개
+    - 경험 말하기
+    - 보고 경로 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#CFFAFE"
-    accent: "#0891B2"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#CFFAFE'
+    accent: '#0891B2'
 - id: SCN-WARD-00900
   eventId: EVT-WARD-00900
-  title: "첫 인사 · 내과병동"
-  tagline: "I'll be your preceptor this week. Say your name for me again?"
+  title: 첫 인사 · 내과병동
+  tagline: I'll be your preceptor this week. Say your name for me again?
   persona:
-    name: "Priya Raman"
+    name: Priya Raman
     role: nurse
-    ageRange: "30s"
-    sub: "Preceptor / 8F"
-    hair: "#3B2A1A"
+    ageRange: 30s
+    sub: Preceptor / 8F
+    hair: '#3B2A1A'
     hairStyle: long
-    personality: "한 번 더 물어봐 주고, 메모를 권한다."
-    speakingStyle: "천천히, 확인하며. 이름을 자주 부른다."
+    personality: 한 번 더 물어봐 주고, 메모를 권한다.
+    speakingStyle: 천천히, 확인하며. 이름을 자주 부른다.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함·경력을 한 문장으로 말하기"
-    - "오늘 담당 환자 수를 확인하기"
-    - "인계 시간과 장소를 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함·경력을 한 문장으로 말하기
+  - 오늘 담당 환자 수를 확인하기
+  - 인계 시간과 장소를 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse starting on this floor today."
-    - "How many patients will I have?"
-    - "What time is handover?"
-  steps: []
+  - I'm the new nurse starting on this floor today.
+  - How many patients will I have?
+  - What time is handover?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: I'll be your preceptor this week. Say your name for me again?
+      lineKo: 이번 주 프리셉터예요. 이름 다시 말해줄래요?
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in this floor today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for this floor.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Thank you. And how long have you been nursing?
+      lineKo: 고마워요. 간호는 얼마나 했어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Then I'll give you two patients today, not six. We'll pick up the rest next week.
+      lineKo: 그럼 오늘은 여섯 명이 아니라 두 명 드릴게요. 나머지는 다음 주에.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: What would you like to ask me?
+      lineKo: 뭘 물어보고 싶어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Priya. Priya Raman. Priya is fine.
+      lineKo: Priya예요. Priya Raman. Priya라고 불러요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thank you, Priya. What time is handover, and should I write it down?
+        why: 시간과 방법을 함께 물었어요. 첫날 인계는 이 두 가지가 전부입니다.
+      - tier: strong
+        text: Thank you, Priya. What time is handover?
+        why: 시간은 얻었어요. 받아 적어야 하는지는 남습니다.
+      - tier: fair
+        text: Nice to meet you, Priya.
+        why: 인사로 끝났어요. 인계 시간은 물어둬야 합니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Handover is at seven, at this desk, and you write it down. Nobody here trusts their memory
+        at seven in the morning.
+      lineKo: 인계는 7시, 이 데스크에서. 그리고 받아 적으세요. 아침 7시에 자기 기억을 믿는 사람은 없어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Seven, at this desk, and I write it down. I'll bring a notebook.
+        why: 시간·장소·방법을 되짚고 준비까지 말했어요.
+      - tier: strong
+        text: Seven at the desk. Understood.
+        why: 받아 적는 부분이 빠졌어요.
+      - tier: fair
+        text: Okay, I'll be there.
+        why: 가는 것만으로는 인계가 되지 않아요.
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: The thing newcomers miss is the second patient's medication time. Two patients, two schedules
+        — write both.
+      lineKo: 신입이 놓치는 건 두 번째 환자의 투약 시간이에요. 환자 둘, 스케줄 둘. 둘 다 적으세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: Understood — two patients, two medication times. I'll write both down at handover.
+        why: 실수를 확인하고 언제 적을지까지 정했어요.
+      - tier: strong
+        text: Understood. I'll check both schedules.
+        why: 맞아요. 언제 확인할지가 남습니다.
+      - tier: fair
+        text: I'll remember that.
+        why: 기억은 두 명의 투약 시간을 지켜주지 않아요.
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Come to me first. If I'm with a patient, ask the charge nurse — she's at the end of the
+        desk all shift.
+      lineKo: 저한테 먼저 오세요. 제가 환자와 있으면 책임간호사에게. 근무 내내 데스크 끝에 있어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Good. Anything else?
+      lineKo: 좋아요. 더 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: There's a locker with your name on it already. Come on, I'll introduce you to room eight.
+      lineKo: 이름 붙은 사물함이 이미 있어요. 가요, 8호실부터 소개할게요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome to the floor. I'm glad you're here.
+      lineKo: 병동에 온 걸 환영해요. 와줘서 좋아요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "WARD · 8F 간호사 스테이션"
-    deptColor: "#0E7490"
-    brief: "일반 내과 병동의 첫날입니다. 이번 주 프리셉터 Priya를 처음 만납니다. 이름과 직함을 말하고, 오늘 몇 명의 환자를 맡는지, 인계는 몇 시에 받는지 물어보세요. 본관 8F 일반 내과 병동입니다."
+    dept: WARD · 8F 간호사 스테이션
+    deptColor: '#0E7490'
+    brief: 일반 내과 병동의 첫날입니다. 이번 주 프리셉터 Priya를 처음 만납니다. 이름과 직함을 말하고, 오늘 몇 명의 환자를 맡는지, 인계는 몇 시에 받는지 물어보세요.
+      본관 8F 일반 내과 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "담당 확인"
-      - "인계 시간 묻기"
+    - 자기소개
+    - 담당 확인
+    - 인계 시간 묻기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#E0F2FE"
-    accent: "#0369A1"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#E0F2FE'
+    accent: '#0369A1'
 - id: SCN-SURGWARD-00900
   eventId: EVT-SURGWARD-00900
-  title: "첫 인사 · 외과병동"
-  tagline: "We're heavy on post-ops today. Have you done surgical before?"
+  title: 첫 인사 · 외과병동
+  tagline: We're heavy on post-ops today. Have you done surgical before?
   persona:
-    name: "Tom Becker"
+    name: Tom Becker
     role: nurse
-    ageRange: "40s"
-    sub: "Charge Nurse / 7F"
-    hair: "#5A5A5A"
+    ageRange: 40s
+    sub: Charge Nurse / 7F
+    hair: '#5A5A5A'
     hairStyle: short
-    personality: "바쁘지만 필요한 건 다 알려준다."
-    speakingStyle: "빠르고 실무적. 숫자를 먼저 말한다."
+    personality: 바쁘지만 필요한 건 다 알려준다.
+    speakingStyle: 빠르고 실무적. 숫자를 먼저 말한다.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 외과 경험을 말하기"
-    - "오늘 병동 상황을 한 가지 확인하기"
-    - "수술 후 환자에게 무엇을 먼저 보는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 외과 경험을 말하기
+  - 오늘 병동 상황을 한 가지 확인하기
+  - 수술 후 환자에게 무엇을 먼저 보는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm new — I haven't worked on a surgical floor before."
-    - "How many post-ops do we have today?"
-    - "What should I check first on a post-op patient?"
-  steps: []
+  - I'm new — I haven't worked on a surgical floor before.
+  - How many post-ops do we have today?
+  - What should I check first on a post-op patient?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: We're heavy on post-ops today. Have you done surgical before?
+      lineKo: 오늘 수술 후 환자가 많아요. 외과 해본 적 있어요?
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in this floor today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for this floor.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: All right. Medical or surgical, the ward part is the same. How long?
+      lineKo: 그래요. 내과든 외과든 병동 일은 같아요. 얼마나 했어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Then you're on the four beds nearest the desk, so I can hear you. All four came back from
+        theatre yesterday.
+      lineKo: 그럼 데스크에서 가장 가까운 네 침대예요. 제가 들을 수 있게. 넷 다 어제 수술방에서 왔어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Anything you want to ask?
+      lineKo: 물어볼 거 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Tom. Tom Becker. Charge nurse, seven to seven.
+      lineKo: Tom이에요. Tom Becker. 책임간호사, 7시부터 7시까지.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thank you, Tom. What should I check first on a post-op patient?
+        why: 이 병동의 첫 확인 항목을 물었어요. 수술 후 환자에게 순서는 안전의 문제입니다.
+      - tier: strong
+        text: Thank you, Tom. Is there anything special about post-ops?
+        why: 물음이 넓어요. '무엇을 먼저 보는가'가 정확합니다.
+      - tier: fair
+        text: Nice to meet you, Tom.
+        why: 인사로 끝났어요. 순서를 물어두는 게 안전합니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: On a post-op you look at the dressing, the drain and the pain score — in that order, every
+        time you go in.
+      lineKo: 수술 후 환자는 드레싱, 배액관, 통증 점수예요. 들어갈 때마다 그 순서로.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Dressing, drain, pain score — in that order. I'll check all three every time.
+        why: 순서를 되짚고 매번 하겠다고 말했어요. 이 병동의 규칙입니다.
+      - tier: strong
+        text: Dressing, drain, pain score. Understood.
+        why: 확인은 됐어요. 매번이라는 부분이 남습니다.
+      - tier: fair
+        text: Okay, I'll watch them closely.
+        why: '''잘 보겠다''는 세 항목을 대신하지 않아요.'
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Newcomers write the pain score and forget the drain. The drain is the one that tells you
+        something is wrong.
+      lineKo: 신입은 통증 점수만 적고 배액관을 잊어요. 뭔가 잘못됐는지 알려주는 건 배액관입니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: Understood — the drain is the one that warns me. What should I call you about?
+        why: 실수를 확인하고, 보고할 기준을 물었어요.
+      - tier: strong
+        text: Understood. I won't forget the drain.
+        why: 맞아요. 언제 보고할지가 남습니다.
+      - tier: fair
+        text: I'll write everything down.
+        why: 적는 것과 보고하는 것은 다릅니다.
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Tell me, and if I'm off the floor, the surgical resident's number is on the board by the
+        phone.
+      lineKo: 저한테 말하세요. 제가 병동을 비웠으면 외과 레지던트 번호가 전화기 옆 게시판에 있어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Good. Anything else?
+      lineKo: 좋아요. 더 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Staff room is through those doors, code is on your badge. Come on — bed twelve first.
+      lineKo: 직원실은 저 문 지나서, 코드는 명찰에 있어요. 갑시다, 12번 침대부터.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome. It's a good floor to learn on.
+      lineKo: 환영해요. 배우기 좋은 병동입니다.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "SURG · 7F 스테이션"
-    deptColor: "#B45309"
-    brief: "외과 병동 첫날, 수술 후 환자가 많은 날입니다. 책임간호사 Tom에게 이름을 밝히고, 수술 후 환자를 볼 때 무엇을 먼저 확인해야 하는지 물어보세요. 본관 7F 일반 외과 병동입니다."
+    dept: SURG · 7F 스테이션
+    deptColor: '#B45309'
+    brief: 외과 병동 첫날, 수술 후 환자가 많은 날입니다. 책임간호사 Tom에게 이름을 밝히고, 수술 후 환자를 볼 때 무엇을 먼저 확인해야 하는지 물어보세요. 본관 7F
+      일반 외과 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "상황 파악"
-      - "우선순위 묻기"
+    - 자기소개
+    - 상황 파악
+    - 우선순위 묻기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#FEF3C7"
-    accent: "#92400E"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#FEF3C7'
+    accent: '#92400E'
 - id: SCN-ORTHOWARD-00900
   eventId: EVT-ORTHOWARD-00900
-  title: "첫 인사 · 정형외과병동"
-  tagline: "Everyone here is either waiting for surgery or learning to walk again."
+  title: 첫 인사 · 정형외과병동
+  tagline: Everyone here is either waiting for surgery or learning to walk again.
   persona:
-    name: "Sofia Duarte"
+    name: Sofia Duarte
     role: nurse
-    ageRange: "30s"
-    sub: "Senior Nurse / 6F"
-    hair: "#3B2A1A"
+    ageRange: 30s
+    sub: Senior Nurse / 6F
+    hair: '#3B2A1A'
     hairStyle: bob
-    personality: "농담을 섞지만 안전 문제에는 단호하다."
-    speakingStyle: "예를 들어 설명한다."
+    personality: 농담을 섞지만 안전 문제에는 단호하다.
+    speakingStyle: 예를 들어 설명한다.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "환자를 일으킬 때의 원칙을 하나 확인하기"
-    - "도움이 필요할 때 부르는 방법을 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 환자를 일으킬 때의 원칙을 하나 확인하기
+  - 도움이 필요할 때 부르는 방법을 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "It's my first day on this floor."
-    - "Can I get a patient up by myself?"
-    - "How do I call for help with a transfer?"
-  steps: []
+  - It's my first day on this floor.
+  - Can I get a patient up by myself?
+  - How do I call for help with a transfer?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Everyone here is either waiting for surgery or learning to walk again.
+      lineKo: 여기 사람들은 수술을 기다리거나, 다시 걷는 법을 배우는 중이에요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in this floor today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for this floor.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: I'm told you're new. Have you moved a patient with a fractured hip before?
+      lineKo: 새로 왔다고 들었어요. 고관절 골절 환자 옮겨본 적 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Then you're not doing it alone today. Follow me and watch how many hands it takes.
+      lineKo: 그럼 오늘은 혼자 안 해요. 따라오면서 손이 몇 개 필요한지 보세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Ask me now, before the physio round starts.
+      lineKo: 물리치료 라운드 시작 전에 물어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Sofia. Sofia Duarte. Senior nurse — Sofia is fine.
+      lineKo: Sofia예요. Sofia Duarte. 선임간호사. Sofia라고 불러요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thank you, Sofia. Can I get a patient up by myself, or do I always need someone?
+        why: 이 병동에서 혼자 해도 되는 일의 경계를 물었어요. 낙상은 첫날에 정해둬야 합니다.
+      - tier: strong
+        text: Thank you, Sofia. How do I get patients up?
+        why: 방법은 얻어요. '혼자 해도 되는가'가 더 중요한 질문입니다.
+      - tier: fair
+        text: Nice to meet you, Sofia.
+        why: 인사로 끝났어요. 이동 원칙은 물어둬야 합니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Nobody gets up alone on this floor. Two people and the physio's plan, every time — the plan
+        is in the notes.
+      lineKo: 이 병동에선 아무도 혼자 못 일어나요. 두 사람과 물리치료 계획, 매번. 계획은 기록에 있어요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Two people and the physio's plan, every time. I'll read the plan before I go in.
+        why: 규칙을 되짚고, 언제 확인할지까지 말했어요.
+      - tier: strong
+        text: Two people, always. Understood.
+        why: 계획을 읽는 부분이 빠졌어요.
+      - tier: fair
+        text: Okay, I'll ask for help.
+        why: 도움을 청하는 것과 계획을 확인하는 것은 다릅니다.
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: The mistake is pulling on the arm. Support the joint, never the limb — you'll dislocate
+        a new hip that way.
+      lineKo: 실수는 팔을 당기는 거예요. 관절을 받치고, 팔다리를 당기지 마세요. 그렇게 하면 새 고관절이 빠집니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: Understood — support the joint, not the limb. How do I call for hands?
+        why: 실수를 확인하고, 실제로 손을 부르는 방법을 물었어요.
+      - tier: strong
+        text: Understood. I'll support the joint.
+        why: 맞아요. 부르는 방법이 남습니다.
+      - tier: fair
+        text: I'll be gentle.
+        why: '''부드럽게''는 관절을 받치는 것과 다릅니다.'
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Ring the bell twice and say the bed number — that's how we ask for hands here. I come, or
+        whoever is nearest.
+      lineKo: 벨을 두 번 누르고 침대 번호를 말하세요. 여기선 그렇게 손을 부릅니다. 제가 가거나 가장 가까운 사람이 갑니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Good. Anything else?
+      lineKo: 좋아요. 더 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Lockers by the lift. Come on — bed four wants to try standing today.
+      lineKo: 사물함은 엘리베이터 옆이에요. 갑시다, 4번 침대가 오늘 서보고 싶어 해요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome. You'll like it here.
+      lineKo: 환영해요. 여기 마음에 들 거예요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "ORTHO · 6F 스테이션"
-    deptColor: "#7C3AED"
-    brief: "정형외과 병동의 첫날입니다. 선임간호사 Sofia가 병동을 소개해 줍니다. 이름을 밝히고, 환자를 일으킬 때 혼자 해도 되는지, 도움을 어떻게 부르는지 물어보세요. 본관 6F 정형외과 병동입니다."
+    dept: ORTHO · 6F 스테이션
+    deptColor: '#7C3AED'
+    brief: 정형외과 병동의 첫날입니다. 선임간호사 Sofia가 병동을 소개해 줍니다. 이름을 밝히고, 환자를 일으킬 때 혼자 해도 되는지, 도움을 어떻게 부르는지 물어보세요.
+      본관 6F 정형외과 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "안전 원칙 확인"
-      - "도움 요청"
+    - 자기소개
+    - 안전 원칙 확인
+    - 도움 요청
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#EDE9FE"
-    accent: "#5B21B6"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#EDE9FE'
+    accent: '#5B21B6'
 - id: SCN-DERM-00900
   eventId: EVT-DERM-00900
-  title: "첫 인사 · 피부과"
-  tagline: "Welcome! It's clinic day, so it'll be busy but easy."
+  title: 첫 인사 · 피부과
+  tagline: Welcome! It's clinic day, so it'll be busy but easy.
   persona:
-    name: "Nina Vasquez"
+    name: Nina Vasquez
     role: nurse
-    ageRange: "20s"
-    sub: "Clinic Nurse / Derm"
-    hair: "#1F2937"
+    ageRange: 20s
+    sub: Clinic Nurse / Derm
+    hair: '#1F2937'
     hairStyle: long
-    personality: "말이 빠르고 친절하다. 신입을 반긴다."
-    speakingStyle: "밝게, 질문을 유도한다."
+    personality: 말이 빠르고 친절하다. 신입을 반긴다.
+    speakingStyle: 밝게, 질문을 유도한다.
     mood: happy
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "진료 시작 시간을 확인하기"
-    - "환자를 어디로 안내하는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 진료 시작 시간을 확인하기
+  - 환자를 어디로 안내하는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "Hi, I'm the new nurse in the clinic."
-    - "What time does clinic start?"
-    - "Where do I take the patients?"
-  steps: []
+  - Hi, I'm the new nurse in the clinic.
+  - What time does clinic start?
+  - Where do I take the patients?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome! It's clinic day, so it'll be busy but easy.
+      lineKo: 환영해요! 오늘 진료일이라 바쁘지만 어렵진 않아요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in the clinic today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for the clinic.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: You're the new nurse, right? Have you worked in an outpatient clinic before?
+      lineKo: 새로 온 간호사죠? 외래 근무해본 적 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Then you'll room patients with me this morning — bring them in, take the history, and I'll
+        do the rest.
+      lineKo: 그럼 오전엔 저랑 환자 안내해요. 데려오고, 병력 받고, 나머지는 제가 합니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Anything you'd like to ask first?
+      lineKo: 먼저 물어볼 거 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Nina. Nina Vasquez. Just Nina.
+      lineKo: Nina예요. Nina Vasquez. 그냥 Nina.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thank you, Nina. What time does clinic start, and where do I take the patients?
+        why: 시작 시간과 안내 동선을 함께 물었어요. 외래 첫날은 이 두 가지가 하루를 정합니다.
+      - tier: strong
+        text: Thank you, Nina. What time does clinic start?
+        why: 시간은 얻었어요. 어디로 데려가는지가 남습니다.
+      - tier: fair
+        text: Nice to meet you, Nina.
+        why: 인사로 끝났어요. 동선은 물어둬야 합니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Clinic starts at nine, and we take them in the order on the screen — not the order they
+        arrived.
+      lineKo: 진료는 9시 시작이고, 도착 순이 아니라 화면 순서대로 들어와요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Nine, and in the order on the screen. I'll check the screen, not the waiting room.
+        why: 규칙을 되짚고 무엇을 보겠다고 말했어요.
+      - tier: strong
+        text: Nine o'clock. Understood.
+        why: 순서 규칙이 빠졌어요.
+      - tier: fair
+        text: Okay, I'll be ready at nine.
+        why: 준비만으로는 순서가 지켜지지 않아요.
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: What newcomers do is let someone skip because they look upset. Tell me instead — I'll move
+        them properly.
+      lineKo: 신입이 하는 건 화난 것 같아서 순서를 바꿔주는 거예요. 대신 저한테 말해요. 제가 제대로 옮깁니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: Understood — I'll tell you instead of moving anyone. Who do I tell if you're with a patient?
+        why: 실수를 확인하고, 당신이 바쁠 때를 물었어요.
+      - tier: strong
+        text: Understood. I'll come to you.
+        why: 맞아요. 당신이 환자와 있을 때가 남습니다.
+      - tier: fair
+        text: I won't let anyone skip.
+        why: 막는 것과 알리는 것은 다릅니다.
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Just come and tell me. If I'm in with a patient, write the name down and I'll see it on
+        the screen.
+      lineKo: 와서 말해요. 제가 환자와 있으면 이름을 적어두면 화면에서 보입니다.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Good. Anything else?
+      lineKo: 좋아요. 더 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Bags go under the desk here. Come on — first one's already waiting.
+      lineKo: 가방은 이 데스크 아래에 두세요. 갑시다, 첫 환자가 벌써 기다려요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Welcome to the clinic!
+      lineKo: 외래에 온 걸 환영해요!
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "DERM · 진료실"
-    deptColor: "#DB2777"
-    brief: "피부과 외래 첫날입니다. 외래간호사 Nina가 맞아 줍니다. 이름을 밝히고, 오늘 진료가 몇 시에 시작하는지, 환자를 어디로 안내하는지 물어보세요. 본관 2F 피부과 센터입니다."
+    dept: DERM · 진료실
+    deptColor: '#DB2777'
+    brief: 피부과 외래 첫날입니다. 외래간호사 Nina가 맞아 줍니다. 이름을 밝히고, 오늘 진료가 몇 시에 시작하는지, 환자를 어디로 안내하는지 물어보세요. 본관 2F 피부과
+      센터입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "일정 확인"
-      - "안내 묻기"
+    - 자기소개
+    - 일정 확인
+    - 안내 묻기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#FCE7F3"
-    accent: "#9D174D"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#FCE7F3'
+    accent: '#9D174D'
 - id: SCN-WOMENKIDS-00900
   eventId: EVT-WOMENKIDS-00900
-  title: "첫 인사 · 여성소아외래"
-  tagline: "Two clinics share this floor, so let me show you which side is which."
+  title: 첫 인사 · 여성소아외래
+  tagline: Two clinics share this floor, so let me show you which side is which.
   persona:
-    name: "Yvonne Carter"
+    name: Yvonne Carter
     role: nurse
-    ageRange: "50s"
-    sub: "Clinic Coordinator / W&K"
-    hair: "#5A5A5A"
+    ageRange: 50s
+    sub: Clinic Coordinator / W&K
+    hair: '#5A5A5A'
     hairStyle: bob
-    personality: "여러 가족을 동시에 챙긴다. 신입에게 관대하다."
-    speakingStyle: "따뜻하고 분명하게. 요점을 반복해 준다."
+    personality: 여러 가족을 동시에 챙긴다. 신입에게 관대하다.
+    speakingStyle: 따뜻하고 분명하게. 요점을 반복해 준다.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "어느 진료를 맡는지 확인하기"
-    - "보호자를 부를 때의 호칭을 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 어느 진료를 맡는지 확인하기
+  - 보호자를 부를 때의 호칭을 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse — which clinic am I on today?"
-    - "How do you call families in?"
-    - "Should I say the child's name or the parent's?"
+  - I'm the new nurse — which clinic am I on today?
+  - How do you call families in?
+  - Should I say the child's name or the parent's?
   steps: []
   briefing:
-    dept: "W&K · 외래 접수"
-    deptColor: "#EC4899"
-    brief: "여성·소아 외래 첫날입니다. 외래를 총괄하는 Yvonne이 맞아 줍니다. 이름을 밝히고, 산부인과와 소아과 중 어디를 맡는지, 보호자를 어떻게 부르는지 물어보세요. 별관 1 1F 소아청소년·산부인과 외래입니다."
+    dept: W&K · 외래 접수
+    deptColor: '#EC4899'
+    brief: 여성·소아 외래 첫날입니다. 외래를 총괄하는 Yvonne이 맞아 줍니다. 이름을 밝히고, 산부인과와 소아과 중 어디를 맡는지, 보호자를 어떻게 부르는지 물어보세요.
+      별관 1 1F 소아청소년·산부인과 외래입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "배정 확인"
-      - "호칭 묻기"
+    - 자기소개
+    - 배정 확인
+    - 호칭 묻기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#FCE7F3"
-    accent: "#BE185D"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#FCE7F3'
+    accent: '#BE185D'
 - id: SCN-PEDS-00900
   eventId: EVT-PEDS-00900
-  title: "첫 인사 · 소아병동"
-  tagline: "Kids will ask who you are before I do. Ready?"
+  title: 첫 인사 · 소아병동
+  tagline: Kids will ask who you are before I do. Ready?
   persona:
-    name: "Ben Halloran"
+    name: Ben Halloran
     role: nurse
-    ageRange: "30s"
-    sub: "Preceptor / Peds"
-    hair: "#8C6239"
+    ageRange: 30s
+    sub: Preceptor / Peds
+    hair: '#8C6239'
     hairStyle: short
-    personality: "아이들과 잘 놀고, 신입에게 요령을 알려준다."
-    speakingStyle: "쉬운 말로. 예시를 든다."
+    personality: 아이들과 잘 놀고, 신입에게 요령을 알려준다.
+    speakingStyle: 쉬운 말로. 예시를 든다.
     mood: happy
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "아이에게 자기를 소개하는 방법을 묻기"
-    - "보호자에게 먼저 무엇을 말하는지 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 아이에게 자기를 소개하는 방법을 묻기
+  - 보호자에게 먼저 무엇을 말하는지 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse on this floor."
-    - "How do you introduce yourself to the kids?"
-    - "What do I tell the parents first?"
+  - I'm the new nurse on this floor.
+  - How do you introduce yourself to the kids?
+  - What do I tell the parents first?
   steps: []
   briefing:
-    dept: "PEDS · 병동 스테이션"
-    deptColor: "#3B82F6"
-    brief: "소아 병동 첫날입니다. 프리셉터 Ben이 맞아 줍니다. 이름을 밝히고, 아이에게 자기를 어떻게 소개하면 좋은지, 보호자에게는 무엇을 먼저 말해야 하는지 물어보세요. 별관 1 2F 소아 일반 병동입니다."
+    dept: PEDS · 병동 스테이션
+    deptColor: '#3B82F6'
+    brief: 소아 병동 첫날입니다. 프리셉터 Ben이 맞아 줍니다. 이름을 밝히고, 아이에게 자기를 어떻게 소개하면 좋은지, 보호자에게는 무엇을 먼저 말해야 하는지 물어보세요.
+      별관 1 2F 소아 일반 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "아이 눈높이"
-      - "보호자 응대"
+    - 자기소개
+    - 아이 눈높이
+    - 보호자 응대
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#DBEAFE"
-    accent: "#2563EB"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#DBEAFE'
+    accent: '#2563EB'
 - id: SCN-LD-00900
   eventId: EVT-LD-00900
-  title: "첫 인사 · 분만실"
-  tagline: "It's quiet right now, which never lasts. Who are you?"
+  title: 첫 인사 · 분만실
+  tagline: It's quiet right now, which never lasts. Who are you?
   persona:
-    name: "Rosa Iglesias"
+    name: Rosa Iglesias
     role: nurse
-    ageRange: "40s"
-    sub: "Charge Nurse / L&D"
-    hair: "#3B2A1A"
+    ageRange: 40s
+    sub: Charge Nurse / L&D
+    hair: '#3B2A1A'
     hairStyle: bun
-    personality: "침착하다. 급할 때 목소리가 낮아진다."
-    speakingStyle: "한 번에 한 가지만 지시한다."
+    personality: 침착하다. 급할 때 목소리가 낮아진다.
+    speakingStyle: 한 번에 한 가지만 지시한다.
     mood: focused
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "분만이 시작되면 어디 있어야 하는지 확인하기"
-    - "산모를 부를 때의 호칭을 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 분만이 시작되면 어디 있어야 하는지 확인하기
+  - 산모를 부를 때의 호칭을 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse, starting today."
-    - "Where should I be when a delivery starts?"
-    - "What should I call the mothers?"
+  - I'm the new nurse, starting today.
+  - Where should I be when a delivery starts?
+  - What should I call the mothers?
   steps: []
   briefing:
-    dept: "L&D · 스테이션"
-    deptColor: "#DB2777"
-    brief: "분만실 첫날입니다. 지금은 조용하지만 언제 바뀔지 모릅니다. 책임간호사 Rosa에게 이름을 밝히고, 분만이 시작되면 당신이 어디에 있어야 하는지 물어보세요. 별관 1 3F 가족 분만실입니다."
+    dept: L&D · 스테이션
+    deptColor: '#DB2777'
+    brief: 분만실 첫날입니다. 지금은 조용하지만 언제 바뀔지 모릅니다. 책임간호사 Rosa에게 이름을 밝히고, 분만이 시작되면 당신이 어디에 있어야 하는지 물어보세요. 별관
+      1 3F 가족 분만실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "위치 확인"
-      - "호칭 묻기"
+    - 자기소개
+    - 위치 확인
+    - 호칭 묻기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#FCE7F3"
-    accent: "#BE185D"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#FCE7F3'
+    accent: '#BE185D'
 - id: SCN-NURSERY-00900
   eventId: EVT-NURSERY-00900
-  title: "첫 인사 · 신생아실"
-  tagline: "Wash your hands first, then I'll introduce you to everyone."
+  title: 첫 인사 · 신생아실
+  tagline: Wash your hands first, then I'll introduce you to everyone.
   persona:
-    name: "Aiko Tanaka"
+    name: Aiko Tanaka
     role: nurse
-    ageRange: "30s"
-    sub: "Nursery Nurse"
-    hair: "#1F2937"
+    ageRange: 30s
+    sub: Nursery Nurse
+    hair: '#1F2937'
     hairStyle: bob
-    personality: "조용하고 손이 빠르다. 손 위생에 엄격하다."
-    speakingStyle: "작은 목소리로 또박또박."
+    personality: 조용하고 손이 빠르다. 손 위생에 엄격하다.
+    speakingStyle: 작은 목소리로 또박또박.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "아기를 안기 전 절차를 하나 확인하기"
-    - "부모 확인 방법을 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 아기를 안기 전 절차를 하나 확인하기
+  - 부모 확인 방법을 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse — it's my first day in the nursery."
-    - "What do I do before I pick up a baby?"
-    - "How do you check that a parent is the right one?"
+  - I'm the new nurse — it's my first day in the nursery.
+  - What do I do before I pick up a baby?
+  - How do you check that a parent is the right one?
   steps: []
   briefing:
-    dept: "NURSERY · 신생아실"
-    deptColor: "#F472B6"
-    brief: "신생아실 첫날입니다. 신생아실 간호사 Aiko가 맞아 줍니다. 이름을 밝히고, 아기를 안기 전에 무엇을 해야 하는지, 부모가 왔을 때 어떻게 확인하는지 물어보세요. 별관 1 3F 신생아실입니다."
+    dept: NURSERY · 신생아실
+    deptColor: '#F472B6'
+    brief: 신생아실 첫날입니다. 신생아실 간호사 Aiko가 맞아 줍니다. 이름을 밝히고, 아기를 안기 전에 무엇을 해야 하는지, 부모가 왔을 때 어떻게 확인하는지 물어보세요.
+      별관 1 3F 신생아실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "손 위생"
-      - "본인 확인"
+    - 자기소개
+    - 손 위생
+    - 본인 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#FCE7F3"
-    accent: "#DB2777"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#FCE7F3'
+    accent: '#DB2777'
 - id: SCN-NICU-00900
   eventId: EVT-NICU-00900
-  title: "첫 인사 · 신생아중환자실"
-  tagline: "Keep your voice down in here. I'm Claire — and you are?"
+  title: 첫 인사 · 신생아중환자실
+  tagline: Keep your voice down in here. I'm Claire — and you are?
   persona:
-    name: "Claire Dupont"
+    name: Claire Dupont
     role: nurse
-    ageRange: "40s"
-    sub: "Charge Nurse / NICU"
-    hair: "#C2A878"
+    ageRange: 40s
+    sub: Charge Nurse / NICU
+    hair: '#C2A878'
     hairStyle: bun
-    personality: "목소리를 낮게 유지한다. 부모 앞에서의 말을 특히 신경 쓴다."
-    speakingStyle: "조용하고 정확하게."
+    personality: 목소리를 낮게 유지한다. 부모 앞에서의 말을 특히 신경 쓴다.
+    speakingStyle: 조용하고 정확하게.
     mood: focused
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "이곳의 소음·조명 원칙을 하나 확인하기"
-    - "부모가 옆에 있을 때 주의할 점을 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 이곳의 소음·조명 원칙을 하나 확인하기
+  - 부모가 옆에 있을 때 주의할 점을 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse. It's my first day in the NICU."
-    - "Is there anything I should know about noise in here?"
-    - "What should I be careful about when parents are at the bedside?"
+  - I'm the new nurse. It's my first day in the NICU.
+  - Is there anything I should know about noise in here?
+  - What should I be careful about when parents are at the bedside?
   steps: []
   briefing:
-    dept: "NICU · POD B"
-    deptColor: "#0EA5E9"
-    brief: "신생아 중환자실 첫날입니다. 책임간호사 Claire가 맞아 줍니다. 이름을 밝히고, 이곳에서 목소리와 손을 어떻게 해야 하는지, 부모가 옆에 있을 때 주의할 점을 물어보세요. 별관 1 4F 신생아 중환자실입니다."
+    dept: NICU · POD B
+    deptColor: '#0EA5E9'
+    brief: 신생아 중환자실 첫날입니다. 책임간호사 Claire가 맞아 줍니다. 이름을 밝히고, 이곳에서 목소리와 손을 어떻게 해야 하는지, 부모가 옆에 있을 때 주의할 점을
+      물어보세요. 별관 1 4F 신생아 중환자실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "환경 원칙"
-      - "부모 배려"
+    - 자기소개
+    - 환경 원칙
+    - 부모 배려
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#E0F2FE"
-    accent: "#0284C7"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#E0F2FE'
+    accent: '#0284C7'
 - id: SCN-PICU-00900
   eventId: EVT-PICU-00900
-  title: "첫 인사 · 소아중환자실"
-  tagline: "Families live in this unit. That changes how you talk. I'm Marcus."
+  title: 첫 인사 · 소아중환자실
+  tagline: Families live in this unit. That changes how you talk. I'm Marcus.
   persona:
-    name: "Marcus Bell"
+    name: Marcus Bell
     role: nurse
-    ageRange: "30s"
-    sub: "Charge Nurse / PICU"
-    hair: "#1F2937"
+    ageRange: 30s
+    sub: Charge Nurse / PICU
+    hair: '#1F2937'
     hairStyle: short
-    personality: "솔직하고 담담하다. 신입에게 먼저 상황을 설명한다."
-    speakingStyle: "담담하게. 어려운 말은 풀어 준다."
+    personality: 솔직하고 담담하다. 신입에게 먼저 상황을 설명한다.
+    speakingStyle: 담담하게. 어려운 말은 풀어 준다.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "가족이 상주할 때의 원칙을 하나 확인하기"
-    - "모르는 것을 물어볼 사람을 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 가족이 상주할 때의 원칙을 하나 확인하기
+  - 모르는 것을 물어볼 사람을 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse, starting in the PICU today."
-    - "How should I talk when the family is in the room?"
-    - "Who do I ask when I'm not sure?"
+  - I'm the new nurse, starting in the PICU today.
+  - How should I talk when the family is in the room?
+  - Who do I ask when I'm not sure?
   steps: []
   briefing:
-    dept: "PICU · 가족 면담실"
-    deptColor: "#6366F1"
-    brief: "소아 중환자실 첫날입니다. 책임간호사 Marcus가 맞아 줍니다. 이름을 밝히고, 가족이 병실에 상주하는 이곳에서 말을 어떻게 해야 하는지 물어보세요. 별관 1 4F 소아 중환자실입니다."
+    dept: PICU · 가족 면담실
+    deptColor: '#6366F1'
+    brief: 소아 중환자실 첫날입니다. 책임간호사 Marcus가 맞아 줍니다. 이름을 밝히고, 가족이 병실에 상주하는 이곳에서 말을 어떻게 해야 하는지 물어보세요. 별관 1 4F
+      소아 중환자실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "가족 앞에서의 말"
-      - "질문하기"
+    - 자기소개
+    - 가족 앞에서의 말
+    - 질문하기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#E0E7FF"
-    accent: "#4338CA"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#E0E7FF'
+    accent: '#4338CA'
 - id: SCN-REHAB-00900
   eventId: EVT-REHAB-00900
-  title: "첫 인사 · 재활치료실"
-  tagline: "You'll be on your feet all day here. I'm Elena, PT."
+  title: 첫 인사 · 재활치료실
+  tagline: You'll be on your feet all day here. I'm Elena, PT.
   persona:
-    name: "Elena Petrova"
+    name: Elena Petrova
     role: nurse
-    ageRange: "30s"
-    sub: "Physical Therapist / PT Gym"
-    hair: "#8C6239"
+    ageRange: 30s
+    sub: Physical Therapist / PT Gym
+    hair: '#8C6239'
     hairStyle: bob
-    personality: "에너지가 많고, 환자를 이름으로 부른다."
-    speakingStyle: "크고 명확하게. 동작을 말로 설명한다."
+    personality: 에너지가 많고, 환자를 이름으로 부른다.
+    speakingStyle: 크고 명확하게. 동작을 말로 설명한다.
     mood: happy
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "치료실에서 간호사가 맡는 역할을 확인하기"
-    - "환자 이동 시 협력 방법을 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 치료실에서 간호사가 맡는 역할을 확인하기
+  - 환자 이동 시 협력 방법을 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse — I'll be working with your team."
-    - "What does the nurse do in the gym?"
-    - "How do we move a patient together?"
+  - I'm the new nurse — I'll be working with your team.
+  - What does the nurse do in the gym?
+  - How do we move a patient together?
   steps: []
   briefing:
-    dept: "REHAB · PT GYM"
-    deptColor: "#0284C7"
-    brief: "재활치료실 첫날입니다. 물리치료사 Elena가 맞아 줍니다. 이름을 밝히고, 간호사가 치료실에서 무엇을 돕는지, 환자를 옮길 때 어떻게 협력하는지 물어보세요. 별관 2 1F 재활치료실입니다."
+    dept: REHAB · PT GYM
+    deptColor: '#0284C7'
+    brief: 재활치료실 첫날입니다. 물리치료사 Elena가 맞아 줍니다. 이름을 밝히고, 간호사가 치료실에서 무엇을 돕는지, 환자를 옮길 때 어떻게 협력하는지 물어보세요. 별관
+      2 1F 재활치료실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "역할 확인"
-      - "협력 요청"
+    - 자기소개
+    - 역할 확인
+    - 협력 요청
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#E0F2FE"
-    accent: "#0369A1"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#E0F2FE'
+    accent: '#0369A1'
 - id: SCN-PSYCH-00900
   eventId: EVT-PSYCH-00900
-  title: "첫 인사 · 정신과병동"
-  tagline: "We introduce ourselves the same way to everyone here. I'm David."
+  title: 첫 인사 · 정신과병동
+  tagline: We introduce ourselves the same way to everyone here. I'm David.
   persona:
-    name: "David Okonkwo"
+    name: David Okonkwo
     role: nurse
-    ageRange: "40s"
-    sub: "Psych Nurse / Milieu"
-    hair: "#1F2937"
+    ageRange: 40s
+    sub: Psych Nurse / Milieu
+    hair: '#1F2937'
     hairStyle: short
-    personality: "서두르지 않는다. 침묵을 견딘다."
-    speakingStyle: "천천히, 낮은 목소리로."
+    personality: 서두르지 않는다. 침묵을 견딘다.
+    speakingStyle: 천천히, 낮은 목소리로.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "환자에게 자기를 소개하는 방식을 묻기"
-    - "병동에 가지고 들어갈 수 없는 물건을 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 환자에게 자기를 소개하는 방식을 묻기
+  - 병동에 가지고 들어갈 수 없는 물건을 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse on the unit."
-    - "How should I introduce myself to the patients?"
-    - "Is there anything I can't bring onto the unit?"
+  - I'm the new nurse on the unit.
+  - How should I introduce myself to the patients?
+  - Is there anything I can't bring onto the unit?
   steps: []
   briefing:
-    dept: "PSYCH · 병동 스테이션"
-    deptColor: "#7C3AED"
-    brief: "정신과 병동 첫날입니다. 병동 간호사 David가 맞아 줍니다. 이름을 밝히고, 환자에게 자기를 어떻게 소개하는지, 가지고 들어가면 안 되는 것이 무엇인지 물어보세요. 별관 2 2F 정신과 병동입니다."
+    dept: PSYCH · 병동 스테이션
+    deptColor: '#7C3AED'
+    brief: 정신과 병동 첫날입니다. 병동 간호사 David가 맞아 줍니다. 이름을 밝히고, 환자에게 자기를 어떻게 소개하는지, 가지고 들어가면 안 되는 것이 무엇인지 물어보세요.
+      별관 2 2F 정신과 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "일관된 소개"
-      - "규칙 확인"
+    - 자기소개
+    - 일관된 소개
+    - 규칙 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#EDE9FE"
-    accent: "#6D28D9"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#EDE9FE'
+    accent: '#6D28D9'
 - id: SCN-ONCO-00900
   eventId: EVT-ONCO-00900
-  title: "첫 인사 · 종양내과"
-  tagline: "Most of our patients have been coming here for years. I'm Sarah."
+  title: 첫 인사 · 종양내과
+  tagline: Most of our patients have been coming here for years. I'm Sarah.
   persona:
-    name: "Sarah Feldman"
+    name: Sarah Feldman
     role: nurse
-    ageRange: "40s"
-    sub: "Oncology Nurse / Clinic 2"
-    hair: "#7A3B2E"
+    ageRange: 40s
+    sub: Oncology Nurse / Clinic 2
+    hair: '#7A3B2E'
     hairStyle: bob
-    personality: "환자를 오래 봐 왔다. 이름과 사정을 다 기억한다."
-    speakingStyle: "부드럽지만 정확하다."
+    personality: 환자를 오래 봐 왔다. 이름과 사정을 다 기억한다.
+    speakingStyle: 부드럽지만 정확하다.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "오래 다니는 환자에게 처음 인사하는 방법을 묻기"
-    - "오늘 무엇을 맡는지 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 오래 다니는 환자에게 처음 인사하는 방법을 묻기
+  - 오늘 무엇을 맡는지 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse on this floor."
-    - "How should I greet a patient who's been coming for years?"
-    - "What will I be doing today?"
+  - I'm the new nurse on this floor.
+  - How should I greet a patient who's been coming for years?
+  - What will I be doing today?
   steps: []
   briefing:
-    dept: "ONCO · CLINIC 2"
-    deptColor: "#9333EA"
-    brief: "종양학 병동 첫날입니다. 종양전문간호사 Sarah가 맞아 줍니다. 이름을 밝히고, 오래 다니는 환자에게 처음 인사할 때 무엇을 조심해야 하는지 물어보세요. 별관 2 3F 종양학 병동입니다."
+    dept: ONCO · CLINIC 2
+    deptColor: '#9333EA'
+    brief: 종양학 병동 첫날입니다. 종양전문간호사 Sarah가 맞아 줍니다. 이름을 밝히고, 오래 다니는 환자에게 처음 인사할 때 무엇을 조심해야 하는지 물어보세요. 별관 2
+      3F 종양학 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "장기 환자 배려"
-      - "배정 확인"
+    - 자기소개
+    - 장기 환자 배려
+    - 배정 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#F3E8FF"
-    accent: "#7E22CE"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#F3E8FF'
+    accent: '#7E22CE'
 - id: SCN-HOSPICE-00900
   eventId: EVT-HOSPICE-00900
-  title: "첫 인사 · 호스피스"
-  tagline: "We work quietly here. Come in — what's your name?"
+  title: 첫 인사 · 호스피스
+  tagline: We work quietly here. Come in — what's your name?
   persona:
-    name: "Margaret Ellis"
+    name: Margaret Ellis
     role: nurse
-    ageRange: "50s"
-    sub: "Hospice Nurse"
-    hair: "#5A5A5A"
+    ageRange: 50s
+    sub: Hospice Nurse
+    hair: '#5A5A5A'
     hairStyle: bob
-    personality: "조용하고 단단하다. 서두르지 않는다."
-    speakingStyle: "느리게, 짧게. 침묵을 남긴다."
+    personality: 조용하고 단단하다. 서두르지 않는다.
+    speakingStyle: 느리게, 짧게. 침묵을 남긴다.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "환자에게 말을 거는 방식을 묻기"
-    - "가족이 곁에 있을 때의 태도를 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 환자에게 말을 거는 방식을 묻기
+  - 가족이 곁에 있을 때의 태도를 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse. It's my first day here."
-    - "How do you start a conversation with a patient here?"
-    - "What should I do when the family is in the room?"
+  - I'm the new nurse. It's my first day here.
+  - How do you start a conversation with a patient here?
+  - What should I do when the family is in the room?
   steps: []
   briefing:
-    dept: "HOSP · 병동"
-    deptColor: "#64748B"
-    brief: "완화의료 병동 첫날입니다. 호스피스 간호사 Margaret이 맞아 줍니다. 이름을 밝히고, 이곳에서 환자와 가족에게 말을 어떻게 걸어야 하는지 물어보세요. 별관 2 4F 완화의료 병동입니다."
+    dept: HOSP · 병동
+    deptColor: '#64748B'
+    brief: 완화의료 병동 첫날입니다. 호스피스 간호사 Margaret이 맞아 줍니다. 이름을 밝히고, 이곳에서 환자와 가족에게 말을 어떻게 걸어야 하는지 물어보세요. 별관 2
+      4F 완화의료 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "말 걸기"
-      - "가족 앞에서"
+    - 자기소개
+    - 말 걸기
+    - 가족 앞에서
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#F1F5F9"
-    accent: "#475569"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#F1F5F9'
+    accent: '#475569'
 - id: SCN-GERI-00900
   eventId: EVT-GERI-00900
-  title: "첫 인사 · 노인병동"
-  tagline: "Speak slowly here, and face them. I'm Joseph."
+  title: 첫 인사 · 노인병동
+  tagline: Speak slowly here, and face them. I'm Joseph.
   persona:
-    name: "Joseph Adeyemi"
+    name: Joseph Adeyemi
     role: nurse
-    ageRange: "50s"
-    sub: "Charge Nurse / Geri"
-    hair: "#5A5A5A"
+    ageRange: 50s
+    sub: Charge Nurse / Geri
+    hair: '#5A5A5A'
     hairStyle: short
-    personality: "느긋하고 유머가 있다. 환자 이름을 크게 부른다."
-    speakingStyle: "천천히, 또박또박. 한 번 더 말해 준다."
+    personality: 느긋하고 유머가 있다. 환자 이름을 크게 부른다.
+    speakingStyle: 천천히, 또박또박. 한 번 더 말해 준다.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "잘 안 들리는 환자와 말하는 방법을 묻기"
-    - "넘어짐 예방에서 무엇을 먼저 보는지 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 잘 안 들리는 환자와 말하는 방법을 묻기
+  - 넘어짐 예방에서 무엇을 먼저 보는지 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse on this floor."
-    - "How should I talk to a patient who can't hear well?"
-    - "What do you check first for fall risk?"
+  - I'm the new nurse on this floor.
+  - How should I talk to a patient who can't hear well?
+  - What do you check first for fall risk?
   steps: []
   briefing:
-    dept: "GERI · 병동"
-    deptColor: "#B45309"
-    brief: "노인병동 첫날입니다. 책임간호사 Joseph이 맞아 줍니다. 이름을 밝히고, 잘 안 들리는 환자에게 어떻게 말해야 하는지, 넘어짐을 막기 위해 무엇을 보는지 물어보세요. 별관 2 4F 노인성 질환 병동입니다."
+    dept: GERI · 병동
+    deptColor: '#B45309'
+    brief: 노인병동 첫날입니다. 책임간호사 Joseph이 맞아 줍니다. 이름을 밝히고, 잘 안 들리는 환자에게 어떻게 말해야 하는지, 넘어짐을 막기 위해 무엇을 보는지 물어보세요.
+      별관 2 4F 노인성 질환 병동입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "천천히 말하기"
-      - "안전 확인"
+    - 자기소개
+    - 천천히 말하기
+    - 안전 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#FEF3C7"
-    accent: "#92400E"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#FEF3C7'
+    accent: '#92400E'
 - id: SCN-RAD-00900
   eventId: EVT-RAD-00900
-  title: "첫 인사 · 영상의학과"
-  tagline: "Before you come in, tell me: any metal on you?"
+  title: 첫 인사 · 영상의학과
+  tagline: 'Before you come in, tell me: any metal on you?'
   persona:
-    name: "Kevin Zhao"
+    name: Kevin Zhao
     role: nurse
-    ageRange: "30s"
-    sub: "Radiologic Technologist / CT"
-    hair: "#1F2937"
+    ageRange: 30s
+    sub: Radiologic Technologist / CT
+    hair: '#1F2937'
     hairStyle: short
-    personality: "장비 앞에서는 진지하다. 설명을 좋아한다."
-    speakingStyle: "순서대로 설명한다."
+    personality: 장비 앞에서는 진지하다. 설명을 좋아한다.
+    speakingStyle: 순서대로 설명한다.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "촬영실 출입 규칙을 하나 확인하기"
-    - "환자를 언제 데려오면 되는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 촬영실 출입 규칙을 하나 확인하기
+  - 환자를 언제 데려오면 되는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse — I'll be bringing patients down."
-    - "What are the rules for coming into the scan room?"
-    - "When should I bring the patient in?"
+  - I'm the new nurse — I'll be bringing patients down.
+  - What are the rules for coming into the scan room?
+  - When should I bring the patient in?
   steps: []
   briefing:
-    dept: "RAD · 촬영실"
-    deptColor: "#0891B2"
-    brief: "영상의학과 첫날입니다. 방사선사 Kevin이 촬영실 앞에서 맞아 줍니다. 이름을 밝히고, 촬영실에 들어갈 때의 규칙과 환자를 언제 데려오면 되는지 물어보세요. 별관 3 1F 영상의학과입니다."
+    dept: RAD · 촬영실
+    deptColor: '#0891B2'
+    brief: 영상의학과 첫날입니다. 방사선사 Kevin이 촬영실 앞에서 맞아 줍니다. 이름을 밝히고, 촬영실에 들어갈 때의 규칙과 환자를 언제 데려오면 되는지 물어보세요. 별관
+      3 1F 영상의학과입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "출입 규칙"
-      - "타이밍 확인"
+    - 자기소개
+    - 출입 규칙
+    - 타이밍 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#CFFAFE"
-    accent: "#0E7490"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#CFFAFE'
+    accent: '#0E7490'
 - id: SCN-SPECIALTY-00900
   eventId: EVT-SPECIALTY-00900
-  title: "첫 인사 · 특수외래"
-  tagline: "Patients here often can't see you coming. Say your name first."
+  title: 첫 인사 · 특수외래
+  tagline: Patients here often can't see you coming. Say your name first.
   persona:
-    name: "Laila Haddad"
+    name: Laila Haddad
     role: nurse
-    ageRange: "30s"
-    sub: "Ophthalmic Nurse / Clinic 3"
-    hair: "#1F2937"
+    ageRange: 30s
+    sub: Ophthalmic Nurse / Clinic 3
+    hair: '#1F2937'
     hairStyle: long
-    personality: "세심하다. 환자 시야를 늘 신경 쓴다."
-    speakingStyle: "조용하고 친절하게."
+    personality: 세심하다. 환자 시야를 늘 신경 쓴다.
+    speakingStyle: 조용하고 친절하게.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "시야가 좁은 환자에게 다가가는 방법을 묻기"
-    - "오늘 무엇을 맡는지 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 시야가 좁은 환자에게 다가가는 방법을 묻기
+  - 오늘 무엇을 맡는지 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse in the clinic today."
-    - "How should I approach a patient who can't see well?"
-    - "What will I be helping with?"
+  - I'm the new nurse in the clinic today.
+  - How should I approach a patient who can't see well?
+  - What will I be helping with?
   steps: []
   briefing:
-    dept: "SPEC · CLINIC 3"
-    deptColor: "#7C3AED"
-    brief: "특수 외래(안과) 첫날입니다. 외래간호사 Laila가 맞아 줍니다. 이름을 밝히고, 잘 보이지 않는 환자에게 다가갈 때 무엇을 먼저 해야 하는지 물어보세요. 별관 3 2F 특수 외래입니다."
+    dept: SPEC · CLINIC 3
+    deptColor: '#7C3AED'
+    brief: 특수 외래(안과) 첫날입니다. 외래간호사 Laila가 맞아 줍니다. 이름을 밝히고, 잘 보이지 않는 환자에게 다가갈 때 무엇을 먼저 해야 하는지 물어보세요. 별관
+      3 2F 특수 외래입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "먼저 말하기"
-      - "배정 확인"
+    - 자기소개
+    - 먼저 말하기
+    - 배정 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#EDE9FE"
-    accent: "#6D28D9"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#EDE9FE'
+    accent: '#6D28D9'
 - id: SCN-INFUSION-00900
   eventId: EVT-INFUSION-00900
-  title: "첫 인사 · 주사센터"
-  tagline: "Chairs fill up fast in the morning. I'm Denise — and you?"
+  title: 첫 인사 · 주사센터
+  tagline: Chairs fill up fast in the morning. I'm Denise — and you?
   persona:
-    name: "Denise Moore"
+    name: Denise Moore
     role: nurse
-    ageRange: "40s"
-    sub: "Infusion Nurse"
-    hair: "#7A3B2E"
+    ageRange: 40s
+    sub: Infusion Nurse
+    hair: '#7A3B2E'
     hairStyle: bob
-    personality: "이야기를 잘 들어 준다. 환자 이름을 다 안다."
-    speakingStyle: "편하게, 웃으면서."
+    personality: 이야기를 잘 들어 준다. 환자 이름을 다 안다.
+    speakingStyle: 편하게, 웃으면서.
     mood: happy
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "환자를 어디로 안내하는지 확인하기"
-    - "주입 중 무엇을 지켜보는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 환자를 어디로 안내하는지 확인하기
+  - 주입 중 무엇을 지켜보는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse in the infusion center."
-    - "Where do I take the patients?"
-    - "What should I watch during an infusion?"
+  - I'm the new nurse in the infusion center.
+  - Where do I take the patients?
+  - What should I watch during an infusion?
   steps: []
   briefing:
-    dept: "INFU · 주사센터"
-    deptColor: "#059669"
-    brief: "외래 주사센터 첫날입니다. 주사센터 간호사 Denise가 맞아 줍니다. 이름을 밝히고, 환자를 어느 자리로 안내하는지, 주입 중 무엇을 지켜보는지 물어보세요. 별관 3 3F 외래 주사센터입니다."
+    dept: INFU · 주사센터
+    deptColor: '#059669'
+    brief: 외래 주사센터 첫날입니다. 주사센터 간호사 Denise가 맞아 줍니다. 이름을 밝히고, 환자를 어느 자리로 안내하는지, 주입 중 무엇을 지켜보는지 물어보세요. 별관
+      3 3F 외래 주사센터입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "안내 확인"
-      - "관찰 항목 묻기"
+    - 자기소개
+    - 안내 확인
+    - 관찰 항목 묻기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#D1FAE5"
-    accent: "#047857"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#D1FAE5'
+    accent: '#047857'
 - id: SCN-DIAL-00900
   eventId: EVT-DIAL-00900
-  title: "첫 인사 · 인공신장실"
-  tagline: "Same patients, same chairs, three times a week. I'm Victor."
+  title: 첫 인사 · 인공신장실
+  tagline: Same patients, same chairs, three times a week. I'm Victor.
   persona:
-    name: "Victor Cruz"
+    name: Victor Cruz
     role: nurse
-    ageRange: "30s"
-    sub: "Dialysis Nurse / Station 3"
-    hair: "#3B2A1A"
+    ageRange: 30s
+    sub: Dialysis Nurse / Station 3
+    hair: '#3B2A1A'
     hairStyle: short
-    personality: "시간에 정확하다. 기계를 손처럼 다룬다."
-    speakingStyle: "숫자와 시간을 먼저 말한다."
+    personality: 시간에 정확하다. 기계를 손처럼 다룬다.
+    speakingStyle: 숫자와 시간을 먼저 말한다.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "반복해 오는 환자에게 첫인사하는 방법을 묻기"
-    - "기계 알람 시 누구를 부르는지 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 반복해 오는 환자에게 첫인사하는 방법을 묻기
+  - 기계 알람 시 누구를 부르는지 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse in the dialysis unit."
-    - "How should I introduce myself to the regulars?"
-    - "If the machine alarms, who do I call?"
+  - I'm the new nurse in the dialysis unit.
+  - How should I introduce myself to the regulars?
+  - If the machine alarms, who do I call?
   steps: []
   briefing:
-    dept: "DIAL · STATION 3"
-    deptColor: "#2563EB"
-    brief: "인공신장실 첫날입니다. 투석실 간호사 Victor가 맞아 줍니다. 이름을 밝히고, 같은 환자가 반복해 오는 이곳에서 첫인사를 어떻게 하는지, 기계 알람이 울리면 누구를 부르는지 물어보세요. 별관 3 3F 인공신장실입니다."
+    dept: DIAL · STATION 3
+    deptColor: '#2563EB'
+    brief: 인공신장실 첫날입니다. 투석실 간호사 Victor가 맞아 줍니다. 이름을 밝히고, 같은 환자가 반복해 오는 이곳에서 첫인사를 어떻게 하는지, 기계 알람이 울리면 누구를
+      부르는지 물어보세요. 별관 3 3F 인공신장실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "단골 환자 인사"
-      - "보고 경로"
+    - 자기소개
+    - 단골 환자 인사
+    - 보고 경로
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#DBEAFE"
-    accent: "#1D4ED8"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#DBEAFE'
+    accent: '#1D4ED8'
 - id: SCN-ENDO-00900
   eventId: EVT-ENDO-00900
-  title: "첫 인사 · 내시경실"
-  tagline: "Everything here happens in order. I'm Fiona — what's your name?"
+  title: 첫 인사 · 내시경실
+  tagline: Everything here happens in order. I'm Fiona — what's your name?
   persona:
-    name: "Fiona Walsh"
+    name: Fiona Walsh
     role: nurse
-    ageRange: "30s"
-    sub: "Endoscopy Nurse / Pre"
-    hair: "#C2A878"
+    ageRange: 30s
+    sub: Endoscopy Nurse / Pre
+    hair: '#C2A878'
     hairStyle: long
-    personality: "확인을 두 번 한다. 신입에게 순서를 적어 준다."
-    speakingStyle: "순서를 세어 가며 말한다."
+    personality: 확인을 두 번 한다. 신입에게 순서를 적어 준다.
+    speakingStyle: 순서를 세어 가며 말한다.
     mood: focused
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫날임을 알리기"
-    - "시술 전 첫 확인 항목을 묻기"
-    - "오늘 어디에 있어야 하는지 확인하기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫날임을 알리기
+  - 시술 전 첫 확인 항목을 묻기
+  - 오늘 어디에 있어야 하는지 확인하기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse — my first day in endoscopy."
-    - "What do you check first before a procedure?"
-    - "Where should I be today?"
+  - I'm the new nurse — my first day in endoscopy.
+  - What do you check first before a procedure?
+  - Where should I be today?
   steps: []
   briefing:
-    dept: "ENDO · 준비실"
-    deptColor: "#0D9488"
-    brief: "내시경실 첫날입니다. 준비실에서 간호사 Fiona가 맞아 줍니다. 이름을 밝히고, 시술 전에 환자에게 무엇을 먼저 확인하는지 물어보세요. 별관 3 4F 내시경실입니다."
+    dept: ENDO · 준비실
+    deptColor: '#0D9488'
+    brief: 내시경실 첫날입니다. 준비실에서 간호사 Fiona가 맞아 줍니다. 이름을 밝히고, 시술 전에 환자에게 무엇을 먼저 확인하는지 물어보세요. 별관 3 4F 내시경실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "사전 확인"
-      - "위치 확인"
+    - 자기소개
+    - 사전 확인
+    - 위치 확인
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#CCFBF1"
-    accent: "#0F766E"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#CCFBF1'
+    accent: '#0F766E'
 - id: SCN-MORGUE-00900
   eventId: EVT-MORGUE-00900
-  title: "첫 인사 · 영안실"
-  tagline: "Not many people come down here twice. I'm Samuel."
+  title: 첫 인사 · 영안실
+  tagline: Not many people come down here twice. I'm Samuel.
   persona:
-    name: "Samuel Novak"
+    name: Samuel Novak
     role: nurse
-    ageRange: "50s"
-    sub: "Mortuary Technician"
-    hair: "#5A5A5A"
+    ageRange: 50s
+    sub: Mortuary Technician
+    hair: '#5A5A5A'
     hairStyle: short
-    personality: "말이 적고 정중하다. 절차를 정확히 지킨다."
-    speakingStyle: "낮고 느리게. 존중하는 말투."
+    personality: 말이 적고 정중하다. 절차를 정확히 지킨다.
+    speakingStyle: 낮고 느리게. 존중하는 말투.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함·소속을 밝히고 용건을 말하기"
-    - "필요한 서류나 준비물을 확인하기"
-    - "유가족이 오면 어디서 맞이하는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함·소속을 밝히고 용건을 말하기
+  - 필요한 서류나 준비물을 확인하기
+  - 유가족이 오면 어디서 맞이하는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse from 8F."
-    - "What do I need to bring with me?"
-    - "Where do families wait?"
+  - I'm the new nurse from 8F.
+  - What do I need to bring with me?
+  - Where do families wait?
   steps: []
   briefing:
-    dept: "MORGUE · 영안실"
-    deptColor: "#334155"
-    brief: "영안실에 처음 내려왔습니다. 영안실 담당 Samuel이 맞아 줍니다. 이름과 소속을 밝히고, 무엇을 가지고 와야 하는지, 유가족이 오면 어디서 기다리는지 물어보세요. 지원동 B1 영안실입니다."
+    dept: MORGUE · 영안실
+    deptColor: '#334155'
+    brief: 영안실에 처음 내려왔습니다. 영안실 담당 Samuel이 맞아 줍니다. 이름과 소속을 밝히고, 무엇을 가지고 와야 하는지, 유가족이 오면 어디서 기다리는지 물어보세요.
+      지원동 B1 영안실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "절차 확인"
-      - "유가족 안내"
+    - 자기소개
+    - 절차 확인
+    - 유가족 안내
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#E2E8F0"
-    accent: "#1E293B"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#E2E8F0'
+    accent: '#1E293B'
 - id: SCN-SPD-00900
   eventId: EVT-SPD-00900
-  title: "첫 인사 · 중앙공급실"
-  tagline: "Requests go through this window. Which floor are you from?"
+  title: 첫 인사 · 중앙공급실
+  tagline: Requests go through this window. Which floor are you from?
   persona:
-    name: "Ana Rivera"
+    name: Ana Rivera
     role: nurse
-    ageRange: "40s"
-    sub: "SPD Lead Technician"
-    hair: "#1F2937"
+    ageRange: 40s
+    sub: SPD Lead Technician
+    hair: '#1F2937'
     hairStyle: bun
-    personality: "요청이 밀려도 순서를 지킨다."
-    speakingStyle: "짧게 확인하고 되묻는다."
+    personality: 요청이 밀려도 순서를 지킨다.
+    speakingStyle: 짧게 확인하고 되묻는다.
     mood: neutral
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함·소속 병동을 밝히기"
-    - "물품 요청 방법을 확인하기"
-    - "급할 때의 절차를 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함·소속 병동을 밝히기
+  - 물품 요청 방법을 확인하기
+  - 급할 때의 절차를 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm the new nurse from 7F."
-    - "How do I request supplies?"
-    - "What if I need something urgently?"
+  - I'm the new nurse from 7F.
+  - How do I request supplies?
+  - What if I need something urgently?
   steps: []
   briefing:
-    dept: "SPD · 접수 창구"
-    deptColor: "#525252"
-    brief: "중앙공급실 첫 방문입니다. 창구의 Ana가 맞아 줍니다. 이름과 소속 병동을 밝히고, 물품을 어떻게 요청하는지, 급할 때는 어떻게 하는지 물어보세요. 지원동 1F 중앙공급실입니다."
+    dept: SPD · 접수 창구
+    deptColor: '#525252'
+    brief: 중앙공급실 첫 방문입니다. 창구의 Ana가 맞아 줍니다. 이름과 소속 병동을 밝히고, 물품을 어떻게 요청하는지, 급할 때는 어떻게 하는지 물어보세요. 지원동 1F
+      중앙공급실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "요청 절차"
-      - "급할 때"
+    - 자기소개
+    - 요청 절차
+    - 급할 때
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#F5F5F5"
-    accent: "#404040"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#F5F5F5'
+    accent: '#404040'
 - id: SCN-LOUNGE-00900
   eventId: EVT-LOUNGE-00900
-  title: "첫 인사 · 휴게실"
-  tagline: "You're new, right? Sit down — the coffee's terrible but free."
+  title: 첫 인사 · 휴게실
+  tagline: You're new, right? Sit down — the coffee's terrible but free.
   persona:
-    name: "Jasmine Park"
+    name: Jasmine Park
     role: nurse
-    ageRange: "20s"
-    sub: "RN / 8F"
-    hair: "#1F2937"
+    ageRange: 20s
+    sub: RN / 8F
+    hair: '#1F2937'
     hairStyle: long
-    personality: "처음 보는 사람에게 먼저 말을 건다."
-    speakingStyle: "편하게, 짧게. 농담을 섞는다."
+    personality: 처음 보는 사람에게 먼저 말을 건다.
+    speakingStyle: 편하게, 짧게. 농담을 섞는다.
     mood: happy
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름과 병동을 편한 말로 밝히기"
-    - "상대의 이름과 병동을 물어보기"
-    - "잡담을 한 번 이어 가기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름과 병동을 편한 말로 밝히기
+  - 상대의 이름과 병동을 물어보기
+  - 잡담을 한 번 이어 가기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I just started on 8F."
-    - "Sorry, what was your name?"
-    - "How long have you worked here?"
-  steps: []
+  - I just started on 8F.
+  - Sorry, what was your name?
+  - How long have you worked here?
+  steps:
+  - id: b1
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: You're new, right? Sit down — the coffee's terrible but it's free.
+      lineKo: 새로 왔죠? 앉아요. 커피는 맛없지만 무료예요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Hi, I'm {name} — I'm the new nurse starting in the eighth floor today.
+        why: 이름·직함·첫 출근을 한 문장에 담았어요. 상대가 되물을 필요가 없어집니다.
+      - tier: strong
+        text: Hello. I'm the new nurse for the eighth floor.
+        why: 필요한 건 말했지만 이름이 빠졌어요. 상대는 이름을 다시 물어야 합니다.
+      - tier: fair
+        text: Hi. Nice to meet you.
+        why: 예의는 갖췄지만 정보가 없어요. 첫 문장은 신원을 밝히는 자리입니다.
+    next: b2
+  - id: b2
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: I'm on eight too. Nights or days?
+      lineKo: 저도 8층이에요. 나이트예요, 데이예요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I worked three years on a medical ward in Korea, but this is my first day here.
+        why: 경력과 '여기는 처음'을 함께 말했어요. 상대가 무엇을 알려줘야 하는지 정해집니다.
+      - tier: strong
+        text: I have three years of experience.
+        why: 사실이지만 어디서·무엇을인지 없어요. 상대가 한 번 더 물어야 합니다.
+      - tier: fair
+        text: Not much, I'm afraid.
+        why: 겸손이 정보를 지웠어요. 실제 경력을 말하는 게 환자에게 더 안전합니다.
+    next: b3
+  - id: b3
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Days is the right way to start. Everyone learns the floor on days.
+      lineKo: 데이로 시작하는 게 맞아요. 다들 데이에서 병동을 배워요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: Got it — so I'll start with that. Should I do anything before I go in?
+        why: 받은 지시를 확인하고 그 앞단을 물었어요. 이게 인계를 안전하게 만드는 습관입니다.
+      - tier: strong
+        text: Okay, I understand.
+        why: 알아들었다고만 했어요. 무엇을 알아들었는지는 상대가 알 수 없습니다.
+      - tier: fair
+        text: Sorry, could you say that again, more slowly?
+        why: 못 들었을 때 반드시 필요한 문장이에요. 다만 들었다면 확인이 먼저입니다.
+    next: b4
+  - id: b4
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Ask me anything — I've been here two years, I know where everything is.
+      lineKo: 뭐든 물어요. 여기 2년 있었고 뭐가 어디 있는지 다 알아요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      choices:
+      - tier: best
+        text: I do — sorry, what was your name? And how should I address you?
+        why: 이름과 호칭을 함께 물었어요. 호칭을 틀리는 건 첫날 가장 흔한 실수입니다.
+      - tier: strong
+        text: Yes — could you tell me your name again?
+        why: 이름은 얻었지만 호칭은 못 얻었어요. Dr./first name 중 무엇인지 남습니다.
+      - tier: fair
+        text: No, I think I'm okay for now.
+        why: 질문할 기회를 넘겼어요. 첫날에 물어두지 않으면 나중엔 더 묻기 어렵습니다.
+    next: b5
+  - id: b5
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Jasmine. Jasmine Park. Everyone just says Jas.
+      lineKo: Jasmine이에요. Jasmine Park. 다들 Jas라고 불러요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thanks, Jas. How long is the break — and does someone come to find you?
+        why: 휴식 시간과 '누가 찾아오는지'를 함께 물었어요. 편한 대화에서도 정보는 정보입니다.
+      - tier: strong
+        text: Thanks, Jas. How long do we get for break?
+        why: 시간은 얻었어요. 자리를 비우는 방법이 남습니다.
+      - tier: fair
+        text: Nice to meet you, Jas.
+        why: 인사로 끝났어요. 잡담은 정보를 얻는 자리이기도 합니다.
+    next: b6
+  - id: b6
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Break's thirty minutes, and nobody comes to find you unless it's a code. Take the whole
+        thirty.
+      lineKo: 휴식은 30분이고, 코드 아니면 아무도 찾아오지 않아요. 30분 다 쓰세요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      choices:
+      - tier: best
+        text: Thirty minutes, and nobody comes unless it's a code. I'll take the whole thirty.
+        why: 들은 걸 되짚고 그렇게 하겠다고 말했어요. 여기선 이게 자기 자신을 지키는 일입니다.
+      - tier: strong
+        text: Thirty minutes. Good to know.
+        why: 확인은 됐어요. 다 쓰겠다는 말이 남습니다.
+      - tier: fair
+        text: I probably won't take all of it.
+        why: 이 대화에서 상대가 말하려던 것과 반대로 답했어요.
+    next: b7
+  - id: b7
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: New people eat at the desk and skip the break. Two months of that and you'll hate this job.
+      lineKo: 새로 온 사람들은 데스크에서 먹고 휴식을 건너뛰어요. 두 달만 그러면 이 일이 싫어져요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: You're right, I do that. How do I tell people I'm going on break?
+        why: 지적을 인정하고 실제 방법을 물었어요. 인정이 대화를 이어줍니다.
+      - tier: strong
+        text: I'll try to take my breaks.
+        why: 맞는 방향이에요. 방법이 남습니다.
+      - tier: fair
+        text: I don't mind eating at the desk.
+        why: 상대의 조언을 흘려보냈어요.
+    next: b8
+  - id: b8
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Tell whoever's covering you, and put it on the board. That's all it takes.
+      lineKo: 당신 대신 봐주는 사람에게 말하고, 보드에 적어요. 그게 전부예요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: So I call you first, and if I can't reach you, the charge nurse. Is that right?
+        why: 들은 경로를 되짚어 확인했어요(closed loop). 급할 때 틀릴 여지를 없앱니다.
+      - tier: strong
+        text: Okay, I'll come find you.
+        why: 한 갈래만 남았어요. 상대가 없을 때 어떻게 할지가 비어 있습니다.
+      - tier: fair
+        text: Understood, thank you.
+        why: 확인 없이 넘어갔어요. 보고 경로는 되짚어 말해두는 편이 안전합니다.
+    next: b9
+  - id: b9
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Right. Anything else you want to know?
+      lineKo: 좋아요. 더 알고 싶은 거 있어요?
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      choices:
+      - tier: best
+        text: That's clear, thank you. One more thing — where can I put my things?
+        why: 확인한 뒤 실무적인 것을 물었어요. 첫날엔 이런 게 하루를 편하게 만듭니다.
+      - tier: strong
+        text: Yes, that's clear.
+        why: 맞는 답이지만 물어볼 기회를 한 번 흘렸어요.
+      - tier: fair
+        text: I think so.
+        why: '''아마도''는 상대를 불안하게 합니다. 확실하지 않으면 되묻는 게 낫습니다.'
+    next: b10
+  - id: b10
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Kettle's behind you, mugs are anyone's. See you upstairs.
+      lineKo: 주전자는 뒤에 있고 컵은 아무거나 써요. 위에서 봐요.
+      mood: neutral
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      choices:
+      - tier: best
+        text: Thank you — I'm ready. I'll ask you if I'm not sure about anything.
+        why: 준비됐다는 말과 '모르면 묻겠다'를 함께 말했어요. 신입에게 가장 중요한 약속입니다.
+      - tier: strong
+        text: Thank you. Let's go.
+        why: 짧고 좋아요. 다만 도움을 요청하겠다는 말이 빠졌습니다.
+      - tier: fair
+        text: Okay.
+        why: 대답은 됐지만 감사도 준비도 담기지 않았어요.
+    next: b11
+  - id: b11
+    type: dialogue
+    payload:
+      speaker: npc
+      lineEn: Glad you're here. It's a good floor.
+      lineKo: 와줘서 좋아요. 좋은 병동이에요.
+      mood: warm
+      missions:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
   briefing:
-    dept: "LOUNGE · 휴게실"
-    deptColor: "#A16207"
-    brief: "휴게실에서 처음 보는 동료 Jasmine이 먼저 말을 걸었습니다. 이름과 병동을 밝히고, 이름을 물어보고, 짧은 잡담을 이어 보세요. 임상 이야기가 아닙니다. 지원동 2F 의료진 휴게실입니다."
+    dept: LOUNGE · 휴게실
+    deptColor: '#A16207'
+    brief: 휴게실에서 처음 보는 동료 Jasmine이 먼저 말을 걸었습니다. 이름과 병동을 밝히고, 이름을 물어보고, 짧은 잡담을 이어 보세요. 임상 이야기가 아닙니다. 지원동
+      2F 의료진 휴게실입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "편한 자기소개"
-      - "이름 묻기"
-      - "잡담 이어가기"
+    - 편한 자기소개
+    - 이름 묻기
+    - 잡담 이어가기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#FEF9C3"
-    accent: "#854D0E"
-
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#FEF9C3'
+    accent: '#854D0E'
 - id: SCN-SIM-00900
   eventId: EVT-SIM-00900
-  title: "첫 인사 · 시뮬레이션랩"
-  tagline: "Nothing in this room is real, so it's the one place you can be wrong."
+  title: 첫 인사 · 시뮬레이션랩
+  tagline: Nothing in this room is real, so it's the one place you can be wrong.
   persona:
-    name: "Karen Mbeki"
+    name: Karen Mbeki
     role: nurse
-    ageRange: "40s"
-    sub: "Simulation Educator"
-    hair: "#1F2937"
+    ageRange: 40s
+    sub: Simulation Educator
+    hair: '#1F2937'
     hairStyle: bob
-    personality: "실수를 반갑게 받는다. 질문을 기다려 준다."
-    speakingStyle: "분명하게, 격려하며."
+    personality: 실수를 반갑게 받는다. 질문을 기다려 준다.
+    speakingStyle: 분명하게, 격려하며.
     mood: warm
   goals:
-    - "용건과 상황을 먼저 밝히고 대화 시작"
-    - "이름·직함을 밝히고 첫 수업임을 알리기"
-    - "오늘 연습할 내용을 확인하기"
-    - "틀렸을 때 어떻게 하면 되는지 묻기"
-    - "합의된 조치와 후속 확인 후 마무리"
+  - 용건과 상황을 먼저 밝히고 대화 시작
+  - 이름·직함을 밝히고 첫 수업임을 알리기
+  - 오늘 연습할 내용을 확인하기
+  - 틀렸을 때 어떻게 하면 되는지 묻기
+  - 합의된 조치와 후속 확인 후 마무리
   guardrails:
-    - "완벽한 문장보다 알아듣게 말하는 것이 목표"
-    - "임상 지식이 필요 없는 대화"
+  - 완벽한 문장보다 알아듣게 말하는 것이 목표
+  - 임상 지식이 필요 없는 대화
   keyPhrases:
-    - "I'm here for my first session."
-    - "What are we practicing today?"
-    - "What do I do if I get it wrong?"
+  - I'm here for my first session.
+  - What are we practicing today?
+  - What do I do if I get it wrong?
   steps: []
   briefing:
-    dept: "SIM · 시뮬레이션 랩"
-    deptColor: "#4F46E5"
-    brief: "시뮬레이션 랩 첫 수업입니다. 교육 담당 Karen이 맞아 줍니다. 이름을 밝히고, 오늘 무엇을 연습하는지, 틀렸을 때 어떻게 하면 되는지 물어보세요. 지원동 3F 시뮬레이션 랩입니다."
+    dept: SIM · 시뮬레이션 랩
+    deptColor: '#4F46E5'
+    brief: 시뮬레이션 랩 첫 수업입니다. 교육 담당 Karen이 맞아 줍니다. 이름을 밝히고, 오늘 무엇을 연습하는지, 틀렸을 때 어떻게 하면 되는지 물어보세요. 지원동 3F
+      시뮬레이션 랩입니다.
     difficulty: 1
-    timeLabel: "약 3분"
+    timeLabel: 약 3분
     skills:
-      - "자기소개"
-      - "목표 확인"
-      - "질문하기"
+    - 자기소개
+    - 목표 확인
+    - 질문하기
     rewards:
-      - { icon: "⭐", label: "경험치", value: "+ 80 XP" }
-      - { icon: "❤", label: "동료 신뢰", value: "+ 2" }
-      - { icon: "🎖", label: "진척", value: "+ 1" }
+    - icon: ⭐
+      label: 경험치
+      value: + 80 XP
+    - icon: ❤
+      label: 동료 신뢰
+      value: + 2
+    - icon: 🎖
+      label: 진척
+      value: + 1
     reqs:
-      - { label: "레벨 1+", metric: "level", threshold: 1 }
-    tone: "#E0E7FF"
-    accent: "#4338CA"
+    - label: 레벨 1+
+      metric: level
+      threshold: 1
+    tone: '#E0E7FF'
+    accent: '#4338CA'

@@ -2,6 +2,7 @@ package conversation
 
 import (
 	"context"
+	"strings"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -216,6 +217,42 @@ type ScriptedTurn struct {
 	Done bool
 }
 
+// NameToken is replaced with the learner's own display name in an authored reply.
+//
+// It has to be a token. The greeting scenarios teach saying your own name, and a name
+// written into the content file would have every learner in the world introducing
+// themselves as the same person — in the one conversation whose point is that they are
+// not. When the learner has not set a name, the clause is dropped rather than filled with
+// an id: "Hi, 7F3A2B — I'm the new nurse" is worse than no name at all.
+const NameToken = "{name}"
+
+func fillName(text, name string) string {
+	if !strings.Contains(text, NameToken) {
+		return text
+	}
+	if name == "" {
+		// "Hi, {name} — I'm the new nurse…" becomes "Hi — I'm the new nurse…", and the
+		// double space that would leave is collapsed.
+		text = strings.ReplaceAll(text, NameToken+" — ", "")
+		text = strings.ReplaceAll(text, NameToken, "")
+		return strings.Join(strings.Fields(text), " ")
+	}
+	return strings.ReplaceAll(text, NameToken, name)
+}
+
+// learnerName is the display name, or "" when there is none (or no profile reader —
+// several tests build the engine without one).
+func (e *Engine) learnerName(ctx context.Context, userID string) string {
+	if e.profiles == nil {
+		return ""
+	}
+	p, err := e.profiles.GetProfile(ctx, userID)
+	if err != nil || p == nil {
+		return ""
+	}
+	return p.DisplayName
+}
+
 // ScriptedChoices returns the authored replies for where the session stands, or
 // (nil, false) when this session is not driven by a script.
 //
@@ -246,7 +283,13 @@ func (e *Engine) ScriptedChoices(ctx context.Context, userID, sessionID string) 
 		return ScriptedTurn{Turn: len(script) - 1, Total: len(script), Done: true}, true, nil
 	}
 	t := script[at]
-	return ScriptedTurn{Turn: at, Total: len(script), Choices: t.Choices, Done: t.Last()}, true, nil
+	name := e.learnerName(ctx, userID)
+	out := make([]Choice, 0, len(t.Choices))
+	for _, c := range t.Choices {
+		c.Text = fillName(c.Text, name)
+		out = append(out, c)
+	}
+	return ScriptedTurn{Turn: at, Total: len(script), Choices: out, Done: t.Last()}, true, nil
 }
 
 // scriptedReply answers a scripted turn without a model.

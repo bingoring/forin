@@ -289,3 +289,23 @@ func TestATranscriptPastTheEndOfTheScriptDoesNotPanic(t *testing.T) {
 		t.Error("want the conversation reported finished")
 	}
 }
+
+// The greeting teaches saying your own name, so the card has to carry the learner's.
+// A name written into the content file would have every learner introducing themselves
+// as the same person, in the one conversation whose point is that they are not.
+func TestTheLearnerSaysTheirOwnName(t *testing.T) {
+	if got := fillName("Hi, {name} — I'm the new nurse.", "지연"); got != "Hi, 지연 — I'm the new nurse." {
+		t.Errorf("got %q", got)
+	}
+	// No name set: the clause goes, rather than being filled with an id. "Hi, 7F3A2B —
+	// I'm the new nurse" is worse than no name at all, and the double space a naive
+	// removal leaves reads as a typo.
+	if got := fillName("Hi, {name} — I'm the new nurse.", ""); got != "Hi, I'm the new nurse." {
+		t.Errorf("got %q", got)
+	}
+	// A card with no token is untouched — including its spacing.
+	const plain = "Sorry,  could you say that again?"
+	if got := fillName(plain, "지연"); got != plain {
+		t.Errorf("rewrote a card with no token: %q", got)
+	}
+}
