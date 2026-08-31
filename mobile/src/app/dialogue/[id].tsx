@@ -21,6 +21,9 @@ import { api, type ReplyChoice, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
 import { MissionCluster } from '@/components/dialogue/MissionCluster';
+import { ResizeHandle } from '@/components/ResizeHandle';
+import { DOCK_H, clampChoices, clampSplit, portraitLayout } from '@/data/dialogueSplit';
+import { setDialogueLayout, useDialogueLayout } from '@/lib/dialogueLayout';
 import { ReplyChoices } from '@/components/dialogue/ReplyChoices';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, fs } from '@/theme/tokens';
@@ -118,7 +121,30 @@ export default function DialogueRoute() {
   // from the keyboard event and applied directly. Deterministic, and it rides the
   // same timing as the top edge — the column moves as one thing.
   const keyboardLift = useRef(new Animated.Value(0)).current;
-  const restingTop = winH * 0.41 + 34;
+  // Where the conversation starts when the keyboard is down.
+  //
+  // The learner's own number when they have dragged the divider, otherwise the design's
+  // default for this device. The keyboard still overrides it while it is up — that is a
+  // borrowed position, not a new resting one, and the edge returns here when it closes.
+  const saved = useDialogueLayout();
+  const [splitTop, setSplitTop] = useState(0);
+  const restingTop = clampSplit(splitTop || saved.splitTop || winH * 0.41 + 34, winH);
+  // The band the reply choices get. Same rule: their number if they set one.
+  const [choicesH, setChoicesH] = useState(0);
+  const choicesBand = clampChoices(choicesH || saved.choicesH || winH * 0.34, winH);
+  // What the top band can draw in the room the divider leaves it — full portrait with
+  // its plate underneath, plate moved beside it, or a smaller portrait. See
+  // data/dialogueSplit for why rearranging always comes before shrinking.
+  const top = portraitLayout(restingTop);
+  // Where each drag began, so the handle's per-gesture delta can be applied to it — and
+  // where it ENDED, which is what gets saved.
+  //
+  // The end has to be a ref: onDone fires in the same batch as the last onDrag's
+  // setState, so a closure over the rendered value saves the position the finger started
+  // from. It did exactly that, and a relaunch restored the size the learner had just
+  // dragged away from.
+  const dragFrom = useRef({ split: 0, choices: 0 });
+  const dragTo = useRef({ split: 0, choices: 0 });
   // Just under the status bar — MEASURED, not guessed.
   //
   // A constant was wrong: the bar is the exit button on the left and, on the right, a
@@ -594,9 +620,23 @@ export default function DialogueRoute() {
           being spoken to, whose expression is the feedback — off to one side. One
           portrait, in the middle, is the whole of what this strip is for. */}
       <Animated.View style={{ position: 'absolute', left: 0, right: 0, top: 128, alignItems: 'center', zIndex: 3, opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
-        <PortraitFrame name={p.name || 'NPC'} status={p.mood ? p.mood.toUpperCase() : undefined} sweat={showSweat}>
-          <RoleFace kind={kind} hair={p.hair} expression={expr} size={120} />
-        </PortraitFrame>
+        {/* Wrapped, so the volume button below can be positioned against the FRAME.
+            It was `right: -38` inside this full-width strip, which put it 38pt past the
+            right edge of the screen — the toggle was off-screen, not beside the portrait
+            the comment describes. This wrapper shrinks to the frame (the strip centres
+            its children), so the offset means what it says again. */}
+        <View>
+          <PortraitFrame
+            name={p.name || 'NPC'}
+            status={p.mood ? p.mood.toUpperCase() : undefined}
+            sweat={showSweat}
+            // Set by the divider: full size with its plate underneath, plate moved
+            // beside it, or scaled down to a floor. See data/dialogueSplit.
+            scale={top.scale}
+            nameBeside={top.nameBeside}
+          >
+            <RoleFace kind={kind} hair={p.hair} expression={expr} size={Math.round(120 * top.scale)} />
+          </PortraitFrame>
         {/* On the portrait, because that is whose voice it turns off.
             It used to sit beside a name plate above the dialogue box — and that plate was
             the VN speaker tab, naming a person whose face and name are already on screen
@@ -612,7 +652,7 @@ export default function DialogueRoute() {
           // The frame is centred now, so the button hangs off its right edge rather than
           // being measured from the screen's left. Same relationship as before — adjacent
           // to the portrait, clear of the name plate underneath it.
-          style={{ position: 'absolute', right: -38, top: 96 }}
+          style={{ position: 'absolute', right: -38, top: Math.round(96 * top.scale) }}
         >
           <Shadowed offset={2}>
             <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
@@ -620,6 +660,7 @@ export default function DialogueRoute() {
             </View>
           </Shadowed>
         </Pressable>
+        </View>
       </Animated.View>
 
       {/* QUICK INFO dock — bedside reference tools (차트 / 약물 / 활력).
@@ -629,7 +670,11 @@ export default function DialogueRoute() {
           keyboard. The dialogue box below it is bottom-anchored and SHOULD rise
           (it holds the input); a bedside reference has no reason to. */}
       <Animated.View
-        style={{ position: 'absolute', left: 14, right: 14, top: winH * 0.41, zIndex: 4, opacity: chromeOpacity }}
+        // Anchored to the DIVIDER, not to a share of the window: the band's arithmetic
+        // reserves DOCK_H immediately above the conversation, so wherever the learner
+        // puts the edge, the bedside tools stay tucked against it and reachable. At a
+        // percentage they stayed put while the edge moved through them.
+        style={{ position: 'absolute', left: 14, right: 14, top: restingTop - DOCK_H, zIndex: 4, opacity: chromeOpacity }}
         // Not just faded — unhittable, so a tool cannot be opened by a tap aimed at the
         // thread that now covers this strip.
         pointerEvents={typing ? 'none' : 'auto'}
@@ -690,6 +735,26 @@ export default function DialogueRoute() {
           input stays put at the bottom, newest at the bottom. A messaging screen, because
           that is what this is. */}
       <Animated.View style={{ position: 'absolute', left: 14, right: 14, top: threadTopStyle, bottom: threadBottomStyle, zIndex: 6 }}>
+        {/* The divider. Hidden while the keyboard is up, because the edge is not at the
+            learner's number then — it is borrowed by the keyboard, and dragging a handle
+            that is not where it appears to be would move something invisible. */}
+        {!typing && (
+          <ResizeHandle
+            testID="split-handle"
+            onDrag={(dy) => {
+              // dy is cumulative for the gesture, so it applies to where the edge was
+              // when the finger landed — captured on the first move, cleared on release.
+              if (!dragFrom.current.split) dragFrom.current.split = restingTop;
+              const next = clampSplit(dragFrom.current.split + dy, winH);
+              dragTo.current.split = next;
+              setSplitTop(next);
+            }}
+            onDone={() => {
+              dragFrom.current.split = 0;
+              if (dragTo.current.split) void setDialogueLayout({ splitTop: dragTo.current.split });
+            }}
+          />
+        )}
         {/* the exchange */}
         <ScrollView
           ref={logRef}
@@ -782,6 +847,24 @@ export default function DialogueRoute() {
             practice — the point is to SAY it, not to recognise it. */}
         {guided && !wroteOwn && !hintOn && (
           <View style={{ marginTop: 12 }}>
+            {/* Drag this edge DOWN to give the conversation more room. The complaint that
+                started all of this was the cards covering the exchange they answer, and
+                how much room that needs is only knowable by the person reading it. */}
+            <ResizeHandle
+              testID="choices-handle"
+              onDrag={(dy) => {
+                if (!dragFrom.current.choices) dragFrom.current.choices = choicesBand;
+                // Down shrinks: the edge is the band's TOP, so the height is what is
+                // left below it.
+                const next = clampChoices(dragFrom.current.choices - dy, winH);
+                dragTo.current.choices = next;
+                setChoicesH(next);
+              }}
+              onDone={() => {
+                dragFrom.current.choices = 0;
+                if (dragTo.current.choices) void setDialogueLayout({ choicesH: dragTo.current.choices });
+              }}
+            />
             <ReplyChoices
               choices={choices}
               loading={choicesBusy}
@@ -799,8 +882,8 @@ export default function DialogueRoute() {
                 );
               }}
               onWriteMyOwn={() => setWroteOwn(true)}
-              // Capped so the cards cannot cover the conversation they answer.
-              maxHeight={winH * 0.34}
+              // The learner's own band, or the default until they set one.
+              maxHeight={choicesBand}
             />
           </View>
         )}
@@ -1006,33 +1089,48 @@ function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: 
   );
 }
 
-/** Portrait frame with a name plate (and optional red status chip). */
-function PortraitFrame({ children, name, status, hue, sweat }: { children: React.ReactNode; name: string; status?: string; hue?: string; sweat?: boolean }) {
+/** Portrait frame with a name plate (and optional red status chip).
+ *
+ *  Two things move with the divider the learner drags:
+ *   · `scale` multiplies every drawn dimension. One factor for all of them is what keeps
+ *     the frame from distorting — a separately-computed width is how portraits end up
+ *     squashed. The TEXT is not scaled: a name plate at 0.55 is not a name plate.
+ *   · `nameBeside` puts the plate to the RIGHT of the frame instead of under it. A row is
+ *     shorter than a stack, so this buys height back without shrinking the drawing, which
+ *     is why it happens before any scaling does. */
+function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBeside = false }: { children: React.ReactNode; name: string; status?: string; hue?: string; sweat?: boolean; scale?: number; nameBeside?: boolean }) {
+  const w = Math.round(110 * scale);
+  const h = Math.round(130 * scale);
+  const inset = Math.max(3, Math.round(6 * scale));
   return (
-    <View>
-      <Shadowed offset={4}>
-        <View style={{ width: 110, height: 130, backgroundColor: hue || colors.peach, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <View style={{ position: 'absolute', left: 6, top: 6, right: 6, bottom: 6, backgroundColor: 'rgba(255,255,255,0.5)' }} />
-          {children}
-        </View>
-      </Shadowed>
-      {sweat && (
-        <View style={{ position: 'absolute', top: 2, right: -8, zIndex: 4 }}>
-          <PixelIcon name="droplet" color={colors.blue} size={18} sw={1.8} />
-        </View>
-      )}
-      <Shadowed offset={2} style={{ marginTop: 6, alignSelf: 'flex-start' }}>
-        <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{name}</Text>
-        </View>
-      </Shadowed>
-      {!!status && (
-        <Shadowed offset={2} style={{ marginTop: 4, alignSelf: 'flex-start' }}>
-          <View style={{ backgroundColor: '#EF4444', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{status}</Text>
+    <View style={nameBeside ? { flexDirection: 'row', alignItems: 'center', gap: 10 } : undefined}>
+      <View>
+        <Shadowed offset={4}>
+          <View style={{ width: w, height: h, backgroundColor: hue || colors.peach, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
+            <View style={{ position: 'absolute', left: inset, top: inset, right: inset, bottom: inset, backgroundColor: 'rgba(255,255,255,0.5)' }} />
+            {children}
           </View>
         </Shadowed>
-      )}
+        {sweat && (
+          <View style={{ position: 'absolute', top: 2, right: -8, zIndex: 4 }}>
+            <PixelIcon name="droplet" color={colors.blue} size={18} sw={1.8} />
+          </View>
+        )}
+      </View>
+      <View style={{ marginTop: nameBeside ? 0 : 6, alignItems: 'flex-start', gap: 4 }}>
+        <Shadowed offset={2}>
+          <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{name}</Text>
+          </View>
+        </Shadowed>
+        {!!status && (
+          <Shadowed offset={2}>
+            <View style={{ backgroundColor: '#EF4444', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
+              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{status}</Text>
+            </View>
+          </Shadowed>
+        )}
+      </View>
     </View>
   );
 }

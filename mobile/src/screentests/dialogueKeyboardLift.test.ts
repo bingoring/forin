@@ -17,8 +17,11 @@ const SRC = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), '
 
 test('the thread column has an animated top, not a fixed one', () => {
   expect(SRC).toMatch(/top:\s*threadTopStyle/);
-  // The resting position is still the dock's offset; the raised one is under the status bar.
-  expect(SRC).toMatch(/const restingTop = winH \* 0\.41 \+ 34;/);
+  // The resting position is now the LEARNER's, from the divider they dragged — clamped,
+  // and falling back to the position that shipped when they never touched it. The
+  // keyboard still overrides it while it is up: that is a borrowed position, and this
+  // is what the edge returns to. (screentests/dialogueResize drives the drag itself.)
+  expect(SRC).toMatch(/const restingTop = clampSplit\(splitTop \|\| saved\.splitTop \|\| winH \* 0\.41 \+ 34, winH\);/);
   // Measured, not a constant: with a mission on screen the status bar is ~152pt, so a
   // fixed 96 put the raised thread over the mission text and the 상황 종료 button —
   // the two things you need if the keyboard opened by accident.

@@ -8,6 +8,7 @@ import { BootSplash } from '@/components/BootSplash';
 import { loadSfxPreference, primeSfx } from '@/lib/sfx';
 import { loadLocale, onLocaleChange, useLocale, useT } from '@/i18n';
 import { loadAvatar } from '@/lib/avatar';
+import { loadDialogueLayout } from '@/lib/dialogueLayout';
 import { loadFavorites } from '@/lib/favorites';
 
 /** How long before the splash admits it is waiting on something. Long enough that a
@@ -51,7 +52,7 @@ export default function RootLayout() {
     // which is why the first tap on each sound was silent. Six short blips.
     primeSfx();
     const slowTimer = setTimeout(() => setSlow(true), SLOW_BOOT_MS);
-    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites()])
+    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites(), loadDialogueLayout()])
       .finally(() => { clearTimeout(slowTimer); setHydrated(true); });
     return () => clearTimeout(slowTimer);
   }, []);

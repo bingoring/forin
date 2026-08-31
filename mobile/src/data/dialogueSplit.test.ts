@@ -1,4 +1,5 @@
 import {
+  DOCK_H,
   PORTRAIT_MAX,
   PORTRAIT_MIN,
   TOP_BAND_MAX,
@@ -80,4 +81,36 @@ test('the choices band has a floor and a ceiling', () => {
   // …and the band must never swallow the conversation, which is the complaint that
   // started this: the choices covered the exchange they were answers to.
   expect(clampChoices(screenH, screenH)).toBeLessThanOrEqual(screenH * 0.55);
+});
+
+test('the dock is inside the band, so the divider cannot cut through it', () => {
+  // The QUICK INFO row sits between the name plate and the conversation. Left out of the
+  // arithmetic it would be *below* the band's maximum, which means the thread's top edge
+  // would land in the middle of 차트 / 약물 / 활력 at the widest setting.
+  expect(TOP_BAND_MAX).toBeGreaterThanOrEqual(TOP_BAND_MIN + DOCK_H);
+  // And the tightest setting still leaves the dock its own room, on top of the floor
+  // the portrait needs.
+  expect(TOP_BAND_MIN - DOCK_H).toBeGreaterThanOrEqual(PORTRAIT_MIN);
+});
+
+test('a learner who never drags anything sees the layout that shipped', () => {
+  // The default resting divider, from the screen. Widening this band is not what the
+  // drag was added for — someone who never touches the handle must get the same screen
+  // as before, so the band's maximum has to reach the position it already rests at.
+  for (const screenH of [850, 926, 800]) {
+    const shipped = screenH * 0.41 + 34;
+    expect(clampSplit(shipped, screenH)).toBe(shipped);
+  }
+});
+
+test('shrinking scales every drawn dimension by one factor', () => {
+  // One factor applied to width, height and the face is what keeps the frame from
+  // distorting; a separately-computed width is how portraits end up squashed.
+  expect(portraitLayout(TOP_BAND_MAX).scale).toBe(1);
+  expect(portraitLayout(TOP_BAND_MAX - 20).scale).toBe(1);
+  const s = portraitLayout(TOP_BAND_MIN + 20);
+  expect(s.scale).toBeCloseTo(s.size / PORTRAIT_MAX);
+  expect(s.scale).toBeLessThan(1);
+  // The floor is a floor for the scale too.
+  expect(portraitLayout(0).scale).toBeCloseTo(PORTRAIT_MIN / PORTRAIT_MAX);
 });
