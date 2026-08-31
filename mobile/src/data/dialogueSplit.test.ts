@@ -83,14 +83,19 @@ test('the choices band has a floor and a ceiling', () => {
   expect(clampChoices(screenH, screenH)).toBeLessThanOrEqual(screenH * 0.55);
 });
 
-test('the dock is inside the band, so the divider cannot cut through it', () => {
-  // The QUICK INFO row sits between the name plate and the conversation. Left out of the
-  // arithmetic it would be *below* the band's maximum, which means the thread's top edge
-  // would land in the middle of 차트 / 약물 / 활력 at the widest setting.
-  expect(TOP_BAND_MAX).toBeGreaterThanOrEqual(TOP_BAND_MIN + DOCK_H);
-  // And the tightest setting still leaves the dock its own room, on top of the floor
-  // the portrait needs.
-  expect(TOP_BAND_MIN - DOCK_H).toBeGreaterThanOrEqual(PORTRAIT_MIN);
+test('the bedside tools are part of the conversation\'s floor, not the portrait\'s', () => {
+  // 차트 · 약물 · 활력 are the learner's instruments, used while talking, and they sit on
+  // the ivory the exchange sits on. So the row travels with the conversation — and the
+  // conversation's floor has to include it, or the drag could squeeze the exchange down
+  // to nothing but the dock and the input.
+  const screenH = 850;
+  const tightest = clampSplit(9_999, screenH);
+  expect(screenH - tightest).toBeGreaterThanOrEqual(screenH * 0.28 + DOCK_H);
+  // And the top band's own arithmetic does NOT reserve it. Spelled out as the number,
+  // because that is the observable difference: 128 inset + 72 portrait floor + 10 pad.
+  // Put the dock back up there and this reads 254.
+  expect(TOP_BAND_MIN).toBe(128 + PORTRAIT_MIN + 10);
+  expect(portraitLayout(TOP_BAND_MIN).size).toBe(PORTRAIT_MIN);
 });
 
 test('a learner who never drags anything sees the layout that shipped', () => {

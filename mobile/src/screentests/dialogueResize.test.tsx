@@ -89,6 +89,7 @@ jest.mock('@/api/client', () => ({
   },
 }));
 
+import { Keyboard } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import DialogueRoute from '@/app/dialogue/[id]';
 import { clampChoices, clampSplit, DOCK_H, PORTRAIT_MAX } from '@/data/dialogueSplit';
@@ -139,14 +140,25 @@ function threadTop(root: ReactTestInstance): number {
   return typeof v === 'number' ? v : v.__getValue();
 }
 
-/** The QUICK INFO dock's top edge. */
-function dockTop(root: ReactTestInstance): number {
-  const hits = root.findAll((n) => {
+/** The QUICK INFO dock's label node. */
+function dockNode(root: ReactTestInstance): ReactTestInstance | undefined {
+  return root.findAll(
+    (n) => String(n.type) === 'Text' && n.children.includes('QUICK INFO'),
+    { deep: true },
+  )[0];
+}
+
+/** True when the bedside tools live INSIDE the conversation column — which is the whole
+ *  claim: they are the learner's instruments, used while talking, so they travel with the
+ *  conversation's edge rather than sitting above it as something the patient presents. */
+function dockIsInThread(root: ReactTestInstance): boolean {
+  let n = dockNode(root)?.parent ?? null;
+  while (n) {
     const st = n.props?.style;
-    return !!st && !Array.isArray(st) && st.zIndex === 4 && st.left === 14;
-  }, { deep: true });
-  expect(hits.length).toBeGreaterThan(0);
-  return hits[0].props.style.top;
+    if (!!st && !Array.isArray(st) && st.zIndex === 6 && st.left === 14) return true;
+    n = n.parent;
+  }
+  return false;
 }
 
 /** The portrait frame's drawn box. */
@@ -159,12 +171,27 @@ function frameBox(root: ReactTestInstance): { w: number; h: number } {
   return { w: hits[0].props.style.width, h: hits[0].props.style.height };
 }
 
-/** True when the name plate sits to the RIGHT of the portrait rather than under it. */
+/** True when the name plate sits to the LEFT of the portrait rather than under it.
+ *  row-reverse is what puts it there: the frame is written first, being the subject. */
 function nameIsBeside(root: ReactTestInstance): boolean {
   return root.findAll((n) => {
     const st = n.props?.style;
-    return !!st && !Array.isArray(st) && st.flexDirection === 'row' && st.gap === 10 && st.alignItems === 'center';
+    return !!st && !Array.isArray(st) && st.flexDirection === 'row-reverse' && st.gap === 10 && st.alignItems === 'center';
   }, { deep: true }).length > 0;
+}
+
+/** The department wash band's height — the coloured ground the portrait stands on. */
+function washHeight(root: ReactTestInstance): number {
+  const hits = root.findAll(
+    (n) => typeof n.type === 'string' && n.props?.testID === 'wash-band',
+    { deep: true },
+  );
+  expect(hits.length).toBe(1);
+  const v = hits[0].props.style.height;
+  // A percentage string would sail through a loose read and report a passing test on a
+  // band that does not move, so anything but a number is a failure here.
+  expect(typeof v === 'number' || typeof v?.__getValue === 'function').toBe(true);
+  return typeof v === 'number' ? v : v.__getValue();
 }
 
 /** The ceiling the reply cards actually scroll inside. */
@@ -184,9 +211,12 @@ test('dragging the divider moves the conversation, and the bedside tools come wi
   // The default is the position that shipped — someone who never touches the handle
   // must get the screen they already had.
   expect(before).toBe(clampSplit(WIN_H * 0.41 + 34, WIN_H));
-  // The dock lives immediately above the edge. At a percentage of the window it stayed
-  // put while the edge moved through it.
-  expect(dockTop(tree.root)).toBe(before - DOCK_H);
+  // The tools are in the conversation, so they need no position of their own — they move
+  // because the column moves.
+  expect(dockIsInThread(tree.root)).toBe(true);
+  // And the coloured ground ends exactly at the edge. At a fixed 40% the wash stayed put
+  // while the divider moved, so dragging cut the colour across the conversation.
+  expect(washHeight(tree.root)).toBe(before);
 
   const pan = handleOf(tree.root, 'split-handle');
   await act(async () => {
@@ -199,7 +229,8 @@ test('dragging the divider moves the conversation, and the bedside tools come wi
   // 90, not 100: PanResponder resets dy at the moment it grants, so the few pixels that
   // won the claim are not part of the drag. Every gesture in the app behaves this way.
   expect(after).toBe(before - 90);
-  expect(dockTop(tree.root)).toBe(after - DOCK_H);
+  expect(dockIsInThread(tree.root)).toBe(true);
+  expect(washHeight(tree.root)).toBe(after);
 });
 
 test('the portrait rearranges before it shrinks, and keeps its ratio when it does', async () => {
@@ -284,15 +315,73 @@ test('the voice toggle sits beside the portrait, not off the edge of the screen'
     { deep: true },
   );
   expect(hits.length).toBe(1);
-  const box = hits[0].props.style;
-  expect(box.right).toBeLessThan(0);
-  // Its offset is measured from whatever View contains it, so that View must not be the
-  // one stretched across the window. Walked up to the nearest HOST node: the immediate
-  // parent is the Pressable itself, which carries the very style being checked.
-  let up = hits[0].parent;
-  while (up && typeof up.type !== 'string') up = up.parent;
-  const parent = up?.props?.style;
-  const flat = Array.isArray(parent) ? Object.assign({}, ...parent.filter(Boolean)) : parent;
+  // Walk out to the View that actually positions it.
+  let box = hits[0].parent;
+  while (box && !(typeof box.type === 'string' && box.props?.style?.position === 'absolute' && box.props.style.right < 0)) {
+    box = box.parent;
+  }
+  expect(box).toBeTruthy();
+  // The container it is measured from must be the one that DRAWS THE FRAME. That is the
+  // only box in this screen whose right edge is the portrait's right edge: the full-width
+  // strip put the toggle off the screen, and a wrapper that also held the name plate grew
+  // with the plate and pushed the toggle a notch past the frame.
+  // Up to the next HOST node. The immediate parent is RN's View class component, which
+  // carries the same style — mistaking it for the container is how this read as broken.
+  let holder = box!.parent;
+  while (holder && typeof holder.type !== 'string') holder = holder.parent;
+  const drawsFrame = holder?.findAll((n) => {
+    const st = n.props?.style;
+    return !!st && !Array.isArray(st) && st.borderWidth === 3 && st.overflow === 'hidden' && typeof st.width === 'number';
+  }, { deep: true }) ?? [];
+  expect(drawsFrame.length).toBeGreaterThan(0);
+  const spans = holder?.props?.style;
+  const flat = Array.isArray(spans) ? Object.assign({}, ...spans.filter(Boolean)) : spans;
   expect(flat?.left).toBeUndefined();
   expect(flat?.right).toBeUndefined();
+});
+
+test('the keyboard borrows the edge, and the tools hand their row back', async () => {
+  // Two things at once, because they are the same fact: while the keyboard is up the
+  // divider is NOT at the learner's number — it is borrowed — and the bedside tools stop
+  // being drawn rather than merely fading, so the exchange gets their height back at the
+  // moment the screen is smallest. Then both return.
+  //
+  // Driven through real Keyboard events. The source-level version of this check matched
+  // the `{!typing && (` that guards the DRAG HANDLE a few lines above the dock, so it
+  // passed with the dock rendered unconditionally.
+  // Keyboard has no emit(), so the subscription is intercepted and the screen's own
+  // handler is called. The platform is the only part faked; the handler is the real one.
+  // A LIST per event, not one callback: more than one component on this screen listens,
+  // and keeping only the last registration silently dropped the screen's own handler —
+  // the dock stayed on and the test read as a broken guard.
+  const fired: Record<string, ((e: unknown) => void)[]> = {};
+  const spy = jest.spyOn(Keyboard, 'addListener').mockImplementation(((evt: string, cb: (e: unknown) => void) => {
+    (fired[evt] ??= []).push(cb);
+    return { remove: () => { fired[evt] = (fired[evt] ?? []).filter((f) => f !== cb); } };
+  }) as never);
+  const emit = (evt: string, e: unknown) => { for (const cb of fired[evt] ?? []) cb(e); };
+  const tree = await mount();
+  const resting = threadTop(tree.root);
+  expect(dockNode(tree.root)).toBeTruthy();
+  // will*, because jest-expo reports Platform.OS as ios — the same branch the screen
+  // takes there. Other components on the screen subscribe to did* as well.
+  expect(Object.keys(fired)).toEqual(expect.arrayContaining(['keyboardWillShow', 'keyboardWillHide']));
+
+  await act(async () => {
+    // duration 1, not 0: the screen reads `e.duration || 220`, so a zero would
+    // silently take the 220ms fallback and the assertions would land mid-flight.
+    emit('keyboardWillShow', { duration: 1, endCoordinates: { height: 300 } });
+    await Promise.resolve();
+  });
+  expect(dockNode(tree.root)).toBeUndefined();
+
+  await act(async () => {
+    emit('keyboardWillHide', { duration: 1 });
+    // Animated's JS driver runs on frames, so a microtask flush lands mid-flight. This
+    // waits for the animation to actually arrive.
+    await new Promise((r) => setTimeout(r, 60));
+  });
+  expect(dockNode(tree.root)).toBeTruthy();
+  expect(threadTop(tree.root)).toBe(resting);
+  spy.mockRestore();
 });

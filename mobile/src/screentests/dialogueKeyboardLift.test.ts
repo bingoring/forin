@@ -53,11 +53,17 @@ test('the covered chrome stops taking taps', () => {
   // Faded-but-hittable means a tap aimed at the thread opens a QUICK INFO tool,
   // toggles the NPC's voice, or ends the situation from behind it.
   const hits = SRC.match(/pointerEvents=\{typing \? 'none' : 'auto'\}/g) ?? [];
-  // The portrait, the QUICK INFO dock, and 상황 종료 — which is its own child of the
-  // status row now that it is centred on the screen rather than stacked with the
-  // missions. The mission cluster takes the same fact as a prop instead; that one is
-  // asserted where it lives, in missionCluster.test.tsx.
-  expect(hits.length).toBe(3);
+  // The portrait and 상황 종료 — the latter its own child of the status row now that it
+  // is centred on the screen rather than stacked with the missions. The mission cluster
+  // takes the same fact as a prop instead; that one is asserted where it lives, in
+  // missionCluster.test.tsx.
+  expect(hits.length).toBe(2);
+  // The QUICK INFO dock is the third thing the thread used to slide over, and it needs
+  // no pointerEvents any more: it moved INSIDE the thread column and is simply not
+  // rendered while the keyboard is up, which also gives the exchange its height back.
+  // Asserted by driving the keyboard in screentests/dialogueResize — the regex version
+  // of this check matched the `{!typing && (` guarding the DRAG HANDLE a few lines
+  // above the dock, and passed with the dock rendered unconditionally.
   expect(SRC).toMatch(/<MissionCluster[\s\S]*?disabled=\{typing\}/);
 });
 
@@ -75,10 +81,15 @@ test('the input rises with the keyboard, by its measured height', () => {
 });
 
 test('the background ivory grows to fill the screen as the thread rises', () => {
-  // Ivory underneath, the department wash on top, fading on the same driver — so the
+  // Ivory underneath, the department wash on top, fading as the thread rises — so the
   // colour the conversation sits on grows instead of leaving a band above it.
   expect(SRC).toMatch(/backgroundColor: colors\.cream \}\} \/>/);
-  expect(SRC).toMatch(/backgroundColor: wash, opacity: chromeOpacity/);
+  // The fade and the height are on SEPARATE nodes. They have to be: opacity runs on the
+  // native driver and height cannot, and on one node RN moves the whole style to native
+  // and then throws the first time the keyboard opens. Both halves are asserted here
+  // because the pairing is the invariant — the height's own value is driven and checked
+  // in screentests/dialogueResize.
+  expect(SRC).toMatch(/<Animated\.View style=\{\{ opacity: chromeOpacity \}\}>\s*<Animated\.View testID="wash-band" style=\{\{ height: threadTopStyle, backgroundColor: wash \}\} \/>/);
 });
 
 test('the listeners are removed on unmount', () => {

@@ -15,8 +15,9 @@
 // portrait:
 //
 //   ROOMY  — portrait with its name and mood underneath, as drawn
-//   BESIDE — the name and mood move to the RIGHT of the portrait; the row is shorter
-//            than the stack, so this buys height without shrinking anything
+//   BESIDE — the name and mood move to the LEFT of the portrait; the row is shorter than
+//            the stack, so this buys height without shrinking anything. Left, not right:
+//            the right of the frame is where the voice toggle hangs.
 //   SCALED — the portrait itself scales down, aspect ratio kept, to a floor
 //
 // The floor matters: below it the face stops reading as a face, and the mood — which is
@@ -39,9 +40,16 @@ const PLATE_STACKED = 62;
 const PLATE_BESIDE = 0;
 /** Where the portrait strip begins: status bar, exit row and mission cluster above it. */
 const TOP_INSET = 128;
-/** The QUICK INFO row (차트 / 약물 / 활력) and its gap. It lives INSIDE the top band —
- *  it sits between the plate and the conversation — so leaving it out of the arithmetic
- *  would put the thread's top edge straight through the middle of it. */
+/** The QUICK INFO row (차트 / 약물 / 활력) and its gap.
+ *
+ *  It belongs to the CONVERSATION, not to the character. 차트 · 약물 · 활력 are what the
+ *  nurse reaches for while talking — the learner's own instruments, not something the
+ *  patient presents — and they always sat on the ivory the exchange sits on. So the row
+ *  is the first thing inside the thread column, and it travels with the divider.
+ *
+ *  It is still in this file because the conversation's floor has to make room for it:
+ *  the tools live in that space now, so the space they need cannot be part of what the
+ *  drag is allowed to take away. */
 export const DOCK_H = 44;
 /** Breathing room below the dock. */
 const BOTTOM_PAD = 10;
@@ -52,7 +60,7 @@ export type PortraitLayout = {
   stage: PortraitStage;
   /** Drawn portrait size, square. */
   size: number;
-  /** True when the name and mood sit to the right of the portrait instead of under it. */
+  /** True when the name and mood sit to the LEFT of the portrait instead of under it. */
   nameBeside: boolean;
   /** Every drawn dimension inside the frame times this. 1 unless the stage is 'scaled'. */
   scale: number;
@@ -60,13 +68,13 @@ export type PortraitLayout = {
 
 /** The least height the top band can be given. Dragging past it does nothing — see
  *  clampSplit. */
-export const TOP_BAND_MIN = TOP_INSET + PORTRAIT_MIN + DOCK_H + BOTTOM_PAD;
+export const TOP_BAND_MIN = TOP_INSET + PORTRAIT_MIN + BOTTOM_PAD;
 /** The height at which the band has everything it wants: full portrait, plate stacked
  *  under it, dock. Not a clamp — dragging BELOW the divider's default is allowed, and the
  *  extra room simply sits between the dock and the conversation, which is the gap the
  *  shipped design already has on a tall phone. What stops the drag is the conversation's
  *  own floor, in clampSplit. */
-export const TOP_BAND_MAX = TOP_INSET + PORTRAIT_MAX + PLATE_STACKED + DOCK_H + BOTTOM_PAD;
+export const TOP_BAND_MAX = TOP_INSET + PORTRAIT_MAX + PLATE_STACKED + BOTTOM_PAD;
 
 /**
  * What the top band draws in `available` points of height.
@@ -76,16 +84,16 @@ export const TOP_BAND_MAX = TOP_INSET + PORTRAIT_MAX + PLATE_STACKED + DOCK_H + 
  * stack — so it always comes before scaling.
  */
 export function portraitLayout(available: number): PortraitLayout {
-  const roomy = TOP_INSET + PORTRAIT_MAX + PLATE_STACKED + DOCK_H + BOTTOM_PAD;
+  const roomy = TOP_INSET + PORTRAIT_MAX + PLATE_STACKED + BOTTOM_PAD;
   if (available >= roomy) return { stage: 'roomy', size: PORTRAIT_MAX, nameBeside: false, scale: 1 };
 
-  const beside = TOP_INSET + PORTRAIT_MAX + PLATE_BESIDE + DOCK_H + BOTTOM_PAD;
+  const beside = TOP_INSET + PORTRAIT_MAX + PLATE_BESIDE + BOTTOM_PAD;
   if (available >= beside) return { stage: 'beside', size: PORTRAIT_MAX, nameBeside: true, scale: 1 };
 
   // Scaling, and a floor. Clamped rather than allowed to go smaller: a 30pt face is not
   // a face. Everything drawn inside the frame is multiplied by `scale`, which is how the
   // ratio is kept — one factor, applied to every dimension, cannot distort anything.
-  const size = Math.max(PORTRAIT_MIN, Math.min(PORTRAIT_MAX, available - TOP_INSET - DOCK_H - BOTTOM_PAD));
+  const size = Math.max(PORTRAIT_MIN, Math.min(PORTRAIT_MAX, available - TOP_INSET - BOTTOM_PAD));
   return { stage: 'scaled', size, nameBeside: true, scale: size / PORTRAIT_MAX };
 }
 
@@ -98,8 +106,10 @@ export function portraitLayout(available: number): PortraitLayout {
  * Overshooting the geometric need costs nothing; it is background either way. */
 export function clampSplit(top: number, screenH: number): number {
   // The conversation needs a floor of its own, or the drag could hand the whole screen
-  // to a portrait and leave the learner reading one line at a time.
-  const threadMin = screenH * 0.28;
+  // to a portrait and leave the learner reading one line at a time. The bedside tools
+  // live in that space, so their row is part of the floor — without it the drag could
+  // squeeze the exchange down to the dock and the input.
+  const threadMin = screenH * 0.28 + DOCK_H;
   return Math.max(TOP_BAND_MIN, Math.min(top, screenH - threadMin));
 }
 

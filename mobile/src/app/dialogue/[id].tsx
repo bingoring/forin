@@ -537,7 +537,18 @@ export default function DialogueRoute() {
             reads warm, an ICU one cool — washed most of the way to cream so it cannot
             fight the bubbles drawn on it. */}
         <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: colors.cream }} />
-        <Animated.View style={{ height: '40%', backgroundColor: wash, opacity: chromeOpacity }} />
+        {/* Its height IS the divider. At a fixed 40% the colour stayed put while the edge
+            moved, so dragging left the wash cutting across the conversation — or a strip
+            of ivory above the portrait. Same animated value as the thread's top, so the
+            two edges are the same edge.
+
+            TWO nested nodes, and it has to be two: `opacity` runs on the native driver
+            and `height` cannot. On one node RN moves the whole style to native and then
+            throws "Attempting to run JS driven animation on animated node that has been
+            moved to native" the first time the keyboard opens. */}
+        <Animated.View style={{ opacity: chromeOpacity }}>
+          <Animated.View testID="wash-band" style={{ height: threadTopStyle, backgroundColor: wash }} />
+        </Animated.View>
       </Pressable>
 
       {/* status bar */}
@@ -620,93 +631,37 @@ export default function DialogueRoute() {
           being spoken to, whose expression is the feedback — off to one side. One
           portrait, in the middle, is the whole of what this strip is for. */}
       <Animated.View style={{ position: 'absolute', left: 0, right: 0, top: 128, alignItems: 'center', zIndex: 3, opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
-        {/* Wrapped, so the volume button below can be positioned against the FRAME.
-            It was `right: -38` inside this full-width strip, which put it 38pt past the
-            right edge of the screen — the toggle was off-screen, not beside the portrait
-            the comment describes. This wrapper shrinks to the frame (the strip centres
-            its children), so the offset means what it says again. */}
-        <View>
-          <PortraitFrame
-            name={p.name || 'NPC'}
-            status={p.mood ? p.mood.toUpperCase() : undefined}
-            sweat={showSweat}
-            // Set by the divider: full size with its plate underneath, plate moved
-            // beside it, or scaled down to a floor. See data/dialogueSplit.
-            scale={top.scale}
-            nameBeside={top.nameBeside}
-          >
-            <RoleFace kind={kind} hair={p.hair} expression={expr} size={Math.round(120 * top.scale)} />
-          </PortraitFrame>
-        {/* On the portrait, because that is whose voice it turns off.
-            It used to sit beside a name plate above the dialogue box — and that plate was
-            the VN speaker tab, naming a person whose face and name are already on screen
-            twice over. With the exchange scrolling as bubbles, who is speaking is the side
-            the bubble is on, so the plate said nothing and the button was the only reason
-            it was still there. Tapping it while a line is playing stops that line. */}
-        <Pressable
-          onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          accessibilityRole="switch"
-          accessibilityState={{ checked: voiceOn }}
-          accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
-          // The frame is centred now, so the button hangs off its right edge rather than
-          // being measured from the screen's left. Same relationship as before — adjacent
-          // to the portrait, clear of the name plate underneath it.
-          style={{ position: 'absolute', right: -38, top: Math.round(96 * top.scale) }}
+        <PortraitFrame
+          name={p.name || 'NPC'}
+          status={p.mood ? p.mood.toUpperCase() : undefined}
+          sweat={showSweat}
+          // Set by the divider: full size with its plate underneath, plate moved to the
+          // LEFT of it, or scaled down to a floor. See data/dialogueSplit.
+          scale={top.scale}
+          nameBeside={top.nameBeside}
+          // Handed to the frame rather than placed beside it. Positioned out here it was
+          // measured from whatever contained it — first the full-width strip, which put
+          // it off the right of the screen, then a wrapper that grew with the name plate,
+          // which pushed it a notch further out than the frame it belongs to. Inside the
+          // frame there is only one thing it can be relative to.
+          aside={(
+            <Pressable
+              onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              accessibilityRole="switch"
+              accessibilityState={{ checked: voiceOn }}
+              accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
+            >
+              <Shadowed offset={2}>
+                <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                  <PixelIcon name="volume" color={voiceOn ? C : C + '66'} size={15} sw={1.9} />
+                </View>
+              </Shadowed>
+            </Pressable>
+          )}
         >
-          <Shadowed offset={2}>
-            <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <PixelIcon name="volume" color={voiceOn ? C : C + '66'} size={15} sw={1.9} />
-            </View>
-          </Shadowed>
-        </Pressable>
-        </View>
-      </Animated.View>
-
-      {/* QUICK INFO dock — bedside reference tools (차트 / 약물 / 활력).
-          Anchored off the WINDOW height, not a percentage of this container: the
-          KeyboardAvoidingView shrinks the container by the keyboard's height, so
-          `top: '41%'` was 41% of a moving number and the dock rode up with the
-          keyboard. The dialogue box below it is bottom-anchored and SHOULD rise
-          (it holds the input); a bedside reference has no reason to. */}
-      <Animated.View
-        // Anchored to the DIVIDER, not to a share of the window: the band's arithmetic
-        // reserves DOCK_H immediately above the conversation, so wherever the learner
-        // puts the edge, the bedside tools stay tucked against it and reachable. At a
-        // percentage they stayed put while the edge moved through them.
-        style={{ position: 'absolute', left: 14, right: 14, top: restingTop - DOCK_H, zIndex: 4, opacity: chromeOpacity }}
-        // Not just faded — unhittable, so a tool cannot be opened by a tap aimed at the
-        // thread that now covers this strip.
-        pointerEvents={typing ? 'none' : 'auto'}
-      >
-        {/* Scrolls rather than wrapping. Wrapping was the other option and it costs a
-            whole row of the thread every time it happens; scrolling costs nothing until
-            the row is actually too wide, and then it costs a swipe. */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingRight: 4 }}
-        >
-        <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
-        </View>
-        {/* The chips used to be preceded by a `flex: 1` dotted rule, which took every
-            spare pixel and squeezed them until the last label clipped — 활력 lost its
-            last character. The rule is gone: the chips get their natural width, and the
-            row scrolls if a longer translation still overflows.
-            The real cause of the clipping was worse than the squeeze: each chip drew its
-            icon NAME as text, so the row literally read "stethoscope 활력". */}
-        {([['chart', 'clipboard', t('dialogue.tabChart')], ['meds', 'pill', t('dialogue.tabMeds')], ['vitals', 'stethoscope', t('dialogue.tabVitals')]] as const).map(([k, icon, label]) => (
-          <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
-            <Shadowed offset={2}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <PixelIcon name={icon} color={C} size={13} sw={1.9} />
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }} numberOfLines={1}>{label}</Text>
-              </View>
-            </Shadowed>
-          </Pressable>
-        ))}
-        </ScrollView>
+          <RoleFace kind={kind} hair={p.hair} expression={expr} size={Math.round(120 * top.scale)} />
+        </PortraitFrame>
       </Animated.View>
 
       {/* QUICK INFO panel — modal card over a scrim */}
@@ -754,6 +709,41 @@ export default function DialogueRoute() {
               if (dragTo.current.split) void setDialogueLayout({ splitTop: dragTo.current.split });
             }}
           />
+        )}
+        {/* QUICK INFO — bedside reference tools (차트 / 약물 / 활력).
+            Inside the conversation, not above it. These are the learner's own
+            instruments, reached for WHILE talking, and they always sat on the ivory the
+            exchange sits on — so they belong to this column and travel with its edge.
+            Above the divider they read as something the patient was presenting.
+            Gone while the keyboard is up rather than faded: the row's height is exactly
+            what the exchange needs back when the screen is at its smallest. */}
+        {!typing && (
+          <View style={{ marginTop: 8 }}>
+            {/* Scrolls rather than wrapping. Wrapping costs a whole row of the thread
+                every time it happens; scrolling costs nothing until the row is actually
+                too wide, and then it costs a swipe. */}
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingRight: 4 }}
+            >
+              <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
+                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
+              </View>
+              {/* Each chip used to draw its icon NAME as text, so the row literally read
+                  "stethoscope 활력". */}
+              {([['chart', 'clipboard', t('dialogue.tabChart')], ['meds', 'pill', t('dialogue.tabMeds')], ['vitals', 'stethoscope', t('dialogue.tabVitals')]] as const).map(([k, icon, label]) => (
+                <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
+                  <Shadowed offset={2}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
+                      <PixelIcon name={icon} color={C} size={13} sw={1.9} />
+                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }} numberOfLines={1}>{label}</Text>
+                    </View>
+                  </Shadowed>
+                </Pressable>
+              ))}
+            </ScrollView>
+          </View>
         )}
         {/* the exchange */}
         <ScrollView
@@ -1095,15 +1085,21 @@ function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: 
  *   · `scale` multiplies every drawn dimension. One factor for all of them is what keeps
  *     the frame from distorting — a separately-computed width is how portraits end up
  *     squashed. The TEXT is not scaled: a name plate at 0.55 is not a name plate.
- *   · `nameBeside` puts the plate to the RIGHT of the frame instead of under it. A row is
+ *   · `nameBeside` puts the plate to the LEFT of the frame instead of under it. A row is
  *     shorter than a stack, so this buys height back without shrinking the drawing, which
- *     is why it happens before any scaling does. */
-function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBeside = false }: { children: React.ReactNode; name: string; status?: string; hue?: string; sweat?: boolean; scale?: number; nameBeside?: boolean }) {
+ *     is why it happens before any scaling does. LEFT because the right of the frame is
+ *     taken: `aside` hangs there, and a plate arriving on that side shouldered it out.
+ *
+ *  `aside` is drawn against the FRAME's own box, which is the only container in this
+ *  screen whose right edge is the portrait's right edge. */
+function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBeside = false, aside }: { children: React.ReactNode; name: string; status?: string; hue?: string; sweat?: boolean; scale?: number; nameBeside?: boolean; aside?: React.ReactNode }) {
   const w = Math.round(110 * scale);
   const h = Math.round(130 * scale);
   const inset = Math.max(3, Math.round(6 * scale));
   return (
-    <View style={nameBeside ? { flexDirection: 'row', alignItems: 'center', gap: 10 } : undefined}>
+    // row-REVERSE: the frame is written first because it is the subject, and the plate
+    // still lands on its left.
+    <View style={nameBeside ? { flexDirection: 'row-reverse', alignItems: 'center', gap: 10 } : undefined}>
       <View>
         <Shadowed offset={4}>
           <View style={{ width: w, height: h, backgroundColor: hue || colors.peach, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
@@ -1114,6 +1110,13 @@ function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBesi
         {sweat && (
           <View style={{ position: 'absolute', top: 2, right: -8, zIndex: 4 }}>
             <PixelIcon name="droplet" color={colors.blue} size={18} sw={1.8} />
+          </View>
+        )}
+        {/* Off the frame's right edge, three quarters of the way down it — clear of the
+            droplet above and of the plate, wherever the plate is. */}
+        {!!aside && (
+          <View style={{ position: 'absolute', right: -38, top: Math.round(96 * scale) }}>
+            {aside}
           </View>
         )}
       </View>
