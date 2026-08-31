@@ -68,9 +68,24 @@ export interface ScenarioStep {
   id: string; type: string; next?: string;
   payload?: { quizId?: string; speaker?: string; expression?: string; lineEn?: string; lineKo?: string; [k: string]: unknown };
 }
+/** One suggested reply, from the guided pass of a curriculum step. */
+export interface ReplyChoice {
+  /** best / strong / fair — all three are correct; they differ in what they ACHIEVE. */
+  tier: 'best' | 'strong' | 'fair';
+  /** What to say, word for word, in the target language. */
+  text: string;
+  /** One line in the learner's own language saying what this reply achieves. The
+   *  difference between the three IS the lesson. */
+  why: string;
+}
+
 export interface ScenarioDetail {
   id: string; profession: string; eventId: string; title: string; tagline: string;
   persona: ScenarioPersona; goals?: string[]; guardrails?: string[]; keyPhrases?: string[];
+  /** How much help THIS run gets: "choices" the first time through a conversation,
+   *  "free" the second. Sent with the scenario so the screen knows what to draw before
+   *  the conversation starts. */
+  guide?: 'choices' | 'free';
   briefing?: ScenarioBriefing; steps?: ScenarioStep[];
 }
 
@@ -649,6 +664,20 @@ export const api = {
   // --- scenario briefing + AI conversation ---
 
   /** Full scenario (briefing card + persona). GET /scenarios/{id}. */
+  /** Three ways to answer the character's latest line.
+   *
+   *  Never throws for the learner's sake: an empty list means the screen falls back to
+   *  its text box, which is the app as it always was. A scaffold that fails should leave
+   *  them standing, not stop them mid-conversation. */
+  async replyChoices(sessionId: string): Promise<ReplyChoice[]> {
+    try {
+      const { data } = await http.get(`/conversation/${encodeURIComponent(sessionId)}/choices`);
+      return ((data as { choices?: ReplyChoice[] } | null)?.choices ?? []).filter((c) => !!c.text);
+    } catch {
+      return [];
+    }
+  },
+
   async scenario(id: string): Promise<ScenarioDetail> {
     const { data } = await http.get(`/scenarios/${id}`);
     return data as ScenarioDetail;

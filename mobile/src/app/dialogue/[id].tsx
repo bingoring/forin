@@ -17,10 +17,11 @@ import {
 import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteAsync } from 'expo-file-system/legacy';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import { PixelButton } from '@/components/PixelButton';
-import { api, type ScenarioDetail } from '@/api/client';
+import { api, type ReplyChoice, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
 import { MissionCluster } from '@/components/dialogue/MissionCluster';
+import { ReplyChoices } from '@/components/dialogue/ReplyChoices';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
@@ -75,6 +76,16 @@ export default function DialogueRoute() {
   const [draft, setDraft] = useState('');
   const [pending, setPending] = useState(false);
   const [hintOn, setHintOn] = useState(false);
+  // The guided pass of a curriculum step: three replies to pick from, refreshed after
+  // each of the character's turns. `guide` arrives with the scenario so the screen knows
+  // what to draw before the conversation starts.
+  const guided = scenario?.guide === 'choices';
+  const [choices, setChoices] = useState<ReplyChoice[]>([]);
+  const [choicesBusy, setChoicesBusy] = useState(false);
+  // Set when the learner asks for the box instead. Their decision outlives the next
+  // turn — being handed the list again after saying "I'll write my own" is the app not
+  // listening.
+  const [wroteOwn, setWroteOwn] = useState(false);
   const [tool, setTool] = useState<'chart' | 'meds' | 'vitals' | null>(null); // QUICK INFO panel
   const logRef = useRef<ScrollView>(null);
 
@@ -206,6 +217,18 @@ export default function DialogueRoute() {
     } catch { setRec('idle'); }
   };
 
+  const loadChoices = useCallback(async () => {
+    const sid = sessionRef.current;
+    if (!guided || wroteOwn || !sid) return;
+    setChoicesBusy(true);
+    try {
+      setChoices(await api.replyChoices(sid));
+    } finally {
+      setChoicesBusy(false);
+    }
+  }, [guided, wroteOwn]);
+
+
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -231,6 +254,10 @@ export default function DialogueRoute() {
         if (!alive) return;
         sessionRef.current = sid;
         setState('ready');
+        // The opening line is already on screen, so it is the learner's move — and the
+        // very first turn is the one testers froze on. Waiting for them to speak before
+        // offering help would help nobody.
+        void loadChoices();
       } catch {
         if (alive) setState('error');
       }
@@ -279,6 +306,9 @@ export default function DialogueRoute() {
         },
       });
       void speakNpc();
+      // The character has answered, so it is the learner's move: ask for replies to THIS
+      // line. Not awaited — the conversation is readable while they arrive.
+      void loadChoices();
     } catch {
       setNpcLine(t('dialogue.replyFailed'));
     } finally {
@@ -363,6 +393,9 @@ export default function DialogueRoute() {
     }
   };
 
+  // Refetched whenever it is the learner's move again: the suggestions are answers to
+  // the line that was just said, and yesterday's answers to a different line are worse
+  // than none. Never blocks anything — an empty result simply leaves the text box.
   const stepAway = () => {
     Keyboard.dismiss();
     setPagedOut(true);
@@ -707,8 +740,31 @@ export default function DialogueRoute() {
           </View>
         )}
 
+        {/* GUIDED PASS: three replies instead of an empty box.
+            The first time through a conversation the learner has nothing to be free
+            with, which is what testers reported. Picking one takes them to pronunciation
+            practice — the point is to SAY it, not to recognise it. */}
+        {guided && !wroteOwn && !hintOn && (
+          <View style={{ marginTop: 12 }}>
+            <ReplyChoices
+              choices={choices}
+              loading={choicesBusy}
+              onPick={(c) => {
+                // The sentence goes in the box AND straight to pronunciation practice.
+                // The box keeps it because this screen stays mounted underneath, so
+                // coming back leaves them one tap from sending what they just said.
+                setDraft(c.text);
+                router.push(
+                  `/pronunciation/${encodeURIComponent(c.text.slice(0, 40))}?referenceText=${encodeURIComponent(c.text)}&origin=dialogue&scenarioId=${encodeURIComponent(id ?? '')}&step=${encodeURIComponent(t('choice.prompt'))}`
+                );
+              }}
+              onWriteMyOwn={() => setWroteOwn(true)}
+            />
+          </View>
+        )}
+
         {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
-        {!hintOn && (
+        {(!hintOn && (!guided || wroteOwn || (!choicesBusy && choices.length === 0))) && (
           <View style={{ marginTop: 14 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}</Text>
             <Shadowed offset={3}>
