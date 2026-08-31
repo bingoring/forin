@@ -277,6 +277,42 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/conversation/{sessionId}/choices": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Three replies the learner could give next (guided steps only) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.choicesResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/conversation/{sessionId}/complete": {
         parameters: {
             query?: never;
@@ -2145,6 +2181,18 @@ export interface components {
             /** @description high difficulty */
             urgent?: boolean;
         };
+        "github_com_bingoring_forin_server_internal_domain_conversation.Choice": {
+            /** @description Text is what the learner would say, word for word, in the target language. */
+            text?: string;
+            tier?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.ChoiceTier"];
+            /**
+             * @description Why is one line in the learner's OWN language saying what this reply achieves —
+             *     the difference between the three is the lesson, and it is invisible otherwise.
+             */
+            why?: string;
+        };
+        /** @enum {string} */
+        "github_com_bingoring_forin_server_internal_domain_conversation.ChoiceTier": "best" | "strong" | "fair";
         "github_com_bingoring_forin_server_internal_domain_conversation.Correction": {
             cardId?: string;
             corrected?: string;
@@ -2391,6 +2439,9 @@ export interface components {
         "internal_adapters_http.attemptReq": {
             scenarioId?: string;
             score?: number;
+        };
+        "internal_adapters_http.choicesResp": {
+            choices?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Choice"][];
         };
         "internal_adapters_http.correctReq": {
             context?: string;

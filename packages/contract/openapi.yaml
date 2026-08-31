@@ -120,6 +120,30 @@ components:
           description: high difficulty
           type: boolean
       type: object
+    github_com_bingoring_forin_server_internal_domain_conversation.Choice:
+      properties:
+        text:
+          description: Text is what the learner would say, word for word, in the target
+            language.
+          type: string
+        tier:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_conversation.ChoiceTier'
+        why:
+          description: |-
+            Why is one line in the learner's OWN language saying what this reply achieves —
+            the difference between the three is the lesson, and it is invisible otherwise.
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_conversation.ChoiceTier:
+      enum:
+      - best
+      - strong
+      - fair
+      type: string
+      x-enum-varnames:
+      - TierBest
+      - TierStrong
+      - TierFair
     github_com_bingoring_forin_server_internal_domain_conversation.Correction:
       properties:
         cardId:
@@ -535,6 +559,14 @@ components:
           type: string
         score:
           type: integer
+      type: object
+    internal_adapters_http.choicesResp:
+      properties:
+        choices:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_conversation.Choice'
+          type: array
+          uniqueItems: false
       type: object
     internal_adapters_http.correctReq:
       properties:
@@ -1100,6 +1132,20 @@ paths:
       summary: Content manifest (version)
       tags:
       - content
+  /conversation/{sessionId}/choices:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.choicesResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Three replies the learner could give next (guided steps only)
+      tags:
+      - conversation
   /conversation/{sessionId}/complete:
     post:
       responses: null

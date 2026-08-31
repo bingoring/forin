@@ -351,3 +351,36 @@ type correctReq struct {
 	Text    string `json:"text"`
 	Context string `json:"context"`
 }
+
+type choicesResp struct {
+	Choices []conversation.Choice `json:"choices"`
+}
+
+// @Summary Three replies the learner could give next (guided steps only)
+// @Tags conversation
+// @Security Bearer
+// @Success 200 {object} choicesResp
+// @Router /conversation/{sessionId}/choices [get]
+func (h *conversationHandler) choices(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	out, err := h.engine.SuggestReplies(r.Context(), uid, r.PathValue("sessionId"))
+	if errors.Is(err, conversation.ErrSessionNotFound) {
+		httpx.Error(w, http.StatusNotFound, "session not found")
+		return
+	}
+	if err != nil {
+		// 200 with nothing, not a 500. The screen falls back to its text box, which is
+		// the app working as it always did — a scaffold that fails should leave the
+		// learner standing, not stop them mid-conversation.
+		httpx.JSON(w, http.StatusOK, choicesResp{Choices: []conversation.Choice{}})
+		return
+	}
+	if out == nil {
+		out = []conversation.Choice{}
+	}
+	httpx.JSON(w, http.StatusOK, choicesResp{Choices: out})
+}

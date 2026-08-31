@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -102,7 +103,14 @@ func (h *contentHandler) scenario(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusNotFound, "scenario not found")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, s)
+	// How much help this scenario's dialogue offers, from where it sits in its
+	// curriculum. Sent with the scenario so the screen knows what to draw before the
+	// conversation starts — asking afterwards would show a text box for a moment and
+	// then replace it, which reads as the app changing its mind.
+	httpx.JSON(w, http.StatusOK, struct {
+		*content.Scenario
+		Guide string `json:"guide"`
+	}{s, string(curriculum.GuideForScenario(s.ID))})
 }
 
 // @Summary Get a quiz (playable content)

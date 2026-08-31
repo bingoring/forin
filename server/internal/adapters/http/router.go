@@ -145,6 +145,7 @@ func NewRouter(d Deps) http.Handler {
 	// previous conversation every time a scenario is opened.
 	mux.Handle("GET /scenarios/{id}/conversation/last", auth(http.HandlerFunc(conv.resumable)))
 	mux.Handle("POST /conversation/{sessionId}/message", auth(http.HandlerFunc(conv.message)))
+	mux.Handle("GET /conversation/{sessionId}/choices", auth(http.HandlerFunc(conv.choices)))
 	mux.Handle("POST /conversation/{sessionId}/stream", auth(http.HandlerFunc(conv.stream)))
 	mux.Handle("POST /conversation/{sessionId}/complete", auth(http.HandlerFunc(conv.complete)))
 	mux.Handle("POST /conversation/{sessionId}/discard", auth(http.HandlerFunc(conv.discard)))
