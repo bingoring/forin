@@ -21,7 +21,10 @@ const C = colors.ink;
 
 export default function ScenarioBriefingRoute() {
   const t = useT();
-  const { id } = useLocalSearchParams<{ id: string }>();
+  // `guide` is the rung the learner chose in the curriculum list. Carried through this
+  // screen rather than re-derived: the server can only infer a rung from what has been
+  // cleared, and inference cannot know which of two rows was tapped.
+  const { id, guide } = useLocalSearchParams<{ id: string; guide?: 'choices' | 'free' }>();
   const router = useRouter();
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -189,7 +192,7 @@ export default function ScenarioBriefingRoute() {
                   icon="play" label={t('scenario.startNow')}
                   bg={colors.mint}
                   shadowColor={colors.mintShadow}
-                  onPress={() => router.push(`/dialogue/${id}`)}
+                  onPress={() => router.push(guide ? `/dialogue/${id}?guide=${guide}` : `/dialogue/${id}`)}
                   full
                 />
                 {/* +XP reward micro-badge (handoff pins this top-right of the CTA) */}

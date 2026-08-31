@@ -133,7 +133,14 @@ export default function Campus() {
   );
 
   // Quiz steps (QZ-*) open the quiz player; scenario steps open the briefing.
-  const open = (scn?: string) => { if (scn) router.push(scn.startsWith('QZ-') ? `/quiz/${scn}` : `/scenario/${scn}`); };
+  // `guide` rides along: the two entries of a dialogue share one scenario id, so the
+  // rung the learner tapped is the only thing that distinguishes them. Dropping it here
+  // is what made "1/2 보기 중에서" open the unguided run.
+  const open = (scn?: string, guide?: 'choices' | 'free') => {
+    if (!scn) return;
+    if (scn.startsWith('QZ-')) { router.push(`/quiz/${scn}`); return; }
+    router.push(guide ? `/scenario/${scn}?guide=${guide}` : `/scenario/${scn}`);
+  };
 
   // One gesture from a floor to everything on it: the sheet carries the floor's
   // curricula AND its situations. `deptCode` may be absent for a floor whose steps have

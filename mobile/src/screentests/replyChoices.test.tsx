@@ -103,11 +103,13 @@ test('nothing to offer draws nothing at all', () => {
 // ── the wiring ────────────────────────────────────────────────────────────
 const SRC = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
 
-test('choices replace the text box only on a guided run', () => {
-  // `guide` arrives WITH the scenario, so the screen knows what to draw before the
-  // conversation starts — asking afterwards would show a box for a moment and then
-  // replace it, which reads as the app changing its mind.
-  expect(SRC).toMatch(/const guided = scenario\?\.guide === 'choices';/);
+test('the rung the learner TAPPED decides it, with the server as fallback', () => {
+  // Both entries of a dialogue point at one scenario id, so the server can only infer a
+  // rung from what has been cleared — and inference cannot know which of the two rows was
+  // tapped. Tapping "1/2 보기 중에서" and getting the unguided run is the app ignoring a
+  // decision it had just asked for.
+  expect(SRC).toMatch(/const guided = \(guideParam \?\? scenario\?\.guide\) === 'choices';/);
+  expect(SRC).toMatch(/guide: guideParam \} = useLocalSearchParams/);
   // And the box returns whenever there is nothing to pick: unguided run, they asked to
   // write their own, or the suggestions came back empty.
   expect(SRC).toMatch(/!guided \|\| wroteOwn \|\| \(!choicesBusy && choices\.length === 0\)/);
@@ -156,4 +158,18 @@ test('the hint is asked for per turn, not left on screen', () => {
   // again closes it; pressing it fresh asks again.
   expect(SRC).toMatch(/if \(hintOn\) \{ setHintOn\(false\); return; \}/);
   expect(SRC).toMatch(/const cs = await api\.replyChoices\(sid\);/);
+});
+
+test('the chosen rung survives every screen between the list and the conversation', () => {
+  // Three hops: the sheet hands it to the career tab, the tab to the briefing, the
+  // briefing to the dialogue. It was dropped at the first one — onStart took only a
+  // scenario id — so the two rows navigated identically.
+  const sheet = readFileSync(join(__dirname, '..', 'components', 'campus', 'DeptSheet.tsx'), 'utf8');
+  expect(sheet).toMatch(/onStart\(st\.scenarioId, st\.guide\)/);
+
+  const career = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'campus.tsx'), 'utf8');
+  expect(career).toMatch(/router\.push\(guide \? `\/scenario\/\$\{scn\}\?guide=\$\{guide\}`/);
+
+  const briefing = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id].tsx'), 'utf8');
+  expect(briefing).toMatch(/guide \? `\/dialogue\/\$\{id\}\?guide=\$\{guide\}`/);
 });

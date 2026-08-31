@@ -55,7 +55,10 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
    */
   focusSituation?: DeptSituation | null;
   onClose(): void;
-  onStart(scenarioID?: string): void;
+  /** `guide` is the rung the learner TAPPED. Both entries of a dialogue point at the
+   *  same scenario, so without it the two rows navigate identically and the choice the
+   *  list just offered is thrown away. */
+  onStart(scenarioID?: string, guide?: 'choices' | 'free'): void;
   onWalk(deptCode: string): void;
 }) {
   const t = useT();
@@ -196,7 +199,7 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
                             <Pressable
                               key={i}
                               disabled={locked}
-                              onPress={() => onStart(st.scenarioId)}
+                              onPress={() => onStart(st.scenarioId, st.guide)}
                               style={{
                                 flexDirection: 'row', alignItems: 'center', gap: 7,
                                 backgroundColor: st.state === 'done' ? '#fff' : st.state === 'now' ? meta.bg : optional ? colors.lilac + '2A' : C + '11',

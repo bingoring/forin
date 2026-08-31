@@ -45,7 +45,7 @@ const WAV_16K_MONO: RecordingOptions = {
 
 export default function DialogueRoute() {
   const t = useT();
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, guide: guideParam } = useLocalSearchParams<{ id: string; guide?: 'choices' | 'free' }>();
   const router = useRouter();
 
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
@@ -79,7 +79,14 @@ export default function DialogueRoute() {
   // The guided pass of a curriculum step: three replies to pick from, refreshed after
   // each of the character's turns. `guide` arrives with the scenario so the screen knows
   // what to draw before the conversation starts.
-  const guided = scenario?.guide === 'choices';
+  // The rung the learner CHOSE wins over what the server infers.
+  //
+  // Both entries of a dialogue point at one scenario id, so the server can only guess
+  // from what has been cleared — and a guess cannot know which of the two rows was
+  // tapped. Tapping "1/2 보기 중에서" and getting the unguided run is the app ignoring a
+  // decision it had just asked for. The server's answer is still the fallback, for entry
+  // points that have no rung at all: the board, a paged call, the home card.
+  const guided = (guideParam ?? scenario?.guide) === 'choices';
   const [choices, setChoices] = useState<ReplyChoice[]>([]);
   const [choicesBusy, setChoicesBusy] = useState(false);
   // Set when the learner asks for the box instead. Their decision outlives the next
