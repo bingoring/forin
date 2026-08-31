@@ -503,6 +503,7 @@ export const de: Record<string, string> = {
   'ward.nightSub': 'Stille Station — mehr Nachtruf-Ereignisse',
   'home.curriculumTab': 'Laufendes Curriculum',
   'home.nextUp': 'Als Nächstes: {title}',
+  'home.waking': 'Server wird geweckt…\nEinen Moment',
   'page.title': 'Ruf des Tages · CODE PAGE',
   'page.answer': 'Jetzt antworten',
   'page.ignore': 'Ignorieren',

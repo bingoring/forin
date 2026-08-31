@@ -9,6 +9,7 @@
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
+import { PixelButton } from '@/components/PixelButton';
 import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { LiveWard } from '@/components/home/LiveWard';
 import { PagingCall } from '@/components/home/PagingCall';
@@ -21,6 +22,10 @@ import { t, useLocale, useT } from '@/i18n';
 import { useAvatar } from '@/hooks/useAvatar';
 
 const C = colors.ink;
+/** How many times the home read retries a waking server before calling it a failure.
+ *  Four attempts with growing gaps spans about 15 seconds, which covers a Cloud Run
+ *  cold start with room over. */
+const HOME_RETRIES = 4;
 
 export default function HomeTab() {
   const t = useT();
@@ -29,31 +34,68 @@ export default function HomeTab() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [flipped, setFlipped] = useState(false);
 
+  // Keeps trying while the server wakes up.
+  //
+  // Cloud Run scales to zero, so the first request after an idle period can take longer
+  // than the transport's own two retries (~3.6s). What the learner saw then was the
+  // launch screen saying "서버를 깨우고 있어요", followed by a home screen that was
+  // simply blank apart from one line of failure text — with nothing to press. The wake
+  // is not an error yet; it is a wait, and it says so until it really has failed.
+  const [attempt, setAttempt] = useState(0);
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      (async () => {
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const load = async (n: number) => {
         try {
           const h = await api.home();
           if (!alive) return;
           setHome(h);
           setState('ok');
+          setAttempt(0);
         } catch {
-          if (alive) setState('error');
+          if (!alive) return;
+          if (n < HOME_RETRIES) {
+            setAttempt(n + 1);
+            // Growing gaps: a cold start is seconds, and hammering it does not help.
+            timer = setTimeout(() => load(n + 1), 1_500 * (n + 1));
+            return;
+          }
+          setState('error');
         }
-      })();
-      return () => { alive = false; };
+      };
+      setState((cur) => (cur === 'ok' ? cur : 'loading'));
+      void load(0);
+      return () => { alive = false; if (timer) clearTimeout(timer); };
     }, []),
   );
 
+  const retry = () => { setState('loading'); setAttempt(0); void api.home().then((h) => { setHome(h); setState('ok'); }).catch(() => setState('error')); };
+
   if (state !== 'ok' || !home) {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-        {state === 'loading'
-          ? <ActivityIndicator color={C} />
-          : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>
-{t('home.loadFailed')}
-            </Text>}
+      <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 14 }}>
+        {state === 'loading' ? (
+          <>
+            <ActivityIndicator color={C} />
+            {/* Only once it has taken long enough to wonder about. On a warm server the
+                first attempt lands and this never appears. */}
+            {attempt > 0 && (
+              <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>
+                {t('home.waking')}
+              </Text>
+            )}
+          </>
+        ) : (
+          <>
+            <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center', lineHeight: 20 }}>
+              {t('home.loadFailed')}
+            </Text>
+            {/* The way out of the dead end. There was none: the screen said it had
+                failed and offered nothing but killing the app. */}
+            <PixelButton label={t('list.retry')} icon="refresh" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={retry} />
+          </>
+        )}
       </View>
     );
   }

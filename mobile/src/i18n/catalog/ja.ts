@@ -503,6 +503,7 @@ export const ja: Record<string, string> = {
   'ward.nightSub': '静かな病棟 · 夜間コールが出やすい',
   'home.curriculumTab': '進行中のカリキュラム',
   'home.nextUp': '次: {title}',
+  'home.waking': 'サーバーを起こしています…\n少々お待ちください',
   'page.title': '今日のコール · CODE PAGE',
   'page.answer': '今すぐ応答',
   'page.ignore': '無視',

@@ -534,6 +534,7 @@ export const ko: Record<string, string> = {
   'ward.nightSub': '고요한 병동 · 야간 호출 이벤트가 더 자주 나와요',
   'home.curriculumTab': '진행중인 커리큘럼',
   'home.nextUp': '다음: {title}',
+  'home.waking': '서버를 깨우고 있어요\n잠시만 기다려 주세요',
   'page.title': '오늘의 호출 · CODE PAGE',
   'page.answer': '지금 응답',
   'page.ignore': '무시',

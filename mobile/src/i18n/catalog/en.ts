@@ -504,6 +504,7 @@ export const en: Record<string, string> = {
   'ward.nightSub': 'A quiet ward — more night-call events',
   'home.curriculumTab': 'Curriculum in progress',
   'home.nextUp': 'Next: {title}',
+  'home.waking': 'Waking the server up…\nOne moment',
   'page.title': "Today's page · CODE PAGE",
   'page.answer': 'Respond now',
   'page.ignore': 'Ignore',
