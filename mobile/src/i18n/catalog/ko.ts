@@ -254,6 +254,7 @@ export const ko: Record<string, string> = {
   'dialogue.sending': '전송 중…',
   'dialogue.send': '보내기',
   'dialogue.hint': '힌트',
+  'dialogue.hintNone': '지금은 딱히 짚어줄 게 없어요. 생각한 대로 말해보세요.',
   'choice.prompt': '이렇게 말해볼 수 있어요 · 골라서 직접 말해보세요',
   'choice.best': '가장 좋은 답',
   'choice.strong': '꽤 괜찮은 답',

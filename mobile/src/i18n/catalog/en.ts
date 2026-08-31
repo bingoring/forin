@@ -235,6 +235,7 @@ export const en: Record<string, string> = {
   'dialogue.sending': 'Sending…',
   'dialogue.send': 'Send',
   'dialogue.hint': 'Hint',
+  'dialogue.hintNone': "Nothing to add here — say it the way you were thinking.",
   'choice.prompt': 'You could say — pick one and say it out loud',
   'choice.best': 'Best',
   'choice.strong': 'Strong',

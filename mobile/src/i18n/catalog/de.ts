@@ -234,6 +234,7 @@ export const de: Record<string, string> = {
   'dialogue.sending': 'Wird gesendet …',
   'dialogue.send': 'Senden',
   'dialogue.hint': 'Hinweis',
+  'dialogue.hintNone': 'Hier gibt es nichts zu ergänzen — sag es so, wie du gedacht hast.',
   'choice.prompt': 'Du könntest sagen — wähle eins und sprich es',
   'choice.best': 'Am besten',
   'choice.strong': 'Stark',

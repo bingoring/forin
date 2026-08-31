@@ -86,6 +86,10 @@ export default function DialogueRoute() {
   // turn — being handed the list again after saying "I'll write my own" is the app not
   // listening.
   const [wroteOwn, setWroteOwn] = useState(false);
+  // The free pass's hint: one line about what this turn needs. Held per turn — a hint
+  // from two exchanges ago is about a situation that has moved on.
+  const [hintText, setHintText] = useState('');
+  const [hintBusy, setHintBusy] = useState(false);
   const [tool, setTool] = useState<'chart' | 'meds' | 'vitals' | null>(null); // QUICK INFO panel
   const logRef = useRef<ScrollView>(null);
 
@@ -396,6 +400,25 @@ export default function DialogueRoute() {
   // Refetched whenever it is the learner's move again: the suggestions are answers to
   // the line that was just said, and yesterday's answers to a different line are worse
   // than none. Never blocks anything — an empty result simply leaves the text box.
+  /** Ask for a nudge: the REASON the best reply works, with the reply withheld.
+   *
+   *  Same source as the guided pass's choices — one call, two uses — but only the `why`
+   *  is shown. On the free pass the sentence is the thing that must stay theirs; handing
+   *  it over would make the second rung of the ladder the first one again. */
+  const askHint = async () => {
+    if (hintOn) { setHintOn(false); return; }
+    setHintOn(true);
+    const sid = sessionRef.current;
+    if (!sid) return;
+    setHintBusy(true);
+    try {
+      const cs = await api.replyChoices(sid);
+      setHintText(cs.find((c) => c.tier === 'best')?.why ?? cs[0]?.why ?? '');
+    } finally {
+      setHintBusy(false);
+    }
+  };
+
   const stepAway = () => {
     Keyboard.dismiss();
     setPagedOut(true);
@@ -719,23 +742,29 @@ export default function DialogueRoute() {
             anything, and gone on its own before the next reply lands. */}
         <MoodLift mood={improved} onDone={() => setImproved(undefined)} />
 
-        {/* HINT ON: suggested responses (from the scenario's key phrases) */}
-        {hintOn && !!scenario?.keyPhrases?.length && (
+        {/* HINT: what this turn NEEDS, not what to say.
+            It used to be the scenario's authored key phrases, shown as a permanent list
+            of ready-made sentences. Two things were wrong with that. It cost nothing and
+            sat on screen, so there was no reason not to read it — and a hint nobody has
+            to reach for teaches nothing. And it handed over the answer, which on the free
+            pass is the one thing that must stay theirs.
+            Now it is one line: the REASON the best reply works, with the reply itself
+            withheld. Asked for per turn, because the situation has moved on. */}
+        {hintOn && (
           <View style={{ marginTop: 12 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-              <Shadowed offset={2}>
-                <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>HINT ON</Text>
-                </View>
-              </Shadowed>
-              <View style={{ flex: 1, height: 0, borderTopWidth: 2, borderColor: '#2A252255', borderStyle: 'dotted' }} />
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.cream, opacity: 0.85 }}>{scenario.keyPhrases.length}가지 추천 답변</Text>
-            </View>
-            <View style={{ gap: 8 }}>
-              {scenario.keyPhrases.map((phrase, i) => {
-                const risky = riskyPhrases.includes(phrase);
-                return <ChoiceRow key={i} num={i + 1} text={phrase} suggested={i === 0 && !risky} risky={risky} onPress={() => { setDraft(phrase); setHintOn(false); }} />;
-              })}
+            <View style={{ position: 'absolute', left: 3, top: 3, right: -3, bottom: -3, backgroundColor: C }} />
+            <View style={{ backgroundColor: colors.yellow, borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
+              <FIcon name="hint" size={16} />
+              {hintBusy ? (
+                <ActivityIndicator color={C} />
+              ) : (
+                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>
+                  {hintText || t('dialogue.hintNone')}
+                </Text>
+              )}
+              <Pressable onPress={() => setHintOn(false)} hitSlop={8}>
+                <FIcon name="cross" size={13} />
+              </Pressable>
             </View>
           </View>
         )}
@@ -807,7 +836,7 @@ export default function DialogueRoute() {
             <PixelButton label={pending ? t('dialogue.sending') : t('dialogue.send')} icon={pending ? undefined : 'play'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
           </View>
           <View style={{ flex: 1 }}>
-            <PixelButton icon="bulb" label={t('dialogue.hint')} bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={() => setHintOn((v) => !v)} disabled={!scenario?.keyPhrases?.length} full />
+            <PixelButton icon="bulb" label={t('dialogue.hint')} bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={askHint} full />
             {hintOn && (
               <View style={{ position: 'absolute', top: -6, right: -6, width: 14, height: 14, backgroundColor: C, alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.yellow }}>●</Text>

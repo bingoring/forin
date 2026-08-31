@@ -134,3 +134,26 @@ test('asking for the box is remembered', () => {
   // listening.
   expect(SRC).toMatch(/if \(!guided \|\| wroteOwn \|\| !sid\) return;/);
 });
+
+// ── the hint, on the free pass ────────────────────────────────────────────
+test('the hint says what the turn NEEDS, not what to say', () => {
+  // It used to be the scenario's authored key phrases, shown as a permanent list of
+  // ready-made sentences. It cost nothing and sat on screen, so there was no reason not
+  // to read it — and a hint nobody has to reach for teaches nothing. Worse, it handed
+  // over the answer, which on the free pass is the one thing that must stay theirs.
+  expect(SRC).toMatch(/const askHint = async \(\) => \{/);
+  // The `why` of the best reply, with the reply itself withheld.
+  expect(SRC).toMatch(/setHintText\(cs\.find\(\(c\) => c\.tier === 'best'\)\?\.why/);
+  expect(SRC).not.toMatch(/setHintText\([^)]*\.text/);
+  // The authored list is gone, and so is the button being disabled without one.
+  const code = SRC.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  expect(code).not.toMatch(/scenario\?\.keyPhrases\?\.length/);
+  expect(code).not.toMatch(/keyPhrases\.map/);
+});
+
+test('the hint is asked for per turn, not left on screen', () => {
+  // A hint from two exchanges ago is about a situation that has moved on. Pressing it
+  // again closes it; pressing it fresh asks again.
+  expect(SRC).toMatch(/if \(hintOn\) \{ setHintOn\(false\); return; \}/);
+  expect(SRC).toMatch(/const cs = await api\.replyChoices\(sid\);/);
+});

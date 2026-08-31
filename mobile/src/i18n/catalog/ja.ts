@@ -234,6 +234,7 @@ export const ja: Record<string, string> = {
   'dialogue.sending': '送信中…',
   'dialogue.send': '送信',
   'dialogue.hint': 'ヒント',
+  'dialogue.hintNone': '今は特にありません。思ったとおりに言ってみましょう。',
   'choice.prompt': 'こう言えます · 選んで声に出してみましょう',
   'choice.best': '一番良い',
   'choice.strong': 'かなり良い',
