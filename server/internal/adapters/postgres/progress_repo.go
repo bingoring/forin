@@ -582,15 +582,19 @@ func (r *ProgressRepo) AddBonusXP(ctx context.Context, userID string, xp int) er
 	return err
 }
 
-// GuidedPassesCleared is the set of scenarios the learner finished with help.
-func (r *ProgressRepo) GuidedPassesCleared(ctx context.Context, userID string) (map[string]bool, error) {
-	ids, err := r.q.GuidedPassesCleared(ctx, userID)
+// ClearedByGuide splits the learner's clears by how much help they had.
+func (r *ProgressRepo) ClearedByGuide(ctx context.Context, userID string) (guided, free map[string]bool, err error) {
+	rows, err := r.q.ClearedPassGuides(ctx, userID)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	out := make(map[string]bool, len(ids))
-	for _, id := range ids {
-		out[id] = true
+	guided, free = map[string]bool{}, map[string]bool{}
+	for _, row := range rows {
+		if row.Guide == "choices" {
+			guided[row.ScenarioID] = true
+		} else {
+			free[row.ScenarioID] = true
+		}
 	}
-	return out, nil
+	return guided, free, nil
 }

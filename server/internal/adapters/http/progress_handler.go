@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"log/slog"
 	"net/http"
 	"strconv"
@@ -42,7 +43,7 @@ func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
 	// Best-effort: a failed read means no step reports as tried, which is the old
 	// behaviour — not worth failing a path the learner asked to browse.
 	attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
-	states := curriculum.ResolveLocalized(cleared, attempted, curriculum.KeyForScenario(last), i18n.FromContext(r.Context()))
+	states := curriculum.ResolvePasses(cleared, attempted, passesFor(r.Context(), h.progress, uid), curriculum.KeyForScenario(last), i18n.FromContext(r.Context()))
 	httpx.JSON(w, http.StatusOK, map[string]any{"buildings": curriculum.Group(states)})
 }
 
@@ -355,4 +356,19 @@ func (h *progressHandler) modelAnswers(w http.ResponseWriter, r *http.Request) {
 		groups = []progress.ModelAnswerGroup{}
 	}
 	httpx.JSON(w, http.StatusOK, modelAnswerPage{Groups: groups, Total: total})
+}
+
+// passesFor splits the learner's clears by how much help they had, so the two rungs of
+// each dialogue resolve separately.
+//
+// A failed read returns the zero value, and that is deliberately the LENIENT reading: no
+// split known means a clear counts as unaided, which completes both rungs. The other way
+// round — a hiccup reopening finished work — is the one a learner would notice and could
+// not explain.
+func passesFor(ctx context.Context, repo ports.ProgressRepo, uid string) curriculum.ClearedPasses {
+	guided, free, err := repo.ClearedByGuide(ctx, uid)
+	if err != nil {
+		return curriculum.ClearedPasses{}
+	}
+	return curriculum.ClearedPasses{GuidedCleared: guided, FreeCleared: free}
 }

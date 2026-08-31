@@ -75,6 +75,8 @@ export const de: Record<string, string> = {
   'step.kind.event': 'Plötzliches Ereignis',
   'step.kind.boss': 'Kapiteltest',
   'step.optional': 'Optional',
+  'step.guided': 'mit Auswahl',
+  'step.solo': 'selbst',
   'step.now': 'NOW',
   'step.retry': 'ERNEUT',
 

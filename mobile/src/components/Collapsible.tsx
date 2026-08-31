@@ -43,26 +43,36 @@ export function Collapsible({ open, children, style }: {
   // Starts where the state already is, so a block that begins open is simply open rather
   // than unfolding at whoever just arrived on the screen.
   const anim = useRef(new Animated.Value(open ? 1 : 0)).current;
-
   useEffect(() => {
+    if (open && contentH === 0) {
+      // Nothing to animate towards yet. Stay shut; `contentH` is a dependency of this
+      // effect, so the measurement re-runs it and the slide starts then. Rendering at
+      // natural height meanwhile is what produced the flash people reported: the panel
+      // appeared whole for one frame, disappeared, and then slid down.
+      anim.setValue(0);
+      return;
+    }
     Animated.timing(anim, {
       toValue: open ? 1 : 0,
       duration: DISCLOSURE_MS,
       easing: Easing.out(Easing.cubic),
       useNativeDriver: false,
     }).start();
-  }, [open, anim]);
+  }, [open, contentH, anim]);
 
   return (
     <Animated.View
       style={{
         ...style,
         overflow: 'hidden',
-        // Before the first measurement there is nothing to interpolate towards, and
-        // `undefined` would mean "natural height" — a closed block showing its contents for
-        // a frame. Zero is the honest placeholder, and the measurement still happens because
-        // clipping does not change layout.
-        height: contentH === 0 ? (open ? undefined : 0) : anim.interpolate({ inputRange: [0, 1], outputRange: [0, contentH] }),
+        // ZERO until measured, open or not.
+        //
+        // It used to be `open ? undefined : 0`, and `undefined` means natural height: on
+        // the first open the block appeared at full size for one frame, then the effect
+        // animated it from 0 — a flash followed by a slide, which is exactly what it
+        // looked like. Clipping does not change layout, so the children are measured at
+        // height 0 all the same and the animation starts the moment the number lands.
+        height: contentH === 0 ? 0 : anim.interpolate({ inputRange: [0, 1], outputRange: [0, contentH] }),
       }}
     >
       <View

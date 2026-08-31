@@ -208,7 +208,15 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
                               <View style={{ flex: 1, minWidth: 0 }}>
                                 <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 14 }}>{st.name}</Text>
                                 <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginTop: 1 }}>
-                                  {t(meta.labelKey)}{optional ? ` · ${t('step.optional')}` : ''}
+                                  {t(meta.labelKey)}
+                                  {/* Which rung. A dialogue is listed twice — the same
+                                      situation guided, then alone — so the two entries
+                                      have to say which is which or the list reads as a
+                                      duplicated title. */}
+                                  {!!st.passes && st.passes > 1
+                                    ? ` · ${st.pass}/${st.passes} ${t(st.guide === 'choices' ? 'step.guided' : 'step.solo')}`
+                                    : ''}
+                                  {optional ? ` · ${t('step.optional')}` : ''}
                                 </Text>
                               </View>
                               {st.state === 'done' && <PixelIcon name="check" color={colors.mintShadow} size={12} sw={2.2} />}

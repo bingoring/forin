@@ -75,6 +75,8 @@ export const ja: Record<string, string> = {
   'step.kind.event': '突発イベント',
   'step.kind.boss': '章テスト',
   'step.optional': '任意',
+  'step.guided': '選択肢から',
+  'step.solo': '自分で',
   'step.now': 'NOW',
   'step.retry': '再',
 

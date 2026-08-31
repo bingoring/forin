@@ -158,6 +158,13 @@ export interface CurriculumStep {
    *  'done' or 'lock' step. */
   attempted?: boolean;
   optional?: boolean;
+  /** How much help THIS entry gives. A dialogue appears twice in the list — once
+   *  guided, once alone — and these are the two entries; without this the learner would
+   *  see the same title twice with no way to tell which is which. */
+  guide?: 'choices' | 'free';
+  /** The rung, as "1/2" and "2/2". Absent on steps with only one run (boss, quiz). */
+  pass?: number;
+  passes?: number;
 }
 // One themed curriculum on one floor. `state` has no 'lock': every floor and
 // curriculum is open, and the sequence lives inside a curriculum (server

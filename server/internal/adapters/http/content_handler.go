@@ -115,9 +115,10 @@ func (h *contentHandler) scenario(w http.ResponseWriter, r *http.Request) {
 	// meaningful) fall through to the unguided app rather than guessing.
 	guide := curriculum.GuideFree
 	if uid, ok := UserID(r.Context()); ok && h.progress != nil {
-		guided, err := h.progress.GuidedPassesCleared(r.Context(), uid)
+		guided, free, err := h.progress.ClearedByGuide(r.Context(), uid)
 		if err == nil {
-			guide = curriculum.GuideForScenario(s.ID, guided[s.ID])
+			// Cleared alone supersedes cleared with help — see resolveOne.
+			guide = curriculum.GuideForScenario(s.ID, guided[s.ID] || free[s.ID])
 		}
 	}
 	httpx.JSON(w, http.StatusOK, struct {

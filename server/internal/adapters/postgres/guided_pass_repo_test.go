@@ -16,12 +16,17 @@ func TestAHelpedClearIsNotAClearAlone(t *testing.T) {
 	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ORIENT-00001", 100, "cleared", 82, "choices"); err != nil {
 		t.Fatalf("RecordAttempt(choices): %v", err)
 	}
-	guided, err := repo.GuidedPassesCleared(ctx, uid)
+	guided, free, err := repo.ClearedByGuide(ctx, uid)
 	if err != nil {
-		t.Fatalf("GuidedPassesCleared: %v", err)
+		t.Fatalf("ClearedByGuide: %v", err)
 	}
 	if !guided["SCN-ORIENT-00001"] {
 		t.Fatal("a guided clear was not recorded as one — the free pass would never unlock")
+	}
+	// And it is NOT in the unaided set: the two rungs are told apart by this column
+	// alone, and a helped clear landing in both would tick the free run too.
+	if free["SCN-ORIENT-00001"] {
+		t.Fatal("a helped clear was also counted as unaided")
 	}
 
 	// A clear made ALONE is not a guided one. Counting it as such is how the second rung
@@ -29,9 +34,12 @@ func TestAHelpedClearIsNotAClearAlone(t *testing.T) {
 	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00002", 100, "cleared", 90, "free"); err != nil {
 		t.Fatalf("RecordAttempt(free): %v", err)
 	}
-	guided, _ = repo.GuidedPassesCleared(ctx, uid)
+	guided, free, _ = repo.ClearedByGuide(ctx, uid)
 	if guided["SCN-ER-00002"] {
 		t.Fatal("an unaided clear was counted as a guided pass")
+	}
+	if !free["SCN-ER-00002"] {
+		t.Fatal("an unaided clear was not recorded as one")
 	}
 }
 
@@ -47,9 +55,9 @@ func TestAnAbandonedGuidedRunDoesNotUnlockTheFreePass(t *testing.T) {
 	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ORIENT-00001", 10, "attempted", 40, "choices"); err != nil {
 		t.Fatalf("RecordAttempt: %v", err)
 	}
-	guided, err := repo.GuidedPassesCleared(ctx, uid)
+	guided, _, err := repo.ClearedByGuide(ctx, uid)
 	if err != nil {
-		t.Fatalf("GuidedPassesCleared: %v", err)
+		t.Fatalf("ClearedByGuide: %v", err)
 	}
 	if guided["SCN-ORIENT-00001"] {
 		t.Fatal("an attempt that did not pass unlocked the free pass")
@@ -70,9 +78,9 @@ func TestAttemptsFromBeforeTheColumnExistedReadAsUnaided(t *testing.T) {
 		uid, "SCN-LEGACY-00001"); err != nil {
 		t.Fatalf("insert legacy attempt: %v", err)
 	}
-	guided, err := repo.GuidedPassesCleared(ctx, uid)
+	guided, _, err := repo.ClearedByGuide(ctx, uid)
 	if err != nil {
-		t.Fatalf("GuidedPassesCleared: %v", err)
+		t.Fatalf("ClearedByGuide: %v", err)
 	}
 	if guided["SCN-LEGACY-00001"] {
 		t.Fatal("a pre-feature attempt was counted as a guided pass")

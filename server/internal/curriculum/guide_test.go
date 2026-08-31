@@ -108,3 +108,60 @@ func TestTheLadderRoughlyDoublesTheCatalog(t *testing.T) {
 		t.Fatalf("only %d of %d runs are guided", guided, runs)
 	}
 }
+
+// What the learner actually sees in the floor sheet's curriculum list.
+func TestTheListShowsBothRungsAsSeparateEntries(t *testing.T) {
+	// A curriculum with one dialogue and one boss: 2 + 1 = 3 entries.
+	c := Curriculum{
+		Key: "T|1F|t", Name: "t", Building: "T", Floor: "1F", Where: "T 1F",
+		Steps: []Step{
+			{Kind: "dlg", Name: "X-ray 자세 협조", ScenarioID: "SCN-X-1"},
+			{Kind: "boss", Name: "시험", ScenarioID: "SCN-X-2"},
+		},
+	}
+	got := resolveOne(c, nil, nil, nil, nil, "ko")
+	if len(got.Steps) != 3 {
+		t.Fatalf("%d entries, want 3 (dlg×2 + boss): %+v", len(got.Steps), got.Steps)
+	}
+
+	// The two dialogue entries are the SAME situation, told apart by their rung — which
+	// is the only thing that stops the list reading as a duplicate title.
+	a, b := got.Steps[0], got.Steps[1]
+	if a.ScenarioID != b.ScenarioID {
+		t.Fatalf("the two rungs point at different scenarios: %q / %q", a.ScenarioID, b.ScenarioID)
+	}
+	if a.Guide != string(GuideChoices) || b.Guide != string(GuideFree) {
+		t.Fatalf("rungs = %q / %q, want choices / free", a.Guide, b.Guide)
+	}
+	if a.Pass != 1 || b.Pass != 2 || a.Passes != 2 || b.Passes != 2 {
+		t.Fatalf("labels = %d/%d and %d/%d, want 1/2 and 2/2", a.Pass, a.Passes, b.Pass, b.Passes)
+	}
+	// A boss has one rung and says nothing about passes — "1/1" on screen would be noise.
+	if got.Steps[2].Passes != 0 {
+		t.Fatalf("boss carries a pass label: %+v", got.Steps[2])
+	}
+}
+
+func TestTheTwoRungsAreFinishedSeparately(t *testing.T) {
+	c := Curriculum{Steps: []Step{{Kind: "dlg", ScenarioID: "SCN-X-1"}}}
+
+	// Cleared WITH help: the guided rung is done, the free one is still waiting. Reading
+	// both off one "cleared" flag would tick them together and the second entry would be
+	// born complete — which is the whole ladder gone.
+	guided := resolveOne(c, map[string]bool{"SCN-X-1": true}, nil,
+		map[string]bool{"SCN-X-1": true}, map[string]bool{}, "ko")
+	if guided.Steps[0].State != "done" {
+		t.Fatalf("guided rung = %q, want done", guided.Steps[0].State)
+	}
+	if guided.Steps[1].State == "done" {
+		t.Fatal("the free rung was completed by a helped clear")
+	}
+
+	// Cleared ALONE supersedes: someone who did it unaided has no business being sent
+	// back through the guided rung.
+	alone := resolveOne(c, map[string]bool{"SCN-X-1": true}, nil,
+		map[string]bool{}, map[string]bool{"SCN-X-1": true}, "ko")
+	if alone.Steps[0].State != "done" || alone.Steps[1].State != "done" {
+		t.Fatalf("unaided clear left rungs %q / %q", alone.Steps[0].State, alone.Steps[1].State)
+	}
+}

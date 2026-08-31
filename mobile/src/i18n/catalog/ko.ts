@@ -85,6 +85,8 @@ export const ko: Record<string, string> = {
   'step.kind.event': '돌발 이벤트',
   'step.kind.boss': '챕터 시험',
   'step.optional': '선택',
+  'step.guided': '보기 중에서',
+  'step.solo': '직접 대화',
   'step.now': 'NOW',
   'step.retry': '다시',
 

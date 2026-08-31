@@ -81,3 +81,45 @@ it('turns the chevron on the UI thread — a transform belongs there', () => {
     timing.mockRestore();
   }
 });
+
+test('opening slides — it does not flash at full height first', () => {
+  // Reported as "한번 빠르게 깜빡하고 스르륵 내려와", and that is exactly what it was.
+  // Before the content had been measured the height was `undefined`, which means
+  // NATURAL height: the block rendered whole for one frame, then the effect animated it
+  // from 0. A flash followed by a slide.
+  //
+  // Zero until measured. Clipping does not change layout, so the children are still
+  // measured at height 0 and the animation starts the moment the number lands.
+  const heights: unknown[] = [];
+  const record = (tree: ReturnType<typeof create>) => {
+    const box = tree.root.findAll((n) => {
+      const st = Array.isArray(n.props?.style) ? Object.assign({}, ...n.props.style) : (n.props?.style ?? {});
+      return typeof n.type === 'string' && st.overflow === 'hidden';
+    }, { deep: true })[0];
+    const st = Array.isArray(box.props.style) ? Object.assign({}, ...box.props.style) : box.props.style;
+    heights.push(st.height);
+  };
+
+  let tree!: ReturnType<typeof create>;
+  act(() => {
+    tree = track(create(
+      <Collapsible open>
+        <Text>content</Text>
+      </Collapsible>,
+    ));
+  });
+  // The frame before any measurement: shut, not full-size. `undefined` here is the bug.
+  record(tree);
+  expect(heights[0]).toBe(0);
+
+  // The measurement lands, and now there is something to travel to.
+  const inner = tree.root.findAll((n) => typeof n.props?.onLayout === 'function', { deep: true })[0];
+  act(() => { inner.props.onLayout({ nativeEvent: { layout: { height: 120, width: 240 } } }); });
+  record(tree);
+  // The height is resolved to a NUMBER on the host node (Animated does that), which is
+  // better than checking for an interpolation: it lets the test read where the slide
+  // starts. It starts near zero and travels — a jump would already be at 120 here, and
+  // the flash was the frame where it read 120 before any of this.
+  expect(typeof heights[1]).toBe('number');
+  expect(heights[1] as number).toBeLessThan(120);
+});

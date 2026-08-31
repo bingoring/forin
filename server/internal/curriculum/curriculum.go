@@ -70,6 +70,14 @@ type StepState struct {
 	// step you have never opened look identical, which is the one thing the learner
 	// cannot infer from anywhere else on the screen.
 	Attempted bool `json:"attempted,omitempty"`
+	// Guide is how much help this ENTRY gives: "choices" or "free". A dialogue appears
+	// twice in the list — once guided, once not — and these are the two entries. Without
+	// it the learner would see the same title twice with no way to tell which is which.
+	Guide string `json:"guide,omitempty"`
+	// Pass / Passes name the rung: "1/2" and "2/2". The client draws them, so the same
+	// arithmetic is not done in two places.
+	Pass   int `json:"pass,omitempty"`
+	Passes int `json:"passes,omitempty"`
 }
 
 // CurriculumState is a curriculum with resolved progress.
@@ -119,6 +127,26 @@ func Resolve(cleared map[string]bool) []CurriculumState {
 	return ResolveLocalized(cleared, nil, "", i18n.BaseLocale)
 }
 
+// ClearedPasses is how the two rungs of a step are resolved: which scenarios the learner has
+// cleared WITH help, and which alone. Both are needed — reading two entries off one
+// "cleared" flag ticks them together, and the free run would be born complete.
+//
+// Zero value means "no split known", and then a clear reads as UNAIDED. That is the
+// honest reading of every attempt recorded before the guide column existed, and it is
+// what keeps existing learners from being sent back through a guided pass they already
+// did the hard way.
+type ClearedPasses struct {
+	GuidedCleared map[string]bool
+	FreeCleared   map[string]bool
+}
+
+func (p ClearedPasses) freeOr(cleared map[string]bool) map[string]bool {
+	if p.FreeCleared == nil && p.GuidedCleared == nil {
+		return cleared
+	}
+	return p.FreeCleared
+}
+
 // ResolveWithResume is Resolve with an explicit resume target — the key of the
 // curriculum holding the user's most recent attempt (resume.go). Passing "" or a
 // key that is already complete falls back to the first unfinished curriculum.
@@ -135,15 +163,22 @@ func ResolveWithResume(cleared map[string]bool, preferKey string) []CurriculumSt
 // which read the authored names, meaningful.
 // `attempted` may be nil, which simply means no step reports as tried.
 func ResolveLocalized(cleared, attempted map[string]bool, preferKey, locale string) []CurriculumState {
+	return ResolvePasses(cleared, attempted, ClearedPasses{}, preferKey, locale)
+}
+
+// ResolvePasses is ResolveLocalized with the two rungs of each dialogue resolved
+// separately. This is the form the app uses; the others exist for callers that do not
+// care which rung is which (invariant tests, the seed tool).
+func ResolvePasses(cleared, attempted map[string]bool, p ClearedPasses, preferKey, locale string) []CurriculumState {
 	out := make([]CurriculumState, 0, len(catalog))
 	for _, c := range catalog {
-		out = append(out, resolveOne(c, cleared, attempted, locale))
+		out = append(out, resolveOne(c, cleared, attempted, p.GuidedCleared, p.freeOr(cleared), locale))
 	}
 	markResume(out, preferKey)
 	return out
 }
 
-func resolveOne(c Curriculum, cleared, attempted map[string]bool, locale string) CurriculumState {
+func resolveOne(c Curriculum, cleared, attempted, guidedCleared, freeCleared map[string]bool, locale string) CurriculumState {
 	cs := CurriculumState{
 		Key: c.Key, Name: i18n.Tr(locale, c.Key, c.Name),
 		Building: c.Building, Floor: c.Floor,
@@ -152,13 +187,39 @@ func resolveOne(c Curriculum, cleared, attempted map[string]bool, locale string)
 		Where: i18n.Tr(locale, c.Building+"|"+c.Floor, c.Where),
 	}
 	nowUsed := false
-	for _, s := range c.Steps {
+	// One ENTRY per run, not per authored step. A dialogue is played twice — guided,
+	// then alone — and the learner picks which from this list, so the list has to
+	// contain both. That is also what doubles the visible length of every curriculum
+	// without a line of new content.
+	for _, r := range c.Runs() {
+		s := Step{Kind: r.Kind, Name: r.Name, ScenarioID: r.ScenarioID}
 		// Step names are keyed by content id: the id is what the step already carries,
 		// so there is no second key space to keep in step with a rewording.
 		st := StepState{Kind: s.Kind, Name: i18n.Tr(locale, s.ScenarioID, s.Name), ScenarioID: s.ScenarioID, Optional: isOptional(s.Kind)}
+		if r.Passes > 1 {
+			st.Guide, st.Pass, st.Passes = string(r.Guide), int(r.Pass), r.Passes
+		}
 		st.Attempted = s.ScenarioID != "" && attempted[s.ScenarioID]
+		// Which rung is finished is not the same question as "is this scenario cleared".
+		// The guided run is done once they have cleared it WITH help; the free run needs
+		// a clear without. Reading both off one flag would tick them together and the
+		// second entry would be born complete.
+		done := s.ScenarioID != "" && cleared[s.ScenarioID]
+		if r.Passes > 1 {
+			// Doing it ALONE supersedes doing it with help: someone who cleared the
+			// scenario unaided has no business being sent back through the guided rung.
+			// This is also the honest reading of every attempt recorded before the guide
+			// column existed — we do not know how they did it, and re-demanding it would
+			// reopen finished work for every existing learner.
+			switch r.Pass {
+			case PassGuided:
+				done = s.ScenarioID != "" && (guidedCleared[s.ScenarioID] || freeCleared[s.ScenarioID])
+			default:
+				done = s.ScenarioID != "" && freeCleared[s.ScenarioID]
+			}
+		}
 		switch {
-		case s.ScenarioID != "" && cleared[s.ScenarioID]:
+		case done:
 			st.State = "done"
 			if !st.Optional {
 				cs.Done++

@@ -153,7 +153,7 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		// first unfinished curriculum, which is the old behaviour.
 		last, _ := h.progress.LatestAttemptScenarioID(ctx, uid)
 		attempted, _ := h.progress.AttemptedScenarioIDs(ctx, uid)
-		cs := curriculum.ResolveLocalized(cleared, attempted, curriculum.KeyForScenario(last), locale)
+		cs := curriculum.ResolvePasses(cleared, attempted, passesFor(ctx, h.progress, uid), curriculum.KeyForScenario(last), locale)
 		mu.Lock()
 		curricula = cs
 		// Derived from cleared content rather than from XP or level: those move for

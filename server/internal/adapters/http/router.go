@@ -65,6 +65,8 @@ func NewRouter(d Deps) http.Handler {
 
 	// Authenticated routes.
 	auth := requireAuth(d.Tokens)
+	// Public, but better when it knows who is asking — see optionalAuth.
+	maybeAuth := optionalAuth(d.Tokens)
 	mux.Handle("POST /auth/logout", auth(http.HandlerFunc(ah.logout)))
 	mh := &meHandler{users: d.Users}
 	mux.Handle("GET /me", auth(http.HandlerFunc(mh.me)))
@@ -79,7 +81,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.HandleFunc("GET /departments", ch.departments)
 	mux.HandleFunc("GET /interiors/{id}", ch.interior)
 	mux.HandleFunc("GET /events", ch.events)
-	mux.HandleFunc("GET /scenarios/{id}", ch.scenario)
+	mux.Handle("GET /scenarios/{id}", maybeAuth(http.HandlerFunc(ch.scenario)))
 	mux.HandleFunc("GET /quizzes/{id}", ch.quiz)
 	qa := &quizAudioHandler{content: d.Content, synth: d.Synth}
 	mux.HandleFunc("GET /quizzes/{id}/audio.wav", qa.audio)

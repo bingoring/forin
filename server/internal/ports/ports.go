@@ -28,9 +28,10 @@ type ProgressRepo interface {
 	// Without it a clear made with three replies on screen counts the same as one made
 	// alone, which deletes the second rung of the ladder.
 	RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int, guide string) (*progress.Progress, error)
-	// GuidedPassesCleared is the set of scenarios finished WITH help, which is what
-	// decides whether the next run of one is guided or free.
-	GuidedPassesCleared(ctx context.Context, userID string) (map[string]bool, error)
+	// ClearedByGuide splits the learner's clears by how much help they had. Both sets
+	// are needed: a dialogue appears twice in a curriculum and reading both entries off
+	// one "cleared" flag would tick them together.
+	ClearedByGuide(ctx context.Context, userID string) (guided, free map[string]bool, err error)
 	// ApplyReputation nudges ONE standing dimension by delta, clamped to 0..100.
 	// The dimension is passed by name (reputation.Dimension) so the column layout
 	// stays an implementation detail of the repo — a future per-profession

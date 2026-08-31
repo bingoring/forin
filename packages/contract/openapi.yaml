@@ -62,6 +62,12 @@ components:
             step you have never opened look identical, which is the one thing the learner
             cannot infer from anywhere else on the screen.
           type: boolean
+        guide:
+          description: |-
+            Guide is how much help this ENTRY gives: "choices" or "free". A dialogue appears
+            twice in the list — once guided, once not — and these are the two entries. Without
+            it the learner would see the same title twice with no way to tell which is which.
+          type: string
         kind:
           type: string
         name:
@@ -69,6 +75,13 @@ components:
         optional:
           description: bonus practice; doesn't gate
           type: boolean
+        pass:
+          description: |-
+            Pass / Passes name the rung: "1/2" and "2/2". The client draws them, so the same
+            arithmetic is not done in two places.
+          type: integer
+        passes:
+          type: integer
         scenarioId:
           type: string
         state:

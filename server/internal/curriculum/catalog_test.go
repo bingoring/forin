@@ -177,8 +177,16 @@ func TestStepsUnlockInOrder(t *testing.T) {
 	}
 	states := Resolve(map[string]bool{firstRequired: true})
 	got := states[0]
-	if got.Done != 1 {
-		t.Fatalf("done=%d after clearing one required step", got.Done)
+	// TWO, not one: a dialogue is two entries now — once guided, once alone — and a
+	// clear whose help is unknown reads as unaided, which supersedes the guided rung.
+	// Resolve() is the no-split form, so that is the reading here by design; the app
+	// passes ClearedPasses and the two rungs then tick one at a time.
+	want := 1
+	if Passes(first.Steps[0].Kind) > 1 {
+		want = 2
+	}
+	if got.Done != want {
+		t.Fatalf("done=%d after clearing one required step, want %d", got.Done, want)
 	}
 	if got.State != "doing" {
 		t.Errorf("state=%q, want doing", got.State)

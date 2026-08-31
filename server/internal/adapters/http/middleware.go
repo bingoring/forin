@@ -131,6 +131,32 @@ func requireAuth(tokens *auth.TokenService) middleware {
 	}
 }
 
+// optionalAuth fills in the user when a valid token is present, and lets the request
+// through when it is not.
+//
+// For routes that are PUBLIC but answer better when they know who is asking. GET
+// /scenarios/{id} is the case that needed it: the scenario itself is public content, but
+// the amount of help its dialogue offers depends on what this learner has already done
+// with it. Behind requireAuth the route would stop serving anonymous readers; without
+// any auth at all — which is how it shipped — the handler could never see a user, so
+// every run fell back to the unguided app and the choices never appeared for anyone.
+//
+// A BAD token is not an error here either: the answer is simply the anonymous one. A
+// public route that starts 401-ing on a stale token is a public route that is not.
+func optionalAuth(tokens *auth.TokenService) middleware {
+	return func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			h := r.Header.Get("Authorization")
+			if strings.HasPrefix(h, "Bearer ") {
+				if uid, err := tokens.ParseAccess(strings.TrimPrefix(h, "Bearer ")); err == nil {
+					r = r.WithContext(context.WithValue(r.Context(), userIDKey, uid))
+				}
+			}
+			next.ServeHTTP(w, r)
+		})
+	}
+}
+
 // localeMW resolves the request's display language and puts it on the context.
 //
 // Header only — it does not read the profile. Loading a row to learn a language

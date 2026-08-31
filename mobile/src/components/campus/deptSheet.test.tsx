@@ -91,3 +91,51 @@ it('starts over when the floor itself changes', () => {
   render({ ...TARGET, deptCode: 'ICU' });
   expect(api.deptSituations).toHaveBeenCalledTimes(2);
 });
+
+/** Text of every Text node under `root`. */
+function texts(root: ReactTestInstance): string[] {
+  return root
+    .findAll((n) => String(n.type) === 'Text', { deep: true })
+    .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'));
+}
+
+it('lists a dialogue twice, and says which rung each entry is', () => {
+  // This is the list the learner picks from: the floor sheet's curriculum dropdown. A
+  // dialogue appears twice — the same situation guided, then alone — so the entries have
+  // to name their rung or the list reads as one title repeated.
+  const target: DeptTarget = {
+    deptCode: 'RAD',
+    place: '영상의학과',
+    where: '본관 2F 영상의학과',
+    accent: '#BAE6FD',
+    curricula: [{
+      key: 'K', name: '촬영 협조', building: '본관', floor: '2F', where: '본관 2F 영상의학과',
+      state: 'doing', done: 0, total: 2, next: 'X-ray 자세 협조',
+      steps: [
+        { kind: 'dlg', name: 'X-ray 자세 협조', scenarioId: 'SCN-RAD-1', state: 'now', guide: 'choices', pass: 1, passes: 2 },
+        { kind: 'dlg', name: 'X-ray 자세 협조', scenarioId: 'SCN-RAD-1', state: 'lock', guide: 'free', pass: 2, passes: 2 },
+      ],
+    }],
+  };
+
+  let tree!: ReturnType<typeof create>;
+  act(() => {
+    tree = track(create(<DeptSheet target={target} onClose={noop} onStart={noop} onWalk={noop} />));
+  });
+
+  // The curriculum's dropdown starts closed; open it.
+  const toggle = tree.root.findAll(
+    (n) => typeof n.type === 'function' && n.props?.onPress !== undefined
+      && texts(n).some((x) => x.includes('촬영 협조')),
+    { deep: true },
+  ).slice(-1)[0];
+  act(() => { toggle.props.onPress(); });
+
+  const out = texts(tree.root);
+  // The same title twice…
+  expect(out.filter((x) => x === 'X-ray 자세 협조')).toHaveLength(2);
+  // …told apart by the rung.
+  const joined = out.join(' ');
+  expect(joined).toContain('1/2 보기 중에서');
+  expect(joined).toContain('2/2 직접 대화');
+});

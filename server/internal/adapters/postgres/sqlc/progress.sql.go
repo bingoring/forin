@@ -58,6 +58,45 @@ func (q *Queries) AddBonusXP(ctx context.Context, arg AddBonusXPParams) (int, er
 	return xp, err
 }
 
+const clearedPassGuides = `-- name: ClearedPassGuides :many
+SELECT DISTINCT scenario_id, CASE WHEN guide = 'choices' THEN 'choices' ELSE 'free' END AS guide
+  FROM scenario_attempts
+ WHERE user_id = $1 AND state = 'cleared'
+`
+
+type ClearedPassGuidesRow struct {
+	ScenarioID string `json:"scenario_id"`
+	Guide      string `json:"guide"`
+}
+
+// Which scenarios the learner has finished, and with how much help.
+//
+// Both sets are needed, not just the guided one. A dialogue appears twice in a
+// curriculum — guided, then alone — and reading both entries off one "is it cleared"
+// flag would tick them together: the second would be born complete. A clear made with
+// three replies on screen is not a clear made alone.
+//
+// The pre-feature default is ” and those runs had no help, so they read as unaided.
+func (q *Queries) ClearedPassGuides(ctx context.Context, userID string) ([]ClearedPassGuidesRow, error) {
+	rows, err := q.db.Query(ctx, clearedPassGuides, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ClearedPassGuidesRow
+	for rows.Next() {
+		var i ClearedPassGuidesRow
+		if err := rows.Scan(&i.ScenarioID, &i.Guide); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const completeDailyPageIfAttempted = `-- name: CompleteDailyPageIfAttempted :one
 UPDATE daily_pages SET answered_at = now()
  WHERE daily_pages.user_id = $1 AND daily_pages.local_date = $2
@@ -287,34 +326,6 @@ func (q *Queries) GetProgress(ctx context.Context, userID string) (GetProgressRo
 		&i.StreakLongest,
 	)
 	return i, err
-}
-
-const guidedPassesCleared = `-- name: GuidedPassesCleared :many
-SELECT DISTINCT scenario_id FROM scenario_attempts
- WHERE user_id = $1 AND state = 'cleared' AND guide = 'choices'
-`
-
-// Which scenarios the learner has finished WITH help. The second pass of a step is only
-// unlocked by the first, and a clear that used choices is not a clear on their own —
-// counting it as one would delete the ladder's second rung.
-func (q *Queries) GuidedPassesCleared(ctx context.Context, userID string) ([]string, error) {
-	rows, err := q.db.Query(ctx, guidedPassesCleared, userID)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	var items []string
-	for rows.Next() {
-		var scenario_id string
-		if err := rows.Scan(&scenario_id); err != nil {
-			return nil, err
-		}
-		items = append(items, scenario_id)
-	}
-	if err := rows.Err(); err != nil {
-		return nil, err
-	}
-	return items, nil
 }
 
 const insertAttempt = `-- name: InsertAttempt :exec

@@ -2148,10 +2148,22 @@ export interface components {
              *     cannot infer from anywhere else on the screen.
              */
             attempted?: boolean;
+            /**
+             * @description Guide is how much help this ENTRY gives: "choices" or "free". A dialogue appears
+             *     twice in the list — once guided, once not — and these are the two entries. Without
+             *     it the learner would see the same title twice with no way to tell which is which.
+             */
+            guide?: string;
             kind?: string;
             name?: string;
             /** @description bonus practice; doesn't gate */
             optional?: boolean;
+            /**
+             * @description Pass / Passes name the rung: "1/2" and "2/2". The client draws them, so the same
+             *     arithmetic is not done in two places.
+             */
+            pass?: number;
+            passes?: number;
             scenarioId?: string;
             /** @description done | now | lock | optional */
             state?: string;
