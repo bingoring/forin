@@ -1,45 +1,64 @@
 // Three ways to answer, for the guided pass of a curriculum step.
 //
-// Testers said it plainly: facing a patient and an empty text box, they did not know
-// what to say. This is what stands in that box's place the first time through a
-// conversation — the character speaks, and three real replies appear under it.
+// Testers froze on the first turn: a patient, an empty text box, and no idea what to
+// say. These are what stands in that box's place the first time through a conversation.
 //
-// None of the three is wrong. A wrong option would make this a quiz, and nobody picks
-// the wrong one anyway, so the choice would be theatre. What is actually being chosen
-// between is three ways of being competent — and that difference is invisible unless it
-// is written down, which is why every choice carries one line of `why` in the learner's
-// own language. The `why` is the lesson; the sentences are just how it is delivered.
+// Four things here are the result of watching it in use:
 //
-// Ranked, and drawn as ranked: the best one first, in the app's strongest colour. A
-// learner who always picks the top one has still read three sentences and one reason
-// each — which is more clinical English than the empty box was giving them.
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+//  1. It is CAPPED and collapsible. At full height three cards covered the conversation
+//     they were answers to, which is the one thing on screen you need in order to choose.
+//  2. Each card PRESSES, like every other control in the app. Without it there was no
+//     sign a tap had landed.
+//  3. The mic is its OWN zone on the right, and a deliberately large one. Picking a
+//     reply used to force the pronunciation screen on everybody; speaking is the point
+//     of the app but it is not a toll gate, and someone on a bus should be able to
+//     choose and send.
+//  4. The ranking is NOT printed on the cards. Labelling them 가장 좋은 답 / 꽤 괜찮은
+//     답 / 괜찮은 답 answered the question for the learner — they would read the badges
+//     and never the sentences. The reason arrives AFTER the choice, where it is feedback
+//     instead of an answer key, and the order is shuffled so position gives nothing away.
+import { useMemo, useState } from 'react';
+import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import type { ReplyChoice } from '@/api/client';
+import { DisclosureChevron } from '@/components/Collapsible';
 import { FIcon } from '@/components/FIcon';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { playSfx } from '@/lib/sfx';
 import { useT } from '@/i18n';
 
 const C = colors.ink;
+/** How far a card's cap travels on press — PixelButton's mechanic at a card's scale. */
+const PRESS = 3;
+/** The mic's own zone. Wide enough to aim at without looking, which is the difference
+ *  between "there is a mic somewhere on this card" and a target. */
+const MIC_W = 52;
 
-/** Per-tier face. Best is the app's action colour; the other two step down without ever
- *  looking like mistakes — they are alternatives, not wrong answers. */
-const TIER: Record<ReplyChoice['tier'], { bg: string; labelKey: string }> = {
-  best: { bg: colors.mint, labelKey: 'choice.best' },
-  strong: { bg: colors.blue, labelKey: 'choice.strong' },
-  fair: { bg: colors.cream, labelKey: 'choice.fair' },
-};
-
-export function ReplyChoices({ choices, loading, onPick, onWriteMyOwn }: {
+export function ReplyChoices({ choices, loading, selectedText, onPick, onSpeak, onWriteMyOwn, maxHeight }: {
   choices: ReplyChoice[];
   loading: boolean;
-  /** Picking one takes it to pronunciation practice — the point is to SAY it. */
+  /** The card currently chosen, if any — its reason is shown once it is. */
+  selectedText?: string;
+  /** Chose this reply. Fills the box; does not leave the screen. */
   onPick: (choice: ReplyChoice) => void;
-  /** The way out of the scaffold, always available. A learner who knows what to say
-   *  must never have to pick from a list to say it. */
+  /** Asked to practise saying it. The mic zone, and only the mic zone. */
+  onSpeak: (choice: ReplyChoice) => void;
   onWriteMyOwn: () => void;
+  /** Ceiling for the list, so it cannot grow over the conversation. */
+  maxHeight: number;
 }) {
   const t = useT();
+  const [open, setOpen] = useState(true);
+  const [down, setDown] = useState<string | null>(null);
+
+  // Shuffled, stably for this set. Best-first was a second answer key: the top card
+  // would be picked every time without anyone reading the other two.
+  const shown = useMemo(() => {
+    const seed = choices.map((c) => c.text).join('|').length;
+    return choices
+      .map((c, i) => ({ c, k: (i * 7 + seed) % Math.max(1, choices.length) }))
+      .sort((a, b) => a.k - b.k)
+      .map((x) => x.c);
+  }, [choices]);
 
   if (loading) {
     return (
@@ -57,38 +76,78 @@ export function ReplyChoices({ choices, loading, onPick, onWriteMyOwn }: {
   if (choices.length === 0) return null;
 
   return (
-    <View testID="reply-choices" style={{ gap: 7 }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>
-        {t('choice.prompt')}
-      </Text>
+    <View testID="reply-choices" style={{ gap: 6 }}>
+      {/* The header is the collapse control. Three cards at full height covered the
+          conversation they were answers to. */}
+      <Pressable onPress={() => setOpen((v) => !v)} hitSlop={6} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+        <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>
+          {t('choice.prompt')}
+        </Text>
+        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft }}>
+          {t(open ? 'choice.collapse' : 'choice.expand')}
+        </Text>
+        <DisclosureChevron open={open} color={colors.textSoft} size={12} />
+      </Pressable>
 
-      {choices.map((c, i) => {
-        const face = TIER[c.tier];
-        return (
-          <Pressable key={i} onPress={() => { playSfx('tap'); onPick(c); }}>
-            <View style={{ position: 'absolute', left: 3, top: 3, right: -3, bottom: -3, backgroundColor: C }} />
-            <View style={{ backgroundColor: face.bg, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11, gap: 5 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <View style={{ backgroundColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.cream }}>{t(face.labelKey)}</Text>
+      {open && (
+        <ScrollView style={{ maxHeight }} showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 7, paddingBottom: 2 }}>
+          {shown.map((c, i) => {
+            const isDown = down === c.text;
+            const dx = isDown ? PRESS : 0;
+            const picked = !!selectedText && selectedText === c.text;
+            return (
+              <View key={i}>
+                <View style={{ position: 'absolute', left: PRESS, top: PRESS, right: -PRESS, bottom: -PRESS, backgroundColor: C }} />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    backgroundColor: picked ? colors.mint : '#fff',
+                    borderWidth: 2.5,
+                    borderColor: C,
+                    transform: [{ translateX: dx }, { translateY: dx }],
+                  }}
+                >
+                  {/* Choosing. The whole card except the mic. */}
+                  <Pressable
+                    onPressIn={() => setDown(c.text)}
+                    onPressOut={() => setDown(null)}
+                    onPress={() => { playSfx('tap'); onPick(c); }}
+                    style={{ flex: 1, paddingVertical: 9, paddingHorizontal: 11, gap: 5 }}
+                  >
+                    <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 18 }}>{c.text}</Text>
+                    {/* The reason, AFTER the choice. Before it, it is an answer key. */}
+                    {picked && !!c.why && (
+                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, opacity: 0.85, lineHeight: 14 }}>
+                        {c.why}
+                      </Text>
+                    )}
+                  </Pressable>
+
+                  {/* Speaking. Its own zone, its own edge, its own size — so nobody is
+                      sent to the pronunciation screen by tapping a sentence. */}
+                  <Pressable
+                    onPress={() => { playSfx('tap'); onSpeak(c); }}
+                    style={{
+                      width: MIC_W,
+                      borderLeftWidth: 2.5,
+                      borderLeftColor: C,
+                      backgroundColor: colors.yellow,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 2,
+                    }}
+                  >
+                    <FIcon name="mic" size={16} />
+                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{t('choice.speak')}</Text>
+                  </Pressable>
                 </View>
-                <View style={{ flex: 1 }} />
-                {/* Says what happens next: this is practice at SAYING it, not at
-                    recognising it. */}
-                <FIcon name="mic" size={12} />
               </View>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 18 }}>{c.text}</Text>
-              {!!c.why && (
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, opacity: 0.85, lineHeight: 14 }}>
-                  {c.why}
-                </Text>
-              )}
-            </View>
-          </Pressable>
-        );
-      })}
+            );
+          })}
+        </ScrollView>
+      )}
 
-      <Pressable onPress={onWriteMyOwn} hitSlop={6} style={{ alignSelf: 'center', paddingVertical: 6 }}>
+      <Pressable onPress={onWriteMyOwn} hitSlop={6} style={{ alignSelf: 'center', paddingVertical: 4 }}>
         <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft, textDecorationLine: 'underline' }}>
           {t('choice.writeMyOwn')}
         </Text>

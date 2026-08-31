@@ -785,16 +785,22 @@ export default function DialogueRoute() {
             <ReplyChoices
               choices={choices}
               loading={choicesBusy}
-              onPick={(c) => {
-                // The sentence goes in the box AND straight to pronunciation practice.
-                // The box keeps it because this screen stays mounted underneath, so
-                // coming back leaves them one tap from sending what they just said.
+              selectedText={draft}
+              // Choosing fills the box and stays put. It used to jump straight to the
+              // pronunciation screen, which made speaking a toll gate on the way to
+              // sending — someone on a bus could not get past it.
+              onPick={(c) => setDraft(c.text)}
+              // Speaking is its own zone on the card, so it is a decision rather than a
+              // consequence of choosing.
+              onSpeak={(c) => {
                 setDraft(c.text);
                 router.push(
                   `/pronunciation/${encodeURIComponent(c.text.slice(0, 40))}?referenceText=${encodeURIComponent(c.text)}&origin=dialogue&scenarioId=${encodeURIComponent(id ?? '')}&step=${encodeURIComponent(t('choice.prompt'))}`
                 );
               }}
               onWriteMyOwn={() => setWroteOwn(true)}
+              // Capped so the cards cannot cover the conversation they answer.
+              maxHeight={winH * 0.34}
             />
           </View>
         )}

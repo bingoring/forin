@@ -41,7 +41,15 @@ function mount(over: Partial<Parameters<typeof ReplyChoices>[0]> = {}) {
   let tree!: ReturnType<typeof create>;
   act(() => {
     tree = track(create(
-      <ReplyChoices choices={CHOICES} loading={false} onPick={() => {}} onWriteMyOwn={() => {}} {...over} />,
+      <ReplyChoices
+        choices={CHOICES}
+        loading={false}
+        onPick={() => {}}
+        onSpeak={() => {}}
+        onWriteMyOwn={() => {}}
+        maxHeight={300}
+        {...over}
+      />,
     ));
   });
   return tree;
@@ -49,35 +57,103 @@ function mount(over: Partial<Parameters<typeof ReplyChoices>[0]> = {}) {
 
 beforeEach(() => { mockSounds.length = 0; });
 
-test('all three are shown, with the reason each one exists', () => {
+test('all three sentences are shown', () => {
   const out = texts(mount().root);
-  for (const c of CHOICES) {
-    expect(out).toContain(c.text);
-    // The `why` is the lesson. Three sentences without it is a menu; with it, the
-    // learner can see what separates a good answer from a merely correct one.
-    expect(out).toContain(c.why);
-  }
+  for (const c of CHOICES) expect(out).toContain(c.text);
 });
 
-test('none of them is labelled wrong', () => {
-  // A wrong option would make this a quiz, and nobody picks the wrong one anyway — the
-  // choice would be theatre. What is being chosen between is three ways of being
-  // competent.
+test('the ranking is not printed on the cards', () => {
+  // Labelling them 가장 좋은 답 / 꽤 괜찮은 답 / 괜찮은 답 answered the question for the
+  // learner: they would read the badges and never the sentences. The learner chooses;
+  // the app says afterwards what the choice achieved.
   const out = texts(mount().root).join(' ');
-  expect(out).toContain('가장 좋은 답');
-  expect(out).toContain('꽤 괜찮은 답');
-  expect(out).toContain('괜찮은 답');
-  for (const bad of ['틀린', '나쁜', '하지 마', '오답']) {
-    expect(out).not.toContain(bad);
+  for (const giveaway of ['가장 좋은', '꽤 괜찮은', '괜찮은 답', 'best', 'strong', 'fair']) {
+    expect(out).not.toContain(giveaway);
   }
+  // And no reason is visible before a choice is made — that is the other answer key.
+  for (const c of CHOICES) expect(out).not.toContain(c.why);
 });
 
-test('picking one hands back the whole choice, and blips', () => {
+test('the reason arrives AFTER the choice', () => {
+  // Feedback, not an answer key. This is where the lesson actually lands: the learner
+  // has already committed, so reading why it works is learning rather than copying.
+  const out = texts(mount({ selectedText: CHOICES[1].text }).root);
+  expect(out).toContain(CHOICES[1].why);
+  // Only the chosen one's.
+  expect(out).not.toContain(CHOICES[0].why);
+});
+
+test('position gives nothing away either', () => {
+  // Best-first was a second answer key: the top card would be taken every time without
+  // anyone reading the other two. The order is shuffled, and stable for a given set so
+  // it does not jump around under a re-render.
+  const order = (t: ReturnType<typeof create>) =>
+    texts(t.root).filter((x) => CHOICES.some((c) => c.text === x));
+  const first = order(mount());
+  expect(first).toHaveLength(3);
+  expect(first[0]).not.toBe(CHOICES[0].text);
+  expect(order(mount())).toEqual(first);
+});
+
+test('picking fills the box; it does not leave the screen', () => {
   const picked: ReplyChoice[] = [];
-  const tree = mount({ onPick: (c) => picked.push(c) });
+  const spoken: ReplyChoice[] = [];
+  const tree = mount({ onPick: (c) => picked.push(c), onSpeak: (c) => spoken.push(c) });
   act(() => { press(tree.root, CHOICES[0].text).props.onPress(); });
   expect(picked).toEqual([CHOICES[0]]);
+  // Speaking is a separate decision. It used to be forced on everybody who chose — a
+  // toll gate on the way to sending, which someone on a bus cannot pay.
+  expect(spoken).toEqual([]);
   expect(mockSounds).toEqual(['tap']);
+});
+
+test('the mic is its own zone, and that is what opens practice', () => {
+  const picked: ReplyChoice[] = [];
+  const spoken: ReplyChoice[] = [];
+  const tree = mount({ onPick: (c) => picked.push(c), onSpeak: (c) => spoken.push(c) });
+  const mic = tree.root.findAll(
+    (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes('말하기'),
+    { deep: true },
+  )[0];
+  act(() => { mic.props.onPress(); });
+  expect(spoken).toHaveLength(1);
+  expect(picked).toEqual([]);
+});
+
+test('a card presses', () => {
+  // Without it there was no sign a tap had landed.
+  const tree = mount();
+  const card = press(tree.root, CHOICES[0].text);
+  // Scoped to the card that holds THIS sentence: several views carry a transform, and
+  // reading the first one found says nothing about the card being pressed.
+  const face = () => {
+    const hit = tree.root.findAll((n) => {
+      const st = Array.isArray(n.props?.style) ? Object.assign({}, ...n.props.style) : (n.props?.style ?? {});
+      return String(n.type) === 'View' && Array.isArray(st.transform) && texts(n).includes(CHOICES[0].text);
+    }, { deep: true })[0];
+    const st = Array.isArray(hit.props.style) ? Object.assign({}, ...hit.props.style) : hit.props.style;
+    return (st.transform as { translateX: number }[])[0].translateX;
+  };
+  expect(face()).toBe(0);
+  act(() => { card.props.onPressIn(); });
+  expect(face()).toBeGreaterThan(0);
+  act(() => { card.props.onPressOut(); });
+  expect(face()).toBe(0);
+});
+
+test('the list is capped and can be folded away', () => {
+  // Three cards at full height covered the conversation they were answers to — which is
+  // the one thing you need on screen in order to choose.
+  const tree = mount({ maxHeight: 220 });
+  const scroller = tree.root.findAll((n) => {
+    const st = Array.isArray(n.props?.style) ? Object.assign({}, ...n.props.style) : (n.props?.style ?? {});
+    return String(n.type) === 'RCTScrollView' && st.maxHeight === 220;
+  }, { deep: true });
+  expect(scroller.length).toBe(1);
+
+  act(() => { press(tree.root, '접기').props.onPress(); });
+  expect(texts(tree.root)).not.toContain(CHOICES[0].text);
+  expect(texts(tree.root)).toContain('펼치기');
 });
 
 test('there is always a way out of the scaffold', () => {
