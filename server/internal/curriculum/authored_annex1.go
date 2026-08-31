@@ -13,6 +13,7 @@ var annex1 = []Curriculum{
 		Key: "별관 1|1F|prenatal", Name: "산전과 산후",
 		Building: "별관 1", Floor: "1F", Where: "별관 1 1F 소아청소년·산부인과 외래",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 여성소아외래", ScenarioID: "SCN-WOMENKIDS-00900"},
 			{Kind: "dlg", Name: "산전 진료 상담", ScenarioID: "SCN-WOMENKIDS-00101"},
 			{Kind: "quiz", Name: "산전 관리 점검", ScenarioID: "QZ-WOMENKIDS-00004"},
 			{Kind: "dlg", Name: "임신성 당뇨 교육", ScenarioID: "SCN-WOMENKIDS-00107"},
@@ -44,6 +45,7 @@ var annex1 = []Curriculum{
 		Key: "별관 1|2F|meetchild", Name: "아이를 처음 만나면",
 		Building: "별관 1", Floor: "2F", Where: "별관 1 2F 소아 일반 병동",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 소아병동", ScenarioID: "SCN-PEDS-00900"},
 			{Kind: "dlg", Name: "소아 통증 사정", ScenarioID: "SCN-PEDS-00108"},
 			{Kind: "quiz", Name: "소아 탈수 사정", ScenarioID: "QZ-PEDS-00003"},
 			{Kind: "dlg", Name: "아동 발열 부모 상담", ScenarioID: "SCN-PEDS-00101"},
@@ -75,6 +77,7 @@ var annex1 = []Curriculum{
 		Key: "별관 1|3F|labor", Name: "분만실 · 진통과 함께",
 		Building: "별관 1", Floor: "3F", Where: "별관 1 3F 가족 분만실 · 신생아실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 분만실", ScenarioID: "SCN-LD-00900"},
 			{Kind: "dlg", Name: "분만 계획 확인", ScenarioID: "SCN-LD-00108"},
 			{Kind: "quiz", Name: "태아심박 감시 판독", ScenarioID: "QZ-LD-00001"},
 			{Kind: "dlg", Name: "태아 심음 모니터 안내", ScenarioID: "SCN-LD-00103"},
@@ -104,6 +107,7 @@ var annex1 = []Curriculum{
 		Key: "별관 1|3F|newbornassess", Name: "신생아실 · 첫 사정",
 		Building: "별관 1", Floor: "3F", Where: "별관 1 3F 가족 분만실 · 신생아실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 신생아실", ScenarioID: "SCN-NURSERY-00900"},
 			{Kind: "dlg", Name: "신생아 활력 사정", ScenarioID: "SCN-NURSERY-00101"},
 			{Kind: "quiz", Name: "신생아 목욕 순서", ScenarioID: "QZ-NURSERY-00001"},
 			{Kind: "dlg", Name: "신생아 체온 유지 안내", ScenarioID: "SCN-NURSERY-00108"},
@@ -135,6 +139,7 @@ var annex1 = []Curriculum{
 		Key: "별관 1|4F|nicufamily", Name: "신생아중환자실 · 부모의 첫 시간",
 		Building: "별관 1", Floor: "4F", Where: "별관 1 4F 신생아·소아 중환자실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 신생아중환자실", ScenarioID: "SCN-NICU-00900"},
 			{Kind: "dlg", Name: "캥거루 케어 교육", ScenarioID: "SCN-NICU-00102"},
 			{Kind: "quiz", Name: "미숙아 위험 징후", ScenarioID: "QZ-NICU-00001"},
 			{Kind: "dlg", Name: "미숙아 부모 첫 안내", ScenarioID: "SCN-NICU-00101"},
@@ -164,6 +169,7 @@ var annex1 = []Curriculum{
 		Key: "별관 1|4F|picufamily", Name: "소아중환자실 · 겁먹은 가족",
 		Building: "별관 1", Floor: "4F", Where: "별관 1 4F 신생아·소아 중환자실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 소아중환자실", ScenarioID: "SCN-PICU-00900"},
 			{Kind: "dlg", Name: "형제자매 방문 지원", ScenarioID: "SCN-PICU-00106"},
 			{Kind: "quiz", Name: "소아 활력 판독", ScenarioID: "QZ-PICU-00001"},
 			{Kind: "dlg", Name: "회복 단계 격려", ScenarioID: "SCN-PICU-00108"},

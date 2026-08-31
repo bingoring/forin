@@ -13,6 +13,7 @@ var support = []Curriculum{
 		Key: "지원동|B1|procedure", Name: "존엄을 지키는 절차",
 		Building: "지원동", Floor: "B1", Where: "지원동 B1 영안실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 영안실", ScenarioID: "SCN-MORGUE-00900"},
 			{Kind: "dlg", Name: "장례식장 인계 소통", ScenarioID: "SCN-MORGUE-00104"},
 			{Kind: "quiz", Name: "유족 응대 원칙", ScenarioID: "QZ-MORGUE-00001"},
 			{Kind: "dlg", Name: "고인 신원 확인 절차", ScenarioID: "SCN-MORGUE-00103"},
@@ -44,6 +45,7 @@ var support = []Curriculum{
 		Key: "지원동|1F|requests", Name: "요청을 받는 자리",
 		Building: "지원동", Floor: "1F", Where: "지원동 1F 중앙공급실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 중앙공급실", ScenarioID: "SCN-SPD-00900"},
 			{Kind: "dlg", Name: "멸균 물품 요청", ScenarioID: "SCN-SPD-00101"},
 			{Kind: "quiz", Name: "오염 · 멸균 분류", ScenarioID: "QZ-SPD-00001"},
 			{Kind: "dlg", Name: "물품 추적 문의 응대", ScenarioID: "SCN-SPD-00105"},
@@ -75,6 +77,7 @@ var support = []Curriculum{
 		Key: "지원동|2F|smalltalk", Name: "동료와 말 트기",
 		Building: "지원동", Floor: "2F", Where: "지원동 2F 의료진 휴게실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 휴게실", ScenarioID: "SCN-LOUNGE-00900"},
 			{Kind: "dlg", Name: "교대 조율 협의", ScenarioID: "SCN-LOUNGE-00103"},
 			{Kind: "dlg", Name: "감사 표현", ScenarioID: "SCN-LOUNGE-00109"},
 			{Kind: "dlg", Name: "근무 인계 잡담", ScenarioID: "SCN-LOUNGE-00110"},
@@ -106,6 +109,7 @@ var support = []Curriculum{
 		Key: "지원동|3F|prepare", Name: "배울 준비",
 		Building: "지원동", Floor: "3F", Where: "지원동 3F 시뮬레이션 랩",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 시뮬레이션랩", ScenarioID: "SCN-SIM-00900"},
 			{Kind: "dlg", Name: "학습 목표 브리핑", ScenarioID: "SCN-SIM-00106"},
 			{Kind: "dlg", Name: "신입 오리엔테이션", ScenarioID: "SCN-SIM-00107"},
 			{Kind: "boss", Name: "술기 피드백", ScenarioID: "SCN-SIM-00102"},

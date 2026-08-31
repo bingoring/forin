@@ -73,6 +73,7 @@ var mainBuilding = []Curriculum{
 		Key: "본관|P1|dispense", Name: "내주기 전 확인",
 		Building: "본관", Floor: "P1", Where: "본관 P1 중앙 약제부",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 약제부", ScenarioID: "SCN-PHARMA-00900"},
 			{Kind: "dlg", Name: "헤파린 더블 체크", ScenarioID: "SCN-PHARMA-00001"},
 			{Kind: "quiz", Name: "구두 처방 받아쓰기", ScenarioID: "QZ-PHARMA-00001"},
 			{Kind: "dlg", Name: "구두 처방 받아쓰기", ScenarioID: "SCN-PHARMA-00002"},
@@ -114,6 +115,7 @@ var mainBuilding = []Curriculum{
 		Key: "본관|3F|preop", Name: "수술 전 확인",
 		Building: "본관", Floor: "3F", Where: "본관 3F 수술실 · PACU",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 수술실", ScenarioID: "SCN-OR-00900"},
 			{Kind: "dlg", Name: "마취 전 문진", ScenarioID: "SCN-OR-00006"},
 			{Kind: "quiz", Name: "수술 전 Time-out 체크", ScenarioID: "QZ-OR-00001"},
 			{Kind: "dlg", Name: "수술 부위 표시 확인", ScenarioID: "SCN-OR-00007"},
@@ -155,6 +157,7 @@ var mainBuilding = []Curriculum{
 		Key: "본관|4F|monitor", Name: "모니터와 알람",
 		Building: "본관", Floor: "4F", Where: "본관 4F ICU",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 중환자실", ScenarioID: "SCN-ICU-00900"},
 			{Kind: "dlg", Name: "욕창 예방 체위변경", ScenarioID: "SCN-ICU-00010"},
 			{Kind: "quiz", Name: "인공호흡기 알람 대응", ScenarioID: "QZ-ICU-00004"},
 			{Kind: "dlg", Name: "모니터 알람 해석", ScenarioID: "SCN-ICU-00005"},
@@ -196,6 +199,7 @@ var mainBuilding = []Curriculum{
 		Key: "본관|8F|admission", Name: "입원 첫날",
 		Building: "본관", Floor: "8F", Where: "본관 8F 일반 내과 병동",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 내과병동", ScenarioID: "SCN-WARD-00900"},
 			{Kind: "dlg", Name: "만성질환 입원 사정", ScenarioID: "SCN-WARD-00101"},
 			// This floor's bank has no hand-authored quiz, so the quiz comes from a
 			// topic that lives in another curriculum on the same floor — a quiz
@@ -230,6 +234,7 @@ var mainBuilding = []Curriculum{
 		Key: "본관|7F|postop", Name: "수술 후 첫 만남",
 		Building: "본관", Floor: "7F", Where: "본관 7F 일반 외과 병동",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 외과병동", ScenarioID: "SCN-SURGWARD-00900"},
 			{Kind: "dlg", Name: "장운동 회복 안내", ScenarioID: "SCN-SURGWARD-00107"},
 			{Kind: "quiz", Name: "조기 보행 격려", ScenarioID: "QZ-SURGWARD-00107"},
 			{Kind: "dlg", Name: "수술 후 첫 사정", ScenarioID: "SCN-SURGWARD-00101"},
@@ -261,6 +266,7 @@ var mainBuilding = []Curriculum{
 		Key: "본관|6F|fracture", Name: "골절 환자 받기",
 		Building: "본관", Floor: "6F", Where: "본관 6F 정형외과 병동",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 정형외과병동", ScenarioID: "SCN-ORTHOWARD-00900"},
 			{Kind: "dlg", Name: "골절 환자 입원 사정", ScenarioID: "SCN-ORTHOWARD-00101"},
 			{Kind: "quiz", Name: "보행 보조기구 훈련", ScenarioID: "QZ-ORTHOWARD-00113"},
 			{Kind: "dlg", Name: "석고붕대 관리 교육", ScenarioID: "SCN-ORTHOWARD-00102"},
@@ -292,6 +298,7 @@ var mainBuilding = []Curriculum{
 		Key: "본관|2F|lesion", Name: "피부를 보는 눈",
 		Building: "본관", Floor: "2F", Where: "본관 2F 피부과 센터",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 피부과", ScenarioID: "SCN-DERM-00900"},
 			{Kind: "dlg", Name: "피부 병변 문진", ScenarioID: "SCN-DERM-00101"},
 			{Kind: "quiz", Name: "광선치료 전 안내", ScenarioID: "QZ-DERM-00110"},
 			{Kind: "dlg", Name: "가려움 조절 상담", ScenarioID: "SCN-DERM-00102"},

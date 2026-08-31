@@ -5,6 +5,9 @@ import (
 	"sort"
 	"strings"
 	"testing"
+
+	"github.com/bingoring/forin/server/internal/adapters/contentfile"
+	"github.com/bingoring/forin/server/internal/domain/content"
 )
 
 // The path must cover every floor the lift can reach. The v19 catalog stopped at
@@ -45,9 +48,15 @@ func TestCurriculumSizes(t *testing.T) {
 		perFloor[[2]string{c.Building, c.Floor}]++
 		required := 0
 		for _, s := range c.Steps {
-			if !isOptional(s.Kind) {
-				required++
+			// The ward greeting does not count toward the length. The bound exists so a
+			// chapter stays a unit of progress you can see the end of, and the greeting
+			// is not that kind of step: three minutes, difficulty 1, no clinical content,
+			// identical in shape on all 28 wards. Counting it would have forced seven
+			// authored chapters to give a body step away to make room for a hello.
+			if isOptional(s.Kind) || IsWardGreeting(s.ScenarioID) {
+				continue
 			}
+			required++
 		}
 		if required < 2 || required > 4 {
 			t.Errorf("%s has %d required steps, want 2-4", c.Key, required)
@@ -315,4 +324,135 @@ func keysOf(m map[string]any) []string {
 	}
 	sort.Strings(ks)
 	return ks
+}
+
+// Item 4 of the v27 feedback: "각 병동별 커리큘럼 첫번째는 일단 인사가 좋지않을까?
+// 지금 인사하는게 er에밖에 없어보여."
+//
+// It was true. The ER had SCN-ORIENT-00001..3 — arrive, take the handover, meet your
+// first patient — and every other ward opened on an assessment. Someone standing in a
+// dialysis unit for the first time got "같은 환자가 세 번씩 오는 곳입니다" and a machine
+// alarm, with no place to have said their own name first.
+//
+// This is the invariant, not the 27 files: EVERY department's first curriculum opens
+// with that department's greeting. A new ward added without one fails here.
+func TestEveryDepartmentOpensWithAGreeting(t *testing.T) {
+	// The department a curriculum belongs to, read off its steps — the catalog has no
+	// dept field, and the scenario ids are the only place that fact lives.
+	firstOf := map[string]Curriculum{}
+	order := []string{}
+	for _, c := range catalog {
+		dept := ""
+		for _, s := range c.Steps {
+			if parts := strings.Split(s.ScenarioID, "-"); len(parts) >= 3 {
+				dept = parts[1]
+				break
+			}
+		}
+		if dept == "" || dept == "ORIENT" {
+			continue // ORIENT *is* the ER's greeting curriculum
+		}
+		if _, seen := firstOf[dept]; !seen {
+			firstOf[dept] = c
+			order = append(order, dept)
+		}
+	}
+	if len(order) < 28 {
+		t.Fatalf("only found %d departments (want 28: 27 wards + the ER) — the reader below is broken, not the catalog", len(order))
+	}
+	// The one department whose hello lives in a DIFFERENT curriculum: the ER is greeted
+	// by 첫 출근 · 자기소개, the orientation chapter that opens 본관 1F ahead of triage.
+	// Giving the ER its own -00900 as well would say hello twice on the same floor.
+	//
+	// The exception is checked, not waived: the orientation chapter has to still be the
+	// FIRST thing on that floor. Reorder 본관 1F so triage comes first and this fails,
+	// which is the failure that matters — a newcomer's first tap opening chest pain is
+	// exactly what happened in v19.
+	const erGreeting = "SCN-ORIENT-00001"
+	floorOpener := map[[2]string]Step{}
+	for _, c := range catalog {
+		k := [2]string{c.Building, c.Floor}
+		if _, seen := floorOpener[k]; !seen && len(c.Steps) > 0 {
+			floorOpener[k] = c.Steps[0]
+		}
+	}
+
+	for _, dept := range order {
+		c := firstOf[dept]
+		if len(c.Steps) == 0 {
+			t.Errorf("%s has no steps", c.Key)
+			continue
+		}
+		first := c.Steps[0]
+		if dept == "ER" {
+			if got := floorOpener[[2]string{c.Building, c.Floor}]; got.ScenarioID != erGreeting {
+				t.Errorf("%s %s opens on %q (%s), want the orientation greeting %s",
+					c.Building, c.Floor, got.Name, got.ScenarioID, erGreeting)
+			}
+			continue
+		}
+		want := "SCN-" + dept + GreetingSuffix
+		if first.ScenarioID != want {
+			t.Errorf("%s (%s) opens on %q (%s), want the ward greeting %s",
+				dept, c.Key, first.Name, first.ScenarioID, want)
+		}
+		if first.Kind != "dlg" {
+			t.Errorf("%s: the greeting is a %q step, want dlg — a hello is not a chapter test", dept, first.Kind)
+		}
+	}
+}
+
+// A greeting nobody can reach is not a greeting. Two ways that happens, and both have
+// already happened once in this repo: the step points at content that does not exist
+// (the v19 catalog), or the content is gated behind a level the learner cannot have on
+// their first tap (SCN-ER-00001's "레벨 B1+").
+func TestWardGreetingsAreReachableOnDayOne(t *testing.T) {
+	bundle, err := contentfile.Load("../../content")
+	if err != nil {
+		t.Fatalf("load content: %v", err)
+	}
+	byID := map[string]content.Scenario{}
+	for _, s := range bundle.Scenarios {
+		byID[s.ID] = s
+	}
+
+	found := 0
+	for _, c := range catalog {
+		for _, st := range c.Steps {
+			if !IsWardGreeting(st.ScenarioID) {
+				continue
+			}
+			found++
+			s, ok := byID[st.ScenarioID]
+			if !ok {
+				t.Errorf("%s: %s has no content file", c.Key, st.ScenarioID)
+				continue
+			}
+			if s.Briefing.Difficulty != 1 {
+				t.Errorf("%s: difficulty %d, want 1", s.ID, s.Briefing.Difficulty)
+			}
+			for _, r := range s.Briefing.Reqs {
+				if r.Metric == "level" && r.Threshold > 1 {
+					t.Errorf("%s: gated behind level %d — it is somebody's first tap on this ward",
+						s.ID, r.Threshold)
+				}
+			}
+			// The opening and closing goals are the professional pair (see
+			// content.OpenGoal): a greeting is a conversation with a colleague, and
+			// these two are what a learner abroad most often gets wrong.
+			if len(s.Goals) < 3 {
+				t.Errorf("%s: %d goals, want the opening, a body, and the closing", s.ID, len(s.Goals))
+				continue
+			}
+			if s.Goals[0] != content.OpenGoal(s.Persona.Role) {
+				t.Errorf("%s: first goal %q is not the opening for role %q", s.ID, s.Goals[0], s.Persona.Role)
+			}
+			if last := s.Goals[len(s.Goals)-1]; last != content.CloseGoal(s.Persona.Role) {
+				t.Errorf("%s: last goal %q is not the closing for role %q", s.ID, last, s.Persona.Role)
+			}
+		}
+	}
+	if found != 27 {
+		t.Errorf("walked %d greetings in the catalog, want 27", found)
+	}
 }

@@ -1,0 +1,247 @@
+# 병동별 첫 인사의 이벤트 — scenarios/greet-wards.yaml과 1:1.
+#
+# 부서마다 따로 두는 이유: 이벤트는 하나의 상황을 뜻한다. 27개 병동의 첫 인사를
+# 한 이벤트에 묶으면 "서로 관계없는 27개 상황"이 한 상황이 된다.
+
+- id: EVT-PHARMA-00900
+  title: "첫 인사 · 약제부"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-PHARMA-00900]
+
+- id: EVT-OR-00900
+  title: "첫 인사 · 수술실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-OR-00900]
+
+- id: EVT-ICU-00900
+  title: "첫 인사 · 중환자실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-ICU-00900]
+
+- id: EVT-WARD-00900
+  title: "첫 인사 · 내과병동"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-WARD-00900]
+
+- id: EVT-SURGWARD-00900
+  title: "첫 인사 · 외과병동"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-SURGWARD-00900]
+
+- id: EVT-ORTHOWARD-00900
+  title: "첫 인사 · 정형외과병동"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-ORTHOWARD-00900]
+
+- id: EVT-DERM-00900
+  title: "첫 인사 · 피부과"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-DERM-00900]
+
+- id: EVT-WOMENKIDS-00900
+  title: "첫 인사 · 여성소아외래"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-WOMENKIDS-00900]
+
+- id: EVT-PEDS-00900
+  title: "첫 인사 · 소아병동"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-PEDS-00900]
+
+- id: EVT-LD-00900
+  title: "첫 인사 · 분만실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-LD-00900]
+
+- id: EVT-NURSERY-00900
+  title: "첫 인사 · 신생아실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-NURSERY-00900]
+
+- id: EVT-NICU-00900
+  title: "첫 인사 · 신생아중환자실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-NICU-00900]
+
+- id: EVT-PICU-00900
+  title: "첫 인사 · 소아중환자실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-PICU-00900]
+
+- id: EVT-REHAB-00900
+  title: "첫 인사 · 재활치료실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-REHAB-00900]
+
+- id: EVT-PSYCH-00900
+  title: "첫 인사 · 정신과병동"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-PSYCH-00900]
+
+- id: EVT-ONCO-00900
+  title: "첫 인사 · 종양내과"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-ONCO-00900]
+
+- id: EVT-HOSPICE-00900
+  title: "첫 인사 · 호스피스"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-HOSPICE-00900]
+
+- id: EVT-GERI-00900
+  title: "첫 인사 · 노인병동"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-GERI-00900]
+
+- id: EVT-RAD-00900
+  title: "첫 인사 · 영상의학과"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-RAD-00900]
+
+- id: EVT-SPECIALTY-00900
+  title: "첫 인사 · 특수외래"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-SPECIALTY-00900]
+
+- id: EVT-INFUSION-00900
+  title: "첫 인사 · 주사센터"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-INFUSION-00900]
+
+- id: EVT-DIAL-00900
+  title: "첫 인사 · 인공신장실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-DIAL-00900]
+
+- id: EVT-ENDO-00900
+  title: "첫 인사 · 내시경실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-ENDO-00900]
+
+- id: EVT-MORGUE-00900
+  title: "첫 인사 · 영안실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-MORGUE-00900]
+
+- id: EVT-SPD-00900
+  title: "첫 인사 · 중앙공급실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-SPD-00900]
+
+- id: EVT-LOUNGE-00900
+  title: "첫 인사 · 휴게실"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-LOUNGE-00900]
+
+- id: EVT-SIM-00900
+  title: "첫 인사 · 시뮬레이션랩"
+  ward: ward
+  category: interpersonal
+  tier: 1
+  tags: [greeting, orientation]
+  delivery: both
+  scenarios: [SCN-SIM-00900]

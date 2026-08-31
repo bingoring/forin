@@ -1,5 +1,7 @@
 package curriculum
 
+import "strings"
+
 // How much help a step gives, and why the same situation is played twice.
 //
 // Testers said the honest thing: facing a patient and an empty text box, they did not
@@ -123,3 +125,20 @@ func GuideForScenario(scenarioID string, clearedGuided bool) GuideLevel {
 	}
 	return GuideFree
 }
+
+// ── the ward greeting ──────────────────────────────────────────────────────
+//
+// Every department's opening curriculum begins with one: SCN-<DEPT>-00900, three
+// minutes, difficulty 1, no clinical content. Introduce yourself, get the other
+// person's name, ask what happens next.
+//
+// It exists because a greeting used to live only in the ER (SCN-ORIENT-*). Everywhere
+// else the first tap on a new ward opened an assessment, and the thing a nurse actually
+// does first on a floor they have never stood in had nowhere to be practised.
+//
+// The id convention is load-bearing: the catalog and the content files are separate
+// trees, and this is what lets a test walk one and check the other.
+const GreetingSuffix = "-00900"
+
+// IsWardGreeting reports whether a step is a department's opening hello.
+func IsWardGreeting(scenarioID string) bool { return strings.HasSuffix(scenarioID, GreetingSuffix) }

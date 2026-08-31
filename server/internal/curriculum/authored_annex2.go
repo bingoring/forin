@@ -7,6 +7,7 @@ var annex2 = []Curriculum{
 		Key: "별관 2|1F|goals", Name: "다시 걷기 위한 목표",
 		Building: "별관 2", Floor: "1F", Where: "별관 2 1F 재활치료실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 재활치료실", ScenarioID: "SCN-REHAB-00900"},
 			{Kind: "dlg", Name: "보조기구 사용 교육", ScenarioID: "SCN-REHAB-00104"},
 			{Kind: "quiz", Name: "체중부하 상태 분류", ScenarioID: "QZ-REHAB-00001"},
 			{Kind: "dlg", Name: "재활 목표 설정", ScenarioID: "SCN-REHAB-00101"},
@@ -38,6 +39,7 @@ var annex2 = []Curriculum{
 		Key: "별관 2|2F|rapport", Name: "신뢰를 만드는 대화",
 		Building: "별관 2", Floor: "2F", Where: "별관 2 2F 정신과 병동",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 정신과병동", ScenarioID: "SCN-PSYCH-00900"},
 			{Kind: "dlg", Name: "집단 프로그램 참여 격려", ScenarioID: "SCN-PSYCH-00108"},
 			{Kind: "quiz", Name: "치료적 의사소통", ScenarioID: "QZ-PSYCH-00001"},
 			{Kind: "dlg", Name: "치료적 관계 형성", ScenarioID: "SCN-PSYCH-00103"},
@@ -69,6 +71,7 @@ var annex2 = []Curriculum{
 		Key: "별관 2|3F|sideeffects", Name: "치료의 부작용",
 		Building: "별관 2", Floor: "3F", Where: "별관 2 3F 종양학 병동 · 이식실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 종양내과", ScenarioID: "SCN-ONCO-00900"},
 			{Kind: "dlg", Name: "영양·식욕부진 상담", ScenarioID: "SCN-ONCO-00106"},
 			{Kind: "quiz", Name: "호중구감소 격리 수칙", ScenarioID: "QZ-ONCO-00002"},
 			{Kind: "dlg", Name: "항암 부작용 상담", ScenarioID: "SCN-ONCO-00101"},
@@ -100,6 +103,7 @@ var annex2 = []Curriculum{
 		Key: "별관 2|4F|hospicecomfort", Name: "호스피스 · 편안하게 하는 일",
 		Building: "별관 2", Floor: "4F", Where: "별관 2 4F 완화의료 · 노인성 질환 병동",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 호스피스", ScenarioID: "SCN-HOSPICE-00900"},
 			{Kind: "dlg", Name: "편안한 환경 조성", ScenarioID: "SCN-HOSPICE-00107"},
 			{Kind: "quiz", Name: "완화 케어 원칙", ScenarioID: "QZ-HOSPICE-00001"},
 			{Kind: "dlg", Name: "영적·정서 돌봄 연계", ScenarioID: "SCN-HOSPICE-00105"},
@@ -129,6 +133,7 @@ var annex2 = []Curriculum{
 		Key: "별관 2|4F|gerisafety", Name: "노인병동 · 넘어지지 않게",
 		Building: "별관 2", Floor: "4F", Where: "별관 2 4F 완화의료 · 노인성 질환 병동",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 노인병동", ScenarioID: "SCN-GERI-00900"},
 			{Kind: "dlg", Name: "피부·욕창 예방", ScenarioID: "SCN-GERI-00106"},
 			{Kind: "quiz", Name: "낙상 예방 중재", ScenarioID: "QZ-GERI-00001"},
 			{Kind: "dlg", Name: "낙상 예방 교육", ScenarioID: "SCN-GERI-00101"},

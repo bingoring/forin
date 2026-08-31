@@ -11,6 +11,7 @@ var annex3 = []Curriculum{
 		Key: "별관 3|1F|scanfear", Name: "기계 앞에서 겁먹은 사람",
 		Building: "별관 3", Floor: "1F", Where: "별관 3 1F 영상의학과",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 영상의학과", ScenarioID: "SCN-RAD-00900"},
 			{Kind: "dlg", Name: "X-ray 자세 협조", ScenarioID: "SCN-RAD-00104"},
 			{Kind: "quiz", Name: "MRI 반입 금지 확인", ScenarioID: "QZ-RAD-00002"},
 			{Kind: "dlg", Name: "소아 영상 검사 안심", ScenarioID: "SCN-RAD-00107"},
@@ -42,6 +43,7 @@ var annex3 = []Curriculum{
 		Key: "별관 3|2F|firstvisit", Name: "처음 온 환자",
 		Building: "별관 3", Floor: "2F", Where: "별관 3 2F 특수 외래",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 특수외래", ScenarioID: "SCN-SPECIALTY-00900"},
 			{Kind: "dlg", Name: "검사 준비 안내", ScenarioID: "SCN-SPECIALTY-00107"},
 			{Kind: "quiz", Name: "안과·이비인후과 용어", ScenarioID: "QZ-SPECIALTY-00001"},
 			{Kind: "dlg", Name: "전문 클리닉 연계 안내", ScenarioID: "SCN-SPECIALTY-00104"},
@@ -73,6 +75,7 @@ var annex3 = []Curriculum{
 		Key: "별관 3|3F|infusionstart", Name: "주사센터 · 주입을 시작하며",
 		Building: "별관 3", Floor: "3F", Where: "별관 3 3F 외래 주사센터 · 인공신장실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 주사센터", ScenarioID: "SCN-INFUSION-00900"},
 			{Kind: "dlg", Name: "주입 일정 조율", ScenarioID: "SCN-INFUSION-00108"},
 			{Kind: "quiz", Name: "수액 펌프 세팅 점검", ScenarioID: "QZ-INFUSION-00001"},
 			{Kind: "dlg", Name: "철분 주사 교육", ScenarioID: "SCN-INFUSION-00104"},
@@ -102,6 +105,7 @@ var annex3 = []Curriculum{
 		Key: "별관 3|3F|dialstart", Name: "인공신장실 · 투석을 시작하며",
 		Building: "별관 3", Floor: "3F", Where: "별관 3 3F 외래 주사센터 · 인공신장실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 인공신장실", ScenarioID: "SCN-DIAL-00900"},
 			{Kind: "dlg", Name: "신규 환자 오리엔테이션", ScenarioID: "SCN-DIAL-00108"},
 			{Kind: "quiz", Name: "투석 전 확인 사항", ScenarioID: "QZ-DIAL-00004"},
 			{Kind: "dlg", Name: "투석 시작 전 사정", ScenarioID: "SCN-DIAL-00101"},
@@ -133,6 +137,7 @@ var annex3 = []Curriculum{
 		Key: "별관 3|4F|endoprep", Name: "시술 전 준비",
 		Building: "별관 3", Floor: "4F", Where: "별관 3 4F 내시경실 · 심혈관 조영실",
 		Steps: []Step{
+			{Kind: "dlg", Name: "첫 인사 · 내시경실", ScenarioID: "SCN-ENDO-00900"},
 			{Kind: "dlg", Name: "내시경 전 준비 확인", ScenarioID: "SCN-ENDO-00101"},
 			{Kind: "quiz", Name: "내시경 준비 순서", ScenarioID: "QZ-ENDO-00001"},
 			{Kind: "dlg", Name: "장 정결제 복용 교육", ScenarioID: "SCN-ENDO-00106"},
