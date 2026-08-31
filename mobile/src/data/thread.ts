@@ -7,7 +7,14 @@
 //
 // A function rather than three inline lines because that duplicate is the one thing here
 // that can be wrong, and it is invisible until a conversation is two turns long.
-export type Turn = { role: 'user' | 'npc'; text: string };
+export type Turn = {
+  role: 'user' | 'npc';
+  text: string;
+  /** Why this reply was the reply, for a line the learner PICKED from an authored
+   *  conversation. Shown under their own bubble, because on that pass the pick is sent
+   *  immediately and the card carrying the reason is gone before they read it. */
+  note?: string;
+};
 
 export function threadOf(transcript: Turn[], npcLine: string): Turn[] {
   if (!npcLine) return transcript;

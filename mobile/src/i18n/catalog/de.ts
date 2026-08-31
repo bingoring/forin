@@ -243,6 +243,7 @@ export const de: Record<string, string> = {
   'choice.fair': 'In Ordnung',
   'choice.thinking': 'Suche ein paar Formulierungen…',
   'choice.writeMyOwn': 'Selbst schreiben',
+  'choice.finished': 'Das Gespräch ist beendet. Tippe auf 상황 종료 zum Abschluss.',
   'choice.collapse': 'Zu',
   'choice.expand': 'Auf',
   'choice.speak': 'Sprechen',

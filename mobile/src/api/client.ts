@@ -79,6 +79,21 @@ export interface ReplyChoice {
   why: string;
 }
 
+/** Where a guided conversation stands, and whether it is an authored one.
+ *
+ *  `scripted` changes the screen: an authored conversation has no text box at all. The
+ *  three cards ARE the turn, and typing belongs to the second run — the one where the
+ *  learner does the same situation alone. */
+export interface ReplyTurn {
+  choices: ReplyChoice[];
+  scripted: boolean;
+  /** 0-based beat within the authored conversation. Meaningless unless scripted. */
+  turn: number;
+  total: number;
+  /** The closing line has been reached: nothing left to pick. */
+  done: boolean;
+}
+
 export interface ScenarioDetail {
   id: string; profession: string; eventId: string; title: string; tagline: string;
   persona: ScenarioPersona; goals?: string[]; guardrails?: string[]; keyPhrases?: string[];
@@ -676,12 +691,19 @@ export const api = {
    *  Never throws for the learner's sake: an empty list means the screen falls back to
    *  its text box, which is the app as it always was. A scaffold that fails should leave
    *  them standing, not stop them mid-conversation. */
-  async replyChoices(sessionId: string): Promise<ReplyChoice[]> {
+  async replyChoices(sessionId: string): Promise<ReplyTurn> {
     try {
       const { data } = await http.get(`/conversation/${encodeURIComponent(sessionId)}/choices`);
-      return ((data as { choices?: ReplyChoice[] } | null)?.choices ?? []).filter((c) => !!c.text);
+      const d = (data ?? {}) as { choices?: ReplyChoice[]; scripted?: boolean; turn?: number; total?: number; done?: boolean };
+      return {
+        choices: (d.choices ?? []).filter((c) => !!c.text),
+        scripted: !!d.scripted,
+        turn: d.turn ?? 0,
+        total: d.total ?? 0,
+        done: !!d.done,
+      };
     } catch {
-      return [];
+      return { choices: [], scripted: false, turn: 0, total: 0, done: false };
     }
   },
 
@@ -942,9 +964,17 @@ export const api = {
     return { waveform: d.waveform ?? [], durationMs: d.durationMs ?? 0, url: d.url ?? '' };
   },
 
-  /** Open a persona-driven session for a scenario. Returns its sessionId. */
-  async startConversation(scenarioId: string, resumeSessionId?: string): Promise<string> {
-    const { data } = await http.post(`/scenarios/${scenarioId}/conversation`, resumeSessionId ? { resumeSessionId } : {});
+  /** Open a persona-driven session for a scenario. Returns its sessionId.
+   *
+   *  `guide` is the rung of the ladder the learner tapped. The SERVER needs it: on the
+   *  guided rung a scenario with an authored conversation is answered from that file
+   *  instead of from a model, and it cannot know which rung this is otherwise. Omitted
+   *  means the free pass, which is the safe default — the value only ever adds help. */
+  async startConversation(scenarioId: string, resumeSessionId?: string, guide?: 'choices' | 'free'): Promise<string> {
+    const body: Record<string, string> = {};
+    if (resumeSessionId) body.resumeSessionId = resumeSessionId;
+    if (guide) body.guide = guide;
+    const { data } = await http.post(`/scenarios/${scenarioId}/conversation`, body);
     return (data as { sessionId: string }).sessionId;
   },
 

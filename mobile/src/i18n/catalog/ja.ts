@@ -243,6 +243,7 @@ export const ja: Record<string, string> = {
   'choice.fair': '良い',
   'choice.thinking': '言い方を探しています…',
   'choice.writeMyOwn': '自分で入力する',
+  'choice.finished': '会話はここまでです。「상황 종료」で終了してください。',
   'choice.collapse': '閉じる',
   'choice.expand': '開く',
   'choice.speak': '話す',

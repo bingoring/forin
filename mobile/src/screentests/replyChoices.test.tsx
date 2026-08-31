@@ -233,7 +233,7 @@ test('the hint is asked for per turn, not left on screen', () => {
   // A hint from two exchanges ago is about a situation that has moved on. Pressing it
   // again closes it; pressing it fresh asks again.
   expect(SRC).toMatch(/if \(hintOn\) \{ setHintOn\(false\); return; \}/);
-  expect(SRC).toMatch(/const cs = await api\.replyChoices\(sid\);/);
+  expect(SRC).toMatch(/const \{ choices: cs \} = await api\.replyChoices\(sid\);/);
 });
 
 test('the chosen rung survives every screen between the list and the conversation', () => {

@@ -244,6 +244,7 @@ export const en: Record<string, string> = {
   'choice.fair': 'Fine',
   'choice.thinking': 'Finding a few ways to say it…',
   'choice.writeMyOwn': "I'll write my own",
+  'choice.finished': "That's the whole conversation. Tap 상황 종료 to finish.",
   'choice.collapse': 'Hide',
   'choice.expand': 'Show',
   'choice.speak': 'Say it',

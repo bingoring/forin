@@ -64,7 +64,11 @@ export default function DialogueRoute() {
   // exactly what makes a role-play hard to follow. The server already persists
   // every turn (dialogue_turns); this keeps the same history client-side so the
   // transcript sheet can show it without another round trip.
-  const [transcript, setTranscript] = useState<{ role: 'user' | 'npc'; text: string }[]>([]);
+  // `note` is why a PICKED reply was that reply. On the authored pass a pick is sent
+  // immediately, so the card that carried the reason is gone by the time the learner
+  // reads their own line — the reason rides along with the line instead, where it is
+  // feedback on something they already did.
+  const [transcript, setTranscript] = useState<{ role: 'user' | 'npc'; text: string; note?: string }[]>([]);
   // Patient lines are spoken aloud. Auto-play is the point (#17: hearing the line
   // is half of understanding it), so it needs a visible off switch — audio that
   // starts on its own and cannot be stopped is worse than no audio.
@@ -92,6 +96,11 @@ export default function DialogueRoute() {
   const guided = (guideParam ?? scenario?.guide) === 'choices';
   const [choices, setChoices] = useState<ReplyChoice[]>([]);
   const [choicesBusy, setChoicesBusy] = useState(false);
+  // The three cards were WRITTEN for this beat of this conversation, and so is the
+  // character's next line. Then there is no text box: picking is the turn, and typing
+  // belongs to the second run, where the learner does the same situation alone.
+  const [scripted, setScripted] = useState(false);
+  const [scriptDone, setScriptDone] = useState(false);
   // Set when the learner asks for the box instead. Their decision outlives the next
   // turn — being handed the list again after saying "I'll write my own" is the app not
   // listening.
@@ -259,7 +268,10 @@ export default function DialogueRoute() {
     if (!guided || wroteOwn || !sid) return;
     setChoicesBusy(true);
     try {
-      setChoices(await api.replyChoices(sid));
+      const turn = await api.replyChoices(sid);
+      setChoices(turn.choices);
+      setScripted(turn.scripted);
+      setScriptDone(turn.scripted && turn.done);
     } finally {
       setChoicesBusy(false);
     }
@@ -287,7 +299,7 @@ export default function DialogueRoute() {
           setState('ready');
           return; // the session is opened by the learner's choice below
         }
-        const sid = await api.startConversation(id);
+        const sid = await api.startConversation(id, undefined, guided ? 'choices' : 'free');
         if (!alive) return;
         sessionRef.current = sid;
         setState('ready');
@@ -302,14 +314,18 @@ export default function DialogueRoute() {
     return () => { alive = false; };
   }, [id]);
 
-  const send = async () => {
-    const text = draft.trim();
+  // `pick` sends a chosen reply straight away. The authored pass has no text box: the
+  // three cards are the turn, and making the learner tap a card and then a send button
+  // eight times is a toll on every beat of the conversation.
+  const send = async (pick?: { text: string; why?: string }) => {
+    const text = (pick?.text ?? draft).trim();
     if (!text || pending || !sessionRef.current) return;
     turnsRef.current += 1; // the server persists this turn in prepare(); count it for grading
     setDraft('');
     setPending(true);
     // Park the line the box is about to lose, then the learner's own line.
-    setTranscript((t) => (npcLine ? [...t, { role: 'npc' as const, text: npcLine }, { role: 'user' as const, text }] : [...t, { role: 'user' as const, text }]));
+    const mine = { role: 'user' as const, text, note: pick?.why || undefined };
+    setTranscript((t) => (npcLine ? [...t, { role: 'npc' as const, text: npcLine }, mine] : [...t, mine]));
     setNpcLine(''); setNpcLineKo(''); setShowKo(false); // clear for the streaming reply (no Ko for AI lines)
     // The celebration belongs to the line that earned it, so it clears when the next
     // turn begins. The MOOD does not clear here: until the reply arrives the character
@@ -408,7 +424,7 @@ export default function DialogueRoute() {
     const prev = resumable;
     setResumable(null);
     try {
-      sessionRef.current = await api.startConversation(id, prev.sessionId);
+      sessionRef.current = await api.startConversation(id, prev.sessionId, guided ? 'choices' : 'free');
     } catch {
       setState('error');
       return;
@@ -424,7 +440,7 @@ export default function DialogueRoute() {
   const startFresh = async () => {
     setResumable(null);
     try {
-      sessionRef.current = await api.startConversation(id);
+      sessionRef.current = await api.startConversation(id, undefined, guided ? 'choices' : 'free');
     } catch {
       setState('error');
     }
@@ -445,7 +461,7 @@ export default function DialogueRoute() {
     if (!sid) return;
     setHintBusy(true);
     try {
-      const cs = await api.replyChoices(sid);
+      const { choices: cs } = await api.replyChoices(sid);
       setHintText(cs.find((c) => c.tier === 'best')?.why ?? cs[0]?.why ?? '');
     } finally {
       setHintBusy(false);
@@ -772,6 +788,14 @@ export default function DialogueRoute() {
                       <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 20 }}>
                         {last && !mine && showKo && npcLineKo ? npcLineKo : m.text}
                       </Text>
+                      {/* Why this was the reply. Only on the learner's own line, and only
+                          when they picked it: it is feedback on something already done,
+                          which is the whole reason it is not printed on the cards. */}
+                      {mine && !!m.note && (
+                        <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, opacity: 0.8, lineHeight: 15, marginTop: 6 }}>
+                          {m.note}
+                        </Text>
+                      )}
                       {/* Translation belongs to the line being worked on, so it is offered on
                           the newest NPC bubble only — on every bubble it would be four buttons
                           asking the same question. */}
@@ -835,7 +859,18 @@ export default function DialogueRoute() {
             The first time through a conversation the learner has nothing to be free
             with, which is what testers reported. Picking one takes them to pronunciation
             practice — the point is to SAY it, not to recognise it. */}
-        {guided && !wroteOwn && !hintOn && (
+        {/* The authored conversation has reached its closing line: nothing left to pick,
+            and no text box on this pass. Without a word here the bottom of the screen is
+            simply empty, which reads as the app having lost the conversation. */}
+        {scripted && scriptDone && (
+          <View style={{ marginTop: 14, alignItems: 'center' }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', lineHeight: 17 }}>
+              {t('choice.finished')}
+            </Text>
+          </View>
+        )}
+
+        {guided && !wroteOwn && !hintOn && !scriptDone && (
           <View style={{ marginTop: 12 }}>
             {/* Drag this edge DOWN to give the conversation more room. The complaint that
                 started all of this was the cards covering the exchange they answer, and
@@ -862,7 +897,10 @@ export default function DialogueRoute() {
               // Choosing fills the box and stays put. It used to jump straight to the
               // pronunciation screen, which made speaking a toll gate on the way to
               // sending — someone on a bus could not get past it.
-              onPick={(c) => setDraft(c.text)}
+              // Authored pass: the pick IS the turn. Model-driven pass: it fills the
+              // box, because there the learner may still want to edit it — the model
+              // wrote that sentence for them a second ago, not an author who reviewed it.
+              onPick={(c) => { if (scripted) { void send({ text: c.text, why: c.why }); } else { setDraft(c.text); } }}
               // Speaking is its own zone on the card, so it is a decision rather than a
               // consequence of choosing.
               onSpeak={(c) => {
@@ -871,7 +909,11 @@ export default function DialogueRoute() {
                   `/pronunciation/${encodeURIComponent(c.text.slice(0, 40))}?referenceText=${encodeURIComponent(c.text)}&origin=dialogue&scenarioId=${encodeURIComponent(id ?? '')}&step=${encodeURIComponent(t('choice.prompt'))}`
                 );
               }}
-              onWriteMyOwn={() => setWroteOwn(true)}
+              // Gone on an authored pass. "직접 입력하기" was an escape hatch from a
+              // scaffold that ran out after one turn; an authored conversation does not
+              // run out, and the next curriculum step is the same situation with no
+              // scaffold at all — so writing it yourself is a step, not a button.
+              onWriteMyOwn={scripted ? undefined : () => setWroteOwn(true)}
               // The learner's own band, or the default until they set one.
               maxHeight={choicesBand}
             />
@@ -879,7 +921,7 @@ export default function DialogueRoute() {
         )}
 
         {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
-        {(!hintOn && (!guided || wroteOwn || (!choicesBusy && choices.length === 0))) && (
+        {(!hintOn && !scripted && (!guided || wroteOwn || (!choicesBusy && choices.length === 0))) && (
           <View style={{ marginTop: 14 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}</Text>
             <Shadowed offset={3}>
@@ -902,7 +944,7 @@ export default function DialogueRoute() {
                   placeholder={rec === 'recording' ? t('dialogue.tapMicAgain') : t('dialogue.inputPlaceholder')}
                   placeholderTextColor={colors.textFaint}
                   style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C, paddingVertical: 4 }}
-                  onSubmitEditing={send}
+                  onSubmitEditing={() => { void send(); }}
                   returnKeyType="send"
                   multiline
                   // With `multiline`, RN defaults to keeping focus on return, so

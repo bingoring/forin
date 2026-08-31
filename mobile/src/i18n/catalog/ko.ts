@@ -263,6 +263,7 @@ export const ko: Record<string, string> = {
   'choice.fair': '괜찮은 답',
   'choice.thinking': '뭐라고 말할 수 있을지 찾는 중…',
   'choice.writeMyOwn': '직접 입력할래요',
+  'choice.finished': '대화가 끝났어요. 상황 종료를 눌러 마무리하세요.',
   'choice.collapse': '접기',
   'choice.expand': '펼치기',
   'choice.speak': '말하기',

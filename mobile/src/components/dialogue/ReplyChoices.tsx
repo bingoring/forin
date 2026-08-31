@@ -42,7 +42,9 @@ export function ReplyChoices({ choices, loading, selectedText, onPick, onSpeak, 
   onPick: (choice: ReplyChoice) => void;
   /** Asked to practise saying it. The mic zone, and only the mic zone. */
   onSpeak: (choice: ReplyChoice) => void;
-  onWriteMyOwn: () => void;
+  /** Undefined on an authored conversation: there is nothing to escape to, and the
+   *  learner writes it themselves in the NEXT curriculum step, not from a link here. */
+  onWriteMyOwn?: () => void;
   /** Ceiling for the list, so it cannot grow over the conversation. */
   maxHeight: number;
 }) {
@@ -147,11 +149,13 @@ export function ReplyChoices({ choices, loading, selectedText, onPick, onSpeak, 
         </ScrollView>
       )}
 
-      <Pressable onPress={onWriteMyOwn} hitSlop={6} style={{ alignSelf: 'center', paddingVertical: 4 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft, textDecorationLine: 'underline' }}>
-          {t('choice.writeMyOwn')}
-        </Text>
-      </Pressable>
+      {!!onWriteMyOwn && (
+        <Pressable onPress={onWriteMyOwn} hitSlop={6} style={{ alignSelf: 'center', paddingVertical: 4 }}>
+          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft, textDecorationLine: 'underline' }}>
+            {t('choice.writeMyOwn')}
+          </Text>
+        </Pressable>
+      )}
     </View>
   );
 }

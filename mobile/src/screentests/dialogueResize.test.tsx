@@ -81,11 +81,16 @@ jest.mock('@/api/client', () => ({
     }),
     resumableConversation: async () => ({ sessionId: '', turns: [] }),
     startConversation: async () => 'sess-1',
-    replyChoices: async () => ([
-      { text: 'Can you tell me where it hurts?', tier: 'best', why: '열린 질문이에요.' },
-      { text: 'Does it hurt here?', tier: 'strong', why: '' },
-      { text: 'Where pain?', tier: 'fair', why: '' },
-    ]),
+    // The turn shape, not a bare array: an authored conversation reports where it
+    // stands, and the screen decides whether to draw a text box from that.
+    replyChoices: async () => ({
+      choices: [
+        { text: 'Can you tell me where it hurts?', tier: 'best', why: '열린 질문이에요.' },
+        { text: 'Does it hurt here?', tier: 'strong', why: '' },
+        { text: 'Where pain?', tier: 'fair', why: '' },
+      ],
+      scripted: false, turn: 0, total: 0, done: false,
+    }),
   },
 }));
 
