@@ -90,6 +90,7 @@ type DailyPage struct {
 	ScenarioID string             `json:"scenario_id"`
 	IssuedAt   pgtype.Timestamptz `json:"issued_at"`
 	AnsweredAt pgtype.Timestamptz `json:"answered_at"`
+	AcceptedAt pgtype.Timestamptz `json:"accepted_at"`
 }
 
 type Department struct {

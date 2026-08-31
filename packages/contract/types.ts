@@ -2165,6 +2165,12 @@ export interface components {
          *     at, or it expired unanswered. The client draws nothing rather than a dead pager.
          */
         "github_com_bingoring_forin_server_internal_domain_home.Page": {
+            /**
+             * @description Accepted: the learner took the call and is expected in the scenario. The card
+             *     stops counting down and says so, rather than either vanishing or claiming they
+             *     already answered.
+             */
+            accepted?: boolean;
             answered?: boolean;
             bonusXp?: number;
             hint?: string;

@@ -78,10 +78,13 @@ export default function HomeTab() {
    *  re-entering the scenario is harmless. */
   const answerPage = async () => {
     try {
-      const { scenarioId } = await api.answerPage();
+      const { scenarioId } = await api.acceptPage();
       const id = scenarioId || home.page?.scenarioId;
       if (!id) return;
-      setHome({ ...home, page: { ...home.page!, answered: true } });
+      // ACCEPTED, not answered. The bonus is the server's to grant, and it grants it on
+      // the next home read once it can see they actually started the scenario — walking
+      // straight back out of it used to still report "응답 완료 · +40 XP".
+      setHome({ ...home, page: { ...home.page!, accepted: true } });
       router.push(id.startsWith('QZ-') ? `/quiz/${id}` : `/scenario/${id}`);
     } catch {
       // Expired or gone: the next home load drops the card on its own.

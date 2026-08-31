@@ -510,6 +510,8 @@ export const de: Record<string, string> = {
   'page.expires': 'Verfällt heute',
   'page.answeredLine': 'Ruf beantwortet · +{xp} XP Bonus',
   'page.answeredBadge': 'Beantwortet',
+  'page.acceptedLine': 'Ruf angenommen · +{xp} XP nach Abschluss',
+  'page.resume': 'Weiter',
   'home.startCta': 'Starten',
   'home.firstRunTab': 'Hier anfangen',
   'home.firstRunCta': 'Erstes Gespräch starten',

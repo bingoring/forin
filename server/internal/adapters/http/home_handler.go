@@ -369,11 +369,23 @@ func (h *homeHandler) todaysPage(ctx context.Context, uid, day, deptLabel string
 	if err != nil || rec == nil {
 		return nil
 	}
+	// Pay the call off here, not when the button was tapped: the bonus is for going,
+	// and this is the first moment the server can see whether they did. Cheap — the
+	// UPDATE matches nothing once it has been paid, and nothing at all until they go.
+	if rec.AcceptedAt != nil && rec.AnsweredAt == nil {
+		if paid, err := h.progress.CompletePageIfAttempted(ctx, uid, day); err == nil && paid {
+			_ = h.progress.AddBonusXP(ctx, uid, home.PageBonusXP)
+			at := time.Now()
+			rec.AnsweredAt = &at
+		}
+	}
 	left := home.PageSecondsLeft(rec.IssuedAt, now, loc)
 	answered := rec.AnsweredAt != nil
-	if left == 0 && !answered {
+	accepted := rec.AcceptedAt != nil
+	if left == 0 && !answered && !accepted {
 		// Missed. "오늘 놓치면 소멸" — and a dead pager on screen is worse than none:
-		// it offers an action that cannot be taken.
+		// it offers an action that cannot be taken. An ACCEPTED call survives its
+		// countdown: the learner took it, and the scenario is theirs to finish.
 		return nil
 	}
 	line, hint := home.PageLines(deptLabel)
@@ -383,6 +395,7 @@ func (h *homeHandler) todaysPage(ctx context.Context, uid, day, deptLabel string
 		Hint:         hint,
 		SecondsLeft:  left,
 		TotalSeconds: home.PageTotalSeconds(rec.IssuedAt, loc),
+		Accepted:     accepted,
 		Answered:     answered,
 		BonusXP:      home.PageBonusXP,
 	}
@@ -429,17 +442,17 @@ func (h *homeHandler) answerPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	id, first, err := h.progress.AnswerPage(r.Context(), uid, day)
+	id, err := h.progress.AcceptPage(r.Context(), uid, day)
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not answer")
 		return
 	}
-	if !first {
-		httpx.JSON(w, http.StatusOK, pageAnswerResp{ScenarioID: rec.ScenarioID, BonusXP: 0, Already: true})
-		return
+	if id == "" {
+		id = rec.ScenarioID
 	}
-	// Best-effort: the answer is recorded either way, and losing the bonus to a failed
-	// update is better than refusing an answer that already happened.
-	_ = h.progress.AddBonusXP(r.Context(), uid, home.PageBonusXP)
-	httpx.JSON(w, http.StatusOK, pageAnswerResp{ScenarioID: id, BonusXP: home.PageBonusXP})
+	// No XP here. Taking the call is not answering it — the bonus is granted on the next
+	// home read, once the learner has actually started the scenario. Tapping 지금 응답
+	// and walking straight back out used to pay in full and report "응답 완료", which is
+	// the app telling someone they did something they did not do.
+	httpx.JSON(w, http.StatusOK, pageAnswerResp{ScenarioID: id, BonusXP: 0, Already: rec.AcceptedAt != nil})
 }

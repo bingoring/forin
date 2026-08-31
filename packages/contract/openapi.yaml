@@ -152,6 +152,12 @@ components:
         오늘의 호출 (v27). Absent when there is nothing live: no candidates to point it
         at, or it expired unanswered. The client draws nothing rather than a dead pager.
       properties:
+        accepted:
+          description: |-
+            Accepted: the learner took the call and is expected in the scenario. The card
+            stops counting down and says so, rather than either vanishing or claiming they
+            already answered.
+          type: boolean
         answered:
           type: boolean
         bonusXp:

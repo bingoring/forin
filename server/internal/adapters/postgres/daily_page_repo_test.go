@@ -64,55 +64,121 @@ func TestTodaysPageWithNoTargetDoesNotInventOne(t *testing.T) {
 	}
 }
 
-func TestAnswerPagePaysExactlyOnce(t *testing.T) {
+func TestAcceptingIsNotAnswering(t *testing.T) {
 	pool := speechTestPool(t)
 	repo := NewProgressRepo(pool)
 	uid := speechTestUser(t, pool)
 	ctx := context.Background()
+	const day = "2026-08-28"
 
-	if _, err := repo.TodaysPage(ctx, uid, "2026-08-28", "SCN-ER-00001"); err != nil {
+	if _, err := repo.TodaysPage(ctx, uid, day, "SCN-ER-00001"); err != nil {
 		t.Fatalf("TodaysPage: %v", err)
 	}
-
-	id, first, err := repo.AnswerPage(ctx, uid, "2026-08-28")
-	if err != nil || !first || id != "SCN-ER-00001" {
-		t.Fatalf("AnswerPage = (%q, %v, %v), want the scenario and first=true", id, first, err)
+	if _, err := repo.AcceptPage(ctx, uid, day); err != nil {
+		t.Fatalf("AcceptPage: %v", err)
 	}
 
-	// The second answer reports first=false, which is what stops the caller paying the
-	// +40 twice. Without the `answered_at IS NULL` in the UPDATE, tapping 지금 응답
-	// repeatedly would farm XP.
-	_, again, err := repo.AnswerPage(ctx, uid, "2026-08-28")
+	// Took the call and walked straight back out. This used to pay in full and report
+	// "응답 완료 · 보너스 +40 XP" — the app telling someone they did something they did
+	// not do.
+	paid, err := repo.CompletePageIfAttempted(ctx, uid, day)
 	if err != nil {
-		t.Fatalf("AnswerPage(again): %v", err)
+		t.Fatalf("CompletePageIfAttempted: %v", err)
+	}
+	if paid {
+		t.Fatal("the bonus was paid for tapping the button")
+	}
+	rec, _ := repo.TodaysPage(ctx, uid, day, "")
+	if rec.AnsweredAt != nil {
+		t.Fatal("marked answered without going")
+	}
+	if rec.AcceptedAt == nil {
+		t.Fatal("the acceptance was not recorded")
+	}
+
+	// Now they actually go.
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80); err != nil {
+		t.Fatalf("RecordAttempt: %v", err)
+	}
+	paid, err = repo.CompletePageIfAttempted(ctx, uid, day)
+	if err != nil || !paid {
+		t.Fatalf("CompletePageIfAttempted after going = (%v, %v), want paid", paid, err)
+	}
+
+	// And exactly once.
+	again, err := repo.CompletePageIfAttempted(ctx, uid, day)
+	if err != nil {
+		t.Fatalf("CompletePageIfAttempted(again): %v", err)
 	}
 	if again {
-		t.Fatal("a second answer reported itself as the first")
-	}
-
-	// And the record shows it.
-	rec, err := repo.TodaysPage(ctx, uid, "2026-08-28", "")
-	if err != nil || rec == nil {
-		t.Fatalf("TodaysPage: %v", err)
-	}
-	if rec.AnsweredAt == nil {
-		t.Fatal("answeredAt not recorded")
+		t.Fatal("the bonus was payable twice")
 	}
 }
 
-func TestAnswerPageOnADayWithNoCall(t *testing.T) {
+func TestAnAttemptBeforeAcceptingDoesNotCount(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewProgressRepo(pool)
+	uid := speechTestUser(t, pool)
+	ctx := context.Background()
+	const day = "2026-08-28"
+
+	// Played the scenario earlier today, THEN the call arrived pointing at it. Answering
+	// a call means going now; an attempt from before it was taken is not that, and
+	// counting it would pay the bonus for doing nothing.
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80); err != nil {
+		t.Fatalf("RecordAttempt: %v", err)
+	}
+	if _, err := repo.TodaysPage(ctx, uid, day, "SCN-ER-00001"); err != nil {
+		t.Fatalf("TodaysPage: %v", err)
+	}
+	if _, err := repo.AcceptPage(ctx, uid, day); err != nil {
+		t.Fatalf("AcceptPage: %v", err)
+	}
+	paid, err := repo.CompletePageIfAttempted(ctx, uid, day)
+	if err != nil {
+		t.Fatalf("CompletePageIfAttempted: %v", err)
+	}
+	if paid {
+		t.Fatal("an attempt from before the call was accepted paid the bonus")
+	}
+}
+
+func TestCompleteWithoutAcceptingPaysNothing(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewProgressRepo(pool)
+	uid := speechTestUser(t, pool)
+	ctx := context.Background()
+	const day = "2026-08-28"
+
+	if _, err := repo.TodaysPage(ctx, uid, day, "SCN-ER-00001"); err != nil {
+		t.Fatalf("TodaysPage: %v", err)
+	}
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00001", 100, "cleared", 80); err != nil {
+		t.Fatalf("RecordAttempt: %v", err)
+	}
+	// Played it on their own, never took the call. No bonus: the call was not answered.
+	paid, err := repo.CompletePageIfAttempted(ctx, uid, day)
+	if err != nil {
+		t.Fatalf("CompletePageIfAttempted: %v", err)
+	}
+	if paid {
+		t.Fatal("the bonus was paid without the call being taken")
+	}
+}
+
+func TestAcceptOnADayWithNoCall(t *testing.T) {
 	pool := speechTestPool(t)
 	repo := NewProgressRepo(pool)
 	uid := speechTestUser(t, pool)
 
-	// No row: not an error, just nothing to answer. An error here would turn "you have
-	// no call today" into a failed request on the home screen.
-	_, first, err := repo.AnswerPage(context.Background(), uid, "2026-08-28")
+	// No row: not an error, just nothing to take. An error here would turn "you have no
+	// call today" into a failed request on the home screen.
+	id, err := repo.AcceptPage(context.Background(), uid, "2026-08-28")
 	if err != nil {
-		t.Fatalf("AnswerPage: %v", err)
+		t.Fatalf("AcceptPage: %v", err)
 	}
-	if first {
-		t.Fatal("answered a call that was never issued")
+	if id != "" {
+		t.Fatalf("accepted a call that was never issued: %q", id)
 	}
 }
 

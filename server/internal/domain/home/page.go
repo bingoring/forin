@@ -34,6 +34,10 @@ type Page struct {
 	// SecondsLeft is 0 once it has expired; the client then hides the card rather than
 	// drawing a dead one.
 	SecondsLeft int `json:"secondsLeft"`
+	// Accepted: the learner took the call and is expected in the scenario. The card
+	// stops counting down and says so, rather than either vanishing or claiming they
+	// already answered.
+	Accepted bool `json:"accepted"`
 	// TotalSeconds is the whole window, so the time bar is a fraction of something.
 	// Without it the client can only draw "of what was left when the screen loaded",
 	// which always starts full however late the learner opened the app — and the

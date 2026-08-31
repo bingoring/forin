@@ -16,6 +16,7 @@ const PAGE: HomePage = {
   hint: '응답하면 통증 사정 단기 시나리오로 바로 입장 · 약 3분',
   secondsLeft: 2_592,
   totalSeconds: 3_600,
+  accepted: false,
   answered: false,
   bonusXp: 40,
 };
@@ -150,4 +151,22 @@ test('the countdown runs while the card is open', async () => {
   } finally {
     jest.useRealTimers();
   }
+});
+
+test('taking the call is not answering it', () => {
+  // Tapping 지금 응답 and walking straight back out used to report "응답 완료 · +40 XP".
+  // Accepted is its own state: the call is theirs, the countdown has stopped, and the
+  // bonus is still ahead of them — the server grants it once it sees they actually
+  // started the scenario.
+  const out = lines(mount({ accepted: true }).root);
+  expect(out.some((x) => x.includes('마치면'))).toBe(true);
+  expect(out.some((x) => x.includes('응답 완료'))).toBe(false);
+  // And it is a way back in, not a receipt.
+  expect(out).toContain('이어서');
+});
+
+test('an accepted call outlives its countdown', () => {
+  // The window is for DECIDING. Once taken, the scenario is theirs to finish — dropping
+  // the card at 00:00 would strand a learner mid-conversation with no way back to it.
+  expect(mount({ accepted: true, secondsLeft: 0 }).toJSON()).not.toBeNull();
 });

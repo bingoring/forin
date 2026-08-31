@@ -510,6 +510,8 @@ export const ja: Record<string, string> = {
   'page.expires': '今日を過ぎると消滅',
   'page.answeredLine': '今日のコール応答済み · ボーナス +{xp} XP',
   'page.answeredBadge': '応答済み',
+  'page.acceptedLine': 'コールを受けました · 完了で +{xp} XP',
+  'page.resume': '続ける',
   'home.startCta': '始める',
   'home.firstRunTab': 'ここから',
   'home.firstRunCta': '最初の会話を始める',

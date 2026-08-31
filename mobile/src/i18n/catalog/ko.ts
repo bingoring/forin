@@ -541,6 +541,8 @@ export const ko: Record<string, string> = {
   'page.expires': '오늘 놓치면 소멸',
   'page.answeredLine': '오늘의 호출 응답 완료 · 보너스 +{xp} XP',
   'page.answeredBadge': '응답함',
+  'page.acceptedLine': '호출을 받았어요 · 상황을 마치면 +{xp} XP',
+  'page.resume': '이어서',
   'home.startCta': '시작하기',
   'home.firstRunTab': '여기서 시작',
   'home.firstRunCta': '첫 대화 시작하기',

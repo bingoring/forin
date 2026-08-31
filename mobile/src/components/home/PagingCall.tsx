@@ -87,6 +87,27 @@ export function PagingCall({ page, onAnswer, onIgnore }: {
     return () => loop.stop();
   }, [page.answered, shake]);
 
+  // ── accepted, not yet done: the call is theirs, and it is still open ────
+  if (page.accepted && !page.answered) {
+    return (
+      <View style={{ marginHorizontal: 16, marginTop: 13 }}>
+        <View style={{ position: 'absolute', left: 3, top: 3, right: -3, bottom: -3, backgroundColor: C }} />
+        <Pressable
+          onPress={async () => { playSfx('tap'); await onAnswer(); }}
+          style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}
+        >
+          <FIcon name="bell" size={15} />
+          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text }}>
+            {t('page.acceptedLine', { xp: page.bonusXp })}
+          </Text>
+          <View style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
+            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: C }}>{t('page.resume')}</Text>
+          </View>
+        </Pressable>
+      </View>
+    );
+  }
+
   // ── answered: one line, not a vanished card ─────────────────────────────
   if (page.answered) {
     return (

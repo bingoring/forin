@@ -110,7 +110,17 @@ export async function restoreSession(): Promise<void> {
   useAuthStore.setState({ accessToken: access, refreshToken: refresh, isAuthed: true });
   try {
     const me = await api.me();
-    useAuthStore.getState().setSession(access, refresh, toUser(me.user));
+    // The tokens are read back from the STORE, not the two captured above.
+    //
+    // This is what made the app ask for a login every time it had been closed for a
+    // while. Access tokens last 15 minutes, so a launch after that starts with an
+    // expired one: /me 401s, the interceptor rotates, and the rotation writes a fresh
+    // pair to memory and disk. Then this line put the CAPTURED pair back — and refresh
+    // tokens are single-use server-side, so memory now held one the server had already
+    // consumed. The next 401 rotated with a dead token, the server refused it, and the
+    // session was ended for real.
+    const cur = useAuthStore.getState();
+    useAuthStore.getState().setSession(cur.accessToken ?? access, cur.refreshToken ?? refresh, toUser(me.user));
     useAuthStore.getState().setOnboarded(!!(me.profile as { onboarded?: boolean } | null)?.onboarded);
   } catch {
     // token invalid/expired → the 401 interceptor rotates or logs out.

@@ -522,18 +522,22 @@ func (r *ProgressRepo) TodaysPage(ctx context.Context, userID, localDate, scenar
 		if err != nil {
 			return nil, err
 		}
-		return pageFrom(row.ScenarioID, row.IssuedAt, row.AnsweredAt), nil
+		return pageFrom(row.ScenarioID, row.IssuedAt, row.AcceptedAt, row.AnsweredAt), nil
 	}
 	row, err := r.q.InsertDailyPage(ctx, sqlc.InsertDailyPageParams{
 		UserID: userID, LocalDate: localDate, ScenarioID: scenarioID})
 	if err != nil {
 		return nil, err
 	}
-	return pageFrom(row.ScenarioID, row.IssuedAt, row.AnsweredAt), nil
+	return pageFrom(row.ScenarioID, row.IssuedAt, row.AcceptedAt, row.AnsweredAt), nil
 }
 
-func pageFrom(scenarioID string, issued, answered pgtype.Timestamptz) *progress.DailyPage {
+func pageFrom(scenarioID string, issued, accepted, answered pgtype.Timestamptz) *progress.DailyPage {
 	p := &progress.DailyPage{ScenarioID: scenarioID, IssuedAt: issued.Time}
+	if accepted.Valid {
+		at := accepted.Time
+		p.AcceptedAt = &at
+	}
 	if answered.Valid {
 		at := answered.Time
 		p.AnsweredAt = &at
@@ -541,17 +545,32 @@ func pageFrom(scenarioID string, issued, answered pgtype.Timestamptz) *progress.
 	return p
 }
 
-// AnswerPage marks today's call answered, reporting whether this call was the one that
-// did it — the UPDATE's `answered_at IS NULL` is what makes the bonus payable once.
-func (r *ProgressRepo) AnswerPage(ctx context.Context, userID, localDate string) (string, bool, error) {
-	id, err := r.q.AnswerDailyPage(ctx, sqlc.AnswerDailyPageParams{UserID: userID, LocalDate: localDate})
+// AcceptPage records that the learner took the call, and returns what it points at.
+// Idempotent: the first acceptance's timestamp is kept, because "did they actually go?"
+// is measured from it.
+func (r *ProgressRepo) AcceptPage(ctx context.Context, userID, localDate string) (string, error) {
+	row, err := r.q.AcceptDailyPage(ctx, sqlc.AcceptDailyPageParams{UserID: userID, LocalDate: localDate})
 	if errors.Is(err, pgx.ErrNoRows) {
-		return "", false, nil
+		return "", nil
 	}
 	if err != nil {
-		return "", false, err
+		return "", err
 	}
-	return id, true, nil
+	return row.ScenarioID, nil
+}
+
+// CompletePageIfAttempted pays the call off once the learner has actually started the
+// scenario it points at. Reports whether THIS call did it — false means either they have
+// not gone yet or it was already paid, and the caller must not grant the bonus again.
+func (r *ProgressRepo) CompletePageIfAttempted(ctx context.Context, userID, localDate string) (bool, error) {
+	_, err := r.q.CompleteDailyPageIfAttempted(ctx, sqlc.CompleteDailyPageIfAttemptedParams{UserID: userID, LocalDate: localDate})
+	if errors.Is(err, pgx.ErrNoRows) {
+		return false, nil
+	}
+	if err != nil {
+		return false, err
+	}
+	return true, nil
 }
 
 // AddBonusXP grants XP with no attempt attached.

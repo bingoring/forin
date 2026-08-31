@@ -86,6 +86,10 @@ type Schedule struct {
 type DailyPage struct {
 	ScenarioID string
 	IssuedAt   time.Time
+	// AcceptedAt is when 지금 응답 was tapped; AnsweredAt is when the learner was seen
+	// to actually start the scenario. Two fields because they are two different claims,
+	// and the bonus belongs to the second one.
+	AcceptedAt *time.Time
 	AnsweredAt *time.Time
 }
 

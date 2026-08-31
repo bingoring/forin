@@ -395,6 +395,9 @@ export interface HomePage {
   secondsLeft: number;
   /** The whole window, so the time bar is a fraction of something real. */
   totalSeconds: number;
+  /** Took the call: the countdown stops and the scenario is theirs to finish. The bonus
+   *  is NOT paid here — it lands when the server sees they actually started it. */
+  accepted: boolean;
   answered: boolean;
   bonusXp: number;
 }
@@ -701,7 +704,7 @@ export const api = {
    *  `bonusXp` is 0 when it had already been answered, which the server decides: the
    *  UPDATE only pays on the transition, so tapping twice cannot farm it. `tz` so the
    *  server judges the deadline against the learner's own midnight. */
-  async answerPage(): Promise<{ scenarioId: string; bonusXp: number; already: boolean }> {
+  async acceptPage(): Promise<{ scenarioId: string; bonusXp: number; already: boolean }> {
     const { data } = await http.post('/me/home/page/answer', null, {
       params: { tz: Intl.DateTimeFormat().resolvedOptions().timeZone },
     });

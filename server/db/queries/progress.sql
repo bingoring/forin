@@ -116,7 +116,7 @@ SELECT scenario_id, front, back, note, created_at
  ORDER BY scenario_id, created_at;
 
 -- name: GetDailyPage :one
-SELECT user_id, local_date, scenario_id, issued_at, answered_at
+SELECT user_id, local_date, scenario_id, issued_at, accepted_at, answered_at
   FROM daily_pages WHERE user_id = $1 AND local_date = $2;
 
 -- name: InsertDailyPage :one
@@ -127,13 +127,32 @@ SELECT user_id, local_date, scenario_id, issued_at, answered_at
 INSERT INTO daily_pages (user_id, local_date, scenario_id)
 VALUES ($1, $2, $3)
 ON CONFLICT (user_id, local_date) DO UPDATE SET local_date = daily_pages.local_date
-RETURNING user_id, local_date, scenario_id, issued_at, answered_at;
+RETURNING user_id, local_date, scenario_id, issued_at, accepted_at, answered_at;
 
--- name: AnswerDailyPage :one
+-- name: AcceptDailyPage :one
+-- Taking the call. Idempotent: accepting twice keeps the first timestamp, because the
+-- "did they actually go?" check below is measured from it.
+UPDATE daily_pages SET accepted_at = COALESCE(accepted_at, now())
+ WHERE user_id = $1 AND local_date = $2
+RETURNING scenario_id, accepted_at;
+
+-- name: CompleteDailyPageIfAttempted :one
+-- Pays the call off, but ONLY once the learner actually started the scenario it points
+-- at, after accepting it. Tapping 지금 응답 and walking straight back out is not
+-- answering a call.
+--
 -- The WHERE answered_at IS NULL is what makes the bonus payable exactly once: a second
--- POST returns no row, and the caller then knows not to award XP again.
+-- run returns no row, and the caller then knows not to award XP again.
 UPDATE daily_pages SET answered_at = now()
- WHERE user_id = $1 AND local_date = $2 AND answered_at IS NULL
+ WHERE daily_pages.user_id = $1 AND daily_pages.local_date = $2
+   AND accepted_at IS NOT NULL
+   AND answered_at IS NULL
+   AND EXISTS (
+     SELECT 1 FROM scenario_attempts a
+      WHERE a.user_id = daily_pages.user_id
+        AND a.scenario_id = daily_pages.scenario_id
+        AND a.started_at >= daily_pages.accepted_at
+   )
 RETURNING scenario_id;
 
 -- name: AddBonusXP :one

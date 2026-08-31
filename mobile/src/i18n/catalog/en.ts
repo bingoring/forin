@@ -511,6 +511,8 @@ export const en: Record<string, string> = {
   'page.expires': 'Gone if missed today',
   'page.answeredLine': "Today's page answered · +{{xp}} XP bonus",
   'page.answeredBadge': 'Answered',
+  'page.acceptedLine': 'Call taken · +{xp} XP when you finish it',
+  'page.resume': 'Resume',
   'home.startCta': 'Start',
   'home.firstRunTab': 'Start here',
   'home.firstRunCta': 'Start your first conversation',

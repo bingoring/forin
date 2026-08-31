@@ -12,6 +12,31 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
+const acceptDailyPage = `-- name: AcceptDailyPage :one
+UPDATE daily_pages SET accepted_at = COALESCE(accepted_at, now())
+ WHERE user_id = $1 AND local_date = $2
+RETURNING scenario_id, accepted_at
+`
+
+type AcceptDailyPageParams struct {
+	UserID    string `json:"user_id"`
+	LocalDate string `json:"local_date"`
+}
+
+type AcceptDailyPageRow struct {
+	ScenarioID string             `json:"scenario_id"`
+	AcceptedAt pgtype.Timestamptz `json:"accepted_at"`
+}
+
+// Taking the call. Idempotent: accepting twice keeps the first timestamp, because the
+// "did they actually go?" check below is measured from it.
+func (q *Queries) AcceptDailyPage(ctx context.Context, arg AcceptDailyPageParams) (AcceptDailyPageRow, error) {
+	row := q.db.QueryRow(ctx, acceptDailyPage, arg.UserID, arg.LocalDate)
+	var i AcceptDailyPageRow
+	err := row.Scan(&i.ScenarioID, &i.AcceptedAt)
+	return i, err
+}
+
 const addBonusXP = `-- name: AddBonusXP :one
 UPDATE user_progress SET xp = xp + $2, updated_at = now()
  WHERE user_id = $1
@@ -33,21 +58,33 @@ func (q *Queries) AddBonusXP(ctx context.Context, arg AddBonusXPParams) (int, er
 	return xp, err
 }
 
-const answerDailyPage = `-- name: AnswerDailyPage :one
+const completeDailyPageIfAttempted = `-- name: CompleteDailyPageIfAttempted :one
 UPDATE daily_pages SET answered_at = now()
- WHERE user_id = $1 AND local_date = $2 AND answered_at IS NULL
+ WHERE daily_pages.user_id = $1 AND daily_pages.local_date = $2
+   AND accepted_at IS NOT NULL
+   AND answered_at IS NULL
+   AND EXISTS (
+     SELECT 1 FROM scenario_attempts a
+      WHERE a.user_id = daily_pages.user_id
+        AND a.scenario_id = daily_pages.scenario_id
+        AND a.started_at >= daily_pages.accepted_at
+   )
 RETURNING scenario_id
 `
 
-type AnswerDailyPageParams struct {
+type CompleteDailyPageIfAttemptedParams struct {
 	UserID    string `json:"user_id"`
 	LocalDate string `json:"local_date"`
 }
 
+// Pays the call off, but ONLY once the learner actually started the scenario it points
+// at, after accepting it. Tapping 지금 응답 and walking straight back out is not
+// answering a call.
+//
 // The WHERE answered_at IS NULL is what makes the bonus payable exactly once: a second
-// POST returns no row, and the caller then knows not to award XP again.
-func (q *Queries) AnswerDailyPage(ctx context.Context, arg AnswerDailyPageParams) (string, error) {
-	row := q.db.QueryRow(ctx, answerDailyPage, arg.UserID, arg.LocalDate)
+// run returns no row, and the caller then knows not to award XP again.
+func (q *Queries) CompleteDailyPageIfAttempted(ctx context.Context, arg CompleteDailyPageIfAttemptedParams) (string, error) {
+	row := q.db.QueryRow(ctx, completeDailyPageIfAttempted, arg.UserID, arg.LocalDate)
 	var scenario_id string
 	err := row.Scan(&scenario_id)
 	return scenario_id, err
@@ -190,7 +227,7 @@ func (q *Queries) GetCardForUser(ctx context.Context, arg GetCardForUserParams) 
 }
 
 const getDailyPage = `-- name: GetDailyPage :one
-SELECT user_id, local_date, scenario_id, issued_at, answered_at
+SELECT user_id, local_date, scenario_id, issued_at, accepted_at, answered_at
   FROM daily_pages WHERE user_id = $1 AND local_date = $2
 `
 
@@ -199,14 +236,24 @@ type GetDailyPageParams struct {
 	LocalDate string `json:"local_date"`
 }
 
-func (q *Queries) GetDailyPage(ctx context.Context, arg GetDailyPageParams) (DailyPage, error) {
+type GetDailyPageRow struct {
+	UserID     string             `json:"user_id"`
+	LocalDate  string             `json:"local_date"`
+	ScenarioID string             `json:"scenario_id"`
+	IssuedAt   pgtype.Timestamptz `json:"issued_at"`
+	AcceptedAt pgtype.Timestamptz `json:"accepted_at"`
+	AnsweredAt pgtype.Timestamptz `json:"answered_at"`
+}
+
+func (q *Queries) GetDailyPage(ctx context.Context, arg GetDailyPageParams) (GetDailyPageRow, error) {
 	row := q.db.QueryRow(ctx, getDailyPage, arg.UserID, arg.LocalDate)
-	var i DailyPage
+	var i GetDailyPageRow
 	err := row.Scan(
 		&i.UserID,
 		&i.LocalDate,
 		&i.ScenarioID,
 		&i.IssuedAt,
+		&i.AcceptedAt,
 		&i.AnsweredAt,
 	)
 	return i, err
@@ -273,7 +320,7 @@ const insertDailyPage = `-- name: InsertDailyPage :one
 INSERT INTO daily_pages (user_id, local_date, scenario_id)
 VALUES ($1, $2, $3)
 ON CONFLICT (user_id, local_date) DO UPDATE SET local_date = daily_pages.local_date
-RETURNING user_id, local_date, scenario_id, issued_at, answered_at
+RETURNING user_id, local_date, scenario_id, issued_at, accepted_at, answered_at
 `
 
 type InsertDailyPageParams struct {
@@ -282,18 +329,28 @@ type InsertDailyPageParams struct {
 	ScenarioID string `json:"scenario_id"`
 }
 
+type InsertDailyPageRow struct {
+	UserID     string             `json:"user_id"`
+	LocalDate  string             `json:"local_date"`
+	ScenarioID string             `json:"scenario_id"`
+	IssuedAt   pgtype.Timestamptz `json:"issued_at"`
+	AcceptedAt pgtype.Timestamptz `json:"accepted_at"`
+	AnsweredAt pgtype.Timestamptz `json:"answered_at"`
+}
+
 // DO NOTHING then RETURNING would give no row on a conflict, so the caller could not
 // tell "already issued" from "insert failed". DO UPDATE on its own key returns the
 // existing row untouched, which is exactly "give me today's call, issuing it if this is
 // the first look".
-func (q *Queries) InsertDailyPage(ctx context.Context, arg InsertDailyPageParams) (DailyPage, error) {
+func (q *Queries) InsertDailyPage(ctx context.Context, arg InsertDailyPageParams) (InsertDailyPageRow, error) {
 	row := q.db.QueryRow(ctx, insertDailyPage, arg.UserID, arg.LocalDate, arg.ScenarioID)
-	var i DailyPage
+	var i InsertDailyPageRow
 	err := row.Scan(
 		&i.UserID,
 		&i.LocalDate,
 		&i.ScenarioID,
 		&i.IssuedAt,
+		&i.AcceptedAt,
 		&i.AnsweredAt,
 	)
 	return i, err
