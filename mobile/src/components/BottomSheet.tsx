@@ -171,6 +171,16 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
   // is why the height animation ruled this out before.
   const springTo = useCallback(
     (to: number, cb?: () => void) => {
+      // Nothing animates a sheet that is gone. The entry frame is scheduled through rAF,
+      // and under jest's preset rAF is a setTimeout shim that the host's
+      // cancelAnimationFrame does not always cancel — so the callback can arrive after
+      // the module registry has been torn down, where `Animated` itself no longer
+      // exists. It reads as a failure in whichever unrelated suite happens to be running.
+      //
+      // The guard belongs here rather than only at the call sites: every path into a
+      // spring is a path that can outlive the sheet, and one of them (the drag's
+      // terminate handler) is fired by the platform, not by us.
+      if (!alive.current) return;
       Animated.spring(y, { toValue: to, useNativeDriver: true, damping: 24, stiffness: 190, mass: 0.9 }).start(
         ({ finished }) => finished && cb?.()
       );
@@ -197,6 +207,9 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
         fired = true;
         done();
       };
+      // Gone already: there is no animation to play and no caller left to tell. Firing
+      // `done` here would report a dismissal to a screen that is no longer mounted.
+      if (!alive.current) return;
       const watchdog = setTimeout(fire, 600);
       Animated.spring(y, { toValue: to, useNativeDriver: true, damping: 24, stiffness: 190, mass: 0.9 }).start(
         () => {

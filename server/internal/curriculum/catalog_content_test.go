@@ -150,11 +150,18 @@ func TestAuthoredConversationsAreRealConversations(t *testing.T) {
 		if replies < 10 {
 			t.Logf("%s asks for %d replies (target is 10+)", s.ID, replies)
 		}
+		// The briefing screen shows the tagline, and then the conversation opens. If the
+		// first beat is a different sentence, the character says the same thing twice,
+		// differently, before the learner has done anything. Caught once already: a
+		// tagline said "the coffee's terrible but free" and the beat said "but it's free".
+		if script[0].LineEN != s.Tagline {
+			t.Errorf("%s: opens on %q but the briefing promised %q", s.ID, script[0].LineEN, s.Tagline)
+		}
 	}
-	// The wards authored so far. A number rather than a list because the list is the
-	// content: this catches a regeneration that wrote zero.
-	if authored < 9 {
-		t.Errorf("found %d authored conversations, want at least 9", authored)
+	// Every ward greeting, plus the ER's orientation. A number rather than a list
+	// because the list is the content: this catches a regeneration that wrote zero.
+	if authored < 28 {
+		t.Errorf("found %d authored conversations, want 28", authored)
 	}
 }
 

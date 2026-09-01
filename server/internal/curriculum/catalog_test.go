@@ -71,9 +71,44 @@ func TestCurriculumSizes(t *testing.T) {
 			t.Errorf("%s has %d quizzes, want at most 1", c.Key, quizzes)
 		}
 	}
+	// A FLOOR bound was wrong twice over. It counted the wrong thing — a floor with two
+	// departments (별관 1 3F is 분만실 + 신생아실) has to carry twice as many chapters to
+	// teach the same amount — and its ceiling had no reason behind it. The reason the
+	// comment gave, "the resume hero names one next step", is the argument for the STEP
+	// bound above: it says a CHAPTER must stay small enough to see the end of, and says
+	// nothing about how many chapters a place can have. Twelve chapters on a floor are
+	// twelve endings, each still visible.
+	//
+	// What it did do was block growth exactly where content was densest: the four
+	// two-department floors sat at the ceiling, so a new chapter there failed this test.
+	//
+	// The FLOOR is what a lift button reaches, so the floor keeps a minimum — a floor
+	// nobody teaches is a floor a learner walks into and finds nothing. The department is
+	// what gets taught, so the department carries the real minimum.
+	perDept := map[string]int{}
+	for _, c := range catalog {
+		for _, s := range c.Steps {
+			parts := strings.Split(s.ScenarioID, "-")
+			if len(parts) < 3 || IsWardGreeting(s.ScenarioID) {
+				continue
+			}
+			// ORIENT is not a department. It is the ER's opening chapter — arrive, take
+			// the handover, meet your first patient — and it is one chapter by design.
+			if parts[1] == "ORIENT" {
+				break
+			}
+			perDept[parts[1]]++
+			break
+		}
+	}
 	for fl, n := range perFloor {
-		if n < 3 || n > 6 {
-			t.Errorf("%s %s has %d curricula, want 3-6", fl[0], fl[1], n)
+		if n < 3 {
+			t.Errorf("%s %s has %d curricula, want at least 3", fl[0], fl[1], n)
+		}
+	}
+	for dept, n := range perDept {
+		if n < 3 {
+			t.Errorf("department %s is taught in %d curricula, want at least 3", dept, n)
 		}
 	}
 }
