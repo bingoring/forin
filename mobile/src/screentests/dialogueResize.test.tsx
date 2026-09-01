@@ -176,13 +176,24 @@ function frameBox(root: ReactTestInstance): { w: number; h: number } {
   return { w: hits[0].props.style.width, h: hits[0].props.style.height };
 }
 
-/** True when the name plate sits to the LEFT of the portrait rather than under it.
- *  row-reverse is what puts it there: the frame is written first, being the subject. */
+/** The name/mood plate's own box. */
+function plate(root: ReactTestInstance): Record<string, unknown> {
+  const hits = root.findAll(
+    (n) => typeof n.type === 'string' && n.props?.testID === 'portrait-plate',
+    { deep: true },
+  );
+  expect(hits.length).toBe(1);
+  return hits[0].props.style as Record<string, unknown>;
+}
+
+/** True when the plate hangs off the frame's LEFT edge instead of sitting under it.
+ *
+ *  Positioned OUT of the layout is the whole point: as a row it took width, and the strip
+ *  centres the container, so the plate's width pushed the frame to the right — the
+ *  character slid sideways as the divider came up. */
 function nameIsBeside(root: ReactTestInstance): boolean {
-  return root.findAll((n) => {
-    const st = n.props?.style;
-    return !!st && !Array.isArray(st) && st.flexDirection === 'row-reverse' && st.gap === 10 && st.alignItems === 'center';
-  }, { deep: true }).length > 0;
+  const st = plate(root);
+  return st.position === 'absolute' && typeof st.right === 'number';
 }
 
 /** The department wash band's height — the coloured ground the portrait stands on. */
@@ -267,6 +278,57 @@ test('the portrait rearranges before it shrinks, and keeps its ratio when it doe
   const small = frameBox(tree.root);
   expect(small.h).toBeLessThan(drawn.h);
   expect(small.w / small.h).toBeCloseTo(drawn.w / drawn.h, 1);
+
+  // …and it shrinks IN PLACE. The plate is out of the layout, so the container is the
+  // frame's width and the strip's centring still lands on the drawing. As a row the
+  // plate's width pushed the frame right, and dragging read as the character sliding
+  // sideways rather than getting smaller.
+  const st = plate(tree.root);
+  expect(st.position).toBe('absolute');
+  // Clear of the frame's left edge, not overlapping it.
+  expect(st.right).toBeGreaterThanOrEqual(small.w);
+  expect(holdingBox(tree.root).flexDirection).toBeUndefined();
+});
+
+/** The style of the box that holds the frame and the plate. */
+function holdingBox(root: ReactTestInstance): Record<string, unknown> {
+  let n: ReactTestInstance | null = root.findAll(
+    (x) => typeof x.type === 'string' && x.props?.testID === 'portrait-plate',
+    { deep: true },
+  )[0]?.parent ?? null;
+  while (n && typeof n.type !== 'string') n = n.parent;
+  return (n?.props?.style ?? {}) as Record<string, unknown>;
+}
+
+test('the voice toggle is centred on the portrait, at its right edge', async () => {
+  // Vertically centred against the FRAME, not against the frame plus the stacked plate:
+  // a fixed offset put it three quarters of the way down, and it moved as the portrait
+  // scaled. `top: 0, bottom: 0` centres it without this file knowing the button's height.
+  const tree = await mount();
+  const hits = tree.root.findAll(
+    (n) => typeof n.type === 'string' && n.props?.testID === 'portrait-aside',
+    { deep: true },
+  );
+  expect(hits.length).toBe(1);
+  const st = hits[0].props.style;
+  expect(st.position).toBe('absolute');
+  expect(st.right).toBeLessThan(0);
+  expect(st.top).toBe(0);
+  expect(st.bottom).toBe(0);
+  expect(st.justifyContent).toBe('center');
+
+  // The box it is centred against draws the frame, and nothing else — otherwise
+  // "centred" would mean centred on the plate as well.
+  let holder = hits[0].parent;
+  while (holder && typeof holder.type !== 'string') holder = holder.parent;
+  const drawsFrame = holder?.findAll((n) => {
+    const s2 = n.props?.style;
+    return !!s2 && !Array.isArray(s2) && s2.borderWidth === 3 && s2.overflow === 'hidden' && typeof s2.width === 'number';
+  }, { deep: true }) ?? [];
+  expect(drawsFrame.length).toBeGreaterThan(0);
+  expect(holder?.findAll(
+    (n) => typeof n.type === 'string' && n.props?.testID === 'portrait-plate', { deep: true },
+  ) ?? []).toHaveLength(0);
 });
 
 test('the choices band is the reader\'s, and it cannot be dragged over the conversation', async () => {

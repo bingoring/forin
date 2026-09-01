@@ -1139,9 +1139,17 @@ function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBesi
   const h = Math.round(130 * scale);
   const inset = Math.max(3, Math.round(6 * scale));
   return (
-    // row-REVERSE: the frame is written first because it is the subject, and the plate
-    // still lands on its left.
-    <View style={nameBeside ? { flexDirection: 'row-reverse', alignItems: 'center', gap: 10 } : undefined}>
+    // Frame-sized in BOTH modes, which is what keeps the portrait centred.
+    //
+    // The beside layout used to be a row of [plate][frame]. The strip centres this
+    // container, so the plate's width pushed the frame off to the right — dragging the
+    // divider up moved the character sideways, which is not what shrinking should look
+    // like. The plate is positioned out of the layout instead: it hangs to the left and
+    // takes no space, so the frame stays where it was and only gets smaller.
+    <View>
+      {/* Exactly the frame's height, so anything centred against this box is centred on
+          the drawing — including `aside`, which must not be measured against the stacked
+          plate below. */}
       <View>
         <Shadowed offset={4}>
           <View style={{ width: w, height: h, backgroundColor: hue || colors.peach, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
@@ -1154,15 +1162,25 @@ function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBesi
             <PixelIcon name="droplet" color={colors.blue} size={18} sw={1.8} />
           </View>
         )}
-        {/* Off the frame's right edge, three quarters of the way down it — clear of the
-            droplet above and of the plate, wherever the plate is. */}
+        {/* Off the frame's right edge, vertically centred ON THE FRAME. `top: 0,
+            bottom: 0` rather than a computed offset: the button's own height then does
+            not have to be known here, and it stays centred when the frame scales. */}
         {!!aside && (
-          <View style={{ position: 'absolute', right: -38, top: Math.round(96 * scale) }}>
+          <View testID="portrait-aside" style={{ position: 'absolute', right: -38, top: 0, bottom: 0, justifyContent: 'center' }}>
             {aside}
           </View>
         )}
       </View>
-      <View style={{ marginTop: nameBeside ? 0 : 6, alignItems: 'flex-start', gap: 4 }}>
+
+      {/* The name and mood. Under the frame when there is room; hanging off its LEFT edge
+          when there is not — out of the layout, so the frame does not move. Right is
+          taken: that is where the voice toggle lives. */}
+      <View
+        testID="portrait-plate"
+        style={nameBeside
+          ? { position: 'absolute', right: w + 10, top: 0, bottom: 0, justifyContent: 'center', alignItems: 'flex-end', gap: 4 }
+          : { marginTop: 6, alignItems: 'flex-start', gap: 4 }}
+      >
         <Shadowed offset={2}>
           <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
             <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{name}</Text>
