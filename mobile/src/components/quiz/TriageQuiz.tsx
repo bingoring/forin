@@ -1,16 +1,21 @@
-// triage quiz — ESI acuity decision (v17 handoff design). Read the patient case
-// (chief complaint + vitals + observation tags), pick one of the five ESI levels,
-// and confirm. On confirm the correct/incorrect state reveals + a reasoning panel
-// explains WHY the correct level. Falls back to a legacy priority-ranking layout
-// (card order) when no `patient`/`correctLevel` is present.
+// ESI 판정 — read the patient note and STAMP an acuity level (v31 J).
+//
+// The five levels used to be five rows of a list. v31 makes them five round double-ring
+// stamps, and that is not decoration: triage is one judgement, made once, and a stamp is
+// the mark an authority puts on a chart. A list of rows invites reading down it; a row of
+// stamps asks which one you are picking up.
+//
+// On confirm the verdict reveals and a memo explains WHY that level. Falls back to a
+// legacy priority-ranking layout (card order) when no `patient`/`correctLevel` is present.
 import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
 import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, QuizSection, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { NbButton } from '@/components/nb/NbUI';
-import { t, useT } from '@/i18n';
+import { NbButton, NbMemo, NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { useT } from '@/i18n';
 
 const RANK_COLOR = [nb.red, '#F97316', '#FACC15', '#34D399', '#60A5FA'];
 // Fixed 5-level Emergency Severity Index.
@@ -78,17 +83,16 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
     >
       {!!c.context && <ContextBox text={c.context} />}
 
-      {/* patient case card */}
-      <View style={{ marginBottom: 12 }}>
-        <Shadowed offset={3}>
-          <View style={{ backgroundColor: nb.paper, borderWidth: 1.5, borderColor: nb.paperEdge, padding: 10, paddingTop: 14 }}>
-            <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: '#DC2626', borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 5 }}>
-              <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.paper }}>PATIENT CASE</Text>
-            </View>
-            <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
-              <View style={{ width: 56, height: 64, backgroundColor: '#FFF3EE', borderWidth: 1.4, borderColor: nb.ink, alignItems: 'center', justifyContent: 'center', padding: 4 }}>
+      {/* The patient note. Paper, with the label printed on it — this is what was handed
+          over at the door, not a UI card. */}
+      <View style={{ marginBottom: 14 }}>
+        <NbPaper rot={-0.4}>
+          <View style={{ paddingVertical: 12, paddingHorizontal: 14 }}>
+            <Text numberOfLines={1} style={styles.noteLabel}>{t('quiz.patientNote')}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 11, marginTop: 7 }}>
+              <NbPaper rot={-2.5} bg="#FFF3EE" style={{ width: 56, height: 64, alignItems: 'center', justifyContent: 'center', padding: 4 }}>
                 <PatientHeadPixel />
-              </View>
+              </NbPaper>
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{p.age} y / {p.sex}</Text>
                 {!!p.arrival && <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>{p.arrival}</Text>}
@@ -124,67 +128,89 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
               </View>
             )}
           </View>
-        </Shadowed>
+        </NbPaper>
       </View>
 
-      {/* ESI level rows */}
-      <View style={{ gap: 5 }}>
-        {LEVELS.map((l) => {
+      {/* The five stamps. Round, double-ringed and each at its own angle — one is picked
+          up and pressed onto the chart, which is what a triage decision is. */}
+      <View style={styles.stampRow}>
+        {LEVELS.map((l, i) => {
           const selected = sel === l.n;
           const showCorrect = checked && l.n === correct;
           const showWrong = checked && selected && l.n !== correct;
           const active = selected || showCorrect;
           return (
-            <Shadowed key={l.n} offset={active ? 3 : 2} shadowColor={active ? l.color : C + '66'}>
-              <Pressable
-                disabled={isRight}
-                onPress={() => { if (!isRight) { setSel(l.n); setChecked(false); } }}
-                style={{ flexDirection: 'row', alignItems: 'stretch', backgroundColor: showWrong ? '#FFF0EC' : active ? l.color + '22' : '#fff', borderWidth: 2.5, borderColor: active ? l.color : showWrong ? '#DC2626' : C }}
+            <Pressable
+              key={l.n}
+              disabled={isRight}
+              onPress={() => { if (!isRight) { setSel(l.n); setChecked(false); } }}
+              style={{ alignItems: 'center' }}
+            >
+              <View
+                style={[
+                  styles.stamp,
+                  {
+                    borderColor: showWrong ? nb.red : l.color,
+                    backgroundColor: active ? `${l.color}22` : 'transparent',
+                    transform: [{ rotate: i % 2 ? '6deg' : '-7deg' }],
+                  },
+                ]}
               >
-                <View style={{ width: 38, backgroundColor: l.color, alignItems: 'center', justifyContent: 'center', borderRightWidth: 2.5, borderRightColor: C }}>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 27.0, color: nb.paper }}>{l.n}</Text>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 9.5, color: nb.paper }}>LV</Text>
+                {/* Two rings, because RN has no `border: double` — same construction as
+                    NbStamp, at a size that fits five across. */}
+                <View pointerEvents="none" style={[styles.stampInner, { borderColor: showWrong ? nb.red : l.color }]} />
+                <Text style={[styles.stampN, { color: showWrong ? nb.red : l.color }]}>{l.n}</Text>
+                <Text numberOfLines={1} style={[styles.stampName, { color: showWrong ? nb.red : l.color }]}>{l.name}</Text>
+              </View>
+              {/* The verdict sits UNDER the stamp: printing it inside would cover the
+                  number the learner is being asked to remember. */}
+              {(showCorrect || showWrong) && (
+                <View style={{ marginTop: 3 }}>
+                  <NbIcon name={showCorrect ? 'check' : 'cross'} size={13} color={showCorrect ? nb.green : nb.red} />
                 </View>
-                <View style={{ flex: 1, paddingVertical: 6, paddingHorizontal: 10 }}>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{l.name}</Text>
-                  <Text style={{ fontFamily: nbFonts.body, fontSize: 9, color: nb.soft }}>{l.time}</Text>
-                </View>
-                {(showCorrect || (selected && !checked)) && (
-                  <View style={{ justifyContent: 'center', paddingHorizontal: 8 }}>
-                    <View style={{ backgroundColor: l.color, borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 6, paddingVertical: 1 }}>
-                      <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.paper }}>{showCorrect ? t('quiz.answer') : t('quiz.picked')}</Text>
-                    </View>
-                  </View>
-                )}
-                {showWrong && <View style={{ justifyContent: 'center', paddingHorizontal: 10 }}><Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: '#DC2626' }}>✗</Text></View>}
-              </Pressable>
-            </Shadowed>
+              )}
+            </Pressable>
           );
         })}
       </View>
 
-      {/* result + reasoning */}
+      {/* What is currently stamped, in words — a colour alone is not a label, and this row
+          is read at a glance. */}
+      <Text style={styles.stamped}>
+        {sel
+          ? t('quiz.stampedNow', { level: sel, name: LEVELS[sel - 1].name })
+          : t('quiz.stampedNone')}
+      </Text>
+
       {checked && (
         <View style={{ marginTop: 12 }}>
-          <View style={{ backgroundColor: isRight ? 'rgba(168,217,151,.4)' : '#FFF0EC', borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 8, paddingHorizontal: 12 }}>
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{isRight ? t('quiz.triageRight') : t('quiz.triageWrong', { level: correct })}</Text>
+          <View style={[styles.verdict, { backgroundColor: isRight ? 'rgba(168,217,151,.4)' : '#FFF0EC', borderColor: isRight ? nb.green : '#E4B4A6' }]}>
+            <NbIcon name={isRight ? 'check' : 'cross'} size={17} color={isRight ? nb.green : nb.red} />
+            <Text style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>
+              {isRight ? t('quiz.triageRight') : t('quiz.triageWrong', { level: correct })}
+            </Text>
           </View>
           {!!c.reasoning?.length && (
-            <View style={{ marginTop: 10 }}>
-              <Shadowed offset={2}>
-                <View style={{ backgroundColor: '#FFF7ED', borderWidth: 1.4, borderColor: nb.ink, padding: 10, paddingTop: 14 }}>
-                  <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#F97316', borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 5 }}>
-                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.paper }}>WHY LV {correct}?</Text>
+            <NbMemo color={nb.blue} rot={0.3} style={{ marginTop: 11 }}>
+              <Text numberOfLines={1} style={styles.whyLabel}>{t('quiz.whyLevel', { level: correct })}</Text>
+              {c.reasoning.map((r, i) => (
+                <View key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 7, marginTop: 5 }}>
+                  <View style={{ width: 14, marginTop: 3 }}>
+                    {r.kind === 'ok'
+                      ? <NbIcon name="check" size={13} color={nb.green} />
+                      : r.kind === 'bad' ? <NbIcon name="cross" size={11} color={nb.red} /> : null}
                   </View>
-                  {c.reasoning.map((r, i) => (
-                    <View key={i} style={{ flexDirection: 'row', gap: 5, marginBottom: 3 }}>
-                      <Text style={{ width: 14, fontFamily: nbFonts.hand, fontSize: 13.5, color: r.kind === 'ok' ? '#16A34A' : r.kind === 'bad' ? '#DC2626' : C }}>{r.kind === 'ok' ? '✓' : r.kind === 'bad' ? '✗' : ''}</Text>
-                      <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 10, color: C, lineHeight: 15, textDecorationLine: r.kind === 'bad' ? 'line-through' : 'none' }}>{r.text}</Text>
-                    </View>
-                  ))}
+                  <Text
+                    style={[
+                      nbText.hand(14.5),
+                      { flex: 1, minWidth: 0, textDecorationLine: r.kind === 'bad' ? 'line-through' : 'none', textDecorationColor: nb.red },
+                    ]}
+                  >
+                    {r.text}
+                  </Text>
                 </View>
-              </Shadowed>
-            </View>
+              ))}
+            </NbMemo>
           )}
         </View>
       )}
@@ -233,8 +259,11 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: nb.paper }}>{slot + 1}</Text>
               </View>
               {card ? (
-                <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, backgroundColor: ok ? 'rgba(168,217,151,.4)' : bad ? '#FFF0EC' : '#fff', borderWidth: 1.4, borderColor: nb.ink, justifyContent: 'center', paddingHorizontal: 8, paddingVertical: 7 }}>
-                  <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: C, lineHeight: 15 }}>{card.text}{checked ? (ok ? '  ✓' : '  ✕') : ''}</Text>
+                <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: ok ? 'rgba(168,217,151,.4)' : bad ? '#FFF0EC' : nb.paper, borderWidth: 1.4, borderColor: nb.paperEdge, paddingHorizontal: 9, paddingVertical: 8 }}>
+                  <Text style={{ flex: 1, minWidth: 0, fontFamily: nbFonts.body, fontSize: 11, color: C, lineHeight: 16 }}>{card.text}</Text>
+                  {/* Drawn, not appended: a ✓ inside the sentence reads as part of what
+                      the card says. */}
+                  {checked && <NbIcon name={ok ? 'check' : 'cross'} size={13} color={ok ? nb.green : nb.red} />}
                 </Pressable>
               ) : (
                 <View style={{ flex: 1, borderWidth: 2, borderColor: 'rgba(62,54,43,.18)', borderStyle: 'dashed', padding: 10 }}>
@@ -264,3 +293,24 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
     </QuizShell>
   );
 }
+
+const styles = {
+  noteLabel: { fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue, letterSpacing: 1 } as const,
+  stampRow: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 2 } as const,
+  stamp: {
+    width: 58, height: 58, borderRadius: 29, borderWidth: 1.6,
+    alignItems: 'center', justifyContent: 'center',
+  } as const,
+  stampInner: { position: 'absolute', left: 3, top: 3, right: 3, bottom: 3, borderRadius: 26, borderWidth: 1.2 } as const,
+  stampN: { fontFamily: nbFonts.handBold, fontSize: 21, lineHeight: 23 } as const,
+  /** The level's English name, printed small — it is clinical vocabulary the learner is
+   *  here to pick up, and five of them across a phone need every pixel. */
+  stampName: { fontFamily: nbFonts.mono, fontSize: 6.5, letterSpacing: 0.2, marginTop: 1 } as const,
+  stamped: { ...nbText.hand(15, nb.soft), textAlign: 'center' as const, marginTop: 14 },
+  verdict: {
+    flexDirection: 'row', alignItems: 'center', gap: 8,
+    paddingVertical: 9, paddingHorizontal: 12,
+    borderWidth: 1.5, borderStyle: 'dashed', transform: [{ rotate: '-0.4deg' }],
+  } as const,
+  whyLabel: { fontFamily: nbFonts.bodyBold, fontSize: 10.5, color: nb.blue, letterSpacing: 1 } as const,
+};
