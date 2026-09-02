@@ -141,6 +141,43 @@ const BUTTON: Record<NbButtonVariant, { bg: string; fg: string; bd: string; bw: 
  * offsets are the prototype's, and they are small on purpose: this is a sheet of paper
  * being pressed, not a key travelling.
  */
+/**
+ * A polaroid print: a white frame with a wide bottom margin, the subject inside it, and the
+ * name written on that margin.
+ *
+ * Why not just a framed avatar — the wide bottom edge is the whole tell. A square frame
+ * with even padding reads as a UI avatar; the off-centre one reads as a photo somebody
+ * printed and wrote on, which is what a colleague card is meant to be.
+ */
+export function NbPolaroid({ name, size = 52, rot = -2, children }: {
+  name?: string;
+  size?: number;
+  rot?: number;
+  /** The subject. Defaults to the `me` doodle — a person whose face we do not have. */
+  children?: ReactNode;
+}) {
+  return (
+    <View
+      style={[
+        { backgroundColor: '#fff', borderWidth: 1, borderColor: nb.paperEdge, paddingTop: 4, paddingHorizontal: 4, paddingBottom: name ? 13 : 4, flexShrink: 0, transform: deg(rot) },
+        paperShadow,
+      ]}
+    >
+      <View style={{ width: size, height: size, backgroundColor: nb.wash.blue, alignItems: 'center', justifyContent: 'center' }}>
+        {children ?? <NbIcon name="me" size={size * 0.62} />}
+      </View>
+      {!!name && (
+        <Text
+          numberOfLines={1}
+          style={{ position: 'absolute', left: 2, right: 2, bottom: 1, textAlign: 'center', fontFamily: nbFonts.hand, fontSize: 10.5, color: nb.ink }}
+        >
+          {name}
+        </Text>
+      )}
+    </View>
+  );
+}
+
 export function NbButton({ variant = 'ink', icon, iconRight, iconColor, rot = 0, size = 'md', full, disabled, onPress, style, children }: {
   variant?: NbButtonVariant;
   icon?: NbIconName;

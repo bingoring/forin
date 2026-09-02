@@ -1,22 +1,24 @@
-// 동료 프로필 (handoff v21 ScreenColleagueDetail).
+// 동료 프로필 — the 근무 수첩 line (v30).
 //
 // 서버는 연결되지 않은 상대에게 404를 준다(403이면 계정 존재가 새어나간다) — 여기서는
 // 그냥 "찾을 수 없어요"로 보여주면 된다. 공개 범위를 끈 동료는 해당 블록을 숨긴다.
 //
 // ⚔ 대결 버튼은 렌더하지 않는다: 규칙·서버가 없는 버튼을 두면 눌렀을 때 아무 일도
-// 일어나지 않는다(Build Spec Q4에서 이번 범위 제외로 확정).
+// 일어나지 않는다(Build Spec Q4에서 이번 범위 제외로 확정). 같은 이유로 v30 아트보드의
+// 멘토 요청 버튼과 '최근 라운지 글' 목록도 그리지 않는다 — 멘토 요청 엔드포인트가 없고,
+// 라운지 글은 서버에 글이라는 것 자체가 아직 없다. 대신 준비 중이라고 말한다.
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 
-import { FIcon } from '@/components/FIcon';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbMemo, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
 import { CheerSheet } from '@/components/CheerSheet';
-import { Header, RelTag, Shadowed } from './index';
+import { NbBackTitle, RelTag, SectionRule } from './index';
 import { api, type ColleagueDetail, type ColleagueRelation } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { t, type Translate, useLocale, useT } from '@/i18n';
+import { type Translate, useLocale, useT } from '@/i18n';
 
-const C = colors.ink;
 /** Weekday initials for a Mon-first strip, in the reader's language.
  *
  *  Intl rather than a Korean array: the letters differ per language and a hardcoded
@@ -55,20 +57,19 @@ export default function ColleagueDetailScreen() {
 
   if (state === 'loading') {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center' }}>
-        <ActivityIndicator color={C} />
-      </View>
+      <NbSheet>
+        <Stack.Screen options={{ headerShown: false }} />
+        <View style={styles.centre}><ActivityIndicator color={nb.ink} /></View>
+      </NbSheet>
     );
   }
   if (state === 'notfound' || !c) {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.paper }}>
+      <NbSheet>
         <Stack.Screen options={{ headerShown: false }} />
-        <Header title={t('colleague.title')} onBack={() => router.back()} />
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>찾을 수 없어요.</Text>
-        </View>
-      </View>
+        <NbBackTitle title={t('colleague.title')} onBack={() => router.back()} />
+        <View style={styles.centre}><Text style={nbText.hand(17)}>{t('colleague.notFound')}</Text></View>
+      </NbSheet>
     );
   }
 
@@ -76,111 +77,114 @@ export default function ColleagueDetailScreen() {
   const week = weekBlocks(c.activeDates ?? []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.paper }}>
+    <NbSheet>
       <Stack.Screen options={{ headerShown: false }} />
-      <Header
+      <NbBackTitle
         title={c.name}
-        sub={[c.destination?.toUpperCase(), relLabel(t, c.relation)].filter(Boolean).join(' · ')}
         onBack={() => router.back()}
+        right={c.destination ? <NbTag color={nb.soft} rot={1}>{c.destination.toUpperCase()}</NbTag> : undefined}
       />
 
-      <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 32 }}>
-        {/* 프로필 히어로 */}
-        <Shadowed offset={4} style={{ marginBottom: 13 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 13 }}>
-            <View style={{ width: 62, height: 62, backgroundColor: '#fff', borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <FIcon name="me" size={34} />
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
+        {/* The header photograph, taped down. */}
+        <NbPaper rot={-0.5} tape tapeLeft={150} style={styles.hero}>
+          <NbPolaroid name={c.name} size={74} rot={-3} />
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+              <Text numberOfLines={1} style={[nbText.hand(24), { flexShrink: 1 }]}>{c.name}</Text>
+              <RelTag relation={c.relation} />
             </View>
-            <View style={{ flex: 1, minWidth: 0 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>{c.name}</Text>
-                <RelTag relation={c.relation} />
-              </View>
-              <View style={{ flexDirection: 'row', gap: 14, marginTop: 8 }}>
-                {/* Two stats, not one. This was `c.targetLevel || String(c.level ?? '-')`
-                    under the label "Lv." — a CEFR band and an XP level taking turns in
-                    one field, so the same row meant "B1" for one colleague and "12" for
-                    the next. */}
-                <Stat label={t('colleague.langLevel')} value={c.targetLevel || '-'} />
-                <Stat label="LV" value={String(c.level ?? '-')} />
-                <Stat label={t('growth.streak')} value={t('colleague.days', { n: c.streak ?? 0 })} />
-              </View>
-            </View>
+            <Text numberOfLines={2} style={[nbText.body(11.5, nb.soft), { marginTop: 3 }]}>
+              {[c.destination?.toUpperCase(), relLabel(t, c.relation)].filter(Boolean).join(' · ')}
+            </Text>
           </View>
-        </Shadowed>
+        </NbPaper>
+
+        {/* Three stats, dashed apart. Two of them are levels and they are NOT
+            interchangeable: this used to be `c.targetLevel || String(c.level ?? '-')`
+            under one "Lv." label, so the same row meant "B1" for one colleague and "12"
+            for the next. */}
+        <NbPaper rot={0.4} style={styles.stats}>
+          <Stat label={t('colleague.langLevel')} value={c.targetLevel || '-'} first />
+          <Stat label="LV" value={String(c.level ?? '-')} />
+          <Stat label={t('growth.streak')} value={t('colleague.days', { n: c.streak ?? 0 })} />
+        </NbPaper>
 
         {/* 지금 학습 중 */}
         {c.statusHidden ? (
           <Hidden text={t('colleague.progressHidden')} />
         ) : !!c.activity && (
-          <Shadowed offset={3} shadowColor={colors.mintShadow} style={{ marginBottom: 13 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
-              <View style={{ width: 8, height: 8, backgroundColor: colors.mintShadow, borderWidth: 1.5, borderColor: C }} />
-              <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>
-                지금 <Text style={{ fontFamily: fonts.heading }}>{c.activity}</Text> 진행 중
-              </Text>
-            </View>
-          </Shadowed>
+          <NbPaper rot={-0.4} bg="rgba(168,217,151,.3)" style={styles.now}>
+            <View style={styles.dot} />
+            <Text numberOfLines={2} style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>
+              {t('colleague.nowDoing', { activity: c.activity })}
+            </Text>
+          </NbPaper>
         )}
 
-        {/* 주간 학습 */}
+        {/* 이번 주 학습 — the week as boxes you can count, ticked where they came in. */}
         {c.weeklyHidden ? (
           <Hidden text={t('colleague.weekHidden')} />
         ) : (
-          <Shadowed offset={3} style={{ marginBottom: 13 }}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 9 }}>이번 주 학습</Text>
-              <View style={{ flexDirection: 'row', gap: 6 }}>
-                {week.map((d, i) => (
-                  <View key={i} style={{
-                    flex: 1, height: 30, alignItems: 'center', justifyContent: 'flex-end',
-                    backgroundColor: d ? colors.mint : '#fff',
-                    borderWidth: 2, borderColor: d ? C : C + '44',
-                  }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.55, paddingBottom: 2 }}>{days[i]}</Text>
-                  </View>
-                ))}
-              </View>
+          <NbPaper rot={0.5} style={styles.week}>
+            <Text style={nbText.hand(16)}>{t('colleague.thisWeek')}</Text>
+            <View style={{ flexDirection: 'row', gap: 5, marginTop: 9 }}>
+              {week.map((d, i) => (
+                <View
+                  key={i}
+                  style={[
+                    styles.day,
+                    {
+                      backgroundColor: d ? 'rgba(168,217,151,.85)' : 'transparent',
+                      borderColor: d ? nb.ink : 'rgba(62,54,43,.25)',
+                      borderStyle: d ? 'solid' : 'dashed',
+                      transform: [{ rotate: i % 2 ? '1.2deg' : '-1.2deg' }],
+                    },
+                  ]}
+                >
+                  <Text numberOfLines={1} style={styles.dayLabel}>{days[i]}</Text>
+                  {d && <View style={{ marginTop: 1 }}><NbIcon name="check" size={11} color={nb.green} /></View>}
+                </View>
+              ))}
             </View>
-          </Shadowed>
+          </NbPaper>
         )}
 
         {/* 주고받은 응원 */}
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 주고받은 응원 ━━━━━━</Text>
+        <SectionRule label={t('colleague.cheersExchanged')} />
         {c.cheers.length === 0 ? (
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textFaint, paddingVertical: 14, textAlign: 'center' }}>
-            아직 주고받은 응원이 없어요.
+          <Text style={[nbText.hand(15, nb.soft), { textAlign: 'center', paddingVertical: 16 }]}>
+            {t('colleague.noCheers')}
           </Text>
-        ) : c.cheers.map((ch) => {
+        ) : c.cheers.map((ch, i) => {
           const mine = ch.toUserId === c.id; // I sent it to them
-          // Sent on the right, received on the left — the DM convention, so
-          // position carries the direction. That makes the old 보냄/받음 badge
-          // redundant: it was labelling what the layout now says. The colour
-          // difference stays as a second, redundant cue.
+          // Sent on the right, received on the left — the DM convention, so position
+          // carries the direction. That makes a 보냄/받음 badge redundant: it would label
+          // what the layout already says. The paper colour is the second, redundant cue.
           return (
-            <View key={ch.id} style={{ flexDirection: 'row', justifyContent: mine ? 'flex-end' : 'flex-start', marginBottom: 8 }}>
-              <Shadowed offset={2.5} style={{ maxWidth: '82%' }}>
-                <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
-                  {!mine && (
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, marginBottom: 4 }}>{c.name}</Text>
-                  )}
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }}>
-                    {[ch.presetText, ch.message].filter(Boolean).join(' · ')}
-                  </Text>
-                </View>
-              </Shadowed>
+            <View key={ch.id} style={{ flexDirection: 'row', justifyContent: mine ? 'flex-end' : 'flex-start', marginTop: 9 }}>
+              <NbPaper rot={i % 2 ? 0.6 : -0.6} bg={mine ? nb.paper : '#FCEEDC'} style={styles.cheer}>
+                {!mine && <Text numberOfLines={1} style={nbText.hand(13, nb.soft)}>{c.name}</Text>}
+                <Text style={[nbText.hand(16), { marginTop: mine ? 0 : 2 }]}>
+                  {[ch.presetText, ch.message].filter(Boolean).join(' · ')}
+                </Text>
+              </NbPaper>
             </View>
           );
         })}
 
-        <Pressable
-          onPress={() => setCheering(true)}
-          style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 7, marginTop: 13, backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 12 }}
-        >
-          <FIcon name="sparkle" size={17} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>응원 보내기</Text>
-        </Pressable>
+        <View style={{ marginTop: 18 }}>
+          <NbButton variant="ink" size="lg" full icon="speech" iconColor={nb.paper} onPress={() => setCheering(true)}>
+            {t('colleague.sendCheer')}
+          </NbButton>
+        </View>
 
+        <NbMemo color={nb.blue} rot={-0.3} style={{ marginTop: 12 }}>
+          <Text style={nbText.hand(13.5)}>{t('colleague.mentorSoon')}</Text>
+        </NbMemo>
+
+        {/* Quiet, and at the bottom: removing somebody is not one of the two things this
+            page is for. */}
         <Pressable
           onPress={() => Alert.alert(t('colleague.removeTitle'), t('colleague.removeBody', { name: c.name }), [
             { text: t('common.cancel'), style: 'cancel' },
@@ -189,9 +193,10 @@ export default function ColleagueDetailScreen() {
               onPress: async () => { await api.removeColleague(c.id).catch(() => {}); router.back(); },
             },
           ])}
-          style={{ marginTop: 10, paddingVertical: 10, alignItems: 'center' }}
+          hitSlop={8}
+          style={{ marginTop: 16, paddingVertical: 8, alignItems: 'center' }}
         >
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textFaint }}>동료에서 삭제</Text>
+          <Text style={[nbText.hand(14, nb.soft), { textDecorationLine: 'underline' }]}>{t('colleague.removeLink')}</Text>
         </Pressable>
       </ScrollView>
 
@@ -209,11 +214,10 @@ export default function ColleagueDetailScreen() {
           }
         }}
       />
-    </View>
+    </NbSheet>
   );
 }
 
-/** The relation in the reader's language. A function, so it re-resolves per render. */
 /**
  * The relation's label, or nothing when there is no relation.
  *
@@ -227,19 +231,22 @@ function relLabel(t: Translate, rel?: ColleagueRelation): string {
   return t(`colleague.relation${rel[0].toUpperCase()}${rel.slice(1)}`);
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value, first }: { label: string; value: string; first?: boolean }) {
   return (
-    <View>
-      <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>{label}</Text>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 2 }}>{value}</Text>
+    <View style={[styles.stat, !first && styles.statDivider]}>
+      <Text numberOfLines={1} style={nbText.body(10, nb.soft)}>{label}</Text>
+      <Text numberOfLines={1} style={[nbText.hand(19), { marginTop: 2 }]}>{value}</Text>
     </View>
   );
 }
 
+/** A block the colleague chose not to share. Dashed and empty on purpose: it says the
+ *  space exists and is theirs to open, which is different from the block not existing. */
 function Hidden({ text }: { text: string }) {
   return (
-    <View style={{ backgroundColor: colors.cream, borderWidth: 2, borderColor: C + '55', paddingVertical: 10, paddingHorizontal: 12, marginBottom: 13 }}>
-      <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft }}>{text}</Text>
+    <View style={styles.hidden}>
+      <NbIcon name="lock" size={15} color={nb.soft} />
+      <Text style={[nbText.hand(14.5, nb.soft), { flex: 1, minWidth: 0 }]}>{text}</Text>
     </View>
   );
 }
@@ -257,3 +264,22 @@ function weekBlocks(activeDates: string[]): boolean[] {
     return set.has(key);
   });
 }
+
+const styles = {
+  centre: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 } as const,
+  scroll: { paddingHorizontal: 20, paddingBottom: 32 } as const,
+  hero: { marginTop: 14, paddingVertical: 16, paddingHorizontal: 15, flexDirection: 'row', alignItems: 'center', gap: 14 } as const,
+  stats: { marginTop: 12, paddingVertical: 11, paddingHorizontal: 13, flexDirection: 'row' } as const,
+  stat: { flex: 1, alignItems: 'center' } as const,
+  statDivider: { borderLeftWidth: 1.3, borderStyle: 'dashed', borderLeftColor: 'rgba(62,54,43,.2)' } as const,
+  now: { marginTop: 12, paddingVertical: 10, paddingHorizontal: 13, flexDirection: 'row', alignItems: 'center', gap: 9 } as const,
+  dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: nb.green, flexShrink: 0 } as const,
+  week: { marginTop: 12, paddingVertical: 11, paddingHorizontal: 13 } as const,
+  day: { flex: 1, height: 34, borderWidth: 1.4, alignItems: 'center', justifyContent: 'center' } as const,
+  dayLabel: { fontFamily: nbFonts.mono, fontSize: 8.5, color: nb.soft } as const,
+  cheer: { maxWidth: '82%', paddingVertical: 9, paddingHorizontal: 12 } as const,
+  hidden: {
+    marginTop: 12, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 8,
+    borderWidth: 1.5, borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.28)',
+  } as const,
+};

@@ -1,25 +1,37 @@
-// 동료 목록 (handoff v21 ScreenColleagues).
+// 동료 목록 — the 근무 수첩 line (v30).
 //
-// 관계 종류(peer/mentor/mentee)는 데이터에 있고 화면은 그대로 렌더한다 — 훗날
-// 현지 간호사 멘토가 들어와도 이 화면을 고칠 일이 없게 설계된 부분이다.
+// A page of photographs. Each colleague is a polaroid print with their name written on the
+// bottom margin, and the row beside it says the two things you actually came to check:
+// whether they turned up today, and what they are on. The data is unchanged.
+//
+// 관계 종류(peer/mentor/mentee)는 데이터에 있고 화면은 그대로 렌더한다 — 훗날 현지
+// 간호사 멘토가 들어와도 이 화면을 고칠 일이 없게 설계된 부분이다.
+//
+// Two things in the v30 artboard are NOT drawn, because nothing behind them exists:
+//   · 이번 주 함께 목표 (a shared weekly goal with its own gauge) — there is no group
+//     goal on the server, and a gauge filled from a number we invented would be the one
+//     widget on the page that lies.
+//   · 현지 근무중 (a green "working abroad" pill) — Colleague carries no such field. It
+//     is also the entry point for the mentor feature, which is why the memo at the bottom
+//     says the matching is still being prepared rather than showing a pill that is always
+//     off.
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
-import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
+import * as Clipboard from 'expo-clipboard';
+import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
+import { NbButton, NbMemo, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
 import { CheerSheet } from '@/components/CheerSheet';
 import { api, type Colleague, type ColleagueRelation, type ColleagueRequest, type InviteCode } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale, useT } from '@/i18n';
-
-const C = colors.ink;
+import { useT } from '@/i18n';
 
 // 관계 표시 — mentor/mentee는 지금도 렌더된다(확장 슬롯이 아니라 실제 지원).
 // labelKey, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
-export const REL: Record<ColleagueRelation, { labelKey: string; icon: IconName; bg: string }> = {
-  peer: { labelKey: 'colleague.relationPeer', icon: 'handshake', bg: colors.mint },
-  mentor: { labelKey: 'colleague.relationMentor', icon: 'star', bg: colors.yellow },
-  mentee: { labelKey: 'colleague.relationMentee', icon: 'sprout', bg: colors.blue },
+export const REL: Record<ColleagueRelation, { labelKey: string; nbIcon: NbIconName; color: string }> = {
+  peer: { labelKey: 'colleague.relationPeer', nbIcon: 'handshake2', color: nb.green },
+  mentor: { labelKey: 'colleague.relationMentor', nbIcon: 'star', color: '#C99A1E' },
+  mentee: { labelKey: 'colleague.relationMentee', nbIcon: 'bulb', color: nb.blue },
 };
 
 /** Nothing renders when the relation is unknown — see ColleagueDetail.relation. Falling
@@ -28,12 +40,7 @@ export function RelTag({ relation }: { relation?: ColleagueRelation }) {
   const t = useT();
   const r = relation ? REL[relation] : undefined;
   if (!r) return null;
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: r.bg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-      <PixelIcon name={r.icon} color={C} size={9} sw={1.8} />
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{t(r.labelKey)}</Text>
-    </View>
-  );
+  return <NbTag color={r.color} rot={-2}>{t(r.labelKey)}</NbTag>;
 }
 
 export default function ColleaguesScreen() {
@@ -77,116 +84,120 @@ export default function ColleaguesScreen() {
     }
   };
 
+  const here = rows.filter((c) => c.activeToday).length;
+
   return (
-    <View style={{ flex: 1, backgroundColor: colors.paper }}>
+    <NbSheet>
       <Stack.Screen options={{ headerShown: false }} />
-      <Header title={t('colleague.title')} sub={t('colleague.subCount', { n: rows.length })} onBack={() => router.back()} />
+
+      <NbBackTitle
+        title={t('colleague.title')}
+        onBack={() => router.back()}
+        right={state === 'ok' && rows.length > 0
+          ? <NbTag color={nb.green} rot={1}>{t('colleague.hereToday', { n: rows.length, here })}</NbTag>
+          : undefined}
+      />
 
       {state === 'loading' ? (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>
+        <View style={styles.centre}><ActivityIndicator color={nb.ink} /></View>
       ) : state === 'error' ? (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>동료를 불러오지 못했어요.</Text>
-        </View>
+        <View style={styles.centre}><Text style={nbText.hand(17)}>{t('colleague.loadFailed')}</Text></View>
       ) : (
-        <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 32 }}>
-          {/* 내 초대 코드 */}
-          {!!code && (
-            <Shadowed offset={3} style={{ marginBottom: 13 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
-                <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.cream, opacity: 0.75 }}>내 초대 코드</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: colors.mint, letterSpacing: 2, marginTop: 3 }}>{code.code}</Text>
-                </View>
-                <Pressable onPress={() => router.push('/colleagues/add')} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 9 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>+ 추가</Text>
-                </Pressable>
-              </View>
-            </Shadowed>
-          )}
-
-          {/* 받은 요청 — 수락해야 서로의 현황이 열린다 */}
-          {requests.map((q) => (
-            <Shadowed key={q.id} offset={3} shadowColor={colors.peachShadow} style={{ marginBottom: 10 }}>
-              <View style={{ backgroundColor: colors.peach, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>
-                  <Text style={{ fontFamily: fonts.heading }}>{q.name}</Text>님이 동료 요청을 보냈어요
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
+          {/* 코드로 동료 맺기. Taped rather than pinned: it is the page's own note, not one
+              of the people on it. The code is typed — it exists to be read out. */}
+          <NbPaper rot={-0.5} tape tapeLeft={120} style={styles.codeNote}>
+            <NbIcon name="handshake2" size={24} />
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text numberOfLines={1} style={nbText.hand(16.5)}>{t('colleague.linkByCode')}</Text>
+              <Pressable
+                onPress={() => { if (code) { void Clipboard.setStringAsync(code.code).then(() => Alert.alert(t('colleagueAdd.copied'), code.code)); } }}
+                disabled={!code}
+                hitSlop={6}
+              >
+                <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 1 }]}>
+                  {t('me.myCode')} <Text style={styles.codeText}>{code?.code ?? '· · · ·'}</Text>
+                  {!!code && ` · ${t('colleagueAdd.copy')}`}
                 </Text>
-                <View style={{ flexDirection: 'row', gap: 8, marginTop: 9 }}>
-                  <Pressable onPress={() => respond(q.id, true)} style={{ flex: 1, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 7, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.cream }}>수락</Text>
-                  </Pressable>
-                  <Pressable onPress={() => respond(q.id, false)} style={{ flex: 1, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 7, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>거절</Text>
-                  </Pressable>
+              </Pressable>
+            </View>
+            <NbButton variant="paper" size="sm" icon="pencil" onPress={() => router.push('/colleagues/add')}>
+              {t('colleague.add')}
+            </NbButton>
+          </NbPaper>
+
+          {/* 받은 요청 — 수락해야 서로의 현황이 열린다. Peach paper: it is the one thing
+              on the page waiting on the reader. */}
+          {requests.map((q, i) => (
+            <NbPaper key={q.id} rot={i % 2 ? 0.5 : -0.5} bg="#FFF0EC" style={styles.request}>
+              <Text style={nbText.hand(16)}>{t('colleague.requestFrom', { name: q.name })}</Text>
+              <View style={{ flexDirection: 'row', gap: 9, marginTop: 9 }}>
+                <View style={{ flex: 1 }}>
+                  <NbButton variant="ink" full size="sm" icon="check" iconColor={nb.paper} onPress={() => respond(q.id, true)}>
+                    {t('colleague.accept')}
+                  </NbButton>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <NbButton variant="paper" full size="sm" onPress={() => respond(q.id, false)}>
+                    {t('colleague.decline')}
+                  </NbButton>
                 </View>
               </View>
-            </Shadowed>
+            </NbPaper>
           ))}
 
-          {/* 응원 인박스 */}
+          {/* 받은 응원 */}
           {unread > 0 && (
-            <Shadowed offset={3} style={{ marginBottom: 14 }}>
-              <Pressable
-                onPress={async () => { await api.cheerInbox(true); setUnread(0); }}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}
-              >
-                <FIcon name="sparkle" size={18} />
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: C }}>받은 응원 {unread}건</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>확인</Text>
-              </Pressable>
-            </Shadowed>
+            <Pressable onPress={async () => { await api.cheerInbox(true); setUnread(0); }}>
+              <NbPaper rot={0.4} bg="rgba(249,227,123,.5)" style={styles.inbox}>
+                <NbIcon name="star" size={20} color="#C99A1E" />
+                <Text style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>{t('colleague.cheersWaiting', { n: unread })}</Text>
+                <NbIcon name="chevronRight" size={14} />
+              </NbPaper>
+            </Pressable>
           )}
 
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>━ 내 동료 ━━━━━━━━━</Text>
+          <SectionRule label={t('colleague.myColleagues')} />
 
           {rows.length === 0 ? (
-            <View style={{ paddingVertical: 26, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>
-                아직 동료가 없어요.{'\n'}코드를 주고받아 연결해보세요.
-              </Text>
+            <View style={styles.empty}>
+              <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center' }]}>{t('colleague.emptyNb')}</Text>
             </View>
-          ) : rows.map((c) => (
-            <Shadowed key={c.id} offset={3} style={{ marginBottom: 9 }}>
-              <Pressable
-                onPress={() => router.push(`/colleagues/${c.id}`)}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 11 }}
-              >
-                <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <FIcon name="me" size={22} />
-                  {c.activeToday && (
-                    <View style={{ position: 'absolute', top: 2, right: 2, width: 7, height: 7, backgroundColor: colors.mintShadow, borderWidth: 1.5, borderColor: C }} />
-                  )}
-                </View>
+          ) : rows.map((c, i) => (
+            <Pressable key={c.id} onPress={() => router.push(`/colleagues/${c.id}`)}>
+              <NbPaper rot={i % 2 ? 0.5 : -0.5} style={styles.row}>
+                <NbPolaroid name={c.name} rot={i % 2 ? 2 : -2} />
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{c.name}</Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                    <Text numberOfLines={1} style={[nbText.hand(18.5), { flexShrink: 1 }]}>{c.name}</Text>
                     <RelTag relation={c.relation} />
                   </View>
-                  <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 15 }}>
+                  <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 2 }]}>
                     {c.statusHidden ? t('home.privateProgress') : c.activity || t('colleague.quietDay')}
                   </Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 3 }}>
-                    {/* The band alone. "Lv." collided with the XP level's "LV", and we do
-                        not know which language THIS person is learning, so there is no
-                        code to prefix it with — A1..C2 identifies itself. */}
-                    {c.relation === 'mentor' ? (c.targetLevel || t('colleague.relationMentor')) : (c.targetLevel || '-')}
-                    {c.streak ? t('colleague.streakSuffix', { n: c.streak }) : ''}
+                  {/* The band alone. "Lv." collided with the XP level's "LV", and we do
+                      not know which language THIS person is learning, so there is no code
+                      to prefix it with — A1..C2 identifies itself. */}
+                  <Text numberOfLines={1} style={[nbText.hand(13.5, nb.soft), { marginTop: 1 }]}>
+                    {[
+                      c.targetLevel || '-',
+                      c.streak ? t('colleague.streakDays', { n: c.streak }) : null,
+                      c.activeToday ? t('colleague.cameToday') : t('colleague.notYetToday'),
+                    ].filter(Boolean).join(' · ')}
                   </Text>
                 </View>
-                <Pressable
-                  onPress={() => setCheerTo(c)}
-                  style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 8 }}
-                >
-                  <FIcon name="sparkle" size={16} />
-                </Pressable>
-              </Pressable>
-            </Shadowed>
+                {/* Its own target inside the row's: NbButton is itself a Pressable, and
+                    the inner responder wins, so cheering does not also open the profile. */}
+                <NbButton variant="dashed" size="sm" icon="speech" onPress={() => setCheerTo(c)}>
+                  {t('colleague.cheer')}
+                </NbButton>
+              </NbPaper>
+            </Pressable>
           ))}
 
-          <Text style={{ marginTop: 6, textAlign: 'center', fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textFaint, lineHeight: 15 }}>
-            현지 간호사 멘토 매칭은 준비 중이에요
-          </Text>
+          <NbMemo color={nb.blue} rot={0.3} style={{ marginTop: 14 }}>
+            <Text style={nbText.hand(13.5)}>{t('colleague.mentorSoon')}</Text>
+          </NbMemo>
         </ScrollView>
       )}
 
@@ -204,35 +215,43 @@ export default function ColleaguesScreen() {
           }
         }}
       />
+    </NbSheet>
+  );
+}
+
+/** A written section heading with the rule drawn, not typed — the pixel line spelled these
+ *  out as ━━━ runs, which is a glyph pretending to be a line. */
+export function SectionRule({ label }: { label: string }) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, marginTop: 18, marginBottom: 2 }}>
+      <Text numberOfLines={1} style={nbText.hand(17)}>{label}</Text>
+      <View style={{ flex: 1, borderTopWidth: 1.5, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.25)' }} />
     </View>
   );
 }
 
-export function Header({ title, sub, onBack }: { title: string; sub?: string; onBack?: () => void }) {
+/** The back chip + written title both screens share. */
+export function NbBackTitle({ title, right, onBack }: { title: string; right?: React.ReactNode; onBack: () => void }) {
   return (
-    <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 56, paddingBottom: 11, paddingHorizontal: 14 }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-        {!!onBack && (
-          <Pressable onPress={onBack} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>‹</Text>
-          </Pressable>
-        )}
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: C }}>{title}</Text>
-          {!!sub && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{sub}</Text>}
-        </View>
-      </View>
+    <View style={styles.head}>
+      <Pressable onPress={onBack} hitSlop={8}>
+        <NbPaper rot={-1} style={styles.backChip}><NbIcon name="chevronLeft" size={16} /></NbPaper>
+      </Pressable>
+      <Text numberOfLines={1} style={[nbText.hand(28), { flex: 1, minWidth: 0 }]}>{title}</Text>
+      {right}
     </View>
   );
 }
 
-export function Shadowed({ children, offset = 3, shadowColor = C, style }: {
-  children: React.ReactNode; offset?: number; shadowColor?: string; style?: object;
-}) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
-    </View>
-  );
-}
+const styles = {
+  head: { paddingTop: 52, paddingHorizontal: 20, paddingBottom: 4, flexDirection: 'row', alignItems: 'center', gap: 10 } as const,
+  backChip: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' } as const,
+  centre: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 } as const,
+  scroll: { paddingHorizontal: 20, paddingBottom: 32 } as const,
+  codeNote: { marginTop: 14, paddingVertical: 11, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 } as const,
+  codeText: { fontFamily: nbFonts.monoBold, color: nb.ink } as const,
+  request: { marginTop: 11, paddingVertical: 11, paddingHorizontal: 13, borderColor: '#E4B4A6' } as const,
+  inbox: { marginTop: 11, paddingVertical: 10, paddingHorizontal: 13, flexDirection: 'row', alignItems: 'center', gap: 10 } as const,
+  empty: { paddingVertical: 26 } as const,
+  row: { marginTop: 11, paddingVertical: 11, paddingHorizontal: 13, flexDirection: 'row', alignItems: 'center', gap: 12 } as const,
+};
