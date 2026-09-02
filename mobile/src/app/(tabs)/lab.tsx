@@ -10,7 +10,6 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
 import { api, type ModelAnswerSummary, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
-import { PixelIcon, type IconName } from '@/components/PixelIcon';
 import { FIcon, type FIconName } from '@/components/FIcon';
 import { SpeakList } from '@/components/speak/SpeakList';
 import { ModelAnswerList } from '@/components/model/ModelAnswerList';
@@ -18,7 +17,7 @@ import { faceOf } from '@/data/reviewCardFace';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { playSfx } from '@/lib/sfx';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbChip, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { space, type as typeScale } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
@@ -210,7 +209,7 @@ export default function Lab() {
   if (state !== 'ok') {
     return (
       <View style={{ flex: 1, backgroundColor: nb.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: nbFonts.body, fontSize: typeScale.body, color: nb.soft, textAlign: 'center' }}>리뷰 카드를 불러오지 못했어요. (로그인·서버 확인)</Text>}
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('lab.loadFailed')}</Text>}
       </View>
     );
   }
@@ -285,38 +284,37 @@ export default function Lab() {
               </NbPaper>
 
               {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
-              <Shadowed offset={3}>
-                <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
-                  <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
-                    <Text style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>복습 등급이 뭔가요?</Text>
-                    <DisclosureChevron open={guideOpen} color={nb.soft} size={14} sw={1.8} />
+              <NbPaper rot={0.4}>
+                <View>
+                  <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 11, paddingHorizontal: 13 }}>
+                    <Text style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>{t('lab.gradeGuideQ')}</Text>
+                    <NbIcon name={guideOpen ? 'chevronUp' : 'chevronDown'} size={14} color={nb.soft} />
                   </Pressable>
-                  <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 2 : 0, borderTopColor: C }}>
-                    <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8 }}>
-                      <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, lineHeight: 16, marginTop: 10 }}>
-                        카드를 확인한 뒤 <Text style={{ fontFamily: nbFonts.hand }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: nbFonts.hand }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
-                      </Text>
+                  <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 1.3 : 0, borderTopColor: 'rgba(62,54,43,.18)' }}>
+                    <View style={{ paddingHorizontal: 13, paddingBottom: 13, gap: 8 }}>
+                      <Text style={[nbText.body(11), { marginTop: 10 }]}>{t('lab.gradeGuideBody')}</Text>
                       {GRADES.map(({ g, labelKey, bg, guideKey }) => (
                         <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
-                          <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
-                            <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: C }}>{t(labelKey)}</Text>
+                          {/* Each grade in its own pen, the same four the session uses. */}
+                          <View style={{ minWidth: 54, alignItems: 'center', borderWidth: 1.6, borderRadius: 3, borderColor: bg, paddingVertical: 2, paddingHorizontal: 7 }}>
+                            <Text numberOfLines={1} style={nbText.hand(14, bg)}>{t(labelKey)}</Text>
                           </View>
-                          <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 10.5, color: nb.ink, lineHeight: 15 }}>{t(guideKey)}</Text>
+                          <Text style={[nbText.body(10.5), { flex: 1, minWidth: 0 }]}>{t(guideKey)}</Text>
                         </View>
                       ))}
-                      <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, lineHeight: 15, marginTop: 2 }}>
-                        {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
-                      </Text>
+                      <Text style={nbText.body(10, nb.soft)}>{t('lab.pipsHelp', { mastered: t('lab.mastered') })}</Text>
                     </View>
                   </Collapsible>
                 </View>
-              </Shadowed>
+              </NbPaper>
 
-              {/* mini stats */}
-              <View style={{ flexDirection: 'row', gap: 8 }}>
-                <MiniStat label={t('lab.savedCards')} value={cards.length} color={'rgba(168,217,151,.4)'} />
-                <MiniStat label={t('lab.mastered')} value={mastered} color={'rgba(249,227,123,.5)'} />
-                <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
+              {/* Three counts on plain paper. The handoff fills none of them — a coloured
+                  tile per stat made three equal facts look like three different kinds of
+                  thing — and puts the ONE number that asks for action in red. */}
+              <View style={{ flexDirection: 'row', gap: 9 }}>
+                <MiniStat label={t('lab.savedCards')} value={cards.length} rot={-0.5} />
+                <MiniStat label={t('lab.mastered')} value={mastered} rot={0.4} />
+                <MiniStat label={t('lab.dueCards')} value={cards.length} rot={-0.4} accent={nb.red} />
               </View>
 
               {/* category filter */}
@@ -324,18 +322,10 @@ export default function Lab() {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingVertical: 2 }}>
                   {cats.map((c) => {
                     const active = filter === c.id;
-                    const catColor = c.tone;
                     return (
-                      <Pressable key={c.id} onPress={() => setFilter(c.id)}>
-                        <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
-                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                            <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.9, color: C }}>{c.label}</Text>
-                            <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
-                              <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: C }}>{c.count}</Text>
-                            </View>
-                          </View>
-                        </Shadowed>
-                      </Pressable>
+                      <NbChip key={c.id} on={active} rot={active ? -0.8 : 0.8} onPress={() => setFilter(c.id)}>
+                        {`${c.label} ${c.count}`}
+                      </NbChip>
                     );
                   })}
                 </ScrollView>
@@ -349,8 +339,8 @@ export default function Lab() {
           renderItem={({ item }) => <PhraseCard card={item} onGrade={grade} />}
           ListEmptyComponent={
             <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
-              <PixelIcon name="note" color={nb.placeholder} size={40} sw={1.5} />
-              <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: nb.soft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
+              <NbIcon name="pencil" size={34} color={nb.soft} />
+              <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center' }]}>{t('lab.allDone')}</Text>
             </View>
           }
           contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40 }}
@@ -604,14 +594,6 @@ function Rules() {
   );
 }
 
-function Badge({ text, icon, bg, color }: { text?: string; icon?: IconName; bg: string; color: string }) {
-  return (
-    <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, paddingVertical: icon ? 2 : 0, marginTop: 1 }}>
-      {icon ? <PixelIcon name={icon} color={color} size={10} sw={2} /> : <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color }}>{text}</Text>}
-    </View>
-  );
-}
-
 /** The number under a section tab. `'…'` while the summary is still unknown: a
  *  tab that reads 0 and then jumps to 128 looks like the feature was empty, and
  *  0 is also a legitimate answer once the read lands — so the two states cannot
@@ -653,15 +635,16 @@ function BlockUnavailable({ titleKey }: { titleKey: string }) {
   );
 }
 
-function MiniStat({ label, value, color }: { label: string; value: number; color: string }) {
+/** One count on a slip of paper. The label is above the number, as the handoff sets it:
+ *  you read what it is, then how many. */
+function MiniStat({ label, value, rot, accent }: { label: string; value: number; rot: number; accent?: string }) {
   return (
-    <Shadowed offset={2} shadowColor={C + '66'} style={{ flex: 1 }}>
-      <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
-        <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, backgroundColor: color }} />
-        <Text style={{ fontFamily: nbFonts.hand, fontSize: 29.7, color: C }}>{value}</Text>
-        <Text style={{ fontFamily: nbFonts.body, fontSize: 9, color: nb.soft, marginTop: 2 }}>{label}</Text>
-      </View>
-    </Shadowed>
+    <View style={{ flex: 1 }}>
+      <NbPaper rot={rot} style={{ paddingVertical: 8, alignItems: 'center' }}>
+        <Text numberOfLines={1} style={nbText.body(10, nb.soft)}>{label}</Text>
+        <Text numberOfLines={1} style={nbText.hand(21, accent ?? nb.ink)}>{value}</Text>
+      </NbPaper>
+    </View>
   );
 }
 

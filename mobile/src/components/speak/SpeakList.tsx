@@ -225,7 +225,9 @@ export function SpeakList({ embedded = false, above }: {
             </View>
           }
           renderItem={({ item, index }) => (
-            <SpokenRow sentence={item} onPractise={practise} divider={index < rows.length - 1} />
+            <View style={{ marginTop: 10 }}>
+              <SpokenRow sentence={item} onPractise={practise} card rot={index % 2 ? 0.4 : -0.4} />
+            </View>
           )}
           ListEmptyComponent={
             state === 'ok' ? (

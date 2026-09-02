@@ -221,7 +221,9 @@ test('말하기 and 모범답안 are no longer entries in the category chip row'
 
 test('the chips are the axes a card actually varies on', async () => {
   const tree = await mount();
-  const chips = texts(chipRow(tree.root));
+  // One string per chip now — "전체 3", the shape the handoff writes ("전체 14"): the
+  // label and its count are one written phrase rather than a word plus a boxed number.
+  const chips = texts(chipRow(tree.root)).map((x) => x.replace(/\s+\d+$/, ''));
   expect(chips).toContain('전체');
   // department, from context.dept's leading segment ("ER · TRIAGE" → "ER")…
   expect(chips).toContain('ER');
@@ -248,9 +250,12 @@ test('a chip that would match every card is not offered', async () => {
 
 test('tapping a chip narrows the list to that chip', async () => {
   const tree = await mount();
+  // The chip's text is "<label> <count>", so the lookup matches the label at the start
+  // of the line rather than the whole node text.
   const chip = (label: string) => {
     const hits = chipRow(tree.root).findAll(
-      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
+      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined
+        && texts(n).some((x) => x === label || x.startsWith(`${label} `)),
       { deep: true },
     );
     expect(hits.length).toBeGreaterThan(0);
@@ -394,22 +399,22 @@ test('no chip paints its label or its count in its own colour', async () => {
   // active, the whole chip went black and swallowed the word 전체. Nothing in the
   // component guards against that — the tone is data — so the check is here.
   const tree = await mount();
-  const labels = ['전체', 'ER', 'ICU', '교정', '제안'];
-  for (const label of labels) {
-    const row = chipRow(tree.root);
-    const hits = row.findAll(
-      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
-      { deep: true },
-    );
-    const chip = hits[hits.length - 1];
-    // Inactive: the count box is filled with the tone.
+  const find = (root: ReactTestInstance, label: string) => root.findAll(
+    (n) => typeof n.type === 'function' && n.props?.onPress !== undefined
+      && texts(n).some((x) => x === label || x.startsWith(`${label} `)),
+    { deep: true },
+  ).slice(-1)[0];
+
+  for (const label of ['전체', 'ER', 'ICU', '교정', '제안']) {
+    const chip = find(chipRow(tree.root), label);
+    expect(chip).toBeDefined();
     expect(invisibleText(chip)).toEqual([]);
-    // Active: the whole chip is filled with the tone.
+    // Selected, the chip fills with ink and its text flips to paper. That pairing is
+    // NbChip's, and this is where it is checked against real data: the tone used to come
+    // from the card list, and one of those tones was the ink colour itself.
     await act(async () => { chip.props.onPress(); });
-    const active = chipRow(tree.root).findAll(
-      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
-      { deep: true },
-    ).slice(-1)[0];
+    const active = find(chipRow(tree.root), label);
+    expect(active).toBeDefined();
     expect(invisibleText(active)).toEqual([]);
   }
 });
@@ -426,31 +431,8 @@ test('no chip paints its label or its count in its own colour', async () => {
 // first, a count per tab, an unknown count showing no number, and tapping one swapping the
 // body.
 
-test('no chip paints its label or its count in its own colour', async () => {
-  // The 전체 chip's tone was the ink colour, which the chip draws BOTH its label and
-  // its count in: inactive, the count box was a black square with black digits;
-  // active, the whole chip went black and swallowed the word 전체. Nothing in the
-  // component guards against that — the tone is data — so the check is here.
-  const tree = await mount();
-  const labels = ['전체', 'ER', 'ICU', '교정', '제안'];
-  for (const label of labels) {
-    const row = chipRow(tree.root);
-    const hits = row.findAll(
-      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
-      { deep: true },
-    );
-    const chip = hits[hits.length - 1];
-    // Inactive: the count box is filled with the tone.
-    expect(invisibleText(chip)).toEqual([]);
-    // Active: the whole chip is filled with the tone.
-    await act(async () => { chip.props.onPress(); });
-    const active = chipRow(tree.root).findAll(
-      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
-      { deep: true },
-    ).slice(-1)[0];
-    expect(invisibleText(active)).toEqual([]);
-  }
-});
+// (The chip-colour check lives once, above. This file carried two identical copies of it
+// for a while — both ran, and only one of them was ever updated.)
 
 
 /** True when a tab's cap is sitting down on its shadow. */

@@ -13,16 +13,22 @@ export function SpokenRow({
   sentence,
   onPractise,
   divider = true,
+  /** v31 draws the 말하기 tab as a stack of paper cards; the result screen's read-back
+   *  keeps them as ruled rows inside one card, which is what `card={false}` is for. */
+  card = false,
+  rot = 0,
 }: {
   sentence: SpokenSentence;
   /** Omitted where the row is not actionable (the result screen's read-back). */
   onPractise?: (s: SpokenSentence) => void;
   divider?: boolean;
+  card?: boolean;
+  rot?: number;
 }) {
   const t = useT();
   const dept = deptOf(sentence);
-  return (
-    <View style={[styles.row, divider && styles.divider]}>
+  const body = (
+    <>
       {/* The score is stamped, in the band's colour — the same three the pronunciation
           screen uses, so 42 looks like 42 wherever the learner meets it again. */}
       <View style={[styles.badge, { backgroundColor: bandColor(bandOf(sentence.overall)) }]}>
@@ -39,17 +45,24 @@ export function SpokenRow({
       </View>
       {onPractise && (
         <Pressable onPress={() => onPractise(sentence)} hitSlop={8}>
-          <NbPaper rot={-1.5} bg="rgba(143,199,232,.3)" style={styles.practise}>
-            <NbIcon name="mic" size={15} />
-          </NbPaper>
+          {card
+            ? <NbIcon name="mic" size={18} />
+            : (
+              <NbPaper rot={-1.5} bg="rgba(143,199,232,.3)" style={styles.practise}>
+                <NbIcon name="mic" size={15} />
+              </NbPaper>
+            )}
         </Pressable>
       )}
-    </View>
+    </>
   );
+  if (!card) return <View style={[styles.row, divider && styles.divider]}>{body}</View>;
+  return <NbPaper rot={rot} style={[styles.row, styles.card]}>{body}</NbPaper>;
 }
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 10, paddingHorizontal: 2 },
+  card: { paddingVertical: 9, paddingHorizontal: 11 },
   divider: { borderBottomWidth: 1.3, borderStyle: 'dashed', borderBottomColor: 'rgba(62,54,43,.15)' },
   badge: {
     minWidth: 34, paddingVertical: 4, paddingHorizontal: 5, alignItems: 'center', flexShrink: 0,
