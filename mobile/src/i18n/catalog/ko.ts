@@ -744,4 +744,5 @@ export const ko: Record<string, string> = {
   'briefing.skills': '연습할 스킬',
   'briefing.start': '출근해서 시작하기',
   'briefing.peekModel': '모범 대본 먼저 훑어보기',
+  'dialogue.startFailed': '대화를 시작하지 못했어요',
 };

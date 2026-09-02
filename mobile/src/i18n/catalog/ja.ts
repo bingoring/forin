@@ -713,4 +713,5 @@ export const ja: Record<string, string> = {
   'briefing.skills': '練習スキル',
   'briefing.start': '出勤して始める',
   'briefing.peekModel': '模範解答を先に見る',
+  'dialogue.startFailed': '会話を開始できませんでした',
 };

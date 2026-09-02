@@ -89,7 +89,7 @@ export function NbPin({ left = 150, color = nb.red, dark = '#8E3A32' }: { left?:
  * square, and a page of perfectly aligned cards reads as a form rather than a scrapbook.
  * Keep it inside ±0.8°: past that it stops looking laid down and starts looking dropped.
  */
-export function NbPaper({ rot = 0, tape, tapeLeft = 120, pinned, pinColor, bg, style, children }: {
+export function NbPaper({ rot = 0, tape, tapeLeft = 120, pinned, pinColor, bg, testID, style, children }: {
   rot?: number;
   tape?: boolean;
   tapeLeft?: number;
@@ -97,11 +97,16 @@ export function NbPaper({ rot = 0, tape, tapeLeft = 120, pinned, pinColor, bg, s
   pinned?: boolean | number;
   pinColor?: string;
   bg?: string;
+  /** Passed through so a card can be found by name in a test — the sheet's mission panel
+   *  is looked up that way, and wrapping it in another View to carry the id would add a
+   *  link to a width chain that has to stay definite (see MissionCluster). */
+  testID?: string;
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
 }) {
   return (
     <View
+      testID={testID}
       style={[
         { backgroundColor: bg || nb.paper, borderWidth: 1, borderColor: nb.paperEdge, transform: deg(rot) },
         paperShadow,

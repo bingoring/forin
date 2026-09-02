@@ -714,4 +714,5 @@ export const en: Record<string, string> = {
   'briefing.skills': 'Skills',
   'briefing.start': 'Clock in and start',
   'briefing.peekModel': 'Skim the model answers first',
+  'dialogue.startFailed': "Couldn't start the conversation",
 };

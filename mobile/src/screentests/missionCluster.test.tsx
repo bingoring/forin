@@ -96,9 +96,12 @@ test('상황 종료 is centred on the SCREEN, in the same top row as the exit', 
   // the centre is the screen's centre.
   const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
   expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center'/);
-  expect(src).toMatch(/label=\{t\('dialogue\.endSituation'\)\}/);
-  // …and it is a real button, not a hand-drawn box.
-  expect(src).toMatch(/<PixelButton\s+icon="check"/);
+  // v29 draws it as a paper card in the nurse's own hand rather than a PixelButton. What
+  // has to hold is that it is the same control, in the same place, and that it presses —
+  // a label with no press was the original complaint about this row.
+  expect(src).toMatch(/\{t\('dialogue\.endSituation'\)\}/);
+  expect(src).toMatch(/onPress=\{endSituation\}/);
+  expect(src).toMatch(/pressed \? \[\{ translateX: 1\.5 \}, \{ translateY: 2 \}\]/);
 });
 
 test('a covered mission is ticked and struck through', () => {
@@ -133,7 +136,8 @@ test('the exit is pinned to the top, and presses', () => {
   const row = /paddingTop: 52[^}]*alignItems: '([a-z-]+)'/.exec(src);
   expect(row?.[1]).toBe('flex-start');
   // And the × had a shadow but no press — tapping it moved nothing, so on a slow frame
-  // there was no sign the tap had landed. Same mechanic as PixelButton now.
+  // there was no sign the tap had landed. Same mechanic as every control in the kit now:
+  // the card sinks and loses its shadow.
   expect(src).toMatch(/onPressIn=\{\(\) => setExitDown\(true\)\}/);
-  expect(src).toMatch(/translateX: exitDown \? 2 : 0/);
+  expect(src).toMatch(/transform: exitDown \? \[\{ translateX: 1\.5 \}, \{ translateY: 2 \}\]/);
 });

@@ -20,18 +20,15 @@
 import { useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import type { ReplyChoice } from '@/api/client';
-import { DisclosureChevron } from '@/components/Collapsible';
-import { FIcon } from '@/components/FIcon';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
 import { playSfx } from '@/lib/sfx';
 import { useT } from '@/i18n';
 
-const C = colors.ink;
-/** How far a card's cap travels on press — PixelButton's mechanic at a card's scale. */
-const PRESS = 3;
 /** The mic's own zone. Wide enough to aim at without looking, which is the difference
  *  between "there is a mic somewhere on this card" and a target. */
-const MIC_W = 52;
+const MIC_W = 56;
 
 export function ReplyChoices({ choices, loading, selectedText, onPick, onSpeak, onWriteMyOwn, maxHeight }: {
   choices: ReplyChoice[];
@@ -65,10 +62,8 @@ export function ReplyChoices({ choices, loading, selectedText, onPick, onSpeak, 
   if (loading) {
     return (
       <View testID="reply-choices" style={{ paddingVertical: 18, alignItems: 'center', gap: 8 }}>
-        <ActivityIndicator color={C} />
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft }}>
-          {t('choice.thinking')}
-        </Text>
+        <ActivityIndicator color={nb.ink} />
+        <Text style={nbText.hand(15, nb.soft)}>{t('choice.thinking')}</Text>
       </View>
     );
   }
@@ -81,77 +76,65 @@ export function ReplyChoices({ choices, loading, selectedText, onPick, onSpeak, 
     <View testID="reply-choices" style={{ gap: 6 }}>
       {/* The header is the collapse control. Three cards at full height covered the
           conversation they were answers to. */}
-      <Pressable onPress={() => setOpen((v) => !v)} hitSlop={6} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-        <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>
-          {t('choice.prompt')}
-        </Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft }}>
-          {t(open ? 'choice.collapse' : 'choice.expand')}
-        </Text>
-        <DisclosureChevron open={open} color={colors.textSoft} size={12} />
+      <Pressable onPress={() => setOpen((v) => !v)} hitSlop={6} style={{ flexDirection: 'row', alignItems: 'baseline', gap: 6 }}>
+        <Text style={[nbText.hand(15.5), { flex: 1, minWidth: 0 }]}>{t('choice.prompt')}</Text>
+        <Text style={nbText.hand(14, nb.soft)}>{t(open ? 'choice.collapse' : 'choice.expand')}</Text>
+        <NbIcon name={open ? 'chevronUp' : 'chevronDown'} size={14} color={nb.soft} />
       </Pressable>
 
       {open && (
-        <ScrollView style={{ maxHeight }} showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 7, paddingBottom: 2 }}>
+        <ScrollView style={{ maxHeight }} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 2 }}>
           {shown.map((c, i) => {
-            const isDown = down === c.text;
-            const dx = isDown ? PRESS : 0;
             const picked = !!selectedText && selectedText === c.text;
             return (
-              <View key={i}>
-                <View style={{ position: 'absolute', left: PRESS, top: PRESS, right: -PRESS, bottom: -PRESS, backgroundColor: C }} />
-                <View
+              <NbPaper
+                key={i}
+                rot={i % 2 ? 0.4 : -0.4}
+                // Picked: the marker's own yellow, so the card that was chosen is the one
+                // with highlighter on it — the same device the rest of the notebook uses
+                // for "this one".
+                bg={picked ? 'rgba(249,227,123,.45)' : undefined}
+                style={{ marginTop: 9, flexDirection: 'row', alignItems: 'stretch', overflow: 'hidden' }}
+              >
+                {/* Choosing. The whole card except the mic. */}
+                <Pressable
+                  onPress={() => { playSfx('tap'); onPick(c); }}
+                  style={({ pressed }) => ({
+                    flex: 1, paddingVertical: 10, paddingHorizontal: 12, gap: 5,
+                    // Sinks like every other control in the kit. Without it there was no
+                    // sign a tap had landed.
+                    transform: pressed ? [{ translateX: 1.5 }, { translateY: 2 }] : [],
+                  })}
+                >
+                  <Text style={nbText.body(13.5)}>{c.text}</Text>
+                  {/* The reason, AFTER the choice. Before it, it is an answer key. */}
+                  {picked && !!c.why && (
+                    <Text style={nbText.hand(14, nb.soft)}>{c.why}</Text>
+                  )}
+                </Pressable>
+
+                {/* Speaking. Its own zone, its own edge, its own size — so nobody is sent
+                    to the pronunciation screen by tapping a sentence. */}
+                <Pressable
+                  onPress={() => { playSfx('tap'); onSpeak(c); }}
                   style={{
-                    flexDirection: 'row',
-                    backgroundColor: picked ? colors.mint : '#fff',
-                    borderWidth: 2.5,
-                    borderColor: C,
-                    transform: [{ translateX: dx }, { translateY: dx }],
+                    width: MIC_W, backgroundColor: 'rgba(249,227,123,.55)',
+                    borderLeftWidth: 1.5, borderLeftColor: nb.paperEdge,
+                    alignItems: 'center', justifyContent: 'center', gap: 2, flexShrink: 0,
                   }}
                 >
-                  {/* Choosing. The whole card except the mic. */}
-                  <Pressable
-                    onPressIn={() => setDown(c.text)}
-                    onPressOut={() => setDown(null)}
-                    onPress={() => { playSfx('tap'); onPick(c); }}
-                    style={{ flex: 1, paddingVertical: 9, paddingHorizontal: 11, gap: 5 }}
-                  >
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 18 }}>{c.text}</Text>
-                    {/* The reason, AFTER the choice. Before it, it is an answer key. */}
-                    {picked && !!c.why && (
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, opacity: 0.85, lineHeight: 14 }}>
-                        {c.why}
-                      </Text>
-                    )}
-                  </Pressable>
-
-                  {/* Speaking. Its own zone, its own edge, its own size — so nobody is
-                      sent to the pronunciation screen by tapping a sentence. */}
-                  <Pressable
-                    onPress={() => { playSfx('tap'); onSpeak(c); }}
-                    style={{
-                      width: MIC_W,
-                      borderLeftWidth: 2.5,
-                      borderLeftColor: C,
-                      backgroundColor: colors.yellow,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 2,
-                    }}
-                  >
-                    <FIcon name="mic" size={16} />
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{t('choice.speak')}</Text>
-                  </Pressable>
-                </View>
-              </View>
+                  <NbIcon name="mic" size={16} />
+                  <Text style={nbText.hand(12.5)}>{t('choice.speak')}</Text>
+                </Pressable>
+              </NbPaper>
             );
           })}
         </ScrollView>
       )}
 
       {!!onWriteMyOwn && (
-        <Pressable onPress={onWriteMyOwn} hitSlop={6} style={{ alignSelf: 'center', paddingVertical: 4 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft, textDecorationLine: 'underline' }}>
+        <Pressable onPress={onWriteMyOwn} hitSlop={6} style={{ alignSelf: 'center', paddingVertical: 6 }}>
+          <Text style={[nbText.hand(14.5, nb.blue), { textDecorationLine: 'underline' }]}>
             {t('choice.writeMyOwn')}
           </Text>
         </Pressable>

@@ -170,7 +170,10 @@ function dockIsInThread(root: ReactTestInstance): boolean {
 function frameBox(root: ReactTestInstance): { w: number; h: number } {
   const hits = root.findAll((n) => {
     const st = n.props?.style;
-    return !!st && !Array.isArray(st) && st.borderWidth === 3 && st.overflow === 'hidden' && typeof st.width === 'number';
+    // v29 draws the portrait as a polaroid: the PAPER carries the border, and the print
+    // itself is a clipped box with a size. So the box is found by its size and clip, not
+    // by a border it no longer has.
+    return !!st && !Array.isArray(st) && st.overflow === 'hidden' && typeof st.width === 'number' && typeof st.height === 'number';
   }, { deep: true });
   expect(hits.length).toBeGreaterThan(0);
   return { w: hits[0].props.style.width, h: hits[0].props.style.height };
@@ -323,7 +326,7 @@ test('the voice toggle is centred on the portrait, at its right edge', async () 
   while (holder && typeof holder.type !== 'string') holder = holder.parent;
   const drawsFrame = holder?.findAll((n) => {
     const s2 = n.props?.style;
-    return !!s2 && !Array.isArray(s2) && s2.borderWidth === 3 && s2.overflow === 'hidden' && typeof s2.width === 'number';
+    return !!s2 && !Array.isArray(s2) && s2.overflow === 'hidden' && typeof s2.width === 'number' && typeof s2.height === 'number';
   }, { deep: true }) ?? [];
   expect(drawsFrame.length).toBeGreaterThan(0);
   expect(holder?.findAll(
@@ -398,7 +401,7 @@ test('the voice toggle sits beside the portrait, not off the edge of the screen'
   while (holder && typeof holder.type !== 'string') holder = holder.parent;
   const drawsFrame = holder?.findAll((n) => {
     const st = n.props?.style;
-    return !!st && !Array.isArray(st) && st.borderWidth === 3 && st.overflow === 'hidden' && typeof st.width === 'number';
+    return !!st && !Array.isArray(st) && st.overflow === 'hidden' && typeof st.width === 'number' && typeof st.height === 'number';
   }, { deep: true }) ?? [];
   expect(drawsFrame.length).toBeGreaterThan(0);
   const spans = holder?.props?.style;
@@ -451,4 +454,18 @@ test('the keyboard borrows the edge, and the tools hand their row back', async (
   expect(dockNode(tree.root)).toBeTruthy();
   expect(threadTop(tree.root)).toBe(resting);
   spy.mockRestore();
+});
+
+test('the conversation happens on a ruled page', async () => {
+  // The 근무 수첩 line is paper, and the rules are what make it paper. They are a run of
+  // 1pt views here because RN has no repeating background — so an empty run is a blank
+  // cream rectangle, which reads as "the notebook look did not load" rather than a bug.
+  const tree = await mount();
+  const rules = tree.root.findAll((n) => {
+    if (typeof n.type !== 'string') return false;
+    const st = n.props?.style;
+    const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
+    return !!flat && flat.height === 1 && flat.backgroundColor === 'rgba(62,54,43,.06)';
+  }, { deep: true });
+  expect(rules.length).toBeGreaterThan(10);
 });

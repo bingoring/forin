@@ -713,4 +713,5 @@ export const de: Record<string, string> = {
   'briefing.skills': 'Fertigkeiten',
   'briefing.start': 'Antreten und starten',
   'briefing.peekModel': 'Erst die Musterantworten',
+  'dialogue.startFailed': 'Gespräch konnte nicht starten',
 };

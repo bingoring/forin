@@ -21,6 +21,8 @@ export type NbIconName =
   | 'chevronRight'
   | 'chevronDown'
   | 'chevronUp'
+  | 'cross'
+  | 'check'
   | 'home'
   | 'hospital'
   | 'board'
@@ -89,6 +91,15 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     ),
     chevronUp: (
       <G><Path {...P} d="M5 14.5 L12 8 L19 14.5"/></G>
+    ),
+    // The way out and the way to finish. Drawn, not typed: ✕ and ✓ are in the ratchet
+    // (theme/glyphs.test.ts) for the reason it names — they render at the font's weight,
+    // beside icons drawn at 1.7.
+    cross: (
+      <G><Path {...P} d="M6 6 L18 18 M18 6 L6 18"/></G>
+    ),
+    check: (
+      <G><Path {...P} strokeWidth={2.4} d="M5 12.5 L10 17.5 L19.5 6.5"/></G>
     ),
     home: (
       <G><Path {...P} d="M4.5 11.5 L12 4.5 L19.5 11.5"/><Path {...P} d="M6.5 10.5 V19 H17.5 V10.5"/><Rect {...P} x="10" y="13.5" width="4" height="5.5" fill={nb.wash.yellow}/></G>

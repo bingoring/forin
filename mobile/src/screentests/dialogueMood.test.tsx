@@ -56,7 +56,9 @@ test('only the newest NPC bubble carries the mood colour', () => {
   // Colouring the whole history would repaint lines whose mood is no longer known —
   // this screen keeps the transcript as text, not as moods — and turn the thread
   // into a colour chart.
-  expect(SRC).toMatch(/borderColor: !mine && last \? moodBorder\(turnMood\) : C/);
+  // v29: the bubble is paper, so the mood is its EDGE colour and the default is the
+  // sheet's own cut line. Same rule — only the newest NPC bubble takes it.
+  expect(SRC).toMatch(/mine \? null : \{ borderColor: !last \? '#E8D2B0' : moodBorder\(turnMood\) \}/);
 });
 
 test('the portrait falls back to the authored mood rather than blanking', () => {
@@ -101,7 +103,7 @@ test('the wrap-up prompt is asked at most once per conversation', () => {
 
 test('declining keeps the conversation open, and it never asks again', () => {
   // Keep-talking only closes the sheet — it does not end, and does not reset the ref.
-  expect(SRC).toMatch(/wrapUpKeepGoing[\s\S]{0,400}?onPress=\{\(\) => setWrapUp\(false\)\}/);
+  expect(SRC).toMatch(/onPress=\{\(\) => setWrapUp\(false\)\}[\s\S]{0,200}?wrapUpKeepGoing/);
   expect(SRC).not.toMatch(/askedWrapUp\.current = false/);
 });
 

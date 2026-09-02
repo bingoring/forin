@@ -22,7 +22,9 @@
 // mission count.
 import { Animated, Pressable, Text, View } from 'react-native';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
-import { FIcon } from '@/components/FIcon';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { nb } from '@/theme/nb';
 import { PixelButton } from '@/components/PixelButton';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useT } from '@/i18n';
@@ -65,20 +67,25 @@ export function MissionCluster({ goals, done, open, onToggle, opacity, disabled 
               portrait and crowd the thread. A learner glances at this; they do not read
               it continuously. So it is closed by default and one tap away. */}
           <Pressable onPress={onToggle} hitSlop={6}>
-            <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>
-                {t('dialogue.missionCount', { n: goals.length })}
-              </Text>
-              {/* Says how far along, when the character has reported anything — the
-                  number is the reason to open it or not. */}
-              {done.size > 0 && (
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>
-                  {done.size}/{goals.length}
+            {({ pressed }) => (
+              <NbPaper rot={1} bg="rgba(249,227,123,.5)" style={{
+                flexDirection: 'row', alignItems: 'center', gap: 5,
+                paddingVertical: 5, paddingHorizontal: 10,
+                transform: pressed ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '1deg' }],
+              }}>
+                <Text numberOfLines={1} style={nbText.hand(14)}>
+                  {t('dialogue.missionCount', { n: goals.length })}
                 </Text>
-              )}
-              <DisclosureChevron open={open} color={C} size={11} />
-            </View>
+                {/* Says how far along, when the character has reported anything — the
+                    number is the reason to open it or not. */}
+                {done.size > 0 && (
+                  <Text numberOfLines={1} style={nbText.hand(12.5, nb.soft)}>
+                    {done.size}/{goals.length}
+                  </Text>
+                )}
+                <NbIcon name={open ? 'chevronUp' : 'chevronDown'} size={13} />
+              </NbPaper>
+            )}
           </Pressable>
 
           {/* The WIDTH CHAIN, and every link of it matters.
@@ -90,16 +97,14 @@ export function MissionCluster({ goals, done, open, onToggle, opacity, disabled 
               own width stayed auto and the panel's `alignSelf: 'stretch'` stretched to
               nothing. The width is repeated HERE so the chain has no auto link in it. */}
           <Collapsible open={open} style={{ marginTop: 3, width: MISSION_CLUSTER_W }}>
-            <View
+            <NbPaper
               testID="mission-panel"
+              rot={-0.5}
               style={{
                 alignSelf: 'stretch',
-                backgroundColor: 'rgba(255,255,255,0.96)',
-                borderWidth: 2,
-                borderColor: C,
-                paddingVertical: 5,
-                paddingHorizontal: 8,
-                gap: 3,
+                paddingVertical: 7,
+                paddingHorizontal: 10,
+                gap: 4,
               }}
             >
               {goals.map((g, i) => {
@@ -110,24 +115,24 @@ export function MissionCluster({ goals, done, open, onToggle, opacity, disabled 
                         that happens to wrap. The tick replaces it when covered — two
                         marks in a row would be noise. */}
                     {isDone
-                      ? <FIcon name="check" size={11} />
-                      : <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>·</Text>}
+                      ? <NbIcon name="check" size={12} color={nb.green} />
+                      : <Text style={[nbText.body(10, nb.soft), { lineHeight: 15 }]}>·</Text>}
                     <Text
-                      style={{
-                        flex: 1,
-                        fontFamily: fonts.body,
-                        fontSize: fs(10),
-                        lineHeight: 14,
-                        color: isDone ? colors.textSoft : C,
-                        textDecorationLine: isDone ? 'line-through' : 'none',
-                      }}
+                      style={[
+                        nbText.body(11, isDone ? nb.soft : nb.ink),
+                        {
+                          flex: 1,
+                          lineHeight: 15,
+                          textDecorationLine: isDone ? 'line-through' : 'none',
+                        },
+                      ]}
                     >
                       {g}
                     </Text>
                   </View>
                 );
               })}
-            </View>
+            </NbPaper>
           </Collapsible>
         </>
       )}

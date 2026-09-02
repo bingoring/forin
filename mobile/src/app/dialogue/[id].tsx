@@ -16,7 +16,10 @@ import {
 } from 'expo-audio';
 import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteAsync } from 'expo-file-system/legacy';
 import { RoleFace, type RoleKind, type Expression } from '@engine';
-import { PixelButton } from '@/components/PixelButton';
+import Svg, { Path } from 'react-native-svg';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbGrabber, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { api, type ReplyChoice, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
@@ -522,10 +525,11 @@ export default function DialogueRoute() {
   }
   if (state === 'error') {
     return (
-      <View style={{ flex: 1, backgroundColor: '#1F2937', alignItems: 'center', justifyContent: 'center', gap: 16, padding: 24 }}>
+      <View style={{ flex: 1, backgroundColor: nb.cream, alignItems: 'center', justifyContent: 'center', gap: 16, padding: 24 }}>
         <Stack.Screen options={{ headerShown: false }} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff' }}>대화를 시작하지 못했습니다</Text>
-        <PixelButton label={t('common.back')} onPress={() => router.back()} />
+        <Rules />
+        <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('dialogue.startFailed')}</Text>
+        <NbButton variant="paper" onPress={() => router.back()}>{t('common.back')}</NbButton>
       </View>
     );
   }
@@ -552,7 +556,11 @@ export default function DialogueRoute() {
             The colour is the scenario's own department (deptWash) — an ER conversation
             reads warm, an ICU one cool — washed most of the way to cream so it cannot
             fight the bubbles drawn on it. */}
-        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: colors.cream }} />
+        {/* The notebook page. The department's wash tints the STAGE — the strip the
+            character stands on — rather than the whole sheet: on paper the page is the
+            page, and a coloured band is a thing laid on it. */}
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: nb.cream }} />
+        <Rules />
         {/* Its height IS the divider. At a fixed 40% the colour stayed put while the edge
             moved, so dragging left the wash cutting across the conversation — or a strip
             of ivory above the portrait. Same animated value as the thread's top, so the
@@ -563,7 +571,15 @@ export default function DialogueRoute() {
             throws "Attempting to run JS driven animation on animated node that has been
             moved to native" the first time the keyboard opens. */}
         <Animated.View style={{ opacity: chromeOpacity }}>
-          <Animated.View testID="wash-band" style={{ height: threadTopStyle, backgroundColor: wash }} />
+          {/* The stage. Its height IS the divider, so the coloured strip and the top of
+              the conversation are the same edge — and it carries the notebook's cut line
+              along the bottom rather than a heavy border.
+
+              TWO nested nodes, and it has to be two: `opacity` runs on the native driver
+              and `height` cannot. On one node RN moves the whole style to native and then
+              throws "Attempting to run JS driven animation on animated node that has been
+              moved to native" the first time the keyboard opens. */}
+          <Animated.View testID="wash-band" style={{ height: threadTopStyle, backgroundColor: wash, borderBottomWidth: 1.5, borderBottomColor: nb.paperEdge }} />
         </Animated.View>
       </Pressable>
 
@@ -595,14 +611,12 @@ export default function DialogueRoute() {
           onPress={() => { playSfx('back'); stepAway(); }}
           hitSlop={8}
         >
-          <View style={{ position: 'absolute', left: 2, top: 2, right: -2, bottom: -2, backgroundColor: C }} />
-          <View style={{
-            width: 30, height: 30, backgroundColor: '#fff', borderWidth: 2, borderColor: C,
-            alignItems: 'center', justifyContent: 'center',
-            transform: [{ translateX: exitDown ? 2 : 0 }, { translateY: exitDown ? 2 : 0 }],
+          <NbPaper rot={-1} style={{
+            width: 34, height: 34, alignItems: 'center', justifyContent: 'center',
+            transform: exitDown ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '-1deg' }],
           }}>
-            <FIcon name="cross" size={15} />
-          </View>
+            <NbIcon name="cross" size={17} color={nb.red} />
+          </NbPaper>
         </Pressable>
         {/* 상황 종료, in the CENTRE OF THE SCREEN.
             Absolutely positioned across the row rather than laid out between its
@@ -612,18 +626,18 @@ export default function DialogueRoute() {
             stop. pointerEvents box-none so the row's own children stay tappable. */}
         <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center' }}>
           <Animated.View style={{ opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
-            <PixelButton
-              icon="check"
-              label={t('dialogue.endSituation')}
-              bg={colors.mint}
-              shadowColor={colors.mintShadow}
-              offset={2}
-              fontSize={10}
-              borderWidth={2}
-              paddingV={4}
-              paddingH={9}
-              onPress={endSituation}
-            />
+            <Pressable onPress={endSituation} hitSlop={6}>
+              {({ pressed }) => (
+                <NbPaper rot={0.5} style={{
+                  flexDirection: 'row', alignItems: 'center', gap: 5,
+                  paddingVertical: 6, paddingHorizontal: 14,
+                  transform: pressed ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '0.5deg' }],
+                }}>
+                  <NbIcon name="check" size={14} color={nb.green} />
+                  <Text numberOfLines={1} style={nbText.hand(15, nb.green)}>{t('dialogue.endSituation')}</Text>
+                </NbPaper>
+              )}
+            </Pressable>
           </Animated.View>
         </View>
 
@@ -688,7 +702,7 @@ export default function DialogueRoute() {
               <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                   <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{tool === 'chart' ? t('dialogue.chartTitle') : tool === 'meds' ? t('dialogue.medsTitle') : t('dialogue.vitalsTitle')}</Text>
-                  <Pressable onPress={() => setTool(null)}><Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.textSoft }}>✕</Text></Pressable>
+                  <Pressable onPress={() => setTool(null)} hitSlop={8}><NbIcon name="cross" size={15} color={nb.soft} /></Pressable>
                 </View>
                 <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
               </View>
@@ -743,19 +757,23 @@ export default function DialogueRoute() {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingRight: 4 }}
             >
-              <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 5 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C, opacity: 0.75 }}>QUICK INFO</Text>
+              {/* The label is PRINTED, not written: it names a set of reference tools,
+                  which in the fiction is a stamp on a chart rather than a note. */}
+              <View style={{ borderWidth: 1.3, borderColor: nb.soft, paddingVertical: 2, paddingHorizontal: 6 }}>
+                <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9, letterSpacing: 1, color: nb.soft }}>QUICK INFO</Text>
               </View>
               {/* Each chip used to draw its icon NAME as text, so the row literally read
                   "stethoscope 활력". */}
-              {([['chart', 'clipboard', t('dialogue.tabChart')], ['meds', 'pill', t('dialogue.tabMeds')], ['vitals', 'stethoscope', t('dialogue.tabVitals')]] as const).map(([k, icon, label]) => (
+              {([['chart', 'board', t('dialogue.tabChart')], ['meds', 'pill', t('dialogue.tabMeds')], ['vitals', 'monitor', t('dialogue.tabVitals')]] as const).map(([k, nbIcon, label]) => (
                 <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
-                  <Shadowed offset={2}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: tool === k ? colors.mint : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                      <PixelIcon name={icon} color={C} size={13} sw={1.9} />
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }} numberOfLines={1}>{label}</Text>
-                    </View>
-                  </Shadowed>
+                  <NbPaper
+                    rot={k === 'meds' ? 0.8 : -0.8}
+                    bg={tool === k ? 'rgba(249,227,123,.55)' : undefined}
+                    style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingVertical: 4, paddingHorizontal: 9 }}
+                  >
+                    <NbIcon name={nbIcon} size={14} />
+                    <Text numberOfLines={1} style={nbText.hand(14)}>{label}</Text>
+                  </NbPaper>
                 </Pressable>
               ))}
             </ScrollView>
@@ -783,9 +801,21 @@ export default function DialogueRoute() {
                       history would repaint lines whose mood is no longer known (the
                       server stores it per turn, but the transcript this screen keeps
                       is text) and turn the thread into a colour chart. */}
-                  <Shadowed offset={2.5} shadowColor={mine ? C : colors.peachShadow}>
-                    <View style={{ backgroundColor: mine ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: !mine && last ? moodBorder(turnMood) : C, paddingVertical: 9, paddingHorizontal: 12 }}>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 20 }}>
+                  {/* Mine is the page's own paper; theirs is the warmer sheet the
+                      briefing used for the person. The NEWEST NPC bubble takes the mood in
+                      its edge — only the newest, because the mood belongs to the turn and
+                      colouring the history would repaint lines whose mood is no longer
+                      known. */}
+                  <NbPaper
+                    rot={mine ? 0.35 : -0.35}
+                    bg={mine ? nb.paper : '#FCEEDC'}
+                    style={[
+                      { paddingVertical: 9, paddingHorizontal: 12 },
+                      mine ? null : { borderColor: !last ? '#E8D2B0' : moodBorder(turnMood) },
+                    ]}
+                  >
+                    <View>
+                      <Text style={{ fontFamily: nbFonts.body, fontSize: 13.5, color: nb.ink, lineHeight: 20 }}>
                         {last && !mine && showKo && npcLineKo ? npcLineKo : m.text}
                       </Text>
                       {/* Why this was the reply. Only on the learner's own line, and only
@@ -801,13 +831,15 @@ export default function DialogueRoute() {
                           asking the same question. */}
                       {last && !mine && !!npcLineKo && (
                         <Pressable onPress={() => setShowKo((v) => !v)} style={{ marginTop: 8, alignSelf: 'flex-start' }}>
-                          <View style={{ backgroundColor: showKo ? colors.yellow : colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: C }}>{showKo ? t('dialogue.showSource') : t('dialogue.tapTranslate')}</Text>
+                          <View style={{ backgroundColor: showKo ? 'rgba(249,227,123,.5)' : 'rgba(95,141,90,.2)', borderWidth: 1.5, borderColor: showKo ? nb.ink : nb.green, borderRadius: 3, paddingVertical: 2, paddingHorizontal: 8 }}>
+                            <Text numberOfLines={1} style={nbText.hand(12.5, showKo ? nb.ink : nb.green)}>
+                              {showKo ? t('dialogue.showSource') : t('dialogue.tapTranslate')}
+                            </Text>
                           </View>
                         </Pressable>
                       )}
                     </View>
-                  </Shadowed>
+                  </NbPaper>
                 </View>
               </View>
             );
@@ -816,10 +848,10 @@ export default function DialogueRoute() {
               answer lands where the waiting was. */}
           {!npcLine && (
             <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginBottom: 8 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
-                <ActivityIndicator color={C} size="small" />
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C }}>{t('dialogue.npcThinking', { name: npcName })}</Text>
-              </View>
+              <NbPaper rot={-0.35} bg="#FCEEDC" style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 12, borderColor: '#E8D2B0' }}>
+                <ActivityIndicator color={nb.ink} size="small" />
+                <Text style={nbText.hand(15, nb.soft)}>{t('dialogue.npcThinking', { name: npcName })}</Text>
+              </NbPaper>
             </View>
           )}
         </ScrollView>
@@ -838,20 +870,19 @@ export default function DialogueRoute() {
             withheld. Asked for per turn, because the situation has moved on. */}
         {hintOn && (
           <View style={{ marginTop: 12 }}>
-            <View style={{ position: 'absolute', left: 3, top: 3, right: -3, bottom: -3, backgroundColor: C }} />
-            <View style={{ backgroundColor: colors.yellow, borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
-              <FIcon name="hint" size={16} />
+            <NbPaper rot={0.4} bg="rgba(249,227,123,.5)" style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
+              <NbIcon name="bulb" size={16} />
               {hintBusy ? (
-                <ActivityIndicator color={C} />
+                <ActivityIndicator color={nb.ink} />
               ) : (
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>
+                <Text style={[nbText.body(12.5), { flex: 1, minWidth: 0 }]}>
                   {hintText || t('dialogue.hintNone')}
                 </Text>
               )}
               <Pressable onPress={() => setHintOn(false)} hitSlop={8}>
-                <FIcon name="cross" size={13} />
+                <NbIcon name="cross" size={13} color={nb.soft} />
               </Pressable>
-            </View>
+            </NbPaper>
           </View>
         )}
 
@@ -923,27 +954,34 @@ export default function DialogueRoute() {
         {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
         {(!hintOn && !scripted && (!guided || wroteOwn || (!choicesBusy && choices.length === 0))) && (
           <View style={{ marginTop: 14 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 5 }}>{rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}</Text>
-            <Shadowed offset={3}>
-              <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            {/* SPEAK FREELY, printed. The label is the one place this screen names the
+                mode, and a mode is a stamp rather than a note. */}
+            <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft, marginBottom: 6 }}>
+              {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}
+            </Text>
+            <NbPaper rot={0} style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <Pressable onPress={toggleMic} disabled={pending}>
-                  <Shadowed offset={2} shadowColor={rec === 'recording' ? '#B91C1C' : colors.mintShadow}>
-                    <View style={{ width: 32, height: 32, backgroundColor: rec === 'recording' ? '#FCA5A5' : colors.mint, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                      {rec === 'transcribing'
-                        ? <ActivityIndicator color={C} size="small" />
-                        : rec === 'recording'
-                          ? <View style={{ width: 12, height: 12, backgroundColor: C }} />
-                          : <FIcon name="mic" size={18} />}
-                    </View>
-                  </Shadowed>
+                  {/* Recording turns the box red and puts a stop square in it; the mic is
+                      a doodle the rest of the time. */}
+                  <View style={{
+                    width: 38, height: 38, borderRadius: 4, borderWidth: 1.7, borderColor: nb.ink,
+                    backgroundColor: rec === 'recording' ? 'rgba(199,81,70,.2)' : 'rgba(95,141,90,.15)',
+                    alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    {rec === 'transcribing'
+                      ? <ActivityIndicator color={nb.ink} size="small" />
+                      : rec === 'recording'
+                        ? <View style={{ width: 12, height: 12, backgroundColor: nb.red }} />
+                        : <NbIcon name="mic" size={20} />}
+                  </View>
                 </Pressable>
                 <TextInput
                   value={draft}
                   onChangeText={setDraft}
                   editable={!pending && rec === 'idle'}
                   placeholder={rec === 'recording' ? t('dialogue.tapMicAgain') : t('dialogue.inputPlaceholder')}
-                  placeholderTextColor={colors.textFaint}
-                  style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C, paddingVertical: 4 }}
+                  placeholderTextColor={nb.placeholder}
+                  style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16, color: nb.ink, paddingVertical: 4 }}
                   onSubmitEditing={() => { void send(); }}
                   returnKeyType="send"
                   multiline
@@ -953,23 +991,21 @@ export default function DialogueRoute() {
                   // the key says it does.
                   submitBehavior="blurAndSubmit"
                 />
-              </View>
-            </Shadowed>
+            </NbPaper>
           </View>
         )}
 
         {/* action rail */}
-        <View style={{ marginTop: 12, flexDirection: 'row', gap: 8 }}>
+        <View style={{ marginTop: 12, flexDirection: 'row', gap: 9 }}>
           <View style={{ flex: 2 }}>
-            <PixelButton label={pending ? t('dialogue.sending') : t('dialogue.send')} icon={pending ? undefined : 'play'} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} paddingV={9} borderWidth={2} offset={2} disabled={pending || !draft.trim()} onPress={send} full />
+            <NbButton variant="ink" full icon={pending ? undefined : 'pencil'} iconColor={nb.paper} disabled={pending || !draft.trim()} onPress={() => { void send(); }}>
+              {pending ? t('dialogue.sending') : t('dialogue.send')}
+            </NbButton>
           </View>
           <View style={{ flex: 1 }}>
-            <PixelButton icon="bulb" label={t('dialogue.hint')} bg={hintOn ? colors.yellow : '#fff'} shadowColor={hintOn ? colors.yellowShadow : C} fontSize={12} paddingV={9} borderWidth={2} offset={2} onPress={askHint} full />
-            {hintOn && (
-              <View style={{ position: 'absolute', top: -6, right: -6, width: 14, height: 14, backgroundColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.yellow }}>●</Text>
-              </View>
-            )}
+            <NbButton variant={hintOn ? 'yellow' : 'paper'} full icon="bulb" onPress={askHint}>
+              {t('dialogue.hint')}
+            </NbButton>
           </View>
           {/* 핵심 표현 발음 연습 lived here and has been removed. It sent the learner
               OUT of a conversation they were in the middle of, to drill a phrase from the
@@ -979,18 +1015,13 @@ export default function DialogueRoute() {
               Practising a phrase you were handed is a weaker exercise than practising the
               sentence you chose yourself. */}
           {quizIds.length > 0 && (
-            <PixelButton
-              icon="note"
-              label={quizIds.length > 1 ? `${quizIds.length}` : ''}
-              bg="#fff"
-              shadowColor={C}
-              fontSize={12}
-              paddingV={9}
-              paddingH={12}
-              borderWidth={2}
-              offset={2}
+            <NbButton
+              variant="paper"
+              icon="board"
               onPress={() => router.push(`/quiz/${quizIds[0]}?scenario=${id}&q=${quizIds.join(',')}&i=0`)}
-            />
+            >
+              {quizIds.length > 1 ? `${quizIds.length}` : ' '}
+            </NbButton>
           )}
         </View>
       </Animated.View>
@@ -998,32 +1029,19 @@ export default function DialogueRoute() {
           누르면 지금까지의 대화로 채점하고, 계속을 누르면 다시 묻지 않는다. */}
       <BottomSheet visible={wrapUp} onClose={() => setWrapUp(false)}>
         <View style={{ padding: 18, gap: 12 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{t('dialogue.wrapUpTitle')}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.text, lineHeight: 18 }}>{t('dialogue.wrapUpBody')}</Text>
-          <View style={{ flexDirection: 'row', gap: 8 }}>
-            <PixelButton
-              label={t('dialogue.wrapUpKeepGoing')}
-              bg="#fff"
-              shadowColor={C}
-              fontSize={12}
-              paddingV={9}
-              borderWidth={2}
-              offset={2}
-              onPress={() => setWrapUp(false)}
-              style={{ flex: 1 }}
-            />
-            <PixelButton
-              icon="check"
-              label={t('dialogue.wrapUpFinish')}
-              bg={colors.mint}
-              shadowColor={colors.mintShadow}
-              fontSize={12}
-              paddingV={9}
-              borderWidth={2}
-              offset={2}
-              onPress={() => { setWrapUp(false); endSituation(); }}
-              style={{ flex: 1 }}
-            />
+          <Text style={nbText.hand(20)}>{t('dialogue.wrapUpTitle')}</Text>
+          <Text style={nbText.body(12.5, nb.soft)}>{t('dialogue.wrapUpBody')}</Text>
+          <View style={{ flexDirection: 'row', gap: 9 }}>
+            <View style={{ flex: 1 }}>
+              <NbButton variant="paper" full onPress={() => setWrapUp(false)}>
+                {t('dialogue.wrapUpKeepGoing')}
+              </NbButton>
+            </View>
+            <View style={{ flex: 1 }}>
+              <NbButton variant="ink" full icon="check" iconColor={nb.paper} onPress={() => { setWrapUp(false); endSituation(); }}>
+                {t('dialogue.wrapUpFinish')}
+              </NbButton>
+            </View>
           </View>
         </View>
       </BottomSheet>
@@ -1052,9 +1070,13 @@ export default function DialogueRoute() {
               </View>
             );
           })()}
-          <View style={{ gap: 8 }}>
-            <PixelButton label={t('dialogue.resume')} icon="play" bg={colors.mint} shadowColor={colors.mintShadow} full onPress={() => { void resumePrevious(); }} />
-            <PixelButton label={t('dialogue.restart')} icon="refresh" bg="#fff" shadowColor={C} full onPress={() => { void startFresh(); }} />
+          <View style={{ gap: 9 }}>
+            <NbButton variant="ink" full icon="pencil" iconColor={nb.paper} onPress={() => { void resumePrevious(); }}>
+              {t('dialogue.resume')}
+            </NbButton>
+            <NbButton variant="paper" full icon="compass" onPress={() => { void startFresh(); }}>
+              {t('dialogue.restart')}
+            </NbButton>
           </View>
         </View>
       </BottomSheet>
@@ -1074,31 +1096,18 @@ export default function DialogueRoute() {
           <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.text, lineHeight: 19, marginBottom: 16 }}>
             {t('dialogue.exitBody', { name: npcName })}
           </Text>
-          <View style={{ gap: 8 }}>
-            <PixelButton
-              label={t('dialogue.stay')}
-              icon="play"
-              bg={colors.mint}
-              shadowColor={colors.mintShadow}
-              full
-              onPress={() => setPagedOut(false)}
-            />
-            <PixelButton
-              label={t('dialogue.exitKeep')}
-              icon="x"
-              bg="#fff"
-              shadowColor={C}
-              full
-              onPress={() => { setPagedOut(false); router.back(); }}
-            />
-            <PixelButton
-              label={t('dialogue.exitDiscard')}
-              icon="trash"
-              bg={colors.peach}
-              shadowColor={colors.peachShadow}
-              full
-              onPress={() => { void leaveAndDiscard(); }}
-            />
+          <View style={{ gap: 9 }}>
+            <NbButton variant="ink" full icon="pencil" iconColor={nb.paper} onPress={() => setPagedOut(false)}>
+              {t('dialogue.stay')}
+            </NbButton>
+            <NbButton variant="paper" full icon="cross" onPress={() => { setPagedOut(false); router.back(); }}>
+              {t('dialogue.exitKeep')}
+            </NbButton>
+            {/* Throwing the conversation away is the one destructive choice on this sheet,
+                so it is the one drawn in red pen. */}
+            <NbButton variant="danger" full onPress={() => { void leaveAndDiscard(); }}>
+              {t('dialogue.exitDiscard')}
+            </NbButton>
             <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, textAlign: 'center' }}>
               {t('dialogue.exitDiscardNote')}
             </Text>
@@ -1121,6 +1130,18 @@ function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: 
   );
 }
 
+/** The notebook's ruled lines, behind everything. */
+function Rules() {
+  const { height } = useWindowDimensions();
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+      {Array.from({ length: Math.ceil(height / RULE_H) }).map((_, i) => (
+        <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+      ))}
+    </View>
+  );
+}
+
 /** Portrait frame with a name plate (and optional red status chip).
  *
  *  Two things move with the divider the learner drags:
@@ -1137,7 +1158,6 @@ function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: 
 function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBeside = false, aside }: { children: React.ReactNode; name: string; status?: string; hue?: string; sweat?: boolean; scale?: number; nameBeside?: boolean; aside?: React.ReactNode }) {
   const w = Math.round(110 * scale);
   const h = Math.round(130 * scale);
-  const inset = Math.max(3, Math.round(6 * scale));
   return (
     // Frame-sized in BOTH modes, which is what keeps the portrait centred.
     //
@@ -1147,24 +1167,25 @@ function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBesi
     // like. The plate is positioned out of the layout instead: it hangs to the left and
     // takes no space, so the frame stays where it was and only gets smaller.
     <View>
-      {/* Exactly the frame's height, so anything centred against this box is centred on
-          the drawing — including `aside`, which must not be measured against the stacked
-          plate below. */}
       <View>
-        <Shadowed offset={4}>
-          <View style={{ width: w, height: h, backgroundColor: hue || colors.peach, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-            <View style={{ position: 'absolute', left: inset, top: inset, right: inset, bottom: inset, backgroundColor: 'rgba(255,255,255,0.5)' }} />
+        {/* A polaroid taped to the page: the border is the print's own margin, and the
+            tape is what holds it there. The pixel line drew a bordered frame with a hard
+            offset shadow — the same information, in the other language. */}
+        <NbPaper rot={-1.5} tape tapeLeft={Math.round(w / 2) - 29} style={{ paddingTop: 8, paddingHorizontal: 8, paddingBottom: 4 }}>
+          <View style={{ width: w, height: h, backgroundColor: hue || '#F6E3DC', overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
             {children}
           </View>
-        </Shadowed>
+        </NbPaper>
         {sweat && (
           <View style={{ position: 'absolute', top: 2, right: -8, zIndex: 4 }}>
-            <PixelIcon name="droplet" color={colors.blue} size={18} sw={1.8} />
+            <Svg viewBox="0 0 24 24" width={18} height={18}>
+              <Path d="M12 4 Q17 12 17 15 A5 5 0 0 1 7 15 Q7 12 12 4 Z" fill="rgba(74,111,165,.35)" stroke={nb.blue} strokeWidth="1.6" strokeLinejoin="round" />
+            </Svg>
           </View>
         )}
         {/* Off the frame's right edge, vertically centred ON THE FRAME. `top: 0,
-            bottom: 0` rather than a computed offset: the button's own height then does
-            not have to be known here, and it stays centred when the frame scales. */}
+            bottom: 0` rather than a computed offset: the button's own height then does not
+            have to be known here, and it stays centred when the frame scales. */}
         {!!aside && (
           <View testID="portrait-aside" style={{ position: 'absolute', right: -38, top: 0, bottom: 0, justifyContent: 'center' }}>
             {aside}
@@ -1172,27 +1193,21 @@ function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBesi
         )}
       </View>
 
-      {/* The name and mood. Under the frame when there is room; hanging off its LEFT edge
-          when there is not — out of the layout, so the frame does not move. Right is
-          taken: that is where the voice toggle lives. */}
+      {/* The name STAMPED — typed, not written: a name band on a photo is printed, and it
+          is the one label on this screen that must never wrap (07's 재발 방지 note).
+          Under the frame when there is room; hanging off its LEFT edge when there is not —
+          out of the layout, so the frame does not move. Right is taken: that is where the
+          voice toggle lives. */}
       <View
         testID="portrait-plate"
         style={nameBeside
-          ? { position: 'absolute', right: w + 10, top: 0, bottom: 0, justifyContent: 'center', alignItems: 'flex-end', gap: 4 }
-          : { marginTop: 6, alignItems: 'flex-start', gap: 4 }}
+          ? { position: 'absolute', right: w + 22, top: 0, bottom: 0, justifyContent: 'center', alignItems: 'flex-end', gap: 6 }
+          : { marginTop: 8, alignItems: 'flex-start', gap: 6 }}
       >
-        <Shadowed offset={2}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{name}</Text>
-          </View>
-        </Shadowed>
-        {!!status && (
-          <Shadowed offset={2}>
-            <View style={{ backgroundColor: '#EF4444', borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{status}</Text>
-            </View>
-          </Shadowed>
-        )}
+        <NbPaper rot={-2} style={{ paddingVertical: 3, paddingHorizontal: 9 }}>
+          <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 11, color: nb.ink }}>{name}</Text>
+        </NbPaper>
+        {!!status && <NbTag color={nb.red} fill rot={-2}>{status}</NbTag>}
       </View>
     </View>
   );

@@ -107,6 +107,18 @@ test('picking fills the box; it does not leave the screen', () => {
   expect(mockSounds).toEqual(['tap']);
 });
 
+test('the mic zone is drawn, not just positioned', () => {
+  // It is found by geometry elsewhere in this file, which passes on an empty yellow
+  // rectangle. A learner needs to see a microphone there — the zone exists so speaking is
+  // a decision rather than a consequence of choosing.
+  const tree = mount();
+  const mics = tree.root.findAll(
+    (n) => typeof n.type !== 'string' && (n.type as { name?: string })?.name === 'NbIcon' && n.props?.name === 'mic',
+    { deep: true },
+  );
+  expect(mics.length).toBe(CHOICES.length);
+});
+
 test('the mic is its own zone, and that is what opens practice', () => {
   const picked: ReplyChoice[] = [];
   const spoken: ReplyChoice[] = [];
@@ -122,23 +134,19 @@ test('the mic is its own zone, and that is what opens practice', () => {
 
 test('a card presses', () => {
   // Without it there was no sign a tap had landed.
+  //
+  // v29 reads it off the Pressable's OWN pressed state rather than a piece of component
+  // state driven by onPressIn/onPressOut. Same movement, and it can no longer be
+  // forgotten by a card that renders itself out of a plain View.
   const tree = mount();
   const card = press(tree.root, CHOICES[0].text);
-  // Scoped to the card that holds THIS sentence: several views carry a transform, and
-  // reading the first one found says nothing about the card being pressed.
-  const face = () => {
-    const hit = tree.root.findAll((n) => {
-      const st = Array.isArray(n.props?.style) ? Object.assign({}, ...n.props.style) : (n.props?.style ?? {});
-      return String(n.type) === 'View' && Array.isArray(st.transform) && texts(n).includes(CHOICES[0].text);
-    }, { deep: true })[0];
-    const st = Array.isArray(hit.props.style) ? Object.assign({}, ...hit.props.style) : hit.props.style;
-    return (st.transform as { translateX: number }[])[0].translateX;
+  expect(typeof card.props.style).toBe('function');
+  const at = (pressed: boolean) => {
+    const st = card.props.style({ pressed }) as { transform?: { translateY?: number }[] };
+    return st.transform ?? [];
   };
-  expect(face()).toBe(0);
-  act(() => { card.props.onPressIn(); });
-  expect(face()).toBeGreaterThan(0);
-  act(() => { card.props.onPressOut(); });
-  expect(face()).toBe(0);
+  expect(at(false)).toEqual([]);
+  expect(at(true)).toEqual(expect.arrayContaining([{ translateY: 2 }]));
 });
 
 test('the list is capped and can be folded away', () => {

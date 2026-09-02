@@ -83,13 +83,13 @@ test('the input rises with the keyboard, by its measured height', () => {
 test('the background ivory grows to fill the screen as the thread rises', () => {
   // Ivory underneath, the department wash on top, fading as the thread rises — so the
   // colour the conversation sits on grows instead of leaving a band above it.
-  expect(SRC).toMatch(/backgroundColor: colors\.cream \}\} \/>/);
+  expect(SRC).toMatch(/backgroundColor: nb\.cream \}\} \/>/);
   // The fade and the height are on SEPARATE nodes. They have to be: opacity runs on the
   // native driver and height cannot, and on one node RN moves the whole style to native
   // and then throws the first time the keyboard opens. Both halves are asserted here
   // because the pairing is the invariant — the height's own value is driven and checked
   // in screentests/dialogueResize.
-  expect(SRC).toMatch(/<Animated\.View style=\{\{ opacity: chromeOpacity \}\}>\s*<Animated\.View testID="wash-band" style=\{\{ height: threadTopStyle, backgroundColor: wash \}\} \/>/);
+  expect(SRC).toMatch(/<Animated\.View style=\{\{ opacity: chromeOpacity \}\}>[\s\S]{0,900}?<Animated\.View testID="wash-band" style=\{\{ height: threadTopStyle, backgroundColor: wash,/);
 });
 
 test('the listeners are removed on unmount', () => {
