@@ -18,7 +18,7 @@ import { api, type Progress, type Curriculum, type CurriculumBuilding, type Curr
 import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, deptCodeOf, floorDeptCode, floorPlace } from '@/data/campus';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbInkStamp, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, nb, nbFonts, TOP_INSET } from '@/theme/nb';
 import { ExploreButton, FloorList } from '@/components/campus/FloorList';
 import { useIsActiveTab } from '@/lib/nav';
 import { searchCampus, type CampusHit } from '@/data/campusSearch';
@@ -162,7 +162,7 @@ export default function Campus() {
       {/* ── the notebook's own heading, on the page rather than in a bar ──
           A separate header band with its own border is a chrome the paper line does not
           have: on paper the title is just the first thing written. */}
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 10, paddingBottom: 30 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 30 }}>
         <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
           <Text style={nbText.hand(30)}>{t('campus.nbTitle')}</Text>
           <View style={{ marginLeft: 8 }}>

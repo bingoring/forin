@@ -95,7 +95,15 @@ test('상황 종료 is centred on the SCREEN, in the same top row as the exit', 
   // width. It is its own child of the status row now, pinned across the full width so
   // the centre is the screen's centre.
   const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
-  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center'/);
+  // `top: 0`, and that number is the whole point of this assertion.
+  //
+  // It used to read 52 — and this test pinned the 52 while its own comment claimed to be
+  // guarding that the chip PRESSES. Yoga positions an absolute child from the parent's
+  // content box, so 52 hung the chip 52pt below the status row's bounds: it drew fine and
+  // neither platform hit-tests a child outside its parent, so the button was dead. jest
+  // has no layout engine and cannot catch that from the rendered tree, so what is checked
+  // is the offset itself: this chip lives on the row's own line.
+  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 0, alignItems: 'center'/);
   // v29 draws it as a paper card in the nurse's own hand rather than a PixelButton. What
   // has to hold is that it is the same control, in the same place, and that it presses —
   // a label with no press was the original complaint about this row.

@@ -250,6 +250,8 @@ export const en: Record<string, string> = {
   'dialogue.voiceOff': 'Voice off',
   'dialogue.tabChart': 'Chart', 'dialogue.tabMeds': 'Meds', 'dialogue.tabVitals': 'Vitals',
   'dialogue.chartTitle': 'Patient chart', 'dialogue.medsTitle': 'Medication', 'dialogue.vitalsTitle': 'Vital signs',
+  'dialogue.noMeds': 'No medication is on the chart. Confirm it with the patient yourself.',
+  'dialogue.noVitals': 'No vitals recorded yet. Assess them yourself.',
   'dialogue.sourceEn': 'Original English',
   'dialogue.translation': 'Translation',
   'dialogue.showSource': 'Show original',
@@ -491,8 +493,6 @@ export const en: Record<string, string> = {
   'boot.waking': 'Waking the server up · just a moment',
   'login.terms': 'By continuing you agree to the Terms and the Privacy Policy',
   'login.devBypass': 'Developer sign-in (look around)',
-  'login.welcomeBack': 'Time to clock back in',
-  'login.welcomeBackSub': 'Sign in with the account you used and you pick up where you left off',
 
   'settings.account.signOutConfirm': 'Sign out on this device?\nYour learning history stays if you sign back in.',
   'settings.account.signOutFailed': 'Sign-out failed',

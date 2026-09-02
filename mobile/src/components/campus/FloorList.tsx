@@ -129,12 +129,6 @@ function FloorRow({ floor, building, focused, onOpenFloor }: {
   const resuming = floor.curricula.some((c) => c.resume);
   const starred = useIsFloorFavorite({ building, floor: floor.floor });
   const done = floor.curricula.filter((c) => c.state === 'done').length;
-  // A floor nobody has opened yet. Dimmed rather than hidden: the point of the list is
-  // that you can see where the path goes.
-  //
-  // 'todo' for every curriculum, not a lock — the server has no locked state on a
-  // curriculum (only steps lock), so "untouched" is what dimming can honestly mean here.
-  const untouched = floor.curricula.length > 0 && floor.curricula.every((c) => c.state === 'todo');
 
   return (
     <Pressable
@@ -145,7 +139,10 @@ function FloorRow({ floor, building, focused, onOpenFloor }: {
         // Focused beats resuming: you were just sent here, and that is the row you are
         // looking for. It fades on the next tap, because focus is cleared then.
         backgroundColor: focused ? 'rgba(249,227,123,.45)' : resuming ? 'rgba(249,227,123,.25)' : 'transparent',
-        opacity: untouched && !focused ? 0.55 : 1,
+        // No dimming for an untouched floor. Every floor is open from the first day —
+        // dimming the ones nobody has started said "not yet", which is exactly what the
+        // learner has to know is false about this list. Grey belongs to the CURRICULUM
+        // rows inside the sheet, where a step really can be locked.
       }}
     >
       <NbInkStamp>{floor.floor}</NbInkStamp>

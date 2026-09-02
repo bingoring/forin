@@ -249,6 +249,8 @@ export const ja: Record<string, string> = {
   'dialogue.voiceOff': '音声オフ',
   'dialogue.tabChart': 'チャート', 'dialogue.tabMeds': '薬剤', 'dialogue.tabVitals': 'バイタル',
   'dialogue.chartTitle': '患者チャート', 'dialogue.medsTitle': '投薬情報', 'dialogue.vitalsTitle': 'バイタルサイン',
+  'dialogue.noMeds': '確認された処方薬がありません。口頭で直接確認してください。',
+  'dialogue.noVitals': 'バイタルサインがまだ測定されていません。直接評価してください。',
   'dialogue.sourceEn': '原文 English',
   'dialogue.translation': '日本語訳',
   'dialogue.showSource': '原文を見る',
@@ -490,8 +492,6 @@ export const ja: Record<string, string> = {
   'boot.waking': 'サーバーを起こしています · 少しお待ちください',
   'login.terms': '続けると利用規約・プライバシーポリシーに同意したことになります',
   'login.devBypass': '開発者ログイン（見て回る）',
-  'login.welcomeBack': 'また出勤する時間です',
-  'login.welcomeBackSub': '使っていたアカウントで入ると、続きから進みます',
 
   'settings.account.signOutConfirm': 'この端末からログアウトしますか？\n再度ログインすれば学習記録はそのままです。',
   'settings.account.signOutFailed': 'ログアウト失敗',

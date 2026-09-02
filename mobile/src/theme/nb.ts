@@ -70,6 +70,17 @@ export const cover = {
   creamFaint: 'rgba(243,230,200,.55)',
 } as const;
 
+/**
+ * How far below the top of the screen a page's first line sits.
+ *
+ * The notebook screens draw their own headers inside a ScrollView rather than using a
+ * navigation bar, so nothing reserves the status bar for them — without this the title
+ * lands under the notch. 52 is what every screen in the app has used since the pixel line;
+ * it is a floor rather than a measurement, and a screen that needs the exact inset should
+ * read it from react-native-safe-area-context instead.
+ */
+export const TOP_INSET = 52;
+
 /** The ruled lines: one every 28pt, the line itself 1pt. */
 export const RULE_H = 28;
 export const RULE_COLOR = 'rgba(62,54,43,.06)';

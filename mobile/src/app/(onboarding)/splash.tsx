@@ -16,11 +16,15 @@ import { BootSplash } from '@/components/BootSplash';
  *  waits for it. */
 const HOLD_MS = 1400;
 
+/** Where it hands over: the passport, whose COVER is the sign-in (v31 flow page 0). There
+ *  is no separate login route — one door in, and it is the one the fiction opens with. */
+const NEXT = '/passport' as const;
+
 export default function Splash() {
   const router = useRouter();
 
   useEffect(() => {
-    const timer = setTimeout(() => router.replace('/passport'), HOLD_MS);
+    const timer = setTimeout(() => router.replace(NEXT), HOLD_MS);
     return () => clearTimeout(timer);
   }, [router]);
 

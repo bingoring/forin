@@ -512,6 +512,12 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
           // A cut edge of paper, not a 4pt ink outline: the sheet is a sheet.
           borderTopWidth: 1.5,
           borderTopColor: nb.paperEdge,
+          // Curved at the top two corners, as the handoff draws it. `overflow: hidden` is
+          // what makes the radius actually clip the header's own background — without it
+          // the child paints square corners over the rounded parent.
+          borderTopLeftRadius: 18,
+          borderTopRightRadius: 18,
+          overflow: 'hidden',
           // `y` is the sheet's own position (0 = resting, restH = gone); `kbLift` is how
           // far the keyboard has pushed it up. Subtracting keeps the two independent —
           // the drag still speaks in the same numbers it always did, and the offscreen

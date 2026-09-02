@@ -18,7 +18,7 @@ import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteA
 import { RoleFace, type RoleKind, type Expression } from '@engine';
 import Svg, { Path } from 'react-native-svg';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbGrabber, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbGrabber, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { api, type ReplyChoice, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
@@ -623,7 +623,12 @@ export default function DialogueRoute() {
             left it, which drifted as the chip's count changed and read as "almost
             centred". Pinned across the full width it is centred on the screen, full
             stop. pointerEvents box-none so the row's own children stay tappable. */}
-        <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center' }}>
+        {/* `top: 0`, not 52. Yoga positions an absolute child from the parent's CONTENT
+            box, so 52 put this chip 52pt BELOW the row it belongs to — hanging outside
+            the row's bounds, where it still rendered but could not be tapped at all
+            (neither platform hit-tests a child outside its parent). 0 is the row's own
+            line, which is where "centred across the row" meant to put it. */}
+        <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 0, alignItems: 'center' }}>
           <Animated.View style={{ opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
             <Pressable onPress={endSituation} hitSlop={6}>
               {({ pressed }) => (
@@ -693,19 +698,23 @@ export default function DialogueRoute() {
         </PortraitFrame>
       </Animated.View>
 
-      {/* QUICK INFO panel — modal card over a scrim */}
+      {/* QUICK INFO — the chart, pulled out and held up.
+          A taped sheet of paper over a dimmed page, not a pixel card on a navy scrim: the
+          learner is looking at the same notebook, with one page raised. Tapping the page
+          behind puts it back. */}
       {tool && (
-        <Pressable onPress={() => setTool(null)} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(31,41,55,0.55)', zIndex: 20, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+        <Pressable onPress={() => setTool(null)} style={styles.quickScrim}>
           <Pressable onPress={() => {}} style={{ alignSelf: 'stretch' }}>
-            <Shadowed offset={5}>
-              <View style={{ backgroundColor: nb.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{tool === 'chart' ? t('dialogue.chartTitle') : tool === 'meds' ? t('dialogue.medsTitle') : t('dialogue.vitalsTitle')}</Text>
-                  <Pressable onPress={() => setTool(null)} hitSlop={8}><NbIcon name="cross" size={15} color={nb.soft} /></Pressable>
-                </View>
-                <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
+            <NbPaper rot={-0.6} tape tapeLeft={120} style={{ paddingTop: 18, paddingBottom: 16, paddingHorizontal: 16 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <NbIcon name={tool === 'chart' ? 'board' : tool === 'meds' ? 'pill' : 'monitor'} size={19} />
+                <Text numberOfLines={1} style={[nbText.hand(21), { flex: 1, minWidth: 0 }]}>
+                  {tool === 'chart' ? t('dialogue.chartTitle') : tool === 'meds' ? t('dialogue.medsTitle') : t('dialogue.vitalsTitle')}
+                </Text>
+                <Pressable onPress={() => setTool(null)} hitSlop={10}><NbIcon name="cross" size={16} color={nb.soft} /></Pressable>
               </View>
-            </Shadowed>
+              <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
+            </NbPaper>
           </Pressable>
         </Pressable>
       )}
@@ -1246,30 +1255,32 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
       [t('dialogue.allergies'), chart?.allergies || t('dialogue.toVerify')],
     ];
     return (
-      <View style={{ gap: 6 }}>
+      <View>
         {rows.map(([k, v], i) => (
-          <View key={i} style={{ flexDirection: 'row', gap: 8 }}>
-            <Text style={{ width: 68, fontFamily: nbFonts.hand, fontSize: 14.9, color: nb.soft }}>{k}</Text>
-            <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{v}</Text>
+          <View key={i} style={[styles.chartRow, i > 0 && styles.chartDivider]}>
+            {/* The field name is printed — it is a form's label, not something the nurse
+                wrote — and the value is in her hand. */}
+            <Text numberOfLines={1} style={styles.chartKey}>{k}</Text>
+            <Text style={[nbText.hand(16), { flex: 1, minWidth: 0 }]}>{v}</Text>
           </View>
         ))}
         {!!(chart?.notes || brief) && (
-          <View style={{ marginTop: 4, backgroundColor: nb.paper, borderWidth: 1.5, borderColor: '#2A252244', borderStyle: 'dashed', padding: 8 }}>
-            <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, lineHeight: 16 }}>{chart?.notes || brief}</Text>
-          </View>
+          <NbMemo color={nb.blue} rot={0.3} style={{ marginTop: 10 }}>
+            <Text style={nbText.hand(14.5)}>{chart?.notes || brief}</Text>
+          </NbMemo>
         )}
       </View>
     );
   }
   if (tool === 'meds') {
     const meds = chart?.meds ?? [];
-    if (meds.length === 0) return <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: nb.soft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요.</Text>;
+    if (meds.length === 0) return <Text style={nbText.hand(15, nb.soft)}>{t('dialogue.noMeds')}</Text>;
     return (
-      <View style={{ gap: 6 }}>
+      <View>
         {meds.map((m, i) => (
-          <View key={i} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
-            <FIcon name="pill" size={14} />
-            <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{m}</Text>
+          <View key={i} style={[styles.chartRow, i > 0 && styles.chartDivider]}>
+            <NbIcon name="pill" size={15} />
+            <Text style={[nbText.hand(16), { flex: 1, minWidth: 0 }]}>{m}</Text>
           </View>
         ))}
       </View>
@@ -1277,15 +1288,17 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   }
   // vitals
   const vitals = chart?.vitals ?? [];
-  if (vitals.length === 0) return <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: nb.soft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요.</Text>;
+  if (vitals.length === 0) return <Text style={nbText.hand(15, nb.soft)}>{t('dialogue.noVitals')}</Text>;
   return (
-    <View style={{ flexDirection: 'row', gap: 6 }}>
+    <View style={{ flexDirection: 'row', gap: 7 }}>
       {vitals.map((v, i) => (
-        <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FEE2E2' : nb.paper, borderWidth: 1.5, borderColor: C, paddingVertical: 6, alignItems: 'center' }}>
-          <Text style={{ fontFamily: nbFonts.hand, fontSize: 10.8, color: nb.soft }}>{v.label}</Text>
-          <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
-          {!!v.unit && <Text style={{ fontFamily: nbFonts.body, fontSize: 8, color: nb.soft, marginTop: 1 }}>{v.unit}</Text>}
-        </View>
+        <NbPaper key={i} rot={i % 2 ? 0.8 : -0.8} bg={v.warn ? '#FFF0EC' : undefined} style={styles.vital}>
+          <Text numberOfLines={1} style={styles.vitalLabel}>{v.label}</Text>
+          {/* Printed: a vital sign is a reading off a machine. An out-of-range one is in
+              red pen, which is the only place this panel uses it. */}
+          <Text numberOfLines={1} style={[styles.vitalValue, v.warn && { color: nb.red }]}>{v.value}</Text>
+          {!!v.unit && <Text numberOfLines={1} style={styles.vitalUnit}>{v.unit}</Text>}
+        </NbPaper>
       ))}
     </View>
   );
@@ -1299,3 +1312,19 @@ function roleLabel(t: Translate, kind: RoleKind): string {
 
 const ROLE_KINDS = new Set<RoleKind>(['nurse', 'doctor', 'surgeon', 'paramedic', 'police', 'patient', 'child', 'parent', 'visitor', 'pharmacist']);
 const EXPRESSIONS = new Set<Expression>(['neutral', 'derp', 'happy', 'sad', 'worried', 'pain', 'surprised', 'angry', 'thinking', 'sleepy', 'panic', 'focused', 'shy']);
+
+const styles = {
+  /** The page behind, dimmed with the notebook's own dark rather than a navy wash. */
+  quickScrim: {
+    position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 20,
+    backgroundColor: 'rgba(46,40,35,.55)',
+    alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24,
+  } as const,
+  chartRow: { flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 7 } as const,
+  chartDivider: { borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.15)' } as const,
+  chartKey: { width: 62, flexShrink: 0, fontFamily: nbFonts.mono, fontSize: 9, color: nb.soft, letterSpacing: 0.5 } as const,
+  vital: { flex: 1, paddingVertical: 7, alignItems: 'center' } as const,
+  vitalLabel: { fontFamily: nbFonts.mono, fontSize: 8.5, color: nb.soft, letterSpacing: 0.5 } as const,
+  vitalValue: { fontFamily: nbFonts.monoBold, fontSize: 17, color: nb.ink, marginTop: 2 } as const,
+  vitalUnit: { fontFamily: nbFonts.mono, fontSize: 8, color: nb.soft } as const,
+};

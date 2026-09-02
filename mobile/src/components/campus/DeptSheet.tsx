@@ -23,7 +23,7 @@ import Svg, { Path } from 'react-native-svg';
 import { api, type Curriculum, type DeptSituation } from '@/api/client';
 import { BottomSheet } from '@/components/BottomSheet';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
-import { NbButton, NbGrabber, NbMark, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbMark, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { STEP_META, type StepKind } from '@/data/campus';
 import { nb, nbFonts } from '@/theme/nb';
 import { t, useLocale, useT } from '@/i18n';
@@ -123,9 +123,10 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
       // The place name drags the sheet along with the grabber. It matters more here than
       // on a short sheet: this one opens at the top of the screen, so the strip is as far
       // from the thumb as a control gets.
+      // No grabber in here, either: BottomSheet draws one above every header it is given,
+      // and this used to add a second directly under it — two handles for one drag.
       header={target ? (
-        <View style={{ backgroundColor: nb.cream, paddingTop: 2, paddingHorizontal: 20, paddingBottom: 10 }}>
-          <NbGrabber style={{ marginTop: 2, marginBottom: 8 }} />
+        <View style={{ paddingTop: 2, paddingHorizontal: 20, paddingBottom: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
             {/* A small card with the ward's own doodle, tilted — the pixel version put a
                 coloured square with a pin in it, which said "a place" and not which. */}

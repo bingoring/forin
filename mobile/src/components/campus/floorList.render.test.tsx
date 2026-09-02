@@ -105,6 +105,30 @@ beforeEach(async () => {
   await loadFavorites();
 });
 
+it('a floor nobody has started is NOT dimmed', async () => {
+  // Every floor is open from the first day. The list used to dim a floor whose curricula
+  // were all `todo` — which reads as "not yet", the one thing the learner has to know is
+  // false here. Grey belongs to the curriculum rows inside the sheet, where a step really
+  // can be locked. (The fixture's only curriculum is `todo`, so this row is exactly that
+  // case.)
+  let tree!: ReturnType<typeof create>;
+  await act(async () => {
+    tree = track(create(<FloorList buildings={BUILDINGS} onOpenFloor={() => {}} />));
+  });
+  const shown = (n: ReactTestInstance) => n
+    .findAll((x) => String(x.type) === 'Text', { deep: true })
+    .flatMap((x) => x.children.filter((c): c is string => typeof c === 'string'))
+    .join(' ');
+  const row = tree.root.findAll(
+    (n) => typeof n.props?.onPress === 'function' && shown(n).includes('중환자실'),
+    { deep: true },
+  )[0];
+  expect(row).toBeDefined();
+  const st = row.props.style;
+  const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
+  expect((flat?.opacity as number) ?? 1).toBe(1);
+});
+
 it('fills the star the moment it is tapped', async () => {
   let tree!: ReturnType<typeof create>;
   await act(async () => {

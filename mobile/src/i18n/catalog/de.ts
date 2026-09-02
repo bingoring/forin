@@ -249,6 +249,8 @@ export const de: Record<string, string> = {
   'dialogue.voiceOff': 'Stimme aus',
   'dialogue.tabChart': 'Kurve', 'dialogue.tabMeds': 'Medikation', 'dialogue.tabVitals': 'Vitalwerte',
   'dialogue.chartTitle': 'Patientenkurve', 'dialogue.medsTitle': 'Medikation', 'dialogue.vitalsTitle': 'Vitalzeichen',
+  'dialogue.noMeds': 'Keine Medikation in der Akte. Bestätigen Sie sie selbst mündlich.',
+  'dialogue.noVitals': 'Noch keine Vitalwerte erfasst. Erheben Sie sie selbst.',
   'dialogue.sourceEn': 'Original English',
   'dialogue.translation': 'Übersetzung',
   'dialogue.showSource': 'Original anzeigen',
@@ -490,8 +492,6 @@ export const de: Record<string, string> = {
   'boot.waking': 'Der Server wacht auf · einen Moment bitte',
   'login.terms': 'Wenn Sie fortfahren, stimmen Sie den Nutzungsbedingungen und der Datenschutzerklärung zu',
   'login.devBypass': 'Entwickler-Anmeldung (umsehen)',
-  'login.welcomeBack': 'Zeit für die nächste Schicht',
-  'login.welcomeBackSub': 'Melden Sie sich mit Ihrem bisherigen Konto an — es geht dort weiter, wo Sie aufgehört haben',
 
   'settings.account.signOutConfirm': 'Auf diesem Gerät abmelden?\nDein Lernverlauf bleibt, wenn du dich wieder anmeldest.',
   'settings.account.signOutFailed': 'Abmelden fehlgeschlagen',

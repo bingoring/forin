@@ -8,7 +8,7 @@ import { useRouter } from 'expo-router';
 import { api, type ModelAnswerGroup, type ModelAnswerSort } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbChip, NbIndexTabs, NbPaper, nbText } from '@/components/nb/NbUI';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { ModelAnswerGroupRow } from '@/components/model/ModelAnswerGroupRow';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useT } from '@/i18n';
@@ -252,7 +252,10 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: nb.cream },
   embedded: { flex: 1, backgroundColor: nb.cream },
   embeddedBody: { paddingBottom: 40, paddingHorizontal: 20 },
-  embeddedHeader: { paddingTop: 4, paddingBottom: 9, gap: 9 },
+  // TOP_INSET, not 4: this header IS the top of the screen in the review lab (the tab
+  // renders the list itself), so it carries the status bar the way every other page does.
+  // The port dropped it to 4 and both tabs slid under the notch.
+  embeddedHeader: { paddingTop: TOP_INSET, paddingBottom: 9, gap: 9 },
   header: {
     // No fixed height — see the speak list for why the handoff's 186 does not port.
     paddingTop: 52,

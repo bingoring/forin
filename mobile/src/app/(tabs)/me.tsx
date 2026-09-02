@@ -159,7 +159,11 @@ export default function Me() {
           setSigningOut(true);
           try {
             await signOut();
-            router.replace('/login');
+            // The passport's COVER is the app's only sign-in surface (v31 flow page 0):
+            // green, gold, three provider buttons. Signing out used to land on a second,
+            // paper-coloured login screen, so the first thing after signing out was a
+            // door that did not look like the one everyone came in through.
+            router.replace('/passport');
           } catch {
             setSigningOut(false);
             Alert.alert(t('settings.account.signOutFailed'), t('common.retryHint'));

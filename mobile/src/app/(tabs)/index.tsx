@@ -24,7 +24,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-nati
 import { useFocusEffect, useRouter } from 'expo-router';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { api, type Home, type HomePage } from '@/api/client';
 import { useLocale, useT } from '@/i18n';
@@ -150,7 +150,7 @@ export default function HomeTab() {
 
   return (
     <Sheet>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 12, paddingBottom: 30 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 30 }}>
         {/* The heading, and the streak stamped in the corner. */}
         <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
           <View style={{ flex: 1, minWidth: 0 }}>

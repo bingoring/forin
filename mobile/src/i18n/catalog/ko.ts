@@ -269,6 +269,8 @@ export const ko: Record<string, string> = {
   'dialogue.voiceOff': '목소리 꺼짐',
   'dialogue.tabChart': '차트', 'dialogue.tabMeds': '약물', 'dialogue.tabVitals': '활력',
   'dialogue.chartTitle': '환자 차트', 'dialogue.medsTitle': '투약 정보', 'dialogue.vitalsTitle': '활력징후',
+  'dialogue.noMeds': '확인된 처방 약물이 없어요. 구두로 직접 확인하세요.',
+  'dialogue.noVitals': '활력징후가 아직 측정되지 않았어요. 직접 사정하세요.',
   'dialogue.sourceEn': '원문 English',
   'dialogue.translation': '한국어 번역',
   'dialogue.showSource': '원문 보기',
@@ -517,8 +519,6 @@ export const ko: Record<string, string> = {
   'boot.waking': '서버를 깨우고 있어요 · 조금만 기다려 주세요',
   'login.terms': '계속하면 이용약관·개인정보처리방침에 동의하게 돼요',
   'login.devBypass': '개발자 로그인 (둘러보기)',
-  'login.welcomeBack': '다시 출근할 시간이에요',
-  'login.welcomeBackSub': '쓰던 계정으로 들어오면 이어서 진행돼요',
 
   // ── misc screens ─────────────────────────────────────────────────────────
   'settings.account.signOutConfirm': '이 기기에서 로그아웃할까요?\n다시 로그인하면 학습 기록은 그대로예요.',

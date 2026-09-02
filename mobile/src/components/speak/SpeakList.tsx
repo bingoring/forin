@@ -25,7 +25,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { api, type SpeakSort, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbChip, NbIndexTabs, NbPaper, nbText } from '@/components/nb/NbUI';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SpokenRow } from '@/components/speak/SpokenRow';
 import { BandBar } from '@/components/speak/BandBar';
 import { useT } from '@/i18n';
@@ -285,7 +285,10 @@ const styles = StyleSheet.create({
   // pinned header, so the padding lives on the scroll content instead.
   embedded: { flex: 1, backgroundColor: nb.cream },
   embeddedBody: { paddingBottom: 40, paddingHorizontal: 20 },
-  embeddedHeader: { paddingTop: 4, paddingBottom: 9, gap: 9 },
+  // TOP_INSET, not 4: this header IS the top of the screen in the review lab (the tab
+  // renders the list itself), so it carries the status bar the way every other page does.
+  // The port dropped it to 4 and both tabs slid under the notch.
+  embeddedHeader: { paddingTop: TOP_INSET, paddingBottom: 9, gap: 9 },
   header: {
     // No fixed height: it sizes to what it holds, so the chip row can be absent without
     // leaving a gap and present without clipping. 52 is the app's own status-bar inset,

@@ -19,7 +19,7 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { RoleFace, type Expression, type RoleKind } from '@engine';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbCheck, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { api, type ScenarioDetail } from '@/api/client';
 import { asMood, moodExpression } from '@/data/moodTone';
 import { useT } from '@/i18n';
@@ -75,7 +75,7 @@ export default function ScenarioBriefingRoute() {
   return (
     <Sheet>
       <Stack.Screen options={TASK_SCREEN} />
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 10, paddingBottom: 30 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 30 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <Pressable onPress={() => router.back()} hitSlop={10}>
             <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>
