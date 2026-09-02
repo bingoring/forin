@@ -1,29 +1,43 @@
-// Scenario result / reward screen — shown after clearing a scenario (final quiz
-// step, or a no-quiz scenario's dialogue). It now connects to the real growth
-// system: on mount it records the attempt (POST /attempts) which awards XP and
-// advances the daily streak, then celebrates the ACTUAL result — animated XP
-// count-up to the new total, a level-progress bar, a level-up banner when the
-// level ticks over, and the current streak. Falls back to the scenario's static
-// briefing rewards if the progress API is unavailable (offline / not authed).
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Animated, Easing, Pressable, ScrollView, Share, Text, View, type GestureResponderEvent, type ViewStyle } from 'react-native';
+// 근무 완료 — the scenario result, in the 근무 수첩 line (v30).
+//
+// The shift report a nurse would have written on her way out: a stamp saying the shift
+// was completed, four numbers summarising it, the mission checklist ticked, and what the
+// red pen caught — already filed in the review notes.
+//
+// The MACHINERY is unchanged. On mount it records the attempt (POST /attempts or
+// /sessions/:id/complete), which awards XP and advances the daily streak, then celebrates
+// the ACTUAL result: an XP count-up to the new total, the level gauge, a level-up note
+// when the level ticks over, new titles, and the current streak. It falls back to the
+// scenario's authored briefing rewards when the progress API is unavailable (offline /
+// not authed).
+//
+// Two things the pixel version had are GONE, and both were replaced rather than dropped:
+//   · The confetti (and tap-anywhere-for-more) and the 칭찬 스티커 square. v30 makes the
+//     STAMP the celebration, which is the honest one here: a stamp is what an authority
+//     puts on a completed shift, and it is the same gesture the passport's 출국 page uses.
+//     Confetti on a sheet of paper also has nowhere to be — it is a screen effect, and
+//     this screen is a document.
+//   · The 4-stat summary is new, and every number in it is real: grade.turns, the count
+//     of corrections filed, the run's average pronunciation, and the XP actually awarded.
+//     A stat the run cannot know (no session → no grade) prints '—' rather than 0.
+import { useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, Animated, Easing, Pressable, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { PixelButton } from '@/components/PixelButton';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbCheck, NbGauge, NbMark, NbPaper, NbPolaroid, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { api, type Progress, type ScenarioDetail, type ScenarioGrade, type SessionSpeechReview, type SpokenSentence } from '@/api/client';
 import { newlyEarnedTitles, type GrowthInput, type TitleDef } from '@/data/titles';
 import { ECON } from '@/data/economy';
 
 import { EmojiIcon } from '@/components/EmojiIcon';
 import { SessionSpeechReviewCard } from '@/components/speak/SessionSpeechReviewCard';
-import { FIcon } from '@/components/FIcon';
-import { colors, fonts, fs } from '@/theme/tokens';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { AnimatedFace } from '@engine';
 import { useAvatar } from '@/hooks/useAvatar';
 import { TASK_SCREEN } from '@/theme/transitions';
 
-const C = colors.ink;
 
 /**
  * Titles that arrived with this clear.
@@ -79,21 +93,6 @@ export default function ResultRoute() {
   // Whether this run was AI-graded (had a session) and whether it passed (완료).
   const graded = !!grade;
   const passed = grade ? grade.passed : true; // legacy/deep-link path is a plain clear
-
-  // Firework bursts (1:1 with the v17 handoff): one anchored to the sticker on
-  // mount, plus one wherever the user taps the background. Each auto-expires.
-  const [bursts, setBursts] = useState<{ id: number; x: number; y: number }[]>([]);
-  const nextBurst = useRef(1);
-  const stickerRef = useRef<View>(null);
-  const spawnBurst = (x: number, y: number) => {
-    const id = nextBurst.current++;
-    setBursts((prev) => [...prev, { id, x, y }]);
-    setTimeout(() => setBursts((curr) => curr.filter((b) => b.id !== id)), 4600);
-  };
-  const onBgTap = (e: GestureResponderEvent) => spawnBurst(e.nativeEvent.locationX, e.nativeEvent.locationY);
-  const onStickerLayout = () => {
-    stickerRef.current?.measureInWindow((x, y, w, h) => spawnBurst(x + w / 2, y + h / 2));
-  };
 
   // Its own effect, not folded into the award effect above: this read is
   // independent of grading and must not be able to fail it (that effect's catch
@@ -193,284 +192,282 @@ export default function ResultRoute() {
     );
   };
 
-  const titleColor = passed ? colors.yellow : colors.peachShadow;
+  const dept = scenario?.briefing?.dept?.split('·')[0].trim() || '';
+  const avg = speech && speech.sentences.length > 0 ? Math.round(speech.average) : null;
 
   return (
-    <Pressable onPress={onBgTap} style={{ flex: 1, backgroundColor: colors.cream }}>
+    <Sheet>
       <Stack.Screen options={TASK_SCREEN} />
 
-      {/* confetti layer — above background, below content, tap-transparent */}
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, overflow: 'hidden' }}>
-        {bursts.map((b) => <ConfettiBurst key={b.id} x={b.x} y={b.y} />)}
+      <View style={styles.topbar}>
+        <Pressable onPress={() => router.replace('/campus')} hitSlop={10}>
+          <NbPaper rot={-1} style={styles.chip}><NbIcon name="chevronLeft" size={16} /></NbPaper>
+        </Pressable>
+        <View style={{ flex: 1 }} />
+        <NbButton variant="paper" size="sm" icon="handshake2" onPress={onShare}>{t('result.share')}</NbButton>
       </View>
 
-      {/* topbar */}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, flexDirection: 'row', justifyContent: 'space-between', zIndex: 3 }}>
-        <PixelButton label={t('result.backToMap')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.replace('/campus')} />
-        <PixelButton label={t('result.share')} bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={onShare} />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
+        {/* The stamp is the celebration. It lands on the page the way an authority stamps
+            a finished shift — the same gesture the passport's departure page uses. */}
+        <View style={{ alignItems: 'center' }}>
+          <NbStamp
+            color={passed ? nb.green : nb.red}
+            size={118}
+            rot={-11}
+            top={passed ? 'PASSED' : 'RETRY'}
+            bottom={passed ? t('result.shiftDone') : t('result.shiftRetry')}
+          />
+          <Text numberOfLines={1} style={[nbText.mono(10), styles.stampDate]}>
+            {[stampDate(), dept].filter(Boolean).join(' · ')}
+          </Text>
+          <Text style={[nbText.hand(25), styles.headline]}>
+            {passed
+              ? t('result.doneWell', { title: scenario?.title || t('result.aScenario') })
+              : t('result.almostThere', { title: scenario?.title || t('result.aScenario') })}
+          </Text>
 
-      {/* Scrolls. This column used to be a plain View, so anything past the fold was
-          simply unreachable — and the column grows: the AI grade detail, a level-up
-          banner, one row per new badge, the spoken-sentence review, the REWARDS card
-          and the footer buttons. The footer was the part being cut off, which is the
-          worst thing to lose here since it holds 다음 시나리오.
-
-          The background Pressable still spawns confetti on tap: taps that are not
-          scroll gestures pass through, and the buttons keep working because the
-          scroller does not claim them (keyboardShouldPersistTaps is irrelevant — no
-          keyboard — but tap-through is the same mechanism). */}
-      <ScrollView
-        style={{ zIndex: 2 }}
-        contentContainerStyle={{ paddingHorizontal: 22, paddingTop: 80, paddingBottom: 48, alignItems: 'center' }}
-        showsVerticalScrollIndicator={false}
-        // The scroller fills the screen, so it sits on top of the background Pressable
-        // that spawns a confetti burst wherever you tap — the handoff's "bursts again
-        // wherever the user taps". A plain ScrollView swallowed those taps and the
-        // feature silently died when this column started scrolling. onTouchEnd fires
-        // for a tap and not for a drag, so scrolling still scrolls.
-        onTouchEnd={(e) => spawnBurst(e.nativeEvent.locationX, e.nativeEvent.locationY)}
-      >
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }}>{passed ? t('result.clear') : t('result.goodTry')}</Text>
-
-        {/* The character reacts. Sound already marked this moment (#16); motion is the
-            visual half, and a portrait that cheers when you passed and slumps when you
-            did not is the whole of what "a character like Duolingo's" asks for here.
-            Keyed on `after` so it fires once the server has actually judged the run —
-            reacting before that would celebrate a result nobody has yet. */}
-        {after && (
-          <View style={{ marginTop: 10, alignItems: 'center' }}>
-            <AnimatedFace
-              size={92}
-              avatar={avatar}
-              expression={passed ? 'happy' : 'sad'}
-              reaction={passed ? 'cheer' : 'slump'}
-            />
-          </View>
-        )}
-        <View style={{ marginTop: 6 }}>
-          <Text style={{ position: 'absolute', left: 3, top: 3, fontFamily: fonts.heading, fontSize: fs(34), color: titleColor }}>{passed ? t('result.wellDone') : t('result.almost')}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(34), color: C }}>{passed ? t('result.wellDone') : t('result.almost')}</Text>
+          {/* The learner's own avatar reacting — kept from the pixel screen, where the
+              clear sound and this motion are one beat. Inside a polaroid because a
+              sprite cannot sit directly on paper. Keyed on `after` so it fires once the
+              server has actually judged the run: reacting sooner would celebrate a
+              result nobody has yet. */}
+          {after && (
+            <View style={{ marginTop: 14 }}>
+              <NbPolaroid size={86} rot={-2.5}>
+                <AnimatedFace
+                  size={92}
+                  avatar={avatar}
+                  expression={passed ? 'happy' : 'sad'}
+                  reaction={passed ? 'cheer' : 'slump'}
+                />
+              </NbPolaroid>
+            </View>
+          )}
         </View>
-        {!!subtitle && <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 8 }}>{subtitle}</Text>}
 
-        {/* AI grade detail (score, goals, feedback) — only for graded runs */}
-        {graded && <GradeDetail grade={grade!} />}
+        {/* 오늘 근무 요약. Four numbers, dashed apart — a stat this run cannot know
+            prints '—', because 0 turns and "we did not measure turns" are different
+            facts and one of them is an accusation. */}
+        <NbPaper rot={-0.5} tape tapeLeft={128} style={styles.summary}>
+          <Stat label={t('result.statTurns')} value={grade ? String(grade.turns) : '—'} first />
+          <Stat label={t('result.statPhrases')} value={grade ? String(grade.tips?.length ?? 0) : '—'} />
+          <Stat label={t('result.statPron')} value={avg != null ? String(avg) : '—'} />
+          <Stat label="XP" value={`+${awardedXp}`} accent={nb.green} />
+        </NbPaper>
 
-        {/* Comprehensive review of what the player said aloud. Rendered only
-            once the read-back arrives AND only when the run actually recorded
-            something: a fully-typed run has nothing to review, and an empty
-            card on the celebration screen reads as a failure. */}
+        {/* 미션 결과 — the same goals the briefing showed as a checklist, now ticked. */}
+        {graded && grade!.goals?.length > 0 && (
+          <NbPaper rot={0.5} style={styles.card}>
+            <Text style={styles.cardLabel}>{t('result.missionResult')}</Text>
+            {grade!.goals.map((g, i) => (
+              <View key={i} style={styles.goalRow}>
+                <NbCheck done={g.met} size={18} />
+                <Text style={[nbText.hand(16.5), { flex: 1, minWidth: 0, color: g.met ? nb.ink : nb.soft }]}>{g.goal}</Text>
+                {!g.met && <NbTag color={nb.red} rot={-2}>{t('result.nextTime')}</NbTag>}
+              </View>
+            ))}
+          </NbPaper>
+        )}
+
+        {/* The grade's own words: a score, a headline, the feedback. Not a second card
+            per field — the learner reads this once, top to bottom. */}
+        {graded && (!!grade!.headline || !!grade!.feedback) && (
+          <NbPaper rot={-0.4} bg={passed ? 'rgba(168,217,151,.3)' : '#FFF3EE'} style={styles.card}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <View style={styles.score}>
+                <Text style={styles.scoreNum}>{grade!.score}</Text>
+                <Text style={styles.scoreMax}>/ 100</Text>
+              </View>
+              <View style={{ flex: 1, minWidth: 0 }}>
+                {!!grade!.headline && <Text style={nbText.hand(18)}>{grade!.headline}</Text>}
+                {!!grade!.feedback && (
+                  <Text style={[nbText.body(11.5, nb.soft), { marginTop: 3 }]}>{grade!.feedback}</Text>
+                )}
+              </View>
+            </View>
+          </NbPaper>
+        )}
+
+        {/* 빨간펜 → 복습 노트.
+            The v30 artboard strikes through the learner's own line above each correction.
+            These `tips` are not that: the server sends the phrase to use, with a Korean
+            gloss, and not the line it replaces — so nothing is struck through here rather
+            than striking through a sentence the learner may never have said. */}
+        {graded && grade!.tips?.length > 0 && (
+          <NbPaper rot={0.4} style={styles.card}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Text numberOfLines={2} style={[styles.cardLabel, { color: nb.red, flex: 1, minWidth: 0 }]}>
+                {t('result.filedToNotes', { n: grade!.tips.length })}
+              </Text>
+              <Pressable onPress={() => router.replace('/lab')} hitSlop={8}>
+                <Text numberOfLines={1} style={[nbText.hand(14, nb.blue), { textDecorationLine: 'underline' }]}>
+                  {t('result.seeAll')}
+                </Text>
+              </Pressable>
+            </View>
+            {grade!.tips.map((tip, i) => (
+              <View key={i} style={styles.tipRow}>
+                <NbMark textStyle={styles.tipEn}>{tip.en}</NbMark>
+                {!!tip.ko && <Text style={[nbText.hand(14.5, nb.soft), { marginTop: 3 }]}>{tip.ko}</Text>}
+              </View>
+            ))}
+          </NbPaper>
+        )}
+
+        {/* What the learner said out loud. Absent until the read-back lands and only when
+            the run actually recorded something: a fully-typed run has nothing to review,
+            and an empty card on a completion screen reads as a failure. */}
         {speech && speech.sentences.length > 0 && (
           <SessionSpeechReviewCard review={speech} onPractise={practiseWeakest} />
         )}
 
-        {/* level-up banner */}
+        {/* 레벨 업 — a note in the margin, not a banner: it is a fact about the number
+            below it. */}
         {leveledUp && (
-          <Shadowed offset={4} style={{ alignSelf: 'stretch', marginTop: 14 }}>
-            <View style={{ backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>레벨 업!  Lv.{before!.level} → Lv.{after!.level}</Text>
-            </View>
-          </Shadowed>
+          <NbPaper rot={-0.4} bg="rgba(249,227,123,.5)" style={styles.levelUp}>
+            <NbIcon name="star" size={18} color="#C99A1E" />
+            <Text numberOfLines={1} style={[nbText.hand(17), { flex: 1, minWidth: 0 }]}>
+              {t('result.leveledUp', { from: before!.level, to: after!.level })}
+            </Text>
+          </NbPaper>
         )}
 
-        {/* new-badge unlock banner(s) */}
         {newTitles.map((b) => (
-          <Shadowed key={b.id} offset={4} style={{ alignSelf: 'stretch', marginTop: 10 }}>
-            <View style={{ backgroundColor: b.hidden ? colors.yellow : colors.mint, borderWidth: 3, borderColor: C, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Text style={{ fontSize: fs(24) }}>{b.emoji}</Text>
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('result.newTitle')}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>{t(b.nameKey)}</Text>
-              </View>
+          <NbPaper key={b.id} rot={0.4} style={styles.titleRow}>
+            <NbIcon name={b.hidden ? 'bulb' : 'trophy'} size={20} />
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text numberOfLines={1} style={nbText.body(10.5, nb.soft)}>{t('result.newTitle')}</Text>
+              <Text numberOfLines={1} style={nbText.hand(17)}>{t(b.nameKey)}</Text>
             </View>
-          </Shadowed>
+          </NbPaper>
         ))}
 
-        {/* praise sticker — only a real clear (완료) earns it */}
-        {passed ? (
-          <Shadowed offset={5} style={{ marginTop: 16, marginBottom: 16, transform: [{ rotate: '-4deg' }] }}>
-            <View ref={stickerRef} onLayout={onStickerLayout} style={{ width: 130, height: 130, backgroundColor: colors.yellow, borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <View style={{ width: 100, height: 100, borderRadius: 50, borderWidth: 3, borderColor: C, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }}>
-                {/* v23 04_SCREENS changed this from a star to the FIcon 엄지척:
-                    "(FIcon thumb 엄지척 + 참잘했어요)". The star shape is retired
-                    across the app (02_COMPONENTS: 별 도형 폐기). */}
-                <FIcon name="thumb" size={40} />
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 4, textAlign: 'center' }}>{t('result.praiseSticker')}</Text>
-              </View>
+        {/* XP, level and streak — the ledger. */}
+        <NbPaper rot={-0.5} style={styles.card}>
+          {after ? (
+            <XpCard baseXp={awardedXp} before={before} after={after} stickerTotal={passed ? stickerTotal : null} showSticker={passed} />
+          ) : failed ? (
+            <StaticRewards scenario={scenario} baseXp={baseXp} />
+          ) : (
+            <View style={{ paddingVertical: 18, alignItems: 'center', gap: 8 }}>
+              <ActivityIndicator color={nb.ink} />
+              <Text style={nbText.hand(15, nb.soft)}>{t('result.awarding')}</Text>
             </View>
-          </Shadowed>
-        ) : (
-          <View style={{ marginTop: 16, marginBottom: 16, alignItems: 'center', gap: 4 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft }}>{t('result.retryHint')}</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('result.notYetCleared')}</Text>
+          )}
+        </NbPaper>
+
+        <View style={styles.footer}>
+          <View style={{ flex: 1 }}>
+            <NbButton variant="paper" full icon="lab" onPress={() => router.replace('/lab')}>{t('result.openNotes')}</NbButton>
           </View>
-        )}
-
-        {/* XP + level card */}
-        <Shadowed offset={4} style={{ alignSelf: 'stretch' }}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
-            {after ? (
-              <XpCard baseXp={awardedXp} before={before} after={after} stickerTotal={passed ? stickerTotal : null} showSticker={passed} />
-            ) : failed ? (
-              <StaticRewards scenario={scenario} baseXp={baseXp} />
-            ) : (
-              <View style={{ paddingVertical: 18, alignItems: 'center' }}>
-                <ActivityIndicator color={C} />
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 8 }}>보상 적립 중…</Text>
-              </View>
-            )}
-
-            {!graded && (
-              <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 2, borderTopColor: '#2A252233', borderStyle: 'dotted' }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 16 }}>{t('result.warmSmile')}</Text>
-              </View>
-            )}
-          </View>
-        </Shadowed>
-
-        {/* footer */}
-        <View style={{ flexDirection: 'row', gap: 8, marginTop: 16, alignSelf: 'stretch' }}>
-          <PixelButton icon="note" label={t('result.openNotes')} bg="#fff" shadowColor={C + '33'} onPress={() => router.replace('/lab')} style={{ flex: 1 }} />
           <View style={{ flex: 1 }}>
             {/* Into the next briefing, not the career tab. The learner just finished
-                something; making them navigate to find what follows is the button
-                failing at its one job.
-                `replace`, not `push`: the result screen is not somewhere to come back
-                to, and leaving it on the stack would put a completed scenario behind
-                the back gesture of the next one.
-                When the server hands back the scenario just finished, the run did not
-                pass and the next step is locked behind it — so the button says 다시
-                도전 rather than pretending to advance. */}
-            <PixelButton
-              icon="play"
-              label={t(nextScenario === id ? 'result.retryScenario' : 'result.nextScenario')}
-              bg={colors.mint}
-              shadowColor={colors.mintShadow}
-              onPress={() => router.replace(nextScenario ? `/scenario/${nextScenario}` : '/campus')}
+                something; making them navigate to find what follows is the button failing
+                at its one job.
+                `replace`, not `push`: the result screen is not somewhere to come back to,
+                and leaving it on the stack would put a completed scenario behind the back
+                gesture of the next one.
+                When the server hands back the scenario just finished, the run did not pass
+                and the next step is locked behind it — so the button says 다시 도전 rather
+                than pretending to advance. */}
+            <NbButton
+              variant="ink"
               full
-            />
+              iconRight="chevronRight"
+              iconColor={nb.paper}
+              onPress={() => router.replace(nextScenario ? `/scenario/${nextScenario}` : '/campus')}
+            >
+              {t(nextScenario === id ? 'result.retryScenario' : 'result.nextScenario')}
+            </NbButton>
           </View>
         </View>
       </ScrollView>
-    </Pressable>
+    </Sheet>
   );
 }
 
-// ── XP + level card (real progress) ───────────────────────────────────
-// ── AI grade detail (score + goals + feedback) ────────────────────────
-function GradeDetail({ grade }: { grade: ScenarioGrade }) {
-  const t = useT();
-  const good = grade.passed;
-  const accent = good ? colors.mint : colors.peach;
-  const shadow = good ? colors.mintShadow : colors.peachShadow;
+/** The ruled page. */
+function Sheet({ children }: { children: React.ReactNode }) {
+  const [h, setH] = useState(900);
   return (
-    <Shadowed offset={4} shadowColor={shadow} style={{ alignSelf: 'stretch', marginTop: 14 }}>
-      <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
-        {/* score row */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <View style={{ backgroundColor: accent, borderWidth: 2.5, borderColor: C, paddingVertical: 6, paddingHorizontal: 10, alignItems: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(22), color: C }}>{grade.score}</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: C, marginTop: -2 }}>/ 100</Text>
-          </View>
-          <View style={{ flex: 1, minWidth: 0 }}>
-            <View style={{ alignSelf: 'flex-start', backgroundColor: good ? colors.mint : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 6, marginBottom: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{good ? t('result.pass') : t('result.retryLabel')}</Text>
-            </View>
-            {!!grade.headline && <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{grade.headline}</Text>}
-          </View>
-        </View>
-
-        {/* goals checklist */}
-        {grade.goals?.length > 0 && (
-          <View style={{ marginTop: 12, gap: 5 }}>
-            {grade.goals.map((g, i) => (
-              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: g.met ? '#10B981' : colors.textFaint }}>{g.met ? '✓' : '✗'}</Text>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(11.5), color: g.met ? C : colors.textSoft }}>{g.goal}</Text>
-              </View>
-            ))}
-          </View>
-        )}
-
-        {/* feedback */}
-        {!!grade.feedback && (
-          <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1.5, borderTopColor: '#2A252222', borderStyle: 'dotted' }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 17 }}>{grade.feedback}</Text>
-          </View>
-        )}
-
-        {/* tips → review lab */}
-        {grade.tips?.length > 0 && (
-          <View style={{ marginTop: 10, gap: 4 }}>
-            {grade.tips.map((t, i) => (
-              <Text key={i} style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 15 }}>
-                <Text style={{ color: C }}>“{t.en}”</Text>{t.ko ? ` — ${t.ko}` : ''}
-              </Text>
-            ))}
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textFaint, marginTop: 2 }}>↳ 리뷰랩에 복습 카드로 저장됐어요</Text>
-          </View>
-        )}
+    <View style={{ flex: 1, backgroundColor: nb.cream }} onLayout={(e) => setH(e.nativeEvent.layout.height)}>
+      <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+        {Array.from({ length: Math.ceil(h / RULE_H) }).map((_, i) => (
+          <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+        ))}
       </View>
-    </Shadowed>
-  );
-}
-
-function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: { baseXp: number; before: Progress | null; after: Progress; stickerTotal: number | null; showSticker?: boolean }) {
-  const t = useT();
-  const startXp = before?.xp ?? Math.max(0, after.xp - baseXp);
-  const inLevel = after.xp % ECON.xpPerLevel;
-  const toNext = ECON.xpPerLevel - inLevel;
-  return (
-    <View>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-        <View style={{ width: 30, height: 30, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          {/* 별 도형 폐기, 보석으로 통일 (v23 02_COMPONENTS). */}
-          <FIcon name="gem" size={18} />
-        </View>
-        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>경험치 획득</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: '#10B981' }}>+{baseXp} XP</Text>
-      </View>
-
-      {/* praise sticker earned (only a real clear/완료 earns it) */}
-      {showSticker && (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12, paddingBottom: 12, borderBottomWidth: 1.5, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
-          <View style={{ width: 30, height: 30, backgroundColor: colors.pink, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <FIcon name="badge" size={16} />
-          </View>
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>칭찬 스티커{stickerTotal != null ? t('result.stickerTotal', { n: stickerTotal }) : ''}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(16), color: '#10B981' }}>+1</Text>
-        </View>
-      )}
-
-      {/* level + progress bar */}
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>Lv. {after.level}</Text>
-        <CountUp from={startXp} to={after.xp} suffix=" XP" style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft }} />
-      </View>
-      <LevelBar ratio={inLevel / ECON.xpPerLevel} />
-      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 5, textAlign: 'right' }}>다음 레벨까지 {toNext} XP</Text>
-
-      {/* streak */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 12, borderTopWidth: 1.5, borderTopColor: '#2A252222', borderStyle: 'dotted' }}>
-        <View style={{ width: 28, height: 28, backgroundColor: colors.peach, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <FIcon name="fire" size={15} />
-        </View>
-        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>연속 학습</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{after.streakCurrent}일{after.streakCurrent >= after.streakLongest && after.streakCurrent > 1 ? t('result.best') : ''}</Text>
-      </View>
+      {children}
     </View>
   );
 }
 
-function LevelBar({ ratio }: { ratio: number }) {
-  const w = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    Animated.timing(w, { toValue: Math.max(0.02, Math.min(1, ratio)), duration: 900, delay: 300, easing: Easing.out(Easing.cubic), useNativeDriver: false }).start();
-  }, [w, ratio]);
+/** The stamp's date, printed the way a stamp prints it. */
+function stampDate(): string {
+  const d = new Date();
+  const mon = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][d.getMonth()];
+  return `${mon} ${String(d.getDate()).padStart(2, '0')}`;
+}
+
+/** One of the four summary numbers. */
+function Stat({ label, value, accent, first }: { label: string; value: string; accent?: string; first?: boolean }) {
   return (
-    <View style={{ height: 14, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, overflow: 'hidden' }}>
-      <Animated.View style={{ height: '100%', backgroundColor: colors.mint, width: w.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }) }} />
+    <View style={[styles.stat, !first && styles.statDivider]}>
+      <Text numberOfLines={1} style={nbText.body(10, nb.soft)}>{label}</Text>
+      <Text numberOfLines={1} style={[nbText.hand(21, accent ?? nb.ink), { marginTop: 2 }]}>{value}</Text>
+    </View>
+  );
+}
+
+// ── the ledger: XP, level, streak ─────────────────────────────────────
+function XpCard({ baseXp, before, after, stickerTotal, showSticker = true }: {
+  baseXp: number; before: Progress | null; after: Progress; stickerTotal: number | null; showSticker?: boolean;
+}) {
+  const t = useT();
+  const startXp = before?.xp ?? Math.max(0, after.xp - baseXp);
+  const inLevel = after.xp % ECON.xpPerLevel;
+  const toNext = ECON.xpPerLevel - inLevel;
+  const best = after.streakCurrent >= after.streakLongest && after.streakCurrent > 1;
+  return (
+    <View>
+      <View style={styles.ledgerRow}>
+        <NbIcon name="star" size={17} color="#C99A1E" />
+        <Text numberOfLines={1} style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>{t('result.xpGained')}</Text>
+        <Text numberOfLines={1} style={styles.ledgerValue}>+{baseXp} XP</Text>
+      </View>
+
+      {/* The praise count is a running total, so it is a fact rather than a sticker to
+          look at — the sticker board it used to feed was deleted with the growth report
+          (v29 07: 삭제 확정). */}
+      {showSticker && stickerTotal != null && (
+        <View style={styles.ledgerRow}>
+          <NbIcon name="trophy" size={17} />
+          <Text numberOfLines={1} style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>{t('result.clearedTotal')}</Text>
+          <Text numberOfLines={1} style={styles.ledgerValue}>{stickerTotal}</Text>
+        </View>
+      )}
+
+      <View style={styles.levelHead}>
+        <Text numberOfLines={1} style={nbText.hand(16.5)}>{t('common.level', { level: after.level })}</Text>
+        <View style={{ flex: 1 }} />
+        <CountUp from={startXp} to={after.xp} suffix=" XP" style={styles.ledgerCount} />
+      </View>
+      {/* Pencil hatching, filled to the level — the same gauge as the profile's, so a
+          learner comparing the two screens is reading one instrument. */}
+      <NbGauge value={(inLevel / ECON.xpPerLevel) * 100} height={11} />
+      <Text numberOfLines={1} style={[nbText.hand(13.5, nb.soft), { marginTop: 5, textAlign: 'right' }]}>
+        {t('result.toNextLevel', { xp: toNext })}
+      </Text>
+
+      <View style={styles.streakRow}>
+        <NbStamp color={nb.red} size={46} rot={-7} top={best ? 'BEST' : 'STREAK'} bottom={String(after.streakCurrent)} />
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text numberOfLines={1} style={nbText.hand(16.5)}>{t('result.streakLabel')}</Text>
+          <Text numberOfLines={1} style={nbText.body(10.5, nb.soft)}>
+            {t('common.streakDays', { n: after.streakCurrent })}{best ? t('result.best') : ''}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 }
@@ -492,105 +489,60 @@ function StaticRewards({ scenario, baseXp }: { scenario: ScenarioDetail | null; 
   const rewards = scenario?.briefing?.rewards ?? [{ icon: '⭐', label: t('result.xp'), value: `+ ${baseXp} XP` }];
   return (
     <View>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: colors.textSoft, marginBottom: 10 }}>REWARDS</Text>
+      <Text style={styles.cardLabel}>{t('result.authoredRewards')}</Text>
       {rewards.map((r, i) => (
-        <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 6, borderBottomWidth: i < rewards.length - 1 ? 1.5 : 0, borderBottomColor: '#2A252222', borderStyle: 'dotted' }}>
-          <View style={{ width: 28, height: 28, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <EmojiIcon emoji={r.icon} size={16} />
-          </View>
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C }}>{r.label}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{r.value}</Text>
+        <View key={i} style={[styles.ledgerRow, i === 0 && { marginTop: 6 }]}>
+          <EmojiIcon emoji={r.icon} size={16} />
+          <Text numberOfLines={1} style={[nbText.hand(16), { flex: 1, minWidth: 0 }]}>{r.label}</Text>
+          <Text numberOfLines={1} style={styles.ledgerValue}>{r.value}</Text>
         </View>
       ))}
     </View>
   );
 }
 
-// ── confetti burst (1:1 with v17 handoff ConfettiBurst) ───────────────
-// A one-shot firework at container-local (x, y): 48 embers each follow a real
-// parabola sampled through (0,0), (peakT, peakY), (1, finalY) — up fast, arc
-// over, fall past the bottom — plus a warm flash at the origin. The handoff
-// drives this with the Web Animations API; here each ember rides one Animated
-// value with a multi-point interpolation that reproduces the same curve.
-const BURST_COLORS = [colors.mint, colors.peach, colors.yellow, colors.pink, colors.blue, '#A78BFA', '#FCA5A5', '#10B981'];
-const N_SAMPLES = 24;
+const styles = StyleSheet.create({
+  topbar: { paddingTop: 52, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', gap: 10 },
+  chip: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
+  scroll: { paddingHorizontal: 20, paddingTop: 14, paddingBottom: 44 },
 
-function ConfettiBurst({ x, y }: { x: number; y: number }) {
-  const pieces = useMemo(
-    () =>
-      Array.from({ length: 48 }, () => {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 70 + Math.random() * 180;
-        const peakT = 0.32 + Math.random() * 0.1;
-        const peakY = -(60 + Math.random() * 130);
-        const finalY = 480 + Math.round(Math.random() * 260);
-        // sample the parabola at N evenly-spaced times for a smooth Animated curve
-        const ins: number[] = [];
-        const ys: number[] = [];
-        for (let k = 0; k <= N_SAMPLES; k++) {
-          const t = k / N_SAMPLES;
-          const alpha = (t * (t - 1)) / (peakT * (peakT - 1));
-          const beta = (t * (t - peakT)) / (1 - peakT);
-          ins.push(t);
-          ys.push(alpha * peakY + beta * finalY);
-        }
-        return {
-          finalX: Math.round(Math.cos(angle) * speed),
-          ins, ys,
-          c: BURST_COLORS[Math.floor(Math.random() * BURST_COLORS.length)],
-          dur: (2.6 + Math.random() * 1.4) * 1000,
-          rot: Math.round(Math.random() * 720 - 360),
-          size: 7 + Math.floor(Math.random() * 3) * 2,
-        };
-      }),
-    [],
-  );
-  const flash = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    Animated.timing(flash, { toValue: 1, duration: 700, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
-  }, [flash]);
+  stampDate: { marginTop: 10 },
+  headline: { marginTop: 8, textAlign: 'center', lineHeight: 30 },
 
-  return (
-    <>
-      {/* warm flash at the origin */}
-      <Animated.View
-        style={{
-          position: 'absolute', left: x - 30, top: y - 30, width: 60, height: 60, borderRadius: 30,
-          backgroundColor: 'rgba(255,236,150,0.9)',
-          opacity: flash.interpolate({ inputRange: [0, 0.5, 1], outputRange: [0.9, 0.5, 0] }),
-          transform: [{ scale: flash.interpolate({ inputRange: [0, 1], outputRange: [0.4, 1.6] }) }],
-        }}
-      />
-      {pieces.map((p, i) => <Ember key={i} x={x} y={y} {...p} />)}
-    </>
-  );
-}
+  summary: { marginTop: 20, paddingVertical: 13, paddingHorizontal: 15, flexDirection: 'row' },
+  stat: { flex: 1, alignItems: 'center' },
+  statDivider: { borderLeftWidth: 1.3, borderStyle: 'dashed', borderLeftColor: 'rgba(62,54,43,.2)' },
 
-function Ember({ x, y, finalX, ins, ys, c, dur, rot, size }: { x: number; y: number; finalX: number; ins: number[]; ys: number[]; c: string; dur: number; rot: number; size: number }) {
-  const t = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    Animated.timing(t, { toValue: 1, duration: dur, easing: Easing.linear, useNativeDriver: true }).start();
-  }, [t, dur]);
-  const translateX = t.interpolate({ inputRange: [0, 1], outputRange: [0, finalX] });
-  const translateY = t.interpolate({ inputRange: ins, outputRange: ys });
-  const rotate = t.interpolate({ inputRange: [0, 1], outputRange: ['0deg', `${rot}deg`] });
-  const opacity = t.interpolate({ inputRange: [0, 0.05, 0.88, 1], outputRange: [0, 1, 1, 0] });
-  return (
-    <Animated.View
-      style={{
-        position: 'absolute', left: x - size / 2, top: y - size / 2, width: size, height: size,
-        backgroundColor: c, borderWidth: 1.5, borderColor: C, opacity,
-        transform: [{ translateX }, { translateY }, { rotate }],
-      }}
-    />
-  );
-}
+  card: { marginTop: 13, paddingVertical: 13, paddingHorizontal: 15 },
+  /** Section labels are PRINTED and small — they name a block rather than speaking. */
+  cardLabel: { fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue, letterSpacing: 1 },
+  goalRow: { flexDirection: 'row', alignItems: 'center', gap: 9, marginTop: 9 },
 
-function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: ViewStyle }) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
-    </View>
-  );
-}
+  score: {
+    alignItems: 'center', flexShrink: 0, paddingRight: 13,
+    borderRightWidth: 1.5, borderStyle: 'dashed', borderRightColor: 'rgba(62,54,43,.3)',
+  },
+  scoreNum: { fontFamily: nbFonts.handBold, fontSize: 34, lineHeight: 36, color: nb.ink },
+  scoreMax: { fontFamily: nbFonts.monoBold, fontSize: 9.5, color: nb.soft },
+
+  tipRow: { marginTop: 10, paddingTop: 9, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.15)' },
+  tipEn: { fontFamily: nbFonts.bodyBold, fontSize: 13, color: nb.ink, lineHeight: 19 },
+
+  levelUp: { marginTop: 13, paddingVertical: 10, paddingHorizontal: 13, flexDirection: 'row', alignItems: 'center', gap: 9 },
+  titleRow: { marginTop: 10, paddingVertical: 10, paddingHorizontal: 13, flexDirection: 'row', alignItems: 'center', gap: 10 },
+
+  ledgerRow: { flexDirection: 'row', alignItems: 'center', gap: 9, paddingVertical: 5 },
+  /** Amounts are printed: they are numbers to be compared, not words. */
+  ledgerValue: { fontFamily: nbFonts.monoBold, fontSize: 13, color: nb.green },
+  ledgerCount: { fontFamily: nbFonts.mono, fontSize: 12, color: nb.soft },
+  levelHead: {
+    flexDirection: 'row', alignItems: 'center', marginTop: 11, marginBottom: 6,
+    paddingTop: 11, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.15)',
+  },
+  streakRow: {
+    flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 13,
+    paddingTop: 12, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.15)',
+  },
+
+  footer: { flexDirection: 'row', gap: 9, marginTop: 18 },
+});

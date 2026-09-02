@@ -96,6 +96,24 @@ export const ko: Record<string, string> = {
 
   // ── result screen ────────────────────────────────────────────────────────
   'result.newBadge': '새 뱃지 획득!',
+  'result.shiftDone': '근무 완료',
+  'result.shiftRetry': '조금 더',
+  'result.doneWell': '{title},\n잘 마쳤어요!',
+  'result.almostThere': '{title},\n거의 다 왔어요',
+  'result.statTurns': '대화 턴',
+  'result.statPhrases': '새 표현',
+  'result.statPron': '평균 발음',
+  'result.missionResult': '미션 결과',
+  'result.nextTime': '다음에!',
+  'result.filedToNotes': '빨간펜 {n}곳 · 복습 노트에 저장됐어요',
+  'result.seeAll': '모두 보기',
+  'result.leveledUp': '레벨 업! Lv.{from} → Lv.{to}',
+  'result.awarding': '보상 적립 중…',
+  'result.xpGained': '경험치 획득',
+  'result.clearedTotal': '지금까지 마친 근무',
+  'result.toNextLevel': '다음 레벨까지 {xp} XP',
+  'result.streakLabel': '연속 출근',
+  'result.authoredRewards': '예정된 보상',
 
   // ── titles + hidden missions (data/titles.ts holds the keys) ─────────────
   'title.equipped': '● 장착 중',
