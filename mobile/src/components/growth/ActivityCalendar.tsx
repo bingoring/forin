@@ -10,14 +10,14 @@
 // rather than the profession.
 import { useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useT } from '@/i18n';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
+import { useT } from '@/i18n';
 import { BAND_STYLE, BANDS, bandLabelKey, usesShifts, type Band } from '@/data/shifts';
 import type { CalendarDay } from '@/api/client';
 import { monthWeeks } from '@/data/monthGrid';
 
-const C = colors.ink;
 
 export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth }: {
   /** YYYY-MM the server answered with — not the one requested, so paging is honest. */
@@ -44,22 +44,20 @@ export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth
   return (
     <View>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 9 }}>
-        <Pressable onPress={() => onMonth(-1)} hitSlop={10} style={arrow}>
-          <PixelIcon name="chevron-left" color={C} size={13} sw={2} />
+        <Pressable onPress={() => onMonth(-1)} hitSlop={10}>
+          <NbPaper rot={-1.5} style={arrow}><NbIcon name="chevronLeft" size={14} /></NbPaper>
         </Pressable>
-        <Text style={{ flex: 1, textAlign: 'center', fontFamily: fonts.heading, fontSize: fs(13), color: C }}>
+        <Text numberOfLines={1} style={[nbText.hand(19), { flex: 1, textAlign: 'center' }]}>
           {monthLabel(month)}
         </Text>
-        <Pressable onPress={() => onMonth(1)} hitSlop={10} style={arrow}>
-          <PixelIcon name="chevron-right" color={C} size={13} sw={2} />
+        <Pressable onPress={() => onMonth(1)} hitSlop={10}>
+          <NbPaper rot={1.5} style={arrow}><NbIcon name="chevronRight" size={14} /></NbPaper>
         </Pressable>
       </View>
 
       <View style={{ flexDirection: 'row' }}>
         {weekdays.map((w, i) => (
-          <Text key={i} style={{ flex: 1, textAlign: 'center', fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft, marginBottom: 4 }}>
-            {w}
-          </Text>
+          <Text key={i} numberOfLines={1} style={styles.weekday}>{w}</Text>
         ))}
       </View>
 
@@ -81,14 +79,22 @@ export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth
                   onPress={() => onSelect(on ? null : date)}
                   style={{
                     flex: 1, alignItems: 'center', justifyContent: 'center',
-                    borderWidth: on ? 3 : 2, borderColor: day ? C : C + '33',
-                    backgroundColor: style ? style.bg : colors.cream,
+                    // The chosen day takes the gold ring the app uses for "this is the
+                    // one you chose"; a day with nothing on it is a pencilled box.
+                    borderWidth: on ? 2 : 1.3,
+                    borderColor: on ? '#C99A1E' : day ? nb.paperEdge : 'rgba(62,54,43,.15)',
+                    borderStyle: day ? 'solid' : 'dashed',
+                    backgroundColor: style ? style.bg : 'transparent',
+                    transform: [{ rotate: (wi + di) % 2 ? '0.7deg' : '-0.7deg' }],
                   }}
                 >
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: day ? C : colors.textFaint }}>
+                  {/* The date is PRINTED — a calendar's numbers are a grid to scan, and
+                      handwriting at 10pt in 42 boxes is noise. v29 07 also forbids any
+                      mark inside a cell beyond the colour (셀 이모지 금지), which is why
+                      the band's icon appears only in the day's detail below. */}
+                  <Text style={[styles.date, { color: day ? nb.ink : nb.placeholder }]}>
                     {Number(date.slice(8, 10))}
                   </Text>
-                  {day && <PixelIcon name={style!.icon} color={C} size={9} sw={1.8} />}
                 </Pressable>
               </View>
             );
@@ -100,23 +106,23 @@ export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth
       <View style={{ flexDirection: 'row', gap: 10, marginTop: 9, flexWrap: 'wrap' }}>
         {BANDS.map((b) => (
           <View key={b} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-            <View style={{ width: 11, height: 11, borderWidth: 2, borderColor: C, backgroundColor: BAND_STYLE[b].bg }} />
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.text }}>{t(bandLabelKey(job, b))}</Text>
+            <View style={{ width: 11, height: 11, borderWidth: 1.2, borderColor: nb.ink, backgroundColor: BAND_STYLE[b].bg }} />
+            <Text numberOfLines={1} style={nbText.hand(13.5, nb.soft)}>{t(bandLabelKey(job, b))}</Text>
           </View>
         ))}
       </View>
       {usesShifts(job) && (
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textFaint, marginTop: 5 }}>
-          {t('growth.bandHint')}
-        </Text>
+        <Text style={[nbText.body(9.5, nb.placeholder), { marginTop: 5 }]}>{t('growth.bandHint')}</Text>
       )}
     </View>
   );
 }
 
-const arrow = {
-  width: 26, height: 26, borderWidth: 2, borderColor: C,
-  backgroundColor: '#fff', alignItems: 'center' as const, justifyContent: 'center' as const,
+const arrow = { width: 28, height: 28, alignItems: 'center' as const, justifyContent: 'center' as const };
+
+const styles = {
+  weekday: { flex: 1, textAlign: 'center' as const, fontFamily: nbFonts.mono, fontSize: 8.5, color: nb.soft, marginBottom: 5 },
+  date: { fontFamily: nbFonts.monoBold, fontSize: 10.5 },
 };
 
 function monthLabel(month: string): string {

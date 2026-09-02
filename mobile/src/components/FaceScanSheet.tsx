@@ -12,15 +12,14 @@ import { useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { deleteAsync } from 'expo-file-system/legacy';
 import { BottomSheet } from '@/components/BottomSheet';
-import { PixelButton } from '@/components/PixelButton';
-import { PixelIcon } from '@/components/PixelIcon';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbPaper, nbText } from '@/components/nb/NbUI';
+import { nb } from '@/theme/nb';
 import { t, useT } from '@/i18n';
 import { playSfx } from '@/lib/sfx';
 import { sampleFace } from '@/lib/faceScan';
 import { setAvatar } from '@/lib/avatar';
 
-const C = colors.ink;
 // 24px is plenty: the sampler wants region medians, not detail, and a small image keeps
 // the JavaScript decode instant.
 const SAMPLE_PX = 24;
@@ -117,15 +116,16 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
 
   return (
     <BottomSheet visible={visible} onClose={onClose}>
-      <View style={{ padding: 14, gap: 12 }}>
+      <View style={{ paddingHorizontal: 20, paddingBottom: 18, gap: 12 }}>
         <View>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('avatar.scanTitle')}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 4, lineHeight: 15 }}>
-            {t('avatar.scanBody')}
-          </Text>
+          <Text style={nbText.hand(19)}>{t('avatar.scanTitle')}</Text>
+          <Text style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{t('avatar.scanBody')}</Text>
         </View>
 
-        <View style={{ aspectRatio: 1, borderWidth: 3, borderColor: C, overflow: 'hidden', backgroundColor: colors.cream }}>
+        {/* The viewfinder is a PRINT: the camera is not paper, so it sits inside a
+            polaroid's margin the way the avatar preview does. */}
+        <NbPaper rot={-0.6} style={{ padding: 5 }}>
+        <View style={{ aspectRatio: 1, overflow: 'hidden', backgroundColor: nb.cream }}>
           {granted && CameraView ? (
             <>
               <CameraView ref={cam} style={{ flex: 1 }} facing="front" />
@@ -133,38 +133,34 @@ export function FaceScanSheet({ visible, onClose }: { visible: boolean; onClose(
                   face up with it and the hair band and cheeks land where the sampler
                   looks. Without it the regions would be a guess. */}
               <View pointerEvents="none" style={{ position: 'absolute', inset: 0, alignItems: 'center', justifyContent: 'center' }}>
-                <View style={{ width: '62%', height: '78%', borderWidth: 3, borderColor: colors.yellow, borderRadius: 999, opacity: 0.9 }} />
+                <View style={{ width: '62%', height: '78%', borderWidth: 2.5, borderStyle: 'dashed', borderColor: '#F9E37B', borderRadius: 999, opacity: 0.95 }} />
               </View>
             </>
           ) : (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 10, padding: 18 }}>
-              <PixelIcon name="alert" color={colors.textSoft} size={26} sw={1.8} />
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', lineHeight: 16 }}>
+              <NbIcon name="bell" size={24} color={nb.soft} />
+              <Text style={[nbText.body(11, nb.soft), { textAlign: 'center' }]}>
                 {native ? t('avatar.scanNeedCamera') : t('avatar.scanNeedBuild')}
               </Text>
             </View>
           )}
         </View>
+        </NbPaper>
 
         {failed && (
-          <View style={{ backgroundColor: '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 7, paddingHorizontal: 10 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: C, lineHeight: 15 }}>{t('avatar.scanFailed')}</Text>
+          <View style={{ backgroundColor: '#FFF0EC', borderWidth: 1.5, borderStyle: 'dashed', borderColor: '#E4B4A6', paddingVertical: 8, paddingHorizontal: 11 }}>
+            <Text style={nbText.hand(14.5)}>{t('avatar.scanFailed')}</Text>
           </View>
         )}
 
         {!native ? null : granted ? (
-          <PixelButton
-            label={busy ? t('avatar.scanning') : t('avatar.scanShoot')}
-            icon="target" bg={colors.mint} shadowColor={colors.mintShadow}
-            fontSize={13} borderWidth={2.5} paddingV={10} disabled={busy} full
-            onPress={() => void scan()}
-          />
+          <NbButton variant="ink" size="lg" full icon="magnify" iconColor={nb.paper} disabled={busy} onPress={() => void scan()}>
+            {busy ? t('avatar.scanning') : t('avatar.scanShoot')}
+          </NbButton>
         ) : (
-          <PixelButton
-            label={t('avatar.scanAllow')} icon="target" bg={colors.yellow} shadowColor={colors.yellowShadow}
-            fontSize={13} borderWidth={2.5} paddingV={10} full
-            onPress={() => void requestPermission()}
-          />
+          <NbButton variant="yellow" size="lg" full icon="magnify" onPress={() => void requestPermission()}>
+            {t('avatar.scanAllow')}
+          </NbButton>
         )}
 
       </View>

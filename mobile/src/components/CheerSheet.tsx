@@ -4,22 +4,21 @@
 // 표시 문구는 화면 사본을 쓴다(서버 PresetText와 동일 — 어긋나면 서버가 진실).
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
-import { PixelIcon } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
+import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
+import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
 import type { CheerPreset } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
-import { t, useLocale, useT } from '@/i18n';
+import { useT } from '@/i18n';
 
-const C = colors.ink;
 const MAX = 60;
 
 // labelKey, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
-const PRESETS: { key: CheerPreset; labelKey: string }[] = [
-  { key: 'well_done', labelKey: 'cheer.doingWell' },
-  { key: 'fighting', labelKey: 'cheer.goToday' },
-  { key: 'streak', labelKey: 'cheer.streakGreat' },
-  { key: 'rest', labelKey: 'cheer.takeItEasy' },
+const PRESETS: { key: CheerPreset; labelKey: string; nbIcon: NbIconName }[] = [
+  { key: 'well_done', labelKey: 'cheer.doingWell', nbIcon: 'handshake2' },
+  { key: 'fighting', labelKey: 'cheer.goToday', nbIcon: 'star' },
+  { key: 'streak', labelKey: 'cheer.streakGreat', nbIcon: 'chartup' },
+  { key: 'rest', labelKey: 'cheer.takeItEasy', nbIcon: 'coffee' },
 ];
 
 export function CheerSheet({ visible, name, activity, onSend, onClose }: {
@@ -54,68 +53,82 @@ export function CheerSheet({ visible, name, activity, onSend, onClose }: {
       // The title drags the sheet along with the grabber: the 27px strip is a target you
       // have to aim at, and this is what a hand actually reaches for.
       header={(
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 16, paddingTop: 2, paddingBottom: 12 }}>
-          <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <FIcon name="sparkle" size={22} />
-          </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, paddingHorizontal: 20, paddingTop: 2, paddingBottom: 12 }}>
+          <NbPaper rot={-2} bg="rgba(249,227,123,.5)" style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center' }}>
+            <NbIcon name="speech" size={21} />
+          </NbPaper>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{name}에게 응원 보내기</Text>
+            <Text numberOfLines={1} style={nbText.hand(19)}>{t('cheer.sendTo', { name })}</Text>
             {!!activity && (
-              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{activity}</Text>
+              <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 1 }]}>{activity}</Text>
             )}
           </View>
         </View>
       )}
     >
-      <View style={{ paddingHorizontal: 16, paddingBottom: 24 }}>
-
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 13 }}>
-          {PRESETS.map((p) => {
+      <View style={{ paddingHorizontal: 20, paddingBottom: 24 }}>
+        {/* Four ready-made notes, each on its own slip. The chosen one is highlighted
+            rather than outlined: it is the note you picked up. */}
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9, marginBottom: 14 }}>
+          {PRESETS.map((p, i) => {
             const on = preset === p.key;
             return (
-              <Pressable
-                key={p.key}
-                onPress={() => setPreset(on ? undefined : p.key)}
-                style={{
-                  width: '47.5%', flexDirection: 'row', alignItems: 'center', gap: 7,
-                  backgroundColor: on ? colors.yellow : '#fff',
-                  borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10,
-                }}
-              >
-                <PixelIcon name={p.key === 'rest' ? 'moon' : p.key === 'streak' ? 'flame' : 'clap'} color={C} size={15} sw={1.7} />
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C }}>{t(p.labelKey)}</Text>
+              <Pressable key={p.key} onPress={() => setPreset(on ? undefined : p.key)} style={{ width: '47.5%' }}>
+                <NbPaper
+                  rot={i % 2 ? 0.6 : -0.6}
+                  bg={on ? 'rgba(249,227,123,.5)' : undefined}
+                  style={[styles.preset, on && { borderColor: '#C99A1E', borderWidth: 2 }]}
+                >
+                  <NbIcon name={p.nbIcon} size={16} />
+                  <Text numberOfLines={2} style={[nbText.hand(15), { flex: 1, minWidth: 0 }]}>{t(p.labelKey)}</Text>
+                </NbPaper>
               </Pressable>
             );
           })}
         </View>
 
-        <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 11, marginBottom: 13 }}>
+        {/* A ruled line to write on, not a boxed field. */}
+        <View style={styles.noteLine}>
           <TextInput
             value={message}
             onChangeText={(v) => setMessage([...v].slice(0, MAX).join(''))}
             placeholder={t('cheer.notePlaceholder')}
-            placeholderTextColor={colors.textFaint}
+            placeholderTextColor={nb.placeholder}
             multiline
-            style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17, minHeight: 40 }}
+            style={styles.noteInput}
           />
-          <Text style={{ textAlign: 'right', fontFamily: fonts.heading, fontSize: fs(9), color: colors.textFaint, marginTop: 6 }}>
-            {[...message].length} / {MAX}
-          </Text>
+          <Text style={styles.counter}>{[...message].length} / {MAX}</Text>
         </View>
 
-        <Pressable
-          onPress={send}
-          disabled={sending || (!preset && !message.trim())}
-          style={{
-            backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 13, alignItems: 'center',
-            opacity: sending || (!preset && !message.trim()) ? 0.5 : 1,
-          }}
-        >
+        <Pressable onPress={send} disabled={sending || (!preset && !message.trim())} style={styles.send(sending || (!preset && !message.trim()))}>
           {sending
-            ? <ActivityIndicator color={colors.cream} />
-            : <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.cream }}>보내기</Text>}
+            ? <ActivityIndicator color={nb.paper} />
+            : (
+              <>
+                <NbIcon name="speech" size={17} color={nb.paper} />
+                <Text style={nbText.hand(18, nb.paper)}>{t('cheer.send')}</Text>
+              </>
+            )}
         </Pressable>
       </View>
     </BottomSheet>
   );
 }
+
+const styles = {
+  preset: { flexDirection: 'row', alignItems: 'center', gap: 7, paddingVertical: 10, paddingHorizontal: 11 } as const,
+  noteLine: {
+    marginBottom: 14, paddingBottom: 4,
+    borderBottomWidth: 2, borderBottomColor: 'rgba(62,54,43,.35)',
+  } as const,
+  noteInput: { fontFamily: nbFonts.hand, fontSize: 17, color: nb.ink, lineHeight: 24, minHeight: 44, paddingTop: 4 } as const,
+  counter: { textAlign: 'right', fontFamily: nbFonts.mono, fontSize: 9, color: nb.placeholder } as const,
+  /** The ink button. A function because its dimming depends on whether there is anything
+   *  to send — the server rejects an empty cheer, so the button must not look ready. */
+  send: (off: boolean) => ({
+    flexDirection: 'row' as const, alignItems: 'center' as const, justifyContent: 'center' as const, gap: 7,
+    backgroundColor: nb.ink, borderRadius: 3, paddingVertical: 13,
+    opacity: off ? 0.45 : 1,
+    transform: [{ rotate: '-0.3deg' }],
+  }),
+};

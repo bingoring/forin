@@ -442,6 +442,8 @@ export const en: Record<string, string> = {
   'cheer.streakGreat': 'That streak is impressive',
   'cheer.takeItEasy': 'Do not overdo it',
   'cheer.notePlaceholder': 'Add a note (optional)',
+  'cheer.sendTo': 'Send {name} a cheer',
+  'cheer.send': 'Send',
 
   'review.backToLab': 'Review lab',
   'review.doneToday': "Today's review is done!",

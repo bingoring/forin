@@ -441,6 +441,8 @@ export const de: Record<string, string> = {
   'cheer.streakGreat': 'Beeindruckende Serie',
   'cheer.takeItEasy': 'Überanstrenge dich nicht',
   'cheer.notePlaceholder': 'Kurze Nachricht (optional)',
+  'cheer.sendTo': '{name} anfeuern',
+  'cheer.send': 'Senden',
 
   'review.backToLab': 'Review-Labor',
   'review.doneToday': 'Die heutige Wiederholung ist geschafft!',

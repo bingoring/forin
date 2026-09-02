@@ -24,7 +24,7 @@ import {
   SOCIAL_CONFIG, completeSocialLogin, devSignIn, isProviderConfigured, signInApple, signInKakao,
 } from '@/lib/auth';
 import { nb, nbFonts } from '@/theme/nb';
-import { useT } from '@/i18n';
+import { useLocale, useT } from '@/i18n';
 
 // Lets the auth popup redirect back and dismiss the in-app browser.
 WebBrowser.maybeCompleteAuthSession();
@@ -128,6 +128,7 @@ export function SocialSignIn({ onDone, tone = 'paper' }: {
   tone?: 'paper' | 'dark';
 }) {
   const t = useT();
+  const locale = useLocale();
   const [busy, setBusy] = useState(false);
 
   const complete: Complete = async (label, run) => {
@@ -163,9 +164,11 @@ export function SocialSignIn({ onDone, tone = 'paper' }: {
           mark={<AppleMark />} disabled={busy} onPress={() => complete('Apple', signInApple)}
         />
 
-        {/* Kakao publishes the whole button as an image, label included, so there is no
-            text of ours to translate here. That is the brand requirement, and Kakao is a
-            Korean service — a learner signing in with it reads Korean. */}
+        {/* Kakao publishes the whole BUTTON as an image with its label baked in, so there
+            is no text of ours to translate — but the label still has to match the app's
+            language, and Kakao ships the asset per locale. Korean and English are the two
+            it publishes; ja/de fall back to the English button rather than showing a
+            Korean one to somebody reading German. */}
         <Pressable
           onPress={() => (isProviderConfigured('kakao') ? complete(t('provider.kakao'), signInKakao) : notConfigured(t('provider.kakao')))}
           disabled={busy}
@@ -179,7 +182,9 @@ export function SocialSignIn({ onDone, tone = 'paper' }: {
           })}
         >
           <Image
-            source={require('../../../assets/brand/kakao_login_wide.png')}
+            source={locale === 'ko'
+              ? require('../../../assets/brand/kakao_login_wide.png')
+              : require('../../../assets/brand/kakao_login_wide_en.png')}
             resizeMode="cover"
             style={{ width: '100%', height: H }}
           />

@@ -228,6 +228,7 @@ export default function HomeTab() {
 
         {/* 호출 쪽지 — the one module with a deadline, so it sits above everything that
             will still be here tomorrow. */}
+        {/* An EXPIRED call is not drawn — see PageNote. */}
         {!!home.page && <PageNote page={home.page} onAnswer={answerPage} />}
 
         {/* ✂ 과별 출근 카드 */}
@@ -345,9 +346,21 @@ function Sheet({ children }: { children: React.ReactNode }) {
  * Three states, as the pixel version had: open (answerable), accepted (the learner took it
  * and can carry on), answered (done). The distinction exists because "answered" used to be
  * set on the tap, and walking straight out of the scenario still reported +40 XP.
+ *
+ * A call whose window RAN OUT is not drawn at all. A note offering an action that cannot be
+ * taken is worse than no note — the server omits the field once a call has expired
+ * unanswered, so this covers the case where the countdown ran out with the screen open.
+ * An ACCEPTED call outlives its countdown on purpose: the window is for deciding, and
+ * dropping the note at 00:00 would strand somebody mid-conversation with no way back.
+ *
+ * The pixel pager this replaced also had a 무시 button. It is gone: that card occupied the
+ * top of the screen and had to be dismissible, and this is one taped line in a page that
+ * scrolls past it.
  */
 function PageNote({ page, onAnswer }: { page: HomePage; onAnswer: () => void }) {
   const t = useT();
+  const expired = page.secondsLeft <= 0 && !page.accepted && !page.answered;
+  if (expired) return null;
   const mins = Math.max(0, Math.round(page.secondsLeft / 60));
   const left = t('home.pageMinutes', { n: mins });
   return (

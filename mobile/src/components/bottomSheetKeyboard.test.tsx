@@ -28,7 +28,8 @@ function flat(style: unknown): Record<string, unknown> {
 function sheet(root: ReactTestInstance): ReactTestInstance {
   const hits = root.findAll((n) => {
     const st = flat(n.props?.style);
-    return typeof n.type === 'string' && st.position === 'absolute' && st.borderTopWidth === 4;
+    // 1.5 since v30: the sheet's top edge is a cut edge of paper, not a 4pt ink outline.
+    return typeof n.type === 'string' && st.position === 'absolute' && st.borderTopWidth === 1.5;
   }, { deep: true });
   expect(hits.length).toBe(1);
   return hits[0];

@@ -87,6 +87,17 @@ function byLabel(root: ReactTestInstance, label: string) {
   );
 }
 
+test("Kakao's button is the locale's own official image, not the Korean one everywhere", async () => {
+  // The label is baked into Kakao's asset, so it cannot be translated — it has to be the
+  // right FILE. A German learner shown the Korean button is being handed a language they
+  // did not choose on the screen where they decide whether to trust the app.
+  const tree = await mount();
+  const kakao = byLabel(tree.root, '카카오로 시작하기');
+  const img = kakao[0].findAll((n) => String(n.type) === 'Image', { deep: true });
+  expect(img.length).toBe(1);
+  expect(String(JSON.stringify(img[0].props.source))).toMatch(/kakao_login_wide(?!_en)/);
+});
+
 test('the cover offers the three providers, and no password anywhere', async () => {
   const tree = await mount();
   for (const label of ['Google로 계속하기', 'Apple로 계속하기', '카카오로 시작하기']) {

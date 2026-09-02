@@ -465,6 +465,8 @@ export const ko: Record<string, string> = {
   'cheer.streakGreat': '연속 대단해요',
   'cheer.takeItEasy': '무리하지 말아요',
   'cheer.notePlaceholder': '한마디 남기기 (선택)',
+  'cheer.sendTo': '{name}에게 응원 보내기',
+  'cheer.send': '보내기',
 
   // ── review session ───────────────────────────────────────────────────────
   'review.backToLab': '리뷰랩',

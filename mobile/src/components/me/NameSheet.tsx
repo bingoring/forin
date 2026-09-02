@@ -19,8 +19,8 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-native';
 import { api } from '@/api/client';
 import { BottomSheet } from '@/components/BottomSheet';
-import { PixelButton } from '@/components/PixelButton';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { NbButton, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
 import { useT } from '@/i18n';
 
 /** Mirrors the server's user.MaxDisplayNameLen. Duplicated on purpose — the input has
@@ -83,7 +83,7 @@ export function NameSheet({ visible, current, onClose, onSaved }: {
             value={value}
             onChangeText={setValue}
             placeholder={t('profile.namePlaceholder')}
-            placeholderTextColor={colors.textFaint}
+            placeholderTextColor={nb.placeholder}
             style={styles.input}
             autoFocus
             // One line, because it is drawn on one line everywhere it appears.
@@ -109,20 +109,15 @@ export function NameSheet({ visible, current, onClose, onSaved }: {
 
         <View style={styles.actions}>
           <View style={styles.action}>
-            <PixelButton label={t('common.cancel')} bg="#fff" shadowColor={colors.ink} full onPress={onClose} />
+            <NbButton variant="paper" full onPress={onClose}>{t('common.cancel')}</NbButton>
           </View>
           <View style={styles.action}>
             {saving ? (
-              <View style={styles.savingBox}><ActivityIndicator color={colors.ink} /></View>
+              <View style={styles.savingBox}><ActivityIndicator color={nb.ink} /></View>
             ) : (
-              <PixelButton
-                label={t('common.save')}
-                bg={colors.yellow}
-                shadowColor={colors.yellowShadow}
-                disabled={tooLong}
-                full
-                onPress={save}
-              />
+              <NbButton variant="ink" full iconColor={nb.paper} disabled={tooLong} onPress={save}>
+                {t('common.save')}
+              </NbButton>
             )}
           </View>
         </View>
@@ -132,24 +127,24 @@ export function NameSheet({ visible, current, onClose, onSaved }: {
 }
 
 const styles = StyleSheet.create({
-  title: { fontFamily: fonts.heading, fontSize: fs(13), color: colors.ink },
-  body: { paddingHorizontal: 16, paddingBottom: 18, gap: 10 },
-  why: { fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, lineHeight: 16 },
-  field: { borderWidth: 2.5, borderColor: colors.ink, backgroundColor: '#fff', paddingHorizontal: 10 },
-  fieldBad: { borderColor: '#EF4444' },
-  input: { fontFamily: fonts.body, fontSize: fs(14), color: colors.ink, paddingVertical: 10 },
+  title: { ...nbText.hand(19), paddingHorizontal: 20 },
+  body: { paddingHorizontal: 20, paddingBottom: 18, gap: 10 },
+  why: nbText.body(11, nb.soft),
+  /** A ruled line, because a name is written. The box it used to sit in read as a form
+   *  field, which is the one thing this sheet is not. */
+  field: { borderBottomWidth: 2, borderBottomColor: 'rgba(62,54,43,.35)', paddingHorizontal: 2 },
+  fieldBad: { borderBottomColor: nb.red },
+  input: { fontFamily: nbFonts.hand, fontSize: 22, color: nb.ink, paddingVertical: 8 },
   meta: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  count: { fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft },
-  countBad: { color: '#EF4444' },
-  error: { flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: '#EF4444' },
-  hint: { fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 },
-  actions: { flexDirection: 'row', gap: 8, marginTop: 2 },
+  /** The count is printed: it is a measurement against the server's own limit. */
+  count: { fontFamily: nbFonts.mono, fontSize: 9.5, color: nb.soft },
+  countBad: { color: nb.red },
+  error: { flex: 1, ...nbText.body(10, nb.red) },
+  hint: nbText.body(10, nb.soft),
+  actions: { flexDirection: 'row', gap: 9, marginTop: 4 },
   action: { flex: 1 },
   savingBox: {
-    borderWidth: 2.5,
-    borderColor: colors.ink,
-    backgroundColor: colors.cream,
-    paddingVertical: 9,
-    alignItems: 'center',
+    borderWidth: 1.5, borderColor: nb.paperEdge, borderRadius: 3,
+    backgroundColor: nb.paper, paddingVertical: 11, alignItems: 'center',
   },
 });

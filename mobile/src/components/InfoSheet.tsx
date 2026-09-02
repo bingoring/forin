@@ -10,12 +10,10 @@
 // drag, so a handle means the same thing everywhere.
 import type { ReactNode } from 'react';
 import { Text, View } from 'react-native';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { PixelButton } from '@/components/PixelButton';
+import { NbButton, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
 import { BottomSheet } from '@/components/BottomSheet';
-import { t, useLocale, useT } from '@/i18n';
-
-const C = colors.ink;
+import { useT } from '@/i18n';
 
 export type InfoSheetData = {
   icon: string;
@@ -35,42 +33,51 @@ export function InfoSheet({ data, onClose }: { data: InfoSheetData | null; onClo
     // Content-sized: this sheet says everything it has to say at rest, so opening it at
     // the top would be mostly empty paper.
     <BottomSheet visible={!!data} onClose={onClose}>
-      <View style={{ backgroundColor: colors.cream, padding: 20, paddingBottom: 36, gap: 14 }}>
+      <View style={{ paddingHorizontal: 20, paddingTop: 6, paddingBottom: 36, gap: 14 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-          <View style={{ width: 64, height: 64, backgroundColor: data?.iconBg || '#fff', borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            {data?.iconNode ?? <Text style={{ fontSize: fs(34) }}>{data?.icon}</Text>}
-          </View>
-          <View style={{ flex: 1, gap: 6 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C }}>{data?.title}</Text>
+          {/* The thing itself, on a slip of paper tilted a degree off square — a tile in
+              a collection, picked up and looked at. */}
+          <NbPaper rot={-2} bg={data?.iconBg} style={{ width: 64, height: 64, alignItems: 'center', justifyContent: 'center' }}>
+            {data?.iconNode ?? <Text style={{ fontSize: 34 }}>{data?.icon}</Text>}
+          </NbPaper>
+          <View style={{ flex: 1, minWidth: 0, gap: 6 }}>
+            <Text style={nbText.hand(23)}>{data?.title}</Text>
             {!!data?.status && (
-              <View style={{ alignSelf: 'flex-start', backgroundColor: data.status.bg, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{data.status.label}</Text>
+              <View style={{ alignSelf: 'flex-start' }}>
+                <NbTag color={data.status.bg} rot={-2}>{data.status.label}</NbTag>
               </View>
             )}
           </View>
         </View>
 
         {!!data?.what && (
-          <View style={{ gap: 4 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{t('info.what')}</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.text, lineHeight: 19 }}>{data.what}</Text>
+          <View style={{ gap: 2 }}>
+            <Text numberOfLines={1} style={styles.label}>{t('info.what')}</Text>
+            <Text style={nbText.body(13)}>{data.what}</Text>
           </View>
         )}
         {!!data?.how && (
-          <View style={{ gap: 4 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{t('info.how')}</Text>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.text, lineHeight: 19 }}>{data.how}</Text>
+          <View style={{ gap: 2 }}>
+            <Text numberOfLines={1} style={styles.label}>{t('info.how')}</Text>
+            <Text style={nbText.body(13)}>{data.how}</Text>
           </View>
         )}
 
-        {/* The action stays — it DOES something. The old 닫기 button is gone: the
-            handle and the backdrop are the two ways out, and people already try both. */}
+        {/* The action stays — it DOES something. The old 닫기 button is gone: the handle
+            and the backdrop are the two ways out, and people already try both. */}
         {!!data?.action && (
           <View style={{ marginTop: 4 }}>
-            <PixelButton label={data.action.label} bg={data.action.bg || colors.yellow} shadowColor={C} borderWidth={2} paddingV={11} fontSize={13} onPress={data.action.onPress} full />
+            <NbButton variant="ink" size="lg" full iconColor={nb.paper} onPress={data.action.onPress}>
+              {data.action.label}
+            </NbButton>
           </View>
         )}
       </View>
     </BottomSheet>
   );
 }
+
+const styles = {
+  /** Section labels are printed and small: they name a block rather than speaking. */
+  label: { fontFamily: nbFonts.bodyBold, fontSize: 10, color: nb.blue, letterSpacing: 1 } as const,
+};

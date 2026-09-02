@@ -10,8 +10,8 @@
 // on its own — no tap to dismiss, nothing to close, and it never covers the thread.
 import { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { FIcon } from '@/components/FIcon';
+import { nb, nbFonts } from '@/theme/nb';
+import { NbIcon } from '@/components/nb/NbIcon';
 import { useT } from '@/i18n';
 import type { Mood } from '@/data/moodTone';
 
@@ -68,7 +68,7 @@ export function MoodLift({ mood, onDone }: { mood?: Mood; onDone: () => void }) 
   return (
     <Animated.View pointerEvents="none" style={[styles.wrap, { opacity }]}>
       <View style={styles.strip}>
-        <FIcon name="sparkle" size={13} />
+        <NbIcon name="star" size={14} color={nb.green} />
         <Text style={styles.text}>{t(liftKey(mood))}</Text>
       </View>
     </Animated.View>
@@ -77,15 +77,19 @@ export function MoodLift({ mood, onDone }: { mood?: Mood; onDone: () => void }) 
 
 const styles = StyleSheet.create({
   wrap: { alignItems: 'center', marginBottom: 6 },
+  /** A slip of green paper, laid on at an angle — somebody's mood improved, and the note
+   *  is passed along rather than announced. */
   strip: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    backgroundColor: colors.mint,
-    borderWidth: 2,
-    borderColor: colors.ink,
-    paddingVertical: 4,
-    paddingHorizontal: 10,
+    backgroundColor: 'rgba(168,217,151,.4)',
+    borderWidth: 1.3,
+    borderColor: '#BFD3BB',
+    borderRadius: 2,
+    paddingVertical: 5,
+    paddingHorizontal: 11,
+    transform: [{ rotate: '-0.8deg' }],
   },
-  text: { fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.ink },
+  text: { fontFamily: nbFonts.hand, fontSize: 15, color: nb.ink },
 });

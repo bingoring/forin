@@ -30,7 +30,7 @@ import {
   View,
   type LayoutChangeEvent,
 } from 'react-native';
-import { colors } from '@/theme/tokens';
+import { nb } from '@/theme/nb';
 import { useSheetOverlay } from '@/components/SheetOverlay';
 
 const SCREEN_H = Dimensions.get('window').height;
@@ -480,7 +480,7 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
       <Animated.View
         style={{
           flex: 1,
-          backgroundColor: colors.ink,
+          backgroundColor: nb.dark,
           // Brightens as the sheet is pulled down: the scrim reports how modal
           // the sheet currently is instead of being a constant wash.
           opacity: y.interpolate({
@@ -508,9 +508,10 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
           // expressions let them disagree — and a test that read only the rendered one
           // passed while the drag was measuring the wrong sheet.
           ...(tall ? { height: restH } : { maxHeight: CONTENT_MAX }),
-          backgroundColor: colors.paper,
-          borderTopWidth: 4,
-          borderTopColor: colors.ink,
+          backgroundColor: nb.paper,
+          // A cut edge of paper, not a 4pt ink outline: the sheet is a sheet.
+          borderTopWidth: 1.5,
+          borderTopColor: nb.paperEdge,
           // `y` is the sheet's own position (0 = resting, restH = gone); `kbLift` is how
           // far the keyboard has pushed it up. Subtracting keeps the two independent —
           // the drag still speaks in the same numbers it always did, and the offscreen
@@ -533,7 +534,7 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
             left: 0,
             right: 0,
             height: kbH,
-            backgroundColor: colors.paper,
+            backgroundColor: nb.paper,
           }}
         />
         {/* The grabber, and the ONLY thing the drag is attached to.
@@ -566,9 +567,10 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
           // pushing the content down: the strip is 27px tall and reads as small on a
           // phone, and a handle you have to aim at is not a handle.
           hitSlop={{ top: 10, bottom: 14, left: 0, right: 0 }}
-          style={{ paddingTop: 12, paddingBottom: 10, alignItems: 'center', backgroundColor: colors.paper }}
+          style={{ paddingTop: 12, paddingBottom: 10, alignItems: 'center', backgroundColor: nb.paper }}
         >
-          <View style={{ width: 52, height: 5, backgroundColor: colors.ink + '55' }} />
+          {/* A pencil stroke rather than a slab: rounded and in the notebook's pen. */}
+          <View style={{ width: 52, height: 4, borderRadius: 2, backgroundColor: 'rgba(62,54,43,.3)' }} />
         </View>
         {header != null && <View {...headerPan.panHandlers}>{header}</View>}
         {children}

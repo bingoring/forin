@@ -1,3 +1,10 @@
+// NOTE (v29): the home screen does NOT render LiveWard any more.
+//
+// It is pixel-art sprites, and a sprite on a paper page is the one thing the notebook line
+// forbids — see app/(tabs)/index.tsx. The component and these tests are kept because
+// whether the live ward comes back (redrawn in the notebook line) is an open product
+// decision, not because the feature is on screen today. A green run here says the
+// component still behaves; it does not say a learner can see it.
 // 라이브 병동 (v27), and the clock it follows.
 //
 // The shift used to come from the server, which never read a clock: home.DeriveShift

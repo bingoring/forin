@@ -10,17 +10,15 @@
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { AnimatedFace, FacePlayer } from '@engine';
 import { BottomSheet } from '@/components/BottomSheet';
-
-import { FIcon } from '@/components/FIcon';
-import { PixelButton } from '@/components/PixelButton';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useT } from '@/i18n';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbPaper, nbText } from '@/components/nb/NbUI';
+import { nb } from '@/theme/nb';
+import { useT } from '@/i18n';
 import { playSfx } from '@/lib/sfx';
 import { useAvatar } from '@/hooks/useAvatar';
 import { HAIR_COLORS, HAIR_STYLES, SCRUB_COLORS, SKIN_TONES, setAvatar } from '@/lib/avatar';
 import { faceScanAvailable } from '@/components/FaceScanSheet';
 
-const C = colors.ink;
 
 export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; onClose(): void; onScan(): void }) {
   const t = useT();
@@ -31,23 +29,27 @@ export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; on
       <View>
         {/* Live preview pinned above the controls: every tap changes this face, and a
             preview you have to scroll to is a preview nobody uses. */}
-        <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 6, paddingBottom: 12, alignItems: 'center' }}>
-          <View style={{ width: 96, height: 112, backgroundColor: avatar.scrub, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-            <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
-            <AnimatedFace size={102} avatar={avatar} expression="happy" />
-          </View>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 9 }}>{t('avatar.title')}</Text>
+        {/* The live preview, pinned above the controls: every tap changes this face, and
+            a preview you have to scroll to is a preview nobody uses. It is a POLAROID
+            here — a sprite cannot sit directly on paper, and the print's white margin is
+            what lets it. */}
+        <View style={{ borderBottomWidth: 1.5, borderBottomColor: nb.paperEdge, paddingTop: 4, paddingBottom: 13, alignItems: 'center' }}>
+          <NbPaper rot={-1.5} style={{ paddingTop: 5, paddingHorizontal: 5, paddingBottom: 5 }}>
+            <View style={{ width: 96, height: 112, backgroundColor: avatar.scrub, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
+              <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
+              <AnimatedFace size={102} avatar={avatar} expression="happy" />
+            </View>
+          </NbPaper>
+          <Text style={[nbText.hand(19), { marginTop: 9 }]}>{t('avatar.title')}</Text>
         </View>
 
         <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 28, gap: 16 }}>
           {/* Hidden entirely on a binary without the camera module. A shortcut that
               cannot work is worse than an absent one — it reads as a broken feature. */}
           {faceScanAvailable && (
-            <PixelButton
-              label={t('avatar.scanCta')} icon="target" bg={colors.blue} shadowColor={C}
-              fontSize={12.5} borderWidth={2.5} paddingV={9} full
-              onPress={() => { playSfx('tap'); onScan(); }}
-            />
+            <NbButton variant="paper" full icon="magnify" onPress={() => { playSfx('tap'); onScan(); }}>
+              {t('avatar.scanCta')}
+            </NbButton>
           )}
 
           <Axis label={t('avatar.hairStyle')}>
@@ -90,11 +92,9 @@ export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; on
             ))}
           </Axis>
 
-          <PixelButton
-            label={t('common.done')} icon="check" bg={colors.mint} shadowColor={colors.mintShadow}
-            fontSize={13} borderWidth={2.5} paddingV={10} full
-            onPress={() => { playSfx('confirm'); onClose(); }}
-          />
+          <NbButton variant="ink" size="lg" full icon="check" iconColor={nb.paper} onPress={() => { playSfx('confirm'); onClose(); }}>
+            {t('common.done')}
+          </NbButton>
         </ScrollView>
       </View>
     </BottomSheet>
@@ -104,7 +104,7 @@ export function AvatarSheet({ visible, onClose, onScan }: { visible: boolean; on
 function Axis({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <View>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 7 }}>{label}</Text>
+      <Text numberOfLines={1} style={[nbText.hand(16), { marginBottom: 7 }]}>{label}</Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 7 }}>{children}</View>
     </View>
   );
@@ -115,15 +115,18 @@ function Swatch({ selected, onPress, children }: { selected: boolean; onPress():
     <Pressable
       onPress={() => { playSfx('tap'); onPress(); }}
       style={{
-        borderWidth: selected ? 3 : 2, borderColor: C,
-        backgroundColor: selected ? colors.yellow : '#fff',
+        // The chosen swatch takes the gold ring the app uses everywhere for "this is the
+        // one you chose", and a ticked corner as a second, redundant cue.
+        borderWidth: selected ? 2 : 1.3,
+        borderColor: selected ? '#C99A1E' : nb.paperEdge,
+        backgroundColor: selected ? 'rgba(249,227,123,.45)' : nb.paper,
         padding: 3, alignItems: 'center', justifyContent: 'center',
       }}
     >
       {children}
       {selected && (
-        <View style={{ position: 'absolute', top: -5, right: -5, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, width: 14, height: 14, alignItems: 'center', justifyContent: 'center' }}>
-          <FIcon name="check" size={11} />
+        <View style={{ position: 'absolute', top: -6, right: -6, backgroundColor: nb.paper, borderRadius: 8, width: 16, height: 16, alignItems: 'center', justifyContent: 'center' }}>
+          <NbIcon name="check" size={13} color={nb.green} />
         </View>
       )}
     </Pressable>

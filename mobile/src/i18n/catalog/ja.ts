@@ -441,6 +441,8 @@ export const ja: Record<string, string> = {
   'cheer.streakGreat': '連続がすごいです',
   'cheer.takeItEasy': '無理しないで',
   'cheer.notePlaceholder': 'ひとこと添える（任意）',
+  'cheer.sendTo': '{name}さんに応援を送る',
+  'cheer.send': '送る',
 
   'review.backToLab': 'レビューラボ',
   'review.doneToday': '今日の復習が終わりました！',

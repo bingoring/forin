@@ -69,12 +69,15 @@ test('colleague detail keeps the two levels in two fields', () => {
 });
 
 test('the onboarding screen no longer claims something nothing does', () => {
-  const src = read('(onboarding)', 'level.tsx');
-  // It said "Picking a CEFR band tunes scenario difficulty" while the column was
-  // written and never read. It is true now — via three named server-side effects —
-  // and the comment has to name them so the next reader can check.
+  // The question moved: the three-page wizard (onboarding/level.tsx) was replaced by the
+  // passport flow and deleted, so this now reads the page that actually asks.
+  const src = read('(onboarding)', 'passport.tsx');
+  // The old page said "Picking a CEFR band tunes scenario difficulty" while the column
+  // was written and never read. It is true now — via three named server-side effects —
+  // and the comment has to name them, so the next reader can check the claim against
+  // domain/user/level.go rather than trusting it.
   expect(src).not.toMatch(/band tunes scenario difficulty/);
   expect(src).toMatch(/speech register/);
-  expect(src).toMatch(/examiner's calibration/);
-  expect(src).toMatch(/daily scenario sample/);
+  expect(src).toMatch(/grading calibration/);
+  expect(src).toMatch(/scenario weighting/);
 });

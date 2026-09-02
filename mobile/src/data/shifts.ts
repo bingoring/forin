@@ -7,18 +7,21 @@
 // the hour the attempt started) and each job decides what to call it.
 //
 // Code-side per-job table, no DB constraint — a new profession brings a row here.
-import type { IconName } from '@/components/PixelIcon';
-import { colors } from '@/theme/tokens';
+import type { NbIconName } from '@/components/nb/NbIcon';
 
 export type Band = 'day' | 'evening' | 'night';
 
 export const BANDS: Band[] = ['day', 'evening', 'night'];
 
-/** Colour and icon are shared across jobs: they encode the time of day, not the job. */
-export const BAND_STYLE: Record<Band, { bg: string; icon: IconName }> = {
-  day: { bg: colors.yellow, icon: 'star' },
-  evening: { bg: colors.peach, icon: 'bulb' },
-  night: { bg: colors.lilac, icon: 'moon' },
+/** Colour and icon are shared across jobs: they encode the time of day, not the job.
+ *
+ *  The three washes are the notebook's own — a roster is written in pen, and the band is
+ *  the wash the row is highlighted with. v29 07 is explicit that a calendar cell carries
+ *  colour ONLY (셀 이모지 금지), so the icon appears in the day's detail, never in a cell. */
+export const BAND_STYLE: Record<Band, { bg: string; nbIcon: NbIconName }> = {
+  day: { bg: 'rgba(249,227,123,.5)', nbIcon: 'star' },
+  evening: { bg: '#FFF3EE', nbIcon: 'bulb' },
+  night: { bg: 'rgba(195,177,232,.35)', nbIcon: 'monitor' },
 };
 
 /**
