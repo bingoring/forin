@@ -7,12 +7,12 @@ import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { PixelButton } from '@/components/PixelButton';
+import { nb, nbFonts } from '@/theme/nb';
+import { QuizShell, QuizSection, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
+import { NbButton } from '@/components/nb/NbUI';
 import { t, useT } from '@/i18n';
 
-const RANK_COLOR = ['#EF4444', '#F97316', '#FACC15', '#34D399', '#60A5FA'];
+const RANK_COLOR = [nb.red, '#F97316', '#FACC15', '#34D399', '#60A5FA'];
 // Fixed 5-level Emergency Severity Index.
 const LEVELS = [
   { n: 1, color: '#DC2626', name: 'Resuscitation', time: 'Immediate' },
@@ -62,16 +62,16 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         isRight
-          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} onPress={onComplete}>{t('quiz.finish')}</NbButton></View>
           : (
             <>
               <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>
-                  선택: {sel ? <Text style={{ color: LEVELS[sel - 1].color }}>LV {sel}</Text> : <Text style={{ color: colors.textFaint }}>—</Text>}
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: C }}>
+                  선택: {sel ? <Text style={{ color: LEVELS[sel - 1].color }}>LV {sel}</Text> : <Text style={{ color: nb.placeholder }}>—</Text>}
                 </Text>
               </View>
-              <PixelButton label={t('quiz.reset')} bg="#fff" shadowColor={C} fontSize={11} disabled={sel === null && !checked} onPress={() => { setSel(null); setChecked(false); }} style={{ flex: 1 }} />
-              <PixelButton label={t('quiz.confirm')} bg={colors.mint} shadowColor={colors.mintShadow} fontSize={12} disabled={sel === null} onPress={() => setChecked(true)} style={{ flex: 1 }} />
+              <NbButton variant="paper" disabled={sel === null && !checked} onPress={() => { setSel(null); setChecked(false); }} style={{ flex: 1 }}>{t('quiz.reset')}</NbButton>
+              <NbButton variant="ink" iconColor={nb.paper} disabled={sel === null} onPress={() => setChecked(true)} style={{ flex: 1 }}>{t('quiz.confirm')}</NbButton>
             </>
           )
       }
@@ -81,21 +81,21 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
       {/* patient case card */}
       <View style={{ marginBottom: 12 }}>
         <Shadowed offset={3}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 10, paddingTop: 14 }}>
-            <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: '#DC2626', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>PATIENT CASE</Text>
+          <View style={{ backgroundColor: nb.paper, borderWidth: 1.5, borderColor: nb.paperEdge, padding: 10, paddingTop: 14 }}>
+            <View style={{ position: 'absolute', top: -8, left: 10, backgroundColor: '#DC2626', borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 5 }}>
+              <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.paper }}>PATIENT CASE</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
-              <View style={{ width: 56, height: 64, backgroundColor: colors.peach, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center', padding: 4 }}>
+              <View style={{ width: 56, height: 64, backgroundColor: '#FFF3EE', borderWidth: 1.4, borderColor: nb.ink, alignItems: 'center', justifyContent: 'center', padding: 4 }}>
                 <PatientHeadPixel />
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{p.age} y / {p.sex}</Text>
-                {!!p.arrival && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{p.arrival}</Text>}
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{p.age} y / {p.sex}</Text>
+                {!!p.arrival && <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>{p.arrival}</Text>}
                 {!!p.cc && (
-                  <View style={{ marginTop: 5, backgroundColor: colors.cream, borderWidth: 1.5, borderColor: C, paddingVertical: 4, paddingHorizontal: 6 }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, lineHeight: 15 }}>
-                      <Text style={{ fontFamily: fonts.heading, backgroundColor: colors.yellow }}>CC. </Text>"{p.cc}"
+                  <View style={{ marginTop: 5, backgroundColor: nb.cream, borderWidth: 1.3, borderColor: nb.ink, paddingVertical: 4, paddingHorizontal: 6 }}>
+                    <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: C, lineHeight: 15 }}>
+                      <Text style={{ fontFamily: nbFonts.hand, backgroundColor: 'rgba(249,227,123,.5)' }}>CC. </Text>"{p.cc}"
                     </Text>
                   </View>
                 )}
@@ -105,10 +105,10 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
             {!!p.vitals?.length && (
               <View style={{ flexDirection: 'row', gap: 4, marginTop: 8 }}>
                 {p.vitals.map((v, i) => (
-                  <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FEE2E2' : colors.paper, borderWidth: 1.5, borderColor: C, paddingVertical: 4, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>{v.label}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
-                    {!!v.unit && <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: colors.textSoft, marginTop: 1 }}>{v.unit}</Text>}
+                  <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FFF0EC' : nb.paper, borderWidth: 1.3, borderColor: nb.ink, paddingVertical: 4, alignItems: 'center' }}>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 10.8, color: nb.soft }}>{v.label}</Text>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
+                    {!!v.unit && <Text style={{ fontFamily: nbFonts.body, fontSize: 8, color: nb.soft, marginTop: 1 }}>{v.unit}</Text>}
                   </View>
                 ))}
               </View>
@@ -117,8 +117,8 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
             {!!p.obs?.length && (
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
                 {p.obs.map((o, i) => (
-                  <View key={i} style={{ backgroundColor: o.warn ? '#DC2626' : '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5, paddingVertical: 2 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: o.warn ? '#fff' : C }}>{o.text}</Text>
+                  <View key={i} style={{ backgroundColor: o.warn ? '#DC2626' : '#fff', borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 5, paddingVertical: 2 }}>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: o.warn ? '#fff' : C }}>{o.text}</Text>
                   </View>
                 ))}
               </View>
@@ -139,24 +139,24 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
               <Pressable
                 disabled={isRight}
                 onPress={() => { if (!isRight) { setSel(l.n); setChecked(false); } }}
-                style={{ flexDirection: 'row', alignItems: 'stretch', backgroundColor: showWrong ? '#FEE2E2' : active ? l.color + '22' : '#fff', borderWidth: 2.5, borderColor: active ? l.color : showWrong ? '#DC2626' : C }}
+                style={{ flexDirection: 'row', alignItems: 'stretch', backgroundColor: showWrong ? '#FFF0EC' : active ? l.color + '22' : '#fff', borderWidth: 2.5, borderColor: active ? l.color : showWrong ? '#DC2626' : C }}
               >
                 <View style={{ width: 38, backgroundColor: l.color, alignItems: 'center', justifyContent: 'center', borderRightWidth: 2.5, borderRightColor: C }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(20), color: '#fff' }}>{l.n}</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: '#fff' }}>LV</Text>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 27.0, color: nb.paper }}>{l.n}</Text>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 9.5, color: nb.paper }}>LV</Text>
                 </View>
                 <View style={{ flex: 1, paddingVertical: 6, paddingHorizontal: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{l.name}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>{l.time}</Text>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{l.name}</Text>
+                  <Text style={{ fontFamily: nbFonts.body, fontSize: 9, color: nb.soft }}>{l.time}</Text>
                 </View>
                 {(showCorrect || (selected && !checked)) && (
                   <View style={{ justifyContent: 'center', paddingHorizontal: 8 }}>
-                    <View style={{ backgroundColor: l.color, borderWidth: 1.5, borderColor: C, paddingHorizontal: 6, paddingVertical: 1 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>{showCorrect ? t('quiz.answer') : t('quiz.picked')}</Text>
+                    <View style={{ backgroundColor: l.color, borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 6, paddingVertical: 1 }}>
+                      <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.paper }}>{showCorrect ? t('quiz.answer') : t('quiz.picked')}</Text>
                     </View>
                   </View>
                 )}
-                {showWrong && <View style={{ justifyContent: 'center', paddingHorizontal: 10 }}><Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: '#DC2626' }}>✗</Text></View>}
+                {showWrong && <View style={{ justifyContent: 'center', paddingHorizontal: 10 }}><Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: '#DC2626' }}>✗</Text></View>}
               </Pressable>
             </Shadowed>
           );
@@ -166,20 +166,20 @@ function EsiTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; o
       {/* result + reasoning */}
       {checked && (
         <View style={{ marginTop: 12 }}>
-          <View style={{ backgroundColor: isRight ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{isRight ? t('quiz.triageRight') : t('quiz.triageWrong', { level: correct })}</Text>
+          <View style={{ backgroundColor: isRight ? 'rgba(168,217,151,.4)' : '#FFF0EC', borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 8, paddingHorizontal: 12 }}>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{isRight ? t('quiz.triageRight') : t('quiz.triageWrong', { level: correct })}</Text>
           </View>
           {!!c.reasoning?.length && (
             <View style={{ marginTop: 10 }}>
               <Shadowed offset={2}>
-                <View style={{ backgroundColor: '#FFF7ED', borderWidth: 2, borderColor: C, padding: 10, paddingTop: 14 }}>
-                  <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#F97316', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#fff' }}>WHY LV {correct}?</Text>
+                <View style={{ backgroundColor: '#FFF7ED', borderWidth: 1.4, borderColor: nb.ink, padding: 10, paddingTop: 14 }}>
+                  <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#F97316', borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 5 }}>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.paper }}>WHY LV {correct}?</Text>
                   </View>
                   {c.reasoning.map((r, i) => (
                     <View key={i} style={{ flexDirection: 'row', gap: 5, marginBottom: 3 }}>
-                      <Text style={{ width: 14, fontFamily: fonts.heading, fontSize: fs(10), color: r.kind === 'ok' ? '#16A34A' : r.kind === 'bad' ? '#DC2626' : C }}>{r.kind === 'ok' ? '✓' : r.kind === 'bad' ? '✗' : ''}</Text>
-                      <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: C, lineHeight: 15, textDecorationLine: r.kind === 'bad' ? 'line-through' : 'none' }}>{r.text}</Text>
+                      <Text style={{ width: 14, fontFamily: nbFonts.hand, fontSize: 13.5, color: r.kind === 'ok' ? '#16A34A' : r.kind === 'bad' ? '#DC2626' : C }}>{r.kind === 'ok' ? '✓' : r.kind === 'bad' ? '✗' : ''}</Text>
+                      <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 10, color: C, lineHeight: 15, textDecorationLine: r.kind === 'bad' ? 'line-through' : 'none' }}>{r.text}</Text>
                     </View>
                   ))}
                 </View>
@@ -213,14 +213,14 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} onPress={onComplete}>{t('quiz.finish')}</NbButton></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton icon="alert" label={t('quiz.submitPriority')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><NbButton variant="paper" full onPress={() => { setChecked(false); setPlaced([]); }}>{t('quiz.retry')}</NbButton></View>
+            : <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} disabled={!full} onPress={() => setChecked(true)}>{t('quiz.submitPriority')}</NbButton></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 우선순위 (1 = 가장 급함) ━</Text>
+      <QuizSection label={t('quiz.priorityOrder')} />
       <View style={{ gap: 6 }}>
         {cards.map((_, slot) => {
           const ci = placed[slot];
@@ -229,16 +229,16 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
           const bad = checked && card && !correctness[slot];
           return (
             <View key={slot} style={{ flexDirection: 'row', alignItems: 'stretch', gap: 6 }}>
-              <View style={{ width: 30, backgroundColor: RANK_COLOR[slot] ?? '#94A3B8', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: '#fff' }}>{slot + 1}</Text>
+              <View style={{ width: 30, backgroundColor: RANK_COLOR[slot] ?? '#94A3B8', borderWidth: 1.4, borderColor: nb.ink, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: nb.paper }}>{slot + 1}</Text>
               </View>
               {card ? (
-                <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, backgroundColor: ok ? colors.mint : bad ? '#FEE2E2' : '#fff', borderWidth: 2, borderColor: C, justifyContent: 'center', paddingHorizontal: 8, paddingVertical: 7 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 15 }}>{card.text}{checked ? (ok ? '  ✓' : '  ✕') : ''}</Text>
+                <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, backgroundColor: ok ? 'rgba(168,217,151,.4)' : bad ? '#FFF0EC' : '#fff', borderWidth: 1.4, borderColor: nb.ink, justifyContent: 'center', paddingHorizontal: 8, paddingVertical: 7 }}>
+                  <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: C, lineHeight: 15 }}>{card.text}{checked ? (ok ? '  ✓' : '  ✕') : ''}</Text>
                 </Pressable>
               ) : (
-                <View style={{ flex: 1, borderWidth: 2, borderColor: '#2A252255', borderStyle: 'dashed', padding: 10 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textFaint }}>비어 있음</Text>
+                <View style={{ flex: 1, borderWidth: 2, borderColor: 'rgba(62,54,43,.18)', borderStyle: 'dashed', padding: 10 }}>
+                  <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.placeholder }}>{t('quiz.emptySlot')}</Text>
                 </View>
               )}
             </View>
@@ -247,12 +247,12 @@ function RankTriage({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; 
       </View>
       {inBank.length > 0 && (
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 환자 카드 ━</Text>
+          <QuizSection label={t('quiz.patientCards')} />
           <View style={{ gap: 6 }}>
             {inBank.map((ci) => (
               <Shadowed key={ci} offset={2}>
-                <Pressable onPress={() => !checked && setPlaced([...placed, ci])} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 15 }}>{cards[ci].text}</Text>
+                <Pressable onPress={() => !checked && setPlaced([...placed, ci])} style={{ backgroundColor: nb.paper, borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 8, paddingHorizontal: 8 }}>
+                  <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: C, lineHeight: 15 }}>{cards[ci].text}</Text>
                 </Pressable>
               </Shadowed>
             ))}

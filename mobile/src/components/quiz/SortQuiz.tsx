@@ -4,9 +4,9 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { PixelButton } from '@/components/PixelButton';
+import { NbButton } from '@/components/nb/NbUI';
 import { t, useT } from '@/i18n';
 
 export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
@@ -34,10 +34,10 @@ export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} onPress={onComplete}>{t('quiz.finish')}</NbButton></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced({}); setSel(null); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label={t('quiz.submitSort')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><NbButton variant="paper" full onPress={() => { setChecked(false); setPlaced({}); setSel(null); }}>{t('quiz.retry')}</NbButton></View>
+            : <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} disabled={!full} onPress={() => setChecked(true)}>{t('quiz.submitSort')}</NbButton></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
@@ -45,13 +45,13 @@ export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       {/* pool */}
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 12, minHeight: 24 }}>
         {unplaced.map((p) => (
-          <Shadowed key={p} offset={2} shadowColor={sel === p ? C : colors.yellowShadow}>
-            <Pressable onPress={() => setSel(sel === p ? null : p)} style={{ backgroundColor: sel === p ? colors.mint : colors.yellow, borderWidth: 2.5, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11.5), color: C }}>{p}</Text>
+          <Shadowed key={p} offset={2} shadowColor={sel === p ? C : '#C99A1E'}>
+            <Pressable onPress={() => setSel(sel === p ? null : p)} style={{ backgroundColor: sel === p ? 'rgba(168,217,151,.4)' : 'rgba(249,227,123,.5)', borderWidth: 1.5, borderColor: nb.paperEdge, paddingVertical: 6, paddingHorizontal: 10 }}>
+              <Text style={{ fontFamily: nbFonts.hand, fontSize: 15.5, color: C }}>{p}</Text>
             </Pressable>
           </Shadowed>
         ))}
-        {unplaced.length === 0 && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textFaint }}>모든 물품을 분류했어요</Text>}
+        {unplaced.length === 0 && <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.placeholder }}>{t('quiz.allSorted')}</Text>}
       </View>
 
       {/* buckets */}
@@ -59,17 +59,17 @@ export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
         {buckets.map((b, bi) => (
           <Pressable key={bi} onPress={() => drop(bi)} style={{ flex: 1 }}>
             <Shadowed offset={3}>
-              <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
-                <View style={{ backgroundColor: b.color || colors.paper, borderBottomWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C, textAlign: 'center' }}>{b.name}</Text>
+              <View style={{ backgroundColor: nb.paper, borderWidth: 1.5, borderColor: nb.paperEdge }}>
+                <View style={{ backgroundColor: b.color || nb.paper, borderBottomWidth: 2, borderColor: C, paddingVertical: 5, alignItems: 'center' }}>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.2, color: C, textAlign: 'center' }}>{b.name}</Text>
                 </View>
                 <View style={{ padding: 6, gap: 5, minHeight: 96 }}>
                   {pool.filter((p) => placed[p] === bi).map((chip) => {
                     const ok = checked && b.items.includes(chip);
                     const bad = checked && !b.items.includes(chip);
                     return (
-                      <Pressable key={chip} onPress={() => pull(chip)} style={{ backgroundColor: ok ? colors.mint : bad ? '#FEE2E2' : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 6 }}>
-                        <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: C, textAlign: 'center' }}>{chip}{ok ? ' ✓' : bad ? ' ✕' : ''}</Text>
+                      <Pressable key={chip} onPress={() => pull(chip)} style={{ backgroundColor: ok ? 'rgba(168,217,151,.4)' : bad ? '#FFF0EC' : '#fff', borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 5, paddingHorizontal: 6 }}>
+                        <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: C, textAlign: 'center' }}>{chip}{ok ? ' ✓' : bad ? ' ✕' : ''}</Text>
                       </Pressable>
                     );
                   })}

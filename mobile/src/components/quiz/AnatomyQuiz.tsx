@@ -7,9 +7,10 @@ import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Circle, Ellipse, Path, Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { PixelButton } from '@/components/PixelButton';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { nb, nbFonts } from '@/theme/nb';
+import { QuizShell, QuizSection, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
+import { NbButton } from '@/components/nb/NbUI';
 import { t, useT } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
@@ -51,13 +52,13 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} onPress={onComplete}>{t('quiz.finish')}</NbButton></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); restart(); }} full /></View>
+            ? <View style={{ flex: 1 }}><NbButton variant="paper" full onPress={() => { setChecked(false); restart(); }}>{t('quiz.retry')}</NbButton></View>
             : (
               <>
-                <PixelButton label={t('quiz.restart')} bg="#fff" shadowColor={C} fontSize={12} disabled={filled === 0} onPress={restart} style={{ flex: 1 }} />
-                <View style={{ flex: 2 }}><PixelButton label={t('quiz.submitCount', { filled, total: dots.length })} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+                <NbButton variant="paper" disabled={filled === 0} onPress={restart} style={{ flex: 1 }}>{t('quiz.restart')}</NbButton>
+                <View style={{ flex: 2 }}><NbButton variant="ink" full iconColor={nb.paper} disabled={!full} onPress={() => setChecked(true)}>{t('quiz.submitCount', { filled, total: dots.length })}</NbButton></View>
               </>
             )
       }
@@ -67,9 +68,9 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
       <View style={{ flexDirection: 'row', gap: 12 }}>
         {/* patient body diagram + dots */}
         <Shadowed offset={3}>
-          <View style={{ width: BODY_W, height: BODY_H, backgroundColor: colors.paper, borderWidth: 3, borderColor: C, position: 'relative' }}>
-            <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, zIndex: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>PATIENT</Text>
+          <View style={{ width: BODY_W, height: BODY_H, backgroundColor: nb.paper, borderWidth: 1.5, borderColor: nb.paperEdge, position: 'relative' }}>
+            <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: nb.paper, borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 4, zIndex: 5 }}>
+              <Text style={{ fontFamily: nbFonts.hand, fontSize: 10.8, color: C }}>PATIENT</Text>
             </View>
             <View style={{ flex: 1, padding: 8 }}>
               <PatientBody />
@@ -77,23 +78,23 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
             {dots.map((d, i) => {
               const a = assigned[i];
               const st = checked && a ? (correctness[i] ? 'correct' : 'wrong') : a ? 'filled' : sel === i ? 'hover' : 'empty';
-              const dotBg = st === 'correct' || st === 'filled' ? colors.mint : st === 'wrong' ? '#FCA5A5' : st === 'hover' ? colors.yellow : '#fff';
+              const dotBg = st === 'correct' || st === 'filled' ? 'rgba(168,217,151,.4)' : st === 'wrong' ? '#FCA5A5' : st === 'hover' ? 'rgba(249,227,123,.5)' : '#fff';
               return (
                 <Pressable key={i} onPress={() => tapDot(i)} style={{ position: 'absolute', left: `${d.x}%`, top: `${d.y}%`, marginLeft: -10, marginTop: -10, zIndex: 4 }}>
                   {/* dot — fixed 20×20, always centered on the point */}
                   <View style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: dotBg, borderWidth: 2.5, borderColor: st === 'empty' ? '#9CA3AF' : C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{i + 1}</Text>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: C }}>{i + 1}</Text>
                   </View>
                   {/* tag — absolute + centered under the dot so its width never shifts the dot */}
                   {(a || sel === i) && (
                     <View pointerEvents="none" style={{ position: 'absolute', top: 22, left: -40, width: 100, alignItems: 'center' }}>
                       {a ? (
-                        <View style={{ backgroundColor: dotBg, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 4 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}{st === 'correct' ? ' ✓' : st === 'wrong' ? ' ✕' : ''}</Text>
+                        <View style={{ backgroundColor: dotBg, borderWidth: 1.3, borderColor: nb.ink, paddingVertical: 1, paddingHorizontal: 4 }}>
+                          <Text style={{ fontFamily: nbFonts.hand, fontSize: 11.5, color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}{st === 'correct' ? ' ✓' : st === 'wrong' ? ' ✕' : ''}</Text>
                         </View>
                       ) : (
-                        <View style={{ borderWidth: 1.5, borderColor: colors.yellowShadow, borderStyle: 'dashed', paddingVertical: 1, paddingHorizontal: 4 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.yellowShadow }}>여기에</Text>
+                        <View style={{ borderWidth: 1.5, borderColor: '#C99A1E', borderStyle: 'dashed', paddingVertical: 1, paddingHorizontal: 4 }}>
+                          <Text style={{ fontFamily: nbFonts.hand, fontSize: 10.8, color: '#C99A1E' }}>{t('quiz.dropHere')}</Text>
                         </View>
                       )}
                     </View>
@@ -106,14 +107,14 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
 
         {/* word bank + feedback */}
         <View style={{ flex: 1, gap: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>━ 단어 카드 ━</Text>
+          <QuizSection label={t('quiz.wordCards')} />
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
             {bank.map((w, i) => {
               const isUsed = used.has(w);
               return (
                 <Shadowed key={i} offset={isUsed ? 0 : 2}>
-                  <Pressable onPress={() => tapWord(w)} style={{ backgroundColor: isUsed ? '#2A252222' : '#fff', borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 8 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: isUsed ? colors.textFaint : C, textDecorationLine: isUsed ? 'line-through' : 'none' }}>{w}</Text>
+                  <Pressable onPress={() => tapWord(w)} style={{ backgroundColor: isUsed ? 'rgba(62,54,43,.18)' : '#fff', borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 6, paddingHorizontal: 8 }}>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.2, color: isUsed ? nb.placeholder : C, textDecorationLine: isUsed ? 'line-through' : 'none' }}>{w}</Text>
                   </Pressable>
                 </Shadowed>
               );
@@ -123,20 +124,20 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
           {/* wrong-answer feedback */}
           {checked && firstWrongIdx >= 0 && (
             <Shadowed offset={2}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 7 }}>
-                <View style={{ backgroundColor: '#EF4444', paddingHorizontal: 4 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: '#fff' }}>✕</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: '#FFF0EC', borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 5, paddingHorizontal: 7 }}>
+                <View style={{ backgroundColor: nb.red, paddingHorizontal: 4 }}>
+                  <NbIcon name="cross" size={11} color={nb.paper} />
                 </View>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(9.5), color: C, lineHeight: 13 }}>
-                  <Text style={{ fontFamily: fonts.heading }}>#{firstWrongIdx + 1}</Text> — 여기는 <Text style={{ fontFamily: fonts.heading }}>{dots[firstWrongIdx]?.label}</Text>이에요!
+                <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 9.5, color: C, lineHeight: 13 }}>
+                  <Text style={{ fontFamily: nbFonts.hand }}>#{firstWrongIdx + 1}</Text> — 여기는 <Text style={{ fontFamily: nbFonts.hand }}>{dots[firstWrongIdx]?.label}</Text>이에요!
                 </Text>
               </View>
             </Shadowed>
           )}
 
           {!!c.note && (
-            <View style={{ backgroundColor: colors.cream, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 5, paddingHorizontal: 7 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, lineHeight: 14 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
+            <View style={{ backgroundColor: nb.cream, borderWidth: 1.5, borderColor: 'rgba(62,54,43,.18)', borderStyle: 'dashed', paddingVertical: 5, paddingHorizontal: 7 }}>
+              <Text style={{ fontFamily: nbFonts.body, fontSize: 9.5, color: nb.soft, lineHeight: 14 }}><Text style={{ fontFamily: nbFonts.hand, color: C }}>Tip. </Text>{c.note}</Text>
             </View>
           )}
         </View>
@@ -152,7 +153,7 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
 // PatientFrontPixel (24×72 viewBox; landmark y-bands align the labeling dots).
 function PatientBody() {
   const INK = '#3A2E26', skin = '#F8D7B2', skinSh = '#E0A876', hair = '#5C3A1A', hairLt = '#7A5230';
-  const gown = '#FED7AA', gownDk = '#C99066', gownHi = '#FFE4BD', cross = '#EF4444', idBand = '#3B82F6';
+  const gown = '#FED7AA', gownDk = '#C99066', gownHi = '#FFE4BD', cross = nb.red, idBand = '#3B82F6';
   const sw = 0.6;
   return (
     <Svg width="100%" height="100%" viewBox="0 0 24 72" preserveAspectRatio="xMidYMid meet">

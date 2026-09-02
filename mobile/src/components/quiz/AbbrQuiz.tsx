@@ -6,9 +6,10 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, C } from '@/components/quiz/QuizShell';
-import { PixelButton } from '@/components/PixelButton';
+import { NbButton } from '@/components/nb/NbUI';
 import { playSfx } from '@/lib/sfx';
 import { t, useT } from '@/i18n';
 
@@ -45,10 +46,10 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         !cardSolved
-          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.pickAnswer')} bg="#fff" shadowColor={C} disabled onPress={() => {}} full /></View>
+          ? <View style={{ flex: 1 }}><NbButton variant="paper" full onPress={() => {}}>{t('quiz.pickAnswer')}</NbButton></View>
           : isLast
-            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finishScore', { score, total: deck.length })} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allSolved} onPress={onComplete} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label={t('common.next')} icon="play" bg={colors.mint} shadowColor={colors.mintShadow} onPress={next} full /></View>
+            ? <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} disabled={!allSolved} onPress={onComplete}>{t('quiz.finishScore', { score, total: deck.length })}</NbButton></View>
+            : <View style={{ flex: 1 }}><NbButton variant="ink" full icon="pencil" iconColor={nb.paper} onPress={next}>{t('common.next')}</NbButton></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
@@ -56,16 +57,16 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       {/* progress dots — solved=mint, current=yellow */}
       <View style={{ flexDirection: 'row', gap: 5, marginBottom: 12, alignItems: 'center' }}>
         {deck.map((_, i) => (
-          <View key={i} style={{ width: 14, height: 14, borderWidth: 2, borderColor: C, backgroundColor: solved[i] ? colors.mint : i === idx ? colors.yellow : '#fff' }} />
+          <View key={i} style={{ width: 14, height: 14, borderWidth: 1.4, borderColor: nb.ink, backgroundColor: solved[i] ? 'rgba(168,217,151,.4)' : i === idx ? 'rgba(249,227,123,.5)' : '#fff' }} />
         ))}
-        <Text style={{ marginLeft: 'auto', fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{idx + 1} / {deck.length} · {score}점</Text>
+        <Text style={{ marginLeft: 'auto', fontFamily: nbFonts.hand, fontSize: 13.5, color: nb.soft }}>{t('quiz.deckScore', { i: idx + 1, total: deck.length, score })}</Text>
       </View>
 
       {/* the abbreviation */}
       <Shadowed offset={4}>
-        <View style={{ backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 22, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(40), color: colors.cream, letterSpacing: 2 }}>{card?.term}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: '#94A3B8', marginTop: 4 }}>{cardSolved ? t('quiz.correctNext') : t('quiz.abbrPrompt')}</Text>
+        <View style={{ backgroundColor: C, borderWidth: 1.5, borderColor: nb.paperEdge, paddingVertical: 22, alignItems: 'center' }}>
+          <Text style={{ fontFamily: nbFonts.hand, fontSize: 54.0, color: nb.cream, letterSpacing: 2 }}>{card?.term}</Text>
+          <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: '#94A3B8', marginTop: 4 }}>{cardSolved ? t('quiz.correctNext') : t('quiz.abbrPrompt')}</Text>
         </View>
       </Shadowed>
 
@@ -74,14 +75,18 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
         {card?.options.map((opt, i) => {
           const showRight = cardSolved && opt === card.answer;
           const showWrong = wrong.includes(opt);
-          const bg = showRight ? colors.mint : showWrong ? '#FEE2E2' : '#fff';
+          const bg = showRight ? 'rgba(168,217,151,.4)' : showWrong ? '#FFF0EC' : '#fff';
           return (
-            <Shadowed key={i} offset={2} shadowColor={showRight ? colors.mintShadow : showWrong ? '#EF4444' : C}>
-              <Pressable onPress={() => pick(opt)} disabled={cardSolved || showWrong} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: bg, borderWidth: 2.5, borderColor: C, padding: 11, opacity: showWrong ? 0.6 : 1 }}>
-                <View style={{ width: 20, height: 20, backgroundColor: colors.paper, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{showRight ? '✓' : showWrong ? '✕' : String.fromCharCode(65 + i)}</Text>
+            <Shadowed key={i} offset={2} shadowColor={showRight ? nb.green : showWrong ? nb.red : C}>
+              <Pressable onPress={() => pick(opt)} disabled={cardSolved || showWrong} style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: bg, borderWidth: 1.5, borderColor: nb.paperEdge, padding: 11, opacity: showWrong ? 0.6 : 1 }}>
+                <View style={{ width: 20, height: 20, backgroundColor: nb.paper, borderWidth: 1.4, borderColor: nb.ink, alignItems: 'center', justifyContent: 'center' }}>
+                  {showRight
+                    ? <NbIcon name="check" size={14} color={nb.green} />
+                    : showWrong
+                      ? <NbIcon name="cross" size={12} color={nb.red} />
+                      : <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.9, color: C }}>{String.fromCharCode(65 + i)}</Text>}
                 </View>
-                <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C }}>{opt}</Text>
+                <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 13, color: C }}>{opt}</Text>
               </Pressable>
             </Shadowed>
           );
@@ -89,8 +94,8 @@ export function AbbrQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
       </View>
 
       {cardSolved && !!c.note && isLast && (
-        <View style={{ marginTop: 12, backgroundColor: colors.cream, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>Tip. </Text>{c.note}</Text>
+        <View style={{ marginTop: 12, backgroundColor: nb.cream, borderWidth: 1.5, borderColor: 'rgba(62,54,43,.18)', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8 }}>
+          <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, lineHeight: 15 }}><Text style={{ fontFamily: nbFonts.hand, color: C }}>Tip. </Text>{c.note}</Text>
         </View>
       )}
     </QuizShell>

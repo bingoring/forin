@@ -4,9 +4,10 @@
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { AUDIO } from '@/components/pron/nbPron';
+import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { PixelButton } from '@/components/PixelButton';
+import { NbButton } from '@/components/nb/NbUI';
 import { t, useT } from '@/i18n';
 
 export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
@@ -27,37 +28,37 @@ export function GaugeQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && correct
-          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} onPress={onComplete}>{t('quiz.finish')}</NbButton></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setVal(g.start); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label={t('quiz.submitSetting')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><NbButton variant="paper" full onPress={() => { setChecked(false); setVal(g.start); }}>{t('quiz.retry')}</NbButton></View>
+            : <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} onPress={() => setChecked(true)}>{t('quiz.submitSetting')}</NbButton></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
 
       {/* device */}
-      <View style={{ backgroundColor: '#0F1A24', borderWidth: 4, borderColor: C, padding: 14, alignItems: 'center', position: 'relative' }}>
+      <View style={{ backgroundColor: AUDIO.bg, borderWidth: 1.5, borderColor: AUDIO.edge, borderRadius: 4, padding: 14, alignItems: 'center', position: 'relative' }}>
         {!!c.device && (
-          <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{c.device}</Text>
+          <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: nb.paper, borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 4 }}>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 10.8, color: C }}>{c.device}</Text>
           </View>
         )}
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(32), color: atTarget ? '#34D399' : '#FB923C' }}>{val}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: '#94A3B8', marginTop: 2 }}>{g.unit}</Text>
+        <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 38, color: atTarget ? '#8FD9A8' : '#F0A868' }}>{val}</Text>
+        <Text style={{ fontFamily: nbFonts.mono, fontSize: 10.5, color: AUDIO.label, marginTop: 3 }}>{g.unit}</Text>
         {/* bar */}
-        <View style={{ marginTop: 12, height: 14, alignSelf: 'stretch', backgroundColor: '#0A1320', borderWidth: 2, borderColor: C }}>
+        <View style={{ marginTop: 12, height: 14, alignSelf: 'stretch', backgroundColor: AUDIO.edge, borderWidth: 1.2, borderColor: '#0A1320', borderRadius: 2 }}>
           <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${Math.max(0, Math.min(100, pct))}%`, backgroundColor: atTarget ? '#34D399' : '#FB923C' }} />
           <View style={{ position: 'absolute', left: `${targetPct}%`, top: -3, bottom: -3, width: 3, backgroundColor: '#22D3EE' }} />
         </View>
-        <View style={{ marginTop: 8, backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 10 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>목표 {g.target} {g.unit}</Text>
+        <View style={{ marginTop: 8, backgroundColor: 'rgba(168,217,151,.4)', borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 3, paddingHorizontal: 10 }}>
+          <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{t('quiz.target', { value: g.target, unit: g.unit ?? '' })}</Text>
         </View>
       </View>
 
       {/* steppers */}
       <View style={{ flexDirection: 'row', gap: 8, marginTop: 12 }}>
-        <View style={{ flex: 1 }}><PixelButton label={t('quiz.down')} icon="chevron-down" bg="#fff" shadowColor={C} onPress={() => step(-1)} disabled={checked} full /></View>
-        <View style={{ flex: 1 }}><PixelButton label={t('quiz.up')} icon="chevron-up" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={() => step(1)} disabled={checked} full /></View>
+        <View style={{ flex: 1 }}><NbButton variant="paper" full icon="chevronDown" disabled={checked} onPress={() => step(-1)}>{t('quiz.down')}</NbButton></View>
+        <View style={{ flex: 1 }}><NbButton variant="paper" full icon="chevronUp" disabled={checked} onPress={() => step(1)}>{t('quiz.up')}</NbButton></View>
       </View>
 
       {checked && <ResultBanner correct={correct} />}

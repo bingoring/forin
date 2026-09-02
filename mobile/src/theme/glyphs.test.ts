@@ -13,8 +13,8 @@ import { readdirSync, readFileSync, statSync } from 'fs';
 import { join } from 'path';
 
 const CEILINGS: Record<string, number> = {
-  'src/app': 22,
-  'src/components': 27,
+  'src/app': 0,
+  'src/components': 16,
 };
 
 const GLYPH = /[‹›✓✗≡▶◀●○★☆✕✔→←↑↓]/g;

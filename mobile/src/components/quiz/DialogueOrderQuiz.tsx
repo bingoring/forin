@@ -5,9 +5,9 @@
 import { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { PixelButton } from '@/components/PixelButton';
+import { nb, nbFonts } from '@/theme/nb';
+import { QuizShell, QuizSection, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
+import { NbButton } from '@/components/nb/NbUI';
 import { useT, type Translate } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
@@ -15,8 +15,8 @@ function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; 
 // render, it is cached by its arguments, so the language has to be one of them.
 const speakerStyle = (t: Translate, track?: string) =>
   track === 'nurse' || track === 'player'
-    ? { bg: colors.mint, label: t('role.nurse') }
-    : { bg: colors.peach, label: t('role.patient') };
+    ? { bg: 'rgba(168,217,151,.4)', label: t('role.nurse') }
+    : { bg: '#FFF3EE', label: t('role.patient') };
 
 export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const t = useT();
@@ -36,9 +36,9 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
     return (
       <View style={{ flexDirection: 'row', alignItems: 'stretch' }}>
         <View style={{ width: 46, backgroundColor: sp.bg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center', opacity: faded ? 0.6 : 1 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{sp.label}</Text>
+          <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: C }}>{sp.label}</Text>
         </View>
-        <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: C, padding: 7, lineHeight: 15 }}>{card.text}</Text>
+        <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 10.5, color: C, padding: 7, lineHeight: 15 }}>{card.text}</Text>
       </View>
     );
   };
@@ -48,15 +48,15 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
       title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
       footer={
         checked && allCorrect
-          ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full /></View>
+          ? <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} onPress={onComplete}>{t('quiz.finish')}</NbButton></View>
           : checked
-            ? <View style={{ flex: 1 }}><PixelButton label={t('quiz.retry')} bg="#fff" shadowColor={C} onPress={() => { setChecked(false); setPlaced([]); }} full /></View>
-            : <View style={{ flex: 1 }}><PixelButton label={t('quiz.submitOrder')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!full} onPress={() => setChecked(true)} full /></View>
+            ? <View style={{ flex: 1 }}><NbButton variant="paper" full onPress={() => { setChecked(false); setPlaced([]); }}>{t('quiz.retry')}</NbButton></View>
+            : <View style={{ flex: 1 }}><NbButton variant="ink" full iconColor={nb.paper} disabled={!full} onPress={() => setChecked(true)}>{t('quiz.submitOrder')}</NbButton></View>
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
 
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 대화 순서 (1→{cards.length}) ━</Text>
+      <QuizSection label={t('quiz.dialogueOrder', { n: cards.length })} />
       <View style={{ gap: 6 }}>
         {cards.map((_, slot) => {
           const ci = placed[slot];
@@ -64,16 +64,16 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
           const bad = checked && ci !== undefined && !correctness[slot];
           return (
             <View key={slot} style={{ flexDirection: 'row', alignItems: 'stretch', gap: 6 }}>
-              <View style={{ width: 22, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{slot + 1}</Text>
+              <View style={{ width: 22, backgroundColor: nb.paper, borderWidth: 1.4, borderColor: nb.ink, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.9, color: C }}>{slot + 1}</Text>
               </View>
               {ci !== undefined ? (
-                <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, borderWidth: 2, borderColor: C, backgroundColor: ok ? '#DCFCE7' : bad ? '#FEE2E2' : '#fff' }}>
+                <Pressable onPress={() => !checked && setPlaced(placed.filter((_, i) => i !== slot))} style={{ flex: 1, borderWidth: 1.4, borderColor: nb.ink, backgroundColor: ok ? '#DCFCE7' : bad ? '#FFF0EC' : '#fff' }}>
                   {turn(ci)}
                 </Pressable>
               ) : (
                 <View style={{ flex: 1, borderWidth: 2, borderColor: '#2A252555', borderStyle: 'dashed', padding: 9 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textFaint }}>비어 있음</Text>
+                  <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.placeholder }}>{t('quiz.emptySlot')}</Text>
                 </View>
               )}
             </View>
@@ -83,11 +83,11 @@ export function DialogueOrderQuiz({ quiz, onExit, onComplete, progress }: { quiz
 
       {inBank.length > 0 && (
         <View style={{ marginTop: 14 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 5 }}>━ 대사 카드 ━</Text>
+          <QuizSection label={t('quiz.lineCards')} />
           <View style={{ gap: 6 }}>
             {inBank.map((ci) => (
               <Shadowed key={ci} offset={2}>
-                <Pressable onPress={() => !checked && setPlaced([...placed, ci])} style={{ borderWidth: 2, borderColor: C, backgroundColor: '#fff' }}>
+                <Pressable onPress={() => !checked && setPlaced([...placed, ci])} style={{ borderWidth: 1.4, borderColor: nb.ink, backgroundColor: nb.paper }}>
                   {turn(ci)}
                 </Pressable>
               </Shadowed>

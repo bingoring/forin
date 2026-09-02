@@ -1,15 +1,21 @@
-// Mini quiz — sentence completion. 1:1 port of the v16 handoff
-// `screens-quiz.jsx` ScreenQuizSentence: cream card (staples), CONTEXT box,
-// a sentence with fill-in slots, a word bank of tiles, a mini hint, and a
-// submit footer. Driven by server quiz content (api.quiz): template split on
-// `__` → slots; tap a tile to fill the next slot, tap a filled slot to clear;
-// submit checks each slot against answers[]. Other quiz types are follow-ups.
+// 문장 완성 — the default quiz type, and the router for the other fourteen (v30).
+//
+// Driven by server quiz content (api.quiz): the template is split on `__` → slots; tap a
+// word chip to fill the next slot, tap a filled slot to clear it; submit checks each slot
+// against answers[].
+//
+// The screen used to draw its own copy of the quiz chrome — a stapled cream card on a dark
+// backdrop, duplicated from QuizShell. It renders QuizShell now, which is why the diff
+// here is mostly deletion: one header, one footer, one progress row for all fifteen types.
 import { useMemo, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useQuizData } from '@/hooks/useQuizData';
 import { api } from '@/api/client';
-import { PixelButton } from '@/components/PixelButton';
+import { NbButton, NbPaper, NbSheet, nbText } from '@/components/nb/NbUI';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { QuizShell, ContextBox, HintRow, ResultBanner } from '@/components/quiz/QuizShell';
+import { nb, nbFonts } from '@/theme/nb';
 import { MatchQuiz } from '@/components/quiz/MatchQuiz';
 import { ListenQuiz } from '@/components/quiz/ListenQuiz';
 import { SbarQuiz } from '@/components/quiz/SbarQuiz';
@@ -25,12 +31,8 @@ import { AbbrQuiz } from '@/components/quiz/AbbrQuiz';
 import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
 
-import { FIcon } from '@/components/FIcon';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale, useT } from '@/i18n';
+import { useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
-
-const C = colors.ink;
 
 export default function QuizRoute() {
   const t = useT();
@@ -47,17 +49,19 @@ export default function QuizRoute() {
 
   if (state !== 'ok' || !quiz?.content) {
     return (
-      <View style={{ flex: 1, backgroundColor: '#1F2937', alignItems: 'center', justifyContent: 'center', gap: 16, padding: 24 }}>
+      <NbSheet>
         <Stack.Screen options={TASK_SCREEN} />
-        {state === 'loading' ? (
-          <ActivityIndicator color={colors.mint} />
-        ) : (
-          <>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: '#fff' }}>퀴즈를 불러오지 못했습니다</Text>
-            <PixelButton label={t('common.back')} onPress={() => router.back()} />
-          </>
-        )}
-      </View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 14, padding: 24 }}>
+          {state === 'loading' ? (
+            <ActivityIndicator color={nb.ink} />
+          ) : (
+            <>
+              <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('quiz.loadFailed')}</Text>
+              <NbButton variant="paper" onPress={() => router.back()}>{t('common.back')}</NbButton>
+            </>
+          )}
+        </View>
+      </NbSheet>
     );
   }
 
@@ -134,182 +138,133 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#1F2937' }}>
-      <Stack.Screen options={TASK_SCREEN} />
+    <QuizShell
+      title={quiz.title} sub={c.sub} zone={c.zone} onExit={onExit} progress={progress}
+      footer={
+        <>
+          <View style={{ flex: 1 }}>
+            <NbButton variant="paper" full onPress={onExit}>{t('quiz.skip')}</NbButton>
+          </View>
+          <View style={{ flex: 2 }}>
+            {allCorrect ? (
+              <NbButton variant="ink" full icon="check" iconColor={nb.paper} onPress={onComplete}>{t('quiz.finish')}</NbButton>
+            ) : checked ? (
+              <NbButton variant="ink" full onPress={() => { setChecked(false); setSlots(Array(blankCount).fill(null)); }}>{t('quiz.retry')}</NbButton>
+            ) : (
+              <NbButton variant="ink" full disabled={!allFilled} onPress={() => setChecked(true)}>{t('quiz.submit')}</NbButton>
+            )}
+          </View>
+        </>
+      }
+    >
+      {!!c.context && <ContextBox text={c.context} />}
 
-      {/* top exit / zone */}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 7 }}>
-        <PixelButton label={t('quiz.exit')} bg="#fff" shadowColor={C} offset={2} onPress={onExit} style={{ paddingVertical: 4, paddingHorizontal: 10 }} />
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          {!!progress && progress.total > 1 && (
-            <Shadowed offset={2} shadowColor={colors.mintShadow}>
-              <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{progress.cur}/{progress.total}</Text>
-              </View>
-            </Shadowed>
-          )}
-          <Shadowed offset={2}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{c.zone || 'QUIZ'} · {quiz.title}</Text>
+      {/* The sentence, on its own sheet. */}
+      <NbPaper rot={-0.5} tape tapeLeft={130} style={{ paddingVertical: 16, paddingHorizontal: 14 }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', rowGap: 8 }}>
+          {segments.map((seg, si) => (
+            <View key={si} style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' }}>
+              {seg.split(' ').filter(Boolean).map((word, wi) => (
+                <Text key={wi} style={styles.sentence}> {word} </Text>
+              ))}
+              {si < blankCount && (
+                <Slot
+                  word={slots[si] !== null ? tiles[slots[si]!].word : null}
+                  checked={checked}
+                  correct={correctness[si]}
+                  active={!checked && slots.indexOf(null) === si}
+                  onPress={() => clearSlot(si)}
+                />
+              )}
             </View>
-          </Shadowed>
+          ))}
+        </View>
+      </NbPaper>
+
+      {/* The word chips. Written label, because it names what to do rather than what
+          this is: 낱말 칩 — 누르면 빈칸에 붙어요. */}
+      <View style={{ marginTop: 18 }}>
+        <Text style={nbText.hand(15, nb.soft)}>{t('quiz.wordChips')}</Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9, marginTop: 8 }}>
+          {tiles.map((tile, ti) => (
+            <WordTile key={ti} word={tile.word} used={usedTiles.has(ti)} rot={ti % 2 ? 0.8 : -0.8} onPress={() => placeTile(ti)} />
+          ))}
         </View>
       </View>
 
-      {/* quiz card */}
-      <View style={{ position: 'absolute', left: 14, right: 14, top: 100, bottom: 22, zIndex: 6 }}>
-        <Shadowed offset={6} style={{ flex: 1 }}>
-          <View style={{ flex: 1, backgroundColor: colors.cream, borderWidth: 4, borderColor: C }}>
-            <CornerStaples />
-
-            {/* header */}
-            <View style={{ paddingHorizontal: 14, paddingTop: 12, paddingBottom: 10, borderBottomWidth: 3, borderBottomColor: '#2A252244', borderStyle: 'dotted', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Shadowed offset={2} shadowColor={colors.peachShadow}>
-                <View style={{ backgroundColor: colors.peach, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>정형 학습</Text>
-                </View>
-              </Shadowed>
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{quiz.title}</Text>
-                {!!c.sub && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{c.sub}</Text>}
-              </View>
-            </View>
-
-            <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 16 }}>
-              {/* context */}
-              {!!c.context && (
-                <View style={{ backgroundColor: colors.paper, borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 10, marginBottom: 14, position: 'relative' }}>
-                  <View style={{ position: 'absolute', top: -6, left: 12, backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>CONTEXT</Text>
-                  </View>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{c.context}</Text>
-                </View>
-              )}
-
-              {/* sentence with slots */}
-              <Shadowed offset={3}>
-                <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 14, paddingHorizontal: 12 }}>
-                  <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', rowGap: 8 }}>
-                    {segments.map((seg, si) => (
-                      <View key={si} style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' }}>
-                        {seg.split(' ').filter(Boolean).map((word, wi) => (
-                          <Text key={wi} style={{ fontFamily: fonts.body, fontSize: fs(14), color: C, lineHeight: 30 }}> {word} </Text>
-                        ))}
-                        {si < blankCount && (
-                          <Slot
-                            word={slots[si] !== null ? tiles[slots[si]!].word : null}
-                            checked={checked}
-                            correct={correctness[si]}
-                            active={!checked && slots.indexOf(null) === si}
-                            onPress={() => clearSlot(si)}
-                          />
-                        )}
-                      </View>
-                    ))}
-                  </View>
-                </View>
-              </Shadowed>
-
-              {/* word bank */}
-              <View style={{ marginTop: 16 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginBottom: 6 }}>━ 단어 카드 ━━━━━━━━</Text>
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-                  {tiles.map((tile, ti) => (
-                    <WordTile key={ti} word={tile.word} used={usedTiles.has(ti)} onPress={() => placeTile(ti)} />
-                  ))}
-                </View>
-              </View>
-
-              {/* hint */}
-              {!!c.hint && (
-                <View style={{ marginTop: 16, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                  <View style={{ width: 18, height: 18, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                    <FIcon name="hint" size={12} />
-                  </View>
-                  <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15 }}>{c.hint}</Text>
-                </View>
-              )}
-
-              {/* result banner */}
-              {checked && (
-                <View style={{ marginTop: 16, backgroundColor: allCorrect ? colors.mint : '#FEE2E2', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 12 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>
-                    {allCorrect ? t('quiz.correct') : t('quiz.wrong')}
-                  </Text>
-                </View>
-              )}
-            </ScrollView>
-
-            {/* footer */}
-            <View style={{ paddingHorizontal: 14, paddingTop: 10, paddingBottom: 12, borderTopWidth: 3, borderTopColor: '#2A252244', borderStyle: 'dotted', backgroundColor: colors.paper, flexDirection: 'row', gap: 8 }}>
-              <PixelButton label={t('quiz.skip')} bg="#fff" shadowColor={C} onPress={onExit} style={{ flex: 1 }} />
-              <View style={{ flex: 2 }}>
-                {allCorrect ? (
-                  <PixelButton label={t('quiz.finish')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={onComplete} full />
-                ) : checked ? (
-                  <PixelButton label={t('quiz.retry')} bg={colors.mint} shadowColor={colors.mintShadow} onPress={() => { setChecked(false); setSlots(Array(blankCount).fill(null)); }} full />
-                ) : (
-                  <PixelButton label={t('quiz.submit')} bg={colors.mint} shadowColor={colors.mintShadow} disabled={!allFilled} onPress={() => setChecked(true)} full />
-                )}
-              </View>
-            </View>
-          </View>
-        </Shadowed>
-      </View>
-    </View>
+      {!!c.hint && <HintRow text={c.hint} />}
+      {checked && <ResultBanner correct={allCorrect} />}
+    </QuizShell>
   );
 }
 
 // ── pieces ────────────────────────────────────────────────────────────
+
+/**
+ * A blank in the sentence.
+ *
+ * Empty, it is a RULED LINE rather than a box: a blank on paper is something to write on,
+ * and a dashed rectangle reads as a control. Filled, the word sits under the highlighter.
+ * The verdict is a drawn tick BESIDE it — appending a ✓ to the word put the mark in the
+ * type's weight and inside the highlighted run, where it read as part of the answer.
+ */
 function Slot({ word, checked, correct, active, onPress }: { word: string | null; checked: boolean; correct: boolean; active: boolean; onPress: () => void }) {
-  const bg = word ? (checked ? (correct ? colors.mint : '#FEE2E2') : colors.mint) : colors.yellow + '33';
-  const border = active ? colors.yellowShadow : C;
   return (
-    <Pressable onPress={onPress} style={{ marginHorizontal: 3, minWidth: 54, paddingVertical: 4, paddingHorizontal: 10, borderWidth: 2.5, borderColor: border, borderStyle: word ? 'solid' : 'dashed', backgroundColor: bg, alignItems: 'center' }}>
-      <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: word ? C : colors.yellowShadow }}>
-        {word ?? '?'}{checked && word && (correct ? ' ✓' : ' ✗')}
-      </Text>
+    <Pressable onPress={onPress} style={styles.slotWrap}>
+      <View
+        style={[
+          styles.slot,
+          {
+            borderBottomColor: active ? '#C99A1E' : checked ? (correct ? nb.green : nb.red) : 'rgba(62,54,43,.45)',
+            backgroundColor: word && !checked ? nb.marker : active ? 'rgba(249,227,123,.35)' : 'transparent',
+          },
+        ]}
+      >
+        <Text numberOfLines={1} style={[styles.slotText, { color: word ? nb.ink : nb.placeholder }]}>{word ?? '?'}</Text>
+      </View>
+      {checked && !!word && (
+        <View style={{ marginLeft: 3 }}>
+          <NbIcon name={correct ? 'check' : 'cross'} size={13} color={correct ? nb.green : nb.red} />
+        </View>
+      )}
     </Pressable>
   );
 }
 
-function WordTile({ word, used, onPress }: { word: string; used: boolean; onPress: () => void }) {
+/** A word chip. Once used it stays on the page struck through rather than disappearing —
+ *  the learner needs to see which words are already in the sentence. */
+function WordTile({ word, used, rot, onPress }: { word: string; used: boolean; rot: number; onPress: () => void }) {
   if (used) {
     return (
-      <View style={{ paddingVertical: 8, paddingHorizontal: 14, borderWidth: 3, borderColor: C, backgroundColor: '#2A252222' }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: colors.textFaint, textDecorationLine: 'line-through' }}>{word}</Text>
+      <View style={[styles.tileUsed, { transform: [{ rotate: `${rot}deg` }] }]}>
+        <Text style={[styles.tileText, { color: nb.placeholder, textDecorationLine: 'line-through' }]}>{word}</Text>
       </View>
     );
   }
   return (
-    <Shadowed offset={3}>
-      <Pressable onPress={onPress} style={{ paddingVertical: 8, paddingHorizontal: 14, borderWidth: 3, borderColor: C, backgroundColor: '#fff' }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{word}</Text>
-      </Pressable>
-    </Shadowed>
+    <Pressable onPress={onPress}>
+      <NbPaper rot={rot} style={styles.tile}>
+        <Text style={styles.tileText}>{word}</Text>
+      </NbPaper>
+    </Pressable>
   );
 }
 
-function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: ViewStyle }) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
-    </View>
-  );
-}
-
-function CornerStaples() {
-  const S = { position: 'absolute' as const, width: 6, height: 6, backgroundColor: C };
-  return (
-    <>
-      <View style={[S, { left: 6, top: 6 }]} />
-      <View style={[S, { right: 6, top: 6 }]} />
-      <View style={[S, { left: 6, bottom: 6 }]} />
-      <View style={[S, { right: 6, bottom: 6 }]} />
-    </>
-  );
-}
+const styles = {
+  /** The sentence is English to be read, so it is set in the reading face. */
+  sentence: { fontFamily: nbFonts.bodyMid, fontSize: 15, color: nb.ink, lineHeight: 32 } as const,
+  slotWrap: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 3 } as const,
+  slot: { minWidth: 56, paddingHorizontal: 8, paddingBottom: 2, borderBottomWidth: 2, alignItems: 'center' } as const,
+  slotText: { fontFamily: nbFonts.hand, fontSize: 18 } as const,
+  tile: { paddingVertical: 8, paddingHorizontal: 15 } as const,
+  tileUsed: {
+    paddingVertical: 8, paddingHorizontal: 15,
+    borderWidth: 1.3, borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)',
+  } as const,
+  /** Chips are PRINTED: they are the words as they will appear in the sentence, and a
+   *  handwriting face at chip size loses the difference between similar words. */
+  tileText: { fontFamily: nbFonts.monoBold, fontSize: 14, color: nb.ink } as const,
+};
 
 // Fisher–Yates (module scope; runtime Math.random is fine in the app).
 function shuffle<T>(arr: T[]): T[] {
