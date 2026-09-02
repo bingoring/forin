@@ -698,4 +698,6 @@ export const ja: Record<string, string> = {
   'dept.pharma': '薬局',
   'dept.surgward': '外科',
   'home.nbSubDept': '{date} · {shift}勤務 · {dept}',
+  'campus.nbTitle': '職場手帳',
+  'campus.streakDays': '{n}日連続',
 };

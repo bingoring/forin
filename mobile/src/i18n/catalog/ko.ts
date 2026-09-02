@@ -729,4 +729,6 @@ export const ko: Record<string, string> = {
   'dept.pharma': '약국',
   'dept.surgward': '외과',
   'home.nbSubDept': '{date} · {shift} 근무 · {dept}',
+  'campus.nbTitle': '일터 수첩',
+  'campus.streakDays': '{n}일 연속',
 };

@@ -67,11 +67,23 @@ const TWO = [
 ] as unknown as CurriculumBuilding[];
 
 /** Every star drawn in the tree, as { color, fill }. */
-function stars(root: ReactTestInstance): { color: string; fill?: string }[] {
+/** The star, and how visibly it is ON.
+ *
+ *  v29 draws it with NbIcon, whose star already carries a watercolour fill — so the ON/OFF
+ *  difference is the OPACITY of the wrapper, not a fill colour. Same requirement as before:
+ *  the two states must not be "a couple of pixels of outline", which is the state that was
+ *  reported as no change at all. */
+function stars(root: ReactTestInstance): number[] {
   return root
-    .findAll((n) => typeof n.type !== 'string' && (n.type as { name?: string })?.name === 'PixelIcon', { deep: true })
+    .findAll((n) => typeof n.type !== 'string' && (n.type as { name?: string })?.name === 'NbIcon', { deep: true })
     .filter((n) => n.props.name === 'star')
-    .map((n) => ({ color: n.props.color as string, fill: n.props.fill as string | undefined }));
+    .map((n) => {
+      let up: ReactTestInstance | null = n.parent;
+      while (up && typeof up.type !== 'string') up = up.parent;
+      const st = up?.props?.style;
+      const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
+      return (flat?.opacity as number) ?? 1;
+    });
 }
 
 /** The star's Pressable.
@@ -100,15 +112,14 @@ it('fills the star the moment it is tapped', async () => {
   });
 
   expect(stars(tree.root)).toHaveLength(1);
-  // Off: hollow. Not "a different outline colour" — that is the state that was reported
-  // as no change at all, because at 17px it is a couple of pixels.
-  expect(stars(tree.root)[0].fill).toBe('none');
+  // Off: faint. Unmistakably different from on — not a couple of pixels of outline.
+  expect(stars(tree.root)[0]).toBeLessThan(0.5);
 
   await act(async () => {
     await starButton(tree.root).props.onPress();
   });
 
-  expect(stars(tree.root)[0].fill).toBe(colors.yellowDeep);
+  expect(stars(tree.root)[0]).toBe(1);
 });
 
 it('empties it again on a second tap', async () => {
@@ -118,7 +129,7 @@ it('empties it again on a second tap', async () => {
   });
   await act(async () => { await starButton(tree.root).props.onPress(); });
   await act(async () => { await starButton(tree.root).props.onPress(); });
-  expect(stars(tree.root)[0].fill).toBe('none');
+  expect(stars(tree.root)[0]).toBeLessThan(0.5);
 });
 
 it('does not open the floor when the star is tapped', async () => {
@@ -165,7 +176,9 @@ describe('the building dropdown', () => {
     // its own accordion is how the two drift apart.
     const src = readFileSync(join(__dirname, 'FloorList.tsx'), 'utf8');
     expect(src).toMatch(/<Collapsible open=\{isOpen\}/);
-    expect(src).toMatch(/<DisclosureChevron open=\{isOpen\}/);
+    // v29 draws the chevron from the notebook's icon set rather than the pixel line's
+    // DisclosureChevron; what matters is that the state drives it, not which set it is in.
+    expect(src).toMatch(/name=\{isOpen \? 'chevronUp' : 'chevronDown'\}/);
     expect(src).not.toMatch(/Animated\.timing/);
   });
 });

@@ -10,6 +10,7 @@
 // assessment. Both are gone: one source of truth, and it is the server's.
 import { colors } from '@/theme/tokens';
 import type { IconName } from '@/components/PixelIcon';
+import type { NbIconName } from '@/components/nb/NbIcon';
 import type { FIconName } from '@/theme/ficons';
 
 export type StepKind = 'dlg' | 'quiz' | 'event' | 'boss';
@@ -36,18 +37,23 @@ export const STEP_META: Record<StepKind, { icon: IconName; labelKey: string; bg:
  * strings GET /me/curriculum sends, and the lookup has to match them. The subtitle
  * is display text, so it carries a translation key.
  */
-export const BUILDING_STYLE: Record<string, { icon: FIconName; accent: string; subKey: string }> = {
-  '본관': { icon: 'stetho', accent: '#D14B3D', subKey: 'building.main.sub' },
-  '별관 1': { icon: 'baby', accent: '#C2487E', subKey: 'building.annex1.sub' },
-  '별관 2': { icon: 'ivbag', accent: '#1E8A5B', subKey: 'building.annex2.sub' },
-  '별관 3': { icon: 'magnify', accent: '#0E7490', subKey: 'building.annex3.sub' },
-  '지원동': { icon: 'gear', accent: '#6E6354', subKey: 'building.support.sub' },
+export const BUILDING_STYLE: Record<string, { icon: FIconName; nbIcon: NbIconName; accent: string; subKey: string }> = {
+  // `nbIcon` is the 근무 수첩 line's doodle, beside the pixel line's `icon`. Two names
+  // rather than one because they are not the same drawing at two sizes, and a screen
+  // belongs to one line or the other (07). The KEYS are the server's building names, which
+  // is why this table lives in src/data — src/app and src/components may hold no Korean
+  // literals at all (i18n/ceiling), and these are data, not copy.
+  '본관': { icon: 'stetho', nbIcon: 'siren', accent: '#D14B3D', subKey: 'building.main.sub' },
+  '별관 1': { icon: 'baby', nbIcon: 'baby', accent: '#C2487E', subKey: 'building.annex1.sub' },
+  '별관 2': { icon: 'ivbag', nbIcon: 'pill', accent: '#1E8A5B', subKey: 'building.annex2.sub' },
+  '별관 3': { icon: 'magnify', nbIcon: 'monitor', accent: '#0E7490', subKey: 'building.annex3.sub' },
+  '지원동': { icon: 'gear', nbIcon: 'board', accent: '#6E6354', subKey: 'building.support.sub' },
 };
 
 /** Fallback for a building the server adds before this file learns its colour.
  *  `pin` rather than a building: a place we cannot name yet is still a place, and
  *  the principle above rules out drawing a generic hospital. */
-export const DEFAULT_BUILDING_STYLE = { icon: 'pin' as FIconName, accent: colors.textSoft, subKey: '' };
+export const DEFAULT_BUILDING_STYLE = { icon: 'pin' as FIconName, nbIcon: 'hospital' as NbIconName, accent: colors.textSoft, subKey: '' };
 
 // Departments with a walkable interior (INT-<CODE>-00001). Listed rather than
 // derived because the tile fixtures are bundled per-department modules — a walk

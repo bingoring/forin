@@ -699,4 +699,6 @@ export const en: Record<string, string> = {
   'dept.pharma': 'Pharmacy',
   'dept.surgward': 'Surgical',
   'home.nbSubDept': '{date} · {shift} shift · {dept}',
+  'campus.nbTitle': 'Work notebook',
+  'campus.streakDays': '{n}-day streak',
 };

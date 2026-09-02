@@ -16,20 +16,16 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type Progress, type Curriculum, type CurriculumBuilding, type CurriculumFloor } from '@/api/client';
 import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, deptCodeOf, floorDeptCode, floorPlace } from '@/data/campus';
-import { PixelButton } from '@/components/PixelButton';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { FloorList } from '@/components/campus/FloorList';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbInkStamp, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { ExploreButton, FloorList } from '@/components/campus/FloorList';
 import { useIsActiveTab } from '@/lib/nav';
-import { PixelIcon } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
 import { searchCampus, type CampusHit } from '@/data/campusSearch';
 import { toggleFloorFavorite, toggleSituationFavorite, useFavorites, type FavFloor } from '@/lib/favorites';
 import type { DeptSituation } from '@/api/client';
 import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
-import { Shadowed } from '@/components/campus/parts';
 import { t, useLocale, useT } from '@/i18n';
-
-const C = colors.ink;
 
 export default function Campus() {
   const t = useT();
@@ -159,104 +155,86 @@ export default function Campus() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.paper }}>
-      {/* ── fixed header ── */}
-      <View style={{ paddingTop: 50, paddingHorizontal: 14, paddingBottom: 10, backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C }}>커리어</Text>
-          <Shadowed offset={2} shadowColor={colors.mintShadow}>
-            <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
-              {/* The learner's CEFR band, labelled by the language it is in. It used to
-                  read "Lv.{enLevel}", one dot away from the XP level's "LV 12" on the
-                  profile card — two unrelated numbers under one abbreviation. */}
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{(targetLang || 'en').toUpperCase()} {enLevel}</Text>
-            </View>
-          </Shadowed>
+    <Sheet>
+      {/* ── the notebook's own heading, on the page rather than in a bar ──
+          A separate header band with its own border is a chrome the paper line does not
+          have: on paper the title is just the first thing written. */}
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 10, paddingBottom: 30 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
+          <Text style={nbText.hand(30)}>{t('campus.nbTitle')}</Text>
+          <View style={{ marginLeft: 8 }}>
+            {/* The learner's CEFR band, labelled by the language it is in. It used to read
+                "Lv.{enLevel}", one dot away from the XP level's "LV 12" on the profile
+                card — two unrelated numbers under one abbreviation. */}
+            <NbTag color={nb.green}>{(targetLang || 'en').toUpperCase()} {enLevel}</NbTag>
+          </View>
           <View style={{ flex: 1 }} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{streak}일 연속</Text>
-        </View>
-      </View>
-
-      <ScrollView contentContainerStyle={{ padding: 14, paddingBottom: 150 }}>
-        {/* Search, where the 이어하기 card used to be.
-            That card was the home tab's "오늘의 한 가지" a second time — the same server
-            flag, the same button, one tab over. This space is better spent on the thing
-            only this tab can do: reach a named ward without walking the building to it.
-            Coverage numbers were the other candidate and are the wrong shape here — a
-            progress bar implies the goal is to fill it, and nobody needs the curriculum
-            for a ward they will never be assigned to. */}
-        <View style={{ marginBottom: 14 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
-            <FIcon name="magnify" size={15} />
-            <TextInput
-              value={query}
-              onChangeText={setQuery}
-              placeholder={t('campus.searchPlaceholder')}
-              placeholderTextColor={colors.textFaint}
-              autoCorrect={false}
-              autoCapitalize="none"
-              returnKeyType="search"
-              style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, padding: 0 }}
-            />
-            {query.length > 0 && (
-              <Pressable onPress={() => setQuery('')} hitSlop={8} accessibilityLabel={t('campus.searchClear')}>
-                <PixelIcon name="x" color={colors.textSoft} size={13} sw={2} />
-              </Pressable>
-            )}
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+            <NbIcon name="star" size={14} color="#C99A1E" />
+            <Text numberOfLines={1} style={nbText.hand(15, nb.soft)}>{t('campus.streakDays', { n: streak })}</Text>
           </View>
         </View>
 
+        {/* Search, written on a ruled line rather than boxed in.
+            It sits where the 이어하기 card used to. That card was the home tab's
+            "오늘의 한 가지" a second time — same server flag, same button, one tab over.
+            This space is better spent on the thing only this tab can do: reach a named
+            ward without walking the building to it. */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingVertical: 7, paddingHorizontal: 4, borderBottomWidth: 2, borderBottomColor: 'rgba(62,54,43,.45)' }}>
+          <NbIcon name="magnify" size={17} />
+          <TextInput
+            value={query}
+            onChangeText={setQuery}
+            placeholder={t('campus.searchPlaceholder')}
+            placeholderTextColor={nb.placeholder}
+            autoCorrect={false}
+            autoCapitalize="none"
+            returnKeyType="search"
+            style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16, color: nb.ink, padding: 0 }}
+          />
+          {query.length > 0 && (
+            <Pressable onPress={() => setQuery('')} hitSlop={8} accessibilityLabel={t('campus.searchClear')}>
+              <NbIcon name="chevronRight" size={14} color={nb.soft} />
+            </Pressable>
+          )}
+        </View>
+
         {query.trim().length > 0 ? (
-          <View style={{ gap: 7 }}>
+          <View style={{ marginTop: 12 }}>
             {found.hits.length === 0 && sitHits.length === 0 ? (
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 22 }}>
+              <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center', paddingVertical: 22 }]}>
                 {t('campus.searchNone', { q: query.trim() })}
               </Text>
             ) : (
               <>
                 {found.hits.map((h: CampusHit, i: number) => (
-                  <Pressable
+                  <Row
                     key={`${h.building}/${h.floor}/${h.curriculum ?? ''}/${i}`}
+                    stamp={h.floor}
+                    title={h.curriculum ?? h.place}
+                    sub={h.curriculum ? `${h.building} ${h.floor} ${h.place}` : h.building}
+                    rot={i % 2 ? 0.4 : -0.4}
                     onPress={() => openHit(h)}
-                    style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
-                  >
-                    <View style={{ width: 44, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>{h.floor}</Text>
-                    </View>
-                    <View style={{ flex: 1, minWidth: 0 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{h.curriculum ?? h.place}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>
-                        {h.curriculum ? `${h.building} ${h.floor} ${h.place}` : h.building}
-                      </Text>
-                    </View>
-                  </Pressable>
+                  />
                 ))}
                 {sitHits.length > 0 && (
                   <>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginTop: 8 }}>
-                      {t('campus.favSituations')}
-                    </Text>
-                    {sitHits.map((s) => (
-                      <Pressable
-                        key={s.scenarioId}
-                        onPress={() => openSituation(s)}
-                        style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
-                      >
-                        <View style={{ width: 44, backgroundColor: s.urgent ? colors.red : colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{s.lv}</Text>
-                        </View>
-                        <View style={{ flex: 1, minWidth: 0 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{s.name}</Text>
-                          <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>
-                            {floorOfScenario(s.scenarioId)?.place ?? s.room ?? ''}
-                          </Text>
-                        </View>
-                      </Pressable>
+                    <Text style={[nbText.hand(16), { marginTop: 12 }]}>{t('campus.favSituations')}</Text>
+                    {sitHits.map((sv, i) => (
+                      <Row
+                        key={sv.scenarioId}
+                        stamp={sv.lv}
+                        title={sv.name}
+                        sub={floorOfScenario(sv.scenarioId)?.place ?? sv.room ?? ''}
+                        rot={i % 2 ? -0.4 : 0.4}
+                        urgent={sv.urgent}
+                        onPress={() => openSituation(sv)}
+                      />
                     ))}
                   </>
                 )}
                 {found.truncated > 0 && (
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textFaint, textAlign: 'center', marginTop: 4 }}>
+                  <Text style={[nbText.body(10, nb.soft), { textAlign: 'center', marginTop: 6 }]}>
                     {t('campus.searchMore', { n: found.truncated })}
                   </Text>
                 )}
@@ -264,7 +242,7 @@ export default function Campus() {
             )}
           </View>
         ) : buildings.length === 0 ? (
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 24 }}>
+          <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center', paddingVertical: 24 }]}>
             {t('campus.loading')}
           </Text>
         ) : (
@@ -272,64 +250,45 @@ export default function Campus() {
             {(favorites.floors.length > 0 || favorites.situations.length > 0) && (
               /* One flat block, deliberately: a starred ward and a starred situation are
                  both "take me back there", and splitting them into two sections doubles
-                 the chrome to say the same thing. The row's badge says which it is. */
-              <View style={{ marginBottom: 16 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-                  <PixelIcon name="star" color={C} fill={colors.yellowDeep} size={14} sw={2} />
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('campus.favTitle')}</Text>
+                 the chrome to say the same thing. */
+              <View style={{ marginTop: 14 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                  <NbIcon name="star" size={15} color="#C99A1E" />
+                  <Text style={nbText.hand(16)}>{t('campus.favTitle')}</Text>
                 </View>
-                <View style={{ gap: 7 }}>
-                  {favorites.floors.map((f) => (
-                    <Pressable
-                      key={`f/${f.building}/${f.floor}`}
-                      onPress={() => goToFloor(f)}
-                      style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
-                    >
-                      <View style={{ width: 44, backgroundColor: C, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>{f.floor}</Text>
-                      </View>
-                      <View style={{ flex: 1, minWidth: 0 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{f.place}</Text>
-                        <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{f.building}</Text>
-                      </View>
-                      <FavStar onPress={() => void toggleFloorFavorite(f)} />
-                    </Pressable>
-                  ))}
-                  {favorites.situations.map((sv) => (
-                    <Pressable
-                      key={`s/${sv.scenarioId}`}
-                      onPress={() => open(sv.scenarioId)}
-                      style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 2, borderColor: C + '55', paddingVertical: 9, paddingHorizontal: 11 }}
-                    >
-                      <View style={{ width: 44, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 3, alignItems: 'center' }}>
-                        <FIcon name="play" size={11} />
-                      </View>
-                      <View style={{ flex: 1, minWidth: 0 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{sv.name}</Text>
-                        <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>
-                          {floorOfScenario(sv.scenarioId)?.place ?? sv.where ?? ''}
-                        </Text>
-                      </View>
-                      <FavStar onPress={() => void toggleSituationFavorite(sv)} />
-                    </Pressable>
-                  ))}
-                </View>
+                {favorites.floors.map((f, i) => (
+                  <Row
+                    key={`f/${f.building}/${f.floor}`}
+                    stamp={f.floor}
+                    title={f.place}
+                    sub={f.building}
+                    rot={i % 2 ? 0.6 : -0.5}
+                    starred
+                    onStar={() => void toggleFloorFavorite(f)}
+                    onPress={() => goToFloor(f)}
+                  />
+                ))}
+                {favorites.situations.map((sv, i) => (
+                  <Row
+                    key={`s/${sv.scenarioId}`}
+                    stamp="!"
+                    title={sv.name}
+                    sub={floorOfScenario(sv.scenarioId)?.place ?? sv.where ?? ''}
+                    rot={i % 2 ? -0.5 : 0.6}
+                    starred
+                    onStar={() => void toggleSituationFavorite(sv)}
+                    onPress={() => open(sv.scenarioId)}
+                  />
+                ))}
               </View>
             )}
             <FloorList buildings={buildings} onOpenFloor={openFloor} focus={focus} />
+            {/* Walking the map is the opt-in; the list is the way in. It used to be a
+                filled lilac button competing with every row above it. */}
+            <ExploreButton onPress={() => router.push('/interior/CAMPUS-00001')} />
           </>
         )}
       </ScrollView>
-      {/* ── explore dock (opt-in tile walk) ── */}
-      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 12, paddingHorizontal: 14 }}>
-        <Shadowed offset={3}>
-          <PixelButton
-            icon="map" label={t('campus.exploreTitle')} bg={colors.lilac} shadowColor={C}
-            fontSize={12} borderWidth={3} paddingV={11} full
-            onPress={() => router.push('/interior/CAMPUS-00001')}
-          />
-        </Shadowed>
-      </View>
 
       <DeptSheet
         target={dept}
@@ -341,23 +300,62 @@ export default function Campus() {
         onStart={open}
         onWalk={(code) => router.push(`/interior/INT-${code}-00001`)}
       />
+    </Sheet>
+  );
+}
+
+/** The ruled page everything is written on. */
+function Sheet({ children }: { children: React.ReactNode }) {
+  const [h, setH] = useState(900);
+  return (
+    <View style={{ flex: 1, backgroundColor: nb.cream }} onLayout={(e) => setH(e.nativeEvent.layout.height)}>
+      <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+        {Array.from({ length: Math.ceil(h / RULE_H) }).map((_, i) => (
+          <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+        ))}
+      </View>
+      {children}
     </View>
   );
 }
 
-/** The filled star that removes a favourite. Its own target, so tapping it does not
- *  also open the row it sits in. */
-function FavStar({ onPress }: { onPress: () => void }) {
+/**
+ * One row of this tab's three lists — a search hit, a favourite ward, a favourite
+ * situation. They were three near-identical blocks of markup; the differences that matter
+ * are the stamp and whether there is a star, so those are the props.
+ */
+function Row({ stamp, title, sub, rot, starred, urgent, onStar, onPress }: {
+  stamp: string;
+  title: string;
+  sub: string;
+  rot: number;
+  starred?: boolean;
+  urgent?: boolean;
+  onStar?: () => void;
+  onPress: () => void;
+}) {
   const t = useT();
   return (
-    <Pressable
-      onPress={onPress}
-      hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
-      accessibilityRole="switch"
-      accessibilityState={{ checked: true }}
-      accessibilityLabel={t('campus.favRemove')}
-    >
-      <PixelIcon name="star" color={C} fill={colors.yellowDeep} size={17} sw={2} />
+    <Pressable onPress={onPress}>
+      <NbPaper rot={rot} style={{ marginTop: 8, paddingVertical: 9, paddingHorizontal: 11, flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+        {urgent ? <NbTag color={nb.red} fill>{stamp}</NbTag> : <NbInkStamp>{stamp}</NbInkStamp>}
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text numberOfLines={1} style={[nbText.hand(17), { lineHeight: 19 }]}>{title}</Text>
+          <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{sub}</Text>
+        </View>
+        {/* The star's own target, so removing a favourite does not also open it. */}
+        {!!onStar && (
+          <Pressable
+            onPress={onStar}
+            hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
+            accessibilityRole="switch"
+            accessibilityState={{ checked: !!starred }}
+            accessibilityLabel={t('campus.favRemove')}
+          >
+            <NbIcon name="star" size={18} color="#C99A1E" />
+          </Pressable>
+        )}
+      </NbPaper>
     </Pressable>
   );
 }

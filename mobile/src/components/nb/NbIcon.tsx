@@ -19,6 +19,8 @@ import { nb } from '@/theme/nb';
 export type NbIconName =
   | 'chevronLeft'
   | 'chevronRight'
+  | 'chevronDown'
+  | 'chevronUp'
   | 'home'
   | 'hospital'
   | 'board'
@@ -78,6 +80,15 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     ),
     chevronRight: (
       <G><Path {...P} d="M9.5 5 L16 12 L9.5 19"/></G>
+    ),
+    // The accordion's ∨ / ∧. Drawn rather than typed: the prototype uses the characters,
+    // and theme/glyphs.test.ts ratchets those down for the reason it names — a glyph
+    // renders at whatever weight the font decides, beside icons drawn at 1.7.
+    chevronDown: (
+      <G><Path {...P} d="M5 9.5 L12 16 L19 9.5"/></G>
+    ),
+    chevronUp: (
+      <G><Path {...P} d="M5 14.5 L12 8 L19 14.5"/></G>
     ),
     home: (
       <G><Path {...P} d="M4.5 11.5 L12 4.5 L19.5 11.5"/><Path {...P} d="M6.5 10.5 V19 H17.5 V10.5"/><Rect {...P} x="10" y="13.5" width="4" height="5.5" fill={nb.wash.yellow}/></G>
