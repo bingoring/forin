@@ -25,11 +25,9 @@ import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbPaper, nbText } from '@/components/nb/NbUI';
 import { nb } from '@/theme/nb';
-import { PixelButton } from '@/components/PixelButton';
-import { colors, fonts, fs } from '@/theme/tokens';
 import { useT } from '@/i18n';
 
-const C = colors.ink;
+const C = nb.ink;
 
 /** The cluster's width, and therefore the panel's.
  *

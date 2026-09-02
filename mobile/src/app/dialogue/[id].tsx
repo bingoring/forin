@@ -29,7 +29,6 @@ import { DOCK_H, clampChoices, clampSplit, portraitLayout } from '@/data/dialogu
 import { setDialogueLayout, useDialogueLayout } from '@/lib/dialogueLayout';
 import { ReplyChoices } from '@/components/dialogue/ReplyChoices';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
-import { colors, fonts, fs } from '@/theme/tokens';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
 import { asMood, moodBorder, moodExpression, moodShowsSweat, type Mood } from '@/data/moodTone';
@@ -39,7 +38,7 @@ import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
 
-const C = colors.ink;
+const C = nb.ink;
 
 // 16kHz mono PCM WAV — the format the server STT endpoint expects.
 const WAV_16K_MONO: RecordingOptions = {
@@ -519,7 +518,7 @@ export default function DialogueRoute() {
     return (
       <View style={{ flex: 1, backgroundColor: '#1F2937', alignItems: 'center', justifyContent: 'center' }}>
         <Stack.Screen options={{ headerShown: false }} />
-        <ActivityIndicator color={colors.mint} />
+        <ActivityIndicator color={'rgba(168,217,151,.4)'} />
       </View>
     );
   }
@@ -683,7 +682,7 @@ export default function DialogueRoute() {
               accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
             >
               <Shadowed offset={2}>
-                <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? 'rgba(168,217,151,.4)' : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                   <PixelIcon name="volume" color={voiceOn ? C : C + '66'} size={15} sw={1.9} />
                 </View>
               </Shadowed>
@@ -699,9 +698,9 @@ export default function DialogueRoute() {
         <Pressable onPress={() => setTool(null)} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(31,41,55,0.55)', zIndex: 20, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <Pressable onPress={() => {}} style={{ alignSelf: 'stretch' }}>
             <Shadowed offset={5}>
-              <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
+              <View style={{ backgroundColor: nb.cream, borderWidth: 3, borderColor: C, padding: 16 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{tool === 'chart' ? t('dialogue.chartTitle') : tool === 'meds' ? t('dialogue.medsTitle') : t('dialogue.vitalsTitle')}</Text>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{tool === 'chart' ? t('dialogue.chartTitle') : tool === 'meds' ? t('dialogue.medsTitle') : t('dialogue.vitalsTitle')}</Text>
                   <Pressable onPress={() => setTool(null)} hitSlop={8}><NbIcon name="cross" size={15} color={nb.soft} /></Pressable>
                 </View>
                 <QuickInfo tool={tool} p={p} kind={kind} chart={chart} brief={scenario?.briefing?.brief} tagline={scenario?.tagline} />
@@ -822,7 +821,7 @@ export default function DialogueRoute() {
                           when they picked it: it is feedback on something already done,
                           which is the whole reason it is not printed on the cards. */}
                       {mine && !!m.note && (
-                        <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, opacity: 0.8, lineHeight: 15, marginTop: 6 }}>
+                        <Text style={{ fontFamily: nbFonts.body, fontSize: 10.5, color: nb.ink, opacity: 0.8, lineHeight: 15, marginTop: 6 }}>
                           {m.note}
                         </Text>
                       )}
@@ -895,7 +894,7 @@ export default function DialogueRoute() {
             simply empty, which reads as the app having lost the conversation. */}
         {scripted && scriptDone && (
           <View style={{ marginTop: 14, alignItems: 'center' }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', lineHeight: 17 }}>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.9, color: nb.soft, textAlign: 'center', lineHeight: 17 }}>
               {t('choice.finished')}
             </Text>
           </View>
@@ -1053,20 +1052,20 @@ export default function DialogueRoute() {
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <FIcon name="doc" size={17} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>이어서 대화할까요?</Text>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 20.2, color: C }}>이어서 대화할까요?</Text>
           </View>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginBottom: 10 }}>
+          <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, marginBottom: 10 }}>
             {npcName} 님과 {resumable?.turns.filter((t) => t.role === 'user').length ?? 0}번 주고받은 기록이 있어요.
           </Text>
           {(() => {
             const last = resumable ? [...resumable.turns].reverse()[0] : undefined;
             if (!last) return null;
             return (
-              <View style={{ backgroundColor: last.role === 'user' ? '#fff' : colors.peach, borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11, marginBottom: 16 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginBottom: 3 }}>
+              <View style={{ backgroundColor: last.role === 'user' ? '#fff' : '#FFF3EE', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11, marginBottom: 16 }}>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.soft, marginBottom: 3 }}>
                   {last.role === 'user' ? t('dialogue.lastMine') : t('dialogue.lastNpc', { name: npcName })}
                 </Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 17 }} numberOfLines={3}>{last.content}</Text>
+                <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: C, lineHeight: 17 }} numberOfLines={3}>{last.content}</Text>
               </View>
             );
           })()}
@@ -1091,9 +1090,9 @@ export default function DialogueRoute() {
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
             <FIcon name="cross" size={18} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{t('dialogue.exitTitle')}</Text>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 20.2, color: C }}>{t('dialogue.exitTitle')}</Text>
           </View>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.text, lineHeight: 19, marginBottom: 16 }}>
+          <Text style={{ fontFamily: nbFonts.body, fontSize: 11.5, color: nb.ink, lineHeight: 19, marginBottom: 16 }}>
             {t('dialogue.exitBody', { name: npcName })}
           </Text>
           <View style={{ gap: 9 }}>
@@ -1108,7 +1107,7 @@ export default function DialogueRoute() {
             <NbButton variant="danger" full onPress={() => { void leaveAndDiscard(); }}>
               {t('dialogue.exitDiscard')}
             </NbButton>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, textAlign: 'center' }}>
+            <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, textAlign: 'center' }}>
               {t('dialogue.exitDiscardNote')}
             </Text>
           </View>
@@ -1216,18 +1215,18 @@ function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBesi
 /** A tappable suggested response (hint mode). Numbered chip + phrase.
  *  suggested = mint (AI 추천) · risky = red (평판 위험) · else peach (normal). */
 function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text: string; suggested?: boolean; risky?: boolean; onPress: () => void }) {
-  const tabBg = risky ? '#FCA5A5' : suggested ? colors.mint : colors.peach;
-  const shadow = suggested ? colors.mintShadow : '#2A252266';
+  const tabBg = risky ? '#FCA5A5' : suggested ? 'rgba(168,217,151,.4)' : '#FFF3EE';
+  const shadow = suggested ? nb.green : '#2A252266';
   return (
     <Shadowed offset={suggested ? 3 : 2} shadowColor={shadow}>
       <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
         <View style={{ width: 28, backgroundColor: tabBg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{num}</Text>
+          <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{num}</Text>
         </View>
         <View style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 10 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>{text}</Text>
-          {suggested && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.mintShadow, marginTop: 3 }}>AI 추천 · 미션 진행</Text>}
-          {risky && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: '#B91C1C', marginTop: 3 }}>평판 −2 위험</Text>}
+          <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{text}</Text>
+          {suggested && <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.green, marginTop: 3 }}>AI 추천 · 미션 진행</Text>}
+          {risky && <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: '#B91C1C', marginTop: 3 }}>평판 −2 위험</Text>}
         </View>
       </Pressable>
     </Shadowed>
@@ -1250,13 +1249,13 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
       <View style={{ gap: 6 }}>
         {rows.map(([k, v], i) => (
           <View key={i} style={{ flexDirection: 'row', gap: 8 }}>
-            <Text style={{ width: 68, fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft }}>{k}</Text>
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>{v}</Text>
+            <Text style={{ width: 68, fontFamily: nbFonts.hand, fontSize: 14.9, color: nb.soft }}>{k}</Text>
+            <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{v}</Text>
           </View>
         ))}
         {!!(chart?.notes || brief) && (
-          <View style={{ marginTop: 4, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252244', borderStyle: 'dashed', padding: 8 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{chart?.notes || brief}</Text>
+          <View style={{ marginTop: 4, backgroundColor: nb.paper, borderWidth: 1.5, borderColor: '#2A252244', borderStyle: 'dashed', padding: 8 }}>
+            <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, lineHeight: 16 }}>{chart?.notes || brief}</Text>
           </View>
         )}
       </View>
@@ -1264,13 +1263,13 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   }
   if (tool === 'meds') {
     const meds = chart?.meds ?? [];
-    if (meds.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요.</Text>;
+    if (meds.length === 0) return <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: nb.soft, lineHeight: 18 }}>확인된 처방 약물이 없어요. 구두로 직접 확인하세요.</Text>;
     return (
       <View style={{ gap: 6 }}>
         {meds.map((m, i) => (
           <View key={i} style={{ flexDirection: 'row', gap: 8, alignItems: 'flex-start' }}>
             <FIcon name="pill" size={14} />
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 17 }}>{m}</Text>
+            <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{m}</Text>
           </View>
         ))}
       </View>
@@ -1278,14 +1277,14 @@ function QuickInfo({ tool, p, kind, chart, brief, tagline }: { tool: 'chart' | '
   }
   // vitals
   const vitals = chart?.vitals ?? [];
-  if (vitals.length === 0) return <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요.</Text>;
+  if (vitals.length === 0) return <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: nb.soft, lineHeight: 18 }}>활력징후가 아직 측정되지 않았어요. 직접 사정하세요.</Text>;
   return (
     <View style={{ flexDirection: 'row', gap: 6 }}>
       {vitals.map((v, i) => (
-        <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FEE2E2' : colors.paper, borderWidth: 1.5, borderColor: C, paddingVertical: 6, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft }}>{v.label}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
-          {!!v.unit && <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: colors.textSoft, marginTop: 1 }}>{v.unit}</Text>}
+        <View key={i} style={{ flex: 1, backgroundColor: v.warn ? '#FEE2E2' : nb.paper, borderWidth: 1.5, borderColor: C, paddingVertical: 6, alignItems: 'center' }}>
+          <Text style={{ fontFamily: nbFonts.hand, fontSize: 10.8, color: nb.soft }}>{v.label}</Text>
+          <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: v.warn ? '#DC2626' : C, marginTop: 2 }}>{v.value}</Text>
+          {!!v.unit && <Text style={{ fontFamily: nbFonts.body, fontSize: 8, color: nb.soft, marginTop: 1 }}>{v.unit}</Text>}
         </View>
       ))}
     </View>

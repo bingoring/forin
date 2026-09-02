@@ -6,14 +6,10 @@
 import { useCallback, useMemo, useState } from 'react';
 import { ActivityIndicator, Dimensions, Pressable, ScrollView, Text, View , useWindowDimensions } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
-import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
-import { EmojiIcon } from '@/components/EmojiIcon';
 import { api, type CalendarDay, type Progress, type GrowthStats } from '@/api/client';
 import { careerFor } from '@/data/economy';
-import { colors, fonts, fs } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { ActivityCalendar } from '@/components/growth/ActivityCalendar';
 import { NbIcon } from '@/components/nb/NbIcon';
@@ -22,7 +18,7 @@ import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { DayDetail } from '@/components/growth/DayDetail';
 import { PLACE_SCREEN } from '@/theme/transitions';
 
-const C = colors.ink;
+const C = nb.ink;
 /** Today's weekday and date in the reader's language.
  *
  *  Intl rather than a Korean array plus a "월 일" template: the order of month and

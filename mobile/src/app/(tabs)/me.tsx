@@ -19,7 +19,7 @@ import { api, type Colleague, type GrowthStats, type InviteCode, type Progress }
 import { signOut } from '@/lib/auth';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
 import { ECON, careerFor } from '@/data/economy';
-import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
+import { space, type as typeScale } from '@/theme/tokens';
 import { isSfxMuted, playSfx, setSfxMuted } from '@/lib/sfx';
 import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale, t, type Locale, useLocale, useT } from '@/i18n';
 import { BottomSheet } from '@/components/BottomSheet';
@@ -28,7 +28,7 @@ import { AvatarSheet } from '@/components/AvatarSheet';
 import { NameSheet } from '@/components/me/NameSheet';
 import { FaceScanSheet } from '@/components/FaceScanSheet';
 
-const C = colors.ink;
+const C = nb.ink;
 
 // Bars cycle this palette, so a profession with more (or fewer) dimensions than
 // nursing's three still renders without a code change.
@@ -171,8 +171,8 @@ export default function Me() {
 
   if (state !== 'ok' || !progress) {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>프로필을 불러오지 못했어요. (로그인·서버 확인)</Text>}
+      <View style={{ flex: 1, backgroundColor: nb.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: nbFonts.body, fontSize: typeScale.body, color: nb.soft, textAlign: 'center' }}>프로필을 불러오지 못했어요. (로그인·서버 확인)</Text>}
       </View>
     );
   }
@@ -200,11 +200,11 @@ export default function Me() {
     if (!tdef) return;
     const isEquipped = equipped === id;
     setSheet({
-      icon: tdef.emoji, iconNode: <EmojiIcon emoji={tdef.emoji} size={34} color={C} sw={1.6} />, iconBg: tdef.got ? colors.lilac : colors.cream, title: tdef.got ? t(tdef.nameKey) : '???',
-      status: { label: isEquipped ? t('title.equipped') : tdef.got ? t('title.owned') : t('title.notOwned'), bg: isEquipped ? colors.yellow : tdef.got ? colors.mint : colors.cream },
+      icon: tdef.emoji, iconNode: <EmojiIcon emoji={tdef.emoji} size={34} color={C} sw={1.6} />, iconBg: tdef.got ? 'rgba(195,177,232,.35)' : nb.cream, title: tdef.got ? t(tdef.nameKey) : '???',
+      status: { label: isEquipped ? t('title.equipped') : tdef.got ? t('title.owned') : t('title.notOwned'), bg: isEquipped ? 'rgba(249,227,123,.5)' : tdef.got ? 'rgba(168,217,151,.4)' : nb.cream },
       what: tdef.got ? t(tdef.descKey) + (tdef.effectKey ? `\n\n${t('title.effectLabel')}: ${t(tdef.effectKey)}` : '') : t('title.notOwnedBody'),
       how: t(tdef.howKey),
-      action: tdef.got ? { label: isEquipped ? t('title.unequip') : t('title.equip'), bg: isEquipped ? '#fff' : colors.yellow, onPress: () => equip(isEquipped ? '' : id) } : undefined,
+      action: tdef.got ? { label: isEquipped ? t('title.unequip') : t('title.equip'), bg: isEquipped ? '#fff' : 'rgba(249,227,123,.5)', onPress: () => equip(isEquipped ? '' : id) } : undefined,
     });
   };
 
@@ -213,8 +213,8 @@ export default function Me() {
     if (!m) return;
     const done = foundIds.has(id);
     setSheet({
-      icon: '', iconNode: <PixelIcon name={done ? 'burst' : 'question'} color={C} size={34} sw={1.6} />, iconBg: done ? colors.mint : colors.cream, title: done ? t(m.nameKey) : t('mission.hiddenTitle'),
-      status: { label: done ? t('mission.found') : t('mission.notFound'), bg: done ? colors.mint : colors.cream },
+      icon: '', iconNode: <PixelIcon name={done ? 'burst' : 'question'} color={C} size={34} sw={1.6} />, iconBg: done ? 'rgba(168,217,151,.4)' : nb.cream, title: done ? t(m.nameKey) : t('mission.hiddenTitle'),
+      status: { label: done ? t('mission.found') : t('mission.notFound'), bg: done ? 'rgba(168,217,151,.4)' : nb.cream },
       what: done ? t('mission.foundBody', { name: t(m.nameKey) }) : t('mission.hintBody', { hint: t(m.hintKey) }),
       how: t('mission.rewardBody', { reward: t(m.rewardKey) }),
     });
@@ -457,18 +457,18 @@ export default function Me() {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <FIcon name="magnify" size={16} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>히든 미션</Text>
+              <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>히든 미션</Text>
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{foundIds.size} / {MISSIONS.length}</Text>
+            <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft }}>{foundIds.size} / {MISSIONS.length}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {MISSIONS.map((m) => {
               const done = foundIds.has(m.id);
               return (
-                <Shadowed key={m.id} offset={done ? 3 : 0} shadowColor={done ? colors.mintShadow : C + '33'} style={{ width: '31.5%' }}>
-                  <Pressable onPress={() => openMission(m.id)} style={{ aspectRatio: 1, borderWidth: done ? 3 : 2, borderColor: C, backgroundColor: done ? colors.mint : colors.cream, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 }}>
-                    <PixelIcon name={done ? 'burst' : 'question'} color={done ? C : colors.textFaint} size={24} />
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: done ? C : colors.textFaint, marginTop: 3, textAlign: 'center' }}>{done ? t(m.nameKey) : '???'}</Text>
+                <Shadowed key={m.id} offset={done ? 3 : 0} shadowColor={done ? nb.green : C + '33'} style={{ width: '31.5%' }}>
+                  <Pressable onPress={() => openMission(m.id)} style={{ aspectRatio: 1, borderWidth: done ? 3 : 2, borderColor: C, backgroundColor: done ? 'rgba(168,217,151,.4)' : nb.cream, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 }}>
+                    <PixelIcon name={done ? 'burst' : 'question'} color={done ? C : nb.placeholder} size={24} />
+                    <Text style={{ fontFamily: nbFonts.body, fontSize: 8, color: done ? C : nb.placeholder, marginTop: 3, textAlign: 'center' }}>{done ? t(m.nameKey) : '???'}</Text>
                   </Pressable>
                 </Shadowed>
               );
@@ -484,8 +484,8 @@ export default function Me() {
                   <FIcon name="doc" size={22} />
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>리뷰랩 · 오답노트</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 변환됐어요.</Text>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>리뷰랩 · 오답노트</Text>
+                  <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: nbFonts.hand }}>{t('lab.likeALocal')}</Text> 카드로 변환됐어요.</Text>
                 </View>
               </View>
               {/* One card, as it appears in the lab: struck out in red pen, then the
@@ -510,7 +510,7 @@ export default function Me() {
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
             <FIcon name="speech" size={16} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.language.section')}</Text>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.language.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
             <View>
@@ -519,19 +519,19 @@ export default function Me() {
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}
               >
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('settings.language.appTitle')}</Text>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.language.appTitle')}</Text>
+                  <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
                     {t('settings.language.appSubOn', { name: LOCALE_META[locale].name })}
                   </Text>
                 </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{LOCALE_META[locale].name}</Text>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{LOCALE_META[locale].name}</Text>
                 <PixelIcon name="chevron-right" color={C} size={16} sw={2} />
               </Pressable>
               {!!targetLang && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.cream, borderWidth: 2, borderTopWidth: 0, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: nb.cream, borderWidth: 2, borderTopWidth: 0, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
                   <View style={{ flex: 1 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t('settings.language.learning')}</Text>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{t('settings.language.learning')}</Text>
+                    <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
                       {t('settings.language.learningSub', { name: LOCALE_META[targetLang as Locale]?.name ?? targetLang })}
                     </Text>
                   </View>
@@ -546,7 +546,7 @@ export default function Me() {
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
             <FIcon name="speaker" size={16} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.sound.section')}</Text>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.sound.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
             <Pressable
@@ -554,13 +554,13 @@ export default function Me() {
               style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('settings.sound.title')}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.sound.title')}</Text>
+                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
                   {sfxOn ? t('settings.sound.on') : t('settings.sound.off')}
                 </Text>
               </View>
               {/* 픽셀 토글 — 앱에 Switch를 쓴 곳이 없어 테두리 박스로 맞췄다 */}
-              <View style={{ width: 40, height: 22, borderWidth: 2, borderColor: C, backgroundColor: sfxOn ? colors.mint : colors.cream, justifyContent: 'center', alignItems: sfxOn ? 'flex-end' : 'flex-start', paddingHorizontal: 2 }}>
+              <View style={{ width: 40, height: 22, borderWidth: 2, borderColor: C, backgroundColor: sfxOn ? 'rgba(168,217,151,.4)' : nb.cream, justifyContent: 'center', alignItems: sfxOn ? 'flex-end' : 'flex-start', paddingHorizontal: 2 }}>
                 <View style={{ width: 14, height: 14, backgroundColor: C }} />
               </View>
             </Pressable>
@@ -571,7 +571,7 @@ export default function Me() {
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
             <FIcon name="lock" size={16} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('settings.account.section')}</Text>
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.account.section')}</Text>
           </View>
           <Shadowed offset={3} shadowColor={C + '33'}>
             <Pressable
@@ -580,8 +580,8 @@ export default function Me() {
               style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12, opacity: signingOut ? 0.6 : 1 }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{t('settings.account.signOut')}</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{t('settings.account.signOutSub')}</Text>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.account.signOut')}</Text>
+                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>{t('settings.account.signOutSub')}</Text>
               </View>
               {signingOut
                 ? <ActivityIndicator color={C} />
@@ -594,11 +594,11 @@ export default function Me() {
       {/* hidden-mission discovery celebration */}
       {toast && (
         <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 28, alignItems: 'center', paddingHorizontal: 18 }}>
-          <Shadowed offset={4} shadowColor={colors.yellowShadow}>
+          <Shadowed offset={4} shadowColor={'#C99A1E'}>
             <View style={{ backgroundColor: 'rgba(249,227,123,.55)', borderWidth: 1.5, borderColor: nb.ink, borderRadius: 3, paddingVertical: 12, paddingHorizontal: 18, alignItems: 'center', minWidth: 260 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>히든 미션 발견!</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, marginTop: 4 }}>{toast.name}</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 4 }}>보상: {toast.reward}</Text>
+              <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>히든 미션 발견!</Text>
+              <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: C, marginTop: 4 }}>{toast.name}</Text>
+              <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, marginTop: 4 }}>보상: {toast.reward}</Text>
             </View>
           </Shadowed>
         </View>
@@ -624,8 +624,8 @@ export default function Me() {
           완전한 것처럼 제시하지 않기 위해서다. */}
       <BottomSheet visible={langOpen} onClose={() => setLangOpen(false)}>
         <View style={{ padding: 14 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginBottom: 4 }}>{t('settings.language.pickTitle')}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginBottom: 12, lineHeight: 15 }}>{t('settings.language.pickNote')}</Text>
+          <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C, marginBottom: 4 }}>{t('settings.language.pickTitle')}</Text>
+          <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginBottom: 12, lineHeight: 15 }}>{t('settings.language.pickNote')}</Text>
           {LOCALES.map((code) => {
             const meta = LOCALE_META[code];
             const done = completenessLabel(code);
@@ -634,15 +634,15 @@ export default function Me() {
               <Shadowed key={code} offset={2.5} style={{ marginBottom: 8 }}>
                 <Pressable
                   onPress={() => { void setLocale(code); playSfx('confirm'); setLangOpen(false); }}
-                  style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: on ? colors.mint : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 11 }}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: on ? 'rgba(168,217,151,.4)' : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 11 }}
                 >
                   <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{meta.name}</Text>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{meta.sub}</Text>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{meta.name}</Text>
+                    <Text style={{ fontFamily: nbFonts.body, fontSize: 9.5, color: nb.soft, marginTop: 2 }}>{meta.sub}</Text>
                   </View>
                   {!done.full && (
-                    <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{done.text}</Text>
+                    <View style={{ backgroundColor: 'rgba(249,227,123,.5)', borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
+                      <Text style={{ fontFamily: nbFonts.hand, fontSize: 11.5, color: C }}>{done.text}</Text>
                     </View>
                   )}
                   {on && <FIcon name="check" size={14} />}

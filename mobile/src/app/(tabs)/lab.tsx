@@ -20,16 +20,16 @@ import { playSfx } from '@/lib/sfx';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
-import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
+import { space, type as typeScale } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 
-const C = colors.ink;
+const C = nb.ink;
 // Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
 const GRADES: { g: ReviewGrade; labelKey: string; bg: string; blurbKey: string; guideKey: string }[] = [
   { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', blurbKey: 'lab.againSub', guideKey: 'lab.againBody' },
-  { g: 'hard', labelKey: 'lab.hard', bg: colors.peach, blurbKey: 'lab.hardSub', guideKey: 'lab.hardBody' },
-  { g: 'good', labelKey: 'lab.good', bg: colors.mint, blurbKey: 'lab.goodSub', guideKey: 'lab.goodBody' },
-  { g: 'easy', labelKey: 'lab.easy', bg: colors.yellow, blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
+  { g: 'hard', labelKey: 'lab.hard', bg: '#FFF3EE', blurbKey: 'lab.hardSub', guideKey: 'lab.hardBody' },
+  { g: 'good', labelKey: 'lab.good', bg: 'rgba(168,217,151,.4)', blurbKey: 'lab.goodSub', guideKey: 'lab.goodBody' },
+  { g: 'easy', labelKey: 'lab.easy', bg: 'rgba(249,227,123,.5)', blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
 ];
 // humanize the SM-2 next-interval into a friendly "next review" label.
 function nextLabel(t: Translate, days: number): string {
@@ -39,7 +39,7 @@ function nextLabel(t: Translate, days: number): string {
   return t('lab.inMonths', { n: Math.round(days / 30) });
 }
 // Per-topic tone for the card header strip (v17 uses a per-dept tone background).
-const TONES = [colors.mint, colors.peach, colors.blue, colors.lilac, colors.yellow];
+const TONES = ['rgba(168,217,151,.4)', '#FFF3EE', nb.blue, 'rgba(195,177,232,.35)', 'rgba(249,227,123,.5)'];
 const toneOf = (tag: string) => TONES[[...tag].reduce((s, ch) => s + ch.charCodeAt(0), 0) % TONES.length];
 // A topicTag like "ER · 통증 사정" → { dept: "ER", tag: "통증 사정" }. May be empty:
 // nothing writes topic_tag today (both card-creation sites leave it blank), which is
@@ -73,7 +73,7 @@ function kindOf(card: ReviewCard): Kind {
   return faceOf(card.source).correction ? 'correction' : 'suggestion';
 }
 const KIND_LABEL: Record<Kind, string> = { correction: 'lab.kindCorrection', suggestion: 'lab.kindSuggestion' };
-const KIND_TONE: Record<Kind, string> = { correction: colors.peach, suggestion: colors.yellow };
+const KIND_TONE: Record<Kind, string> = { correction: '#FFF3EE', suggestion: 'rgba(249,227,123,.5)' };
 
 // The three halves of this tab, per v26: 교정 노트 / 말하기 / 모범답안.
 //
@@ -187,7 +187,7 @@ export default function Lab() {
       // mint, not ink — the chip's own text and its count are both drawn in ink, so a
       // tone of ink paints the label out when the chip is active and the count out when
       // it is not. The handoff's cats list gives 전체 T.mint for the same reason.
-      { id: 'ALL', label: t('board.all'), count: cards.length, tone: colors.mint },
+      { id: 'ALL', label: t('board.all'), count: cards.length, tone: 'rgba(168,217,151,.4)' },
       ...Array.from(byKind)
         .filter(([, count]) => splits(count))
         .map(([k, count]) => ({ id: `kind:${k}`, label: t(KIND_LABEL[k]), count, tone: KIND_TONE[k] })),
@@ -209,8 +209,8 @@ export default function Lab() {
 
   if (state !== 'ok') {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center' }}>리뷰 카드를 불러오지 못했어요. (로그인·서버 확인)</Text>}
+      <View style={{ flex: 1, backgroundColor: nb.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: nbFonts.body, fontSize: typeScale.body, color: nb.soft, textAlign: 'center' }}>리뷰 카드를 불러오지 못했어요. (로그인·서버 확인)</Text>}
       </View>
     );
   }
@@ -288,23 +288,23 @@ export default function Lab() {
               <Shadowed offset={3}>
                 <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C }}>
                   <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}>
-                    <Text style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(12), color: C }}>복습 등급이 뭔가요?</Text>
-                    <DisclosureChevron open={guideOpen} color={colors.textSoft} size={14} sw={1.8} />
+                    <Text style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>복습 등급이 뭔가요?</Text>
+                    <DisclosureChevron open={guideOpen} color={nb.soft} size={14} sw={1.8} />
                   </Pressable>
                   <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 2 : 0, borderTopColor: C }}>
                     <View style={{ paddingHorizontal: 12, paddingBottom: 12, gap: 8 }}>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16, marginTop: 10 }}>
-                        카드를 확인한 뒤 <Text style={{ fontFamily: fonts.heading }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: fonts.heading }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
+                      <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, lineHeight: 16, marginTop: 10 }}>
+                        카드를 확인한 뒤 <Text style={{ fontFamily: nbFonts.hand }}>얼마나 잘 기억했는지</Text> 스스로 평가하면, 그 결과에 따라 <Text style={{ fontFamily: nbFonts.hand }}>다음 복습 시점</Text>이 자동으로 정해져요. 잘 외운 카드일수록 뜸하게, 어려운 카드일수록 자주 나타납니다.
                       </Text>
                       {GRADES.map(({ g, labelKey, bg, guideKey }) => (
                         <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
                           <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 7, minWidth: 52, alignItems: 'center' }}>
-                            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{t(labelKey)}</Text>
+                            <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: C }}>{t(labelKey)}</Text>
                           </View>
-                          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 }}>{t(guideKey)}</Text>
+                          <Text style={{ flex: 1, fontFamily: nbFonts.body, fontSize: 10.5, color: nb.ink, lineHeight: 15 }}>{t(guideKey)}</Text>
                         </View>
                       ))}
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 2 }}>
+                      <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, lineHeight: 15, marginTop: 2 }}>
                         {t('lab.pipsHelp', { mastered: t('lab.mastered') })}
                       </Text>
                     </View>
@@ -314,8 +314,8 @@ export default function Lab() {
 
               {/* mini stats */}
               <View style={{ flexDirection: 'row', gap: 8 }}>
-                <MiniStat label={t('lab.savedCards')} value={cards.length} color={colors.mint} />
-                <MiniStat label={t('lab.mastered')} value={mastered} color={colors.yellow} />
+                <MiniStat label={t('lab.savedCards')} value={cards.length} color={'rgba(168,217,151,.4)'} />
+                <MiniStat label={t('lab.mastered')} value={mastered} color={'rgba(249,227,123,.5)'} />
                 <MiniStat label={t('lab.dueCards')} value={cards.length} color="#FCA5A5" />
               </View>
 
@@ -329,9 +329,9 @@ export default function Lab() {
                       <Pressable key={c.id} onPress={() => setFilter(c.id)}>
                         <Shadowed offset={active ? 2 : 1.5} shadowColor={active ? C : C + '66'}>
                           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: active ? catColor : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 5, paddingHorizontal: 9 }}>
-                            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{c.label}</Text>
+                            <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.9, color: C }}>{c.label}</Text>
                             <View style={{ backgroundColor: active ? '#fff' : catColor, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, minWidth: 14, alignItems: 'center' }}>
-                              <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{c.count}</Text>
+                              <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: C }}>{c.count}</Text>
                             </View>
                           </View>
                         </Shadowed>
@@ -349,8 +349,8 @@ export default function Lab() {
           renderItem={({ item }) => <PhraseCard card={item} onGrade={grade} />}
           ListEmptyComponent={
             <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
-              <PixelIcon name="note" color={colors.textFaint} size={40} sw={1.5} />
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
+              <PixelIcon name="note" color={nb.placeholder} size={40} sw={1.5} />
+              <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: nb.soft, textAlign: 'center', lineHeight: 18 }}>모든 복습을 마쳤어요!{'\n'}시나리오 대화에서 새 교정 카드가 쌓입니다.</Text>
             </View>
           }
           contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40 }}
@@ -376,11 +376,11 @@ export default function Lab() {
             <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 11, paddingHorizontal: 16, minWidth: 250, alignItems: 'center' }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <View style={{ backgroundColor: toast.bg, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 8 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{toast.label}</Text>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{toast.label}</Text>
                 </View>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>{toast.next}</Text>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{toast.next}</Text>
               </View>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
+              <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
             </View>
           </Shadowed>
         </View>
@@ -607,7 +607,7 @@ function Rules() {
 function Badge({ text, icon, bg, color }: { text?: string; icon?: IconName; bg: string; color: string }) {
   return (
     <View style={{ backgroundColor: bg, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4, paddingVertical: icon ? 2 : 0, marginTop: 1 }}>
-      {icon ? <PixelIcon name={icon} color={color} size={10} sw={2} /> : <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color }}>{text}</Text>}
+      {icon ? <PixelIcon name={icon} color={color} size={10} sw={2} /> : <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color }}>{text}</Text>}
     </View>
   );
 }
@@ -646,8 +646,8 @@ function BlockUnavailable({ titleKey }: { titleKey: string }) {
   return (
     <Shadowed offset={4}>
       <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12, gap: 3 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{t(titleKey)}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, lineHeight: 16 }}>{t('lab.blockUnavailable')}</Text>
+        <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{t(titleKey)}</Text>
+        <Text style={{ fontFamily: nbFonts.body, fontSize: 10.5, color: nb.soft, lineHeight: 16 }}>{t('lab.blockUnavailable')}</Text>
       </View>
     </Shadowed>
   );
@@ -658,8 +658,8 @@ function MiniStat({ label, value, color }: { label: string; value: number; color
     <Shadowed offset={2} shadowColor={C + '66'} style={{ flex: 1 }}>
       <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, alignItems: 'center' }}>
         <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 4, backgroundColor: color }} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(22), color: C }}>{value}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft, marginTop: 2 }}>{label}</Text>
+        <Text style={{ fontFamily: nbFonts.hand, fontSize: 29.7, color: C }}>{value}</Text>
+        <Text style={{ fontFamily: nbFonts.body, fontSize: 9, color: nb.soft, marginTop: 2 }}>{label}</Text>
       </View>
     </Shadowed>
   );

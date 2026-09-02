@@ -1,6 +1,5 @@
 import { View } from 'react-native';
 import { Tabs } from 'expo-router';
-import { fs } from '@/theme/tokens';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { nb, nbFonts } from '@/theme/nb';
 import { SheetOverlayHost } from '@/components/SheetOverlay';
@@ -42,7 +41,7 @@ export default function TabsLayout() {
         tabBarActiveTintColor: nb.ink,
         tabBarInactiveTintColor: 'rgba(62,54,43,.55)',
         tabBarStyle: { backgroundColor: nb.paper, borderTopColor: nb.paperEdge, borderTopWidth: 1.5 },
-        tabBarLabelStyle: { fontFamily: nbFonts.hand, fontSize: fs(13) },
+        tabBarLabelStyle: { fontFamily: nbFonts.hand, fontSize: 13 },
         tabBarIconStyle: { marginBottom: -2 },
       }}
     >
