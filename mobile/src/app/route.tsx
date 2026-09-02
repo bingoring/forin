@@ -1,18 +1,25 @@
-// 메인 루트 (main-route curriculum) — the guided progression path. A vertical
-// stepper of event nodes from the server (GET /me/route): completed ✓, the
-// current available node (play icon; tap → scenario briefing), and locked nodes gated
-// by prerequisites. Nodes whose scenario isn't authored yet show 준비 중.
+// 메인 루트 — the guided progression path, in the 근무 수첩 line (v30).
+//
+// A vertical stepper of event nodes from the server (GET /me/route): cleared ones ticked,
+// the current one ringed and tagged 지금 여기, and locked ones gated by prerequisites.
+// Nodes whose scenario is not authored yet say 준비 중.
+//
+// NOTE ON THE v30 ARTBOARD: 07 lists a 길찾기 screen — a hand-drawn floor plan with a
+// red dotted path from where you are to a room. That is NOT this screen and is not
+// implemented here: it needs a room graph, a door-to-door path and a current position,
+// none of which the server sends (the interior fixtures in src/map do carry room geometry,
+// so it is buildable — as a feature, not as a re-skin). This is the curriculum route, and
+// it borrows the artboard's numbered-step vocabulary because that part fits what the data
+// actually is.
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
-import { PixelButton } from '@/components/PixelButton';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbPaper, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
 import { api, type RouteNode } from '@/api/client';
-import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { t, useLocale, useT } from '@/i18n';
+import { useT } from '@/i18n';
 import { PLACE_SCREEN } from '@/theme/transitions';
-
-const C = colors.ink;
 
 export default function Route() {
   const t = useT();
@@ -33,104 +40,143 @@ export default function Route() {
   const done = nodes.filter((n) => n.state === 'completed').length;
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+    <NbSheet>
       <Stack.Screen options={PLACE_SCREEN} />
-      <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <PixelButton label={t('common.back')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={() => router.back()} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>메인 루트</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, width: 44, textAlign: 'right' }}>{done}/{nodes.length}</Text>
+
+      <View style={styles.head}>
+        <Pressable onPress={() => router.back()} hitSlop={8}>
+          <NbPaper rot={-1} style={styles.chip}><NbIcon name="chevronLeft" size={16} /></NbPaper>
+        </Pressable>
+        <Text numberOfLines={1} style={[nbText.hand(26), { flex: 1, minWidth: 0 }]}>{t('route.title')}</Text>
+        {state === 'ok' && nodes.length > 0 && (
+          <Text numberOfLines={1} style={styles.count}>{done}/{nodes.length}</Text>
+        )}
       </View>
 
-      {state === 'loading' && <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>}
+      {state === 'loading' && <View style={styles.centre}><ActivityIndicator color={nb.ink} /></View>}
       {state === 'error' && (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.textSoft }}>루트를 불러오지 못했어요.</Text>
-          <PixelButton label={t('common.back')} onPress={() => router.back()} />
+        <View style={styles.centre}>
+          <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('route.loadFailed')}</Text>
+          <NbButton variant="paper" onPress={() => router.back()}>{t('common.back')}</NbButton>
         </View>
       )}
 
       {state === 'ok' && (
-        <ScrollView contentContainerStyle={{ padding: 22, paddingBottom: 40 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(20), color: C, lineHeight: 28 }}>커리큘럼 여정</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, marginTop: 6, marginBottom: 18 }}>단계를 하나씩 클리어하면 다음 현장이 열려요.</Text>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
+          <Text style={nbText.body(12, nb.soft)}>{t('route.sub')}</Text>
 
           {nodes.length === 0 ? (
-            <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
-              <PixelIcon name="map" color={colors.textFaint} size={40} sw={1.5} />
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.textSoft, textAlign: 'center' }}>아직 열린 루트가 없어요.</Text>
+            <View style={styles.empty}>
+              <NbIcon name="compass" size={34} color={nb.soft} />
+              <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center' }]}>{t('route.empty')}</Text>
             </View>
           ) : (
-            nodes.map((n, i) => <RouteStep key={n.eventId} node={n} last={i === nodes.length - 1} onPress={() => n.scenarioId && router.push(`/scenario/${n.scenarioId}`)} />)
+            nodes.map((n, i) => (
+              <RouteStep
+                key={n.eventId}
+                node={n}
+                n={i + 1}
+                last={i === nodes.length - 1}
+                onPress={() => n.scenarioId && router.push(`/scenario/${n.scenarioId}`)}
+              />
+            ))
           )}
         </ScrollView>
       )}
-    </View>
+    </NbSheet>
   );
 }
 
-function RouteStep({ node, last, onPress }: { node: RouteNode; last: boolean; onPress: () => void }) {
-  // Its own useT, not the module-level t(): a component that reads the module
-  // singleton is not re-rendered when the locale changes (see i18n/useT.test.ts).
+function RouteStep({ node, n, last, onPress }: { node: RouteNode; n: number; last: boolean; onPress: () => void }) {
+  // Its own useT, not the module-level t(): a component that reads the module singleton is
+  // not re-rendered when the locale changes (see i18n/useT.test.ts).
   const t = useT();
   const completed = node.state === 'completed';
   const available = node.state === 'available';
+  const locked = node.state === 'locked';
   const noScenario = available && !node.scenarioId; // graph node authored ahead of its content
   const tappable = available && !!node.scenarioId;
 
-  const dotBg = completed ? colors.mint : available ? colors.yellow : '#fff';
-  const icon: IconName = completed ? 'check' : available ? 'play' : 'lock';
-  const cardBg = completed ? '#fff' : available ? colors.paper : colors.cream;
+  // The number's pen: green for done, gold for where you are, pencil for what is shut.
+  const penColor = completed ? nb.green : available ? '#C99A1E' : nb.soft;
 
   return (
     <View style={{ flexDirection: 'row', gap: 12 }}>
-      {/* rail: node dot + connector */}
-      <View style={{ alignItems: 'center', width: 34 }}>
-        <Shadowed offset={available ? 3 : 0} shadowColor={colors.yellowShadow}>
-          <View style={{ width: 34, height: 34, borderWidth: 2.5, borderColor: C, backgroundColor: dotBg, alignItems: 'center', justifyContent: 'center' }}>
-            <PixelIcon name={icon} color={C} size={16} sw={1.9} />
-          </View>
-        </Shadowed>
-        {!last && <View style={{ flex: 1, width: 3, backgroundColor: completed ? colors.mint : '#2A252233', marginVertical: 4, minHeight: 24 }} />}
+      {/* The rail. Solid behind you, dashed ahead — the walk you have done is drawn and
+          the rest is pencilled in. */}
+      <View style={{ alignItems: 'center', width: 30 }}>
+        <View style={[styles.dot, { borderColor: penColor, borderWidth: available ? 2.4 : 1.8 }]}>
+          {completed
+            ? <NbIcon name="check" size={15} color={nb.green} />
+            : locked
+              ? <NbIcon name="lock" size={13} color={nb.soft} />
+              : <Text style={[nbText.hand(15, penColor), { lineHeight: 17 }]}>{n}</Text>}
+        </View>
+        {!last && (
+          <View
+            style={[
+              styles.rail,
+              completed
+                ? { borderLeftWidth: 2, borderLeftColor: nb.green }
+                : { borderLeftWidth: 1.8, borderStyle: 'dashed', borderLeftColor: 'rgba(62,54,43,.28)' },
+            ]}
+          />
+        )}
       </View>
 
-      {/* card */}
       <Pressable onPress={onPress} disabled={!tappable} style={{ flex: 1, marginBottom: 14 }}>
-        <Shadowed offset={available ? 4 : 2} shadowColor={available ? C : C + '33'}>
-          <View style={{ backgroundColor: cardBg, borderWidth: available ? 3 : 2, borderColor: C, padding: 13, opacity: node.state === 'locked' ? 0.6 : 1 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-              <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>TIER {node.tier}</Text>
-              </View>
-              {completed && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.mintShadow }}>✓ 완료</Text>}
-              {/* Same row, different word — a node you already tried says so instead of
-                  inviting you as if it were new. No extra badge: this list is a column of
-                  cards and a second mark per card is how it stops being scannable. */}
-              {available && !noScenario && (
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: node.attempted ? colors.peachShadow : colors.yellowShadow }}>
-                  {t(node.attempted ? 'route.tryAgain' : 'route.now')}
-                </Text>
-              )}
-              {noScenario && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>준비 중</Text>}
-              {node.state === 'locked' && <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>잠김</Text>}
-            </View>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{node.title}</Text>
-            {/* "통과", not "완료": unlocking needs a CLEAR, and a learner who played the
-                previous step and did not pass it was told to complete something they
-                thought they had. */}
-            {node.state === 'locked' && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>{t('route.lockedHint')}</Text>}
-            {noScenario && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 3 }}>곧 새로운 시나리오가 추가돼요.</Text>}
+        <NbPaper
+          rot={n % 2 ? -0.5 : 0.5}
+          bg={completed ? 'rgba(168,217,151,.18)' : undefined}
+          style={[
+            styles.card,
+            // The one ringed card is where you are — the same gold ring the curriculum
+            // list and the profile use for "this is the one you chose".
+            available && !noScenario ? { borderColor: '#C99A1E', borderWidth: 2 } : null,
+            locked ? { opacity: 0.55, backgroundColor: 'transparent', borderStyle: 'dashed' } : null,
+          ]}
+        >
+          <View style={styles.cardHead}>
+            <Text numberOfLines={1} style={styles.tier}>TIER {node.tier}</Text>
+            <View style={{ flex: 1 }} />
+            {/* Same slot, different word — a node you already tried says so instead of
+                inviting you as if it were new. */}
+            {available && !noScenario && (
+              <NbTag color={node.attempted ? nb.red : '#C99A1E'} rot={-2}>
+                {t(node.attempted ? 'route.tryAgain' : 'route.hereNow')}
+              </NbTag>
+            )}
+            {noScenario && <NbTag color={nb.soft}>{t('route.notReady')}</NbTag>}
           </View>
-        </Shadowed>
+
+          <Text numberOfLines={2} style={[nbText.hand(18), { marginTop: 4, lineHeight: 21 }]}>{node.title}</Text>
+
+          {/* "통과", not "완료": unlocking needs a CLEAR, and a learner who played the
+              previous step and did not pass it was told to complete something they thought
+              they had. */}
+          {locked && <Text style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>{t('route.lockedHint')}</Text>}
+          {noScenario && <Text style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>{t('route.comingSoon')}</Text>}
+        </NbPaper>
       </Pressable>
     </View>
   );
 }
 
-function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: object }) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
-    </View>
-  );
-}
+const styles = {
+  head: { paddingTop: 52, paddingHorizontal: 20, paddingBottom: 6, flexDirection: 'row', alignItems: 'center', gap: 10 } as const,
+  chip: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' } as const,
+  count: { fontFamily: nbFonts.monoBold, fontSize: 12, color: nb.soft } as const,
+  centre: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, paddingHorizontal: 28 } as const,
+  scroll: { paddingHorizontal: 20, paddingTop: 8, paddingBottom: 40 } as const,
+  empty: { alignItems: 'center', paddingVertical: 44, gap: 9 } as const,
+
+  dot: {
+    width: 30, height: 30, borderRadius: 15, backgroundColor: nb.paper,
+    alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+  } as const,
+  rail: { flex: 1, marginVertical: 4, minHeight: 22 } as const,
+  card: { marginTop: 2, paddingVertical: 12, paddingHorizontal: 14 } as const,
+  cardHead: { flexDirection: 'row', alignItems: 'center', gap: 7 } as const,
+  /** The tier is printed: it is a coordinate in the curriculum, not a word. */
+  tier: { fontFamily: nbFonts.mono, fontSize: 9, color: nb.soft, letterSpacing: 1 } as const,
+};
