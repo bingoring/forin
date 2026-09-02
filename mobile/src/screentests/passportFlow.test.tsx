@@ -45,6 +45,19 @@ jest.mock('expo-router', () => ({
 // three cards must therefore be visible and NOT selectable.
 jest.mock('@/data/destinations', () => ({ isDestinationReady: (c: string) => c === 'us' }));
 jest.mock('@/store/authStore', () => ({ useAuthStore: (sel: (s: unknown) => unknown) => sel({ accessToken: 'tok' }) }));
+// The app already opens in the device's language, so the language page arrives
+// pre-answered. `mockSetLocale` is how we see that a pick is applied AT ONCE rather than
+// at the end — the rest of the journey is written in it.
+const mockSetLocale: string[] = [];
+jest.mock('@/i18n', () => {
+  const real = jest.requireActual('@/i18n');
+  return {
+    ...real,
+    getLocale: () => 'ko',
+    localeWasChosen: () => false,
+    setLocale: async (l: string) => { mockSetLocale.push(l); },
+  };
+});
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import PassportRoute from '@/app/(onboarding)/passport';
@@ -54,6 +67,7 @@ const track = trackMounts();
 
 beforeEach(() => {
   mockDraft.length = 0; mockProfile.length = 0; mockNav.length = 0; mockCleared = 0; mockFail = false;
+  mockSetLocale.length = 0;
   jest.useFakeTimers();
 });
 afterEach(() => { jest.useRealTimers(); });
@@ -97,6 +111,12 @@ test('the journey collects three answers and posts them once, at the end', async
 
   await tap(tree.root, '여권 펼치기');
   await settle(1400);
+  // The language page comes first: everything after it is written in the answer, so
+  // asking later would mean switching language mid-journey.
+  expect(texts(tree.root)).toContain('어떤 언어로 볼까요?');
+  await tap(tree.root, '日本語');
+  await tap(tree.root, '이 언어로 계속');
+  await settle(1400);
   expect(texts(tree.root)).toContain('어떤 일을 하시나요?');
 
   await tap(tree.root, '간호사');
@@ -129,7 +149,8 @@ test('the journey collects three answers and posts them once, at the end', async
   await act(async () => { await Promise.resolve(); });
   expect(mockProfile).toEqual([{
     job: 'nurse',
-    nativeLang: expect.any(String),
+    // From the language page's answer, not from a guess.
+    nativeLang: 'ja',
     targetLang: 'en',
     destination: 'us',
     // "일상 대화 OK, 실전 감각이 필요해요" is B2. The three answers ARE the CEFR question —
@@ -150,8 +171,10 @@ test('each answer is written to the draft as it is given', async () => {
   const tree = await mount();
   await tap(tree.root, '여권 펼치기');
   await settle(1400);
+  await tap(tree.root, '이 언어로 계속');
+  await settle(1400);
   await tap(tree.root, '간호사');
-  expect(mockDraft).toEqual([{ job: 'nurse' }]);
+  expect(mockDraft[mockDraft.length - 1]).toEqual({ job: 'nurse' });
 
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
@@ -166,6 +189,8 @@ test('a country with no curriculum behind it cannot be chosen', async () => {
   // and it does not answer.
   const tree = await mount();
   await tap(tree.root, '여권 펼치기');
+  await settle(1400);
+  await tap(tree.root, '이 언어로 계속');
   await settle(1400);
   await tap(tree.root, '간호사');
   await tap(tree.root, '다음 장 넘기기');
@@ -187,6 +212,8 @@ test('the desk will not take an answer until the question has finished landing',
   // again — and the options are dimmed to say so, not merely inert.
   const tree = await mount();
   await tap(tree.root, '여권 펼치기');
+  await settle(1400);
+  await tap(tree.root, '이 언어로 계속');
   await settle(1400);
   await tap(tree.root, '간호사');
   await tap(tree.root, '다음 장 넘기기');
@@ -213,6 +240,8 @@ test('a failed save keeps the learner where they are and says so', async () => {
   const tree = await mount();
   await tap(tree.root, '여권 펼치기');
   await settle(1400);
+  await tap(tree.root, '이 언어로 계속');
+  await settle(1400);
   await tap(tree.root, '간호사');
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
@@ -238,4 +267,34 @@ test('a returning learner opens the passport where they stopped', async () => {
   const tree = await mount();
   expect(texts(tree.root)).not.toContain('여권 펼치기');
   expect(texts(tree.root)).toContain('어디로 떠나나요?');
+});
+
+test('the language page arrives pre-answered from the device, and says why', async () => {
+  // The app already opens in the device's language, so this page is a confirmation rather
+  // than a blank. The note explains the pre-selection — without it a highlighted card with
+  // no cause reads as the app having decided for you.
+  const tree = await mount();
+  await tap(tree.root, '여권 펼치기');
+  await settle(1400);
+
+  const out = texts(tree.root);
+  expect(out).toContain('한국어');
+  expect(out).toContain('日本語');
+  expect(out).toContain('기기 설정을 따랐어요');
+  // No stamp here: a stamp means a border was crossed, and choosing a language is not
+  // that. (출국 도장은 목적지 페이지에만.)
+  expect(out).not.toContain('쾅! 출국합니다');
+});
+
+test('picking a language applies it at once, not at the end', async () => {
+  // The remaining three pages are written in it. A language that only took effect after
+  // onboarding would have the learner answering in a language they just rejected.
+  const tree = await mount();
+  await tap(tree.root, '여권 펼치기');
+  await settle(1400);
+  await tap(tree.root, 'Deutsch');
+  expect(mockSetLocale).toEqual(['de']);
+  expect(mockDraft[mockDraft.length - 1]).toEqual({ nativeLang: 'de' });
+  // …and the "matched to your device" note goes: it is no longer true.
+  expect(texts(tree.root)).not.toContain('기기 설정을 따랐어요');
 });

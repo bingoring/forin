@@ -701,4 +701,8 @@ export const ko: Record<string, string> = {
   'onb.commute.hospital': '{dest} 종합병원',
   'onb.commute.title': '첫 출근 중…',
   'onb.commute.tag': '가는 길에 인사 표현 예습 중',
+  'onb.lang.title': '어떤 언어로 볼까요?',
+  'onb.lang.sub': '설명과 교정은 이 언어로 나와요 · 나중에 바꿀 수 있어요',
+  'onb.lang.detected': '기기 설정을 따랐어요',
+  'onb.lang.next': '이 언어로 계속',
 };

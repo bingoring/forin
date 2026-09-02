@@ -671,4 +671,8 @@ export const en: Record<string, string> = {
   'onb.commute.hospital': '{dest} General Hospital',
   'onb.commute.title': 'On the way to your first shift…',
   'onb.commute.tag': 'Rehearsing greetings on the way',
+  'onb.lang.title': 'Which language should the app use?',
+  'onb.lang.sub': 'Explanations and corrections come in this language · changeable later',
+  'onb.lang.detected': 'Matched to your device',
+  'onb.lang.next': 'Continue in this language',
 };

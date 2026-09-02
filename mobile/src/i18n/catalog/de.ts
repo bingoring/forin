@@ -670,4 +670,8 @@ export const de: Record<string, string> = {
   'onb.commute.hospital': '{dest} Klinikum',
   'onb.commute.title': 'Auf dem Weg zum ersten Dienst…',
   'onb.commute.tag': 'Begrüßungen auf dem Weg üben',
+  'onb.lang.title': 'In welcher Sprache?',
+  'onb.lang.sub': 'Erklärungen und Korrekturen in dieser Sprache · später änderbar',
+  'onb.lang.detected': 'Nach Geräteeinstellung',
+  'onb.lang.next': 'In dieser Sprache fortfahren',
 };

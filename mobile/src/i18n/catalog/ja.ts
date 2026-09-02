@@ -670,4 +670,8 @@ export const ja: Record<string, string> = {
   'onb.commute.hospital': '{dest}総合病院',
   'onb.commute.title': '初出勤中…',
   'onb.commute.tag': '道中で挨拶表現を予習中',
+  'onb.lang.title': 'どの言語で表示しますか?',
+  'onb.lang.sub': '説明と添削はこの言語で表示されます · 後で変更できます',
+  'onb.lang.detected': '端末の設定に合わせました',
+  'onb.lang.next': 'この言語で続ける',
 };

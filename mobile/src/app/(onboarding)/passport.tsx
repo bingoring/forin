@@ -11,19 +11,9 @@
 //
 // TWO deviations from the prototype, both because the platform is not a browser:
 //
-//  1. THE PAGE CURL. The reference splits the page into 24 vertical joints nested inside
-//     each other, each with its own rotateY, and relies on `perspective-origin`,
-//     `transform-style: preserve-3d` and CSS custom properties. React Native has none of
-//     those: it flattens nested 3D, `overflow: hidden` does not reliably clip a rotated
-//     child on Android, and each joint would need its own copy of the page. So the turn
-//     is ONE hinged page — the same 1.25s, the same easing, the same shading ramp and the
-//     same shadow sweep over the page underneath, without the curve. It reads as a page
-//     turning; it does not read as paper bending. Worth revisiting with Skia if the
-//     curve turns out to matter.
-//  2. NATIVE LANGUAGE. The old first page asked for it; this journey does not have a page
-//     for it, so it comes from the device locale. The profile screen can still change it,
-//     and defaulting is better than a page nobody asked for — but it does mean a
-//     Japanese-speaking user is no longer asked on day one.
+// ONE deviation from the prototype: the curl is built from 2D slices rather than 24 nested
+// 3D joints, because the nested version is a browser construct that produces a broken fan
+// on Android. The geometry and the reasoning are in components/nb/PageCurl.
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
@@ -31,12 +21,13 @@ import Svg, { Circle, Path, Rect } from 'react-native-svg';
 import { api } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbCheck, NbMark, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { CurlSweep, PageCurl } from '@/components/nb/PageCurl';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { isDestinationReady } from '@/data/destinations';
 import { clearDraft, loadDraft, passportStep, saveDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
 import { useAuthStore } from '@/store/authStore';
-import { getLocale, useT } from '@/i18n';
+import { LOCALES, LOCALE_META, getLocale, localeWasChosen, setLocale, useT, type Locale } from '@/i18n';
 
 /** Passport green and its gold. Only this screen uses them — a passport is not a page of
  *  the notebook, it is the object the notebook came in. */
@@ -86,7 +77,7 @@ const LEVELS = [
 ] as const;
 
 type Step =
-  | 'cover' | 'job' | 'dest' | 'closing' | 'flight'
+  | 'cover' | 'lang' | 'job' | 'dest' | 'closing' | 'flight'
   | 'immigration' | 'approved' | 'commute' | 'flightBack';
 
 /** How long each unattended stop lasts before the journey moves on. The prototype's
@@ -98,80 +89,9 @@ const HOLD: Partial<Record<Step, { ms: number; next: Step }>> = {
 };
 
 // ── the page turn ──────────────────────────────────────────────────────────
-
-/**
- * A page hinged at the spine.
- *
- * `dir` is which way: 'out' turns the old page away to the left (forward), 'in' brings a
- * page back over the top (backward, and the passport closing). The shading ramp is what
- * sells it — a flat page rotating reads as a card flipping, and the same page darkening
- * along its travel reads as paper.
- */
-function HingedPage({ dir, onDone, children }: {
-  dir: 'out' | 'in';
-  onDone: () => void;
-  children: React.ReactNode;
-}) {
-  const t = useRef(new Animated.Value(dir === 'out' ? 0 : 1)).current;
-  useEffect(() => {
-    const a = Animated.timing(t, {
-      toValue: dir === 'out' ? 1 : 0,
-      duration: dir === 'out' ? 1250 : 1100,
-      easing: dir === 'out' ? Easing.bezier(0.45, 0.05, 0.28, 0.98) : Easing.bezier(0.3, 0.6, 0.3, 1),
-      // rotateY and opacity can both ride the native driver.
-      useNativeDriver: true,
-    });
-    a.start(({ finished }) => finished && onDone());
-    return () => a.stop();
-    // onDone is a fresh closure each render; re-running the animation would restart the
-    // turn mid-flight, so it is deliberately not a dependency.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dir, t]);
-
-  return (
-    <Animated.View
-      pointerEvents="none"
-      style={{
-        position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, zIndex: 12,
-        opacity: t.interpolate({ inputRange: [0, 0.97, 1], outputRange: [1, 1, dir === 'out' ? 0 : 1] }),
-        transform: [
-          { perspective: 1500 },
-          { rotateY: t.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '-128deg'] }) },
-        ],
-      }}
-    >
-      {children}
-      {/* The page darkens as it lifts. Same value, so it cannot drift out of step. */}
-      <Animated.View
-        pointerEvents="none"
-        style={{
-          position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: nb.ink,
-          opacity: t.interpolate({ inputRange: [0, 0.45, 1], outputRange: [0, 0.18, 0.3] }),
-        }}
-      />
-    </Animated.View>
-  );
-}
-
-/** The shadow the turning page throws across the page underneath. */
-function TurnSweep() {
-  const t = useRef(new Animated.Value(0)).current;
-  const { width } = useWindowDimensions();
-  useEffect(() => {
-    Animated.timing(t, { toValue: 1, duration: 1250, easing: Easing.bezier(0.45, 0.05, 0.28, 0.98), useNativeDriver: true }).start();
-  }, [t]);
-  return (
-    <Animated.View
-      pointerEvents="none"
-      style={{
-        position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, zIndex: 11, backgroundColor: nb.ink,
-        opacity: t.interpolate({ inputRange: [0, 1], outputRange: [0.32, 0] }),
-        transform: [{ translateX: t.interpolate({ inputRange: [0, 1], outputRange: [0, -width] }) }],
-      }}
-    />
-  );
-}
-
+//
+// The curl lives in components/nb/PageCurl: it is the one piece of this screen that had to
+// be rebuilt rather than translated, and the reasoning for the projection is there.
 // ── page furniture ─────────────────────────────────────────────────────────
 
 /** The passport's spine: the fold every page is bound at, on the left. */
@@ -200,7 +120,7 @@ function Page({ bg, children }: { bg?: string; children?: React.ReactNode }) {
   );
 }
 
-function Dots({ at, total = 4 }: { at: number; total?: number }) {
+function Dots({ at, total = 5 }: { at: number; total?: number }) {
   return (
     <View style={{ flexDirection: 'row', gap: 6, justifyContent: 'center' }}>
       {Array.from({ length: total }).map((_, i) => (
@@ -468,6 +388,11 @@ export default function PassportRoute() {
   const [turning, setTurning] = useState<Step | null>(null);
   /** The page coming BACK over the top (‹, and the passport closing). */
   const [returning, setReturning] = useState<Step | null>(null);
+  // Pre-answered from whatever the app is already showing — which is the device's
+  // language on a first launch. `touchedLang` is only for the "matched to your device"
+  // note: once they have chosen, saying it would be wrong.
+  const [lang, setLang] = useState<Locale>(getLocale());
+  const [touchedLang, setTouchedLang] = useState(localeWasChosen());
   const [job, setJob] = useState<string | null>(null);
   const [dest, setDest] = useState<string | null>(null);
   const [lvl, setLvl] = useState<string | null>(null);
@@ -512,6 +437,15 @@ export default function PassportRoute() {
     return () => clearTimeout(timer);
   }, [step]);
 
+  const pickLang = (code: Locale) => {
+    setLang(code);
+    setTouchedLang(true);
+    // Applied immediately, not at the end: the rest of the journey is written in it, and
+    // a language that only takes effect after onboarding would have the learner answering
+    // three questions in a language they just rejected.
+    void setLocale(code);
+    void saveDraft({ nativeLang: code });
+  };
   const pickJob = (code: string) => { setJob(code); void saveDraft({ job: code }); };
   const pickDest = (id: string) => {
     setDest(id);
@@ -547,7 +481,7 @@ export default function PassportRoute() {
       const d = await loadDraft();
       await api.updateProfile({
         job: job || d.job || 'nurse',
-        nativeLang: d.nativeLang || getLocale(),
+        nativeLang: lang || d.nativeLang || getLocale(),
         targetLang: d.targetLang || 'en',
         destination: dest || d.destination || 'us',
         targetLevel: LEVELS.find((l) => l.id === lvl)?.cefr || d.targetLevel || 'B1',
@@ -584,7 +518,7 @@ export default function PassportRoute() {
         <Text style={{ fontFamily: nbFonts.hand, fontSize: 34, color: CREAM_TEXT, marginTop: 26, lineHeight: 41, textAlign: 'center' }}>{t('onb.cover.title')}</Text>
         <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.5, color: 'rgba(243,230,200,.65)', marginTop: 9 }}>{t('onb.cover.sub')}</Text>
         <View style={{ flex: 1 }} />
-        <NbButton variant="yellow" size="lg" full iconRight="chevronRight" onPress={() => go('job')}>{t('onb.cover.open')}</NbButton>
+        <NbButton variant="yellow" size="lg" full iconRight="chevronRight" onPress={() => go('lang')}>{t('onb.cover.open')}</NbButton>
         {/* Only for someone who arrived here without a session — inside the normal flow
             login already happened, and offering it again reads as a dead end. */}
         {!authed && (
@@ -603,10 +537,57 @@ export default function PassportRoute() {
     </Page>
   );
 
-  const jobPage = (
+  /**
+   * Which language the app speaks.
+   *
+   * FIRST, before the job: everything after this page is written in the answer, and asking
+   * in one language then switching mid-journey reads as the app changing its mind. It
+   * arrives pre-answered — the app already opens in the device's language (i18n/store:
+   * stored choice → device → ko) — so this page is a confirmation, not a blank.
+   *
+   * Built like the destination page, minus the stamp: a stamp means a border was crossed,
+   * and choosing a language is not that.
+   */
+  const langPage = (
     <Page>
       <Gutter />
       <BackChip onPress={() => goBack('cover')} />
+      <Header title={t('onb.lang.title')} sub={t('onb.lang.sub')} />
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 13, paddingTop: 16, paddingLeft: 34, paddingRight: 24 }}>
+        {LOCALES.map((code, i) => {
+          const meta = LOCALE_META[code];
+          const on = lang === code;
+          return (
+            <Pressable key={code} onPress={() => pickLang(code)} style={{ width: (width - 58 - 13) / 2 }}>
+              <NbPaper rot={i % 2 ? 0.5 : -0.45} style={[
+                { paddingTop: 14, paddingBottom: 11, paddingHorizontal: 6, alignItems: 'center', opacity: on ? 1 : 0.7 },
+                on ? chosen : null,
+              ]}>
+                <Text style={[nbText.hand(19), { lineHeight: 22 }]}>{meta.name}</Text>
+                <Text numberOfLines={1} style={[nbText.body(9.5, nb.soft), { marginTop: 2 }]}>{meta.sub}</Text>
+                {/* Said only on the one the device chose, and only until the learner
+                    picks: it explains why this card came pre-selected. */}
+                {on && !touchedLang && (
+                  <View style={{ marginTop: 5 }}><NbTag color={nb.blue} rot={-1.5}>{t('onb.lang.detected')}</NbTag></View>
+                )}
+              </NbPaper>
+            </Pressable>
+          );
+        })}
+      </View>
+      <View style={{ position: 'absolute', left: 34, right: 24, bottom: 34 }}>
+        <Dots at={1} />
+        <View style={{ marginTop: 13 }}>
+          <NbButton variant="ink" size="lg" full iconRight="chevronRight" onPress={() => go('job')}>{t('onb.lang.next')}</NbButton>
+        </View>
+      </View>
+    </Page>
+  );
+
+  const jobPage = (
+    <Page>
+      <Gutter />
+      <BackChip onPress={() => goBack('lang')} />
       <Header title={t('onb.job.title')} sub={t('onb.job.sub')} />
       <View style={{ paddingTop: 2, paddingLeft: 34, paddingRight: 24 }}>
         {JOBS.map((j) => (
@@ -628,7 +609,7 @@ export default function PassportRoute() {
         ))}
       </View>
       <View style={{ position: 'absolute', left: 34, right: 24, bottom: 34 }}>
-        <Dots at={1} />
+        <Dots at={2} />
         <View style={{ marginTop: 13, opacity: job ? 1 : 0.45 }}>
           <NbButton variant="ink" size="lg" full iconRight="chevronRight" disabled={!job} onPress={() => go('dest')}>{t('onb.job.next')}</NbButton>
         </View>
@@ -671,7 +652,7 @@ export default function PassportRoute() {
         )}
       </View>
       <View style={{ position: 'absolute', left: 34, right: 24, bottom: 34 }}>
-        <Dots at={2} />
+        <Dots at={3} />
         <View style={{ marginTop: 13, opacity: dest ? 1 : 0.45 }}>
           <NbButton variant="ink" size="lg" full iconRight="plane" disabled={!dest} onPress={depart}>{t('onb.dest.depart')}</NbButton>
         </View>
@@ -778,7 +759,7 @@ export default function PassportRoute() {
   );
 
   const PAGES: Record<Step, React.ReactNode> = {
-    cover, job: jobPage, dest: destPage, closing: destPage, flight: flight(false),
+    cover, lang: langPage, job: jobPage, dest: destPage, closing: destPage, flight: flight(false),
     immigration, approved, commute, flightBack: flight(true),
   };
 
@@ -788,22 +769,20 @@ export default function PassportRoute() {
       {PAGES[step]}
 
       {/* The passport closing: the back cover comes over the destination page. */}
-      {step === 'closing' && (
-        <HingedPage dir="in" onDone={() => {}}>{backCover}</HingedPage>
-      )}
+      {step === 'closing' && <PageCurl dir="in">{backCover}</PageCurl>}
 
       {/* ‹ — the previous page comes back over the top. */}
       {returning && (
-        <HingedPage dir="in" onDone={() => { setStep(returning); setReturning(null); }}>
+        <PageCurl dir="in" onDone={() => { setStep(returning); setReturning(null); }}>
           {PAGES[returning]}
-        </HingedPage>
+        </PageCurl>
       )}
 
-      {/* Forward — the page just left turns away, with its shadow crossing the new one. */}
+      {/* Forward — the page just left curls away, with its shadow crossing the new one. */}
       {turning && (
         <>
-          <TurnSweep />
-          <HingedPage dir="out" onDone={() => setTurning(null)}>{PAGES[turning]}</HingedPage>
+          <CurlSweep />
+          <PageCurl dir="out" onDone={() => setTurning(null)}>{PAGES[turning]}</PageCurl>
         </>
       )}
     </View>
@@ -873,7 +852,7 @@ function Immigration({ lvl, onPick, onPass, onBack }: {
       </View>
 
       <View style={{ position: 'absolute', left: 34, right: 24, bottom: 34 }}>
-        <Dots at={3} />
+        <Dots at={4} />
         <View style={{ marginTop: 13, opacity: lvl ? 1 : 0.45 }}>
           <NbButton variant="ink" size="lg" full iconRight="chevronRight" disabled={!lvl} onPress={onPass}>{t('onb.imm.pass')}</NbButton>
         </View>
