@@ -9,7 +9,7 @@ export default function Index() {
   const isAuthed = useAuthStore((s) => s.isAuthed);
   const onboarded = useAuthStore((s) => s.onboarded);
   // Where an interrupted wizard should resume. `undefined` = not looked up yet.
-  const [resume, setResume] = useState<'/locale' | '/job' | '/level' | undefined>();
+  const [resume, setResume] = useState<'/passport' | undefined>();
 
   useEffect(() => {
     if (onboarded === false) loadDraft().then((d) => setResume(nextStep(d)));

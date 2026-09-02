@@ -50,9 +50,19 @@ export async function clearDraft(): Promise<void> {
   }
 }
 
-/** The furthest step still unanswered — where a returning user should land. */
-export function nextStep(d: OnboardingDraft): '/locale' | '/job' | '/level' {
-  if (!d.destination || !d.nativeLang) return '/locale';
-  if (!d.job) return '/job';
-  return '/level';
+/** Where a returning user should land.
+ *
+ *  One destination now: the passport flow is a single screen that holds its own place in
+ *  the journey, so there is nothing to resume INTO — it reads the draft and starts at the
+ *  first unanswered page itself. The three-route version returned '/locale' | '/job' |
+ *  '/level', and those screens are gone. */
+export function nextStep(_d: OnboardingDraft): '/passport' {
+  return '/passport';
+}
+
+/** The page of the passport flow that still needs an answer. */
+export function passportStep(d: OnboardingDraft): 'job' | 'dest' | 'level' {
+  if (!d.job) return 'job';
+  if (!d.destination) return 'dest';
+  return 'level';
 }

@@ -77,7 +77,9 @@ export default function Login() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 
-  const enter = async () => router.replace((await syncOnboarded()) ? '/(tabs)' : '/locale');
+  // Not onboarded → the passport flow (v29). It replaced locale/job/level: the same
+  // three answers, asked as a journey rather than a three-page wizard.
+  const enter = async () => router.replace((await syncOnboarded()) ? '/(tabs)' : '/passport');
 
   // Wrap a provider's id_token exchange with busy/error handling + navigation.
   const complete: Complete = async (label, run) => {

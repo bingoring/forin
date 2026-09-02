@@ -136,9 +136,12 @@ const BUTTON: Record<NbButtonVariant, { bg: string; fg: string; bd: string; bw: 
  * offsets are the prototype's, and they are small on purpose: this is a sheet of paper
  * being pressed, not a key travelling.
  */
-export function NbButton({ variant = 'ink', icon, iconColor, rot = 0, size = 'md', full, disabled, onPress, style, children }: {
+export function NbButton({ variant = 'ink', icon, iconRight, iconColor, rot = 0, size = 'md', full, disabled, onPress, style, children }: {
   variant?: NbButtonVariant;
   icon?: NbIconName;
+  /** Drawn AFTER the label — the "next" chevron. A typographic › would render at the
+   *  font's weight rather than the icon set's, which is what theme/glyphs.test.ts bans. */
+  iconRight?: NbIconName;
   iconColor?: string;
   rot?: number;
   size?: 'sm' | 'md' | 'lg';
@@ -177,6 +180,7 @@ export function NbButton({ variant = 'ink', icon, iconColor, rot = 0, size = 'md
       <Text style={{ fontFamily: nbFonts.hand, fontSize: fs, color: V.fg }} numberOfLines={1}>
         {children}
       </Text>
+      {!!iconRight && <NbIcon name={iconRight} size={fs} color={iconColor || V.fg} />}
     </Pressable>
   );
 }
@@ -465,11 +469,11 @@ export function NbIndexTabs({ tabs, active = 0, onSelect }: {
 
 export const nbText = {
   /** Headings and labels — the nurse's own hand. */
-  hand: (size = 16, color = nb.ink): TextStyle => ({ fontFamily: nbFonts.hand, fontSize: size, color }),
+  hand: (size = 16, color: string = nb.ink): TextStyle => ({ fontFamily: nbFonts.hand, fontSize: size, color }),
   /** Sentences. Gaegu at body size over three lines is charming and unreadable. */
-  body: (size = 13, color = nb.ink): TextStyle => ({ fontFamily: nbFonts.body, fontSize: size, color, lineHeight: size * 1.55 }),
+  body: (size = 13, color: string = nb.ink): TextStyle => ({ fontFamily: nbFonts.body, fontSize: size, color, lineHeight: size * 1.55 }),
   /** Codes, IPA, timestamps — printed, not written. */
-  mono: (size = 11, color = nb.soft): TextStyle => ({ fontFamily: nbFonts.mono, fontSize: size, color, letterSpacing: 1 }),
+  mono: (size = 11, color: string = nb.soft): TextStyle => ({ fontFamily: nbFonts.mono, fontSize: size, color, letterSpacing: 1 }),
 };
 
 /** A scrolling notebook page: ruled background, content over it. */

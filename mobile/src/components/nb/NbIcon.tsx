@@ -17,6 +17,8 @@ import { Circle, Ellipse, G, Path, Rect, Svg } from 'react-native-svg';
 import { nb } from '@/theme/nb';
 
 export type NbIconName =
+  | 'chevronLeft'
+  | 'chevronRight'
   | 'home'
   | 'hospital'
   | 'board'
@@ -66,6 +68,17 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
   // what shipped in the HTML was outline-only by accident. Order fixed here.
   const P = { stroke: color, strokeWidth: 1.7, strokeLinejoin: 'round' as const, strokeLinecap: 'round' as const, fill: 'none' };
   const SET: Record<string, ReactElement> = {
+    // Added for the passport flow's back and next controls. The handoff's rule is to add
+    // an icon to the set BEFORE using its name, because a missing name falls back to the
+    // star in silence — and the app's own ratchet (theme/glyphs.test.ts) bans the ‹ › these
+    // replace: a typographic arrow renders at whatever weight the font decides, next to
+    // icons drawn at 1.7.
+    chevronLeft: (
+      <G><Path {...P} d="M14.5 5 L8 12 L14.5 19"/></G>
+    ),
+    chevronRight: (
+      <G><Path {...P} d="M9.5 5 L16 12 L9.5 19"/></G>
+    ),
     home: (
       <G><Path {...P} d="M4.5 11.5 L12 4.5 L19.5 11.5"/><Path {...P} d="M6.5 10.5 V19 H17.5 V10.5"/><Rect {...P} x="10" y="13.5" width="4" height="5.5" fill={nb.wash.yellow}/></G>
     ),
