@@ -725,4 +725,13 @@ export const de: Record<string, string> = {
   'lab.beforeYouForget': 'Nochmal, bevor es weg ist',
   'lab.nothingDue': 'Heute nichts fällig',
   'lab.heroSub': 'KI-Korrekturen als {name}-Karten',
+  'me.nbTitle': 'Mein Dienstausweis',
+  'me.postedAt': '{lang} · Klinikum {place}',
+  'me.colleaguesTitle': 'Kolleg:innen',
+  'me.colleaguesAll': '{n} · alle',
+  'me.noColleagues': 'Noch keine Kolleg:innen. Codes tauschen und sich anfeuern.',
+  'me.myCode': 'Mein Code',
+  'me.addColleague': 'Hinzufügen',
+  'me.growthTitle': 'Fortschritt',
+  'me.growthSub': 'LV {lv} · {xp} XP · {n} Tage',
 };

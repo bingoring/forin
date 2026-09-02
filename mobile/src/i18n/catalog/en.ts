@@ -726,4 +726,13 @@ export const en: Record<string, string> = {
   'lab.beforeYouForget': 'See them again before you forget',
   'lab.nothingDue': 'Nothing due today',
   'lab.heroSub': "The AI's corrections, collected as {name} cards",
+  'me.nbTitle': 'My staff pass',
+  'me.postedAt': '{lang} · {place} General Hospital',
+  'me.colleaguesTitle': 'My colleagues',
+  'me.colleaguesAll': '{n} · all',
+  'me.noColleagues': 'No colleagues yet. Swap codes and cheer each other on.',
+  'me.myCode': 'My invite code',
+  'me.addColleague': 'Add',
+  'me.growthTitle': 'Growth report',
+  'me.growthSub': 'LV {lv} · {xp} XP · {n}-day streak',
 };

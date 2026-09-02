@@ -725,4 +725,13 @@ export const ja: Record<string, string> = {
   'lab.beforeYouForget': '忘れる前にもう一度',
   'lab.nothingDue': '今日の復習はありません',
   'lab.heroSub': 'AIの添削を{name}カードにまとめました',
+  'me.nbTitle': '社員証',
+  'me.postedAt': '{lang} · {place}総合病院',
+  'me.colleaguesTitle': '同僚',
+  'me.colleaguesAll': '{n}人 · 全体',
+  'me.noColleagues': 'まだ同僚がいません。コードを交換して応援し合いましょう。',
+  'me.myCode': '招待コード',
+  'me.addColleague': '追加',
+  'me.growthTitle': '成長レポート',
+  'me.growthSub': 'LV {lv} · {xp} XP · {n}日連続',
 };

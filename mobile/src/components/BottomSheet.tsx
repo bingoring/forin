@@ -358,6 +358,11 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
     // late. `moveTo` is idempotent for a target already in flight, so whichever event
     // arrives second changes nothing.
     const moveTo = (height: number, duration?: number) => {
+      // Nothing animates a sheet that is gone. The keyboard's events are the platform's,
+      // not ours: one can arrive after the sheet has unmounted (and, in tests, after the
+      // module registry has been torn down, where `Animated` itself no longer exists).
+      // Same guard as springTo — every path into an animation here can outlive the sheet.
+      if (!alive.current) return;
       setKbH(height);
       Animated.timing(kbLift, {
         toValue: height,

@@ -756,4 +756,13 @@ export const ko: Record<string, string> = {
   'lab.beforeYouForget': '잊어버리기 전에 다시 보기',
   'lab.nothingDue': '오늘 복습할 카드가 없어요',
   'lab.heroSub': 'AI가 교정한 문장을 {name} 카드로 모아뒀어요',
+  'me.nbTitle': '내 사원증',
+  'me.postedAt': '{lang} · {place} 종합병원',
+  'me.colleaguesTitle': '내 동료',
+  'me.colleaguesAll': '{n}명 · 전체',
+  'me.noColleagues': '아직 동료가 없어요. 코드를 주고받아 서로의 학습을 응원해보세요.',
+  'me.myCode': '내 초대 코드',
+  'me.addColleague': '추가',
+  'me.growthTitle': '오늘의 성장 리포트',
+  'me.growthSub': 'LV {lv} · {xp} XP · {n}일 연속',
 };

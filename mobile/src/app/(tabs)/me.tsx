@@ -3,8 +3,11 @@
 // summary, a career-path stepper, the title collection, and a review-lab teaser.
 // 1:1 in spirit with the v17 handoff ScreenProfile, scaled to live data.
 import { useCallback, useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View , useWindowDimensions } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbGauge, NbMark, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
@@ -218,123 +221,108 @@ export default function Me() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.cream }}>
-      <ScrollView contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40, gap: space.md }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>MY CARD</Text>
+    <View style={{ flex: 1, backgroundColor: nb.cream }}>
+      <Rules />
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 56, paddingBottom: 40, gap: 14 }}>
+        <Text style={nbText.hand(30)}>{t('me.nbTitle')}</Text>
 
-        {/* ── ID card ── */}
-        <Shadowed offset={5}>
-          <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, overflow: 'hidden' }}>
-            {/* hospital header band — flush to the card's top edge (ID-card look) */}
-            <View style={{ height: 8, backgroundColor: colors.mint, borderBottomWidth: 2, borderBottomColor: C }} />
-            {/* punched-hole notch (id-card vibe) */}
-            <View style={{ position: 'absolute', top: -1, left: '50%', marginLeft: -12, width: 24, height: 5, backgroundColor: colors.cream, borderWidth: 2, borderTopWidth: 0, borderColor: C }} />
-            <View style={{ padding: 14, paddingTop: 12, flexDirection: 'row', gap: 14 }}>
-              {/* avatar — same pixel portrait as the dialogue player frame.
-                  alignSelf flex-start stops the shadow box from stretching to
-                  the row's full height (the row defaults to alignItems:stretch). */}
-              {/* Tapping the portrait edits it. The pencil badge is the only thing
-                  that says so — an ID photo does not otherwise look interactive. */}
-              <Shadowed offset={3} style={{ alignSelf: 'flex-start' }}>
-                <Pressable onPress={() => { playSfx('tap'); setAvatarOpen(true); }}>
-                  <View style={{ width: 80, height: 96, backgroundColor: avatar.scrub, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <View style={{ position: 'absolute', left: 5, top: 5, right: 5, bottom: 5, backgroundColor: 'rgba(255,255,255,0.4)' }} />
+        {/* ── 사원증 ──
+            A staff pass, not a bordered box: the photo is a print with its own margin, the
+            name is written on a ruled line the way a pass is filled in by hand, and RANK is
+            typed because that part is issued rather than written. */}
+        <NbPaper rot={-0.6} tape tapeLeft={140} style={{ paddingVertical: 14, paddingHorizontal: 14, flexDirection: 'row', gap: 14 }}>
+              {/* Tapping the portrait edits it. The pencil is the only thing that says so —
+                  an ID photo does not otherwise look interactive. */}
+              <Pressable onPress={() => { playSfx('tap'); setAvatarOpen(true); }} style={{ alignSelf: 'flex-start' }}>
+                <NbPaper rot={-2} style={{ paddingTop: 6, paddingHorizontal: 6, paddingBottom: 3 }}>
+                  <View style={{ width: 78, height: 92, backgroundColor: avatar.scrub, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
                     <AnimatedFace size={86} avatar={avatar} />
                   </View>
-                  <View style={{ position: 'absolute', bottom: -3, right: -3, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, width: 20, height: 20, alignItems: 'center', justifyContent: 'center' }}>
-                    <FIcon name="doc" size={11} />
-                  </View>
-                </Pressable>
-              </Shadowed>
+                </NbPaper>
+                <View style={{ position: 'absolute', bottom: -4, right: -6, backgroundColor: 'rgba(249,227,123,.9)', borderWidth: 1.5, borderColor: nb.ink, borderRadius: 3, width: 21, height: 21, alignItems: 'center', justifyContent: 'center' }}>
+                  <NbIcon name="pencil" size={12} />
+                </View>
+              </Pressable>
+
               <View style={{ flex: 1, minWidth: 0 }}>
-                {/* The name goes ABOVE the rank, and the handoff has no slot for it —
-                    there was no name in the product at all. Rank is what you are;
-                    this is who you are, and it is the thing a colleague list needs.
-                    The pencil is the only affordance, same as the portrait's. */}
+                {/* The name goes ABOVE the rank, and the handoff has no slot for it — there
+                    was no name in the product at all. Rank is what you are; this is who you
+                    are, and it is the thing a colleague list needs. Written on a ruled line,
+                    which is what says it is yours to fill in. */}
                 <Pressable
                   onPress={() => { playSfx('tap'); setNameOpen(true); }}
                   hitSlop={6}
-                  style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}
+                  style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 5, borderBottomWidth: 1.5, borderBottomColor: 'rgba(62,54,43,.35)', paddingBottom: 2 }}
                 >
                   <Text
                     numberOfLines={1}
-                    style={{
-                      flexShrink: 1,
-                      fontFamily: fonts.heading,
-                      fontSize: fs(15),
-                      color: displayName ? C : colors.textFaint,
-                    }}
+                    style={[nbText.hand(20, displayName ? nb.ink : nb.placeholder), { flexShrink: 1 }]}
                   >
                     {displayName || t('profile.namePlaceholder')}
                   </Text>
-                  <FIcon name="pen" size={12} />
+                  <NbIcon name="pencil" size={13} color={nb.soft} />
                 </Pressable>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft, marginTop: 4 }}>RANK</Text>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C }}>{career.label}</Text>
+                <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 2, color: nb.soft, marginTop: 6 }}>RANK</Text>
+                <Text numberOfLines={1} style={[nbText.hand(19), { marginTop: 1 }]}>{career.label}</Text>
                 {!!equippedTitle && (
-                  <View style={{ alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 3, backgroundColor: colors.lilac, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-                    <EmojiIcon emoji={equippedTitle.emoji} size={13} color={C} sw={1.6} />
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{t(equippedTitle.nameKey)}</Text>
+                  <View style={{ marginTop: 4 }}>
+                    <NbTag color="#7C3AED">{t(equippedTitle.nameKey)}</NbTag>
                   </View>
                 )}
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 2 }}>EN-US · 미국 종합병원</Text>
-                {/* xp bar */}
+                <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>
+                  {t('me.postedAt', { lang: (enLevel ? `EN ${enLevel}` : 'EN'), place: t('country.us') })}
+                </Text>
+                {/* The level, as a pencil gauge. A filled bar is a progress bar; hatching is
+                    something somebody drew in. */}
                 <View style={{ marginTop: 10 }}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>LV {level}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>{inLevel} / {ECON.xpPerLevel}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft }}>LV {level + 1}</Text>
+                    <Text style={nbText.mono(9)}>LV {level}</Text>
+                    <Text style={nbText.mono(9)}>{inLevel} / {ECON.xpPerLevel}</Text>
+                    <Text style={nbText.mono(9)}>LV {level + 1}</Text>
                   </View>
-                  <View style={{ height: 10, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, marginTop: 3 }}>
-                    <View style={{ width: `${(inLevel / ECON.xpPerLevel) * 100}%`, height: '100%', backgroundColor: colors.mint }} />
+                  <View style={{ marginTop: 4 }}>
+                    <NbGauge value={(inLevel / ECON.xpPerLevel) * 100} />
                   </View>
-                </View>
-                <View style={{ flexDirection: 'row', gap: 6, marginTop: 8 }}>
-                  <PixelChip icon="star" label={`LV ${level}`} bg={colors.yellow} />
-                  {!!enLevel && <PixelChip label={`EN ${enLevel}`} bg={colors.mint} />}
                 </View>
               </View>
-            </View>
-
-            {/* Nothing below the identity block. Reputation gauges lived here and were
-                asked to go; an invite code briefly replaced them, which was worse — it
-                was never asked for, and a card does not need a field just because the
-                space opened up. The code already has its own row further down. */}
-          </View>
-        </Shadowed>
+          {/* Nothing below the identity block. Reputation gauges lived here and were asked
+              to go; an invite code briefly replaced them, which was worse — it was never
+              asked for, and a card does not need a field just because the space opened up.
+              The code already has its own row further down. */}
+        </NbPaper>
 
         {/* growth summary → 성장 리포트 상세 (/growth) */}
         <Pressable onPress={() => router.push('/growth')}>
-          <Shadowed offset={4} shadowColor={colors.mintShadow}>
-            <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-              <View style={{ width: 38, height: 38, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                <FIcon name="chartup" size={20} />
+          <NbPaper rot={0.5} style={{ padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <View style={{ width: 38, height: 38, alignItems: 'center', justifyContent: 'center' }}>
+                <NbIcon name="chartup" size={22} />
               </View>
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>오늘의 성장 리포트</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 3, opacity: 0.8 }}>LV {level} · {xp.toLocaleString()} XP · {streakCurrent}일 연속</Text>
+              <View style={{ flex: 1, minWidth: 0 }}>
+                <Text numberOfLines={1} style={nbText.hand(17)}>{t('me.growthTitle')}</Text>
+                <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>
+                  {t('me.growthSub', { lv: level, xp: xp.toLocaleString(), n: streakCurrent })}
+                </Text>
               </View>
-              <PixelIcon name="chevron-right" color={C} size={18} sw={2} />
-            </View>
-          </Shadowed>
+              <NbIcon name="chevronRight" size={16} color={nb.soft} />
+          </NbPaper>
         </Pressable>
 
         {/* 내 동료 — 관리 소유권은 프로필에 있다(홈은 오늘 활동만 보여주고 여기로 보낸다) */}
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <FIcon name="handshake" size={16} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>내 동료</Text>
+              <NbIcon name="handshake2" size={17} />
+              <Text style={nbText.hand(17)}>{t('me.colleaguesTitle')}</Text>
             </View>
-            <Pressable onPress={() => router.push('/colleagues')}>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{colleagues.length}명 · 전체 ›</Text>
+            <Pressable onPress={() => router.push('/colleagues')} hitSlop={6} style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
+              <Text numberOfLines={1} style={nbText.hand(14, nb.soft)}>{t('me.colleaguesAll', { n: colleagues.length })}</Text>
+              <NbIcon name="chevronRight" size={12} color={nb.soft} />
             </Pressable>
           </View>
-          <Shadowed offset={3}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
+          <NbPaper rot={0.4} style={{ padding: 12 }}>
               {colleagues.length === 0 ? (
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, lineHeight: 17 }}>
-                  아직 동료가 없어요. 코드를 주고받아 서로의 학습을 응원해보세요.
+                <Text style={nbText.hand(15, nb.soft)}>
+                  {t('me.noColleagues')}
                 </Text>
               ) : (
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
@@ -344,31 +332,35 @@ export default function Me() {
                       onPress={() => router.push(`/colleagues/${c.id}`)}
                       style={{ alignItems: 'center', width: '21%' }}
                     >
-                      <View style={{ width: 40, height: 40, backgroundColor: colors.cream, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                        <FIcon name="me" size={22} />
-                      </View>
-                      <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(9), color: C, marginTop: 3 }}>{c.name}</Text>
+                      <NbPaper rot={-1} style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center' }}>
+                        <NbIcon name="me" size={22} />
+                      </NbPaper>
+                      <Text numberOfLines={1} style={[nbText.hand(13), { marginTop: 3 }]}>{c.name}</Text>
                     </Pressable>
                   ))}
                 </View>
               )}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 11, borderTopWidth: 2, borderTopColor: C + '22' }}>
                 <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft }}>내 초대 코드</Text>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, letterSpacing: 2, marginTop: 2 }}>{invite?.code ?? '· · · ·'}</Text>
+                  <Text style={nbText.body(10, nb.soft)}>{t('me.myCode')}</Text>
+                  {/* The code is TYPED — it is issued, not written, and it has to be read
+                      out loud to somebody. */}
+                  <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 15, letterSpacing: 2, color: nb.ink, marginTop: 2 }}>
+                    {invite?.code ?? '· · · ·'}
+                  </Text>
                 </View>
-                <Pressable onPress={() => router.push('/colleagues/add')} style={{ backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, paddingVertical: 6, paddingHorizontal: 10 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>+ 추가</Text>
-                </Pressable>
+                <NbButton variant="yellow" size="sm" icon="handshake2" onPress={() => router.push('/colleagues/add')}>
+                  {t('me.addColleague')}
+                </NbButton>
               </View>
-            </View>
-          </Shadowed>
+          </NbPaper>
         </View>
 
         {/* career path */}
-        <Shadowed offset={3}>
-          <View style={{ backgroundColor: colors.paper, borderWidth: 3, borderColor: C, padding: 12 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, marginBottom: 10 }}>CAREER PATH</Text>
+        <NbPaper rot={-0.4} style={{ padding: 12 }}>
+            {/* CAREER PATH, typed: it is the ladder the hospital publishes, not something
+                the nurse wrote for herself. */}
+            <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 2, color: nb.soft, marginBottom: 10 }}>CAREER PATH</Text>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
               {['Learner', 'Junior', 'Senior', 'Head Nurse'].map((s, i) => {
                 const here = i === career.step;
@@ -376,21 +368,29 @@ export default function Me() {
                 return (
                   <View key={s} style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-start' }}>
                     <View style={{ alignItems: 'center', width: 52 }}>
-                      <Shadowed offset={here ? 3 : 0} shadowColor={colors.yellowShadow}>
-                        <View style={{ width: 20, height: 20, borderWidth: 2, borderColor: C, backgroundColor: done || here ? colors.mint : '#fff', alignItems: 'center', justifyContent: 'center' }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>{done ? '✓' : i + 1}</Text>
-                        </View>
-                      </Shadowed>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(8), color: done || here ? C : colors.textFaint, marginTop: 4, textAlign: 'center' }}>{s}</Text>
-                      {here && <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: colors.yellowShadow, marginTop: 1 }}>● HERE</Text>}
+                      {/* A step you have taken is TICKED, not filled: a pen goes through
+                          a box on a form, and a filled square says nothing about who did
+                          it. The one you are on is ringed instead — the same gold the app
+                          uses for "this is the one you chose". */}
+                      <View style={{
+                        width: 21, height: 21, borderRadius: 4, borderWidth: here ? 2 : 1.5,
+                        borderColor: here ? '#C99A1E' : done ? nb.green : nb.soft,
+                        backgroundColor: done ? 'rgba(95,141,90,.12)' : 'transparent',
+                        alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        {done
+                          ? <NbIcon name="check" size={14} color={nb.green} />
+                          : <Text style={nbText.hand(13, here ? nb.ink : nb.soft)}>{i + 1}</Text>}
+                      </View>
+                      <Text numberOfLines={1} style={[nbText.body(8.5, done || here ? nb.ink : nb.soft), { marginTop: 4, textAlign: 'center' }]}>{s}</Text>
+                      {here && <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 7.5, letterSpacing: 1, color: '#C99A1E', marginTop: 2 }}>HERE</Text>}
                     </View>
-                    {i < 3 && <View style={{ flex: 1, height: 2, backgroundColor: done ? colors.mint : '#2A252233', marginTop: 9 }} />}
+                    {i < 3 && <View style={{ flex: 1, height: 1.5, backgroundColor: done ? nb.green : 'rgba(62,54,43,.2)', marginTop: 10 }} />}
                   </View>
                 );
               })}
             </View>
-          </View>
-        </Shadowed>
+        </NbPaper>
 
         {/* The one collection. Badges used to sit above this as a second grid you
             could look at but not use; feedback asked for a single thing, so they
@@ -398,10 +398,10 @@ export default function Me() {
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <PixelIcon name="tag" color={C} size={16} sw={1.6} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>{t('title.section')}</Text>
+              <NbIcon name="star" size={17} color="#C99A1E" />
+              <Text style={nbText.hand(17)}>{t('title.section')}</Text>
             </View>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
+            <Text numberOfLines={1} style={nbText.hand(14, nb.soft)}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
           </View>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {/* A grid, not a list. Fifteen full-width rows ran to roughly 700px and
@@ -412,25 +412,28 @@ export default function Me() {
             {titles.map((tt) => {
               const isEq = equipped === tt.id;
               return (
-                <Shadowed key={tt.id} offset={tt.got ? 3 : 0} shadowColor={isEq ? colors.yellowShadow : C} style={{ width: '22.5%' }}>
-                  <Pressable
-                    onPress={() => openTitle(tt.id)}
-                    style={{
-                      aspectRatio: 0.86, alignItems: 'center', justifyContent: 'center', gap: 3,
-                      paddingHorizontal: 3,
-                      borderWidth: isEq ? 3 : tt.got ? 2.5 : 2, borderColor: C,
-                      backgroundColor: isEq ? colors.lilac : tt.got ? '#fff' : colors.cream,
-                    }}
+                <Pressable key={tt.id} onPress={() => openTitle(tt.id)} style={{ width: '22.5%' }}>
+                  <NbPaper
+                    rot={tt.got ? -0.7 : 0.5}
+                    bg={tt.got ? undefined : 'transparent'}
+                    style={[
+                      { aspectRatio: 0.86, alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 3 },
+                      // Equipped: a violet edge, the one colour this grid uses for "the
+                      // one on your card". Locked: no paper at all — an unclaimed title is
+                      // a blank space on the page rather than a card you own.
+                      isEq ? { borderWidth: 2, borderColor: '#7C3AED' } : null,
+                      tt.got ? null : { borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)' },
+                    ]}
                   >
                     {/* A locked title is dimmed. FIcon artwork carries its own
                         colours, so the dimming is opacity on the wrapper rather
                         than a tint that would only reach the line-icon tier. */}
-                    <View style={{ opacity: tt.got ? 1 : 0.35 }}>
-                      <EmojiIcon emoji={tt.emoji} size={22} color={tt.got ? C : colors.textFaint} />
+                    <View style={{ opacity: tt.got ? 1 : 0.3 }}>
+                      <EmojiIcon emoji={tt.emoji} size={22} color={tt.got ? nb.ink : nb.soft} />
                     </View>
                     <Text
                       numberOfLines={2}
-                      style={{ fontFamily: fonts.body, fontSize: fs(8), lineHeight: 11, textAlign: 'center', color: tt.got ? C : colors.textFaint }}
+                      style={[nbText.hand(12, tt.got ? nb.ink : nb.soft), { lineHeight: 14, textAlign: 'center' }]}
                     >
                       {tt.got ? t(tt.nameKey) : '???'}
                     </Text>
@@ -438,12 +441,12 @@ export default function Me() {
                         card shows, and hunting for it in a grid of fifteen is the one
                         thing the list did better. */}
                     {isEq && (
-                      <View style={{ position: 'absolute', top: -4, right: -4, backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingHorizontal: 3 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(7), color: C }}>{t('title.equippedShort')}</Text>
+                      <View style={{ position: 'absolute', top: -6, right: -6 }}>
+                        <NbTag color="#7C3AED" fill rot={-3}>{t('title.equippedShort')}</NbTag>
                       </View>
                     )}
-                  </Pressable>
-                </Shadowed>
+                  </NbPaper>
+                </Pressable>
               );
             })}
           </View>
@@ -475,8 +478,7 @@ export default function Me() {
 
         {/* review lab teaser → review tab */}
         <Pressable onPress={() => router.push('/lab')}>
-          <Shadowed offset={4}>
-            <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14, gap: 10 }}>
+          <NbPaper rot={-0.5} style={{ padding: 14, gap: 10 }}>
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
                 <View style={{ width: 40, height: 40, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
                   <FIcon name="doc" size={22} />
@@ -486,16 +488,21 @@ export default function Me() {
                   <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 변환됐어요.</Text>
                 </View>
               </View>
-              {/* corrected-phrase example box */}
-              <View style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 8, paddingHorizontal: 10 }}>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textFaint, textDecorationLine: 'line-through' }}>I want to ask about your pain.</Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, marginTop: 2 }}>→ <Text style={{ backgroundColor: colors.mint }}>Can you tell me about your pain?</Text></Text>
+              {/* One card, as it appears in the lab: struck out in red pen, then the
+                  correction under a highlighter. */}
+              <View style={{ borderWidth: 1.3, borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)', borderRadius: 3, paddingVertical: 8, paddingHorizontal: 10 }}>
+                <Text style={[nbText.body(11, nb.soft), { textDecorationLine: 'line-through', textDecorationColor: nb.red }]}>I want to ask about your pain.</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 5, marginTop: 3 }}>
+                  <Text style={[nbText.hand(14, nb.red), { transform: [{ rotate: '-4deg' }] }]}>{'\u2192'}</Text>
+                  <NbMark textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 12 }}>Can you tell me about your pain?</NbMark>
+                </View>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
-                <PixelButton icon="chevron-right" label={t('me.openLab')} bg={colors.yellow} shadowColor={colors.yellowShadow} offset={2} fontSize={11} borderWidth={2} paddingV={5} paddingH={10} onPress={() => router.push('/lab')} />
+                <NbButton variant="yellow" size="sm" iconRight="chevronRight" onPress={() => router.push('/lab')}>
+                  {t('me.openLab')}
+                </NbButton>
               </View>
-            </View>
-          </Shadowed>
+          </NbPaper>
         </Pressable>
 
         {/* 언어 — UI 언어와 배우는 언어는 별개 축이다(R1). UI는 여기서 바꾸고,
@@ -588,7 +595,7 @@ export default function Me() {
       {toast && (
         <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 28, alignItems: 'center', paddingHorizontal: 18 }}>
           <Shadowed offset={4} shadowColor={colors.yellowShadow}>
-            <View style={{ backgroundColor: colors.yellow, borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 18, alignItems: 'center', minWidth: 260 }}>
+            <View style={{ backgroundColor: 'rgba(249,227,123,.55)', borderWidth: 1.5, borderColor: nb.ink, borderRadius: 3, paddingVertical: 12, paddingHorizontal: 18, alignItems: 'center', minWidth: 260 }}>
               <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>히든 미션 발견!</Text>
               <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, marginTop: 4 }}>{toast.name}</Text>
               <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 4 }}>보상: {toast.reward}</Text>
@@ -645,6 +652,18 @@ export default function Me() {
           })}
         </View>
       </BottomSheet>
+    </View>
+  );
+}
+
+/** The notebook's ruled lines, behind the page. */
+function Rules() {
+  const { height } = useWindowDimensions();
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+      {Array.from({ length: Math.ceil(height / RULE_H) }).map((_, i) => (
+        <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+      ))}
     </View>
   );
 }
