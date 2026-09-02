@@ -4,11 +4,10 @@
 // board. Wired to live data (GET /me/progress + /me/review); metrics without a
 // server source yet are derived honestly from what we have.
 import { useCallback, useMemo, useState } from 'react';
-import { ActivityIndicator, Dimensions, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, Pressable, ScrollView, Text, View , useWindowDimensions } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
-import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
 import { PixelIcon, iconFor } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
 import { EmojiIcon } from '@/components/EmojiIcon';
@@ -17,6 +16,9 @@ import { careerFor } from '@/data/economy';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { ActivityCalendar } from '@/components/growth/ActivityCalendar';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbMark, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { DayDetail } from '@/components/growth/DayDetail';
 import { PLACE_SCREEN } from '@/theme/transitions';
 
@@ -70,7 +72,6 @@ export default function Growth() {
   const [pickedDay, setPickedDay] = useState<string | null>(null);
   const [job, setJob] = useState<string | undefined>(undefined);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
-  const [sheet, setSheet] = useState<InfoSheetData | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -147,21 +148,29 @@ export default function Growth() {
   const back = () => router.back();
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+    <View style={{ flex: 1, backgroundColor: nb.cream }}>
       <Stack.Screen options={PLACE_SCREEN} />
+      <Rules />
 
-      {/* top bar */}
-      <View style={{ paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <PixelButton label={t('common.back')} bg="#fff" shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={4} paddingH={10} onPress={back} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>TODAY · {dateLabel}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: colors.textSoft, width: 44, textAlign: 'right' }}>{dow}요일</Text>
+      {/* The date is TYPED and the heading is written: the day is a fact the calendar
+          stamps, the report is the nurse's own page. */}
+      <View style={{ paddingTop: 52, paddingHorizontal: 20, paddingBottom: 8, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Pressable onPress={back} hitSlop={8}>
+          <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>
+            <NbIcon name="chevronLeft" size={16} />
+          </NbPaper>
+        </Pressable>
+        <Text numberOfLines={1} style={[nbText.hand(24), { flex: 1, minWidth: 0 }]}>{t('growth.nbTitle')}</Text>
+        <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1.5, color: nb.soft }}>
+          {dateLabel}
+        </Text>
       </View>
 
-      {state === 'loading' && <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={C} /></View>}
+      {state === 'loading' && <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={nb.ink} /></View>}
       {state === 'error' && (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(13), color: colors.textSoft, textAlign: 'center' }}>리포트를 불러오지 못했어요.</Text>
-          <PixelButton label={t('common.back')} onPress={back} />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 14, padding: 24 }}>
+          <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('growth.loadFailed')}</Text>
+          <NbButton variant="paper" onPress={back}>{t('common.back')}</NbButton>
         </View>
       )}
 
@@ -170,14 +179,13 @@ export default function Growth() {
           {/* The calendar opens the report. The counters below still answer "how much",
               but "when, and what" is the question a roster-shaped week actually asks,
               and it had no answer here before. */}
-          <Shadowed offset={4}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
+          <NbPaper rot={-0.5} tape tapeLeft={130} style={{ padding: 12 }}>
               {!cal ? (
-                <View style={{ paddingVertical: 22, alignItems: 'center', gap: 10 }}>
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.textSoft, textAlign: 'center', lineHeight: 17 }}>
+                <View style={{ paddingVertical: 22, alignItems: 'center', gap: 12 }}>
+                  <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center' }]}>
                     {t('growth.calendarUnavailable')}
                   </Text>
-                  <PixelButton label={t('common.retry')} bg="#fff" shadowColor={C} borderWidth={2} paddingV={7} paddingH={14} fontSize={11} onPress={() => void reloadCalendar()} />
+                  <NbButton variant="paper" onPress={() => void reloadCalendar()}>{t('common.retry')}</NbButton>
                 </View>
               ) : (
                 <>
@@ -190,9 +198,9 @@ export default function Growth() {
                 onMonth={(d) => void shiftMonth(d)}
               />
               {cal.days.length === 0 && (
-                /* An empty grid needs to say it is empty. Without this the month reads
-                   as a loading failure, which is exactly how it was read. */
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textFaint, textAlign: 'center', marginTop: 9 }}>
+                /* An empty grid needs to say it is empty. Without this the month reads as
+                   a loading failure, which is exactly how it was read. */
+                <Text style={[nbText.hand(15, nb.soft), { textAlign: 'center', marginTop: 9 }]}>
                   {t('growth.calendarEmpty')}
                 </Text>
               )}
@@ -210,183 +218,87 @@ export default function Growth() {
               })()}
                 </>
               )}
-            </View>
-          </Shadowed>
+          </NbPaper>
 
-          {/* hero report card */}
-          <Shadowed offset={4} shadowColor={colors.mintShadow}>
-            <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 16 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>{t('growth.reportTitle')}</Text>
-              {progress.streakCurrent > 0 ? (
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, lineHeight: 27, marginTop: 6 }}>
-                  오늘도 출근했어요!{'\n'}
-                  <Text style={{ backgroundColor: colors.yellow }}> {progress.streakCurrent}일 연속 </Text> 성장 중이에요
-                </Text>
-              ) : (
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, lineHeight: 27, marginTop: 6 }}>
-                  다시 만나 반가워요!{'\n'}오늘 <Text style={{ backgroundColor: colors.yellow }}> 첫 걸음 </Text>을 떼어볼까요?
-                </Text>
-              )}
-              <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
-                <PixelChip icon="flame" label={t('growth.longest', { n: progress.streakLongest })} bg={colors.yellow} />
-                <PixelChip label={`${progress.xp.toLocaleString()} XP`} bg="#fff" />
-              </View>
-              <View style={{ position: 'absolute', top: -6, right: -2, transform: [{ rotate: '12deg' }] }}>
-                <PixelIcon name="sparkle" color={colors.yellowDeep} size={24} sw={1.8} />
+          {/* The report card. One line, and the streak stamped beside it — the row of
+              ten day-boxes that used to sit under this is GONE (07: 연속스트립 삭제 확정).
+              It was a chart of your own emptiness on a quiet week, and the stamp says the
+              same thing without drawing the gaps. */}
+          <NbPaper rot={0.5} style={{ padding: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue, letterSpacing: 1 }}>
+                {t('growth.reportTitle')}
+              </Text>
+              <Text style={[nbText.hand(19), { marginTop: 6, lineHeight: 24 }]}>
+                {progress.streakCurrent > 0 ? t('growth.cameInAgain') : t('growth.goodToSeeYou')}
+              </Text>
+              <View style={{ flexDirection: 'row', gap: 6, marginTop: 10 }}>
+                <NbTag color={nb.soft}>{t('growth.longest', { n: progress.streakLongest })}</NbTag>
+                <NbTag color={nb.soft}>{progress.xp.toLocaleString()} XP</NbTag>
               </View>
             </View>
-          </Shadowed>
-
-          {/* this-week attendance */}
-          <Shadowed offset={3}>
-            <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 14 }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C }}>
-                  {progress.streakCurrent > 0 ? t('growth.streakLearning', { n: progress.streakCurrent }) : t('growth.streak')}
-                </Text>
-                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>최근 {STRIP_DAYS}일 중 {attended}일</Text>
-              </View>
-              <View style={{ flexDirection: 'row', gap: 3 }}>
-                {days.map((d) => (
-                  <View key={d.key} style={{ flex: 1, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginBottom: 4 }}>{d.label}</Text>
-                    <Shadowed offset={d.today ? 2 : 0} shadowColor={colors.yellowShadow} style={{ alignSelf: 'stretch' }}>
-                      <View style={{ height: 30, backgroundColor: d.filled ? colors.mint : '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                        {d.filled ? (
-                          <FIcon name="check" size={13} />
-                        ) : (
-                          <View style={{ width: 4, height: 4, backgroundColor: d.today ? colors.yellowDeep : colors.textFaint }} />
-                        )}
-                      </View>
-                    </Shadowed>
-                  </View>
-                ))}
-              </View>
-            </View>
-          </Shadowed>
+            {progress.streakCurrent > 0 && (
+              <NbStamp color={nb.red} rot={9} size={66} top={t('home.streakStamp')} bottom={t('home.streakDays', { n: progress.streakCurrent })} />
+            )}
+          </NbPaper>
 
           {/* stat grid — this week's live activity (GET /me/stats) */}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            <StatTile label={t('growth.scenarios')} value={`${stats.scenariosWeek}`} sub={t('growth.thisWeekDone')} color={colors.mint} />
-            <StatTile label={t('growth.newPhrases')} value={`${stats.newCardsWeek}`} sub={t('growth.thisWeekLearned')} color={colors.peach} />
-            <StatTile label={t('growth.talkTime')} value={fmtMinutes(t, stats.conversationSecondsWeek)} sub={t('growth.thisWeekFloor')} color={colors.pink} />
-            <StatTile label={t('growth.level')} value={`Lv.${progress.level}`} sub={careerFor(progress.level).label} color={colors.yellow} />
+            <StatTile label={t('growth.scenarios')} value={`${stats.scenariosWeek}`} sub={t('growth.thisWeekDone')} rot={-0.5} />
+            <StatTile label={t('growth.newPhrases')} value={`${stats.newCardsWeek}`} sub={t('growth.thisWeekLearned')} rot={0.4} />
+            <StatTile label={t('growth.talkTime')} value={fmtMinutes(t, stats.conversationSecondsWeek)} sub={t('growth.thisWeekFloor')} rot={-0.5} />
+            <StatTile label={t('growth.level')} value={`Lv.${progress.level}`} sub={careerFor(progress.level).label} rot={-0.4} />
           </View>
 
-          {/* 칭찬 스티커 보드 — 시나리오 클리어 1회당 스티커 1장(누적) */}
-          <StickerBoard earned={stats.scenariosTotal} onPick={setSheet} />
+          {/* The praise-sticker board stood here and is GONE (07: 스티커보드 삭제 확정).
+              It was a hundred slots filled one per lifetime clear — a collection nobody
+              could act on, on a screen whose job is to answer "when, and what". */}
 
-          {/* go practice */}
+          {/* The report is a way back in, not a dead end. */}
           <View style={{ marginTop: 2 }}>
-            <PixelButton icon="play" label={t('growth.startShift')} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.replace('/campus')} />
+            <NbButton variant="ink" size="lg" full icon="pencil" iconColor={nb.paper} onPress={() => router.replace('/campus')}>
+              {t('growth.startShift')}
+            </NbButton>
           </View>
         </ScrollView>
       )}
-      <InfoSheet data={sheet} onClose={() => setSheet(null)} />
     </View>
   );
 }
 
-function StatTile({ label, value, sub, color }: { label: string; value: string; sub: string; color: string }) {
+/** The notebook's ruled lines, behind the report. */
+function Rules() {
+  const { height } = useWindowDimensions();
   return (
-    <Shadowed offset={3} shadowColor={C + '66'} style={{ width: '47.5%' }}>
-      <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, padding: 12 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: colors.textSoft }}>{label}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(24), color: C, marginTop: 4 }}>{value}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 2 }}>{sub}</Text>
-        <View style={{ position: 'absolute', right: 8, top: 8, width: 12, height: 12, backgroundColor: color, borderWidth: 2, borderColor: C }} />
-      </View>
-    </Shadowed>
-  );
-}
-
-// StickerBoard — 1:1 with the handoff ScreenGrowth praise-sticker board: a ruled
-// paper card with a grid of collected stickers (earned = colored + rotated, locked
-// = dashed), toward a 100-sticker "자격증" unlock. earned = lifetime scenario clears.
-const STICKERS = [
-  { e: '⭐', rot: '-6deg', bg: colors.yellow },
-  { e: '❤', rot: '4deg', bg: colors.peach },
-  { e: '🌸', rot: '-2deg', bg: colors.pink },
-  { e: '✿', rot: '8deg', bg: colors.mint },
-  { e: '★', rot: '-4deg', bg: colors.yellow },
-  { e: '♡', rot: '2deg', bg: colors.peach },
-  { e: '✚', rot: '-5deg', bg: colors.mint },
-  { e: '☺', rot: '6deg', bg: colors.pink },
-];
-const SLOTS = 12; // preview slots (3 rows × 4)
-const CAPACITY = 100;
-const GAP = 12;
-// Fixed square size — percentage width + aspectRatio collapses empty rows in a
-// wrapped flex row, so derive an explicit tile size from the screen width.
-const TILE = Math.floor((Dimensions.get('window').width - 36 /*page*/ - 34 /*card*/ - GAP * 3) / 4);
-
-function StickerBoard({ earned, onPick }: { earned: number; onPick: (d: InfoSheetData) => void }) {
-  const t = useT();
-  const filled = Math.max(0, Math.min(SLOTS, earned));
-  const howText = t('growth.stickerIntro');
-  return (
-    <View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          <FIcon name="xp" size={16} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C }}>칭찬 스티커 보드</Text>
-        </View>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{earned} / {CAPACITY}</Text>
-      </View>
-      <Shadowed offset={3}>
-        <View style={{ backgroundColor: colors.paper, borderWidth: 3, borderColor: C, padding: 14, overflow: 'hidden' }}>
-          {/* ruled-paper hairlines */}
-          {Array.from({ length: 9 }).map((_, i) => (
-            <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: 22 * (i + 1), height: 1, backgroundColor: C + '11' }} />
-          ))}
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: GAP }}>
-            {Array.from({ length: SLOTS }).map((_, i) => {
-              const got = i < filled;
-              const s = STICKERS[i % STICKERS.length];
-              return got ? (
-                <Shadowed key={i} offset={3} style={{ width: TILE, height: TILE }}>
-                  <Pressable
-                    onPress={() => onPick({
-                      icon: s.e, iconNode: <EmojiIcon emoji={s.e} size={34} color={C} sw={1.6} />, iconBg: s.bg, title: t('growth.stickerNo', { n: i + 1 }),
-                      status: { label: t('badge.earned'), bg: colors.mint },
-                      what: t('growth.stickerBody', { n: earned }),
-                      how: howText,
-                    })}
-                    style={{ width: TILE, height: TILE, backgroundColor: s.bg, borderWidth: 3, borderColor: C, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: s.rot }] }}>
-                    <EmojiIcon emoji={s.e} size={24} color={C} />
-                  </Pressable>
-                </Shadowed>
-              ) : (
-                <Pressable
-                  key={i}
-                  onPress={() => onPick({
-                    icon: '➕', iconNode: <PixelIcon name="plus" color={C} size={30} sw={1.8} />, iconBg: colors.cream, title: t('growth.emptySticker'),
-                    status: { label: t('badge.locked'), bg: colors.cream },
-                    what: t('growth.emptyStickerBody'),
-                    how: howText,
-                  })}
-                  style={{ width: TILE, height: TILE, borderWidth: 2, borderColor: C + '33', borderStyle: 'dashed' }} />
-              );
-            })}
-          </View>
-          <Text style={{ marginTop: 12, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, textAlign: 'center' }}>· · · 빈 칸이 채워질 때마다 새 자격증이 열려요 · · ·</Text>
-        </View>
-      </Shadowed>
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+      {Array.from({ length: Math.ceil(height / RULE_H) }).map((_, i) => (
+        <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+      ))}
     </View>
   );
 }
 
-function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: object }) {
+/** One of the four counts. The big number is written; its label and unit are printed,
+ *  because those are the column headings of a form and the number is what you filled in. */
+function StatTile({ label, value, sub, rot }: { label: string; value: string; sub: string; rot: number }) {
   return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
+    <View style={{ width: '47.5%' }}>
+      <NbPaper rot={rot} style={{ padding: 12 }}>
+        <Text numberOfLines={1} style={nbText.body(10.5, nb.soft)}>{label}</Text>
+        <Text numberOfLines={1} style={[nbText.hand(26), { marginTop: 2 }]}>{value}</Text>
+        <Text numberOfLines={1} style={[nbText.body(10, nb.soft), { marginTop: 2 }]}>{sub}</Text>
+      </NbPaper>
     </View>
   );
 }
 
-/** Current month as YYYY-MM, for the first page when the server has said nothing yet. */
+/** This month, as the calendar API wants it. */
 function monthNow(): string {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
+
+// The praise-sticker board lived here — a hundred slots filled one per lifetime clear,
+// toward a "자격증" nobody could reach. v29 removes it (07: 스티커보드 삭제 확정): it was a
+// collection you could look at and not act on, on a screen whose job is to answer "when,
+// and what did I do". The lifetime count it drew from is still in the stats.
