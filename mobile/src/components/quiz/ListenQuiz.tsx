@@ -13,6 +13,7 @@ import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import { api, type QuizDetail } from '@/api/client';
 import { AUDIO } from '@/components/pron/nbPron';
+import { NbIcon } from '@/components/nb/NbIcon';
 import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { NbButton } from '@/components/nb/NbUI';
@@ -180,7 +181,11 @@ export function ListenQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizD
                   <Text style={{ fontFamily: nbFonts.hand, fontSize: 21.6, color: C }}>{String.fromCharCode(65 + i)}</Text>
                 </View>
                 <View style={{ flex: 1, paddingVertical: 7, paddingHorizontal: 9 }}>
-                  <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>"{ch.text}"{showRight ? ' ✓' : showWrong ? ' ✗' : ''}</Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 6 }}>
+                    <Text style={{ flex: 1, minWidth: 0, fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>"{ch.text}"</Text>
+                    {showRight && <View style={{ marginTop: 2 }}><NbIcon name="check" size={12} color={nb.green} /></View>}
+                    {showWrong && <View style={{ marginTop: 2 }}><NbIcon name="cross" size={11} color={nb.red} /></View>}
+                  </View>
                   {!!ch.tags?.length && (
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 3, marginTop: 4 }}>
                       {ch.tags.map((t, ti) => (

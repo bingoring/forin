@@ -14,7 +14,7 @@ import { join } from 'path';
 
 const CEILINGS: Record<string, number> = {
   'src/app': 0,
-  'src/components': 9,
+  'src/components': 1,
 };
 
 const GLYPH = /[‹›✓✗≡▶◀●○★☆✕✔→←↑↓]/g;

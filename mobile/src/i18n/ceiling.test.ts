@@ -43,7 +43,7 @@ const CEILINGS: Record<string, number> = {
 // regression.
 const JSX_CEILINGS: Record<string, number> = {
   'src/app': 19,
-  'src/components': 11,
+  'src/components': 8,
   'src/data': 0,
   'src/lib': 0,
   'src/map': 8,

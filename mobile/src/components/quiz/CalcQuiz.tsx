@@ -5,11 +5,11 @@
 //  • fallback: a given-facts card + equation (weight-based doses etc.).
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import Svg, { Rect } from 'react-native-svg';
+import Svg, { Ellipse, Rect } from 'react-native-svg';
 import type { QuizDetail } from '@/api/client';
 import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, QuizSection, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { NbButton } from '@/components/nb/NbUI';
+import { NbButton, NbPaper, nbText } from '@/components/nb/NbUI';
 import { t, useT } from '@/i18n';
 
 const KEYS = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '.', '0', '⌫'];
@@ -73,29 +73,49 @@ export function CalcQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{g.value}</Text>
               </View>
             ))}
-            <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, flexWrap: 'wrap' }}>
-              <Text style={{ fontFamily: nbFonts.hand, fontSize: 20.2, color: C }}>{c.eq} =</Text>
-              <View style={{ backgroundColor: entry ? 'rgba(168,217,151,.4)' : 'rgba(249,227,123,.5)' + '44', borderWidth: 1.5, borderColor: nb.paperEdge, paddingVertical: 3, paddingHorizontal: 14, minWidth: 60, alignItems: 'center' }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 20.2, color: C }}>{entry || '?'}</Text>
+            {/* The answer goes on a RULED LINE, in the learner's own hand — the boxed
+                field it replaced read as a form to fill in, and this is a working. */}
+            <View style={styles.answerRow}>
+              <Text numberOfLines={1} style={[nbText.hand(20), { flexShrink: 0 }]}>{c.eq} =</Text>
+              <View style={[styles.answerLine, entry ? { backgroundColor: nb.marker, borderBottomColor: '#C99A1E' } : null]}>
+                <Text numberOfLines={1} style={styles.answerText}>{entry || '?'}</Text>
               </View>
-              <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft }}>{c.answerUnit}</Text>
+              <Text numberOfLines={1} style={styles.answerUnit}>{c.answerUnit}</Text>
             </View>
           </View>
         </Shadowed>
       )}
 
-      {/* keypad */}
-      <View style={{ marginTop: 14 }}>
-        <QuizSection label={t('quiz.calculator')} />
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-          {KEYS.map((k) => (
-            <Shadowed key={k} offset={2} style={{ width: '31.5%' }}>
-              <Pressable onPress={() => press(k)} style={{ backgroundColor: k === '⌫' ? nb.paper : '#fff', borderWidth: 1.5, borderColor: nb.paperEdge, paddingVertical: 10, alignItems: 'center' }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 20.2, color: C }}>{k}</Text>
-              </Pressable>
-            </Shadowed>
-          ))}
-        </View>
+      {/* 연습장 — the working, in blue pen with the result ringed in red.
+          It appears only AFTER submitting: this is the derivation the learner was asked to
+          do, so showing it while the answer line is still empty is handing over the
+          answer. */}
+      {checked && !!c.eq && !!c.answer && (
+        <NbPaper rot={0.5} tape tapeLeft={150} style={styles.pad}>
+          <Text numberOfLines={1} style={styles.padLabel}>{t('quiz.scratchpad')}</Text>
+          <Text style={styles.padWork}>{c.eq}</Text>
+          <View style={styles.padAnswer}>
+            <View pointerEvents="none" style={styles.padRing}>
+              <Svg width="100%" height="100%" viewBox="0 0 100 36" preserveAspectRatio="none">
+                <Ellipse cx="50" cy="18" rx="46" ry="15" fill="none" stroke={nb.red} strokeWidth={2.4} transform="rotate(-4 50 18)" />
+              </Svg>
+            </View>
+            <Text style={styles.padWork}>= {c.answer} {c.answerUnit}</Text>
+          </View>
+        </NbPaper>
+      )}
+
+      {/* The keypad, as ten paper chips. Digits are PRINTED: they are the number being
+          entered, and a handwriting face loses 1 from 7 at chip size. */}
+      <QuizSection label={t('quiz.calculator')} />
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 7 }}>
+        {KEYS.map((k, i) => (
+          <Pressable key={k} onPress={() => press(k)} style={{ width: '31.5%' }}>
+            <NbPaper rot={i % 2 ? 0.8 : -0.8} bg={k === '⌫' ? 'rgba(199,81,70,.1)' : undefined} style={styles.key}>
+              <Text style={styles.keyText}>{k}</Text>
+            </NbPaper>
+          </Pressable>
+        ))}
       </View>
 
       {checked && <ResultBanner correct={correct} />}
@@ -265,3 +285,24 @@ function SyringeScale({ fill, label }: { fill: number; label: string }) {
     </View>
   );
 }
+
+const styles = {
+  answerRow: { flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: 9, marginTop: 14 } as const,
+  answerLine: {
+    minWidth: 72, paddingHorizontal: 10, paddingBottom: 2, alignItems: 'center',
+    borderBottomWidth: 2, borderBottomColor: 'rgba(62,54,43,.45)',
+  } as const,
+  answerText: { fontFamily: nbFonts.hand, fontSize: 24, color: nb.ink } as const,
+  /** The unit is printed: mg and mL are not words, they are notation. */
+  answerUnit: { fontFamily: nbFonts.monoBold, fontSize: 12, color: nb.ink, flexShrink: 0 } as const,
+
+  pad: { marginTop: 14, paddingVertical: 13, paddingHorizontal: 15 } as const,
+  padLabel: { fontFamily: nbFonts.bodyBold, fontSize: 10, color: nb.soft, letterSpacing: 1 } as const,
+  /** Blue pen, as it would actually be worked out on a pad. */
+  padWork: { fontFamily: nbFonts.hand, fontSize: 20, color: nb.blue, lineHeight: 30 } as const,
+  padAnswer: { alignSelf: 'flex-start', marginTop: 2 } as const,
+  padRing: { position: 'absolute', left: -9, right: -9, top: 0, bottom: 0 } as const,
+
+  key: { paddingVertical: 10, alignItems: 'center' } as const,
+  keyText: { fontFamily: nbFonts.monoBold, fontSize: 16, color: nb.ink } as const,
+};

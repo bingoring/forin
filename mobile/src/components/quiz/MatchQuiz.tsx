@@ -145,8 +145,10 @@ function MatchChip({ side, text, sub, status, picked, onPress }: { side: 'L' | '
   if (status === 'correct') { bg = 'rgba(168,217,151,.4)'; shadow = nb.green; }
   else if (status === 'wrong') { bg = '#FFF0EC'; shadow = nb.red; }
   else if (picked) { bg = 'rgba(249,227,123,.5)'; shadow = '#C99A1E'; }
-  const badge = status === 'correct' ? '✓' : status === 'wrong' ? '✕' : picked ? '!' : '';
-  const badgeBg = status === 'correct' ? nb.green : status === 'wrong' ? nb.red : nb.red;
+  // The corner mark is DRAWN for a verdict and typed only for "picked" — a ✓ set in the
+  // text face at 12pt is the thing theme/glyphs.test.ts exists to keep off screen.
+  const badgeBg = status === 'correct' ? nb.green : nb.red;
+  const showBadge = !!status || !!picked;
   const cornerSide = side === 'L' ? { right: -7 } : { left: -7 };
   return (
     <Shadowed offset={picked ? 3 : 2} shadowColor={shadow}>
@@ -155,9 +157,13 @@ function MatchChip({ side, text, sub, status, picked, onPress }: { side: 'L' | '
           {side === 'R' && !!sub ? `${sub} ` : ''}{text}
         </Text>
         {!!sub && side === 'L' && <Text style={{ fontFamily: nbFonts.body, fontSize: 9, color: nb.soft, marginTop: 2 }}>{sub}</Text>}
-        {!!badge && (
-          <View style={{ position: 'absolute', top: -7, ...cornerSide, width: 15, height: 15, backgroundColor: badgeBg, borderWidth: 1.4, borderColor: nb.ink, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.paper }}>{badge}</Text>
+        {showBadge && (
+          <View style={{ position: 'absolute', top: -7, ...cornerSide, width: 16, height: 16, borderRadius: 8, backgroundColor: badgeBg, alignItems: 'center', justifyContent: 'center' }}>
+            {status === 'correct'
+              ? <NbIcon name="check" size={11} color={nb.paper} />
+              : status === 'wrong'
+                ? <NbIcon name="cross" size={10} color={nb.paper} />
+                : <Text style={{ fontFamily: nbFonts.hand, fontSize: 12, color: nb.paper }}>!</Text>}
           </View>
         )}
       </Pressable>

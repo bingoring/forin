@@ -10,13 +10,16 @@ import type { QuizDetail } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, QuizSection, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
-import { NbButton } from '@/components/nb/NbUI';
+import { NbButton, NbPaper } from '@/components/nb/NbUI';
 import { t, useT } from '@/i18n';
 
 function shuffle<T>(a: T[]): T[] { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
 
 const BODY_W = 130;
 const BODY_H = 336;
+
+/** The three pens v31 draws the arrows in — one per labelled point. */
+const PENS = [nb.green, nb.red, nb.blue];
 
 export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDetail; onExit: () => void; onComplete: () => void; progress?: QuizProgress }) {
   const t = useT();
@@ -67,11 +70,8 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
 
       <View style={{ flexDirection: 'row', gap: 12 }}>
         {/* patient body diagram + dots */}
-        <Shadowed offset={3}>
-          <View style={{ width: BODY_W, height: BODY_H, backgroundColor: nb.paper, borderWidth: 1.5, borderColor: nb.paperEdge, position: 'relative' }}>
-            <View style={{ position: 'absolute', top: -8, left: 8, backgroundColor: nb.paper, borderWidth: 1.3, borderColor: nb.ink, paddingHorizontal: 4, zIndex: 5 }}>
-              <Text style={{ fontFamily: nbFonts.hand, fontSize: 10.8, color: C }}>PATIENT</Text>
-            </View>
+        <NbPaper rot={-0.5} style={{ width: BODY_W, height: BODY_H }}>
+          <View style={{ flex: 1, position: 'relative' }}>
             <View style={{ flex: 1, padding: 8 }}>
               <PatientBody />
             </View>
@@ -79,18 +79,25 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
               const a = assigned[i];
               const st = checked && a ? (correctness[i] ? 'correct' : 'wrong') : a ? 'filled' : sel === i ? 'hover' : 'empty';
               const dotBg = st === 'correct' || st === 'filled' ? 'rgba(168,217,151,.4)' : st === 'wrong' ? '#FCA5A5' : st === 'hover' ? 'rgba(249,227,123,.5)' : '#fff';
+              // Each point gets its own pen — v31 draws the three arrows in green, red and
+              // blue, so the number, its tag and its answer slip all agree on a colour.
+              const pen = PENS[i % PENS.length];
               return (
                 <Pressable key={i} onPress={() => tapDot(i)} style={{ position: 'absolute', left: `${d.x}%`, top: `${d.y}%`, marginLeft: -10, marginTop: -10, zIndex: 4 }}>
                   {/* dot — fixed 20×20, always centered on the point */}
-                  <View style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: dotBg, borderWidth: 2.5, borderColor: st === 'empty' ? '#9CA3AF' : C, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: C }}>{i + 1}</Text>
+                  <View style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: dotBg, borderWidth: 1.8, borderColor: st === 'empty' ? pen : C, alignItems: 'center', justifyContent: 'center' }}>
+                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: st === 'empty' ? pen : C }}>{i + 1}</Text>
                   </View>
                   {/* tag — absolute + centered under the dot so its width never shifts the dot */}
                   {(a || sel === i) && (
                     <View pointerEvents="none" style={{ position: 'absolute', top: 22, left: -40, width: 100, alignItems: 'center' }}>
                       {a ? (
-                        <View style={{ backgroundColor: dotBg, borderWidth: 1.3, borderColor: nb.ink, paddingVertical: 1, paddingHorizontal: 4 }}>
-                          <Text style={{ fontFamily: nbFonts.hand, fontSize: 11.5, color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}{st === 'correct' ? ' ✓' : st === 'wrong' ? ' ✕' : ''}</Text>
+                        // The answer, printed on a slip: it is the English term, and the
+                        // verdict is drawn beside it rather than appended to the word.
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: dotBg, borderWidth: 1.3, borderColor: nb.ink, paddingVertical: 1, paddingHorizontal: 5 }}>
+                          <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 10.5, color: C, textDecorationLine: st === 'wrong' ? 'line-through' : 'none' }}>{a}</Text>
+                          {st === 'correct' && <NbIcon name="check" size={10} color={nb.green} />}
+                          {st === 'wrong' && <NbIcon name="cross" size={9} color={nb.red} />}
                         </View>
                       ) : (
                         <View style={{ borderWidth: 1.5, borderColor: '#C99A1E', borderStyle: 'dashed', paddingVertical: 1, paddingHorizontal: 4 }}>
@@ -103,7 +110,7 @@ export function AnatomyQuiz({ quiz, onExit, onComplete, progress }: { quiz: Quiz
               );
             })}
           </View>
-        </Shadowed>
+        </NbPaper>
 
         {/* word bank + feedback */}
         <View style={{ flex: 1, gap: 8 }}>

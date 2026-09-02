@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { QuizDetail } from '@/api/client';
+import { NbIcon } from '@/components/nb/NbIcon';
 import { nb, nbFonts } from '@/theme/nb';
 import { QuizShell, type QuizProgress, Shadowed, ContextBox, HintRow, ResultBanner, C } from '@/components/quiz/QuizShell';
 import { NbButton } from '@/components/nb/NbUI';
@@ -69,7 +70,11 @@ export function SortQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDet
                     const bad = checked && !b.items.includes(chip);
                     return (
                       <Pressable key={chip} onPress={() => pull(chip)} style={{ backgroundColor: ok ? 'rgba(168,217,151,.4)' : bad ? '#FFF0EC' : '#fff', borderWidth: 1.4, borderColor: nb.ink, paddingVertical: 5, paddingHorizontal: 6 }}>
-                        <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: C, textAlign: 'center' }}>{chip}{ok ? ' ✓' : bad ? ' ✕' : ''}</Text>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 3 }}>
+                          <Text numberOfLines={1} style={{ fontFamily: nbFonts.body, fontSize: 10, color: C }}>{chip}</Text>
+                          {ok && <NbIcon name="check" size={9} color={nb.green} />}
+                          {bad && <NbIcon name="cross" size={8} color={nb.red} />}
+                        </View>
                       </Pressable>
                     );
                   })}
