@@ -175,10 +175,13 @@ test('the shift badge reads the same clock as the ward', () => {
   const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'index.tsx'), 'utf8');
   // The badge takes its NAME from the device clock and its DEPARTMENT from the server —
   // the department is the current curriculum step's, which the phone cannot know.
-  expect(src).toMatch(/shift=\{SHIFT_LABEL\[moodAt\(new Date\(\)\)\]\}/);
-  expect(src).toMatch(/deptLabel=\{home\.shift\.deptLabel\}/);
+  // v29 draws them in one handwritten line rather than a badge, so the check is on where
+  // each half comes FROM, which is the invariant — not on the component that used to hold
+  // them.
+  expect(src).toMatch(/SHIFT_LABEL\[moodAt\(new Date\(\)\)\]/);
+  expect(src).toMatch(/dept: home\.shift\.deptLabel/);
   // The dice roll it replaced.
-  expect(src).not.toMatch(/shift=\{home\.shift\.shift\}/);
+  expect(src).not.toMatch(/shift: home\.shift\.shift/);
   expect(SHIFT_LABEL.night).toBe('NIGHT'); // a value the server's two-way coin flip had no room for
 });
 
@@ -190,8 +193,9 @@ test('the home card names the CURRICULUM, with the step as its subtitle', () => 
   // curriculum a caption above it, which said "today's one thing" and left the learner
   // to work out where that thing was. `one.chapter` is the curriculum the server
   // resumed — the one holding their LAST attempt (see markResume server-side).
-  expect(src).toMatch(/fontSize: fs\(15\)[^}]*\}\}>\{one\.chapter\}/);
-  expect(src).toMatch(/t\('home\.nextUp', \{ title: one\.title \}\)/);
+  // v29 draws it as handwriting on a taped page; what must hold is which half is big.
+  expect(src).toMatch(/nbText\.hand\(21\)[^>]*>\{home\.todayOne\.chapter\}/);
+  expect(src).toMatch(/t\('home\.nextUp', \{ title: home\.todayOne\.title \}\)/);
   // And the label says so.
   expect(src).toMatch(/t\('home\.curriculumTab'\)/);
   expect(src).not.toMatch(/t\('home\.todayOneTab'\)/);

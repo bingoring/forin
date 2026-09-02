@@ -39,7 +39,7 @@ jest.mock('expo-router', () => {
 });
 
 /** How many times the fake server refuses before it comes up. */
-const mockServer = { failures: 0, calls: 0 };
+const mockServer: { calls: number; failures: number; nameFails?: boolean } = { failures: 0, calls: 0 };
 const mockHome = {
   date: '2026-08-31', done: false, firstRun: false, streak: 3, week: [1, 0, 1, 1, 0, 1, 1],
   level: 4, xp: 420, situationsWaiting: 2, colleagues: [], colleagueTotal: 0,
@@ -53,6 +53,13 @@ jest.mock('@/api/client', () => ({
       return mockHome;
     },
     acceptPage: async () => ({ scenarioId: '', bonusXp: 0, already: false }),
+    // The heading asks for the learner's display name alongside the home read. It must
+    // never be able to fail the page — the screen catches it — but it does have to exist,
+    // or Promise.all rejects on an undefined function and the wait becomes an error.
+    me: async () => {
+      if (mockServer.nameFails) throw new Error('nope');
+      return { profile: { displayName: '지민' } };
+    },
   },
 }));
 
@@ -108,7 +115,10 @@ test('a waking server is a wait, not a failure', async () => {
   await waitForRetries(tree);
   // It came up on its own. No tap, no relaunch.
   expect(mockServer.calls).toBeGreaterThan(2);
-  expect(texts(tree.root)).toContain('오늘의 상황'); // a module only the loaded screen has
+  // A module only the LOADED screen has. The point of the test is that the wait ends in a
+  // home, not in a blank page — so the sentinel has to be something the screen always
+  // draws, whatever the day's data looks like. (v29: 과별 출근 카드 replaced 오늘의 상황.)
+  expect(texts(tree.root)).toContain('과별 출근 카드');
 });
 
 test('a warm server never mentions waking', async () => {
@@ -130,7 +140,7 @@ test('a server that never comes up leaves a way out', async () => {
   // And the button works: the server comes up, the tap loads the screen.
   mockServer.failures = 0;
   await act(async () => { retry!.props.onPress(); });
-  expect(texts(tree.root)).toContain('오늘의 상황');
+  expect(texts(tree.root)).toContain('과별 출근 카드');
 });
 
 test('it gives up rather than retrying forever', async () => {
@@ -141,4 +151,17 @@ test('it gives up rather than retrying forever', async () => {
   // battery of someone whose network is simply down.
   expect(mockServer.calls).toBeLessThanOrEqual(6);
   expect(texts(tree.root).some((x) => x.includes('불러오지 못'))).toBe(true);
+});
+
+test('the name is decoration: losing it must not lose the home', async () => {
+  // The heading asks for the display name alongside the home read. It is the only request
+  // on this screen that nothing depends on — so it is caught, and the notebook is simply
+  // titled without a name, which is what a learner who never set one sees anyway.
+  mockServer.calls = 0; mockServer.failures = 0; mockServer.nameFails = true;
+  const tree = await mount();
+  const out = texts(tree.root);
+  expect(out).toContain('과별 출근 카드');
+  expect(out).toContain('나의 근무 수첩');
+  expect(out).not.toContain('홈을 불러오지 못했어요. (로그인·서버 확인)');
+  mockServer.nameFails = false;
 });

@@ -1,56 +1,75 @@
-// 홈 — 앱을 켜면 처음 만나는 화면 (handoff v21 ScreenHome / ScreenHomeDone).
+// 홈 — the 근무 수첩 line (v29).
 //
-// 커리어 탭은 커리큘럼·건물·상황이 전부 목록이라 켜자마자 "골라야 한다"는 압박이
-// 된다. 홈은 반대 원칙이다: 오늘 할 딱 한 가지만 크게, 성취를 먼저, 나머지는 얕은 문.
+// The nurse's own notebook, opened to today: a taped page for the one task, a red-pen note
+// for the call that has a deadline, cut-out cards for the wards, and the day's sentence
+// under a highlighter. The streak is a rubber stamp in the corner rather than a row of
+// boxes — the boxes were a chart of your own emptiness on a quiet week.
 //
-// 모든 모듈은 GET /me/home 한 번으로 온다(앱 첫 화면이라 왕복 수가 곧 체감 지연).
-// 서버가 "보여줄 것"만 담아 보내므로 여기서는 **필드가 없으면 그리지 않는다**가
-// 유일한 규칙이다 — 자리를 채우는 문구를 지어내지 않는다.
+// The DATA and the routing are unchanged from the pixel version: same /home read, same
+// cold-start retry, same "the server is waking" wait, same rule that a call is ACCEPTED on
+// the server before the app navigates. Only the drawing is new.
+//
+// Two things worth knowing about the layout:
+//
+//  · The handoff's home is five modules (오늘의 할 일 · 호출 쪽지 · 과별 출근 카드 ·
+//    오늘의 문장 · 연속출근 도장). Those are the top of the screen, in that order. The
+//    modules the design does not list but the server still serves — the mentor's note, the
+//    review peek, colleagues — are kept below it, restyled. Dropping them would be a
+//    product change the handoff does not ask for.
+//  · LiveWard is gone from this screen. It is pixel-art sprites, and a sprite on a paper
+//    page is the one thing 07 forbids — a screen belongs to one line. If the live ward
+//    should stay, it needs a notebook-line drawing of its own.
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { PixelButton } from '@/components/PixelButton';
-import { PixelIcon, type IconName } from '@/components/PixelIcon';
-import { LiveWard } from '@/components/home/LiveWard';
-import { PagingCall } from '@/components/home/PagingCall';
+import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
+import { NbButton, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
-import { FIcon } from '@/components/FIcon';
-import { AnimatedFace } from '@engine';
-import { api, type Home } from '@/api/client';
-import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
-import { t, useLocale, useT } from '@/i18n';
-import { useAvatar } from '@/hooks/useAvatar';
+import { api, type Home, type HomePage } from '@/api/client';
+import { useLocale, useT } from '@/i18n';
 
-const C = colors.ink;
-/** How many times the home read retries a waking server before calling it a failure.
- *  Four attempts with growing gaps spans about 15 seconds, which covers a Cloud Run
- *  cold start with room over. */
-const HOME_RETRIES = 4;
+/** How many times the home read is retried before it is called a failure. Cloud Run
+ *  scales to zero, so the first request after an idle period is a WAIT, not an error. */
+const HOME_RETRIES = 3;
+
+/** The wards a learner can clock into from here, in the order the handoff draws them.
+ *  `code` is the interior deep link the 일터 tab already uses (INT-<code>-00001), so this
+ *  is a shortcut into the existing flow rather than a parallel one. */
+const WARDS: { code: string; icon: NbIconName; labelKey: string; rot: number }[] = [
+  { code: 'ER', icon: 'siren', labelKey: 'dept.er', rot: -1.5 },
+  { code: 'OR', icon: 'scalpel', labelKey: 'dept.or', rot: 1 },
+  { code: 'PEDS', icon: 'baby', labelKey: 'dept.peds', rot: -0.5 },
+  { code: 'ICU', icon: 'monitor', labelKey: 'dept.icu', rot: 1.5 },
+  { code: 'PHARMA', icon: 'pill', labelKey: 'dept.pharma', rot: -1 },
+  { code: 'SURGWARD', icon: 'bandage', labelKey: 'dept.surgward', rot: 0.7 },
+];
 
 export default function HomeTab() {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const [home, setHome] = useState<Home | null>(null);
+  const [name, setName] = useState('');
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [flipped, setFlipped] = useState(false);
-
-  // Keeps trying while the server wakes up.
-  //
-  // Cloud Run scales to zero, so the first request after an idle period can take longer
-  // than the transport's own two retries (~3.6s). What the learner saw then was the
-  // launch screen saying "서버를 깨우고 있어요", followed by a home screen that was
-  // simply blank apart from one line of failure text — with nothing to press. The wake
-  // is not an error yet; it is a wait, and it says so until it really has failed.
   const [attempt, setAttempt] = useState(0);
+
   useFocusEffect(
     useCallback(() => {
       let alive = true;
       let timer: ReturnType<typeof setTimeout> | undefined;
       const load = async (n: number) => {
         try {
-          const h = await api.home();
+          // In parallel: the name is for the heading, and it must never delay the page.
+          // A failed /me leaves the notebook titled without one, which is what a learner
+          // who has not set a name sees anyway.
+          const [h, me] = await Promise.all([api.home(), api.me().catch(() => null)]);
           if (!alive) return;
           setHome(h);
+          setName(
+            (me as { profile?: { displayName?: string } } | null)?.profile?.displayName || '',
+          );
           setState('ok');
           setAttempt(0);
         } catch {
@@ -70,62 +89,56 @@ export default function HomeTab() {
     }, []),
   );
 
-  const retry = () => { setState('loading'); setAttempt(0); void api.home().then((h) => { setHome(h); setState('ok'); }).catch(() => setState('error')); };
+  const retry = () => {
+    setState('loading');
+    setAttempt(0);
+    void api.home().then((h) => { setHome(h); setState('ok'); }).catch(() => setState('error'));
+  };
 
   if (state !== 'ok' || !home) {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.paper, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 14 }}>
-        {state === 'loading' ? (
-          <>
-            <ActivityIndicator color={C} />
-            {/* Only once it has taken long enough to wonder about. On a warm server the
-                first attempt lands and this never appears. */}
-            {attempt > 0 && (
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: colors.textSoft, textAlign: 'center', lineHeight: 18 }}>
-                {t('home.waking')}
+      <Sheet>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 14 }}>
+          {state === 'loading' ? (
+            <>
+              <ActivityIndicator color={nb.ink} />
+              <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center' }]}>
+                {attempt > 0 ? t('home.waking') : ''}
               </Text>
-            )}
-          </>
-        ) : (
-          <>
-            <Text style={{ fontFamily: fonts.body, fontSize: typeScale.body, color: colors.textSoft, textAlign: 'center', lineHeight: 20 }}>
-              {t('home.loadFailed')}
-            </Text>
-            {/* The way out of the dead end. There was none: the screen said it had
-                failed and offered nothing but killing the app. */}
-            <PixelButton label={t('list.retry')} icon="refresh" bg={colors.yellow} shadowColor={colors.yellowShadow} onPress={retry} />
-          </>
-        )}
-      </View>
+            </>
+          ) : (
+            <>
+              <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('home.loadFailed')}</Text>
+              <NbButton variant="ink" onPress={retry} icon="pencil" iconColor={nb.paper}>
+                {t('common.retry')}
+              </NbButton>
+            </>
+          )}
+        </View>
+      </Sheet>
     );
   }
 
   const startToday = () => {
     const id = home.todayOne?.scenarioId;
     if (!id) return;
-    // Same routing rule the career tab uses — the home hero is a shortcut into the
-    // existing curriculum flow, not a parallel one.
+    // Same routing rule the 일터 tab uses — the home task is a shortcut into the existing
+    // curriculum flow, not a parallel one.
     router.push(id.startsWith('QZ-') ? `/quiz/${id}` : `/scenario/${id}`);
   };
 
   /** Answer today's 호출, then enter the scenario it points at.
    *
-   *  The server is asked FIRST and the navigation follows its answer: it is what decides
-   *  whether the bonus is payable (once) and whether the window is still open, and
-   *  entering the scenario before hearing back would let an expired call still be
-   *  played. A refusal leaves the card up rather than navigating — the learner tapped
-   *  something with a deadline and deserves to know it did not take.
-   *
-   *  `already` is not an error: the call was answered before, no XP is granted, and
-   *  re-entering the scenario is harmless. */
+   *  The server is asked FIRST and the navigation follows its answer: it decides whether
+   *  the bonus is payable (once) and whether the window is still open. Entering the
+   *  scenario before hearing back would let an expired call still be played. */
   const answerPage = async () => {
     try {
       const { scenarioId } = await api.acceptPage();
       const id = scenarioId || home.page?.scenarioId;
       if (!id) return;
-      // ACCEPTED, not answered. The bonus is the server's to grant, and it grants it on
-      // the next home read once it can see they actually started the scenario — walking
-      // straight back out of it used to still report "응답 완료 · +40 XP".
+      // ACCEPTED, not answered. The bonus is the server's to grant, on the next home read,
+      // once it can see the scenario was actually started.
       setHome({ ...home, page: { ...home.page!, accepted: true } });
       router.push(id.startsWith('QZ-') ? `/quiz/${id}` : `/scenario/${id}`);
     } catch {
@@ -133,397 +146,235 @@ export default function HomeTab() {
     }
   };
 
+  const shift = SHIFT_LABEL[moodAt(new Date())];
+
   return (
-    <View style={{ flex: 1, backgroundColor: colors.paper }}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 32 }}>
-        <Greeting date={home.date} done={home.done} />
+    <Sheet>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 12, paddingBottom: 30 }}>
+        {/* The heading, and the streak stamped in the corner. */}
+        <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text style={[nbText.hand(30), { lineHeight: 33 }]}>
+              {name ? t('home.nbTitle', { name }) : t('home.nbTitleAnon')}
+            </Text>
+            {/* The shift's NAME comes from the device clock; its DEPARTMENT comes from
+                the server, because the department is the current curriculum step's and the
+                phone cannot know it. The server's own shift field was a hash of
+                (userID, day) — a dice roll with no room for NIGHT — so only the dept is
+                taken from it. */}
+            <Text style={[nbText.hand(16, nb.soft), { marginTop: 2 }]}>
+              {home.shift
+                ? t('home.nbSubDept', { date: home.date, shift, dept: home.shift.deptLabel })
+                : t('home.nbSubShift', { date: home.date, shift })}
+            </Text>
+          </View>
+          {/* Only once there is a streak to stamp. A "0일" stamp is a stamp saying you have
+              not been here — the row of empty boxes this replaced, in one shape. */}
+          {home.streak > 0 && (
+            <NbStamp
+              color={nb.red}
+              rot={9}
+              size={72}
+              top={t('home.streakStamp')}
+              bottom={t('home.streakDays', { n: home.streak })}
+            />
+          )}
+        </View>
 
-        {/* 라이브 병동 (v27). Above everything, and driven by the DEVICE clock rather
-            than the server: home.DeriveShift never read a clock at all — it picked
-            between DAY and EVENING with a hash of (userID, day), so the badge was a
-            dice roll and could not express NIGHT. One source now, in data/wardMood. */}
-        <LiveWard />
-
-        {/* 오늘의 호출 (v27). Above the day's task on purpose: it is the one module with
-            a deadline, and everything else on this screen is still there tomorrow. */}
-        {!!home.page && (
-          <PagingCall
-            page={home.page}
-            onAnswer={answerPage}
-            onIgnore={() => {}}
-          />
-        )}
-
-        {/* On a first run the order flips: the task comes before the streak.
-            Achievements-before-tasks is the right default (see the file header), but a
-            learner who has cleared nothing has no achievements — leading with a row of
-            ten empty day-boxes and a "0일 연속" puts their own emptiness first and
-            pushes the one thing they should tap below the fold. */}
-        {home.firstRun ? (
-          home.todayOne ? <TodayOne one={home.todayOne} onStart={startToday} firstRun /> : null
+        {/* ☐ 오늘의 할 일 — the one thing, on a taped page. */}
+        {home.todayOne ? (
+          <NbPaper rot={-0.7} tape tapeLeft={120} style={{ marginTop: 16, paddingTop: 18, paddingBottom: 14, paddingHorizontal: 16 }}>
+            <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue, letterSpacing: 1 }}>
+              {t('home.curriculumTab')}
+            </Text>
+            {/* The CURRICULUM is the big line and the step is the subtitle, not the other
+                way round. Reversed, the card said "today's one thing" and left the learner
+                to work out where that thing was — `chapter` is the curriculum the server
+                resumed, the one holding their last attempt. */}
+            <Text style={[nbText.hand(21), { marginTop: 7, lineHeight: 27 }]}>{home.todayOne.chapter}</Text>
+            <Text style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>
+              {t('home.nextUp', { title: home.todayOne.title })}
+            </Text>
+            <View style={{ flexDirection: 'row', gap: 9, marginTop: 12 }}>
+              <NbButton variant="ink" icon="pencil" iconColor={nb.paper} onPress={startToday}>
+                {t('home.startCta')}
+              </NbButton>
+              {/* Practises the DAY'S SENTENCE, which is the only sentence this screen
+                  actually has — the task is a scenario, and its lines do not exist yet.
+                  Hidden when there is no phrase rather than routed nowhere. */}
+              {!!home.phrase && (
+                <NbButton
+                  variant="dashed"
+                  icon="mic"
+                  size="sm"
+                  onPress={() => router.push({
+                    pathname: '/pronunciation/[sentenceKey]',
+                    params: { sentenceKey: home.phrase!.en.slice(0, 40), referenceText: home.phrase!.en, origin: 'home' },
+                  })}
+                >
+                  {t('home.pronPractice')}
+                </NbButton>
+              )}
+            </View>
+          </NbPaper>
         ) : (
-          <>
-            {/* The DEPT still comes from the server — it is the department of the
-                current curriculum step, which the phone cannot know. The shift name
-                comes from the same clock the ward above it reads, so the two cannot
-                disagree. */}
-            {!!home.shift && <ShiftBadge shift={SHIFT_LABEL[moodAt(new Date())]} deptLabel={home.shift.deptLabel} />}
-            <StreakStrip streak={home.streak} week={home.week} />
-            {home.todayOne
-              ? <TodayOne one={home.todayOne} onStart={startToday} />
-              : <RestCard streakNext={home.streak + 1} onMore={() => router.push('/board')} />}
-          </>
+          <NbPaper rot={-0.5} tape tapeLeft={90} style={{ marginTop: 16, paddingVertical: 16, paddingHorizontal: 16 }}>
+            <Text style={[nbText.hand(20)]}>{t('home.restToday')}</Text>
+            <Text style={[nbText.body(11, nb.soft), { marginTop: 4 }]}>
+              {t('home.restSub', { n: home.streak + 1 })}
+            </Text>
+          </NbPaper>
         )}
 
-        {!!home.mentorNote && <MentorNote note={home.mentorNote} />}
+        {/* 호출 쪽지 — the one module with a deadline, so it sits above everything that
+            will still be here tomorrow. */}
+        {!!home.page && <PageNote page={home.page} onAnswer={answerPage} />}
+
+        {/* ✂ 과별 출근 카드 */}
+        <Text style={[nbText.hand(19), { marginTop: 18 }]}>{t('home.deptCards')}</Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 11, marginTop: 9 }}>
+          {WARDS.map((w) => (
+            <Pressable
+              key={w.code}
+              onPress={() => router.push(`/interior/INT-${w.code}-00001`)}
+              style={{ width: '30.5%' }}
+            >
+              <NbPaper rot={w.rot} style={{ paddingTop: 13, paddingBottom: 10, alignItems: 'center' }}>
+                <NbIcon name={w.icon} size={23} />
+                <Text numberOfLines={1} style={[nbText.hand(15), { marginTop: 3 }]}>{t(w.labelKey)}</Text>
+              </NbPaper>
+            </Pressable>
+          ))}
+        </View>
+
+        {/* 오늘의 문장 — highlighted, and it turns over to the learner's own language. */}
         {!!home.phrase && (
-          <PhraseOfDay phrase={home.phrase} flipped={flipped} onFlip={() => setFlipped((f) => !f)} />
+          <Pressable onPress={() => setFlipped((f) => !f)}>
+            <NbPaper rot={-0.5} tape tapeLeft={30} style={{ marginTop: 17, paddingVertical: 14, paddingHorizontal: 16 }}>
+              <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.green, letterSpacing: 1 }}>
+                {t('home.phraseToday')}
+              </Text>
+              <View style={{ marginTop: 7 }}>
+                <NbMark textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 15, lineHeight: 23 }}>
+                  {home.phrase.en}
+                </NbMark>
+              </View>
+              {/* The translation is the back of the card: shown on a tap, so the sentence
+                  is read first in the language being learned. */}
+              {flipped && (
+                <Text style={[nbText.hand(15, nb.soft), { marginTop: 5 }]}>{home.phrase.ko}</Text>
+              )}
+            </NbPaper>
+          </Pressable>
         )}
 
-        <Doors
-          waiting={home.situationsWaiting}
-          onExplore={() => router.push('/campus')}
-          onBoard={() => router.push('/board')}
-        />
+        {/* ── kept from the pixel home: served by the API, not drawn by the handoff ── */}
+
+        {!!home.mentorNote && (
+          <NbMemo color={nb.blue} rot={0.4} style={{ marginTop: 17 }}>
+            <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue }}>
+              {home.mentorNote.npc.name} · {home.mentorNote.npc.dept}
+            </Text>
+            <Text style={[nbText.hand(15), { marginTop: 3 }]}>{home.mentorNote.text}</Text>
+          </NbMemo>
+        )}
 
         {!!home.review && (
-          <OneReview front={home.review.front} onPress={() => router.push('/lab')} />
+          <Pressable onPress={() => router.push('/lab')}>
+            <NbPaper rot={0.6} style={{ marginTop: 15, paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <NbIcon name="pencil" size={20} />
+              <Text numberOfLines={2} style={[nbText.hand(15), { flex: 1, minWidth: 0 }]}>{home.review.front}</Text>
+              <NbIcon name="chevronRight" size={15} />
+            </NbPaper>
+          </Pressable>
         )}
 
-        <ColleagueStrip
-          colleagues={home.colleagues}
-          total={home.colleagueTotal}
-          unread={home.unreadCheers}
-          pending={home.pendingRequests}
-          onOpenAll={() => router.push('/colleagues')}
-          onAdd={() => router.push('/colleagues/add')}
-        />
+        <View style={{ flexDirection: 'row', gap: 10, marginTop: 16 }}>
+          <View style={{ flex: 1 }}>
+            <NbButton variant="paper" full icon="hospital" onPress={() => router.push('/campus')}>
+              {t('tab.career')}
+            </NbButton>
+          </View>
+          <View style={{ flex: 1 }}>
+            <NbButton variant="paper" full icon="speech" onPress={() => router.push('/board')}>
+              {t('tab.board')}
+            </NbButton>
+          </View>
+        </View>
+
+        {(home.colleagueTotal > 0 || home.pendingRequests > 0) && (
+          <Pressable onPress={() => router.push('/colleagues')}>
+            <NbPaper rot={-0.4} pinned={150} pinColor={nb.green} style={{ marginTop: 18, paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <NbIcon name="handshake2" size={22} />
+              <Text style={[nbText.hand(15), { flex: 1, minWidth: 0 }]} numberOfLines={1}>
+                {t('home.colleagues', { n: home.colleagueTotal })}
+              </Text>
+              {home.pendingRequests > 0 && <NbTag color={nb.red} fill>{home.pendingRequests}</NbTag>}
+            </NbPaper>
+          </Pressable>
+        )}
+
+        <NbGrabber style={{ marginTop: 22, opacity: 0.5 }} />
       </ScrollView>
-    </View>
+    </Sheet>
   );
 }
 
-// ── 인사 ───────────────────────────────────────────────────────────────────
-function Greeting({ date, done }: { date: string; done: boolean }) {
-  const t = useT();
-  const locale = useLocale();
-  const avatar = useAvatar();
-  const d = new Date(date + 'T00:00:00');
-  // Formatted by Intl rather than assembled from a Korean weekday array: the order
-  // of month, day and weekday differs per language, so a translated template would
-  // still be wrong ("18 Monday August" in German). Hermes ships Intl and this file
-  // already leans on it for the timezone.
-  const label = Number.isNaN(d.getTime())
-    ? date
-    : dateLabel(d, locale);
+/** The ruled page everything sits on. Local to this screen so the rule count can follow
+ *  the screen height rather than a guess. */
+function Sheet({ children }: { children: React.ReactNode }) {
+  const [h, setH] = useState(900);
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: space.lg, paddingTop: 56, paddingBottom: 12 }}>
-      <View style={{ flex: 1, minWidth: 0 }}>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft }}>{label}</Text>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(19), color: C, marginTop: 5, lineHeight: 25 }}>
-          {done ? t('home.greetingDone') : t('home.greetingStart')}
-        </Text>
+    <View
+      style={{ flex: 1, backgroundColor: nb.cream }}
+      onLayout={(e) => setH(e.nativeEvent.layout.height)}
+    >
+      <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+        {Array.from({ length: Math.ceil(h / RULE_H) }).map((_, i) => (
+          <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+        ))}
       </View>
-      <Shadowed offset={3} style={{ alignSelf: 'flex-end' }}>
-        <View style={{ width: 58, height: 58, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <AnimatedFace size={62} avatar={avatar} expression={done ? 'happy' : 'focused'} />
-        </View>
-      </Shadowed>
-    </View>
-  );
-}
-
-/** "8월 18일 월요일" in the reader's language, or the raw date if Intl is absent. */
-function dateLabel(d: Date, locale: string): string {
-  try {
-    return new Intl.DateTimeFormat(locale, { month: 'long', day: 'numeric', weekday: 'long' }).format(d);
-  } catch {
-    return d.toDateString();
-  }
-}
-
-// ── 근무 배지 — 화면에서 유일하게 어두운 카드 (시선이 한 번 끊긴다) ─────────
-function ShiftBadge({ shift, deptLabel }: { shift: string; deptLabel: string }) {
-  return (
-    <Shadowed offset={3} style={{ marginHorizontal: space.lg }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: C, borderWidth: 3, borderColor: C, paddingVertical: 9, paddingHorizontal: 11 }}>
-        <View style={{ backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{shift}</Text>
-        </View>
-        <PixelIcon name="shift" color={colors.cream} size={14} sw={1.6} />
-        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.cream }}>
-          오늘 배치 · {deptLabel}
-        </Text>
-      </View>
-    </Shadowed>
-  );
-}
-
-// ── 연속 + 최근 학습 리듬 (성취를 과제보다 먼저) ───────────────────────────
-function StreakStrip({ streak, week }: { streak: number; week: number[] }) {
-  return (
-    <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 12 }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 13 }}>
-        <View style={{ alignItems: 'center' }}>
-          <FIcon name="fire" size={20} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(17), color: C, marginTop: 3 }}>{streak}</Text>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textSoft }}>연속</Text>
-        </View>
-        <View style={{ width: 3, alignSelf: 'stretch', backgroundColor: C + '22' }} />
-        <View style={{ flex: 1, minWidth: 0 }}>
-          {/* A rolling window ending today, not a calendar week — the server
-              sends progress.StreakWindowDays cells and we read the length. */}
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginBottom: 7 }}>최근 {week.length}일</Text>
-          <View style={{ flexDirection: 'row', gap: 3 }}>
-            {week.map((d, i) => (
-              <View key={i} style={{
-                flex: 1, height: 14,
-                backgroundColor: d === 2 ? colors.yellow : d === 1 ? colors.mint : '#fff',
-                borderWidth: 2, borderColor: d === 0 ? C + '44' : C,
-              }} />
-            ))}
-          </View>
-        </View>
-      </View>
-    </Shadowed>
-  );
-}
-
-// ── 오늘의 한 가지 — 화면에서 가장 큰 단 하나 ──────────────────────────────
-function TodayOne({ one, onStart, firstRun }: {
-  one: NonNullable<Home['todayOne']>;
-  onStart: () => void;
-  firstRun?: boolean;
-}) {
-  const t = useT();
-  const icon: IconName = one.kind === 'quiz' ? 'question' : 'speech';
-  return (
-    <View style={{ marginHorizontal: space.lg, marginTop: 17 }}>
-      <Shadowed offset={4} shadowColor={colors.mintShadow}>
-        <View style={{ backgroundColor: colors.mint, borderWidth: 3, borderColor: C, padding: 14 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, marginTop: 4 }}>
-            <View style={{ width: 44, height: 44, backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <PixelIcon name={icon} color={C} size={24} sw={1.7} />
-            </View>
-            {/* The CURRICULUM is the subject, and the step is what happens next in
-                it. It used to be the other way round — the step's title was the big
-                line and the curriculum a caption — which said "today's one thing" and
-                left the learner to work out where that thing was. The card names the
-                path they are on; `one.chapter` is the curriculum the server resumed
-                (the one holding their LAST attempt, see markResume). */}
-            <View style={{ flex: 1, minWidth: 0 }}>
-              <Text numberOfLines={2} style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, lineHeight: 20 }}>{one.chapter}</Text>
-              <Text numberOfLines={1} style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, opacity: 0.8, marginTop: 4 }}>{t('home.nextUp', { title: one.title })}</Text>
-            </View>
-          </View>
-          {/* One line saying what is about to happen. A scenario title alone tells a
-              newcomer nothing about whether they are about to read, type or speak. */}
-          {firstRun && (
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, opacity: 0.8, marginTop: 10, lineHeight: 16 }}>
-              {t('home.firstRunHint')}
-            </Text>
-          )}
-          <Pressable onPress={onStart} style={({ pressed }) => ({
-            marginTop: 12, backgroundColor: C, borderWidth: 2.5, borderColor: C, paddingVertical: 11,
-            flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7,
-            opacity: pressed ? 0.85 : 1,
-          })}>
-            <PixelIcon name="play" color={colors.cream} size={16} sw={1.9} />
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: colors.cream }}>
-              {firstRun ? t('home.firstRunCta') : t('home.startCta')}
-            </Text>
-          </Pressable>
-        </View>
-      </Shadowed>
-      {/* 라벨 탭 — 카드 위로 걸친다 */}
-      <View style={{ position: 'absolute', top: -9, left: 12, backgroundColor: C, paddingVertical: 2, paddingHorizontal: 7 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream }}>
-          {firstRun ? t('home.firstRunTab') : t('home.curriculumTab')}
-        </Text>
-      </View>
-    </View>
-  );
-}
-
-// ── 완료 상태 — 더 시키지 않는다 ───────────────────────────────────────────
-function RestCard({ streakNext, onMore }: { streakNext: number; onMore: () => void }) {
-  return (
-    <Shadowed offset={4} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
-      <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C, paddingVertical: 18, paddingHorizontal: 14, alignItems: 'center' }}>
-        <FIcon name="moon" size={34} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(14), color: C, marginTop: 9 }}>오늘 목표를 다 채웠어요</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, marginTop: 6, lineHeight: 18, textAlign: 'center' }}>
-          {streakNext}일째 연속이 눈앞이에요.{'\n'}여기서 멈춰도 괜찮아요.
-        </Text>
-        <Pressable onPress={onMore} style={({ pressed }) => ({
-          marginTop: 12, backgroundColor: '#fff', borderWidth: 2.5, borderColor: C,
-          paddingVertical: 8, paddingHorizontal: 16, opacity: pressed ? 0.85 : 1,
-        })}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>+ 한 판 더 하기</Text>
-        </Pressable>
-      </View>
-    </Shadowed>
-  );
-}
-
-// ── 멘토 쪽지 ──────────────────────────────────────────────────────────────
-function MentorNote({ note }: { note: NonNullable<Home['mentorNote']> }) {
-  return (
-    <View style={{ marginHorizontal: space.lg, marginTop: 17 }}>
-      <Shadowed offset={3} shadowColor={colors.peachShadow}>
-        <View style={{ flexDirection: 'row', gap: 10, backgroundColor: colors.peach, borderWidth: 3, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}>
-          <View style={{ width: 34, height: 34, marginTop: 3, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-            <FIcon name="nurse" size={20} />
-          </View>
-          <View style={{ flex: 1, minWidth: 0, marginTop: 2 }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 18 }}>{note.text}</Text>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginTop: 5 }}>
-              — {note.npc.role} {note.npc.name} · {note.npc.dept}
-            </Text>
-          </View>
-        </View>
-      </Shadowed>
-      <View style={{ position: 'absolute', top: -9, left: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingHorizontal: 6 }}>
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>멘토 쪽지</Text>
-      </View>
-    </View>
-  );
-}
-
-// ── 오늘의 한마디 (탭하면 뜻) ──────────────────────────────────────────────
-function PhraseOfDay({ phrase, flipped, onFlip }: { phrase: NonNullable<Home['phrase']>; flipped: boolean; onFlip: () => void }) {
-  const t = useT();
-  return (
-    <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
-      <Pressable onPress={onFlip} style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 13 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-          <FIcon name="hint" size={14} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C }}>오늘의 한마디</Text>
-          <View style={{ flex: 1 }} />
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(9), color: colors.textFaint }}>
-            {flipped ? t('home.phraseCollapse') : t('home.phraseReveal')}
-          </Text>
-        </View>
-        <View style={{ backgroundColor: colors.cream, borderWidth: 2.5, borderColor: C + '66', paddingVertical: 13, paddingHorizontal: 10, alignItems: 'center' }}>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C, lineHeight: 21, textAlign: 'center' }}>
-            “{phrase.en}”
-          </Text>
-          {flipped && (
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, marginTop: 6, textAlign: 'center' }}>
-              {phrase.ko}{phrase.note ? ` · ${phrase.note}` : ''}
-            </Text>
-          )}
-        </View>
-      </Pressable>
-    </Shadowed>
-  );
-}
-
-// ── 얕은 문 2개 ────────────────────────────────────────────────────────────
-function Doors({ waiting, onExplore, onBoard }: { waiting: number; onExplore: () => void; onBoard: () => void }) {
-  const t = useT();
-  const Door = ({ icon, title, sub, bg, onPress }: { icon: IconName; title: string; sub: string; bg: string; onPress: () => void }) => (
-    <Shadowed offset={3} style={{ flex: 1 }}>
-      <Pressable onPress={onPress} style={{ backgroundColor: bg, borderWidth: 3, borderColor: C, paddingVertical: 12, paddingHorizontal: 11 }}>
-        <PixelIcon name={icon} color={C} size={20} sw={1.7} />
-        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C, marginTop: 7 }}>{title}</Text>
-        <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 3, lineHeight: 14 }}>{sub}</Text>
-      </Pressable>
-    </Shadowed>
-  );
-  return (
-    <View style={{ flexDirection: 'row', gap: 10, marginHorizontal: space.lg, marginTop: 13 }}>
-      <Door icon="map" title={t('home.doorExplore')} sub={t('home.doorExploreSub')} bg="#fff" onPress={onExplore} />
-      <Door icon="clipboard" title={t('home.doorBoard')} sub={t('home.doorBoardSub', { n: waiting })} bg={colors.blue} onPress={onBoard} />
-    </View>
-  );
-}
-
-// ── 어제 놓친 것 하나 ──────────────────────────────────────────────────────
-function OneReview({ front, onPress }: { front: string; onPress: () => void }) {
-  return (
-    <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
-      <Pressable onPress={onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderWidth: 3, borderColor: C, paddingVertical: 10, paddingHorizontal: 12 }}>
-        <View style={{ width: 26, height: 26, backgroundColor: colors.yellow, borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <FIcon name="doc" size={15} />
-        </View>
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(11.5), color: C, lineHeight: 15 }}>틀린 표현 하나만 다시 볼까요?</Text>
-          <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft, marginTop: 3 }}>“{front}” · 1분</Text>
-        </View>
-        <PixelIcon name="chevron-right" color={C} size={16} sw={2} />
-      </Pressable>
-    </Shadowed>
-  );
-}
-
-// ── 내 동료 ────────────────────────────────────────────────────────────────
-function ColleagueStrip({ colleagues, total, unread, pending, onOpenAll, onAdd }: {
-  colleagues: Home['colleagues']; total: number; unread: number; pending: number;
-  onOpenAll: () => void; onAdd: () => void;
-}) {
-  const t = useT();
-  return (
-    <Shadowed offset={3} style={{ marginHorizontal: space.lg, marginTop: 13 }}>
-      <View style={{ backgroundColor: colors.cream, borderWidth: 3, borderColor: C }}>
-        <Pressable onPress={onOpenAll} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingTop: 8, paddingBottom: 6, paddingHorizontal: 12, borderBottomWidth: 2, borderBottomColor: C + '33' }}>
-          <FIcon name="handshake" size={14} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: C }}>내 동료</Text>
-          {total > 0 && (
-            <View style={{ backgroundColor: colors.mint, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>{total}</Text>
-            </View>
-          )}
-          {(unread > 0 || pending > 0) && (
-            <View style={{ backgroundColor: colors.yellow, borderWidth: 1.5, borderColor: C, paddingHorizontal: 4 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: C }}>
-                {unread > 0 ? t('home.cheers', { n: unread }) : t('home.requests', { n: pending })}
-              </Text>
-            </View>
-          )}
-          <View style={{ flex: 1 }} />
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(9.5), color: colors.textSoft }}>전체 ›</Text>
-        </Pressable>
-
-        {colleagues.length === 0 ? (
-          <View style={{ paddingVertical: 14, paddingHorizontal: 12, alignItems: 'center' }}>
-            <Text style={{ fontFamily: fonts.body, fontSize: fs(10.5), color: colors.textSoft, textAlign: 'center', lineHeight: 16 }}>
-              코드를 주고받아 동료를 추가해보세요.{'\n'}서로의 학습 현황을 보고 응원할 수 있어요.
-            </Text>
-          </View>
-        ) : (
-          colleagues.map((c, i) => (
-            <Pressable key={c.id} onPress={onOpenAll} style={{
-              flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 7, paddingHorizontal: 12,
-              borderBottomWidth: i < colleagues.length - 1 ? 1.5 : 0, borderBottomColor: C + '22',
-            }}>
-              <View style={{ width: 6, height: 6, backgroundColor: c.activeToday ? colors.mintShadow : 'transparent', borderWidth: c.activeToday ? 1.5 : 0, borderColor: C }} />
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{c.name}</Text>
-              <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>
-                {c.activity || t('home.privateProgress')}
-              </Text>
-            </Pressable>
-          ))
-        )}
-
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, paddingVertical: 8, paddingHorizontal: 12, borderTopWidth: 2, borderTopColor: C + '33' }}>
-          <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft }}>동료 관리는 프로필에서</Text>
-          <Pressable onPress={onAdd} style={{ backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>+ 추가</Text>
-          </Pressable>
-        </View>
-      </View>
-    </Shadowed>
-  );
-}
-
-function Shadowed({ children, offset = 4, shadowColor = C, style }: {
-  children: React.ReactNode; offset?: number; shadowColor?: string; style?: object;
-}) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
       {children}
     </View>
+  );
+}
+
+/**
+ * 호출 쪽지 — the call, as a red-pen note on peach paper.
+ *
+ * Three states, as the pixel version had: open (answerable), accepted (the learner took it
+ * and can carry on), answered (done). The distinction exists because "answered" used to be
+ * set on the tap, and walking straight out of the scenario still reported +40 XP.
+ */
+function PageNote({ page, onAnswer }: { page: HomePage; onAnswer: () => void }) {
+  const t = useT();
+  const mins = Math.max(0, Math.round(page.secondsLeft / 60));
+  const left = t('home.pageMinutes', { n: mins });
+  return (
+    <NbPaper
+      rot={0.9}
+      tape
+      tapeLeft={200}
+      bg="#FFF3EE"
+      style={{ marginTop: 17, paddingVertical: 13, paddingHorizontal: 15, borderColor: '#EBCDBD' }}
+    >
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Text style={[nbText.hand(24, nb.red), { flexShrink: 0 }]}>!!</Text>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 13, color: nb.red }}>
+            {page.answered ? t('home.pageDone') : t('home.pageNote', { left })}
+          </Text>
+          <Text style={[nbText.hand(16), { marginTop: 2 }]} numberOfLines={2}>
+            {page.line}
+            <Text style={nbText.hand(13, nb.soft)}> (+{page.bonusXp} XP)</Text>
+          </Text>
+        </View>
+        {!page.answered && (
+          <NbButton variant="danger" size="sm" rot={2} onPress={onAnswer}>
+            {page.accepted ? t('home.pageResume') : t('home.pageAnswer')}
+          </NbButton>
+        )}
+      </View>
+    </NbPaper>
   );
 }

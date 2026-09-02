@@ -52,11 +52,24 @@ describe('every tab draws the FIcon artwork', () => {
   }
 });
 
-test('the tab bar wires all five tabs through these components', () => {
-  // A tab reverting to its own SVG, or to a PixelIcon, is exactly how this broke
-  // the first time — so the layout is checked for it.
+test('the tab bar draws all five tabs from ONE icon set', () => {
+  // A tab reverting to its own SVG, or to a PixelIcon, is exactly how this broke the first
+  // time — so the layout is checked for it.
+  //
+  // The set itself changed with v29: the bar is the 근무 수첩 line now, so the icons are
+  // NbIcon doodles rather than the FIcon pixels this file's components wrap. What has to
+  // hold is unchanged — five tabs, one set, no hand-drawn one-offs.
   const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', '_layout.tsx'), 'utf8');
-  for (const name of Object.keys(TABS)) expect(src).toContain(`tabIcon(${name})`);
+  const named: string[] = [];
+  for (const route of ['index', 'campus', 'board', 'lab', 'me']) {
+    expect(src).toContain(`tabIcon('${route}')`);
+    const m = src.match(new RegExp(`${route}: '([a-z2]+)'`));
+    expect(m).toBeTruthy();
+    named.push(m![1]);
+  }
+  // Five DIFFERENT icons. Checking only that each route names one let a copy-paste give
+  // the whole bar the same drawing, which is a bar you cannot read at a glance.
+  expect(new Set(named).size).toBe(5);
   expect(src).not.toMatch(/<PixelIcon/);
   expect(src).not.toMatch(/from 'react-native-svg'/);
 });
