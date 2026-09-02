@@ -130,6 +130,9 @@ export interface QuizContent {
   duration?: string; glossary?: QuizGloss[];
   // anatomy (body labeling): dots at x/y % of the body card + their correct label
   bodyDots?: { x: number; y: number; label: string }[];
+  // apgar (newborn scoring): the five signs, each with the observed finding and the
+  // correct 0/1/2. See server content.QuizApgarRow for why the sign stays English.
+  apgar?: { sign: string; finding: string; score: number }[];
 }
 export interface QuizVital { label: string; value: string; unit?: string; warn?: boolean }
 export interface QuizObs { text: string; warn?: boolean }

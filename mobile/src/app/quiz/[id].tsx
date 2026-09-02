@@ -30,6 +30,7 @@ import { TriageQuiz } from '@/components/quiz/TriageQuiz';
 import { AbbrQuiz } from '@/components/quiz/AbbrQuiz';
 import { AnatomyQuiz } from '@/components/quiz/AnatomyQuiz';
 import { DialogueOrderQuiz } from '@/components/quiz/DialogueOrderQuiz';
+import { ApgarQuiz } from '@/components/quiz/ApgarQuiz';
 
 import { useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
@@ -101,6 +102,7 @@ export default function QuizRoute() {
     case 'abbr': return <AbbrQuiz {...props} />;
     case 'anatomy': return <AnatomyQuiz {...props} />;
     case 'dialogue_order': return <DialogueOrderQuiz {...props} />;
+    case 'apgar': return <ApgarQuiz {...props} />;
     default: return <SentenceQuiz quiz={quiz} onExit={onExit} onComplete={onComplete} progress={progress} />;
   }
 }

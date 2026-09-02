@@ -405,6 +405,23 @@ type QuizContent struct {
 	// its correct body-part label. `bank` (above) supplies the draggable labels
 	// (the dot labels + distractors).
 	BodyDots []QuizBodyDot `yaml:"bodyDots" json:"bodyDots,omitempty"`
+
+	// apgar (newborn scoring): the five signs, each scored 0/1/2. The learner reads the
+	// finding and picks the score; the total is the sum of the correct ones. Its own
+	// field rather than reusing `items`, because a row here has THREE answers and one
+	// right one, which nothing else in this model expresses.
+	Apgar []QuizApgarRow `yaml:"apgar" json:"apgar,omitempty"`
+}
+
+// QuizApgarRow — one of the five APGAR signs.
+//
+// `Sign` is the clinical term the learner is here to learn (Heart rate, Respiration,
+// Muscle tone, Reflex, Color) and stays English. `Finding` is what was observed, in the
+// reader's language — it is the case, not the vocabulary. `Score` is the correct 0/1/2.
+type QuizApgarRow struct {
+	Sign    string `yaml:"sign" json:"sign"`
+	Finding string `yaml:"finding" json:"finding"`
+	Score   int    `yaml:"score" json:"score"`
 }
 
 // QuizBodyDot — a labelable point on the patient body diagram (anatomy quiz).

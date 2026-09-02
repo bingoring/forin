@@ -1,0 +1,20 @@
+# QZ-NICU-00006 — APGAR 채점표 (apgar). Score a newborn at one minute (handoff v31 M).
+#
+# The five signs stay in English: they are the vocabulary a nurse has to recognise on a
+# foreign ward. The findings are in the reader's language, because they are the case being
+# described, not the words being taught.
+id: QZ-NICU-00006
+type: apgar
+title: "APGAR 채점"
+content:
+  sub: "생후 1분 신생아 사정"
+  zone: "신생아중환자실"
+  context: "생후 1분. 아래 소견으로 APGAR 점수를 매기세요."
+  note: "7–10 정상 · 4–6 중등도 억제 · 0–3 즉각 소생. 5분 APGAR이 낮으면 소생술 후에도 재평가해요."
+  hint: "Appearance · Pulse · Grimace · Activity · Respiration의 머리글자예요."
+  apgar:
+    - { sign: "Heart rate",  finding: "100회/분 이상",        score: 2 }
+    - { sign: "Respiration", finding: "느리고 불규칙",         score: 1 }
+    - { sign: "Muscle tone", finding: "사지 굴곡 활발",        score: 2 }
+    - { sign: "Reflex",      finding: "얼굴 찡그림만",         score: 1 }
+    - { sign: "Color",       finding: "몸통 분홍 · 사지 청색",  score: 1 }
