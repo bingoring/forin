@@ -5,7 +5,7 @@
 // advances the spaced-repetition schedule; graded cards leave today's queue.
 // A speaker button reads the corrected line (expo-speech). 1:1 in spirit with v17 ScreenReviewLab.
 import { useCallback, useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
 import { PixelButton } from '@/components/PixelButton';
@@ -17,6 +17,9 @@ import { ModelAnswerList } from '@/components/model/ModelAnswerList';
 import { faceOf } from '@/data/reviewCardFace';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { playSfx } from '@/lib/sfx';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { colors, fonts, space, type as typeScale, fs } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 
@@ -227,13 +230,21 @@ export default function Lab() {
   // A FlatList mounts a window of rows instead. The header — title, tabs, hero, grade
   // guide, mini stats, filter chips — rides along as ListHeaderComponent so it still
   // scrolls with the list rather than becoming a fixed bar the design never asked for.
-  const title = <Text style={{ fontFamily: fonts.heading, fontSize: typeScale.screenHeading, color: C }}>리뷰랩 · 오답노트</Text>;
+  const title = (
+    <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
+      <Text style={nbText.hand(30)}>{t('lab.nbTitle')}</Text>
+      <View style={{ flex: 1 }} />
+      {cards.length > 0 && (
+        <Text numberOfLines={1} style={nbText.hand(14.5, nb.soft)}>
+          {t('lab.dueToday')} <Text style={{ color: nb.red }}>{cards.length}</Text>
+        </Text>
+      )}
+    </View>
+  );
   const tabs = (
     <SectionTabs
       section={section}
       onSelect={setSection}
-      pressed={pressedTab}
-      onPressedChange={setPressedTab}
       cardCount={cards.length}
       speak={speak}
       models={models}
@@ -241,7 +252,8 @@ export default function Lab() {
   );
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.cream }}>
+    <View style={{ flex: 1, backgroundColor: nb.cream }}>
+      <Rules />
       {section === 'notes' ? (
         <FlatList
           data={shown}
@@ -250,30 +262,27 @@ export default function Lab() {
             <View style={{ gap: space.md }}>
               {title}
               {tabs}
-              {/* hero */}
-              <Shadowed offset={4}>
-                <View style={{ backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, padding: 14 }}>
-                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C, opacity: 0.7 }}>오늘의 복습</Text>
-                  {cards.length > 0 ? (
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>
-                      <Text style={{ backgroundColor: '#fff' }}> {cards.length}개 카드 </Text> 복습할 시간이에요
-                    </Text>
-                  ) : (
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(18), color: C, marginTop: 6, lineHeight: 25 }}>오늘 복습할 카드가 없어요</Text>
-                  )}
-                  <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, marginTop: 8, lineHeight: 16 }}>
-                    AI가 교정한 문장을 <Text style={{ fontFamily: fonts.heading }}>{t('lab.likeALocal')}</Text> 카드로 바꿨어요. 기억이 흐려지기 전에 한 번 더 말해볼까요?
+              {/* Today's review, as a taped page with the count stamped on it. The stamp
+                  is the whole hero: a number you can see from across the room is what
+                  makes a spaced-repetition queue feel finite. */}
+              <NbPaper rot={-0.6} tape tapeLeft={118} style={{ paddingVertical: 14, paddingHorizontal: 15, flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                {cards.length > 0 && (
+                  <NbStamp color={nb.red} rot={-8} size={54} top={t('lab.today')} bottom={t('lab.nCards', { n: cards.length })} />
+                )}
+                <View style={{ flex: 1, minWidth: 0 }}>
+                  <Text style={[nbText.hand(19), { lineHeight: 22 }]}>
+                    {cards.length > 0 ? t('lab.beforeYouForget') : t('lab.nothingDue')}
                   </Text>
-                  {cards.length > 0 && (
-                    <View style={{ marginTop: 12 }}>
-                      <PixelButton icon="play" label={t('lab.startReview', { n: cards.length })} bg={colors.yellow} shadowColor={colors.yellowShadow} full onPress={() => router.push('/review')} />
-                    </View>
-                  )}
-                  <View style={{ position: 'absolute', top: -10, right: -4, transform: [{ rotate: '10deg' }] }}>
-                    <FIcon name="doc" size={26} />
-                  </View>
+                  <Text numberOfLines={2} style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>
+                    {t('lab.heroSub', { name: t('lab.likeALocal') })}
+                  </Text>
                 </View>
-              </Shadowed>
+                {cards.length > 0 && (
+                  <NbButton variant="ink" icon="pencil" iconColor={nb.paper} onPress={() => router.push('/review')}>
+                    {t('common.start')}
+                  </NbButton>
+                )}
+              </NbPaper>
 
               {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
               <Shadowed offset={3}>
@@ -399,69 +408,40 @@ export default function Lab() {
 /** The three section tabs. A component because both branches of the screen draw it —
  *  the notes list has it inside ListHeaderComponent, the other two inside a ScrollView —
  *  and a second copy of this JSX is a second thing to keep in step. */
-function SectionTabs({ section, onSelect, pressed, onPressedChange, cardCount, speak, models }: {
+/**
+ * The three sections, as index stickers.
+ *
+ * The inactive ones are pastel tabs tucked BEHIND the page, each a degree off square; the
+ * active one comes forward in the page's own colour and loses its bottom edge so it reads
+ * as continuous with the sheet below. That continuity is the whole device — without it
+ * they are three buttons in a row, which is what this replaced (and what the pixel
+ * version was, right down to a press offset that had to be faked to say "you are here").
+ *
+ * NbIndexTabs owns the drawing; this only names the tabs and their counts.
+ */
+function SectionTabs({ section, onSelect, cardCount, speak, models }: {
   section: Section;
   onSelect: (s: Section) => void;
-  pressed: Section | null;
-  onPressedChange: (s: Section | null) => void;
   cardCount: number;
   speak: SpeakSummary | null;
   models: ModelAnswerSummary | null;
 }) {
   const t = useT();
+  const at = SECTIONS.findIndex((sec) => sec.id === section);
   return (
-    <View testID="lab-sections" style={{ flexDirection: 'row', gap: TAB_GAP }}>
-      {SECTIONS.map((sec) => {
-        const active = section === sec.id;
-        const isDown = pressed === sec.id;
-        // The ACTIVE tab stays down. A cap that springs back the moment the finger
-        // lifts says "nothing happened"; the tab you are on is the one that is pressed
-        // in, and that is the whole point of a segmented control drawn as buttons.
-        const dx = isDown || active ? TAB_PRESS_OFFSET : 0;
-        return (
-          <View key={sec.id} style={{ flex: 1 }}>
-            {/* The hard offset shadow the cap drops into. Sized by insets rather than
-                width/height so a percentage cannot resolve against a stretched flex
-                ancestor and smear past the tab — the same reason PixelButton does it
-                this way. */}
-            <View
-              style={{
-                position: 'absolute',
-                left: TAB_PRESS_OFFSET,
-                top: TAB_PRESS_OFFSET,
-                right: -TAB_PRESS_OFFSET,
-                bottom: -TAB_PRESS_OFFSET,
-                backgroundColor: C,
-              }}
-            />
-            <Pressable
-              onPressIn={() => { onPressedChange(sec.id); playSfx('tap'); }}
-              onPressOut={() => onPressedChange(null)}
-              onPress={() => onSelect(sec.id)}
-              style={{
-                backgroundColor: active ? colors.lilac : '#fff',
-                borderWidth: 3,
-                borderColor: C,
-                paddingTop: 9,
-                paddingBottom: 7,
-                alignItems: 'center',
-                gap: 3,
-                transform: [{ translateX: dx }, { translateY: dx }],
-              }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                <FIcon name={sec.icon} size={13} />
-                <Text numberOfLines={1} style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C }}>{t(sec.labelKey)}</Text>
-              </View>
-              {/* The count, or an ellipsis while it is still unknown — a 0 that means
-                  "not loaded yet" is the one number this row must not show. */}
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: colors.textSoft }}>
-                {sectionCount(sec.id, cardCount, speak, models)}
-              </Text>
-            </Pressable>
-          </View>
-        );
-      })}
+    <View testID="lab-sections">
+      <NbIndexTabs
+        active={at < 0 ? 0 : at}
+        onSelect={(i: number) => { playSfx('tap'); onSelect(SECTIONS[i].id); }}
+        // The count, or nothing while it is still unknown — a 0 that means "not loaded
+        // yet" is the one number this row must not show. NbIndexTabs draws a number when
+        // it is given one, so undefined is how "not yet" is said.
+        tabs={SECTIONS.map((sec) => {
+          const n = sectionCount(sec.id, cardCount, speak, models);
+          const parsed = Number(n);
+          return [t(sec.labelKey), Number.isFinite(parsed) ? parsed : undefined] as [string, number?];
+        })}
+      />
     </View>
   );
 }
@@ -488,130 +468,139 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
   const dept = deptOf(card);
   const kind = kindOf(card);
   // The strip has to say SOMETHING about where the card came from. Department when we
-  // know it, else the scenario's own title — never the old fallback, which labelled
-  // every card "교정 노트" (the name of the screen it was already on).
+  // know it, else the scenario's own title — never the old fallback, which labelled every
+  // card "교정 노트" (the name of the screen it was already on).
   const headerLabel = dept || card.context?.title || t('lab.correctionNote');
   const face = faceOf(card.source);
   const [showCtx, setShowCtx] = useState(false);
   const ctx = card.context;
   const hasCtx = !!ctx && (!!ctx.title || !!ctx.situation || !!ctx.npc);
   return (
-    <Shadowed offset={4}>
-      <View style={{ backgroundColor: '#fff', borderWidth: 3, borderColor: C }}>
-        {/* header: per-dept tone + where it came from + which kind of card.
-            The red 복습 badge that used to sit on the right is gone. It was drawn on
-            every card and could never be anything else — this list is GET /me/review,
-            which returns only what is due today, so the badge said "due" to a screen
-            where being due is the entry condition. Its place goes to the kind (교정 /
-            제안), which does vary and is one of the filter chips, the way the
-            handoff's header carries a chip from its own filter row. */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 7, paddingHorizontal: 10, backgroundColor: toneOf(dept || card.topicTag), borderBottomWidth: 2.5, borderBottomColor: C }}>
-          <Text numberOfLines={1} style={{ flex: 1, fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{headerLabel}</Text>
-          {!!tag && (
-            <View style={{ backgroundColor: '#fff', borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{tag}</Text>
-            </View>
-          )}
-          <View style={{ backgroundColor: KIND_TONE[kind], borderWidth: 1.5, borderColor: C, paddingHorizontal: 5 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{t(KIND_LABEL[kind])}</Text>
-          </View>
-        </View>
-
-        <View style={{ paddingVertical: 10, paddingHorizontal: 12 }}>
-          {/* 맥락 — which scene this correction came from. First thing in the body,
-              per v26: the corrected line means little without the situation that
-              prompted it. The scene line always shows; the tap expands to the NPC
-              turn the learner was answering, which the handoff's mock has no data
-              for and we do. */}
-          {hasCtx && (
-            <View style={{ marginBottom: 9 }}>
-              <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                <View style={{ backgroundColor: colors.lilac, borderWidth: 1.5, borderColor: C, paddingVertical: 2, paddingHorizontal: 6 }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: C }}>맥락</Text>
-                    <DisclosureChevron open={showCtx} color={C} size={11} sw={1.8} />
-                  </View>
-                </View>
-                {!showCtx && !!(ctx?.situation || ctx?.title) && (
-                  <Text numberOfLines={2} style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 14 }}>
-                    {ctx?.situation || ctx?.title}
-                  </Text>
-                )}
-              </Pressable>
-              <Collapsible open={showCtx}>
-                <View style={{ marginTop: 8, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 8, paddingHorizontal: 10 }}>
-                  {!!ctx?.title && <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 4 }}>{ctx.title}</Text>}
-                  {!!ctx?.situation && <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, lineHeight: 15 }}>{ctx.situation}</Text>}
-                  {!!ctx?.npc && (
-                    <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: '#2A252233' }}>
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginBottom: 2 }}>상대가 이렇게 말했고</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 16 }}>{ctx.npc}</Text>
-                      <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft, lineHeight: 15, marginTop: 3 }}>→ 여기에 답하며 한 말이에요.</Text>
-                    </View>
-                  )}
-                </View>
-              </Collapsible>
-            </View>
-          )}
-
-          {/* the front — struck out only when it is something that WAS said. See
-              data/reviewCardFace: a graded scenario also files "you could have said this",
-              and drawing one of those behind a red ✕ claims the learner said a sentence
-              they never said. */}
-          <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start' }}>
-            {/* Ink for both, so both badges resolve to the v23 artwork. The red used
-                to be passed in; FIcon's `cross` is already drawn red and `hint` yellow,
-                so the colour prop was duplicating what the artwork encodes — and while
-                it was there, a correction badge drew the line icon and a suggestion
-                badge the pixel one, side by side in the same list. */}
-            <Badge icon={face.badgeIcon} bg={face.correction ? '#FEE2E2' : colors.yellow} color={C} />
-            <Text
-              style={{
-                flex: 1,
-                fontFamily: fonts.body,
-                fontSize: fs(12),
-                color: face.correction ? colors.textFaint : C,
-                textDecorationLine: face.strike ? 'line-through' : 'none',
-                lineHeight: 17,
-              }}
-            >
-              {card.front}
-            </Text>
-          </View>
-          {/* good */}
-          <View style={{ flexDirection: 'row', gap: 6, alignItems: 'flex-start', marginTop: 8 }}>
-            <Badge text="✓" bg={colors.mint} color={C} />
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: fs(13), color: C, lineHeight: 18 }}><Text style={{ backgroundColor: colors.mint }}>{card.back}</Text></Text>
-            <Pressable onPress={speak} hitSlop={8}><FIcon name="speaker" size={16} /></Pressable>
-            <Pressable onPress={practicePronunciation} hitSlop={8}><FIcon name="mic" size={16} /></Pressable>
-          </View>
-
-          {/* note */}
-          {!!card.note && (
-            <View style={{ marginTop: 10, backgroundColor: colors.paper, borderWidth: 1.5, borderColor: '#2A252255', borderStyle: 'dashed', paddingVertical: 6, paddingHorizontal: 8 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(10), color: colors.text, lineHeight: 15 }}><Text style={{ fontFamily: fonts.heading, color: C }}>왜? </Text>{card.note}</Text>
-            </View>
-          )}
-
-          {/* mastery pips */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 10 }}>
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(9), color: colors.textSoft, marginRight: 2 }}>숙련</Text>
-            {[0, 1, 2].map((i) => (
-              <View key={i} style={{ width: 9, height: 9, borderWidth: 1.5, borderColor: C, backgroundColor: i < card.masteryPips ? colors.mint : '#fff' }} />
-            ))}
-          </View>
-
-          {/* grade buttons */}
-          <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
-            {GRADES.map(({ g, labelKey, bg }) => (
-              <View key={g} style={{ flex: 1 }}>
-                <PixelButton label={t(labelKey)} bg={bg} shadowColor={C} offset={2} fontSize={11} borderWidth={2} paddingV={7} onPress={() => onGrade(card.id, g)} full />
-              </View>
-            ))}
-          </View>
-        </View>
+    <NbPaper rot={-0.5} style={{ paddingTop: 12, paddingBottom: 10, paddingHorizontal: 14 }}>
+      {/* Where it came from, and which kind of card. Printed small at the top the way a
+          filed note carries its source.
+          The red 복습 badge that used to sit here is gone: it was drawn on every card and
+          could never be anything else — this list is GET /me/review, which returns only
+          what is due, so the badge said "due" on a screen where being due is the entry
+          condition. Its place goes to the KIND (교정 / 제안), which does vary and is one
+          of the filter chips. */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: nbFonts.bodyBold, fontSize: 10, color: nb.blue }}>
+          {headerLabel}
+        </Text>
+        {!!tag && <NbTag color={nb.soft}>{tag}</NbTag>}
+        <NbTag color={face.correction ? nb.red : nb.green}>{t(KIND_LABEL[kind])}</NbTag>
       </View>
-    </Shadowed>
+
+      {/* 맥락 — which scene this came from, written in as a pencil note. First thing in
+          the body (v26): the corrected line means little without the situation that
+          prompted it. The tap expands to the NPC turn the learner was answering. */}
+      {hasCtx && (
+        <View style={{ marginTop: 8 }}>
+          <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <NbIcon name="pencil" size={13} color={nb.soft} />
+            <Text numberOfLines={showCtx ? undefined : 2} style={[nbText.hand(14, nb.soft), { flex: 1, minWidth: 0 }]}>
+              {ctx?.situation || ctx?.title}
+            </Text>
+            <NbIcon name={showCtx ? 'chevronUp' : 'chevronDown'} size={12} color={nb.soft} />
+          </Pressable>
+          <Collapsible open={showCtx}>
+            <NbMemo color={nb.soft} rot={0.3} style={{ marginTop: 8 }}>
+              {!!ctx?.title && <Text style={[nbText.hand(15), { marginBottom: 3 }]}>{ctx.title}</Text>}
+              {!!ctx?.situation && <Text style={nbText.body(11, nb.soft)}>{ctx.situation}</Text>}
+              {!!ctx?.npc && (
+                <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.16)' }}>
+                  <Text style={nbText.hand(13, nb.soft)}>{t('lab.theySaid')}</Text>
+                  <Text style={[nbText.body(11.5), { marginTop: 2 }]}>{ctx.npc}</Text>
+                  <Text style={[nbText.hand(13, nb.soft), { marginTop: 3 }]}>{t('lab.andYouAnswered')}</Text>
+                </View>
+              )}
+            </NbMemo>
+          </Collapsible>
+        </View>
+      )}
+
+      {/* What was said, struck out in red pen — but only when it is something that WAS
+          said. See data/reviewCardFace: a graded scenario also files "you could have said
+          this", and drawing one of those behind a strike claims the learner said a
+          sentence they never said. */}
+      <Text
+        style={[
+          nbText.body(13.5, nb.soft),
+          { marginTop: 8, textDecorationLine: face.strike ? 'line-through' : 'none', textDecorationColor: nb.red },
+        ]}
+      >
+        {card.front}
+      </Text>
+
+      {/* The correction, under a highlighter, with the arrow a red pen leaves. */}
+      <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 7, marginTop: 6 }}>
+        <Text style={[nbText.hand(15, nb.red), { flexShrink: 0, transform: [{ rotate: '-4deg' }] }]}>{'\u2192'}</Text>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <NbMark textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 14.5, lineHeight: 22 }}>{card.back}</NbMark>
+        </View>
+        <Pressable onPress={speak} hitSlop={8}><NbIcon name="speaker" size={17} /></Pressable>
+        <Pressable onPress={practicePronunciation} hitSlop={8}><NbIcon name="mic" size={17} /></Pressable>
+      </View>
+
+      {/* 왜? — the reason, in blue pen. It is the only part of the card that teaches
+          anything transferable, so it is not a footnote. */}
+      {!!card.note && (
+        <NbMemo color={nb.blue} rot={-0.3} style={{ marginTop: 9 }}>
+          <Text style={nbText.hand(13.5)}>
+            <Text style={{ color: nb.blue }}>{t('lab.whyLabel')} </Text>
+            {card.note}
+          </Text>
+        </NbMemo>
+      )}
+
+      {/* 숙련 — three pips. Round here rather than square: on paper a filled circle is a
+          pencil dot, and the squares belonged to the pixel line's progress boxes. */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 10 }}>
+        <Text style={nbText.body(10, nb.soft)}>{t('lab.mastery')}</Text>
+        {[0, 1, 2].map((i) => (
+          <View
+            key={i}
+            style={{
+              width: 9, height: 9, borderRadius: 4.5, borderWidth: 1.5,
+              borderColor: i < card.masteryPips ? nb.green : nb.soft,
+              backgroundColor: i < card.masteryPips ? 'rgba(95,141,90,.4)' : 'transparent',
+            }}
+          />
+        ))}
+      </View>
+
+      {/* The four SRS answers. Paper for the three that keep the card in rotation and ink
+          for 쉬움, which is the one that puts it away for days — the weight says which
+          choice is the commitment. */}
+      <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
+        {GRADES.map(({ g, labelKey }, i) => (
+          <View key={g} style={{ flex: 1 }}>
+            <NbButton
+              variant={i === GRADES.length - 1 ? 'ink' : 'paper'}
+              size="sm"
+              full
+              iconColor={i === GRADES.length - 1 ? nb.paper : nb.ink}
+              onPress={() => onGrade(card.id, g)}
+            >
+              {t(labelKey)}
+            </NbButton>
+          </View>
+        ))}
+      </View>
+    </NbPaper>
+  );
+}
+
+/** The notebook's ruled lines, behind the list. */
+function Rules() {
+  const { height } = useWindowDimensions();
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+      {Array.from({ length: Math.ceil(height / RULE_H) }).map((_, i) => (
+        <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+      ))}
+    </View>
   );
 }
 

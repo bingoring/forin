@@ -192,7 +192,7 @@ test('the three sections are one tab row, and 교정 노트 opens first', async 
   expect(out).toContain('말하기');
   expect(out).toContain('모범답안');
   // The default section's content — the daily-review hero — is on screen…
-  expect(out).toContain('오늘의 복습');
+  expect(out).toContain('잊어버리기 전에 다시 보기');
   // …and the other two sections' are not. This is the half that a source-level
   // check cannot make: everything used to render at once.
   expect(out.some((x) => x.includes('가장 급한'))).toBe(false);
@@ -293,7 +293,7 @@ test('tapping 말하기 lands on the LIST, not a summary of it', async () => {
   // The list's own controls come with it.
   expect(out.some((x) => x === '약한 순' || x === '최신')).toBe(true);
   // …and the 교정 노트 content is gone rather than merely scrolled past.
-  expect(out).not.toContain('오늘의 복습');
+  expect(out).not.toContain('잊어버리기 전에 다시 보기');
   expect(out.some((x) => x.includes('Can you tell me about your pain?'))).toBe(false);
 });
 
@@ -302,10 +302,10 @@ test('tapping 모범답안 swaps again, and 교정 노트 comes back', async () 
   await act(async () => { tab(tree.root, '모범답안').props.onPress(); });
   // Again the list itself: a scenario group, not a block linking to one.
   expect(texts(tree.root).some((x) => x.includes('흉통 환자 트리아지'))).toBe(true);
-  expect(texts(tree.root)).not.toContain('오늘의 복습');
+  expect(texts(tree.root)).not.toContain('잊어버리기 전에 다시 보기');
   await act(async () => { tab(tree.root, '교정 노트').props.onPress(); });
   const back = texts(tree.root);
-  expect(back).toContain('오늘의 복습');
+  expect(back).toContain('잊어버리기 전에 다시 보기');
   expect(back.some((x) => x.includes('Can you tell me about your pain?'))).toBe(true);
 });
 
@@ -316,8 +316,12 @@ test('a card names the scene it came from without being tapped', async () => {
   // height), so the expanded content is in the tree whether or not it is on screen —
   // a page-wide `toContain` here passes even with the scene line still hidden behind
   // the chevron, which is exactly the assertion this replaced.
+  // v29 writes the scene as a pencil line with a pencil doodle instead of labelling it
+  // 맥락 — on paper the note IS the context, and a label saying so is chrome. The header
+  // is therefore found by the line it carries.
   const header = tree.root.findAll(
-    (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes('맥락'),
+    (n) => typeof n.type === 'function' && n.props?.onPress !== undefined
+      && texts(n).some((x) => x.includes('통증 양상을 묻는 장면')),
     { deep: true },
   ).slice(-1)[0];
   // v26 puts 맥락 at the top of the card body as a plain line: the corrected sentence
@@ -337,8 +341,13 @@ test('a tab whose count is still loading shows no number at all', async () => {
     const tree = await mount();
     const row = tree.root.findByProps({ testID: 'lab-sections' });
     const labels = texts(row);
-    expect(labels.filter((x) => x === '…')).toHaveLength(2); // 말하기, 모범답안
+    // NbIndexTabs draws a number when it is given one, so "not loaded" is said by giving
+    // it none — which is stronger than the ellipsis this replaced: there is no glyph to
+    // mistake for a value.
     expect(labels).not.toContain('0');
+    expect(labels).not.toContain('…');
+    expect(labels).toContain('말하기');
+    expect(labels).toContain('모범답안');
   } finally {
     mockPending.on = false;
   }
@@ -370,6 +379,15 @@ function invisibleText(node: ReactTestInstance): string[] {
   return bad;
 }
 
+// Five tests used to live here describing the PIXEL tab: a cap dropping onto a hard offset
+// shadow, an active tab held down to say "you are here", a press that cannot reach its
+// neighbour. v29 replaces the device entirely — the sections are index stickers, where
+// "you are here" is said by coming forward in the page's own colour and losing the bottom
+// edge, and there is no cap to drop. That behaviour is asserted where the component lives
+// (components/nb/nbUI.test.tsx), so repeating it here would be two tests for one drawing.
+//
+// What this file still owns is the WIRING: three tabs, the right one open first, a count
+// per tab, an unknown count showing no number, and tapping one swapping the body.
 test('no chip paints its label or its count in its own colour', async () => {
   // The 전체 chip's tone was the ink colour, which the chip draws BOTH its label and
   // its count in: inactive, the count box was a black square with black digits;
@@ -396,32 +414,44 @@ test('no chip paints its label or its count in its own colour', async () => {
   }
 });
 
-test('a tab presses like the app\'s buttons: the face drops, and it blips', async () => {
+// The five tests that used to live here described the PIXEL tab: a cap that drops onto a
+// hard offset shadow, an active tab held down to say "you are here", a press that cannot
+// reach its neighbour. v29 replaces the device entirely — the sections are index stickers,
+// where "you are here" is said by coming forward in the page's colour and losing the
+// bottom edge, and there is no cap to drop. That behaviour is asserted where the component
+// lives (components/nb/nbUI.test.tsx: "the index tab in front joins the page instead of
+// closing its box"), so repeating it here would be two tests for one drawing.
+//
+// What this file still owns is the WIRING, which is above: three tabs, the right one open
+// first, a count per tab, an unknown count showing no number, and tapping one swapping the
+// body.
+
+test('no chip paints its label or its count in its own colour', async () => {
+  // The 전체 chip's tone was the ink colour, which the chip draws BOTH its label and
+  // its count in: inactive, the count box was a black square with black digits;
+  // active, the whole chip went black and swallowed the word 전체. Nothing in the
+  // component guards against that — the tone is data — so the check is here.
   const tree = await mount();
-  const t = tab(tree.root, '말하기');
-  const face = () => {
-    const st = flat(
-      tabFace(tree.root, '말하기').props.style,
-    ) as { transform?: { translateX?: number; translateY?: number }[] };
-    return st.transform ?? [];
-  };
-
-  // At rest the face sits flush.
-  expect(face()).toEqual([{ translateX: 0 }, { translateY: 0 }]);
-
-  mockSounds.length = 0;
-  await act(async () => { t.props.onPressIn(); });
-  // Dropped onto its shadow, both axes — the same mechanic PixelButton uses, which is
-  // what makes it feel like the rest of the app rather than like a link.
-  const down = face() as { translateX?: number; translateY?: number }[];
-  expect(down[0].translateX).toBeGreaterThan(0);
-  expect(down[1].translateY).toBe(down[0].translateX);
-  // The blip fires on press-IN, with the movement: a sound on press-out would read as lag.
-  expect(mockSounds).toEqual(['tap']);
-
-  await act(async () => { t.props.onPressOut(); });
-  expect(face()).toEqual([{ translateX: 0 }, { translateY: 0 }]);
+  const labels = ['전체', 'ER', 'ICU', '교정', '제안'];
+  for (const label of labels) {
+    const row = chipRow(tree.root);
+    const hits = row.findAll(
+      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
+      { deep: true },
+    );
+    const chip = hits[hits.length - 1];
+    // Inactive: the count box is filled with the tone.
+    expect(invisibleText(chip)).toEqual([]);
+    // Active: the whole chip is filled with the tone.
+    await act(async () => { chip.props.onPress(); });
+    const active = chipRow(tree.root).findAll(
+      (n) => typeof n.type === 'function' && n.props?.onPress !== undefined && texts(n).includes(label),
+      { deep: true },
+    ).slice(-1)[0];
+    expect(invisibleText(active)).toEqual([]);
+  }
 });
+
 
 /** True when a tab's cap is sitting down on its shadow. */
 function isDown(root: ReactTestInstance, label: string): boolean {
@@ -429,77 +459,9 @@ function isDown(root: ReactTestInstance, label: string): boolean {
   return (st.transform?.[0]?.translateX ?? 0) > 0;
 }
 
-test('the tab you are ON stays pressed in', async () => {
-  const tree = await mount();
-  // 교정 노트 is the section in view, and its cap is down without anyone touching it. A
-  // cap that springs back when the finger lifts says nothing happened.
-  expect(isDown(tree.root, '교정 노트')).toBe(true);
-  expect(isDown(tree.root, '말하기')).toBe(false);
 
-  await act(async () => { tab(tree.root, '말하기').props.onPress(); });
-  expect(isDown(tree.root, '말하기')).toBe(true);
-  expect(isDown(tree.root, '교정 노트')).toBe(false);
-});
 
-test('only the pressed third moves', async () => {
-  const tree = await mount();
-  // 모범답안 is neither active nor pressed, so it is the one that must not move when a
-  // different tab is held. Dropping the whole row would say the row is one button.
-  await act(async () => { tab(tree.root, '말하기').props.onPressIn(); });
-  expect(isDown(tree.root, '말하기')).toBe(true);
-  expect(isDown(tree.root, '모범답안')).toBe(false);
-});
 
-test('the whole cap moves — border and all — onto its own shadow', async () => {
-  const tree = await mount();
-  const row = tree.root.findByProps({ testID: 'lab-sections' });
-
-  // Each tab has its own hard shadow, offset down-right, in the ink colour. Without one
-  // there is nothing for the cap to drop onto and the press has no depth — which is
-  // what the first version looked like: the label shifted inside a cell that clipped
-  // it, while the black outline never moved.
-  const shadows = row.findAll((n) => {
-    const st = flat(n.props?.style);
-    return String(n.type) === 'View' && st.position === 'absolute' && st.backgroundColor === '#2A2522'
-      && typeof st.left === 'number' && st.left > 0 && st.right === -st.left;
-  }, { deep: true });
-  expect(shadows).toHaveLength(3);
-
-  // The thing that moves carries the border. A cap whose outline stays behind is the
-  // defect this replaced.
-  const cap = tabFace(tree.root, '말하기');
-  expect(flat(cap.props.style).borderWidth).toBe(3);
-  await act(async () => { tab(tree.root, '말하기').props.onPressIn(); });
-  const moved = flat(tabFace(tree.root, '말하기').props.style) as {
-    borderWidth?: number;
-    transform?: { translateX?: number; translateY?: number }[];
-  };
-  expect(moved.borderWidth).toBe(3);
-  // Exactly the shadow's depth, so the cap lands ON it rather than short of or past it.
-  const depth = flat(shadows[0].props.style).left as number;
-  expect(moved.transform?.[0].translateX).toBe(depth);
-  expect(moved.transform?.[1].translateY).toBe(depth);
-
-  // …and it is no longer faked by clipping.
-  const clipped = row.findAll((n) => String(n.type) === 'View' && flat(n.props?.style).overflow === 'hidden', { deep: true });
-  expect(clipped).toHaveLength(0);
-});
-
-test('a pressed tab cannot reach its neighbour', async () => {
-  const tree = await mount();
-  const row = tree.root.findByProps({ testID: 'lab-sections' });
-  const gap = flat(row.props.style).gap as number;
-  const shadow = row.findAll((n) => {
-    const st = flat(n.props?.style);
-    return String(n.type) === 'View' && st.position === 'absolute' && typeof st.left === 'number' && st.left > 0;
-  }, { deep: true })[0];
-  const depth = flat(shadow.props.style).left as number;
-
-  // The shadow already sits `depth` to the right of its cap, and a pressed cap lands on
-  // it. So the space between caps has to be MORE than that, or pressing 교정 노트 puts
-  // its edge inside 말하기.
-  expect(gap).toBeGreaterThan(depth);
-});
 
 test('the card list is virtualized — a window of cards is mounted, not the pile', async () => {
   // Fifty due cards is an ordinary week of practice. Mounting all of them cost 5,431
@@ -532,4 +494,25 @@ test('the disclosure toggle does not re-lay-out the whole pile', async () => {
   } finally {
     mockManyCards.on = false;
   }
+});
+
+test('a sentence the learner never said is not struck through', async () => {
+  // A graded scenario also files "you could have said this" (source: 'grade'). Drawing
+  // one of those behind a strike claims they said a sentence they never said — which is
+  // worse than not filing it, because the learner corrects a mistake they did not make.
+  const tree = await mount();
+  const line = (text: string) => {
+    const hit = tree.root.findAll(
+      (n) => String(n.type) === 'Text' && n.children.some((c) => c === text),
+      { deep: true },
+    )[0];
+    expect(hit).toBeTruthy();
+    const st = hit.props.style;
+    const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean).map((x: unknown) => (Array.isArray(x) ? Object.assign({}, ...x) : x))) : st;
+    return flat.textDecorationLine;
+  };
+  // The correction WAS said, so it is struck.
+  expect(line('I want to ask about your pain.')).toBe('line-through');
+  // The suggestion was not.
+  expect(line('통증이 어디로 퍼지는지 묻기')).toBe('none');
 });
