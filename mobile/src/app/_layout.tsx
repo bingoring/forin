@@ -25,6 +25,16 @@ const FONTS = {
   DungGeunMo: require('../../assets/fonts/DungGeunMo.ttf'),
   Galmuri11: require('../../assets/fonts/Galmuri11.ttf'),
   'Galmuri11-Bold': require('../../assets/fonts/Galmuri11-Bold.ttf'),
+  // The 근무 수첩 line (v29). Three faces, three jobs — see theme/nb.ts: Gaegu is the
+  // handwriting, Pretendard is what has to be read, IBM Plex Mono is what is
+  // machine-printed inside the fiction (codes, IPA, the passport's MRZ).
+  Gaegu: require('../../assets/fonts/Gaegu-Regular.ttf'),
+  'Gaegu-Bold': require('../../assets/fonts/Gaegu-Bold.ttf'),
+  Pretendard: require('../../assets/fonts/Pretendard-Regular.ttf'),
+  'Pretendard-SemiBold': require('../../assets/fonts/Pretendard-SemiBold.ttf'),
+  'Pretendard-Bold': require('../../assets/fonts/Pretendard-Bold.ttf'),
+  IBMPlexMono: require('../../assets/fonts/IBMPlexMono-Regular.ttf'),
+  'IBMPlexMono-SemiBold': require('../../assets/fonts/IBMPlexMono-SemiBold.ttf'),
 };
 
 // Root navigator: onboarding stack + main tabs. Rehydrates the session from
