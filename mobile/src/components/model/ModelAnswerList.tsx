@@ -6,9 +6,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { api, type ModelAnswerGroup, type ModelAnswerSort } from '@/api/client';
-import { PixelIcon } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
-import { Shadowed } from '@/components/campus/parts';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbChip, NbIndexTabs, NbPaper, nbText } from '@/components/nb/NbUI';
+import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { ModelAnswerGroupRow } from '@/components/model/ModelAnswerGroupRow';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useT } from '@/i18n';
@@ -104,34 +104,21 @@ export function ModelAnswerList({ embedded = false, above }: {
 
   const headerInner = (
     <>
-        <View style={styles.controls}>
-          {/* Segmented sort — two halves of one control, not a dropdown. */}
-          <Shadowed offset={2}>
-            <View style={styles.segment}>
-              {(['recent', 'needs-work'] as ModelAnswerSort[]).map((s) => (
-                <Pressable key={s} onPress={() => onSort(s)} style={[styles.segHalf, sort === s && styles.segActive]}>
-                  <Text style={[styles.segText, sort === s && styles.segTextActive]}>
-                    {t(s === 'recent' ? 'list.sortRecent' : 'list.sortNeedsWork')}
-                  </Text>
-                </Pressable>
-              ))}
-            </View>
-          </Shadowed>
-          <View style={styles.spacer} />
-        </View>
+        {/* The sort is an index tab — two orderings of one list, not two lists. */}
+        <NbIndexTabs
+          tabs={[[t('list.sortRecent')], [t('list.sortNeedsWork')]]}
+          active={sort === 'recent' ? 0 : 1}
+          onSelect={(i) => onSort(i === 0 ? 'recent' : 'needs-work')}
+        />
 
+        {/* Departments are a MULTI-select, so these are chips rather than tabs: a tab row
+            says "one of these", and this row says "any of these". */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
-          {available.map((d) => {
-            const active = depts.includes(d);
-            return (
-              <Pressable key={d} onPress={() => toggleDept(d)}>
-                <View style={[styles.chip, active && styles.chipActive]}>
-                  {active && <FIcon name="check" size={11} />}
-                  <Text style={styles.chipText}>{d}</Text>
-                </View>
-              </Pressable>
-            );
-          })}
+          {available.map((d, i) => (
+            <NbChip key={d} on={depts.includes(d)} rot={i % 2 ? 0.8 : -0.8} onPress={() => toggleDept(d)}>
+              {d}
+            </NbChip>
+          ))}
         </ScrollView>
 
         {/* `total` is the unfiltered group count and the department filter is still
@@ -151,7 +138,7 @@ export function ModelAnswerList({ embedded = false, above }: {
   const list = (
     <>
       {state === 'loading' ? (
-        <View style={styles.center}><ActivityIndicator color={colors.ink} /></View>
+        <View style={styles.center}><ActivityIndicator color={nb.ink} /></View>
       ) : state === 'error' ? (
         <View style={styles.center}><Text style={styles.emptyHint}>{t('model.emptyHint')}</Text></View>
       ) : (
@@ -172,7 +159,7 @@ export function ModelAnswerList({ embedded = false, above }: {
           )}
           ListEmptyComponent={
             <View style={styles.center}>
-              <PixelIcon name="note" color={colors.textFaint} size={36} sw={1.5} />
+              <NbIcon name="pencil" size={32} color={nb.soft} />
               <Text style={styles.emptyTitle}>{t('model.empty')}</Text>
               <Text style={styles.emptyHint}>{t('model.emptyHint')}</Text>
             </View>
@@ -205,7 +192,7 @@ export function ModelAnswerList({ embedded = false, above }: {
             <View style={styles.embeddedHeader}>
               {above}
               {headerInner}
-              {state === 'loading' && <ActivityIndicator color={colors.ink} style={{ marginTop: 24 }} />}
+              {state === 'loading' && <ActivityIndicator color={nb.ink} style={{ marginTop: 24 }} />}
               {state === 'error' && <Text style={styles.emptyHint}>{t('model.emptyHint')}</Text>}
             </View>
           }
@@ -220,7 +207,7 @@ export function ModelAnswerList({ embedded = false, above }: {
           ListEmptyComponent={
             state === 'ok' ? (
               <View style={styles.center}>
-                <PixelIcon name="note" color={colors.textFaint} size={36} sw={1.5} />
+                <NbIcon name="pencil" size={32} color={nb.soft} />
                 <Text style={styles.emptyTitle}>{t('model.empty')}</Text>
                 <Text style={styles.emptyHint}>{t('model.emptyHint')}</Text>
               </View>
@@ -233,119 +220,59 @@ export function ModelAnswerList({ embedded = false, above }: {
 
   return (
     <View style={styles.screen}>
+      <Rules />
       <View style={styles.header}>
         <View style={styles.titleRow}>
-          <Pressable onPress={() => router.back()} hitSlop={10} style={styles.back}>
-            <PixelIcon name="chevron-left" color={colors.ink} size={14} sw={2.2} />
+          <Pressable onPress={() => router.back()} hitSlop={10}>
+            <NbPaper rot={-1} style={styles.back}><NbIcon name="chevronLeft" size={16} /></NbPaper>
           </Pressable>
-          <Text style={styles.title}>{t('list.modelTitle')}</Text>
+          <Text numberOfLines={1} style={[nbText.hand(26), { flex: 1, minWidth: 0 }]}>{t('list.modelTitle')}</Text>
         </View>
-        <View style={styles.controls}>
-          {/* Segmented sort — two halves of one control, not a dropdown. */}
-          <Shadowed offset={2}>
-            <View style={styles.segment}>
-              {(['recent', 'needs-work'] as ModelAnswerSort[]).map((s) => (
-                <Pressable key={s} onPress={() => onSort(s)} style={[styles.segHalf, sort === s && styles.segActive]}>
-                  <Text style={[styles.segText, sort === s && styles.segTextActive]}>
-                    {t(s === 'recent' ? 'list.sortRecent' : 'list.sortNeedsWork')}
-                  </Text>
-                </Pressable>
-              ))}
-            </View>
-          </Shadowed>
-          <View style={styles.spacer} />
-        </View>
-
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
-          {available.map((d) => {
-            const active = depts.includes(d);
-            return (
-              <Pressable key={d} onPress={() => toggleDept(d)}>
-                <View style={[styles.chip, active && styles.chipActive]}>
-                  {active && <FIcon name="check" size={11} />}
-                  <Text style={styles.chipText}>{d}</Text>
-                </View>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
-
-        {/* `total` is the unfiltered group count and the department filter is still
-            client-side here, so the count names what is SHOWN rather than implying a
-            ratio. (The speak list filters server-side; groups carry their cards, so
-            paging them per department is a bigger change than this screen needs.) */}
-        {total > 0 && (
-          <Text style={styles.count}>
-            {done ? t('list.countAllGroups', { total }) : t('list.countPartialGroups', { shown: groups.length, total })}
-          </Text>
-        )}
+        {/* The same controls as the embedded placement — one set, not two that have to
+            be kept in agreement. */}
+        {headerInner}
       </View>
       {list}
     </View>
   );
 }
 
+/** The notebook's ruled lines, behind the pinned header — the list scrolls over them. */
+function Rules() {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
+      {Array.from({ length: 34 }).map((_, i) => (
+        <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+      ))}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.cream },
-  embedded: { flex: 1, backgroundColor: colors.cream },
-  embeddedBody: { paddingBottom: 40 },
-  embeddedHeader: { paddingTop: 56, paddingHorizontal: 14, paddingBottom: 9, gap: 8 },
+  screen: { flex: 1, backgroundColor: nb.cream },
+  embedded: { flex: 1, backgroundColor: nb.cream },
+  embeddedBody: { paddingBottom: 40, paddingHorizontal: 20 },
+  embeddedHeader: { paddingTop: 4, paddingBottom: 9, gap: 9 },
   header: {
     // No fixed height — see the speak list for why the handoff's 186 does not port.
     paddingTop: 52,
     paddingBottom: 9,
-    paddingHorizontal: 14,
-    backgroundColor: colors.cream,
-    borderBottomWidth: 3,
-    borderBottomColor: colors.ink,
-    gap: 7,
+    paddingHorizontal: 20,
+    gap: 9,
+    borderBottomWidth: 1.5,
+    borderBottomColor: nb.paperEdge,
   },
-  titleRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  back: { padding: 4 },
-  title: { fontFamily: fonts.heading, fontSize: fs(16), color: colors.ink },
-  controls: { flexDirection: 'row', alignItems: 'center' },
-  spacer: { flex: 1 },
-  segment: { flexDirection: 'row', borderWidth: 2.5, borderColor: colors.ink, backgroundColor: '#fff' },
-  segHalf: { paddingVertical: 5, paddingHorizontal: 12 },
-  segActive: { backgroundColor: colors.yellow },
-  segText: { fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft },
-  segTextActive: { color: colors.ink },
-  filterBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    borderWidth: 2,
-    borderColor: colors.ink,
-    backgroundColor: '#fff',
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-  },
-  filterText: { fontFamily: fonts.heading, fontSize: fs(10), color: colors.ink },
-  chipRow: { gap: 6, paddingVertical: 2 },
-  chip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    borderWidth: 2,
-    borderColor: colors.ink,
-    backgroundColor: '#fff',
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-  },
-  chipActive: { backgroundColor: colors.mint },
-  chipText: { fontFamily: fonts.heading, fontSize: fs(10), color: colors.ink },
-  count: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft },
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  back: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
+  chipRow: { gap: 7, paddingVertical: 2, paddingRight: 20 },
+  count: { fontFamily: nbFonts.mono, fontSize: 9.5, color: nb.soft },
   scroller: { flex: 1 },
-  listBody: { paddingBottom: 40 },
-  center: { alignItems: 'center', justifyContent: 'center', paddingVertical: 48, gap: 8, paddingHorizontal: 24 },
-  emptyTitle: { fontFamily: fonts.heading, fontSize: fs(12), color: colors.ink },
-  emptyHint: { fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', lineHeight: 17 },
+  listBody: { paddingBottom: 40, paddingHorizontal: 20 },
+  center: { alignItems: 'center', justifyContent: 'center', paddingVertical: 48, gap: 9, paddingHorizontal: 24 },
+  emptyTitle: { fontFamily: nbFonts.hand, fontSize: 17, color: nb.ink },
+  emptyHint: { fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, textAlign: 'center', lineHeight: 17 },
   footer: { alignItems: 'center', paddingVertical: 18, gap: 6 },
   pips: { flexDirection: 'row', gap: 4 },
-  pip: { width: 6, height: 6, backgroundColor: colors.ink + '55' },
-  footerText: { fontFamily: fonts.body, fontSize: fs(10), color: colors.textSoft },
-  sheet: { padding: 16, gap: 12 },
-  sheetTitle: { fontFamily: fonts.heading, fontSize: fs(13), color: colors.ink },
-  sheetChips: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
-  sheetActions: { flexDirection: 'row', gap: 8 },
+  pip: { width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(62,54,43,.3)' },
+  footerText: { fontFamily: nbFonts.hand, fontSize: 14, color: nb.soft },
 });

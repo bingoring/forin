@@ -1,7 +1,7 @@
 // The score bands the handoff's 직접 말하기 연습 block is built on: 60↓ / 60–79 /
 // 80+ (04_SCREENS ⑨). One module so the summary block, the result screen and the
 // full list can never draw three different boundaries for the same score.
-import { colors } from '@/theme/tokens';
+import { BAND } from '@/components/pron/nbPron';
 import type { SpokenSentence } from '@/api/client';
 
 export type Band = 'low' | 'mid' | 'high';
@@ -15,11 +15,12 @@ export function bandOf(overall: number): Band {
   return 'low';
 }
 
-/** Band colours reuse the app's existing semantics — red needs work, yellow is
- *  getting there, mint is good — so the bars read the same way as every other
- *  score in the app. */
+/** Band colours are the SAME three the pronunciation screen stamps its syllables with
+ *  (components/pron/nbPron) — pink needs work, yellow is getting there, green is good.
+ *  One palette, because a sentence scored 42 is drawn on three screens and a learner
+ *  comparing them must not have to learn two colour languages. */
 export function bandColor(band: Band): string {
-  return band === 'high' ? colors.mint : band === 'mid' ? colors.yellow : colors.red;
+  return band === 'high' ? BAND.ok : band === 'mid' ? BAND.weak : BAND.bad;
 }
 
 /** i18n key for a band's label, so the bar legend is translated like everything
