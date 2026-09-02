@@ -19,22 +19,23 @@
 // same defect the curriculum had. An empty list now says so.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 import { api, type Curriculum, type DeptSituation } from '@/api/client';
 import { BottomSheet } from '@/components/BottomSheet';
-import { PixelButton } from '@/components/PixelButton';
-import { PixelIcon } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
+import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
+import { NbButton, NbGrabber, NbMark, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { STEP_META, type StepKind } from '@/data/campus';
-import { colors, fonts, fs } from '@/theme/tokens';
-import { Shadowed } from './parts';
+import { nb, nbFonts } from '@/theme/nb';
 import { t, useLocale, useT } from '@/i18n';
-import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
+import { Collapsible } from '@/components/Collapsible';
 import { toggleSituationFavorite, useIsSituationFavorite } from '@/lib/favorites';
 
-const C = colors.ink;
 const PAGE = 20;
 
 export type DeptTarget = {
+  /** The 근무 수첩 doodle for this ward, from BUILDING_STYLE. Optional so a caller that
+   *  has not been ported yet still compiles — it falls back to the hospital cross. */
+  nbIcon?: NbIconName;
   deptCode: string;
   place: string; // "응급의료센터"
   where: string; // "본관 1F 응급의료센터"
@@ -123,14 +124,17 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
       // on a short sheet: this one opens at the top of the screen, so the strip is as far
       // from the thumb as a control gets.
       header={target ? (
-        <View style={{ backgroundColor: colors.cream, borderBottomWidth: 3, borderBottomColor: C, paddingTop: 2, paddingHorizontal: 14, paddingBottom: 11 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
-            <View style={{ width: 34, height: 34, backgroundColor: target.accent, borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-              <FIcon name="pin" size={18} />
-            </View>
+        <View style={{ backgroundColor: nb.cream, paddingTop: 2, paddingHorizontal: 20, paddingBottom: 10 }}>
+          <NbGrabber style={{ marginTop: 2, marginBottom: 8 }} />
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+            {/* A small card with the ward's own doodle, tilted — the pixel version put a
+                coloured square with a pin in it, which said "a place" and not which. */}
+            <NbPaper rot={-2} style={{ width: 46, height: 46, alignItems: 'center', justifyContent: 'center' }}>
+              <NbIcon name={target.nbIcon ?? 'hospital'} size={28} />
+            </NbPaper>
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(15), color: C }}>{target.place}</Text>
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>{target.where}</Text>
+              <Text numberOfLines={1} style={[nbText.hand(24), { lineHeight: 26 }]}>{target.place}</Text>
+              <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>{target.where}</Text>
             </View>
           </View>
         </View>
@@ -147,133 +151,165 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
               if (contentOffset.y + layoutMeasurement.height >= contentSize.height - 240) loadMore();
             }}
           >
-            <View style={{ flexDirection: 'row', gap: 8, marginBottom: 14 }}>
+            <View style={{ flexDirection: 'row', gap: 10, marginBottom: 15 }}>
               {[
                 [t('campus.deptCurricula'), `${curDone}/${target.curricula.length}`],
                 [t('campus.deptCleared'), sits.length ? `${cleared}/${sits.length}${hasMore ? '+' : ''}` : '—'],
               ].map(([k, v], i) => (
-                <Shadowed key={i} offset={2.5} style={{ flex: 1 }}>
-                  <View style={{ backgroundColor: '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 7, paddingHorizontal: 6, alignItems: 'center' }}>
-                    <Text style={{ fontFamily: fonts.body, fontSize: fs(8.5), color: colors.textSoft }}>{k}</Text>
-                    <Text style={{ fontFamily: fonts.heading, fontSize: fs(13), color: C, marginTop: 2 }}>{v}</Text>
-                  </View>
-                </Shadowed>
+                <View key={i} style={{ flex: 1 }}>
+                  <NbPaper rot={i ? 0.5 : -0.5} style={{ paddingVertical: 9, alignItems: 'center' }}>
+                    <Text numberOfLines={1} style={nbText.body(10.5, nb.soft)}>{k}</Text>
+                    <Text numberOfLines={1} style={[nbText.hand(21), { marginTop: 1 }]}>{v}</Text>
+                  </NbPaper>
+                </View>
               ))}
             </View>
 
             {/* ── this floor's curricula ── */}
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 }}>{t('campus.floorCurricula')}</Text>
-            {target.curricula.map((c) => {
+            <SectionRule>{t('campus.floorCurricula')}</SectionRule>
+            {target.curricula.map((c, ci) => {
               const on = openKey === c.key;
+              const done = c.state === 'done';
               return (
-                <Shadowed key={c.key} offset={on ? 3 : 2.5} shadowColor={c.resume ? colors.yellowShadow : C} style={{ marginBottom: 8 }}>
-                  <View style={{ borderWidth: c.resume ? 3 : 2.5, borderColor: c.resume ? colors.yellowDeep : C, backgroundColor: c.state === 'done' ? colors.mint : '#fff' }}>
-                    <Pressable
-                      onPress={() => setOpenKey(on ? null : c.key)}
-                      style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 10 }}
-                    >
-                      <View style={{ flex: 1, minWidth: 0 }}>
-                        <Text style={{ fontFamily: fonts.heading, fontSize: fs(12), color: C }}>{c.name}</Text>
-                        {!!c.next && c.state !== 'done' && (
-                          <Text style={{ fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, marginTop: 2 }}>
-                            {t('campus.resumeNext', { name: c.next })}
-                          </Text>
-                        )}
-                      </View>
-                      {c.resume && (
-                        <View style={{ backgroundColor: colors.yellowDeep, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: C }}>{t('step.now')}</Text>
-                        </View>
+                <NbPaper
+                  key={c.key}
+                  rot={ci % 2 ? 0.3 : -0.4}
+                  // Done reads as struck off a list: a green wash and a line through the
+                  // name. Resuming gets the gold ring the whole app uses for "this is the
+                  // one you chose", so the two states cannot be confused.
+                  bg={done ? 'rgba(95,141,90,.12)' : undefined}
+                  style={[{ marginTop: 10 }, c.resume ? { borderWidth: 2.5, borderColor: '#E9C45A' } : null]}
+                >
+                  <Pressable
+                    onPress={() => setOpenKey(on ? null : c.key)}
+                    accessibilityRole="button"
+                    accessibilityState={{ expanded: on }}
+                    style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 10, paddingHorizontal: 12 }}
+                  >
+                    <View style={{ flex: 1, minWidth: 0 }}>
+                      {done ? (
+                        <Text numberOfLines={1} style={[nbText.hand(17.5, nb.soft), { textDecorationLine: 'line-through', lineHeight: 19 }]}>{c.name}</Text>
+                      ) : c.resume ? (
+                        <NbMark textStyle={{ fontSize: 17.5 }}>{c.name}</NbMark>
+                      ) : (
+                        <Text numberOfLines={1} style={[nbText.hand(17.5), { lineHeight: 19 }]}>{c.name}</Text>
                       )}
-                      <Text style={{ fontFamily: fonts.heading, fontSize: fs(10), color: C }}>{c.done}/{c.total}</Text>
-                      <DisclosureChevron open={on} color={C} size={12} />
-                    </Pressable>
+                      {!!c.next && !done && (
+                        <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>
+                          {t('campus.resumeNext', { name: c.next })}
+                        </Text>
+                      )}
+                    </View>
+                    {c.resume && <NbTag color={nb.red}>{t('step.now')}</NbTag>}
+                    <Text numberOfLines={1} style={nbText.hand(13.5, nb.soft)}>{c.done}/{c.total}</Text>
+                    <NbIcon name={on ? 'chevronUp' : 'chevronDown'} size={15} />
+                  </Pressable>
 
-                    <Collapsible open={on}>
-                      <View style={{ borderTopWidth: on ? 2 : 0, borderTopColor: C + '33', borderStyle: 'dotted', paddingVertical: 7, paddingHorizontal: 10, gap: 6 }}>
-                        {(c.steps ?? []).map((st, i) => {
-                          const meta = STEP_META[st.kind as StepKind] ?? STEP_META.dlg;
-                          const locked = st.state === 'lock';
-                          const optional = st.state === 'optional';
-                          return (
-                            <Pressable
-                              key={i}
-                              disabled={locked}
-                              onPress={() => onStart(st.scenarioId, st.guide)}
-                              style={{
-                                flexDirection: 'row', alignItems: 'center', gap: 7,
-                                backgroundColor: st.state === 'done' ? '#fff' : st.state === 'now' ? meta.bg : optional ? colors.lilac + '2A' : C + '11',
-                                borderWidth: 2, borderColor: locked ? C + '55' : C,
-                                paddingVertical: 6, paddingHorizontal: 8, opacity: locked ? 0.55 : 1,
-                              }}
-                            >
-                              <PixelIcon name={locked ? 'lock' : meta.icon} color={locked ? colors.textFaint : C} size={12} sw={1.8} />
-                              <View style={{ flex: 1, minWidth: 0 }}>
-                                <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: C, lineHeight: 14 }}>{st.name}</Text>
-                                <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.textSoft, marginTop: 1 }}>
-                                  {t(meta.labelKey)}
-                                  {/* Which rung. A dialogue is listed twice — the same
-                                      situation guided, then alone — so the two entries
-                                      have to say which is which or the list reads as a
-                                      duplicated title. */}
-                                  {!!st.passes && st.passes > 1
-                                    ? ` · ${st.pass}/${st.passes} ${t(st.guide === 'choices' ? 'step.guided' : 'step.solo')}`
-                                    : ''}
-                                  {optional ? ` · ${t('step.optional')}` : ''}
-                                </Text>
-                              </View>
-                              {st.state === 'done' && <PixelIcon name="check" color={colors.mintShadow} size={12} sw={2.2} />}
-                              {/* The same chip, one word different — 다시 when this step
-                                  has been played and not passed. No extra row and no
-                                  second badge: this list is already four lines deep per
-                                  curriculum, and the learner only needs to know whether
-                                  they have been here. */}
-                              {st.state === 'now' && (
-                                <View style={{ backgroundColor: st.attempted ? colors.peachShadow : C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                                  <Text style={{ fontFamily: fonts.heading, fontSize: fs(8), color: colors.cream }}>{t(st.attempted ? 'step.retry' : 'step.now')}</Text>
-                                </View>
-                              )}
-                            </Pressable>
-                          );
-                        })}
-                      </View>
-                    </Collapsible>
-                  </View>
-                </Shadowed>
+                  <Collapsible open={on}>
+                    <View>
+                      {(c.steps ?? []).map((st, i) => {
+                        const meta = STEP_META[st.kind as StepKind] ?? STEP_META.dlg;
+                        const locked = st.state === 'lock';
+                        const optional = st.state === 'optional';
+                        // Played and not passed. The row is tinted blue and the chip says
+                        // 다시 — the learner's next move is another go, not a new step.
+                        const retry = st.state === 'now' && st.attempted;
+                        return (
+                          <Pressable
+                            key={i}
+                            disabled={locked}
+                            onPress={() => onStart(st.scenarioId, st.guide)}
+                            style={{
+                              flexDirection: 'row', alignItems: 'center', gap: 8,
+                              paddingVertical: 7, paddingHorizontal: 10,
+                              borderTopWidth: 1.3, borderTopColor: 'rgba(62,54,43,.14)', borderStyle: 'dashed',
+                              backgroundColor: retry ? 'rgba(143,199,232,.22)' : 'transparent',
+                              opacity: locked ? 0.45 : 1,
+                            }}
+                          >
+                            {/* A lock replaces the step's own icon rather than sitting
+                                beside it: the row is already four things wide. */}
+                            <NbIcon name={locked ? 'lock' : meta.nbIcon} size={16} />
+                            <View style={{ flex: 1, minWidth: 0 }}>
+                              <Text numberOfLines={1} style={[nbText.hand(15.5), { lineHeight: 17 }]}>{st.name}</Text>
+                              <Text numberOfLines={1} style={[nbText.body(10, nb.soft), { marginTop: 1.5 }]}>
+                                {t(meta.labelKey)}
+                                {/* Which rung. A dialogue is listed twice — the same
+                                    situation guided, then alone — so the two entries have
+                                    to say which is which, or the list reads as a
+                                    duplicated title. */}
+                                {!!st.passes && st.passes > 1
+                                  ? ` · ${st.pass}/${st.passes} ${t(st.guide === 'choices' ? 'step.guided' : 'step.solo')}`
+                                  : ''}
+                                {optional ? ` · ${t('step.optional')}` : ''}
+                              </Text>
+                            </View>
+                            {st.state === 'done' && (
+                              <Svg viewBox="0 0 24 24" width={17} height={17}>
+                                <Path d="M5 12 L10 17 L20 6" fill="none" stroke={nb.green} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+                              </Svg>
+                            )}
+                            {st.state === 'now' && (
+                              <NbTag color={retry ? nb.blue : nb.ink}>{t(retry ? 'step.retry' : 'step.now')}</NbTag>
+                            )}
+                          </Pressable>
+                        );
+                      })}
+                    </View>
+                  </Collapsible>
+                </NbPaper>
               );
             })}
 
             {!!focusSituation && (
               <View style={{ marginBottom: 12 }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginTop: 6, marginBottom: 8 }}>{t('campus.foundSituation')}</Text>
+                <SectionRule>{t('campus.foundSituation')}</SectionRule>
                 <SituationRow s={focusSituation} onStart={onStart} highlight />
               </View>
             )}
-            <Text style={{ fontFamily: fonts.heading, fontSize: fs(11), color: C, marginTop: 6, marginBottom: 8 }}>{t('campus.deptSituations')}</Text>
+            <SectionRule top={16}>{t('campus.deptSituations')}</SectionRule>
             {sits.length === 0 && (
-              <Text style={{ fontFamily: fonts.body, fontSize: fs(11), color: colors.textSoft, textAlign: 'center', paddingVertical: 14 }}>
-                지금은 불러올 상황이 없어요.
+              <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center', paddingVertical: 16 }]}>
+                {t('campus.deptNoSituations')}
               </Text>
             )}
             {sits.map((s, i) => (
               <SituationRow key={i} s={s} onStart={onStart} />
             ))}
             {hasMore && (
-              <Pressable onPress={loadMore} style={{ paddingVertical: 12, alignItems: 'center' }}>
-                <Text style={{ fontFamily: fonts.heading, fontSize: fs(10.5), color: colors.textSoft }}>더 많은 상황 불러오기</Text>
+              <Pressable onPress={loadMore} style={{ paddingVertical: 14, alignItems: 'center' }}>
+                <Text style={nbText.hand(15, nb.soft)}>{t('campus.deptLoadMore')}</Text>
               </Pressable>
             )}
           </ScrollView>
 
-          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: colors.cream, borderTopWidth: 3, borderTopColor: C, paddingVertical: 10, paddingHorizontal: 14, flexDirection: 'row', gap: 8 }}>
+          {/* The two things you can do with a floor, pinned above the fold of the sheet.
+              Paper, not a bar with its own heavy border: the sheet is already a sheet. */}
+          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: nb.cream, borderTopWidth: 1.5, borderTopColor: nb.paperEdge, paddingVertical: 10, paddingHorizontal: 20, flexDirection: 'row', gap: 9 }}>
             <View style={{ flex: 1 }}>
-              <PixelButton icon="play" label={t('campus.deptNextSituation')} bg={C} textColor={colors.cream} shadowColor={colors.mintShadow} fontSize={13} borderWidth={2.5} paddingV={10} disabled={!nextSit} onPress={() => onStart(nextSit)} full />
+              <NbButton variant="ink" full icon="pencil" iconColor={nb.paper} disabled={!nextSit} onPress={() => onStart(nextSit)}>
+                {t('campus.deptNextSituation')}
+              </NbButton>
             </View>
-            <PixelButton icon="map" label={t('campus.deptWalk')} bg={colors.lilac} shadowColor={C} fontSize={12} borderWidth={2.5} paddingV={10} paddingH={12} onPress={() => onWalk(target.deptCode)} />
+            <NbButton variant="paper" icon="compass" onPress={() => onWalk(target.deptCode)}>
+              {t('campus.deptWalk')}
+            </NbButton>
           </View>
         </View>
       )}
     </BottomSheet>
+  );
+}
+
+/** A section heading written as the handoff draws it: the words, then a rule trailing off
+ *  to the right. A bare bold label is the pixel line's device; on paper a heading is
+ *  underlined by hand and the line does not reach the margin. */
+function SectionRule({ top = 6, children }: { top?: number; children: React.ReactNode }) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: top, marginBottom: 4 }}>
+      <Text style={nbText.hand(16)}>{children}</Text>
+      <View style={{ flex: 1, height: 1.5, backgroundColor: 'rgba(62,54,43,.22)' }} />
+    </View>
   );
 }
 
@@ -296,38 +332,50 @@ function SituationRow({ s, onStart, highlight }: {
   const tried = s.tagCode === 'attempted';
   const starred = useIsSituationFavorite(s.scenarioId);
   return (
-    <Shadowed offset={2.5} style={{ marginBottom: 8 }} shadowColor={highlight ? colors.yellowDeep : undefined}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9, backgroundColor: highlight ? colors.yellow : s.urgent && !done ? colors.red : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 10, opacity: done ? 0.62 : 1 }}>
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-            {/* One chip, four states. 완료 mint / 시도 lilac / 긴급 ink / 신규 yellow —
-                enough to tell them apart at a glance without adding a second badge to
-                a row that already carries a room, a level and a duration. */}
-            <View style={{ backgroundColor: done ? colors.mint : tried ? colors.lilac : s.urgent ? C : colors.yellow, borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-              <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent && !done ? colors.cream : C }}>{s.tag}</Text>
-            </View>
-            {!!s.room && <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft }}>{s.room}</Text>}
-          </View>
-          <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: C, lineHeight: 15 }}>{s.name}</Text>
-          <Text style={{ fontFamily: fonts.heading, fontSize: fs(8.5), color: s.urgent ? C : colors.textSoft, marginTop: 3 }}>
-            {t('campus.situationMeta', { lv: s.lv, min: s.min })}
-          </Text>
-        </View>
-        <Pressable
-          onPress={() => void toggleSituationFavorite({ scenarioId: s.scenarioId, name: s.name, where: s.room })}
-          hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
-          accessibilityRole="switch"
-          accessibilityState={{ checked: starred }}
-          accessibilityLabel={t(starred ? 'campus.favRemove' : 'campus.favAdd')}
-        >
-          {/* Filled when on. See PixelIcon's `fill`: two outline colours at this size read
-            as the same star, which is why the on state looked like nothing happened. */}
-        <PixelIcon name="star" color={starred ? C : C + '44'} fill={starred ? colors.yellowDeep : 'none'} size={17} sw={2} />
-        </Pressable>
-        {/* The verb says what this tap is: 시작 for untouched, 다시 도전 for a run that
-            did not pass, 복습 for one that did. */}
-        <PixelButton label={done ? t('common.review') : tried ? t('common.retry') : t('common.start')} bg={done ? '#fff' : C} textColor={done ? C : colors.cream} shadowColor={done ? C : colors.mintShadow} offset={2} fontSize={11} borderWidth={2} paddingV={6} paddingH={9} onPress={() => onStart(s.scenarioId)} />
+    <NbPaper
+      rot={highlight ? 0 : 0.35}
+      // 긴급 is peach paper with a red edge — the one row that should catch the eye before
+      // it is read. Cleared rows are dimmed instead of coloured: they are still worth
+      // seeing (복습) but not worth reaching for first.
+      bg={s.urgent && !done ? '#FFF0EC' : highlight ? 'rgba(249,227,123,.5)' : undefined}
+      style={[
+        { marginTop: 10, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 9 },
+        s.urgent && !done ? { borderColor: '#E4B4A6' } : null,
+        done ? { opacity: 0.85 } : null,
+      ]}
+    >
+      <View style={{ flex: 1, minWidth: 0 }}>
+        <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyBold, fontSize: 10, color: done ? nb.green : tried ? nb.blue : s.urgent ? nb.red : nb.soft }}>
+          {s.tag}{s.room ? ` · ${s.room}` : ''}
+        </Text>
+        <Text numberOfLines={2} style={[nbText.hand(17), { marginTop: 2, lineHeight: 19 }]}>{s.name}</Text>
+        <Text numberOfLines={1} style={[nbText.body(10, nb.soft), { marginTop: 2 }]}>
+          {t('campus.situationMeta', { lv: s.lv, min: s.min })}
+        </Text>
       </View>
-    </Shadowed>
+      {/* The star is its own target, so starring does not also start the situation. */}
+      <Pressable
+        onPress={() => void toggleSituationFavorite({ scenarioId: s.scenarioId, name: s.name, where: s.room })}
+        hitSlop={{ top: 10, bottom: 10, left: 5, right: 5 }}
+        accessibilityRole="switch"
+        accessibilityState={{ checked: starred }}
+        accessibilityLabel={t(starred ? 'campus.favRemove' : 'campus.favAdd')}
+      >
+        <View style={{ opacity: starred ? 1 : 0.3 }}>
+          <NbIcon name="star" size={18} color={starred ? '#C99A1E' : nb.soft} />
+        </View>
+      </Pressable>
+      {/* The verb says what this tap is: 시작 for untouched, 다시 도전 for a run that did
+          not pass, 복습 for one that did. */}
+      <NbButton
+        variant={s.urgent && !done ? 'danger' : done ? 'paper' : 'ink'}
+        size="sm"
+        rot={1.5}
+        iconColor={s.urgent && !done ? nb.red : done ? nb.ink : nb.paper}
+        onPress={() => onStart(s.scenarioId)}
+      >
+        {done ? t('common.review') : tried ? t('common.retry') : t('common.start')}
+      </NbButton>
+    </NbPaper>
   );
 }

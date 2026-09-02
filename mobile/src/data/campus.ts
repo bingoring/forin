@@ -16,11 +16,14 @@ import type { FIconName } from '@/theme/ficons';
 export type StepKind = 'dlg' | 'quiz' | 'event' | 'boss';
 // labelKey, not a label: this is a module constant, so a t() call would freeze the
 // text to the language at startup (see i18n/module-scope.test.ts).
-export const STEP_META: Record<StepKind, { icon: IconName; labelKey: string; bg: string }> = {
-  dlg: { icon: 'speech', labelKey: 'step.kind.dlg', bg: colors.blue },
-  quiz: { icon: 'clipboard', labelKey: 'step.kind.quiz', bg: colors.yellow },
-  event: { icon: 'bolt', labelKey: 'step.kind.event', bg: colors.peach },
-  boss: { icon: 'trophy', labelKey: 'step.kind.boss', bg: colors.pink },
+export const STEP_META: Record<StepKind, { icon: IconName; nbIcon: NbIconName; labelKey: string; bg: string }> = {
+  // `nbIcon` is the 근무 수첩 doodle beside the pixel line's `icon` — a step is a talk, a
+  // quiz or a chapter test, and the notebook says that with a speech bubble, a pencil and
+  // a trophy. Two names because a screen belongs to one line or the other (07).
+  dlg: { icon: 'speech', nbIcon: 'speech', labelKey: 'step.kind.dlg', bg: colors.blue },
+  quiz: { icon: 'clipboard', nbIcon: 'pencil', labelKey: 'step.kind.quiz', bg: colors.yellow },
+  event: { icon: 'bolt', nbIcon: 'siren', labelKey: 'step.kind.event', bg: colors.peach },
+  boss: { icon: 'trophy', nbIcon: 'trophy', labelKey: 'step.kind.boss', bg: colors.pink },
 };
 
 /**

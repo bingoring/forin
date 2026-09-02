@@ -150,6 +150,9 @@ export default function Campus() {
       place: (first?.where ?? floor.where).replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where,
       where: first?.where ?? floor.where,
       accent: (BUILDING_STYLE[building] ?? DEFAULT_BUILDING_STYLE).accent,
+      // The ward's own doodle, so the sheet's header says WHICH place rather than "a
+      // place" — the pixel version put a coloured square with a pin in it.
+      nbIcon: (BUILDING_STYLE[building] ?? DEFAULT_BUILDING_STYLE).nbIcon,
       curricula: floor.curricula,
     });
   };
