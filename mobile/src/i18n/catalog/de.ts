@@ -131,6 +131,8 @@ export const de: Record<string, string> = {
   'title.hidden_hero.how': 'Erhältlich, sobald du eine versteckte Mission entdeckst.',
   'title.hidden_hero.effect': 'Patienten-NPCs reagieren von Anfang an etwas freundlicher.',
   'mission.hiddenTitle': 'Versteckte Mission',
+  'me.hiddenMissions': 'Versteckte Missionen',
+  'mission.foundBanner': 'Versteckte Mission gefunden!',
   'mission.found': 'Gefunden!',
   'mission.notFound': 'Nicht gefunden',
   'mission.foundBody': "Du hast die versteckte Mission „{name}“ entdeckt!",

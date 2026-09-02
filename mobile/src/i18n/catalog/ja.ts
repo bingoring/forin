@@ -131,6 +131,8 @@ export const ja: Record<string, string> = {
   'title.hidden_hero.how': '隠しミッションを一つでも見つけると獲得します。',
   'title.hidden_hero.effect': '患者NPCが最初から少し友好的に反応します。',
   'mission.hiddenTitle': '隠しミッション',
+  'me.hiddenMissions': '隠しミッション',
+  'mission.foundBanner': '隠しミッションを発見！',
   'mission.found': '発見！',
   'mission.notFound': '未発見',
   'mission.foundBody': "隠しミッション「{name}」を発見しました！",

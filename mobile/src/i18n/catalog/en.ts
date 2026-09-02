@@ -132,6 +132,8 @@ export const en: Record<string, string> = {
   'title.hidden_hero.how': 'Earned by discovering any hidden mission.',
   'title.hidden_hero.effect': 'Patient NPCs start out a little friendlier.',
   'mission.hiddenTitle': 'Hidden mission',
+  'me.hiddenMissions': 'Hidden missions',
+  'mission.foundBanner': 'Hidden mission found!',
   'mission.found': 'Found!',
   'mission.notFound': 'Not found',
   'mission.foundBody': "You discovered the hidden mission '{name}'!",

@@ -11,9 +11,6 @@ import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
-import { PixelIcon } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
-import { EmojiIcon } from '@/components/EmojiIcon';
 import { AnimatedFace } from '@engine';
 import { api, type Colleague, type GrowthStats, type InviteCode, type Progress } from '@/api/client';
 import { signOut } from '@/lib/auth';
@@ -204,7 +201,7 @@ export default function Me() {
     if (!tdef) return;
     const isEquipped = equipped === id;
     setSheet({
-      icon: tdef.emoji, iconNode: <EmojiIcon emoji={tdef.emoji} size={34} color={C} sw={1.6} />, iconBg: tdef.got ? 'rgba(195,177,232,.35)' : nb.cream, title: tdef.got ? t(tdef.nameKey) : '???',
+      icon: tdef.emoji, iconNode: <NbIcon name={tdef.nbIcon} size={34} />, iconBg: tdef.got ? 'rgba(195,177,232,.35)' : nb.cream, title: tdef.got ? t(tdef.nameKey) : '???',
       status: { label: isEquipped ? t('title.equipped') : tdef.got ? t('title.owned') : t('title.notOwned'), bg: isEquipped ? 'rgba(249,227,123,.5)' : tdef.got ? 'rgba(168,217,151,.4)' : nb.cream },
       what: tdef.got ? t(tdef.descKey) + (tdef.effectKey ? `\n\n${t('title.effectLabel')}: ${t(tdef.effectKey)}` : '') : t('title.notOwnedBody'),
       how: t(tdef.howKey),
@@ -217,7 +214,7 @@ export default function Me() {
     if (!m) return;
     const done = foundIds.has(id);
     setSheet({
-      icon: '', iconNode: <PixelIcon name={done ? 'burst' : 'question'} color={C} size={34} sw={1.6} />, iconBg: done ? 'rgba(168,217,151,.4)' : nb.cream, title: done ? t(m.nameKey) : t('mission.hiddenTitle'),
+      icon: '', iconNode: done ? <NbIcon name={m.nbIcon} size={34} /> : <Text style={nbText.hand(30, nb.soft)}>?</Text>, iconBg: done ? 'rgba(168,217,151,.4)' : nb.cream, title: done ? t(m.nameKey) : t('mission.hiddenTitle'),
       status: { label: done ? t('mission.found') : t('mission.notFound'), bg: done ? 'rgba(168,217,151,.4)' : nb.cream },
       what: done ? t('mission.foundBody', { name: t(m.nameKey) }) : t('mission.hintBody', { hint: t(m.hintKey) }),
       how: t('mission.rewardBody', { reward: t(m.rewardKey) }),
@@ -297,7 +294,9 @@ export default function Me() {
 
         {/* growth summary → 성장 리포트 상세 (/growth) */}
         <Pressable onPress={() => router.push('/growth')}>
-          <NbPaper rot={0.5} style={{ padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          {/* Washed green, as the handoff draws it: the one banner on this page that is an
+              invitation rather than a record, so it is the one with a colour. */}
+          <NbPaper rot={0.5} bg="rgba(95,141,90,.13)" style={{ padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
               <View style={{ width: 38, height: 38, alignItems: 'center', justifyContent: 'center' }}>
                 <NbIcon name="chartup" size={22} />
               </View>
@@ -429,11 +428,11 @@ export default function Me() {
                       tt.got ? null : { borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)' },
                     ]}
                   >
-                    {/* A locked title is dimmed. FIcon artwork carries its own
-                        colours, so the dimming is opacity on the wrapper rather
-                        than a tint that would only reach the line-icon tier. */}
+                    {/* A locked title is dimmed rather than tinted: the doodle carries its
+                        own watercolour fill, and a colour override would only reach the
+                        stroke. */}
                     <View style={{ opacity: tt.got ? 1 : 0.3 }}>
-                      <EmojiIcon emoji={tt.emoji} size={22} color={tt.got ? nb.ink : nb.soft} />
+                      <NbIcon name={tt.nbIcon} size={22} />
                     </View>
                     <Text
                       numberOfLines={2}
@@ -460,8 +459,8 @@ export default function Me() {
         <View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <FIcon name="magnify" size={16} />
-              <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>히든 미션</Text>
+              <NbIcon name="magnify" size={17} />
+              <Text style={nbText.hand(19)}>{t('me.hiddenMissions')}</Text>
             </View>
             <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft }}>{foundIds.size} / {MISSIONS.length}</Text>
           </View>
@@ -469,12 +468,23 @@ export default function Me() {
             {MISSIONS.map((m) => {
               const done = foundIds.has(m.id);
               return (
-                <Shadowed key={m.id} offset={done ? 3 : 0} shadowColor={done ? nb.green : C + '33'} style={{ width: '31.5%' }}>
-                  <Pressable onPress={() => openMission(m.id)} style={{ aspectRatio: 1, borderWidth: done ? 3 : 2, borderColor: C, backgroundColor: done ? 'rgba(168,217,151,.4)' : nb.cream, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 }}>
-                    <PixelIcon name={done ? 'burst' : 'question'} color={done ? C : nb.placeholder} size={24} />
-                    <Text style={{ fontFamily: nbFonts.body, fontSize: 8, color: done ? C : nb.placeholder, marginTop: 3, textAlign: 'center' }}>{done ? t(m.nameKey) : '???'}</Text>
-                  </Pressable>
-                </Shadowed>
+                <Pressable key={m.id} onPress={() => openMission(m.id)} style={{ width: '31.5%' }}>
+                  {/* Found: a green-washed slip with its own doodle. Not found: a dim slip
+                      with a pencilled "?" — the mission's name IS the reward, so the tile
+                      cannot show it. */}
+                  <NbPaper
+                    rot={done ? -0.8 : 0.5}
+                    bg={done ? 'rgba(95,141,90,.15)' : undefined}
+                    style={[{ paddingTop: 14, paddingBottom: 10, alignItems: 'center' }, done ? null : { opacity: 0.5 }]}
+                  >
+                    {done
+                      ? <NbIcon name={m.nbIcon} size={22} />
+                      : <Text style={nbText.hand(19, nb.soft)}>?</Text>}
+                    <Text numberOfLines={1} style={[nbText.hand(13.5, done ? nb.ink : nb.soft), { marginTop: 4 }]}>
+                      {done ? t(m.nameKey) : '???'}
+                    </Text>
+                  </NbPaper>
+                </Pressable>
               );
             })}
           </View>
@@ -484,9 +494,9 @@ export default function Me() {
         <Pressable onPress={() => router.push('/lab')}>
           <NbPaper rot={-0.5} style={{ padding: 14, gap: 10 }}>
               <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
-                <View style={{ width: 40, height: 40, backgroundColor: '#fff', borderWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <FIcon name="doc" size={22} />
-                </View>
+                <NbPaper rot={-2} style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center' }}>
+                  <NbIcon name="lab" size={21} />
+                </NbPaper>
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>리뷰랩 · 오답노트</Text>
                   <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: nbFonts.hand }}>{t('lab.likeALocal')}</Text> 카드로 변환됐어요.</Text>
@@ -513,14 +523,14 @@ export default function Me() {
             배우는 언어는 온보딩에서 고른 나라가 정하므로 읽기 전용으로 보여준다(R3). */}
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <FIcon name="speech" size={16} />
+            <NbIcon name="speech" size={17} />
             <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.language.section')}</Text>
           </View>
-          <Shadowed offset={3} shadowColor={C + '33'}>
+          <NbPaper rot={-0.3}>
             <View>
               <Pressable
                 onPress={() => setLangOpen(true)}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
               >
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.language.appTitle')}</Text>
@@ -528,11 +538,11 @@ export default function Me() {
                     {t('settings.language.appSubOn', { name: LOCALE_META[locale].name })}
                   </Text>
                 </View>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{LOCALE_META[locale].name}</Text>
-                <PixelIcon name="chevron-right" color={C} size={16} sw={2} />
+                <Text numberOfLines={1} style={nbText.hand(16)}>{LOCALE_META[locale].name}</Text>
+                <NbIcon name="chevronRight" size={15} color={nb.soft} />
               </Pressable>
               {!!targetLang && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: nb.cream, borderWidth: 2, borderTopWidth: 0, borderColor: C, paddingVertical: 9, paddingHorizontal: 12 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, paddingHorizontal: 13, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.18)' }}>
                   <View style={{ flex: 1 }}>
                     <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{t('settings.language.learning')}</Text>
                     <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
@@ -542,20 +552,20 @@ export default function Me() {
                 </View>
               )}
             </View>
-          </Shadowed>
+          </NbPaper>
         </View>
 
         {/* 소리 — 효과음이 생겼으니 끌 수단도 있어야 한다. 병원/야근 환경에서
             무음으로 쓰는 사람이 있고, 껐다는 사실은 기기에 남는다. */}
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <FIcon name="speaker" size={16} />
+            <NbIcon name="speaker" size={17} />
             <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.sound.section')}</Text>
           </View>
-          <Shadowed offset={3} shadowColor={C + '33'}>
+          <NbPaper rot={0.3}>
             <Pressable
               onPress={toggleSfx}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12 }}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
             >
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.sound.title')}</Text>
@@ -563,48 +573,48 @@ export default function Me() {
                   {sfxOn ? t('settings.sound.on') : t('settings.sound.off')}
                 </Text>
               </View>
-              {/* 픽셀 토글 — 앱에 Switch를 쓴 곳이 없어 테두리 박스로 맞췄다 */}
-              <View style={{ width: 40, height: 22, borderWidth: 2, borderColor: C, backgroundColor: sfxOn ? 'rgba(168,217,151,.4)' : nb.cream, justifyContent: 'center', alignItems: sfxOn ? 'flex-end' : 'flex-start', paddingHorizontal: 2 }}>
-                <View style={{ width: 14, height: 14, backgroundColor: C }} />
+              {/* An INK toggle, as the handoff draws it: a pen-outlined slot with a solid
+                  block in it. No RN Switch anywhere in this app, and a platform switch
+                  here would be the one control not drawn by hand. */}
+              <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: sfxOn ? 'flex-end' : 'flex-start' }}>
+                <View style={{ width: 18, backgroundColor: sfxOn ? nb.ink : 'rgba(62,54,43,.35)' }} />
               </View>
             </Pressable>
-          </Shadowed>
+          </NbPaper>
         </View>
 
         {/* 계정 — 로그아웃 (그 전까진 로그인 화면으로 돌아갈 경로가 없었다) */}
         <View style={{ marginTop: space.sm }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <FIcon name="lock" size={16} />
+            <NbIcon name="lock" size={17} />
             <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.account.section')}</Text>
           </View>
-          <Shadowed offset={3} shadowColor={C + '33'}>
+          <NbPaper rot={-0.3} style={{ opacity: signingOut ? 0.6 : 1 }}>
             <Pressable
               onPress={confirmSignOut}
               disabled={signingOut}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderWidth: 2, borderColor: C, paddingVertical: 11, paddingHorizontal: 12, opacity: signingOut ? 0.6 : 1 }}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
             >
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.account.signOut')}</Text>
                 <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>{t('settings.account.signOutSub')}</Text>
               </View>
               {signingOut
-                ? <ActivityIndicator color={C} />
-                : <PixelIcon name="chevron-right" color={C} size={16} sw={2} />}
+                ? <ActivityIndicator color={nb.ink} />
+                : <NbIcon name="chevronRight" size={15} color={nb.soft} />}
             </Pressable>
-          </Shadowed>
+          </NbPaper>
         </View>
       </ScrollView>
 
       {/* hidden-mission discovery celebration */}
       {toast && (
         <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 28, alignItems: 'center', paddingHorizontal: 18 }}>
-          <Shadowed offset={4} shadowColor={'#C99A1E'}>
-            <View style={{ backgroundColor: 'rgba(249,227,123,.55)', borderWidth: 1.5, borderColor: nb.ink, borderRadius: 3, paddingVertical: 12, paddingHorizontal: 18, alignItems: 'center', minWidth: 260 }}>
-              <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>히든 미션 발견!</Text>
-              <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: C, marginTop: 4 }}>{toast.name}</Text>
-              <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, marginTop: 4 }}>보상: {toast.reward}</Text>
-            </View>
-          </Shadowed>
+          <NbPaper rot={-0.6} bg="rgba(249,227,123,.55)" style={{ paddingVertical: 12, paddingHorizontal: 18, alignItems: 'center', minWidth: 260 }}>
+            <Text style={nbText.hand(19)}>{t('mission.foundBanner')}</Text>
+            <Text style={[nbText.hand(16), { marginTop: 2 }]}>{toast.name}</Text>
+            <Text style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>{t('mission.rewardBody', { reward: toast.reward })}</Text>
+          </NbPaper>
         </View>
       )}
 
@@ -627,31 +637,38 @@ export default function Me() {
       {/* 앱 언어 고르기. 번역 완성도를 계산값 그대로 보여준다(R8·R9) — 부분 번역을
           완전한 것처럼 제시하지 않기 위해서다. */}
       <BottomSheet visible={langOpen} onClose={() => setLangOpen(false)}>
-        <View style={{ padding: 14 }}>
-          <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C, marginBottom: 4 }}>{t('settings.language.pickTitle')}</Text>
-          <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginBottom: 12, lineHeight: 15 }}>{t('settings.language.pickNote')}</Text>
+        <View style={{ paddingHorizontal: 20, paddingBottom: 20 }}>
+          <Text style={nbText.hand(21)}>{t('settings.language.pickTitle')}</Text>
+          <Text style={[nbText.body(10.5, nb.soft), { marginBottom: 12 }]}>{t('settings.language.pickNote')}</Text>
           {LOCALES.map((code) => {
             const meta = LOCALE_META[code];
             const done = completenessLabel(code);
             const on = code === locale;
             return (
-              <Shadowed key={code} offset={2.5} style={{ marginBottom: 8 }}>
-                <Pressable
-                  onPress={() => { void setLocale(code); playSfx('confirm'); setLangOpen(false); }}
-                  style={{ flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: on ? 'rgba(168,217,151,.4)' : '#fff', borderWidth: 2.5, borderColor: C, paddingVertical: 10, paddingHorizontal: 11 }}
+              <Pressable
+                key={code}
+                onPress={() => { void setLocale(code); playSfx('confirm'); setLangOpen(false); }}
+                style={{ marginBottom: 9 }}
+              >
+                <NbPaper
+                  rot={on ? -0.6 : 0.4}
+                  bg={on ? 'rgba(168,217,151,.35)' : undefined}
+                  style={[
+                    { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 11, paddingHorizontal: 13 },
+                    on ? { borderColor: nb.green, borderWidth: 1.8 } : null,
+                  ]}
                 >
                   <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{meta.name}</Text>
-                    <Text style={{ fontFamily: nbFonts.body, fontSize: 9.5, color: nb.soft, marginTop: 2 }}>{meta.sub}</Text>
+                    <Text numberOfLines={1} style={nbText.hand(18)}>{meta.name}</Text>
+                    <Text numberOfLines={1} style={nbText.body(9.5, nb.soft)}>{meta.sub}</Text>
                   </View>
-                  {!done.full && (
-                    <View style={{ backgroundColor: 'rgba(249,227,123,.5)', borderWidth: 1.5, borderColor: C, paddingVertical: 1, paddingHorizontal: 5 }}>
-                      <Text style={{ fontFamily: nbFonts.hand, fontSize: 11.5, color: C }}>{done.text}</Text>
-                    </View>
-                  )}
-                  {on && <FIcon name="check" size={14} />}
-                </Pressable>
-              </Shadowed>
+                  {/* Partial translations say so, with the number they actually are — a
+                      language shown as complete when it is not is the one thing this
+                      sheet must not do. */}
+                  {!done.full && <NbTag color="#C99A1E">{done.text}</NbTag>}
+                  {on && <NbIcon name="check" size={15} color={nb.green} />}
+                </NbPaper>
+              </Pressable>
             );
           })}
         </View>
@@ -668,15 +685,6 @@ function Rules() {
       {Array.from({ length: Math.ceil(height / RULE_H) }).map((_, i) => (
         <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
       ))}
-    </View>
-  );
-}
-
-function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: object }) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
     </View>
   );
 }

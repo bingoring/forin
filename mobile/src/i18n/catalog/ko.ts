@@ -144,6 +144,8 @@ export const ko: Record<string, string> = {
   'title.hidden_hero.how': '히든 미션을 하나라도 발견하면 얻어요.',
   'title.hidden_hero.effect': '환자 NPC가 처음부터 조금 더 우호적으로 반응해요.',
   'mission.hiddenTitle': '숨겨진 미션',
+  'me.hiddenMissions': '히든 미션',
+  'mission.foundBanner': '히든 미션 발견!',
   'mission.found': '발견!',
   'mission.notFound': '미발견',
   'mission.foundBody': "히든 미션 '{name}'을 발견했어요!",
