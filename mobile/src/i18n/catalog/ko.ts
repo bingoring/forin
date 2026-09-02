@@ -213,7 +213,6 @@ export const ko: Record<string, string> = {
   'home.privateProgress': '학습 현황 비공개',
 
   // ── onboarding ───────────────────────────────────────────────────────────
-  'onboarding.begin': '처음 시작하기',
   'onboarding.pickNative': '앱이 사용할 모국어를 골라주세요.',
   'onboarding.pickDest': '어디로 가시나요?',
   'onboarding.saveFailed': '저장 실패',
@@ -465,6 +464,11 @@ export const ko: Record<string, string> = {
   'login.notReady': '{provider} 로그인 준비 중',
   'login.notReadyBody': '{provider} 클라이언트 ID가 설정되면 사용할 수 있어요. (env)',
   'login.developer': '개발자',
+  'boot.waking': '서버를 깨우고 있어요 · 조금만 기다려 주세요',
+  'login.terms': '계속하면 이용약관·개인정보처리방침에 동의하게 돼요',
+  'login.devBypass': '개발자 로그인 (둘러보기)',
+  'login.welcomeBack': '다시 출근할 시간이에요',
+  'login.welcomeBackSub': '쓰던 계정으로 들어오면 이어서 진행돼요',
 
   // ── misc screens ─────────────────────────────────────────────────────────
   'settings.account.signOutConfirm': '이 기기에서 로그아웃할까요?\n다시 로그인하면 학습 기록은 그대로예요.',
@@ -689,8 +693,6 @@ export const ko: Record<string, string> = {
   'onb.cover.title': '내일은,\n해외에서 출근',
   'onb.cover.sub': '말이 통해야, 일이 통한다',
   'onb.cover.open': '여권 펼치기',
-  'onb.cover.haveAccount': '이미 계정이 있어요 · ',
-  'onb.cover.login': '로그인',
   'onb.job.title': '어떤 일을 하시나요?',
   'onb.job.sub': '직업에 맞는 일터와 상황이 준비돼요',
   'onb.job.nurse': '간호사',

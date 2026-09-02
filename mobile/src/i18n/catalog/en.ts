@@ -195,7 +195,6 @@ export const en: Record<string, string> = {
   'home.requests': 'Requests {n}',
   'home.privateProgress': 'Progress hidden',
 
-  'onboarding.begin': 'Get started',
   'onboarding.pickNative': 'Choose the language the app should use.',
   'onboarding.pickDest': 'Where are you heading?',
   'onboarding.saveFailed': 'Could not save',
@@ -439,6 +438,11 @@ export const en: Record<string, string> = {
   'login.notReady': '{provider} sign-in is not ready',
   'login.notReadyBody': 'It becomes available once the {provider} client ID is set. (env)',
   'login.developer': 'Developer',
+  'boot.waking': 'Waking the server up · just a moment',
+  'login.terms': 'By continuing you agree to the Terms and the Privacy Policy',
+  'login.devBypass': 'Developer sign-in (look around)',
+  'login.welcomeBack': 'Time to clock back in',
+  'login.welcomeBackSub': 'Sign in with the account you used and you pick up where you left off',
 
   'settings.account.signOutConfirm': 'Sign out on this device?\nYour learning history stays if you sign back in.',
   'settings.account.signOutFailed': 'Sign-out failed',
@@ -659,8 +663,6 @@ export const en: Record<string, string> = {
   'onb.cover.title': 'Tomorrow,\nyou clock in abroad',
   'onb.cover.sub': 'Words first, then the work',
   'onb.cover.open': 'Open the passport',
-  'onb.cover.haveAccount': 'Already have an account · ',
-  'onb.cover.login': 'Log in',
   'onb.job.title': 'What do you do?',
   'onb.job.sub': 'Your workplace and its situations are built around it',
   'onb.job.nurse': 'Nurse',

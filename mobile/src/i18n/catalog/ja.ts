@@ -194,7 +194,6 @@ export const ja: Record<string, string> = {
   'home.requests': 'リクエスト {n}',
   'home.privateProgress': '学習状況は非公開',
 
-  'onboarding.begin': 'はじめる',
   'onboarding.pickNative': 'アプリで使う母語を選んでください。',
   'onboarding.pickDest': 'どこへ行きますか？',
   'onboarding.saveFailed': '保存に失敗しました',
@@ -438,6 +437,11 @@ export const ja: Record<string, string> = {
   'login.notReady': '{provider}ログインは準備中',
   'login.notReadyBody': '{provider}のクライアントIDが設定されると使えます。(env)',
   'login.developer': '開発者',
+  'boot.waking': 'サーバーを起こしています · 少しお待ちください',
+  'login.terms': '続けると利用規約・プライバシーポリシーに同意したことになります',
+  'login.devBypass': '開発者ログイン（見て回る）',
+  'login.welcomeBack': 'また出勤する時間です',
+  'login.welcomeBackSub': '使っていたアカウントで入ると、続きから進みます',
 
   'settings.account.signOutConfirm': 'この端末からログアウトしますか？\n再度ログインすれば学習記録はそのままです。',
   'settings.account.signOutFailed': 'ログアウト失敗',
@@ -658,8 +662,6 @@ export const ja: Record<string, string> = {
   'onb.cover.title': '明日は、\n海外で出勤',
   'onb.cover.sub': '言葉が通じてこそ、仕事が通じる',
   'onb.cover.open': 'パスポートを開く',
-  'onb.cover.haveAccount': 'アカウントをお持ちですか · ',
-  'onb.cover.login': 'ログイン',
   'onb.job.title': 'どんなお仕事ですか?',
   'onb.job.sub': '職業に合わせた職場と場面が用意されます',
   'onb.job.nurse': '看護師',

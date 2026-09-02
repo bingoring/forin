@@ -194,7 +194,6 @@ export const de: Record<string, string> = {
   'home.requests': 'Anfragen {n}',
   'home.privateProgress': 'Lernstand verborgen',
 
-  'onboarding.begin': 'Loslegen',
   'onboarding.pickNative': 'Wähle die Sprache, die die App verwenden soll.',
   'onboarding.pickDest': 'Wohin geht es?',
   'onboarding.saveFailed': 'Speichern fehlgeschlagen',
@@ -438,6 +437,11 @@ export const de: Record<string, string> = {
   'login.notReady': '{provider}-Anmeldung ist noch nicht bereit',
   'login.notReadyBody': 'Verfügbar, sobald die {provider}-Client-ID gesetzt ist. (env)',
   'login.developer': 'Entwickler',
+  'boot.waking': 'Der Server wacht auf · einen Moment bitte',
+  'login.terms': 'Wenn Sie fortfahren, stimmen Sie den Nutzungsbedingungen und der Datenschutzerklärung zu',
+  'login.devBypass': 'Entwickler-Anmeldung (umsehen)',
+  'login.welcomeBack': 'Zeit für die nächste Schicht',
+  'login.welcomeBackSub': 'Melden Sie sich mit Ihrem bisherigen Konto an — es geht dort weiter, wo Sie aufgehört haben',
 
   'settings.account.signOutConfirm': 'Auf diesem Gerät abmelden?\nDein Lernverlauf bleibt, wenn du dich wieder anmeldest.',
   'settings.account.signOutFailed': 'Abmelden fehlgeschlagen',
@@ -658,8 +662,6 @@ export const de: Record<string, string> = {
   'onb.cover.title': 'Morgen,\nDienst im Ausland',
   'onb.cover.sub': 'Erst die Sprache, dann die Arbeit',
   'onb.cover.open': 'Pass öffnen',
-  'onb.cover.haveAccount': 'Schon ein Konto · ',
-  'onb.cover.login': 'Anmelden',
   'onb.job.title': 'Was ist Ihr Beruf?',
   'onb.job.sub': 'Arbeitsplatz und Situationen richten sich danach',
   'onb.job.nurse': 'Pflegekraft',

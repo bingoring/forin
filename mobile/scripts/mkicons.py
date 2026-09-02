@@ -98,12 +98,16 @@ def plane_with_shadow(width, canvas, cy_frac=0.52):
     return place(silhouette(PLANE), width, x + k, y + k) + place(PLANE, width, x, y)
 
 
-def render(name, size, body, transparent=False):
+def render(name, size, body, transparent=False, font=None):
+    # crispEdges keeps the pixel art hard-edged; the emblem is curves and text, so it
+    # opts out — a 9pt gold ring rendered without antialiasing is a staircase.
+    rendering = "auto" if font else "crispEdges"
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" '
-           f'viewBox="0 0 {size} {size}" shape-rendering="crispEdges">{body}</svg>')
+           f'viewBox="0 0 {size} {size}" shape-rendering="{rendering}">{body}</svg>')
     TMP.mkdir(exist_ok=True)
     html = TMP / f"{name}.html"
-    html.write_text(f"<style>*{{margin:0;padding:0}}body{{width:{size}px;height:{size}px;overflow:hidden;"
+    face = (f"@font-face{{font-family:Gaegu;src:url('file://{font}')}}" if font else "")
+    html.write_text(f"<style>{face}*{{margin:0;padding:0}}body{{width:{size}px;height:{size}px;overflow:hidden;"
                     f"background:{'transparent' if transparent else 'none'}}}</style>{svg}")
     cmd = [CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
            "--force-device-scale-factor=1", f"--window-size={size},{size}",
@@ -132,8 +136,22 @@ _MH = _MW * bbox(PLANE)[3] / bbox(PLANE)[2]
 render("android-icon-monochrome.png", 432,
        place(silhouette(PLANE, "#000"), _MW, (432 - _MW) / 2, (432 - _MH) / 2), transparent=True)
 
-# Splash logo: plane alone over the native splash colour.
-render("splash-icon.png", 512, plane_with_shadow(420, 512, 0.5), transparent=True)
+# Splash logo: the passport cover's emblem, NOT the plane.
+#
+# This is the one output that diverged from the plane art (v30). The launcher icon still
+# opens with the plane — that is forin's mark — but what the native splash hands over to
+# is the app's first JS frame, and since v30 that frame is the passport's cover: deep
+# green, a gold double ring, a handwritten f. A mint plane there flashed one picture and
+# cut to another. Same reason app.json's splash backgroundColor is the cover green.
+#
+# The f is set in Gaegu, loaded from the bundled font file, so it is the same hand as the
+# emblem drawn in components/BootSplash.
+GOLD = "#D4B46A"
+render("splash-icon.png", 512, f'''
+  <circle cx="256" cy="256" r="180" fill="none" stroke="{GOLD}" stroke-width="9"/>
+  <circle cx="256" cy="256" r="152" fill="none" stroke="{GOLD}" stroke-width="5" opacity="0.6"/>
+  <text x="256" y="352" font-family="Gaegu" font-size="270" fill="{GOLD}" text-anchor="middle">f</text>
+''', transparent=True, font=HERE.parent / "assets" / "fonts" / "Gaegu-Bold.ttf")
 
 # Favicon: downscale the full icon rather than re-render (keeps the composition).
 subprocess.run(["cp", str(OUT / "icon.png"), str(OUT / "favicon.png")], check=True)

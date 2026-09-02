@@ -22,7 +22,8 @@ import { api } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbCheck, NbMark, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { CurlSweep, PageCurl } from '@/components/nb/PageCurl';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { SocialSignIn } from '@/components/auth/SocialSignIn';
+import { RULE_COLOR, RULE_H, cover, nb, nbFonts } from '@/theme/nb';
 import { isDestinationReady } from '@/data/destinations';
 import { clearDraft, loadDraft, passportStep, saveDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
@@ -31,10 +32,11 @@ import { LOCALES, LOCALE_META, getLocale, localeWasChosen, setLocale, useT, type
 
 /** Passport green and its gold. Only this screen uses them — a passport is not a page of
  *  the notebook, it is the object the notebook came in. */
-const GREEN = '#2E4636';
-const GOLD = '#D4B46A';
-const GOLD_SOFT = 'rgba(212,180,106,.75)';
-const CREAM_TEXT = '#F3E6C8';
+// The document's own colours, shared with the launch screen and the splash (theme/nb).
+const GREEN = cover.green;
+const GOLD = cover.gold;
+const GOLD_SOFT = cover.goldSoft;
+const CREAM_TEXT = cover.cream;
 
 /**
  * The four destinations, and what each one changes downstream.
@@ -504,6 +506,18 @@ export default function PassportRoute() {
     return () => clearTimeout(timer);
   }, [step, router]);
 
+  /**
+   * Signed in from the cover.
+   *
+   * Someone who has been here before is not sent through the journey again — the server
+   * knows whether the profile is complete, and the passport is for filling one in. So the
+   * page only turns for a learner who still has answers to give.
+   */
+  const signedIn = useCallback(async () => {
+    if (await syncOnboarded()) router.replace('/(tabs)');
+    else go('lang');
+  }, [go, router]);
+
   // ── pages ───────────────────────────────────────────────────────────────
 
   const cover = (
@@ -518,16 +532,22 @@ export default function PassportRoute() {
         <Text style={{ fontFamily: nbFonts.hand, fontSize: 34, color: CREAM_TEXT, marginTop: 26, lineHeight: 41, textAlign: 'center' }}>{t('onb.cover.title')}</Text>
         <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.5, color: 'rgba(243,230,200,.65)', marginTop: 9 }}>{t('onb.cover.sub')}</Text>
         <View style={{ flex: 1 }} />
-        <NbButton variant="yellow" size="lg" full iconRight="chevronRight" onPress={() => go('lang')}>{t('onb.cover.open')}</NbButton>
-        {/* Only for someone who arrived here without a session — inside the normal flow
-            login already happened, and offering it again reads as a dead end. */}
-        {!authed && (
-          <Pressable onPress={() => router.replace('/login')} hitSlop={8} style={{ marginTop: 12 }}>
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: 'rgba(243,230,200,.6)' }}>
-              {t('onb.cover.haveAccount')}<Text style={{ color: CREAM_TEXT, textDecorationLine: 'underline' }}>{t('onb.cover.login')}</Text>
-            </Text>
-          </Pressable>
-        )}
+        {/* The cover IS the login screen (v30): opening the passport and identifying
+            yourself are one act, so there is no separate login page in front of this one
+            and no id/pw anywhere. Someone already carrying a session — a learner resuming
+            an interrupted journey — just opens it. */}
+        {authed
+          ? <NbButton variant="yellow" size="lg" full iconRight="chevronRight" onPress={() => go('lang')}>{t('onb.cover.open')}</NbButton>
+          : (
+            <>
+              <View style={{ alignSelf: 'stretch' }}>
+                <SocialSignIn tone="dark" onDone={signedIn} />
+              </View>
+              <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.5, color: 'rgba(243,230,200,.55)', marginTop: 14, lineHeight: 19, textAlign: 'center' }}>
+                {t('login.terms')}
+              </Text>
+            </>
+          )}
       </View>
       {/* The machine-readable zone: the one printed thing on a handwritten cover. */}
       <View pointerEvents="none" style={{ position: 'absolute', left: 30, right: 30, bottom: 52 }}>

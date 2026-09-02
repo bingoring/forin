@@ -1,24 +1,20 @@
-// The launch screen: forin's plane bobbing in a pixel sky, with clouds.
+// The launch screen: the passport's cover, in the dark.
 //
 // It replaced a bare ActivityIndicator, which was the first thing anyone saw of the app
 // and belonged to no product in particular — and which was on screen longest exactly
 // when the wait mattered most, on a cold start.
-// reanimated is stubbed rather than shimmed at the worklets layer: the art uses
-// withRepeat/withTiming, which pull in the whole serialization machinery at import
-// time, and none of it is what these tests are about. They check that the pixel art
-// renders — the bobbing is verified by looking at the app.
-jest.mock('react-native-reanimated', () => {
-  const { View } = require('react-native') as typeof import('react-native');
-  return {
-    __esModule: true,
-    default: { View },
-    Easing: { inOut: (f: unknown) => f, quad: (t: number) => t },
-    useSharedValue: (v: number) => ({ value: v }),
-    useAnimatedStyle: (f: () => unknown) => f(),
-    withRepeat: (v: unknown) => v,
-    withTiming: (v: unknown) => v,
-  };
-});
+//
+// v30 replaced the pixel sky that stood in for it with the document's own cover, because
+// the screen AFTER this one is now that cover too (the passport, whose first page is the
+// sign-in). So what these tests watch changed with it: the emblem and the wordmark are on
+// screen, in the cover's green and gold rather than the notebook's cream, and the two
+// screens are ONE component so they cannot drift apart.
+//
+// jest-secure-store is stubbed because the tagline comes from the catalog now, and i18n
+// reads the stored language choice at import.
+jest.mock('expo-secure-store', () => ({
+  getItemAsync: async () => null, setItemAsync: async () => {}, deleteItemAsync: async () => {},
+}));
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { readFileSync } from 'fs';
@@ -30,9 +26,21 @@ function texts(root: ReactTestInstance): string[] {
     .findAll((n) => String(n.type) === 'Text', { deep: true })
     .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'));
 }
-/** Rect count is a decent proxy for "the pixel art is actually here" — both the plane
- *  and the clouds are drawn as rows of Rects. */
-const rects = (root: ReactTestInstance) => root.findAll((n) => String(n.type) === 'RNSVGRect', { deep: true }).length;
+/** RN style props NEST, so a one-level flatten loses whatever is in the inner array. */
+function flatten(st: unknown): Record<string, unknown> {
+  if (!st) return {};
+  if (Array.isArray(st)) return Object.assign({}, ...st.map(flatten));
+  return st as Record<string, unknown>;
+}
+
+/** Every HOST node whose style matches. Host only: RN's View wraps a host view and both
+ *  carry the style, so counting composites doubles every result. */
+function styled(root: ReactTestInstance, pred: (s: Record<string, unknown>) => boolean) {
+  return root.findAll(
+    (n) => typeof n.type === 'string' && !!n.props?.style && pred(flatten(n.props.style)),
+    { deep: true },
+  );
+}
 
 /** Trees mounted by this file, torn down in afterEach. */
 const mounted: ReturnType<typeof create>[] = [];
@@ -59,12 +67,23 @@ afterEach(() => {
 });
 
 
-test('the plane and the clouds are on screen', () => {
+test('the cover is on screen — emblem, wordmark, and the walking dots', () => {
   const tree = mount();
-  expect(texts(tree.root)).toContain('forin');
-  // A spinner would render no Rects at all. This is the assertion that would have
-  // failed for the whole life of the previous splash.
-  expect(rects(tree.root)).toBeGreaterThan(30);
+  expect(texts(tree.root)).toContain('FORIN');
+  expect(texts(tree.root)).toContain('f');
+  // Green ground and a gold emblem ring. A spinner on a flat background — what this
+  // screen used to be — has neither, and so would fail here.
+  expect(styled(tree.root, (s) => s.backgroundColor === '#2E4636').length).toBeGreaterThan(0);
+  expect(styled(tree.root, (s) => s.borderColor === '#D4B46A' && s.borderRadius === 54).length).toBe(1);
+  // Three dots, which are what say the app is working rather than stuck.
+  expect(styled(tree.root, (s) => s.backgroundColor === '#D4B46A' && s.borderRadius === 4).length).toBe(3);
+});
+
+test('the launch screen and the onboarding splash are the same component', () => {
+  // Not a style check — a continuity one. They are the same cover, and two copies of a
+  // drawing drift the moment either is touched.
+  const src = readFileSync(join(__dirname, '..', 'app', '(onboarding)', 'splash.tsx'), 'utf8');
+  expect(src).toMatch(/<BootSplash \/>/);
 });
 
 test('the wait is silent until it is long enough to wonder about', () => {
@@ -92,14 +111,17 @@ test('the root layout shows it while booting, not a spinner', () => {
   expect(src).toMatch(/clearTimeout\(slowTimer\)/);
 });
 
-test('the native splash background matches the sky it hands over to', () => {
-  // The OS splash is a static PNG on a flat colour; if that colour differs from the
-  // first JS frame, launch flashes. Same token, both sides.
+test('the native splash background matches the frame it hands over to', () => {
+  // The OS splash is a static PNG on a flat colour; if that colour differs from the first
+  // JS frame, launch flashes. It did, for exactly as long as this test compared against
+  // the peach sky the screen no longer draws — so it is read from the cover token both
+  // sides now.
   const appJson = JSON.parse(readFileSync(join(__dirname, '..', '..', 'app.json'), 'utf8'));
   const plugin = (appJson.expo.plugins as unknown[]).find(
     (p) => Array.isArray(p) && p[0] === 'expo-splash-screen',
   ) as [string, { backgroundColor: string }];
-  const tokens = readFileSync(join(__dirname, '..', 'theme', 'tokens.ts'), 'utf8');
-  const peach = /peach:\s*'([^']+)'/.exec(tokens)?.[1];
-  expect(plugin[1].backgroundColor.toUpperCase()).toBe(peach?.toUpperCase());
+  const nbTokens = readFileSync(join(__dirname, '..', 'theme', 'nb.ts'), 'utf8');
+  const green = /green:\s*'(#2E[^']+)'/.exec(nbTokens)?.[1];
+  expect(green).toBeTruthy();
+  expect(plugin[1].backgroundColor.toUpperCase()).toBe(green!.toUpperCase());
 });

@@ -51,6 +51,25 @@ export const nb = {
   },
 } as const;
 
+/**
+ * The passport's cover — deep green and gold leaf.
+ *
+ * Kept apart from `nb` because it is not the notebook: `nb` describes paper a nurse writes
+ * on, and this describes a document an authority issued. It is shared by the three screens
+ * that show that cover (the launch screen, the onboarding splash and the passport's first
+ * page), which is the whole reason it is not three sets of local constants — they have to
+ * be the same green.
+ */
+export const cover = {
+  green: '#2E4636',
+  gold: '#D4B46A',
+  goldSoft: 'rgba(212,180,106,.75)',
+  goldFaint: 'rgba(212,180,106,.6)',
+  cream: '#F3E6C8',
+  creamSoft: 'rgba(243,230,200,.7)',
+  creamFaint: 'rgba(243,230,200,.55)',
+} as const;
+
 /** The ruled lines: one every 28pt, the line itself 1pt. */
 export const RULE_H = 28;
 export const RULE_COLOR = 'rgba(62,54,43,.06)';
