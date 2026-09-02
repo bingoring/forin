@@ -183,6 +183,14 @@ export const ko: Record<string, string> = {
   'board.showPlace': '위치 보기',
   'board.proceed': '진행하기',
   'board.emptyDept': '{dept}에 오늘 발생한 상황이 없어요.',
+  'board.nbTitle': '스태프 라운지',
+  'board.loadFailed': '라운지를 불러오지 못했어요. (서버 확인)',
+  'board.todayCount': '현장 상황 {n}건 발생',
+  'board.deptCount': '{n}건',
+  'board.emptyTomorrow': '내일 다시 확인해보세요!',
+  'board.rotationNote': '매일 자정마다 새로운 현장 상황이 부서별로 골고루 발생해요. 저장된 300개가 넘는 시나리오 중에서 오늘의 {n}건을 골랐어요.',
+  'board.adPlaying': '광고 시청 중…',
+  'board.adDevNote': '(개발 모드 · 실제 광고는 dev build가 필요해요)',
 
   // ── tabs ─────────────────────────────────────────────────────────────────
   'tab.home': '홈',

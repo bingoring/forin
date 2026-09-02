@@ -42,7 +42,7 @@ const CEILINGS: Record<string, number> = {
 // these ceilings rise, check which of the two happened before treating it as a
 // regression.
 const JSX_CEILINGS: Record<string, number> = {
-  'src/app': 86,
+  'src/app': 77,
   'src/components': 33,
   'src/data': 0,
   'src/lib': 0,

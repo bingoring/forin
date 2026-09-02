@@ -8,6 +8,14 @@ import { Text, View } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { BottomSheet } from '@/components/BottomSheet';
 import { SheetOverlayHost } from '@/components/SheetOverlay';
+import { trackMounts } from '../testing/mountRegistry';
+
+/** Unmounts every tree this file mounts. Not optional here: a mounted BottomSheet holds a
+ *  250ms entry fallback whose frame starts a spring, and a tree left up keeps that alive
+ *  past the end of the suite — so it fires after jest has torn the module registry down
+ *  and crashes whichever UNRELATED suite is running then, as `Cannot read properties of
+ *  undefined (reading 'spring')`. That is exactly what this file was doing. */
+const track = trackMounts();
 
 function grabbers(root: ReactTestInstance) {
   return root.findAll(
@@ -34,7 +42,7 @@ const sheet = (props: { visible?: boolean; suspended?: boolean } = {}) => (
 it('renders the sheet into the host instead of a Modal', () => {
   let tree!: ReturnType<typeof create>;
   act(() => {
-    tree = create(<SheetOverlayHost>{sheet()}</SheetOverlayHost>);
+    tree = track(create(<SheetOverlayHost>{sheet()}</SheetOverlayHost>));
   });
   // Present, exactly once — a sheet that registered but also rendered itself would be two.
   expect(grabbers(tree.root)).toHaveLength(1);
@@ -45,7 +53,7 @@ it('falls back to a Modal when there is no host', () => {
   // Sheets on screens outside the tab layout still have to present themselves.
   let tree!: ReturnType<typeof create>;
   act(() => {
-    tree = create(sheet());
+    tree = track(create(sheet()));
   });
   expect(grabbers(tree.root)).toHaveLength(1);
   expect(modalCount(tree.toJSON())).toBe(1);
@@ -56,12 +64,12 @@ it('paints above everything else the host wraps', () => {
   // children. Being the LAST child is what puts it there, for painting and for touches.
   let tree!: ReturnType<typeof create>;
   act(() => {
-    tree = create(
+    tree = track(create(
       <SheetOverlayHost>
         <View testID="tab-bar" />
         {sheet()}
       </SheetOverlayHost>
-    );
+    ));
   });
   const root = tree.toJSON() as { children: { props?: Record<string, unknown> }[] };
   const last = root.children[root.children.length - 1];
@@ -76,7 +84,7 @@ it('leaves nothing behind when suspended or unmounted', () => {
     act(() => {
       const el = <SheetOverlayHost>{node}</SheetOverlayHost>;
       if (tree) tree.update(el);
-      else tree = create(el);
+      else tree = track(create(el));
     });
 
   render(sheet());
@@ -105,11 +113,11 @@ it('does not re-render the registering component in a loop', () => {
     return sheet();
   }
   act(() => {
-    create(
+    track(create(
       <SheetOverlayHost>
         <Owner />
       </SheetOverlayHost>
-    );
+    ));
   });
   expect(renders).toBeLessThan(5);
 });
