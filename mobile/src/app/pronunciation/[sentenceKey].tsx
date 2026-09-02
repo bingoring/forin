@@ -28,10 +28,11 @@ import {
 import {
   readAsStringAsync, EncodingType, deleteAsync, downloadAsync, getInfoAsync, cacheDirectory,
 } from 'expo-file-system/legacy';
-import { PixelIcon } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
-import { PixelButton } from '@/components/PixelButton';
-import { PronCard } from '@/components/pron/PronCard';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbButton, NbMemo, NbPaper, NbSheet, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts, paperShadow } from '@/theme/nb';
+import { AUDIO } from '@/components/pron/nbPron';
+import { DarkPanel } from '@/components/pron/DarkPanel';
 import { TargetCard } from '@/components/pron/TargetCard';
 import { Wave } from '@/components/pron/Wave';
 import { SyllableGrid, type SyllableChip } from '@/components/pron/SyllableGrid';
@@ -40,13 +41,10 @@ import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
 import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
-import { colors, fonts, fs } from '@/theme/tokens';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
-import { t, type Translate, useLocale, useT } from '@/i18n';
+import { type Translate, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
 
-const C = colors.ink;
-const WAVE_DARK = '#0F1A24'; // SoT's dark wave-panel fill — not in theme/tokens
 const BAR_COUNT = 20; // matches SoT's mock W1 array length
 
 // business-rules R6 says "최대 10초" and that's what the countdown/copy show,
@@ -132,38 +130,38 @@ function paceLabel(t: Translate, mineMs: number, nativeMs: number): string {
 function Head({
   ctx, step, dark, onBack, backDisabled,
 }: { ctx: string; step: string; dark: boolean; onBack: () => void; backDisabled: boolean }) {
+  const t = useT();
   return (
     <View style={styles.headWrap}>
       <View style={styles.headRow}>
         <Pressable onPress={backDisabled ? undefined : onBack} disabled={backDisabled} hitSlop={8}>
-          <View
-            style={[
-              styles.backChip,
-              { backgroundColor: dark ? colors.cream : '#fff' },
-              backDisabled && styles.flat,
-            ]}
-          >
-            <PixelIcon name="chevron-left" color={C} size={11} sw={2} />
-          </View>
+          {/* Paper even on the dark shell: the way back out is the one thing on a
+              recording screen that must not look like part of the instrument. */}
+          <NbPaper rot={-1} style={[styles.backChip, backDisabled && styles.flat]}>
+            <NbIcon name="chevronLeft" size={16} />
+          </NbPaper>
         </Pressable>
         <View style={{ flex: 1 }} />
-        <View style={styles.badge}>
-          <FIcon name="mic" size={11} />
-          <Text style={styles.badgeText}>발음</Text>
-        </View>
+        <NbPaper rot={1} bg="rgba(95,141,90,.18)" style={styles.badge}>
+          <NbIcon name="mic" size={14} />
+          <Text style={nbText.hand(14)}>{t('pron.badge')}</Text>
+        </NbPaper>
       </View>
-      <Text style={[styles.ctx, { color: dark ? colors.textFaint : colors.textSoft }]}>{ctx}</Text>
-      <Text style={[styles.step, { color: dark ? colors.cream : C }]}>{step}</Text>
+      {!!ctx && <Text numberOfLines={1} style={[nbText.body(10.5, dark ? AUDIO.quiet : nb.soft), styles.ctx]}>{ctx}</Text>}
+      <Text style={[nbText.hand(28, dark ? nb.cream : nb.ink), styles.step]}>{step}</Text>
     </View>
   );
 }
 
+/** The one memo on this screen that is not about how you did — it is about what happens
+ *  if you get it wrong, so it is in red pen on peach paper and sits above the mic. */
 function RiskNote() {
+  const t = useT();
   return (
     <View style={styles.riskBox}>
-      <FIcon name="warn" size={15} />
-      <Text style={styles.riskText}>
-        약물명과 용량은 잘못 들리면 <Text style={{ color: C, fontFamily: fonts.heading }}>투약 사고</Text>로 이어져요. 음절을 끊어서 또박또박.
+      <Text style={nbText.hand(14.5)}>
+        <Text style={{ color: nb.red }}>{t('pron.careLabel')} </Text>
+        {t('pron.careBody')}
       </Text>
     </View>
   );
@@ -172,111 +170,115 @@ function RiskNote() {
 function Banner({ text }: { text: string }) {
   return (
     <View style={styles.banner}>
-      <FIcon name="warn" size={14} />
-      <Text style={styles.bannerText}>{text}</Text>
+      <NbIcon name="bell" size={15} color={nb.red} />
+      <Text style={[nbText.hand(14.5), { flex: 1, minWidth: 0 }]}>{text}</Text>
     </View>
   );
 }
 
+/** The mic, drawn as a scribbled circle with "꾹!" written beside it. Round because it is
+ *  the one control on the page and a square would read as another card. */
 function BigButton({
-  size, bg, icon, label, labelColor = C, sub, onPress, disabled,
+  size, icon, label, sub, dark, onPress, disabled, note,
 }: {
-  size: number; bg: string; icon: React.ReactNode; label: string;
-  /** SoT L89 (idle, light shell) is dark ink text; L138 (recording, dark
-   *  shell) is cream — a fixed `color: C` label is invisible on the dark
-   *  shell (review finding). Callers on a dark backdrop must pass cream. */
-  labelColor?: string;
-  sub?: string; onPress: () => void; disabled?: boolean;
+  size: number; icon: React.ReactNode; label: string;
+  sub?: string;
+  /** On the recording shell the label has to be cream — ink on #2E2823 is invisible. */
+  dark?: boolean;
+  onPress: () => void; disabled?: boolean;
+  /** The "꾹!" beside the button. Omitted for the stop button: you tap that once. */
+  note?: string;
 }) {
-  const offset = 5; // SoT L88/L136
   return (
     <View style={styles.bigButtonWrap}>
-      <Pressable onPress={disabled ? undefined : onPress} disabled={disabled} style={{ alignItems: 'center', gap: 9 }}>
-        <View style={{ width: size, height: size }}>
-          {/* Hard offset shadow — was a bare `{position:'absolute'}` with no
-              size/fill (review finding: rendered nothing). Sized/filled like
-              PronCard's shadow layer, just anchored to a fixed square instead
-              of a stretched card. */}
+      <Pressable onPress={disabled ? undefined : onPress} disabled={disabled} style={{ alignItems: 'center' }}>
+        <View>
           <View
             style={[
-              styles.bigButtonShadow,
-              { left: offset, top: offset, width: size, height: size, backgroundColor: disabled ? colors.textFaint : C },
+              styles.bigButtonCap,
+              {
+                width: size, height: size, borderRadius: size / 2,
+                backgroundColor: dark ? nb.cream : 'rgba(199,81,70,.2)',
+                borderColor: dark ? nb.paperEdge : nb.ink,
+                borderWidth: dark ? 1 : 2,
+                opacity: disabled ? 0.45 : 1,
+              },
             ]}
-          />
-          <View style={[styles.bigButtonCap, { width: size, height: size, backgroundColor: disabled ? colors.textFaint : bg }]}>
+          >
             {icon}
           </View>
+          {!!note && <Text style={styles.bigButtonNote}>{note}</Text>}
         </View>
-        <Text style={[styles.bigButtonLabel, { color: disabled ? colors.textFaint : labelColor }]}>{label}</Text>
-        {!!sub && <Text style={styles.bigButtonSub}>{sub}</Text>}
+        <Text style={[nbText.hand(17, dark ? nb.cream : nb.ink), styles.bigButtonLabel]}>{label}</Text>
+        {!!sub && <Text style={nbText.body(11, dark ? AUDIO.quiet : nb.soft)}>{sub}</Text>}
       </Pressable>
     </View>
   );
 }
 
-// SoT L115-119: the sentence during recording, highlights only — no IPA, no
-// playback row (those belong to the idle TargetCard).
+/** The sentence during recording: highlights only — no IPA, no playback row (those belong
+ *  to the idle TargetCard). Taped down, because on the dark shell it is the only thing
+ *  from the notebook and it should look stuck there. */
 function TargetLine({ tokens }: { tokens: { w: string; hi?: 'drug' | 'num' }[] }) {
   return (
-    <PronCard bg={colors.cream} style={styles.targetLine}>
+    <NbPaper rot={-0.6} tape tapeLeft={140} style={styles.targetLine}>
       <Text style={styles.targetLineText}>
         {tokens.map((tk, i) =>
           tk.hi ? (
-            <Text key={i} style={[styles.targetLineHi, { backgroundColor: tk.hi === 'drug' ? colors.lilac : colors.yellow }]}>
-              {tk.w}
-            </Text>
+            <Text key={i} style={[styles.targetLineHi, tk.hi === 'drug' && styles.targetLineDrug]}>{tk.w}</Text>
           ) : (
             <Text key={i}>{tk.w}</Text>
           )
         )}
       </Text>
-    </PronCard>
+    </NbPaper>
   );
 }
 
-// SoT L121-129 (recording) reused as-is for scoring with the timer row
-// swapped for a progress indicator (frontend-components §4: "정지된 파형 +
-// 진행 표시. 취소 불가").
+/** The live trace. Reused as-is for `scoring` with the timer row swapped for a spinner
+ *  (frontend-components §4: "정지된 파형 + 진행 표시. 취소 불가"). */
 function WavePanel({
   bars, elapsedSec, remainingSec, scoring,
 }: { bars: number[]; elapsedSec: number; remainingSec: number; scoring: boolean }) {
   const t = useT();
   return (
-    <PronCard bg={WAVE_DARK} style={styles.wavePanel}>
-      <Wave bars={bars} color="#22D3EE" height={52} live={!scoring} />
+    <DarkPanel style={styles.wavePanel}>
+      <Wave bars={bars} height={44} live={!scoring} />
       <View style={styles.wavePanelFooter}>
         {scoring ? (
           <>
-            <ActivityIndicator color="#22D3EE" size="small" />
-            <Text style={styles.recTimer}>채점 중…</Text>
+            <ActivityIndicator color={AUDIO.waveLit} size="small" />
+            <Text style={styles.recTimer}>{t('pron.scoring')}</Text>
           </>
         ) : (
           <>
             <View style={styles.recDot} />
             <Text style={styles.recTimer}>{`REC ${String(Math.floor(elapsedSec / 60)).padStart(2, '0')}:${String(elapsedSec % 60).padStart(2, '0')}`}</Text>
             <View style={{ flex: 1 }} />
-            <Text style={styles.remaining}>{t('pron.secondsLeft', { n: remainingSec })}</Text>
+            <Text numberOfLines={1} style={nbText.hand(14, AUDIO.quiet)}>{t('pron.secondsLeft', { n: remainingSec })}</Text>
           </>
         )}
       </View>
-    </PronCard>
+    </DarkPanel>
   );
 }
 
-// SoT L130-134: a decorative progress strip. The demo hardcodes syllabified
-// words for its one fixed sentence; here the segments come from the real
-// reference's syllable breakdown when we have one (SentenceReference.words[].
-// syllables[]), falling back to plain words when we don't — never a made-up
-// segmentation.
+/** A progress strip of highlighter cells. The segments come from the real reference's
+ *  syllable breakdown when we have one (SentenceReference.words[].syllables[]), falling
+ *  back to plain words when we don't — never a made-up segmentation. */
 function SyllableProgress({ segments, doneCount }: { segments: string[]; doneCount: number }) {
   if (segments.length === 0) return null;
   return (
     <View style={styles.syllableRow}>
       {segments.map((s, i) => (
-        <View key={i} style={[styles.syllableCell, { backgroundColor: i < doneCount ? colors.mint : colors.paper }]}>
-          <Text style={[styles.syllableCellText, { color: i < doneCount ? C : colors.textSoft }]} numberOfLines={1}>
-            {s}
-          </Text>
+        <View
+          key={i}
+          style={[
+            styles.syllableCell,
+            { backgroundColor: i < doneCount ? 'rgba(168,217,151,.85)' : nb.cream, transform: [{ rotate: i % 2 ? '1.5deg' : '-1.5deg' }] },
+          ]}
+        >
+          <Text numberOfLines={1} style={styles.syllableCellText}>{s}</Text>
         </View>
       ))}
     </View>
@@ -287,74 +289,56 @@ function ScoreCard({
   overall, accuracy, fluency, prosody, prosodyAvailable,
 }: { overall: number; accuracy: number; fluency: number; prosody: number; prosodyAvailable: boolean }) {
   return (
-    <PronCard offset={4} bg={colors.mint} shadowColor={colors.mintShadow} style={styles.scoreCard}>
+    <NbPaper rot={-0.5} bg="rgba(168,217,151,.35)" style={styles.scoreCard}>
+      {/* The total is the one number on this screen written by hand — it is the verdict,
+          and the three measured sub-scores beside it are the printed evidence. */}
       <View style={styles.scoreTotal}>
         <Text style={styles.scoreTotalNum}>{Math.round(overall)}</Text>
         <Text style={styles.scoreTotalMax}>/ 100</Text>
       </View>
-      <View style={styles.scoreDivider} />
       <ScoreBars accuracy={accuracy} fluency={fluency} prosody={prosody} prosodyAvailable={prosodyAvailable} />
-    </PronCard>
+    </NbPaper>
   );
 }
 
-// SoT L185-196's two-Wave layout assumes a native waveform, and this still
-// doesn't draw one: Task 11 added GET /speech/reference/audio.wav (so the
-// bytes now exist and 🔊 원어민/0.5× can play them — see TargetCard above),
-// but no accompanying "amplitude envelope" endpoint the way quiz audio has
-// audio-meta (waveform + durationMs) alongside audio.wav — that would need
-// decoding the downloaded WAV's PCM samples client-side (or a server route
-// mirroring quiz_audio_handler.meta's waveformPeaks) and neither shipped
-// with this task (task-11-report.md's open concerns). Rather than draw a
-// fabricated native Wave, this keeps the real duration-only comparison
-// (SentenceReference.durationMs vs the server-verified
-// PronunciationResult.durationMs — both real numbers) as a caption above the
-// one Wave we DO have real amplitudes for: mine.
 function WaveCompare({ myBars, myDurationMs, nativeDurationMs }: { myBars: number[]; myDurationMs?: number; nativeDurationMs?: number }) {
   const t = useT();
   const compare = myDurationMs != null && nativeDurationMs != null
     ? t('pron.vsNative', { sec: (nativeDurationMs / 1000).toFixed(1), pace: paceLabel(t, myDurationMs, nativeDurationMs) })
     : null;
   return (
-    <PronCard bg={WAVE_DARK} style={styles.waveCompare}>
-      {!!compare && <Text style={styles.waveCompareCaption}>{compare}</Text>}
+    <DarkPanel style={styles.waveCompare}>
+      {!!compare && <Text style={nbText.hand(14, '#9BB8C6')}>{compare}</Text>}
       <View style={styles.waveCompareRow}>
-        <View style={[styles.waveCompareTag, { backgroundColor: colors.mint }]}>
-          <Text style={styles.waveCompareTagText}>내 발음</Text>
+        <View style={styles.waveCompareTag}>
+          <Text style={styles.waveCompareTagText}>{t('pron.mine')}</Text>
         </View>
-        {myDurationMs != null && <Text style={styles.waveCompareDuration}>{(myDurationMs / 1000).toFixed(1)}초</Text>}
+        {myDurationMs != null && <Text style={styles.waveCompareDuration}>{t('pron.seconds', { sec: (myDurationMs / 1000).toFixed(1) })}</Text>}
       </View>
-      <Wave bars={myBars} color="#4FC79D" height={34} />
-    </PronCard>
+      <Wave bars={myBars} height={30} />
+    </DarkPanel>
   );
 }
 
 function ResultActions({ onRetry, onNext, nextDisabled }: { onRetry: () => void; onNext: () => void; nextDisabled: boolean }) {
   const t = useT();
   return (
-    <View style={{ marginTop: 15, marginHorizontal: 16, gap: 9 }}>
+    <View style={styles.actionsWrap}>
       <View style={{ flexDirection: 'row', gap: 9 }}>
-        <PixelButton label={t('pron.recordAgain')} icon="mic" bg="#fff" shadowColor={C} borderWidth={3} offset={3} fontSize={12} onPress={onRetry} style={{ flex: 1 }} />
-        <PixelButton
-          label={t('pron.nextSentence')}
-          bg={colors.mint}
-          shadowColor={colors.mintShadow}
-          borderWidth={3}
-          offset={3}
-          fontSize={12}
-          onPress={onNext}
-          disabled={nextDisabled}
-          style={{ flex: 1 }}
-        />
+        <View style={{ flex: 1 }}>
+          <NbButton variant="paper" full icon="mic" rot={-0.5} onPress={onRetry}>{t('pron.recordAgain')}</NbButton>
+        </View>
+        <View style={{ flex: 1 }}>
+          <NbButton variant="ink" full iconRight="chevronRight" iconColor={nb.paper} rot={0.4} disabled={nextDisabled} onPress={onNext}>
+            {t('pron.nextSentence')}
+          </NbButton>
+        </View>
       </View>
-      {/* SoT L215: rendered, deliberately disabled — this task's range excludes
-          ScreenPronDrill (business-logic-model §1). Removing this button would
-          shift the layout away from the SoT the next time it's re-added. */}
-      <Pressable disabled style={styles.drillButton}>
-        <PixelIcon name="target" color={colors.textFaint} size={13} sw={1.8} />
-        <Text style={styles.drillButtonText}>약한 음소만 드릴하기</Text>
-      </Pressable>
-      <Text style={styles.drillNote}>드릴 기능은 곧 제공돼요</Text>
+      {/* Rendered, deliberately dead — the drill screen is not built (business-logic-model
+          §1). Announced rather than hidden: it is the answer to "so what do I do about
+          the two bad phonemes", and the note below says when. */}
+      <NbButton variant="dashed" full disabled icon="lock" onPress={() => {}}>{t('pron.drill')}</NbButton>
+      <Text style={[nbText.hand(13, nb.soft), { textAlign: 'center' }]}>{t('pron.drillSoon')}</Text>
     </View>
   );
 }
@@ -362,12 +346,12 @@ function ResultActions({ onRetry, onNext, nextDisabled }: { onRetry: () => void;
 function PermissionBody({ onOpenSettings, onRecheck }: { onOpenSettings: () => void; onRecheck: () => void }) {
   const t = useT();
   return (
-    <View style={{ marginHorizontal: 16, marginTop: 20, gap: 12 }}>
-      <Text style={{ fontFamily: fonts.body, fontSize: fs(12), color: colors.text, lineHeight: 18 }}>
-        발음을 채점하려면 마이크 권한이 필요해요. 설정에서 마이크 접근을 허용한 뒤 다시 시도해 주세요.
-      </Text>
-      <PixelButton label={t('pron.openSettings')} bg={colors.blue} shadowColor={C} onPress={onOpenSettings} full />
-      <PixelButton label={t('pron.recheckPermission')} bg="#fff" shadowColor={C} onPress={onRecheck} full />
+    <View style={styles.permBody}>
+      <NbMemo color={nb.blue}>
+        <Text style={nbText.body(12)}>{t('pron.micWhy')}</Text>
+      </NbMemo>
+      <NbButton variant="ink" size="lg" full icon="gear" iconColor={nb.paper} onPress={onOpenSettings}>{t('pron.openSettings')}</NbButton>
+      <NbButton variant="paper" size="lg" full onPress={onRecheck}>{t('pron.recheckPermission')}</NbButton>
     </View>
   );
 }
@@ -782,20 +766,15 @@ export default function PronunciationRoute() {
     : idleStep;
 
   return (
-    <View style={{ flex: 1, backgroundColor: dark ? C : colors.paper }}>
+    <NbSheet dark={dark}>
       <Stack.Screen options={TASK_SCREEN} />
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
         <Head ctx={ctx} step={step} dark={dark} onBack={handleBack} backDisabled={pron === 'scoring'} />
 
         {(pron === 'idle' || pron === 'noSpeech') && (
           <>
             {pron === 'noSpeech' && !!banner && <Banner text={banner} />}
-            {/* review finding: these two cards had no horizontal margin, so
-                they sat flush against the screen edge (unlike every result-
-                screen card, which all wrap in marginHorizontal:16) — and
-                PronCard's negative-offset shadow (right/bottom: -offset) had
-                no room to render and got clipped at the screen edge. */}
-            <View style={{ marginHorizontal: 16, marginTop: 14 }}>
+            <View style={styles.body}>
               <TargetCard
                 tokens={tokens}
                 ipa={reference.ipa}
@@ -806,14 +785,14 @@ export default function PronunciationRoute() {
             </View>
             <RiskNote />
             <BigButton
-              size={92}
-              bg={colors.red}
-              icon={<FIcon name="mic" size={38} />}
+              size={96}
+              icon={<NbIcon name="mic" size={42} />}
               label={t('pron.tapToRecord')}
               sub={t('pron.recordHint')}
+              note={t('pron.press')}
               onPress={() => { void startRecording(); }}
             />
-            <View style={{ marginHorizontal: 16, marginTop: 20 }}>
+            <View style={[styles.body, { marginTop: 24 }]}>
               <AttemptHistory attempts={historyRows} />
             </View>
           </>
@@ -823,33 +802,32 @@ export default function PronunciationRoute() {
 
         {pron === 'recording' && (
           <>
-            <TargetLine tokens={tokens} />
-            <View style={{ marginHorizontal: 16, marginTop: 20 }}>
+            <View style={styles.body}><TargetLine tokens={tokens} /></View>
+            <View style={[styles.body, { marginTop: 16 }]}>
               <WavePanel bars={liveBars} elapsedSec={elapsedSec} remainingSec={remainingSec} scoring={false} />
             </View>
-            <View style={{ marginHorizontal: 16, marginTop: 14 }}>
+            <View style={[styles.body, { marginTop: 16 }]}>
               <SyllableProgress segments={progressSegments} doneCount={doneCount} />
             </View>
             <BigButton
-              size={84}
-              bg={colors.cream}
+              size={92}
+              dark
               icon={<View style={styles.stopGlyph} />}
               label={t('pron.tapToStop')}
-              labelColor={colors.cream}
               onPress={() => { void stopAndScore('STOP'); }}
             />
           </>
         )}
 
         {pron === 'scoring' && (
-          <View style={{ marginHorizontal: 16, marginTop: 20 }}>
+          <View style={[styles.body, { marginTop: 16 }]}>
             <WavePanel bars={liveBars} elapsedSec={elapsedSec} remainingSec={0} scoring />
           </View>
         )}
 
         {pron === 'result' && result && (
           <>
-            <View style={{ marginHorizontal: 16, marginTop: 14 }}>
+            <View style={styles.body}>
               <ScoreCard
                 overall={result.overall}
                 accuracy={result.accuracy}
@@ -858,40 +836,39 @@ export default function PronunciationRoute() {
                 prosodyAvailable={!!result.prosodyAvailable}
               />
             </View>
-            <View style={{ marginHorizontal: 16, marginTop: 13 }}>
+            <View style={[styles.body, { marginTop: 13 }]}>
               <SyllableGrid syllables={syllableChips} />
             </View>
-            <View style={{ marginHorizontal: 16, marginTop: 13 }}>
+            <View style={[styles.body, { marginTop: 13 }]}>
               <WaveCompare myBars={myWaveform} myDurationMs={result.durationMs} nativeDurationMs={reference.durationMs} />
             </View>
-            <View style={{ marginHorizontal: 16, marginTop: 13 }}>
-              {/* review finding: these used to be mutually exclusive (an if/
-                  else-if), so ANY word's suspectAllZero hid every OTHER
-                  word's already-valid correction points, not just the
-                  affected word's own (which buildCorrectionPoints already
-                  excludes on its own). The banner and any surviving points
-                  are independent facts and both render when true. */}
+            <View style={[styles.body, { marginTop: 13 }]}>
+              {/* review finding: these used to be mutually exclusive (an if/else-if), so
+                  ANY word's suspectAllZero hid every OTHER word's already-valid
+                  correction points, not just the affected word's own (which
+                  buildCorrectionPoints already excludes on its own). The banner and any
+                  surviving points are independent facts and both render when true. */}
               {correction.suspectAllZero && (
-                <View style={styles.suspectBanner}>
-                  <FIcon name="warn" size={13} />
-                  <Text style={styles.suspectText}>교정 데이터 이상 — 일부 단어는 지금 표시할 수 없어요</Text>
+                <View style={styles.banner}>
+                  <NbIcon name="bell" size={15} color={nb.red} />
+                  <Text style={[nbText.hand(14.5), { flex: 1, minWidth: 0 }]}>{t('pron.suspect')}</Text>
                 </View>
               )}
               {correction.points.length > 0 && (
                 <>
-                  <Text style={styles.correctionHeader}>{t('pron.correctionPoints', { n: correction.points.length })}</Text>
-                  {correction.points.map((p) => (
-                    <View key={`${p.syllable}-${p.ipa}`} style={{ marginBottom: 8 }}>
+                  <Text style={[nbText.hand(16), { marginBottom: 4 }]}>{t('pron.correctionPoints', { n: correction.points.length })}</Text>
+                  {correction.points.map((p, i) => (
+                    <View key={`${p.syllable}-${p.ipa}`} style={{ marginTop: 10 }}>
                       <CorrectionCard
                         syllable={p.syllable}
                         ipa={p.ipa}
                         message={p.message}
                         severe={p.severe}
-                        // Task 11 added sentence-level reference audio
-                        // (TargetCard's 🔊 원어민/0.5×), not a per-syllable
-                        // clip — slicing just this syllable's span out of the
-                        // full WAV is a distinct feature this task didn't
-                        // build (task-11-report.md's open concerns).
+                        rot={i % 2 ? 0.4 : -0.4}
+                        // Task 11 added sentence-level reference audio (TargetCard's
+                        // 원어민 chip), not a per-syllable clip — slicing just this
+                        // syllable's span out of the full WAV is a distinct feature this
+                        // task didn't build (task-11-report.md's open concerns).
                         onPlay={() => { if (__DEV__) console.warn('[pronunciation] no per-syllable audio clip yet — see task-11-report.md'); }}
                       />
                     </View>
@@ -903,80 +880,70 @@ export default function PronunciationRoute() {
           </>
         )}
       </ScrollView>
-    </View>
+    </NbSheet>
   );
 }
 
 const styles = StyleSheet.create({
-  headWrap: { paddingHorizontal: 16, paddingTop: 48 },
+  /** Every card on this screen shares one gutter. It used to be repeated inline as
+   *  marginHorizontal:16 on eight views, and the two idle cards were the two that got
+   *  missed — they sat flush against the screen edge. */
+  body: { marginHorizontal: 20, marginTop: 14 },
+
+  headWrap: { paddingHorizontal: 20, paddingTop: 52 },
   headRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  backChip: { borderWidth: 2, borderColor: C, paddingVertical: 4, paddingHorizontal: 9 },
+  backChip: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   flat: { opacity: 0.4 },
-  badge: {
-    flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: colors.mint, borderWidth: 2, borderColor: C, paddingVertical: 3, paddingHorizontal: 8,
-  },
-  badgeText: { fontFamily: fonts.heading, fontSize: fs(10), color: C },
-  ctx: { fontFamily: fonts.body, fontSize: fs(10), marginTop: 11 },
-  step: { fontFamily: fonts.heading, fontSize: fs(15), marginTop: 4 },
+  badge: { flexDirection: 'row', alignItems: 'center', gap: 5, paddingVertical: 5, paddingHorizontal: 11 },
+  ctx: { marginTop: 12 },
+  step: { marginTop: 2 },
 
   riskBox: {
-    flexDirection: 'row', gap: 9, margin: 16, marginTop: 13,
-    backgroundColor: colors.peach, borderWidth: 3, borderColor: C, padding: 11,
+    marginHorizontal: 20, marginTop: 15, paddingVertical: 9, paddingHorizontal: 12,
+    backgroundColor: '#FFF3EE', borderWidth: 1.5, borderStyle: 'dashed', borderColor: '#D9A08E',
+    transform: [{ rotate: '0.4deg' }],
   },
-  riskText: { flex: 1, fontFamily: fonts.body, fontSize: fs(10.5), color: colors.text, lineHeight: 15 },
 
   banner: {
-    flexDirection: 'row', alignItems: 'center', gap: 8, margin: 16, marginBottom: 0,
-    backgroundColor: colors.peach, borderWidth: 2, borderColor: C, padding: 10,
+    flexDirection: 'row', alignItems: 'center', gap: 9,
+    marginHorizontal: 20, marginTop: 14, paddingVertical: 9, paddingHorizontal: 12,
+    backgroundColor: '#FFF3EE', borderWidth: 1.5, borderStyle: 'dashed', borderColor: '#D9A08E',
   },
-  bannerText: { flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: colors.text, lineHeight: 15 },
 
-  bigButtonWrap: { alignItems: 'center', marginTop: 22, marginBottom: 6 },
-  bigButtonShadow: { position: 'absolute' },
-  bigButtonCap: { borderWidth: 4, borderColor: C, alignItems: 'center', justifyContent: 'center' },
-  bigButtonLabel: { fontFamily: fonts.heading, fontSize: fs(12.5), color: C },
-  bigButtonSub: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft },
-  stopGlyph: { width: 22, height: 22, backgroundColor: C },
+  bigButtonWrap: { alignItems: 'center', marginTop: 26 },
+  bigButtonCap: { alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-2deg' }], ...paperShadow },
+  bigButtonNote: { position: 'absolute', top: -9, right: -15, fontFamily: nbFonts.hand, fontSize: 13, color: nb.red, transform: [{ rotate: '8deg' }] },
+  bigButtonLabel: { marginTop: 9 },
+  stopGlyph: { width: 30, height: 30, backgroundColor: nb.dark },
 
-  targetLine: { marginHorizontal: 16, marginTop: 16, padding: 13 },
-  targetLineText: { fontFamily: fonts.body, fontSize: fs(14), color: C, lineHeight: 22, textAlign: 'center' },
-  targetLineHi: { borderWidth: 2, borderColor: C, paddingHorizontal: 5, paddingVertical: 1 },
+  targetLine: { paddingVertical: 14, paddingHorizontal: 16 },
+  targetLineText: { fontFamily: nbFonts.bodyBold, fontSize: 16.5, color: nb.ink, lineHeight: 26, textAlign: 'center' },
+  targetLineHi: { backgroundColor: nb.marker },
+  targetLineDrug: { textDecorationLine: 'underline' },
 
-  wavePanel: { padding: 12 },
+  wavePanel: { paddingTop: 18, paddingBottom: 12, paddingHorizontal: 14 },
   wavePanelFooter: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12 },
-  recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: '#EF4444' },
-  recTimer: { fontFamily: fonts.heading, fontSize: fs(12), color: '#22D3EE' },
-  remaining: { fontFamily: fonts.body, fontSize: fs(10), color: '#94A3B8' },
+  recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: AUDIO.rec },
+  recTimer: { fontFamily: nbFonts.monoBold, fontSize: 12, color: AUDIO.waveLit },
 
-  syllableRow: { flexDirection: 'row', gap: 5 },
-  syllableCell: { flex: 1, borderWidth: 2, borderColor: C, paddingVertical: 5, paddingHorizontal: 2, alignItems: 'center' },
-  syllableCellText: { fontFamily: fonts.heading, fontSize: fs(8), lineHeight: 10 },
+  syllableRow: { flexDirection: 'row', gap: 4 },
+  syllableCell: { flex: 1, height: 26, borderWidth: 1, borderColor: '#171310', alignItems: 'center', justifyContent: 'center' },
+  syllableCellText: { fontFamily: nbFonts.mono, fontSize: 7, color: nb.ink },
 
-  scoreCard: { flexDirection: 'row', alignItems: 'center', gap: 13, padding: 14 },
-  scoreTotal: { alignItems: 'center', flexShrink: 0 },
-  scoreTotalNum: { fontFamily: fonts.heading, fontSize: fs(34), color: C, lineHeight: 34 },
-  scoreTotalMax: { fontFamily: fonts.body, fontSize: fs(9.5), color: C, opacity: 0.8, marginTop: 3 },
-  scoreDivider: { width: 3, alignSelf: 'stretch', backgroundColor: C + '33' },
-
-  waveCompare: { padding: 11 },
-  waveCompareCaption: { fontFamily: fonts.body, fontSize: fs(9), color: '#94A3B8', marginBottom: 6 },
-  waveCompareRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 },
-  waveCompareTag: { borderWidth: 1.5, borderColor: C, paddingHorizontal: 5, paddingVertical: 1 },
-  waveCompareTagText: { fontFamily: fonts.heading, fontSize: fs(8.5), color: C },
-  waveCompareDuration: { fontFamily: fonts.body, fontSize: fs(9), color: '#94A3B8' },
-
-  correctionHeader: { fontFamily: fonts.heading, fontSize: fs(11), color: C, marginBottom: 8 },
-  suspectBanner: {
-    flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8,
-    backgroundColor: colors.peach, borderWidth: 2, borderColor: C, padding: 10,
+  scoreCard: { flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 13, paddingHorizontal: 15 },
+  scoreTotal: {
+    alignItems: 'center', flexShrink: 0, paddingRight: 13,
+    borderRightWidth: 1.5, borderStyle: 'dashed', borderRightColor: 'rgba(62,54,43,.3)',
   },
-  suspectText: { flex: 1, fontFamily: fonts.body, fontSize: fs(11), color: colors.text },
+  scoreTotalNum: { fontFamily: nbFonts.handBold, fontSize: 40, color: nb.ink, lineHeight: 42 },
+  scoreTotalMax: { fontFamily: nbFonts.monoBold, fontSize: 10, color: nb.soft },
 
-  drillButton: {
-    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6,
-    backgroundColor: colors.lilac, borderWidth: 3, borderColor: C, paddingVertical: 11, opacity: 0.5,
-  },
-  drillButtonText: { fontFamily: fonts.heading, fontSize: fs(12), color: colors.textFaint },
-  drillNote: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft, textAlign: 'center' },
+  waveCompare: { paddingVertical: 12, paddingHorizontal: 14 },
+  waveCompareRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 7, marginBottom: 8 },
+  waveCompareTag: { backgroundColor: 'rgba(168,217,151,.85)', paddingVertical: 1, paddingHorizontal: 6 },
+  waveCompareTagText: { fontFamily: nbFonts.monoBold, fontSize: 10, color: AUDIO.bg },
+  waveCompareDuration: { fontFamily: nbFonts.mono, fontSize: 11, color: '#9BB8C6' },
+
+  actionsWrap: { marginHorizontal: 20, marginTop: 18, gap: 10 },
+  permBody: { marginHorizontal: 20, marginTop: 20, gap: 11 },
 });

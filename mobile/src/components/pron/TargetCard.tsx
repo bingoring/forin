@@ -1,14 +1,16 @@
-// The sentence to say. SoT screen-pronunciation.jsx L36-55.
+// The sentence to say, on the notebook's own paper (v29).
 //
-// Highlight colours carry meaning, not decoration: drug names are lilac and
-// dose amounts yellow because those are the two spans where a mishearing
-// becomes a medication error (L83 of the same file spells that out).
+// Highlight colours carry meaning, not decoration: drug names and dose amounts are the
+// two spans where a mishearing becomes a medication error, so both are marked — with the
+// highlighter, which is what a nurse actually does to a line she must not get wrong.
+// They differ in pen weight rather than in hue: a second highlighter colour at this size
+// reads as "two kinds of pretty" instead of "two kinds of danger".
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { colors, fonts, fs } from '@/theme/tokens';
+import { NbIcon } from '@/components/nb/NbIcon';
+import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { nb, nbFonts } from '@/theme/nb';
+import { useT } from '@/i18n';
 import type { TargetToken } from '@/lib/pronTokens';
-
-import { FIcon } from '@/components/FIcon';
-import { PronCard } from './PronCard';
 
 type Props = {
   tokens: TargetToken[];
@@ -18,102 +20,64 @@ type Props = {
   /** e.g. "3회 중 1회차" */
   hint: string;
   onPlayNative(): void;
-  /** False when no reference audio exists; both playback chips go flat. */
+  /** False when no reference audio exists; the playback chip goes flat. */
   nativeAvailable: boolean;
 };
 
 export function TargetCard({ tokens, ipa, hint, onPlayNative, nativeAvailable }: Props) {
+  const t = useT();
   return (
-    <PronCard offset={4} style={styles.card}>
+    <NbPaper rot={-0.5} style={styles.card}>
+      {/* An ink label stuck over the card's own edge — the instruction is not part of
+          the sentence, and inside the card it would read as one. */}
       <View style={styles.tag}>
-        <Text style={styles.tagText}>따라 말해보세요</Text>
+        <Text style={styles.tagText}>{t('pron.repeatAfterMe')}</Text>
       </View>
 
       <Text style={styles.line}>
         {tokens.map((tk, i) =>
           tk.hi ? (
-            <Text
-              key={i}
-              style={[styles.hi, { backgroundColor: tk.hi === 'drug' ? colors.lilac : colors.yellow }]}
-            >
-              {tk.w}
-            </Text>
+            <Text key={i} style={[styles.hi, tk.hi === 'drug' && styles.hiDrug]}>{tk.w}</Text>
           ) : (
             <Text key={i}>{tk.w}</Text>
           )
         )}
       </Text>
 
+      {/* Printed, not written: IPA in a handwriting face loses the difference between ɪ
+          and i, which is the whole reason it is on the page. */}
       {ipa ? <Text style={styles.ipa}>{ipa}</Text> : null}
 
       <View style={styles.actions}>
-        {/* SoT labels this 🔊 원어민; the app draws no emoji on screen (762bb6a). */}
-        <Pressable
-          onPress={onPlayNative}
-          disabled={!nativeAvailable}
-          hitSlop={8}
-          style={[styles.playChip, !nativeAvailable && styles.flat]}
-        >
-          <FIcon name="speaker" size={13} />
-          <Text style={styles.chipText}>원어민</Text>
+        <Pressable onPress={onPlayNative} disabled={!nativeAvailable} hitSlop={8}>
+          <NbPaper rot={0.5} bg="rgba(143,199,232,.3)" style={[styles.playChip, !nativeAvailable && styles.flat]}>
+            <NbIcon name="speaker" size={15} />
+            <Text style={nbText.hand(14.5)}>{t('pron.native')}</Text>
+          </NbPaper>
         </Pressable>
         <View style={styles.spacer} />
-        <Text style={styles.hint}>{hint}</Text>
+        <Text numberOfLines={1} style={nbText.hand(14, nb.soft)}>{hint}</Text>
       </View>
-    </PronCard>
+    </NbPaper>
   );
 }
 
 const styles = StyleSheet.create({
-  card: { paddingVertical: 15, paddingHorizontal: 13 },
+  card: { paddingTop: 15, paddingBottom: 13, paddingHorizontal: 16 },
   tag: {
-    position: 'absolute',
-    top: -9,
-    left: 12,
-    backgroundColor: colors.ink,
-    paddingVertical: 2,
-    paddingHorizontal: 7,
+    position: 'absolute', top: -11, left: 14,
+    backgroundColor: nb.ink, paddingVertical: 1, paddingHorizontal: 9,
+    transform: [{ rotate: '-1.5deg' }],
   },
-  tagText: { fontFamily: fonts.heading, fontSize: fs(9), color: colors.cream },
-  line: { fontFamily: fonts.body, fontSize: fs(16), color: colors.ink, lineHeight: 30, marginTop: 4 },
-  hi: {
-    fontFamily: fonts.heading,
-    fontSize: fs(15),
-    borderWidth: 2,
-    borderColor: colors.ink,
-    paddingHorizontal: 5,
-    paddingVertical: 1,
-    marginHorizontal: 1, // SoT L43 `margin: '0 1px'` — keeps chips off adjacent words
-  },
-  ipa: {
-    fontFamily: fonts.heading,
-    fontSize: fs(10.5),
-    color: colors.textSoft,
-    marginTop: 9,
-    letterSpacing: 0.3,
-  },
-  actions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 7,
-    marginTop: 11,
-    paddingTop: 10,
-    borderTopWidth: 2,
-    borderStyle: 'dotted',
-    borderTopColor: colors.ink + '22',
-  },
-  playChip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    backgroundColor: colors.blue,
-    borderWidth: 2,
-    borderColor: colors.ink,
-    paddingVertical: 5,
-    paddingHorizontal: 9,
-  },
+  tagText: { fontFamily: nbFonts.hand, fontSize: 13, color: nb.paper },
+  line: { fontFamily: nbFonts.bodyBold, fontSize: 19, color: nb.ink, lineHeight: 29, marginTop: 4 },
+  /** The highlighter, drawn as a full band rather than the text's bottom 45%: an inline
+   *  Text cannot host a positioned child, so a partial band is not available here. */
+  hi: { backgroundColor: nb.marker },
+  hiDrug: { textDecorationLine: 'underline' },
+  ipa: { fontFamily: nbFonts.mono, fontSize: 11, color: nb.soft, marginTop: 8, lineHeight: 18 },
+  actions: { flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 12 },
+  playChip: { flexDirection: 'row', alignItems: 'center', gap: 5, paddingVertical: 6, paddingHorizontal: 12 },
   flat: { opacity: 0.4 },
-  chipText: { fontFamily: fonts.heading, fontSize: fs(11), color: colors.ink },
   spacer: { flex: 1 },
-  hint: { fontFamily: fonts.body, fontSize: fs(9.5), color: colors.textSoft },
 });
