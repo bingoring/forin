@@ -219,6 +219,100 @@ func (q *Queries) ListSessionSpeech(ctx context.Context, arg ListSessionSpeechPa
 	return items, nil
 }
 
+const listSpeakSentencesHigh = `-- name: ListSpeakSentencesHigh :many
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, scenario_id, origin, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1
+       -- '' means every department. Filtering HERE rather than on the client is what
+       -- makes ` + "`" + `total` + "`" + ` and the paging honest: a client-side filter reported "3 of 128"
+       -- for "3 matched among the pages loaded so far", and pulled more in as the
+       -- learner scrolled.
+       AND ($4::text = '' OR split_part(scenario_id, '-', 2) = $4::text)
+       -- 문장 검색: the same reasoning as ` + "`" + `dept` + "`" + ` — filtering here is what keeps ` + "`" + `total` + "`" + `
+       -- and the paging honest. ILIKE rather than a full-text index: the corpus is one
+       -- learner's own sentences (hundreds, not millions), and a substring is what
+       -- somebody typing "acetaminophen" actually means.
+       AND ($5::text = '' OR reference_text ILIKE '%' || $5::text || '%')
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, scenario_id, origin, attempt_no, created_at,
+       (SELECT COUNT(*)::int FROM latest) AS total
+  FROM latest
+ ORDER BY overall DESC, created_at DESC
+ LIMIT $3 OFFSET $2
+`
+
+type ListSpeakSentencesHighParams struct {
+	UserID string `json:"user_id"`
+	Off    int32  `json:"off"`
+	Lim    int32  `json:"lim"`
+	Dept   string `json:"dept"`
+	Q      string `json:"q"`
+}
+
+type ListSpeakSentencesHighRow struct {
+	SentenceKey   string             `json:"sentence_key"`
+	ReferenceText string             `json:"reference_text"`
+	Recognized    string             `json:"recognized"`
+	Overall       float64            `json:"overall"`
+	Accuracy      float64            `json:"accuracy"`
+	Fluency       float64            `json:"fluency"`
+	Completeness  float64            `json:"completeness"`
+	ScenarioID    string             `json:"scenario_id"`
+	Origin        string             `json:"origin"`
+	AttemptNo     int                `json:"attempt_no"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+	Total         int                `json:"total"`
+}
+
+// 높은 순: best standing first — the mirror of ListSpeakSentencesWeak. Same projection
+// so one repo mapper serves all three sorts; only the final ORDER BY differs.
+//
+// `total` rides along on every row so the list's "N문장 중 M개 표시" needs no
+// second round trip per page.
+func (q *Queries) ListSpeakSentencesHigh(ctx context.Context, arg ListSpeakSentencesHighParams) ([]ListSpeakSentencesHighRow, error) {
+	rows, err := q.db.Query(ctx, listSpeakSentencesHigh,
+		arg.UserID,
+		arg.Off,
+		arg.Lim,
+		arg.Dept,
+		arg.Q,
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListSpeakSentencesHighRow
+	for rows.Next() {
+		var i ListSpeakSentencesHighRow
+		if err := rows.Scan(
+			&i.SentenceKey,
+			&i.ReferenceText,
+			&i.Recognized,
+			&i.Overall,
+			&i.Accuracy,
+			&i.Fluency,
+			&i.Completeness,
+			&i.ScenarioID,
+			&i.Origin,
+			&i.AttemptNo,
+			&i.CreatedAt,
+			&i.Total,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const listSpeakSentencesRecent = `-- name: ListSpeakSentencesRecent :many
 WITH latest AS (
     SELECT DISTINCT ON (sentence_key)

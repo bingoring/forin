@@ -141,7 +141,7 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 		}
 	}
 
-	weak, total, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 2, 0)
+	weak, total, err := repo.ListSpokenSentences(ctx, uid, "weak", "", "", 2, 0)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(weak): %v", err)
 	}
@@ -156,7 +156,7 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 		t.Errorf("scenarioId = %q", weak[1].ScenarioID)
 	}
 
-	recent, _, err := repo.ListSpokenSentences(ctx, uid, false, "", "", 1, 0)
+	recent, _, err := repo.ListSpokenSentences(ctx, uid, "recent", "", "", 1, 0)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(recent): %v", err)
 	}
@@ -164,9 +164,23 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 		t.Errorf("recent page = %+v", recent)
 	}
 
+	// "high" is the mirror of "weak": best standing first. A page of two is
+	// "best" then "middling" — so a High query that fell back to Weak (or shared
+	// its ORDER BY) would put "worst" at the top and fail here.
+	high, highTotal, err := repo.ListSpokenSentences(ctx, uid, "high", "", "", 2, 0)
+	if err != nil {
+		t.Fatalf("ListSpokenSentences(high): %v", err)
+	}
+	if highTotal != 3 {
+		t.Errorf("high total = %d, want 3", highTotal)
+	}
+	if len(high) != 2 || high[0].ReferenceText != "best" || high[1].ReferenceText != "middling" {
+		t.Errorf("high page = %+v", high)
+	}
+
 	// Offset past the end is how infinite scroll learns it has reached the
 	// bottom: an empty page, not an error.
-	tail, _, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 20, 99)
+	tail, _, err := repo.ListSpokenSentences(ctx, uid, "weak", "", "", 20, 99)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(offset past end): %v", err)
 	}
@@ -199,7 +213,7 @@ func TestListSpokenSentencesFiltersByDepartment(t *testing.T) {
 	}
 
 	// Filtered: only that department, and `total` counts only it.
-	rows, total, err := repo.ListSpokenSentences(ctx, uid, true, "ER", "", 20, 0)
+	rows, total, err := repo.ListSpokenSentences(ctx, uid, "weak", "ER", "", 20, 0)
 	if err != nil {
 		t.Fatalf("filtered: %v", err)
 	}
@@ -213,7 +227,7 @@ func TestListSpokenSentencesFiltersByDepartment(t *testing.T) {
 	}
 
 	// Unfiltered: everything, including the sentence with no scenario.
-	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 20, 0)
+	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, "weak", "", "", 20, 0)
 	if err != nil {
 		t.Fatalf("unfiltered: %v", err)
 	}
@@ -241,7 +255,7 @@ func TestListSpokenSentencesFiltersByQuery(t *testing.T) {
 		}
 	}
 
-	rows, total, err := repo.ListSpokenSentences(ctx, uid, true, "", "acetaminophen", 20, 0)
+	rows, total, err := repo.ListSpokenSentences(ctx, uid, "weak", "", "acetaminophen", 20, 0)
 	if err != nil {
 		t.Fatalf("query: %v", err)
 	}
@@ -251,7 +265,7 @@ func TestListSpokenSentencesFiltersByQuery(t *testing.T) {
 
 	// Case-insensitive, and a substring rather than a prefix: somebody typing "PAIN"
 	// means the sentence with pain in the middle of it.
-	rows, _, err = repo.ListSpokenSentences(ctx, uid, true, "", "PAIN", 20, 0)
+	rows, _, err = repo.ListSpokenSentences(ctx, uid, "weak", "", "PAIN", 20, 0)
 	if err != nil {
 		t.Fatalf("case-insensitive query: %v", err)
 	}
@@ -260,21 +274,21 @@ func TestListSpokenSentencesFiltersByQuery(t *testing.T) {
 	}
 
 	// Composes with the department chip rather than replacing it.
-	rows, total, err = repo.ListSpokenSentences(ctx, uid, true, "ICU", "pain", 20, 0)
+	rows, total, err = repo.ListSpokenSentences(ctx, uid, "weak", "ICU", "pain", 20, 0)
 	if err != nil {
 		t.Fatalf("query + dept: %v", err)
 	}
 	if len(rows) != 1 || total != 1 {
 		t.Errorf("ICU + pain = %d rows, total %d", len(rows), total)
 	}
-	if rows, total, err = repo.ListSpokenSentences(ctx, uid, true, "ER", "pain", 20, 0); err != nil {
+	if rows, total, err = repo.ListSpokenSentences(ctx, uid, "weak", "ER", "pain", 20, 0); err != nil {
 		t.Fatalf("query + wrong dept: %v", err)
 	} else if len(rows) != 0 || total != 0 {
 		t.Errorf("ER + pain = %d rows, total %d; want nothing", len(rows), total)
 	}
 
 	// An empty query is not a filter at all.
-	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 20, 0)
+	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, "weak", "", "", 20, 0)
 	if err != nil {
 		t.Fatalf("empty query: %v", err)
 	}

@@ -295,8 +295,8 @@ test('tapping 말하기 lands on the LIST, not a summary of it', async () => {
   // A spoken sentence, straight away. It used to be a summary block whose "전체 ›" link
   // was the only way to the list — one tap too many for the thing the tab is named after.
   expect(out.some((x) => x.includes('Please bear with me'))).toBe(true);
-  // The list's own controls come with it.
-  expect(out.some((x) => x === '약한 순' || x === '최신')).toBe(true);
+  // The list's own controls come with it — the sort dropdown opens on 낮은순.
+  expect(out.some((x) => x === '낮은순')).toBe(true);
   // …and the 교정 노트 content is gone rather than merely scrolled past.
   expect(out).not.toContain('잊어버리기 전에 다시 보기');
   expect(out.some((x) => x.includes('Can you tell me about your pain?'))).toBe(false);

@@ -86,7 +86,7 @@ type fakeSpeechRepo struct {
 	// for, so a query-string test can assert the sort actually reached the repo.
 	depts       []string
 	spokenCalls []struct {
-		WeakestFirst  bool
+		Sort          string
 		Dept          string
 		Q             string
 		Limit, Offset int
@@ -119,13 +119,13 @@ func (f *fakeSpeechRepo) SpokenDepartments(context.Context, string) ([]string, e
 	return f.depts, nil
 }
 
-func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept, q string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID, sort, dept, q string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
 	f.spokenCalls = append(f.spokenCalls, struct {
-		WeakestFirst  bool
+		Sort          string
 		Dept          string
 		Q             string
 		Limit, Offset int
-	}{weakestFirst, dept, q, limit, offset})
+	}{sort, dept, q, limit, offset})
 	rows, err := f.ListSessionSpeech(ctx, userID, "")
 	return rows, len(rows), err
 }

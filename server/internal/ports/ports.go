@@ -357,13 +357,13 @@ type SpeechRepo interface {
 	// attempt). Zero counts for a player who has never spoken.
 	SpeakBands(ctx context.Context, userID string) (SpeakBandCounts, error)
 	// ListSpokenSentences returns one page of the player's spoken sentences,
-	// newest attempt per sentence, plus the UNPAGED total. weakestFirst selects
-	// the sort (약한 순 / 최신). total is 0 on an empty page — the caller holds
-	// the real total from the first page.
+	// newest attempt per sentence, plus the UNPAGED total. `sort` is one of "weak"
+	// (약한 순, the default), "high" (높은 순) or "recent" (최신). total is 0 on an
+	// empty page — the caller holds the real total from the first page.
 	// dept "" means every department, and q "" every sentence. Both filter HERE
 	// rather than on the client, which is what keeps `total` and the paging honest:
 	// a client-side filter reports "3 of 128" for "3 among the pages loaded so far".
-	ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept, q string, limit, offset int) (rows []SpokenSentenceRow, total int, err error)
+	ListSpokenSentences(ctx context.Context, userID, sort, dept, q string, limit, offset int) (rows []SpokenSentenceRow, total int, err error)
 	// SpokenDepartments lists every department the learner has spoken in, so the
 	// filter chips are complete rather than growing as pages load.
 	SpokenDepartments(ctx context.Context, userID string) ([]string, error)

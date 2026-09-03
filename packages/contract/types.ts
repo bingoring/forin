@@ -2226,7 +2226,7 @@ export interface paths {
         get: {
             parameters: {
                 query?: {
-                    /** @description weak (약한 순, default) or recent (최신) */
+                    /** @description weak (약한 순, default), high (높은 순) or recent (최신) */
                     sort?: string;
                     /** @description substring of the sentence to match (case-insensitive) */
                     q?: string;

@@ -1,33 +1,31 @@
 // Every sentence the learner has said out loud (04_SCREENS ⑨ "11b").
 //
-// Mobile patterns, per the handoff: infinite scroll rather than pagination, a sort
-// dropdown at the end of the search line (v33 — it was a second tab row, which stacked
-// under the lab's section tabs and read as a nested tab bar), tappable department chips.
+// Two controls, the learner's call: a sort dropdown and department chips. Search was
+// here (v31) and is gone again — "검색도 누가 할까 싶으니 빼고": on one's own few-hundred
+// spoken sentences a substring search earns its keep less than the two-tap filter the
+// chips already are. The sort is an inline dropdown (낮은순 / 높은순 / 최신순), NOT a
+// bottom sheet: for a three-way ordering the sheet sliding up from the bottom read as
+// heavier than the choice, so the options drop down from the control itself.
 //
-// Three things here deliberately differ from the handoff's prose, all for the same
-// reason — the prose describes a web mock and the mock's mechanics do not survive the
-// port:
+// Two things here deliberately differ from the handoff's prose, both because the prose
+// describes a web mock whose mechanics do not survive the port:
 //
 //  1. No `height: 186` header. The handoff pins that number to work around a CSS
 //     content-box bug (a header with padding growing past its declared height and
 //     painting over the first row); RN has no such bug, and a fixed 186 spent a
-//     quarter of the screen on a title, a segment and a chip row. The header sizes to
+//     quarter of the screen on a title, a control and a chip row. The header sizes to
 //     its content and the list gets the rest.
-//  2. No `⚙ 필터 N` sheet. The handoff wants one for "compound conditions"; the only
-//     axis this list has is department, and the chip row IS that filter. A sheet
-//     wrapping one axis, sitting directly under the chips that already do it, is
-//     indirection — two ways to set one thing, which then have to agree.
-//  3. Filtering happens on the SERVER. Client-side filtering made the count line
-//     lie ("3 of 128" for "3 matched among the pages loaded so far") and pulled more
-//     matches in as the learner scrolled, which reads as the filter being broken.
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+//  2. Filtering happens on the SERVER. A client-side department filter made the count
+//     line lie ("3 of 128" for "3 matched among the pages loaded so far") and pulled
+//     more matches in as the learner scrolled, which reads as the filter being broken.
+import { useCallback, useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { api, type SpeakSort, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbChip, NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
-import { NbSortMenu } from '@/components/nb/NbSortMenu';
+import { NbInlineSelect } from '@/components/nb/NbInlineSelect';
 import { SpokenRow } from '@/components/speak/SpokenRow';
 import { BandBar } from '@/components/speak/BandBar';
 import { useT } from '@/i18n';
@@ -37,22 +35,17 @@ const PAGE = 20;
 /**
  * Nothing to show — and WHICH nothing.
  *
- * Three different facts, and telling a learner with 128 sentences that they have
- * never spoken (which is what the unfiltered copy says) is the worst of the three.
- * The search case comes first because it is the narrowest: a query inside a
- * department that matched nothing is still a query that matched nothing.
+ * Telling a learner with 128 sentences that they have never spoken (the unfiltered
+ * copy) is the worse of the two, so a department that filtered everything out says so
+ * on its own terms rather than falling back to the never-spoken line.
  */
-function EmptyState({ query, dept }: { query: string; dept: string }) {
+function EmptyState({ dept }: { dept: string }) {
   const t = useT();
   return (
     <View style={styles.center}>
-      <NbIcon name={query ? 'magnify' : 'mic'} size={34} color={nb.soft} />
-      <Text style={styles.emptyTitle}>
-        {query ? t('list.emptyForQuery', { q: query }) : dept ? t('list.emptyInDept', { dept }) : t('speak.listEmpty')}
-      </Text>
-      <Text style={styles.emptyHint}>
-        {query ? t('list.emptyForQueryHint') : dept ? t('list.emptyInDeptHint') : t('speak.listEmptyHint')}
-      </Text>
+      <NbIcon name="mic" size={34} color={nb.soft} />
+      <Text style={styles.emptyTitle}>{dept ? t('list.emptyInDept', { dept }) : t('speak.listEmpty')}</Text>
+      <Text style={styles.emptyHint}>{dept ? t('list.emptyInDeptHint') : t('speak.listEmptyHint')}</Text>
     </View>
   );
 }
@@ -69,19 +62,12 @@ export function SpeakList({ embedded = false, above }: {
   const t = useT();
   const router = useRouter();
   const params = useLocalSearchParams<{ sort?: string }>();
-  const [sort, setSort] = useState<SpeakSort>(params.sort === 'weak' ? 'weak' : 'recent');
+  // A deep link may pin the ordering; anything else opens on 낮은순, the sentences that
+  // most need the practice this list exists for.
+  const [sort, setSort] = useState<SpeakSort>(
+    params.sort === 'high' || params.sort === 'recent' ? params.sort : 'weak',
+  );
   const [dept, setDept] = useState('');
-  // 문장 검색 (v31). Two pieces of state on purpose: `query` is what the field shows,
-  // `applied` is what the last request used. Typing must not fire a request per
-  // keystroke, and the count line must not describe a filter the rows are not under.
-  const [query, setQuery] = useState('');
-  const debounce = useRef<ReturnType<typeof setTimeout> | null>(null);
-  // What the rows on screen are actually filtered by. STATE, not a ref: the empty
-  // state reads it while rendering ("'zzzz'와 맞는 문장이 없어요"), and a ref read
-  // during render is exactly the value React Compiler is entitled to compute once and
-  // never again. It is also what loadMore pages within, so page 2 of a search is page
-  // 2 of the SAME search rather than of the unfiltered list.
-  const [applied, setApplied] = useState('');
   const [rows, setRows] = useState<SpokenSentence[]>([]);
   const [total, setTotal] = useState(0);
   // Every department the learner has spoken in, from the server. Held across reloads
@@ -100,11 +86,10 @@ export function SpeakList({ embedded = false, above }: {
   /** Reloads from the top. Sort and filter both come through here: page 2 of one
    *  ordering has nothing to do with page 2 of another, and appending across a change
    *  interleaves two lists into one that means nothing. */
-  const reload = useCallback((nextSort: SpeakSort, nextDept: string, nextQuery = '') => {
+  const reload = useCallback((nextSort: SpeakSort, nextDept: string) => {
     setState('loading');
     setDone(false);
-    setApplied(nextQuery);
-    api.speakSentences({ sort: nextSort, dept: nextDept, q: nextQuery, limit: PAGE, offset: 0 })
+    api.speakSentences({ sort: nextSort, dept: nextDept, limit: PAGE, offset: 0 })
       .then((page) => {
         setRows(page.sentences);
         setTotal(page.total);
@@ -118,22 +103,9 @@ export function SpeakList({ embedded = false, above }: {
   // One-shot, NOT useFocusEffect: this is a pushed screen, and refetching every time
   // it regains focus (returning from the practice screen) would throw away the pages
   // already pulled in and the scroll position they were being read at.
-  useEffect(() => { reload(sort, dept, ''); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { reload(sort, dept); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Typed, then searched: 350ms after the last keystroke. Firing per character spends
-  // a request on every prefix of a word nobody meant to search for.
-  const onQuery = (next: string) => {
-    setQuery(next);
-    if (debounce.current) clearTimeout(debounce.current);
-    debounce.current = setTimeout(() => {
-      if (next.trim() !== applied) reload(sort, dept, next.trim());
-    }, 350);
-  };
-  // A pending search must not land after the screen is gone (mountRegistry's lesson:
-  // a timer that fires past teardown crashes whichever suite is running).
-  useEffect(() => () => { if (debounce.current) clearTimeout(debounce.current); }, []);
-
-  // Only where it is drawn. On its own screen the header is already three controls deep.
+  // Only where it is drawn. On its own screen the header is already two controls deep.
   useEffect(() => {
     if (!embedded) return;
     let alive = true;
@@ -141,15 +113,15 @@ export function SpeakList({ embedded = false, above }: {
     return () => { alive = false; };
   }, [embedded]);
 
-  const onSort = (next: SpeakSort) => { if (next !== sort) { setSort(next); reload(next, dept, query.trim()); } };
-  const onDept = (next: string) => { if (next !== dept) { setDept(next); reload(sort, next, query.trim()); } };
+  const onSort = (next: SpeakSort) => { if (next !== sort) { setSort(next); reload(next, dept); } };
+  const onDept = (next: string) => { if (next !== dept) { setDept(next); reload(sort, next); } };
 
   const loadMore = () => {
     if (done || loadingMore || state !== 'ok') return;
     setLoadingMore(true);
-    api.speakSentences({ sort, dept, q: applied, limit: PAGE, offset: rows.length })
+    api.speakSentences({ sort, dept, limit: PAGE, offset: rows.length })
       .then((page) => {
-        // Dedup by sentenceKey: under 약한 순 a sentence re-scored between two fetches
+        // Dedup by sentenceKey: under 낮은순 a sentence re-scored between two fetches
         // shifts position, and a duplicate breaks FlatList's key invariant as well as
         // showing the row twice.
         setRows((prev) => {
@@ -171,32 +143,18 @@ export function SpeakList({ embedded = false, above }: {
     );
   };
 
+  const sortOptions: { value: SpeakSort; label: string }[] = [
+    { value: 'weak', label: t('list.sortWeak') },
+    { value: 'high', label: t('list.sortHigh') },
+    { value: 'recent', label: t('list.sortRecent') },
+  ];
+
   const headerInner = (
     <>
-        {/* Search on a ruled line — a real field, because the handoff's line is where you
-            type — with the sort dropdown at its right end, exactly where the handoff puts
-            "점수 낮은순 ∨". The sort used to be a second NbIndexTabs directly under the
-            lab's section tabs, so the two tab rows read as one nested tab bar. */}
-        <View style={styles.search}>
-          <NbIcon name="magnify" size={16} />
-          <TextInput
-            value={query}
-            onChangeText={onQuery}
-            placeholder={t('list.searchSentence')}
-            placeholderTextColor={nb.placeholder}
-            style={styles.searchInput}
-            returnKeyType="search"
-            autoCorrect={false}
-          />
-          {!!query && (
-            <Pressable onPress={() => onQuery('')} hitSlop={10}><NbIcon name="cross" size={13} /></Pressable>
-          )}
-          <NbSortMenu
-            title={t('list.sortTitle')}
-            value={sort}
-            options={[{ value: 'weak', label: t('list.sortWeak') }, { value: 'recent', label: t('list.sortRecent') }]}
-            onSelect={onSort}
-          />
+        {/* The sort as an inline dropdown at the row's right end — where the handoff draws
+            "점수 낮은순 ∨" — rather than the bottom sheet it used to raise. */}
+        <View style={styles.sortRow}>
+          <NbInlineSelect title={t('list.sortTitle')} value={sort} options={sortOptions} onSelect={onSort} />
         </View>
 
         {/* Only when there is a choice to make: one department is not a filter. */}
@@ -245,9 +203,7 @@ export function SpeakList({ embedded = false, above }: {
         renderItem={({ item, index }) => (
           <SpokenRow sentence={item} onPractise={practise} divider={index < rows.length - 1} />
         )}
-        ListEmptyComponent={
-          <EmptyState query={applied} dept={dept} />
-        }
+        ListEmptyComponent={<EmptyState dept={dept} />}
         ListFooterComponent={
           // Three pips + 불러오는 중… , the handoff's end-of-infinite-scroll
           // indicator. Absent once the list is complete — a spinner that never
@@ -294,9 +250,7 @@ export function SpeakList({ embedded = false, above }: {
             </View>
           )}
           ListEmptyComponent={
-            state === 'ok' ? (
-              <EmptyState query={applied} dept={dept} />
-            ) : null
+            state === 'ok' ? <EmptyState dept={dept} /> : null
           }
           ListFooterComponent={
             !done && rows.length > 0 ? (
@@ -367,12 +321,8 @@ const styles = StyleSheet.create({
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   back: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   chipRow: { gap: 7, paddingVertical: 2, paddingRight: 20 },
-  search: {
-    flexDirection: 'row', alignItems: 'center', gap: 8,
-    paddingVertical: 3, paddingHorizontal: 4,
-    borderBottomWidth: 2, borderBottomColor: 'rgba(62,54,43,.45)',
-  },
-  searchInput: { flex: 1, minWidth: 0, fontFamily: nbFonts.hand, fontSize: 15, color: nb.ink, paddingVertical: 4 },
+  // The sort dropdown sits at the right end, the way the handoff draws "점수 낮은순 ∨".
+  sortRow: { flexDirection: 'row', justifyContent: 'flex-end', paddingVertical: 2 },
   count: { fontFamily: nbFonts.mono, fontSize: 9.5, color: nb.soft },
   scroller: { flex: 1 },
   listBody: { paddingBottom: 40, paddingHorizontal: 20 },

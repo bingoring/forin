@@ -314,8 +314,8 @@ export interface SpeakSummary {
   weakest: SpokenSentence[];
 }
 
-/** ScreenSpeakList's segmented sort: 약한 순 / 최신. */
-export type SpeakSort = 'weak' | 'recent';
+/** ScreenSpeakList's sort dropdown: 낮은순 / 높은순 / 최신순 (weak / high / recent). */
+export type SpeakSort = 'weak' | 'high' | 'recent';
 
 /** One correction as the 시나리오 모범답안 block draws it: 내 답변 struck through
  *  against the 모범, with the "왜?" note. `said`/`model` rather than front/back —

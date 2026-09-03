@@ -175,9 +175,10 @@ func TestSpokenSentencesSortSelection(t *testing.T) {
 
 	for _, tc := range []struct {
 		query string
-		weak  bool
+		sort  string
 	}{
-		{"", true}, {"?sort=weak", true}, {"?sort=recent", false}, {"?sort=banana", true},
+		{"", "weak"}, {"?sort=weak", "weak"}, {"?sort=high", "high"},
+		{"?sort=recent", "recent"}, {"?sort=banana", "weak"},
 	} {
 		repo.spokenCalls = nil
 		req := httptest.NewRequest(http.MethodGet, "/speech/sentences"+tc.query, nil)
@@ -190,8 +191,8 @@ func TestSpokenSentencesSortSelection(t *testing.T) {
 		if len(repo.spokenCalls) != 1 {
 			t.Fatalf("%q made %d repo calls", tc.query, len(repo.spokenCalls))
 		}
-		if repo.spokenCalls[0].WeakestFirst != tc.weak {
-			t.Errorf("%q -> weakestFirst=%v, want %v", tc.query, repo.spokenCalls[0].WeakestFirst, tc.weak)
+		if repo.spokenCalls[0].Sort != tc.sort {
+			t.Errorf("%q -> sort=%q, want %q", tc.query, repo.spokenCalls[0].Sort, tc.sort)
 		}
 	}
 }

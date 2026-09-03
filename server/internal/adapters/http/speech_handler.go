@@ -213,7 +213,7 @@ type spokenSentencesResp struct {
 // @Summary One page of every sentence the player has spoken aloud (ScreenSpeakList)
 // @Tags pronunciation
 // @Security Bearer
-// @Param sort query string false "weak (약한 순, default) or recent (최신)"
+// @Param sort query string false "weak (약한 순, default), high (높은 순) or recent (최신)"
 // @Param q query string false "substring of the sentence to match (case-insensitive)"
 // @Param dept query string false "department code (ER, ICU, …); omit for every department"
 // @Param limit query int false "page size, default 20, clamped to 100"
@@ -222,10 +222,13 @@ type spokenSentencesResp struct {
 // @Router /speech/sentences [get]
 func (h *speechHandler) spokenSentences(w http.ResponseWriter, r *http.Request) {
 	uid, _ := UserID(r.Context())
-	// Anything other than an explicit "recent" is the 약한 순 default: the list
-	// opens on what needs work, and an unrecognized value must not silently
-	// reorder the screen into the other sort.
-	weakestFirst := r.URL.Query().Get("sort") != "recent"
+	// One of "weak" (약한 순, the default), "high" (높은 순) or "recent" (최신).
+	// An unrecognized value falls back to "weak" — the list opens on what needs
+	// work, and a typo must not silently reorder the screen.
+	sort := r.URL.Query().Get("sort")
+	if sort != "high" && sort != "recent" {
+		sort = "weak"
+	}
 	limit := spokenListLimit
 	if v := r.URL.Query().Get("limit"); v != "" {
 		if n, err := strconv.Atoi(v); err == nil {
@@ -249,7 +252,7 @@ func (h *speechHandler) spokenSentences(w http.ResponseWriter, r *http.Request) 
 	if len(q) > 120 {
 		q = q[:120]
 	}
-	rows, total, err := h.svc.SpokenSentences(r.Context(), uid, weakestFirst, dept, q, limit, offset)
+	rows, total, err := h.svc.SpokenSentences(r.Context(), uid, sort, dept, q, limit, offset)
 	if err != nil {
 		slog.Error("speech: spoken sentence list failed", "err", err)
 		httpx.Error(w, http.StatusInternalServerError, "could not load your spoken sentences")

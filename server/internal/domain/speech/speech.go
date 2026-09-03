@@ -240,7 +240,7 @@ func (s *Service) SpeakSummary(ctx context.Context, userID string) (*SpeakSummar
 	if err != nil {
 		return nil, err
 	}
-	weak, _, err := s.repo.ListSpokenSentences(ctx, userID, true, "", "", weakestCount, 0)
+	weak, _, err := s.repo.ListSpokenSentences(ctx, userID, "weak", "", "", weakestCount, 0)
 	if err != nil {
 		return nil, err
 	}
@@ -253,7 +253,7 @@ func (s *Service) SpeakSummary(ctx context.Context, userID string) (*SpeakSummar
 // should degrade to a big-but-bounded page, not a 400 that leaves the list
 // stuck. Offsets past the end return an empty page, which is how the client's
 // infinite scroll learns it has reached the bottom.
-func (s *Service) SpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept, q string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+func (s *Service) SpokenSentences(ctx context.Context, userID, sort, dept, q string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
 	if limit <= 0 {
 		limit = 20
 	}
@@ -263,7 +263,7 @@ func (s *Service) SpokenSentences(ctx context.Context, userID string, weakestFir
 	if offset < 0 {
 		offset = 0
 	}
-	return s.repo.ListSpokenSentences(ctx, userID, weakestFirst, dept, q, limit, offset)
+	return s.repo.ListSpokenSentences(ctx, userID, sort, dept, q, limit, offset)
 }
 
 // SpokenDepartments lists every department the learner has spoken in, for the list

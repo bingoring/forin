@@ -279,7 +279,7 @@ func (r *SpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.Speak
 // 최신). They are separate SQL statements rather than one with a computed ORDER
 // BY: an ORDER BY built from a parameter cannot use an index, and sqlc would not
 // type-check it.
-func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept, q string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID, sort, dept, q string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
 	type row struct {
 		sentenceKey, referenceText, recognized, scenarioID, origin string
 		overall, accuracy, fluency, completeness                   float64
@@ -287,8 +287,12 @@ func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, wea
 		createdAt                                                  time.Time
 	}
 	var raw []row
-	if weakestFirst {
-		rows, err := r.q.ListSpeakSentencesWeak(ctx, sqlc.ListSpeakSentencesWeakParams{
+	// Three separate SQL statements rather than one with a computed ORDER BY: an ORDER
+	// BY built from a parameter cannot use an index, and sqlc would not type-check it.
+	// Their projections are identical, so one mapper below serves all three.
+	switch sort {
+	case "high":
+		rows, err := r.q.ListSpeakSentencesHigh(ctx, sqlc.ListSpeakSentencesHighParams{
 			UserID: userID, Dept: dept, Q: q, Lim: int32(limit), Off: int32(offset),
 		})
 		if err != nil {
@@ -298,8 +302,19 @@ func (r *SpeechRepo) ListSpokenSentences(ctx context.Context, userID string, wea
 			raw = append(raw, row{d.SentenceKey, d.ReferenceText, d.Recognized, d.ScenarioID, d.Origin,
 				d.Overall, d.Accuracy, d.Fluency, d.Completeness, d.AttemptNo, int(d.Total), d.CreatedAt.Time})
 		}
-	} else {
+	case "recent":
 		rows, err := r.q.ListSpeakSentencesRecent(ctx, sqlc.ListSpeakSentencesRecentParams{
+			UserID: userID, Dept: dept, Q: q, Lim: int32(limit), Off: int32(offset),
+		})
+		if err != nil {
+			return nil, 0, err
+		}
+		for _, d := range rows {
+			raw = append(raw, row{d.SentenceKey, d.ReferenceText, d.Recognized, d.ScenarioID, d.Origin,
+				d.Overall, d.Accuracy, d.Fluency, d.Completeness, d.AttemptNo, int(d.Total), d.CreatedAt.Time})
+		}
+	default: // "weak" — the default the list opens on: what needs work, first.
+		rows, err := r.q.ListSpeakSentencesWeak(ctx, sqlc.ListSpeakSentencesWeakParams{
 			UserID: userID, Dept: dept, Q: q, Lim: int32(limit), Off: int32(offset),
 		})
 		if err != nil {

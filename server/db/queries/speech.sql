@@ -130,6 +130,37 @@ SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
  ORDER BY overall, created_at DESC
  LIMIT sqlc.arg(lim) OFFSET sqlc.arg(off);
 
+-- name: ListSpeakSentencesHigh :many
+-- 높은 순: best standing first — the mirror of ListSpeakSentencesWeak. Same projection
+-- so one repo mapper serves all three sorts; only the final ORDER BY differs.
+--
+-- `total` rides along on every row so the list's "N문장 중 M개 표시" needs no
+-- second round trip per page.
+WITH latest AS (
+    SELECT DISTINCT ON (sentence_key)
+           sentence_key, reference_text, recognized, overall, accuracy, fluency,
+           completeness, scenario_id, origin, attempt_no, created_at
+      FROM speech_attempts
+     WHERE user_id = $1
+       -- '' means every department. Filtering HERE rather than on the client is what
+       -- makes `total` and the paging honest: a client-side filter reported "3 of 128"
+       -- for "3 matched among the pages loaded so far", and pulled more in as the
+       -- learner scrolled.
+       AND (sqlc.arg(dept)::text = '' OR split_part(scenario_id, '-', 2) = sqlc.arg(dept)::text)
+       -- 문장 검색: the same reasoning as `dept` — filtering here is what keeps `total`
+       -- and the paging honest. ILIKE rather than a full-text index: the corpus is one
+       -- learner's own sentences (hundreds, not millions), and a substring is what
+       -- somebody typing "acetaminophen" actually means.
+       AND (sqlc.arg(q)::text = '' OR reference_text ILIKE '%' || sqlc.arg(q)::text || '%')
+     ORDER BY sentence_key, attempt_no DESC
+)
+SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
+       completeness, scenario_id, origin, attempt_no, created_at,
+       (SELECT COUNT(*)::int FROM latest) AS total
+  FROM latest
+ ORDER BY overall DESC, created_at DESC
+ LIMIT sqlc.arg(lim) OFFSET sqlc.arg(off);
+
 -- name: ListSpeakSentencesRecent :many
 -- 최신: newest first. Same projection as ListSpeakSentencesWeak so one repo
 -- mapper serves both sorts.
