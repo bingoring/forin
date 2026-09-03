@@ -1,0 +1,205 @@
+name: build
+
+# A native build — the path OTA cannot take.
+#
+# `eas update` only reaches a binary whose fingerprint runtimeVersion matches the
+# update's, so anything that changes a fingerprint INPUT (a native dependency, or
+# `app.json` — see 01-deployment.md §12.4) can only ship as a new build. Reaching
+# for `allow_fingerprint_mismatch` on ota.yml instead is publishing to zero
+# devices and calling it a release.
+#
+# Dispatch-only, and gated the same way ota.yml is: a production build is what a
+# store reviewer and then a tester installs, and `autoIncrement` burns a build
+# number on the EAS side whether the binary turns out to be any good or not.
+#
+# What this deliberately does NOT do: predict the fingerprint. §12.4's lesson is
+# that the build itself can rewrite its own inputs, so the hash is something to
+# read off the finished build (the summary below does) rather than something to
+# assert beforehand.
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: eas.json build profile
+        type: choice
+        options: [production, preview]
+        required: true
+      platform:
+        description: Which platform(s) to build
+        type: choice
+        options: [ios, android, all]
+        required: true
+      submit:
+        description: Submit to the store's test track when the build finishes (production only)
+        type: boolean
+        default: false
+      message:
+        description: Why this build exists (shown in the EAS dashboard)
+        type: string
+        required: true
+
+concurrency:
+  # Per profile+platform: two ios production builds at once would both take a
+  # build number and only one of them can be the newest.
+  group: build-${{ inputs.profile }}-${{ inputs.platform }}
+  cancel-in-progress: false
+
+jobs:
+  # Unconditional, no environment gate — so an approver opening the pending
+  # deployment can already read what they are approving. `environment:` blocks
+  # every step of the job that declares it, including one that would print this.
+  summarize:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Record what this dispatch would build
+        env:
+          PROFILE: ${{ inputs.profile }}
+          PLATFORM: ${{ inputs.platform }}
+          SUBMIT: ${{ inputs.submit }}
+          MESSAGE: ${{ inputs.message }}
+          SHA: ${{ github.sha }}
+          REF: ${{ github.ref }}
+        run: |
+          {
+            echo "### Native build requested"
+            echo ""
+            echo "- profile: \`$PROFILE\`"
+            echo "- platform: \`$PLATFORM\`"
+            echo "- commit: \`$SHA\` (\`$REF\`)"
+            echo "- message: $MESSAGE"
+            echo "- submit when finished: \`$SUBMIT\`"
+            if [ "$PROFILE" = "production" ] && [ "$REF" != "refs/heads/master" ]; then
+              echo ""
+              echo "**blocked**: production builds only run from \`master\`."
+            fi
+            if [ "$SUBMIT" = "true" ] && [ "$PROFILE" != "production" ]; then
+              echo ""
+              echo "**blocked**: only the production profile has a submit configuration (\`eas.json\` submit.production)."
+            fi
+            if [ "$PROFILE" = "production" ]; then
+              echo ""
+              echo "**Before approving**: is the prod server already promoted to \`$SHA\` (via \`promote.yml\`)? A binary that calls endpoints prod does not have yet is a broken install, and unlike an OTA it cannot be rolled back — only replaced."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  build:
+    needs: summarize
+    runs-on: ubuntu-latest
+    # workflow_dispatch lets an operator pick any branch, and nothing else here
+    # confirms that ref was reviewed. Production is pinned to master; preview is
+    # internal distribution and is not restricted.
+    if: success() && (inputs.profile != 'production' || github.ref == 'refs/heads/master')
+    environment: ${{ inputs.profile == 'production' && 'production' || 'preview' }}
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: mobile
+        # GitHub's default shell does not enable pipefail; `eas build | tee`
+        # below would otherwise report the tee's exit code and let a failed
+        # build print its way to green.
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - run: npm ci
+
+      # submit.production is the only submit profile in eas.json, and
+      # `eas build --auto-submit` reads submit.<profile>. Asking for a preview
+      # submit is a dispatch mistake, not something to guess at.
+      - name: Refuse a submit the profile cannot do
+        if: inputs.submit
+        env:
+          PROFILE: ${{ inputs.profile }}
+        run: |
+          jq -e --arg p "$PROFILE" '.submit | has($p)' eas.json >/dev/null || {
+            echo "::error::eas.json has no submit profile named \"$PROFILE\" — nothing to submit to."
+            exit 1
+          }
+
+      # Same gap as mobile.yml and ota.yml: `.expo/types/router.d.ts` is what
+      # makes a typo'd route a type error rather than a crash on tap. It is
+      # gitignored and only Metro generates it (01-deployment.md §12.2).
+      - name: Generate typed-routes declarations (for tsc)
+        run: |
+          npx expo start --port 8090 --offline > /tmp/expo-start.log 2>&1 &
+          EXPO_PID=$!
+          FOUND=0
+          for i in $(seq 1 30); do
+            if [ -f .expo/types/router.d.ts ]; then FOUND=1; break; fi
+            sleep 1
+          done
+          kill "$EXPO_PID" 2>/dev/null || true
+          sleep 1
+          pkill -f "expo start --port 8090" 2>/dev/null || true
+          if [ "$FOUND" != "1" ]; then
+            echo "::error::.expo/types/router.d.ts was not generated within 30s — tsc below would run without typed routes."
+            cat /tmp/expo-start.log
+            exit 1
+          fi
+
+      # A build is far more expensive to replace than an OTA: it takes a build
+      # number, minutes of EAS queue, and (with --auto-submit) a store review
+      # slot. Re-verify here rather than trusting that mobile.yml ran on this
+      # commit.
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Test
+        run: npm test
+
+      # --non-interactive matters twice over: it stops the export-compliance
+      # prompt that once wrote `ios.infoPlist.ITSAppUsesNonExemptEncryption`
+      # into app.json mid-build (§12.4) — a fingerprint input, changed by the
+      # tool, uncommitted — and it fails rather than hanging on any other
+      # question. `appVersionSource: remote` + `autoIncrement` means the build
+      # number comes from EAS, so nothing in the tree needs editing to ship.
+      #
+      # --json --wait: the run only ends when the build does, and the machine
+      # -readable result is what the summary reads the fingerprint out of.
+      - name: Build
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          PROFILE: ${{ inputs.profile }}
+          PLATFORM: ${{ inputs.platform }}
+          MESSAGE: ${{ inputs.message }}
+          SUBMIT: ${{ inputs.submit }}
+        run: |
+          ARGS=(build --profile "$PROFILE" --platform "$PLATFORM" --message "$MESSAGE" --non-interactive --json --wait)
+          if [ "$SUBMIT" = "true" ]; then ARGS+=(--auto-submit); fi
+          npx eas-cli@21.8.0 "${ARGS[@]}" | tee "$RUNNER_TEMP/eas-build-result.json"
+
+      # The fingerprint is read OFF the finished build, never predicted (§12.4):
+      # this is the value a later OTA has to match, and the only trustworthy
+      # source for it is the build EAS actually produced.
+      - name: Summarize what was built
+        if: always()
+        env:
+          PROFILE: ${{ inputs.profile }}
+        run: |
+          RESULT="$RUNNER_TEMP/eas-build-result.json"
+          {
+            echo ""
+            echo "### Build result"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ ! -s "$RESULT" ]; then
+            echo "- no build result was written — the build step failed before EAS reported anything." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          jq -r '.[] | "- `\(.platform)` \(.status): id `\(.id)`, runtimeVersion `\(.runtimeVersion // "?")`, version `\(.appVersion // "?")` (\(.appBuildVersion // "?"))"' \
+            "$RESULT" >> "$GITHUB_STEP_SUMMARY" || {
+            echo "- could not parse the build result." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          }
+          {
+            echo ""
+            echo "An OTA on channel \`$PROFILE\` only reaches this binary if its runtimeVersion equals the value above. Read it here rather than predicting it — the build can rewrite its own fingerprint inputs (01-deployment.md §12.4)."
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -139,3 +139,56 @@ describe('eas update is only reachable through ota.yml', () => {
     expect(script).toMatch(/ota\.yml/);
   });
 });
+
+// ── a native build has one door too ───────────────────────────────────────
+//
+// `eas build` takes a build number (autoIncrement + appVersionSource: remote), and with
+// --auto-submit it takes a store review slot. Unlike an OTA it cannot be rolled back —
+// only replaced by another build. So the same three properties ota.yml has are checked
+// here: dispatch-only, production pinned to master, and the type-check plus the test
+// suite in front of the irreversible step.
+describe('build.yml is the sanctioned native-build path', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { readFileSync } = require('fs') as typeof import('fs');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { join } = require('path') as typeof import('path');
+  const wf = () => readFileSync(join(__dirname, '..', '..', '..', '.github', 'workflows', 'build.yml'), 'utf8');
+
+  test('it only runs when a human dispatches it', () => {
+    const src = wf();
+    expect(src).toMatch(/workflow_dispatch:/);
+    // No push/schedule trigger: a build that fires on its own would burn build
+    // numbers on every commit, and one of them would eventually auto-submit.
+    expect(src).not.toMatch(/^\s{2}(push|schedule|pull_request):/m);
+  });
+
+  test('a production build only comes from master, and only with a reviewer', () => {
+    const src = wf();
+    expect(src).toMatch(/inputs\.profile != 'production' \|\| github\.ref == 'refs\/heads\/master'/);
+    expect(src).toMatch(/environment: \$\{\{ inputs\.profile == 'production'/);
+  });
+
+  test('tsc and the test suite run BEFORE the build step', () => {
+    const src = wf();
+    const tsc = src.indexOf('npx tsc --noEmit');
+    const test = src.indexOf('npm test');
+    const build = src.indexOf('eas-cli@21.8.0 "${ARGS[@]}"');
+    expect(tsc).toBeGreaterThan(-1);
+    expect(test).toBeGreaterThan(-1);
+    expect(build).toBeGreaterThan(-1);
+    expect(tsc).toBeLessThan(build);
+    expect(test).toBeLessThan(build);
+  });
+
+  test('the build is non-interactive — the prompt that rewrote app.json cannot reappear', () => {
+    // §12.4: an interactive build wrote ios.infoPlist.ITSAppUsesNonExemptEncryption
+    // into app.json (a fingerprint input) and left it uncommitted, so master computed
+    // a different runtimeVersion than the IPA on TestFlight.
+    // The flag on the ARGS LINE, not anywhere in the file: the comment above that
+    // line names the flag too, so /--non-interactive/ passed with the flag deleted
+    // from the command — a check that read its own documentation.
+    const args = wf().split('\n').find((l) => l.includes('ARGS=(build'));
+    expect(args).toBeDefined();
+    expect(args).toContain('--non-interactive');
+  });
+});
