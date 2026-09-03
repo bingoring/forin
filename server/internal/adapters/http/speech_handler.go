@@ -208,6 +208,14 @@ type spokenSentencesResp struct {
 	// how far they have scrolled. Sent so the chip row is complete and stable —
 	// deriving it from the loaded pages made chips appear mid-scroll.
 	Depts []string `json:"depts"`
+	// Low/Mid/High is the score-band distribution OF THE CURRENT FILTER (60↓ / 60–79 /
+	// 80+), so the 말하기 탭's gauge under the chips re-reads as the selected chip's
+	// spread rather than the whole bank's. It travels with the page it belongs to — the
+	// same request that knows the department computes it, so the bars and the list can
+	// never disagree. Their sum equals Total (both count sentences under this filter).
+	Low  int `json:"low"`
+	Mid  int `json:"mid"`
+	High int `json:"high"`
 }
 
 // @Summary One page of every sentence the player has spoken aloud (ScreenSpeakList)
@@ -263,7 +271,13 @@ func (h *speechHandler) spokenSentences(w http.ResponseWriter, r *http.Request) 
 	if depts == nil {
 		depts = []string{}
 	}
-	httpx.JSON(w, http.StatusOK, spokenSentencesResp{Sentences: nonNil(rows), Total: total, Depts: depts})
+	// The distribution OF this filter. Best-effort too: a failed bands read leaves the
+	// gauge at zero rather than failing the list — the sentences are the point.
+	bands, _ := h.svc.SpeakBands(r.Context(), uid, dept)
+	httpx.JSON(w, http.StatusOK, spokenSentencesResp{
+		Sentences: nonNil(rows), Total: total, Depts: depts,
+		Low: bands.Low, Mid: bands.Mid, High: bands.High,
+	})
 }
 
 // nonNil turns a nil slice into an empty one so the JSON says [] rather than

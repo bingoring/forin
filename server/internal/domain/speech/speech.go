@@ -236,7 +236,7 @@ type SpeakSummary struct {
 // paged query the full list uses, asked for its first two — so the block and the
 // list can never disagree about which sentences are worst.
 func (s *Service) SpeakSummary(ctx context.Context, userID string) (*SpeakSummary, error) {
-	bands, err := s.repo.SpeakBands(ctx, userID)
+	bands, err := s.repo.SpeakBands(ctx, userID, "")
 	if err != nil {
 		return nil, err
 	}
@@ -264,6 +264,13 @@ func (s *Service) SpokenSentences(ctx context.Context, userID, sort, dept, q str
 		offset = 0
 	}
 	return s.repo.ListSpokenSentences(ctx, userID, sort, dept, q, limit, offset)
+}
+
+// SpeakBands is the score-band distribution for the 말하기 탭's gauge, narrowed to a
+// department when one is given ('' = every department). It rides alongside the list so
+// the bars re-read as the selected chip's spread.
+func (s *Service) SpeakBands(ctx context.Context, userID, dept string) (ports.SpeakBandCounts, error) {
+	return s.repo.SpeakBands(ctx, userID, dept)
 }
 
 // SpokenDepartments lists every department the learner has spoken in, for the list

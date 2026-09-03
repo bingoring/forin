@@ -18,7 +18,7 @@ import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { playSfx } from '@/lib/sfx';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbChip, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { space, type as typeScale } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 
@@ -348,7 +348,11 @@ export default function Lab() {
               <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center' }]}>{t('lab.allDone')}</Text>
             </View>
           }
-          contentContainerStyle={{ padding: space.lg, paddingTop: 56, paddingBottom: 40 }}
+          // The same left/top as the speak and model tabs' lists (paddingHorizontal 20,
+          // paddingTop TOP_INSET=52). They were 16 and 56 here, so the shared 복습 노트
+          // title and its tabs jumped ~4px sideways and up every time the section changed
+          // ("교정노트 ↔ 말하기 ↔ 모범답안을 오가면 미세하게 왔다갔다"). One inset, one place.
+          contentContainerStyle={{ paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 40 }}
           // A card is tall — four grade buttons and a note — so a small window covers
           // the screen with room to spare and the first paint stays cheap.
           initialNumToRender={3}

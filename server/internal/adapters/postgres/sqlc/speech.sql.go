@@ -590,7 +590,7 @@ func (q *Queries) PutSpeechReference(ctx context.Context, arg PutSpeechReference
 
 const speakBands = `-- name: SpeakBands :one
 WITH latest AS (
-    SELECT DISTINCT ON (sentence_key) sentence_key, overall
+    SELECT DISTINCT ON (sentence_key) sentence_key, overall, scenario_id
       FROM speech_attempts
      WHERE user_id = $1
      ORDER BY sentence_key, attempt_no DESC
@@ -600,7 +600,13 @@ SELECT COUNT(*)::int                                            AS total,
        COUNT(*) FILTER (WHERE overall >= 60 AND overall < 80)::int AS mid,
        COUNT(*) FILTER (WHERE overall >= 80)::int               AS high
   FROM latest
+ WHERE ($2::text = '' OR split_part(scenario_id, '-', 2) = $2::text)
 `
+
+type SpeakBandsParams struct {
+	UserID  string `json:"user_id"`
+	Column2 string `json:"column_2"`
+}
 
 type SpeakBandsRow struct {
 	Total int `json:"total"`
@@ -615,8 +621,13 @@ type SpeakBandsRow struct {
 // Counting attempts instead of sentences would let one heavily-drilled sentence
 // dominate the distribution, and would keep punishing the player for the early
 // bad tries they have since fixed.
-func (q *Queries) SpeakBands(ctx context.Context, userID string) (SpeakBandsRow, error) {
-	row := q.db.QueryRow(ctx, speakBands, userID)
+//
+// $2 is the department filter: ” means every department, otherwise the code that
+// ListSpeakSentences filters on (split_part(scenario_id, '-', 2)). It is filtered
+// HERE so the distribution the 말하기 탭 draws under its filter chips is the
+// distribution OF that filter — pick ER and the bars re-read as ER's spread.
+func (q *Queries) SpeakBands(ctx context.Context, arg SpeakBandsParams) (SpeakBandsRow, error) {
+	row := q.db.QueryRow(ctx, speakBands, arg.UserID, arg.Column2)
 	var i SpeakBandsRow
 	err := row.Scan(
 		&i.Total,

@@ -21,13 +21,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { api, type SpeakSort, type SpeakSummary, type SpokenSentence } from '@/api/client';
+import { api, type SpeakSort, type SpokenSentence } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbChip, NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { NbInlineSelect } from '@/components/nb/NbInlineSelect';
 import { SpokenRow } from '@/components/speak/SpokenRow';
-import { BandBar } from '@/components/speak/BandBar';
+import { BandBar, type BandCounts } from '@/components/speak/BandBar';
 import { useT } from '@/i18n';
 
 const PAGE = 20;
@@ -74,10 +74,11 @@ export function SpeakList({ embedded = false, above }: {
   // so the chip row does not flicker empty while a filtered page is in flight.
   const [depts, setDepts] = useState<string[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
-  // The score-band distribution (60↓ / 60–79 / 80+). It is the one thing the summary
-  // block this list replaced could say that a list of sentences cannot, so it comes
-  // along as the embedded header rather than being lost with the block.
-  const [bands, setBands] = useState<SpeakSummary | null>(null);
+  // The score-band distribution (60↓ / 60–79 / 80+) OF THE CURRENT FILTER. It rides on
+  // the same response as the page, so picking a department re-reads the gauge as that
+  // department's spread (v35) — and the bars and the list can never disagree, because
+  // one request computed both. BandBar animates between two of these.
+  const [dist, setDist] = useState<BandCounts>({ total: 0, low: 0, mid: 0, high: 0 });
   // `done` is what stops infinite scroll: a short page is the honest end-of-list
   // signal, and the only one that survives the total changing under a filter.
   const [done, setDone] = useState(false);
@@ -93,6 +94,9 @@ export function SpeakList({ embedded = false, above }: {
       .then((page) => {
         setRows(page.sentences);
         setTotal(page.total);
+        // The distribution of this filter — total is the filtered count, so it doubles
+        // as the gauge's denominator and the list's "N문장" number.
+        setDist({ total: page.total, low: page.low, mid: page.mid, high: page.high });
         if (page.depts.length > 0) setDepts(page.depts);
         setDone(page.sentences.length < PAGE);
         setState('ok');
@@ -104,14 +108,6 @@ export function SpeakList({ embedded = false, above }: {
   // it regains focus (returning from the practice screen) would throw away the pages
   // already pulled in and the scroll position they were being read at.
   useEffect(() => { reload(sort, dept); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Only where it is drawn. On its own screen the header is already two controls deep.
-  useEffect(() => {
-    if (!embedded) return;
-    let alive = true;
-    api.speakSummary().then((s) => { if (alive) setBands(s); }).catch(() => {});
-    return () => { alive = false; };
-  }, [embedded]);
 
   const onSort = (next: SpeakSort) => { if (next !== sort) { setSort(next); reload(next, dept); } };
   const onDept = (next: string) => { if (next !== dept) { setDept(next); reload(sort, next); } };
@@ -151,21 +147,32 @@ export function SpeakList({ embedded = false, above }: {
 
   const headerInner = (
     <>
-        {/* The sort as an inline dropdown at the row's right end — where the handoff draws
-            "점수 낮은순 ∨" — rather than the bottom sheet it used to raise. */}
-        <View style={styles.sortRow}>
+        {/* Filter left, sort right, on ONE line — the v35 말하기 탭. The chips scroll
+            within their half; the sort holds the right end where the handoff draws
+            "점수 낮은순 ∨". When there is only one department there is nothing to filter,
+            so a spacer keeps the sort where it always sits rather than letting it drift
+            left. */}
+        <View style={styles.controlRow}>
+          {depts.length > 1 ? (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.chipScroller} contentContainerStyle={styles.chipRow}>
+              {['', ...depts].map((d, i) => (
+                <NbChip key={d || 'ALL'} on={dept === d} rot={i % 2 ? 0.8 : -0.8} onPress={() => onDept(d)}>
+                  {d || t('list.allDepts')}
+                </NbChip>
+              ))}
+            </ScrollView>
+          ) : (
+            <View style={{ flex: 1 }} />
+          )}
           <NbInlineSelect title={t('list.sortTitle')} value={sort} options={sortOptions} onSelect={onSort} />
         </View>
 
-        {/* Only when there is a choice to make: one department is not a filter. */}
-        {depts.length > 1 && (
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
-            {['', ...depts].map((d, i) => (
-              <NbChip key={d || 'ALL'} on={dept === d} rot={i % 2 ? 0.8 : -0.8} onPress={() => onDept(d)}>
-                {d || t('list.allDepts')}
-              </NbChip>
-            ))}
-          </ScrollView>
+        {/* The score distribution, UNDER the filter — and OF the filter: it animates to
+            the selected chip's spread. Absent only before the first page lands. */}
+        {dist.total > 0 && (
+          <View style={{ marginTop: 4 }}>
+            <BandBar counts={dist} />
+          </View>
         )}
 
         {/* Says what it means: `total` is what matches the current filter, so once
@@ -232,7 +239,6 @@ export function SpeakList({ embedded = false, above }: {
           ListHeaderComponent={
             <View style={styles.embeddedHeader}>
               {above}
-              {bands && bands.total > 0 && <BandBar counts={bands} />}
               {headerInner}
               {state === 'loading' && <ActivityIndicator color={nb.ink} style={{ marginTop: 24 }} />}
               {state === 'error' && (
@@ -320,9 +326,10 @@ const styles = StyleSheet.create({
   },
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   back: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-  chipRow: { gap: 7, paddingVertical: 2, paddingRight: 20 },
-  // The sort dropdown sits at the right end, the way the handoff draws "점수 낮은순 ∨".
-  sortRow: { flexDirection: 'row', justifyContent: 'flex-end', paddingVertical: 2 },
+  // Filter chips (left, scrolling) and the sort control (right) share one line — v35.
+  controlRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  chipScroller: { flex: 1 },
+  chipRow: { gap: 7, paddingVertical: 2, paddingRight: 8, alignItems: 'center' },
   count: { fontFamily: nbFonts.mono, fontSize: 9.5, color: nb.soft },
   scroller: { flex: 1 },
   listBody: { paddingBottom: 40, paddingHorizontal: 20 },

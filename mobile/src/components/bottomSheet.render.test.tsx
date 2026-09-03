@@ -24,11 +24,16 @@ function draggables(root: ReactTestInstance): ReactTestInstance[] {
   );
 }
 
-/** The sheet's resting height — the observable form of "how big did it open". */
+/** The sheet's resting height — the observable form of "how big did it open".
+ *
+ *  The VISIBLE sheet, found by its clip (`overflow: 'hidden'`, which carries the rounded
+ *  top): the paper extension below it also has a numeric height, and it is drawn first,
+ *  so a height-only search would measure the extension instead of the sheet. */
 function restingHeight(root: ReactTestInstance): number {
   const node = root.findAll(
     (n) =>
       typeof n.type === 'string' &&
+      n.props?.style?.overflow === 'hidden' &&
       (typeof n.props?.style?.height === 'number' || typeof n.props?.style?.maxHeight === 'number'),
     { deep: true }
   )[0];

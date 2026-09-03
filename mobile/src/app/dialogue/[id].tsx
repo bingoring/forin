@@ -6,7 +6,7 @@
 // persona. Includes the v17 handoff affordances: MISSION counter, 💧 distress cue,
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Animated, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
@@ -518,6 +518,11 @@ export default function DialogueRoute() {
   const wash = deptWash(scenario?.briefing?.deptColor);
   const authored = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
   const expr = moodExpression(turnMood) ?? authored;
+  // Built once per (person, uniform, mood) rather than once per render. npcAvatarSpec
+  // returns a fresh object, so passing the raw call to NbAvatar re-drew the whole SVG
+  // portrait on every streaming token even though the face had not changed. It changes
+  // only when the mood does, which is what this dependency list says.
+  const npcSpec = useMemo(() => npcAvatarSpec(kind, npcSeed, expr as NpcExpression), [kind, npcSeed, expr]);
   const npcName = (p.name || 'NPC').toUpperCase();
   const goals = scenario?.goals ?? [];
   const chart = scenario?.briefing?.chart;
@@ -711,7 +716,7 @@ export default function DialogueRoute() {
           {/* The notebook-line portrait (v34), built from the persona rather than
               the pixel RoleFace it replaced — same three inputs (role, mood, a seed for
               the person), drawn in the avatar system every other face on the app uses. */}
-          <NbAvatar spec={npcAvatarSpec(kind, npcSeed, expr as NpcExpression)} size={Math.round(110 * top.scale)} />
+          <NbAvatar spec={npcSpec} size={Math.round(110 * top.scale)} />
         </PortraitFrame>
       </Animated.View>
 
@@ -1156,7 +1161,11 @@ function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: 
 }
 
 /** The notebook's ruled lines, behind everything. */
-function Rules() {
+// memo, and that matters here: this paints ~30 absolutely-positioned rule lines, and it
+// has no props, so it never needs to redraw once mounted. Without memo it was re-created
+// on every render — and during a streaming reply that is once per token, which is a
+// large part of why a long answer made the screen feel like it had seized.
+const Rules = memo(function Rules() {
   const { height } = useWindowDimensions();
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
@@ -1165,7 +1174,7 @@ function Rules() {
       ))}
     </View>
   );
-}
+});
 
 /** Portrait frame with a name plate (and optional red status chip).
  *

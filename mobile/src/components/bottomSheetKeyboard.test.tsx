@@ -23,13 +23,25 @@ function flat(style: unknown): Record<string, unknown> {
   return (style ?? {}) as Record<string, unknown>;
 }
 
-/** The sheet's own animated container: the absolutely-positioned box that carries the
- *  top border the design draws on it. */
+/** The positioner: the absolutely-positioned box pinned to the bottom that carries the
+ *  keyboard/drag transform. It holds the paper extension and the visible sheet, but no
+ *  border or clip of its own — so the extension below the sheet escapes the clip. */
 function sheet(root: ReactTestInstance): ReactTestInstance {
   const hits = root.findAll((n) => {
     const st = flat(n.props?.style);
-    // 1.5 since v30: the sheet's top edge is a cut edge of paper, not a 4pt ink outline.
-    return typeof n.type === 'string' && st.position === 'absolute' && st.borderTopWidth === 1.5;
+    const tf = st.transform as { translateY?: unknown }[] | undefined;
+    return typeof n.type === 'string' && st.position === 'absolute' && st.bottom === 0 && Array.isArray(tf) && 'translateY' in (tf[0] ?? {});
+  }, { deep: true });
+  expect(hits.length).toBe(1);
+  return hits[0];
+}
+
+/** The VISIBLE sheet inside the positioner: the clipped, rounded box that carries the
+ *  cut-paper top border (1.5 since v30) and the sheet's own colour. */
+function visibleSheet(root: ReactTestInstance): ReactTestInstance {
+  const hits = root.findAll((n) => {
+    const st = flat(n.props?.style);
+    return typeof n.type === 'string' && st.borderTopWidth === 1.5 && st.overflow === 'hidden';
   }, { deep: true });
   expect(hits.length).toBe(1);
   return hits[0];
@@ -134,30 +146,33 @@ test('both will* and did* are listened for, on both platforms', () => {
   expect(SRC).not.toMatch(/Platform\.OS === 'ios' \? 'keyboardWillShow'/);
 });
 
-test('the keyboard area is painted in the sheet\'s own colour', () => {
+test('paper fills below the sheet, in its own colour, OUTSIDE the clip', () => {
   const tree = mount();
-  const paper = flat(sheet(tree.root).props.style).backgroundColor;
+  const paper = flat(visibleSheet(tree.root).props.style).backgroundColor;
 
-  const filler = () =>
-    sheet(tree.root).findAll((n) => {
-      const st = flat(n.props?.style);
-      return typeof n.type === 'string' && st.top === '100%' && st.backgroundColor === paper;
-    }, { deep: true })[0];
+  // A paper strip anchored to the sheet's bottom edge (top: '100%') and running well past
+  // it. It covers two things a square-edged sheet used to leave showing: the keyboard's
+  // rounded top corners when the sheet is lifted above it, and the strip below the sheet's
+  // bottom when it is dragged up past resting.
+  const filler = sheet(tree.root).findAll((n) => {
+    const st = flat(n.props?.style);
+    return typeof n.type === 'string' && st.top === '100%' && st.backgroundColor === paper;
+  }, { deep: true })[0];
+  expect(filler).toBeTruthy();
+  // Tall enough to cover the whole keyboard — a constant extension, not a strip sized to
+  // the keyboard (which could not also cover a drag-up reveal).
+  expect(flat(filler.props.style).height as number).toBeGreaterThanOrEqual(KB_H);
 
-  // Nothing to cover with no keyboard.
-  expect(flat(filler().props.style).height).toBe(0);
-
-  emit('keyboardWillShow', KB_H, 250);
-  // The whole keyboard area, so what shows through its rounded corners is more sheet.
-  expect(flat(filler().props.style).height).toBe(KB_H);
-
-  emit('keyboardWillHide', 0, 250);
-  expect(flat(filler().props.style).height).toBe(0);
+  // The actual fix: it must live OUTSIDE the rounded sheet's `overflow: hidden`. The old
+  // strip was a CHILD of the clipped sheet, so top: '100%' put it exactly on the clip
+  // boundary and it was cut away — which is why the gap kept showing. The clipped sheet
+  // must not contain it.
+  const clipped = visibleSheet(tree.root).findAll((n) => flat(n.props?.style).top === '100%', { deep: true });
+  expect(clipped.length).toBe(0);
 });
 
 test('the filler cannot swallow a touch', () => {
   const tree = mount();
-  emit('keyboardWillShow', KB_H, 250);
   const filler = sheet(tree.root).findAll((n) => {
     const st = flat(n.props?.style);
     return typeof n.type === 'string' && st.top === '100%';

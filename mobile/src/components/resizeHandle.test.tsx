@@ -82,7 +82,10 @@ test('the target is taller than the mark', () => {
     return typeof n.type === 'string' && typeof s.height === 'number';
   }, { deep: true })[0];
   const barSt = Array.isArray(bar.props.style) ? Object.assign({}, ...bar.props.style) : bar.props.style;
-  expect(st.paddingVertical * 2 + barSt.height).toBeGreaterThan(barSt.height * 3);
+  // Padded top and bottom (biased down so the felt target sits on the bar, not above it),
+  // so the touchable box is several times the bar's own height.
+  const pad = (st.paddingTop ?? 0) + (st.paddingBottom ?? 0);
+  expect(pad + barSt.height).toBeGreaterThan(barSt.height * 3);
 });
 
 test('a vertical drag on the line is captured, so a card below cannot steal it', () => {

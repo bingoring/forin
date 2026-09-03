@@ -83,14 +83,15 @@ test('the list header sizes to its content rather than a fixed web height', () =
 });
 
 
-test('the band distribution survives in the embedded list header', () => {
-  // It was the one thing the summary block could say that a list of sentences cannot:
-  // how the scores are spread across 60↓ / 60–79 / 80+. The block is gone — the 말하기
-  // tab renders the list itself now — so the bar rides in the list's own header instead
-  // of being lost with it.
+test('the band distribution is drawn from the filter-aware page, not a separate summary', () => {
+  // How the scores are spread across 60↓ / 60–79 / 80+, UNDER the filter and OF the
+  // filter (v35). It used to read a whole-bank /speech/summary once; now the counts ride
+  // on the same /speech/sentences response as the page, so picking a department re-reads
+  // the gauge as that department's spread. So the bar is fed `dist`, and `dist` is set
+  // from the page — not from a summary call.
   const src = readFileSync(join(__dirname, 'SpeakList.tsx'), 'utf8');
-  expect(src).toMatch(/<BandBar counts=\{bands\} \/>/);
-  // …and only where it is drawn: on its own screen the header is already three controls
-  // deep, so the extra read would be spent on nothing.
-  expect(src).toMatch(/if \(!embedded\) return;/);
+  expect(src).toMatch(/<BandBar counts=\{dist\} \/>/);
+  expect(src).toMatch(/setDist\(\{ total: page\.total/);
+  // The old whole-bank summary read is gone — a second source of truth for the same bars.
+  expect(src).not.toMatch(/speakSummary\(/);
 });

@@ -2996,6 +2996,16 @@ export interface components {
              *     deriving it from the loaded pages made chips appear mid-scroll.
              */
             depts?: string[];
+            high?: number;
+            /**
+             * @description Low/Mid/High is the score-band distribution OF THE CURRENT FILTER (60↓ / 60–79 /
+             *     80+), so the 말하기 탭's gauge under the chips re-reads as the selected chip's
+             *     spread rather than the whole bank's. It travels with the page it belongs to — the
+             *     same request that knows the department computes it, so the bars and the list can
+             *     never disagree. Their sum equals Total (both count sentences under this filter).
+             */
+            low?: number;
+            mid?: number;
             sentences?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
             /**
              * @description Total counts the sentences that match the CURRENT filter, not the whole bank:

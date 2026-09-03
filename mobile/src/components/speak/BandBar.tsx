@@ -11,7 +11,8 @@
 // proportion" and the legend still answers "how many". The colours are the same three the
 // pronunciation screen stamps its syllables with (BAND_SWATCH / BAND_INK), so a sentence
 // scored 42 reads as the same group wherever the learner meets it.
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { nbText } from '@/components/nb/NbUI';
 import { BAND_INK, BAND_SWATCH } from '@/components/pron/nbPron';
 import { nb } from '@/theme/nb';
@@ -28,25 +29,45 @@ const SWATCH: Record<Band, 'bad' | 'weak' | 'ok'> = { low: 'bad', mid: 'weak', h
 export function BandBar({ counts }: { counts: BandCounts }) {
   const t = useT();
   const w = bandWidths(counts);
-  // Only the bands that actually take up space are drawn as segments — a 0-width
-  // segment would still paint its 1.4px divider, a stray line inside the bar. The
-  // divider sits on every segment after the first VISIBLE one.
-  const segments = ORDER.filter((b) => w[b] > 0);
+  // One animated width per band, so changing the department filter slides the bars to
+  // the new department's spread instead of snapping ("분포 변화는 부드럽게"). Seeded at the
+  // first render's widths, so the initial paint is the real distribution rather than a
+  // grow-from-zero. Not the native driver: a percentage width cannot run on it.
+  const anim = useRef({ low: new Animated.Value(w.low), mid: new Animated.Value(w.mid), high: new Animated.Value(w.high) }).current;
+  useEffect(() => {
+    Animated.parallel(
+      ORDER.map((b) => Animated.timing(anim[b], { toValue: w[b], duration: 340, easing: Easing.out(Easing.cubic), useNativeDriver: false })),
+    ).start();
+    // The primitives, not the object: `w` is a fresh object every render, so depending on
+    // it would re-fire the animation on every unrelated re-render.
+  }, [w.low, w.mid, w.high, anim]);
 
   return (
     <View>
       <View style={styles.gauge}>
-        {segments.map((b, i) => (
-          <View
-            key={b}
-            style={{
-              width: `${w[b]}%`,
-              backgroundColor: BAND_SWATCH[SWATCH[b]],
-              borderLeftWidth: i === 0 ? 0 : 1.4,
-              borderLeftColor: nb.ink,
-            }}
-          />
-        ))}
+        {/* All three segments always mounted so the animation has something to grow from
+            and shrink into — a band that filters down to nothing narrows to 0 rather than
+            popping out. Its divider narrows with it (borderLeft → 0 at width 0), so a
+            collapsed band leaves no stray line inside the bar. */}
+        {ORDER.map((b, i) => {
+          // The divider sits between two VISIBLE bands, so a band draws its left divider
+          // only when it has width AND something before it does. A 0-width leading band
+          // (e.g. no 60↓ sentences) must not leave the first visible band with a stray
+          // line at the bar's start. Driven by the target widths, not the animation, so a
+          // band appearing/disappearing flips its divider cleanly rather than fading a line.
+          const dividerLeft = w[b] > 0 && ORDER.slice(0, i).some((x) => w[x] > 0);
+          return (
+            <Animated.View
+              key={b}
+              style={{
+                width: anim[b].interpolate({ inputRange: [0, 100], outputRange: ['0%', '100%'], extrapolate: 'clamp' }),
+                backgroundColor: BAND_SWATCH[SWATCH[b]],
+                borderLeftWidth: dividerLeft ? 1.4 : 0,
+                borderLeftColor: nb.ink,
+              }}
+            />
+          );
+        })}
       </View>
 
       {/* All three, even a band with a count of 0 — "80점 이상 0" is a fact worth

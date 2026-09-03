@@ -353,9 +353,11 @@ type SpeechRepo interface {
 	// sentence. Empty slice — never an error — when that run recorded nothing.
 	ListSessionSpeech(ctx context.Context, userID, sessionID string) ([]SpokenSentenceRow, error)
 	// SpeakBands returns the score-band distribution of the player's current
-	// standing across every sentence they have spoken (one per sentence, newest
-	// attempt). Zero counts for a player who has never spoken.
-	SpeakBands(ctx context.Context, userID string) (SpeakBandCounts, error)
+	// standing (one per sentence, newest attempt). dept '' spans every department;
+	// a code (ER, ICU, …) narrows it to that department, so the 말하기 탭's
+	// distribution can be the distribution OF the chip that is selected. Zero
+	// counts for a player who has never spoken (or that department).
+	SpeakBands(ctx context.Context, userID, dept string) (SpeakBandCounts, error)
 	// ListSpokenSentences returns one page of the player's spoken sentences,
 	// newest attempt per sentence, plus the UNPAGED total. `sort` is one of "weak"
 	// (약한 순, the default), "high" (높은 순) or "recent" (최신). total is 0 on an

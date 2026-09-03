@@ -21,12 +21,17 @@ const mockRow = (key: string, text: string) => ({
 });
 let mockRows = [mockRow('s1', 'Please bear with me for a moment.')];
 let mockTotal = 128;
+// The distribution the server returns FOR THE FILTER. ER's spread differs from the whole
+// bank's, so the test can prove the gauge re-reads when a chip is tapped.
+const BANDS_ALL = { total: 128, low: 12, mid: 40, high: 76 };
+const BANDS_ER = { total: 74, low: 30, mid: 24, high: 20 };
 
 jest.mock('@/api/client', () => ({
   api: {
     speakSentences: async (opts: Call) => {
       mockCalls.push(opts);
-      return { sentences: mockRows, total: mockTotal, depts: ['ER', 'ICU'] };
+      const b = opts.dept === 'ER' ? BANDS_ER : BANDS_ALL;
+      return { sentences: mockRows, total: b.total, depts: ['ER', 'ICU'], low: b.low, mid: b.mid, high: b.high };
     },
     speakSummary: async () => ({ total: 128, low: 12, mid: 40, high: 76, weakest: [] }),
   },
@@ -60,6 +65,13 @@ function byName(root: ReactTestInstance, name: string): ReactTestInstance[] {
   return root.findAll((n) => typeof n.type !== 'string' && (n.type as { name?: string })?.name === name, { deep: true });
 }
 
+function texts(root: ReactTestInstance): string {
+  return root
+    .findAll((n) => String(n.type) === 'Text', { deep: true })
+    .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'))
+    .join(' ');
+}
+
 const selector = (tree: ReturnType<typeof create>) => byName(tree.root, 'NbInlineSelect')[0];
 
 test('search is gone — there is no text field on the list', async () => {
@@ -88,6 +100,22 @@ test('each ordering reaches the server as its own sort', async () => {
     // From the top: page 2 of one ordering is not page 2 of another.
     expect(last.offset).toBe(0);
   }
+});
+
+test('the score distribution re-reads as the selected department’s spread (v35)', async () => {
+  const tree = await mount();
+  // Whole bank first — its 80+ count is 76 (BANDS_ALL).
+  expect(texts(tree.root)).toMatch(/\b76\b/);
+
+  const er = byName(tree.root, 'NbChip').find((n) => n.props.children === 'ER')!;
+  await act(async () => { er.props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+
+  // ER's spread now — 30 / 24 / 20 (BANDS_ER), and the whole-bank 76 is gone. This is the
+  // gauge reading the filter, not the whole bank: a static distribution would still say 76.
+  const after = texts(tree.root);
+  expect(after).toMatch(/\b20\b/);
+  expect(after).not.toMatch(/\b76\b/);
 });
 
 test('a department chip keeps the chosen sort', async () => {

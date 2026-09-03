@@ -83,7 +83,7 @@ func (f *fakeSpeechRepo) ListSessionSpeech(ctx context.Context, userID, sessionI
 	return f.sessionRows, f.sessionErr
 }
 
-func (f *fakeSpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.SpeakBandCounts, error) {
+func (f *fakeSpeechRepo) SpeakBands(ctx context.Context, userID, dept string) (ports.SpeakBandCounts, error) {
 	return f.bands, f.bandsErr
 }
 

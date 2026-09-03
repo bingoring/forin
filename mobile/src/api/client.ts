@@ -960,15 +960,21 @@ export const api = {
    *  says. `depts` is every department the learner has spoken in, regardless of filter
    *  or scroll position — the chip row is built from it rather than from the loaded
    *  rows, which made chips appear mid-scroll. */
-  async speakSentences(opts: { sort: SpeakSort; dept?: string; q?: string; limit?: number; offset?: number }): Promise<{ sentences: SpokenSentence[]; total: number; depts: string[] }> {
+  async speakSentences(opts: { sort: SpeakSort; dept?: string; q?: string; limit?: number; offset?: number }): Promise<{ sentences: SpokenSentence[]; total: number; depts: string[]; low: number; mid: number; high: number }> {
     const { data } = await http.get('/speech/sentences', {
       // `q` filters on the SERVER for the same reason `dept` does: `total` is what the
       // "N문장 중 M개 표시" line reads, and a client-side filter reports "3 of 128" for
       // "3 among the pages loaded so far".
       params: { sort: opts.sort, dept: opts.dept || undefined, q: opts.q || undefined, limit: opts.limit ?? 20, offset: opts.offset ?? 0 },
     });
-    const d = data as { sentences?: SpokenSentence[]; total?: number; depts?: string[] } | null;
-    return { sentences: d?.sentences ?? [], total: d?.total ?? 0, depts: d?.depts ?? [] };
+    // low/mid/high is the score-band distribution OF THIS FILTER, so the 말하기 탭's
+    // gauge re-reads as the selected chip's spread. It rides on the same response as the
+    // page, so the bars and the list can never disagree about which department they show.
+    const d = data as { sentences?: SpokenSentence[]; total?: number; depts?: string[]; low?: number; mid?: number; high?: number } | null;
+    return {
+      sentences: d?.sentences ?? [], total: d?.total ?? 0, depts: d?.depts ?? [],
+      low: d?.low ?? 0, mid: d?.mid ?? 0, high: d?.high ?? 0,
+    };
   },
 
   /** `opts` forwards Task 5's origin/scenarioId/reviewCardId (business-rules
@@ -1146,6 +1152,14 @@ export const api = {
       xhr.onprogress = () => parse(false);
       xhr.onload = () => { parse(true); resolve(full); };
       xhr.onerror = () => reject(new Error('stream failed'));
+      // A stuck reply must not lock the screen forever. Without this the XHR waits on the
+      // server indefinitely — and the dialogue keeps `pending` set the whole time, so the
+      // input is disabled and only the "…생각 중" bubble shows, which reads as a freeze
+      // ("대화 한 5~6번만 해도 화면이 멈춰"). The server's own LLM cap is ~60s, plus a cold
+      // start; 75s is past any healthy reply, so this only fires on a genuine hang — and
+      // then the caller's catch clears `pending` and offers a retry instead of hanging.
+      xhr.timeout = 75000;
+      xhr.ontimeout = () => reject(new Error('stream timed out'));
       xhr.send(JSON.stringify({ text }));
     });
   },

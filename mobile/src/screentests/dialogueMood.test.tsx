@@ -65,7 +65,11 @@ test('the NPC portrait is the notebook avatar, built from the persona (v34)', ()
   // The pixel RoleFace was replaced by NbAvatar. This keeps the replacement from
   // silently reverting: the portrait reads role + a per-NPC seed + the turn's mood
   // through data/npcAvatar (whose mapping npcAvatar.test.ts owns), not a fixed face.
-  expect(SRC).toMatch(/<NbAvatar spec=\{npcAvatarSpec\(kind, npcSeed, expr as NpcExpression\)\}/);
+  // The spec is built once per (person, uniform, mood) in a useMemo and handed to the
+  // portrait, rather than recomputed inline on every render — a fresh spec object each
+  // token redrew the whole SVG face during a streaming reply.
+  expect(SRC).toMatch(/<NbAvatar spec=\{npcSpec\}/);
+  expect(SRC).toMatch(/const npcSpec = useMemo\(\(\) => npcAvatarSpec\(kind, npcSeed, expr as NpcExpression\), \[kind, npcSeed, expr\]\)/);
   // The seed is stable per NPC — the persona name plus the scenario — so the face does
   // not shuffle between turns.
   expect(SRC).toMatch(/const npcSeed = `\$\{p\.name \|\| 'npc'\}\|\$\{id\}`;/);

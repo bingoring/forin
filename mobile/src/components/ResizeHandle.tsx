@@ -66,8 +66,15 @@ export function ResizeHandle({ onDrag, onDone, testID }: {
       // The target, not the mark: tall enough to find without aiming, and hitSlop widens
       // it further past its drawn bounds so a thumb that lands near the line still grabs
       // it. The reports were that the handle was hard to catch at all.
-      hitSlop={{ top: 10, bottom: 10, left: 24, right: 24 }}
-      style={{ paddingVertical: 11, alignItems: 'center', justifyContent: 'center' }}
+      //
+      // Biased DOWNWARD, both in the padding and the slop: the grab zone used to sit
+      // centred on the bar, but it read as being ABOVE the bar — the empty margin over the
+      // handle was catching the thumb while the bar itself felt dead. So the bar rides
+      // higher in its box (paddingTop < paddingBottom) and the slop reaches further below
+      // it (bottom > top), which moves the felt centre of the target onto and just under
+      // the mark. No extra empty space is added — the box is a touch shorter, not taller.
+      hitSlop={{ top: 4, bottom: 16, left: 24, right: 24 }}
+      style={{ paddingTop: 7, paddingBottom: 13, alignItems: 'center', justifyContent: 'center' }}
     >
       <View style={{ height: 5, width: 52, borderRadius: 3, backgroundColor: C, opacity: 0.45 }} />
     </View>

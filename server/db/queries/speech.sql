@@ -87,8 +87,13 @@ SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
 -- Counting attempts instead of sentences would let one heavily-drilled sentence
 -- dominate the distribution, and would keep punishing the player for the early
 -- bad tries they have since fixed.
+--
+-- $2 is the department filter: '' means every department, otherwise the code that
+-- ListSpeakSentences filters on (split_part(scenario_id, '-', 2)). It is filtered
+-- HERE so the distribution the 말하기 탭 draws under its filter chips is the
+-- distribution OF that filter — pick ER and the bars re-read as ER's spread.
 WITH latest AS (
-    SELECT DISTINCT ON (sentence_key) sentence_key, overall
+    SELECT DISTINCT ON (sentence_key) sentence_key, overall, scenario_id
       FROM speech_attempts
      WHERE user_id = $1
      ORDER BY sentence_key, attempt_no DESC
@@ -97,7 +102,8 @@ SELECT COUNT(*)::int                                            AS total,
        COUNT(*) FILTER (WHERE overall < 60)::int                AS low,
        COUNT(*) FILTER (WHERE overall >= 60 AND overall < 80)::int AS mid,
        COUNT(*) FILTER (WHERE overall >= 80)::int               AS high
-  FROM latest;
+  FROM latest
+ WHERE ($2::text = '' OR split_part(scenario_id, '-', 2) = $2::text);
 
 -- name: ListSpeakSentencesWeak :many
 -- 약한 순: worst standing first. Ties break by recency so the sentence they hit

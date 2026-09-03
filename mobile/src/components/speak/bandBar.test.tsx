@@ -62,28 +62,33 @@ test('each segment is sized by ITS band, matching bandWidths', () => {
   unmount();
 });
 
-test('a band with no sentences draws no segment and no stray divider', () => {
-  // Everything in the top band: the low and mid segments must be absent, not
-  // zero-width — a 0% View still paints its left divider as a line floating in the bar.
+test('an empty band collapses to zero width and draws no stray divider', () => {
+  // All three segments stay MOUNTED now, so the distribution can animate between filters
+  // rather than pop segments in and out. An empty band is therefore a 0%-wide segment —
+  // and, crucially, it and the first VISIBLE band carry no left divider, or a 0-count
+  // low/mid would leave a 1.4px line floating at the start of the bar.
   const { root, unmount } = render({ total: 5, low: 0, mid: 0, high: 5 });
   const segs = segments(root);
-  expect(segs).toHaveLength(1);
-  expect(segs[0].backgroundColor).toBe(BAND_SWATCH.ok);
-  // The one visible segment is the first, so it carries no divider.
-  expect(segs[0].borderLeftWidth).toBe(0);
+  expect(segs).toHaveLength(3);
+  expect(segs.map((s) => s.width)).toEqual(['0%', '0%', '100%']);
+  // The empty bands, and the first visible one (high), all draw no divider.
+  expect(segs[0].borderLeftWidth).toBe(0); // low, empty
+  expect(segs[1].borderLeftWidth).toBe(0); // mid, empty
+  expect(segs[2].borderLeftWidth).toBe(0); // high, first visible → no stray line
   unmount();
 });
 
-test('the first visible segment has no divider; later ones do', () => {
-  // With the low band empty, mid becomes the FIRST visible segment — so the divider
-  // must move to it being absent there and present on high, not stay pinned to a
-  // fixed index.
+test('the divider sits before a visible band only when a visible band precedes it', () => {
+  // With the low band empty, mid is the FIRST visible segment — so the divider is absent
+  // on mid and present on high, following visibility rather than a fixed index.
   const { root, unmount } = render({ total: 10, low: 0, mid: 4, high: 6 });
   const segs = segments(root);
-  expect(segs).toHaveLength(2);
-  expect(segs[0].backgroundColor).toBe(BAND_SWATCH.weak);   // mid, first
+  expect(segs).toHaveLength(3);
+  expect(segs[0].width).toBe('0%');                    // low, empty
   expect(segs[0].borderLeftWidth).toBe(0);
-  expect(segs[1].borderLeftWidth).toBeGreaterThan(0);       // high, divided from mid
+  expect(segs[1].backgroundColor).toBe(BAND_SWATCH.weak); // mid, first visible
+  expect(segs[1].borderLeftWidth).toBe(0);
+  expect(segs[2].borderLeftWidth).toBeGreaterThan(0);  // high, divided from mid
   unmount();
 });
 

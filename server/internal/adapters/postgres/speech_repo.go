@@ -262,10 +262,11 @@ func (r *SpeechRepo) ListSessionSpeech(ctx context.Context, userID, sessionID st
 	return out, nil
 }
 
-// SpeakBands returns the player's score-band distribution over every sentence
-// they have spoken.
-func (r *SpeechRepo) SpeakBands(ctx context.Context, userID string) (ports.SpeakBandCounts, error) {
-	d, err := r.q.SpeakBands(ctx, userID)
+// SpeakBands returns the player's score-band distribution. dept '' spans every
+// department; otherwise it is the distribution of just that department's sentences,
+// which is what the 말하기 탭 draws under its filter chips.
+func (r *SpeechRepo) SpeakBands(ctx context.Context, userID, dept string) (ports.SpeakBandCounts, error) {
+	d, err := r.q.SpeakBands(ctx, sqlc.SpeakBandsParams{UserID: userID, Column2: dept})
 	if err != nil {
 		return ports.SpeakBandCounts{}, err
 	}

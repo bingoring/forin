@@ -110,7 +110,7 @@ func TestSpeakBandsCountSentencesAtTheirNewestScore(t *testing.T) {
 		}
 	}
 
-	b, err := repo.SpeakBands(ctx, uid)
+	b, err := repo.SpeakBands(ctx, uid, "")
 	if err != nil {
 		t.Fatalf("SpeakBands: %v", err)
 	}
@@ -119,6 +119,42 @@ func TestSpeakBandsCountSentencesAtTheirNewestScore(t *testing.T) {
 	}
 	if b.Low != 1 || b.Mid != 1 || b.High != 2 {
 		t.Errorf("bands = low %d / mid %d / high %d; want 1 / 1 / 2", b.Low, b.Mid, b.High)
+	}
+}
+
+// The distribution narrows to the selected department, so the 말하기 탭's gauge under
+// its filter chips re-reads as that chip's spread rather than the whole bank's.
+func TestSpeakBandsFilterByDepartment(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewSpeechRepo(pool)
+	uid := speechTestUser(t, pool)
+	ctx := context.Background()
+
+	for _, a := range []ports.SpeechAttemptInput{
+		attemptAt(uid, "k-er1", "er low", 40, "run-1", "SCN-ER-00002"),  // ER: low
+		attemptAt(uid, "k-er2", "er high", 90, "run-1", "SCN-ER-00003"), // ER: high
+		attemptAt(uid, "k-icu", "icu mid", 70, "run-1", "SCN-ICU-00001"), // ICU: mid
+	} {
+		if _, _, err := repo.InsertAttempt(ctx, a); err != nil {
+			t.Fatalf("InsertAttempt: %v", err)
+		}
+	}
+
+	// ER only: one low, one high, no ICU — a whole-bank count would report the mid too.
+	er, err := repo.SpeakBands(ctx, uid, "ER")
+	if err != nil {
+		t.Fatalf("SpeakBands(ER): %v", err)
+	}
+	if er.Total != 2 || er.Low != 1 || er.Mid != 0 || er.High != 1 {
+		t.Errorf("ER bands = total %d / low %d / mid %d / high %d; want 2 / 1 / 0 / 1", er.Total, er.Low, er.Mid, er.High)
+	}
+	// '' spans everything — the mid comes back.
+	all, err := repo.SpeakBands(ctx, uid, "")
+	if err != nil {
+		t.Fatalf("SpeakBands(all): %v", err)
+	}
+	if all.Total != 3 || all.Mid != 1 {
+		t.Errorf("all bands = total %d / mid %d; want 3 / 1", all.Total, all.Mid)
 	}
 }
 

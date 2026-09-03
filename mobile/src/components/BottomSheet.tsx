@@ -493,31 +493,17 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
         <Pressable onPress={onBackdrop} style={{ flex: 1 }} />
       </Animated.View>
 
+      {/* The positioner: pinned to the bottom and LIFTED by the transform, not positioned
+          at `bottom: kbH` (a layout property, which teleports the sheet in one frame while
+          the keyboard is still gliding up). It sizes to the sheet inside it and carries NO
+          rounded corners or clip of its own — so the paper extension below the sheet is
+          free to escape the clip. */}
       <Animated.View
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
-          // Pinned to the bottom and LIFTED by the transform, not positioned at
-          // `bottom: kbH`. `bottom` is a layout property: setting it from state moved
-          // the sheet in a single frame, so the sheet arrived at its lifted place while
-          // the keyboard was still on its way up.
           bottom: 0,
-          // Straight off restH, not a second copy of the same constant. Writing the
-          // rendered height and the height the gesture measures against as two separate
-          // expressions let them disagree — and a test that read only the rendered one
-          // passed while the drag was measuring the wrong sheet.
-          ...(tall ? { height: restH } : { maxHeight: CONTENT_MAX }),
-          backgroundColor: nb.paper,
-          // A cut edge of paper, not a 4pt ink outline: the sheet is a sheet.
-          borderTopWidth: 1.5,
-          borderTopColor: nb.paperEdge,
-          // Curved at the top two corners, as the handoff draws it. `overflow: hidden` is
-          // what makes the radius actually clip the header's own background — without it
-          // the child paints square corners over the rounded parent.
-          borderTopLeftRadius: 18,
-          borderTopRightRadius: 18,
-          overflow: 'hidden',
           // `y` is the sheet's own position (0 = resting, restH = gone); `kbLift` is how
           // far the keyboard has pushed it up. Subtracting keeps the two independent —
           // the drag still speaks in the same numbers it always did, and the offscreen
@@ -525,24 +511,39 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
           transform: [{ translateY: Animated.subtract(y, kbLift) }],
         }}
       >
-        {/* Painted BEHIND the keyboard, in the sheet's own colour.
-            The keyboard's top edge is rounded on iOS (and on some Android OEM
-            keyboards), so the lifted sheet left two slivers of backdrop showing at its
-            bottom corners, where the curve cut away from the sheet's square edge. This
-            strip fills the whole keyboard area, so what shows through the curve is more
-            sheet. Zero-height when there is no keyboard, and it can never be seen
-            anywhere else: it starts exactly where the sheet ends. */}
+        {/* Paper below the sheet, OUTSIDE the sheet's clip, starting exactly where the
+            sheet ends and running a full screen down. It is off the bottom of the screen
+            at rest (top:'100%' sits on the screen edge), so it can only be seen when the
+            sheet lifts — and then it fills the two places backdrop used to show through:
+            · the keyboard's rounded top corners, when the sheet is raised above it (#6);
+            · the strip below the sheet's bottom edge, when the sheet is dragged UP past
+              its resting position (#7, the rubber-banded upward drag).
+            It cannot be seen otherwise: it starts where the sheet ends and never above it. */}
         <View
           pointerEvents="none"
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            right: 0,
-            height: kbH,
-            backgroundColor: nb.paper,
-          }}
+          style={{ position: 'absolute', top: '100%', left: 0, right: 0, height: SCREEN_H, backgroundColor: nb.paper }}
         />
+
+        {/* The visible sheet: rounded top, clipped. `overflow: hidden` is what makes the
+            radius actually clip the header's own background — but it lives HERE, on the
+            inner view, so it clips only the sheet and not the paper extension above. */}
+        <Animated.View
+          style={{
+            // Straight off restH, not a second copy of the same constant. Writing the
+            // rendered height and the height the gesture measures against as two separate
+            // expressions let them disagree — and a test that read only the rendered one
+            // passed while the drag was measuring the wrong sheet.
+            ...(tall ? { height: restH } : { maxHeight: CONTENT_MAX }),
+            backgroundColor: nb.paper,
+            // A cut edge of paper, not a 4pt ink outline: the sheet is a sheet.
+            borderTopWidth: 1.5,
+            borderTopColor: nb.paperEdge,
+            // Curved at the top two corners, as the handoff draws it.
+            borderTopLeftRadius: 18,
+            borderTopRightRadius: 18,
+            overflow: 'hidden',
+          }}
+        >
         {/* The grabber, and the ONLY thing the drag is attached to.
             The handlers used to sit on the whole sheet, which meant any vertical
             movement inside it — including scrolling a list — was claimed as a sheet
@@ -581,6 +582,7 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
         {header != null && <View {...headerPan.panHandlers}>{header}</View>}
         {children}
         </View>
+        </Animated.View>
       </Animated.View>
     </View>
   );
