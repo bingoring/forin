@@ -231,6 +231,11 @@ WITH latest AS (
        -- for "3 matched among the pages loaded so far", and pulled more in as the
        -- learner scrolled.
        AND ($4::text = '' OR split_part(scenario_id, '-', 2) = $4::text)
+       -- 문장 검색: the same reasoning as ` + "`" + `dept` + "`" + ` — filtering here is what keeps ` + "`" + `total` + "`" + `
+       -- and the paging honest. ILIKE rather than a full-text index: the corpus is one
+       -- learner's own sentences (hundreds, not millions), and a substring is what
+       -- somebody typing "acetaminophen" actually means.
+       AND ($5::text = '' OR reference_text ILIKE '%' || $5::text || '%')
      ORDER BY sentence_key, attempt_no DESC
 )
 SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
@@ -246,6 +251,7 @@ type ListSpeakSentencesRecentParams struct {
 	Off    int32  `json:"off"`
 	Lim    int32  `json:"lim"`
 	Dept   string `json:"dept"`
+	Q      string `json:"q"`
 }
 
 type ListSpeakSentencesRecentRow struct {
@@ -271,6 +277,7 @@ func (q *Queries) ListSpeakSentencesRecent(ctx context.Context, arg ListSpeakSen
 		arg.Off,
 		arg.Lim,
 		arg.Dept,
+		arg.Q,
 	)
 	if err != nil {
 		return nil, err
@@ -315,6 +322,11 @@ WITH latest AS (
        -- for "3 matched among the pages loaded so far", and pulled more in as the
        -- learner scrolled.
        AND ($4::text = '' OR split_part(scenario_id, '-', 2) = $4::text)
+       -- 문장 검색: the same reasoning as ` + "`" + `dept` + "`" + ` — filtering here is what keeps ` + "`" + `total` + "`" + `
+       -- and the paging honest. ILIKE rather than a full-text index: the corpus is one
+       -- learner's own sentences (hundreds, not millions), and a substring is what
+       -- somebody typing "acetaminophen" actually means.
+       AND ($5::text = '' OR reference_text ILIKE '%' || $5::text || '%')
      ORDER BY sentence_key, attempt_no DESC
 )
 SELECT sentence_key, reference_text, recognized, overall, accuracy, fluency,
@@ -330,6 +342,7 @@ type ListSpeakSentencesWeakParams struct {
 	Off    int32  `json:"off"`
 	Lim    int32  `json:"lim"`
 	Dept   string `json:"dept"`
+	Q      string `json:"q"`
 }
 
 type ListSpeakSentencesWeakRow struct {
@@ -358,6 +371,7 @@ func (q *Queries) ListSpeakSentencesWeak(ctx context.Context, arg ListSpeakSente
 		arg.Off,
 		arg.Lim,
 		arg.Dept,
+		arg.Q,
 	)
 	if err != nil {
 		return nil, err

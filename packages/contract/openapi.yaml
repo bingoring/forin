@@ -2137,6 +2137,11 @@ paths:
         name: sort
         schema:
           type: string
+      - description: substring of the sentence to match (case-insensitive)
+        in: query
+        name: q
+        schema:
+          type: string
       - description: department code (ER, ICU, …); omit for every department
         in: query
         name: dept

@@ -75,6 +75,7 @@ type fakeSpeechRepo struct {
 type spokenCall struct {
 	WeakestFirst  bool
 	Dept          string
+	Q             string
 	Limit, Offset int
 }
 
@@ -90,8 +91,8 @@ func (f *fakeSpeechRepo) SpokenDepartments(context.Context, string) ([]string, e
 	return f.depts, nil
 }
 
-func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
-	f.spokenCalls = append(f.spokenCalls, spokenCall{weakestFirst, dept, limit, offset})
+func (f *fakeSpeechRepo) ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept, q string, limit, offset int) ([]ports.SpokenSentenceRow, int, error) {
+	f.spokenCalls = append(f.spokenCalls, spokenCall{weakestFirst, dept, q, limit, offset})
 	if f.spokenErr != nil {
 		return nil, 0, f.spokenErr
 	}

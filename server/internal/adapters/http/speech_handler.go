@@ -214,6 +214,7 @@ type spokenSentencesResp struct {
 // @Tags pronunciation
 // @Security Bearer
 // @Param sort query string false "weak (약한 순, default) or recent (최신)"
+// @Param q query string false "substring of the sentence to match (case-insensitive)"
 // @Param dept query string false "department code (ER, ICU, …); omit for every department"
 // @Param limit query int false "page size, default 20, clamped to 100"
 // @Param offset query int false "rows to skip"
@@ -240,7 +241,15 @@ func (h *speechHandler) spokenSentences(w http.ResponseWriter, r *http.Request) 
 	// Uppercased so a chip tapped as "er" still matches SCN-ER-*; the codes are
 	// upper-case by construction.
 	dept := strings.ToUpper(strings.TrimSpace(r.URL.Query().Get("dept")))
-	rows, total, err := h.svc.SpokenSentences(r.Context(), uid, weakestFirst, dept, limit, offset)
+	// 문장 검색. Trimmed, and NOT uppercased — the match is case-insensitive in SQL,
+	// and upper-casing it here would only make the parameter unreadable in a log.
+	// Over-long input is cut rather than rejected: a paste into the search line is
+	// not an error, it just cannot match anything past a sentence's length.
+	q := strings.TrimSpace(r.URL.Query().Get("q"))
+	if len(q) > 120 {
+		q = q[:120]
+	}
+	rows, total, err := h.svc.SpokenSentences(r.Context(), uid, weakestFirst, dept, q, limit, offset)
 	if err != nil {
 		slog.Error("speech: spoken sentence list failed", "err", err)
 		httpx.Error(w, http.StatusInternalServerError, "could not load your spoken sentences")

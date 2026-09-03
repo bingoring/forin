@@ -359,9 +359,10 @@ type SpeechRepo interface {
 	// newest attempt per sentence, plus the UNPAGED total. weakestFirst selects
 	// the sort (약한 순 / 최신). total is 0 on an empty page — the caller holds
 	// the real total from the first page.
-	// dept "" means every department. Filtering here rather than on the client is
-	// what keeps `total` and the paging honest.
-	ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept string, limit, offset int) (rows []SpokenSentenceRow, total int, err error)
+	// dept "" means every department, and q "" every sentence. Both filter HERE
+	// rather than on the client, which is what keeps `total` and the paging honest:
+	// a client-side filter reports "3 of 128" for "3 among the pages loaded so far".
+	ListSpokenSentences(ctx context.Context, userID string, weakestFirst bool, dept, q string, limit, offset int) (rows []SpokenSentenceRow, total int, err error)
 	// SpokenDepartments lists every department the learner has spoken in, so the
 	// filter chips are complete rather than growing as pages load.
 	SpokenDepartments(ctx context.Context, userID string) ([]string, error)

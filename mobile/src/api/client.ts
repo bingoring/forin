@@ -942,9 +942,12 @@ export const api = {
    *  says. `depts` is every department the learner has spoken in, regardless of filter
    *  or scroll position — the chip row is built from it rather than from the loaded
    *  rows, which made chips appear mid-scroll. */
-  async speakSentences(opts: { sort: SpeakSort; dept?: string; limit?: number; offset?: number }): Promise<{ sentences: SpokenSentence[]; total: number; depts: string[] }> {
+  async speakSentences(opts: { sort: SpeakSort; dept?: string; q?: string; limit?: number; offset?: number }): Promise<{ sentences: SpokenSentence[]; total: number; depts: string[] }> {
     const { data } = await http.get('/speech/sentences', {
-      params: { sort: opts.sort, dept: opts.dept || undefined, limit: opts.limit ?? 20, offset: opts.offset ?? 0 },
+      // `q` filters on the SERVER for the same reason `dept` does: `total` is what the
+      // "N문장 중 M개 표시" line reads, and a client-side filter reports "3 of 128" for
+      // "3 among the pages loaded so far".
+      params: { sort: opts.sort, dept: opts.dept || undefined, q: opts.q || undefined, limit: opts.limit ?? 20, offset: opts.offset ?? 0 },
     });
     const d = data as { sentences?: SpokenSentence[]; total?: number; depts?: string[] } | null;
     return { sentences: d?.sentences ?? [], total: d?.total ?? 0, depts: d?.depts ?? [] };

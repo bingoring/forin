@@ -141,7 +141,7 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 		}
 	}
 
-	weak, total, err := repo.ListSpokenSentences(ctx, uid, true, "", 2, 0)
+	weak, total, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 2, 0)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(weak): %v", err)
 	}
@@ -156,7 +156,7 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 		t.Errorf("scenarioId = %q", weak[1].ScenarioID)
 	}
 
-	recent, _, err := repo.ListSpokenSentences(ctx, uid, false, "", 1, 0)
+	recent, _, err := repo.ListSpokenSentences(ctx, uid, false, "", "", 1, 0)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(recent): %v", err)
 	}
@@ -166,7 +166,7 @@ func TestListSpokenSentencesSortsPagesAndReportsTotal(t *testing.T) {
 
 	// Offset past the end is how infinite scroll learns it has reached the
 	// bottom: an empty page, not an error.
-	tail, _, err := repo.ListSpokenSentences(ctx, uid, true, "", 20, 99)
+	tail, _, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 20, 99)
 	if err != nil {
 		t.Fatalf("ListSpokenSentences(offset past end): %v", err)
 	}
@@ -199,7 +199,7 @@ func TestListSpokenSentencesFiltersByDepartment(t *testing.T) {
 	}
 
 	// Filtered: only that department, and `total` counts only it.
-	rows, total, err := repo.ListSpokenSentences(ctx, uid, true, "ER", 20, 0)
+	rows, total, err := repo.ListSpokenSentences(ctx, uid, true, "ER", "", 20, 0)
 	if err != nil {
 		t.Fatalf("filtered: %v", err)
 	}
@@ -213,12 +213,73 @@ func TestListSpokenSentencesFiltersByDepartment(t *testing.T) {
 	}
 
 	// Unfiltered: everything, including the sentence with no scenario.
-	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, true, "", 20, 0)
+	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 20, 0)
 	if err != nil {
 		t.Fatalf("unfiltered: %v", err)
 	}
 	if len(all) != 4 || allTotal != 4 {
 		t.Errorf("unfiltered = %d rows, total %d; want 4 / 4", len(all), allTotal)
+	}
+}
+
+// 문장 검색. The search has to filter in SQL for the same reason the department chip
+// does: `total` is what "N문장 중 M개 표시" reads, and a client-side filter reports
+// "3 of 128" for "3 among the pages loaded so far".
+func TestListSpokenSentencesFiltersByQuery(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewSpeechRepo(pool)
+	uid := speechTestUser(t, pool)
+	ctx := context.Background()
+
+	for _, a := range []ports.SpeechAttemptInput{
+		attemptAt(uid, "q-1", "I'm giving you acetaminophen 650 milligrams.", 58, "run-1", "SCN-ER-00002"),
+		attemptAt(uid, "q-2", "Please bear with me for a moment.", 64, "run-1", "SCN-ER-00002"),
+		attemptAt(uid, "q-3", "When did the pain start?", 82, "run-1", "SCN-ICU-00001"),
+	} {
+		if _, _, err := repo.InsertAttempt(ctx, a); err != nil {
+			t.Fatalf("InsertAttempt: %v", err)
+		}
+	}
+
+	rows, total, err := repo.ListSpokenSentences(ctx, uid, true, "", "acetaminophen", 20, 0)
+	if err != nil {
+		t.Fatalf("query: %v", err)
+	}
+	if len(rows) != 1 || total != 1 {
+		t.Fatalf("search = %d rows, total %d; want 1 / 1", len(rows), total)
+	}
+
+	// Case-insensitive, and a substring rather than a prefix: somebody typing "PAIN"
+	// means the sentence with pain in the middle of it.
+	rows, _, err = repo.ListSpokenSentences(ctx, uid, true, "", "PAIN", 20, 0)
+	if err != nil {
+		t.Fatalf("case-insensitive query: %v", err)
+	}
+	if len(rows) != 1 || rows[0].ReferenceText != "When did the pain start?" {
+		t.Errorf("case-insensitive search = %+v", rows)
+	}
+
+	// Composes with the department chip rather than replacing it.
+	rows, total, err = repo.ListSpokenSentences(ctx, uid, true, "ICU", "pain", 20, 0)
+	if err != nil {
+		t.Fatalf("query + dept: %v", err)
+	}
+	if len(rows) != 1 || total != 1 {
+		t.Errorf("ICU + pain = %d rows, total %d", len(rows), total)
+	}
+	if rows, total, err = repo.ListSpokenSentences(ctx, uid, true, "ER", "pain", 20, 0); err != nil {
+		t.Fatalf("query + wrong dept: %v", err)
+	} else if len(rows) != 0 || total != 0 {
+		t.Errorf("ER + pain = %d rows, total %d; want nothing", len(rows), total)
+	}
+
+	// An empty query is not a filter at all.
+	all, allTotal, err := repo.ListSpokenSentences(ctx, uid, true, "", "", 20, 0)
+	if err != nil {
+		t.Fatalf("empty query: %v", err)
+	}
+	if len(all) != 3 || allTotal != 3 {
+		t.Errorf("empty query = %d rows, total %d; want 3 / 3", len(all), allTotal)
 	}
 }
 

@@ -196,6 +196,34 @@ func TestSpokenSentencesSortSelection(t *testing.T) {
 	}
 }
 
+// ?q= is the 문장 검색 line. It reaches the repo as typed (minus the whitespace an
+// on-screen keyboard adds), because the match is case-insensitive in SQL — folding
+// case here would only make the parameter unreadable in a log.
+func TestSpokenSentencesPassesTheSearchQueryThrough(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, nil)
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+
+	for _, tc := range []struct{ query, want string }{
+		{"", ""},
+		{"?q=pain", "pain"},
+		{"?q=%20%20Acetaminophen%20%20", "Acetaminophen"},
+		{"?q=" + strings.Repeat("a", 200), strings.Repeat("a", 120)}, // cut, not rejected
+	} {
+		repo.spokenCalls = nil
+		req := httptest.NewRequest(http.MethodGet, "/speech/sentences"+tc.query, nil)
+		req = withUser(req, "user-a")
+		w := httptest.NewRecorder()
+		sh.spokenSentences(w, req)
+		if w.Code != http.StatusOK {
+			t.Fatalf("%q = %d", tc.query, w.Code)
+		}
+		if got := repo.spokenCalls[0].Q; got != tc.want {
+			t.Errorf("%q reached the repo as %q, want %q", tc.query, got, tc.want)
+		}
+	}
+}
+
 // The summary block reports band counts verbatim from storage.
 func TestSpeakSummaryReportsBands(t *testing.T) {
 	repo := newFakeSpeechRepo()

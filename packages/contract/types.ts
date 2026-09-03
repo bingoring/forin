@@ -2182,6 +2182,8 @@ export interface paths {
                 query?: {
                     /** @description weak (약한 순, default) or recent (최신) */
                     sort?: string;
+                    /** @description substring of the sentence to match (case-insensitive) */
+                    q?: string;
                     /** @description department code (ER, ICU, …); omit for every department */
                     dept?: string;
                     /** @description page size, default 20, clamped to 100 */

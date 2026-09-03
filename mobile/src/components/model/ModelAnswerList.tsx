@@ -10,6 +10,7 @@ import { NbIcon } from '@/components/nb/NbIcon';
 import { NbChip, NbIndexTabs, NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { ModelAnswerGroupRow } from '@/components/model/ModelAnswerGroupRow';
+import { ModelAnswerHero } from '@/components/model/ModelAnswerHero';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useT } from '@/i18n';
 
@@ -50,9 +51,10 @@ export function ModelAnswerList({ embedded = false, above }: {
         setGroups(page.groups);
         setTotal(page.total);
         setDone(page.groups.length < PAGE);
-        // The first group opens by default so the screen shows a worked example
-        // rather than a wall of collapsed titles.
-        setOpen(page.groups[0]?.scenarioId ?? null);
+        // Everything starts collapsed: the worked example is the hero card above the
+        // list now (v31), and auto-opening the same scenario's row printed the same
+        // correction twice on one screen.
+        setOpen(null);
         setState('ok');
       })
       .catch(() => setState('error'));
@@ -98,6 +100,18 @@ export function ModelAnswerList({ embedded = false, above }: {
     return Array.from(set).sort();
   }, [groups]);
   const shown = depts.length === 0 ? groups : groups.filter((g) => depts.includes(deptOfScenario(g.scenarioId)));
+  // Drawn from `shown`, not `groups`: with a department chip on, a hero from a filtered-out
+  // department would be a card the list underneath does not contain.
+  const hero = shown.find((g) => (g.cards?.length ?? 0) > 0);
+
+  /** 따라 말하기 — the same pronunciation route the speak list opens, so a sentence
+   *  practised from here lands in the same history. One template literal: expo-router's
+   *  typed-routes generator matches statically against one backtick expression. */
+  const practise = (model: string) => {
+    router.push(
+      `/pronunciation/${encodeURIComponent(model.slice(0, 40))}?referenceText=${encodeURIComponent(model)}&origin=review`
+    );
+  };
 
   const toggleDept = (d: string) =>
     setDepts((prev) => (prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d]));
@@ -129,6 +143,17 @@ export function ModelAnswerList({ embedded = false, above }: {
           <Text style={styles.count}>
             {done ? t('list.countAllGroups', { total }) : t('list.countPartialGroups', { shown: groups.length, total })}
           </Text>
+        )}
+
+        {/* The most recent correction, worked through. `sort === 'recent'` because under
+            개선 필요 the first group is the worst one, not the last one — a card stamped
+            최근 that is three weeks old is a false label. The department filter narrows
+            it too, so the hero is always the first thing in the list below it. */}
+        {sort === 'recent' && !!hero && (
+          <>
+            <ModelAnswerHero group={hero} onPractise={practise} />
+            <Text style={[nbText.hand(16), { marginTop: 13 }]}>{t('model.completedScenarios')}</Text>
+          </>
         )}
     </>
   );
