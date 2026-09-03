@@ -826,6 +826,7 @@ export const de: Record<string, string> = {
   'lab.blockUnavailable': 'Konnte gerade nicht geladen werden. Versuch es gleich noch einmal.',
   'list.speakTitle': 'Sprechübung',
   'list.modelTitle': 'Musterantworten',
+  'list.sortTitle': 'Sortieren',
   'list.sortWeak': 'Schwächste',
   'list.sortRecent': 'Neueste',
   'list.sortNeedsWork': 'Überarbeiten',

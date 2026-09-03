@@ -826,6 +826,7 @@ export const ja: Record<string, string> = {
   'lab.blockUnavailable': '今は読み込めません。少ししてからもう一度開いてください。',
   'list.speakTitle': 'スピーキング練習',
   'list.modelTitle': 'シナリオ模範解答',
+  'list.sortTitle': '並べ替え',
   'list.sortWeak': '弱い順',
   'list.sortRecent': '最新',
   'list.sortNeedsWork': '改善が必要',

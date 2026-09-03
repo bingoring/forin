@@ -498,3 +498,29 @@ test('a sentence the learner never said is not struck through', async () => {
   // The suggestion was not.
   expect(line('통증이 어디로 퍼지는지 묻기')).toBe('none');
 });
+
+// v33: 말하기·모범답안 섹션의 정렬은 두 번째 탭 줄이었다. 리뷰랩은 이미 섹션 탭
+// 한 줄을 갖고 있어서, 그 아래 정렬 탭이 또 쌓이니 학습자가 "지금 어느 섹션인가"와
+// "목록이 어떻게 정렬됐나"를 구분할 수 없었다("리뷰랩의 말하기, 모범답안 안에 또
+// 탭이 존재한다"). 정렬을 드롭다운으로 옮겨서 탭 줄은 섹션 탭 하나만 남는다.
+test('every section has exactly one tab row — the section tabs, never a nested one', async () => {
+  const tree = await mount();
+  const tabRows = () =>
+    tree.root.findAll(
+      (n) => typeof n.type === 'function' && (n.type as { name?: string }).name === 'NbIndexTabs',
+      { deep: true },
+    ).length;
+
+  // 교정 노트 (default): one tab row.
+  expect(tabRows()).toBe(1);
+
+  // 말하기 — the sort used to be a second NbIndexTabs here.
+  await act(async () => { tab(tree.root, '말하기').props.onPress(); });
+  for (let i = 0; i < 4; i++) await act(async () => { await Promise.resolve(); });
+  expect(tabRows()).toBe(1);
+
+  // 모범답안 — same.
+  await act(async () => { tab(tree.root, '모범답안').props.onPress(); });
+  for (let i = 0; i < 4; i++) await act(async () => { await Promise.resolve(); });
+  expect(tabRows()).toBe(1);
+});

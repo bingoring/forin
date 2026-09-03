@@ -129,8 +129,8 @@ test('the sort and the department chips keep the search', async () => {
   const tree = await mount();
   await search(tree, 'pain');
 
-  const tabs = byName(tree.root, 'NbIndexTabs')[0];
-  await act(async () => { tabs.props.onSelect(1); });   // 최신
+  const sortMenu = byName(tree.root, 'NbSortMenu')[0];
+  await act(async () => { sortMenu.props.onSelect('recent'); });
   await act(async () => { await Promise.resolve(); });
   expect(mockCalls[mockCalls.length - 1]).toMatchObject({ sort: 'recent', q: 'pain' });
 

@@ -128,8 +128,8 @@ test('no row opens by itself, so the hero’s correction is shown once', async (
 
 test('under 개선 필요 there is no 최근 stamp', async () => {
   const tree = await mount();
-  const needsWork = byName(tree.root, 'NbIndexTabs')[0];
-  await act(async () => { needsWork.props.onSelect(1); });
+  const sortMenu = byName(tree.root, 'NbSortMenu')[0];
+  await act(async () => { sortMenu.props.onSelect('needs-work'); });
   for (let i = 0; i < 6; i++) await act(async () => { await Promise.resolve(); });
 
   // The first group under that sort is the WORST one, not the last one — a card

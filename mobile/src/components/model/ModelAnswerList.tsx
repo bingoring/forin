@@ -1,16 +1,17 @@
 // ScreenModelAnswerList (04_SCREENS ⑨ "11c") — where every scenario the player
 // has model answers for is actually browsed. Mobile patterns, explicitly not web
-// ones: infinite scroll, a segmented sort (최신 / 개선 필요), toggle chips, and a
-// bottom-sheet filter behind ⚙ 필터 N for compound conditions.
+// ones: infinite scroll, a sort dropdown (최신 / 개선 필요) rather than a second tab
+// row, toggle chips, and a bottom-sheet filter behind ⚙ 필터 N for compound conditions.
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { api, type ModelAnswerGroup, type ModelAnswerSort } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbChip, NbIndexTabs, NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbChip, NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { ModelAnswerGroupRow } from '@/components/model/ModelAnswerGroupRow';
 import { ModelAnswerHero } from '@/components/model/ModelAnswerHero';
+import { NbSortMenu } from '@/components/nb/NbSortMenu';
 import { colors, fonts, fs } from '@/theme/tokens';
 import { useT } from '@/i18n';
 
@@ -118,12 +119,19 @@ export function ModelAnswerList({ embedded = false, above }: {
 
   const headerInner = (
     <>
-        {/* The sort is an index tab — two orderings of one list, not two lists. */}
-        <NbIndexTabs
-          tabs={[[t('list.sortRecent')], [t('list.sortNeedsWork')]]}
-          active={sort === 'recent' ? 0 : 1}
-          onSelect={(i) => onSort(i === 0 ? 'recent' : 'needs-work')}
-        />
+        {/* The sort is a dropdown, not a tab row (v33). It was a second NbIndexTabs
+            directly under the lab's section tabs — 교정 노트 / 말하기 / 모범답안 — so the
+            two tab rows read as one nested tab bar. The handoff has no sort control on
+            this screen at all, but 개선 필요 is worth keeping; a dropdown keeps it without
+            the second tab bar. */}
+        <View style={styles.sortRow}>
+          <NbSortMenu
+            title={t('list.sortTitle')}
+            value={sort}
+            options={[{ value: 'recent', label: t('list.sortRecent') }, { value: 'needs-work', label: t('list.sortNeedsWork') }]}
+            onSelect={onSort}
+          />
+        </View>
 
         {/* Departments are a MULTI-select, so these are chips rather than tabs: a tab row
             says "one of these", and this row says "any of these". */}
@@ -293,6 +301,9 @@ const styles = StyleSheet.create({
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   back: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
   chipRow: { gap: 7, paddingVertical: 2, paddingRight: 20 },
+  // The dropdown sits at the right, where a sort control belongs — the section tabs
+  // are the only tab row on the page now.
+  sortRow: { flexDirection: 'row', justifyContent: 'flex-end', paddingVertical: 2 },
   count: { fontFamily: nbFonts.mono, fontSize: 9.5, color: nb.soft },
   scroller: { flex: 1 },
   listBody: { paddingBottom: 40, paddingHorizontal: 20 },

@@ -857,6 +857,7 @@ export const ko: Record<string, string> = {
   'lab.blockUnavailable': '지금은 불러올 수 없어요. 잠시 후 다시 열어보세요.',
   'list.speakTitle': '직접 말하기 연습',
   'list.modelTitle': '시나리오 모범답안',
+  'list.sortTitle': '정렬',
   'list.sortWeak': '약한 순',
   'list.sortRecent': '최신',
   'list.sortNeedsWork': '개선 필요',

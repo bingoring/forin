@@ -1,7 +1,8 @@
 // Every sentence the learner has said out loud (04_SCREENS ⑨ "11b").
 //
-// Mobile patterns, per the handoff: infinite scroll rather than pagination, a
-// segmented sort rather than a ▾ dropdown, tappable department chips.
+// Mobile patterns, per the handoff: infinite scroll rather than pagination, a sort
+// dropdown at the end of the search line (v33 — it was a second tab row, which stacked
+// under the lab's section tabs and read as a nested tab bar), tappable department chips.
 //
 // Three things here deliberately differ from the handoff's prose, all for the same
 // reason — the prose describes a web mock and the mock's mechanics do not survive the
@@ -24,8 +25,9 @@ import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, T
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { api, type SpeakSort, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbChip, NbIndexTabs, NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbChip, NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
+import { NbSortMenu } from '@/components/nb/NbSortMenu';
 import { SpokenRow } from '@/components/speak/SpokenRow';
 import { BandBar } from '@/components/speak/BandBar';
 import { useT } from '@/i18n';
@@ -171,8 +173,10 @@ export function SpeakList({ embedded = false, above }: {
 
   const headerInner = (
     <>
-        {/* Written on a ruled line rather than boxed in — and a real field, because the
-            handoff's line is where you type, not a button that opens somewhere to type. */}
+        {/* Search on a ruled line — a real field, because the handoff's line is where you
+            type — with the sort dropdown at its right end, exactly where the handoff puts
+            "점수 낮은순 ∨". The sort used to be a second NbIndexTabs directly under the
+            lab's section tabs, so the two tab rows read as one nested tab bar. */}
         <View style={styles.search}>
           <NbIcon name="magnify" size={16} />
           <TextInput
@@ -187,15 +191,13 @@ export function SpeakList({ embedded = false, above }: {
           {!!query && (
             <Pressable onPress={() => onQuery('')} hitSlop={10}><NbIcon name="cross" size={13} /></Pressable>
           )}
+          <NbSortMenu
+            title={t('list.sortTitle')}
+            value={sort}
+            options={[{ value: 'weak', label: t('list.sortWeak') }, { value: 'recent', label: t('list.sortRecent') }]}
+            onSelect={onSort}
+          />
         </View>
-
-        {/* The sort is an index tab, the same control the review lab's three sections
-            use — two orderings of one list, not two lists. */}
-        <NbIndexTabs
-          tabs={[[t('list.sortWeak')], [t('list.sortRecent')]]}
-          active={sort === 'weak' ? 0 : 1}
-          onSelect={(i) => onSort(i === 0 ? 'weak' : 'recent')}
-        />
 
         {/* Only when there is a choice to make: one department is not a filter. */}
         {depts.length > 1 && (
