@@ -17,17 +17,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
-import Svg, { Circle, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 import { api } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbCheck, NbMark, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { CurlSweep, PageCurl } from '@/components/nb/PageCurl';
 import { SocialSignIn } from '@/components/auth/SocialSignIn';
-import { RULE_COLOR, RULE_H, cover, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, TOP_INSET, cover, nb, nbFonts } from '@/theme/nb';
 import { isDestinationReady } from '@/data/destinations';
+import { keyframeInputRange, keyframeSegments } from '@/data/keyframes';
 import { clearDraft, loadDraft, passportStep, saveDraft } from '@/lib/onboardingDraft';
 import { syncOnboarded } from '@/lib/auth';
-import { useAuthStore } from '@/store/authStore';
 import { LOCALES, LOCALE_META, getLocale, localeWasChosen, setLocale, useT, type Locale } from '@/i18n';
 
 /** Passport green and its gold. Only this screen uses them — a passport is not a page of
@@ -80,7 +80,9 @@ const LEVELS = [
 
 type Step =
   | 'cover' | 'lang' | 'job' | 'dest' | 'closing' | 'flight'
-  | 'immigration' | 'approved' | 'commute' | 'flightBack';
+  | 'immigration' | 'approved' | 'commute' | 'flightBack'
+  /** A returning learner: the cover closes and the splash takes over. */
+  | 'welcomeBack';
 
 /** How long each unattended stop lasts before the journey moves on. The prototype's
  *  numbers; they are the pacing, not an implementation detail. */
@@ -103,6 +105,31 @@ function Gutter() {
       <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 8, backgroundColor: 'rgba(62,54,43,.22)' }} />
       <View style={{ position: 'absolute', left: 8, top: 0, bottom: 0, width: 8, backgroundColor: 'rgba(62,54,43,.09)' }} />
       <View style={{ position: 'absolute', left: 6, top: 0, bottom: 0, borderLeftWidth: 1.5, borderLeftColor: 'rgba(62,54,43,.35)', borderStyle: 'dashed' }} />
+    </View>
+  );
+}
+
+/**
+ * Sky to ground, as one drawn rectangle.
+ *
+ * The prototype's flight and commute pages are CSS gradients; a flat fill was standing
+ * in for them here, which is why the commute page had no horizon — the road was a
+ * dashed line across one solid colour. Drawn with react-native-svg rather than adding
+ * expo-linear-gradient: it is one rect, and the project already has the renderer.
+ */
+function SkyGround({ stops }: { stops: [string, number][] }) {
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }}>
+      <Svg width="100%" height="100%">
+        <Defs>
+          <LinearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            {stops.map(([color, at]) => (
+              <Stop key={at} offset={at} stopColor={color} stopOpacity={1} />
+            ))}
+          </LinearGradient>
+        </Defs>
+        <Rect x="0" y="0" width="100%" height="100%" fill="url(#sky)" />
+      </Svg>
     </View>
   );
 }
@@ -134,7 +161,11 @@ function Dots({ at, total = 5 }: { at: number; total?: number }) {
 
 function BackChip({ onPress }: { onPress: () => void }) {
   return (
-    <Pressable onPress={onPress} style={{ position: 'absolute', right: 22, top: 14, zIndex: 5 }} hitSlop={10}>
+    // TOP_INSET, not 14: the prototype's 14 is measured from under a 44px status bar
+    // that a browser mock draws and a phone does not. At 14 this chip sat UNDER the
+    // notch — rendered, and not hit-testable, which is a back button that does not
+    // exist.
+    <Pressable onPress={onPress} style={{ position: 'absolute', right: 22, top: TOP_INSET, zIndex: 5 }} hitSlop={10}>
       <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>
         <NbIcon name="chevronLeft" size={16} />
       </NbPaper>
@@ -144,7 +175,9 @@ function BackChip({ onPress }: { onPress: () => void }) {
 
 function Header({ title, sub }: { title: string; sub?: string }) {
   return (
-    <View style={{ paddingTop: 14, paddingLeft: 34, paddingRight: 24 }}>
+    // Same reason as BackChip: the status bar is the page's top margin here, and the
+    // prototype's 14 is what is left AFTER it.
+    <View style={{ paddingTop: TOP_INSET, paddingLeft: 34, paddingRight: 24 }}>
       <Text style={[nbText.hand(26), { lineHeight: 31 }]}>{title}</Text>
       {!!sub && <Text style={[nbText.body(11.5, nb.soft), { marginTop: 3 }]}>{sub}</Text>}
     </View>
@@ -191,26 +224,57 @@ function BigStamp({ color, size, head, name, foot }: {
  * The officer stands up from behind the counter — body, head and cap on three different
  * springs.
  *
- * The separation is the joke: the cap is thrown highest (-84) and lands last, so it reads
- * as inertia rather than as three things moving together. Same overshoot values as the
- * prototype's keyframes.
+ * The separation is the joke: the cap is thrown highest (-84) and lands last, so it
+ * reads as inertia rather than as three things moving together.
+ *
+ * WHY EACH SEGMENT IS ITS OWN TIMING, and not one timing with an interpolate:
+ * CSS applies the animation's easing BETWEEN EVERY PAIR of keyframes, so the
+ * prototype's cubic-bezier(.35,.6,.3,1) fires five times over the cap's flight — that
+ * is what makes it snap up and drop. `Animated.timing` + `interpolate` eases the whole
+ * run ONCE and moves LINEARLY between the stops, which flattens all three characters
+ * into a slow float. The pop was in the code and not on the screen.
+ *
+ * `frozen` skips the animation entirely and leaves everybody standing. The outgoing
+ * copy of this page during the slide to 승인 is a second mount, and without this the
+ * officer ducks under the counter and jumps up again as the learner walks away.
  */
-function Officer() {
-  const body = useRef(new Animated.Value(0)).current;
-  const head = useRef(new Animated.Value(0)).current;
-  const cap = useRef(new Animated.Value(0)).current;
+/** The cap's tilt, keyframe by keyframe — it is thrown, so it turns as it goes. */
+const CAP_ROTATION = ['-6deg', '10deg', '6deg', '-3deg', '1deg', '0deg'];
+
+function Officer({ frozen = false }: { frozen?: boolean }) {
+  const body = useRef(new Animated.Value(frozen ? 1 : 0)).current;
+  const head = useRef(new Animated.Value(frozen ? 1 : 0)).current;
+  const cap = useRef(new Animated.Value(frozen ? 1 : 0)).current;
   useEffect(() => {
-    const run = (v: Animated.Value, duration: number, delay: number) =>
-      Animated.timing(v, { toValue: 1, duration, delay, easing: Easing.bezier(0.35, 0.6, 0.3, 1), useNativeDriver: true });
-    Animated.parallel([run(body, 850, 150), run(head, 1000, 200), run(cap, 1250, 240)]).start();
-  }, [body, head, cap]);
+    if (frozen) return;
+    const EASE = Easing.bezier(0.35, 0.6, 0.3, 1);
+    /** One CSS keyframe list → one Animated.sequence, easing applied per segment.
+     *  The segment arithmetic is in data/keyframes, where it is testable. */
+    const keyframes = (v: Animated.Value, total: number, delay: number, stops: number[]) =>
+      Animated.sequence([
+        Animated.delay(delay),
+        ...keyframeSegments(total, stops).map(({ toValue, duration }) =>
+          Animated.timing(v, { toValue, duration, easing: EASE, useNativeDriver: true })),
+      ]);
+    const anim = Animated.parallel([
+      keyframes(body, 850, 150, [0, 0.58, 0.78, 1]),
+      keyframes(head, 1000, 200, [0, 0.52, 0.74, 0.88, 1]),
+      keyframes(cap, 1250, 240, [0, 0.42, 0.62, 0.8, 0.91, 1]),
+    ]);
+    anim.start();
+    return () => anim.stop();
+  }, [body, head, cap, frozen]);
+
+  /** Segment index → position, matching the keyframe stops above. */
+  const at = (v: Animated.Value, outputRange: number[]) =>
+    v.interpolate({ inputRange: keyframeInputRange(outputRange), outputRange });
 
   const P = { stroke: nb.ink, strokeWidth: 2, strokeLinejoin: 'round' as const, strokeLinecap: 'round' as const };
   return (
     <>
       <Animated.View style={{
         position: 'absolute', left: 30, bottom: 0, width: 110, height: 120,
-        transform: [{ translateY: body.interpolate({ inputRange: [0, 0.58, 0.78, 1], outputRange: [160, -13, 6, 0] }) }],
+        transform: [{ translateY: at(body, [160, -13, 6, 0]) }],
       }}>
         <Svg viewBox="0 0 110 120" width={110} height={120}>
           <Rect {...P} x="8" y="86" width="94" height="34" fill="#4A6FA5" />
@@ -221,7 +285,7 @@ function Officer() {
 
       <Animated.View style={{
         position: 'absolute', left: 62, bottom: 52, width: 46, height: 46,
-        transform: [{ translateY: head.interpolate({ inputRange: [0, 0.52, 0.74, 0.88, 1], outputRange: [185, -30, 11, -5, 0] }) }],
+        transform: [{ translateY: at(head, [185, -30, 11, -5, 0]) }],
       }}>
         <Svg viewBox="0 0 46 46" width={46} height={46}>
           <Circle {...P} cx="23" cy="24" r="20" fill="#F6DCC0" />
@@ -234,8 +298,13 @@ function Officer() {
       <Animated.View style={{
         position: 'absolute', left: 58, bottom: 88, width: 54, height: 30,
         transform: [
-          { translateY: cap.interpolate({ inputRange: [0, 0.42, 0.62, 0.8, 0.91, 1], outputRange: [210, -84, -80, 10, -4, 0] }) },
-          { rotate: cap.interpolate({ inputRange: [0, 0.42, 0.62, 0.8, 0.91, 1], outputRange: ['-6deg', '10deg', '6deg', '-3deg', '1deg', '0deg'] }) },
+          { translateY: at(cap, [210, -84, -80, 10, -4, 0]) },
+          {
+            rotate: cap.interpolate({
+              inputRange: keyframeInputRange(CAP_ROTATION),
+              outputRange: CAP_ROTATION,
+            }),
+          },
         ],
       }}>
         <Svg viewBox="0 0 54 30" width={54} height={30}>
@@ -258,9 +327,9 @@ const ASK_EN = "Welcome. How's your English for work?";
  * somebody is asking you something, and answering before the question lands would make
  * it a form again.
  */
-function useTypewriter(active: boolean, native: string) {
-  const [en, setEn] = useState(0);
-  const [ko, setKo] = useState(0);
+function useTypewriter(active: boolean, native: string, finished = false) {
+  const [en, setEn] = useState(finished ? ASK_EN.length : 0);
+  const [ko, setKo] = useState(finished ? native.length : 0);
   // The native-language line is passed IN, from a useT() caller. Reading the catalog
   // through the module-level translate helper here would resolve once per component
   // instance and never again — the React Compiler memoises it, so switching language
@@ -282,6 +351,11 @@ function useTypewriter(active: boolean, native: string) {
 }
 
 // ── the walking figure ─────────────────────────────────────────────────────
+
+/** The body is a 60×90 drawing rendered at 62×93; the legs are positioned in the
+ *  rendered pixels, so they need the same scale. */
+const SCALE_X = 62 / 60;
+const SCALE_Y = 93 / 90;
 
 /** The first-day walk: legs crossing, a bob, and the hospital at the end of the road. */
 function Commuter() {
@@ -319,15 +393,28 @@ function Commuter() {
           <Path d="M40 34 L50 44" stroke={nb.ink} strokeWidth="2.4" strokeLinecap="round" />
           <Rect x="46" y="42" width="13" height="10" rx="1.5" fill={nb.red} stroke={nb.ink} strokeWidth="1.8" transform="rotate(6 52 47)" />
         </Svg>
-        {/* The legs swing on their own timing, so they are separate views over the body. */}
-        <Animated.View style={{ position: 'absolute', left: 26, top: 56, transform: [{ rotate: leg }] }}>
-          <Svg viewBox="0 0 24 24" width={24} height={24}>
-            <Path d="M0 0 L-4 20 L-8 20" fill="none" stroke={nb.ink} strokeWidth="2.6" strokeLinecap="round" />
+        {/* The legs swing on their own timing, so they are separate views over the body.
+            Two things about the geometry, both of which had the LEFT leg missing
+            entirely and the right one swinging from the wrong joint:
+
+            · Nothing outside the viewBox is drawn. The old left leg was `M0 0 L-4 20
+              L-8 20` in a 0 0 24 24 box, so the whole limb sat at negative x and was
+              clipped away — a leg that existed in the source and nowhere on screen.
+            · RN rotates a view about its CENTRE, not about a CSS transform-origin. So
+              each leg is drawn inside a box whose centre IS the hip (30,30 of 60×60),
+              and the box is positioned hip-minus-30 — which is what makes the swing
+              pivot at the hip instead of halfway down the shin.
+
+            Hips are at (26,56) and (34,56) in the body's 60×90 viewBox, drawn at 62×93,
+            so ×62/60 across and ×93/90 down. */}
+        <Animated.View style={{ position: 'absolute', left: 26 * SCALE_X - 30, top: 56 * SCALE_Y - 30, transform: [{ rotate: leg }] }}>
+          <Svg viewBox="0 0 60 60" width={60} height={60}>
+            <Path d="M30 30 L26 51 L22 51" fill="none" stroke={nb.ink} strokeWidth="2.6" strokeLinecap="round" />
           </Svg>
         </Animated.View>
-        <Animated.View style={{ position: 'absolute', left: 34, top: 56, transform: [{ rotate: legB }] }}>
-          <Svg viewBox="0 0 24 24" width={24} height={24}>
-            <Path d="M0 0 L4 20 L8 20" fill="none" stroke={nb.ink} strokeWidth="2.6" strokeLinecap="round" />
+        <Animated.View style={{ position: 'absolute', left: 34 * SCALE_X - 30, top: 56 * SCALE_Y - 30, transform: [{ rotate: legB }] }}>
+          <Svg viewBox="0 0 60 60" width={60} height={60}>
+            <Path d="M30 30 L34 51 L38 51" fill="none" stroke={nb.ink} strokeWidth="2.6" strokeLinecap="round" />
           </Svg>
         </Animated.View>
       </Animated.View>
@@ -383,13 +470,19 @@ export default function PassportRoute() {
   const t = useT();
   const router = useRouter();
   const { width, height } = useWindowDimensions();
-  const authed = useAuthStore((st) => !!st.accessToken);
 
   const [step, setStep] = useState<Step>('cover');
   /** The page being turned away, if any — drawn over the new one until the turn ends. */
   const [turning, setTurning] = useState<Step | null>(null);
   /** The page coming BACK over the top (‹, and the passport closing). */
   const [returning, setReturning] = useState<Step | null>(null);
+  /** The page being pushed off to the LEFT, if any — the immigration gate. */
+  const [sliding, setSliding] = useState<Step | null>(null);
+  // useMemo, not useRef, only because this value is READ during render (both pages
+  // interpolate it): a ref read in a render body is what react-hooks/refs flags, and
+  // the animated values inside the characters below are read in effects instead.
+  // Resting at 1 = "no slide in progress", so the live page sits where it was laid out.
+  const slide = useMemo(() => new Animated.Value(1), []);
   // Pre-answered from whatever the app is already showing — which is the device's
   // language on a first launch. `touchedLang` is only for the "matched to your device"
   // note: once they have chosen, saying it would be wrong.
@@ -429,6 +522,25 @@ export default function PassportRoute() {
     if (returning) return;
     setReturning(prev);
   }, [returning]);
+
+  /**
+   * Sideways: the current page slides off to the left while the next one comes in from
+   * the right (the prototype's nb-slide-out / nb-slide-in, 0.6s).
+   *
+   * Used for 심사대 통과하기 only, and the difference from a page turn is the fiction:
+   * a page turn is you reading on, a gate is somebody moving you through. Turning a
+   * page there also re-mounted the officer, so he ducked and jumped again behind the
+   * learner's back.
+   */
+  const goSlide = useCallback((next: Step) => {
+    if (sliding) return;
+    setSliding(step);
+    setStep(next);
+    slide.setValue(0);
+    Animated.timing(slide, {
+      toValue: 1, duration: 600, easing: Easing.bezier(0.4, 0.05, 0.2, 1), useNativeDriver: true,
+    }).start(({ finished }) => { if (finished) setSliding(null); });
+  }, [sliding, step, slide]);
 
   // The unattended stops. Each one is a beat with a fixed length; the numbers are the
   // pacing of the journey and live in HOLD so they can be read at once.
@@ -506,6 +618,15 @@ export default function PassportRoute() {
     return () => clearTimeout(timer);
   }, [step, router]);
 
+  // A returning learner: the cover closes over itself, then the splash carries them in.
+  // The splash is told where to go, because its default door is this very screen and
+  // sending them back here would be a loop.
+  useEffect(() => {
+    if (step !== 'welcomeBack') return;
+    const timer = setTimeout(() => router.replace('/splash?to=home'), 1250);
+    return () => clearTimeout(timer);
+  }, [step, router]);
+
   /**
    * Signed in from the cover.
    *
@@ -514,9 +635,14 @@ export default function PassportRoute() {
    * page only turns for a learner who still has answers to give.
    */
   const signedIn = useCallback(async () => {
-    if (await syncOnboarded()) router.replace('/(tabs)');
+    // Someone who has been here before is not sent through the journey again — the
+    // server knows whether the profile is complete, and the passport is for filling
+    // one in. They get the document CLOSING instead: the same close beat the journey
+    // ends with, then the splash, then the app. Jumping straight to the tabs from a
+    // green cover was a cut with no fiction attached to it.
+    if (await syncOnboarded()) setStep('welcomeBack');
     else go('lang');
-  }, [go, router]);
+  }, [go]);
 
   // ── pages ───────────────────────────────────────────────────────────────
 
@@ -532,22 +658,21 @@ export default function PassportRoute() {
         <Text style={{ fontFamily: nbFonts.hand, fontSize: 34, color: CREAM_TEXT, marginTop: 26, lineHeight: 41, textAlign: 'center' }}>{t('onb.cover.title')}</Text>
         <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.5, color: 'rgba(243,230,200,.65)', marginTop: 9 }}>{t('onb.cover.sub')}</Text>
         <View style={{ flex: 1 }} />
-        {/* The cover IS the login screen (v30): opening the passport and identifying
-            yourself are one act, so there is no separate login page in front of this one
-            and no id/pw anywhere. Someone already carrying a session — a learner resuming
-            an interrupted journey — just opens it. */}
-        {authed
-          ? <NbButton variant="yellow" size="lg" full iconRight="chevronRight" onPress={() => go('lang')}>{t('onb.cover.open')}</NbButton>
-          : (
-            <>
-              <View style={{ alignSelf: 'stretch' }}>
-                <SocialSignIn tone="dark" onDone={signedIn} />
-              </View>
-              <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.5, color: 'rgba(243,230,200,.55)', marginTop: 14, lineHeight: 19, textAlign: 'center' }}>
-                {t('login.terms')}
-              </Text>
-            </>
-          )}
+        {/* The cover IS the sign-in (v30, and the prototype's page 0 has nothing else on
+            it): identifying yourself and opening the passport are ONE act. There is no
+            여권 펼치기 button — it was a second door for a learner who already had a
+            session, and it made the first screen ask which kind of user you were before
+            it had told you anything.
+
+            Tapping any of the three is the page turn: an account that already exists
+            closes the passport and goes to the app (see signedIn), and a new one gets
+            the next page. */}
+        <View style={{ alignSelf: 'stretch' }}>
+          <SocialSignIn tone="dark" onDone={signedIn} />
+        </View>
+        <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.5, color: 'rgba(243,230,200,.55)', marginTop: 14, lineHeight: 19, textAlign: 'center' }}>
+          {t('login.terms')}
+        </Text>
       </View>
       {/* The machine-readable zone: the one printed thing on a handwritten cover. */}
       <View pointerEvents="none" style={{ position: 'absolute', left: 30, right: 30, bottom: 52 }}>
@@ -694,6 +819,9 @@ export default function PassportRoute() {
 
   const flight = (mirrored: boolean) => (
     <Page bg="#CFE3EE">
+      {/* #BFDCEE → #DCEAF2 → #F1EBDD: sky at the top, the page's own paper at the
+          bottom, which is what the plane climbs away from. */}
+      <SkyGround stops={[['#BFDCEE', 0], ['#DCEAF2', 0.55], ['#F1EBDD', 1]]} />
       <Gutter />
       <Clouds />
       <View style={{ position: 'absolute', top: 210, left: 0, right: 0, height: 300 }}>
@@ -720,12 +848,18 @@ export default function PassportRoute() {
     </Page>
   );
 
-  const immigration = <Immigration
-    lvl={lvl}
-    onPick={pickLvl}
-    onPass={() => lvl && go('approved')}
-    onBack={() => setStep('flightBack')}
-  />;
+  /** `frozen` is for the slide-out copy: the officer is already standing there. */
+  const immigrationPage = (frozen: boolean) => (
+    <Immigration
+      frozen={frozen}
+      lvl={lvl}
+      onPick={pickLvl}
+      // The prototype passes the desk SIDEWAYS, not by turning a page: you are walked
+      // through a gate, and the passport stays open in your hand.
+      onPass={() => lvl && goSlide('approved')}
+      onBack={() => setStep('flightBack')}
+    />
+  );
 
   const approved = (
     <Page>
@@ -761,6 +895,9 @@ export default function PassportRoute() {
 
   const commute = (
     <Page bg="#DDE7E0">
+      {/* Sky, then the ground it meets — the horizon is what makes the dashed line a
+          road rather than a line. */}
+      <SkyGround stops={[['#BFDCEE', 0], ['#E8EEE4', 0.46], ['#F1EBDD', 0.62]]} />
       <Gutter />
       <View style={{ position: 'absolute', right: 30, top: 236, alignItems: 'center' }}>
         <NbIcon name="hospital" size={92} />
@@ -780,16 +917,46 @@ export default function PassportRoute() {
 
   const PAGES: Record<Step, React.ReactNode> = {
     cover, lang: langPage, job: jobPage, dest: destPage, closing: destPage, flight: flight(false),
-    immigration, approved, commute, flightBack: flight(true),
+    immigration: immigrationPage(false), approved, commute, flightBack: flight(true),
+    // The cover again, with the back cover coming over it — see the render below.
+    welcomeBack: cover,
   };
 
   return (
     <View style={{ flex: 1, backgroundColor: nb.cream }}>
       <Stack.Screen options={{ headerShown: false }} />
-      {PAGES[step]}
 
-      {/* The passport closing: the back cover comes over the destination page. */}
-      {step === 'closing' && <PageCurl dir="in">{backCover}</PageCurl>}
+      {/* The live page. It only moves while a slide is running; `slide` rests at 1, so
+          every other page sits exactly where it was laid out. */}
+      <Animated.View
+        style={{
+          flex: 1,
+          transform: [{ translateX: slide.interpolate({ inputRange: [0, 1], outputRange: [width, 0] }) }],
+        }}
+      >
+        {PAGES[step]}
+      </Animated.View>
+
+      {/* The page being walked away from, sliding out to the left with its own edge
+          shadow — which is what makes it read as a sheet passing over the next one. */}
+      {sliding && (
+        <Animated.View
+          style={{
+            position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, zIndex: 11,
+            shadowColor: nb.ink, shadowOpacity: 0.25, shadowRadius: 24,
+            shadowOffset: { width: 8, height: 0 }, elevation: 12,
+            transform: [{ translateX: slide.interpolate({ inputRange: [0, 1], outputRange: [0, -width] }) }],
+          }}
+          pointerEvents="none"
+        >
+          {sliding === 'immigration' ? immigrationPage(true) : PAGES[sliding]}
+        </Animated.View>
+      )}
+
+      {/* The passport closing: the back cover comes over the destination page — and
+          over the COVER for a learner who already has an account and is only passing
+          through. */}
+      {(step === 'closing' || step === 'welcomeBack') && <PageCurl dir="in">{backCover}</PageCurl>}
 
       {/* ‹ — the previous page comes back over the top. */}
       {returning && (
@@ -815,14 +982,16 @@ export default function PassportRoute() {
  * Its own component because the typewriter owns state, and a hook inside the parent would
  * restart the question every time any other answer changed.
  */
-function Immigration({ lvl, onPick, onPass, onBack }: {
+function Immigration({ lvl, onPick, onPass, onBack, frozen = false }: {
   lvl: string | null;
   onPick: (id: string) => void;
   onPass: () => void;
   onBack: () => void;
+  /** The slide-out copy: nobody stands up again and nothing types itself twice. */
+  frozen?: boolean;
 }) {
   const t = useT();
-  const { en, ko, native, done } = useTypewriter(true, t('onb.imm.ask'));
+  const { en, ko, native, done } = useTypewriter(!frozen, t('onb.imm.ask'), frozen);
   return (
     <Page>
       <Gutter />
@@ -833,7 +1002,7 @@ function Immigration({ lvl, onPick, onPass, onBack }: {
         <Pressable onPress={onBack} hitSlop={10} style={{ position: 'absolute', right: 16, top: 10, zIndex: 6, width: 32, height: 32, backgroundColor: nb.paper, borderWidth: 1, borderColor: nb.paperEdge, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-1deg' }] }}>
           <NbIcon name="chevronLeft" size={16} />
         </Pressable>
-        <Officer />
+        <Officer frozen={frozen} />
         {en > 0 && (
           <View style={{ position: 'absolute', right: 16, bottom: 66, width: 210, backgroundColor: nb.paper, borderWidth: 1, borderColor: nb.paperEdge, paddingVertical: 10, paddingHorizontal: 12, transform: [{ rotate: '0.4deg' }] }}>
             <Text style={[nbText.body(13), { minHeight: 38 }]}>{ASK_EN.slice(0, en)}</Text>
@@ -874,7 +1043,7 @@ function Immigration({ lvl, onPick, onPass, onBack }: {
       <View style={{ position: 'absolute', left: 34, right: 24, bottom: 34 }}>
         <Dots at={4} />
         <View style={{ marginTop: 13, opacity: lvl ? 1 : 0.45 }}>
-          <NbButton variant="ink" size="lg" full iconRight="chevronRight" disabled={!lvl} onPress={onPass}>{t('onb.imm.pass')}</NbButton>
+          <NbButton variant="ink" size="lg" full iconRight="chevronRight" disabled={!lvl || frozen} onPress={onPass}>{t('onb.imm.pass')}</NbButton>
         </View>
       </View>
     </Page>

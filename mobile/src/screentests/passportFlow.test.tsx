@@ -27,7 +27,25 @@ jest.mock('@/lib/onboardingDraft', () => ({
   clearDraft: async () => { mockCleared += 1; },
   passportStep: (d: Record<string, unknown>) => (!d.job ? 'job' : !d.destination ? 'dest' : 'level'),
 }));
-jest.mock('@/lib/auth', () => ({ syncOnboarded: async () => true }));
+// The cover is the sign-in surface and always renders it now (the 여권 펼치기 branch
+// that used to hide it for an authed learner is gone), so the whole module has to be
+// here — a partial mock made this suite fail on `isProviderConfigured is not a
+// function`, which is the auth surface simply not existing before.
+jest.mock('@/lib/auth', () => ({
+  SOCIAL_CONFIG: { googleIosClientId: 'x', googleAndroidClientId: 'x', googleWebClientId: 'x' },
+  isProviderConfigured: () => true,
+  completeSocialLogin: async () => {},
+  signInApple: async () => {},
+  signInKakao: async () => {},
+  devSignIn: async () => {},
+  // These journey tests are a NEW learner: the cover only turns the page when the
+  // server says there is still a profile to fill in.
+  syncOnboarded: async () => false,
+}));
+jest.mock('expo-web-browser', () => ({ maybeCompleteAuthSession: () => {} }));
+jest.mock('expo-auth-session/providers/google', () => ({
+  useAuthRequest: () => [null, null, async () => ({ type: 'cancel' })],
+}));
 jest.mock('@/api/client', () => ({
   api: {
     updateProfile: async (p: Record<string, unknown>) => {
@@ -100,6 +118,18 @@ async function tap(root: ReactTestInstance, label: string) {
   await act(async () => { await Promise.resolve(); });
 }
 
+/** The cover's own door: any provider signs in, and the page turns for a new learner.
+ *  There is no 여권 펼치기 any more — one way off the page, for everybody. */
+async function signIn(root: ReactTestInstance) {
+  const apple = root.findAll(
+    (n) => typeof n.props?.onPress === 'function' && n.props?.accessibilityLabel === 'Apple로 계속하기',
+    { deep: true },
+  );
+  expect(apple.length).toBeGreaterThan(0);
+  await act(async () => { apple[0].props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+}
+
 /** Run the journey's unattended beats (page turns, flights) forward. */
 async function settle(ms = 4000) {
   await act(async () => { jest.advanceTimersByTime(ms); await Promise.resolve(); });
@@ -107,9 +137,7 @@ async function settle(ms = 4000) {
 
 test('the journey collects three answers and posts them once, at the end', async () => {
   const tree = await mount();
-  expect(texts(tree.root)).toContain('여권 펼치기');
-
-  await tap(tree.root, '여권 펼치기');
+  await signIn(tree.root);
   await settle(1400);
   // The language page comes first: everything after it is written in the answer, so
   // asking later would mean switching language mid-journey.
@@ -169,7 +197,7 @@ test('each answer is written to the draft as it is given', async () => {
   // The draft is why closing the app mid-journey does not cost the answers. Written per
   // answer, not per page: someone who picks a job and quits has picked a job.
   const tree = await mount();
-  await tap(tree.root, '여권 펼치기');
+  await signIn(tree.root);
   await settle(1400);
   await tap(tree.root, '이 언어로 계속');
   await settle(1400);
@@ -188,7 +216,7 @@ test('a country with no curriculum behind it cannot be chosen', async () => {
   // exist yet. The card stays on the page — the destination is coming — but it is marked
   // and it does not answer.
   const tree = await mount();
-  await tap(tree.root, '여권 펼치기');
+  await signIn(tree.root);
   await settle(1400);
   await tap(tree.root, '이 언어로 계속');
   await settle(1400);
@@ -211,7 +239,7 @@ test('the desk will not take an answer until the question has finished landing',
   // The beat is that somebody is asking you something. Answerable early, it is a form
   // again — and the options are dimmed to say so, not merely inert.
   const tree = await mount();
-  await tap(tree.root, '여권 펼치기');
+  await signIn(tree.root);
   await settle(1400);
   await tap(tree.root, '이 언어로 계속');
   await settle(1400);
@@ -238,7 +266,7 @@ test('a failed save keeps the learner where they are and says so', async () => {
   // request failed.
   mockFail = true;
   const tree = await mount();
-  await tap(tree.root, '여권 펼치기');
+  await signIn(tree.root);
   await settle(1400);
   await tap(tree.root, '이 언어로 계속');
   await settle(1400);
@@ -274,7 +302,7 @@ test('the language page arrives pre-answered from the device, and says why', asy
   // than a blank. The note explains the pre-selection — without it a highlighted card with
   // no cause reads as the app having decided for you.
   const tree = await mount();
-  await tap(tree.root, '여권 펼치기');
+  await signIn(tree.root);
   await settle(1400);
 
   const out = texts(tree.root);
@@ -290,7 +318,7 @@ test('picking a language applies it at once, not at the end', async () => {
   // The remaining three pages are written in it. A language that only took effect after
   // onboarding would have the learner answering in a language they just rejected.
   const tree = await mount();
-  await tap(tree.root, '여권 펼치기');
+  await signIn(tree.root);
   await settle(1400);
   await tap(tree.root, 'Deutsch');
   expect(mockSetLocale).toEqual(['de']);

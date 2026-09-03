@@ -7,9 +7,10 @@
 //     through it overwrites the answers they already gave — with defaults, if they tap
 //     past. The cover asks the server whether the profile is complete and only turns the
 //     page when there is something left to fill in.
-//  2. A learner already carrying a session (one resuming an interrupted journey) is not
-//     asked to sign in again. Three provider buttons on a page you reached WITH a session
-//     is a dead end that looks like the way forward.
+//  2. There is exactly ONE way off this page, for everybody: the three providers. The
+//     cover used to swap them for a 여권 펼치기 button when a session already existed,
+//     which made the app's first screen ask which kind of user you were before it had
+//     told you anything — and left an unexplained button on a green cover.
 //
 // Outside src/app deliberately: expo-router bundles every file under the app root as a
 // route (routeHygiene.test.ts).
@@ -109,18 +110,27 @@ test('the cover offers the three providers, and no password anywhere', async () 
   expect(texts(tree.root)).not.toContain('여권 펼치기');
 });
 
-test('a returning learner goes home instead of being walked through onboarding again', async () => {
+test('a returning learner closes the passport and goes home through the splash', async () => {
   // The journey's last page PATCHes the profile. Sending somebody who already answered
-  // back through it overwrites what they said — with defaults, if they tap past.
+  // back through it overwrites what they said — with defaults, if they tap past. So
+  // they get the document closing and the splash, not the questions.
   mockOnboarded = true;
+  jest.useFakeTimers();
   const tree = await mount();
   await act(async () => { byLabel(tree.root, 'Apple로 계속하기')[0].props.onPress(); });
   await act(async () => { await Promise.resolve(); });
 
   expect(mockSignedIn).toEqual(['apple']);
-  expect(mockNav).toContain('/(tabs)');
   // The language page is the first page of the journey; it must not have been opened.
   expect(texts(tree.root)).not.toContain('어떤 언어로 볼까요?');
+  // Not a cut to the tabs: the passport closes first (the beat has to be on screen, or
+  // the app jumps from a green cover to a home screen with nothing in between).
+  expect(mockNav).not.toContain('/(tabs)');
+
+  await act(async () => { jest.advanceTimersByTime(1400); await Promise.resolve(); });
+  // …and the splash is told where to go, because its own default door is this screen.
+  expect(mockNav).toContain('/splash?to=home');
+  jest.useRealTimers();
 });
 
 test('a new learner is taken to the first page, not into the app', async () => {
@@ -133,9 +143,15 @@ test('a new learner is taken to the first page, not into the app', async () => {
   expect(texts(tree.root)).toContain('어떤 언어로 볼까요?');
 });
 
-test('a learner who already has a session is not asked to sign in again', async () => {
+test('a session already in hand does not change what the cover offers', async () => {
+  // It used to: the three providers were swapped for 여권 펼치기. Tapping a provider
+  // with a session is not a dead end — it re-identifies the same person and the server
+  // answers the only question that matters (is the profile complete), which is what
+  // decides whether the page turns or the passport closes.
   mockAuthed = true;
   const tree = await mount();
-  expect(texts(tree.root)).toContain('여권 펼치기');
-  expect(byLabel(tree.root, 'Apple로 계속하기')).toHaveLength(0);
+  expect(texts(tree.root)).not.toContain('여권 펼치기');
+  for (const label of ['Google로 계속하기', 'Apple로 계속하기', '카카오로 시작하기']) {
+    expect(byLabel(tree.root, label).length).toBeGreaterThan(0);
+  }
 });

@@ -9,24 +9,30 @@
 // same cover, and rendering the same component is what keeps them identical when either
 // changes.
 import { useEffect } from 'react';
-import { Stack, useRouter } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { BootSplash } from '@/components/BootSplash';
 
 /** How long the beat lasts. Long enough to read the wordmark, short enough that nobody
  *  waits for it. */
 const HOLD_MS = 1400;
 
-/** Where it hands over: the passport, whose COVER is the sign-in (v31 flow page 0). There
- *  is no separate login route — one door in, and it is the one the fiction opens with. */
+/** Where it hands over by default: the passport, whose COVER is the sign-in (v31 flow
+ *  page 0). There is no separate login route — one door in, and it is the one the
+ *  fiction opens with.
+ *
+ *  `?to=home` is the returning learner's path: they signed in on the cover, the
+ *  passport closed, and this beat is the last thing between them and the app. Without
+ *  the parameter the splash would send them back to the cover they just closed. */
 const NEXT = '/passport' as const;
 
 export default function Splash() {
   const router = useRouter();
+  const { to } = useLocalSearchParams<{ to?: string }>();
 
   useEffect(() => {
-    const timer = setTimeout(() => router.replace(NEXT), HOLD_MS);
+    const timer = setTimeout(() => router.replace(to === 'home' ? '/(tabs)' : NEXT), HOLD_MS);
     return () => clearTimeout(timer);
-  }, [router]);
+  }, [router, to]);
 
   return (
     <>
