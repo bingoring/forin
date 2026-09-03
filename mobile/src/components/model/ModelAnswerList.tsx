@@ -1,27 +1,21 @@
-// ScreenModelAnswerList (04_SCREENS ⑨ "11c") — where every scenario the player
-// has model answers for is actually browsed. Mobile patterns, explicitly not web
-// ones: infinite scroll, a sort dropdown (최신 / 개선 필요) rather than a second tab
-// row, toggle chips, and a bottom-sheet filter behind ⚙ 필터 N for compound conditions.
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+// 모범답안 요약 (04_SCREENS ⑨ 리뷰랩 C) — the handoff's LabModel: the most recent
+// correction worked through as a hero card, then the list of completed scenarios.
+//
+// No sort dropdown, no filter chips. The handoff's summary deliberately carries neither
+// ("모범답안에 왜 아직 정렬, 필터칩이 있어") — those belong to the separate full-list
+// screen, not to this in-tab summary. What stays is infinite scroll and the hero.
+import { useCallback, useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
-import { api, type ModelAnswerGroup, type ModelAnswerSort } from '@/api/client';
+import { api, type ModelAnswerGroup } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbChip, NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { ModelAnswerGroupRow } from '@/components/model/ModelAnswerGroupRow';
 import { ModelAnswerHero } from '@/components/model/ModelAnswerHero';
-import { NbSortMenu } from '@/components/nb/NbSortMenu';
-import { colors, fonts, fs } from '@/theme/tokens';
 import { useT } from '@/i18n';
 
 const PAGE = 10;
-
-/** Department code from a scenario id (SCN-ER-00002 → ER); '' when there is none. */
-function deptOfScenario(id: string): string {
-  const m = /^SCN-([A-Z0-9]+)-/.exec(id);
-  return m ? m[1] : '';
-}
 
 export function ModelAnswerList({ embedded = false, above }: {
   /** True inside the review-lab tab: no screen chrome, and the header scrolls with the
@@ -33,21 +27,19 @@ export function ModelAnswerList({ embedded = false, above }: {
 }) {
   const t = useT();
   const router = useRouter();
-  const [sort, setSort] = useState<ModelAnswerSort>('recent');
   const [groups, setGroups] = useState<ModelAnswerGroup[]>([]);
   const [total, setTotal] = useState(0);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [done, setDone] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
   const [open, setOpen] = useState<string | null>(null);
-  // Department filter, applied client-side. Lives in the sheet AND on the chip
-  // row: the chips are the one-tap case, the sheet the compound one.
-  const [depts, setDepts] = useState<string[]>([]);
 
-  const reload = useCallback((nextSort: ModelAnswerSort) => {
+  // Always 최신: the summary shows the correction the learner most likely still
+  // remembers making. The handoff has no sort control here, so there is nothing to vary.
+  const reload = useCallback(() => {
     setState('loading');
     setDone(false);
-    api.modelAnswers({ sort: nextSort, limit: PAGE, offset: 0 })
+    api.modelAnswers({ sort: 'recent', limit: PAGE, offset: 0 })
       .then((page) => {
         setGroups(page.groups);
         setTotal(page.total);
@@ -63,24 +55,15 @@ export function ModelAnswerList({ embedded = false, above }: {
 
   // One-shot, NOT useFocusEffect: returning from anywhere must not discard the
   // pages already pulled in or the scroll position they were being read at.
-  useEffect(() => { reload(sort); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const onSort = (next: ModelAnswerSort) => {
-    if (next === sort) return;
-    setSort(next);
-    // Reset rather than merge: page 2 of 최신 has nothing to do with page 2 of
-    // 개선 필요, and appending across a sort change interleaves two orderings.
-    reload(next);
-  };
+  useEffect(() => { reload(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadMore = () => {
     if (done || loadingMore || state !== 'ok') return;
     setLoadingMore(true);
-    api.modelAnswers({ sort, limit: PAGE, offset: groups.length })
+    api.modelAnswers({ sort: 'recent', limit: PAGE, offset: groups.length })
       .then((page) => {
-        // Dedup by scenarioId: under 개선 필요 a scenario that gained a correction
-        // between two fetches shifts position, and a duplicate would break
-        // FlatList's key invariant as well as showing the row twice.
+        // Dedup by scenarioId, in case a scenario shifted position between two fetches:
+        // a duplicate would break FlatList's key invariant and show the row twice.
         setGroups((prev) => {
           const seen = new Set(prev.map((g) => g.scenarioId));
           return [...prev, ...page.groups.filter((g) => !seen.has(g.scenarioId))];
@@ -92,18 +75,8 @@ export function ModelAnswerList({ embedded = false, above }: {
       .finally(() => setLoadingMore(false));
   };
 
-  // Chips come from what has loaded, so a chip never offers a filter that yields
-  // nothing. Client-side filtering keeps `total` and the page arithmetic honest —
-  // a server-side department filter would make them disagree.
-  const available = useMemo(() => {
-    const set = new Set<string>();
-    for (const g of groups) { const d = deptOfScenario(g.scenarioId); if (d) set.add(d); }
-    return Array.from(set).sort();
-  }, [groups]);
-  const shown = depts.length === 0 ? groups : groups.filter((g) => depts.includes(deptOfScenario(g.scenarioId)));
-  // Drawn from `shown`, not `groups`: with a department chip on, a hero from a filtered-out
-  // department would be a card the list underneath does not contain.
-  const hero = shown.find((g) => (g.cards?.length ?? 0) > 0);
+  // The most recent correction that actually has cards to work through.
+  const hero = groups.find((g) => (g.cards?.length ?? 0) > 0);
 
   /** 따라 말하기 — the same pronunciation route the speak list opens, so a sentence
    *  practised from here lands in the same history. One template literal: expo-router's
@@ -114,50 +87,17 @@ export function ModelAnswerList({ embedded = false, above }: {
     );
   };
 
-  const toggleDept = (d: string) =>
-    setDepts((prev) => (prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d]));
-
   const headerInner = (
     <>
-        {/* The sort is a dropdown, not a tab row (v33). It was a second NbIndexTabs
-            directly under the lab's section tabs — 교정 노트 / 말하기 / 모범답안 — so the
-            two tab rows read as one nested tab bar. The handoff has no sort control on
-            this screen at all, but 개선 필요 is worth keeping; a dropdown keeps it without
-            the second tab bar. */}
-        <View style={styles.sortRow}>
-          <NbSortMenu
-            title={t('list.sortTitle')}
-            value={sort}
-            options={[{ value: 'recent', label: t('list.sortRecent') }, { value: 'needs-work', label: t('list.sortNeedsWork') }]}
-            onSelect={onSort}
-          />
-        </View>
-
-        {/* Departments are a MULTI-select, so these are chips rather than tabs: a tab row
-            says "one of these", and this row says "any of these". */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
-          {available.map((d, i) => (
-            <NbChip key={d} on={depts.includes(d)} rot={i % 2 ? 0.8 : -0.8} onPress={() => toggleDept(d)}>
-              {d}
-            </NbChip>
-          ))}
-        </ScrollView>
-
-        {/* `total` is the unfiltered group count and the department filter is still
-            client-side here, so the count names what is SHOWN rather than implying a
-            ratio. (The speak list filters server-side; groups carry their cards, so
-            paging them per department is a bigger change than this screen needs.) */}
+        {/* Count only — no sort, no chips (핸드오프 요약 그대로). */}
         {total > 0 && (
           <Text style={styles.count}>
             {done ? t('list.countAllGroups', { total }) : t('list.countPartialGroups', { shown: groups.length, total })}
           </Text>
         )}
 
-        {/* The most recent correction, worked through. `sort === 'recent'` because under
-            개선 필요 the first group is the worst one, not the last one — a card stamped
-            최근 that is three weeks old is a false label. The department filter narrows
-            it too, so the hero is always the first thing in the list below it. */}
-        {sort === 'recent' && !!hero && (
+        {/* The most recent correction, worked through, then the completed-scenario list. */}
+        {!!hero && (
           <>
             <ModelAnswerHero group={hero} onPractise={practise} />
             <Text style={[nbText.hand(16), { marginTop: 13 }]}>{t('model.completedScenarios')}</Text>
@@ -176,7 +116,7 @@ export function ModelAnswerList({ embedded = false, above }: {
         <View style={styles.center}><Text style={styles.emptyHint}>{t('model.emptyHint')}</Text></View>
       ) : (
         <FlatList
-          data={shown}
+          data={groups}
           keyExtractor={(g) => g.scenarioId}
           style={styles.scroller}
           contentContainerStyle={styles.listBody}
@@ -187,7 +127,7 @@ export function ModelAnswerList({ embedded = false, above }: {
               group={item}
               open={open === item.scenarioId}
               onToggle={() => setOpen((cur) => (cur === item.scenarioId ? null : item.scenarioId))}
-              divider={index < shown.length - 1}
+              divider={index < groups.length - 1}
             />
           )}
           ListEmptyComponent={
@@ -216,7 +156,7 @@ export function ModelAnswerList({ embedded = false, above }: {
     return (
       <View style={styles.embedded}>
         <FlatList
-          data={shown}
+          data={groups}
           keyExtractor={(g) => g.scenarioId}
           contentContainerStyle={styles.embeddedBody}
           onEndReached={loadMore}
@@ -234,7 +174,7 @@ export function ModelAnswerList({ embedded = false, above }: {
               group={item}
               open={open === item.scenarioId}
               onToggle={() => setOpen((cur) => (cur === item.scenarioId ? null : item.scenarioId))}
-              divider={index < shown.length - 1}
+              divider={index < groups.length - 1}
             />
           )}
           ListEmptyComponent={
@@ -300,10 +240,6 @@ const styles = StyleSheet.create({
   },
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   back: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
-  chipRow: { gap: 7, paddingVertical: 2, paddingRight: 20 },
-  // The dropdown sits at the right, where a sort control belongs — the section tabs
-  // are the only tab row on the page now.
-  sortRow: { flexDirection: 'row', justifyContent: 'flex-end', paddingVertical: 2 },
   count: { fontFamily: nbFonts.mono, fontSize: 9.5, color: nb.soft },
   scroller: { flex: 1 },
   listBody: { paddingBottom: 40, paddingHorizontal: 20 },

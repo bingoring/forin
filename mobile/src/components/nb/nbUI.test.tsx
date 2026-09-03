@@ -56,23 +56,46 @@ test('the page is actually ruled', () => {
   expect(tops[1] - tops[0]).toBe(RULE_H);
 });
 
-test('the highlighter follows the glyphs — it is the text’s own background', () => {
-  // The marker is on the Text itself, not a separate box behind it. A View band was
-  // sized to the whole node, so a two-line phrase had its 45% fall between the lines and
-  // only the lower one got marked; a text background paints each wrapped line to its own
-  // width instead. So the highlighter colour must live on the node that carries the
-  // words, and there must be no free-standing band View doing it.
+test('the highlighter is a stroke along the lower half of each wrapped line', () => {
+  // The prototype is `linear-gradient(transparent 55%, #F9E37B 55%)`: the wash covers the
+  // LOWER part of the words, not the whole line box, and a two-line phrase gets a stroke
+  // on BOTH lines. A plain text background floods the full height and a single band behind
+  // the node caught only the last line — so the marker is drawn per measured line instead.
   const tree = mount(<NbMark>형광펜 강조</NbMark>);
-  const marked = styled(tree.root, (s) => s.backgroundColor === nb.marker);
-  expect(marked.length).toBe(1);
-  // It is the Text, and it carries the words — not an empty positioned band beside them.
-  expect(String(marked[0].type)).toBe('Text');
-  expect(marked[0].props.children).toBe('형광펜 강조');
-  const st = marked[0].props.style;
-  const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
-  // No box geometry: a band had top/bottom, the text background has neither.
-  expect(flat.top).toBeUndefined();
-  expect(flat.bottom).toBeUndefined();
+  // The words live on a Text with NO fill of their own — the ink reads over the stroke.
+  const textNode = tree.root.findAll((n) => String(n.type) === 'Text' && n.props.children === '형광펜 강조', { deep: true })[0];
+  expect(textNode).toBeTruthy();
+  const tflat = ((st) => (Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st))(textNode.props.style);
+  expect(tflat.backgroundColor).toBeUndefined();
+
+  // Before layout there are no bands: onTextLayout has not reported the lines yet.
+  expect(styled(tree.root, (s) => s.backgroundColor === nb.marker).length).toBe(0);
+
+  // Feed it a two-line measurement the way the platform would.
+  act(() => {
+    textNode.props.onTextLayout({
+      nativeEvent: { lines: [
+        { x: 0, y: 0, width: 120, height: 20 },
+        { x: 0, y: 20, width: 80, height: 20 },
+      ] },
+    });
+  });
+
+  const bands = styled(tree.root, (s) => s.backgroundColor === nb.marker);
+  // One stroke per line — the two-line case the old single band got wrong.
+  expect(bands.length).toBe(2);
+  for (const [i, band] of bands.entries()) {
+    const f = ((st) => (Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st))(band.props.style);
+    // A View, positioned — not the Text.
+    expect(String(band.type)).toBe('View');
+    // It starts in the LOWER half of its line (top past the line's own y), not at the top.
+    const lineY = i * 20;
+    expect(f.top).toBeGreaterThan(lineY + 20 * 0.4);
+    // …and it is shorter than the full line height — a stroke, not a block.
+    expect(f.height).toBeLessThan(20);
+    // …and only as wide as that line's glyphs: line 0 is wider than line 1.
+    expect(f.width).toBe(i === 0 ? 120 : 80);
+  }
 });
 
 test('the gauge is hatched, and the hatch is clipped to the value', () => {

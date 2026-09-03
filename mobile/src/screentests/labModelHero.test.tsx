@@ -5,10 +5,9 @@
 // do with a model answer — hear it and say it.
 //
 // What can go wrong, and therefore what renders here:
-//  · A 최근 stamp on a row that is not the recent one (it is a false label under the
-//    개선 필요 sort, where the first group is the WORST one).
+//  · A sort control or filter chip creeping back into a summary that should carry neither.
 //  · The same correction printed twice on one screen — hero plus an auto-opened row.
-//  · A hero for a scenario the department filter has just removed from the list.
+//  · A hero built from a scenario that has no cards yet.
 //  · 전체 듣기 re-downloading the clip on every tap, or 따라 말하기 opening the
 //    learner's own sentence instead of the model one.
 jest.mock('expo-secure-store', () => ({
@@ -126,27 +125,16 @@ test('no row opens by itself, so the hero’s correction is shown once', async (
   expect(byName(tree.root, 'ModelAnswerGroupRow').map((n) => !!n.props.open)).toEqual([false, false]);
 });
 
-test('under 개선 필요 there is no 최근 stamp', async () => {
+test('it is summary-only — no sort control and no filter chips', async () => {
+  // 핸드오프의 리뷰랩 모범답안 요약에는 정렬 드롭다운도, 부서 필터 칩도 없다
+  // ("모범답안에 왜 아직 정렬, 필터칩이 있어"). 그 컨트롤들은 별도 전체 리스트 화면에만
+  // 있고, 이 요약 화면은 최근 히어로 + 완료 시나리오 목록뿐이다.
   const tree = await mount();
-  const sortMenu = byName(tree.root, 'NbSortMenu')[0];
-  await act(async () => { sortMenu.props.onSelect('needs-work'); });
-  for (let i = 0; i < 6; i++) await act(async () => { await Promise.resolve(); });
-
-  // The first group under that sort is the WORST one, not the last one — a card
-  // stamped 최근 that is three weeks old is a lie about the date.
-  expect(mockSorts).toContain('needs-work');
-  expect(byName(tree.root, 'ModelAnswerHero')).toHaveLength(0);
-  expect(texts(tree.root)).not.toContain('최근');
-});
-
-test('a department chip moves the hero to a scenario the list still contains', async () => {
-  const tree = await mount();
-  const icu = byName(tree.root, 'NbChip').find((n) => n.props.children === 'ICU')!;
-  await act(async () => { icu.props.onPress(); });
-
-  const out = texts(hero(tree)!);
-  expect(out).toContain('ICU · 승압제 적정 보고');
-  expect(out).not.toContain('ER · 흉통 환자 트리아지');
+  expect(byName(tree.root, 'NbSortMenu')).toHaveLength(0);
+  expect(byName(tree.root, 'NbInlineSelect')).toHaveLength(0);
+  expect(byName(tree.root, 'NbChip')).toHaveLength(0);
+  // The list is fetched 최신 순, and only that — nothing switches it.
+  expect(new Set(mockSorts)).toEqual(new Set(['recent']));
 });
 
 test('a scenario with no cards yet gets no hero rather than an empty one', async () => {

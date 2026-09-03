@@ -1,10 +1,10 @@
 // An in-place sort dropdown — the options open right under the trigger, not up from
 // the bottom of the screen.
 //
-// NbSortMenu (still used by the model-answer list) raises a BottomSheet: tapping "점수
-// 낮은순 ∨" slid a panel up from the bottom edge, which for a three-item sort read as
-// heavier than the choice. The learner asked for the options to drop down from the
-// control itself. So this measures the trigger and floats the list at that spot inside
+// The speak list's sort used to raise a BottomSheet: tapping "점수 낮은순 ∨" slid a
+// panel up from the bottom edge, which for a three-item sort read as heavier than the
+// choice. The learner asked for the options to drop down from the control itself. So
+// this measures the trigger and floats the list at that spot inside
 // a transparent Modal — the Modal is only there to layer the popover above the list and
 // to catch the outside tap that closes it; nothing about it slides or dims the screen.
 import { useRef, useState } from 'react';

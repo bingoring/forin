@@ -14,8 +14,8 @@
 // Every button and chip presses. In the prototype that is a global stylesheet
 // (`.nb-press`, `.nb-chip`); here it is Pressable's own pressed state, which means the
 // interaction cannot be forgotten by a caller who builds a button out of a View.
-import type { ReactNode } from 'react';
-import { Pressable, ScrollView, Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import { useState, type ReactNode } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View, type NativeSyntheticEvent, type StyleProp, type TextLayoutEventData, type TextLayoutLine, type TextStyle, type ViewStyle } from 'react-native';
 import Svg, { Ellipse, Line, Path } from 'react-native-svg';
 import { NbIcon, type NbIconName } from './NbIcon';
 import { RULE_COLOR, RULE_H, nb, nbFonts, paperShadow } from '@/theme/nb';
@@ -323,18 +323,47 @@ export function NbStamp({ color = nb.red, rot = -8, size = 54, top, bottom }: {
  * paints every wrapped line to the width of its own run, so both lines of a phrase are
  * marked, each the width of its text rather than a rectangle around the longest line.
  *
- * RN cannot start the wash partway down a line (the web's `transparent 55%` gradient), so
- * the marker is the full line height in the highlighter colour — which is what a
- * highlighter dragged across text actually leaves behind: the ink still reads on top.
+ * The prototype is an inline `<mark>` with `linear-gradient(transparent 55%, #F9E37B 55%)`:
+ * the wash starts halfway down each line, so the yellow reads as a highlighter stroke
+ * dragged along the LOWER half of the words, not as a filled block behind them. A plain
+ * `backgroundColor` on the Text cannot do that — it floods the whole line box — and a
+ * single band View behind the whole node caught only the last line of a two-line phrase.
+ *
+ * So the words are measured. `onTextLayout` hands back one rectangle per WRAPPED line
+ * (its x, y, width, height in the Text's own box), and a yellow band is drawn under each,
+ * covering only its lower ~45% and only as wide as that line's glyphs. Every line gets
+ * its stroke, and none of them is a full-height block. The bands sit BEHIND the text, so
+ * the ink still reads on top.
  */
 export function NbMark({ textStyle, children }: {
   textStyle?: StyleProp<TextStyle>;
   children?: ReactNode;
 }) {
+  const [lines, setLines] = useState<TextLayoutLine[]>([]);
+  const onLayout = (e: NativeSyntheticEvent<TextLayoutEventData>) => setLines(e.nativeEvent.lines);
   return (
-    <Text style={[{ fontFamily: nbFonts.hand, fontSize: 17, color: nb.ink, backgroundColor: nb.marker }, textStyle]}>
-      {children}
-    </Text>
+    <View style={{ position: 'relative', maxWidth: '100%' }}>
+      {/* The strokes, behind the words. Lower ~45% of each line, its own width. */}
+      <View pointerEvents="none" style={StyleSheet.absoluteFill}>
+        {lines.map((ln, i) => (
+          <View
+            key={i}
+            style={{
+              position: 'absolute',
+              left: ln.x,
+              top: ln.y + ln.height * 0.5,
+              width: ln.width,
+              height: Math.max(3, ln.height * 0.42),
+              backgroundColor: nb.marker,
+              borderRadius: 1.5,
+            }}
+          />
+        ))}
+      </View>
+      <Text onTextLayout={onLayout} style={[{ fontFamily: nbFonts.hand, fontSize: 17, color: nb.ink }, textStyle]}>
+        {children}
+      </Text>
+    </View>
   );
 }
 
