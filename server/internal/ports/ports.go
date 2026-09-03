@@ -9,6 +9,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/domain/lounge"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/reputation"
 	"github.com/bingoring/forin/server/internal/domain/user"
@@ -508,6 +509,31 @@ type RefreshStore interface {
 	// Consume returns true and deletes the token if (userID, tokenHash) exists.
 	Consume(ctx context.Context, userID, tokenHash string) (bool, error)
 	DeleteAll(ctx context.Context, userID string) error
+}
+
+// LoungeRepo persists the staff lounge: posts, the cheers on them, and reports.
+//
+// The feed is read by TIME, not by offset — `before` is the created_at to page
+// back from. With an offset, a post arriving between two reads shifts every later
+// row by one and the reader is shown a card they have already scrolled past.
+//
+// The cursor is a plain *time.Time here on purpose: a port that spoke pgtype would
+// make every caller and every fake import the driver.
+type LoungeRepo interface {
+	// Create stores an already-cleaned draft and returns the new post's id.
+	Create(ctx context.Context, authorID string, d lounge.Draft) (string, error)
+	// Feed returns one page, newest first, with the reader's own cheer state.
+	Feed(ctx context.Context, readerID string, before *time.Time, limit int) ([]lounge.Post, error)
+	// PostsToday counts this author's last 24 hours, for the rate limit.
+	PostsToday(ctx context.Context, authorID string) (int, error)
+	// Delete soft-deletes the author's OWN post: lounge.ErrNotAuthor when the post
+	// belongs to somebody else, pgx.ErrNoRows when there is nothing there. The row
+	// survives, because a deleted post is still evidence for a report against it.
+	Delete(ctx context.Context, postID, byUserID string) error
+	// SetCheer adds or removes this reader's cheer and returns the post's new total.
+	SetCheer(ctx context.Context, postID, userID string, on bool) (int, error)
+	// Report records that this reader flagged the post. Idempotent per reader.
+	Report(ctx context.Context, postID, userID, reason string) error
 }
 
 // ColleagueRepo persists invite-code based colleague relationships, the requests

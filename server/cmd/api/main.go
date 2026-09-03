@@ -73,6 +73,7 @@ func main() {
 	progressRepo := postgres.NewProgressRepo(pool)
 	convoRepo := postgres.NewConversationRepo(pool)
 	colleagueRepo := postgres.NewColleagueRepo(pool)
+	loungeRepo := postgres.NewLoungeRepo(pool)
 
 	// Home flavour (mentor notes, field phrases). A missing content dir is not
 	// fatal — those two modules are simply omitted from the home response.
@@ -124,7 +125,7 @@ func main() {
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
-		Colleague:            colleagueRepo, HomePools: homePools, PG: pool, Redis: rdb,
+		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

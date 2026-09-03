@@ -37,6 +37,7 @@ type Deps struct {
 	// §5) — surfaced on GET /config/economy, see economyConfigResp's doc comment.
 	PronunciationEnabled bool
 	Colleague            ports.ColleagueRepo // colleague links, cheers, presence
+	Lounge               ports.LoungeRepo    // staff-lounge posts, cheers, reports
 	HomePools            home.Pools          // authored mentor notes + field phrases
 	PG                   *pgxpool.Pool
 	Redis                *redis.Client
@@ -138,6 +139,19 @@ func NewRouter(d Deps) http.Handler {
 		mux.Handle("POST /me/colleague-requests/{id}/decline", auth(http.HandlerFunc(cl.decline)))
 		mux.Handle("GET /me/colleague-prefs", auth(http.HandlerFunc(cl.prefs)))
 		mux.Handle("PATCH /me/colleague-prefs", auth(http.HandlerFunc(cl.prefs)))
+	}
+
+	// Staff lounge (authenticated). Nil when the repo is not wired — the routes
+	// simply do not exist then, rather than 500-ing on a missing dependency.
+	if d.Lounge != nil {
+		lg := &loungeHandler{repo: d.Lounge}
+		mux.Handle("GET /lounge", auth(http.HandlerFunc(lg.feed)))
+		mux.Handle("POST /lounge", auth(http.HandlerFunc(lg.create)))
+		mux.Handle("DELETE /lounge/{id}", auth(http.HandlerFunc(lg.remove)))
+		mux.Handle("POST /lounge/{id}/cheer", auth(http.HandlerFunc(lg.cheer)))
+		// Every screen that shows somebody else's words needs a way to flag them
+		// (App Store review guideline 1.2 asks for exactly this).
+		mux.Handle("POST /lounge/{id}/report", auth(http.HandlerFunc(lg.report)))
 	}
 
 	// AI conversation + correction (authenticated).

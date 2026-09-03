@@ -159,6 +159,33 @@ type InviteCode struct {
 	RevokedAt pgtype.Timestamptz `json:"revoked_at"`
 }
 
+type LoungePost struct {
+	ID         string             `json:"id"`
+	AuthorID   string             `json:"author_id"`
+	Kind       string             `json:"kind"`
+	Body       string             `json:"body"`
+	Tags       []string           `json:"tags"`
+	ScenarioID string             `json:"scenario_id"`
+	Snippet    []byte             `json:"snippet"`
+	Cheers     int                `json:"cheers"`
+	CreatedAt  pgtype.Timestamptz `json:"created_at"`
+	DeletedAt  pgtype.Timestamptz `json:"deleted_at"`
+}
+
+type LoungePostCheer struct {
+	PostID    string             `json:"post_id"`
+	UserID    string             `json:"user_id"`
+	CreatedAt pgtype.Timestamptz `json:"created_at"`
+}
+
+type LoungeReport struct {
+	ID        string             `json:"id"`
+	PostID    string             `json:"post_id"`
+	UserID    string             `json:"user_id"`
+	Reason    string             `json:"reason"`
+	CreatedAt pgtype.Timestamptz `json:"created_at"`
+}
+
 type Phrase struct {
 	ID         string `json:"id"`
 	Profession string `json:"profession"`

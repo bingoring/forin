@@ -240,6 +240,71 @@ components:
           description: DAY | EVENING
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_lounge.Kind:
+      enum:
+      - talk
+      - question
+      - share
+      type: string
+      x-enum-varnames:
+      - KindTalk
+      - KindQuestion
+      - KindShare
+    github_com_bingoring_forin_server_internal_domain_lounge.Post:
+      properties:
+        authorDestination:
+          type: string
+        authorId:
+          type: string
+        authorJob:
+          type: string
+        authorLevel:
+          type: integer
+        authorName:
+          type: string
+        body:
+          type: string
+        cheered:
+          type: boolean
+        cheers:
+          type: integer
+        createdAt:
+          type: string
+        id:
+          type: string
+        kind:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_lounge.Kind'
+        mine:
+          type: boolean
+        scenarioId:
+          type: string
+        snippet:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_lounge.Snippet'
+        tags:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_lounge.Snippet:
+      properties:
+        title:
+          type: string
+        turns:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_lounge.Turn'
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_lounge.Turn:
+      properties:
+        index:
+          type: integer
+        role:
+          type: string
+        text:
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_domain_progress.Band:
       description: |-
         Band is the day's dominant band — where most of the work happened. A day split
@@ -813,6 +878,31 @@ components:
         user:
           $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.User'
       type: object
+    internal_adapters_http.loungeCheerResp:
+      properties:
+        cheered:
+          type: boolean
+        cheers:
+          type: integer
+      type: object
+    internal_adapters_http.loungeFeedResp:
+      properties:
+        hasMore:
+          description: |-
+            True when the page came back full — the client asks for the next one with
+            `before` set to the oldest createdAt it holds.
+          type: boolean
+        posts:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_lounge.Post'
+          type: array
+          uniqueItems: false
+      type: object
+    internal_adapters_http.loungePostIDResp:
+      properties:
+        id:
+          type: string
+      type: object
     internal_adapters_http.meResp:
       properties:
         profile:
@@ -853,6 +943,22 @@ components:
           type: string
         message:
           type: string
+      type: object
+    internal_adapters_http.postDraft:
+      properties:
+        body:
+          type: string
+        kind:
+          type: string
+        scenarioId:
+          type: string
+        snippet:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_lounge.Snippet'
+        tags:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
       type: object
     internal_adapters_http.pronounceReq:
       properties:
@@ -919,6 +1025,11 @@ components:
     internal_adapters_http.refreshReq:
       properties:
         refreshToken:
+          type: string
+      type: object
+    internal_adapters_http.reportBody:
+      properties:
+        reason:
           type: string
       type: object
     internal_adapters_http.resumableResp:
@@ -1314,6 +1425,103 @@ paths:
       summary: Preview the person behind an invite code
       tags:
       - colleagues
+  /lounge:
+    get:
+      description: 'Pages backwards in time: pass the oldest `createdAt` you have
+        as `before`.'
+      parameters:
+      - description: RFC3339 timestamp; returns posts older than this
+        in: query
+        name: before
+        schema:
+          type: string
+      - description: 1..50, default 20
+        in: query
+        name: limit
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.loungeFeedResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: The staff lounge feed, newest first
+      tags:
+      - lounge
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.postDraft'
+              description: the post
+              summary: body
+        description: the post
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.loungePostIDResp'
+          description: Created
+      security:
+      - Bearer: []
+      summary: Write a lounge post
+      tags:
+      - lounge
+  /lounge/{id}:
+    delete:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Delete your own lounge post
+      tags:
+      - lounge
+  /lounge/{id}/cheer:
+    post:
+      parameters:
+      - description: false to remove your cheer
+        in: query
+        name: "on"
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.loungeCheerResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Cheer a post (idempotent), or take the cheer back
+      tags:
+      - lounge
+  /lounge/{id}/report:
+    post:
+      description: |-
+        Records the report for review. Idempotent per reader — reporting twice
+        is one report, and the response is the same either way so the reader
+        cannot probe what has already been flagged.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.reportBody'
+              description: why it was reported
+              summary: body
+        description: why it was reported
+      responses: null
+      security:
+      - Bearer: []
+      summary: Report a post
+      tags:
+      - lounge
   /me:
     get:
       responses:

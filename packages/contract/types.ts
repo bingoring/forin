@@ -657,6 +657,176 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/lounge": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * The staff lounge feed, newest first
+         * @description Pages backwards in time: pass the oldest `createdAt` you have as `before`.
+         */
+        get: {
+            parameters: {
+                query?: {
+                    /** @description RFC3339 timestamp; returns posts older than this */
+                    before?: string;
+                    /** @description 1..50, default 20 */
+                    limit?: number;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.loungeFeedResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        /** Write a lounge post */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description the post */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.postDraft"];
+                };
+            };
+            responses: {
+                /** @description Created */
+                201: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.loungePostIDResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/lounge/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Delete your own lounge post */
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/lounge/{id}/cheer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Cheer a post (idempotent), or take the cheer back */
+        post: {
+            parameters: {
+                query?: {
+                    /** @description false to remove your cheer */
+                    on?: boolean;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.loungeCheerResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/lounge/{id}/report": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Report a post
+         * @description Records the report for review. Idempotent per reader — reporting twice
+         *     is one report, and the response is the same either way so the reader
+         *     cannot probe what has already been flagged.
+         */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description why it was reported */
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.reportBody"];
+                };
+            };
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me": {
         parameters: {
             query?: never;
@@ -2265,6 +2435,34 @@ export interface components {
             /** @description DAY | EVENING */
             shift?: string;
         };
+        /** @enum {string} */
+        "github_com_bingoring_forin_server_internal_domain_lounge.Kind": "talk" | "question" | "share";
+        "github_com_bingoring_forin_server_internal_domain_lounge.Post": {
+            authorDestination?: string;
+            authorId?: string;
+            authorJob?: string;
+            authorLevel?: number;
+            authorName?: string;
+            body?: string;
+            cheered?: boolean;
+            cheers?: number;
+            createdAt?: string;
+            id?: string;
+            kind?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_lounge.Kind"];
+            mine?: boolean;
+            scenarioId?: string;
+            snippet?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_lounge.Snippet"];
+            tags?: string[];
+        };
+        "github_com_bingoring_forin_server_internal_domain_lounge.Snippet": {
+            title?: string;
+            turns?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_lounge.Turn"][];
+        };
+        "github_com_bingoring_forin_server_internal_domain_lounge.Turn": {
+            index?: number;
+            role?: string;
+            text?: string;
+        };
         /**
          * @description Band is the day's dominant band — where most of the work happened. A day split
          *     across two bands reports the busier one rather than both: the calendar cell has
@@ -2601,6 +2799,21 @@ export interface components {
             tokens?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];
             user?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.User"];
         };
+        "internal_adapters_http.loungeCheerResp": {
+            cheered?: boolean;
+            cheers?: number;
+        };
+        "internal_adapters_http.loungeFeedResp": {
+            /**
+             * @description True when the page came back full — the client asks for the next one with
+             *     `before` set to the oldest createdAt it holds.
+             */
+            hasMore?: boolean;
+            posts?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_lounge.Post"][];
+        };
+        "internal_adapters_http.loungePostIDResp": {
+            id?: string;
+        };
         "internal_adapters_http.meResp": {
             profile?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
             user?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.User"];
@@ -2624,6 +2837,13 @@ export interface components {
         "internal_adapters_http.phonemeTipDTO": {
             ipa?: string;
             message?: string;
+        };
+        "internal_adapters_http.postDraft": {
+            body?: string;
+            kind?: string;
+            scenarioId?: string;
+            snippet?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_lounge.Snippet"];
+            tags?: string[];
         };
         "internal_adapters_http.pronounceReq": {
             audioBase64?: string;
@@ -2671,6 +2891,9 @@ export interface components {
         };
         "internal_adapters_http.refreshReq": {
             refreshToken?: string;
+        };
+        "internal_adapters_http.reportBody": {
+            reason?: string;
         };
         "internal_adapters_http.resumableResp": {
             sessionId?: string;
