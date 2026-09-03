@@ -379,6 +379,10 @@ export const de: Record<string, string> = {
   'growth.emptyStickerBody': 'Noch leer. Schließe ein Szenario ab, dann füllt ein Lob-Sticker dieses Feld.',
 
   'lab.again': 'Nochmal',
+  'lab.etaAgain': '<1 Min',
+  'lab.etaHard': '10 Min',
+  'lab.etaGood': '1 T',
+  'lab.etaEasy': '4 T',
   'lab.againSub': 'Mir fiel nichts ein — zeig es bald wieder',
   'lab.againBody': 'Wenn gar nichts zurückkam. Setzt den Fortschritt zurück und zeigt es gleich wieder (morgen).',
   'lab.hard': 'Schwer',

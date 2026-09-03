@@ -379,6 +379,10 @@ export const ja: Record<string, string> = {
   'growth.emptyStickerBody': 'まだ空いている枠です。シナリオをクリアするとこの枠が称賛シールで埋まります。',
 
   'lab.again': 'もう一度',
+  'lab.etaAgain': '<1分',
+  'lab.etaHard': '10分',
+  'lab.etaGood': '1日',
+  'lab.etaEasy': '4日',
   'lab.againSub': '思い出せませんでした — すぐまた出します',
   'lab.againBody': '全く思い出せなかったとき。進捗をリセットして、すぐ（明日）また出します。',
   'lab.hard': '難しい',

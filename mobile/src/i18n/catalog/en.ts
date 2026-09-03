@@ -380,6 +380,10 @@ export const en: Record<string, string> = {
   'growth.emptyStickerBody': 'Still empty. Clear a scenario and a praise sticker fills this slot.',
 
   'lab.again': 'Again',
+  'lab.etaAgain': '<1m',
+  'lab.etaHard': '10m',
+  'lab.etaGood': '1d',
+  'lab.etaEasy': '4d',
   'lab.againSub': 'I drew a blank — show it again soon',
   'lab.againBody': 'For when nothing came back. Resets progress and shows it again straight away (tomorrow).',
   'lab.hard': 'Hard',

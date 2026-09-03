@@ -524,3 +524,33 @@ test('every section has exactly one tab row — the section tabs, never a nested
   for (let i = 0; i < 4; i++) await act(async () => { await Promise.resolve(); });
   expect(tabRows()).toBe(1);
 });
+
+// 교정 노트의 등급 버튼(다시/어려움/알맞음/쉬움)이 핸드오프처럼 색과 예상 간격을
+// 갖는지. 이전엔 색 없는 paper/ink 버튼이었고 간격도 없었다.
+test('each SRS grade is written in its own pen, with the interval it means', async () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { nb } = require('@/theme/nb') as typeof import('@/theme/nb');
+  const flat = (s: unknown): Record<string, unknown> => {
+    const out: Record<string, unknown> = {};
+    const walk = (x: unknown) => Array.isArray(x) ? x.forEach(walk) : x && typeof x === 'object' ? Object.assign(out, x) : undefined;
+    walk(s);
+    return out;
+  };
+  const tree = await mount();
+  // '다시' appears in both the collapsible grade GUIDE and the button; collect every
+  // colour it is drawn in and require the button's pen among them.
+  const colours = (label: string): unknown[] => tree.root.findAll(
+    (n) => String(n.type) === 'Text' && n.children.length === 1 && n.children[0] === label,
+    { deep: true },
+  ).map((n) => flat(n.props.style).color);
+  expect(colours('다시')).toContain(nb.red);
+  expect(colours('알맞음')).toContain(nb.blue);
+  expect(colours('쉬움')).toContain(nb.green);
+
+  // …and the estimated next interval sits under each one.
+  const out = texts(tree.root);
+  expect(out).toContain('<1분');
+  expect(out).toContain('10분');
+  expect(out).toContain('1일');
+  expect(out).toContain('4일');
+});

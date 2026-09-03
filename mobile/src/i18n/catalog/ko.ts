@@ -401,6 +401,10 @@ export const ko: Record<string, string> = {
 
   // ── review lab ───────────────────────────────────────────────────────────
   'lab.again': '다시',
+  'lab.etaAgain': '<1분',
+  'lab.etaHard': '10분',
+  'lab.etaGood': '1일',
+  'lab.etaEasy': '4일',
   'lab.againSub': '기억이 안 났어요 — 곧 다시 보여줄게요',
   'lab.againBody': '기억이 전혀 안 났을 때. 진행도를 초기화하고 곧바로(내일) 다시 보여줘요.',
   'lab.hard': '어려움',

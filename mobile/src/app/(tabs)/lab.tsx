@@ -24,11 +24,16 @@ import { t, type Translate, useLocale, useT } from '@/i18n';
 
 const C = nb.ink;
 // Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
-const GRADES: { g: ReviewGrade; labelKey: string; bg: string; blurbKey: string; guideKey: string }[] = [
-  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', blurbKey: 'lab.againSub', guideKey: 'lab.againBody' },
-  { g: 'hard', labelKey: 'lab.hard', bg: '#FFF3EE', blurbKey: 'lab.hardSub', guideKey: 'lab.hardBody' },
-  { g: 'good', labelKey: 'lab.good', bg: 'rgba(168,217,151,.4)', blurbKey: 'lab.goodSub', guideKey: 'lab.goodBody' },
-  { g: 'easy', labelKey: 'lab.easy', bg: 'rgba(249,227,123,.5)', blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
+// `color` is the PEN each answer is written in — red for 다시, amber for 어려움, blue for
+// 알맞음, green for 쉬움 (the handoff's four, and the same four the review SESSION uses).
+// `etaKey` is the roughly-when-you'll-see-it-again shown UNDER the label: <1분 / 10분 /
+// 1일 / 4일. It is the SM-2 first-step estimate, printed so the choice is legible before
+// it is made; the real interval the server returns is confirmed in the toast afterward.
+const GRADES: { g: ReviewGrade; labelKey: string; bg: string; color: string; etaKey: string; blurbKey: string; guideKey: string }[] = [
+  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', color: nb.red, etaKey: 'lab.etaAgain', blurbKey: 'lab.againSub', guideKey: 'lab.againBody' },
+  { g: 'hard', labelKey: 'lab.hard', bg: '#FFF3EE', color: '#C77E2E', etaKey: 'lab.etaHard', blurbKey: 'lab.hardSub', guideKey: 'lab.hardBody' },
+  { g: 'good', labelKey: 'lab.good', bg: 'rgba(168,217,151,.4)', color: nb.blue, etaKey: 'lab.etaGood', blurbKey: 'lab.goodSub', guideKey: 'lab.goodBody' },
+  { g: 'easy', labelKey: 'lab.easy', bg: 'rgba(249,227,123,.5)', color: nb.green, etaKey: 'lab.etaEasy', blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
 ];
 // humanize the SM-2 next-interval into a friendly "next review" label.
 function nextLabel(t: Translate, days: number): string {
@@ -560,21 +565,24 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
         ))}
       </View>
 
-      {/* The four SRS answers. Paper for the three that keep the card in rotation and ink
-          for 쉬움, which is the one that puts it away for days — the weight says which
-          choice is the commitment. */}
+      {/* The four SRS answers (핸드오프 LabNotes). Each is a paper key with its label in
+          its own pen and the estimated next interval under it — <1분 / 10분 / 1일 / 4일 —
+          so the learner reads what the choice means before committing to it. The three
+          buttons used to be one paper/ink pair with no colour and no eta at all. */}
       <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
-        {GRADES.map(({ g, labelKey }, i) => (
+        {GRADES.map(({ g, labelKey, color, etaKey }) => (
           <View key={g} style={{ flex: 1 }}>
-            <NbButton
-              variant={i === GRADES.length - 1 ? 'ink' : 'paper'}
-              size="sm"
-              full
-              iconColor={i === GRADES.length - 1 ? nb.paper : nb.ink}
-              onPress={() => onGrade(card.id, g)}
-            >
-              {t(labelKey)}
-            </NbButton>
+            <Pressable onPress={() => onGrade(card.id, g)}>
+              {({ pressed }) => (
+                <NbPaper rot={0} style={{
+                  alignItems: 'center', paddingVertical: 7, paddingHorizontal: 4,
+                  transform: pressed ? [{ translateX: 1 }, { translateY: 1.5 }] : undefined,
+                }}>
+                  <Text numberOfLines={1} style={nbText.hand(14.5, color)}>{t(labelKey)}</Text>
+                  <Text numberOfLines={1} style={[nbText.body(9, nb.soft), { marginTop: 1 }]}>{t(etaKey)}</Text>
+                </NbPaper>
+              )}
+            </Pressable>
           </View>
         ))}
       </View>
