@@ -1,4 +1,4 @@
-// 라운지 (was 오늘의 상황판) — the notebook line's corkboard (v29).
+// 오늘의 상황판 — the notebook line's corkboard (v29).
 //
 // The data is unchanged: a daily-rotated set of scenario cards from the server
 // (api.dailyBoard, falling back to the global api.boardToday), grouped into department
@@ -10,17 +10,18 @@
 // wall does not look like a spreadsheet. That is also why the summary is taped rather
 // than pinned: it is the ward's own notice, not one of today's situations.
 //
-// The handoff's 스태프 라운지 (a community feed: posts, cheers, comments, shared dialogue
-// snippets, other people's profiles) is a NEW FEATURE with no server behind it — no posts
-// table, no feed endpoint, no snippet extraction. It is not silently faked here. This
-// screen is the existing board, in the new drawing, under the new name.
+// The 라운지 TAB is now the community feed (see (tabs)/lounge.tsx, and the lounge tables
+// behind it). This screen kept the board and lost the tab slot: it is reached from the
+// lounge header and from the home screen. Deleting a working daily rotation to make room
+// for the feed would have cost the learner a feature to gain one.
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'react-native';
-import { useFocusEffect, useRouter } from 'expo-router';
+import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbChip, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
-import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
+import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
+import { PLACE_SCREEN } from '@/theme/transitions';
 import { resetLabel } from '@/data/boardReset';
 import { useT } from '@/i18n';
 
@@ -152,6 +153,14 @@ export default function Board() {
   if (state !== 'ok') {
     return (
       <Page>
+        <Stack.Screen options={PLACE_SCREEN} />
+        {/* The way back belongs here too: a load failure is exactly when the learner
+            wants to leave, and this screen has no tab bar to leave by. */}
+        <View style={{ paddingTop: TOP_INSET, paddingHorizontal: 20 }}>
+          <Pressable onPress={() => router.back()} hitSlop={10}>
+            <NbPaper rot={-1} style={styles.back}><NbIcon name="chevronLeft" size={16} /></NbPaper>
+          </Pressable>
+        </View>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
           {state === 'loading'
             ? <ActivityIndicator color={nb.ink} />
@@ -166,9 +175,14 @@ export default function Board() {
       {/* The wall's own header stays put while the cards scroll: the count and the reset
           are what the whole screen is about, and losing them on the first flick is how a
           board becomes a list. */}
+      <Stack.Screen options={PLACE_SCREEN} />
       <View style={styles.header}>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
-          <Text style={[nbText.hand(28), { flex: 1, minWidth: 0 }]}>{t('board.nbTitle')}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          {/* No longer a tab, so the way back has to be on the page. */}
+          <Pressable onPress={() => router.back()} hitSlop={10}>
+            <NbPaper rot={-1} style={styles.back}><NbIcon name="chevronLeft" size={16} /></NbPaper>
+          </Pressable>
+          <Text numberOfLines={1} style={[nbText.hand(28), { flex: 1, minWidth: 0 }]}>{t('board.nbTitle')}</Text>
           <Text style={nbText.mono(11)}>{todayLabel()}</Text>
         </View>
 
@@ -381,7 +395,8 @@ function monthDay(): string {
 }
 
 const styles = {
-  header: { paddingTop: 52, paddingHorizontal: 20, paddingBottom: 6, zIndex: 2 } as const,
+  header: { paddingTop: TOP_INSET, paddingHorizontal: 20, paddingBottom: 6, zIndex: 2 } as const,
+  back: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' } as const,
   summary: { marginTop: 12, paddingVertical: 13, paddingHorizontal: 14 } as const,
   reset: {
     flexShrink: 0, alignItems: 'center', backgroundColor: 'rgba(255,253,244,.85)',

@@ -9,13 +9,16 @@ import { t, useLocale, useT } from '@/i18n';
 // entry (handoff v21) — expo-router takes (tabs)/index.tsx as the first tab.
 //
 // v29 wording: 캠퍼스/커리어 → 일터 (the app is adding professions, and only one of them
-// has a campus), 상황판 → 라운지 (the tab is becoming a staff-room community).
+// has a campus), 상황판 → 라운지. The tab is now the community feed itself; 오늘의 상황판
+// did not go away — it is a route of its own (`/board`), reached from the lounge header
+// and from the home screen, because a working feature does not get deleted to make room
+// for a new one.
 //
 // The bar itself is the 근무 수첩 line: a strip of the lighter paper with the notebook's
 // own cut edge, doodle icons, and the handwriting face. No mint cell behind the active tab
 // — on paper the emphasis is weight and opacity, not a coloured tile.
 const ICONS: Record<string, NbIconName> = {
-  index: 'home', campus: 'hospital', board: 'speech', lab: 'lab', me: 'me',
+  index: 'home', campus: 'hospital', lounge: 'speech', lab: 'lab', me: 'me',
 };
 const tabIcon = (route: string) =>
   function TabIcon({ focused }: { focused: boolean }) {
@@ -50,7 +53,7 @@ export default function TabsLayout() {
         options={{ title: t('tab.home'), tabBarIcon: tabIcon('index') }}
       />
       <Tabs.Screen name="campus" options={{ title: t('tab.career'), tabBarIcon: tabIcon('campus') }} />
-      <Tabs.Screen name="board" options={{ title: t('tab.board'), tabBarIcon: tabIcon('board') }} />
+      <Tabs.Screen name="lounge" options={{ title: t('tab.board'), tabBarIcon: tabIcon('lounge') }} />
       <Tabs.Screen name="lab" options={{ title: t('tab.lab'), tabBarIcon: tabIcon('lab') }} />
       <Tabs.Screen name="me" options={{ title: t('tab.me'), tabBarIcon: tabIcon('me') }} />
     </Tabs>

@@ -37,6 +37,7 @@ import { t, type Translate, useLocale, useT } from '@/i18n';
 import { AnimatedFace } from '@engine';
 import { useAvatar } from '@/hooks/useAvatar';
 import { TASK_SCREEN } from '@/theme/transitions';
+import { shareSource } from '@/data/loungeShare';
 
 
 /**
@@ -172,6 +173,11 @@ export default function ResultRoute() {
     if (passed) playSfx('success');
     if (newTitles.length > 0 || leveledUp) playSfx('reward');
   }, [after, passed, newTitles, leveledUp]);
+
+  // Read once, on mount: module state, so deriving it in render would be computed a
+  // single time per instance anyway — and this screen is where the conversation that
+  // just ended is still available to quote.
+  const [canShareConversation] = useState(() => !!shareSource());
 
   const onShare = () => {
     const lv = after ? ` (Lv.${after.level}${after.streakCurrent > 1 ? ` · ${after.streakCurrent}일 연속` : ''})` : '';
@@ -356,6 +362,17 @@ export default function ResultRoute() {
             </View>
           )}
         </NbPaper>
+
+        {/* 라운지에 대화 공유. Here rather than in the lounge's 글쓰기 because this is the
+            only screen that still holds the turns — the server has no transcript of a
+            finished session to fetch them back from. */}
+        {canShareConversation && (
+          <View style={{ marginTop: 14 }}>
+            <NbButton variant="paper" full icon="pushpin" onPress={() => router.push('/lounge/compose?kind=share')}>
+              {t('result.shareToLounge')}
+            </NbButton>
+          </View>
+        )}
 
         <View style={styles.footer}>
           <View style={{ flex: 1 }}>

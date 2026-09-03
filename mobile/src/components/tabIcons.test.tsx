@@ -61,7 +61,9 @@ test('the tab bar draws all five tabs from ONE icon set', () => {
   // hold is unchanged — five tabs, one set, no hand-drawn one-offs.
   const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', '_layout.tsx'), 'utf8');
   const named: string[] = [];
-  for (const route of ['index', 'campus', 'board', 'lab', 'me']) {
+  // 'board' became 'lounge' when the tab turned into the community feed — the board
+  // itself moved to its own route, which has no tab icon to check.
+  for (const route of ['index', 'campus', 'lounge', 'lab', 'me']) {
     expect(src).toContain(`tabIcon('${route}')`);
     const m = src.match(new RegExp(`${route}: '([a-z2]+)'`));
     expect(m).toBeTruthy();

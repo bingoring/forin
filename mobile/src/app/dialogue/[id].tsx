@@ -31,6 +31,7 @@ import { ReplyChoices } from '@/components/dialogue/ReplyChoices';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
+import { offerShareSource } from '@/data/loungeShare';
 import { asMood, moodBorder, moodExpression, moodShowsSweat, type Mood } from '@/data/moodTone';
 import { deptWash } from '@/data/deptWash';
 import { MoodLift } from '@/components/dialogue/MoodLift';
@@ -385,6 +386,14 @@ export default function DialogueRoute() {
       );
       return;
     }
+    // Hand the conversation to the lounge's 대화 공유, which is offered on the result
+    // screen. Offered, not posted: the turns are only in memory until the learner
+    // chooses to quote some of them, and this is the last screen that holds them.
+    offerShareSource({
+      scenarioId: id,
+      title: [scenario?.briefing?.dept, scenario?.title].filter(Boolean).join(' · '),
+      turns: messages.map((m, i) => ({ index: i, role: m.role, text: m.text })),
+    });
     router.replace(`/result/${id}?session=${sessionRef.current ?? ''}`);
   };
 

@@ -488,6 +488,28 @@ export type ColleagueDetail = Omit<Colleague, 'relation'> & {
   relation?: ColleagueRelation;
   level?: number; lastSeenAt?: string; activeDates?: string[]; weeklyHidden?: boolean; cheers: Cheer[];
 }
+/** A staff-lounge post as the feed reads it — the post, the author facts the card
+ *  shows, and this reader's own cheer state. Mirrors domain/lounge.Post. */
+export type LoungeKind = 'talk' | 'question' | 'share';
+export interface LoungeTurn { index: number; role: string; text: string }
+export interface LoungeSnippet { title?: string; turns: LoungeTurn[] }
+export interface LoungePost {
+  id: string; authorId: string; authorName: string;
+  authorJob?: string; authorDestination?: string; authorLevel?: number;
+  kind: LoungeKind; body: string; tags?: string[];
+  scenarioId?: string; snippet?: LoungeSnippet;
+  cheers: number; cheered: boolean; mine: boolean; createdAt: string;
+}
+export interface LoungeDraft {
+  kind: LoungeKind; body: string; tags?: string[];
+  scenarioId?: string; snippet?: LoungeSnippet;
+}
+/** Mirrors domain/lounge's caps. Duplicated rather than fetched: the compose screen
+ *  counts characters as they are typed, and a round trip per keystroke to learn the
+ *  limit is absurd. The server still enforces them — this is only what the counter
+ *  and the disabled state read. */
+export const LOUNGE_LIMITS = { body: 600, tags: 4, tagLen: 20, turns: 6, perDay: 20 } as const;
+
 export type CheerPreset = 'well_done' | 'fighting' | 'streak' | 'rest';
 export interface Cheer {
   id: string; fromUserId: string; toUserId: string;
@@ -869,6 +891,39 @@ export const api = {
     });
     const d = data as { groups?: ModelAnswerGroup[]; total?: number } | null;
     return { groups: d?.groups ?? [], total: d?.total ?? 0 };
+  },
+
+  /** One page of the staff lounge, newest first. `before` is the oldest createdAt
+   *  the caller already holds — paging by time rather than offset, because a post
+   *  arriving between two reads shifts every offset by one. */
+  async lounge(opts?: { before?: string; limit?: number }): Promise<{ posts: LoungePost[]; hasMore: boolean }> {
+    const { data } = await http.get('/lounge', {
+      params: { before: opts?.before, limit: opts?.limit ?? 20 },
+    });
+    const d = data as { posts?: LoungePost[]; hasMore?: boolean } | null;
+    return { posts: d?.posts ?? [], hasMore: !!d?.hasMore };
+  },
+
+  /** Write a post. Throws with the server's own message on a rejected draft — the
+   *  domain names what is wrong with it, and that is what the writer needs to read. */
+  async postToLounge(draft: LoungeDraft): Promise<{ id: string }> {
+    const { data } = await http.post('/lounge', draft);
+    return data as { id: string };
+  },
+
+  async deleteLoungePost(id: string): Promise<void> {
+    await http.delete(`/lounge/${encodeURIComponent(id)}`);
+  },
+
+  /** Cheer or take the cheer back; returns the post's new total so the card can
+   *  paint the number the server holds rather than a guess. */
+  async cheerLoungePost(id: string, on: boolean): Promise<{ cheers: number; cheered: boolean }> {
+    const { data } = await http.post(`/lounge/${encodeURIComponent(id)}/cheer`, null, { params: { on } });
+    return data as { cheers: number; cheered: boolean };
+  },
+
+  async reportLoungePost(id: string, reason: string): Promise<void> {
+    await http.post(`/lounge/${encodeURIComponent(id)}/report`, { reason });
   },
 
   /** Score-band summary for the Review Lab 🎙 직접 말하기 연습 block. */
