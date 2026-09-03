@@ -544,7 +544,7 @@ export const en: Record<string, string> = {
 
   'login.google': 'Continue with Google',
   'login.apple': 'Continue with Apple',
-  'login.kakao': 'Start with Kakao',
+  'login.kakao': 'Continue with Kakao',
   'login.googleFailed': 'Google sign-in failed',
   'login.noIdToken': 'No ID token came back.',
   'login.failed': '{provider} sign-in failed',

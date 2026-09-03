@@ -570,7 +570,7 @@ export const ko: Record<string, string> = {
   // ── login ────────────────────────────────────────────────────────────────
   'login.google': 'Google로 계속하기',
   'login.apple': 'Apple로 계속하기',
-  'login.kakao': '카카오로 시작하기',
+  'login.kakao': '카카오 로그인',
   'login.googleFailed': 'Google 로그인 실패',
   'login.noIdToken': 'ID 토큰을 받지 못했어요.',
   'login.failed': '{provider} 로그인 실패',

@@ -15,6 +15,11 @@
 //
 // id/pw is not offered at all (v30 07). A returning user signs in with the same provider
 // and the server recognises them; resetting is a profile action, not a login one.
+//
+// All three buttons are built the same way — brand mark at 18pt from the left, label
+// centred — because three logos at three different insets is the first thing you see
+// on the first screen. Kakao's finished button image was replaced by its symbol for
+// exactly that (see the Kakao button below).
 import { useEffect, useState } from 'react';
 import { Alert, Image, Pressable, Text, View } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
@@ -24,7 +29,7 @@ import {
   SOCIAL_CONFIG, completeSocialLogin, devSignIn, isProviderConfigured, signInApple, signInKakao,
 } from '@/lib/auth';
 import { nb, nbFonts } from '@/theme/nb';
-import { useLocale, useT } from '@/i18n';
+import { useT } from '@/i18n';
 
 // Lets the auth popup redirect back and dismiss the in-app browser.
 WebBrowser.maybeCompleteAuthSession();
@@ -128,7 +133,6 @@ export function SocialSignIn({ onDone, tone = 'paper' }: {
   tone?: 'paper' | 'dark';
 }) {
   const t = useT();
-  const locale = useLocale();
   const [busy, setBusy] = useState(false);
 
   const complete: Complete = async (label, run) => {
@@ -164,31 +168,30 @@ export function SocialSignIn({ onDone, tone = 'paper' }: {
           mark={<AppleMark />} disabled={busy} onPress={() => complete('Apple', signInApple)}
         />
 
-        {/* Kakao publishes the whole BUTTON as an image with its label baked in, so there
-            is no text of ours to translate — but the label still has to match the app's
-            language, and Kakao ships the asset per locale. Korean and English are the two
-            it publishes; ja/de fall back to the English button rather than showing a
-            Korean one to somebody reading German. */}
-        <Pressable
-          onPress={() => (isProviderConfigured('kakao') ? complete(t('provider.kakao'), signInKakao) : notConfigured(t('provider.kakao')))}
+        {/* Kakao, built like the other two rather than dropped in as a finished image.
+            Kakao publishes the whole button as a raster with its label baked in, and
+            using it cost two things: the SYMBOL sat at 4.83% of the button's width
+            (≈14.6pt at this size) while Google's G and Apple's mark sit at 18pt, so
+            one of the three logos was visibly closer to the wall; and the label could
+            not be translated, so a German reader got the English asset.
+
+            So the official SYMBOL is used (cropped from Kakao's own asset at native
+            resolution — assets/brand/kakao_symbol.png, x29..64 y28..61 of the 600×90
+            button), on Kakao's own #FEE500, with the label from our catalog. That is
+            what their design guide asks of a self-built button: their symbol, their
+            yellow, an approved label.
+
+            The symbol is a 36×34 bitmap, so it is ~2× where the other two are vector.
+            Dropping Kakao's published standalone symbol in its place is a one-file
+            change if it ever looks soft. The two wide button assets stay in the repo as
+            the crop's source — Metro only bundles what is required, so they cost the
+            binary nothing. */}
+        <BrandButton
+          bg="#FEE500" label={t('login.kakao')} labelColor="#191919"
+          mark={<Image source={require('../../../assets/brand/kakao_symbol.png')} style={{ width: 19, height: (19 * 34) / 36 }} />}
           disabled={busy}
-          accessibilityRole="button"
-          accessibilityLabel={t('login.kakao')}
-          style={({ pressed }) => ({
-            height: H, borderRadius: 6, overflow: 'hidden',
-            opacity: busy ? 0.55 : pressed ? 0.85 : 1,
-            shadowColor: '#000', shadowOpacity: pressed ? 0.06 : 0.18, shadowRadius: 3, shadowOffset: { width: 0, height: 1 },
-            elevation: pressed ? 1 : 2,
-          })}
-        >
-          <Image
-            source={locale === 'ko'
-              ? require('../../../assets/brand/kakao_login_wide.png')
-              : require('../../../assets/brand/kakao_login_wide_en.png')}
-            resizeMode="cover"
-            style={{ width: '100%', height: H }}
-          />
-        </Pressable>
+          onPress={() => (isProviderConfigured('kakao') ? complete(t('provider.kakao'), signInKakao) : notConfigured(t('provider.kakao')))}
+        />
       </View>
 
       {/* Dev-only bypass — real provider auth needs a dev build + credentials. */}

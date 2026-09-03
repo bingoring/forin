@@ -543,7 +543,7 @@ export const ja: Record<string, string> = {
 
   'login.google': 'Googleで続ける',
   'login.apple': 'Appleで続ける',
-  'login.kakao': 'カカオで始める',
+  'login.kakao': 'カカオでログイン',
   'login.googleFailed': 'Googleログイン失敗',
   'login.noIdToken': 'IDトークンを受け取れませんでした。',
   'login.failed': '{provider}ログイン失敗',

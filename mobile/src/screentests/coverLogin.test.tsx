@@ -88,20 +88,39 @@ function byLabel(root: ReactTestInstance, label: string) {
   );
 }
 
-test("Kakao's button is the locale's own official image, not the Korean one everywhere", async () => {
-  // The label is baked into Kakao's asset, so it cannot be translated — it has to be the
-  // right FILE. A German learner shown the Korean button is being handed a language they
-  // did not choose on the screen where they decide whether to trust the app.
+test('the three brand marks sit at the same inset', async () => {
+  // This is the first screen anybody sees, and Kakao's finished button image put its
+  // symbol at 4.83% of the button's width (~14.6pt here) while the other two marks sit
+  // at 18 — one logo visibly closer to the wall than its neighbours. Kakao's SYMBOL on
+  // Kakao's yellow, laid out like the others, is what fixes it.
   const tree = await mount();
-  const kakao = byLabel(tree.root, '카카오로 시작하기');
-  const img = kakao[0].findAll((n) => String(n.type) === 'Image', { deep: true });
+  const insets = new Set<number>();
+  for (const label of ['Google로 계속하기', 'Apple로 계속하기', '카카오 로그인']) {
+    const button = byLabel(tree.root, label)[0];
+    expect(button).toBeTruthy();
+    const style = button.props.style as ((s: { pressed: boolean }) => Record<string, unknown>) | Record<string, unknown>;
+    const flat = typeof style === 'function' ? style({ pressed: false }) : style;
+    insets.add(flat.paddingLeft as number);
+  }
+  expect([...insets]).toEqual([18]);
+});
+
+test("Kakao's mark is Kakao's own artwork, on Kakao's own yellow", async () => {
+  // Their guide asks for the official symbol and #FEE500 on a self-built button. The
+  // symbol is cropped from Kakao's published asset rather than redrawn — a hand-traced
+  // speech bubble is not their logo.
+  const tree = await mount();
+  const kakao = byLabel(tree.root, '카카오 로그인')[0];
+  const style = kakao.props.style as (s: { pressed: boolean }) => Record<string, unknown>;
+  expect(style({ pressed: false }).backgroundColor).toBe('#FEE500');
+  const img = kakao.findAll((n) => String(n.type) === 'Image', { deep: true });
   expect(img.length).toBe(1);
-  expect(String(JSON.stringify(img[0].props.source))).toMatch(/kakao_login_wide(?!_en)/);
+  expect(String(JSON.stringify(img[0].props.source))).toMatch(/kakao_symbol/);
 });
 
 test('the cover offers the three providers, and no password anywhere', async () => {
   const tree = await mount();
-  for (const label of ['Google로 계속하기', 'Apple로 계속하기', '카카오로 시작하기']) {
+  for (const label of ['Google로 계속하기', 'Apple로 계속하기', '카카오 로그인']) {
     expect(byLabel(tree.root, label).length).toBeGreaterThan(0);
   }
   // No field to type into: id/pw is not an option on this screen (v30 07).
@@ -151,7 +170,7 @@ test('a session already in hand does not change what the cover offers', async ()
   mockAuthed = true;
   const tree = await mount();
   expect(texts(tree.root)).not.toContain('여권 펼치기');
-  for (const label of ['Google로 계속하기', 'Apple로 계속하기', '카카오로 시작하기']) {
+  for (const label of ['Google로 계속하기', 'Apple로 계속하기', '카카오 로그인']) {
     expect(byLabel(tree.root, label).length).toBeGreaterThan(0);
   }
 });
