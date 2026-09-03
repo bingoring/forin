@@ -49,6 +49,9 @@ func (r *nameRepo) UpdateProfile(context.Context, user.Profile) error {
 func (r *nameRepo) SetEquippedTitle(context.Context, string, string) error {
 	panic("not used by setDisplayName")
 }
+func (r *nameRepo) RecordProfileChange(context.Context, string, user.Profile, user.Profile) error {
+	panic("not used by this handler")
+}
 func (r *nameRepo) SetUILang(context.Context, string, string) error {
 	panic("not used by setDisplayName")
 }

@@ -210,6 +210,18 @@ type Profile struct {
 	Avatar        []byte             `json:"avatar"`
 }
 
+type ProfileChange struct {
+	ID        int64              `json:"id"`
+	UserID    string             `json:"user_id"`
+	FromJob   string             `json:"from_job"`
+	ToJob     string             `json:"to_job"`
+	FromLang  string             `json:"from_lang"`
+	ToLang    string             `json:"to_lang"`
+	FromDest  string             `json:"from_dest"`
+	ToDest    string             `json:"to_dest"`
+	ChangedAt pgtype.Timestamptz `json:"changed_at"`
+}
+
 type Quiz struct {
 	ID         string `json:"id"`
 	Profession string `json:"profession"`

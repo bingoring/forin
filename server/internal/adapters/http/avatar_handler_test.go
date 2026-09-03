@@ -54,6 +54,9 @@ func (r *avatarRepo) UpdateProfile(context.Context, user.Profile) error {
 func (r *avatarRepo) SetEquippedTitle(context.Context, string, string) error {
 	panic("not used by setAvatar")
 }
+func (r *avatarRepo) RecordProfileChange(context.Context, string, user.Profile, user.Profile) error {
+	panic("not used by this handler")
+}
 func (r *avatarRepo) SetUILang(context.Context, string, string) error {
 	panic("not used by setAvatar")
 }

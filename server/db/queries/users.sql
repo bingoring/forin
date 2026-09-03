@@ -70,3 +70,10 @@ ON CONFLICT (user_id) DO UPDATE SET avatar = $2, updated_at = now();
 -- comment no longer claims it is.
 SELECT user_id, avatar FROM profiles
 WHERE user_id = ANY (@user_ids::uuid[]) AND avatar IS NOT NULL;
+
+-- name: RecordProfileChange :exec
+-- One row per ACTUAL change (the handler compares before/after and skips a no-op save).
+-- The audit is what lets learning-tracks P2 partition existing history by time instead
+-- of guessing which subject three weeks of review cards belonged to.
+INSERT INTO profile_changes (user_id, from_job, to_job, from_lang, to_lang, from_dest, to_dest)
+VALUES ($1, $2, $3, $4, $5, $6, $7);

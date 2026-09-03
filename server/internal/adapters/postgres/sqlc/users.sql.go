@@ -180,6 +180,37 @@ func (q *Queries) GetUserByIdentity(ctx context.Context, arg GetUserByIdentityPa
 	return i, err
 }
 
+const recordProfileChange = `-- name: RecordProfileChange :exec
+INSERT INTO profile_changes (user_id, from_job, to_job, from_lang, to_lang, from_dest, to_dest)
+VALUES ($1, $2, $3, $4, $5, $6, $7)
+`
+
+type RecordProfileChangeParams struct {
+	UserID   string `json:"user_id"`
+	FromJob  string `json:"from_job"`
+	ToJob    string `json:"to_job"`
+	FromLang string `json:"from_lang"`
+	ToLang   string `json:"to_lang"`
+	FromDest string `json:"from_dest"`
+	ToDest   string `json:"to_dest"`
+}
+
+// One row per ACTUAL change (the handler compares before/after and skips a no-op save).
+// The audit is what lets learning-tracks P2 partition existing history by time instead
+// of guessing which subject three weeks of review cards belonged to.
+func (q *Queries) RecordProfileChange(ctx context.Context, arg RecordProfileChangeParams) error {
+	_, err := q.db.Exec(ctx, recordProfileChange,
+		arg.UserID,
+		arg.FromJob,
+		arg.ToJob,
+		arg.FromLang,
+		arg.ToLang,
+		arg.FromDest,
+		arg.ToDest,
+	)
+	return err
+}
+
 const setAvatar = `-- name: SetAvatar :exec
 INSERT INTO profiles (user_id, avatar, updated_at) VALUES ($1, $2, now())
 ON CONFLICT (user_id) DO UPDATE SET avatar = $2, updated_at = now()

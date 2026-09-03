@@ -1,8 +1,10 @@
 package http
 
 import (
-	"github.com/bingoring/forin/server/internal/i18n"
+	"log/slog"
 	"net/http"
+
+	"github.com/bingoring/forin/server/internal/i18n"
 
 	"github.com/bingoring/forin/server/internal/domain/avatar"
 	"github.com/bingoring/forin/server/internal/domain/user"
@@ -76,9 +78,23 @@ func (h *meHandler) updateProfile(w http.ResponseWriter, r *http.Request) {
 		TargetLang: orDefault(req.TargetLang, "en"), Destination: orDefault(req.Destination, "us"),
 		TargetLevel: orDefault(req.TargetLevel, "B1"),
 	}
+	// What it was, before the write — the audit row needs both sides, and this is the
+	// only moment both exist. A read failure is not fatal: the learner's save is not
+	// held hostage by the audit (§NFR of the learning-tracks spec).
+	before, _ := h.users.GetProfile(r.Context(), uid)
+
 	if err := h.users.UpdateProfile(r.Context(), p); err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not save profile")
 		return
+	}
+
+	// Only when something actually moved. Onboarding's final save is the FIRST write
+	// for most users (before == nil), and recording "'' → nurse" for every account
+	// would bury the changes this log exists to find.
+	if before != nil && (before.Job != p.Job || before.TargetLang != p.TargetLang || before.Destination != p.Destination) {
+		if err := h.users.RecordProfileChange(r.Context(), uid, *before, p); err != nil {
+			slog.Error("profile: could not record the change", "err", err, "userID", uid)
+		}
 	}
 	saved, err := h.users.GetProfile(r.Context(), uid)
 	if err != nil {

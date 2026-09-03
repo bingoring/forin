@@ -168,3 +168,25 @@ func (r *UserRepo) Avatars(ctx context.Context, userIDs []string) (map[string]av
 	}
 	return out, nil
 }
+
+// RecordProfileChange appends the audit row. Only the axes that MOVED are filled: a
+// destination swap inside one language (us→au, same curriculum) and a change of
+// subject (nurse→hotelier) are treated completely differently by learning-tracks P2's
+// backfill, so which axis moved has to be readable from the row.
+func (r *UserRepo) RecordProfileChange(ctx context.Context, userID string, before, after user.Profile) error {
+	moved := func(from, to string) (string, string) {
+		if from == to {
+			return "", ""
+		}
+		return from, to
+	}
+	fj, tj := moved(before.Job, after.Job)
+	fl, tl := moved(before.TargetLang, after.TargetLang)
+	fd, td := moved(before.Destination, after.Destination)
+	return r.q.RecordProfileChange(ctx, sqlc.RecordProfileChangeParams{
+		UserID:  userID,
+		FromJob: fj, ToJob: tj,
+		FromLang: fl, ToLang: tl,
+		FromDest: fd, ToDest: td,
+	})
+}

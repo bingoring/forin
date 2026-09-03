@@ -503,6 +503,10 @@ type UserRepo interface {
 	// SetUILang persists the app's display language ("" = follow NativeLang). Kept
 	// apart from UpdateProfile, which is a full onboarding upsert.
 	SetUILang(ctx context.Context, userID, lang string) error
+	// RecordProfileChange appends one audit row for a profile change that actually
+	// changed something. It is what learning-tracks P2 partitions existing progress
+	// by: a row written before a change belonged to the previous subject.
+	RecordProfileChange(ctx context.Context, userID string, before, after user.Profile) error
 	// SetAvatar persists the learner's chosen portrait (already validated by
 	// domain/avatar). A single-field patch, like SetDisplayName.
 	SetAvatar(ctx context.Context, userID string, spec avatar.Spec) error

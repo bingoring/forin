@@ -35,6 +35,17 @@ export const ko: Record<string, string> = {
   'settings.language.pickNote': '번역이 없는 부분은 한국어로 보여요. 기계번역으로 채우지 않았어요.',
   'settings.language.notReady': '준비 중',
   'settings.language.learning': '배우는 언어',
+  'learn.title': '학습 설정',
+  'learn.sub': '직업·목적지·수준을 다시 고를 수 있어요',
+  'learn.job': '어떤 일을 하나요?',
+  'learn.dest': '어디로 가나요?',
+  'learn.level': '지금 영어는 어느 정도예요?',
+  'learn.save': '이 설정으로 저장',
+  'learn.saveFailed': '저장하지 못했어요. 잠시 뒤 다시 시도해주세요.',
+  'learn.loadFailed': '설정을 불러오지 못했어요.',
+  'learn.carryNote': '바꿔도 지금까지의 레벨·복습 노트·발음 기록은 그대로 이어져요. 앞으로는 주제별로 따로 쌓이게 만들 예정이에요.',
+  'learn.entry': '학습 설정',
+  'learn.entrySub': '직업 · {dest} · {level}',
   'settings.language.learningSub': '{name} · 온보딩에서 고른 나라로 정해져요.',
 
   // ── sound (the row #16 added) ────────────────────────────────────────────

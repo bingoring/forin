@@ -68,7 +68,7 @@ export default function Me() {
           ]);
           if (!alive) return;
           setProgress(p);
-          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string; displayName?: string; avatar?: unknown } } | null)?.profile;
+          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string; destination?: string; displayName?: string; avatar?: unknown } } | null)?.profile;
           // The portrait rides along with the profile read that was already happening.
           // The user id is what seeds a face for a learner who never opened the picker,
           // so it matters as much as the stored spec.
@@ -77,6 +77,7 @@ export default function Me() {
           setEquipped(prof?.equippedTitle || '');
           setDisplayName(prof?.displayName || '');
           setTargetLang(prof?.targetLang || '');
+          setDestination(prof?.destination || '');
           // 온보딩에서 고른 모국어를 UI 언어로 채택하되, 아래 설정을 한 번이라도
           // 만졌다면 그쪽이 이긴다(R2).
           adoptProfileLocale(prof?.nativeLang);
@@ -123,6 +124,8 @@ export default function Me() {
   const locale = useLocale();
   const [langOpen, setLangOpen] = useState(false);
   const [targetLang, setTargetLang] = useState('');
+  // Shown on the 학습 설정 row, so the learner can see what they picked without opening it.
+  const [destination, setDestination] = useState('');
 
   // 효과음 on/off. 저장 실패해도 이 세션에는 반영되므로 낙관적으로 그린다.
   const [sfxOn, setSfxOn] = useState(!isSfxMuted());
@@ -543,16 +546,26 @@ export default function Me() {
                 <Text numberOfLines={1} style={nbText.hand(16)}>{LOCALE_META[locale].name}</Text>
                 <NbIcon name="chevronRight" size={15} color={nb.soft} />
               </Pressable>
-              {!!targetLang && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, paddingHorizontal: 13, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.18)' }}>
-                  <View style={{ flex: 1 }}>
-                    <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{t('settings.language.learning')}</Text>
-                    <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                      {t('settings.language.learningSub', { name: LOCALE_META[targetLang as Locale]?.name ?? targetLang })}
-                    </Text>
-                  </View>
+              {/* 학습 설정 — the three onboarding answers, changeable.
+                  This row used to be a dead end: it printed the target language and said
+                  it "was decided by the country you chose in onboarding", which is true
+                  and unhelpful to somebody whose job or country has since changed. There
+                  was no path at all (Build Spec learning-tracks P1). */}
+              <Pressable
+                onPress={() => { playSfx('tap'); router.push('/settings/learning'); }}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, paddingHorizontal: 13, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.18)' }}
+              >
+                <View style={{ flex: 1 }}>
+                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{t('learn.entry')}</Text>
+                  <Text numberOfLines={1} style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
+                    {t('learn.entrySub', {
+                      dest: destination ? t(`onb.dest.${destination}`) : '—',
+                      level: enLevel || '—',
+                    })}
+                  </Text>
                 </View>
-              )}
+                <NbIcon name="chevronRight" size={15} color={nb.soft} />
+              </Pressable>
             </View>
           </NbPaper>
         </View>

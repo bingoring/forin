@@ -68,10 +68,12 @@ test('colleague detail keeps the two levels in two fields', () => {
   expect(src).toMatch(/value=\{String\(c\.level \?\? '-'\)\}/);
 });
 
-test('the onboarding screen no longer claims something nothing does', () => {
-  // The question moved: the three-page wizard (onboarding/level.tsx) was replaced by the
-  // passport flow and deleted, so this now reads the page that actually asks.
-  const src = read('(onboarding)', 'passport.tsx');
+test('the onboarding answer no longer claims something nothing does', () => {
+  // The question moved twice: the three-page wizard (onboarding/level.tsx) became the
+  // passport flow, and the three ANSWERS then moved out of that screen into
+  // data/onboardingChoices so the settings screen could offer the same list. The claim
+  // travels with the answer, so this reads where the CEFR mapping is defined.
+  const src = readFileSync(join(__dirname, '..', 'data', 'onboardingChoices.ts'), 'utf8');
   // The old page said "Picking a CEFR band tunes scenario difficulty" while the column
   // was written and never read. It is true now — via three named server-side effects —
   // and the comment has to name them, so the next reader can check the claim against
