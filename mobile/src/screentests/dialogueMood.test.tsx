@@ -61,6 +61,18 @@ test('only the newest NPC bubble carries the mood colour', () => {
   expect(SRC).toMatch(/mine \? null : \{ borderColor: !last \? '#E8D2B0' : moodBorder\(turnMood\) \}/);
 });
 
+test('the NPC portrait is the notebook avatar, built from the persona (v34)', () => {
+  // The pixel RoleFace was replaced by NbAvatar. This keeps the replacement from
+  // silently reverting: the portrait reads role + a per-NPC seed + the turn's mood
+  // through data/npcAvatar (whose mapping npcAvatar.test.ts owns), not a fixed face.
+  expect(SRC).toMatch(/<NbAvatar spec=\{npcAvatarSpec\(kind, npcSeed, expr as NpcExpression\)\}/);
+  // The seed is stable per NPC — the persona name plus the scenario — so the face does
+  // not shuffle between turns.
+  expect(SRC).toMatch(/const npcSeed = `\$\{p\.name \|\| 'npc'\}\|\$\{id\}`;/);
+  // And RoleFace is gone from what the screen renders.
+  expect(SRC).not.toMatch(/<RoleFace\b/);
+});
+
 test('the portrait falls back to the authored mood rather than blanking', () => {
   // A reply the model did not tag must not wipe the patient's face to neutral.
   expect(SRC).toMatch(/const expr = moodExpression\(turnMood\) \?\? authored;/);

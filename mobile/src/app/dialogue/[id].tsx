@@ -15,7 +15,9 @@ import {
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
 import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteAsync } from 'expo-file-system/legacy';
-import { RoleFace, type RoleKind, type Expression } from '@engine';
+import { type RoleKind, type Expression } from '@engine';
+import { NbAvatar } from '@/components/nb/NbAvatar';
+import { npcAvatarSpec, type NpcExpression } from '@/data/npcAvatar';
 import Svg, { Path } from 'react-native-svg';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbGrabber, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
@@ -506,6 +508,10 @@ export default function DialogueRoute() {
 
   const p = scenario?.persona ?? {};
   const kind = (ROLE_KINDS.has(p.role as RoleKind) ? p.role : 'patient') as RoleKind;
+  // Stable per NPC across the conversation: the name plus the scenario, so their face
+  // does not shuffle turn to turn. The role fixes the uniform; the seed varies the
+  // person; `expr` (the turn's mood) sets the face — see data/npcAvatar.
+  const npcSeed = `${p.name || 'npc'}|${id}`;
   // The turn's mood wins; the scenario's authored mood is the opening state and the
   // fallback for a reply that carried none.
   // The scenario's own background tone, from its department colour (see deptWash).
@@ -703,7 +709,10 @@ export default function DialogueRoute() {
             </Pressable>
           )}
         >
-          <RoleFace kind={kind} hair={p.hair} expression={expr} size={Math.round(120 * top.scale)} />
+          {/* The notebook-line portrait (v34), built from the persona rather than
+              the pixel RoleFace it replaced — same three inputs (role, mood, a seed for
+              the person), drawn in the avatar system every other face on the app uses. */}
+          <NbAvatar spec={npcAvatarSpec(kind, npcSeed, expr as NpcExpression)} size={Math.round(110 * top.scale)} />
         </PortraitFrame>
       </Animated.View>
 

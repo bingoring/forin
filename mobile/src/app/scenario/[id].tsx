@@ -16,7 +16,9 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { RoleFace, type Expression, type RoleKind } from '@engine';
+import { type Expression, type RoleKind } from '@engine';
+import { NbAvatar } from '@/components/nb/NbAvatar';
+import { npcAvatarSpec, type NpcExpression } from '@/data/npcAvatar';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbCheck, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
@@ -67,6 +69,9 @@ export default function ScenarioBriefingRoute() {
   const b = scenario.briefing ?? {};
   const p = scenario.persona ?? {};
   const kind = (ROLE_KINDS.has(p.role as RoleKind) ? p.role : 'patient') as RoleKind;
+  // Same NPC portrait the dialogue draws — same seed (name + scenario), so the person on
+  // the briefing card is the person you then talk to.
+  const npcSeed = `${p.name || 'npc'}|${id}`;
   const authored = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
   const expr = moodExpression(asMood(p.mood)) ?? authored;
   const goals = scenario.goals ?? [];
@@ -93,7 +98,8 @@ export default function ScenarioBriefingRoute() {
                 labelled. */}
             <NbPaper rot={-2.5} style={{ paddingTop: 6, paddingHorizontal: 6, paddingBottom: 3, flexShrink: 0 }}>
               <View style={{ width: 78, height: 90, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-                <RoleFace kind={kind} hair={p.hair} expression={expr} size={86} />
+                {/* v34 notebook portrait, built from the persona (data/npcAvatar). */}
+                <NbAvatar spec={npcAvatarSpec(kind, npcSeed, expr as NpcExpression)} size={78} />
               </View>
               <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9, color: nb.ink, textAlign: 'center', paddingTop: 2, paddingBottom: 1 }}>
                 {p.name || 'NPC'}
