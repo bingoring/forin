@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="design_doc_mode" content="canvas" />
+<title>forin Notebook - Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+body { margin: 0; }
+a { color: #3E362B; } a:hover { color: #C75146; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-onboarding.jsx"></script>
+<script type="text/babel" src="forin-notebook-onboarding-flow.jsx"></script>
+<script type="text/babel">
+function NbOnbApp() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-onb" title="forin Notebook — 온보딩" subtitle="여권 은유: 표지 → 종이 넘김 → 도장 → 비행 → 입국심사 — ★ 보드는 직접 클릭해서 진행해보세요">
+        <DCArtboard eager={true} id="nb-onb-flow" label="★ 인터랙티브 플로우 (클릭해서 진행)" width={402} height={874}><window.OnbFlow/></DCArtboard>
+        <DCArtboard eager={true} id="nb-onb-cover" label="A · 표지 (웰컴)" width={402} height={874}><window.OnbCover/></DCArtboard>
+        <DCArtboard eager={true} id="nb-onb-job" label="B · 직업 선택" width={402} height={874}><window.OnbJob/></DCArtboard>
+        <DCArtboard eager={true} id="nb-onb-dest" label="C · 목적지" width={402} height={874}><window.OnbDest/></DCArtboard>
+        <DCArtboard eager={true} id="nb-onb-level" label="D · 수준·목표 (사원증)" width={402} height={874}><window.OnbLevel/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<NbOnbApp/>);
+</script>
+</body>
+</html>
