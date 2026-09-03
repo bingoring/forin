@@ -10,6 +10,7 @@ import type { paths } from '@contract/types';
 import type { Interior } from '@engine';
 import { getLocale } from '@/i18n';
 import { hydrateDestinations } from '@/data/destinations';
+import { normalizeAvatarSpec, type AvatarSpec } from '@/data/nbAvatar';
 
 const baseURL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080';
 
@@ -471,6 +472,8 @@ export interface InviteCode { code: string; relation: ColleagueRelation; expires
 export interface CodePreview { id: string; name: string; targetLevel?: string; destination?: string; streak?: number }
 export interface Colleague {
   id: string; name: string; relation: ColleagueRelation;
+  /** Absent until they choose one; the row draws a seeded face then. */
+  avatar?: Partial<AvatarSpec>;
   targetLevel?: string; destination?: string; streak?: number;
   activity?: string; activeToday?: boolean; statusHidden?: boolean;
 }
@@ -496,6 +499,9 @@ export interface LoungeSnippet { title?: string; turns: LoungeTurn[] }
 export interface LoungePost {
   id: string; authorId: string; authorName: string;
   authorJob?: string; authorDestination?: string; authorLevel?: number;
+  /** The author's NbAvatar spec, absent when they never opened the picker — the
+   *  card then draws a face seeded from authorId. */
+  authorAvatar?: Partial<AvatarSpec>;
   kind: LoungeKind; body: string; tags?: string[];
   scenarioId?: string; snippet?: LoungeSnippet;
   cheers: number; cheered: boolean; mine: boolean; createdAt: string;
@@ -797,6 +803,18 @@ export const api = {
 
   async setUILang(uiLang: string): Promise<void> {
     await http.patch('/me/ui-lang', { uiLang });
+  },
+
+  /** Save the learner's portrait — every axis at once (핸드오프 v32).
+   *
+   *  The whole spec, not a patch: the picker holds a complete face on screen and
+   *  sends what it is showing. Returns the SERVER's stored spec, so a rejected axis
+   *  cannot look accepted.
+   */
+  async setAvatar(spec: AvatarSpec): Promise<AvatarSpec | null> {
+    const { data } = await http.patch('/me/avatar', { avatar: spec });
+    const raw = (data as { avatar?: unknown } | null)?.avatar;
+    return raw ? normalizeAvatarSpec(raw) : null;
   },
 
   /** Save the learner's own display name. `''` clears it, and the server then falls

@@ -11,7 +11,6 @@ import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
 import { InfoSheet, type InfoSheetData } from '@/components/InfoSheet';
-import { AnimatedFace } from '@engine';
 import { api, type Colleague, type GrowthStats, type InviteCode, type Progress } from '@/api/client';
 import { signOut } from '@/lib/auth';
 import { earnedTitles, foundMissions, titleById, MISSIONS, type GrowthInput } from '@/data/titles';
@@ -20,10 +19,10 @@ import { space, type as typeScale } from '@/theme/tokens';
 import { isSfxMuted, playSfx, setSfxMuted } from '@/lib/sfx';
 import { LOCALES, LOCALE_META, adoptProfileLocale, completenessLabel, setLocale, t, type Locale, useLocale, useT } from '@/i18n';
 import { BottomSheet } from '@/components/BottomSheet';
-import { useAvatar } from '@/hooks/useAvatar';
-import { AvatarSheet } from '@/components/AvatarSheet';
+import { useMyAvatar } from '@/hooks/useMyAvatar';
+import { NbAvatar } from '@/components/nb/NbAvatar';
+import { adoptAvatar } from '@/lib/nbAvatar';
 import { NameSheet } from '@/components/me/NameSheet';
-import { FaceScanSheet } from '@/components/FaceScanSheet';
 
 const C = nb.ink;
 
@@ -36,9 +35,7 @@ const repMap = (st: Progress['reputation']) =>
 
 export default function Me() {
   const t = useT();
-  const avatar = useAvatar();
-  const [avatarOpen, setAvatarOpen] = useState(false);
-  const [scanOpen, setScanOpen] = useState(false);
+  const myFace = useMyAvatar();
   const router = useRouter();
   const [progress, setProgress] = useState<Progress | null>(null);
   const [enLevel, setEnLevel] = useState<string>('');
@@ -71,7 +68,11 @@ export default function Me() {
           ]);
           if (!alive) return;
           setProgress(p);
-          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string; displayName?: string } } | null)?.profile;
+          const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string; displayName?: string; avatar?: unknown } } | null)?.profile;
+          // The portrait rides along with the profile read that was already happening.
+          // The user id is what seeds a face for a learner who never opened the picker,
+          // so it matters as much as the stored spec.
+          adoptAvatar((me as { user?: { id?: string } } | null)?.user?.id ?? '', prof?.avatar);
           setEnLevel(prof?.targetLevel || '');
           setEquipped(prof?.equippedTitle || '');
           setDisplayName(prof?.displayName || '');
@@ -234,11 +235,12 @@ export default function Me() {
         <NbPaper rot={-0.6} tape tapeLeft={140} style={{ paddingVertical: 14, paddingHorizontal: 14, flexDirection: 'row', gap: 14 }}>
               {/* Tapping the portrait edits it. The pencil is the only thing that says so —
                   an ID photo does not otherwise look interactive. */}
-              <Pressable onPress={() => { playSfx('tap'); setAvatarOpen(true); }} style={{ alignSelf: 'flex-start' }}>
+              <Pressable onPress={() => { playSfx('tap'); router.push('/avatar'); }} style={{ alignSelf: 'flex-start' }}>
                 <NbPaper rot={-2} style={{ paddingTop: 6, paddingHorizontal: 6, paddingBottom: 3 }}>
-                  <View style={{ width: 78, height: 92, backgroundColor: avatar.scrub, overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <AnimatedFace size={86} avatar={avatar} />
-                  </View>
+                  {/* The v32 portrait. The pixel sprite it replaced lived on the device
+                      only, so it reset on reinstall and nobody else could see it — and
+                      this face now turns up on other people's screens. */}
+                  <NbAvatar spec={myFace ?? undefined} size={78} />
                 </NbPaper>
                 <View style={{ position: 'absolute', bottom: -4, right: -6, backgroundColor: 'rgba(249,227,123,.9)', borderWidth: 1.5, borderColor: nb.ink, borderRadius: 3, width: 21, height: 21, alignItems: 'center', justifyContent: 'center' }}>
                   <NbIcon name="pencil" size={12} />
@@ -625,14 +627,15 @@ export default function Me() {
         onClose={() => setNameOpen(false)}
         onSaved={setDisplayName}
       />
-      <AvatarSheet
-        visible={avatarOpen}
-        onClose={() => setAvatarOpen(false)}
-        // Close the builder before opening the camera: two RN Modals stacked leaves the
-        // camera preview behind a scrim.
-        onScan={() => { setAvatarOpen(false); setScanOpen(true); }}
-      />
-      <FaceScanSheet visible={scanOpen} onClose={() => setScanOpen(false)} />
+      {/* The portrait builder is a SCREEN now (app/avatar), not a sheet: ten axes do
+          not fit in a sheet's detent, and the preview has to stay pinned while the
+          grid scrolls.
+
+          The face scan went with it. It read hair and skin COLOURS off a photo and set
+          the pixel avatar's four hex values; NbAvatar takes named keys, so bringing it
+          back needs a photo→key mapping (the v32 asset set is designed for one — eight
+          skin steps, dyed hair points). Left out rather than wired to nothing: a
+          shortcut that sets values nobody draws is worse than an absent one. */}
 
       {/* 앱 언어 고르기. 번역 완성도를 계산값 그대로 보여준다(R8·R9) — 부분 번역을
           완전한 것처럼 제시하지 않기 위해서다. */}

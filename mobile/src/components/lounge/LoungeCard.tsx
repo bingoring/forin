@@ -10,7 +10,9 @@
 // nobody can write is a promise the screen cannot keep.
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { NbIcon } from '@/components/nb/NbIcon';
+import { NbAvatar } from '@/components/nb/NbAvatar';
 import { NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { avatarSpecFromSeed, normalizeAvatarSpec } from '@/data/nbAvatar';
 import { nb, nbFonts } from '@/theme/nb';
 import { type Translate, useT } from '@/i18n';
 import type { LoungeKind, LoungePost } from '@/api/client';
@@ -49,7 +51,15 @@ export function LoungeCard({ post, index, onCheer, onMenu, onOpenScenario }: {
       style={styles.card}
     >
       <View style={styles.metaRow}>
-        <Avatar seed={post.authorId} />
+        {/* The writer's own portrait, or a face seeded from their id when they never
+            opened the picker — the same seed their profile shows them, so the person
+            in the feed is the person in the colleague list. */}
+        <View style={styles.avatar}>
+          <NbAvatar
+            size={38}
+            spec={post.authorAvatar ? normalizeAvatarSpec(post.authorAvatar) : avatarSpecFromSeed(post.authorId)}
+          />
+        </View>
         <View style={{ flex: 1, minWidth: 0 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
             <Text numberOfLines={1} style={[nbText.hand(16), { flexShrink: 1 }]}>
@@ -131,21 +141,6 @@ function subtitle(p: LoungePost): string {
     .join(' · ');
 }
 
-/** A polaroid-ish head, tinted from the author id so the same person is the same
- *  colour every time without the server sending an avatar it does not have. */
-const AVATAR_BG = ['#B8CBB0', '#E9C45A', '#C3B1E8', '#8FC7E8', '#F4A49B', '#A8D997'];
-function Avatar({ seed }: { seed: string }) {
-  let n = 0;
-  for (let i = 0; i < seed.length; i++) n = (n + seed.charCodeAt(i)) % AVATAR_BG.length;
-  const bg = AVATAR_BG[n];
-  return (
-    <View style={[styles.avatar, { transform: [{ rotate: '-2deg' }] }]}>
-      <View style={[styles.avatarHead, { backgroundColor: bg }]} />
-      <View style={[styles.avatarBody, { backgroundColor: bg }]} />
-    </View>
-  );
-}
-
 /** Relative time, in the catalog's words. Anything past a week is the date itself —
  *  "62일 전" is a number nobody converts back into a day. */
 function ago(t: Translate, iso: string): string {
@@ -167,14 +162,10 @@ const styles = StyleSheet.create({
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: 9 },
   dots: { flexDirection: 'row', gap: 2.5, paddingHorizontal: 4, paddingVertical: 8 },
   dot: { width: 3, height: 3, borderRadius: 2, backgroundColor: nb.soft },
+  /** The print's margin, which is what lets a drawing sit on paper. */
   avatar: {
-    width: 38, height: 38, flexShrink: 0, backgroundColor: nb.paper,
-    borderWidth: 1, borderColor: nb.paperEdge, alignItems: 'center', overflow: 'hidden',
-  },
-  avatarHead: { width: 15, height: 15, borderRadius: 99, borderWidth: 1.4, borderColor: nb.ink, marginTop: 5 },
-  avatarBody: {
-    width: 27, height: 13, borderTopLeftRadius: 13, borderTopRightRadius: 13,
-    borderWidth: 1.4, borderColor: nb.ink, marginTop: 2,
+    flexShrink: 0, backgroundColor: '#fff', borderWidth: 1, borderColor: nb.paperEdge,
+    padding: 2, transform: [{ rotate: '-2deg' }], overflow: 'hidden',
   },
   snippet: { marginTop: 9, borderWidth: 1.5, borderColor: nb.ink, borderRadius: 3, overflow: 'hidden' },
   snippetHead: {

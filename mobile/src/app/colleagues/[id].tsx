@@ -13,6 +13,8 @@ import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-rou
 
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbMemo, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbAvatar } from '@/components/nb/NbAvatar';
+import { avatarSpecFromSeed, normalizeAvatarSpec } from '@/data/nbAvatar';
 import { nb, nbFonts } from '@/theme/nb';
 import { CheerSheet } from '@/components/CheerSheet';
 import { NbBackTitle, RelTag, SectionRule } from './index';
@@ -88,7 +90,9 @@ export default function ColleagueDetailScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
         {/* The header photograph, taped down. */}
         <NbPaper rot={-0.5} tape tapeLeft={150} style={styles.hero}>
-          <NbPolaroid name={c.name} size={74} rot={-3} />
+          <NbPolaroid name={c.name} size={74} rot={-3}>
+            <NbAvatar size={74} spec={c.avatar ? normalizeAvatarSpec(c.avatar) : avatarSpecFromSeed(c.id)} />
+          </NbPolaroid>
           <View style={{ flex: 1, minWidth: 0 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
               <Text numberOfLines={1} style={[nbText.hand(24), { flexShrink: 1 }]}>{c.name}</Text>

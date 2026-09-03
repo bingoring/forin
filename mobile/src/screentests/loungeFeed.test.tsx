@@ -19,6 +19,7 @@ jest.mock('expo-secure-store', () => ({
 
 type MockPost = {
   id: string; authorId: string; authorName: string; authorJob?: string; authorLevel?: number;
+  authorAvatar?: Record<string, string>;
   kind: 'talk' | 'question' | 'share'; body: string; tags?: string[];
   scenarioId?: string; snippet?: { title?: string; turns: { index: number; role: string; text: string }[] };
   cheers: number; cheered: boolean; mine: boolean; createdAt: string;
@@ -107,6 +108,22 @@ test('a post is drawn with its author, its words and its cheer count', async () 
   expect(out).toContain('Grace RN');
   expect(out).toContain('미국 병동에서 진짜 많이 쓰는 말 Top 3');
   expect(out.join(' ')).toContain('응원 8');
+});
+
+test('the author is drawn with their own portrait, or a seeded one', async () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { avatarSpecFromSeed } = require('@/data/nbAvatar') as typeof import('@/data/nbAvatar');
+  mockPages = [[
+    post({ id: 'p1', authorId: 'u-grace', authorAvatar: { skin: 'olive', hair: 'afro', hairColor: 'black', eyes: 'wink', mouth: 'smile', outfit: 'labCoat', outfitColor: 'lilac', hat: 'none', bg: 'grid', acc: 'none' } }),
+    post({ id: 'p2', authorId: 'u-plain', body: '피커 안 열어봄' }),
+  ]];
+  const tree = await mount();
+  const faces = byName(tree.root, 'NbAvatar').map((n) => n.props.spec as Record<string, string>);
+  expect(faces).toHaveLength(2);
+  expect(faces[0]).toMatchObject({ hair: 'afro', outfit: 'labCoat' });
+  // A writer who never opened the picker still has a face, and it is the SAME one
+  // their profile and the colleague list draw — seeded from the id, not invented here.
+  expect(faces[1]).toEqual(avatarSpecFromSeed('u-plain'));
 });
 
 test('a shared conversation shows the quoted turns, not just a count', async () => {

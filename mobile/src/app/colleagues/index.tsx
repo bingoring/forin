@@ -21,6 +21,8 @@ import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbMemo, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbAvatar } from '@/components/nb/NbAvatar';
+import { avatarSpecFromSeed, normalizeAvatarSpec } from '@/data/nbAvatar';
 import { nb, nbFonts } from '@/theme/nb';
 import { CheerSheet } from '@/components/CheerSheet';
 import { api, type Colleague, type ColleagueRelation, type ColleagueRequest, type InviteCode } from '@/api/client';
@@ -166,7 +168,11 @@ export default function ColleaguesScreen() {
           ) : rows.map((c, i) => (
             <Pressable key={c.id} onPress={() => router.push(`/colleagues/${c.id}`)}>
               <NbPaper rot={i % 2 ? 0.5 : -0.5} style={styles.row}>
-                <NbPolaroid name={c.name} rot={i % 2 ? 2 : -2} />
+                <NbPolaroid name={c.name} rot={i % 2 ? 2 : -2}>
+                  {/* Their portrait, or a face seeded from their id — the same one their
+                      own profile draws, so a colleague is recognisable across screens. */}
+                  <NbAvatar size={52} spec={c.avatar ? normalizeAvatarSpec(c.avatar) : avatarSpecFromSeed(c.id)} />
+                </NbPolaroid>
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                     <Text numberOfLines={1} style={[nbText.hand(18.5), { flexShrink: 1 }]}>{c.name}</Text>
