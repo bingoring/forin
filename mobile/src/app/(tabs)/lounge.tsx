@@ -1,8 +1,9 @@
 // 스태프 라운지 — the community feed (핸드오프 v31 07 · 라운지 A).
 //
 // The tab that used to be 오늘의 상황판. The board itself did not go away: it is
-// `/board` now, reached from this header, because the daily rotation is a working
-// feature and the feed is a new one.
+// `/board` now, reached from 일터 — a rotation of today's situations across the
+// hospital is a fact about the workplace, and the lounge is where colleagues talk.
+// It sat in this header for one commit and read as an ad for another screen.
 //
 // Reads and writes /lounge (posts, cheers, reports). Three things about this screen
 // are deliberate:
@@ -22,7 +23,7 @@ import { api, type LoungeKind, type LoungePost } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { BottomSheet } from '@/components/BottomSheet';
 import { LoungeCard } from '@/components/lounge/LoungeCard';
-import { NbButton, NbChip, NbMemo, NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbChip, NbMemo, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { useT } from '@/i18n';
 
@@ -141,18 +142,6 @@ export default function Lounge() {
         </NbButton>
       </View>
       <Text style={[nbText.body(11, nb.soft), { marginTop: 2 }]}>{t('lounge.subtitle')}</Text>
-
-      {/* 오늘의 상황판 kept its place in the app, one tap from where its tab used to be. */}
-      <Pressable onPress={() => router.push('/board')}>
-        <NbPaper rot={-0.4} bg="rgba(143,199,232,.22)" style={styles.boardLink}>
-          <NbIcon name="board" size={22} />
-          <View style={{ flex: 1, minWidth: 0 }}>
-            <Text numberOfLines={1} style={nbText.hand(16)}>{t('lounge.boardLink')}</Text>
-            <Text numberOfLines={1} style={[nbText.body(10, nb.soft), { marginTop: 1 }]}>{t('lounge.boardLinkSub')}</Text>
-          </View>
-          <NbIcon name="chevronRight" size={15} />
-        </NbPaper>
-      </Pressable>
 
       {/* Written on a ruled line rather than boxed — and a real input, because the
           handoff's line is where you type, not a button that opens somewhere to type. */}
@@ -291,7 +280,6 @@ function Page({ children }: { children: React.ReactNode }) {
 
 const styles = {
   list: { paddingTop: TOP_INSET, paddingHorizontal: 20, paddingBottom: 40 } as const,
-  boardLink: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 12, paddingVertical: 10, paddingHorizontal: 13 } as const,
   search: {
     flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12,
     paddingVertical: 4, paddingHorizontal: 4,

@@ -16,7 +16,7 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type Progress, type Curriculum, type CurriculumBuilding, type CurriculumFloor } from '@/api/client';
 import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, deptCodeOf, floorDeptCode, floorPlace } from '@/data/campus';
-import { NbIcon } from '@/components/nb/NbIcon';
+import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbInkStamp, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts, TOP_INSET } from '@/theme/nb';
 import { ExploreButton, FloorList } from '@/components/campus/FloorList';
@@ -202,6 +202,23 @@ export default function Campus() {
           )}
         </View>
 
+        {/* 오늘의 상황판. It lives here rather than in the lounge: a daily rotation of
+            situations across the hospital is a fact about the WORKPLACE, and the lounge
+            is where colleagues talk to each other. Hidden while searching — the results
+            are the only thing that should be under the query. */}
+        {query.trim().length === 0 && (
+          <Pressable onPress={() => router.push('/board')}>
+            <NbPaper rot={-0.4} bg="rgba(143,199,232,.22)" style={styles.boardLink}>
+              <NbIcon name="board" size={22} />
+              <View style={{ flex: 1, minWidth: 0 }}>
+                <Text numberOfLines={1} style={nbText.hand(16)}>{t('campus.boardLink')}</Text>
+                <Text numberOfLines={1} style={[nbText.body(10, nb.soft), { marginTop: 1 }]}>{t('campus.boardLinkSub')}</Text>
+              </View>
+              <NbIcon name="chevronRight" size={15} />
+            </NbPaper>
+          </Pressable>
+        )}
+
         {query.trim().length > 0 ? (
           <View style={{ marginTop: 12 }}>
             {found.hits.length === 0 && sitHits.length === 0 ? (
@@ -255,10 +272,7 @@ export default function Campus() {
                  both "take me back there", and splitting them into two sections doubles
                  the chrome to say the same thing. */
               <View style={{ marginTop: 14 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                  <NbIcon name="star" size={15} color="#C99A1E" />
-                  <Text style={nbText.hand(16)}>{t('campus.favTitle')}</Text>
-                </View>
+                <SectionHead icon="star" iconColor="#C99A1E" label={t('campus.favTitle')} />
                 {favorites.floors.map((f, i) => (
                   <Row
                     key={`f/${f.building}/${f.floor}`}
@@ -285,6 +299,18 @@ export default function Campus() {
                 ))}
               </View>
             )}
+            {/* The two blocks are one scroll and used to run together: a starred ward
+                row and a building card are both paper, and without a label the first
+                building read as a third favourite. The head names what follows; the
+                torn rule above it is where one section ends. */}
+            <View style={{ marginTop: 18 }}>
+              {(favorites.floors.length > 0 || favorites.situations.length > 0) && <SectionRule />}
+              <SectionHead
+                icon="hospital"
+                label={t('campus.buildingsTitle')}
+                right={t('campus.buildingsCount', { n: buildings.length })}
+              />
+            </View>
             <FloorList buildings={buildings} onOpenFloor={openFloor} focus={focus} />
             {/* Walking the map is the opt-in; the list is the way in. It used to be a
                 filled lilac button competing with every row above it. */}
@@ -362,3 +388,46 @@ function Row({ stamp, title, sub, rot, starred, urgent, onStar, onPress }: {
     </Pressable>
   );
 }
+
+/**
+ * A section label in the notebook's hand: a doodle, the name of what follows, and
+ * (optionally) how much of it there is.
+ *
+ * Both of this tab's standing blocks get one. Only 즐겨찾기 had a label before, so
+ * 건물 began with an unlabelled paper card directly under a starred ward row — the
+ * same material, the same rotation, no boundary. What separates them is a name, not
+ * more chrome.
+ */
+function SectionHead({ icon, iconColor, label, right }: {
+  icon: NbIconName;
+  iconColor?: string;
+  label: string;
+  right?: string;
+}) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+      <NbIcon name={icon} size={15} color={iconColor} />
+      <Text style={[nbText.hand(16), { flex: 1, minWidth: 0 }]} numberOfLines={1}>{label}</Text>
+      {!!right && <Text numberOfLines={1} style={nbText.hand(14, nb.soft)}>{right}</Text>}
+    </View>
+  );
+}
+
+/** Where a section ends: a torn dashed rule, not a solid divider. The page is paper. */
+function SectionRule() {
+  return (
+    <View
+      style={{
+        borderTopWidth: 1.4, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.22)',
+        marginBottom: 14,
+      }}
+    />
+  );
+}
+
+const styles = {
+  boardLink: {
+    flexDirection: 'row', alignItems: 'center', gap: 10,
+    marginTop: 14, paddingVertical: 10, paddingHorizontal: 13,
+  } as const,
+};

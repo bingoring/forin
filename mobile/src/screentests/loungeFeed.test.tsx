@@ -241,12 +241,14 @@ test('the next page is asked for by TIME, not by offset', async () => {
   expect(texts(tree.root)).toContain('더 오래된 글');
 });
 
-test('오늘의 상황판 is still reachable from the lounge', async () => {
+test('the lounge does not advertise 오늘의 상황판 — that lives in 일터', async () => {
   const tree = await mount();
-  expect(texts(tree.root)).toContain('오늘의 상황판');
-  const link = byName(tree.root, 'Pressable').find((n) => texts(n).includes('오늘의 상황판'))!;
-  await press(link);
-  expect(mockPushed).toContain('/board');
+  // It sat in this header for one commit. The board is a fact about the workplace
+  // (today's situations across the hospital); the lounge is where colleagues talk, and
+  // a link to another screen at the top of a feed reads as an ad for it.
+  // campusSections.test.tsx is where the entry point is checked now.
+  expect(texts(tree.root)).not.toContain('오늘의 상황판');
+  expect(mockPushed).not.toContain('/board');
 });
 
 test('an empty wall says so instead of showing an empty page', async () => {
