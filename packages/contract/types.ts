@@ -901,6 +901,52 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/avatar": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Set the learner's portrait
+         * @description Every axis at once (skin·hair·hairColor·eyes·mouth·outfit·outfitColor·hat·bg·acc).
+         *     A key the client cannot draw is a 400 rather than a silent correction —
+         *     a corrected write would store a portrait nobody chose.
+         */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description the portrait */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.avatarReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
+                    };
+                };
+            };
+        };
+        trace?: never;
+    };
     "/me/calendar": {
         parameters: {
             query?: never;
@@ -2440,6 +2486,14 @@ export interface components {
         /** @enum {string} */
         "github_com_bingoring_forin_server_internal_domain_lounge.Kind": "talk" | "question" | "share";
         "github_com_bingoring_forin_server_internal_domain_lounge.Post": {
+            /**
+             * @description AuthorAvatar is the writer's NbAvatar spec, or nil when they never opened the
+             *     picker — the card then draws a face seeded from authorId, so a post always has
+             *     a person attached to it.
+             */
+            authorAvatar?: {
+                [key: string]: string;
+            };
             authorDestination?: string;
             authorId?: string;
             authorJob?: string;
@@ -2550,6 +2604,15 @@ export interface components {
             value?: number;
         };
         "github_com_bingoring_forin_server_internal_domain_user.Profile": {
+            /**
+             * @description Avatar is the NbAvatar spec (핸드오프 v32), or nil when the learner has never
+             *     opened the picker. nil is NOT a blank portrait: the client draws a face seeded
+             *     from the user id then, which is why no account needs a write at sign-up and no
+             *     existing row needed a backfill.
+             */
+            avatar?: {
+                [key: string]: string;
+            };
             /** @description e.g. "us" */
             destination?: string;
             /**
@@ -2651,6 +2714,11 @@ export interface components {
         "internal_adapters_http.attemptReq": {
             scenarioId?: string;
             score?: number;
+        };
+        "internal_adapters_http.avatarReq": {
+            avatar?: {
+                [key: string]: string;
+            };
         };
         "internal_adapters_http.choicesResp": {
             choices?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Choice"][];

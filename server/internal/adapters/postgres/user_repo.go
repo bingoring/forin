@@ -2,12 +2,14 @@ package postgres
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
+	"github.com/bingoring/forin/server/internal/domain/avatar"
 	"github.com/bingoring/forin/server/internal/domain/user"
 )
 
@@ -73,11 +75,21 @@ func (r *UserRepo) GetProfile(ctx context.Context, userID string) (*user.Profile
 	if err != nil {
 		return nil, err
 	}
-	return &user.Profile{
+	out := &user.Profile{
 		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
 		Destination: p.Destination, TargetLevel: p.TargetLevel, Onboarded: p.Onboarded,
 		EquippedTitle: p.EquippedTitle, UILang: p.UiLang, DisplayName: p.DisplayName,
-	}, nil
+	}
+	// A portrait that will not parse is left absent rather than failing the profile:
+	// the client then draws the seeded face, which is a face. Failing here would take
+	// the whole screen down over a decoration.
+	if len(p.Avatar) > 0 {
+		var spec map[string]string
+		if json.Unmarshal(p.Avatar, &spec) == nil && len(spec) > 0 {
+			out.Avatar = spec
+		}
+	}
+	return out, nil
 }
 
 // SetEquippedTitle persists the user's currently-equipped career title.
@@ -121,4 +133,38 @@ func (r *UserRepo) UpdateProfile(ctx context.Context, p user.Profile) error {
 		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
 		Destination: p.Destination, TargetLevel: p.TargetLevel,
 	})
+}
+
+// SetAvatar persists the learner's portrait. A single-field patch, like
+// SetDisplayName: UpsertProfile fills the columns it is not given with onboarding
+// defaults, so saving a face through it would reset job and languages.
+func (r *UserRepo) SetAvatar(ctx context.Context, userID string, spec avatar.Spec) error {
+	raw, err := json.Marshal(spec)
+	if err != nil {
+		return err
+	}
+	return r.q.SetAvatar(ctx, sqlc.SetAvatarParams{UserID: userID, Avatar: raw})
+}
+
+// Avatars resolves many portraits in ONE query — a lounge page draws twenty people,
+// and a per-row lookup is how that becomes twenty round trips.
+//
+// A row whose json will not parse is skipped, for the same reason GetProfile drops
+// it: the caller's fallback is a real face, and one bad row must not blank a feed.
+func (r *UserRepo) Avatars(ctx context.Context, userIDs []string) (map[string]avatar.Spec, error) {
+	if len(userIDs) == 0 {
+		return map[string]avatar.Spec{}, nil
+	}
+	rows, err := r.q.Avatars(ctx, userIDs)
+	if err != nil {
+		return nil, err
+	}
+	out := make(map[string]avatar.Spec, len(rows))
+	for _, row := range rows {
+		var spec avatar.Spec
+		if json.Unmarshal(row.Avatar, &spec) == nil && len(spec) > 0 {
+			out[row.UserID] = spec
+		}
+	}
+	return out, nil
 }

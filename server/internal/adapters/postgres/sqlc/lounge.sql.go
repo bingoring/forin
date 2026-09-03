@@ -88,6 +88,7 @@ SELECT p.id, p.author_id, p.kind, p.body, p.tags, p.scenario_id, p.snippet,
        COALESCE(pr.destination, '')                       AS author_destination,
        COALESCE(pr.job, '')                               AS author_job,
        COALESCE(g.level, 0)::int                          AS author_level,
+       pr.avatar                                          AS author_avatar,
        (c.user_id IS NOT NULL)::bool                      AS cheered
   FROM lounge_posts p
   LEFT JOIN profiles pr     ON pr.user_id = p.author_id
@@ -119,6 +120,7 @@ type LoungeFeedRow struct {
 	AuthorDestination string             `json:"author_destination"`
 	AuthorJob         string             `json:"author_job"`
 	AuthorLevel       int                `json:"author_level"`
+	AuthorAvatar      []byte             `json:"author_avatar"`
 	Cheered           bool               `json:"cheered"`
 }
 
@@ -151,6 +153,7 @@ func (q *Queries) LoungeFeed(ctx context.Context, arg LoungeFeedParams) ([]Loung
 			&i.AuthorDestination,
 			&i.AuthorJob,
 			&i.AuthorLevel,
+			&i.AuthorAvatar,
 			&i.Cheered,
 		); err != nil {
 			return nil, err

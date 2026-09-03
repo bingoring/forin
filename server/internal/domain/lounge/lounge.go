@@ -91,21 +91,25 @@ type Snippet struct {
 // Post is a lounge entry as the feed reads it: the post plus the author facts the
 // card shows and the reader's own cheer state.
 type Post struct {
-	ID          string    `json:"id"`
-	AuthorID    string    `json:"authorId"`
-	AuthorName  string    `json:"authorName"`
-	AuthorJob   string    `json:"authorJob,omitempty"`
-	AuthorDest  string    `json:"authorDestination,omitempty"`
-	AuthorLevel int       `json:"authorLevel,omitempty"`
-	Kind        Kind      `json:"kind"`
-	Body        string    `json:"body"`
-	Tags        []string  `json:"tags,omitempty"`
-	ScenarioID  string    `json:"scenarioId,omitempty"`
-	Snippet     *Snippet  `json:"snippet,omitempty"`
-	Cheers      int       `json:"cheers"`
-	Cheered     bool      `json:"cheered"`
-	Mine        bool      `json:"mine"`
-	CreatedAt   time.Time `json:"createdAt"`
+	ID          string `json:"id"`
+	AuthorID    string `json:"authorId"`
+	AuthorName  string `json:"authorName"`
+	AuthorJob   string `json:"authorJob,omitempty"`
+	AuthorDest  string `json:"authorDestination,omitempty"`
+	AuthorLevel int    `json:"authorLevel,omitempty"`
+	// AuthorAvatar is the writer's NbAvatar spec, or nil when they never opened the
+	// picker — the card then draws a face seeded from authorId, so a post always has
+	// a person attached to it.
+	AuthorAvatar map[string]string `json:"authorAvatar,omitempty"`
+	Kind         Kind              `json:"kind"`
+	Body         string            `json:"body"`
+	Tags         []string          `json:"tags,omitempty"`
+	ScenarioID   string            `json:"scenarioId,omitempty"`
+	Snippet      *Snippet          `json:"snippet,omitempty"`
+	Cheers       int               `json:"cheers"`
+	Cheered      bool              `json:"cheered"`
+	Mine         bool              `json:"mine"`
+	CreatedAt    time.Time         `json:"createdAt"`
 }
 
 // Draft is what a client may send. Everything the server owns — author, time,

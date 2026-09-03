@@ -75,6 +75,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("PATCH /me/title", auth(http.HandlerFunc(mh.equipTitle)))
 	mux.Handle("PATCH /me/ui-lang", auth(http.HandlerFunc(mh.setUILang)))
 	mux.Handle("PATCH /me/display-name", auth(http.HandlerFunc(mh.setDisplayName)))
+	mux.Handle("PATCH /me/avatar", auth(http.HandlerFunc(mh.setAvatar)))
 
 	// Content (public read).
 	ch := &contentHandler{content: d.Content, progress: d.Progress, pronunciationEnabled: d.PronunciationEnabled}

@@ -61,6 +61,11 @@ type Profile struct {
 	// DisplayName is what other people see. "" means the learner has not chosen one,
 	// and callers fall back to a short form of the user id — see ShortID.
 	DisplayName string `json:"displayName"`
+	// Avatar is the NbAvatar spec (핸드오프 v32), or nil when the learner has never
+	// opened the picker. nil is NOT a blank portrait: the client draws a face seeded
+	// from the user id then, which is why no account needs a write at sign-up and no
+	// existing row needed a backfill.
+	Avatar map[string]string `json:"avatar,omitempty"`
 }
 
 // MaxDisplayNameLen is the limit in RUNES, not bytes: "김민아" is three characters

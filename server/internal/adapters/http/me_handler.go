@@ -4,6 +4,7 @@ import (
 	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
 
+	"github.com/bingoring/forin/server/internal/domain/avatar"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -123,6 +124,15 @@ type displayNameReq struct {
 	DisplayName string `json:"displayName"`
 }
 
+// avatarReq is the whole portrait, every axis at once (핸드오프 v32).
+//
+// Not a per-axis patch: the picker holds a complete face on screen and sends what
+// it is showing, and a partial write would leave a spec whose missing halves the
+// client has to invent — twice, once here and once on every reader's screen.
+type avatarReq struct {
+	Avatar map[string]string `json:"avatar"`
+}
+
 // @Summary Set the learner's display name
 // @Tags user
 // @Security Bearer
@@ -150,6 +160,46 @@ func (h *meHandler) setDisplayName(w http.ResponseWriter, r *http.Request) {
 	}
 	if err := h.users.SetDisplayName(r.Context(), uid, name); err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not save name")
+		return
+	}
+	saved, err := h.users.GetProfile(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, saved)
+}
+
+// @Summary Set the learner's portrait
+// @Description Every axis at once (skin·hair·hairColor·eyes·mouth·outfit·outfitColor·hat·bg·acc).
+// @Description A key the client cannot draw is a 400 rather than a silent correction —
+// @Description a corrected write would store a portrait nobody chose.
+// @Tags user
+// @Security Bearer
+// @Param body body avatarReq true "the portrait"
+// @Success 200 {object} user.Profile
+// @Router /me/avatar [patch]
+func (h *meHandler) setAvatar(w http.ResponseWriter, r *http.Request) {
+	uid, ok := UserID(r.Context())
+	if !ok {
+		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
+		return
+	}
+	var req avatarReq
+	if err := httpx.DecodeJSON(r, &req); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid body")
+		return
+	}
+	spec, err := avatar.Spec(req.Avatar).Clean()
+	if err != nil {
+		// The domain's message names what is wrong, and both cases are a client bug
+		// (a picker offering a key the server does not know), so it is worth reading
+		// in a log rather than being flattened to "invalid".
+		httpx.Error(w, http.StatusBadRequest, err.Error())
+		return
+	}
+	if err := h.users.SetAvatar(r.Context(), uid, spec); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not save the portrait")
 		return
 	}
 	saved, err := h.users.GetProfile(r.Context(), uid)

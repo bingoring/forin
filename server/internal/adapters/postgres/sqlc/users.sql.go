@@ -9,6 +9,45 @@ import (
 	"context"
 )
 
+const avatars = `-- name: Avatars :many
+SELECT user_id, avatar FROM profiles
+WHERE user_id = ANY ($1::uuid[]) AND avatar IS NOT NULL
+`
+
+type AvatarsRow struct {
+	UserID string `json:"user_id"`
+	Avatar []byte `json:"avatar"`
+}
+
+// Portraits for a set of users, in ONE query — the same reason DisplayNames exists:
+// a lounge feed or a colleague list draws many people at once, and a per-row lookup
+// turns a page of twenty into twenty round trips.
+//
+// The NULL filter is an optimisation, not the guard: rows nobody will use should not
+// cross the wire. What actually makes "absent" mean "never chose one" is the repo,
+// which drops any row whose json does not parse — a NULL included. Both are kept,
+// and the mutation test that proved the filter alone is not load-bearing is why this
+// comment no longer claims it is.
+func (q *Queries) Avatars(ctx context.Context, userIds []string) ([]AvatarsRow, error) {
+	rows, err := q.db.Query(ctx, avatars, userIds)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []AvatarsRow
+	for rows.Next() {
+		var i AvatarsRow
+		if err := rows.Scan(&i.UserID, &i.Avatar); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const createIdentity = `-- name: CreateIdentity :exec
 INSERT INTO auth_identities (user_id, provider, subject_id, email) VALUES ($1, $2, $3, $4)
 `
@@ -76,7 +115,7 @@ func (q *Queries) DisplayNames(ctx context.Context, userIds []string) ([]Display
 }
 
 const getProfile = `-- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name FROM profiles WHERE user_id = $1
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name, avatar FROM profiles WHERE user_id = $1
 `
 
 type GetProfileRow struct {
@@ -90,6 +129,7 @@ type GetProfileRow struct {
 	EquippedTitle string `json:"equipped_title"`
 	UiLang        string `json:"ui_lang"`
 	DisplayName   string `json:"display_name"`
+	Avatar        []byte `json:"avatar"`
 }
 
 func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow, error) {
@@ -106,6 +146,7 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 		&i.EquippedTitle,
 		&i.UiLang,
 		&i.DisplayName,
+		&i.Avatar,
 	)
 	return i, err
 }
@@ -137,6 +178,24 @@ func (q *Queries) GetUserByIdentity(ctx context.Context, arg GetUserByIdentityPa
 	var i User
 	err := row.Scan(&i.ID, &i.Status, &i.CreatedAt)
 	return i, err
+}
+
+const setAvatar = `-- name: SetAvatar :exec
+INSERT INTO profiles (user_id, avatar, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET avatar = $2, updated_at = now()
+`
+
+type SetAvatarParams struct {
+	UserID string `json:"user_id"`
+	Avatar []byte `json:"avatar"`
+}
+
+// Single-field patch, like SetDisplayName. Never UpsertProfile: that one fills the
+// columns it is not given with onboarding defaults, so saving a portrait through it
+// would reset the learner's job and languages.
+func (q *Queries) SetAvatar(ctx context.Context, arg SetAvatarParams) error {
+	_, err := q.db.Exec(ctx, setAvatar, arg.UserID, arg.Avatar)
+	return err
 }
 
 const setDisplayName = `-- name: SetDisplayName :exec

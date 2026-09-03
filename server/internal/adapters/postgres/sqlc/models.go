@@ -207,6 +207,7 @@ type Profile struct {
 	EquippedTitle string             `json:"equipped_title"`
 	UiLang        string             `json:"ui_lang"`
 	DisplayName   string             `json:"display_name"`
+	Avatar        []byte             `json:"avatar"`
 }
 
 type Quiz struct {

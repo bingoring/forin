@@ -87,6 +87,14 @@ func (r *LoungeRepo) Feed(ctx context.Context, readerID string, before *time.Tim
 			Mine:        row.AuthorID == readerID,
 			CreatedAt:   row.CreatedAt.Time,
 		}
+		// Same rule as the snippet below: a portrait that will not parse is dropped,
+		// not fatal. The card's fallback is a seeded face, which is a face.
+		if len(row.AuthorAvatar) > 0 {
+			var spec map[string]string
+			if json.Unmarshal(row.AuthorAvatar, &spec) == nil && len(spec) > 0 {
+				p.AuthorAvatar = spec
+			}
+		}
 		// A snippet that will not parse is dropped rather than failing the page: one
 		// bad row must not blank the whole lounge for everyone.
 		if len(row.Snippet) > 0 {

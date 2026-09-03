@@ -16,7 +16,7 @@ UPDATE auth_identities SET email = $3 WHERE provider = $1 AND subject_id = $2;
 SELECT id, status, created_at FROM users WHERE id = $1;
 
 -- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name FROM profiles WHERE user_id = $1;
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name, avatar FROM profiles WHERE user_id = $1;
 
 -- name: SetEquippedTitle :exec
 INSERT INTO profiles (user_id, equipped_title, updated_at) VALUES ($1, $2, now())
@@ -50,3 +50,23 @@ ON CONFLICT (user_id) DO UPDATE SET display_name = $2, updated_at = now();
 -- has a fallback for "not set", and an empty string would make it choose twice.
 SELECT user_id, display_name FROM profiles
 WHERE user_id = ANY (@user_ids::uuid[]) AND display_name <> '';
+
+-- name: SetAvatar :exec
+-- Single-field patch, like SetDisplayName. Never UpsertProfile: that one fills the
+-- columns it is not given with onboarding defaults, so saving a portrait through it
+-- would reset the learner's job and languages.
+INSERT INTO profiles (user_id, avatar, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET avatar = $2, updated_at = now();
+
+-- name: Avatars :many
+-- Portraits for a set of users, in ONE query — the same reason DisplayNames exists:
+-- a lounge feed or a colleague list draws many people at once, and a per-row lookup
+-- turns a page of twenty into twenty round trips.
+--
+-- The NULL filter is an optimisation, not the guard: rows nobody will use should not
+-- cross the wire. What actually makes "absent" mean "never chose one" is the repo,
+-- which drops any row whose json does not parse — a NULL included. Both are kept,
+-- and the mutation test that proved the filter alone is not load-bearing is why this
+-- comment no longer claims it is.
+SELECT user_id, avatar FROM profiles
+WHERE user_id = ANY (@user_ids::uuid[]) AND avatar IS NOT NULL;

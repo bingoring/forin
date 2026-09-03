@@ -16,6 +16,7 @@ SELECT p.id, p.author_id, p.kind, p.body, p.tags, p.scenario_id, p.snippet,
        COALESCE(pr.destination, '')                       AS author_destination,
        COALESCE(pr.job, '')                               AS author_job,
        COALESCE(g.level, 0)::int                          AS author_level,
+       pr.avatar                                          AS author_avatar,
        (c.user_id IS NOT NULL)::bool                      AS cheered
   FROM lounge_posts p
   LEFT JOIN profiles pr     ON pr.user_id = p.author_id

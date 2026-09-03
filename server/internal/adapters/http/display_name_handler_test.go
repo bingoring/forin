@@ -8,6 +8,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/bingoring/forin/server/internal/domain/avatar"
 	"github.com/bingoring/forin/server/internal/domain/user"
 )
 
@@ -49,6 +50,12 @@ func (r *nameRepo) SetEquippedTitle(context.Context, string, string) error {
 	panic("not used by setDisplayName")
 }
 func (r *nameRepo) SetUILang(context.Context, string, string) error {
+	panic("not used by setDisplayName")
+}
+func (r *nameRepo) SetAvatar(context.Context, string, avatar.Spec) error {
+	panic("not used by setDisplayName")
+}
+func (r *nameRepo) Avatars(context.Context, []string) (map[string]avatar.Spec, error) {
 	panic("not used by setDisplayName")
 }
 

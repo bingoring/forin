@@ -252,6 +252,14 @@ components:
       - KindShare
     github_com_bingoring_forin_server_internal_domain_lounge.Post:
       properties:
+        authorAvatar:
+          additionalProperties:
+            type: string
+          description: |-
+            AuthorAvatar is the writer's NbAvatar spec, or nil when they never opened the
+            picker — the card then draws a face seeded from authorId, so a post always has
+            a person attached to it.
+          type: object
         authorDestination:
           type: string
         authorId:
@@ -461,6 +469,15 @@ components:
       type: object
     github_com_bingoring_forin_server_internal_domain_user.Profile:
       properties:
+        avatar:
+          additionalProperties:
+            type: string
+          description: |-
+            Avatar is the NbAvatar spec (핸드오프 v32), or nil when the learner has never
+            opened the picker. nil is NOT a blank portrait: the client draws a face seeded
+            from the user id then, which is why no account needs a write at sign-up and no
+            existing row needed a backfill.
+          type: object
         destination:
           description: e.g. "us"
           type: string
@@ -637,6 +654,13 @@ components:
           type: string
         score:
           type: integer
+      type: object
+    internal_adapters_http.avatarReq:
+      properties:
+        avatar:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     internal_adapters_http.choicesResp:
       properties:
@@ -1554,6 +1578,33 @@ paths:
       summary: What the learner may enter in one interior
       tags:
       - access
+  /me/avatar:
+    patch:
+      description: |-
+        Every axis at once (skin·hair·hairColor·eyes·mouth·outfit·outfitColor·hat·bg·acc).
+        A key the client cannot draw is a 400 rather than a silent correction —
+        a corrected write would store a portrait nobody chose.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.avatarReq'
+              description: the portrait
+              summary: body
+        description: the portrait
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_user.Profile'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Set the learner's portrait
+      tags:
+      - user
   /me/calendar:
     get:
       parameters:

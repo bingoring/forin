@@ -132,6 +132,12 @@ func (h *colleagueHandler) list(w http.ResponseWriter, r *http.Request) {
 			row["name"] = user.NameOr(prof.DisplayName, l.OtherID)
 			row["targetLevel"] = prof.TargetLevel
 			row["destination"] = prof.Destination
+			// Sent only when they chose one. Absent means "never opened the picker",
+			// and the client draws a face seeded from the id — so the key is omitted
+			// rather than set to null, which would make the client decide twice.
+			if len(prof.Avatar) > 0 {
+				row["avatar"] = prof.Avatar
+			}
 		}
 		if p, err := h.progress.GetProgress(ctx, l.OtherID); err == nil && p != nil {
 			row["streak"] = p.StreakCurrent
@@ -183,6 +189,9 @@ func (h *colleagueHandler) detail(w http.ResponseWriter, r *http.Request) {
 		out["name"] = user.NameOr(prof.DisplayName, other)
 		out["targetLevel"] = prof.TargetLevel
 		out["destination"] = prof.Destination
+		if len(prof.Avatar) > 0 {
+			out["avatar"] = prof.Avatar
+		}
 	}
 	if p, err := h.progress.GetProgress(ctx, other); err == nil && p != nil {
 		out["level"], out["streak"] = p.Level, p.StreakCurrent

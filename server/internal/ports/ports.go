@@ -7,6 +7,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/domain/avatar"
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/lounge"
@@ -502,6 +503,14 @@ type UserRepo interface {
 	// SetUILang persists the app's display language ("" = follow NativeLang). Kept
 	// apart from UpdateProfile, which is a full onboarding upsert.
 	SetUILang(ctx context.Context, userID, lang string) error
+	// SetAvatar persists the learner's chosen portrait (already validated by
+	// domain/avatar). A single-field patch, like SetDisplayName.
+	SetAvatar(ctx context.Context, userID string, spec avatar.Spec) error
+	// Avatars resolves many users' portraits at once, for a lounge feed or a
+	// colleague list. Users who never chose one are ABSENT from the map rather than
+	// present with nil: the client draws a face seeded from the user id for those,
+	// and a nil would make it decide twice.
+	Avatars(ctx context.Context, userIDs []string) (map[string]avatar.Spec, error)
 }
 
 // RefreshStore stores hashed refresh tokens with TTL and supports rotation.
