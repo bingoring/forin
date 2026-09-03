@@ -317,29 +317,29 @@ export function NbStamp({ color = nb.red, rot = -8, size = 54, top, bottom }: {
 /**
  * Highlighter over a phrase.
  *
- * The web draws this as a background gradient that starts 55% down the line, so the ink
- * stays readable and the marker looks like a stroke rather than a fill. RN cannot put a
- * gradient behind a run of text, so the band is a View behind it, at the same 45%.
+ * The marker follows the GLYPHS, not a box. It used to be a View band behind the text at
+ * `top: 45%`, which caught only the LOWER of a two-line phrase — the band was sized to
+ * the whole box, so its 45% fell between the two lines. A `Text` with a background instead
+ * paints every wrapped line to the width of its own run, so both lines of a phrase are
+ * marked, each the width of its text rather than a rectangle around the longest line.
  *
- * It is therefore NOT inline: it takes its own box. That matches how the design uses it —
- * a phrase, a stat, 오늘의 문장 — and the one place a marker has to sit mid-sentence
- * should use `markInline` below, which is a full-height wash and the closest RN gets.
+ * RN cannot start the wash partway down a line (the web's `transparent 55%` gradient), so
+ * the marker is the full line height in the highlighter colour — which is what a
+ * highlighter dragged across text actually leaves behind: the ink still reads on top.
  */
-export function NbMark({ style, textStyle, children }: {
-  style?: StyleProp<ViewStyle>;
+export function NbMark({ textStyle, children }: {
   textStyle?: StyleProp<TextStyle>;
   children?: ReactNode;
 }) {
   return (
-    <View style={[{ alignSelf: 'flex-start', paddingHorizontal: 2 }, style]}>
-      <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: '45%', backgroundColor: nb.marker }} />
-      <Text style={[{ fontFamily: nbFonts.hand, fontSize: 17, color: nb.ink }, textStyle]}>{children}</Text>
-    </View>
+    <Text style={[{ fontFamily: nbFonts.hand, fontSize: 17, color: nb.ink, backgroundColor: nb.marker }, textStyle]}>
+      {children}
+    </Text>
   );
 }
 
-/** For a marker that must sit inside a sentence: a full-height wash, since RN has no
- *  partial-height text background. Weaker than the band so it does not read as a block. */
+/** For a marker inside a longer run of mixed text: the same wash as NbMark, weaker so it
+ *  does not read as a block when several sit in one paragraph. */
 export const markInline: TextStyle = { backgroundColor: 'rgba(249,227,123,.55)' };
 
 /** A dashed memo box — tips, rules, warnings. */

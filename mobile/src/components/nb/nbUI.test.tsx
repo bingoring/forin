@@ -56,16 +56,23 @@ test('the page is actually ruled', () => {
   expect(tops[1] - tops[0]).toBe(RULE_H);
 });
 
-test('the highlighter is a band under the text, not a block behind it', () => {
-  // The point of the design: the marker starts 45% down so the ink stays legible. A
-  // full-height fill is the thing this replaces — it reads as a coloured label.
+test('the highlighter follows the glyphs — it is the text’s own background', () => {
+  // The marker is on the Text itself, not a separate box behind it. A View band was
+  // sized to the whole node, so a two-line phrase had its 45% fall between the lines and
+  // only the lower one got marked; a text background paints each wrapped line to its own
+  // width instead. So the highlighter colour must live on the node that carries the
+  // words, and there must be no free-standing band View doing it.
   const tree = mount(<NbMark>형광펜 강조</NbMark>);
-  const band = styled(tree.root, (s) => s.backgroundColor === nb.marker);
-  expect(band.length).toBe(1);
-  const st = band[0].props.style;
+  const marked = styled(tree.root, (s) => s.backgroundColor === nb.marker);
+  expect(marked.length).toBe(1);
+  // It is the Text, and it carries the words — not an empty positioned band beside them.
+  expect(String(marked[0].type)).toBe('Text');
+  expect(marked[0].props.children).toBe('형광펜 강조');
+  const st = marked[0].props.style;
   const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
-  expect(flat.top).toBe('45%');
-  expect(flat.bottom).toBe(0);
+  // No box geometry: a band had top/bottom, the text background has neither.
+  expect(flat.top).toBeUndefined();
+  expect(flat.bottom).toBeUndefined();
 });
 
 test('the gauge is hatched, and the hatch is clipped to the value', () => {
