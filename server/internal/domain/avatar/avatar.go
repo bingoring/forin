@@ -37,15 +37,16 @@ var AllowedKeys = map[string][]string{
 	},
 	"eyes": {
 		"dot", "lash", "happy", "closed", "round", "sleepy", "wink", "uu", "side",
-		"sparkle", "droopy", "brow",
+		"sparkle", "droopy", "brow", "weary", "worried", "angry",
 	},
 	"mouth": {
 		"line", "smile", "grin", "laugh", "pout", "o", "wave", "smirk", "tongue",
-		"frown", "teeth", "hmm",
+		"frown", "teeth", "hmm", "pain", "clench",
 	},
 	"outfit": {
 		"scrubV", "scrubPocket", "dress", "labCoat", "surgGown", "isoGown", "polo",
 		"knit", "hoodie", "shirt", "tshirt", "apron",
+		"hospitalGown", "paramedic", "security", "suit", "cardigan", "coverall",
 	},
 	"outfitColor": {
 		"sage", "navy", "burgundy", "lilac", "sky", "peach", "charcoal", "mint",
@@ -53,7 +54,7 @@ var AllowedKeys = map[string][]string{
 	},
 	"hat": {
 		"none", "nurseCap", "scrubCap", "scrubCapDot", "beanie", "cap", "gradCap",
-		"party", "beret", "headband", "bandana",
+		"party", "beret", "headband", "bandana", "securityCap",
 	},
 	"bg": {
 		"plain", "lines", "grid", "washSky", "washPink", "washMint", "washYellow",
@@ -62,6 +63,7 @@ var AllowedKeys = map[string][]string{
 	"acc": {
 		"none", "stetho", "badge", "glassesRound", "glassesSquare", "earring",
 		"maskChin", "maskOn", "plaster", "earphones", "blush", "freckles",
+		"mustache", "beard", "wrinkles", "cannula", "faceShield",
 	},
 }
 

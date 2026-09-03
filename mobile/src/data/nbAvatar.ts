@@ -31,16 +31,23 @@ export const HAIR_COLOR_KEYS = [
 export const EYE_KEYS = [
   'dot', 'lash', 'happy', 'closed', 'round', 'sleepy', 'wink', 'uu', 'side', 'sparkle',
   'droopy', 'brow',
+  // v34 — the faces an NPC needs: tired, anxious, angry.
+  'weary', 'worried', 'angry',
 ] as const;
 
 export const MOUTH_KEYS = [
   'line', 'smile', 'grin', 'laugh', 'pout', 'o', 'wave', 'smirk', 'tongue', 'frown',
   'teeth', 'hmm',
+  // v34 — a wince and a clenched jaw, for a patient in pain.
+  'pain', 'clench',
 ] as const;
 
 export const OUTFIT_KEYS = [
   'scrubV', 'scrubPocket', 'dress', 'labCoat', 'surgGown', 'isoGown', 'polo', 'knit',
   'hoodie', 'shirt', 'tshirt', 'apron',
+  // v34 — the uniforms an NPC wears: patient gown, paramedic, security, a suit, a
+  // cardigan (a visitor), and a coverall (the hood is drawn as a circle behind the face).
+  'hospitalGown', 'paramedic', 'security', 'suit', 'cardigan', 'coverall',
 ] as const;
 
 export const OUTFIT_COLOR_KEYS = [
@@ -51,6 +58,8 @@ export const OUTFIT_COLOR_KEYS = [
 export const HAT_KEYS = [
   'none', 'nurseCap', 'scrubCap', 'scrubCapDot', 'beanie', 'cap', 'gradCap', 'party',
   'beret', 'headband', 'bandana',
+  // v34 — a security officer's peaked cap.
+  'securityCap',
 ] as const;
 
 export const BG_KEYS = [
@@ -61,6 +70,9 @@ export const BG_KEYS = [
 export const ACC_KEYS = [
   'none', 'stetho', 'badge', 'glassesRound', 'glassesSquare', 'earring', 'maskChin',
   'maskOn', 'plaster', 'earphones', 'blush', 'freckles',
+  // v34 — facial hair and age lines, plus the two things a bedside NPC wears: a nasal
+  // cannula and a face shield.
+  'mustache', 'beard', 'wrinkles', 'cannula', 'faceShield',
 ] as const;
 
 export type SkinKey = typeof SKIN_KEYS[number];

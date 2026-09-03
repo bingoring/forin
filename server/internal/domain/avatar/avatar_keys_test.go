@@ -26,10 +26,14 @@ func TestAllowedKeysMatchTheClientCatalog(t *testing.T) {
 
 	// export const SKIN_KEYS = ['pale', 'ivory', …] as const;
 	re := regexp.MustCompile(`(?s)export const ([A-Z_]+_KEYS) = \[(.*?)\] as const`)
+	// The catalog carries `// …` line comments between keys, and a comment can hold a
+	// comma ("tired, not asleep"), which the split below would turn into phantom keys.
+	// Strip comments before splitting so the drift check compares keys, not prose.
+	comment := regexp.MustCompile(`//[^\n]*`)
 	client := map[string][]string{}
 	for _, m := range re.FindAllStringSubmatch(string(src), -1) {
 		keys := []string{}
-		for _, raw := range strings.Split(m[2], ",") {
+		for _, raw := range strings.Split(comment.ReplaceAllString(m[2], ""), ",") {
 			k := strings.Trim(strings.TrimSpace(raw), "'\"\n\t ")
 			if k != "" {
 				keys = append(keys, k)

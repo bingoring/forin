@@ -274,6 +274,29 @@ const EYES: Record<EyeKey, () => ReactElement> = {
       <Path d="M24.5 27 Q27 25.8 29.5 27 M34.5 27 Q37 25.8 39.5 27" {...SN} strokeWidth="1.3" />
     </G>
   ),
+  // v34 — closed eyes with soft under-bags: tired, not asleep.
+  weary: () => (
+    <G>
+      <Path d="M24.5 30 H29.5 M34.5 30 H39.5" {...SN} strokeWidth="1.7" />
+      <Path d="M25 33.5 Q27 34.6 29 33.5 M35 33.5 Q37 34.6 39 33.5" {...SN} strokeWidth="1.1" opacity={0.55} />
+    </G>
+  ),
+  // v34 — dots under raised inner brows: anxious.
+  worried: () => (
+    <G>
+      <Circle cx="27" cy="31.5" r="1.6" fill={K} />
+      <Circle cx="37" cy="31.5" r="1.6" fill={K} />
+      <Path d="M29.5 26.2 L24 28.3 M34.5 26.2 L40 28.3" {...SN} strokeWidth="1.4" />
+    </G>
+  ),
+  // v34 — the same dots under brows angled the other way: angry.
+  angry: () => (
+    <G>
+      <Circle cx="27" cy="31.5" r="1.6" fill={K} />
+      <Circle cx="37" cy="31.5" r="1.6" fill={K} />
+      <Path d="M24 26.2 L29.5 28.3 M40 26.2 L34.5 28.3" {...SN} strokeWidth="1.4" />
+    </G>
+  ),
 };
 
 // ── mouths (12) ───────────────────────────────────────────────────────────
@@ -309,6 +332,16 @@ const MOUTHS: Record<MouthKey, () => ReactElement> = {
     <G>
       <Path d="M28 38.5 H35" {...SN} />
       <Circle cx="38.6" cy="38.5" r="0.9" fill={K} />
+    </G>
+  ),
+  // v34 — a zig-zag wince.
+  pain: () => <Path d="M27.5 38.5 L29.5 37.2 L31.5 38.8 L33.5 37.2 L35.5 38.8 L36.8 37.6" {...SN} strokeWidth="1.6" />,
+  // v34 — a clenched jaw with gritted teeth.
+  clench: () => (
+    <G>
+      <Path d="M27 36.8 H37 L36 40.6 H28 Z" fill="#fff" {...S} strokeWidth="1.5" />
+      <Line x1="30.2" y1="37" x2="30.2" y2="40.3" stroke={K} strokeWidth="0.9" />
+      <Line x1="33.8" y1="37" x2="33.8" y2="40.3" stroke={K} strokeWidth="0.9" />
     </G>
   ),
 };
@@ -402,6 +435,66 @@ const OUTFITS: Record<OutfitKey, (oc: string) => ReactElement> = {
       <Path d="M27 62 H37" stroke={K} strokeWidth="1.1" opacity={0.5} fill="none" />
     </G>
   ),
+  // v34 — a patient gown: open V-neck, tie dots, a shoulder fold.
+  hospitalGown: (oc) => (
+    <G>
+      <Path d={torso} fill={oc} {...S} />
+      <Path d="M26 53 L32 60 L38 53" {...SN} strokeWidth="1.6" />
+      {[[24, 63], [32, 65], [40, 63], [27, 68], [37, 68]].map((p, i) => (
+        <Circle key={i} cx={p[0]} cy={p[1]} r="1" fill="rgba(255,255,255,.75)" />
+      ))}
+      <Path d="M20 57 L26 55" {...SN} strokeWidth="1.1" opacity={0.5} />
+    </G>
+  ),
+  // v34 — a paramedic's jacket with a reflective hem stripe.
+  paramedic: (oc) => (
+    <G>
+      <Path d={torso} fill={oc} {...S} />
+      <Path d="M25 53 L28 56 L32 54 L36 56 L39 53" {...SN} strokeWidth="1.4" />
+      <Path d="M17 60 Q32 64 47 60 L47 63.5 Q32 67.5 17 63.5 Z" fill="#E9C45A" {...S} strokeWidth="1.4" />
+      <Line x1="32" y1="54" x2="32" y2="70" stroke={K} strokeWidth="1.3" />
+    </G>
+  ),
+  // v34 — a security uniform: epaulettes, a placket, buttons, a gold badge.
+  security: (oc) => (
+    <G>
+      <Path d={torso} fill={oc} {...S} />
+      <Path d="M20 54.5 L27 53 M44 54.5 L37 53" {...SN} strokeWidth="2.2" />
+      <Line x1="32" y1="53" x2="32" y2="70" stroke={K} strokeWidth="1.2" />
+      <Circle cx="32" cy="58" r="0.9" fill={K} />
+      <Circle cx="32" cy="63" r="0.9" fill={K} />
+      <Circle cx="24" cy="61" r="2.4" fill="#E9C45A" stroke={K} strokeWidth="1.2" />
+    </G>
+  ),
+  // v34 — a suit with a collar, lapels and a tie.
+  suit: (oc) => (
+    <G>
+      <Path d={torso} fill={oc} {...S} />
+      <Path d="M28 52 L32 58 L36 52 Z" fill="#FDFAF0" {...S} strokeWidth="1.3" />
+      <Path d="M28 52 L31 62 L32 58 M36 52 L33 62 L32 58" {...SN} strokeWidth="1.4" />
+      <Path d="M30.8 58 L32 60 L33.2 58 L32 65 Z" fill="#9C5A5A" {...S} strokeWidth="1.1" />
+    </G>
+  ),
+  // v34 — a cardigan over a shirt: open fronts and two buttons.
+  cardigan: (oc) => (
+    <G>
+      <Path d={torso} fill={oc} {...S} />
+      <Path d="M27 52 L32 59 L37 52 Z" fill="#FDFAF0" {...S} strokeWidth="1.3" />
+      <Path d="M28 53 L28 70 M36 53 L36 70" {...SN} strokeWidth="1.2" />
+      <Circle cx="32" cy="62" r="0.9" fill={K} />
+      <Circle cx="32" cy="66.5" r="0.9" fill={K} />
+    </G>
+  ),
+  // v34 — a coverall/PPE suit. The hood is the extra circle behind the head, so this
+  // outfit draws part of itself ABOVE the face line.
+  coverall: (oc) => (
+    <G>
+      <Circle cx="32" cy="32" r="17" fill={oc} {...S} />
+      <Path d={torso} fill={oc} {...S} />
+      <Line x1="32" y1="52" x2="32" y2="70" stroke={K} strokeWidth="1.2" strokeDasharray="2.5 2" />
+      <Path d="M22 58 Q32 61 42 58" fill="none" stroke={K} strokeWidth="1" opacity={0.4} />
+    </G>
+  ),
 };
 
 // ── hats (11) ─────────────────────────────────────────────────────────────
@@ -462,6 +555,14 @@ const HATS: Record<HatKey, (oc?: string) => ReactElement | null> = {
     <G>
       <Path d="M19 22 Q18 9 32 9 Q46 9 45 22 L44 24 Q32 19 20 24 Z" fill={oc || '#5F8D5A'} {...S} />
       <Path d="M44 22 L50 26 L45 27 Z" fill={oc || '#5F8D5A'} {...S} strokeWidth="1.5" />
+    </G>
+  ),
+  // v34 — a security officer's peaked cap with a gold band and a brim.
+  securityCap: (oc) => (
+    <G>
+      <Path d="M20 20 A15 15 0 0 1 44 20 L44.5 22.5 Q32 18 19.5 22.5 Z" fill={oc || '#4A4438'} {...S} />
+      <Path d="M20 21.5 Q32 17.5 44 21.5" fill="none" stroke="#E9C45A" strokeWidth="1.6" />
+      <Path d="M25 21.8 Q32 26 39 21.8 L39 24 Q32 27.5 25 24 Z" fill={K} {...S} strokeWidth="1.2" />
     </G>
   ),
 };
@@ -537,6 +638,28 @@ const ACCS: Record<AccKey, () => ReactElement | null> = {
       {[[23, 34.5], [25.5, 36], [28, 34.8], [36, 34.8], [38.5, 36], [41, 34.5]].map((p, i) => (
         <Circle key={i} cx={p[0]} cy={p[1]} r="0.7" />
       ))}
+    </G>
+  ),
+  // v34 — facial hair and age lines.
+  mustache: () => <Path d="M26 36.4 Q32 33.8 38 36.4 Q35.2 37.8 32 36.6 Q28.8 37.8 26 36.4 Z" fill="#4A382A" stroke={K} strokeWidth="1" />,
+  beard: () => <Path d="M27.5 41 Q32 40 36.5 41 Q37.6 45.6 32 46.2 Q26.4 45.6 27.5 41 Z" fill="#4A382A" stroke={K} strokeWidth="1.2" />,
+  wrinkles: () => (
+    <G {...SN} strokeWidth="1" opacity={0.45}>
+      <Path d="M26 22.5 Q32 21 38 22.5 M27.5 25 Q32 23.8 36.5 25" />
+      <Path d="M25.5 36 Q24.8 38 26 40 M38.5 36 Q39.2 38 38 40" />
+    </G>
+  ),
+  // v34 — a nasal cannula (the tube under the nose) and a face shield.
+  cannula: () => (
+    <G>
+      <Path d="M18.6 36.5 Q32 41 45.4 36.5" fill="none" stroke="rgba(74,111,165,.75)" strokeWidth="1.6" />
+      <Path d="M30.6 35.4 L30.6 37.6 M33.4 35.4 L33.4 37.6" fill="none" stroke="rgba(74,111,165,.9)" strokeWidth="1.5" strokeLinecap="round" />
+    </G>
+  ),
+  faceShield: () => (
+    <G>
+      <Path d="M20 20.5 L44 20.5 L45 41.5 Q32 47 19 41.5 Z" fill="rgba(169,203,227,.26)" stroke={K} strokeWidth="1.4" />
+      <Rect x="19" y="17.5" width="26" height="4" rx="1.5" fill="#FFFdf4" stroke={K} strokeWidth="1.4" />
     </G>
   ),
 };
