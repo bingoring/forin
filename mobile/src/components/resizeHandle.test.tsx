@@ -2,6 +2,8 @@
 // but the reader can place, and every fixed fraction was wrong for somebody.
 jest.mock('react-native-worklets', () => ({ createWorkletRuntime: () => ({}), runOnJS: (f: unknown) => f, runOnUI: (f: unknown) => f, isWorkletFunction: () => false }));
 
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { ResizeHandle } from '@/components/ResizeHandle';
 import { trackMounts } from '../testing/mountRegistry';
@@ -81,6 +83,20 @@ test('the target is taller than the mark', () => {
   }, { deep: true })[0];
   const barSt = Array.isArray(bar.props.style) ? Object.assign({}, ...bar.props.style) : bar.props.style;
   expect(st.paddingVertical * 2 + barSt.height).toBeGreaterThan(barSt.height * 3);
+});
+
+test('a vertical drag on the line is captured, so a card below cannot steal it', () => {
+  // The reply-choice cards sit directly below this handle and are pressables. Without
+  // capture, a drag that started on the handle could be claimed by a card instead —
+  // "잡고 위아래로 움직여도 잘 안 움직여". panDriver invokes the capture handler but does
+  // not assert its return, so a check on the rendered tree cannot catch its removal;
+  // the source is where the fix lives.
+  const src = readFileSync(join(__dirname, 'ResizeHandle.tsx'), 'utf8');
+  // Capture on MOVEMENT (the same condition as the bubble claim), never on touch — a
+  // real card tap has no dy and still works.
+  expect(src).toMatch(/onMoveShouldSetPanResponderCapture: \(_e, g\) => Math\.abs\(g\.dy\) > CLAIM_PX/);
+  // And hitSlop widens the target so a thumb near the line still grabs it.
+  expect(src).toMatch(/hitSlop=\{\{/);
 });
 
 test('a re-render does not leave the gesture calling a stale handler', () => {

@@ -22,8 +22,9 @@ import { colors } from '@/theme/tokens';
 
 const C = colors.ink;
 /** Vertical movement before the drag is claimed. Below this a wobble during a tap would
- *  turn into a resize. */
-const CLAIM_PX = 4;
+ *  turn into a resize. Small (2, not 4): the reports were that the handle "barely moves",
+ *  and a 4pt deadband on a short drag ate the start of the gesture. */
+const CLAIM_PX = 2;
 
 export function ResizeHandle({ onDrag, onDone, testID }: {
   /** Called with the total movement since this gesture began, in points. Down is
@@ -45,6 +46,12 @@ export function ResizeHandle({ onDrag, onDone, testID }: {
         // Movement, not touch. On touch this would eat taps aimed at the rows either
         // side of the line.
         onMoveShouldSetPanResponder: (_e, g) => Math.abs(g.dy) > CLAIM_PX,
+        // CAPTURE too: the reply cards below the handle are pressables, and without
+        // capture a vertical drag that started on the handle could be claimed by a card
+        // instead — which is the "grab it and it barely moves" report. Capturing on the
+        // same vertical-movement condition keeps a real tap on a card (no dy) working,
+        // while a drag on the line is always the handle's.
+        onMoveShouldSetPanResponderCapture: (_e, g) => Math.abs(g.dy) > CLAIM_PX,
         onPanResponderMove: (_e, g) => live.current.onDrag(g.dy),
         onPanResponderRelease: () => live.current.onDone?.(),
         onPanResponderTerminate: () => live.current.onDone?.(),
@@ -56,10 +63,13 @@ export function ResizeHandle({ onDrag, onDone, testID }: {
     <View
       testID={testID}
       {...pan.panHandlers}
-      // The target, not the mark: tall enough to find without aiming.
-      style={{ paddingVertical: 7, alignItems: 'center', justifyContent: 'center' }}
+      // The target, not the mark: tall enough to find without aiming, and hitSlop widens
+      // it further past its drawn bounds so a thumb that lands near the line still grabs
+      // it. The reports were that the handle was hard to catch at all.
+      hitSlop={{ top: 10, bottom: 10, left: 24, right: 24 }}
+      style={{ paddingVertical: 11, alignItems: 'center', justifyContent: 'center' }}
     >
-      <View style={{ height: 4, width: 46, backgroundColor: C, opacity: 0.45 }} />
+      <View style={{ height: 5, width: 52, borderRadius: 3, backgroundColor: C, opacity: 0.45 }} />
     </View>
   );
 }

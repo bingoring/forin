@@ -95,15 +95,16 @@ test('상황 종료 is centred on the SCREEN, in the same top row as the exit', 
   // width. It is its own child of the status row now, pinned across the full width so
   // the centre is the screen's centre.
   const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
-  // `top: 0`, and that number is the whole point of this assertion.
+  // The chip is a SIBLING of the status row now, not a child of it, at `top: 52`.
   //
-  // It used to read 52 — and this test pinned the 52 while its own comment claimed to be
-  // guarding that the chip PRESSES. Yoga positions an absolute child from the parent's
-  // content box, so 52 hung the chip 52pt below the status row's bounds: it drew fine and
-  // neither platform hit-tests a child outside its parent, so the button was dead. jest
-  // has no layout engine and cannot catch that from the rendered tree, so what is checked
-  // is the offset itself: this chip lives on the row's own line.
-  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 0, alignItems: 'center'/);
+  // As a child its absolute `top: 0` rode up above the row's paddingTop toward the notch
+  // ("엄청 위에 달려있어"). The × and the mission cluster are flow children that start at
+  // the row's paddingTop of 52, so the chip pinned at top:52 shares their line. jest has
+  // no layout engine, so what is checked is that the two numbers agree: the chip's top
+  // equals the row's paddingTop.
+  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center', zIndex: 6/);
+  // The status row it lines up with really does start at paddingTop 52.
+  expect(src).toMatch(/paddingTop: 52, paddingHorizontal: 16/);
   // v29 draws it as a paper card in the nurse's own hand rather than a PixelButton. What
   // has to hold is that it is the same control, in the same place, and that it presses —
   // a label with no press was the original complaint about this row.

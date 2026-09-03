@@ -632,34 +632,6 @@ export default function DialogueRoute() {
             <NbIcon name="cross" size={17} color={nb.red} />
           </NbPaper>
         </Pressable>
-        {/* 상황 종료, in the CENTRE OF THE SCREEN.
-            Absolutely positioned across the row rather than laid out between its
-            neighbours: with space-between it sat whereever the × and the mission chip
-            left it, which drifted as the chip's count changed and read as "almost
-            centred". Pinned across the full width it is centred on the screen, full
-            stop. pointerEvents box-none so the row's own children stay tappable. */}
-        {/* `top: 0`, not 52. Yoga positions an absolute child from the parent's CONTENT
-            box, so 52 put this chip 52pt BELOW the row it belongs to — hanging outside
-            the row's bounds, where it still rendered but could not be tapped at all
-            (neither platform hit-tests a child outside its parent). 0 is the row's own
-            line, which is where "centred across the row" meant to put it. */}
-        <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 0, alignItems: 'center' }}>
-          <Animated.View style={{ opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
-            <Pressable onPress={endSituation} hitSlop={6}>
-              {({ pressed }) => (
-                <NbPaper rot={0.5} style={{
-                  flexDirection: 'row', alignItems: 'center', gap: 5,
-                  paddingVertical: 6, paddingHorizontal: 14,
-                  transform: pressed ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '0.5deg' }],
-                }}>
-                  <NbIcon name="check" size={14} color={nb.green} />
-                  <Text numberOfLines={1} style={nbText.hand(15, nb.green)}>{t('dialogue.endSituation')}</Text>
-                </NbPaper>
-              )}
-            </Pressable>
-          </Animated.View>
-        </View>
-
         {/* The missions, top-right. Everything about this cluster — including why its
             width is repeated down the chain — is in MissionCluster. */}
         <MissionCluster
@@ -672,6 +644,30 @@ export default function DialogueRoute() {
         />
       </View>
 
+      {/* 상황 종료, centred across the screen and on the SAME line as the × and the
+          missions. It is a sibling of the status-bar row, not a child: as a child its
+          absolute `top: 0` sat above the row's paddingTop and rode up near the notch
+          ("엄청 위에 달려있어"). Pinned here at `top: 52` — the same paddingTop the ×
+          and the mission cluster start at — it shares their line, while left/right 0 +
+          alignItems centre keep it on the screen's centre regardless of the mission
+          chip's width. box-none so the row underneath stays tappable. */}
+      <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center', zIndex: 6 }}>
+        <Animated.View style={{ opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
+          <Pressable onPress={endSituation} hitSlop={6}>
+            {({ pressed }) => (
+              <NbPaper rot={0.5} style={{
+                flexDirection: 'row', alignItems: 'center', gap: 5,
+                paddingVertical: 6, paddingHorizontal: 14,
+                transform: pressed ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '0.5deg' }],
+              }}>
+                <NbIcon name="check" size={14} color={nb.green} />
+                <Text numberOfLines={1} style={nbText.hand(15, nb.green)}>{t('dialogue.endSituation')}</Text>
+              </NbPaper>
+            )}
+          </Pressable>
+        </Animated.View>
+      </View>
+
       {/* The NPC portrait, centred. Fades out while the keyboard is up — see `typing`.
 
           There used to be a second frame on the right holding the LEARNER's own face.
@@ -679,7 +675,10 @@ export default function DialogueRoute() {
           conversation where you are the one typing, and it pushed the NPC — the person
           being spoken to, whose expression is the feedback — off to one side. One
           portrait, in the middle, is the whole of what this strip is for. */}
-      <Animated.View style={{ position: 'absolute', left: 0, right: 0, top: 128, alignItems: 'center', zIndex: 3, opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
+      {/* top: 96, up from 128. The status row and 상황 종료 end near y≈82, so this sits
+          just below them ("상황종료 버튼 살짝 아래") instead of hanging a third of the
+          way down the screen. */}
+      <Animated.View style={{ position: 'absolute', left: 0, right: 0, top: 96, alignItems: 'center', zIndex: 3, opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
         <PortraitFrame
           name={p.name || 'NPC'}
           status={p.mood ? p.mood.toUpperCase() : undefined}
