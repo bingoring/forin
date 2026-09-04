@@ -44,6 +44,11 @@ type Config struct {
 	// Azure Speech (pronunciation assessment). Empty = pronunciation endpoint disabled.
 	AzureSpeechKey    string
 	AzureSpeechRegion string
+
+	// WardTTL is how long a live-ward presence survives without a heartbeat. The app
+	// heartbeats every 6s on home / 15s elsewhere while foregrounded; this must clear
+	// a couple of missed beats but still drop someone soon after they background the app.
+	WardTTL time.Duration
 }
 
 // ResolveProvider returns the effective LLM provider (explicit, else auto-detected).
@@ -89,6 +94,7 @@ func Load() (*Config, error) {
 		OpenAICorrectionModel:    getenv("OPENAI_CORRECTION_MODEL", "gpt-4o-mini"),
 		AzureSpeechKey:           firstNonEmpty(os.Getenv("AZURE_SPEECH_KEY"), os.Getenv("AZURE_SPEECH_REGION_KEY")),
 		AzureSpeechRegion:        os.Getenv("AZURE_SPEECH_REGION"),
+		WardTTL:                  getdur("WARD_TTL", 40*time.Second),
 	}
 
 	var missing []string

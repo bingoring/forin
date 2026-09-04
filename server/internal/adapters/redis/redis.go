@@ -3,6 +3,7 @@ package redis
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"github.com/redis/go-redis/v9"
@@ -49,4 +50,37 @@ func (s *RefreshStore) DeleteAll(ctx context.Context, userID string) error {
 		}
 	}
 	return iter.Err()
+}
+
+// WardStore tracks live-ward presence in a sorted set: member=userID, score=last-seen unix
+// seconds. There is no avatar cache here — the roster reads avatars from the profile store
+// at read time, for the ≤10 ids it actually shows, so what a stranger sees is always the
+// authoritative face and a client cannot spoof its own.
+type WardStore struct{ c *redis.Client }
+
+func NewWardStore(c *redis.Client) *WardStore { return &WardStore{c: c} }
+
+const wardKey = "ward:live"
+
+// Touch marks userID present at `at` (the heartbeat, and the read on the home screen).
+func (s *WardStore) Touch(ctx context.Context, userID string, at time.Time) error {
+	return s.c.ZAdd(ctx, wardKey, redis.Z{Score: float64(at.Unix()), Member: userID}).Err()
+}
+
+// Leave removes userID immediately — the app was backgrounded or closed.
+func (s *WardStore) Leave(ctx context.Context, userID string) error {
+	return s.c.ZRem(ctx, wardKey, userID).Err()
+}
+
+// Recent evicts everyone last seen before `cutoff`, then returns up to `limit` user ids,
+// most-recently-seen first. The eviction is what keeps the set from growing without bound
+// when a client dies without a Leave.
+func (s *WardStore) Recent(ctx context.Context, cutoff time.Time, limit int64) ([]string, error) {
+	min := strconv.FormatInt(cutoff.Unix(), 10)
+	if err := s.c.ZRemRangeByScore(ctx, wardKey, "-inf", "("+min).Err(); err != nil {
+		return nil, err
+	}
+	return s.c.ZRevRangeByScore(ctx, wardKey, &redis.ZRangeBy{
+		Min: min, Max: "+inf", Offset: 0, Count: limit,
+	}).Result()
 }
