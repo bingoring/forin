@@ -40,6 +40,7 @@ type ColleaguePref struct {
 	ShareStatus bool               `json:"share_status"`
 	ShareWeekly bool               `json:"share_weekly"`
 	UpdatedAt   pgtype.Timestamptz `json:"updated_at"`
+	ShareWard   bool               `json:"share_ward"`
 }
 
 type ColleagueRequest struct {
