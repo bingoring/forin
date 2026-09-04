@@ -46,6 +46,10 @@ export const ja: Record<string, string> = {
   'settings.sound.title': '効果音',
   'settings.sound.on': 'タップ・正解・クリアで音が鳴ります。',
   'settings.sound.off': 'すべての効果音がオフです。',
+  'settings.privacy.section': '公開',
+  'settings.privacy.wardTitle': 'ライブ病棟に自分を表示',
+  'settings.privacy.wardOn': '今学習している他の人のホーム病棟に、あなたのキャラクターが匿名で現れます。',
+  'settings.privacy.wardOff': '誰の病棟にも現れません。',
 
   'settings.account.section': 'アカウント',
   'settings.account.signOut': 'ログアウト',

@@ -46,6 +46,10 @@ export const de: Record<string, string> = {
   'settings.sound.title': 'Soundeffekte',
   'settings.sound.on': 'Tippen, richtige Antworten und Abschlüsse klingen.',
   'settings.sound.off': 'Alle Soundeffekte sind aus.',
+  'settings.privacy.section': 'Privatsphäre',
+  'settings.privacy.wardTitle': 'Mich in der Live-Station zeigen',
+  'settings.privacy.wardOn': 'Deine Figur erscheint anonym in der Home-Station anderer, die gerade lernen.',
+  'settings.privacy.wardOff': 'Du erscheinst in niemandes Station.',
 
   'settings.account.section': 'Konto',
   'settings.account.signOut': 'Abmelden',

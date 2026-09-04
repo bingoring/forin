@@ -47,6 +47,10 @@ export const en: Record<string, string> = {
   'settings.sound.title': 'Sound effects',
   'settings.sound.on': 'Taps, correct answers and clears make a sound.',
   'settings.sound.off': 'All sound effects are off.',
+  'settings.privacy.section': 'Privacy',
+  'settings.privacy.wardTitle': 'Show me in the live ward',
+  'settings.privacy.wardOn': 'Your character appears anonymously in the home ward of others studying now.',
+  'settings.privacy.wardOff': 'You do not appear in anyone’s ward.',
 
   'settings.account.section': 'Account',
   'settings.account.signOut': 'Sign out',

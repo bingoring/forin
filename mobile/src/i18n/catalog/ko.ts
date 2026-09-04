@@ -53,6 +53,10 @@ export const ko: Record<string, string> = {
   'settings.sound.title': '효과음',
   'settings.sound.on': '탭·정답·클리어에 소리가 나요.',
   'settings.sound.off': '모든 효과음이 꺼져 있어요.',
+  'settings.privacy.section': '공개',
+  'settings.privacy.wardTitle': '라이브 병동에 나 표시',
+  'settings.privacy.wardOn': '지금 학습 중인 다른 사람들의 홈 병동에 내 캐릭터가 익명으로 나타나요.',
+  'settings.privacy.wardOff': '누구의 병동에도 나타나지 않아요.',
 
   // ── account ──────────────────────────────────────────────────────────────
   'settings.account.section': '계정',

@@ -55,19 +55,24 @@ export default function Me() {
   const [signingOut, setSigningOut] = useState(false);
   const [colleagues, setColleagues] = useState<Colleague[]>([]);
   const [invite, setInvite] = useState<InviteCode | null>(null);
+  // Whether the learner appears (anonymously) in the home live ward. Defaults visible;
+  // corrected from the server on load.
+  const [wardVisible, setWardVisible] = useState(true);
 
   useFocusEffect(
     useCallback(() => {
       let alive = true;
       (async () => {
         try {
-          const [p, me, stats, found, mates, code] = await Promise.all([
+          const [p, me, stats, found, mates, code, prefs] = await Promise.all([
             api.progress(), api.me().catch(() => null), api.growthStats().catch(() => null), api.missions().catch(() => [] as string[]),
             api.colleagues().catch(() => ({ colleagues: [] as Colleague[], pendingRequests: 0, unreadCheers: 0 })),
             api.inviteCode().catch(() => null),
+            api.colleaguePrefs().catch(() => null),
           ]);
           if (!alive) return;
           setProgress(p);
+          if (prefs) setWardVisible(prefs.shareWard);
           const prof = (me as { profile?: { targetLevel?: string; equippedTitle?: string; nativeLang?: string; targetLang?: string; destination?: string; displayName?: string; avatar?: unknown } } | null)?.profile;
           // The portrait rides along with the profile read that was already happening.
           // The user id is what seeds a face for a learner who never opened the picker,
@@ -115,6 +120,13 @@ export default function Me() {
     setEquipped(titleId); // optimistic
     setSheet(null);
     try { await api.equipTitle(titleId); } catch { /* best-effort; refreshes on next focus */ }
+  };
+
+  const toggleWard = () => {
+    playSfx('tap');
+    const next = !wardVisible;
+    setWardVisible(next); // optimistic; the server is the source of truth on next focus
+    void api.setColleaguePrefs({ shareWard: next }).catch(() => {});
   };
 
   // Sign out — drops the session on this device, so confirm first. On success we
@@ -593,6 +605,31 @@ export default function Me() {
                   here would be the one control not drawn by hand. */}
               <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: sfxOn ? 'flex-end' : 'flex-start' }}>
                 <View style={{ width: 18, backgroundColor: sfxOn ? nb.ink : 'rgba(62,54,43,.35)' }} />
+              </View>
+            </Pressable>
+          </NbPaper>
+        </View>
+
+        {/* 공개 — 라이브 병동에 나를 익명으로 띄울지. 기본은 공개이고 언제든 끌 수 있다.
+            낯선 사람에게 보이는 유일한 것이라 별도 스위치로 둔다(동료 공개와 분리). */}
+        <View style={{ marginTop: space.sm }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+            <NbIcon name="shield" size={17} />
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.privacy.section')}</Text>
+          </View>
+          <NbPaper rot={-0.2}>
+            <Pressable
+              onPress={toggleWard}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.privacy.wardTitle')}</Text>
+                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
+                  {wardVisible ? t('settings.privacy.wardOn') : t('settings.privacy.wardOff')}
+                </Text>
+              </View>
+              <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: wardVisible ? 'flex-end' : 'flex-start' }}>
+                <View style={{ width: 18, backgroundColor: wardVisible ? nb.ink : 'rgba(62,54,43,.35)' }} />
               </View>
             </Pressable>
           </NbPaper>

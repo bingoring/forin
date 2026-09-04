@@ -69,6 +69,8 @@ jest.mock('@/api/client', () => ({
     missions: async () => [] as string[],
     colleagues: async () => ({ colleagues: [], pendingRequests: 0, unreadCheers: 0 }),
     inviteCode: async () => ({ code: 'AB12-CD34' }),
+    colleaguePrefs: async () => ({ shareStatus: true, shareWeekly: true, shareWard: true }),
+    setColleaguePrefs: async (p: unknown) => p,
     recordMission: async () => {},
     equipTitle: async () => {},
   },
