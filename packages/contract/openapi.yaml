@@ -1113,6 +1113,42 @@ components:
           type: array
           uniqueItems: false
       type: object
+    internal_adapters_http.slangCardDTO:
+      properties:
+        code:
+          type: string
+        example:
+          type: string
+        hidden:
+          type: boolean
+        id:
+          type: string
+        meaning:
+          type: string
+        number:
+          description: position in the deck (1-based), the "#007" on the card
+          type: integer
+      type: object
+    internal_adapters_http.slangResp:
+      properties:
+        collectableToday:
+          type: boolean
+        collected:
+          items:
+            $ref: '#/components/schemas/internal_adapters_http.slangCardDTO'
+          type: array
+          uniqueItems: false
+        collectedCount:
+          type: integer
+        master:
+          type: boolean
+        masterAt:
+          type: integer
+        todayCard:
+          $ref: '#/components/schemas/internal_adapters_http.slangCardDTO'
+        total:
+          type: integer
+      type: object
     internal_adapters_http.socialLoginReq:
       properties:
         idToken:
@@ -2149,6 +2185,38 @@ paths:
       summary: Previous conversation for a scenario, if any
       tags:
       - conversation
+  /slang:
+    get:
+      description: Today's droppable card, whether it can be collected now, and the
+        collected grid.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.slangResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Slang deck (은어 도감)
+      tags:
+      - slang
+  /slang/collect:
+    post:
+      description: Collects the next card, at most once per local day. The server
+        chooses the card; the body is ignored.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.slangResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Collect today's slang card
+      tags:
+      - slang
   /speech/attempts:
     get:
       parameters:

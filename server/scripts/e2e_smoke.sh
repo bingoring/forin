@@ -650,6 +650,26 @@ run PATCH /me/colleague-prefs '{"shareWard":true}'
 won=$(pj "d.get('shareWard')")
 [ "$won" = "True" ] && ok "shareWard restored" || bad "shareWard restore → $won"
 
+hd "㉑ SLANG · 은어 도감 하루 1장"
+run GET /slang
+[ "$CODE" = 200 ] && ok "GET /slang 200" || bad "slang → $CODE"
+TOT=$(pj "d.get('total',0)")
+[ "${TOT:-0}" -ge 1 ] && ok "deck served from content ($TOT cards)" || bad "empty deck"
+BEFORE=$(pj "d.get('collectedCount',0)")
+CAN=$(pj "d.get('collectableToday')")
+run POST /slang/collect
+[ "$CODE" = 200 ] && ok "POST /slang/collect 200" || bad "collect → $CODE"
+AFTER=$(pj "d.get('collectedCount',0)")
+# One per day: a collectable card adds one; a re-run on a day already collected is a no-op.
+if [ "$CAN" = "True" ]; then
+  [ "$AFTER" = "$((BEFORE+1))" ] && ok "collect adds one ($BEFORE→$AFTER)" || bad "collect count $BEFORE→$AFTER"
+else
+  [ "$AFTER" = "$BEFORE" ] && ok "already collected today — no double" || bad "double collect $BEFORE→$AFTER"
+fi
+run POST /slang/collect
+AGAIN=$(pj "d.get('collectedCount',0)")
+[ "$AGAIN" = "$AFTER" ] && ok "a second collect the same day is a no-op" || bad "double collect $AFTER→$AGAIN"
+
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"
 [ "$FAIL" -eq 0 ] || exit 1

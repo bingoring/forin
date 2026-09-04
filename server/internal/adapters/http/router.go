@@ -14,6 +14,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/home"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
+	"github.com/bingoring/forin/server/internal/domain/slang"
 	"github.com/bingoring/forin/server/internal/domain/speech"
 	"github.com/bingoring/forin/server/internal/domain/ward"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -41,6 +42,8 @@ type Deps struct {
 	Lounge               ports.LoungeRepo    // staff-lounge posts, cheers, reports
 	HomePools            home.Pools          // authored mentor notes + field phrases
 	Ward                 *ward.Service       // home live-ward presence roster (optional)
+	Slang                *slang.Deck         // 은어 도감 content deck (optional)
+	SlangRepo            ports.SlangRepo     // slang collection persistence (optional)
 	PG                   *pgxpool.Pool
 	Redis                *redis.Client
 }
@@ -150,6 +153,13 @@ func NewRouter(d Deps) http.Handler {
 		mux.Handle("GET /ward", auth(http.HandlerFunc(wh.get)))
 		mux.Handle("POST /ward/heartbeat", auth(http.HandlerFunc(wh.heartbeat)))
 		mux.Handle("POST /ward/leave", auth(http.HandlerFunc(wh.leave)))
+	}
+
+	// 은어 도감 (authenticated). Nil when the content deck or its store is not wired.
+	if d.Slang != nil && d.SlangRepo != nil {
+		sh := &slangHandler{deck: d.Slang, repo: d.SlangRepo}
+		mux.Handle("GET /slang", auth(http.HandlerFunc(sh.get)))
+		mux.Handle("POST /slang/collect", auth(http.HandlerFunc(sh.collect)))
 	}
 
 	// Staff lounge (authenticated). Nil when the repo is not wired — the routes

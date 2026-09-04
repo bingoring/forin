@@ -22,6 +22,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
+	"github.com/bingoring/forin/server/internal/domain/slang"
 	// Aliased: main.go already has a local variable named `speech` (the Azure
 	// Speech adapter instance below) — an unaliased import of this package
 	// would collide with it.
@@ -75,6 +76,7 @@ func main() {
 	convoRepo := postgres.NewConversationRepo(pool)
 	colleagueRepo := postgres.NewColleagueRepo(pool)
 	loungeRepo := postgres.NewLoungeRepo(pool)
+	slangRepo := postgres.NewSlangRepo(pool)
 
 	// Home flavour (mentor notes, field phrases). A missing content dir is not
 	// fatal — those two modules are simply omitted from the home response.
@@ -87,6 +89,14 @@ func main() {
 
 	// Home live ward: presence in a Redis sorted set, faces read from the profile store.
 	wardSvc := ward.NewService(redisadapter.NewWardStore(rdb), users, cfg.WardTTL)
+
+	// 은어 도감: the slang deck is content, so it can grow by deploy. Missing content is
+	// not fatal — the endpoint then serves an empty deck.
+	slangCards, err := contentfile.LoadSlang("content")
+	if err != nil {
+		logger.Warn("slang deck failed to load; 은어 도감 will be empty", "err", err)
+	}
+	slangDeck := slang.NewDeck(slangCards)
 
 	// AI layer: select an LLMPort adapter by provider (anthropic | openai) — domain unchanged.
 	var llm ports.LLMPort
@@ -129,7 +139,7 @@ func main() {
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
-		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, PG: pool, Redis: rdb,
+		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

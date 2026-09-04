@@ -1,0 +1,222 @@
+# 병원 은어 도감 — US 임상 현장 약어·은어. 하루 1장씩 떨어진다(SlangDeck, v38).
+#
+# 서버 콘텐츠다: 카드를 더 붙이려면 이 파일에 추가하고 서버만 배포하면 된다(앱 릴리스 불필요).
+# gloss는 로케일별, en이 폴백. example은 현장에서 실제로 듣는 한 문장.
+# 존중 원칙: 환자를 비하하는 은어(GOMER 등)는 넣지 않는다. 실무 약어 + 무해한 직장 은어만.
+# hidden: 10·20·30번째 자리의 "진짜 위험한 코드들" — 마일스톤에서 개봉된다.
+
+# ── 시간·빈도 ────────────────────────────────────────────────────────────────
+- id: sl-001
+  code: stat
+  gloss: { ko: "지금 당장", en: "immediately, right now" }
+  example: "Get me a 12-lead EKG, stat."
+- id: sl-002
+  code: PRN
+  gloss: { ko: "필요시 (증상 있을 때만)", en: "as needed" }
+  example: "Tylenol 650 mg PO PRN for pain."
+- id: sl-003
+  code: BID
+  gloss: { ko: "하루 두 번", en: "twice a day" }
+  example: "Metformin 500 mg BID with meals."
+- id: sl-004
+  code: TID
+  gloss: { ko: "하루 세 번", en: "three times a day" }
+  example: "She's on the eye drops TID."
+- id: sl-005
+  code: QID
+  gloss: { ko: "하루 네 번", en: "four times a day" }
+  example: "Accu-Cheks are QID before meals and at bedtime."
+- id: sl-006
+  code: q4h
+  gloss: { ko: "4시간마다 (q + 숫자 = 몇 시간마다)", en: "every 4 hours" }
+  example: "Turn and reposition q2h, vitals q4h."
+- id: sl-007
+  code: HS
+  gloss: { ko: "취침 시 (자기 전)", en: "at bedtime" }
+  example: "Give the melatonin at HS."
+- id: sl-008
+  code: AC / PC
+  gloss: { ko: "식전 / 식후", en: "before meals / after meals" }
+  example: "Insulin AC, and the antacid PC."
+
+# ── 투여 경로 ────────────────────────────────────────────────────────────────
+- id: sl-009
+  code: PO
+  gloss: { ko: "경구 (입으로)", en: "by mouth" }
+  example: "Is she cleared for PO meds yet?"
+# ── hidden #10 ──
+- id: sl-010
+  code: code blue
+  gloss: { ko: "심정지·호흡정지 — 성인 응급 소생 호출", en: "cardiac/respiratory arrest — adult resuscitation call" }
+  example: "Code blue, room 14 — grab the crash cart!"
+  hidden: true
+- id: sl-011
+  code: IV
+  gloss: { ko: "정맥 (주사)", en: "intravenous" }
+  example: "Start a second IV in the left AC."
+- id: sl-012
+  code: IM
+  gloss: { ko: "근육 (주사)", en: "intramuscular" }
+  example: "The Toradol is IM, not IV."
+- id: sl-013
+  code: SubQ
+  gloss: { ko: "피하 (주사)", en: "subcutaneous" }
+  example: "Heparin 5,000 units SubQ."
+- id: sl-014
+  code: SL
+  gloss: { ko: "설하 (혀 밑)", en: "sublingual" }
+  example: "Nitro SL, one every five minutes, up to three."
+- id: sl-015
+  code: NG tube
+  gloss: { ko: "비위관 (코-위)", en: "nasogastric tube" }
+  example: "Put the meds down the NG and flush with 30 of water."
+- id: sl-016
+  code: foley
+  gloss: { ko: "유치 도뇨관 (방광 카테터)", en: "indwelling urinary catheter" }
+  example: "Is the foley draining? What's the output?"
+- id: sl-017
+  code: JP drain
+  gloss: { ko: "잭슨-프랫 배액관", en: "Jackson-Pratt surgical drain" }
+  example: "Strip the JP and record the drainage."
+- id: sl-018
+  code: gtt
+  gloss: { ko: "방울 / 지속 정맥주입 (drip)", en: "drops / a continuous IV drip" }
+  example: "She's on an insulin gtt, titrate per protocol."
+
+# ── 지시·상태 ────────────────────────────────────────────────────────────────
+- id: sl-019
+  code: NPO
+  gloss: { ko: "금식 (아무것도 입으로 못 먹음)", en: "nothing by mouth" }
+# ── hidden #20 ──
+- id: sl-020
+  code: rapid response
+  gloss: { ko: "급성 악화 — 정지 전 신속 대응팀 호출", en: "pre-arrest deterioration — rapid response team call" }
+  example: "I'm calling a rapid response, her sats are dropping."
+  hidden: true
+- id: sl-021
+  code: DNR
+  gloss: { ko: "심폐소생 거부", en: "do not resuscitate" }
+  example: "Confirm the code status — he's a DNR."
+- id: sl-022
+  code: DNI
+  gloss: { ko: "기관삽관 거부", en: "do not intubate" }
+  example: "DNR/DNI, comfort care only."
+- id: sl-023
+  code: NKDA
+  gloss: { ko: "알려진 약물 알레르기 없음", en: "no known drug allergies" }
+  example: "Allergies? Chart says NKDA."
+- id: sl-024
+  code: KVO / TKO
+  gloss: { ko: "혈관 유지용 최소 주입 속도", en: "keep vein open — a minimal drip rate" }
+  example: "Run the saline at KVO."
+- id: sl-025
+  code: I&O
+  gloss: { ko: "섭취량/배설량", en: "intake and output" }
+  example: "Strict I&O on this patient."
+- id: sl-026
+  code: c/o
+  gloss: { ko: "호소함 (환자가 ~를 호소)", en: "complains of" }
+  example: "Pt c/o chest pain radiating to the left arm."
+- id: sl-027
+  code: SOB
+  gloss: { ko: "호흡곤란", en: "shortness of breath" }
+  example: "He's SOB on exertion."
+- id: sl-028
+  code: N/V
+  gloss: { ko: "오심/구토", en: "nausea and vomiting" }
+  example: "Any N/V after the chemo?"
+- id: sl-029
+  code: amb
+  gloss: { ko: "보행 (걸을 수 있음)", en: "ambulate / ambulatory" }
+# ── hidden #30 ──
+- id: sl-030
+  code: code brown
+  gloss: { ko: "대변 사고 처리 상황 (진짜 응급 코드 아님!)", en: "a soiled-bed cleanup — not a real emergency code" }
+  example: "We've got a code brown in 12 — grab gloves."
+  hidden: true
+
+# ── 사정·차트 ────────────────────────────────────────────────────────────────
+- id: sl-031
+  code: VS
+  gloss: { ko: "활력징후", en: "vital signs" }
+  example: "VS stable, afebrile."
+- id: sl-032
+  code: LOC
+  gloss: { ko: "의식 수준", en: "level of consciousness" }
+  example: "Any change in LOC overnight?"
+- id: sl-033
+  code: A&Ox4
+  gloss: { ko: "명료 · 사람/장소/시간/상황 지남력 온전", en: "alert and oriented to person, place, time, situation" }
+  example: "Pt is A&Ox4 and cooperative."
+- id: sl-034
+  code: ADLs
+  gloss: { ko: "일상생활동작 (씻기·먹기 등)", en: "activities of daily living" }
+  example: "She needs help with ADLs."
+- id: sl-035
+  code: Hx / Dx / Tx
+  gloss: { ko: "병력 / 진단 / 치료", en: "history / diagnosis / treatment" }
+  example: "Hx of CHF, Dx is a COPD exacerbation."
+- id: sl-036
+  code: Rx
+  gloss: { ko: "처방", en: "prescription / therapy" }
+  example: "What's the Rx for the pain?"
+- id: sl-037
+  code: fx
+  gloss: { ko: "골절", en: "fracture" }
+  example: "Left hip fx, non-weight-bearing."
+- id: sl-038
+  code: WNL
+  gloss: { ko: "정상 범위 내", en: "within normal limits" }
+  example: "Labs all WNL."
+- id: sl-039
+  code: PT / OT
+  gloss: { ko: "물리치료 / 작업치료", en: "physical therapy / occupational therapy" }
+  example: "PT will eval for gait, OT for ADLs."
+
+# ── 검사 ────────────────────────────────────────────────────────────────────
+- id: sl-040
+  code: CBC
+  gloss: { ko: "전혈구 검사", en: "complete blood count" }
+  example: "Draw a CBC and a BMP."
+- id: sl-041
+  code: BMP
+  gloss: { ko: "기본 대사 패널 (전해질 등)", en: "basic metabolic panel" }
+  example: "His BMP shows a low potassium."
+- id: sl-042
+  code: ABG
+  gloss: { ko: "동맥혈 가스 검사", en: "arterial blood gas" }
+  example: "Respiratory's coming for an ABG."
+- id: sl-043
+  code: EKG / ECG
+  gloss: { ko: "심전도", en: "electrocardiogram" }
+  example: "Get a stat EKG for the chest pain."
+- id: sl-044
+  code: UA
+  gloss: { ko: "소변 검사", en: "urinalysis" }
+  example: "Send a UA and culture."
+- id: sl-045
+  code: BP / HR / RR
+  gloss: { ko: "혈압 / 심박수 / 호흡수", en: "blood pressure / heart rate / respiratory rate" }
+  example: "BP 90 over 60, HR 118 — she's tachy."
+- id: sl-046
+  code: SpO2
+  gloss: { ko: "산소포화도", en: "oxygen saturation" }
+  example: "SpO2 dropped to 88 on room air."
+- id: sl-047
+  code: LOS
+  gloss: { ko: "재원 기간", en: "length of stay" }
+  example: "Long LOS — she's been here two weeks."
+
+# ── 직장 은어(무해) ──────────────────────────────────────────────────────────
+- id: sl-048
+  code: walkie-talkie
+  gloss: { ko: "혼자 걷고 말하는 안정 환자 (손 덜 가는 환자)", en: "a stable patient who walks and talks — low-maintenance" }
+  example: "Nice assignment — all walkie-talkies today."
+- id: sl-049
+  code: banana bag
+  gloss: { ko: "비타민 든 노란 수액 (티아민·엽산 등)", en: "a yellow IV vitamin bag (thiamine, folate…)" }
+  example: "Hang a banana bag for the alcohol withdrawal."
+- id: sl-050
+  code: bounce back
+  gloss: { ko: "퇴원 후 금방 재입원한 환자", en: "a patient readmitted soon after discharge" }
+  example: "Room 8 is a bounce back from last week."

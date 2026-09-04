@@ -13,6 +13,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/lounge"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/reputation"
+	"github.com/bingoring/forin/server/internal/domain/slang"
 	"github.com/bingoring/forin/server/internal/domain/user"
 )
 
@@ -535,6 +536,12 @@ type RefreshStore interface {
 //
 // The cursor is a plain *time.Time here on purpose: a port that spoke pgtype would
 // make every caller and every fake import the driver.
+// SlangRepo persists which slang cards a learner has collected (은어 도감).
+type SlangRepo interface {
+	Collected(ctx context.Context, userID string) ([]slang.Collected, error)
+	Collect(ctx context.Context, userID, cardID string) error
+}
+
 type LoungeRepo interface {
 	// Create stores an already-cleaned draft and returns the new post's id.
 	Create(ctx context.Context, authorID string, d lounge.Draft) (string, error)

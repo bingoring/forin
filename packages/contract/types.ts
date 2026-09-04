@@ -2106,6 +2106,84 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/slang": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Slang deck (은어 도감)
+         * @description Today's droppable card, whether it can be collected now, and the collected grid.
+         */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.slangResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/slang/collect": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Collect today's slang card
+         * @description Collects the next card, at most once per local day. The server chooses the card; the body is ignored.
+         */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.slangResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/speech/attempts": {
         parameters: {
             query?: never;
@@ -3084,6 +3162,24 @@ export interface components {
             average?: number;
             sentences?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
             weakest?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.SpokenSentenceRow"][];
+        };
+        "internal_adapters_http.slangCardDTO": {
+            code?: string;
+            example?: string;
+            hidden?: boolean;
+            id?: string;
+            meaning?: string;
+            /** @description position in the deck (1-based), the "#007" on the card */
+            number?: number;
+        };
+        "internal_adapters_http.slangResp": {
+            collectableToday?: boolean;
+            collected?: components["schemas"]["internal_adapters_http.slangCardDTO"][];
+            collectedCount?: number;
+            master?: boolean;
+            masterAt?: number;
+            todayCard?: components["schemas"]["internal_adapters_http.slangCardDTO"];
+            total?: number;
         };
         "internal_adapters_http.socialLoginReq": {
             idToken?: string;
