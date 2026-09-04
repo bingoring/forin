@@ -27,6 +27,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { LiveWardNb } from '@/components/home/LiveWardNb';
+import { setHomeActive, useWardRoster } from '@/lib/wardPresence';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { api, type Home, type HomePage } from '@/api/client';
@@ -57,6 +58,15 @@ export default function HomeTab() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [flipped, setFlipped] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const wardRoster = useWardRoster();
+
+  // The ward roster polls only while home is on screen — being here is what turns it on.
+  useFocusEffect(
+    useCallback(() => {
+      setHomeActive(true);
+      return () => setHomeActive(false);
+    }, []),
+  );
 
   useFocusEffect(
     useCallback(() => {
@@ -185,7 +195,7 @@ export default function HomeTab() {
         </View>
 
         {/* 라이브 병동 — 지금 학습 중인 사람들이 순회하는, 홈 최상단의 살아 있는 병동. */}
-        <LiveWardNb />
+        <LiveWardNb roster={wardRoster} />
 
         {/* ☐ 오늘의 할 일 — the one thing, on a taped page. */}
         {home.todayOne ? (

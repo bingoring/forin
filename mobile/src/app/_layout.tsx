@@ -10,6 +10,7 @@ import { loadLocale, onLocaleChange, useLocale, useT } from '@/i18n';
 import { loadAvatar } from '@/lib/avatar';
 import { loadDialogueLayout } from '@/lib/dialogueLayout';
 import { loadFavorites } from '@/lib/favorites';
+import { initPresence } from '@/lib/wardPresence';
 
 /** How long before the splash admits it is waiting on something. Long enough that a
  *  warm launch never shows it, short enough to land before a cold start's first
@@ -61,6 +62,9 @@ export default function RootLayout() {
     // asynchronously and play() on a player that has not finished loading is dropped,
     // which is why the first tap on each sound was silent. Six short blips.
     primeSfx();
+    // The live-ward heartbeat: app-wide, foreground-only. Idempotent, so a re-mount of
+    // the root (a locale change) does not stack listeners.
+    initPresence();
     const slowTimer = setTimeout(() => setSlow(true), SLOW_BOOT_MS);
     Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites(), loadDialogueLayout()])
       .finally(() => { clearTimeout(slowTimer); setHydrated(true); });

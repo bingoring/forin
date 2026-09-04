@@ -13,7 +13,7 @@
 //
 // Animations are Animated loops on the native driver, as in the pixel ward: opacity for the
 // blinks and the monitor pulse, translateX for each figure's patrol within its lane.
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, Text, View } from 'react-native';
 import { NbCharacter } from '@/components/nb/NbCharacter';
 import { useMyAvatar } from '@/hooks/useMyAvatar';
@@ -21,7 +21,7 @@ import { MOOD_SUB_KEY, SHIFT_LABEL, moodAt, msUntilNextMood, type WardMood } fro
 import { nbText } from '@/components/nb/NbUI';
 import { nb } from '@/theme/nb';
 import { useT } from '@/i18n';
-import type { AvatarSpec } from '@/data/nbAvatar';
+import { avatarSpecFromSeed, type AvatarSpec } from '@/data/nbAvatar';
 
 const C = nb.ink;
 
@@ -32,6 +32,10 @@ const MOODS: Record<WardMood, { sky: string; wall: string; floor: string; window
   night: { sky: '#213B4A', wall: '#EFEAE0', floor: '#D8D2C2', window: '#FEF08A' },
 };
 const MINT = '#A8D9C3';
+
+/** A stable empty roster: a fresh `[]` default would be a new array every render, which
+ *  makes the members memo recompute and the displayed effect loop forever. */
+const EMPTY_ROSTER: { id: string; avatar?: Partial<AvatarSpec> }[] = [];
 
 const SKY_H = 26;
 const ROOM_H = 78;
@@ -89,47 +93,73 @@ function unit(id: string): number {
   return (h % 1000) / 1000;
 }
 
-/** One figure, patrolling left↔right inside its own lane so a crowd never stacks up. */
-function Patrol({ id, spec, lane, laneW, bottom }: {
+/** One figure. It scatters to a per-id spot (so a join or a leave never reflows the
+ *  others), wanders a little left↔right, and — when it arrives or departs — slides in from
+ *  off the LEFT edge or out past the RIGHT edge, as the handoff asks. */
+function Patrol({ id, spec, floorW, bottom, entering, leaving, onExited }: {
   id: string;
   spec?: Partial<AvatarSpec>;
-  lane: number;
-  laneW: number;
+  floorW: number;
   bottom: number;
+  entering: boolean;
+  leaving: boolean;
+  onExited: (id: string) => void;
 }) {
-  const seed = useMemo(() => unit(id), [id]);
-  const range = Math.max(0, Math.min(laneW - CHAR_W, 22 + seed * 20));
-  const base = lane * laneW + Math.max(0, (laneW - CHAR_W - range) / 2);
+  const seed = unit(id);
+  const startX = 6 + seed * Math.max(0, floorW - CHAR_W - 12);
+  const range = 18 + seed * 22;
   const period = 3000 + Math.round(seed * 3000);
 
-  const walk = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    const loop = Animated.loop(
+  // x is the translateX offset from startX. Entering figures begin off the left edge.
+  const x = useRef(new Animated.Value(entering ? -(startX + CHAR_W + 6) : 0)).current;
+  const patrol = useRef<Animated.CompositeAnimation | null>(null);
+
+  const startPatrol = () => {
+    patrol.current = Animated.loop(
       Animated.sequence([
-        Animated.timing(walk, { toValue: 1, duration: period, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
-        Animated.timing(walk, { toValue: 0, duration: period, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+        Animated.timing(x, { toValue: range, duration: period, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
+        Animated.timing(x, { toValue: 0, duration: period, easing: Easing.inOut(Easing.quad), useNativeDriver: true }),
       ]),
     );
-    loop.start();
-    return () => loop.stop();
-  }, [walk, period]);
-  const tx = walk.interpolate({ inputRange: [0, 1], outputRange: [0, range] });
+    patrol.current.start();
+  };
+
+  useEffect(() => {
+    if (entering) {
+      Animated.timing(x, { toValue: 0, duration: 700, easing: Easing.out(Easing.quad), useNativeDriver: true })
+        .start(({ finished }) => { if (finished) startPatrol(); });
+    } else {
+      startPatrol();
+    }
+    return () => patrol.current?.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!leaving) return;
+    patrol.current?.stop();
+    Animated.timing(x, { toValue: floorW - startX + CHAR_W, duration: 650, easing: Easing.in(Easing.quad), useNativeDriver: true })
+      .start(({ finished }) => { if (finished) onExited(id); });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [leaving]);
 
   return (
-    <Animated.View style={{ position: 'absolute', left: base, bottom, transform: [{ translateX: tx }] }}>
+    <Animated.View style={{ position: 'absolute', left: startX, bottom, transform: [{ translateX: x }] }}>
       <NbCharacter spec={spec} walking size={CHAR_W} />
     </Animated.View>
   );
 }
 
-export function LiveWardNb({ mood: forced, now, roster = [] }: {
+export function LiveWardNb({ mood: forced, now, roster }: {
   /** Overrides the clock — for tests and the handoff's three static screens. */
   mood?: WardMood;
   /** Injectable clock, so a test can stand at 23:00 without touching the system time. */
   now?: () => Date;
-  /** The people currently studying (Phase 2). Phase 1 leaves it empty and walks only self. */
-  roster?: { id: string; avatar: AvatarSpec }[];
+  /** The people currently studying (Phase 2). Phase 1 leaves it empty and walks only self.
+   *  `avatar` is absent when they never chose one — the id then seeds a face. */
+  roster?: { id: string; avatar?: Partial<AvatarSpec> }[];
 }) {
+  roster = roster ?? EMPTY_ROSTER;
   const t = useT();
   const myAvatar = useMyAvatar();
   const clock = now ?? (() => new Date());
@@ -154,13 +184,38 @@ export function LiveWardNb({ mood: forced, now, roster = [] }: {
   // self is always on the floor; the roster fills the rest, capped so the ward stays legible.
   const members = useMemo(() => {
     const list: { id: string; spec?: Partial<AvatarSpec> }[] = [{ id: 'self', spec: myAvatar ?? undefined }];
-    for (const r of roster.slice(0, 9)) list.push({ id: r.id, spec: r.avatar });
+    // A face they chose, or one seeded from their id so a ward of avatar-less learners is
+    // still a crowd of different people rather than the same default face ten times.
+    for (const r of roster.slice(0, 9)) list.push({ id: r.id, spec: r.avatar ?? avatarSpecFromSeed(r.id) });
     return list;
   }, [myAvatar, roster]);
 
-  // The floor width decides the lanes; measured so the figures stay in-bounds on any screen.
+  // displayed holds who is on screen, INCLUDING figures animating out: a leaver stays
+  // mounted until it has walked off the right edge, then removeExited drops it.
+  const [displayed, setDisplayed] = useState<{ id: string; spec?: Partial<AvatarSpec>; leaving?: boolean }[]>([]);
+  // Key on the ids only: the members array identity changes every poll, but the displayed
+  // set should reshuffle only when someone actually joins or leaves.
+  const memberKey = members.map((m) => m.id).join('|');
+  useEffect(() => {
+    setDisplayed((prev) => {
+      const want = new Set(members.map((m) => m.id));
+      const next: { id: string; spec?: Partial<AvatarSpec>; leaving?: boolean }[] =
+        members.map((m) => ({ id: m.id, spec: m.spec }));
+      for (const d of prev) {
+        if (!want.has(d.id) && !next.some((n) => n.id === d.id)) {
+          next.push({ id: d.id, spec: d.spec, leaving: true }); // just left — let its exit play
+        }
+      }
+      return next;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [memberKey]);
+  const removeExited = useCallback((id: string) => {
+    setDisplayed((prev) => prev.filter((d) => d.id !== id));
+  }, []);
+
+  // The floor width is measured so the figures stay in-bounds on any screen.
   const [floorW, setFloorW] = useState(0);
-  const laneW = members.length > 0 ? floorW / members.length : floorW;
 
   return (
     <View style={{ marginBottom: 14 }}>
@@ -198,9 +253,18 @@ export function LiveWardNb({ mood: forced, now, roster = [] }: {
           <Bed left={168} />
           <Bed left={216} />
 
-          {/* The figures, once the floor has been measured. */}
-          {floorW > 0 && members.map((m, i) => (
-            <Patrol key={m.id} id={m.id} spec={m.spec} lane={i} laneW={laneW} bottom={6} />
+          {/* The figures, once the floor has been measured. Self never enters or leaves. */}
+          {floorW > 0 && displayed.map((d) => (
+            <Patrol
+              key={d.id}
+              id={d.id}
+              spec={d.spec}
+              floorW={floorW}
+              bottom={6}
+              entering={d.id !== 'self'}
+              leaving={!!d.leaving}
+              onExited={removeExited}
+            />
           ))}
 
           {mood === 'night' && (
