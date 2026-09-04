@@ -59,6 +59,7 @@ export default function HomeTab() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [flipped, setFlipped] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const [handoffUnread, setHandoffUnread] = useState(0);
   const wardRoster = useWardRoster();
   const phraseDone = usePhrasePracticed(home?.date ?? '');
 
@@ -108,6 +109,17 @@ export default function HomeTab() {
       setState((cur) => (cur === 'ok' ? cur : 'loading'));
       void load(0);
       return () => { alive = false; if (timer) clearTimeout(timer); };
+    }, []),
+  );
+
+  // The 인수인계 노트 badge, fetched on its own so a slow or failed inbox never blocks the
+  // page. Opening the inbox itself is what generates any waiting note; this only reads the
+  // resulting unread count.
+  useFocusEffect(
+    useCallback(() => {
+      let alive = true;
+      void api.handoff().then((inbox) => { if (alive) setHandoffUnread(inbox.unread); }).catch(() => {});
+      return () => { alive = false; };
     }, []),
   );
 
@@ -353,6 +365,23 @@ export default function HomeTab() {
               <Text style={nbText.hand(15)}>{t('night.homeEntry')}</Text>
               <Text numberOfLines={1} style={[nbText.body(9.5, nb.soft), { marginTop: 1 }]}>{t('night.homeEntrySub')}</Text>
             </View>
+            <NbIcon name="chevronRight" size={15} color={nb.soft} />
+          </NbPaper>
+        </Pressable>
+
+        {/* 환자 인수인계 노트 — follow-up notes from patients met in cleared scenarios (v38). */}
+        <Pressable onPress={() => router.push('/handoff')}>
+          <NbPaper rot={-0.4} style={{ marginTop: 11, paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <NbIcon name="pushpin" size={20} />
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={nbText.hand(15)}>{t('handoff.homeEntry')}</Text>
+              <Text numberOfLines={1} style={[nbText.body(9.5, nb.soft), { marginTop: 1 }]}>{t('handoff.homeEntrySub')}</Text>
+            </View>
+            {handoffUnread > 0 && (
+              <View style={{ minWidth: 18, height: 18, borderRadius: 9, paddingHorizontal: 5, backgroundColor: nb.red, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={nbText.mono(10, nb.paper)}>{handoffUnread}</Text>
+              </View>
+            )}
             <NbIcon name="chevronRight" size={15} color={nb.soft} />
           </NbPaper>
         </Pressable>

@@ -545,6 +545,15 @@ export interface SlangDeck {
 export interface NightStory { id: string; title: string; body: string; keyLine: string; keyGloss: string }
 export interface NightRadio { total: number; index: number; story?: NightStory }
 
+/** A follow-up note from a patient met in a cleared scenario (환자 인수인계 노트). */
+export type HandoffKind = 'gratitude' | 'followup' | 'review';
+export interface HandoffNote {
+  id: string; kind: HandoffKind; patientName: string; patientSub?: string; coord?: string;
+  body: string; refScenarioId?: string; replyText?: string; patientReply?: string;
+  metAt: string; read: boolean; replied: boolean;
+}
+export interface HandoffInbox { notes: HandoffNote[]; unread: number }
+
 export const api = {
   raw: http,
 
@@ -710,6 +719,25 @@ export const api = {
     try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
     const { data } = await http.get('/night', { params: { i, ...(tz ? { tz } : {}) } });
     return data as NightRadio;
+  },
+
+  /** 환자 인수인계 노트: the inbox. Opening it may generate one waiting note, so the
+   *  server resolves note text to the caller's locale (pass it as a hint). */
+  async handoff(): Promise<HandoffInbox> {
+    const { data } = await http.get('/handoff');
+    return data as HandoffInbox;
+  },
+
+  /** Mark one note read (clears its unread mark). Best-effort; returns nothing. */
+  async readHandoff(id: string): Promise<void> {
+    await http.post(`/handoff/${encodeURIComponent(id)}/read`);
+  },
+
+  /** Send a short reply to a note; the patient replies back (LLM), and the updated note
+   *  — now carrying both lines — is returned. */
+  async replyHandoff(id: string, text: string): Promise<HandoffNote> {
+    const { data } = await http.post(`/handoff/${encodeURIComponent(id)}/reply`, { text });
+    return data as HandoffNote;
   },
 
   async progress(): Promise<Progress> {

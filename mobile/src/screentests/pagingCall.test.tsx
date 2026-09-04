@@ -36,6 +36,7 @@ jest.mock('@/api/client', () => ({
     }),
     me: async () => ({ profile: { displayName: '지민' } }),
     colleaguePrefs: async () => ({ shareStatus: true, shareWeekly: true, shareWard: true }),
+    handoff: async () => ({ notes: [], unread: 0 }),
     acceptPage: async () => ({ scenarioId: 'SCN-ER-00002' }),
   },
 }));

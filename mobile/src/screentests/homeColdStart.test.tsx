@@ -61,6 +61,7 @@ jest.mock('@/api/client', () => ({
       return { profile: { displayName: '지민' } };
     },
     colleaguePrefs: async () => ({ shareStatus: true, shareWeekly: true, shareWard: true }),
+    handoff: async () => ({ notes: [], unread: 0 }),
   },
 }));
 
