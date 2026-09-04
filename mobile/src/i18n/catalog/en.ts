@@ -793,6 +793,7 @@ export const en: Record<string, string> = {
   'night.trackTitle': 'Lo-fi Night Shift, vol.3',
   'night.trackSub': 'Rain + ECG-beep remix',
   'night.play': 'Play',
+  'night.pause': 'Pause',
   'night.trackSoon': 'Soon',
   'night.closedShort': 'On at night',
   'night.storyTag': "Tonight's story",

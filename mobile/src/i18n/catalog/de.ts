@@ -792,6 +792,7 @@ export const de: Record<string, string> = {
   'night.trackTitle': 'Lo-fi Night Shift, vol.3',
   'night.trackSub': 'Regen + EKG-Piep-Remix',
   'night.play': 'Play',
+  'night.pause': 'Pause',
   'night.trackSoon': 'Bald',
   'night.closedShort': 'Nachts an',
   'night.storyTag': 'Geschichte der Nacht',

@@ -11,15 +11,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
+import { createAudioPlayer, type AudioPlayer } from 'expo-audio';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbMemo, NbPaper, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
 import { TOP_INSET, nb } from '@/theme/nb';
 import { api, type NightRadio as NightRadioT } from '@/api/client';
 import { useT } from '@/i18n';
 
-// A royalty-free lo-fi track goes here, then flip TRACK to its require():
-//   const TRACK = require('../../../assets/audio/lofi-night-shift.mp3');
-const TRACK: number | null = null;
+// A calm, quiet ambient loop, synthesized for the night channel (scripts/make_lofi.py). Swap
+// this file to change the track — it just has to be a bundled audio asset.
+const TRACK = require('../../../assets/audio/lofi-night-shift.wav');
 
 const STARS: [number, number][] = [[0.08, 20], [0.24, 44], [0.5, 14], [0.7, 38], [0.88, 24], [0.95, 56]];
 
@@ -46,9 +47,35 @@ export default function NightRadio() {
   const router = useRouter();
   const [radio, setRadio] = useState<NightRadioT | null>(null);
   const [offset, setOffset] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const player = useRef<AudioPlayer | null>(null);
 
   const hour = new Date().getHours();
   const open = hour >= 22 || hour < 5; // the radio's night window
+
+  // The looping track is created once and cleaned up on leave; playback stops when the
+  // screen loses focus so it never plays on in the background.
+  useEffect(() => {
+    const p = createAudioPlayer(TRACK);
+    p.loop = true;
+    player.current = p;
+    return () => { try { p.remove(); } catch { /* already gone */ } };
+  }, []);
+  useFocusEffect(
+    useCallback(() => () => {
+      try { player.current?.pause(); } catch { /* ignore */ }
+      setPlaying(false);
+    }, []),
+  );
+
+  const toggle = () => {
+    const p = player.current;
+    if (!p) return;
+    try {
+      if (playing) { p.pause(); setPlaying(false); }
+      else { p.play(); setPlaying(true); }
+    } catch { /* audio hiccup — leave the button as it was */ }
+  };
 
   useFocusEffect(
     useCallback(() => {
@@ -99,7 +126,7 @@ export default function NightRadio() {
             <View style={{ flex: 1, minWidth: 0 }}>
               <Text style={nbText.mono(10, nb.ink)}>{t('night.freq')}</Text>
               <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 2.5, height: 14, marginTop: 6 }}>
-                {[0, 1, 2, 3, 4].map((i) => <EqBar key={i} i={i} on={open} />)}
+                {[0, 1, 2, 3, 4].map((i) => <EqBar key={i} i={i} on={playing} />)}
               </View>
             </View>
           </View>
@@ -108,9 +135,9 @@ export default function NightRadio() {
               <Text numberOfLines={1} style={nbText.hand(15)}>{t('night.trackTitle')}</Text>
               <Text numberOfLines={1} style={nbText.body(9.5, nb.soft)}>{t('night.trackSub')}</Text>
             </View>
-            {open && TRACK != null
-              ? <NbButton variant="ink" size="sm" icon="speaker">{t('night.play')}</NbButton>
-              : <NbTag color={nb.soft} rot={1}>{open ? t('night.trackSoon') : t('night.closedShort')}</NbTag>}
+            {open
+              ? <NbButton variant="ink" size="sm" icon="speaker" onPress={toggle}>{playing ? t('night.pause') : t('night.play')}</NbButton>
+              : <NbTag color={nb.soft} rot={1}>{t('night.closedShort')}</NbTag>}
           </View>
         </NbPaper>
 

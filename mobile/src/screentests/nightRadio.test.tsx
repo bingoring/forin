@@ -6,6 +6,9 @@ jest.mock('react-native-worklets', () => ({
   runOnJS: (f: unknown) => f, runOnUI: (f: unknown) => f, isWorkletFunction: () => false,
 }));
 jest.mock('expo-secure-store', () => ({ getItemAsync: async () => null, setItemAsync: async () => {} }));
+jest.mock('expo-audio', () => ({
+  createAudioPlayer: () => ({ loop: false, play: () => {}, pause: () => {}, remove: () => {} }),
+}));
 
 const RADIO = {
   total: 6, index: 0,

@@ -823,6 +823,7 @@ export const ko: Record<string, string> = {
   'night.trackTitle': 'Lo-fi Night Shift, vol.3',
   'night.trackSub': '빗소리 + 심전도 비프 리믹스',
   'night.play': '재생',
+  'night.pause': '정지',
   'night.trackSoon': '준비 중',
   'night.closedShort': '밤에 켜져요',
   'night.storyTag': '오늘 밤의 이야기',

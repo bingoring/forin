@@ -792,6 +792,7 @@ export const ja: Record<string, string> = {
   'night.trackTitle': 'Lo-fi Night Shift, vol.3',
   'night.trackSub': '雨音 + 心電図ビープのリミックス',
   'night.play': '再生',
+  'night.pause': '停止',
   'night.trackSoon': '準備中',
   'night.closedShort': '夜に点きます',
   'night.storyTag': '今夜の話',
