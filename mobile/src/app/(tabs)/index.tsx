@@ -16,14 +16,17 @@
 //    modules the design does not list but the server still serves — the mentor's note, the
 //    review peek, colleagues — are kept below it, restyled. Dropping them would be a
 //    product change the handoff does not ask for.
-//  · LiveWard is gone from this screen. It is pixel-art sprites, and a sprite on a paper
-//    page is the one thing 07 forbids — a screen belongs to one line. If the live ward
-//    should stay, it needs a notebook-line drawing of its own.
+//  · The live ward is back (v37), redrawn in the notebook line: LiveWardNb walks
+//    NbCharacter figures — the 2-head notebook walker built from each learner's AvatarSpec,
+//    not pixel sprites — so it belongs on a paper page. It sits at the very top, above the
+//    one task: the ward, then the work. Phase 1 walks only the learner; the roster of
+//    people currently studying wires in behind it (see components/home/LiveWardNb).
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { LiveWardNb } from '@/components/home/LiveWardNb';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { api, type Home, type HomePage } from '@/api/client';
@@ -180,6 +183,9 @@ export default function HomeTab() {
             />
           )}
         </View>
+
+        {/* 라이브 병동 — 지금 학습 중인 사람들이 순회하는, 홈 최상단의 살아 있는 병동. */}
+        <LiveWardNb />
 
         {/* ☐ 오늘의 할 일 — the one thing, on a taped page. */}
         {home.todayOne ? (

@@ -207,3 +207,12 @@ test('the home card names the CURRICULUM, with the step as its subtitle', () => 
   expect(src).toMatch(/t\('home\.curriculumTab'\)/);
   expect(src).not.toMatch(/t\('home\.todayOneTab'\)/);
 });
+
+test('홈이 라이브 병동을 노트북 라인으로 다시 마운트한다 (v37)', () => {
+  // v29 dropped LiveWard because it was pixel sprites on a paper page; v37 brings the ward
+  // back as LiveWardNb, which walks NbCharacter (the notebook figure), so it belongs.
+  const { readFileSync } = require('fs') as typeof import('fs');
+  const { join } = require('path') as typeof import('path');
+  const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'index.tsx'), 'utf8');
+  expect(src).toMatch(/<LiveWardNb/);
+});
