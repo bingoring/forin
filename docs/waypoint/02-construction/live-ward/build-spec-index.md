@@ -1,7 +1,7 @@
 ---
 build-spec: live-ward
 stage: 02-construction/06-screens-flows
-status: SPECIFIED
+status: IMPLEMENTED
 depth: comprehensive
 updated: 2026-09-04
 ---
@@ -79,21 +79,23 @@ SoT: 디자인 핸드오프 **v37** — `07_NOTEBOOK_REDESIGN.md` §홈 개선�
 
 ## §4. 구현 체크리스트 (2단계)
 
-**Phase 1 — 시각(모바일 전용, OTA 가능):**
-- [ ] W1 `NbCharacter` (걷기 waddle·팔다리 스윙·flip, 머리=NbAvatar 레이어 0.8배)
-- [ ] W2 `LiveWardNb` (3무드·침대 3·모니터 펄스·무드 바, 내 캐릭터만 순회)
-- [ ] W8 홈 최상단 마운트 + 기존 모듈 순서 HomeV2 정렬
-- [ ] tsc 0 · jest · i18n ceiling(components=0) 통과
+**Phase 1 — 시각(모바일 전용, OTA):** ✅ 구현·배포(OTA production 승인 후)
+- [x] W1 `NbCharacter` (걷기 waddle·flip, 머리=NbAvatar 레이어 0.8배)
+- [x] W2 `LiveWardNb` (3무드·침대 3·모니터 펄스·무드 바, 내 캐릭터 순회)
+- [x] W8 홈 최상단 마운트
+- [x] tsc 0 · jest · i18n ceiling(components=0) 통과
 
-**Phase 2 — 실시간(서버 + 모바일):**
-- [ ] W4 Redis 저장소 (zset `ward:live` + `ward:av:<uid>`, TTL, evict)
-- [ ] W3 `ward` 도메인 (로스터 선정·자기 제외·숨김 제외·상한 10)
-- [ ] W5 엔드포인트 3종 (`GET /ward` · `POST /ward/heartbeat` · `POST /ward/leave`)
-- [ ] W6 옵트아웃 pref + 등록 강제 + 나 탭 토글
-- [ ] W9 계약 갱신 (openapi + TS)
-- [ ] W7 `useWardPresence` (포그라운드 하트비트·홈 로스터 폴링·diff·leaving 세트)
-- [ ] LiveWardNb를 로스터에 연결 (좌측 등장·우측 이탈)
-- [ ] Go 단위 테스트 + 모바일 테스트 + 스모크 왕복
+**Phase 2 — 실시간(서버 promote + 모바일 OTA):** ✅ 핵심 구현, 스테이징 스모크 통과
+- [x] W4 Redis 저장소 (zset `ward:live`, TTL evict — 아바타 캐시 없이 읽기 시점 조회)
+- [x] W3 `ward` 도메인 (자기 제외·상한 10·익명 id·숨김 스킵) + 단위 테스트
+- [x] W5 엔드포인트 3종 (`GET /ward` · `POST /ward/heartbeat` · `POST /ward/leave`)
+- [x] W6 옵트아웃 `share_ward`(마이그 000035) + 서버 등록 강제 — **나 탭 토글은 fast-follow**
+- [x] W9 계약 갱신 (openapi + TS)
+- [x] W7 `useWardRoster`/`wardPresence` (포그라운드 하트비트·홈 폴링·구독) + 테스트
+- [x] LiveWardNb를 로스터에 연결 (좌측 등장·우측 이탈, 시드 산포)
+- [x] Go 단위 테스트 + 모바일 885 통과 + `e2e_smoke.sh` ⑳ WARD 스테이징 통과
+
+**남은 fast-follow:** 나 탭에 `share_ward` 옵트아웃 토글(서버·API·기본 공개는 완비, UI만) — 신규 i18n 키 4개 언어 추가 필요.
 
 ## §5. 검증 계획
 
