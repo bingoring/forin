@@ -474,6 +474,12 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
   const [showCtx, setShowCtx] = useState(false);
   const ctx = card.context;
   const hasCtx = !!ctx && (!!ctx.title || !!ctx.situation || !!ctx.npc);
+  // Collapsed shows a one-line glance: the situation tagline, else the scenario name,
+  // else (a free-dialogue card) the line they were answering.
+  const ctxSummary = ctx?.situation || ctx?.title || ctx?.npc || '';
+  // There is detail to open when the memo holds more than that one line — the full
+  // situation (with the scenario name above it) or the NPC exchange.
+  const ctxExpandable = !!ctx && (!!ctx.situation || !!ctx.npc);
   return (
     <NbPaper rot={-0.5} style={{ paddingTop: 12, paddingBottom: 10, paddingHorizontal: 14 }}>
       {/* Where it came from, and which kind of card. Printed small at the top the way a
@@ -491,21 +497,28 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
         <NbTag color={face.correction ? nb.red : nb.green}>{t(KIND_LABEL[kind])}</NbTag>
       </View>
 
-      {/* 맥락 — which scene this came from, written in as a pencil note. First thing in
-          the body (v26): the corrected line means little without the situation that
-          prompted it. The tap expands to the NPC turn the learner was answering. */}
+      {/* 맥락 — which scene this came from, written in as a pencil note. Collapsed it is
+          ONE line: the situation tagline (or, with none, the scene's name). The DETAIL —
+          the scene's name above the full situation, and the NPC turn being answered — is
+          behind the tap. It used to show the whole situation collapsed and only the name
+          on expand, which is backwards: the summary is what you glance at, the detail is
+          what you open. */}
       {hasCtx && (
         <View style={{ marginTop: 8 }}>
-          <Pressable onPress={() => setShowCtx((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          <Pressable
+            onPress={() => ctxExpandable && setShowCtx((v) => !v)}
+            disabled={!ctxExpandable}
+            style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
+          >
             <NbIcon name="pencil" size={13} color={nb.soft} />
-            <Text numberOfLines={showCtx ? undefined : 2} style={[nbText.hand(14, nb.soft), { flex: 1, minWidth: 0 }]}>
-              {ctx?.situation || ctx?.title}
+            <Text numberOfLines={1} style={[nbText.hand(14, nb.soft), { flex: 1, minWidth: 0 }]}>
+              {ctxSummary}
             </Text>
-            <NbIcon name={showCtx ? 'chevronUp' : 'chevronDown'} size={12} color={nb.soft} />
+            {ctxExpandable && <NbIcon name={showCtx ? 'chevronUp' : 'chevronDown'} size={12} color={nb.soft} />}
           </Pressable>
           <Collapsible open={showCtx}>
             <NbMemo color={nb.soft} rot={0.3} style={{ marginTop: 8 }}>
-              {!!ctx?.title && <Text style={[nbText.hand(15), { marginBottom: 3 }]}>{ctx.title}</Text>}
+              {!!ctx?.title && !!ctx?.situation && <Text style={[nbText.hand(15), { marginBottom: 3 }]}>{ctx.title}</Text>}
               {!!ctx?.situation && <Text style={nbText.body(11, nb.soft)}>{ctx.situation}</Text>}
               {!!ctx?.npc && (
                 <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.16)' }}>
