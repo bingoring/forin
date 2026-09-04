@@ -52,6 +52,9 @@ type langContext struct {
 	// character's REGISTER — how plainly they speak — and nothing else. See
 	// user.SpeechRegister for what it may and may not touch.
 	Level string
+	// Name is the learner's chosen display name, or "" if they have not set one. Used so a
+	// self-introduction suggestion can carry it and the character can address them by it.
+	Name string
 }
 
 // langName maps an ISO-ish code to a human language name for the prompt.
@@ -89,6 +92,9 @@ func (e *Engine) langFor(ctx context.Context, userID string) langContext {
 	// Normalized here rather than at each use: an unanswered question and a missing
 	// profile then behave identically, and no prompt builder has to know the default.
 	lc.Level = user.NormalizeLevel(p.TargetLevel)
+	// The chosen display name, left "" when unset — the prompts only use it when present,
+	// so a learner with no name gets a generic self-introduction rather than an id.
+	lc.Name = strings.TrimSpace(p.DisplayName)
 	if n := langName(p.NativeLang); n != "" {
 		lc.Native = n
 	}
@@ -593,6 +599,9 @@ func buildSystemPrompt(sc *content.Scenario, lc langContext, disposition string)
 	// "coaching" — rephrasing/elaborating the learner's line instead of replying
 	// in character (the reported "my answer, elaborated" bug).
 	b.WriteString(fmt.Sprintf("\nThe person messaging you is the LEARNER, playing the %[1]s. Every message they send is what the %[1]s says to you out loud. React to it strictly IN CHARACTER as the person described above.\n", lc.Job))
+	if lc.Name != "" {
+		b.WriteString(fmt.Sprintf("The %s's name is %s — address them by it when it is natural to (a greeting, thanks, a question), the way a real colleague would.\n", lc.Job, lc.Name))
+	}
 	b.WriteString("ABSOLUTE RULES:\n")
 	b.WriteString("- NEVER correct, rephrase, translate, repeat, or 'improve' the learner's words.\n")
 	b.WriteString("- NEVER coach, explain, give feedback, or demonstrate better phrasing.\n")

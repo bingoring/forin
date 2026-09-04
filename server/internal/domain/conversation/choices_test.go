@@ -16,8 +16,8 @@ func TestChoicesPromptFollowsBothLanguageAxes(t *testing.T) {
 	p := buildChoicesPrompt(sc, lc)
 
 	// The intent is asked for in the NATIVE language, the model line in the TARGET.
-	if !strings.Contains(p, "`intent` — in Japanese") {
-		t.Errorf("intent is not requested in the native language (Japanese):\n%s", p)
+	if !strings.Contains(p, "written in Japanese in the FIRST PERSON") {
+		t.Errorf("intent is not requested as a first-person native-language (Japanese) line:\n%s", p)
 	}
 	if !strings.Contains(p, "`text`   — in German") {
 		t.Errorf("the model line is not requested in the target language (German):\n%s", p)
@@ -25,6 +25,28 @@ func TestChoicesPromptFollowsBothLanguageAxes(t *testing.T) {
 	// And nothing hardcodes Korean or English into the guided prompt.
 	if strings.Contains(p, "Korean") || strings.Contains(p, "English") {
 		t.Errorf("the prompt hardcodes a language instead of following the profile:\n%s", p)
+	}
+}
+
+// The learner's own name reaches BOTH prompts: the choices prompt so a self-introduction
+// carries it, and the character prompt so the NPC can address them by it.
+func TestTheLearnersNameReachesThePrompts(t *testing.T) {
+	sc := levelScenario()
+	named := langContext{Native: "Korean", Target: "English", Job: "nurse", Level: "B1", Name: "뚜공"}
+	if !strings.Contains(buildChoicesPrompt(sc, named), "뚜공") {
+		t.Error("the learner's name is missing from the choices prompt — self-introductions lose it")
+	}
+	if !strings.Contains(buildSystemPrompt(sc, named, ""), "뚜공") {
+		t.Error("the character is never told the learner's name, so it cannot address them")
+	}
+	// An unnamed learner adds no name line — never an id standing in for a name.
+	unnamed := named
+	unnamed.Name = ""
+	if strings.Contains(buildChoicesPrompt(sc, unnamed), "learner's name is") {
+		t.Error("an unnamed learner still got a name line in the choices prompt")
+	}
+	if strings.Contains(buildSystemPrompt(sc, unnamed, ""), "name is 뚜공") {
+		t.Error("an unnamed learner still got a name line in the character prompt")
 	}
 }
 
