@@ -680,6 +680,23 @@ KL=$(pj "d.get('story',{}).get('keyLine','')")
 run "GET" "/night?i=1"
 [ "$CODE" = 200 ] && ok "다음 이야기 (GET /night?i=1) 200" || bad "next story → $CODE"
 
+hd "㉓ HANDOFF · 환자 인수인계 노트"
+run GET /handoff
+[ "$CODE" = 200 ] && ok "GET /handoff 200" || bad "handoff → $CODE"
+# A fresh account may have no cleared patient encounters — an empty inbox is valid; assert
+# the contract shape (notes array + unread int).
+[ "$(pj "isinstance(d.get('notes'), list)")" = "True" ] && ok "inbox returns a notes array" || bad "notes not a list"
+[ "$(pj "isinstance(d.get('unread'), int)")" = "True" ] && ok "unread is a count" || bad "unread not int"
+NID=$(pj "(d.get('notes') or [{}])[0].get('id','')")
+if [ -n "$NID" ]; then
+  run POST "/handoff/$NID/read"
+  [ "$CODE" = 204 ] && ok "POST /handoff/{id}/read 204" || bad "read → $CODE"
+  run POST "/handoff/$NID/reply" '{"text":"고마워요, 잘 지내요!"}'
+  [ "$CODE" = 200 ] && ok "reply returns the note with a patient reply" || bad "reply → $CODE"
+else
+  ok "no handoff notes yet (empty inbox is valid for a fresh account)"
+fi
+
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"
 [ "$FAIL" -eq 0 ] || exit 1

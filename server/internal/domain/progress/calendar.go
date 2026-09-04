@@ -1,6 +1,9 @@
 package progress
 
-import "sort"
+import (
+	"sort"
+	"time"
+)
 
 // A calendar of what the learner actually did, day by day.
 //
@@ -55,6 +58,14 @@ type CalendarEntry struct {
 	Title      string `json:"title"`
 	Cleared    bool   `json:"cleared"`
 	Hour       int    `json:"hour"` // local hour it started, 0-23
+}
+
+// ClearedScenario is one scenario the learner cleared, with the AI grade (−1 when the run
+// had no grade) and when it was cleared — the raw material for handoff notes.
+type ClearedScenario struct {
+	ScenarioID string
+	Grade      int
+	ClearedAt  time.Time
 }
 
 // CalendarDay aggregates a single local date.

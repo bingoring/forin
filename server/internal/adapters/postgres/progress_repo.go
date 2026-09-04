@@ -248,6 +248,37 @@ func (r *ProgressRepo) ClearedScenarioIDs(ctx context.Context, userID string) (m
 	return out, rows.Err()
 }
 
+// ClearedScenariosDetail returns each cleared scenario once (its latest clear), with the
+// AI grade (−1 when ungraded) and time — newest first. The raw material for handoff notes.
+func (r *ProgressRepo) ClearedScenariosDetail(ctx context.Context, userID string) ([]progress.ClearedScenario, error) {
+	rows, err := r.pool.Query(ctx,
+		`SELECT scenario_id, grade, cleared_at FROM (
+		    SELECT DISTINCT ON (scenario_id) scenario_id, grade, cleared_at
+		      FROM scenario_attempts
+		     WHERE user_id = $1 AND state = 'cleared' AND cleared_at IS NOT NULL
+		     ORDER BY scenario_id, cleared_at DESC
+		 ) t ORDER BY cleared_at DESC`, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	out := []progress.ClearedScenario{}
+	for rows.Next() {
+		var cs progress.ClearedScenario
+		var grade pgtype.Int4
+		if err := rows.Scan(&cs.ScenarioID, &grade, &cs.ClearedAt); err != nil {
+			return nil, err
+		}
+		if grade.Valid {
+			cs.Grade = int(grade.Int32)
+		} else {
+			cs.Grade = -1
+		}
+		out = append(out, cs)
+	}
+	return out, rows.Err()
+}
+
 // CalendarEntries returns every attempt between two dates, with the local date and
 // hour it started, for the calendar report.
 //

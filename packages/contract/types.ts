@@ -605,6 +605,110 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/handoff": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Handoff notes (환자 인수인계 노트)
+         * @description The follow-up inbox; opening it may generate one new note from a recent encounter.
+         */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.handoffResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/handoff/{id}/read": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Mark a handoff note read */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: never;
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/handoff/{id}/reply": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reply to a handoff note
+         * @description Stores the learner's reply and returns the note with the patient's reply back.
+         */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.handoffNoteDTO"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/interiors/{id}": {
         parameters: {
             query?: never;
@@ -3022,6 +3126,24 @@ export interface components {
         };
         "internal_adapters_http.gradeReq": {
             grade?: string;
+        };
+        "internal_adapters_http.handoffNoteDTO": {
+            body?: string;
+            coord?: string;
+            id?: string;
+            kind?: string;
+            metAt?: string;
+            patientName?: string;
+            patientReply?: string;
+            patientSub?: string;
+            read?: boolean;
+            refScenarioId?: string;
+            replied?: boolean;
+            replyText?: string;
+        };
+        "internal_adapters_http.handoffResp": {
+            notes?: components["schemas"]["internal_adapters_http.handoffNoteDTO"][];
+            unread?: number;
         };
         "internal_adapters_http.homeBrief": {
             curriculumDone?: boolean;

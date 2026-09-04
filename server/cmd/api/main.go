@@ -21,6 +21,7 @@ import (
 	"github.com/bingoring/forin/server/internal/config"
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
+	"github.com/bingoring/forin/server/internal/domain/handoff"
 	"github.com/bingoring/forin/server/internal/domain/night"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/slang"
@@ -78,6 +79,7 @@ func main() {
 	colleagueRepo := postgres.NewColleagueRepo(pool)
 	loungeRepo := postgres.NewLoungeRepo(pool)
 	slangRepo := postgres.NewSlangRepo(pool)
+	handoffRepo := postgres.NewHandoffRepo(pool)
 
 	// Home flavour (mentor notes, field phrases). A missing content dir is not
 	// fatal — those two modules are simply omitted from the home response.
@@ -124,6 +126,10 @@ func main() {
 	// Grade with the capable dialogue model (one call per completion; quality matters
 	// for a fair judgment). Correction uses the cheaper model for per-turn fixes.
 	convoEngine := conversation.NewEngine(contentRepo, convoRepo, progressRepo, users, progressRepo, progressRepo, llm, dialogue, correctionModel, dialogueModel)
+
+	// 환자 인수인계 노트: follow-up notes generated (cheap correction model) from cleared
+	// patient encounters, with a template fallback when the LLM is unconfigured.
+	handoffSvc := handoff.NewService(handoffRepo, progressRepo, contentRepo, progressRepo, llm, correctionModel)
 	logger.Info("llm provider", "provider", cfg.ResolveProvider(), "configured", configured)
 	if !configured {
 		logger.Warn("LLM API key not set — AI conversation/correction endpoints will return errors")
@@ -147,7 +153,7 @@ func main() {
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
-		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Night: nightRadio, PG: pool, Redis: rdb,
+		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

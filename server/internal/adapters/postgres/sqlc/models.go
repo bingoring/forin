@@ -128,6 +128,24 @@ type Event struct {
 	Scenarios     []byte `json:"scenarios"`
 }
 
+type HandoffNote struct {
+	ID            string             `json:"id"`
+	UserID        string             `json:"user_id"`
+	ScenarioID    string             `json:"scenario_id"`
+	Kind          string             `json:"kind"`
+	PatientName   string             `json:"patient_name"`
+	PatientSub    string             `json:"patient_sub"`
+	Coord         string             `json:"coord"`
+	Body          string             `json:"body"`
+	RefScenarioID string             `json:"ref_scenario_id"`
+	ReplyText     string             `json:"reply_text"`
+	PatientReply  string             `json:"patient_reply"`
+	MetAt         pgtype.Timestamptz `json:"met_at"`
+	RepliedAt     pgtype.Timestamptz `json:"replied_at"`
+	ReadAt        pgtype.Timestamptz `json:"read_at"`
+	CreatedAt     pgtype.Timestamptz `json:"created_at"`
+}
+
 type HiddenMissionProgress struct {
 	UserID    string             `json:"user_id"`
 	MissionID string             `json:"mission_id"`

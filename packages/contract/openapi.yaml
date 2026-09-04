@@ -806,6 +806,43 @@ components:
         grade:
           type: string
       type: object
+    internal_adapters_http.handoffNoteDTO:
+      properties:
+        body:
+          type: string
+        coord:
+          type: string
+        id:
+          type: string
+        kind:
+          type: string
+        metAt:
+          type: string
+        patientName:
+          type: string
+        patientReply:
+          type: string
+        patientSub:
+          type: string
+        read:
+          type: boolean
+        refScenarioId:
+          type: string
+        replied:
+          type: boolean
+        replyText:
+          type: string
+      type: object
+    internal_adapters_http.handoffResp:
+      properties:
+        notes:
+          items:
+            $ref: '#/components/schemas/internal_adapters_http.handoffNoteDTO'
+          type: array
+          uniqueItems: false
+        unread:
+          type: integer
+      type: object
     internal_adapters_http.homeBrief:
       properties:
         curriculumDone:
@@ -1530,6 +1567,46 @@ paths:
       summary: List events (optionally ?profession=nurse)
       tags:
       - content
+  /handoff:
+    get:
+      description: The follow-up inbox; opening it may generate one new note from
+        a recent encounter.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.handoffResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Handoff notes (환자 인수인계 노트)
+      tags:
+      - handoff
+  /handoff/{id}/read:
+    post:
+      responses: null
+      security:
+      - Bearer: []
+      summary: Mark a handoff note read
+      tags:
+      - handoff
+  /handoff/{id}/reply:
+    post:
+      description: Stores the learner's reply and returns the note with the patient's
+        reply back.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.handoffNoteDTO'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Reply to a handoff note
+      tags:
+      - handoff
   /interiors/{id}:
     get:
       responses: null
