@@ -14,6 +14,9 @@ export type Turn = {
    *  conversation. Shown under their own bubble, because on that pass the pick is sent
    *  immediately and the card carrying the reason is gone before they read it. */
   note?: string;
+  /** The immediate correction of a spoken line (guided-turn redesign): shown under the
+   *  learner's own bubble. Carried through threadOf so the rendered thread keeps it. */
+  correction?: { original: string; corrected: string; note: string };
 };
 
 export function threadOf(transcript: Turn[], npcLine: string): Turn[] {
