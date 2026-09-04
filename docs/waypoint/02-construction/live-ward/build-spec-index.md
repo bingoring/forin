@@ -89,13 +89,13 @@ SoT: 디자인 핸드오프 **v37** — `07_NOTEBOOK_REDESIGN.md` §홈 개선�
 - [x] W4 Redis 저장소 (zset `ward:live`, TTL evict — 아바타 캐시 없이 읽기 시점 조회)
 - [x] W3 `ward` 도메인 (자기 제외·상한 10·익명 id·숨김 스킵) + 단위 테스트
 - [x] W5 엔드포인트 3종 (`GET /ward` · `POST /ward/heartbeat` · `POST /ward/leave`)
-- [x] W6 옵트아웃 `share_ward`(마이그 000035) + 서버 등록 강제 — **나 탭 토글은 fast-follow**
+- [x] W6 옵트아웃 `share_ward`(마이그 000035) + 서버 등록 강제 + **나 탭 '공개' 토글**(i18n 4개 언어)
 - [x] W9 계약 갱신 (openapi + TS)
 - [x] W7 `useWardRoster`/`wardPresence` (포그라운드 하트비트·홈 폴링·구독) + 테스트
 - [x] LiveWardNb를 로스터에 연결 (좌측 등장·우측 이탈, 시드 산포)
 - [x] Go 단위 테스트 + 모바일 885 통과 + `e2e_smoke.sh` ⑳ WARD 스테이징 통과
 
-**남은 fast-follow:** 나 탭에 `share_ward` 옵트아웃 토글(서버·API·기본 공개는 완비, UI만) — 신규 i18n 키 4개 언어 추가 필요.
+Phase 1·2 전부 구현·검증 완료. 서버는 prod promote 완료, 모바일은 OTA 배포.
 
 ## §5. 검증 계획
 
