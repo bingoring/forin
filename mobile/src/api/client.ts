@@ -534,6 +534,13 @@ export interface ColleaguePrefs { shareStatus: boolean; shareWeekly: boolean; sh
  *  person never chose one (the client seeds a face from the id). */
 export interface WardMember { id: string; avatar?: Partial<AvatarSpec> }
 
+/** One 은어 도감 card. `meaning` is already resolved to the caller's locale by the server. */
+export interface SlangCard { id: string; number: number; code: string; meaning: string; example?: string; hidden?: boolean }
+export interface SlangDeck {
+  collectedCount: number; total: number; masterAt: number; master: boolean;
+  todayCard?: SlangCard; collectableToday: boolean; collected: SlangCard[];
+}
+
 export const api = {
   raw: http,
 
@@ -675,6 +682,21 @@ export const api = {
   /** Leave immediately when the app backgrounds/closes (best-effort). */
   async wardLeave(): Promise<void> {
     await http.post('/ward/leave');
+  },
+
+  // ── 은어 도감 (slang deck) ────────────────────────────────────────────────
+  async slang(): Promise<SlangDeck> {
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    const { data } = await http.get('/slang', { params: tz ? { tz } : undefined });
+    return data as SlangDeck;
+  },
+  /** Collect today's card (server picks it, at most once per local day). */
+  async collectSlang(): Promise<SlangDeck> {
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    const { data } = await http.post('/slang/collect', null, { params: tz ? { tz } : undefined });
+    return data as SlangDeck;
   },
 
   async progress(): Promise<Progress> {
