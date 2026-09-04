@@ -95,15 +95,39 @@ async function settle(ms: number) {
   await act(async () => { jest.advanceTimersByTime(ms); await Promise.resolve(); });
 }
 
-/** Walk the journey to the immigration desk and answer the officer. */
-async function toImmigration(tree: ReturnType<typeof create>) {
+function byTestId(root: ReactTestInstance, id: string): ReactTestInstance {
+  const hits = root.findAll((n) => n.props?.testID === id, { deep: true });
+  expect(hits.length).toBeGreaterThan(0);
+  return hits[0];
+}
+
+/** Fill the v36 여권 발급 ID page (언어 → 직업 → 사진 → 이름), leaving 다음 장 넘기기 ready. */
+async function fillIdPage(root: ReactTestInstance) {
+  await settle(1400);
+  // 한국어, not another language: setLocale is real in this suite, so picking a different
+  // one would switch the UI mid-fill and the later Korean labels would vanish.
+  await tap(root, '한국어');
+  await settle(700);
+  await tap(root, '간호사');
+  await settle(700);
+  await act(async () => { byTestId(root, 'id-ava-0').props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+  await settle(700);
+  await act(async () => { byTestId(root, 'id-name-input').props.onChangeText('Minji'); });
+  await tap(root, '이렇게 적을게요');
+}
+
+/** Fill the ID page and turn to the destination page. */
+async function toDest(tree: ReturnType<typeof create>) {
   await signIn(tree.root);
-  await settle(1400);
-  await tap(tree.root, '이 언어로 계속');
-  await settle(1400);
-  await tap(tree.root, '간호사');
+  await fillIdPage(tree.root);
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
+}
+
+/** Walk the journey to the immigration desk and answer the officer. */
+async function toImmigration(tree: ReturnType<typeof create>) {
+  await toDest(tree);
   await tap(tree.root, '미국');
   await tap(tree.root, '출국하기');
   await settle(1200);   // the stamp
@@ -124,8 +148,8 @@ async function tap(root: ReactTestInstance, label: string) {
 
 test('the ‹ chip clears the status bar, so it can actually be pressed', async () => {
   const tree = await mount();
-  await signIn(tree.root);
-  await settle(1400);
+  // The destination page carries the ‹ back chip (the v36 ID page has none).
+  await toDest(tree);
 
   // The chip is the only 32×32 pressable in the top-right of these pages.
   const chip = tree.root.findAll(
@@ -142,8 +166,7 @@ test('the ‹ chip clears the status bar, so it can actually be pressed', async 
 
 test('a page header starts below the status bar', async () => {
   const tree = await mount();
-  await signIn(tree.root);
-  await settle(1400);
+  await toDest(tree);
 
   const header = tree.root.findAll(
     (n) => String(n.type) === 'View' && typeof flat(n.props?.style).paddingLeft === 'number'

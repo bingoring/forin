@@ -21,6 +21,9 @@ export type OnboardingDraft = {
   destination?: string;
   job?: string;
   targetLevel?: string;
+  /** The passport name chosen on the v36 ID page, kept so a relaunch mid-issuance does not
+   *  lose it. Applied to the profile (display name) at the end, with the other answers. */
+  name?: string;
 };
 
 export async function loadDraft(): Promise<OnboardingDraft> {

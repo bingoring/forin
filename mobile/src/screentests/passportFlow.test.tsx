@@ -46,14 +46,20 @@ jest.mock('expo-web-browser', () => ({ maybeCompleteAuthSession: () => {} }));
 jest.mock('expo-auth-session/providers/google', () => ({
   useAuthRequest: () => [null, null, async () => ({ type: 'cancel' })],
 }));
+const mockName: string[] = [];
+const mockAva: unknown[] = [];
 jest.mock('@/api/client', () => ({
   api: {
     updateProfile: async (p: Record<string, unknown>) => {
       if (mockFail) throw new Error('nope');
       mockProfile.push(p);
     },
+    setDisplayName: async (n: string) => { mockName.push(n); },
   },
 }));
+// The v36 ID page's photo is saved at the end. Stubbed so the journey does not reach for
+// the real avatar store/network in a unit test.
+jest.mock('@/lib/nbAvatar', () => ({ saveAvatar: async (spec: unknown) => { mockAva.push(spec); } }));
 jest.mock('expo-router', () => ({
   Stack: { Screen: () => null },
   useRouter: () => ({ replace: (p: string) => { mockNav.push(p); }, push: (p: string) => { mockNav.push(p); }, back: () => {}, canGoBack: () => true }),
@@ -85,7 +91,7 @@ const track = trackMounts();
 
 beforeEach(() => {
   mockDraft.length = 0; mockProfile.length = 0; mockNav.length = 0; mockCleared = 0; mockFail = false;
-  mockSetLocale.length = 0;
+  mockSetLocale.length = 0; mockName.length = 0; mockAva.length = 0;
   jest.useFakeTimers();
 });
 afterEach(() => { jest.useRealTimers(); });
@@ -130,24 +136,37 @@ async function signIn(root: ReactTestInstance) {
   await act(async () => { await Promise.resolve(); });
 }
 
-/** Run the journey's unattended beats (page turns, flights) forward. */
+/** Run the journey's unattended beats (page turns, flights, picker auto-opens) forward. */
 async function settle(ms = 4000) {
   await act(async () => { jest.advanceTimersByTime(ms); await Promise.resolve(); });
 }
 
-test('the journey collects three answers and posts them once, at the end', async () => {
+function byTestId(root: ReactTestInstance, id: string): ReactTestInstance {
+  const hits = root.findAll((n) => n.props?.testID === id, { deep: true });
+  expect(hits.length).toBeGreaterThan(0);
+  return hits[0];
+}
+
+/** The v36 여권 발급 (ID page): its blanks open in order (언어 → 직업 → 사진 → 이름), each
+ *  picker rising on its own. Fills all four, then leaves it ready for 다음 장 넘기기. */
+async function fillIdPage(root: ReactTestInstance, opts: { lang?: string; name?: string } = {}) {
+  await settle(1400);                       // ID page mounts; the language picker rises
+  await tap(root, opts.lang ?? '日本語');
+  await settle(700);                        // the job picker rises
+  await tap(root, '간호사');
+  await settle(700);                        // the photo picker rises
+  await act(async () => { byTestId(root, 'id-ava-0').props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+  await settle(700);                        // the name picker rises
+  await act(async () => { byTestId(root, 'id-name-input').props.onChangeText(opts.name ?? 'Minji'); });
+  await tap(root, '이렇게 적을게요');
+}
+
+test('the journey collects the answers and posts them once, at the end', async () => {
   const tree = await mount();
   await signIn(tree.root);
-  await settle(1400);
-  // The language page comes first: everything after it is written in the answer, so
-  // asking later would mean switching language mid-journey.
-  expect(texts(tree.root)).toContain('어떤 언어로 볼까요?');
-  await tap(tree.root, '日本語');
-  await tap(tree.root, '이 언어로 계속');
-  await settle(1400);
-  expect(texts(tree.root)).toContain('어떤 일을 하시나요?');
-
-  await tap(tree.root, '간호사');
+  // The v36 여권 발급 page: language, job, photo and name in one, filled in order.
+  await fillIdPage(tree.root, { lang: '日本語', name: 'Minji' });
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
   expect(texts(tree.root)).toContain('어디로 떠나나요?');
@@ -177,15 +196,18 @@ test('the journey collects three answers and posts them once, at the end', async
   await act(async () => { await Promise.resolve(); });
   expect(mockProfile).toEqual([{
     job: 'nurse',
-    // From the language page's answer, not from a guess.
+    // From the ID page's language pick, not from a guess.
     nativeLang: 'ja',
     targetLang: 'en',
     destination: 'us',
-    // "일상 대화 OK, 실전 감각이 필요해요" is B2. The three answers ARE the CEFR question —
-    // the server reads this band for the NPC's register, the examiner's calibration and
-    // the daily sample, so a wrong mapping is three wrong behaviours.
+    // "일상 대화 OK, 실전 감각이 필요해요" is B2. The answers ARE the CEFR question — the
+    // server reads this band for the NPC's register, the examiner's calibration and the
+    // daily sample, so a wrong mapping is three wrong behaviours.
     targetLevel: 'B2',
   }]);
+  // The passport name and photo chosen on the ID page are saved too, at the end.
+  expect(mockName).toEqual(['Minji']);
+  expect(mockAva).toHaveLength(1);
   expect(mockCleared).toBe(1);
 
   // The walk plays over the saved profile, then hands over to the app.
@@ -195,20 +217,20 @@ test('the journey collects three answers and posts them once, at the end', async
 
 test('each answer is written to the draft as it is given', async () => {
   // The draft is why closing the app mid-journey does not cost the answers. Written per
-  // answer, not per page: someone who picks a job and quits has picked a job.
+  // blank as it is filled on the ID page.
   const tree = await mount();
   await signIn(tree.root);
-  await settle(1400);
-  await tap(tree.root, '이 언어로 계속');
-  await settle(1400);
-  await tap(tree.root, '간호사');
-  expect(mockDraft[mockDraft.length - 1]).toEqual({ job: 'nurse' });
+  await fillIdPage(tree.root, { lang: '日本語', name: 'Minji' });
+  // Language, job and name each reached the draft as they were picked.
+  expect(mockDraft).toContainEqual({ nativeLang: 'ja' });
+  expect(mockDraft).toContainEqual({ job: 'nurse' });
+  expect(mockDraft).toContainEqual({ name: 'Minji' });
 
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
   await tap(tree.root, '미국');
-  // targetLang travels with the destination, as it did on the old locale page.
-  expect(mockDraft[1]).toEqual({ destination: 'us', targetLang: 'en' });
+  // targetLang travels with the destination.
+  expect(mockDraft).toContainEqual({ destination: 'us', targetLang: 'en' });
 });
 
 test('a country with no curriculum behind it cannot be chosen', async () => {
@@ -217,10 +239,7 @@ test('a country with no curriculum behind it cannot be chosen', async () => {
   // and it does not answer.
   const tree = await mount();
   await signIn(tree.root);
-  await settle(1400);
-  await tap(tree.root, '이 언어로 계속');
-  await settle(1400);
-  await tap(tree.root, '간호사');
+  await fillIdPage(tree.root);
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
 
@@ -240,10 +259,7 @@ test('the desk will not take an answer until the question has finished landing',
   // again — and the options are dimmed to say so, not merely inert.
   const tree = await mount();
   await signIn(tree.root);
-  await settle(1400);
-  await tap(tree.root, '이 언어로 계속');
-  await settle(1400);
-  await tap(tree.root, '간호사');
+  await fillIdPage(tree.root);
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
   await tap(tree.root, '미국');
@@ -267,10 +283,7 @@ test('a failed save keeps the learner where they are and says so', async () => {
   mockFail = true;
   const tree = await mount();
   await signIn(tree.root);
-  await settle(1400);
-  await tap(tree.root, '이 언어로 계속');
-  await settle(1400);
-  await tap(tree.root, '간호사');
+  await fillIdPage(tree.root);
   await tap(tree.root, '다음 장 넘기기');
   await settle(1400);
   await tap(tree.root, '미국');
@@ -297,32 +310,27 @@ test('a returning learner opens the passport where they stopped', async () => {
   expect(texts(tree.root)).toContain('어디로 떠나나요?');
 });
 
-test('the language page arrives pre-answered from the device, and says why', async () => {
-  // The app already opens in the device's language, so this page is a confirmation rather
-  // than a blank. The note explains the pre-selection — without it a highlighted card with
-  // no cause reads as the app having decided for you.
+test('the ID page opens the language blank first, offering the languages', async () => {
+  // The v36 여권 발급 page fills in order — language is the first blank, and its picker
+  // rises on its own. Everything after is written in that language, so it must come first.
   const tree = await mount();
   await signIn(tree.root);
   await settle(1400);
-
   const out = texts(tree.root);
+  expect(out).toContain('어떤 언어를 쓰시나요?');
   expect(out).toContain('한국어');
   expect(out).toContain('日本語');
-  expect(out).toContain('기기 설정을 따랐어요');
-  // No stamp here: a stamp means a border was crossed, and choosing a language is not
-  // that. (출국 도장은 목적지 페이지에만.)
+  // Still the ID page, not a border crossing: no departure stamp here.
   expect(out).not.toContain('쾅! 출국합니다');
 });
 
 test('picking a language applies it at once, not at the end', async () => {
-  // The remaining three pages are written in it. A language that only took effect after
-  // onboarding would have the learner answering in a language they just rejected.
+  // The rest of the journey is written in it. A language that only took effect after
+  // onboarding would have the learner answering in one they just rejected.
   const tree = await mount();
   await signIn(tree.root);
-  await settle(1400);
-  await tap(tree.root, 'Deutsch');
-  expect(mockSetLocale).toEqual(['de']);
-  expect(mockDraft[mockDraft.length - 1]).toEqual({ nativeLang: 'de' });
-  // …and the "matched to your device" note goes: it is no longer true.
-  expect(texts(tree.root)).not.toContain('기기 설정을 따랐어요');
+  await settle(1400); // the language picker rises
+  await tap(tree.root, '한국어');
+  expect(mockSetLocale).toEqual(['ko']);
+  expect(mockDraft).toContainEqual({ nativeLang: 'ko' });
 });

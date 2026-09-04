@@ -28,6 +28,9 @@ import { isDestinationReady } from '@/data/destinations';
 import { DESTS, JOBS, LEVELS } from '@/data/onboardingChoices';
 import { keyframeInputRange, keyframeSegments } from '@/data/keyframes';
 import { clearDraft, loadDraft, passportStep, saveDraft } from '@/lib/onboardingDraft';
+import { saveAvatar } from '@/lib/nbAvatar';
+import { type AvatarSpec } from '@/data/nbAvatar';
+import { PassportIdPage, ID_LANGS, ID_JOBS, type IdLang, type IdJob } from '@/components/onboarding/PassportIdPage';
 import { syncOnboarded } from '@/lib/auth';
 import { LOCALES, LOCALE_META, getLocale, localeWasChosen, setLocale, useT, type Locale } from '@/i18n';
 
@@ -40,7 +43,9 @@ const GOLD_SOFT = cover.goldSoft;
 const CREAM_TEXT = cover.cream;
 
 type Step =
-  | 'cover' | 'lang' | 'job' | 'dest' | 'closing' | 'flight'
+  // 'id' is the v36 여권 발급 page (language·job·avatar·name in one). 'lang'/'job' are the
+  // old separate pages it replaced — kept defined but no longer reached.
+  | 'cover' | 'id' | 'lang' | 'job' | 'dest' | 'closing' | 'flight'
   | 'immigration' | 'approved' | 'commute' | 'flightBack'
   /** A returning learner: the cover closes and the splash takes over. */
   | 'welcomeBack';
@@ -453,6 +458,14 @@ export default function PassportRoute() {
   const [dest, setDest] = useState<string | null>(null);
   const [lvl, setLvl] = useState<string | null>(null);
   const [stamping, setStamping] = useState(false);
+  // v36 여권 발급 (ID page) state. langObj/jobObj are the picked ROWS (for the passport's
+  // fields), which start empty so the page fills in order; the codes still flow to
+  // pickLang/pickJob so saving is unchanged. ava/name are new — saved at the end.
+  const [langObj, setLangObj] = useState<IdLang | null>(null);
+  const [jobObj, setJobObj] = useState<IdJob | null>(null);
+  const [ava, setAva] = useState<AvatarSpec | null>(null);
+  const [name, setName] = useState('');
+  const [nameDone, setNameDone] = useState(false);
   const [saving, setSaving] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -465,7 +478,13 @@ export default function PassportRoute() {
       if (d.job) setJob(d.job);
       if (d.destination) setDest(d.destination);
       if (d.targetLevel) setLvl(LEVELS.find((l) => l.cefr === d.targetLevel)?.id ?? null);
-      if (d.job || d.destination) setStep(passportStep(d) === 'level' ? 'immigration' : passportStep(d) === 'dest' ? 'dest' : 'job');
+      // Restore the ID page's filled blanks so a resumed issuance is not blank again.
+      if (d.name) { setName(d.name); setNameDone(true); }
+      if (d.nativeLang) setLangObj(ID_LANGS.find((l) => l.id === d.nativeLang) ?? null);
+      if (d.job) setJobObj(ID_JOBS.find((j) => j.id === d.job) ?? null);
+      // Resume onto the v36 ID page (not the retired 'job' page). A partial draft still
+      // reopens the ID page; the learner re-picks any blank there in one place.
+      if (d.job || d.destination) setStep(passportStep(d) === 'level' ? 'immigration' : passportStep(d) === 'dest' ? 'dest' : 'id');
     });
     return () => { alive = false; };
   }, []);
@@ -561,6 +580,12 @@ export default function PassportRoute() {
         destination: dest || d.destination || 'us',
         targetLevel: LEVELS.find((l) => l.id === lvl)?.cefr || d.targetLevel || 'B1',
       });
+      // The passport name and photo chosen on the ID page (v36). Best-effort and AFTER the
+      // profile write that marks them onboarded — a failed name or avatar must not drop a
+      // just-admitted learner back at the cover.
+      const chosenName = (name || d.name || '').trim();
+      if (chosenName) { try { await api.setDisplayName(chosenName); } catch { /* keep going */ } }
+      if (ava) { try { await saveAvatar(ava); } catch { /* keep going */ } }
       await syncOnboarded();
       await clearDraft();
       setStep('commute');
@@ -602,7 +627,7 @@ export default function PassportRoute() {
     // ends with, then the splash, then the app. Jumping straight to the tabs from a
     // green cover was a cut with no fiction attached to it.
     if (await syncOnboarded()) setStep('welcomeBack');
-    else go('lang');
+    else go('id');
   }, [go]);
 
   // ── pages ───────────────────────────────────────────────────────────────
@@ -654,6 +679,25 @@ export default function PassportRoute() {
    * Built like the destination page, minus the stamp: a stamp means a border was crossed,
    * and choosing a language is not that.
    */
+  // v36 여권 발급 — one ID page fills language·job·avatar·name, then 다음 장 넘기기 → 목적지.
+  const idPage = (
+    <Page>
+      <Gutter />
+      <PassportIdPage
+        lang={langObj}
+        job={jobObj}
+        ava={ava}
+        name={name}
+        nameDone={nameDone}
+        onPickLang={(l) => { setLangObj(l); pickLang(l.id as Locale); }}
+        onPickJob={(j) => { setJobObj(j); pickJob(j.id); }}
+        onPickAva={(a) => { setAva(a); }}
+        onName={(n, done) => { setName(n); setNameDone(done); if (done) void saveDraft({ name: n }); }}
+        onNext={() => go('dest')}
+      />
+    </Page>
+  );
+
   const langPage = (
     <Page>
       <Gutter />
@@ -833,7 +877,7 @@ export default function PassportRoute() {
         <NbPaper rot={-0.8} tape tapeLeft={130} style={{ paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', gap: 12, alignItems: 'center' }}>
           <NbIcon name="me" size={36} />
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 13, color: nb.ink }}>RN · Learner</Text>
+            <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 13, color: nb.ink }}>RN · {name.trim() || 'Learner'}</Text>
             <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>
               {t('onb.appr.card', { lang: D.stampCode.slice(0, 2), dest: t(D.nameKey) })}
             </Text>
@@ -877,7 +921,7 @@ export default function PassportRoute() {
   );
 
   const PAGES: Record<Step, React.ReactNode> = {
-    cover, lang: langPage, job: jobPage, dest: destPage, closing: destPage, flight: flight(false),
+    cover, id: idPage, lang: langPage, job: jobPage, dest: destPage, closing: destPage, flight: flight(false),
     immigration: immigrationPage(false), approved, commute, flightBack: flight(true),
     // The cover again, with the back cover coming over it — see the render below.
     welcomeBack: cover,

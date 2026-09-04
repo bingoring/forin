@@ -159,7 +159,9 @@ test('a new learner is taken to the first page, not into the app', async () => {
   await act(async () => { await Promise.resolve(); });
 
   expect(mockNav).not.toContain('/(tabs)');
-  expect(texts(tree.root)).toContain('어떤 언어로 볼까요?');
+  // The first page of the journey is the v36 여권 발급 (ID) page — its passport number is
+  // a stable, language-independent marker that it is on screen.
+  expect(texts(tree.root)).toContain('NO. FR-2026-0901');
 });
 
 test('a session already in hand does not change what the cover offers', async () => {
