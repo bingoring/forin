@@ -17,6 +17,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, Text, View } from 'react-native';
 import { NbCharacter } from '@/components/nb/NbCharacter';
 import { useMyAvatar } from '@/hooks/useMyAvatar';
+import { useWardVisible } from '@/lib/wardPresence';
 import { MOOD_SUB_KEY, SHIFT_LABEL, moodAt, msUntilNextMood, type WardMood } from '@/data/wardMood';
 import { nbText } from '@/components/nb/NbUI';
 import { nb } from '@/theme/nb';
@@ -181,14 +182,19 @@ export function LiveWardNb({ mood: forced, now, roster }: {
   const monitorBlink = useBlink(1_600);
   const barBlink = useBlink(1_400);
 
-  // self is always on the floor; the roster fills the rest, capped so the ward stays legible.
+  // self is on the floor UNLESS the learner opted out of the ward — then they see only the
+  // others (their own figure vanishing is the opt-out's visible proof). The roster fills the
+  // rest, capped so the ward stays legible.
+  const visible = useWardVisible();
   const members = useMemo(() => {
-    const list: { id: string; spec?: Partial<AvatarSpec> }[] = [{ id: 'self', spec: myAvatar ?? undefined }];
+    const list: { id: string; spec?: Partial<AvatarSpec> }[] = [];
+    if (visible) list.push({ id: 'self', spec: myAvatar ?? undefined });
     // A face they chose, or one seeded from their id so a ward of avatar-less learners is
     // still a crowd of different people rather than the same default face ten times.
-    for (const r of roster.slice(0, 9)) list.push({ id: r.id, spec: r.avatar ?? avatarSpecFromSeed(r.id) });
+    const cap = visible ? 9 : 10;
+    for (const r of roster.slice(0, cap)) list.push({ id: r.id, spec: r.avatar ?? avatarSpecFromSeed(r.id) });
     return list;
-  }, [myAvatar, roster]);
+  }, [visible, myAvatar, roster]);
 
   // displayed holds who is on screen, INCLUDING figures animating out: a leaver stays
   // mounted until it has walked off the right edge, then removeExited drops it.

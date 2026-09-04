@@ -60,6 +60,7 @@ jest.mock('@/api/client', () => ({
       if (mockServer.nameFails) throw new Error('nope');
       return { profile: { displayName: '지민' } };
     },
+    colleaguePrefs: async () => ({ shareStatus: true, shareWeekly: true, shareWard: true }),
   },
 }));
 

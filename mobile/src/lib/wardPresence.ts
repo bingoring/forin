@@ -128,3 +128,31 @@ function getRoster() {
 export function useWardRoster(): WardMember[] {
   return useSyncExternalStore(subscribe, getRoster, getRoster);
 }
+
+// ── ward visibility (the 나-tab opt-out) ────────────────────────────────────
+// Whether the learner appears in the ward AT ALL — including their own view. Opting out
+// and still seeing your own figure walk your ward reads as the switch doing nothing, so
+// this gates the self figure too, not only the server-side registration.
+let wardVisible = true;
+const visListeners = new Set<() => void>();
+
+/** Set from the server pref (home/me load) and from the toggle. */
+export function setWardVisible(v: boolean) {
+  if (v === wardVisible) return;
+  wardVisible = v;
+  for (const l of visListeners) l();
+}
+function subscribeVisible(cb: () => void) {
+  visListeners.add(cb);
+  return () => {
+    visListeners.delete(cb);
+  };
+}
+function getVisible() {
+  return wardVisible;
+}
+
+/** Whether to draw the learner's own figure in the ward. */
+export function useWardVisible(): boolean {
+  return useSyncExternalStore(subscribeVisible, getVisible, getVisible);
+}

@@ -22,6 +22,7 @@ import { BottomSheet } from '@/components/BottomSheet';
 import { useMyAvatar } from '@/hooks/useMyAvatar';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { adoptAvatar } from '@/lib/nbAvatar';
+import { setWardVisible, useWardVisible } from '@/lib/wardPresence';
 import { NameSheet } from '@/components/me/NameSheet';
 
 const C = nb.ink;
@@ -55,9 +56,9 @@ export default function Me() {
   const [signingOut, setSigningOut] = useState(false);
   const [colleagues, setColleagues] = useState<Colleague[]>([]);
   const [invite, setInvite] = useState<InviteCode | null>(null);
-  // Whether the learner appears (anonymously) in the home live ward. Defaults visible;
-  // corrected from the server on load.
-  const [wardVisible, setWardVisible] = useState(true);
+  // Whether the learner appears (anonymously) in the home live ward. A shared store, so the
+  // home ward reacts the moment this toggles. Defaults visible; corrected from the server.
+  const wardVisible = useWardVisible();
 
   useFocusEffect(
     useCallback(() => {
@@ -127,6 +128,8 @@ export default function Me() {
     const next = !wardVisible;
     setWardVisible(next); // optimistic; the server is the source of truth on next focus
     void api.setColleaguePrefs({ shareWard: next }).catch(() => {});
+    // Turning off: leave the ward at once so others stop seeing you now, not after the TTL.
+    if (!next) void api.wardLeave().catch(() => {});
   };
 
   // Sign out — drops the session on this device, so confirm first. On success we

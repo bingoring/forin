@@ -27,7 +27,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { LiveWardNb } from '@/components/home/LiveWardNb';
-import { setHomeActive, useWardRoster } from '@/lib/wardPresence';
+import { setHomeActive, setWardVisible, useWardRoster } from '@/lib/wardPresence';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { api, type Home, type HomePage } from '@/api/client';
@@ -77,12 +77,19 @@ export default function HomeTab() {
           // In parallel: the name is for the heading, and it must never delay the page.
           // A failed /me leaves the notebook titled without one, which is what a learner
           // who has not set a name sees anyway.
-          const [h, me] = await Promise.all([api.home(), api.me().catch(() => null)]);
+          const [h, me, prefs] = await Promise.all([
+            api.home(),
+            api.me().catch(() => null),
+            api.colleaguePrefs().catch(() => null),
+          ]);
           if (!alive) return;
           setHome(h);
           setName(
             (me as { profile?: { displayName?: string } } | null)?.profile?.displayName || '',
           );
+          // So a learner who opted out sees their figure gone even on a fresh launch, before
+          // ever opening the 나 tab.
+          if (prefs) setWardVisible(prefs.shareWard);
           setState('ok');
           setAttempt(0);
         } catch {
