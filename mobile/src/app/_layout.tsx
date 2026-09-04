@@ -10,6 +10,7 @@ import { loadLocale, onLocaleChange, useLocale, useT } from '@/i18n';
 import { loadAvatar } from '@/lib/avatar';
 import { loadDialogueLayout } from '@/lib/dialogueLayout';
 import { loadFavorites } from '@/lib/favorites';
+import { loadDailyBrief } from '@/lib/dailyBrief';
 import { initPresence } from '@/lib/wardPresence';
 
 /** How long before the splash admits it is waiting on something. Long enough that a
@@ -66,7 +67,7 @@ export default function RootLayout() {
     // the root (a locale change) does not stack listeners.
     initPresence();
     const slowTimer = setTimeout(() => setSlow(true), SLOW_BOOT_MS);
-    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites(), loadDialogueLayout()])
+    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites(), loadDialogueLayout(), loadDailyBrief()])
       .finally(() => { clearTimeout(slowTimer); setHydrated(true); });
     return () => clearTimeout(slowTimer);
   }, []);

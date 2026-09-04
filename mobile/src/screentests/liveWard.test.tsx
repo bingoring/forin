@@ -203,9 +203,11 @@ test('the home card names the CURRICULUM, with the step as its subtitle', () => 
   // v29 draws it as handwriting on a taped page; what must hold is which half is big.
   expect(src).toMatch(/nbText\.hand\(21\)[^>]*>\{home\.todayOne\.chapter\}/);
   expect(src).toMatch(/t\('home\.nextUp', \{ title: home\.todayOne\.title \}\)/);
-  // And the label says so.
-  expect(src).toMatch(/t\('home\.curriculumTab'\)/);
-  expect(src).not.toMatch(/t\('home\.todayOneTab'\)/);
+  // v37 reframes it as 이어서 하기 (resume), not "curriculum in progress" — the label and
+  // the CTA both say continue, and the card carries a real progress bar.
+  expect(src).toMatch(/t\('home\.resumeLabel'\)/);
+  expect(src).toMatch(/t\('home\.resumeCta'\)/);
+  expect(src).toMatch(/home\.todayOne\.progress/);
 });
 
 test('홈이 라이브 병동을 노트북 라인으로 다시 마운트한다 (v37)', () => {

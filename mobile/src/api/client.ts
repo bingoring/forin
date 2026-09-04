@@ -417,7 +417,12 @@ export type ReviewGrade = 'again' | 'hard' | 'good' | 'easy';
 // ABSENT (not null/placeholder) when there is nothing to show — the screen's
 // rule is simply "no field, no module", never invented copy.
 export interface HomeShift { shift: 'DAY' | 'EVENING'; deptLabel: string }
-export interface HomeTodayOne { chapter: string; title: string; kind: string; scenarioId?: string }
+/** `progress` is the current chapter's required-step completion (runs, not raw steps), so
+ *  the card can draw a real "이어서 하기" progress bar. */
+export interface HomeTodayOne { chapter: string; title: string; kind: string; scenarioId?: string; progress?: { done: number; total: number } }
+/** The day's work brief. The two server-derived tasks; the 오늘의 문장 task is tracked
+ *  client-side (see lib/dailyBrief). */
+export interface HomeBrief { reviewCount: number; reviewTarget: number; reviewDone: boolean; curriculumDone: boolean }
 export interface HomeMentorNote { id: string; npc: { name: string; role: string; dept: string }; text: string }
 export interface HomePhrase { id: string; en: string; ko: string; note?: string }
 export interface HomeReviewPeek { id: string; front: string }
@@ -451,6 +456,7 @@ export interface Home {
   week: number[];              // rolling window ending today: 0 none | 1 studied | 2 today
   level: number; xp: number; targetLevel?: string;
   todayOne?: HomeTodayOne;
+  brief?: HomeBrief;
   mentorNote?: HomeMentorNote;
   phrase?: HomePhrase;
   review?: HomeReviewPeek;

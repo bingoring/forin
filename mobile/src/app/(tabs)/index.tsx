@@ -25,9 +25,10 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
-import { NbButton, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbCheck, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { LiveWardNb } from '@/components/home/LiveWardNb';
 import { setHomeActive, setWardVisible, useWardRoster } from '@/lib/wardPresence';
+import { markPhrasePracticed, usePhrasePracticed } from '@/lib/dailyBrief';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { api, type Home, type HomePage } from '@/api/client';
@@ -59,6 +60,7 @@ export default function HomeTab() {
   const [flipped, setFlipped] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const wardRoster = useWardRoster();
+  const phraseDone = usePhrasePracticed(home?.date ?? '');
 
   // The ward roster polls only while home is on screen — being here is what turns it on.
   useFocusEffect(
@@ -204,23 +206,49 @@ export default function HomeTab() {
         {/* 라이브 병동 — 지금 학습 중인 사람들이 순회하는, 홈 최상단의 살아 있는 병동. */}
         <LiveWardNb roster={wardRoster} />
 
-        {/* ☐ 오늘의 할 일 — the one thing, on a taped page. */}
+        {/* 오늘의 근무 브리핑 — 하루 세 가지: 복습·커리큘럼 이어서·오늘의 문장. */}
+        <TodayBrief
+          home={home}
+          phraseDone={phraseDone}
+          onReview={() => router.push('/lab')}
+          onContinue={startToday}
+          onPhrase={() => {
+            if (!home.phrase) return;
+            markPhrasePracticed(home.date);
+            router.push({
+              pathname: '/pronunciation/[sentenceKey]',
+              params: { sentenceKey: home.phrase.en.slice(0, 40), referenceText: home.phrase.en, origin: 'home' },
+            });
+          }}
+        />
+
+        {/* 이어서 하기 — resume the curriculum where the last attempt left off. It leads
+            with WHERE (the chapter/coordinate), the step as subtitle, and a real progress
+            bar, so it reads as "carry on" rather than "here is an in-progress list". */}
         {home.todayOne ? (
           <NbPaper rot={-0.7} tape tapeLeft={120} style={{ marginTop: 16, paddingTop: 18, paddingBottom: 14, paddingHorizontal: 16 }}>
             <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue, letterSpacing: 1 }}>
-              {t('home.curriculumTab')}
+              {t('home.resumeLabel')}
             </Text>
-            {/* The CURRICULUM is the big line and the step is the subtitle, not the other
-                way round. Reversed, the card said "today's one thing" and left the learner
-                to work out where that thing was — `chapter` is the curriculum the server
-                resumed, the one holding their last attempt. */}
             <Text style={[nbText.hand(21), { marginTop: 7, lineHeight: 27 }]}>{home.todayOne.chapter}</Text>
             <Text style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>
               {t('home.nextUp', { title: home.todayOne.title })}
             </Text>
+            {/* Progress through the chapter's required steps (runs), from the server. Absent
+                on an older payload — the card then simply shows no bar. */}
+            {!!home.todayOne.progress && home.todayOne.progress.total > 0 && (
+              <View style={{ marginTop: 11 }}>
+                <Text style={[nbText.body(9.5, nb.soft), { marginBottom: 4 }]}>
+                  {home.todayOne.progress.done} / {home.todayOne.progress.total}
+                </Text>
+                <View style={{ height: 8, borderWidth: 1.5, borderColor: nb.ink, backgroundColor: nb.paper, overflow: 'hidden' }}>
+                  <View style={{ width: `${Math.round((100 * home.todayOne.progress.done) / home.todayOne.progress.total)}%`, height: '100%', backgroundColor: nb.green }} />
+                </View>
+              </View>
+            )}
             <View style={{ flexDirection: 'row', gap: 9, marginTop: 12 }}>
               <NbButton variant="ink" icon="pencil" iconColor={nb.paper} onPress={startToday}>
-                {t('home.startCta')}
+                {t('home.resumeCta')}
               </NbButton>
               {/* Practises the DAY'S SENTENCE, which is the only sentence this screen
                   actually has — the task is a scenario, and its lines do not exist yet.
@@ -230,10 +258,13 @@ export default function HomeTab() {
                   variant="dashed"
                   icon="mic"
                   size="sm"
-                  onPress={() => router.push({
-                    pathname: '/pronunciation/[sentenceKey]',
-                    params: { sentenceKey: home.phrase!.en.slice(0, 40), referenceText: home.phrase!.en, origin: 'home' },
-                  })}
+                  onPress={() => {
+                    markPhrasePracticed(home.date);
+                    router.push({
+                      pathname: '/pronunciation/[sentenceKey]',
+                      params: { sentenceKey: home.phrase!.en.slice(0, 40), referenceText: home.phrase!.en, origin: 'home' },
+                    });
+                  }}
                 >
                   {t('home.pronPractice')}
                 </NbButton>
@@ -380,6 +411,45 @@ function Sheet({ children }: { children: React.ReactNode }) {
  * top of the screen and had to be dismissible, and this is one taped line in a page that
  * scrolls past it.
  */
+/** 오늘의 근무 브리핑 — the day's three tasks, each a checkable door. Review and curriculum
+ *  are checked from the server; the phrase task is checked from the device (lib/dailyBrief).
+ *  n/3 counter, struck through when done, a line of praise at 3/3. */
+function TodayBrief({ home, phraseDone, onReview, onContinue, onPhrase }: {
+  home: Home;
+  phraseDone: boolean;
+  onReview: () => void;
+  onContinue: () => void;
+  onPhrase: () => void;
+}) {
+  const t = useT();
+  const b = home.brief;
+  const items = [
+    { key: 'review', label: t('home.briefReview', { n: b?.reviewCount ?? 0, target: b?.reviewTarget ?? 5 }), done: !!b?.reviewDone, onPress: onReview },
+    { key: 'curriculum', label: t('home.briefCurriculum'), done: !!b?.curriculumDone, onPress: onContinue, hidden: !home.todayOne },
+    { key: 'phrase', label: t('home.briefPhrase'), done: phraseDone, onPress: onPhrase, hidden: !home.phrase },
+  ].filter((it) => !it.hidden);
+  const doneCount = items.filter((it) => it.done).length;
+  const allDone = items.length > 0 && doneCount === items.length;
+  return (
+    <NbPaper rot={0.4} style={{ marginTop: 16, paddingVertical: 13, paddingHorizontal: 16 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue, letterSpacing: 1 }}>{t('home.briefTitle')}</Text>
+        <Text style={nbText.hand(15, nb.soft)}>{doneCount}/{items.length}</Text>
+      </View>
+      <View style={{ marginTop: 6 }}>
+        {items.map((it) => (
+          <Pressable key={it.key} onPress={it.onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 7 }}>
+            <NbCheck done={it.done} size={18} />
+            <Text style={[nbText.hand(16), { flex: 1, minWidth: 0, textDecorationLine: it.done ? 'line-through' : 'none', color: it.done ? nb.soft : nb.ink }]}>{it.label}</Text>
+            {!it.done && <NbIcon name="chevronRight" size={13} color={nb.soft} />}
+          </Pressable>
+        ))}
+      </View>
+      {allDone && <Text style={[nbText.hand(14, nb.green), { marginTop: 5 }]}>{t('home.briefAllDone')}</Text>}
+    </NbPaper>
+  );
+}
+
 function PageNote({ page, onAnswer }: { page: HomePage; onAnswer: () => void }) {
   const t = useT();
   const expired = page.secondsLeft <= 0 && !page.accepted && !page.answered;
