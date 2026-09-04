@@ -320,6 +320,19 @@ export default function HomeTab() {
           </Pressable>
         )}
 
+        {/* 쉬는 시간 — the break-time mini-game hub (v38). A shallow door; the games live
+            on their own screen. */}
+        <Pressable onPress={() => router.push('/games')}>
+          <NbPaper rot={0.5} style={{ marginTop: 15, paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <NbIcon name="star" size={20} />
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={nbText.hand(15)}>{t('games.homeEntry')}</Text>
+              <Text numberOfLines={1} style={[nbText.body(9.5, nb.soft), { marginTop: 1 }]}>{t('games.homeEntrySub')}</Text>
+            </View>
+            <NbIcon name="chevronRight" size={15} color={nb.soft} />
+          </NbPaper>
+        </Pressable>
+
         <View style={{ flexDirection: 'row', gap: 10, marginTop: 16 }}>
           <View style={{ flex: 1 }}>
             <NbButton variant="paper" full icon="hospital" onPress={() => router.push('/campus')}>
