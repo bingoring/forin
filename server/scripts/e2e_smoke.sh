@@ -627,6 +627,29 @@ else
 fi
 rm -f "$REFWAV" "$REFWAV16"
 
+hd "⑳ WARD · live presence round-trip"
+# Presence is best-effort and structural: a single caller is EXCLUDED from their own
+# roster (the app draws the learner's own figure client-side), so a lone user's roster is
+# empty regardless of prior state — safe to re-run.
+run POST /ward/heartbeat
+[ "$CODE" = 204 ] && ok "POST /ward/heartbeat 204" || bad "ward heartbeat → $CODE"
+run GET /ward
+[ "$CODE" = 200 ] && ok "GET /ward 200" || bad "ward roster → $CODE"
+RC=$(pj "len(d.get('roster',[]))")
+[ "$RC" = 0 ] && ok "GET /ward excludes self (lone caller → empty roster)" || bad "ward roster not self-excluded (len=$RC)"
+run POST /ward/leave
+[ "$CODE" = 204 ] && ok "POST /ward/leave 204" || bad "ward leave → $CODE"
+# Opt-out is its own switch, defaulting on; toggle and restore like the colleague prefs.
+run GET /me/colleague-prefs
+WARDORIG=$(pj "d.get('shareWard')")
+[ "$WARDORIG" = "True" ] && ok "shareWard defaults on" || bad "shareWard default → $WARDORIG"
+run PATCH /me/colleague-prefs '{"shareWard":false}'
+woff=$(pj "d.get('shareWard')")
+[ "$woff" = "False" ] && ok "shareWard can be turned off" || bad "shareWard patch → $woff"
+run PATCH /me/colleague-prefs '{"shareWard":true}'
+won=$(pj "d.get('shareWard')")
+[ "$won" = "True" ] && ok "shareWard restored" || bad "shareWard restore → $won"
+
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"
 [ "$FAIL" -eq 0 ] || exit 1
