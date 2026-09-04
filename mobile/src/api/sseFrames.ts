@@ -10,6 +10,7 @@ export type SseFrame =
   | { kind: 'improved'; mood: string }
   | { kind: 'resolved' }
   | { kind: 'missions'; numbers: number[] }
+  | { kind: 'correction'; original: string; corrected: string; note: string }
   | { kind: 'error' }
   | { kind: 'done' };
 
@@ -27,6 +28,22 @@ export function parseSseLines(lines: string[]): SseFrame[] {
     if (payload === '"[DONE]"' || payload === '[DONE]') { out.push({ kind: 'done' }); continue; }
     let value: unknown;
     try { value = JSON.parse(payload); } catch { continue; }
+    // The immediate correction is the one frame whose payload is a JSON OBJECT, not a
+    // string — it is structured (original/corrected/note), and handled before the
+    // string-only rule the rest of the stream keeps. It lands under the learner's own
+    // bubble, ahead of the NPC reply.
+    if (event === 'correction') {
+      if (value && typeof value === 'object') {
+        const c = value as { original?: unknown; corrected?: unknown; note?: unknown };
+        out.push({
+          kind: 'correction',
+          original: typeof c.original === 'string' ? c.original : '',
+          corrected: typeof c.corrected === 'string' ? c.corrected : '',
+          note: typeof c.note === 'string' ? c.note : '',
+        });
+      }
+      continue;
+    }
     if (typeof value !== 'string') continue;
     if (event === 'mood') out.push({ kind: 'mood', mood: value });
     else if (event === 'moodImproved') out.push({ kind: 'improved', mood: value });

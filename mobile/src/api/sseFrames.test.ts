@@ -92,3 +92,32 @@ test('a missions frame never becomes speech', () => {
   ]);
   expect(frames.filter((f) => f.kind === 'delta')).toEqual([{ kind: 'delta', text: 'Thank you.' }]);
 });
+
+test('the correction frame is parsed as an object, ahead of the reply', () => {
+  // The one frame whose payload is a JSON OBJECT, not a string: it carries the immediate
+  // correction (original/corrected/note) and must survive the string-only rule the rest
+  // of the stream keeps, landing before the NPC's delta text.
+  const frames = parseSseLines([
+    'event: correction', 'data: {"original":"Where pain?","corrected":"Where is the pain?","note":"관사를 넣으면 자연스러워요"}', '',
+    'data: "I see."', '',
+  ]);
+  expect(frames[0]).toEqual({ kind: 'correction', original: 'Where pain?', corrected: 'Where is the pain?', note: '관사를 넣으면 자연스러워요' });
+  expect(frames[1]).toEqual({ kind: 'delta', text: 'I see.' });
+});
+
+test('a correction with missing fields degrades rather than crashing', () => {
+  // A model that returned only a note (already-correct utterance) still parses — the
+  // fields it omitted come back as empty strings, not undefined.
+  expect(parseSseLines(['event: correction', 'data: {"note":"자연스러워요"}', ''])).toEqual([
+    { kind: 'correction', original: '', corrected: '', note: '자연스러워요' },
+  ]);
+});
+
+test('a correction frame never leaks into speech', () => {
+  // Its object payload must not be treated as a delta and typed into the NPC's mouth.
+  const frames = parseSseLines([
+    'event: correction', 'data: {"corrected":"Where is the pain?","note":"x"}', '',
+    'data: "It hurts here."', '',
+  ]);
+  expect(frames.filter((f) => f.kind === 'delta')).toEqual([{ kind: 'delta', text: 'It hurts here.' }]);
+});

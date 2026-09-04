@@ -3,15 +3,38 @@ package conversation
 import (
 	"strings"
 	"testing"
+
+	"github.com/bingoring/forin/server/internal/domain/content"
 )
+
+// The intent language FOLLOWS the profile, both axes, and is hardcoded to neither Korean
+// nor English — the app is multilingual and both can be changed in settings. A Japanese
+// learner of German must get Japanese intents and a German model line.
+func TestChoicesPromptFollowsBothLanguageAxes(t *testing.T) {
+	sc := &content.Scenario{ID: "SCN-ER-00002", Title: "T", Tagline: "t"}
+	lc := langContext{Native: "Japanese", Target: "German", Job: "nurse", Level: "B1"}
+	p := buildChoicesPrompt(sc, lc)
+
+	// The intent is asked for in the NATIVE language, the model line in the TARGET.
+	if !strings.Contains(p, "`intent` — in Japanese") {
+		t.Errorf("intent is not requested in the native language (Japanese):\n%s", p)
+	}
+	if !strings.Contains(p, "`text`   — in German") {
+		t.Errorf("the model line is not requested in the target language (German):\n%s", p)
+	}
+	// And nothing hardcodes Korean or English into the guided prompt.
+	if strings.Contains(p, "Korean") || strings.Contains(p, "English") {
+		t.Errorf("the prompt hardcodes a language instead of following the profile:\n%s", p)
+	}
+}
 
 func TestParseChoicesSurvivesTheModelsEnvelope(t *testing.T) {
 	// Models wrap JSON in prose more often than not. The choices are the point; the
 	// packaging is not worth a failure.
 	raw := "Sure! Here are three:\n```json\n" +
-		`{"choices":[{"tier":"fair","text":"I'll be right there.","why":"안전하지만 진전은 없어요"},` +
-		`{"tier":"best","text":"Can you tell me where the pain is?","why":"통증 위치를 먼저 확보해요"},` +
-		`{"tier":"strong","text":"Are you in pain right now?","why":"통증 유무는 확인하지만 양상은 남아요"}]}` +
+		`{"choices":[{"tier":"fair","intent":"곧 가겠다고 안심시키기","text":"I'll be right there.","why":"안전하지만 진전은 없어요"},` +
+		`{"tier":"best","intent":"통증 위치를 물어보기","text":"Can you tell me where the pain is?","why":"통증 위치를 먼저 확보해요"},` +
+		`{"tier":"strong","intent":"통증 유무를 확인하기","text":"Are you in pain right now?","why":"통증 유무는 확인하지만 양상은 남아요"}]}` +
 		"\n```\nHope that helps!"
 	got := parseChoices(raw)
 	if len(got) != 3 {
@@ -29,11 +52,11 @@ func TestParseChoicesSurvivesTheModelsEnvelope(t *testing.T) {
 
 func TestParseChoicesDropsWhatCannotBeDrawn(t *testing.T) {
 	raw := `{"choices":[
-      {"tier":"best","text":"Where is the pain?","why":"확보"},
-      {"tier":"best","text":"A duplicate tier","why":"두 번째 best"},
-      {"tier":"awful","text":"An unknown tier","why":"x"},
-      {"tier":"strong","text":"   ","why":"공백뿐"},
-      {"tier":"fair","text":"I'm here with you.","why":"안심"}
+      {"tier":"best","intent":"통증 위치를 물어보기","text":"Where is the pain?","why":"확보"},
+      {"tier":"best","intent":"중복","text":"A duplicate tier","why":"두 번째 best"},
+      {"tier":"awful","intent":"알 수 없는 등급","text":"An unknown tier","why":"x"},
+      {"tier":"strong","intent":"공백 텍스트","text":"   ","why":"공백뿐"},
+      {"tier":"fair","intent":"곁에 있음을 알리기","text":"I'm here with you.","why":"안심"}
     ]}`
 	got := parseChoices(raw)
 	if len(got) != 2 {
@@ -51,6 +74,23 @@ func TestParseChoicesDropsWhatCannotBeDrawn(t *testing.T) {
 	}
 	if got[0].Tier == got[1].Tier {
 		t.Fatal("two choices share a tier")
+	}
+}
+
+func TestParseChoicesDropsAChoiceWithNoIntent(t *testing.T) {
+	// The intent (native language) is the card's own label in the guided-turn redesign, so
+	// a choice without one is a blank card — dropped for the same reason a choice with no
+	// `text` always was. Here only the choice that carries an intent survives.
+	raw := `{"choices":[
+      {"tier":"best","intent":"","text":"Where is the pain?","why":"확보"},
+      {"tier":"strong","intent":"통증 유무를 확인하기","text":"Are you in pain?","why":"확인"}
+    ]}`
+	got := parseChoices(raw)
+	if len(got) != 1 || got[0].Tier != TierStrong {
+		t.Fatalf("kept %d, want 1 (the one WITH an intent): %+v", len(got), got)
+	}
+	if got[0].Intent == "" {
+		t.Fatal("the surviving choice lost its intent — that is the card's label")
 	}
 }
 

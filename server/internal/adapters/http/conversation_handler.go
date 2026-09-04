@@ -300,8 +300,21 @@ func (h *conversationHandler) stream(w http.ResponseWriter, r *http.Request) {
 		}
 		flusher.Flush()
 	}
+	// The immediate correction, before the NPC's reply — it belongs to the line the
+	// learner just spoke, so it lands under their own bubble and is read before the
+	// character answers. A named event, ignored by any client that does not know it.
+	onCorrection := func(c *conversation.Correction) {
+		if c == nil {
+			return
+		}
+		b, _ := json.Marshal(c)
+		if _, err := fmt.Fprintf(w, "event: correction\ndata: %s\n\n", b); err != nil {
+			return
+		}
+		flusher.Flush()
+	}
 	// Each chunk is JSON-encoded so newlines don't break SSE framing.
-	reply, err := h.engine.SendMessageStream(r.Context(), uid, r.PathValue("sessionId"), req.Text, onMood, func(chunk string) error {
+	reply, err := h.engine.SendMessageStream(r.Context(), uid, r.PathValue("sessionId"), req.Text, req.Intent, onMood, onCorrection, func(chunk string) error {
 		b, _ := json.Marshal(chunk)
 		if _, err := fmt.Fprintf(w, "data: %s\n\n", b); err != nil {
 			return err
@@ -354,6 +367,10 @@ func (h *conversationHandler) stream(w http.ResponseWriter, r *http.Request) {
 
 type messageReq struct {
 	Text string `json:"text"`
+	// Intent is the native-language goal the learner picked for this turn (guided-turn
+	// redesign) — what they were trying to convey. Optional: the free pass sends none. It
+	// grounds the immediate correction ("does the target-language line convey THIS?").
+	Intent string `json:"intent"`
 }
 
 type correctReq struct {
@@ -363,17 +380,6 @@ type correctReq struct {
 
 type choicesResp struct {
 	Choices []conversation.Choice `json:"choices"`
-	// Scripted: these three were authored for this beat of this conversation, and the
-	// character's next line is authored too. The screen uses it to drop the text box —
-	// in a scripted run there is nothing to type, and the free pass is where typing
-	// belongs.
-	Scripted bool `json:"scripted"`
-	// Turn/Total place the learner in the authored conversation (0-based beat).
-	// Meaningless when Scripted is false.
-	Turn  int `json:"turn"`
-	Total int `json:"total"`
-	// Done: the closing line has been reached, so there is nothing left to pick.
-	Done bool `json:"done"`
 }
 
 // @Summary Three replies the learner could give next (guided steps only)
@@ -387,19 +393,9 @@ func (h *conversationHandler) choices(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusUnauthorized, "unauthorized")
 		return
 	}
-	// The authored pass first, and it answers with its own shape: the screen needs to
-	// know it is scripted BEFORE it decides whether to draw a text box.
-	if st, scripted, err := h.engine.ScriptedChoices(r.Context(), uid, r.PathValue("sessionId")); err == nil && scripted {
-		cs := st.Choices
-		if cs == nil {
-			cs = []conversation.Choice{}
-		}
-		httpx.JSON(w, http.StatusOK, choicesResp{Choices: cs, Scripted: true, Turn: st.Turn, Total: st.Total, Done: st.Done})
-		return
-	} else if errors.Is(err, conversation.ErrSessionNotFound) {
-		httpx.Error(w, http.StatusNotFound, "session not found")
-		return
-	}
+	// No authored-script branch any more (guided-turn redesign): every turn's intents are
+	// generated, so the screen always draws the mic-driven guided turn — there is no
+	// scripted run to drop the input for.
 	out, err := h.engine.SuggestReplies(r.Context(), uid, r.PathValue("sessionId"))
 	if errors.Is(err, conversation.ErrSessionNotFound) {
 		httpx.Error(w, http.StatusNotFound, "session not found")

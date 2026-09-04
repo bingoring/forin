@@ -339,11 +339,6 @@ type Reply struct {
 }
 
 func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string) (Reply, error) {
-	// The authored guided pass first. When a script owns this turn the character's next
-	// line is already written, and calling the model would walk the conversation off it.
-	if r, handled, err := e.scriptedReply(ctx, userID, sessionID, text); err != nil || handled {
-		return r, err
-	}
 	// Read BEFORE prepare appends the user turn — prepare does not touch assistant
 	// turns, but reading first makes the ordering independent of that detail.
 	prevMood, _ := e.convo.LatestAssistantMood(ctx, sessionID)
@@ -375,27 +370,22 @@ func (e *Engine) SendMessage(ctx context.Context, userID, sessionID, text string
 // `onDelta` never sees the tag: the stripper holds the head of the stream back until
 // it is resolved. What the model produced and what the learner reads differ by
 // exactly that tag, and the persisted turn stores the reader's version.
-func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text string, onMood func(string), onDelta func(string) error) (Reply, error) {
-	// The authored guided pass. Delivered through the same callbacks as a streamed
-	// reply — mood first, then the line in one piece — so the screen has no idea it is
-	// reading a file instead of a model, and there is one code path on the client.
-	if r, handled, err := e.scriptedReply(ctx, userID, sessionID, text); err != nil || handled {
-		if handled {
-			if onMood != nil {
-				onMood(r.Mood)
-			}
-			if onDelta != nil {
-				if derr := onDelta(r.Text); derr != nil {
-					return Reply{}, derr
-				}
-			}
-		}
-		return r, err
-	}
+func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text, intent string, onMood func(string), onCorrection func(*Correction), onDelta func(string) error) (Reply, error) {
 	prevMood, _ := e.convo.LatestAssistantMood(ctx, sessionID)
 	system, msgs, sc, priorNpc, err := e.prepare(ctx, userID, sessionID, text)
 	if err != nil {
 		return Reply{}, err
+	}
+	// The immediate correction, BEFORE the reply streams (guided-turn redesign, D3/D4):
+	// grounded by the intent the learner picked, so it judges whether their target-language
+	// line conveys THAT and is natural. Emitted first so it lands under the learner's own
+	// bubble, read before the character answers. Synchronous rather than the old
+	// fire-and-forget file: the learner is meant to see it now, not find it later in the
+	// review lab (it still files a review card, same as before).
+	if onCorrection != nil {
+		if c := e.correctForTurn(ctx, userID, text, intent, sc, priorNpc); c != nil {
+			onCorrection(c)
+		}
 	}
 	mood, resolved, flags := "", false, ""
 	strip := newMoodStripper(func(m string, done bool, f string) {
@@ -427,7 +417,8 @@ func (e *Engine) SendMessageStream(ctx context.Context, userID, sessionID, text 
 	if err := e.convo.AppendTurn(ctx, sessionID, "assistant", reply, mood); err != nil {
 		return Reply{}, err
 	}
-	e.fileCorrection(userID, text, sc, priorNpc) // background: AI-correct the learner's line → review card
+	// No background fileCorrection here: the stream path already ran the correction
+	// synchronously above and emitted it, and correcting twice would file the card twice.
 	return Reply{Text: reply, Mood: mood, Improved: MoodImproved(prevMood, mood), Resolved: resolved,
 		Missions: parseMissions(flags, len(sc.Goals))}, nil
 }
@@ -459,6 +450,51 @@ func (e *Engine) fileCorrection(userID, text string, sc *content.Scenario, prior
 		defer func() { _ = recover() }()
 		_, _ = e.Correct(context.Background(), userID, text, rc.Situation, scenarioID, rc)
 	}()
+}
+
+// correctForTurn runs the guided turn's immediate correction and returns it to be shown
+// inline, grounded by the intent the learner picked so the note speaks to whether their
+// target-language line actually conveyed it. Returns nil for a trivial utterance (< 3
+// words) or a failed call — the turn goes on without a correction. It files a review card
+// exactly the way the old background path did (Correct owns that), so the correction lands
+// both under the bubble now AND in the review lab later.
+func (e *Engine) correctForTurn(ctx context.Context, userID, text, intent string, sc *content.Scenario, priorNpc string) *Correction {
+	if len(strings.Fields(text)) < 3 {
+		return nil
+	}
+	rc := progress.ReviewContext{Npc: priorNpc}
+	situation := ""
+	if sc != nil {
+		rc.Title = sc.Title
+		rc.Situation = sc.Tagline
+		situation = sc.Tagline
+		if sc.Briefing != nil {
+			rc.Dept = sc.Briefing.Dept
+			if sc.Briefing.Brief != "" {
+				rc.Situation = sc.Briefing.Brief
+				situation = sc.Briefing.Brief
+			}
+		}
+	}
+	// The picked intent goes into the LLM's context so the correction judges the line
+	// against what the learner meant to say — the guided turn's whole point — not just
+	// against generic naturalness.
+	contextText := situation
+	if intent != "" {
+		if contextText != "" {
+			contextText = "Situation: " + contextText + ". "
+		}
+		contextText += "The learner was trying to convey: " + intent
+	}
+	scenarioID := ""
+	if sc != nil {
+		scenarioID = sc.ID
+	}
+	c, err := e.Correct(ctx, userID, text, contextText, scenarioID, rc)
+	if err != nil {
+		return nil
+	}
+	return c
 }
 
 // Correction is the result of correcting a user's English utterance.

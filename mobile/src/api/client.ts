@@ -73,26 +73,21 @@ export interface ScenarioStep {
 export interface ReplyChoice {
   /** best / strong / fair — all three are correct; they differ in what they ACHIEVE. */
   tier: 'best' | 'strong' | 'fair';
-  /** What to say, word for word, in the target language. */
+  /** What to CONVEY, in the learner's own (native) language — the card's label. The
+   *  learner reads this and produces the target-language line themselves. */
+  intent: string;
+  /** The model line in the target language: what a strong answer sounds like. Hidden —
+   *  it grounds the immediate correction and can be revealed as a hint if the learner is
+   *  stuck; it is no longer the pickable option. */
   text: string;
   /** One line in the learner's own language saying what this reply achieves. The
    *  difference between the three IS the lesson. */
   why: string;
 }
 
-/** Where a guided conversation stands, and whether it is an authored one.
- *
- *  `scripted` changes the screen: an authored conversation has no text box at all. The
- *  three cards ARE the turn, and typing belongs to the second run — the one where the
- *  learner does the same situation alone. */
+/** The intents the learner could aim for this turn. */
 export interface ReplyTurn {
   choices: ReplyChoice[];
-  scripted: boolean;
-  /** 0-based beat within the authored conversation. Meaningless unless scripted. */
-  turn: number;
-  total: number;
-  /** The closing line has been reached: nothing left to pick. */
-  done: boolean;
 }
 
 export interface ScenarioDetail {
@@ -725,16 +720,12 @@ export const api = {
   async replyChoices(sessionId: string): Promise<ReplyTurn> {
     try {
       const { data } = await http.get(`/conversation/${encodeURIComponent(sessionId)}/choices`);
-      const d = (data ?? {}) as { choices?: ReplyChoice[]; scripted?: boolean; turn?: number; total?: number; done?: boolean };
-      return {
-        choices: (d.choices ?? []).filter((c) => !!c.text),
-        scripted: !!d.scripted,
-        turn: d.turn ?? 0,
-        total: d.total ?? 0,
-        done: !!d.done,
-      };
+      const d = (data ?? {}) as { choices?: ReplyChoice[] };
+      // Keep only cards that carry an intent — the intent IS the card now, and one without
+      // it is a blank card. (The server drops these too; this is belt and braces.)
+      return { choices: (d.choices ?? []).filter((c) => !!c.intent) };
     } catch {
-      return { choices: [], scripted: false, turn: 0, total: 0, done: false };
+      return { choices: [] };
     }
   },
 
@@ -1111,7 +1102,17 @@ export const api = {
     sessionId: string,
     text: string,
     onDelta: (chunk: string) => void,
-    handlers?: { onMood?: (mood: string) => void; onImproved?: (mood: string) => void; onResolved?: () => void; onMissions?: (numbers: number[]) => void },
+    handlers?: {
+      onMood?: (mood: string) => void;
+      onImproved?: (mood: string) => void;
+      onResolved?: () => void;
+      onMissions?: (numbers: number[]) => void;
+      /** The immediate correction of the line just spoken, grounded by the picked intent.
+       *  Fires once, before the NPC reply, so it lands under the learner's own bubble. */
+      onCorrection?: (c: { original: string; corrected: string; note: string }) => void;
+    },
+    /** The native-language intent the learner picked this turn — grounds the correction. */
+    intent?: string,
   ): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       const token = useAuthStore.getState().accessToken;
@@ -1142,6 +1143,7 @@ export const api = {
             case 'improved': handlers?.onImproved?.(frame.mood); break;
             case 'resolved': handlers?.onResolved?.(); break;
             case 'missions': handlers?.onMissions?.(frame.numbers); break;
+            case 'correction': handlers?.onCorrection?.({ original: frame.original, corrected: frame.corrected, note: frame.note }); break;
             // error/done: the promise's resolve/reject path already covers both, and
             // neither is anything the learner should read as speech.
             case 'error':
@@ -1160,7 +1162,7 @@ export const api = {
       // then the caller's catch clears `pending` and offers a retry instead of hanging.
       xhr.timeout = 75000;
       xhr.ontimeout = () => reject(new Error('stream timed out'));
-      xhr.send(JSON.stringify({ text }));
+      xhr.send(JSON.stringify(intent ? { text, intent } : { text }));
     });
   },
 };

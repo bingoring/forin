@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -42,7 +43,15 @@ const (
 // Choice is one suggested reply.
 type Choice struct {
 	Tier ChoiceTier `json:"tier"`
-	// Text is what the learner would say, word for word, in the target language.
+	// Intent is what to convey, in the learner's OWN (native) language — the thing the
+	// card shows. The learner reads this and produces the target-language line THEMSELVES
+	// (guided-turn redesign): the card no longer hands them the words, it hands them the
+	// goal. Native, never hardcoded to any one language — it follows the profile.
+	Intent string `json:"intent"`
+	// Text is the model line in the TARGET language — what a strong answer to this intent
+	// sounds like, word for word. No longer shown as the pickable option; it stays as the
+	// hidden model that grounds the immediate correction and the completion screen's
+	// model answer, and can be revealed as a hint if the learner is stuck.
 	Text string `json:"text"`
 	// Why is one line in the learner's OWN language saying what this reply achieves —
 	// the difference between the three is the lesson, and it is invisible otherwise.
@@ -67,13 +76,11 @@ func (e *Engine) SuggestReplies(ctx context.Context, userID, sessionID string) (
 	// Read-only: `prepare` is the other way to get here and it RECORDS a user turn,
 	// which would put an empty line in the transcript every time the screen asked for
 	// suggestions.
-	// An authored script wins. Its three are a decision somebody made and reviewed;
-	// the model's three are a sample. See script.go.
-	if st, scripted, err := e.ScriptedChoices(ctx, userID, sessionID); err != nil {
-		return nil, err
-	} else if scripted {
-		return st.Choices, nil
-	}
+	//
+	// No authored-script short-circuit any more (guided-turn redesign, D5): every turn's
+	// intents are generated so they react to the learner's REAL speech rather than a
+	// pre-written branch. The presets covered only a handful of scenarios and made the
+	// picked option instantly sendable, which the new mic-driven turn replaces.
 	sess, err := e.convo.GetSession(ctx, sessionID)
 	if err != nil {
 		return nil, err
@@ -91,6 +98,27 @@ func (e *Engine) SuggestReplies(ctx context.Context, userID, sessionID string) (
 	}
 	lc := e.langFor(ctx, userID)
 
+	raw, err := e.llm.Complete(ctx, ports.LLMRequest{
+		Model:    e.correctionModel,
+		System:   buildChoicesPrompt(sc, lc),
+		Messages: llmMessages(turns),
+		// Three short replies plus three short reasons. Room to finish, not to ramble.
+		MaxTokens: 700,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return parseChoices(raw), nil
+}
+
+// buildChoicesPrompt writes the system prompt for the guided turn's intents.
+//
+// The two language axes are the point, and neither is hardcoded: the INTENT is written in
+// the learner's own language (lc.Native), the model line in the TARGET (lc.Target). Both
+// come from the profile, so a Japanese learner of English gets Japanese intents and a
+// Korean learner of German gets Korean ones — the guided-turn redesign must not assume
+// Korean/English anywhere.
+func buildChoicesPrompt(sc *content.Scenario, lc langContext) string {
 	var b strings.Builder
 	b.WriteString(fmt.Sprintf(
 		"You are coaching a %[1]s-speaking %[2]s who is practising %[3]s for work abroad. "+
@@ -114,23 +142,15 @@ func (e *Engine) SuggestReplies(ctx context.Context, userID, sessionID string) (
 			"  \"best\"   — what a strong nurse says here; it moves the situation forward.\n"+
 			"  \"strong\" — correct and useful, but leaves something for later.\n"+
 			"  \"fair\"   — polite and safe; no mistake, and no progress either.\n"+
-			"Each `text` is one or two sentences the learner could say WORD FOR WORD to this person, in %[1]s. "+
-			"Never an instruction about what to say. Each `why` is ONE short sentence in %[2]s saying what that "+
-			"reply achieves — the difference between the three is the lesson.\n"+
-			"Respond ONLY with JSON: {\"choices\": [{\"tier\": \"best\"|\"strong\"|\"fair\", \"text\": string, \"why\": string}]}",
+			"For each, give THREE fields:\n"+
+			"  `intent` — in %[2]s, a short phrase naming WHAT TO CONVEY to this person (the goal of the turn, "+
+			"e.g. \"ask where exactly the pain is\"). NOT the %[1]s words — the learner will say those themselves.\n"+
+			"  `text`   — in %[1]s, one or two sentences that convey that intent WORD FOR WORD: a model answer, "+
+			"in the register the learner can actually produce.\n"+
+			"  `why`    — ONE short sentence in %[2]s saying what this reply achieves; the difference between the three is the lesson.\n"+
+			"Respond ONLY with JSON: {\"choices\": [{\"tier\": \"best\"|\"strong\"|\"fair\", \"intent\": string, \"text\": string, \"why\": string}]}",
 		lc.Target, lc.Native))
-
-	raw, err := e.llm.Complete(ctx, ports.LLMRequest{
-		Model:    e.correctionModel,
-		System:   b.String(),
-		Messages: llmMessages(turns),
-		// Three short replies plus three short reasons. Room to finish, not to ramble.
-		MaxTokens: 700,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return parseChoices(raw), nil
+	return b.String()
 }
 
 // parseChoices pulls the choices out of the model's answer, keeping only the ones that
@@ -153,9 +173,12 @@ func parseChoices(raw string) []Choice {
 	out := make([]Choice, 0, len(p.Choices))
 	seen := map[ChoiceTier]bool{}
 	for _, c := range p.Choices {
+		c.Intent = strings.TrimSpace(c.Intent)
 		c.Text = strings.TrimSpace(c.Text)
 		c.Why = strings.TrimSpace(c.Why)
-		if c.Text == "" || !validTier(c.Tier) || seen[c.Tier] {
+		// Intent is the card's own label now, so a choice without one is a blank card —
+		// dropped for the same reason a choice with no `text` always was.
+		if c.Intent == "" || c.Text == "" || !validTier(c.Tier) || seen[c.Tier] {
 			continue
 		}
 		seen[c.Tier] = true

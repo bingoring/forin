@@ -147,8 +147,9 @@ func TestStreamAnnouncesMoodBeforeAnyText(t *testing.T) {
 	e := moodEngine(repo, st)
 
 	var order []string
-	reply, err := e.SendMessageStream(context.Background(), "u1", "s1", "Breathe with me.",
+	reply, err := e.SendMessageStream(context.Background(), "u1", "s1", "Breathe with me.", "",
 		func(m string) { order = append(order, "mood:"+m) },
+		nil,
 		func(chunk string) error { order = append(order, "text"); return nil },
 	)
 	if err != nil {
@@ -172,7 +173,7 @@ func TestStreamInOneChunkStillResolvesTheMood(t *testing.T) {
 	repo := &fakeConvoRepo{priorMood: "worried"}
 	e := moodEngine(repo, &moodStrategy{reply: "[mood: happy] All better."})
 
-	reply, err := e.SendMessageStream(context.Background(), "u1", "s1", "...", nil, func(string) error { return nil })
+	reply, err := e.SendMessageStream(context.Background(), "u1", "s1", "...", "", nil, nil, func(string) error { return nil })
 	if err != nil {
 		t.Fatalf("stream: %v", err)
 	}

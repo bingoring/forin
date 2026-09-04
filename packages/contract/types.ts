@@ -2412,7 +2412,19 @@ export interface components {
             urgent?: boolean;
         };
         "github_com_bingoring_forin_server_internal_domain_conversation.Choice": {
-            /** @description Text is what the learner would say, word for word, in the target language. */
+            /**
+             * @description Intent is what to convey, in the learner's OWN (native) language — the thing the
+             *     card shows. The learner reads this and produces the target-language line THEMSELVES
+             *     (guided-turn redesign): the card no longer hands them the words, it hands them the
+             *     goal. Native, never hardcoded to any one language — it follows the profile.
+             */
+            intent?: string;
+            /**
+             * @description Text is the model line in the TARGET language — what a strong answer to this intent
+             *     sounds like, word for word. No longer shown as the pickable option; it stays as the
+             *     hidden model that grounds the immediate correction and the completion screen's
+             *     model answer, and can be revealed as a hint if the learner is stuck.
+             */
             text?: string;
             tier?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.ChoiceTier"];
             /**
@@ -2722,21 +2734,6 @@ export interface components {
         };
         "internal_adapters_http.choicesResp": {
             choices?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Choice"][];
-            /** @description Done: the closing line has been reached, so there is nothing left to pick. */
-            done?: boolean;
-            /**
-             * @description Scripted: these three were authored for this beat of this conversation, and the
-             *     character's next line is authored too. The screen uses it to drop the text box —
-             *     in a scripted run there is nothing to type, and the free pass is where typing
-             *     belongs.
-             */
-            scripted?: boolean;
-            total?: number;
-            /**
-             * @description Turn/Total place the learner in the authored conversation (0-based beat).
-             *     Meaningless when Scripted is false.
-             */
-            turn?: number;
         };
         "internal_adapters_http.correctReq": {
             context?: string;
@@ -2889,6 +2886,12 @@ export interface components {
             user?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.User"];
         };
         "internal_adapters_http.messageReq": {
+            /**
+             * @description Intent is the native-language goal the learner picked for this turn (guided-turn
+             *     redesign) — what they were trying to convey. Optional: the free pass sends none. It
+             *     grounds the immediate correction ("does the target-language line convey THIS?").
+             */
+            intent?: string;
             text?: string;
         };
         "internal_adapters_http.modelAnswerPage": {

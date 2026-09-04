@@ -30,6 +30,7 @@ import { ResizeHandle } from '@/components/ResizeHandle';
 import { DOCK_H, clampChoices, clampSplit, portraitLayout } from '@/data/dialogueSplit';
 import { setDialogueLayout, useDialogueLayout } from '@/lib/dialogueLayout';
 import { ReplyChoices } from '@/components/dialogue/ReplyChoices';
+import { Typewriter } from '@/components/dialogue/Typewriter';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
@@ -73,7 +74,15 @@ export default function DialogueRoute() {
   // immediately, so the card that carried the reason is gone by the time the learner
   // reads their own line — the reason rides along with the line instead, where it is
   // feedback on something they already did.
-  const [transcript, setTranscript] = useState<{ role: 'user' | 'npc'; text: string; note?: string }[]>([]);
+  const [transcript, setTranscript] = useState<{
+    role: 'user' | 'npc';
+    text: string;
+    note?: string;
+    // The immediate correction of a spoken line (guided-turn redesign): shown under the
+    // learner's own bubble, so "you said X → say Y, because Z" lands right where they said
+    // it. Arrives on an SSE frame just before the NPC reply.
+    correction?: { original: string; corrected: string; note: string };
+  }[]>([]);
   // Patient lines are spoken aloud. Auto-play is the point (#17: hearing the line
   // is half of understanding it), so it needs a visible off switch — audio that
   // starts on its own and cannot be stopped is worse than no audio.
@@ -101,14 +110,11 @@ export default function DialogueRoute() {
   const guided = (guideParam ?? scenario?.guide) === 'choices';
   const [choices, setChoices] = useState<ReplyChoice[]>([]);
   const [choicesBusy, setChoicesBusy] = useState(false);
-  // The three cards were WRITTEN for this beat of this conversation, and so is the
-  // character's next line. Then there is no text box: picking is the turn, and typing
-  // belongs to the second run, where the learner does the same situation alone.
-  const [scripted, setScripted] = useState(false);
-  const [scriptDone, setScriptDone] = useState(false);
-  // Set when the learner asks for the box instead. Their decision outlives the next
-  // turn — being handed the list again after saying "I'll write my own" is the app not
-  // listening.
+  // The intent the learner picked this turn (native language). Picking one reveals the
+  // mic — they then say it in the target language themselves. null = nothing picked yet.
+  const [selectedChoice, setSelectedChoice] = useState<ReplyChoice | null>(null);
+  // Set when the learner asks for the box instead of the mic — a fallback for a device
+  // with no microphone. Their decision outlives the next turn.
   const [wroteOwn, setWroteOwn] = useState(false);
   // The free pass's hint: one line about what this turn needs. Held per turn — a hint
   // from two exchanges ago is about a situation that has moved on.
@@ -275,8 +281,6 @@ export default function DialogueRoute() {
     try {
       const turn = await api.replyChoices(sid);
       setChoices(turn.choices);
-      setScripted(turn.scripted);
-      setScriptDone(turn.scripted && turn.done);
     } finally {
       setChoicesBusy(false);
     }
@@ -322,14 +326,19 @@ export default function DialogueRoute() {
   // `pick` sends a chosen reply straight away. The authored pass has no text box: the
   // three cards are the turn, and making the learner tap a card and then a send button
   // eight times is a toll on every beat of the conversation.
-  const send = async (pick?: { text: string; why?: string }) => {
+  const send = async (pick?: { text: string; intent?: string }) => {
     const text = (pick?.text ?? draft).trim();
     if (!text || pending || !sessionRef.current) return;
+    const intent = pick?.intent;
     turnsRef.current += 1; // the server persists this turn in prepare(); count it for grading
     setDraft('');
+    setSelectedChoice(null);
+    // Clear the intent picker until the next turn: the learner has spoken, so the options
+    // for THIS line are spent.
+    setChoices([]);
     setPending(true);
     // Park the line the box is about to lose, then the learner's own line.
-    const mine = { role: 'user' as const, text, note: pick?.why || undefined };
+    const mine = { role: 'user' as const, text };
     setTranscript((t) => (npcLine ? [...t, { role: 'npc' as const, text: npcLine }, mine] : [...t, mine]));
     setNpcLine(''); setNpcLineKo(''); setShowKo(false); // clear for the streaming reply (no Ko for AI lines)
     // The celebration belongs to the line that earned it, so it clears when the next
@@ -362,7 +371,20 @@ export default function DialogueRoute() {
             return next.size === prev.size ? prev : next;
           });
         },
-      });
+        // The immediate correction of the line just spoken, grounded by the picked intent.
+        // Attach it to the most recent user turn so it renders under that bubble, ahead of
+        // the NPC's reply.
+        onCorrection: (c) => setTranscript((prev) => {
+          for (let i = prev.length - 1; i >= 0; i--) {
+            if (prev[i].role === 'user') {
+              const next = [...prev];
+              next[i] = { ...next[i], correction: c };
+              return next;
+            }
+          }
+          return prev;
+        }),
+      }, intent);
       void speakNpc();
       // The character has answered, so it is the learner's move: ask for replies to THIS
       // line. Not awaited — the conversation is readable while they arrive.
@@ -462,14 +484,16 @@ export default function DialogueRoute() {
   // Refetched whenever it is the learner's move again: the suggestions are answers to
   // the line that was just said, and yesterday's answers to a different line are worse
   // than none. Never blocks anything — an empty result simply leaves the text box.
-  /** Ask for a nudge: the REASON the best reply works, with the reply withheld.
+  /** Ask for a nudge when stuck.
    *
-   *  Same source as the guided pass's choices — one call, two uses — but only the `why`
-   *  is shown. On the free pass the sentence is the thing that must stay theirs; handing
-   *  it over would make the second rung of the ladder the first one again. */
+   *  Guided, with an intent picked: reveal THAT intent's model line in the target
+   *  language — "막히면 보기". It is already in hand, so no fetch. Otherwise (the free
+   *  pass) fetch the best reply's reason with the sentence withheld, so producing it stays
+   *  the learner's own work. */
   const askHint = async () => {
     if (hintOn) { setHintOn(false); return; }
     setHintOn(true);
+    if (selectedChoice) { setHintText(selectedChoice.text); return; }
     const sid = sessionRef.current;
     if (!sid) return;
     setHintBusy(true);
@@ -845,16 +869,45 @@ export default function DialogueRoute() {
                     ]}
                   >
                     <View>
-                      <Text style={{ fontFamily: nbFonts.body, fontSize: 13.5, color: nb.ink, lineHeight: 20 }}>
-                        {last && !mine && showKo && npcLineKo ? npcLineKo : m.text}
-                      </Text>
-                      {/* Why this was the reply. Only on the learner's own line, and only
-                          when they picked it: it is feedback on something already done,
-                          which is the whole reason it is not printed on the cards. */}
-                      {mine && !!m.note && (
-                        <Text style={{ fontFamily: nbFonts.body, fontSize: 10.5, color: nb.ink, opacity: 0.8, lineHeight: 15, marginTop: 6 }}>
-                          {m.note}
+                      {last && !mine ? (
+                        // The newest character line types out letter by letter; the history
+                        // above it is already read, so those bubbles stay plain.
+                        <Typewriter
+                          text={showKo && npcLineKo ? npcLineKo : m.text}
+                          style={{ fontFamily: nbFonts.body, fontSize: 13.5, color: nb.ink, lineHeight: 20 }}
+                        />
+                      ) : (
+                        <Text style={{ fontFamily: nbFonts.body, fontSize: 13.5, color: nb.ink, lineHeight: 20 }}>
+                          {m.text}
                         </Text>
+                      )}
+                      {/* The immediate correction of the learner's own line — feedback on
+                          the thing they just did, which is why it lives under their bubble
+                          and not on the cards. A real fix shows the better phrasing; an
+                          already-good line just gets a ✓ and the encouraging note. */}
+                      {mine && !!m.correction && (
+                        <View style={{ marginTop: 7, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.15)', paddingTop: 6, gap: 3 }}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+                            <NbIcon
+                              name={m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? 'pencil' : 'check'}
+                              size={12}
+                              color={m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? '#C77E2E' : nb.green}
+                            />
+                            <Text style={nbText.hand(13, m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? '#C77E2E' : nb.green)}>
+                              {m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? t('dialogue.correctionFix') : t('dialogue.correctionGood')}
+                            </Text>
+                          </View>
+                          {m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() && (
+                            <Text style={{ fontFamily: nbFonts.body, fontSize: 12.5, color: nb.ink, lineHeight: 18 }}>
+                              {m.correction.corrected}
+                            </Text>
+                          )}
+                          {!!m.correction.note && (
+                            <Text style={{ fontFamily: nbFonts.body, fontSize: 10.5, color: nb.soft, lineHeight: 15 }}>
+                              {m.correction.note}
+                            </Text>
+                          )}
+                        </View>
                       )}
                       {/* Translation belongs to the line being worked on, so it is offered on
                           the newest NPC bubble only — on every bubble it would be four buttons
@@ -916,32 +969,17 @@ export default function DialogueRoute() {
           </View>
         )}
 
-        {/* GUIDED PASS: three replies instead of an empty box.
-            The first time through a conversation the learner has nothing to be free
-            with, which is what testers reported. Picking one takes them to pronunciation
-            practice — the point is to SAY it, not to recognise it. */}
-        {/* The authored conversation has reached its closing line: nothing left to pick,
-            and no text box on this pass. Without a word here the bottom of the screen is
-            simply empty, which reads as the app having lost the conversation. */}
-        {scripted && scriptDone && (
-          <View style={{ marginTop: 14, alignItems: 'center' }}>
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 14.9, color: nb.soft, textAlign: 'center', lineHeight: 17 }}>
-              {t('choice.finished')}
-            </Text>
-          </View>
-        )}
-
-        {guided && !wroteOwn && !hintOn && !scriptDone && (
+        {/* GUIDED PASS: pick an INTENT (in the learner's own language), then say it in the
+            target language with the mic (guided-turn redesign). The card no longer hands
+            over the words — it hands over the goal, and producing the sentence is the
+            practice. Shown until one is picked; picking reveals the speak area below. */}
+        {guided && !wroteOwn && !hintOn && !selectedChoice && (choicesBusy || choices.length > 0) && (
           <View style={{ marginTop: 12 }}>
-            {/* Drag this edge DOWN to give the conversation more room. The complaint that
-                started all of this was the cards covering the exchange they answer, and
-                how much room that needs is only knowable by the person reading it. */}
+            {/* Drag this edge DOWN to give the conversation more room. */}
             <ResizeHandle
               testID="choices-handle"
               onDrag={(dy) => {
                 if (!dragFrom.current.choices) dragFrom.current.choices = choicesBand;
-                // Down shrinks: the edge is the band's TOP, so the height is what is
-                // left below it.
                 const next = clampChoices(dragFrom.current.choices - dy, winH);
                 dragTo.current.choices = next;
                 setChoicesH(next);
@@ -954,41 +992,42 @@ export default function DialogueRoute() {
             <ReplyChoices
               choices={choices}
               loading={choicesBusy}
-              selectedText={draft}
-              // Choosing fills the box and stays put. It used to jump straight to the
-              // pronunciation screen, which made speaking a toll gate on the way to
-              // sending — someone on a bus could not get past it.
-              // Authored pass: the pick IS the turn. Model-driven pass: it fills the
-              // box, because there the learner may still want to edit it — the model
-              // wrote that sentence for them a second ago, not an author who reviewed it.
-              onPick={(c) => { if (scripted) { void send({ text: c.text, why: c.why }); } else { setDraft(c.text); } }}
-              // Speaking is its own zone on the card, so it is a decision rather than a
-              // consequence of choosing.
-              onSpeak={(c) => {
-                setDraft(c.text);
-                router.push(
-                  `/pronunciation/${encodeURIComponent(c.text.slice(0, 40))}?referenceText=${encodeURIComponent(c.text)}&origin=dialogue&scenarioId=${encodeURIComponent(id ?? '')}&step=${encodeURIComponent(t('choice.prompt'))}`
-                );
-              }}
-              // Gone on an authored pass. "직접 입력하기" was an escape hatch from a
-              // scaffold that ran out after one turn; an authored conversation does not
-              // run out, and the next curriculum step is the same situation with no
-              // scaffold at all — so writing it yourself is a step, not a button.
-              onWriteMyOwn={scripted ? undefined : () => setWroteOwn(true)}
-              // The learner's own band, or the default until they set one.
+              // Picking selects the intent and opens the mic below — it no longer fills a
+              // box with ready-made words.
+              onPick={(c) => { setSelectedChoice(c); setDraft(''); }}
+              // The no-microphone fallback: type instead. On a mic-less device the guided
+              // turn would otherwise be a dead end.
+              onWriteMyOwn={() => setWroteOwn(true)}
               maxHeight={choicesBand}
             />
           </View>
         )}
 
-        {/* free-text input (hidden in hint mode — the choice chips replace it, per handoff) */}
-        {(!hintOn && !scripted && (!guided || wroteOwn || (!choicesBusy && choices.length === 0))) && (
+        {/* SPEAK: the mic-driven input. Shown once an intent is picked (guided), or on the
+            free / no-choices / no-mic path. The learner speaks the target language; the
+            transcript fills the box, and Send carries the picked intent so the immediate
+            correction can judge the line against it. */}
+        {(!hintOn && (selectedChoice || wroteOwn || !guided || (!choicesBusy && choices.length === 0))) && (
           <View style={{ marginTop: 14 }}>
-            {/* SPEAK FREELY, printed. The label is the one place this screen names the
-                mode, and a mode is a stamp rather than a note. */}
-            <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft, marginBottom: 6 }}>
-              {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}
-            </Text>
+            {selectedChoice ? (
+              // The picked intent, held above the mic as the thing to say. The × puts the
+              // list back — a different goal, a different sentence.
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft }}>
+                  {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.sayThis')}
+                </Text>
+                <Text numberOfLines={2} style={[nbText.hand(15), { flex: 1, minWidth: 0 }]}>{selectedChoice.intent}</Text>
+                <Pressable onPress={() => { setSelectedChoice(null); setDraft(''); }} hitSlop={8}>
+                  <NbIcon name="cross" size={13} color={nb.soft} />
+                </Pressable>
+              </View>
+            ) : (
+              // SPEAK FREELY, printed. The label is the one place this screen names the
+              // mode, and a mode is a stamp rather than a note.
+              <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft, marginBottom: 6 }}>
+                {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}
+              </Text>
+            )}
             <NbPaper rot={0} style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <Pressable onPress={toggleMic} disabled={pending}>
                   {/* Recording turns the box red and puts a stop square in it; the mic is
@@ -1028,7 +1067,10 @@ export default function DialogueRoute() {
         {/* action rail */}
         <View style={{ marginTop: 12, flexDirection: 'row', gap: 9 }}>
           <View style={{ flex: 2 }}>
-            <NbButton variant="ink" full icon={pending ? undefined : 'pencil'} iconColor={nb.paper} disabled={pending || !draft.trim()} onPress={() => { void send(); }}>
+            {/* Send carries the picked intent (if any) so the immediate correction judges
+                the spoken line against what the learner meant to convey. Enabled only once
+                there is a line — they have to SAY it (or type it) first. */}
+            <NbButton variant="ink" full icon={pending ? undefined : 'pencil'} iconColor={nb.paper} disabled={pending || !draft.trim()} onPress={() => { void send(selectedChoice ? { text: draft, intent: selectedChoice.intent } : undefined); }}>
               {pending ? t('dialogue.sending') : t('dialogue.send')}
             </NbButton>
           </View>
