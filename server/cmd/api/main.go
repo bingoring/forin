@@ -21,6 +21,7 @@ import (
 	"github.com/bingoring/forin/server/internal/config"
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
+	"github.com/bingoring/forin/server/internal/domain/night"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/slang"
 	// Aliased: main.go already has a local variable named `speech` (the Azure
@@ -98,6 +99,13 @@ func main() {
 	}
 	slangDeck := slang.NewDeck(slangCards)
 
+	// 나이트 근무 라디오의 오늘 밤의 이야기, also content.
+	nightStories, err := contentfile.LoadNightStories(cfg.ContentDir)
+	if err != nil {
+		logger.Warn("night stories failed to load; 오늘 밤의 이야기 will be empty", "err", err)
+	}
+	nightRadio := night.NewStories(nightStories)
+
 	// AI layer: select an LLMPort adapter by provider (anthropic | openai) — domain unchanged.
 	var llm ports.LLMPort
 	var dialogueModel, correctionModel string
@@ -139,7 +147,7 @@ func main() {
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
-		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, PG: pool, Redis: rdb,
+		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Night: nightRadio, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

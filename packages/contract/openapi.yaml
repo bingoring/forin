@@ -974,6 +974,28 @@ components:
         total:
           type: integer
       type: object
+    internal_adapters_http.nightResp:
+      properties:
+        index:
+          type: integer
+        story:
+          $ref: '#/components/schemas/internal_adapters_http.nightStoryDTO'
+        total:
+          type: integer
+      type: object
+    internal_adapters_http.nightStoryDTO:
+      properties:
+        body:
+          type: string
+        id:
+          type: string
+        keyGloss:
+          type: string
+        keyLine:
+          type: string
+        title:
+          type: string
+      type: object
     internal_adapters_http.pageAnswerResp:
       properties:
         already:
@@ -2124,6 +2146,22 @@ paths:
       summary: Set the app's display language
       tags:
       - user
+  /night:
+    get:
+      description: A rotating night-shift story with one English line to practice;
+        `i` offsets from today's for 다음 이야기.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.nightResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: Tonight's story (오늘 밤의 이야기)
+      tags:
+      - night
   /pronunciation:
     post:
       requestBody:

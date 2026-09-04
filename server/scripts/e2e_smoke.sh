@@ -670,6 +670,16 @@ run POST /slang/collect
 AGAIN=$(pj "d.get('collectedCount',0)")
 [ "$AGAIN" = "$AFTER" ] && ok "a second collect the same day is a no-op" || bad "double collect $AFTER→$AGAIN"
 
+hd "㉒ NIGHT · 오늘 밤의 이야기"
+run GET /night
+[ "$CODE" = 200 ] && ok "GET /night 200" || bad "night → $CODE"
+NT=$(pj "d.get('total',0)")
+[ "${NT:-0}" -ge 1 ] && ok "stories served from content ($NT)" || bad "no night stories"
+KL=$(pj "d.get('story',{}).get('keyLine','')")
+[ -n "$KL" ] && ok "tonight's story has a key line to practice" || bad "no keyLine"
+run "GET" "/night?i=1"
+[ "$CODE" = 200 ] && ok "다음 이야기 (GET /night?i=1) 200" || bad "next story → $CODE"
+
 hd "RESULT"
 printf "  \033[1m%d passed, %d failed\033[0m\n" "$PASS" "$FAIL"
 [ "$FAIL" -eq 0 ] || exit 1

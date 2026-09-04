@@ -13,6 +13,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/home"
+	"github.com/bingoring/forin/server/internal/domain/night"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/slang"
 	"github.com/bingoring/forin/server/internal/domain/speech"
@@ -44,6 +45,7 @@ type Deps struct {
 	Ward                 *ward.Service       // home live-ward presence roster (optional)
 	Slang                *slang.Deck         // 은어 도감 content deck (optional)
 	SlangRepo            ports.SlangRepo     // slang collection persistence (optional)
+	Night                *night.Stories      // 오늘 밤의 이야기 content (optional)
 	PG                   *pgxpool.Pool
 	Redis                *redis.Client
 }
@@ -160,6 +162,12 @@ func NewRouter(d Deps) http.Handler {
 		sh := &slangHandler{deck: d.Slang, repo: d.SlangRepo}
 		mux.Handle("GET /slang", auth(http.HandlerFunc(sh.get)))
 		mux.Handle("POST /slang/collect", auth(http.HandlerFunc(sh.collect)))
+	}
+
+	// 나이트 근무 라디오 — 오늘 밤의 이야기 (authenticated). Nil when the content is not wired.
+	if d.Night != nil {
+		nh := &nightHandler{stories: d.Night}
+		mux.Handle("GET /night", auth(http.HandlerFunc(nh.get)))
 	}
 
 	// Staff lounge (authenticated). Nil when the repo is not wired — the routes

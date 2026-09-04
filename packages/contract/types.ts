@@ -1925,6 +1925,45 @@ export interface paths {
         };
         trace?: never;
     };
+    "/night": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Tonight's story (오늘 밤의 이야기)
+         * @description A rotating night-shift story with one English line to practice; `i` offsets from today's for 다음 이야기.
+         */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.nightResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/pronunciation": {
         parameters: {
             query?: never;
@@ -3079,6 +3118,18 @@ export interface components {
         "internal_adapters_http.modelAnswerPage": {
             groups?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerGroup"][];
             total?: number;
+        };
+        "internal_adapters_http.nightResp": {
+            index?: number;
+            story?: components["schemas"]["internal_adapters_http.nightStoryDTO"];
+            total?: number;
+        };
+        "internal_adapters_http.nightStoryDTO": {
+            body?: string;
+            id?: string;
+            keyGloss?: string;
+            keyLine?: string;
+            title?: string;
         };
         "internal_adapters_http.pageAnswerResp": {
             /**
