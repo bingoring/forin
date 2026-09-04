@@ -521,7 +521,12 @@ export interface ColleagueRequest { id: string; from: string; name: string; rela
 export interface AddColleagueResult {
   colleagueId: string; requested?: boolean; alreadyLinked?: boolean; alreadyRequested?: boolean; autoAccepted?: boolean;
 }
-export interface ColleaguePrefs { shareStatus: boolean; shareWeekly: boolean }
+export interface ColleaguePrefs { shareStatus: boolean; shareWeekly: boolean; shareWard: boolean }
+
+/** One anonymous figure in the home live ward: a stable, non-reversible id and the face to
+ *  draw. Never a name — the ward is a crowd, not a directory. `avatar` is absent when the
+ *  person never chose one (the client seeds a face from the id). */
+export interface WardMember { id: string; avatar?: Partial<AvatarSpec> }
 
 export const api = {
   raw: http,
@@ -649,6 +654,21 @@ export const api = {
   async setColleaguePrefs(p: Partial<ColleaguePrefs>): Promise<ColleaguePrefs> {
     const { data } = await http.patch('/me/colleague-prefs', p);
     return data as ColleaguePrefs;
+  },
+
+  // ── live ward presence ──────────────────────────────────────────────────
+  /** Touch presence AND read who else is studying (the home-screen poll). */
+  async ward(): Promise<WardMember[]> {
+    const { data } = await http.get('/ward');
+    return (data?.roster ?? []) as WardMember[];
+  },
+  /** Keep present while foregrounded on any screen (no body). */
+  async wardHeartbeat(): Promise<void> {
+    await http.post('/ward/heartbeat');
+  },
+  /** Leave immediately when the app backgrounds/closes (best-effort). */
+  async wardLeave(): Promise<void> {
+    await http.post('/ward/leave');
   },
 
   async progress(): Promise<Progress> {
