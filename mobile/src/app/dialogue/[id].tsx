@@ -52,6 +52,14 @@ const WAV_16K_MONO: RecordingOptions = {
   web: {},
 };
 
+/** The character's OPENING line — the scenario's first dialogue step, else its tagline.
+ *  Authored, shown client-side, and never persisted as a server turn; the resume path has
+ *  to put it back or the first utterance goes missing from the restored thread. */
+function openingLineOf(s: ScenarioDetail | null): string {
+  const opening = (s?.steps ?? []).find((st) => st.type === 'dialogue');
+  return (opening?.payload?.lineEn as string) || s?.tagline || '';
+}
+
 export default function DialogueRoute() {
   const t = useT();
   const { id, guide: guideParam } = useLocalSearchParams<{ id: string; guide?: 'choices' | 'free' }>();
@@ -464,12 +472,29 @@ export default function DialogueRoute() {
       setState('error');
       return;
     }
-    // Rehydrate the transcript so the history sheet shows the earlier turns, and
-    // count them so leaving grades instead of asking "아직 대화를 시작하지 않았어요".
-    setTranscript(prev.turns.map((t) => ({ role: t.role === 'user' ? ('user' as const) : ('npc' as const), text: t.content })));
-    turnsRef.current = prev.turns.filter((t) => t.role === 'user').length;
-    const lastNpc = [...prev.turns].reverse().find((t) => t.role !== 'user');
-    if (lastNpc) { setNpcLine(lastNpc.content); setNpcLineKo(''); }
+    // Rehydrate the transcript. Two things the old version got wrong:
+    //
+    //  · The scenario's OPENING line is authored and shown client-side — the server never
+    //    stored it, so prev.turns starts with the learner's first message. Without putting
+    //    it back the character's first utterance was simply missing from the thread.
+    //  · The last assistant line is the CURRENT line the learner is answering; it belongs
+    //    in npcLine, NOT the transcript — threadOf depends on "npcLine is not in the
+    //    transcript", and the old code set npcLine to a line it had ALSO left in the
+    //    transcript, which would duplicate it the moment the learner sent their next turn.
+    const opening = openingLineOf(scenario);
+    const turns = prev.turns;
+    const endsWithNpc = turns.length > 0 && turns[turns.length - 1].role !== 'user';
+    const body = endsWithNpc ? turns.slice(0, -1) : turns;
+    setTranscript([
+      ...(opening ? [{ role: 'npc' as const, text: opening }] : []),
+      ...body.map((t) => ({ role: t.role === 'user' ? ('user' as const) : ('npc' as const), text: t.content })),
+    ]);
+    turnsRef.current = turns.filter((t) => t.role === 'user').length;
+    setNpcLine(endsWithNpc ? turns[turns.length - 1].content : '');
+    setNpcLineKo('');
+    // The guided choices were fetched on a fresh start but NOT on resume, so the options
+    // never came back and the guided pass was dead after resuming. Ask for them now.
+    void loadChoices();
   };
 
   const startFresh = async () => {

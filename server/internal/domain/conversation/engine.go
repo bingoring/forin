@@ -508,9 +508,20 @@ type Correction struct {
 // Correct fixes the utterance (cheaper model), stores it, and creates a review card.
 func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText, scenarioID string, rc progress.ReviewContext) (*Correction, error) {
 	lc := e.langFor(ctx, userID)
-	sys := fmt.Sprintf("You are a %[1]s coach for %[2]s-speaking %[3]ss. Correct the user's %[1]s to natural, "+
-		"clinically appropriate phrasing. Respond ONLY with JSON: {\"corrected\": string, \"note\": string}. "+
-		"\"note\" briefly explains in %[2]s why it is more natural. If already correct, return it unchanged with an encouraging note.",
+	// Judge the CONTENT, not only the phrasing. A reply can be grammatical and still be
+	// wrong for the moment — a nurse who states a dose they should not, or answers a
+	// different question than the one asked. The Context carries the situation and (on the
+	// guided turn) the goal the learner meant to convey, so the correction can steer an
+	// off-situation or off-goal reply toward what they SHOULD say here, and say why.
+	sys := fmt.Sprintf("You are a %[1]s coach for %[2]s-speaking %[3]ss in a clinical role-play. "+
+		"Judge the user's reply on TWO things and fix BOTH: "+
+		"(1) SITUATION & INTENT — is it appropriate and safe for the situation, and does it serve the goal they were trying to convey? "+
+		"A %[3]s who says something clinically inappropriate or answers off-topic should be steered to what they SHOULD say here. "+
+		"(2) LANGUAGE — is the %[1]s natural and grammatically correct? "+
+		"Put the improved reply in `corrected` (in %[1]s): appropriate for THIS situation AND natural. "+
+		"In `note` (in %[2]s), briefly say what you changed and WHY — lead with the situational point when the content, not just the wording, was off. "+
+		"If the reply is already appropriate and correct, return it unchanged with a short encouraging note. "+
+		"Respond ONLY with JSON: {\"corrected\": string, \"note\": string}.",
 		lc.Target, lc.Native, lc.Job)
 	user := utterance
 	if contextText != "" {

@@ -143,8 +143,10 @@ func buildChoicesPrompt(sc *content.Scenario, lc langContext) string {
 			"  \"strong\" — correct and useful, but leaves something for later.\n"+
 			"  \"fair\"   — polite and safe; no mistake, and no progress either.\n"+
 			"For each, give THREE fields:\n"+
-			"  `intent` — in %[2]s, a short phrase naming WHAT TO CONVEY to this person (the goal of the turn, "+
-			"e.g. \"ask where exactly the pain is\"). NOT the %[1]s words — the learner will say those themselves.\n"+
+			"  `intent` — in %[2]s, a SPECIFIC one-clause description of WHAT TO CONVEY to this person: "+
+			"the goal of the turn WITH the concrete detail that makes it clear, so the learner knows exactly what to say "+
+			"(e.g. not just \"ask about the pain\" but \"ask where exactly the pain is and whether it spreads\"). "+
+			"NOT the %[1]s words — the learner will say those themselves.\n"+
 			"  `text`   — in %[1]s, one or two sentences that convey that intent WORD FOR WORD: a model answer, "+
 			"in the register the learner can actually produce.\n"+
 			"  `why`    — ONE short sentence in %[2]s saying what this reply achieves; the difference between the three is the lesson.\n"+
