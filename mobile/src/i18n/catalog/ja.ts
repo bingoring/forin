@@ -738,6 +738,7 @@ export const ja: Record<string, string> = {
   'home.nextUp': '次: {title}',
   'home.resumeLabel': '続きから',
   'home.resumeCta': '続ける',
+  'home.resumeStep': '{title} — {done}/{total} 段階',
   'home.briefTitle': '今日の勤務ブリーフィング',
   'home.briefReview': '復習 {n}/{target}枚',
   'home.briefCurriculum': 'カリキュラムを続ける',

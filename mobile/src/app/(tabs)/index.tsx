@@ -25,7 +25,7 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
-import { NbButton, NbCheck, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbCheck, NbGauge, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { LiveWardNb } from '@/components/home/LiveWardNb';
 import { setHomeActive, setWardVisible, useWardRoster } from '@/lib/wardPresence';
 import { markPhrasePracticed, usePhrasePracticed } from '@/lib/dailyBrief';
@@ -222,53 +222,29 @@ export default function HomeTab() {
           }}
         />
 
-        {/* 이어서 하기 — resume the curriculum where the last attempt left off. It leads
-            with WHERE (the chapter/coordinate), the step as subtitle, and a real progress
-            bar, so it reads as "carry on" rather than "here is an in-progress list". */}
+        {/* 이어서 하기 (v37 HomeV2) — a compact horizontal card: a siren, the coordinate and
+            the step ("…투약 설명 — 2/4 단계"), a pencil-hatched progress bar, and a 계속
+            button. The phrase practice lives in the brief and the 오늘의 문장 card, not here. */}
         {home.todayOne ? (
-          <NbPaper rot={-0.7} tape tapeLeft={120} style={{ marginTop: 16, paddingTop: 18, paddingBottom: 14, paddingHorizontal: 16 }}>
-            <Text style={{ fontFamily: nbFonts.bodyBold, fontSize: 11, color: nb.blue, letterSpacing: 1 }}>
-              {t('home.resumeLabel')}
-            </Text>
-            <Text style={[nbText.hand(21), { marginTop: 7, lineHeight: 27 }]}>{home.todayOne.chapter}</Text>
-            <Text style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>
-              {t('home.nextUp', { title: home.todayOne.title })}
-            </Text>
-            {/* Progress through the chapter's required steps (runs), from the server. Absent
-                on an older payload — the card then simply shows no bar. */}
-            {!!home.todayOne.progress && home.todayOne.progress.total > 0 && (
-              <View style={{ marginTop: 11 }}>
-                <Text style={[nbText.body(9.5, nb.soft), { marginBottom: 4 }]}>
-                  {home.todayOne.progress.done} / {home.todayOne.progress.total}
+          <NbPaper rot={-0.4} tape tapeLeft={120} style={{ marginTop: 13, paddingVertical: 12, paddingHorizontal: 14 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+              <NbIcon name="siren" size={26} />
+              <View style={{ minWidth: 0, flex: 1 }}>
+                <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyBold, fontSize: 10, color: nb.blue, letterSpacing: 1 }}>
+                  {t('home.resumeLabel')} · {home.todayOne.chapter}
                 </Text>
-                <View style={{ height: 8, borderWidth: 1.5, borderColor: nb.ink, backgroundColor: nb.paper, overflow: 'hidden' }}>
-                  <View style={{ width: `${Math.round((100 * home.todayOne.progress.done) / home.todayOne.progress.total)}%`, height: '100%', backgroundColor: nb.green }} />
-                </View>
+                <Text numberOfLines={1} style={[nbText.hand(17), { marginTop: 2, lineHeight: 21 }]}>
+                  {home.todayOne.progress && home.todayOne.progress.total > 0
+                    ? t('home.resumeStep', { title: home.todayOne.title, done: home.todayOne.progress.done, total: home.todayOne.progress.total })
+                    : home.todayOne.title}
+                </Text>
+                {!!home.todayOne.progress && home.todayOne.progress.total > 0 && (
+                  <View style={{ marginTop: 6, width: '90%' }}>
+                    <NbGauge value={(100 * home.todayOne.progress.done) / home.todayOne.progress.total} height={7} />
+                  </View>
+                )}
               </View>
-            )}
-            <View style={{ flexDirection: 'row', gap: 9, marginTop: 12 }}>
-              <NbButton variant="ink" icon="pencil" iconColor={nb.paper} onPress={startToday}>
-                {t('home.resumeCta')}
-              </NbButton>
-              {/* Practises the DAY'S SENTENCE, which is the only sentence this screen
-                  actually has — the task is a scenario, and its lines do not exist yet.
-                  Hidden when there is no phrase rather than routed nowhere. */}
-              {!!home.phrase && (
-                <NbButton
-                  variant="dashed"
-                  icon="mic"
-                  size="sm"
-                  onPress={() => {
-                    markPhrasePracticed(home.date);
-                    router.push({
-                      pathname: '/pronunciation/[sentenceKey]',
-                      params: { sentenceKey: home.phrase!.en.slice(0, 40), referenceText: home.phrase!.en, origin: 'home' },
-                    });
-                  }}
-                >
-                  {t('home.pronPractice')}
-                </NbButton>
-              )}
+              <NbButton variant="ink" size="sm" onPress={startToday}>{t('home.resumeCta')}</NbButton>
             </View>
           </NbPaper>
         ) : (

@@ -192,22 +192,21 @@ test('the shift badge reads the same clock as the ward', () => {
   expect(SHIFT_LABEL.night).toBe('NIGHT'); // a value the server's two-way coin flip had no room for
 });
 
-test('the home card names the CURRICULUM, with the step as its subtitle', () => {
+test('the home card is 이어서 하기 (v37): coordinate, step count, hatched bar, 계속', () => {
   const { readFileSync } = require('fs') as typeof import('fs');
   const { join } = require('path') as typeof import('path');
   const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'index.tsx'), 'utf8');
-  // It used to be the other way round: the step's title was the big line and the
-  // curriculum a caption above it, which said "today's one thing" and left the learner
-  // to work out where that thing was. `one.chapter` is the curriculum the server
-  // resumed — the one holding their LAST attempt (see markResume server-side).
-  // v29 draws it as handwriting on a taped page; what must hold is which half is big.
-  expect(src).toMatch(/nbText\.hand\(21\)[^>]*>\{home\.todayOne\.chapter\}/);
-  expect(src).toMatch(/t\('home\.nextUp', \{ title: home\.todayOne\.title \}\)/);
-  // v37 reframes it as 이어서 하기 (resume), not "curriculum in progress" — the label and
-  // the CTA both say continue, and the card carries a real progress bar.
+  // v37 replaced the tall taped "curriculum in progress" card with the compact HomeV2
+  // ContinueCard: a siren, "이어서 하기 · {coordinate}", "{title} — {done}/{total} 단계",
+  // a pencil-hatched progress bar (NbGauge), and a 계속 button.
   expect(src).toMatch(/t\('home\.resumeLabel'\)/);
+  expect(src).toMatch(/home\.todayOne\.chapter/); // the coordinate rides on the label line
+  expect(src).toMatch(/t\('home\.resumeStep'/); // title + N/M 단계 in one line
   expect(src).toMatch(/t\('home\.resumeCta'\)/);
-  expect(src).toMatch(/home\.todayOne\.progress/);
+  expect(src).toMatch(/<NbGauge value=\{/); // the hatched progress bar, not a flat fill
+  expect(src).toMatch(/name="siren"/);
+  // The old vertical framing is gone.
+  expect(src).not.toMatch(/t\('home\.curriculumTab'\)/);
 });
 
 test('홈이 라이브 병동을 노트북 라인으로 다시 마운트한다 (v37)', () => {

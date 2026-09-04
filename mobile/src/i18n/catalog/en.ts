@@ -739,6 +739,7 @@ export const en: Record<string, string> = {
   'home.nextUp': 'Next: {title}',
   'home.resumeLabel': 'Continue',
   'home.resumeCta': 'Continue',
+  'home.resumeStep': '{title} — step {done}/{total}',
   'home.briefTitle': "Today's brief",
   'home.briefReview': 'Review {n}/{target} cards',
   'home.briefCurriculum': 'Continue the curriculum',

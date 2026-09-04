@@ -66,6 +66,6 @@ test('이어서 하기 카드가 챕터와 서버 진행률을 보여준다', as
   const all = texts((await mount()).root).join('');
   expect(all).toContain('이어서 하기');    // resumeLabel, not "진행중인 커리큘럼"
   expect(all).not.toContain('진행중인 커리큘럼');
-  expect(all).toContain('응급실 · 첫 출근'); // chapter, big
-  expect(all).toContain('2 / 4');          // progress done/total
+  expect(all).toContain('응급실 · 첫 출근'); // the coordinate, on the label line
+  expect(all).toContain('2/4 단계');        // the step count, in the title line
 });
