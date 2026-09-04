@@ -2262,3 +2262,33 @@ paths:
       summary: Transcribe recorded audio to text (dictation, Azure STT)
       tags:
       - pronunciation
+  /ward:
+    get:
+      description: Touches the caller's presence and returns up to 10 other learners
+        currently studying (anonymous id + avatar, never the caller).
+      responses: null
+      security:
+      - Bearer: []
+      summary: Live ward roster
+      tags:
+      - ward
+  /ward/heartbeat:
+    post:
+      description: Keeps the caller present while the app is foregrounded on any screen.
+        No body.
+      responses: null
+      security:
+      - Bearer: []
+      summary: Ward heartbeat
+      tags:
+      - ward
+  /ward/leave:
+    post:
+      description: Removes the caller immediately (the app backgrounded or closed),
+        rather than waiting for the TTL.
+      responses: null
+      security:
+      - Bearer: []
+      summary: Leave the ward
+      tags:
+      - ward
