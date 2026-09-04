@@ -15,6 +15,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/home"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/speech"
+	"github.com/bingoring/forin/server/internal/domain/ward"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -39,6 +40,7 @@ type Deps struct {
 	Colleague            ports.ColleagueRepo // colleague links, cheers, presence
 	Lounge               ports.LoungeRepo    // staff-lounge posts, cheers, reports
 	HomePools            home.Pools          // authored mentor notes + field phrases
+	Ward                 *ward.Service       // home live-ward presence roster (optional)
 	PG                   *pgxpool.Pool
 	Redis                *redis.Client
 }
@@ -140,6 +142,14 @@ func NewRouter(d Deps) http.Handler {
 		mux.Handle("POST /me/colleague-requests/{id}/decline", auth(http.HandlerFunc(cl.decline)))
 		mux.Handle("GET /me/colleague-prefs", auth(http.HandlerFunc(cl.prefs)))
 		mux.Handle("PATCH /me/colleague-prefs", auth(http.HandlerFunc(cl.prefs)))
+	}
+
+	// Home live ward (authenticated). Nil when Redis/presence is not wired.
+	if d.Ward != nil {
+		wh := &wardHandler{svc: d.Ward, prefs: d.Colleague}
+		mux.Handle("GET /ward", auth(http.HandlerFunc(wh.get)))
+		mux.Handle("POST /ward/heartbeat", auth(http.HandlerFunc(wh.heartbeat)))
+		mux.Handle("POST /ward/leave", auth(http.HandlerFunc(wh.leave)))
 	}
 
 	// Staff lounge (authenticated). Nil when the repo is not wired — the routes

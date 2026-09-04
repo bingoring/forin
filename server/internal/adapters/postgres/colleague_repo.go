@@ -369,8 +369,8 @@ func (r *ColleagueRepo) Presences(ctx context.Context, userIDs []string) (map[st
 func (r *ColleagueRepo) Prefs(ctx context.Context, userID string) (colleague.Prefs, error) {
 	p := colleague.DefaultPrefs()
 	err := r.pool.QueryRow(ctx,
-		`SELECT share_status, share_weekly FROM colleague_prefs WHERE user_id = $1`, userID).
-		Scan(&p.ShareStatus, &p.ShareWeekly)
+		`SELECT share_status, share_weekly, share_ward FROM colleague_prefs WHERE user_id = $1`, userID).
+		Scan(&p.ShareStatus, &p.ShareWeekly, &p.ShareWard)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return colleague.DefaultPrefs(), nil // no row = defaults
 	}
@@ -382,9 +382,9 @@ func (r *ColleagueRepo) Prefs(ctx context.Context, userID string) (colleague.Pre
 
 func (r *ColleagueRepo) SetPrefs(ctx context.Context, userID string, p colleague.Prefs) error {
 	_, err := r.pool.Exec(ctx,
-		`INSERT INTO colleague_prefs (user_id, share_status, share_weekly, updated_at)
-		 VALUES ($1,$2,$3, now())
-		 ON CONFLICT (user_id) DO UPDATE SET share_status = $2, share_weekly = $3, updated_at = now()`,
-		userID, p.ShareStatus, p.ShareWeekly)
+		`INSERT INTO colleague_prefs (user_id, share_status, share_weekly, share_ward, updated_at)
+		 VALUES ($1,$2,$3,$4, now())
+		 ON CONFLICT (user_id) DO UPDATE SET share_status = $2, share_weekly = $3, share_ward = $4, updated_at = now()`,
+		userID, p.ShareStatus, p.ShareWeekly, p.ShareWard)
 	return err
 }

@@ -349,6 +349,7 @@ func (h *colleagueHandler) remove(w http.ResponseWriter, r *http.Request) {
 type prefsReq struct {
 	ShareStatus *bool `json:"shareStatus"`
 	ShareWeekly *bool `json:"shareWeekly"`
+	ShareWard   *bool `json:"shareWard"`
 }
 
 // @Summary Read or update colleague sharing preferences
@@ -377,6 +378,9 @@ func (h *colleagueHandler) prefs(w http.ResponseWriter, r *http.Request) {
 	}
 	if req.ShareWeekly != nil {
 		p.ShareWeekly = *req.ShareWeekly
+	}
+	if req.ShareWard != nil {
+		p.ShareWard = *req.ShareWard
 	}
 	if err := h.repo.SetPrefs(r.Context(), uid, p); err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not save preferences")

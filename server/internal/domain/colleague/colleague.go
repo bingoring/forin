@@ -131,11 +131,16 @@ type Presence struct {
 type Prefs struct {
 	ShareStatus bool `json:"shareStatus"`
 	ShareWeekly bool `json:"shareWeekly"`
+	// ShareWard governs the anonymous home live-ward crowd, which strangers can see —
+	// a different audience from ShareStatus (accepted colleagues), so it is its own
+	// switch. On by default; the figure is faceless-of-name, but a learner can still
+	// choose not to appear at all.
+	ShareWard bool `json:"shareWard"`
 }
 
 // DefaultPrefs — colleagues are mutually accepted, so sharing is on by default
-// and can be turned off at any time.
-func DefaultPrefs() Prefs { return Prefs{ShareStatus: true, ShareWeekly: true} }
+// and can be turned off at any time. The ward is anonymous, so it too defaults on.
+func DefaultPrefs() Prefs { return Prefs{ShareStatus: true, ShareWeekly: true, ShareWard: true} }
 
 // ── invite codes ───────────────────────────────────────────────────────────
 
