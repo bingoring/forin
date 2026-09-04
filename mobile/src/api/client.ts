@@ -541,6 +541,10 @@ export interface SlangDeck {
   todayCard?: SlangCard; collectableToday: boolean; collected: SlangCard[];
 }
 
+/** One 오늘 밤의 이야기; text is server-resolved to the caller's locale. */
+export interface NightStory { id: string; title: string; body: string; keyLine: string; keyGloss: string }
+export interface NightRadio { total: number; index: number; story?: NightStory }
+
 export const api = {
   raw: http,
 
@@ -697,6 +701,15 @@ export const api = {
     try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
     const { data } = await http.post('/slang/collect', null, { params: tz ? { tz } : undefined });
     return data as SlangDeck;
+  },
+
+  // ── 나이트 근무 라디오 (오늘 밤의 이야기) ──────────────────────────────────
+  /** Tonight's story; `i` offsets from today's for 다음 이야기. */
+  async night(i = 0): Promise<NightRadio> {
+    let tz: string | undefined;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
+    const { data } = await http.get('/night', { params: { i, ...(tz ? { tz } : {}) } });
+    return data as NightRadio;
   },
 
   async progress(): Promise<Progress> {

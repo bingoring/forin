@@ -345,6 +345,18 @@ export default function HomeTab() {
           </NbPaper>
         </Pressable>
 
+        {/* 나이트 근무 라디오 — a night-only channel (v38). */}
+        <Pressable onPress={() => router.push('/night')}>
+          <NbPaper rot={0.4} style={{ marginTop: 11, paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <NbIcon name="speaker" size={20} />
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={nbText.hand(15)}>{t('night.homeEntry')}</Text>
+              <Text numberOfLines={1} style={[nbText.body(9.5, nb.soft), { marginTop: 1 }]}>{t('night.homeEntrySub')}</Text>
+            </View>
+            <NbIcon name="chevronRight" size={15} color={nb.soft} />
+          </NbPaper>
+        </Pressable>
+
         <View style={{ flexDirection: 'row', gap: 10, marginTop: 16 }}>
           <View style={{ flex: 1 }}>
             <NbButton variant="paper" full icon="hospital" onPress={() => router.push('/campus')}>
