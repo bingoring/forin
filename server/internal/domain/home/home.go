@@ -12,6 +12,9 @@ import (
 	"time"
 )
 
+// ReviewGoalPerDay is the daily target for the work brief's 복습 task.
+const ReviewGoalPerDay = 5
+
 // Shift is the day's roster flavour. Weather was deliberately dropped: it would
 // be the one value on this screen that isn't true (Build Spec Q1).
 type Shift struct {

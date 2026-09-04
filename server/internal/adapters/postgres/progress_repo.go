@@ -112,6 +112,17 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 			userID, since).Scan(&n)
 		return n, err
 	}
+	// Cards actually reviewed since `since`: reps>0 excludes a schedule row that was only
+	// just created (never graded), and updated_at is bumped on every grade.
+	countReviews := func(since time.Time) (int, error) {
+		var n int
+		err := r.pool.QueryRow(ctx,
+			`SELECT count(*) FROM review_schedules rs
+			 JOIN review_cards rc ON rc.id = rs.card_id
+			 WHERE rc.user_id = $1 AND rs.reps > 0 AND rs.updated_at >= $2`,
+			userID, since).Scan(&n)
+		return n, err
+	}
 	// Active conversation time: per session, the span between its first and last
 	// turn, clipped to the period so a session straddling the boundary (e.g. it
 	// began before midnight) only contributes its in-period portion.
@@ -146,6 +157,9 @@ func (r *ProgressRepo) GrowthStats(ctx context.Context, userID string, dayStart,
 		return nil, err
 	}
 	if s.NewCardsWeek, err = countCards(weekStart); err != nil {
+		return nil, err
+	}
+	if s.ReviewsToday, err = countReviews(dayStart); err != nil {
 		return nil, err
 	}
 	if s.ConversationSecondsToday, err = convSeconds(dayStart); err != nil {

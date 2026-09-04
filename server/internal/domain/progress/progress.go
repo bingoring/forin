@@ -43,6 +43,9 @@ type GrowthStats struct {
 	ScenariosTotal           int      `json:"scenariosTotal"` // lifetime clears → praise stickers (1 each)
 	NewCardsToday            int      `json:"newCardsToday"`
 	NewCardsWeek             int      `json:"newCardsWeek"`
+	// ReviewsToday counts cards actually reviewed today (reps>0, touched since dayStart) —
+	// approximate, since a card reviewed twice in a day collapses to one updated_at.
+	ReviewsToday int `json:"reviewsToday"`
 	ConversationSecondsToday int      `json:"conversationSecondsToday"`
 	ConversationSecondsWeek  int      `json:"conversationSecondsWeek"`
 	ActiveDates              []string `json:"activeDates"` // yyyy-mm-dd (tz), the StreakWindowDays ending today

@@ -386,6 +386,11 @@ components:
           type: integer
         newCardsWeek:
           type: integer
+        reviewsToday:
+          description: |-
+            ReviewsToday counts cards actually reviewed today (reps>0, touched since dayStart) —
+            approximate, since a card reviewed twice in a day collapses to one updated_at.
+          type: integer
         scenariosToday:
           type: integer
         scenariosTotal:
@@ -801,6 +806,17 @@ components:
         grade:
           type: string
       type: object
+    internal_adapters_http.homeBrief:
+      properties:
+        curriculumDone:
+          type: boolean
+        reviewCount:
+          type: integer
+        reviewDone:
+          type: boolean
+        reviewTarget:
+          type: integer
+      type: object
     internal_adapters_http.homeColleague:
       properties:
         activeToday:
@@ -814,8 +830,17 @@ components:
         relation:
           $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_colleague.Relation'
       type: object
+    internal_adapters_http.homeProgress:
+      properties:
+        done:
+          type: integer
+        total:
+          type: integer
+      type: object
     internal_adapters_http.homeResp:
       properties:
+        brief:
+          $ref: '#/components/schemas/internal_adapters_http.homeBrief'
         colleagueTotal:
           type: integer
         colleagues:
@@ -882,6 +907,8 @@ components:
           type: string
         kind:
           type: string
+        progress:
+          $ref: '#/components/schemas/internal_adapters_http.homeProgress'
         scenarioId:
           type: string
         title:

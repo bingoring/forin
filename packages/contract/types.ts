@@ -2647,6 +2647,11 @@ export interface components {
             conversationSecondsWeek?: number;
             newCardsToday?: number;
             newCardsWeek?: number;
+            /**
+             * @description ReviewsToday counts cards actually reviewed today (reps>0, touched since dayStart) —
+             *     approximate, since a card reviewed twice in a day collapses to one updated_at.
+             */
+            reviewsToday?: number;
             scenariosToday?: number;
             /** @description lifetime clears → praise stickers (1 each) */
             scenariosTotal?: number;
@@ -2901,6 +2906,12 @@ export interface components {
         "internal_adapters_http.gradeReq": {
             grade?: string;
         };
+        "internal_adapters_http.homeBrief": {
+            curriculumDone?: boolean;
+            reviewCount?: number;
+            reviewDone?: boolean;
+            reviewTarget?: number;
+        };
         "internal_adapters_http.homeColleague": {
             activeToday?: boolean;
             activity?: string;
@@ -2908,7 +2919,12 @@ export interface components {
             name?: string;
             relation?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_colleague.Relation"];
         };
+        "internal_adapters_http.homeProgress": {
+            done?: number;
+            total?: number;
+        };
         "internal_adapters_http.homeResp": {
+            brief?: components["schemas"]["internal_adapters_http.homeBrief"];
             colleagueTotal?: number;
             colleagues?: components["schemas"]["internal_adapters_http.homeColleague"][];
             date?: string;
@@ -2946,6 +2962,7 @@ export interface components {
         "internal_adapters_http.homeTodayOne": {
             chapter?: string;
             kind?: string;
+            progress?: components["schemas"]["internal_adapters_http.homeProgress"];
             scenarioId?: string;
             title?: string;
         };

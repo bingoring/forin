@@ -33,10 +33,28 @@ type homeHandler struct {
 }
 
 type homeTodayOne struct {
-	Chapter    string `json:"chapter"`
-	Title      string `json:"title"`
-	Kind       string `json:"kind"`
-	ScenarioID string `json:"scenarioId,omitempty"`
+	Chapter    string        `json:"chapter"`
+	Title      string        `json:"title"`
+	Kind       string        `json:"kind"`
+	ScenarioID string        `json:"scenarioId,omitempty"`
+	Progress   *homeProgress `json:"progress,omitempty"`
+}
+
+// homeProgress is the current chapter's required-step completion, so the home card can draw
+// "이어서 하기" with a real progress bar instead of just a start button. Counts runs (guided
+// + free), not raw authored steps — quizzes are optional and excluded.
+type homeProgress struct {
+	Done  int `json:"done"`
+	Total int `json:"total"`
+}
+
+// homeBrief is the day's 3-item work brief. The two server-derivable tasks live here; the
+// third (오늘의 문장 practice) is tracked client-side, so it is not on the wire.
+type homeBrief struct {
+	ReviewCount    int  `json:"reviewCount"`
+	ReviewTarget   int  `json:"reviewTarget"`
+	ReviewDone     bool `json:"reviewDone"`
+	CurriculumDone bool `json:"curriculumDone"`
 }
 
 type homeColleague struct {
@@ -70,6 +88,7 @@ type homeResp struct {
 	TargetLevel string `json:"targetLevel,omitempty"`
 
 	TodayOne   *homeTodayOne    `json:"todayOne,omitempty"`
+	Brief      *homeBrief       `json:"brief,omitempty"`
 	MentorNote *home.MentorNote `json:"mentorNote,omitempty"`
 	Phrase     *home.Phrase     `json:"phrase,omitempty"`
 	Review     *homeReview      `json:"review,omitempty"`
@@ -138,6 +157,14 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 		week := home.RecentRhythm(s.ActiveDates, now, loc)
 		mu.Lock()
 		resp.Week = week
+		// The day's brief: reviewed cards and a cleared curriculum step. The 오늘의 문장
+		// task is client-tracked and added on the device.
+		resp.Brief = &homeBrief{
+			ReviewCount:    s.ReviewsToday,
+			ReviewTarget:   home.ReviewGoalPerDay,
+			ReviewDone:     s.ReviewsToday >= home.ReviewGoalPerDay,
+			CurriculumDone: s.ScenariosToday >= 1,
+		}
 		mu.Unlock()
 	})
 
@@ -308,6 +335,7 @@ func currentStep(curricula []curriculum.CurriculumState) (dept, deptLabel string
 					Title:      st.Name,
 					Kind:       st.Kind,
 					ScenarioID: st.ScenarioID,
+					Progress:   &homeProgress{Done: c.Done, Total: c.Total},
 				}
 			}
 		}
