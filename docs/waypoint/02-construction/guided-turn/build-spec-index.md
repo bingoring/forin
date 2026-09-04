@@ -71,13 +71,13 @@ POST /conversation/{sid}/stream  { text, intent }   ← intent = 고른 보기(�
 | S7 | 정리: #1 로딩 흔적·scripted 콘텐츠·미사용 코드 제거, 문서/STATUS 갱신 | — |
 
 ## §4. 체크리스트
-- [ ] S1: `promptNative`가 **`lc.Native`로** 생성(한국어 하드코딩 아님)·타겟 `text` 유지·계약(openapi/types) 재생성·서버·클라 tsc 0
-- [ ] S2: scripted 경로 제거 후 **모든 시나리오가 LLM 보기/응답**·기존 테스트(scriptedPass 등) 정리·회귀 없음
-- [ ] S3: 전송이 `intent` 전달·교정이 의도 근거로 평가·`correction` 프레임이 delta보다 먼저 방출·복습 카드 저장 유지
-- [ ] S4: 파서가 `correction` 프레임 파싱(기존 kind 회귀 없음)·framing 테스트
-- [ ] S5: **의도 선택 전 마이크 없음 · 발화/타이핑 전 전송 불가 · 모킹 STT로 칸 채움 · `correction` 이벤트로 인라인 교정 표시** (스크린 테스트)
-- [ ] S6: 타자기 점진 노출(수신 버퍼 앞지르지 않음)·오프닝/스트리밍 모두
-- [ ] S7: go test·jest·tsc 0 · 다국어 회귀(모국어=일본어 등에서 의도가 일본어로) 확인 · STATUS 갱신
+- [x] S1: 보기에 모국어 의도(`Choice.Intent`) 추가·`buildChoicesPrompt`로 추출해 **`lc.Native`로** 의도, **`lc.Target`로** 모범문 생성·타겟 `text` 숨겨 유지·계약(openapi/types) 재생성·서버·클라 tsc 0
+- [x] S2: `script.go`/scripted 경로 전면 삭제 후 **모든 시나리오가 LLM 보기/응답**·scriptedPass/ScriptOf 의존 테스트 정리·회귀 없음
+- [x] S3: 전송이 `intent` 전달·`correctForTurn`이 의도 근거로 교정·`correction` 프레임이 delta보다 먼저 방출(동기)·복습 카드 저장 유지(백그라운드 중복 제거)
+- [x] S4: 파서가 `correction` 객체 프레임 파싱(문자열 규칙 앞에서)·기존 kind 회귀 없음·framing 테스트(누락 필드·speech 유출 방지 포함)
+- [x] S5: 의도 선택기(ReplyChoices) 재작성 — 의도만 노출·타겟 단어 숨김·선택 시 마이크 영역·발화 전 전송 불가·send가 intent 전달·인라인 교정 표시. replyChoices.test 재작성(19)
+- [x] S6: `Typewriter` 신규 — 단일 인터벌로 점진 노출(수신 버퍼 앞지르지 않음)·확장 이어감·교체 재시작. NPC 마지막 말풍선에만 적용. typewriter.test(3)
+- [x] S7: go test(실 DB)·jest 871·tsc 0 · 다국어 가드(모국어=일본어/타겟=독일어에서 의도가 일본어로) 변이 확인 · i18n 4개 카탈로그 키 추가
 - [ ] V: 시뮬레이터 happy-path(의도 택1→발화→즉시 교정→NPC 타자기)·promote·ota
 
-> **검증 관점(through-line):** 각 신규 가드는 관측 가능한 것을 검증하고 변이로 실패를 확인한다. 특히 **다국어 불변식**은 모국어를 영어 아닌 값으로 바꾼 케이스로 의도 언어가 따라오는지 테스트한다(한국어/영어 하드코딩 회귀 방지).
+> **검증 결과(through-line):** 신규 가드마다 관측 가능한 것을 검증하고 변이로 실패를 확인했다. 다국어 불변식은 의도를 "Korean" 하드코딩으로 바꾼 변이가 테스트를 실패시켜 회귀를 막음을 확인. correction SSE는 객체 프레임 파싱·speech 유출 방지·누락 필드 강건성으로, Typewriter는 확장/재시작 분기로 가드. 서버 전체(실 DB) 통과, 모바일 871 통과, tsc 0.
