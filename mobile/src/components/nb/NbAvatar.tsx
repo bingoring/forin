@@ -29,26 +29,26 @@ import type {
 import { DEFAULT_AVATAR_SPEC } from '@/data/nbAvatar';
 import { nb, nbFonts } from '@/theme/nb';
 
-const K = '#3E362B';
-const W = 2;
+export const K = '#3E362B';
+export const W = 2;
 /** The shared ink stroke, spread into every shape. */
 const S = { stroke: K, strokeWidth: W, strokeLinejoin: 'round' as const, strokeLinecap: 'round' as const };
 /** Same stroke, no fill — react-native-svg defaults fill to BLACK, so an outline that
  *  forgets this comes out a solid blob (the same trap NbIcon documents). */
 const SN = { ...S, fill: 'none' };
 
-const SKINS: Record<SkinKey, string> = {
+export const SKINS: Record<SkinKey, string> = {
   pale: '#FBEEDD', ivory: '#F9E4C8', beige: '#F6DCC0', tan: '#EFC49E',
   warm: '#E3AC7E', olive: '#C99465', brown: '#A97250', deep: '#7E5236',
 };
 
-const HAIRC: Record<HairColorKey, string> = {
+export const HAIRC: Record<HairColorKey, string> = {
   black: '#2B2622', darkbrown: '#4A382A', brown: '#6B4E36', lightbrown: '#8A6A4A',
   blonde: '#D9B36B', ash: '#9A9388', gray: '#C9C2B8', white: '#EFE9DD',
   red: '#A85638', navy: '#3D4A63', pink: '#D9938F', mint: '#8FB8A5',
 };
 
-const OUTC: Record<OutfitColorKey, string> = {
+export const OUTC: Record<OutfitColorKey, string> = {
   sage: '#B8CBB0', navy: '#5B6E8C', burgundy: '#9C5A5A', lilac: '#C3B3D6',
   sky: '#A9CBE3', peach: '#F0C4A8', charcoal: '#6E6A63', mint: '#A8D9C3',
   yellow: '#E9D98A', rose: '#E3AEB4', white: '#FFFdf4', teal: '#7FAFAF',
@@ -119,7 +119,7 @@ const BGS: Record<BgKey, () => ReactElement> = {
 // ── back hair ─────────────────────────────────────────────────────────────
 type HairLayer = (hc: string) => ReactElement | null;
 
-const BACK: Record<HairKey, HairLayer> = {
+export const BACK: Record<HairKey, HairLayer> = {
   short: () => null, part: () => null, midPart: () => null, buzz: () => null,
   curlyShort: () => null, fringe: () => null, spiky: () => null,
   baldFringe: () => null, bald: () => null,
@@ -163,7 +163,7 @@ const BACK: Record<HairKey, HairLayer> = {
 };
 
 // ── front hair ────────────────────────────────────────────────────────────
-const FRONT: Record<HairKey, HairLayer> = {
+export const FRONT: Record<HairKey, HairLayer> = {
   bald: () => null,
   short: (hc) => <Path d="M19.9 25 A13.7 13.7 0 0 1 44.1 25 L45 30 Q32 25 19 30 Z" fill={hc} {...S} />,
   part: (hc) => <Path d="M19.9 25 A13.7 13.7 0 0 1 44.1 25 L45 31 Q42 24 38 21 Q30 29 19 30 Z" fill={hc} {...S} />,
@@ -214,7 +214,7 @@ const FRONT: Record<HairKey, HairLayer> = {
 };
 
 // ── eyes (12) ─────────────────────────────────────────────────────────────
-const EYES: Record<EyeKey, () => ReactElement> = {
+export const EYES: Record<EyeKey, () => ReactElement> = {
   dot: () => (
     <G>
       <Circle cx="27" cy="31" r="1.6" fill={K} />
@@ -300,7 +300,7 @@ const EYES: Record<EyeKey, () => ReactElement> = {
 };
 
 // ── mouths (12) ───────────────────────────────────────────────────────────
-const MOUTHS: Record<MouthKey, () => ReactElement> = {
+export const MOUTHS: Record<MouthKey, () => ReactElement> = {
   line: () => <Path d="M28 38 H36" {...SN} />,
   smile: () => <Path d="M28 37.5 Q32 40.5 36 37.5" {...SN} />,
   grin: () => <Path d="M27 37 Q32 43 37 37 Z" fill="#fff" {...S} strokeWidth="1.6" />,
@@ -498,7 +498,7 @@ const OUTFITS: Record<OutfitKey, (oc: string) => ReactElement> = {
 };
 
 // ── hats (11) ─────────────────────────────────────────────────────────────
-const HATS: Record<HatKey, (oc?: string) => ReactElement | null> = {
+export const HATS: Record<HatKey, (oc?: string) => ReactElement | null> = {
   none: () => null,
   nurseCap: () => (
     <G>
@@ -568,7 +568,7 @@ const HATS: Record<HatKey, (oc?: string) => ReactElement | null> = {
 };
 
 // ── accessories (12) ──────────────────────────────────────────────────────
-const ACCS: Record<AccKey, () => ReactElement | null> = {
+export const ACCS: Record<AccKey, () => ReactElement | null> = {
   none: () => null,
   stetho: () => (
     <G>
