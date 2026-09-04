@@ -80,7 +80,7 @@ func main() {
 
 	// Home flavour (mentor notes, field phrases). A missing content dir is not
 	// fatal — those two modules are simply omitted from the home response.
-	homePools, err := contentfile.LoadHomePools("content")
+	homePools, err := contentfile.LoadHomePools(cfg.ContentDir)
 	if err != nil {
 		logger.Warn("home content pools failed to load; those modules will be hidden", "err", err)
 	}
@@ -92,7 +92,7 @@ func main() {
 
 	// 은어 도감: the slang deck is content, so it can grow by deploy. Missing content is
 	// not fatal — the endpoint then serves an empty deck.
-	slangCards, err := contentfile.LoadSlang("content")
+	slangCards, err := contentfile.LoadSlang(cfg.ContentDir)
 	if err != nil {
 		logger.Warn("slang deck failed to load; 은어 도감 will be empty", "err", err)
 	}

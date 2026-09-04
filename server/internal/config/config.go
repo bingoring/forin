@@ -49,6 +49,11 @@ type Config struct {
 	// heartbeats every 6s on home / 15s elsewhere while foregrounded; this must clear
 	// a couple of missed beats but still drop someone soon after they background the app.
 	WardTTL time.Duration
+
+	// ContentDir is where authored runtime content (home flavour pools, slang deck) is
+	// read from. The Docker image bundles it at /content and sets CONTENT_DIR; locally it
+	// defaults to the repo's ./content.
+	ContentDir string
 }
 
 // ResolveProvider returns the effective LLM provider (explicit, else auto-detected).
@@ -95,6 +100,7 @@ func Load() (*Config, error) {
 		AzureSpeechKey:           firstNonEmpty(os.Getenv("AZURE_SPEECH_KEY"), os.Getenv("AZURE_SPEECH_REGION_KEY")),
 		AzureSpeechRegion:        os.Getenv("AZURE_SPEECH_REGION"),
 		WardTTL:                  getdur("WARD_TTL", 40*time.Second),
+		ContentDir:               getenv("CONTENT_DIR", "content"),
 	}
 
 	var missing []string
