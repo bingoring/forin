@@ -170,22 +170,24 @@ test('홈이 라이브 병동을 노트북 라인으로 다시 마운트한다',
 
 > **자체 계획으로 확장 예정.** 서버(`ward` 도메인·Redis·핸들러·계약)는 별도 서브시스템이라, Phase 1 완료 후 서버 코드(기존 핸들러·라우터·redis 어댑터·`packages/contract` 패턴)를 읽고 이 절을 태스크 단위 상세 계획으로 확장한다. 계약은 스펙에 이미 확정돼 있다(아래).
 
-계약(spec business-logic-model.md 확정):
-- Redis: `ward:live`(zset, member=uid, score=마지막 하트비트 epoch) + `ward:av:<uid>`(String JSON, `EX 45`).
-- 하트비트: `ZADD ward:live <now> <uid>` + `SET ward:av:<uid> <json> EX 45` (숨김이면 스킵).
-- 로스터: `ZREMRANGEBYSCORE ward:live -inf (now-40)` → `ZREVRANGE ward:live 0 10 WITHSCORES` → 자기 제거·상위 10 컷 → `MGET`.
-- 엔드포인트: `GET /ward`(하트비트 겸 로스터, `{roster:[{id,avatar}], self}`) · `POST /ward/heartbeat`(204) · `POST /ward/leave`(204).
-- 상태 기준: 포그라운드 = 온라인. TTL 40s. 홈 6s(로스터 겸용) / 그 외 15s 하트비트.
+**확정 설계(서버 코드 확인 후):**
+- **Redis(얇게)**: `ward:live` zset만 — member=uid, score=마지막 touch epoch(초). 아바타 캐시 없음.
+  - `Touch`: `ZADD ward:live <now> <uid>`. `Leave`: `ZREM`. `Recent(cutoff,limit)`: `ZREMRANGEBYSCORE -inf (cutoff` evict → `ZREVRANGEBYSCORE +inf cutoff LIMIT 0 limit` → uids.
+- **아바타**: 로스터 읽기 시점에만 `users.Avatars(ctx, ≤10 uids)`로 Postgres 조회(권위 있는 값, 배치 1쿼리). 클라이언트는 아바타를 보내지 않는다(스푸핑 불가).
+- **익명 id**: 로스터의 `id`는 `hex(sha256(uid)[:6])`(12 hex). uid 비노출, diff 키는 안정.
+- **엔드포인트**(모두 body 없음): `GET /ward`(touch 겸 로스터 → `{roster:[{id,avatar?}]}`) · `POST /ward/heartbeat`(touch, 204) · `POST /ward/leave`(ZREM, 204).
+- **옵트아웃**: `colleague_prefs.share_ward bool DEFAULT true`(마이그레이션 000035). 서버가 touch 단계에서 `Prefs.ShareWard=false`면 등록 스킵(숨겨도 남은 볼 수는 있음). 나 탭 토글은 `PATCH /me/colleague-prefs {shareWard}`.
+- **상태 기준**: 포그라운드=온라인. `WARD_TTL`(config, 기본 40s). 홈 6s(GET, 로스터 겸 touch) / 그 외 15s(POST heartbeat). 백그라운드 시 POST leave + 로스터 비움.
 
-태스크 개요(확장 대상):
-- P2-1: Redis 프레즌스 저장소 `internal/adapters/redis/ward_presence.go` + 단위 테스트(miniredis).
-- P2-2: `internal/domain/ward` 도메인(로스터 선정·자기 제외·숨김 제외·상한 10·정규화) + 테스트.
-- P2-3: `internal/adapters/http/ward_handler.go` 엔드포인트 3종 + 라우터 배선 + 테스트.
-- P2-4: 옵트아웃 pref(저장 위치는 마이그레이션 최소화 우선으로 확정) + 등록 강제 + 나 탭 토글.
-- P2-5: `packages/contract` openapi + TS 타입(ward 3종) 재생성.
-- P2-6: `mobile/src/lib/wardPresence.ts`(`useWardPresence`) — 포그라운드 하트비트·홈 로스터 폴링·diff·leaving 세트 + 테스트.
-- P2-7: `LiveWardNb`에 `roster` 연결 — 좌측 등장·우측 이탈 애니메이션(입국심사 데스크 슬라이드아웃 패턴) + 테스트.
-- P2-8: 스모크 `e2e_smoke.sh`에 ward 왕복 추가 → 서버 스테이징 초록 → promote → 모바일 OTA.
+태스크(순서대로 실행):
+- P2-1: config `WardTTL`(`getdur("WARD_TTL", 40s)`) + `redis.go`에 `WardStore{c}`(Touch/Leave/Recent).
+- P2-2: `internal/domain/ward/ward.go` — `Entry{ID,LastSeen}`·`Member{ID,Avatar}`·`Service{store,users}`; `Roster(viewerID)`(자기 제외·상한 10·해시 id·아바타 첨부)·`Touch(uid,hidden)`·`Leave(uid)` + 페이크 스토어 단위 테스트.
+- P2-3: `internal/adapters/http/ward_handler.go`(get/heartbeat/leave, swag 주석) + `router.go` Deps·3라우트 + `main.go` 배선.
+- P2-4: `share_ward` — 마이그 000035 + `colleague.Prefs.ShareWard`/DefaultPrefs + repo Prefs/SetPrefs SQL + `prefsReq` 패치 + Go 테스트.
+- P2-5: `cd server && make contract` → `packages/contract` 재생성(드리프트 게이트 대비).
+- P2-6: mobile `api.ward/wardHeartbeat/wardLeave` + `WardMember` + `lib/wardPresence.ts`(AppState 하트비트·홈 로스터 폴링·구독) + 테스트.
+- P2-7: `LiveWardNb` 등장/이탈(좌측 진입·우측 이탈, leaving 세트) + 홈에서 `useWardRoster` 연결 + 루트에서 프레즌스 init + 나 탭 토글 + 테스트.
+- P2-8: `e2e_smoke.sh` ⑮ WARD 왕복 → 서버 스테이징 초록 확인 → promote → 모바일 OTA.
 
 ## Self-Review (Phase 1)
 
