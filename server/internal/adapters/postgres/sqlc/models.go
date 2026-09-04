@@ -283,6 +283,12 @@ type ScenarioAttempt struct {
 	Guide          string             `json:"guide"`
 }
 
+type SlangCollected struct {
+	UserID      string             `json:"user_id"`
+	CardID      string             `json:"card_id"`
+	CollectedAt pgtype.Timestamptz `json:"collected_at"`
+}
+
 type SpeechAttempt struct {
 	ID            string             `json:"id"`
 	UserID        string             `json:"user_id"`
