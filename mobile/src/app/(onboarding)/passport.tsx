@@ -956,7 +956,12 @@ function Immigration({ lvl, onPick, onPass, onBack, frozen = false }: {
   return (
     <Page>
       <Gutter />
-      <View style={{ height: 250, backgroundColor: '#CFE3EE', borderBottomWidth: 1.5, borderBottomColor: '#C4D5DF', overflow: 'hidden' }}>
+      {/* TOP_INSET, like every other onboarding page: this desk uniquely started at the
+          very top of the screen, so its label and the ‹ back button sat UNDER the status
+          bar/notch — "입국심사 화면이 위쪽으로 올라가있고, 뒤로가기 버튼이 상단바에 가려져".
+          The 시작하기 button is pinned to the bottom and the options fit above it with room,
+          so pushing the desk down clears the bar without crowding them. */}
+      <View style={{ marginTop: TOP_INSET, height: 250, backgroundColor: '#CFE3EE', borderBottomWidth: 1.5, borderBottomColor: '#C4D5DF', overflow: 'hidden' }}>
         <Text style={{ position: 'absolute', left: 34, top: 14, fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 2.5, color: nb.blue }}>
           {t('onb.imm.label')}
         </Text>

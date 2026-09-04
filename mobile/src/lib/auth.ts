@@ -13,6 +13,7 @@ import { login as kakaoLogin } from '@react-native-kakao/user';
 
 import { api } from '@/api/client';
 import { clearTokens, loadTokens, saveTokens } from '@/lib/secureStore';
+import { clearDraft } from '@/lib/onboardingDraft';
 import { useAuthStore } from '@/store/authStore';
 import { t } from '@/i18n';
 
@@ -87,6 +88,11 @@ export async function devSignIn(): Promise<void> {
 
 export async function signOut(): Promise<void> {
   await clearTokens();
+  // Clear the onboarding draft too. It exists to RESUME an interrupted sign-up, and a
+  // signed-out user is not mid-sign-up — leaving it made the passport reopen at the
+  // immigration desk (the resume target for a filled draft) instead of its cover, which
+  // is the actual sign-in surface. And 시작하기 there had no session to start with.
+  await clearDraft().catch(() => {});
   useAuthStore.getState().logout();
 }
 
