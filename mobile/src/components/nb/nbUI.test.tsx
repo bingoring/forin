@@ -10,9 +10,10 @@ jest.mock('react-native-worklets', () => ({
   runOnJS: (f: unknown) => f, runOnUI: (f: unknown) => f, isWorkletFunction: () => false,
 }));
 
+import { Text } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import {
-  NbButton, NbCheck, NbChip, NbGauge, NbIndexTabs, NbMark, NbPaper, NbProgSquares, NbSheet, NbStamp,
+  NbButton, NbCheck, NbChip, NbGauge, NbIndexTabs, NbMark, NbMemo, NbPaper, NbProgSquares, NbSheet, NbStamp,
 } from './NbUI';
 import { NbIcon } from './NbIcon';
 import { RULE_H, nb } from '@/theme/nb';
@@ -194,6 +195,22 @@ test('paper, stamps and checks carry the props the look depends on', () => {
   expect(styled(prog.root, (s) => s.width === 8 && s.backgroundColor !== 'transparent').length).toBe(3);
   expect(mount(<NbCheck done />).root.findAll((n) => String(n.type) === 'RNSVGPath', { deep: true }).length).toBe(1);
   expect(mount(<NbCheck />).root.findAll((n) => String(n.type) === 'RNSVGPath', { deep: true }).length).toBe(0);
+});
+
+test('a memo wraps a bare string child in Text so it is not dropped', () => {
+  // A raw string sitting directly in a View renders nothing in a release build — only the
+  // dashed box shows. The v38 pages passed the copy as a bare string, so the memo must
+  // wrap a string (or number) child itself.
+  const tree = mount(<NbMemo>10장마다 히든 카드 개봉</NbMemo>);
+  const textNode = tree.root.findAll(
+    (n) => String(n.type) === 'Text' && n.props.children === '10장마다 히든 카드 개봉',
+    { deep: true },
+  );
+  expect(textNode.length).toBe(1);
+  // An element child (a caller passing its own <Text>) is not double-wrapped.
+  const withEl = mount(<NbMemo><Text>이미 감쌈</Text></NbMemo>);
+  const texts = withEl.root.findAll((n) => String(n.type) === 'Text', { deep: true });
+  expect(texts.length).toBe(1);
 });
 
 test('a chip reports which way it is set', () => {

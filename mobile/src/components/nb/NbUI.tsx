@@ -378,12 +378,19 @@ export function NbMemo({ color = nb.blue, rot = -0.3, style, children }: {
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
 }) {
+  // A bare string (or number) child is the common case — the translated copy passed
+  // straight in. In a release build a raw string sitting directly in a View is dropped
+  // silently (only the dashed box shows), so wrap it in the memo's own hand style here.
+  // Element children (a caller passing its own Text for custom styling) pass through.
+  const body = (typeof children === 'string' || typeof children === 'number')
+    ? <Text style={nbText.hand(13.5)}>{children}</Text>
+    : children;
   return (
     <View style={[{
       paddingVertical: 8, paddingHorizontal: 11, borderWidth: 1.4, borderStyle: 'dashed',
       borderColor: color, borderRadius: 3, backgroundColor: `${color}10`, transform: deg(rot),
     }, style]}>
-      {children}
+      {body}
     </View>
   );
 }
