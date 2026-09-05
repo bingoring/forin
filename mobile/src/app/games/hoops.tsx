@@ -21,6 +21,7 @@ import { NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { recordBest, useBestScore } from '@/lib/gameScores';
+import { playSfx } from '@/lib/sfx';
 import { useT } from '@/i18n';
 
 // ── tuning ───────────────────────────────────────────────────────────────────
@@ -236,11 +237,13 @@ export default function HoopsGame() {
     if (g.phase === 'ready') { g.phase = 'playing'; setPhase('playing'); setGuide(''); }
     g.vy = -JUMP;
     g.vx = g.dir * SPEED;
+    playSfx('whoosh');
   };
 
   const rattle = (now: number) => {
     if (now - g.lastJig < 130) return;
     g.lastJig = now;
+    playSfx('rim');
     jig.setValue(0);
     Animated.sequence([
       Animated.timing(jig, { toValue: 1, duration: 40, useNativeDriver: true }),
@@ -281,6 +284,7 @@ export default function HoopsGame() {
     setHud((h) => ({ ...h, score: g.score, clock: 0 }));
     setPhase('over');
     trailRef.current = []; setTrail([]);
+    playSfx('gameover');
   };
 
   useFocusEffect(useCallback(() => {

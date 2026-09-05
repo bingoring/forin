@@ -12,7 +12,9 @@
 import { createAudioPlayer, type AudioPlayer } from 'expo-audio';
 import * as SecureStore from 'expo-secure-store';
 
-export type SfxName = 'tap' | 'confirm' | 'back' | 'success' | 'wrong' | 'reward';
+export type SfxName =
+  | 'tap' | 'confirm' | 'back' | 'success' | 'wrong' | 'reward'
+  | 'whoosh' | 'rim' | 'gameover';
 
 // require() rather than a dynamic path: Metro resolves assets statically, so a
 // computed path would not be bundled.
@@ -23,6 +25,9 @@ const SOURCES: Record<SfxName, number> = {
   success: require('../../assets/sfx/success.wav'),
   wrong: require('../../assets/sfx/wrong.wav'),
   reward: require('../../assets/sfx/reward.wav'),
+  whoosh: require('../../assets/sfx/whoosh.wav'),
+  rim: require('../../assets/sfx/rim.wav'),
+  gameover: require('../../assets/sfx/gameover.wav'),
 };
 
 const MUTE_KEY = 'forin.sfx.muted';

@@ -35,6 +35,29 @@ def silence(ms):
     return [0.0] * int(RATE * ms / 1000)
 
 
+def sweep(f0, f1, ms, amp=0.2):
+    """A sine that slides from f0 to f1 with a decay — a 'whip' / whoosh."""
+    n = int(RATE * ms / 1000)
+    out = []
+    phase = 0.0
+    for i in range(n):
+        f = f0 + (f1 - f0) * (i / n)
+        phase += 2 * math.pi * f / RATE
+        env = math.exp(-3.0 * i / n)
+        out.append(amp * math.sin(phase) * env)
+    return out
+
+
+def mix(*sigs):
+    """Sum several samples so tones sound at once (a richer, metallic hit)."""
+    m = max(len(s) for s in sigs)
+    out = [0.0] * m
+    for s in sigs:
+        for i, v in enumerate(s):
+            out[i] += v
+    return out
+
+
 def write(name, samples):
     # A short fade on the tail kills the click that a hard cut leaves.
     tail = min(220, len(samples))
@@ -66,6 +89,13 @@ SOUNDS = {
     "wrong":   square(196, 90, amp=0.18, duty=0.25) + square(165, 110, amp=0.18, duty=0.25),
     # Streak / reward moment.
     "reward":  square(G5, 55) + square(C6, 55) + square(E6, 150),
+    # ── 탭탭 농구 ──
+    # A tap sends the ball up: a quick rising whip.
+    "whoosh":  sweep(300, 1180, 130, amp=0.17),
+    # The ball clangs off the rim/board: a short bright metallic tick (two inharmonic tones).
+    "rim":     mix(square(1180, 55, amp=0.13), square(1760, 40, amp=0.08)),
+    # Game over: a descending four-note fall.
+    "gameover": square(E5, 120) + square(C5, 120) + square(G5 // 2, 120) + square(C5 // 2, 300),
 }
 
 if __name__ == "__main__":

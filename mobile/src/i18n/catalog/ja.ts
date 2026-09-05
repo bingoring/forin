@@ -757,7 +757,7 @@ export const ja: Record<string, string> = {
   'games.penCap': 'ペンキャップ・スピード',
   'games.penCapSub': '緑になった瞬間にタップ! 反応速度 · 10秒',
   'games.circle': '完璧な円描き',
-  'games.circleSub': '点線の円を一筆で — 精度採点 · 10秒',
+  'games.circleSub': '点線の円を一筆で — 精度採点 · 5秒',
   'games.runner': '廊下ダッシュ',
   'games.runnerSub': 'タップでジャンプ! 短く=低く、長く=高く',
   'games.soon': '準備中',

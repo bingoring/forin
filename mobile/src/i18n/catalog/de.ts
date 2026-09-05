@@ -757,7 +757,7 @@ export const de: Record<string, string> = {
   'games.penCap': 'Stiftkappen-Speed',
   'games.penCapSub': 'Tippe, sobald es grün wird · 10s',
   'games.circle': 'Perfekter Kreis',
-  'games.circleSub': 'Den gestrichelten Kreis in einem Strich nachziehen · 10s',
+  'games.circleSub': 'Den gestrichelten Kreis in einem Strich nachziehen · 5s',
   'games.runner': 'Flur-Sprint',
   'games.runnerSub': 'Tippen zum Springen — kurz=niedrig, lang=hoch',
   'games.soon': 'Bald',

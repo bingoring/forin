@@ -55,10 +55,41 @@ export default function CircleGame() {
   const [size, setSize] = useState({ w: 1, h: 1 });
   const [points, setPoints] = useState<Pt[]>([]);
   const [result, setResult] = useState<Result | null>(null);
+  const [remain, setRemain] = useState<number | null>(null); // 5s draw-timer countdown
   // Refs so the PanResponder (created once) always sees the latest values.
   const sizeRef = useRef(size);
   sizeRef.current = size;
   const ptsRef = useRef<Pt[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const finalizeRef = useRef<(pts: Pt[]) => void>(() => {});
+
+  // Score whatever is drawn (on release OR when the 5s runs out — slow, careful tracing was
+  // scoring too easily, so an attempt is capped). Kept in a ref so the once-made PanResponder
+  // and the timer both call the latest version.
+  finalizeRef.current = (pts: Pt[]) => {
+    const { w, h } = sizeRef.current;
+    if (pts.length < 10) { setResult(null); return; }
+    const devs = pts.map((p) => {
+      const vx = (p.x / w) * VB_W;
+      const vy = (p.y / h) * VB_H;
+      return Math.abs(Math.hypot(vx - CX, vy - CY) - R);
+    });
+    let bestI = 0, worstI = 0;
+    devs.forEach((d, i) => {
+      if (d < devs[bestI]) bestI = i;
+      if (d > devs[worstI]) worstI = i;
+    });
+    const err = devs.reduce((s, d) => s + d, 0) / devs.length;
+    const score = scoreFor(err);
+    setResult({ score, err, devs, bestI, worstI });
+    recordBest('circle', score);
+  };
+
+  const stopTimer = () => {
+    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
+    setRemain(null);
+  };
+  useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
 
   // The 삐끗 label shakes in when a result appears.
   const wob = useRef(new Animated.Value(0)).current;
@@ -82,6 +113,20 @@ export default function CircleGame() {
           ptsRef.current = [{ x: locationX, y: locationY }];
           setResult(null);
           setPoints(ptsRef.current);
+          // start the 5-second clock for this attempt
+          if (timerRef.current) clearInterval(timerRef.current);
+          const endAt = Date.now() + 5000;
+          setRemain(5);
+          timerRef.current = setInterval(() => {
+            const r = (endAt - Date.now()) / 1000;
+            if (r <= 0) {
+              if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
+              setRemain(null);
+              finalizeRef.current(ptsRef.current); // time's up — score what's there
+            } else {
+              setRemain(r);
+            }
+          }, 100);
         },
         onPanResponderMove: (e) => {
           const { locationX, locationY } = e.nativeEvent;
@@ -91,28 +136,9 @@ export default function CircleGame() {
           setPoints(ptsRef.current);
         },
         onPanResponderRelease: () => {
-          const { w, h } = sizeRef.current;
-          const pts = ptsRef.current;
-          if (pts.length < 10) {
-            setResult(null);
-            return;
-          }
-          // Per-point deviation from the circle, in viewBox px — the raw material for the
-          // score, the colouring, and the best/worst call-outs.
-          const devs = pts.map((p) => {
-            const vx = (p.x / w) * VB_W;
-            const vy = (p.y / h) * VB_H;
-            return Math.abs(Math.hypot(vx - CX, vy - CY) - R);
-          });
-          let bestI = 0, worstI = 0;
-          devs.forEach((d, i) => {
-            if (d < devs[bestI]) bestI = i;
-            if (d > devs[worstI]) worstI = i;
-          });
-          const err = devs.reduce((s, d) => s + d, 0) / devs.length;
-          const score = scoreFor(err);
-          setResult({ score, err, devs, bestI, worstI });
-          recordBest('circle', score);
+          if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
+          setRemain(null);
+          finalizeRef.current(ptsRef.current);
         },
       }),
     [],
@@ -132,6 +158,7 @@ export default function CircleGame() {
     : '';
 
   const retry = () => {
+    stopTimer();
     ptsRef.current = [];
     setPoints([]);
     setResult(null);
@@ -151,6 +178,12 @@ export default function CircleGame() {
           </NbPaper>
         </Pressable>
         <View style={{ flex: 1 }} />
+        {remain != null && (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+            <NbIcon name="bell" size={13} color={remain < 2 ? nb.red : nb.soft} />
+            <Text style={nbText.mono(14, remain < 2 ? nb.red : nb.ink)}>{remain.toFixed(1)}</Text>
+          </View>
+        )}
         {best != null && <Text style={nbText.mono(12, nb.soft)}>{t('games.hoopsBest', { n: best })}</Text>}
       </View>
 

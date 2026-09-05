@@ -758,7 +758,7 @@ export const en: Record<string, string> = {
   'games.penCap': 'Pen-cap speed',
   'games.penCapSub': 'Tap the moment it turns green · 10s',
   'games.circle': 'Perfect circle',
-  'games.circleSub': 'Trace the dashed circle in one stroke · 10s',
+  'games.circleSub': 'Trace the dashed circle in one stroke · 5s',
   'games.runner': 'Hallway dash',
   'games.runnerSub': 'Tap to jump — short=low, long=high',
   'games.soon': 'Soon',

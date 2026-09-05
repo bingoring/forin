@@ -6,6 +6,7 @@ jest.mock('react-native-worklets', () => ({
   runOnJS: (f: unknown) => f, runOnUI: (f: unknown) => f, isWorkletFunction: () => false,
 }));
 jest.mock('expo-secure-store', () => ({ getItemAsync: async () => null, setItemAsync: async () => {} }));
+jest.mock('@/lib/sfx', () => ({ playSfx: () => {} }));
 jest.mock('@/lib/gameScores', () => ({
   recordBest: () => {},
   useBestScore: () => 26,

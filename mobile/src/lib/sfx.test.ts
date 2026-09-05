@@ -90,7 +90,7 @@ beforeEach(async () => {
 test('the very first tap makes a sound', async () => {
   // Preloading is what makes this true: play() on a player that has not finished
   // loading is dropped, and every sound's first tap used to hit that.
-  expect(mockCreated.length).toBe(6);
+  expect(mockCreated.length).toBe(9);
   const before = totalPlays();
   playSfx('tap');
   await settle();

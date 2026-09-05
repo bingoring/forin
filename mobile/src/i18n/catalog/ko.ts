@@ -788,7 +788,7 @@ export const ko: Record<string, string> = {
   'games.penCap': '펜 뚜껑 스피드',
   'games.penCapSub': '초록불 뜨는 순간 탭! 반응속도 · 10초',
   'games.circle': '완벽한 원 그리기',
-  'games.circleSub': '점선 원을 따라 한 붓에 — 정확도 채점 · 10초',
+  'games.circleSub': '점선 원을 따라 한 붓에 — 정확도 채점 · 5초',
   'games.runner': '복도 달리기',
   'games.runnerSub': '터치로 점프! 짧게=낮게, 길게=높게',
   'games.soon': '준비 중',
