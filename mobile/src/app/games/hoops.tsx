@@ -1,14 +1,17 @@
 // 왼오른 농구 — 인게임 (v38 로직 · v39 디자인).
 //
-// A break-time basketball game. One hoop is on screen at a time; sink it and the camera
-// slides to the opposite wall, revealing the next hoop at a new height. The ball travels in
-// one direction at a constant speed; a tap gives it an upward hop, gravity arcs it back, and
-// running off one side wraps it in from the other. A clean swish is 2 points, a bank off the
-// board is 1; two clean shots in a row set the ball on fire and every shot after is worth 3,
-// until a bank puts it out. A shot clock ticks down between baskets — let it hit zero and the
-// game is over. The best score is kept on the device.
+// A break-time basketball game. One hoop is on screen at a time; sink it and the ball keeps
+// going the other way while the camera pans — the scored hoop slides off its wall and the
+// opposite hoop slides in at a NEW height (that shifting height is the difficulty). The ball
+// travels in one direction at a constant speed; a tap gives it an upward hop, gravity arcs it
+// back, and running off one side wraps it in from the other. A clean swish is 2 points, a
+// bank off the board is 1; two clean shots in a row set the ball on fire and every shot after
+// is worth 3, until a bank puts it out. A shot clock ticks down between baskets — let it hit
+// zero and the game is over. The best score is kept on the device.
 //
 // The aim guide (dashed arc) shows only before the first tap; once play starts it is gone.
+// Two layers: the hoops + floor ride a camera that pans on a basket, while the ball lives in
+// a fixed layer so a made shot flows straight on instead of snapping back to a start spot.
 // The ball moves every frame through an Animated value (no React re-render per frame); the
 // HUD re-renders a few times a second. The scoring rule is pure and unit-tested.
 import { useCallback, useRef, useState } from 'react';
@@ -21,16 +24,18 @@ import { TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { recordBest, useBestScore } from '@/lib/gameScores';
 import { useT } from '@/i18n';
 
-// ── tuning (≈ v39 physics, made frame-rate independent) ──────────────────────
-const G_ACC = 1500;  // gravity px/s²
-const JUMP = 470;    // upward speed a tap sets, px/s
+// ── tuning (frame-rate independent) ──────────────────────────────────────────
+const G_ACC = 1050;  // gravity px/s² — light enough that the ball floats
+const JUMP = 440;    // upward speed a tap sets, px/s
 const SPEED = 150;   // constant horizontal speed, px/s
 const BALL_R = 14;
 const RIM_R = 28;    // half the rim opening
 const BOARD_H = 52;  // backboard height up from the rim
 const CLOCK = 8.0;   // shot-clock seconds, reset on every basket
 const WALL_IN = 54;  // how far in from a wall a rim sits
-const CAM = 140;     // camera slide amount on a made basket
+// Camera pan on a basket. Less than a viewport, so mid-slide the outgoing hoop is still
+// leaving one edge as the incoming one arrives at the other — both are briefly on screen.
+const CAM = 150;
 
 /** Points for one made basket, given whether it was clean and the clean streak SO FAR
  *  (before this basket). Two clean in a row lights the fire; from the next clean on it is 3. */
@@ -64,22 +69,22 @@ function Ball({ onFire }: { onFire: boolean }) {
 }
 
 // The hoop art is v39's, drawn with the rim centre at local (42,56) in a 128×130 box. The
-// container is placed so that centre lands on (screenX, hoopY); flipping mirrors it for the
-// left wall. Rendered at 108px wide → scale 108/128.
+// container is placed so that centre lands on (screenX, hoopY); the left wall's hoop is
+// mirrored. Rendered at 108px wide → scale 108/128.
 const HOOP_W = 108;
 const HOOP_SCALE = HOOP_W / 128;
 const RIM_LOCAL_X = 42;
 const RIM_LOCAL_Y = 56;
 
-/** One hoop against a wall. `dir` says which wall (1 = right, -1 = left → mirrored). */
-function Hoop({ screenX, hoopY, dir, dim }: { screenX: number; hoopY: number; dir: number; dim: boolean }) {
+/** One hoop against a wall. `dir` says which wall (1 = right, -1 = left → mirrored). The
+ *  orientation is FIXED per wall, so neither hoop ever renders flipped the wrong way. */
+function Hoop({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir: number }) {
   const flip = dir < 0;
   const rimLocalX = flip ? 128 - RIM_LOCAL_X : RIM_LOCAL_X;
   const left = screenX - rimLocalX * HOOP_SCALE;
   const top = hoopY - RIM_LOCAL_Y * HOOP_SCALE;
-  const o = dim ? 0.4 : 1;
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', left, top, width: HOOP_W, height: 130 * HOOP_SCALE, opacity: o }}>
+    <View pointerEvents="none" style={{ position: 'absolute', left, top, width: HOOP_W, height: 130 * HOOP_SCALE }}>
       <Svg width="100%" height="100%" viewBox="0 0 128 130">
         <G transform={flip ? 'translate(128,0) scale(-1,1)' : undefined}>
           {/* pole + backboard (side panel) */}
@@ -116,42 +121,39 @@ export default function HoopsGame() {
 
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [phase, setPhase] = useState<'ready' | 'playing' | 'over'>('ready');
-  const [hud, setHud] = useState({ score: 0, clock: CLOCK, fire: false, dir: 1 });
-  const [hoop, setHoop] = useState({ x: 0, y: 0 });
+  const [hud, setHud] = useState({ score: 0, clock: CLOCK, fire: false });
+  const [hoopY, setHoopY] = useState({ left: 0, right: 0 });
   const [guide, setGuide] = useState('');
 
   const pos = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
   const spin = useRef(new Animated.Value(0)).current;   // ball rotation
-  const camX = useRef(new Animated.Value(0)).current;   // camera slide on a basket
+  const camX = useRef(new Animated.Value(0)).current;   // camera pan on a basket
 
   const g = useRef({
     bx: 0, by: 0, vy: 0, dir: 1, banked: false,
     score: 0, streak: 0, clock: CLOCK,
-    hx: 0, hy: 0,
+    hyL: 0, hyR: 0,
     phase: 'ready' as 'ready' | 'playing' | 'over',
     last: 0, acc: 0, w: 0, h: 0,
   }).current;
 
   const floorY = () => g.h - 46;
-  const hoopScreenX = (dir: number) => (dir > 0 ? g.w - WALL_IN : WALL_IN);
-  const randY = () => g.h * 0.24 + Math.random() * (g.h * 0.5 - g.h * 0.24);
+  const rimBand = () => [g.h * 0.22, g.h * 0.52] as const;
+  const randY = () => { const [a, b] = rimBand(); return a + Math.random() * (b - a); };
+  const targetX = (dir: number) => (dir > 0 ? g.w - WALL_IN : WALL_IN);
+  const targetY = (dir: number) => (dir > 0 ? g.hyR : g.hyL);
   const startX = (dir: number) => (dir > 0 ? WALL_IN - 14 : g.w - WALL_IN + 14);
-
-  const placeHoop = () => {
-    g.hx = hoopScreenX(g.dir);
-    g.hy = randY();
-    setHoop({ x: g.hx, y: g.hy });
-  };
 
   const layout = useCallback((w: number, h: number) => {
     g.w = w; g.h = h;
-    g.dir = 1;
-    g.bx = startX(1); g.by = h - 46 - BALL_R; g.vy = 0; g.banked = false;
-    placeHoop();
+    g.dir = 1; g.hyR = h * 0.35; g.hyL = h * 0.35;
+    g.bx = w - WALL_IN < 0 ? 40 : WALL_IN - 14; g.by = h - 46 - BALL_R; g.vy = 0; g.banked = false;
+    setHoopY({ left: g.hyL, right: g.hyR });
+    camX.setValue(0);
     pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
-    if (g.phase === 'ready') setGuide(aimGuide()); // the pre-start trajectory hint
+    if (g.phase === 'ready') setGuide(aimGuide());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [g, pos]);
+  }, [g, pos, camX]);
 
   const onLayout = (e: LayoutChangeEvent) => {
     const { width, height } = e.nativeEvent.layout;
@@ -162,7 +164,7 @@ export default function HoopsGame() {
   const aimGuide = () => {
     let x = g.bx, y = g.by, vy = -JUMP;
     const pts: string[] = [];
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < 18; i++) {
       pts.push(`${i === 0 ? 'M' : 'L'}${x.toFixed(0)} ${y.toFixed(0)}`);
       x += g.dir * SPEED * 0.05; y += vy * 0.05; vy += G_ACC * 0.05;
       if (y > floorY() || x < 0 || x > g.w) break;
@@ -172,11 +174,12 @@ export default function HoopsGame() {
 
   const reset = () => {
     g.score = 0; g.streak = 0; g.clock = CLOCK; g.banked = false; g.phase = 'ready'; g.dir = 1;
+    g.hyR = randY(); g.hyL = randY();
     g.bx = startX(1); g.by = floorY() - BALL_R; g.vy = 0;
-    placeHoop();
+    setHoopY({ left: g.hyL, right: g.hyR });
     camX.setValue(0);
     pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
-    setHud({ score: 0, clock: CLOCK, fire: false, dir: 1 });
+    setHud({ score: 0, clock: CLOCK, fire: false });
     setPhase('ready');
     setGuide(aimGuide());
   };
@@ -192,13 +195,13 @@ export default function HoopsGame() {
     g.streak = nextStreak(clean, g.streak);
     g.dir = -g.dir;
     g.clock = CLOCK; g.banked = false;
-    g.bx = startX(g.dir); g.by = floorY() - BALL_R; g.vy = 0;
-    placeHoop();
-    pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
-    // camera pans to the new wall
-    camX.setValue(g.dir > 0 ? CAM : -CAM);
-    Animated.timing(camX, { toValue: 0, duration: 550, easing: Easing.bezier(0.3, 0.7, 0.3, 1), useNativeDriver: true }).start();
-    setHud({ score: g.score, clock: CLOCK, fire: g.streak >= 2, dir: g.dir });
+    // the incoming hoop takes a fresh height — the ball is NOT moved; it flows on the other way
+    if (g.dir > 0) g.hyR = randY(); else g.hyL = randY();
+    setHoopY({ left: g.hyL, right: g.hyR });
+    // camera pans to the new wall (steady: right→0, left→CAM), so the scored hoop slides off
+    // its side while the next slides in from the other — both share the screen mid-slide.
+    Animated.timing(camX, { toValue: g.dir > 0 ? 0 : CAM, duration: 550, easing: Easing.bezier(0.3, 0.7, 0.3, 1), useNativeDriver: true }).start();
+    setHud({ score: g.score, clock: CLOCK, fire: g.streak >= 2 });
     if (g.score > (best ?? 0)) recordBest('hoops', g.score);
   };
 
@@ -220,19 +223,21 @@ export default function HoopsGame() {
         g.clock -= dt;
         if (g.clock <= 0) { gameOver(); raf = requestAnimationFrame(frame); return; }
         const prevY = g.by;
+        const hx = targetX(g.dir);
+        const hy = targetY(g.dir);
         g.bx += g.dir * SPEED * dt;
         g.vy += G_ACC * dt;
         g.by += g.vy * dt;
         if (g.by >= floorY()) { g.by = floorY(); g.vy = 0; }
         // backboard: reaching the wall side within the board's height banks it down
-        const boardX = g.hx + g.dir * (RIM_R + 4);
+        const boardX = hx + g.dir * (RIM_R + 4);
         const atBoard = g.dir > 0 ? g.bx + BALL_R >= boardX : g.bx - BALL_R <= boardX;
-        if (atBoard && g.by >= g.hy - BOARD_H && g.by <= g.hy + 4) {
-          g.bx = g.hx; g.banked = true; if (g.vy < 0) g.vy = 0;
+        if (atBoard && g.by >= hy - BOARD_H && g.by <= hy + 4) {
+          g.bx = hx; g.banked = true; if (g.vy < 0) g.vy = 0;
         }
         // rim crossing (descending, within the opening) = a made basket
-        if (prevY < g.hy && g.by >= g.hy && g.vy > 0 && Math.abs(g.bx - g.hx) <= RIM_R) {
-          scored(!g.banked && Math.abs(g.bx - g.hx) <= RIM_R * 0.62);
+        if (prevY < hy && g.by >= hy && g.vy > 0 && Math.abs(g.bx - hx) <= RIM_R) {
+          scored(!g.banked && Math.abs(g.bx - hx) <= RIM_R * 0.62);
         }
         // horizontal wrap
         if (g.bx > g.w + BALL_R) { g.bx = -BALL_R; g.banked = false; }
@@ -242,7 +247,7 @@ export default function HoopsGame() {
         g.acc += dt;
         if (g.acc >= 0.1) {
           g.acc = 0;
-          setHud({ score: g.score, clock: Math.max(0, Math.ceil(g.clock)), fire: g.streak >= 2, dir: g.dir });
+          setHud({ score: g.score, clock: Math.max(0, Math.ceil(g.clock)), fire: g.streak >= 2 });
         }
       }
       raf = requestAnimationFrame(frame);
@@ -288,26 +293,30 @@ export default function HoopsGame() {
           <Text style={nbText.mono(15, hud.clock <= 3 ? nb.red : nb.ink)}>{hud.clock}</Text>
         </View>
 
-        {/* 월드 — 카메라가 translateX로 슬라이드 */}
-        <Animated.View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, transform: [{ translateX: camX }] }}>
-          {size.w > 0 && (
-            <>
-              <Hoop screenX={hoop.x} hoopY={hoop.y} dir={hud.dir} dim={phase === 'over'} />
-              {/* 바닥선 */}
-              <View style={{ position: 'absolute', left: -CAM, right: -CAM, top: size.h - 46, borderTopWidth: 2, borderTopColor: 'rgba(62,54,43,.5)' }} />
-            </>
-          )}
-          {/* aim guide — only before the first tap */}
-          {phase === 'ready' && !!guide && (
-            <Svg pointerEvents="none" width="100%" height="100%" style={{ position: 'absolute', left: 0, top: 0 }}>
-              <Path d={guide} fill="none" stroke="rgba(62,54,43,.34)" strokeWidth={2} strokeDasharray="4 7" strokeLinecap="round" />
-            </Svg>
-          )}
-          {/* 공 */}
-          <Animated.View pointerEvents="none" style={{ position: 'absolute', transform: [...pos.getTranslateTransform(), { rotate }] }}>
-            <Ball onFire={onFire} />
+        {/* 골대 레이어 — 카메라가 translateX로 슬라이드 (공은 아래 고정 레이어) */}
+        {size.w > 0 && (
+          <Animated.View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, transform: [{ translateX: camX }] }}>
+            {/* right hoop at its wall (visible at camX 0); left hoop parked CAM to the left
+                (visible at camX CAM). CAM < viewport, so both peek in during the slide. */}
+            <Hoop screenX={size.w - WALL_IN} hoopY={hoopY.right} dir={1} />
+            <Hoop screenX={WALL_IN - CAM} hoopY={hoopY.left} dir={-1} />
           </Animated.View>
-        </Animated.View>
+        )}
+
+        {/* 고정 레이어 — 바닥선, 궤적, 공 */}
+        {size.w > 0 && (
+          <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}>
+            <View style={{ position: 'absolute', left: 0, right: 0, top: size.h - 46, borderTopWidth: 2, borderTopColor: 'rgba(62,54,43,.5)' }} />
+            {phase === 'ready' && !!guide && (
+              <Svg width="100%" height="100%" style={{ position: 'absolute', left: 0, top: 0 }}>
+                <Path d={guide} fill="none" stroke="rgba(62,54,43,.34)" strokeWidth={2} strokeDasharray="4 7" strokeLinecap="round" />
+              </Svg>
+            )}
+            <Animated.View style={{ position: 'absolute', transform: [...pos.getTranslateTransform(), { rotate }] }}>
+              <Ball onFire={onFire} />
+            </Animated.View>
+          </View>
+        )}
 
         {/* prompts */}
         {phase === 'ready' && (
