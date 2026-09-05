@@ -27,12 +27,15 @@ import { useT } from '@/i18n';
 // ── tuning (frame-rate independent) ──────────────────────────────────────────
 const G_ACC = 1050;  // gravity px/s² — light enough that the ball floats
 const JUMP = 440;    // upward speed a tap sets, px/s
-const SPEED = 150;   // constant horizontal speed, px/s
-const BALL_R = 14;
-const RIM_R = 28;    // half the rim opening
+const SPEED = 150;   // forward speed a tap sets (kept until the next basket), px/s
+const BALL_R = 20;   // ~71% of the rim opening (2·RIM_R) — a tight fit, so rim clips bounce
+const RIM_R = 28;    // half the rim opening; the clean gap is RIM_R − BALL_R
 const BOARD_H = 52;  // backboard height up from the rim
-const CLOCK = 8.0;   // shot-clock seconds, reset on every basket
+const CLOCK = 6.0;   // shot-clock seconds, reset on every basket
 const WALL_IN = 54;  // how far in from a wall a rim sits
+const FLOOR_REST = 0.42; // floor bounce — well under real, so the ball is still landable
+const RIM_REST = 0.5;    // rim-edge bounce
+const REST_STOP = 55;    // below this |vy| on the floor, the ball settles instead of bouncing
 // Camera pan on a basket. Less than a viewport, so mid-slide the outgoing hoop is still
 // leaving one edge as the incoming one arrives at the other — both are briefly on screen.
 const CAM = 150;
@@ -130,14 +133,14 @@ export default function HoopsGame() {
   const camX = useRef(new Animated.Value(0)).current;   // camera pan on a basket
 
   const g = useRef({
-    bx: 0, by: 0, vy: 0, dir: 1, banked: false,
+    bx: 0, by: 0, vx: 0, vy: 0, dir: 1, banked: false,
     score: 0, streak: 0, clock: CLOCK,
     hyL: 0, hyR: 0,
     phase: 'ready' as 'ready' | 'playing' | 'over',
     last: 0, acc: 0, w: 0, h: 0,
   }).current;
 
-  const floorY = () => g.h - 46;
+  const floorY = () => g.h - 46 - BALL_R; // ball-CENTRE rest, so its bottom sits on the line
   const rimBand = () => [g.h * 0.22, g.h * 0.52] as const;
   const randY = () => { const [a, b] = rimBand(); return a + Math.random() * (b - a); };
   const targetX = (dir: number) => (dir > 0 ? g.w - WALL_IN : WALL_IN);
@@ -147,7 +150,7 @@ export default function HoopsGame() {
   const layout = useCallback((w: number, h: number) => {
     g.w = w; g.h = h;
     g.dir = 1; g.hyR = h * 0.35; g.hyL = h * 0.35;
-    g.bx = w - WALL_IN < 0 ? 40 : WALL_IN - 14; g.by = h - 46 - BALL_R; g.vy = 0; g.banked = false;
+    g.bx = w - WALL_IN < 0 ? 40 : WALL_IN - 14; g.by = h - 46 - BALL_R; g.vx = 0; g.vy = 0; g.banked = false;
     setHoopY({ left: g.hyL, right: g.hyR });
     camX.setValue(0);
     pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
@@ -175,7 +178,7 @@ export default function HoopsGame() {
   const reset = () => {
     g.score = 0; g.streak = 0; g.clock = CLOCK; g.banked = false; g.phase = 'ready'; g.dir = 1;
     g.hyR = randY(); g.hyL = randY();
-    g.bx = startX(1); g.by = floorY() - BALL_R; g.vy = 0;
+    g.bx = startX(1); g.by = floorY(); g.vx = 0; g.vy = 0;
     setHoopY({ left: g.hyL, right: g.hyR });
     camX.setValue(0);
     pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
@@ -187,7 +190,10 @@ export default function HoopsGame() {
   const tap = () => {
     if (g.phase === 'over') return;
     if (g.phase === 'ready') { g.phase = 'playing'; setPhase('playing'); setGuide(''); }
+    // a tap launches the ball forward at SPEED and hops it up. Untouched, it just sits/falls;
+    // once tapped it keeps the forward speed until the next basket.
     g.vy = -JUMP;
+    g.vx = g.dir * SPEED;
   };
 
   const scored = (clean: boolean) => {
@@ -195,7 +201,10 @@ export default function HoopsGame() {
     g.streak = nextStreak(clean, g.streak);
     g.dir = -g.dir;
     g.clock = CLOCK; g.banked = false;
-    // the incoming hoop takes a fresh height — the ball is NOT moved; it flows on the other way
+    // the ball is NOT moved, but its forward speed is dropped to 0 so it simply falls to the
+    // floor on this side (natural) and waits for the next tap toward the new hoop.
+    g.vx = 0;
+    // the incoming hoop takes a fresh height — that shifting height is the difficulty
     if (g.dir > 0) g.hyR = randY(); else g.hyL = randY();
     setHoopY({ left: g.hyL, right: g.hyR });
     // camera pans to the new wall (steady: right→0, left→CAM), so the scored hoop slides off
@@ -225,20 +234,46 @@ export default function HoopsGame() {
         const prevY = g.by;
         const hx = targetX(g.dir);
         const hy = targetY(g.dir);
-        g.bx += g.dir * SPEED * dt;
+        g.bx += g.vx * dt;
         g.vy += G_ACC * dt;
         g.by += g.vy * dt;
-        if (g.by >= floorY()) { g.by = floorY(); g.vy = 0; }
-        // backboard: reaching the wall side within the board's height banks it down
-        const boardX = hx + g.dir * (RIM_R + 4);
-        const atBoard = g.dir > 0 ? g.bx + BALL_R >= boardX : g.bx - BALL_R <= boardX;
-        if (atBoard && g.by >= hy - BOARD_H && g.by <= hy + 4) {
-          g.bx = hx; g.banked = true; if (g.vy < 0) g.vy = 0;
+        // floor bounce, damped well below real so a soft shot still drops in
+        if (g.by >= floorY()) {
+          g.by = floorY();
+          g.vy = g.vy > REST_STOP ? -g.vy * FLOOR_REST : 0;
         }
-        // rim crossing (descending, within the opening) = a made basket
-        if (prevY < hy && g.by >= hy && g.vy > 0 && Math.abs(g.bx - hx) <= RIM_R) {
-          scored(!g.banked && Math.abs(g.bx - hx) <= RIM_R * 0.62);
+        // scoring: only a descent through the opening from ABOVE counts (never bottom-up)
+        const clearGap = Math.abs(g.bx - hx) <= RIM_R - BALL_R;
+        let made = false;
+        if (prevY < hy && g.by >= hy && g.vy > 0 && clearGap) {
+          made = true;
+        } else {
+          // rim-edge bounces: the ball is fat (BALL_R), so anything but a centred drop clips
+          // an edge and deflects — this is what makes the game hard.
+          for (const ex of [hx - RIM_R, hx + RIM_R]) {
+            const dx = g.bx - ex, dy = g.by - hy;
+            const d = Math.hypot(dx, dy) || 0.0001;
+            if (d < BALL_R) {
+              const nx = dx / d, ny = dy / d;
+              const vn = g.vx * nx + g.vy * ny;
+              if (vn < 0) {
+                g.vx -= (1 + RIM_REST) * vn * nx;
+                g.vy -= (1 + RIM_REST) * vn * ny;
+                g.bx = ex + nx * BALL_R; g.by = hy + ny * BALL_R;
+                g.banked = true;
+              }
+            }
+          }
+          // backboard on the wall side: a bank off it deflects the ball back down
+          const boardX = hx + g.dir * (RIM_R + 6);
+          const atBoard = g.dir > 0 ? g.bx + BALL_R >= boardX : g.bx - BALL_R <= boardX;
+          if (atBoard && g.by >= hy - BOARD_H && g.by <= hy + 2) {
+            g.bx = boardX - g.dir * BALL_R;
+            g.vx = -g.vx * RIM_REST;
+            g.banked = true;
+          }
         }
+        if (made) scored(!g.banked);
         // horizontal wrap
         if (g.bx > g.w + BALL_R) { g.bx = -BALL_R; g.banked = false; }
         if (g.bx < -BALL_R) { g.bx = g.w + BALL_R; g.banked = false; }
