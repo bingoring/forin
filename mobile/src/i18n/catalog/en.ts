@@ -770,6 +770,8 @@ export const en: Record<string, string> = {
   'games.circleAvgError': 'Avg error {px}px · best 100',
   'games.circleRetry': 'Draw again',
   'games.circleScoring': "Scored by the line's average deviation from the circle, out of 100 — the moment you lift your finger.",
+  'games.circleSmooth': 'smoothest',
+  'games.circleWobble': 'wobble!',
   'games.hoops': 'Tap-Tap Shots',
   'games.hoopsSub': 'Tap to hop the ball into the far hoop — a clean swish is 2, two in a row lights the fire for 3',
   'games.hoopsTapStart': 'Tap to start',

@@ -800,6 +800,8 @@ export const ko: Record<string, string> = {
   'games.circleAvgError': '평균 오차 {px}px · 최고 100점',
   'games.circleRetry': '다시 그리기',
   'games.circleScoring': '채점: 궤적 전체의 원 이탈 오차 평균으로 100점 만점 — 손을 떼면 즉시 채점돼요.',
+  'games.circleSmooth': '매끄러움',
+  'games.circleWobble': '삐끗!',
   'games.hoops': '탭탭 슛',
   'games.hoopsSub': '탭해서 공을 띄워 반대편 골대에 — 클린샷 2점, 두 번 연속이면 불붙어 3점',
   'games.hoopsTapStart': '탭해서 시작',

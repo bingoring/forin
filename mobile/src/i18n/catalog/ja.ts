@@ -769,6 +769,8 @@ export const ja: Record<string, string> = {
   'games.circleAvgError': '平均誤差 {px}px · 最高100点',
   'games.circleRetry': 'もう一度描く',
   'games.circleScoring': '採点: 軌跡全体の円からのずれの平均で100点満点 — 指を離すと即採点。',
+  'games.circleSmooth': 'なめらか',
+  'games.circleWobble': 'ブレた！',
   'games.hoops': 'タップタップ・シュート',
   'games.hoopsSub': 'タップでボールを跳ねさせて反対側のゴールへ — クリーンショット2点、2連続で炎がつき3点',
   'games.hoopsTapStart': 'タップで開始',

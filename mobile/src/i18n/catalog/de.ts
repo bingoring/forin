@@ -769,6 +769,8 @@ export const de: Record<string, string> = {
   'games.circleAvgError': 'Ø-Fehler {px}px · best 100',
   'games.circleRetry': 'Neu zeichnen',
   'games.circleScoring': 'Bewertet nach der durchschnittlichen Abweichung der Linie vom Kreis, von 100 — sobald du loslässt.',
+  'games.circleSmooth': 'am glattesten',
+  'games.circleWobble': 'verwackelt!',
   'games.hoops': 'Tap-Tap Shots',
   'games.hoopsSub': 'Tippe, um den Ball in den Korb gegenüber zu heben — ein sauberer Wurf zählt 2, zwei in Folge entzünden das Feuer für 3',
   'games.hoopsTapStart': 'Zum Starten tippen',
