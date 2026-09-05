@@ -2,10 +2,28 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v22/](inputs/design-handoff_v22/README.md) (최신) · [v21](inputs/design-handoff_v21/README.md)
+**Design handoff:** [inputs/design-handoff_v38/](inputs/design-handoff_v38/README.md) (최신) · [v37](inputs/design-handoff_v37/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-08-19
+**Last updated:** 2026-09-05
 
+> ✅ **홈 개편 v37 + 라이브 병동 실시간 프레즌스(2026-09).** 홈 화면을 v37 시안으로 재구성하고, 병동에
+> 실제 접속자를 최대 10명까지 익명 아바타로 반영한다. **폴링 + TTL** 방식(SSE 아님 — Cloud Run은 요청
+> 지속시간과 동시성 슬롯으로 과금하므로 세션 내내 슬롯을 잡는 SSE가 더 비싸다): Redis zset `ward:live`
+> (member=uid, score=마지막 접속 시각), 익명 id는 `hex(sha256(uid)[:6])`, `WARD_TTL=40s`. 포그라운드
+> 하트비트(홈 6s GET · 그 외 15s POST), 접속=왼쪽 등장·이탈=오른쪽 퇴장, 앱 끄면 사라짐. 나 탭에 병동
+> 노출 옵트아웃 토글. 클라이언트는 `lib/wardPresence.ts`(useSyncExternalStore) + `LiveWardNb`.
+>
+> ✅ **v38 재미 콘텐츠 3종 완료(2026-09) — 슬랭 도감 · 나이트 라디오 · 환자 인수인계 노트.**
+> ①**병원 은어 도감**: 하루 1장씩 미국 임상 약어·은어를 수집한다. 카드는 **서버 콘텐츠**(`content/slang/us.yaml`
+> 205장)라 앱 재배포 없이 배포만으로 늘어난다. `GET /slang`(당일 드롭)·`POST /slang/collect`, 마이그
+> 000036. ②**나이트 근무 라디오**: 밤 10시~새벽 5시에 열리는 조용한 채널 — 앰비언트 루프(numpy로 직접
+> 합성한 32s 심리스 WAV)와 '오늘 밤의 이야기'(하루 회전, 한 문장 따라 말하기). `content/night/stories.yaml`,
+> `GET /night?i=N`. ③**환자 인수인계 노트**: 클리어한 환자에게서 후일담 쪽지가 온다(LLM 생성, 인카운터당
+> 1회, 점수별 확률 게이트). 감사(답장→환자 되답장)·후속(다음 시나리오)·복습(모범답안) 3종. `GET /handoff`·
+> `POST /handoff/{id}/read`·`POST /handoff/{id}/reply`, 마이그 000037. 홈에 세 진입점, 인수인계는 미읽음
+> 배지. i18n 4개 언어. 스모크 ㉓ 추가. **스테이징 반영·CI 4종(mobile·contract·server·deploy) 그린.**
+> 프로드 승인 대기(promote + OTA).
+>
 > ✅ **TestFlight 피드백 19건 처리 완료 → prod 배포 + TestFlight build 2 제출(2026-08-19).**
 > 그룹별: **A**(#1 이모지 제거 → 아이콘 42종) · **B**(#11 키보드·#6 DM 정렬·#18 바텀시트 제스처·
 > #19 글자 크기 +15%) · **E**(#16 효과음 6종·#17 페르소나별 TTS) · **G**(#12 최근 10일 리듬·#15 이탈
