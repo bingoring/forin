@@ -24,9 +24,9 @@ import { recordBest, useBestScore } from '@/lib/gameScores';
 import { useT } from '@/i18n';
 
 // ── tuning ───────────────────────────────────────────────────────────────────
-const G_UP = 1200;   // gravity while rising, px/s²
-const G_DOWN = 1900; // gravity while falling, px/s² (snappy — harder to time)
-const JUMP = 620;    // upward speed a tap sets, px/s (higher, faster hop)
+const G_UP = 1800;   // gravity while rising, px/s²
+const G_DOWN = 2700; // gravity while falling, px/s² (snappy — hard to time)
+const JUMP = 780;    // upward speed a tap sets, px/s (fast, high hop)
 const SPEED = 175;   // forward speed a tap sets (unchanged), px/s
 const BALL_R = 23;   // fat ball — a tight fit through the rim
 const RIM_R = 28;    // half the rim opening
@@ -326,10 +326,22 @@ export default function HoopsGame() {
                 }
               }
             }
-            const boardX = hx + g.dir * (RIM_R + 6);
-            const atBoard = g.dir > 0 ? g.bx + BALL_R >= boardX : g.bx - BALL_R <= boardX;
-            if (atBoard && g.by >= hy - BOARD_H && g.by <= hy + 2) {
-              g.bx = boardX - g.dir * BALL_R; g.vx = -g.vx * RIM_REST; g.banked = true; rattle(now);
+            // backboard as a solid rectangle (front face + top face), not just a line:
+            // its top has a surface, and nothing can pass to the wall side of the front.
+            const bFront = hx + g.dir * (RIM_R + 6); // court-side face
+            const bTop = hy - BOARD_H;
+            const bBot = hy + 10;
+            const overBoard = g.dir > 0 ? g.bx >= bFront - BALL_R : g.bx <= bFront + BALL_R;
+            if (g.vy > 0 && overBoard && g.by + BALL_R >= bTop && g.by - BALL_R < bTop) {
+              // dropping onto the top face — bounce up (a miss), never redirected into the rim
+              g.by = bTop - BALL_R; g.vy = -g.vy * RIM_REST; g.banked = true; rattle(now);
+            } else {
+              const reachedFront = g.dir > 0 ? g.bx + BALL_R >= bFront : g.bx - BALL_R <= bFront;
+              if (reachedFront && g.by >= bTop && g.by <= bBot) {
+                g.bx = bFront - g.dir * BALL_R;
+                if (g.dir > 0 ? g.vx > 0 : g.vx < 0) g.vx = -g.vx * RIM_REST;
+                g.banked = true; rattle(now);
+              }
             }
           }
         }
