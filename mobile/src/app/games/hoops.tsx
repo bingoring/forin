@@ -290,7 +290,7 @@ export default function HoopsGame() {
       const rawDt = Math.min((now - g.last) / 1000, 0.033);
       g.last = now;
       if (g.phase === 'playing' && g.w > 0) {
-        const slow = (g.clock < 1 || g.over2) ? SLOW : 1;
+        const slow = g.over2 ? SLOW : 1; // slow motion only after 0:00 — the last-chance finish
         const dt = rawDt * slow;
         if (!g.over2) {
           g.clock -= dt;
