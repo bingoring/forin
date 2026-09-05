@@ -2,9 +2,9 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v38/](inputs/design-handoff_v38/README.md) (최신) · [v37](inputs/design-handoff_v37/README.md) · [v22](inputs/design-handoff_v22/README.md)
+**Design handoff:** [inputs/design-handoff_v39/](inputs/design-handoff_v39/README.md) (최신) · [v38](inputs/design-handoff_v38/README.md) · [v37](inputs/design-handoff_v37/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-05
+**Last updated:** 2026-09-06
 
 > ✅ **홈 개편 v37 + 라이브 병동 실시간 프레즌스(2026-09).** 홈 화면을 v37 시안으로 재구성하고, 병동에
 > 실제 접속자를 최대 10명까지 익명 아바타로 반영한다. **폴링 + TTL** 방식(SSE 아님 — Cloud Run은 요청
@@ -21,8 +21,20 @@
 > `GET /night?i=N`. ③**환자 인수인계 노트**: 클리어한 환자에게서 후일담 쪽지가 온다(LLM 생성, 인카운터당
 > 1회, 점수별 확률 게이트). 감사(답장→환자 되답장)·후속(다음 시나리오)·복습(모범답안) 3종. `GET /handoff`·
 > `POST /handoff/{id}/read`·`POST /handoff/{id}/reply`, 마이그 000037. 홈에 세 진입점, 인수인계는 미읽음
-> 배지. i18n 4개 언어. 스모크 ㉓ 추가. **스테이징 반영·CI 4종(mobile·contract·server·deploy) 그린.**
-> 프로드 승인 대기(promote + OTA).
+> 배지. i18n 4개 언어. 스모크 ㉓ 추가. **prod 반영 완료**(서버 promote `55f519f` + production OTA).
+>
+> ✅ **v38 쉬는 시간 미니게임 허브 + v39 탭탭 농구(2026-09).** 홈의 '쉬는 시간' 진입점 아래 게임 허브
+> (`app/games/`)를 붙였다. 게임 점수·플레이 제한은 **기기 로컬**(`lib/gameScores.ts`, SecureStore·부팅 시
+> 재수화): 하루 20판(광고 보상형 top-up +5판 최대 3회), 게임별 최고기록. **①탭탭 농구**(`games/hoops.tsx`,
+> v39 '왼오른 농구' 디자인) — 골대 하나만 보이고 넣으면 카메라가 반대편으로 슬라이드하며 새 높이의 골대가
+> 등장. 자체 물리 루프(rAF·서브스텝 적분): 탭=전진+상승 홉·비대칭 중력(상승 1800/하강 2700)·바닥/림/백보드
+> 튕김(림은 앞·뒤 z분리로 공이 통과하는 연출)·클린(림 미접촉, 백보드 뱅크는 클린)/뱅크/2연속 불(3점·궤적
+> 불길)·6초 샷클락(0초 후 공중이면 라스트 찬스 슬로우모션). 효과음 3종(gen-sfx.py: 휙·림·게임오버). **②완벽한
+> 원 그리기**(`games/circle.tsx`) — 한 붓 원, 편차 색상 획 + 잘한 곳/삐끗 콜아웃, 5초 제한, 로컬 최고기록.
+> 나이트 라디오는 트랙 3종(합성 빗소리·여름·왈츠)으로 확장. **모바일 전용(OTA), 서버 변경 없음.** 상세 시안은
+> [inputs/design-handoff_v39](inputs/design-handoff_v39/README.md) `forin-notebook-extras.jsx §H`.
+> **미검증(headless):** 물리 감(중력·속도·튕김)·카메라 슬라이드·림 z순서·효과음은 실기기 확인이 정본이며
+> 수치는 반복 튜닝 중. 게임 로직은 순수 함수(`pointsFor`/`nextStreak`)와 화면 렌더만 테스트가 커버한다.
 >
 > ✅ **TestFlight 피드백 19건 처리 완료 → prod 배포 + TestFlight build 2 제출(2026-08-19).**
 > 그룹별: **A**(#1 이모지 제거 → 아이콘 42종) · **B**(#11 키보드·#6 DM 정렬·#18 바텀시트 제스처·
