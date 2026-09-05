@@ -2,18 +2,17 @@
 //
 // A break-time basketball game. One hoop is on screen at a time; sink it and the ball keeps
 // its spot while the camera pans — the scored hoop slides off its wall and the opposite hoop
-// slides in at a NEW height (that shifting height is the difficulty). Untapped, the ball sits
-// still; a tap launches it forward at a set speed and hops it up, and it keeps that forward
-// speed until the next basket. The ball is fat (~71% of the rim), so anything but a centred
-// drop clips a rim edge and bounces — and the floor bounces it too, damped. A clean swish is
-// 2 points, a rattle/bank 1; two clean in a row set the ball on fire for 3, until a bank puts
-// it out. A 6-second shot clock ticks between baskets; the last second runs in slow motion,
-// and a shot still in the air when it hits zero gets to finish (a last chance).
+// slides in at a NEW height. Untapped, the ball sits still; a tap launches it forward at a set
+// speed and hops it up, and it keeps that forward speed until the next basket. The ball is fat
+// (~fills the rim), so only a well-centred drop goes in; anything else clips a rim edge and
+// bounces, and the net billows when a shot swishes through. Gravity is asymmetric — a floaty
+// rise, a snappy fall. A clean swish is 2 points, a rattle/bank 1; two clean in a row light
+// the ball on fire for 3, until a bank puts it out. A 6-second shot clock ticks between
+// baskets; the last second runs in slow motion, and a shot still in the air when it hits zero
+// gets to finish. Only a descent through the rim from ABOVE scores.
 //
-// Only a descent through the rim from ABOVE scores; rising up through it from below is
-// blocked. The rim is split into a far half (behind the ball) and a near half (in front), so
-// the ball reads as passing through. The ball moves every frame through an Animated value;
-// the HUD re-renders a few times a second. The scoring rule is pure and unit-tested.
+// The rim is split into a far half (behind the ball) and a near half (in front). Physics is
+// sub-stepped so a fast ball never tunnels through the rim. The scoring rule is pure/tested.
 import { useCallback, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, Text, View, type LayoutChangeEvent } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
@@ -24,21 +23,23 @@ import { TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { recordBest, useBestScore } from '@/lib/gameScores';
 import { useT } from '@/i18n';
 
-// ── tuning (frame-rate independent) ──────────────────────────────────────────
-const G_ACC = 1050;  // gravity px/s²
-const JUMP = 490;    // upward speed a tap sets, px/s (higher hop)
+// ── tuning ───────────────────────────────────────────────────────────────────
+const G_UP = 980;    // gravity while rising, px/s² (floaty)
+const G_DOWN = 1650; // gravity while falling, px/s² (snappy — harder to time)
+const JUMP = 500;    // upward speed a tap sets, px/s
 const SPEED = 175;   // forward speed a tap sets (kept until the next basket), px/s
-const BALL_R = 20;   // ~71% of the rim opening (2·RIM_R)
+const BALL_R = 23;   // fat ball — a tight fit through the rim
 const RIM_R = 28;    // half the rim opening
-const SCORE_GAP = RIM_R - 8;  // a descent within this of centre drops in (rest clips/bounces)
+const SCORE_GAP = RIM_R - BALL_R + 6; // a descent within this of centre drops in; rest clips
+const CLEAN_GAP = 6;                  // …and this centred is a clean swish
 const BOARD_H = 66;  // backboard collision height up from the rim
-const CLOCK = 6.0;   // shot-clock seconds
-const WALL_IN = 54;  // how far in from a wall a rim sits
-const CAM = 150;     // camera pan on a basket (< viewport, so both hoops share the slide)
+const CLOCK = 6.0;
+const WALL_IN = 54;
+const CAM = 150;
 const FLOOR_REST = 0.42;
 const RIM_REST = 0.5;
-const REST_STOP = 55;   // below this |vy| on the floor, the ball settles
-const SLOW = 0.45;      // time scale for the final second / last chance
+const REST_STOP = 55;
+const SLOW = 0.45;
 
 export function pointsFor(clean: boolean, cleanStreak: number): number {
   if (!clean) return 1;
@@ -48,7 +49,6 @@ export function nextStreak(clean: boolean, cleanStreak: number): number {
   return clean ? cleanStreak + 1 : 0;
 }
 
-/** A hand-drawn basketball (v39): orange radial fill, ink outline, curved seams. */
 function Ball({ onFire }: { onFire: boolean }) {
   return (
     <Svg width={BALL_R * 2} height={BALL_R * 2} viewBox="0 0 28 28">
@@ -67,17 +67,17 @@ function Ball({ onFire }: { onFire: boolean }) {
   );
 }
 
-// The hoop art is v39's (bigger backboard), rim centre at local (42,56) in a 128×140 box,
-// rendered 108px wide → scale 108/128. The rim + net are split into a far half (drawn behind
-// the ball) and a near half (in front), so a made ball reads as dropping through.
-const HOOP_W = 108;
-const HOOP_SCALE = HOOP_W / 128;
-const HOOP_VB_H = 140;
+// Rim centre at local (42,68) in a 136×166 box (content shifted down 12 so the tall backboard
+// is not clipped at the top). Rendered 112px wide.
+const HOOP_W = 112;
+const HOOP_VB_W = 136;
+const HOOP_VB_H = 166;
+const HOOP_SCALE = HOOP_W / HOOP_VB_W;
 const RIM_LOCAL_X = 42;
-const RIM_LOCAL_Y = 56;
+const RIM_LOCAL_Y = 68;
 
 function hoopBox(screenX: number, hoopY: number, flip: boolean) {
-  const rimLocalX = flip ? 128 - RIM_LOCAL_X : RIM_LOCAL_X;
+  const rimLocalX = flip ? HOOP_VB_W - RIM_LOCAL_X : RIM_LOCAL_X;
   return {
     left: screenX - rimLocalX * HOOP_SCALE,
     top: hoopY - RIM_LOCAL_Y * HOOP_SCALE,
@@ -86,22 +86,26 @@ function hoopBox(screenX: number, hoopY: number, flip: boolean) {
   };
 }
 
-/** Far half of a hoop (behind the ball): pole, big backboard, back rim arc, back net. */
+/** Far half of a hoop (behind the ball): pole, big backboard, the rim→board bridge, back rim
+ *  arc, back net. Everything is shifted down 12 via the outer group. */
 function HoopBack({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir: number }) {
   const flip = dir < 0;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
-      <Svg width="100%" height="100%" viewBox="0 0 128 140">
-        <G transform={flip ? 'translate(128,0) scale(-1,1)' : undefined}>
-          {/* pole */}
-          <Path d="M100 44 H128 V54 H100 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
-          <Path d="M100 108 H128 V118 H100 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
-          <Rect x="88" y="26" width="12" height="118" fill="#C9922E" stroke={nb.ink} strokeWidth="1.6" />
+      <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
+        <G transform={flip ? `translate(${HOOP_VB_W},12) scale(-1,1)` : 'translate(0,12)'}>
+          {/* pole to the wall + vertical post */}
+          <Path d="M108 40 H136 V50 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
+          <Path d="M108 100 H136 V110 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
+          <Rect x="96" y="26" width="12" height="120" fill="#C9922E" stroke={nb.ink} strokeWidth="1.6" />
           {/* bigger backboard */}
-          <Rect x="72" y="-8" width="18" height="112" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
-          <Rect x="72" y="-8" width="18" height="26" fill="#FFFdf4" stroke={nb.ink} strokeWidth="1.8" />
-          <Rect x="78" y="52" width="10" height="24" fill="none" stroke={nb.ink} strokeWidth="1.4" />
-          {/* back rim arc (far — the top of the ellipse, seen from slightly below) */}
+          <Rect x="84" y="0" width="18" height="122" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
+          <Rect x="84" y="0" width="18" height="26" fill="#FFFdf4" stroke={nb.ink} strokeWidth="1.8" />
+          <Rect x="88" y="52" width="12" height="26" fill="none" stroke={nb.ink} strokeWidth="1.4" />
+          {/* bridge — the rim material carried back to the board (rim detached from board) */}
+          <Path d="M70 56 H86" stroke="#3D7BC4" strokeWidth="6.5" strokeLinecap="round" />
+          <Path d="M70 56 H86" stroke={nb.ink} strokeWidth="1.2" opacity="0.4" />
+          {/* back rim arc (far — the top of the ellipse) */}
           <Path d="M8 56 A34 10 0 0 1 76 56" fill="none" stroke="#3D7BC4" strokeWidth="7" />
           <Path d="M8 56 A34 10 0 0 1 76 56" fill="none" stroke={nb.ink} strokeWidth="1.2" opacity="0.35" />
           {/* back net strands */}
@@ -115,17 +119,28 @@ function HoopBack({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir
   );
 }
 
-/** Near half of a hoop (in front of the ball): the front rim arc + front net. */
-function HoopFront({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir: number }) {
+/** Near rim arc (in front of the ball). */
+function HoopFrontRim({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir: number }) {
   const flip = dir < 0;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
-      <Svg width="100%" height="100%" viewBox="0 0 128 140">
-        <G transform={flip ? 'translate(128,0) scale(-1,1)' : undefined}>
-          {/* front rim arc (near — the bottom of the ellipse) */}
+      <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
+        <G transform={flip ? `translate(${HOOP_VB_W},12) scale(-1,1)` : 'translate(0,12)'}>
           <Path d="M8 56 A34 10 0 0 0 76 56" fill="none" stroke="#3D7BC4" strokeWidth="7" />
           <Path d="M8 56 A34 10 0 0 0 76 56" fill="none" stroke={nb.ink} strokeWidth="1.2" opacity="0.35" />
-          {/* front net strands, tapering into a diamond lattice */}
+        </G>
+      </Svg>
+    </View>
+  );
+}
+
+/** Front net (in front of the ball). Kept separate so it can billow on a swish. */
+function HoopFrontNet({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir: number }) {
+  const flip = dir < 0;
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
+      <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
+        <G transform={flip ? `translate(${HOOP_VB_W},12) scale(-1,1)` : 'translate(0,12)'}>
           <G stroke={nb.ink} strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.8">
             <Path d="M10 60 Q14 72 21 82 M22 64 Q25 74 29 84 M34 66 Q35 76 37 85 M48 66 Q47 76 45 85 M60 64 Q57 74 53 84 M74 60 Q68 72 61 82" />
             <Path d="M21 82 L26 93 M29 84 L26 93 M29 84 L33 93 M37 85 L33 93 M37 85 L41 93 M45 85 L41 93 M45 85 L49 93 M53 84 L49 93 M53 84 L56 93 M61 82 L56 93" />
@@ -153,6 +168,7 @@ export default function HoopsGame() {
   const spin = useRef(new Animated.Value(0)).current;
   const camX = useRef(new Animated.Value(0)).current;
   const jig = useRef(new Animated.Value(0)).current;   // rim rattle
+  const netB = useRef(new Animated.Value(0)).current;  // net billow
 
   const g = useRef({
     bx: 0, by: 0, vx: 0, vy: 0, dir: 1, banked: false,
@@ -163,7 +179,7 @@ export default function HoopsGame() {
   }).current;
 
   const floorY = () => g.h - 46 - BALL_R;
-  const rimBand = () => [g.h * 0.22, g.h * 0.52] as const;
+  const rimBand = () => [g.h * 0.22, g.h * 0.5] as const;
   const randY = () => { const [a, b] = rimBand(); return a + Math.random() * (b - a); };
   const targetX = (dir: number) => (dir > 0 ? g.w - WALL_IN : WALL_IN);
   const targetY = (dir: number) => (dir > 0 ? g.hyR : g.hyL);
@@ -174,7 +190,7 @@ export default function HoopsGame() {
     const pts: string[] = [];
     for (let i = 0; i < 18; i++) {
       pts.push(`${i === 0 ? 'M' : 'L'}${x.toFixed(0)} ${y.toFixed(0)}`);
-      x += g.dir * SPEED * 0.05; y += vy * 0.05; vy += G_ACC * 0.05;
+      x += g.dir * SPEED * 0.05; y += vy * 0.05; vy += (vy > 0 ? G_DOWN : G_UP) * 0.05;
       if (y > floorY() || x < 0 || x > g.w) break;
     }
     return pts.join(' ');
@@ -218,7 +234,7 @@ export default function HoopsGame() {
   };
 
   const rattle = (now: number) => {
-    if (now - g.lastJig < 130) return; // one rattle per contact, not per frame
+    if (now - g.lastJig < 130) return;
     g.lastJig = now;
     jig.setValue(0);
     Animated.sequence([
@@ -227,12 +243,21 @@ export default function HoopsGame() {
     ]).start();
   };
 
+  const billow = () => {
+    netB.setValue(0);
+    Animated.sequence([
+      Animated.timing(netB, { toValue: 1, duration: 90, useNativeDriver: true }),
+      Animated.timing(netB, { toValue: 0, duration: 360, easing: Easing.elastic(1.5), useNativeDriver: true }),
+    ]).start();
+  };
+
   const scored = (clean: boolean) => {
+    billow();
     g.score += pointsFor(clean, g.streak);
     g.streak = nextStreak(clean, g.streak);
     g.dir = -g.dir;
     g.clock = CLOCK; g.banked = false; g.over2 = false; g.otAcc = 0;
-    g.vx = 0; // drop the forward speed so the ball simply falls to the floor on this side
+    g.vx = 0;
     if (g.dir > 0) g.hyR = randY(); else g.hyL = randY();
     setHoopY({ left: g.hyL, right: g.hyR });
     Animated.timing(camX, { toValue: g.dir > 0 ? 0 : CAM, duration: 550, easing: Easing.bezier(0.3, 0.7, 0.3, 1), useNativeDriver: true }).start();
@@ -255,13 +280,12 @@ export default function HoopsGame() {
       const rawDt = Math.min((now - g.last) / 1000, 0.033);
       g.last = now;
       if (g.phase === 'playing' && g.w > 0) {
-        const slow = (g.clock < 1 || g.over2) ? SLOW : 1; // slow motion in the final beat
+        const slow = (g.clock < 1 || g.over2) ? SLOW : 1;
         const dt = rawDt * slow;
         if (!g.over2) {
           g.clock -= dt;
           if (g.clock <= 0) {
             g.clock = 0;
-            // a live shot (airborne or rising) gets a last chance; otherwise it's over now
             if (g.by < floorY() - 2 || g.vy < -20) { g.over2 = true; g.otAcc = 0; }
             else { gameOver(); raf = requestAnimationFrame(frame); return; }
           }
@@ -269,46 +293,46 @@ export default function HoopsGame() {
           g.otAcc += rawDt;
         }
 
-        const prevY = g.by;
         const hx = targetX(g.dir);
         const hy = targetY(g.dir);
-        g.bx += g.vx * dt;
-        g.vy += G_ACC * dt;
-        g.by += g.vy * dt;
-        if (g.by >= floorY()) { g.by = floorY(); g.vy = g.vy > REST_STOP ? -g.vy * FLOOR_REST : 0; }
-
-        const dxr = g.bx - hx;
+        // sub-step so a fast ball can't tunnel through the rim between frames
+        const steps = Math.max(1, Math.ceil((Math.abs(g.vx) + Math.abs(g.vy)) * dt / 5));
+        const sdt = dt / steps;
         let made = false;
-        if (prevY < hy && g.by >= hy && g.vy > 0 && Math.abs(dxr) <= RIM_R) {
-          // a descent through the ring from above scores (clean only if well centred + untouched)
-          made = true;
-        } else if (prevY > hy && g.by <= hy && g.vy < 0 && Math.abs(dxr) <= RIM_R) {
-          // rising up through the rim from below is not allowed — knock it back down
-          g.by = hy + 3; g.vy = Math.abs(g.vy) * RIM_REST; g.banked = true; rattle(now);
-        } else {
-          // rim-edge point bounces for off-centre / side contacts
-          for (const ex of [hx - RIM_R, hx + RIM_R]) {
-            const dx = g.bx - ex, dy = g.by - hy;
-            const d = Math.hypot(dx, dy) || 0.0001;
-            if (d < BALL_R) {
-              const nx = dx / d, ny = dy / d;
-              const vn = g.vx * nx + g.vy * ny;
-              if (vn < 0) {
-                g.vx -= (1 + RIM_REST) * vn * nx;
-                g.vy -= (1 + RIM_REST) * vn * ny;
-                g.bx = ex + nx * BALL_R; g.by = hy + ny * BALL_R;
-                g.banked = true; rattle(now);
+        for (let s = 0; s < steps; s++) {
+          const prevY = g.by;
+          g.vy += (g.vy > 0 ? G_DOWN : G_UP) * sdt;
+          g.bx += g.vx * sdt;
+          g.by += g.vy * sdt;
+          if (g.by >= floorY()) { g.by = floorY(); g.vy = g.vy > REST_STOP ? -g.vy * FLOOR_REST : 0; }
+          const dxr = g.bx - hx;
+          if (prevY < hy && g.by >= hy && g.vy > 0 && Math.abs(dxr) <= SCORE_GAP) {
+            if (Math.abs(dxr) > CLEAN_GAP) g.banked = true;
+            made = true; break;
+          } else if (prevY > hy && g.by <= hy && g.vy < 0 && Math.abs(dxr) <= RIM_R) {
+            g.by = hy + 3; g.vy = Math.abs(g.vy) * RIM_REST; g.banked = true; rattle(now);
+          } else {
+            for (const ex of [hx - RIM_R, hx + RIM_R]) {
+              const dx = g.bx - ex, dy = g.by - hy;
+              const d = Math.hypot(dx, dy) || 0.0001;
+              if (d < BALL_R) {
+                const nx = dx / d, ny = dy / d;
+                const vn = g.vx * nx + g.vy * ny;
+                if (vn < 0) {
+                  g.vx -= (1 + RIM_REST) * vn * nx;
+                  g.vy -= (1 + RIM_REST) * vn * ny;
+                  g.bx = ex + nx * BALL_R; g.by = hy + ny * BALL_R;
+                  g.banked = true; rattle(now);
+                }
               }
             }
-          }
-          // backboard bank
-          const boardX = hx + g.dir * (RIM_R + 6);
-          const atBoard = g.dir > 0 ? g.bx + BALL_R >= boardX : g.bx - BALL_R <= boardX;
-          if (atBoard && g.by >= hy - BOARD_H && g.by <= hy + 2) {
-            g.bx = boardX - g.dir * BALL_R; g.vx = -g.vx * RIM_REST; g.banked = true; rattle(now);
+            const boardX = hx + g.dir * (RIM_R + 6);
+            const atBoard = g.dir > 0 ? g.bx + BALL_R >= boardX : g.bx - BALL_R <= boardX;
+            if (atBoard && g.by >= hy - BOARD_H && g.by <= hy + 2) {
+              g.bx = boardX - g.dir * BALL_R; g.vx = -g.vx * RIM_REST; g.banked = true; rattle(now);
+            }
           }
         }
-        if (made && Math.abs(dxr) > SCORE_GAP) g.banked = true; // rattled in, not a swish
         if (made) scored(!g.banked);
 
         if (g.bx > g.w + BALL_R) { g.bx = -BALL_R; g.banked = false; }
@@ -316,7 +340,6 @@ export default function HoopsGame() {
         pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
         spin.setValue(g.bx);
 
-        // end the last chance once the ball has settled or clearly left the hoop
         if (g.over2) {
           const landed = g.by >= floorY() - 1 && Math.abs(g.vy) < REST_STOP;
           if (landed || g.otAcc > 3.4) { gameOver(); raf = requestAnimationFrame(frame); return; }
@@ -339,6 +362,12 @@ export default function HoopsGame() {
   const rotate = spin.interpolate({ inputRange: [0, 120], outputRange: ['0deg', '360deg'] });
   const jigY = jig.interpolate({ inputRange: [0, 1], outputRange: [0, 4] });
   const camTransform = [{ translateX: camX }, { translateY: jigY }];
+  const netTransform = [
+    { translateX: camX },
+    { translateY: Animated.add(jigY, netB.interpolate({ inputRange: [0, 1], outputRange: [0, 7] })) },
+    { scaleY: netB.interpolate({ inputRange: [0, 1], outputRange: [1, 1.4] }) },
+    { scaleX: netB.interpolate({ inputRange: [0, 1], outputRange: [1, 1.16] }) },
+  ];
 
   return (
     <NbSheet>
@@ -370,7 +399,7 @@ export default function HoopsGame() {
           <Text style={nbText.mono(15, hud.clock <= 3 ? nb.red : nb.ink)}>{hud.clock}</Text>
         </View>
 
-        {/* 골대 뒤쪽 (공보다 뒤) */}
+        {/* 골대 뒤쪽 */}
         {size.w > 0 && (
           <Animated.View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, transform: camTransform }}>
             <HoopBack screenX={size.w - WALL_IN} hoopY={hoopY.right} dir={1} />
@@ -393,12 +422,18 @@ export default function HoopsGame() {
           </View>
         )}
 
-        {/* 골대 앞쪽 (공보다 앞) — 가까운 림이 공을 가린다 */}
+        {/* 골대 앞쪽 — 가까운 림 + 출렁이는 그물 (공보다 앞) */}
         {size.w > 0 && (
-          <Animated.View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, transform: camTransform }}>
-            <HoopFront screenX={size.w - WALL_IN} hoopY={hoopY.right} dir={1} />
-            <HoopFront screenX={WALL_IN - CAM} hoopY={hoopY.left} dir={-1} />
-          </Animated.View>
+          <>
+            <Animated.View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, transform: camTransform }}>
+              <HoopFrontRim screenX={size.w - WALL_IN} hoopY={hoopY.right} dir={1} />
+              <HoopFrontRim screenX={WALL_IN - CAM} hoopY={hoopY.left} dir={-1} />
+            </Animated.View>
+            <Animated.View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, transform: netTransform }}>
+              <HoopFrontNet screenX={size.w - WALL_IN} hoopY={hoopY.right} dir={1} />
+              <HoopFrontNet screenX={WALL_IN - CAM} hoopY={hoopY.left} dir={-1} />
+            </Animated.View>
+          </>
         )}
 
         {phase === 'ready' && (
