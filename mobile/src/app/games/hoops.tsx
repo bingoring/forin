@@ -31,7 +31,6 @@ const SPEED = 175;   // forward speed a tap sets (unchanged), px/s
 const BALL_R = 23;   // fat ball — a tight fit through the rim
 const RIM_R = 28;    // half the rim opening
 const SCORE_GAP = RIM_R - BALL_R + 6; // a descent within this of centre drops in; rest clips
-const CLEAN_GAP = 6;                  // …and this centred is a clean swish
 const BOARD_H = 66;  // backboard collision height up from the rim
 const CLOCK = 6.0;
 const WALL_IN = 54;
@@ -98,13 +97,13 @@ function HoopBack({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir
           <Path d="M108 40 H136 V50 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
           <Path d="M108 100 H136 V110 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
           <Rect x="96" y="26" width="12" height="120" fill="#C9922E" stroke={nb.ink} strokeWidth="1.6" />
-          {/* backboard — reaches up to the collision top (BOARD_H above the rim) */}
-          <Rect x="84" y="-24" width="18" height="150" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
+          {/* backboard — top reaches the collision top (BOARD_H above the rim); the rim mounts
+              about a third up from its bottom edge (h120 with the rim at local 56). */}
+          <Rect x="84" y="-24" width="18" height="120" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
           <Rect x="84" y="-24" width="18" height="26" fill="#FFFdf4" stroke={nb.ink} strokeWidth="1.8" />
-          <Rect x="88" y="52" width="12" height="26" fill="none" stroke={nb.ink} strokeWidth="1.4" />
-          {/* bridge — the rim material carried back to the board (rim detached from board) */}
-          <Path d="M70 56 H86" stroke="#3D7BC4" strokeWidth="6.5" strokeLinecap="round" />
-          <Path d="M70 56 H86" stroke={nb.ink} strokeWidth="1.2" opacity="0.4" />
+          {/* bridge — the rim material carried straight to the board's side edge (x84) */}
+          <Path d="M70 56 H84" stroke="#3D7BC4" strokeWidth="6.5" strokeLinecap="round" />
+          <Path d="M70 56 H84" stroke={nb.ink} strokeWidth="1.2" opacity="0.4" />
           {/* back rim arc (far — the top of the ellipse) */}
           <Path d="M8 56 A34 10 0 0 1 76 56" fill="none" stroke="#3D7BC4" strokeWidth="7" />
           <Path d="M8 56 A34 10 0 0 1 76 56" fill="none" stroke={nb.ink} strokeWidth="1.2" opacity="0.35" />
@@ -163,15 +162,19 @@ export default function HoopsGame() {
   const [hud, setHud] = useState({ score: 0, clock: CLOCK, fire: false });
   const [hoopY, setHoopY] = useState({ left: 0, right: 0 });
   const [guide, setGuide] = useState('');
+  const [pop, setPop] = useState<{ text: string; x: number; y: number; fire: boolean } | null>(null);
+  const [trail, setTrail] = useState<{ x: number; y: number }[]>([]);
+  const trailRef = useRef<{ x: number; y: number }[]>([]);
 
   const pos = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
   const spin = useRef(new Animated.Value(0)).current;
   const camX = useRef(new Animated.Value(0)).current;
   const jig = useRef(new Animated.Value(0)).current;   // rim rattle
   const netB = useRef(new Animated.Value(0)).current;  // net billow
+  const popA = useRef(new Animated.Value(0)).current;  // +N score popup
 
   const g = useRef({
-    bx: 0, by: 0, vx: 0, vy: 0, dir: 1, banked: false,
+    bx: 0, by: 0, vx: 0, vy: 0, dir: 1, touchedRim: false,
     score: 0, streak: 0, clock: CLOCK, over2: false, otAcc: 0, lastJig: 0,
     hyL: 0, hyR: 0,
     phase: 'ready' as 'ready' | 'playing' | 'over',
@@ -199,7 +202,7 @@ export default function HoopsGame() {
   const layout = useCallback((w: number, h: number) => {
     g.w = w; g.h = h;
     g.dir = 1; g.hyR = h * 0.35; g.hyL = h * 0.35;
-    g.bx = startX(1); g.by = h - 46 - BALL_R; g.vx = 0; g.vy = 0; g.banked = false;
+    g.bx = startX(1); g.by = h - 46 - BALL_R; g.vx = 0; g.vy = 0; g.touchedRim = false;
     setHoopY({ left: g.hyL, right: g.hyR });
     camX.setValue(0);
     pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
@@ -214,7 +217,7 @@ export default function HoopsGame() {
   };
 
   const reset = () => {
-    g.score = 0; g.streak = 0; g.clock = CLOCK; g.banked = false; g.phase = 'ready'; g.dir = 1;
+    g.score = 0; g.streak = 0; g.clock = CLOCK; g.touchedRim = false; g.phase = 'ready'; g.dir = 1;
     g.over2 = false; g.otAcc = 0;
     g.hyR = randY(); g.hyL = randY();
     g.bx = startX(1); g.by = floorY(); g.vx = 0; g.vy = 0;
@@ -224,6 +227,7 @@ export default function HoopsGame() {
     setHud({ score: 0, clock: CLOCK, fire: false });
     setPhase('ready');
     setGuide(aimGuide());
+    trailRef.current = []; setTrail([]); setPop(null);
   };
 
   const tap = () => {
@@ -253,10 +257,15 @@ export default function HoopsGame() {
 
   const scored = (clean: boolean) => {
     billow();
-    g.score += pointsFor(clean, g.streak);
+    const pts = pointsFor(clean, g.streak);
+    // +N floats up from the hoop that was just made (before the direction flips)
+    setPop({ text: `+${pts}`, x: targetX(g.dir), y: targetY(g.dir) - 14, fire: g.streak >= 2 });
+    popA.setValue(0);
+    Animated.timing(popA, { toValue: 1, duration: 760, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
+    g.score += pts;
     g.streak = nextStreak(clean, g.streak);
     g.dir = -g.dir;
-    g.clock = CLOCK; g.banked = false; g.over2 = false; g.otAcc = 0;
+    g.clock = CLOCK; g.touchedRim = false; g.over2 = false; g.otAcc = 0;
     g.vx = 0;
     if (g.dir > 0) g.hyR = randY(); else g.hyL = randY();
     setHoopY({ left: g.hyL, right: g.hyR });
@@ -270,6 +279,7 @@ export default function HoopsGame() {
     recordBest('hoops', g.score);
     setHud((h) => ({ ...h, score: g.score, clock: 0 }));
     setPhase('over');
+    trailRef.current = []; setTrail([]);
   };
 
   useFocusEffect(useCallback(() => {
@@ -307,10 +317,10 @@ export default function HoopsGame() {
           if (g.by >= floorY()) { g.by = floorY(); g.vy = g.vy > REST_STOP ? -g.vy * FLOOR_REST : 0; }
           const dxr = g.bx - hx;
           if (prevY < hy && g.by >= hy && g.vy > 0 && Math.abs(dxr) <= SCORE_GAP) {
-            if (Math.abs(dxr) > CLEAN_GAP) g.banked = true;
+            // clean = it never touched the RIM (a bank off the board still counts as clean)
             made = true; break;
           } else if (prevY > hy && g.by <= hy && g.vy < 0 && Math.abs(dxr) <= RIM_R) {
-            g.by = hy + 3; g.vy = Math.abs(g.vy) * RIM_REST; g.banked = true; rattle(now);
+            g.by = hy + 3; g.vy = Math.abs(g.vy) * RIM_REST; g.touchedRim = true; rattle(now);
           } else {
             for (const ex of [hx - RIM_R, hx + RIM_R]) {
               const dx = g.bx - ex, dy = g.by - hy;
@@ -322,7 +332,7 @@ export default function HoopsGame() {
                   g.vx -= (1 + RIM_REST) * vn * nx;
                   g.vy -= (1 + RIM_REST) * vn * ny;
                   g.bx = ex + nx * BALL_R; g.by = hy + ny * BALL_R;
-                  g.banked = true; rattle(now);
+                  g.touchedRim = true; rattle(now);
                 }
               }
             }
@@ -333,24 +343,28 @@ export default function HoopsGame() {
             const bBot = hy + 10;
             const overBoard = g.dir > 0 ? g.bx >= bFront - BALL_R : g.bx <= bFront + BALL_R;
             if (g.vy > 0 && overBoard && g.by + BALL_R >= bTop && g.by - BALL_R < bTop) {
-              // dropping onto the top face — bounce up (a miss), never redirected into the rim
-              g.by = bTop - BALL_R; g.vy = -g.vy * RIM_REST; g.banked = true; rattle(now);
+              // dropping onto the top face — bounce up (a miss); the board never disqualifies clean
+              g.by = bTop - BALL_R; g.vy = -g.vy * RIM_REST; rattle(now);
             } else {
               const reachedFront = g.dir > 0 ? g.bx + BALL_R >= bFront : g.bx - BALL_R <= bFront;
               if (reachedFront && g.by >= bTop && g.by <= bBot) {
                 g.bx = bFront - g.dir * BALL_R;
                 if (g.dir > 0 ? g.vx > 0 : g.vx < 0) g.vx = -g.vx * RIM_REST;
-                g.banked = true; rattle(now);
+                rattle(now);
               }
             }
           }
         }
-        if (made) scored(!g.banked);
+        if (made) scored(!g.touchedRim);
 
-        if (g.bx > g.w + BALL_R) { g.bx = -BALL_R; g.banked = false; }
-        if (g.bx < -BALL_R) { g.bx = g.w + BALL_R; g.banked = false; }
+        if (g.bx > g.w + BALL_R) { g.bx = -BALL_R; g.touchedRim = false; }
+        if (g.bx < -BALL_R) { g.bx = g.w + BALL_R; g.touchedRim = false; }
         pos.setValue({ x: g.bx - BALL_R, y: g.by - BALL_R });
         spin.setValue(g.bx);
+        // fire trail: sample the ball's path while on fire, so a flame lingers behind it
+        const hot = g.streak >= 2;
+        if (hot) { trailRef.current.unshift({ x: g.bx, y: g.by }); if (trailRef.current.length > 12) trailRef.current.pop(); }
+        else if (trailRef.current.length) trailRef.current = [];
 
         if (g.over2) {
           const landed = g.by >= floorY() - 1 && Math.abs(g.vy) < REST_STOP;
@@ -360,7 +374,8 @@ export default function HoopsGame() {
         g.acc += rawDt;
         if (g.acc >= 0.1) {
           g.acc = 0;
-          setHud({ score: g.score, clock: Math.max(0, Math.ceil(g.clock)), fire: g.streak >= 2 });
+          setHud({ score: g.score, clock: Math.max(0, Math.ceil(g.clock)), fire: hot });
+          setTrail(hot ? trailRef.current.slice() : []);
         }
       }
       raf = requestAnimationFrame(frame);
@@ -428,9 +443,32 @@ export default function HoopsGame() {
                 <Path d={guide} fill="none" stroke="rgba(62,54,43,.34)" strokeWidth={2} strokeDasharray="4 7" strokeLinecap="round" />
               </Svg>
             )}
+            {/* fire trail (on a 3-point streak) — flames linger along the ball's path */}
+            {onFire && trail.length > 1 && (
+              <Svg width="100%" height="100%" style={{ position: 'absolute', left: 0, top: 0 }}>
+                {trail.map((p, i) => (
+                  <Circle key={i} cx={p.x} cy={p.y} r={BALL_R * (1 - i / trail.length) * 0.85}
+                    fill={i % 2 ? '#F5A94B' : '#E9C45A'} opacity={0.5 * (1 - i / trail.length)} />
+                ))}
+              </Svg>
+            )}
             <Animated.View style={{ position: 'absolute', transform: [...pos.getTranslateTransform(), { rotate }] }}>
               <Ball onFire={onFire} />
             </Animated.View>
+            {/* +N score popup, floating up from the made hoop */}
+            {pop && (
+              <Animated.Text
+                style={{
+                  position: 'absolute', left: pop.x - 30, top: pop.y - 26, width: 60, textAlign: 'center',
+                  fontFamily: nbFonts.mono, fontSize: 26, fontWeight: '700',
+                  color: pop.fire ? nb.red : nb.ink,
+                  opacity: popA.interpolate({ inputRange: [0, 0.15, 1], outputRange: [0, 1, 0] }),
+                  transform: [{ translateY: popA.interpolate({ inputRange: [0, 1], outputRange: [0, -38] }) }],
+                }}
+              >
+                {pop.text}
+              </Animated.Text>
+            )}
           </View>
         )}
 
