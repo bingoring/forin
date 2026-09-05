@@ -8,11 +8,21 @@ import { useSyncExternalStore } from 'react';
 import * as SecureStore from 'expo-secure-store';
 
 const KEY = 'forin.games.v1';
-/** Games can be started this many times a day (across all games, per the hub header). */
-export const MAX_PLAYS_PER_DAY = 3;
+/** Base plays a day (across all games, per the hub header). A rewarded ad adds more on top. */
+export const MAX_PLAYS_PER_DAY = 20;
+/** One rewarded ad grants this many extra plays… */
+export const AD_PLAYS_GRANT = 5;
+/** …up to this many ad top-ups a day. */
+export const AD_GRANTS_PER_DAY = 3;
 
-type GameState = { best: Record<string, number>; playDate: string; playsToday: number };
-let state: GameState = { best: {}, playDate: '', playsToday: 0 };
+type GameState = {
+  best: Record<string, number>;
+  playDate: string;
+  playsToday: number;
+  bonusPlays: number; // extra plays granted by ads today
+  adGrants: number;   // ad top-ups used today
+};
+let state: GameState = { best: {}, playDate: '', playsToday: 0, bonusPlays: 0, adGrants: 0 };
 const listeners = new Set<() => void>();
 function emit() {
   for (const l of listeners) l();
@@ -30,7 +40,7 @@ export function todayKey(d: Date = new Date()): string {
 export async function loadGameScores(): Promise<void> {
   try {
     const raw = await SecureStore.getItemAsync(KEY);
-    if (raw) state = { best: {}, playDate: '', playsToday: 0, ...JSON.parse(raw) };
+    if (raw) state = { best: {}, playDate: '', playsToday: 0, bonusPlays: 0, adGrants: 0, ...JSON.parse(raw) };
   } catch {
     // keep the empty default
   }
@@ -41,14 +51,45 @@ function playsFor(dateKey: string): number {
   return state.playDate === dateKey ? state.playsToday : 0;
 }
 
+/** Plays allowed today = base + whatever ads have added today. */
+function allowanceFor(dateKey: string): number {
+  return MAX_PLAYS_PER_DAY + (state.playDate === dateKey ? state.bonusPlays : 0);
+}
+
 /** Plays started today (resets when the date rolls over). */
 export function playsToday(dateKey: string = todayKey()): number {
   return playsFor(dateKey);
 }
 
+/** Today's total allowance (base + ad grants) — the "max" the hub shows. */
+export function playAllowance(dateKey: string = todayKey()): number {
+  return allowanceFor(dateKey);
+}
+
 /** Plays still allowed today. */
 export function playsLeft(dateKey: string = todayKey()): number {
-  return Math.max(0, MAX_PLAYS_PER_DAY - playsFor(dateKey));
+  return Math.max(0, allowanceFor(dateKey) - playsFor(dateKey));
+}
+
+/** Whether another rewarded-ad top-up is available today. */
+export function canGrantPlays(dateKey: string = todayKey()): boolean {
+  return (state.playDate === dateKey ? state.adGrants : 0) < AD_GRANTS_PER_DAY;
+}
+
+/** Grant extra plays after a watched ad. Returns false if today's ad cap is already used. */
+export function grantPlaysFromAd(dateKey: string = todayKey()): boolean {
+  if (state.playDate !== dateKey) {
+    state.playDate = dateKey;
+    state.playsToday = 0;
+    state.bonusPlays = 0;
+    state.adGrants = 0;
+  }
+  if (state.adGrants >= AD_GRANTS_PER_DAY) return false;
+  state.bonusPlays += AD_PLAYS_GRANT;
+  state.adGrants += 1;
+  emit();
+  persist();
+  return true;
 }
 
 export function bestScore(gameId: string): number | undefined {
@@ -60,6 +101,8 @@ export function startPlay(dateKey: string = todayKey()): void {
   if (state.playDate !== dateKey) {
     state.playDate = dateKey;
     state.playsToday = 0;
+    state.bonusPlays = 0;
+    state.adGrants = 0;
   }
   state.playsToday += 1;
   emit();

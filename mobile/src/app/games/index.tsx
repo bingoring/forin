@@ -4,12 +4,16 @@
 // challenge system are a server feature and ship later; this is the local hub — a grid of
 // games with a per-day play limit and per-game best score. Only 완벽한 원 is playable so
 // far; the others are marked 준비 중 until they are built.
+import { useState } from 'react';
 import { Stack, useRouter, type Href } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbMemo, NbPaper, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
 import { TOP_INSET, nb } from '@/theme/nb';
-import { MAX_PLAYS_PER_DAY, playsLeft, startPlay, useBestScore, usePlaysToday } from '@/lib/gameScores';
+import {
+  AD_PLAYS_GRANT, canGrantPlays, grantPlaysFromAd, playAllowance, playsLeft, startPlay,
+  useBestScore, usePlaysToday,
+} from '@/lib/gameScores';
 import { useT } from '@/i18n';
 
 // labelKey/subKey, not t(...): the array is evaluated once at import (see
@@ -26,6 +30,18 @@ export default function GameHub() {
   const router = useRouter();
   const plays = usePlaysToday();
   const left = playsLeft();
+  const allowance = playAllowance();
+  const [adBusy, setAdBusy] = useState(false);
+
+  // Rewarded-ad stub: the real SDK (react-native-google-mobile-ads) needs a dev build, so
+  // in Expo Go this simulates a short ad view. Swap for the SDK in production (see board.tsx).
+  const watchAdForPlays = async () => {
+    if (adBusy || !canGrantPlays()) return;
+    setAdBusy(true);
+    await new Promise<void>((resolve) => setTimeout(resolve, 1600));
+    grantPlaysFromAd();
+    setAdBusy(false);
+  };
 
   return (
     <NbSheet>
@@ -38,16 +54,32 @@ export default function GameHub() {
         </Pressable>
         <Text style={nbText.hand(24)}>{t('games.title')}</Text>
         <View style={{ flex: 1 }} />
-        <NbTag color={nb.blue} rot={2}>{t('games.playsToday', { n: plays, max: MAX_PLAYS_PER_DAY })}</NbTag>
+        <NbTag color={left > 0 ? nb.blue : nb.red} rot={2}>{t('games.playsToday', { n: plays, max: allowance })}</NbTag>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 40 }}>
         <Text style={[nbText.body(11, nb.soft), { marginTop: 4 }]}>{t('games.sub')}</Text>
 
         {GAMES.map((g, i) => (
-          <GameRow key={g.id} game={g} index={i} canPlay={!!g.route && left > 0}
+          <GameRow key={g.id} game={g} index={i} canPlay={!!g.route && left > 0} outOfPlays={left <= 0}
             onStart={() => { if (!g.route) return; startPlay(); router.push(g.route); }} />
         ))}
+
+        {/* Out of plays → offer a rewarded ad for more, until today's ad cap is reached. */}
+        {left <= 0 && (
+          <NbPaper rot={-0.4} tape style={{ marginTop: 15, padding: 14, alignItems: 'center', backgroundColor: 'rgba(249,227,123,.18)' }}>
+            <Text style={nbText.hand(15)}>{t('games.outOfPlays')}</Text>
+            {canGrantPlays() ? (
+              <View style={{ marginTop: 10 }}>
+                <NbButton variant="ink" size="md" icon="speaker" disabled={adBusy} onPress={() => void watchAdForPlays()}>
+                  {adBusy ? t('games.adPlaying') : t('games.watchAdForPlays', { n: AD_PLAYS_GRANT })}
+                </NbButton>
+              </View>
+            ) : (
+              <Text style={[nbText.body(11, nb.soft), { marginTop: 6 }]}>{t('games.adCapReached')}</Text>
+            )}
+          </NbPaper>
+        )}
 
         <NbMemo rot={0.3} style={{ marginTop: 15 }}>{t('games.rankingSoon')}</NbMemo>
         <NbMemo rot={-0.3} color={nb.blue} style={{ marginTop: 11 }}>{t('games.noStudy')}</NbMemo>
@@ -56,10 +88,11 @@ export default function GameHub() {
   );
 }
 
-function GameRow({ game, index, canPlay, onStart }: {
+function GameRow({ game, index, canPlay, outOfPlays, onStart }: {
   game: (typeof GAMES)[number];
   index: number;
   canPlay: boolean;
+  outOfPlays: boolean;
   onStart: () => void;
 }) {
   const t = useT();
@@ -79,7 +112,9 @@ function GameRow({ game, index, canPlay, onStart }: {
           {!ready ? t('games.soon') : best != null ? t('games.bestPoints', { score: best }) : t('games.new')}
         </Text>
         <View style={{ marginTop: 5 }}>
-          <NbButton variant="ink" size="sm" disabled={!canPlay} onPress={onStart}>{t('games.start')}</NbButton>
+          <NbButton variant="ink" size="sm" disabled={!canPlay} onPress={onStart}>
+            {ready && outOfPlays ? t('games.needPlays') : t('games.start')}
+          </NbButton>
         </View>
       </View>
     </NbPaper>
