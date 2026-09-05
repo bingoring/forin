@@ -24,10 +24,10 @@ import { recordBest, useBestScore } from '@/lib/gameScores';
 import { useT } from '@/i18n';
 
 // ── tuning ───────────────────────────────────────────────────────────────────
-const G_UP = 980;    // gravity while rising, px/s² (floaty)
-const G_DOWN = 1650; // gravity while falling, px/s² (snappy — harder to time)
-const JUMP = 500;    // upward speed a tap sets, px/s
-const SPEED = 175;   // forward speed a tap sets (kept until the next basket), px/s
+const G_UP = 1200;   // gravity while rising, px/s²
+const G_DOWN = 1900; // gravity while falling, px/s² (snappy — harder to time)
+const JUMP = 620;    // upward speed a tap sets, px/s (higher, faster hop)
+const SPEED = 175;   // forward speed a tap sets (unchanged), px/s
 const BALL_R = 23;   // fat ball — a tight fit through the rim
 const RIM_R = 28;    // half the rim opening
 const SCORE_GAP = RIM_R - BALL_R + 6; // a descent within this of centre drops in; rest clips
@@ -67,14 +67,14 @@ function Ball({ onFire }: { onFire: boolean }) {
   );
 }
 
-// Rim centre at local (42,68) in a 136×166 box (content shifted down 12 so the tall backboard
-// is not clipped at the top). Rendered 112px wide.
+// Rim centre at local (42,84) in a 136×182 box (content shifted down 28 so the tall
+// backboard reaches the collision top and nothing clips). Rendered 112px wide.
 const HOOP_W = 112;
 const HOOP_VB_W = 136;
-const HOOP_VB_H = 166;
+const HOOP_VB_H = 182;
 const HOOP_SCALE = HOOP_W / HOOP_VB_W;
 const RIM_LOCAL_X = 42;
-const RIM_LOCAL_Y = 68;
+const RIM_LOCAL_Y = 84;   // content is shifted down 28 (see the hoop groups), rim local 56 → 84
 
 function hoopBox(screenX: number, hoopY: number, flip: boolean) {
   const rimLocalX = flip ? HOOP_VB_W - RIM_LOCAL_X : RIM_LOCAL_X;
@@ -87,20 +87,20 @@ function hoopBox(screenX: number, hoopY: number, flip: boolean) {
 }
 
 /** Far half of a hoop (behind the ball): pole, big backboard, the rim→board bridge, back rim
- *  arc, back net. Everything is shifted down 12 via the outer group. */
+ *  arc, back net. Everything is shifted down 28 via the outer group. */
 function HoopBack({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir: number }) {
   const flip = dir < 0;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
       <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
-        <G transform={flip ? `translate(${HOOP_VB_W},12) scale(-1,1)` : 'translate(0,12)'}>
+        <G transform={flip ? `translate(${HOOP_VB_W},28) scale(-1,1)` : 'translate(0,28)'}>
           {/* pole to the wall + vertical post */}
           <Path d="M108 40 H136 V50 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
           <Path d="M108 100 H136 V110 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
           <Rect x="96" y="26" width="12" height="120" fill="#C9922E" stroke={nb.ink} strokeWidth="1.6" />
-          {/* bigger backboard */}
-          <Rect x="84" y="0" width="18" height="122" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
-          <Rect x="84" y="0" width="18" height="26" fill="#FFFdf4" stroke={nb.ink} strokeWidth="1.8" />
+          {/* backboard — reaches up to the collision top (BOARD_H above the rim) */}
+          <Rect x="84" y="-24" width="18" height="150" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
+          <Rect x="84" y="-24" width="18" height="26" fill="#FFFdf4" stroke={nb.ink} strokeWidth="1.8" />
           <Rect x="88" y="52" width="12" height="26" fill="none" stroke={nb.ink} strokeWidth="1.4" />
           {/* bridge — the rim material carried back to the board (rim detached from board) */}
           <Path d="M70 56 H86" stroke="#3D7BC4" strokeWidth="6.5" strokeLinecap="round" />
@@ -125,7 +125,7 @@ function HoopFrontRim({ screenX, hoopY, dir }: { screenX: number; hoopY: number;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
       <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
-        <G transform={flip ? `translate(${HOOP_VB_W},12) scale(-1,1)` : 'translate(0,12)'}>
+        <G transform={flip ? `translate(${HOOP_VB_W},28) scale(-1,1)` : 'translate(0,28)'}>
           <Path d="M8 56 A34 10 0 0 0 76 56" fill="none" stroke="#3D7BC4" strokeWidth="7" />
           <Path d="M8 56 A34 10 0 0 0 76 56" fill="none" stroke={nb.ink} strokeWidth="1.2" opacity="0.35" />
         </G>
@@ -140,7 +140,7 @@ function HoopFrontNet({ screenX, hoopY, dir }: { screenX: number; hoopY: number;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
       <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
-        <G transform={flip ? `translate(${HOOP_VB_W},12) scale(-1,1)` : 'translate(0,12)'}>
+        <G transform={flip ? `translate(${HOOP_VB_W},28) scale(-1,1)` : 'translate(0,28)'}>
           <G stroke={nb.ink} strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.8">
             <Path d="M10 60 Q14 72 21 82 M22 64 Q25 74 29 84 M34 66 Q35 76 37 85 M48 66 Q47 76 45 85 M60 64 Q57 74 53 84 M74 60 Q68 72 61 82" />
             <Path d="M21 82 L26 93 M29 84 L26 93 M29 84 L33 93 M37 85 L33 93 M37 85 L41 93 M45 85 L41 93 M45 85 L49 93 M53 84 L49 93 M53 84 L56 93 M61 82 L56 93" />
