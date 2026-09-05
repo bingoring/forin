@@ -15,10 +15,10 @@ import { useT } from '@/i18n';
 // labelKey/subKey, not t(...): the array is evaluated once at import (see
 // i18n/module-scope.test.ts), so the strings must be keys resolved in render.
 const GAMES: { id: string; icon: NbIconName; nameKey: string; subKey: string; bg: string; route?: Href }[] = [
+  { id: 'hoops', icon: 'star', nameKey: 'games.hoops', subKey: 'games.hoopsSub', bg: 'rgba(225,134,59,.2)', route: '/games/hoops' },
+  { id: 'circle', icon: 'pencil', nameKey: 'games.circle', subKey: 'games.circleSub', bg: 'rgba(168,217,195,.28)', route: '/games/circle' },
   { id: 'plane', icon: 'plane', nameKey: 'games.plane', subKey: 'games.planeSub', bg: 'rgba(169,203,227,.28)' },
   { id: 'penCap', icon: 'bell', nameKey: 'games.penCap', subKey: 'games.penCapSub', bg: 'rgba(233,196,90,.2)' },
-  { id: 'circle', icon: 'pencil', nameKey: 'games.circle', subKey: 'games.circleSub', bg: 'rgba(168,217,195,.28)', route: '/games/circle' },
-  { id: 'runner', icon: 'compass', nameKey: 'games.runner', subKey: 'games.runnerSub', bg: 'rgba(201,162,39,.16)' },
 ];
 
 export default function GameHub() {

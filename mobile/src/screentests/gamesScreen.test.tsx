@@ -27,8 +27,9 @@ test('the hub lists the games and gates by the daily limit', () => {
   act(() => { tree = create(<GameHub />); });
   const all = texts(tree.root).join(' ');
   act(() => { tree.unmount(); });
-  expect(all).toContain('완벽한 원 그리기'); // the playable game
-  expect(all).toContain('복도 달리기'); // a 준비 중 game is still listed
+  expect(all).toContain('탭탭 슛'); // the new playable game
+  expect(all).toContain('완벽한 원 그리기'); // the other playable game
+  expect(all).toContain('종이비행기 날리기'); // a 준비 중 game is still listed
   expect(all).toContain('준비 중'); // ...and marked not-ready
   expect(all).toContain('시작');
 });
