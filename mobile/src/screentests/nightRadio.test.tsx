@@ -46,6 +46,9 @@ test('the radio shows tonight’s story and its line to practice', async () => {
   await act(async () => { tree.unmount(); });
 
   expect(all).toContain('ON AIR');
+  expect(all).toContain('창밖의 비'); // the default track title + its picker chip
+  expect(all).toContain('여름의 오후'); // a second mood in the picker
+  expect(all).toContain('밤의 회전목마'); // the waltz mood in the picker
   expect(all).toContain('오늘 밤의 이야기'); // storyTag
   expect(all).toContain('새벽 3시, 502호의 콜벨'); // story title
   expect(all).toContain('Would you like some warm milk'); // the English key line

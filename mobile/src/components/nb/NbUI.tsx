@@ -372,8 +372,11 @@ export function NbMark({ textStyle, children }: {
 export const markInline: TextStyle = { backgroundColor: 'rgba(249,227,123,.55)' };
 
 /** A dashed memo box — tips, rules, warnings. */
-export function NbMemo({ color = nb.blue, rot = -0.3, style, children }: {
+export function NbMemo({ color = nb.blue, textColor, rot = -0.3, style, children }: {
   color?: string;
+  /** Colour for a bare string/number child. Defaults to ink; set a light colour on a dark
+   *  surface (e.g. the night screen) so the wrapped copy is readable. */
+  textColor?: string;
   rot?: number;
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
@@ -383,7 +386,7 @@ export function NbMemo({ color = nb.blue, rot = -0.3, style, children }: {
   // silently (only the dashed box shows), so wrap it in the memo's own hand style here.
   // Element children (a caller passing its own Text for custom styling) pass through.
   const body = (typeof children === 'string' || typeof children === 'number')
-    ? <Text style={nbText.hand(13.5)}>{children}</Text>
+    ? <Text style={nbText.hand(13.5, textColor)}>{children}</Text>
     : children;
   return (
     <View style={[{

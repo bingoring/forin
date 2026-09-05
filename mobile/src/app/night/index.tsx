@@ -5,9 +5,9 @@
 // Stories are server content (rotating daily; 다음 이야기 pages by offset), so the story is
 // readable any time; the radio player only "opens" between 10pm and 5am.
 //
-// Audio: the app bundles sounds via require() (Metro resolves them statically), so a track
-// file cannot be referenced until it exists. Until a royalty-free lo-fi track is added to
-// assets/audio, the play button shows 준비 중 — the EQ bars still animate as decoration.
+// Audio: the app bundles sounds via require() (Metro resolves them statically), so every
+// track has to be a static require. All three are synthesized (scripts/make_tracks.py) —
+// no sampled or copyrighted audio.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
@@ -18,9 +18,13 @@ import { TOP_INSET, nb } from '@/theme/nb';
 import { api, type NightRadio as NightRadioT } from '@/api/client';
 import { useT } from '@/i18n';
 
-// A calm, quiet ambient loop, synthesized for the night channel (scripts/make_lofi.py). Swap
-// this file to change the track — it just has to be a bundled audio asset.
-const TRACK = require('../../../assets/audio/lofi-night-shift.wav');
+// The night-radio track library. Each is a seamless loop synthesized for a mood; the
+// melodic two are original compositions, not transcriptions of any song.
+const TRACKS: { key: string; src: number; title: string; sub: string }[] = [
+  { key: 'rain', src: require('../../../assets/audio/night-rain.wav'), title: 'night.tk.rain', sub: 'night.tk.rainSub' },
+  { key: 'summer', src: require('../../../assets/audio/night-summer.wav'), title: 'night.tk.summer', sub: 'night.tk.summerSub' },
+  { key: 'waltz', src: require('../../../assets/audio/night-waltz.wav'), title: 'night.tk.waltz', sub: 'night.tk.waltzSub' },
+];
 
 const STARS: [number, number][] = [[0.08, 20], [0.24, 44], [0.5, 14], [0.7, 38], [0.88, 24], [0.95, 56]];
 
@@ -48,22 +52,28 @@ export default function NightRadio() {
   const [radio, setRadio] = useState<NightRadioT | null>(null);
   const [offset, setOffset] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [trackIdx, setTrackIdx] = useState(0);
   const player = useRef<AudioPlayer | null>(null);
+  const playingRef = useRef(false); // so switching tracks keeps playback going
 
   const hour = new Date().getHours();
   const open = hour >= 22 || hour < 5; // the radio's night window
+  const track = TRACKS[trackIdx];
 
-  // The looping track is created once and cleaned up on leave; playback stops when the
-  // screen loses focus so it never plays on in the background.
+  // The player is recreated when the chosen track changes; if a track was already playing,
+  // the new one picks up where the old left off. Cleaned up on leave.
   useEffect(() => {
-    const p = createAudioPlayer(TRACK);
+    const p = createAudioPlayer(TRACKS[trackIdx].src);
     p.loop = true;
     player.current = p;
+    if (playingRef.current) { try { p.play(); } catch { /* audio hiccup */ } }
     return () => { try { p.remove(); } catch { /* already gone */ } };
-  }, []);
+  }, [trackIdx]);
+  // Playback stops when the screen loses focus so it never plays on in the background.
   useFocusEffect(
     useCallback(() => () => {
       try { player.current?.pause(); } catch { /* ignore */ }
+      playingRef.current = false;
       setPlaying(false);
     }, []),
   );
@@ -72,8 +82,8 @@ export default function NightRadio() {
     const p = player.current;
     if (!p) return;
     try {
-      if (playing) { p.pause(); setPlaying(false); }
-      else { p.play(); setPlaying(true); }
+      if (playing) { p.pause(); setPlaying(false); playingRef.current = false; }
+      else { p.play(); setPlaying(true); playingRef.current = true; }
     } catch { /* audio hiccup — leave the button as it was */ }
   };
 
@@ -132,12 +142,29 @@ export default function NightRadio() {
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 12 }}>
             <View style={{ flex: 1, minWidth: 0 }}>
-              <Text numberOfLines={1} style={nbText.hand(15)}>{t('night.trackTitle')}</Text>
-              <Text numberOfLines={1} style={nbText.body(9.5, nb.soft)}>{t('night.trackSub')}</Text>
+              <Text numberOfLines={1} style={nbText.hand(15)}>{t(track.title)}</Text>
+              <Text numberOfLines={1} style={nbText.body(9.5, nb.soft)}>{t(track.sub)}</Text>
             </View>
             {open
               ? <NbButton variant="ink" size="sm" icon="speaker" onPress={toggle}>{playing ? t('night.pause') : t('night.play')}</NbButton>
               : <NbTag color={nb.soft} rot={1}>{t('night.closedShort')}</NbTag>}
+          </View>
+          {/* Track picker — three moods. Selecting one switches the loop (and keeps it
+              playing if it already was). */}
+          <View style={{ flexDirection: 'row', gap: 7, marginTop: 12 }}>
+            {TRACKS.map((tk, i) => {
+              const on = i === trackIdx;
+              return (
+                <Pressable key={tk.key} onPress={() => setTrackIdx(i)} style={{ flex: 1 }}>
+                  <View style={{
+                    paddingVertical: 7, paddingHorizontal: 6, borderRadius: 4, borderWidth: 1.5,
+                    borderColor: nb.ink, backgroundColor: on ? nb.ink : 'transparent', alignItems: 'center',
+                  }}>
+                    <Text numberOfLines={1} style={nbText.hand(12.5, on ? nb.paper : nb.ink)}>{t(tk.title)}</Text>
+                  </View>
+                </Pressable>
+              );
+            })}
           </View>
         </NbPaper>
 
@@ -163,10 +190,10 @@ export default function NightRadio() {
             </View>
           </NbPaper>
         ) : (
-          <NbMemo rot={0.3} style={{ marginTop: 14 }}>{t('night.empty')}</NbMemo>
+          <NbMemo rot={0.3} textColor={nb.cream} style={{ marginTop: 14 }}>{t('night.empty')}</NbMemo>
         )}
 
-        <NbMemo color="#D4B46A" rot={-0.3} style={{ marginTop: 13 }}>{t('night.bonus')}</NbMemo>
+        <NbMemo color="#D4B46A" textColor={nb.cream} rot={-0.3} style={{ marginTop: 13 }}>{t('night.bonus')}</NbMemo>
       </ScrollView>
     </NbSheet>
   );
