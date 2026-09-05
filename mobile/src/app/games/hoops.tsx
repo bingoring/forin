@@ -31,7 +31,8 @@ const SPEED = 175;   // forward speed a tap sets (unchanged), px/s
 const BALL_R = 23;   // fat ball — a tight fit through the rim
 const RIM_R = 28;    // half the rim opening
 const SCORE_GAP = RIM_R - BALL_R + 6; // a descent within this of centre drops in; rest clips
-const BOARD_H = 66;  // backboard collision height up from the rim
+const BOARD_H = 78;  // backboard collision height up from the rim
+const BOARD_D = 16;  // backboard depth (court→wall), so the top face is only board-wide
 const CLOCK = 6.0;
 const WALL_IN = 54;
 const CAM = 150;
@@ -66,14 +67,14 @@ function Ball({ onFire }: { onFire: boolean }) {
   );
 }
 
-// Rim centre at local (42,84) in a 136×182 box (content shifted down 28 so the tall
+// Rim centre at local (42,96) in a 136×190 box (content shifted down 40 so the tall
 // backboard reaches the collision top and nothing clips). Rendered 112px wide.
 const HOOP_W = 112;
 const HOOP_VB_W = 136;
-const HOOP_VB_H = 182;
+const HOOP_VB_H = 190;
 const HOOP_SCALE = HOOP_W / HOOP_VB_W;
 const RIM_LOCAL_X = 42;
-const RIM_LOCAL_Y = 84;   // content is shifted down 28 (see the hoop groups), rim local 56 → 84
+const RIM_LOCAL_Y = 96;   // content is shifted down 40 (see the hoop groups), rim local 56 → 96
 
 function hoopBox(screenX: number, hoopY: number, flip: boolean) {
   const rimLocalX = flip ? HOOP_VB_W - RIM_LOCAL_X : RIM_LOCAL_X;
@@ -86,21 +87,21 @@ function hoopBox(screenX: number, hoopY: number, flip: boolean) {
 }
 
 /** Far half of a hoop (behind the ball): pole, big backboard, the rim→board bridge, back rim
- *  arc, back net. Everything is shifted down 28 via the outer group. */
+ *  arc, back net. Everything is shifted down 40 via the outer group. */
 function HoopBack({ screenX, hoopY, dir }: { screenX: number; hoopY: number; dir: number }) {
   const flip = dir < 0;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
       <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
-        <G transform={flip ? `translate(${HOOP_VB_W},28) scale(-1,1)` : 'translate(0,28)'}>
+        <G transform={flip ? `translate(${HOOP_VB_W},40) scale(-1,1)` : 'translate(0,40)'}>
           {/* pole to the wall + vertical post */}
           <Path d="M108 40 H136 V50 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
           <Path d="M108 100 H136 V110 H108 Z" fill="#B07F24" stroke={nb.ink} strokeWidth="1.6" />
           <Rect x="96" y="26" width="12" height="120" fill="#C9922E" stroke={nb.ink} strokeWidth="1.6" />
           {/* backboard — top reaches the collision top (BOARD_H above the rim); the rim mounts
-              about a third up from its bottom edge (h120 with the rim at local 56). */}
-          <Rect x="84" y="-24" width="18" height="120" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
-          <Rect x="84" y="-24" width="18" height="26" fill="#FFFdf4" stroke={nb.ink} strokeWidth="1.8" />
+              about a third up from its bottom edge (h135 with the rim at local 56). */}
+          <Rect x="84" y="-39" width="18" height="135" fill="#EDE8DC" stroke={nb.ink} strokeWidth="1.8" />
+          <Rect x="84" y="-39" width="18" height="26" fill="#FFFdf4" stroke={nb.ink} strokeWidth="1.8" />
           {/* bridge — the rim material carried straight to the board's side edge (x84) */}
           <Path d="M70 56 H84" stroke="#3D7BC4" strokeWidth="6.5" strokeLinecap="round" />
           <Path d="M70 56 H84" stroke={nb.ink} strokeWidth="1.2" opacity="0.4" />
@@ -124,7 +125,7 @@ function HoopFrontRim({ screenX, hoopY, dir }: { screenX: number; hoopY: number;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
       <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
-        <G transform={flip ? `translate(${HOOP_VB_W},28) scale(-1,1)` : 'translate(0,28)'}>
+        <G transform={flip ? `translate(${HOOP_VB_W},40) scale(-1,1)` : 'translate(0,40)'}>
           <Path d="M8 56 A34 10 0 0 0 76 56" fill="none" stroke="#3D7BC4" strokeWidth="7" />
           <Path d="M8 56 A34 10 0 0 0 76 56" fill="none" stroke={nb.ink} strokeWidth="1.2" opacity="0.35" />
         </G>
@@ -139,7 +140,7 @@ function HoopFrontNet({ screenX, hoopY, dir }: { screenX: number; hoopY: number;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', ...hoopBox(screenX, hoopY, flip) }}>
       <Svg width="100%" height="100%" viewBox={`0 0 ${HOOP_VB_W} ${HOOP_VB_H}`}>
-        <G transform={flip ? `translate(${HOOP_VB_W},28) scale(-1,1)` : 'translate(0,28)'}>
+        <G transform={flip ? `translate(${HOOP_VB_W},40) scale(-1,1)` : 'translate(0,40)'}>
           <G stroke={nb.ink} strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.8">
             <Path d="M10 60 Q14 72 21 82 M22 64 Q25 74 29 84 M34 66 Q35 76 37 85 M48 66 Q47 76 45 85 M60 64 Q57 74 53 84 M74 60 Q68 72 61 82" />
             <Path d="M21 82 L26 93 M29 84 L26 93 M29 84 L33 93 M37 85 L33 93 M37 85 L41 93 M45 85 L41 93 M45 85 L49 93 M53 84 L49 93 M53 84 L56 93 M61 82 L56 93" />
@@ -231,7 +232,7 @@ export default function HoopsGame() {
   };
 
   const tap = () => {
-    if (g.phase === 'over') return;
+    if (g.phase === 'over' || g.over2) return; // after 0:00 the last-chance shot plays out untouched
     if (g.phase === 'ready') { g.phase = 'playing'; setPhase('playing'); setGuide(''); }
     g.vy = -JUMP;
     g.vx = g.dir * SPEED;
@@ -336,12 +337,15 @@ export default function HoopsGame() {
                 }
               }
             }
-            // backboard as a solid rectangle (front face + top face), not just a line:
-            // its top has a surface, and nothing can pass to the wall side of the front.
-            const bFront = hx + g.dir * (RIM_R + 6); // court-side face
+            // backboard as a solid rectangle (front face + top face), not just a line. The top
+            // face is only as wide as the actual board — it used to extend to the wall, so a
+            // ball far past the board was wrongly blocked in mid-air.
+            const bFront = hx + g.dir * (RIM_R + 6);      // court-side face
+            const bWall = bFront + g.dir * BOARD_D;       // wall-side edge
+            const xLo = Math.min(bFront, bWall), xHi = Math.max(bFront, bWall);
             const bTop = hy - BOARD_H;
             const bBot = hy + 10;
-            const overBoard = g.dir > 0 ? g.bx >= bFront - BALL_R : g.bx <= bFront + BALL_R;
+            const overBoard = g.bx >= xLo - 3 && g.bx <= xHi + 3;
             if (g.vy > 0 && overBoard && g.by + BALL_R >= bTop && g.by - BALL_R < bTop) {
               // dropping onto the top face — bounce up (a miss); the board never disqualifies clean
               g.by = bTop - BALL_R; g.vy = -g.vy * RIM_REST; rattle(now);
@@ -443,13 +447,18 @@ export default function HoopsGame() {
                 <Path d={guide} fill="none" stroke="rgba(62,54,43,.34)" strokeWidth={2} strokeDasharray="4 7" strokeLinecap="round" />
               </Svg>
             )}
-            {/* fire trail (on a 3-point streak) — flames linger along the ball's path */}
+            {/* fire trail (on a 3-point streak) — a soft comet of warm blobs behind the ball:
+                a wide amber glow bridges the gaps, a brighter core rides on top, both tapering. */}
             {onFire && trail.length > 1 && (
               <Svg width="100%" height="100%" style={{ position: 'absolute', left: 0, top: 0 }}>
-                {trail.map((p, i) => (
-                  <Circle key={i} cx={p.x} cy={p.y} r={BALL_R * (1 - i / trail.length) * 0.85}
-                    fill={i % 2 ? '#F5A94B' : '#E9C45A'} opacity={0.5 * (1 - i / trail.length)} />
-                ))}
+                {trail.map((p, i) => {
+                  const f = 1 - i / trail.length; // 1 at the head → 0 at the tail
+                  return <Circle key={`g${i}`} cx={p.x} cy={p.y} r={BALL_R * (0.72 + 0.55 * f)} fill="#F0A64B" opacity={0.18 * f} />;
+                })}
+                {trail.map((p, i) => {
+                  const f = 1 - i / trail.length;
+                  return <Circle key={`c${i}`} cx={p.x} cy={p.y} r={BALL_R * 0.62 * f} fill="#FFD873" opacity={0.5 * f} />;
+                })}
               </Svg>
             )}
             <Animated.View style={{ position: 'absolute', transform: [...pos.getTranslateTransform(), { rotate }] }}>
