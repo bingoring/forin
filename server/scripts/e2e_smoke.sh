@@ -190,6 +190,14 @@ entag=$(pj "d['situations'][0]['tag'] if d.get('situations') else ''")
 # this assertion did exactly that and failed on a correctly-localized 'Done'.
 enko=$(pj "any('\uac00' <= ch <= '\ud7a3' for ch in (d['situations'][0]['tag'] if d.get('situations') else 'x'))")
 [ -n "$entag" ] && [ "$enko" = "False" ] && ok "situation tag localized: '$entag'" || bad "tag not localized: '$entag'"
+# The situation NAME itself is localized now (content_en catalog), not just the state tag.
+enname=$(pj "d['situations'][0]['name'] if d.get('situations') else ''")
+ennamekr=$(pj "any('\uac00' <= ch <= '\ud7a3' for ch in (d['situations'][0]['name'] if d.get('situations') else 'x'))")
+[ -n "$enname" ] && [ "$ennamekr" = "False" ] && ok "situation name localized: '$enname'" || bad "situation name not localized: '$enname'"
+# The scenario briefing header title is localized too.
+runlang en GET /scenarios/SCN-ER-00001
+enttl=$(pj "d.get('title','')")
+[ "$enttl" = "Chest-pain triage" ] && ok "scenario briefing title localized: '$enttl'" || bad "briefing title not localized: '$enttl'"
 out=$(curl -s "$B/config/economy"); BODY="$out"
 readyus=$(pj "'us' in d.get('readyDestinations',[])")
 [ "$readyus" = "True" ] && ok "config lists us as a ready destination" || bad "readyDestinations=$(pj "d.get('readyDestinations')")"

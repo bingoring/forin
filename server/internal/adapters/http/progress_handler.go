@@ -289,6 +289,10 @@ func (h *progressHandler) modelAnswerSummary(w http.ResponseWriter, r *http.Requ
 	if out.Groups == nil {
 		out.Groups = []progress.ModelAnswerGroup{}
 	}
+	loc := i18n.FromContext(ctx)
+	for i := range out.Groups {
+		out.Groups[i].Title = i18n.Tr(loc, out.Groups[i].ScenarioID, out.Groups[i].Title)
+	}
 	httpx.JSON(w, http.StatusOK, out)
 }
 
@@ -349,8 +353,10 @@ func (h *progressHandler) modelAnswers(w http.ResponseWriter, r *http.Request) {
 			httpx.Error(w, http.StatusInternalServerError, "could not load the model answers")
 			return
 		}
+		loc := i18n.FromContext(ctx)
 		for i := range groups {
 			groups[i].Cards = byScenario[groups[i].ScenarioID]
+			groups[i].Title = i18n.Tr(loc, groups[i].ScenarioID, groups[i].Title)
 		}
 	} else {
 		groups = []progress.ModelAnswerGroup{}

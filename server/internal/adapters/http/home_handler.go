@@ -242,7 +242,7 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 	wg.Wait()
 
 	// Derived — needs the curriculum result, so it happens after the fan-in.
-	dept, deptLabel, today := currentStep(curricula)
+	dept, deptLabel, today := currentStep(curricula, i18n.FromContext(r.Context()))
 	resp.TodayOne = today
 	resp.Done = today == nil // no next step today → the rest card
 	if deptLabel != "" {
@@ -321,7 +321,7 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 // It reads the Resume flag rather than searching for the first unfinished
 // curriculum itself: the career tab draws its hero from the same flag, and two
 // screens computing "what's next" separately is how they end up disagreeing.
-func currentStep(curricula []curriculum.CurriculumState) (dept, deptLabel string, one *homeTodayOne) {
+func currentStep(curricula []curriculum.CurriculumState, loc string) (dept, deptLabel string, one *homeTodayOne) {
 	for _, c := range curricula {
 		if !c.Resume {
 			continue
@@ -332,7 +332,7 @@ func currentStep(curricula []curriculum.CurriculumState) (dept, deptLabel string
 			if st.State == "now" {
 				return dept, deptLabel, &homeTodayOne{
 					Chapter:    c.Where + " · " + c.Name,
-					Title:      st.Name,
+					Title:      i18n.Tr(loc, st.ScenarioID, st.Name),
 					Kind:       st.Kind,
 					ScenarioID: st.ScenarioID,
 					Progress:   &homeProgress{Done: c.Done, Total: c.Total},

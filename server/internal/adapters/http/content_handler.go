@@ -90,6 +90,10 @@ func (h *contentHandler) events(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusInternalServerError, "could not list events")
 		return
 	}
+	loc := i18n.FromContext(r.Context())
+	for i := range events {
+		events[i].Title = i18n.Tr(loc, events[i].ID, events[i].Title)
+	}
 	httpx.JSON(w, http.StatusOK, map[string]any{"events": events})
 }
 
@@ -113,6 +117,7 @@ func (h *contentHandler) scenario(w http.ResponseWriter, r *http.Request) {
 	//
 	// Anonymous reads (there are none today, but the route does not require auth to be
 	// meaningful) fall through to the unguided app rather than guessing.
+	s.Title = i18n.Tr(i18n.FromContext(r.Context()), s.ID, s.Title)
 	guide := curriculum.GuideFree
 	if uid, ok := UserID(r.Context()); ok && h.progress != nil {
 		guided, free, err := h.progress.ClearedByGuide(r.Context(), uid)
@@ -199,6 +204,7 @@ func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) 
 		}
 		for i := range sits {
 			sits[i].Tag = i18n.Tr(loc0, "tag."+sits[i].TagCode, tagKo[sits[i].TagCode])
+			sits[i].Name = i18n.Tr(loc0, sits[i].ScenarioID, sits[i].Name)
 		}
 		httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits, "hasMore": false})
 		return
@@ -224,6 +230,7 @@ func (h *contentHandler) deptSituations(w http.ResponseWriter, r *http.Request) 
 	loc := i18n.FromContext(r.Context())
 	for i := range sits {
 		sits[i].Tag = i18n.Tr(loc, "tag."+sits[i].TagCode, tagKo[sits[i].TagCode])
+		sits[i].Name = i18n.Tr(loc, sits[i].ScenarioID, sits[i].Name)
 	}
 	httpx.JSON(w, http.StatusOK, map[string]any{"situations": sits, "hasMore": hasMore})
 }
