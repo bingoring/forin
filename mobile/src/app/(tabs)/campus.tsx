@@ -45,6 +45,8 @@ export default function Campus() {
   const [query, setQuery] = useState('');
   const found = useMemo(() => searchCampus(buildings, query.trim()), [buildings, query]);
   const favorites = useFavorites();
+  // Curriculum floor headings are localized server-side, so a language change re-loads them.
+  const locale = useLocale();
 
   // A floor arrived at from search or a favourite: the building opens and the row is lit.
   const [focus, setFocus] = useState<{ building: string; floor: string } | null>(null);
@@ -125,7 +127,7 @@ export default function Campus() {
         if (bs.length) setBuildings(bs);
       });
       return () => { alive = false; };
-    }, []),
+    }, [locale]),
   );
 
   // Quiz steps (QZ-*) open the quiz player; scenario steps open the briefing.

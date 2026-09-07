@@ -71,6 +71,9 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
   const loadingRef = useRef(false); // guards concurrent page fetches
   const offsetRef = useRef(0);
   const code = target?.deptCode;
+  // The situation NAMES are localized server-side, so the list is re-fetched when the app
+  // language changes — otherwise the names stay in whatever language they were loaded in.
+  const locale = useLocale();
 
   useEffect(() => {
     let alive = true;
@@ -91,7 +94,7 @@ export function DeptSheet({ target, suspended, focusSituation, onClose, onStart,
       .finally(() => { loadingRef.current = false; });
     return () => { alive = false; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [code]);
+  }, [code, locale]);
 
   const loadMore = useCallback(() => {
     if (!code || loadingRef.current || !hasMore) return;

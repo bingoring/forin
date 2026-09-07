@@ -127,6 +127,8 @@ export default function Lab() {
   // isn't there" impossible to diagnose without reading the server logs.
   const [speakFailed, setSpeakFailed] = useState(false);
   const [modelsFailed, setModelsFailed] = useState(false);
+  // The model-answer situation names are localized server-side → reload on a language change.
+  const locale = useLocale();
 
   useFocusEffect(
     useCallback(() => {
@@ -148,7 +150,7 @@ export default function Lab() {
         .then((sum) => { if (alive) setModels(sum); })
         .catch(() => { if (alive) setModelsFailed(true); });
       return () => { alive = false; };
-    }, []),
+    }, [locale]),
   );
 
   const practiseSentence = (s: SpokenSentence) => {

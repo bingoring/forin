@@ -109,7 +109,8 @@ export default function HomeTab() {
       setState((cur) => (cur === 'ok' ? cur : 'loading'));
       void load(0);
       return () => { alive = false; if (timer) clearTimeout(timer); };
-    }, []),
+      // locale: the continue-card title is localized server-side, so reload on a language change
+    }, [locale]),
   );
 
   // The 인수인계 노트 badge, fetched on its own so a slow or failed inbox never blocks the
