@@ -85,7 +85,11 @@ export default function HandoffScreen() {
   const act = (note: HandoffNote) => {
     void api.readHandoff(note.id).catch(() => {});
     if (note.kind === 'followup' && note.refScenarioId) router.push(`/scenario/${note.refScenarioId}`);
-    else if (note.kind === 'review') router.push('/model-answers');
+    // Open the model answers ON this note's scenario so the learner lands on the exact
+    // conversation, expanded — not the generic list.
+    else if (note.kind === 'review') {
+      router.push(note.refScenarioId ? `/model-answers?scenario=${note.refScenarioId}` : '/model-answers');
+    }
   };
 
   return (

@@ -528,8 +528,8 @@ func (e *Engine) Correct(ctx context.Context, userID, utterance, contextText, sc
 		"Fix vocabulary, grammar and phrasing so the goal comes across clearly and sounds natural for a %[3]s in this setting. "+
 		"(If no goal is stated, simply correct the %[1]s to natural, clinically appropriate phrasing without changing its meaning.) "+
 		"Put the improved reply in `corrected` (in %[1]s). "+
-		"In `note` (in %[2]s), briefly say what you changed and why. "+
-		"If the reply already conveys the goal correctly and naturally, return it unchanged with a short encouraging note. "+
+		"Write `note` in %[2]s — the learner's NATIVE language. The note MUST be written in %[2]s, never in %[1]s: it explains, in the language they think in, what you changed and why the %[1]s phrasing is better. "+
+		"If the reply already conveys the goal correctly and naturally, return it unchanged with a short encouraging note (still in %[2]s). "+
 		"Respond ONLY with JSON: {\"corrected\": string, \"note\": string}.",
 		lc.Target, lc.Native, lc.Job)
 	user := utterance

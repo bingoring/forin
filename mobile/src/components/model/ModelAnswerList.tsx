@@ -4,7 +4,7 @@
 // No sort dropdown, no filter chips. The handoff's summary deliberately carries neither
 // ("모범답안에 왜 아직 정렬, 필터칩이 있어") — those belong to the separate full-list
 // screen, not to this in-tab summary. What stays is infinite scroll and the hero.
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { api, type ModelAnswerGroup } from '@/api/client';
@@ -17,13 +17,16 @@ import { useT } from '@/i18n';
 
 const PAGE = 10;
 
-export function ModelAnswerList({ embedded = false, above }: {
+export function ModelAnswerList({ embedded = false, above, focusScenario }: {
   /** True inside the review-lab tab: no screen chrome, and the header scrolls with the
    *  list instead of being pinned above it. */
   embedded?: boolean;
   /** Rendered at the very top of the scroll when embedded — the lab's screen title and
    *  section tabs, so tapping a tab lands on the list itself. */
   above?: React.ReactNode;
+  /** A scenario id to open expanded on arrival (from a handoff note's 표현 다시 보기).
+   *  Its row is expanded, paged in if it is beyond the first page, and scrolled to. */
+  focusScenario?: string;
 }) {
   const t = useT();
   const router = useRouter();
@@ -32,7 +35,9 @@ export function ModelAnswerList({ embedded = false, above }: {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [done, setDone] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(focusScenario ?? null);
+  const listRef = useRef<FlatList<ModelAnswerGroup>>(null);
+  const scrolledRef = useRef(false);
 
   // Always 최신: the summary shows the correction the learner most likely still
   // remembers making. The handoff has no sort control here, so there is nothing to vary.
@@ -44,18 +49,35 @@ export function ModelAnswerList({ embedded = false, above }: {
         setGroups(page.groups);
         setTotal(page.total);
         setDone(page.groups.length < PAGE);
-        // Everything starts collapsed: the worked example is the hero card above the
-        // list now (v31), and auto-opening the same scenario's row printed the same
-        // correction twice on one screen.
-        setOpen(null);
+        // Everything starts collapsed — EXCEPT a focused scenario (arrived from a handoff
+        // note), which opens so the learner sees that conversation's corrections at once.
+        setOpen(focusScenario ?? null);
         setState('ok');
       })
       .catch(() => setState('error'));
-  }, []);
+  }, [focusScenario]);
 
   // One-shot, NOT useFocusEffect: returning from anywhere must not discard the
   // pages already pulled in or the scroll position they were being read at.
-  useEffect(() => { reload(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { reload(); }, [reload]);
+
+  // Focused scenario beyond the first page: page in until it is loaded (or the list ends),
+  // then scroll to it once. `done` and loadingMore guard against an unbounded loop.
+  useEffect(() => {
+    if (!focusScenario || state !== 'ok') return;
+    const idx = groups.findIndex((g) => g.scenarioId === focusScenario);
+    if (idx < 0) {
+      if (!done && !loadingMore) loadMore();
+      return;
+    }
+    if (!scrolledRef.current) {
+      scrolledRef.current = true;
+      requestAnimationFrame(() => {
+        try { listRef.current?.scrollToIndex({ index: idx, viewPosition: 0, animated: true }); } catch { /* variable heights */ }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusScenario, groups, done, loadingMore, state]);
 
   const loadMore = () => {
     if (done || loadingMore || state !== 'ok') return;
@@ -116,12 +138,20 @@ export function ModelAnswerList({ embedded = false, above }: {
         <View style={styles.center}><Text style={styles.emptyHint}>{t('model.emptyHint')}</Text></View>
       ) : (
         <FlatList
+          ref={listRef}
           data={groups}
           keyExtractor={(g) => g.scenarioId}
           style={styles.scroller}
           contentContainerStyle={styles.listBody}
           onEndReached={loadMore}
           onEndReachedThreshold={0.4}
+          // Rows are variable height (an expanded group is tall), so scrollToIndex may
+          // mis-measure; retry with an offset estimate rather than crash.
+          onScrollToIndexFailed={(info) => {
+            setTimeout(() => {
+              try { listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: true }); } catch { /* best-effort */ }
+            }, 60);
+          }}
           renderItem={({ item, index }) => (
             <ModelAnswerGroupRow
               group={item}
