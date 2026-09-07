@@ -4,8 +4,20 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v39/](inputs/design-handoff_v39/README.md) (최신) · [v38](inputs/design-handoff_v38/README.md) · [v37](inputs/design-handoff_v37/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-06
+**Last updated:** 2026-09-07
 
+> ✅ **다국어 — 콘텐츠 이름 영어 로컬라이즈 Phase 1 + 캠퍼스 버그(2026-09-07).** 서버 i18n 파이프라인
+> (`Accept-Language` → `i18n.Tr(locale, 키, 한국어폴백)`)이 커리큘럼 이름·층 헤딩·상태 태그 3곳에만
+> 연결돼 있고 카탈로그도 en 하나뿐이라, 콘텐츠(상황·시나리오·브리핑·이벤트·모범답안)가 비한국어에서도
+> 한국어로 나오던 문제. **Phase 1(영어·이름류 먼저)**: `content_en.go` 신규(시나리오 303 + 이벤트 12 =
+> 315개 제목, 콘텐츠 ID 키)를 en에 병합하고, 상황 카드(`/me/situations`)·시나리오 브리핑(`/scenarios/{id}`)
+> ·모범답안(리뷰랩)·이벤트(`/events`)·홈 이어하기 title을 `Tr`로 배선. 건물 이름은 서버가 스타일 조회
+> 키로도 쓰므로 **클라이언트 i18n**(BUILDING_STYLE.nameKey, 4개 언어). 스테이징 스모크에 상황명·브리핑
+> 제목 검증 추가(그린). **남은 것(후속)**: ja/de 서버 카탈로그(현재 콘텐츠는 한국어 폴백), 브리핑 본문
+> prose(페르소나·brief·quick-info)·조언, 커리큘럼 스텝명 ~400개. **캠퍼스 버그 2건 동시 수정**: 즐겨찾기
+> 층 이름을 현재 커리큘럼에서 재해석(언어 전환 시 저장 시점 언어로 굳던 문제), floorPlace가 접두사만
+> 벗겨 남던 선행 가운뎃점(`· Emergency Centre`) 제거. **클라이언트=OTA, 서버=promote(스테이징 검증됨).**
+>
 > ✅ **홈 개편 v37 + 라이브 병동 실시간 프레즌스(2026-09).** 홈 화면을 v37 시안으로 재구성하고, 병동에
 > 실제 접속자를 최대 10명까지 익명 아바타로 반영한다. **폴링 + TTL** 방식(SSE 아님 — Cloud Run은 요청
 > 지속시간과 동시성 슬롯으로 과금하므로 세션 내내 슬롯을 잡는 SSE가 더 비싸다): Redis zset `ward:live`
