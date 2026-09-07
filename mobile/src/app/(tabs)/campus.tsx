@@ -15,7 +15,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type Progress, type Curriculum, type CurriculumBuilding, type CurriculumFloor } from '@/api/client';
-import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, deptCodeOf, floorDeptCode, floorPlace } from '@/data/campus';
+import { BUILDING_STYLE, DEFAULT_BUILDING_STYLE, buildingNameKey, deptCodeOf, floorDeptCode, floorPlace } from '@/data/campus';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbInkStamp, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts, TOP_INSET } from '@/theme/nb';
@@ -227,16 +227,19 @@ export default function Campus() {
               </Text>
             ) : (
               <>
-                {found.hits.map((h: CampusHit, i: number) => (
-                  <Row
-                    key={`${h.building}/${h.floor}/${h.curriculum ?? ''}/${i}`}
-                    stamp={h.floor}
-                    title={h.curriculum ?? h.place}
-                    sub={h.curriculum ? `${h.building} ${h.floor} ${h.place}` : h.building}
-                    rot={i % 2 ? 0.4 : -0.4}
-                    onPress={() => openHit(h)}
-                  />
-                ))}
+                {found.hits.map((h: CampusHit, i: number) => {
+                  const bn = buildingNameKey(h.building) ? t(buildingNameKey(h.building)) : h.building;
+                  return (
+                    <Row
+                      key={`${h.building}/${h.floor}/${h.curriculum ?? ''}/${i}`}
+                      stamp={h.floor}
+                      title={h.curriculum ?? h.place}
+                      sub={h.curriculum ? `${bn} ${h.floor} ${h.place}` : bn}
+                      rot={i % 2 ? 0.4 : -0.4}
+                      onPress={() => openHit(h)}
+                    />
+                  );
+                })}
                 {sitHits.length > 0 && (
                   <>
                     <Text style={[nbText.hand(16), { marginTop: 12 }]}>{t('campus.favSituations')}</Text>
@@ -278,12 +281,13 @@ export default function Campus() {
                   // app language — the stored f.place was captured in whatever language it was
                   // starred in, and showed stale (e.g. Korean after switching to English).
                   const cur = buildings.find((x) => x.building === f.building)?.floors.find((x) => x.floor === f.floor);
+                  const bnKey = buildingNameKey(f.building);
                   return (
                     <Row
                       key={`f/${f.building}/${f.floor}`}
                       stamp={f.floor}
                       title={cur ? floorPlace(cur) : f.place}
-                      sub={f.building}
+                      sub={bnKey ? t(bnKey) : f.building}
                       rot={i % 2 ? 0.6 : -0.5}
                       starred
                       onStar={() => void toggleFloorFavorite(f)}

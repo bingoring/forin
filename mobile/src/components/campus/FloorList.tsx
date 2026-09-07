@@ -89,7 +89,7 @@ function BuildingCard({ building: b, rot, isOpen, onToggle, focus, onOpenFloor }
       >
         <NbIcon name={style.nbIcon} size={26} />
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text style={[nbText.hand(19), { lineHeight: 20 }]}>{b.building}</Text>
+          <Text style={[nbText.hand(19), { lineHeight: 20 }]}>{style.nameKey ? t(style.nameKey) : b.building}</Text>
           <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>
             {style.subKey ? t(style.subKey) : ''}
           </Text>
