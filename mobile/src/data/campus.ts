@@ -123,5 +123,11 @@ export function floorDeptCode(
  */
 export function floorPlace(floor: { floor: string; where: string; curricula: { where: string }[] }): string {
   const raw = floor.curricula[0]?.where ?? floor.where;
-  return raw.replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where;
+  // Strip the "본관 1F" / "Main 1F" prefix AND any leftover separator: the English floor
+  // headings use "Main 1F · Emergency Centre" and 본관's authored floors use "· " too, so
+  // without trimming the middot the place read as a lone "· Xxx".
+  const place = raw
+    .replace(new RegExp(`^\\S+\\s+${floor.floor}\\b`), '')
+    .replace(/^[\s·・•‧∙]+/, '');
+  return place || floor.where;
 }

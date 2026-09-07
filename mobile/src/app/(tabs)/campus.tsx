@@ -147,7 +147,7 @@ export default function Campus() {
     const building = buildings.find((b) => b.floors.includes(floor))?.building ?? '';
     setDept({
       deptCode: code ?? '',
-      place: (first?.where ?? floor.where).replace(new RegExp(`^\\S+\\s+${floor.floor}\\s*`), '') || floor.where,
+      place: floorPlace(floor),
       where: first?.where ?? floor.where,
       accent: (BUILDING_STYLE[building] ?? DEFAULT_BUILDING_STYLE).accent,
       // The ward's own doodle, so the sheet's header says WHICH place rather than "a
@@ -273,18 +273,24 @@ export default function Campus() {
                  the chrome to say the same thing. */
               <View style={{ marginTop: 14 }}>
                 <SectionHead icon="star" iconColor="#C99A1E" label={t('campus.favTitle')} />
-                {favorites.floors.map((f, i) => (
-                  <Row
-                    key={`f/${f.building}/${f.floor}`}
-                    stamp={f.floor}
-                    title={f.place}
-                    sub={f.building}
-                    rot={i % 2 ? 0.6 : -0.5}
-                    starred
-                    onStar={() => void toggleFloorFavorite(f)}
-                    onPress={() => goToFloor(f)}
-                  />
-                ))}
+                {favorites.floors.map((f, i) => {
+                  // Re-resolve the place from the CURRENT curriculum so the name follows the
+                  // app language — the stored f.place was captured in whatever language it was
+                  // starred in, and showed stale (e.g. Korean after switching to English).
+                  const cur = buildings.find((x) => x.building === f.building)?.floors.find((x) => x.floor === f.floor);
+                  return (
+                    <Row
+                      key={`f/${f.building}/${f.floor}`}
+                      stamp={f.floor}
+                      title={cur ? floorPlace(cur) : f.place}
+                      sub={f.building}
+                      rot={i % 2 ? 0.6 : -0.5}
+                      starred
+                      onStar={() => void toggleFloorFavorite(f)}
+                      onPress={() => goToFloor(f)}
+                    />
+                  );
+                })}
                 {favorites.situations.map((sv, i) => (
                   <Row
                     key={`s/${sv.scenarioId}`}

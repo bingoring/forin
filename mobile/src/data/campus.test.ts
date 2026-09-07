@@ -1,4 +1,13 @@
-import { deptCodeOf, floorDeptCode, INTERIOR_DEPTS } from './campus';
+import { deptCodeOf, floorDeptCode, floorPlace, INTERIOR_DEPTS } from './campus';
+
+test('floorPlace strips the building/floor prefix and any leftover separator', () => {
+  // Korean, space-separated → clean place.
+  expect(floorPlace({ floor: '8F', where: '본관 8F 일반 내과 병동', curricula: [{ where: '본관 8F 일반 내과 병동' }] })).toBe('일반 내과 병동');
+  // English headings use a middot separator; the leading "· " must not survive.
+  expect(floorPlace({ floor: '1F', where: 'Main 1F · Emergency Centre', curricula: [{ where: 'Main 1F · Emergency Centre' }] })).toBe('Emergency Centre');
+  // 본관's authored floors carry the middot in Korean too.
+  expect(floorPlace({ floor: '1F', where: '본관 1F · 응급의료센터', curricula: [{ where: '본관 1F · 응급의료센터' }] })).toBe('응급의료센터');
+});
 
 test('deptCodeOf pulls the bank out of a content id', () => {
   expect(deptCodeOf('SCN-WARD-00101')).toBe('WARD');
