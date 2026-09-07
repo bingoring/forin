@@ -2,9 +2,15 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v39/](inputs/design-handoff_v39/README.md) (최신) · [v38](inputs/design-handoff_v38/README.md) · [v37](inputs/design-handoff_v37/README.md) · [v22](inputs/design-handoff_v22/README.md)
+**Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-09-07
+
+> ✅ **앱 아이콘 v40 — 여권 커버(2026-09-07).** 딥그린 #2E4636 + 금장 #D4B46A 이중 테두리 + 금장 이중원
+> 안 손글씨 f + FORIN. iOS 풀 커버(1024 불투명), Android 적응형(전경=금장 f 엠블럼·배경 딥그린·모노크롬),
+> 스플래시·웹 파비콘까지 동일 브랜드. `mobile/scripts/make-icon.py`(Pillow, 번들 Gaegu·IBM Plex Mono)로
+> 재현. 시안=v40 `forin Notebook - App Icon.html` 확정본 A. **아이콘은 네이티브 자산 → OTA 아님, EAS
+> 빌드 + 스토어 제출 필요.** 렌더는 headless라 실기기 미검증(미리보기 HTML로만 확인).
 
 > ✅ **다국어 — 콘텐츠 이름 영어 로컬라이즈 Phase 1 + 캠퍼스 버그(2026-09-07).** 서버 i18n 파이프라인
 > (`Accept-Language` → `i18n.Tr(locale, 키, 한국어폴백)`)이 커리큘럼 이름·층 헤딩·상태 태그 3곳에만
