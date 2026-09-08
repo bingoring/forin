@@ -4,7 +4,21 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-07
+**Last updated:** 2026-09-08
+
+> ✅ **리뷰랩 모범답안 v40 재구성 + 교정 설명 모국어화(2026-09-08).** 리뷰랩·인수인계의 모범답안
+> 화면을 v40 핸드오프(`forin-notebook-lab.jsx` LabModel)대로 맞췄다. **① 인수인계 '표현 다시 보기'**가
+> 그동안 일반 모범답안 목록으로만 이동해 어떤 대화였는지 볼 수 없던 문제 — 이제 해당 시나리오를 찾아
+> 펼쳐 준다(`/model-answers?scenario=…` → 목록이 페이지를 넘겨가며 해당 그룹을 찾아 `scrollToIndex`).
+> **② 모범답안 목록 v40 재디자인**: 각 행이 부서 두들(ER=사이렌·ICU=모니터·분만실=아기·약국=알약,
+> `deptNbIcon`) + "날짜 · N단계 · 모범 일치 ok/st" + 교정이 있으면 '개선' 태그. 히어로 헤드도 '교정 N개'
+> → 'N단계'로. **N단계**는 그 시나리오에서 학습자가 실제 발화한 턴 수(서버 신규 지표: `dialogue_turns`
+> role='user'를 `conversation_sessions`로 조인해 집계), **모범 일치**는 `max(0, 단계−교정)` — 교정 없이
+> 넘어간 턴 수. `Correct()`가 변경된 답변만 카드로 저장하므로 '일치'는 교정 카드만으로는 구할 수 없어
+> 발화 턴 수를 원천으로 삼았다. **③ 교정 설명(왜?) 모국어화**: 모범답안·다이얼로그(보기 선택 후 교정)의
+> 설명이 타겟 언어(영어)로 나오던 문제 — `engine.go` `Correct()` 시스템 프롬프트에서 note를 학습자의
+> 모국어(`Native`)로 쓰도록 강제. **서버=promote(steps 쿼리 + note 프롬프트), 클라이언트=OTA.**
+> 서버·모바일 전체 테스트 그린(mobile 904, i18n 4개 언어 키 패리티 포함).
 
 > ✅ **앱 아이콘 v40 — 여권 커버(2026-09-07).** 딥그린 #2E4636 + 금장 #D4B46A 이중 테두리 + 금장 이중원
 > 안 손글씨 f + FORIN. iOS 풀 커버(1024 불투명), Android 적응형(전경=금장 f 엠블럼·배경 딥그린·모노크롬),
