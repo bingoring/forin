@@ -111,7 +111,7 @@ jest.mock('@/api/client', () => ({
       depts: ['ER'],
     }),
     modelAnswers: async () => ({
-      groups: [{ scenarioId: 'SCN-ER-00002', title: '흉통 환자 트리아지', corrections: 3, lastAt: '2026-08-01T00:00:00Z', cards: [] }],
+      groups: [{ scenarioId: 'SCN-ER-00002', title: '흉통 환자 트리아지', corrections: 3, steps: 5, lastAt: '2026-08-01T00:00:00Z', cards: [] }],
       total: 34,
     }),
     gradeReview: async () => ({ intervalDays: 3 }),

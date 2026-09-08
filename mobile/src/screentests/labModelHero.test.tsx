@@ -35,7 +35,7 @@ jest.mock('expo-file-system/legacy', () => ({
 }));
 
 type MockGroup = {
-  scenarioId: string; title: string; corrections: number; lastAt: string;
+  scenarioId: string; title: string; corrections: number; steps: number; lastAt: string;
   cards?: { said: string; model: string; note?: string; createdAt: string }[];
 };
 
@@ -64,7 +64,7 @@ import { trackMounts } from '../testing/mountRegistry';
 const track = trackMounts();
 
 const RECENT: MockGroup = {
-  scenarioId: 'SCN-ER-00002', title: 'ER · 흉통 환자 트리아지', corrections: 3, lastAt: '2026-08-02T00:00:00Z',
+  scenarioId: 'SCN-ER-00002', title: 'ER · 흉통 환자 트리아지', corrections: 3, steps: 5, lastAt: '2026-08-02T00:00:00Z',
   cards: [{
     said: 'Where is pain? How much?',
     model: 'Where exactly is the pain, and does it spread anywhere?',
@@ -73,7 +73,7 @@ const RECENT: MockGroup = {
   }],
 };
 const OLDER: MockGroup = {
-  scenarioId: 'SCN-ICU-00001', title: 'ICU · 승압제 적정 보고', corrections: 4, lastAt: '2026-08-01T00:00:00Z',
+  scenarioId: 'SCN-ICU-00001', title: 'ICU · 승압제 적정 보고', corrections: 4, steps: 4, lastAt: '2026-08-01T00:00:00Z',
   cards: [{ said: 'BP is low.', model: 'The MAP is 58 despite two litres.', createdAt: '2026-08-01T00:00:00Z' }],
 };
 
@@ -138,7 +138,7 @@ test('it is summary-only — no sort control and no filter chips', async () => {
 });
 
 test('a scenario with no cards yet gets no hero rather than an empty one', async () => {
-  mockGroups = [{ scenarioId: 'SCN-ER-00009', title: 'ER · 새 상황', corrections: 2, lastAt: '2026-08-03T00:00:00Z', cards: [] }];
+  mockGroups = [{ scenarioId: 'SCN-ER-00009', title: 'ER · 새 상황', corrections: 2, steps: 3, lastAt: '2026-08-03T00:00:00Z', cards: [] }];
   const tree = await mount();
   expect(byName(tree.root, 'ModelAnswerHero')).toHaveLength(0);
   // The row is still there — the scenario is the learner's whatever the page carries.

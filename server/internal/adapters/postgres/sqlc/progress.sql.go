@@ -457,6 +457,9 @@ WITH grouped AS (
 )
 SELECT g.scenario_id, g.corrections, g.last_at,
        COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM dialogue_turns dt
+          JOIN conversation_sessions cs ON cs.id = dt.session_id
+         WHERE cs.user_id = $1 AND cs.scenario_id = g.scenario_id AND dt.role = 'user') AS steps,
        (SELECT COUNT(*)::int FROM grouped) AS total
   FROM grouped g
   LEFT JOIN scenarios s ON s.id = g.scenario_id
@@ -475,6 +478,7 @@ type ListModelAnswerScenariosNeedsWorkRow struct {
 	Corrections int                `json:"corrections"`
 	LastAt      pgtype.Timestamptz `json:"last_at"`
 	Title       string             `json:"title"`
+	Steps       int                `json:"steps"`
 	Total       int                `json:"total"`
 }
 
@@ -495,6 +499,7 @@ func (q *Queries) ListModelAnswerScenariosNeedsWork(ctx context.Context, arg Lis
 			&i.Corrections,
 			&i.LastAt,
 			&i.Title,
+			&i.Steps,
 			&i.Total,
 		); err != nil {
 			return nil, err
@@ -518,6 +523,9 @@ WITH grouped AS (
 )
 SELECT g.scenario_id, g.corrections, g.last_at,
        COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM dialogue_turns dt
+          JOIN conversation_sessions cs ON cs.id = dt.session_id
+         WHERE cs.user_id = $1 AND cs.scenario_id = g.scenario_id AND dt.role = 'user') AS steps,
        (SELECT COUNT(*)::int FROM grouped) AS total
   FROM grouped g
   LEFT JOIN scenarios s ON s.id = g.scenario_id
@@ -536,6 +544,7 @@ type ListModelAnswerScenariosRecentRow struct {
 	Corrections int                `json:"corrections"`
 	LastAt      pgtype.Timestamptz `json:"last_at"`
 	Title       string             `json:"title"`
+	Steps       int                `json:"steps"`
 	Total       int                `json:"total"`
 }
 
@@ -566,6 +575,7 @@ func (q *Queries) ListModelAnswerScenariosRecent(ctx context.Context, arg ListMo
 			&i.Corrections,
 			&i.LastAt,
 			&i.Title,
+			&i.Steps,
 			&i.Total,
 		); err != nil {
 			return nil, err

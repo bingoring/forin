@@ -35,7 +35,7 @@ const card = (over: Partial<ModelAnswerCard> = {}): ModelAnswerCard => ({
 });
 
 const group = (over: Partial<ModelAnswerGroup> = {}): ModelAnswerGroup => ({
-  scenarioId: 'SCN-ER-00002', title: '흉통 트리아지', corrections: 2, lastAt: '', ...over,
+  scenarioId: 'SCN-ER-00002', title: '흉통 트리아지', corrections: 2, steps: 3, lastAt: '', ...over,
 });
 
 // 내 답변 is struck through because it is a thing the learner actually said. If

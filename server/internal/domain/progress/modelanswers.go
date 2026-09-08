@@ -28,10 +28,17 @@ type ModelAnswerGroup struct {
 	// Title is "" when the scenario is not in the content set the server is
 	// serving (an old card whose scenario was renamed or removed). The screen
 	// falls back to the id rather than showing a blank row.
-	Title       string            `json:"title"`
-	Corrections int               `json:"corrections"`
-	LastAt      time.Time         `json:"lastAt"`
-	Cards       []ModelAnswerCard `json:"cards,omitempty"`
+	Title       string `json:"title"`
+	Corrections int    `json:"corrections"`
+	// Steps is how many turns the learner actually spoke in this scenario —
+	// the count of role='user' 발화 turns across their conversation sessions
+	// for it. The row draws "N단계", and "모범 일치" is Steps − Corrections:
+	// the turns that needed no correction. Corrections can exceed Steps when a
+	// scenario was replayed and the earlier sessions' turns aged out, so the
+	// client clamps 모범 일치 at zero rather than showing a negative count.
+	Steps  int               `json:"steps"`
+	LastAt time.Time         `json:"lastAt"`
+	Cards  []ModelAnswerCard `json:"cards,omitempty"`
 }
 
 // The 시나리오 모범답안 summary block's shape, from 04_SCREENS ⑨: the completed

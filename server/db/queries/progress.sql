@@ -80,6 +80,9 @@ WITH grouped AS (
 )
 SELECT g.scenario_id, g.corrections, g.last_at,
        COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM dialogue_turns dt
+          JOIN conversation_sessions cs ON cs.id = dt.session_id
+         WHERE cs.user_id = $1 AND cs.scenario_id = g.scenario_id AND dt.role = 'user') AS steps,
        (SELECT COUNT(*)::int FROM grouped) AS total
   FROM grouped g
   LEFT JOIN scenarios s ON s.id = g.scenario_id
@@ -100,6 +103,9 @@ WITH grouped AS (
 )
 SELECT g.scenario_id, g.corrections, g.last_at,
        COALESCE(s.title, '') AS title,
+       (SELECT COUNT(*)::int FROM dialogue_turns dt
+          JOIN conversation_sessions cs ON cs.id = dt.session_id
+         WHERE cs.user_id = $1 AND cs.scenario_id = g.scenario_id AND dt.role = 'user') AS steps,
        (SELECT COUNT(*)::int FROM grouped) AS total
   FROM grouped g
   LEFT JOIN scenarios s ON s.id = g.scenario_id

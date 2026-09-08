@@ -88,6 +88,38 @@ export function deptCodeOf(contentID?: string): string | undefined {
 }
 
 /**
+ * The 근무 수첩 doodle that stands for a department, used where a row names a
+ * scenario by its content id (모범답안 목록 등). The icons are a small shared
+ * vocabulary — siren for the ER, an incubator baby for the newborn units, a pill
+ * for the med-facing floors — so the same department reads the same way wherever
+ * it appears, matching design-handoff v40's 리뷰랩 · 모범답안.
+ *
+ * Every department that ships scenarios is listed; anything unmapped (a future
+ * bank, a malformed id) falls back to the stethoscope rather than a blank slot.
+ */
+const DEPT_NB_ICON: Record<string, NbIconName> = {
+  ER: 'siren',
+  ICU: 'monitor', PICU: 'monitor', DIAL: 'monitor', SIM: 'monitor',
+  NICU: 'baby', NURSERY: 'baby', LD: 'baby', PEDS: 'baby', WOMENKIDS: 'baby', WOMEN: 'baby',
+  OR: 'scalpel', SURGWARD: 'scalpel',
+  ORTHOWARD: 'bandage', REHAB: 'bandage', DERM: 'bandage',
+  PHARMA: 'pill', INFUSION: 'pill', ONCO: 'pill', ENDO: 'pill',
+  RAD: 'magnify', DX: 'magnify',
+  LOUNGE: 'coffee',
+  GERI: 'shield', HOSPICE: 'shield', MORGUE: 'shield',
+  PSYCH: 'bulb',
+  SPD: 'gear',
+  ADMIN: 'board',
+  ORIENT: 'compass',
+};
+
+/** The department doodle for a scenario/event id — see {@link DEPT_NB_ICON}. */
+export function deptNbIcon(contentID?: string): NbIconName {
+  const code = deptCodeOf(contentID);
+  return (code && DEPT_NB_ICON[code]) || 'stetho';
+}
+
+/**
  * The department a FLOOR belongs to: the code most of its steps come from.
  *
  * Not the first step's code. 본관 1F opens with the three authored orientation

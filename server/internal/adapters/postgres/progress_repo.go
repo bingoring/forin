@@ -494,6 +494,7 @@ func (r *ProgressRepo) ListModelAnswerScenarios(ctx context.Context, userID stri
 	type raw struct {
 		scenarioID, title string
 		corrections       int
+		steps             int
 		lastAt            time.Time
 		total             int
 	}
@@ -506,7 +507,7 @@ func (r *ProgressRepo) ListModelAnswerScenarios(ctx context.Context, userID stri
 			return nil, 0, err
 		}
 		for _, d := range got {
-			rows = append(rows, raw{d.ScenarioID, d.Title, d.Corrections, d.LastAt.Time, int(d.Total)})
+			rows = append(rows, raw{d.ScenarioID, d.Title, d.Corrections, d.Steps, d.LastAt.Time, int(d.Total)})
 		}
 	} else {
 		got, err := r.q.ListModelAnswerScenariosRecent(ctx, sqlc.ListModelAnswerScenariosRecentParams{
@@ -516,7 +517,7 @@ func (r *ProgressRepo) ListModelAnswerScenarios(ctx context.Context, userID stri
 			return nil, 0, err
 		}
 		for _, d := range got {
-			rows = append(rows, raw{d.ScenarioID, d.Title, d.Corrections, d.LastAt.Time, int(d.Total)})
+			rows = append(rows, raw{d.ScenarioID, d.Title, d.Corrections, d.Steps, d.LastAt.Time, int(d.Total)})
 		}
 	}
 
@@ -527,7 +528,7 @@ func (r *ProgressRepo) ListModelAnswerScenarios(ctx context.Context, userID stri
 	for _, d := range rows {
 		total = d.total
 		out = append(out, progress.ModelAnswerGroup{
-			ScenarioID: d.scenarioID, Title: d.title, Corrections: d.corrections, LastAt: d.lastAt,
+			ScenarioID: d.scenarioID, Title: d.title, Corrections: d.corrections, Steps: d.steps, LastAt: d.lastAt,
 		})
 	}
 	return out, total, nil

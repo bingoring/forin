@@ -331,6 +331,9 @@ export interface ModelAnswerGroup {
    *  back to the id rather than rendering blank. */
   title: string;
   corrections: number;
+  /** How many turns the learner spoke in this scenario (role='user' 발화 count).
+   *  The row draws "N단계"; 모범 일치 is `steps - corrections` clamped at zero. */
+  steps: number;
   lastAt: string;
   cards?: ModelAnswerCard[];
 }

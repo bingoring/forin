@@ -35,7 +35,7 @@ export function ModelAnswerHero({ group, onPractise }: {
           {group.title || group.scenarioId}
         </Text>
         <Text numberOfLines={1} style={nbText.body(10.5, nb.soft)}>
-          {t('model.corrections', { n: group.corrections })}
+          {t('model.steps', { n: group.steps })}
         </Text>
       </View>
 
