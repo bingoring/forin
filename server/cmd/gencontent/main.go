@@ -142,6 +142,8 @@ func generateDept(deptIdx int, d Dept, target int) ([]content.Scenario, []conten
 			Guardrails: orDefault(t.Guard, defaultGuard),
 			KeyPhrases: t.Phrases,
 			Acuity:     t.acuityOf(),
+			Theme:      t.Theme,
+			CollabWith: t.CollabWith,
 			Briefing: &content.Briefing{
 				Dept: d.Label + " · " + t.Room, DeptColor: d.Color, Brief: t.Brief, Difficulty: diff,
 				TimeLabel: fmt.Sprintf("약 %d분", mins), Skills: t.Skills,

@@ -19,6 +19,13 @@ type Topic struct {
 	Diff                              int
 	Skills, Phrases, Goals, Guard     []string
 	Moods                             []string // optional; default by role
+	// Theme (커리큘럼 v3 P2): the theme key this topic belongs to (themes.yaml).
+	// Every generated scenario emits it as its `theme` tag, so tagging the whole
+	// generated bank is a property of the topic, not of each scenario file.
+	Theme string
+	// CollabWith is set only on track=collab topics: the other department this
+	// situation is faced from the learner's own dept (e.g. "ICU").
+	CollabWith string
 	// Acuity marks a situation that is HAPPENING, not one being taught about —
 	// it decides which reputation dimension a clear moves. Curated per topic
 	// because prose can't be sniffed reliably: "낙상 외상 사정" is an emergency,
