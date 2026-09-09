@@ -28,7 +28,11 @@ type Tier struct {
 // ordered into difficulty tiers.
 type Curriculum struct {
 	Theme Theme
-	Tiers []Tier
+	// CollabWith is the partner department for a track=collab theme (every
+	// scenario in it shares the same partner). Empty for core/depth. Surfaced
+	// so the journey can draw the "협업 · A→B" label (v41 08 §3).
+	CollabWith string
+	Tiers      []Tier
 }
 
 // stepName derives the step label from the scenario title, dropping a persona
@@ -77,7 +81,16 @@ func Assemble(themes []Theme, tags []ScenarioTag) (curricula []Curriculum, orpha
 		if len(group) == 0 {
 			continue // no tagged scenarios yet (safe under empty tags, P1 constraint)
 		}
-		curricula = append(curricula, Curriculum{Theme: th, Tiers: buildTiers(group, th.ExamOn())})
+		collab := ""
+		if th.Track == "collab" {
+			for _, tg := range group {
+				if tg.CollabWith != "" {
+					collab = tg.CollabWith
+					break
+				}
+			}
+		}
+		curricula = append(curricula, Curriculum{Theme: th, CollabWith: collab, Tiers: buildTiers(group, th.ExamOn())})
 	}
 	sort.Strings(orphans)
 	return curricula, orphans
