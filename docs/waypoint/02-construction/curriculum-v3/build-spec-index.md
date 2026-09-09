@@ -1,7 +1,7 @@
 ---
 build-spec: curriculum-v3
 stage: 02-construction/06-screens-flows
-status: SPEC-DRAFT
+status: P1-IMPLEMENTED
 depth: comprehensive
 updated: 2026-09-09
 supersedes: curriculum-v2
