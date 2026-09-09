@@ -91,7 +91,9 @@ v3는 다시 **조립(assembly)** 방식으로 가지만 D6를 반복하지 않�
 |---|---|---|
 | `server/content/nurse/themes.yaml` | **주제 레지스트리** — key·name·track·dept·순서. 큐레이션 대상(P2가 채움) | 신규 |
 | `server/content/nurse/scenarios/*.yaml` | 각 상황에 `theme`(+ collab이면 `collabWith`) 태그 추가. `dept`/`difficulty`는 기존 | 스키마 확장(값은 P2) |
-| `server/internal/contentfile/loader.go` | 시나리오 로더가 `theme`/`collabWith` 파싱 | 변경 |
+| `server/db/migrations/0000NN_scenario_theme.up.sql` | `scenarios`에 `theme`·`collab_with` 컬럼 + `theme` 인덱스(domain §1). **콘텐츠 스키마 마이그레이션(진도와 별개)** | 신규 |
+| `server/internal/adapters/contentfile/loader.go` | 시나리오 로더가 `theme`/`collabWith` 파싱 | 변경 |
+| `server/internal/adapters/postgres/content_repo.go` · `db/queries` | seed INSERT + 조립용 조회에 `theme`/`collab_with` 반영, "고아 0" 조회 | 변경 |
 | `server/internal/curriculum/theme.go` | `Theme` 모델 + 레지스트리 로드 + 조립(태그→주제→트랙) | 신규 |
 | `server/internal/curriculum/curriculum.go` | `Curriculum`을 주제 조립 결과로 재정의. 난이도 계단 상태 계산 | 변경 |
 | `server/internal/curriculum/authored_*.go` | 하드코딩 89개 제거 → 조립으로 대체 | 삭제 |

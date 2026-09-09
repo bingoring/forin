@@ -22,6 +22,21 @@ collabWith: ICU                # track=collab인 주제의 상황에만. "이 �
 - `theme`이 없는 상황은 조립에서 빠진다. P2 완료 후 테스트가 "태그 없는 상황 0"을 강제한다(R3).
 - `difficulty`는 주제 안 난이도 계단(Lv1/2/3)의 축이다. 태그가 아니라 기존 필드를 그대로 읽는다.
 
+**물리적 저장 위치 (런타임이 DB에서 읽기 때문):** 시나리오는 YAML로 저작되지만 런타임 조회는 DB
+`scenarios` 테이블이다(`cmd/seed`가 YAML → DB 통째 적재, `ContentRepo.GetScenario`·`DeptSituations` 등이
+DB에서 읽음). 따라서 조립기가 `theme`으로 그룹핑하려면 **`theme`이 DB `scenarios` 테이블의 전용 컬럼이어야
+한다** — `briefing` JSON 안에 넣으면 조립·"고아 0" 검증마다 JSON 파싱·필터가 필요하다. `collabWith`도 같다.
+
+```sql
+ALTER TABLE scenarios ADD COLUMN theme text NOT NULL DEFAULT '';        -- '' = 아직 미태그(P2 진행 중)
+ALTER TABLE scenarios ADD COLUMN collab_with text NOT NULL DEFAULT '';  -- track=collab 상황만 채움
+CREATE INDEX idx_scenarios_theme ON scenarios (theme);                  -- GROUP BY theme, 고아 조회
+```
+
+로더(`contentfile/loader.go`)가 YAML의 `theme`/`collabWith`를 읽어 이 컬럼에 싣는다. "고아 0"은
+`SELECT count(*) FROM scenarios WHERE theme = ''` = 0으로 검증(R3). 이 컬럼 추가는 **콘텐츠 스키마
+마이그레이션 1건**이며, 진도(`scenario_attempts`)에는 마이그레이션이 없다는 서술과 별개다.
+
 ## §2. `Theme` (주제 레지스트리 항목)
 
 `content/nurse/themes.yaml`이 주제의 진실이다. 상황 태그는 어느 주제에 속하는지만 말하고, 주제의

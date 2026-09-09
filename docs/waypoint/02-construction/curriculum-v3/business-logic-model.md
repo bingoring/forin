@@ -88,8 +88,11 @@ latest     = LatestAttemptScenarioID(uid)
 
 ## §5. 마이그레이션·배포
 
-- DB 마이그레이션 없음(진도는 파생). `themes.yaml` + 시나리오 태그는 seed 재적재로 반영
-  (`cmd/seed`, 기존 경로).
+- **진도 마이그레이션 없음**(진도는 `scenario_attempts`에서 파생). 단 **콘텐츠 스키마 마이그레이션 1건**:
+  `scenarios` 테이블에 `theme`·`collab_with` 컬럼 + `theme` 인덱스 추가(domain §1). 런타임이 DB에서
+  시나리오를 읽으므로 조립기가 `theme`으로 그룹핑하려면 컬럼이 필요하다.
+- `themes.yaml`(레지스트리)는 로드 시점 인메모리(하드코딩 카탈로그를 대체). 시나리오 `theme`/`collabWith`
+  태그는 YAML → `cmd/seed` → DB 컬럼으로 실린다(기존 seed 경로에 컬럼만 추가).
 - 계약 파괴(`buildings`→`tracks`, 신규 `/theme/{key}`): 서버 promote + 모바일 OTA 동시(01-deployment).
 - 롤아웃 순서: (1) P2 태깅 완료·`themes.yaml` 확정 → (2) 조립·핸들러·계약 → (3) 클라이언트 소비.
   P1 코드는 **태그가 비어도 안전**해야 한다(태그 없으면 그 부서 트랙이 비고 테스트가 R3로 잡는다) —
