@@ -4,7 +4,17 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-08
+**Last updated:** 2026-09-09
+
+> 📝 **커리큘럼 v3 — 주제 기반 심화 커리큘럼 + 여정 지도 (SPEC-DRAFT, 2026-09-09).** v41 여정 지도
+> 입력을 계기로, 얕은 커리큘럼(부서당 3~6개·스텝 2~4개, 전체 상황의 10%만 편입)을 **주제 단위 심화
+> 커리큘럼**(한 주제 = 상황 20~30개+, 난이도 계단)으로 재설계한다. 실측: 상황 3,044개 중 326개만 편입,
+> 약 2,718개가 고아. 사용자 결정: 학습이 주 목적 → 커리큘럼을 깊게, **자유 탐방 없이 모든 상황을 주제로
+> 편입**, 3계층(공통 코어·부서 심화·협업). 매핑을 Go 하드코딩 89개 나열에서 **상황이 `theme` 태그를
+> 선언 → 주제가 자동 조립**으로 뒤집는다(v2가 D6로 하드코딩 후퇴했으나, v3는 프록시 유추가 아니라 명시
+> 태그 그룹핑이라 재발 없음). **3단계 프로그램**: P1(주제 스키마+데이터 모델, 이번 스펙) → P2(전수조사
+> 태깅·보강·정리) → P3(여정 지도 UI). 스펙: [`02-construction/curriculum-v3/`](02-construction/curriculum-v3/build-spec-index.md)
+> (index+domain-entities+business-rules+business-logic-model). **사용자 검토 대기 → 승인 시 P1 구현 계획.**
 
 > ✅ **리뷰랩 모범답안 v40 재구성 + 교정 설명 모국어화(2026-09-08).** 리뷰랩·인수인계의 모범답안
 > 화면을 v40 핸드오프(`forin-notebook-lab.jsx` LabModel)대로 맞췄다. **① 인수인계 '표현 다시 보기'**가
