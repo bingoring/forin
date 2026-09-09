@@ -1,14 +1,214 @@
-# 주제 레지스트리 (커리큘럼 v3). 실제 ~100개 목록은 P2 전수조사 산출물.
+# 주제 레지스트리 (커리큘럼 v3 · P2 ER 정본). 각 key는 시나리오의 theme 태그가 참조하는 안정 식별자.
 # track: core(전 부서 공유) | depth(부서 고유) | collab(타 부서 접점)
-# exam 생략 시 기본 true(주제 끝 '주제 시험'). key는 시나리오의 theme 태그가 참조하는 안정 식별자.
-- key: core-sbar
-  name: SBAR 인계
-  nameKey: theme.core.sbar
+# exam 생략 시 기본 true(주제 끝 '주제 시험'). order로 여정 정렬(R22).
+# ER: 공통 코어 4 + 부서 심화 31 = 35주제 · 734 상황.
+
+# ── 공통 코어 (전 부서 공유) ──
+- key: core-safety
+  name: 환자 안전·오류 예방
+  nameKey: theme.core.safety
   track: core
   order: 10
-- key: er-triage
-  name: 트리아지
-  nameKey: theme.er.triage
+- key: core-language
+  name: 언어·의사소통 기본
+  nameKey: theme.core.language
+  track: core
+  order: 20
+- key: core-handoff
+  name: 인계·SBAR
+  nameKey: theme.core.handoff
+  track: core
+  order: 30
+- key: core-family
+  name: 가족 소통
+  nameKey: theme.core.family
+  track: core
+  order: 40
+
+# ── ER 부서 심화 ──
+- key: er-pain-sedation
+  name: 통증·진정 관리
+  nameKey: theme.er.pain-sedation
   track: depth
   dept: ER
-  order: 20
+  order: 100
+- key: er-procedures
+  name: 기본 처치·술기
+  nameKey: theme.er.procedures
+  track: depth
+  dept: ER
+  order: 110
+- key: er-chestpain
+  name: 흉통·ACS
+  nameKey: theme.er.chestpain
+  track: depth
+  dept: ER
+  order: 120
+- key: er-arrhythmia
+  name: 부정맥
+  nameKey: theme.er.arrhythmia
+  track: depth
+  dept: ER
+  order: 130
+- key: er-arrest
+  name: 심정지·소생
+  nameKey: theme.er.arrest
+  track: depth
+  dept: ER
+  order: 140
+- key: er-shock
+  name: 쇼크
+  nameKey: theme.er.shock
+  track: depth
+  dept: ER
+  order: 150
+- key: er-dyspnea
+  name: 호흡곤란
+  nameKey: theme.er.dyspnea
+  track: depth
+  dept: ER
+  order: 160
+- key: er-asthma-copd
+  name: 천식·COPD
+  nameKey: theme.er.asthma-copd
+  track: depth
+  dept: ER
+  order: 170
+- key: er-anaphylaxis
+  name: 아나필락시스
+  nameKey: theme.er.anaphylaxis
+  track: depth
+  dept: ER
+  order: 180
+- key: er-stroke
+  name: 뇌졸중
+  nameKey: theme.er.stroke
+  track: depth
+  dept: ER
+  order: 190
+- key: er-seizure-loc
+  name: 발작·의식저하
+  nameKey: theme.er.seizure-loc
+  track: depth
+  dept: ER
+  order: 200
+- key: er-head-trauma
+  name: 두부 외상
+  nameKey: theme.er.head-trauma
+  track: depth
+  dept: ER
+  order: 210
+- key: er-polytrauma
+  name: 다발성 외상
+  nameKey: theme.er.polytrauma
+  track: depth
+  dept: ER
+  order: 220
+- key: er-chest-abd-trauma
+  name: 흉복부 외상
+  nameKey: theme.er.chest-abd-trauma
+  track: depth
+  dept: ER
+  order: 230
+- key: er-ortho-trauma
+  name: 정형 외상
+  nameKey: theme.er.ortho-trauma
+  track: depth
+  dept: ER
+  order: 240
+- key: er-bleeding-wound
+  name: 출혈·창상
+  nameKey: theme.er.bleeding-wound
+  track: depth
+  dept: ER
+  order: 250
+- key: er-burn
+  name: 화상
+  nameKey: theme.er.burn
+  track: depth
+  dept: ER
+  order: 260
+- key: er-abdominal
+  name: 복통
+  nameKey: theme.er.abdominal
+  track: depth
+  dept: ER
+  order: 270
+- key: er-gi-bleed
+  name: 위장관 출혈
+  nameKey: theme.er.gi-bleed
+  track: depth
+  dept: ER
+  order: 280
+- key: er-genitourinary
+  name: 비뇨생식
+  nameKey: theme.er.genitourinary
+  track: depth
+  dept: ER
+  order: 290
+- key: er-diabetic
+  name: 당뇨 응급
+  nameKey: theme.er.diabetic
+  track: depth
+  dept: ER
+  order: 300
+- key: er-sepsis
+  name: 패혈증
+  nameKey: theme.er.sepsis
+  track: depth
+  dept: ER
+  order: 310
+- key: er-fever-infection
+  name: 발열·감염
+  nameKey: theme.er.fever-infection
+  track: depth
+  dept: ER
+  order: 320
+- key: er-poisoning
+  name: 중독
+  nameKey: theme.er.poisoning
+  track: depth
+  dept: ER
+  order: 330
+- key: er-alcohol-withdrawal
+  name: 알코올 금단
+  nameKey: theme.er.alcohol-withdrawal
+  track: depth
+  dept: ER
+  order: 340
+- key: er-environmental
+  name: 환경 손상
+  nameKey: theme.er.environmental
+  track: depth
+  dept: ER
+  order: 350
+- key: er-obgyn
+  name: 산부인과 응급
+  nameKey: theme.er.obgyn
+  track: depth
+  dept: ER
+  order: 360
+- key: er-peds
+  name: 소아 응급
+  nameKey: theme.er.peds
+  track: depth
+  dept: ER
+  order: 370
+- key: er-geriatric
+  name: 노인 응급
+  nameKey: theme.er.geriatric
+  track: depth
+  dept: ER
+  order: 380
+- key: er-psych
+  name: 정신과 응급
+  nameKey: theme.er.psych
+  track: depth
+  dept: ER
+  order: 390
+- key: er-deescalation
+  name: 위기 완화
+  nameKey: theme.er.deescalation
+  track: depth
+  dept: ER
+  order: 400
