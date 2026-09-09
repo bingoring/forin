@@ -6,6 +6,19 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-09-09
 
+> ✅ **커리큘럼 v3 P2 — ER 정본 콘텐츠 생성 완료 (2026-09-09).** 파이프라인과 첫 부서 콘텐츠를 함께 냈다.
+> **① 파이프라인**: `cmd/gencontent`에 seed 경로를 신설했다(`seeds.go`) — `content/nurse/topics/<code>.yaml`이
+> 있으면 seed 1건당 시나리오 **1건**만 생성하고(페르소나×난이도 뻥튀기 폐지), 없으면 기존 Topic 뱅크로 폴백한다.
+> 이로써 D-P2-B(주제 = 구별 상황들의 경로)·D-P2-C(페르소나는 선택 재도전)를 코드로 실현했다. **② 접근 전환(스펙 대비
+> 정직한 기록)**: P2 초안은 "290 Topic 재태깅·수작업 0"이었으나, 사용자의 "구별 상황=경로" 재정의로 실제 실행은
+> **대규모 신규 저작**이 됐다 — 기존 콘텐츠는 부서당 구별 상황이 ~10개뿐이라 묶기만으로는 주제당 20+가 안 나오기
+> 때문이다. **③ ER 산출**: 공통 코어 4주제 + 부서 심화 31주제 = **35주제 × 각 20~23 구별 상황 = 736 상황**을
+> LLM 보조 서브에이전트 8클러스터 병렬 저작 → 정규화(빈 tagline·소아 나이·collabWith 정리) → 조립했다
+> (`content/nurse/topics/er.yaml`, 저작 정본). `themes.yaml`을 35주제 레지스트리로 정본화했다. **④ 검증**(`cmd/audit`):
+> ER 736 전부 태깅 · 35주제 전부 ≥20(THIN 0) · **dup-title 0**(뻥튀기 중복 소멸) · **ER 고아 0**. 전체 orphan 2944는
+> 나머지 28부서가 legacy 뱅크를 유지 중이라 정상(부서별 vertical slice). 빌드·themed/gencontent 테스트 그린.
+> **다음**: 나머지 28부서 fan-out(같은 파이프라인) → DB 시드 + 라이브 `/me/curriculum` 계약 전환 → P3 여정 지도 UI.
+>
 > 🔨 **커리큘럼 v3 P1 구현 완료 (2026-09-09).** 주제 조립 엔진을 새 하위 패키지 `server/internal/curriculum/themed`에
 > 격리해 구축했다(기존 하드코딩 89 커리큘럼·라이브 `/me/curriculum`은 그대로 서빙 — 회귀 0). 구성: `Assemble`
 > (태그→주제→난이도 계단, 프록시 유추 없이 명시 `theme` 태그만 읽어 v2 D6 회피)·`Resolve`(트랙 그룹핑 CORE→부서,
