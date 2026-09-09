@@ -17,7 +17,12 @@
 > (`content/nurse/topics/er.yaml`, 저작 정본). `themes.yaml`을 35주제 레지스트리로 정본화했다. **④ 검증**(`cmd/audit`):
 > ER 736 전부 태깅 · 35주제 전부 ≥20(THIN 0) · **dup-title 0**(뻥튀기 중복 소멸) · **ER 고아 0**. 전체 orphan 2944는
 > 나머지 28부서가 legacy 뱅크를 유지 중이라 정상(부서별 vertical slice). 빌드·themed/gencontent 테스트 그린.
-> **다음**: 나머지 28부서 fan-out(같은 파이프라인) → DB 시드 + 라이브 `/me/curriculum` 계약 전환 → P3 여정 지도 UI.
+ **결정 D-P2-D(부서별 코어, 2026-09-09)**: 코어 4주제(인계·언어·가족·안전)는 부서 맥락이 실재하므로(ROSC 후 ICU 인계 vs
+> ER→병동 인계, ICU 임종 상담 vs 소아 보호자, ICU 번들·억제 vs 병동 낙상) **부서별로** 둔다 — `track:core` + `dept:<코드>`,
+> 키 `core-<주제>-<코드>`, 낮은 order로 그 부서 트랙을 이끈다(전역 공통 주제는 두지 않되 엔진은 `dept:""`로 지원). resolve
+> 그룹핑을 "주제의 dept로 묶고 dept 비면 CORE"로 바꿨다(단일 라인 변경 + 부서별 코어 테스트 추가, 무회귀). ER을 이 모델로
+> 정렬(`core-*-er`, dept:ER). **다음**: 나머지 28부서 fan-out(같은 파이프라인·부서별 코어 4 + 심화) → DB 시드 + 라이브
+> `/me/curriculum` 계약 전환 → P3 여정 지도 UI.
 >
 > 🔨 **커리큘럼 v3 P1 구현 완료 (2026-09-09).** 주제 조립 엔진을 새 하위 패키지 `server/internal/curriculum/themed`에
 > 격리해 구축했다(기존 하드코딩 89 커리큘럼·라이브 `/me/curriculum`은 그대로 서빙 — 회귀 0). 구성: `Assemble`
