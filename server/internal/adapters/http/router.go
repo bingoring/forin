@@ -9,6 +9,7 @@ import (
 	"github.com/redis/go-redis/v9"
 	"golang.org/x/time/rate"
 
+	"github.com/bingoring/forin/server/internal/curriculum/themed"
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
@@ -33,6 +34,10 @@ type Deps struct {
 	Content       ports.ContentReader
 	Progress      ports.ProgressRepo
 	Review        ports.ReviewRepo
+	// ThemedCatalog is the curriculum v3 themed catalog (assembled at boot).
+	// Optional: nil or empty until P2 tagging fills theme tags; the additive
+	// /me/curriculum/tracks endpoint returns empty tracks then.
+	ThemedCatalog *themed.Catalog
 	Convo         *conversation.Engine
 	Pron          *pronunciation.Service
 	Speech        *speech.Service         // pronunciation-attempt persistence + history + reference (Task 5)

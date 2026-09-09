@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 	"time"
 
@@ -19,6 +20,7 @@ import (
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
 	redisadapter "github.com/bingoring/forin/server/internal/adapters/redis"
 	"github.com/bingoring/forin/server/internal/config"
+	"github.com/bingoring/forin/server/internal/curriculum/themed"
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/handoff"
@@ -108,6 +110,19 @@ func main() {
 	}
 	nightRadio := night.NewStories(nightStories)
 
+	// 커리큘럼 v3 주제 카탈로그: 레지스트리(themes.yaml)를 콘텐츠 디렉터리에서 읽고, DB에 실린
+	// 시나리오 태그로 1회 조립해 캐시한다. 파일·태그가 없으면 빈 카탈로그(안전)이며, P2 태깅 전까지는
+	// 라이브 /me/curriculum(하드코딩 경로)과 공존한다. 추가 엔드포인트 /me/curriculum/tracks만 이걸 쓴다.
+	themeCatalog := themed.NewCatalog(nil, nil)
+	if themes, terr := themed.LoadThemes(filepath.Join(cfg.ContentDir, "nurse", "themes.yaml")); terr != nil {
+		logger.Warn("theme registry failed to load; curriculum v3 tracks empty", "err", terr)
+	} else if tags, gerr := contentRepo.ListScenarioTags(context.Background()); gerr != nil {
+		logger.Warn("scenario tags failed to load; curriculum v3 tracks empty", "err", gerr)
+	} else {
+		themeCatalog = themed.NewCatalog(themes, tags)
+		logger.Info("curriculum v3 themed catalog built", "orphans", len(themeCatalog.Orphans()))
+	}
+
 	// AI layer: select an LLMPort adapter by provider (anthropic | openai) — domain unchanged.
 	var llm ports.LLMPort
 	var dialogueModel, correctionModel string
@@ -151,7 +166,7 @@ func main() {
 		Env:           cfg.Env,
 		DevAuthSecret: cfg.DevAuthSecret,
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
-		Progress: progressRepo, Review: progressRepo, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
+		Progress: progressRepo, Review: progressRepo, ThemedCatalog: themeCatalog, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
 		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,
 	})
