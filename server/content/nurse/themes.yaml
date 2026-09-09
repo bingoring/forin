@@ -1,0 +1,14 @@
+# 주제 레지스트리 (커리큘럼 v3). 실제 ~100개 목록은 P2 전수조사 산출물.
+# track: core(전 부서 공유) | depth(부서 고유) | collab(타 부서 접점)
+# exam 생략 시 기본 true(주제 끝 '주제 시험'). key는 시나리오의 theme 태그가 참조하는 안정 식별자.
+- key: core-sbar
+  name: SBAR 인계
+  nameKey: theme.core.sbar
+  track: core
+  order: 10
+- key: er-triage
+  name: 트리아지
+  nameKey: theme.er.triage
+  track: depth
+  dept: ER
+  order: 20

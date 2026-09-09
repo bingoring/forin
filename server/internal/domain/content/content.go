@@ -215,6 +215,13 @@ type Scenario struct {
 	Acuity   string    `yaml:"acuity,omitempty" json:"acuity,omitempty"`
 	Steps    []Step    `yaml:"steps" json:"steps"`
 	Briefing *Briefing `yaml:"briefing" json:"briefing,omitempty"` // pre-dialogue card (optional)
+	// Theme (curriculum v3) is the learning theme this scenario belongs to —
+	// references a key in content/nurse/themes.yaml. Empty = not yet tagged
+	// (P2 전수조사 in progress). NOTE: distinct from FloorTheme above.
+	Theme string `yaml:"theme,omitempty" json:"theme,omitempty"`
+	// CollabWith is set only on track=collab scenarios: the other department
+	// this situation is faced from the learner's own dept (e.g. "ICU").
+	CollabWith string `yaml:"collabWith,omitempty" json:"collabWith,omitempty"`
 }
 
 // Persona describes the AI's conversation character for realistic role-play.
