@@ -196,6 +196,20 @@ export interface Curriculum {
 export interface CurriculumFloor { floor: string; where: string; curricula: Curriculum[] }
 export interface CurriculumBuilding { building: string; floors: CurriculumFloor[] }
 
+// 커리큘럼 v3 — 주제 기반 여정 트랙 (additive /me/curriculum/tracks).
+// P3 여정 지도에서 소비한다. P2 태깅 전까지 서버는 빈 배열을 준다.
+/** 정거장(주제) 안 난이도 계단 요약. 스텝 개별은 정거장 시트에서 지연 로드. */
+export interface ThemeTierCount { difficulty: number; done: number; total: number; unlocked: boolean }
+/** 여정의 정거장 = 하나의 주제. */
+export interface ThemeCurriculumState {
+  themeKey: string; name: string; track: 'core' | 'depth' | 'collab'; dept: string;
+  collabWith?: string; done: number; total: number;
+  state: 'passed' | 'here' | 'open'; tiers: ThemeTierCount[]; resume: boolean;
+}
+export interface ThemeMilestone { name: string; state: 'passed' | 'open' | 'closed' }
+/** 하나의 여정 트랙: CORE(공통 코어) 또는 부서. */
+export interface JourneyTrack { dept: string; curricula: ThemeCurriculumState[]; milestone?: ThemeMilestone }
+
 /** One thing the learner touched on a day. `hour` is local, 0-23. */
 export interface CalendarEntry {
   scenarioId: string; title: string; cleared: boolean; hour: number;
@@ -862,6 +876,12 @@ export const api = {
   async curriculum(): Promise<CurriculumBuilding[]> {
     const { data } = await http.get('/me/curriculum');
     return (data as { buildings: CurriculumBuilding[] }).buildings ?? [];
+  },
+
+  // 커리큘럼 v3 여정 트랙 (additive). P3 여정 지도가 소비한다. 현재 UI 미배선.
+  async curriculumTracks(): Promise<JourneyTrack[]> {
+    const { data } = await http.get('/me/curriculum/tracks');
+    return (data as { tracks: JourneyTrack[] }).tracks ?? [];
   },
 
   /**

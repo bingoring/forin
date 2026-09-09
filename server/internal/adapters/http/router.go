@@ -110,11 +110,13 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /me/daily-board/topup", auth(http.HandlerFunc(ch.dailyBoardTopUp)))
 
 	// Progress + review (authenticated).
-	ph := &progressHandler{progress: d.Progress, review: d.Review}
+	ph := &progressHandler{progress: d.Progress, review: d.Review, themed: d.ThemedCatalog}
 	mux.Handle("GET /me/progress", auth(http.HandlerFunc(ph.get)))
 	mux.Handle("GET /me/stats", auth(http.HandlerFunc(ph.stats)))
 	mux.Handle("GET /me/calendar", auth(http.HandlerFunc(ph.calendar)))
 	mux.Handle("GET /me/curriculum", auth(http.HandlerFunc(ph.curriculum)))
+	// 커리큘럼 v3 여정 트랙 (additive; 라이브 /me/curriculum은 그대로). P2 태깅 전엔 빈 트랙.
+	mux.Handle("GET /me/curriculum/tracks", auth(http.HandlerFunc(ph.curriculumTracks)))
 	mux.Handle("GET /me/missions", auth(http.HandlerFunc(ph.missions)))
 	mux.Handle("POST /me/missions/{id}", auth(http.HandlerFunc(ph.recordMission)))
 	mux.Handle("POST /attempts", auth(http.HandlerFunc(ph.attempt)))

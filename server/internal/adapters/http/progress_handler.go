@@ -10,6 +10,7 @@ import (
 	"github.com/bingoring/forin/server/internal/i18n"
 
 	"github.com/bingoring/forin/server/internal/curriculum"
+	"github.com/bingoring/forin/server/internal/curriculum/themed"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -18,6 +19,7 @@ import (
 type progressHandler struct {
 	progress ports.ProgressRepo
 	review   ports.ReviewRepo
+	themed   *themed.Catalog // curriculum v3 (additive /me/curriculum/tracks); may be nil/empty until P2
 }
 
 // allowedMissions is the code-side set of hidden-mission ids (extensible, no DB
@@ -45,6 +47,25 @@ func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
 	attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
 	states := curriculum.ResolvePasses(cleared, attempted, passesFor(r.Context(), h.progress, uid), curriculum.KeyForScenario(last), i18n.FromContext(r.Context()))
 	httpx.JSON(w, http.StatusOK, map[string]any{"buildings": curriculum.Group(states)})
+}
+
+// @Summary 커리큘럼 v3 — 주제 기반 여정 트랙 (additive; 라이브 /me/curriculum과 공존)
+// @Tags progress
+// @Security Bearer
+// @Success 200 {object} map[string][]themed.TrackGroup
+// @Router /me/curriculum/tracks [get]
+func (h *progressHandler) curriculumTracks(w http.ResponseWriter, r *http.Request) {
+	tracks := []themed.TrackGroup{}
+	if h.themed != nil {
+		uid, _ := UserID(r.Context())
+		// Best-effort progress reads: a failed lookup degrades to a browsable,
+		// zero-progress path rather than an error (same posture as curriculum).
+		cleared, _ := h.progress.ClearedScenarioIDs(r.Context(), uid)
+		attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
+		last, _ := h.progress.LatestAttemptScenarioID(r.Context(), uid)
+		tracks = h.themed.Resolve(cleared, attempted, last)
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"tracks": tracks})
 }
 
 // @Summary Discovered hidden missions
