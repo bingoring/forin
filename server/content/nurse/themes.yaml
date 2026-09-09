@@ -1,28 +1,32 @@
 # 주제 레지스트리 (커리큘럼 v3 · P2 ER 정본). 각 key는 시나리오의 theme 태그가 참조하는 안정 식별자.
-# track: core(전 부서 공유) | depth(부서 고유) | collab(타 부서 접점)
+# track: core(부서 코어; dept 지정 시 그 부서 트랙을 이끎, dept 없으면 전역 공통) | depth(부서 고유) | collab(타 부서 접점)
 # exam 생략 시 기본 true(주제 끝 '주제 시험'). order로 여정 정렬(R22).
-# ER: 공통 코어 4 + 부서 심화 31 = 35주제 · 734 상황.
+# 결정 D-P2-D: 코어는 부서별(핸드오프·안전·가족·언어 모두 부서 맥락 상이). ER: 부서 코어 4 + 부서 심화 31 = 35주제.
 
-# ── 공통 코어 (전 부서 공유) ──
-- key: core-safety
+# ── ER 부서 코어 (부서별 코어 · track:core + dept:ER, 여정에서 ER 트랙을 이끎) ──
+- key: core-safety-er
   name: 환자 안전·오류 예방
   nameKey: theme.core.safety
   track: core
+  dept: ER
   order: 10
-- key: core-language
+- key: core-language-er
   name: 언어·의사소통 기본
   nameKey: theme.core.language
   track: core
+  dept: ER
   order: 20
-- key: core-handoff
+- key: core-handoff-er
   name: 인계·SBAR
   nameKey: theme.core.handoff
   track: core
+  dept: ER
   order: 30
-- key: core-family
+- key: core-family-er
   name: 가족 소통
   nameKey: theme.core.family
   track: core
+  dept: ER
   order: 40
 
 # ── ER 부서 심화 ──

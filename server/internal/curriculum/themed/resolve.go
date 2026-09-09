@@ -60,9 +60,13 @@ func Resolve(curricula []Curriculum, deptOrder []string, cleared, attempted map[
 	deptOf := make([]string, len(curricula))
 	for i := range curricula {
 		states[i] = resolveOne(curricula[i], cleared, latestTheme)
-		dept := "CORE"
-		if curricula[i].Theme.Track != "core" {
-			dept = curricula[i].Theme.Dept
+		// Group every theme by its Dept. A core theme scoped to a department
+		// (track=core, dept=ICU — 부서별 코어) joins that department's track and,
+		// by its low Order, leads it. Only a truly universal theme (dept="")
+		// falls into the global CORE track (P2 D-P2-D 부서별 코어 결정).
+		dept := curricula[i].Theme.Dept
+		if dept == "" {
+			dept = "CORE"
 		}
 		deptOf[i] = dept
 	}

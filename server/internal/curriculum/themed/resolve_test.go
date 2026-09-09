@@ -84,4 +84,38 @@ func TestResolve_collabWithSurfaced(t *testing.T) {
 	}
 }
 
+// A 부서별 코어 theme (track=core, dept=ICU) joins its department's track and,
+// by its low Order, leads the department's depth themes — it does NOT fall into
+// the global CORE track (P2 D-P2-D). A truly universal theme (dept="") still does.
+func TestResolve_perDeptCoreLeadsItsTrack(t *testing.T) {
+	themes := []Theme{
+		{Key: "core-language", Name: "언어장벽·통역", Track: "core", Order: 5},                 // 전역 공통
+		{Key: "core-handoff-icu", Name: "인계·SBAR", Track: "core", Dept: "ICU", Order: 10},   // 부서 코어
+		{Key: "icu-hemodynamics", Name: "혈역학", Track: "depth", Dept: "ICU", Order: 100},     // 부서 심화
+	}
+	tags := []ScenarioTag{
+		{ID: "SCN-CORE-1", Title: "통역", Theme: "core-language", Dept: "CORE", Difficulty: 1},
+		{ID: "SCN-ICU-1", Title: "ROSC 후 ICU 인계", Theme: "core-handoff-icu", Dept: "ICU", Difficulty: 1},
+		{ID: "SCN-ICU-2", Title: "승압제 적정", Theme: "icu-hemodynamics", Dept: "ICU", Difficulty: 2},
+	}
+	cur, _ := Assemble(themes, tags)
+	tracks := Resolve(cur, []string{"ICU"}, nil, nil, "")
+
+	if len(tracks) != 2 || tracks[0].Dept != "CORE" || tracks[1].Dept != "ICU" {
+		t.Fatalf("want [CORE, ICU] tracks, got %+v", tracks)
+	}
+	// 전역 CORE에는 공통 주제 하나만
+	if len(tracks[0].Curricula) != 1 || tracks[0].Curricula[0].ThemeKey != "core-language" {
+		t.Fatalf("global CORE should hold only core-language: %+v", tracks[0].Curricula)
+	}
+	// ICU 트랙: 부서 코어가 먼저(Order 10), 그다음 심화(Order 100)
+	icu := tracks[1].Curricula
+	if len(icu) != 2 || icu[0].ThemeKey != "core-handoff-icu" || icu[1].ThemeKey != "icu-hemodynamics" {
+		t.Fatalf("ICU track should be [부서코어, 심화]: %+v", icu)
+	}
+	if icu[0].Track != "core" || icu[0].Dept != "ICU" {
+		t.Errorf("부서 코어의 track/dept 유지되어야 함: %+v", icu[0])
+	}
+}
+
 func boolPtr(b bool) *bool { return &b }
