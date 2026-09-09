@@ -41,7 +41,21 @@ func main() {
 	pool := buildPhrasePool()
 	totalScn, totalEvt, totalQz := 0, 0, 0
 	for di, d := range Depts {
-		scns, evts := generateDept(di, d, *target)
+		// Curriculum v3: a department with an authored seed file (content/nurse/
+		// topics/<code>.yaml) generates one scenario per distinct situation. Depts
+		// without a seed file fall back to the legacy topic×persona bank during
+		// the migration.
+		seeds, err := loadSeeds(*out, d.Code)
+		if err != nil {
+			fail(err)
+		}
+		var scns []content.Scenario
+		var evts []content.Event
+		if len(seeds) > 0 {
+			scns, evts = generateSeedScenarios(di, d, seeds)
+		} else {
+			scns, evts = generateDept(di, d, *target)
+		}
 		qzs := generateQuizzes(di, d, pool)
 		writeYAML(filepath.Join(scenDir, "gen-"+lower(d.Code)+".yaml"), scns)
 		writeYAML(filepath.Join(evtDir, "gen-"+lower(d.Code)+".yaml"), evts)
