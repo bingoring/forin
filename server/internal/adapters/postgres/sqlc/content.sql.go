@@ -343,8 +343,8 @@ func (q *Queries) InsertQuiz(ctx context.Context, arg InsertQuizParams) error {
 }
 
 const insertScenario = `-- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
 `
 
 type InsertScenarioParams struct {
@@ -360,6 +360,8 @@ type InsertScenarioParams struct {
 	Steps      []byte `json:"steps"`
 	Briefing   []byte `json:"briefing"`
 	Acuity     string `json:"acuity"`
+	Theme      string `json:"theme"`
+	CollabWith string `json:"collab_with"`
 }
 
 func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) error {
@@ -376,6 +378,8 @@ func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) 
 		arg.Steps,
 		arg.Briefing,
 		arg.Acuity,
+		arg.Theme,
+		arg.CollabWith,
 	)
 	return err
 }
@@ -480,6 +484,48 @@ func (q *Queries) ListEvents(ctx context.Context, dollar_1 interface{}) ([]Event
 			&i.FollowUps,
 			&i.Related,
 			&i.Scenarios,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
+const listScenarioTags = `-- name: ListScenarioTags :many
+SELECT id, title, theme, collab_with,
+       COALESCE((briefing->>'difficulty')::int, 1)::int AS difficulty
+  FROM scenarios
+ ORDER BY id
+`
+
+type ListScenarioTagsRow struct {
+	ID         string `json:"id"`
+	Title      string `json:"title"`
+	Theme      string `json:"theme"`
+	CollabWith string `json:"collab_with"`
+	Difficulty int    `json:"difficulty"`
+}
+
+// 커리큘럼 v3 조립기 입력: 부팅 시 1회 조회. difficulty는 briefing JSON에서 뽑아 컬럼처럼 노출.
+func (q *Queries) ListScenarioTags(ctx context.Context) ([]ListScenarioTagsRow, error) {
+	rows, err := q.db.Query(ctx, listScenarioTags)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []ListScenarioTagsRow
+	for rows.Next() {
+		var i ListScenarioTagsRow
+		if err := rows.Scan(
+			&i.ID,
+			&i.Title,
+			&i.Theme,
+			&i.CollabWith,
+			&i.Difficulty,
 		); err != nil {
 			return nil, err
 		}

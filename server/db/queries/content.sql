@@ -67,8 +67,15 @@ INSERT INTO events (id, profession, title, ward, category, tier, tags, delivery,
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 
 -- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
+
+-- name: ListScenarioTags :many
+-- 커리큘럼 v3 조립기 입력: 부팅 시 1회 조회. difficulty는 briefing JSON에서 뽑아 컬럼처럼 노출.
+SELECT id, title, theme, collab_with,
+       COALESCE((briefing->>'difficulty')::int, 1)::int AS difficulty
+  FROM scenarios
+ ORDER BY id;
 
 -- name: GetQuiz :one
 SELECT id, profession, type, title, content FROM quizzes WHERE id = $1;

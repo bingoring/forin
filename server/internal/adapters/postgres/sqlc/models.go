@@ -286,6 +286,8 @@ type Scenario struct {
 	Persona    []byte `json:"persona"`
 	Briefing   []byte `json:"briefing"`
 	Acuity     string `json:"acuity"`
+	Theme      string `json:"theme"`
+	CollabWith string `json:"collab_with"`
 }
 
 type ScenarioAttempt struct {

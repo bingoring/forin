@@ -14,6 +14,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
+	"github.com/bingoring/forin/server/internal/curriculum/themed"
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/economy"
@@ -74,7 +75,7 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 			ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline,
 			Persona: jsonb(s.Persona), Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails),
 			KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps), Briefing: jsonb(s.Briefing),
-			Acuity: s.Acuity}); err != nil {
+			Acuity: s.Acuity, Theme: s.Theme, CollabWith: s.CollabWith}); err != nil {
 			return err
 		}
 	}
@@ -867,4 +868,30 @@ func unjson(b []byte, dst any) {
 	if len(b) > 0 {
 		_ = json.Unmarshal(b, dst)
 	}
+}
+
+// ListScenarioTags projects every scenario's assembly tag for themed.Assemble
+// (curriculum v3). Built into the themed catalog once at boot.
+func (r *ContentRepo) ListScenarioTags(ctx context.Context) ([]themed.ScenarioTag, error) {
+	rows, err := r.q.ListScenarioTags(ctx)
+	if err != nil {
+		return nil, err
+	}
+	out := make([]themed.ScenarioTag, 0, len(rows))
+	for _, row := range rows {
+		out = append(out, themed.ScenarioTag{
+			ID: row.ID, Title: row.Title, Theme: row.Theme, CollabWith: row.CollabWith,
+			Dept: scenarioDeptCode(row.ID), Difficulty: int(row.Difficulty),
+		})
+	}
+	return out, nil
+}
+
+// scenarioDeptCode pulls the department from a content id: SCN-ER-00001 → "ER".
+func scenarioDeptCode(id string) string {
+	parts := strings.SplitN(id, "-", 3)
+	if len(parts) >= 3 {
+		return parts[1]
+	}
+	return ""
 }
