@@ -200,32 +200,32 @@ var mainBuilding = []Curriculum{
 		Building: "본관", Floor: "8F", Where: "본관 8F 일반 내과 병동",
 		Steps: []Step{
 			{Kind: "dlg", Name: "첫 인사 · 내과병동", ScenarioID: "SCN-WARD-00900"},
-			{Kind: "dlg", Name: "만성질환 입원 사정", ScenarioID: "SCN-WARD-00101"},
+			{Kind: "dlg", Name: "입원 시 통증 초기 사정", ScenarioID: "SCN-WARD-00110"},
 			// This floor's bank has no hand-authored quiz, so the quiz comes from a
 			// topic that lives in another curriculum on the same floor — a quiz
 			// echoing the dialogue right above it teaches nothing.
 			{Kind: "quiz", Name: "혈당 변동 설명", ScenarioID: "QZ-WARD-00104"},
-			{Kind: "dlg", Name: "야간 불면 대응", ScenarioID: "SCN-WARD-00109"},
-			{Kind: "boss", Name: "혈액검사 결과 설명", ScenarioID: "SCN-WARD-00107"},
+			{Kind: "dlg", Name: "야간 입원 간소 사정", ScenarioID: "SCN-WARD-00111"},
+			{Kind: "boss", Name: "검사 결과 의료진 보고", ScenarioID: "SCN-WARD-00430"},
 		},
 	},
 	{
 		Key: "본관|8F|chronic", Name: "만성질환 교육",
 		Building: "본관", Floor: "8F", Where: "본관 8F 일반 내과 병동",
 		Steps: []Step{
-			{Kind: "dlg", Name: "혈당 변동 설명", ScenarioID: "SCN-WARD-00102"},
-			{Kind: "dlg", Name: "이뇨제 복용 상담", ScenarioID: "SCN-WARD-00105"},
-			{Kind: "dlg", Name: "감염 격리 안내", ScenarioID: "SCN-WARD-00108"},
-			{Kind: "boss", Name: "심부전 체중·부종 교육", ScenarioID: "SCN-WARD-00103"},
+			{Kind: "dlg", Name: "혈당 변동 패턴 분석", ScenarioID: "SCN-WARD-00596"},
+			{Kind: "dlg", Name: "이뇨제 복용 교육", ScenarioID: "SCN-WARD-00693"},
+			{Kind: "dlg", Name: "격리실 안내", ScenarioID: "SCN-WARD-00378"},
+			{Kind: "boss", Name: "심부전 악화 조기 인지", ScenarioID: "SCN-WARD-00699"},
 		},
 	},
 	{
 		Key: "본관|8F|deterioration", Name: "악화와 인계",
 		Building: "본관", Floor: "8F", Where: "본관 8F 일반 내과 병동",
 		Steps: []Step{
-			{Kind: "event", Name: "산소 요구 증가 사정", ScenarioID: "SCN-WARD-00104"},
-			{Kind: "dlg", Name: "다학제 회진 참여", ScenarioID: "SCN-WARD-00106"},
-			{Kind: "boss", Name: "내과 병동 인계", ScenarioID: "SCN-WARD-00110"},
+			{Kind: "event", Name: "산소 요구 증가 추적", ScenarioID: "SCN-WARD-00443"},
+			{Kind: "dlg", Name: "침상 옆 인계", ScenarioID: "SCN-WARD-00821"},
+			{Kind: "boss", Name: "불안정 환자 인계", ScenarioID: "SCN-WARD-00831"},
 		},
 	},
 
