@@ -88,6 +88,64 @@ components:
           description: done | now | lock | optional
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_curriculum_themed.CurriculumState:
+      properties:
+        collabWith:
+          type: string
+        dept:
+          type: string
+        done:
+          type: integer
+        name:
+          type: string
+        resume:
+          type: boolean
+        state:
+          description: passed | here | open
+          type: string
+        themeKey:
+          type: string
+        tiers:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum_themed.TierCount'
+          type: array
+          uniqueItems: false
+        total:
+          type: integer
+        track:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_curriculum_themed.Milestone:
+      properties:
+        name:
+          type: string
+        state:
+          description: passed | open | closed
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_curriculum_themed.TierCount:
+      properties:
+        difficulty:
+          type: integer
+        done:
+          type: integer
+        total:
+          type: integer
+        unlocked:
+          type: boolean
+      type: object
+    github_com_bingoring_forin_server_internal_curriculum_themed.TrackGroup:
+      properties:
+        curricula:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum_themed.CurriculumState'
+          type: array
+          uniqueItems: false
+        dept:
+          type: string
+        milestone:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum_themed.Milestone'
+      type: object
     github_com_bingoring_forin_server_internal_domain_auth.TokenPair:
       properties:
         accessToken:
@@ -426,6 +484,15 @@ components:
           type: string
         scenarioId:
           type: string
+        steps:
+          description: |-
+            Steps is how many turns the learner actually spoke in this scenario —
+            the count of role='user' 발화 turns across their conversation sessions
+            for it. The row draws "N단계", and "모범 일치" is Steps − Corrections:
+            the turns that needed no correction. Corrections can exceed Steps when a
+            scenario was replayed and the earlier sessions' turns aged out, so the
+            client clamps 모범 일치 at zero rather than showing a negative count.
+          type: integer
         title:
           description: |-
             Title is "" when the scenario is not in the content set the server is
@@ -1896,6 +1963,24 @@ paths:
       security:
       - Bearer: []
       summary: Building/floor/curriculum path with per-user progress
+      tags:
+      - progress
+  /me/curriculum/tracks:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum_themed.TrackGroup'
+                  type: array
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: 커리큘럼 v3 — 주제 기반 여정 트랙 (additive; 라이브 /me/curriculum과 공존)
       tags:
       - progress
   /me/daily-board:

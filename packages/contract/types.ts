@@ -1358,6 +1358,44 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/curriculum/tracks": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 커리큘럼 v3 — 주제 기반 여정 트랙 (additive; 라이브 /me/curriculum과 공존) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.TrackGroup"][];
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/daily-board": {
         parameters: {
             query?: never;
@@ -2694,6 +2732,35 @@ export interface components {
             /** @description done | now | lock | optional */
             state?: string;
         };
+        "github_com_bingoring_forin_server_internal_curriculum_themed.CurriculumState": {
+            collabWith?: string;
+            dept?: string;
+            done?: number;
+            name?: string;
+            resume?: boolean;
+            /** @description passed | here | open */
+            state?: string;
+            themeKey?: string;
+            tiers?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.TierCount"][];
+            total?: number;
+            track?: string;
+        };
+        "github_com_bingoring_forin_server_internal_curriculum_themed.Milestone": {
+            name?: string;
+            /** @description passed | open | closed */
+            state?: string;
+        };
+        "github_com_bingoring_forin_server_internal_curriculum_themed.TierCount": {
+            difficulty?: number;
+            done?: number;
+            total?: number;
+            unlocked?: boolean;
+        };
+        "github_com_bingoring_forin_server_internal_curriculum_themed.TrackGroup": {
+            curricula?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.CurriculumState"][];
+            dept?: string;
+            milestone?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.Milestone"];
+        };
         "github_com_bingoring_forin_server_internal_domain_auth.TokenPair": {
             accessToken?: string;
             /** @description access token seconds-to-live */
@@ -2893,6 +2960,15 @@ export interface components {
             corrections?: number;
             lastAt?: string;
             scenarioId?: string;
+            /**
+             * @description Steps is how many turns the learner actually spoke in this scenario —
+             *     the count of role='user' 발화 turns across their conversation sessions
+             *     for it. The row draws "N단계", and "모범 일치" is Steps − Corrections:
+             *     the turns that needed no correction. Corrections can exceed Steps when a
+             *     scenario was replayed and the earlier sessions' turns aged out, so the
+             *     client clamps 모범 일치 at zero rather than showing a negative count.
+             */
+            steps?: number;
             /**
              * @description Title is "" when the scenario is not in the content set the server is
              *     serving (an old card whose scenario was renamed or removed). The screen
