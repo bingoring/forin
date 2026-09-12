@@ -4,8 +4,15 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-09
+**Last updated:** 2026-09-13
 
+> 🔧 **CI 복구 (2026-09-13) — 9/8부터 5일간 staging 배포 0이었다.** ①계약 드리프트(`ModelAnswerGroup.steps`·
+> `/me/curriculum/tracks`가 재생성 없이 들어감) ②P2 정본 재발급으로 라이브 v2 카탈로그 60스텝이 틀린 시나리오를
+> 가리킴(WARD 커밋부터 server 테스트 레드). 계약 재생성 + v2 스텝 재지정(손저작 `scn-*` 우선 44/60). 로컬 server
+> vet·`test ./...`·계약 무드리프트·mobile tsc·jest 907 그린. PR `fix/ci-contract-v2-catalog` 머지 → staging 자동 배포로
+> **리뷰랩 v40 서버 변경이 비로소 staging에 오른다**(아래 v40 항목의 "서버=promote"는 실제로 배포된 적 없음, prod는 별도
+> 승격). **fan-out 게이트 추가**: 부서 커밋 전 v2 재지정 + `go test ./...` 전체 + 계약 무드리프트. [DECISIONS](DECISIONS.md) 2026-09-13.
+>
 > 🔨 **커리큘럼 v3 P2 — 부서 콘텐츠 fan-out 진행 (2026-09-09~).** 각 부서를 동일 파이프라인으로 낸다: 택소노미 설계
 > (서브에이전트) → 8클러스터 병렬 저작(seed 1건당 상황 1건, 페르소나 뻥튀기 없음) → 정규화·조립 `topics/<code>.yaml`
 > → `themes.yaml` 부서별 코어 4 + 심화 31 → 재생성 → audit(주제 전부 ≥20·THIN 0·dup-title 0·부서 고아 0). 부서 구조는
@@ -13,7 +20,8 @@
 > PICU · LD · PSYCH (각 735). 누적 태깅 6616 · 315주제. 부서별 코어는 `core-*-<code>`(dept 스코프)로 그 부서 트랙을 이끈다(D-P2-D). 화자
 > 배분은 부서 특성대로: ICU 동료·가족, OR 동료, WARD 환자, PEDS·NICU 부모(가족) 위주(NICU는 신생아 비발화라 환자역할 0).
 > tagline 선행 무대지시 괄호는 QA 정규화로 제거(WARD 49건, PEDS·NICU 0건 — 저작 지시로 예방). 비임상 위치(LOUNGE·SPD·
-> MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 도달 시 별도 처리 예정. **다음**: PICU → LD → 나머지 → DB 시드 + 계약 전환 → P3.
+> MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 도달 시 별도 처리 예정. **다음**: 나머지 20부서(PHARMA → 병동 계열 → …; 비임상 4곳은
+> 설계 결정 필요) → DB 시드 + 계약 전환 → P3.
 >
 > ✅ **커리큘럼 v3 P2 — ER 정본 콘텐츠(기함) + 파이프라인 (2026-09-09).** 파이프라인과 첫 부서 콘텐츠를 함께 냈다.
 > **① 파이프라인**: `cmd/gencontent`에 seed 경로를 신설했다(`seeds.go`) — `content/nurse/topics/<code>.yaml`이
