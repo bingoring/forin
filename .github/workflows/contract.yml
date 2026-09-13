@@ -21,7 +21,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: go install github.com/swaggo/swag/v2/cmd/swag@latest
+      # Pinned to match server/Makefile — @latest let swag rc6 change the generated contract.
+      - run: go install github.com/swaggo/swag/v2/cmd/swag@v2.0.0-rc5
       - name: Regenerate contract
         working-directory: server
         run: make contract

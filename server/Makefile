@@ -40,9 +40,11 @@ sqlc-diff:  ## fail if generated code is stale vs. the pinned sqlc version (CI d
 	  (echo "generated sqlc code is out of date — run 'make sqlc' and commit the result" >&2; exit 1)
 
 contract:   ## regenerate API contract: openapi.yaml + TS types (needs: swag v2, npx/node)
-	## install swag: go install github.com/swaggo/swag/v2/cmd/swag@latest
+	## install swag: go install github.com/swaggo/swag/v2/cmd/swag@v2.0.0-rc5
+	## Generator versions are pinned (here and in contract.yml/deploy.yml): with @latest, swag rc6
+	## (2026-09-13) changed the output and every commit failed the drift check without an API change.
 	swag init -g cmd/api/main.go -d . -o ../packages/contract --ot yaml --parseInternal --parseDependency --v3.1
-	cd ../packages/contract && mv -f swagger.yaml openapi.yaml && npx --yes openapi-typescript@latest openapi.yaml -o types.ts
+	cd ../packages/contract && mv -f swagger.yaml openapi.yaml && npx --yes openapi-typescript@7.13.0 openapi.yaml -o types.ts
 
 migrate-up: ## apply migrations (requires golang-migrate CLI)
 	migrate -path db/migrations -database "$(DATABASE_URL)" up
