@@ -21,9 +21,10 @@
 - 테스트: `internal/curriculum/themed/engine_test.go`, `internal/domain/learning/policy_test.go`
 
 **단계**
-- [ ] L1.1 learning 값 타입·`Journey` 포트·정책 인터페이스 작성(domain-entities.md §2~4). 컴파일만.
+- [ ] L1.1 learning 값 타입·`Journey` 포트·`Journeys`(직업군 조회, S7)·정책 인터페이스 작성(domain-entities.md §2~4). 컴파일만.
 - [ ] L1.2 기본 정책(`DefaultGuidance`·`DefaultTierUnlock`·`DefaultExam`)을 구 guide.go 동작 1:1로 이식 + 단위 테스트.
 - [ ] L1.3 `themed.Engine`: 부팅 시 역인덱스 구축, `Tracks`(=기존 Resolve 위임)·`Resume`·`Locate` 구현 + 테스트.
+  `themed.Registry`(직업군→Engine, `learning.Journeys` 구현)도 이때 작성(현재는 nurse 하나 등록, S7).
 - [ ] L1.4 `Engine.Next(p, justFinished)`: 역인덱스로 주제·티어 위치 찾고 학습 순서상 다음 미통과 스텝 반환 + 테스트.
 - [ ] L1.5 `Engine.Guidance` = 정책 위임 + 테스트.
 - [ ] **특성 테스트(R-L11)**: 동일 `Progress` 입력에 대해 v2 `NextScenarioAfter`/`GuideForScenario`와
@@ -45,7 +46,9 @@
 - 재생성: 계약(swag, 고정 버전)
 
 **단계**
-- [ ] L2.1 핸들러 생성자 시그니처에 `learning.Journey` 추가, DI에서 themed.Engine 주입.
+- [ ] L2.1 핸들러 생성자 시그니처에 `learning.Journeys` 추가, DI에서 themed.Registry 주입. 요청마다 사용자
+  직업군으로 `journeys.For(prof)`. **`cmd/api`의 themed Catalog `"nurse"` 하드코딩(현 `main.go:117`)을
+  `content/<prof>/` 순회로 대체**(S7·R-L16) — 현재는 nurse 하나지만 순회 구조로 둔다.
 - [ ] L2.2 `curriculumTracks`를 포트의 `Tracks`로 전환(themed 직접 호출 제거).
 - [ ] L2.3 `conversation_handler`의 `NextScenarioAfter`→`journey.Next`, `GuideForScenario`→`journey.Guidance`.
   특성 테스트(L1.5)가 동작 보존을 보증.

@@ -15,7 +15,14 @@
 > (UGC·사용자 번들 커리큘럼·새 트랙/스텝 종류가 데이터/부품으로 붙음), 은퇴는 삭제로 끝냄. 단계 L1(포트+엔진,
 > additive) → L2(핸들러 컷오버+어댑터+계약) → L3(클라 이행) → L4(v2 삭제+엔진 불변식) → L5(DB 시드+승격).
 > **콘텐츠 fan-out(ONCO·GERI 등)의 green 착지가 L1~L2+L4에 게이트됨** — 전환이 파이프라인을 다시 열어준다.
-> 스펙: [`02-construction/curriculum-v3-live/`](02-construction/curriculum-v3-live/build-spec-index.md). **사용자 검토 대기.**
+> 스펙: [`02-construction/curriculum-v3-live/`](02-construction/curriculum-v3-live/build-spec-index.md). 사용자 승인 → 구현 착수.
+> **L1 완료(2026-09-14)**: `internal/domain/learning`(포트 `Journey`·직업군 조회 `Journeys`·값/응답 타입·정책
+> `GuidancePolicy`/`TierUnlockPolicy`/`ExamPolicy`+Default) + `themed.Engine`(Tracks·Next·Resume·Guidance·Locate,
+> 부팅 역인덱스)·`themed.Registry`(직업군→엔진). 응답 타입(TrackGroup 등)을 themed→learning 이관, 정책 3종을
+> 실사용 배선(가이드=엔진, 티어해금=resolve, 시험=assemble). **additive — 라이브 무영향**(핸들러는 아직 v2, tracks는
+> 동일 wire). 신규 단위 테스트 + 전체 29패키지 그린. 특성 테스트(계획 L1.5)는 v2(하드코딩)와 엔진(themed)이 서로
+> 다른 카탈로그라 1:1 대조가 무의미 → 시맨틱 단위 테스트로 대체(정직한 편차). **다음: L2 핸들러 컷오버 + `/me/curriculum`
+> 어댑터 + `cmd/api` 직업군 순회 부팅.**
 >
 > ✅ **커리큘럼 v3 P2 — SURGWARD(일반 외과 병동) 완료 (2026-09-14, 11/29).** 부서 코어 4(신원·투약·낙상·수술 부위 안전 ·
 > 언어·동의 · 회복실 인수·교대·전동 인계 · 가족 소통) + 심화 31(첫 사정·PCA·PONV·조기 보행·VTE·호흡기·상처·SSI·배액관·

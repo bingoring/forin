@@ -48,7 +48,25 @@ type GuideLevel string // full | hint | free (기존 curriculum.GuideLevel 이�
 (계약 형태). learning 포트는 이들을 반환값으로 노출하되, themed 타입을 import하지 않도록 **여정 응답 타입도
 learning으로 이관**하고 themed가 이를 채운다(도메인이 형태의 주인). — 구현 시 타입 이동은 L1 첫 커밋.
 
-## 3. 포트 — learning.Journey
+## 2.5 직업군 차원 (S7) — Journeys 조회
+
+`Journey`는 **직업군 하나**의 여정이다. 라이브는 사용자의 직업군으로 해당 엔진을 고른다.
+
+```go
+type Profession string // "nurse" (현재) · 이후 "pt"·"pharmacist"·"physician" 등
+
+// Journeys — 직업군 → Journey 조회. 부팅 시 content/<prof>/ 별로 엔진을 구성.
+type Journeys interface {
+    For(p Profession) Journey // 미등록 직업군은 빈 Journey(무-내용 안전, 현행 posture)
+}
+```
+
+- 핸들러는 `Journeys`를 주입받고, 요청의 사용자 직업군으로 `For(prof)`를 얻어 아래 포트를 호출한다.
+- 새 직업군 = `content/<prof>/`(themes.yaml+topics+scenarios) 추가 → `Journeys` 부팅 순회가 자동 등록.
+  포트·핸들러·계약 코드 변경 0.
+- 현재는 nurse 하나만 등록되지만 시그니처가 직업군을 이미 담으므로, 다직업군 확장이 포트 변경 없이 붙는다.
+
+## 3. 포트 — learning.Journey (직업군 1개 범위)
 
 ```go
 // Journey — 라이브 학습 경험의 유일한 도메인 포트. 구현체는 themed.Engine 하나.
@@ -98,11 +116,11 @@ type ExamPolicy interface {
 기본 구현(`DefaultGuidance`·`DefaultTierUnlock`·`DefaultExam`)은 현행 동작을 1:1 재현한다. 규칙을 바꾸고
 싶으면 새 구현을 주입 — 엔진 코드 무수정(L-U2).
 
-## 5. 구현체 — themed.Engine
+## 5. 구현체 — themed.Engine (직업군 1개) + themed.Registry (직업군 조회)
 
 ```go
 type Engine struct {
-    cat    *Catalog          // 부팅 시 Assemble 결과 캐시 (레지스트리 + 태그)
+    cat    *Catalog          // 부팅 시 Assemble 결과 캐시 (한 직업군의 레지스트리 + 태그)
     guide  learning.GuidancePolicy
     unlock learning.TierUnlockPolicy
     exam   learning.ExamPolicy
@@ -110,6 +128,14 @@ type Engine struct {
 }
 
 func NewEngine(cat *Catalog, opts ...Option) *Engine // 기본 정책 주입, opts로 교체
+
+// Registry — learning.Journeys 구현. 부팅 시 직업군별 Engine을 담는다.
+type Registry struct{ byProf map[learning.Profession]*Engine }
+func (r *Registry) For(p learning.Profession) learning.Journey // 미등록이면 빈 엔진
+```
+
+부팅(cmd/api): `content/<prof>/themes.yaml` + 그 직업군 시나리오 태그로 직업군별 `NewCatalog`→`NewEngine`을
+만들어 `Registry`에 넣는다. `"nurse"` 하드코딩(현 `cmd/api/main.go:117`)을 직업군 순회로 대체한다(L2).
 
 func (e *Engine) Tracks(p) []TrackGroup     // = Resolve(cat.Curricula, deptOrder, ...)
 func (e *Engine) Next(p, justFinished) StepRef  // 역인덱스로 justFinished의 주제/티어 찾고, 그 학습 순서상 다음 미통과 스텝

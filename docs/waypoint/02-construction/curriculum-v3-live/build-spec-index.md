@@ -92,8 +92,12 @@ type Journey interface {
 
 - **구현체**: `themed.Engine` 하나가 이 포트를 구현. 부팅 시 `Catalog`(레지스트리+태그 조립)를 1회 캐시하고,
   요청마다 진도를 오버레이해 순수 계산.
-- **주입**: 핸들러는 생성자에서 `learning.Journey`를 받는다. 구체 패키지 import 제거.
+- **주입**: 핸들러는 생성자에서 `learning.Journeys`(직업군→Journey 조회)를 받고, 요청마다 사용자 직업군으로
+  `journeys.For(prof)`를 얻는다. 구체 패키지 import 제거. (단일 직업군 시점엔 nurse 하나만 등록되지만
+  시그니처가 직업군을 이미 담으므로 확장이 깨짐 없이 붙는다 — S7.)
 - **정책 부품**: `GuidancePolicy`·`TierUnlockPolicy`·`ExamPolicy`를 엔진이 주입받는다(기본 구현 제공, 교체 가능).
+- **직업군 단위**: `Journey` 구현체(엔진)는 **직업군 하나**의 Catalog(그 직업군 themes.yaml + 태그)로 만든다.
+  `Journeys`는 부팅 시 `content/<prof>/`를 순회해 직업군별 엔진을 구성한다.
 
 이 포트가 §0.5-1의 "단일 포트"이자 L-U2의 "부품 구도"의 중심이다. 미래 기능은 (a) 포트 뒤 구현에 데이터를
 더 흘리거나, (b) 정책 부품을 갈아끼우거나, (c) 새 포트 메서드를 더하는 형태로 붙는다. 핸들러·클라이언트는
@@ -109,6 +113,7 @@ type Journey interface {
 | **S4 스텝 종류** | `Step.Kind`: dlg/quiz/event/boss (열린 문자열) | 새 종류(video·reading·reflection)는 kind 상수 + 클라이언트 렌더러. 조립은 kind에 무관 | 없음(상수+렌더러) |
 | **S5 정책** | GuidancePolicy·TierUnlockPolicy·ExamPolicy 기본 구현 | 규칙 변경(패스 수·해금 조건·시험 유무)은 정책 부품 교체 | 없음(부품 교체) |
 | **S6 진도 소스** | ProgressRepo 포트 | 저장 방식 변경(캐시·집계)은 포트 구현 교체 | 없음 |
+| **S7 직업군(profession)** | 콘텐츠는 이미 `content/<prof>/`로 네임스페이스(로더가 디렉터리명에서 profession 채움)·모든 엔티티에 `Profession` 필드. 단 themed Catalog 부팅이 `"nurse"` 하드코딩 | **새 직업군**(예: 물리치료사·약사·의사)은 `content/<prof>/`(themes.yaml+topics+scenarios) 드롭 → 그 직업군 Catalog가 자동 구성. 포트는 사용자 직업군으로 해석(`Journeys.For(prof)`) | 없음(디렉터리+행) |
 
 **seam 판정 기준(누더기 방지)**: 어떤 미래 기능이 위 표의 "데이터 유입/부품 교체/포트 추가" 중 하나로
 안 붙고 조립·해석 로직 본문을 고쳐야 한다면, 그건 seam이 부족하다는 신호다 — 그 시점에 seam을 하나 더
