@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/bingoring/forin/server/internal/curriculum/themed"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -30,7 +31,7 @@ func (f fakeProgress) LatestAttemptScenarioID(context.Context, string) (string, 
 func TestCurriculumTracks_nilCatalogEmpty(t *testing.T) {
 	ph := &progressHandler{} // themed nil, progress nil — handler must not touch either
 	var out struct {
-		Tracks []themed.TrackGroup `json:"tracks"`
+		Tracks []learning.TrackGroup `json:"tracks"`
 	}
 	getJSON(t, ph.curriculumTracks, "/me/curriculum/tracks", &out)
 	if out.Tracks == nil || len(out.Tracks) != 0 {
@@ -52,7 +53,7 @@ func TestCurriculumTracks_shape(t *testing.T) {
 		progress: fakeProgress{cleared: map[string]bool{"SCN-ER-1": true}, latest: "SCN-ER-1"},
 	}
 	var out struct {
-		Tracks []themed.TrackGroup `json:"tracks"`
+		Tracks []learning.TrackGroup `json:"tracks"`
 	}
 	getJSON(t, ph.curriculumTracks, "/me/curriculum/tracks", &out)
 	if len(out.Tracks) != 2 || out.Tracks[0].Dept != "CORE" || out.Tracks[1].Dept != "ER" {

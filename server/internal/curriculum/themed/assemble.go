@@ -3,7 +3,13 @@ package themed
 import (
 	"sort"
 	"strings"
+
+	"github.com/bingoring/forin/server/internal/domain/learning"
 )
+
+// examPolicy decides whether a theme ends in a 주제 시험(boss) — a swappable part
+// (seam S5); the default is "on unless exam:false" (P1 ExamOn rule).
+var examPolicy learning.ExamPolicy = learning.DefaultExam{}
 
 // ScenarioTag is the assembly input for one scenario, projected from the DB.
 type ScenarioTag struct {
@@ -90,7 +96,7 @@ func Assemble(themes []Theme, tags []ScenarioTag) (curricula []Curriculum, orpha
 				}
 			}
 		}
-		curricula = append(curricula, Curriculum{Theme: th, CollabWith: collab, Tiers: buildTiers(group, th.ExamOn())})
+		curricula = append(curricula, Curriculum{Theme: th, CollabWith: collab, Tiers: buildTiers(group, examPolicy.HasExam(th.Exam))})
 	}
 	sort.Strings(orphans)
 	return curricula, orphans

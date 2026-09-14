@@ -1,6 +1,10 @@
 package themed
 
-import "sort"
+import (
+	"sort"
+
+	"github.com/bingoring/forin/server/internal/domain/learning"
+)
 
 // Catalog holds the assembled curricula, built once at boot from the DB tags.
 // Content changes require a re-seed + restart, so there is no runtime refresh.
@@ -40,7 +44,7 @@ func NewCatalog(themes []Theme, tags []ScenarioTag) *Catalog {
 }
 
 // Resolve overlays a learner's progress onto the assembled catalog.
-func (c *Catalog) Resolve(cleared, attempted map[string]bool, latest string) []TrackGroup {
+func (c *Catalog) Resolve(cleared, attempted map[string]bool, latest string) []learning.TrackGroup {
 	return Resolve(c.curricula, c.deptOrder, cleared, attempted, latest)
 }
 

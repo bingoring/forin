@@ -1,6 +1,10 @@
 package themed
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/bingoring/forin/server/internal/domain/learning"
+)
 
 func TestResolve_statesAndTrack(t *testing.T) {
 	themes := []Theme{
@@ -21,7 +25,7 @@ func TestResolve_statesAndTrack(t *testing.T) {
 		t.Fatalf("track order/deps wrong: %+v", tracks)
 	}
 	// er-triage: 최근 시도가 SCN-ER-1(이 주제) → here
-	var triage *CurriculumState
+	var triage *learning.CurriculumState
 	for i := range tracks[1].Curricula {
 		if tracks[1].Curricula[i].ThemeKey == "er-triage" {
 			triage = &tracks[1].Curricula[i]

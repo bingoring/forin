@@ -11,6 +11,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/curriculum/themed"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -52,10 +53,10 @@ func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
 // @Summary 커리큘럼 v3 — 주제 기반 여정 트랙 (additive; 라이브 /me/curriculum과 공존)
 // @Tags progress
 // @Security Bearer
-// @Success 200 {object} map[string][]themed.TrackGroup
+// @Success 200 {object} map[string][]learning.TrackGroup
 // @Router /me/curriculum/tracks [get]
 func (h *progressHandler) curriculumTracks(w http.ResponseWriter, r *http.Request) {
-	tracks := []themed.TrackGroup{}
+	tracks := []learning.TrackGroup{}
 	if h.themed != nil {
 		uid, _ := UserID(r.Context())
 		// Best-effort progress reads: a failed lookup degrades to a browsable,
