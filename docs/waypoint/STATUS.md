@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-14
+**Last updated:** 2026-09-15
 
 > 📝 **커리큘럼 v3 P3-A — 라이브 엔진 전환 스펙(AI_PROPOSED, 2026-09-14).** P1 엔진 + P2 콘텐츠를 라이브가
 > 실제 소비하도록 v2 하드코딩 커리큘럼(`internal/curriculum`)에서 themed 엔진으로 전환하고, 소비 지점 전부를
@@ -58,16 +58,34 @@
 > mobile·deploy) 전부 그린**, staging 배포 + 스모크 **139/0** + 이미지 `staging-verified-dcf675e…` 태그. **리뷰랩 v40 서버 변경이
 > 비로소 staging에 올랐다**(아래 v40 항목의 "서버=promote"는 그때 실제로 배포되지 않았다). prod는 `promote.yml` 수동 승격 대기. **fan-out 게이트 추가**: 부서 커밋 전 v2 재지정 + `go test ./...` 전체 + 계약 무드리프트. [DECISIONS](DECISIONS.md) 2026-09-13.
 >
+> ✅ **커리큘럼 v3 P2 — ORTHOWARD(정형외과 병동) 완료 (2026-09-15, 21/29).** 부서 코어 4(안전 · 언어 · 인계 ·
+> 가족 교육) + 심화 31(고관절/무릎/척추 치환 · 탈구 금기 · 창상 배액 · 수술 부위 감염 · 고관절/장골 골절 · 견인 ·
+> 외고정 · 석고 · 보조기 · 절단 급성기 · 신경혈관 사정 · 구획증후군 · DVT 예방 · 폐색전 · 지방색전 · 실혈 수혈 ·
+> PCA·신경차단 · 돌발 통증 · 오피오이드 변비 · 항응고 교육 · 체중부하 · CPM · 이송 보행 · 낙상 예방 · 압력손상 ·
+> 노인 섬망 · 재활 전원 · 가정 보조기구) = 35주제 × 21 = 735(patient 627 · family 61 · colleague 47 — 정형 병동은
+> 성인 환자가 직접 발화하는 비중이 가장 높은 부서다). audit: 35주제 전부 21(인사 태깅으로 core-language는 22) ·
+> THIN 0 · dup-title 0 · ORTHOWARD 고아 0. 게이트 3종 통과. 누적 태깅 15453 · 735주제.
+> **한도 대응이 이번 부서의 핵심 학습이다**: Opus 저작 에이전트 8개가 워크스페이스 한도(복구 2026-10-01)로 동시에
+> 죽었으나, ①주제 단위 증분 저장 덕분에 441건이 보존됐고 ②주제 완결 단위가 21의 배수로 딱 끊겨 부분 저작 주제가
+> 0이었으므로, 미완 주제만 지목해 **`model: sonnet` 에이전트로 append 재투입**해 294건을 마쳤다. 한도는 모델별로
+> 걸린다 — haiku 프로브와 sonnet 저작은 정상이었다. 클러스터마다 **페르소나 성씨 첫 글자 범위를 배정**해(A·B·C /
+> D·E·F / …) 이전 부서에서 118건 발생했던 이름 중복을 예방했고, 실제로 735건의 이름·성씨 중복이 모두 0이었다.
+> 수선 2건: 변비 주제 티어 2에서 4개 상황의 순서가 지도와 어긋나 재정렬(집합·난이도는 일치), 이송 관련 두 상황의
+> tagline이 동일해 한쪽을 재저작. ⚠️ **부수 발견**: `make contract`가 로컬에 swag이 없어 조용히 실패해 "드리프트
+> 없음"으로 오독될 수 있었다. 고정 버전으로 재실행하니 **c44e792(P3-A L1) 이후 계약이 재생성되지 않아 CI 계약 검사가
+> 레드 상태**였다(응답 타입 4종의 패키지 경로가 themed→domain/learning으로 바뀜). 별도 커밋 `158fef3`으로 해소했다.
+>
 > 🔨 **커리큘럼 v3 P2 — 부서 콘텐츠 fan-out 진행 (2026-09-09~).** 각 부서를 동일 파이프라인으로 낸다: 택소노미 설계
 > (서브에이전트) → 8클러스터 병렬 저작(seed 1건당 상황 1건, 페르소나 뻥튀기 없음) → 정규화·조립 `topics/<code>.yaml`
 > → `themes.yaml` 부서별 코어 4 + 심화 31 → 재생성 → audit(주제 전부 ≥20·THIN 0·dup-title 0·부서 고아 0). 부서 구조는
-> 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(20/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
-> ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · **WOMENKIDS** (각 735). 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
+> 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(21/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
+> ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · WOMENKIDS · **ORTHOWARD** (각 735). 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
 > 손저작 scn으로 repoint해 v2에 남긴다(L-U5; ONCO·GERI 각 10스텝 repoint → 전체 테스트 그린). 부서별 코어는 `core-*-<code>`(dept 스코프)로 그 부서 트랙을 이끈다(D-P2-D). 화자
 > 배분은 부서 특성대로: ICU 동료·가족, OR 동료, WARD 환자, PEDS·NICU 부모(가족) 위주(NICU는 신생아 비발화라 환자역할 0).
 > tagline 선행 무대지시 괄호는 QA 정규화로 제거(WARD 49건, PEDS·NICU 0건 — 저작 지시로 예방). 비임상 위치(LOUNGE·SPD·
-> MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 도달 시 별도 처리 예정. **다음**: 나머지 18부서(ORTHOWARD → …; 비임상 4곳은
-> 설계 결정 필요) → 완료 부서 손저작 113건 태깅 → DB 시드 + 계약 전환 → P3.
+> MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 **D-P2-E로 곳마다 다른 규모를 결정했다**(LOUNGE 35주제=직장 생활 축 ·
+> SPD·MORGUE·SIM 각 15주제). **다음**: 남은 임상 4부서(NURSERY · DERM · GEN · SPECIALTY — map 4종 모두 준비·검증 완료)
+> → 비임상 4부서(D-P2-E 모델대로) → 완료 부서 손저작 113건 태깅 → DB 시드 + 계약 전환 → P3.
 >
 > ✅ **커리큘럼 v3 P2 — ER 정본 콘텐츠(기함) + 파이프라인 (2026-09-09).** 파이프라인과 첫 부서 콘텐츠를 함께 냈다.
 > **① 파이프라인**: `cmd/gencontent`에 seed 경로를 신설했다(`seeds.go`) — `content/nurse/topics/<code>.yaml`이
