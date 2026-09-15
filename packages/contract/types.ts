@@ -1382,7 +1382,7 @@ export interface paths {
                     };
                     content: {
                         "application/json": {
-                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.TrackGroup"][];
+                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"][];
                         };
                     };
                 };
@@ -2732,35 +2732,6 @@ export interface components {
             /** @description done | now | lock | optional */
             state?: string;
         };
-        "github_com_bingoring_forin_server_internal_curriculum_themed.CurriculumState": {
-            collabWith?: string;
-            dept?: string;
-            done?: number;
-            name?: string;
-            resume?: boolean;
-            /** @description passed | here | open */
-            state?: string;
-            themeKey?: string;
-            tiers?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.TierCount"][];
-            total?: number;
-            track?: string;
-        };
-        "github_com_bingoring_forin_server_internal_curriculum_themed.Milestone": {
-            name?: string;
-            /** @description passed | open | closed */
-            state?: string;
-        };
-        "github_com_bingoring_forin_server_internal_curriculum_themed.TierCount": {
-            difficulty?: number;
-            done?: number;
-            total?: number;
-            unlocked?: boolean;
-        };
-        "github_com_bingoring_forin_server_internal_curriculum_themed.TrackGroup": {
-            curricula?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.CurriculumState"][];
-            dept?: string;
-            milestone?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum_themed.Milestone"];
-        };
         "github_com_bingoring_forin_server_internal_domain_auth.TokenPair": {
             accessToken?: string;
             /** @description access token seconds-to-live */
@@ -2869,6 +2840,35 @@ export interface components {
             deptLabel?: string;
             /** @description DAY | EVENING */
             shift?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.CurriculumState": {
+            collabWith?: string;
+            dept?: string;
+            done?: number;
+            name?: string;
+            resume?: boolean;
+            /** @description passed | here | open */
+            state?: string;
+            themeKey?: string;
+            tiers?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TierCount"][];
+            total?: number;
+            track?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.Milestone": {
+            name?: string;
+            /** @description passed | open | closed */
+            state?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.TierCount": {
+            difficulty?: number;
+            done?: number;
+            total?: number;
+            unlocked?: boolean;
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.TrackGroup": {
+            curricula?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.CurriculumState"][];
+            dept?: string;
+            milestone?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.Milestone"];
         };
         /** @enum {string} */
         "github_com_bingoring_forin_server_internal_domain_lounge.Kind": "talk" | "question" | "share";
