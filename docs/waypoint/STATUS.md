@@ -61,8 +61,8 @@
 > 🔨 **커리큘럼 v3 P2 — 부서 콘텐츠 fan-out 진행 (2026-09-09~).** 각 부서를 동일 파이프라인으로 낸다: 택소노미 설계
 > (서브에이전트) → 8클러스터 병렬 저작(seed 1건당 상황 1건, 페르소나 뻥튀기 없음) → 정규화·조립 `topics/<code>.yaml`
 > → `themes.yaml` 부서별 코어 4 + 심화 31 → 재생성 → audit(주제 전부 ≥20·THIN 0·dup-title 0·부서 고아 0). 부서 구조는
-> 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(19/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
-> ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · **REHAB** (각 735). 누적 태깅 13982 · 665주제. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
+> 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(20/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
+> ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · **WOMENKIDS** (각 735). 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
 > 손저작 scn으로 repoint해 v2에 남긴다(L-U5; ONCO·GERI 각 10스텝 repoint → 전체 테스트 그린). 부서별 코어는 `core-*-<code>`(dept 스코프)로 그 부서 트랙을 이끈다(D-P2-D). 화자
 > 배분은 부서 특성대로: ICU 동료·가족, OR 동료, WARD 환자, PEDS·NICU 부모(가족) 위주(NICU는 신생아 비발화라 환자역할 0).
 > tagline 선행 무대지시 괄호는 QA 정규화로 제거(WARD 49건, PEDS·NICU 0건 — 저작 지시로 예방). 비임상 위치(LOUNGE·SPD·
