@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-15
+**Last updated:** 2026-09-16
 
 > 📝 **커리큘럼 v3 P3-A — 라이브 엔진 전환 스펙(AI_PROPOSED, 2026-09-14).** P1 엔진 + P2 콘텐츠를 라이브가
 > 실제 소비하도록 v2 하드코딩 커리큘럼(`internal/curriculum`)에서 themed 엔진으로 전환하고, 소비 지점 전부를
@@ -58,6 +58,20 @@
 > mobile·deploy) 전부 그린**, staging 배포 + 스모크 **139/0** + 이미지 `staging-verified-dcf675e…` 태그. **리뷰랩 v40 서버 변경이
 > 비로소 staging에 올랐다**(아래 v40 항목의 "서버=promote"는 그때 실제로 배포되지 않았다). prod는 `promote.yml` 수동 승격 대기. **fan-out 게이트 추가**: 부서 커밋 전 v2 재지정 + `go test ./...` 전체 + 계약 무드리프트. [DECISIONS](DECISIONS.md) 2026-09-13.
 >
+> ✅ **커리큘럼 v3 P2 — DERM(피부과 센터) 완료 (2026-09-16, 23/29).** 부서 코어 4 + 심화 31(병변 문진 · 전신 피부
+> 검진 · 더모스코피 · 생검과 결과 설명 · 모즈 수술 · 절제 창상 · 흑색종 의심 · 냉동치료 · 레이저 미용시술 ·
+> 광선치료 준비/이상반응 · 첩포검사 · 접촉피부염 · 아토피와 심리사회 부담 · 건선 전신치료/생물학적 제제 ·
+> 여드름과 이소트레티노인 iPLEDGE · 두드러기와 혈관부종 · 약물 발진 · 봉와직염 · 진균 감염 · 손발톱과 모발 ·
+> 국소 스테로이드 · 소양증 · 소아 피부 · 자외선 차단 · 창상 드레싱 · 병변 사진 촬영) = 35주제 × 21 = 735
+> (patient 655 · family 54 · colleague 26 — 외래 부서 중 환자 직접 발화 비중이 가장 높다). audit: 35주제 전부 21
+> (인사 태깅으로 core-language는 22) · THIN 0 · dup-title 0 · DERM 고아 0. 게이트 3종 통과(29패키지 그린 ·
+> 계약 무드리프트 · v2 스텝 10개 repoint). 누적 태깅 16925 · 805주제. 청소년 비중이 큰 주제(여드름 ·
+> 이소트레티노인)는 `ageRange: 10s` 환자와 보호자를 섞어 배분했고, iPLEDGE는 실제 위험관리 프로그램 요건
+> (이중 피임 · 월별 등록과 임신 검사 · 헌혈 금지 · 기분 변화 선별)을 반영했다. **수선 1건**: c1 클러스터가 성명
+> 전체의 유일성만 검사해 **성씨 37개가 두 번씩 쓰였다** — 미사용 A·B·C 성씨로 기계 교체했다. 저작 지시에
+> "성씨도 재사용 금지"를 명시했음에도 검증 범위를 성명 전체로 좁혀 잡은 사례이므로, 이후 부서에서는 지시와
+> 함께 **성씨 단위 검증**을 따로 요구한다.
+>
 > ✅ **커리큘럼 v3 P2 — NURSERY(신생아실) 완료 (2026-09-15, 22/29).** 부서 코어 4(안전 · 언어 · 인계 · 가족) +
 > 심화 31(신생아 사정 · 재태연령 · 활력징후 · 체온조절 · 첫 목욕 · 제대 관리 · 포경수술 후 관리 · 생리적/병리적
 > 황달 · 광선치료 · 빌리루빈 교육 · 저혈당 · 체중 추이 · 탈수와 수유 · 모유수유 젖물림 · 군집 수유 · 조제유 수유 ·
@@ -90,14 +104,14 @@
 > 🔨 **커리큘럼 v3 P2 — 부서 콘텐츠 fan-out 진행 (2026-09-09~).** 각 부서를 동일 파이프라인으로 낸다: 택소노미 설계
 > (서브에이전트) → 8클러스터 병렬 저작(seed 1건당 상황 1건, 페르소나 뻥튀기 없음) → 정규화·조립 `topics/<code>.yaml`
 > → `themes.yaml` 부서별 코어 4 + 심화 31 → 재생성 → audit(주제 전부 ≥20·THIN 0·dup-title 0·부서 고아 0). 부서 구조는
-> 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(22/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
-> ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · WOMENKIDS · ORTHOWARD · **NURSERY** (각 735). 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
+> 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(23/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
+> ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · WOMENKIDS · ORTHOWARD · NURSERY · **DERM** (각 735). 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
 > 손저작 scn으로 repoint해 v2에 남긴다(L-U5; ONCO·GERI 각 10스텝 repoint → 전체 테스트 그린). 부서별 코어는 `core-*-<code>`(dept 스코프)로 그 부서 트랙을 이끈다(D-P2-D). 화자
 > 배분은 부서 특성대로: ICU 동료·가족, OR 동료, WARD 환자, PEDS·NICU 부모(가족) 위주(NICU는 신생아 비발화라 환자역할 0).
 > tagline 선행 무대지시 괄호는 QA 정규화로 제거(WARD 49건, PEDS·NICU 0건 — 저작 지시로 예방). 비임상 위치(LOUNGE·SPD·
 > MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 **D-P2-E로 곳마다 다른 규모를 결정했다**(LOUNGE 35주제=직장 생활 축 ·
 > SPD·MORGUE·SIM 각 15주제). **다음**: 남은 임상 4부서(NURSERY · DERM · GEN · SPECIALTY — map 4종 모두 준비·검증 완료)
-> **다음**: 남은 임상 3부서(DERM · GEN · SPECIALTY — map 3종 준비·검증 완료) → 비임상 4부서(D-P2-E 모델대로)
+> **다음**: 남은 임상 2부서(GEN · SPECIALTY — map 2종 준비·검증 완료) → 비임상 4부서(D-P2-E 모델대로)
 > → 완료 부서 손저작 113건 태깅 → DB 시드 + 계약 전환 → P3.
 >
 > ✅ **커리큘럼 v3 P2 — ER 정본 콘텐츠(기함) + 파이프라인 (2026-09-09).** 파이프라인과 첫 부서 콘텐츠를 함께 냈다.
