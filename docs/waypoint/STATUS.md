@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-16
+**Last updated:** 2026-09-17
 
 > 📝 **커리큘럼 v3 P3-A — 라이브 엔진 전환 스펙(AI_PROPOSED, 2026-09-14).** P1 엔진 + P2 콘텐츠를 라이브가
 > 실제 소비하도록 v2 하드코딩 커리큘럼(`internal/curriculum`)에서 themed 엔진으로 전환하고, 소비 지점 전부를
@@ -57,6 +57,35 @@
 > vet·`test ./...`·계약 무드리프트·mobile tsc·jest 907 그린. master 직접 push(`dcf675e`) → **CI 4종(server·contract·
 > mobile·deploy) 전부 그린**, staging 배포 + 스모크 **139/0** + 이미지 `staging-verified-dcf675e…` 태그. **리뷰랩 v40 서버 변경이
 > 비로소 staging에 올랐다**(아래 v40 항목의 "서버=promote"는 그때 실제로 배포되지 않았다). prod는 `promote.yml` 수동 승격 대기. **fan-out 게이트 추가**: 부서 커밋 전 v2 재지정 + `go test ./...` 전체 + 계약 무드리프트. [DECISIONS](DECISIONS.md) 2026-09-13.
+>
+> ✅ **커리큘럼 v3 P2 — SPD(중앙공급·영양·하역) 완료 (2026-09-17, 27/29 · 첫 15주제 부서).** D-P2-E대로
+> **15주제 × 21 = 315상황**으로 냈다(임상 부서의 35주제 대비 축소 — 주제 축 자체가 좁아 15가 정직한 규모).
+> 코어 4 = 멸균과 환자 안전 · 공급 현장에서 통하는 말 · 교대와 인계 · **타 부서 요청 응대**(가족 소통 대체,
+> 신규 nameKey `theme.core.request`). 심화 11 = 멸균 물품 요청 · 재고 조달 · 기구 추적 · 재처리 절차 ·
+> 리콜 · 유효기간과 포장 상태 · 케이스 카트 · 내시경 소독 · 대여 장비 · 오염 노출 · 신규 물품 교육.
+> **`role` 315건 전부 `colleague`**(환자·가족 각 0). 지도 검증: 기존 18,662건 제목과 완전 동일 0 ·
+> 유사도 0.62 이상 0 · 제목 평균 38.5자. audit: 15주제 전부 21 이상 · THIN 0 · dup-title 0 · SPD 고아 0
+> (손저작 12건 + 인사 1건 태깅). 게이트 3종 통과. 누적 태깅 19473 · 925주제. v2 스텝 10개 namesync.
+>
+> **파이프라인 정비**: `split_map.py`가 35주제만 받던 것을 **15주제도 받도록** 고치고(주제 수에 따라
+> 클러스터를 8개 또는 4개로 자동 결정, 인자로 덮어쓰기 가능), `assemble.py` 코어 순서 표에
+> `core-request-*`를 추가해 네 번째 코어가 order 40에 들어가게 했다. 남은 MORGUE·SIM은 이 설비를 그대로 쓴다.
+>
+> **저작 품질이 처음으로 기계 검증 무수정 통과했다.** 지시서에 「품질 기준」 + 성씨 3축 검증을 넣은 뒤
+> 무수정 비율이 올라갔다(DERM 성씨 37건 → SPECIALTY·GEN·LOUNGE 소수 → **SPD 0건**).
+>
+> **검수 20건 수정 — 이번 부서는 `acuity` 기준 문제가 지배적이었다(14건).** ⓐ**화학적 지표 시점 역전** —
+> 외부 화학적 지표는 사이클 **후**에 변색하는 것이 정상인데 적재 **전**에 "변색됐는지" 점검하고 미변색을
+> 문제 삼았다 → 적재 전에는 부착과 미변색이 정상이고 **이미 변색된 포장을 골라내며**, 변색 확인은
+> 사이클 후에 한다는 논리로 정정(제목은 지도 고정이라 살렸다) ⓑ**`spd-sterile-request` 4건의 화자가
+> 통째로 역전** — 주제는 "요청하는 쪽"인데 tagline이 요청자, keyPhrases가 중앙공급 직원 목소리여서
+> 학습자 역할이 뒤바뀌었다 → 양쪽 목소리를 맞바꿨다(persona도 중앙공급 측으로 교체) ⓒ**`acuity: critical`
+> 14건 하향**. 검수자가 기준 판단을 AI에게 넘겼고, **`acuity`는 오염 노출 여부만이 아니라 장면의 임상적
+> 급박성**이라는 다른 부서 용례에 맞춰 두 갈래로 확정했다: `critical` = 불합격·오염 물품이 **이미 환자에게
+> 사용되거나 수술실로 나간 것이 확인된 경우** 또는 **물품 부재가 진행 중인 생명 위협에 직결되는 경우**
+> (활성 출혈), `urgent` = 노출 여부 조사 중 · 노출 전 차단 · 일정 압박만 있는 경우. 적용 결과 critical이
+> 30 → 16건으로 줄고 클러스터 편차도 11/6/6/7 → **5/4/4/3**으로 고르게 맞았다. 남은 16건은 확인된 노출 ·
+> 진행 중 생명 위협 · 직원 실제 부상(찔림·체액·화학물질) · 배양 양성으로 성격이 일관된다.
 >
 > ✅ **커리큘럼 v3 P2 — LOUNGE(락커·휴게실·식당) 완료 (2026-09-16, 26/29 · 비임상 첫 부서).** D-P2-E 결정대로
 > 35주제(735)를 **직장 생활 축**으로 냈다. 코어 4 = 직원 안전 · 직장에서 통하는 말 · 교대와 인계 조율 ·
@@ -208,13 +237,13 @@
 > → `themes.yaml` 부서별 코어 4 + 심화 31 → 재생성 → audit(주제 전부 ≥20·THIN 0·dup-title 0·부서 고아 0). 부서 구조는
 > 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(26/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
 > ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · WOMENKIDS · ORTHOWARD · NURSERY · DERM · SPECIALTY · GEN (각 735)
-> **+ 비임상 LOUNGE(735)**. 임상 25부서 완주 · 비임상 1/4. 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
+> **+ 비임상 LOUNGE(735) · SPD(315)**. 임상 25부서 완주 · 비임상 2/4. 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
 > 손저작 scn으로 repoint해 v2에 남긴다(L-U5; ONCO·GERI 각 10스텝 repoint → 전체 테스트 그린). 부서별 코어는 `core-*-<code>`(dept 스코프)로 그 부서 트랙을 이끈다(D-P2-D). 화자
 > 배분은 부서 특성대로: ICU 동료·가족, OR 동료, WARD 환자, PEDS·NICU 부모(가족) 위주(NICU는 신생아 비발화라 환자역할 0).
 > tagline 선행 무대지시 괄호는 QA 정규화로 제거(WARD 49건, PEDS·NICU 0건 — 저작 지시로 예방). 비임상 위치(LOUNGE·SPD·
 > MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 **D-P2-E로 곳마다 다른 규모를 결정했다**(LOUNGE 35주제=직장 생활 축 ·
 > SPD·MORGUE·SIM 각 15주제). **다음**: 남은 임상 4부서(NURSERY · DERM · GEN · SPECIALTY — map 4종 모두 준비·검증 완료)
-> **다음**: 비임상 3부서(SPD·MORGUE·SIM 각 15주제 — 지도 없음, 설계부터. `split_map.py`의 35주제 assert를 고쳐 클러스터 4개로 줄여야 한다)
+> **다음**: 비임상 2부서(MORGUE·SIM 각 15주제 — 지도 없음, 설계부터. 15주제 파이프라인은 SPD에서 정비 완료)
 > → 완료 부서 손저작 113건 태깅 → DB 시드 + 계약 전환 → P3.
 >
 > ✅ **커리큘럼 v3 P2 — ER 정본 콘텐츠(기함) + 파이프라인 (2026-09-09).** 파이프라인과 첫 부서 콘텐츠를 함께 냈다.
