@@ -58,6 +58,41 @@
 > mobile·deploy) 전부 그린**, staging 배포 + 스모크 **139/0** + 이미지 `staging-verified-dcf675e…` 태그. **리뷰랩 v40 서버 변경이
 > 비로소 staging에 올랐다**(아래 v40 항목의 "서버=promote"는 그때 실제로 배포되지 않았다). prod는 `promote.yml` 수동 승격 대기. **fan-out 게이트 추가**: 부서 커밋 전 v2 재지정 + `go test ./...` 전체 + 계약 무드리프트. [DECISIONS](DECISIONS.md) 2026-09-13.
 >
+> 🎉 **커리큘럼 v3 P2 — SIM(간호부·감염관리·시뮬랩) 완료 = 29/29 완주 (2026-09-17).** D-P2-E대로 15주제 ×
+> 21 = 315상황. 코어 4 유지(안전=훈련장 안전·감염관리 · 언어 · 인계=SBAR 시뮬 · 가족=표준화 가족 역할).
+> 심화 11 = 사전 브리핑 · 구조화된 디브리핑 · 술기 루브릭 · 팀 리더십 · 위기 자원 관리 · 근접사례 리뷰 ·
+> 수행 피드백 · 자기 성찰 · 동료 평가 · 재응시 · 대량재해 시뮬. `feedback` 축이 LOUNGE와 겹쳐
+> `sim-instructor-feedback`으로 구체화했다. 지도 검증: 기존 19,292건 제목과 완전 동일 0 · 유사도 0.62
+> 이상 0 · 제목 평균 36.5자. audit: 15주제 전부 21 이상 · THIN 0 · dup-title 0 · SIM 고아 0.
+> 게이트 3종 통과. 누적 태깅 20153 · 955주제 · **전 부서 THIN 0 · dup-title 0**. v2 스텝 10개 namesync.
+>
+> **① 이 부서만의 예외 규칙**: `patient`·`family`를 쓸 수 있으나 **실제 환자가 아니라 표준화 환자·가족
+> 역할을 맡은 배우**다. `sub`에 배우임을 반드시 밝히게 했고 38건 전부 표기되어 누락 0이다.
+> 화자는 colleague 88% · patient 4% · family 8%(D-P2-E 목표 80/15/5) — 평가·회고 주제에 표준화 환자를
+> 억지로 넣으면 타당성이 깨져 강제하지 않았고, 검수에서 "표준화 환자가 더 자연스러운데 동료로 쓰인 항목"을
+> 찾게 했으나 0건이었다.
+>
+> **② `acuity: critical`을 0으로 통일했다.** 클러스터마다 6·2·0·0으로 갈렸는데, **훈련이므로 실제로
+> 다치는 사람이 없다**. 0으로 맞춰야 다른 부서의 `critical`이 "진짜 위험"이라는 의미를 유지한다.
+> 이로써 부서별 `acuity` 기준이 세 갈래로 정리됐다: 임상 부서(환자 위험) · MORGUE(살아 있는 사람의
+> 신체 위협만) · SIM(critical 없음).
+>
+> **③ 검수 2건만 지목됐다(c3·c4는 0건).** ⓐ**동료 평가자가 제도적 결론을 통보** — "This means a retake"를
+> 동료 참가자가 말했는데 재응시 확정은 지도자의 권한이다 → 관찰 사실 전달과 기록까지로 한정 ⓑ**"마지막
+> 시도"가 재응시 이상의 불이익을 암시** → 제목은 지도 고정이므로 "이번 주기의 마지막이고 그다음은
+> 해고가 아니라 별도 지원 계획"임을 지도자가 밝히게 고쳤다. 검수자가 "디브리핑 주제가 이 부서에서 가장
+> 잘 만들어졌다"고 평가했다(advocacy-inquiry가 명시적으로 구현됨).
+>
+> ⚠️ **검증 방법의 결함을 발견해 정정했다(중요).** 그동안 부서별 고아를 `cmd/audit` 출력에서
+> `grep -c 'SCN-<DEPT>'`로 확인했는데, **audit은 고아를 앞 15건만 출력한다**(`firstN(rep.Orphans, 15)`).
+> 즉 15건 넘게 밀린 뒤로는 그 grep이 무의미했다. 직접 계산해 보니 **NURSERY와 SPECIALTY에 미태깅
+> 손저작이 12건씩 남아 있었다** — 두 부서의 "고아 0" 보고는 틀렸다. 24건을 태깅해 바로잡았고,
+> **이번 세션에서 착지한 9부서(ORTHOWARD·NURSERY·DERM·SPECIALTY·GEN·LOUNGE·SPD·MORGUE·SIM)는 전부 고아 0**임을
+> 스크립트로 재확인했다. 아울러 **기존 부서의 미태깅 손저작이 STATUS에 적혀 있던 113건이 아니라 실제
+> 233건**임이 드러났다(OR·PEDS·ER·ICU 각 15 / INFUSION·GERI·PICU·REHAB·HOSPICE·PSYCH·ONCO·WOMENKIDS·
+> NICU·RAD·ENDO·LD·DIAL 각 13 / ORIENT 3 / WARD 1). **부서 고아를 확인할 때는 audit 출력을 grep하지 말고
+> themes.yaml 대조로 직접 세야 한다.**
+>
 > ✅ **커리큘럼 v3 P2 — MORGUE(영안실·부검실) 완료 (2026-09-17, 28/29).** D-P2-E대로 15주제 × 21 = 315상황.
 > 코어 4 유지(안전=감염 시신 취급 · 언어=사망을 말하는 언어 · 인계 · 가족=유족 소통). 심화 11 = 시신 인수와
 > 보관 · 신원 확인 · 유족 참관 · 부검 절차 · 조직·장기 기증 · 문화·종교 관습 이행 · 소지품과 귀중품 ·
@@ -274,14 +309,13 @@
 > → `themes.yaml` 부서별 코어 4 + 심화 31 → 재생성 → audit(주제 전부 ≥20·THIN 0·dup-title 0·부서 고아 0). 부서 구조는
 > 11 도메인 · 35주제 · 각 21 상황(기초 6/응용 9/위기 6) = 735. **완료(26/29)**: ER(736) · ICU · OR · WARD · PEDS · NICU · PICU · LD · PSYCH · PHARMA · SURGWARD ·
 > ONCO · GERI · RAD · ENDO · DIAL · INFUSION · HOSPICE · REHAB · WOMENKIDS · ORTHOWARD · NURSERY · DERM · SPECIALTY · GEN (각 735)
-> **+ 비임상 LOUNGE(735) · SPD(315) · MORGUE(315)**. 임상 25부서 완주 · 비임상 3/4. 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
+> **+ 비임상 LOUNGE(735) · SPD(315) · MORGUE(315) · SIM(315)**. 🎉 **29/29 완주 — P2 콘텐츠 fan-out 종료.** 누적 태깅 14717 · 700주제. WOMENKIDS=여성소아외래(산과·부인과·소아 외래), 화자는 여성 본인·부모·청소년 혼합. map 중복 제목 32건 후행괄호 유일화, 청소년 ageRange teens→10s 정규화. 착지 파이프라인은 전부 비-LLM(스크립트·go·git)이라 주간 한도와 무관하게 실행 가능. HOSPICE 화자는 가족(531) 위주(임종·완화), REHAB는 환자(530) 위주(재활 능동 참여). map 스키마 편차 정규화(domains·title→name·평면 situations→티어 딕셔너리), 저작 상황을 `{title,focus}` 명시형으로 주어 제목 뭉갬 예방(HOSPICE c4·c6은 `fix_titles.py`로 사후 수선). 무효 collabWith(비-부서 코드 PSY·CHAP·SW·PT·OT·PHARM)는 QA 후 제거. seed 시 v2 스텝은 안정
 > 손저작 scn으로 repoint해 v2에 남긴다(L-U5; ONCO·GERI 각 10스텝 repoint → 전체 테스트 그린). 부서별 코어는 `core-*-<code>`(dept 스코프)로 그 부서 트랙을 이끈다(D-P2-D). 화자
 > 배분은 부서 특성대로: ICU 동료·가족, OR 동료, WARD 환자, PEDS·NICU 부모(가족) 위주(NICU는 신생아 비발화라 환자역할 0).
 > tagline 선행 무대지시 괄호는 QA 정규화로 제거(WARD 49건, PEDS·NICU 0건 — 저작 지시로 예방). 비임상 위치(LOUNGE·SPD·
 > MORGUE·SIM 등)는 35×21 임상 모델이 안 맞아 **D-P2-E로 곳마다 다른 규모를 결정했다**(LOUNGE 35주제=직장 생활 축 ·
 > SPD·MORGUE·SIM 각 15주제). **다음**: 남은 임상 4부서(NURSERY · DERM · GEN · SPECIALTY — map 4종 모두 준비·검증 완료)
-> **다음**: **SIM 하나만 남았다**(15주제 · 자체 저작 · 디브리핑 축). 그 뒤 완료 부서 손저작 태깅 잔여 확인 →
-> → 완료 부서 손저작 113건 태깅 → DB 시드 + 계약 전환 → P3.
+> **다음**: 기존 부서 손저작 **233건** 태깅(아래 ⚠️ 참조) → DB 시드 + 계약 전환 → P3-A 라이브 전환(L2~L4).
 >
 > ✅ **커리큘럼 v3 P2 — ER 정본 콘텐츠(기함) + 파이프라인 (2026-09-09).** 파이프라인과 첫 부서 콘텐츠를 함께 냈다.
 > **① 파이프라인**: `cmd/gencontent`에 seed 경로를 신설했다(`seeds.go`) — `content/nurse/topics/<code>.yaml`이
