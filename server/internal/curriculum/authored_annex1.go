@@ -143,14 +143,14 @@ var annex1 = []Curriculum{
 			{Kind: "dlg", Name: "캥거루 케어 첫 시도", ScenarioID: "SCN-NICU-00003"},
 			{Kind: "quiz", Name: "미숙아 위험 징후", ScenarioID: "QZ-NICU-00001"},
 			{Kind: "dlg", Name: "미숙아 부모 상담", ScenarioID: "SCN-NICU-00001"},
-			{Kind: "boss", Name: "부모 정서 위기 지원", ScenarioID: "SCN-NICU-00582"},
+			{Kind: "boss", Name: "다른 부모들의 시선을 의식하며 위축되는 어머니를 지지하기 · Jenna Medina", ScenarioID: "SCN-NICU-00582"},
 		},
 	},
 	{
 		Key: "별관 1|4F|nicugrow", Name: "신생아중환자실 · 자라는 아기",
 		Building: "별관 1", Floor: "4F", Where: "별관 1 4F 신생아·소아 중환자실",
 		Steps: []Step{
-			{Kind: "dlg", Name: "광선치료 소개", ScenarioID: "SCN-NICU-00145"},
+			{Kind: "dlg", Name: "지질 주입을 시작하며 뿌옇게 보이는 수액을 신기해하는 아버지에게 무엇이 들었는지 알려주기 · Mateo Blackwood", ScenarioID: "SCN-NICU-00145"},
 			{Kind: "dlg", Name: "미숙아 위관 영양 안내", ScenarioID: "SCN-NICU-00002"},
 			{Kind: "dlg", Name: "수유 진전 상담", ScenarioID: "SCN-NICU-00005"},
 			{Kind: "boss", Name: "NICU 퇴원 준비 교육", ScenarioID: "SCN-NICU-00006"},
@@ -162,7 +162,7 @@ var annex1 = []Curriculum{
 		Steps: []Step{
 			{Kind: "dlg", Name: "미숙아 산소 관리 안내", ScenarioID: "SCN-NICU-00004"},
 			{Kind: "event", Name: "미숙아 감염 관찰", ScenarioID: "SCN-NICU-00007"},
-			{Kind: "boss", Name: "급변 상황 인계", ScenarioID: "SCN-NICU-00833"},
+			{Kind: "boss", Name: "통증완화 방법이 듣지 않는 아기를 보며 초조해하는 부모를 진정시키기 · Wilhelmina White", ScenarioID: "SCN-NICU-00833"},
 		},
 	},
 	{
