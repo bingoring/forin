@@ -90,8 +90,8 @@ var annex1 = []Curriculum{
 		Building: "별관 1", Floor: "3F", Where: "별관 1 3F 가족 분만실 · 신생아실",
 		Steps: []Step{
 			{Kind: "dlg", Name: "신생아 첫 대면(황금시간)", ScenarioID: "SCN-LD-00006"},
-			{Kind: "dlg", Name: "초기 수유 개시 지원", ScenarioID: "SCN-LD-00801"},
-			{Kind: "boss", Name: "분만실 회복실 인계", ScenarioID: "SCN-LD-00822"},
+			{Kind: "dlg", Name: "외회전술 도중 통증을 호소하는 산모의 반응을 보고 시술 중단 여부 판단을 도와주기 · Zara Wu", ScenarioID: "SCN-LD-00801"},
+			{Kind: "boss", Name: "오로 양상이 평소와 다르게 냄새가 난다는 산모의 호소를 감염 징후와 연결해 살펴보기 · Samira Winkler", ScenarioID: "SCN-LD-00822"},
 		},
 	},
 	{
