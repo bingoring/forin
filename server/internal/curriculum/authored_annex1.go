@@ -59,7 +59,7 @@ var annex1 = []Curriculum{
 			{Kind: "dlg", Name: "예방접종 이상반응", ScenarioID: "SCN-PEDS-00013"},
 			{Kind: "dlg", Name: "중이염 상담", ScenarioID: "SCN-PEDS-00009"},
 			{Kind: "dlg", Name: "소아 탈수 사정", ScenarioID: "SCN-PEDS-00006"},
-			{Kind: "boss", Name: "퇴원 회복 교육", ScenarioID: "SCN-PEDS-00640"},
+			{Kind: "boss", Name: "금식 지시를 다르게 이해한 것을 확인해 진정 전 다시 바로잡기 · Teresa Reid", ScenarioID: "SCN-PEDS-00640"},
 		},
 	},
 	{
