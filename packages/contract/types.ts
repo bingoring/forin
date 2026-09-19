@@ -1587,6 +1587,42 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/journey": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 여정 지도 — 목표 부서 트랙 + 자유 탐방 */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.JourneyView"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/missions": {
         parameters: {
             query?: never;
@@ -2801,6 +2837,19 @@ export interface components {
             total?: number;
             track?: string;
         };
+        "github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry": {
+            /** @description 부서 코드 — 아이콘과 라벨을 고르는 키 */
+            dept?: string;
+            /** @description 통과한 정거장 수 = 도장 카운트 */
+            passed?: number;
+            total?: number;
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.JourneyView": {
+            freeRoam?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry"][];
+            goalDept?: string;
+            inferred?: boolean;
+            track?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"];
+        };
         "github_com_bingoring_forin_server_internal_domain_learning.Milestone": {
             name?: string;
             /** @description passed | open | closed */
@@ -2970,6 +3019,12 @@ export interface components {
             displayName?: string;
             /** @description equipped career title id (may be empty) */
             equippedTitle?: string;
+            /**
+             * @description GoalDept is the department whose track the journey map draws. "" means the
+             *     learner has not chosen one yet, and the server infers a starting point per
+             *     request WITHOUT persisting it — a path picked for you is not a path you chose.
+             */
+            goalDept?: string;
             /** @description MVP: "nurse" */
             job?: string;
             /** @description user's language, e.g. "ko" */

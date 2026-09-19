@@ -189,6 +189,31 @@ components:
         track:
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry:
+      properties:
+        dept:
+          description: 부서 코드 — 아이콘과 라벨을 고르는 키
+          type: string
+        passed:
+          description: 통과한 정거장 수 = 도장 카운트
+          type: integer
+        total:
+          type: integer
+      type: object
+    github_com_bingoring_forin_server_internal_domain_learning.JourneyView:
+      properties:
+        freeRoam:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry'
+          type: array
+          uniqueItems: false
+        goalDept:
+          type: string
+        inferred:
+          type: boolean
+        track:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.TrackGroup'
+      type: object
     github_com_bingoring_forin_server_internal_domain_learning.Milestone:
       properties:
         name:
@@ -482,6 +507,12 @@ components:
           type: string
         equippedTitle:
           description: equipped career title id (may be empty)
+          type: string
+        goalDept:
+          description: |-
+            GoalDept is the department whose track the journey map draws. "" means the
+            learner has not chosen one yet, and the server infers a starting point per
+            request WITHOUT persisting it — a path picked for you is not a path you chose.
           type: string
         job:
           description: 'MVP: "nurse"'
@@ -2043,6 +2074,20 @@ paths:
       summary: My invite code (mints one when absent; ?rotate=1 issues a fresh one)
       tags:
       - colleagues
+  /me/journey:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.JourneyView'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 여정 지도 — 목표 부서 트랙 + 자유 탐방
+      tags:
+      - progress
   /me/missions:
     get:
       responses:
