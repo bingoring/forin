@@ -29,13 +29,16 @@ func (journeyProgress) ClearedByGuide(context.Context, string) (map[string]bool,
 type fakeUsers struct {
 	ports.UserRepo // 나머지 호출은 패닉 — 핸들러가 다른 것을 만지지 않음을 증명한다
 	goal           string
-	set            string
 }
 
 func (f fakeUsers) GetProfile(context.Context, string) (*user.Profile, error) {
 	return &user.Profile{GoalDept: f.goal}, nil
 }
-func (f fakeUsers) SetGoalDept(_ context.Context, _, dept string) error { f.set = dept; return nil }
+
+// SetGoalDept is deliberately NOT overridden here: the embedded nil ports.UserRepo
+// panics on any call this handler makes to it. /me/journey only ever READS the
+// stored goal — an inferred department is never persisted (J4) — so this is the
+// guard that catches a regression, not a gap in the fake.
 
 type stubJourneys struct{ j learning.Journey }
 
@@ -73,6 +76,27 @@ func TestJourney_UnknownGoalFallsBackRatherThanDrawingNothing(t *testing.T) {
 	getJSON(t, h.journey, "/me/journey", &out)
 	if out.Track.Dept == "" || !out.Inferred {
 		t.Fatalf("a goal that left the content falls back to inference: %+v", out)
+	}
+}
+
+// A stored goal can name a department that has a floor (so it wins, not-inferred)
+// but no track in today's catalog (content not tagged yet). The response must not
+// contradict itself: goalDept and track.dept name the same place, even when that
+// track is empty.
+func TestJourney_StoredGoalWithNoTrackStillNamesItself(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "ICU"}, // has a floor (campus.Of), absent from fakeTracks()
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
+	}
+	var out learning.JourneyView
+	getJSON(t, h.journey, "/me/journey", &out)
+
+	if out.GoalDept != "ICU" || out.Inferred {
+		t.Fatalf("a stored, valid goal is drawn as chosen: %+v", out)
+	}
+	if out.Track.Dept != out.GoalDept {
+		t.Fatalf("goalDept and track.dept must agree: goalDept=%q track.dept=%q", out.GoalDept, out.Track.Dept)
 	}
 }
 

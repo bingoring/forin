@@ -52,6 +52,9 @@ func (h *journeyHandler) journey(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
+	if view.Track.Dept == "" {
+		view.Track.Dept = goal // no track to draw yet, but say whose empty path this is
+	}
 	if view.Track.Curricula == nil {
 		view.Track.Curricula = []learning.CurriculumState{}
 	}
