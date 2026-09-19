@@ -92,6 +92,35 @@ describe('StationSheet', () => {
     expect(texts(tree).filter((x) => x === '다시')).toHaveLength(1);
   });
 
+  // done + attempted는 실사용에서 나올 수 있는 조합이다(위 테스트의 목 데이터도 이미 쓴다) —
+  // 이미 통과한 행은 배지만이 아니라 배경색도 재도전 강조색(`rgba(143,199,232,.22)`)으로
+  // 물들면 안 된다. 배지 쪽 조건과 배경색 쪽 조건은 서로 다른 자리(JSX 렌더 조건 vs
+  // `retry` 계산)에서 각각 지켜지므로, 배지만 보는 단정으로는 이 성질을 못 잡는다.
+  it('never tints an already-passed row with the retry accent, even when attempted is set', async () => {
+    (api.station as jest.Mock).mockResolvedValue({
+      station: { themeKey: 'k', name: 'a', done: 1, total: 1, tiers: [] },
+      steps: [
+        { kind: 'dlg', name: 'done-row', state: 'done', pass: 1, passes: 1, attempted: true },
+      ],
+    });
+    const tree = await mount('k');
+    expect(stepRow(tree.root, 0).props.style.backgroundColor).not.toBe('rgba(143,199,232,.22)');
+  });
+
+  // `now`는 한 주제에 정확히 하나다 — 시트가 그것을 지어내면 안 된다. done과 lock만 있고
+  // `now`가 전혀 없는 목록을 주면 NOW 배지가 어디에도 뜨면 안 된다.
+  it('never invents a now row when the server sent none', async () => {
+    (api.station as jest.Mock).mockResolvedValue({
+      station: { themeKey: 'k', name: 'a', done: 1, total: 2, tiers: [] },
+      steps: [
+        { kind: 'dlg', name: 'done-row', state: 'done', pass: 1, passes: 1 },
+        { kind: 'dlg', name: 'lock-row', state: 'lock', pass: 1, passes: 1 },
+      ],
+    });
+    const tree = await mount('k');
+    expect(texts(tree).filter((x) => x === 'NOW')).toHaveLength(0);
+  });
+
   // 시트는 즉시 열고 행 자리에 스켈레톤을 둔다 — 열림이 지연되면 탭이 씹힌 것처럼
   // 읽힌다. 네트워크가 아직 돌아오지 않은 첫 렌더에서도 스켈레톤이 이미 있어야 한다.
   it('opens immediately with a skeleton, before the network call resolves', async () => {
