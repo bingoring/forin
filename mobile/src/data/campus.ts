@@ -1,6 +1,7 @@
-// Campus hub presentation. The PATH itself (buildings → floors → curricula) comes
-// from GET /me/curriculum; what stays here is only what the server has no opinion
-// about — a building's colour and icon, and which departments you can walk around.
+// Campus hub presentation. The PATH itself (buildings → floors → curricula) used to
+// come from the server's now-retired campus route (L4.4 — the journey map replaced
+// the campus screen); what stays here is only what the server had no opinion about —
+// a building's colour and icon, and which departments you can walk around.
 //
 // The floor list used to live here too, and it had silently drifted from the
 // server's: a "5-8F" row that merged four real floors, and CH.N chips pointing at
@@ -37,8 +38,9 @@ export const STEP_META: Record<StepKind, { icon: IconName; nbIcon: NbIconName; l
  * 16px and say what happens inside.
  *
  * The KEYS stay Korean because they are not display text — they are the exact
- * strings GET /me/curriculum sends, and the lookup has to match them. The subtitle
- * is display text, so it carries a translation key.
+ * building-name strings the old (now-retired, L4.4) campus route sent, and the
+ * lookup has to match them. The subtitle is display text, so it carries a
+ * translation key.
  */
 export const BUILDING_STYLE: Record<string, { icon: FIconName; nbIcon: NbIconName; accent: string; subKey: string; nameKey: string }> = {
   // `nbIcon` is the 근무 수첩 line's doodle, beside the pixel line's `icon`. Two names

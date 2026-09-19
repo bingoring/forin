@@ -161,55 +161,6 @@ export interface DeptSituation {
   tag: string;
 }
 
-// Chapter/step curriculum with per-user progress (server: GET /me/curriculum).
-export interface CurriculumStep {
-  kind: 'dlg' | 'quiz' | 'event' | 'boss';
-  name: string; scenarioId?: string;
-  state: 'done' | 'now' | 'lock' | 'optional'; // optional = bonus quiz (doesn't gate)
-  /** Played, graded below the bar. Orthogonal to `state`: a step you failed is still
-   *  'now' (it is what to do next) and its successors are still 'lock' (clearing is
-   *  what unlocks). The server only sets it where it means something — never on a
-   *  'done' or 'lock' step. */
-  attempted?: boolean;
-  optional?: boolean;
-  /** How much help THIS entry gives. A dialogue appears twice in the list — once
-   *  guided, once alone — and these are the two entries; without this the learner would
-   *  see the same title twice with no way to tell which is which. */
-  guide?: 'choices' | 'free';
-  /** The rung, as "1/2" and "2/2". Absent on steps with only one run (boss, quiz). */
-  pass?: number;
-  passes?: number;
-}
-// One themed curriculum on one floor. `state` has no 'lock': every floor and
-// curriculum is open, and the sequence lives inside a curriculum (server
-// business-rules R9) — drawing a padlock here would contradict that on screen.
-// `resume` is set on exactly one curriculum in the whole payload, and the home
-// tab's "오늘의 한 가지" points at the same one; both read the server's flag rather
-// than deciding for themselves, because two screens computing "what's next"
-// separately is how they end up disagreeing.
-export interface Curriculum {
-  key: string; name: string; building: string; floor: string; where: string;
-  done: number; total: number;
-  state: 'done' | 'doing' | 'todo'; next?: string; resume?: boolean;
-  steps?: CurriculumStep[];
-}
-export interface CurriculumFloor { floor: string; where: string; curricula: Curriculum[] }
-export interface CurriculumBuilding { building: string; floors: CurriculumFloor[] }
-
-// 커리큘럼 v3 — 주제 기반 여정 트랙 (additive /me/curriculum/tracks).
-// P3 여정 지도에서 소비한다. P2 태깅 전까지 서버는 빈 배열을 준다.
-/** 정거장(주제) 안 난이도 계단 요약. 스텝 개별은 정거장 시트에서 지연 로드. */
-export interface ThemeTierCount { difficulty: number; done: number; total: number; unlocked: boolean }
-/** 여정의 정거장 = 하나의 주제. */
-export interface ThemeCurriculumState {
-  themeKey: string; name: string; track: 'core' | 'depth' | 'collab'; dept: string;
-  collabWith?: string; done: number; total: number;
-  state: 'passed' | 'here' | 'open'; tiers: ThemeTierCount[]; resume: boolean;
-}
-export interface ThemeMilestone { name: string; state: 'passed' | 'open' | 'closed' }
-/** 하나의 여정 트랙: CORE(공통 코어) 또는 부서. */
-export interface JourneyTrack { dept: string; curricula: ThemeCurriculumState[]; milestone?: ThemeMilestone }
-
 // 여정 지도 (Task 8) — 계약 생성 타입을 그대로 재수출한다. 손으로 다시 쓰지 않는다:
 // Go가 정본이고 packages/contract는 생성물이다.
 /** 목표 밖 부서 하나. 잠금 없음 — 칩은 문이지, 문의 예고가 아니다. */
@@ -878,24 +829,6 @@ export const api = {
   async searchSituations(q: string, limit = 20): Promise<DeptSituation[]> {
     const { data } = await http.get('/me/situations', { params: { q, limit } });
     return (data as { situations?: DeptSituation[] }).situations ?? [];
-  },
-
-  /**
-   * The whole path, grouped building → floor → curriculum, with per-user progress.
-   *
-   * Grouped by the server because the ORDER is the learning order, derived from a
-   * floor tier table the client does not have — a client that regrouped a flat
-   * list would have to reproduce it and would drift.
-   */
-  async curriculum(): Promise<CurriculumBuilding[]> {
-    const { data } = await http.get('/me/curriculum');
-    return (data as { buildings: CurriculumBuilding[] }).buildings ?? [];
-  },
-
-  // 커리큘럼 v3 여정 트랙 (additive). P3 여정 지도가 소비한다. 현재 UI 미배선.
-  async curriculumTracks(): Promise<JourneyTrack[]> {
-    const { data } = await http.get('/me/curriculum/tracks');
-    return (data as { tracks: JourneyTrack[] }).tracks ?? [];
   },
 
   /** 여정 지도 — 목표 부서 트랙 + 자유 탐방. 정거장 좌표는 클라이언트가 계산한다(J10). */

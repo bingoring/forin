@@ -1320,82 +1320,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/me/curriculum": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Building/floor/curriculum path with per-user progress */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            [key: string]: components["schemas"]["internal_adapters_http.legacyBuilding"][];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/me/curriculum/tracks": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** 커리큘럼 v3 — 주제 기반 여정 트랙 */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"][];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/me/daily-board": {
         parameters: {
             query?: never;
@@ -3391,41 +3315,6 @@ export interface components {
             progress?: components["schemas"]["internal_adapters_http.homeProgress"];
             scenarioId?: string;
             title?: string;
-        };
-        "internal_adapters_http.legacyBuilding": {
-            building?: string;
-            floors?: components["schemas"]["internal_adapters_http.legacyFloor"][];
-        };
-        "internal_adapters_http.legacyCurriculum": {
-            building?: string;
-            done?: number;
-            floor?: string;
-            key?: string;
-            name?: string;
-            /** @description name of the current (now) step */
-            next?: string;
-            resume?: boolean;
-            /** @description done | doing | todo */
-            state?: string;
-            steps?: components["schemas"]["internal_adapters_http.legacyStep"][];
-            total?: number;
-            where?: string;
-        };
-        "internal_adapters_http.legacyFloor": {
-            curricula?: components["schemas"]["internal_adapters_http.legacyCurriculum"][];
-            floor?: string;
-            where?: string;
-        };
-        "internal_adapters_http.legacyStep": {
-            attempted?: boolean;
-            guide?: string;
-            kind?: string;
-            name?: string;
-            optional?: boolean;
-            pass?: number;
-            passes?: number;
-            scenarioId?: string;
-            state?: string;
         };
         "internal_adapters_http.loginResp": {
             tokens?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];

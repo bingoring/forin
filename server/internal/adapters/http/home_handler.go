@@ -8,6 +8,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/domain/campus"
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/home"
 	"github.com/bingoring/forin/server/internal/domain/learning"
@@ -133,9 +134,10 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 
 	// Independent reads, run together — the slowest one sets the latency, not the sum.
 	var (
-		wg        sync.WaitGroup
-		mu        sync.Mutex
-		curricula []legacyCurriculum
+		wg   sync.WaitGroup
+		mu   sync.Mutex
+		jrny learning.Journey
+		lp   learning.Progress
 	)
 	run := func(f func()) { wg.Add(1); go func() { defer wg.Done(); f() }() }
 
@@ -172,13 +174,15 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 	})
 
 	run(func() {
-		// One read of the learner's state, then the SAME presentation the career tab
-		// gets — the home card and the career hero must not drift apart, and they
-		// cannot when both read one resolution instead of each walking the journey.
+		// One read of the learner's state, then the SAME port the career tab reads —
+		// the home card and the career hero must not drift apart, and they cannot
+		// when both read Resume/Tracks/Steps directly instead of each walking a
+		// presenter of their own (L4.4 retired the campus presenter).
 		p := learningProgress(ctx, h.progress, uid)
-		cs := legacyCurricula(journeyFor(ctx, h.journeys), p, locale)
+		j := journeyFor(ctx, h.journeys)
 		mu.Lock()
-		curricula = cs
+		lp = p
+		jrny = j
 		// Derived from cleared content rather than from XP or level: those move for
 		// reasons other than finishing something, so a user who earned a little XP and
 		// stopped would stop counting as new while still never having completed a step.
@@ -237,8 +241,8 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 
 	wg.Wait()
 
-	// Derived — needs the curriculum result, so it happens after the fan-in.
-	dept, deptLabel, today := currentStep(curricula, i18n.FromContext(r.Context()))
+	// Derived — needs the journey resolution, so it happens after the fan-in.
+	dept, deptLabel, today := currentStep(jrny, lp, locale)
 	resp.TodayOne = today
 	resp.Done = today == nil // no next step today → the rest card
 	if deptLabel != "" {
@@ -310,58 +314,65 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 
 // displayName is a placeholder until profiles carry a nickname: the UI needs
 // something stable and non-identifying, so we use a short id prefix.
-// currentStep finds the curriculum to continue and its active step. Returns
+// currentStep finds the resume target and its active step directly off the journey
+// port (L4.4 — the campus presenter that used to sit between them is gone). Returns
 // ("", "", nil) when everything is finished — the caller then shows the rest card
 // instead of inventing a task.
 //
-// It reads the Resume flag rather than searching for the first unfinished
-// curriculum itself: the career tab draws its hero from the same flag, and two
-// screens computing "what's next" separately is how they end up disagreeing.
-func currentStep(curricula []legacyCurriculum, loc string) (dept, deptLabel string, one *homeTodayOne) {
-	for _, c := range curricula {
-		if !c.Resume {
-			continue
-		}
-		deptLabel = c.Where
-		dept = deptTag(c.Where)
-		for _, st := range c.Steps {
-			if st.State == "now" {
-				return dept, deptLabel, &homeTodayOne{
-					Chapter:    c.Where + " · " + c.Name,
-					Title:      i18n.Tr(loc, st.ScenarioID, st.Name),
-					Kind:       st.Kind,
-					ScenarioID: st.ScenarioID,
-					Progress:   &homeProgress{Done: c.Done, Total: c.Total},
-				}
+// It reads Resume rather than searching Tracks for the first unfinished theme
+// itself: the career tab draws its hero from the same port, and two screens
+// computing "what's next" separately is how they end up disagreeing. Home asks
+// GLOBALLY ("what to continue, anywhere"); the journey screen asks inside the goal
+// track — different questions, so they are allowed to point at different places (J7).
+func currentStep(j learning.Journey, p learning.Progress, loc string) (dept, deptLabel string, one *homeTodayOne) {
+	ref := j.Resume(p)
+	if !ref.Found {
+		return "", "", nil
+	}
+	// The station's name and department come from Tracks — the same list the journey
+	// screen draws from, found by the theme Resume just pointed at.
+	var stationName string
+	for _, tg := range j.Tracks(p) {
+		for _, cs := range tg.Curricula {
+			if cs.ThemeKey != string(ref.Theme) {
+				continue
+			}
+			stationName = i18n.Tr(loc, cs.ThemeKey, cs.Name)
+			dept = strings.ToLower(tg.Dept)
+			deptLabel = tg.Dept
+			if fl, ok := campus.Of(tg.Dept); ok {
+				deptLabel = i18n.Tr(loc, fl.Building+"|"+fl.Label, fl.Where)
 			}
 		}
-		// Reachable only if a curriculum has no required steps at all, which
-		// catalog_test.go forbids. Kept so a future authoring slip degrades to "no
-		// task today" rather than a nil deref.
-		return dept, deptLabel, nil
 	}
-	return "", "", nil
-}
-
-// deptTag maps a curriculum department label ("본관 1F 로비 · ER") to the short tag
-// used by the content pools.
-func deptTag(label string) string {
-	l := strings.ToLower(label)
-	switch {
-	case strings.Contains(l, "er") || strings.Contains(l, "응급"):
-		return "er"
-	case strings.Contains(l, "or") || strings.Contains(l, "수술"):
-		return "or"
-	case strings.Contains(l, "icu") || strings.Contains(l, "중환자"):
-		return "icu"
-	case strings.Contains(l, "peds") || strings.Contains(l, "소아"):
-		return "peds"
-	case strings.Contains(l, "pharm") || strings.Contains(l, "약"):
-		return "pharma"
-	case strings.Contains(l, "ward") || strings.Contains(l, "병동"):
-		return "ward"
+	rows := j.Steps(ref.Theme, p)
+	done, total := 0, 0
+	for _, st := range rows {
+		if st.Optional {
+			continue // a bonus quiz gates nothing and is not counted
+		}
+		total++
+		if st.State == "done" {
+			done++
+		}
 	}
-	return ""
+	for _, st := range rows {
+		if st.State == "now" {
+			one = &homeTodayOne{
+				Chapter:    deptLabel + " · " + stationName,
+				Title:      i18n.Tr(loc, st.ScenarioID, st.Name),
+				Kind:       st.Kind,
+				ScenarioID: st.ScenarioID,
+				Progress:   &homeProgress{Done: done, Total: total},
+			}
+			break
+		}
+	}
+	// one stays nil only if a resumed theme's rows have no `now` at all, which the
+	// journey engine forbids (I4: at most one `now` per theme, and Resume always
+	// points at a theme with a step left). Kept so a future authoring slip degrades
+	// to "no task today" rather than a nil deref.
+	return dept, deptLabel, one
 }
 
 func itoa(n int) string {

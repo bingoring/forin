@@ -28,42 +28,6 @@ type progressHandler struct {
 // constraint). Kept in sync with the mobile mission catalog.
 var allowedMissions = map[string]bool{"veteran": true, "iron_will": true, "beloved": true}
 
-// @Summary Building/floor/curriculum path with per-user progress
-// @Tags progress
-// @Security Bearer
-// @Success 200 {object} map[string][]http.legacyBuilding
-// @Router /me/curriculum [get]
-//
-// Served by the campus PRESENTER over the journey engine, not by a second engine:
-// the journey is organised by theme and department, and this screen draws buildings.
-// It lives for one release, until the client reads /me/curriculum/tracks (P3-A §4).
-func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
-	j, p := h.journey(r)
-	httpx.JSON(w, http.StatusOK, map[string]any{
-		"buildings": legacyBuildings(legacyCurricula(j, p, p.Locale)),
-	})
-}
-
-// @Summary 커리큘럼 v3 — 주제 기반 여정 트랙
-// @Tags progress
-// @Security Bearer
-// @Success 200 {object} map[string][]learning.TrackGroup
-// @Router /me/curriculum/tracks [get]
-func (h *progressHandler) curriculumTracks(w http.ResponseWriter, r *http.Request) {
-	j, p := h.journey(r)
-	tracks := j.Tracks(p)
-	if tracks == nil {
-		tracks = []learning.TrackGroup{}
-	}
-	httpx.JSON(w, http.StatusOK, map[string]any{"tracks": tracks})
-}
-
-// journey resolves this request's engine and the learner's progress in one place.
-func (h *progressHandler) journey(r *http.Request) (learning.Journey, learning.Progress) {
-	uid, _ := UserID(r.Context())
-	return journeyFor(r.Context(), h.journeys), learningProgress(r.Context(), h.progress, uid)
-}
-
 // @Summary Discovered hidden missions
 // @Tags progress
 // @Security Bearer

@@ -9,7 +9,6 @@ import { loadSfxPreference, primeSfx } from '@/lib/sfx';
 import { loadLocale, onLocaleChange, useLocale, useT } from '@/i18n';
 import { loadAvatar } from '@/lib/avatar';
 import { loadDialogueLayout } from '@/lib/dialogueLayout';
-import { loadFavorites } from '@/lib/favorites';
 import { loadDailyBrief } from '@/lib/dailyBrief';
 import { loadGameScores } from '@/lib/gameScores';
 import { initPresence } from '@/lib/wardPresence';
@@ -68,7 +67,7 @@ export default function RootLayout() {
     // the root (a locale change) does not stack listeners.
     initPresence();
     const slowTimer = setTimeout(() => setSlow(true), SLOW_BOOT_MS);
-    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadFavorites(), loadDialogueLayout(), loadDailyBrief(), loadGameScores()])
+    Promise.all([bootstrapSession(), hydrateEconomy(() => api.economyConfig()), loadSfxPreference(), loadLocale(), loadAvatar(), loadDialogueLayout(), loadDailyBrief(), loadGameScores()])
       .finally(() => { clearTimeout(slowTimer); setHydrated(true); });
     return () => clearTimeout(slowTimer);
   }, []);
