@@ -7,7 +7,9 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+	"time"
 
+	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -141,6 +143,26 @@ func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
 	}
 }
 
+// TestJourney_RequiresAuth follows the requireAuth-wrapping pattern established by
+// TestSpeechAudioRequiresAuth (speech_audio_handler_test.go): wrap the bare handler
+// in the real requireAuth middleware and call it with no bearer token, expecting
+// 401. Route registration in router.go wraps this handler in auth(...) already;
+// this test is what makes that wrapping a guarded fact instead of an unverified
+// convention.
+func TestJourney_RequiresAuth(t *testing.T) {
+	h := &journeyHandler{}
+	tokens := auth.NewTokenService([]byte("test-signing-key-0123456789"), "forin-test", time.Hour)
+	handler := requireAuth(tokens)(http.HandlerFunc(h.journey))
+
+	req := httptest.NewRequest(http.MethodGet, "/me/journey", nil)
+	w := httptest.NewRecorder()
+	handler.ServeHTTP(w, req)
+
+	if w.Code != http.StatusUnauthorized {
+		t.Fatalf("no bearer token must be 401, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
 func TestStation_ReturnsRowsForAKnownTheme(t *testing.T) {
 	h := &journeyHandler{
 		progress: journeyProgress{},
@@ -206,10 +228,42 @@ func TestSetGoalDept_RejectsADepartmentTheLiftCannotReach(t *testing.T) {
 	}
 }
 
+// TestSetGoalDept_RequiresAuth — see TestJourney_RequiresAuth for the pattern this
+// follows (TestSpeechAudioRequiresAuth in speech_audio_handler_test.go).
+func TestSetGoalDept_RequiresAuth(t *testing.T) {
+	h := &journeyHandler{}
+	tokens := auth.NewTokenService([]byte("test-signing-key-0123456789"), "forin-test", time.Hour)
+	handler := requireAuth(tokens)(http.HandlerFunc(h.setGoalDept))
+
+	req := httptest.NewRequest(http.MethodPatch, "/me/goal-dept", strings.NewReader(`{"dept":"WARD"}`))
+	w := httptest.NewRecorder()
+	handler.ServeHTTP(w, req)
+
+	if w.Code != http.StatusUnauthorized {
+		t.Fatalf("no bearer token must be 401, got %d: %s", w.Code, w.Body.String())
+	}
+}
+
 func TestStation_UnknownThemeIs404(t *testing.T) {
 	h := &journeyHandler{progress: journeyProgress{}, journeys: stubJourneys{j: journeyStub{}}}
 	code := getStatusPath(t, h.station, "/me/journey/stations/nope", "themeKey", "nope")
 	if code != http.StatusNotFound {
 		t.Fatalf("an unknown theme is 404, not an empty sheet: a silent blank hides a content accident, got %d", code)
+	}
+}
+
+// TestStation_RequiresAuth — see TestJourney_RequiresAuth for the pattern this
+// follows (TestSpeechAudioRequiresAuth in speech_audio_handler_test.go).
+func TestStation_RequiresAuth(t *testing.T) {
+	h := &journeyHandler{}
+	tokens := auth.NewTokenService([]byte("test-signing-key-0123456789"), "forin-test", time.Hour)
+	handler := requireAuth(tokens)(http.HandlerFunc(h.station))
+
+	req := httptest.NewRequest(http.MethodGet, "/me/journey/stations/core-safety-er", nil)
+	w := httptest.NewRecorder()
+	handler.ServeHTTP(w, req)
+
+	if w.Code != http.StatusUnauthorized {
+		t.Fatalf("no bearer token must be 401, got %d: %s", w.Code, w.Body.String())
 	}
 }
