@@ -60,3 +60,35 @@ func (h *journeyHandler) journey(w http.ResponseWriter, r *http.Request) {
 	}
 	httpx.JSON(w, http.StatusOK, view)
 }
+
+// @Summary 정거장 상세 — 그 주제의 스텝 목록 (지연 로드)
+// @Tags progress
+// @Security Bearer
+// @Success 200 {object} learning.StationDetail
+// @Router /me/journey/stations/{themeKey} [get]
+func (h *journeyHandler) station(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	uid, _ := UserID(ctx)
+	key := r.PathValue("themeKey")
+	p := learningProgress(ctx, h.progress, uid)
+	j := journeyFor(ctx, h.journeys)
+
+	var found *learning.CurriculumState
+	for _, tg := range j.Tracks(p) {
+		for i := range tg.Curricula {
+			if tg.Curricula[i].ThemeKey == key {
+				found = &tg.Curricula[i]
+				break
+			}
+		}
+	}
+	if found == nil {
+		httpx.Error(w, http.StatusNotFound, "unknown theme")
+		return
+	}
+	steps := j.Steps(learning.ThemeKey(key), p)
+	if steps == nil {
+		steps = []learning.StepState{}
+	}
+	httpx.JSON(w, http.StatusOK, learning.StationDetail{Station: *found, Steps: steps})
+}

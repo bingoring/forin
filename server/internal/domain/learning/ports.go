@@ -103,6 +103,17 @@ type StepState struct {
 	Passes int        `json:"passes,omitempty"`
 }
 
+// StationDetail is one station's sheet: the station itself plus its rows. The list
+// view carries counts only, so the rows are fetched when the sheet opens — the map
+// does not carry 955 themes' worth of steps.
+//
+// Station is re-sent rather than trusted from the list: progress can have moved on
+// another device since the map was drawn.
+type StationDetail struct {
+	Station CurriculumState `json:"station"`
+	Steps   []StepState     `json:"steps"`
+}
+
 // Milestone is a track-level exam (부서 시험).
 type Milestone struct {
 	Name  string `json:"name"`

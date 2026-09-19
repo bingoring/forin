@@ -200,6 +200,16 @@ components:
         total:
           type: integer
       type: object
+    github_com_bingoring_forin_server_internal_domain_learning.GuideLevel:
+      description: Guide/Pass/Passes describe the rung. Absent on steps with a single
+        run.
+      enum:
+      - choices
+      - free
+      type: string
+      x-enum-varnames:
+      - GuideChoices
+      - GuideFree
     github_com_bingoring_forin_server_internal_domain_learning.JourneyView:
       properties:
         freeRoam:
@@ -220,6 +230,45 @@ components:
           type: string
         state:
           description: passed | open | closed
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_learning.StationDetail:
+      properties:
+        station:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.CurriculumState'
+        steps:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.StepState'
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_learning.StepState:
+      properties:
+        attempted:
+          description: |-
+            Attempted marks a run played but graded below the bar. Set only where it says
+            something — never on a done or lock row, where a "tried" badge would contradict.
+          type: boolean
+        guide:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.GuideLevel'
+        kind:
+          description: 'dlg | quiz | event | boss (S4: open string)'
+          type: string
+        name:
+          type: string
+        optional:
+          description: 'Optional marks a bonus quiz: playable any time, gates nothing,
+            uncounted.'
+          type: boolean
+        pass:
+          type: integer
+        passes:
+          type: integer
+        scenarioId:
+          type: string
+        state:
+          description: State is done | now | lock | optional. There is exactly one
+            `now` per theme.
           type: string
       type: object
     github_com_bingoring_forin_server_internal_domain_learning.TierCount:
@@ -2086,6 +2135,20 @@ paths:
       security:
       - Bearer: []
       summary: 여정 지도 — 목표 부서 트랙 + 자유 탐방
+      tags:
+      - progress
+  /me/journey/stations/{themeKey}:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.StationDetail'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 정거장 상세 — 그 주제의 스텝 목록 (지연 로드)
       tags:
       - progress
   /me/missions:

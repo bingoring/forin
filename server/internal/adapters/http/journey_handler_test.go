@@ -2,12 +2,44 @@ package http
 
 import (
 	"context"
+	"encoding/json"
+	"net/http"
+	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/ports"
 )
+
+// getJSONPath는 net/http의 경로 변수를 심어 핸들러를 직접 부른다(라우터를 거치지 않는다).
+func getJSONPath(t *testing.T, h http.HandlerFunc, path, key, val string, out any) {
+	t.Helper()
+	r := httptest.NewRequest(http.MethodGet, path, nil)
+	r.SetPathValue(key, val)
+	w := httptest.NewRecorder()
+	h(w, r)
+	if err := json.NewDecoder(w.Body).Decode(out); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+}
+
+func getStatusPath(t *testing.T, h http.HandlerFunc, path, key, val string) int {
+	t.Helper()
+	r := httptest.NewRequest(http.MethodGet, path, nil)
+	r.SetPathValue(key, val)
+	w := httptest.NewRecorder()
+	h(w, r)
+	return w.Code
+}
+
+func patchJSON(t *testing.T, h http.HandlerFunc, path, body string) int {
+	t.Helper()
+	w := httptest.NewRecorder()
+	h(w, httptest.NewRequest(http.MethodPatch, path, strings.NewReader(body)))
+	return w.Code
+}
 
 // journeyProgress is this file's own progress stub. It must not be named fakeProgress:
 // that one lives in curriculum_tracks_test.go, which Task 14 deletes.
@@ -106,5 +138,37 @@ func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
 	getJSON(t, h.journey, "/me/journey", &out)
 	if out.FreeRoam == nil {
 		t.Errorf("an unwired server serves an empty list, not null")
+	}
+}
+
+func TestStation_ReturnsRowsForAKnownTheme(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		journeys: stubJourneys{j: journeyStub{
+			tracks: []learning.TrackGroup{{Dept: "ER", Curricula: []learning.CurriculumState{
+				{ThemeKey: "core-safety-er", Name: "안전", Total: 2},
+			}}},
+			steps: []learning.StepState{
+				{Kind: "dlg", Name: "신원확인", ScenarioID: "SCN-ER-1", State: "now", Pass: 1, Passes: 2},
+				{Kind: "dlg", Name: "신원확인", ScenarioID: "SCN-ER-1", State: "lock", Pass: 2, Passes: 2},
+			},
+		}},
+	}
+	var out learning.StationDetail
+	getJSONPath(t, h.station, "/me/journey/stations/core-safety-er", "themeKey", "core-safety-er", &out)
+
+	if out.Station.ThemeKey != "core-safety-er" {
+		t.Fatalf("the sheet re-sends its station: %+v", out.Station)
+	}
+	if len(out.Steps) != 2 || out.Steps[0].Pass != 1 || out.Steps[1].Pass != 2 {
+		t.Fatalf("one dialogue is two rows, guided then alone: %+v", out.Steps)
+	}
+}
+
+func TestStation_UnknownThemeIs404(t *testing.T) {
+	h := &journeyHandler{progress: journeyProgress{}, journeys: stubJourneys{j: journeyStub{}}}
+	code := getStatusPath(t, h.station, "/me/journey/stations/nope", "themeKey", "nope")
+	if code != http.StatusNotFound {
+		t.Fatalf("an unknown theme is 404, not an empty sheet: a silent blank hides a content accident, got %d", code)
 	}
 }

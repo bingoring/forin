@@ -1623,6 +1623,42 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/journey/stations/{themeKey}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 정거장 상세 — 그 주제의 스텝 목록 (지연 로드) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.StationDetail"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/missions": {
         parameters: {
             query?: never;
@@ -2844,6 +2880,11 @@ export interface components {
             passed?: number;
             total?: number;
         };
+        /**
+         * @description Guide/Pass/Passes describe the rung. Absent on steps with a single run.
+         * @enum {string}
+         */
+        "github_com_bingoring_forin_server_internal_domain_learning.GuideLevel": "choices" | "free";
         "github_com_bingoring_forin_server_internal_domain_learning.JourneyView": {
             freeRoam?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry"][];
             goalDept?: string;
@@ -2853,6 +2894,28 @@ export interface components {
         "github_com_bingoring_forin_server_internal_domain_learning.Milestone": {
             name?: string;
             /** @description passed | open | closed */
+            state?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.StationDetail": {
+            station?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.CurriculumState"];
+            steps?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.StepState"][];
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.StepState": {
+            /**
+             * @description Attempted marks a run played but graded below the bar. Set only where it says
+             *     something — never on a done or lock row, where a "tried" badge would contradict.
+             */
+            attempted?: boolean;
+            guide?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.GuideLevel"];
+            /** @description dlg | quiz | event | boss (S4: open string) */
+            kind?: string;
+            name?: string;
+            /** @description Optional marks a bonus quiz: playable any time, gates nothing, uncounted. */
+            optional?: boolean;
+            pass?: number;
+            passes?: number;
+            scenarioId?: string;
+            /** @description State is done | now | lock | optional. There is exactly one `now` per theme. */
             state?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_learning.TierCount": {

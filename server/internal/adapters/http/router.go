@@ -132,6 +132,7 @@ func NewRouter(d Deps) http.Handler {
 	// Journey map — one goal-department track + the rest of the campus as chips.
 	jh := &journeyHandler{progress: d.Progress, users: d.Users, journeys: d.Journeys}
 	mux.Handle("GET /me/journey", auth(http.HandlerFunc(jh.journey)))
+	mux.Handle("GET /me/journey/stations/{themeKey}", auth(http.HandlerFunc(jh.station)))
 
 	// Access — what this learner may enter (kept out of the cached interior payload).
 	acc := &accessHandler{content: d.Content, progress: d.Progress, users: d.Users}
