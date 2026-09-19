@@ -227,6 +227,7 @@ type Profile struct {
 	UiLang        string             `json:"ui_lang"`
 	DisplayName   string             `json:"display_name"`
 	Avatar        []byte             `json:"avatar"`
+	GoalDept      string             `json:"goal_dept"`
 }
 
 type ProfileChange struct {

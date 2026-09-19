@@ -54,7 +54,11 @@ type Profile struct {
 	// NativeLang tells the AI which language to explain corrections in, so a user
 	// who wants an English interface must not thereby get English explanations.
 	// "" means follow NativeLang.
-	UILang        string `json:"uiLang,omitempty"`
+	UILang string `json:"uiLang,omitempty"`
+	// GoalDept is the department whose track the journey map draws. "" means the
+	// learner has not chosen one yet, and the server infers a starting point per
+	// request WITHOUT persisting it — a path picked for you is not a path you chose.
+	GoalDept      string `json:"goalDept,omitempty"`
 	TargetLevel   string `json:"targetLevel"`   // level in TargetLang, e.g. "B1"
 	Onboarded     bool   `json:"onboarded"`     // completed the onboarding wizard
 	EquippedTitle string `json:"equippedTitle"` // equipped career title id (may be empty)

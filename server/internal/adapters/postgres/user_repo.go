@@ -79,6 +79,7 @@ func (r *UserRepo) GetProfile(ctx context.Context, userID string) (*user.Profile
 		UserID: p.UserID, Job: p.Job, NativeLang: p.NativeLang, TargetLang: p.TargetLang,
 		Destination: p.Destination, TargetLevel: p.TargetLevel, Onboarded: p.Onboarded,
 		EquippedTitle: p.EquippedTitle, UILang: p.UiLang, DisplayName: p.DisplayName,
+		GoalDept: p.GoalDept,
 	}
 	// A portrait that will not parse is left absent rather than failing the profile:
 	// the client then draws the seeded face, which is a face. Failing here would take
@@ -102,6 +103,13 @@ func (r *UserRepo) SetEquippedTitle(ctx context.Context, userID, titleID string)
 // reusing it to save one setting would silently reset job and languages.
 func (r *UserRepo) SetUILang(ctx context.Context, userID, lang string) error {
 	return r.q.SetUILang(ctx, sqlc.SetUILangParams{UserID: userID, UiLang: lang})
+}
+
+// SetGoalDept persists the learner's chosen journey department. A single-field
+// patch, like SetUILang: UpdateProfile fills omitted columns with onboarding
+// defaults, so reusing it to save one setting would silently reset job and languages.
+func (r *UserRepo) SetGoalDept(ctx context.Context, userID, dept string) error {
+	return r.q.SetGoalDept(ctx, sqlc.SetGoalDeptParams{UserID: userID, GoalDept: dept})
 }
 
 // SetDisplayName persists the learner's chosen name ("" clears it).

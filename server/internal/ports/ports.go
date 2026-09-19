@@ -509,6 +509,9 @@ type UserRepo interface {
 	// SetUILang persists the app's display language ("" = follow NativeLang). Kept
 	// apart from UpdateProfile, which is a full onboarding upsert.
 	SetUILang(ctx context.Context, userID, lang string) error
+	// SetGoalDept persists the learner's chosen journey department. Kept apart from
+	// UpdateProfile, which is a full onboarding upsert.
+	SetGoalDept(ctx context.Context, userID, dept string) error
 	// RecordProfileChange appends one audit row for a profile change that actually
 	// changed something. It is what learning-tracks P2 partitions existing progress
 	// by: a row written before a change belonged to the previous subject.

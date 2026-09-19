@@ -60,6 +60,9 @@ func (r *avatarRepo) RecordProfileChange(context.Context, string, user.Profile, 
 func (r *avatarRepo) SetUILang(context.Context, string, string) error {
 	panic("not used by setAvatar")
 }
+func (r *avatarRepo) SetGoalDept(context.Context, string, string) error {
+	panic("not used by setAvatar")
+}
 
 const fullSpec = `{"avatar":{"skin":"olive","hair":"bob","hairColor":"black","eyes":"wink",` +
 	`"mouth":"smile","outfit":"labCoat","outfitColor":"lilac","hat":"none","bg":"grid","acc":"glassesRound"}}`

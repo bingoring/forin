@@ -1,0 +1,1 @@
+ALTER TABLE profiles DROP COLUMN IF EXISTS goal_dept;
