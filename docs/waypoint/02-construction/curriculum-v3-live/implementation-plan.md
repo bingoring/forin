@@ -21,15 +21,15 @@
 - 테스트: `internal/curriculum/themed/engine_test.go`, `internal/domain/learning/policy_test.go`
 
 **단계**
-- [ ] L1.1 learning 값 타입·`Journey` 포트·`Journeys`(직업군 조회, S7)·정책 인터페이스 작성(domain-entities.md §2~4). 컴파일만.
-- [ ] L1.2 기본 정책(`DefaultGuidance`·`DefaultTierUnlock`·`DefaultExam`)을 구 guide.go 동작 1:1로 이식 + 단위 테스트.
-- [ ] L1.3 `themed.Engine`: 부팅 시 역인덱스 구축, `Tracks`(=기존 Resolve 위임)·`Resume`·`Locate` 구현 + 테스트.
+- [x] L1.1 learning 값 타입·`Journey` 포트·`Journeys`(직업군 조회, S7)·정책 인터페이스 작성(domain-entities.md §2~4). 컴파일만.
+- [x] L1.2 기본 정책(`DefaultGuidance`·`DefaultTierUnlock`·`DefaultExam`)을 구 guide.go 동작 1:1로 이식 + 단위 테스트.
+- [x] L1.3 `themed.Engine`: 부팅 시 역인덱스 구축, `Tracks`(=기존 Resolve 위임)·`Resume`·`Locate` 구현 + 테스트.
   `themed.Registry`(직업군→Engine, `learning.Journeys` 구현)도 이때 작성(현재는 nurse 하나 등록, S7).
-- [ ] L1.4 `Engine.Next(p, justFinished)`: 역인덱스로 주제·티어 위치 찾고 학습 순서상 다음 미통과 스텝 반환 + 테스트.
-- [ ] L1.5 `Engine.Guidance` = 정책 위임 + 테스트.
+- [x] L1.4 `Engine.Next(p, justFinished)`: 역인덱스로 주제·티어 위치 찾고 학습 순서상 다음 미통과 스텝 반환 + 테스트.
+- [x] L1.5 `Engine.Guidance` = 정책 위임 + 테스트.
 - [ ] **특성 테스트(R-L11)**: 동일 `Progress` 입력에 대해 v2 `NextScenarioAfter`/`GuideForScenario`와
   `Engine.Next`/`Guidance` 출력을 대조. 차이가 나는 케이스를 표로 남기고 "의도된 차이"만 승인.
-- [ ] L1.6 커밋: `feat(learning): 도메인 포트 + themed 엔진(Next/Resume/Guidance/Locate) — additive`.
+- [x] L1.6 커밋: `feat(learning): 도메인 포트 + themed 엔진(Next/Resume/Guidance/Locate) — additive`.
 
 **green 게이트**: 신규 테스트 통과, 기존 전체 테스트 무회귀, 라이브 동작 무변경(아직 핸들러 미배선).
 
@@ -46,19 +46,39 @@
 - 재생성: 계약(swag, 고정 버전)
 
 **단계**
-- [ ] L2.1 핸들러 생성자 시그니처에 `learning.Journeys` 추가, DI에서 themed.Registry 주입. 요청마다 사용자
+- [x] L2.1 핸들러 생성자 시그니처에 `learning.Journeys` 추가, DI에서 themed.Registry 주입. 요청마다 사용자
   직업군으로 `journeys.For(prof)`. **`cmd/api`의 themed Catalog `"nurse"` 하드코딩(현 `main.go:117`)을
   `content/<prof>/` 순회로 대체**(S7·R-L16) — 현재는 nurse 하나지만 순회 구조로 둔다.
-- [ ] L2.2 `curriculumTracks`를 포트의 `Tracks`로 전환(themed 직접 호출 제거).
-- [ ] L2.3 `conversation_handler`의 `NextScenarioAfter`→`journey.Next`, `GuideForScenario`→`journey.Guidance`.
+- [x] L2.2 `curriculumTracks`를 포트의 `Tracks`로 전환(themed 직접 호출 제거).
+- [x] L2.3 `conversation_handler`의 `NextScenarioAfter`→`journey.Next`, `GuideForScenario`→`journey.Guidance`.
   특성 테스트(L1.5)가 동작 보존을 보증.
-- [ ] L2.4 `/me/curriculum`을 어댑터(TrackGroup→BuildingGroup)로 재구현. 구 `ResolvePasses`/`Group` 호출 제거.
-- [ ] L2.5 home·content·handoff의 v2 참조를 포트/Locate로 이전.
-- [ ] L2.6 계약 재생성 + 드리프트 0 확인. 모바일 tsc/jest.
-- [ ] L2.7 커밋: `refactor(curriculum): 라이브 소비를 learning 포트로 컷오버 + /me/curriculum 어댑터`.
+- [x] L2.4 `/me/curriculum`을 어댑터(TrackGroup→BuildingGroup)로 재구현. 구 `ResolvePasses`/`Group` 호출 제거.
+- [x] L2.5 home·content·handoff의 v2 참조를 포트/Locate로 이전.
+- [x] L2.6 계약 재생성 + 드리프트 0 확인. 모바일 tsc/jest.
+- [x] L2.7 커밋: `refactor(curriculum): 라이브 소비를 learning 포트로 컷오버 + /me/curriculum 어댑터`.
 
 **green 게이트**: 서버·모바일 테스트, 계약 드리프트 0, `grep 'internal/curriculum"' internal/adapters` = 0
 (cmd/seed·gencontent는 L4에서 정리).
+
+> ✅ **L2 완료(2026-09-20).** 게이트 전부 통과 — adapters의 v2 import 0건 · `go vet`·`test -count=1 ./...`
+> 그린 · 계약 무드리프트(구 형태 필드 전부 동일) · 모바일 tsc 0 · jest 907/907.
+>
+> 계획서가 정하지 않아 진행 중 결정한 것 넷:
+> 1. **포트에 `Steps(theme, p)`를 더했다.** `TrackGroup`은 난이도별 개수만 담는데 라이브 클라이언트의 층
+>    시트가 `steps`·`next`를 그리고 있어, 문구대로 매핑하면 한 릴리스 동안 스텝 목록이 빈 채 나간다.
+>    이 메서드는 P3-B의 정거장 시트가 쓸 지연 로드와 같은 것이라 버려지지 않는다(사용자 결정).
+> 2. **층 지도를 `internal/domain/campus`로 옮겼다.** `cmd/gencontent`(package main) 안에 있어 임포트할 수
+>    없었다. 손저작 4개 층(본관 1F·P1·3F·4F)을 더해 24개 층 전체를 담고, gencontent는 `Authored`로 거른다.
+> 3. **주제 이름 955개를 영어로 번역했다.** v2는 커리큘럼 이름 89개가 번역돼 있었는데 v3 주제는 0개라
+>    컷오버가 영어 커버리지를 줄이는 상황이었다. `themes.yaml`의 `nameKey`는 i18n 키로 쓸 수 없다 —
+>    `theme.core.safety` 하나가 29부서의 서로 다른 이름을 가리켜 한 문자열이면 28개가 틀린다. **주제 키**로
+>    키잉했다(`internal/i18n/theme_en.go`).
+> 4. **캠퍼스 뷰의 이어하기 폴백.** 엔진의 이어하기가 층이 없는 부서(GEN)에 떨어지면 이 화면은 그 자리를
+>    그릴 수 없다. 엔진의 답은 그대로 두고 화면이 보여 줄 수 있는 첫 자리로 포인터만 옮긴다.
+>
+> 요청마다의 직업군 해석은 `journeyFor` 한 곳으로 모으되 오늘은 `"nurse"`를 돌려준다. 직업군은 토큰이
+> 아니라 사용자 행에 있어 매 요청 읽으면 대화 채점·시나리오 조회 같은 뜨거운 경로에 질의가 하나 더 붙는데,
+> 아직 답이 달라질 수 없다. 두 번째 직업군이 실리면 토큰에 `job`을 실어 이 함수에서 읽는다.
 
 ---
 
