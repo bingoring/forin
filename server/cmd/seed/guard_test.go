@@ -66,16 +66,36 @@ func TestUnreadyLangsCatchesAFalseClaim(t *testing.T) {
 // A scenario with no lang counts as the default rather than as its own language —
 // otherwise 303 files would each need a line saying the same thing.
 func TestEmptyLangCountsAsDefault(t *testing.T) {
-	b := &content.Bundle{Scenarios: []content.Scenario{{ID: "X", Lang: ""}}}
+	// One scenario ON the path (it carries a theme), authored without a `lang`.
+	b := &content.Bundle{Scenarios: []content.Scenario{{ID: "X", Theme: "core-safety-er", Lang: ""}}}
 	orig := content.ReadyTargetLangs
-	content.ReadyTargetLangs = []string{content.DefaultTargetLang}
 	defer func() { content.ReadyTargetLangs = orig }()
 
-	// The path references far more than "X", so this still complains — the point is
-	// that it complains about missing coverage, not about an unknown language.
-	got := unreadyLangs(b)
-	if len(got) != 1 || !strings.Contains(got[0], `"en"`) {
-		t.Fatalf("want one en complaint, got %v", got)
+	// Declared ready in the default language: the blank counts as that one, the path
+	// is covered, and there is nothing to report.
+	content.ReadyTargetLangs = []string{content.DefaultTargetLang}
+	if got := unreadyLangs(b); len(got) != 0 {
+		t.Fatalf("a blank lang should count as %q, got %v", content.DefaultTargetLang, got)
+	}
+	// Declared ready in a different language: the same scenario does not count as
+	// that one, so the gap is reported rather than assumed away.
+	content.ReadyTargetLangs = []string{"de"}
+	if got := unreadyLangs(b); len(got) != 1 || !strings.Contains(got[0], `"de"`) {
+		t.Fatalf("want one de complaint, got %v", got)
+	}
+}
+
+// The path is the tagged scenarios, not every scenario in the bundle: one that
+// belongs to no course blocks no language, so a ready language is not held back by
+// content nobody's journey reaches.
+func TestUntaggedScenariosAreNotOnThePath(t *testing.T) {
+	b := &content.Bundle{Scenarios: []content.Scenario{{ID: "X", Lang: content.DefaultTargetLang}}}
+	orig := content.ReadyTargetLangs
+	defer func() { content.ReadyTargetLangs = orig }()
+	content.ReadyTargetLangs = []string{"de"}
+
+	if got := unreadyLangs(b); len(got) != 0 {
+		t.Fatalf("an untagged scenario is on no path and must not block de: %v", got)
 	}
 }
 

@@ -8,12 +8,18 @@ import (
 
 // The legacy campus wire shape (GET /me/curriculum): buildings → floors → curricula.
 //
-// This file is a PRESENTER, not a second engine (P3-A §4). The journey is organised
-// by theme and department; the campus screen draws buildings, so one pure mapping
-// regroups the journey for it. It exists for exactly one release — until the client
-// consumes /me/curriculum/tracks — and then this file is deleted whole. Keeping the
-// mapping in one removable file is what makes that deletion a delete rather than a
-// disentangling.
+// DEPRECATED — delete this file whole when the client reads /me/curriculum/tracks.
+//
+// This is a PRESENTER, not a second engine (P3-A §4). The journey is organised by
+// theme and department; the campus screen draws buildings, so one pure mapping
+// regroups the journey for it. Every other v2 artefact is gone (L4 retired the
+// hardcoded catalog); this file and `/me/curriculum` are what remain, and they remain
+// only so the shipped client keeps working while P3-B builds the journey map.
+//
+// To retire it: delete this file, its test, `legacyBuildings`'s route, and home's use
+// of `legacyCurricula` (home then reads Tracks/Resume/Steps directly). Nothing else
+// points here — keeping the mapping in one removable file is what makes that a delete
+// rather than a disentangling.
 type legacyStep struct {
 	Kind       string `json:"kind"`
 	Name       string `json:"name"`

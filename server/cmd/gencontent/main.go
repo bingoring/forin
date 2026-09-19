@@ -65,15 +65,10 @@ func main() {
 		totalQz += len(qzs)
 		fmt.Printf("  %-10s %3d scenarios · %d events · %d quizzes\n", d.Code, len(scns), len(evts), len(qzs))
 	}
-	// The curriculum is derived from the same banks, so a new department extends
-	// the learning path without anyone remembering to edit a catalog.
-	const curriculumOut = "internal/curriculum/catalog_gen.go"
-	uncovered, err := generateCurriculum(curriculumOut)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "curriculum: %v\n", err)
-		os.Exit(1)
-	}
-	fmt.Printf("  %-10s %3d departments need the fallback → %s\n", "CURRICULUM", uncovered, curriculumOut)
+	// The learning path is no longer generated here. It is derived at runtime from
+	// the theme registry plus each scenario's `theme` tag (커리큘럼 v3), so adding a
+	// department extends the path by existing — there is no catalog to write, and
+	// nothing to re-point when a department is re-authored (P3-A L4, closing L-E1).
 	fmt.Printf("done: %d scenarios · %d events · %d quizzes across %d departments\n", totalScn, totalEvt, totalQz, len(Depts))
 }
 

@@ -11,7 +11,6 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/contentfile"
 	"github.com/bingoring/forin/server/internal/adapters/postgres"
-	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/content"
 )
 
@@ -64,9 +63,14 @@ func run() error {
 
 	// Seed replaces content wholesale (DELETE then INSERT in one transaction).
 	// Learner progress survives — scenario_id columns carry no foreign key — but
-	// dropping an id leaves those rows pointing at nothing. So refuse a bundle
-	// that would remove anything the curriculum or durable learner state still
-	// references.
+	// dropping an id leaves those rows pointing at nothing. So refuse a bundle that
+	// would remove anything durable learner state still references.
+	//
+	// The curriculum used to be a second source of referenced ids: a hardcoded catalog
+	// named ids independently of the bundle, so dropping one left a step pointing at
+	// nothing. That cannot happen now — the path is DERIVED from this very bundle's
+	// theme tags, so a scenario that leaves the bundle leaves the path with it. What
+	// remains is the half that can genuinely dangle: attempts, review cards, sessions.
 	have := make(map[string]bool, len(bundle.Scenarios)+len(bundle.Quizzes))
 	for _, s := range bundle.Scenarios {
 		have[s.ID] = true
@@ -74,16 +78,9 @@ func run() error {
 	for _, q := range bundle.Quizzes {
 		have[q.ID] = true
 	}
-	referenced := map[string]bool{}
-	for _, id := range curriculum.ReferencedIDs() {
-		referenced[id] = true
-	}
-	inUse, err := referencedInDB(ctx, pool)
+	referenced, err := referencedInDB(ctx, pool)
 	if err != nil {
 		return fmt.Errorf("collect referenced ids: %w", err)
-	}
-	for id := range inUse {
-		referenced[id] = true
 	}
 	if missing := missingIDs(have, referenced); len(missing) > 0 {
 		if os.Getenv("SEED_ALLOW_REMOVAL") != "1" {
@@ -137,11 +134,20 @@ func unreadyLangs(bundle *content.Bundle) []string {
 		byLang[lang][s.ID] = true
 	}
 
+	// The path is every scenario carrying a theme tag (커리큘럼 v3): an untagged
+	// scenario belongs to no course, so a language that lacks it blocks nothing.
+	var path []string
+	for _, s := range bundle.Scenarios {
+		if s.Theme != "" {
+			path = append(path, s.ID)
+		}
+	}
+
 	var out []string
 	for _, lang := range content.ReadyTargetLangs {
 		have := byLang[lang]
 		var missing int
-		for _, id := range curriculum.ReferencedIDs() {
+		for _, id := range path {
 			if strings.HasPrefix(id, "QZ-") {
 				continue
 			}
