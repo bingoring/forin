@@ -50,6 +50,10 @@ describe('Station', () => {
     expect(findAllByTestId(tree.root, 'station-lock')).toHaveLength(0);
     act(() => { tree.root.findByProps({ testID: 'station-press' }).props.onPress(); });
     expect(onPress).toHaveBeenCalled();
+    // `.props.onPress()`를 직접 부르는 방식은 실제 터치 응답 시스템을 거치지 않아
+    // `disabled` prop을 우회한다 — 그림에 자물쇠가 없다는 것만으로는 누군가
+    // `disabled={...}`로 잠그는 회귀를 못 잡는다. 상태 자체를 따로 단정한다.
+    expect(tree.root.findByProps({ testID: 'station-press' }).props.disabled).not.toBe(true);
     act(() => { tree.unmount(); });
   });
 

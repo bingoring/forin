@@ -43,6 +43,10 @@ describe('FreeRoamRow', () => {
   it('draws no lock — free roam is free', () => {
     const tree = mount(<FreeRoamRow entries={[{ dept: 'ICU', passed: 0, total: 35 }]} onPick={jest.fn()} />);
     expect(tree.root.findAll((n) => n.props?.testID === 'chip-lock')).toHaveLength(0);
+    // 자물쇠는 그림뿐 아니라 `disabled` prop으로도 들어올 수 있다 — `.props.onPress()`를
+    // 직접 부르는 방식은 실제 터치 응답 시스템을 거치지 않아 `disabled`를 우회하므로, 그
+    // 상태 자체가 참이 아님을 따로 단정해야 미래의 잠금 회귀를 잡는다.
+    expect(tree.root.findByProps({ testID: 'chip-ICU' }).props.disabled).not.toBe(true);
     act(() => { tree.unmount(); });
   });
 
