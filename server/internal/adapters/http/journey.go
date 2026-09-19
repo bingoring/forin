@@ -39,6 +39,34 @@ func resolveGoalDept(stored string, j learning.Journey, p learning.Progress, tra
 	return "", true
 }
 
+// rescopeCurrent makes sure the drawn track names exactly one place to continue.
+//
+// The engine's here/resume are GLOBAL: they follow the latest attempt, which may sit
+// in a department this screen is not drawing. Then the map would have no current
+// station at all. So when this track has none, the first unfinished station becomes
+// the target — but its STATE stays "open". Promoting it to "here" would claim the
+// learner was just there, and they were not; the flag says "continue here", the state
+// says "you have been here", and only one of those is true.
+func rescopeCurrent(track learning.TrackGroup) learning.TrackGroup {
+	for _, c := range track.Curricula {
+		if c.State == "here" {
+			return track // the global answer already points inside this track
+		}
+	}
+	out := track
+	out.Curricula = append([]learning.CurriculumState(nil), track.Curricula...)
+	for i := range out.Curricula {
+		out.Curricula[i].Resume = false
+	}
+	for i := range out.Curricula {
+		if out.Curricula[i].State != "passed" {
+			out.Curricula[i].Resume = true
+			break
+		}
+	}
+	return out
+}
+
 // deptOfTheme finds which track a theme belongs to.
 func deptOfTheme(theme learning.ThemeKey, tracks []learning.TrackGroup) string {
 	for _, tg := range tracks {

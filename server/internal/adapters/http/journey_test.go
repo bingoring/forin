@@ -63,7 +63,62 @@ func TestResolveGoalDept_FallsBackToFirstDeptWithAFloor(t *testing.T) {
 
 // 층이 없는 부서(GEN)는 목표가 될 수 없다 — 리프트가 설 수 없는 곳이다(J9).
 func TestResolveGoalDept_NeverPicksADeptWithNoFloor(t *testing.T) {
-	if dept, _ := resolveGoalDept("GEN", journeyStub{}, learning.Progress{}, fakeTracks()); dept == "GEN" {
+	dept, inferred := resolveGoalDept("GEN", journeyStub{}, learning.Progress{}, fakeTracks())
+	if dept == "GEN" {
 		t.Fatalf("GEN has no floor; the journey cannot draw it")
+	}
+	if dept != "ER" || !inferred {
+		t.Fatalf("the fallback must land on the first reachable dept, inferred: got %q inferred=%v", dept, inferred)
+	}
+}
+
+func TestRescopeCurrent_KeepsHereWhenItIsInThisTrack(t *testing.T) {
+	in := learning.TrackGroup{Dept: "ER", Curricula: []learning.CurriculumState{
+		{ThemeKey: "a", State: "passed"},
+		{ThemeKey: "b", State: "here", Resume: true},
+		{ThemeKey: "c", State: "open"},
+	}}
+	out := rescopeCurrent(in)
+	if out.Curricula[1].State != "here" || !out.Curricula[1].Resume {
+		t.Fatalf("an existing here stays: %+v", out.Curricula[1])
+	}
+	if out.Curricula[2].Resume {
+		t.Errorf("the view must not add a second resume target")
+	}
+}
+
+// 목표 부서를 막 바꾼 학습자: 최근 시도는 다른 부서라 이 트랙에 here가 없다.
+func TestRescopeCurrent_PointsAtFirstUnfinishedWithoutInventingHere(t *testing.T) {
+	in := learning.TrackGroup{Dept: "ER", Curricula: []learning.CurriculumState{
+		{ThemeKey: "a", State: "passed"},
+		{ThemeKey: "b", State: "open"},
+		{ThemeKey: "c", State: "open"},
+	}}
+	out := rescopeCurrent(in)
+	if !out.Curricula[1].Resume {
+		t.Fatalf("the first unfinished station becomes the target: %+v", out.Curricula)
+	}
+	if out.Curricula[1].State != "open" {
+		t.Errorf(`state must stay "open": promoting it to "here" would claim the learner was just there, which is false`)
+	}
+	n := 0
+	for _, c := range out.Curricula {
+		if c.Resume {
+			n++
+		}
+	}
+	if n != 1 {
+		t.Errorf("exactly one target, got %d", n)
+	}
+}
+
+func TestRescopeCurrent_NoTargetWhenEverythingIsPassed(t *testing.T) {
+	in := learning.TrackGroup{Dept: "ER", Curricula: []learning.CurriculumState{
+		{ThemeKey: "a", State: "passed"}, {ThemeKey: "b", State: "passed"},
+	}}
+	for _, c := range rescopeCurrent(in).Curricula {
+		if c.Resume {
+			t.Fatalf("a finished track has nothing to continue: %+v", c)
+		}
 	}
 }
