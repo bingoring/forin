@@ -210,6 +210,20 @@ export interface ThemeMilestone { name: string; state: 'passed' | 'open' | 'clos
 /** 하나의 여정 트랙: CORE(공통 코어) 또는 부서. */
 export interface JourneyTrack { dept: string; curricula: ThemeCurriculumState[]; milestone?: ThemeMilestone }
 
+// 여정 지도 (Task 8) — 계약 생성 타입을 그대로 재수출한다. 손으로 다시 쓰지 않는다:
+// Go가 정본이고 packages/contract는 생성물이다.
+/** 목표 밖 부서 하나. 잠금 없음 — 칩은 문이지, 문의 예고가 아니다. */
+export type FreeRoamEntry =
+  paths['/me/journey']['get']['responses'][200]['content']['application/json']['freeRoam'] extends
+    (infer E)[] | undefined ? E : never;
+/** 여정 화면이 한 번에 받는 것. 전체 29부서(340KB) 대신 목표 부서 하나(11.7KB)만 온다. */
+export type JourneyView = paths['/me/journey']['get']['responses'][200]['content']['application/json'];
+/** 정거장 시트의 한 행 = 스텝의 한 회차. 대화 하나는 두 행(도움 있는 회차·혼자)이다. */
+export type JourneyStep =
+  paths['/me/journey/stations/{themeKey}']['get']['responses'][200]['content']['application/json']['steps'] extends
+    (infer S)[] | undefined ? S : never;
+export type StationDetail = paths['/me/journey/stations/{themeKey}']['get']['responses'][200]['content']['application/json'];
+
 /** One thing the learner touched on a day. `hour` is local, 0-23. */
 export interface CalendarEntry {
   scenarioId: string; title: string; cleared: boolean; hour: number;
@@ -882,6 +896,21 @@ export const api = {
   async curriculumTracks(): Promise<JourneyTrack[]> {
     const { data } = await http.get('/me/curriculum/tracks');
     return (data as { tracks: JourneyTrack[] }).tracks ?? [];
+  },
+
+  /** 여정 지도 — 목표 부서 트랙 + 자유 탐방. 정거장 좌표는 클라이언트가 계산한다(J10). */
+  async journey(): Promise<JourneyView> {
+    const { data } = await http.get('/me/journey');
+    return data as JourneyView;
+  },
+  /** 정거장 시트 — 시트가 열릴 때만 스텝을 받는다. 모르는 주제(themeKey)에는 404. */
+  async station(themeKey: string): Promise<StationDetail> {
+    const { data } = await http.get(`/me/journey/stations/${encodeURIComponent(themeKey)}`);
+    return data as StationDetail;
+  },
+  /** 목표 부서 선택 — 여정이 그릴 트랙. campus.Of가 모르는 부서에는 400. */
+  async setGoalDept(dept: string): Promise<void> {
+    await http.patch('/me/goal-dept', { dept });
   },
 
   /**
