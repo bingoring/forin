@@ -389,7 +389,7 @@ export default function HomeTab() {
 
         <View style={{ flexDirection: 'row', gap: 10, marginTop: 16 }}>
           <View style={{ flex: 1 }}>
-            <NbButton variant="paper" full icon="hospital" onPress={() => router.push('/campus')}>
+            <NbButton variant="paper" full icon="hospital" onPress={() => router.push('/journey')}>
               {t('tab.career')}
             </NbButton>
           </View>

@@ -1,0 +1,181 @@
+// The journey map's screen-level wiring (Task 13) — this is where the pieces Tasks
+// 9~12 built get handed real data, and where the "how do we pick the one station the
+// bar points at" decision lives (frontend-components.md never assigned that logic to
+// any of the components themselves).
+//
+// @testing-library/react-native is not installed in this repo (Station.test.tsx,
+// CurrentStationBar.test.tsx, StationSheet.test.tsx already note the same thing), so
+// this uses react-test-renderer throughout.
+const mockPushed: string[] = [];
+jest.mock('expo-router', () => {
+  const React = require('react') as typeof import('react');
+  return {
+    useRouter: () => ({ push: (p: string) => mockPushed.push(p) }),
+    useFocusEffect: (cb: () => void | (() => void)) => React.useEffect(cb, []),
+  };
+});
+jest.mock('@/api/client');
+
+import { act, create, type ReactTestInstance } from 'react-test-renderer';
+import { Text } from 'react-native';
+import JourneyScreen, { pickCurrent } from '@/app/(tabs)/journey';
+import { api, type JourneyView } from '@/api/client';
+import { Station } from '@/components/journey/Station';
+import type { JourneyCurriculum } from '@/components/journey/JourneyMap';
+import { trackMounts } from '../testing/mountRegistry';
+
+const track = trackMounts();
+
+// ── pickCurrent — the "which one station" decision ─────────────────────────
+//
+// J6/J7: the bar's target is read straight off the server's `resume` flag, rescoped
+// into this track server-side (business-logic-model.md A2). This file's job is only to
+// prove the CLIENT read of that flag does not fabricate anything of its own.
+describe('pickCurrent', () => {
+  it('points at the one entry the server flagged resume, reading "resume" when it is also here', () => {
+    const curricula = [
+      { themeKey: 'a', state: 'passed', resume: false },
+      { themeKey: 'b', state: 'here', resume: true },
+      { themeKey: 'c', state: 'open', resume: false },
+    ] as unknown as JourneyCurriculum[];
+    expect(pickCurrent(curricula)).toEqual({ station: curricula[1], kind: 'resume' });
+  });
+
+  // A2: when the global `here` lands outside this track, the server substitutes the
+  // first non-passed entry and leaves ITS state as 'open' rather than promoting it to
+  // 'here' — "here를 지어내지 않는다". The client must read that substitution as 'next',
+  // not invent a 'resume' reading of its own.
+  it('reads "next" when the flagged entry is not the here one', () => {
+    const curricula = [
+      { themeKey: 'a', state: 'passed', resume: false },
+      { themeKey: 'b', state: 'open', resume: true },
+      { themeKey: 'c', state: 'open', resume: false },
+    ] as unknown as JourneyCurriculum[];
+    expect(pickCurrent(curricula)).toEqual({ station: curricula[1], kind: 'next' });
+  });
+
+  // 트랙 전부 통과 — server sets no resume flag at all. Exactly zero targets, not a
+  // fabricated one.
+  it('points at nothing when the track is fully passed', () => {
+    const curricula = [
+      { themeKey: 'a', state: 'passed', resume: false },
+      { themeKey: 'b', state: 'passed', resume: false },
+    ] as unknown as JourneyCurriculum[];
+    expect(pickCurrent(curricula)).toEqual({ station: null, kind: 'next' });
+  });
+
+  // The payload can only ever carry one resume flag (server invariant), but this
+  // function must still answer with exactly one station if it is ever handed more —
+  // "가리킬 곳은 정확히 하나" is a property of what the SCREEN shows, and a function
+  // that could return two would be the seam that broke it.
+  it('never resolves to more than one station', () => {
+    const curricula = [
+      { themeKey: 'a', state: 'open', resume: true },
+      { themeKey: 'b', state: 'open', resume: true },
+    ] as unknown as JourneyCurriculum[];
+    const { station } = pickCurrent(curricula);
+    expect([curricula[0], curricula[1]]).toContain(station);
+    expect(station).not.toBe(null);
+  });
+});
+
+// ── the assembled screen ─────────────────────────────────────────────────
+// t3 is the first 'open' entry after 'here', so it maps to 'next' (stationStates does
+// not let 'here' consume the next slot); t4 is the one that actually lands on 'far'.
+const CURRICULA: JourneyCurriculum[] = [
+  { themeKey: 't1', name: '체온 측정', state: 'passed', resume: false, done: 3, total: 3 },
+  { themeKey: 't2', name: '투약 확인', state: 'here', resume: true, dept: 'ER', done: 1, total: 4 },
+  { themeKey: 't3', name: '낙상 예방', state: 'open', resume: false },
+  { themeKey: 't4', name: '욕창 관리', state: 'open', resume: false },
+] as unknown as JourneyCurriculum[];
+
+const VIEW: JourneyView = {
+  goalDept: 'ER',
+  inferred: false,
+  track: { dept: 'ER', curricula: CURRICULA },
+  freeRoam: [{ dept: 'ICU', passed: 2, total: 30 }],
+} as unknown as JourneyView;
+
+function texts(root: ReactTestInstance): string[] {
+  return root.findAllByType(Text).map((n) => String(n.props.children));
+}
+
+beforeEach(() => {
+  mockPushed.length = 0;
+  jest.clearAllMocks();
+  (api.journey as jest.Mock).mockResolvedValue(VIEW);
+});
+
+async function mount() {
+  let tree!: ReturnType<typeof create>;
+  await act(async () => { tree = track(create(<JourneyScreen />)); });
+  await act(async () => { await Promise.resolve(); });
+  return tree;
+}
+
+test('renders one Station per curriculum entry and the bar reads the resume label', async () => {
+  const tree = await mount();
+  expect(tree.root.findAllByType(Station)).toHaveLength(CURRICULA.length);
+  // t2 is 'here' and carries the resume flag — the bar should read 이어하기, not
+  // 다음 정거장 (never both — CurrentStationBar.test.tsx already locks that property;
+  // this only checks the SCREEN feeds it the right one).
+  expect(texts(tree.root)).toContain('이어하기');
+  expect(texts(tree.root)).not.toContain('다음 정거장');
+});
+
+test('a free-roam chip switches the goal department and redraws the path (J5)', async () => {
+  (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
+  const tree = await mount();
+  const chip = tree.root.findByProps({ testID: 'chip-ICU' });
+  await act(async () => { chip.props.onPress(); });
+  // pickDept chains setGoalDept().then(journey).then(setView) — two hops to flush.
+  await act(async () => { await Promise.resolve(); });
+  await act(async () => { await Promise.resolve(); });
+  expect(api.setGoalDept).toHaveBeenCalledWith('ICU');
+  // W3: the screen re-requests the journey after the PATCH lands, rather than
+  // assuming what the new path looks like.
+  expect((api.journey as jest.Mock).mock.calls.length).toBeGreaterThanOrEqual(2);
+});
+
+test('the current-station bar opens that station’s own sheet, not any other', async () => {
+  (api.station as jest.Mock).mockResolvedValue({
+    station: { themeKey: 't2', name: '투약 확인', done: 1, total: 4, tiers: [] },
+    steps: [],
+  });
+  const tree = await mount();
+  const bar = tree.root.findByProps({ testID: 'current-station-press' });
+  await act(async () => { bar.props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+  // §5: tapping the bar opens the sheet rather than sending the learner straight into
+  // a scenario — it does not know which rung to pick without asking.
+  expect(mockPushed).toEqual([]);
+  expect(api.station).toHaveBeenCalledWith('t2');
+});
+
+test('a far (not-yet-visited) station still opens on tap — J1/J3, no lock on the map', async () => {
+  (api.station as jest.Mock).mockResolvedValue({
+    station: { themeKey: 't4', name: '욕창 관리', done: 0, total: 2, tiers: [] },
+    steps: [],
+  });
+  const tree = await mount();
+  const farStation = tree.root.findAllByType(Station).find((n) => n.props.state === 'far')!;
+  expect(farStation).toBeTruthy();
+  await act(async () => { farStation.props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+  expect(api.station).toHaveBeenCalledWith('t4');
+});
+
+test('a load failure offers a retry that re-fetches instead of leaving the screen stuck', async () => {
+  (api.journey as jest.Mock).mockRejectedValueOnce(new Error('network'));
+  (api.journey as jest.Mock).mockResolvedValueOnce(VIEW);
+  const tree = await mount();
+  expect(texts(tree.root).join(' ')).toContain('여정을 불러오지 못했어요');
+
+  const retry = tree.root.findAll(
+    (n) => typeof n.props?.onPress === 'function' && texts(n).includes('다시 시도'),
+    { deep: true },
+  )[0];
+  await act(async () => { retry.props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+  expect(tree.root.findAllByType(Station)).toHaveLength(CURRICULA.length);
+});

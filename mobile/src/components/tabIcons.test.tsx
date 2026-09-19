@@ -62,8 +62,10 @@ test('the tab bar draws all five tabs from ONE icon set', () => {
   const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', '_layout.tsx'), 'utf8');
   const named: string[] = [];
   // 'board' became 'lounge' when the tab turned into the community feed — the board
-  // itself moved to its own route, which has no tab icon to check.
-  for (const route of ['index', 'campus', 'lounge', 'lab', 'me']) {
+  // itself moved to its own route, which has no tab icon to check. 'campus' became
+  // 'journey' when curriculum-v3 replaced the place-finder with the journey map
+  // (Task 13) — the tab still answers "일터", just with a different screen behind it.
+  for (const route of ['index', 'journey', 'lounge', 'lab', 'me']) {
     expect(src).toContain(`tabIcon('${route}')`);
     const m = src.match(new RegExp(`${route}: '([a-z2]+)'`));
     expect(m).toBeTruthy();

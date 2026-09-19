@@ -252,7 +252,7 @@ export default function Growth() {
 
           {/* The report is a way back in, not a dead end. */}
           <View style={{ marginTop: 2 }}>
-            <NbButton variant="ink" size="lg" full icon="pencil" iconColor={nb.paper} onPress={() => router.replace('/campus')}>
+            <NbButton variant="ink" size="lg" full icon="pencil" iconColor={nb.paper} onPress={() => router.replace('/journey')}>
               {t('growth.startShift')}
             </NbButton>
           </View>

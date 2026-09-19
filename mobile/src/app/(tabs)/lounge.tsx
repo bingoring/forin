@@ -1,9 +1,11 @@
 // 스태프 라운지 — the community feed (핸드오프 v31 07 · 라운지 A).
 //
 // The tab that used to be 오늘의 상황판. The board itself did not go away: it is
-// `/board` now, reached from 일터 — a rotation of today's situations across the
-// hospital is a fact about the workplace, and the lounge is where colleagues talk.
-// It sat in this header for one commit and read as an ad for another screen.
+// `/board` now, reached from the home tab — a rotation of today's situations across
+// the hospital is a fact about the workplace, and the lounge is where colleagues talk.
+// It sat in this header for one commit and read as an ad for another screen. (It also
+// sat in 일터's header, back when that tab was campus.tsx — Task 13 replaced that
+// screen with the journey map, which has no search header to hang a board link off.)
 //
 // Reads and writes /lounge (posts, cheers, reports). Three things about this screen
 // are deliberate:

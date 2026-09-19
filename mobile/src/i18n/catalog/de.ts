@@ -207,6 +207,8 @@ export const de: Record<string, string> = {
   'journey.track.core': 'Kern',
   'journey.track.depth': 'Vertiefung',
   'journey.track.collab': 'Zusammenarbeit',
+  'journey.loadFailed': 'Die Reise konnte nicht geladen werden. (Login/Server prüfen)',
+  'journey.inferredTag': 'Vermutet',
 
   'board.cleared': 'Fertig',
   'board.remaining': 'Offen',

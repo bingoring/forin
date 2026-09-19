@@ -207,6 +207,8 @@ export const ja: Record<string, string> = {
   'journey.track.core': '共通コア',
   'journey.track.depth': '深化',
   'journey.track.collab': '協業',
+  'journey.loadFailed': '旅程を読み込めませんでした。(ログイン・サーバー確認)',
+  'journey.inferredTag': '推定',
 
   'board.cleared': '完了',
   'board.remaining': '残り',

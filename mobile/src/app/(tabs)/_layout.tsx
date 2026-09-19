@@ -18,7 +18,7 @@ import { t, useLocale, useT } from '@/i18n';
 // own cut edge, doodle icons, and the handwriting face. No mint cell behind the active tab
 // — on paper the emphasis is weight and opacity, not a coloured tile.
 const ICONS: Record<string, NbIconName> = {
-  index: 'home', campus: 'hospital', lounge: 'speech', lab: 'lab', me: 'me',
+  index: 'home', journey: 'hospital', lounge: 'speech', lab: 'lab', me: 'me',
 };
 const tabIcon = (route: string) =>
   function TabIcon({ focused }: { focused: boolean }) {
@@ -52,7 +52,7 @@ export default function TabsLayout() {
         name="index"
         options={{ title: t('tab.home'), tabBarIcon: tabIcon('index') }}
       />
-      <Tabs.Screen name="campus" options={{ title: t('tab.career'), tabBarIcon: tabIcon('campus') }} />
+      <Tabs.Screen name="journey" options={{ title: t('tab.career'), tabBarIcon: tabIcon('journey') }} />
       <Tabs.Screen name="lounge" options={{ title: t('tab.board'), tabBarIcon: tabIcon('lounge') }} />
       <Tabs.Screen name="lab" options={{ title: t('tab.lab'), tabBarIcon: tabIcon('lab') }} />
       <Tabs.Screen name="me" options={{ title: t('tab.me'), tabBarIcon: tabIcon('me') }} />

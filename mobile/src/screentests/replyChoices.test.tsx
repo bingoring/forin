@@ -192,12 +192,16 @@ test('the hint reveals the picked intent’s model line when stuck', () => {
   expect(SRC).toMatch(/setHintText\(cs\.find\(\(c\) => c\.tier === 'best'\)\?\.why/);
 });
 
+// Task 13 replaced 캠퍼스's DeptSheet/campus.tsx pair with the journey map's
+// StationSheet/journey.tsx pair — the property survives, just through the new pipe:
+// a step row carries its own `guide` (JourneyStep, server-sent) straight to
+// `onStepPress`, and journey.tsx threads THAT into the push rather than re-deriving it.
 test('the chosen rung survives every screen between the list and the conversation', () => {
-  const sheet = readFileSync(join(__dirname, '..', 'components', 'campus', 'DeptSheet.tsx'), 'utf8');
-  expect(sheet).toMatch(/onStart\(st\.scenarioId, st\.guide\)/);
+  const sheet = readFileSync(join(__dirname, '..', 'components', 'journey', 'StationSheet.tsx'), 'utf8');
+  expect(sheet).toMatch(/onPress=\{\(\) => onStepPress\(s\)\}/);
 
-  const career = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'campus.tsx'), 'utf8');
-  expect(career).toMatch(/router\.push\(guide \? `\/scenario\/\$\{scn\}\?guide=\$\{guide\}`/);
+  const journey = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'journey.tsx'), 'utf8');
+  expect(journey).toMatch(/router\.push\(step\.guide \? `\/scenario\/\$\{scn\}\?guide=\$\{step\.guide\}`/);
 
   const briefing = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id].tsx'), 'utf8');
   expect(briefing).toMatch(/guide \? `\/dialogue\/\$\{id\}\?guide=\$\{guide\}`/);

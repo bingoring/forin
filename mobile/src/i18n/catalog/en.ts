@@ -208,6 +208,8 @@ export const en: Record<string, string> = {
   'journey.track.core': 'Core',
   'journey.track.depth': 'Depth',
   'journey.track.collab': 'Collab',
+  'journey.loadFailed': 'Could not load your journey. (check login / server)',
+  'journey.inferredTag': 'Inferred',
 
   'board.cleared': 'Done',
   'board.remaining': 'Left',

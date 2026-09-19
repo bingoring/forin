@@ -11,10 +11,10 @@
 //   - "here" is never invented: the map only shows one if the server sent one.
 //   - a path segment is only drawn "done" when BOTH stations it joins are done.
 import { act, create } from 'react-test-renderer';
-import { ScrollView } from 'react-native';
-import { BOTTOM_PAD, JourneyMap, stationPoint, stationStates, type JourneyCurriculum } from './JourneyMap';
+import { ScrollView, View } from 'react-native';
+import { BOTTOM_PAD, JourneyMap, LABEL_ALLOWANCE, stationPoint, stationStates, type JourneyCurriculum } from './JourneyMap';
 import { PathSegment } from './PathSegment';
-import { Station } from './Station';
+import { RADIUS, Station } from './Station';
 
 describe('stationStates', () => {
   // 서버의 셋(passed/here/open)을 화면의 넷으로 옮긴다. 처음 만나는 open만 next이고
@@ -116,6 +116,29 @@ describe('JourneyMap', () => {
     const scroll = tree.root.findAllByType(ScrollView)[0];
     expect((scroll.props.contentContainerStyle as { paddingBottom?: number }).paddingBottom).toBe(BOTTOM_PAD);
     act(() => { tree.unmount(); });
+  });
+
+  // Task 13's two confirmation items. Neither is visible from a single number in
+  // isolation — this locks in the RELATIONSHIP the calculation in JourneyMap.tsx's
+  // header comment relies on, so a future edit to either constant alone (without
+  // redoing that math) fails loudly here rather than silently shipping an overlap.
+  it('reserves room below the last station for its (up to 2-line) label and progress text', () => {
+    const width = 400;
+    const last = CURRICULA.length - 1;
+    const lastState = stationStates(CURRICULA)[last];
+    const expected = stationPoint(last, width).y + RADIUS[lastState] + 40 + LABEL_ALLOWANCE;
+    const tree = mount(<JourneyMap track={{ curricula: CURRICULA }} onStationPress={jest.fn()} />);
+    const box = tree.root.findAllByType(View).find((n) => n.props.testID === 'journey-map')!;
+    expect((box.props.style as { height: number }).height).toBe(expected);
+    act(() => { tree.unmount(); });
+  });
+
+  // The Task 13 report computes CurrentStationBar's own footprint (bottom:16 + its
+  // ~65-70px NbPaper) at roughly 81-86px from the screen's bottom edge. BOTTOM_PAD has
+  // to clear that with margin to spare once the label allowance above is honest about
+  // where the real content ends — 96 alone (the pre-Task-13 value) would not.
+  it('leaves the fixed bar a comfortable margin now that the label allowance is real', () => {
+    expect(BOTTOM_PAD).toBeGreaterThanOrEqual(120);
   });
 
   // 계약 타입은 전부 optional이다 — 실제로는 거의 항상 채워지는 필드(name/themeKey/done/total)가

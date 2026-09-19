@@ -1,9 +1,10 @@
-// 층 바텀시트 and 상황 준비, in the 근무 수첩 line.
+// 상황 준비(the briefing screen), in the 근무 수첩 line.
 //
-// The states these two screens carry are the whole point of them, and every one is a way
-// to be wrong that still renders: a finished chapter that does not read as finished, a
-// locked step that looks tappable, an urgent situation that looks like the rest, a briefing
-// that does not say what the learner will be graded on. So the checks are on the rendered
+// This file used to also cover the 층 바텀시트 (DeptSheet) — the curriculum-v3-journey
+// rebuild (Task 13) replaced that screen with the journey map, and DeptSheet went with
+// it (frontend-components.md §7). The briefing screen it shares this file with is
+// untouched, so its tests stay: a briefing that does not say what the learner will be
+// graded on is still a way to be wrong that renders, so the checks are on the rendered
 // output, not on the source.
 //
 // Outside src/app deliberately: expo-router bundles every file under the app root as a
@@ -68,34 +69,11 @@ jest.mock('expo-router', () => ({
 const mockNav: string[] = [];
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
-import { DeptSheet, type DeptTarget } from '@/components/campus/DeptSheet';
 import Briefing from '@/app/scenario/[id]';
 import { nb } from '@/theme/nb';
 import { trackMounts } from '../testing/mountRegistry';
 
 const track = trackMounts();
-
-const CURRICULA = [
-  {
-    key: '본관|1F|orientation', name: '첫 출근 · 인계받기', where: '본관 1F 응급의료센터',
-    state: 'done' as const, done: 5, total: 5, resume: false, steps: [],
-  },
-  {
-    key: '본관|1F|triage', name: '접수와 트리아지', where: '본관 1F 응급의료센터',
-    state: 'doing' as const, done: 3, total: 7, resume: true, next: '두부 외상 사정',
-    steps: [
-      { name: '통증 사정', kind: 'dlg', scenarioId: 'SCN-ER-00002', state: 'done' as const, pass: 1, passes: 2, guide: 'choices' as const },
-      { name: '통증 표현 짝맞추기', kind: 'quiz', scenarioId: 'QZ-ER-00002', state: 'now' as const, attempted: true },
-      { name: '화상 응급 처치', kind: 'dlg', scenarioId: 'SCN-ER-00013', state: 'lock' as const },
-      { name: '흉통 환자 트리아지', kind: 'boss', scenarioId: 'SCN-ER-00001', state: 'todo' as const },
-    ],
-  },
-];
-
-const TARGET: DeptTarget = {
-  deptCode: 'ER', place: '응급의료센터', where: '본관 1F', accent: '#D14B3D', nbIcon: 'siren',
-  curricula: CURRICULA as unknown as DeptTarget['curricula'],
-};
 
 function texts(root: ReactTestInstance): string[] {
   return root
@@ -131,57 +109,6 @@ function labelStyle(root: ReactTestInstance, label: string): Record<string, unkn
   expect(hit).toBeTruthy();
   return flatten(hit.props.style);
 }
-
-async function sheet() {
-  let tree!: ReturnType<typeof create>;
-  await act(async () => { tree = track(create(<DeptSheet target={TARGET} onClose={() => {}} onStart={() => {}} onWalk={() => {}} />)); });
-  await act(async () => { await Promise.resolve(); });
-  return tree;
-}
-
-test('a finished chapter reads as struck off, and the current one is ringed', async () => {
-  const tree = await sheet();
-  // Done: a line through the name. Without it the only difference from an untouched
-  // chapter is a pale green tint, which is not a difference at a glance.
-  expect(labelStyle(tree.root, '첫 출근 · 인계받기').textDecorationLine).toBe('line-through');
-  // Current: the gold ring the app uses everywhere for "this is the one you chose", so it
-  // cannot be confused with done.
-  expect(styled(tree.root, (s) => s.borderColor === '#E9C45A' && s.borderWidth === 2.5).length).toBe(1);
-  // t('step.now') is 'NOW' in every catalog — the app labels the current step in the
-  // target language, not the learner's.
-  expect(texts(tree.root)).toContain('NOW');
-});
-
-test('a locked step is dimmed and untappable; a retried one says 다시', async () => {
-  const tree = await sheet();
-  // The chapter in progress opens itself, so its steps are on screen.
-  const out = texts(tree.root);
-  expect(out).toContain('화상 응급 처치');
-
-  const rows = tree.root.findAll(
-    (n) => typeof n.props?.onPress === 'function' && texts(n).includes('화상 응급 처치'),
-    { deep: true },
-  );
-  expect(rows.length).toBeGreaterThan(0);
-  // Disabled, not merely faint: a locked step that accepts a tap sends the learner into a
-  // scenario the curriculum has not opened.
-  expect(rows.some((r) => r.props.disabled === true)).toBe(true);
-  expect(styled(tree.root, (s) => s.opacity === 0.45).length).toBeGreaterThan(0);
-
-  // Played and not passed. The learner's next move is another go, so the chip says so —
-  // 지금 on a step they have already failed reads as a fresh one.
-  expect(out).toContain('다시');
-});
-
-test('an urgent situation is the one row that catches the eye; a cleared one steps back', async () => {
-  const tree = await sheet();
-  const out = texts(tree.root);
-  expect(out).toContain('자해 위험 환자 사정');
-  // Peach paper with a red edge — the only coloured card in the list.
-  expect(styled(tree.root, (s) => s.backgroundColor === '#FFF0EC').length).toBe(1);
-  // And the verb says what the tap is: 시작 for untouched, 복습 for one already passed.
-  expect(out).toContain('복습');
-});
 
 test('the briefing says what the learner will be graded on', async () => {
   // The pixel briefing showed skills, rewards and entry requirements and never the goals —
