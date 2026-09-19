@@ -58,6 +58,7 @@ depends-on: curriculum-v3-live (L2 포트·L4 은퇴), 핸드오프 v41 08_JOURN
 | [`business-rules.md`](business-rules.md) | ✅ | J1~J10 · 검증 · 불변식 I1~I5 · 엣지케이스 |
 | [`business-logic-model.md`](business-logic-model.md) | ✅ | W1~W3 · A1~A3 · 상태 전이 · 시퀀스 · 통합 지점 |
 | [`frontend-components.md`](frontend-components.md) | ✅ | 컴포넌트 트리 · props · 화면 상태 · 디자인 SoT 매핑 |
+| [`implementation-plan.md`](implementation-plan.md) | ✅ | 태스크 16개(TDD 단계 단위) · 파일 구조 · 자체 검토 |
 
 ## §3. 미해결 질문 → 해소된 결정 (2026-09-20)
 

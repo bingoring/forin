@@ -79,11 +79,14 @@ type StationDetail struct {
 
 | 필드 | 타입 | 영속 | 규칙 |
 |---|---|---|---|
-| `user.goal_dept` | `text NOT NULL DEFAULT ''` | 마이그레이션 | 빈 문자열 = 아직 고르지 않음 |
+| `profiles.goal_dept` | `text NOT NULL DEFAULT ''` | 마이그레이션 000039 | 빈 문자열 = 아직 고르지 않음 |
+
+`users`가 아니라 `profiles`에 붙는다 — 온보딩에서 파생된 학습자 설정이 사는 곳이고 `ui_lang`·
+`destination`이 이미 거기 있다. Go 쪽으로는 `user.Profile.GoalDept`이고 `GET /me`가 그대로 실어 낸다.
 
 - **DB 제약을 걸지 않는다.** 허용 집합은 코드 쪽(`themes.yaml`에 존재하고 층이 있는 부서)에서 검증한다.
   부서는 콘텐츠가 늘면 늘어나는 값이라 DB CHECK로 굳히면 콘텐츠 추가가 마이그레이션을 요구하게 된다.
-- `GET /me`가 함께 돌려준다(`destination`·`job` 옆).
+- `GET /me`가 `Profile` 안에 실어 돌려준다(`destination`·`uiLang` 옆).
 
 ## 3. 관계
 
