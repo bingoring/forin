@@ -200,32 +200,32 @@ var mainBuilding = []Curriculum{
 		Building: "본관", Floor: "8F", Where: "본관 8F 일반 내과 병동",
 		Steps: []Step{
 			{Kind: "dlg", Name: "첫 인사 · 내과병동", ScenarioID: "SCN-WARD-00900"},
-			{Kind: "dlg", Name: "입원 시 통증 초기 사정", ScenarioID: "SCN-WARD-00110"},
+			{Kind: "dlg", Name: "아침 투약이 세 병실에 몰린 시간에 재촉하는 환자에게 확인 절차는 줄일 수 없다고 말하기 · William Aldridge", ScenarioID: "SCN-WARD-00110"},
 			// This floor's bank has no hand-authored quiz, so the quiz comes from a
 			// topic that lives in another curriculum on the same floor — a quiz
 			// echoing the dialogue right above it teaches nothing.
 			{Kind: "quiz", Name: "혈당 변동 설명", ScenarioID: "QZ-WARD-00104"},
-			{Kind: "dlg", Name: "야간 입원 간소 사정", ScenarioID: "SCN-WARD-00111"},
-			{Kind: "boss", Name: "검사 결과 의료진 보고", ScenarioID: "SCN-WARD-00430"},
+			{Kind: "dlg", Name: "알레르기 팔찌가 채워진 까닭을 자기는 모른다고 하는 환자의 기록을 약사와 함께 되짚기 · Patricia Abernathy", ScenarioID: "SCN-WARD-00111"},
+			{Kind: "boss", Name: "일 때문에 퇴원 교육에 오지 못하는 가족과 시간을 다시 잡고 그 사이 할 일을 전화로 전하기 · Eugene Lawler", ScenarioID: "SCN-WARD-00430"},
 		},
 	},
 	{
 		Key: "본관|8F|chronic", Name: "만성질환 교육",
 		Building: "본관", Floor: "8F", Where: "본관 8F 일반 내과 병동",
 		Steps: []Step{
-			{Kind: "dlg", Name: "혈당 변동 패턴 분석", ScenarioID: "SCN-WARD-00596"},
-			{Kind: "dlg", Name: "이뇨제 복용 교육", ScenarioID: "SCN-WARD-00693"},
-			{Kind: "dlg", Name: "격리실 안내", ScenarioID: "SCN-WARD-00378"},
-			{Kind: "boss", Name: "심부전 악화 조기 인지", ScenarioID: "SCN-WARD-00699"},
+			{Kind: "dlg", Name: "밤새 깨우지 말라며 측정을 거절하는 환자와 최소한의 간격을 두고 협의하기 · Frances Rush", ScenarioID: "SCN-WARD-00596"},
+			{Kind: "dlg", Name: "교대하며 수혈을 이어받는 동료에게 지금까지의 경과와 남은 단위를 정리해 넘기기 · Sharon Trevino", ScenarioID: "SCN-WARD-00693"},
+			{Kind: "dlg", Name: "영양사가 짜 온 식단을 환자의 평소 식습관과 맞춰 보며 바꿀 부분을 찾기 · Yvonne Gates", ScenarioID: "SCN-WARD-00378"},
+			{Kind: "boss", Name: "수혈을 받으면 병이 옮는다고 믿는 환자에게 그 말을 어디서 들었는지부터 물어보기 · Carl Turner", ScenarioID: "SCN-WARD-00699"},
 		},
 	},
 	{
 		Key: "본관|8F|deterioration", Name: "악화와 인계",
 		Building: "본관", Floor: "8F", Where: "본관 8F 일반 내과 병동",
 		Steps: []Step{
-			{Kind: "event", Name: "산소 요구 증가 추적", ScenarioID: "SCN-WARD-00443"},
-			{Kind: "dlg", Name: "침상 옆 인계", ScenarioID: "SCN-WARD-00821"},
-			{Kind: "boss", Name: "불안정 환자 인계", ScenarioID: "SCN-WARD-00831"},
+			{Kind: "event", Name: "지난 투여로부터 시간이 남았는데 지금 달라고 되풀이하는 환자에게 남은 간격을 설명하기 · Derek Lawson", ScenarioID: "SCN-WARD-00443"},
+			{Kind: "dlg", Name: "답답하고 덥다며 스타킹을 벗어 둔 환자와 신는 시간을 나누자고 제안하기 · Paula Whitaker", ScenarioID: "SCN-WARD-00821"},
+			{Kind: "boss", Name: "한쪽 다리가 붉고 뜨겁게 부은 환자를 움직이지 않게 두고 당직의를 호출하기 · Roy Yarbrough", ScenarioID: "SCN-WARD-00831"},
 		},
 	},
 
