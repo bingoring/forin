@@ -3,6 +3,8 @@ package http
 import (
 	"context"
 	"encoding/json"
+	"io"
+	"log/slog"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -143,26 +145,6 @@ func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
 	}
 }
 
-// TestJourney_RequiresAuth follows the requireAuth-wrapping pattern established by
-// TestSpeechAudioRequiresAuth (speech_audio_handler_test.go): wrap the bare handler
-// in the real requireAuth middleware and call it with no bearer token, expecting
-// 401. Route registration in router.go wraps this handler in auth(...) already;
-// this test is what makes that wrapping a guarded fact instead of an unverified
-// convention.
-func TestJourney_RequiresAuth(t *testing.T) {
-	h := &journeyHandler{}
-	tokens := auth.NewTokenService([]byte("test-signing-key-0123456789"), "forin-test", time.Hour)
-	handler := requireAuth(tokens)(http.HandlerFunc(h.journey))
-
-	req := httptest.NewRequest(http.MethodGet, "/me/journey", nil)
-	w := httptest.NewRecorder()
-	handler.ServeHTTP(w, req)
-
-	if w.Code != http.StatusUnauthorized {
-		t.Fatalf("no bearer token must be 401, got %d: %s", w.Code, w.Body.String())
-	}
-}
-
 func TestStation_ReturnsRowsForAKnownTheme(t *testing.T) {
 	h := &journeyHandler{
 		progress: journeyProgress{},
@@ -228,22 +210,6 @@ func TestSetGoalDept_RejectsADepartmentTheLiftCannotReach(t *testing.T) {
 	}
 }
 
-// TestSetGoalDept_RequiresAuth — see TestJourney_RequiresAuth for the pattern this
-// follows (TestSpeechAudioRequiresAuth in speech_audio_handler_test.go).
-func TestSetGoalDept_RequiresAuth(t *testing.T) {
-	h := &journeyHandler{}
-	tokens := auth.NewTokenService([]byte("test-signing-key-0123456789"), "forin-test", time.Hour)
-	handler := requireAuth(tokens)(http.HandlerFunc(h.setGoalDept))
-
-	req := httptest.NewRequest(http.MethodPatch, "/me/goal-dept", strings.NewReader(`{"dept":"WARD"}`))
-	w := httptest.NewRecorder()
-	handler.ServeHTTP(w, req)
-
-	if w.Code != http.StatusUnauthorized {
-		t.Fatalf("no bearer token must be 401, got %d: %s", w.Code, w.Body.String())
-	}
-}
-
 func TestStation_UnknownThemeIs404(t *testing.T) {
 	h := &journeyHandler{progress: journeyProgress{}, journeys: stubJourneys{j: journeyStub{}}}
 	code := getStatusPath(t, h.station, "/me/journey/stations/nope", "themeKey", "nope")
@@ -252,18 +218,52 @@ func TestStation_UnknownThemeIs404(t *testing.T) {
 	}
 }
 
-// TestStation_RequiresAuth — see TestJourney_RequiresAuth for the pattern this
-// follows (TestSpeechAudioRequiresAuth in speech_audio_handler_test.go).
-func TestStation_RequiresAuth(t *testing.T) {
-	h := &journeyHandler{}
+// TestJourneyRoutesRequireAuth boots the REAL router (NewRouter) and checks that
+// requests with no bearer token are turned away before they reach a handler. This
+// replaces three earlier per-handler tests that each built their own
+// requireAuth(tokens)(http.HandlerFunc(...)) wrapper directly — a shape borrowed
+// from TestSpeechAudioRequiresAuth that verifies "this handler behind requireAuth
+// returns 401" (already true, trivially) but can never catch the actual regression
+// that matters: router.go registering a journey route WITHOUT the auth(...) wrap.
+// Only a router-level test can catch that, and it does: flip one of the three
+// mux.Handle("...", auth(...)) lines in router.go back to a bare handler and this
+// test fails (verified by hand — see task-7-report.md).
+//
+// NewRouter only wires handler structs together; it does no I/O, so it is safe to
+// start with every dependency but Tokens left zero. Env is set to a non-"prod",
+// non-"dev" value with DevAuthSecret empty so the dev-only bypass route is not
+// registered either (not that it matters here, but it keeps this router honest
+// about what a real deployment looks like).
+func TestJourneyRoutesRequireAuth(t *testing.T) {
 	tokens := auth.NewTokenService([]byte("test-signing-key-0123456789"), "forin-test", time.Hour)
-	handler := requireAuth(tokens)(http.HandlerFunc(h.station))
+	router := NewRouter(Deps{
+		Env:    "test",
+		Tokens: tokens,
+		Log:    slog.New(slog.NewTextHandler(io.Discard, nil)),
+	})
 
-	req := httptest.NewRequest(http.MethodGet, "/me/journey/stations/core-safety-er", nil)
-	w := httptest.NewRecorder()
-	handler.ServeHTTP(w, req)
+	cases := []struct {
+		name   string
+		method string
+		path   string
+	}{
+		{"journey", http.MethodGet, "/me/journey"},
+		{"station", http.MethodGet, "/me/journey/stations/core-safety-er"},
+		{"setGoalDept", http.MethodPatch, "/me/goal-dept"},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			var body io.Reader
+			if c.method == http.MethodPatch {
+				body = strings.NewReader(`{"dept":"WARD"}`)
+			}
+			req := httptest.NewRequest(c.method, c.path, body)
+			w := httptest.NewRecorder()
+			router.ServeHTTP(w, req)
 
-	if w.Code != http.StatusUnauthorized {
-		t.Fatalf("no bearer token must be 401, got %d: %s", w.Code, w.Body.String())
+			if w.Code != http.StatusUnauthorized {
+				t.Fatalf("no bearer token must be 401, got %d: %s", w.Code, w.Body.String())
+			}
+		})
 	}
 }
