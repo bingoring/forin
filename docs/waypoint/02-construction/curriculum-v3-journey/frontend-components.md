@@ -69,7 +69,7 @@ StationSheet                        탭 오버레이 (바텀시트)
 
 ### `StationSheet`
 - **props**: `{ themeKey: string; onClose() }` — 열릴 때 `GET /me/journey/stations/{themeKey}`
-- 머리: 정거장 이름 · `NbProgSquares`(done/total, size 9) · 트랙 태그
+- 머리: 정거장 이름 · `NbProgSquares`(done/total) · 트랙 태그
 - 몸: `TierRow` 3개(기초·응용·위기, 잠긴 계단은 흐리게) → `StepRow` 목록
 
 ### `StepRow`
