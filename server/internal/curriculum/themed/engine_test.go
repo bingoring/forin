@@ -120,3 +120,86 @@ func TestRegistry_ForUnknownProfessionIsEmpty(t *testing.T) {
 		t.Errorf("unknown profession resume should be empty")
 	}
 }
+
+// ── Steps (주제 시트의 행; v2 resolveOne 이식) ──
+
+func TestEngine_StepsExpandsEachDialogueIntoTwoRuns(t *testing.T) {
+	e := fixtureEngine()
+	rows := e.Steps("er-chestpain", learning.Progress{})
+	if len(rows) != 4 { // SCN-C1 ×2, SCN-C2 ×2
+		t.Fatalf("want 4 rows (2 dialogues × 2 runs), got %d", len(rows))
+	}
+	if rows[0].Pass != 1 || rows[0].Passes != 2 || rows[0].Guide != learning.GuideChoices {
+		t.Errorf("first run should be the guided rung: %+v", rows[0])
+	}
+	if rows[1].Pass != 2 || rows[1].Guide != learning.GuideFree {
+		t.Errorf("second run should be the free rung: %+v", rows[1])
+	}
+	if rows[0].ScenarioID != rows[1].ScenarioID {
+		t.Errorf("the two runs must be the same scenario: %q vs %q", rows[0].ScenarioID, rows[1].ScenarioID)
+	}
+}
+
+func TestEngine_StepsMarksExactlyOneNowAndLocksTheRest(t *testing.T) {
+	e := fixtureEngine()
+	rows := e.Steps("er-chestpain", learning.Progress{})
+	now, lock := 0, 0
+	for _, r := range rows {
+		switch r.State {
+		case "now":
+			now++
+		case "lock":
+			lock++
+		}
+	}
+	if now != 1 {
+		t.Errorf("want exactly one `now` row, got %d", now)
+	}
+	if lock != 3 {
+		t.Errorf("want the remaining 3 rows locked, got %d", lock)
+	}
+}
+
+func TestEngine_StepsClearedAloneSupersedesClearedWithHelp(t *testing.T) {
+	e := fixtureEngine()
+	// Cleared unaided only: BOTH rungs read as done — re-demanding the guided run
+	// would reopen finished work for everyone who cleared before the guide column.
+	p := learning.Progress{
+		Cleared: map[learning.ScenarioID]bool{"SCN-C1": true},
+		Passes:  learning.ClearedPasses{FreeCleared: map[learning.ScenarioID]bool{"SCN-C1": true}},
+	}
+	rows := e.Steps("er-chestpain", p)
+	if rows[0].State != "done" || rows[1].State != "done" {
+		t.Fatalf("free clear should finish both rungs: %q %q", rows[0].State, rows[1].State)
+	}
+	// Cleared WITH help only: the guided rung is done, the free rung is what's next.
+	p2 := learning.Progress{
+		Cleared: map[learning.ScenarioID]bool{"SCN-C1": true},
+		Passes:  learning.ClearedPasses{GuidedCleared: map[learning.ScenarioID]bool{"SCN-C1": true}},
+	}
+	rows2 := e.Steps("er-chestpain", p2)
+	if rows2[0].State != "done" || rows2[1].State != "now" {
+		t.Errorf("guided clear should leave the free rung as now: %q %q", rows2[0].State, rows2[1].State)
+	}
+}
+
+func TestEngine_StepsHidesAttemptedWhereItWouldContradict(t *testing.T) {
+	e := fixtureEngine()
+	// SCN-C2 was tried but never cleared; its rows are locked behind SCN-C1, and a
+	// locked row badged "tried" reads as a contradiction.
+	p := learning.Progress{Attempted: map[learning.ScenarioID]bool{"SCN-C1": true, "SCN-C2": true}}
+	for _, r := range e.Steps("er-chestpain", p) {
+		if r.State == "lock" && r.Attempted {
+			t.Errorf("a locked row must not be marked attempted: %+v", r)
+		}
+		if r.State == "now" && r.ScenarioID == "SCN-C1" && !r.Attempted {
+			t.Errorf("the now row should keep its attempted badge: %+v", r)
+		}
+	}
+}
+
+func TestEngine_StepsUnknownThemeIsEmptyNotPanic(t *testing.T) {
+	if rows := fixtureEngine().Steps("no-such-theme", learning.Progress{}); len(rows) != 0 {
+		t.Errorf("unknown theme should yield no rows, got %d", len(rows))
+	}
+}

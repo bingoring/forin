@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/bingoring/forin/server/internal/curriculum"
+	"github.com/bingoring/forin/server/internal/domain/campus"
 )
 
 // The learning path is hand-authored, one file per building, in
@@ -34,7 +35,7 @@ func generateCurriculum(path string) (int, error) {
 	// the department sheet and always have been — so an unauthored GEN is not a
 	// gap, and warning about it would train people to ignore the warning.
 	onAFloor := map[string]bool{}
-	for _, fl := range Floors {
+	for _, fl := range campus.Floors {
 		for _, code := range fl.Depts {
 			onAFloor[code] = true
 		}

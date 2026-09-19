@@ -24,6 +24,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/handoff"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/night"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/slang"
@@ -110,17 +111,34 @@ func main() {
 	}
 	nightRadio := night.NewStories(nightStories)
 
-	// 커리큘럼 v3 주제 카탈로그: 레지스트리(themes.yaml)를 콘텐츠 디렉터리에서 읽고, DB에 실린
-	// 시나리오 태그로 1회 조립해 캐시한다. 파일·태그가 없으면 빈 카탈로그(안전)이며, P2 태깅 전까지는
-	// 라이브 /me/curriculum(하드코딩 경로)과 공존한다. 추가 엔드포인트 /me/curriculum/tracks만 이걸 쓴다.
-	themeCatalog := themed.NewCatalog(nil, nil)
-	if themes, terr := themed.LoadThemes(filepath.Join(cfg.ContentDir, "nurse", "themes.yaml")); terr != nil {
-		logger.Warn("theme registry failed to load; curriculum v3 tracks empty", "err", terr)
-	} else if tags, gerr := contentRepo.ListScenarioTags(context.Background()); gerr != nil {
-		logger.Warn("scenario tags failed to load; curriculum v3 tracks empty", "err", gerr)
-	} else {
-		themeCatalog = themed.NewCatalog(themes, tags)
-		logger.Info("curriculum v3 themed catalog built", "orphans", len(themeCatalog.Orphans()))
+	// 커리큘럼 v3 여정 엔진: 직업군마다 레지스트리(content/<prof>/themes.yaml)를 읽고 DB의
+	// 시나리오 태그로 1회 조립해 캐시한다. 콘텐츠 디렉터리를 순회하므로 새 직업군은 디렉터리를
+	// 떨어뜨리는 것만으로 붙는다(S7). 파일·태그가 없는 직업군은 등록되지 않고, 등록되지 않은
+	// 직업군의 여정은 비어 있되 탐색 가능한 상태가 된다 — 오류가 아니다.
+	//
+	// 태그는 아직 직업군으로 나뉘어 있지 않다(시나리오 id에도 DB 열에도 직업군이 없다). 두 번째
+	// 직업군이 실릴 때 태그를 직업군으로 좁히는 것이 다음 seam이다.
+	journeys := themed.NewRegistry()
+	tags, tagErr := contentRepo.ListScenarioTags(context.Background())
+	if tagErr != nil {
+		logger.Warn("scenario tags failed to load; every journey will be empty", "err", tagErr)
+	}
+	profs, perr := os.ReadDir(cfg.ContentDir)
+	if perr != nil {
+		logger.Warn("content dir unreadable; every journey will be empty", "err", perr)
+	}
+	for _, e := range profs {
+		if !e.IsDir() {
+			continue
+		}
+		themes, terr := themed.LoadThemes(filepath.Join(cfg.ContentDir, e.Name(), "themes.yaml"))
+		if terr != nil {
+			continue // a content dir without a theme registry is not a profession
+		}
+		cat := themed.NewCatalog(themes, tags)
+		journeys.Add(learning.Profession(e.Name()), themed.NewEngine(cat))
+		logger.Info("curriculum v3 journey built", "profession", e.Name(),
+			"themes", len(themes), "orphans", len(cat.Orphans()))
 	}
 
 	// AI layer: select an LLMPort adapter by provider (anthropic | openai) — domain unchanged.
@@ -144,7 +162,7 @@ func main() {
 
 	// 환자 인수인계 노트: follow-up notes generated (cheap correction model) from cleared
 	// patient encounters, with a template fallback when the LLM is unconfigured.
-	handoffSvc := handoff.NewService(handoffRepo, progressRepo, contentRepo, progressRepo, llm, correctionModel)
+	handoffSvc := handoff.NewService(handoffRepo, progressRepo, contentRepo, progressRepo, llm, correctionModel, journeys.For("nurse"))
 	logger.Info("llm provider", "provider", cfg.ResolveProvider(), "configured", configured)
 	if !configured {
 		logger.Warn("LLM API key not set — AI conversation/correction endpoints will return errors")
@@ -166,7 +184,7 @@ func main() {
 		Env:           cfg.Env,
 		DevAuthSecret: cfg.DevAuthSecret,
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
-		Progress: progressRepo, Review: progressRepo, ThemedCatalog: themeCatalog, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
+		Progress: progressRepo, Review: progressRepo, Journeys: journeys, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
 		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,
 	})

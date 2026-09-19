@@ -8,14 +8,17 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
 type conversationHandler struct {
+	// journeys resolves the learner's journey (S7) — the guide rung this run was on
+	// and what to do next both come from it.
+	journeys  learning.Journeys
 	engine    *conversation.Engine
 	progress  ports.ProgressRepo  // records the graded attempt (scaled XP + clear state)
 	content   ports.ContentReader // scenario title for the presence label
@@ -236,8 +239,9 @@ func (h *conversationHandler) complete(w http.ResponseWriter, r *http.Request) {
 	// Which rung this run was on. A clear made with three replies on screen is not a
 	// clear made alone, and recording them the same would mean the free pass unlocked
 	// itself.
-	guided, free, _ := h.progress.ClearedByGuide(r.Context(), uid)
-	guide := curriculum.GuideForScenario(g.ScenarioID, guided[g.ScenarioID] || free[g.ScenarioID])
+	j := journeyFor(r.Context(), h.journeys)
+	lp := learningProgress(r.Context(), h.progress, uid)
+	guide := j.Guidance(learning.ScenarioID(g.ScenarioID), lp)
 	p, err := h.progress.RecordAttempt(r.Context(), uid, g.ScenarioID, g.XPAwarded, state, g.Score, string(guide))
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not record attempt")
@@ -255,11 +259,8 @@ func (h *conversationHandler) complete(w http.ResponseWriter, r *http.Request) {
 	// Best-effort. A failed read means the button falls back to the career tab, which
 	// is where it went before — a broken "next" must not fail the completion the
 	// learner just earned.
-	if cleared, err := h.progress.ClearedScenarioIDs(r.Context(), uid); err == nil {
-		attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
-		if next := curriculum.NextScenarioAfter(cleared, attempted, g.ScenarioID); next != "" {
-			out["nextScenarioId"] = next
-		}
+	if next := j.Next(learningProgress(r.Context(), h.progress, uid), learning.ScenarioID(g.ScenarioID)); next.Found {
+		out["nextScenarioId"] = string(next.Scenario)
 	}
 	httpx.JSON(w, http.StatusOK, out)
 }

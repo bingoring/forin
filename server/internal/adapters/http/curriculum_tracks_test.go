@@ -10,7 +10,7 @@ import (
 )
 
 // fakeProgress satisfies ports.ProgressRepo by embedding it (nil), overriding
-// only the three reads curriculumTracks calls. Any other call would panic —
+// only the four reads a journey resolution makes. Any other call would panic —
 // which is the point: it proves the handler touches nothing else.
 type fakeProgress struct {
 	ports.ProgressRepo
@@ -27,9 +27,19 @@ func (f fakeProgress) AttemptedScenarioIDs(context.Context, string) (map[string]
 func (f fakeProgress) LatestAttemptScenarioID(context.Context, string) (string, error) {
 	return f.latest, nil
 }
+func (f fakeProgress) ClearedByGuide(context.Context, string) (map[string]bool, map[string]bool, error) {
+	return nil, nil, nil
+}
+
+// nurseJourneys registers one engine under the shipped profession.
+func nurseJourneys(themes []themed.Theme, tags []themed.ScenarioTag) learning.Journeys {
+	r := themed.NewRegistry()
+	r.Add(shippedProfession, themed.NewEngine(themed.NewCatalog(themes, tags)))
+	return r
+}
 
 func TestCurriculumTracks_nilCatalogEmpty(t *testing.T) {
-	ph := &progressHandler{} // themed nil, progress nil — handler must not touch either
+	ph := &progressHandler{} // no registry, no progress — handler must not touch either
 	var out struct {
 		Tracks []learning.TrackGroup `json:"tracks"`
 	}
@@ -49,7 +59,7 @@ func TestCurriculumTracks_shape(t *testing.T) {
 		{ID: "SCN-ER-1", Title: "트리아지1", Theme: "er-triage", Dept: "ER", Difficulty: 1},
 	}
 	ph := &progressHandler{
-		themed:   themed.NewCatalog(themes, tags),
+		journeys: nurseJourneys(themes, tags),
 		progress: fakeProgress{cleared: map[string]bool{"SCN-ER-1": true}, latest: "SCN-ER-1"},
 	}
 	var out struct {

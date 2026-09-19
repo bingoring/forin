@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/home"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -24,6 +24,9 @@ import (
 // Every module field is omitempty: when there is no data, the field is absent and
 // the client simply doesn't render that module. No placeholder copy is ever sent.
 type homeHandler struct {
+	// journeys resolves the learner's journey (S7); the home card reads it through
+	// the same presenter the career tab uses.
+	journeys  learning.Journeys
 	progress  ports.ProgressRepo
 	review    ports.ReviewRepo
 	content   ports.ContentReader
@@ -132,7 +135,7 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 	var (
 		wg        sync.WaitGroup
 		mu        sync.Mutex
-		curricula []curriculum.CurriculumState
+		curricula []legacyCurriculum
 	)
 	run := func(f func()) { wg.Add(1); go func() { defer wg.Done(); f() }() }
 
@@ -169,24 +172,17 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 	})
 
 	run(func() {
-		cleared, err := h.progress.ClearedScenarioIDs(ctx, uid)
-		if err != nil {
-			return
-		}
-		// Where the learner actually was, which is not the same as the front of the
-		// path. Before v2 this screen always pointed at the first unfinished step in
-		// the whole catalog, so someone working on the 8th floor was told to go back
-		// to the 1st. A failed lookup is not fatal: resume then falls back to the
-		// first unfinished curriculum, which is the old behaviour.
-		last, _ := h.progress.LatestAttemptScenarioID(ctx, uid)
-		attempted, _ := h.progress.AttemptedScenarioIDs(ctx, uid)
-		cs := curriculum.ResolvePasses(cleared, attempted, passesFor(ctx, h.progress, uid), curriculum.KeyForScenario(last), locale)
+		// One read of the learner's state, then the SAME presentation the career tab
+		// gets — the home card and the career hero must not drift apart, and they
+		// cannot when both read one resolution instead of each walking the journey.
+		p := learningProgress(ctx, h.progress, uid)
+		cs := legacyCurricula(journeyFor(ctx, h.journeys), p, locale)
 		mu.Lock()
 		curricula = cs
 		// Derived from cleared content rather than from XP or level: those move for
 		// reasons other than finishing something, so a user who earned a little XP and
 		// stopped would stop counting as new while still never having completed a step.
-		resp.FirstRun = len(cleared) == 0
+		resp.FirstRun = len(p.Cleared) == 0
 		mu.Unlock()
 	})
 
@@ -321,7 +317,7 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 // It reads the Resume flag rather than searching for the first unfinished
 // curriculum itself: the career tab draws its hero from the same flag, and two
 // screens computing "what's next" separately is how they end up disagreeing.
-func currentStep(curricula []curriculum.CurriculumState, loc string) (dept, deptLabel string, one *homeTodayOne) {
+func currentStep(curricula []legacyCurriculum, loc string) (dept, deptLabel string, one *homeTodayOne) {
 	for _, c := range curricula {
 		if !c.Resume {
 			continue

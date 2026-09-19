@@ -85,7 +85,7 @@ func passingID(userID string) string {
 }
 
 func newSvc(store Store, prog ports.ProgressRepo, cont ports.ContentReader) *Service {
-	return NewService(store, prog, cont, fakeReview{}, nil, "") // nil LLM → template fallback
+	return NewService(store, prog, cont, fakeReview{}, nil, "", nil) // nil LLM → template fallback
 }
 
 func TestGateThresholdRisesWithGrade(t *testing.T) {

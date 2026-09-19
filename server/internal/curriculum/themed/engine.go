@@ -106,6 +106,77 @@ func (e *Engine) Resume(p learning.Progress) learning.StepRef {
 	return learning.StepRef{}
 }
 
+// Steps is ONE theme's rows with progress overlaid (v2 resolveOne ported).
+//
+// One row per RUN: a dialogue is played twice (guided, then alone), so it yields two
+// rows and the learner picks which. Exactly one row is `now` — the first that is
+// neither done nor optional — and everything after it is `lock`, which is what makes
+// the sequence inside a theme visible without a padlock on the theme itself.
+func (e *Engine) Steps(theme learning.ThemeKey, p learning.Progress) []learning.StepState {
+	c, ok := e.curriculum(string(theme))
+	if !ok {
+		return nil
+	}
+	out := []learning.StepState{}
+	nowUsed := false
+	for _, ti := range c.Tiers {
+		for _, st := range ti.Steps {
+			id := learning.ScenarioID(st.ScenarioID)
+			n := e.guide.Passes(st.Kind)
+			for pass := 1; pass <= n; pass++ {
+				row := learning.StepState{
+					Kind: st.Kind, Name: st.Name, ScenarioID: st.ScenarioID,
+					Optional: st.Kind == "quiz",
+				}
+				if n > 1 {
+					row.Guide, row.Pass, row.Passes = e.guide.GuideForPass(st.Kind, pass), pass, n
+				}
+				row.Attempted = id != "" && p.Attempted[id]
+				// Which RUNG is finished is not "is this scenario cleared": the guided run
+				// is done once cleared WITH help, the free run needs a clear without. Doing
+				// it alone supersedes doing it with help — and a clear recorded before the
+				// guide column existed reads as unaided, so finished work never reopens.
+				done := id != "" && p.Cleared[id]
+				if n > 1 {
+					if pass == 1 {
+						done = id != "" && (p.Passes.GuidedCleared[id] || p.Passes.FreeCleared[id])
+					} else {
+						done = id != "" && p.Passes.FreeCleared[id]
+					}
+				}
+				switch {
+				case done:
+					row.State = "done"
+				case row.Optional:
+					row.State = "optional"
+				case !nowUsed:
+					row.State, nowUsed = "now", true
+				default:
+					row.State = "lock"
+				}
+				// Only where it says something: a done row was obviously attempted, and a
+				// lock row marked tried reads as a contradiction — you cannot have played
+				// what has not opened.
+				if row.State != "now" && row.State != "optional" {
+					row.Attempted = false
+				}
+				out = append(out, row)
+			}
+		}
+	}
+	return out
+}
+
+// curriculum finds an assembled curriculum by theme key.
+func (e *Engine) curriculum(themeKey string) (Curriculum, bool) {
+	for _, c := range e.cat.curricula {
+		if c.Theme.Key == themeKey {
+			return c, true
+		}
+	}
+	return Curriculum{}, false
+}
+
 // firstOpen returns the first required (non-quiz) not-cleared step of a theme in
 // learning order (tier 1→3, step order within), skipping `exclude`.
 func (e *Engine) firstOpen(themeKey string, cleared map[string]bool, exclude string) (learning.StepRef, bool) {
@@ -165,7 +236,9 @@ func strKeys(m map[learning.ScenarioID]bool) map[string]bool {
 // ── Registry: learning.Journeys (S7 profession lookup) ──
 
 // Registry maps a profession to its engine. Built once at boot from content/<prof>/.
-type Registry struct{ byProf map[learning.Profession]*Engine }
+type Registry struct {
+	byProf map[learning.Profession]*Engine
+}
 
 // NewRegistry returns an empty registry.
 func NewRegistry() *Registry { return &Registry{byProf: map[learning.Profession]*Engine{}} }
@@ -196,6 +269,7 @@ func (emptyJourney) Guidance(learning.ScenarioID, learning.Progress) learning.Gu
 func (emptyJourney) Locate(learning.ScenarioID) (learning.StepRef, bool) {
 	return learning.StepRef{}, false
 }
+func (emptyJourney) Steps(learning.ThemeKey, learning.Progress) []learning.StepState { return nil }
 
 // compile-time interface checks.
 var (

@@ -17,8 +17,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -67,10 +67,13 @@ type Service struct {
 	llm      ports.LLMPort
 	model    string
 	now      func() time.Time
+	// journey answers "what next" for the follow-up flavour of a note. Optional: a
+	// nil journey degrades the note to gratitude rather than dropping the note.
+	journey learning.Journey
 }
 
-func NewService(store Store, prog ports.ProgressRepo, cont ports.ContentReader, rev ports.ReviewRepo, llm ports.LLMPort, model string) *Service {
-	return &Service{store: store, progress: prog, content: cont, review: rev, llm: llm, model: model, now: time.Now}
+func NewService(store Store, prog ports.ProgressRepo, cont ports.ContentReader, rev ports.ReviewRepo, llm ports.LLMPort, model string, journey learning.Journey) *Service {
+	return &Service{store: store, progress: prog, content: cont, review: rev, llm: llm, model: model, now: time.Now, journey: journey}
 }
 
 // isPatient is true for personas the nurse CARED for (a note comes from a patient or their
@@ -117,10 +120,13 @@ func (s *Service) pickKind(ctx context.Context, userID string, sc *content.Scena
 		return KindReview, sc.ID // review opens this encounter's corrections
 	}
 	if hashUnit(userID+"|"+sc.ID+"|kind") < 0.4 {
-		cleared, _ := s.progress.ClearedScenarioIDs(ctx, userID)
-		attempted, _ := s.progress.AttemptedScenarioIDs(ctx, userID)
-		if next := curriculum.NextScenarioAfter(cleared, attempted, sc.ID); next != "" && next != sc.ID {
-			return KindFollowup, next
+		if s.journey != nil {
+			cleared, _ := s.progress.ClearedScenarioIDs(ctx, userID)
+			attempted, _ := s.progress.AttemptedScenarioIDs(ctx, userID)
+			p := learning.Progress{Cleared: idSet(cleared), Attempted: idSet(attempted)}
+			if next := s.journey.Next(p, learning.ScenarioID(sc.ID)); next.Found && string(next.Scenario) != sc.ID {
+				return KindFollowup, string(next.Scenario)
+			}
 		}
 	}
 	return KindGratitude, ""
@@ -341,4 +347,16 @@ func replyTemplate(locale string) string {
 	default:
 		return "Thank you — that means a lot."
 	}
+}
+
+// idSet lifts a repo's id set into the learning domain's.
+func idSet(m map[string]bool) map[learning.ScenarioID]bool {
+	if m == nil {
+		return nil
+	}
+	out := make(map[learning.ScenarioID]bool, len(m))
+	for k, v := range m {
+		out[learning.ScenarioID(k)] = v
+	}
+	return out
 }

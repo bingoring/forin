@@ -9,15 +9,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bingoring/forin/server/internal/curriculum"
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/economy"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
 type contentHandler struct {
-	content ports.ContentReader
+	// journeys resolves the learner's journey (S7) — the scaffolding this run gets.
+	journeys learning.Journeys
+	content  ports.ContentReader
 	// Read only to answer "has this learner already done the guided pass of this
 	// scenario?" — which is what decides whether the next run offers choices.
 	progress ports.ProgressRepo
@@ -118,13 +120,11 @@ func (h *contentHandler) scenario(w http.ResponseWriter, r *http.Request) {
 	// Anonymous reads (there are none today, but the route does not require auth to be
 	// meaningful) fall through to the unguided app rather than guessing.
 	s.Title = i18n.Tr(i18n.FromContext(r.Context()), s.ID, s.Title)
-	guide := curriculum.GuideFree
+	guide := learning.GuideFree
 	if uid, ok := UserID(r.Context()); ok && h.progress != nil {
-		guided, free, err := h.progress.ClearedByGuide(r.Context(), uid)
-		if err == nil {
-			// Cleared alone supersedes cleared with help — see resolveOne.
-			guide = curriculum.GuideForScenario(s.ID, guided[s.ID] || free[s.ID])
-		}
+		// Cleared alone supersedes cleared with help — see the engine's Steps.
+		guide = journeyFor(r.Context(), h.journeys).
+			Guidance(learning.ScenarioID(s.ID), learningProgress(r.Context(), h.progress, uid))
 	}
 	httpx.JSON(w, http.StatusOK, struct {
 		*content.Scenario

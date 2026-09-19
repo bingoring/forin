@@ -9,8 +9,6 @@ import (
 
 	"github.com/bingoring/forin/server/internal/i18n"
 
-	"github.com/bingoring/forin/server/internal/curriculum"
-	"github.com/bingoring/forin/server/internal/curriculum/themed"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -20,7 +18,10 @@ import (
 type progressHandler struct {
 	progress ports.ProgressRepo
 	review   ports.ReviewRepo
-	themed   *themed.Catalog // curriculum v3 (additive /me/curriculum/tracks); may be nil/empty until P2
+	// journeys resolves the learner's journey by profession (S7). The single domain
+	// port for everything the live learning experience asks: tracks, next, resume,
+	// guidance, rows. A handler never imports a concrete engine.
+	journeys learning.Journeys
 }
 
 // allowedMissions is the code-side set of hidden-mission ids (extensible, no DB
@@ -30,43 +31,37 @@ var allowedMissions = map[string]bool{"veteran": true, "iron_will": true, "belov
 // @Summary Building/floor/curriculum path with per-user progress
 // @Tags progress
 // @Security Bearer
-// @Success 200 {object} map[string][]curriculum.BuildingGroup
+// @Success 200 {object} map[string][]http.legacyBuilding
 // @Router /me/curriculum [get]
+//
+// Served by the campus PRESENTER over the journey engine, not by a second engine:
+// the journey is organised by theme and department, and this screen draws buildings.
+// It lives for one release, until the client reads /me/curriculum/tracks (P3-A §4).
 func (h *progressHandler) curriculum(w http.ResponseWriter, r *http.Request) {
-	uid, _ := UserID(r.Context())
-	cleared, err := h.progress.ClearedScenarioIDs(r.Context(), uid)
-	if err != nil {
-		httpx.Error(w, http.StatusInternalServerError, "could not load curriculum")
-		return
-	}
-	// Same resume target the home screen gets, from the same call, so the career
-	// tab's hero and the home card cannot drift apart. A failed lookup degrades to
-	// "first unfinished", not to an error: the path is still fully browsable.
-	last, _ := h.progress.LatestAttemptScenarioID(r.Context(), uid)
-	// Best-effort: a failed read means no step reports as tried, which is the old
-	// behaviour — not worth failing a path the learner asked to browse.
-	attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
-	states := curriculum.ResolvePasses(cleared, attempted, passesFor(r.Context(), h.progress, uid), curriculum.KeyForScenario(last), i18n.FromContext(r.Context()))
-	httpx.JSON(w, http.StatusOK, map[string]any{"buildings": curriculum.Group(states)})
+	j, p := h.journey(r)
+	httpx.JSON(w, http.StatusOK, map[string]any{
+		"buildings": legacyBuildings(legacyCurricula(j, p, p.Locale)),
+	})
 }
 
-// @Summary 커리큘럼 v3 — 주제 기반 여정 트랙 (additive; 라이브 /me/curriculum과 공존)
+// @Summary 커리큘럼 v3 — 주제 기반 여정 트랙
 // @Tags progress
 // @Security Bearer
 // @Success 200 {object} map[string][]learning.TrackGroup
 // @Router /me/curriculum/tracks [get]
 func (h *progressHandler) curriculumTracks(w http.ResponseWriter, r *http.Request) {
-	tracks := []learning.TrackGroup{}
-	if h.themed != nil {
-		uid, _ := UserID(r.Context())
-		// Best-effort progress reads: a failed lookup degrades to a browsable,
-		// zero-progress path rather than an error (same posture as curriculum).
-		cleared, _ := h.progress.ClearedScenarioIDs(r.Context(), uid)
-		attempted, _ := h.progress.AttemptedScenarioIDs(r.Context(), uid)
-		last, _ := h.progress.LatestAttemptScenarioID(r.Context(), uid)
-		tracks = h.themed.Resolve(cleared, attempted, last)
+	j, p := h.journey(r)
+	tracks := j.Tracks(p)
+	if tracks == nil {
+		tracks = []learning.TrackGroup{}
 	}
 	httpx.JSON(w, http.StatusOK, map[string]any{"tracks": tracks})
+}
+
+// journey resolves this request's engine and the learner's progress in one place.
+func (h *progressHandler) journey(r *http.Request) (learning.Journey, learning.Progress) {
+	uid, _ := UserID(r.Context())
+	return journeyFor(r.Context(), h.journeys), learningProgress(r.Context(), h.progress, uid)
 }
 
 // @Summary Discovered hidden missions
@@ -208,7 +203,7 @@ func (h *progressHandler) attempt(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// Direct attempt (legacy / no dialogue grading): treat as a clear, no grade.
-	p, err := h.progress.RecordAttempt(r.Context(), uid, req.ScenarioID, req.Score, "cleared", -1, string(curriculum.GuideFree))
+	p, err := h.progress.RecordAttempt(r.Context(), uid, req.ScenarioID, req.Score, "cleared", -1, string(learning.GuideFree))
 	if err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not record attempt")
 		return
@@ -393,10 +388,77 @@ func (h *progressHandler) modelAnswers(w http.ResponseWriter, r *http.Request) {
 // split known means a clear counts as unaided, which completes both rungs. The other way
 // round — a hiccup reopening finished work — is the one a learner would notice and could
 // not explain.
-func passesFor(ctx context.Context, repo ports.ProgressRepo, uid string) curriculum.ClearedPasses {
-	guided, free, err := repo.ClearedByGuide(ctx, uid)
-	if err != nil {
-		return curriculum.ClearedPasses{}
+// learningProgress reads one learner's state into the domain's pure input.
+//
+// Every read is best-effort: a failed lookup degrades to a browsable, zero-progress
+// path rather than an error. Someone asking to see their journey should see it, with
+// whatever the database could tell us — an error page tells them nothing at all.
+func learningProgress(ctx context.Context, repo ports.ProgressRepo, uid string) learning.Progress {
+	p := learning.Progress{Locale: i18n.FromContext(ctx)}
+	if repo == nil {
+		return p
 	}
-	return curriculum.ClearedPasses{GuidedCleared: guided, FreeCleared: free}
+	if cleared, err := repo.ClearedScenarioIDs(ctx, uid); err == nil {
+		p.Cleared = scenarioSet(cleared)
+	}
+	if attempted, err := repo.AttemptedScenarioIDs(ctx, uid); err == nil {
+		p.Attempted = scenarioSet(attempted)
+	}
+	// Where the learner actually was, which is not the same as the front of the path:
+	// someone working on the 8th floor should not be sent back to the 1st.
+	if last, err := repo.LatestAttemptScenarioID(ctx, uid); err == nil {
+		p.Latest = learning.ScenarioID(last)
+	}
+	if guided, free, err := repo.ClearedByGuide(ctx, uid); err == nil {
+		p.Passes = learning.ClearedPasses{GuidedCleared: scenarioSet(guided), FreeCleared: scenarioSet(free)}
+	}
+	return p
 }
+
+func scenarioSet(m map[string]bool) map[learning.ScenarioID]bool {
+	if m == nil {
+		return nil
+	}
+	out := make(map[learning.ScenarioID]bool, len(m))
+	for k, v := range m {
+		out[learning.ScenarioID(k)] = v
+	}
+	return out
+}
+
+// journeyFor resolves the journey for this request's learner.
+//
+// The journey is scoped by profession (S7) and the app ships one. The id lives on the
+// user row rather than in the access token, so resolving it per request would put a
+// user read on hot paths (conversation grading, scenario fetch) for an answer that
+// cannot yet vary. When a second profession ships, carry `job` in the token and read
+// it HERE — this function is the single place that decides, which is the point of
+// routing every call site through it rather than through a package-level default.
+func journeyFor(ctx context.Context, js learning.Journeys) learning.Journey {
+	_ = ctx
+	if js == nil {
+		return emptyJourney{}
+	}
+	return js.For(shippedProfession)
+}
+
+// shippedProfession is the only profession with content today (content/nurse/).
+const shippedProfession learning.Profession = "nurse"
+
+// emptyJourney is the no-content posture for a handler wired without a registry
+// (tests, and a boot where the catalog failed to load): everything is empty and
+// browsable, never an error.
+type emptyJourney struct{}
+
+func (emptyJourney) Tracks(learning.Progress) []learning.TrackGroup { return nil }
+func (emptyJourney) Next(learning.Progress, learning.ScenarioID) learning.StepRef {
+	return learning.StepRef{}
+}
+func (emptyJourney) Resume(learning.Progress) learning.StepRef { return learning.StepRef{} }
+func (emptyJourney) Guidance(learning.ScenarioID, learning.Progress) learning.GuideLevel {
+	return learning.GuideFree
+}
+func (emptyJourney) Locate(learning.ScenarioID) (learning.StepRef, bool) {
+	return learning.StepRef{}, false
+}
+func (emptyJourney) Steps(learning.ThemeKey, learning.Progress) []learning.StepState { return nil }

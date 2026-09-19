@@ -1344,7 +1344,7 @@ export interface paths {
                     };
                     content: {
                         "application/json": {
-                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.BuildingGroup"][];
+                            [key: string]: components["schemas"]["internal_adapters_http.legacyBuilding"][];
                         };
                     };
                 };
@@ -1365,7 +1365,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** 커리큘럼 v3 — 주제 기반 여정 트랙 (additive; 라이브 /me/curriculum과 공존) */
+        /** 커리큘럼 v3 — 주제 기반 여정 트랙 */
         get: {
             parameters: {
                 query?: never;
@@ -2679,59 +2679,6 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
-        "github_com_bingoring_forin_server_internal_curriculum.BuildingGroup": {
-            building?: string;
-            floors?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.FloorGroup"][];
-        };
-        "github_com_bingoring_forin_server_internal_curriculum.CurriculumState": {
-            building?: string;
-            done?: number;
-            floor?: string;
-            key?: string;
-            name?: string;
-            /** @description name of the current (now) step */
-            next?: string;
-            resume?: boolean;
-            /** @description done | doing | todo */
-            state?: string;
-            steps?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.StepState"][];
-            total?: number;
-            where?: string;
-        };
-        "github_com_bingoring_forin_server_internal_curriculum.FloorGroup": {
-            curricula?: components["schemas"]["github_com_bingoring_forin_server_internal_curriculum.CurriculumState"][];
-            floor?: string;
-            where?: string;
-        };
-        "github_com_bingoring_forin_server_internal_curriculum.StepState": {
-            /**
-             * @description Attempted: played, graded below the bar. Orthogonal to State — a step you
-             *     failed is still "now" (it is what you should do next) and its successors are
-             *     still "lock" (clearing is what unlocks). Without this, a step you tried and a
-             *     step you have never opened look identical, which is the one thing the learner
-             *     cannot infer from anywhere else on the screen.
-             */
-            attempted?: boolean;
-            /**
-             * @description Guide is how much help this ENTRY gives: "choices" or "free". A dialogue appears
-             *     twice in the list — once guided, once not — and these are the two entries. Without
-             *     it the learner would see the same title twice with no way to tell which is which.
-             */
-            guide?: string;
-            kind?: string;
-            name?: string;
-            /** @description bonus practice; doesn't gate */
-            optional?: boolean;
-            /**
-             * @description Pass / Passes name the rung: "1/2" and "2/2". The client draws them, so the same
-             *     arithmetic is not done in two places.
-             */
-            pass?: number;
-            passes?: number;
-            scenarioId?: string;
-            /** @description done | now | lock | optional */
-            state?: string;
-        };
         "github_com_bingoring_forin_server_internal_domain_auth.TokenPair": {
             accessToken?: string;
             /** @description access token seconds-to-live */
@@ -3280,6 +3227,41 @@ export interface components {
             progress?: components["schemas"]["internal_adapters_http.homeProgress"];
             scenarioId?: string;
             title?: string;
+        };
+        "internal_adapters_http.legacyBuilding": {
+            building?: string;
+            floors?: components["schemas"]["internal_adapters_http.legacyFloor"][];
+        };
+        "internal_adapters_http.legacyCurriculum": {
+            building?: string;
+            done?: number;
+            floor?: string;
+            key?: string;
+            name?: string;
+            /** @description name of the current (now) step */
+            next?: string;
+            resume?: boolean;
+            /** @description done | doing | todo */
+            state?: string;
+            steps?: components["schemas"]["internal_adapters_http.legacyStep"][];
+            total?: number;
+            where?: string;
+        };
+        "internal_adapters_http.legacyFloor": {
+            curricula?: components["schemas"]["internal_adapters_http.legacyCurriculum"][];
+            floor?: string;
+            where?: string;
+        };
+        "internal_adapters_http.legacyStep": {
+            attempted?: boolean;
+            guide?: string;
+            kind?: string;
+            name?: string;
+            optional?: boolean;
+            pass?: number;
+            passes?: number;
+            scenarioId?: string;
+            state?: string;
         };
         "internal_adapters_http.loginResp": {
             tokens?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];

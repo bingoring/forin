@@ -9,12 +9,12 @@ import (
 	"github.com/redis/go-redis/v9"
 	"golang.org/x/time/rate"
 
-	"github.com/bingoring/forin/server/internal/curriculum/themed"
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"github.com/bingoring/forin/server/internal/domain/handoff"
 	"github.com/bingoring/forin/server/internal/domain/home"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/night"
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/slang"
@@ -34,14 +34,14 @@ type Deps struct {
 	Content       ports.ContentReader
 	Progress      ports.ProgressRepo
 	Review        ports.ReviewRepo
-	// ThemedCatalog is the curriculum v3 themed catalog (assembled at boot).
-	// Optional: nil or empty until P2 tagging fills theme tags; the additive
-	// /me/curriculum/tracks endpoint returns empty tracks then.
-	ThemedCatalog *themed.Catalog
-	Convo         *conversation.Engine
-	Pron          *pronunciation.Service
-	Speech        *speech.Service         // pronunciation-attempt persistence + history + reference (Task 5)
-	Synth         ports.SpeechSynthesizer // TTS for listen-quiz audio (optional)
+	// Journeys resolves a profession's learning journey (the themed engine registry,
+	// assembled at boot). Optional: nil degrades every journey read to empty-but-
+	// browsable rather than to an error.
+	Journeys learning.Journeys
+	Convo    *conversation.Engine
+	Pron     *pronunciation.Service
+	Speech   *speech.Service         // pronunciation-attempt persistence + history + reference (Task 5)
+	Synth    ports.SpeechSynthesizer // TTS for listen-quiz audio (optional)
 	// PronunciationEnabled mirrors Azure Speech's configuredness (business-rules
 	// §5) — surfaced on GET /config/economy, see economyConfigResp's doc comment.
 	PronunciationEnabled bool
@@ -92,7 +92,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("PATCH /me/avatar", auth(http.HandlerFunc(mh.setAvatar)))
 
 	// Content (public read).
-	ch := &contentHandler{content: d.Content, progress: d.Progress, pronunciationEnabled: d.PronunciationEnabled}
+	ch := &contentHandler{content: d.Content, progress: d.Progress, journeys: d.Journeys, pronunciationEnabled: d.PronunciationEnabled}
 	mux.HandleFunc("GET /content/manifest", ch.manifest)
 	mux.HandleFunc("GET /departments", ch.departments)
 	mux.HandleFunc("GET /interiors/{id}", ch.interior)
@@ -110,7 +110,7 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("POST /me/daily-board/topup", auth(http.HandlerFunc(ch.dailyBoardTopUp)))
 
 	// Progress + review (authenticated).
-	ph := &progressHandler{progress: d.Progress, review: d.Review, themed: d.ThemedCatalog}
+	ph := &progressHandler{progress: d.Progress, review: d.Review, journeys: d.Journeys}
 	mux.Handle("GET /me/progress", auth(http.HandlerFunc(ph.get)))
 	mux.Handle("GET /me/stats", auth(http.HandlerFunc(ph.stats)))
 	mux.Handle("GET /me/calendar", auth(http.HandlerFunc(ph.calendar)))
@@ -135,7 +135,7 @@ func NewRouter(d Deps) http.Handler {
 
 	// Home tab — one aggregated response (see homeHandler).
 	hh := &homeHandler{progress: d.Progress, review: d.Review, content: d.Content,
-		users: d.Users, colleague: d.Colleague, pools: d.HomePools}
+		users: d.Users, colleague: d.Colleague, pools: d.HomePools, journeys: d.Journeys}
 	mux.Handle("GET /me/home", auth(http.HandlerFunc(hh.get)))
 	mux.Handle("POST /me/home/page/answer", auth(http.HandlerFunc(hh.answerPage)))
 
@@ -201,7 +201,7 @@ func NewRouter(d Deps) http.Handler {
 	}
 
 	// AI conversation + correction (authenticated).
-	conv := &conversationHandler{engine: d.Convo, progress: d.Progress, content: d.Content, colleague: d.Colleague}
+	conv := &conversationHandler{engine: d.Convo, progress: d.Progress, content: d.Content, colleague: d.Colleague, journeys: d.Journeys}
 	mux.Handle("POST /scenarios/{id}/conversation", auth(http.HandlerFunc(conv.start)))
 	// Lets the client offer "이어서 대화" instead of silently orphaning the
 	// previous conversation every time a scenario is opened.

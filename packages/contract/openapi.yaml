@@ -1,93 +1,5 @@
 components:
   schemas:
-    github_com_bingoring_forin_server_internal_curriculum.BuildingGroup:
-      properties:
-        building:
-          type: string
-        floors:
-          items:
-            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.FloorGroup'
-          type: array
-          uniqueItems: false
-      type: object
-    github_com_bingoring_forin_server_internal_curriculum.CurriculumState:
-      properties:
-        building:
-          type: string
-        done:
-          type: integer
-        floor:
-          type: string
-        key:
-          type: string
-        name:
-          type: string
-        next:
-          description: name of the current (now) step
-          type: string
-        resume:
-          type: boolean
-        state:
-          description: done | doing | todo
-          type: string
-        steps:
-          items:
-            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.StepState'
-          type: array
-          uniqueItems: false
-        total:
-          type: integer
-        where:
-          type: string
-      type: object
-    github_com_bingoring_forin_server_internal_curriculum.FloorGroup:
-      properties:
-        curricula:
-          items:
-            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.CurriculumState'
-          type: array
-          uniqueItems: false
-        floor:
-          type: string
-        where:
-          type: string
-      type: object
-    github_com_bingoring_forin_server_internal_curriculum.StepState:
-      properties:
-        attempted:
-          description: |-
-            Attempted: played, graded below the bar. Orthogonal to State — a step you
-            failed is still "now" (it is what you should do next) and its successors are
-            still "lock" (clearing is what unlocks). Without this, a step you tried and a
-            step you have never opened look identical, which is the one thing the learner
-            cannot infer from anywhere else on the screen.
-          type: boolean
-        guide:
-          description: |-
-            Guide is how much help this ENTRY gives: "choices" or "free". A dialogue appears
-            twice in the list — once guided, once not — and these are the two entries. Without
-            it the learner would see the same title twice with no way to tell which is which.
-          type: string
-        kind:
-          type: string
-        name:
-          type: string
-        optional:
-          description: bonus practice; doesn't gate
-          type: boolean
-        pass:
-          description: |-
-            Pass / Passes name the rung: "1/2" and "2/2". The client draws them, so the same
-            arithmetic is not done in two places.
-          type: integer
-        passes:
-          type: integer
-        scenarioId:
-          type: string
-        state:
-          description: done | now | lock | optional
-          type: string
-      type: object
     github_com_bingoring_forin_server_internal_domain_auth.TokenPair:
       properties:
         accessToken:
@@ -1016,6 +928,79 @@ components:
         scenarioId:
           type: string
         title:
+          type: string
+      type: object
+    internal_adapters_http.legacyBuilding:
+      properties:
+        building:
+          type: string
+        floors:
+          items:
+            $ref: '#/components/schemas/internal_adapters_http.legacyFloor'
+          type: array
+          uniqueItems: false
+      type: object
+    internal_adapters_http.legacyCurriculum:
+      properties:
+        building:
+          type: string
+        done:
+          type: integer
+        floor:
+          type: string
+        key:
+          type: string
+        name:
+          type: string
+        next:
+          description: name of the current (now) step
+          type: string
+        resume:
+          type: boolean
+        state:
+          description: done | doing | todo
+          type: string
+        steps:
+          items:
+            $ref: '#/components/schemas/internal_adapters_http.legacyStep'
+          type: array
+          uniqueItems: false
+        total:
+          type: integer
+        where:
+          type: string
+      type: object
+    internal_adapters_http.legacyFloor:
+      properties:
+        curricula:
+          items:
+            $ref: '#/components/schemas/internal_adapters_http.legacyCurriculum'
+          type: array
+          uniqueItems: false
+        floor:
+          type: string
+        where:
+          type: string
+      type: object
+    internal_adapters_http.legacyStep:
+      properties:
+        attempted:
+          type: boolean
+        guide:
+          type: string
+        kind:
+          type: string
+        name:
+          type: string
+        optional:
+          type: boolean
+        pass:
+          type: integer
+        passes:
+          type: integer
+        scenarioId:
+          type: string
+        state:
           type: string
       type: object
     internal_adapters_http.loginResp:
@@ -1956,7 +1941,7 @@ paths:
               schema:
                 additionalProperties:
                   items:
-                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_curriculum.BuildingGroup'
+                    $ref: '#/components/schemas/internal_adapters_http.legacyBuilding'
                   type: array
                 type: object
           description: OK
@@ -1980,7 +1965,7 @@ paths:
           description: OK
       security:
       - Bearer: []
-      summary: 커리큘럼 v3 — 주제 기반 여정 트랙 (additive; 라이브 /me/curriculum과 공존)
+      summary: 커리큘럼 v3 — 주제 기반 여정 트랙
       tags:
       - progress
   /me/daily-board:

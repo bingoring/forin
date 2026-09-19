@@ -80,6 +80,29 @@ type CurriculumState struct {
 	Resume     bool        `json:"resume"`
 }
 
+// StepState is one RUN of a step with progress overlaid — the theme sheet's row.
+//
+// One entry per run, not per authored step: a dialogue is played twice (guided,
+// then alone) and the learner picks which, so both runs are rows. Counts in the
+// list view (TierCount/CurriculumState) stay per SITUATION; these rows are the
+// only place the two-rung ladder is visible.
+type StepState struct {
+	Kind       string `json:"kind"` // dlg | quiz | event | boss (S4: open string)
+	Name       string `json:"name"`
+	ScenarioID string `json:"scenarioId,omitempty"`
+	// State is done | now | lock | optional. There is exactly one `now` per theme.
+	State string `json:"state"`
+	// Attempted marks a run played but graded below the bar. Set only where it says
+	// something — never on a done or lock row, where a "tried" badge would contradict.
+	Attempted bool `json:"attempted,omitempty"`
+	// Optional marks a bonus quiz: playable any time, gates nothing, uncounted.
+	Optional bool `json:"optional,omitempty"`
+	// Guide/Pass/Passes describe the rung. Absent on steps with a single run.
+	Guide  GuideLevel `json:"guide,omitempty"`
+	Pass   int        `json:"pass,omitempty"`
+	Passes int        `json:"passes,omitempty"`
+}
+
 // Milestone is a track-level exam (부서 시험).
 type Milestone struct {
 	Name  string `json:"name"`
@@ -107,6 +130,9 @@ type Journey interface {
 	Guidance(s ScenarioID, p Progress) GuideLevel
 	// Locate maps a scenario to its theme/step; ok=false when it belongs to no course.
 	Locate(s ScenarioID) (ref StepRef, ok bool)
+	// Steps is ONE theme's rows with progress overlaid. The list view carries counts
+	// only, so the rows are fetched per theme, lazily — an unknown theme yields nil.
+	Steps(theme ThemeKey, p Progress) []StepState
 }
 
 // Journeys resolves the Journey for a profession (S7). Built once at boot from
