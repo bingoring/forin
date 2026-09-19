@@ -51,8 +51,7 @@ type Journey struct {
 // FreeRoamEntry is one department the learner is not aiming at. Nothing is locked:
 // the chip is a door, not a preview of a door.
 type FreeRoamEntry struct {
-    Dept   string `json:"dept"`   // 부서 코드 (아이콘 선택 키)
-    Name   string `json:"name"`   // 표시 이름 (로케일 적용됨)
+    Dept   string `json:"dept"`   // 부서 코드 — 아이콘과 라벨을 고르는 키
     Passed int    `json:"passed"` // 통과한 정거장 수 = 도장 카운트
     Total  int    `json:"total"`  // 그 부서의 정거장 수
 }
@@ -60,6 +59,9 @@ type FreeRoamEntry struct {
 
 - `Passed`가 핸드오프의 **도장 카운트**다. 정거장 통과 = 여권 PASSED 도장이라는 세계관을 따른다.
 - 층이 없는 부서(GEN)는 자유 탐방에도 나오지 않는다 — 리프트가 설 수 없는 곳이라 이 화면에 자리가 없다.
+- **이름은 서버가 보내지 않는다.** 클라이언트가 `dept.<CODE>` 라벨을 4개 언어로 이미 갖고 있고 아이콘도
+  같은 코드로 고른다. 서버가 이름을 또 들면 두 벌이 갈라진다 — 층 표기(`Floor.Chapter`)는 챕터 제목이지
+  부서 이름이 아니다.
 
 ### 2.3 `StationDetail` — 화면 B의 응답 봉투
 
@@ -122,5 +124,5 @@ learning.Journeys ──For(profession)──▶ Journey(port)
 | `Station.label` | `CurriculumState.Name` | 로케일 적용된 주제 이름 |
 | `Station.meta.sub` | `CurriculumState.Track` (`core`/`depth`) | 코어면 "공통 필수"로 읽힌다 |
 | `Station.meta.collab` | `CurriculumState.CollabWith` | **현재 콘텐츠에 `collab` 트랙 주제가 0개** — 자리만 있고 그릴 것이 없다 |
-| `FreeRoam: [{icon, dept, stamps}]` | `FreeRoamEntry{Dept, Name, Passed, Total}` | `icon`은 부서 코드로 클라이언트가 고른다 |
+| `FreeRoam: [{icon, dept, stamps}]` | `FreeRoamEntry{Dept, Passed, Total}` | `icon`도 `name`도 부서 코드로 클라이언트가 고른다 |
 | `LicenseStep` (화면 C) | **N/A** | 국가 트랙은 이 스펙의 범위 밖 — 서버에 데이터 원천이 없다 |

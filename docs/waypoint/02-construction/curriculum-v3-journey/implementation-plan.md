@@ -396,7 +396,7 @@ git commit -m "feat(journey): 트랙 한정 현재 정거장 — here를 지어�
 
 **인터페이스**
 - 생산: `learning.FreeRoamEntry{Dept, Name, Passed, Total}` · `learning.JourneyView{GoalDept, Inferred, Track, FreeRoam}`
-- 생산: `func summariseFreeRoam(tracks []learning.TrackGroup, goal, locale string) []learning.FreeRoamEntry`
+- 생산: `func summariseFreeRoam(tracks []learning.TrackGroup, goal string) []learning.FreeRoamEntry`
 
 - [ ] **4.1 도메인 타입 추가** — `learning/ports.go`의 `TrackGroup` 아래로:
 
@@ -404,8 +404,7 @@ git commit -m "feat(journey): 트랙 한정 현재 정거장 — here를 지어�
 // FreeRoamEntry is one department the learner is not aiming at. Nothing is locked:
 // the chip is a door, not a preview of one.
 type FreeRoamEntry struct {
-	Dept   string `json:"dept"`
-	Name   string `json:"name"`
+	Dept   string `json:"dept"` // 부서 코드 — 아이콘과 라벨을 고르는 키
 	Passed int    `json:"passed"` // 통과한 정거장 수 = 도장 카운트
 	Total  int    `json:"total"`
 }
@@ -424,7 +423,7 @@ type JourneyView struct {
 
 ```go
 func TestSummariseFreeRoam_ExcludesTheGoalAndFloorlessDepts(t *testing.T) {
-	got := summariseFreeRoam(fakeTracks(), "ER", "ko")
+	got := summariseFreeRoam(fakeTracks(), "ER")
 	for _, e := range got {
 		if e.Dept == "ER" {
 			t.Errorf("the goal department belongs to the path, not the chips")
@@ -442,7 +441,7 @@ func TestSummariseFreeRoam_StampsArePassedStations(t *testing.T) {
 	tracks := []learning.TrackGroup{{Dept: "WARD", Curricula: []learning.CurriculumState{
 		{State: "passed"}, {State: "passed"}, {State: "open"},
 	}}}
-	got := summariseFreeRoam(tracks, "ER", "ko")
+	got := summariseFreeRoam(tracks, "ER")
 	if got[0].Passed != 2 || got[0].Total != 3 {
 		t.Fatalf("stamps count passed stations: got %d/%d", got[0].Passed, got[0].Total)
 	}
@@ -463,7 +462,7 @@ func TestSummariseFreeRoam_StampsArePassedStations(t *testing.T) {
 // passport stamp in this world, and scenario counts differ per department so they
 // would not compare. Order follows the campus directory so the chips read in the same
 // sequence as the lift.
-func summariseFreeRoam(tracks []learning.TrackGroup, goal, locale string) []learning.FreeRoamEntry {
+func summariseFreeRoam(tracks []learning.TrackGroup, goal string) []learning.FreeRoamEntry {
 	byDept := map[string]learning.FreeRoamEntry{}
 	for _, tg := range tracks {
 		if tg.Dept == goal {
@@ -472,7 +471,7 @@ func summariseFreeRoam(tracks []learning.TrackGroup, goal, locale string) []lear
 		if _, ok := campus.Of(tg.Dept); !ok {
 			continue // the lift cannot stop here (J9)
 		}
-		e := learning.FreeRoamEntry{Dept: tg.Dept, Name: deptLabel(tg.Dept, locale), Total: len(tg.Curricula)}
+		e := learning.FreeRoamEntry{Dept: tg.Dept, Total: len(tg.Curricula)}
 		for _, c := range tg.Curricula {
 			if c.State == "passed" {
 				e.Passed++
@@ -492,14 +491,8 @@ func summariseFreeRoam(tracks []learning.TrackGroup, goal, locale string) []lear
 	return out
 }
 
-// deptLabel is the department's display name. The chip points at a department, not a
-// place, so this is the department name rather than the floor heading.
-func deptLabel(dept, locale string) string {
-	if fl, ok := campus.Of(dept); ok {
-		return i18n.Tr(locale, "dept|"+dept, fl.Chapter)
-	}
-	return dept
-}
+// 이름은 여기서 붙이지 않는다: 클라이언트가 `dept.<CODE>` 라벨을 4개 언어로 이미 갖고 있고 아이콘도
+// 같은 코드로 고른다. 서버가 또 들면 두 벌이 갈라진다.
 ```
 
 - [ ] **4.5 테스트 통과 확인**
@@ -531,7 +524,7 @@ git commit -m "feat(journey): 자유 탐방 요약 — 도장은 통과한 정�
 ```go
 func TestJourney_DrawsOneTrackAndTheRestAsChips(t *testing.T) {
 	h := &journeyHandler{
-		progress: fakeProgress{},
+		progress: journeyProgress{},
 		users:    fakeUsers{goal: "WARD"},
 		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
 	}
@@ -553,7 +546,7 @@ func TestJourney_DrawsOneTrackAndTheRestAsChips(t *testing.T) {
 
 func TestJourney_UnknownGoalFallsBackRatherThanDrawingNothing(t *testing.T) {
 	h := &journeyHandler{
-		progress: fakeProgress{},
+		progress: journeyProgress{},
 		users:    fakeUsers{goal: "NOSUCHDEPT"},
 		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
 	}
@@ -565,7 +558,7 @@ func TestJourney_UnknownGoalFallsBackRatherThanDrawingNothing(t *testing.T) {
 }
 
 func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
-	h := &journeyHandler{progress: fakeProgress{}, users: fakeUsers{}}
+	h := &journeyHandler{progress: journeyProgress{}, users: fakeUsers{}}
 	var out learning.JourneyView
 	getJSON(t, h.journey, "/me/journey", &out)
 	if out.FreeRoam == nil {
@@ -574,9 +567,25 @@ func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
 }
 ```
 
-가짜 저장소(같은 파일):
+가짜 저장소(같은 파일). **`fakeProgress`를 재사용하지 않는다** — 그것은 `curriculum_tracks_test.go`에
+살고 T14가 그 파일을 지운다. 같은 패키지에 같은 이름이 둘이면 컴파일도 깨진다.
 
 ```go
+// journeyProgress is this file's own progress stub. It must not be named fakeProgress:
+// that one lives in curriculum_tracks_test.go, which Task 14 deletes.
+type journeyProgress struct{ ports.ProgressRepo }
+
+func (journeyProgress) ClearedScenarioIDs(context.Context, string) (map[string]bool, error) {
+	return nil, nil
+}
+func (journeyProgress) AttemptedScenarioIDs(context.Context, string) (map[string]bool, error) {
+	return nil, nil
+}
+func (journeyProgress) LatestAttemptScenarioID(context.Context, string) (string, error) { return "", nil }
+func (journeyProgress) ClearedByGuide(context.Context, string) (map[string]bool, map[string]bool, error) {
+	return nil, nil, nil
+}
+
 type fakeUsers struct {
 	ports.UserRepo // 나머지 호출은 패닉 — 핸들러가 다른 것을 만지지 않음을 증명한다
 	goal string
@@ -629,7 +638,7 @@ func (h *journeyHandler) journey(w http.ResponseWriter, r *http.Request) {
 	view := learning.JourneyView{
 		GoalDept: goal,
 		Inferred: inferred,
-		FreeRoam: summariseFreeRoam(tracks, goal, p.Locale),
+		FreeRoam: summariseFreeRoam(tracks, goal),
 	}
 	for _, tg := range tracks {
 		if tg.Dept == goal {
@@ -689,12 +698,45 @@ type StationDetail struct {
 }
 ```
 
-- [ ] **6.2 실패하는 테스트 작성**
+- [ ] **6.2 테스트 헬퍼 정의** — `journey_handler_test.go`에. 기존 `getJSON`(`model_answer_handler_test.go`)은
+      경로 변수를 심지 못하고 PATCH도 못 보낸다.
+
+```go
+// getJSONPath는 net/http의 경로 변수를 심어 핸들러를 직접 부른다(라우터를 거치지 않는다).
+func getJSONPath(t *testing.T, h http.HandlerFunc, path, key, val string, out any) {
+	t.Helper()
+	r := httptest.NewRequest(http.MethodGet, path, nil)
+	r.SetPathValue(key, val)
+	w := httptest.NewRecorder()
+	h(w, r)
+	if err := json.NewDecoder(w.Body).Decode(out); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+}
+
+func getStatusPath(t *testing.T, h http.HandlerFunc, path, key, val string) int {
+	t.Helper()
+	r := httptest.NewRequest(http.MethodGet, path, nil)
+	r.SetPathValue(key, val)
+	w := httptest.NewRecorder()
+	h(w, r)
+	return w.Code
+}
+
+func patchJSON(t *testing.T, h http.HandlerFunc, path, body string) int {
+	t.Helper()
+	w := httptest.NewRecorder()
+	h(w, httptest.NewRequest(http.MethodPatch, path, strings.NewReader(body)))
+	return w.Code
+}
+```
+
+- [ ] **6.3 실패하는 테스트 작성**
 
 ```go
 func TestStation_ReturnsRowsForAKnownTheme(t *testing.T) {
 	h := &journeyHandler{
-		progress: fakeProgress{},
+		progress: journeyProgress{},
 		journeys: stubJourneys{j: journeyStub{
 			tracks: []learning.TrackGroup{{Dept: "ER", Curricula: []learning.CurriculumState{
 				{ThemeKey: "core-safety-er", Name: "안전", Total: 2},
@@ -717,7 +759,7 @@ func TestStation_ReturnsRowsForAKnownTheme(t *testing.T) {
 }
 
 func TestStation_UnknownThemeIs404(t *testing.T) {
-	h := &journeyHandler{progress: fakeProgress{}, journeys: stubJourneys{j: journeyStub{}}}
+	h := &journeyHandler{progress: journeyProgress{}, journeys: stubJourneys{j: journeyStub{}}}
 	code := getStatusPath(t, h.station, "/me/journey/stations/nope", "themeKey", "nope")
 	if code != http.StatusNotFound {
 		t.Fatalf("an unknown theme is 404, not an empty sheet: a silent blank hides a content accident, got %d", code)
@@ -725,12 +767,12 @@ func TestStation_UnknownThemeIs404(t *testing.T) {
 }
 ```
 
-- [ ] **6.3 테스트 실패 확인**
+- [ ] **6.4 테스트 실패 확인**
 
 실행: `cd server && go test ./internal/adapters/http/ -run TestStation_ -v`
 기대: `undefined: h.station`
 
-- [ ] **6.4 구현**
+- [ ] **6.5 구현**
 
 ```go
 // @Summary 정거장 상세 — 그 주제의 스텝 목록 (지연 로드)
@@ -766,18 +808,18 @@ func (h *journeyHandler) station(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-- [ ] **6.5 라우트 등록**
+- [ ] **6.6 라우트 등록**
 
 ```go
 	mux.Handle("GET /me/journey/stations/{themeKey}", auth(http.HandlerFunc(jh.station)))
 ```
 
-- [ ] **6.6 테스트 통과 확인**
+- [ ] **6.7 테스트 통과 확인**
 
 실행: `cd server && go test ./internal/adapters/http/ -count=1`
 기대: 전건 PASS
 
-- [ ] **6.7 커밋**
+- [ ] **6.8 커밋**
 
 ```bash
 git add server/internal/domain/learning server/internal/adapters/http
@@ -892,7 +934,7 @@ git commit -m "feat(journey): PATCH /me/goal-dept + 계약 재생성"
 
 ```ts
 /** 목표 밖 부서 하나. 잠금 없음 — 칩은 문이지, 문의 예고가 아니다. */
-export interface FreeRoamEntry { dept: string; name: string; passed: number; total: number }
+export interface FreeRoamEntry { dept: string; passed: number; total: number }
 
 /** 여정 화면이 한 번에 받는 것. 전체 29부서(340KB) 대신 목표 부서 하나(11.7KB)만 온다. */
 export interface JourneyView {
@@ -1181,18 +1223,18 @@ describe('FreeRoamRow', () => {
   // 나누면 학습자가 "지금 보는 게 내 목표인가"를 매번 판단해야 한다.
   it('picks the department it was tapped on', () => {
     const onPick = jest.fn();
-    const t = render(<FreeRoamRow entries={[{ dept: 'ICU', name: '중환자실', passed: 3, total: 35 }]} onPick={onPick} />);
+    const t = render(<FreeRoamRow entries={[{ dept: 'ICU', passed: 3, total: 35 }]} onPick={onPick} />);
     t.getByTestId('chip-ICU').props.onPress();
     expect(onPick).toHaveBeenCalledWith('ICU');
   });
 
   it('shows the stamp count', () => {
-    const t = render(<FreeRoamRow entries={[{ dept: 'ICU', name: '중환자실', passed: 3, total: 35 }]} onPick={jest.fn()} />);
+    const t = render(<FreeRoamRow entries={[{ dept: 'ICU', passed: 3, total: 35 }]} onPick={jest.fn()} />);
     expect(t.queryByText('3')).not.toBeNull();
   });
 
   it('draws no lock — free roam is free', () => {
-    const t = render(<FreeRoamRow entries={[{ dept: 'ICU', name: '중환자실', passed: 0, total: 35 }]} onPick={jest.fn()} />);
+    const t = render(<FreeRoamRow entries={[{ dept: 'ICU', passed: 0, total: 35 }]} onPick={jest.fn()} />);
     expect(t.queryByTestId('chip-lock')).toBeNull();
   });
 });
