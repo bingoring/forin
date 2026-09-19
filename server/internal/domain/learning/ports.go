@@ -116,6 +116,27 @@ type TrackGroup struct {
 	Milestone *Milestone        `json:"milestone,omitempty"`
 }
 
+// FreeRoamEntry is one department the learner is not aiming at. Nothing is locked:
+// the chip is a door, not a preview of one.
+//
+// No department name here: the client already carries a `dept.<CODE>` label in four
+// languages and picks the icon off the same code. If the server named it too, the two
+// copies would eventually drift.
+type FreeRoamEntry struct {
+	Dept   string `json:"dept"`   // 부서 코드 — 아이콘과 라벨을 고르는 키
+	Passed int    `json:"passed"` // 통과한 정거장 수 = 도장 카운트
+	Total  int    `json:"total"`
+}
+
+// JourneyView is everything the journey screen draws, in one round trip. Sending all
+// 29 departments would be 340KB against the 11.7KB the screen actually renders.
+type JourneyView struct {
+	GoalDept string          `json:"goalDept"`
+	Inferred bool            `json:"inferred"`
+	Track    TrackGroup      `json:"track"`
+	FreeRoam []FreeRoamEntry `json:"freeRoam"`
+}
+
 // Journey is the single domain port for one profession's live learning experience.
 // The concrete implementation is the themed engine.
 type Journey interface {

@@ -67,6 +67,44 @@ func rescopeCurrent(track learning.TrackGroup) learning.TrackGroup {
 	return out
 }
 
+// summariseFreeRoam is the roster of departments the learner is not aiming at.
+//
+// Stamps count PASSED STATIONS, not cleared scenarios: passing a station is the
+// passport stamp in this world, and scenario counts differ per department so they
+// would not compare. Order follows the campus directory so the chips read in the same
+// sequence as the lift.
+func summariseFreeRoam(tracks []learning.TrackGroup, goal string) []learning.FreeRoamEntry {
+	byDept := map[string]learning.FreeRoamEntry{}
+	for _, tg := range tracks {
+		if tg.Dept == goal {
+			continue
+		}
+		if _, ok := campus.Of(tg.Dept); !ok {
+			continue // the lift cannot stop here (J9)
+		}
+		e := learning.FreeRoamEntry{Dept: tg.Dept, Total: len(tg.Curricula)}
+		for _, c := range tg.Curricula {
+			if c.State == "passed" {
+				e.Passed++
+			}
+		}
+		byDept[tg.Dept] = e
+	}
+	out := []learning.FreeRoamEntry{}
+	for _, fl := range campus.Floors {
+		for _, d := range fl.Depts {
+			if e, ok := byDept[d]; ok {
+				out = append(out, e)
+				delete(byDept, d)
+			}
+		}
+	}
+	return out
+}
+
+// 이름은 여기서 붙이지 않는다: 클라이언트가 `dept.<CODE>` 라벨을 4개 언어로 이미 갖고 있고 아이콘도
+// 같은 코드로 고른다. 서버가 또 들면 두 벌이 갈라진다.
+
 // deptOfTheme finds which track a theme belongs to.
 func deptOfTheme(theme learning.ThemeKey, tracks []learning.TrackGroup) string {
 	for _, tg := range tracks {

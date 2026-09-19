@@ -112,6 +112,31 @@ func TestRescopeCurrent_PointsAtFirstUnfinishedWithoutInventingHere(t *testing.T
 	}
 }
 
+func TestSummariseFreeRoam_ExcludesTheGoalAndFloorlessDepts(t *testing.T) {
+	got := summariseFreeRoam(fakeTracks(), "ER")
+	for _, e := range got {
+		if e.Dept == "ER" {
+			t.Errorf("the goal department belongs to the path, not the chips")
+		}
+		if e.Dept == "GEN" {
+			t.Errorf("GEN has no floor; the lift cannot stop there")
+		}
+	}
+	if len(got) != 1 || got[0].Dept != "WARD" {
+		t.Fatalf("want only WARD, got %+v", got)
+	}
+}
+
+func TestSummariseFreeRoam_StampsArePassedStations(t *testing.T) {
+	tracks := []learning.TrackGroup{{Dept: "WARD", Curricula: []learning.CurriculumState{
+		{State: "passed"}, {State: "passed"}, {State: "open"},
+	}}}
+	got := summariseFreeRoam(tracks, "ER")
+	if got[0].Passed != 2 || got[0].Total != 3 {
+		t.Fatalf("stamps count passed stations: got %d/%d", got[0].Passed, got[0].Total)
+	}
+}
+
 func TestRescopeCurrent_NoTargetWhenEverythingIsPassed(t *testing.T) {
 	in := learning.TrackGroup{Dept: "ER", Curricula: []learning.CurriculumState{
 		{ThemeKey: "a", State: "passed"}, {ThemeKey: "b", State: "passed"},
