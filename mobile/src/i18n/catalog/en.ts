@@ -192,6 +192,15 @@ export const en: Record<string, string> = {
   'dept.SPD': 'Central supply SPD',
   'dept.MORGUE': 'Morgue',
   'dept.GEN': 'General',
+  'dept.WARD': 'General ward',
+  'dept.SURGWARD': 'Surgical ward',
+  'dept.ORTHOWARD': 'Orthopaedic ward',
+  'dept.DERM': 'Dermatology',
+
+  // ── journey (workplace tab journey map — current-station bar) ────
+  'journey.resumeLabel': 'Resume',
+  'journey.nextLabel': 'Next station',
+  'journey.trackClear': 'Every station passed — try a milestone test or free roam',
 
   'board.cleared': 'Done',
   'board.remaining': 'Left',

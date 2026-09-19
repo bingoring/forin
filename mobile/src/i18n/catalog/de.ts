@@ -191,6 +191,15 @@ export const de: Record<string, string> = {
   'dept.SPD': 'Zentralsterilisation SPD',
   'dept.MORGUE': 'Leichenhalle',
   'dept.GEN': 'Allgemein',
+  'dept.WARD': 'Allgemeinstation',
+  'dept.SURGWARD': 'Chirurgische Station',
+  'dept.ORTHOWARD': 'Orthopädische Station',
+  'dept.DERM': 'Dermatologie',
+
+  // ── journey (Arbeitsplatz-Tab Wegkarte — Leiste "aktuelle Station") ──
+  'journey.resumeLabel': 'Fortsetzen',
+  'journey.nextLabel': 'Nächste Station',
+  'journey.trackClear': 'Alle Stationen bestanden — Abschnittsprüfung oder freie Erkundung',
 
   'board.cleared': 'Fertig',
   'board.remaining': 'Offen',

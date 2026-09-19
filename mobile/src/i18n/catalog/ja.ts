@@ -191,6 +191,15 @@ export const ja: Record<string, string> = {
   'dept.SPD': '中央materials SPD',
   'dept.MORGUE': '霊安室 Morgue',
   'dept.GEN': '共通 General',
+  'dept.WARD': '一般病棟 Ward',
+  'dept.SURGWARD': '外科病棟 SurgWard',
+  'dept.ORTHOWARD': '整形外科病棟 OrthoWard',
+  'dept.DERM': '皮膚科 Derm',
+
+  // ── journey（職場タブ 旅程マップ — 現在地バー）─────────────────
+  'journey.resumeLabel': '再開',
+  'journey.nextLabel': '次の停留所',
+  'journey.trackClear': 'すべての停留所を通過しました — 区間試験か自由散策を',
 
   'board.cleared': '完了',
   'board.remaining': '残り',

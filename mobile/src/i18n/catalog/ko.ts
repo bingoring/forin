@@ -206,6 +206,15 @@ export const ko: Record<string, string> = {
   'dept.SPD': '중앙공급 SPD',
   'dept.MORGUE': '영안실 Morgue',
   'dept.GEN': '공통 General',
+  'dept.WARD': '일반병동 Ward',
+  'dept.SURGWARD': '외과병동 SurgWard',
+  'dept.ORTHOWARD': '정형외과병동 OrthoWard',
+  'dept.DERM': '피부과 Derm',
+
+  // ── journey (일터 탭 여정 지도 — 현재 정거장 바) ──────────────────
+  'journey.resumeLabel': '이어하기',
+  'journey.nextLabel': '다음 정거장',
+  'journey.trackClear': '정거장을 모두 통과했어요 — 구간 시험이나 자유 탐방을 해보세요',
 
   // ── board tab ────────────────────────────────────────────────────────────
   'board.cleared': '완료',
