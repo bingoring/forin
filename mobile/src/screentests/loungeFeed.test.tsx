@@ -263,8 +263,10 @@ test('the lounge does not advertise 오늘의 상황판 — that lives in 일터
   // It sat in this header for one commit. The board is a fact about the workplace
   // (today's situations across the hospital); the lounge is where colleagues talk, and
   // a link to another screen at the top of a feed reads as an ad for it.
-  // The board's own entry points (home tab, and formerly 일터's campus.tsx before
-  // Task 13 replaced it with the journey map) are checked where those screens are.
+  // The board's surviving entry point (the home tab's 라운지 quick-link button) is
+  // checked in homeQuickLinks.test.tsx. 일터's own campus.tsx had a second one before
+  // Task 13 replaced that screen with the journey map — no test ever covered it here,
+  // and none needs to now that it is gone.
   expect(texts(tree.root)).not.toContain('오늘의 상황판');
   expect(mockPushed).not.toContain('/board');
 });

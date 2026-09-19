@@ -4,7 +4,7 @@
 // GET /me/journey 한 번이 이 화면이 여는 유일한 네트워크 호출이다(business-logic-model.md
 // W1). 탭에 들어올 때마다 다시 부른다 — 진도는 다른 화면(인테리어·퀴즈)에서 움직일 수 있고,
 // 목표 부서도 서버가 정본이라 화면은 아무것도 캐시하지 않는다.
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type JourneyStep, type JourneyView } from '@/api/client';
@@ -45,11 +45,22 @@ export default function JourneyScreen() {
   const [state, setState] = useState<'loading' | 'ok' | 'error'>('loading');
   const [openKey, setOpenKey] = useState<string | null>(null);
 
+  // 이어달리는 요청 중 마지막 것만 이긴다. `load()`와 `pickDept()`는 둘 다 이 하나의 카운터를
+  // 나눠 쓴다 — 자유 탐방 칩을 빠르게 두 번 누르면(또는 칩을 누른 직후 탭을 떠났다 돌아와
+  // load()가 다시 불리면) 두 요청이 모두 날아가고, 응답은 "나중에 도착한 것"이 아니라
+  // "나중에 시작한 것"이 이겨야 한다 — 안 그러면 방금 고른 부서가 아니라 그 전 부서의 응답이
+  // 늦게 도착해 화면을 덮어쓸 수 있다. 언마운트 뒤에도 이 값은 그대로 남아 있고 그 뒤로는
+  // 아무도 증가시키지 않으므로, 언마운트 후 도착하는 응답도 자기 시퀀스 번호가 최신이 아니게
+  // 되어 setState를 걸지 않는다 — `(tabs)/index.tsx`가 쓰는 `alive` 플래그와 같은 목적을
+  // "이 요청이 아직 최신인가"라는 하나의 질문으로 합친 것이다.
+  const seqRef = useRef(0);
+
   const load = useCallback(() => {
+    const seq = ++seqRef.current;
     setState('loading');
     api.journey()
-      .then((v) => { setView(v); setState('ok'); })
-      .catch(() => setState('error'));
+      .then((v) => { if (seqRef.current !== seq) return; setView(v); setState('ok'); })
+      .catch(() => { if (seqRef.current !== seq) return; setState('error'); });
   }, []);
 
   // 탭을 떠나면 버린다: 진도가 다른 화면에서 움직일 수 있다. 목표 부서도 캐시하지
@@ -60,11 +71,12 @@ export default function JourneyScreen() {
   // 미리보기 없이 곧장 저장하고, 그 응답으로 경로를 다시 그린다(W3).
   const pickDept = (dept: string) => {
     if (!dept) return;
+    const seq = ++seqRef.current;
     setState('loading');
     api.setGoalDept(dept)
       .then(() => api.journey())
-      .then((v) => { setView(v); setState('ok'); })
-      .catch(() => setState('error'));
+      .then((v) => { if (seqRef.current !== seq) return; setView(v); setState('ok'); })
+      .catch(() => { if (seqRef.current !== seq) return; setState('error'); });
   };
 
   const openStep = (step: JourneyStep) => {
@@ -75,19 +87,23 @@ export default function JourneyScreen() {
     router.push(step.guide ? `/scenario/${scn}?guide=${step.guide}` : `/scenario/${scn}`);
   };
 
-  if (state !== 'ok' || !view) {
+  // 아직 한 번도 데이터를 받은 적이 없을 때만 화면 전체를 비운다 — 보여줄 목표 부서도
+  // 자유 탐방 목록도 아직 없다. 그 뒤로는(§4) 로딩·오류를 지도 자리 하나로만 좁힌다: 목표
+  // 부서 헤더와 자유 탐방 칩 줄은 이미 그릴 것이 있으므로 그대로 둔다 — 특히 `pickDept` 중에
+  // 방금 누른 칩 줄까지 화면에서 사라지면 탭이 씹힌 것처럼 읽힌다.
+  if (!view) {
     return (
       <Sheet>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 14 }}>
-          {state === 'loading' ? (
-            <ActivityIndicator color={nb.ink} />
-          ) : (
+          {state === 'error' ? (
             <>
               <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('journey.loadFailed')}</Text>
               <NbButton variant="ink" onPress={load} icon="pencil" iconColor={nb.paper}>
                 {t('common.retry')}
               </NbButton>
             </>
+          ) : (
+            <ActivityIndicator color={nb.ink} />
           )}
         </View>
       </Sheet>
@@ -103,22 +119,42 @@ export default function JourneyScreen() {
       {!!goalDept && (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 6 }}>
           <NbIcon name={deptNbIcon(`SCN-${goalDept}-00001`)} size={22} />
-          <Text numberOfLines={1} style={[nbText.hand(24), { flex: 1 }]}>{t(`dept.${goalDept}`)}</Text>
+          <Text testID="journey-goal-dept" numberOfLines={1} style={[nbText.hand(24), { flex: 1 }]}>{t(`dept.${goalDept}`)}</Text>
           {/* 추론된 목표는 저장되지 않는다(J4) — 학습자가 고르기 전까지는 그렇다는 티를 낸다. */}
           {!!view.inferred && <NbTag color={nb.soft}>{t('journey.inferredTag')}</NbTag>}
         </View>
       )}
 
       <View style={{ flex: 1 }}>
-        <JourneyMap track={view.track} onStationPress={setOpenKey} />
-        {/* 트랙 전부 통과면 station이 null이고, 열 정거장이 없다 — 탭해도 아무 일도 일어나지
-            않는다(구간 시험·자유 탐방은 이 태스크가 조립할 조각이 아니다). 있으면 그 정거장의
-            시트를 연다 — "바로 시나리오로 보내지 않는다, 어느 회차인지 고르게 한다"(§5). */}
-        <CurrentStationBar
-          station={station}
-          kind={kind}
-          onPress={() => { if (station?.themeKey) setOpenKey(station.themeKey); }}
-        />
+        {state === 'error' ? (
+          // 이미 한 번 받은 화면이 다음 새로고침(재포커스·목표 변경)에서만 실패한 경우 —
+          // 헤더·칩은 지난번에 받은 값 그대로 두고, 지도 자리에서만 다시 시도를 권한다.
+          <View testID="journey-map-error" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 14 }}>
+            <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('journey.loadFailed')}</Text>
+            <NbButton variant="ink" onPress={load} icon="pencil" iconColor={nb.paper}>
+              {t('common.retry')}
+            </NbButton>
+          </View>
+        ) : state === 'loading' ? (
+          // 지도 자리에 스켈레톤, 하단 바는 비워 둔다(§4) — 방금 고른 목표 부서를 새로
+          // 그리는 동안에도 화면 전체가 아니라 이 자리만 비어 보인다.
+          <View testID="journey-map-loading" style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <ActivityIndicator color={nb.ink} />
+          </View>
+        ) : (
+          <>
+            <JourneyMap track={view.track} onStationPress={setOpenKey} />
+            {/* 트랙 전부 통과면 station이 null이고, 열 정거장이 없다 — 탭해도 아무 일도
+                일어나지 않는다(구간 시험·자유 탐방은 이 태스크가 조립할 조각이 아니다). 있으면
+                그 정거장의 시트를 연다 — "바로 시나리오로 보내지 않는다, 어느 회차인지 고르게
+                한다"(§5). */}
+            <CurrentStationBar
+              station={station}
+              kind={kind}
+              onPress={() => { if (station?.themeKey) setOpenKey(station.themeKey); }}
+            />
+          </>
+        )}
       </View>
 
       <View style={{ paddingVertical: 10 }}>

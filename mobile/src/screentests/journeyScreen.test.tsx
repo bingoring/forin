@@ -93,11 +93,30 @@ const VIEW: JourneyView = {
   goalDept: 'ER',
   inferred: false,
   track: { dept: 'ER', curricula: CURRICULA },
-  freeRoam: [{ dept: 'ICU', passed: 2, total: 30 }],
+  freeRoam: [{ dept: 'ICU', passed: 2, total: 30 }, { dept: 'OR', passed: 0, total: 20 }],
 } as unknown as JourneyView;
 
 function texts(root: ReactTestInstance): string[] {
   return root.findAllByType(Text).map((n) => String(n.props.children));
+}
+
+/** The header's own dept-name text, distinct from a free-roam chip that happens to name
+ *  the same department — the fixture's free-roam row always shows "중환자실 ICU" as a
+ *  chip label regardless of which department is the current GOAL, so a bare substring
+ *  check over the whole tree's text cannot tell "the goal is ICU" from "ICU is one of
+ *  the chips". */
+function headerDeptText(root: ReactTestInstance): string | undefined {
+  const hit = root.findAll((n) => n.props?.testID === 'journey-goal-dept')[0];
+  return hit && String(hit.props.children);
+}
+
+/** Host-node-only testID lookup. react-test-renderer's `findAllByProps` matches every
+ *  fibre carrying a prop, and a plain `<View testID=.../>` shows up twice — once as the
+ *  composite View component, once as the host node underneath — so a raw count doubles
+ *  what is actually on screen (the same gotcha `briefingGrading.test.tsx`'s `styled`
+ *  helper documents for `style`). Host-only (`typeof n.type === 'string'`) counts once. */
+function hostNodesWithTestId(root: ReactTestInstance, id: string): ReactTestInstance[] {
+  return root.findAll((n) => typeof n.type === 'string' && n.props?.testID === id);
 }
 
 beforeEach(() => {
@@ -163,6 +182,78 @@ test('a far (not-yet-visited) station still opens on tap — J1/J3, no lock on t
   await act(async () => { farStation.props.onPress(); });
   await act(async () => { await Promise.resolve(); });
   expect(api.station).toHaveBeenCalledWith('t4');
+});
+
+// Code review follow-up (2nd pass): `load()`/`pickDept()` used to have no defence
+// against out-of-order responses — the LAST-STARTED request has to win, not the
+// last-ARRIVED one, or a fast double-tap on two different chips can end up rendering
+// whichever department's response happened to come back first.
+test('a fast double-tap on two chips renders the later pick even if its response answers first', async () => {
+  (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
+
+  let resolveFirst!: (v: JourneyView) => void;
+  let resolveSecond!: (v: JourneyView) => void;
+  const firstJourney = new Promise<JourneyView>((res) => { resolveFirst = res; });
+  const secondJourney = new Promise<JourneyView>((res) => { resolveSecond = res; });
+  (api.journey as jest.Mock)
+    .mockResolvedValueOnce(VIEW)         // the initial load() on mount
+    .mockReturnValueOnce(firstJourney)   // pickDept('ICU')'s journey() call — left hanging
+    .mockReturnValueOnce(secondJourney); // pickDept('OR')'s journey() call — left hanging
+
+  const tree = await mount();
+
+  await act(async () => { tree.root.findByProps({ testID: 'chip-ICU' }).props.onPress(); });
+  await act(async () => { await Promise.resolve(); }); // flush setGoalDept('ICU') -> journey() called
+
+  await act(async () => { tree.root.findByProps({ testID: 'chip-OR' }).props.onPress(); });
+  await act(async () => { await Promise.resolve(); }); // flush setGoalDept('OR') -> journey() called
+
+  // The SECOND (later-started) request answers first.
+  await act(async () => { resolveSecond({ ...VIEW, goalDept: 'OR' } as JourneyView); });
+  await act(async () => { await Promise.resolve(); });
+  // The FIRST (earlier-started) request's now-stale response arrives late.
+  await act(async () => { resolveFirst({ ...VIEW, goalDept: 'ICU' } as JourneyView); });
+  await act(async () => { await Promise.resolve(); });
+
+  // Whichever was tapped LAST has to be what is on screen, regardless of arrival order.
+  expect(headerDeptText(tree.root)).toBe('수술실 OR');
+});
+
+// §4: "지도 자리에 스켈레톤, 하단 바는 비워 둔다" — not the whole screen. A refresh
+// (here: picking a new goal dept) must not make the header or the free-roam row
+// disappear out from under the learner while the new path loads.
+test('a refresh blanks only the map area — the header and free-roam row stay put (§4)', async () => {
+  (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
+  const pending = new Promise<JourneyView>(() => {}); // never resolves — freezes mid-load
+  (api.journey as jest.Mock)
+    .mockResolvedValueOnce(VIEW)
+    .mockReturnValueOnce(pending);
+
+  const tree = await mount();
+  await act(async () => { tree.root.findByProps({ testID: 'chip-ICU' }).props.onPress(); });
+  await act(async () => { await Promise.resolve(); }); // flush setGoalDept -> journey() called, now loading
+
+  // Header still shows the last-known goal dept (ER hasn't been replaced yet) and the
+  // chip row is still there — neither should vanish just because a refresh is in flight.
+  expect(headerDeptText(tree.root)).toBe('응급실 ER');
+  expect(tree.root.findByProps({ testID: 'chip-ICU' })).toBeTruthy();
+  // Only the map area itself goes to the loading placeholder.
+  expect(hostNodesWithTestId(tree.root, 'journey-map-loading')).toHaveLength(1);
+  expect(tree.root.findAllByType(Station)).toHaveLength(0);
+});
+
+// J4: an inferred goal is not yet the learner's choice, so the screen has to say so;
+// once they pick one (or the server already has a saved choice), the tag must not
+// linger and imply a choice was never made.
+test('the inferred tag shows only when the goal department is inferred, not chosen (J4)', async () => {
+  (api.journey as jest.Mock).mockResolvedValueOnce({ ...VIEW, inferred: true } as JourneyView);
+  const tree = await mount();
+  expect(texts(tree.root)).toContain('추정');
+});
+
+test('a learner-chosen goal department (inferred: false) shows no inferred tag', async () => {
+  const tree = await mount(); // default VIEW has inferred: false
+  expect(texts(tree.root)).not.toContain('추정');
 });
 
 test('a load failure offers a retry that re-fetches instead of leaving the screen stuck', async () => {

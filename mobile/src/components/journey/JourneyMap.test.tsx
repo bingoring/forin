@@ -122,6 +122,14 @@ describe('JourneyMap', () => {
   // isolation — this locks in the RELATIONSHIP the calculation in JourneyMap.tsx's
   // header comment relies on, so a future edit to either constant alone (without
   // redoing that math) fails loudly here rather than silently shipping an overlap.
+  // The RELATIONSHIP test below recomputes `expected` from `LABEL_ALLOWANCE` itself, so
+  // it cannot catch the constant being weakened — dropping LABEL_ALLOWANCE to 0 would
+  // still pass it, because the expectation shrinks right along with the real height.
+  // The value has to be pinned on its own, the same way BOTTOM_PAD is a few lines up.
+  it('keeps LABEL_ALLOWANCE from being weakened back toward the pre-Task-13 shortfall', () => {
+    expect(LABEL_ALLOWANCE).toBeGreaterThanOrEqual(40);
+  });
+
   it('reserves room below the last station for its (up to 2-line) label and progress text', () => {
     const width = 400;
     const last = CURRICULA.length - 1;
