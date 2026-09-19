@@ -200,6 +200,13 @@ export const de: Record<string, string> = {
   'journey.resumeLabel': 'Fortsetzen',
   'journey.nextLabel': 'Nächste Station',
   'journey.trackClear': 'Alle Stationen bestanden — Abschnittsprüfung oder freie Erkundung',
+  // ── journey (Stationsblatt — Schwierigkeitsleiter) ────────────────
+  'journey.tierBasic': 'Grundlagen',
+  'journey.tierApplied': 'Angewandt',
+  'journey.tierCrisis': 'Krise',
+  'journey.track.core': 'Kern',
+  'journey.track.depth': 'Vertiefung',
+  'journey.track.collab': 'Zusammenarbeit',
 
   'board.cleared': 'Fertig',
   'board.remaining': 'Offen',

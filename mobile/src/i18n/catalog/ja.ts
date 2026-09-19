@@ -200,6 +200,13 @@ export const ja: Record<string, string> = {
   'journey.resumeLabel': '再開',
   'journey.nextLabel': '次の停留所',
   'journey.trackClear': 'すべての停留所を通過しました — 区間試験か自由散策を',
+  // ── journey（停留所シート — 難易度の階段）────────────────────────
+  'journey.tierBasic': '基礎',
+  'journey.tierApplied': '応用',
+  'journey.tierCrisis': '危機',
+  'journey.track.core': '共通コア',
+  'journey.track.depth': '深化',
+  'journey.track.collab': '協業',
 
   'board.cleared': '完了',
   'board.remaining': '残り',

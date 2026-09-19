@@ -215,6 +215,13 @@ export const ko: Record<string, string> = {
   'journey.resumeLabel': '이어하기',
   'journey.nextLabel': '다음 정거장',
   'journey.trackClear': '정거장을 모두 통과했어요 — 구간 시험이나 자유 탐방을 해보세요',
+  // ── journey (정거장 시트 — 난이도 계단) ────────────────────────────
+  'journey.tierBasic': '기초',
+  'journey.tierApplied': '응용',
+  'journey.tierCrisis': '위기',
+  'journey.track.core': '공통 코어',
+  'journey.track.depth': '심화',
+  'journey.track.collab': '협업',
 
   // ── board tab ────────────────────────────────────────────────────────────
   'board.cleared': '완료',

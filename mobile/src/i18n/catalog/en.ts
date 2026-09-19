@@ -201,6 +201,13 @@ export const en: Record<string, string> = {
   'journey.resumeLabel': 'Resume',
   'journey.nextLabel': 'Next station',
   'journey.trackClear': 'Every station passed — try a milestone test or free roam',
+  // ── journey (station sheet — difficulty ladder) ───────────────────
+  'journey.tierBasic': 'Basics',
+  'journey.tierApplied': 'Applied',
+  'journey.tierCrisis': 'Crisis',
+  'journey.track.core': 'Core',
+  'journey.track.depth': 'Depth',
+  'journey.track.collab': 'Collab',
 
   'board.cleared': 'Done',
   'board.remaining': 'Left',

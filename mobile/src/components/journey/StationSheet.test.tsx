@@ -1,0 +1,107 @@
+// StationSheet — the one legitimate lock on the journey map (J2). task-12-brief.md is
+// written against `@testing-library/react-native` (render/waitFor/queryAllByText),
+// which this repo does not install (Station.test.tsx, FreeRoamRow.test.tsx,
+// CurrentStationBar.test.tsx already left the same note). The two properties the brief
+// asks for are kept exactly; they are just expressed with react-test-renderer
+// (act/create/findAllByType/findByProps), the repo's own convention.
+import { act, create, type ReactTestInstance } from 'react-test-renderer';
+import { Text } from 'react-native';
+import { StationSheet } from './StationSheet';
+import { api } from '@/api/client';
+import { trackMounts } from '../../testing/mountRegistry';
+
+jest.mock('@/api/client');
+
+// BottomSheet schedules real timers/rAFs (its entry animation, a 250ms layout
+// fallback). A tree left mounted when an assertion above throws keeps those alive
+// past this file's teardown, and the crash then lands on some UNRELATED suite —
+// exactly what mountRegistry.ts exists to prevent. `track` unmounts every tree this
+// file created in an `afterEach`, whether or not the test that created it passed.
+const track = trackMounts();
+
+async function mount(themeKey: string, onStepPress: () => void = jest.fn()) {
+  let tree!: ReturnType<typeof create>;
+  await act(async () => {
+    tree = track(create(<StationSheet themeKey={themeKey} onClose={jest.fn()} onStepPress={onStepPress} />));
+  });
+  // Flush the api.station() promise the effect kicked off on mount.
+  await act(async () => { await Promise.resolve(); });
+  return tree;
+}
+
+function texts(tree: ReturnType<typeof create>): string[] {
+  return tree.root.findAllByType(Text).map((n) => String(n.props.children));
+}
+
+function stepRow(root: ReactTestInstance, index: number) {
+  return root.findByProps({ testID: `step-row-${index}` });
+}
+
+describe('StationSheet', () => {
+  // 대화 하나는 두 행이다 — 도움 있는 회차와 혼자 하는 회차. 이 사다리가 보이는 곳은
+  // 여기뿐이고, 지도의 개수는 상황 단위다.
+  it('shows both rungs of a dialogue', async () => {
+    (api.station as jest.Mock).mockResolvedValue({
+      station: { themeKey: 'k', name: '수혈 관리', done: 0, total: 2, tiers: [] },
+      steps: [
+        { kind: 'dlg', name: '수혈 전 확인', state: 'now', guide: 'choices', pass: 1, passes: 2 },
+        { kind: 'dlg', name: '수혈 전 확인', state: 'lock', guide: 'free', pass: 2, passes: 2 },
+      ],
+    });
+    const tree = await mount('k');
+    const rendered = texts(tree);
+    expect(rendered.filter((x) => x === '수혈 전 확인')).toHaveLength(2);
+    expect(rendered).toContain('1/2');
+    expect(rendered).toContain('2/2');
+  });
+
+  // 자물쇠는 여기에 붙는다(J2) — 정거장이 아니라 스텝에. `.props.onPress()`를 직접
+  // 부르는 것만으로는 `disabled`를 우회하므로, 잠긴 행은 `disabled`가 참임을 직접
+  // 단정하고, 열린 첫 행은 `disabled`가 참이 아니면서 실제로 `onStepPress`를
+  // 부르는 것까지 함께 본다 — 둘 다 봐야 "눌린다"는 주장이 성립한다.
+  it('locks the second rung until the first is cleared', async () => {
+    const first = { kind: 'dlg', name: 'x', state: 'now', pass: 1, passes: 2 };
+    const second = { kind: 'dlg', name: 'x', state: 'lock', pass: 2, passes: 2 };
+    (api.station as jest.Mock).mockResolvedValue({
+      station: { themeKey: 'k', name: 'a', done: 0, total: 2, tiers: [] },
+      steps: [first, second],
+    });
+    const onStepPress = jest.fn();
+    const tree = await mount('k', onStepPress);
+    expect(tree.root.findAll((n) => n.props?.testID === 'step-lock', { deep: false })).toHaveLength(1);
+
+    expect(stepRow(tree.root, 1).props.disabled).toBe(true);
+
+    expect(stepRow(tree.root, 0).props.disabled).not.toBe(true);
+    act(() => { stepRow(tree.root, 0).props.onPress(); });
+    expect(onStepPress).toHaveBeenCalledWith(expect.objectContaining(first));
+  });
+
+  // 이미 통과했거나 잠긴 행에는 "시도함(다시)" 표시가 절대 붙지 않는다 — 붙으면 서로
+  // 모순이다. `attempted`는 `now` 행에서만 말이 된다.
+  it('shows the attempted badge only on the now row, never on a done or locked one', async () => {
+    (api.station as jest.Mock).mockResolvedValue({
+      station: { themeKey: 'k', name: 'a', done: 1, total: 3, tiers: [] },
+      steps: [
+        { kind: 'dlg', name: 'done-row', state: 'done', pass: 1, passes: 1, attempted: true },
+        { kind: 'dlg', name: 'now-row', state: 'now', pass: 1, passes: 1, attempted: true },
+        { kind: 'dlg', name: 'lock-row', state: 'lock', pass: 1, passes: 1, attempted: true },
+      ],
+    });
+    const tree = await mount('k');
+    expect(texts(tree).filter((x) => x === '다시')).toHaveLength(1);
+  });
+
+  // 시트는 즉시 열고 행 자리에 스켈레톤을 둔다 — 열림이 지연되면 탭이 씹힌 것처럼
+  // 읽힌다. 네트워크가 아직 돌아오지 않은 첫 렌더에서도 스켈레톤이 이미 있어야 한다.
+  it('opens immediately with a skeleton, before the network call resolves', async () => {
+    let resolve!: (v: unknown) => void;
+    (api.station as jest.Mock).mockReturnValue(new Promise((r) => { resolve = r; }));
+    let tree!: ReturnType<typeof create>;
+    act(() => {
+      tree = track(create(<StationSheet themeKey="k" onClose={jest.fn()} onStepPress={jest.fn()} />));
+    });
+    expect(tree.root.findAll((n) => n.props?.testID === 'station-sheet-skeleton', { deep: false })).toHaveLength(1);
+    await act(async () => { resolve({ station: { name: 'a', done: 0, total: 0, tiers: [] }, steps: [] }); await Promise.resolve(); });
+  });
+});
