@@ -3,6 +3,7 @@ package http
 import (
 	"net/http"
 
+	"github.com/bingoring/forin/server/internal/domain/campus"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
@@ -91,4 +92,37 @@ func (h *journeyHandler) station(w http.ResponseWriter, r *http.Request) {
 		steps = []learning.StepState{}
 	}
 	httpx.JSON(w, http.StatusOK, learning.StationDetail{Station: *found, Steps: steps})
+}
+
+type goalDeptReq struct {
+	Dept string `json:"dept"`
+}
+
+// @Summary 목표 부서 선택 — 여정이 그릴 트랙
+// @Tags user
+// @Security Bearer
+// @Param body body goalDeptReq true "department code"
+// @Success 200 {object} map[string]any
+// @Router /me/goal-dept [patch]
+//
+// The allowed set is code-side (a department the lift can reach), not a DB CHECK:
+// departments grow with content, and a constraint would make adding one a migration.
+// This is the only path that persists a goal department — /me/journey only ever
+// reads one, so an inferred goal is never written (J4).
+func (h *journeyHandler) setGoalDept(w http.ResponseWriter, r *http.Request) {
+	var req goalDeptReq
+	if err := httpx.DecodeJSON(r, &req); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "dept is required")
+		return
+	}
+	if _, ok := campus.Of(req.Dept); !ok {
+		httpx.Error(w, http.StatusBadRequest, "unknown department")
+		return
+	}
+	uid, _ := UserID(r.Context())
+	if err := h.users.SetGoalDept(r.Context(), uid, req.Dept); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not save goal department")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"goalDept": req.Dept, "inferred": false})
 }

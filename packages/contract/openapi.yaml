@@ -860,6 +860,11 @@ components:
         reason:
           type: string
       type: object
+    internal_adapters_http.goalDeptReq:
+      properties:
+        dept:
+          type: string
+      type: object
     internal_adapters_http.gradeReq:
       properties:
         grade:
@@ -2085,6 +2090,30 @@ paths:
       security:
       - Bearer: []
       summary: Set the learner's display name
+      tags:
+      - user
+  /me/goal-dept:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.goalDeptReq'
+              description: department code
+              summary: body
+        description: department code
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties: {}
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: 목표 부서 선택 — 여정이 그릴 트랙
       tags:
       - user
   /me/home:

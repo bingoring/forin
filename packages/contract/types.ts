@@ -1489,6 +1489,49 @@ export interface paths {
         };
         trace?: never;
     };
+    "/me/goal-dept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** 목표 부서 선택 — 여정이 그릴 트랙 */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description department code */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.goalDeptReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: unknown;
+                        };
+                    };
+                };
+            };
+        };
+        trace?: never;
+    };
     "/me/home": {
         parameters: {
             query?: never;
@@ -3264,6 +3307,9 @@ export interface components {
             id?: string;
             locked?: boolean;
             reason?: string;
+        };
+        "internal_adapters_http.goalDeptReq": {
+            dept?: string;
         };
         "internal_adapters_http.gradeReq": {
             grade?: string;

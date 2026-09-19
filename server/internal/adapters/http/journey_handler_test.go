@@ -165,6 +165,47 @@ func TestStation_ReturnsRowsForAKnownTheme(t *testing.T) {
 	}
 }
 
+// goalDeptStore is TestSetGoalDept's own fake, separate from fakeUsers on purpose:
+// fakeUsers embeds a nil ports.UserRepo so it panics if a handler calls anything
+// beyond GetProfile — that is the regression guard for J4 ("an inferred goal
+// department is never persisted"). setGoalDept is the first legitimate caller of
+// SetGoalDept, so it needs a fake that actually records the call; overriding
+// SetGoalDept on fakeUsers would blind that guard for every other test in this file.
+type goalDeptStore struct {
+	ports.UserRepo
+	set   string
+	calls int
+}
+
+func (s *goalDeptStore) SetGoalDept(_ context.Context, _ string, dept string) error {
+	s.set = dept
+	s.calls++
+	return nil
+}
+
+func TestSetGoalDept_PersistsAKnownDepartment(t *testing.T) {
+	users := &goalDeptStore{}
+	h := &journeyHandler{users: users}
+	code := patchJSON(t, h.setGoalDept, "/me/goal-dept", `{"dept":"WARD"}`)
+	if code != http.StatusOK || users.set != "WARD" {
+		t.Fatalf("a known department is stored: code=%d set=%q", code, users.set)
+	}
+	if users.calls != 1 {
+		t.Fatalf("SetGoalDept must be called exactly once, got %d", users.calls)
+	}
+}
+
+func TestSetGoalDept_RejectsADepartmentTheLiftCannotReach(t *testing.T) {
+	users := &goalDeptStore{}
+	h := &journeyHandler{users: users}
+	if code := patchJSON(t, h.setGoalDept, "/me/goal-dept", `{"dept":"GEN"}`); code != http.StatusBadRequest {
+		t.Fatalf("GEN has no floor; the journey cannot draw it, got %d", code)
+	}
+	if users.set != "" || users.calls != 0 {
+		t.Errorf("a rejected department must not be written: set=%q calls=%d", users.set, users.calls)
+	}
+}
+
 func TestStation_UnknownThemeIs404(t *testing.T) {
 	h := &journeyHandler{progress: journeyProgress{}, journeys: stubJourneys{j: journeyStub{}}}
 	code := getStatusPath(t, h.station, "/me/journey/stations/nope", "themeKey", "nope")
