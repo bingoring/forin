@@ -171,6 +171,10 @@ export const ja: Record<string, string> = {
   'journey.resumeLabel': '再開',
   'journey.nextLabel': '次の停留所',
   'journey.trackClear': 'すべての停留所を通過しました — 区間試験か自由散策を',
+  // ── journey（マイルストーン旗 — トラックの終点、task-19）──────────
+  'journey.milestone.passed': '合格 ✓',
+  'journey.milestone.open': '受験可能',
+  'journey.milestone.closed': '合格前',
   // ── journey（停留所シート — 難易度の階段）────────────────────────
   'journey.tierBasic': '基礎',
   'journey.tierApplied': '応用',

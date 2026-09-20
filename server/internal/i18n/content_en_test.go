@@ -23,6 +23,21 @@ func TestContentEnglishTitles(t *testing.T) {
 	}
 }
 
+// task-19: milestoneFor (curriculum/themed/resolve.go) hardcodes "구간 시험" — the
+// engine has no locale, so the handler's Tr() call is what actually localizes it, and
+// this is the catalog entry that call resolves against.
+func TestMilestoneNameTranslatesForEnglish(t *testing.T) {
+	if got := Tr("en", "milestone.name", "구간 시험"); got != "Section exam" {
+		t.Fatalf("en milestone name = %q", got)
+	}
+	if got := Tr("ko", "milestone.name", "구간 시험"); got != "구간 시험" {
+		t.Fatalf("ko must fall back to the authored name, got %q", got)
+	}
+	if got := Tr("ja", "milestone.name", "구간 시험"); got != "구간 시험" {
+		t.Fatalf("ja has no catalog entry yet → Korean fallback, got %q", got)
+	}
+}
+
 func TestContentEnglishCoverage(t *testing.T) {
 	// Every SCN-*/EVT-* entry in the en catalog is non-empty and free of Hangul (a
 	// half-translated title with Korean left in it is the bug this guards).

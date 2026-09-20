@@ -254,6 +254,83 @@ func TestJourney_TranslatesStationNamesForTheRequestsLocale(t *testing.T) {
 	}
 }
 
+// Task 19: milestoneFor (server/internal/curriculum/themed/resolve.go) hardcodes its
+// Name in Korean — the engine has no locale to translate with — so the handler must
+// translate it the same way it already translates station names, in the same loop.
+// This was the other half of the "final review found it" pair alongside MilestoneFlag:
+// nothing read Milestone.Name before now, so a hardcoded Korean string here was
+// invisible until the client started rendering it.
+func TestJourney_TranslatesMilestoneNameForTheRequestsLocale(t *testing.T) {
+	tracks := []learning.TrackGroup{
+		{Dept: "ER", Curricula: []learning.CurriculumState{
+			{ThemeKey: "core-safety-er", Name: "환자 안전·오류 예방", State: "passed"},
+		}, Milestone: &learning.Milestone{Name: "구간 시험", State: "open"}},
+	}
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "ER"},
+		journeys: stubJourneys{j: journeyStub{tracks: tracks}},
+	}
+	req := httptest.NewRequest(http.MethodGet, "/me/journey", nil)
+	req = req.WithContext(i18n.WithLocale(req.Context(), "en"))
+	w := httptest.NewRecorder()
+	h.journey(w, req)
+	var out learning.JourneyView
+	if err := json.NewDecoder(w.Body).Decode(&out); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if out.Track.Milestone == nil || out.Track.Milestone.Name != "Section exam" {
+		t.Errorf("milestone name not translated for en: got %+v", out.Track.Milestone)
+	}
+	// The state itself is a code-side value (passed|open|closed), not authored prose —
+	// it must pass through unchanged, not through the translation table.
+	if out.Track.Milestone.State != "open" {
+		t.Errorf("milestone state must not be touched by translation: got %q", out.Track.Milestone.State)
+	}
+}
+
+// A locale with no catalog entry yet (ja, de: task-19-brief.md leaves them
+// untranslated on purpose) must still read the authored Korean, not an empty string —
+// the same fallback rule every other Tr() call in this handler already follows.
+func TestJourney_MilestoneFallsBackToAuthoredKoreanWithNoCatalogEntry(t *testing.T) {
+	tracks := []learning.TrackGroup{
+		{Dept: "ER", Curricula: []learning.CurriculumState{{ThemeKey: "core-safety-er", State: "open"}},
+			Milestone: &learning.Milestone{Name: "구간 시험", State: "closed"}},
+	}
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "ER"},
+		journeys: stubJourneys{j: journeyStub{tracks: tracks}},
+	}
+	req := httptest.NewRequest(http.MethodGet, "/me/journey", nil)
+	req = req.WithContext(i18n.WithLocale(req.Context(), "ja"))
+	w := httptest.NewRecorder()
+	h.journey(w, req)
+	var out learning.JourneyView
+	if err := json.NewDecoder(w.Body).Decode(&out); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if out.Track.Milestone == nil || out.Track.Milestone.Name != "구간 시험" {
+		t.Errorf("an untranslated locale must fall back to the authored Korean, got %+v", out.Track.Milestone)
+	}
+}
+
+// fakeTracks() draws no Milestone on any of its groups (J9 revision does not touch
+// this) — the response must not gain one from nowhere. This is the server half of the
+// client's "지어내지 않는다" guard (JourneyMap.test.tsx).
+func TestJourney_NoMilestoneStaysNil(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "WARD"},
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
+	}
+	var out learning.JourneyView
+	getJSON(t, h.journey, "/me/journey", &out)
+	if out.Track.Milestone != nil {
+		t.Errorf("a track with no milestone must not gain one: %+v", out.Track.Milestone)
+	}
+}
+
 // Same wiring, for the station sheet's own name and its steps' names — keyed by
 // ScenarioID rather than ThemeKey (a step's id is what the row already carries).
 func TestStation_TranslatesNamesForTheRequestsLocale(t *testing.T) {

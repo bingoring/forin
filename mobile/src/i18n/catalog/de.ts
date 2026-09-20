@@ -171,6 +171,10 @@ export const de: Record<string, string> = {
   'journey.resumeLabel': 'Fortsetzen',
   'journey.nextLabel': 'Nächste Station',
   'journey.trackClear': 'Alle Stationen bestanden — Abschnittsprüfung oder freie Erkundung',
+  // ── journey (Meilenstein-Flagge — Streckenende, task-19) ───────────
+  'journey.milestone.passed': 'Bestanden ✓',
+  'journey.milestone.open': 'Bereit',
+  'journey.milestone.closed': 'Noch nicht',
   // ── journey (Stationsblatt — Schwierigkeitsleiter) ────────────────
   'journey.tierBasic': 'Grundlagen',
   'journey.tierApplied': 'Angewandt',

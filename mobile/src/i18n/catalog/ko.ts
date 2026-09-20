@@ -187,6 +187,10 @@ export const ko: Record<string, string> = {
   'journey.resumeLabel': '이어하기',
   'journey.nextLabel': '다음 정거장',
   'journey.trackClear': '정거장을 모두 통과했어요 — 구간 시험이나 자유 탐방을 해보세요',
+  // ── journey (마일스톤 깃발 — 트랙 끝, task-19) ──────────────────────
+  'journey.milestone.passed': '통과 ✓',
+  'journey.milestone.open': '응시 가능',
+  'journey.milestone.closed': '통과전',
   // ── journey (정거장 시트 — 난이도 계단) ────────────────────────────
   'journey.tierBasic': '기초',
   'journey.tierApplied': '응용',

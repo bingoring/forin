@@ -40,6 +40,13 @@ func (h *journeyHandler) journey(w http.ResponseWriter, r *http.Request) {
 			cs := &tracks[ti].Curricula[ci]
 			cs.Name = i18n.Tr(p.Locale, cs.ThemeKey, cs.Name)
 		}
+		// The milestone's Name is authored Korean too (themed.milestoneFor hardcodes
+		// "구간 시험" — the engine has no locale to translate with, task-19-brief.md).
+		// One key for all tracks: unlike a curriculum's Name, milestoneFor never varies
+		// the string by department, so there is no per-dept key to keep in step with.
+		if m := tracks[ti].Milestone; m != nil {
+			m.Name = i18n.Tr(p.Locale, "milestone.name", m.Name)
+		}
 	}
 
 	stored := ""

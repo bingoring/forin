@@ -12,7 +12,18 @@
 //   - a path segment is only drawn "done" when BOTH stations it joins are done.
 import { act, create } from 'react-test-renderer';
 import { ScrollView, View } from 'react-native';
-import { BOTTOM_PAD, JourneyMap, LABEL_ALLOWANCE, stationPoint, stationStates, type JourneyCurriculum } from './JourneyMap';
+import {
+  BOTTOM_PAD,
+  JourneyMap,
+  LABEL_ALLOWANCE,
+  MILESTONE_ALLOWANCE,
+  MILESTONE_GAP,
+  stationPoint,
+  stationStates,
+  type JourneyCurriculum,
+  type JourneyMilestone,
+} from './JourneyMap';
+import { MilestoneFlag } from './MilestoneFlag';
 import { PathSegment } from './PathSegment';
 import { RADIUS, Station } from './Station';
 
@@ -147,6 +158,61 @@ describe('JourneyMap', () => {
   // where the real content ends — 96 alone (the pre-Task-13 value) would not.
   it('leaves the fixed bar a comfortable margin now that the label allowance is real', () => {
     expect(BOTTOM_PAD).toBeGreaterThanOrEqual(120);
+  });
+
+  const MILESTONE: JourneyMilestone = { name: '구간 시험', state: 'open' };
+
+  // 트랙당 하나(frontend-components.md §6). `findAllByType`은 Station.test.tsx가 이미
+  // 쓰는 방식대로 컴포짓 타입으로 잡는다 — testID로 잡으면 NbPaper가 testID를 자신의 호스트
+  // View에도 넘겨 배로 잡히는 함정(MilestoneFlag.test.tsx에 적어 둔 것과 같은 함정)에 걸린다.
+  it('draws exactly one MilestoneFlag when the track has one', () => {
+    const tree = mount(<JourneyMap track={{ curricula: CURRICULA, milestone: MILESTONE } as any} onStationPress={jest.fn()} />);
+    expect(tree.root.findAllByType(MilestoneFlag)).toHaveLength(1);
+    act(() => { tree.unmount(); });
+  });
+
+  // 서버가 마일스톤을 보내지 않으면(null/undefined) 지도가 지어내면 안 된다 — task-19-brief.md.
+  it('draws no flag when the server sends none — it must not invent one', () => {
+    const tree = mount(<JourneyMap track={{ curricula: CURRICULA }} onStationPress={jest.fn()} />);
+    expect(tree.root.findAllByType(MilestoneFlag)).toHaveLength(0);
+    act(() => { tree.unmount(); });
+  });
+
+  // open과 closed가 실제로 다르게 그려져야 한다 — JourneyMap은 서버가 준 state를 그대로
+  // 옮길 뿐, 여기서 재해석하지 않는다.
+  it('passes the server state through untouched', () => {
+    const closedTree = mount(
+      <JourneyMap track={{ curricula: CURRICULA, milestone: { name: '구간 시험', state: 'closed' } } as any} onStationPress={jest.fn()} />,
+    );
+    expect(closedTree.root.findAllByType(MilestoneFlag)[0].props.state).toBe('closed');
+    act(() => { closedTree.unmount(); });
+
+    const openTree = mount(
+      <JourneyMap track={{ curricula: CURRICULA, milestone: MILESTONE } as any} onStationPress={jest.fn()} />,
+    );
+    expect(openTree.root.findAllByType(MilestoneFlag)[0].props.state).toBe('open');
+    act(() => { openTree.unmount(); });
+  });
+
+  // 깃발을 트랙 끝에 더하면 그만큼 아래가 더 필요하다(task-19-brief.md) — 이 관계 테스트는
+  // MILESTONE_ALLOWANCE를 다시 읽어 기대값을 계산하므로, LABEL_ALLOWANCE 때와 같은 이유로
+  // 상수 자체의 하한 단정이 따로 있어야 0으로 깎여도 안 걸리는 구멍을 막는다(아래 두 테스트).
+  it('grows mapHeight by MILESTONE_ALLOWANCE exactly when a milestone is present', () => {
+    const withoutMilestone = mount(<JourneyMap track={{ curricula: CURRICULA } as any} onStationPress={jest.fn()} />);
+    const baseHeight = (withoutMilestone.root.findAllByType(View).find((n) => n.props.testID === 'journey-map')!.props.style as { height: number }).height;
+    act(() => { withoutMilestone.unmount(); });
+
+    const withMilestone = mount(<JourneyMap track={{ curricula: CURRICULA, milestone: MILESTONE } as any} onStationPress={jest.fn()} />);
+    const grownHeight = (withMilestone.root.findAllByType(View).find((n) => n.props.testID === 'journey-map')!.props.style as { height: number }).height;
+    act(() => { withMilestone.unmount(); });
+
+    expect(grownHeight - baseHeight).toBe(MILESTONE_ALLOWANCE);
+  });
+
+  it('keeps MILESTONE_ALLOWANCE from being weakened back toward zero extra room', () => {
+    // 34는 MilestoneFlag.tsx의 MILESTONE_FLAG_HEIGHT — 깃발 자체의 세로 길이보다 작을 수 없다.
+    expect(MILESTONE_ALLOWANCE).toBeGreaterThanOrEqual(34);
+    expect(MILESTONE_GAP).toBeGreaterThan(0);
   });
 
   // 계약 타입은 전부 optional이다 — 실제로는 거의 항상 채워지는 필드(name/themeKey/done/total)가

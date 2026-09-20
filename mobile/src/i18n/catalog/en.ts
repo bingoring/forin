@@ -174,6 +174,10 @@ export const en: Record<string, string> = {
   'journey.resumeLabel': 'Resume',
   'journey.nextLabel': 'Next station',
   'journey.trackClear': 'Every station passed — try a milestone test or free roam',
+  // ── journey (milestone flag — track end, task-19) ──────────────────
+  'journey.milestone.passed': 'Passed ✓',
+  'journey.milestone.open': 'Ready',
+  'journey.milestone.closed': 'Not yet',
   // ── journey (station sheet — difficulty ladder) ───────────────────
   'journey.tierBasic': 'Basics',
   'journey.tierApplied': 'Applied',

@@ -11,11 +11,16 @@ import { useMemo } from 'react';
 import { ScrollView, View, useWindowDimensions } from 'react-native';
 import Svg from 'react-native-svg';
 import type { JourneyView } from '@/api/client';
+import { MILESTONE_FLAG_HEIGHT, MILESTONE_FLAG_WIDTH, MilestoneFlag, type MilestoneState } from './MilestoneFlag';
 import { PathSegment, type Point } from './PathSegment';
 import { RADIUS, Station, type StationState } from './Station';
 
 /** 트랙 하나의 정거장 하나 — `JourneyView['track']['curricula']`의 원소. */
 export type JourneyCurriculum = NonNullable<NonNullable<JourneyView['track']>['curricula']>[number];
+
+/** 트랙 하나의 마일스톤 — `JourneyView['track']['milestone']`. 서버가 안 보내면(트랙에
+ *  구간 시험이 없거나 그릴 수 없으면) `undefined`고, 그때 지도는 깃발을 지어내지 않는다. */
+export type JourneyMilestone = NonNullable<NonNullable<JourneyView['track']>['milestone']>;
 
 const ROW = 108; // 정거장 사이 세로 간격
 const SWING = 0.28; // 지그재그 진폭(화면 폭 대비)
@@ -44,6 +49,23 @@ const SWING = 0.28; // 지그재그 진폭(화면 폭 대비)
 export const LABEL_ALLOWANCE = 45; // 라벨 2줄 + marginTop + 진행률 줄 + marginTop, 반올림 여유 포함
 export const BOTTOM_PAD = 120; // 고정 바에 가리지 않는 최소값(핸드오프 §5) — 96에서 상향
 
+// Task 19: 트랙 끝에 MilestoneFlag가 하나 더 붙는다(서버가 마일스톤을 보낸 트랙에서만 —
+// 지어내지 않는다). 위 두 상수의 계산은 "마지막 정거장의 라벨+진행률 줄까지"만 셈에 넣고
+// 있었으므로, 깃발 한 칸만큼 그 아래로 더 필요하다. BOTTOM_PAD는 손대지 않는다 — 그 값은
+// CurrentStationBar(고정 바)가 화면 맨 아래에서 차지하는 몫이고, 깃발은 고정 바가 아니라
+// 스크롤되는 지도 콘텐츠 안에 들어가므로 `mapHeight` 쪽에서만 키우면 된다(BOTTOM_PAD가
+// 지키던 "스크롤을 끝까지 내려도 고정 바 밑에 깔리지 않는다"는 관계는 콘텐츠 총 길이가
+// 아니라 화면 맨 아래로부터의 여백이라 콘텐츠가 길어져도 그대로 유지된다).
+//
+// MILESTONE_GAP(20)은 새 단위가 아니라 이 화면이 이미 쓰는 가로 거터를 세로로 재사용한
+// 것이다(NbScreen·FreeRoamRow의 `paddingHorizontal: 20`) — 진행률 줄에 세 번째 줄처럼
+// 달라붙지 않고 깃발이 독립된 요소로 읽히기에 충분한 간격이다.
+// MILESTONE_FLAG_HEIGHT(34)는 MilestoneFlag.tsx가 소유한 값을 그대로 읽는다 — Station.tsx의
+// RADIUS를 JourneyMap이 다시 읽는 것과 같은 이유로, 두 파일이 각자 34를 들고 있다가
+// 벌어지는 사고를 막는다.
+export const MILESTONE_GAP = 20;
+export const MILESTONE_ALLOWANCE = MILESTONE_GAP + MILESTONE_FLAG_HEIGHT; // 20 + 34 = 54
+
 /** 인덱스 하나가 좌표 하나다 — 홀수 줄은 오른쪽, 짝수 줄은 왼쪽으로 스윙한다. 서버는 좌표를
  *  모른다(J10): 이 함수가 읽는 것은 인덱스와 폭뿐이다. */
 export function stationPoint(i: number, width: number): Point {
@@ -71,12 +93,13 @@ export function JourneyMap({ track, onStationPress }: {
 }) {
   const { width } = useWindowDimensions();
   const curricula = useMemo(() => track?.curricula ?? [], [track]);
+  const milestone: JourneyMilestone | undefined = track?.milestone;
   const states = useMemo(() => stationStates(curricula), [curricula]);
   const points = useMemo(
     () => curricula.map((_, i) => stationPoint(i, width)),
     [curricula, width],
   );
-  const mapHeight = points.length === 0
+  const baseHeight = points.length === 0
     ? 0
     // + 40 clears the SVG box itself (Station.tsx centres the circle in a box of
     // half-height RADIUS+28, so + 40 already reaches 12px past that edge).
@@ -84,6 +107,9 @@ export function JourneyMap({ track, onStationPress }: {
     // progress line — which the old "+ 40" alone did not account for (see
     // LABEL_ALLOWANCE above for the estimate).
     : points[points.length - 1].y + RADIUS[states[states.length - 1]] + 40 + LABEL_ALLOWANCE;
+  // The flag only takes its row when there is actually one to draw (see MILESTONE_ALLOWANCE
+  // above) — a track with no milestone keeps exactly the height it had before Task 19.
+  const mapHeight = milestone ? baseHeight + MILESTONE_ALLOWANCE : baseHeight;
 
   return (
     <ScrollView testID="journey-map-scroll" contentContainerStyle={{ paddingBottom: BOTTOM_PAD }}>
@@ -118,6 +144,20 @@ export function JourneyMap({ track, onStationPress }: {
             </View>
           );
         })}
+        {/* 트랙당 하나(frontend-components.md §6) — 서버가 마일스톤을 안 보내면 그리지
+            않는다. 위치는 정거장 레인(지그재그)을 따르지 않고 화면 중앙에 고정한다 —
+            이 트랙의 결승선이지 어느 한 정거장의 부속물이 아니기 때문이다. */}
+        {milestone && (
+          <View
+            testID="milestone-flag-slot"
+            style={{ position: 'absolute', left: width / 2 - MILESTONE_FLAG_WIDTH / 2, top: baseHeight + MILESTONE_GAP }}
+          >
+            <MilestoneFlag
+              title={milestone.name ?? ''}
+              state={(milestone.state as MilestoneState | undefined) ?? 'closed'}
+            />
+          </View>
+        )}
       </View>
     </ScrollView>
   );
