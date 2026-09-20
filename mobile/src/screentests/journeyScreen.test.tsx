@@ -21,6 +21,7 @@ import { Text } from 'react-native';
 import JourneyScreen, { pickCurrent } from '@/app/(tabs)/journey';
 import { api, type JourneyView } from '@/api/client';
 import { Station } from '@/components/journey/Station';
+import { GoalDeptSheet } from '@/components/journey/GoalDeptSheet';
 import type { JourneyCurriculum } from '@/components/journey/JourneyMap';
 import { trackMounts } from '../testing/mountRegistry';
 
@@ -254,6 +255,87 @@ test('the inferred tag shows only when the goal department is inferred, not chos
 test('a learner-chosen goal department (inferred: false) shows no inferred tag', async () => {
   const tree = await mount(); // default VIEW has inferred: false
   expect(texts(tree.root)).not.toContain('추정');
+});
+
+// ── Task 18: 목표 부서 바를 눌러 부서 고르기 ─────────────────────────────
+//
+// 부서 목록은 화면이 새로 만들지 않는다 — `goalDept`와 `freeRoam[].dept`를 합친 것이
+// 그대로 시트로 건네져야 한다(J9 개정, Task 17: freeRoam은 이미 목표 부서를 뺀 나머지
+// 전부다).
+test('tapping the goal-dept header opens the sheet with goalDept + every free-roam dept, no more and no fewer', async () => {
+  const tree = await mount();
+  expect(tree.root.findAllByType(GoalDeptSheet)).toHaveLength(0); // 안 눌렀으면 닫혀 있다
+
+  const header = tree.root.findByProps({ testID: 'journey-goal-dept-press' });
+  await act(async () => { header.props.onPress(); });
+
+  const sheets = tree.root.findAllByType(GoalDeptSheet);
+  expect(sheets).toHaveLength(1);
+  // VIEW: goalDept 'ER' + freeRoam ['ICU', 'OR'] — 서버가 이미 목표를 뺀 나머지 전부를
+  // 보낸다는 전제(Task 17)이므로 합치면 정확히 이 셋, 순서·중복 상관없이 집합이 같아야 한다.
+  expect(new Set(sheets[0].props.depts)).toEqual(new Set(['ER', 'ICU', 'OR']));
+  expect(sheets[0].props.depts).toHaveLength(3); // 중복 없음
+  expect(sheets[0].props.current).toBe('ER');
+});
+
+// §2: inferred일 때와 아닐 때 시트에 넘기는 `inferred`가 달라야 한다 — 시트 내부의
+// 권유형 문구는 GoalDeptSheet.test.tsx가 잠근다.
+test('the sheet receives inferred as the screen last knows it', async () => {
+  (api.journey as jest.Mock).mockResolvedValueOnce({ ...VIEW, inferred: true } as JourneyView);
+  const tree = await mount();
+  await act(async () => { tree.root.findByProps({ testID: 'journey-goal-dept-press' }).props.onPress(); });
+  expect(tree.root.findAllByType(GoalDeptSheet)[0].props.inferred).toBe(true);
+});
+
+// J5: 부서를 고르는 방법은 하나다 — 시트에서 고르는 것도 자유 탐방 칩과 똑같이
+// setGoalDept → journey() 재요청 경로를 탄다. 미리보기·확정 분리 없음.
+test('picking a department from the sheet calls setGoalDept with that department and redraws (J5)', async () => {
+  (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
+  const tree = await mount();
+  await act(async () => { tree.root.findByProps({ testID: 'journey-goal-dept-press' }).props.onPress(); });
+  const sheet = tree.root.findAllByType(GoalDeptSheet)[0];
+  await act(async () => { sheet.props.onPick('OR'); });
+  await act(async () => { await Promise.resolve(); });
+  await act(async () => { await Promise.resolve(); });
+  expect(api.setGoalDept).toHaveBeenCalledWith('OR');
+  expect((api.journey as jest.Mock).mock.calls.length).toBeGreaterThanOrEqual(2);
+  // 고른 뒤에는 시트가 닫힌다 — 다음 열림에서 지난 목표를 보여주지 않는다.
+  expect(tree.root.findAllByType(GoalDeptSheet)).toHaveLength(0);
+});
+
+// 같은 요청 순서 카운터를 나눠 쓴다는 전제(brief) — 시트에서 고른 요청이 자유 탐방 칩
+// 요청보다 늦게 시작됐다면, 먼저 시작된 칩 요청의 응답이 늦게 와도 시트 쪽 선택이 이겨야
+// 한다.
+test('a sheet pick started after a chip tap wins even if the chip’s response answers later', async () => {
+  (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
+
+  let resolveChip!: (v: JourneyView) => void;
+  let resolveSheet!: (v: JourneyView) => void;
+  const chipJourney = new Promise<JourneyView>((res) => { resolveChip = res; });
+  const sheetJourney = new Promise<JourneyView>((res) => { resolveSheet = res; });
+  (api.journey as jest.Mock)
+    .mockResolvedValueOnce(VIEW)        // initial load()
+    .mockReturnValueOnce(chipJourney)   // pickDept('ICU') via chip
+    .mockReturnValueOnce(sheetJourney); // pickDept('OR') via sheet
+
+  const tree = await mount();
+
+  await act(async () => { tree.root.findByProps({ testID: 'chip-ICU' }).props.onPress(); });
+  await act(async () => { await Promise.resolve(); });
+
+  await act(async () => { tree.root.findByProps({ testID: 'journey-goal-dept-press' }).props.onPress(); });
+  const sheet = tree.root.findAllByType(GoalDeptSheet)[0];
+  await act(async () => { sheet.props.onPick('OR'); });
+  await act(async () => { await Promise.resolve(); });
+
+  // 나중에 시작된(시트) 쪽이 먼저 응답하고, 먼저 시작된(칩) 쪽이 뒤늦게 도착한다 — "나중에
+  // 시작한 것"이 이겨야 하므로, 늦게 도착한 칩의 응답이 화면을 덮어쓰면 안 된다.
+  await act(async () => { resolveSheet({ ...VIEW, goalDept: 'OR' } as JourneyView); });
+  await act(async () => { await Promise.resolve(); });
+  await act(async () => { resolveChip({ ...VIEW, goalDept: 'ICU' } as JourneyView); });
+  await act(async () => { await Promise.resolve(); });
+
+  expect(headerDeptText(tree.root)).toBe('수술실 OR');
 });
 
 test('a load failure offers a retry that re-fetches instead of leaving the screen stuck', async () => {

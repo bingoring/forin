@@ -180,6 +180,9 @@ export const de: Record<string, string> = {
   'journey.track.collab': 'Zusammenarbeit',
   'journey.loadFailed': 'Die Reise konnte nicht geladen werden. (Login/Server prüfen)',
   'journey.inferredTag': 'Vermutet',
+  'journey.pickDeptTitle': 'Zielabteilung wählen',
+  'journey.pickDeptHint': 'Deine Reise folgt der Spur dieser Abteilung.',
+  'journey.pickDeptInferredHint': 'Das ist noch eine Vermutung — wähle deine Zielabteilung selbst.',
 
   'board.cleared': 'Fertig',
   'board.remaining': 'Offen',

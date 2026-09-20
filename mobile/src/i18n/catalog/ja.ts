@@ -180,6 +180,9 @@ export const ja: Record<string, string> = {
   'journey.track.collab': '協業',
   'journey.loadFailed': '旅程を読み込めませんでした。(ログイン・サーバー確認)',
   'journey.inferredTag': '推定',
+  'journey.pickDeptTitle': '目標部署を選ぶ',
+  'journey.pickDeptHint': '旅程はこの部署のトラックに沿って進みます。',
+  'journey.pickDeptInferredHint': 'まだ推定です — 目標部署を自分で選んでみましょう。',
 
   'board.cleared': '完了',
   'board.remaining': '残り',

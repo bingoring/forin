@@ -183,6 +183,9 @@ export const en: Record<string, string> = {
   'journey.track.collab': 'Collab',
   'journey.loadFailed': 'Could not load your journey. (check login / server)',
   'journey.inferredTag': 'Inferred',
+  'journey.pickDeptTitle': 'Pick your goal department',
+  'journey.pickDeptHint': 'Your journey follows this department’s track.',
+  'journey.pickDeptInferredHint': 'This is still a guess — pick your goal department yourself.',
 
   'board.cleared': 'Done',
   'board.remaining': 'Left',

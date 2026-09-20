@@ -5,11 +5,12 @@
 // W1). 탭에 들어올 때마다 다시 부른다 — 진도는 다른 화면(인테리어·퀴즈)에서 움직일 수 있고,
 // 목표 부서도 서버가 정본이라 화면은 아무것도 캐시하지 않는다.
 import { useCallback, useRef, useState } from 'react';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type JourneyStep, type JourneyView } from '@/api/client';
 import { CurrentStationBar } from '@/components/journey/CurrentStationBar';
 import { FreeRoamRow } from '@/components/journey/FreeRoamRow';
+import { GoalDeptSheet } from '@/components/journey/GoalDeptSheet';
 import { JourneyMap, type JourneyCurriculum } from '@/components/journey/JourneyMap';
 import { StationSheet } from '@/components/journey/StationSheet';
 import { NbIcon } from '@/components/nb/NbIcon';
@@ -44,6 +45,7 @@ export default function JourneyScreen() {
   const [view, setView] = useState<JourneyView | null>(null);
   const [state, setState] = useState<'loading' | 'ok' | 'error'>('loading');
   const [openKey, setOpenKey] = useState<string | null>(null);
+  const [pickingDept, setPickingDept] = useState(false);
 
   // 이어달리는 요청 중 마지막 것만 이긴다. `load()`와 `pickDept()`는 둘 다 이 하나의 카운터를
   // 나눠 쓴다 — 자유 탐방 칩을 빠르게 두 번 누르면(또는 칩을 누른 직후 탭을 떠났다 돌아와
@@ -116,15 +118,31 @@ export default function JourneyScreen() {
   const curricula = view.track?.curricula ?? [];
   const { station, kind } = pickCurrent(curricula);
 
+  // 부서 목록은 새로 만들지 않는다(Task 18) — `GET /me/journey`가 이미 전체를 담고 있다.
+  // `freeRoam`은 목표 부서만 빼고 나머지 전부를 층 조건 없이 낸다(Task 17, J9 개정)이므로
+  // 이 둘을 합치면 그것이 곧 29개 부서 전체다. 서버가 이미 목표를 뺀 채 보내지만, 방어적으로
+  // 한 번 더 걸러 중복을 막는다 — "새 목록을 만들지 마라"는 배열을 손으로 쓰지 말라는
+  // 뜻이지, 합칠 때 중복을 허용하라는 뜻은 아니다.
+  const freeRoamDepts = (view.freeRoam ?? []).map((e) => e.dept).filter((d): d is string => !!d);
+  const allDepts = goalDept ? [goalDept, ...freeRoamDepts.filter((d) => d !== goalDept)] : freeRoamDepts;
+
   return (
     <Sheet>
       {!!goalDept && (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 6 }}>
-          <NbIcon name={deptNbIcon(`SCN-${goalDept}-00001`)} size={22} />
-          <Text testID="journey-goal-dept" numberOfLines={1} style={[nbText.hand(24), { flex: 1 }]}>{t(`dept.${goalDept}`)}</Text>
-          {/* 추론된 목표는 저장되지 않는다(J4) — 학습자가 고르기 전까지는 그렇다는 티를 낸다. */}
-          {!!view.inferred && <NbTag color={nb.soft}>{t('journey.inferredTag')}</NbTag>}
-        </View>
+        <Pressable
+          testID="journey-goal-dept-press"
+          onPress={() => setPickingDept(true)}
+          accessibilityRole="button"
+          accessibilityLabel={t('journey.pickDeptTitle')}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 6 }}>
+            <NbIcon name={deptNbIcon(`SCN-${goalDept}-00001`)} size={22} />
+            <Text testID="journey-goal-dept" numberOfLines={1} style={[nbText.hand(24), { flex: 1 }]}>{t(`dept.${goalDept}`)}</Text>
+            {/* 추론된 목표는 저장되지 않는다(J4) — 학습자가 고르기 전까지는 그렇다는 티를 낸다. */}
+            {!!view.inferred && <NbTag color={nb.soft}>{t('journey.inferredTag')}</NbTag>}
+            <NbIcon name="chevronRight" size={16} />
+          </View>
+        </Pressable>
       )}
 
       <View style={{ flex: 1 }}>
@@ -168,6 +186,18 @@ export default function JourneyScreen() {
           themeKey={openKey}
           onClose={() => setOpenKey(null)}
           onStepPress={openStep}
+        />
+      )}
+
+      {pickingDept && (
+        <GoalDeptSheet
+          depts={allDepts}
+          current={goalDept}
+          inferred={!!view.inferred}
+          // 자유 탐방 칩과 같은 경로(J5) — pickDept()가 setGoalDept를 부르고 그 응답으로
+          // 다시 그린다. 미리보기와 확정을 나누지 않는다.
+          onPick={(dept) => { setPickingDept(false); pickDept(dept); }}
+          onClose={() => setPickingDept(false)}
         />
       )}
     </Sheet>
