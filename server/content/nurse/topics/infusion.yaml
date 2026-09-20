@@ -3214,6 +3214,7 @@
   acuity: emergent
   persona: { name: Laura Finch, ageRange: 40s, sub: "45y / Female", mood: sad, personality: 완전히 소진됨, speakingStyle: 무기력하게 토로한다, gender: female }
 - theme: infusion-repeat-patient-support
+  localeBound: [payer]
   title: 재정 위기 치료 중단 위협
   tagline: "I can't keep paying for this, I might have to just quit treatment."
   room: 상담실
@@ -4777,6 +4778,7 @@
   acuity: routine
   persona: { name: Nora Tate, ageRange: 50s, sub: "53y / Female", mood: worried, personality: 실수를 걱정, speakingStyle: 재확인을 원함, gender: female }
 - theme: infusion-home-infusion
+  localeBound: [escalation]
   title: 응급 연락처 안내
   tagline: "If anything goes wrong at home, here's exactly who to call."
   room: 교육실
@@ -4845,6 +4847,7 @@
   acuity: urgent
   persona: { name: Paula Dunn, ageRange: 50s, sub: "57y / Female", mood: anxious, personality: 공기를 무서워함, speakingStyle: 반복해 확인, gender: female }
 - theme: infusion-home-infusion
+  localeBound: [escalation]
   title: 반응 발생 가정 대처 교육
   tagline: "If you feel a reaction starting at home, stop the infusion and act on this plan."
   room: 교육실
@@ -4947,6 +4950,7 @@
   acuity: routine
   persona: { name: Della Sims, ageRange: 70s, sub: "73y / Female", mood: worried, personality: 지원을 원함, speakingStyle: 안심을 구함, gender: female }
 - theme: infusion-home-infusion
+  localeBound: [escalation]
   title: 가정 아나필락시스 응급 대처 교육
   tagline: "If a severe reaction hits at home, stop everything and call 911 right away."
   room: 교육실
@@ -4981,6 +4985,7 @@
   acuity: emergent
   persona: { name: Cindy Ford, ageRange: 50s, sub: "55y / Female", mood: anxious, personality: 피를 무서워함, speakingStyle: 다급히 묻는다, gender: female }
 - theme: infusion-home-infusion
+  localeBound: [escalation]
   title: 공기색전 가정 응급 교육
   tagline: "If a lot of air gets in, lie on your left side and call 911 immediately."
   room: 교육실
@@ -6028,6 +6033,7 @@
   acuity: urgent
   persona: { name: Arthur Penn, ageRange: 50s, sub: "54y / Male", mood: neutral, personality: 빨리 끝내고 싶어 재촉함, speakingStyle: 재촉하듯 말한다, gender: male }
 - theme: infusion-tolerance-titration
+  localeBound: [escalation]
   title: 증속 직후 급성 반응 위기
   tagline: "My throat feels tight and I can't catch my breath."
   room: 주입실 베이 4
@@ -6118,6 +6124,7 @@
   collabWith: ER
   persona: { name: Gordon Pike, ageRange: 70s, sub: "70y / Male", mood: panic, personality: 어지럼에 당황, speakingStyle: 힘 빠진 목소리로 말한다, gender: male }
 - theme: infusion-tolerance-titration
+  localeBound: [escalation]
   title: 최고 속도 호흡곤란 발현
   tagline: "Now that it's at full speed I can barely breathe."
   room: 주입실 베이 4
@@ -6483,6 +6490,7 @@
   collabWith: ER
   persona: { name: Lillian Fox, ageRange: 60s, sub: "64y / Female", mood: panic, personality: 급격한 고열에 혼미, speakingStyle: 떨며 힘겹게 말한다, gender: female }
 - theme: infusion-transfusion
+  localeBound: [escalation]
   title: 심한 발열 저혈압 급변
   tagline: "She's spiking a high fever and her pressure just crashed."
   room: 주입실 베이 6
@@ -6654,6 +6662,7 @@
   acuity: moderate
   persona: { name: Roland Keys, ageRange: 50s, sub: "55y / Male", mood: worried, personality: 재개 안전이 걱정, speakingStyle: 조심스럽게 묻는다, gender: male }
 - theme: infusion-scheduling-adherence
+  localeBound: [payer]
   title: 보험 승인 지연 조율
   tagline: "My insurance still hasn't approved this, will I lose my slot?"
   room: 상담실
@@ -6793,6 +6802,7 @@
   collabWith: ER
   persona: { name: Travis Nolan, ageRange: 50s, sub: "52y / Male", mood: sad, personality: 자책하며 무기력, speakingStyle: 힘없이 인정한다, gender: male }
 - theme: infusion-scheduling-adherence
+  localeBound: [payer]
   title: 보험 중단 치료 위협
   tagline: "My insurance got cut off and I can't afford to stop treatment."
   room: 상담실
@@ -7288,6 +7298,7 @@
   persona: { name: Cynthia Marsh, ageRange: 50s, sub: "54y / Female", mood: worried, personality: 자기 상태에 민감함, speakingStyle: 조심스럽게 알린다, gender: female }
 
 - theme: infusion-acute-deterioration
+  localeBound: [escalation]
   title: 호출 체계 사전 숙지
   tagline: "Let's run through how we call a rapid response if someone goes bad."
   room: 응급 대응 구역
@@ -7504,6 +7515,7 @@
   persona: { name: Stanley Roe, ageRange: 60s, sub: "67y / Male", mood: anxious, personality: 참으려 함, speakingStyle: 대수롭지 않은 듯 말한다, gender: male }
 
 - theme: infusion-acute-deterioration
+  localeBound: [escalation]
   title: 급변 상황 팀 호출 조율
   tagline: "Bay four is deteriorating — I need you to call the team now."
   room: 응급 대응 구역
@@ -7617,6 +7629,7 @@
   collabWith: ER
 
 - theme: infusion-acute-deterioration
+  localeBound: [escalation]
   title: 응급 이송 인계 결정
   tagline: "This is beyond us — I'm calling 911 for transfer."
   room: 응급 대응 구역
@@ -8711,6 +8724,7 @@
   persona: { name: Grace Lim, ageRange: 30s, sub: "38y / Female", mood: panic, personality: 겁에 질림, speakingStyle: 숨이 차 끊어 말한다, gender: female }
   collabWith: ER
 - theme: infusion-premedication
+  localeBound: [escalation]
   title: 졸림 과다 호흡 억제 감시
   tagline: "He was drowsy, now he barely responds and his breathing looks slow."
   room: 주입실 베이 1
@@ -9402,6 +9416,7 @@
   persona: { name: Stan Poole, ageRange: 50s, sub: "54y / Male", mood: panic, personality: 탈진과 공포, speakingStyle: 지쳐 헐떡이며 말한다, gender: male }
   collabWith: ER
 - theme: infusion-nausea
+  localeBound: [escalation]
   title: 구토물 흡인 기도 위험
   tagline: "He's vomiting while half-asleep and choking on it."
   room: 주입실 베이 1
@@ -10303,6 +10318,7 @@
   acuity: routine
   persona: { name: Nicole Adams, ageRange: 40s, sub: "43y / Female", mood: worried, personality: 조급함, speakingStyle: 기대를 담아 묻는다, gender: female }
 - theme: infusion-biologics-education
+  localeBound: [escalation]
   title: 부작용 신고 방법 교육
   tagline: "If I notice a side effect at home, who do I call?"
   room: 상담실
@@ -10645,6 +10661,7 @@
   acuity: routine
   persona: { name: Louis Mendez, ageRange: 30s, sub: "34y / Male", mood: anxious, personality: 바늘을 무서워함, speakingStyle: 긴장하며 묻는다, gender: male }
 - theme: infusion-post-infusion-discharge
+  localeBound: [escalation]
   title: 귀가 후 증상 신고 교육
   tagline: "If I feel off tonight after I get home, what should I do?"
   room: 회복실
@@ -10798,6 +10815,7 @@
   acuity: routine
   persona: { name: Barbara Lentz, ageRange: 60s, sub: "62y / Female", mood: worried, personality: 라인을 부담스러워함, speakingStyle: 조심스레 묻는다, gender: female }
 - theme: infusion-post-infusion-discharge
+  localeBound: [escalation]
   title: 귀가 후 응급 대처 교육
   tagline: "If something goes really wrong tonight, when should I call 911?"
   room: 회복실

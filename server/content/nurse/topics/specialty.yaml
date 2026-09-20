@@ -1901,6 +1901,7 @@
 # ######## source: c2.yaml ########
 # theme: core-language-specialty (21 situations)
 - theme: core-language-specialty
+  localeBound: [payer]
   title: 처음 온 환자에게 접수 절차를 처음부터 안내하기
   tagline: "I've never been to a specialist before — what do I even need to bring?"
   room: 통합 접수 창구
@@ -1991,6 +1992,7 @@
   persona: { name: Karen Dominguez, ageRange: 30s, sub: "이름이 자주 잘못 불려 예민해진 환자", mood: neutral, personality: 정중하지만 확실히 짚고 넘어감, speakingStyle: 또박또박 정정한다, gender: female }
 
 - theme: core-language-specialty
+  localeBound: [payer]
   title: 진료 후 수납과 다음 예약 위치를 안내하기
   tagline: "So where do I pay, and do I need to set up the next visit right now?"
   room: 통합 접수 창구
@@ -4085,6 +4087,7 @@
   persona: { name: Vernon Ingersoll, ageRange: 50s, sub: "안과 담당의", mood: worried, personality: 침착하지만 다급함이 묻어남, speakingStyle: 빠르고 정확하게 말한다, gender: male }
 
 - theme: core-handoff-specialty
+  localeBound: [escalation]
   title: 검사 중 급성 이상 소견을 발견해 여러 팀을 동시에 소집하기
   tagline: "Everyone's asking me questions at once — who needs to know first?"
   room: 검사실
@@ -5529,6 +5532,7 @@
   persona: { name: Griswold Hyland, ageRange: 40s, sub: "의뢰 진료를 계속 미루는 환자", mood: neutral, personality: 심각성을 과소평가함, speakingStyle: 대수롭지 않게 넘긴다, gender: male }
 
 - theme: specialty-referral-coordination
+  localeBound: [payer]
   title: 보험과 비용 문제로 의뢰를 망설이는 환자에게 자원 안내하기
   tagline: "I already can't keep up with the bills I have, I don't know if I can add another doctor."
   room: 상담실
@@ -11035,6 +11039,7 @@
   persona: { name: Melvin Sanchez, ageRange: 50s, sub: "예전 응급처치법을 잘못 알고 있는 보호자", mood: worried, personality: 예전 방식(수건 물리기)을 믿고 있음, speakingStyle: 고집스럽게 자기 방식을 설명함, gender: male }
 
 - theme: specialty-seizure-teaching
+  localeBound: [escalation]
   title: 발작이 얼마나 지속됐는지 시간을 재는 법 안내하기
   tagline: "I never think to check the clock — I just panic and watch him."
   room: 신경과 진료실
@@ -11143,6 +11148,7 @@
   persona: { name: Miriam Spencer, ageRange: 20s, sub: "2년째 발작이 없어 약을 끊고 싶어하는 환자", mood: neutral, personality: 약 없이 지내고 싶어함, speakingStyle: 가볍게 여기는 태도를 보임, gender: female }
 
 - theme: specialty-seizure-teaching
+  localeBound: [escalation]
   title: 가족에게 발작 시 대처 순서를 단계별로 교육하기
   tagline: "Okay, so what's step one, step two — I want to get this exactly right."
   room: 상담실
@@ -11251,6 +11257,7 @@
   persona: { name: Peyton Schneider, ageRange: 10s, sub: "학교에 알릴지 고민하는 청소년 환자", mood: worried, personality: 친구들의 시선을 걱정함, speakingStyle: 작은 목소리로 말함, gender: female }
 
 - theme: specialty-seizure-teaching
+  localeBound: [escalation]
   title: 응급 시 언제 구급차를 불러야 하는지 기준 안내하기
   tagline: "Last time I wasn't sure if I should call 911 or just wait it out."
   room: 신경과 진료실
@@ -12371,6 +12378,7 @@
   persona: { name: Nancy Vickers, ageRange: 70s, sub: "인지 저하로 자가 투약 관리가 어려운 환자", mood: worried, personality: 자율성을 잃을까 봐 걱정함, speakingStyle: 느리고 조심스럽게 말한다, gender: female }
 
 - theme: specialty-opioid-agreement
+  localeBound: [escalation]
   title: 과량 복용 시를 대비한 응급 약과 사용법 안내하기
   tagline: "Naloxone? Isn't that the overdose thing — do you think I'm going to overdose?"
   room: 상담실
@@ -12425,6 +12433,7 @@
   persona: { name: Andrew Vitale, ageRange: 40s, sub: "다른 병원에서 중복 처방을 받은 사실이 드러난 환자", mood: angry, personality: 들켜서 방어적이고 화가 나 있음, speakingStyle: 언성을 높이다 누그러진다, gender: male }
 
 - theme: specialty-opioid-agreement
+  localeBound: [escalation]
   title: 과량 복용으로 의식이 처지고 호흡이 느린 환자에게 응급 대응하기
   tagline: "He won't wake up and his breathing sounds all wrong — please, do something!"
   room: "전화(전문 외래 담당의)"

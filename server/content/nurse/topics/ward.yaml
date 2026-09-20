@@ -1015,6 +1015,7 @@
   persona: { name: Catherine Berg, ageRange: 60s, sub: "같은 이유로 올해만 세 번째 입원한 환자", mood: sad, personality: 반복되는 입원에 지치고 자책한다, speakingStyle: 힘없이 되짚어 말한다, gender: female }
 
 - theme: ward-copd-asthma
+  localeBound: [payer]
   title: 흡입기 값이 부담돼 아껴 쓰고 있었다는 환자의 사정을 듣고 자원을 연결하기
   tagline: "I've been stretching it out longer than I should — it's just expensive for me right now."
   room: 환자 병실
@@ -1196,6 +1197,7 @@
   persona: { name: Evelyn Bowers, ageRange: 40s, sub: "판을 잘라 맞추는 법을 배우는 젊은 장루 환자", mood: neutral, personality: 정확하게 하고 싶어 꼼꼼히 확인한다, speakingStyle: 치수를 재차 확인한다, gender: female }
 
 - theme: ward-ostomy
+  localeBound: [payer]
   title: 퇴원 후 주머니와 판을 어디서 받아야 할지 막막해하는 환자에게 공급 경로를 짚어 주기
   tagline: "Once I'm home, where do I even get more of these bags?"
   room: 퇴원 상담실
@@ -2550,6 +2552,7 @@
   persona: { name: Diane Farrell, ageRange: 30s, sub: "아침 시간대 여러 환자의 요청이 겹쳐 우선순위를 함께 정리해야 하는 담당 간호사(차지 너스)", mood: neutral, personality: 침착하게 순서를 따진다, speakingStyle: 목록을 짚어가며 확인한다, gender: female }
 
 - theme: ward-insulin-glucose
+  localeBound: [escalation]
   title: 혈당이 바닥으로 떨어져 깨워도 반응이 없는 환자 곁에서 프로토콜대로 조치하며 도움을 부르기
   tagline: "Why isn't he waking up?! What is happening to him?!"
   room: 환자 병실
@@ -3720,6 +3723,7 @@
   persona: { name: Daniel Fletcher, ageRange: 60s, sub: "보행을 시작하자마자 가슴 통증을 호소하는 환자", mood: panic, personality: 갑작스러운 통증에 크게 놀란다, speakingStyle: 가슴을 움켜쥐며 짧게 호소한다, gender: male }
 
 - theme: ward-early-mobility
+  localeBound: [escalation]
   title: 걷다가 의식이 흐려지며 주저앉은 환자를 두고 신속대응팀을 호출하기
   tagline: "He just went limp — why isn't he answering me?!"
   room: 병동 복도
@@ -4082,6 +4086,7 @@
   persona: { name: Diana Hunter, ageRange: 40s, sub: "환자가 올라오는 도중 상태가 나빠졌는데도 예정대로 병동으로 올려보내려는 응급실 간호사", mood: neutral, personality: 정해진 절차대로 밀어붙이려 한다, speakingStyle: 이미 결정된 일처럼 말한다, gender: female }
 
 - theme: core-handoff-ward
+  localeBound: [escalation]
   title: 인계를 받자마자 환자가 급히 나빠져 퇴근하려던 전 근무자를 붙잡아 경과를 다시 맞추고 알리기
   tagline: "Wait, she was fine when I handed her off twenty minutes ago — what happened?"
   room: 간호 스테이션
@@ -4100,6 +4105,7 @@
   persona: { name: Kyle Hutchins, ageRange: 30s, sub: "인계를 마치고 퇴근하려던 순간 환자가 급히 나빠졌다는 말에 붙들린 동료 간호사", mood: neutral, personality: 이미 마음은 퇴근에 가 있지만 상황을 들으면 바로 전환한다, speakingStyle: 짧게 되묻고 곧바로 함께 움직인다, gender: male }
 
 - theme: core-handoff-ward
+  localeBound: [escalation]
   title: 중환자실로 옮기는 도중 복도에서 환자가 흔들려 이동을 멈추고 그 자리에서 팀을 부르기
   tagline: "What happened — did he just stop responding, or did his breathing change first?"
   room: 병동 복도
@@ -4821,6 +4827,7 @@
   persona: { name: Herbert Huber, ageRange: 60s, sub: "밤마다 앉아서 잔다는 말을 대수롭지 않게 처음 꺼낸 환자", mood: neutral, personality: 불편함을 늘 있는 일처럼 여겨 왔다, speakingStyle: 무심코 흘리듯 말한다, gender: male }
 
 - theme: ward-heart-failure
+  localeBound: [escalation]
   title: 한밤중에 숨이 차 일어나 앉은 환자의 산소포화도가 계속 떨어져 즉시 호출하기
   tagline: "I can't— I can't catch my breath, even sitting up—"
   room: 환자 병실
@@ -4839,6 +4846,7 @@
   persona: { name: Irene Ivey, ageRange: 70s, sub: "한밤중에 숨이 차 일어나 앉았는데도 점점 더 힘들어하는 환자", mood: panic, personality: 갑자기 숨이 막히자 크게 당황한다, speakingStyle: 헐떡이며 짧은 단어로만 말한다, gender: female }
 
 - theme: ward-heart-failure
+  localeBound: [escalation]
   title: 분홍빛 거품 섞인 가래를 뱉는 환자를 앉히고 산소를 대며 신속대응팀을 부르기
   tagline: "Something's coming up — it's pink, why is it pink—"
   room: 환자 병실
@@ -4909,6 +4917,7 @@
   acuity: routine
   persona: { name: Marilyn Gaskin, ageRange: 60s, sub: "재입원이 반복되는 것에 지쳐 약을 전부 끊겠다며 이유를 따지듯 쏟아내는 환자", mood: angry, personality: 포기보다는 답답함과 억울함을 토로한다, speakingStyle: 따지듯 빠르게 말을 쏟아낸다, gender: female }
 - theme: ward-heart-failure
+  localeBound: [escalation]
   title: 밤사이 소변이 거의 나오지 않고 의식이 처지는 환자를 발견해 곧장 팀을 부르기
   tagline: "...I'm just... so tired... don't really need to... get up..."
   room: 환자 병실
@@ -5285,6 +5294,7 @@
   acuity: routine
   persona: { name: Agnes Hollis, ageRange: 80s, sub: "이미 삽입된 영양관을 더는 견딜 수 없다며 빼 달라고 요구하는 환자", mood: worried, personality: 자신의 뜻을 분명하고 단호하게 말한다, speakingStyle: 짧고 단호하게 거절한다, gender: female }
 - theme: ward-nutrition-dysphagia
+  localeBound: [escalation]
   title: 사레가 든 뒤 산소포화도가 계속 떨어지는 환자 곁에서 흡인하며 상태를 보고하기
   tagline: "It went down the wrong way— I can't stop coughing—"
   room: 환자 병실
@@ -6325,6 +6335,7 @@
   persona: { name: Kelly Jarvis, ageRange: 30s, sub: "통증보다는 불안 때문에 진통제를 반복해서 찾는 것으로 보이는 환자", mood: anxious, personality: 불안이 크고 의존적이다, speakingStyle: 자신 없는 목소리로 얼버무린다, gender: female }
 
 - theme: ward-opioid-safety
+  localeBound: [escalation]
   title: 진통제를 맞은 뒤 깨워도 눈을 뜨지 않고 호흡이 느려진 환자 곁에서 조치하며 신속대응팀을 부르기
   tagline: "RRT responding, what have you got and what have you done so far?"
   room: 환자 병실
@@ -6594,6 +6605,7 @@
   persona: { name: Wanda Lucero, ageRange: 60s, sub: "혼자 살아 저혈당으로 쓰러지면 아무도 모를까 봐 불안해하는 환자", mood: anxious, personality: 불안이 크고 혼자라는 것에 예민하다, speakingStyle: 걱정을 먼저 쏟아낸다, gender: female }
 
 - theme: ward-diabetes-education
+  localeBound: [payer]
   title: 시험지와 바늘 값이 부담된다는 환자에게 비용을 줄일 길을 알아보고 연계하기
   tagline: "Those test strips are so expensive, I might just end up guessing instead."
   room: 환자 병실
@@ -7456,6 +7468,7 @@
   persona: { name: Curtis Ness, ageRange: 40s, sub: "사정이 중간에 끊겨도 이해는 하지만 언제 다시 오는지 궁금해하는 환자", mood: neutral, personality: 무던하게 기다려주는 편이다, speakingStyle: 담담하게 확인하듯 묻는다, gender: male }
 
 - theme: ward-admission-assessment
+  localeBound: [escalation]
   title: 문진 도중 활력징후와 말하는 모습이 함께 흔들려 사정을 멈추고 당직에게 즉시 알리기
   tagline: "What time did her speech start, and is it just one side?"
   room: 환자 병실
@@ -7817,6 +7830,7 @@
   persona: { name: Kenneth Oliver, ageRange: 50s, sub: "약국에서 아무 진통제나 사 먹어 온 습관이 있는 환자", mood: neutral, personality: 대수롭지 않게 여긴다, speakingStyle: 습관처럼 대답한다, gender: male }
 
 - theme: ward-anticoagulation
+  localeBound: [payer]
   title: 비용 때문에 예전 약으로 돌아가고 싶다는 환자의 걱정을 듣고 도움을 연계하기
   tagline: "I hate to say it, but I really can't afford this new one every month."
   room: 환자 병실
@@ -7853,6 +7867,7 @@
   persona: { name: Timothy Newton, ageRange: 30s, sub: "위장관 출혈 의심 보고를 받고 핵심만 되짚어 확인하는 전공의", mood: neutral, personality: 빠르게 지시하고 확인 질문을 던진다, speakingStyle: 핵심만 되묻는다, gender: male }
 
 - theme: ward-anticoagulation
+  localeBound: [escalation]
   title: 갑자기 말이 어눌해지고 한쪽 팔에 힘이 빠진 환자를 발견해 곧바로 팀을 부르기
   tagline: "What time did the symptoms start, and is he still able to squeeze your hand?"
   room: 환자 병실
@@ -8214,6 +8229,7 @@
   persona: { name: Jeffrey Neumann, ageRange: 40s, sub: "멀리 살아 상황을 모른 채 전화로 다그치는 아들", mood: angry, personality: 상황을 모르면서도 성급하게 몰아붙인다, speakingStyle: 목소리를 높이며 따진다, gender: male }
 
 - theme: ward-ckd-dialysis
+  localeBound: [escalation]
   title: 투석을 거른 환자가 밤새 숨이 차다가 눕지 못할 만큼 나빠져 즉시 팀을 부르기
   tagline: "I can't— I can't lie back, I need to sit up."
   room: 환자 병실
@@ -8611,6 +8627,7 @@
   persona: { name: Laura O'Donnell, ageRange: 70s, sub: "밤중 화장실 앞에서 주저앉은 채 발견된 환자", mood: panic, personality: 당황해서 괜찮다고만 반복한다, speakingStyle: 다급하게 같은 말을 반복한다, gender: female }
 
 - theme: ward-fall-risk
+  localeBound: [escalation]
   title: 낙상 후 말이 어눌해지고 한쪽 팔이 처진 환자를 두고 신속대응팀을 호출하기
   tagline: "What time exactly did the fall happen, and has he been like this since?"
   room: 환자 병실
@@ -9376,6 +9393,7 @@
   persona: { name: Dennis Patterson, ageRange: 50s, sub: "위험 수치 보고를 받자마자 즉시 조치를 지시하는 당직의", mood: neutral, personality: 다급함을 감추지 않고 곧바로 지시로 넘어간다, speakingStyle: 빠르게 다음 행동을 지시한다, gender: male }
 
 - theme: ward-fluids-electrolytes
+  localeBound: [escalation]
   title: 나트륨이 빠르게 떨어진 환자가 말이 어눌해지기 시작해 신속대응팀을 부르기
   tagline: "What am I walking into — talk to me on the way."
   room: 병동 복도
@@ -10233,6 +10251,7 @@
 # WARD c7 — ward-rrt-escalation / ward-transfusion / ward-urinary-catheter / ward-isolation
 # theme: ward-rrt-escalation (tier1 6 + tier2 #1)
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 병동 신규 간호사에게 신속대응팀을 부르는 기준을 우리 병동 사례로 설명하기
   tagline: "So if the vitals are stable but something still feels off, I can call? I don't want to be that nurse who cries wolf."
   room: 간호 스테이션
@@ -10251,6 +10270,7 @@
   persona: { name: Emily Sanders, ageRange: 20s, sub: "이번 주 병동에 처음 배치되어 언제 도움을 요청해야 할지 확신이 없는 신규 간호사", mood: worried, personality: 실수할까 봐 매사에 조심스럽다, speakingStyle: 확인하듯 질문을 덧붙인다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 교대 인계에서 밤사이 지켜봐야 할 환자를 호출 기준과 함께 다음 근무자에게 넘기기
   tagline: "Okay, so what exactly should make me pick up the phone on him tonight?"
   room: 간호 스테이션
@@ -10269,6 +10289,7 @@
   persona: { name: Robert Tate, ageRange: 30s, sub: "야간 근무를 앞두고 인계받을 환자의 위험 신호를 구체적으로 확인하려는 야간 간호사", mood: neutral, personality: 꼼꼼하게 확인하지 않으면 넘어가지 않는다, speakingStyle: 짧게 되묻는다, gender: male }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 안정된 환자에게 상태가 나빠지면 어떤 팀이 오는지 미리 알려 두어 놀라지 않게 하기
   tagline: "So if a bunch of people suddenly come running in here, I shouldn't panic?"
   room: 환자 병실
@@ -10287,6 +10308,7 @@
   persona: { name: Barbara Sullivan, ageRange: 70s, sub: "폐렴으로 입원해 회복 중이지만 갑작스러운 상황에 대한 설명을 들어본 적 없는 환자", mood: neutral, personality: 차분하지만 낯선 상황은 미리 알아야 안심한다, speakingStyle: 담담하게 확인 질문을 던진다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 아침 회의에서 지난주 호출 사례를 되짚으며 무엇을 더 일찍 볼 수 있었는지 나누기
   tagline: "Looking back at Thursday's call, what's the one thing we'd flag sooner next time?"
   room: 간호 스테이션
@@ -10305,6 +10327,7 @@
   persona: { name: Michael Stevens, ageRange: 40s, sub: "매주 아침 회의를 이끌며 지난 호출 사례를 팀과 복기하려는 책임간호사", mood: neutral, personality: 사건을 비난 없이 되짚어보려 한다, speakingStyle: 질문으로 대화를 이끈다, gender: male }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 동료가 부를지 말지 묻자 자기 관찰을 정리하도록 질문을 던져 함께 판단하기
   tagline: "I don't know, maybe I'm overreacting — his sats are fine, it's just... something."
   room: 병동 복도
@@ -10323,6 +10346,7 @@
   persona: { name: Sarah Sinclair, ageRange: 20s, sub: "환자의 변화가 마음에 걸리지만 수치만으로는 호출할 근거가 부족하다고 느끼는 동료 간호사", mood: worried, personality: 자기 판단을 쉽게 의심한다, speakingStyle: 말끝을 흐리며 확신 없이 말한다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 보호자가 상태 악화를 느끼면 직접 부를 수 있다는 병원 제도를 가족에게 안내하기
   tagline: "Wait, I could have called someone myself last night when he seemed so out of it?"
   room: 환자 병실
@@ -10359,6 +10383,7 @@
   persona: { name: Donald Sutton, ageRange: 50s, sub: "후배 간호사의 애매한 판단을 함께 정리해 근거를 세워주는 경력 간호사", mood: neutral, personality: 서두르지 않고 차근차근 되짚는다, speakingStyle: 구체적인 질문으로 답을 끌어낸다, gender: male }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 당직의가 아침까지 지켜보자고 답한 뒤에도 달라진 점을 모아 다시 전화하기
   tagline: "I already said let's just watch him overnight — what's changed since we talked an hour ago?"
   room: 전화(내부)
@@ -10395,6 +10420,7 @@
   persona: { name: Karen Talbot, ageRange: 40s, sub: "당직의와 연락이 닿지 않는 상황을 전달받고 다음 단계로 넘겨줄 병동 책임간호사", mood: neutral, personality: 문제를 들으면 바로 다음 조치로 넘어간다, speakingStyle: 요점만 확인하고 곧장 움직인다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 달려온 신속대응팀에게 삼십 초 안에 경과와 지금 걱정을 전달하기
   tagline: "I'm here — give me the thirty-second version. What am I walking into?"
   room: 환자 병실
@@ -10413,6 +10439,7 @@
   persona: { name: Jonathan Thatcher, ageRange: 30s, sub: "삼십 초 안에 압축된 보고를 듣고 곧바로 다음 조치를 판단해야 하는 신속대응팀 간호사", mood: neutral, personality: 군더더기 없는 보고를 원한다, speakingStyle: 짧고 빠르게 질문한다, gender: male }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 호출했지만 도착했을 땐 안정돼 있어 무엇을 보고 불렀는지 설명하기
   tagline: "He looks pretty stable right now — walk me through what you were seeing before we got here."
   room: 환자 병실
@@ -10431,6 +10458,7 @@
   persona: { name: Stephanie Teague, ageRange: 30s, sub: "도착했을 때 환자가 이미 안정적이어서 호출 당시 근거를 확인하려는 신속대응팀 간호사", mood: neutral, personality: 판단을 존중하지만 근거는 꼭 확인한다, speakingStyle: 캐묻듯 하나씩 질문한다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 주말이라 담당의가 없어 당직 목록을 확인하고 누구에게 먼저 알릴지 고르기
   tagline: "It's the weekend, so who's actually covering him right now — do we even know?"
   room: 간호 스테이션
@@ -10449,6 +10477,7 @@
   persona: { name: Kenneth Terrell, ageRange: 40s, sub: "주말 당직 명단을 함께 확인하며 연락 순서를 정리하는 병동 동료 간호사", mood: neutral, personality: 절차를 확인하면서도 지체를 싫어한다, speakingStyle: 목록을 짚어가며 말한다, gender: male }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 소란스러워진다며 팀을 부르지 말라는 환자에게 부르려는 이유를 말하기
   tagline: "I don't want a bunch of people crowding in here making a scene — I'm fine, just let me rest."
   room: 환자 병실
@@ -10503,6 +10532,7 @@
   persona: { name: Rebecca Timmons, ageRange: 30s, sub: "투약이 밀린 시간에 동료의 업무를 대신 맡아주는 병동 간호사", mood: neutral, personality: 급할 때일수록 침착하게 정리한다, speakingStyle: 짧고 명확하게 지시한다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 호흡이 멈출 듯 얕아진 환자를 두고 코드팀을 부를지 신속대응팀을 부를지 정하기
   tagline: "Is he still breathing on his own? Tell me right now, because that's what decides which team we call."
   room: 환자 병실
@@ -10521,6 +10551,7 @@
   persona: { name: Patrick Tobin, ageRange: 40s, sub: "호흡이 위태로운 환자 곁에서 어느 팀을 부를지 순간적으로 함께 판단해야 하는 동료 간호사", mood: worried, personality: 긴박한 순간에도 사실만 확인하려 한다, speakingStyle: 짧고 다급하게 되묻는다, gender: male }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 혈압이 잡히지 않는 환자 곁에서 전화를 걸어 첫 문장으로 위급함을 전달하기
   tagline: "Rapid response, go ahead — what's the situation?"
   room: 전화(내부)
@@ -10539,6 +10570,7 @@
   persona: { name: Christine Todd, ageRange: 30s, sub: "위급 전화를 받아 첫 문장만으로 상황의 심각성을 파악해야 하는 응급 호출 접수 담당자", mood: neutral, personality: 침착하게 핵심만 되묻는다, speakingStyle: 짧게 확인 질문을 던진다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 도착한 팀이 지시를 쏟아내는 가운데 필요한 정보를 끊기지 않게 대답하기
   tagline: "Last set of vitals, when did this start, what meds has he had — go."
   room: 환자 병실
@@ -10557,6 +10589,7 @@
   persona: { name: David Tomlinson, ageRange: 30s, sub: "빠르게 지시를 내리며 필요한 정보를 동시에 확인하는 신속대응팀 의사", mood: neutral, personality: 여러 질문을 한꺼번에 던진다, speakingStyle: 명령조로 빠르게 말한다, gender: male }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 지켜보자던 당직의의 판단과 달리 환자가 무너져 그 자리에서 호출을 강행하기
   tagline: "Wait, I thought we agreed to hold off — what happened?"
   room: 환자 병실
@@ -10593,6 +10626,7 @@
   persona: { name: Angela Torres, ageRange: 30s, sub: "동료의 다급한 외침을 듣고 즉시 응급 카트를 가지고 달려온 병동 간호사", mood: neutral, personality: 위급한 순간에도 침착하게 움직인다, speakingStyle: 짧고 확실하게 확인한다, gender: female }
 
 - theme: ward-rrt-escalation
+  localeBound: [escalation]
   title: 호출 뒤 중환자실로 옮기기로 정해진 환자의 가족에게 지금 벌어진 일을 전하기
   tagline: "What do you mean the ICU? She was fine when I left an hour ago!"
   room: 가족 상담실
@@ -10899,6 +10933,7 @@
   persona: { name: Kathleen Utley, ageRange: 60s, sub: "수혈을 시작한 지 얼마 되지 않아 오한과 고열이 함께 나타난 환자", mood: panic, personality: 갑작스러운 증상에 크게 놀란다, speakingStyle: 다급하게 소리치듯 말한다, gender: female }
 
 - theme: ward-transfusion
+  localeBound: [escalation]
   title: 수혈 도중 숨이 차고 쌕쌕거리기 시작한 환자 곁에서 신속대응팀을 직접 부르기
   tagline: "I can't— I can't catch my breath—"
   room: 환자 병실
@@ -11259,6 +11294,7 @@
   persona: { name: Melissa Sheppard, ageRange: 60s, sub: "소변이 새어 옷이 젖어 당황한 환자", mood: sad, personality: 작은 실수에도 크게 미안해한다, speakingStyle: 사과하며 조심스럽게 말한다, gender: female }
 
 - theme: ward-urinary-catheter
+  localeBound: [escalation]
   title: 관을 달고 있던 환자가 고열과 오한으로 떨기 시작해 패혈증을 의심하고 부르기
   tagline: "I'm freezing all of a sudden and I can't stop shaking — what's happening to me?"
   room: 환자 병실
@@ -11837,6 +11873,7 @@
   persona: { name: Gerald Vasquez, ageRange: 60s, sub: "새로 처방받은 약을 어떻게 쓰는지 몰라 걱정하는 환자", mood: worried, personality: 약이 헷갈릴까 봐 여러 번 되묻는다, speakingStyle: 확인하고 또 확인한다, gender: male }
 
 - theme: ward-acute-chest-resp
+  localeBound: [escalation]
   title: 퇴원을 앞둔 환자에게 집에서 흉통이 생기면 어떻게 할지 순서대로 짚어 주기
   tagline: "Just tell me what I need to watch for so I can go home already."
   room: 퇴원 상담실
@@ -12020,6 +12057,7 @@
 
 # ward-acute-chest-resp (tier 3)
 - theme: ward-acute-chest-resp
+  localeBound: [escalation]
   title: 가슴을 움켜쥔 채 식은땀을 흘리는 환자를 앉히고 심전도와 도움을 함께 부르기
   tagline: "Okay, I'm here — what do you need first?"
   room: 환자 병실
@@ -12038,6 +12076,7 @@
   persona: { name: Angela Vernon, ageRange: 30s, sub: "복도를 지나가다 호출을 받고 달려온 동료 간호사", mood: worried, personality: 지시를 정확히 알아듣고 바로 움직인다, speakingStyle: 짧고 명료하게 되묻는다, gender: female }
 
 - theme: ward-acute-chest-resp
+  localeBound: [escalation]
   title: 말을 다 잇지 못할 만큼 숨이 가빠진 환자 곁에서 호흡 양상을 살피며 조치하기
   tagline: "Give me vitals and what you're seeing right now — go."
   room: 환자 병실
@@ -12074,6 +12113,7 @@
   persona: { name: Timothy Yang, ageRange: 40s, sub: "다른 환자를 보던 중 호출을 받은 당직의", mood: neutral, personality: 근거를 먼저 요구한다, speakingStyle: 질문을 던지며 확인한다, gender: male }
 
 - theme: ward-acute-chest-resp
+  localeBound: [escalation]
   title: 흉통이 가라앉지 않고 혈압까지 흔들리는 환자 곁을 지키며 다음 조치를 요청하기
   tagline: "Is he still hypotensive right now, this second?"
   room: 환자 병실
@@ -12402,6 +12442,7 @@
 
 # ward-oxygen-hypoxia (tier 3, part 1)
 - theme: ward-oxygen-hypoxia
+  localeBound: [escalation]
   title: 산소를 최대로 올려도 포화도가 계속 떨어지는 환자 곁에서 즉시 도움을 부르기
   tagline: "It's still dropping — I can hear it in the monitor, it's not stopping."
   room: 환자 병실
@@ -13223,6 +13264,7 @@
   persona: { name: Vivian Woodward, ageRange: 50s, sub: "다른 병동에서도 비슷한 출혈 사례를 본 적 있어 신중해지는 당직의", mood: anxious, personality: 위험을 저울질하며 신중하게 결정한다, speakingStyle: 근거를 하나씩 확인한다, gender: female }
 
 - theme: ward-vte-prevention
+  localeBound: [escalation]
   title: 숨이 차다는 호소 뒤 산소포화도가 계속 떨어질 때 신속대응팀을 호출하기
   tagline: "Give me his oxygen trend and what changed in the last few minutes."
   room: 환자 병실
