@@ -51,6 +51,11 @@ export const ja: Record<string, string> = {
   'settings.privacy.wardOn': '今学習している他の人のホーム病棟に、あなたのキャラクターが匿名で現れます。',
   'settings.privacy.wardOff': '誰の病棟にも現れません。',
 
+  'settings.explore.section': '探検モード',
+  'settings.explore.title': '部署インテリア',
+  'settings.explore.on': 'ホームの病棟カードを押すと、歩き回れる部署が開きます。',
+  'settings.explore.off': '病棟カードは非表示です — この端末ではインテリアをオフにしています。',
+
   'settings.account.section': 'アカウント',
   'settings.account.signOut': 'ログアウト',
   'settings.account.signOutSub': 'この端末からログアウトしてログイン画面に戻ります。',

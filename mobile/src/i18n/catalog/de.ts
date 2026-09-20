@@ -51,6 +51,11 @@ export const de: Record<string, string> = {
   'settings.privacy.wardOn': 'Deine Figur erscheint anonym in der Home-Station anderer, die gerade lernen.',
   'settings.privacy.wardOff': 'Du erscheinst in niemandes Station.',
 
+  'settings.explore.section': 'Erkundungsmodus',
+  'settings.explore.title': 'Stationsinnenräume',
+  'settings.explore.on': 'Stationskarten auf der Startseite öffnen eine begehbare Station.',
+  'settings.explore.off': 'Stationskarten sind ausgeblendet — Innenräume sind auf diesem Gerät aus.',
+
   'settings.account.section': 'Konto',
   'settings.account.signOut': 'Abmelden',
   'settings.account.signOutSub': 'Auf diesem Gerät abmelden und zum Login zurückkehren.',

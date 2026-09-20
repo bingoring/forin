@@ -28,6 +28,7 @@ import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbButton, NbCheck, NbGauge, NbGrabber, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { LiveWardNb } from '@/components/home/LiveWardNb';
 import { setHomeActive, setWardVisible, useWardRoster } from '@/lib/wardPresence';
+import { useExploreMode } from '@/hooks/useExploreMode';
 import { markPhrasePracticed, usePhrasePracticed } from '@/lib/dailyBrief';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
@@ -61,6 +62,9 @@ export default function HomeTab() {
   const [attempt, setAttempt] = useState(0);
   const [handoffUnread, setHandoffUnread] = useState(0);
   const wardRoster = useWardRoster();
+  // 탐험 모드(Task 15) — 부서 인테리어로 들어가는 과별 출근 카드는 이 스위치가 꺼지면
+  // 그려지지 않는다. 기기 로컬, 기본 켬(나 탭 설정).
+  const { enabled: exploreEnabled } = useExploreMode();
   const phraseDone = usePhrasePracticed(home?.date ?? '');
 
   // The ward roster polls only while home is on screen — being here is what turns it on.
@@ -274,22 +278,28 @@ export default function HomeTab() {
         {/* An EXPIRED call is not drawn — see PageNote. */}
         {!!home.page && <PageNote page={home.page} onAnswer={answerPage} />}
 
-        {/* ✂ 과별 출근 카드 */}
-        <Text style={[nbText.hand(19), { marginTop: 18 }]}>{t('home.deptCards')}</Text>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 11, marginTop: 9 }}>
-          {WARDS.map((w) => (
-            <Pressable
-              key={w.code}
-              onPress={() => router.push(`/interior/INT-${w.code}-00001`)}
-              style={{ width: '30.5%' }}
-            >
-              <NbPaper rot={w.rot} style={{ paddingTop: 13, paddingBottom: 10, alignItems: 'center' }}>
-                <NbIcon name={w.icon} size={23} />
-                <Text numberOfLines={1} style={[nbText.hand(15), { marginTop: 3 }]}>{t(w.labelKey)}</Text>
-              </NbPaper>
-            </Pressable>
-          ))}
-        </View>
+        {/* ✂ 과별 출근 카드 — 탐험 모드(Task 15)가 꺼지면 그려지지 않는다. 인테리어가 아직
+            간호사 직업군에만 있어, 다른 직업군에 언제 붙을지 미정인 동안 데모에서 껐다 켜
+            볼 수 있어야 한다(설정: 나 탭 → 탐험 모드). */}
+        {exploreEnabled && (
+          <>
+            <Text style={[nbText.hand(19), { marginTop: 18 }]}>{t('home.deptCards')}</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 11, marginTop: 9 }}>
+              {WARDS.map((w) => (
+                <Pressable
+                  key={w.code}
+                  onPress={() => router.push(`/interior/INT-${w.code}-00001`)}
+                  style={{ width: '30.5%' }}
+                >
+                  <NbPaper rot={w.rot} style={{ paddingTop: 13, paddingBottom: 10, alignItems: 'center' }}>
+                    <NbIcon name={w.icon} size={23} />
+                    <Text numberOfLines={1} style={[nbText.hand(15), { marginTop: 3 }]}>{t(w.labelKey)}</Text>
+                  </NbPaper>
+                </Pressable>
+              ))}
+            </View>
+          </>
+        )}
 
         {/* 오늘의 문장 — highlighted, and it turns over to the learner's own language. */}
         {!!home.phrase && (

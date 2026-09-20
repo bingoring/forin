@@ -58,6 +58,13 @@ export const ko: Record<string, string> = {
   'settings.privacy.wardOn': '지금 학습 중인 다른 사람들의 홈 병동에 내 캐릭터가 익명으로 나타나요.',
   'settings.privacy.wardOff': '누구의 병동에도 나타나지 않아요.',
 
+  // ── explore mode (Task 15) — 인테리어가 간호사 직업군에만 있어, 다른 직업군에 붙기 전까지
+  // 데모에서 껐다 켜 볼 수 있는 스위치 ────────────────────────────────────────
+  'settings.explore.section': '탐험 모드',
+  'settings.explore.title': '부서 인테리어',
+  'settings.explore.on': '홈의 병동 카드를 누르면 돌아다닐 수 있는 부서가 열려요.',
+  'settings.explore.off': '병동 카드가 숨겨져요 — 이 기기에서는 인테리어를 꺼 뒀어요.',
+
   // ── account ──────────────────────────────────────────────────────────────
   'settings.account.section': '계정',
   'settings.account.signOut': '로그아웃',

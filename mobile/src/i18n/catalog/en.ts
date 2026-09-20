@@ -52,6 +52,13 @@ export const en: Record<string, string> = {
   'settings.privacy.wardOn': 'Your character appears anonymously in the home ward of others studying now.',
   'settings.privacy.wardOff': 'You do not appear in anyone’s ward.',
 
+  // Explore mode (Task 15): department interiors exist for nursing only, so far — this
+  // switch lets the demo be run with or without them until other job tracks get their own.
+  'settings.explore.section': 'Explore mode',
+  'settings.explore.title': 'Department interiors',
+  'settings.explore.on': 'Ward cards on the home screen open a walkable department.',
+  'settings.explore.off': 'Ward cards are hidden — interiors are off for this device.',
+
   'settings.account.section': 'Account',
   'settings.account.signOut': 'Sign out',
   'settings.account.signOutSub': 'Sign out on this device and return to the login screen.',
