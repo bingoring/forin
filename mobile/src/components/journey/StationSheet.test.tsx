@@ -8,6 +8,7 @@ import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Text } from 'react-native';
 import { StationSheet } from './StationSheet';
 import { api } from '@/api/client';
+import { t } from '@/i18n';
 import { trackMounts } from '../../testing/mountRegistry';
 
 jest.mock('@/api/client');
@@ -108,7 +109,9 @@ describe('StationSheet', () => {
   });
 
   // `now`는 한 주제에 정확히 하나다 — 시트가 그것을 지어내면 안 된다. done과 lock만 있고
-  // `now`가 전혀 없는 목록을 주면 NOW 배지가 어디에도 뜨면 안 된다.
+  // `now`가 전혀 없는 목록을 주면 NOW 배지가 어디에도 뜨면 안 된다. 리터럴 'NOW'가 아니라
+  // `t('step.now')` 자체를 보는 이유: 문구가 바뀌어도(예: 'JETZT') 이 가드가 계속 지켜야
+  // 하는 것은 "그 배지가 없다"이지 "그 리터럴이 없다"가 아니다.
   it('never invents a now row when the server sent none', async () => {
     (api.station as jest.Mock).mockResolvedValue({
       station: { themeKey: 'k', name: 'a', done: 1, total: 2, tiers: [] },
@@ -118,7 +121,21 @@ describe('StationSheet', () => {
       ],
     });
     const tree = await mount('k');
-    expect(texts(tree).filter((x) => x === 'NOW')).toHaveLength(0);
+    expect(texts(tree).filter((x) => x === t('step.now'))).toHaveLength(0);
+  });
+
+  // 위 테스트의 짝: `now` 행이 있으면 그 배지가 실제로 그려진다는 양성 단정. 이게 없으면
+  // 위 음성 단정은 "배지를 아예 안 그린다"로도 통과해 아무것도 지키지 못한다.
+  it('draws the now badge on the row whose state is `now`', async () => {
+    (api.station as jest.Mock).mockResolvedValue({
+      station: { themeKey: 'k', name: 'a', done: 0, total: 2, tiers: [] },
+      steps: [
+        { kind: 'dlg', name: 'now-row', state: 'now', pass: 1, passes: 1 },
+        { kind: 'dlg', name: 'lock-row', state: 'lock', pass: 1, passes: 1 },
+      ],
+    });
+    const tree = await mount('k');
+    expect(texts(tree).filter((x) => x === t('step.now'))).toHaveLength(1);
   });
 
   // 시트는 즉시 열고 행 자리에 스켈레톤을 둔다 — 열림이 지연되면 탭이 씹힌 것처럼
