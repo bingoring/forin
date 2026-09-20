@@ -40,9 +40,11 @@ func (s journeyStub) Locate(id learning.ScenarioID) (learning.StepRef, bool) {
 }
 func (s journeyStub) Steps(learning.ThemeKey, learning.Progress) []learning.StepState { return s.steps }
 
-// 트랙 두 개를 흉내 낸다: ER(본관 1F)과 WARD(본관 8F). 둘 다 층이 있는 부서다.
+// 네 트랙을 흉내 낸다: CORE(보편 커리큘럼, 부서가 아니다), ER(본관 1F)·WARD(본관 8F, 둘 다 층이
+// 있다), GEN(층이 없지만 주제가 저작된 부서 — J9, 개정 2026-09-20 기준으로도 목표/자유탐방에 나온다).
 func fakeTracks() []learning.TrackGroup {
 	return []learning.TrackGroup{
+		{Dept: "CORE", Curricula: []learning.CurriculumState{{ThemeKey: "core-universal", State: "open"}}},
 		{Dept: "ER", Curricula: []learning.CurriculumState{{ThemeKey: "core-safety-er", State: "open"}}},
 		{Dept: "WARD", Curricula: []learning.CurriculumState{{ThemeKey: "core-safety-ward", State: "open"}}},
 		{Dept: "GEN", Curricula: []learning.CurriculumState{{ThemeKey: "gen-call-light", State: "open"}}},
@@ -66,21 +68,33 @@ func TestResolveGoalDept_InfersFromLatestAttempt(t *testing.T) {
 	}
 }
 
-func TestResolveGoalDept_FallsBackToFirstDeptWithAFloor(t *testing.T) {
+// CORE leads every track slice (the engine always emits it first), so the fallback
+// must skip past it to the first actual department — otherwise a learner who has
+// done nothing would get "CORE" as a goal, which is not a place the journey draws.
+func TestResolveGoalDept_FallsBackToFirstAuthoredDeptNotCore(t *testing.T) {
 	dept, inferred := resolveGoalDept("", journeyStub{}, learning.Progress{}, fakeTracks())
 	if dept != "ER" || !inferred {
-		t.Fatalf("a learner who has done nothing starts at the first reachable dept: got %q", dept)
+		t.Fatalf("a learner who has done nothing starts at the first authored dept, skipping CORE: got %q", dept)
 	}
 }
 
-// 층이 없는 부서(GEN)는 목표가 될 수 없다 — 리프트가 설 수 없는 곳이다(J9).
-func TestResolveGoalDept_NeverPicksADeptWithNoFloor(t *testing.T) {
+// 층이 없어도 주제가 저작되어 있으면 목표가 될 수 있다 — GEN이 그 예다(J9, 개정 2026-09-20).
+func TestResolveGoalDept_StoredChoiceCanBeATopicWithNoFloor(t *testing.T) {
 	dept, inferred := resolveGoalDept("GEN", journeyStub{}, learning.Progress{}, fakeTracks())
-	if dept == "GEN" {
-		t.Fatalf("GEN has no floor; the journey cannot draw it")
+	if dept != "GEN" || inferred {
+		t.Fatalf("GEN has an authored topic; a stored choice of it must win outright: got %q inferred=%v", dept, inferred)
+	}
+}
+
+// A stored goal of "CORE" must never be accepted: CORE is the universal curriculum
+// the engine emits alongside every department, not a department itself.
+func TestResolveGoalDept_StoredCoreIsNotADepartment(t *testing.T) {
+	dept, inferred := resolveGoalDept("CORE", journeyStub{}, learning.Progress{}, fakeTracks())
+	if dept == "CORE" {
+		t.Fatalf("CORE is not a department the journey can aim at")
 	}
 	if dept != "ER" || !inferred {
-		t.Fatalf("the fallback must land on the first reachable dept, inferred: got %q inferred=%v", dept, inferred)
+		t.Fatalf("a rejected stored goal falls back to inference, not to CORE itself: got %q inferred=%v", dept, inferred)
 	}
 }
 
@@ -124,18 +138,40 @@ func TestRescopeCurrent_PointsAtFirstUnfinishedWithoutInventingHere(t *testing.T
 	}
 }
 
-func TestSummariseFreeRoam_ExcludesTheGoalAndFloorlessDepts(t *testing.T) {
+// The goal department and CORE (not a department) are excluded; a floorless-but-
+// authored dept (GEN) is INCLUDED — J9, revised 2026-09-20. Floor-having depts sort
+// by the campus directory first (WARD, ER's own building-mate), then GEN — which has
+// no floor to sort by — is appended after.
+func TestSummariseFreeRoam_ExcludesGoalAndCoreButIncludesTopicsWithNoFloor(t *testing.T) {
 	got := summariseFreeRoam(fakeTracks(), "ER")
 	for _, e := range got {
 		if e.Dept == "ER" {
 			t.Errorf("the goal department belongs to the path, not the chips")
 		}
-		if e.Dept == "GEN" {
-			t.Errorf("GEN has no floor; the lift cannot stop there")
+		if e.Dept == "CORE" {
+			t.Errorf("CORE is not a department; it must never appear as a chip")
 		}
 	}
-	if len(got) != 1 || got[0].Dept != "WARD" {
-		t.Fatalf("want only WARD, got %+v", got)
+	if len(got) != 2 || got[0].Dept != "WARD" || got[1].Dept != "GEN" {
+		t.Fatalf("want WARD (floored) then GEN (floorless, appended), got %+v", got)
+	}
+}
+
+// The tail (departments with no floor) must sort the same way on every call — it
+// must not depend on Go's randomised map iteration.
+func TestSummariseFreeRoam_OrderIsStableAcrossCalls(t *testing.T) {
+	tracks := fakeTracks()
+	first := summariseFreeRoam(tracks, "ER")
+	for i := 0; i < 20; i++ {
+		got := summariseFreeRoam(tracks, "ER")
+		if len(got) != len(first) {
+			t.Fatalf("length changed across calls: %+v vs %+v", first, got)
+		}
+		for i := range got {
+			if got[i].Dept != first[i].Dept {
+				t.Fatalf("order changed across calls: %+v vs %+v", first, got)
+			}
+		}
 	}
 }
 

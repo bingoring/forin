@@ -116,21 +116,45 @@ func TestJourney_UnknownGoalFallsBackRatherThanDrawingNothing(t *testing.T) {
 	}
 }
 
-// A stored goal can name a department that has a floor (so it wins, not-inferred)
-// but no track in today's catalog (content not tagged yet). The response must not
-// contradict itself: goalDept and track.dept name the same place, even when that
-// track is empty.
-func TestJourney_StoredGoalWithNoTrackStillNamesItself(t *testing.T) {
+// J9's revised text (2026-09-20) drops the floor requirement entirely: a stored
+// department wins only if the journey has authored a track for it — a floor no
+// longer matters, so "has a floor but no track" and "has no track" are now the same
+// case (the earlier "저장된 목표 부서가 콘텐츠에서 사라짐" edge case: fall back to
+// inference, Inferred=true). ICU has a floor and no track in fakeTracks(), same as
+// TestJourney_UnknownGoalFallsBackRatherThanDrawingNothing's NOSUCHDEPT case.
+func TestJourney_StoredGoalAbsentFromTracksFallsBackToInference(t *testing.T) {
 	h := &journeyHandler{
 		progress: journeyProgress{},
-		users:    fakeUsers{goal: "ICU"}, // has a floor (campus.Of), absent from fakeTracks()
+		users:    fakeUsers{goal: "ICU"}, // has a floor, but no authored track in fakeTracks()
 		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
 	}
 	var out learning.JourneyView
 	getJSON(t, h.journey, "/me/journey", &out)
 
-	if out.GoalDept != "ICU" || out.Inferred {
-		t.Fatalf("a stored, valid goal is drawn as chosen: %+v", out)
+	if out.GoalDept == "ICU" || !out.Inferred {
+		t.Fatalf("a stored dept with no authored track is not a valid goal any more: %+v", out)
+	}
+	if out.Track.Dept != out.GoalDept {
+		t.Fatalf("goalDept and track.dept must agree: goalDept=%q track.dept=%q", out.GoalDept, out.Track.Dept)
+	}
+}
+
+// The defensive case business-rules.md §2 keeps even though it "should not happen":
+// a department DOES have an authored track, but that track's curricula list is
+// empty. The stored goal still wins outright (it has a topic) and the response must
+// not contradict itself — goalDept and track.dept still name the same place.
+func TestJourney_StoredGoalWithAnEmptyTrackStillNamesItself(t *testing.T) {
+	tracks := append(fakeTracks(), learning.TrackGroup{Dept: "EMPTYTRACK"})
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "EMPTYTRACK"},
+		journeys: stubJourneys{j: journeyStub{tracks: tracks}},
+	}
+	var out learning.JourneyView
+	getJSON(t, h.journey, "/me/journey", &out)
+
+	if out.GoalDept != "EMPTYTRACK" || out.Inferred {
+		t.Fatalf("a stored goal with an authored (if empty) track is drawn as chosen: %+v", out)
 	}
 	if out.Track.Dept != out.GoalDept {
 		t.Fatalf("goalDept and track.dept must agree: goalDept=%q track.dept=%q", out.GoalDept, out.Track.Dept)
@@ -303,9 +327,18 @@ func (s *goalDeptStore) SetGoalDept(_ context.Context, _ string, dept string) er
 	return nil
 }
 
+// setGoalDeptHandler wires a journeyHandler for these tests: the allowed set now
+// comes from this profession's live journey (h.journeys), not the campus directory,
+// so setGoalDept needs a journeys stub wired the same way /me/journey does — an
+// h.journeys left nil would fall back to emptyJourney (no tracks at all), rejecting
+// every department, including ones that should be accepted.
+func setGoalDeptHandler(users ports.UserRepo) *journeyHandler {
+	return &journeyHandler{users: users, journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}}}
+}
+
 func TestSetGoalDept_PersistsAKnownDepartment(t *testing.T) {
 	users := &goalDeptStore{}
-	h := &journeyHandler{users: users}
+	h := setGoalDeptHandler(users)
 	code := patchJSON(t, h.setGoalDept, "/me/goal-dept", `{"dept":"WARD"}`)
 	if code != http.StatusOK || users.set != "WARD" {
 		t.Fatalf("a known department is stored: code=%d set=%q", code, users.set)
@@ -315,11 +348,40 @@ func TestSetGoalDept_PersistsAKnownDepartment(t *testing.T) {
 	}
 }
 
-func TestSetGoalDept_RejectsADepartmentTheLiftCannotReach(t *testing.T) {
+// GEN has no floor but its topic IS authored (J9, revised 2026-09-20: the allowed
+// set is content, not the lift) — it must now be a legal goal department.
+func TestSetGoalDept_AcceptsATopicWithNoFloor(t *testing.T) {
 	users := &goalDeptStore{}
-	h := &journeyHandler{users: users}
-	if code := patchJSON(t, h.setGoalDept, "/me/goal-dept", `{"dept":"GEN"}`); code != http.StatusBadRequest {
-		t.Fatalf("GEN has no floor; the journey cannot draw it, got %d", code)
+	h := setGoalDeptHandler(users)
+	code := patchJSON(t, h.setGoalDept, "/me/goal-dept", `{"dept":"GEN"}`)
+	if code != http.StatusOK || users.set != "GEN" {
+		t.Fatalf("GEN has an authored topic; the journey can draw it: code=%d set=%q", code, users.set)
+	}
+	if users.calls != 1 {
+		t.Fatalf("SetGoalDept must be called exactly once, got %d", users.calls)
+	}
+}
+
+// A code with no authored topic anywhere is still rejected, and — the part a stub
+// that ignores its input would let slip past — SetGoalDept must never be reached.
+func TestSetGoalDept_RejectsACodeWithNoTopic(t *testing.T) {
+	users := &goalDeptStore{}
+	h := setGoalDeptHandler(users)
+	if code := patchJSON(t, h.setGoalDept, "/me/goal-dept", `{"dept":"BOGUS"}`); code != http.StatusBadRequest {
+		t.Fatalf("BOGUS has no authored topic anywhere, got %d", code)
+	}
+	if users.set != "" || users.calls != 0 {
+		t.Errorf("a rejected department must not be written: set=%q calls=%d", users.set, users.calls)
+	}
+}
+
+// CORE is a track the engine always emits, but it is the universal curriculum, not
+// a department — it must be rejected the same as any other non-department code.
+func TestSetGoalDept_RejectsCoreItself(t *testing.T) {
+	users := &goalDeptStore{}
+	h := setGoalDeptHandler(users)
+	if code := patchJSON(t, h.setGoalDept, "/me/goal-dept", `{"dept":"CORE"}`); code != http.StatusBadRequest {
+		t.Fatalf("CORE is not a department, got %d", code)
 	}
 	if users.set != "" || users.calls != 0 {
 		t.Errorf("a rejected department must not be written: set=%q calls=%d", users.set, users.calls)

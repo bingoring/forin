@@ -3,7 +3,6 @@ package http
 import (
 	"net/http"
 
-	"github.com/bingoring/forin/server/internal/domain/campus"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/i18n"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -124,22 +123,32 @@ type goalDeptReq struct {
 // @Success 200 {object} map[string]any
 // @Router /me/goal-dept [patch]
 //
-// The allowed set is code-side (a department the lift can reach), not a DB CHECK:
-// departments grow with content, and a constraint would make adding one a migration.
-// This is the only path that persists a goal department — /me/journey only ever
-// reads one, so an inferred goal is never written (J4).
+// The allowed set is code-side (a department with an authored track — J9, revised
+// 2026-09-20), not a DB CHECK: departments grow with content, and a constraint would
+// make adding one a migration. The set comes from this profession's live journey
+// (the same `h.journeys` /me/journey reads), not from the campus directory — a
+// department needs no floor to be a valid goal any more, only a topic. This is the
+// only path that persists a goal department — /me/journey only ever reads one, so an
+// inferred goal is never written (J4).
 func (h *journeyHandler) setGoalDept(w http.ResponseWriter, r *http.Request) {
 	var req goalDeptReq
 	if err := httpx.DecodeJSON(r, &req); err != nil {
 		httpx.Error(w, http.StatusBadRequest, "dept is required")
 		return
 	}
-	if _, ok := campus.Of(req.Dept); !ok {
+	ctx := r.Context()
+	j := journeyFor(ctx, h.journeys)
+	// Zero-value progress: which departments have a track never depends on WHO is
+	// asking — cleared/attempted/latest only shade a track's per-station state, not
+	// which tracks the catalog emits — so this membership check needs no progress
+	// read.
+	tracks := j.Tracks(learning.Progress{})
+	if !hasTopic(tracks, req.Dept) {
 		httpx.Error(w, http.StatusBadRequest, "unknown department")
 		return
 	}
-	uid, _ := UserID(r.Context())
-	if err := h.users.SetGoalDept(r.Context(), uid, req.Dept); err != nil {
+	uid, _ := UserID(ctx)
+	if err := h.users.SetGoalDept(ctx, uid, req.Dept); err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "could not save goal department")
 		return
 	}

@@ -5,34 +5,47 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/learning"
 )
 
+// hasTopic reports whether the profession's journey has an authored track for dept
+// (J9, revised 2026-09-20: the allowed set is content, not the lift). CORE is a
+// track too, but it is the universal curriculum, not a department a learner can aim
+// at or roam to, so it never counts.
+func hasTopic(tracks []learning.TrackGroup, dept string) bool {
+	if dept == "" || dept == "CORE" {
+		return false
+	}
+	for _, tg := range tracks {
+		if tg.Dept == dept {
+			return true
+		}
+	}
+	return false
+}
+
 // resolveGoalDept decides which department's track the journey draws.
 //
 // A stored choice wins. Without one, the latest attempt's department is the honest
 // guess — it is where the learner actually is. With no attempts either, the first
-// department the lift can reach starts them somewhere rather than nowhere.
+// authored department starts them somewhere rather than nowhere.
 //
 // An inferred answer is NOT persisted (J4): a path picked for you is not a path you
 // chose, and a learner who plays one scenario out of curiosity should not find their
 // goal moved.
 func resolveGoalDept(stored string, j learning.Journey, p learning.Progress, tracks []learning.TrackGroup) (string, bool) {
-	if stored != "" {
-		if _, ok := campus.Of(stored); ok {
-			return stored, false
-		}
-		// The stored department left the content. Fall through to inference rather
-		// than drawing an empty path for a department that no longer exists.
+	if stored != "" && hasTopic(tracks, stored) {
+		return stored, false
 	}
+	// The stored department (if any) has no authored topic. Fall through to
+	// inference rather than drawing an empty path for a department that does not
+	// exist in this catalog.
 	if j != nil && p.Latest != "" {
 		if ref, ok := j.Locate(p.Latest); ok {
-			if dept := deptOfTheme(ref.Theme, tracks); dept != "" {
-				if _, ok := campus.Of(dept); ok {
-					return dept, true
-				}
+			if dept := deptOfTheme(ref.Theme, tracks); hasTopic(tracks, dept) {
+				return dept, true
 			}
 		}
 	}
 	for _, tg := range tracks {
-		if _, ok := campus.Of(tg.Dept); ok {
+		if hasTopic(tracks, tg.Dept) {
 			return tg.Dept, true
 		}
 	}
@@ -71,16 +84,20 @@ func rescopeCurrent(track learning.TrackGroup) learning.TrackGroup {
 //
 // Stamps count PASSED STATIONS, not cleared scenarios: passing a station is the
 // passport stamp in this world, and scenario counts differ per department so they
-// would not compare. Order follows the campus directory so the chips read in the same
-// sequence as the lift.
+// would not compare.
+//
+// Every authored department but the goal appears here (J9, revised 2026-09-20: a
+// floor is no longer required — GEN has none and still belongs). Depts with a floor
+// are ordered by the campus directory, same as before, so chips for the lift-served
+// majority read in the same sequence as the lift; a floorless dept has nowhere in
+// that directory to sort by, so it is appended afterward in `tracks`' own order —
+// itself deterministic (the engine builds it from the catalog, not a map) — so the
+// list never reshuffles between calls.
 func summariseFreeRoam(tracks []learning.TrackGroup, goal string) []learning.FreeRoamEntry {
 	byDept := map[string]learning.FreeRoamEntry{}
 	for _, tg := range tracks {
-		if tg.Dept == goal {
+		if tg.Dept == goal || tg.Dept == "CORE" {
 			continue
-		}
-		if _, ok := campus.Of(tg.Dept); !ok {
-			continue // the lift cannot stop here (J9)
 		}
 		e := learning.FreeRoamEntry{Dept: tg.Dept, Total: len(tg.Curricula)}
 		for _, c := range tg.Curricula {
@@ -97,6 +114,12 @@ func summariseFreeRoam(tracks []learning.TrackGroup, goal string) []learning.Fre
 				out = append(out, e)
 				delete(byDept, d)
 			}
+		}
+	}
+	for _, tg := range tracks {
+		if e, ok := byDept[tg.Dept]; ok {
+			out = append(out, e)
+			delete(byDept, tg.Dept)
 		}
 	}
 	return out
