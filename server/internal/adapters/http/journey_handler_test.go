@@ -137,6 +137,58 @@ func TestJourney_StoredGoalWithNoTrackStillNamesItself(t *testing.T) {
 	}
 }
 
+// journeyProgressWith is a progress repo stub that answers with a DISTINCTIVE,
+// non-zero learning.Progress, unlike journeyProgress above (which always answers
+// zero/empty). It exists to prove the learner's real progress actually reaches the
+// engine — the exact layer that let /me/journey ship without ever calling its
+// translation function (final branch review #2): every handler test's progress
+// stub was interchangeable with the zero value, so a handler that built `p` and
+// then discarded it (e.g. calling j.Tracks(learning.Progress{}) instead of
+// j.Tracks(p)) still passed every test in this file.
+type journeyProgressWith struct {
+	ports.ProgressRepo
+	cleared, attempted map[string]bool
+	latest             string
+}
+
+func (p journeyProgressWith) ClearedScenarioIDs(context.Context, string) (map[string]bool, error) {
+	return p.cleared, nil
+}
+func (p journeyProgressWith) AttemptedScenarioIDs(context.Context, string) (map[string]bool, error) {
+	return p.attempted, nil
+}
+func (p journeyProgressWith) LatestAttemptScenarioID(context.Context, string) (string, error) {
+	return p.latest, nil
+}
+func (p journeyProgressWith) ClearedByGuide(context.Context, string) (map[string]bool, map[string]bool, error) {
+	return nil, nil, nil
+}
+
+func TestJourney_PassesTheLearnersRealProgressToTheEngine(t *testing.T) {
+	var got learning.Progress
+	h := &journeyHandler{
+		progress: journeyProgressWith{
+			cleared:   map[string]bool{"SCN-ER-1": true},
+			attempted: map[string]bool{"SCN-ER-1": true, "SCN-ER-2": true},
+			latest:    "SCN-ER-2",
+		},
+		users:    fakeUsers{goal: "ER"},
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks(), gotTracks: &got}},
+	}
+	var out learning.JourneyView
+	getJSON(t, h.journey, "/me/journey", &out)
+
+	if !got.Cleared["SCN-ER-1"] {
+		t.Errorf("Cleared must reach the engine: got %+v", got.Cleared)
+	}
+	if !got.Attempted["SCN-ER-1"] || !got.Attempted["SCN-ER-2"] {
+		t.Errorf("Attempted must reach the engine: got %+v", got.Attempted)
+	}
+	if got.Latest != "SCN-ER-2" {
+		t.Errorf("Latest must reach the engine: got %q", got.Latest)
+	}
+}
+
 func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
 	h := &journeyHandler{progress: journeyProgress{}, users: fakeUsers{}}
 	var out learning.JourneyView

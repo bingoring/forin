@@ -14,13 +14,21 @@ var tierUnlock learning.TierUnlockPolicy = learning.DefaultTierUnlock{}
 // derives from cleared+latest.
 func Resolve(curricula []Curriculum, deptOrder []string, cleared, attempted map[string]bool, latest string) []learning.TrackGroup {
 	_ = attempted
-	// theme key of the latest attempt → drives `here`/resume.
+	// theme key of the latest attempt → drives `here`/resume. A zero-progress
+	// learner has latest=="" — and a boss step's ScenarioID is also "" (it has no
+	// scenario of its own) — so without this guard the FIRST curriculum with an
+	// exam would match and counterfeit a `here` nobody earned. Stops at the first
+	// (only) real match once found: a scenario id belongs to exactly one theme.
 	latestTheme := ""
-	for _, c := range curricula {
-		for _, ti := range c.Tiers {
-			for _, s := range ti.Steps {
-				if s.ScenarioID == latest {
-					latestTheme = c.Theme.Key
+	if latest != "" {
+	findLatest:
+		for _, c := range curricula {
+			for _, ti := range c.Tiers {
+				for _, s := range ti.Steps {
+					if s.ScenarioID == latest {
+						latestTheme = c.Theme.Key
+						break findLatest
+					}
 				}
 			}
 		}

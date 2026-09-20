@@ -8,13 +8,25 @@ import (
 
 // journeyStub is a learning.Journey that answers only what a test asks about.
 type journeyStub struct {
-	locate    map[learning.ScenarioID]learning.StepRef
-	themeDept map[learning.ThemeKey]string
-	steps     []learning.StepState
-	tracks    []learning.TrackGroup
+	locate map[learning.ScenarioID]learning.StepRef
+	steps  []learning.StepState
+	tracks []learning.TrackGroup
+	// gotTracks, when set, captures the Progress a handler actually passed to
+	// Tracks. Every other field here answers with a fixed value regardless of the
+	// argument, which is exactly the hole that let /me/journey ship without ever
+	// calling its translation function (found only on final branch review): no
+	// stub recorded what it was called WITH, so a handler that built the real
+	// progress and then discarded it (e.g. calling Tracks(learning.Progress{})
+	// instead of Tracks(p)) still passed every test in this package.
+	gotTracks *learning.Progress
 }
 
-func (s journeyStub) Tracks(learning.Progress) []learning.TrackGroup { return s.tracks }
+func (s journeyStub) Tracks(p learning.Progress) []learning.TrackGroup {
+	if s.gotTracks != nil {
+		*s.gotTracks = p
+	}
+	return s.tracks
+}
 func (s journeyStub) Next(learning.Progress, learning.ScenarioID) learning.StepRef {
 	return learning.StepRef{}
 }
@@ -47,7 +59,7 @@ func TestResolveGoalDept_StoredChoiceWins(t *testing.T) {
 func TestResolveGoalDept_InfersFromLatestAttempt(t *testing.T) {
 	j := journeyStub{locate: map[learning.ScenarioID]learning.StepRef{
 		"SCN-WARD-1": {Theme: "core-safety-ward", Found: true},
-	}, themeDept: map[learning.ThemeKey]string{"core-safety-ward": "WARD"}}
+	}}
 	dept, inferred := resolveGoalDept("", j, learning.Progress{Latest: "SCN-WARD-1"}, fakeTracks())
 	if dept != "WARD" || !inferred {
 		t.Fatalf("an unset goal follows the latest attempt: got %q inferred=%v", dept, inferred)

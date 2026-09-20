@@ -154,6 +154,19 @@ nfree=$(pj "len(d.get('freeRoam',[]))")
 [ "${nfree:-0}" -ge 1 ] && ok "free-roam has $nfree department chip(s)" || bad "free-roam is empty"
 gd=$(pj "d.get('goalDept','')")
 [ -n "$gd" ] && ok "goal department resolved ($gd)" || bad "no goal department"
+# This account is FIXED and CUMULATIVE (staging, re-run on every deploy — see the
+# file header), so by now it has cleared scenarios from past runs. Every assertion
+# above holds even on a brand-new, zero-progress account — none of them looks at
+# whether progress reached the engine at all, only at its shape. A regression that
+# drops the learner's progress before it reaches Tracks (e.g. passing a blank
+# Progress{} instead of the real one — final branch review #2) would still satisfy
+# all of them and ship green. `done` (cleared scenarios within a station), not
+# `state=='passed'` (an entire station fully cleared, boss included) — a live run
+# against this account showed 4 scenarios done across 786 total steps and not one
+# station fully passed, so gating on `passed` would fail here even with progress
+# correctly wired.
+ndone=$(pj "sum(c.get('done',0) for c in d.get('track',{}).get('curricula',[]))")
+[ "${ndone:-0}" -ge 1 ] && ok "accumulated progress reaches the payload (done=$ndone)" || bad "no cleared scenario anywhere in the track — progress may not be reaching the engine"
 # 도장이 정거장보다 많을 수는 없다 — passed counts PASSED STATIONS in that dept's own
 # track, so a chip can never report more stamps than it has stations.
 badstamp=$(pj "sum(1 for e in d.get('freeRoam',[]) if e.get('passed',0) > e.get('total',0))")
