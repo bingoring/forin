@@ -1,7 +1,7 @@
 ---
 build-spec: curriculum-v3-journey
 stage: 02-construction/06-screens-flows
-status: READY
+status: IMPLEMENTED
 depth: comprehensive
 updated: 2026-09-20
 supersedes: 일터 탭의 장소 찾기 뷰 (장소→부서→시나리오)
@@ -78,28 +78,28 @@ depends-on: curriculum-v3-live (L2 포트·L4 은퇴), 핸드오프 v41 08_JOURN
 
 ## §4. 구현 체크리스트
 
-- [ ] U1.1 마이그레이션: `users.goal_dept text NOT NULL DEFAULT ''` (DB 제약 없음 — 허용 집합은 코드 쪽)
-- [ ] U1.2 도메인·저장소·`GET /me` 노출 + 단위 테스트
-- [ ] U2.1 `resolveGoalDept`(A1) — 저장값 → 최근 시도 부서 → 첫 부서, **추론값 미저장** + 테스트
-- [ ] U2.2 `rescopeCurrent`(A2) — `here`를 지어내지 않고 `resume`만 옮긴다 + 테스트
-- [ ] U2.3 `summariseFreeRoam`(A3) — 목표 제외 · 층 없는 부서 제외 · 도장 수 + 테스트
-- [ ] U2.4 `GET /me/journey` 배선 + 핸들러 테스트
-- [ ] U3.1 `GET /me/journey/stations/{themeKey}` (알 수 없는 주제 404) + 테스트
-- [ ] U4.1 `PATCH /me/goal-dept` (알 수 없는 부서 400) + 테스트
-- [ ] U4.2 계약 재생성 + 드리프트 0
-- [ ] U5.1 `Station` SVG 4상태 (반지름·도장·깃발 핸드오프 수치 그대로) + 렌더 테스트
-- [ ] U5.2 `PathSegment` Q-커브 + 완료 구간 색 + 테스트
-- [ ] U5.3 `JourneyMap` 배치(인덱스 → 좌표) · 하단 패딩 ≥96 · `MilestoneFlag`
-- [ ] U5.4 `FreeRoamRow` + 칩 탭이 목표를 바꾼다
-- [ ] U5.5 `CurrentStationBar` (`resume`/`next` 문구 분기)
-- [ ] U6.1 `StationSheet` + `TierRow` + `StepRow`(대화 두 행·자물쇠) + 테스트
-- [ ] U7.1 `campus.tsx` 장소 찾기 제거 · `FloorList`·`DeptSheet` 삭제
-- [ ] U8.1 홈이 `legacyCurricula` 대신 포트를 직접 읽도록 이전
-- [ ] U8.2 **`/me/curriculum` · `/me/curriculum/tracks` 라우트 + `curriculum_legacy.go`(+테스트) 삭제** → L4.4 완료
+- [x] U1.1 마이그레이션: `users.goal_dept text NOT NULL DEFAULT ''` (DB 제약 없음 — 허용 집합은 코드 쪽)
+- [x] U1.2 도메인·저장소·`GET /me` 노출 + 단위 테스트
+- [x] U2.1 `resolveGoalDept`(A1) — 저장값 → 최근 시도 부서 → 첫 부서, **추론값 미저장** + 테스트
+- [x] U2.2 `rescopeCurrent`(A2) — `here`를 지어내지 않고 `resume`만 옮긴다 + 테스트
+- [x] U2.3 `summariseFreeRoam`(A3) — 목표 제외 · 층 없는 부서 제외 · 도장 수 + 테스트
+- [x] U2.4 `GET /me/journey` 배선 + 핸들러 테스트
+- [x] U3.1 `GET /me/journey/stations/{themeKey}` (알 수 없는 주제 404) + 테스트
+- [x] U4.1 `PATCH /me/goal-dept` (알 수 없는 부서 400) + 테스트
+- [x] U4.2 계약 재생성 + 드리프트 0
+- [x] U5.1 `Station` SVG 4상태 (반지름·도장·깃발 핸드오프 수치 그대로) + 렌더 테스트
+- [x] U5.2 `PathSegment` Q-커브 + 완료 구간 색 + 테스트
+- [x] U5.3 `JourneyMap` 배치(인덱스 → 좌표) · 하단 패딩 ≥96 · `MilestoneFlag`
+- [x] U5.4 `FreeRoamRow` + 칩 탭이 목표를 바꾼다
+- [x] U5.5 `CurrentStationBar` (`resume`/`next` 문구 분기)
+- [x] U6.1 `StationSheet` + `TierRow` + `StepRow`(대화 두 행·자물쇠) + 테스트
+- [x] U7.1 `campus.tsx` 장소 찾기 제거 · `FloorList`·`DeptSheet` 삭제
+- [x] U8.1 홈이 `legacyCurricula` 대신 포트를 직접 읽도록 이전
+- [x] U8.2 **`/me/curriculum` · `/me/curriculum/tracks` 라우트 + `curriculum_legacy.go`(+테스트) 삭제** → L4.4 완료
       `tracks`도 함께 지우는 이유: 여정이 그 자리를 대신하고 소비자가 0이 된다. 전체 29부서 340KB를
       돌려주는 엔드포인트를 부르는 사람 없이 남겨 두면 언젠가 누가 부른다.
-- [ ] U9.1 탐험 모드 토글(기기 로컬) + 홈 병동 카드 연동
-- [ ] U10 커밋: `feat(journey): 일터 탭을 여정 지도로 — 캠퍼스 프레젠터 은퇴`
+- [x] U9.1 탐험 모드 토글(기기 로컬) + 홈 병동 카드 연동
+- [x] U10 커밋: `feat(journey): 일터 탭을 여정 지도로 — 캠퍼스 프레젠터 은퇴`
 
 ## §5. 검증 계획
 
@@ -110,12 +110,18 @@ depends-on: curriculum-v3-live (L2 포트·L4 은퇴), 핸드오프 v41 08_JOURN
 | 모바일 | `tsc` · `jest` | 0 · 전건 통과. 정거장 4상태·경로 색·시트 두 행·빈 상태 |
 | 잔존 참조 | `grep -rn "/me/curriculum" mobile/src server/internal/adapters/http` | **0** — 라우트가 여정 네임스페이스로 통일됐다 |
 | 어댑터 은퇴 | `ls server/internal/adapters/http/curriculum_legacy*.go` | **없음** |
-| 스모크 | `e2e_smoke.sh` | `/me/journey` 단정 추가(트랙 1개·정거장 수·현재 정거장 ≤1·도장 수 ≤ 총수). **기존 `/me/curriculum` 단정은 이 스펙에서 제거된다** |
+| 스모크 | `e2e_smoke.sh` | **완료(Task 16, 2026-09-20)** — 로컬 postgres·redis·실 서버로 150/1 (아래 참고). `/me/journey`(목표 부서·정거장 수·현재 정거장 ≤1·잠금 없음·도장 ≤ 총수·목표 중복 없음), `PATCH /me/goal-dept`(400/200/읽기 반영), `/me/journey/stations/{themeKey}`(스텝 수·상태 집합·`now` ≤1), 두 핸들러 각각의 i18n(트랙 이름·정거장 이름·스텝 이름) |
 | 실기기 | 여정 진입 · 정거장 탭 · 스텝 진입 · 부서 바꾸기 · 이어하기 | 수동 |
 
 > ⚠️ **스모크에 tracks/journey 단정이 없던 것이 이번 전환에서 드러난 구멍이다.** `/me/curriculum/tracks`는
-> P1 이후 한 번도 검사된 적이 없어, 여정 엔드포인트가 비어 있던 것을 아무도 보지 못했다. 이 스펙에서
-> 반드시 메운다.
+> P1 이후 한 번도 검사된 적이 없어, 여정 엔드포인트가 비어 있던 것을 아무도 보지 못했다. Task 16이 메웠다 —
+> 그 과정에서 `/me/journey`가 T5에서 선 이래 `i18n.Tr`을 한 번도 부르지 않아 모든 로케일에 한국어 주제명을
+> 내보내고 있던 결함이 드러났다(단위 테스트는 이름을 고정해 돌려주는 스텁을 써서 번역 경로를 지나가지
+> 않았다). 함께 발견된 것: 실 카탈로그 영문 번역은 20386개 시나리오 중 303개뿐이라, 정거장 시트의 "첫
+> 스텝"을 임의로 골라 번역을 단정하면 대부분 헛되이 실패한다 — 스모크는 번역이 확인된 고정 시나리오
+> (`SCN-ER-00001`/`er-chestpain`)로 그 단정을 옮겼다. 남은 무관한 발견 1건: `⑮ REPUTATION`의
+> `SCN-HOSPICE-00108` acuity 단정(2026-08-10)이 이후의 HOSPICE 콘텐츠 저작 커밋(2026-09-14)으로 깨져 있다
+> (`critical` 기대 vs 실제 `routine`) — 여정과 무관해 이 태스크에서 고치지 않았다.
 
 ## §6. NFR · 성능
 

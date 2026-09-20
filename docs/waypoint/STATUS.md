@@ -6,6 +6,27 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-09-20
 
+> 🏁 **커리큘럼 v3 P3-B — 여정 지도 Task 16(마지막) 완료. L3·L4.4 닫힘, Build Spec `IMPLEMENTED`.**
+> 스모크에 `/me/journey` · `GET /me/journey/stations/{themeKey}` · `PATCH /me/goal-dept` 단정을 추가했다
+> (목표 부서 조회 · 도장 ≤ 정거장 수 · 목표가 칩에 중복되지 않음 · 정거장 목록엔 잠금 없음(J1) vs 정거장
+> 시트엔 잠금 있음(J2, 자물쇠는 계단·스텝에만) · `now`는 시트당 최대 1 · 알 수 없는 부서 400 · 저장한 목표를
+> 여정이 그대로 그림). **로컬 postgres·redis·`go run ./cmd/api`로 실 서버를 띄워 스모크를 직접 돌렸다
+> (150 passed, 1 failed — 아래).**
+> **그 실행이 이 브랜치 최대 결함을 드러냈다:** `/me/journey`가 T5에서 선 이래 `i18n.Tr`을 한 번도 부르지
+> 않아 모든 로케일에 한국어 주제명을 냈다(단위 테스트는 이름을 고정 반환하는 스텁을 써서 번역 경로를
+> 지나가지 않았다) — 이번 태스크 이전에 이미 고쳐져 있었고, 스모크가 그 수정을 실 카탈로그로 처음
+> 증명했다. **같은 실행에서 또 하나 드러남:** 정거장 시트(`GET /me/journey/stations/{themeKey}`)의 첫
+> 스텝을 임의로 골라 번역을 단정하면 자주 거짓 실패한다 — 실 카탈로그의 영문 번역은 20386개 시나리오 중
+> **303개뿐**이라 대부분 스텝이 정직하게 한국어로 남는다(콘텐츠 공백이지 코드 결함 아님). 단정을 번역이
+> 확인된 고정 시나리오(`SCN-ER-00001`/실제 테마 `er-chestpain` — 스크립트가 처음 가정한 `core-safety-er`가
+> 아니었다)로 옮겨 재확인했다. **무관하게 함께 드러난 것 1건**: `⑮ REPUTATION`의 `SCN-HOSPICE-00108` acuity
+> 단정(2026-08-10 작성, `critical` 기대)이 이후 HOSPICE 콘텐츠 저작 커밋(2026-09-14)에서 `routine`으로
+> 재태깅되며 깨져 있다 — 여정과 무관해 이 태스크에서 손대지 않았다. **게이트**: `go build/vet ./...`·
+> `gofmt -l`(펀치 미포함 7개 파일 기존 드리프트, 이 브랜치 변경분 아님)·`go test -count=1 ./...` 전부 그린·
+> `make contract`(swag v2.0.0-rc5 고정) 드리프트 0·모바일 `tsc --noEmit` 0·`jest` 149 suites/929 tests 그린.
+> 상세: forin 저장소(메인, 이 서브모듈 밖) `.superpowers/sdd/implementation-plan/task-16-report.md`.
+> **이로써 P3-B(여정 지도)가 마무리됐다.** 남는 것은 P3-A의 L5(DB 시드 + prod 승격)뿐.
+>
 > 📝 **커리큘럼 v3 P3-A — 라이브 엔진 전환 스펙(AI_PROPOSED, 2026-09-14).** P1 엔진 + P2 콘텐츠를 라이브가
 > 실제 소비하도록 v2 하드코딩 커리큘럼(`internal/curriculum`)에서 themed 엔진으로 전환하고, 소비 지점 전부를
 > **단일 도메인 포트 `learning.Journey`** 뒤에 두어 부품 교체 구도로 정리한 뒤 **v2 은퇴(삭제)**하는 설계.
