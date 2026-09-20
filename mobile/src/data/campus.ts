@@ -56,26 +56,10 @@ export const BUILDING_STYLE: Record<string, { icon: FIconName; nbIcon: NbIconNam
   '지원동': { icon: 'gear', nbIcon: 'board', accent: '#6E6354', subKey: 'building.support.sub', nameKey: 'building.support.name' },
 };
 
-/** The i18n key for a building's display name, or '' for a building we don't style yet
- *  (render its raw server string then). Keeps the Korean lookup id out of the screens. */
-export function buildingNameKey(building: string): string {
-  return BUILDING_STYLE[building]?.nameKey ?? '';
-}
-
 /** Fallback for a building the server adds before this file learns its colour.
  *  `pin` rather than a building: a place we cannot name yet is still a place, and
  *  the principle above rules out drawing a generic hospital. */
 export const DEFAULT_BUILDING_STYLE = { icon: 'pin' as FIconName, nbIcon: 'hospital' as NbIconName, accent: colors.textSoft, subKey: '' };
-
-// Departments with a walkable interior (INT-<CODE>-00001). Listed rather than
-// derived because the tile fixtures are bundled per-department modules — a walk
-// button for a department without one would push a route that can only error.
-export const INTERIOR_DEPTS = new Set([
-  'DERM', 'DIAL', 'ENDO', 'ER', 'GERI', 'HOSPICE', 'ICU', 'INFUSION', 'LD',
-  'LOUNGE', 'MORGUE', 'NICU', 'NURSERY', 'ONCO', 'OR', 'ORTHOWARD', 'PEDS',
-  'PHARMA', 'PICU', 'PSYCH', 'RAD', 'REHAB', 'SIM', 'SPD', 'SPECIALTY',
-  'SURGWARD', 'WARD',
-]);
 
 /**
  * Bank code out of a content id ("SCN-WARD-00101" → "WARD").
@@ -119,56 +103,4 @@ const DEPT_NB_ICON: Record<string, NbIconName> = {
 export function deptNbIcon(contentID?: string): NbIconName {
   const code = deptCodeOf(contentID);
   return (code && DEPT_NB_ICON[code]) || 'stetho';
-}
-
-/**
- * The department a FLOOR belongs to: the code most of its steps come from.
- *
- * Not the first step's code. 본관 1F opens with the three authored orientation
- * scenarios (SCN-ORIENT-*), so reading the first step gave "ORIENT" — a bank that does
- * not exist — and that floor's situation list came back empty while all 23 others
- * worked. Counting over every step is right for the same reason it is obvious in
- * hindsight: a floor is where most of its content is, not where its first step is.
- *
- * Ties break toward the code seen first, so a two-department floor answers the same way
- * every time instead of flipping with iteration order.
- */
-export function floorDeptCode(
-  curricula: { steps?: { scenarioId?: string }[] }[],
-): string | undefined {
-  const count = new Map<string, number>();
-  for (const c of curricula) {
-    for (const st of c.steps ?? []) {
-      const code = deptCodeOf(st.scenarioId);
-      if (code) count.set(code, (count.get(code) ?? 0) + 1);
-    }
-  }
-  let best: string | undefined;
-  let bestN = 0;
-  for (const [code, n] of count) {
-    if (n > bestN) {
-      best = code;
-      bestN = n;
-    }
-  }
-  return best;
-}
-
-/**
- * The floor's place name, with the building and floor prefix stripped.
- *
- * "본관 1F 응급의료센터" → "응급의료센터". The two rows above already say which building
- * and floor this is, so repeating them inside the row is noise. Lives here rather than in
- * the screen because the search results need exactly the same name — two copies of this
- * expression is two places for it to drift.
- */
-export function floorPlace(floor: { floor: string; where: string; curricula: { where: string }[] }): string {
-  const raw = floor.curricula[0]?.where ?? floor.where;
-  // Strip the "본관 1F" / "Main 1F" prefix AND any leftover separator: the English floor
-  // headings use "Main 1F · Emergency Centre" and 본관's authored floors use "· " too, so
-  // without trimming the middot the place read as a lone "· Xxx".
-  const place = raw
-    .replace(new RegExp(`^\\S+\\s+${floor.floor}\\b`), '')
-    .replace(/^[\s·・•‧∙]+/, '');
-  return place || floor.where;
 }
