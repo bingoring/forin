@@ -131,40 +131,44 @@ runlang() {
   CODE="${out##*$'\n'}"; BODY="${out%$'\n'*}"
 }
 
-hd "④ CURRICULUM · structure"
-run GET /me/curriculum
-# v2 shape: buildings → floors → curricula. The old assertions read `.chapters`,
-# which no longer exists — and because they only checked a length, they went red on
-# the contract change rather than on anything being wrong.
-nb=$(pj "len(d.get('buildings',[]))")
-[ "${nb:-0}" -ge 4 ] && ok "curriculum spans $nb buildings" || bad "curriculum buildings=$nb"
-ncur=$(pj "sum(len(f['curricula']) for b in d.get('buildings',[]) for f in b['floors'])")
-[ "${ncur:-0}" -ge 60 ] && ok "curriculum has $ncur curricula" || bad "curriculum curricula=$ncur"
-# Exactly one resume target across the whole path — the home hero and the career tab
-# both read it, so two (or none, before everything is done) would split them.
-nres=$(pj "sum(1 for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula'] if c.get('resume'))")
-[ "${nres:-0}" = 1 ] && ok "exactly one resume target" || bad "resume targets=$nres"
-states=$(pj "','.join(sorted({c['state'] for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula']}))")
-printf '%s' "$states" | grep -q "todo\|doing\|done" && ok "curriculum states resolved ($states)" || bad "no todo/doing/done state"
-# Floors and curricula are all open in v2; a `lock` here would mean the server still
-# gates them and the client's padlock-free rows would be lying.
-printf '%s' "$states" | grep -q "lock" && bad "curriculum still reports lock: $states" || ok "no locked curriculum (floors are all open)"
+hd "④ JOURNEY · structure"
+# /me/curriculum (buildings → floors → the whole 29-department campus) was retired
+# with the campus presenter (L4.4 / Task 14). /me/journey is what is reachable now,
+# and it draws only ONE goal-department track plus the rest of the campus as
+# free-roam chips (learning.JourneyView) — not the whole campus — so "≥4 buildings"
+# and "≥60 curricula" no longer mean anything and are not reproducible here.
+run GET /me/journey
+nst=$(pj "len(d.get('track',{}).get('curricula',[]))")
+[ "${nst:-0}" -ge 1 ] && ok "goal track has $nst station(s)" || bad "goal track has no stations"
+# At most one resume target IN THE TRACK — the bottom bar can only point at one
+# place (I1). Unlike the retired /me/curriculum view this is not asserted to be
+# EXACTLY one: the journey screen recomputes its current station inside the goal
+# track alone (J6), and a track that is entirely passed legitimately has zero.
+nresume=$(pj "sum(1 for c in d.get('track',{}).get('curricula',[]) if c.get('resume'))")
+[ "${nresume:-0}" -le 1 ] && ok "at most one resume target in the track (resume=$nresume)" || bad "resume targets=$nresume"
+# Stations are never locked (J1/J3) — a `lock` state here would mean the server
+# still gates them and the client's padlock-free rows would be lying.
+states=$(pj "','.join(sorted({c.get('state','') for c in d.get('track',{}).get('curricula',[])}))")
+printf '%s' "$states" | grep -q "lock" && bad "a station reports lock: $states" || ok "no locked station ($states)"
+nfree=$(pj "len(d.get('freeRoam',[]))")
+[ "${nfree:-0}" -ge 1 ] && ok "free-roam has $nfree department chip(s)" || bad "free-roam is empty"
 
 hd "④b I18N · the request's language reaches the payload"
-run GET /me/curriculum
-ko_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
-ko_where=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['where']")
-runlang en GET /me/curriculum
-en_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
-en_where=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['where']")
-[ "$CODE" = 200 ] && ok "GET /me/curriculum with Accept-Language: en → 200" || bad "locale request → $CODE"
+# /me/journey's station names are the only surviving end-to-end proof of the locale
+# pipeline against a real server — /me/curriculum (and the presenter that
+# translated for it) is gone. The station's `where`/floor heading has no analogue
+# on this shape (that was campus-only text), so only the name is checked here.
+run GET /me/journey
+ko_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
+runlang en GET /me/journey
+en_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
+[ "$CODE" = 200 ] && ok "GET /me/journey with Accept-Language: en → 200" || bad "locale request → $CODE"
 # Asserting the strings DIFFER, not that they exist: a pipeline that silently ignored
 # the header would return identical Korean and pass any presence check.
-[ -n "$en_name" ] && [ "$ko_name" != "$en_name" ] && ok "curriculum name localized: '$ko_name' → '$en_name'" || bad "name not localized: ko='$ko_name' en='$en_name'"
-[ -n "$en_where" ] && [ "$ko_where" != "$en_where" ] && ok "floor heading localized: '$en_where'" || bad "floor heading not localized: ko='$ko_where' en='$en_where'"
+[ -n "$en_name" ] && [ "$ko_name" != "$en_name" ] && ok "station name localized: '$ko_name' → '$en_name'" || bad "name not localized: ko='$ko_name' en='$en_name'"
 # An unsupported language must render the authored Korean, not an empty label.
-runlang pt-BR GET /me/curriculum
-pt_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
+runlang pt-BR GET /me/journey
+pt_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
 [ "$pt_name" = "$ko_name" ] && ok "unsupported locale falls back to authored Korean" || bad "pt-BR gave '$pt_name', want '$ko_name'"
 # The display language is persisted so a reinstall restores it; kept apart from
 # nativeLang, which tells the AI which language to explain corrections in.
@@ -306,17 +310,27 @@ inv=$(pj "d.get('done') == ('todayOne' not in d)")
 # which is a stronger check than "the field exists".
 fr=$(pj "d.get('firstRun')")
 [ "$fr" = "False" ] && ok "firstRun false after a clear" || bad "firstRun=$fr after clearing a scenario"
-# The shift department must be the curriculum's current one, not a random pick.
-if [ "$(pj "'shift' in d")" = "True" ]; then
-  sdept=$(pj "d['shift']['deptLabel']")
-  run GET /me/curriculum
-  # The shift label comes from the RESUME curriculum's `where`, not from a chapter's
-  # `dept` (that field is gone). Comparing against the resume target is also stricter
-  # than the old "first chapter in state=now": every curriculum is now unlocked, so
-  # "the first one not done" is not the same thing as "the one you were on".
-  cdept=$(pj "next((c['where'] for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula'] if c.get('resume')), '')")
-  [ "$sdept" = "$cdept" ] && ok "shift dept matches resume curriculum: $sdept" || bad "shift '$sdept' ≠ resume '$cdept'"
-fi
+# RETIRED (L4.4 / Task 14 review, see task-14-report.md §fix 1): this used to cross-
+# check home's shift.deptLabel against /me/curriculum's GLOBAL resume curriculum's
+# `where` text — both the campus presenter and that route are gone now.
+#
+# Home's shift badge still reads a GLOBAL resume (learning.Journey.Resume — J7:
+# home asks "what to continue, ANYWHERE", not "next station on the goal track"),
+# but no surviving endpoint exposes that global resume target's floor label from
+# outside the process to compare against. /me/journey only ever answers INSIDE the
+# goal department's track (J6/business-rules.md §1), which can legitimately be a
+# different place than home's global resume — e.g. right after switching goal
+# departments, or whenever the latest attempt sits in a department the goal track
+# is not. Re-wiring this against /me/journey would assert a false equivalence on
+# any account in that (common, not even edge-case) state.
+#
+# The point of this check was never "does shift.deptLabel exist" (it already does,
+# on /me/home) — it was cross-checking home's OWN computation against an
+# INDEPENDENT second source, so a bug in home_handler.go's currentStep could not
+# mark its own homework. To restore it: add a second, independent way to read the
+# global resume target's department (learning.Journey.Resume + Tracks, the same
+# pair currentStep in home_handler.go reads) — a small dedicated debug/admin read,
+# or a field on GET /me/progress — and compare shift.deptLabel against THAT.
 
 hd "⑫b CALENDAR · per-day activity with the shift band it fell in"
 run GET "/me/calendar?tz=Asia/Seoul"

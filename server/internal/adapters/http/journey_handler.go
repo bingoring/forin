@@ -5,6 +5,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/domain/campus"
 	"github.com/bingoring/forin/server/internal/domain/learning"
+	"github.com/bingoring/forin/server/internal/i18n"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
 	"github.com/bingoring/forin/server/internal/ports"
 )
@@ -31,6 +32,16 @@ func (h *journeyHandler) journey(w http.ResponseWriter, r *http.Request) {
 	p := learningProgress(ctx, h.progress, uid)
 	j := journeyFor(ctx, h.journeys)
 	tracks := j.Tracks(p)
+	// The engine's Name is authored Korean, keyed by ThemeKey — the same lookup
+	// legacyOne used to do for the retired campus screen (L4.4). Translated in
+	// place, before Name is read by anything below: nothing else here compares
+	// against it, so there is no ordering hazard.
+	for ti := range tracks {
+		for ci := range tracks[ti].Curricula {
+			cs := &tracks[ti].Curricula[ci]
+			cs.Name = i18n.Tr(p.Locale, cs.ThemeKey, cs.Name)
+		}
+	}
 
 	stored := ""
 	if h.users != nil {
@@ -87,11 +98,19 @@ func (h *journeyHandler) station(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusNotFound, "unknown theme")
 		return
 	}
+	station := *found
+	station.Name = i18n.Tr(p.Locale, station.ThemeKey, station.Name)
 	steps := j.Steps(learning.ThemeKey(key), p)
+	for i := range steps {
+		// Step names are keyed by content id (ScenarioID), not by theme: the id is
+		// what the row already carries, so there is no second key space to keep in
+		// step with a rewording.
+		steps[i].Name = i18n.Tr(p.Locale, steps[i].ScenarioID, steps[i].Name)
+	}
 	if steps == nil {
 		steps = []learning.StepState{}
 	}
-	httpx.JSON(w, http.StatusOK, learning.StationDetail{Station: *found, Steps: steps})
+	httpx.JSON(w, http.StatusOK, learning.StationDetail{Station: station, Steps: steps})
 }
 
 type goalDeptReq struct {

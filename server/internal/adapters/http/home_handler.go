@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
-	"strings"
 	"sync"
 	"time"
 
@@ -312,8 +311,30 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 	mu.Unlock()
 }
 
-// displayName is a placeholder until profiles carry a nickname: the UI needs
-// something stable and non-identifying, so we use a short id prefix.
+// deptPoolKey maps a department's engine code to the content-authored pool key
+// server/content/home/{mentor-notes,phrases}.yaml were written against. Those
+// files only carry six keys — er, or, icu, peds, pharma, ward — because they
+// predate the department code being readable here at all: the retired campus
+// presenter derived this key by pattern-matching the RENDERED floor label
+// ("병동", "중환자", "소아", …), which happened to fold several departments that
+// share a floor's wording into one voice — a surgical or orthopedic ward reads
+// "병동" just like the medical one; NICU/PICU share "중환자"; the women's-and-kids
+// outpatient clinic shares "소아" with the children's ward. This table reproduces
+// exactly those folds against the real department codes, now that we have them
+// directly instead of re-deriving them from translated text.
+//
+// A department left out of this table (DERM, RAD, MORGUE, GEN, …) falls back to
+// PickMentorNote/PickPhrase's shared pool via the zero value — quieter than a
+// department-specific line, never wrong, and exactly what an unmatched label
+// degraded to before.
+var deptPoolKey = map[string]string{
+	"ER": "er", "OR": "or", "ICU": "icu", "PEDS": "peds", "PHARMA": "pharma",
+	"WARD": "ward", "SURGWARD": "ward", "ORTHOWARD": "ward",
+	"PSYCH": "ward", "ONCO": "ward", "HOSPICE": "ward", "GERI": "ward",
+	"NICU": "icu", "PICU": "icu",
+	"WOMENKIDS": "peds",
+}
+
 // currentStep finds the resume target and its active step directly off the journey
 // port (L4.4 — the campus presenter that used to sit between them is gone). Returns
 // ("", "", nil) when everything is finished — the caller then shows the rest card
@@ -330,20 +351,40 @@ func currentStep(j learning.Journey, p learning.Progress, loc string) (dept, dep
 		return "", "", nil
 	}
 	// The station's name and department come from Tracks — the same list the journey
-	// screen draws from, found by the theme Resume just pointed at.
-	var stationName string
+	// screen draws from, found by the theme Resume just pointed at. `break outer` the
+	// moment it is found: ThemeKey is unique, but without the break the LAST match in
+	// iteration order would silently win instead, and a search that never matches
+	// (should be impossible — Resume only ever names a theme this same engine's
+	// catalog holds) must not fall through into an empty-chapter card below.
+	var stationName, deptCode string
+	found := false
+outer:
 	for _, tg := range j.Tracks(p) {
 		for _, cs := range tg.Curricula {
 			if cs.ThemeKey != string(ref.Theme) {
 				continue
 			}
 			stationName = i18n.Tr(loc, cs.ThemeKey, cs.Name)
-			dept = strings.ToLower(tg.Dept)
-			deptLabel = tg.Dept
-			if fl, ok := campus.Of(tg.Dept); ok {
-				deptLabel = i18n.Tr(loc, fl.Building+"|"+fl.Label, fl.Where)
-			}
+			deptCode = tg.Dept
+			found = true
+			break outer
 		}
+	}
+	if !found {
+		return "", "", nil
+	}
+	dept = deptPoolKey[deptCode] // "" (shared pool) for a code this table does not carry
+	if fl, ok := campus.Of(deptCode); ok {
+		deptLabel = i18n.Tr(loc, fl.Building+"|"+fl.Label, fl.Where)
+	}
+	// deptLabel stays "" for a floorless department (GEN — J9, the resume target CAN
+	// be a GEN scenario even though the journey screen never lists one). The raw
+	// department code must never reach the screen as a label, so the chapter drops
+	// the "dept · " prefix instead of printing it, and the caller leaves the shift
+	// badge unset when deptLabel is empty.
+	chapter := stationName
+	if deptLabel != "" {
+		chapter = deptLabel + " · " + stationName
 	}
 	rows := j.Steps(ref.Theme, p)
 	done, total := 0, 0
@@ -359,7 +400,7 @@ func currentStep(j learning.Journey, p learning.Progress, loc string) (dept, dep
 	for _, st := range rows {
 		if st.State == "now" {
 			one = &homeTodayOne{
-				Chapter:    deptLabel + " · " + stationName,
+				Chapter:    chapter,
 				Title:      i18n.Tr(loc, st.ScenarioID, st.Name),
 				Kind:       st.Kind,
 				ScenarioID: st.ScenarioID,

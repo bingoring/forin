@@ -14,6 +14,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/user"
+	"github.com/bingoring/forin/server/internal/i18n"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -142,6 +143,69 @@ func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
 	getJSON(t, h.journey, "/me/journey", &out)
 	if out.FreeRoam == nil {
 		t.Errorf("an unwired server serves an empty list, not null")
+	}
+}
+
+// The engine's Name is authored Korean; the journey screen is the only place left
+// that can prove translation reaches a real response now that the campus presenter
+// (which used to do this — L4.4) is gone. core-safety-er/SCN-ER-00001 are real,
+// already-authored catalog entries (internal/i18n/theme_en.go, content_en.go), so
+// this is checking the wiring, not inventing new fixtures.
+func TestJourney_TranslatesStationNamesForTheRequestsLocale(t *testing.T) {
+	tracks := []learning.TrackGroup{
+		{Dept: "ER", Curricula: []learning.CurriculumState{
+			{ThemeKey: "core-safety-er", Name: "환자 안전·오류 예방", State: "open"},
+		}},
+	}
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "ER"},
+		journeys: stubJourneys{j: journeyStub{tracks: tracks}},
+	}
+	req := httptest.NewRequest(http.MethodGet, "/me/journey", nil)
+	req = req.WithContext(i18n.WithLocale(req.Context(), "en"))
+	w := httptest.NewRecorder()
+	h.journey(w, req)
+	var out learning.JourneyView
+	if err := json.NewDecoder(w.Body).Decode(&out); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if len(out.Track.Curricula) != 1 {
+		t.Fatalf("want one station, got %+v", out.Track.Curricula)
+	}
+	if got := out.Track.Curricula[0].Name; got != "Patient safety and error prevention" {
+		t.Errorf("station name not translated for en: got %q", got)
+	}
+}
+
+// Same wiring, for the station sheet's own name and its steps' names — keyed by
+// ScenarioID rather than ThemeKey (a step's id is what the row already carries).
+func TestStation_TranslatesNamesForTheRequestsLocale(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		journeys: stubJourneys{j: journeyStub{
+			tracks: []learning.TrackGroup{{Dept: "ER", Curricula: []learning.CurriculumState{
+				{ThemeKey: "core-safety-er", Name: "환자 안전·오류 예방", Total: 1},
+			}}},
+			steps: []learning.StepState{
+				{Kind: "dlg", Name: "흉통 환자 트리아지", ScenarioID: "SCN-ER-00001", State: "now"},
+			},
+		}},
+	}
+	req := httptest.NewRequest(http.MethodGet, "/me/journey/stations/core-safety-er", nil)
+	req.SetPathValue("themeKey", "core-safety-er")
+	req = req.WithContext(i18n.WithLocale(req.Context(), "en"))
+	w := httptest.NewRecorder()
+	h.station(w, req)
+	var out learning.StationDetail
+	if err := json.NewDecoder(w.Body).Decode(&out); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if out.Station.Name != "Patient safety and error prevention" {
+		t.Errorf("station sheet's own name not translated for en: got %q", out.Station.Name)
+	}
+	if len(out.Steps) != 1 || out.Steps[0].Name != "Chest-pain triage" {
+		t.Errorf("step name not translated for en: got %+v", out.Steps)
 	}
 }
 
