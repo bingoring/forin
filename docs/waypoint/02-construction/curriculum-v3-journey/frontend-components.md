@@ -37,6 +37,9 @@ StationSheet                        탭 오버레이 (바텀시트)
 ### `GoalDeptBar`
 - **props**: `{ dept: string; name: string; inferred: boolean; onChange(dept): void }`
 - `inferred`가 참이면 고르라고 권하는 어조로 그린다(아직 학습자의 선택이 아니므로).
+- **부서 고르기는 바텀시트가 아니라 밀려 들어오는 화면이다.** 2026-09-21 개정 — 오른쪽 화살표는
+  "다른 화면으로 간다"고 말하는데 바텀시트를 올리면 신호와 결과가 어긋나고, 부서가 29개라 시트
+  높이로는 끝까지 보여 줄 수 없었다(실기에서 마지막 두 부서가 잘렸다). 뒤로 가면 일터 탭으로 돌아온다.
 
 ### `Station` (SVG — 핸드오프 §3 그대로)
 - **props**: `{ state: 'done'|'here'|'next'|'far'; label: string; sub?: string; collab?: string; onPress() }`
@@ -65,6 +68,9 @@ StationSheet                        탭 오버레이 (바텀시트)
 - **props**: `{ station: Station | null; kind: 'resume'|'next'; onPress() }`
 - 화면 하단 고정. 지도 스크롤 콘텐츠의 하단 패딩이 **96px 이상**이어야 가리지 않는다(핸드오프 §5).
 - `kind`는 전역 이어하기가 이 트랙 안이면 `resume`, 아니면 `next`다(J6·J7).
+- **진행도는 폭이 고정된 막대와 퍼센트로 그린다.** 2026-09-21 개정 — 원래는 `NbProgSquares`로 코스마다
+  네모 하나였는데, 한 주제에 코스가 24개라 네모가 가로로 넘쳐 **Resume 버튼을 덮었다**(실기에서 확인).
+  폭이 항목 수를 따라가면 같은 문제가 되돌아오므로, 몇 개든 같은 폭에 비율로 채운다.
 - `station`이 null이면(트랙 전부 통과) 구간 시험이나 자유 탐방을 권한다.
 
 ### `StationSheet`
@@ -104,7 +110,7 @@ StationSheet                        탭 오버레이 (바텀시트)
 | 정거장 탭 | `StationSheet` 열림 |
 | 스텝 탭 | `/scenario/{id}?guide=` 또는 `/quiz/{id}` |
 | 자유 탐방 칩 탭 | `PATCH /me/goal-dept` → 여정 재요청 → 경로 교체 |
-| 목표 부서 바 탭 | 부서 고르기(같은 PATCH 경로) |
+| 목표 부서 바 탭 | 부서 고르기 화면으로 이동(같은 PATCH 경로). 뒤로 가면 일터로 돌아온다 |
 | 하단 바 탭 | 그 정거장의 시트 열림 (바로 시나리오로 보내지 않는다 — 어느 회차인지 고르게 한다) |
 
 ## 6. 디자인 SoT 매핑
