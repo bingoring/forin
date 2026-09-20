@@ -473,9 +473,19 @@ on=$(pj "d.get('shareStatus')")
 
 hd "⑮ REPUTATION · acuity plumbing + ungraded clears don't move it"
 # Acuity must survive content → DB → API, or the emergency dimension can never move.
-run GET /scenarios/SCN-HOSPICE-00108
+# Two checks, because they fail for different reasons. The first pins one scenario to
+# `critical` and so proves the VALUE arrives intact — but it is only as stable as the
+# content: SCN-HOSPICE-00108 used to be pinned here and the v3 re-authoring turned it
+# `routine`, which left this assertion red for a month without anyone meaning to change
+# behaviour. Re-pin from `content/nurse/scenarios/gen-hospice.yaml` when that happens.
+# The second never needs re-pinning and so keeps the PLUMBING covered even in the gap
+# between a re-authoring and someone noticing the first one went red.
+run GET /scenarios/SCN-HOSPICE-00116
 ac=$(pj "d.get('acuity','')")
 [ "$ac" = "critical" ] && ok "acuity reaches the API (hospice scenario = critical)" || bad "acuity='$ac', wanted critical"
+run GET /scenarios/SCN-HOSPICE-00108
+ac=$(pj "d.get('acuity','')")
+case "$ac" in routine|urgent|critical) ok "acuity is always one of the authored set ($ac)";; *) bad "acuity='$ac', not an authored value";; esac
 # Emergencies are not an ER thing — the tagged scenario above is a hospice ward.
 run GET /me/progress
 # Reputation is server-defined per profession: ordered, labelled, self-describing.
