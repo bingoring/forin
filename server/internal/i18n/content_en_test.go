@@ -33,8 +33,14 @@ func TestMilestoneNameTranslatesForEnglish(t *testing.T) {
 	if got := Tr("ko", "milestone.name", "구간 시험"); got != "구간 시험" {
 		t.Fatalf("ko must fall back to the authored name, got %q", got)
 	}
-	if got := Tr("ja", "milestone.name", "구간 시험"); got != "구간 시험" {
-		t.Fatalf("ja has no catalog entry yet → Korean fallback, got %q", got)
+	// ja and de carry this key now (curriculum_ja.go / curriculum_de.go). This
+	// assertion used to say the opposite, pinning the then-current gap; the
+	// catalogs closing it is the reason it changed.
+	if got := Tr("ja", "milestone.name", "구간 시험"); got != "区間テスト" {
+		t.Fatalf("ja milestone name = %q", got)
+	}
+	if got := Tr("de", "milestone.name", "구간 시험"); got != "Abschnittsprüfung" {
+		t.Fatalf("de milestone name = %q", got)
 	}
 }
 

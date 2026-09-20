@@ -292,6 +292,12 @@ func TestJourney_TranslatesMilestoneNameForTheRequestsLocale(t *testing.T) {
 // A locale with no catalog entry yet (ja, de: task-19-brief.md leaves them
 // untranslated on purpose) must still read the authored Korean, not an empty string —
 // the same fallback rule every other Tr() call in this handler already follows.
+// A locale the server declares but has not yet given a catalog must degrade to the
+// authored Korean, not to a blank label. ja stood in for that case when this test
+// was written and no longer can — curriculum_ja.go closed it — so the stand-in is
+// now a locale with no catalog at all. The case is not hypothetical: ja and de were
+// in exactly this state (listed in Supported, no catalog registered) from the day
+// they were added until the catalogs landed, and the next language will be too.
 func TestJourney_MilestoneFallsBackToAuthoredKoreanWithNoCatalogEntry(t *testing.T) {
 	tracks := []learning.TrackGroup{
 		{Dept: "ER", Curricula: []learning.CurriculumState{{ThemeKey: "core-safety-er", State: "open"}},
@@ -303,7 +309,7 @@ func TestJourney_MilestoneFallsBackToAuthoredKoreanWithNoCatalogEntry(t *testing
 		journeys: stubJourneys{j: journeyStub{tracks: tracks}},
 	}
 	req := httptest.NewRequest(http.MethodGet, "/me/journey", nil)
-	req = req.WithContext(i18n.WithLocale(req.Context(), "ja"))
+	req = req.WithContext(i18n.WithLocale(req.Context(), "xx"))
 	w := httptest.NewRecorder()
 	h.journey(w, req)
 	var out learning.JourneyView
