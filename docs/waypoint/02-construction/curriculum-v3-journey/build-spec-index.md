@@ -90,6 +90,12 @@ depends-on: curriculum-v3-live (L2 포트·L4 은퇴), 핸드오프 v41 08_JOURN
 - [x] U5.1 `Station` SVG 4상태 (반지름·도장·깃발 핸드오프 수치 그대로) + 렌더 테스트
 - [x] U5.2 `PathSegment` Q-커브 + 완료 구간 색 + 테스트
 - [x] U5.3 `JourneyMap` 배치(인덱스 → 좌표) · 하단 패딩 ≥96 · `MilestoneFlag`
+      ⚠️ **정정(Task 19, 2026-09-20)**: 이 항목은 원래 `MilestoneFlag`를 포함해 완료로
+      표시됐지만, 실제로는 `JourneyMap`이 `track.milestone`을 읽지 않아 깃발이 화면에
+      전혀 그려지지 않고 있었다(하단 바만 "구간 시험이나 자유 탐방을 해 보세요"라고
+      말할 뿐). 최종 브랜치 검토가 지목해 Task 19가 닫았다 — 같은 자리에서
+      `themed.milestoneFor`가 `Name: "구간 시험"`을 하드코딩하던 것도 함께(§5 참고,
+      "가장 비싼 교훈"과 같은 패턴). 상세: `.superpowers/sdd/implementation-plan/task-19-report.md`
 - [x] U5.4 `FreeRoamRow` + 칩 탭이 목표를 바꾼다
 - [x] U5.5 `CurrentStationBar` (`resume`/`next` 문구 분기)
 - [x] U6.1 `StationSheet` + `TierRow` + `StepRow`(대화 두 행·자물쇠) + 테스트

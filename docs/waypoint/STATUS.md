@@ -6,6 +6,23 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-09-20
 
+> 🚩 **커리큘럼 v3 P3-B — Task 19: `MilestoneFlag` 배선 + 서버 리터럴 정리 (2026-09-20).**
+> Task 16이 "마무리됐다"고 선언한 뒤에도 정본(`frontend-components.md` §1/§2/§6)이 요구한
+> `MilestoneFlag`(트랙 끝 구간 시험 깃발)를 모바일이 실제로는 그리지 않고 있었다 — 서버는
+> `TrackGroup.Milestone`을 이미 보내고 있었지만(`themed.milestoneFor`), 지도가 그 필드를
+> 읽지 않아 증상이 드러나지 않았을 뿐이다. 같은 자리에서 **`milestoneFor`가 `Name: "구간
+> 시험"`을 하드코딩**하고 있던 것도 함께 닫았다 — 모바일이 그 이름을 읽기 시작하는 순간
+> en/ja/de 화면에 한국어가 찍혔을 결함이라, 최종 브랜치 검토가 둘을 한 항목으로 묶었다.
+> **모바일**: `MilestoneFlag.tsx`(신규, props `{title, state}` — onPress 없음. 누르는 게
+> 아니라 표시다) + `JourneyMap.tsx`가 트랙당 하나만, 서버가 안 보내면 그리지 않는 방식으로
+> 배치. 깃발이 트랙 끝에 붙으며 필요해진 세로 여백은 `MILESTONE_ALLOWANCE`(20+34=54)로
+> `mapHeight`에만 더했다 — `BOTTOM_PAD`(고정 바 몫)는 그대로 둠. **서버**: 엔진은 로케일을
+> 모르므로 번역은 `journey_handler.go`가 정거장/스텝 이름과 같은 자리에서 한다(`i18n.Tr`,
+> 키 `milestone.name`, en만 저작, ja/de는 기존 관례대로 한국어 폴백). 계약(스키마)은 이미
+> `Milestone{Name,State}`를 갖고 있어 변경 없음 — `make contract` 드리프트 0. 모바일
+> +11 tests(151 suites/946)·서버 +4 tests, 전부 성질별로 실제로 깨뜨려 확인 후 원복.
+> 상세: forin 저장소(메인) `.superpowers/sdd/implementation-plan/task-19-report.md`.
+>
 > 🏁 **커리큘럼 v3 P3-B — 여정 지도 Task 16(마지막) 완료. L3·L4.4 닫힘, Build Spec `IMPLEMENTED`.**
 > 스모크에 `/me/journey` · `GET /me/journey/stations/{themeKey}` · `PATCH /me/goal-dept` 단정을 추가했다
 > (목표 부서 조회 · 도장 ≤ 정거장 수 · 목표가 칩에 중복되지 않음 · 정거장 목록엔 잠금 없음(J1) vs 정거장
