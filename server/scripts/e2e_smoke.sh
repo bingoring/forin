@@ -152,6 +152,31 @@ states=$(pj "','.join(sorted({c.get('state','') for c in d.get('track',{}).get('
 printf '%s' "$states" | grep -q "lock" && bad "a station reports lock: $states" || ok "no locked station ($states)"
 nfree=$(pj "len(d.get('freeRoam',[]))")
 [ "${nfree:-0}" -ge 1 ] && ok "free-roam has $nfree department chip(s)" || bad "free-roam is empty"
+gd=$(pj "d.get('goalDept','')")
+[ -n "$gd" ] && ok "goal department resolved ($gd)" || bad "no goal department"
+# 도장이 정거장보다 많을 수는 없다 — passed counts PASSED STATIONS in that dept's own
+# track, so a chip can never report more stamps than it has stations.
+badstamp=$(pj "sum(1 for e in d.get('freeRoam',[]) if e.get('passed',0) > e.get('total',0))")
+[ "${badstamp:-0}" = 0 ] && ok "free-roam stamps never exceed their station counts" || bad "a free-roam chip has passed > total"
+# 목표 부서가 칩에도 있으면 같은 부서가 경로와 칩에 동시에 나온다 — the goal's own
+# track IS the path; summariseFreeRoam is supposed to skip it (journey.go), and this
+# is the only place that claim is checked against the live campus registry rather
+# than a hand-built fixture.
+dup=$(pj "sum(1 for e in d.get('freeRoam',[]) if e.get('dept') == d.get('goalDept'))")
+[ "${dup:-0}" = 0 ] && ok "goal department is not duplicated as a free-roam chip" || bad "goal '$gd' also listed in freeRoam"
+
+# PATCH /me/goal-dept had never been smoke-tested at all — a fake UserRepo in the
+# handler's unit tests trivially echoes back whatever it is told, so it cannot
+# prove either half of this round trip: that the LIVE campus registry rejects a
+# department the lift cannot reach, or that the write actually lands in Postgres
+# and /me/journey reads it back as CHOSEN (inferred=false), not as a coincidence.
+run PATCH /me/goal-dept '{"dept":"BOGUS"}'
+[ "$CODE" = 400 ] && ok "unknown goal department rejected (400)" || bad "bogus goal-dept → $CODE"
+run PATCH /me/goal-dept '{"dept":"ER"}'
+[ "$CODE" = 200 ] && ok "PATCH /me/goal-dept 200" || bad "goal-dept patch → $CODE"
+run GET /me/journey
+gd2=$(pj "d.get('goalDept','')"); inf2=$(pj "str(d.get('inferred'))")
+[ "$gd2" = "ER" ] && [ "$inf2" = "False" ] && ok "journey draws the explicitly chosen goal, not an inferred one ($gd2)" || bad "after setting goal=ER, journey shows goalDept=$gd2 inferred=$inf2"
 
 hd "④b I18N · the request's language reaches the payload"
 # /me/journey's station names are the only surviving end-to-end proof of the locale
@@ -170,6 +195,54 @@ en_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
 runlang pt-BR GET /me/journey
 pt_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
 [ "$pt_name" = "$ko_name" ] && ok "unsupported locale falls back to authored Korean" || bad "pt-BR gave '$pt_name', want '$ko_name'"
+
+# The station SHEET (/me/journey/stations/{themeKey}) is a SEPARATE handler with its
+# own i18n.Tr calls — one for the station's own name (keyed by ThemeKey, same lookup
+# as above) and one per step (keyed by ScenarioID). This is exactly the class of bug
+# this task exists to catch: journey_handler_test.go proves both handlers translate
+# against a hand-built fixture tree, but nothing before this task ever called this
+# route against the REAL catalog on a real server — a forgotten i18n.Tr here would
+# look identical to a working one in every unit test and every response that never
+# opens the sheet.
+theme=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('themeKey','')")
+if [ -n "$theme" ]; then
+  run GET "/me/journey/stations/$theme"
+  nsteps=$(pj "len(d.get('steps',[]))")
+  ko_station=$(pj "d.get('station',{}).get('name','')")
+  [ "$CODE" = 200 ] && [ "${nsteps:-0}" -ge 1 ] && ok "station sheet has $nsteps step row(s)" || bad "station sheet ($theme) → $CODE, steps=$nsteps"
+  runlang en GET "/me/journey/stations/$theme"
+  en_station=$(pj "d.get('station',{}).get('name','')")
+  [ "$CODE" = 200 ] && [ -n "$en_station" ] && [ "$en_station" != "$ko_station" ] \
+    && ok "station sheet name localized: '$ko_station' → '$en_station'" \
+    || bad "station name not localized: ko='$ko_station' en='$en_station' (code=$CODE)"
+  # J2 (자물쇠는 난이도 계단과 스텝에만 붙는다): unlike the station LIST above, where
+  # a `lock` failing to appear is the whole point (J1), a `lock` HERE is correct —
+  # this sheet is exactly where the difficulty ladder is allowed to gate. Checked
+  # against the live catalog because a real run against core-safety-er (41 rows)
+  # found the ladder actually gating most of them (40 lock / 1 now) — a hand-built
+  # fixture of one or two steps would never surface that shape.
+  badstate=$(pj "sum(1 for s in d.get('steps',[]) if s.get('state') not in ('done','now','lock','optional'))")
+  [ "${badstate:-0}" = 0 ] && ok "every step state is in the known set" || bad "an unknown step state leaked through"
+  nnow=$(pj "sum(1 for s in d.get('steps',[]) if s.get('state')=='now')")
+  [ "${nnow:-0}" -le 1 ] && ok "at most one 'now' step in the sheet (now=$nnow)" || bad "now steps=$nnow"
+else
+  bad "no station theme to fetch (goal track is empty)"
+fi
+# The per-STEP translation lookup (keyed by ScenarioID, a second table from the
+# theme's) is checked against a step picked for its KNOWN coverage, not the first
+# one to come back: real content is translated in patches (303 of 20386 scenario
+# ids as of this task — confirmed against the live catalog, not assumed), so most
+# themes' first row is honestly untranslated Korean and asserting on it would fail
+# on content that was never wrong. SCN-ER-00001 is the same fixture the
+# dialogue/briefing checks above already depend on being translated, under its
+# real theme (er-chestpain — NOT core-safety-er, whose first row this task
+# originally (wrongly) assumed it would be).
+run GET /me/journey/stations/er-chestpain
+ko_step=$(pj "next((s['name'] for s in d.get('steps',[]) if s.get('scenarioId')=='SCN-ER-00001'), '')")
+runlang en GET /me/journey/stations/er-chestpain
+en_step=$(pj "next((s['name'] for s in d.get('steps',[]) if s.get('scenarioId')=='SCN-ER-00001'), '')")
+[ "$en_step" = "Chest-pain triage" ] && ok "step name localized (SCN-ER-00001): '$ko_step' → '$en_step'" || bad "step name not localized: ko='$ko_step' en='$en_step'"
+
 # The display language is persisted so a reinstall restores it; kept apart from
 # nativeLang, which tells the AI which language to explain corrections in.
 run PATCH /me/ui-lang '{"uiLang":"en"}'
