@@ -323,10 +323,11 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 // exactly those folds against the real department codes, now that we have them
 // directly instead of re-deriving them from translated text.
 //
-// A department left out of this table (DERM, RAD, MORGUE, GEN, …) falls back to
-// PickMentorNote/PickPhrase's shared pool via the zero value — quieter than a
-// department-specific line, never wrong, and exactly what an unmatched label
-// degraded to before.
+// A department left out of this table (DERM, RAD, MORGUE, GEN, …) gets the zero
+// value, and today every authored note and phrase carries a dept, so the unfiltered
+// pool is empty and the module is simply omitted for them. That is exactly what an
+// unmatched label degraded to before: silence rather than a wrong voice. Author a
+// dept-less entry and it becomes a shared fallback instead, with no code change.
 var deptPoolKey = map[string]string{
 	"ER": "er", "OR": "or", "ICU": "icu", "PEDS": "peds", "PHARMA": "pharma",
 	"WARD": "ward", "SURGWARD": "ward", "ORTHOWARD": "ward",
@@ -373,7 +374,7 @@ outer:
 	if !found {
 		return "", "", nil
 	}
-	dept = deptPoolKey[deptCode] // "" (shared pool) for a code this table does not carry
+	dept = deptPoolKey[deptCode] // "" for a code this table does not carry — see the table's note
 	if fl, ok := campus.Of(deptCode); ok {
 		deptLabel = i18n.Tr(loc, fl.Building+"|"+fl.Label, fl.Where)
 	}
