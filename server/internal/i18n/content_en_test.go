@@ -7,15 +7,18 @@ import (
 
 func TestContentEnglishTitles(t *testing.T) {
 	// A known scenario title translates in English and falls back to the authored Korean
-	// in the base locale and in a language with no catalog yet.
+	// in the base locale, which has no catalog to fall back to.
 	if got := Tr("en", "SCN-ER-00001", "흉통 환자 트리아지"); got != "Chest-pain triage" {
 		t.Fatalf("en title = %q", got)
 	}
 	if got := Tr("ko", "SCN-ER-00001", "흉통 환자 트리아지"); got != "흉통 환자 트리아지" {
 		t.Fatalf("ko must fall back to the authored title, got %q", got)
 	}
-	if got := Tr("ja", "SCN-ER-00001", "흉통 환자 트리아지"); got != "흉통 환자 트리아지" {
-		t.Fatalf("ja has no content catalog yet → Korean fallback, got %q", got)
+	// ja now carries a content catalog too (content_ja.go). This assertion used to pin
+	// the Korean-fallback gap; content_locales_test.go covers ja/de coverage in full, this
+	// one just confirms Tr actually resolves a ja title here rather than falling back.
+	if got := Tr("ja", "SCN-ER-00001", "흉통 환자 트리아지"); got != "胸痛患者のトリアージ" {
+		t.Fatalf("ja title = %q", got)
 	}
 	// An event title is localized too.
 	if got := Tr("en", "EVT-ER-00002", "STEMI 인지·코드 STEMI"); !strings.Contains(got, "STEMI") || strings.ContainsRune(got, '인') {
