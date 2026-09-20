@@ -17,7 +17,10 @@
 // runs. jest.isolateModules() sidesteps this by loading react, react-native,
 // react-test-renderer, expo-secure-store's mock and the hook together, inside one sandboxed
 // require pass, so everything in a given harness agrees on which 'react' it is.
+import { trackMounts } from '@/testing/mountRegistry';
 import type { ExploreMode } from './useExploreMode';
+
+const mount = trackMounts();
 
 type SecureStoreMock = { getItemAsync: jest.Mock; setItemAsync: jest.Mock };
 
@@ -58,6 +61,9 @@ function renderProbe(h: Harness) {
   h.RTR.act(() => {
     tree = h.RTR.create(h.React.createElement(Probe));
   });
+  // Registered so a thrown assertion later in the test still gets this tree torn down
+  // (mountRegistry.ts — a tree left mounted keeps its effects alive into the next suite).
+  mount(tree);
   return { tree, get result() { return last; } };
 }
 
@@ -73,7 +79,6 @@ describe('useExploreMode', () => {
     const h = loadHarness(okStore());
     const { tree, result } = renderProbe(h);
     expect(result.enabled).toBe(true);
-    h.RTR.act(() => { tree.unmount(); });
   });
 
   // 저장소가 막힌 기기(프라이빗 모드 등)에서도 화면이 죽지 않아야 한다: 쓰기가 던져도
@@ -90,7 +95,6 @@ describe('useExploreMode', () => {
       probe.result.setEnabled(false);
     });
     expect(probe.result.enabled).toBe(false);
-    await h.RTR.act(async () => { probe.tree.unmount(); });
   });
 
   // 읽기가 던져도 기본값(켬)으로 떨어질 뿐 화면은 그대로 그려진다.
@@ -104,7 +108,6 @@ describe('useExploreMode', () => {
     // mocked read was actually reached, so this is not a stub that would pass unmounted.
     expect(getItemAsync).toHaveBeenCalledWith('forin.exploreMode');
     expect(probe.result.enabled).toBe(true);
-    await h.RTR.act(async () => { probe.tree.unmount(); });
   });
 
   // A stubbed store that always answers a fixed value would pass every test above without
@@ -124,7 +127,6 @@ describe('useExploreMode', () => {
       probe1.result.setEnabled(false);
     });
     expect(backing['forin.exploreMode']).toBe('0');
-    await first.RTR.act(async () => { probe1.tree.unmount(); });
 
     // A fresh module registry stands in for the next app launch, reading the same
     // device-backed store.
@@ -133,6 +135,28 @@ describe('useExploreMode', () => {
     expect(probe2.result.enabled).toBe(true); // nothing hydrated yet — default still shows
     await second.RTR.act(async () => {}); // flush the hydrate() effect's read
     expect(probe2.result.enabled).toBe(false);
-    await second.RTR.act(async () => { probe2.tree.unmount(); });
+  });
+
+  // This is the actual reason the hook keeps its state at MODULE scope (subscribe via
+  // useSyncExternalStore) instead of a plain useState: a toggle in 나 tab has to reach the
+  // home tab's own mounted instance of this hook without either screen remounting. None of
+  // the tests above exercise that — they each load a fresh harness (a fresh module registry
+  // stands in for a fresh app LAUNCH), so two mounts inside the SAME run were never proven
+  // to see each other. Two independent trees from the SAME harness are two independent
+  // mounted instances of the hook sharing the one module's state, same as index.tsx and
+  // me.tsx do inside one running app.
+  it('a change in one mounted instance reaches another mounted instance in the same run, without remounting either', async () => {
+    const h = loadHarness(okStore());
+    const probeA = renderProbe(h);
+    const probeB = renderProbe(h);
+    expect(probeA.result.enabled).toBe(true);
+    expect(probeB.result.enabled).toBe(true);
+
+    // Toggled from A's instance only — B is never touched, unmounted, or recreated.
+    await h.RTR.act(async () => {
+      probeA.result.setEnabled(false);
+    });
+
+    expect(probeB.result.enabled).toBe(false);
   });
 });
