@@ -14,11 +14,18 @@
 // `JourneyCurriculum`은 계약 유래 타입이라 전 필드가 optional이다(Task 8) — `?.`와 기본값.
 import { Pressable, Text, View } from 'react-native';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbPaper, NbProgSquares, nbText } from '@/components/nb/NbUI';
+import { NbGauge, NbPaper, nbText } from '@/components/nb/NbUI';
 import { deptNbIcon } from '@/data/campus';
 import { nb } from '@/theme/nb';
 import { useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
+
+// Fixed regardless of `total` — a topic with 40 courses draws the exact same box as one
+// with 5. `NbProgSquares` (one box per course) was the bug: it grew with the item count,
+// so a topic with ~24 courses overflowed the row and drew on top of the Resume/Next pill
+// to its right. A percentage bar has no such axis — it always reports 0–100%, so its box
+// never needs to grow.
+const PROGRESS_BAR_W = 64;
 
 function CtaPill({ label }: { label: string }) {
   return (
@@ -63,8 +70,10 @@ export function CurrentStationBar({ station, kind, onPress }: {
             <Text numberOfLines={1} style={nbText.hand(16.5)}>{name}</Text>
             {total > 0 && (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 3 }}>
-                <NbProgSquares done={done} total={total} />
-                <Text style={nbText.body(10, nb.soft)}>{`${done}/${total}`}</Text>
+                <View style={{ width: PROGRESS_BAR_W }}>
+                  <NbGauge value={(done / total) * 100} height={7} />
+                </View>
+                <Text style={nbText.body(10, nb.soft)}>{`${Math.round((done / total) * 100)}%`}</Text>
               </View>
             )}
           </View>

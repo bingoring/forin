@@ -19,6 +19,36 @@ export const RADIUS = { here: 30, next: 26, far: 25, done: 24 } as const;
 // `nb.ink`·`nb.green`·`nb.blue`와 값이 같아 토큰을 그대로 쓴다.
 const AMBER = '#C77E2E';
 
+// The label's own box — deliberately NOT `r * 2 + 56` (the Pressable's width, which the
+// SVG circle also uses). Tying the label to the circle's box is the bug: at `far`'s 25px
+// radius that box is 106px wide, and even a MEDIAN-length English theme name ("Core
+// communication and language", 32 chars — the exact string that showed up truncated as
+// "Core communication an...") does not fit two 13pt hand-font lines at that width.
+// RADIUS is pinned (핸드오프 §5, see above) and stays out of this entirely — the label
+// is free to be wider than the circle beneath it, and `Text` overflowing its Pressable
+// parent is fine here (the parent sets no `overflow: hidden`; RN centres an
+// oversized child on its parent's centre same as it would a same-size one, so the label
+// just spills past the circle's box symmetrically rather than being clipped or shifted).
+//
+// 140 is a ceiling, not a fit-everything number — measured against the actual theme-name
+// catalogs (955 entries, `server/internal/i18n/theme_{en,de}.go`, 2026-09):
+//   en: p50=32 chars, p75=40, p90=47, max=70
+//   de: p50=34 chars, p75=42, p90=53, max=90 (German compounds run longest)
+// A hand-font line at this width holds roughly 19-20 Latin characters, so two lines
+// comfortably cover the median and most of p75 in both languages without truncating.
+// Beyond that — including German's p90+ tail and its 90-char outlier — two lines of any
+// reasonable width still ellipsize; there is no width that fits "Sturzprävention,
+// sichere Mobilisation, Patientenidentifikation und Medikamentensicherheit" on a map
+// node, so the line is drawn here rather than chased further.
+//
+// The other bound is the screen, not the font: stations zig-zag at `SWING` (0.28) of the
+// screen width from centre (JourneyMap.tsx), so a station's centre can sit up to 0.28w
+// off-centre. At the narrowest width this app assumes (360, common Android) that is
+// 100.8px, and half of 140 is 70 — 100.8 + 70 = 170.8, under half the screen (180), so
+// even the far column's label stays on-screen with ~9px to spare. Widening much past 140
+// starts eating that margin.
+const LABEL_WIDTH = 140;
+
 export function Station({ state, label, sub, collab, onPress }: {
   state: StationState;
   label: string;
@@ -72,7 +102,7 @@ export function Station({ state, label, sub, collab, onPress }: {
           )}
         </G>
       </Svg>
-      <Text numberOfLines={2} style={[nbText.hand(13), { textAlign: 'center', marginTop: 2 }]}>
+      <Text numberOfLines={2} style={[nbText.hand(13), { width: LABEL_WIDTH, textAlign: 'center', marginTop: 2 }]}>
         {label}
       </Text>
       {!!sub && (

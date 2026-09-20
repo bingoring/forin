@@ -567,6 +567,19 @@ export function BottomSheet({ visible, onClose, children, header, size = 'conten
             // content-sized sheet learns how tall it is, which is the same moment.
             beginEntry();
           }}
+          // `flex: 1` ONLY for `tall` — a `content` sheet sizes itself off the height THIS
+          // view reports above (`restH` = min(contentH, CONTENT_MAX)), so binding it to a
+          // fixed size here would make it always report back the size it was just given,
+          // and a content sheet could never shrink to its content again. A `tall` sheet's
+          // restH is the constant `TALL_H` regardless of what this view measures, so nothing
+          // reads `contentH` for it — free to fill the fixed height above, which is what a
+          // caller's `children` (e.g. a `ScrollView`, itself given `flex: 1`) needs to
+          // actually become scrollable: without a bounded ancestor, a `ScrollView` just
+          // grows to its content's full height like a plain `View` and never needs to
+          // scroll internally, so anything past the sheet's own clip was simply cut off
+          // and unreachable (StationSheet.tsx, journey map — a 40-step topic never showed
+          // its last rows).
+          style={tall ? { flex: 1 } : undefined}
         >
         <View
           {...pan.panHandlers}

@@ -5,7 +5,7 @@
 // asks for are kept exactly; they are just expressed with react-test-renderer
 // (act/create/findAllByType/findByProps), the repo's own convention.
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
-import { Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { StationSheet } from './StationSheet';
 import { api } from '@/api/client';
 import { t } from '@/i18n';
@@ -36,6 +36,10 @@ function texts(tree: ReturnType<typeof create>): string[] {
 
 function stepRow(root: ReactTestInstance, index: number) {
   return root.findByProps({ testID: `step-row-${index}` });
+}
+
+function flatStyle(s: unknown): Record<string, unknown> {
+  return Array.isArray(s) ? Object.assign({}, ...s.filter(Boolean)) : ((s ?? {}) as Record<string, unknown>);
 }
 
 describe('StationSheet', () => {
@@ -149,5 +153,33 @@ describe('StationSheet', () => {
     });
     expect(tree.root.findAll((n) => n.props?.testID === 'station-sheet-skeleton', { deep: false })).toHaveLength(1);
     await act(async () => { resolve({ station: { name: 'a', done: 0, total: 0, tiers: [] }, steps: [] }); await Promise.resolve(); });
+  });
+
+  // 시트는 `size="tall"`로 고정 높이다(BottomSheet.tsx) — 스텝이 40행을 넘는 주제는 그
+  // 높이를 훌쩍 넘고, 예전에는 목록이 그냥 View라 넘친 몫이 시트의 `overflow: hidden`에
+  // 잘려 나간 채로 돌아올 방법이 없었다. 이 테스트는 그 defect를 구조적으로 잠근다:
+  // ScrollView가 실제로 쓰이는지, 그리고 (GoalDeptSheet.tsx와 달리) `flex: 1`로 스스로
+  // 경계를 갖는지 — 경계가 없으면 ScrollView도 평범한 View와 똑같이 콘텐츠 크기만큼
+  // 커져서 스크롤할 것이 아예 없어진다(파일 상단 주석 참고).
+  it('scrolls a long step list inside a bounded ScrollView, with room for the last row', async () => {
+    (api.station as jest.Mock).mockResolvedValue({
+      station: { themeKey: 'k', name: 'a', done: 0, total: 0, tiers: [] },
+      steps: Array.from({ length: 40 }, (_, i) => (
+        { kind: 'dlg', name: `step-${i}`, state: 'done', pass: 1, passes: 1 }
+      )),
+    });
+    const tree = await mount('k');
+
+    const scrolls = tree.root.findAllByType(ScrollView);
+    expect(scrolls).toHaveLength(1);
+    expect(flatStyle(scrolls[0].props.style).flex).toBe(1);
+
+    // All 40 rows exist — there is really something past the fold for a scroll to reveal.
+    expect(() => stepRow(tree.root, 39)).not.toThrow();
+
+    // Generous clearance past the last row, not just whatever padding happened to already
+    // be there — a StepRow is two lines of text plus an optional tag, taller than the
+    // one-line rows GoalDeptSheet.tsx budgets 24px for.
+    expect(flatStyle(scrolls[0].props.contentContainerStyle).paddingBottom).toBeGreaterThanOrEqual(40);
   });
 });

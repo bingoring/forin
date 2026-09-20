@@ -190,6 +190,27 @@ describe('a tall sheet', () => {
     }
   });
 
+  // A `tall` sheet's content region must be BOUNDED (not just tall) for a `ScrollView`
+  // inside `children` to actually scroll — an unbounded ScrollView just grows to its
+  // content's full height like a plain View and has nothing to scroll internally, so
+  // anything past the sheet's own clip (`overflow: hidden`, restingHeight above) was
+  // simply cut off and unreachable (StationSheet.tsx: a 40-step topic never showed its
+  // last rows). `content`'s wrapper must stay UNbounded, since that view's own measured
+  // height is literally what `restH` is derived from for that size — bounding it here
+  // would make it always report back the size it was just given.
+  it('bounds the content region for a tall sheet, but leaves a content sheet free to size itself', () => {
+    const wrapperStyle = (size: 'content' | 'tall') => {
+      const tree = mount(() => {}, size);
+      const wrapper = tree.root.findAll(
+        (n) => typeof n.type === 'string' && typeof n.props?.onLayout === 'function',
+        { deep: true }
+      )[0];
+      return wrapper.props.style;
+    };
+    expect(wrapperStyle('tall')).toEqual({ flex: 1 });
+    expect(wrapperStyle('content')).toBeUndefined();
+  });
+
   it('springs back to the top from most of the way down', () => {
     const spring = instantSprings();
     const onClose = jest.fn();

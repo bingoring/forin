@@ -30,6 +30,19 @@ function findAllPressables(root: ReactTestInstance) {
   return root.findAll((n) => typeof n.type === 'function' && (n.type as { name?: string }).name === 'Pressable');
 }
 
+/** Every HOST node whose flattened style matches — the same host-only convention
+ *  nbUI.test.tsx uses, since a composite (like `View`) and the host node it wraps both
+ *  carry the same style prop and counting both doubles every result. */
+function styled(root: ReactTestInstance, pred: (s: Record<string, unknown>) => boolean) {
+  return root.findAll((n) => {
+    if (typeof n.type !== 'string') return false;
+    const st = n.props?.style;
+    if (!st) return false;
+    const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
+    return pred(flat);
+  });
+}
+
 const STATION = { themeKey: 't1', name: '중증 응대', dept: 'ER', done: 2, total: 5 } as JourneyCurriculum;
 
 describe('CurrentStationBar', () => {
@@ -87,6 +100,44 @@ describe('CurrentStationBar', () => {
     const sparse = { state: 'here' } as unknown as JourneyCurriculum;
     const tree = mount(<CurrentStationBar station={sparse} kind="resume" onPress={jest.fn()} />);
     expect(findAllPressables(tree.root)).toHaveLength(1);
+    act(() => { tree.unmount(); });
+  });
+
+  // A topic with ~24 courses used to draw one little square per course (`NbProgSquares`),
+  // which overflowed the row and drew over the CTA pill in the real simulator run this
+  // fix is responding to. A percentage bar has no such axis — its box is the same size
+  // whichever `total` comes in — so this asserts the bar's own box does not grow with
+  // `total`, at a count (40) well past the 24 that broke it.
+  it('draws the same progress-bar box for a 40-course topic as a 5-course one', () => {
+    const widthOfBar = (total: number) => {
+      const station = { ...STATION, total, done: Math.min(STATION.done ?? 0, total) } as JourneyCurriculum;
+      const tree = mount(<CurrentStationBar station={station} kind="resume" onPress={jest.fn()} />);
+      // The bar sits in a fixed-size box (a plain host View wrapping NbGauge) — find it
+      // by width rather than by NbGauge's own composite type, since that keeps this test
+      // from tripping over whatever module-registry quirk affects other components here.
+      // `height === undefined` excludes the 22×22 department icon (an RNSVGSvgView with
+      // its own numeric width AND height) — the bar's box sets only `width`.
+      const boxes = styled(tree.root, (s) => typeof s.width === 'number' && s.height === undefined);
+      expect(boxes).toHaveLength(1);
+      const width = boxes[0].props.style.width as number;
+      act(() => { tree.unmount(); });
+      return width;
+    };
+    expect(widthOfBar(40)).toBe(widthOfBar(5));
+  });
+
+  // The whole point of the fixed-width bar: however many courses a topic has, the Resume
+  // pill still renders and is still the thing a tap on this bar activates.
+  it('still renders and responds to a press on the Resume pill when a topic has 40 courses', () => {
+    const many = { ...STATION, done: 10, total: 40 } as JourneyCurriculum;
+    const onPress = jest.fn();
+    const tree = mount(<CurrentStationBar station={many} kind="resume" onPress={onPress} />);
+    expect(texts(tree)).toContain('이어하기');
+    expect(texts(tree)).toContain('25%');
+    const pressables = findAllPressables(tree.root);
+    expect(pressables).toHaveLength(1);
+    act(() => { pressables[0].props.onPress(); });
+    expect(onPress).toHaveBeenCalledTimes(1);
     act(() => { tree.unmount(); });
   });
 });

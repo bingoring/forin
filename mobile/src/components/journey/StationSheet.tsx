@@ -16,7 +16,7 @@
 // default wherever a value is read, and nothing beyond that (over-guarding a field the
 // server always sends just hides the read behind noise).
 import { useEffect, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { api, type JourneyStep, type StationDetail } from '@/api/client';
 import { BottomSheet } from '@/components/BottomSheet';
 import { NbIcon } from '@/components/nb/NbIcon';
@@ -176,7 +176,25 @@ export function StationSheet({ themeKey, onClose, onStepPress }: {
         </View>
       }
     >
-      <View style={{ paddingHorizontal: 14, paddingBottom: 24 }}>
+      {/* `tall` gives the sheet a fixed height (BottomSheet.tsx — `restH` is the constant
+          `TALL_H`), clipped by the sheet's own `overflow: hidden` for its rounded top
+          corners. A plain View here just renders at its full content height and gets cut
+          off past that clip with no way to reach the rest — a topic with 40+ steps only
+          ever showed the first several, with no scroll gesture able to reveal the rest.
+          `ScrollView` is what GoalDeptSheet.tsx already does for the same `tall` sheet.
+          `flex: 1` is required too, and is NOT what GoalDeptSheet does (its dept lists
+          are short enough that the gap never showed): a `ScrollView` given no bounded
+          height just grows to its content's size like a plain `View` and never has
+          anything to scroll — it only becomes scrollable once something in its ancestor
+          chain hands it a fixed size to fill instead. BottomSheet.tsx now gives the
+          content wrapper `flex: 1` for `tall` sheets for exactly this reason; this
+          `flex: 1` is the other half, letting THIS view actually claim that space.
+          `contentContainerStyle`'s `paddingBottom` is deliberately generous (40, not the
+          24 GoalDeptSheet uses) — that sheet's rows are short one-liners, but a StepRow
+          carries two lines of text plus an optional NOW/retry tag, so the last row needs
+          more clearance to fully scroll past the sheet's bottom edge rather than stopping
+          flush with it. */}
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 14, paddingBottom: 40 }}>
         {!detail ? (
           <View testID="station-sheet-skeleton">
             {[-0.4, 0.3, -0.2].map((rot, i) => <SkeletonRow key={i} rot={rot} />)}
@@ -195,7 +213,7 @@ export function StationSheet({ themeKey, onClose, onStepPress }: {
             </NbPaper>
           </>
         )}
-      </View>
+      </ScrollView>
     </BottomSheet>
   );
 }

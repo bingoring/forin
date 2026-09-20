@@ -8,6 +8,7 @@
 // RADIUS 고정값, far에 station-lock 부재 + 누르면 onPress, here에서만 station-flag, done에
 // PASSED 도장.
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
+import { Text } from 'react-native';
 import { RADIUS, Station } from './Station';
 
 function mount(el: React.ReactElement) {
@@ -72,6 +73,41 @@ describe('Station', () => {
   it('stamps PASSED on done', () => {
     const tree = mount(<Station state="done" label="a" onPress={jest.fn()} />);
     expect(allText(tree.toJSON())).toContain('PASSED');
+    act(() => { tree.unmount(); });
+  });
+
+  // The label used to be exactly as wide as the circle's own box (`r * 2 + 56`), which at
+  // `far`'s 25px radius (106px) truncated even a MEDIAN-length English theme name —
+  // "Core communication and language" (32 chars) rendered as "Core communication an...".
+  // The fix decouples the label's width from RADIUS entirely, so it must come out THE
+  // SAME regardless of which state (and therefore which radius) drew the node — a label
+  // that still tracked `size` even loosely would bring the old defect straight back for
+  // whichever state has the smallest circle.
+  it('gives every state the same label width, independent of its radius', () => {
+    const widthOf = (state: 'here' | 'far') => {
+      const tree = mount(<Station state={state} label="a label" onPress={jest.fn()} />);
+      const label = tree.root.findAllByType(Text)[0];
+      const style = label.props.style as (Record<string, unknown> | undefined)[];
+      const flat = Object.assign({}, ...style.filter(Boolean));
+      act(() => { tree.unmount(); });
+      return flat.width as number;
+    };
+    const hereWidth = widthOf('here');
+    const farWidth = widthOf('far');
+    expect(farWidth).toBe(hereWidth);
+    // Wider than the largest box the old `r * 2 + 56` formula ever produced (`here`'s
+    // 116px) — otherwise this would just be the same bug moved to a different state.
+    expect(farWidth).toBeGreaterThan(116);
+  });
+
+  // Two lines is a deliberate ceiling (Station.tsx's comment on `LABEL_WIDTH` — beyond
+  // it, truncation is accepted rather than chased with more width or more lines). This
+  // guards against someone "fixing" a truncated label by dropping the line cap entirely,
+  // which would let one long name push the map's per-row height around unpredictably.
+  it('still caps the label at two lines', () => {
+    const tree = mount(<Station state="far" label="a very long station label indeed" onPress={jest.fn()} />);
+    const label = tree.root.findAllByType(Text)[0];
+    expect(label.props.numberOfLines).toBe(2);
     act(() => { tree.unmount(); });
   });
 });
