@@ -3851,6 +3851,7 @@
   persona: { name: Diane Harmon, ageRange: 60s, sub: "정기 추적 CT를 마치고 병동으로 돌아가길 기다리는 환자", mood: neutral, personality: 결과를 빨리 듣고 싶어함, speakingStyle: 짧고 직접적으로 묻는다, gender: female }
 
 - theme: core-handoff-rad
+  localeBound: [payer]
   title: 정규 외래 환자의 의뢰서와 보험 승인 정보를 검사 전 확인하기
   tagline: "My insurance company called me yesterday saying something wasn't approved yet."
   room: 접수·문진실
@@ -4067,6 +4068,7 @@
   persona: { name: Bruce Guerrero, ageRange: 50s, sub: "예약 시간이 한참 지나도록 검사를 기다리고 있는 환자", mood: angry, personality: 지연에 인내심을 잃어감, speakingStyle: 따지듯 목소리를 높인다, gender: male }
 
 - theme: core-handoff-rad
+  localeBound: [escalation]
   title: 검사 중 의식이 저하된 환자를 병동에 급히 알리고 인계하기
   tagline: "Wait, say that again — his eyes were open five minutes ago?"
   room: CT 검사실
@@ -5565,6 +5567,7 @@
   persona: { name: Bernice Holloway, ageRange: 60s, sub: "이전 검사의 우발 소견이 이번 결과지에서 빠진 것을 알아챈 환자", mood: worried, personality: 세심하게 기록을 비교함, speakingStyle: 근거를 대며 조목조목 묻는다, gender: female }
 
 - theme: rad-incidental-findings
+  localeBound: [payer]
   title: 우발 소견 추적 검사를 예약하려는데 보험 문제로 미루는 환자의 우려를 듣기
   tagline: "I want to do the follow-up, but I'm not sure my insurance will even cover it."
   room: 상담실
@@ -8934,6 +8937,7 @@
   acuity: urgent
   persona: { name: Julia Reilly, ageRange: 40s, sub: "국소마취 상태로 시술 도중 예상 못한 발언을 해 동의 이해 부족이 드러난 환자", mood: anxious, personality: 참았던 불안을 시술 중에 터뜨리는 성격, speakingStyle: 다급하게 말을 끊는다, gender: female }
 - theme: rad-consent-explain
+  localeBound: [law]
   title: 의식이 혼미한 환자를 대신해 대리인의 동의를 급히 받기
   tagline: "Nobody said I'd have to decide this for him — where do I even sign?"
   room: 혈관조영실
@@ -9940,6 +9944,7 @@
   acuity: routine
   persona: { name: Ernest Richter, ageRange: 80s, sub: "검사대에서 혼자 몸을 일으키려다 낙상할 뻔한 환자", mood: worried, personality: 도움 요청을 부끄러워하는 성격, speakingStyle: 머쓱해하며 사과한다, gender: male }
 - theme: rad-geriatric
+  localeBound: [law]
   title: 대리 결정권자인 자녀들의 의견이 서로 달라 검사 동의를 미뤄야 하는 상황을 조율하기
   tagline: "My sister says wait, I say do it now — who's actually in charge here?"
   room: 상담실
@@ -9991,6 +9996,7 @@
   acuity: urgent
   persona: { name: Franklin Raymond, ageRange: 80s, sub: "검사대에서 몸부림치며 강하게 저항하는 중증 인지저하 환자", mood: panic, personality: 낯선 자극에 폭력적으로 반응하는 성격, speakingStyle: 소리 지르며 몸을 뒤튼다, gender: male }
 - theme: rad-geriatric
+  localeBound: [law]
   title: 대리인이 부재한 상태에서 응급으로 필요한 검사의 동의를 어떻게 처리할지 결정하기
   tagline: "No family reachable and he can't consent himself — what's our path here?"
   room: 혈관조영실
@@ -13024,6 +13030,7 @@
   persona: { name: Willard Zapf, ageRange: 60s, sub: "배액관이 완전히 빠진 채 담즙성 복막염 의심 증상을 보이는 환자", mood: pain, personality: 갑작스러운 통증 확산에 크게 놀람, speakingStyle: 숨을 헐떡이며 짧게 말한다, gender: male }
 
 - theme: rad-drainage
+  localeBound: [escalation]
   title: 배액량이 갑자기 급증하며 활력징후가 흔들리는 환자 앞에서 즉시 도움을 요청하기
   tagline: "I feel really lightheaded all of a sudden, something's not right."
   room: 시술 회복실

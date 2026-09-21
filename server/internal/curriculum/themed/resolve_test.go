@@ -93,9 +93,9 @@ func TestResolve_collabWithSurfaced(t *testing.T) {
 // the global CORE track (P2 D-P2-D). A truly universal theme (dept="") still does.
 func TestResolve_perDeptCoreLeadsItsTrack(t *testing.T) {
 	themes := []Theme{
-		{Key: "core-language", Name: "언어장벽·통역", Track: "core", Order: 5},                 // 전역 공통
-		{Key: "core-handoff-icu", Name: "인계·SBAR", Track: "core", Dept: "ICU", Order: 10},   // 부서 코어
-		{Key: "icu-hemodynamics", Name: "혈역학", Track: "depth", Dept: "ICU", Order: 100},     // 부서 심화
+		{Key: "core-language", Name: "언어장벽·통역", Track: "core", Order: 5},                  // 전역 공통
+		{Key: "core-handoff-icu", Name: "인계·SBAR", Track: "core", Dept: "ICU", Order: 10}, // 부서 코어
+		{Key: "icu-hemodynamics", Name: "혈역학", Track: "depth", Dept: "ICU", Order: 100},   // 부서 심화
 	}
 	tags := []ScenarioTag{
 		{ID: "SCN-CORE-1", Title: "통역", Theme: "core-language", Dept: "CORE", Difficulty: 1},
@@ -123,3 +123,41 @@ func TestResolve_perDeptCoreLeadsItsTrack(t *testing.T) {
 }
 
 func boolPtr(b bool) *bool { return &b }
+
+// A learner with zero progress (cleared/attempted empty, latest="") must never see
+// any station as `here` — the engine has nothing to be "here" at yet. Before this
+// guard, a boss step's empty ScenarioID (it has no scenario of its own) matched
+// latest=="" and counterfeited `here` on whichever exam-bearing theme the loop
+// visited last (final review #1).
+func TestResolve_zeroProgressNeverInventsHere(t *testing.T) {
+	themes := []Theme{
+		{Key: "core-sbar", Track: "core", Order: 10},
+		{Key: "er-triage", Track: "depth", Dept: "ER", Order: 20},
+	}
+	tags := []ScenarioTag{
+		{ID: "SCN-CORE-1", Title: "인계1", Theme: "core-sbar", Dept: "CORE", Difficulty: 1},
+		{ID: "SCN-ER-1", Title: "트리아지1", Theme: "er-triage", Dept: "ER", Difficulty: 1},
+	}
+	// Default exam policy is on (no Exam:false set) — each theme's last tier gets a
+	// boss step whose ScenarioID is "", exactly the shape that exposed the bug.
+	cur, _ := Assemble(themes, tags)
+	tracks := Resolve(cur, []string{"ER"}, nil, nil, "")
+
+	resumeCount := 0
+	for _, tr := range tracks {
+		for _, c := range tr.Curricula {
+			if c.State == "here" {
+				t.Fatalf("zero progress must invent no `here` station: %+v", c)
+			}
+			if c.Resume {
+				resumeCount++
+				if c.ThemeKey != "core-sbar" {
+					t.Fatalf("resume must land on the first station in learning order, got %q", c.ThemeKey)
+				}
+			}
+		}
+	}
+	if resumeCount != 1 {
+		t.Fatalf("resume must be exactly 1, got %d", resumeCount)
+	}
+}

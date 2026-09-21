@@ -1320,82 +1320,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/me/curriculum": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Building/floor/curriculum path with per-user progress */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            [key: string]: components["schemas"]["internal_adapters_http.legacyBuilding"][];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/me/curriculum/tracks": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** 커리큘럼 v3 — 주제 기반 여정 트랙 */
-        get: {
-            parameters: {
-                query?: never;
-                header?: never;
-                path?: never;
-                cookie?: never;
-            };
-            requestBody?: never;
-            responses: {
-                /** @description OK */
-                200: {
-                    headers: {
-                        [name: string]: unknown;
-                    };
-                    content: {
-                        "application/json": {
-                            [key: string]: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"][];
-                        };
-                    };
-                };
-            };
-        };
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/me/daily-board": {
         parameters: {
             query?: never;
@@ -1483,6 +1407,49 @@ export interface paths {
                     };
                     content: {
                         "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.Profile"];
+                    };
+                };
+            };
+        };
+        trace?: never;
+    };
+    "/me/goal-dept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** 목표 부서 선택 — 여정이 그릴 트랙 */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            /** @description department code */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.goalDeptReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            [key: string]: unknown;
+                        };
                     };
                 };
             };
@@ -1581,6 +1548,78 @@ export interface paths {
             requestBody?: never;
             responses: never;
         };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/journey": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 여정 지도 — 목표 부서 트랙 + 자유 탐방 */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.JourneyView"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/journey/stations/{themeKey}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 정거장 상세 — 그 주제의 스텝 목록 (지연 로드) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.StationDetail"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -2801,9 +2840,49 @@ export interface components {
             total?: number;
             track?: string;
         };
+        "github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry": {
+            /** @description 부서 코드 — 아이콘과 라벨을 고르는 키 */
+            dept?: string;
+            /** @description 통과한 정거장 수 = 도장 카운트 */
+            passed?: number;
+            total?: number;
+        };
+        /**
+         * @description Guide/Pass/Passes describe the rung. Absent on steps with a single run.
+         * @enum {string}
+         */
+        "github_com_bingoring_forin_server_internal_domain_learning.GuideLevel": "choices" | "free";
+        "github_com_bingoring_forin_server_internal_domain_learning.JourneyView": {
+            freeRoam?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry"][];
+            goalDept?: string;
+            inferred?: boolean;
+            track?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"];
+        };
         "github_com_bingoring_forin_server_internal_domain_learning.Milestone": {
             name?: string;
             /** @description passed | open | closed */
+            state?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.StationDetail": {
+            station?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.CurriculumState"];
+            steps?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.StepState"][];
+        };
+        "github_com_bingoring_forin_server_internal_domain_learning.StepState": {
+            /**
+             * @description Attempted marks a run played but graded below the bar. Set only where it says
+             *     something — never on a done or lock row, where a "tried" badge would contradict.
+             */
+            attempted?: boolean;
+            guide?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.GuideLevel"];
+            /** @description dlg | quiz | event | boss (S4: open string) */
+            kind?: string;
+            name?: string;
+            /** @description Optional marks a bonus quiz: playable any time, gates nothing, uncounted. */
+            optional?: boolean;
+            pass?: number;
+            passes?: number;
+            scenarioId?: string;
+            /** @description State is done | now | lock | optional. There is exactly one `now` per theme. */
             state?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_learning.TierCount": {
@@ -2970,6 +3049,12 @@ export interface components {
             displayName?: string;
             /** @description equipped career title id (may be empty) */
             equippedTitle?: string;
+            /**
+             * @description GoalDept is the department whose track the journey map draws. "" means the
+             *     learner has not chosen one yet, and the server infers a starting point per
+             *     request WITHOUT persisting it — a path picked for you is not a path you chose.
+             */
+            goalDept?: string;
             /** @description MVP: "nurse" */
             job?: string;
             /** @description user's language, e.g. "ko" */
@@ -3147,6 +3232,9 @@ export interface components {
             locked?: boolean;
             reason?: string;
         };
+        "internal_adapters_http.goalDeptReq": {
+            dept?: string;
+        };
         "internal_adapters_http.gradeReq": {
             grade?: string;
         };
@@ -3227,41 +3315,6 @@ export interface components {
             progress?: components["schemas"]["internal_adapters_http.homeProgress"];
             scenarioId?: string;
             title?: string;
-        };
-        "internal_adapters_http.legacyBuilding": {
-            building?: string;
-            floors?: components["schemas"]["internal_adapters_http.legacyFloor"][];
-        };
-        "internal_adapters_http.legacyCurriculum": {
-            building?: string;
-            done?: number;
-            floor?: string;
-            key?: string;
-            name?: string;
-            /** @description name of the current (now) step */
-            next?: string;
-            resume?: boolean;
-            /** @description done | doing | todo */
-            state?: string;
-            steps?: components["schemas"]["internal_adapters_http.legacyStep"][];
-            total?: number;
-            where?: string;
-        };
-        "internal_adapters_http.legacyFloor": {
-            curricula?: components["schemas"]["internal_adapters_http.legacyCurriculum"][];
-            floor?: string;
-            where?: string;
-        };
-        "internal_adapters_http.legacyStep": {
-            attempted?: boolean;
-            guide?: string;
-            kind?: string;
-            name?: string;
-            optional?: boolean;
-            pass?: number;
-            passes?: number;
-            scenarioId?: string;
-            state?: string;
         };
         "internal_adapters_http.loginResp": {
             tokens?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];

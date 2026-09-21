@@ -114,9 +114,6 @@ func NewRouter(d Deps) http.Handler {
 	mux.Handle("GET /me/progress", auth(http.HandlerFunc(ph.get)))
 	mux.Handle("GET /me/stats", auth(http.HandlerFunc(ph.stats)))
 	mux.Handle("GET /me/calendar", auth(http.HandlerFunc(ph.calendar)))
-	mux.Handle("GET /me/curriculum", auth(http.HandlerFunc(ph.curriculum)))
-	// 커리큘럼 v3 여정 트랙 (additive; 라이브 /me/curriculum은 그대로). P2 태깅 전엔 빈 트랙.
-	mux.Handle("GET /me/curriculum/tracks", auth(http.HandlerFunc(ph.curriculumTracks)))
 	mux.Handle("GET /me/missions", auth(http.HandlerFunc(ph.missions)))
 	mux.Handle("POST /me/missions/{id}", auth(http.HandlerFunc(ph.recordMission)))
 	mux.Handle("POST /attempts", auth(http.HandlerFunc(ph.attempt)))
@@ -128,6 +125,12 @@ func NewRouter(d Deps) http.Handler {
 	// order also documents which is which.
 	mux.Handle("GET /me/review/model-answers/summary", auth(http.HandlerFunc(ph.modelAnswerSummary)))
 	mux.Handle("GET /me/review/model-answers", auth(http.HandlerFunc(ph.modelAnswers)))
+
+	// Journey map — one goal-department track + the rest of the campus as chips.
+	jh := &journeyHandler{progress: d.Progress, users: d.Users, journeys: d.Journeys}
+	mux.Handle("GET /me/journey", auth(http.HandlerFunc(jh.journey)))
+	mux.Handle("GET /me/journey/stations/{themeKey}", auth(http.HandlerFunc(jh.station)))
+	mux.Handle("PATCH /me/goal-dept", auth(http.HandlerFunc(jh.setGoalDept)))
 
 	// Access — what this learner may enter (kept out of the cached interior payload).
 	acc := &accessHandler{content: d.Content, progress: d.Progress, users: d.Users}

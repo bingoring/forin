@@ -32,7 +32,7 @@ function code(...p: string[]): string {
 const read = (...p: string[]) => readFileSync(join(APP, ...p), 'utf8');
 
 const SCREENS: [string, string][] = [
-  ['career tab', code('(tabs)', 'campus.tsx')],
+  ['career tab', code('(tabs)', 'journey.tsx')],
   ['profile tab', code('(tabs)', 'me.tsx')],
   ['colleague list', code('colleagues', 'index.tsx')],
   ['colleague detail', code('colleagues', '[id].tsx')],
@@ -51,13 +51,11 @@ test('one abbreviation per number: nothing is labelled "Lv."', () => {
   }
 });
 
-test('the career chip names the language its band is in', () => {
-  const src = code('(tabs)', 'campus.tsx');
-  // A German-track learner's B1 is not an English B1, so the chip cannot hardcode EN
-  // and cannot omit the language either.
-  expect(src).toMatch(/\(targetLang \|\| 'en'\)\.toUpperCase\(\)/);
-  expect(src).toMatch(/if \(prof\?\.targetLang\) setTargetLang\(prof\.targetLang\)/);
-});
+// 'the career chip names the language its band is in' tested campus.tsx's CEFR/language
+// badge — Task 13 replaced that screen with the journey map, which shows a department
+// and a progress trail rather than a level band, so that chip (and this test) retired
+// with it (frontend-components.md §7). The other tests in this file still guard the
+// screens that kept the badge.
 
 test('colleague detail keeps the two levels in two fields', () => {
   const src = code('colleagues', '[id].tsx');

@@ -760,6 +760,7 @@
     speakingStyle: 말끝을 흐리며 조심스럽게 고백한다
     gender: female
 - theme: onco-oral-chemo-adherence
+  localeBound: [payer]
   title: 보험이 끊겨 약을 못 사 먹었다는 환자의 사정을 듣고 대책을 찾기
   tagline: My insurance lapsed last month and I couldn't afford the refill, so I just went without it.
   room: 외래 진료실
@@ -787,6 +788,7 @@
     speakingStyle: 낮은 목소리로 우물쭈물 말한다
     gender: male
 - theme: onco-oral-chemo-adherence
+  localeBound: [payer]
   title: 약값이 부담돼 격일로만 먹었다는 환자와 순응 문제를 짚어보기
   tagline: It's so expensive, I've just been taking it every other day to make the bottle last longer.
   room: 외래 진료실
@@ -949,6 +951,7 @@
     speakingStyle: 미안한 듯 조심스럽게 제안한다
     gender: male
 - theme: onco-oral-chemo-adherence
+  localeBound: [payer]
   title: 약값 지원 프로그램 연계를 위해 사회복지사와 상담을 조율하기
   tagline: I can see him this afternoon if you can get me the drug name and his insurance details beforehand.
   room: 전화(내부)
@@ -2272,6 +2275,7 @@
     speakingStyle: 수치를 먼저 대고 요구를 뒤에 붙인다
     gender: male
 - theme: onco-goals-advance-care
+  localeBound: [law]
   title: 사전연명의료의향서를 처음 듣는 환자에게 서류의 의미와 작성 절차를 차근차근 안내하기
   tagline: Isn't this the kind of paper you sign when you're basically giving up? I'm not there yet.
   room: 상담실
@@ -2353,6 +2357,7 @@
     speakingStyle: 조심스럽지만 궁금한 것은 놓치지 않고 묻는다
     gender: female
 - theme: onco-goals-advance-care
+  localeBound: [law]
   title: 이미 사전연명의료의향서를 작성해 온 환자와 내용을 함께 확인하고 최신 상태로 정리하기
   tagline: I filled this out two years ago at my old doctor's office, does it still count here?
   room: 상담실
@@ -7011,6 +7016,7 @@
     speakingStyle: 권리를 내세우며 단호하게 말한다
     gender: female
 - theme: core-family-onco
+  localeBound: [payer]
   title: 직장을 그만둘지 병원 방문을 줄일지 사이에서 결정하지 못하는 배우자와 현실적인 선택지를 정리하기
   tagline: If I take more leave I lose the insurance. If I keep working I am not here. Tell me what other people do.
   room: 가족 상담실
@@ -8361,6 +8367,7 @@
     speakingStyle: 방금 겪은 일을 그대로 되풀이해 말한다
     gender: female
 - theme: onco-alopecia-body-image
+  localeBound: [payer]
   title: 가발을 처음 맞춰보려는 환자에게 병원에서 안내할 수 있는 자원을 알려주기
   tagline: I have no idea where to even start looking for a wig that doesn't look fake.
   room: 상담실
@@ -12148,6 +12155,7 @@
     speakingStyle: 며칠 안에 정할 수 있냐고 되풀이해 확인한다
     gender: male
 - theme: onco-fertility-preservation
+  localeBound: [payer]
   title: 정자 냉동 보존의 절차와 비용을 처음 듣고 막막해하는 젊은 환자에게 정보를 정리해 주기
   tagline: How much does this even cost, and how long does it take?
   room: 상담실
@@ -12283,6 +12291,7 @@
     speakingStyle: 언제 가능한지부터 다급하게 묻는다
     gender: female
 - theme: onco-fertility-preservation
+  localeBound: [payer]
   title: 보존 비용이 너무 커서 포기하려는 환자에게 지원 프로그램 정보를 함께 찾아보기
   tagline: It's just too expensive, I guess I'll have to let this go.
   room: 상담실
@@ -16073,6 +16082,7 @@
   persona: { name: Russell Viera, ageRange: 60s, sub: "밤마다 잠들지 못해 낮 동안 지쳐 있는 환자", mood: worried, personality: 잠 못 드는 밤이 쌓여 예민해져 있다, speakingStyle: 지친 목소리로 상황을 설명한다, gender: male }
 
 - theme: onco-distress
+  localeBound: [payer]
   title: 항암 비용 지원 프로그램을 처음 듣는 환자에게 신청 절차를 안내하기
   tagline: "There's actually a program that helps pay for this? Nobody mentioned that before."
   room: 상담실
@@ -16217,6 +16227,7 @@
   persona: { name: Yvonne Wickham, ageRange: 40s, sub: "혼자 사는 환자의 퇴원 계획을 함께 다시 세워야 하는 사례관리자", mood: neutral, personality: 계획을 꼼꼼히 재검토하려 한다, speakingStyle: 구체적인 자원과 일정을 짚어가며 확인한다, gender: female }
 
 - theme: onco-distress
+  localeBound: [payer]
   title: 보험이 새 약을 승인하지 않아 좌절한 환자와 이의신청 절차를 함께 준비하기
   tagline: "They just denied it, no explanation, what am I supposed to do now?"
   room: 상담실
@@ -16361,6 +16372,7 @@
   persona: { name: Tina Yarnell, ageRange: 50s, sub: "몇 달째 불면과 불안에 시달리다 처방된 약을 과다 복용한 환자", mood: panic, personality: 충동적으로 행동한 뒤 두려움에 휩싸인다, speakingStyle: 떨리는 목소리로 사실을 털어놓는다, gender: female }
 
 - theme: onco-distress
+  localeBound: [payer]
   title: 보험 상실로 치료가 끊길 위기에 놓인 환자와 응급 대안을 찾기 위해 여러 부서를 동시에 조율하기
   tagline: "If we don't sort this out today, his next dose flat out doesn't happen."
   room: 전화(내부)

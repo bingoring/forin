@@ -655,6 +655,7 @@
   persona: { name: Sandra Cruz, ageRange: 60s, sub: "검사 일정을 잘못 기억하고 있는 환자", mood: neutral, personality: 혼동한 것을 인정하기 어려워함, speakingStyle: 확신에 차서 우기듯 말한다, gender: female }
 
 - theme: gen-ed-to-floor
+  localeBound: [escalation]
   title: 응급실에서 올라오자마자 상태가 급격히 나빠진 환자를 위해 신속대응팀을 부르기
   tagline: "I can't... catch my breath, something's wrong, it wasn't like this downstairs."
   room: 병동 병실
@@ -3036,6 +3037,7 @@
   persona: { name: Molly Elkins, ageRange: 30s, sub: "유명 환자를 취재하려고 방문객으로 위장한 기자", mood: neutral, personality: 목적을 위해 태연하게 접근함, speakingStyle: 친근한 척 접근한다, gender: female }
 # theme: gen-insurance-billing (21 situations)
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 입원비 견적을 묻는 환자에게 원무과 상담 예약을 도와주기
   tagline: "Do you have any idea how much all this is going to cost me?"
   room: 병동 병실
@@ -3054,6 +3056,7 @@
   persona: { name: Lois Ellingson, ageRange: 50s, sub: "입원비가 얼마나 나올지 걱정하는 환자", mood: worried, personality: 비용 걱정이 커서 자꾸 되묻음, speakingStyle: 조심스럽게 돈 얘기를 꺼낸다, gender: female }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 보험사에 제출할 진단서 발급 절차를 환자에게 안내하기
   tagline: "My insurance company wants some kind of medical statement — how do I even get that?"
   room: 원무과
@@ -3090,6 +3093,7 @@
   persona: { name: Phillip Emery, ageRange: 60s, sub: "퇴원을 앞두고 청구서 걱정을 하는 환자", mood: worried, personality: 예상치 못한 청구에 대한 불안이 있음, speakingStyle: 조심스럽게 미리 물어본다, gender: male }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 본인부담금 안내문을 환자에게 나눠주며 문의처를 알려주기
   tagline: "This paper mentions a copay amount — who do I ask if I have questions about it?"
   room: 병동 병실
@@ -3108,6 +3112,7 @@
   persona: { name: Debra Endicott, ageRange: 50s, sub: "본인부담금 안내문을 처음 받아보는 환자", mood: neutral, personality: 안내문을 꼼꼼히 읽는 편, speakingStyle: 문서를 짚어가며 질문한다, gender: female }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 보험 카드 사본이 필요하다는 원무과 요청을 환자에게 전달하기
   tagline: "Didn't I already give them my insurance card at the front desk?"
   room: 병동 병실
@@ -3126,6 +3131,7 @@
   persona: { name: Terry Ennis, ageRange: 40s, sub: "보험 카드 사본 제출을 깜빡한 환자", mood: neutral, personality: 서류 절차를 귀찮아함, speakingStyle: 대수롭지 않게 넘기려 한다, gender: male }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 검사 전 사전승인이 필요한지 원무과에 확인해 보라고 안내하기
   tagline: "Does my insurance actually need to approve this scan first, or can we just go ahead?"
   room: 병동 병실
@@ -3144,6 +3150,7 @@
   persona: { name: Paula Espina, ageRange: 50s, sub: "검사 비용의 사전승인 여부가 궁금한 환자", mood: worried, personality: 갑작스러운 비용 청구를 걱정함, speakingStyle: 확인하듯 재차 묻는다, gender: female }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 보험 적용 여부를 단정하지 않고 재정 상담사에게 연결하기
   tagline: "Just tell me straight — will my insurance cover this or not?"
   room: 병동 병실
@@ -3162,6 +3169,7 @@
   persona: { name: Marvin Eubank, ageRange: 60s, sub: "보험이 이 치료를 적용해줄지 궁금한 환자", mood: anxious, personality: 확답을 듣고 싶어함, speakingStyle: 재촉하듯 묻는다, gender: male }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 보험이 바뀐 사실을 뒤늦게 말한 환자를 원무과로 안내하기
   tagline: "I should have said this earlier — my insurance actually changed last month."
   room: 병동 병실
@@ -3198,6 +3206,7 @@
   persona: { name: Dennis Ferguson, ageRange: 50s, sub: "예상보다 높은 청구서를 받고 화가 난 환자", mood: angry, personality: 비용 문제에 매우 민감함, speakingStyle: 따지듯 목소리를 높인다, gender: male }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 타 병원 진료 기록 때문에 보험 처리가 지연된 상황을 설명하기
   tagline: "Why is this taking so long? Nobody's explained why my claim is stuck."
   room: 병동 병실
@@ -3216,6 +3225,7 @@
   persona: { name: Denise Fields, ageRange: 50s, sub: "보험 처리 지연으로 불안해하는 환자", mood: worried, personality: 지연 사유를 이해하지 못해 답답해함, speakingStyle: 이유를 자꾸 캐묻는다, gender: female }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 본인부담금을 대신 물어보는 가족에게 환자 동의 없이는 답할 수 없다고 설명하기
   tagline: "Just tell me how much his copay is — I'm the one paying for it anyway."
   room: 병동 병실
@@ -3234,6 +3244,7 @@
   persona: { name: Christian Finch, ageRange: 40s, sub: "아버지의 본인부담금을 대신 물어보는 아들", mood: neutral, personality: 아버지를 대신 챙기려는 마음이 큼, speakingStyle: 당연하다는 듯 요청한다, gender: male }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 응급실 경유 입원의 보험 적용 차이를 원무과 상담으로 넘기기
   tagline: "Does it cost more because I came in through the ER first?"
   room: 병동 병실
@@ -3252,6 +3263,7 @@
   persona: { name: Shirley Fisher, ageRange: 50s, sub: "응급실을 거쳐 입원해 보험 적용이 궁금한 환자", mood: worried, personality: 응급실과 입원 비용 차이를 이해하지 못함, speakingStyle: 혼란스러워하며 질문한다, gender: female }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 실비보험 서류에 서명을 요청하는 환자에게 담당 부서를 안내하기
   tagline: "My private insurance needs this form signed by someone here — who does that?"
   room: 원무과
@@ -3270,6 +3282,7 @@
   persona: { name: Jerry Fitzgerald, ageRange: 50s, sub: "실비보험 서류 처리를 문의하는 환자", mood: neutral, personality: 서류 절차를 정확히 알고 싶어함, speakingStyle: 조목조목 확인하며 묻는다, gender: male }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 이중 보험 가입자가 어느 쪽이 우선인지 물어와 원무과로 연결하기
   tagline: "I've got two insurance plans — which one actually pays first?"
   room: 원무과
@@ -3342,6 +3355,7 @@
   persona: { name: Andrea Flynn, ageRange: 50s, sub: "잘못된 청구서를 받고 크게 화가 난 환자", mood: angry, personality: 억울함을 강하게 표현함, speakingStyle: 격앙된 목소리로 항의한다, gender: female }
 
 - theme: gen-insurance-billing
+  localeBound: [payer]
   title: 보험 거절 통보를 받은 환자가 불안해하자 항소 절차를 안내하기
   tagline: "They denied my claim — does that mean I have to pay for everything myself now?"
   room: 상담실
@@ -3630,6 +3644,7 @@
   persona: { name: Renee Fuentes, ageRange: 40s, sub: "후속 예약을 거부하는 자의 퇴원 환자", mood: neutral, personality: 병원 재방문에 부담을 느낌, speakingStyle: 단호하게 거절한다, gender: female }
 
 - theme: gen-ama-discharge
+  localeBound: [payer]
   title: 보험 문제로 자의 퇴원하려는 환자에게 원무과 상담을 먼저 연결하기
   tagline: "Forget it, I'm leaving before this insurance mess costs me more!"
   room: 병동 병실
@@ -4931,6 +4946,7 @@
 
 # theme: gen-uninsured-support (21)
 - theme: gen-uninsured-support
+  localeBound: [payer]
   title: 보험이 없다는 환자에게 병원 자선 진료 제도를 소개하기
   tagline: "I don't have insurance — how bad is this going to be for me financially?"
   room: 상담실
@@ -5003,6 +5019,7 @@
   persona: { name: Amanda Hooper, ageRange: 30s, sub: "퇴원 후 갈 곳이 마땅치 않은 환자", mood: neutral, personality: 퇴원 후 계획이 막막함, speakingStyle: 담담하게 묻는다, gender: female }
 
 - theme: gen-uninsured-support
+  localeBound: [payer]
   title: 메디케이드 신청 방법을 묻는 환자를 담당 창구로 안내하기
   tagline: "I keep hearing about Medicaid, but I don't actually know how to apply for it."
   room: 원무과
@@ -5075,6 +5092,7 @@
   persona: { name: Kathleen Houston, ageRange: 40s, sub: "이민 신분 노출을 걱정해 지원을 꺼리는 환자", mood: anxious, personality: 신분 노출에 대한 두려움이 큼, speakingStyle: 말을 아끼며 조심한다, gender: female }
 
 - theme: gen-uninsured-support
+  localeBound: [payer]
   title: 노숙 상태인 환자에게 주소 없이도 신청 가능한 지원 제도를 안내하기
   tagline: "I don't have an address, so I figured none of these programs would take me anyway."
   room: 상담실
@@ -5201,6 +5219,7 @@
   persona: { name: Larry Hunt, ageRange: 60s, sub: "어느 지원 제도가 유리한지 궁금한 환자", mood: neutral, personality: 꼼꼼하게 비교하고 싶어함, speakingStyle: 신중하게 질문한다, gender: male }
 
 - theme: gen-uninsured-support
+  localeBound: [payer]
   title: 치료를 포기하겠다는 무보험 환자를 붙잡고 재정 상담을 급히 연결하기
   tagline: "Just forget the treatment — I can't afford any of this anyway."
   room: 병동 병실
@@ -5255,6 +5274,7 @@
   persona: { name: Janet Huxley, ageRange: 50s, sub: "응급 수술 청구서를 받고 충격받은 환자의 아내", mood: panic, personality: 갑작스러운 청구서에 패닉에 빠짐, speakingStyle: 떨리는 목소리로 말한다, gender: female }
 
 - theme: gen-uninsured-support
+  localeBound: [payer]
   title: 지원금이 끊겨 퇴원약을 거부하는 환자를 사회복지사와 함께 설득하기
   tagline: "Forget it, I'm not taking anything home if I can't even afford the last batch."
   room: 병동 병실
@@ -5273,6 +5293,7 @@
   persona: { name: Dennis Ibarra, ageRange: 60s, sub: "지원금이 끊겨 퇴원약을 거부하는 환자", mood: angry, personality: 반복된 지원 중단에 지쳐 화가 남, speakingStyle: 거칠게 거부한다, gender: male }
 
 - theme: gen-uninsured-support
+  localeBound: [payer]
   title: 야간에 갑자기 방문한 무보험 환자 가족에게 응급 지원 절차를 안내하기
   tagline: "I know it's the middle of the night, but is anyone even around to help with this?"
   room: 가족 대기실
@@ -5580,6 +5601,7 @@
   persona: { name: Kelly Gilroy, ageRange: 70s, sub: "퇴원 지침을 하나도 기억 못 하는 환자", mood: anxious, personality: 정보를 잘 기억하지 못해 위축됨, speakingStyle: 미안해하며 되묻는다, gender: female }
 
 - theme: gen-discharge-followup-call
+  localeBound: [escalation]
   title: 전화를 받은 환자가 호흡곤란을 호소할 때 즉시 응급 서비스 신고를 안내하기
   tagline: "I... I can't really catch my breath right now, it's getting hard to talk."
   room: 전화(병원 내)
@@ -5652,6 +5674,7 @@
   persona: { name: Catherine Glasser, ageRange: 50s, sub: "아버지가 이미 사망했다고 알려온 딸", mood: sad, personality: 슬픔 속에서도 침착하게 말하려 함, speakingStyle: 낮고 담담한 목소리, gender: female }
 
 - theme: gen-discharge-followup-call
+  localeBound: [escalation]
   title: 전화 통화 중 환자가 갑자기 응답 없이 조용해질 때 즉시 응급 대응을 요청하기
   tagline: "I feel really dizzy all of a sudden, I don't know why, I—"
   room: 전화(병원 내)
@@ -5906,6 +5929,7 @@
   persona: { name: Sandra Leblanc, ageRange: 60s, sub: "의사의 설명을 절반도 이해하지 못한 아내", mood: worried, personality: 의학 용어에 위축됨, speakingStyle: 조심스럽게 되묻는다, gender: female }
 
 - theme: core-family-gen
+  localeBound: [payer]
   title: 검사 비용과 보험 적용 여부를 묻는 가족을 원무과로 안내하기
   tagline: "Is this scan going to be covered, or are we looking at a huge bill?"
   room: 병동 병실
@@ -5978,6 +6002,7 @@
   persona: { name: Ruth Lockhart, ageRange: 60s, sub: "위중한 진단 소식에 충격받아 화를 내는 아내", mood: angry, personality: 충격과 분노가 뒤섞임, speakingStyle: 소리를 높이며 따진다, gender: female }
 
 - theme: core-family-gen
+  localeBound: [law]
   title: 대리 의사결정자가 누구인지 가족들이 서로 다투는 상황에서 규정에 따라 확인하기
   tagline: "I'm her son — I should be the one making these decisions, not my sister."
   room: 상담실
@@ -6772,6 +6797,7 @@
   persona: { name: Frances Lindstrom, ageRange: 60s, sub: "정식 항의를 제기하려는 환자", mood: angry, personality: 공식적인 절차를 요구함, speakingStyle: 정색하며 요구한다, gender: female }
 
 - theme: gen-noise-privacy
+  localeBound: [law]
   title: 옆 침상 환자의 통화 내용을 엿들은 환자가 소문을 퍼뜨릴 조짐을 보일 때 개입하기
   tagline: "So is it true what I heard about her being pregnant? Just curious."
   room: 다인실
@@ -6953,6 +6979,7 @@
   persona: { name: Samantha Jessup, ageRange: 30s, sub: "가정폭력 정황이 의심되는 환자", mood: anxious, personality: 불안하지만 말하기를 주저함, speakingStyle: 머뭇거리며 조심스럽게 말한다, gender: female }
 
 - theme: gen-social-work-referral
+  localeBound: [law]
   title: 치매 증상이 있는데 돌봐줄 가족이 없는 환자를 위해 후견 절차를 문의하기
   tagline: "If there's really no next of kin, we need to start the guardianship process now, not later."
   room: 간호사 스테이션
@@ -7226,6 +7253,7 @@
   persona: { name: Grace Nolan, ageRange: 60s, sub: "예약 입원으로 처음 병원 등록 창구를 찾은 환자", mood: neutral, personality: 차분하고 협조적임, speakingStyle: 짧고 명확하게 답한다, gender: female }
 
 - theme: gen-admission-registration
+  localeBound: [law, payer]
   title: 등록 서류에 서명이 필요한 항목을 환자에게 하나씩 안내하기
   tagline: "There are so many pages here — what am I actually signing?"
   room: 입원 수속 창구
@@ -7406,6 +7434,7 @@
   persona: { name: Katherine Ochoa, ageRange: 40s, sub: "거동이 불편한 아버지를 대신해 서류를 처리하려는 딸", mood: worried, personality: 아버지를 보호하려는 마음이 강함, speakingStyle: 서둘러 결론을 내리려 한다, gender: female }
 
 - theme: gen-admission-registration
+  localeBound: [payer]
   title: 이름 철자가 여권과 보험 서류에서 다르게 표기된 것을 확인해 정정 요청하기
   tagline: "My passport spells it with a 'ph' but the insurance card has an 'f' — which one do you need?"
   room: 원무과
@@ -7460,6 +7489,7 @@
   persona: { name: Roy Nichols, ageRange: 50s, sub: "예약 시간보다 오래 기다려 조급해진 환자", mood: worried, personality: 시간에 예민함, speakingStyle: 초조하게 시계를 자주 본다, gender: male }
 
 - theme: gen-admission-registration
+  localeBound: [law]
   title: HIPAA 개인정보 고지서를 환자가 이해하지 못해 다시 설명하기
   tagline: "This privacy form is full of legal words — what does it actually mean for me?"
   room: 입원 수속 창구
@@ -7568,6 +7598,7 @@
   persona: { name: Wayne Oswald, ageRange: 30s, sub: "제공한 신원 정보가 서류와 맞지 않는 환자", mood: angry, personality: 캐물으면 방어적으로 변함, speakingStyle: 얼버무리며 회피한다, gender: male }
 
 - theme: gen-admission-registration
+  localeBound: [payer]
   title: 보험 미가입 환자가 등록을 거부하며 응급 상황에서 갈등이 생기는 것을 조율하기
   tagline: "I can't afford this and I'm not signing anything until someone tells me what it'll cost."
   room: 응급실 접수 창구
@@ -8435,6 +8466,7 @@
   persona: { name: Edward Noel, ageRange: 60s, sub: "아들이 대신 나서려 하지만 스스로 결정하고 싶어하는 환자", mood: neutral, personality: 독립적이고 자존심이 강함, speakingStyle: 단호하게 자기 의사를 밝힌다, gender: male }
 
 - theme: gen-surrogate-decision-maker
+  localeBound: [law]
   title: 사전연명의료의향서 유무를 입원 수속 중에 확인하기
   tagline: "A living will? I think I signed something like that years ago, but I'm not sure where it is."
   room: 입원 수속 창구
@@ -8453,6 +8485,7 @@
   persona: { name: Judy Nettles, ageRange: 70s, sub: "예전에 작성한 사전의향서의 소재를 기억 못 하는 환자", mood: neutral, personality: 기억이 가물가물함, speakingStyle: 생각해 내려 애쓰며 말한다, gender: female }
 
 - theme: gen-surrogate-decision-maker
+  localeBound: [law]
   title: 사전 지정 대리인이 없는 환자를 위해 주(州) 순위에 따라 배우자를 우선 확인하기
   tagline: "I'm his wife, so obviously I'm the one who decides, right?"
   room: 병동 병실
@@ -8525,6 +8558,7 @@
   persona: { name: Sandra Okafor, ageRange: 50s, sub: "법적 배우자와 별거 중인 환자의 오랜 동거인", mood: angry, personality: 자신의 역할을 인정받고 싶어함, speakingStyle: 서운함을 감추지 못하고 항변한다, gender: female }
 
 - theme: gen-surrogate-decision-maker
+  localeBound: [law]
   title: 환자의 의식이 갑자기 흐려져 사전 지정 대리인 서류를 다시 찾아 확인하기
   tagline: "His mental status just dropped fast — do we have his proxy paperwork pulled up?"
   room: 간호사 스테이션
@@ -8651,6 +8685,7 @@
   persona: { name: Donna O'Shea, ageRange: 50s, sub: "어머니를 매일 간병했지만 대리인으로 지정되지 못한 딸", mood: sad, personality: 서운함과 억울함이 큼, speakingStyle: 눈물을 참으며 항변한다, gender: female }
 
 - theme: gen-surrogate-decision-maker
+  localeBound: [law]
   title: 응급 상황에서 대리인을 찾지 못해 차순위자를 급히 확인해야 하는 상황을 처리하기
   tagline: "Surgery's holding for consent and we still can't reach anyone on the list — what do we do?"
   room: 간호사 스테이션
@@ -9085,6 +9120,7 @@
   persona: { name: Alexander Prescott, ageRange: 40s, sub: "모니터를 반복해서 뽑아버리는 환자", mood: angry, personality: 통제받는 것을 싫어함, speakingStyle: 반항적으로 대꾸한다, gender: male }
 
 - theme: gen-unit-orientation
+  localeBound: [escalation]
   title: 회진을 기다리다 상태가 급격히 나빠진 환자를 발견해 즉시 대응 체계를 가동하기
   tagline: "I don't feel right at all — something's changed just in the last few minutes."
   room: 병동 병실
@@ -10060,6 +10096,7 @@
   persona: { name: Tyler Roth, ageRange: 40s, sub: "언어 장벽으로 내용을 다 이해하지 못한 채 서명하려는 환자", mood: worried, personality: 신뢰만으로 넘어가려는 경향, speakingStyle: 어색한 영어로 대충 끄덕인다, gender: male }
 
 - theme: gen-consent-witness
+  localeBound: [law]
   title: 미성년 환자의 동의서에 부모 서명이 필요한지 확인해 절차를 조율하기
   tagline: "I'm seventeen — can't I just sign this myself?"
   room: 병동 병실
@@ -11469,6 +11506,7 @@
   persona: { name: Nicole Solis, ageRange: 50s, sub: "통증을 참는 것이 당연하다고 여겨온 환자", mood: neutral, personality: 참는 것을 미덕으로 여겨옴, speakingStyle: 담담하게 참아온 이야기를 한다, gender: female }
 
 - theme: gen-patient-rights
+  localeBound: [law]
   title: 사전연명의료의향서 작성 여부를 묻고 관련 서류를 안내하기
   tagline: "Nobody's ever asked me about that kind of paperwork before — is it something I have to do?"
   room: 병동 병실

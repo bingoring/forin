@@ -912,6 +912,7 @@
   acuity: routine
   persona: { name: Gordon Pruett, ageRange: 60s, sub: "베타차단제 복용 심장 재활 환자", mood: neutral, personality: 관찰력이 좋음, speakingStyle: 차분히 관찰을 말한다, gender: male }
 - theme: rehab-cardiac
+  localeBound: [escalation]
   title: 가족에게 응급 상황 대응과 CPR 자원을 안내한다
   tagline: "If his heart stops at home, would I even know what to do?"
   room: 환자 병실
@@ -2761,6 +2762,7 @@
   acuity: moderate
   persona: { name: Roland Beck, ageRange: 60s, sub: "만성 호흡기 재활 환자", mood: sad, personality: 무기력하고 고립됨, speakingStyle: 체념하듯 말한다, gender: male }
 - theme: rehab-pulmonary
+  localeBound: [escalation]
   title: 재택 호흡 운동과 악화 대응 계획을 세운다
   tagline: "Once I'm home alone, how do I know what to do if it gets bad?"
   room: 상담실
@@ -2796,6 +2798,7 @@
   persona: { name: Gordon Pratt, ageRange: 70s, sub: "COPD 급성 악화 환자", mood: panic, personality: 겁에 질리고 다급함, speakingStyle: 끊어지는 숨으로 외친다, gender: male }
   collabWith: ICU
 - theme: rehab-pulmonary
+  localeBound: [escalation]
   title: 청색증과 의식 저하로 호흡부전을 의심한다
   tagline: "I'm so... tired... I can't stay awake."
   room: 환자 병실
@@ -3089,6 +3092,7 @@
   acuity: moderate
   persona: { name: Angela Sorenson, ageRange: 40s, sub: "환자의 딸", mood: worried, personality: 책임감 있고 열성적임, speakingStyle: 적극적으로 묻는다, gender: female }
 - theme: rehab-community-reentry
+  localeBound: [payer]
   title: 재정 보험 장애 등록 자원을 연계한다
   tagline: "I don't know how I'll pay for any of this care."
   room: 상담실
@@ -4721,6 +4725,7 @@
   persona: { name: Milton Frye, ageRange: 70s, sub: "중증 하지 부종 환자", mood: worried, personality: 상처에 놀람, speakingStyle: 곤혹스레 말한다, gender: male }
 
 - theme: rehab-edema
+  localeBound: [escalation]
   title: DVT가 폐색전(호흡곤란 흉통)으로 진행하는 징후를 응급 보고한다
   tagline: "My leg was swollen and now my chest hurts and I can't breathe."
   room: 환자 병실
@@ -4865,6 +4870,7 @@
   persona: { name: Andre Boucher, ageRange: 40s, sub: "환자 아들이자 돌봄자", mood: anxious, personality: 잘하려는 부담이 큼, speakingStyle: 확인받고 싶어한다, gender: male }
 
 - theme: rehab-caregiver-training
+  localeBound: [escalation]
   title: 질식이나 낙상 등 응급 상황 대응을 교육한다
   tagline: "What am I supposed to do if she falls or starts choking at home?"
   room: 환자 병실
@@ -8286,6 +8292,7 @@
   acuity: urgent
   persona: { name: Angela Brooks, ageRange: 40s, sub: "재활 병동 간호 책임자", mood: worried, personality: 원칙적이고 침착함, speakingStyle: 갈등을 안전 원칙으로 정리한다, gender: female }
 - theme: rehab-interdisciplinary
+  localeBound: [escalation]
   title: 치료 중 발생한 응급 상황을 팀과 공동 대응한다
   tagline: "He collapsed mid-session — I need everyone here now!"
   room: 재활치료실
@@ -8554,6 +8561,7 @@
   persona: { name: Latoya Simmons, ageRange: 40s, sub: "척수손상 재활 환자", mood: neutral, personality: 의욕적이고 독립적, speakingStyle: 적극적으로 시도한다, gender: female }
 
 - theme: rehab-sci-dysreflexia
+  localeBound: [escalation]
   title: 가족에게 AD 응급 대응(앉히기 유발원 제거)을 교육한다
   tagline: "If his head starts pounding at home, what am I supposed to do?"
   room: 가족 상담실
@@ -9384,6 +9392,7 @@
   persona: { name: Yolanda Price, ageRange: 40s, sub: "재활병동 동료 간호사", mood: worried, personality: 신중하고 예방적, speakingStyle: 계획을 제안한다, gender: female }
 
 - theme: rehab-acute-deterioration
+  localeBound: [escalation]
   title: 패혈증 급성 악화(저혈압 의식저하)로 신속대응팀을 부른다
   tagline: "His pressure crashed and he's barely responding — I'm calling the rapid response team."
   room: 환자 병실
@@ -9478,6 +9487,7 @@
   persona: { name: Nathan Pope, ageRange: 50s, sub: "재활병동 입원 환자", mood: panic, personality: 혼미하고 불안정, speakingStyle: 어눌하게 말한다, gender: male }
 
 - theme: rehab-acute-deterioration
+  localeBound: [escalation]
   title: 심정지 발견 시 코드 블루와 CPR을 시작한다
   tagline: "He's unresponsive with no pulse — call a code blue and start compressions now."
   room: 환자 병실
@@ -11086,6 +11096,7 @@
   acuity: routine
   persona: { name: Denise Fuller, ageRange: 50s, sub: "환자의 아내이자 돌봄자", mood: worried, personality: 지원을 구함, speakingStyle: 도움을 청한다, gender: female }
 - theme: rehab-discharge-planning
+  localeBound: [payer]
   title: 보험과 비용 문제를 사회복지사와 조율한다
   tagline: "The family is worried they can't afford the home equipment and visits."
   room: 상담실
@@ -12056,6 +12067,7 @@
   persona: { name: Curtis Lang, ageRange: 60s, sub: "슬관절 치환 환자", mood: worried, personality: 기운이 없어 처짐, speakingStyle: 어지럽다고 말한다, gender: male }
 
 - theme: rehab-ortho-jointreplace
+  localeBound: [escalation]
   title: 지방색전 의심(호흡곤란 의식변화 점상출혈)을 응급 보고한다
   tagline: "Breathlessness, confusion, and a rash together point to fat embolism, so I'm reporting this emergently."
   room: 재활 치료실
@@ -12729,6 +12741,7 @@
   persona: { name: Nathan Cole, ageRange: 40s, sub: "동료 간호사", mood: neutral, personality: 협력적임, speakingStyle: 계획을 제안하며 조율한다, gender: male }
 
 - theme: core-handoff-rehab
+  localeBound: [escalation]
   title: 전동 직후 급성 악화(활력징후 붕괴)를 발견해 대응한다
   tagline: "Her vitals are crashing right after transfer, so I'm escalating and need help now."
   room: 병실

@@ -4,10 +4,10 @@ import (
 	"context"
 	"github.com/bingoring/forin/server/internal/i18n"
 	"net/http"
-	"strings"
 	"sync"
 	"time"
 
+	"github.com/bingoring/forin/server/internal/domain/campus"
 	"github.com/bingoring/forin/server/internal/domain/colleague"
 	"github.com/bingoring/forin/server/internal/domain/home"
 	"github.com/bingoring/forin/server/internal/domain/learning"
@@ -133,9 +133,10 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 
 	// Independent reads, run together — the slowest one sets the latency, not the sum.
 	var (
-		wg        sync.WaitGroup
-		mu        sync.Mutex
-		curricula []legacyCurriculum
+		wg   sync.WaitGroup
+		mu   sync.Mutex
+		jrny learning.Journey
+		lp   learning.Progress
 	)
 	run := func(f func()) { wg.Add(1); go func() { defer wg.Done(); f() }() }
 
@@ -172,13 +173,15 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 	})
 
 	run(func() {
-		// One read of the learner's state, then the SAME presentation the career tab
-		// gets — the home card and the career hero must not drift apart, and they
-		// cannot when both read one resolution instead of each walking the journey.
+		// One read of the learner's state, then the SAME port the career tab reads —
+		// the home card and the career hero must not drift apart, and they cannot
+		// when both read Resume/Tracks/Steps directly instead of each walking a
+		// presenter of their own (L4.4 retired the campus presenter).
 		p := learningProgress(ctx, h.progress, uid)
-		cs := legacyCurricula(journeyFor(ctx, h.journeys), p, locale)
+		j := journeyFor(ctx, h.journeys)
 		mu.Lock()
-		curricula = cs
+		lp = p
+		jrny = j
 		// Derived from cleared content rather than from XP or level: those move for
 		// reasons other than finishing something, so a user who earned a little XP and
 		// stopped would stop counting as new while still never having completed a step.
@@ -237,8 +240,8 @@ func (h *homeHandler) get(w http.ResponseWriter, r *http.Request) {
 
 	wg.Wait()
 
-	// Derived — needs the curriculum result, so it happens after the fan-in.
-	dept, deptLabel, today := currentStep(curricula, i18n.FromContext(r.Context()))
+	// Derived — needs the journey resolution, so it happens after the fan-in.
+	dept, deptLabel, today := currentStep(jrny, lp, locale)
 	resp.TodayOne = today
 	resp.Done = today == nil // no next step today → the rest card
 	if deptLabel != "" {
@@ -308,60 +311,109 @@ func (h *homeHandler) loadColleagues(ctx context.Context, uid string, mu *sync.M
 	mu.Unlock()
 }
 
-// displayName is a placeholder until profiles carry a nickname: the UI needs
-// something stable and non-identifying, so we use a short id prefix.
-// currentStep finds the curriculum to continue and its active step. Returns
+// deptPoolKey maps a department's engine code to the content-authored pool key
+// server/content/home/{mentor-notes,phrases}.yaml were written against. Those
+// files only carry six keys — er, or, icu, peds, pharma, ward — because they
+// predate the department code being readable here at all: the retired campus
+// presenter derived this key by pattern-matching the RENDERED floor label
+// ("병동", "중환자", "소아", …), which happened to fold several departments that
+// share a floor's wording into one voice — a surgical or orthopedic ward reads
+// "병동" just like the medical one; NICU/PICU share "중환자"; the women's-and-kids
+// outpatient clinic shares "소아" with the children's ward. This table reproduces
+// exactly those folds against the real department codes, now that we have them
+// directly instead of re-deriving them from translated text.
+//
+// A department left out of this table (DERM, RAD, MORGUE, GEN, …) gets the zero
+// value and reads the shared pool — the fourteen dept-less entries authored as
+// ph-common-* and mn-common-* — which is quieter than a department-specific line,
+// never wrong, and exactly what an unmatched label degraded to before.
+var deptPoolKey = map[string]string{
+	"ER": "er", "OR": "or", "ICU": "icu", "PEDS": "peds", "PHARMA": "pharma",
+	"WARD": "ward", "SURGWARD": "ward", "ORTHOWARD": "ward",
+	"PSYCH": "ward", "ONCO": "ward", "HOSPICE": "ward", "GERI": "ward",
+	"NICU": "icu", "PICU": "icu",
+	"WOMENKIDS": "peds",
+}
+
+// currentStep finds the resume target and its active step directly off the journey
+// port (L4.4 — the campus presenter that used to sit between them is gone). Returns
 // ("", "", nil) when everything is finished — the caller then shows the rest card
 // instead of inventing a task.
 //
-// It reads the Resume flag rather than searching for the first unfinished
-// curriculum itself: the career tab draws its hero from the same flag, and two
-// screens computing "what's next" separately is how they end up disagreeing.
-func currentStep(curricula []legacyCurriculum, loc string) (dept, deptLabel string, one *homeTodayOne) {
-	for _, c := range curricula {
-		if !c.Resume {
-			continue
-		}
-		deptLabel = c.Where
-		dept = deptTag(c.Where)
-		for _, st := range c.Steps {
-			if st.State == "now" {
-				return dept, deptLabel, &homeTodayOne{
-					Chapter:    c.Where + " · " + c.Name,
-					Title:      i18n.Tr(loc, st.ScenarioID, st.Name),
-					Kind:       st.Kind,
-					ScenarioID: st.ScenarioID,
-					Progress:   &homeProgress{Done: c.Done, Total: c.Total},
-				}
+// It reads Resume rather than searching Tracks for the first unfinished theme
+// itself: the career tab draws its hero from the same port, and two screens
+// computing "what's next" separately is how they end up disagreeing. Home asks
+// GLOBALLY ("what to continue, anywhere"); the journey screen asks inside the goal
+// track — different questions, so they are allowed to point at different places (J7).
+func currentStep(j learning.Journey, p learning.Progress, loc string) (dept, deptLabel string, one *homeTodayOne) {
+	ref := j.Resume(p)
+	if !ref.Found {
+		return "", "", nil
+	}
+	// The station's name and department come from Tracks — the same list the journey
+	// screen draws from, found by the theme Resume just pointed at. `break outer` the
+	// moment it is found: ThemeKey is unique, but without the break the LAST match in
+	// iteration order would silently win instead, and a search that never matches
+	// (should be impossible — Resume only ever names a theme this same engine's
+	// catalog holds) must not fall through into an empty-chapter card below.
+	var stationName, deptCode string
+	found := false
+outer:
+	for _, tg := range j.Tracks(p) {
+		for _, cs := range tg.Curricula {
+			if cs.ThemeKey != string(ref.Theme) {
+				continue
 			}
+			stationName = i18n.Tr(loc, cs.ThemeKey, cs.Name)
+			deptCode = tg.Dept
+			found = true
+			break outer
 		}
-		// Reachable only if a curriculum has no required steps at all, which
-		// catalog_test.go forbids. Kept so a future authoring slip degrades to "no
-		// task today" rather than a nil deref.
-		return dept, deptLabel, nil
 	}
-	return "", "", nil
-}
-
-// deptTag maps a curriculum department label ("본관 1F 로비 · ER") to the short tag
-// used by the content pools.
-func deptTag(label string) string {
-	l := strings.ToLower(label)
-	switch {
-	case strings.Contains(l, "er") || strings.Contains(l, "응급"):
-		return "er"
-	case strings.Contains(l, "or") || strings.Contains(l, "수술"):
-		return "or"
-	case strings.Contains(l, "icu") || strings.Contains(l, "중환자"):
-		return "icu"
-	case strings.Contains(l, "peds") || strings.Contains(l, "소아"):
-		return "peds"
-	case strings.Contains(l, "pharm") || strings.Contains(l, "약"):
-		return "pharma"
-	case strings.Contains(l, "ward") || strings.Contains(l, "병동"):
-		return "ward"
+	if !found {
+		return "", "", nil
 	}
-	return ""
+	dept = deptPoolKey[deptCode] // "" (shared pool) for a code this table does not carry
+	if fl, ok := campus.Of(deptCode); ok {
+		deptLabel = i18n.Tr(loc, fl.Building+"|"+fl.Label, fl.Where)
+	}
+	// deptLabel stays "" for a floorless department (GEN — J9, the resume target CAN
+	// be a GEN scenario even though the journey screen never lists one). The raw
+	// department code must never reach the screen as a label, so the chapter drops
+	// the "dept · " prefix instead of printing it, and the caller leaves the shift
+	// badge unset when deptLabel is empty.
+	chapter := stationName
+	if deptLabel != "" {
+		chapter = deptLabel + " · " + stationName
+	}
+	rows := j.Steps(ref.Theme, p)
+	done, total := 0, 0
+	for _, st := range rows {
+		if st.Optional {
+			continue // a bonus quiz gates nothing and is not counted
+		}
+		total++
+		if st.State == "done" {
+			done++
+		}
+	}
+	for _, st := range rows {
+		if st.State == "now" {
+			one = &homeTodayOne{
+				Chapter:    chapter,
+				Title:      i18n.Tr(loc, st.ScenarioID, st.Name),
+				Kind:       st.Kind,
+				ScenarioID: st.ScenarioID,
+				Progress:   &homeProgress{Done: done, Total: total},
+			}
+			break
+		}
+	}
+	// one stays nil only if a resumed theme's rows have no `now` at all, which the
+	// journey engine forbids (I4: at most one `now` per theme, and Resume always
+	// points at a theme with a step left). Kept so a future authoring slip degrades
+	// to "no task today" rather than a nil deref.
+	return dept, deptLabel, one
 }
 
 func itoa(n int) string {

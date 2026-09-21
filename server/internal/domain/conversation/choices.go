@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
@@ -127,7 +128,27 @@ func buildChoicesPrompt(sc *content.Scenario, lc langContext) string {
 	if sc != nil {
 		b.WriteString(fmt.Sprintf("Situation: %s — %s\n", sc.Title, sc.Tagline))
 		if len(sc.Goals) > 0 {
-			b.WriteString("What they are trying to accomplish: " + strings.Join(sc.Goals, "; ") + "\n")
+			// Numbered and paired with the conversation history (passed separately as
+			// the message list) so the model can work out for itself which are already
+			// done, rather than being told a state the server does not itself keep.
+			//
+			// This is the fix for the bug where a learner who repeats the same intent
+			// (e.g. re-introducing themselves) got offered three MORE self-introduction
+			// variants forever, because the old prompt only said "all three must be
+			// correct and safe" — three copies of an already-met goal satisfy that
+			// perfectly. Mission progress is not persisted anywhere (missions.go tracks
+			// it only for display, from the character's own tag, turn by turn) — so this
+			// is a prompt-side mitigation the model must infer from history each call,
+			// not a guarantee. It narrows the bug; it does not close it structurally.
+			b.WriteString("\nWhat they are trying to accomplish, across the WHOLE conversation so far:\n")
+			for i, g := range sc.Goals {
+				b.WriteString(strconv.Itoa(i+1) + ". " + g + "\n")
+			}
+			b.WriteString("Read the conversation history you are given and decide, silently, which numbers above the learner " +
+				"has ALREADY addressed. At least ONE of the three choices below must move a goal that is still " +
+				"UNADDRESSED forward. If every goal already looks covered, it is fine for all three to build on that — " +
+				"but never offer three replies that all repeat or restate a goal that is already done while a goal above " +
+				"remains untouched.\n")
 		}
 		if len(sc.Guardrails) > 0 {
 			b.WriteString("Tone they must keep: " + strings.Join(sc.Guardrails, "; ") + "\n")
@@ -142,8 +163,11 @@ func buildChoicesPrompt(sc *content.Scenario, lc langContext) string {
 	b.WriteString(user.SpeechRegister(lc.Level) + "\n")
 	b.WriteString(fmt.Sprintf(
 		"ALL THREE must be correct, safe and usable — none of them is a wrong answer, and none is a joke. "+
-			"They differ in how much they ACHIEVE:\n"+
-			"  \"best\"   — what a strong nurse says here; it moves the situation forward.\n"+
+			"They differ in how much they ACHIEVE, and they must NOT be three phrasings of the SAME action or the "+
+			"same goal — that is not a choice, it is one idea said three ways. Each of the three should read as "+
+			"pursuing a distinct next step (even the \"fair\" one), not a rewrite of the others:\n"+
+			"  \"best\"   — what a strong nurse says here; it moves the situation forward, and should be the one that "+
+			"advances an unaddressed goal when one exists.\n"+
 			"  \"strong\" — correct and useful, but leaves something for later.\n"+
 			"  \"fair\"   — polite and safe; no mistake, and no progress either.\n"+
 			"For each, give THREE fields:\n"+

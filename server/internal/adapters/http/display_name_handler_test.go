@@ -55,6 +55,9 @@ func (r *nameRepo) RecordProfileChange(context.Context, string, user.Profile, us
 func (r *nameRepo) SetUILang(context.Context, string, string) error {
 	panic("not used by setDisplayName")
 }
+func (r *nameRepo) SetGoalDept(context.Context, string, string) error {
+	panic("not used by setDisplayName")
+}
 func (r *nameRepo) SetAvatar(context.Context, string, avatar.Spec) error {
 	panic("not used by setDisplayName")
 }

@@ -13,6 +13,9 @@ func init() {
 		"tag.urgent":    "Urgent",
 		"tag.new":       "New",
 
+		// ── milestone flag (task-19: the journey map's track-end exam) ───────
+		"milestone.name": "Section exam",
+
 		// ── floor headings (building|floor) ──────────────────────────────────
 		"본관|1F":   "Main 1F · Emergency Centre",
 		"본관|P1":   "Main P1 · Central Pharmacy",

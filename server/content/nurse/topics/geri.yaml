@@ -994,6 +994,7 @@
   collabWith: ICU
   persona: { name: Amanda Choi, ageRange: 30s, sub: "책임 간호사", mood: panic, personality: 긴박하나 체계적, speakingStyle: 급히 지시한다, gender: female }
 - theme: geri-atypical-infection
+  localeBound: [escalation]
   title: 감염성 쇼크 대응
   tagline: "His pressure's crashing — this is septic shock."
   room: GERI ROOM 14
@@ -1012,6 +1013,7 @@
   collabWith: ICU
   persona: { name: Derek Shaw, ageRange: 40s, sub: "동료 간호사", mood: panic, personality: 결단력 있고 냉정함, speakingStyle: 명령조로 외친다, gender: male }
 - theme: geri-atypical-infection
+  localeBound: [escalation]
   title: 급성 혼란·활력 붕괴
   tagline: "He's suddenly much more confused and his vitals are falling apart."
   room: GERI ROOM 14
@@ -1029,6 +1031,7 @@
   acuity: critical
   persona: { name: Sophia Reyes, ageRange: 30s, sub: "동료 간호사", mood: panic, personality: 기민하고 단호함, speakingStyle: 빠르게 보고한다, gender: female }
 - theme: geri-atypical-infection
+  localeBound: [escalation]
   title: 저혈압·저산소 응급
   tagline: "Her oxygen and her pressure are both dropping fast."
   room: GERI ROOM 15
@@ -2054,6 +2057,7 @@
   acuity: routine
   persona: { name: Clifford Meyers, ageRange: 80s, sub: "노인병동 입원 환자", mood: worried, personality: 반복되는 낙상에 위축돼 있다, speakingStyle: 담담히 되짚는다, gender: male }
 - theme: geri-post-fall
+  localeBound: [escalation]
   title: 낙상 후 의식저하 응급 대응
   tagline: "She was talking a minute ago, but now she's barely responsive — I need you in here now."
   room: 병실
@@ -2141,6 +2145,7 @@
   acuity: urgent
   persona: { name: Raymond Cole, ageRange: 80s, sub: "노인병동 입원 환자", mood: anxious, personality: 혼란스럽고 초조하다, speakingStyle: 두서없이 되묻는다, gender: male }
 - theme: geri-post-fall
+  localeBound: [escalation]
   title: 낙상 후 활력 불안정 소생
   tagline: "Her pressure's crashing after the fall — I'm activating the rapid response team."
   room: 병실
@@ -2858,6 +2863,7 @@
   persona: { name: Daniel Ruiz, ageRange: 30s, sub: "노인병동 동료 간호사", mood: worried, personality: 압박 속에서도 체계적이다, speakingStyle: 우선순위를 정해 지시한다, gender: male }
   collabWith: ICU
 - theme: geri-chronic-exacerbation
+  localeBound: [escalation]
   title: 급성 악화 소생 연계
   tagline: "I'm calling a rapid response — he's decompensating fast."
   room: 병실
@@ -3864,6 +3870,7 @@
   acuity: critical
   persona: { name: Raymond Cole, ageRange: 80s, sub: "83y / Male", mood: panic, personality: 갑자기 어지럽고 힘이 빠짐, speakingStyle: 말끝이 흐려지고 힘겹다, gender: male }
 - theme: geri-immobility
+  localeBound: [escalation]
   title: 폐색전 의심 급성 호흡곤란
   tagline: "I can't catch my breath — my chest feels so tight all of a sudden."
   room: GERI ROOM 8
@@ -4257,6 +4264,7 @@
   acuity: urgent
   persona: { name: Cecil Barnes, ageRange: 80s, sub: "81y / Male", mood: angry, personality: 혼란 속에 상처를 자꾸 건드림, speakingStyle: 짜증내며 저항한다, gender: male }
 - theme: geri-postop-delirium
+  localeBound: [escalation]
   title: 저산소성 섬망 응급
   tagline: "I can't... breathe right... and everything feels so far away..."
   room: GERI ROOM 8
@@ -4550,6 +4558,7 @@
   acuity: routine
   persona: { name: Sandra Webb, ageRange: 60s, sub: "딸 / Female", mood: worried, personality: 세심하게 관찰함, speakingStyle: 구체적으로 설명한다, gender: female }
 - theme: geri-atypical-emergency
+  localeBound: [escalation]
   title: 악화 대비 사전 계획
   tagline: "If things start going downhill overnight, who do you call and what happens?"
   room: GERI CORRIDOR
@@ -4603,6 +4612,7 @@
   collabWith: ER
   persona: { name: Gerald Ames, ageRange: 70s, sub: "79y / Male", mood: panic, personality: 갑작스러운 증상에 놀람, speakingStyle: 식은땀 흘리며 다급히 말한다, gender: male }
 - theme: geri-atypical-emergency
+  localeBound: [escalation]
   title: 급성 호흡부전 인지
   tagline: "I can't... get enough air... no matter how hard I try..."
   room: GERI ROOM 9
@@ -4657,6 +4667,7 @@
   collabWith: OR
   persona: { name: Ernest Doyle, ageRange: 70s, sub: "78y / Male", mood: pain, personality: 극심한 통증에 몸부림침, speakingStyle: 고통스럽게 소리친다, gender: male }
 - theme: geri-atypical-emergency
+  localeBound: [escalation]
   title: 다징후 악화 신속 에스컬레이션
   tagline: "His breathing, his pressure, his color — all of it is going the wrong way."
   room: GERI CORRIDOR
@@ -4743,6 +4754,7 @@
   acuity: routine
   persona: { name: Rosa Klein, ageRange: 80s, sub: "80y / Female", mood: worried, personality: 정보가 많아 혼란스러워함, speakingStyle: 머뭇거리며 되묻는다, gender: female }
 - theme: geri-capacity
+  localeBound: [law]
   title: 대리결정자 확인
   tagline: "If I can't decide for myself someday, who would that fall to?"
   room: GERI ROOM 3
@@ -6481,6 +6493,7 @@
   acuity: routine
   persona: { name: Eleanor Fry, ageRange: 80s, sub: "84y / Female", mood: neutral, personality: 담담하고 사려깊음, speakingStyle: 차분히 이야기한다, gender: female }
 - theme: geri-advance-care
+  localeBound: [law]
   title: 사전의료의향서 확인
   tagline: "I filled out one of those living wills years ago — do you have it, or should I bring it?"
   room: 상담실
@@ -6651,6 +6664,7 @@
   acuity: routine
   persona: { name: Barbara Nolan, ageRange: 70s, sub: "72y / Female", mood: neutral, personality: 의지가 강하고 현실적, speakingStyle: 분명하게 말한다, gender: female }
 - theme: geri-advance-care
+  localeBound: [law]
   title: POLST 작성 안내
   tagline: "The social worker mentioned a POLST form — what exactly am I signing?"
   room: 상담실
@@ -8562,6 +8576,7 @@
   acuity: critical
   persona: { name: Nurse Owens, ageRange: 30s, sub: "동료 간호사 / Female", mood: worried, personality: 침착하나 긴박함, speakingStyle: 빠르고 명확하게 말한다, gender: female }
 - theme: geri-delirium
+  localeBound: [escalation]
   title: 섬망 원인 패혈증 의심
   tagline: "Her confusion plus this fever and low pressure — I'm worried about sepsis."
   room: GERI STATION

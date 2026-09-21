@@ -189,12 +189,86 @@ components:
         track:
           type: string
       type: object
+    github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry:
+      properties:
+        dept:
+          description: 부서 코드 — 아이콘과 라벨을 고르는 키
+          type: string
+        passed:
+          description: 통과한 정거장 수 = 도장 카운트
+          type: integer
+        total:
+          type: integer
+      type: object
+    github_com_bingoring_forin_server_internal_domain_learning.GuideLevel:
+      description: Guide/Pass/Passes describe the rung. Absent on steps with a single
+        run.
+      enum:
+      - choices
+      - free
+      type: string
+      x-enum-varnames:
+      - GuideChoices
+      - GuideFree
+    github_com_bingoring_forin_server_internal_domain_learning.JourneyView:
+      properties:
+        freeRoam:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry'
+          type: array
+          uniqueItems: false
+        goalDept:
+          type: string
+        inferred:
+          type: boolean
+        track:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.TrackGroup'
+      type: object
     github_com_bingoring_forin_server_internal_domain_learning.Milestone:
       properties:
         name:
           type: string
         state:
           description: passed | open | closed
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_learning.StationDetail:
+      properties:
+        station:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.CurriculumState'
+        steps:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.StepState'
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_learning.StepState:
+      properties:
+        attempted:
+          description: |-
+            Attempted marks a run played but graded below the bar. Set only where it says
+            something — never on a done or lock row, where a "tried" badge would contradict.
+          type: boolean
+        guide:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.GuideLevel'
+        kind:
+          description: 'dlg | quiz | event | boss (S4: open string)'
+          type: string
+        name:
+          type: string
+        optional:
+          description: 'Optional marks a bonus quiz: playable any time, gates nothing,
+            uncounted.'
+          type: boolean
+        pass:
+          type: integer
+        passes:
+          type: integer
+        scenarioId:
+          type: string
+        state:
+          description: State is done | now | lock | optional. There is exactly one
+            `now` per theme.
           type: string
       type: object
     github_com_bingoring_forin_server_internal_domain_learning.TierCount:
@@ -482,6 +556,12 @@ components:
           type: string
         equippedTitle:
           description: equipped career title id (may be empty)
+          type: string
+        goalDept:
+          description: |-
+            GoalDept is the department whose track the journey map draws. "" means the
+            learner has not chosen one yet, and the server infers a starting point per
+            request WITHOUT persisting it — a path picked for you is not a path you chose.
           type: string
         job:
           description: 'MVP: "nurse"'
@@ -780,6 +860,11 @@ components:
         reason:
           type: string
       type: object
+    internal_adapters_http.goalDeptReq:
+      properties:
+        dept:
+          type: string
+      type: object
     internal_adapters_http.gradeReq:
       properties:
         grade:
@@ -928,79 +1013,6 @@ components:
         scenarioId:
           type: string
         title:
-          type: string
-      type: object
-    internal_adapters_http.legacyBuilding:
-      properties:
-        building:
-          type: string
-        floors:
-          items:
-            $ref: '#/components/schemas/internal_adapters_http.legacyFloor'
-          type: array
-          uniqueItems: false
-      type: object
-    internal_adapters_http.legacyCurriculum:
-      properties:
-        building:
-          type: string
-        done:
-          type: integer
-        floor:
-          type: string
-        key:
-          type: string
-        name:
-          type: string
-        next:
-          description: name of the current (now) step
-          type: string
-        resume:
-          type: boolean
-        state:
-          description: done | doing | todo
-          type: string
-        steps:
-          items:
-            $ref: '#/components/schemas/internal_adapters_http.legacyStep'
-          type: array
-          uniqueItems: false
-        total:
-          type: integer
-        where:
-          type: string
-      type: object
-    internal_adapters_http.legacyFloor:
-      properties:
-        curricula:
-          items:
-            $ref: '#/components/schemas/internal_adapters_http.legacyCurriculum'
-          type: array
-          uniqueItems: false
-        floor:
-          type: string
-        where:
-          type: string
-      type: object
-    internal_adapters_http.legacyStep:
-      properties:
-        attempted:
-          type: boolean
-        guide:
-          type: string
-        kind:
-          type: string
-        name:
-          type: string
-        optional:
-          type: boolean
-        pass:
-          type: integer
-        passes:
-          type: integer
-        scenarioId:
-          type: string
-        state:
           type: string
       type: object
     internal_adapters_http.loginResp:
@@ -1932,42 +1944,6 @@ paths:
       summary: Send a cheer to a colleague
       tags:
       - colleagues
-  /me/curriculum:
-    get:
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                additionalProperties:
-                  items:
-                    $ref: '#/components/schemas/internal_adapters_http.legacyBuilding'
-                  type: array
-                type: object
-          description: OK
-      security:
-      - Bearer: []
-      summary: Building/floor/curriculum path with per-user progress
-      tags:
-      - progress
-  /me/curriculum/tracks:
-    get:
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                additionalProperties:
-                  items:
-                    $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.TrackGroup'
-                  type: array
-                type: object
-          description: OK
-      security:
-      - Bearer: []
-      summary: 커리큘럼 v3 — 주제 기반 여정 트랙
-      tags:
-      - progress
   /me/daily-board:
     get:
       responses: null
@@ -2007,6 +1983,30 @@ paths:
       summary: Set the learner's display name
       tags:
       - user
+  /me/goal-dept:
+    patch:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.goalDeptReq'
+              description: department code
+              summary: body
+        description: department code
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties: {}
+                type: object
+          description: OK
+      security:
+      - Bearer: []
+      summary: 목표 부서 선택 — 여정이 그릴 트랙
+      tags:
+      - user
   /me/home:
     get:
       responses:
@@ -2043,6 +2043,34 @@ paths:
       summary: My invite code (mints one when absent; ?rotate=1 issues a fresh one)
       tags:
       - colleagues
+  /me/journey:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.JourneyView'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 여정 지도 — 목표 부서 트랙 + 자유 탐방
+      tags:
+      - progress
+  /me/journey/stations/{themeKey}:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.StationDetail'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 정거장 상세 — 그 주제의 스텝 목록 (지연 로드)
+      tags:
+      - progress
   /me/missions:
     get:
       responses:

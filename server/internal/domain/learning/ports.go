@@ -103,6 +103,17 @@ type StepState struct {
 	Passes int        `json:"passes,omitempty"`
 }
 
+// StationDetail is one station's sheet: the station itself plus its rows. The list
+// view carries counts only, so the rows are fetched when the sheet opens — the map
+// does not carry 955 themes' worth of steps.
+//
+// Station is re-sent rather than trusted from the list: progress can have moved on
+// another device since the map was drawn.
+type StationDetail struct {
+	Station CurriculumState `json:"station"`
+	Steps   []StepState     `json:"steps"`
+}
+
 // Milestone is a track-level exam (부서 시험).
 type Milestone struct {
 	Name  string `json:"name"`
@@ -114,6 +125,27 @@ type TrackGroup struct {
 	Dept      string            `json:"dept"`
 	Curricula []CurriculumState `json:"curricula"`
 	Milestone *Milestone        `json:"milestone,omitempty"`
+}
+
+// FreeRoamEntry is one department the learner is not aiming at. Nothing is locked:
+// the chip is a door, not a preview of one.
+//
+// No department name here: the client already carries a `dept.<CODE>` label in four
+// languages and picks the icon off the same code. If the server named it too, the two
+// copies would eventually drift.
+type FreeRoamEntry struct {
+	Dept   string `json:"dept"`   // 부서 코드 — 아이콘과 라벨을 고르는 키
+	Passed int    `json:"passed"` // 통과한 정거장 수 = 도장 카운트
+	Total  int    `json:"total"`
+}
+
+// JourneyView is everything the journey screen draws, in one round trip. Sending all
+// 29 departments would be 340KB against the 11.7KB the screen actually renders.
+type JourneyView struct {
+	GoalDept string          `json:"goalDept"`
+	Inferred bool            `json:"inferred"`
+	Track    TrackGroup      `json:"track"`
+	FreeRoam []FreeRoamEntry `json:"freeRoam"`
 }
 
 // Journey is the single domain port for one profession's live learning experience.

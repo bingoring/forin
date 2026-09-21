@@ -26,14 +26,16 @@ test('the content column scrolls, with room at the bottom', () => {
 //
 // It used to `replace('/campus')` — the learner finished something and was handed a
 // building list to find what follows in. That is the button failing at its one job.
+// The career tab's own route changed under it (Task 13: campus → journey), and the
+// fallback target changed with it — same failure mode this test guards against.
 test('the next-scenario button opens the next briefing', () => {
-  expect(SRC).toMatch(/router\.replace\(nextScenario \? `\/scenario\/\$\{nextScenario\}` : '\/campus'\)/);
+  expect(SRC).toMatch(/router\.replace\(nextScenario \? `\/scenario\/\$\{nextScenario\}` : '\/journey'\)/);
 });
 
 test('a missing next falls back to the career tab rather than a dead route', () => {
   // The server omits nextScenarioId when there is nothing left; pushing
   // `/scenario/undefined` would be a route that can only error.
-  expect(SRC).toMatch(/nextScenario \? .* : '\/campus'/);
+  expect(SRC).toMatch(/nextScenario \? .* : '\/journey'/);
 });
 
 test('the target comes from the server, not from the client walking the curriculum', () => {

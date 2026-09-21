@@ -24,6 +24,7 @@ import { NbAvatar } from '@/components/nb/NbAvatar';
 import { adoptAvatar } from '@/lib/nbAvatar';
 import { setWardVisible, useWardVisible } from '@/lib/wardPresence';
 import { NameSheet } from '@/components/me/NameSheet';
+import { useExploreMode } from '@/hooks/useExploreMode';
 
 const C = nb.ink;
 
@@ -59,6 +60,10 @@ export default function Me() {
   // Whether the learner appears (anonymously) in the home live ward. A shared store, so the
   // home ward reacts the moment this toggles. Defaults visible; corrected from the server.
   const wardVisible = useWardVisible();
+  // 탐험 모드(Task 15) — 부서 인테리어를 쓸지. 기기 로컬, 기본 켬. 인테리어가 아직
+  // 간호사 직업군에만 있어, 다른 직업군에 언제 붙을지 미정인 지금은 데모에서 껐다
+  // 켜 볼 수 있는 스위치로 둔다.
+  const explore = useExploreMode();
 
   useFocusEffect(
     useCallback(() => {
@@ -130,6 +135,11 @@ export default function Me() {
     void api.setColleaguePrefs({ shareWard: next }).catch(() => {});
     // Turning off: leave the ward at once so others stop seeing you now, not after the TTL.
     if (!next) void api.wardLeave().catch(() => {});
+  };
+
+  const toggleExplore = () => {
+    playSfx('tap');
+    explore.setEnabled(!explore.enabled);
   };
 
   // Sign out — drops the session on this device, so confirm first. On success we
@@ -633,6 +643,32 @@ export default function Me() {
               </View>
               <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: wardVisible ? 'flex-end' : 'flex-start' }}>
                 <View style={{ width: 18, backgroundColor: wardVisible ? nb.ink : 'rgba(62,54,43,.35)' }} />
+              </View>
+            </Pressable>
+          </NbPaper>
+        </View>
+
+        {/* 탐험 모드(Task 15) — 부서 인테리어를 쓸지, 기기 로컬로 켜고 끈다. 인테리어가
+            지금 간호사 직업군에만 있어, 다른 직업군에 언제 붙을지 미정인 동안 데모에서
+            껐다 켜 볼 수 있어야 한다. */}
+        <View style={{ marginTop: space.sm }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+            <NbIcon name="hospital" size={17} />
+            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.explore.section')}</Text>
+          </View>
+          <NbPaper rot={0.3}>
+            <Pressable
+              onPress={toggleExplore}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.explore.title')}</Text>
+                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
+                  {explore.enabled ? t('settings.explore.on') : t('settings.explore.off')}
+                </Text>
+              </View>
+              <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: explore.enabled ? 'flex-end' : 'flex-start' }}>
+                <View style={{ width: 18, backgroundColor: explore.enabled ? nb.ink : 'rgba(62,54,43,.35)' }} />
               </View>
             </Pressable>
           </NbPaper>

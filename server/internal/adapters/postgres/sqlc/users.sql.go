@@ -115,7 +115,7 @@ func (q *Queries) DisplayNames(ctx context.Context, userIds []string) ([]Display
 }
 
 const getProfile = `-- name: GetProfile :one
-SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name, avatar FROM profiles WHERE user_id = $1
+SELECT user_id, job, native_lang, target_lang, destination, target_level, onboarded, equipped_title, ui_lang, display_name, avatar, goal_dept FROM profiles WHERE user_id = $1
 `
 
 type GetProfileRow struct {
@@ -130,6 +130,7 @@ type GetProfileRow struct {
 	UiLang        string `json:"ui_lang"`
 	DisplayName   string `json:"display_name"`
 	Avatar        []byte `json:"avatar"`
+	GoalDept      string `json:"goal_dept"`
 }
 
 func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow, error) {
@@ -147,6 +148,7 @@ func (q *Queries) GetProfile(ctx context.Context, userID string) (GetProfileRow,
 		&i.UiLang,
 		&i.DisplayName,
 		&i.Avatar,
+		&i.GoalDept,
 	)
 	return i, err
 }
@@ -259,6 +261,24 @@ type SetEquippedTitleParams struct {
 
 func (q *Queries) SetEquippedTitle(ctx context.Context, arg SetEquippedTitleParams) error {
 	_, err := q.db.Exec(ctx, setEquippedTitle, arg.UserID, arg.EquippedTitle)
+	return err
+}
+
+const setGoalDept = `-- name: SetGoalDept :exec
+INSERT INTO profiles (user_id, goal_dept, updated_at) VALUES ($1, $2, now())
+ON CONFLICT (user_id) DO UPDATE SET goal_dept = $2, updated_at = now()
+`
+
+type SetGoalDeptParams struct {
+	UserID   string `json:"user_id"`
+	GoalDept string `json:"goal_dept"`
+}
+
+// Single-field patch, like SetUILang: the full UpsertProfile fills omitted columns
+// with onboarding defaults, so reusing it to save one setting would reset job and
+// languages.
+func (q *Queries) SetGoalDept(ctx context.Context, arg SetGoalDeptParams) error {
+	_, err := q.db.Exec(ctx, setGoalDept, arg.UserID, arg.GoalDept)
 	return err
 }
 

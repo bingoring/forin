@@ -2083,6 +2083,7 @@
   persona: { name: Dr. Ian Wells, ageRange: 40s, sub: "시술 집도의(타임아웃)", mood: neutral, personality: 협조적, speakingStyle: 최종 확인에 응답함 }
 
 - theme: core-safety-er
+  localeBound: [escalation]
   title: 급변 환자 조기 경고
   tagline: "Her vitals are deteriorating — I'm calling rapid response."
   room: BAY
@@ -2210,6 +2211,7 @@
   acuity: urgent
   persona: { name: Karen Whitfield, ageRange: 50s, sub: "55y / Female", mood: worried, personality: 걱정이 많고 협조적, speakingStyle: 천천히 조리 있게 설명함 }
 - theme: er-chestpain
+  localeBound: [triage]
   title: 흉통 활력·ESI 등급
   tagline: "I feel a little dizzy and my heart's been pounding since this morning."
   room: TRIAGE
@@ -2278,6 +2280,7 @@
   acuity: routine
   persona: { name: Brandon Hale, ageRange: 30s, sub: "34y / Male", mood: neutral, personality: 차분하고 협조적, speakingStyle: 담담하게 사실만 전달함 }
 - theme: er-chestpain
+  localeBound: [triage]
   title: 전형적 STEMI 신속 트리아지
   tagline: "It feels like a huge weight crushing my chest and my jaw is aching."
   room: TRIAGE
@@ -2983,6 +2986,7 @@
   persona: { name: Sandra Lopez, ageRange: 40s, sub: "48y / Female", mood: panic, personality: 발견한 목격 간호사, speakingStyle: 다급하게 외침 }
 
 - theme: er-arrest
+  localeBound: [escalation]
   title: 응급코드 호출·역할 배정
   tagline: "Code Blue, bed 4 — what do you need me to do?"
   room: RESUS BAY #1
@@ -9571,6 +9575,7 @@
   persona: { name: Harold Stein, ageRange: 60s, sub: "64y / Male", mood: neutral, personality: 기억이 흐릿하고 느긋함, speakingStyle: 곰곰이 생각하며 천천히 답함 }
 
 - theme: er-anaphylaxis
+  localeBound: [escalation]
   title: 에피펜 사용법 교육
   tagline: "My doctor gave me this pen but I'm scared I'll use it wrong."
   room: DISCHARGE ROOM
@@ -12722,6 +12727,7 @@
   persona: { name: Evelyn Pratt, ageRange: 80s, sub: "81y / Female", mood: anxious, personality: 감각 저하로 위축됨, speakingStyle: 불안하게 되묻음 }
 
 - theme: er-geriatric
+  localeBound: [law]
   title: 사전연명의료의향 확인
   tagline: "Dad always said he never wanted to be kept alive on machines."
   room: EXAM 6

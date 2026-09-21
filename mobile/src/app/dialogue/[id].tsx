@@ -735,7 +735,13 @@ export default function DialogueRoute() {
       <Animated.View style={{ position: 'absolute', left: 0, right: 0, top: 96, alignItems: 'center', zIndex: 3, opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
         <PortraitFrame
           name={p.name || 'NPC'}
-          status={p.mood ? p.mood.toUpperCase() : undefined}
+          // Same fact as the face's `expr` (this turn's mood, falling back to the
+          // authored one): the bug was the face moving to a new mood while this chip
+          // kept showing the scenario's OPENING mood forever (e.g. still ANGRY after
+          // the patient calmed down). Shown only when there IS a mood to report — a
+          // turn mood, or an authored one — so a scenario that never authors a mood
+          // does not grow a "NEUTRAL" chip that never existed before.
+          status={(turnMood || p.mood) ? expr.toUpperCase() : undefined}
           sweat={showSweat}
           // Set by the divider: full size with its plate underneath, plate moved to the
           // LEFT of it, or scaled down to a floor. See data/dialogueSplit.

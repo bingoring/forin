@@ -50,6 +50,60 @@ func TestTheLearnersNameReachesThePrompts(t *testing.T) {
 	}
 }
 
+// The bug: a learner who keeps picking the same intent (e.g. re-introducing themselves)
+// eventually gets offered THREE self-introduction variants and no way to progress the
+// scenario's other goals — the mission that needed a different line becomes
+// unclearable. The prompt cannot know mission state (it isn't persisted anywhere), so
+// the fix is to hand the model the numbered goal list and make it respect the history
+// it is given: NUMBER the goals, and require at least one choice to chase whichever one
+// is still unaddressed, and forbid three choices that are just the same action restated.
+func TestChoicesPromptNumbersGoalsAndRequiresProgressOnAnUnaddressedOne(t *testing.T) {
+	sc := &content.Scenario{
+		ID: "SCN-ER-00002", Title: "T", Tagline: "t",
+		Goals: []string{"Confirm the patient's identity", "Explain the procedure"},
+	}
+	lc := langContext{Native: "Korean", Target: "English", Job: "nurse", Level: "B1"}
+	p := buildChoicesPrompt(sc, lc)
+
+	// The goals are numbered, the way missionInstruction numbers them for the dialogue
+	// prompt — a list the model can index into rather than a loose sentence.
+	if !strings.Contains(p, "1. Confirm the patient's identity") {
+		t.Errorf("goal 1 is not numbered in the prompt:\n%s", p)
+	}
+	if !strings.Contains(p, "2. Explain the procedure") {
+		t.Errorf("goal 2 is not numbered in the prompt:\n%s", p)
+	}
+	// The model is told to read the history itself and find what is still unaddressed —
+	// this is the mitigation, since the server has no stored mission state to hand it.
+	if !strings.Contains(p, "ALREADY addressed") || !strings.Contains(p, "UNADDRESSED") {
+		t.Errorf("the prompt never asks the model to find the unaddressed goal from history:\n%s", p)
+	}
+	// At least one choice must be required to chase that unaddressed goal — otherwise
+	// three "correct and safe" repeats of an already-met goal satisfy the prompt fine,
+	// which is exactly how the mission became unclearable.
+	if !strings.Contains(p, "At least ONE of the three choices below must move a goal that is still") {
+		t.Errorf("the prompt does not require a choice to progress the unaddressed goal:\n%s", p)
+	}
+	// And the three must not be the same action said three ways — a rut with three
+	// paraphrases is indistinguishable from three copies to a grader that only checks
+	// "correct and safe".
+	if !strings.Contains(p, "must NOT be three phrasings of the SAME action") {
+		t.Errorf("the prompt does not forbid three variations of the same action:\n%s", p)
+	}
+}
+
+// A scenario with no goals (or none passed) must not crash or print a dangling section —
+// the numbered-goals block is conditional on sc.Goals, same as the rest of the situation
+// block.
+func TestChoicesPromptWithNoGoalsSkipsTheProgressSection(t *testing.T) {
+	sc := &content.Scenario{ID: "SCN-X", Title: "T", Tagline: "t"}
+	lc := langContext{Native: "Korean", Target: "English", Job: "nurse", Level: "B1"}
+	p := buildChoicesPrompt(sc, lc)
+	if strings.Contains(p, "UNADDRESSED") {
+		t.Errorf("a goal-less scenario still got the unaddressed-goal instruction:\n%s", p)
+	}
+}
+
 func TestParseChoicesSurvivesTheModelsEnvelope(t *testing.T) {
 	// Models wrap JSON in prose more often than not. The choices are the point; the
 	// packaging is not worth a failure.

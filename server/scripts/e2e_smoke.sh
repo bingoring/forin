@@ -131,41 +131,131 @@ runlang() {
   CODE="${out##*$'\n'}"; BODY="${out%$'\n'*}"
 }
 
-hd "④ CURRICULUM · structure"
-run GET /me/curriculum
-# v2 shape: buildings → floors → curricula. The old assertions read `.chapters`,
-# which no longer exists — and because they only checked a length, they went red on
-# the contract change rather than on anything being wrong.
-nb=$(pj "len(d.get('buildings',[]))")
-[ "${nb:-0}" -ge 4 ] && ok "curriculum spans $nb buildings" || bad "curriculum buildings=$nb"
-ncur=$(pj "sum(len(f['curricula']) for b in d.get('buildings',[]) for f in b['floors'])")
-[ "${ncur:-0}" -ge 60 ] && ok "curriculum has $ncur curricula" || bad "curriculum curricula=$ncur"
-# Exactly one resume target across the whole path — the home hero and the career tab
-# both read it, so two (or none, before everything is done) would split them.
-nres=$(pj "sum(1 for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula'] if c.get('resume'))")
-[ "${nres:-0}" = 1 ] && ok "exactly one resume target" || bad "resume targets=$nres"
-states=$(pj "','.join(sorted({c['state'] for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula']}))")
-printf '%s' "$states" | grep -q "todo\|doing\|done" && ok "curriculum states resolved ($states)" || bad "no todo/doing/done state"
-# Floors and curricula are all open in v2; a `lock` here would mean the server still
-# gates them and the client's padlock-free rows would be lying.
-printf '%s' "$states" | grep -q "lock" && bad "curriculum still reports lock: $states" || ok "no locked curriculum (floors are all open)"
+hd "④ JOURNEY · structure"
+# /me/curriculum (buildings → floors → the whole 29-department campus) was retired
+# with the campus presenter (L4.4 / Task 14). /me/journey is what is reachable now,
+# and it draws only ONE goal-department track plus the rest of the campus as
+# free-roam chips (learning.JourneyView) — not the whole campus — so "≥4 buildings"
+# and "≥60 curricula" no longer mean anything and are not reproducible here.
+run GET /me/journey
+nst=$(pj "len(d.get('track',{}).get('curricula',[]))")
+[ "${nst:-0}" -ge 1 ] && ok "goal track has $nst station(s)" || bad "goal track has no stations"
+# At most one resume target IN THE TRACK — the bottom bar can only point at one
+# place (I1). Unlike the retired /me/curriculum view this is not asserted to be
+# EXACTLY one: the journey screen recomputes its current station inside the goal
+# track alone (J6), and a track that is entirely passed legitimately has zero.
+nresume=$(pj "sum(1 for c in d.get('track',{}).get('curricula',[]) if c.get('resume'))")
+[ "${nresume:-0}" -le 1 ] && ok "at most one resume target in the track (resume=$nresume)" || bad "resume targets=$nresume"
+# Stations are never locked (J1/J3) — a `lock` state here would mean the server
+# still gates them and the client's padlock-free rows would be lying.
+states=$(pj "','.join(sorted({c.get('state','') for c in d.get('track',{}).get('curricula',[])}))")
+printf '%s' "$states" | grep -q "lock" && bad "a station reports lock: $states" || ok "no locked station ($states)"
+nfree=$(pj "len(d.get('freeRoam',[]))")
+[ "${nfree:-0}" -ge 1 ] && ok "free-roam has $nfree department chip(s)" || bad "free-roam is empty"
+gd=$(pj "d.get('goalDept','')")
+[ -n "$gd" ] && ok "goal department resolved ($gd)" || bad "no goal department"
+# This account is FIXED and CUMULATIVE (staging, re-run on every deploy — see the
+# file header), so by now it has cleared scenarios from past runs. Every assertion
+# above holds even on a brand-new, zero-progress account — none of them looks at
+# whether progress reached the engine at all, only at its shape. A regression that
+# drops the learner's progress before it reaches Tracks (e.g. passing a blank
+# Progress{} instead of the real one — final branch review #2) would still satisfy
+# all of them and ship green. `done` (cleared scenarios within a station), not
+# `state=='passed'` (an entire station fully cleared, boss included) — a live run
+# against this account showed 4 scenarios done across 786 total steps and not one
+# station fully passed, so gating on `passed` would fail here even with progress
+# correctly wired.
+ndone=$(pj "sum(c.get('done',0) for c in d.get('track',{}).get('curricula',[]))")
+[ "${ndone:-0}" -ge 1 ] && ok "accumulated progress reaches the payload (done=$ndone)" || bad "no cleared scenario anywhere in the track — progress may not be reaching the engine"
+# 도장이 정거장보다 많을 수는 없다 — passed counts PASSED STATIONS in that dept's own
+# track, so a chip can never report more stamps than it has stations.
+badstamp=$(pj "sum(1 for e in d.get('freeRoam',[]) if e.get('passed',0) > e.get('total',0))")
+[ "${badstamp:-0}" = 0 ] && ok "free-roam stamps never exceed their station counts" || bad "a free-roam chip has passed > total"
+# 목표 부서가 칩에도 있으면 같은 부서가 경로와 칩에 동시에 나온다 — the goal's own
+# track IS the path; summariseFreeRoam is supposed to skip it (journey.go), and this
+# is the only place that claim is checked against the live campus registry rather
+# than a hand-built fixture.
+dup=$(pj "sum(1 for e in d.get('freeRoam',[]) if e.get('dept') == d.get('goalDept'))")
+[ "${dup:-0}" = 0 ] && ok "goal department is not duplicated as a free-roam chip" || bad "goal '$gd' also listed in freeRoam"
+
+# PATCH /me/goal-dept had never been smoke-tested at all — a fake UserRepo in the
+# handler's unit tests trivially echoes back whatever it is told, so it cannot
+# prove either half of this round trip: that the LIVE campus registry rejects a
+# department the lift cannot reach, or that the write actually lands in Postgres
+# and /me/journey reads it back as CHOSEN (inferred=false), not as a coincidence.
+run PATCH /me/goal-dept '{"dept":"BOGUS"}'
+[ "$CODE" = 400 ] && ok "unknown goal department rejected (400)" || bad "bogus goal-dept → $CODE"
+run PATCH /me/goal-dept '{"dept":"ER"}'
+[ "$CODE" = 200 ] && ok "PATCH /me/goal-dept 200" || bad "goal-dept patch → $CODE"
+run GET /me/journey
+gd2=$(pj "d.get('goalDept','')"); inf2=$(pj "str(d.get('inferred'))")
+[ "$gd2" = "ER" ] && [ "$inf2" = "False" ] && ok "journey draws the explicitly chosen goal, not an inferred one ($gd2)" || bad "after setting goal=ER, journey shows goalDept=$gd2 inferred=$inf2"
 
 hd "④b I18N · the request's language reaches the payload"
-run GET /me/curriculum
-ko_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
-ko_where=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['where']")
-runlang en GET /me/curriculum
-en_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
-en_where=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['where']")
-[ "$CODE" = 200 ] && ok "GET /me/curriculum with Accept-Language: en → 200" || bad "locale request → $CODE"
+# /me/journey's station names are the only surviving end-to-end proof of the locale
+# pipeline against a real server — /me/curriculum (and the presenter that
+# translated for it) is gone. The station's `where`/floor heading has no analogue
+# on this shape (that was campus-only text), so only the name is checked here.
+run GET /me/journey
+ko_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
+runlang en GET /me/journey
+en_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
+[ "$CODE" = 200 ] && ok "GET /me/journey with Accept-Language: en → 200" || bad "locale request → $CODE"
 # Asserting the strings DIFFER, not that they exist: a pipeline that silently ignored
 # the header would return identical Korean and pass any presence check.
-[ -n "$en_name" ] && [ "$ko_name" != "$en_name" ] && ok "curriculum name localized: '$ko_name' → '$en_name'" || bad "name not localized: ko='$ko_name' en='$en_name'"
-[ -n "$en_where" ] && [ "$ko_where" != "$en_where" ] && ok "floor heading localized: '$en_where'" || bad "floor heading not localized: ko='$ko_where' en='$en_where'"
+[ -n "$en_name" ] && [ "$ko_name" != "$en_name" ] && ok "station name localized: '$ko_name' → '$en_name'" || bad "name not localized: ko='$ko_name' en='$en_name'"
 # An unsupported language must render the authored Korean, not an empty label.
-runlang pt-BR GET /me/curriculum
-pt_name=$(pj "d['buildings'][0]['floors'][0]['curricula'][0]['name']")
+runlang pt-BR GET /me/journey
+pt_name=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('name','')")
 [ "$pt_name" = "$ko_name" ] && ok "unsupported locale falls back to authored Korean" || bad "pt-BR gave '$pt_name', want '$ko_name'"
+
+# The station SHEET (/me/journey/stations/{themeKey}) is a SEPARATE handler with its
+# own i18n.Tr calls — one for the station's own name (keyed by ThemeKey, same lookup
+# as above) and one per step (keyed by ScenarioID). This is exactly the class of bug
+# this task exists to catch: journey_handler_test.go proves both handlers translate
+# against a hand-built fixture tree, but nothing before this task ever called this
+# route against the REAL catalog on a real server — a forgotten i18n.Tr here would
+# look identical to a working one in every unit test and every response that never
+# opens the sheet.
+theme=$(pj "d.get('track',{}).get('curricula',[{}])[0].get('themeKey','')")
+if [ -n "$theme" ]; then
+  run GET "/me/journey/stations/$theme"
+  nsteps=$(pj "len(d.get('steps',[]))")
+  ko_station=$(pj "d.get('station',{}).get('name','')")
+  [ "$CODE" = 200 ] && [ "${nsteps:-0}" -ge 1 ] && ok "station sheet has $nsteps step row(s)" || bad "station sheet ($theme) → $CODE, steps=$nsteps"
+  runlang en GET "/me/journey/stations/$theme"
+  en_station=$(pj "d.get('station',{}).get('name','')")
+  [ "$CODE" = 200 ] && [ -n "$en_station" ] && [ "$en_station" != "$ko_station" ] \
+    && ok "station sheet name localized: '$ko_station' → '$en_station'" \
+    || bad "station name not localized: ko='$ko_station' en='$en_station' (code=$CODE)"
+  # J2 (자물쇠는 난이도 계단과 스텝에만 붙는다): unlike the station LIST above, where
+  # a `lock` failing to appear is the whole point (J1), a `lock` HERE is correct —
+  # this sheet is exactly where the difficulty ladder is allowed to gate. Checked
+  # against the live catalog because a real run against core-safety-er (41 rows)
+  # found the ladder actually gating most of them (40 lock / 1 now) — a hand-built
+  # fixture of one or two steps would never surface that shape.
+  badstate=$(pj "sum(1 for s in d.get('steps',[]) if s.get('state') not in ('done','now','lock','optional'))")
+  [ "${badstate:-0}" = 0 ] && ok "every step state is in the known set" || bad "an unknown step state leaked through"
+  nnow=$(pj "sum(1 for s in d.get('steps',[]) if s.get('state')=='now')")
+  [ "${nnow:-0}" -le 1 ] && ok "at most one 'now' step in the sheet (now=$nnow)" || bad "now steps=$nnow"
+else
+  bad "no station theme to fetch (goal track is empty)"
+fi
+# The per-STEP translation lookup (keyed by ScenarioID, a second table from the
+# theme's) is checked against a step picked for its KNOWN coverage, not the first
+# one to come back: real content is translated in patches (303 of 20386 scenario
+# ids as of this task — confirmed against the live catalog, not assumed), so most
+# themes' first row is honestly untranslated Korean and asserting on it would fail
+# on content that was never wrong. SCN-ER-00001 is the same fixture the
+# dialogue/briefing checks above already depend on being translated, under its
+# real theme (er-chestpain — NOT core-safety-er, whose first row this task
+# originally (wrongly) assumed it would be).
+run GET /me/journey/stations/er-chestpain
+ko_step=$(pj "next((s['name'] for s in d.get('steps',[]) if s.get('scenarioId')=='SCN-ER-00001'), '')")
+runlang en GET /me/journey/stations/er-chestpain
+en_step=$(pj "next((s['name'] for s in d.get('steps',[]) if s.get('scenarioId')=='SCN-ER-00001'), '')")
+[ "$en_step" = "Chest-pain triage" ] && ok "step name localized (SCN-ER-00001): '$ko_step' → '$en_step'" || bad "step name not localized: ko='$ko_step' en='$en_step'"
+
 # The display language is persisted so a reinstall restores it; kept apart from
 # nativeLang, which tells the AI which language to explain corrections in.
 run PATCH /me/ui-lang '{"uiLang":"en"}'
@@ -306,17 +396,27 @@ inv=$(pj "d.get('done') == ('todayOne' not in d)")
 # which is a stronger check than "the field exists".
 fr=$(pj "d.get('firstRun')")
 [ "$fr" = "False" ] && ok "firstRun false after a clear" || bad "firstRun=$fr after clearing a scenario"
-# The shift department must be the curriculum's current one, not a random pick.
-if [ "$(pj "'shift' in d")" = "True" ]; then
-  sdept=$(pj "d['shift']['deptLabel']")
-  run GET /me/curriculum
-  # The shift label comes from the RESUME curriculum's `where`, not from a chapter's
-  # `dept` (that field is gone). Comparing against the resume target is also stricter
-  # than the old "first chapter in state=now": every curriculum is now unlocked, so
-  # "the first one not done" is not the same thing as "the one you were on".
-  cdept=$(pj "next((c['where'] for b in d.get('buildings',[]) for f in b['floors'] for c in f['curricula'] if c.get('resume')), '')")
-  [ "$sdept" = "$cdept" ] && ok "shift dept matches resume curriculum: $sdept" || bad "shift '$sdept' ≠ resume '$cdept'"
-fi
+# RETIRED (L4.4 / Task 14 review, see task-14-report.md §fix 1): this used to cross-
+# check home's shift.deptLabel against /me/curriculum's GLOBAL resume curriculum's
+# `where` text — both the campus presenter and that route are gone now.
+#
+# Home's shift badge still reads a GLOBAL resume (learning.Journey.Resume — J7:
+# home asks "what to continue, ANYWHERE", not "next station on the goal track"),
+# but no surviving endpoint exposes that global resume target's floor label from
+# outside the process to compare against. /me/journey only ever answers INSIDE the
+# goal department's track (J6/business-rules.md §1), which can legitimately be a
+# different place than home's global resume — e.g. right after switching goal
+# departments, or whenever the latest attempt sits in a department the goal track
+# is not. Re-wiring this against /me/journey would assert a false equivalence on
+# any account in that (common, not even edge-case) state.
+#
+# The point of this check was never "does shift.deptLabel exist" (it already does,
+# on /me/home) — it was cross-checking home's OWN computation against an
+# INDEPENDENT second source, so a bug in home_handler.go's currentStep could not
+# mark its own homework. To restore it: add a second, independent way to read the
+# global resume target's department (learning.Journey.Resume + Tracks, the same
+# pair currentStep in home_handler.go reads) — a small dedicated debug/admin read,
+# or a field on GET /me/progress — and compare shift.deptLabel against THAT.
 
 hd "⑫b CALENDAR · per-day activity with the shift band it fell in"
 run GET "/me/calendar?tz=Asia/Seoul"
@@ -386,9 +486,19 @@ on=$(pj "d.get('shareStatus')")
 
 hd "⑮ REPUTATION · acuity plumbing + ungraded clears don't move it"
 # Acuity must survive content → DB → API, or the emergency dimension can never move.
-run GET /scenarios/SCN-HOSPICE-00108
+# Two checks, because they fail for different reasons. The first pins one scenario to
+# `critical` and so proves the VALUE arrives intact — but it is only as stable as the
+# content: SCN-HOSPICE-00108 used to be pinned here and the v3 re-authoring turned it
+# `routine`, which left this assertion red for a month without anyone meaning to change
+# behaviour. Re-pin from `content/nurse/scenarios/gen-hospice.yaml` when that happens.
+# The second never needs re-pinning and so keeps the PLUMBING covered even in the gap
+# between a re-authoring and someone noticing the first one went red.
+run GET /scenarios/SCN-HOSPICE-00116
 ac=$(pj "d.get('acuity','')")
 [ "$ac" = "critical" ] && ok "acuity reaches the API (hospice scenario = critical)" || bad "acuity='$ac', wanted critical"
+run GET /scenarios/SCN-HOSPICE-00108
+ac=$(pj "d.get('acuity','')")
+case "$ac" in routine|urgent|critical) ok "acuity is always one of the authored set ($ac)";; *) bad "acuity='$ac', not an authored value";; esac
 # Emergencies are not an ER thing — the tagged scenario above is a hospice ward.
 run GET /me/progress
 # Reputation is server-defined per profession: ordered, labelled, self-describing.

@@ -2083,6 +2083,7 @@
     speakingStyle: 기록을 근거로 차분히 설명한다
     gender: male
 - theme: psych-dual-diagnosis
+  localeBound: [payer]
   title: 보험이나 자원 제한으로 두 치료를 동시에 받기 어려운 환자의 우선순위를 함께 정하기
   tagline: My insurance will only cover one program right now, not both. I don't know what to do.
   room: 면담실
@@ -6138,6 +6139,7 @@
   persona: { name: Marcel Greco, ageRange: 20s, sub: "다른 환자의 식사량과 은근히 경쟁하며 덜 먹으려는 환자", mood: angry, personality: 부당하다고 느끼며 날카롭게 반응한다, speakingStyle: 다른 환자를 걸고넘어지며 항의한다, gender: male }
 
 - theme: psych-eating-disorder
+  localeBound: [escalation]
   title: 영양 재개 초기 심박이 급격히 떨어진 환자 곁에서 응급 대응을 침착하게 이끌기
   tagline: "I feel really dizzy all of a sudden... something's wrong."
   room: 처치실
@@ -6246,6 +6248,7 @@
   persona: { name: Owen Hensley, ageRange: 30s, sub: "네 번째 재입원 끝에 회복을 포기하고 싶다고 말한 환자", mood: sad, personality: 오랜 반복 속에 기력이 다한 듯하다, speakingStyle: 체념한 듯 힘없이 말한다, gender: male }
 # theme: psych-discharge (21)
 - theme: psych-discharge
+  localeBound: [escalation]
   title: 퇴원을 앞두고 위기 시 연락할 전화번호 목록을 환자와 함께 점검하기
   tagline: "They gave me a sheet of numbers at the front desk, but honestly I probably won't look at it once I'm home."
   room: 퇴원 상담실
@@ -6282,6 +6285,7 @@
   persona: { name: Amber Howard, ageRange: 20s, sub: "외래 예약 정보를 제대로 기억하지 못하는 환자", mood: neutral, personality: 세부 사항을 쉽게 흘려듣는다, speakingStyle: 자신 없이 얼버무리며 대답한다, gender: female }
 
 - theme: psych-discharge
+  localeBound: [payer]
   title: 보험이 적용되는 약국을 찾아 처방약을 받을 방법을 구체적으로 안내하기
   tagline: "I have insurance, but I have no idea which pharmacy will actually take it near where I live."
   room: 퇴원 상담실
@@ -6426,6 +6430,7 @@
   persona: { name: Leo Haynes, ageRange: 60s, sub: "약값 부담으로 복용을 거를까 고민하는 환자", mood: worried, personality: 경제적 부담을 드러내길 부끄러워한다, speakingStyle: 조심스럽게 돈 얘기를 꺼낸다, gender: male }
 
 - theme: psych-discharge
+  localeBound: [payer]
   title: 노숙 상태로 입원한 환자의 퇴원 후 거처를 사회복지사와 함께 마련하기
   tagline: "I was living out of my car before this. I don't know why anyone thinks that's about to change."
   room: 퇴원 상담실
@@ -6498,6 +6503,7 @@
   persona: { name: Miles Henry, ageRange: 50s, sub: "아들을 집에 데려가기를 주저하는 아버지", mood: worried, personality: 죄책감과 두려움 사이에서 갈등한다, speakingStyle: 미안해하며 조심스럽게 속마음을 꺼낸다, gender: male }
 
 - theme: psych-discharge
+  localeBound: [payer]
   title: 이민 신분 문제로 보험과 약 처방이 막힌 환자의 퇴원 자원을 대안적으로 찾기
   tagline: "I can't use my real name on most of these forms, so I don't know how any of this is supposed to work for me."
   room: 퇴원 상담실
@@ -6516,6 +6522,7 @@
   persona: { name: Kayla Hill, ageRange: 30s, sub: "이민 신분 문제로 보험과 처방이 막힌 환자", mood: worried, personality: 신분 노출을 두려워하며 조심스러워한다, speakingStyle: 낮은 목소리로 경계하며 말한다, gender: female }
 
 - theme: psych-discharge
+  localeBound: [payer]
   title: 퇴원 당일 갈 곳이 없다는 사실이 뒤늦게 드러나 급히 대안을 마련하는 상황을 처리하기
   tagline: "Wait, you're telling me the place I was supposed to go fell through this morning?"
   room: 퇴원 상담실
@@ -12909,6 +12916,7 @@
   persona: { name: Andre Zavala, ageRange: 30s, sub: "환자로부터 직접 위협 발언의 대상으로 지목된 야간 담당 간호사", mood: worried, personality: 불안하지만 침착하게 상황을 설명하려 한다, speakingStyle: 사실관계를 순서대로 짚어 말한다, gender: male }
 
 - theme: psych-violence-risk
+  localeBound: [law]
   title: 위협 대상이 미성년 자녀일 때 통보와 아동보호 신고를 함께 고려하기
   tagline: "If the target is a minor, we might be looking at two separate reports here, not one."
   room: 가족 상담실
@@ -13270,6 +13278,7 @@
   persona: { name: Amanda Zuniga, ageRange: 30s, sub: "일 년 사이 세 번째 재입원한 환자", mood: sad, personality: 반복되는 패턴에 지쳐 있다, speakingStyle: 체념한 듯 말한다, gender: female }
 
 - theme: psych-med-adherence
+  localeBound: [payer]
   title: 약값과 보험 문제로 처방을 다 못 채운 채 지내 온 환자의 현실을 확인하기
   tagline: "I pulled his pharmacy records, and there are gaps of two to three weeks every month for the last quarter."
   room: 간호 스테이션
@@ -13685,6 +13694,7 @@
   persona: { name: Ralph Yancey, ageRange: 30s, sub: "정맥주사로 약물을 사용해 온 이력이 있는 환자", mood: neutral, personality: 자신의 사용 방식을 숨기지 않는다, speakingStyle: 사실을 담담하게 설명한다, gender: male }
 
 - theme: psych-substance
+  localeBound: [payer]
   title: 지역 메타돈 클리닉으로 전원하려는 환자에게 연계 절차와 매일 투약의 현실을 설명하기
   tagline: "The nearest clinic is forty minutes each way, every single day, at least at first."
   room: 퇴원 상담실

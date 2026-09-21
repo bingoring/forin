@@ -2606,6 +2606,7 @@
   persona: { name: "Clifford Ellington", ageRange: 60s, sub: "좌측 슬관절 전치환 수술 후 10일째", mood: sad, personality: "회복에 큰 기대를 걸어 왔음", speakingStyle: "말수가 줄어든다", gender: male }
 
 - theme: orthoward-surgical-site-infection
+  localeBound: [escalation]
   title: 패혈증 징후로 활력징후가 불안정해진 상황
   tagline: "I feel like I am going to pass out. Everything is spinning."
   room: 1인 고관절 병실
@@ -3545,6 +3546,7 @@
   persona: { name: "Irwin Fitzhenry", ageRange: 60s, sub: "우측 대퇴골 골절 수술 후 재활 계획 수립 단계", mood: neutral, personality: "활동적이었던 이전 삶을 그리워함", speakingStyle: "자신감 있게 말한다", gender: male }
 
 - theme: orthoward-discharge-to-rehab-planning
+  localeBound: [payer]
   title: 재활 시설 입소 절차를 안내하기
   tagline: "What kind of paperwork does the rehab facility need from us?"
   room: 가족 상담실
@@ -5531,6 +5533,7 @@
   persona: { name: Frances Griggs, ageRange: 70s, sub: "좌측 대퇴골 골절 수술 후 8일째, 혼자 사는 상태", mood: worried, personality: "집안 구조를 걱정함", speakingStyle: "방마다 나열하며 묻는다", gender: female }
 
 - theme: orthoward-home-equipment-teaching
+  localeBound: [payer]
   title: 보조기구 대여와 구입 정보를 안내하기
   tagline: "Is any of this covered by insurance, or are we paying out of pocket for everything?"
   room: 퇴원 상담 코너
@@ -5603,6 +5606,7 @@
   persona: { name: Beatrice Horton, ageRange: 70s, sub: "우측 고관절 전치환 수술 후 9일째, 오래된 좁은 집에 거주하는 상태", mood: worried, personality: "집 구조를 바꿀 수 없다고 체념함", speakingStyle: "포기하는 듯한 말투", gender: female }
 
 - theme: orthoward-home-equipment-teaching
+  localeBound: [payer]
   title: 경제적 부담으로 보조기구를 갖추기 어려운 가족을 돕기
   tagline: "Honestly, we can't afford to buy all of this equipment right now."
   room: 가족 상담실
@@ -7480,6 +7484,7 @@
   persona: { name: Harriet Milburn, ageRange: 70s, sub: "우측 고관절 전치환술 후 4일째", mood: worried, personality: "스스로 문지르며 참는 편이다", speakingStyle: "조심스럽게 증상을 말한다", gender: female }
 
 - theme: orthoward-hip-replacement
+  localeBound: [escalation]
   title: 수술 후 갑자기 숨이 차고 가슴이 아픈 폐색전 의심 상황
   tagline: "I can't catch my breath and my chest hurts when I breathe in!"
   room: 1인 고관절 병실
@@ -8184,6 +8189,7 @@
   persona: { name: Delia Nunes, ageRange: 60s, sub: "좌측 무릎 전치환술 후 2일째", mood: worried, personality: "호전 여부를 확인하고 싶어한다", speakingStyle: "천천히 또박또박 말한다", gender: female }
 
 - theme: orthoward-pulmonary-embolism
+  localeBound: [escalation]
   title: 갑작스러운 호흡곤란과 청색증으로 응급 대응하는 상황
   tagline: "I can't breathe and my lips feel numb!"
   room: 1인 고관절 병실
@@ -8220,6 +8226,7 @@
   persona: { name: Calvin Norwood, ageRange: 60s, sub: "좌측 대퇴골 골절 수술 후 2일째", mood: panic, personality: "죽음에 대한 공포를 말로 표현한다", speakingStyle: "숨 사이로 끊어 외친다", gender: male }
 
 - theme: orthoward-pulmonary-embolism
+  localeBound: [escalation]
   title: 혈압이 떨어지고 의식이 흐려지는 상황
   tagline: "She was talking to me a minute ago and now she won't answer me!"
   room: 1인 고관절 병실
@@ -8238,6 +8245,7 @@
   persona: { name: Janice Nowicki, ageRange: 50s, sub: "폐색전 환자의 딸", mood: panic, personality: "어머니 곁을 떠나려 하지 않는다", speakingStyle: "울면서 반복해 묻는다", gender: female }
 
 - theme: orthoward-pulmonary-embolism
+  localeBound: [escalation]
   title: 심정지가 임박한 폐색전 환자를 응급 처치하는 상황
   tagline: "Her pulse is thready, do you want me to start compressions?"
   room: 1인 고관절 병실
@@ -9643,6 +9651,7 @@
   acuity: routine
   persona: { name: Desmond Rhys, ageRange: 70s, sub: "좌측 대퇴골 골절 수술 후 1일째로 지방색전 고위험군 집중 관찰 대상", mood: neutral, personality: 관찰에 협조적임, speakingStyle: 필요한 말만 한다, gender: male }
 - theme: orthoward-fat-embolism
+  localeBound: [escalation]
   title: 호흡곤란, 의식저하, 점상출혈이 함께 나타난 전형적 지방색전 상황
   tagline: "I can't breathe right and my chest has these weird red spots now!"
   room: 4인 골절·견인 병실
@@ -9677,6 +9686,7 @@
   acuity: critical
   persona: { name: Millicent Rossiter, ageRange: 50s, sub: "우측 경골 골절 수술 후 2일째로 산소 공급에도 호흡 악화", mood: panic, personality: 산소를 써도 나아지지 않아 크게 겁먹음, speakingStyle: 헐떡이며 말한다, gender: female }
 - theme: orthoward-fat-embolism
+  localeBound: [escalation]
   title: 의식이 급격히 저하되어 응급 보고하는 상황
   tagline: "Where... am I... I don't..."
   room: 4인 골절·견인 병실
@@ -11136,6 +11146,7 @@
   persona: { name: Estelle Townsend, ageRange: 70s, sub: "고관절 전치환 수술 후 3일째 수혈 종료 직후", mood: neutral, personality: "회복을 스스로 확인하려 함", speakingStyle: "느낌을 조심스레 표현한다", gender: female }
 
 - theme: orthoward-blood-loss-anemia-transfusion
+  localeBound: [escalation]
   title: 배액이 급증하고 혈압이 떨어지는 활동성 출혈 상황
   tagline: "I feel cold and my ears are ringing, something is wrong."
   room: 1인 고관절 병실
@@ -11190,6 +11201,7 @@
   persona: { name: Norman Trimble, ageRange: 80s, sub: "대퇴 경부 골절 수술 후 2일째 중증 빈혈", mood: panic, personality: "지남력이 흐려진 상태임", speakingStyle: "말이 느리고 끊긴다", gender: male }
 
 - theme: orthoward-blood-loss-anemia-transfusion
+  localeBound: [escalation]
   title: 저혈량 쇼크 징후로 응급 대응하는 상황
   tagline: "My hands are freezing and I think I'm going to pass out."
   room: 1인 고관절 병실
@@ -11863,6 +11875,7 @@
   acuity: routine
   persona: { name: Maureen Vernon, ageRange: 70s, sub: "우측 고관절 전치환 수술 후 4일째", mood: neutral, personality: 혼자 살아 걱정이 많음, speakingStyle: 생활 이야기를 길게 한다, gender: female }
 - theme: orthoward-joint-dislocation-precautions
+  localeBound: [escalation]
   title: 탈구 경고 징후를 환자에게 설명하기
   tagline: "How would I even know if the hip actually came out of place?"
   room: 퇴원 상담 코너
@@ -12596,6 +12609,7 @@
   acuity: urgent
   persona: { name: Beatrice Zubrow, ageRange: 70s, sub: "고관절 골절 수술 후 4일째 마약성 진통제 사용 중", mood: worried, personality: 말하기 민망해함, speakingStyle: 에둘러 표현한다, gender: female }
 - theme: orthoward-pca-nerve-block-pain
+  localeBound: [escalation]
   title: 진통제 과다로 호흡이 느려지고 의식이 처지는 상황
   tagline: "Mmm... I cannot... keep my eyes open..."
   room: 1인 고관절 병실

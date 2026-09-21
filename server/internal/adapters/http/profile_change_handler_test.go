@@ -49,6 +49,7 @@ func (r *profileRepo) UpsertByIdentity(context.Context, user.Provider, string, s
 func (r *profileRepo) GetByID(context.Context, string) (*user.User, error)    { panic("not used") }
 func (r *profileRepo) SetEquippedTitle(context.Context, string, string) error { panic("not used") }
 func (r *profileRepo) SetUILang(context.Context, string, string) error        { panic("not used") }
+func (r *profileRepo) SetGoalDept(context.Context, string, string) error      { panic("not used") }
 
 func patchProfile(t *testing.T, repo *profileRepo, body string) int {
 	t.Helper()

@@ -206,7 +206,7 @@ export default function ResultRoute() {
       <Stack.Screen options={TASK_SCREEN} />
 
       <View style={styles.topbar}>
-        <Pressable onPress={() => router.replace('/campus')} hitSlop={10}>
+        <Pressable onPress={() => router.replace('/journey')} hitSlop={10}>
           <NbPaper rot={-1} style={styles.chip}><NbIcon name="chevronLeft" size={16} /></NbPaper>
         </Pressable>
         <View style={{ flex: 1 }} />
@@ -393,7 +393,7 @@ export default function ResultRoute() {
               full
               iconRight="chevronRight"
               iconColor={nb.paper}
-              onPress={() => router.replace(nextScenario ? `/scenario/${nextScenario}` : '/campus')}
+              onPress={() => router.replace(nextScenario ? `/scenario/${nextScenario}` : '/journey')}
             >
               {t(nextScenario === id ? 'result.retryScenario' : 'result.nextScenario')}
             </NbButton>
