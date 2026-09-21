@@ -103,27 +103,38 @@ describe('CurrentStationBar', () => {
     act(() => { tree.unmount(); });
   });
 
-  // A topic with ~24 courses used to draw one little square per course (`NbProgSquares`),
-  // which overflowed the row and drew over the CTA pill in the real simulator run this
-  // fix is responding to. A percentage bar has no such axis — its box is the same size
-  // whichever `total` comes in — so this asserts the bar's own box does not grow with
-  // `total`, at a count (40) well past the 24 that broke it.
-  it('draws the same progress-bar box for a 40-course topic as a 5-course one', () => {
-    const widthOfBar = (total: number) => {
-      const station = { ...STATION, total, done: Math.min(STATION.done ?? 0, total) } as JourneyCurriculum;
-      const tree = mount(<CurrentStationBar station={station} kind="resume" onPress={jest.fn()} />);
-      // The bar sits in a fixed-size box (a plain host View wrapping NbGauge) — find it
-      // by width rather than by NbGauge's own composite type, since that keeps this test
-      // from tripping over whatever module-registry quirk affects other components here.
-      // `height === undefined` excludes the 22×22 department icon (an RNSVGSvgView with
-      // its own numeric width AND height) — the bar's box sets only `width`.
-      const boxes = styled(tree.root, (s) => typeof s.width === 'number' && s.height === undefined);
-      expect(boxes).toHaveLength(1);
-      const width = boxes[0].props.style.width as number;
-      act(() => { tree.unmount(); });
-      return width;
-    };
-    expect(widthOfBar(40)).toBe(widthOfBar(5));
+  // 한 주제에 코스가 24개쯤 되자 코스마다 네모 하나를 그리던 것(`NbProgSquares`)이 행을
+  // 넘쳐 옆의 Resume pill 위에 그려졌다 — 실기에서 확인한 그 증상에 대한 수정이다.
+  // 네모는 유지하되 개수가 total을 따라가지 않아야 한다 — 따라가던 것이 Resume pill을
+  // 덮은 원인이었다. 8×8 정사각형 호스트 노드를 세면 그게 곧 네모 수다.
+  const boxCount = (total: number, done: number) => {
+    const station = { ...STATION, total, done } as JourneyCurriculum;
+    const tree = mount(<CurrentStationBar station={station} kind="resume" onPress={jest.fn()} />);
+    const n = styled(tree.root, (st) => st.width === 8 && st.height === 8).length;
+    act(() => { tree.unmount(); });
+    return n;
+  };
+  const litCount = (total: number, done: number) => {
+    const station = { ...STATION, total, done } as JourneyCurriculum;
+    const tree = mount(<CurrentStationBar station={station} kind="resume" onPress={jest.fn()} />);
+    const n = styled(tree.root, (st) => st.width === 8 && st.height === 8
+      && st.backgroundColor !== 'transparent').length;
+    act(() => { tree.unmount(); });
+    return n;
+  };
+
+  it('draws the same number of progress boxes for a 40-course topic as a 5-course one', () => {
+    expect(boxCount(40, 1)).toBe(boxCount(5, 1));
+    expect(boxCount(40, 1)).toBeGreaterThan(0);
+  });
+
+  // 양 끝을 반올림에 맡기지 않는다. 24개 중 1개는 4%라 반올림하면 0칸이 되어 "시작도
+  // 안 함"으로 읽히고, 99%는 올림하면 전 칸이 되어 "다 끝냄"으로 읽힌다. 둘 다 거짓이다.
+  it('lights at least one box for any progress, and fills the row only when everything is done', () => {
+    expect(litCount(24, 0)).toBe(0);
+    expect(litCount(24, 1)).toBeGreaterThanOrEqual(1);
+    expect(litCount(24, 23)).toBeLessThan(boxCount(24, 23));
+    expect(litCount(24, 24)).toBe(boxCount(24, 24));
   });
 
   // The whole point of the fixed-width bar: however many courses a topic has, the Resume

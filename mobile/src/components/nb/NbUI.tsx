@@ -457,6 +457,37 @@ export function NbProgSquares({ done, total, color = nb.green }: { done: number;
   );
 }
 
+/** Progress as a FIXED number of boxes — the same row whatever `total` is.
+ *
+ *  `NbProgSquares` draws one box per item, which is countable and right when there
+ *  are a few. A journey station has twenty-odd courses: the row then runs past
+ *  whatever sits beside it (it drew over the bar's Resume pill), and nobody counts
+ *  twenty-four boxes by eye anyway — past six or seven they read as "a lot" and the
+ *  exact figure has to come from the text next to them.
+ *
+ *  Both ends are kept honest rather than rounded. One course done out of twenty-four
+ *  is 4%, which rounds to no boxes at all and would read as "not started"; so any
+ *  progress lights at least one. The reverse matters more: 99% rounds up to a full
+ *  row, so only finishing every course fills the last box. */
+export function NbProgScale({ done, total, boxes = 10, color = nb.green }: {
+  done: number; total: number; boxes?: number; color?: string;
+}) {
+  const lit = total <= 0 || done <= 0 ? 0
+    : done >= total ? boxes
+    : Math.min(boxes - 1, Math.max(1, Math.round((done / total) * boxes)));
+  return (
+    <View style={{ flexDirection: 'row', gap: 2.5, alignItems: 'center' }}>
+      {Array.from({ length: boxes }).map((_, i) => (
+        <View key={i} style={{
+          width: 8, height: 8, borderWidth: 1.3, borderRadius: 1.5,
+          borderColor: i < lit ? color : nb.soft,
+          backgroundColor: i < lit ? `${color}59` : 'transparent',
+        }} />
+      ))}
+    </View>
+  );
+}
+
 /** A search field written on a ruled line rather than boxed in. */
 export function NbSearchLine({ placeholder, value, onPress, right }: {
   placeholder: string;
