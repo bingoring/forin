@@ -10,12 +10,12 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type JourneyStep, type JourneyView } from '@/api/client';
 import { CurrentStationBar } from '@/components/journey/CurrentStationBar';
 import { FreeRoamRow } from '@/components/journey/FreeRoamRow';
-import { GoalDeptSheet } from '@/components/journey/GoalDeptSheet';
 import { JourneyMap, type JourneyCurriculum } from '@/components/journey/JourneyMap';
 import { StationSheet } from '@/components/journey/StationSheet';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbTag, nbText } from '@/components/nb/NbUI';
 import { deptNbIcon } from '@/data/campus';
+import { offerGoalPick } from '@/data/journeyGoalPick';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb } from '@/theme/nb';
 import { useLocale, useT } from '@/i18n';
 
@@ -45,7 +45,6 @@ export default function JourneyScreen() {
   const [view, setView] = useState<JourneyView | null>(null);
   const [state, setState] = useState<'loading' | 'ok' | 'error'>('loading');
   const [openKey, setOpenKey] = useState<string | null>(null);
-  const [pickingDept, setPickingDept] = useState(false);
 
   // 이어달리는 요청 중 마지막 것만 이긴다. `load()`와 `pickDept()`는 둘 다 이 하나의 카운터를
   // 나눠 쓴다 — 자유 탐방 칩을 빠르게 두 번 누르면(또는 칩을 누른 직후 탭을 떠났다 돌아와
@@ -131,7 +130,16 @@ export default function JourneyScreen() {
       {!!goalDept && (
         <Pressable
           testID="journey-goal-dept-press"
-          onPress={() => setPickingDept(true)}
+          // 부서 고르기는 바텀시트가 아니라 밀려 들어오는 화면이다(2026-09-21 개정,
+          // frontend-components.md GoalDeptBar 절) — 오른쪽 화살표가 "다른 화면으로
+          // 간다"고 말하는데 시트가 올라오면 신호와 결과가 어긋났고, 부서 29개는 시트
+          // 높이로 끝까지 보여줄 수 없었다(실기에서 마지막 두 부서가 잘렸다). 목록은
+          // 새로 만들지 않고(J9) 이미 계산해 둔 allDepts를 화면으로 넘긴다 — 넘기는
+          // 방법이 route param이 아니라 모듈 스토어인 이유는 journeyGoalPick.ts에.
+          onPress={() => {
+            offerGoalPick({ depts: allDepts, current: goalDept, inferred: !!view.inferred }, pickDept);
+            router.push('/journey/pick-dept');
+          }}
           accessibilityRole="button"
           accessibilityLabel={t('journey.pickDeptTitle')}
         >
@@ -186,18 +194,6 @@ export default function JourneyScreen() {
           themeKey={openKey}
           onClose={() => setOpenKey(null)}
           onStepPress={openStep}
-        />
-      )}
-
-      {pickingDept && (
-        <GoalDeptSheet
-          depts={allDepts}
-          current={goalDept}
-          inferred={!!view.inferred}
-          // 자유 탐방 칩과 같은 경로(J5) — pickDept()가 setGoalDept를 부르고 그 응답으로
-          // 다시 그린다. 미리보기와 확정을 나누지 않는다.
-          onPick={(dept) => { setPickingDept(false); pickDept(dept); }}
-          onClose={() => setPickingDept(false)}
         />
       )}
     </Sheet>
