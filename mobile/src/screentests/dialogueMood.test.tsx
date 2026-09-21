@@ -82,6 +82,17 @@ test('the portrait falls back to the authored mood rather than blanking', () => 
   expect(SRC).toMatch(/const expr = moodExpression\(turnMood\) \?\? authored;/);
 });
 
+test('the name-plate status chip follows the same mood as the face, not the authored one alone', () => {
+  // The bug: the patient's mood improved — the FACE moved on (it already reads
+  // `expr`, this turn's mood falling back to the authored one) — but the status
+  // chip beside the name kept saying the scenario's OPENING mood (e.g. still ANGRY)
+  // because it read `p.mood` directly instead of sharing `expr`. Both must come from
+  // the same fact, or the two disagree about the patient's current mood.
+  expect(SRC).toMatch(/status=\{\(turnMood \|\| p\.mood\) \? expr\.toUpperCase\(\) : undefined\}/);
+  // And it must not have regressed to reading the authored mood by itself.
+  expect(SRC).not.toMatch(/status=\{p\.mood \? p\.mood\.toUpperCase\(\) : undefined\}/);
+});
+
 test('the mood is applied before the text and survives the wait for the next reply', () => {
   // onMood fires ahead of the first delta, so the face is right as the words appear.
   expect(SRC).toMatch(/onMood: \(m\) => setTurnMood\(asMood\(m\)\)/);
