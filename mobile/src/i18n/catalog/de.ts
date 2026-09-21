@@ -185,6 +185,8 @@ export const de: Record<string, string> = {
   'journey.loadFailed': 'Die Reise konnte nicht geladen werden. (Login/Server prüfen)',
   'journey.inferredTag': 'Vermutet',
   'journey.pickDeptTitle': 'Zielabteilung wählen',
+  'journey.pickDeptEmpty': 'Die Abteilungsliste konnte nicht geladen werden. Bitte erneut über den Dienst-Tab öffnen.',
+  'journey.pickDeptEmptyBack': 'Zurück zum Dienst',
   'journey.pickDeptHint': 'Deine Reise folgt der Spur dieser Abteilung.',
   'journey.pickDeptInferredHint': 'Das ist noch eine Vermutung — wähle deine Zielabteilung selbst.',
 

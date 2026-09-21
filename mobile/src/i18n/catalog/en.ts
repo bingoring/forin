@@ -188,6 +188,8 @@ export const en: Record<string, string> = {
   'journey.loadFailed': 'Could not load your journey. (check login / server)',
   'journey.inferredTag': 'Inferred',
   'journey.pickDeptTitle': 'Pick your goal department',
+  'journey.pickDeptEmpty': 'We could not load the department list. Please open it from Work again.',
+  'journey.pickDeptEmptyBack': 'Back to Work',
   'journey.pickDeptHint': 'Your journey follows this department’s track.',
   'journey.pickDeptInferredHint': 'This is still a guess — pick your goal department yourself.',
 

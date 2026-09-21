@@ -158,6 +158,20 @@ describe('PickDept', () => {
   });
 
   // 뒤로 가기 버튼 자체도 일터 탭으로 돌아간다 — 아무것도 고르지 않고 나가는 길.
+  // 정상 경로(일터 탭 → 화살표)로는 목록 없이 열릴 일이 없지만, 딥링크로 곧장 열거나
+  // 앱이 되살아나며 이 라우트로 복원되면 실제로 그렇게 열린다 — 실기에서 확인했다.
+  // 그때 빈 화면을 내놓으면 학습자는 부서가 하나도 없다고 읽는다.
+  it('says so and offers a way back when it was handed no list at all', async () => {
+    clearGoalPickOffer();
+    const tree = mount();
+    const shown = texts(tree.root).join(' ');
+    expect(shown).toContain('부서 목록을 불러오지 못했어요');
+    expect(hostNodesWithTestId(tree.root, 'pick-dept-empty-back')).toHaveLength(1);
+    const before = mockBack;
+    act(() => { tree.root.findByProps({ testID: 'pick-dept-empty-back' }).props.onPress(); });
+    expect(mockBack).toBe(before + 1);
+  });
+
   it('the back button returns without picking anything', () => {
     offerGoalPick({ depts: ALL_29_DEPTS, current: 'ER', inferred: false }, jest.fn());
     const tree = mount();

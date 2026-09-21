@@ -185,6 +185,8 @@ export const ja: Record<string, string> = {
   'journey.loadFailed': '旅程を読み込めませんでした。(ログイン・サーバー確認)',
   'journey.inferredTag': '推定',
   'journey.pickDeptTitle': '目標部署を選ぶ',
+  'journey.pickDeptEmpty': '部署の一覧を読み込めませんでした。勤務タブからもう一度開いてください。',
+  'journey.pickDeptEmptyBack': '勤務に戻る',
   'journey.pickDeptHint': '旅程はこの部署のトラックに沿って進みます。',
   'journey.pickDeptInferredHint': 'まだ推定です — 目標部署を自分で選んでみましょう。',
 

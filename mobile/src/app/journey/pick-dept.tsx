@@ -96,7 +96,21 @@ export default function PickDept() {
           함정 — StationSheet.tsx의 같은 코멘트 참고). 여기서는 위의 헤더가 고정
           높이이고 이 ScrollView가 남은 화면을 전부 채우도록 스스로 경계를 갖는다. */}
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }}>
-        {depts.map((dept) => (
+        {depts.length === 0 ? (
+          // 건네받은 목록이 없을 때. 정상 경로(일터 탭 → 화살표)로는 오지 않지만, 딥링크로
+          // 곧장 열리거나 앱이 되살아나며 이 라우트로 복원되면 실제로 여기에 온다 — 그때
+          // 빈 화면을 내놓으면 학습자는 부서가 하나도 없다고 읽는다. 목록은 이 화면이
+          // 만들지 않으므로(J9 — 서버가 준 것만 쓴다) 여기서 채울 방법은 없고, 있는 그대로
+          // 말한 뒤 목록을 가진 화면으로 돌려보내는 것이 할 수 있는 전부다.
+          <View style={{ paddingHorizontal: 20, paddingTop: 24, gap: 12 }}>
+            <Text style={nbText.body(14, nb.soft)}>{t('journey.pickDeptEmpty')}</Text>
+            <Pressable testID="pick-dept-empty-back" onPress={() => router.back()} hitSlop={8}>
+              <NbPaper rot={-0.6} style={{ alignSelf: 'flex-start', paddingVertical: 8, paddingHorizontal: 14 }}>
+                <Text style={nbText.hand(15)}>{t('journey.pickDeptEmptyBack')}</Text>
+              </NbPaper>
+            </Pressable>
+          </View>
+        ) : depts.map((dept) => (
           <DeptRow key={dept} dept={dept} current={dept === current} onPress={() => onPick(dept)} />
         ))}
       </ScrollView>

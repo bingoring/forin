@@ -201,6 +201,8 @@ export const ko: Record<string, string> = {
   'journey.loadFailed': '여정을 불러오지 못했어요. (로그인·서버 확인)',
   'journey.inferredTag': '추정',
   'journey.pickDeptTitle': '목표 부서 고르기',
+  'journey.pickDeptEmpty': '부서 목록을 불러오지 못했어요. 일터에서 다시 열어 주세요.',
+  'journey.pickDeptEmptyBack': '일터로 돌아가기',
   'journey.pickDeptHint': '여정이 이 부서 트랙을 따라갑니다.',
   'journey.pickDeptInferredHint': '아직 추정이에요 — 목표 부서를 직접 골라 보세요.',
 
