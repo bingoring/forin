@@ -166,6 +166,33 @@ describe('StationTrack', () => {
     expect(tree.root.findAllByType(MilestoneFlag)).toHaveLength(1);
   });
 
+  // 한 대화는 도움받는 판과 혼자 하는 판 두 회차로 나뉘어 오고, 두 회차는 같은
+  // scenarioId와 같은 name을 갖는다. 그것으로 키를 만들면 한 주제 안에서 겹치는데,
+  // 실제로 겹쳤다 — 실기에서 "two children with the same key" 경고가 화면에 떴다.
+  //
+  // 개수를 세는 단정으로는 못 잡는다. React는 키가 겹쳐도 노드를 합치지 않고 경고만
+  // 낸다(그렇게 써 봤고 옛 키로 되돌려도 통과했다). 그래서 그 경고를 직접 듣는다.
+  it('gives every station a distinct key when two passes share a scenario and a name', async () => {
+    const steps = buildSteps(6, 0, false).map((st, i) => ({
+      ...st,
+      // 서버가 실제로 보내는 모양: 같은 대화의 두 회차가 번호와 이름을 공유한다.
+      scenarioId: `SCN-PHARMA-0000${Math.floor(i / 2) + 1}`,
+      name: '반복 신원확인 이유 설명',
+      pass: (i % 2) + 1,
+      passes: 2,
+    })) as JourneyStep[];
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      const tree = mount(<StationTrack steps={steps} onStepPress={jest.fn()} />);
+      await flush();
+      expect(tree.root.findAllByType(Station)).toHaveLength(6);
+      const dupe = spy.mock.calls.map((c) => String(c[0] ?? '')).filter((m) => m.includes('same key'));
+      expect(dupe).toEqual([]);
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
   it('stands the screen up on an empty theme without inventing a station', async () => {
     const tree = mount(<StationTrack steps={[]} onStepPress={jest.fn()} />);
     await flush();

@@ -246,7 +246,12 @@ export function StationTrack({ steps, onStepPress }: {
           const state = states[i];
           const p = points[i];
           const offset = RADIUS[state] + 28; // Station이 (r+28, r+28)에 원을 그린다.
-          const key = step.scenarioId ?? step.name ?? String(i);
+          // 위치가 키다. 한 대화는 도움받는 판과 혼자 하는 판 두 회차로 나뉘어 오는데,
+          // 두 회차는 같은 scenarioId와 같은 name을 갖는다 — 그것으로 키를 만들면 한
+          // 주제 안에서 키가 겹치고, 실제로 겹쳤다(실기에서 "two children with the same
+          // key" 경고로 드러났다). 스텝 목록은 서버가 준 순서 그대로이고 이 화면이
+          // 재정렬하지 않으므로, 인덱스가 이 목록 안에서 유일한 유일한 값이다.
+          const key = `${i}:${step.scenarioId ?? step.name ?? ''}`;
           return (
             <View key={key} style={{ position: 'absolute', left: p.x - offset, top: p.y - offset }}>
               <Station
