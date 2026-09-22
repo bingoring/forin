@@ -67,11 +67,6 @@ export const en: Record<string, string> = {
   'step.kind.quiz': 'Quiz',
   'step.kind.event': 'Sudden event',
   'step.kind.boss': 'Chapter test',
-  'step.optional': 'Optional',
-  'step.guided': 'from choices',
-  'step.solo': 'on your own',
-  'step.now': 'NOW',
-  'step.retry': 'AGAIN',
 
   'badge.earned': 'Earned',
   'badge.locked': 'Locked',
@@ -170,18 +165,13 @@ export const en: Record<string, string> = {
   'dept.ORTHOWARD': 'Orthopaedic ward',
   'dept.DERM': 'Dermatology',
 
-  // ── journey (workplace tab journey map — current-station bar) ────
+  // ── journey (workplace tab topic list — recommend badge, P3-C) ───
   'journey.resumeLabel': 'Resume',
-  'journey.nextLabel': 'Next station',
-  'journey.trackClear': 'Every station passed — try a milestone test or free roam',
   // ── journey (milestone flag — track end, task-19) ──────────────────
   'journey.milestone.passed': 'Passed ✓',
   'journey.milestone.open': 'Ready',
   'journey.milestone.closed': 'Not yet',
-  // ── journey (station sheet — difficulty ladder) ───────────────────
-  'journey.tierBasic': 'Basics',
-  'journey.tierApplied': 'Applied',
-  'journey.tierCrisis': 'Crisis',
+  // ── journey (bundle names — dept core/depth) ──────────────────────
   'journey.track.core': 'Core',
   'journey.track.depth': 'Depth',
   'journey.track.collab': 'Collab',

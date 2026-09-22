@@ -75,11 +75,6 @@ export const ko: Record<string, string> = {
   'step.kind.quiz': '퀴즈',
   'step.kind.event': '돌발 이벤트',
   'step.kind.boss': '챕터 시험',
-  'step.optional': '선택',
-  'step.guided': '보기 중에서',
-  'step.solo': '직접 대화',
-  'step.now': 'NOW',
-  'step.retry': '다시',
 
   // ── collection status labels ─────────────────────────────────────────────
   'badge.earned': '획득',
@@ -183,18 +178,13 @@ export const ko: Record<string, string> = {
   'dept.ORTHOWARD': '정형외과병동 OrthoWard',
   'dept.DERM': '피부과 Derm',
 
-  // ── journey (일터 탭 여정 지도 — 현재 정거장 바) ──────────────────
+  // ── journey (일터 탭 주제 목록 — 권유 배지, P3-C) ──────────────────
   'journey.resumeLabel': '이어하기',
-  'journey.nextLabel': '다음 정거장',
-  'journey.trackClear': '정거장을 모두 통과했어요 — 구간 시험이나 자유 탐방을 해보세요',
   // ── journey (마일스톤 깃발 — 트랙 끝, task-19) ──────────────────────
   'journey.milestone.passed': '통과 ✓',
   'journey.milestone.open': '응시 가능',
   'journey.milestone.closed': '통과전',
-  // ── journey (정거장 시트 — 난이도 계단) ────────────────────────────
-  'journey.tierBasic': '기초',
-  'journey.tierApplied': '응용',
-  'journey.tierCrisis': '위기',
+  // ── journey (묶음 이름 — 부서 코어/심화) ────────────────────────────
   'journey.track.core': '공통 코어',
   'journey.track.depth': '심화',
   'journey.track.collab': '협업',

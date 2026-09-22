@@ -1,7 +1,7 @@
 // ThemeList — 일터 탭 1단계 (P3-C, build-spec-index.md §5·§8).
 //
 // @testing-library/react-native is not installed in this repo — react-test-renderer
-// throughout, same convention as CurrentStationBar.test.tsx/Station.test.tsx.
+// throughout, same convention as Station.test.tsx.
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Pressable, Text } from 'react-native';
 import Svg from 'react-native-svg';
@@ -23,9 +23,9 @@ function texts(root: ReactTestInstance): string[] {
 }
 
 // react-test-renderer's `findAllByType(Pressable)` compares by reference, and this
-// jest environment loads two distinct instances of the `Pressable` export (the same
-// module-registry quirk CurrentStationBar.test.tsx documents). Matching by name is
-// what actually finds the node here.
+// jest environment loads two distinct instances of the `Pressable` export (a
+// jest/react-native module-registry quirk). Matching by name is what actually finds
+// the node here.
 function findAllPressables(root: ReactTestInstance) {
   return root.findAll((n) => typeof n.type === 'function' && (n.type as { name?: string }).name === 'Pressable');
 }
@@ -94,7 +94,8 @@ describe('ThemeList', () => {
     // It has to be attached to the flagged card, not any other.
     const badges = tree.root.findAll((n) => n.props?.testID === 'theme-resume-badge');
     // (composite View + host node both carry the testID — count host only to avoid
-    // doubling, same trap CurrentStationBar.test.tsx's `styled` helper documents.)
+    // doubling, the same trap a style-matching `styled` helper elsewhere in this repo
+    // guards against too.)
     const hostBadges = badges.filter((n) => typeof n.type === 'string');
     expect(hostBadges).toHaveLength(1);
   });

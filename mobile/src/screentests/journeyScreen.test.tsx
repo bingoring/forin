@@ -2,14 +2,17 @@
 // build-spec-index.md). 1단계로 바뀐 뒤에도 이 화면이 계속 지켜야 하는 것들:
 //
 //  - K1: 여기서는 길을 그리지 않는다 — Station/JourneyMap이 그리던 지그재그 지도는
-//    더 이상 이 화면에 없다(그 컴포넌트 자체는 2단계가 쓸 것이라 지우지 않았을 뿐이다).
+//    더 이상 이 화면에 없다(`JourneyMap` 컴포넌트 자체는 이제 어느 화면도 렌더하지
+//    않는다 — 2단계는 그 자리·여백 상수만 가져다 쓰는 `StationTrack`이 대신 그린다,
+//    JourneyMap.tsx 파일 상단 코멘트 참고 — 그래도 파일은 그 상수들 때문에 지우지
+//    않는다).
 //  - K8/J5: 목표 부서 바와 자유 탐방 칩은 여전히 같은 경로(`pickDept`)를 타고, 같은
 //    요청 순서 카운터의 보호를 받는다 — 이 화면이 바뀐 것은 가운데 자리뿐이다.
 //  - 카드를 누르면 2단계 라우트(`/journey/theme/<themeKey>`)로 민다.
 //
 // @testing-library/react-native is not installed in this repo (Station.test.tsx,
-// CurrentStationBar.test.tsx, StationSheet.test.tsx already note the same thing), so
-// this uses react-test-renderer throughout.
+// ThemeList.test.tsx already note the same thing), so this uses react-test-renderer
+// throughout.
 const mockPushed: string[] = [];
 jest.mock('expo-router', () => {
   const React = require('react') as typeof import('react');

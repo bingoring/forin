@@ -53,9 +53,10 @@ function texts(root: ReactTestInstance): string[] {
 }
 
 /** react-test-renderer's `findAllByType(Pressable)` is unreliable in this jest
- *  environment (two module instances) — CurrentStationBar.test.tsx and
- *  StationSheet.test.tsx already worked around it by matching the pressable that WRAPS
- *  the button's own label text instead. */
+ *  environment (two module instances, a jest/react-native module-registry quirk —
+ *  ThemeList.test.tsx/Station.test.tsx document the same thing with a name-matching
+ *  workaround). This file instead matches the pressable that WRAPS the button's own
+ *  label text. */
 function pressableWithText(root: ReactTestInstance, label: string): ReactTestInstance {
   return root.findAll(
     (n) => typeof n.props?.onPress === 'function' && texts(n).includes(label),

@@ -3,8 +3,8 @@
 //
 // @testing-library/react-native's renderHook is NOT installed in this repo (task-15-brief.md
 // assumed it; confirmed absent, zero uses anywhere in src/). The repo convention for testing
-// a hook is CurrentStationBar.test.tsx's shape: mount a minimal component that calls the
-// hook and hands its return value out, via react-test-renderer.
+// a hook is to mount a minimal component that calls the hook and hands its return value
+// out, via react-test-renderer.
 //
 // The hook's state lives at MODULE scope (mirrors lib/wardPresence.ts — needed so a toggle
 // in 나 tab is seen by the home tab without a remount). That means a fresh test needs a

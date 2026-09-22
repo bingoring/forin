@@ -13,7 +13,8 @@ jest.mock('react-native-worklets', () => ({
 import { Text } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import {
-  NbButton, NbCheck, NbChip, NbGauge, NbIndexTabs, NbMark, NbMemo, NbPaper, NbProgSquares, NbSheet, NbStamp,
+  NbButton, NbCheck, NbChip, NbGauge, NbIndexTabs, NbMark, NbMemo, NbPaper, NbProgScale, NbProgSquares, NbSheet,
+  NbStamp,
 } from './NbUI';
 import { NbIcon } from './NbIcon';
 import { RULE_H, nb } from '@/theme/nb';
@@ -195,6 +196,25 @@ test('paper, stamps and checks carry the props the look depends on', () => {
   expect(styled(prog.root, (s) => s.width === 8 && s.backgroundColor !== 'transparent').length).toBe(3);
   expect(mount(<NbCheck done />).root.findAll((n) => String(n.type) === 'RNSVGPath', { deep: true }).length).toBe(1);
   expect(mount(<NbCheck />).root.findAll((n) => String(n.type) === 'RNSVGPath', { deep: true }).length).toBe(0);
+});
+
+test('a fixed-count progress scale keeps the same box count whatever the total is, and clamps both ends', () => {
+  // NbProgSquares (above) draws one box per item, which is right for a handful but ran
+  // past whatever sat beside it once a journey topic hit twenty-odd courses — the
+  // now-retired CurrentStationBar drew over its own Resume pill this way. NbProgScale is
+  // the fix: the box COUNT must stay fixed no matter how large `total` gets (still used
+  // today by ThemeList.tsx and the theme screen's header, both journey topic progress).
+  const boxes = (done: number, total: number) => mount(<NbProgScale done={done} total={total} />).root;
+  expect(styled(boxes(1, 40), (s) => s.width === 8).length).toBe(styled(boxes(1, 5), (s) => s.width === 8).length);
+
+  // Neither end is left to rounding: 1 of 24 (4%) still lights at least one box, and only
+  // finishing every one of them fills the row — 23/24 (96%) must not round up to full.
+  const lit = (done: number, total: number) => styled(boxes(done, total), (s) => s.width === 8 && s.backgroundColor !== 'transparent').length;
+  const all = styled(boxes(24, 24), (s) => s.width === 8).length;
+  expect(lit(0, 24)).toBe(0);
+  expect(lit(1, 24)).toBeGreaterThanOrEqual(1);
+  expect(lit(23, 24)).toBeLessThan(all);
+  expect(lit(24, 24)).toBe(all);
 });
 
 test('a memo wraps a bare string child in Text so it is not dropped', () => {

@@ -64,11 +64,6 @@ export const de: Record<string, string> = {
   'step.kind.quiz': 'Quiz',
   'step.kind.event': 'Plötzliches Ereignis',
   'step.kind.boss': 'Kapiteltest',
-  'step.optional': 'Optional',
-  'step.guided': 'mit Auswahl',
-  'step.solo': 'selbst',
-  'step.now': 'NOW',
-  'step.retry': 'ERNEUT',
 
   'badge.earned': 'Erhalten',
   'badge.locked': 'Gesperrt',
@@ -167,18 +162,13 @@ export const de: Record<string, string> = {
   'dept.ORTHOWARD': 'Orthopädische Station',
   'dept.DERM': 'Dermatologie',
 
-  // ── journey (Arbeitsplatz-Tab Wegkarte — Leiste "aktuelle Station") ──
+  // ── journey (Arbeitsplatz-Tab Themenliste — Empfehlungs-Badge, P3-C) ──
   'journey.resumeLabel': 'Fortsetzen',
-  'journey.nextLabel': 'Nächste Station',
-  'journey.trackClear': 'Alle Stationen bestanden — Abschnittsprüfung oder freie Erkundung',
   // ── journey (Meilenstein-Flagge — Streckenende, task-19) ───────────
   'journey.milestone.passed': 'Bestanden ✓',
   'journey.milestone.open': 'Bereit',
   'journey.milestone.closed': 'Noch nicht',
-  // ── journey (Stationsblatt — Schwierigkeitsleiter) ────────────────
-  'journey.tierBasic': 'Grundlagen',
-  'journey.tierApplied': 'Angewandt',
-  'journey.tierCrisis': 'Krise',
+  // ── journey (Gruppennamen — Abteilung Kern/Vertiefung) ─────────────
   'journey.track.core': 'Kern',
   'journey.track.depth': 'Vertiefung',
   'journey.track.collab': 'Zusammenarbeit',

@@ -1,6 +1,6 @@
 // MilestoneFlag — 트랙 끝의 구간 시험 깃발 (Task 19).
 //
-// Station.test.tsx·CurrentStationBar.test.tsx와 같은 이유로 react-test-renderer를 쓴다
+// Station.test.tsx·ThemeList.test.tsx와 같은 이유로 react-test-renderer를 쓴다
 // (@testing-library/react-native 미설치, task-19-brief.md 함정 1).
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Text } from 'react-native';
@@ -20,7 +20,7 @@ function texts(tree: ReturnType<typeof create>): string[] {
   return tree.root.findAllByType(Text).map((n) => String(n.props.children));
 }
 
-// CurrentStationBar.test.tsx와 같은 이유로 이름으로 매칭한다 — 이 jest 환경은 Pressable을
+// ThemeList.test.tsx와 같은 이유로 이름으로 매칭한다 — 이 jest 환경은 Pressable을
 // 두 개의 서로 다른 모듈 인스턴스로 로드해 참조 비교(findAllByType(Pressable), 함정 2)가
 // 항상 0을 돌려준다.
 function findAllPressables(root: ReactTestInstance) {

@@ -1,6 +1,17 @@
 // JourneyMap — lays the track's stations out along a zigzag path and links them with
 // PathSegment curves. 핸드오프 v41 08_JOURNEY_RESOURCES.md §3, frontend-components.md §2.
 //
+// P3-C(curriculum-v3-journey-ia/build-spec-index.md) 이후로 이 파일의 `JourneyMap`
+// 컴포넌트 자체는 어느 화면도 렌더하지 않는다 — 1단계는 `ThemeList`(길을 그리지
+// 않는 목록, K1)가, 2단계는 `StationTrack`(진짜 잠금이 있는 자리라 상태 어휘가
+// 다름, 파일 상단 주석 참고)이 대신 맡았다. 지우지 않고 둔 것은 이 컴포넌트가 아니라
+// 이 파일이 내보내는 것들이 여전히 쓰이기 때문이다: `stationPoint`/`BOTTOM_PAD`/
+// `LABEL_ALLOWANCE`/`MILESTONE_ALLOWANCE`/`MILESTONE_GAP`(StationTrack.tsx)과
+// `JourneyCurriculum` 타입(ThemeList.tsx 외). 아래 `CurrentStationBar` 관련 계산
+// 코멘트는 그 컴포넌트가 있던 시절 기록이다 — `CurrentStationBar`는 같은 P3-C에서
+// 은퇴했고(1단계가 목록이 되며 고정 바가 설 자리가 없어졌다), `BOTTOM_PAD` 자체는
+// StationTrack이 자신의 스크롤 여백으로 그대로 재사용한다.
+//
 // 정거장 좌표는 서버가 모른다(J10): CurriculumState는 순서만 준다. `stationPoint`가 그 순서를
 // 화면 위 x/y로 바꾸는 유일한 곳이고, 인덱스와 화면 폭 말고는 아무것도 읽지 않는다.
 //

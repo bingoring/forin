@@ -64,11 +64,6 @@ export const ja: Record<string, string> = {
   'step.kind.quiz': 'クイズ',
   'step.kind.event': '突発イベント',
   'step.kind.boss': '章テスト',
-  'step.optional': '任意',
-  'step.guided': '選択肢から',
-  'step.solo': '自分で',
-  'step.now': 'NOW',
-  'step.retry': '再',
 
   'badge.earned': '獲得',
   'badge.locked': 'ロック',
@@ -167,18 +162,13 @@ export const ja: Record<string, string> = {
   'dept.ORTHOWARD': '整形外科病棟 OrthoWard',
   'dept.DERM': '皮膚科 Derm',
 
-  // ── journey（職場タブ 旅程マップ — 現在地バー）─────────────────
+  // ── journey（職場タブ トピック一覧 — おすすめバッジ、P3-C）─────
   'journey.resumeLabel': '再開',
-  'journey.nextLabel': '次の停留所',
-  'journey.trackClear': 'すべての停留所を通過しました — 区間試験か自由散策を',
   // ── journey（マイルストーン旗 — トラックの終点、task-19）──────────
   'journey.milestone.passed': '合格 ✓',
   'journey.milestone.open': '受験可能',
   'journey.milestone.closed': '合格前',
-  // ── journey（停留所シート — 難易度の階段）────────────────────────
-  'journey.tierBasic': '基礎',
-  'journey.tierApplied': '応用',
-  'journey.tierCrisis': '危機',
+  // ── journey（束の名前 — 部署コア/深化）───────────────────────────
   'journey.track.core': '共通コア',
   'journey.track.depth': '深化',
   'journey.track.collab': '協業',

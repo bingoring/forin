@@ -197,17 +197,21 @@ test('the hint reveals the picked intent’s model line when stuck', () => {
 // carries its own `guide` (JourneyStep, server-sent) straight to `onStepPress`, and
 // journey.tsx threaded THAT into the push rather than re-deriving it.
 //
-// P3-C (curriculum-v3-journey-ia/build-spec-index.md) moved the middle link of that
-// pipe out of journey.tsx: the 일터 탭 is now a topic list (1단계) that no longer opens
-// StationSheet at all — build-spec-index.md §6 says StationSheet's job (and this exact
-// wiring) is ABSORBED into the still-unbuilt 2단계 주제 화면 instead. `StationSheet.tsx`
-// itself is untouched (deliberately kept for that screen to reuse), so its half of the
-// property still holds; the journey.tsx half has no home to assert against until 2단계
-// rebuilds it around StationSheet's steps, so this only checks the two ends that exist
-// today.
+// P3-C (curriculum-v3-journey-ia/build-spec-index.md) moved the whole pipe: the 일터
+// 탭 (1단계) no longer opens a sheet at all, and `StationSheet.tsx` itself is gone —
+// §6 of the build spec called this out up front ("시트는 이 화면에 흡수된다"). The
+// 2단계 주제 화면 (`app/journey/theme/[themeKey].tsx` + `StationTrack.tsx`) is what
+// absorbed the job, so this now checks the SAME property one hop later in that pipe:
+// `StationTrack` still hands the tapped step's own `guide` straight through to
+// `onStepPress` (via `pressStep`, not renamed away), and the theme screen's own
+// `routeStep` still reads `step.guide` off of it rather than re-deriving one.
 test('the chosen rung survives from the step row to the conversation screen', () => {
-  const sheet = readFileSync(join(__dirname, '..', 'components', 'journey', 'StationSheet.tsx'), 'utf8');
-  expect(sheet).toMatch(/onPress=\{\(\) => onStepPress\(s\)\}/);
+  const track = readFileSync(join(__dirname, '..', 'components', 'journey', 'StationTrack.tsx'), 'utf8');
+  expect(track).toMatch(/onPress=\{\(\) => pressStep\(i, step\)\}/);
+  expect(track).toMatch(/onStepPress\(step\);/);
+
+  const theme = readFileSync(join(__dirname, '..', 'app', 'journey', 'theme', '[themeKey].tsx'), 'utf8');
+  expect(theme).toMatch(/router\.push\(step\.guide \? `\/scenario\/\$\{scn\}\?guide=\$\{step\.guide\}`/);
 
   const briefing = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id].tsx'), 'utf8');
   expect(briefing).toMatch(/guide \? `\/dialogue\/\$\{id\}\?guide=\$\{guide\}`/);
