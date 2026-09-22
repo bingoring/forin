@@ -1,17 +1,18 @@
-// 일터 탭 = 여정 지도. 장소→부서→시나리오였던 옛 탐험 모드의 깊이를 부서→주제→시나리오로
-// 바꾼다. 두 깊이 구조가 공존할 이유가 없었다 — 같은 콘텐츠에 이르는 길이 두 갈래였다.
+// 일터 탭 = 여정 목록(P3-C, curriculum-v3-journey-ia/build-spec-index.md). 장소→부서→
+// 시나리오였던 옛 탐험 모드의 깊이를 부서→주제→시나리오로 바꾼 자리이되, 이 화면 자체는
+// 이제 지도를 그리지 않는다 — 부서 코어/부서 심화 두 묶음의 주제 목록이다(§5). 주제
+// 사이를 잇는 길은 여기서 그리지 않는다(K1); 그 은유는 주제 안(2단계, `/journey/theme`
+// 라우트)으로 내려갔다 — 난이도 계단이 실제로 잠기는 곳은 그쪽이다(§1).
 //
 // GET /me/journey 한 번이 이 화면이 여는 유일한 네트워크 호출이다(business-logic-model.md
 // W1). 탭에 들어올 때마다 다시 부른다 — 진도는 다른 화면(인테리어·퀴즈)에서 움직일 수 있고,
 // 목표 부서도 서버가 정본이라 화면은 아무것도 캐시하지 않는다.
 import { useCallback, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { api, type JourneyStep, type JourneyView } from '@/api/client';
-import { CurrentStationBar } from '@/components/journey/CurrentStationBar';
+import { api, type JourneyView } from '@/api/client';
 import { FreeRoamRow } from '@/components/journey/FreeRoamRow';
-import { JourneyMap, type JourneyCurriculum } from '@/components/journey/JourneyMap';
-import { StationSheet } from '@/components/journey/StationSheet';
+import { ThemeList } from '@/components/journey/ThemeList';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbTag, nbText } from '@/components/nb/NbUI';
 import { deptNbIcon } from '@/data/campus';
@@ -19,32 +20,12 @@ import { offerGoalPick } from '@/data/journeyGoalPick';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb } from '@/theme/nb';
 import { useLocale, useT } from '@/i18n';
 
-/**
- * The one entry the server flagged as the global resume target, RESCOPED into this
- * track (business-logic-model.md A2 — `rescopeCurrent`). Server-side, `resume` is set
- * on at most one curriculum in the whole track: on the `here` one if the global resume
- * point already lands inside this track, otherwise on the first non-passed one as a
- * substitute so the bar always has somewhere to point (J6). Nothing is invented here —
- * both the entry and its `state` are read straight off the payload, never fabricated
- * (J6/J7's "here를 지어내지 않는다" and "now도 지어내지 않는다").
- *
- * `kind` is 'resume' only when that entry's own state is 'here' — i.e. the global
- * continue point really is this station. Anything else means the server picked a
- * stand-in, and the bar reads "다음 정거장" instead of implying you were just here.
- */
-export function pickCurrent(curricula: JourneyCurriculum[]): { station: JourneyCurriculum | null; kind: 'resume' | 'next' } {
-  const found = curricula.find((c) => c.resume);
-  if (!found) return { station: null, kind: 'next' }; // 트랙 전부 통과 — 가리킬 곳이 0개
-  return { station: found, kind: found.state === 'here' ? 'resume' : 'next' };
-}
-
 export default function JourneyScreen() {
   const t = useT();
   const router = useRouter();
   const locale = useLocale();
   const [view, setView] = useState<JourneyView | null>(null);
   const [state, setState] = useState<'loading' | 'ok' | 'error'>('loading');
-  const [openKey, setOpenKey] = useState<string | null>(null);
 
   // 이어달리는 요청 중 마지막 것만 이긴다. `load()`와 `pickDept()`는 둘 다 이 하나의 카운터를
   // 나눠 쓴다 — 자유 탐방 칩을 빠르게 두 번 누르면(또는 칩을 누른 직후 탭을 떠났다 돌아와
@@ -82,12 +63,13 @@ export default function JourneyScreen() {
       .catch(() => { if (seqRef.current !== seq) return; setState('error'); });
   };
 
-  const openStep = (step: JourneyStep) => {
-    const scn = step.scenarioId;
-    if (!scn) return;
-    setOpenKey(null);
-    if (scn.startsWith('QZ-')) { router.push(`/quiz/${scn}`); return; }
-    router.push(step.guide ? `/scenario/${scn}?guide=${step.guide}` : `/scenario/${scn}`);
+  // 카드를 누르면 2단계(주제 화면)로 민다. 2단계 화면은 이 태스크가 만들지 않는다 —
+  // 여기서는 이동만 한다. 경로 모양은 이 저장소의 다른 동적 라우트(`/scenario/[id]`,
+  // `/quiz/[id]`, `/interior/[id]`)와 같은 관례를 따르되, `/journey/pick-dept.tsx`가 이미
+  // `journey/` 아래 화면을 두고 있으므로 그 아래 한 단을 더 두었다.
+  const openTheme = (themeKey: string) => {
+    if (!themeKey) return;
+    router.push(`/journey/theme/${themeKey}`);
   };
 
   // 아직 한 번도 데이터를 받은 적이 없을 때만 화면 전체를 비운다 — 보여줄 목표 부서도
@@ -115,7 +97,6 @@ export default function JourneyScreen() {
 
   const goalDept = view.goalDept ?? '';
   const curricula = view.track?.curricula ?? [];
-  const { station, kind } = pickCurrent(curricula);
 
   // 부서 목록은 새로 만들지 않는다(Task 18) — `GET /me/journey`가 이미 전체를 담고 있다.
   // `freeRoam`은 목표 부서만 빼고 나머지 전부를 층 조건 없이 낸다(Task 17, J9 개정)이므로
@@ -156,46 +137,31 @@ export default function JourneyScreen() {
       <View style={{ flex: 1 }}>
         {state === 'error' ? (
           // 이미 한 번 받은 화면이 다음 새로고침(재포커스·목표 변경)에서만 실패한 경우 —
-          // 헤더·칩은 지난번에 받은 값 그대로 두고, 지도 자리에서만 다시 시도를 권한다.
-          <View testID="journey-map-error" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 14 }}>
+          // 헤더·칩은 지난번에 받은 값 그대로 두고, 목록 자리에서만 다시 시도를 권한다.
+          <View testID="journey-topics-error" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 14 }}>
             <Text style={[nbText.hand(17), { textAlign: 'center' }]}>{t('journey.loadFailed')}</Text>
             <NbButton variant="ink" onPress={load} icon="pencil" iconColor={nb.paper}>
               {t('common.retry')}
             </NbButton>
           </View>
         ) : state === 'loading' ? (
-          // 지도 자리에 스켈레톤, 하단 바는 비워 둔다(§4) — 방금 고른 목표 부서를 새로
-          // 그리는 동안에도 화면 전체가 아니라 이 자리만 비어 보인다.
-          <View testID="journey-map-loading" style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          // 목록 자리에 스켈레톤, 나머지는 비워 두지 않는다(§4와 같은 원칙) — 방금 고른
+          // 목표 부서를 새로 그리는 동안에도 화면 전체가 아니라 이 자리만 비어 보인다.
+          <View testID="journey-topics-loading" style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ActivityIndicator color={nb.ink} />
           </View>
         ) : (
-          <>
-            <JourneyMap track={view.track} onStationPress={setOpenKey} />
-            {/* 트랙 전부 통과면 station이 null이고, 열 정거장이 없다 — 탭해도 아무 일도
-                일어나지 않는다(구간 시험·자유 탐방은 이 태스크가 조립할 조각이 아니다). 있으면
-                그 정거장의 시트를 연다 — "바로 시나리오로 보내지 않는다, 어느 회차인지 고르게
-                한다"(§5). */}
-            <CurrentStationBar
-              station={station}
-              kind={kind}
-              onPress={() => { if (station?.themeKey) setOpenKey(station.themeKey); }}
-            />
-          </>
+          // K1: 여기서는 길을 그리지 않는다 — 주제 사이를 잇는 선·화살표·순번이 없는
+          // 목록이다. `ThemeList`가 부서 코어/부서 심화 두 묶음으로 나눠 그린다(K3).
+          <ScrollView testID="journey-topics-scroll" contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 24 }}>
+            <ThemeList curricula={curricula} onPress={openTheme} />
+          </ScrollView>
         )}
       </View>
 
       <View style={{ paddingVertical: 10 }}>
         <FreeRoamRow entries={view.freeRoam ?? []} onPick={pickDept} />
       </View>
-
-      {!!openKey && (
-        <StationSheet
-          themeKey={openKey}
-          onClose={() => setOpenKey(null)}
-          onStepPress={openStep}
-        />
-      )}
     </Sheet>
   );
 }

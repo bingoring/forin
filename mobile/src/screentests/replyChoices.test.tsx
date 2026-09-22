@@ -193,15 +193,21 @@ test('the hint reveals the picked intent’s model line when stuck', () => {
 });
 
 // Task 13 replaced 캠퍼스's DeptSheet/campus.tsx pair with the journey map's
-// StationSheet/journey.tsx pair — the property survives, just through the new pipe:
-// a step row carries its own `guide` (JourneyStep, server-sent) straight to
-// `onStepPress`, and journey.tsx threads THAT into the push rather than re-deriving it.
-test('the chosen rung survives every screen between the list and the conversation', () => {
+// StationSheet/journey.tsx pair — the property survived through that pipe: a step row
+// carries its own `guide` (JourneyStep, server-sent) straight to `onStepPress`, and
+// journey.tsx threaded THAT into the push rather than re-deriving it.
+//
+// P3-C (curriculum-v3-journey-ia/build-spec-index.md) moved the middle link of that
+// pipe out of journey.tsx: the 일터 탭 is now a topic list (1단계) that no longer opens
+// StationSheet at all — build-spec-index.md §6 says StationSheet's job (and this exact
+// wiring) is ABSORBED into the still-unbuilt 2단계 주제 화면 instead. `StationSheet.tsx`
+// itself is untouched (deliberately kept for that screen to reuse), so its half of the
+// property still holds; the journey.tsx half has no home to assert against until 2단계
+// rebuilds it around StationSheet's steps, so this only checks the two ends that exist
+// today.
+test('the chosen rung survives from the step row to the conversation screen', () => {
   const sheet = readFileSync(join(__dirname, '..', 'components', 'journey', 'StationSheet.tsx'), 'utf8');
   expect(sheet).toMatch(/onPress=\{\(\) => onStepPress\(s\)\}/);
-
-  const journey = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'journey.tsx'), 'utf8');
-  expect(journey).toMatch(/router\.push\(step\.guide \? `\/scenario\/\$\{scn\}\?guide=\$\{step\.guide\}`/);
 
   const briefing = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id].tsx'), 'utf8');
   expect(briefing).toMatch(/guide \? `\/dialogue\/\$\{id\}\?guide=\$\{guide\}`/);
