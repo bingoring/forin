@@ -1,7 +1,7 @@
 ---
 build-spec: curriculum-v3-journey
 artifact: frontend-components
-updated: 2026-09-20
+updated: 2026-09-22
 ---
 
 # Frontend Components — 여정 지도 (P3-B)
@@ -10,6 +10,37 @@ updated: 2026-09-20
 > 신규 색을 만들지 않는다. 이 문서는 그 명세를 컴포넌트 경계와 props로 옮긴 것이다.
 
 ## 1. 컴포넌트 트리
+
+> **2026-09-22 개정 — 2단 구조(P3-C).** 아래는 P3-B(이 문서가 처음 쓰인 시점)의 1단 구조다.
+> 실제로 구현된 것은 이제 2단 구조다 — 근거와 규칙(K1~K8)은
+> `curriculum-v3-journey-ia/build-spec-index.md`에 있고, 여기서는 옮겨 적지 않는다.
+>
+> ```
+> JourneyScreen (일터 탭, app/(tabs)/journey.tsx) — 1단계: 주제 목록
+> ├── GoalDeptBar                     목표 부서 표시 + 바꾸기 (그대로)
+> ├── ThemeList                       길이 아니라 목록 — 주제 사이에 선을 그리지 않는다(K1)
+> │   └── ThemeCard × n                부서 코어 / 부서 심화 두 묶음(K3), 카드당 권유 배지는
+> │                                     `resume`가 참일 때만(K2, 트랙당 최대 1개)
+> └── FreeRoamRow                     가로 스크롤 (그대로)
+>     └── FreeRoamChip × m
+>
+> ThemeScreen (app/journey/theme/[themeKey].tsx) — 2단계: 정거장 뷰
+> └── StationTrack                    옛 JourneyMap의 그림 언어(K4)를 이어받는다 —
+>     ├── PathSegment × (n-1)         정거장 = 스텝. 잠긴 스텝도 전부 그린다(§6 — 줄이지 않는다)
+>     ├── Station × n                 눌러도 걷지도 라우팅하지도 않는 것이 잠금 거절이다(K5)
+>     ├── NbAvatar                    학습자 자신의 아바타가 걸어간다(K6·K7)
+>     └── MilestoneFlag               트랙 끝 구간 시험(boss 스텝)
+> ```
+>
+> `JourneyMap` 컴포넌트 자체는 이제 어느 화면도 렌더하지 않는다 — 좌표 함수(`stationPoint`)와
+> 여백 상수(`BOTTOM_PAD`·`LABEL_ALLOWANCE`·`MILESTONE_ALLOWANCE`·`MILESTONE_GAP`)를
+> `StationTrack`이 그대로 가져다 쓰고 `JourneyCurriculum` 타입도 여러 곳이 써서, 파일은
+> 지우지 않고 남아 있다(`mobile/src/components/journey/JourneyMap.tsx` 파일 상단 코멘트 참고).
+>
+> 아래 §2 이후의 원문(1단 구조 기준)은 **역사 기록으로 남긴다** — `CurrentStationBar`와
+> `StationSheet` 절 자체는 지우지 않되, 각 절 안에 은퇴했다는 사실과 그 일을 지금 무엇이
+> 대신하는지 적어 둔다(선례: 아래 `GoalDeptBar` 절의 2026-09-21 개정, `CurrentStationBar`
+> 절 자체의 진행도 개정).
 
 ```
 JourneyScreen                       (일터 탭 = app/(tabs)/journey.tsx)
@@ -64,7 +95,13 @@ StationSheet                        탭 오버레이 (바텀시트)
 - `NbPaper` 위에 부서 아이콘 17 + 손글씨 14 + 도장 카운트(모노 9 그린).
 - **잠금 없음.** 누르면 목표 부서가 바뀐다(J5).
 
-### `CurrentStationBar`
+### `CurrentStationBar` — 은퇴함 (2026-09-22, P3-C)
+> 1단계가 지도에서 목록(`ThemeList`, §1의 2단 구조 참고)으로 바뀌면서 화면 하단에 고정 바가
+> 설 자리 자체가 없어졌다 — 목록에서는 "이어하기" 권유가 `resume`인 주제 카드 위 배지 하나로
+> 충분하다(트랙당 최대 하나, 새 컴포넌트가 아니라 `ThemeList`의 `ThemeCard`가 직접 그린다).
+> 아래는 있던 시절의 명세이고, 파일(`mobile/src/components/journey/CurrentStationBar.tsx`
+> + 테스트)은 실제로 지워졌다. 근거: `curriculum-v3-journey-ia/build-spec-index.md` §5(K2).
+
 - **props**: `{ station: Station | null; kind: 'resume'|'next'; onPress() }`
 - 화면 하단 고정. 지도 스크롤 콘텐츠의 하단 패딩이 **96px 이상**이어야 가리지 않는다(핸드오프 §5).
 - `kind`는 전역 이어하기가 이 트랙 안이면 `resume`, 아니면 `next`다(J6·J7).
@@ -77,7 +114,19 @@ StationSheet                        탭 오버레이 (바텀시트)
   끝내야만 전 칸이다.
 - `station`이 null이면(트랙 전부 통과) 구간 시험이나 자유 탐방을 권한다.
 
-### `StationSheet`
+### `StationSheet` / `StepRow` — 은퇴함 (2026-09-22, P3-C)
+> 시트가 하던 일(스텝 목록을 열어 보여 준다)은 이제 화면 자체다 — 2단계 `ThemeScreen`
+> (`app/journey/theme/[themeKey].tsx`)이 같은 `GET /me/journey/stations/{themeKey}`를
+> 받아 `StationTrack`으로 그린다. 다만 그리는 **모양**은 목록(`StepRow` 세로 나열)이 아니라
+> 지도(정거장 = 스텝, §1의 2단 구조 참고)로 바뀌었다 — 난이도 계단은 요약 행(`TierRow`)이
+> 아니라 경로 위에서 어디부터 잠겼는지로 드러난다(§6, K5). `guide`가 두 회차를 가르는 것,
+> `pass`/`passes`가 "1/2"로 보이는 것은 살아 있다(`StationTrack`의 `stepSub`). 잠긴 스텝을
+> 회색 자물쇠 아이콘으로 바꿔 그리던 것과, `attempted`(재도전) 배지·`optional` 태그는
+> 목록 행이 없어지며 함께 빠졌다 — `far`(점선·흐림)와 `next`(잠기지 않음, optional의 그림)가
+> 이미 그 구분을 그림으로 옮기고 있어서다(`StationTrack.tsx`의 `stepStationState` 코멘트).
+> 아래는 있던 시절의 명세이고, 파일(`StationSheet.tsx` + 테스트)은 실제로 지워졌다. 근거:
+> `curriculum-v3-journey-ia/build-spec-index.md` §6.
+
 - **props**: `{ themeKey: string; onClose() }` — 열릴 때 `GET /me/journey/stations/{themeKey}`
 - 머리: 정거장 이름 · `NbProgSquares`(done/total) · 트랙 태그
 - 몸: `TierRow` 3개(기초·응용·위기, 잠긴 계단은 흐리게) → `StepRow` 목록
@@ -98,6 +147,10 @@ StationSheet                        탭 오버레이 (바텀시트)
 
 ## 4. 화면 상태
 
+> 아래는 1단 구조(하단 바 + 시트) 기준의 원문이다 — 하단 바·시트가 없어진 지금은 "하단 바"
+> 관련 두 행과 "시트 로딩" 행이 더는 그대로 적용되지 않는다. 2단계(`ThemeScreen`)는 하단
+> 바 대신 그냥 `loading`/`ok`/`error` 세 상태로 화면 전체를 그린다(§2 `StationSheet` 절 참고).
+
 | 상태 | 그림 |
 |---|---|
 | 로딩 | 지도 자리에 스켈레톤. 하단 바는 비워 둔다(자리 흔들림 방지) |
@@ -109,13 +162,29 @@ StationSheet                        탭 오버레이 (바텀시트)
 
 ## 5. 상호작용 · 네비게이션
 
+> **2026-09-22 개정 — 2단 구조(P3-C).** 아래는 1단 구조(시트 오버레이) 기준의 원문이다.
+> 실제 상호작용은 바뀌었다: **주제 탭**이 새로 생겼고(1단계 → 2단계 이동), **정거장 탭의
+> 결과가 "시트가 열린다"에서 "스텝이 열린다"로 바뀌었다**(시트 자체가 없어졌으므로 —
+> §2 `StationSheet` 절 참고). "하단 바 탭" 행은 `CurrentStationBar`와 함께 없어졌다. 지금
+> 기준의 표:
+
 | 동작 | 결과 |
 |---|---|
-| 정거장 탭 | `StationSheet` 열림 |
-| 스텝 탭 | `/scenario/{id}?guide=` 또는 `/quiz/{id}` |
+| 주제 카드 탭(1단계) | 2단계(`ThemeScreen`, `/journey/theme/{themeKey}`)로 이동. 잠기지 않는다(J1) |
+| 정거장(스텝) 탭(2단계) | 그 스텝이 열린다 — `/scenario/{id}?guide=` 또는 `/quiz/{id}`. 스텝이 아니라 화면 자체가 목록을 대신하므로, 더는 "시트가 연다"가 아니다 |
+| 잠긴 스텝 탭(2단계) | 걷지도 라우팅하지도 않는다 — 짧은 거절(K5) |
 | 자유 탐방 칩 탭 | `PATCH /me/goal-dept` → 여정 재요청 → 경로 교체 |
 | 목표 부서 바 탭 | 부서 고르기 화면으로 이동(같은 PATCH 경로). 뒤로 가면 일터로 돌아온다 |
-| 하단 바 탭 | 그 정거장의 시트 열림 (바로 시나리오로 보내지 않는다 — 어느 회차인지 고르게 한다) |
+
+> 원문(1단 구조 기준, 역사 기록):
+>
+> | 동작 | 결과 |
+> |---|---|
+> | 정거장 탭 | `StationSheet` 열림 |
+> | 스텝 탭 | `/scenario/{id}?guide=` 또는 `/quiz/{id}` |
+> | 자유 탐방 칩 탭 | `PATCH /me/goal-dept` → 여정 재요청 → 경로 교체 |
+> | 목표 부서 바 탭 | 부서 고르기 화면으로 이동(같은 PATCH 경로). 뒤로 가면 일터로 돌아온다 |
+> | 하단 바 탭 | 그 정거장의 시트 열림 (바로 시나리오로 보내지 않는다 — 어느 회차인지 고르게 한다) |
 
 ## 6. 디자인 SoT 매핑
 
