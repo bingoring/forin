@@ -18,7 +18,7 @@ import { MilestoneFlag } from './MilestoneFlag';
 import { NbStampNode } from '@/components/nb/NbStampNode';
 import { NbYarn } from '@/components/nb/NbYarn';
 import {
-  BOTTOM_PAD, MAX_WALK_MS, STEP_MS, StationTrack, bossMilestoneState, sectionBoundaries,
+  BOTTOM_PAD, MAX_WALK_MS, STEP_MS, StationTrack, avatarX, bossMilestoneState, sectionBoundaries,
   splitBossStep, stampPoint, stampStateOf, standIndexOf, stepStationState, tierLabelKey,
   walkDurationMs,
 } from './StationTrack';
@@ -405,5 +405,42 @@ describe('StationTrack', () => {
     expect(pressable.length).toBeGreaterThan(0);
     act(() => { pressable[pressable.length - 1].props.onPress(); });
     expect(onStepPress).toHaveBeenCalledWith(steps[2]);
+  });
+});
+
+// 아바타는 우표 왼쪽에 서되, 화면 밖으로 잘리지는 않는다. 기준 패턴의 왼쪽 끝 우표
+// (x = 64·70·96)가 그 경계다 — 폭 390에서 x = 68인 우표를 왼쪽으로 55 옮기면 아바타
+// 왼쪽 끝이 음수가 된다.
+describe('avatarX — 아바타는 우표 옆에 서되 잘리지 않는다', () => {
+  const W = 390;
+  const HALF = 20; // AVATAR_SIZE / 2
+
+  it('가운데 우표에서는 왼쪽에 선다', () => {
+    const x = 200;
+    expect(avatarX(x, W)).toBeLessThan(x);
+  });
+
+  it('왼쪽 끝 우표에서는 오른쪽으로 넘어간다', () => {
+    const x = stampPoint(0, W).x; // 기준 패턴의 x=70
+    expect(avatarX(x, W)).toBeGreaterThan(x);
+  });
+
+  it('기준 패턴 열 자리 모두에서 아바타가 화면 안에 들어온다', () => {
+    for (let i = 0; i < 10; i += 1) {
+      const p = stampPoint(i, W);
+      const ax = avatarX(p.x, W);
+      expect(ax - HALF).toBeGreaterThanOrEqual(0);
+      expect(ax + HALF).toBeLessThanOrEqual(W);
+    }
+  });
+
+  it('좁은 기기에서도 화면 안에 들어온다', () => {
+    for (const w of [320, 360, 430]) {
+      for (let i = 0; i < 10; i += 1) {
+        const ax = avatarX(stampPoint(i, w).x, w);
+        expect(ax - HALF).toBeGreaterThanOrEqual(0);
+        expect(ax + HALF).toBeLessThanOrEqual(w);
+      }
+    }
   });
 });

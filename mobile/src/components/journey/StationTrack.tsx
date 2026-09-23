@@ -172,6 +172,23 @@ const AVATAR_SIZE = 40;
 const AVATAR_H = (AVATAR_SIZE * 70) / 64;
 // 우표 위에 겹치지 않게 우표 왼쪽에 선다(브리프 §5-7) — 우표 중심에서 이만큼 왼쪽으로.
 const AVATAR_LEFT_OFFSET = 31 + AVATAR_SIZE / 2 + 4;
+
+/**
+ * 아바타는 우표 왼쪽에 선다 — 우표 위에 겹치면 번호도 아이콘도 가린다. 다만 기준 패턴의
+ * 왼쪽 끝 우표(x = 64·70·96)에서는 그대로 옮기면 아바타가 화면 밖으로 잘린다: 폭 390에서
+ * x = 68인 우표의 아바타 왼쪽 끝은 68 − 55 − 20 = −7이다. 그 자리에서는 반대쪽,
+ * 우표 오른쪽에 세운다 — 잘린 아바타보다 자리를 바꾼 아바타가 낫다.
+ */
+export function avatarX(stampX: number, width: number): number {
+  const left = stampX - AVATAR_LEFT_OFFSET;
+  if (left - AVATAR_SIZE / 2 >= AVATAR_EDGE_PAD) return left;
+  const right = stampX + AVATAR_LEFT_OFFSET;
+  // 오른쪽도 좁으면(아주 좁은 기기) 잘리지 않는 쪽으로 끌어당긴다.
+  return right + AVATAR_SIZE / 2 <= width - AVATAR_EDGE_PAD ? right : AVATAR_EDGE_PAD + AVATAR_SIZE / 2;
+}
+
+/** 아바타가 화면 가장자리에서 남겨야 할 여백. */
+const AVATAR_EDGE_PAD = 4;
 // 화면 왼쪽 밖 — 첫 걸음이 여기서 들어온다(읽는 방향과 같다).
 const OFFSCREEN_X = -160;
 
@@ -363,13 +380,11 @@ export function StationTrack({ steps, onStepPress }: {
     walkTo(i);
   };
 
-  /** 우표 좌표(순수) → 아바타가 서는 좌표(우표 왼쪽으로 옮긴 것). i<0은 화면 밖,
-   *  i>=N은 깃발 옆. */
+  /** 우표 좌표(순수) → 아바타가 서는 좌표. i<0은 화면 밖, i>=N은 깃발 옆. */
   const avatarPointAt = (i: number): Point => {
     if (i < 0) return { x: OFFSCREEN_X, y: points[0]?.y ?? 56 };
-    if (i < N) return { x: points[i].x - AVATAR_LEFT_OFFSET, y: points[i].y };
-    const fp = flagPoint ?? points[N - 1] ?? { x: width / 2, y: 56 };
-    return { x: fp.x - AVATAR_LEFT_OFFSET, y: fp.y };
+    const p = i < N ? points[i] : (flagPoint ?? points[N - 1] ?? { x: width / 2, y: 56 });
+    return { x: avatarX(p.x, width), y: p.y };
   };
 
   const indices = useMemo(() => {
