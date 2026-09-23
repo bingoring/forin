@@ -215,6 +215,9 @@ export const ja: Record<string, string> = {
   'journey.pickDeptInferredHint': 'まだ推定です — 目標部署を自分で選んでみましょう。',
   'journey.shelfTitle': '私の旅程',
   'journey.changeGoal': '目標を変える',
+  'journey.tier.1': '基礎',
+  'journey.tier.2': '実戦',
+  'journey.tier.3': '応用',
 
   'board.cleared': '完了',
   'board.remaining': '残り',

@@ -24,6 +24,13 @@ export const nb = {
   blue: '#4A6FA5',
   /** Green pen — passes, progress, local-staff badge. */
   green: '#5F8D5A',
+  /** Red embroidery thread — the journey trail's yarn (Task H, journey-binder-v42).
+   *  Distinct from `red` (`#C75146`, the pen): this is a physical thread colour, not ink,
+   *  and the two screens that use them side by side (the stamp trail's yarn against its
+   *  pencil-dashed future segment, which reuses `nb.ink` at low opacity) never need to
+   *  tell `red` and `yarn` apart, but a component reading the wrong token would still be
+   *  a silent colour bug — hence its own name rather than reusing `red`. */
+  yarn: '#D3574B',
 
   /** The notebook itself: cream stock with ruled lines. */
   cream: '#F1EBDD',

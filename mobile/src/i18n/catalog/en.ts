@@ -218,6 +218,9 @@ export const en: Record<string, string> = {
   'journey.pickDeptInferredHint': 'This is still a guess — pick your goal department yourself.',
   'journey.shelfTitle': 'Your journey',
   'journey.changeGoal': 'Change goal',
+  'journey.tier.1': 'Basics',
+  'journey.tier.2': 'Practice',
+  'journey.tier.3': 'Advanced',
 
   'board.cleared': 'Done',
   'board.remaining': 'Left',

@@ -215,6 +215,9 @@ export const de: Record<string, string> = {
   'journey.pickDeptInferredHint': 'Das ist noch eine Vermutung — wähle deine Zielabteilung selbst.',
   'journey.shelfTitle': 'Deine Reise',
   'journey.changeGoal': 'Ziel ändern',
+  'journey.tier.1': 'Grundlagen',
+  'journey.tier.2': 'Praxis',
+  'journey.tier.3': 'Vertiefung',
 
   'board.cleared': 'Fertig',
   'board.remaining': 'Offen',

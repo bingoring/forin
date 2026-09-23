@@ -234,6 +234,10 @@ export const ko: Record<string, string> = {
   // ── journey (부서 서가 — journey-binder-v42 Task G) ─────────────────
   'journey.shelfTitle': '나의 여정',
   'journey.changeGoal': '목표 바꾸기',
+  // ── journey (구간 경계 이름 — 우표 산책길, journey-binder-v42 Task H) ──────
+  'journey.tier.1': '기초',
+  'journey.tier.2': '실전',
+  'journey.tier.3': '심화',
 
   // ── board tab ────────────────────────────────────────────────────────────
   'board.cleared': '완료',
