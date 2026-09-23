@@ -175,6 +175,10 @@ export const en: Record<string, string> = {
   'journey.track.core': 'Core',
   'journey.track.depth': 'Depth',
   'journey.track.collab': 'Collab',
+  // ── journey (dept binder — journey-binder-v42 Task E) ──────────────
+  'journey.binderSummary': 'Topics {themes} · Situations {situations} · Stamps {stamps}',
+  'journey.themeDone': 'Done',
+  'journey.resumeAction': 'Resume',
   'journey.loadFailed': 'Could not load your journey. (check login / server)',
   'journey.inferredTag': 'Inferred',
   'journey.pickDeptTitle': 'Pick your goal department',

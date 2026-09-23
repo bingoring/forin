@@ -172,6 +172,10 @@ export const de: Record<string, string> = {
   'journey.track.core': 'Kern',
   'journey.track.depth': 'Vertiefung',
   'journey.track.collab': 'Zusammenarbeit',
+  // ── journey (Abteilungs-Ordner — journey-binder-v42 Task E) ────────
+  'journey.binderSummary': 'Themen {themes} · Situationen {situations} · Marken {stamps}',
+  'journey.themeDone': 'Fertig',
+  'journey.resumeAction': 'Weiter',
   'journey.loadFailed': 'Die Reise konnte nicht geladen werden. (Login/Server prüfen)',
   'journey.inferredTag': 'Vermutet',
   'journey.pickDeptTitle': 'Zielabteilung wählen',

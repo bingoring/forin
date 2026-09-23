@@ -11,8 +11,8 @@ import { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type JourneyView } from '@/api/client';
+import { DeptBinder } from '@/components/journey/DeptBinder';
 import { FreeRoamRow } from '@/components/journey/FreeRoamRow';
-import { ThemeList } from '@/components/journey/ThemeList';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbTag, nbText } from '@/components/nb/NbUI';
 import { deptNbIcon } from '@/data/campus';
@@ -151,10 +151,11 @@ export default function JourneyScreen() {
             <ActivityIndicator color={nb.ink} />
           </View>
         ) : (
-          // K1: 여기서는 길을 그리지 않는다 — 주제 사이를 잇는 선·화살표·순번이 없는
-          // 목록이다. `ThemeList`가 부서 코어/부서 심화 두 묶음으로 나눠 그린다(K3).
+          // K1: 여기서는 길을 그리지 않는다 — 주제 사이를 잇는 선·화살표·순번이 없다.
+          // `DeptBinder`가 부서 진행 격자·부서 표지·차트 바인더 간지 목록을 그린다
+          // (journey-binder-v42 Task E) — 코어/심화 두 묶음은 그 안에서도 그대로다(K3).
           <ScrollView testID="journey-topics-scroll" contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 24 }}>
-            <ThemeList curricula={curricula} onPress={openTheme} />
+            <DeptBinder curricula={curricula} onPress={openTheme} />
           </ScrollView>
         )}
       </View>

@@ -172,6 +172,10 @@ export const ja: Record<string, string> = {
   'journey.track.core': '共通コア',
   'journey.track.depth': '深化',
   'journey.track.collab': '協業',
+  // ── journey（部署バインダー — journey-binder-v42 Task E）───────────
+  'journey.binderSummary': 'テーマ {themes}・状況 {situations}・切手 {stamps}',
+  'journey.themeDone': '完了',
+  'journey.resumeAction': '続ける',
   'journey.loadFailed': '旅程を読み込めませんでした。(ログイン・サーバー確認)',
   'journey.inferredTag': '推定',
   'journey.pickDeptTitle': '目標部署を選ぶ',

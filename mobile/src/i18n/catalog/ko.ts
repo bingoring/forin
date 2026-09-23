@@ -188,6 +188,10 @@ export const ko: Record<string, string> = {
   'journey.track.core': '공통 코어',
   'journey.track.depth': '심화',
   'journey.track.collab': '협업',
+  // ── journey (부서 간지 — journey-binder-v42 Task E) ─────────────────
+  'journey.binderSummary': '주제 {themes} · 상황 {situations} · 우표 {stamps}',
+  'journey.themeDone': '완료',
+  'journey.resumeAction': '이어서',
   'journey.loadFailed': '여정을 불러오지 못했어요. (로그인·서버 확인)',
   'journey.inferredTag': '추정',
   'journey.pickDeptTitle': '목표 부서 고르기',
