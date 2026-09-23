@@ -1,18 +1,22 @@
-// 일터 탭의 화면 배선 (P3-C — 여정 지도 2단 구조, curriculum-v3-journey-ia/
-// build-spec-index.md). 1단계로 바뀐 뒤에도 이 화면이 계속 지켜야 하는 것들:
+// 일터 탭의 화면 배선 (journey-binder-v42 Task G, task-G-brief.md §3). 이 화면이 이제
+// 그리는 것은 부서 서가(`BinderShelf`)뿐이고, 목표 부서의 주제 목록은
+// `journey/dept/[dept].tsx`로 내려갔다(deptBinderScreen.test.tsx가 그 화면을 잠근다).
 //
-//  - K1: 여기서는 길을 그리지 않는다 — Station/JourneyMap이 그리던 지그재그 지도는
-//    더 이상 이 화면에 없다(`JourneyMap` 컴포넌트 자체는 이제 어느 화면도 렌더하지
-//    않는다 — 2단계는 그 자리·여백 상수만 가져다 쓰는 `StationTrack`이 대신 그린다,
-//    JourneyMap.tsx 파일 상단 코멘트 참고 — 그래도 파일은 그 상수들 때문에 지우지
-//    않는다).
-//  - K8/J5: 목표 부서 바와 자유 탐방 칩은 여전히 같은 경로(`pickDept`)를 타고, 같은
-//    요청 순서 카운터의 보호를 받는다 — 이 화면이 바뀐 것은 가운데 자리뿐이다.
-//  - 카드를 누르면 2단계 라우트(`/journey/theme/<themeKey>`)로 민다.
+// 이 파일이 계속 지켜야 하는 것들:
+//  - V3: `GET /me/journey`를 한 번만 부른다 — 부서마다 요청을 내지 않는다.
+//  - V2: 바인더를 열면(내 부서든 서가의 다른 부서든) 부서 간지로 밀 뿐, 저장된 목표는
+//    바뀌지 않는다. 목표를 바꾸는 유일한 자리는 `내 부서` 카드의 "목표 바꾸기"다.
+//  - J5: 부서를 고르는 방법은 하나 — `onChangeGoal`이 여는 pick-dept 화면이 이
+//    화면의 `pickDept()`로 이어지고, 그 함수가 쥔 요청 순서 카운터도 그대로다.
+//  - 상단 목표 부서 바·자유 탐방 칩 줄은 이제 없다(J5) — 헤더에는 화면 이름만 남는다.
 //
-// @testing-library/react-native is not installed in this repo (Station.test.tsx,
-// ThemeList.test.tsx already note the same thing), so this uses react-test-renderer
-// throughout.
+// BinderShelf.test.tsx가 이미 잠근 것(서가 레이아웃, 진행 바, 잠금 없음, 공통 필수
+// 없음)은 여기서 다시 재지 않는다. 이 파일이 재는 것은 이 화면 자신의 몫뿐이다:
+// 데이터를 어떻게 가져오고, BinderShelf에 무엇을 건네고, 그 콜백이 실제로 어디로
+// 가는지.
+//
+// @testing-library/react-native is not installed in this repo, so this uses
+// react-test-renderer throughout.
 const mockPushed: string[] = [];
 jest.mock('expo-router', () => {
   const React = require('react') as typeof import('react');
@@ -33,14 +37,9 @@ import { trackMounts } from '../testing/mountRegistry';
 
 const track = trackMounts();
 
-// t3 comes right after the 'here' entry but carries no resume flag of its own; t4 is
-// the one this file uses as "an untouched, non-recommended card" (J1/J3 — still has to
-// press through).
 const CURRICULA: JourneyCurriculum[] = [
   { themeKey: 't1', name: '체온 측정', track: 'core', state: 'passed', resume: false, done: 3, total: 3 },
   { themeKey: 't2', name: '투약 확인', track: 'core', state: 'here', resume: true, dept: 'ER', done: 1, total: 4 },
-  { themeKey: 't3', name: '낙상 예방', track: 'depth', state: 'open', resume: false },
-  { themeKey: 't4', name: '욕창 관리', track: 'depth', state: 'open', resume: false },
 ] as unknown as JourneyCurriculum[];
 
 const VIEW: JourneyView = {
@@ -58,27 +57,27 @@ function findAllPressables(root: ReactTestInstance) {
   return root.findAll((n) => typeof n.type === 'function' && (n.type as { name?: string }).name === 'Pressable');
 }
 
-function themeCard(root: ReactTestInstance, themeKey: string) {
-  return findAllPressables(root).find((n) => n.props?.testID === `theme-card-${themeKey}`);
+function shelfCard(root: ReactTestInstance, dept: string) {
+  return findAllPressables(root).find((n) => n.props?.testID === `binder-shelf-card-${dept}`);
 }
 
-/** The header's own dept-name text, distinct from a free-roam chip that happens to name
- *  the same department — the fixture's free-roam row always shows "중환자실 ICU" as a
- *  chip label regardless of which department is the current GOAL, so a bare substring
- *  check over the whole tree's text cannot tell "the goal is ICU" from "ICU is one of
- *  the chips". */
-function headerDeptText(root: ReactTestInstance): string | undefined {
-  const hit = root.findAll((n) => n.props?.testID === 'journey-goal-dept')[0];
-  return hit && String(hit.props.children);
-}
-
-/** Host-node-only testID lookup. react-test-renderer's `findAllByProps` matches every
- *  fibre carrying a prop, and a plain `<View testID=.../>` shows up twice — once as the
- *  composite View component, once as the host node underneath — so a raw count doubles
- *  what is actually on screen (the same gotcha `briefingGrading.test.tsx`'s `styled`
- *  helper documents for `style`). Host-only (`typeof n.type === 'string'`) counts once. */
+/** Host-node-only testID lookup — a plain `<View testID=.../>` shows up twice under
+ *  react-test-renderer (composite + host), so a raw count doubles what is actually on
+ *  screen (journeyThemeScreen.test.tsx documents the same gotcha). */
 function hostNodesWithTestId(root: ReactTestInstance, id: string): ReactTestInstance[] {
   return root.findAll((n) => typeof n.type === 'string' && n.props?.testID === id);
+}
+
+/** The "이어서" button on the 내 부서 card and the "목표 바꾸기" link both live inside
+ *  `BinderShelf`, which is not mocked here — same reason `journeyPickDeptScreen.test.tsx`
+ *  finds its rows by testID rather than mocking the screen it is wiring into. */
+function pressByText(root: ReactTestInstance, label: string): ReactTestInstance {
+  const hit = root.findAll(
+    (n) => typeof n.props?.onPress === 'function' && texts(n).includes(label),
+    { deep: true },
+  )[0];
+  if (!hit) throw new Error(`no pressable with text "${label}"`);
+  return hit;
 }
 
 beforeEach(() => {
@@ -94,56 +93,88 @@ async function mount() {
   return tree;
 }
 
-test('renders one card per curriculum entry, split into 부서 코어/부서 심화, no path between them', async () => {
-  const tree = await mount();
-  expect(findAllPressables(tree.root).filter((n) => String(n.props?.testID ?? '').startsWith('theme-card-'))).toHaveLength(CURRICULA.length);
-  expect(texts(tree.root)).toContain('공통 코어');
-  expect(texts(tree.root)).toContain('심화');
+// V3: 서가는 추가 요청을 하지 않는다 — 부서 개수만큼이 아니라 딱 한 번.
+test('fetches GET /me/journey exactly once, with no department argument', async () => {
+  await mount();
+  expect(api.journey).toHaveBeenCalledTimes(1);
+  expect(api.journey).toHaveBeenCalledWith();
 });
 
-// K2: t2 is the only entry carrying `resume: true` — exactly one card shows the
-// recommendation.
-test('shows the recommendation on exactly the one card the server flagged resume', async () => {
+test('the header shows only the screen name — no per-dept bar, no free-roam chip row', async () => {
   const tree = await mount();
-  expect(texts(tree.root).filter((s) => s === '이어하기')).toHaveLength(1);
+  expect(texts(tree.root)).toContain('나의 여정');
+  expect(hostNodesWithTestId(tree.root, 'journey-goal-dept-press')).toHaveLength(0);
+  expect(findAllPressables(tree.root).some((n) => String(n.props?.testID ?? '').startsWith('chip-'))).toBe(false);
 });
 
-// J1/J3: a topic the learner has not touched yet still presses through — no lock, no
-// `disabled`.
-test('an untouched topic card still presses — not disabled', async () => {
+test('renders the shelf with the goal card plus one binder per free-roam department', async () => {
   const tree = await mount();
-  const farCard = themeCard(tree.root, 't4')!;
-  expect(farCard).toBeTruthy();
-  expect(farCard.props.disabled).not.toBe(true);
-  await act(async () => { farCard.props.onPress(); });
-  expect(mockPushed).toContain('/journey/theme/t4');
+  expect(tree.root.findByProps({ testID: 'binder-shelf-goal-card' })).toBeTruthy();
+  expect(shelfCard(tree.root, 'ICU')).toBeTruthy();
+  expect(shelfCard(tree.root, 'OR')).toBeTruthy();
+  // The goal department itself is not drawn a second time as a shelf binder.
+  expect(shelfCard(tree.root, 'ER')).toBeUndefined();
 });
 
-// 카드를 누르면 그 주제 키로 2단계 경로를 민다 — 다른 주제로 새지 않는다.
-test('tapping a card pushes the 2단계 route for that exact themeKey', async () => {
+// V2: 여는 것과 정하는 것은 다르다. 서가의 바인더를 열면 부서 간지로 밀 뿐이다.
+test('opening a shelf binder pushes the dept screen — the saved goal is not touched', async () => {
   const tree = await mount();
-  await act(async () => { themeCard(tree.root, 't2')!.props.onPress(); });
-  expect(mockPushed).toEqual(['/journey/theme/t2']);
+  await act(async () => { shelfCard(tree.root, 'ICU')!.props.onPress(); });
+  expect(mockPushed).toEqual(['/journey/dept/ICU']);
+  expect(api.setGoalDept).not.toHaveBeenCalled();
 });
 
-test('a free-roam chip switches the goal department and redraws the list (J5)', async () => {
+test('the goal card’s 이어서 pushes the dept screen for the goal department itself', async () => {
+  const tree = await mount();
+  await act(async () => { pressByText(tree.root, '이어서').props.onPress(); });
+  expect(mockPushed).toEqual(['/journey/dept/ER']);
+  expect(api.setGoalDept).not.toHaveBeenCalled();
+});
+
+// V2가 말하는 유일한 자리 — "목표 바꾸기".
+test('tapping 목표 바꾸기 offers goalDept + every free-roam dept and pushes the picker', async () => {
+  clearGoalPickOffer();
+  const tree = await mount();
+  expect(goalPickOffer()).toBeNull(); // 안 눌렀으면 아무것도 건네지 않는다
+
+  await act(async () => { pressByText(tree.root, '목표 바꾸기').props.onPress(); });
+
+  const offered = goalPickOffer();
+  expect(offered).not.toBeNull();
+  expect(new Set(offered!.depts)).toEqual(new Set(['ER', 'ICU', 'OR']));
+  expect(offered!.depts).toHaveLength(3);
+  expect(offered!.current).toBe('ER');
+  expect(mockPushed).toContain('/journey/pick-dept');
+});
+
+test('the offer carries inferred as the screen last knows it', async () => {
+  clearGoalPickOffer();
+  (api.journey as jest.Mock).mockResolvedValueOnce({ ...VIEW, inferred: true } as JourneyView);
+  const tree = await mount();
+  await act(async () => { pressByText(tree.root, '목표 바꾸기').props.onPress(); });
+  expect(goalPickOffer()!.inferred).toBe(true);
+});
+
+// J5/K8: 부서를 고르는 방법은 하나다 — 고르기 화면이 부르는 것은 이 화면의 pickDept()
+// 그 자체다.
+test('picking a department calls setGoalDept with that department and redraws (J5)', async () => {
+  clearGoalPickOffer();
   (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
   const tree = await mount();
-  const chip = tree.root.findByProps({ testID: 'chip-ICU' });
-  await act(async () => { chip.props.onPress(); });
-  // pickDept chains setGoalDept().then(journey).then(setView) — two hops to flush.
+  await act(async () => { pressByText(tree.root, '목표 바꾸기').props.onPress(); });
+  expect(goalPickOffer()).not.toBeNull();
+  await act(async () => { pickGoalDept('OR'); });
   await act(async () => { await Promise.resolve(); });
   await act(async () => { await Promise.resolve(); });
-  expect(api.setGoalDept).toHaveBeenCalledWith('ICU');
-  // W3: the screen re-requests the journey after the PATCH lands, rather than
-  // assuming what the new path looks like.
-  expect((api.journey as jest.Mock).mock.calls.length).toBeGreaterThanOrEqual(2);
+  expect(api.setGoalDept).toHaveBeenCalledWith('OR');
+  expect(api.journey).toHaveBeenCalledTimes(2); // 저장한 뒤 그 응답으로 다시 그린다
 });
 
-// Code review follow-up (2nd pass, pre-P3-C): `load()`/`pickDept()` used to have no
-// defence against out-of-order responses — the LAST-STARTED request has to win, not
-// the last-ARRIVED one.
-test('a fast double-tap on two chips renders the later pick even if its response answers first', async () => {
+// Code review follow-up (2nd pass, pre-P3-C), still true after Task G: the LAST-STARTED
+// request has to win, not the last-ARRIVED one. Reproduced here by picking twice through
+// the same pickDept() the picker calls into, since the shelf itself no longer has a
+// second way to change the goal.
+test('a fast double-pick resolves to the later pick even if its response answers first', async () => {
   (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
 
   let resolveFirst!: (v: JourneyView) => void;
@@ -156,11 +187,14 @@ test('a fast double-tap on two chips renders the later pick even if its response
     .mockReturnValueOnce(secondJourney); // pickDept('OR')'s journey() call — left hanging
 
   const tree = await mount();
+  // pickGoalDept() only reaches this screen's pickDept() once the module store holds
+  // it — the same registration `목표 바꾸기` performs on every real press.
+  await act(async () => { pressByText(tree.root, '목표 바꾸기').props.onPress(); });
 
-  await act(async () => { tree.root.findByProps({ testID: 'chip-ICU' }).props.onPress(); });
+  await act(async () => { pickGoalDept('ICU'); });
   await act(async () => { await Promise.resolve(); }); // flush setGoalDept('ICU') -> journey() called
 
-  await act(async () => { tree.root.findByProps({ testID: 'chip-OR' }).props.onPress(); });
+  await act(async () => { pickGoalDept('OR'); });
   await act(async () => { await Promise.resolve(); }); // flush setGoalDept('OR') -> journey() called
 
   // The SECOND (later-started) request answers first.
@@ -171,13 +205,14 @@ test('a fast double-tap on two chips renders the later pick even if its response
   await act(async () => { await Promise.resolve(); });
 
   // Whichever was tapped LAST has to be what is on screen, regardless of arrival order.
-  expect(headerDeptText(tree.root)).toBe('수술실 OR');
+  expect(tree.root.findByProps({ testID: 'binder-shelf-goal-card' })).toBeTruthy();
+  expect(shelfCard(tree.root, 'OR')).toBeUndefined(); // OR is now the goal — not a shelf binder
+  expect(shelfCard(tree.root, 'ICU')).toBeTruthy();   // ICU fell back to a shelf binder
 });
 
-// §4: "목록 자리에 스켈레톤" — not the whole screen. A refresh (here: picking a new
-// goal dept) must not make the header or the free-roam row disappear out from under
-// the learner while the new path loads.
-test('a refresh blanks only the list area — the header and free-roam row stay put (§4)', async () => {
+// §4와 같은 원칙: 목록 자리에 스켈레톤, 나머지는 비워 두지 않는다 — 여기서는 헤더가
+// 화면 이름 하나뿐이라, 그것만은 새로고침 중에도 사라지지 않는다.
+test('a refresh blanks only the shelf area — the header title stays put (§4)', async () => {
   (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
   const pending = new Promise<JourneyView>(() => {}); // never resolves — freezes mid-load
   (api.journey as jest.Mock)
@@ -185,110 +220,16 @@ test('a refresh blanks only the list area — the header and free-roam row stay 
     .mockReturnValueOnce(pending);
 
   const tree = await mount();
-  await act(async () => { tree.root.findByProps({ testID: 'chip-ICU' }).props.onPress(); });
+  await act(async () => { pressByText(tree.root, '목표 바꾸기').props.onPress(); });
+  await act(async () => { pickGoalDept('ICU'); });
   await act(async () => { await Promise.resolve(); }); // flush setGoalDept -> journey() called, now loading
 
-  // Header still shows the last-known goal dept (ER hasn't been replaced yet) and the
-  // chip row is still there — neither should vanish just because a refresh is in flight.
-  expect(headerDeptText(tree.root)).toBe('응급실 ER');
-  expect(tree.root.findByProps({ testID: 'chip-ICU' })).toBeTruthy();
-  // Only the list area itself goes to the loading placeholder.
-  expect(hostNodesWithTestId(tree.root, 'journey-topics-loading')).toHaveLength(1);
-  expect(findAllPressables(tree.root).filter((n) => String(n.props?.testID ?? '').startsWith('theme-card-'))).toHaveLength(0);
+  expect(texts(tree.root)).toContain('나의 여정');
+  expect(hostNodesWithTestId(tree.root, 'journey-shelf-loading')).toHaveLength(1);
+  expect(tree.root.findAllByProps({ testID: 'binder-shelf-goal-card' })).toHaveLength(0);
 });
 
-// J4: an inferred goal is not yet the learner's choice, so the screen has to say so;
-// once they pick one (or the server already has a saved choice), the tag must not
-// linger and imply a choice was never made.
-test('the inferred tag shows only when the goal department is inferred, not chosen (J4)', async () => {
-  (api.journey as jest.Mock).mockResolvedValueOnce({ ...VIEW, inferred: true } as JourneyView);
-  const tree = await mount();
-  expect(texts(tree.root)).toContain('추정');
-});
-
-test('a learner-chosen goal department (inferred: false) shows no inferred tag', async () => {
-  const tree = await mount(); // default VIEW has inferred: false
-  expect(texts(tree.root)).not.toContain('추정');
-});
-
-// ── 부서 고르기: 목표 부서 바를 눌러 부서 고르기 화면으로 (K8/J5) ───────────
-//
-// 부서 목록은 화면이 새로 만들지 않는다 — `goalDept`와 `freeRoam[].dept`를 합친 것이
-// 그대로 넘어간다.
-test('tapping the goal-dept header offers goalDept + every free-roam dept, no more and no fewer', async () => {
-  clearGoalPickOffer();
-  const tree = await mount();
-  expect(goalPickOffer()).toBeNull(); // 안 눌렀으면 아무것도 건네지 않는다
-
-  const header = tree.root.findByProps({ testID: 'journey-goal-dept-press' });
-  await act(async () => { header.props.onPress(); });
-
-  const offered = goalPickOffer();
-  expect(offered).not.toBeNull();
-  // VIEW: goalDept 'ER' + freeRoam ['ICU', 'OR'] — 서버가 이미 목표를 뺀 나머지 전부를
-  // 보낸다는 전제이므로 합치면 정확히 이 셋, 순서·중복 상관없이 집합이 같아야 한다.
-  expect(new Set(offered!.depts)).toEqual(new Set(['ER', 'ICU', 'OR']));
-  expect(offered!.depts).toHaveLength(3); // 중복 없음
-  expect(offered!.current).toBe('ER');
-  // 화살표가 약속한 대로 실제로 그 화면을 민다.
-  expect(mockPushed).toContain('/journey/pick-dept');
-});
-
-test('the offer carries inferred as the screen last knows it', async () => {
-  clearGoalPickOffer();
-  (api.journey as jest.Mock).mockResolvedValueOnce({ ...VIEW, inferred: true } as JourneyView);
-  const tree = await mount();
-  await act(async () => { tree.root.findByProps({ testID: 'journey-goal-dept-press' }).props.onPress(); });
-  expect(goalPickOffer()!.inferred).toBe(true);
-});
-
-// K8/J5: 부서를 고르는 방법은 하나다 — 고르기 화면이 부르는 것은 이 화면의 pickDept()
-// 그 자체다(자유 탐방 칩과 같은 함수, 같은 요청 순서 보호). 미리보기·확정 분리 없음.
-test('picking a department calls setGoalDept with that department and redraws (J5)', async () => {
-  clearGoalPickOffer();
-  (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
-  const tree = await mount();
-  await act(async () => { tree.root.findByProps({ testID: 'journey-goal-dept-press' }).props.onPress(); });
-  expect(goalPickOffer()).not.toBeNull(); // 건네진 뒤라야 부를 수 있다
-  await act(async () => { pickGoalDept('OR'); });
-  await act(async () => { await Promise.resolve(); });
-  await act(async () => { await Promise.resolve(); });
-  expect(api.setGoalDept).toHaveBeenCalledWith('OR');
-  expect(api.journey).toHaveBeenCalledTimes(2); // 저장한 뒤 그 응답으로 다시 그린다
-});
-
-test('a picker choice started after a chip tap wins even if the chip’s response answers later', async () => {
-  (api.setGoalDept as jest.Mock).mockResolvedValue(undefined);
-
-  let resolveChip!: (v: JourneyView) => void;
-  let resolveSheet!: (v: JourneyView) => void;
-  const chipJourney = new Promise<JourneyView>((res) => { resolveChip = res; });
-  const sheetJourney = new Promise<JourneyView>((res) => { resolveSheet = res; });
-  (api.journey as jest.Mock)
-    .mockResolvedValueOnce(VIEW)        // initial load()
-    .mockReturnValueOnce(chipJourney)   // pickDept('ICU') via chip
-    .mockReturnValueOnce(sheetJourney); // pickDept('OR') via the picker screen
-
-  const tree = await mount();
-
-  await act(async () => { tree.root.findByProps({ testID: 'chip-ICU' }).props.onPress(); });
-  await act(async () => { await Promise.resolve(); });
-
-  await act(async () => { tree.root.findByProps({ testID: 'journey-goal-dept-press' }).props.onPress(); });
-  await act(async () => { pickGoalDept('OR'); });
-  await act(async () => { await Promise.resolve(); });
-
-  // 나중에 시작된(피커) 쪽이 먼저 응답하고, 먼저 시작된(칩) 쪽이 뒤늦게 도착한다 — "나중에
-  // 시작한 것"이 이겨야 하므로, 늦게 도착한 칩의 응답이 화면을 덮어쓰면 안 된다.
-  await act(async () => { resolveSheet({ ...VIEW, goalDept: 'OR' } as JourneyView); });
-  await act(async () => { await Promise.resolve(); });
-  await act(async () => { resolveChip({ ...VIEW, goalDept: 'ICU' } as JourneyView); });
-  await act(async () => { await Promise.resolve(); });
-
-  expect(headerDeptText(tree.root)).toBe('수술실 OR');
-});
-
-test('a load failure offers a retry that re-fetches instead of leaving the screen stuck', async () => {
+test('a load failure offers a retry that re-fetches', async () => {
   (api.journey as jest.Mock).mockRejectedValueOnce(new Error('network'));
   (api.journey as jest.Mock).mockResolvedValueOnce(VIEW);
   const tree = await mount();
@@ -300,5 +241,5 @@ test('a load failure offers a retry that re-fetches instead of leaving the scree
   )[0];
   await act(async () => { retry.props.onPress(); });
   await act(async () => { await Promise.resolve(); });
-  expect(findAllPressables(tree.root).filter((n) => String(n.props?.testID ?? '').startsWith('theme-card-'))).toHaveLength(CURRICULA.length);
+  expect(tree.root.findByProps({ testID: 'binder-shelf-goal-card' })).toBeTruthy();
 });

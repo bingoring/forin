@@ -183,6 +183,8 @@ export const de: Record<string, string> = {
   'journey.pickDeptEmptyBack': 'Zurück zum Dienst',
   'journey.pickDeptHint': 'Deine Reise folgt der Spur dieser Abteilung.',
   'journey.pickDeptInferredHint': 'Das ist noch eine Vermutung — wähle deine Zielabteilung selbst.',
+  'journey.shelfTitle': 'Deine Reise',
+  'journey.changeGoal': 'Ziel ändern',
 
   'board.cleared': 'Fertig',
   'board.remaining': 'Offen',

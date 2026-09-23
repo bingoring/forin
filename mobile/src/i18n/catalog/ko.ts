@@ -199,6 +199,9 @@ export const ko: Record<string, string> = {
   'journey.pickDeptEmptyBack': '일터로 돌아가기',
   'journey.pickDeptHint': '여정이 이 부서 트랙을 따라갑니다.',
   'journey.pickDeptInferredHint': '아직 추정이에요 — 목표 부서를 직접 골라 보세요.',
+  // ── journey (부서 서가 — journey-binder-v42 Task G) ─────────────────
+  'journey.shelfTitle': '나의 여정',
+  'journey.changeGoal': '목표 바꾸기',
 
   // ── board tab ────────────────────────────────────────────────────────────
   'board.cleared': '완료',

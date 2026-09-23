@@ -69,8 +69,8 @@ export const BOTTOM_PAD = 120; // 고정 바에 가리지 않는 최소값(핸�
 // 아니라 화면 맨 아래로부터의 여백이라 콘텐츠가 길어져도 그대로 유지된다).
 //
 // MILESTONE_GAP(20)은 새 단위가 아니라 이 화면이 이미 쓰는 가로 거터를 세로로 재사용한
-// 것이다(NbScreen·FreeRoamRow의 `paddingHorizontal: 20`) — 진행률 줄에 세 번째 줄처럼
-// 달라붙지 않고 깃발이 독립된 요소로 읽히기에 충분한 간격이다.
+// 것이다(NbScreen의 `paddingHorizontal: 20`) — 진행률 줄에 세 번째 줄처럼 달라붙지 않고
+// 깃발이 독립된 요소로 읽히기에 충분한 간격이다.
 // MILESTONE_FLAG_HEIGHT(34)는 MilestoneFlag.tsx가 소유한 값을 그대로 읽는다 — Station.tsx의
 // RADIUS를 JourneyMap이 다시 읽는 것과 같은 이유로, 두 파일이 각자 34를 들고 있다가
 // 벌어지는 사고를 막는다.

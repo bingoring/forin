@@ -186,6 +186,8 @@ export const en: Record<string, string> = {
   'journey.pickDeptEmptyBack': 'Back to Work',
   'journey.pickDeptHint': 'Your journey follows this department’s track.',
   'journey.pickDeptInferredHint': 'This is still a guess — pick your goal department yourself.',
+  'journey.shelfTitle': 'Your journey',
+  'journey.changeGoal': 'Change goal',
 
   'board.cleared': 'Done',
   'board.remaining': 'Left',

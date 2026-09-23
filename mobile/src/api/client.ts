@@ -831,9 +831,15 @@ export const api = {
     return (data as { situations?: DeptSituation[] }).situations ?? [];
   },
 
-  /** 여정 지도 — 목표 부서 트랙 + 자유 탐방. 정거장 좌표는 클라이언트가 계산한다(J10). */
-  async journey(): Promise<JourneyView> {
-    const { data } = await http.get('/me/journey');
+  /**
+   * 여정 지도 — 목표 부서 트랙 + 자유 탐방. 정거장 좌표는 클라이언트가 계산한다(J10).
+   *
+   * `dept`를 주면 그 부서의 트랙을 보여 달라고만 묻는다(journey-binder-v42 Task G) —
+   * **저장된 목표는 바뀌지 않는다.** 목표를 바꾸는 것은 여전히 `setGoalDept` 하나뿐이다.
+   * 저작된 주제가 없는 부서 코드에는 서버가 400을 낸다.
+   */
+  async journey(dept?: string): Promise<JourneyView> {
+    const { data } = await http.get('/me/journey', dept ? { params: { dept } } : undefined);
     return data as JourneyView;
   },
   /** 정거장 시트 — 시트가 열릴 때만 스텝을 받는다. 모르는 주제(themeKey)에는 404. */

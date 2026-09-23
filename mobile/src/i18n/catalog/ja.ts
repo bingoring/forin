@@ -183,6 +183,8 @@ export const ja: Record<string, string> = {
   'journey.pickDeptEmptyBack': '勤務に戻る',
   'journey.pickDeptHint': '旅程はこの部署のトラックに沿って進みます。',
   'journey.pickDeptInferredHint': 'まだ推定です — 目標部署を自分で選んでみましょう。',
+  'journey.shelfTitle': '私の旅程',
+  'journey.changeGoal': '目標を変える',
 
   'board.cleared': '完了',
   'board.remaining': '残り',
