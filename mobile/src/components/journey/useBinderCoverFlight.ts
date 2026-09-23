@@ -127,6 +127,18 @@ export function useBinderCoverFlight(dept: string, onExit: () => void) {
   };
 
   return {
+    /**
+     * Whether this screen owns its arrival — known on the FIRST render, because the rect
+     * is read from the store synchronously.
+     *
+     * The screen's `Stack.Screen` options key off this, not off `hasCover`: `hasCover`
+     * only turns true once the reduce-motion read resolves, so choosing the transition by
+     * it would hand the platform a slide, then swap to 'none' a tick later — after the
+     * push has already begun. And without this split the route carried `animation: 'none'`
+     * unconditionally, so a screen reached WITHOUT a rect (a deep link, a measurement that
+     * did not land) appeared as a hard cut with no motion at all.
+     */
+    willFly: rect !== null,
     /** Whether a cover belongs on screen at all — false skips every layer below outright
      *  (no rect ever consumed, or reduce motion). */
     hasCover: phase !== 'settled',

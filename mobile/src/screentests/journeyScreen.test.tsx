@@ -33,6 +33,7 @@ import JourneyScreen from '@/app/(tabs)/journey';
 import { api, type JourneyView } from '@/api/client';
 import { clearGoalPickOffer, goalPickOffer, pickGoalDept } from '@/data/journeyGoalPick';
 import type { JourneyCurriculum } from '@/components/journey/JourneyMap';
+import { MEASURE_TIMEOUT_MS } from '@/components/journey/measureBinderRect';
 import { trackMounts } from '../testing/mountRegistry';
 
 const track = trackMounts();
@@ -120,6 +121,11 @@ test('renders the shelf with the goal card plus one binder per free-roam departm
 test('opening a shelf binder pushes the dept screen — the saved goal is not touched', async () => {
   const tree = await mount();
   await act(async () => { shelfCard(tree.root, 'ICU')!.props.onPress(); });
+  // 누름은 바인더 좌표를 재는 것으로 시작하고, 이 환경의 브리지는 그 콜백을 영영
+  // 부르지 않는다(`measureBinderRect.ts`의 주석). 이 테스트가 진짜 모듈을 쓰는 이유가
+  // 거기 있다 — 답이 없는 브리지에서도 이동이 **반드시** 일어난다는 약속을 재는
+  // 자리이고, 그 약속을 지키는 것이 제한 시간이다. 그래서 그 시간을 넘긴다.
+  await act(async () => { await new Promise((r) => setTimeout(r, MEASURE_TIMEOUT_MS + 10)); });
   expect(mockPushed).toEqual(['/journey/dept/ICU']);
   expect(api.setGoalDept).not.toHaveBeenCalled();
 });

@@ -21,7 +21,7 @@
 //
 // `entries`가 이미 목표 부서를 뺀 나머지 전부다 — 서버의 `freeRoam`은 목표를 빼고 온다.
 // 그래서 목표 부서는 서가에 다시 그리지 않는다. 그래도 방어적으로 한 번 더 걸러 둔다.
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { FreeRoamEntry } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
@@ -31,7 +31,7 @@ import type { BinderRect } from '@/data/journeyBinderFly';
 import { nb, nbFonts } from '@/theme/nb';
 import { type Translate, useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
-import { watchBinderRect } from './measureBinderRect';
+import { measureBinderRect } from './measureBinderRect';
 
 const ROW_SIZE = 4;
 const ROW_GAP = 10;
@@ -204,21 +204,18 @@ function Binder({ entry, index, width, onOpen }: {
   const spine = deptSpineColor(dept);
   const height = width * BINDER_RATIO;
 
-  // 표지 날아오기 연출(journey-binder-v42 Task I)이 쓸 화면 좌표. press 시점에 재지
-  // 않는다 — 마운트 때 한 번 재어 두고 눌렀을 때는 그 값을 그냥 읽는다(측정이 안
-  // 끝난 채로 눌리면 이 값은 여전히 undefined다. `measureBinderRect.ts`의 주석 참고).
+  // 표지 날아오기 연출(journey-binder-v42 Task I)이 쓸 화면 좌표. **누를 때마다 다시
+  // 잰다** — 서가가 스크롤되므로 마운트 때 잰 값은 아래쪽 줄에서 거짓이 된다
+  // (`measureBinderRect.ts`의 주석). 좌표가 늦거나 안 오면 연출 없이 그냥 연다.
   const viewRef = useRef<View>(null);
-  const rectRef = useRef<BinderRect | undefined>(undefined);
-  useEffect(() => {
-    watchBinderRect(viewRef, (rect) => { rectRef.current = rect; });
-  }, []);
 
   const onPress = () => {
-    const rect = rectRef.current;
-    // `rect`가 없을 때 `onOpen(dept, undefined)`로 부르지 않는다 — 두 번째 인자
-    // 자체가 없는 호출과 "값이 undefined인 두 번째 인자"는 호출부(및 이 화면의
-    // 테스트)에게 다른 신호다.
-    if (rect) onOpen(dept, rect); else onOpen(dept);
+    measureBinderRect(viewRef, (rect) => {
+      // `rect`가 없을 때 `onOpen(dept, undefined)`로 부르지 않는다 — 두 번째 인자
+      // 자체가 없는 호출과 "값이 undefined인 두 번째 인자"는 호출부(및 이 화면의
+      // 테스트)에게 다른 신호다.
+      if (rect) onOpen(dept, rect); else onOpen(dept);
+    });
   };
 
   return (

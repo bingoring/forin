@@ -151,6 +151,14 @@ test('a load failure offers a retry that re-fetches the same dept', async () => 
 // frame regardless of the requested duration — too fast to ever catch a phase in transit
 // otherwise). `AccessibilityInfo.isReduceMotionEnabled` is mocked the same way
 // `StationTrack.test.tsx` mocks it, for the identical reason (§5's own model).
+
+/** 이 화면이 `Stack.Screen`에 건네는 전환 설정. */
+function stackOptions(root: ReactTestInstance): { animation?: string } | undefined {
+  const hit = root.findAll((n) => typeof n.type === 'function'
+    && (n.type as { name?: string }).name === 'Screen')[0];
+  return hit?.props?.options as { animation?: string } | undefined;
+}
+
 describe('binder cover flight', () => {
   type TimingRec = { duration?: number; toValue: number; value: Animated.Value; cb?: (r: { finished: boolean }) => void };
   let timingRecs: TimingRec[];
@@ -293,4 +301,18 @@ describe('binder cover flight', () => {
     expect(findTiming(CLOSE_CURL_MS).duration).toBe(800);
     expect(timingRecs.some((r) => r.duration === CURL_MS.in)).toBe(false);
   });
+
+  // 좌표를 들고 오지 않은 진입(딥링크, 측정이 안 닿은 경우)에서는 기본 밀기가 그대로
+  // 있어야 한다. 이 라우트에 `animation: 'none'`을 조건 없이 걸어 두면 그런 진입이
+  // 아무 움직임 없는 뚝 끊김이 된다.
+  it('좌표가 있으면 기본 밀기를 끄고, 없으면 켜 둔다', async () => {
+    setBinderFlyRect('ICU', RECT);
+    const withRect = await mount();
+    expect(stackOptions(withRect.root)?.animation).toBe('none');
+
+    clearBinderFlyRect();
+    const withoutRect = await mount();
+    expect(stackOptions(withoutRect.root)?.animation).toBe('slide_from_right');
+  });
+
 });

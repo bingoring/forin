@@ -4,18 +4,21 @@
 // @testing-library/react-native is not installed in this repo — react-test-renderer
 // throughout, same convention as DeptBinder.test.tsx.
 //
-// `measureBinderRect.ts`(정확히는 그 안의 `watchBinderRect`)는 여기서 모킹한다 — 그
-// 파일 자신의 주석이 이유를 적어 뒀다: 실제 `measureInWindow`의 콜백은 이 jest 환경에서
-// 절대 불리지 않는다(직접 확인한 사실이지 추측이 아니다), 그래서 "측정이 성공했다"는
-// 경우를 이 브리지로는 흉내낼 방법이 없다. 기본(구현 없는 `jest.fn()`)은 "콜백을 아예
-// 부르지 않는다"와 같은 모양이라 — 아래 4번 테스트("측정 실패")는 이 모듈을 건드리지
-// 않고도 그대로 지나간다.
-jest.mock('./measureBinderRect', () => ({ watchBinderRect: jest.fn() }));
+// `measureBinderRect`는 여기서 모킹한다 — 그 파일 자신의 주석이 이유를 적어 뒀다: 실제
+// `measureInWindow`의 콜백은 이 jest 환경에서 절대 불리지 않아서(직접 확인한 사실이지
+// 추측이 아니다) "측정이 성공했다"는 경우를 이 브리지로는 흉내낼 방법이 없다.
+//
+// 기본 구현은 **좌표 없이 즉시 결말을 낸다** — 진짜 모듈이 제한 시간 뒤에 하는 일과
+// 같고, 그 덕에 "측정 실패" 경우가 별도 준비 없이 그대로 재어진다. 좌표가 있는 경우는
+// 그 테스트에서 `mockImplementation`으로 갈아끼운다.
+jest.mock('./measureBinderRect', () => ({
+  measureBinderRect: jest.fn((_ref: unknown, onDone: (r?: unknown) => void) => onDone()),
+}));
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Text } from 'react-native';
 import { BinderShelf } from './BinderShelf';
-import { watchBinderRect } from './measureBinderRect';
+import { measureBinderRect } from './measureBinderRect';
 import type { FreeRoamEntry } from '@/api/client';
 import type { JourneyCurriculum } from './JourneyMap';
 import { trackMounts } from '../../testing/mountRegistry';
@@ -23,7 +26,10 @@ import { trackMounts } from '../../testing/mountRegistry';
 const track = trackMounts();
 
 beforeEach(() => {
-  (watchBinderRect as jest.Mock).mockReset();
+  (measureBinderRect as jest.Mock).mockReset();
+  (measureBinderRect as jest.Mock).mockImplementation(
+    (_ref: unknown, onDone: (r?: unknown) => void) => onDone(),
+  );
 });
 
 function mount(el: React.ReactElement) {
@@ -280,18 +286,18 @@ describe('BinderShelf', () => {
 
   // ── 표지 날아오기의 좌표(journey-binder-v42 Task I, task-I-brief.md §7 item 10) ────
 
-  it('바인더를 누르면 부서 코드와 함께 재어 둔 좌표가 onOpen으로 넘어간다', () => {
+  it('바인더를 누르면 부서 코드와 함께 방금 잰 좌표가 onOpen으로 넘어간다', () => {
     const rect = { x: 12, y: 340, width: 80, height: 121 };
-    (watchBinderRect as jest.Mock).mockImplementation((_ref, onRect) => onRect(rect));
+    (measureBinderRect as jest.Mock).mockImplementation((_ref, onDone) => onDone(rect));
     const onOpen = jest.fn();
     const tree = mount(<BinderShelf {...baseProps()} entries={entries(5)} onOpen={onOpen} />);
     act(() => { shelfCard(tree.root, 'D03')!.props.onPress(); });
     expect(onOpen).toHaveBeenCalledWith('D03', rect);
   });
 
-  it('측정이 안 되면(콜백이 안 오면) 좌표 없이 부서만 넘어가고, 그래도 열리는 것은 막히지 않는다', () => {
-    // 기본 모킹 그대로다 — `watchBinderRect`가 구현 없는 jest.fn()이라 콜백이 아예
-    // 안 온다. 이것이 이 jest 환경에서 실제 `measureInWindow`가 하는 일과 같다.
+  it('측정이 안 되면 좌표 없이 부서만 넘어가고, 그래도 열리는 것은 막히지 않는다', () => {
+    // 기본 모킹 그대로다 — 좌표 없이 결말을 낸다. 진짜 모듈이 제한 시간 뒤에 하는
+    // 일과 같고, 이 jest 환경에서 실제 `measureInWindow`가 하는 일과도 같다.
     const onOpen = jest.fn();
     const tree = mount(<BinderShelf {...baseProps()} entries={entries(5)} onOpen={onOpen} />);
     act(() => { shelfCard(tree.root, 'D03')!.props.onPress(); });
@@ -299,6 +305,32 @@ describe('BinderShelf', () => {
     // 다음 단인 journey.tsx·dept 화면에게 다른 신호다).
     expect(onOpen).toHaveBeenCalledWith('D03');
     expect(onOpen.mock.calls[0]).toHaveLength(1);
+  });
+
+
+  // 서가는 부서 29개가 여덟 줄이라 스크롤된다. 좌표를 마운트 때 한 번만 재어 두면
+  // 아래쪽 줄에서 그 값이 거짓이 되고, 표지가 화면 밖에서 날아온다.
+  it('누를 때마다 좌표를 다시 잰다 — 마운트 때 한 번이 아니다', () => {
+    const seen: unknown[] = [];
+    let n = 0;
+    (measureBinderRect as jest.Mock).mockImplementation((_ref: unknown, onDone: (r?: unknown) => void) => {
+      n += 1;
+      onDone({ x: 0, y: n * 100, width: 80, height: 121 });
+    });
+    const onOpen = jest.fn((_d: string, r?: unknown) => { seen.push(r); });
+    const tree = mount(<BinderShelf {...baseProps()} entries={entries(5)} onOpen={onOpen} />);
+
+    act(() => { shelfCard(tree.root, 'D03')!.props.onPress(); });
+    act(() => { shelfCard(tree.root, 'D03')!.props.onPress(); });
+
+    // 두 번 눌렀으면 두 번 쟀고, 두 좌표가 서로 다르다.
+    expect((measureBinderRect as jest.Mock).mock.calls).toHaveLength(2);
+    expect(seen[0]).not.toEqual(seen[1]);
+  });
+
+  it('마운트만으로는 재지 않는다 — 측정은 누를 때만 일어난다', () => {
+    mount(<BinderShelf {...baseProps()} entries={entries(5)} />);
+    expect(measureBinderRect as jest.Mock).not.toHaveBeenCalled();
   });
 
 });

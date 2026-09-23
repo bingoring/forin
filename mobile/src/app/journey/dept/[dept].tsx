@@ -36,7 +36,7 @@ import { NbButton, NbPaper, NbSheet, nbText } from '@/components/nb/NbUI';
 import { PageCurl } from '@/components/nb/PageCurl';
 import { deptNbIcon } from '@/data/campus';
 import { TOP_INSET, nb } from '@/theme/nb';
-import { FLOWN_SCREEN } from '@/theme/transitions';
+import { FLOWN_SCREEN, PLACE_SCREEN } from '@/theme/transitions';
 import { useT } from '@/i18n';
 
 export default function DeptBinderScreen() {
@@ -51,7 +51,7 @@ export default function DeptBinderScreen() {
   // 가기(안드로이드 하드웨어 버튼·스와이프)는 이 훅을 아예 거치지 않는다(§6) — 그
   // 경로는 항상 기본 라우팅 그대로다. 이 화면의 `Stack.Screen`을 `FLOWN_SCREEN`(전환
   // 없음)으로 두는 것이 그 경로에서도 이중 모션이 생기지 않게 한다.
-  const { hasCover, phase, flightTransform, scrim, requestClose, onCoverOpened, onCoverClosed } =
+  const { willFly, hasCover, phase, flightTransform, scrim, requestClose, onCoverOpened, onCoverClosed } =
     useBinderCoverFlight(dept ?? '', () => router.back());
 
   // journey.tsx의 seqRef·load()와 같은 이유의 요청 순서 보호 — 재시도 버튼과 포커스
@@ -86,7 +86,9 @@ export default function DeptBinderScreen() {
 
   return (
     <NbSheet>
-      <Stack.Screen options={FLOWN_SCREEN} />
+      {/* 좌표를 들고 온 경우에만 기본 밀기를 끈다 — 서가를 거치지 않고 들어오면
+          (딥링크, 측정이 안 닿은 경우) 평소의 밀기가 그대로 있어야 한다. */}
+      <Stack.Screen options={willFly ? FLOWN_SCREEN : PLACE_SCREEN} />
       <View style={{ paddingTop: TOP_INSET, paddingHorizontal: 20, paddingBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <Pressable testID="dept-binder-back" onPress={requestClose} hitSlop={10}>
           <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>
