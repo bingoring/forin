@@ -17,9 +17,10 @@ type journeyHandler struct {
 	journeys learning.Journeys
 }
 
-// @Summary 여정 지도 — 목표 부서 트랙 + 자유 탐방
+// @Summary 여정 지도 — 목표 부서 트랙(기본) 또는 ?dept= 로 고른 부서 트랙 + 자유 탐방
 // @Tags progress
 // @Security Bearer
+// @Param dept query string false "그릴 부서 코드. 생략 시 목표 부서. 저장된 목표는 바뀌지 않는다(J4/J5)"
 // @Success 200 {object} learning.JourneyView
 // @Router /me/journey [get]
 //
@@ -59,19 +60,33 @@ func (h *journeyHandler) journey(w http.ResponseWriter, r *http.Request) {
 	}
 	goal, inferred := resolveGoalDept(stored, j, p, tracks)
 
+	// ?dept= picks which shelf binder to draw WITHOUT touching the goal (J4/J5):
+	// browsing another department must never look like choosing it. The allowed
+	// set is content, not the lift (J9) — hasTopic is the same gate setGoalDept
+	// uses. goal (and therefore FreeRoam, which excludes only the goal) is
+	// computed above and never depends on this parameter.
+	viewDept := goal
+	if q := r.URL.Query().Get("dept"); q != "" {
+		if !hasTopic(tracks, q) {
+			httpx.Error(w, http.StatusBadRequest, "unknown department")
+			return
+		}
+		viewDept = q
+	}
+
 	view := learning.JourneyView{
 		GoalDept: goal,
 		Inferred: inferred,
 		FreeRoam: summariseFreeRoam(tracks, goal),
 	}
 	for _, tg := range tracks {
-		if tg.Dept == goal {
+		if tg.Dept == viewDept {
 			view.Track = rescopeCurrent(tg)
 			break
 		}
 	}
 	if view.Track.Dept == "" {
-		view.Track.Dept = goal // no track to draw yet, but say whose empty path this is
+		view.Track.Dept = viewDept // no track to draw yet, but say whose empty path this is
 	}
 	if view.Track.Curricula == nil {
 		view.Track.Curricula = []learning.CurriculumState{}

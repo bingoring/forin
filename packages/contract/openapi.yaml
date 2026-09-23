@@ -2045,6 +2045,12 @@ paths:
       - colleagues
   /me/journey:
     get:
+      parameters:
+      - description: 그릴 부서 코드. 생략 시 목표 부서. 저장된 목표는 바뀌지 않는다(J4/J5)
+        in: query
+        name: dept
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -2054,7 +2060,7 @@ paths:
           description: OK
       security:
       - Bearer: []
-      summary: 여정 지도 — 목표 부서 트랙 + 자유 탐방
+      summary: 여정 지도 — 목표 부서 트랙(기본) 또는 ?dept= 로 고른 부서 트랙 + 자유 탐방
       tags:
       - progress
   /me/journey/stations/{themeKey}:

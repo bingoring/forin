@@ -213,6 +213,95 @@ func TestJourney_PassesTheLearnersRealProgressToTheEngine(t *testing.T) {
 	}
 }
 
+// getStatusQuery is like getStatusPath but for a plain query string, with no path
+// variable to set — the ?dept= rejection tests only need the status code.
+func getStatusQuery(t *testing.T, h http.HandlerFunc, path string) int {
+	t.Helper()
+	r := withUser(httptest.NewRequest(http.MethodGet, path, nil), "user-a")
+	w := httptest.NewRecorder()
+	h(w, r)
+	return w.Code
+}
+
+// ?dept= draws a DIFFERENT department's track without moving the stored goal
+// (J4/J5): fakeUsers embeds a nil ports.UserRepo, so any call to SetGoalDept (the
+// only path that persists a goal) panics this test — the same regression guard
+// TestSetGoalDept_RejectsACodeWithNoTopic relies on, reused here for the read side.
+func TestJourney_DeptParamDrawsThatDepartmentNotTheGoal(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "WARD"},
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
+	}
+	var out learning.JourneyView
+	getJSON(t, h.journey, "/me/journey?dept=GEN", &out)
+
+	if out.Track.Dept != "GEN" {
+		t.Fatalf("?dept= must draw the requested department, not the goal: %+v", out.Track)
+	}
+	if out.GoalDept != "WARD" || out.Inferred {
+		t.Fatalf("the stored goal is unaffected by browsing: %+v", out)
+	}
+}
+
+// The free-roam roster is the goal's complement, not the VIEWED department's
+// complement: browsing GEN must not make GEN disappear from its own chip list, and
+// must not put WARD (the real goal) back into it.
+func TestJourney_DeptParamDoesNotChangeFreeRoamSet(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "WARD"},
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
+	}
+	var withoutParam, withParam learning.JourneyView
+	getJSON(t, h.journey, "/me/journey", &withoutParam)
+	getJSON(t, h.journey, "/me/journey?dept=GEN", &withParam)
+
+	depts := func(v learning.JourneyView) []string {
+		out := make([]string, len(v.FreeRoam))
+		for i, e := range v.FreeRoam {
+			out[i] = e.Dept
+		}
+		return out
+	}
+	a, b := depts(withoutParam), depts(withParam)
+	if len(a) != len(b) {
+		t.Fatalf("free-roam set must not depend on ?dept=: %v vs %v", a, b)
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			t.Fatalf("free-roam set must not depend on ?dept=: %v vs %v", a, b)
+		}
+	}
+}
+
+// A department with no authored topic is rejected the same way setGoalDept rejects
+// it (hasTopic is the shared gate) — a bad ?dept= must not fall back to drawing the
+// goal silently, and must not touch anything either (fakeUsers panics on any write).
+func TestJourney_DeptParamRejectsATopiclessCode(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "WARD"},
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
+	}
+	if code := getStatusQuery(t, h.journey, "/me/journey?dept=BOGUS"); code != http.StatusBadRequest {
+		t.Fatalf("BOGUS has no authored topic anywhere, got %d", code)
+	}
+}
+
+// CORE is a track the engine always emits, but it is the universal curriculum, not
+// a department a caller can browse to — same rule as setGoalDept.
+func TestJourney_DeptParamRejectsCoreItself(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "WARD"},
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
+	}
+	if code := getStatusQuery(t, h.journey, "/me/journey?dept=CORE"); code != http.StatusBadRequest {
+		t.Fatalf("CORE is not a department, got %d", code)
+	}
+}
+
 func TestJourney_NoRegistryIsEmptyNotError(t *testing.T) {
 	h := &journeyHandler{progress: journeyProgress{}, users: fakeUsers{}}
 	var out learning.JourneyView

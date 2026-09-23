@@ -1561,10 +1561,13 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** 여정 지도 — 목표 부서 트랙 + 자유 탐방 */
+        /** 여정 지도 — 목표 부서 트랙(기본) 또는 ?dept= 로 고른 부서 트랙 + 자유 탐방 */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    /** @description 그릴 부서 코드. 생략 시 목표 부서. 저장된 목표는 바뀌지 않는다(J4/J5) */
+                    dept?: string;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
