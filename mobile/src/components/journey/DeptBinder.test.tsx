@@ -72,27 +72,9 @@ describe('groupByTrack (moved from ThemeList.tsx, K3)', () => {
 describe('DeptBinder', () => {
   // 1. 주제 35개 → 진행 격자가 35칸이고 3줄로 접힌다(한 줄 12개 규칙이 깨지면 실패해야
   //    한다 — 행 단위로 명시적으로 잘라 그리므로, 행마다 담긴 칸 수를 직접 센다).
-  it('folds a 35-topic progress grid into exactly 3 rows of 12/12/11 cells', () => {
-    const curricula = Array.from({ length: 35 }, (_, i) => curriculum({ themeKey: `t${i}`, name: `주제 ${i}` }));
-    const tree = mount(<DeptBinder curricula={curricula} onPress={jest.fn()} />);
-
-    expect(progressCells(tree.root)).toHaveLength(35);
-    const rows = progressRows(tree.root);
-    expect(rows).toHaveLength(3);
-    const perRow = rows.map((r) => r.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'dept-binder-progress-cell').length);
-    expect(perRow).toEqual([12, 12, 11]);
-  });
-
+  
   // 2. 주제 15개 → 같은 화면이 서고 칸이 15개다. 빈 칸을 지어내지 않는다.
-  it('renders exactly 15 grid cells for 15 topics — never pads to a round number', () => {
-    const curricula = Array.from({ length: 15 }, (_, i) => curriculum({ themeKey: `t${i}` }));
-    const tree = mount(<DeptBinder curricula={curricula} onPress={jest.fn()} />);
-    expect(progressCells(tree.root)).toHaveLength(15);
-    // 15 = 12 + 3 → two rows, not one padded-to-24 row.
-    const rows = progressRows(tree.root);
-    expect(rows).toHaveLength(2);
-  });
-
+  
   // 3. total이 23인 주제 → 우표 격자가 23개다.
   it('draws a 23-cell stamp grid for a topic whose total is 23', () => {
     const curricula = [curriculum({ themeKey: 'big', total: 23, done: 5 })];
@@ -193,6 +175,78 @@ describe('DeptBinder', () => {
     const tree = mount(<DeptBinder curricula={[]} onPress={jest.fn()} />);
     expect(findAllPressables(tree.root)).toHaveLength(0);
     expect(progressCells(tree.root)).toHaveLength(0);
+  });
+
+  // ── 부서 진행 게이지 (핸드오프 v43) ──────────────────────────────────────
+  //
+  // v42의 "주제 하나당 칸 하나"를 v43이 한 줄 3구간으로 바꿨다. 이 묶음이 지키는 것은
+  // 구간의 폭이 실제 주제 상태에서 나온다는 것과, 눈금이 5주제마다 선다는 것이다.
+
+  function widthOf(node: ReactTestInstance): string {
+    const st = node.props?.style;
+    const flat = Array.isArray(st) ? Object.assign({}, ...st) : st;
+    return String(flat?.width);
+  }
+
+  function seg(root: ReactTestInstance, id: string): ReactTestInstance {
+    return root.findAll((n) => typeof n.type === 'string' && n.props?.testID === id)[0];
+  }
+
+  it('게이지 구간 폭이 주제 상태에서 나온다 — 완료 2, 진행 1, 남음 1', () => {
+    const tree = mount(
+      <DeptBinder
+        curricula={[
+          curriculum({ themeKey: 'a', done: 3, total: 3 }),  // 완료
+          curriculum({ themeKey: 'b', done: 4, total: 4 }),  // 완료
+          curriculum({ themeKey: 'c', done: 1, total: 4 }),  // 진행
+          curriculum({ themeKey: 'd', done: 0, total: 4 }),  // 남음
+        ]}
+        onPress={jest.fn()}
+      />,
+    );
+    expect(widthOf(seg(tree.root, 'gauge-done'))).toBe('50%');
+    expect(widthOf(seg(tree.root, 'gauge-active'))).toBe('25%');
+  });
+
+  it('상황이 하나도 없는 주제는 진행으로 세지 않는다', () => {
+    const tree = mount(
+      <DeptBinder curricula={[curriculum({ done: 0, total: 0 })]} onPress={jest.fn()} />,
+    );
+    expect(widthOf(seg(tree.root, 'gauge-done'))).toBe('0%');
+    expect(widthOf(seg(tree.root, 'gauge-active'))).toBe('0%');
+  });
+
+  it('주제가 하나도 없어도 0으로 나누지 않는다', () => {
+    const tree = mount(<DeptBinder curricula={[]} onPress={jest.fn()} />);
+    expect(widthOf(seg(tree.root, 'gauge-done'))).toBe('0%');
+  });
+
+  it('눈금이 5주제마다 선다 — 35개면 6개', () => {
+    const many = Array.from({ length: 35 }, (_, i) => curriculum({ themeKey: `t${i}` }));
+    const tree = mount(<DeptBinder curricula={many} onPress={jest.fn()} />);
+    const ticks = tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'gauge-tick');
+    expect(ticks).toHaveLength(6);
+  });
+
+  it('주제가 5개 미만이면 눈금을 그리지 않는다', () => {
+    const tree = mount(<DeptBinder curricula={[curriculum({})]} onPress={jest.fn()} />);
+    expect(tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'gauge-tick')).toHaveLength(0);
+  });
+
+  it('범례가 세 숫자를 말하고, 합이 주제 수와 같다', () => {
+    const tree = mount(
+      <DeptBinder
+        curricula={[
+          curriculum({ themeKey: 'a', done: 3, total: 3 }),
+          curriculum({ themeKey: 'c', done: 1, total: 4 }),
+          curriculum({ themeKey: 'd', done: 0, total: 4 }),
+        ]}
+        onPress={jest.fn()}
+      />,
+    );
+    const shown = texts(tree.root).join(' ');
+    expect(shown).toContain('남음 1');
+    expect(shown).toContain('/3 주제');
   });
 });
 

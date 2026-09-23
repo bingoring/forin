@@ -241,6 +241,10 @@ export const ko: Record<string, string> = {
   'journey.mineTag': '내 부서',
   'journey.goalTopics': '주제 {done}/{total} 완료',
   'journey.goalNow': '지금 ‘{name}’ {done}/{total}',
+  'journey.gaugeDone': '완료',
+  'journey.gaugeActive': '진행',
+  'journey.gaugeRest': '남음 {n}',
+  'journey.gaugeUnit': '주제',
   // ── journey (구간 경계 이름 — 우표 산책길, journey-binder-v42 Task H) ──────
   'journey.tier.1': '기초',
   'journey.tier.2': '실전',

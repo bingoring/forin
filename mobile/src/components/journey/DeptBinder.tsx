@@ -9,12 +9,8 @@
 // 카드) 목록. `groupByTrack`은 ThemeList.tsx에서 그대로 옮겨왔다(K3은 계속 유효하다) —
 // 코어가 아니면 심화로 떨어지는 이분법과 그 주석은 그 파일에 있던 것과 같다.
 //
-// 진행 격자 칸 너비를 상황 수에 비례시키지 않는 이유(과제 지시서): 부서당 주제는
-// 15~35개, 주제당 상황 수는 20~23개로 서로 거의 같다(V6) — 비례로 얻는 정보가 거의
-// 없는데, 35칸을 한 줄에 비례 배분하면 칸이 획 하나보다 얇아진다(V5·V6가 막으려는
-// 바로 그 실패). 그래서 칸은 전부 같은 폭이고, 한 줄에 12개를 채우면 다음 줄로 접는다
-// (진짜 flexWrap이 아니라 12개씩 자른 행을 명시적으로 그린다 — 그래야 마지막 줄이
-// 남은 칸 수만큼 넓어지며 "칸 크기가 줄었다"는 착시가 생기지 않는다).
+// 부서 진행은 주제 하나당 칸 하나가 아니라 한 줄 3구간 게이지다(핸드오프 v43). 그
+// 판단의 근거는 §2 주석에 있다.
 //
 // locked·다음·미리보기·앞 주제 완료 시 열림·추천 순서를 만들지 않는 이유: 참조 코드
 // (TopicBinder)는 그것들을 그리지만, 우리 콘텐츠에서 주제는 잠기지 않는다(스펙 X2,
@@ -22,7 +18,7 @@
 // 1개로 보장하는 `resume` 하나뿐이다(K2). 그래서 상태는 세 가지뿐이다 — 완료·진행중·
 // (아무 표시 없음) — 그 외의 어떤 문구도 지어내지 않는다.
 import { useState } from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { NbButton, NbInkStamp, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { nb, nbFonts } from '@/theme/nb';
 import { useT } from '@/i18n';
@@ -66,68 +62,123 @@ function BinderSummary({ curricula }: { curricula: JourneyCurriculum[] }) {
   );
 }
 
-// ── 2. 부서 진행 격자 ────────────────────────────────────────────────────────
+// ── 2. 부서 진행 게이지 ──────────────────────────────────────────────────────
+//
+// 핸드오프 v43이 이 자리를 다시 설계했다. v42는 주제 하나당 칸 하나였고 이 파일도 그렇게
+// 그렸는데(한 줄 12칸, 35개면 세 줄), 그 모양은 주제가 늘수록 읽을 것이 늘기만 한다 —
+// 35개를 세어 봐야 "얼마나 왔나"는 안 나온다. v43은 칸을 버리고 **한 줄 3구간**으로 간다:
+// 끝낸 만큼 초록, 손댄 만큼 빗금 친 호박색, 남은 만큼 빈칸. 그 아래 범례가 숫자로 받는다.
+//
+// 눈금은 5주제마다 하나다. 게이지만 있으면 "3분의 1쯤"까지밖에 안 읽히는데, 눈금이 있으면
+// 거기서 몇 번째 칸인지가 보인다.
 
-const GRID_COLS = 12;
-const GRID_GAP = 3;
-const GRID_CELL_H = 10;
-// journey.tsx의 ScrollView가 좌우 20씩 여백을 이미 두므로(paddingHorizontal: 20), 이
-// 격자가 실제로 쓸 수 있는 폭은 화면 폭에서 그 40을 뺀 값이다.
-const SCREEN_PAD = 40;
+/** 한 주제의 상태. 게이지의 세 구간이 이 셋과 1:1이다. */
+export type TopicPhase = 'done' | 'active' | 'rest';
 
-function chunk<T>(arr: T[], size: number): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+export function topicPhase(c: JourneyCurriculum): TopicPhase {
+  const total = c.total ?? 0;
+  const done = c.done ?? 0;
+  if (total > 0 && done >= total) return 'done';
+  // 손을 댔으면 진행 중이다. total이 0인 주제(아직 상황이 없는 주제)는 done도 0이라
+  // 자연히 '남음'으로 떨어진다 — 끝낸 것으로도, 하던 것으로도 세지 않는다.
+  return done > 0 ? 'active' : 'rest';
+}
+
+export function countPhases(curricula: JourneyCurriculum[]): { done: number; active: number; rest: number } {
+  const out = { done: 0, active: 0, rest: 0 };
+  for (const c of curricula) out[topicPhase(c)] += 1;
   return out;
 }
 
-function ProgressGrid({ curricula }: { curricula: JourneyCurriculum[] }) {
-  const { width } = useWindowDimensions();
-  const avail = Math.max(0, width - SCREEN_PAD);
-  const cellW = Math.max(4, (avail - (GRID_COLS - 1) * GRID_GAP) / GRID_COLS);
-  const rows = chunk(curricula, GRID_COLS);
+/** 진행 중 구간의 호박색. `nb.marker`는 형광펜 노랑이라 빗금으로 쓰면 번져 보인다.
+ *  서가의 목표 부서 테와 같은 값이다. */
+const GAUGE_ACTIVE = '#C77E2E';
+
+const GAUGE_H = 9;
+/** 눈금 간격(주제 수). */
+const TICK_EVERY = 5;
+
+/** 빗금. RN에는 되풀이되는 사선 무늬가 없어서, 기울인 띠를 잘라 넣어 만든다.
+ *  띠 하나는 4px, 사이도 4px — 핸드오프의 `repeating-linear-gradient(-45deg, … 0 4px, … 4px 8px)`
+ *  와 같은 굵기다. */
+function Hatch({ color }: { color: string }) {
+  // 45도로 기울면 가로로 필요한 길이가 높이만큼 늘어난다. 넉넉히 덮고 넘치는 부분은
+  // 바깥의 `overflow: 'hidden'`이 자른다.
+  const band = 4;
+  const span = 400;
   return (
-    <View testID="dept-binder-progress-grid" style={{ marginBottom: 14 }}>
-      {rows.map((row, ri) => (
+    <View pointerEvents="none" style={{ position: 'absolute', left: -GAUGE_H, top: 0, bottom: 0, right: -GAUGE_H, opacity: 0.85 }}>
+      {Array.from({ length: Math.ceil(span / (band * 2)) }).map((_, i) => (
         <View
-          key={ri}
-          testID="dept-binder-progress-row"
-          style={{ flexDirection: 'row', gap: GRID_GAP, marginBottom: ri < rows.length - 1 ? GRID_GAP : 0 }}
-        >
-          {row.map((c, ci) => {
-            const total = c.total ?? 0;
-            const done = c.done ?? 0;
-            // 0으로 나누지 않는다 — total이 0인 주제는 빈 칸으로 그린다.
-            const pct = total > 0 ? Math.min(100, Math.max(0, (done / total) * 100)) : 0;
-            const isCellDone = total > 0 && done >= total;
-            const fillColor = isCellDone ? nb.green : nb.marker;
-            return (
-              <View
-                key={c.themeKey || `cell-${ri}-${ci}`}
-                testID="dept-binder-progress-cell"
-                style={{
-                  width: cellW,
-                  height: GRID_CELL_H,
-                  borderWidth: 1.2,
-                  borderColor: nb.ink,
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  backgroundColor: nb.paper,
-                }}
-              >
-                {pct > 0 && (
-                  <View
-                    style={{
-                      position: 'absolute', left: 0, top: 0, bottom: 0,
-                      width: `${pct}%`, backgroundColor: fillColor,
-                    }}
-                  />
-                )}
-              </View>
-            );
-          })}
-        </View>
+          key={i}
+          style={{
+            position: 'absolute', top: -GAUGE_H, bottom: -GAUGE_H,
+            left: i * band * 2, width: band,
+            backgroundColor: color,
+            transform: [{ rotate: '-45deg' }],
+          }}
+        />
       ))}
+    </View>
+  );
+}
+
+function LegendDot({ color }: { color: string }) {
+  return <View style={{ width: 9, height: 9, backgroundColor: color, marginRight: 4 }} />;
+}
+
+function ProgressGauge({ curricula }: { curricula: JourneyCurriculum[] }) {
+  const t = useT();
+  const total = curricula.length;
+  const { done, active, rest } = countPhases(curricula);
+  // 0으로 나누지 않는다 — 주제가 없는 부서는 빈 게이지를 그린다.
+  const pct = (n: number): `${number}%` => (total > 0 ? `${(n / total) * 100}%` : '0%');
+  const ticks = total > 0 ? Math.max(0, Math.ceil(total / TICK_EVERY) - 1) : 0;
+
+  return (
+    <View testID="dept-binder-gauge" style={{ marginBottom: 14 }}>
+      <View style={{
+        height: GAUGE_H, borderWidth: 1.4, borderColor: nb.ink, borderRadius: 3,
+        overflow: 'hidden', flexDirection: 'row', backgroundColor: nb.paper,
+      }}>
+        <View testID="gauge-done" style={{ width: pct(done), backgroundColor: nb.green }} />
+        <View testID="gauge-active" style={{ width: pct(active), overflow: 'hidden' }}>
+          <Hatch color={GAUGE_ACTIVE} />
+        </View>
+        {/* 눈금 — 5주제마다. 구간 위에 얹으므로 절대 위치다. */}
+        {Array.from({ length: ticks }).map((_, i) => (
+          <View
+            key={i}
+            testID="gauge-tick"
+            pointerEvents="none"
+            style={{
+              position: 'absolute', top: 0, bottom: 0, width: 1,
+              left: pct((i + 1) * TICK_EVERY), backgroundColor: 'rgba(62,54,43,.25)',
+            }}
+          />
+        ))}
+      </View>
+
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 5 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <LegendDot color={nb.green} />
+          <Text style={nbText.hand(12.5, nb.soft)}>
+            {t('journey.gaugeDone')} <Text style={nbText.hand(12.5)}>{done}</Text>
+          </Text>
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <LegendDot color={GAUGE_ACTIVE} />
+          <Text style={nbText.hand(12.5, nb.soft)}>
+            {t('journey.gaugeActive')} <Text style={nbText.hand(12.5)}>{active}</Text>
+          </Text>
+        </View>
+        <Text style={nbText.hand(12.5, nb.soft)}>{t('journey.gaugeRest', { n: rest })}</Text>
+        <View style={{ flex: 1 }} />
+        <Text style={nbText.mono(11, nb.ink)}>
+          {done}
+          <Text style={{ color: nb.soft }}>{`/${total} ${t('journey.gaugeUnit')}`}</Text>
+        </Text>
+      </View>
     </View>
   );
 }
@@ -324,7 +375,7 @@ export function DeptBinder({ curricula, onPress }: {
   return (
     <View testID="dept-binder">
       <BinderSummary curricula={curricula} />
-      <ProgressGrid curricula={curricula} />
+      <ProgressGauge curricula={curricula} />
       <BinderList curricula={curricula} onPress={onPress} />
     </View>
   );
