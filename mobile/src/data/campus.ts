@@ -104,3 +104,45 @@ export function deptNbIcon(contentID?: string): NbIconName {
   const code = deptCodeOf(contentID);
   return (code && DEPT_NB_ICON[code]) || 'stetho';
 }
+
+/**
+ * The colour of a department's binder spine on the 서가 (journey-binder-v42 §6).
+ *
+ * A per-department colour, not a rotating palette. Handoff v42 gives each binder its own
+ * spine — ER red, ICU blue, 수술실 green, 약국 amber — and that is what makes a shelf
+ * readable: you find your department by its colour the way you find a file by its tab.
+ * Cycling four colours through 29 departments says the opposite, that the colour means
+ * nothing, and it reads as a repeating pattern rather than a shelf.
+ *
+ * Related departments share a hue and differ in value, so the family shows at a glance
+ * (the three intensive-care binders are all blue) while no two are the same colour —
+ * `campus.test.ts` holds both of those properties.
+ *
+ * The first eight are handoff v42's own values; the rest extend them by care family.
+ */
+const DEPT_SPINE: Record<string, string> = {
+  // 응급 · 중환자 — 붉은 하나와 푸른 계열
+  ER: '#C75146',
+  ICU: '#4A6FA5', PICU: '#5E86C4', NICU: '#7BA3D6',
+  // 수술 · 처치 — 초록에서 청록으로
+  OR: '#5F8D5A', ENDO: '#6F9E68', DIAL: '#4E8C86', INFUSION: '#58A08F',
+  // 약 · 검사 · 물품 — 황토 계열
+  PHARMA: '#C77E2E', RAD: '#A8823F', SPD: '#9A8F6B',
+  // 여성 · 소아 — 분홍과 연두
+  PEDS: '#D98BA6', NURSERY: '#C98FB8', WOMENKIDS: '#BE7F9E', LD: '#7A9E7E',
+  // 병동 — 보라 계열
+  WARD: '#8B7BB5', SURGWARD: '#7E6FA8', ORTHOWARD: '#9585C2', GERI: '#A08FA8',
+  // 정신 · 재활 — 청회색
+  PSYCH: '#6E8FA8', REHAB: '#5F9AA8',
+  // 암 · 완화
+  ONCO: '#B06A8A', HOSPICE: '#8F7C9E',
+  // 그 밖
+  SPECIALTY: '#C08A5E', DERM: '#D2A05C', SIM: '#7D8FA0',
+  LOUNGE: '#9E9478', MORGUE: '#6E6A62', GEN: '#8A8A7E',
+};
+
+/** The binder-spine colour for a department code. Unmapped codes fall back to ink-grey
+ *  rather than borrowing another department's colour. */
+export function deptSpineColor(dept?: string): string {
+  return (dept && DEPT_SPINE[dept]) || '#8A8277';
+}

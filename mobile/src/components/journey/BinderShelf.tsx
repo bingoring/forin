@@ -1,47 +1,57 @@
 // BinderShelf — 일터 탭 부서 서가 (journey-binder-v42 Task G, build-spec-index.md §6·§8).
 // 시각 참조: inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx의
-// `BinderShelf()`(304~390행) — 그 코드는 웹 프로토타입이라 옮겨 적지 않고 모양만 가져온다.
-// `react-native-svg`는 쓰지 않는다(제약) — 전부 `View`의 테두리·배경으로 그린다.
+// `BinderShelf()`(304~390행). 이 파일은 그 도안을 값 단위로 옮긴 것이다 — 바인더 78×118,
+// 등 9px, 라벨 카드 left 16/right 6/top 8, 아이콘 top 52, 진행 바 bottom 9 높이 7,
+// 숫자 bottom 18, 선반 높이 6에 #C9B99A, 줄 간격 16/26까지 참조의 값 그대로다.
+// `react-native-svg`는 쓰지 않는다 — 전부 `View`의 테두리·배경으로 그린다.
 //
 // 이 화면이 하는 일: 목표 부서를 "책상에 펼쳐 둔 바인더"(맨 위 확장 카드)로, 나머지
 // 부서 전부를 "책장에 꽂힌 바인더"(아래 서가, 한 줄 4개 + 선반)로 그린다.
 //
-// 참조 코드에서 뺀 것 셋(과제 지시서 §2-3, 스펙 X1):
+// 참조에서 뺀 것 셋:
 //  · `공통 필수` 카드 — 우리 코어 주제는 부서마다 따로 있어서(`core-safety-er`,
-//    `core-safety-icu` …) "어느 바인더에서 해도 한 번만"이 거짓이 된다. 공통 코어가
-//    콘텐츠에 생기면 그때 넣는다.
-//  · "마지막으로 보던 부서" 테이프 표식 — 어느 부서를 마지막으로 열었는지 기억해야
-//    하는데 이 화면도 앱 전체도 그 상태를 보관하지 않는다. 앱을 껐다 켜면 잊는 표식은
-//    없는 것만 못하다.
-//  · 추천 순서 메모 — 부서 사이에는 권장 순서가 없다.
+//    `core-safety-icu` …) "어느 바인더에서 해도 한 번만"이 거짓이 된다(스펙 X1).
+//  · "읽던 곳" 파란 테이프 — 어느 부서를 마지막으로 열었는지 기억해야 하는데 이 화면도
+//    앱 전체도 그 상태를 보관하지 않는다. 앱을 껐다 켜면 잊는 표식은 없는 것만 못하다.
+//  · 부서 추천 메모 — 부서 사이에는 권장 순서가 없다.
 //
-// `entries`가 이미 목표 부서를 뺀 나머지 전부다(V2 — 서버의 `freeRoam`은 목표를 빼고
-// 온다). 그래서 목표 부서는 서가에 다시 그리지 않는다 — `내 부서` 카드 하나로 충분하고,
-// 그대로 그리면 중복도 생기지 않는다. 그래도 journey.tsx가 `freeRoamDepts`를 합칠 때
-// 쓰는 것과 같은 이유로 한 번 더 방어적으로 걸러 둔다: "새 목록을 만들지 마라"는 배열을
-// 손으로 쓰지 말라는 뜻이지, 중복을 허용하라는 뜻은 아니다.
+// 참조에 없지만 둔 것 하나: `내 부서` 카드 아래의 "목표 바꾸기". 목표를 바꾸는 자리는
+// 앱 전체에 하나뿐이어야 하는데(V2·J5) 이 화면이 그 유일한 입구다. `이어서`와 헷갈리지
+// 않도록 채워진 버튼이 아니라 밑줄 친 작은 링크로 둔다.
+//
+// `entries`가 이미 목표 부서를 뺀 나머지 전부다 — 서버의 `freeRoam`은 목표를 빼고 온다.
+// 그래서 목표 부서는 서가에 다시 그리지 않는다. 그래도 방어적으로 한 번 더 걸러 둔다.
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { FreeRoamEntry } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbPaper, NbProgScale, NbTag, nbText } from '@/components/nb/NbUI';
-import { deptNbIcon } from '@/data/campus';
-import { nb } from '@/theme/nb';
-import { useT } from '@/i18n';
+import { NbButton, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { deptNbIcon, deptSpineColor } from '@/data/campus';
+import { nb, nbFonts } from '@/theme/nb';
+import { type Translate, useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
 
 const ROW_SIZE = 4;
 const ROW_GAP = 10;
-const BINDER_H = 112;
+/** 참조의 바인더는 78×118이다. 폭은 줄을 4등분해 정하고 높이는 그 비율을 지킨다 —
+ *  기기 폭이 390이면 80×121로, 참조와 거의 같은 크기가 나온다. */
+const BINDER_RATIO = 118 / 78;
 const SPINE_W = 9;
-const BAR_H = 5;
-// 아직 서가 컨테이너의 onLayout이 한 번도 오지 않았을 때만 쓰는 자리표시 폭이다 — 화면
-// 폭에서 여백을 빼는 상수가 아니라(과제 지시서가 막는 바로 그것), 실제 폭을 재기 전
-// 첫 프레임에 칸이 찌그러지지 않게 하는 값일 뿐이다. DeptBinder.tsx의 `listHeight`
-// 기본값(900)과 같은 종류의 자리표시다.
+/** 등을 뺀 라벨·아이콘·진행 바가 쓰는 안쪽 열. 참조의 `left:16, right:6`. */
+const INNER_LEFT = 16;
+const INNER_RIGHT = 6;
+/** 책은 조금씩 삐뚤게 꽂힌다 — 참조의 네 각을 순환시킨다. */
+const BINDER_TILT = [-1.5, 1, -0.5, 1.5];
+/** 선반 널의 나뭇결 색(참조 `#C9B99A`). */
+const SHELF_WOOD = '#C9B99A';
+/** 목표 부서를 감싸는 호박색 테(참조의 `c.amber`). `nb.marker`는 형광펜 노랑이라 테로
+ *  쓰면 번져 보인다. */
+const GOAL_RING = '#C77E2E';
+/** 아직 서가 컨테이너의 onLayout이 오기 전 첫 프레임에만 쓰는 자리표시 폭이다. */
 const SHELF_WIDTH_FALLBACK = 335;
-
-const SHELF_COLORS = [nb.green, nb.blue, nb.red, nb.marker];
+/** 목표 부서 카드의 주제 막대 — 한 줄에 이만큼 넣고 넘치면 접는다. 주제가 15~35개라
+ *  참조처럼 한 줄에 전부 늘어놓으면 막대가 획보다 얇아진다(V5·V6). */
+const SEG_PER_ROW = 12;
 
 function chunk<T>(arr: T[], size: number): T[][] {
   const out: T[][] = [];
@@ -49,7 +59,47 @@ function chunk<T>(arr: T[], size: number): T[][] {
   return out;
 }
 
+/** 주제 하나가 끝났는지 — 그 주제 자신의 done/total로 센다. total이 0인(아직 상황이
+ *  없는) 주제를 완료로 잘못 세지 않는다. */
+export function isTopicDone(c: JourneyCurriculum): boolean {
+  return (c.total ?? 0) > 0 && (c.done ?? 0) >= (c.total ?? 0);
+}
+
 // ── 내 부서 — 책상에 펼쳐 둔 바인더 ──────────────────────────────────────────
+
+/** 참조의 `주제 2/6 완료 · 지금 '중증 응대' 13/34` 한 줄. 진행 중인 주제가 없으면
+ *  뒷부분을 지어내지 않고 앞부분만 낸다. */
+function goalSubline(t: Translate, curricula: JourneyCurriculum[]): string {
+  const done = curricula.filter(isTopicDone).length;
+  const head = t('journey.goalTopics', { done, total: curricula.length });
+  const cur = curricula.find((c) => c.resume);
+  if (!cur) return head;
+  return `${head} · ${t('journey.goalNow', {
+    name: cur.name ?? cur.themeKey ?? '',
+    done: cur.done ?? 0,
+    total: cur.total ?? 0,
+  })}`;
+}
+
+/** 주제 하나짜리 잉크 막대. 참조의 `height:7, border 1.2, radius 2, rotate ±.8`. */
+function TopicSegment({ c, index }: { c: JourneyCurriculum; index: number }) {
+  const total = c.total ?? 0;
+  const done = c.done ?? 0;
+  const pct = total > 0 ? Math.min(100, Math.max(0, (done / total) * 100)) : 0;
+  return (
+    <View
+      testID="goal-topic-segment"
+      style={{
+        flex: 1, height: 7, borderWidth: 1.2, borderColor: nb.ink, borderRadius: 2,
+        overflow: 'hidden', transform: [{ rotate: `${index % 2 ? 0.8 : -0.8}deg` }],
+      }}
+    >
+      {pct > 0 && (
+        <View style={{ width: `${pct}%`, height: '100%', backgroundColor: isTopicDone(c) ? nb.green : GOAL_RING }} />
+      )}
+    </View>
+  );
+}
 
 function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal }: {
   goalDept: string;
@@ -59,38 +109,56 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
   onChangeGoal(): void;
 }) {
   const t = useT();
-  // 고정 개수 진행도(과제 지시서) — 상황이 아니라 "완료한 주제 수 / 전체 주제 수"다.
-  // 주제 하나가 완료로 세는 조건은 그 주제 자신의 done/total이지, 서버가 이미 계산해
-  // 보내는 요약 숫자가 아니다 — 그래야 total이 0인(아직 상황이 없는) 주제를 완료로
-  // 잘못 세지 않는다.
-  const total = goalCurricula.length;
-  const done = goalCurricula.filter((c) => (c.total ?? 0) > 0 && (c.done ?? 0) >= (c.total ?? 0)).length;
+  const spine = deptSpineColor(goalDept);
+  const rows = chunk(goalCurricula, SEG_PER_ROW);
 
   return (
-    <NbPaper testID="binder-shelf-goal-card" rot={-0.4} tape tapeLeft={130} style={{ padding: 14 }}>
+    <NbPaper
+      testID="binder-shelf-goal-card"
+      rot={-0.4}
+      tape
+      tapeLeft={130}
+      style={{
+        paddingHorizontal: 14, paddingVertical: 12,
+        borderColor: GOAL_RING, borderWidth: 2,
+      }}
+    >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <NbPaper rot={-3} style={{ width: 44, height: 44, alignItems: 'center', justifyContent: 'center' }}>
-          <NbIcon name={deptNbIcon(`SCN-${goalDept}-00001`)} size={24} />
-        </NbPaper>
+        {/* 아이콘 액자 — 부서 색을 옅게 깐다(참조: rgba(199,81,70,.12)를 ER 색에서 뽑았다). */}
+        <View style={{
+          width: 44, height: 44, borderWidth: 1.6, borderColor: nb.ink,
+          backgroundColor: `${spine}1F`, alignItems: 'center', justifyContent: 'center',
+          transform: [{ rotate: '-3deg' }],
+        }}>
+          <NbIcon name={deptNbIcon(`SCN-${goalDept}-00001`)} size={26} />
+        </View>
+
         <View style={{ flex: 1, minWidth: 0 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
             <Text numberOfLines={1} style={[nbText.hand(19), { flexShrink: 1 }]}>
-              {t(`dept.${goalDept}`)}
+              {t('journey.goalBinder', { dept: t(`dept.short.${goalDept}`) })}
             </Text>
-            {/* 추론된 목표는 저장되지 않는다(J4) — 학습자가 고르기 전까지는 그렇다는 티를 낸다. */}
+            <NbTag color={GOAL_RING} rot={-2}>{t('journey.mineTag')}</NbTag>
+            {/* 추론된 목표는 저장되지 않는다(J4) — 학습자가 고르기 전까지는 티를 낸다. */}
             {!!inferred && <NbTag color={nb.soft}>{t('journey.inferredTag')}</NbTag>}
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6 }}>
-            <NbProgScale done={done} total={total} />
-            <Text style={nbText.mono(10, nb.soft)}>{`${done}/${total}`}</Text>
-          </View>
+          <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>
+            {goalSubline(t, goalCurricula)}
+          </Text>
         </View>
-        <NbButton variant="ink" size="sm" onPress={() => onOpen(goalDept)}>
+
+        <NbButton variant="ink" size="sm" iconRight="chevronRight" iconColor={nb.paper} onPress={() => onOpen(goalDept)}>
           {t('journey.resumeAction')}
         </NbButton>
       </View>
-      {/* 목표를 바꾸는 유일한 자리(V2) — `이어서`와 뚜렷이 구분되도록 채워진 버튼이
-          아니라 밑줄 친 텍스트 링크로 둔다. */}
+
+      {/* 주제 막대 — 주제 하나당 하나, 한 줄 12개씩 접는다. */}
+      {rows.map((row, ri) => (
+        <View key={ri} testID="goal-topic-row" style={{ flexDirection: 'row', gap: 4, marginTop: 10 }}>
+          {row.map((c, i) => <TopicSegment key={c.themeKey || `${ri}-${i}`} c={c} index={ri * SEG_PER_ROW + i} />)}
+        </View>
+      ))}
+
       <Pressable
         testID="binder-shelf-change-goal"
         onPress={onChangeGoal}
@@ -111,9 +179,10 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
 
 function ShelfBoard() {
   return (
-    <View testID="binder-shelf-board" style={{ marginTop: 6 }}>
-      <View style={{ height: 2, backgroundColor: nb.ink, borderRadius: 1 }} />
-      <View style={{ height: 3, backgroundColor: 'rgba(62,54,43,.15)', marginTop: 2 }} />
+    <View testID="binder-shelf-board" style={{ marginTop: 4 }}>
+      <View style={{ height: 6, backgroundColor: SHELF_WOOD, borderWidth: 1.4, borderColor: nb.ink, borderRadius: 2 }} />
+      {/* 참조의 `boxShadow: 0 4px 0` — RN에는 오프셋 그림자가 없어 널 아래 띠로 그린다. */}
+      <View style={{ height: 4, backgroundColor: 'rgba(62,54,43,.12)', marginHorizontal: 1 }} />
     </View>
   );
 }
@@ -130,7 +199,8 @@ function Binder({ entry, index, width, onOpen }: {
   const total = entry.total ?? 0;
   // 0으로 나누지 않는다 — total이 0이면 빈 바로 그린다.
   const pct = total > 0 ? Math.min(100, Math.max(0, (passed / total) * 100)) : 0;
-  const color = SHELF_COLORS[index % SHELF_COLORS.length];
+  const spine = deptSpineColor(dept);
+  const height = width * BINDER_RATIO;
 
   return (
     <Pressable
@@ -138,30 +208,50 @@ function Binder({ entry, index, width, onOpen }: {
       onPress={() => onOpen(dept)}
       accessibilityRole="button"
       accessibilityLabel={t(`dept.${dept}`)}
-      style={{ width, height: BINDER_H }}
+      style={{ width, height, transform: [{ rotate: `${BINDER_TILT[index % BINDER_TILT.length]}deg` }] }}
     >
-      <View style={{ flex: 1, borderWidth: 1.6, borderColor: nb.ink, borderRadius: 4, backgroundColor: nb.paper, overflow: 'hidden' }}>
-        {/* 색 등 — 부서 순서로 순환한다(내 부서 카드를 뺀 화면 전체 인덱스). */}
-        <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: SPINE_W, backgroundColor: color, borderRightWidth: 1.4, borderRightColor: nb.ink }} />
-        <View style={{ flex: 1, paddingLeft: SPINE_W + 6, paddingRight: 6, paddingTop: 9, alignItems: 'center' }}>
-          <NbIcon name={deptNbIcon(`SCN-${dept}-00001`)} size={22} />
-          {/* 짧은 라벨을 쓴다. `dept.*`는 '응급실 ER'처럼 이름과 영문을 함께 담아 28자까지
-              가는데, 한 줄에 4개면 바인더 안쪽 폭이 56px 남짓이라 두 줄로도 잘린다.
-              `dept.short.*`는 언어마다 손으로 쓴 값이다 — 자동으로 잘라내면 영어의
-              'Operating'(수술실), 독일어의 'Frauen-'(여성소아)처럼 뜻이 무너진다. */}
-          <Text numberOfLines={2} style={[nbText.hand(12), { marginTop: 4, textAlign: 'center' }]}>
-            {t(`dept.short.${dept}`)}
-          </Text>
-        </View>
-        {/* 바닥 잉크 진행 바 — 그 아래에 done/total. */}
-        <View style={{ position: 'absolute', left: SPINE_W + 6, right: 6, bottom: 17, height: BAR_H, borderWidth: 1.2, borderColor: nb.ink, borderRadius: 2, overflow: 'hidden' }}>
-          {pct > 0 && (
-            <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${pct}%`, backgroundColor: color }} />
-          )}
-        </View>
-        <Text style={[nbText.mono(9, nb.soft), { position: 'absolute', left: SPINE_W + 6, right: 6, bottom: 5, textAlign: 'center' }]}>
-          {`${passed}/${total}`}
+      {/* 바인더 몸통 — 오른쪽 모서리만 더 둥글다(참조: 3px 6px 6px 3px). */}
+      <View style={{
+        position: 'absolute', left: 0, top: 0, right: 0, bottom: 0,
+        backgroundColor: nb.paper, borderWidth: 1.6, borderColor: nb.ink,
+        borderTopLeftRadius: 3, borderBottomLeftRadius: 3,
+        borderTopRightRadius: 6, borderBottomRightRadius: 6,
+      }} />
+      {/* 색 등 */}
+      <View testID="binder-spine" style={{
+        position: 'absolute', left: 0, top: 0, bottom: 0, width: SPINE_W,
+        backgroundColor: spine, borderRightWidth: 1.4, borderRightColor: nb.ink,
+        borderTopLeftRadius: 3, borderBottomLeftRadius: 3,
+      }} />
+      {/* 등 라벨 — 부서 코드와 이름 */}
+      <View style={{
+        position: 'absolute', left: INNER_LEFT, right: INNER_RIGHT, top: 8,
+        backgroundColor: '#fff', borderWidth: 1, borderColor: nb.paperEdge,
+        paddingTop: 4, paddingHorizontal: 4, paddingBottom: 3, alignItems: 'center',
+      }}>
+        <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9, color: nb.ink, letterSpacing: 0.5 }}>
+          {dept}
         </Text>
+        <Text numberOfLines={1} style={[nbText.hand(11.5), { marginTop: 1 }]}>
+          {t(`dept.short.${dept}`)}
+        </Text>
+      </View>
+      {/* 부서 두들 */}
+      <View style={{ position: 'absolute', left: INNER_LEFT, right: INNER_RIGHT, top: 52, alignItems: 'center' }}>
+        <NbIcon name={deptNbIcon(`SCN-${dept}-00001`)} size={24} />
+      </View>
+      {/* 주제 진행 — 숫자가 위, 잉크 바가 아래(참조의 bottom 18 / bottom 9) */}
+      <Text style={{
+        position: 'absolute', left: INNER_LEFT, right: INNER_RIGHT, bottom: 18,
+        textAlign: 'center', fontFamily: nbFonts.monoBold, fontSize: 8.5, color: nb.soft,
+      }}>
+        {`${passed}/${total}`}
+      </Text>
+      <View style={{
+        position: 'absolute', left: INNER_LEFT, right: INNER_RIGHT, bottom: 9, height: 7,
+        borderWidth: 1.2, borderColor: nb.ink, borderRadius: 2, overflow: 'hidden',
+      }}>
+        {pct > 0 && <View style={{ width: `${pct}%`, height: '100%', backgroundColor: spine }} />}
       </View>
     </Pressable>
   );
@@ -177,9 +267,9 @@ export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen
   onOpen(dept: string): void;
   onChangeGoal(): void;
 }) {
+  const t = useT();
   const [shelfWidth, setShelfWidth] = useState(SHELF_WIDTH_FALLBACK);
 
-  // 방어적 중복 제거 — 위 파일 코멘트 참고.
   const shelfEntries = entries.filter((e) => (e.dept ?? '') !== goalDept);
   const rows = chunk(shelfEntries, ROW_SIZE);
   const binderWidth = Math.max(40, (shelfWidth - ROW_GAP * (ROW_SIZE - 1)) / ROW_SIZE);
@@ -187,7 +277,7 @@ export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen
   return (
     <View testID="binder-shelf">
       {!!goalDept && (
-        <View style={{ paddingHorizontal: 20, marginBottom: 18 }}>
+        <View style={{ paddingHorizontal: 20, marginBottom: 16 }}>
           <GoalDeptCard
             goalDept={goalDept}
             goalCurricula={goalCurricula}
@@ -199,11 +289,13 @@ export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen
       )}
 
       <View style={{ paddingHorizontal: 20 }}>
-        {/* 이 View 자신은 패딩이 없다 — onLayout이 재는 폭이 곧 바인더가 실제로 나눠
-            가질 폭이라서, 화면 폭에서 여백 상수를 따로 빼지 않아도 된다. */}
+        <Text style={[nbText.hand(16), { marginTop: 4 }]}>{t('journey.shelfHeading')}</Text>
+        <Text style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{t('journey.shelfHint')}</Text>
+
+        {/* 이 View 자신은 패딩이 없다 — onLayout이 재는 폭이 곧 바인더가 나눠 가질 폭이다. */}
         <View testID="binder-shelf-rows" onLayout={(e) => setShelfWidth(e.nativeEvent.layout.width)}>
           {rows.map((row, ri) => (
-            <View key={ri} testID="binder-shelf-row" style={{ marginTop: ri ? 20 : 0 }}>
+            <View key={ri} testID="binder-shelf-row" style={{ marginTop: ri ? 26 : 16 }}>
               <View style={{ flexDirection: 'row', gap: ROW_GAP, alignItems: 'flex-end' }}>
                 {row.map((entry, i) => (
                   <Binder

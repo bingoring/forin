@@ -60,6 +60,17 @@ const GOAL_CURRICULA: JourneyCurriculum[] = [
   curriculum({ themeKey: 't3', done: 0, total: 0 }), // total 0 — 완료로 세지 않는다
 ];
 
+
+/** 실제 부서 코드 몇 개 — 등 색이 부서마다 다른지 재려면 진짜 코드가 필요하다
+ *  (픽스처의 D00 같은 가짜 코드는 전부 같은 대체 색으로 떨어진다). */
+const REAL_DEPTS = ['ER', 'ICU', 'OR', 'PHARMA', 'PEDS', 'LD', 'WARD', 'PSYCH'];
+
+/** RN의 style은 배열로 겹쳐 올 수 있다 — 한 겹으로 편다. */
+function flat(style: unknown): Record<string, unknown> {
+  if (Array.isArray(style)) return Object.assign({}, ...style.map(flat));
+  return (style ?? {}) as Record<string, unknown>;
+}
+
 function baseProps() {
   return {
     goalDept: 'ER',
@@ -157,10 +168,81 @@ describe('BinderShelf', () => {
     expect(texts(chosenTree.root)).not.toContain('추정');
   });
 
-  it('computes the goal card’s fixed-count progress from completed topics, not total situations', () => {
+  it('computes the goal card’s topic progress from completed topics, not total situations', () => {
     const tree = mount(<BinderShelf {...baseProps()} />);
     // 3개 주제 중 완료(done>=total>0)는 t1 하나뿐 — t3은 total 0이라 완료로 세지 않는다.
-    expect(texts(tree.root)).toContain('1/3');
+    expect(texts(tree.root)).toContain('주제 1/3 완료');
+  });
+
+  // ── 핸드오프 v42 BinderShelf와 맞춰야 하는 것들 ───────────────────────────
+
+  // 참조는 부서마다 다른 등 색을 쓴다. 네 색을 돌려 쓰면 색이 아무 뜻도 없다고 말하는
+  // 셈이고, 화면에서도 서가가 아니라 되풀이되는 무늬로 읽힌다.
+  it('부서마다 다른 등 색을 쓴다 — 몇 색을 돌려 쓰지 않는다', () => {
+    // 목표 부서는 서가에 안 그려지므로(위 규칙) 목록에 없는 부서를 목표로 둔다.
+    const tree = mount(
+      <BinderShelf {...baseProps()} goalDept="SIM" entries={REAL_DEPTS.map((d) => entry({ dept: d }))} />,
+    );
+    const spines = REAL_DEPTS.map((d) => {
+      const card = shelfCard(tree.root, d)!;
+      const spine = card.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'binder-spine')[0];
+      return flat(spine.props.style).backgroundColor as string;
+    });
+    expect(new Set(spines).size).toBe(REAL_DEPTS.length);
+  });
+
+  // 참조는 책을 조금씩 삐뚤게 꽂는다.
+  it('책이 조금씩 삐뚤게 꽂힌다 — 각이 하나로 고정되지 않는다', () => {
+    const tree = mount(<BinderShelf {...baseProps()} />);
+    const angles = shelfCards(tree.root).map((n) => {
+      const tr = flat(n.props?.style).transform as { rotate?: string }[] | undefined;
+      return tr?.[0]?.rotate;
+    });
+    expect(angles.every((a) => typeof a === 'string')).toBe(true);
+    expect(new Set(angles).size).toBeGreaterThan(1);
+    // 삐뚤되 쓰러지지는 않는다.
+    for (const a of angles) expect(Math.abs(parseFloat(a as string))).toBeLessThanOrEqual(3);
+  });
+
+  // 참조의 등 라벨은 부서 코드(mono)와 이름(hand) 두 줄이다.
+  it('등 라벨에 부서 코드와 이름을 함께 찍는다', () => {
+    const tree = mount(<BinderShelf {...baseProps()} entries={[entry({ dept: 'ICU' })]} />);
+    const shown = texts(shelfCard(tree.root, 'ICU')!);
+    expect(shown).toContain('ICU');        // 코드
+    expect(shown).toContain('중환자실');    // 짧은 이름
+  });
+
+  // 참조의 바인더는 78×118이다. 폭이 어떻든 그 비율을 지킨다.
+  it('바인더가 핸드오프의 78:118 비율을 지킨다', () => {
+    const tree = mount(<BinderShelf {...baseProps()} />);
+    const st = flat(shelfCards(tree.root)[0].props?.style);
+    expect((st.height as number) / (st.width as number)).toBeCloseTo(118 / 78, 2);
+  });
+
+  // 참조의 내 부서 카드는 주제마다 막대 하나를 둔다.
+  it('내 부서 카드가 주제 하나당 막대 하나를 그린다', () => {
+    const tree = mount(<BinderShelf {...baseProps()} />);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(GOAL_CURRICULA.length);
+  });
+
+  // 주제가 35개여도 막대가 획보다 얇아지지 않게 줄을 접는다(V5).
+  it('주제가 35개면 막대 줄이 세 줄로 접힌다', () => {
+    const many = Array.from({ length: 35 }, (_, i) => curriculum({ themeKey: `t${i}` }));
+    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={many} />);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(35);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-row').length).toBe(3);
+  });
+
+  // 진행 중인 주제가 없으면 '지금 …' 부분을 지어내지 않는다.
+  it('진행 중인 주제가 없으면 현재 주제를 지어내지 않는다', () => {
+    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={[curriculum({ done: 3, total: 3 })]} />);
+    expect(texts(tree.root).some((s) => s.includes('지금'))).toBe(false);
+  });
+
+  it('진행 중인 주제가 있으면 그 이름과 진도를 함께 말한다', () => {
+    const cur = curriculum({ themeKey: 'x', name: '중증 응대', resume: true, done: 13, total: 34 });
+    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={[cur]} />);
+    expect(texts(tree.root).some((s) => s.includes('중증 응대') && s.includes('13/34'))).toBe(true);
   });
 
   // 바인더 라벨은 짧은 쪽을 쓴다. `dept.ICU`는 '중환자실 ICU'라 한 줄에 4개인 바인더

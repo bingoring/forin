@@ -105,7 +105,16 @@ export default function JourneyScreen() {
   // 목표 부서만 빼고 나머지 전부를 낸다(J9)이므로 이 둘을 합치면 그것이 곧 29개 부서 전체다.
   // 서버가 이미 목표를 뺀 채 보내지만, 방어적으로 한 번 더 걸러 중복을 막는다.
   const freeRoamDepts = (view.freeRoam ?? []).map((e) => e.dept).filter((d): d is string => !!d);
+
   const allDepts = goalDept ? [goalDept, ...freeRoamDepts.filter((d) => d !== goalDept)] : freeRoamDepts;
+
+  // 머리줄의 두 숫자. 바인더 수는 `allDepts`가 이미 센 것과 같은 값이라 따로 세지
+  // 않는다. 통과한 주제 수는 자유 탐방의 `passed`(주제 단위)와 목표 부서에서 끝난
+  // 주제 수를 더한 것이다 — 자유 탐방이 상황 단위 숫자를 주지 않으므로 이 화면은
+  // 우표(상황)가 아니라 주제를 센다. 갖고 있지 않은 숫자를 우표라고 부르지 않는다.
+  const binderCount = allDepts.length;
+  const passedTopics = (view.freeRoam ?? []).reduce((a, e) => a + (e.passed ?? 0), 0)
+    + curricula.filter((c) => (c.total ?? 0) > 0 && (c.done ?? 0) >= (c.total ?? 0)).length;
 
   // 목표를 바꾸는 유일한 입구(V2) — `BinderShelf`의 `내 부서` 카드가 이 함수를 부른다.
   // 목록은 이 화면이 만들지 않고(allDepts) 넘기는 방법은 route param이 아니라 모듈
@@ -117,8 +126,18 @@ export default function JourneyScreen() {
 
   return (
     <Sheet>
-      <View style={{ paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 6 }}>
-        <Text style={nbText.hand(24)}>{t('journey.shelfTitle')}</Text>
+      {/* 참조(v42 BinderShelf)의 머리 — 화면 이름은 왼쪽에 크게, 그 옆에 서가 규모를
+          한 줄로. 개수는 응답에서 센다: 바인더 수는 목표 부서 + 자유 탐방이고, 우표는
+          목표 부서의 완료 상황 수와 나머지 부서가 통과한 주제 수의 합이 아니라 —
+          자유 탐방 항목이 주제 단위로만 오므로 — 목표 부서만 상황 단위로 셀 수 있다.
+          그래서 두 번째 숫자는 '우표'가 아니라 통과한 주제 수다. 갖고 있지 않은 숫자를
+          우표라고 부르지 않는다. */}
+      <View style={{ flexDirection: 'row', alignItems: 'baseline', paddingHorizontal: 20, paddingTop: TOP_INSET, paddingBottom: 6 }}>
+        <Text style={nbText.hand(28)}>{t('journey.shelfTitle')}</Text>
+        <View style={{ flex: 1 }} />
+        <Text testID="journey-shelf-summary" style={nbText.hand(13.5, nb.soft)}>
+          {t('journey.shelfSummary', { binders: binderCount, topics: passedTopics })}
+        </Text>
       </View>
 
       <View style={{ flex: 1 }}>

@@ -242,4 +242,17 @@ test('a load failure offers a retry that re-fetches', async () => {
   await act(async () => { retry.props.onPress(); });
   await act(async () => { await Promise.resolve(); });
   expect(tree.root.findByProps({ testID: 'binder-shelf-goal-card' })).toBeTruthy();
+
+});
+
+// 참조(v42 BinderShelf)의 머리줄 — 화면 이름 옆에 서가 규모가 한 줄로 붙는다. 두 숫자는
+// 응답에서 센다: 바인더 수는 목표 부서 + 자유 탐방, 통과한 주제 수는 자유 탐방의
+// `passed` 합과 목표 부서에서 끝난 주제 수의 합이다.
+test('the header line states how many binders and how many topics are cleared', async () => {
+  const tree = await mount();
+  const line = tree.root.findAll((n) => n.props?.testID === 'journey-shelf-summary')[0];
+  // 픽스처: 바인더는 목표 ER + 자유 탐방 ICU·OR = 3권. 통과한 주제는 자유 탐방의
+  // passed 합(2 + 0)에 목표 ER에서 끝난 주제 t1 하나를 더해 3이다 — t2는 1/4이라
+  // 세지 않는다. 두 숫자가 우연히 같으므로 조각이 아니라 문장 전체로 잰다.
+  expect(texts(line).join(' ')).toBe('바인더 3권 · 통과한 주제 3');
 });
