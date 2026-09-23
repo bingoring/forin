@@ -140,6 +140,54 @@ func TestEngine_StepsExpandsEachDialogueIntoTwoRuns(t *testing.T) {
 	}
 }
 
+// 스텝 행이 자기 난이도를 싣고 온다. 여정 화면이 구간 경계(기초·실전·심화)를 그 값으로
+// 긋는다. 주제의 `tiers` 요약으로는 대신할 수 없다 — 그 집계는 상황 단위이고 이 행들은
+// 회차 단위라, 회차가 둘인 스텝이 하나라도 있으면 누적 합이 엉뚱한 행을 가리킨다. 이
+// 픽스처가 정확히 그 경우다: 난이도 1·2가 상황 하나씩인데 행은 넷이라, 상황 기준 경계는
+// 1번 행을, 실제 경계는 2번 행을 가리킨다.
+func TestEngine_StepsCarryTheirDifficulty(t *testing.T) {
+	e := fixtureEngine()
+	rows := e.Steps("er-chestpain", learning.Progress{})
+	want := []int{1, 1, 2, 2}
+	if len(rows) != len(want) {
+		t.Fatalf("want %d rows, got %d", len(want), len(rows))
+	}
+	for i, w := range want {
+		if rows[i].Difficulty != w {
+			t.Errorf("row %d difficulty = %d, want %d (%+v)", i, rows[i].Difficulty, w, rows[i])
+		}
+	}
+
+	// 상황 단위 누적으로는 못 맞춘다는 것을 같이 못박는다: tiers의 첫 계단 total은 1인데
+	// 행에서 난이도가 바뀌는 자리는 2번이다.
+	st := e.Tracks(prog())
+	var tiers []learning.TierCount
+	for _, tg := range st {
+		for _, cs := range tg.Curricula {
+			if cs.ThemeKey == "er-chestpain" {
+				tiers = cs.Tiers
+			}
+		}
+	}
+	if len(tiers) == 0 {
+		t.Fatalf("fixture should expose tiers for er-chestpain")
+	}
+	if tiers[0].Total != 1 {
+		t.Fatalf("fixture assumption broken: first tier total = %d, want 1", tiers[0].Total)
+	}
+	boundary := 0
+	for i := 1; i < len(rows); i++ {
+		if rows[i].Difficulty != rows[i-1].Difficulty {
+			boundary = i
+			break
+		}
+	}
+	if boundary == tiers[0].Total {
+		t.Errorf("row boundary (%d) must NOT equal the situation count (%d) — "+
+			"if it did, this test would not be proving anything", boundary, tiers[0].Total)
+	}
+}
+
 func TestEngine_StepsMarksExactlyOneNowAndLocksTheRest(t *testing.T) {
 	e := fixtureEngine()
 	rows := e.Steps("er-chestpain", learning.Progress{})

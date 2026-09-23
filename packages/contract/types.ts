@@ -2876,6 +2876,14 @@ export interface components {
              *     something — never on a done or lock row, where a "tried" badge would contradict.
              */
             attempted?: boolean;
+            /**
+             * @description Difficulty is the tier this step sits in. The theme's own `tiers` summary cannot
+             *     answer this per row: those counts are per SITUATION while these rows are per RUN,
+             *     so a cumulative count over `tiers` lands on the wrong row as soon as any step has
+             *     two rungs. The journey screen draws its section boundaries (기초·실전·심화) from
+             *     this field, so they follow the real ladder instead of a fixed row count.
+             */
+            difficulty?: number;
             guide?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.GuideLevel"];
             /** @description dlg | quiz | event | boss (S4: open string) */
             kind?: string;

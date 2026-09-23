@@ -97,6 +97,12 @@ type StepState struct {
 	Attempted bool `json:"attempted,omitempty"`
 	// Optional marks a bonus quiz: playable any time, gates nothing, uncounted.
 	Optional bool `json:"optional,omitempty"`
+	// Difficulty is the tier this step sits in. The theme's own `tiers` summary cannot
+	// answer this per row: those counts are per SITUATION while these rows are per RUN,
+	// so a cumulative count over `tiers` lands on the wrong row as soon as any step has
+	// two rungs. The journey screen draws its section boundaries (기초·실전·심화) from
+	// this field, so they follow the real ladder instead of a fixed row count.
+	Difficulty int `json:"difficulty,omitempty"`
 	// Guide/Pass/Passes describe the rung. Absent on steps with a single run.
 	Guide  GuideLevel `json:"guide,omitempty"`
 	Pass   int        `json:"pass,omitempty"`

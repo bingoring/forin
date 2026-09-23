@@ -126,7 +126,7 @@ func (e *Engine) Steps(theme learning.ThemeKey, p learning.Progress) []learning.
 			for pass := 1; pass <= n; pass++ {
 				row := learning.StepState{
 					Kind: st.Kind, Name: st.Name, ScenarioID: st.ScenarioID,
-					Optional: st.Kind == "quiz",
+					Optional: st.Kind == "quiz", Difficulty: ti.Difficulty,
 				}
 				if n > 1 {
 					row.Guide, row.Pass, row.Passes = e.guide.GuideForPass(st.Kind, pass), pass, n
