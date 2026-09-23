@@ -5,7 +5,7 @@
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Text } from 'react-native';
 import Svg from 'react-native-svg';
-import { DeptBinder, groupByTrack } from './DeptBinder';
+import { DeptBinder, groupByTrack, indexTabTop } from './DeptBinder';
 import type { JourneyCurriculum } from './JourneyMap';
 import { trackMounts } from '../../testing/mountRegistry';
 
@@ -193,5 +193,28 @@ describe('DeptBinder', () => {
     const tree = mount(<DeptBinder curricula={[]} onPress={jest.fn()} />);
     expect(findAllPressables(tree.root)).toHaveLength(0);
     expect(progressCells(tree.root)).toHaveLength(0);
+  });
+});
+
+// 색 인덱스 탭은 계단을 이루되 종이 안에 머문다. 참조 코드의 `14 + i * 4`는 주제가
+// 5개라는 전제에서 나온 값이라, 35개에 그대로 쓰면 열네 번째부터 탭이 간지 아래로
+// 흘러내린다(V6). 여기서 지키는 성질은 두 가지다 — 계단이 실제로 보이고(값이 하나로
+// 고정되지 않는다), 가장 깊이 내려간 탭도 간지 한 장 안에 들어온다.
+describe('indexTabTop — 탭 계단은 주기를 돈다', () => {
+  // 간지 한 장의 최소 높이: NbPaper 위아래 padding 12 + 제목 한 줄 약 22 +
+  // 우표 격자 위 여백 9 + 한 줄 9 + 아랫줄 위 여백 8 + 아랫줄 약 20 = 약 92.
+  // 탭(높이 42)이 그 안에 들어와야 한다.
+  const CARD_MIN_H = 92;
+  const TAB_H = 42;
+
+  it('35개 전부에서 탭 아래끝이 간지 안에 머문다', () => {
+    for (let i = 0; i < 35; i++) {
+      expect(indexTabTop(i) + TAB_H).toBeLessThanOrEqual(CARD_MIN_H);
+    }
+  });
+
+  it('계단이 실제로 보인다 — 값이 하나로 고정되지 않는다', () => {
+    const tops = new Set(Array.from({ length: 35 }, (_, i) => indexTabTop(i)));
+    expect(tops.size).toBeGreaterThan(1);
   });
 });

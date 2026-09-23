@@ -158,6 +158,19 @@ const TAB_COLORS = [nb.green, nb.blue, nb.red, nb.marker];
 const TAB_W = 20;
 const TAB_H = 42;
 
+// 탭이 간지마다 조금씩 내려앉아 계단을 이루되, 그 내림은 주기를 돈다. 참조 코드의
+// `14 + i * 4`는 주제가 5개라는 전제에서 나온 값이라 그대로 쓸 수 없다 — 주제가 35개면
+// 마지막 탭이 top 150 근처에 놓이는데 간지 한 장의 높이는 100여 픽셀이라, 열네 번째
+// 주제부터 탭이 종이 아래로 흘러내린다(V6: 핸드오프의 개수를 그대로 믿지 않는다).
+// 주기를 두면 계단은 그대로 보이면서 탭은 언제나 종이 안에 머문다.
+const TAB_TOP_BASE = 14;
+const TAB_TOP_STEP = 6;
+const TAB_TOP_CYCLE = 5;
+
+export function indexTabTop(index: number): number {
+  return TAB_TOP_BASE + (index % TAB_TOP_CYCLE) * TAB_TOP_STEP;
+}
+
 /** 색 인덱스 탭. `index`는 묶음 안의 순서가 아니라 화면 전체(코어 다음 심화)의
  *  순서다(과제 지시서) — 번호도 색도 그 하나의 인덱스로 정해진다. */
 function IndexTab({ index }: { index: number }) {
@@ -167,7 +180,7 @@ function IndexTab({ index }: { index: number }) {
       testID="dept-binder-index-tab"
       pointerEvents="none"
       style={{
-        position: 'absolute', right: -8, top: 14 + index * 3, zIndex: 1,
+        position: 'absolute', right: -8, top: indexTabTop(index), zIndex: 1,
         width: TAB_W, height: TAB_H, backgroundColor: color,
         borderWidth: 1.4, borderColor: nb.ink, borderLeftWidth: 0,
         borderTopLeftRadius: 0, borderBottomLeftRadius: 0,
