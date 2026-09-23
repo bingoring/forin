@@ -145,8 +145,12 @@ function Binder({ entry, index, width, onOpen }: {
         <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: SPINE_W, backgroundColor: color, borderRightWidth: 1.4, borderRightColor: nb.ink }} />
         <View style={{ flex: 1, paddingLeft: SPINE_W + 6, paddingRight: 6, paddingTop: 9, alignItems: 'center' }}>
           <NbIcon name={deptNbIcon(`SCN-${dept}-00001`)} size={22} />
+          {/* 짧은 라벨을 쓴다. `dept.*`는 '응급실 ER'처럼 이름과 영문을 함께 담아 28자까지
+              가는데, 한 줄에 4개면 바인더 안쪽 폭이 56px 남짓이라 두 줄로도 잘린다.
+              `dept.short.*`는 언어마다 손으로 쓴 값이다 — 자동으로 잘라내면 영어의
+              'Operating'(수술실), 독일어의 'Frauen-'(여성소아)처럼 뜻이 무너진다. */}
           <Text numberOfLines={2} style={[nbText.hand(12), { marginTop: 4, textAlign: 'center' }]}>
-            {t(`dept.${dept}`)}
+            {t(`dept.short.${dept}`)}
           </Text>
         </View>
         {/* 바닥 잉크 진행 바 — 그 아래에 done/total. */}

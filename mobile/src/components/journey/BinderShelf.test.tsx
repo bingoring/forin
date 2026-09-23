@@ -162,4 +162,23 @@ describe('BinderShelf', () => {
     // 3개 주제 중 완료(done>=total>0)는 t1 하나뿐 — t3은 total 0이라 완료로 세지 않는다.
     expect(texts(tree.root)).toContain('1/3');
   });
+
+  // 바인더 라벨은 짧은 쪽을 쓴다. `dept.ICU`는 '중환자실 ICU'라 한 줄에 4개인 바인더
+  // 안쪽 폭(56px 남짓)에서 잘리고, `dept.short.ICU`는 '중환자실'이라 들어간다.
+  // 라벨 값 자체가 지켜야 할 성질(모든 로케일에 있을 것·폭·중복 없음)은
+  // `i18n/deptShort.test.ts`가 따로 잠근다.
+  it('바인더에 짧은 부서 라벨을 그린다 — 영문이 붙은 전체 라벨이 아니다', () => {
+    const tree = mount(<BinderShelf {...baseProps()} entries={[entry({ dept: 'ICU', passed: 2, total: 35 })]} />);
+    const card = shelfCard(tree.root, 'ICU')!;
+    const shown = texts(card);
+    expect(shown).toContain('중환자실');
+    expect(shown).not.toContain('중환자실 ICU');
+  });
+
+  // 눈에 보이는 글자는 짧아지지만 스크린 리더는 온전한 이름을 읽어야 한다.
+  it('접근성 라벨에는 전체 부서 이름을 남긴다', () => {
+    const tree = mount(<BinderShelf {...baseProps()} entries={[entry({ dept: 'ICU', passed: 2, total: 35 })]} />);
+    expect(shelfCard(tree.root, 'ICU')!.props.accessibilityLabel).toBe('중환자실 ICU');
+  });
+
 });
