@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="design_doc_mode" content="canvas"/>
+<title>forin Notebook - Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>body{margin:0}a{color:#3E362B}a:hover{color:#C75146}</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="forin-notebook.jsx"></script>
+<script type="text/babel" src="forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="forin-notebook-journey.jsx"></script>
+<script type="text/babel" src="forin-notebook-journey2.jsx"></script>
+<script type="text/babel">
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="nb-journey" title="forin Notebook — 여정 지도 (커리큘럼 진행감)" subtitle="여권 도장 세계관: 정거장 통과 = PASSED 도장 · 면허 트랙 연동">
+        <DCArtboard eager={true} id="nbj-map" label="A · 여정 지도 — ER 트랙 (공통 필수 → 심화 + 협업 정거장 + 자유 탐방)" width={402} height={874}><window.JourneyMap/></DCArtboard>
+        <DCArtboard eager={true} id="nbj-sheet" label="B · 정거장 상세 바텀시트" width={402} height={874}><window.StationSheet/></DCArtboard>
+        <DCArtboard eager={true} id="nbj-license" label="C · 면허 로드맵 (국가 트랙)" width={402} height={874}><window.LicenseTrack/></DCArtboard>
+      </DCSection>
+      <DCSection id="nb-journey2" title="forin Notebook — 여정 확장: 우표 정거장 + 부서→주제→상황 3덝스" subtitle="차트 바인더(부서) → 인덱스 간지(주제) → 우표 앨범(상황 30~40) · 빨간 실이 완료 우표를 꾰어 현재까지">
+        <DCArtboard eager={true} id="nbj2-alt" label="D · 우표 정거장 (보관 · H의 원형)" width={402} height={874}><window.JourneyStampsAlt/></DCArtboard>
+        <DCArtboard eager={true} id="nbj2-shelf" label="✅ G · 부서 선택 — 바인더 서가 (확정 1/3)" width={402} height={874}><window.BinderShelf/></DCArtboard>
+        <DCArtboard eager={true} id="nbj2-binder" label="✅ E · 부서 → 주제 — 차트 바인더 간지 (확정 2/3)" width={402} height={874}><window.TopicBinder/></DCArtboard>
+        <DCArtboard eager={true} id="nbj2-album" label="F · 우표 앨범 (보관 · 미채택)" width={402} height={874}><window.StampAlbum/></DCArtboard>
+        <DCArtboard eager={true} id="nbj2-trail" label="✅ H · 주제 → 상황 — 불규칙 우표 산책길 (확정 3/3)" width={402} height={874}><window.StampTrail/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

@@ -2,9 +2,25 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v40/](inputs/design-handoff_v40/README.md) (최신) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
+**Design handoff:** [inputs/design-handoff_v42/](inputs/design-handoff_v42/README.md) (최신) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-09-20
+**Last updated:** 2026-09-23
+
+> 🚩 **여정 3단 바인더 — v42 핸드오프 반영 착수 (2026-09-23).** 핸드오프 v42가 일터 탭의 확정
+> 플로우를 **G 바인더 서가 → E 차트 바인더 간지 → H 불규칙 우표 산책길** 세 단으로 정했다. 지금 두 단
+> (일터 탭 = 목표 부서의 주제 목록 → 주제 화면)에서 **부서를 고르는 일이 화면으로 올라온다.** P3-C가 세운
+> 경계(주제 밖은 목록, 주제 안은 선형)는 그대로 두고 겉모습과 깊이 하나만 바꾼다.
+> **핸드오프 도안 두 곳을 뺐다** — ① `공통 필수` 카드("모든 부서가 공유, 어느 바인더에서 해도 한 번만"):
+> 우리 코어 주제는 부서마다 따로 있고 부서 없는 공통 주제는 0건이라, 그대로 옮기면 화면이 사실과 다른
+> 말을 한다. ② 주제 `locked` 상태와 "앞 주제 완료 시 열림": 주제는 잠기지 않는다(J1·J3) — P3-C가 직전에
+> 고친 결함이라 되돌리지 않는다. **진행도 바는 주제 하나당 칸 하나로 한 줄 12칸씩 접는다**(주제 35개 = 3줄).
+> 상황 수에 비례시키지 않는 이유는 주제당 상황이 20~23개로 거의 같아 비례로 얻는 정보가 없는 반면, 35개를
+> 한 줄에 배분하면 칸이 획보다 얇아지기 때문이다. **서가는 네트워크 요청을 추가하지 않는다** —
+> `GET /me/journey` 한 번이 `goalDept` + `freeRoam[]{dept,passed,total}`로 29개 부서 전부와 진행도를 이미
+> 담는다. **서버는 `?dept=` 인자 하나만 늘렸다**(`67a5a35`): 목표를 바꾸지 않고 다른 부서 트랙을 그린다 —
+> `goalDept`는 항상 진짜 목표, `track.dept`가 보고 있는 부서. 허용 집합은 층이 아니라 저작 콘텐츠
+> (`hasTopic`, J9). 배치고사·메인 루프·리텐션은 이 단계가 아니다(보류).
+> 스펙: [`02-construction/journey-binder-v42/`](02-construction/journey-binder-v42/build-spec-index.md).
 
 > 🚩 **커리큘럼 v3 P3-B — Task 19: `MilestoneFlag` 배선 + 서버 리터럴 정리 (2026-09-20).**
 > Task 16이 "마무리됐다"고 선언한 뒤에도 정본(`frontend-components.md` §1/§2/§6)이 요구한
