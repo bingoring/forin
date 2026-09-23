@@ -45,3 +45,17 @@ export const PLACE_SCREEN: ScreenOptions = {
   headerShown: false,
   animation: 'slide_from_right',
 };
+
+/**
+ * A place screen that plays ITS OWN arrival — journey/dept/[dept].tsx's binder cover
+ * flying in and its pages opening (journey-binder-v42 Task I, task-I-brief.md §2 point 3).
+ *
+ * The native push motion is switched off here, not made faster or reordered: a slide from
+ * the right and a cover flying in from wherever the binder was pressed share no axis and
+ * no timing, so layering them does not blend into one motion, it reads as the screen
+ * moving twice.
+ */
+export const FLOWN_SCREEN: ScreenOptions = {
+  headerShown: false,
+  animation: 'none',
+};

@@ -29,10 +29,13 @@ jest.mock('expo-router', () => {
 jest.mock('@/api/client');
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
-import { Text } from 'react-native';
+import { AccessibilityInfo, Animated, Text } from 'react-native';
 import DeptBinderScreen from '@/app/journey/dept/[dept]';
 import { api, type JourneyView } from '@/api/client';
 import type { JourneyCurriculum } from '@/components/journey/JourneyMap';
+import { CURL_MS } from '@/components/nb/PageCurl';
+import { CLOSE_CURL_MS, ENTER_MS, LEAVE_MS } from '@/components/journey/useBinderCoverFlight';
+import { clearBinderFlyRect, setBinderFlyRect } from '@/data/journeyBinderFly';
 import { trackMounts } from '../testing/mountRegistry';
 
 const track = trackMounts();
@@ -136,4 +139,158 @@ test('a load failure offers a retry that re-fetches the same dept', async () => 
   expect(themeCards(tree.root)).toHaveLength(CURRICULA.length);
   expect(api.journey).toHaveBeenCalledTimes(2);
   expect(api.journey).toHaveBeenLastCalledWith('ICU');
+});
+
+// ── 표지 날아오기 (journey-binder-v42 Task I, task-I-brief.md §7 items 1–8) ──────────
+//
+// `Animated.timing` is mocked here to capture every call rather than let it run — the
+// state machine (`useBinderCoverFlight.ts`) advances phase by phase ONLY when the
+// animation it started calls back "finished", and a test needs to trigger that at the
+// exact moment it wants to inspect, not whenever this jest environment's approximation
+// of the native clock happens to settle (which, checked by hand, resolves in well under a
+// frame regardless of the requested duration — too fast to ever catch a phase in transit
+// otherwise). `AccessibilityInfo.isReduceMotionEnabled` is mocked the same way
+// `StationTrack.test.tsx` mocks it, for the identical reason (§5's own model).
+describe('binder cover flight', () => {
+  type TimingRec = { duration?: number; toValue: number; value: Animated.Value; cb?: (r: { finished: boolean }) => void };
+  let timingRecs: TimingRec[];
+  let timingSpy: jest.SpyInstance;
+  let reduceMotionSpy: jest.SpyInstance;
+
+  const RECT = { x: 12, y: 500, width: 80, height: 121 };
+
+  beforeEach(() => {
+    clearBinderFlyRect();
+    timingRecs = [];
+    timingSpy = jest.spyOn(Animated, 'timing').mockImplementation(((value: Animated.Value, config: { toValue: number; duration?: number }) => {
+      const rec: TimingRec = { duration: config.duration, toValue: config.toValue, value };
+      timingRecs.push(rec);
+      return {
+        start: (cb?: (r: { finished: boolean }) => void) => { rec.cb = cb; },
+        stop: jest.fn(),
+        reset: jest.fn(),
+      };
+    }) as unknown as typeof Animated.timing);
+    reduceMotionSpy = jest.spyOn(AccessibilityInfo, 'isReduceMotionEnabled').mockResolvedValue(false);
+    jest.spyOn(AccessibilityInfo, 'addEventListener').mockReturnValue({ remove: jest.fn() } as unknown as ReturnType<typeof AccessibilityInfo.addEventListener>);
+  });
+
+  afterEach(() => {
+    timingSpy.mockRestore();
+    reduceMotionSpy.mockRestore();
+    clearBinderFlyRect();
+  });
+
+  /** Finishes the `Animated.timing` call this hook/PageCurl started with this exact
+   *  duration — the one lever these tests have to move the phase machine forward. */
+  function findTiming(duration: number): TimingRec {
+    const rec = timingRecs.find((r) => r.duration === duration);
+    if (!rec) throw new Error(`no Animated.timing call with duration ${duration} (have: ${timingRecs.map((r) => r.duration).join(', ')})`);
+    return rec;
+  }
+  function finish(rec: TimingRec) {
+    rec.value.setValue(rec.toValue);
+    rec.cb?.({ finished: true });
+  }
+
+  /** Mounts with a rect waiting, then plays ①(640ms) and ②(the default 1250ms open
+   *  curl) all the way through, landing on 'settled' — the state the learner is
+   *  actually reading the dept screen in. */
+  async function mountSettled() {
+    setBinderFlyRect('ICU', RECT);
+    const tree = await mount();
+    await act(async () => { finish(findTiming(ENTER_MS)); });
+    await act(async () => { finish(findTiming(CURL_MS.out)); });
+    return tree;
+  }
+
+  // 1. 스토어에 좌표가 있으면 표지 레이어가 그려진다.
+  test('draws the cover layer when the shelf handed off a rect for this dept', async () => {
+    setBinderFlyRect('ICU', RECT);
+    const tree = await mount();
+    expect(tree.root.findByProps({ testID: 'binder-cover-face' })).toBeTruthy();
+    expect(tree.root.findByProps({ testID: 'binder-cover-flight' })).toBeTruthy();
+  });
+
+  // 2. 스토어가 비어 있으면(서가를 거치지 않은 진입) 표지 없이 바로 간지가 선다.
+  test('shows the dept screen directly, no cover, when the store has nothing for this dept', async () => {
+    const tree = await mount();
+    expect(tree.root.findAllByProps({ testID: 'binder-cover-face' })).toHaveLength(0);
+    expect(tree.root.findByProps({ testID: 'dept-binder-title' })).toBeTruthy();
+  });
+
+  // 3. 연출과 무관하게 api.journey는 화면에 들어오는 즉시 한 번 불린다 — 연출이 끝난
+  //    뒤가 아니다. 여기서 어떤 Animated.timing 콜백도 끝내지 않은 채로 확인한다 —
+  //    표지가 여전히 날아오는 중이어도 요청은 이미 나가 있어야 한다.
+  test('fetches api.journey immediately — before the cover animation has finished, not after', async () => {
+    setBinderFlyRect('ICU', RECT);
+    await mount();
+    expect(api.journey).toHaveBeenCalledTimes(1);
+    expect(api.journey).toHaveBeenCalledWith('ICU');
+  });
+
+  // 4. 모션 줄이기가 켜지면 표지 레이어가 아예 그려지지 않는다.
+  test('draws no cover at all when reduce motion is on, even with a rect waiting', async () => {
+    setBinderFlyRect('ICU', RECT);
+    reduceMotionSpy.mockResolvedValue(true);
+    const tree = await mount();
+    expect(tree.root.findAllByProps({ testID: 'binder-cover-face' })).toHaveLength(0);
+    expect(tree.root.findAllByProps({ testID: 'binder-cover-flight' })).toHaveLength(0);
+  });
+
+  // 5. ‹ 서가를 누르면 닫기가 시작되고, 끝나야 router.back()이 불린다.
+  test('pressing back starts closing, and router.back() only fires once ④→⑤ both finish', async () => {
+    const tree = await mountSettled();
+    expect(mockBackCount).toBe(0);
+
+    await act(async () => { tree.root.findByProps({ testID: 'dept-binder-back' }).props.onPress(); });
+    expect(mockBackCount).toBe(0); // 닫기(④)가 막 시작됐을 뿐이다
+    // PageCurl은 표지를 12조각으로 복제해 그린다(하나의 페이지를 곡면으로 보이려는
+    // 장치, PageCurl.tsx 자신의 주석 참고) — findByProps는 정확히 하나를 요구하니
+    // findAllByProps로 "적어도 하나(닫는 표지가 다시 섰다)"만 확인한다.
+    expect(tree.root.findAllByProps({ testID: 'binder-cover-face' }).length).toBeGreaterThan(0);
+
+    await act(async () => { finish(findTiming(CLOSE_CURL_MS)); }); // ④ 끝
+    expect(mockBackCount).toBe(0); // 이제 날아 돌아가는 중(⑤) — 아직이다
+
+    await act(async () => { finish(findTiming(LEAVE_MS)); }); // ⑤ 끝
+    expect(mockBackCount).toBe(1);
+  });
+
+  // 6. 닫기를 연속으로 두 번 눌러도 router.back()은 한 번만 불린다.
+  test('pressing back twice in a row while closing calls router.back() only once', async () => {
+    const tree = await mountSettled();
+    const back = tree.root.findByProps({ testID: 'dept-binder-back' });
+    await act(async () => { back.props.onPress(); });
+    await act(async () => { back.props.onPress(); }); // 두 번째는 무시된다 — 두 번째 닫기 넘김이 새로 생기지 않는다
+    expect(timingRecs.filter((r) => r.duration === CLOSE_CURL_MS)).toHaveLength(1);
+
+    // ④가 끝나 이제 ⑤(날아 돌아가기, phase 'leaving')가 도는 중이다 — 이 시점에서
+    // 또 눌러도 새 'closing'으로 되돌아가지 않는다는 것까지 확인한다. 이 3번째 누름은
+    // "같은 값으로 다시 setPhase('closing')"이 아니라 '"leaving' 도중에 setPhase
+    // ('closing')"이라 리액트의 동일-값 state bail-out으로는 가려지지 않는 경우다
+    // — 여기서 실제로 closingRef 가드가 하는 일이 드러난다.
+    await act(async () => { finish(findTiming(CLOSE_CURL_MS)); });
+    await act(async () => { back.props.onPress(); });
+    expect(timingRecs.filter((r) => r.duration === CLOSE_CURL_MS)).toHaveLength(1);
+
+    await act(async () => { finish(findTiming(LEAVE_MS)); });
+    expect(mockBackCount).toBe(1);
+  });
+
+  // 7. 표지에 그 부서의 코드와 짧은 이름이 찍힌다.
+  test('the cover shows the dept code and its short name', async () => {
+    setBinderFlyRect('ICU', RECT);
+    const tree = await mount();
+    expect(tree.root.findByProps({ testID: 'binder-cover-code' }).props.children).toBe('ICU');
+    expect(tree.root.findByProps({ testID: 'binder-cover-name' }).props.children).toBe('중환자실');
+  });
+
+  // 8. 닫는 넘김에 800밀리초가 넘어간다 — 온보딩 기본값(1100)이 아니다.
+  test('the closing curl runs at 800ms, not the onboarding default of 1100ms', async () => {
+    const tree = await mountSettled();
+    await act(async () => { tree.root.findByProps({ testID: 'dept-binder-back' }).props.onPress(); });
+    expect(findTiming(CLOSE_CURL_MS).duration).toBe(800);
+    expect(timingRecs.some((r) => r.duration === CURL_MS.in)).toBe(false);
+  });
 });

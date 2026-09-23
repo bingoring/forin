@@ -15,8 +15,8 @@ jest.mock('react-native-worklets', () => ({
 }));
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
-import { Text } from 'react-native';
-import { CURL_SLICES, PageCurl, curlSamples } from './PageCurl';
+import { Animated, Text } from 'react-native';
+import { CURL_MS, CURL_SLICES, PageCurl, curlSamples } from './PageCurl';
 import { trackMounts } from '../../testing/mountRegistry';
 
 const track = trackMounts();
@@ -112,6 +112,26 @@ test('it renders one clipped copy of the page per slice, with a shade over each'
     return !!flat && flat.overflow === 'hidden' && flat.transform === undefined;
   }, { deep: true });
   expect(clips.length).toBeGreaterThanOrEqual(CURL_SLICES);
+});
+
+// journey-binder-v42 Task I, task-I-brief.md §1·§7 item 9 — the bare-metal parameter
+// this handoff added `durationMs` for: the binder cover's closing curl runs at 800ms,
+// faster than the onboarding passport's own default (`CURL_MS.in`, 1100ms), while every
+// OTHER curl in the app keeps using the default it always had.
+test('durationMs overrides the default duration; omitting it falls back to CURL_MS[dir]', () => {
+  const spy = jest.spyOn(Animated, 'timing');
+
+  act(() => { track(create(<PageCurl dir="in" durationMs={800}><Text>X</Text></PageCurl>)); });
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).toBe(800);
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).not.toBe(CURL_MS.in);
+
+  act(() => { track(create(<PageCurl dir="in"><Text>X</Text></PageCurl>)); });
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).toBe(CURL_MS.in);
+
+  act(() => { track(create(<PageCurl dir="out"><Text>X</Text></PageCurl>)); });
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).toBe(CURL_MS.out);
+
+  spy.mockRestore();
 });
 
 test('the shading is what makes it paper, so it is not flat', () => {

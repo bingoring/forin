@@ -23,6 +23,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type JourneyView } from '@/api/client';
 import { BinderShelf } from '@/components/journey/BinderShelf';
 import { NbButton, nbText } from '@/components/nb/NbUI';
+import { type BinderRect, setBinderFlyRect } from '@/data/journeyBinderFly';
 import { offerGoalPick } from '@/data/journeyGoalPick';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb } from '@/theme/nb';
 import { useLocale, useT } from '@/i18n';
@@ -71,9 +72,13 @@ export default function JourneyScreen() {
   };
 
   // 바인더를 열면(목표 부서든 서가의 다른 부서든) 부서 간지로 민다 — 저장된 목표는
-  // 건드리지 않는다(V2).
-  const openDept = (dept: string) => {
+  // 건드리지 않는다(V2). `rect`는 서가의 바인더 하나를 눌렀을 때만 온다(내 부서
+  // 카드의 이어서는 부서 코드만 준다) — 있을 때만 표지 날아오기 스토어에 실어
+  // 둔다(journey-binder-v42 Task I, task-I-brief.md §2). 라우팅 자체는 그 값과
+  // 무관하게 지금처럼 바로 한다 — 연출은 도착한 화면(dept/[dept].tsx)의 몫이다.
+  const openDept = (dept: string, rect?: BinderRect) => {
     if (!dept) return;
+    if (rect) setBinderFlyRect(dept, rect);
     router.push(`/journey/dept/${dept}`);
   };
 

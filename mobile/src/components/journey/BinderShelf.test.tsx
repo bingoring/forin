@@ -1,15 +1,30 @@
-// BinderShelf — 일터 탭 부서 서가 (journey-binder-v42 Task G, task-G-brief.md §5).
+// BinderShelf — 일터 탭 부서 서가 (journey-binder-v42 Task G, task-G-brief.md §5;
+// 표지 날아오기의 좌표 측정은 Task I, task-I-brief.md §2 point 1·§7 item 10).
 //
 // @testing-library/react-native is not installed in this repo — react-test-renderer
 // throughout, same convention as DeptBinder.test.tsx.
+//
+// `measureBinderRect.ts`(정확히는 그 안의 `watchBinderRect`)는 여기서 모킹한다 — 그
+// 파일 자신의 주석이 이유를 적어 뒀다: 실제 `measureInWindow`의 콜백은 이 jest 환경에서
+// 절대 불리지 않는다(직접 확인한 사실이지 추측이 아니다), 그래서 "측정이 성공했다"는
+// 경우를 이 브리지로는 흉내낼 방법이 없다. 기본(구현 없는 `jest.fn()`)은 "콜백을 아예
+// 부르지 않는다"와 같은 모양이라 — 아래 4번 테스트("측정 실패")는 이 모듈을 건드리지
+// 않고도 그대로 지나간다.
+jest.mock('./measureBinderRect', () => ({ watchBinderRect: jest.fn() }));
+
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Text } from 'react-native';
 import { BinderShelf } from './BinderShelf';
+import { watchBinderRect } from './measureBinderRect';
 import type { FreeRoamEntry } from '@/api/client';
 import type { JourneyCurriculum } from './JourneyMap';
 import { trackMounts } from '../../testing/mountRegistry';
 
 const track = trackMounts();
+
+beforeEach(() => {
+  (watchBinderRect as jest.Mock).mockReset();
+});
 
 function mount(el: React.ReactElement) {
   let tree!: ReturnType<typeof create>;
@@ -261,6 +276,29 @@ describe('BinderShelf', () => {
   it('접근성 라벨에는 전체 부서 이름을 남긴다', () => {
     const tree = mount(<BinderShelf {...baseProps()} entries={[entry({ dept: 'ICU', passed: 2, total: 35 })]} />);
     expect(shelfCard(tree.root, 'ICU')!.props.accessibilityLabel).toBe('중환자실 ICU');
+  });
+
+  // ── 표지 날아오기의 좌표(journey-binder-v42 Task I, task-I-brief.md §7 item 10) ────
+
+  it('바인더를 누르면 부서 코드와 함께 재어 둔 좌표가 onOpen으로 넘어간다', () => {
+    const rect = { x: 12, y: 340, width: 80, height: 121 };
+    (watchBinderRect as jest.Mock).mockImplementation((_ref, onRect) => onRect(rect));
+    const onOpen = jest.fn();
+    const tree = mount(<BinderShelf {...baseProps()} entries={entries(5)} onOpen={onOpen} />);
+    act(() => { shelfCard(tree.root, 'D03')!.props.onPress(); });
+    expect(onOpen).toHaveBeenCalledWith('D03', rect);
+  });
+
+  it('측정이 안 되면(콜백이 안 오면) 좌표 없이 부서만 넘어가고, 그래도 열리는 것은 막히지 않는다', () => {
+    // 기본 모킹 그대로다 — `watchBinderRect`가 구현 없는 jest.fn()이라 콜백이 아예
+    // 안 온다. 이것이 이 jest 환경에서 실제 `measureInWindow`가 하는 일과 같다.
+    const onOpen = jest.fn();
+    const tree = mount(<BinderShelf {...baseProps()} entries={entries(5)} onOpen={onOpen} />);
+    act(() => { shelfCard(tree.root, 'D03')!.props.onPress(); });
+    // 두 번째 인자 자체가 없다 — `onOpen('D03', undefined)`이 아니다(그 둘은 이 화면
+    // 다음 단인 journey.tsx·dept 화면에게 다른 신호다).
+    expect(onOpen).toHaveBeenCalledWith('D03');
+    expect(onOpen.mock.calls[0]).toHaveLength(1);
   });
 
 });

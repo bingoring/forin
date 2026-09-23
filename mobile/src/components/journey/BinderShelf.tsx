@@ -21,15 +21,17 @@
 //
 // `entries`가 이미 목표 부서를 뺀 나머지 전부다 — 서버의 `freeRoam`은 목표를 빼고 온다.
 // 그래서 목표 부서는 서가에 다시 그리지 않는다. 그래도 방어적으로 한 번 더 걸러 둔다.
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import type { FreeRoamEntry } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { deptNbIcon, deptSpineColor } from '@/data/campus';
+import type { BinderRect } from '@/data/journeyBinderFly';
 import { nb, nbFonts } from '@/theme/nb';
 import { type Translate, useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
+import { watchBinderRect } from './measureBinderRect';
 
 const ROW_SIZE = 4;
 const ROW_GAP = 10;
@@ -191,7 +193,7 @@ function Binder({ entry, index, width, onOpen }: {
   entry: FreeRoamEntry;
   index: number;
   width: number;
-  onOpen(dept: string): void;
+  onOpen(dept: string, rect?: BinderRect): void;
 }) {
   const t = useT();
   const dept = entry.dept ?? '';
@@ -202,10 +204,28 @@ function Binder({ entry, index, width, onOpen }: {
   const spine = deptSpineColor(dept);
   const height = width * BINDER_RATIO;
 
+  // 표지 날아오기 연출(journey-binder-v42 Task I)이 쓸 화면 좌표. press 시점에 재지
+  // 않는다 — 마운트 때 한 번 재어 두고 눌렀을 때는 그 값을 그냥 읽는다(측정이 안
+  // 끝난 채로 눌리면 이 값은 여전히 undefined다. `measureBinderRect.ts`의 주석 참고).
+  const viewRef = useRef<View>(null);
+  const rectRef = useRef<BinderRect | undefined>(undefined);
+  useEffect(() => {
+    watchBinderRect(viewRef, (rect) => { rectRef.current = rect; });
+  }, []);
+
+  const onPress = () => {
+    const rect = rectRef.current;
+    // `rect`가 없을 때 `onOpen(dept, undefined)`로 부르지 않는다 — 두 번째 인자
+    // 자체가 없는 호출과 "값이 undefined인 두 번째 인자"는 호출부(및 이 화면의
+    // 테스트)에게 다른 신호다.
+    if (rect) onOpen(dept, rect); else onOpen(dept);
+  };
+
   return (
     <Pressable
+      ref={viewRef}
       testID={`binder-shelf-card-${dept}`}
-      onPress={() => onOpen(dept)}
+      onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={t(`dept.${dept}`)}
       style={{ width, height, transform: [{ rotate: `${BINDER_TILT[index % BINDER_TILT.length]}deg` }] }}
@@ -264,7 +284,9 @@ export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen
   goalCurricula: JourneyCurriculum[];
   entries: FreeRoamEntry[];
   inferred?: boolean;
-  onOpen(dept: string): void;
+  /** `rect` is only ever handed up from a shelf binder (Task I) — the 내 부서 카드의
+   *  이어서 button calls this with the department code alone, same as before. */
+  onOpen(dept: string, rect?: BinderRect): void;
   onChangeGoal(): void;
 }) {
   const t = useT();
