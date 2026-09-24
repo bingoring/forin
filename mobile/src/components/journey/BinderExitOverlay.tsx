@@ -33,18 +33,21 @@ import { nb } from '@/theme/nb';
 export function BinderExitOverlay() {
   const request = useBinderExitRequest();
   const { width, height } = useWindowDimensions();
-  // 1 = at rest over the shelf binder's spot (where the request started); 0 = fully
-  // flat, full-screen — the mirror image of useBinderCoverFlight's ① (which runs 0 -> 1
-  // FROM the shelf). Starting at 1 here, not 0, is what makes this a *continuation* of
-  // ④'s already-flat cover rather than a fresh fly-in: the very first frame this overlay
-  // ever draws must match the dept screen's last frame exactly, or the switch-over shows.
-  const flight = useRef(new Animated.Value(1)).current;
+  // 0 = flat and full-screen, 1 = shrunk onto the shelf binder's spot — the same
+  // convention `useBinderCoverFlight`'s ① uses, so the two read the same way.
+  //
+  // This one runs 0 -> 1: the cover starts exactly where ④ left it, filling the screen,
+  // and shrinks away to the binder. The very first frame this overlay draws has to match
+  // the dept screen's last frame, or the switch-over shows — which is the whole point of
+  // hoisting the cover out of that screen. Running it the other way makes the cover
+  // appear tiny at the shelf and GROW, which is the arrival, not the departure.
+  const flight = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     if (!request) return undefined;
-    flight.setValue(1);
+    flight.setValue(0);
     const anim = Animated.timing(flight, {
-      toValue: 0,
+      toValue: 1,
       duration: LEAVE_MS,
       easing: LEAVE_EASING,
       useNativeDriver: true,

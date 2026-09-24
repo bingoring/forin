@@ -118,4 +118,31 @@ describe('BinderExitOverlay', () => {
     expect(exitFlightNodes(tree.root)).toHaveLength(1);
     expect(tree.root.findByProps({ testID: 'binder-cover-code' }).props.children).toBe('ER');
   });
+
+  // 방향이 이 화면의 전부다. 거꾸로 돌면 표지가 바인더 자리에 작게 나타나 화면 가득
+  // **커진다** — 날아가는 게 아니라 날아오는 동작이고, 첫 프레임이 22% 크기라 화면이
+  // 잠깐 빈 것처럼 보인다(실기에서 그렇게 보였다).
+  test('the cover starts full-screen and shrinks onto the binder — not the other way', async () => {
+    mount();
+    await act(async () => { requestBinderExit(REQUEST); });
+
+    const rec = findTiming(LEAVE_MS);
+    // 0 = 화면 가득, 1 = 바인더 자리. 0에서 시작해 1로 간다.
+    expect(rec.toValue).toBe(1);
+    expect((rec.value as unknown as { __getValue(): number }).__getValue()).toBe(0);
+  });
+
+  // 첫 프레임이 간지 화면의 마지막 프레임과 같아야 전환이 안 보인다 — 화면 가득, 기울기
+  // 없음, 옮김 없음.
+  test('the first frame it draws is the full-screen cover, matching what ④ left', async () => {
+    const tree = mount();
+    await act(async () => { requestBinderExit(REQUEST); });
+    const layer = tree.root.findAll((n) => n.props?.testID === 'binder-exit-flight')[0];
+    const st = layer.props.style;
+    const flat = Array.isArray(st) ? Object.assign({}, ...st) : st;
+    const tf = flat.transform as { scale?: unknown }[];
+    const scale = tf.find((e) => 'scale' in e)!.scale as unknown as { __getValue(): number };
+    expect(scale.__getValue()).toBe(1);
+  });
+
 });
