@@ -193,7 +193,7 @@ export const de: Record<string, string> = {
   'dept.short.DERM': 'Dermatologie',
 
   // ── journey (Arbeitsplatz-Tab Themenliste — Empfehlungs-Badge, P3-C) ──
-  'journey.resumeLabel': 'Fortsetzen',
+  'journey.resumeLabel': 'Laufend',
   // ── journey (Meilenstein-Flagge — Streckenende, task-19) ───────────
   'journey.milestone.passed': 'Bestanden ✓',
   'journey.milestone.open': 'Bereit',

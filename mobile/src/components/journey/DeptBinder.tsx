@@ -205,7 +205,11 @@ function BinderRings({ height }: { height: number }) {
   );
 }
 
-const TAB_COLORS = [nb.green, nb.blue, nb.red, nb.marker];
+// 인덱스 탭 색. 네 번째가 `nb.marker`였는데, 그 값은 형광펜 노랑이라 흰 번호를 얹으면
+// 읽히지 않는다 — 실기에서 `04` 탭의 번호가 사라져 보였다. 같은 자리에 쓰는 호박색으로
+// 바꾼다(서가의 목표 부서 테, 게이지의 진행 구간과 같은 값이다).
+const TAB_AMBER = '#C77E2E';
+const TAB_COLORS = [nb.green, nb.blue, nb.red, TAB_AMBER];
 const TAB_W = 20;
 const TAB_H = 42;
 
@@ -277,7 +281,9 @@ function BinderCard({ c, index, onPress }: { c: JourneyCurriculum; index: number
               </View>
             ) : isResume ? (
               <View testID="theme-resume-badge">
-                <NbTag color={nb.marker}>{t('journey.resumeLabel')}</NbTag>
+                {/* 태그는 상태를, 버튼은 동작을 말한다. 둘 다 '이어하기'·'이어서'로
+                    두었더니 같은 말이 한 카드에 두 번 나왔다 — 실기에서 확인했다. */}
+                <NbTag color={TAB_AMBER}>{t('journey.resumeLabel')}</NbTag>
               </View>
             ) : null}
           </View>

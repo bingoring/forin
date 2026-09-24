@@ -196,7 +196,7 @@ export const en: Record<string, string> = {
   'dept.short.DERM': 'Dermatology',
 
   // ── journey (workplace tab topic list — recommend badge, P3-C) ───
-  'journey.resumeLabel': 'Resume',
+  'journey.resumeLabel': 'In progress',
   // ── journey (milestone flag — track end, task-19) ──────────────────
   'journey.milestone.passed': 'Passed ✓',
   'journey.milestone.open': 'Ready',

@@ -136,11 +136,24 @@ const DESIGN_WIDTH = 402;
  *  패턴으로 낸다. x는 흔들림을 더한 뒤에 화면 폭(width/402)으로 비례 스케일한다 —
  *  402를 그대로 쓰면 좁은 기기에서 오른쪽 우표가 잘리고 넓은 기기에서 왼쪽에 몰린다.
  *  y는 스케일하지 않는다(세로는 스크롤이라 잘릴 일이 없다). */
+/**
+ * 산책길 맨 위에 두는 여백.
+ *
+ * 구간 경계는 그 구간 첫 우표의 62px 위에 긋고 라벨은 다시 그 6px 위에 쓴다. 첫 우표의
+ * y가 80이므로 여백이 없으면 첫 경계선이 18, 라벨이 12에 놓이는데, 12는 글자 높이만큼
+ * 위로 올라가면 지도 밖이다 — 실기에서 첫 구간 라벨('기초 1~10')이 통째로 잘려 보이지
+ * 않았다. 여백을 두면 경계선과 라벨이 머리글과 첫 우표 사이 빈자리에 제대로 앉는다.
+ */
+export const TRAIL_TOP_PAD = 40;
+
 export function stampPoint(i: number, width: number): Point {
   const base = STAMP_BASE10[i % 10];
   const cycle = Math.floor(i / 10);
   const jitter = cycle % 2 ? 8 : -6;
-  return { x: ((base.x + jitter) * width) / DESIGN_WIDTH, y: base.y + cycle * STAMP_CYCLE_Y };
+  return {
+    x: ((base.x + jitter) * width) / DESIGN_WIDTH,
+    y: TRAIL_TOP_PAD + base.y + cycle * STAMP_CYCLE_Y,
+  };
 }
 
 function scaleX(x: number, width: number): number {

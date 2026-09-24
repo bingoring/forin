@@ -246,10 +246,24 @@ function Binder({ entry, index, width, onOpen }: {
         backgroundColor: '#fff', borderWidth: 1, borderColor: nb.paperEdge,
         paddingTop: 4, paddingHorizontal: 4, paddingBottom: 3, alignItems: 'center',
       }}>
-        <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9, color: nb.ink, letterSpacing: 0.5 }}>
+        {/* 두 줄 다 줄이면서 맞춘다. 라벨 카드 안쪽이 50px 남짓인데 부서 코드는
+            `ORTHOWARD`처럼 9자까지 가고 짧은 이름도 `정형외과병동`이라 여섯 자다 —
+            실기에서 둘 다 `ORTHOWA…`·`정형외과…`로 잘렸다. 잘린 이름은 어느 부서인지
+            말해 주지 못하므로, 줄여서라도 끝까지 보이는 쪽을 고른다. */}
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit
+          minimumFontScale={0.6}
+          style={{ fontFamily: nbFonts.monoBold, fontSize: 9, color: nb.ink, letterSpacing: 0.5 }}
+        >
           {dept}
         </Text>
-        <Text numberOfLines={1} style={[nbText.hand(11.5), { marginTop: 1 }]}>
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit
+          minimumFontScale={0.6}
+          style={[nbText.hand(11.5), { marginTop: 1 }]}
+        >
           {t(`dept.short.${dept}`)}
         </Text>
       </View>

@@ -18,7 +18,7 @@ import { MilestoneFlag } from './MilestoneFlag';
 import { NbStampNode } from '@/components/nb/NbStampNode';
 import { NbYarn } from '@/components/nb/NbYarn';
 import {
-  BOTTOM_PAD, MAX_WALK_MS, STEP_MS, StationTrack, avatarX, bossMilestoneState, sectionBoundaries,
+  BOTTOM_PAD, MAX_WALK_MS, STEP_MS, StationTrack, TRAIL_TOP_PAD, avatarX, bossMilestoneState, sectionBoundaries,
   splitBossStep, stampPoint, stampStateOf, standIndexOf, stepStationState, tierLabelKey,
   walkDurationMs,
 } from './StationTrack';
@@ -442,5 +442,26 @@ describe('avatarX — 아바타는 우표 옆에 서되 잘리지 않는다', ()
         expect(ax + HALF).toBeLessThanOrEqual(w);
       }
     }
+  });
+});
+
+// 구간 경계는 그 구간 첫 우표의 62px 위에 긋고, 라벨은 다시 6px 위에 쓴다. 여백이 없으면
+// 첫 라벨이 지도 밖으로 올라가 통째로 잘린다 — 실기에서 '기초 1~10'이 안 보였다.
+describe('TRAIL_TOP_PAD — 첫 구간 라벨이 지도 안에 들어온다', () => {
+  const BOUND_ABOVE = 62;   // 경계선은 첫 우표보다 이만큼 위
+  const LABEL_ABOVE = 6;    // 라벨 기준선은 경계선보다 이만큼 위
+  const LABEL_ASCENT = 13;  // hand 12.5px가 기준선 위로 차지하는 높이
+
+  it('첫 우표의 구간 라벨 윗변이 0 이상이다', () => {
+    const first = stampPoint(0, 390);
+    const labelTop = first.y - BOUND_ABOVE - LABEL_ABOVE - LABEL_ASCENT;
+    expect(labelTop).toBeGreaterThanOrEqual(0);
+  });
+
+  it('여백이 모든 우표에 똑같이 실린다 — 우표 사이 간격은 그대로다', () => {
+    const a = stampPoint(0, 390);
+    const b = stampPoint(1, 390);
+    expect(a.y).toBe(TRAIL_TOP_PAD + 80);
+    expect(b.y - a.y).toBe(50); // 기준 패턴의 80 → 130
   });
 });

@@ -69,6 +69,16 @@ describe('groupByTrack (moved from ThemeList.tsx, K3)', () => {
   });
 });
 
+
+/** 0(검정)~1(흰색). 흰 글씨를 얹을 수 있는지 재는 데만 쓴다. */
+function luminance(hex: string): number {
+  const m = /^#([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return 1;
+  const n = parseInt(m[1], 16);
+  const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+}
+
 describe('DeptBinder', () => {
   // 1. 주제 35개 → 진행 격자가 35칸이고 3줄로 접힌다(한 줄 12개 규칙이 깨지면 실패해야
   //    한다 — 행 단위로 명시적으로 잘라 그리므로, 행마다 담긴 칸 수를 직접 센다).
@@ -101,7 +111,10 @@ describe('DeptBinder', () => {
       curriculum({ themeKey: 'c', track: 'depth', resume: false }),
     ];
     const tree = mount(<DeptBinder curricula={curricula} onPress={jest.fn()} />);
-    expect(texts(tree.root).filter((s) => s === '이어하기')).toHaveLength(1);
+    // 태그는 상태를, 버튼은 동작을 말한다 — 같은 카드에서 '진행중'과 '이어서'가
+    // 서로 다른 일을 한다. 한때 둘 다 '이어하기'·'이어서'여서 같은 말이 두 번 나왔다.
+    expect(texts(tree.root).filter((s) => s === '진행중')).toHaveLength(1);
+    expect(texts(tree.root).filter((s) => s === '이어서')).toHaveLength(1);
     const badges = tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'theme-resume-badge');
     expect(badges).toHaveLength(1);
     // Attached to the flagged card, not any other.
@@ -191,6 +204,20 @@ describe('DeptBinder', () => {
   function seg(root: ReactTestInstance, id: string): ReactTestInstance {
     return root.findAll((n) => typeof n.type === 'string' && n.props?.testID === id)[0];
   }
+
+  // 형광펜 노랑 위에 흰 번호를 얹으면 읽히지 않는다 — 실기에서 `04` 탭의 번호가 사라져
+  // 보였다. 탭 색은 전부 흰 글씨를 받칠 만큼 어두워야 한다.
+  it('인덱스 탭 색이 흰 번호를 받칠 만큼 어둡다', () => {
+    const many = Array.from({ length: 8 }, (_, i) => curriculum({ themeKey: `t${i}` }));
+    const tree = mount(<DeptBinder curricula={many} onPress={jest.fn()} />);
+    const tabs = tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'dept-binder-index-tab');
+    expect(tabs.length).toBeGreaterThanOrEqual(4);
+    for (const tab of tabs) {
+      const st = tab.props.style;
+      const flat = Array.isArray(st) ? Object.assign({}, ...st) : st;
+      expect(luminance(String(flat.backgroundColor))).toBeLessThan(0.6);
+    }
+  });
 
   it('게이지 구간 폭이 주제 상태에서 나온다 — 완료 2, 진행 1, 남음 1', () => {
     const tree = mount(

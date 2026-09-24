@@ -193,7 +193,7 @@ export const ja: Record<string, string> = {
   'dept.short.DERM': '皮膚科',
 
   // ── journey（職場タブ トピック一覧 — おすすめバッジ、P3-C）─────
-  'journey.resumeLabel': '再開',
+  'journey.resumeLabel': '進行中',
   // ── journey（マイルストーン旗 — トラックの終点、task-19）──────────
   'journey.milestone.passed': '合格 ✓',
   'journey.milestone.open': '受験可能',

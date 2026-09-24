@@ -211,7 +211,7 @@ export const ko: Record<string, string> = {
   'dept.short.DERM': '피부과',
 
   // ── journey (일터 탭 주제 목록 — 권유 배지, P3-C) ──────────────────
-  'journey.resumeLabel': '이어하기',
+  'journey.resumeLabel': '진행중',
   // ── journey (마일스톤 깃발 — 트랙 끝, task-19) ──────────────────────
   'journey.milestone.passed': '통과 ✓',
   'journey.milestone.open': '응시 가능',
