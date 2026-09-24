@@ -12,10 +12,23 @@
 //
 // 경로는 바뀌지 않는다. `(tabs)`는 그룹이라 URL에 나타나지 않으므로 `/journey`,
 // `/journey/dept/<부서>`, `/journey/theme/<주제>`, `/journey/pick-dept` 모두 그대로다.
+//
+// `BinderExitOverlay`가 `Stack`과 나란히, 이 안에 서 있는 것이 Task J의 핵심이다
+// (task-J-brief.md §3). 부서 간지가 표지를 닫고 날아 돌아갈 때(⑤) 그 화면은 이미
+// 뜬 뒤다 — 표지를 계속 그릴 무언가가 화면 **바깥**에서 살아 있어야 하고, 그 자리가
+// 탭 **바깥**이면 하단 탭바를 도로 덮는다(이미 한 번 고친 문제, 커밋 `5964aab`). 스택
+// 형제로 여기 두면 오버레이도 스택의 각 화면과 같은 경계(탭바 위 영역)만 받는다.
 import { Stack } from 'expo-router';
+import { View } from 'react-native';
+import { BinderExitOverlay } from '@/components/journey/BinderExitOverlay';
 
 export default function JourneyStackLayout() {
   // 화면별 전환은 각 화면이 자기 `Stack.Screen options`로 정한다 — 간지는 좌표를 들고
   // 왔는지에 따라 기본 밀기를 끄고 자기 연출을 재생한다(`dept/[dept].tsx`).
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <View style={{ flex: 1 }}>
+      <Stack screenOptions={{ headerShown: false }} />
+      <BinderExitOverlay />
+    </View>
+  );
 }

@@ -25,6 +25,7 @@ import { Stack, useRouter } from 'expo-router';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbPaper, NbSheet, nbText } from '@/components/nb/NbUI';
 import { deptNbIcon } from '@/data/campus';
+import { goBackToShelf } from '@/data/journeyBack';
 import { goalPickOffer, pickGoalDept } from '@/data/journeyGoalPick';
 import { TOP_INSET, nb } from '@/theme/nb';
 import { PLACE_SCREEN } from '@/theme/transitions';
@@ -68,14 +69,14 @@ export default function PickDept() {
     // journey.tsx의 pickDept()를 그대로 부른다(J5) — 요청 순서 카운터까지 그 함수
     // 안에 있다. 여기서는 부르고 돌아가는 것 이상을 하지 않는다.
     pickGoalDept(dept);
-    router.back();
+    goBackToShelf(router);
   };
 
   return (
     <NbSheet>
       <Stack.Screen options={PLACE_SCREEN} />
       <View style={{ paddingTop: TOP_INSET, paddingHorizontal: 20, paddingBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <Pressable testID="pick-dept-back" onPress={() => router.back()} hitSlop={10}>
+        <Pressable testID="pick-dept-back" onPress={() => goBackToShelf(router)} hitSlop={10}>
           <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>
             <NbIcon name="chevronLeft" size={16} />
           </NbPaper>
@@ -104,7 +105,7 @@ export default function PickDept() {
           // 말한 뒤 목록을 가진 화면으로 돌려보내는 것이 할 수 있는 전부다.
           <View style={{ paddingHorizontal: 20, paddingTop: 24, gap: 12 }}>
             <Text style={nbText.body(14, nb.soft)}>{t('journey.pickDeptEmpty')}</Text>
-            <Pressable testID="pick-dept-empty-back" onPress={() => router.back()} hitSlop={8}>
+            <Pressable testID="pick-dept-empty-back" onPress={() => goBackToShelf(router)} hitSlop={8}>
               <NbPaper rot={-0.6} style={{ alignSelf: 'flex-start', paddingVertical: 8, paddingHorizontal: 14 }}>
                 <Text style={nbText.hand(15)}>{t('journey.pickDeptEmptyBack')}</Text>
               </NbPaper>

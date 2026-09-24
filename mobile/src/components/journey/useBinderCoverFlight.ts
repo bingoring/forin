@@ -1,7 +1,7 @@
-// journey-binder-v42 Task I — the fly-in/fly-out state machine behind journey/dept/
-// [dept].tsx's binder cover (task-I-brief.md §1, §2, §4, §6). Pulled out of the screen
-// itself so the screen's own JSX stays about WHAT renders, not the five-phase dance that
-// gets it there.
+// journey-binder-v42 Task I — the fly-in state machine behind journey/dept/[dept].tsx's
+// binder cover (task-I-brief.md §1, §2, §4, §6). Pulled out of the screen itself so the
+// screen's own JSX stays about WHAT renders, not the phase-by-phase dance that gets it
+// there.
 //
 // Phases, and what plays in each (every time and curve below is task-I-brief.md §4,
 // verbatim):
@@ -14,7 +14,19 @@
 //              turns it away.
 //   closing  — ④ the reverse curl (dir="in", durationMs={CLOSE_CURL_MS}) brings it back
 //              down flat — the screen only asks for this; it does not touch PageCurl.
-//   leaving  — ⑤ flies back to the shelf: 600ms, bezier(.5,0,.6,.5) — then calls onExit.
+//
+// ⑤ (flying back OUT to the shelf) used to be a fifth phase here, `'leaving'`, run by
+// this same hook while the dept screen stayed mounted to host it. Task J (task-J-brief.md)
+// pulled it out: the screen this hook lives in disappears the moment ④ finishes
+// (`onExit()`, below), so anything that flight needed to survive past that moment cannot
+// live in THIS hook's state — it has to be handed to something that outlives the screen.
+// `onCoverClosed` now does exactly that hand-off (`requestBinderExit`, into
+// `journeyBinderExit.ts`) immediately before calling `onExit()`, and
+// `components/journey/BinderExitOverlay.tsx` — mounted once, beside the stack, in
+// journey/_layout.tsx — plays ⑤ itself using the exact same constants this file still
+// owns (`LEAVE_MS`, `LEAVE_EASING`, `START_SCALE`, `START_ROTATE`, all exported below).
+// `flightTransform` below is therefore only ever read during `entering` now — ⑤'s own
+// transform is computed inside the overlay, off the same numbers.
 //
 // `settled -> entering` fires at most once (`startedRef`), and only once the store had a
 // rect for THIS dept AND reduce motion has resolved to `false`. Task-I-brief.md §5 wants
@@ -24,9 +36,10 @@
 // slow to answer the query), never plays at all.
 import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing, useWindowDimensions } from 'react-native';
+import { requestBinderExit } from '@/data/journeyBinderExit';
 import { takeBinderFlyRect, type BinderRect } from '@/data/journeyBinderFly';
 
-export type BinderFlyPhase = 'settled' | 'entering' | 'opening' | 'closing' | 'leaving';
+export type BinderFlyPhase = 'settled' | 'entering' | 'opening' | 'closing';
 
 /** ① — task-I-brief.md §4 row 1. Exported for the same reason CLOSE_CURL_MS is: tests
  *  drive the state machine forward by finishing the exact `Animated.timing` call these
@@ -34,23 +47,31 @@ export type BinderFlyPhase = 'settled' | 'entering' | 'opening' | 'closing' | 'l
  *  silently drift out of sync with this one. */
 export const ENTER_MS = 640;
 const ENTER_EASING = Easing.bezier(0.3, 0.8, 0.3, 1);
-/** ⑤ — task-I-brief.md §4 row 4. */
+/** ⑤ — task-I-brief.md §4 row 4. Now played by `BinderExitOverlay.tsx`, not this hook
+ *  (see the file banner) — exported (with the three constants below it) so that overlay
+ *  imports these numbers instead of copying them. Two copies is a place where only one
+ *  ever gets fixed (task-J-brief.md §2). */
 export const LEAVE_MS = 600;
-const LEAVE_EASING = Easing.bezier(0.5, 0, 0.6, 0.5);
+export const LEAVE_EASING = Easing.bezier(0.5, 0, 0.6, 0.5);
 /** ④ — task-I-brief.md §4 row 3 ("온보딩 기본 1.1초보다 빠르다"). Exported so the screen
  *  can hand it to `PageCurl`'s own `durationMs` without a second copy of the number. */
 export const CLOSE_CURL_MS = 800;
 /** The backdrop dim's own timing (§4's last line) — separate from the flight because it
- *  only ever plays during `entering`, never `leaving`. */
+ *  only ever plays during `entering`. */
 const SCRIM_MS = 300;
 export const SCRIM_MAX_OPACITY = 0.55;
 /** §4: "시작 변환은 누른 바인더 자리에서 scale .22, rotate -10deg다." Fixed constants,
  *  not derived from the measured rect's size — only the rect's CENTRE matters, for where
- *  the cover flies from. */
-const START_SCALE = 0.22;
-const START_ROTATE = '-10deg';
+ *  the cover flies from (or, for ⑤, back to). Exported for the same reason `LEAVE_MS` is —
+ *  `BinderExitOverlay.tsx` plays ⑤ against these same numbers. */
+export const START_SCALE = 0.22;
+export const START_ROTATE = '-10deg';
 
-export function useBinderCoverFlight(dept: string, onExit: () => void) {
+export function useBinderCoverFlight(
+  dept: string,
+  onExit: () => void,
+  cover: { doneTopics: number; totalTopics: number },
+) {
   // Read once, at mount — task-I-brief.md §2 point 3 ("스토어에서 좌표를 꺼내"). A second
   // mount of this same screen (back out with the device button, re-enter by any other
   // path) must not replay a flight that belongs to a press that is long gone, which is
@@ -101,15 +122,7 @@ export function useBinderCoverFlight(dept: string, onExit: () => void) {
       dim.start();
       return () => { fly.stop(); dim.stop(); };
     }
-    if (phase === 'leaving') {
-      const back = Animated.timing(flight, { toValue: 0, duration: LEAVE_MS, easing: LEAVE_EASING, useNativeDriver: true });
-      back.start(({ finished }) => { if (finished) onExit(); });
-      return () => back.stop();
-    }
     return undefined;
-    // onExit is a fresh closure every render (same reasoning as StationTrack.tsx's
-    // walkTo effect) — listing it would restart the flight-out mid-play.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
   const { width, height } = useWindowDimensions();
@@ -122,17 +135,16 @@ export function useBinderCoverFlight(dept: string, onExit: () => void) {
   const translateX = flight.interpolate({ inputRange: [0, 1], outputRange: [dx, 0] });
   const translateY = flight.interpolate({ inputRange: [0, 1], outputRange: [dy, 0] });
   const rotate = flight.interpolate({ inputRange: [0, 1], outputRange: [START_ROTATE, '0deg'] });
-  // The 55%-overshoot (§4 row 1) is only entering's shape — ⑤ has no such note, so the
-  // way back scales down plainly under its own ease-in curve.
-  const scale = phase === 'leaving'
-    ? flight.interpolate({ inputRange: [0, 1], outputRange: [START_SCALE, 1] })
-    : flight.interpolate({ inputRange: [0, 0.55, 1], outputRange: [START_SCALE, 1.03, 1] });
+  // The 55%-overshoot (§4 row 1) is entering's own shape. flightTransform is only ever
+  // rendered during 'entering' now (see the file banner) — ⑤'s transform is computed
+  // separately, inside BinderExitOverlay.tsx, off the same START_SCALE/START_ROTATE.
+  const scale = flight.interpolate({ inputRange: [0, 0.55, 1], outputRange: [START_SCALE, 1.03, 1] });
   const flightTransform = [{ translateX }, { translateY }, { rotate }, { scale }];
 
-  /** The dept screen's own back control calls this — the only path that can start the
-   *  ④→⑤ sequence. The device back button/swipe never call it (task-I-brief.md §6: that
-   *  path must not wait on this animation, so it is wired straight to the router instead,
-   *  never through this hook at all). */
+  /** The dept screen's own back control calls this — the only path that can start ④. The
+   *  device back button/swipe never call it (task-I-brief.md §6: that path must not wait
+   *  on this animation, so it is wired straight to the router instead, never through this
+   *  hook at all). */
   const requestClose = () => {
     if (!startedRef.current) { onExit(); return; }
     if (closingRef.current) return; // §6: a second press while closing does not replay it.
@@ -163,7 +175,20 @@ export function useBinderCoverFlight(dept: string, onExit: () => void) {
     requestClose,
     /** ② finished — the cover is fully turned away; drop it and show the plain screen. */
     onCoverOpened: () => { setPhase('settled'); setOwningArrival(false); },
-    /** ④ finished — the cover is flat again; start ⑤. */
-    onCoverClosed: () => setPhase('leaving'),
+    /**
+     * ④ finished — the cover sits flat again, still filling the screen. This is the
+     * hand-off task-J-brief.md exists for: `rect` is guaranteed non-null here (`closing`
+     * is only reachable through `requestClose`, which only starts it once `startedRef`
+     * is true — and that only ever becomes true when a rect was consumed at mount), so
+     * the overlay is handed everything BinderCoverFace needs to keep drawing the exact
+     * same cover, in the exact same place, one frame before this screen goes away. Order
+     * matters: `requestBinderExit` first, `onExit()` second — reversed, the dept screen
+     * would disappear (taking its own cover layer with it) one frame before the overlay
+     * has anything to paint over it, and the shelf underneath would show through bare.
+     */
+    onCoverClosed: () => {
+      if (rect) requestBinderExit({ dept, rect, doneTopics: cover.doneTopics, totalTopics: cover.totalTopics });
+      onExit();
+    },
   };
 }

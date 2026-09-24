@@ -9,10 +9,16 @@
 //    알았지만 실기에서 드러났다 — 마지막 두 부서가 가려졌다).
 //  · 잠금 없음(J1) — disabled가 참이 아니어야 한다, 우회가 아니라 애초에.
 //  · 고르면 journeyGoalPick의 pickGoalDept를 통해 journey.tsx의 pickDept()로 이어지고
-//    (J5, 한 가지 경로), 뒤로 간다.
+//    (J5, 한 가지 경로), 뒤로 간다 — 돌아갈 화면이 있으면 router.back(), 없으면
+//    (딥링크) router.replace('/journey')(journey-binder-v42 Task J, task-J-brief.md §5).
 jest.mock('expo-router', () => ({
   Stack: { Screen: () => null },
-  useRouter: () => ({ back: () => { mockBack += 1; }, push: () => {} }),
+  useRouter: () => ({
+    back: () => { mockBack += 1; },
+    push: () => {},
+    canGoBack: () => mockCanGoBack,
+    replace: (p: string) => mockReplaced.push(p),
+  }),
 }));
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
@@ -24,6 +30,8 @@ import { trackMounts } from '../testing/mountRegistry';
 const track = trackMounts();
 
 let mockBack = 0;
+let mockCanGoBack = true;
+const mockReplaced: string[] = [];
 
 // 29개 실제 부서 코드 — journey.tsx가 goalDept + freeRoam[].dept를 합쳐 건네는 것과
 // 같은 모양(중복 없는 문자열 배열). 정확한 코드 값 자체보다 "29개, 끝까지"가 핵심이라
@@ -56,6 +64,8 @@ function hostNodesWithTestId(root: ReactTestInstance, id: string): ReactTestInst
 
 beforeEach(() => {
   mockBack = 0;
+  mockCanGoBack = true;
+  mockReplaced.length = 0;
   clearGoalPickOffer();
 });
 afterEach(() => { clearGoalPickOffer(); });
@@ -177,5 +187,15 @@ describe('PickDept', () => {
     const tree = mount();
     act(() => { tree.root.findByProps({ testID: 'pick-dept-back' }).props.onPress(); });
     expect(mockBack).toBe(1);
+  });
+
+  // 11. 딥링크로 곧장 들어와 돌아갈 화면이 없으면 서가로 보낸다(task-J-brief.md §5).
+  it('sends the learner to the shelf, not nowhere, when there is no screen to go back to', () => {
+    mockCanGoBack = false;
+    offerGoalPick({ depts: ALL_29_DEPTS, current: 'ER', inferred: false }, jest.fn());
+    const tree = mount();
+    act(() => { tree.root.findByProps({ testID: 'pick-dept-back' }).props.onPress(); });
+    expect(mockReplaced).toEqual(['/journey']);
+    expect(mockBack).toBe(0);
   });
 });

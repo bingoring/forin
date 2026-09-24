@@ -19,10 +19,14 @@
 //
 // 핸드오프 v43(journey-binder-v42 Task I) — 서가에서 바인더를 눌러 왔다면, 이 화면은
 // 그 바인더가 눌린 자리에서 날아와 표지가 펼쳐지는 연출로 시작하고, 뒤로 갈 때는
-// 거꾸로 닫혀서 날아 돌아간다. 그 다섯 단계 전부는 `useBinderCoverFlight`가 쥐고
-// 있다 — 이 화면은 그 훅이 돌려주는 걸 그리기만 한다. 데이터 요청(`load`)은 그 연출과
-// 무관하게 이 화면이 서는 즉시 나간다(§2 point 4) — 표지가 날아오고 펼쳐지는 동안
-// 응답이 오는 것이 의도다.
+// 거꾸로 닫힌다. 데이터 요청(`load`)은 그 연출과 무관하게 이 화면이 서는 즉시
+// 나간다(§2 point 4) — 표지가 날아오고 펼쳐지는 동안 응답이 오는 것이 의도다.
+//
+// Task J(journey-binder-v42, task-J-brief.md) — 표지가 닫힌 뒤 날아 돌아가는 마지막
+// 단계(⑤)는 더 이상 이 화면이 쥐지 않는다. 이 화면은 `requestClose`로 닫기(④)만
+// 시작하고, `useBinderCoverFlight`의 `onCoverClosed`가 ④가 끝나는 그 자리에서
+// `journeyBinderExit`에 표지를 넘기고 곧바로 이 화면을 뜬다(`goBackToShelf`) — ⑤는
+// `BinderExitOverlay`(journey/_layout.tsx)가 이 화면이 사라진 뒤에도 이어서 그린다.
 import { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Animated, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
@@ -35,6 +39,7 @@ import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbPaper, NbSheet, nbText } from '@/components/nb/NbUI';
 import { PageCurl } from '@/components/nb/PageCurl';
 import { deptNbIcon } from '@/data/campus';
+import { goBackToShelf } from '@/data/journeyBack';
 import { TOP_INSET, nb } from '@/theme/nb';
 import { FLOWN_SCREEN, PLACE_SCREEN } from '@/theme/transitions';
 import { useT } from '@/i18n';
@@ -46,13 +51,21 @@ export default function DeptBinderScreen() {
   const [view, setView] = useState<JourneyView | null>(null);
   const [state, setState] = useState<'loading' | 'ok' | 'error'>('loading');
 
-  // 뒤로 가는 유일한 실제 동작 — 훅의 ⑤(날아 돌아가기)가 끝나면 부르거나, 연출이
-  // 아예 없었으면(스토어가 비었거나 모션 줄이기) 곧바로 부른다. 기기 뒤로
-  // 가기(안드로이드 하드웨어 버튼·스와이프)는 이 훅을 아예 거치지 않는다(§6) — 그
-  // 경로는 항상 기본 라우팅 그대로다. 이 화면의 `Stack.Screen`을 `FLOWN_SCREEN`(전환
-  // 없음)으로 두는 것이 그 경로에서도 이중 모션이 생기지 않게 한다.
+  const curricula = view?.track?.curricula ?? [];
+  // 표지의 진행 바가 쓸 숫자(§3) — 서가와 같은 "주제 완료" 셈법(BinderShelf.tsx의
+  // isTopicDone), 서가의 passed/total이 아니다(이 화면은 그 값을 받지 않는다 —
+  // BinderCoverFace.tsx 주석 참고). 데이터가 아직 안 왔으면 0/0 — 빈 바다.
+  const coverDone = curricula.filter(isTopicDone).length;
+  const coverTotal = curricula.length;
+
+  // 뒤로 가는 유일한 실제 동작 — ④(닫기)가 끝나면 곧바로 부른다(⑤를 기다리지
+  // 않는다 — task-J-brief.md). 돌아갈 화면이 없으면(딥링크로 곧장 들어온 경우)
+  // 서가로 보낸다(`goBackToShelf`). 기기 뒤로 가기(안드로이드 하드웨어
+  // 버튼·스와이프)는 이 훅을 아예 거치지 않는다(§6) — 그 경로는 항상 기본 라우팅
+  // 그대로다. 이 화면의 `Stack.Screen`을 `FLOWN_SCREEN`(전환 없음)으로 두는 것이 그
+  // 경로에서도 이중 모션이 생기지 않게 한다.
   const { owningArrival, hasCover, phase, flightTransform, scrim, requestClose, onCoverOpened, onCoverClosed } =
-    useBinderCoverFlight(dept ?? '', () => router.back());
+    useBinderCoverFlight(dept ?? '', () => goBackToShelf(router), { doneTopics: coverDone, totalTopics: coverTotal });
 
   // journey.tsx의 seqRef·load()와 같은 이유의 요청 순서 보호 — 재시도 버튼과 포커스
   // 재진입이 겹쳐도 "나중에 시작한 것"이 이긴다.
@@ -74,13 +87,6 @@ export default function DeptBinderScreen() {
     if (!themeKey) return;
     router.push(`/journey/theme/${themeKey}`);
   };
-
-  const curricula = view?.track?.curricula ?? [];
-  // 표지의 진행 바가 쓸 숫자(§3) — 서가와 같은 "주제 완료" 셈법(BinderShelf.tsx의
-  // isTopicDone), 서가의 passed/total이 아니다(이 화면은 그 값을 받지 않는다 —
-  // BinderCoverFace.tsx 주석 참고). 데이터가 아직 안 왔으면 0/0 — 빈 바다.
-  const coverDone = curricula.filter(isTopicDone).length;
-  const coverTotal = curricula.length;
 
   const coverFace = <BinderCoverFace dept={dept ?? ''} doneTopics={coverDone} totalTopics={coverTotal} />;
 
@@ -133,7 +139,7 @@ export default function DeptBinderScreen() {
             />
           )}
 
-          {(phase === 'entering' || phase === 'leaving') && (
+          {phase === 'entering' && (
             <Animated.View
               testID="binder-cover-flight"
               pointerEvents="none"

@@ -13,6 +13,7 @@ import { api, type JourneyStep, type StationDetail } from '@/api/client';
 import { StationTrack } from '@/components/journey/StationTrack';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbPaper, NbProgScale, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { goBackToShelf } from '@/data/journeyBack';
 import { TOP_INSET, nb } from '@/theme/nb';
 import { PLACE_SCREEN } from '@/theme/transitions';
 import { useT } from '@/i18n';
@@ -62,7 +63,7 @@ export default function ThemeScreen() {
     <NbSheet>
       <Stack.Screen options={PLACE_SCREEN} />
       <View style={{ paddingTop: TOP_INSET, paddingHorizontal: 20, paddingBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <Pressable testID="theme-back" onPress={() => router.back()} hitSlop={10}>
+        <Pressable testID="theme-back" onPress={() => goBackToShelf(router)} hitSlop={10}>
           <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>
             <NbIcon name="chevronLeft" size={16} />
           </NbPaper>

@@ -7,7 +7,8 @@
 //  · 저작된 주제가 없는 부서(서버 400)에는 오류 상태를 보여주고, 주제 카드를 지어내지
 //    않는다.
 //  · 주제를 누르면 `/journey/theme/<themeKey>`로 민다.
-//  · 뒤로 가면 서가로 돌아간다(router.back()).
+//  · 뒤로 가면 서가로 돌아간다 — 돌아갈 화면이 있으면 router.back(), 없으면(딥링크)
+//    router.replace('/journey')(journey-binder-v42 Task J, task-J-brief.md §5).
 //
 // DeptBinder.test.tsx가 이미 잠근 것(진행 격자, 인덱스 탭, 완료/이어하기 배지)은 여기서
 // 다시 재지 않는다.
@@ -15,18 +16,33 @@
 // @testing-library/react-native 미설치 — journeyScreen.test.tsx·journeyThemeScreen.test.tsx와
 // 같은 react-test-renderer 관례를 따른다.
 const mockPushed: string[] = [];
+const mockReplaced: string[] = [];
 let mockBackCount = 0;
+let mockCanGoBack = true;
 let mockDept = 'ICU';
+// Shared with the `requestBinderExit` mock below — records which of the two fired
+// first, for the "hand-off before departure" ordering test (task-J-brief.md §7 item 3).
+const callOrder: string[] = [];
 jest.mock('expo-router', () => {
   const React = require('react') as typeof import('react');
   return {
     Stack: { Screen: () => null },
-    useRouter: () => ({ push: (p: string) => mockPushed.push(p), back: () => { mockBackCount += 1; } }),
+    useRouter: () => ({
+      push: (p: string) => mockPushed.push(p),
+      back: () => { mockBackCount += 1; callOrder.push('back'); },
+      canGoBack: () => mockCanGoBack,
+      replace: (p: string) => { mockReplaced.push(p); callOrder.push('replace'); },
+    }),
     useLocalSearchParams: () => ({ dept: mockDept }),
     useFocusEffect: (cb: () => void | (() => void)) => React.useEffect(cb, []),
   };
 });
 jest.mock('@/api/client');
+// Task J — journeyBinderExit is the hand-off THIS screen makes to the overlay
+// (BinderExitOverlay.tsx, mounted only in journey/_layout.tsx, not here). Auto-mocked so
+// `requestBinderExit` is a plain jest.fn() this file can assert on directly, the same way
+// `@/api/client` is mocked above.
+jest.mock('@/data/journeyBinderExit');
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { AccessibilityInfo, Animated, Text } from 'react-native';
@@ -36,6 +52,7 @@ import type { JourneyCurriculum } from '@/components/journey/JourneyMap';
 import { CURL_MS } from '@/components/nb/PageCurl';
 import { CLOSE_CURL_MS, ENTER_MS, LEAVE_MS } from '@/components/journey/useBinderCoverFlight';
 import { clearBinderFlyRect, setBinderFlyRect } from '@/data/journeyBinderFly';
+import { requestBinderExit } from '@/data/journeyBinderExit';
 import { trackMounts } from '../testing/mountRegistry';
 
 const track = trackMounts();
@@ -65,7 +82,10 @@ const VIEW: JourneyView = {
 
 beforeEach(() => {
   mockPushed.length = 0;
+  mockReplaced.length = 0;
+  callOrder.length = 0;
   mockBackCount = 0;
+  mockCanGoBack = true;
   mockDept = 'ICU';
   jest.clearAllMocks();
   (api.journey as jest.Mock).mockResolvedValue(VIEW);
@@ -181,6 +201,7 @@ describe('binder cover flight', () => {
     }) as unknown as typeof Animated.timing);
     reduceMotionSpy = jest.spyOn(AccessibilityInfo, 'isReduceMotionEnabled').mockResolvedValue(false);
     jest.spyOn(AccessibilityInfo, 'addEventListener').mockReturnValue({ remove: jest.fn() } as unknown as ReturnType<typeof AccessibilityInfo.addEventListener>);
+    (requestBinderExit as jest.Mock).mockImplementation(() => callOrder.push('request'));
   });
 
   afterEach(() => {
@@ -246,8 +267,10 @@ describe('binder cover flight', () => {
     expect(tree.root.findAllByProps({ testID: 'binder-cover-flight' })).toHaveLength(0);
   });
 
-  // 5. ‹ 서가를 누르면 닫기가 시작되고, 끝나야 router.back()이 불린다.
-  test('pressing back starts closing, and router.back() only fires once ④→⑤ both finish', async () => {
+  // 5. 서가를 누르면 닫기(④)가 시작되고, ④가 끝나는 그 자리에서 router.back()이
+  //    불린다 — ⑤(600ms, task-J-brief.md 이후로는 BinderExitOverlay의 몫)를
+  //    기다리지 않는다.
+  test('pressing back starts closing, and router.back() fires the instant ④ finishes — not after LEAVE_MS', async () => {
     const tree = await mountSettled();
     expect(mockBackCount).toBe(0);
 
@@ -259,13 +282,12 @@ describe('binder cover flight', () => {
     expect(tree.root.findAllByProps({ testID: 'binder-cover-face' }).length).toBeGreaterThan(0);
 
     await act(async () => { finish(findTiming(CLOSE_CURL_MS)); }); // ④ 끝
-    expect(mockBackCount).toBe(0); // 이제 날아 돌아가는 중(⑤) — 아직이다
-
-    await act(async () => { finish(findTiming(LEAVE_MS)); }); // ⑤ 끝
-    expect(mockBackCount).toBe(1);
+    expect(mockBackCount).toBe(1); // 곧바로 — LEAVE_MS 타이밍은 이 화면에 아예 없다
+    expect(timingRecs.some((r) => r.duration === LEAVE_MS)).toBe(false);
   });
 
-  // 6. 닫기를 연속으로 두 번 눌러도 router.back()은 한 번만 불린다.
+  // 6. 닫기를 연속으로 두 번 눌러도(그리고 ④가 끝난 뒤 또 한 번 눌러도) router.back()은
+  //    한 번만 불린다.
   test('pressing back twice in a row while closing calls router.back() only once', async () => {
     const tree = await mountSettled();
     const back = tree.root.findByProps({ testID: 'dept-binder-back' });
@@ -273,16 +295,69 @@ describe('binder cover flight', () => {
     await act(async () => { back.props.onPress(); }); // 두 번째는 무시된다 — 두 번째 닫기 넘김이 새로 생기지 않는다
     expect(timingRecs.filter((r) => r.duration === CLOSE_CURL_MS)).toHaveLength(1);
 
-    // ④가 끝나 이제 ⑤(날아 돌아가기, phase 'leaving')가 도는 중이다 — 이 시점에서
-    // 또 눌러도 새 'closing'으로 되돌아가지 않는다는 것까지 확인한다. 이 3번째 누름은
-    // "같은 값으로 다시 setPhase('closing')"이 아니라 '"leaving' 도중에 setPhase
-    // ('closing')"이라 리액트의 동일-값 state bail-out으로는 가려지지 않는 경우다
-    // — 여기서 실제로 closingRef 가드가 하는 일이 드러난다.
-    await act(async () => { finish(findTiming(CLOSE_CURL_MS)); });
-    await act(async () => { back.props.onPress(); });
-    expect(timingRecs.filter((r) => r.duration === CLOSE_CURL_MS)).toHaveLength(1);
+    await act(async () => { finish(findTiming(CLOSE_CURL_MS)); }); // ④ 끝 — 곧바로 router.back()
+    expect(mockBackCount).toBe(1);
 
-    await act(async () => { finish(findTiming(LEAVE_MS)); });
+    // ④가 끝난 뒤에도 또 눌러 봤자 두 번째 router.back()이 생기지 않는다 —
+    // closingRef가 'closing' 이후에도 참으로 남아 있다(이 훅은 'closing'에서 다른
+    // phase로 옮겨가지 않고 그 자리에서 곧바로 onExit을 부른다). 이 3번째 누름은
+    // startedRef가 참인 채로 closingRef만으로 걸러지는 경우라 실제로 그 가드가
+    // 일하는 자리가 드러난다.
+    await act(async () => { back.props.onPress(); });
+    expect(mockBackCount).toBe(1);
+    expect(timingRecs.filter((r) => r.duration === CLOSE_CURL_MS)).toHaveLength(1);
+  });
+
+  // task-J-brief.md §7 items 1–5 (아래 넷은 Task J가 새로 요구하는 단언; item 1 — "④가
+  // 끝나면 router.back()이 그 자리에서 불린다, ⑤를 기다리지 않는다" — 은 바로 위 5번
+  // 테스트가 이미 잰다).
+
+  // 2. ④가 끝나면 requestBinderExit에 그 부서와 좌표가 실린다.
+  test('④가 끝나면 requestBinderExit에 이 부서와 눌린 자리가 실린다', async () => {
+    const tree = await mountSettled();
+    await act(async () => { tree.root.findByProps({ testID: 'dept-binder-back' }).props.onPress(); });
+    await act(async () => { finish(findTiming(CLOSE_CURL_MS)); });
+    expect(requestBinderExit).toHaveBeenCalledWith(
+      expect.objectContaining({ dept: 'ICU', rect: RECT }),
+    );
+  });
+
+  // 3. 넘기는 것(requestBinderExit)이 뜨는 것(router.back())보다 먼저다 — 순서 자체를
+  //    잰다, 둘 다 불렸다는 것만으로는 부족하다.
+  test('hands the cover to the overlay BEFORE calling router.back() — order, not just both happening', async () => {
+    const tree = await mountSettled();
+    await act(async () => { tree.root.findByProps({ testID: 'dept-binder-back' }).props.onPress(); });
+    await act(async () => { finish(findTiming(CLOSE_CURL_MS)); });
+    expect(callOrder).toEqual(['request', 'back']);
+  });
+
+  // 4. 돌아갈 화면이 없으면(딥링크로 곧장 들어온 경우) router.replace('/journey')가
+  //    불린다 — router.back()은 불리지 않는다.
+  test('돌아갈 화면이 없으면 router.replace(\'/journey\')가 불린다(그리고 back은 안 불린다)', async () => {
+    mockCanGoBack = false;
+    const tree = await mountSettled();
+    await act(async () => { tree.root.findByProps({ testID: 'dept-binder-back' }).props.onPress(); });
+    await act(async () => { finish(findTiming(CLOSE_CURL_MS)); });
+    expect(mockReplaced).toEqual(['/journey']);
+    expect(mockBackCount).toBe(0);
+  });
+
+  // 5. 연출이 없었으면(좌표 없음, 또는 모션 줄이기) 스토어에 아무것도 넘기지 않는다 —
+  //    requestClose가 startedRef를 보고 곧바로 onExit으로 새는 경로다(연출이 아예
+  //    시작되지 않았으므로 handoff도 없다).
+  test('연출이 없었으면(좌표 없음) 스토어에 아무것도 넘기지 않는다', async () => {
+    const tree = await mount(); // clearBinderFlyRect가 beforeEach에서 이미 돈 상태 — 좌표 없음
+    await act(async () => { tree.root.findByProps({ testID: 'dept-binder-back' }).props.onPress(); });
+    expect(requestBinderExit).not.toHaveBeenCalled();
+    expect(mockBackCount).toBe(1);
+  });
+
+  test('연출이 없었으면(모션 줄이기) 스토어에 아무것도 넘기지 않는다', async () => {
+    setBinderFlyRect('ICU', RECT);
+    reduceMotionSpy.mockResolvedValue(true);
+    const tree = await mount();
+    await act(async () => { tree.root.findByProps({ testID: 'dept-binder-back' }).props.onPress(); });
+    expect(requestBinderExit).not.toHaveBeenCalled();
     expect(mockBackCount).toBe(1);
   });
 

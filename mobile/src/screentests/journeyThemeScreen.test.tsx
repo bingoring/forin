@@ -6,17 +6,25 @@
 //  · GET /me/journey/stations/{themeKey}를 라우트 파라미터로 부른다.
 //  · 스텝을 눌렀을 때 실제 라우팅 — QZ- 접두는 퀴즈로, 나머지는 시나리오로(guide 유지),
 //    옛 openStep 규칙(커밋 d36bfa1) 그대로.
-//  · 뒤로 가면 일터 탭으로 돌아간다(router.back()).
+//  · 뒤로 가면 일터 탭으로 돌아간다 — 돌아갈 화면이 있으면 router.back(), 없으면
+//    (딥링크) router.replace('/journey')(journey-binder-v42 Task J, task-J-brief.md §5).
 //  · 로드 실패 시 다시 시도할 수 있다.
 //
 // @testing-library/react-native 미설치 — 이 저장소의 다른 화면 테스트(journeyScreen.test.tsx,
 // journeyPickDeptScreen.test.tsx)와 같은 react-test-renderer 관례를 따른다.
 const mockPushed: string[] = [];
+const mockReplaced: string[] = [];
 let mockBackCount = 0;
+let mockCanGoBack = true;
 let mockThemeKey = 't1';
 jest.mock('expo-router', () => ({
   Stack: { Screen: () => null },
-  useRouter: () => ({ push: (p: string) => mockPushed.push(p), back: () => { mockBackCount += 1; } }),
+  useRouter: () => ({
+    push: (p: string) => mockPushed.push(p),
+    back: () => { mockBackCount += 1; },
+    canGoBack: () => mockCanGoBack,
+    replace: (p: string) => mockReplaced.push(p),
+  }),
   useLocalSearchParams: () => ({ themeKey: mockThemeKey }),
 }));
 jest.mock('@/api/client');
@@ -65,7 +73,9 @@ async function mount() {
 
 beforeEach(() => {
   mockPushed.length = 0;
+  mockReplaced.length = 0;
   mockBackCount = 0;
+  mockCanGoBack = true;
   mockThemeKey = 't1';
   jest.clearAllMocks();
   (api.station as jest.Mock).mockResolvedValue(DETAIL);
@@ -140,4 +150,13 @@ test('an empty step list still stands the screen up — no crash, no fabricated 
   const tree = await mount();
   expect(tree.root.findByProps({ testID: 'theme-title' }).props.children).toBe('빈 주제');
   expect(stationPresses(tree.root)).toHaveLength(0);
+});
+
+// 11. 딥링크로 곧장 들어와 돌아갈 화면이 없으면 서가로 보낸다(task-J-brief.md §5).
+test('sends the learner to the shelf, not nowhere, when there is no screen to go back to', async () => {
+  mockCanGoBack = false;
+  const tree = await mount();
+  await act(async () => { tree.root.findByProps({ testID: 'theme-back' }).props.onPress(); });
+  expect(mockReplaced).toEqual(['/journey']);
+  expect(mockBackCount).toBe(0);
 });
