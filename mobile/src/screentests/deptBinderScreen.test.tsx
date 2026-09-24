@@ -30,7 +30,7 @@ jest.mock('@/api/client');
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { AccessibilityInfo, Animated, Text } from 'react-native';
-import DeptBinderScreen from '@/app/journey/dept/[dept]';
+import DeptBinderScreen from '@/app/(tabs)/journey/dept/[dept]';
 import { api, type JourneyView } from '@/api/client';
 import type { JourneyCurriculum } from '@/components/journey/JourneyMap';
 import { CURL_MS } from '@/components/nb/PageCurl';

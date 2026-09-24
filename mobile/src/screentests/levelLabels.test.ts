@@ -32,7 +32,7 @@ function code(...p: string[]): string {
 const read = (...p: string[]) => readFileSync(join(APP, ...p), 'utf8');
 
 const SCREENS: [string, string][] = [
-  ['career tab', code('(tabs)', 'journey.tsx')],
+  ['career tab', code('(tabs)', 'journey', 'index.tsx')],
   ['profile tab', code('(tabs)', 'me.tsx')],
   ['colleague list', code('colleagues', 'index.tsx')],
   ['colleague detail', code('colleagues', '[id].tsx')],

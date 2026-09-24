@@ -61,6 +61,7 @@ export function curlSamples(width: number, slices = CURL_SLICES, samples = SAMPL
   for (let s = 0; s < samples; s += 1) {
     const p = s / (samples - 1);
     let edge = 0; // running left edge of the current slice, in screen points
+    const cols: number[] = [];
     for (let i = 0; i < slices; i += 1) {
       // u = 0 at the spine, 1 at the free edge. The free edge leads.
       const u = slices === 1 ? 1 : i / (slices - 1);
@@ -70,12 +71,28 @@ export function curlSamples(width: number, slices = CURL_SLICES, samples = SAMPL
       const scale = Math.max(0, Math.cos(theta));
       // A scaleX applies about the view's centre, so a slice pinned at `edge` would drift
       // inward by half of what it lost. Compensated here, in the sample.
-      xs[i].push(edge - (w * (1 - scale)) / 2 - i * w);
+      cols.push(edge - (w * (1 - scale)) / 2 - i * w);
       sx[i].push(scale);
       edge += w * scale;
     }
+    // The collapsed sheet walks off the left edge over the last stretch of the turn.
+    // Without this the page stops edge-on and simply vanishes as a band still standing at
+    // the spine — about a centimetre of paper blinking out of existence. `edge` is exactly
+    // the band's remaining width, so shifting by it at p = 1 puts the whole thing just
+    // past the left edge, which is where a turned page goes.
+    const off = -edge * exitRamp(p);
+    for (let i = 0; i < slices; i += 1) xs[i].push(cols[i] + off);
   }
   return { w, xs, sx, samples };
+}
+
+/** 0 until the sheet is nearly edge-on, then 0→1. Starting it earlier would slide the page
+ *  sideways while it is still wide, which reads as the sheet being dragged rather than
+ *  turned. */
+export function exitRamp(p: number): number {
+  const START = 0.7;
+  if (p <= START) return 0;
+  return (p - START) / (1 - START);
 }
 
 /**

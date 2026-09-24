@@ -17,7 +17,7 @@ jest.mock('expo-router', () => ({
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { ScrollView, Text } from 'react-native';
-import PickDept from '@/app/journey/pick-dept';
+import PickDept from '@/app/(tabs)/journey/pick-dept';
 import { clearGoalPickOffer, offerGoalPick } from '@/data/journeyGoalPick';
 import { trackMounts } from '../testing/mountRegistry';
 

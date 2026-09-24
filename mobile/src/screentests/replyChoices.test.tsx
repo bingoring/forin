@@ -210,7 +210,7 @@ test('the chosen rung survives from the step row to the conversation screen', ()
   expect(track).toMatch(/onPress=\{\(\) => pressStep\(i, step\)\}/);
   expect(track).toMatch(/onStepPress\(step\);/);
 
-  const theme = readFileSync(join(__dirname, '..', 'app', 'journey', 'theme', '[themeKey].tsx'), 'utf8');
+  const theme = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'journey', 'theme', '[themeKey].tsx'), 'utf8');
   expect(theme).toMatch(/router\.push\(step\.guide \? `\/scenario\/\$\{scn\}\?guide=\$\{step\.guide\}`/);
 
   const briefing = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id].tsx'), 'utf8');

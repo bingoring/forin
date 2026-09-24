@@ -23,7 +23,7 @@ jest.mock('@/api/client');
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { AccessibilityInfo, Text } from 'react-native';
-import ThemeScreen from '@/app/journey/theme/[themeKey]';
+import ThemeScreen from '@/app/(tabs)/journey/theme/[themeKey]';
 import { api, type JourneyStep, type StationDetail } from '@/api/client';
 import { trackMounts } from '../testing/mountRegistry';
 

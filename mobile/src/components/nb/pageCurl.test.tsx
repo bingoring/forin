@@ -38,11 +38,32 @@ test('the sheet is whole: every slice starts where the last one ended', () => {
   const geo = curlSamples(W);
   for (let s = 0; s < geo.samples; s += 1) {
     const e = edges(geo, s);
-    expect(e[0].left).toBeCloseTo(0, 4);
     for (let i = 1; i < e.length; i += 1) {
       expect(e[i].left).toBeCloseTo(e[i - 1].right, 4);
     }
   }
+});
+
+// The sheet is pinned at the spine while it curls, and only then walks off the left edge.
+// Without the exit it stopped edge-on and blinked out as a band still standing at the
+// spine — about a centimetre of paper vanishing in place, which reads as a glitch rather
+// than a page turn.
+test('the sheet stays pinned at the spine while it curls, then leaves to the left', () => {
+  const geo = curlSamples(W);
+  const leftAt = (s: number) => edges(geo, s)[0].left;
+  const rightAt = (s: number) => edges(geo, s)[CURL_SLICES - 1].right;
+
+  // Through the curl proper the spine edge does not move.
+  const held = Math.floor((geo.samples - 1) * 0.7);
+  for (let s = 0; s <= held; s += 1) expect(leftAt(s)).toBeCloseTo(0, 4);
+
+  // After that it only ever moves left, and never comes back.
+  for (let s = held + 1; s < geo.samples; s += 1) {
+    expect(leftAt(s)).toBeLessThan(leftAt(s - 1) + 0.001);
+  }
+
+  // And at the end the whole sheet is past the left edge — nothing is left standing.
+  expect(rightAt(geo.samples - 1)).toBeLessThanOrEqual(0.001);
 });
 
 test('flat at rest, and no wider than the page', () => {
