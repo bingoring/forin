@@ -51,7 +51,7 @@ export default function DeptBinderScreen() {
   // 가기(안드로이드 하드웨어 버튼·스와이프)는 이 훅을 아예 거치지 않는다(§6) — 그
   // 경로는 항상 기본 라우팅 그대로다. 이 화면의 `Stack.Screen`을 `FLOWN_SCREEN`(전환
   // 없음)으로 두는 것이 그 경로에서도 이중 모션이 생기지 않게 한다.
-  const { willFly, hasCover, phase, flightTransform, scrim, requestClose, onCoverOpened, onCoverClosed } =
+  const { owningArrival, hasCover, phase, flightTransform, scrim, requestClose, onCoverOpened, onCoverClosed } =
     useBinderCoverFlight(dept ?? '', () => router.back());
 
   // journey.tsx의 seqRef·load()와 같은 이유의 요청 순서 보호 — 재시도 버튼과 포커스
@@ -86,9 +86,11 @@ export default function DeptBinderScreen() {
 
   return (
     <NbSheet>
-      {/* 좌표를 들고 온 경우에만 기본 밀기를 끈다 — 서가를 거치지 않고 들어오면
-          (딥링크, 측정이 안 닿은 경우) 평소의 밀기가 그대로 있어야 한다. */}
-      <Stack.Screen options={willFly ? FLOWN_SCREEN : PLACE_SCREEN} />
+      {/* 이 화면이 자기 도착 연출을 쥐고 있는 동안에만 기본 밀기를 끈다. 서가를 거치지
+          않고 들어오면(딥링크, 측정이 안 닿은 경우) 평소의 밀기가 그대로 있어야 하고,
+          도착이 끝난 뒤에도 꺼 두면 왼쪽 가장자리 스와이프로 뒤로 가는 동작이 죽는다
+          (useBinderCoverFlight의 `owningArrival` 주석). */}
+      <Stack.Screen options={owningArrival ? FLOWN_SCREEN : PLACE_SCREEN} />
       <View style={{ paddingTop: TOP_INSET, paddingHorizontal: 20, paddingBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
         <Pressable testID="dept-binder-back" onPress={requestClose} hitSlop={10}>
           <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>

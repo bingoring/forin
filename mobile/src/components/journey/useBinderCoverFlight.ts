@@ -66,13 +66,27 @@ export function useBinderCoverFlight(dept: string, onExit: () => void) {
   }, []);
 
   const [phase, setPhase] = useState<BinderFlyPhase>('settled');
+  /**
+   * 이 화면이 **자기 도착 연출을 쥐고 있는 동안**만 참이다. 첫 렌더부터 참이고(좌표를
+   * 동기로 읽으므로), 표지가 다 펼쳐지면 거짓이 된다.
+   *
+   * 화면 전환 설정을 이 값으로 고른다. 도착하는 동안에는 기본 밀기를 꺼야 두 움직임이
+   * 겹치지 않지만, 도착이 끝난 뒤에도 꺼 두면 **왼쪽 가장자리 스와이프로 뒤로 가는
+   * 동작이 죽는다** — iOS는 전환이 'none'인 화면에서 그 제스처를 내주지 않는다.
+   * 실기에서 뒤로가기가 안 되는 것처럼 보인 원인이 이것이다. 도착이 끝나면 평소의
+   * 밀기로 돌려놓아 제스처를 되살린다(그때 바꿔도 이미 끝난 도착에는 영향이 없다).
+   */
+  const [owningArrival, setOwningArrival] = useState(rect !== null);
   const startedRef = useRef(false);
   const closingRef = useRef(false);
   const flight = useRef(new Animated.Value(0)).current;
   const scrim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    if (startedRef.current || reduceMotion !== false || !rect) return;
+    if (reduceMotion === null) return;
+    // 모션 줄이기가 켜져 있으면 연출이 없다 — 도착을 쥘 일도 없으니 곧바로 놓아준다.
+    if (reduceMotion || !rect) { setOwningArrival(false); return; }
+    if (startedRef.current) return;
     startedRef.current = true;
     setPhase('entering');
   }, [reduceMotion, rect]);
@@ -139,6 +153,7 @@ export function useBinderCoverFlight(dept: string, onExit: () => void) {
      * did not land) appeared as a hard cut with no motion at all.
      */
     willFly: rect !== null,
+    owningArrival,
     /** Whether a cover belongs on screen at all — false skips every layer below outright
      *  (no rect ever consumed, or reduce motion). */
     hasCover: phase !== 'settled',
@@ -147,7 +162,7 @@ export function useBinderCoverFlight(dept: string, onExit: () => void) {
     scrim,
     requestClose,
     /** ② finished — the cover is fully turned away; drop it and show the plain screen. */
-    onCoverOpened: () => setPhase('settled'),
+    onCoverOpened: () => { setPhase('settled'); setOwningArrival(false); },
     /** ④ finished — the cover is flat again; start ⑤. */
     onCoverClosed: () => setPhase('leaving'),
   };

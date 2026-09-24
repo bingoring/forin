@@ -315,4 +315,20 @@ describe('binder cover flight', () => {
     expect(stackOptions(withoutRect.root)?.animation).toBe('slide_from_right');
   });
 
+  // 도착 연출이 끝나면 기본 전환을 돌려준다. 계속 'none'으로 두면 iOS가 왼쪽 가장자리
+  // 스와이프로 뒤로 가는 동작을 내주지 않아, 화면에 갇힌 것처럼 보인다 — 실기에서
+  // 뒤로가기가 안 되는 것처럼 보인 원인이다.
+  it('표지가 다 펼쳐지면 기본 전환을 돌려준다 — 스와이프로 뒤로 갈 수 있게', async () => {
+    const tree = await mountSettled();
+    expect(stackOptions(tree.root)?.animation).toBe('slide_from_right');
+  });
+
+  // 모션 줄이기가 켜지면 연출 자체가 없으므로 처음부터 기본 전환이어야 한다.
+  it('모션 줄이기가 켜져 있으면 좌표가 있어도 기본 전환이다', async () => {
+    (AccessibilityInfo.isReduceMotionEnabled as jest.Mock).mockResolvedValue(true);
+    setBinderFlyRect('ICU', RECT);
+    const tree = await mount();
+    expect(stackOptions(tree.root)?.animation).toBe('slide_from_right');
+  });
+
 });
