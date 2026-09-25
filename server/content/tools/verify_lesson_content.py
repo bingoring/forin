@@ -347,6 +347,10 @@ def stem(tok: str) -> str:
         t = t[:-1]
     # 아래 셋은 어미가 아니라 **양쪽을 같은 자리로 모으는** 마무리다. 원형 복원이 아니므로
     # 어느 쪽이 원형인지 따지지 않고 둘 다에 똑같이 적용한다.
+    if t.endswith("ily") and len(t) > 4:
+        # `easily`→`easy`. 일반 `-ly`만 떼면 `easi`가 남아 `easy`(→`eas`)와 어긋난다 —
+        # 자음+y 형용사가 부사가 될 때 y가 i로 바뀌기 때문이다(happy/happily도 같다).
+        t = t[:-3] + "y"
     if t.endswith("ly") and len(t) > 3:
         t = t[:-2]                      # seriously→serious, safely→safe
     while t.endswith("e") and len(t) > 2:
@@ -729,6 +733,10 @@ _STEM_CASES = [
     ("We are using the smaller mask.", "use", True),
     ("Is the cough bringing anything up?", "bring", True),
     ("Two more things to check.", "thing", True),
+    # ⑯ -ily 부사 — 자음+y 형용사가 부사가 될 때 y가 i로 바뀐다.
+    ("Blood can spread more easily on thinners.", "easy", True),
+    # -age 명사화는 일부러 묶지 않는다. identify/identification과 같은 부류다.
+    ("We are watching your drainage.", "drain", False),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
