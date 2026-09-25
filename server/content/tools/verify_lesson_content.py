@@ -186,20 +186,28 @@ def stem(tok: str) -> str:
 
     다섯 가지를 본다. 전부 실제로 콘텐츠를 만들다 부딪힌 것들이다.
 
+    ⓪ 소유격 `'s`를 먼저 뗀다(`doctor's`→`doctor`). 토크나이저가 어퍼스트로피를 붙여
+       한 토큰으로 잡기 때문이다.
     ① 불규칙 동사(`gave`→`give`)는 표로 본다.
     ② `-ied`는 `y`로 되돌린다(`tried`→`try`). 일반 `-ed` 규칙이 `tri`를 만들어 어긋났다.
-    ③ `-ing`·`-ed`를 뗀 뒤 자음이 겹쳐 있으면 하나를 지운다(`dropping`→`dropp`→`drop`).
+    ③ 끝의 겹자음은 **언제나** 하나로 줄인다(`dropp`→`drop`, `fill`→`fil`). 어미를 뗀 뒤에만
+       줄이면 `fill`을 지키려다 `control`/`controlled`가 어긋난다 — 둘을 규칙으로 가를 수
+       없으므로, 대신 양쪽을 같은 자리로 모은다(⑤와 같은 수법).
     ④ 끝의 `s`는 `ss`·`us`·`is`·`as`로 끝나면 떼지 않는다. `focus`가 `focu`가 되어
        `focused`(→`focus`)와 어긋났다.
     ⑤ 마지막에 끝의 `e`를 뗀다. `-es` 규칙이 두 글자를 자르는 탓에 `medicines`→`medicin`이
        원형 `medicine`과 어긋나던 것을 양쪽에서 맞춘다.
 
-    ⑤의 대가로 `car`와 `care`가 한자리에 모인다. V2가 묻는 것은 "적어 둔 단어를 정말
+    ③·⑤의 대가로 `fill`과 `fil`, `car`와 `care`가 한자리에 모인다. V2가 묻는 것은 "적어 둔 단어를 정말
     썼는가"이므로, 드문 오탐은 체계적인 누락보다 훨씬 싸다.
 
     `identify`와 `identification`은 여전히 어긋난다 — 명사화는 인정하지 않는다.
     """
     t = tok.lower()
+    for poss in ("'s", "\u2019s"):
+        if t.endswith(poss) and len(t) > len(poss) + 1:
+            t = t[: -len(poss)]
+            break
     if t in IRREGULAR:
         t = IRREGULAR[t]
     elif t.endswith("ies") and len(t) > 4:
@@ -207,22 +215,29 @@ def stem(tok: str) -> str:
     elif t.endswith("ied") and len(t) > 4:
         t = t[:-3] + "y"
     elif t.endswith("ing") and len(t) > 5:
-        t = _undouble(t[:-3])
+        t = t[:-3]
     elif t.endswith("ed") and len(t) > 4:
-        t = _undouble(t[:-2])
+        t = t[:-2]
     elif t.endswith("es") and len(t) > 4:
         t = t[:-2]
     elif t.endswith("s") and not t.endswith(NOT_PLURAL_TAIL) and len(t) > 3:
         t = t[:-1]
     if t.endswith("e") and len(t) > 3:
         t = t[:-1]
-    return t
+    return _undouble(t)
 
 
 def _undouble(t: str) -> str:
-    """`dropp` → `drop`. 짧은 낱말에서 -ing/-ed 앞의 자음이 겹친 것을 되돌린다.
-    `fall`·`still`처럼 원래 겹친 낱말은 이 함수를 거치지 않는다 — 어미를 뗀 뒤에만 부른다."""
-    if len(t) > 2 and t[-1] == t[-2] and t[-1] not in VOWELS and t[-1] not in "lsz":
+    """끝의 겹자음을 하나로 줄인다. `dropp`→`drop`, `fill`→`fil`, `controll`→`control`.
+
+    예외를 두지 않는 것이 핵심이다. 한때 `l`·`s`·`z`를 건드리지 않아 `fill`/`filled`를
+    지켰는데, 그 예외가 `control`/`controlled`를 깨뜨렸다 — `controlled`에서 어미를 떼면
+    `controll`이 되고, 예외 탓에 `control`로 줄지 않는다. 둘은 규칙으로 가를 수 없다
+    (`fill`은 원래 겹쳐 있고 `control`은 어미가 겹치게 만든다).
+
+    그래서 원형을 복원하려 들지 않고 **양쪽을 같은 자리로 모은다.** `fill`도 `filled`도
+    `fil`이 되고, `control`도 `controlled`도 `control`이 된다."""
+    if len(t) > 2 and t[-1] == t[-2] and t[-1] not in VOWELS:
         return t[:-1]
     return t
 
@@ -501,10 +516,13 @@ _STEM_CASES = [
     ("We tried a lower dose.", "try", True),
     # ⑤ 복수형이 아닌데 s로 끝나는 낱말
     ("Stay focused on his breathing.", "focus", True),
-    # 원래 겹친 낱말은 겹침 되돌리기에 걸리면 안 된다.
+    # 겹자음 — 원래 겹친 낱말도, 어미가 겹치게 만든 낱말도 양쪽이 맞아야 한다.
     ("He had a fall last night.", "fall", True),
     ("Please stay still.", "still", True),
     ("The syringe is filled.", "fill", True),
+    ("From nursing, her pain is controlled but mobility is poor.", "control", True),
+    # ⑥ 소유격
+    ("Please confirm the accepting doctor's name before transport.", "doctor", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
