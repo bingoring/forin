@@ -21,8 +21,29 @@ build-spec-index.md §2·§2-1·§2-2·§6, implementation-plan.md §B에 있다
     V5  chunks를 이으면 en과 같다 (조립 문제가 풀리도록)
     V6  goal이 시드 goals 범위 안이다
     V7  은행 단어가 어느 문장에도 안 쓰이면 경고 (오류 아님 — 은행이 부풀기만 하는 것을 막는다)
+    V8  청크가 실제로 문장을 쪼갠다 (조립 문제에 풀 것이 있도록)
 
-V1~V6은 오류(비정상 종료 코드), V7은 경고(항상 종료 코드에 영향 없음)다.
+V1~V6·V8은 오류(비정상 종료 코드), V7은 경고(항상 종료 코드에 영향 없음)다.
+
+## V8 — 왜 V5만으로는 부족한가
+
+V5는 "조각을 이으면 원문이 된다"만 본다. 그래서 조각이 통째로 하나여도 통과한다.
+
+    chunks: ["Can you state your full name for me", "?"]   ← V5 통과. 그러나 풀 것이 없다
+
+청크 조립은 문장을 의미 단위로 쪼개 순서대로 붙이는 연습이다. 조각이 하나면 화면에 조각
+하나와 물음표 하나가 놓일 뿐이고, 학습자는 아무것도 배우지 않는다. 실제로 첫 생성 결과가
+그렇게 나왔다.
+
+그래서 **문장 길이에 비례한 최소 조각 수**를 본다. 구두점만으로 이루어진 조각은 세지 않는다 —
+`"?"`는 쪼갠 것이 아니다.
+
+    낱말 4개 이하  → 조각 2개 이상   (짧은 문장까지 억지로 쪼개지 않는다)
+    낱말 5~8개     → 조각 3개 이상
+    낱말 9개 이상  → 조각 4개 이상
+
+핸드오프의 본보기가 이 규칙을 통과한다: "I need to check your wristband every time."은 낱말
+8개에 조각 4개다.
 
 ## V2 판정 규칙 — 어형 변화를 어떻게 감안하는가
 
@@ -167,6 +188,21 @@ def chunks_join(chunks: list[str]) -> str:
     return "".join(out)
 
 
+def meaningful_chunks(chunks: list[str]) -> int:
+    """구두점만으로 이루어진 조각은 쪼갠 것이 아니므로 세지 않는다."""
+    return sum(1 for c in chunks if c.strip(" " + "".join(SENTENCE_PUNCT_START)))
+
+
+def min_chunks_for(en: str) -> int:
+    """문장 길이에 비례한 최소 조각 수. 위 docstring의 표 그대로."""
+    words = len([w for w in en.split() if w.strip(" " + "".join(SENTENCE_PUNCT_START))])
+    if words <= 4:
+        return 2
+    if words <= 8:
+        return 3
+    return 4
+
+
 def assembles_to(chunks: list[str], en: str) -> bool:
     if not chunks:
         return False
@@ -255,6 +291,18 @@ def verify_dept(
                     Violation(dept, theme, title, "V5", f"sentence[{i}] chunks {chunks!r} joined != en {en!r}")
                 )
 
+            # V8 — 쪼개긴 쪼갰는가. V5(이으면 원문이 된다)만으로는 통째로 하나여도 통과한다.
+            want = min_chunks_for(en)
+            got = meaningful_chunks(chunks)
+            if got < want:
+                violations.append(
+                    Violation(
+                        dept, theme, title, "V8",
+                        f"sentence[{i}] has {got} meaningful chunk(s), want >= {want} "
+                        f"for a {len(en.split())}-word sentence: {chunks!r}",
+                    )
+                )
+
             # V6
             if not isinstance(goal, int) or not (1 <= goal <= len(goals)):
                 violations.append(
@@ -340,27 +388,27 @@ def _good_sentences() -> str:
   sentences:
     - en: "Can you tell me your name and birthdate?"
       ko: "이름과 생년월일을 말씀해 주시겠어요?"
-      chunks: ["Can you tell me your name and birthdate", "?"]
+      chunks: ["Can you tell me", "your name", "and birthdate", "?"]
       words: [w-name, w-birth]
       goal: 1
     - en: "Let me check your wristband."
       ko: "손목밴드를 확인할게요."
-      chunks: ["Let me check your wristband", "."]
+      chunks: ["Let me", "check your", "wristband", "."]
       words: [w-check, w-wristband]
       goal: 1
     - en: "I need to verify this against your record."
       ko: "이걸 기록과 대조해서 확인해야 해요."
-      chunks: ["I need to verify this against your record", "."]
+      chunks: ["I need to", "verify this", "against your record", "."]
       words: [w-verify, w-record]
       goal: 2
     - en: "Do you have any allergy band on?"
       ko: "알레르기 밴드를 차고 계신가요?"
-      chunks: ["Do you have any allergy band on", "?"]
+      chunks: ["Do you have", "any allergy band", "on", "?"]
       words: [w-allergy, w-band]
       goal: 2
     - en: "I'm checking your wristband and allergy record again."
       ko: "손목밴드와 알레르기 기록을 다시 확인하고 있어요."
-      chunks: ["I'm checking your wristband and allergy record again", "."]
+      chunks: ["I'm checking", "your wristband", "and allergy record", "again", "."]
       words: [w-check, w-wristband, w-allergy, w-record]
       goal: 2
 """
@@ -441,7 +489,7 @@ def run_selftest() -> int:
 
     # V5 — chunks를 이어도 en이 되지 않는다 (중간 단어 누락).
     v5 = _good_sentences().replace(
-        'chunks: ["Let me check your wristband", "."]',
+        'chunks: ["Let me", "check your", "wristband", "."]',
         'chunks: ["Let me check wristband", "."]',
     )
     cases.append(("V5 (chunks don't assemble)", _LEX_BASE, _seed_with_sentences(v5), "V5", False))
@@ -481,6 +529,18 @@ def run_selftest() -> int:
       goal: 1
 """
     cases.append(("V7 (unused bank word -> warning)", _LEX_BASE, _seed_with_sentences(v7), "V7", True))
+
+    # V8 — 이으면 원문이 되지만 통째로 한 조각이다. V5는 통과하고 V8만 잡아야 한다.
+    # 첫 생성 결과가 실제로 이 모양이었다: ["Can you state your full name for me", "?"].
+    v8 = """
+  sentences:
+    - en: "Let me check your wristband now."
+      ko: "지금 손목밴드를 확인할게요."
+      chunks: ["Let me check your wristband now", "."]
+      words: [w-check, w-wristband]
+      goal: 1
+""" + _good_sentences().split("  sentences:\n", 1)[1]
+    cases.append(("V8 (one chunk, nothing to assemble)", _LEX_BASE, _seed_with_sentences(v8), "V8", False))
 
     ok = True
     print("=== verify_lesson_content.py selftest ===")
