@@ -260,10 +260,11 @@ COMPARATIVE = {
     "shorter": "short", "shortest": "short",
     "harder": "hard", "hardest": "hard",
     "softer": "soft", "softest": "soft",
-    # `warmer`(보온기)·`cooler`(혈액 운반 용기)는 병원에서 **명사**다. 표에 넣었더니
+    # `warmer`(보온기)·`cooler`(혈액 운반 용기)·`thinner`(혈액희석제)는 병원에서 **명사**다. 표에 넣었더니
     # 혈액은행 상황의 "two more coolers on the way"가 깨졌다. 비교급으로 보지 않는다.
     "warmest": "warm",
     "coolest": "cool",
+    "thinnest": "thin",   # `thinner`는 넣지 않는다 — "blood thinner"가 이 콘텐츠에 있다
     "tighter": "tight", "tightest": "tight",
     "nearer": "near", "nearest": "near",
     "newer": "new", "newest": "new",
@@ -273,7 +274,10 @@ COMPARATIVE = {
 }
 
 # 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
-NOT_PLURAL_TAIL = ("ss", "us", "is", "as")
+NOT_PLURAL_TAIL = ("ss", "us", "is")
+# `as`는 짧은 낱말에서만 예외다. `gas`·`was`·`has`는 복수형이 아니지만, 긴 낱말의 `-as`는
+# 대개 `-a` 명사의 복수형이다 — `areas`가 `area`와 어긋나 화상 주제에서 걸렸다.
+SHORT_AS_MAX = 3
 
 VOWELS = "aeiou"
 
@@ -340,7 +344,12 @@ def stem(tok: str) -> str:
         t = t[:-2]
     elif t.endswith("es") and len(t) > 4:
         t = t[:-2]
-    elif t.endswith("s") and not t.endswith(NOT_PLURAL_TAIL) and len(t) > 2:
+    elif (
+        t.endswith("s")
+        and not t.endswith(NOT_PLURAL_TAIL)
+        and not (t.endswith("as") and len(t) <= SHORT_AS_MAX)
+        and len(t) > 2
+    ):
         # 길이 조건이 `> 2`인 것은 세 글자 약어의 복수형 때문이다 — `IVs`·`ECGs`·`ORs`가
         # `> 3`였을 때 원형과 어긋났다. `gas`·`his`·`was`·`bus`는 NOT_PLURAL_TAIL이
         # 이미 막는다.
@@ -737,6 +746,13 @@ _STEM_CASES = [
     ("Blood can spread more easily on thinners.", "easy", True),
     # -age 명사화는 일부러 묶지 않는다. identify/identification과 같은 부류다.
     ("We are watching your drainage.", "drain", False),
+    # ⑰ -as 복수형 — 짧은 낱말만 예외다.
+    ("Your legs and back count as larger areas than your arms.", "area", True),
+    ("He was here earlier.", "was", True),
+    ("She has two lines in.", "has", True),
+    # thinner는 비교급 표에 넣지 않는다 — 이 콘텐츠에서 명사다(blood thinner).
+    ("Which blood thinner do you take?", "blood thinner", True),
+    ("Which blood thinner do you take?", "thin", False),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
