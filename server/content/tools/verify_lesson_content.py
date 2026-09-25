@@ -286,7 +286,10 @@ def stem(tok: str) -> str:
         t = t[:-2]
     elif t.endswith("es") and len(t) > 4:
         t = t[:-2]
-    elif t.endswith("s") and not t.endswith(NOT_PLURAL_TAIL) and len(t) > 3:
+    elif t.endswith("s") and not t.endswith(NOT_PLURAL_TAIL) and len(t) > 2:
+        # 길이 조건이 `> 2`인 것은 세 글자 약어의 복수형 때문이다 — `IVs`·`ECGs`·`ORs`가
+        # `> 3`였을 때 원형과 어긋났다. `gas`·`his`·`was`·`bus`는 NOT_PLURAL_TAIL이
+        # 이미 막는다.
         t = t[:-1]
     # 아래 셋은 어미가 아니라 **양쪽을 같은 자리로 모으는** 마무리다. 원형 복원이 아니므로
     # 어느 쪽이 원형인지 따지지 않고 둘 다에 똑같이 적용한다.
@@ -654,6 +657,8 @@ _STEM_CASES = [
     ("We need to find why he keeps re-arresting.", "arrest", True),
     # ⑫ 끝의 e는 남김없이 뗀다
     ("The team agrees it's time to focus on his comfort.", "agree", True),
+    # ⑬ 세 글자 약어의 복수형
+    ("Two large-bore IVs and get O-negative blood up here.", "IV", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
@@ -681,6 +686,9 @@ _STEM_VALUE_CASES = [
     ("heart", "heart"),
     ("pain", "pain"),
     ("blood", "blood"),
+    ("gas", "gas"),        # 세 글자 -s 낱말이 복수형 규칙에 걸리면 안 된다
+    ("his", "his"),
+    ("was", "was"),
 ]
 
 
