@@ -49,10 +49,17 @@ func main() {
 		if err != nil {
 			fail(err)
 		}
+		lexicon, err := loadLexicon(*out, d.Code)
+		if err != nil {
+			fail(err)
+		}
 		var scns []content.Scenario
 		var evts []content.Event
 		if len(seeds) > 0 {
-			scns, evts = generateSeedScenarios(di, d, seeds)
+			scns, evts, err = generateSeedScenarios(di, d, seeds, lexicon)
+			if err != nil {
+				fail(err)
+			}
 		} else {
 			scns, evts = generateDept(di, d, *target)
 		}

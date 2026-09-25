@@ -222,6 +222,68 @@ type Scenario struct {
 	// CollabWith is set only on track=collab scenarios: the other department
 	// this situation is faced from the learner's own dept (e.g. "ICU").
 	CollabWith string `yaml:"collabWith,omitempty" json:"collabWith,omitempty"`
+	// Sentences (lesson four steps, v44) are this situation's STEP 2 target
+	// sentences, carried verbatim from the authoring seed by cmd/gencontent. Empty
+	// on every scenario until content lands department by department (build-spec
+	// §6 결정 2) — a scenario with none simply has no STEP 1/2 content yet.
+	Sentences []Sentence `yaml:"sentences,omitempty" json:"sentences,omitempty"`
+}
+
+// ---- lesson four steps (v44): words + sentences ----
+//
+// A situation is learned in four linked steps: words → sentences → guided dialogue
+// → free dialogue (build-spec-index.md §2-1). The link between them is made of
+// DATA, not authoring instruction: a Sentence carries the ids of the bank Words it
+// used, and STEP 1's word list is derived by following that reference backwards —
+// "which bank words does this situation's sentences actually use". That is what
+// ValidateSentences/ValidateLexicon (lexicon.go) exist to keep honest: a broken
+// reference must fail loading, not ship an empty STEP 1.
+
+// Word is one vocabulary-bank entry: a headword a learner meets in STEP 1, with
+// enough to render a flashcard (pronunciation, meaning, an icon, one example line).
+type Word struct {
+	// ID is unique WITHIN its Lexicon (one theme's word bank), not globally — the
+	// bank is authored and read as one unit (build-spec-index.md §2), so a global
+	// namespace would only make two independently-authored banks collide by
+	// accident for no benefit.
+	ID      string `yaml:"id" json:"id"`
+	En      string `yaml:"en" json:"en"`
+	IPA     string `yaml:"ipa" json:"ipa,omitempty"`
+	Ko      string `yaml:"ko" json:"ko"`
+	Icon    string `yaml:"icon" json:"icon,omitempty"`
+	Example string `yaml:"example" json:"example,omitempty"`
+}
+
+// Lexicon is one theme's word bank. content/nurse/lexicon/<dept>.yaml holds a list
+// of these, one per theme the department teaches. Themed rather than
+// per-situation on purpose: situations under the same theme share vocabulary
+// ("wristband"/"verify"/"allergy" recur across a department's situations), so one
+// shared bank produces the REPEATED exposure that is how a word actually gets
+// learned, instead of teaching it fresh — and only once — in whichever situation
+// happens to use it first.
+type Lexicon struct {
+	Theme string `yaml:"theme" json:"theme"`
+	Words []Word `yaml:"words" json:"words"`
+}
+
+// Sentence is one STEP 2 target sentence, authored onto a seed situation
+// (content/nurse/topics/<dept>.yaml). Words is the connective tissue of
+// build-spec-index.md §2-1.
+type Sentence struct {
+	En string `yaml:"en" json:"en"`
+	Ko string `yaml:"ko" json:"ko"`
+	// Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
+	// (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
+	// exercise solvable at all.
+	Chunks []string `yaml:"chunks" json:"chunks"`
+	// Words are bank word ids this sentence actually uses (checked A1: every id
+	// must exist in the situation's theme bank; A2: the bank itself must have no
+	// duplicate ids). This is the reference STEP 1 is derived from.
+	Words []string `yaml:"words" json:"words"`
+	// Goal is the 1-based index into the seed's own `goals` this sentence advances
+	// toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
+	// situation's sentences in this order.
+	Goal int `yaml:"goal" json:"goal"`
 }
 
 // Persona describes the AI's conversation character for realistic role-play.
