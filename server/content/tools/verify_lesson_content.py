@@ -148,17 +148,35 @@ def tokenize(text: str) -> list[str]:
 
 
 def stem(tok: str) -> str:
+    """어형을 한 자리로 모은다. 사전이 없으므로 규칙만으로 하되, **양쪽을 같은 자리로**
+    모으는 것이 목적이지 올바른 원형을 복원하는 것이 목적이 아니다.
+
+    끝의 `e`를 떼는 마지막 줄이 그 차이를 만든다. `-es` 규칙은 두 글자를 자르는데,
+    `boxes`→`box`에는 맞지만 `medicines`→`medicin`이 되어 원형 `medicine`과 어긋난다.
+    실제로 그 어긋남 때문에 `medicine`·`glove`·`sample`·`tube`의 평범한 복수형이 전부
+    "문장에 없다"로 잡혔고, 작업자가 태그를 빼는 식으로 우회하게 만들었다 — 그러면
+    단어와 문장의 연결이 그만큼 약해진다. 양쪽에서 끝의 `e`를 떼면 둘 다 `medicin`이
+    되어 맞는다.
+
+    대가는 `car`와 `care`가 같은 자리로 모인다는 것이다. V2가 묻는 것은 "적어 둔 단어를
+    정말 썼는가"이므로, 드문 오탐은 지금의 체계적인 누락보다 훨씬 싸다.
+
+    `identify`와 `identification`은 여전히 어긋난다 — 명사화는 인정하지 않는다는 규칙이
+    그대로 지켜진다.
+    """
     t = tok.lower()
     if t.endswith("ies") and len(t) > 4:
-        return t[:-3] + "y"
-    if t.endswith("ing") and len(t) > 5:
-        return t[:-3]
-    if t.endswith("ed") and len(t) > 4:
-        return t[:-2]
-    if t.endswith("es") and len(t) > 4:
-        return t[:-2]
-    if t.endswith("s") and not t.endswith("ss") and len(t) > 3:
-        return t[:-1]
+        t = t[:-3] + "y"
+    elif t.endswith("ing") and len(t) > 5:
+        t = t[:-3]
+    elif t.endswith("ed") and len(t) > 4:
+        t = t[:-2]
+    elif t.endswith("es") and len(t) > 4:
+        t = t[:-2]
+    elif t.endswith("s") and not t.endswith("ss") and len(t) > 3:
+        t = t[:-1]
+    if t.endswith("e") and len(t) > 3:
+        t = t[:-1]
     return t
 
 
@@ -414,6 +432,37 @@ def _good_sentences() -> str:
 """
 
 
+# V2 어형 판정 자체를 재는 표본. 규칙이 사전 없이 도는 이상, 어느 쪽으로 틀렸는지는
+# 이렇게 양방향으로 고정해 두어야 안다 — 한쪽만 재면 "전부 통과"로 만드는 규칙도 통과한다.
+_STEM_CASES = [
+    # 실제로 걸렸던 것들 — e로 끝나는 단어의 평범한 복수형.
+    ("I have your medicines ready.", "medicine", True),
+    ("Both samples are labeled.", "sample", True),
+    ("Put on clean gloves first.", "glove", True),
+    ("Check the tubes at the bedside.", "tube", True),
+    ("Two names must match.", "name", True),
+    # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
+    ("Do you have any allergies?", "allergy", True),
+    ("I am checking your wristband.", "check", True),
+    ("Let me check your wristband.", "wristband", True),
+    # 인정하지 않기로 한 것 — 명사화.
+    ("We need identification first.", "identify", False),
+    # 아예 없는 것.
+    ("The doctor is here.", "wristband", False),
+]
+
+
+def run_stem_selftest() -> int:
+    bad = 0
+    for sent, word, want in _STEM_CASES:
+        got = word_appears(sent, word)
+        if got != want:
+            bad += 1
+            print(f"[FAIL] word_appears({word!r}, {sent!r}) = {got}, want {want}")
+    print(f"[{'PASS' if bad == 0 else 'FAIL'}] V2 어형 판정 {len(_STEM_CASES)}건")
+    return bad
+
+
 def run_selftest() -> int:
     cases: list[tuple[str, str, str, str, bool]] = []
     # (name, lex_yaml, seeds_yaml, expected_rule, is_warning)
@@ -544,6 +593,7 @@ def run_selftest() -> int:
 
     ok = True
     print("=== verify_lesson_content.py selftest ===")
+    stem_bad = run_stem_selftest()
     for name, lex_yaml, seeds_yaml, want_rule, is_warning in cases:
         lexicon = parse_lexicon(lex_yaml)
         seeds = parse_topics(seeds_yaml)
@@ -563,6 +613,7 @@ def run_selftest() -> int:
             print("         violations:", [str(v) for v in violations])
             print("         warnings:  ", [str(v) for v in warnings])
     print()
+    ok = ok and stem_bad == 0
     print("ALL PASS" if ok else "SOME FAILED")
     return 0 if ok else 1
 
