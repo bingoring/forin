@@ -22,8 +22,27 @@ build-spec-index.md §2·§2-1·§2-2·§6, implementation-plan.md §B에 있다
     V6  goal이 시드 goals 범위 안이다
     V7  은행 단어가 어느 문장에도 안 쓰이면 경고 (오류 아님 — 은행이 부풀기만 하는 것을 막는다)
     V8  청크가 실제로 문장을 쪼갠다 (조립 문제에 풀 것이 있도록)
+    V9  청크가 구를 가로질러 자르지 않는다 (의미로 순서를 정할 수 있도록)
 
-V1~V6·V8은 오류(비정상 종료 코드), V7은 경고(항상 종료 코드에 영향 없음)다.
+V1~V6·V8·V9는 오류(비정상 종료 코드), V7은 경고(항상 종료 코드에 영향 없음)다.
+
+## V9 — 왜 V8만으로도 부족한가
+
+V8은 조각의 **개수**를 센다. 그래서 문장을 기계적으로 n등분해도 통과한다. 실제로 그런 결과가
+나왔다.
+
+    ['On a scale of', 'one to ten, how', 'bad is the', 'pain right now', '?']
+    ['Your heart rate is', 'a bit fast, so', "we'll keep a close", 'eye on you', '.']
+
+`bad is the`도 `we'll keep a close`도 구가 아니다. 조각이 의미 단위가 아니면 학습자는 뜻으로
+순서를 정할 수 없고 **위치를 외워야** 한다 — 배우는 것이 달라진다.
+
+의미 단위인지를 기계가 온전히 판정할 수는 없다. 그래서 **절대 그럴 리 없는 경우만** 잡는다:
+조각이 관사(`the`·`a`·`an`)나 `of`로 끝나면 그 조각은 다음 말과 떨어질 수 없다. 이 규칙은
+오탐이 거의 없고(손으로 쪼갠 주제 여섯 개에서 한 건도 걸리지 않았다) 기계적 n등분은 대부분
+걸린다.
+
+나머지는 규칙으로 닿지 않는다. 지시서가 "구 경계에서 쪼개라"고 말하고 사람이 표본을 본다.
 
 ## V8 — 왜 V5만으로는 부족한가
 
@@ -305,6 +324,27 @@ def chunks_join(chunks: list[str]) -> str:
     return "".join(out)
 
 
+# V9 — 이것으로 끝나는 조각은 다음 말과 떨어질 수 없다.
+DANGLING_TAIL = {"the", "a", "an", "of"}
+
+
+def dangling_chunks(chunks: list[str]) -> list[str]:
+    """구를 가로질러 잘린 것이 분명한 조각들.
+
+    **뒤에 실질 내용이 있을 때만** 매달린 것이다. 문장 끝의 전치사가 자기 조각인 경우
+    (`['that you know', 'of', '?']`)는 뒤에 구두점밖에 없으므로 잘린 것이 아니다 —
+    "that you know of"는 온전한 영어다."""
+    out = []
+    for i, c in enumerate(chunks):
+        rest = "".join(chunks[i + 1 :])
+        if not rest.strip(" " + "".join(SENTENCE_PUNCT_START)):
+            continue  # 뒤가 구두점뿐이다
+        toks = c.strip().rstrip(",;:").split()
+        if toks and toks[-1].lower() in DANGLING_TAIL:
+            out.append(c)
+    return out
+
+
 def meaningful_chunks(chunks: list[str]) -> int:
     """구두점만으로 이루어진 조각은 쪼갠 것이 아니므로 세지 않는다."""
     return sum(1 for c in chunks if c.strip(" " + "".join(SENTENCE_PUNCT_START)))
@@ -417,6 +457,16 @@ def verify_dept(
                         dept, theme, title, "V8",
                         f"sentence[{i}] has {got} meaningful chunk(s), want >= {want} "
                         f"for a {len(en.split())}-word sentence: {chunks!r}",
+                    )
+                )
+
+            # V9 — 구를 가로질러 자르지 않았는가.
+            dangling = dangling_chunks(chunks)
+            if dangling:
+                violations.append(
+                    Violation(
+                        dept, theme, title, "V9",
+                        f"sentence[{i}] chunk(s) end mid-phrase {dangling!r}: {chunks!r}",
                     )
                 )
 
@@ -723,6 +773,18 @@ def run_selftest() -> int:
       goal: 1
 """ + _good_sentences().split("  sentences:\n", 1)[1]
     cases.append(("V8 (one chunk, nothing to assemble)", _LEX_BASE, _seed_with_sentences(v8), "V8", False))
+
+    # V9 — 조각 수는 넉넉한데 구를 가로질러 잘렸다. 문장을 기계적으로 n등분하면 이렇게 된다.
+    # 실제로 그런 결과가 나왔다: ['On a scale of', 'one to ten, how', 'bad is the', ...].
+    v9 = """
+  sentences:
+    - en: "Let me check the wristband now."
+      ko: "지금 손목밴드를 확인할게요."
+      chunks: ["Let me check the", "wristband", "now", "."]
+      words: [w-check, w-wristband]
+      goal: 1
+""" + _good_sentences().split("  sentences:\n", 1)[1]
+    cases.append(("V9 (chunk cut mid-phrase)", _LEX_BASE, _seed_with_sentences(v9), "V9", False))
 
     ok = True
     print("=== verify_lesson_content.py selftest ===")
