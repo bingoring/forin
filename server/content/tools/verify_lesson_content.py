@@ -235,11 +235,17 @@ def stem(tok: str) -> str:
 
     ⑦ 부사 `-ly`와 형용사 `-y`도 마지막에 뗀다(`seriously`→`serious`, `sweaty`→`sweat`).
        `family`→`fami`처럼 어미가 아닌 자리도 떼지만, 양쪽에 똑같이 적용되므로 맞는다.
-    ⑥ **비교급은 다루지 않는다.** `-er`은 `number`를 `numb`(저리다)로 만들고, `-ier`은
+    ⑥ **비교급도 최상급도 다루지 않는다.** `-er`은 `number`를 `numb`(저리다)로 만들고, `-ier`은
        `identifier`(신원 확인 항목)를 `identify`로 만들어 `identifiers`와 어긋나게 한다.
        둘 다 임상에서 흔해 오탐의 값이 비싸다. 실제로 `-ier`을 넣었다가 이미 만든 주제의
        "I always confirm two identifiers for every patient."가 깨졌다. 얻는 것은
        `easy`/`easier` 한 사례이고 잃는 것은 만들어 둔 콘텐츠라, 넣지 않는다.
+
+       최상급 `-est`도 한때 넣었다가 뺐다. "떼고 남는 것이 세 글자는 되어야 한다"는 조건이
+       `test`·`chest`·`rest`는 지켰지만 더 긴 낱말은 못 지켰다 — `arrest`가 `ar`이 되어
+       `arrested`(→`arrest`)와 어긋났고, `suggest`·`protest`·`request`도 같이 뭉개졌다.
+       `arrest`는 심정지 주제의 중심 낱말이다. 얻는 것은 `safest`·`latest` 몇 사례이고
+       잃는 것은 이 분야의 흔한 낱말들이라, 비교급과 같은 결론을 낸다.
     ⓪ 소유격 `'s`를 먼저 뗀다(`doctor's`→`doctor`). 토크나이저가 어퍼스트로피를 붙여
        한 토큰으로 잡기 때문이다.
     ① 불규칙 동사(`gave`→`give`)는 표로 본다.
@@ -264,12 +270,6 @@ def stem(tok: str) -> str:
             break
     if t in IRREGULAR:
         t = IRREGULAR[t]
-    elif t.endswith("est") and len(t) - 3 >= 3:
-        # 최상급 `safest`→`safe`. 비교급과 달리 안전하게 넣을 수 있는 것은, 떼고 남는 것이
-        # 세 글자는 되어야 한다는 조건이 `test`·`chest`·`rest`·`best`·`west`를 전부
-        # 막아 주기 때문이다 — 전부 이 콘텐츠에서 흔한 말이라 깨지면 값이 비싸다.
-        # (`request`→`requ`처럼 어미가 아닌 자리도 떼지만 양쪽에 똑같이 적용되므로 맞는다.)
-        t = t[:-3]
     elif t.endswith("ies") and len(t) > 4:
         t = t[:-3] + "y"
     elif t.endswith("ied") and len(t) > 4:
@@ -292,7 +292,10 @@ def stem(tok: str) -> str:
     # 어느 쪽이 원형인지 따지지 않고 둘 다에 똑같이 적용한다.
     if t.endswith("ly") and len(t) > 3:
         t = t[:-2]                      # seriously→serious, safely→safe
-    if t.endswith("e") and len(t) > 2:
+    while t.endswith("e") and len(t) > 2:
+        # 남김없이 떼는 것은 `agree` 때문이다. `agrees`는 `-es`로 두 글자가 잘려 `agre`가
+        # 되고 거기서 `e` 하나를 더 떼 `agr`이 되는데, 원형 `agree`는 한 번만 떼면 `agre`라
+        # 어긋났다. 남김없이 떼면 둘 다 `agr`이다.
         # 길이 조건이 `> 2`인 것은 `use`(세 글자) 때문이다 — `> 3`였을 때 `used`(→`us`)와
         # 어긋났다.
         t = t[:-1]                      # medicine→medicin (⑤)
@@ -646,12 +649,11 @@ _STEM_CASES = [
     ("We can move you safely now.", "safe", True),
     ("Have you used cocaine today?", "use", True),
     ("Her family is waiting outside.", "family", True),
-    # ⑪ 최상급 — 떼고 남는 것이 세 글자는 되어야 한다는 조건이 흔한 낱말을 지킨다.
-    ("This helps us choose the safest treatment for your heart.", "safe", True),
-    ("This is the latest reading.", "late", True),
-    ("Where is the chest pain?", "chest", True),
-    ("We will run a blood test.", "test", True),
-    ("Try to get some rest.", "rest", True),
+    # ⑪ 최상급을 넣지 않은 이유 — arrest가 뭉개진다. 이 둘이 그 판단을 지킨다.
+    ("He re-arrested — restart compressions immediately.", "arrest", True),
+    ("We need to find why he keeps re-arresting.", "arrest", True),
+    # ⑫ 끝의 e는 남김없이 뗀다
+    ("The team agrees it's time to focus on his comfort.", "agree", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
@@ -669,7 +671,10 @@ _STEM_CASES = [
 # 망가지면 매칭은 여전히 맞아서, 규칙이 낱말을 통째로 뭉개도 통과한다. 이 콘텐츠에서 흔한
 # 낱말이 제 모습으로 남는지는 여기서 잰다.
 _STEM_VALUE_CASES = [
-    ("chest", "chest"),   # 최상급 규칙이 `ch`로 뭉개면 안 된다
+    ("chest", "chest"),   # 한때 최상급 규칙이 `ch`로 뭉갰다
+    ("arrest", "arrest"),  # 같은 규칙이 `ar`로 뭉갰다 — 심정지 주제의 중심 낱말이다
+    ("request", "request"),
+    ("suggest", "suggest"),
     ("test", "test"),
     ("rest", "rest"),
     ("best", "best"),
