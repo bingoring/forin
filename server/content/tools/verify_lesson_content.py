@@ -147,36 +147,83 @@ def tokenize(text: str) -> list[str]:
     return TOKEN_RE.findall((text or "").lower())
 
 
+# 불규칙 동사 — 규칙으로는 닿지 않는다. 이 자리에서 다루는 어휘는 임상 회화라 범위가
+# 좁으므로, 실제로 부딪힌 것부터 적어 둔 작은 표로 충분하다. 표에 없어서 어긋나면 V2가
+# 그 사례를 정확히 짚어 주므로 그때 한 줄 더하면 된다.
+IRREGULAR = {
+    "gave": "give", "given": "give",
+    "took": "take", "taken": "take",
+    "went": "go", "gone": "go",
+    "came": "come",
+    "saw": "see", "seen": "see",
+    "got": "get", "gotten": "get",
+    "told": "tell",
+    "felt": "feel",
+    "kept": "keep",
+    "left": "leave",
+    "brought": "bring",
+    "held": "hold",
+    "found": "find",
+    "said": "say",
+    "made": "make",
+    "put": "put", "let": "let", "set": "set", "hurt": "hurt", "cut": "cut",
+    "ran": "run", "began": "begin", "broke": "break", "broken": "break",
+    "fell": "fall", "fallen": "fall",
+    "lay": "lie", "lain": "lie",
+    "woke": "wake", "woken": "wake",
+    "wore": "wear", "worn": "wear",
+}
+
+# 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
+NOT_PLURAL_TAIL = ("ss", "us", "is", "as")
+
+VOWELS = "aeiou"
+
+
 def stem(tok: str) -> str:
     """어형을 한 자리로 모은다. 사전이 없으므로 규칙만으로 하되, **양쪽을 같은 자리로**
     모으는 것이 목적이지 올바른 원형을 복원하는 것이 목적이 아니다.
 
-    끝의 `e`를 떼는 마지막 줄이 그 차이를 만든다. `-es` 규칙은 두 글자를 자르는데,
-    `boxes`→`box`에는 맞지만 `medicines`→`medicin`이 되어 원형 `medicine`과 어긋난다.
-    실제로 그 어긋남 때문에 `medicine`·`glove`·`sample`·`tube`의 평범한 복수형이 전부
-    "문장에 없다"로 잡혔고, 작업자가 태그를 빼는 식으로 우회하게 만들었다 — 그러면
-    단어와 문장의 연결이 그만큼 약해진다. 양쪽에서 끝의 `e`를 떼면 둘 다 `medicin`이
-    되어 맞는다.
+    다섯 가지를 본다. 전부 실제로 콘텐츠를 만들다 부딪힌 것들이다.
 
-    대가는 `car`와 `care`가 같은 자리로 모인다는 것이다. V2가 묻는 것은 "적어 둔 단어를
-    정말 썼는가"이므로, 드문 오탐은 지금의 체계적인 누락보다 훨씬 싸다.
+    ① 불규칙 동사(`gave`→`give`)는 표로 본다.
+    ② `-ied`는 `y`로 되돌린다(`tried`→`try`). 일반 `-ed` 규칙이 `tri`를 만들어 어긋났다.
+    ③ `-ing`·`-ed`를 뗀 뒤 자음이 겹쳐 있으면 하나를 지운다(`dropping`→`dropp`→`drop`).
+    ④ 끝의 `s`는 `ss`·`us`·`is`·`as`로 끝나면 떼지 않는다. `focus`가 `focu`가 되어
+       `focused`(→`focus`)와 어긋났다.
+    ⑤ 마지막에 끝의 `e`를 뗀다. `-es` 규칙이 두 글자를 자르는 탓에 `medicines`→`medicin`이
+       원형 `medicine`과 어긋나던 것을 양쪽에서 맞춘다.
 
-    `identify`와 `identification`은 여전히 어긋난다 — 명사화는 인정하지 않는다는 규칙이
-    그대로 지켜진다.
+    ⑤의 대가로 `car`와 `care`가 한자리에 모인다. V2가 묻는 것은 "적어 둔 단어를 정말
+    썼는가"이므로, 드문 오탐은 체계적인 누락보다 훨씬 싸다.
+
+    `identify`와 `identification`은 여전히 어긋난다 — 명사화는 인정하지 않는다.
     """
     t = tok.lower()
-    if t.endswith("ies") and len(t) > 4:
+    if t in IRREGULAR:
+        t = IRREGULAR[t]
+    elif t.endswith("ies") and len(t) > 4:
+        t = t[:-3] + "y"
+    elif t.endswith("ied") and len(t) > 4:
         t = t[:-3] + "y"
     elif t.endswith("ing") and len(t) > 5:
-        t = t[:-3]
+        t = _undouble(t[:-3])
     elif t.endswith("ed") and len(t) > 4:
-        t = t[:-2]
+        t = _undouble(t[:-2])
     elif t.endswith("es") and len(t) > 4:
         t = t[:-2]
-    elif t.endswith("s") and not t.endswith("ss") and len(t) > 3:
+    elif t.endswith("s") and not t.endswith(NOT_PLURAL_TAIL) and len(t) > 3:
         t = t[:-1]
     if t.endswith("e") and len(t) > 3:
         t = t[:-1]
+    return t
+
+
+def _undouble(t: str) -> str:
+    """`dropp` → `drop`. 짧은 낱말에서 -ing/-ed 앞의 자음이 겹친 것을 되돌린다.
+    `fall`·`still`처럼 원래 겹친 낱말은 이 함수를 거치지 않는다 — 어미를 뗀 뒤에만 부른다."""
+    if len(t) > 2 and t[-1] == t[-2] and t[-1] not in VOWELS and t[-1] not in "lsz":
+        return t[:-1]
     return t
 
 
@@ -435,12 +482,29 @@ def _good_sentences() -> str:
 # V2 어형 판정 자체를 재는 표본. 규칙이 사전 없이 도는 이상, 어느 쪽으로 틀렸는지는
 # 이렇게 양방향으로 고정해 두어야 안다 — 한쪽만 재면 "전부 통과"로 만드는 규칙도 통과한다.
 _STEM_CASES = [
-    # 실제로 걸렸던 것들 — e로 끝나는 단어의 평범한 복수형.
+    # 실제로 걸렸던 것들 — 전부 ER 콘텐츠를 만들다 부딪힌 사례다.
+    # ① e로 끝나는 단어의 평범한 복수형
     ("I have your medicines ready.", "medicine", True),
     ("Both samples are labeled.", "sample", True),
     ("Put on clean gloves first.", "glove", True),
     ("Check the tubes at the bedside.", "tube", True),
     ("Two names must match.", "name", True),
+    # ② -ing/-ed 앞 자음 겹침
+    ("Her pressure is dropping.", "drop", True),
+    ("We stopped the drip.", "stop", True),
+    # ③ 불규칙 동사
+    ("I gave him the medicine.", "give", True),
+    ("The nurse took him to CT.", "take", True),
+    ("He felt dizzy after standing.", "feel", True),
+    ("I told the doctor already.", "tell", True),
+    # ④ -ied
+    ("We tried a lower dose.", "try", True),
+    # ⑤ 복수형이 아닌데 s로 끝나는 낱말
+    ("Stay focused on his breathing.", "focus", True),
+    # 원래 겹친 낱말은 겹침 되돌리기에 걸리면 안 된다.
+    ("He had a fall last night.", "fall", True),
+    ("Please stay still.", "still", True),
+    ("The syringe is filled.", "fill", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
@@ -449,6 +513,8 @@ _STEM_CASES = [
     ("We need identification first.", "identify", False),
     # 아예 없는 것.
     ("The doctor is here.", "wristband", False),
+    # s를 떼면 안 되는 낱말이 엉뚱한 것과 맞으면 안 된다.
+    ("His status is stable.", "stat", False),
 ]
 
 
