@@ -221,6 +221,51 @@ IRREGULAR = {
     "felt": "feel",
 }
 
+# 비교급·최상급 — **규칙이 아니라 표로** 본다.
+#
+# 규칙(`-er`·`-est`)은 두 번 넣었다가 두 번 뺐다. `-er`은 `number`를 `numb`로, `-ier`은
+# `identifier`를 `identify`로, `-est`는 `arrest`를 `ar`로 만들었다. 전부 이 분야에서 흔한
+# 낱말이라 값이 비쌌다.
+#
+# 표에는 그런 위험이 없다. `worse`가 `bad`로 모이는 것은 `number`와 아무 상관이 없다.
+# 불규칙 동사에 쓴 것과 같은 방법이고, 진작 이렇게 했어야 했다 — 한 주제에서만 다섯 개
+# (`worse`·`easier`·`lower`·`weaker`·`highest`)를 놓치고 있었다.
+COMPARATIVE = {
+    "worse": "bad", "worst": "bad",
+    "better": "good", "best": "good",
+    "more": "much", "most": "much",
+    "less": "little", "least": "little",
+    "lower": "low", "lowest": "low",
+    "higher": "high", "highest": "high",
+    "easier": "easy", "easiest": "easy",
+    "weaker": "weak", "weakest": "weak",
+    "stronger": "strong", "strongest": "strong",
+    "deeper": "deep", "deepest": "deep",
+    "quieter": "quiet", "quietest": "quiet",
+    "closer": "close", "closest": "close",
+    "larger": "large", "largest": "large",
+    "smaller": "small", "smallest": "small",
+    "faster": "fast", "fastest": "fast",
+    "slower": "slow", "slowest": "slow",
+    "safer": "safe", "safest": "safe",
+    "later": "late", "latest": "late",
+    "earlier": "early", "earliest": "early",
+    "longer": "long", "longest": "long",
+    "shorter": "short", "shortest": "short",
+    "harder": "hard", "hardest": "hard",
+    "softer": "soft", "softest": "soft",
+    # `warmer`(보온기)·`cooler`(혈액 운반 용기)는 병원에서 **명사**다. 표에 넣었더니
+    # 혈액은행 상황의 "two more coolers on the way"가 깨졌다. 비교급으로 보지 않는다.
+    "warmest": "warm",
+    "coolest": "cool",
+    "tighter": "tight", "tightest": "tight",
+    "nearer": "near", "nearest": "near",
+    "newer": "new", "newest": "new",
+    "older": "old", "oldest": "old",
+    "bigger": "big", "biggest": "big",
+    "calmer": "calm", "calmest": "calm",
+}
+
 # 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
 NOT_PLURAL_TAIL = ("ss", "us", "is", "as")
 
@@ -235,7 +280,8 @@ def stem(tok: str) -> str:
 
     ⑦ 부사 `-ly`와 형용사 `-y`도 마지막에 뗀다(`seriously`→`serious`, `sweaty`→`sweat`).
        `family`→`fami`처럼 어미가 아닌 자리도 떼지만, 양쪽에 똑같이 적용되므로 맞는다.
-    ⑥ **비교급도 최상급도 다루지 않는다.** `-er`은 `number`를 `numb`(저리다)로 만들고, `-ier`은
+    ⑥ **비교급·최상급은 규칙이 아니라 표로 본다**(`COMPARATIVE`). 규칙을 두 번 넣었다가
+       두 번 뺀 끝에 내린 결론이다. 아래 설명은 그 규칙들을 왜 넣지 않는지에 대한 것이다. `-er`은 `number`를 `numb`(저리다)로 만들고, `-ier`은
        `identifier`(신원 확인 항목)를 `identify`로 만들어 `identifiers`와 어긋나게 한다.
        둘 다 임상에서 흔해 오탐의 값이 비싸다. 실제로 `-ier`을 넣었다가 이미 만든 주제의
        "I always confirm two identifiers for every patient."가 깨졌다. 얻는 것은
@@ -270,6 +316,8 @@ def stem(tok: str) -> str:
             break
     if t in IRREGULAR:
         t = IRREGULAR[t]
+    elif t in COMPARATIVE:
+        t = COMPARATIVE[t]
     elif t.endswith("ies") and len(t) > 4:
         t = t[:-3] + "y"
     elif t.endswith("ied") and len(t) > 4:
@@ -659,6 +707,16 @@ _STEM_CASES = [
     ("The team agrees it's time to focus on his comfort.", "agree", True),
     # ⑬ 세 글자 약어의 복수형
     ("Two large-bore IVs and get O-negative blood up here.", "IV", True),
+    # ⑭ 비교급·최상급 — 규칙이 아니라 표로 본다(COMPARATIVE).
+    ("Is it worse when you lie down?", "bad", True),
+    ("This will help you breathe easier.", "easy", True),
+    ("Your oxygen is lower than we'd like.", "low", True),
+    ("Has your cough gotten weaker?", "weak", True),
+    ("We want a safe number, not the highest number.", "high", True),
+    ("Once you feel better, we will move you.", "good", True),
+    # 병원에서 명사로 쓰이는 것은 표에 넣지 않는다.
+    ("Blood bank has two more coolers on the way.", "cooler", True),
+    ("The baby is under a warmer.", "warmer", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
@@ -682,7 +740,6 @@ _STEM_VALUE_CASES = [
     ("suggest", "suggest"),
     ("test", "test"),
     ("rest", "rest"),
-    ("best", "best"),
     ("heart", "heart"),
     ("pain", "pain"),
     ("blood", "blood"),
