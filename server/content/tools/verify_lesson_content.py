@@ -219,6 +219,12 @@ IRREGULAR = {
     "bit": "bite", "bitten": "bite",
     "chose": "choose", "chosen": "choose",
     "felt": "feel",
+    # 다섯 글자 `-ing`는 규칙이 못 잡는다 — `-ing`을 떼는 조건이 다섯 글자 초과이기
+    # 때문이다. 그 조건을 낮추면 `thing`이 `th`가 되고 `bring`이 `br`이 되어 복수형·
+    # 3인칭형과 어긋난다(둘 다 이 콘텐츠에서 흔하다). 그래서 여기에 적는다.
+    # `lying`·`dying`·`tying`은 철자까지 바뀌므로 조건을 낮춰도 어차피 안 된다.
+    "being": "be", "going": "go", "doing": "do", "using": "use",
+    "lying": "lie", "dying": "die", "tying": "tie",
 }
 
 # 비교급·최상급 — **규칙이 아니라 표로** 본다.
@@ -717,6 +723,12 @@ _STEM_CASES = [
     # 병원에서 명사로 쓰이는 것은 표에 넣지 않는다.
     ("Blood bank has two more coolers on the way.", "cooler", True),
     ("The baby is under a warmer.", "warmer", True),
+    # ⑮ 다섯 글자 -ing — 규칙이 못 잡아 표에 적었다. thing·bring이 함께 지켜져야 한다.
+    ("Is it worse when you lie flat or at night?", "lying", True),
+    ("He is lying on his left side.", "lie", True),
+    ("We are using the smaller mask.", "use", True),
+    ("Is the cough bringing anything up?", "bring", True),
+    ("Two more things to check.", "thing", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
