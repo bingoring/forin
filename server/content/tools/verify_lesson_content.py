@@ -233,6 +233,8 @@ def stem(tok: str) -> str:
 
     다섯 가지를 본다. 전부 실제로 콘텐츠를 만들다 부딪힌 것들이다.
 
+    ⑦ 부사 `-ly`와 형용사 `-y`도 마지막에 뗀다(`seriously`→`serious`, `sweaty`→`sweat`).
+       `family`→`fami`처럼 어미가 아닌 자리도 떼지만, 양쪽에 똑같이 적용되므로 맞는다.
     ⑥ **비교급은 다루지 않는다.** `-er`은 `number`를 `numb`(저리다)로 만들고, `-ier`은
        `identifier`(신원 확인 항목)를 `identify`로 만들어 `identifiers`와 어긋나게 한다.
        둘 다 임상에서 흔해 오탐의 값이 비싸다. 실제로 `-ier`을 넣었다가 이미 만든 주제의
@@ -268,7 +270,9 @@ def stem(tok: str) -> str:
         t = t[:-3] + "y"
     elif t.endswith("ing") and len(t) > 5:
         t = t[:-3]
-    elif t.endswith("ed") and not t.endswith("eed") and len(t) > 4:
+    elif t.endswith("ed") and not t.endswith("eed") and len(t) >= 4:
+        # 길이 조건이 `>= 4`인 것은 `used`(네 글자) 때문이다 — `> 4`였을 때 `use`와
+        # 어긋났다.
         # `-eed`는 자르지 않는다. `bleed`·`feed`·`need`·`speed`는 어미가 아니라 낱말
         # 자체이고, 자르면 `bleed`가 `ble`이 되어 `bleeding`(→`bleed`)과 어긋난다.
         # 전부 임상에서 흔한 말이다. (`agreed`처럼 어간이 e로 끝나 d만 붙는 경우는
@@ -278,8 +282,16 @@ def stem(tok: str) -> str:
         t = t[:-2]
     elif t.endswith("s") and not t.endswith(NOT_PLURAL_TAIL) and len(t) > 3:
         t = t[:-1]
-    if t.endswith("e") and len(t) > 3:
-        t = t[:-1]
+    # 아래 셋은 어미가 아니라 **양쪽을 같은 자리로 모으는** 마무리다. 원형 복원이 아니므로
+    # 어느 쪽이 원형인지 따지지 않고 둘 다에 똑같이 적용한다.
+    if t.endswith("ly") and len(t) > 3:
+        t = t[:-2]                      # seriously→serious, safely→safe
+    if t.endswith("e") and len(t) > 2:
+        # 길이 조건이 `> 2`인 것은 `use`(세 글자) 때문이다 — `> 3`였을 때 `used`(→`us`)와
+        # 어긋났다.
+        t = t[:-1]                      # medicine→medicin (⑤)
+    if t.endswith("y") and len(t) > 3:
+        t = t[:-1]                      # sweaty→sweat, allergy→allerg
     return _undouble(t)
 
 
@@ -622,6 +634,12 @@ _STEM_CASES = [
     ("What is the room number?", "numb", False),
     ("Is your arm numb?", "numb", True),
     ("I always confirm two identifiers for every patient.", "identifier", True),
+    # ⑩ -ly 부사 · -y 형용사 · 네 글자 과거형 (흉통 주제에서 부딪힌 것들)
+    ("She looks pale and sweaty.", "sweat", True),
+    ("Take this seriously, please.", "serious", True),
+    ("We can move you safely now.", "safe", True),
+    ("Have you used cocaine today?", "use", True),
+    ("Her family is waiting outside.", "family", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
