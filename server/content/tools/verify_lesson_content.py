@@ -172,6 +172,34 @@ IRREGULAR = {
     "lay": "lie", "lain": "lie",
     "woke": "wake", "woken": "wake",
     "wore": "wear", "worn": "wear",
+    # 아래는 ER 콘텐츠를 만들며 실제로 부딪혔거나, 임상 회화에서 흔해 미리 채운 것들.
+    "understood": "understand",
+    "thought": "think",
+    "spoke": "speak", "spoken": "speak",
+    "wrote": "write", "written": "write",
+    "drank": "drink", "drunk": "drink",
+    "ate": "eat", "eaten": "eat",
+    "slept": "sleep",
+    "sat": "sit",
+    "stood": "stand",
+    "lost": "lose",
+    "sent": "send",
+    "spent": "spend",
+    "meant": "mean",
+    "built": "build",
+    "caught": "catch",
+    "taught": "teach",
+    "bought": "buy",
+    "fought": "fight",
+    "heard": "hear",
+    "led": "lead",
+    "bled": "bleed",
+    "fed": "feed",
+    "met": "meet",
+    "swollen": "swell", "swelled": "swell",
+    "bit": "bite", "bitten": "bite",
+    "chose": "choose", "chosen": "choose",
+    "felt": "feel",
 }
 
 # 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
@@ -186,6 +214,11 @@ def stem(tok: str) -> str:
 
     다섯 가지를 본다. 전부 실제로 콘텐츠를 만들다 부딪힌 것들이다.
 
+    ⑥ **비교급은 다루지 않는다.** `-er`은 `number`를 `numb`(저리다)로 만들고, `-ier`은
+       `identifier`(신원 확인 항목)를 `identify`로 만들어 `identifiers`와 어긋나게 한다.
+       둘 다 임상에서 흔해 오탐의 값이 비싸다. 실제로 `-ier`을 넣었다가 이미 만든 주제의
+       "I always confirm two identifiers for every patient."가 깨졌다. 얻는 것은
+       `easy`/`easier` 한 사례이고 잃는 것은 만들어 둔 콘텐츠라, 넣지 않는다.
     ⓪ 소유격 `'s`를 먼저 뗀다(`doctor's`→`doctor`). 토크나이저가 어퍼스트로피를 붙여
        한 토큰으로 잡기 때문이다.
     ① 불규칙 동사(`gave`→`give`)는 표로 본다.
@@ -216,7 +249,11 @@ def stem(tok: str) -> str:
         t = t[:-3] + "y"
     elif t.endswith("ing") and len(t) > 5:
         t = t[:-3]
-    elif t.endswith("ed") and len(t) > 4:
+    elif t.endswith("ed") and not t.endswith("eed") and len(t) > 4:
+        # `-eed`는 자르지 않는다. `bleed`·`feed`·`need`·`speed`는 어미가 아니라 낱말
+        # 자체이고, 자르면 `bleed`가 `ble`이 되어 `bleeding`(→`bleed`)과 어긋난다.
+        # 전부 임상에서 흔한 말이다. (`agreed`처럼 어간이 e로 끝나 d만 붙는 경우는
+        # 이 예외에 걸려 `agree`와 어긋난다 — 이 분야에서 드물어 감수한다.)
         t = t[:-2]
     elif t.endswith("es") and len(t) > 4:
         t = t[:-2]
@@ -523,6 +560,18 @@ _STEM_CASES = [
     ("From nursing, her pain is controlled but mobility is poor.", "control", True),
     # ⑥ 소유격
     ("Please confirm the accepting doctor's name before transport.", "doctor", True),
+    # ⑦ 표에 넣은 불규칙 동사
+    ("Please tell me back what you understood.", "understand", True),
+    ("Have you thought about hurting yourself?", "think", True),
+    ("He bled through the dressing.", "bleed", True),
+    # ⑧ 원래 -eed로 끝나는 낱말은 어미로 보지 않는다
+    ("She is bleeding from the wound.", "bleed", True),
+    ("We are feeding him slowly.", "feed", True),
+    ("He needed two units.", "need", True),
+    # 비교급을 넣지 않은 이유 — 둘 다 오탐의 값이 비싸다.
+    ("What is the room number?", "numb", False),
+    ("Is your arm numb?", "numb", True),
+    ("I always confirm two identifiers for every patient.", "identifier", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
