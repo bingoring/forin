@@ -264,6 +264,12 @@ def stem(tok: str) -> str:
             break
     if t in IRREGULAR:
         t = IRREGULAR[t]
+    elif t.endswith("est") and len(t) - 3 >= 3:
+        # 최상급 `safest`→`safe`. 비교급과 달리 안전하게 넣을 수 있는 것은, 떼고 남는 것이
+        # 세 글자는 되어야 한다는 조건이 `test`·`chest`·`rest`·`best`·`west`를 전부
+        # 막아 주기 때문이다 — 전부 이 콘텐츠에서 흔한 말이라 깨지면 값이 비싸다.
+        # (`request`→`requ`처럼 어미가 아닌 자리도 떼지만 양쪽에 똑같이 적용되므로 맞는다.)
+        t = t[:-3]
     elif t.endswith("ies") and len(t) > 4:
         t = t[:-3] + "y"
     elif t.endswith("ied") and len(t) > 4:
@@ -640,6 +646,12 @@ _STEM_CASES = [
     ("We can move you safely now.", "safe", True),
     ("Have you used cocaine today?", "use", True),
     ("Her family is waiting outside.", "family", True),
+    # ⑪ 최상급 — 떼고 남는 것이 세 글자는 되어야 한다는 조건이 흔한 낱말을 지킨다.
+    ("This helps us choose the safest treatment for your heart.", "safe", True),
+    ("This is the latest reading.", "late", True),
+    ("Where is the chest pain?", "chest", True),
+    ("We will run a blood test.", "test", True),
+    ("Try to get some rest.", "rest", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
@@ -653,8 +665,27 @@ _STEM_CASES = [
 ]
 
 
+# 어간 값 자체를 재는 표본. `word_appears`만으로는 부족하다 — 원형과 활용형이 **똑같이**
+# 망가지면 매칭은 여전히 맞아서, 규칙이 낱말을 통째로 뭉개도 통과한다. 이 콘텐츠에서 흔한
+# 낱말이 제 모습으로 남는지는 여기서 잰다.
+_STEM_VALUE_CASES = [
+    ("chest", "chest"),   # 최상급 규칙이 `ch`로 뭉개면 안 된다
+    ("test", "test"),
+    ("rest", "rest"),
+    ("best", "best"),
+    ("heart", "heart"),
+    ("pain", "pain"),
+    ("blood", "blood"),
+]
+
+
 def run_stem_selftest() -> int:
     bad = 0
+    for tok, want in _STEM_VALUE_CASES:
+        got = stem(tok)
+        if got != want:
+            bad += 1
+            print(f"[FAIL] stem({tok!r}) = {got!r}, want {want!r}")
     for sent, word, want in _STEM_CASES:
         got = word_appears(sent, word)
         if got != want:
