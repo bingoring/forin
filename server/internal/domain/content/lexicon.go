@@ -108,3 +108,33 @@ func ValidateSentences(theme string, bank Lexicon, goalCount int, sentences []Se
 	}
 	return errs
 }
+
+// ValidateBundleLessons checks every scenario's sentences against the word bank of
+// the theme that scenario belongs to, plus each bank's own internal consistency.
+//
+// This is the same check gencontent runs over seeds, applied to what the SERVER is
+// about to serve. The two are not redundant: gencontent validates what it writes,
+// and this validates what got loaded — a hand-edit, a partial merge, or a file that
+// never made it through the generator all land here and nowhere else.
+//
+// A scenario with no sentences is silent, and so is one whose theme has no bank yet:
+// content lands department by department, and a department that has not had its turn
+// is not broken.
+func ValidateBundleLessons(b *Bundle) []error {
+	var errs []error
+	for _, bank := range b.Lexicons {
+		errs = append(errs, ValidateLexicon(bank)...)
+	}
+	for _, s := range b.Scenarios {
+		if len(s.Sentences) == 0 {
+			continue
+		}
+		bank, ok := FindLexiconTheme(b.Lexicons, s.Theme)
+		if !ok {
+			errs = append(errs, fmt.Errorf("scenario %s: has sentences but theme %q has no word bank", s.ID, s.Theme))
+			continue
+		}
+		errs = append(errs, ValidateSentences(s.Theme, bank, len(s.Goals), s.Sentences)...)
+	}
+	return errs
+}

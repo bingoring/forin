@@ -648,6 +648,13 @@ type Bundle struct {
 	Scenarios   []Scenario
 	Quizzes     []Quiz
 	Phrases     []Phrase
+	// Lexicons are the per-theme word banks STEP 1 is built from. They stay a bank
+	// rather than being copied onto every scenario: a theme's ~21 situations draw on
+	// the same vocabulary, so baking the words into each scenario would add ~24MB to
+	// a 40MB corpus to say the same thing twenty times. Held flat here because a
+	// theme key is unique across the whole catalogue — the per-department FILES are
+	// a filing convenience, not a namespace.
+	Lexicons []Lexicon
 }
 
 func set[T comparable](xs ...T) map[T]bool {

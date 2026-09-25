@@ -2,6 +2,7 @@ package contentfile
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -181,5 +182,93 @@ func TestEveryScenarioHasEnoughGoalsToBeMultiStep(t *testing.T) {
 		// A blank goal is skipped by the grader's evidence check, which shrinks the
 		// denominator and silently makes every other goal worth more.
 		t.Errorf("%d scenarios carry a blank goal: %v", len(blank), blank[:1])
+	}
+}
+
+// The runtime loads the word banks too, and refuses a corpus whose sentences point at
+// words that are not in them.
+//
+// gencontent checks the same thing when it WRITES the files. This checks what the
+// server is about to SERVE, which is a different copy: a hand-edit, a partial merge,
+// or a file that never went through the generator reaches here and nowhere else. The
+// cost of missing it is a lesson that opens with no words and no clue why — STEP 1 is
+// built by following those references backwards.
+func TestLoadValidatesLessonReferences(t *testing.T) {
+	dir := t.TempDir()
+	write := func(rel, body string) {
+		t.Helper()
+		p := filepath.Join(dir, rel)
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	write("manifest.yaml", "version: test\n")
+
+	const scenario = `- id: SCN-T-00001
+  theme: t-theme
+  title: t
+  goals: [a, b]
+  sentences:
+    - en: "Check the wristband."
+      ko: "손목 밴드를 확인하세요."
+      chunks: ["Check the", "wristband", "."]
+      words: [%s]
+      goal: 1
+`
+	const bank = `- theme: t-theme
+  words:
+    - id: w-wristband
+      en: wristband
+      ko: 손목 밴드
+`
+	write("nurse/lexicon/t.yaml", bank)
+
+	// Resolvable reference: loads.
+	write("nurse/scenarios/t.yaml", fmt.Sprintf(scenario, "w-wristband"))
+	b, err := Load(dir)
+	if err != nil {
+		t.Fatalf("a resolvable reference should load: %v", err)
+	}
+	if len(b.Lexicons) != 1 || len(b.Lexicons[0].Words) != 1 {
+		t.Fatalf("the bank itself should be loaded, got %+v", b.Lexicons)
+	}
+
+	// Dangling reference: refused, and the message names the id.
+	write("nurse/scenarios/t.yaml", fmt.Sprintf(scenario, "w-nope"))
+	if _, err := Load(dir); err == nil {
+		t.Fatal("a sentence pointing at a word outside its bank must not load")
+	} else if !strings.Contains(err.Error(), "w-nope") {
+		t.Errorf("the error should name the unresolved id, got %v", err)
+	}
+
+	// Sentences with no bank for their theme at all: also refused.
+	if err := os.Remove(filepath.Join(dir, "nurse/lexicon/t.yaml")); err != nil {
+		t.Fatal(err)
+	}
+	write("nurse/scenarios/t.yaml", fmt.Sprintf(scenario, "w-wristband"))
+	if _, err := Load(dir); err == nil {
+		t.Fatal("sentences whose theme has no bank must not load")
+	}
+}
+
+// A department that has not had its turn yet is not broken — content lands one
+// department at a time, and 20,056 seeds carry no sentences today.
+func TestLoadAcceptsContentWithNoLessonsYet(t *testing.T) {
+	dir := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(dir, "nurse", "scenarios"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(dir, "manifest.yaml"), []byte("version: test\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(dir, "nurse", "scenarios", "t.yaml"),
+		[]byte("- id: SCN-T-00001\n  theme: t-theme\n  title: t\n  goals: [a]\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Load(dir); err != nil {
+		t.Fatalf("no sentences anywhere should load fine: %v", err)
 	}
 }
