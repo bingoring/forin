@@ -218,6 +218,11 @@ IRREGULAR = {
     "swollen": "swell", "swelled": "swell",
     "bit": "bite", "bitten": "bite",
     "chose": "choose", "chosen": "choose",
+    "stung": "sting",
+    "been": "be", "was": "be", "were": "be", "am": "be", "are": "be", "is": "be",
+    "stuck": "stick",
+    "shook": "shake", "shaken": "shake",
+    "drove": "drive", "driven": "drive",
     "felt": "feel",
     # 다섯 글자 `-ing`는 규칙이 못 잡는다 — `-ing`을 떼는 조건이 다섯 글자 초과이기
     # 때문이다. 그 조건을 낮추면 `thing`이 `th`가 되고 `bring`이 `br`이 되어 복수형·
@@ -759,7 +764,7 @@ _STEM_CASES = [
     ("We are watching your drainage.", "drain", False),
     # ⑰ -as 복수형 — 짧은 낱말만 예외다.
     ("Your legs and back count as larger areas than your arms.", "area", True),
-    ("He was here earlier.", "was", True),
+    ("Have you ever been stung and reacted like this before?", "sting", True),
     ("She has two lines in.", "has", True),
     # thinner는 비교급 표에 넣지 않는다 — 이 콘텐츠에서 명사다(blood thinner).
     ("Which blood thinner do you take?", "blood thinner", True),
@@ -797,7 +802,6 @@ _STEM_VALUE_CASES = [
     ("blood", "blood"),
     ("gas", "gas"),        # 세 글자 -s 낱말이 복수형 규칙에 걸리면 안 된다
     ("his", "his"),
-    ("was", "was"),
 ]
 
 
