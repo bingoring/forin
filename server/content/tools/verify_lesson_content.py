@@ -143,6 +143,30 @@ def parse_lexicon(raw: str) -> dict[str, dict[str, dict]]:
     return out
 
 
+def parse_lexicon_raw(raw: str) -> dict[str, list[dict]]:
+    """theme -> 단어 목록. parse_lexicon과 달리 사전으로 접지 않는다.
+
+    {id: word} 사전을 만드는 순간 같은 id를 가진 두 항목은 하나로 접히고, 그
+    뒤로는 V1도 V7도 중복을 볼 수 없다. V10이 보는 것은 접히기 전의 목록이다.
+    """
+    data = yaml.safe_load(raw) or []
+    return {e.get("theme"): (e.get("words") or []) for e in data}
+
+
+def duplicate_word_ids(words: list[dict]) -> list[str]:
+    """한 은행 안에서 두 번 이상 나온 word id를 나온 순서대로 돌려준다."""
+    seen: set[str] = set()
+    dup: list[str] = []
+    for w in words:
+        wid = w.get("id")
+        if not wid:
+            continue
+        if wid in seen and wid not in dup:
+            dup.append(wid)
+        seen.add(wid)
+    return dup
+
+
 def parse_topics(raw: str) -> list[dict]:
     return yaml.safe_load(raw) or []
 
@@ -152,6 +176,13 @@ def load_lexicon(dept: str) -> dict[str, dict[str, dict]]:
     if not path.exists():
         return {}
     return parse_lexicon(path.read_text())
+
+
+def load_lexicon_raw(dept: str) -> dict[str, list[dict]]:
+    path = LEXICON_DIR / f"{dept}.yaml"
+    if not path.exists():
+        return {}
+    return parse_lexicon_raw(path.read_text())
 
 
 def load_topics(dept: str) -> list[dict]:
@@ -529,6 +560,7 @@ def verify_dept(
     lexicon: dict[str, dict[str, dict]],
     seeds: list[dict],
     theme_filter: str | None = None,
+    raw_banks: dict[str, list[dict]] | None = None,
 ) -> tuple[list[Violation], list[Violation], dict]:
     """한 부서의 (렉시콘, 시드 목록)을 검사한다.
 
@@ -537,6 +569,15 @@ def verify_dept(
     violations: list[Violation] = []
     used_words_by_theme: dict[str, set[str]] = collections.defaultdict(set)
     themes_seen: set[str] = set()
+
+    # V10 — 은행 안의 id 중복. 서버(gencontent)가 적재할 때 오류로 막는 조건이라,
+    # 여기서 통과시키면 파일을 합치는 순간에야 드러난다. raw_banks가 없으면(옛
+    # 호출부) 검사를 건너뛴다 — 사전으로 접힌 은행에서는 볼 수 없는 것이다.
+    for theme, words in (raw_banks or {}).items():
+        if theme_filter and theme != theme_filter:
+            continue
+        for wid in duplicate_word_ids(words):
+            violations.append(Violation(dept, theme, "-", "V10", f"bank has duplicate word id {wid!r}"))
 
     n_seeds = n_with_sentences = 0
 
@@ -1010,13 +1051,21 @@ def run_selftest() -> int:
 """ + _good_sentences().split("  sentences:\n", 1)[1]
     cases.append(("V9 (chunk cut mid-phrase)", _LEX_BASE, _seed_with_sentences(v9), "V9", False))
 
+    # V10 — 은행에 같은 id가 두 번 있다. 문장 쪽은 GOOD과 한 글자도 다르지 않다.
+    # 실제로 er-poisoning 은행이 이 모양이었고(w-oxygen 두 번), 35개 주제를 전부
+    # "통과"로 넘긴 뒤 gencontent가 적재하는 자리에서야 드러났다.
+    lex_dup = _LEX_BASE.rstrip("\n") + "\n    - {id: w-check, en: check, ipa: /x/, ko: 확인, icon: board, example: e2}\n"
+    cases.append(("V10 (duplicate bank word id)", lex_dup, _seed_with_sentences(_good_sentences()), "V10", False))
+
     ok = True
     print("=== verify_lesson_content.py selftest ===")
     stem_bad = run_stem_selftest()
     for name, lex_yaml, seeds_yaml, want_rule, is_warning in cases:
         lexicon = parse_lexicon(lex_yaml)
         seeds = parse_topics(seeds_yaml)
-        violations, warnings, _ = verify_dept("selftest", lexicon, seeds, theme_filter=None)
+        violations, warnings, _ = verify_dept(
+            "selftest", lexicon, seeds, theme_filter=None, raw_banks=parse_lexicon_raw(lex_yaml)
+        )
         pool = warnings if is_warning else violations
         if want_rule == "":
             hit = len(violations) == 0
@@ -1057,8 +1106,9 @@ def main() -> None:
     total_warnings = 0
     for dept in depts:
         lexicon = load_lexicon(dept)
+        raw_banks = load_lexicon_raw(dept)
         seeds = load_topics(dept)
-        violations, warnings, coverage = verify_dept(dept, lexicon, seeds, args.theme)
+        violations, warnings, coverage = verify_dept(dept, lexicon, seeds, args.theme, raw_banks=raw_banks)
         total_violations += len(violations)
         total_warnings += len(warnings)
 
