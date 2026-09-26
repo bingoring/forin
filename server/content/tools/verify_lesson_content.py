@@ -218,6 +218,12 @@ IRREGULAR = {
     "swollen": "swell", "swelled": "swell",
     "bit": "bite", "bitten": "bite",
     "chose": "choose", "chosen": "choose",
+    "drew": "draw", "drawn": "draw",
+    "knew": "know", "known": "know",
+    "showed": "show", "shown": "show",
+    "grew": "grow", "grown": "grow",
+    "threw": "throw", "thrown": "throw",
+    # `torn`/`tore`는 넣지 않는다 — `tear`가 이 분야에서 눈물도 뜻한다.
     "stung": "sting",
     "had": "have", "has": "have",
     "been": "be", "was": "be", "were": "be", "am": "be", "are": "be", "is": "be",
@@ -744,6 +750,8 @@ _STEM_CASES = [
     # ⑲ -ing 명사의 복수형 — elif 사슬이 한 갈래만 타므로 마지막에 한 번 더 뗀다.
     ("Have you noticed feeling like this in the mornings before?", "morning", True),
     ("You had a seizure earlier.", "have", True),
+    ("Cultures were drawn before the antibiotic.", "draw", True),
+    ("Any known allergies?", "know", True),
     ("He bled through the dressing.", "bleed", True),
     # ⑧ 원래 -eed로 끝나는 낱말은 어미로 보지 않는다
     ("She is bleeding from the wound.", "bleed", True),
