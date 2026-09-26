@@ -278,6 +278,18 @@ COMPARATIVE = {
     "calmer": "calm", "calmest": "calm",
     "darker": "dark", "darkest": "dark",
     "lighter": "light", "lightest": "light",
+    "colder": "cold", "coldest": "cold",
+    "hotter": "hot", "hottest": "hot",
+    "sicker": "sick", "sickest": "sick",
+    "sorer": "sore", "sorest": "sore",
+    "sharper": "sharp", "sharpest": "sharp",
+    "duller": "dull", "dullest": "dull",
+    "clearer": "clear", "clearest": "clear",
+    "heavier": "heavy", "heaviest": "heavy",
+    "thicker": "thick", "thickest": "thick",
+    "younger": "young", "youngest": "young",
+    "drier": "dry", "driest": "dry",
+    "wetter": "wet", "wettest": "wet",
 }
 
 # 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
@@ -720,6 +732,8 @@ _STEM_CASES = [
     # ⑦ 표에 넣은 불규칙 동사
     ("Please tell me back what you understood.", "understand", True),
     ("Have you thought about hurting yourself?", "think", True),
+    ("You are colder than you feel, so let us get you warm.", "cold", True),
+    ("The pain is sharper when you breathe in?", "sharp", True),
     ("He bled through the dressing.", "bleed", True),
     # ⑧ 원래 -eed로 끝나는 낱말은 어미로 보지 않는다
     ("She is bleeding from the wound.", "bleed", True),
