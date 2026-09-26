@@ -271,6 +271,8 @@ COMPARATIVE = {
     "older": "old", "oldest": "old",
     "bigger": "big", "biggest": "big",
     "calmer": "calm", "calmest": "calm",
+    "darker": "dark", "darkest": "dark",
+    "lighter": "light", "lightest": "light",
 }
 
 # 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
@@ -753,6 +755,8 @@ _STEM_CASES = [
     # thinner는 비교급 표에 넣지 않는다 — 이 콘텐츠에서 명사다(blood thinner).
     ("Which blood thinner do you take?", "blood thinner", True),
     ("Which blood thinner do you take?", "thin", False),
+    ("Is the blood darker or lighter than before?", "dark", True),
+    ("Is the blood darker or lighter than before?", "light", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
