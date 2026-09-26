@@ -80,11 +80,14 @@ V5는 "조각을 이으면 원문이 된다"만 본다. 그래서 조각이 통�
 단어가 여러 토큰으로 된 구(예: "check in")면 그 토큰 시퀀스가 문장 토큰 시퀀스에 연속으로
 나오는지를 스템 기준으로 본다 — 단일 단어는 이 시퀀스 길이가 1인 특수한 경우일 뿐이다.
 
-알려진 한계(허용): 자음 두 배(stop/stopping → stem이 "stopp"/"stop"으로 갈려 불일치),
-불규칙 동사(go/went)와 불규칙 복수(child/children)는 규칙으로 닿지 않아 표로 본다. 이 저장소의 임상 용어는
-대부분 규칙 변화이므로(check/checking, wristband/wristbands, allergy/allergies) 실용적
-타협으로 본다. 어긋나면 V2가 그 사례를 정확히 짚어 주므로, 프롬프트를 더 쉬운 어형으로
-유도하거나 이 규칙을 넓히면 된다.
+규칙으로 닿지 않는 것은 표로 본다 — 불규칙 동사(go/went), 불규칙 복수(child/children),
+비교급·최상급(worse/best). 규칙을 넓히려다 오히려 흔한 낱말을 뭉갠 적이 여러 번 있어서
+(`-er`이 `number`를, `-est`가 `arrest`를 뭉갰다) 규칙 대신 표를 고른 것이다.
+
+**남은 한계.** `-age` 같은 명사화는 **일부러** 묶지 않는다(`drain`/`drainage`,
+`identify`/`identification`) — 학습자에게 따로 배우는 낱말이다. 표에 없는 불규칙은 그때마다
+V2가 정확히 짚어 주므로 한 줄씩 더하면 된다. ER 35개 주제를 만들며 그렇게 스무 번 남짓
+넓혔다.
 
 ## V5 이음 규칙 — Go 쪽(`server/internal/domain/content/lexicon.go` `JoinChunks`)과 그대로 맞춘다
 
