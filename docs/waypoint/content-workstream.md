@@ -138,3 +138,14 @@ OS 다크모드가 아님. `app.json userInterfaceStyle:"automatic"`이라 네�
   **수정:** `offset/limit` 페이지네이션(기본 20, clamp 1..50, `limit+1` 프로브로 `hasMore`),
   모바일 DeptSheet 무한스크롤(near-bottom 자동 로드 + "더 많은 상황 불러오기"). 정렬은 `ORDER BY id`(안정 페이징).
   **검증:** PEDS 114개가 페이지로 전부 도달(offset 100→마지막 00200, hasMore=false), tsc·go test·E2E 24/0.
+
+## 상황 학습 4단계용 콘텐츠 — ER 완료 (2026-09-27)
+
+v44가 상황 한 건 앞에 단어·문장 단계를 놓으면서, 시드 20,056건에 **새 언어**가 필요해졌다.
+`gencontent` 는 결정론적 조합기라 스스로 말을 만들지 못하므로, 콘텐츠는 시드 쪽에 붙인다.
+
+**ER 한 부서를 끝냈다.** 35개 주제 · 736개 상황 · 문장 4,160개 · 단어 6,690개, 검사 위반 0건.
+정본 기록과 생산 방식·비용·크기 영향은 [`02-construction/lesson-four-steps-v44/build-spec-index.md`](02-construction/lesson-four-steps-v44/build-spec-index.md) §8에 있다.
+
+남은 것은 **28개 부서 · 19,320개 상황**이다. ER 기준으로 환산하면 서브에이전트 토큰 약 1억 6천만,
+디스크 약 109MB 증가다. 착수 전에 크기 영향을 한 번 보기로 한다(§8 말미).
