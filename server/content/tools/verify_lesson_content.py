@@ -81,7 +81,7 @@ V5는 "조각을 이으면 원문이 된다"만 본다. 그래서 조각이 통�
 나오는지를 스템 기준으로 본다 — 단일 단어는 이 시퀀스 길이가 1인 특수한 경우일 뿐이다.
 
 알려진 한계(허용): 자음 두 배(stop/stopping → stem이 "stopp"/"stop"으로 갈려 불일치),
-불규칙 동사(go/went), 불규칙 복수(child/children)는 잡지 못한다. 이 저장소의 임상 용어는
+불규칙 동사(go/went)와 불규칙 복수(child/children)는 규칙으로 닿지 않아 표로 본다. 이 저장소의 임상 용어는
 대부분 규칙 변화이므로(check/checking, wristband/wristbands, allergy/allergies) 실용적
 타협으로 본다. 어긋나면 V2가 그 사례를 정확히 짚어 주므로, 프롬프트를 더 쉬운 어형으로
 유도하거나 이 규칙을 넓히면 된다.
@@ -218,6 +218,9 @@ IRREGULAR = {
     "swollen": "swell", "swelled": "swell",
     "bit": "bite", "bitten": "bite",
     "chose": "choose", "chosen": "choose",
+    # 불규칙 명사 복수형 — 규칙으로는 닿지 않는다.
+    "feet": "foot", "teeth": "tooth", "children": "child",
+    "men": "man", "women": "woman", "people": "person", "knives": "knife",
     "drew": "draw", "drawn": "draw",
     "knew": "know", "known": "know",
     "showed": "show", "shown": "show",
@@ -752,6 +755,10 @@ _STEM_CASES = [
     ("You had a seizure earlier.", "have", True),
     ("Cultures were drawn before the antibiotic.", "draw", True),
     ("Any known allergies?", "know", True),
+    # ⑳ 불규칙 명사 복수형
+    ("Your hands and feet are going cold and blotchy.", "foot", True),
+    ("Can you smile and show me your teeth?", "tooth", True),
+    ("We check every child's injury to keep them safe.", "child", True),
     ("He bled through the dressing.", "bleed", True),
     # ⑧ 원래 -eed로 끝나는 낱말은 어미로 보지 않는다
     ("She is bleeding from the wound.", "bleed", True),
