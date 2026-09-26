@@ -224,6 +224,10 @@ IRREGULAR = {
     # 불규칙 명사 복수형 — 규칙으로는 닿지 않는다.
     "feet": "foot", "teeth": "tooth", "children": "child",
     "men": "man", "women": "woman", "people": "person", "knives": "knife",
+    "did": "do", "done": "do", "does": "do",
+    "paid": "pay",
+    "laid": "lay",
+    "froze": "freeze", "frozen": "freeze",
     "drew": "draw", "drawn": "draw",
     "knew": "know", "known": "know",
     "showed": "show", "shown": "show",
@@ -762,6 +766,9 @@ _STEM_CASES = [
     ("Your hands and feet are going cold and blotchy.", "foot", True),
     ("Can you smile and show me your teeth?", "tooth", True),
     ("We check every child's injury to keep them safe.", "child", True),
+    # ㉑ 남은 불규칙 — 흔한 동사 마흔 짝을 훑어 찾아냈다.
+    ("We only did it to keep you safe.", "do", True),
+    ("The blood is frozen for later testing.", "freeze", True),
     ("He bled through the dressing.", "bleed", True),
     # ⑧ 원래 -eed로 끝나는 낱말은 어미로 보지 않는다
     ("She is bleeding from the wound.", "bleed", True),
