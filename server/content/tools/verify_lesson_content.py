@@ -356,6 +356,15 @@ def stem(tok: str) -> str:
         # `> 3`였을 때 원형과 어긋났다. `gas`·`his`·`was`·`bus`는 NOT_PLURAL_TAIL이
         # 이미 막는다.
         t = t[:-1]
+    # 어미를 뗀 결과가 다시 표에 있으면 한 번 더 모은다. `thoughts`가 그 자리다 —
+    # 복수형이라 `-s`로 `thought`가 되는데, 원형 `thought`는 표를 거쳐 `think`가 되어
+    # 서로 갈렸다. `thought`는 명사이자 동사 과거형이라 어느 한쪽을 버릴 수 없고, 둘 다
+    # 자살 위험 선별에서 쓰인다("Have you thought about…" / "thoughts like this").
+    if t in IRREGULAR:
+        t = IRREGULAR[t]
+    elif t in COMPARATIVE:
+        t = COMPARATIVE[t]
+
     # 아래 셋은 어미가 아니라 **양쪽을 같은 자리로 모으는** 마무리다. 원형 복원이 아니므로
     # 어느 쪽이 원형인지 따지지 않고 둘 다에 똑같이 적용한다.
     if t.endswith("ily") and len(t) > 4:
@@ -757,6 +766,9 @@ _STEM_CASES = [
     ("Which blood thinner do you take?", "thin", False),
     ("Is the blood darker or lighter than before?", "dark", True),
     ("Is the blood darker or lighter than before?", "light", True),
+    # ⑱ 어미를 뗀 결과가 다시 표에 있는 경우 — thought는 명사이자 동사 과거형이다.
+    ("Have you had thoughts like this before today?", "thought", True),
+    ("Have you thought about hurting yourself?", "think", True),
     # 원래 되던 것들 — 고치면서 깨지지 않아야 한다.
     ("Do you have any allergies?", "allergy", True),
     ("I am checking your wristband.", "check", True),
