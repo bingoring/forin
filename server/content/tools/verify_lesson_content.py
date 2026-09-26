@@ -219,6 +219,7 @@ IRREGULAR = {
     "bit": "bite", "bitten": "bite",
     "chose": "choose", "chosen": "choose",
     "stung": "sting",
+    "had": "have", "has": "have",
     "been": "be", "was": "be", "were": "be", "am": "be", "are": "be", "is": "be",
     "stuck": "stick",
     "shook": "shake", "shaken": "shake",
@@ -399,6 +400,12 @@ def stem(tok: str) -> str:
         t = t[:-1]                      # medicine→medicin (⑤)
     if t.endswith("y") and len(t) > 3:
         t = t[:-1]                      # sweaty→sweat, allergy→allerg
+    if t.endswith("ing") and len(t) > 5:
+        # `-ing`을 마지막에 한 번 더 뗀다. 앞의 elif 사슬은 한 갈래만 타므로,
+        # `-s`로 간 낱말은 `-ing`을 못 만난다 — `mornings`가 `morning`에서 멈춰
+        # 원형 `morning`(→`morn`)과 어긋났다. `warnings`·`evenings`도 같다.
+        # 길이 조건은 앞과 같아서 `thing`·`bring`은 여기서도 지켜진다.
+        t = t[:-3]
     return _undouble(t)
 
 
@@ -734,6 +741,9 @@ _STEM_CASES = [
     ("Have you thought about hurting yourself?", "think", True),
     ("You are colder than you feel, so let us get you warm.", "cold", True),
     ("The pain is sharper when you breathe in?", "sharp", True),
+    # ⑲ -ing 명사의 복수형 — elif 사슬이 한 갈래만 타므로 마지막에 한 번 더 뗀다.
+    ("Have you noticed feeling like this in the mornings before?", "morning", True),
+    ("You had a seizure earlier.", "have", True),
     ("He bled through the dressing.", "bleed", True),
     # ⑧ 원래 -eed로 끝나는 낱말은 어미로 보지 않는다
     ("She is bleeding from the wound.", "bleed", True),
