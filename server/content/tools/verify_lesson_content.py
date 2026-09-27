@@ -485,6 +485,27 @@ S_SINGULAR = frozenset({"lens", "bias", "canvas", "atlas", "pancreas"})
 #
 # `tie`·`lie`는 멀쩡하다 — `-es` 규칙의 길이 조건(`> 4`)에 걸리지 않아 다른 길로 간다.
 # 깨지는 것은 여섯 글자 이상인 것들뿐이라, 규칙을 건드리지 않고 표로 둔다.
+# `-f`·`-fe`로 끝나는 명사의 복수형. `half`/`halves`가 or-count 에서 보고됐다. 규칙으로
+# 만들 수도 있지만(`-ves` → `-f`), `-ves`로 끝나는 낱말이 전부 이 부류는 아니라 표로 둔다.
+#
+# `lives`와 `leaves`는 **넣지 않는다.** 각각 `life`·`leaf`의 복수형이면서 동시에
+# `live`·`leave`의 3인칭 단수다("he lives alone" / "nothing leaves this room").
+# 어느 한쪽으로 모으면 다른 쪽이 깨진다 — `leaves`는 실제로 넣었다가 er-geriatric 의
+# "nothing leaves this room without your say."를 깨뜨려 전체 회귀에서 잡혔다.
+# `knives`는 이미 다른 길로 `knife`와 만나고 있어 넣지 않는다.
+FVES_PLURAL = {
+    "halves": "half",
+    "shelves": "shelf",
+    "selves": "self",
+    "calves": "calf",
+    "wives": "wife",
+    "thieves": "thief",
+    "loaves": "loaf",
+    "scarves": "scarf",
+    "hooves": "hoof",
+    "wolves": "wolf",
+}
+
 IE_PLURAL = {
     "calories": "calorie",
     "bougies": "bougie",
@@ -575,6 +596,8 @@ def stem(tok: str) -> str:
         t = IRREGULAR[t]
     elif t in COMPARATIVE:
         t = COMPARATIVE[t]
+    elif t in FVES_PLURAL:
+        t = FVES_PLURAL[t]
     elif t in IE_PLURAL:
         t = IE_PLURAL[t]
     elif t.endswith("ies") and len(t) > 4:
@@ -623,6 +646,16 @@ def stem(tok: str) -> str:
         t = t[:-3] + "y"
     if t.endswith("ly") and len(t) > 3:
         t = t[:-2]                      # seriously→serious, safely→safe
+    if t.endswith("ical") and len(t) > 5:
+        # `-ic` 형용사의 부사는 `-ically`다. `-ly`만 떼면 `specifical`·`systematical`이
+        # 남아, 실제 원형인 `specific`·`systematic`과 갈린다(or-count 에서 보고됨).
+        # `-ical`을 `-ic`으로 마저 모으면 양쪽이 만난다. `clinical`/`clinically`처럼
+        # 원형이 `-ical`인 쪽도 똑같이 `clinic`으로 모이므로 함께 지켜진다.
+        #
+        # 값: `clinic`·`topic`·`music`이 `clinical`·`topical`·`musical`과 한 자리에
+        # 모인다. 지금까지 만든 아흔한 주제를 훑어 그 짝이 함께 나오는 자리가 하나도
+        # 없음을 확인했고, `-ically` 부사는 열세 번밖에 안 쓰였다. 값이 싸다.
+        t = t[:-2]
     while t.endswith("e") and len(t) > 2:
         # 남김없이 떼는 것은 `agree` 때문이다. `agrees`는 `-es`로 두 글자가 잘려 `agre`가
         # 되고 거기서 `e` 하나를 더 떼 `agr`이 되는데, 원형 `agree`는 한 번만 떼면 `agre`라
@@ -1074,6 +1107,20 @@ _STEM_CASES = [
     ("He is due for a flu shot.", "shoot", False),
     ("The gown is torn at the shoulder.", "tear", False),
     ("We follow bloodborne precautions here.", "bear", False),
+    # ⑳ `-ic` 형용사의 부사는 `-ically`다. `-ly`만 떼면 `systematical`이 남아 갈린다
+    #    (or-count 에서 보고됨). `-ical`을 `-ic`으로 마저 모아 양쪽을 만나게 했다.
+    ("Let's search the drapes systematically.", "systematic", True),
+    ("She is critically ill right now.", "critical", True),
+    ("He is clinically stable this morning.", "clinical", True),
+    ("Check him neurologically every hour.", "neurologic", True),
+    # ㉑ `-f`·`-fe` 명사의 복수형 (or-count 의 `halves`).
+    ("Let's account for both halves before closing.", "half", True),
+    ("Check the calves for swelling.", "calf", True),
+    # `lives`는 표에 넣지 않았다. 아래 둘이 그 자리를 지킨다 — 넣으면 뒤엣것이 깨진다.
+    ("We saved three lives tonight.", "life", False),
+    ("He lives alone at home.", "live", True),
+    ("Nothing leaves this room without your say.", "leave", True),
+    ("Sweep the leaves off the ramp.", "leaf", False),
     # 겉모양이 같아도 비교급이 아닌 것들. 전수 조사에서 가장 흔했던 축이다.
     ("I'll flush the catheter now.", "cat", False),
     ("Let me call the interpreter for you.", "interpret", False),
