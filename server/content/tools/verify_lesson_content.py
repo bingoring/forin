@@ -375,6 +375,15 @@ COMPARATIVE = {
     "hungrier": "hungry", "hungriest": "hungry",
     "thirstier": "thirsty", "thirstiest": "thirsty",
     "braver": "brave", "bravest": "brave",
+    # 지금까지 만든 문장에서 `-er`·`-est`로 끝나는 낱말 161종을 전수로 뽑아 훑은 결과다.
+    # 그 가운데 진짜 비교급은 여섯뿐이었다. 나머지는 `catheter`·`bladder`·`interpreter`
+    # 처럼 어미가 아니라 낱말 자체다 — 규칙을 쓰지 않고 표를 쓰는 이유가 이 비율에 있다.
+    "fewer": "few", "fewest": "few",
+    "further": "far", "furthest": "far",
+    "farther": "far", "farthest": "far",
+    "sooner": "soon", "soonest": "soon",
+    "milder": "mild", "mildest": "mild",
+    "riskier": "risky", "riskiest": "risky",
     # `stranger`(낯선 사람)와 `cleaner`(청소 담당·세정제)는 병원에서 **명사**다.
     # `warmer`·`cooler`·`thinner`와 같은 이유로 비교급 쪽만 뺀다.
     "strangest": "strange",
@@ -383,6 +392,33 @@ COMPARATIVE = {
 
 # 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
 NOT_PLURAL_TAIL = ("ss", "us", "is")
+# 꼬리로는 못 거르는, `s`로 끝나는 단수 명사들. 복수형이 `-es`를 붙이기 때문에 이것들만
+# 따로 막아야 양쪽이 만난다 — `lenses`는 `-es`를 떼고 `lens`에서 멈추는데 원형 `lens`는
+# 끝의 `s`가 복수형으로 보여 `len`이 되어, "안경알을 닦아 드릴게요"라는 멀쩡한 문장이
+# 거절됐다(icu-delirium에서 보고됨).
+#
+# 한때 `stem`을 두 번 돌려 양쪽을 `len`으로 모으려 했다. 은행 낱말 2,729개를 전수
+# 대조해 보니 그 방법은 **`dose`를 `do`와, `pulse`를 `pull`과, `nose`를 `no`와, `false`를
+# `fall`과 한 자리에 모은다.** 끝의 `e`를 떼고 남은 `s`를 두 번째 바퀴가 복수형으로 보기
+# 때문이다. 전부 이 분야의 중심 낱말이라 값이 너무 비싸다. 규칙 대신 표를 두는 것은
+# 비교급·최상급 때와 같은 결론이다.
+S_SINGULAR = frozenset({"lens", "bias", "canvas", "atlas", "pancreas"})
+# `-ie`로 끝나는 명사의 복수형. `-ies`는 대개 `-y` 명사의 복수형이라(`injury`/`injuries`,
+# `allergy`/`allergies`, `baby`/`babies` — 전부 정상으로 만난다) 규칙이 `-ies`를 `-y`로
+# 되돌리는데, 원형이 이미 `-ie`인 소수는 그 규칙에 걸려 짝과 갈린다. `calorie`는 `calori`가
+# 되고 `calories`는 `calor`가 되어 "칼로리를 늘립니다"라는 멀쩡한 문장이 거절됐다
+# (icu-aki-crrt에서 보고됨).
+#
+# `tie`·`lie`는 멀쩡하다 — `-es` 규칙의 길이 조건(`> 4`)에 걸리지 않아 다른 길로 간다.
+# 깨지는 것은 여섯 글자 이상인 것들뿐이라, 규칙을 건드리지 않고 표로 둔다.
+IE_PLURAL = {
+    "calories": "calorie",
+    "bougies": "bougie",
+    "cookies": "cookie",
+    "movies": "movie",
+    "sweeties": "sweetie",
+    "smoothies": "smoothie",
+}
 # `as`는 짧은 낱말에서만 예외다. `gas`·`was`·`has`는 복수형이 아니지만, 긴 낱말의 `-as`는
 # 대개 `-a` 명사의 복수형이다 — `areas`가 `area`와 어긋나 화상 주제에서 걸렸다.
 SHORT_AS_MAX = 3
@@ -436,6 +472,8 @@ def stem(tok: str) -> str:
         t = IRREGULAR[t]
     elif t in COMPARATIVE:
         t = COMPARATIVE[t]
+    elif t in IE_PLURAL:
+        t = IE_PLURAL[t]
     elif t.endswith("ies") and len(t) > 4:
         t = t[:-3] + "y"
     elif t.endswith("ied") and len(t) > 4:
@@ -454,13 +492,14 @@ def stem(tok: str) -> str:
         t = t[:-2]
     elif (
         t.endswith("s")
+        and t not in S_SINGULAR
         and not t.endswith(NOT_PLURAL_TAIL)
         and not (t.endswith("as") and len(t) <= SHORT_AS_MAX)
         and len(t) > 2
     ):
         # 길이 조건이 `> 2`인 것은 세 글자 약어의 복수형 때문이다 — `IVs`·`ECGs`·`ORs`가
         # `> 3`였을 때 원형과 어긋났다. `gas`·`his`·`was`·`bus`는 NOT_PLURAL_TAIL이
-        # 이미 막는다.
+        # 이미 막는다. `lens`처럼 꼬리로 못 거르는 것은 S_SINGULAR가 막는다.
         t = t[:-1]
     # 어미를 뗀 결과가 다시 표에 있으면 한 번 더 모은다. `thoughts`가 그 자리다 —
     # 복수형이라 `-s`로 `thought`가 되는데, 원형 `thought`는 표를 거쳐 `think`가 되어
@@ -890,6 +929,32 @@ _STEM_CASES = [
     ("The cleaner will come after the transfer.", "clean", False),
     ("This is the strangest reading I have seen.", "strange", True),
     ("Let me get you the cleanest gown we have.", "clean", True),
+    # ⑭ `s`로 끝나는 단수 명사. `lenses`는 `-es`를 떼고 `lens`에서 멈추는데 원형 `lens`는
+    #    끝의 `s`가 복수형으로 보여 `len`이 되어 서로 갈렸다(icu-delirium에서 보고됨).
+    ("I'll clean the lenses so everything looks clearer.", "lens", True),
+    ("Her contact lens is still in the right eye.", "lens", True),
+    # ⑮ 불규칙·`-ier` 비교급 여섯. `-er`로 끝나는 낱말 161종 가운데 진짜 비교급은 이것뿐이다.
+    ("Combining mechanisms improves comfort with fewer side effects.", "few", True),
+    ("Call me sooner next time if it gets worse.", "soon", True),
+    ("His pain is milder than it was this morning.", "mild", True),
+    ("Waiting makes the procedure riskier for him.", "risky", True),
+    # ⑯ `-ie`로 끝나는 명사. `-ies` 규칙이 `-y`로 되돌리는 바람에 짝과 갈렸다
+    #    (icu-aki-crrt에서 보고됨). 바로 아래 두 건은 그 규칙이 여전히 살아 있어야 한다는
+    #    쪽이다 — 표를 넓히다 `-y` 명사를 건드리면 이 둘이 먼저 깨진다.
+    ("We increase his calories to make up for what CRRT takes out.", "calorie", True),
+    ("Have the bougies ready at the bedside.", "bougie", True),
+    ("Tell me about his allergies.", "allergy", True),
+    ("Both injuries are on the same side.", "injury", True),
+    # 겉모양이 같아도 비교급이 아닌 것들. 전수 조사에서 가장 흔했던 축이다.
+    ("I'll flush the catheter now.", "cat", False),
+    ("Let me call the interpreter for you.", "interpret", False),
+    # 아래 넷은 이 고침을 **규칙으로** 하면 깨지는 자리다. `stem`을 두 번 돌려 `lens`와
+    # `lenses`를 모으려 했더니, 끝의 `e`를 뗀 뒤 남은 `s`를 두 번째 바퀴가 복수형으로 보아
+    # `dose`가 `do`와, `pulse`가 `pull`과 한 자리에 모였다. 표로 바꾼 이유가 이것이다.
+    ("Give the second dose in one hour.", "do", False),
+    ("I can do that for you now.", "dose", False),
+    ("His pulse is weak on the left side.", "pull", False),
+    ("Don't pull on the line, please.", "pulse", False),
     # ⑩ -ly 부사 · -y 형용사 · 네 글자 과거형 (흉통 주제에서 부딪힌 것들)
     ("She looks pale and sweaty.", "sweat", True),
     ("Take this seriously, please.", "serious", True),
