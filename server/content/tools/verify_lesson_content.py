@@ -493,6 +493,48 @@ S_SINGULAR = frozenset({"lens", "bias", "canvas", "atlas", "pancreas"})
 # 어느 한쪽으로 모으면 다른 쪽이 깨진다 — `leaves`는 실제로 넣었다가 er-geriatric 의
 # "nothing leaves this room without your say."를 깨뜨려 전체 회귀에서 잡혔다.
 # `knives`는 이미 다른 길로 `knife`와 만나고 있어 넣지 않는다.
+# `-le`로 끝나는 형용사의 부사. `gentle`/`gently`가 or-induction-airway 에서 보고됐다.
+# 어미에서 `e`가 `y`로 바뀌므로 `-ly`만 떼면 `gent`가 남아 `gentle`(→`gentl`)과 갈린다.
+# 서른셋을 훑어 보니 **전부** 어긋나 있었다.
+#
+# 규칙으로는 못 한다. `gently`의 앞부분 `gent`와 `badly`의 앞부분 `bad`를 낱말 모양만
+# 보고 가를 방법이 없는데, `bad`/`badly`는 지금 제대로 만나고 있어 건드리면 그쪽이 깨진다.
+# 그래서 표로 둔다.
+LE_ADVERB = {
+    "ably": "able",
+    "audibly": "audible",
+    "capably": "capable",
+    "comfortably": "comfortable",
+    "considerably": "considerable",
+    "doubly": "double",
+    "flexibly": "flexible",
+    "gently": "gentle",
+    "horribly": "horrible",
+    "humbly": "humble",
+    "idly": "idle",
+    "impossibly": "impossible",
+    "incredibly": "incredible",
+    "nimbly": "nimble",
+    "noticeably": "noticeable",
+    "possibly": "possible",
+    "probably": "probable",
+    "reasonably": "reasonable",
+    "remarkably": "remarkable",
+    "responsibly": "responsible",
+    "sensibly": "sensible",
+    "simply": "simple",
+    "singly": "single",
+    "stably": "stable",
+    "subtly": "subtle",
+    "suitably": "suitable",
+    "terribly": "terrible",
+    "uncomfortably": "uncomfortable",
+    "understandably": "understandable",
+    "unstably": "unstable",
+    "valuably": "valuable",
+    "visibly": "visible",
+}
+
 FVES_PLURAL = {
     "halves": "half",
     "shelves": "shelf",
@@ -596,6 +638,8 @@ def stem(tok: str) -> str:
         t = IRREGULAR[t]
     elif t in COMPARATIVE:
         t = COMPARATIVE[t]
+    elif t in LE_ADVERB:
+        t = LE_ADVERB[t]
     elif t in FVES_PLURAL:
         t = FVES_PLURAL[t]
     elif t in IE_PLURAL:
@@ -1121,6 +1165,16 @@ _STEM_CASES = [
     ("He lives alone at home.", "live", True),
     ("Nothing leaves this room without your say.", "leave", True),
     ("Sweep the leaves off the ramp.", "leaf", False),
+    # ㉒ `-le` 형용사의 부사. 어미에서 `e`가 `y`로 바뀌어 `-ly`만 떼면 갈린다
+    #    (or-induction-airway 에서 보고됨). 서른셋 전부 어긋나 있었다.
+    ("I'll hold the mask gently and keep him calm.", "gentle", True),
+    ("Just breathe normally and stay comfortably still.", "comfortable", True),
+    ("His pressure is probably going to drop.", "probable", True),
+    ("Simply squeeze my hand if it hurts.", "simple", True),
+    # 규칙으로 넓히면 아래 둘이 먼저 깨진다. `gently`의 `gent`와 `badly`의 `bad`를
+    # 낱말 모양만 보고 가를 수 없어 표로 둔 이유다.
+    ("He is breathing badly right now.", "bad", True),
+    ("We can move you safely now.", "safe", True),
     # 겉모양이 같아도 비교급이 아닌 것들. 전수 조사에서 가장 흔했던 축이다.
     ("I'll flush the catheter now.", "cat", False),
     ("Let me call the interpreter for you.", "interpret", False),
