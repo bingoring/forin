@@ -822,8 +822,16 @@ def meaningful_chunks(chunks: list[str]) -> int:
 
 
 def min_chunks_for(en: str) -> int:
-    """문장 길이에 비례한 최소 조각 수. 위 docstring의 표 그대로."""
-    words = len([w for w in en.split() if w.strip(" " + "".join(SENTENCE_PUNCT_START))])
+    """문장 길이에 비례한 최소 조각 수. 위 docstring의 표 그대로.
+
+    **글자도 숫자도 없는 토막은 낱말로 세지 않는다.** 앞서는 `,.?!`만 걸렀는데,
+    이 콘텐츠에는 엠대시가 잦아서 `—`가 낱말 하나로 세어졌다. 여덟 낱말짜리 문장이
+    아홉으로 세어져 조각을 하나 더 쪼개라고 요구했고, 저작자들이 다섯 번 그 요구에
+    맞춰 멀쩡한 구 경계를 더 잘게 나눴다. 세는 쪽을 고친다.
+
+    이 고침은 요구를 **느슨하게** 만들기만 하므로 이미 통과한 콘텐츠는 그대로 통과한다.
+    """
+    words = len([w for w in en.split() if any(ch.isalnum() for ch in w)])
     if words <= 4:
         return 2
     if words <= 8:
@@ -928,6 +936,12 @@ def verify_dept(
             for w in words:
                 wdef = bank.get(w)
                 if wdef is None:
+                    continue
+                if not isinstance(wdef.get("en"), str):
+                    # V11이 이미 잡은 자리다(따옴표 없는 `true`·`off` 따위). 여기서
+                    # 그냥 넘기지 않으면 `tokenize`가 불리언을 받아 터지고, **V11이
+                    # 보고되기도 전에** 검사기 전체가 죽는다. 실제로 core-language-or
+                    # 저작자가 그 오류를 만났다 — 원인과 아무 상관 없는 말만 보인다.
                     continue
                 if not word_appears(en, wdef.get("en", "")):
                     violations.append(
@@ -1474,6 +1488,18 @@ def run_selftest() -> int:
       words: [w-check, w-name, w-band]
       goal: 1
 """ + _good_sentences().split("  sentences:\n", 1)[1]
+    # V8 예외 — 엠대시는 낱말이 아니다. 아래 문장은 글자가 있는 토막이 여덟이라
+    # 조각 셋이면 충분한데, `—`를 세던 때는 넷을 요구했다.
+    v8ok = """
+  sentences:
+    - en: "Check the name — the wristband is right there."
+      ko: "이름을 확인하세요 — 손목밴드가 바로 거기 있습니다."
+      chunks: ["Check the name", "— the wristband", "is right there", "."]
+      words: [w-check, w-name, w-wristband]
+      goal: 1
+""" + _good_sentences().split("  sentences:\n", 1)[1]
+    cases.append(("V8 exception (an em dash is not a word)", _LEX_BASE, _seed_with_sentences(v8ok), "", False))
+
     cases.append(("V9 exception (a bare capital letter is a label)", _LEX_BASE, _seed_with_sentences(v9ok), "", False))
 
     # V10 — 은행에 같은 id가 두 번 있다. 문장 쪽은 GOOD과 한 글자도 다르지 않다.
