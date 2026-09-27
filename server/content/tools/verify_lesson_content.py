@@ -204,6 +204,15 @@ def tokenize(text: str) -> list[str]:
 # 좁으므로, 실제로 부딪힌 것부터 적어 둔 작은 표로 충분하다. 표에 없어서 어긋나면 V2가
 # 그 사례를 정확히 짚어 주므로 그때 한 줄 더하면 된다.
 IRREGULAR = {
+    # `be-`·`for-` 계열. 접두사 규칙(`_prefixed_irregular`)은 이 둘을 보지 않는다 —
+    # `beside`·`believe`·`forehead`처럼 접두사가 아닌 낱말이 너무 많아 넣지 않았다.
+    # 그래서 이 계열만 표로 채운다. `became`이 icu-liver-failure에서 보고됐고, 한 건만
+    # 채우지 않고 같은 모양을 함께 훑었다.
+    "became": "become",
+    "begun": "begin",
+    "beheld": "behold",
+    "forgot": "forget", "forgotten": "forget",
+    "forgave": "forgive", "forgiven": "forgive",
     "gave": "give", "given": "give",
     "took": "take", "taken": "take",
     "went": "go", "gone": "go",
@@ -384,6 +393,7 @@ COMPARATIVE = {
     "sooner": "soon", "soonest": "soon",
     "milder": "mild", "mildest": "mild",
     "riskier": "risky", "riskiest": "risky",
+    "plainer": "plain", "plainest": "plain",
     # `stranger`(낯선 사람)와 `cleaner`(청소 담당·세정제)는 병원에서 **명사**다.
     # `warmer`·`cooler`·`thinner`와 같은 이유로 비교급 쪽만 뺀다.
     "strangest": "strange",
@@ -424,6 +434,35 @@ IE_PLURAL = {
 SHORT_AS_MAX = 3
 
 VOWELS = "aeiou"
+
+
+# 접두사가 붙은 불규칙 동사. `draw`/`drawn`은 표에 있는데 `withdraw`/`withdrawn`은 없어서
+# "지지를 먼저 거둡니다"라는 문장이 거절됐다(icu-brain-death에서 보고됨). 한 낱말이 아니라
+# 부류다 — 열네 짝을 훑어 보니 열둘이 어긋나 있었다.
+#
+# 여기서는 표가 아니라 규칙이 맞다. 표에 이미 있는 원형을 그대로 재활용하는 것이고, 표를
+# 늘리는 것이 아니라 표를 **한 번 더 보는** 것뿐이라, 표가 자라도 저절로 따라온다.
+# `be-`는 넣지 않는다 — `beside`·`believe`처럼 접두사가 아닌 것이 너무 많다.
+#
+# **어미를 뗀 뒤에** 본다. 맨 앞에 뒀더니 `relying`이 `re`+`lying`으로 쪼개져 `lie`를 거쳐
+# `relie`가 되었고, `rely`와 갈렸다. 어미가 먼저 떨어지면 `relying`은 `rely`가 되고 남는
+# 부분이 두 글자라 이 규칙이 아예 보지 않는다. `withdrawn`처럼 어미 규칙이 하나도 걸리지
+# 않는 낱말만 여기까지 내려온다.
+IRREGULAR_PREFIXES = ("with", "over", "under", "out", "re", "un", "mis", "fore", "up")
+
+
+def _prefixed_irregular(t: str) -> str | None:
+    """`withdrawn` → `withdraw`. 접두사를 떼고 표를 본 뒤 다시 붙인다.
+
+    남는 부분이 세 글자는 되어야 본다 — `reset`의 `set`처럼 짧은 것까지는 보되,
+    `out`+`it` 같은 우연한 쪼개짐은 막는다.
+    """
+    for pre in IRREGULAR_PREFIXES:
+        if t.startswith(pre) and len(t) - len(pre) >= 3:
+            rest = t[len(pre):]
+            if rest in IRREGULAR:
+                return pre + IRREGULAR[rest]
+    return None
 
 
 def stem(tok: str) -> str:
@@ -507,6 +546,8 @@ def stem(tok: str) -> str:
     # 자살 위험 선별에서 쓰인다("Have you thought about…" / "thoughts like this").
     if t in IRREGULAR:
         t = IRREGULAR[t]
+    elif (prefixed := _prefixed_irregular(t)) is not None:
+        t = prefixed
     elif t in COMPARATIVE:
         t = COMPARATIVE[t]
 
@@ -945,6 +986,19 @@ _STEM_CASES = [
     ("Have the bougies ready at the bedside.", "bougie", True),
     ("Tell me about his allergies.", "allergy", True),
     ("Both injuries are on the same side.", "injury", True),
+    # ⑰ 접두사가 붙은 불규칙. `draw`/`drawn`은 표에 있는데 `withdraw`/`withdrawn`은 없어서
+    #    거절됐다(icu-brain-death에서 보고됨). 열네 짝을 훑어 열둘이 어긋나 있었다.
+    ("Here, support is withdrawn first, and we wait.", "withdraw", True),
+    ("He underwent surgery last night.", "undergo", True),
+    ("The dose was withheld this morning.", "withhold", True),
+    # 이 규칙은 **어미를 뗀 뒤에** 봐야 한다. 맨 앞에 뒀더니 `relying`이 `re`+`lying`으로
+    # 쪼개져 `lie`를 거쳤고, `rely`와 갈렸다. 아래 둘이 그 자리를 지킨다.
+    ("She is relying on the machine to breathe.", "rely", True),
+    ("He relies on his daughter for everything.", "rely", True),
+    # ⑱ `be-`·`for-` 계열은 접두사 규칙이 보지 않는다(`beside`·`forehead` 때문에). 표로 채웠다.
+    ("His pupil just became sluggish, and this is an emergency.", "become", True),
+    ("She has forgotten why she is here.", "forget", True),
+    ("Let me put that in plainer terms for you.", "plain", True),
     # 겉모양이 같아도 비교급이 아닌 것들. 전수 조사에서 가장 흔했던 축이다.
     ("I'll flush the catheter now.", "cat", False),
     ("Let me call the interpreter for you.", "interpret", False),
