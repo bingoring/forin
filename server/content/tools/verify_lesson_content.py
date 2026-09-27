@@ -204,6 +204,70 @@ def tokenize(text: str) -> list[str]:
 # 좁으므로, 실제로 부딪힌 것부터 적어 둔 작은 표로 충분하다. 표에 없어서 어긋나면 V2가
 # 그 사례를 정확히 짚어 주므로 그때 한 줄 더하면 된다.
 IRREGULAR = {
+    # 영어 불규칙 동사 목록 전체와 대조해 한꺼번에 채운 것이다. `hidden` 하나가
+    # core-family-icu 에서 보고됐는데, 훑어 보니 여든여덟이 어긋나 있었다.
+    #
+    # **다 넣지는 않는다.** 이 분야에서 값이 비싼 것들은 뺐다.
+    #   `wound`(상처)는 `wind`(감다)의 과거형이기도 하다 — 상처는 이 콘텐츠의 중심 낱말이다.
+    #   `shot`(주사)은 `shoot`(쏘다)의 과거형이기도 하다 — "a flu shot"이 훨씬 흔하다.
+    #   `tore`·`torn`은 `tear`가 눈물이기도 해서 앞서 뺐고, 그대로 둔다.
+    #   `bore`·`borne`은 `bloodborne`·`airborne`과 얽혀 값이 비싸다.
+    #   `lay`는 `lie`의 과거형이자 `lay`의 원형이라 어느 쪽으로도 모을 수 없다.
+    "arisen": "arise",
+    "arose": "arise",
+    "awoke": "awake",
+    "awoken": "awake",
+    "beaten": "beat",
+    "bent": "bend",
+    "blew": "blow",
+    "blown": "blow",
+    "bound": "bind",
+    "clung": "cling",
+    "crept": "creep",
+    "dealt": "deal",
+    "dug": "dig",
+    "flew": "fly",
+    "flown": "fly",
+    "forbade": "forbid",
+    "forbidden": "forbid",
+    "hidden": "hide",
+    "hung": "hang",
+    "knelt": "kneel",
+    "lent": "lend",
+    "lit": "light",
+    "rang": "ring",
+    "ridden": "ride",
+    "risen": "rise",
+    "rode": "ride",
+    "rose": "rise",
+    "rung": "ring",
+    "sang": "sing",
+    "sank": "sink",
+    "shone": "shine",
+    "shrank": "shrink",
+    "shrunk": "shrink",
+    "sold": "sell",
+    "sought": "seek",
+    "spat": "spit",
+    "sped": "speed",
+    "sprang": "spring",
+    "sprung": "spring",
+    "spun": "spin",
+    "stank": "stink",
+    "stole": "steal",
+    "stolen": "steal",
+    "struck": "strike",
+    "stunk": "stink",
+    "sung": "sing",
+    "sunk": "sink",
+    "swam": "swim",
+    "swept": "sweep",
+    "swore": "swear",
+    "sworn": "swear",
+    "swum": "swim",
+    "swung": "swing",
+    "wept": "weep",
+    "won": "win",
     # `be-`·`for-` 계열. 접두사 규칙(`_prefixed_irregular`)은 이 둘을 보지 않는다 —
     # `beside`·`believe`·`forehead`처럼 접두사가 아닌 낱말이 너무 많아 넣지 않았다.
     # 그래서 이 계열만 표로 채운다. `became`이 icu-liver-failure에서 보고됐고, 한 건만
@@ -999,6 +1063,17 @@ _STEM_CASES = [
     ("His pupil just became sluggish, and this is an emergency.", "become", True),
     ("She has forgotten why she is here.", "forget", True),
     ("Let me put that in plainer terms for you.", "plain", True),
+    # ⑲ 불규칙 동사 목록 전체와 대조해 쉰다섯을 채웠다. `hidden` 하나가 보고된 자리다.
+    ("Nothing is being hidden — let me go through everything with you.", "hide", True),
+    ("His fever rose again overnight.", "rise", True),
+    ("The alarm rang twice while you were out.", "ring", True),
+    ("We sought a second opinion this morning.", "seek", True),
+    ("She was struck by a car last night.", "strike", True),
+    # 값이 비싸서 **일부러 넣지 않은** 짝들. 이 넷이 표를 넓히는 손을 막는다.
+    ("Let me look at the wound on his leg.", "wind", False),
+    ("He is due for a flu shot.", "shoot", False),
+    ("The gown is torn at the shoulder.", "tear", False),
+    ("We follow bloodborne precautions here.", "bear", False),
     # 겉모양이 같아도 비교급이 아닌 것들. 전수 조사에서 가장 흔했던 축이다.
     ("I'll flush the catheter now.", "cat", False),
     ("Let me call the interpreter for you.", "interpret", False),
