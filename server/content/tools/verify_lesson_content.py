@@ -338,6 +338,47 @@ COMPARATIVE = {
     "younger": "young", "youngest": "young",
     "drier": "dry", "driest": "dry",
     "wetter": "wet", "wettest": "wet",
+    # 아래는 icu-shock의 `firmer`(복부가 단단해진다) 하나가 보고된 뒤, 한 건만 채우지
+    # 않고 임상에서 흔한 형용사 마흔여섯 짝을 한꺼번에 훑어 채운 것이다. 서른일곱이
+    # 비어 있었다. 보고를 기다리며 한 건씩 왕복하면 주제 하나마다 같은 일이 생긴다.
+    "firmer": "firm", "firmest": "firm",
+    "looser": "loose", "loosest": "loose",
+    "wider": "wide", "widest": "wide",
+    "narrower": "narrow", "narrowest": "narrow",
+    "busier": "busy", "busiest": "busy",
+    "steadier": "steady", "steadiest": "steady",
+    "rougher": "rough", "roughest": "rough",
+    "smoother": "smooth", "smoothest": "smooth",
+    "brighter": "bright", "brightest": "bright",
+    "paler": "pale", "palest": "pale",
+    "redder": "red", "reddest": "red",
+    "fuller": "full", "fullest": "full",
+    "emptier": "empty", "emptiest": "empty",
+    "quicker": "quick", "quickest": "quick",
+    "simpler": "simple", "simplest": "simple",
+    "stiffer": "stiff", "stiffest": "stiff",
+    "louder": "loud", "loudest": "loud",
+    "finer": "fine", "finest": "fine",
+    "dirtier": "dirty", "dirtiest": "dirty",
+    "fresher": "fresh", "freshest": "fresh",
+    "healthier": "healthy", "healthiest": "healthy",
+    "taller": "tall", "tallest": "tall",
+    "sleepier": "sleepy", "sleepiest": "sleepy",
+    "dizzier": "dizzy", "dizziest": "dizzy",
+    "sweeter": "sweet", "sweetest": "sweet",
+    "kinder": "kind", "kindest": "kind",
+    "gentler": "gentle", "gentlest": "gentle",
+    "rarer": "rare", "rarest": "rare",
+    "happier": "happy", "happiest": "happy",
+    "sadder": "sad", "saddest": "sad",
+    "angrier": "angry", "angriest": "angry",
+    "hungrier": "hungry", "hungriest": "hungry",
+    "thirstier": "thirsty", "thirstiest": "thirsty",
+    "braver": "brave", "bravest": "brave",
+    # `stranger`(낯선 사람)와 `cleaner`(청소 담당·세정제)는 병원에서 **명사**다.
+    # `warmer`·`cooler`·`thinner`와 같은 이유로 비교급 쪽만 뺀다.
+    "strangest": "strange",
+    "cleanest": "clean",
 }
 
 # 끝의 `s`를 떼면 안 되는 꼬리. `focus`·`status`·`analysis`는 복수형이 아니다.
@@ -819,6 +860,22 @@ _STEM_CASES = [
     ("What is the room number?", "numb", False),
     ("Is your arm numb?", "numb", True),
     ("I always confirm two identifiers for every patient.", "identifier", True),
+    # ⑬ 형용사 비교급 — icu-shock의 `firmer` 하나가 보고된 뒤 마흔여섯 짝을 훑어 서른일곱을
+    #    채웠다. 표에 얹힌 것을 문장 자리에서도 확인한다.
+    ("His belly is getting firmer than an hour ago.", "firm", True),
+    ("Her breathing is quieter and steadier now.", "steady", True),
+    ("The drainage looks thicker and darker today.", "thick", True),
+    ("He gets dizzier when he sits up.", "dizzy", True),
+    ("Let me tie the gown a little looser.", "loose", True),
+    ("The alarm is louder than the others.", "loud", True),
+    ("Her skin looks paler than this morning.", "pale", True),
+    ("This is the simplest way to explain it.", "simple", True),
+    # 명사와 겹치는 `-er`은 비교급으로 보지 않는다. `stranger`(낯선 사람)와
+    # `cleaner`(청소 담당·세정제)는 `number`·`identifier`와 같은 자리에 있다.
+    ("A stranger brought him in.", "strange", False),
+    ("The cleaner will come after the transfer.", "clean", False),
+    ("This is the strangest reading I have seen.", "strange", True),
+    ("Let me get you the cleanest gown we have.", "clean", True),
     # ⑩ -ly 부사 · -y 형용사 · 네 글자 과거형 (흉통 주제에서 부딪힌 것들)
     ("She looks pale and sweaty.", "sweat", True),
     ("Take this seriously, please.", "serious", True),
