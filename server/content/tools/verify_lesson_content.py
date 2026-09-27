@@ -620,6 +620,20 @@ def verify_dept(
         for wid in duplicate_word_ids(words):
             violations.append(Violation(dept, theme, "-", "V10", f"bank has duplicate word id {wid!r}"))
 
+        # V11 — 은행 항목의 값이 문자열이 아니다. YAML 1.1은 따옴표 없는 `off`·`on`·`no`·
+        # `yes`·`y`·`n`을 불리언으로 읽는다. 전부 임상에서 쓰는 말이라 `en: off`가 말없이
+        # `False`가 되고, 그 뒤로 V2가 낼 말은 어형이 어긋났다는 엉뚱한 소리뿐이다.
+        # icu-cardiogenic 저작자가 실제로 여기 걸려 한참을 헤맸다.
+        for w in words:
+            for key in ("id", "en", "ko"):
+                val = w.get(key)
+                if val is not None and not isinstance(val, str):
+                    violations.append(Violation(
+                        dept, theme, "-", "V11",
+                        f"word {w.get('id')!r}: {key}={val!r} is {type(val).__name__}, not a string "
+                        f"(YAML reads bare off/on/no/yes as booleans — quote it)",
+                    ))
+
     n_seeds = n_with_sentences = 0
 
     for seed in seeds:
@@ -1113,6 +1127,12 @@ def run_selftest() -> int:
     # "통과"로 넘긴 뒤 gencontent가 적재하는 자리에서야 드러났다.
     lex_dup = _LEX_BASE.rstrip("\n") + "\n    - {id: w-check, en: check, ipa: /x/, ko: 확인, icon: board, example: e2}\n"
     cases.append(("V10 (duplicate bank word id)", lex_dup, _seed_with_sentences(_good_sentences()), "V10", False))
+
+    # V11 — 따옴표 없는 `off`. YAML이 불리언으로 읽어 `en`이 False가 된다. 실제로
+    # icu-cardiogenic 저작자가 여기 걸렸고, 그때 검사기가 낸 말은 V2(어형 불일치)라
+    # 원인과 아무 상관이 없었다.
+    lex_bool = _LEX_BASE.rstrip("\n") + "\n    - {id: w-off, en: off, ipa: /x/, ko: 끔, icon: board, example: e}\n"
+    cases.append(("V11 (bare off parsed as boolean)", lex_bool, _seed_with_sentences(_good_sentences()), "V11", False))
 
     ok = True
     print("=== verify_lesson_content.py selftest ===")
