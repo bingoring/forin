@@ -210,7 +210,12 @@ IRREGULAR = {
     # **다 넣지는 않는다.** 이 분야에서 값이 비싼 것들은 뺐다.
     #   `wound`(상처)는 `wind`(감다)의 과거형이기도 하다 — 상처는 이 콘텐츠의 중심 낱말이다.
     #   `shot`(주사)은 `shoot`(쏘다)의 과거형이기도 하다 — "a flu shot"이 훨씬 흔하다.
-    #   `tore`·`torn`은 `tear`가 눈물이기도 해서 앞서 뺐고, 그대로 둔다.
+    #   `tore`·`torn`은 한때 뺐다 — `tear`가 눈물이기도 해서였다. 데이터 없이 내린
+    #   판단이었고, 콘텐츠 아흔여섯 주제를 뒤져 보니 되돌리는 쪽이 맞았다. `tear`는
+    #   은행에 넉 군데 있는데 **셋이 "찢어짐"**(대동맥 박리·경동맥 박리)이고 눈물은
+    #   하나뿐이다. 찢어지는 쪽이 훨씬 흔하고, 수술실에서는 장갑이 찢어진다.
+    #   두 뜻이 한 자리에 모이는 값은 치르되(같은 철자라 어차피 헤드워드가 같다),
+    #   `torn`·`tore`가 통째로 버려지는 것은 막는다.
     #   `bore`·`borne`은 `bloodborne`·`airborne`과 얽혀 값이 비싸다.
     #   `lay`는 `lie`의 과거형이자 `lay`의 원형이라 어느 쪽으로도 모을 수 없다.
     "arisen": "arise",
@@ -264,6 +269,11 @@ IRREGULAR = {
     "swept": "sweep",
     "swore": "swear",
     "sworn": "swear",
+    "tore": "tear",
+    "torn": "tear",
+    # `overshot`은 접두사 규칙이 못 잡는다 — `shot`을 일부러 표에서 뺐기 때문이다.
+    # 그래서 이것만 따로 넣는다. `shot`(주사)은 그대로 지켜진다.
+    "overshot": "overshoot",
     "swum": "swim",
     "swung": "swing",
     "wept": "weep",
@@ -1165,7 +1175,9 @@ _STEM_CASES = [
     # 값이 비싸서 **일부러 넣지 않은** 짝들. 이 넷이 표를 넓히는 손을 막는다.
     ("Let me look at the wound on his leg.", "wind", False),
     ("He is due for a flu shot.", "shoot", False),
-    ("The gown is torn at the shoulder.", "tear", False),
+    ("The gown is torn at the shoulder.", "tear", True),
+    ("We overshot — her temperature is climbing too high.", "overshoot", True),
+    ("He is due for a flu shot.", "overshoot", False),
     ("We follow bloodborne precautions here.", "bear", False),
     # ⑳ `-ic` 형용사의 부사는 `-ically`다. `-ly`만 떼면 `systematical`이 남아 갈린다
     #    (or-count 에서 보고됨). `-ical`을 `-ic`으로 마저 모아 양쪽을 만나게 했다.
