@@ -500,6 +500,20 @@ S_SINGULAR = frozenset({"lens", "bias", "canvas", "atlas", "pancreas"})
 # 규칙으로는 못 한다. `gently`의 앞부분 `gent`와 `badly`의 앞부분 `bad`를 낱말 모양만
 # 보고 가를 방법이 없는데, `bad`/`badly`는 지금 제대로 만나고 있어 건드리면 그쪽이 깨진다.
 # 그래서 표로 둔다.
+# `-ee`로 끝나는 동사의 과거형. `-ed`가 붙어 `-eed`가 되는데, `-eed`는 어미로 보지 않는
+# 예외에 걸려 원형과 갈린다. `agree`/`agreed`가 or-preop-verification 에서 보고됐다.
+#
+# 코드 주석에 "이 분야에서 드물어 감수한다"고 적어 뒀던 자리다. 실제로 걸렸으니 그
+# 판단이 틀렸다. `-eed` 예외 자체는 그대로 둔다 — `bleed`·`feed`·`need`·`speed`는
+# 어미가 아니라 낱말이고, 그쪽이 훨씬 흔하다. 예외의 예외만 표로 판다.
+EED_PAST = {
+    "agreed": "agree",
+    "disagreed": "disagree",
+    "freed": "free",
+    "guaranteed": "guarantee",
+    "decreed": "decree",
+}
+
 LE_ADVERB = {
     "ably": "able",
     "audibly": "audible",
@@ -638,6 +652,8 @@ def stem(tok: str) -> str:
         t = IRREGULAR[t]
     elif t in COMPARATIVE:
         t = COMPARATIVE[t]
+    elif t in EED_PAST:
+        t = EED_PAST[t]
     elif t in LE_ADVERB:
         t = LE_ADVERB[t]
     elif t in FVES_PLURAL:
@@ -1175,6 +1191,15 @@ _STEM_CASES = [
     # 낱말 모양만 보고 가를 수 없어 표로 둔 이유다.
     ("He is breathing badly right now.", "bad", True),
     ("We can move you safely now.", "safe", True),
+    # ㉓ `-ee` 동사의 과거형. `-eed` 예외에 걸려 원형과 갈렸다
+    #    (or-preop-verification 에서 보고됨). 예외 자체는 남기고 예외의 예외만 표로 판다.
+    ("Let me clarify exactly what you've agreed to.", "agree", True),
+    ("Her hands are freed now that the restraints are off.", "free", True),
+    # `-eed` 예외가 지켜야 하는 쪽. 표를 규칙으로 바꾸면 이 넷이 먼저 깨진다.
+    ("She is bleeding from the wound.", "bleed", True),
+    ("We are feeding him slowly.", "feed", True),
+    ("He needed two units.", "need", True),
+    ("Let's proceed with the case.", "proceed", True),
     # 겉모양이 같아도 비교급이 아닌 것들. 전수 조사에서 가장 흔했던 축이다.
     ("I'll flush the catheter now.", "cat", False),
     ("Let me call the interpreter for you.", "interpret", False),
