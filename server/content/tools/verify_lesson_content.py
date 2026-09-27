@@ -801,7 +801,17 @@ def dangling_chunks(chunks: list[str]) -> list[str]:
         if not rest.strip(" " + "".join(SENTENCE_PUNCT_START)):
             continue  # 뒤가 구두점뿐이다
         toks = c.strip().rstrip(",;:").split()
-        if toks and toks[-1].lower() in DANGLING_TAIL:
+        if not toks:
+            continue
+        # 홀로 선 대문자 한 글자는 관사가 아니라 **라벨**이다 — `plan A`, `specimen B`,
+        # `site C`. 소문자로 내려 비교하면 `A`가 관사 `a`로 읽혀 멀쩡한 청크가 거절된다
+        # (or-specimen 과 or-difficult-airway 에서 두 번 걸렸다).
+        #
+        # 다만 문장 맨 앞의 `A`는 진짜 관사일 수 있다("A patient is waiting"). 그래서
+        # **첫 조각의 첫 낱말일 때만** 예외를 주지 않는다.
+        if len(toks[-1]) == 1 and toks[-1].isupper() and not (i == 0 and len(toks) == 1):
+            continue
+        if toks[-1].lower() in DANGLING_TAIL:
             out.append(c)
     return out
 
@@ -1453,6 +1463,18 @@ def run_selftest() -> int:
       goal: 1
 """ + _good_sentences().split("  sentences:\n", 1)[1]
     cases.append(("V9 (chunk cut mid-phrase)", _LEX_BASE, _seed_with_sentences(v9), "V9", False))
+
+    # V9 예외 — 홀로 선 대문자 한 글자는 관사가 아니라 라벨이다(`plan A`·`specimen B`).
+    # 소문자로 내려 비교하던 탓에 멀쩡한 청크가 두 번 거절됐다.
+    v9ok = """
+  sentences:
+    - en: "If plan A fails, check the name on the band."
+      ko: "A 계획이 안 되면 밴드의 이름을 확인합니다."
+      chunks: ["If plan A", "fails,", "check the name", "on the band", "."]
+      words: [w-check, w-name, w-band]
+      goal: 1
+""" + _good_sentences().split("  sentences:\n", 1)[1]
+    cases.append(("V9 exception (a bare capital letter is a label)", _LEX_BASE, _seed_with_sentences(v9ok), "", False))
 
     # V10 — 은행에 같은 id가 두 번 있다. 문장 쪽은 GOOD과 한 글자도 다르지 않다.
     # 실제로 er-poisoning 은행이 이 모양이었고(w-oxygen 두 번), 35개 주제를 전부
