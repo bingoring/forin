@@ -9402,6 +9402,60 @@
       chunks: ["Has anything", "like this", "happened before", "?"]
       words: [w-happen, w-before]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-scale
+    cue: 'Patient: "On a scale of one to ten? Honestly, it''s an eight."'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 2
+    why: 보통 0~10 척도에서 1~3은 mild, 4~6은 moderate, 7~10은 severe로 묶어 말해요. 8이면 severe 쪽이에요. 차트에는 숫자를 그대로 적어요.
+    example: She rates her pain as severe, eight out of ten.
+    exKo: 통증을 10점 중 8점, 심하다고 평가해요.
+  - kind: swap
+    words:
+    - w-describe
+    - w-pain
+    - w-feel
+    who: 환자에게 · 통증 양상 문진
+    icon: me
+    before:
+    - 'Can you '
+    - characterize
+    - ' what the pain feels like?'
+    options:
+    - describe
+    - characterize
+    - qualify
+    answer: describe
+    notes:
+      describe: 환자가 자기 말로 풀어놓게 하는 쉬운 동사. 개방형 질문에 맞는다.
+      characterize: 차트·인계에서 쓰는 딱딱한 말(pain characterized as pressure). 환자에게는 시험 문제처럼 들린다.
+      qualify: '''자격을 갖추다''·''단서를 달다''로 읽혀 뜻이 흐려진다.'
+    why: 양상을 물을 때는 describe로 환자가 스스로 말하게 해요. characterize는 기록할 때의 말이에요.
+  - kind: context
+    words:
+    - w-start
+    - w-pain
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: When did the chest pain first start?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Onset of CP approx. 1 hr PTA, at rest.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: What was the time of onset of your symptoms?
+      ok: false
+      fix: When did the pain first start?
+    why: onset·PTA는 차트와 의료진끼리의 말이에요. 환자에게는 start처럼 쉬운 동사로 물어야 바로 대답해요.
 - theme: er-chestpain
   localeBound: [triage]
   title: 흉통 활력·ESI 등급
@@ -9424,7 +9478,7 @@
     - en: "I'm going to check your blood pressure and heart rate now."
       ko: "지금 혈압과 맥박을 확인할게요."
       chunks: ["I'm going to check", "your blood pressure", "and heart rate", "now", "."]
-      words: [w-check, w-bp, w-heart, w-rate, w-now]
+      words: [w-check, w-bp, w-rate]
       goal: 1
     - en: "Have you had any shortness of breath or sweating?"
       ko: "숨이 차거나 땀이 나는 증상이 있었나요?"
@@ -9439,13 +9493,48 @@
     - en: "Your heart rate and blood pressure tell me this needs urgent attention."
       ko: "맥박과 혈압을 보니 즉각적인 조치가 필요해 보여요."
       chunks: ["Your heart rate", "and blood pressure", "tell me", "this needs", "urgent attention", "."]
-      words: [w-heart, w-rate, w-bp]
+      words: [w-rate, w-bp]
       goal: 2
     - en: "I'm placing you in a higher priority so the doctor can see you sooner."
       ko: "우선순위를 높여서 의사가 더 빨리 봐드릴 수 있게 할게요."
       chunks: ["I'm placing you", "in a higher priority", "so the doctor", "can see you", "sooner", "."]
-      words: [w-priority, w-doctor]
+      words: [w-priority]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-breath
+    - w-clip
+    - w-finger
+    - w-priority
+    pairs:
+    - - shortness of
+      - breath
+    - - a clip on
+      - your finger
+    - - a higher
+      - priority
+    decoys:
+    - sweating
+    why: '''shortness of breath''는 호흡곤란을 뜻하는 굳은 표현이고, 산소포화도 측정기는 ''a clip on your finger''라고 쉽게 설명해요. 먼저 보게 되는 것은 ''a higher priority''예요.'
+  - kind: context
+    words:
+    - w-priority
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Chest pain, tachy at 118 — she's an ESI 2, needs a bed now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Triage: ESI 2, CP with tachycardia.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're an ESI 2, so you'll be roomed immediately.
+      ok: false
+      fix: I'm placing you in a higher priority so the doctor can see you sooner.
+    why: ESI 등급과 'roomed'는 의료진끼리의 말이에요. 환자에게는 우선순위를 올렸다는 것과 그 이유(더 빨리 진료)를 쉬운 말로 알려요.
 - theme: er-chestpain
   title: 심전도 준비 설명·안심
   tagline: "Wires all over my chest? Is this going to hurt?"
@@ -9477,7 +9566,7 @@
     - en: "Please try to stay still and relaxed for about ten seconds."
       ko: "약 10초 동안 가만히 편안하게 계셔 주세요."
       chunks: ["Please", "try to stay still", "and relaxed", "for about ten seconds", "."]
-      words: [w-stay, w-still, w-relax, w-second]
+      words: [w-stay, w-still, w-relax]
       goal: 2
     - en: "Let me know right away if you feel any discomfort."
       ko: "불편하시면 바로 말씀해 주세요."
@@ -9487,8 +9576,43 @@
     - en: "We'll have the results ready for the doctor in just a few minutes."
       ko: "몇 분 안에 의사 선생님께 드릴 결과가 준비될 거예요."
       chunks: ["We'll have", "the results ready", "for the doctor", "in just a few minutes", "."]
-      words: [w-result, w-ready, w-doctor, w-minute]
+      words: [w-result, w-ready]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-discomfort
+    - w-feel
+    cue: 'Patient: "The sticky pads feel a little cold and pull a bit, that''s all."'
+    scale:
+    - discomfort
+    - pain
+    - agony
+    answerAt: 0
+    why: 차갑고 살짝 당기는 정도면 discomfort 쪽이에요. 한국어로는 다 '불편하다·아프다'지만 영어는 온도가 달라요.
+    example: Let me know right away if you feel any discomfort.
+    exKo: 불편한 느낌이 들면 바로 말씀해 주세요.
+  - kind: swap
+    words:
+    - w-pad
+    - w-shock
+    - w-feel
+    who: 환자에게 · 12유도 전극 부착
+    icon: me
+    before:
+    - 'You''ll feel a few sticky '
+    - electrodes
+    - ', but no shocks at all.'
+    options:
+    - pads
+    - electrodes
+    - leads
+    answer: pads
+    notes:
+      pads: 환자가 바로 그림을 떠올리는 쉬운 말. 무엇이 몸에 붙는지 알 수 있다.
+      electrodes: 정확한 말이지만 '전기'가 들어간 의료진 용어라, 감전을 걱정하는 환자에게는 오히려 불안을 키운다.
+      leads: 의료진끼리 쓰는 말(전선, 또는 심전도의 유도)이라 환자에게는 낯설다.
+    why: 전극을 붙이며 안심시킬 때는 sticky pads처럼 쉬운 말로, 전기가 흐르지 않는다는 것을 함께 말해요.
 - theme: er-chestpain
   title: 위산 역류성 흉통 감별
   tagline: "It burns right here in the middle, especially after I eat."
@@ -9515,7 +9639,7 @@
     - en: "Do you taste anything sour in your mouth?"
       ko: "입에서 신맛이 느껴지시나요?"
       chunks: ["Do you taste", "anything sour", "in your mouth", "?"]
-      words: [w-taste, w-sour, w-mouth]
+      words: [w-taste, w-sour]
       goal: 1
     - en: "We still need to rule out your heart before we assume it's reflux."
       ko: "역류라고 생각하기 전에 먼저 심장 문제를 배제해야 해요."
@@ -9532,6 +9656,43 @@
       chunks: ["Have you taken", "any antacids", ", and did they help", "at all", "?"]
       words: [w-antacid, w-help]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-sour
+    - w-taste
+    - w-antacid
+    - w-rule
+    pairs:
+    - - a sour
+      - taste
+    - - take
+      - an antacid
+    - - rule out
+      - a heart attack
+    decoys:
+    - worse
+    why: 역류 때 입안에 도는 것은 'a sour taste', 제산제는 'take'로 먹고, 심장 원인은 'rule out'(검사로 배제)해요.
+  - kind: context
+    words:
+    - w-burn
+    - w-meal
+    - w-worse
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Does the burning get worse after meals?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Burning retrosternal CP, worse postprandially.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Is the pain retrosternal, and is it worse postprandially?
+      ok: false
+      fix: Is the burning behind your breastbone, and does it get worse after you eat?
+    why: retrosternal(흉골 뒤)·postprandial(식후)은 차트 말이에요. 환자에게는 breastbone·after you eat처럼 쉬운 말로 같은 것을 물어요.
 - theme: er-chestpain
   title: 근골격계 흉통(늑연골염) 감별
   tagline: "It hurts right when I press here, and it got worse after I moved boxes yesterday."
@@ -9575,6 +9736,43 @@
       chunks: ["This kind of pain", "usually isn't dangerous", ", but we'll still confirm", "with tests", "."]
       words: [w-pain, w-dangerous, w-confirm, w-test]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-press
+    - w-spot
+    - w-breath
+    - w-twist
+    pairs:
+    - - press on
+      - this spot
+    - - take a deep
+      - breath
+    - - twist
+      - side to side
+    decoys:
+    - at rest
+    why: 근골격 통증을 볼 때 하는 세 동작이에요 — 아픈 곳을 눌러 보고(press on this spot), 숨을 깊게 쉬게 하고(take a deep breath), 몸통을 좌우로 돌려 보게(twist side to side) 해요.
+  - kind: context
+    words:
+    - w-dangerous
+    - w-press
+    - w-confirm
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: It hurts when I press here, so it may be coming from your chest wall — but we'll still confirm with tests.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Pain's reproducible on palpation — could be costochondritis, but the ECG and labs are still pending.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your pain is reproducible on palpation, consistent with costochondritis.
+      ok: false
+      fix: It hurts when I press here, which often means it's coming from the chest wall — but we'll still check your heart.
+    why: reproducible on palpation(촉진 시 재현)은 의료진 말이에요. 환자에게는 '누르면 아프다'로 풀어 말하고, 그래도 심장은 검사로 확인한다는 것을 빼지 않아요 — 누르면 아프다는 것만으로 심장 원인이 배제되지는 않아요.
 - theme: er-chestpain
   localeBound: [triage]
   title: 전형적 STEMI 신속 트리아지
@@ -9597,17 +9795,17 @@
     - en: "Does the pain spread to your arm, jaw, or back?"
       ko: "통증이 팔이나 턱, 등 쪽으로 퍼지나요?"
       chunks: ["Does the pain spread", "to your arm", ", jaw", ", or back", "?"]
-      words: [w-pain, w-spread, w-arm, w-jaw, w-back]
+      words: [w-pain, w-spread, w-jaw, w-back]
       goal: 1
     - en: "We're getting an ECG right now and calling the doctor."
       ko: "지금 바로 심전도를 찍고 의사 선생님을 부를게요."
       chunks: ["We're getting", "an ECG", "right now", "and calling the doctor", "."]
-      words: [w-ecg, w-now, w-doctor, w-call]
+      words: [w-ecg, w-call]
       goal: 2
     - en: "You're sweating and pale — stay with me, help is coming."
       ko: "땀이 나고 창백하세요 — 저와 함께 있어요, 도움이 오고 있어요."
       chunks: ["You're sweating", "and pale", "— stay with me", ", help is coming", "."]
-      words: [w-sweat, w-pale, w-stay, w-help, w-come]
+      words: [w-sweat, w-pale, w-stay, w-help]
       goal: 1
     - en: "This could be your heart, so we need to act fast."
       ko: "심장 문제일 수 있어서 빠르게 대처해야 해요."
@@ -9617,8 +9815,41 @@
     - en: "Try to stay calm — the team is on its way."
       ko: "침착하게 계세요 — 팀이 곧 도착할 거예요."
       chunks: ["Try to stay calm", "— the team", "is on", "its way", "."]
-      words: [w-calm, w-team, w-way]
+      words: [w-calm, w-team]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sweat
+    cue: 'Nurse: "His shirt is soaked through and sweat is dripping off his forehead."'
+    scale:
+    - damp
+    - sweaty
+    - drenched
+    answerAt: 2
+    why: 옷이 젖고 땀이 떨어질 정도면 drenched 쪽이에요. 차트에는 보통 diaphoretic(발한)이라고 적어요.
+    example: He's pale and drenched in sweat.
+    exKo: 창백하고 땀에 흠뻑 젖어 있어요.
+  - kind: context
+    words:
+    - w-ecg
+    - w-call
+    - w-heart
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: This could be your heart, so we're getting an ECG right now and calling the doctor.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Bed 4, crushing chest pain, diaphoretic — I need an ECG and the doc now.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Possible STEMI — stat ECG, and I'm paging the attending.
+      ok: false
+      fix: This could be your heart, so we're getting a quick heart test and the doctor right now.
+    why: STEMI·stat·paging the attending은 의료진끼리의 말이에요. 환자에게는 같은 급함을 쉬운 말로 — 무엇을, 왜 서두르는지 알려 줘요.
 - theme: er-chestpain
   title: 비전형 흉통(당뇨 여성)
   tagline: "I'm not really in pain, just so tired and a bit nauseous — probably nothing."
@@ -9645,7 +9876,7 @@
     - en: "Even without chest pain, these symptoms can come from the heart."
       ko: "가슴 통증이 없어도 이런 증상이 심장에서 올 수 있어요."
       chunks: ["Even without chest pain", ", these symptoms", "can come", "from the heart", "."]
-      words: [w-chest, w-pain, w-symptom, w-come, w-heart]
+      words: [w-chest, w-pain, w-symptom, w-heart]
       goal: 1
     - en: "Because you have diabetes, I want to check your heart to be safe."
       ko: "당뇨가 있으시니 안전을 위해 심장을 확인하고 싶어요."
@@ -9662,6 +9893,40 @@
       chunks: ["Let's get", "an ECG", "and some blood work", "just to be thorough", "."]
       words: [w-ecg, w-blood, w-thorough]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-tired
+    cue: 'Patient: "I''m so wiped out I can barely make it to the bathroom."'
+    scale:
+    - a bit tired
+    - very tired
+    - exhausted
+    answerAt: 2
+    why: 화장실까지도 겨우 간다면 exhausted 쪽이에요. 여성·당뇨 환자는 흉통 없이 평소와 다른 심한 피로로 심장 증상이 오기도 해서 흘려듣지 않아요.
+    example: She's been unusually exhausted for three days.
+    exKo: 사흘째 평소와 다르게 기진맥진해 있어요.
+  - kind: swap
+    words:
+    - w-symptom
+    - w-heart
+    - w-pain
+    who: 환자에게 · 비전형 증상 설명
+    icon: me
+    before:
+    - 'Even without chest pain, these '
+    - anginal equivalents
+    - ' can come from the heart.'
+    options:
+    - symptoms
+    - anginal equivalents
+    - complaints
+    answer: symptoms
+    notes:
+      symptoms: 환자도 알아듣는 말. 피로·메스꺼움·숨참을 한데 묶어 부를 수 있다.
+      anginal equivalents: 흉통 대신 나타나는 호흡곤란·피로 같은 증상을 가리키는 의학 용어. 정확하지만 환자는 모른다.
+      complaints: chief complaint처럼 차트에 쓰는 말이라, 환자에게는 '불평'으로 들릴 수 있다.
+    why: 환자에게는 symptoms라고 해야 '가슴이 안 아파도 심장일 수 있다'는 말이 바로 전달돼요.
 - theme: er-chestpain
   title: 불안성 vs 심장성 감별
   tagline: "My heart's racing and I can't breathe — I feel like I'm going to die!"
@@ -9683,7 +9948,7 @@
     - en: "I'm right here with you — try to breathe slowly with me."
       ko: "제가 여기 있어요 — 저와 함께 천천히 숨을 쉬어봐요."
       chunks: ["I'm right here", "with you", "— try to breathe", "slowly with me", "."]
-      words: [w-breath]
+      words: [w-breathe]
       goal: 2
     - en: "Have you ever had panic attacks like this before?"
       ko: "예전에도 이런 공황발작을 겪으신 적 있나요?"
@@ -9705,6 +9970,40 @@
       chunks: ["Panic can feel", "exactly like", "a heart problem", ", so we check both", "."]
       words: [w-panic, w-feel, w-heart, w-problem]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-panic
+    cue: 'Patient: "My heart''s racing, I can''t breathe — I feel like I''m going to die!"'
+    scale:
+    - nervous
+    - anxious
+    - panicked
+    answerAt: 2
+    why: 숨을 못 쉬고 죽을 것 같다고 하면 panicked 쪽이에요. 다만 이 말만으로 공황이라 단정하지 않고, 진정시키면서 심장 검사를 함께 해요.
+    example: He's panicked, but we're still checking his heart.
+    exKo: 공황 상태지만 심장 검사는 그대로 해요.
+  - kind: context
+    words:
+    - w-rhythm
+    - w-normal
+    - w-sign
+    - w-heart
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Your heart rhythm looks normal so far, which is a good sign.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Sinus on the monitor, first ECG unremarkable — troponin's pending.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're in normal sinus rhythm with no acute ST changes.
+      ok: false
+      fix: Your heart rhythm looks normal so far, which is a good sign.
+    why: sinus rhythm·ST changes는 의료진 말이에요. 환자에게는 쉬운 말로 전하되 'so far'를 붙여 아직 검사가 끝나지 않았다는 것을 남겨요 — 첫 심전도가 정상이어도 심장 원인이 배제된 것은 아니에요.
 - theme: er-chestpain
   title: 증상 축소 환자
   tagline: "It's just a little tightness, I really don't want to make a fuss."
@@ -9731,7 +10030,7 @@
     - en: "Have you had any sweating, nausea, or arm discomfort?"
       ko: "땀이 나거나 메스껍거나 팔 불편감이 있었나요?"
       chunks: ["Have you had", "any sweating", ", nausea", ", or arm discomfort", "?"]
-      words: [w-sweat, w-nausea, w-arm, w-discomfort]
+      words: [w-sweat, w-nausea, w-discomfort]
       goal: 1
     - en: "It's my job to take this seriously, so please tell me everything."
       ko: "이걸 진지하게 받아들이는 게 제 일이니 다 말씀해 주세요."
@@ -9748,6 +10047,40 @@
       chunks: ["Sometimes small symptoms", "turn out", "to be important", ", so let's check them all", "."]
       words: [w-symptom, w-important, w-check]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-mild
+    - w-tightness
+    cue: 'Patient: "It''s just a little tightness, really. I don''t want to make a fuss."'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 0
+    why: 환자 말만 보면 mild 쪽이에요. 하지만 축소하는 환자는 실제보다 낮춰 말하기 쉬워서, 땀·메스꺼움·팔 불편감을 따로 물어 확인해요.
+    example: Even mild tightness matters.
+    exKo: 가벼운 조임도 중요해요.
+  - kind: context
+    words:
+    - w-detail
+    - w-help
+    - w-symptom
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: You don't need to downplay it — every detail helps me help you.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: She's minimizing her symptoms, but she's diaphoretic — I'm not letting this go.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're minimizing your symptoms.
+      ok: false
+      fix: You don't need to downplay it — every detail helps me help you.
+    why: minimizing은 의료진이 환자의 태도를 전하거나 기록할 때 쓰는 말이에요. 환자 본인에게 하면 탓하는 것처럼 들려서, 말해도 괜찮다는 쪽으로 바꿔 말해요.
 - theme: er-chestpain
   title: 재발 환자 재평가
   tagline: "This feels just like the last time I was here, when they put in a stent."
@@ -9784,13 +10117,51 @@
     - en: "Compared to last time, does this feel stronger or weaker?"
       ko: "지난번과 비교했을 때 더 심한가요, 아니면 덜한가요?"
       chunks: ["Compared to last time", ", does this feel", "stronger", "or weaker", "?"]
-      words: [w-compare, w-time, w-feel]
+      words: [w-compare, w-feel]
       goal: 1
     - en: "I'll let the cardiology team know about your history right away."
       ko: "심장내과 팀에 바로 병력을 알릴게요."
       chunks: ["I'll let", "the cardiology team know", "about your history", "right away", "."]
       words: [w-team, w-history]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-take
+    - w-medicine
+    - w-prescribe
+    - w-previous
+    - w-event
+    pairs:
+    - - take
+      - your medicine
+    - - as
+      - prescribed
+    - - previous heart
+      - event
+    decoys:
+    - stronger
+    why: 약은 'take'로 먹고, 정해진 용법대로는 'as prescribed', 지난번 심근경색·시술은 'previous heart event'라고 묶어 불러요.
+  - kind: context
+    words:
+    - w-medicine
+    - w-take
+    - w-prescribe
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Have you been taking your heart medicines as prescribed?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Reports missing antiplatelet doses x 1 week.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Have you been noncompliant with your medications?
+      ok: false
+      fix: Have you been able to take your heart medicines every day?
+    why: noncompliant는 환자 탓으로 들리는 말이라 미국 병원에서도 adherence(복약 순응)라는 말로 바꿔 쓰는 추세예요. 환자에게는 판단 없이 '매일 드실 수 있었는지' 물으면 솔직한 답이 나와요.
 - theme: er-chestpain
   title: 흉통+언어장벽
   tagline: "Chest... hurt... here. English no good, sorry."
@@ -9812,28 +10183,81 @@
     - en: "Pain here? Point for me, please."
       ko: "아파요? 여기 짚어주세요."
       chunks: ["Pain here", "? Point for me", ", please", "."]
-      words: [w-pain, w-point, w-please]
+      words: [w-pain, w-point]
       goal: 1
     - en: "Pain now — one to ten? Show me with fingers."
       ko: "아파요, 지금? 1부터 10까지 손가락으로 보여주세요."
       chunks: ["Pain now", "— one to ten", "? Show me", "with fingers", "."]
-      words: [w-pain, w-now, w-show, w-finger]
+      words: [w-pain, w-show, w-finger]
       goal: 1
     - en: "An interpreter is coming. You are safe, we will help."
       ko: "통역사가 오고 있어요. 안전해요, 저희가 도와드릴게요."
       chunks: ["An interpreter", "is coming", ". You are safe", ", we will help", "."]
-      words: [w-interpreter, w-come, w-safe, w-help]
+      words: [w-interpreter, w-safe, w-help]
       goal: 2
     - en: "Nurse here. I check you now, okay?"
       ko: "간호사예요. 지금 확인할게요, 괜찮으시죠?"
       chunks: ["Nurse here", ". I check you", "now", ", okay", "?"]
-      words: [w-check, w-now]
+      words: [w-check]
       goal: 1
     - en: "Breathe slow. Good. You are okay."
       ko: "천천히 숨 쉬세요. 좋아요. 괜찮아요."
       chunks: ["Breathe slow", ". Good", ". You are okay", "."]
-      words: [w-breath, w-okay]
+      words: [w-okay, w-breathe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-finger
+    - w-show
+    cue: Patient holds up nine fingers and grimaces.
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 2
+    why: 손가락 아홉 개면 10점 중 9점, severe 쪽이에요. 말이 안 통해도 숫자는 손가락으로 확인할 수 있어요.
+    example: Pain nine out of ten by fingers — severe.
+    exKo: 손가락으로 10점 중 9점, 심한 통증.
+  - kind: swap
+    words:
+    - w-interpreter
+    who: 환자에게 · 통역 안내
+    icon: me
+    before:
+    - 'The '
+    - translator
+    - ' is on the phone now.'
+    options:
+    - interpreter
+    - translator
+    - family member
+    answer: interpreter
+    notes:
+      interpreter: 말을 옮기는 사람. 의료 통역은 이 말로 부른다.
+      translator: 글(문서)을 옮기는 사람. 일상에서는 섞어 쓰지만 병원에서는 둘을 구별한다.
+      family member: 가족 통역은 오역·사생활 문제가 있어 전문 통역이 있으면 권하지 않는다.
+    why: 미국 병원에서 말을 옮기는 사람은 interpreter예요. 전화·화상 통역도 같은 말로 불러요.
+  - kind: context
+    words:
+    - w-pain
+    - w-point
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Pain here? Point for me, please.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Ask her to point to where it hurts — she has almost no English.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Could you please indicate the precise location of your discomfort?
+      ok: false
+      fix: Pain here? Point for me, please.
+    why: 영어가 서툰 환자에게 길고 격식 있는 문장은 뜻이 같아도 전달되지 않아요. 짧은 단어와 몸짓으로 묻는 것이 이 자리에 맞아요.
 - theme: er-chestpain
   title: 니트로글리세린 투여 전 설명
   tagline: "You want me to put a pill under my tongue? What's it going to do to me?"
@@ -9870,13 +10294,51 @@
     - en: "Are you okay with taking this medicine now?"
       ko: "지금 이 약을 드시는 것에 동의하세요?"
       chunks: ["Are you okay", "with taking", "this medicine now", "?"]
-      words: [w-okay, w-take, w-medicine, w-now]
+      words: [w-okay, w-take, w-medicine]
       goal: 2
     - en: "I'll keep checking your blood pressure closely after you take it."
       ko: "약을 드신 후에는 혈압을 계속 자주 확인할게요."
       chunks: ["I'll keep checking", "your blood pressure", "closely", "after you take it", "."]
       words: [w-check, w-bp, w-take]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-tongue
+    - w-cause
+    - w-headache
+    - w-bp
+    pairs:
+    - - under
+      - your tongue
+    - - may cause
+      - a headache
+    - - check your
+      - blood pressure
+    decoys:
+    - lie flat
+    why: 설하정은 'under your tongue'에 넣고, 흔한 부작용은 'may cause a headache'라고 알려요. 혈압이 떨어질 수 있어 투여 후 'check your blood pressure'로 혈압을 계속 확인해요.
+  - kind: swap
+    words:
+    - w-lightheaded
+    - w-cause
+    - w-feel
+    who: 환자에게 · 부작용 설명
+    icon: me
+    before:
+    - 'It may cause a headache or make you feel '
+    - syncopal
+    - .
+    options:
+    - lightheaded
+    - syncopal
+    - hypotensive
+    answer: lightheaded
+    notes:
+      lightheaded: 환자가 직접 느끼는 감각(머리가 핑 도는)을 쉬운 말로 알려 준다.
+      syncopal: 실신한·실신할 듯한 상태를 가리키는 의학 용어. 환자는 알아듣지 못한다.
+      hypotensive: 혈압 수치를 가리키는 의료진 말이라 환자가 '느끼는' 것이 아니다.
+    why: 부작용은 환자가 느낄 감각으로 말해야 알아채고 알려 줄 수 있어요.
 - theme: er-chestpain
   title: 가족에게 상황 설명
   tagline: "Is my husband going to be okay? Nobody's told me anything!"
@@ -9898,28 +10360,65 @@
     - en: "Your husband is being closely monitored by our heart team right now."
       ko: "남편분은 지금 저희 심장팀이 계속 지켜보고 있어요."
       chunks: ["Your husband is", "being closely monitored", "by our heart team", "right now", "."]
-      words: [w-husband, w-monitor, w-team, w-now]
+      words: [w-monitor, w-team]
       goal: 1
     - en: "We're running tests on his heart and I'll update you as we learn more."
       ko: "심장 검사를 진행 중이고, 더 알게 되면 계속 알려드릴게요."
       chunks: ["We're running tests", "on his heart", "and I'll update you", "as we learn more", "."]
-      words: [w-test, w-heart, w-update, w-learn, w-more]
+      words: [w-test, w-heart, w-update, w-learn]
       goal: 1
     - en: "I know this is frightening — is there anything I can get for you?"
       ko: "무서우실 거예요 — 필요하신 게 있으면 가져다드릴까요?"
       chunks: ["I know this", "is frightening", "— is there anything", "I can get", "for you", "?"]
-      words: [w-know, w-frighten, w-get]
+      words: [w-frighten]
       goal: 2
     - en: "You're welcome to wait here, and I'll come find you with any news."
       ko: "여기서 기다리셔도 되고, 소식 있으면 제가 와서 알려드릴게요."
       chunks: ["You're welcome", "to wait here", ", and I'll come find you", "with any news", "."]
-      words: [w-wait, w-come, w-find, w-news]
+      words: [w-wait, w-find, w-news]
       goal: 2
     - en: "He's stable at the moment, and the doctors are taking good care of him."
       ko: "지금은 안정된 상태고, 의사 선생님들이 잘 돌봐주고 계세요."
       chunks: ["He's stable", "at the moment", ", and the doctors", "are taking good care", "of him", "."]
-      words: [w-stable, w-doctor, w-care]
+      words: [w-stable, w-care]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-monitor
+    - w-test
+    - w-find
+    - w-news
+    pairs:
+    - - closely
+      - monitored
+    - - running
+      - tests
+    - - come find you
+      - with any news
+    decoys:
+    - the chart
+    why: '''closely monitored''는 ''계속 지켜보고 있다''는 굳은 표현, ''run tests''는 검사를 하다, ''come find you with any news''는 소식이 있으면 직접 찾아가겠다는 약속이에요.'
+  - kind: swap
+    words:
+    - w-stable
+    - w-care
+    who: 보호자에게 · 현재 상태 설명
+    icon: me
+    before:
+    - 'He''s '
+    - hemodynamically stable
+    - ' at the moment, and the doctors are taking good care of him.'
+    options:
+    - stable
+    - hemodynamically stable
+    - totally fine
+    answer: stable
+    notes:
+      stable: 보호자도 알아듣고, 지금 상태를 사실대로 전한다.
+      hemodynamically stable: 의료진끼리의 말. 보호자에게는 어렵다.
+      totally fine: 아직 검사 중인데 문제없다고 약속하는 것처럼 들린다.
+    why: 보호자에게는 stable처럼 쉬우면서 사실을 넘지 않는 말로, 'at the moment'로 지금의 상태라는 것을 남겨요.
 - theme: er-chestpain
   title: 코카인 관련 흉통(젊은 환자)
   tagline: "My chest is pounding and tight... look, I might've used something last night, okay?"
@@ -9946,7 +10445,7 @@
     - en: "What did you use, and about what time was that?"
       ko: "무엇을 사용하셨고, 대략 몇 시쯤이었나요?"
       chunks: ["What did you use", ", and about", "what time", "was that", "?"]
-      words: [w-use, w-time]
+      words: [w-use]
       goal: 2
     - en: "This information matters because some treatments could be unsafe otherwise."
       ko: "이 정보가 중요한 이유는 일부 치료가 위험할 수 있어서예요."
@@ -9963,6 +10462,41 @@
       chunks: ["Certain heart medicines", "can be dangerous", "if you've used", "cocaine recently", "."]
       words: [w-heart, w-medicine, w-dangerous, w-cocaine]
       goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-use
+    who: 환자에게 · 약물 사용력 문진
+    icon: me
+    before:
+    - 'What did you '
+    - abuse
+    - ', and about what time was that?'
+    options:
+    - use
+    - abuse
+    - misuse
+    answer: use
+    notes:
+      use: 판단이 담기지 않은 중립적인 말. 미국 의료계가 권하는 표현이다.
+      abuse: 낙인을 찍는 말이라 환자가 입을 닫게 만든다.
+      misuse: '''잘못 썼다''는 평가가 들어간 말로, 주로 처방약을 정해진 대로 쓰지 않았을 때 쓴다.'
+    why: 약물 사용력을 물을 때는 use처럼 중립적인 말을 써야 환자가 솔직하게 말해요.
+  - kind: pair
+    words:
+    - w-confidential
+    - w-treat
+    - w-need
+    pairs:
+    - - stays
+      - confidential
+    - - the full
+      - picture
+    - - helps me
+      - treat you safely
+    decoys:
+    - cocaine
+    why: '''stays confidential''은 털어놓아도 된다는 약속, ''the full picture''는 판단이 아니라 치료에 필요해서 묻는다는 뜻, ''treat you safely''는 왜 알아야 하는지를 알려 줘요.'
 - theme: er-chestpain
   title: 고령 흉통+청력 저하
   tagline: "Eh? Speak up, dear — my chest's been troubling me since lunch."
@@ -9984,7 +10518,7 @@
     - en: "I'll speak slowly and face you — let me know if you can hear me."
       ko: "천천히 말하고 얼굴을 마주 볼게요 — 들리시면 말씀해 주세요."
       chunks: ["I'll speak slowly", "and face you", "— let me know", "if you can hear me", "."]
-      words: [w-speak, w-face, w-know, w-hear]
+      words: [w-speak, w-face, w-hear]
       goal: 1
     - en: "Can you point to where the pain is?"
       ko: "통증이 어디 있는지 짚어주시겠어요?"
@@ -10006,6 +10540,42 @@
       chunks: ["I'll write down", "your answers", "so we don't", "miss anything important", "."]
       words: [w-write, w-answer, w-miss, w-important]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-hear
+    - w-face
+    - w-write
+    pairs:
+    - - hearing
+      - aid
+    - - lip
+      - reading
+    - - pen and
+      - paper
+    decoys:
+    - loudly
+    why: 청력이 떨어진 환자와는 보청기(hearing aid)가 있는지 먼저 묻고, 입 모양을 읽을 수 있게(lip reading) 마주 보고, 필요하면 필담(pen and paper)을 써요.
+  - kind: swap
+    words:
+    - w-speak
+    - w-hear
+    who: 환자에게 · 청력 저하
+    icon: me
+    before:
+    - 'I''ll '
+    - shout
+    - ' so you can hear me.'
+    options:
+    - speak slowly and clearly
+    - shout
+    - whisper
+    answer: speak slowly and clearly
+    notes:
+      speak slowly and clearly: 마주 보고 천천히 또렷하게 말하는 것이 청력 저하 환자에게 가장 잘 들린다.
+      shout: 소리를 지르면 말소리가 일그러져 오히려 알아듣기 어렵고, 화난 것처럼 들린다.
+      whisper: 청력이 떨어진 환자에게는 들리지 않는다.
+    why: 잘 못 듣는 환자에게는 크게가 아니라 천천히, 또렷하게, 얼굴을 보며 말해요.
 - theme: er-chestpain
   title: 대동맥 박리 의심
   tagline: "It's a sharp, tearing pain that shot straight through to my back!"
@@ -10032,12 +10602,12 @@
     - en: "I need to check the blood pressure in both of your arms."
       ko: "양쪽 팔의 혈압을 확인해야 해요."
       chunks: ["I need", "to check the blood pressure", "in both", "of your arms", "."]
-      words: [w-check, w-bp, w-arm]
+      words: [w-check, w-bp]
       goal: 2
     - en: "I'm getting the doctor immediately — try to stay still."
       ko: "지금 바로 의사 선생님을 부를게요 — 가만히 계세요."
       chunks: ["I'm getting", "the doctor", "immediately", "— try to stay still", "."]
-      words: [w-doctor, w-stay, w-still]
+      words: [w-stay, w-still]
       goal: 2
     - en: "This kind of pain needs a scan of your chest and belly right away."
       ko: "이런 통증은 바로 가슴과 배 스캔이 필요해요."
@@ -10047,8 +10617,45 @@
     - en: "Try not to move too much until we know what's going on."
       ko: "무슨 상황인지 알 때까지 너무 많이 움직이지 마세요."
       chunks: ["Try not to move", "too much", "until we know", "what's going on", "."]
-      words: [w-move, w-know]
+      words: [w-move]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-bp
+    - w-scan
+    - w-stay
+    - w-still
+    pairs:
+    - - blood pressure in
+      - both arms
+    - - a CT
+      - scan
+    - - stay
+      - still
+    decoys:
+    - the jaw
+    why: 대동맥 박리가 의심되면 혈압을 양팔 모두(blood pressure in both arms) 재고, CT 스캔(a CT scan)을 서두르며, 환자는 움직이지 않게(stay still) 해요.
+  - kind: context
+    words:
+    - w-tear
+    - w-back
+    - w-pain
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Is the pain tearing or ripping, and does it go into your back?
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: Tearing chest pain radiating to the back, and the BP differs between arms.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Does the pain radiate to your interscapular region?
+      ok: false
+      fix: Does the pain go into your back, between your shoulder blades?
+    why: radiate·interscapular(견갑골 사이)는 의료진 말이에요. 환자에게는 go into your back, between your shoulder blades처럼 몸의 위치를 쉬운 말로 물어요.
 - theme: er-chestpain
   title: 폐색전 의심 흉통
   tagline: "It hurts to breathe and I've been so short of breath since my flight home."
@@ -10070,12 +10677,12 @@
     - en: "Does the pain get worse when you breathe in deeply?"
       ko: "숨을 깊이 들이쉴 때 통증이 심해지나요?"
       chunks: ["Does the pain", "get worse", "when you breathe in", "deeply", "?"]
-      words: [w-pain, w-worse, w-breath]
+      words: [w-pain, w-worse, w-breathe]
       goal: 1
     - en: "Have you had any long flights, surgery, or leg swelling recently?"
       ko: "최근에 장거리 비행이나 수술, 다리 붓기가 있었나요?"
       chunks: ["Have you had", "any long flights", ", surgery", ", or leg swelling", "recently", "?"]
-      words: [w-flight, w-surgery, w-leg, w-swell, w-recently]
+      words: [w-flight, w-surgery, w-swell, w-recently]
       goal: 2
     - en: "I'm going to check your oxygen level right away."
       ko: "지금 바로 산소포화도를 확인할게요."
@@ -10090,8 +10697,56 @@
     - en: "We'll get a scan to look closely at your lungs."
       ko: "폐를 자세히 보기 위해 스캔을 할게요."
       chunks: ["We'll get", "a scan", "to look closely", "at your lungs", "."]
-      words: [w-get, w-scan, w-lung]
+      words: [w-scan, w-lung]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breath
+    cue: 'Patient: "I can only say two or three words before I have to stop."'
+    scale:
+    - a little winded
+    - short of breath
+    - can't catch my breath
+    answerAt: 2
+    why: 두세 단어마다 말을 멈춰야 하면 가장 심한 쪽이에요. 한 문장을 끝까지 말하지 못하는 것은 심한 호흡곤란의 신호예요.
+    example: She can't catch her breath — speaking in two- to three-word phrases.
+    exKo: 숨을 못 고르고, 두세 단어씩 끊어 말해요.
+  - kind: pair
+    words:
+    - w-flight
+    - w-swell
+    - w-oxygen
+    pairs:
+    - - long
+      - flights
+    - - leg
+      - swelling
+    - - oxygen
+      - level
+    decoys:
+    - fever
+    why: 폐색전을 의심할 때 묻는 것들이에요 — 장거리 비행(long flights)으로 오래 앉아 있었는지, 한쪽 다리가 부었는지(leg swelling), 그리고 산소포화도(oxygen level).
+  - kind: swap
+    words:
+    - w-scan
+    - w-lung
+    who: 환자에게 · 검사 안내
+    icon: me
+    before:
+    - 'We''ll get a '
+    - CTPA
+    - ' to look closely at your lungs.'
+    options:
+    - scan
+    - CTPA
+    - pulmonary angiogram
+    answer: scan
+    notes:
+      scan: 환자에게 쉬운 말. 무엇을 하는지 바로 그려진다.
+      CTPA: 정확한 검사 이름(CT 폐동맥 조영술)이지만 약어라 환자는 모른다.
+      pulmonary angiogram: 의료진 용어라 환자에게는 어렵고 무겁게 들린다.
+    why: 환자에게는 scan이라고 하고, 무엇을 보려는지(lungs)를 함께 말해요.
 - theme: er-chestpain
   title: 심낭염
   tagline: "It's sharp, and it eases up when I lean forward but gets worse lying flat."
@@ -10118,7 +10773,7 @@
     - en: "Is the pain worse when you lie down or breathe in?"
       ko: "누우시거나 숨을 들이쉴 때 통증이 더 심해지나요?"
       chunks: ["Is the pain", "worse", "when you lie down", "or breathe in", "?"]
-      words: [w-pain, w-worse, w-lie, w-breath]
+      words: [w-pain, w-worse, w-lie, w-breathe]
       goal: 1
     - en: "Have you had a recent fever or viral illness?"
       ko: "최근에 열이 나거나 바이러스성 질환을 앓으셨나요?"
@@ -10128,13 +10783,52 @@
     - en: "This sharp, positional pain can point to inflammation around the heart."
       ko: "이렇게 날카롭고 자세에 따라 변하는 통증은 심장 주변 염증을 시사할 수 있어요."
       chunks: ["This sharp", ", positional pain", "can point to", "inflammation around the heart", "."]
-      words: [w-sharp, w-pain, w-point, w-inflammation, w-heart]
+      words: [w-sharp, w-pain, w-inflammation, w-heart]
       goal: 1
     - en: "Let's listen to your heart closely for any unusual sounds."
       ko: "특이한 소리가 있는지 심장을 자세히 들어볼게요."
       chunks: ["Let's listen", "to your heart", "closely", "for any unusual sounds", "."]
       words: [w-listen, w-heart, w-sound]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-sit
+    - w-lean
+    - w-lie
+    - w-viral
+    - w-illness
+    pairs:
+    - - sit up and
+      - lean forward
+    - - lie
+      - flat
+    - - viral
+      - illness
+    decoys:
+    - the heart
+    why: 심낭염 통증은 앉아서 앞으로 숙이면(sit up and lean forward) 덜하고 똑바로 누우면(lie flat) 심해지는 것이 특징이에요. 최근의 바이러스 질환(viral illness)이 흔한 선행 요인이에요.
+  - kind: context
+    words:
+    - w-inflammation
+    - w-sharp
+    - w-pain
+    - w-heart
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: This sharp pain that changes with position can point to inflammation around the heart.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Sharp, positional CP, better leaning forward — could be pericarditis.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your presentation is consistent with pericarditis.
+      ok: false
+      fix: This sharp pain that changes with position can point to inflammation around the heart.
+    why: presentation·pericarditis는 의료진끼리의 말이에요. 환자에게는 '심장 주위의 염증'처럼 무엇이 문제일 수 있는지 쉬운 말로 알려요.
 - theme: er-chestpain
   title: STEMI 확진 후 심도자실 이송
   tagline: "They're taking me somewhere now? What are they going to do to my heart?"
@@ -10161,7 +10855,7 @@
     - en: "The team will keep you monitored the whole way there."
       ko: "이동하는 내내 팀이 계속 지켜볼 거예요."
       chunks: ["The team will", "keep you monitored", "the whole way", "there", "."]
-      words: [w-team, w-monitor, w-way]
+      words: [w-team, w-monitor]
       goal: 2
     - en: "You may feel some pressure, but tell us about any new pain."
       ko: "압박감이 느껴질 수 있는데, 새로운 통증이 있으면 말씀해 주세요."
@@ -10178,6 +10872,43 @@
       chunks: ["Everything is set up", "and ready", "— try to stay", "relaxed for me", "."]
       words: [w-ready, w-stay, w-relax]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pressure
+    - w-feel
+    - w-pain
+    cue: 'Patient: "There''s a heavy pushing feeling in my wrist where they''re working."'
+    scale:
+    - pressure
+    - pain
+    - severe pain
+    answerAt: 0
+    why: 시술 부위를 누르는 묵직한 느낌은 pressure 쪽이고 흔히 있을 수 있어요. 새로운 흉통이나 날카로운 통증은 바로 알려 달라고 따로 말해 둬요.
+    example: You may feel some pressure, but tell us about any new pain.
+    exKo: 누르는 느낌이 들 수 있지만, 새로운 통증이 있으면 말해 주세요.
+  - kind: swap
+    words:
+    - w-block
+    - w-artery
+    - w-open
+    - w-cathlab
+    who: 환자에게 · 심도자실 이송 설명
+    icon: me
+    before:
+    - 'We''re taking you to the cath lab to open the '
+    - occluded
+    - ' artery.'
+    options:
+    - blocked
+    - occluded
+    - stenotic
+    answer: blocked
+    notes:
+      blocked: 환자가 바로 알아듣는 말. 막힌 것을 뚫는다는 목적이 분명해진다.
+      occluded: '''폐색된''이라는 의학 용어. 뜻은 같지만 환자에게는 어렵다.'
+      stenotic: '''좁아진''이라는 뜻의 의학 용어. 어렵고 뜻도 ''완전히 막힘''과 다르다.'
+    why: 환자에게는 blocked artery라고 해야 왜 지금 가는지가 한 번에 전달돼요.
 - theme: er-chestpain
   title: 흉통 중 급속 악화
   tagline: "I feel really... strange... everything's going gray..."
@@ -10204,12 +10935,12 @@
     - en: "I'm calling for help right now, don't close your eyes."
       ko: "지금 바로 도움을 부를게요, 눈을 감지 마세요."
       chunks: ["I'm calling", "for help", "right now", ", don't close your eyes", "."]
-      words: [w-call, w-help, w-now, w-close, w-eye]
+      words: [w-call, w-help, w-close]
       goal: 2
     - en: "We're going to take care of you — the team is coming."
       ko: "저희가 잘 돌봐드릴게요 — 팀이 오고 있어요."
       chunks: ["We're going", "to take care", "of you", "— the team is coming", "."]
-      words: [w-take, w-care, w-team, w-come]
+      words: [w-care, w-team]
       goal: 2
     - en: "Your color is changing, so we're moving fast."
       ko: "안색이 변하고 있어서 저희도 빨리 움직이고 있어요."
@@ -10219,8 +10950,42 @@
     - en: "Keep talking to me — tell me your name."
       ko: "계속 말씀해 보세요 — 성함을 말씀해 주세요."
       chunks: ["Keep talking", "to me", "— tell me", "your name", "."]
-      words: [w-talk, w-tell, w-name]
+      words: [w-talk, w-tell]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-voice
+    - w-hear
+    cue: His eyes keep closing, and he only answers when you call his name loudly.
+    scale:
+    - alert
+    - drowsy
+    - unresponsive
+    answerAt: 1
+    why: 크게 불러야 겨우 반응하면 drowsy 쪽이에요. 아직 반응은 있지만 의식이 떨어지는 중이라 곧바로 도움을 불러요.
+    example: He's getting drowsy — only responding to voice.
+    exKo: 점점 처지고, 목소리에만 반응해요.
+  - kind: context
+    words:
+    - w-call
+    - w-help
+    - w-stay
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Stay with me — I'm calling for help right now.
+      ok: true
+    - who: 동료에게
+      icon: siren
+      en: I need help in bed 6 now — he's going gray!
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're decompensating, so I'm escalating now.
+      ok: false
+      fix: Stay with me — I'm calling for help right now.
+    why: decompensating·escalating은 의료진끼리의 말이에요. 의식이 흐려지는 환자에게는 짧고 쉬운 말로 곁에 있다는 것과 도움을 부른다는 것을 알려요.
 - theme: er-chestpain
   title: NSTEMI 관찰 중 변화
   tagline: "The pain's creeping back and it's worse than before, nurse."
@@ -10247,23 +11012,58 @@
     - en: "I'm rechecking your vitals and getting a repeat ECG."
       ko: "활력징후를 다시 확인하고 심전도도 다시 찍을게요."
       chunks: ["I'm rechecking", "your vitals", "and getting", "a repeat ECG", "."]
-      words: [w-recheck, w-vital, w-get, w-ecg]
+      words: [w-recheck, w-vital, w-ecg]
       goal: 1
     - en: "I'll update the doctor right away about this change."
       ko: "이 변화에 대해 바로 의사 선생님께 알릴게요."
       chunks: ["I'll update", "the doctor", "right away", "about this change", "."]
-      words: [w-update, w-doctor, w-change]
+      words: [w-update, w-change]
       goal: 2
     - en: "You did the right thing by telling me it's back."
       ko: "다시 아프다고 말씀해주신 게 잘하신 거예요."
       chunks: ["You did", "the right thing", "by telling me", "it's back", "."]
-      words: [w-tell, w-back]
+      words: [w-tell]
       goal: 1
     - en: "Let's see if this new pain responds to your medicine."
       ko: "이 새로운 통증이 약에 반응하는지 봅시다."
       chunks: ["Let's see", "if this new pain", "responds to", "your medicine", "."]
-      words: [w-see, w-pain, w-respond, w-medicine]
+      words: [w-pain, w-respond, w-medicine]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-respond
+    - w-medicine
+    - w-pain
+    cue: 'Patient after nitro: "It went from a seven down to about a four."'
+    scale:
+    - no relief
+    - partial relief
+    - complete relief
+    answerAt: 1
+    why: 7에서 4로 줄었으면 partial relief예요. 줄긴 했지만 남아 있으니 계속 재사정하고 의료진에게 알려요.
+    example: Pain partially relieved with nitro, seven to four.
+    exKo: 니트로 후 통증이 7에서 4로 일부 완화.
+  - kind: context
+    words:
+    - w-update
+    - w-change
+    - w-ecg
+    scenes:
+    - who: 의사에게
+      icon: monitor
+      en: Bed 3, NSTEMI — chest pain is back at seven out of ten; repeat ECG is done. Can you come see her?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Recurrent CP 7/10, repeat ECG obtained, MD notified.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Recurrent CP, repeat ECG done — escalating to the MD.
+      ok: false
+      fix: I'll update the doctor right away about this change.
+    why: SBAR·차트 말투는 의료진끼리 주고받는 말이에요. 환자에게는 같은 내용을 '바로 의사에게 알리겠다'는 쉬운 말로 전해요.
 - theme: er-chestpain
   title: 불안정 협심증 야간 재발
   tagline: "It woke me right up — this tightness came on while I was just lying in bed."
@@ -10285,7 +11085,7 @@
     - en: "Did the pain come on while you were resting or asleep?"
       ko: "쉬고 계시거나 주무시는 중에 통증이 시작됐나요?"
       chunks: ["Did the pain come on", "while you were", "resting", "or asleep", "?"]
-      words: [w-pain, w-come, w-rest, w-asleep]
+      words: [w-pain, w-rest, w-asleep]
       goal: 1
     - en: "Is this happening more often or lasting longer than before?"
       ko: "이게 더 자주 일어나거나 예전보다 더 오래 가나요?"
@@ -10295,7 +11095,7 @@
     - en: "I'm going to reassess you and let the team know right now."
       ko: "지금 바로 다시 사정하고 팀에 알릴게요."
       chunks: ["I'm going to reassess you", "and let", "the team know", "right now", "."]
-      words: [w-reassess, w-team, w-know, w-now]
+      words: [w-reassess, w-team]
       goal: 2
     - en: "Waking up from sleep with chest pain is an important warning sign."
       ko: "잠을 자다 가슴 통증으로 깨는 건 중요한 경고 신호예요."
@@ -10307,6 +11107,43 @@
       chunks: ["Let's compare", "tonight's episode", "with the ones", "you had earlier", "."]
       words: [w-compare, w-episode]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-often
+    - w-happen
+    cue: 'Patient: "It used to come once a week. This week it''s been every single night."'
+    scale:
+    - rarely
+    - sometimes
+    - often
+    answerAt: 2
+    why: 매일 밤이면 often 쪽이에요. 전보다 자주·오래·쉬는 중에도 오는 것은 불안정 협심증을 의심하는 신호라서 바로 재사정해요.
+    example: Is this happening more often than before?
+    exKo: 전보다 더 자주 생기나요?
+  - kind: reel
+    words:
+    - w-episode
+    - w-compare
+    word: episode
+    scenes:
+    - who: 간호사 → 환자
+      en: Let's compare tonight's episode with the ones you had earlier.
+      ko: 오늘 밤 통증을 예전 것들과 비교해 봐요.
+      tone: 차분
+    - who: 야간 인계
+      en: Two episodes of chest pain at rest overnight — the team is aware.
+      ko: 밤사이 안정 시 흉통 두 차례, 팀에 보고됨.
+      tone: 경고
+    - who: 차트 기록
+      en: Episode of CP at rest 0310, resolved after NTG x1.
+      ko: 03:10 안정 시 흉통 1회, 니트로 1회 후 소실.
+      tone: 건조
+    - who: 환자에게 쉽게…
+      en: Tell me about this last one — how long did it last?
+      ko: 방금 그 통증 말씀해 주세요 — 얼마나 갔어요?
+      tone: 쉬움
+      swap: true
 
 # ######## source: cluster-cardioresp.yaml ########
 - theme: er-arrhythmia
