@@ -156,7 +156,7 @@
     GET /me/lesson/{scenarioId}
     → { situation, steps: [ {kind, state, count}… ], words: [...], sentences: [...] }
 
-`state`는 `done | now | lock | skip`. `skip`은 레벨별 건너뛰기(스펙 §4).
+`state`는 `done | now | lock | skip | empty`. `skip`은 레벨별 건너뛰기(스펙 §4), `empty`는 콘텐츠 미저작(스펙 §6 결정 3).
 
 **`choices` → `guided` 개명**
 - `GuideChoices "choices"` → `GuideGuided "guided"`. `GuideFree`는 그대로.
@@ -165,13 +165,18 @@
 - 계약을 재생성하고 드리프트 0을 확인한다.
 
 **단계**
-- [ ] 1. 개명과 하위 호환을 쓰는 실패 테스트 — `guided`와 `choices` 둘 다 같은 회차로 풀린다
-- [ ] 2. 실패 확인 → 구현 → 통과 확인. **하위 호환을 지워 보고 테스트가 실패하는지 확인한다**
-- [ ] 3. `/me/lesson/{scenarioId}` 실패 테스트 — 건너뛴 단계가 `skip`으로 오고,
+- [x] 1. 개명과 하위 호환을 쓰는 실패 테스트 — `guided`와 `choices` 둘 다 같은 회차로 풀린다
+- [x] 2. 실패 확인 → 구현 → 통과 확인. **하위 호환을 지워 보고 테스트가 실패하는지 확인한다**
+- [x] 3. `/me/lesson/{scenarioId}` 실패 테스트 — 건너뛴 단계가 `skip`으로 오고,
       **개수가 고정값이 아니라 실제 콘텐츠를 따른다**
-- [ ] 4. 실패 확인 → 구현 → 통과 확인
-- [ ] 5. 계약 재생성, 드리프트 확인
-- [ ] 6. 커밋
+- [x] 4. 실패 확인 → 구현 → 통과 확인
+- [x] 5. 계약 재생성, 드리프트 확인
+- [x] 6. 커밋
+
+**구현하며 더한 것(2026-09-30).** 문장과 단어 은행이 번들에는 있었지만 DB 시드에서 빠지고 있었다 —
+마이그레이션 000040(`scenarios.sentences`, `lexicons`, `lesson_step_clears`)으로 싣는다. 상태에
+`empty`가 더해졌고 STEP 1·2 완료를 쓰는 POST가 생겼다(스펙 §6 결정 3). **운영은 배포 후
+`seed.yml`을 한 번 돌려야 문장·단어가 DB에 들어간다.**
 
 ---
 
