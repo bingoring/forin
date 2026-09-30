@@ -1,0 +1,392 @@
+theme: er-dyspnea
+changes:
+- kind: sentence
+  situation: 호흡곤란 초기 문진
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 산소포화·호흡수 사정 설명
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 산소포화·호흡수 사정 설명
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 비강 캐뉼라 산소 적용
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 비강 캐뉼라 산소 적용
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: sentence
+  situation: 과호흡 증후군 진정 코칭
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-four 태그를 뺐다
+- kind: sentence
+  situation: 상기도 감염성 호흡곤란 문진
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-home 태그를 뺐다
+- kind: sentence
+  situation: 급성 폐부종 기좌호흡
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 무증상 저산소(행복한 저산소) 인지
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-number 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 호흡곤란 핵심
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-yes·w-no 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 호흡곤란 핵심
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-yes·w-no 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 호흡곤란 핵심
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-yes·w-head·w-no 태그를 뺐다
+- kind: sentence
+  situation: 신경근질환 환기저하
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-day 태그를 뺐다
+- kind: sentence
+  situation: 신경근질환 환기저하
+  index: 3
+  fields:
+  - words
+  why: w-close(가까운)는 여기서 부사 closely — 다른 낱말이라 태그를 뺐다
+- kind: sentence
+  situation: 신경근질환 환기저하
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-today 태그를 뺐다
+- kind: sentence
+  situation: 산소요법 목표치 소통
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-number 태그를 뺐다
+- kind: sentence
+  situation: 불안 동반 호흡곤란 감별
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 상기도 폐쇄 급성 대응
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 상기도 폐쇄 급성 대응
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 기관삽관 준비·RSI 보조
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-good·w-go 태그를 뺐다
+- kind: sentence
+  situation: I형 호흡부전 급속 악화
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: I형 호흡부전 급속 악화
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 후두부종 아나필락시스 기도
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다; w-close(가까운)는 여기서 airway is closing(막히다)이라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 삽관 후 갑작스런 악화(DOPE)
+  index: 1
+  fields:
+  - words
+  why: w-still(가만히)은 여기서 still in place(여전히)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 대량 객혈 기도확보
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-good 태그를 뺐다
+- kind: sentence
+  situation: 대량 객혈 기도확보
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 기관절개 튜브 폐쇄·이탈
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-right 태그를 뺐다
+- kind: sentence
+  situation: 기관절개 튜브 폐쇄·이탈
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: word-remove
+  id: w-now
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-home
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-good
+  why: 공통 쉬운 단어 목록 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-four
+  why: 너무 쉬움(숫자 four — 공통 목록의 zero·ten과 같은 부류); 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-yes
+  why: 너무 쉬움(yes) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-no
+  why: 너무 쉬움(no) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-number
+  why: 너무 쉬움 — 또 w-level과 ko(수치)가 같아 듣고 뜻 고르기에서 정답이 둘이었다; 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-right
+  why: '''right away''는 w-away 하나로 가르친다(헤드워드를 right away로) — 같은 문장에 바로/즉시가 겹쳐 태그됐다; 어느 문장도 태그하지 않게 됐다'
+- kind: word
+  id: w-take
+  fields:
+  - ko
+  why: 문장 네 개가 모두 take a breath — 재다는 쓰이지 않는 뜻
+- kind: word
+  id: w-listen
+  fields:
+  - ko
+  why: 청진하다는 auscultate의 뜻 — listen은 듣다(er-asthma-copd와 같게)
+- kind: word
+  id: w-back
+  fields:
+  - ko
+  why: w-again과 ko(다시)가 같아 정답이 둘 — get your oxygen back up은 원래대로 되돌리는 것
+- kind: word
+  id: w-close
+  fields:
+  - ko
+  why: 가까운·닫히다가 묶여 있었다 — 남은 문장은 keep a close eye뿐이라 가까운
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: 맑게 하다는 어긋난 뜻 — clear your throat·keep the airway clear·clear any blockage는 막힌 것을 치우는 것
+- kind: word
+  id: w-turning
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(turning)
+- kind: word
+  id: w-calling
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(calling)
+- kind: word
+  id: w-stay
+  fields:
+  - ko
+  why: w-keep과 ko(유지하다)가 겹쳤다 — 문장은 stay calm·stay still이라 그 상태로 있다
+- kind: word
+  id: w-drawn
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(drawn)를 구동사 원형 draw up으로 — 문장은 drawn up(er-asthma-copd의 w-draw-up과 같게)
+- kind: word
+  id: w-labeled
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(labeled)를 원형으로 — ko도 동사로
+- kind: word
+  id: w-responding
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(responding)
+- kind: word
+  id: w-falling
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(falling)
+- kind: word
+  id: w-dropped
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(dropped)
+- kind: word
+  id: w-preparing
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(preparing)
+- kind: word
+  id: w-swelling
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(swelling)
+- kind: word
+  id: w-place
+  fields:
+  - ko
+  why: w-position과 ko(위치)가 같아 정답이 둘 — 문장은 in place·out of place라 제자리
+- kind: word
+  id: w-climbing
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로 — ko는 이미 원형이었다(climbing)
+- kind: word
+  id: w-bleeding
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(bleeding)를 원형으로 — ko도 동사로
+- kind: word
+  id: w-away
+  fields:
+  - en
+  - ipa
+  why: 문장은 'right away'뿐 — away만으로는 즉시라는 뜻이 안 선다(er-abdominal·er-asthma-copd와 같게)
+- kind: sentence
+  situation: 신경근질환 환기저하
+  index: 1
+  fields:
+  - ko
+  why: keyPhrase ko — '목을 헛기침하기'는 clearing your throat의 뜻이 아니다(en 그대로)
+- kind: sentence
+  situation: 상기도 폐쇄 급성 대응
+  index: 0
+  fields:
+  - ko
+  why: keyPhrase ko — 인과가 뒤집혀 있었다(en 그대로)
+- kind: sentence
+  situation: 신경근질환 환기저하
+  index: 2
+  fields:
+  - ko
+  why: ever≠자꾸, '잘못된 길로 넘어가다' 직역이 어색 — 사레로
+- kind: sentence
+  situation: 급성 폐부종 기좌호흡
+  index: 2
+  fields:
+  - words
+  why: w-get 태그를 뺐다 — '얻다·적용하다' 두 뜻 묶음이고 간호사가 이미 아는 말
+- kind: sentence
+  situation: 폐렴성 저산소증 사정
+  index: 4
+  fields:
+  - words
+  why: w-get 태그를 뺐다 — '얻다·적용하다' 두 뜻 묶음이고 간호사가 이미 아는 말
+- kind: sentence
+  situation: 비침습환기(BiPAP) 설명
+  index: 1
+  fields:
+  - words
+  why: w-get 태그를 뺐다 — '얻다·적용하다' 두 뜻 묶음이고 간호사가 이미 아는 말
+- kind: sentence
+  situation: 상기도 폐쇄 급성 대응
+  index: 3
+  fields:
+  - words
+  why: w-get 태그를 뺐다 — '얻다·적용하다' 두 뜻 묶음이고 간호사가 이미 아는 말
+- kind: sentence
+  situation: I형 호흡부전 급속 악화
+  index: 4
+  fields:
+  - words
+  why: w-get 태그를 뺐다 — '얻다·적용하다' 두 뜻 묶음이고 간호사가 이미 아는 말
+- kind: sentence
+  situation: 후두부종 아나필락시스 기도
+  index: 4
+  fields:
+  - words
+  why: w-get 태그를 뺐다 — '얻다·적용하다' 두 뜻 묶음이고 간호사가 이미 아는 말
+- kind: word-remove
+  id: w-get
+  why: 두 뜻 묶음 ko('얻다·적용하다')가 어느 문장에도 맞지 않고 get은 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-plug
+  fields:
+  - ko
+  why: 문장은 mucus plug — '마개'는 다른 뜻, '막힘'은 w-blockage와 같아 정답이 둘
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: 문장은 'Run through DOPE' — 점검 목록을 차례로 훑다

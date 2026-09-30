@@ -15643,13 +15643,47 @@
     - en: "Are you having trouble breathing right now?"
       ko: "지금 숨쉬기 힘드신가요?"
       chunks: ["Are you having", "trouble breathing", "right now", "?"]
-      words: [w-trouble, w-breathe, w-now]
+      words: [w-trouble, w-breathe]
       goal: 1
     - en: "Does sitting up help you breathe?"
       ko: "앉으면 숨쉬기가 좀 편해지나요?"
       chunks: ["Does sitting up", "help you", "breathe", "?"]
       words: [w-sit, w-help, w-breathe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breath
+    - w-trouble
+    cue: 'Patient: "I only notice it when I climb the stairs."'
+    scale:
+    - a bit winded
+    - short of breath
+    - gasping for air
+    answerAt: 0
+    why: 계단을 오를 때만 숨이 차면 가벼운 쪽(a bit winded)이에요. 말을 이어 가지 못할 만큼 헐떡이면 gasping for air예요. 트리아지에서는 한 문장을 끝까지 말할 수 있는지도 함께 봐요.
+    example: He gets a bit winded on the stairs.
+    exKo: 계단을 오르면 조금 숨이 차요.
+  - kind: swap
+    words:
+    - w-breath
+    - w-start
+    who: 환자에게 · 발병 시점 묻기
+    icon: me
+    before:
+    - 'When did the '
+    - dyspnea
+    - ' start?'
+    options:
+    - shortness of breath
+    - dyspnea
+    - air hunger
+    answer: shortness of breath
+    notes:
+      shortness of breath: 환자가 바로 알아듣는 말. '숨찬 게 언제부터예요?'가 그대로 전해진다.
+      dyspnea: 차트·의료진끼리 쓰는 말. 환자는 모를 수 있다.
+      air hunger: 숨이 모자라 허덕이는 특정한 느낌을 가리키는 표현이라, 처음 묻는 말로는 좁고 낯설다.
+    why: 환자에게는 shortness of breath로 묻고, 차트에는 dyspnea나 SOB로 적어요.
 
 - theme: er-dyspnea
   title: 산소포화·호흡수 사정 설명
@@ -15677,7 +15711,7 @@
     - en: "I'm counting how many breaths you take per minute."
       ko: "1분 동안 몇 번 숨 쉬는지 세고 있어요."
       chunks: ["I'm counting", "how many breaths", "you take", "per minute", "."]
-      words: [w-count, w-breath, w-take, w-minute]
+      words: [w-count, w-breath, w-take]
       goal: 1
     - en: "This won't hurt at all."
       ko: "이건 전혀 아프지 않아요."
@@ -15692,8 +15726,41 @@
     - en: "Your oxygen level looks okay right now."
       ko: "지금 산소 수치는 괜찮아 보이네요."
       chunks: ["Your oxygen level", "looks okay", "right now", "."]
-      words: [w-oxygen, w-level, w-now]
+      words: [w-oxygen, w-level]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-low
+    - w-little
+    cue: SpO2 just under the target range; the patient is comfortable and talking normally.
+    scale:
+    - a little low
+    - low
+    - dangerously low
+    answerAt: 0
+    why: 목표보다 살짝 낮고 환자가 편하면 a little low예요. 겁주지 않으면서 사실을 말하고, 산소를 줄 거라고 이어서 알려요.
+    example: Your oxygen is a little low, so we'll give you some.
+    exKo: 산소가 조금 낮아서 좀 드릴게요.
+  - kind: context
+    words:
+    - w-oxygen
+    - w-level
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: SpO2 91% on RA.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: Sats are 91 on room air.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your SpO2 is 91 percent on RA.
+      ok: false
+      fix: Your oxygen level is 91 — a little lower than we'd like.
+    why: SpO2·RA(room air)는 의료진끼리의 약어예요. 환자에게는 oxygen level처럼 풀어서 말해요.
 
 - theme: er-dyspnea
   title: 비강 캐뉼라 산소 적용
@@ -15721,7 +15788,7 @@
     - en: "I'm starting the oxygen at a low flow for now."
       ko: "지금은 낮은 유량으로 산소를 시작할게요."
       chunks: ["I'm starting", "the oxygen", "at a low flow", "for now", "."]
-      words: [w-start, w-oxygen, w-low, w-flow, w-now]
+      words: [w-start, w-oxygen, w-low, w-flow]
       goal: 1
     - en: "Can you breathe through your nose okay?"
       ko: "코로 숨 쉬는 건 괜찮으세요?"
@@ -15731,13 +15798,46 @@
     - en: "Let me know if it feels too dry or tickly."
       ko: "너무 건조하거나 간질거리면 알려 주세요."
       chunks: ["Let me know", "if it feels", "too dry", "or tickly", "."]
-      words: [w-know, w-feel, w-dry, w-tickly]
+      words: [w-feel, w-dry, w-tickly]
       goal: 2
     - en: "I'll adjust it if it's too tight."
       ko: "너무 조이면 조절해 드릴게요."
       chunks: ["I'll adjust it", "if it's", "too tight", "."]
       words: [w-adjust, w-tight]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-gently
+    - w-prong
+    cue: Placing the cannula prongs just inside the patient's nostrils.
+    scale:
+    - gently
+    - firmly
+    - forcefully
+    answerAt: 0
+    why: 캐뉼라 갈래는 콧구멍 바로 안쪽에 살짝 걸치면 돼요. 깊이 밀어 넣을 필요가 없고, 귀 뒤로 넘긴 줄도 너무 조이지 않게 해요.
+    example: The prongs go just inside your nose, gently.
+    exKo: 갈래가 코 안쪽으로 살짝 들어가요.
+  - kind: context
+    words:
+    - w-feel
+    - w-dry
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Let me know if your nose feels too dry.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt reports nasal dryness on 2 L NC.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Please report any nasal mucosal dryness.
+      ok: false
+      fix: Tell me if the inside of your nose feels dry.
+    why: mucosal 같은 말은 차트에 쓰는 말이에요. 환자에게는 몸으로 느끼는 쉬운 말로 물어요.
 
 - theme: er-dyspnea
   title: 과호흡 증후군 진정 코칭
@@ -15765,7 +15865,7 @@
     - en: "Breathe in for four, and out slowly for four with me."
       ko: "넷을 세며 들이쉬고, 넷을 세며 천천히 내쉬어요, 저랑 같이."
       chunks: ["Breathe in", "for four,", "and out slowly", "for four", "with me", "."]
-      words: [w-breathe, w-four, w-out, w-slow]
+      words: [w-breathe, w-out, w-slow]
       goal: 1
     - en: "Let's breathe in together, nice and slow."
       ko: "저랑 같이 천천히, 편안하게 숨 쉬어봐요."
@@ -15782,6 +15882,41 @@
       chunks: ["You're doing great —", "just keep", "breathing", "with me", "."]
       words: [w-great, w-keep, w-breathe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-safe
+    - w-tingling
+    cue: 'Patient: "My hands are tingling — I''m going to die, I can''t breathe!"'
+    scale:
+    - uneasy
+    - anxious
+    - panicked
+    answerAt: 2
+    why: '''죽을 것 같다''며 손이 저리다면 panicked 쪽이에요. 과호흡은 다른 원인을 배제하고 붙이는 진단이라, 코칭하면서도 SpO2·바이탈을 계속 봐요.'
+    example: She's panicked and breathing very fast.
+    exKo: 환자가 공황 상태로 아주 빠르게 숨 쉬고 있어요.
+  - kind: swap
+    words:
+    - w-safe
+    - w-slow
+    - w-together
+    who: 환자에게 · 과호흡 코칭
+    icon: me
+    before:
+    - ''
+    - Calm down
+    - ' — let''s slow your breathing down together.'
+    options:
+    - You're safe
+    - Calm down
+    - Stop panicking
+    answer: You're safe
+    notes:
+      You're safe: 안심부터 건넨다. 곁에서 같이 하겠다는 뒤 문장과 이어진다.
+      Calm down: 명령처럼 들려 공황 상태의 환자에게는 오히려 불안을 키우기 쉽다.
+      Stop panicking: 환자를 탓하는 말로 들린다.
+    why: 공황 상태의 사람에게 'calm down'은 역효과가 나기 쉬운 말로 꼽혀요. 안전하다고 알려 주고 같이 호흡하는 쪽이 효과적이에요.
 
 - theme: er-dyspnea
   title: 상기도 감염성 호흡곤란 문진
@@ -15814,7 +15949,7 @@
     - en: "Have you had a fever at home?"
       ko: "집에서도 열이 있었나요?"
       chunks: ["Have you had", "a fever", "at home", "?"]
-      words: [w-fever, w-home]
+      words: [w-fever]
       goal: 1
     - en: "Does your throat hurt or feel swollen?"
       ko: "목이 아프거나 부은 느낌이 있나요?"
@@ -15826,6 +15961,40 @@
       chunks: ["Does the cough", "make it", "hard to breathe", "?"]
       words: [w-cough, w-hard, w-breathe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-fever
+    - w-high
+    cue: 'Patient: "It was 100.4 when I checked at home."'
+    scale:
+    - low-grade fever
+    - fever
+    - high fever
+    answerAt: 1
+    why: 미국 병원은 100.4°F(38.0°C)부터 fever로 봐요 — 감염 선별의 기준선이라 '미열'로 낮춰 말하지 않아요. low-grade는 기준선 근처를 느슨하게 부르는 말이고, high fever는 대개 103°F(39.4°C) 안팎부터예요. 미국 환자는 화씨로 말하니 숫자를 그대로 적고 섭씨는 머릿속에서 바꿔요.
+    example: She's had a fever of 100.4 since yesterday.
+    exKo: 어제부터 100.4도(38.0℃) 열이 있어요.
+  - kind: context
+    words:
+    - w-cough
+    - w-bring
+    - w-anything
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Is the cough bringing anything up?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Productive cough, yellow sputum.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Is your cough productive?
+      ok: false
+      fix: Are you coughing anything up?
+    why: productive cough는 가래가 나오는 기침을 뜻하는 의료 용어예요. 환자는 '생산적'이라는 일상 뜻으로 알아듣기 쉬워서 쉬운 말로 물어요.
 
 - theme: er-dyspnea
   title: 급성 폐부종 기좌호흡
@@ -15858,18 +16027,58 @@
     - en: "I'm listening to your lungs and getting oxygen on you."
       ko: "폐 소리를 듣고 산소도 넣어드리고 있어요."
       chunks: ["I'm listening", "to your lungs", "and getting", "oxygen on you", "."]
-      words: [w-listen, w-lung, w-get, w-oxygen]
+      words: [w-listen, w-lung, w-oxygen]
       goal: 2
     - en: "Try not to lie flat right now."
       ko: "지금은 평평하게 눕지 않도록 해요."
       chunks: ["Try not to", "lie flat", "right now", "."]
-      words: [w-lie, w-flat, w-now]
+      words: [w-lie, w-flat]
       goal: 2
     - en: "Have you coughed up anything pink or frothy before?"
       ko: "전에도 분홍빛이나 거품 있는 기침을 하신 적 있나요?"
       chunks: ["Have you coughed up", "anything pink", "or frothy", "before", "?"]
       words: [w-cough, w-anything, w-pink, w-frothy]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-pink
+    - w-frothy
+    - w-lie
+    - w-flat
+    - w-fluid
+    - w-lung
+    pairs:
+    - - pink
+      - frothy sputum
+    - - lie
+      - flat
+    - - fluid
+      - in the lungs
+    decoys:
+    - a pulse
+    why: 급성 폐부종의 전형적인 가래는 pink, frothy sputum이에요. 누우면 숨이 더 차서(기좌호흡) lie flat을 피하고, 폐에 찬 것은 fluid in the lungs라고 말해요.
+  - kind: swap
+    words:
+    - w-fluid
+    - w-lung
+    - w-worry
+    who: 환자에게 · 소견 설명
+    icon: me
+    before:
+    - 'I''m worried there may be '
+    - pulmonary edema
+    - ' — that''s why we''re sitting you up.'
+    options:
+    - fluid in your lungs
+    - pulmonary edema
+    - water drowning your lungs
+    answer: fluid in your lungs
+    notes:
+      fluid in your lungs: 쉬운 말로 무엇이 걱정인지 전한다.
+      pulmonary edema: 의료진끼리의 진단명. 환자에게는 낯설다.
+      water drowning your lungs: 사실보다 무섭게 들려 숨찬 환자를 더 불안하게 한다.
+    why: 진단명은 차트와 의사 보고에 쓰고, 환자에게는 fluid in your lungs처럼 풀어서 말해요.
 
 - theme: er-dyspnea
   title: 폐렴성 저산소증 사정
@@ -15912,8 +16121,47 @@
     - en: "We'll get your oxygen back up."
       ko: "산소 수치를 다시 올려드릴게요."
       chunks: ["We'll get", "your oxygen", "back up", "."]
-      words: [w-get, w-oxygen, w-back]
+      words: [w-oxygen, w-back]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-take
+    - w-deep
+    - w-breath
+    - w-phlegm
+    - w-cough
+    - w-oxygen
+    - w-back
+    pairs:
+    - - take
+      - a deep breath
+    - - cough up
+      - phlegm
+    - - get your oxygen
+      - back up
+    decoys:
+    - a fever
+    why: 숨은 take a deep breath, 가래는 cough up phlegm, 떨어진 산소 수치를 되돌리는 건 get it back up이에요.
+  - kind: context
+    words:
+    - w-phlegm
+    - w-color
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: What color is the phlegm you're coughing up?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Productive cough with purulent green sputum.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Is your sputum purulent?
+      ok: false
+      fix: What color is it — clear, yellow, or green?
+    why: purulent·sputum은 차트에 쓰는 말이에요. 환자에게는 phlegm이나 mucus라고 하고, 색깔로 물어요.
 
 - theme: er-dyspnea
   title: 폐색전 의심 호흡곤란
@@ -15958,6 +16206,41 @@
       chunks: ["Point to", "where your leg", "feels swollen", "."]
       words: [w-point, w-leg, w-feel, w-swollen]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-suddenly
+    - w-start
+    cue: 'Patient: "I was fine, then I stood up and — boom — I couldn''t breathe."'
+    scale:
+    - gradually
+    - fairly quickly
+    - suddenly
+    answerAt: 2
+    why: 멀쩡하다가 한순간에 시작했다면 suddenly예요. 폐색전은 갑자기 시작하는 호흡곤란으로 오는 일이 흔해서 발병 속도를 꼭 물어요.
+    example: The shortness of breath started suddenly this morning.
+    exKo: 오늘 아침 갑자기 숨이 차기 시작했어요.
+  - kind: swap
+    words:
+    - w-swollen
+    - w-leg
+    - w-painful
+    who: 환자에게 · 다리 부종 묻기
+    icon: me
+    before:
+    - 'Is one of your legs more '
+    - edematous
+    - ' or painful?'
+    options:
+    - swollen
+    - edematous
+    - deformed
+    answer: swollen
+    notes:
+      swollen: 환자가 바로 알아듣는 말.
+      edematous: 차트에 쓰는 의료 용어. 환자에게는 어렵다.
+      deformed: 모양이 비틀어졌다는 뜻이라 묻는 내용이 달라진다.
+    why: 부종(edema)은 차트 말이에요. 환자에게는 swollen으로, 한쪽이 더 부었는지 물어요.
 
 - theme: er-dyspnea
   title: 비침습환기(BiPAP) 설명
@@ -15985,7 +16268,7 @@
     - en: "I'll hold it gently first so you can get used to it."
       ko: "먼저 살살 대드릴 테니 익숙해지시면 돼요."
       chunks: ["I'll hold it", "gently first", "so you can", "get used to it", "."]
-      words: [w-hold, w-gently, w-first, w-get, w-used]
+      words: [w-hold, w-gently, w-first, w-used]
       goal: 2
     - en: "Try to breathe with the machine — it works with you."
       ko: "기계와 같이 숨 쉬어보세요 — 기계가 맞춰줘요."
@@ -16002,6 +16285,40 @@
       chunks: ["This helps", "your lungs", "rest", "."]
       words: [w-help, w-lung, w-rest]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-tight
+    - w-face
+    cue: 'Patient: "It''s snug, but I can breathe okay with it."'
+    scale:
+    - snug
+    - tight
+    - painfully tight
+    answerAt: 0
+    why: 마스크는 새지 않을 만큼 꼭 맞아야 해서 snug이면 정상이에요. 아프다고 하면 끈을 조절하고, 콧등처럼 눌리는 피부에 압박 손상이 생기지 않았는지 봐요.
+    example: The mask should feel snug, not painful.
+    exKo: 마스크는 꼭 맞는 느낌이어야지, 아프면 안 돼요.
+  - kind: context
+    words:
+    - w-mask
+    - w-push
+    - w-air
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: This mask pushes air in to help you breathe easier.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: BiPAP is on at 10 over 5.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your IPAP is 10 and your EPAP is 5.
+      ok: false
+      fix: The mask gives you a push of air when you breathe in, and a little when you breathe out.
+    why: IPAP·EPAP 같은 설정 수치는 의료진끼리의 말이에요. 환자에게는 공기가 숨을 도와준다는 느낌으로 설명해요.
 
 - theme: er-dyspnea
   title: 무증상 저산소(행복한 저산소) 인지
@@ -16034,7 +16351,7 @@
     - en: "You don't feel short of breath, but your numbers are low."
       ko: "숨찬 느낌은 없으셔도 수치는 낮아요."
       chunks: ["You don't feel", "short of breath,", "but your numbers", "are low", "."]
-      words: [w-feel, w-breath, w-low, w-number]
+      words: [w-feel, w-breath, w-low]
       goal: 1
     - en: "We'll give oxygen and keep a close eye on you."
       ko: "산소를 드리고 계속 가까이서 지켜볼게요."
@@ -16046,6 +16363,44 @@
       chunks: ["This clip", "will show", "your oxygen level", "again", "."]
       words: [w-clip, w-show, w-oxygen, w-level, w-again]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-close
+    - w-eye
+    - w-watch
+    cue: SpO2 is low, but the patient says she feels fine.
+    scale:
+    - check on you now and then
+    - keep an eye on you
+    - keep a close eye on you
+    answerAt: 2
+    why: 증상이 없어도 산소가 낮으면 갑자기 나빠질 수 있어서 가장 촘촘한 keep a close eye on you가 맞아요. 느낌이 괜찮다는 말만 믿고 간격을 늘리지 않아요.
+    example: We'll give oxygen and keep a close eye on you.
+    exKo: 산소를 드리고 계속 가까이서 지켜볼게요.
+  - kind: reel
+    words:
+    - w-low
+    - w-oxygen
+    word: low
+    scenes:
+    - who: 간호사 → 의사
+      en: Her sats are low — 86 on room air, but she's talking in full sentences.
+      ko: 포화도가 낮아요 — 실내공기에서 86인데 문장으로 말은 해요.
+      tone: 보고
+    - who: 차트 기록
+      en: Low SpO2 (86% RA); no respiratory distress.
+      ko: SpO2 저하(실내공기 86%), 호흡곤란 징후 없음.
+      tone: 건조
+    - who: 교대 인계
+      en: Watch her sats — they've been running low all shift.
+      ko: 포화도 잘 봐 주세요 — 근무 내내 낮게 나왔어요.
+      tone: 경고
+    - who: 환자에게는…
+      en: Your oxygen is lower than we'd like, even though you feel okay.
+      ko: 느낌은 괜찮으셔도 산소 수치는 원하는 만큼 안 나와요.
+      tone: 완곡
+      swap: true
 
 - theme: er-dyspnea
   title: 흉수·기흉 감별 문진
@@ -16090,6 +16445,43 @@
       chunks: ["Does it hurt", "more on", "one side", "?"]
       words: [w-hurt, w-side]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-breath
+    - w-suddenly
+    - w-take
+    - w-deep
+    pairs:
+    - - breath
+      - sounds
+    - - come on
+      - suddenly
+    - - take
+      - a deep breath
+    decoys:
+    - gradual
+    why: 청진 소견은 breath sounds(호흡음), 증상이 시작된 양상은 come on suddenly, 숨은 take a deep breath로 짝지어요. gradual은 형용사라 come on 뒤에는 부사 gradually가 와요.
+  - kind: context
+    words:
+    - w-listen
+    - w-side
+    - w-chest
+    scenes:
+    - who: 의사에게
+      icon: monitor
+      en: Decreased breath sounds on the right side.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Diminished breath sounds, R lower lobe.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have diminished breath sounds on the right.
+      ok: false
+      fix: It sounds a bit quieter on your right side, so we're going to check why.
+    why: diminished breath sounds는 청진 소견을 의료진끼리 전하는 말이에요. 환자에게는 한쪽 소리가 작게 들린다고 쉽게 말하고, 다음에 무엇을 할지 알려요.
 
 - theme: er-dyspnea
   title: 언어장벽 호흡곤란 핵심
@@ -16112,12 +16504,12 @@
     - en: "Chest pain? Yes or no?"
       ko: "가슴 통증? 예, 아니오?"
       chunks: ["Chest pain", "?", "Yes", "or no", "?"]
-      words: [w-chest, w-pain, w-yes, w-no]
+      words: [w-chest, w-pain]
       goal: 1
     - en: "Choking feeling? Point to your throat, yes or no?"
       ko: "질식할 것 같은 느낌? 목을 가리켜 보세요, 예, 아니오?"
       chunks: ["Choking feeling", "?", "Point to", "your throat,", "yes or no", "?"]
-      words: [w-choking, w-feel, w-point, w-throat, w-yes, w-no]
+      words: [w-choking, w-feel, w-point, w-throat]
       goal: 1
     - en: "Allergy to medicine? An interpreter is on the way."
       ko: "약물 알레르기? 통역사가 오고 있어요."
@@ -16127,13 +16519,52 @@
     - en: "Can you nod yes or shake your head no?"
       ko: "예면 고개를 끄덕이고, 아니면 좌우로 흔들어 주세요."
       chunks: ["Can you nod", "yes or", "shake your head", "no", "?"]
-      words: [w-nod, w-yes, w-shake, w-head, w-no]
+      words: [w-nod, w-shake]
       goal: 1
     - en: "We'll keep you safe until help arrives."
       ko: "도움이 올 때까지 안전하게 지켜드릴게요."
       chunks: ["We'll keep you", "safe", "until help arrives", "."]
       words: [w-keep, w-safe, w-help, w-arrive]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-chest
+    - w-pain
+    - w-allergy
+    - w-medicine
+    - w-interpreter
+    - w-way
+    pairs:
+    - - chest
+      - pain
+    - - allergy
+      - to medicine
+    - - interpreter
+      - on the way
+    decoys:
+    - of breath
+    why: 통역사가 오기 전에는 핵심을 짧은 명사구로 묻고(chest pain? allergy to medicine?), 통역사가 오고 있다는 것(on the way)을 알려요.
+  - kind: swap
+    words:
+    - w-chest
+    - w-pain
+    who: 영어가 어려운 환자에게 · 폐쇄형 질문
+    icon: me
+    before:
+    - ''
+    - Are you experiencing any chest discomfort
+    - '? Yes or no?'
+    options:
+    - Chest pain
+    - Are you experiencing any chest discomfort
+    - Tell me about your chest
+    answer: Chest pain
+    notes:
+      Chest pain: 짧고 쉬워서 고개로도 답할 수 있다.
+      Are you experiencing any chest discomfort: 길고 어려운 낱말이 섞여 영어가 서툰 환자는 알아듣기 힘들다.
+      Tell me about your chest: 설명을 요구하는 열린 질문이라 예/아니오와 맞지 않는다.
+    why: 통역 전에는 짧고 예/아니오로 답할 수 있는 질문을 한 번에 하나씩 해요. 자세한 병력은 자격 있는 의료 통역사를 통해 받아요.
 
 - theme: er-dyspnea
   title: 신경근질환 환기저하
@@ -16156,28 +16587,63 @@
     - en: "Has your cough gotten weaker over the past few days?"
       ko: "지난 며칠 사이 기침이 더 약해졌나요?"
       chunks: ["Has your cough", "gotten weaker", "over the past", "few days", "?"]
-      words: [w-cough, w-past, w-few, w-day]
+      words: [w-cough, w-past, w-few]
       goal: 1
     - en: "Are you having trouble swallowing or clearing your throat?"
-      ko: "삼키기 힘들거나 목을 헛기침하기 힘든가요?"
+      ko: "삼키기 힘들거나 목에 낀 가래를 뱉어 내기 힘든가요?"
       chunks: ["Are you having", "trouble swallowing", "or clearing", "your throat", "?"]
       words: [w-trouble, w-swallow, w-clear, w-throat]
       goal: 1
     - en: "Does food or water ever go down the wrong way?"
-      ko: "음식이나 물이 자꾸 잘못된 길로 넘어가나요?"
+      ko: "음식이나 물을 먹다가 사레가 들리는 일이 있나요?"
       chunks: ["Does food", "or water", "ever go down", "the wrong way", "?"]
       words: [w-food, w-water, w-wrong]
       goal: 1
     - en: "We need to watch your breathing muscles closely."
       ko: "호흡근을 가까이서 지켜봐야 해요."
       chunks: ["We need to", "watch your breathing", "muscles closely", "."]
-      words: [w-need, w-watch, w-breathe, w-muscle, w-close]
+      words: [w-need, w-watch, w-breathe, w-muscle]
       goal: 2
     - en: "Let's check your strength again today."
       ko: "오늘 힘도 다시 확인해볼게요."
       chunks: ["Let's check", "your strength", "again today", "."]
-      words: [w-check, w-strength, w-again, w-today]
+      words: [w-check, w-strength, w-again]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-water
+    - w-wrong
+    cue: 'Patient: "Pretty much every time I drink water, it goes down the wrong way."'
+    scale:
+    - rarely
+    - sometimes
+    - often
+    - almost always
+    answerAt: 3
+    why: 물 마실 때마다 사레가 든다면 almost always예요. 신경근질환에서 삼킴이 자주 어긋나면 흡인 위험이 커서, 얼마나 자주인지 꼭 물어요.
+    example: Water almost always goes down the wrong way now.
+    exKo: 요즘은 물이 거의 매번 잘못 넘어가요.
+  - kind: context
+    words:
+    - w-muscle
+    - w-watch
+    - w-breathe
+    scenes:
+    - who: 의사에게
+      icon: monitor
+      en: Her vital capacity keeps dropping — her breathing muscles are tiring.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Declining FVC; progressive respiratory muscle weakness.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your forced vital capacity is declining.
+      ok: false
+      fix: The muscles that help you breathe are getting weaker, so we're watching them closely.
+    why: 폐활량(FVC)이나 흡기력(NIF) 같은 수치는 의료진끼리의 말이에요. 환자에게는 숨 쉬는 근육이 약해지고 있어 가까이 지켜본다고 말해요.
 
 - theme: er-dyspnea
   title: 산소요법 목표치 소통
@@ -16205,7 +16671,7 @@
     - en: "We aim for a target range, not the highest number."
       ko: "가장 높은 수치가 아니라 목표 범위를 맞추는 거예요."
       chunks: ["We aim for", "a target range,", "not the highest", "number", "."]
-      words: [w-aim, w-target, w-range, w-number]
+      words: [w-aim, w-target, w-range]
       goal: 1
     - en: "I'll adjust it carefully to keep you in the safe zone."
       ko: "안전한 범위 안에 있도록 조심스럽게 조절할게요."
@@ -16222,6 +16688,46 @@
       chunks: ["I'll check", "your levels", "and adjust as needed", "."]
       words: [w-check, w-level, w-adjust, w-need]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-aim
+    - w-target
+    - w-range
+    - w-turning
+    - w-way
+    - w-actually
+    - w-harmful
+    pairs:
+    - - aim for
+      - a target range
+    - - turn it
+      - all the way up
+    - - can actually
+      - be harmful
+    decoys:
+    - on the chart
+    why: 목표를 말할 때는 aim for a target range, 끝까지 올리는 것은 turn it all the way up, 오히려 해롭다는 건 can actually be harmful이에요.
+  - kind: swap
+    words:
+    - w-oxygen
+    - w-harmful
+    who: COPD 환자에게 · 과산소 설명
+    icon: me
+    before:
+    - 'For you, too much oxygen can '
+    - cause hypercapnic respiratory failure
+    - .
+    options:
+    - let carbon dioxide build up in your blood
+    - cause hypercapnic respiratory failure
+    - kill you
+    answer: let carbon dioxide build up in your blood
+    notes:
+      let carbon dioxide build up in your blood: 무엇이 왜 위험한지 쉬운 말로 전한다.
+      cause hypercapnic respiratory failure: 의료진끼리의 말. 환자는 알아듣기 어렵다.
+      kill you: 사실보다 무섭게 들려 산소를 아예 거부하게 만들 수 있다.
+    why: 만성 폐쇄성 폐질환 환자 일부는 산소를 너무 많이 받으면 이산화탄소가 쌓여요. 그래서 산소포화도 88–92%를 목표로 하고, 환자에게는 이유를 쉬운 말로 설명해요.
 
 - theme: er-dyspnea
   title: 불안 동반 호흡곤란 감별
@@ -16259,13 +16765,47 @@
     - en: "Let's slow your breathing and see if it eases."
       ko: "숨을 천천히 쉬면서 나아지는지 봐요."
       chunks: ["Let's slow", "your breathing", "and see", "if it eases", "."]
-      words: [w-slow, w-breathe, w-see, w-ease]
+      words: [w-slow, w-breathe, w-ease]
       goal: 2
     - en: "It's okay to feel anxious — you're safe here."
       ko: "불안해도 괜찮아요 — 여긴 안전해요."
       chunks: ["It's okay", "to feel anxious —", "you're safe", "here", "."]
       words: [w-okay, w-feel, w-anxious, w-safe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-anxious
+    - w-feel
+    cue: 'Patient: "I''m a little on edge, that''s all."'
+    scale:
+    - nervous
+    - anxious
+    - panicky
+    answerAt: 0
+    why: '''조금 신경이 곤두선 정도''면 nervous 쪽이에요. 불안을 인정해 주되, 불안 때문이라고 말하는 건 기질적 원인을 확인해 배제한 다음이에요.'
+    example: She's a little nervous, but her breathing is settling.
+    exKo: 조금 긴장했지만 호흡은 안정되고 있어요.
+  - kind: context
+    words:
+    - w-reassuring
+    - w-exam
+    - w-lung
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: No acute cardiopulmonary process identified.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: Lungs clear, sats 99 on room air — exam is reassuring.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your workup is negative for organic pathology.
+      ok: false
+      fix: Your oxygen and lung exam look reassuring.
+    why: organic pathology 같은 말은 의료진끼리의 표현이에요. 환자에게는 검사 결과가 안심할 만하다고 쉬운 말로 전해요.
 
 - theme: er-dyspnea
   title: 상기도 폐쇄 급성 대응
@@ -16286,30 +16826,66 @@
   persona: { name: Ivan Petrov, ageRange: 50s, sub: "53y / Male", mood: panic, personality: 질식감에 극도 공포, speakingStyle: 말을 거의 못 함 }
   sentences:
     - en: "That high-pitched sound worries me about your airway."
-      ko: "그 고음의 소리가 기도 때문에 걱정돼요."
+      ko: "그 높은 숨소리 때문에 기도가 걱정돼요."
       chunks: ["That high-pitched sound", "worries me", "about your airway", "."]
       words: [w-high, w-sound, w-worry, w-airway]
       goal: 1
     - en: "Are you able to swallow right now?"
       ko: "지금 침을 삼킬 수 있으세요?"
       chunks: ["Are you able", "to swallow", "right now", "?"]
-      words: [w-swallow, w-now]
+      words: [w-swallow]
       goal: 1
     - en: "I'm calling for airway help right now — stay calm."
       ko: "기도 도움을 지금 부를게요 — 침착하게 계세요."
       chunks: ["I'm calling", "for airway help", "right now —", "stay calm", "."]
-      words: [w-calling, w-airway, w-help, w-now, w-stay, w-calm]
+      words: [w-calling, w-airway, w-help, w-stay, w-calm]
       goal: 2
     - en: "We're keeping you upright and getting oxygen ready."
       ko: "곧게 앉혀드리고 산소도 준비하고 있어요."
       chunks: ["We're keeping you", "upright", "and getting", "oxygen ready", "."]
-      words: [w-keep, w-upright, w-get, w-oxygen, w-ready]
+      words: [w-keep, w-upright, w-oxygen, w-ready]
       goal: 2
     - en: "Try to stay still and let us help you."
       ko: "가만히 계시고 저희가 돕게 해주세요."
       chunks: ["Try to", "stay still", "and let us", "help you", "."]
       words: [w-stay, w-still, w-let, w-help]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-worry
+    - w-airway
+    cue: Stridor at rest, drooling, can't swallow his own saliva.
+    scale:
+    - concerning
+    - worrying
+    - critical
+    answerAt: 2
+    why: 쉬고 있는데도 협착음(stridor)이 들리고 침을 삼키지 못해 흘리면 기도가 곧 막힐 수 있는 징후라 critical이에요. 기다리지 않고 바로 기도 전문 인력을 불러요.
+    example: Stridor at rest and drooling — this is a critical airway.
+    exKo: 안정 시 협착음에 침까지 흘려요 — 위급한 기도예요.
+  - kind: swap
+    words:
+    - w-keep
+    - w-upright
+    - w-oxygen
+    - w-ready
+    who: 환자에게 · 자세와 준비
+    icon: me
+    before:
+    - 'We''re keeping you '
+    - lying down
+    - ' and getting oxygen ready.'
+    options:
+    - upright
+    - lying down
+    - sedated
+    answer: upright
+    notes:
+      upright: 앉은 자세가 기도를 가장 잘 열어 두고, 환자가 스스로 편한 자세를 유지하게 한다.
+      lying down: 눕히면 부은 조직이 기도를 더 막을 수 있다.
+      sedated: 진정은 호흡 노력을 떨어뜨려 부분 폐쇄를 완전 폐쇄로 바꿀 수 있다.
+    why: 상기도 폐쇄 환자는 편한 자세(대개 앉은 자세)를 그대로 두고, 눕히거나 진정시키지 않은 채 기도 전문 인력을 불러요.
 
 - theme: er-dyspnea
   title: 기관삽관 준비·RSI 보조
@@ -16347,13 +16923,48 @@
     - en: "Sats are 98, we're good to go — go ahead."
       ko: "산소포화도 98, 진행해도 좋습니다 — 시작하세요."
       chunks: ["Sats are 98,", "we're good", "to go —", "go ahead", "."]
-      words: [w-sats, w-good, w-go]
+      words: [w-sats]
       goal: 2
     - en: "I'll call it out step by step."
       ko: "단계별로 콜아웃하겠습니다."
       chunks: ["I'll call", "it out", "step by step", "."]
       words: [w-calling, w-step]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-drawn
+    - w-labeled
+    - w-suction
+    pairs:
+    - - drawn up
+      - and labeled
+    - - suction
+      - is on
+    - - good
+      - to go
+    decoys:
+    - by step
+    why: RSI 콜아웃은 짧게 해요. 약은 drawn up and labeled, 흡인은 suction is on, 모두 준비됐으면 good to go예요.
+  - kind: context
+    words:
+    - w-sats
+    - w-ready
+    scenes:
+    - who: 팀 콜아웃
+      icon: speaker
+      en: Sats 98, suction on, meds labeled — ready.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Preoxygenated to SpO2 98% prior to induction.
+      ok: true
+    - who: 팀 콜아웃
+      icon: speaker
+      en: I would like to inform everyone that the oxygen saturation is currently ninety-eight percent.
+      ok: false
+      fix: Sats are 98 — good to go.
+    why: 삽관 순간의 콜아웃은 짧고 크게, 팀이 쓰는 줄임말(sats)로 해요. 긴 문장은 중요한 정보를 늦춰요.
 
 - theme: er-dyspnea
   title: I형 호흡부전 급속 악화
@@ -16381,12 +16992,12 @@
     - en: "His oxygen level dropped fast just now."
       ko: "산소 수치가 방금 급격히 떨어졌습니다."
       chunks: ["His oxygen level", "dropped fast", "just now", "."]
-      words: [w-oxygen, w-level, w-dropped, w-fast, w-now]
+      words: [w-oxygen, w-level, w-dropped, w-fast]
       goal: 1
     - en: "We need to move toward intubation now."
       ko: "지금 삽관 쪽으로 가야 합니다."
       chunks: ["We need to", "move toward", "intubation now", "."]
-      words: [w-need, w-move, w-intubation, w-now]
+      words: [w-need, w-move, w-intubation]
       goal: 2
     - en: "I'm calling the team and preparing the airway."
       ko: "팀을 부르고 기도를 준비하고 있습니다."
@@ -16396,8 +17007,44 @@
     - en: "Let's get anesthesia on the line."
       ko: "마취과에 바로 연락하겠습니다."
       chunks: ["Let's get", "anesthesia", "on the line", "."]
-      words: [w-get, w-anesthesia, w-line]
+      words: [w-anesthesia, w-line]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-falling
+    - w-dropped
+    - w-sats
+    cue: SpO2 goes from 92 to 74 in under a minute on high-flow oxygen.
+    scale:
+    - drifting down
+    - dropping
+    - crashing
+    answerAt: 2
+    why: 1분도 안 돼 70대로 곤두박질치면 crashing이라고 해요. drifting down은 천천히 조금씩 내려갈 때예요. 응급실에서 crashing은 환자 상태가 급격히 무너지고 있다는 말로도 써요.
+    example: She's crashing — sats are in the seventies.
+    exKo: 환자 급격히 나빠지고 있어요 — 포화도가 70대예요.
+  - kind: swap
+    words:
+    - w-need
+    - w-move
+    - w-intubation
+    who: 의사에게 · 우려 말하기
+    icon: monitor
+    before:
+    - ''
+    - Sorry to bother you, but maybe
+    - ' we need to move toward intubation now.'
+    options:
+    - I'm concerned —
+    - Sorry to bother you, but maybe
+    - Whatever you think, but
+    answer: I'm concerned —
+    notes:
+      I'm concerned —: 걱정을 분명히 먼저 말한다. 급한 상황임이 바로 전해진다.
+      Sorry to bother you, but maybe: 사과와 얼버무림 때문에 급하다는 뜻이 흐려진다.
+      Whatever you think, but: 판단을 떠넘기는 말이라 우려가 묻힌다.
+    why: 급변 상황에서는 TeamSTEPPS의 CUS(I'm Concerned · I'm Uncomfortable · This is a Safety issue)처럼 걱정을 돌려 말하지 않고 분명히 말해요.
 
 - theme: er-dyspnea
   title: 후두부종 아나필락시스 기도
@@ -16420,7 +17067,7 @@
     - en: "Give IM epinephrine now — her airway is closing."
       ko: "지금 근육주사로 에피네프린 주세요 — 기도가 막히고 있습니다."
       chunks: ["Give IM epinephrine", "now —", "her airway", "is closing", "."]
-      words: [w-give, w-epinephrine, w-now, w-airway, w-close]
+      words: [w-give, w-epinephrine, w-airway]
       goal: 1
     - en: "Her lips are swelling fast."
       ko: "입술이 빠르게 부어오르고 있습니다."
@@ -16440,8 +17087,46 @@
     - en: "Get epinephrine ready to give again if needed."
       ko: "필요하면 다시 줄 수 있게 에피네프린 준비해 두세요."
       chunks: ["Get epinephrine ready", "to give again", "if needed", "."]
-      words: [w-get, w-epinephrine, w-ready, w-give, w-again, w-need]
+      words: [w-epinephrine, w-ready, w-give, w-again, w-need]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-epinephrine
+    - w-difficult
+    - w-airway
+    - w-cart
+    - w-lips
+    - w-swelling
+    pairs:
+    - - IM
+      - epinephrine
+    - - difficult airway
+      - cart
+    - - lips
+      - swelling
+    decoys:
+    - on the line
+    why: 아나필락시스의 1차 약은 IM epinephrine(허벅지 바깥쪽 근육)이에요. 삽관이 어려울 것 같으면 difficult airway cart를 불러요. 입술이 붓는 것은 lips swelling처럼 보고해요.
+  - kind: context
+    words:
+    - w-epinephrine
+    - w-give
+    scenes:
+    - who: 팀에게
+      icon: speaker
+      en: Give IM epi now — her airway is closing.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Epinephrine IM given, R lateral thigh.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Administering IM epi for angioedema.
+      ok: false
+      fix: This is a shot in your thigh to bring the swelling down.
+    why: IM·epi·angioedema는 의료진끼리의 줄임말과 진단명이에요. 환자에게는 무엇을 왜 하는지 쉬운 말로 알려요.
 
 - theme: er-dyspnea
   title: 삽관 후 갑작스런 악화(DOPE)
@@ -16469,7 +17154,7 @@
     - en: "Displacement first — is the tube still in place?"
       ko: "위치부터요 — 튜브가 제자리에 그대로 있나요?"
       chunks: ["Displacement first —", "is the tube", "still", "in place", "?"]
-      words: [w-displacement, w-tube, w-still, w-place]
+      words: [w-displacement, w-tube, w-place]
       goal: 1
     - en: "Check the tube position and suction for a plug."
       ko: "튜브 위치를 확인하고 막힌 곳이 있는지 흡인해보세요."
@@ -16486,6 +17171,46 @@
       chunks: ["Sats are climbing", "again", "."]
       words: [w-sats, w-climbing, w-again]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-displacement
+    - w-obstruction
+    - w-pneumothorax
+    - w-equipment
+    pairs:
+    - - D
+      - displacement
+    - - O
+      - obstruction
+    - - P
+      - pneumothorax
+    - - E
+      - equipment
+    decoys:
+    - hypoxia
+    why: DOPE는 삽관 환자가 갑자기 나빠질 때 점검하는 순서예요 — Displacement(튜브 이탈), Obstruction(막힘), Pneumothorax(기흉), Equipment(장비 고장).
+  - kind: swap
+    words:
+    - w-check
+    - w-tube
+    - w-position
+    who: 팀에게 · 급변 콜아웃
+    icon: speaker
+    before:
+    - ''
+    - Maybe someone could look at
+    - ' the tube position.'
+    options:
+    - Check
+    - Maybe someone could look at
+    - I wonder about
+    answer: Check
+    notes:
+      Check: 짧은 명령형이라 바로 행동으로 옮겨진다. 이름을 불러 맡기면 더 좋다.
+      Maybe someone could look at: 누가 할지 정해지지 않아 아무도 안 할 수 있다.
+      I wonder about: 혼잣말처럼 들려 지시로 받아들여지지 않는다.
+    why: 급변 때는 누가 무엇을 할지 짧은 말로, 가능하면 이름을 불러 맡기고 되받아 확인해요(closed-loop).
 
 - theme: er-dyspnea
   title: 대량 객혈 기도확보
@@ -16523,13 +17248,49 @@
     - en: "Protect the good lung on top."
       ko: "건강한 폐가 위로 오게 보호해주세요."
       chunks: ["Protect", "the good lung", "on top", "."]
-      words: [w-protect, w-good, w-lung, w-top]
+      words: [w-protect, w-lung, w-top]
       goal: 2
     - en: "Prepare to intubate and call for help now."
       ko: "삽관 준비하고 지금 도움을 요청하세요."
       chunks: ["Prepare to intubate", "and call", "for help now", "."]
-      words: [w-preparing, w-intubate, w-calling, w-help, w-now]
+      words: [w-preparing, w-intubate, w-calling, w-help]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-bleeding
+    - w-lot
+    cue: He's coughing up cupfuls of bright red blood.
+    scale:
+    - streaks of blood
+    - a little blood
+    - a lot of blood
+    answerAt: 2
+    why: 컵으로 쏟을 만큼이면 a lot of blood — 대량 객혈이에요. 가래에 피가 줄처럼 섞인 streaks와는 대응이 전혀 달라요.
+    example: He's coughing up a lot of blood.
+    exKo: 기침할 때마다 피가 많이 나와요.
+  - kind: swap
+    words:
+    - w-position
+    - w-bleeding
+    - w-side
+    - w-down
+    who: 팀에게 · 측위 지시
+    icon: speaker
+    before:
+    - 'Position him with the bleeding side '
+    - up
+    - .
+    options:
+    - down
+    - up
+    - toward the wall
+    answer: down
+    notes:
+      down: 피가 아래쪽 폐에 머물러 건강한 폐로 넘어가지 않는다.
+      up: 피가 건강한 폐로 흘러 들어가 양쪽 폐가 다 잠길 수 있다.
+      toward the wall: 어느 쪽인지 기준이 모호해 팀이 헷갈린다.
+    why: 대량 객혈에서 출혈 쪽을 알면 그쪽을 아래로 눕혀(bleeding side down) 건강한 폐를 지켜요.
 
 - theme: er-dyspnea
   title: 기관절개 튜브 폐쇄·이탈
@@ -16562,18 +17323,51 @@
     - en: "If it's out of place, we'll change the tube right away."
       ko: "제자리에서 빠졌으면 바로 튜브를 교체할게요."
       chunks: ["If it's out", "of place,", "we'll change", "the tube right away", "."]
-      words: [w-place, w-change, w-tube, w-right, w-away]
+      words: [w-place, w-change, w-tube, w-away]
       goal: 2
     - en: "Try to stay calm — we're giving you oxygen now."
       ko: "침착하게 계세요 — 지금 산소를 드리고 있어요."
       chunks: ["Try to stay calm —", "we're giving", "you oxygen", "now", "."]
-      words: [w-stay, w-calm, w-give, w-oxygen, w-now]
+      words: [w-stay, w-calm, w-give, w-oxygen]
       goal: 2
     - en: "We'll have a new tube ready in a moment."
       ko: "새 튜브를 잠시 후 준비해 드릴게요."
       chunks: ["We'll have", "a new tube", "ready", "in a moment", "."]
       words: [w-new, w-tube, w-ready, w-moment]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-blockage
+    - w-trach
+    cue: 'Patient mouthing: "Nothing — no air at all is getting through!"'
+    scale:
+    - partly blocked
+    - blocked
+    - completely blocked
+    answerAt: 2
+    why: 공기가 전혀 안 통하면 completely blocked예요. 내관이 있으면 먼저 빼고, 흡인 카테터가 들어가지 않으면 튜브 교체를 준비해요. 산소는 얼굴과 목의 구멍 양쪽에 줘요.
+    example: The trach is completely blocked — I can't pass the catheter.
+    exKo: 기관절개관이 완전히 막혔어요 — 카테터가 안 들어가요.
+  - kind: context
+    words:
+    - w-trach
+    - w-tube
+    scenes:
+    - who: 동료에게
+      icon: speaker
+      en: Trach is blocked — I can't pass the suction catheter.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Tracheostomy tube obstructed; unable to pass suction catheter.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your tracheostomy tube is obstructed.
+      ok: false
+      fix: Your trach is blocked — I'm clearing it right now.
+    why: 환자는 자기 튜브를 보통 trach라고 불러요. obstructed보다 blocked처럼 쉬운 말로 말하고, 지금 조치하고 있다는 것을 함께 알려요.
 
 - theme: er-asthma-copd
   title: 천식 악화 초기 문진
