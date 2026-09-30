@@ -43,9 +43,11 @@ function levelBand(level: string): 'A' | 'B' | 'C' {
   return level === 'B1' ? 'B' : 'C';
 }
 
-/** Mood → an icon for the feeling chip. `faceAngry` arrives with K; until then the closest. */
+/** Mood → an icon for the feeling chip. The handoff's hub draws the angry patient with
+ *  `faceAngry` (added in K); the other moods borrow the closest doodle. */
 function moodIcon(mood?: string): NbIconName {
   switch (mood) {
+    case 'angry': return 'faceAngry';
     case 'pain': return 'bandage';
     case 'panic': case 'worried': return 'siren';
     default: return 'speech';

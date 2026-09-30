@@ -875,7 +875,7 @@ def assembles_to(chunks: list[str], en: str) -> bool:
 V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chips", "decoyChips")
 # NbIcon 이 그리는 이름 — mobile/src/components/nb/NbIcon.tsx 와 같다(지시서의 목록과도).
 NB_ICONS = set("""baby bandage bell board bulb calendar chartup check chevronDown chevronLeft chevronRight
-chevronUp coffee compass cross gear handshake2 home hospital lab lock magnify me mic monitor pencil pill
+chevronUp coffee compass cross faceAngry gear handshake2 home hospital lab lock magnify me mic monitor pencil pill
 plane pushpin scalpel shield siren speaker speech star stetho trophy""".split())
 MAX_FRAGS_PER_WORD, MAX_FRAGS = 4, 6
 

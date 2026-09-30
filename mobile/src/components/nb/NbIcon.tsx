@@ -29,6 +29,7 @@ export type NbIconName =
   | 'lab'
   | 'me'
   | 'mic'
+  | 'faceAngry'
   | 'speaker'
   | 'siren'
   | 'scalpel'
@@ -117,7 +118,12 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
       <G><Circle {...P} cx="12" cy="9" r="4" fill={nb.wash.peach}/><Path {...P} d="M5.5 19.5 Q6 14 12 14 Q18 14 18.5 19.5" fill={nb.wash.blue}/></G>
     ),
     mic: (
-      <G><Rect {...P} x="9.5" y="4" width="5" height="9" rx="2.5" fill={nb.wash.red}/><Path {...P} d="M6.5 11 Q12 16.5 17.5 11"/><Path {...P} d="M12 14.8 V18.5 M9.5 18.5 H14.5"/></G>
+      // v44 §5 rewrite: a narrow tall capsule, a true arc yoke that wraps under it, a short
+      // stand. The old flat Q-curve yoke read as unnatural (handoff feedback).
+      <G><Rect {...P} x="9.6" y="3.5" width="4.8" height="10.5" rx="2.4" fill={nb.wash.red}/><Path {...P} d="M6.3 11.2 A5.7 5.7 0 0 0 17.7 11.2"/><Path {...P} d="M12 16.9 V19.5 M9.4 19.5 H14.6"/></G>
+    ),
+    faceAngry: (
+      <G><Circle {...P} cx="12" cy="12" r="8" fill={nb.wash.peach}/><Path {...P} d="M7.5 8.5 L10.5 10 M16.5 8.5 L13.5 10"/><Circle cx="9.5" cy="12" r="0.9" fill={color} stroke="none"/><Circle cx="14.5" cy="12" r="0.9" fill={color} stroke="none"/><Path {...P} d="M9.5 16 Q12 14.3 14.5 16"/></G>
     ),
     speaker: (
       <G><Path {...P} d="M5 10 H8 L12.5 5.8 V18.2 L8 14 H5 Z" fill={nb.wash.blue}/><Path {...P} d="M15.5 9.5 Q17 12 15.5 14.5 M18 7 Q20.7 12 18 17"/></G>
