@@ -91901,8 +91901,6 @@
       words:
         - w-anything
         - w-make
-        - w-good
-        - w-bad
       goal: 1
     - en: Did you check your temperature at home before you came in?
       ko: 오시기 전에 집에서 체온을 재보셨어요?
@@ -91915,7 +91913,6 @@
       words:
         - w-check
         - w-temperature
-        - w-home
       goal: 1
     - en: Did you take any medicine to bring the fever down?
       ko: 열을 내리려고 약을 드셨나요?
@@ -91932,6 +91929,40 @@
         - w-down
         - w-fever
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-fever
+        - w-high
+      why: 104°F는 40℃예요. 이만큼 오르면 high fever 쪽이에요. 미국 환자는 체온을 화씨로 말하니 숫자를 바로 섭씨로 옮겨 들을 수 있어야 해요. 38℃를 조금 넘는 정도는 low-grade fever(미열)라고 해요.
+      cue: 'Patient: "I''ve been burning up — it hit 104 last night."'
+      scale:
+        - low-grade fever
+        - fever
+        - high fever
+      answerAt: 2
+      example: She's had a low-grade fever since yesterday.
+      exKo: 어제부터 미열이 있어요.
+    - kind: swap
+      words:
+        - w-burn
+        - w-urine
+      why: 차트에는 dysuria라고 적어도, 환자에게는 느끼는 증상 그대로 물어요. 그래야 '네/아니요'가 정확하게 나와요.
+      who: 환자에게 · 요로 증상 문진
+      icon: me
+      before:
+        - 'Do you have any '
+        - dysuria
+        - '?'
+      options:
+        - burning when you urinate
+        - dysuria
+        - urinary symptoms
+      answer: burning when you urinate
+      notes:
+        burning when you urinate: 환자가 느끼는 그대로의 말. 무엇을 묻는지 바로 알아듣는다.
+        dysuria: 배뇨통을 뜻하는 의료진의 말. 차트에는 맞지만 환자는 대개 모른다.
+        urinary symptoms: 너무 넓어서 환자가 무엇을 말해야 할지 모른다.
 - id: SCN-ER-00691
   profession: ""
   eventId: EVT-ER-00146
@@ -92068,6 +92099,46 @@
         - w-skin
         - w-lung
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-breathe
+        - w-sound
+        - w-fine
+        - w-pain
+        - w-pee
+        - w-look
+        - w-sign
+        - w-infection
+      why: 청진 결과는 breathing sounds fine, 요로 증상은 pain when you pee, 감염원을 찾는 것은 look for signs of infection으로 묶어 말해요.
+      pairs:
+        - - breathing
+          - sounds fine
+        - - pain when you
+          - pee
+        - - look for signs of
+          - infection
+      decoys:
+        - temperature
+    - kind: context
+      words:
+        - w-pulse
+        - w-fast
+      why: 열이 나면 맥박이 빨라지는 것은 흔해요. 같은 사실이라도 febrile·tachycardic은 의료진끼리의 말이고, 환자에게는 쉬운 말로 말하면서 흔한 일이라고 덧붙이면 덜 불안해해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: T 38.9, HR 112, RR 18.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: She's febrile, and her heart rate is 112.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're febrile and tachycardic at 112.
+          ok: false
+          fix: Your pulse is a little fast, which is common with a fever.
 - id: SCN-ER-00692
   profession: ""
   eventId: EVT-ER-00146
@@ -92153,7 +92224,6 @@
       words:
         - w-place
         - w-separate
-        - w-room
         - w-protect
         - w-other
       goal: 2
@@ -92184,7 +92254,6 @@
       words:
         - w-cough
         - w-get
-        - w-bad
       goal: 1
     - en: I know the mask feels uncomfortable, but it helps keep everyone safe.
       ko: 마스크가 불편하신 거 알지만, 모두를 안전하게 지키는 데 도움이 돼요.
@@ -92203,6 +92272,45 @@
         - w-keep
         - w-safe
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-wear
+        - w-mask
+        - w-separate
+        - w-protect
+        - w-other
+      why: 마스크는 wear, 따로 쓰는 방은 a separate room, 다른 사람을 지키는 것은 protect others예요.
+      pairs:
+        - - wear
+          - a mask
+        - - a separate
+          - room
+        - - protect
+          - others
+      decoys:
+        - sick
+    - kind: swap
+      words:
+        - w-wear
+        - w-mask
+        - w-because
+      why: I'll have you ~는 환자에게 무엇을 해 달라고 부드럽게 안내하는 말이에요. 같은 부탁이라도 make·force는 명령이나 강요로 들려요.
+      who: 환자에게 · 마스크 요청
+      icon: me
+      before:
+        - 'Because of the cough and fever, I''ll '
+        - make you
+        - ' wear a mask.'
+      options:
+        - have you
+        - make you
+        - force you to
+      answer: have you
+      notes:
+        force you to: 강제로 한다는 뜻이라 위협처럼 들린다.
+        have you: 할 일을 정중하게 안내하는 말. 미국 간호사가 환자에게 가장 흔히 쓰는 틀이다.
+        make you: 억지로 시키는 느낌이 든다. 환자가 반발하기 쉽다.
 - id: SCN-ER-00693
   profession: ""
   eventId: EVT-ER-00146
@@ -92288,7 +92396,6 @@
       words:
         - w-recheck
         - w-temperature
-        - w-hour
       goal: 2
     - en: Keep drinking fluids — that helps too.
       ko: 수분을 계속 드세요 — 그것도 도움이 돼요.
@@ -92302,7 +92409,6 @@
         - w-drink
         - w-fluid
         - w-help
-        - w-too
       goal: 1
     - en: This medicine will bring your fever down within thirty minutes or so.
       ko: 이 약은 삼십 분쯤 안에 열을 내려줄 거예요.
@@ -92319,7 +92425,6 @@
         - w-fever
         - w-down
         - w-within
-        - w-minute
       goal: 1
     - en: If your fever goes back up before then, please let us know.
       ko: 그 전에 열이 다시 오르면 저희에게 알려주세요.
@@ -92331,13 +92436,48 @@
         - .
       words:
         - w-fever
-        - w-go
         - w-back
         - w-before
-        - w-please
         - w-let
-        - w-know
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-bring
+        - w-down
+        - w-drink
+        - w-fluid
+        - w-make
+        - w-comfortable
+      why: 열은 bring down(내리다), 수분은 keep drinking fluids(계속 마시다), 해열제의 목적은 make you more comfortable(더 편하게)이라고 말해요.
+      pairs:
+        - - bring your fever
+          - down
+        - - keep drinking
+          - fluids
+        - - make you more
+          - comfortable
+      decoys:
+        - within
+    - kind: context
+      words:
+        - w-recheck
+        - w-temperature
+      why: 해열제를 주고 한 시간쯤 뒤에 체온을 다시 재는 계획은 같아요. 차트와 동료에게는 약 이름과 약어로 짧게, 환자에게는 무엇을 언제 다시 하는지만 쉬운 말로 알려요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Acetaminophen 1 g PO given. Recheck temp in 1 hr.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: I gave her Tylenol — I'll recheck her temp in an hour.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Antipyretic administered; reassess T in sixty minutes.
+          ok: false
+          fix: We'll recheck your temperature in about an hour.
 - id: SCN-ER-00694
   profession: ""
   eventId: EVT-ER-00146
@@ -92407,7 +92547,6 @@
         - '?'
       words:
         - w-travel
-        - w-get
         - w-back
       goal: 1
     - en: Did you get any bug bites or eat anything unusual?
@@ -92419,7 +92558,6 @@
         - anything unusual
         - '?'
       words:
-        - w-get
         - w-bug
         - w-bite
         - w-eat
@@ -92436,8 +92574,6 @@
       words:
         - w-anyone
         - w-travel
-        - w-with
-        - w-also
         - w-sick
       goal: 1
     - en: Which countries or cities did you visit on this trip?
@@ -92468,9 +92604,46 @@
         - w-infection
         - w-traveler
         - w-sometimes
-        - w-bring
         - w-abroad
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-bug
+        - w-bite
+        - w-visit
+        - w-trip
+        - w-eat
+        - w-unusual
+      why: 모기·진드기에 물린 것은 bug bites, 여행지를 물을 때는 visit on this trip, 음식은 eat anything unusual로 물어요.
+      pairs:
+        - - bug
+          - bites
+        - - visit on this
+          - trip
+        - - eat anything
+          - unusual
+      decoys:
+        - country
+    - kind: context
+      words:
+        - w-travel
+        - w-back
+      why: 돌아온 날짜는 잠복기를 따지는 데 꼭 필요해요. 차트에는 hx(병력)·PTA(내원 전) 같은 약어로 적지만, 환자에게는 완전한 문장으로 물어요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: He got back from Ghana ten days ago.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: 'Travel: Ghana, returned 10 days PTA.'
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Travel hx positive — date of return?
+          ok: false
+          fix: Where did you travel, and when did you get back?
 - id: SCN-ER-00695
   profession: ""
   eventId: EVT-ER-00146
@@ -92541,7 +92714,6 @@
       words:
         - w-cough
         - w-shortness
-        - w-breath
         - w-make
         - w-think
         - w-pneumonia
@@ -92555,7 +92727,6 @@
         - your oxygen level
         - .
       words:
-        - w-get
         - w-chest
         - w-xray
         - w-check
@@ -92583,7 +92754,6 @@
         - and fever
         - '?'
       words:
-        - w-day
         - w-deep
         - w-cough
         - w-fever
@@ -92598,13 +92768,46 @@
         - this infection is
         - .
       words:
-        - w-also
         - w-check
         - w-blood
-        - w-see
         - w-serious
         - w-infection
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-shortness
+      why: 몇 단어 말하고 숨을 쉬어야 하면 severely short of breath 쪽이에요. 문장을 끝까지 말하지 못하는 것은 호흡곤란이 심하다는 신호라 바로 알려야 해요.
+      cue: Patient can only get out three or four words before stopping to breathe.
+      scale:
+        - a little winded
+        - short of breath
+        - severely short of breath
+      answerAt: 2
+      example: He's severely short of breath and can only speak a few words at a time.
+      exKo: 숨이 몹시 차서 한 번에 몇 단어밖에 말하지 못해요.
+    - kind: swap
+      words:
+        - w-chest
+        - w-xray
+        - w-oxygen
+        - w-level
+      why: 같은 검사라도 약어는 의료진끼리, 환자에게는 chest X-ray처럼 풀어서 말해요.
+      who: 환자에게 · 검사 설명
+      icon: me
+      before:
+        - 'We''ll get a '
+        - CXR
+        - ' and check your oxygen level.'
+      options:
+        - chest X-ray
+        - CXR
+        - chest film
+      answer: chest X-ray
+      notes:
+        CXR: 차트·오더에 쓰는 약어. 소리 내어 말하면 환자는 못 알아듣는다.
+        chest X-ray: 환자도 아는 말. 무엇을 찍는지 바로 알아듣는다.
+        chest film: 영상의학과·의료진끼리 쓰는 말이라 환자에게는 낯설다.
 - id: SCN-ER-00696
   profession: ""
   eventId: EVT-ER-00146
@@ -92690,7 +92893,6 @@
         - .
       words:
         - w-check
-        - w-her
         - w-urine
         - w-blood
         - w-look
@@ -92724,7 +92926,6 @@
         - w-confused
         - w-usual
         - w-new
-        - w-her
       goal: 1
     - en: Confusion in her age group is often the first sign of a urine infection.
       ko: 이 연령대에서는 혼돈이 흔히 요로감염의 첫 징후예요.
@@ -92744,6 +92945,44 @@
         - w-urine
         - w-infection
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-change
+        - w-urination
+        - w-confused
+        - w-usual
+        - w-age
+        - w-group
+      why: 배뇨 변화는 change in urination, 평소와 비교할 때는 more confused than usual, 연령대는 age group이에요.
+      pairs:
+        - - change in
+          - urination
+        - - more confused than
+          - usual
+        - - age
+          - group
+      decoys:
+        - sign
+    - kind: context
+      words:
+        - w-confused
+        - w-usual
+      why: 평소보다 혼란스러워졌다는 같은 말이에요. 차트에는 AMS(의식 변화)·A&Ox3(사람·장소·시간 인식)로 적고, 보호자에게는 쉬운 말로 말하며 감염이 원인일 수 있다는 것까지 알려 주면 덜 놀라요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Acute AMS; baseline A&Ox3 per daughter.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: She's more confused than her baseline, per her daughter.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: Your mother has acute altered mental status.
+          ok: false
+          fix: Your mom seems more confused than usual, and an infection can cause that.
 - id: SCN-ER-00697
   profession: ""
   eventId: EVT-ER-00146
@@ -92816,7 +93055,6 @@
         - w-mark
         - w-edge
         - w-redness
-        - w-see
         - w-spread
       goal: 1
     - en: The fever means the infection may be spreading, so we'll treat it.
@@ -92848,8 +93086,6 @@
         - w-pain
         - w-sudden
         - w-much
-        - w-bad
-        - w-look
       goal: 1
     - en: I'll draw a line around the redness so we can watch if it grows.
       ko: 커지는지 지켜보려고 발적 주변에 선을 그을게요.
@@ -92860,7 +93096,6 @@
         - if it grows
         - .
       words:
-        - w-draw
         - w-line
         - w-around
         - w-redness
@@ -92878,12 +93113,50 @@
       words:
         - w-start
         - w-antibiotic
-        - w-now
         - w-keep
         - w-infection
         - w-spread
         - w-further
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-line
+        - w-spread
+        - w-further
+        - w-start
+        - w-antibiotic
+      why: 경계는 draw a line(선을 긋다), 더 번지는 것은 spreading further, 치료는 start antibiotics로 말해요.
+      pairs:
+        - - draw a
+          - line
+        - - spreading
+          - further
+        - - start
+          - antibiotics
+      decoys:
+        - mild
+    - kind: swap
+      words:
+        - w-mark
+        - w-edge
+        - w-redness
+      why: 차트에는 erythema라고 적어도, 환자에게는 보이는 그대로 redness라고 말해요. 선을 넘어 번지면 알려 달라고 부탁하기도 쉬워요.
+      who: 환자에게 · 경계 표시 설명
+      icon: me
+      before:
+        - 'I''m marking the edge of the '
+        - erythema
+        - ' to see if it spreads.'
+      options:
+        - redness
+        - erythema
+        - inflammation
+      answer: redness
+      notes:
+        erythema: 발적을 뜻하는 의료진의 말. 차트에는 맞지만 환자는 모른다.
+        inflammation: 틀린 말은 아니지만 더 넓은 말이라, 펜으로 긋는 선이 무엇의 경계인지 흐려진다.
+        redness: 환자가 눈으로 보는 그대로의 말. 무엇을 표시하는지 바로 안다.
 - id: SCN-ER-00698
   profession: ""
   eventId: EVT-ER-00146
@@ -92979,7 +93252,6 @@
         - while you're here
         - .
       words:
-        - w-please
         - w-keep
         - w-mask
         - w-protect
@@ -92996,7 +93268,6 @@
         - very likely
         - .
       words:
-        - w-work
         - w-flu
         - w-make
         - w-likely
@@ -93012,11 +93283,48 @@
       words:
         - w-antiviral
         - w-work
-        - w-good
         - w-start
         - w-within
-        - w-day
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-keep
+        - w-mask
+        - w-work
+        - w-early
+        - w-check
+        - w-flu
+      why: 마스크를 계속 쓰는 것은 keep the mask on, 약이 일찍 쓸 때 잘 듣는 것은 works best early, 검사는 check for the flu예요.
+      pairs:
+        - - keep the mask
+          - "on"
+        - - works best
+          - early
+        - - check for
+          - the flu
+      decoys:
+        - positive
+    - kind: swap
+      words:
+        - w-antiviral
+        - w-help
+      why: 독감 항바이러스제(오셀타미비르 등)는 증상 시작 48시간 안에 쓰면 앓는 기간을 하루 남짓 줄여 주는 정도예요. 그래서 may help처럼 기대를 사실에 맞춰 말해요.
+      who: 환자에게 · 항바이러스제 설명
+      icon: me
+      before:
+        - 'If it''s positive and it''s early, an antiviral '
+        - will cure it
+        - .
+      options:
+        - may help
+        - will cure it
+        - is a must
+      answer: may help
+      notes:
+        is a must: 건강한 성인 외래 환자에게 꼭 필요한 약은 아니라서 사실과 다르다.
+        may help: 사실에 맞는 말. 앓는 기간을 줄여 줄 수 있다는 정도로 기대를 맞춘다.
+        will cure it: 과장이다. 약을 먹어도 며칠은 앓을 수 있어 환자가 실망한다.
 - id: SCN-ER-00699
   profession: ""
   eventId: EVT-ER-00147
@@ -93147,11 +93455,51 @@
         - immediately
         - .
       words:
-        - w-nurse
         - w-right
         - w-send
         - w-immediately
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-act
+        - w-fast
+        - w-draw
+        - w-culture
+        - w-even
+        - w-mild
+        - w-fever
+      why: 지체 없이 움직이는 것은 act fast, 배양 채취는 drawing cultures, 가벼운 열마저 위험하다고 강조할 때는 even a mild fever예요.
+      pairs:
+        - - act
+          - fast
+        - - drawing
+          - cultures
+        - - even a mild
+          - fever
+      decoys:
+        - chemo
+    - kind: context
+      words:
+        - w-fever
+        - w-emergency
+        - w-antibiotic
+        - w-quickly
+      why: 항암치료 중 열이 나면 결과를 기다리지 않고 한 시간 안에 항생제를 시작해요. 같은 계획이라도 환자에게는 왜 서두르는지와 무엇을 하는지만 쉬운 말로 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Chemo patient, T 38.4 — treat as neutropenic fever, antibiotics within the hour.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Febrile, on chemo. BCx drawn, empiric abx started.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're presumed febrile neutropenic, so we're initiating empiric abx.
+          ok: false
+          fix: With chemo, a fever is an emergency, so we're starting antibiotics quickly.
 - id: SCN-ER-00700
   profession: ""
   eventId: EVT-ER-00147
@@ -93224,7 +93572,6 @@
         - w-fever
         - w-down
         - w-keep
-        - w-him
         - w-comfortable
       goal: 2
     - en: Most fever seizures are brief and don't cause lasting harm.
@@ -93257,7 +93604,6 @@
         - w-offer
         - w-fluid
         - w-let
-        - w-know
         - w-become
         - w-hard
         - w-wake
@@ -93273,13 +93619,11 @@
         - .
       words:
         - w-seizure
-        - w-look
         - w-scary
         - w-usually
         - w-stop
         - w-own
         - w-within
-        - w-minute
       goal: 1
     - en: Give him small sips of fluid every few minutes to keep him hydrated.
       ko: 탈수되지 않게 몇 분마다 조금씩 수분을 드리세요.
@@ -93291,15 +93635,52 @@
         - .
       words:
         - w-give
-        - w-him
         - w-small
         - w-sip
         - w-fluid
         - w-every
-        - w-minute
         - w-keep
         - w-hydrated
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-offer
+        - w-fluid
+        - w-become
+        - w-hard
+        - w-wake
+        - w-fever
+        - w-seizure
+      why: 마실 것을 계속 건네는 것은 keep offering fluids, 의식이 떨어지는 것은 becomes hard to wake, 열성경련은 보호자에게 fever seizures라고 쉽게 말해요.
+      pairs:
+        - - keep offering
+          - fluids
+        - - becomes hard to
+          - wake
+        - - fever
+          - seizures
+      decoys:
+        - scary
+    - kind: context
+      words:
+        - w-seizure
+        - w-brief
+      why: 짧았고 이제 회복했다는 같은 말이에요. 보호자에게는 postictal(발작 후) 같은 용어 대신 아이가 다시 제 모습으로 돌아오고 있다는 것을 쉬운 말로 알려 줘요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Simple febrile seizure, under a minute, back to baseline.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Generalized seizure <1 min with fever; postictal period resolved.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: It was a simple febrile seizure with a brief postictal phase.
+          ok: false
+          fix: It was a fever seizure — it was brief, and he's waking up and acting like himself again.
 - id: SCN-ER-00701
   profession: ""
   eventId: EVT-ER-00147
@@ -93400,7 +93781,6 @@
         - '?'
       words:
         - w-mouth
-        - w-sore
         - w-eye
         - w-irritation
       goal: 2
@@ -93436,8 +93816,58 @@
         - w-peel
         - w-skin
         - w-next
-        - w-hour
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-wonder
+      why: 아직 아무것도 확인하지 않았으면 wonder if 쪽이에요. 가능성을 열어 두고 의심만 말하는 가장 조심스러운 표현이라, 간호사가 진단을 앞질러 말하지 않게 해 줘요.
+      cue: Nurse has only seen the rash and heard about the new pill — nothing has been tested yet.
+      scale:
+        - wonder if
+        - think
+        - am certain
+      answerAt: 0
+      example: I wonder if the rash is from the new medication.
+      exKo: 발진이 새 약 때문인지 궁금해요.
+    - kind: pair
+      words:
+        - w-drug
+        - w-reaction
+        - w-mouth
+        - w-peel
+        - w-skin
+      why: 약물 때문에 생긴 반응은 drug reaction, 입안이 헌 것은 mouth sores, 피부가 벗겨지는 것은 peeling skin이에요.
+      pairs:
+        - - drug
+          - reaction
+        - - mouth
+          - sores
+        - - peeling
+          - skin
+      decoys:
+        - closely
+    - kind: context
+      words:
+        - w-medication
+        - w-rash
+        - w-drug
+        - w-reaction
+      why: 같은 걱정이지만, 확인도 안 된 무서운 병명을 환자에게 먼저 꺼내면 겁부터 먹어요. 간호사는 관찰한 것과 걱정을 동료·차트에 분명히 남기고, 환자에게는 무엇을 지켜보는지 차분하게 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: New rash after starting a new med, plus mouth sores — I'm worried about SJS.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Diffuse rash, onset 5 days after new medication started; oral lesions present.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You might have Stevens-Johnson syndrome.
+          ok: false
+          fix: Because of your new medication, I wonder if this rash is a drug reaction — we'll watch it closely.
 - id: SCN-ER-00702
   profession: ""
   eventId: EVT-ER-00147
@@ -93542,8 +93972,6 @@
         - w-light
         - w-bother
         - w-eye
-        - w-right
-        - w-now
       goal: 1
     - en: Can you bring your chin down toward your chest for me?
       ko: 턱을 가슴 쪽으로 내려 보시겠어요?
@@ -93575,6 +94003,48 @@
         - w-brain
         - w-spine
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-stiff
+        - w-neck
+        - w-spinal
+        - w-tap
+        - w-bright
+        - w-light
+      why: 목이 굳은 것은 stiff neck, 요추천자는 spinal tap, 눈부심을 물을 때는 bright light예요.
+      pairs:
+        - - stiff
+          - neck
+        - - spinal
+          - tap
+        - - bright
+          - light
+      decoys:
+        - chin
+    - kind: swap
+      words:
+        - w-need
+        - w-spinal
+        - w-tap
+        - w-fluid
+        - w-brain
+      why: 같은 시술이지만 환자에게는 spinal tap이라고 말하고, 동의서의 lumbar puncture와 같은 것이라고 이어 주면 좋아요.
+      who: 환자에게 · 검사 설명
+      icon: me
+      before:
+        - 'We''ll need to do '
+        - an LP
+        - ' to check the fluid around your brain.'
+      options:
+        - a spinal tap
+        - a lumbar puncture
+        - an LP
+      answer: a spinal tap
+      notes:
+        a lumbar puncture: 정식 명칭. 동의서와 차트에 쓰고, 환자에게 쓸 때는 뜻을 풀어 준다.
+        a spinal tap: 환자에게 익숙한 쉬운 말. 무엇을 하는지 금방 알아듣는다.
+        an LP: 의료진끼리의 약어. 환자는 못 알아듣는다.
 - id: SCN-ER-00703
   profession: ""
   eventId: EVT-ER-00147
@@ -93645,7 +94115,6 @@
       words:
         - w-long
         - w-cough
-        - w-night
         - w-sweat
         - w-weight
         - w-loss
@@ -93664,8 +94133,6 @@
         - w-place
         - w-special
         - w-isolation
-        - w-room
-        - w-right
         - w-away
       goal: 2
     - en: We'll test your sputum to check for tuberculosis.
@@ -93691,9 +94158,7 @@
         - and the night sweats
         - '?'
       words:
-        - w-week
         - w-cough
-        - w-night
         - w-sweat
       goal: 1
     - en: The isolation room keeps the air from spreading TB to others.
@@ -93706,13 +94171,50 @@
         - .
       words:
         - w-isolation
-        - w-room
         - w-keep
         - w-air
         - w-spread
         - w-tb
         - w-other
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-sweat
+        - w-weight
+        - w-loss
+        - w-sputum
+        - w-test
+      why: 자다가 흠뻑 젖는 땀은 night sweats, 몸무게가 주는 것은 weight loss, 가래로 하는 검사는 sputum test예요. 셋 다 결핵을 선별할 때 묻는 말이에요.
+      pairs:
+        - - night
+          - sweats
+        - - weight
+          - loss
+        - - sputum
+          - test
+      decoys:
+        - tuberculosis
+    - kind: context
+      words:
+        - w-place
+        - w-special
+        - w-isolation
+      why: 결핵 의심 환자는 음압격리실(AIIR, airborne infection isolation room)에 들이고 의료진은 N95를 써요. 같은 조치라도 환자에게는 약어 대신 특별한 방이고 왜 필요한지를 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Possible TB — he needs an airborne isolation room now.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Pt placed in AIIR; N95 required for staff.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're being placed in an AIIR on airborne precautions.
+          ok: false
+          fix: We'll place you in a special isolation room right away — it keeps the air from spreading to others.
 - id: SCN-ER-00704
   profession: ""
   eventId: EVT-ER-00147
@@ -93804,7 +94306,6 @@
         - w-prevention
         - w-pill
         - w-finish
-        - w-them
       goal: 1
     - en: We'll run a rapid blood test to check for it now.
       ko: 지금 신속 혈액검사를 해서 확인해볼게요.
@@ -93815,12 +94316,10 @@
         - for it now
         - .
       words:
-        - w-run
         - w-rapid
         - w-blood
         - w-test
         - w-check
-        - w-now
       goal: 2
     - en: When exactly did you get back from that trip?
       ko: 그 여행에서 정확히 언제 돌아오셨어요?
@@ -93832,7 +94331,6 @@
         - '?'
       words:
         - w-exactly
-        - w-get
         - w-back
         - w-trip
       goal: 1
@@ -93847,12 +94345,52 @@
         - .
       words:
         - w-malaria
-        - w-look
         - w-flu
         - w-first
         - w-test
         - w-sure
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-prevention
+        - w-pill
+        - w-rapid
+        - w-blood
+        - w-test
+        - w-back
+        - w-trip
+      why: 말라리아 예방약은 prevention pills, 신속 검사는 rapid blood test, 돌아온 날은 get back from that trip으로 물어요.
+      pairs:
+        - - prevention
+          - pills
+        - - rapid blood
+          - test
+        - - get back from
+          - that trip
+      decoys:
+        - urgent
+    - kind: context
+      words:
+        - w-malaria
+        - w-test
+        - w-rapid
+        - w-blood
+      why: 말라리아는 신속항원검사(RDT)와 혈액도말(thick/thin smear)로 확인해요. 같은 내용이라도 환자에게는 검사 이름보다 무엇을 하고 언제 알려 줄지를 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Febrile after travel to a malaria area — she needs smears and a rapid test now.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Travel to endemic area 2 wk ago; malaria RDT and thick/thin smears sent.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your malaria RDT and thick and thin smears are pending.
+          ok: false
+          fix: We're running a rapid blood test for malaria now, and we'll tell you as soon as it's back.
 - id: SCN-ER-00705
   profession: ""
   eventId: EVT-ER-00147
@@ -93922,12 +94460,9 @@
         - .
       words:
         - w-neutropenic
-        - w-now
         - w-hypotensive
         - w-septic
-        - w-until
         - w-prove
-        - w-otherwise
       goal: 1
     - en: Cultures are drawn; give broad-spectrum antibiotics within the hour.
       ko: 배양검사는 채취됐고, 한 시간 안에 광범위 항생제를 주세요.
@@ -93941,10 +94476,8 @@
         - w-culture
         - w-give
         - w-broad
-        - w-spectrum
         - w-antibiotic
         - w-within
-        - w-hour
       goal: 1
     - en: Febrile neutropenia with sepsis — I need fluids running and a physician now.
       ko: 발열성 호중구감소증에 패혈증까지 — 수액을 흘리고 의사가 지금 필요해요.
@@ -93963,7 +94496,6 @@
         - w-fluid
         - w-run
         - w-physician
-        - w-now
       goal: 2
     - en: Give the first antibiotic dose now — don't wait for the workup.
       ko: 첫 항생제 용량을 지금 주세요 — 검사 결과를 기다리지 마세요.
@@ -93977,7 +94509,6 @@
         - w-first
         - w-antibiotic
         - w-dose
-        - w-now
         - w-wait
         - w-workup
       goal: 1
@@ -93994,8 +94525,47 @@
         - w-drop
         - w-need
         - w-here
-        - w-now
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-broad
+        - w-antibiotic
+        - w-febrile
+        - w-neutropenia
+        - w-prove
+      why: 원인균을 모를 때 넓게 덮는 항생제는 broad-spectrum antibiotics, 열이 나는 호중구감소증은 febrile neutropenia, 최악을 먼저 가정할 때는 until proven otherwise예요.
+      pairs:
+        - - broad-spectrum
+          - antibiotics
+        - - febrile
+          - neutropenia
+        - - until proven
+          - otherwise
+      decoys:
+        - dose
+    - kind: swap
+      words:
+        - w-pressure
+        - w-drop
+        - w-need
+        - w-here
+      why: 위급할 때는 돌려 말하지 않아요. 미국 병원 팀 훈련(TeamSTEPPS)도 걱정을 말한 뒤 무엇이 필요한지를 분명히 요청하라고 가르쳐요.
+      who: 의사에게 · 긴급 호출
+      icon: siren
+      before:
+        - 'Pressure''s dropping — '
+        - you might want to stop by later
+        - .
+      options:
+        - I need you in here now
+        - you might want to stop by later
+        - just so you know
+      answer: I need you in here now
+      notes:
+        I need you in here now: 무엇이 필요한지 분명한 요청. 듣는 사람이 바로 움직인다.
+        just so you know: 알리기만 하고 요청이 없다. 책임이 흐려진다.
+        you might want to stop by later: 급하지 않다는 신호가 되어 의사가 늦게 온다.
 - id: SCN-ER-00706
   profession: ""
   eventId: EVT-ER-00147
@@ -94070,7 +94640,6 @@
         - w-dangerous
         - w-sign
         - w-act
-        - w-now
       goal: 1
     - en: We're giving antibiotics immediately and starting fluids.
       ko: 항생제를 즉시 드리고 수액도 시작할게요.
@@ -94097,12 +94666,10 @@
         - .
       words:
         - w-isolate
-        - w-him
         - w-need
         - w-protect
         - w-close
         - w-contact
-        - w-too
       goal: 2
     - en: How quickly did the spots spread after they first appeared?
       ko: 반점이 처음 나타난 후 얼마나 빨리 퍼졌나요?
@@ -94134,8 +94701,47 @@
         - w-need
         - w-preventive
         - w-antibiotic
-        - w-too
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-purple
+        - w-spot
+        - w-isolate
+        - w-preventive
+        - w-antibiotic
+      why: 보호자에게 자반은 purple spots, 격리는 we're isolating him, 가까이 지낸 사람에게 주는 약은 preventive antibiotics라고 말해요.
+      pairs:
+        - - purple
+          - spots
+        - - isolating
+          - him
+        - - preventive
+          - antibiotics
+      decoys:
+        - drowsiness
+    - kind: context
+      words:
+        - w-purple
+        - w-spot
+        - w-dangerous
+        - w-sign
+        - w-act
+      why: 눌러도 사라지지 않는 자반과 의식 저하는 수막구균혈증을 의심하게 하는 위험 신호예요. 같은 소견이라도 보호자에게는 보이는 그대로 말하고, 지금 바로 움직이고 있다는 것을 함께 알려요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Non-blanching purpura and he's drowsy — treat as meningococcemia.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Purpuric rash spreading; pt lethargic. Abx given, isolation initiated.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: Your son has non-blanching purpura and altered mental status.
+          ok: false
+          fix: Those purple spots and how drowsy he is are a dangerous sign — we're acting now.
 - id: SCN-ER-00707
   profession: ""
   eventId: EVT-ER-00147
@@ -94237,8 +94843,6 @@
         - w-strong
         - w-antibiotic
         - w-fluid
-        - w-right
-        - w-now
       goal: 2
     - en: This pain is much worse than the redness alone would explain.
       ko: 이 통증은 발적만 봐서는 설명이 안 될 만큼 훨씬 심해요.
@@ -94251,7 +94855,6 @@
       words:
         - w-pain
         - w-much
-        - w-bad
         - w-redness
         - w-alone
         - w-explain
@@ -94268,13 +94871,46 @@
         - w-surgery
         - w-team
         - w-need
-        - w-see
         - w-leg
-        - w-right
         - w-away
         - w-spread
         - w-further
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-pain
+        - w-severe
+      why: 평생 가장 심한 통증이라면 excruciating 쪽이에요. 겉으로 보이는 발적은 가벼운데 통증이 이만큼 심하면(pain out of proportion) 괴사성 근막염을 의심하는 경고 신호라 바로 알려야 해요.
+      cue: 'The redness looks mild, but the patient says: "It''s the worst pain of my life — don''t touch it."'
+      scale:
+        - sore
+        - painful
+        - excruciating
+      answerAt: 2
+      example: The pain is excruciating and out of proportion to what we see.
+      exKo: 통증이 극심하고 보이는 것에 비해 훨씬 심해요.
+    - kind: context
+      words:
+        - w-call
+        - w-surgery
+        - w-urgently
+        - w-pain
+      why: 외과를 긴급히 부른다는 같은 말이에요. out of proportion·STAT·consulted는 의료진의 말이고, 환자에게는 왜 급한지와 누구를 부르는지를 쉬운 말로 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Pain out of proportion with a fever — I'm worried about nec fasc. Surgery needs to see him now.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Severe pain out of proportion to exam; surgery consulted STAT.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your pain is out of proportion to exam, so surgery was consulted STAT.
+          ok: false
+          fix: This pain is much worse than the redness alone would explain, so we're calling surgery urgently.
 - id: SCN-ER-00708
   profession: ""
   eventId: EVT-ER-00147
@@ -94345,7 +94981,6 @@
       words:
         - w-rash
         - w-fever
-        - w-low
         - w-pressure
         - w-point
         - w-toxic
@@ -94364,7 +94999,6 @@
         - w-fluid
         - w-start
         - w-antibiotic
-        - w-now
       goal: 2
     - en: Have you had any recent wound, surgery, or been using tampons?
       ko: 최근에 상처, 수술, 또는 탐폰 사용이 있었나요?
@@ -94377,7 +95011,6 @@
       words:
         - w-recent
         - w-wound
-        - w-surgery
         - w-use
         - w-tampon
       goal: 1
@@ -94409,11 +95042,46 @@
         - w-fluid
         - w-run
         - w-fast
-        - w-bring
         - w-pressure
         - w-back
         - w-up
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-dizziness
+      why: 앉기만 해도 눈앞이 잿빛으로 흐려지면 about to pass out 쪽이에요. 곧 쓰러질 것 같다는 말은 혈압이 떨어지고 있다는 신호일 수 있어 바로 활력징후를 재요.
+      cue: 'Patient: "When I sit up, the room spins and everything starts going gray."'
+      scale:
+        - lightheaded
+        - dizzy
+        - about to pass out
+      answerAt: 2
+      example: She says she feels like she's about to pass out when she sits up.
+      exKo: 앉으면 곧 쓰러질 것 같다고 해요.
+    - kind: context
+      words:
+        - w-point
+        - w-toxic
+        - w-shock
+        - w-rash
+        - w-fever
+        - w-pressure
+      why: 발진·발열·저혈압이 독성쇼크를 가리킨다는 같은 판단이에요. 환자에게는 criteria·TSS 같은 말 대신 무엇을 보고 그렇게 생각하는지와 지금 치료하고 있다는 것을 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Diffuse rash, fever, BP 82 over 50 — this points to toxic shock.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Fever, diffuse erythroderma, hypotension; concern for TSS.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You meet criteria for TSS with multiorgan involvement.
+          ok: false
+          fix: Your rash, fever, and low blood pressure make us think of toxic shock, so we're treating it right now.
 - id: SCN-ER-00709
   profession: ""
   eventId: EVT-ER-00147
@@ -94487,7 +95155,6 @@
         - w-fast
         - w-move
         - w-quickly
-        - w-now
       goal: 1
     - en: We're giving fluids wide open and antibiotics right away.
       ko: 수액을 활짝 열어 놓고 항생제도 바로 드릴게요.
@@ -94501,9 +95168,7 @@
         - w-give
         - w-fluid
         - w-wide
-        - w-open
         - w-antibiotic
-        - w-right
         - w-away
       goal: 2
     - en: Stay with me — I'm getting the team in here.
@@ -94516,8 +95181,6 @@
         - .
       words:
         - w-stay
-        - w-with
-        - w-get
         - w-team
         - w-here
       goal: 2
@@ -94530,9 +95193,7 @@
         - is changing fast
         - .
       words:
-        - w-hour
         - w-ago
-        - w-look
         - w-stable
         - w-change
         - w-fast
@@ -94551,9 +95212,42 @@
         - w-bundle
         - w-call
         - w-physician
-        - w-right
-        - w-now
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-pressure
+        - w-drop
+        - w-stable
+      why: 한 시간 사이에 수축기가 118에서 78로 떨어졌으면 dropping fast예요. soft는 조금 낮은 경계선 혈압을 가리키는 의료진의 구어라, 이만큼 빠르게 떨어질 때 쓰면 급한 정도가 덜 전해져요.
+      cue: 'BP over the last hour: 118/74 → 96/60 → 78/44.'
+      scale:
+        - stable
+        - soft
+        - dropping fast
+      answerAt: 2
+      example: Her pressure's a little soft, but she's still talking to us.
+      exKo: 혈압이 조금 낮긴 한데 아직 대화는 돼요.
+    - kind: swap
+      words:
+        - w-wide
+        - w-fluid
+      why: 의료진끼리는 수액 속도를 모호하게 말하지 않아요. wide open은 최대로 열어 두었다는 정해진 말이라, 쇼크로 넘어가는 환자를 인계할 때 그대로 알아듣고 이어 받아요.
+      who: 동료에게 · 수액 속도 인계
+      icon: monitor
+      before:
+        - 'She''s hypotensive, and I''ve got a liter of fluids running '
+        - kind of fast
+        - .
+      options:
+        - wide open
+        - kind of fast
+        - at a good clip
+      answer: wide open
+      notes:
+        at a good clip: '''꽤 빠르게''라는 일상 구어라 속도가 전해지지 않는다.'
+        kind of fast: 얼마나 빠른지 알 수 없다. 받는 사람이 다시 물어야 한다.
+        wide open: 조절기를 끝까지 열어 최대로 들어가고 있다는 뜻. 듣는 사람이 속도를 정확히 안다.
 - id: SCN-ER-00710
   profession: ""
   eventId: EVT-ER-00147
@@ -94652,11 +95346,9 @@
         - — please continue isolation
         - .
       words:
-        - w-last
         - w-pressure
         - w-systolic
         - w-fluid
-        - w-please
         - w-continue
         - w-isolation
       goal: 1
@@ -94691,6 +95383,48 @@
         - w-fluid
         - w-far
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-large
+        - w-iv
+        - w-contact
+        - w-precaution
+        - w-liter
+        - w-fluid
+        - w-far
+      why: 굵은 정맥로는 large-bore IVs, 격리 조치는 ___ precautions 꼴로, 지금까지 들어간 양은 one liter of fluids so far로 인계해요.
+      pairs:
+        - - large-bore
+          - IVs
+        - - contact
+          - precautions
+        - - one liter of fluids
+          - so far
+      decoys:
+        - systolic
+    - kind: context
+      words:
+        - w-culture
+        - w-first
+        - w-antibiotic
+        - w-dose
+        - w-give
+      why: 배양을 채취하고 첫 항생제를 언제 줬는지는 같은 정보예요. 받는 팀에게는 24시간제 시각까지 정확히, 보호자에게는 약어 없이 무엇을 했는지를 말해요.
+      scenes:
+        - who: 받는 간호사에게
+          icon: monitor
+          en: Cultures were drawn, and the first antibiotic dose went in at nineteen-hundred.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: BCx x2 drawn; ceftriaxone 2 g IV given at 1900.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: BCx x2 drawn; ceftriaxone 2 g IV at 1900.
+          ok: false
+          fix: We took blood tests to find the germ, and he got his first antibiotic at 7 p.m.
 - id: SCN-ER-00711
   profession: ""
   eventId: EVT-ER-00147
