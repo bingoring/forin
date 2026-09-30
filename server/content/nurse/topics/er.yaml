@@ -24546,8 +24546,41 @@
     - en: "I'll check your arm and chest for the size of the burn."
       ko: "화상 크기를 보려고 팔과 가슴을 확인할게요."
       chunks: ["I'll check", "your arm and chest", "for the size", "of the burn", "."]
-      words: [w-check, w-arm, w-chest, w-size, w-burn]
+      words: [w-check, w-chest, w-size, w-burn]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-hurt
+    cue: 'Patient: "It''s burning so bad — I can''t stand it!"'
+    scale:
+    - a little sore
+    - really painful
+    - unbearable
+    answerAt: 2
+    why: '''못 참겠다''면 unbearable 쪽이에요. 환자가 쓴 말의 세기를 그대로 받아 주고, 0~10 점수로도 다시 확인해 차트에 남겨요.'
+    example: I know this really hurts — we'll get you something for the pain.
+    exKo: 정말 아프신 거 알아요 — 진통제를 드릴게요.
+  - kind: swap
+    words:
+    - w-remove
+    - w-gently
+    who: 환자에게 · 화상 부위 옷 제거
+    icon: me
+    before:
+    - 'I''m going to '
+    - rip off
+    - ' anything covering the burn.'
+    options:
+    - gently remove
+    - rip off
+    - debride
+    answer: gently remove
+    notes:
+      gently remove: 무엇을 할지와 어떻게 할지가 함께 전해져 환자가 덜 긴장한다.
+      rip off: '''확 뜯어낸다''는 말이라 아픈 환자를 겁주고, 실제로 그렇게 하지도 않는다.'
+      debride: 괴사 조직을 걷어 내는 처치를 가리키는 의료 용어라 뜻도 다르고 환자는 못 알아듣는다.
+    why: 옷·장신구는 붓기 전에 살살 떼어 내요. 피부에 달라붙은 옷은 억지로 떼지 않고 둘레를 잘라 두는 것이 원칙이에요.
 
 - theme: er-burn
   title: TBSA 9의 법칙 설명
@@ -24570,12 +24603,12 @@
     - en: "We estimate how much skin is burned using body regions."
       ko: "신체 부위를 이용해 피부가 얼마나 탔는지 추정해요."
       chunks: ["We estimate", "how much skin", "is burned", "using body regions", "."]
-      words: [w-estimate, w-skin, w-burn, w-body, w-region]
+      words: [w-estimate, w-skin, w-burn, w-region]
       goal: 1
     - en: "Each arm counts as about nine percent of your body."
       ko: "팔 하나는 몸의 약 9퍼센트로 쳐요."
       chunks: ["Each arm", "counts as", "about nine percent", "of your body", "."]
-      words: [w-arm, w-count, w-percent, w-body]
+      words: [w-count, w-percent]
       goal: 1
     - en: "This helps us decide how much fluid you need."
       ko: "이건 수액이 얼마나 필요한지 결정하는 데 도움이 돼요."
@@ -24585,13 +24618,49 @@
     - en: "Your legs and back count as larger areas than your arms."
       ko: "다리와 등은 팔보다 더 넓은 부위로 쳐요."
       chunks: ["Your legs and back", "count as", "larger areas", "than your arms", "."]
-      words: [w-leg, w-back, w-count, w-large, w-arm]
+      words: [w-back, w-count, w-large]
       goal: 1
     - en: "We'll use this number to plan your fluids for today."
       ko: "이 수치로 오늘 드릴 수액을 계획할게요."
       chunks: ["We'll use", "this number", "to plan your fluids", "for today", "."]
       words: [w-number, w-plan, w-fluid]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-count
+    - w-percent
+    - w-plan
+    - w-fluid
+    pairs:
+    - - each arm counts as
+      - about nine percent
+    - - we'll plan
+      - your fluids for today
+    - - the rule of
+      - nines
+    decoys:
+    - your weight
+    why: 9의 법칙에서 팔 하나는 약 9%, 다리 하나는 약 18%로 쳐요(count as). plan은 계산한 수액을 앞으로 어떻게 줄지 짜는 말이에요.
+  - kind: context
+    words:
+    - w-percent
+    - w-skin
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Est. TBSA 27%, partial thickness, rule of nines.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: She's about 27 percent TBSA, mostly partial thickness.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your TBSA is approximately 27 percent.
+      ok: false
+      fix: About a quarter of your skin is burned — that's why you need a lot of fluid.
+    why: TBSA(체표면적)는 의료진끼리의 약어예요. 환자에게는 '피부의 약 4분의 1'처럼 그림이 그려지는 말로, 왜 중요한지까지 붙여요.
 
 - theme: er-burn
   title: 화상 깊이 구분
@@ -24636,6 +24705,42 @@
       chunks: ["Sharp pain", "usually points", "to a shallow burn", "."]
       words: [w-sharp, w-pain, w-shallow, w-burn]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-deep
+    - w-shallow
+    - w-painful
+    cue: 'Nurse: "Red and painful, but no blisters."'
+    scale:
+    - superficial
+    - partial thickness
+    - full thickness
+    answerAt: 0
+    why: 붉고 아프지만 물집이 없으면 superficial(표재성, 1도)이에요. 물집이 잡히고 몹시 아프면 partial thickness, 하얗거나 가죽처럼 딱딱하고 감각이 없으면 full thickness예요.
+    example: Superficial burns are red and painful but don't blister.
+    exKo: 표재성 화상은 붉고 아프지만 물집은 생기지 않아요.
+  - kind: swap
+    words:
+    - w-numb
+    - w-nerve
+    - w-damage
+    who: 환자에게 · 감각 없는 부위 설명
+    icon: me
+    before:
+    - 'This spot feels numb because the '
+    - burn is healing
+    - .
+    options:
+    - nerves there are damaged
+    - burn is healing
+    - nerve endings are destroyed
+    answer: nerves there are damaged
+    notes:
+      nerves there are damaged: 사실대로 말하되 환자가 받아들일 수 있는 말이다.
+      burn is healing: 사실과 반대다. 감각이 없는 것은 오히려 화상이 깊다는 신호라 잘못 안심시킨다.
+      nerve endings are destroyed: 틀린 말은 아니지만 '파괴됐다'는 말이 되돌릴 수 없다는 느낌으로 무겁게 들린다.
+    why: 안 아픈 부위가 더 깊은 화상일 수 있다는 것은 환자가 가장 헷갈려하는 부분이에요. 거짓 안심 없이 쉬운 말로 설명해요.
 
 - theme: er-burn
   title: 초기 냉각·세척
@@ -24673,13 +24778,47 @@
     - en: "We'll keep rinsing for about twenty minutes."
       ko: "약 20분 동안 계속 헹굴게요."
       chunks: ["We'll keep rinsing", "for about", "twenty minutes", "."]
-      words: [w-rinse, w-minute]
+      words: [w-rinse]
       goal: 1
     - en: "Cool water helps, but freezing cold water can hurt you more."
       ko: "시원한 물은 도움이 되지만, 너무 차가운 물은 오히려 해로울 수 있어요."
       chunks: ["Cool water helps,", "but freezing cold water", "can hurt you", "more", "."]
       words: [w-cool, w-water, w-help, w-cold, w-hurt]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-cool
+    - w-cold
+    - w-ice
+    cue: 'Burn first aid: running tap water for about 20 minutes — the right temperature is…'
+    scale:
+    - lukewarm
+    - cool
+    - ice-cold
+    answerAt: 1
+    why: 화상 냉각은 cool(시원한) 수돗물을 약 20분 흘려 주는 것이에요. 얼음이나 얼음물은 혈관을 수축시켜 손상을 키우고, 넓은 화상에서는 저체온 위험도 있어요.
+    example: Cool water helps, but freezing cold water can hurt you more.
+    exKo: 시원한 물은 도움이 되지만, 너무 차가운 물은 오히려 해로울 수 있어요.
+  - kind: context
+    words:
+    - w-cold
+    - w-shivery
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt shivering, reports feeling cold. Cooling stopped, warm blankets applied.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: She's getting cold and shivery — let's stop the water and warm her up.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're developing hypothermia.
+      ok: false
+      fix: You're getting cold, so I'm going to stop the water and warm you up.
+    why: 의료진끼리는 hypothermia(저체온)를 경계하지만, 환자에게 진단명을 던지면 겁만 줘요. 춥다는 사실과 지금 할 조치를 함께 말해요.
 
 - theme: er-burn
   title: 통증 척도·기전 청취
@@ -24712,7 +24851,7 @@
     - en: "On a scale of zero to ten, how bad is the pain?"
       ko: "0에서 10까지 중에 통증이 얼마나 심하세요?"
       chunks: ["On a scale", "of zero to ten,", "how bad is", "the pain", "?"]
-      words: [w-scale, w-zero, w-ten, w-bad, w-pain]
+      words: [w-scale, w-pain]
       goal: 2
     - en: "Was it hot water, fire, or a chemical?"
       ko: "뜨거운 물이었나요, 불이었나요, 아니면 화학물질이었나요?"
@@ -24724,6 +24863,40 @@
       chunks: ["Breathing in smoke", "can hurt", "your lungs", "and airway", "."]
       words: [w-smoke, w-hurt, w-lung, w-airway]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-scale
+    cue: 'Patient: "It''s a nine — worst pain I''ve ever had."'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 2
+    why: 0~10 척도에서 흔히 1~3을 mild, 4~6을 moderate, 7~10을 severe로 나눠요. 9점이면 severe예요.
+    example: She rates her pain nine out of ten — severe.
+    exKo: 통증을 10점 만점에 9점으로 표현해요 — 심한 통증이에요.
+  - kind: context
+    words:
+    - w-enclose
+    - w-smoke
+    - w-space
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Enclosed-space fire, prolonged smoke exposure.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Enclosed-space fire with prolonged smoke exposure — high risk for inhalation injury.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Did you have an enclosed-space smoke exposure?
+      ok: false
+      fix: Were you in a closed room with smoke?
+    why: '''enclosed-space exposure''는 흡입 손상 위험을 적는 의료진 말이에요. 환자에게는 닫힌 방에 연기와 함께 있었는지 그대로 물어야 정확한 답이 와요.'
 
 # ---- Lv2 ----
 - theme: er-burn
@@ -24769,6 +24942,41 @@
       chunks: ["Tell me right away", "if breathing gets", "harder", "."]
       words: [w-tell, w-breathe, w-hard]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-voice
+    - w-change
+    cue: 'Nurse: "His voice is getting raspy, but no noisy breathing yet."'
+    scale:
+    - hoarseness
+    - stridor
+    - airway obstruction
+    answerAt: 0
+    why: 쉰 목소리(hoarseness)는 기도 부종의 이른 신호예요. 숨 들이쉴 때 높은 소리(stridor)가 나면 이미 기도가 많이 좁아진 것이라, 쉰 목소리 단계에서 미리 보고하고 기도 확보를 준비해요.
+    example: His voice is hoarse — let's get ready to protect his airway early.
+    exKo: 목소리가 쉬었어요 — 기도를 미리 보호할 준비를 해요.
+  - kind: swap
+    words:
+    - w-soot
+    - w-mouth
+    - w-nose
+    who: 의사에게 · 흡입 손상 소견 보고
+    icon: monitor
+    before:
+    - 'I see '
+    - black stuff
+    - ' around his mouth and nose.'
+    options:
+    - soot
+    - black stuff
+    - dirt
+    answer: soot
+    notes:
+      soot: 짧고 정확한 소견 — 듣는 즉시 흡입 손상을 떠올린다.
+      black stuff: 뜻은 통하지만 보고로는 막연하다.
+      dirt: 뜻이 달라져 흡입 손상의 단서가 사라진다.
+    why: 입·코 주변 그을음(soot)은 흡입 손상의 대표 단서예요. 의사에게는 정확한 말로 보고해야 기도 평가가 빨라져요.
 
 - theme: er-burn
   title: 대면적 화상 수액소생
@@ -24789,7 +24997,7 @@
   persona: { name: Marvin Ross, ageRange: 50s, sub: "54y / Male", mood: worried, personality: 상태를 알고 싶어함, speakingStyle: 힘겹지만 또박또박 말함 }
   sentences:
     - en: "Large burns lose fluid, so we replace it carefully."
-      ko: "넓은 화상은 수액이 빠져나가서 조심스럽게 보충해요."
+      ko: "넓은 화상은 체액이 빠져나가서 조심스럽게 보충해요."
       chunks: ["Large burns", "lose fluid,", "so we replace it", "carefully", "."]
       words: [w-large, w-burn, w-lose, w-fluid, w-replace, w-carefully]
       goal: 1
@@ -24813,6 +25021,40 @@
       chunks: ["A good urine amount", "tells us", "the fluid", "is working", "."]
       words: [w-urine, w-amount, w-tell, w-fluid, w-work]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-urine
+    - w-amount
+    cue: 'Adult, 70 kg: 15 mL of urine in the last hour.'
+    scale:
+    - low
+    - adequate
+    - excessive
+    answerAt: 0
+    why: 성인 화상 소생에서 흔한 소변량 목표는 시간당 약 0.5 mL/kg(70 kg이면 약 35 mL)이에요. 15 mL면 목표에 한참 못 미치니 바로 보고해요.
+    example: Urine output is low — only 15 mL this hour.
+    exKo: 소변량이 적어요 — 이번 시간에 15 mL뿐이에요.
+  - kind: swap
+    words:
+    - w-lose
+    - w-fluid
+    who: 환자에게 · 많은 수액을 주는 이유
+    icon: me
+    before:
+    - 'Large burns '
+    - cause capillary leak
+    - ', so we''re giving you a lot of fluid.'
+    options:
+    - make your body lose fluid
+    - cause capillary leak
+    - dry you out
+    answer: make your body lose fluid
+    notes:
+      make your body lose fluid: 쉬운 말이면서 왜 수액이 많이 필요한지 바로 이어진다.
+      cause capillary leak: 정확한 기전이지만 의료진 말이라 환자에게는 어렵다.
+      dry you out: 피부가 건조해진다거나 물만 마시면 된다는 식으로 오해할 수 있다.
+    why: 넓은 화상에서는 혈관 밖으로 체액이 새어 나가요. 환자에게는 '몸이 체액을 잃는다'고 말하면 수액이 많은 이유가 전해져요.
 
 - theme: er-burn
   title: 화학 화상
@@ -24835,7 +25077,7 @@
     - en: "What chemical was it, and do you know its name?"
       ko: "어떤 화학물질이었고, 이름을 아세요?"
       chunks: ["What chemical was it,", "and do you", "know", "its name", "?"]
-      words: [w-chemical, w-know, w-name]
+      words: [w-chemical]
       goal: 1
     - en: "We'll rinse it with lots of water, not neutralize it."
       ko: "중화시키지 않고 물을 많이 써서 헹굴게요."
@@ -24850,13 +25092,49 @@
     - en: "We'll take off any clothes with chemical on them."
       ko: "화학물질이 묻은 옷은 벗을게요."
       chunks: ["We'll take off", "any clothes", "with chemical", "on them", "."]
-      words: [w-clothes, w-chemical]
+      words: [w-clothes, w-chemical, w-takeoff]
       goal: 1
     - en: "Please keep rinsing for at least twenty minutes."
       ko: "적어도 20분은 계속 헹궈 주세요."
       chunks: ["Please keep rinsing", "for at least", "twenty minutes", "."]
-      words: [w-rinse, w-minute]
+      words: [w-rinse, w-atleast]
       goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-neutralize
+    - w-rinse
+    - w-water
+    who: 환자에게 · 화학 화상 처치 설명
+    icon: me
+    before:
+    - 'We''ll '
+    - neutralize the acid with a base
+    - ' to stop the burning.'
+    options:
+    - keep rinsing with lots of water
+    - neutralize the acid with a base
+    - put a cream on it
+    answer: keep rinsing with lots of water
+    notes:
+      keep rinsing with lots of water: 화학 화상 처치의 기본 — 물질을 씻어 내고 희석한다.
+      neutralize the acid with a base: 중화 반응에서 열이 나 손상을 키울 수 있고 세척이 늦어져 하지 않는다.
+      put a cream on it: 물질이 남은 채로 덮어 버려 손상이 계속된다.
+    why: 화학 화상은 중화하지 않고 많은 물로 오래 씻어요. 환자에게도 왜 계속 씻는지 알려 주면 협조가 쉬워요.
+  - kind: pair
+    words:
+    - w-takeoff
+    - w-atleast
+    - w-rinse
+    - w-clothes
+    pairs:
+    - - take off your
+      - contaminated clothes
+    - - keep rinsing for
+      - at least twenty minutes
+    decoys:
+    - a base
+    why: take off는 옷을 벗기다, at least는 '최소한'이에요. 화학 화상은 최소 20분 이상 씻고, 알칼리처럼 깊이 스며드는 물질은 더 오래 씻어요.
 
 - theme: er-burn
   title: 전기 화상 심전도 감시
@@ -24884,7 +25162,7 @@
     - en: "Let me find the entry and exit wounds on your body."
       ko: "몸에서 입구와 출구 상처를 찾아볼게요."
       chunks: ["Let me find", "the entry", "and exit wounds", "on your body", "."]
-      words: [w-find, w-entry, w-exit, w-wound, w-body]
+      words: [w-find, w-entry, w-exit, w-wound]
       goal: 2
     - en: "Tell me if your heart races or you feel dizzy."
       ko: "심장이 빨리 뛰거나 어지러우면 말씀해 주세요."
@@ -24901,6 +25179,47 @@
       chunks: ["Electricity can damage", "deep tissue", "that looks fine", "on the skin", "."]
       words: [w-electricity, w-damage, w-deep, w-tissue, w-look, w-skin]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-entry
+    - w-exit
+    - w-wound
+    - w-heart
+    - w-monitor
+    - w-feel
+    - w-dizzy
+    pairs:
+    - - entry and exit
+      - wounds
+    - - put you on a
+      - heart monitor
+    - - you feel
+      - dizzy
+    decoys:
+    - ice packs
+    why: 전기 화상은 전류가 들어간 자리(entry)와 나간 자리(exit)에 상처가 남아 둘 다 찾아요. 'put someone on a monitor'는 모니터를 연결한다는 관용 표현이에요.
+  - kind: context
+    words:
+    - w-electricity
+    - w-damage
+    - w-deep
+    - w-tissue
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Small entry and exit wounds; possible deep tissue injury.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: The skin wounds are small, but he could have a lot of deep tissue damage.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You probably have extensive occult deep tissue necrosis.
+      ok: false
+      fix: The burns on your skin look small, but electricity can hurt deeper inside, so we're watching closely.
+    why: 전기 화상은 피부 상처가 작아도 속 조직 손상이 클 수 있어요. 의료진끼리는 'deep tissue injury'로 말하지만, 환자에게 'occult necrosis' 같은 말은 알아듣기 어렵고 겁만 줘요.
 
 - theme: er-burn
   title: 순환성 전층화상
@@ -24923,7 +25242,7 @@
     - en: "The burn is circling your arm and may cut off circulation."
       ko: "화상이 팔을 둘러싸고 있어서 순환을 막을 수도 있어요."
       chunks: ["The burn", "is circling your arm", "and may", "cut off circulation", "."]
-      words: [w-burn, w-circle, w-arm, w-cut, w-circulation]
+      words: [w-burn, w-circle, w-circulation]
       goal: 1
     - en: "I'm checking the pulse and feeling in your fingers."
       ko: "손가락의 맥박과 감각을 확인하고 있어요."
@@ -24945,6 +25264,41 @@
       chunks: ["We may need", "a small cut", "in the skin", "to relieve the pressure", "."]
       words: [w-need, w-cut, w-skin, w-relieve, w-pressure]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-circulation
+    - w-relieve
+    - w-pressure
+    pairs:
+    - - cut off
+      - circulation
+    - - relieve
+      - the pressure
+    decoys:
+    - a small cut
+    why: cut off circulation은 '혈류를 막다', relieve the pressure는 '압력을 덜다'로 붙어 다녀요. 전층 화상의 딱딱한 가피는 늘어나지 않아, 팔을 둘러싼 채 부종이 커지면 안쪽 압력이 올라 혈류를 막아요.
+  - kind: swap
+    words:
+    - w-cut
+    - w-skin
+    - w-relieve
+    who: 환자에게 · 가피절개 설명
+    icon: me
+    before:
+    - 'We may need to make '
+    - an escharotomy incision
+    - ' to relieve the pressure.'
+    options:
+    - a small cut in the burned skin
+    - an escharotomy incision
+    - a deep cut down to the bone
+    answer: a small cut in the burned skin
+    notes:
+      a small cut in the burned skin: 무엇을 어디에 왜 하는지 쉬운 말로 전한다.
+      an escharotomy incision: 의료진끼리의 용어라 환자는 무슨 처치인지 모른다.
+      a deep cut down to the bone: 사실과 다르고(탄 가피를 가르는 것이지 뼈까지 가르지 않는다) 환자를 겁준다.
+    why: 가피절개(escharotomy)는 조이는 가피를 갈라 압력을 빼는 처치예요. 환자에게는 용어 대신 무엇을 왜 하는지 쉬운 말로 말해요.
 
 - theme: er-burn
   title: 소아 화상 학대 감별
@@ -24982,13 +25336,51 @@
     - en: "Was anyone else home when this happened?"
       ko: "이 일이 생겼을 때 집에 다른 사람도 있었나요?"
       chunks: ["Was anyone else", "home", "when this happened", "?"]
-      words: [w-anyone, w-else, w-home, w-happen]
+      words: [w-anyone, w-else, w-happen]
       goal: 1
     - en: "This burn pattern looks even on both sides, which we always check."
       ko: "이 화상 패턴이 양쪽이 고르게 보이는데, 저희가 항상 확인하는 부분이에요."
       chunks: ["This burn pattern", "looks even", "on both sides,", "which we always check", "."]
       words: [w-burn, w-pattern, w-even, w-side, w-check]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-side
+    - w-anyone
+    - w-else
+    - w-walk
+    pairs:
+    - - on both
+      - sides
+    - - anyone
+      - else
+    - - walk me
+      - through it
+    decoys:
+    - the edges
+    why: walk me through는 '처음부터 차근차근 말해 달라'는 열린 질문이고, anyone else는 곁에 있던 사람을 빠짐없이 묻는 말이에요. 양쪽(both sides)에 대칭으로 난 화상은 기록해 둘 소견이에요.
+  - kind: swap
+    words:
+    - w-walk
+    - w-happen
+    - w-burn
+    who: 보호자에게 · 사고 경위 청취
+    icon: me
+    before:
+    - 'Can you '
+    - prove to me
+    - ' exactly how the burn happened?'
+    options:
+    - walk me through
+    - prove to me
+    - admit to me
+    answer: walk me through
+    notes:
+      walk me through: 판단 없이 경위를 처음부터 듣겠다는 열린 질문이다.
+      prove to me: 보호자를 거짓말하는 사람으로 대하는 말이라 방어적으로 만든다.
+      admit to me: 잘못을 이미 전제한 말이라 추궁처럼 들린다.
+    why: 학대가 의심돼도 간호사는 판단하지 않고 경위를 묻고, 보호자가 한 말을 그대로 기록해요. 의심이 들면 신고하는 것은 간호사의 법적 의무이고, 조사·판정은 아동보호 담당자의 몫이에요. 캐묻는 말은 정확한 경위를 듣기 어렵게 해요.
 
 - theme: er-burn
   title: 고령 화상 동반질환
@@ -25021,7 +25413,7 @@
     - en: "What medicines and health problems do you have?"
       ko: "어떤 약을 드시고 어떤 건강 문제가 있으세요?"
       chunks: ["What medicines", "and health problems", "do you have", "?"]
-      words: [w-medicine, w-health, w-problem]
+      words: [w-medicine, w-health]
       goal: 2
     - en: "We'll check your skin more than once to make sure we're not missing anything."
       ko: "놓치는 게 없도록 피부를 여러 번 확인할게요."
@@ -25031,8 +25423,43 @@
     - en: "Please tell us about every medicine you take at home."
       ko: "집에서 드시는 모든 약을 저희에게 말씀해 주세요."
       chunks: ["Please tell us", "about every medicine", "you take", "at home", "."]
-      words: [w-tell, w-medicine, w-home]
+      words: [w-tell, w-medicine]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-slow
+    - w-heal
+    - w-health
+    pairs:
+    - - slow
+      - healing
+    - - health
+      - problems
+    decoys:
+    - a medicine
+    why: slow healing은 '상처가 더디게 낫는 것', health problems는 기저질환을 쉽게 묻는 말이에요. 당뇨는 상처 치유를 늦추는 대표적인 동반질환이에요.
+  - kind: context
+    words:
+    - w-old
+    - w-skin
+    - w-deep
+    - w-look
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Elderly pt, thin skin; burn depth may be underestimated.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Older skin is thinner, so this could be deeper than it looks.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Because you're elderly, your skin is fragile and burns go deeper.
+      ok: false
+      fix: As we get older, skin gets thinner, so a burn can be deeper than it looks.
+    why: '''elderly''·''fragile''을 환자 본인에게 붙이면 늙고 약하다는 딱지처럼 들릴 수 있어요. 미국 의학 글쓰기에서도 ''older adults''를 권해요. 나이 드는 일을 ''우리''의 일로 말하고 이유는 사실대로 전해요.'
 
 - theme: er-burn
   title: 안면·수부 화상 기능
@@ -25055,7 +25482,7 @@
     - en: "Burns to your hands need special care to keep function."
       ko: "손 화상은 기능을 지키기 위해 특별한 관리가 필요해요."
       chunks: ["Burns to", "your hands", "need special care", "to keep function", "."]
-      words: [w-burn, w-hand, w-need, w-special, w-care, w-keep, w-function]
+      words: [w-burn, w-need, w-special, w-care, w-keep, w-function]
       goal: 1
     - en: "We'll refer you to a burn center for the best outcome."
       ko: "최선의 결과를 위해 화상센터로 전원해 드릴게요."
@@ -25070,13 +25497,52 @@
     - en: "Can you move each finger for me one at a time?"
       ko: "손가락을 하나씩 움직여 보시겠어요?"
       chunks: ["Can you move", "each finger", "for me", "one at a time", "?"]
-      words: [w-move, w-finger, w-time]
+      words: [w-move, w-finger]
       goal: 1
     - en: "A burn center has specialists trained in hand and face injuries."
       ko: "화상센터에는 손과 얼굴 손상을 다루는 전문의가 있어요."
       chunks: ["A burn center has", "specialists trained", "in hand and face", "injuries", "."]
-      words: [w-burn, w-center, w-specialist, w-train, w-hand, w-face, w-injury]
+      words: [w-burn, w-center, w-specialist, w-train, w-face, w-injury]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-keep
+    - w-function
+    - w-refer
+    - w-center
+    - w-finger
+    pairs:
+    - - keep
+      - function
+    - - refer you to
+      - a burn center
+    - - one finger
+      - at a time
+    decoys:
+    - the outcome
+    why: 손·얼굴 화상은 면적이 작아도 기능과 모양이 걸려 있어 미국화상학회(ABA) 기준상 화상센터 전원 대상이에요. refer ... to는 '~로 보내 맡기다'예요.
+  - kind: swap
+    words:
+    - w-best
+    - w-outcome
+    - w-center
+    who: 환자에게 · '손을 다시 쓸 수 있나요?'
+    icon: me
+    before:
+    - 'The burn center will '
+    - definitely fix your hands
+    - ' — they specialize in this.'
+    options:
+    - give your hands the best chance
+    - definitely fix your hands
+    - handle it, so don't worry
+    answer: give your hands the best chance
+    notes:
+      give your hands the best chance: 희망을 주되 결과를 약속하지 않는다.
+      definitely fix your hands: 간호사가 지킬 수 없는 약속이다.
+      handle it, so don't worry: 환자의 걱정을 받아 주지 않고 넘겨 버린다.
+    why: 손 기능 회복은 화상 깊이와 재활에 달려 있어 결과를 장담할 수 없어요. 거짓 약속 대신 가장 좋은 결과를 위해 전원한다고 말해요.
 
 - theme: er-burn
   title: 언어장벽 화상
@@ -25121,6 +25587,42 @@
       chunks: ["The interpreter will repeat", "everything", "in your language", "."]
       words: [w-interpreter, w-repeat, w-language]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-contact
+    - w-allergy
+    - w-medicine
+    - w-repeat
+    pairs:
+    - - in contact
+      - with it
+    - - allergies
+      - to medicine
+    - - repeat
+      - everything
+    decoys:
+    - of heat
+    why: in contact with는 '~에 닿아 있는', allergy는 to와 붙어요(allergic to도 마찬가지). 화학 화상은 노출 시간이 손상 깊이와 세척 시간을 가르므로 통역을 통해 정확히 확인해요.
+  - kind: swap
+    words:
+    - w-interpreter
+    who: 환자에게 · 통역 준비
+    icon: me
+    before:
+    - 'Let''s '
+    - have your daughter translate
+    - ' so we get every detail right.'
+    options:
+    - use a medical interpreter
+    - have your daughter translate
+    - just use hand signals
+    answer: use a medical interpreter
+    notes:
+      use a medical interpreter: 미국 병원은 영어가 서툰 환자에게 자격 있는 의료 통역을 제공해야 한다 — 원인 물질·노출 시간 같은 핵심 병력은 정확해야 한다.
+      have your daughter translate: 가족 통역은 누락·오역이 잦다. 성인 가족은 환자가 원할 때만, 미성년 자녀는 통역을 바로 구할 수 없는 급박한 위험 상황이 아니면 안 된다(연방 규정).
+      just use hand signals: 원인 물질과 노출 시간 같은 정보는 몸짓으로 정확히 얻을 수 없다.
+    why: 가족이 곁에 있어도 병력·동의 같은 핵심 대화는 의료 통역을 통해요. 가족은 환자를 안심시키는 자리에 두는 것이 좋아요.
 
 - theme: er-burn
   title: 화상센터 이송 기준
@@ -25158,13 +25660,53 @@
     - en: "The burn center team knows how to treat your kind of burn."
       ko: "화상센터 팀은 이런 종류의 화상을 치료하는 법을 알아요."
       chunks: ["The burn center team", "knows how", "to treat", "your kind of burn", "."]
-      words: [w-burn, w-center, w-team, w-know, w-treat]
+      words: [w-burn, w-center, w-team, w-treat]
       goal: 1
     - en: "We'll give you pain medicine before you go."
       ko: "가시기 전에 진통제를 드릴게요."
       chunks: ["We'll give you", "pain medicine", "before you go", "."]
-      words: [w-give, w-pain, w-medicine, w-go]
+      words: [w-give, w-pain, w-medicine]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-manage
+    - w-pain
+    - w-keep
+    - w-warm
+    - w-send
+    - w-record
+    pairs:
+    - - manage
+      - your pain
+    - - keep you
+      - warm
+    - - send your records
+      - with you
+    decoys:
+    - a tube
+    why: manage pain은 '통증을 조절하다'로, 완전히 없애 준다는 약속이 아니에요. 넓은 화상 환자는 체온을 쉽게 잃어 이송 중에도 보온(keep warm)이 필요해요.
+  - kind: swap
+    words:
+    - w-specialist
+    - w-center
+    - w-burn
+    who: 환자에게 · 전원 이유 설명
+    icon: me
+    before:
+    - 'You''re going to a burn center because '
+    - we can't handle you here
+    - .
+    options:
+    - they have specialists for burns like yours
+    - we can't handle you here
+    - your burn is too much for us
+    answer: they have specialists for burns like yours
+    notes:
+      they have specialists for burns like yours: 더 잘 볼 수 있는 곳으로 간다는 이유가 전해진다.
+      we can't handle you here: 환자가 떠밀려 간다고 느끼게 한다.
+      your burn is too much for us: 사실보다 무겁게 들려 불안을 키운다.
+    why: 전원 이유는 '여기서 못 봐서'가 아니라 '더 잘 볼 곳으로 간다'로 말해요. 같은 사실이라도 환자가 버려진다고 느끼지 않게요.
 
 # ---- Lv3 ----
 - theme: er-burn
@@ -25188,7 +25730,7 @@
     - en: "Your airway is swelling, so we need to secure it now."
       ko: "기도가 붓고 있어서 지금 확보해야 해요."
       chunks: ["Your airway is swelling,", "so we need", "to secure it", "now", "."]
-      words: [w-airway, w-swell, w-need, w-secure, w-now]
+      words: [w-airway, w-swell, w-need, w-secure]
       goal: 1
     - en: "We're going to place a breathing tube before it closes."
       ko: "기도가 막히기 전에 호흡관을 삽입할 거예요."
@@ -25210,6 +25752,44 @@
       chunks: ["We're getting everything", "ready", "to protect your airway", "."]
       words: [w-ready, w-protect, w-airway]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-stay
+    - w-calm
+    - w-close
+    - w-change
+    pairs:
+    - - stay
+      - calm
+    - - before it
+      - closes
+    - - a change in
+      - your voice
+    decoys:
+    - breathe
+    why: '''before it closes''는 기도가 완전히 막히기 전이라는 뜻이에요. 흡입 손상의 기도 부종은 몇 시간에 걸쳐 진행하므로 막히기 전에 미리 삽관해요. 목소리 변화(a change in your voice)는 이른 경고예요.'
+  - kind: swap
+    words:
+    - w-place
+    - w-tube
+    - w-breathe
+    who: 환자에게 · 조기 삽관 설명
+    icon: me
+    before:
+    - 'We''re going to '
+    - intubate you
+    - ' before your airway swells shut.'
+    options:
+    - put a breathing tube in
+    - intubate you
+    - stick a tube down your throat
+    answer: put a breathing tube in
+    notes:
+      put a breathing tube in: 무엇을 하는지 쉬운 말로 전한다.
+      intubate you: 의료진 용어라 환자는 무슨 뜻인지 모를 수 있다.
+      stick a tube down your throat: 뜻은 같지만 거칠고 무섭게 들린다.
+    why: 환자에게는 삽관이라는 용어 대신 무엇을 하는지, 왜 지금 하는지를 짧게 말해요. 삽관 전에 잠드는 약을 쓴다는 것도 함께 알려 주면 덜 무서워해요.
 
 - theme: er-burn
   title: 대면적 화상 저혈량 쇼크
@@ -25230,7 +25810,7 @@
   persona: { name: Denise Alvarez, ageRange: 30s, sub: "38y / Female", mood: panic, personality: 탈진하고 두려움, speakingStyle: 힘없이 느리게 말함 }
   sentences:
     - en: "Large burns cause heavy fluid loss, so we're giving fluids fast."
-      ko: "넓은 화상은 수액 손실이 심해서 빠르게 수액을 드리고 있어요."
+      ko: "넓은 화상은 체액 손실이 심해서 수액을 빠르게 드리고 있어요."
       chunks: ["Large burns cause", "heavy fluid loss,", "so we're giving", "fluids fast", "."]
       words: [w-large, w-burn, w-cause, w-heavy, w-fluid, w-loss, w-give, w-fast]
       goal: 1
@@ -25245,15 +25825,54 @@
       words: [w-watch, w-pressure, w-heart, w-rate, w-closely]
       goal: 2
     - en: "This is a large burn, so your body is losing a lot of fluid."
-      ko: "넓은 화상이라 몸에서 수액이 많이 빠져나가고 있어요."
+      ko: "넓은 화상이라 몸에서 체액이 많이 빠져나가고 있어요."
       chunks: ["This is a large burn,", "so your body", "is losing", "a lot of fluid", "."]
-      words: [w-large, w-burn, w-body, w-lose, w-lot, w-fluid]
+      words: [w-large, w-burn, w-lose, w-lot, w-fluid]
       goal: 1
     - en: "We want your blood pressure and pulse to stay stable."
       ko: "혈압과 맥박이 안정적으로 유지되길 바라요."
       chunks: ["We want", "your blood pressure", "and pulse", "to stay stable", "."]
       words: [w-blood, w-pressure, w-pulse, w-stay, w-stable]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-heavy
+    - w-loss
+    - w-fluid
+    - w-heart
+    - w-rate
+    - w-stay
+    - w-stable
+    pairs:
+    - - heavy
+      - fluid loss
+    - - heart
+      - rate
+    - - stay
+      - stable
+    decoys:
+    - urine
+    why: heavy는 양이 많다는 뜻으로 fluid loss·bleeding과 잘 붙어요. heart rate는 한 덩어리 표현이고, stay stable은 '안정된 상태를 유지하다'예요.
+  - kind: context
+    words:
+    - w-urine
+    - w-output
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Urine output 20 mL/hr, below target. MD notified.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: UOP's only 20 this hour — below goal, let's tell the doctor.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your UOP is below goal.
+      ok: false
+      fix: You're not making as much urine as we want yet, so we may need to give you more fluid.
+    why: UOP(urine output)는 의료진끼리의 약어예요. 환자에게는 소변이 기대만큼 나오지 않는다는 사실과 다음 조치를 쉬운 말로 전해요.
 
 - theme: er-burn
   title: 일산화탄소/시안 중독
@@ -25276,7 +25895,7 @@
     - en: "The pulse oximeter can read normal even with this poisoning."
       ko: "산소포화도 측정기는 이런 중독에도 정상으로 나타날 수 있어요."
       chunks: ["The pulse oximeter", "can read normal", "even with this", "poisoning", "."]
-      words: [w-pulse, w-oximeter, w-read, w-normal, w-even, w-poison]
+      words: [w-oximeter, w-read, w-normal, w-poison]
       goal: 1
     - en: "We're giving you high-flow oxygen right away."
       ko: "고농도 산소를 바로 드리고 있어요."
@@ -25296,8 +25915,42 @@
     - en: "Your oxygen number can look fine even when you're poisoned."
       ko: "중독됐을 때도 산소 수치는 괜찮아 보일 수 있어요."
       chunks: ["Your oxygen number", "can look fine", "even when", "you're poisoned", "."]
-      words: [w-oxygen, w-number, w-look, w-even, w-poison]
+      words: [w-oxygen, w-number, w-look, w-poison]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-confusion
+    cue: 'Nurse: "He answers when I talk to him, but he doesn''t know where he is."'
+    scale:
+    - alert
+    - confused
+    - unresponsive
+    answerAt: 1
+    why: 말에는 반응하지만 지남력이 흐려졌으면 confused 단계예요. 화재 뒤 의식 변화는 일산화탄소 중독이 심하다는 소견일 수 있어 바로 보고해요.
+    example: He's confused and doesn't know where he is.
+    exKo: 혼돈이 있고 여기가 어딘지 몰라요.
+  - kind: swap
+    words:
+    - w-oximeter
+    - w-read
+    - w-normal
+    who: 의사에게 · CO 중독 의심 보고
+    icon: monitor
+    before:
+    - 'SpO2 is 99%, '
+    - so he's fine
+    - ' — headache and confusion after a house fire.'
+    options:
+    - but that can be falsely normal with CO
+    - so he's fine
+    - so we can take the oxygen off
+    answer: but that can be falsely normal with CO
+    notes:
+      but that can be falsely normal with CO: 일반 맥박산소측정기는 일산화탄소헤모글로빈을 산소헤모글로빈과 구별하지 못해 SpO2가 정상으로 나올 수 있다 — 함정을 정확히 짚은 보고다.
+      so he's fine: 정상 SpO2 함정에 그대로 빠진 보고다.
+      so we can take the oxygen off: 위험하다 — CO 중독이 의심되면 고농도 산소를 유지한다.
+    why: CO 중독은 SpO2가 아니라 CO-oximetry로 잰 COHb 수치로 확인해요. 수치가 나오기 전에도 고농도 산소를 먼저 줘요.
 
 - theme: er-burn
   title: 흉부 원주형 화상 환기장애
@@ -25342,6 +25995,41 @@
       chunks: ["We may need", "small cuts", "to help", "your chest expand", "."]
       words: [w-need, w-small, w-cut, w-help, w-chest, w-expand]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-full
+    - w-expand
+    - w-chest
+    pairs:
+    - - take a full
+      - breath
+    - - let your chest
+      - expand
+    decoys:
+    - small cuts
+    why: take a full breath는 '숨을 끝까지 들이쉬다'(breath는 명사), expand는 숨 쉴 때 가슴이 부푸는 것이에요. 가슴을 두른 딱딱한 가피는 늘어나지 않아 흉곽이 부풀지 못해요.
+  - kind: context
+    words:
+    - w-restrict
+    - w-burn
+    - w-chest
+    - w-breathe
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Circumferential chest eschar limiting chest rise.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: The chest burn is circumferential and restricting his breathing — he may need an escharotomy.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your circumferential eschar is restricting chest wall excursion.
+      ok: false
+      fix: The burned skin around your chest is tight, so it's hard for your chest to move when you breathe.
+    why: '''circumferential eschar''·''chest wall excursion''은 의료진 말이에요. 환자에게는 탄 피부가 가슴을 조여 숨쉬기 힘들다는 것을 쉬운 말로 전해요.'
 
 - theme: er-burn
   title: 전기화상 횡문근융해
@@ -25386,6 +26074,42 @@
       chunks: ["We'll give extra fluids", "to keep", "your kidneys", "safe", "."]
       words: [w-give, w-fluid, w-keep, w-kidney, w-safe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-dark
+    - w-urine
+    cue: The urine in the bag looks like cola.
+    scale:
+    - pale yellow
+    - dark yellow
+    - tea- or cola-colored
+    answerAt: 2
+    why: 콜라·홍차색 소변은 부서진 근육에서 나온 미오글로빈 때문일 수 있어 바로 보고해요. 그냥 진한 노란색은 탈수 쪽 신호예요.
+    example: His urine is cola-colored — I'm calling the doctor now.
+    exKo: 소변이 콜라색이에요 — 지금 의사에게 연락할게요.
+  - kind: swap
+    words:
+    - w-dark
+    - w-mean
+    - w-muscle
+    - w-break
+    who: 환자에게 · 짙은 소변 설명
+    icon: me
+    before:
+    - 'Dark urine can mean '
+    - you have rhabdomyolysis
+    - .
+    options:
+    - your muscles are breaking down
+    - you have rhabdomyolysis
+    - your kidneys have failed
+    answer: your muscles are breaking down
+    notes:
+      your muscles are breaking down: 무슨 일이 일어나는지 쉬운 말로 전한다.
+      you have rhabdomyolysis: 의료진 용어라 환자는 알아듣지 못한다.
+      your kidneys have failed: 사실보다 앞서 나간 말이다 — 짙은 소변은 신장 손상 위험 신호이지 이미 신부전이라는 뜻은 아니다.
+    why: 근육이 부서지면 신장이 다칠 수 있어 수액을 많이 줘요. 환자에게는 무엇이 문제이고 왜 수액을 주는지 쉬운 말로 이어서 말해요.
 
 - theme: er-burn
   title: 화상 SBAR 인계
@@ -25408,10 +26132,10 @@
     - en: "This is a 35-year-old with 30 percent TBSA burns."
       ko: "35세 환자로 체표면적 30퍼센트 화상입니다."
       chunks: ["This is", "a 35-year-old", "with 30 percent", "TBSA burns", "."]
-      words: [w-old, w-percent, w-burn]
+      words: [w-percent, w-burn]
       goal: 1
     - en: "We started Parkland fluids and urine output is adequate."
-      ko: "Parkland 수액을 시작했고 소변량은 충분합니다."
+      ko: "Parkland 수액을 시작했고 소변량은 적정합니다."
       chunks: ["We started", "Parkland fluids", "and urine output", "is adequate", "."]
       words: [w-start, w-fluid, w-urine, w-output, w-adequate]
       goal: 1
@@ -25430,6 +26154,46 @@
       chunks: ["Vitals are stable", "and we're ready", "for transfer", "."]
       words: [w-stable, w-ready, w-transfer]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-partial
+    - w-thickness
+    - w-fluid
+    - w-airway
+    - w-patent
+    pairs:
+    - - partial
+      - thickness
+    - - Parkland
+      - fluids
+    - - airway is
+      - patent
+    decoys:
+    - percent
+    why: partial thickness(부분층)는 화상 깊이, Parkland는 화상 수액 공식의 이름, patent는 기도가 '열려 있다'는 인계 용어예요.
+  - kind: swap
+    words:
+    - w-airway
+    - w-patent
+    - w-watch
+    - w-swell
+    who: 화상센터 의사에게 · 기도 상태 인계
+    icon: monitor
+    before:
+    - 'The airway is '
+    - fine
+    - ' but we''re watching for swelling.'
+    options:
+    - patent
+    - fine
+    - totally safe
+    answer: patent
+    notes:
+      patent: 지금 기도가 막히지 않고 열려 있다는 정확한 인계 용어다.
+      fine: 막연해서 무엇을 확인했는지 전해지지 않는다.
+      totally safe: 흡입 손상의 기도 부종은 진행할 수 있어, 뒤따르는 '부종을 지켜보는 중'과도 맞지 않는다.
+    why: 인계에서는 기도가 지금 열려 있다는 사실(patent)과 부종 위험을 함께 말해요.
 
 # ============================================================
 # er-bleeding-wound (출혈·상처 처치)
@@ -33311,7 +34075,7 @@
   persona: { name: Chloe Bennett, ageRange: 20s, sub: "24y / Female", mood: worried, personality: 걱정 많고 협조적, speakingStyle: 빠르게 질문을 쏟아냄 }
   sentences:
     - en: "What did you eat, take, or come into contact with before the hives started?"
-      ko: "무엇을 먹었거나 복용했거나, 두드러기가 시작되기 전에 무엇에 닿았나요?"
+      ko: "두드러기가 시작되기 전에 무엇을 먹었거나 복용했거나, 무엇에 닿았나요?"
       chunks: ["What did you eat, take,", "or come into contact with", "before the hives", "started", "?"]
       words: [w-eat, w-take, w-contact, w-hive, w-start]
       goal: 1
@@ -33335,6 +34099,42 @@
       chunks: ["I'm going to check", "your lips, tongue,", "and airway", "right now", "."]
       words: [w-check, w-lip, w-tongue, w-airway]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-contact
+    - w-sting
+    - w-trouble
+    - w-breathe
+    pairs:
+    - - come into
+      - contact with
+    - - a bee
+      - sting
+    - - trouble
+      - breathing
+    decoys:
+    - a reaction
+    why: come into contact with는 통째로 굳은 표현이고, a bee sting은 '벌쏘임', trouble은 뒤에 -ing가 붙어 '숨쉬기 어려움'이 돼요.
+  - kind: context
+    words:
+    - w-reaction
+    - w-ever
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Have you ever had a reaction like this before?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Hx of hives after PCN, no prior anaphylaxis.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Any prior history of anaphylaxis or angioedema?
+      ok: false
+      fix: Have you ever had a reaction like this before — like swelling or trouble breathing?
+    why: anaphylaxis·angioedema는 의료진과 차트의 말이에요. 환자에게는 '전에도 이런 반응이 있었나요?'처럼 풀어서 물어야 정확한 답이 나와요.
 
 - theme: er-anaphylaxis
   title: 경증 두드러기 사정
@@ -33367,7 +34167,7 @@
     - en: "Let me know immediately if your lips or tongue start to tingle."
       ko: "입술이나 혀가 저릿해지기 시작하면 바로 알려주세요."
       chunks: ["Let me know", "immediately", "if your lips or tongue", "start to tingle", "."]
-      words: [w-know, w-immediately, w-lip, w-tongue, w-start, w-tingle]
+      words: [w-immediately, w-lip, w-tongue, w-start, w-tingle]
       goal: 2
     - en: "The redness is only on your arms right now, not on your face or chest."
       ko: "발적은 지금 팔에만 있고, 얼굴이나 가슴에는 없어요."
@@ -33379,6 +34179,40 @@
       chunks: ["If it spreads", "to your face", "or you feel", "your throat tighten,", "tell me right away", "."]
       words: [w-spread, w-face, w-feel, w-throat, w-tighten, w-tell]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-reassure
+    cue: Hives on both forearms only. Lips, tongue, voice, and breathing are normal.
+    scale:
+    - reassuring
+    - concerning
+    - alarming
+    answerAt: 0
+    why: 피부에만 국한되고 입술·혀·호흡이 정상이면 reassuring이에요. 다만 '걱정할 것 없다'고 장담하지는 않아요 — 번질 수 있어서 계속 지켜봐요.
+    example: That's reassuring, but we'll keep watching.
+    exKo: 안심은 되지만, 계속 지켜볼게요.
+  - kind: swap
+    words:
+    - w-immediately
+    - w-tingle
+    - w-lip
+    who: 환자에게 · 악화 신호 알려 달라기
+    icon: me
+    before:
+    - 'Let me know '
+    - whenever it's convenient
+    - ' if your lips or tongue start to tingle.'
+    options:
+    - immediately
+    - whenever it's convenient
+    - eventually
+    answer: immediately
+    notes:
+      immediately: 기다리지 말라는 뜻이 분명하다. 입술·혀가 저린 건 반응이 입 쪽으로 번진다는 신호일 수 있다.
+      whenever it's convenient: 편할 때 알려 달라는 말이라, 급한 신호를 미뤄도 된다고 들린다.
+      eventually: '''언젠가는''이라 기다려도 된다는 뜻이 된다.'
+    why: 진행 신호는 바로 알려 달라고 분명하게 말해요. 공손하게 하려다 급함이 빠지면 안 돼요.
 
 - theme: er-anaphylaxis
   title: 항히스타민 투여 설명
@@ -33416,13 +34250,45 @@
     - en: "The itching should ease within thirty minutes or so."
       ko: "가려움은 30분 정도면 완화될 거예요."
       chunks: ["The itching", "should ease", "within thirty minutes", "or so", "."]
-      words: [w-itch, w-ease, w-minute]
+      words: [w-itch, w-ease]
       goal: 1
     - en: "Have someone else drive you, or wait here until the drowsiness wears off."
       ko: "다른 분이 운전해 주시거나, 졸림이 가실 때까지 여기서 기다려 주세요."
       chunks: ["Have someone else", "drive you,", "or wait here", "until the drowsiness", "wears off", "."]
       words: [w-drive, w-wait, w-drowsiness]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-drowsy
+    cue: 'Patient: "I can barely keep my eyes open, but I''m fine to talk."'
+    scale:
+    - alert
+    - drowsy
+    - hard to wake
+    answerAt: 1
+    why: 눈이 감겨도 대화가 되면 drowsy예요. 불러도 잘 깨지 않으면(hard to wake) 흔한 부작용으로 넘기지 말고 바로 보고해요.
+    example: He's drowsy but easy to wake.
+    exKo: 졸려 하지만 쉽게 깨요.
+  - kind: context
+    words:
+    - w-drowsy
+    - w-drive
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: It can make you drowsy, so you shouldn't drive for a while.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Diphenhydramine 50 mg IV given. Pt drowsy, ride home arranged.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Sedation is an expected adverse effect, so driving is contraindicated.
+      ok: false
+      fix: This can make you sleepy, so please don't drive for a while.
+    why: sedation·adverse effect·contraindicated는 문서에 쓰는 말이에요. 환자에게는 '졸릴 수 있으니 한동안 운전하지 마세요'처럼 쉽게 말해요.
 
 - theme: er-anaphylaxis
   title: 약물 알레르기 이력 확인
@@ -33465,8 +34331,45 @@
     - en: "This band tells every nurse and doctor to avoid penicillin completely."
       ko: "이 밴드는 모든 간호사와 의사에게 페니실린을 완전히 피하라고 알려줘요."
       chunks: ["This band tells", "every nurse and doctor", "to avoid penicillin", "completely", "."]
-      words: [w-band, w-nurse, w-doctor, w-avoid, w-penicillin, w-completely]
+      words: [w-band, w-avoid, w-penicillin, w-completely]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-penicillin
+    - w-flag
+    - w-chart
+    - w-trouble
+    pairs:
+    - - allergic
+      - to penicillin
+    - - flag it
+      - in your chart
+    - - trouble
+      - breathing
+    decoys:
+    - of penicillin
+    why: allergic은 of가 아니라 to와 붙어요(allergic to penicillin). flag는 차트'에' 표시하니 in your chart, trouble은 -ing와 붙어요.
+  - kind: context
+    words:
+    - w-rash
+    - w-swell
+    - w-trouble
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Was it a rash, swelling, or trouble breathing?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'PCN allergy: hives and lip swelling in 2019.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Was it urticaria, angioedema, or bronchospasm?
+      ok: false
+      fix: Did you get hives, swelling, or trouble breathing?
+    why: urticaria·angioedema·bronchospasm은 정확한 임상어지만 환자는 대답하기 어려워요. 반응의 종류는 쉬운 말로 물어야 이력이 정확해져요.
 
 - theme: er-anaphylaxis
   localeBound: [escalation]
@@ -33495,7 +34398,7 @@
     - en: "Hold it for three seconds, then call 911 even if you feel better."
       ko: "3초간 누르고 있다가, 좋아진 것 같아도 911에 전화하세요."
       chunks: ["Hold it", "for three seconds,", "then call 911", "even if you feel better", "."]
-      words: [w-hold, w-second, w-call, w-feel, w-good]
+      words: [w-hold, w-second, w-call, w-feel]
       goal: 1
     - en: "Can you show me on the trainer how you'd do it?"
       ko: "연습용 기구로 어떻게 하실 건지 보여주시겠어요?"
@@ -33512,6 +34415,43 @@
       chunks: ["Even after the shot,", "you need to", "come back", "so we can watch", "for another reaction", "."]
       words: [w-shot, w-need, w-watch, w-reaction]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-pull
+    - w-cap
+    - w-click
+    - w-call
+    pairs:
+    - - pull off
+      - the blue cap
+    - - listen for
+      - the click
+    - - call
+      - '911'
+    decoys:
+    - into your thigh
+    why: pull off는 뚜껑을 잡아 '빼는' 동작, listen for는 올 소리를 '기다려 듣는' 것이라 click과, call은 911과 짝이에요. 주사 후 나아져도 911은 꼭 불러요.
+  - kind: swap
+    words:
+    - w-thigh
+    - w-press
+    who: 환자에게 · 주사 부위 설명
+    icon: me
+    before:
+    - 'Press the orange tip into '
+    - your vastus lateralis
+    - .
+    options:
+    - your outer thigh
+    - your vastus lateralis
+    - any muscle you like
+    answer: your outer thigh
+    notes:
+      your outer thigh: 환자가 바로 찾을 수 있는 말. 자가주사기 설명서도 허벅지 바깥쪽이라고 쓴다.
+      your vastus lateralis: 해부학 용어 — 맞는 자리지만 환자는 알아듣지 못한다.
+      any muscle you like: 틀린 안내 — 권장 부위는 허벅지 바깥쪽 앞(전외측)이다.
+    why: 같은 부위도 환자 교육에서는 몸으로 바로 찾을 수 있는 말로 가르쳐요.
 
 - theme: er-anaphylaxis
   title: 전형 아나필락시스
@@ -33549,13 +34489,48 @@
     - en: "Squeeze my hand and tell me if your voice sounds different."
       ko: "제 손을 꽉 쥐고, 목소리가 다르게 들리면 말씀해 주세요."
       chunks: ["Squeeze my hand", "and tell me", "if your voice", "sounds different", "."]
-      words: [w-squeeze, w-hand, w-tell, w-voice, w-different]
+      words: [w-squeeze, w-tell, w-voice, w-different]
       goal: 1
     - en: "Your heart may race after the shot, and that's expected."
       ko: "주사 후에 심장이 빨리 뛸 수 있는데, 정상적인 거예요."
       chunks: ["Your heart may race", "after the shot,", "and that's", "expected", "."]
       words: [w-heart, w-race, w-shot, w-expect]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-throat
+    - w-tight
+    cue: 'Patient (hoarse): "My throat is closing — I can''t even swallow my spit."'
+    scale:
+    - scratchy
+    - tight
+    - closing up
+    answerAt: 2
+    why: 침도 못 삼키고 목소리가 쉬면 closing up 쪽이에요. 기도가 침범됐다는 신호라 에피네프린을 미루지 않아요.
+    example: Tell me right away if your throat feels like it's closing up.
+    exKo: 목이 막히는 느낌이 들면 바로 말씀해 주세요.
+  - kind: swap
+    words:
+    - w-epinephrine
+    - w-shot
+    - w-give
+    who: 환자에게 · 투약 설명
+    icon: me
+    before:
+    - 'I''m giving you '
+    - 0.5 milligrams of epi IM
+    - ' in your thigh now.'
+    options:
+    - a shot of epinephrine
+    - 0.5 milligrams of epi IM
+    - something to calm you down
+    answer: a shot of epinephrine
+    notes:
+      a shot of epinephrine: 무엇을 어디에 놓는지 환자가 바로 알아듣는다.
+      0.5 milligrams of epi IM: 팀끼리 복창할 때의 말 — 용량과 경로 약어는 환자에게 잡음이다.
+      something to calm you down: 사실이 아니다 — 에피네프린은 진정제가 아니고, 오히려 심장이 빨리 뛸 수 있다.
+    why: 환자에게는 약 이름과 부위를, 용량·경로는 팀에게 복창할 때 말해요.
 
 - theme: er-anaphylaxis
   title: 조영제 반응
@@ -33593,13 +34568,45 @@
     - en: "Any itching, flushing, or swelling since the injection started?"
       ko: "주입이 시작된 뒤로 가려움, 홍조, 또는 부기가 있었나요?"
       chunks: ["Any itching,", "flushing,", "or swelling", "since the injection", "started", "?"]
-      words: [w-itch, w-flush, w-swell, w-injection, w-start]
+      words: [w-itch, w-swell, w-injection, w-start]
       goal: 1
     - en: "I'm checking your blood pressure and oxygen every few minutes now."
       ko: "이제 몇 분마다 혈압과 산소 수치를 확인할게요."
       chunks: ["I'm checking", "your blood pressure", "and oxygen", "every few minutes now", "."]
-      words: [w-check, w-blood, w-pressure, w-oxygen, w-minute]
+      words: [w-check, w-blood, w-pressure, w-oxygen]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-itch
+    cue: 'Patient: "Just a few itchy bumps on my arm." Breathing and blood pressure are normal.'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 0
+    why: 몇 개 안 되는 국소 두드러기·가려움만 있으면 경증(mild) 조영제 반응이에요. 전신으로 번지거나 얼굴이 붓거나 목이 조이면 중등도 이상으로 올라가요.
+    example: This looks like a mild reaction, but we'll keep watching.
+    exKo: 경한 반응으로 보이지만, 계속 지켜볼게요.
+  - kind: context
+    words:
+    - w-stop
+    - w-contrast
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: I'm stopping the contrast right now.
+      ok: true
+    - who: 영상의학과 의사에게
+      icon: monitor
+      en: Contrast stopped. Pt has hives and flushing, BP 118/76.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm discontinuing the iodinated contrast medium.
+      ok: false
+      fix: I'm stopping the dye right now.
+    why: iodinated contrast medium·discontinue는 의료진 말이에요. 미국 환자는 조영제를 흔히 'dye'라고 불러서, 환자에게는 그 말이 더 쉽게 들려요.
 
 - theme: er-anaphylaxis
   title: 항생제 IV 중 반응
@@ -33644,6 +34651,43 @@
       chunks: ["I'll draw it up", "now", "so it's ready", "the moment", "you need it", "."]
       words: [w-draw, w-ready, w-moment, w-need]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-flush
+    - w-line
+    - w-draw
+    - w-trouble
+    - w-swallow
+    pairs:
+    - - flush
+      - the line
+    - - draw it
+      - up
+    - - trouble
+      - swallowing
+    decoys:
+    - a moment
+    why: flush the line은 정맥관을 식염수로 씻어 내는 것, draw it up은 약을 주사기로 '뽑아 두는' 것이라 up이 붙어요. trouble은 -ing와 짝이에요.
+  - kind: context
+    words:
+    - w-epinephrine
+    - w-ready
+    scenes:
+    - who: 동료 간호사에게
+      icon: monitor
+      en: Antibiotic stopped, possible anaphylaxis — epi 0.3 IM drawn up.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I have epinephrine ready in case we need it.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Epi's drawn up in case you code.
+      ok: false
+      fix: I have medicine ready right here in case we need it.
+    why: code는 심정지를 뜻하는 의료진 말이라, 환자에게는 겁을 주는 말이 돼요. 대비하고 있다는 사실만 차분하게 전해요.
 
 - theme: er-anaphylaxis
   title: 벌쏘임 전신반응
@@ -33686,8 +34730,40 @@
     - en: "Your body is still reacting, so another dose keeps you safe."
       ko: "몸이 아직 반응하고 있어서, 한 번 더 투여해야 안전해요."
       chunks: ["Your body is still", "reacting,", "so another dose", "keeps you safe", "."]
-      words: [w-body, w-react, w-another, w-dose, w-safe]
+      words: [w-react, w-another, w-dose, w-safe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-reaction
+    cue: Stung on the hand. Swelling reaches the elbow, no hives elsewhere, breathing fine.
+    scale:
+    - local reaction
+    - large local reaction
+    - systemic reaction
+    answerAt: 1
+    why: 쏘인 자리 주변이 크게 부어도 다른 곳에 증상이 없으면 large local reaction이에요. 어지러움·전신 가려움처럼 쏘인 곳에서 먼 증상이 있으면 systemic(전신) 반응이에요.
+    example: This is a large local reaction, not a systemic one.
+    exKo: 이건 전신 반응이 아니라 국소 반응이 크게 온 거예요.
+  - kind: context
+    words:
+    - w-repeat
+    - w-epinephrine
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: If this keeps getting worse, we may need to give you another dose.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: Symptoms progressing five minutes after epi — requesting a repeat IM dose.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your symptoms are refractory, so we'll re-dose IM epi q5 minutes.
+      ok: false
+      fix: If this keeps getting worse, we may need to give you another shot.
+    why: refractory·re-dose·q5는 팀끼리 쓰는 말이에요. 환자에게는 '더 나빠지면 한 번 더 놓을 수 있다'로 말해요.
 
 - theme: er-anaphylaxis
   title: 음식(견과) 아나필락시스
@@ -33715,7 +34791,7 @@
     - en: "Did the food have peanuts or tree nuts that you know of?"
       ko: "그 음식에 아는 한 땅콩이나 견과류가 들어 있었나요?"
       chunks: ["Did the food", "have peanuts", "or tree nuts", "that you know of", "?"]
-      words: [w-food, w-peanut, w-nut, w-know]
+      words: [w-food, w-peanut, w-nut]
       goal: 1
     - en: "After this we'll talk about how to avoid it and carry an EpiPen."
       ko: "이 일이 끝나면 어떻게 피할지, 에피펜을 어떻게 소지할지 이야기해요."
@@ -33732,6 +34808,46 @@
       chunks: ["Read every food label", "and ask", "about hidden nuts", "before you eat", "."]
       words: [w-read, w-food, w-label, w-ask, w-nut, w-before, w-eat]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-peanut
+    - w-read
+    - w-label
+    - w-carry
+    - w-epipen
+    pairs:
+    - - allergic
+      - to peanuts
+    - - read
+      - every food label
+    - - carry
+      - an EpiPen everywhere
+    decoys:
+    - of nuts
+    why: allergic은 of가 아니라 to와 붙어요(allergic to peanuts). read는 라벨을 '읽는' 것, carry는 에피펜을 늘 '지니고 다니는' 것이에요.
+  - kind: reel
+    words:
+    - w-swell
+    word: swell
+    scenes:
+    - who: 간호사 → 환자
+      en: Your face and lips are swelling fast, so I'm treating this right away.
+      ko: 얼굴과 입술이 빠르게 붓고 있어서 지금 바로 치료할게요.
+      tone: 급함
+    - who: 차트 기록
+      en: Facial and lip swelling noted at 1410; epi 0.5 mg IM given.
+      ko: 14시 10분 얼굴·입술 부종 확인, 에피 0.5 mg 근주.
+      tone: 건조
+    - who: 의사 호출
+      en: Her tongue is starting to swell — I need you at the bedside now.
+      ko: 혀가 붓기 시작했어요 — 지금 침상으로 와 주세요.
+      tone: 경고
+    - who: 보호자에게는…
+      en: Her face is puffy right now, and we're already treating it.
+      ko: 지금 얼굴이 부어 있는데, 이미 치료하고 있어요.
+      tone: 완곡
+      swap: true
 
 - theme: er-anaphylaxis
   title: 이상성 반응 관찰
@@ -33754,7 +34870,7 @@
     - en: "Sometimes symptoms come back hours later — that's why we kept you here."
       ko: "가끔 증상이 몇 시간 뒤에 다시 나타나서, 그래서 여기 계시게 한 거예요."
       chunks: ["Sometimes symptoms come back", "hours later —", "that's why", "we kept you here", "."]
-      words: [w-symptom, w-come, w-hour, w-later, w-keep]
+      words: [w-symptom, w-later, w-keep]
       goal: 1
     - en: "Tell me the moment your throat or breathing changes again."
       ko: "목이나 호흡이 다시 달라지는 순간 바로 말씀해 주세요."
@@ -33776,6 +34892,44 @@
       chunks: ["Push the call button", "right away", "if anything", "feels different", "."]
       words: [w-push, w-call, w-button, w-feel, w-different]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-stay
+    - w-bed
+    - w-push
+    - w-button
+    - w-wave
+    pairs:
+    - - stay
+      - in bed
+    - - push
+      - the call button
+    - - a second
+      - wave
+    decoys:
+    - hours later
+    why: stay in bed는 '침대에 머물다', push the call button은 호출 버튼을 누르는 것, a second wave는 이상성 반응을 환자에게 풀어 말하는 표현이에요.
+  - kind: context
+    words:
+    - w-wave
+    - w-symptom
+    - w-later
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Sometimes symptoms come back hours later — that's why we kept you here.
+      ok: true
+    - who: 인계
+      icon: board
+      en: Observing for biphasic reaction, last epi at 1300.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We're monitoring you for a biphasic anaphylactic reaction.
+      ok: false
+      fix: Sometimes the reaction comes back in a second wave, so we're watching you.
+    why: biphasic reaction은 의료진 말이에요. 환자에게는 'second wave'나 '다시 올 수 있다'처럼 풀어서 말해요.
 
 - theme: er-anaphylaxis
   title: 베타차단제 복용자
@@ -33803,12 +34957,12 @@
     - en: "We're giving glucagon to help your body respond."
       ko: "몸이 반응하도록 돕기 위해 글루카곤을 투여할게요."
       chunks: ["We're giving glucagon", "to help", "your body respond", "."]
-      words: [w-give, w-glucagon, w-help, w-body, w-respond]
+      words: [w-give, w-glucagon, w-help, w-respond]
       goal: 2
     - en: "What's the name of your beta blocker and when did you last take it?"
       ko: "베타차단제 이름이 뭐고, 마지막으로 언제 복용하셨나요?"
       chunks: ["What's the name", "of your beta blocker", "and when", "did you last take it", "?"]
-      words: [w-name, w-blocker, w-last, w-take]
+      words: [w-blocker, w-last, w-take]
       goal: 1
     - en: "You might need a bigger dose or several doses to get a response."
       ko: "반응을 얻으려면 더 큰 용량이나 여러 번의 투여가 필요할 수도 있어요."
@@ -33820,6 +34974,47 @@
       chunks: ["Glucagon works", "around your beta blocker", "to raise", "your blood pressure", "."]
       words: [w-glucagon, w-work, w-blocker, w-raise, w-blood, w-pressure]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-work
+    - w-less
+    - w-well
+    - w-raise
+    - w-blood
+    - w-pressure
+    - w-blocker
+    pairs:
+    - - work
+      - less well
+    - - raise
+      - your blood pressure
+    - - beta
+      - blocker
+    decoys:
+    - of glucagon
+    why: 약이 '듣다'는 work라서 work less well(덜 듣다), raise는 혈압을 '올리다', beta blocker는 한 덩어리 약 이름이에요.
+  - kind: swap
+    words:
+    - w-glucagon
+    - w-help
+    - w-respond
+    who: 환자에게 · 글루카곤 설명
+    icon: me
+    before:
+    - 'We''re giving glucagon to '
+    - bypass your beta-adrenergic blockade
+    - .
+    options:
+    - help your body respond
+    - bypass your beta-adrenergic blockade
+    - cancel out your heart pills
+    answer: help your body respond
+    notes:
+      help your body respond: 무엇을 위해 주는지 환자가 알아듣는 말.
+      bypass your beta-adrenergic blockade: 기전은 맞지만 의료진끼리의 말이다.
+      cancel out your heart pills: 사실이 아니다 — 글루카곤은 베타차단제를 없애는 게 아니라 베타 수용체를 거치지 않는 다른 길로 심장에 작용한다.
+    why: 기전은 차트와 인계에서, 환자에게는 목적을 쉬운 말로 설명해요.
 
 - theme: er-anaphylaxis
   title: 임산부 아나필락시스
@@ -33847,23 +35042,63 @@
     - en: "I'm tilting you onto your left side to help blood flow to your baby."
       ko: "아기에게 혈류가 잘 가도록 왼쪽으로 기울여 드릴게요."
       chunks: ["I'm tilting you", "onto your left side", "to help blood flow", "to your baby", "."]
-      words: [w-tilt, w-left, w-side, w-help, w-blood, w-flow, w-baby]
+      words: [w-tilt, w-left, w-side, w-help, w-blood, w-flow]
       goal: 2
     - en: "We're monitoring your baby's heartbeat the whole time."
       ko: "아기의 심장박동을 계속 지켜보고 있을게요."
       chunks: ["We're monitoring", "your baby's heartbeat", "the whole time", "."]
-      words: [w-monitor, w-baby, w-heartbeat, w-time]
+      words: [w-monitor, w-heartbeat]
       goal: 2
     - en: "Your baby needs you breathing well, so the epinephrine helps both of you."
       ko: "아기는 산모가 잘 숨쉬는 게 필요해서, 에피네프린이 두 분 모두에게 도움이 돼요."
       chunks: ["Your baby needs you", "breathing well,", "so the epinephrine", "helps both of you", "."]
-      words: [w-baby, w-need, w-breathe, w-well, w-epinephrine, w-help]
+      words: [w-need, w-breathe, w-well, w-epinephrine, w-help]
       goal: 1
     - en: "Your blood pressure and your baby's heart rate are both being watched closely."
       ko: "산모의 혈압과 아기의 심박수 모두 면밀히 지켜보고 있어요."
       chunks: ["Your blood pressure", "and your baby's heart rate", "are both", "being watched closely", "."]
-      words: [w-blood, w-pressure, w-baby, w-heart, w-rate, w-watch, w-closely]
+      words: [w-blood, w-pressure, w-heart, w-rate, w-watch, w-closely]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-left
+    - w-side
+    - w-blood
+    - w-flow
+    - w-monitor
+    - w-heartbeat
+    pairs:
+    - - onto your left
+      - side
+    - - blood flow
+      - to your baby
+    - - monitor
+      - the heartbeat
+    decoys:
+    - on your back
+    why: onto your left side는 눕히는 방향, blood flow는 to와 이어 어디로 흐르는지, monitor는 계속 볼 대상을 목적어로 받아요. 왼쪽으로 기울이면 자궁이 대정맥을 누르는 것이 풀려요.
+  - kind: swap
+    words:
+    - w-safe
+    - w-epinephrine
+    - w-help
+    who: 임산부에게 · 에피네프린 걱정에 답하기
+    icon: me
+    before:
+    - 'I''m giving epinephrine now — '
+    - it shouldn't be too harmful to the baby
+    - .
+    options:
+    - it's safe and it helps both of you
+    - it shouldn't be too harmful to the baby
+    - we'll deal with the baby later
+    answer: it's safe and it helps both of you
+    notes:
+      it's safe and it helps both of you: 아나필락시스에서 에피네프린은 임신 중에도 1차 약이다. 엄마가 숨을 쉬어야 아기도 산소를 받는다.
+      it shouldn't be too harmful to the baby: 애매하게 위험을 암시해서 치료를 망설이게 만든다.
+      we'll deal with the baby later: 아기를 뒤로 미룬다고 들려 불안을 키운다 — 실제로는 둘 다 지금 돌보고 있다.
+    why: 임신 중에도 아나필락시스 치료는 미루지 않아요. 두 사람 모두에게 도움이 된다고 분명하게 말해요.
 
 - theme: er-anaphylaxis
   title: 라텍스 알레르기
@@ -33896,18 +35131,56 @@
     - en: "I'll flag your latex allergy so everyone caring for you knows."
       ko: "라텍스 알레르기를 표시해서 돌보는 모든 사람이 알 수 있게 할게요."
       chunks: ["I'll flag", "your latex allergy", "so everyone caring", "for you knows", "."]
-      words: [w-flag, w-latex, w-allergy, w-care, w-know]
+      words: [w-flag, w-latex, w-allergy, w-care]
       goal: 2
     - en: "Nothing in this room should touch latex from now on."
       ko: "이제부터 이 병실 안 어떤 것도 라텍스에 닿으면 안 돼요."
       chunks: ["Nothing in this room", "should touch", "latex", "from now on", "."]
-      words: [w-room, w-touch, w-latex]
+      words: [w-touch, w-latex]
       goal: 1
     - en: "I'm writing this on your chart so the next shift sees it too."
       ko: "다음 근무조도 볼 수 있도록 차트에 적어 둘게요."
       chunks: ["I'm writing this", "on your chart", "so the next shift", "sees it too", "."]
       words: [w-write, w-chart, w-shift]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-switch
+    - w-supply
+    - w-latex
+    - w-care
+    pairs:
+    - - switch to
+      - latex-free supplies
+    - - allergic
+      - to latex
+    - - caring
+      - for you
+    decoys:
+    - of bananas
+    why: switch to는 '~로 바꾸다', allergic은 to와 붙고, care는 for와 이어 'caring for you(당신을 돌보는)'가 돼요.
+  - kind: context
+    words:
+    - w-latex
+    - w-banana
+    - w-avocado
+    - w-food
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Do certain foods like bananas or avocado also bother you?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Latex allergy. Screen for latex-fruit cross-reactivity (banana, avocado, kiwi).
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Do you have latex-fruit syndrome cross-reactivity?
+      ok: false
+      fix: Do foods like bananas, avocado, or kiwi ever give you a reaction?
+    why: latex-fruit syndrome·cross-reactivity는 임상어예요. 환자에게는 음식 이름으로 물어야 답이 나와요. 라텍스 알레르기가 있는 사람 일부는 바나나·아보카도·키위·밤에도 반응해요.
 
 - theme: er-anaphylaxis
   title: 소아 아나필락시스 보호자
@@ -33950,8 +35223,46 @@
     - en: "Hold his hand and talk to him softly — that helps us both."
       ko: "아이 손을 잡고 부드럽게 말을 걸어주세요 — 저희 모두에게 도움이 돼요."
       chunks: ["Hold his hand", "and talk to him", "softly —", "that helps us both", "."]
-      words: [w-hold, w-hand, w-talk, w-softly, w-help]
+      words: [w-hold, w-talk, w-softly, w-help]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-dose
+    - w-weight
+    - w-calm
+    pairs:
+    - - dosed for
+      - his weight
+    - - keep him
+      - calm
+    - - you're doing
+      - great
+    decoys:
+    - to his size
+    why: dosed for his weight는 '체중에 맞춘 용량', keep him calm은 'keep + 사람 + 상태', You're doing great는 보호자를 격려하는 굳은 표현이에요.
+  - kind: swap
+    words:
+    - w-epinephrine
+    - w-dose
+    - w-weight
+    - w-give
+    who: 보호자에게 · 소아 용량 설명
+    icon: me
+    before:
+    - 'I''m giving him epinephrine '
+    - at 0.01 milligrams per kilogram IM
+    - ' right now.'
+    options:
+    - dosed for his weight
+    - at 0.01 milligrams per kilogram IM
+    - at a smaller adult dose
+    answer: dosed for his weight
+    notes:
+      dosed for his weight: 보호자가 '우리 아이에게 맞춘 양'이라고 바로 알아듣는다.
+      at 0.01 milligrams per kilogram IM: 정확한 소아 용량이지만 팀끼리 복창할 말이다.
+      at a smaller adult dose: 사실과 다르다 — 성인 용량을 대충 줄이는 게 아니라 체중으로 계산한다.
+    why: 0.01 mg/kg은 소아 에피네프린 근주의 표준 용량이에요. 보호자에게는 숫자보다 '체중에 맞췄다'로 안심시켜요.
 
 - theme: er-anaphylaxis
   title: 후두부종 기도폐쇄 임박
@@ -33989,13 +35300,48 @@
     - en: "Can you nod if it's getting harder to breathe?"
       ko: "숨쉬기가 더 힘들어지면 고개를 끄덕여 주시겠어요?"
       chunks: ["Can you nod", "if it's getting", "harder", "to breathe", "?"]
-      words: [w-nod, w-get, w-hard, w-breathe]
+      words: [w-nod, w-hard, w-breathe]
       goal: 1
     - en: "ENT is on the way, and I'm staying right here with you."
       ko: "이비인후과가 오고 있고, 저는 계속 곁에 있을게요."
       chunks: ["ENT is", "on the way,", "and I'm staying", "right here with you", "."]
       words: [w-way, w-stay]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breathe
+    - w-hard
+    cue: Patient can only whisper one or two words, is drooling, and has stridor at rest.
+    scale:
+    - short of breath
+    - struggling to breathe
+    - can't get air
+    answerAt: 2
+    why: 쉬는 중에도 협착음(stridor)이 들리고 침을 흘리며 한두 단어밖에 못 하면 가장 심한 쪽이에요. 기도가 곧 막힐 수 있다는 신호예요.
+    example: He can't get air — we're securing the airway now.
+    exKo: 숨을 못 쉬어요 — 지금 기도를 확보합니다.
+  - kind: context
+    words:
+    - w-airway
+    - w-secure
+    - w-call
+    - w-bedside
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Call ENT to the bedside now — impending airway compromise.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your airway is swelling — we're securing it before it closes.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're at risk of complete airway obstruction and may need a cric.
+      ok: false
+      fix: Your airway is swelling, so we're getting ready to help you breathe.
+    why: cric(윤상갑상막 절개)·obstruction은 팀끼리의 말이에요. 숨이 막히는 환자에게는 겁주는 말 대신 무엇을 하는지 짧게 말해요.
 
 - theme: er-anaphylaxis
   title: 아나필락시스 쇼크 불응
@@ -34028,7 +35374,7 @@
     - en: "Stay with me — squeeze my hand if you can hear me."
       ko: "정신 차리세요 — 제 목소리가 들리면 손을 꽉 쥐어보세요."
       chunks: ["Stay with me —", "squeeze my hand", "if you can", "hear me", "."]
-      words: [w-stay, w-squeeze, w-hand, w-hear]
+      words: [w-stay, w-squeeze, w-hear]
       goal: 1
     - en: "This is a second round of epinephrine since the first didn't fully work."
       ko: "첫 번째가 완전히 듣지 않아서 에피네프린을 두 번째로 투여해요."
@@ -34040,6 +35386,41 @@
       chunks: ["More fluid", "is going in", "fast", "to support your circulation", "."]
       words: [w-fluid, w-fast, w-support, w-circulation]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-low
+    - w-pressure
+    cue: BP 70/40 after two IM doses of epi. Patient is gray and confused.
+    scale:
+    - soft
+    - low
+    - dangerously low
+    answerAt: 2
+    why: soft는 경계선 정도로 낮을 때 의료진이 쓰는 말이에요. 70/40에 의식 변화까지 있으면 dangerously low — 에피네프린 지속 주입을 시작할 자리예요.
+    example: Her pressure is dangerously low, so we're starting a drip.
+    exKo: 혈압이 위험하게 낮아서 지속 주입을 시작해요.
+  - kind: swap
+    words:
+    - w-fluid
+    - w-pour
+    - w-bring
+    who: 환자에게 · 수액 설명
+    icon: me
+    before:
+    - 'We''re '
+    - running a 2-liter bolus of NS wide open
+    - ' to bring your blood pressure up.'
+    options:
+    - giving you lots of fluid
+    - running a 2-liter bolus of NS wide open
+    - draining some fluid
+    answer: giving you lots of fluid
+    notes:
+      giving you lots of fluid: 무엇을 왜 하는지 환자가 알아듣는 쉬운 말.
+      running a 2-liter bolus of NS wide open: 팀끼리 쓰는 오더 말 — 환자에게는 약어 뭉치다.
+      draining some fluid: 반대 뜻 — 수액을 빼는 게 아니라 넣는 것이다.
+    why: 같은 처치도 팀에게는 양·종류·속도를, 환자에게는 목적을 말해요.
 
 - theme: er-anaphylaxis
   title: 심정지 진행 아나필락시스
@@ -34072,7 +35453,7 @@
     - en: "Airway is swollen, so get the difficult airway cart now."
       ko: "기도가 부어 있으니 지금 어려운 기도 카트를 가져오세요."
       chunks: ["Airway is swollen,", "so get", "the difficult airway cart", "now", "."]
-      words: [w-airway, w-swell, w-get, w-difficult, w-cart]
+      words: [w-airway, w-swell, w-difficult, w-cart]
       goal: 2
     - en: "No pulse — starting CPR now."
       ko: "맥박 없습니다 — 지금 CPR 시작합니다."
@@ -34082,8 +35463,46 @@
     - en: "I need one more set of hands on the airway cart."
       ko: "기도 카트에 손이 하나 더 필요합니다."
       chunks: ["I need", "one more set", "of hands", "on the airway cart", "."]
-      words: [w-need, w-hand, w-airway, w-cart]
+      words: [w-need, w-airway, w-cart]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-hang
+    - w-liter
+    - w-open
+    - w-compression
+    - w-start
+    - w-pulse
+    pairs:
+    - - hang a liter
+      - wide open
+    - - start
+      - compressions
+    - - check for
+      - a pulse
+    decoys:
+    - the crash cart
+    why: wide open은 수액 조절기를 끝까지 연 '최대 속도', start compressions는 흉부압박 개시, check for a pulse는 맥박이 '있는지 확인'이라 for가 붙어요.
+  - kind: context
+    words:
+    - w-give
+    - w-epinephrine
+    scenes:
+    - who: 팀 리더 → 간호사
+      icon: siren
+      en: Maria, give 1 milligram of epi IV push now.
+      ok: true
+    - who: 간호사 → 팀 리더
+      icon: speech
+      en: 1 milligram epi IV push, given.
+      ok: true
+    - who: 팀 리더 → 팀 전체
+      icon: siren
+      en: If anyone gets a chance, maybe someone could give some epi?
+      ok: false
+      fix: Maria, give 1 milligram of epi IV now and tell me when it's in.
+    why: 코드 중에는 이름을 불러 짧게 지시하고 복창을 받는 closed-loop가 원칙이에요. 돌려 말하면 아무도 안 하거나 두 사람이 같이 해요.
 
 - theme: er-anaphylaxis
   title: 이상성 반응 재악화
@@ -34116,18 +35535,55 @@
     - en: "Tell me exactly how your breathing feels compared to before."
       ko: "이전과 비교해서 호흡이 어떻게 느껴지는지 정확히 말씀해 주세요."
       chunks: ["Tell me exactly", "how your breathing feels", "compared to", "before", "."]
-      words: [w-tell, w-exact, w-breathe, w-feel, w-compare, w-before]
+      words: [w-tell, w-breathe, w-feel, w-compare, w-before]
       goal: 1
     - en: "Even after treatment, symptoms can return two to twelve hours later."
       ko: "치료 후에도 증상이 2시간에서 12시간 뒤에 다시 돌아올 수 있어요."
       chunks: ["Even after treatment,", "symptoms can return", "two to twelve hours", "later", "."]
-      words: [w-treatment, w-symptom, w-return, w-hour, w-later]
+      words: [w-treatment, w-symptom, w-return, w-later]
       goal: 1
     - en: "I'm giving a full second dose and checking your vitals every ten minutes."
       ko: "전체 용량으로 두 번째 투여를 하고, 10분마다 활력징후를 확인할게요."
       chunks: ["I'm giving a full", "second dose", "and checking", "your vitals every ten minutes", "."]
-      words: [w-give, w-full, w-dose, w-check, w-vital, w-minute]
+      words: [w-give, w-full, w-dose, w-check, w-vital]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-compare
+    - w-before
+    - w-full
+    - w-dose
+    pairs:
+    - - compared
+      - to before
+    - - a full second
+      - dose
+    - - every ten
+      - minutes
+    decoys:
+    - hours later
+    why: compared는 to와 이어 '~와 비교해', a full second dose는 '두 번째도 전체 용량으로', every ten minutes는 활력징후를 재는 간격이에요.
+  - kind: context
+    words:
+    - w-wave
+    - w-return
+    - w-symptom
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: This is a second wave — I'm giving epinephrine again now.
+      ok: true
+    - who: 의사 보고
+      icon: monitor
+      en: 'Biphasic reaction at hour six: wheezing, lip swelling. Repeat epi IM given.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're having a biphasic recurrence of anaphylaxis.
+      ok: false
+      fix: Your reaction has come back, so I'm giving you another dose now.
+    why: biphasic recurrence는 차트와 보고의 말이에요. 환자에게는 '반응이 다시 왔다'고 쉽게 말해요.
 
 - theme: er-anaphylaxis
   title: 다중 알레르겐 중환자
@@ -34150,7 +35606,7 @@
     - en: "We're removing anything you might be reacting to from your room."
       ko: "혹시 반응을 일으킬 만한 것들을 병실에서 모두 치울게요."
       chunks: ["We're removing anything", "you might be", "reacting to", "from your room", "."]
-      words: [w-remove, w-react, w-room]
+      words: [w-remove, w-react]
       goal: 2
     - en: "Let's list everything you've eaten, touched, or taken today."
       ko: "오늘 드시거나 만지거나 복용한 모든 것을 목록으로 적어봐요."
@@ -34165,13 +35621,45 @@
     - en: "Tell me every medication, food, and product you've been near this week."
       ko: "이번 주에 가까이 했던 모든 약, 음식, 제품을 말씀해 주세요."
       chunks: ["Tell me every medication,", "food,", "and product", "you've been near this week", "."]
-      words: [w-tell, w-medication, w-food, w-product, w-week]
+      words: [w-tell, w-medication, w-food, w-product]
       goal: 1
     - en: "We're keeping this room free of every trigger we know about."
       ko: "우리가 아는 모든 유발원이 없도록 이 병실을 유지할게요."
       chunks: ["We're keeping", "this room free", "of every trigger", "we know about", "."]
-      words: [w-keep, w-room, w-trigger, w-know]
+      words: [w-keep, w-trigger]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-trigger
+    cue: She reacted within minutes of a new lotion — twice — and nothing else changed.
+    scale:
+    - possible trigger
+    - likely trigger
+    - confirmed trigger
+    answerAt: 1
+    why: 같은 로션 직후에 두 번 반응했다면 likely trigger예요. confirmed는 알레르기 검사로 확인했을 때 써요 — 응급실에서는 확정하지 않고 일단 피하도록 교육해요.
+    example: The new lotion is a likely trigger.
+    exKo: 새 로션이 유력한 유발원이에요.
+  - kind: context
+    words:
+    - w-list
+    - w-touch
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Let's list everything you've eaten, touched, or taken today.
+      ok: true
+    - who: 인계
+      icon: board
+      en: Multiple allergies, trigger unknown. Room cleared of latex and scented products.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We need a comprehensive exposure history for allergen identification.
+      ok: false
+      fix: Let's go through everything you've eaten, touched, or taken today.
+    why: exposure history·allergen identification은 의료진 말이에요. 환자와는 오늘 먹은 것·만진 것·먹은 약을 하나씩 같이 짚어요.
 
 - theme: er-anaphylaxis
   title: 관찰 중 급변 야간 SBAR
@@ -34194,7 +35682,7 @@
     - en: "Post-anaphylaxis obs patient, stable until zero-two-hundred."
       ko: "아나필락시스 후 관찰 환자로, 새벽 2시까지는 안정적이었습니다."
       chunks: ["Post-anaphylaxis obs patient,", "stable", "until zero-two-hundred", "."]
-      words: [w-patient, w-stable]
+      words: [w-stable]
       goal: 1
     - en: "Blood pressure dropped to ninety over fifty and hives returned."
       ko: "혈압이 90에 50으로 떨어졌고 두드러기가 다시 나타났습니다."
@@ -34214,8 +35702,44 @@
     - en: "Please come reassess him and let the doctor know right away."
       ko: "와서 재평가해 주시고, 의사에게도 바로 알려주세요."
       chunks: ["Please come reassess", "him and", "let the doctor", "know right away", "."]
-      words: [w-come, w-reassess, w-doctor, w-know]
+      words: [w-reassess]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-reassess
+    - w-drop
+    - w-give
+    pairs:
+    - - I need you to
+      - reassess him
+    - - dropped to
+      - ninety over fifty
+    - - a second
+      - epi
+    decoys:
+    - all shift
+    why: SBAR의 요청(R)은 'I need you to + 동사'로 분명하게. dropped to는 수치와 이어 어디까지 떨어졌는지, a second epi는 몇 번째 투여인지를 보고해요.
+  - kind: swap
+    words:
+    - w-reassess
+    - w-need
+    who: 야간 의사 호출 · SBAR의 R
+    icon: speaker
+    before:
+    - 'I gave a second epi, and '
+    - maybe you could look at him sometime
+    - .
+    options:
+    - I need you to reassess him now
+    - maybe you could look at him sometime
+    - he's probably fine
+    answer: I need you to reassess him now
+    notes:
+      I need you to reassess him now: 무엇을 언제까지 원하는지 분명한 요청 — SBAR의 R이다.
+      maybe you could look at him sometime: 급함이 빠져서 의사가 우선순위를 낮춘다.
+      he's probably fine: 다시 떨어진 혈압과 두드러기를 가볍게 전해 위험하다.
+    why: 돌려 말하면 급변이 전달되지 않아요. SBAR은 마지막에 무엇을 해 달라는지(Recommendation)를 구체적으로 말하라고 가르쳐요.
 
 - theme: er-environmental
   title: 노출 환경·시간 문진

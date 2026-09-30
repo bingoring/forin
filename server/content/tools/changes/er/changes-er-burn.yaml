@@ -1,0 +1,306 @@
+theme: er-burn
+changes:
+- kind: sentence
+  situation: 화상 초기 사정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-arm 태그를 뺐다
+- kind: sentence
+  situation: TBSA 9의 법칙 설명
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: TBSA 9의 법칙 설명
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-arm·w-body 태그를 뺐다
+- kind: sentence
+  situation: TBSA 9의 법칙 설명
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-leg·w-arm 태그를 뺐다
+- kind: sentence
+  situation: 초기 냉각·세척
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 통증 척도·기전 청취
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-zero·w-ten·w-bad 태그를 뺐다
+- kind: sentence
+  situation: 화학 화상
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-know·w-name 태그를 뺐다
+- kind: sentence
+  situation: 화학 화상
+  index: 3
+  fields:
+  - words
+  why: w-takeoff 태그를 더했다
+- kind: sentence
+  situation: 화학 화상
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다; w-atleast 태그를 더했다
+- kind: sentence
+  situation: 전기 화상 심전도 감시
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 순환성 전층화상
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-arm 태그를 뺐다; w-cut(절개)은 여기서 cut off circulation(차단하다)이라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 소아 화상 학대 감별
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-home 태그를 뺐다
+- kind: sentence
+  situation: 고령 화상 동반질환
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-problem 태그를 뺐다
+- kind: sentence
+  situation: 고령 화상 동반질환
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-home 태그를 뺐다
+- kind: sentence
+  situation: 안면·수부 화상 기능
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 안면·수부 화상 기능
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 안면·수부 화상 기능
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 화상센터 이송 기준
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: sentence
+  situation: 화상센터 이송 기준
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-go 태그를 뺐다
+- kind: sentence
+  situation: 기도 화상 부종 진행
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-now 태그를 뺐다
+- kind: sentence
+  situation: 대면적 화상 저혈량 쇼크
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 일산화탄소/시안 중독
+  index: 0
+  fields:
+  - words
+  why: w-even(대칭인)은 여기서 even with(심지어)라 다른 뜻 — 태그를 뺐다; pulse는 기기 이름 pulse oximeter의 일부 — w-oximeter를 구 단위로 바꿔 w-pulse 태그를 뺐다
+- kind: sentence
+  situation: 일산화탄소/시안 중독
+  index: 4
+  fields:
+  - words
+  why: w-even(대칭인)은 여기서 even when(심지어)이라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 화상 SBAR 인계
+  index: 0
+  fields:
+  - words
+  why: w-old(나이든)는 여기서 35-year-old(35세)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 대면적 화상 저혈량 쇼크
+  index: 3
+  fields:
+  - ko
+  why: losing a lot of fluid는 몸의 체액이 빠지는 것인데 ko가 '수액'이었다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-zero
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-ten
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-bad
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-home
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-arm
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-leg
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-problem
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-look
+  fields:
+  - ko
+  why: 여섯 문장 중 넷이 looks fine / look pale / than they look(~해 보이다)인데 ko가 '살펴보다'뿐이었다
+- kind: word
+  id: w-region
+  fields:
+  - ko
+  why: w-area와 ko(부위)가 같아 정답이 둘 — body regions는 9의 법칙에서 나누는 신체 구역
+- kind: word
+  id: w-fluid
+  fields:
+  - ko
+  why: Large burns lose fluid / fluid loss는 몸의 체액인데 ko가 '수액'뿐이었다
+- kind: word
+  id: w-number
+  fields:
+  - ko
+  why: w-level과 ko(수치)가 같아 정답이 둘 — this number / oxygen number는 화면의 숫자
+- kind: word
+  id: w-enclose
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 문장은 형용사 enclosed(밀폐된 공간)인데 헤드워드는 동사 enclose·밀폐하다였다
+- kind: word
+  id: w-cut
+  fields:
+  - example
+  why: 예문이 cut off circulation(차단하다)이라 ko(절개)와 다른 뜻 — 같은 주제의 small cut 문장으로
+- kind: word
+  id: w-walk
+  fields:
+  - en
+  - ipa
+  - ko
+  why: walk 하나에 '설명하다'는 틀린 뜻 — 문장은 walk me through라 구 단위로
+- kind: word
+  id: w-injury
+  fields:
+  - ko
+  why: w-damage와 ko(손상)가 같아 듣고 뜻 고르기에서 정답이 둘 — injury는 다친 것(부상)
+- kind: word
+  id: w-transfer
+  fields:
+  - ko
+  why: w-refer(전원하다)와 ko가 사실상 같아 정답이 둘 — 문장 ko도 이송이다
+- kind: word
+  id: w-stay
+  fields:
+  - ko
+  why: w-keep과 ko(유지하다)가 같아 정답이 둘 — stay calm / stay stable은 그 상태로 있는 것
+- kind: word
+  id: w-oximeter
+  fields:
+  - en
+  - ipa
+  why: 문장은 pulse oximeter라는 한 기기 이름인데 pulse(맥박)와 oximeter로 나뉘어 태그됐다 — 구 단위로
+- kind: word
+  id: w-away
+  fields:
+  - en
+  - ipa
+  - ko
+  why: away 하나에 '즉시'는 틀린 뜻 — 문장은 right away라 구 단위로
+- kind: word
+  id: w-adequate
+  fields:
+  - ko
+  why: w-enough와 ko(충분한)가 같아 정답이 둘 — urine output is adequate는 목표에 맞는 적정량
+- kind: word-add
+  id: w-takeoff
+  why: 쉬운 w-know·w-name·w-minute를 빼면 화학 화상의 서로 다른 단어가 7개 — 문장 3에 이미 있는 구동사
+- kind: word-add
+  id: w-atleast
+  why: 같은 이유 — 문장 4에 이미 있는 말(세척 최소 시간)
+- kind: sentence
+  situation: 대면적 화상 수액소생
+  index: 0
+  fields:
+  - ko
+  why: 같은 문장의 단어 exKo와 번역이 달랐다 — '수액이 빠져나간다'는 뜻이 틀려 체액(·적정)으로 맞췄다
+- kind: sentence
+  situation: 대면적 화상 저혈량 쇼크
+  index: 0
+  fields:
+  - ko
+  why: 같은 문장의 단어 exKo와 번역이 달랐다 — '수액이 빠져나간다'는 뜻이 틀려 체액(·적정)으로 맞췄다
+- kind: sentence
+  situation: 화상 SBAR 인계
+  index: 1
+  fields:
+  - ko
+  why: 같은 문장의 단어 exKo와 번역이 달랐다 — '수액이 빠져나간다'는 뜻이 틀려 체액(·적정)으로 맞췄다
+- kind: word
+  id: w-poison
+  fields:
+  - ko
+  why: poison은 독(명사)·중독시키다(동사) — '중독되다'는 틀린 뜻. 태그 문장은 this poisoning·poison level·poisoned
+- kind: word
+  id: w-break
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 두 문장 다 breaking down·broke down — 낱말 break에 파괴되다는 구동사의 뜻이라 구 단위로
