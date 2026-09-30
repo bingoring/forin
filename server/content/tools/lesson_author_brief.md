@@ -237,6 +237,11 @@ nuance:
 보강하면서 **기존 단어·문장의 흠이 보이면 이 범위 안에서만** 고칩니다. 과하게 손대지 마세요 — 이미 검사를 통과해
 앱에 나가는 콘텐츠입니다. 한 주제에서 고치는 것은 단어의 1할 안쪽이 보통입니다.
 
+- **공통 쉬운 단어 목록 — 이 말들은 어느 주제에서든 태그에서 뺍니다**(주제마다 기준이 달라지지 않게):
+  `day · week · hour · minute · time · now · today · morning · afternoon · night · home · name · room · car ·
+  doctor · nurse · patient · family · mother · father · baby · body · hand · head · know · go · see · come ·
+  zero · ten · bad · good`. 목록에 없는 말은 주제 안에서 판단하되, 간호사가 이미 아는 말이면 뺍니다. 단, 그
+  말이 구의 일부로 가르칠 값이 있으면(`take the edge off`의 `edge`처럼) 구 단위로 둡니다.
 - **너무 쉬운 단어는 가르치지 않게 합니다.** `home`·`name`·`time`·`body`·`doctor`처럼 간호사가 이미 아는 말입니다.
   **문장은 그대로 두고** 그 문장의 `words`에서 태그만 뺍니다. 그러면 STEP 1에서 빠집니다. 상황당 서로 다른 단어 8개
   이상(V3)은 지켜야 합니다 — 모자라면 **그 상황 문장에 이미 나오는** 더 배울 만한 말(`intensity`·`reassess`·
