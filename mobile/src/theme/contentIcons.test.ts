@@ -40,13 +40,39 @@ function decodeYamlEscapes(v: string): string {
     .replace(/\\x([0-9a-fA-F]{2})/g, (_, h) => String.fromCodePoint(parseInt(h, 16)));
 }
 
+/**
+ * Split a content file into its `nuance:` blocks and the rest. Nuance items (v45) carry
+ * NbIcon names under the same `icon:` key a reward uses — like the word banks, they are
+ * resolved elsewhere, so the reward scan must not read them and a test below keeps them
+ * honest instead. A block runs from its `nuance:` line to the next line indented no
+ * deeper than that key (list items at the key's own indent still belong to it).
+ */
+function splitNuance(src: string): { nuance: string; rest: string } {
+  const nuance: string[] = [];
+  const rest: string[] = [];
+  let depth = -1;
+  for (const line of src.split('\n')) {
+    const indent = line.length - line.trimStart().length;
+    // A list may sit at the key's own indent (`  nuance:` / `  - kind:`) — valid YAML,
+    // and what the merge tool writes — so a `- ` line at that depth is still inside.
+    const sameLevelItem = indent === depth && line.trimStart().startsWith('- ');
+    if (depth >= 0 && line.trim() !== '' && indent <= depth && !sameLevelItem) depth = -1;
+    if (depth < 0 && /^\s*nuance:\s*$/.test(line)) {
+      depth = indent;
+      continue;
+    }
+    (depth >= 0 ? nuance : rest).push(line);
+  }
+  return { nuance: nuance.join('\n'), rest: rest.join('\n') };
+}
+
 /** Every distinct icon value in the content set, with one file that uses it. Both
  *  quoted and bare scalars — the generator writes bare 마크 for most icons and a
  *  quoted escape for the one above. */
 function rewardIcons(): Map<string, string> {
   const found = new Map<string, string>();
   for (const f of walk(CONTENT, isLexicon)) {
-    const src = readFileSync(f, 'utf8');
+    const src = splitNuance(readFileSync(f, 'utf8')).rest;
     for (const m of src.matchAll(/icon:\s*(?:"([^"]+)"|([^\s"'#][^\s#]*))/g)) {
       const raw = m[1] !== undefined ? decodeYamlEscapes(m[1]) : m[2];
       if (raw && !found.has(raw)) found.set(raw, f);
@@ -114,6 +140,24 @@ test('every word-bank icon is a name NbIcon actually draws', () => {
   }
   expect(used.size).toBeGreaterThan(5); // 은행을 못 찾으면 통과해 버린다
 
+  const unknown = [...used].filter(([n]) => !known.has(n)).map(([n, f]) => `${n} (first in ${f})`);
+  expect(unknown).toEqual([]);
+});
+
+// v45 nuance items (scene and swap icons) are NbIcon names too, and live inside the
+// scenario and topic files among the reward icons — same `icon:` key, different set.
+test('every nuance icon is a name NbIcon actually draws', () => {
+  const decl = readFileSync(join(__dirname, '..', 'components', 'nb', 'NbIcon.tsx'), 'utf8');
+  const union = decl.slice(decl.indexOf('NbIconName'), decl.indexOf('export function NbIcon'));
+  const known = new Set([...union.matchAll(/'([a-zA-Z0-9-]+)'/g)].map((m) => m[1]));
+  const used = new Map<string, string>();
+  for (const f of walk(CONTENT, isLexicon)) {
+    const { nuance } = splitNuance(readFileSync(f, 'utf8'));
+    for (const m of nuance.matchAll(/icon:\s*"?([^\s"',}]+)"?/g)) {
+      if (!used.has(m[1])) used.set(m[1], f.split('/').slice(-1)[0]);
+    }
+  }
+  expect(used.size).toBeGreaterThan(2); // 뉘앙스를 못 찾으면 통과해 버린다
   const unknown = [...used].filter(([n]) => !known.has(n)).map(([n, f]) => `${n} (first in ${f})`);
   expect(unknown).toEqual([]);
 });
