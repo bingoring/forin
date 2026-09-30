@@ -81128,8 +81128,43 @@
       words:
         - w-bring
         - w-bottle
-        - w-home
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-take
+        - w-bottle
+        - w-along
+        - w-ago
+      why: 먹은 약은 pill bottle(약병)로 확인하고, 함께 먹은 것은 anything else along with it, 시각은 how long ago로 물어요. 무엇을·얼마나·언제가 중독 문진의 세 기둥이에요.
+      pairs:
+        - - pill
+          - bottle
+        - - anything else
+          - along with it
+        - - how long
+          - ago
+      decoys:
+        - a while
+    - kind: swap
+      words:
+        - w-take
+      why: 인계에서는 ingestion이라고 해도, 환자에게는 What did you take?처럼 평범한 동사로 물어요.
+      who: 환자에게 · 복용 시각 확인
+      icon: me
+      before:
+        - 'When did you '
+        - ingest
+        - ' the pills?'
+      options:
+        - take
+        - ingest
+        - consume
+      answer: take
+      notes:
+        consume: 음식·음료에 쓰는 격식 있는 말이라 약을 먹은 것을 묻기엔 어색하다.
+        ingest: 차트·인계의 임상어(ingestion). 환자에게는 딱딱하고 낯설다.
+        take: 약을 먹었다고 할 때 환자가 쓰는 평범한 말. 바로 알아듣는다.
 - id: SCN-ER-00607
   profession: ""
   eventId: EVT-ER-00139
@@ -81200,7 +81235,6 @@
       words:
         - w-charcoal
         - w-medicine
-        - w-body
         - w-absorb
       goal: 1
     - en: It's important to drink it now while it can still help.
@@ -81238,7 +81272,6 @@
         - clean out the poison
         - .
       words:
-        - w-know
         - w-taste
         - w-help
         - w-poison
@@ -81256,7 +81289,7 @@
         - w-easy
       goal: 2
     - en: We'll watch you closely in case you can't keep it down.
-      ko: 삼킨 걸 못 참으실 경우를 대비해 가까이서 지켜볼게요.
+      ko: 드신 걸 토하실 경우를 대비해 가까이서 지켜볼게요.
       chunks:
         - We'll watch you closely
         - in case
@@ -81266,6 +81299,37 @@
       words:
         - w-watch
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-taste
+      why: 겨우 넘긴다고 할 만큼이면 awful 쪽이에요. 맛이 역하다는 걸 먼저 인정해 주고, 빨대처럼 마시기 쉬운 방법을 권해요.
+      cue: 'Patient: "It''s gritty and tastes like dirt — I can barely get it down."'
+      scale:
+        - a little unpleasant
+        - bad
+        - awful
+      answerAt: 2
+      example: I know it tastes awful — a straw can make it easier.
+      exKo: 맛이 정말 역하다는 거 알아요 — 빨대로 마시면 좀 쉬워요.
+    - kind: context
+      words:
+        - w-throw
+      why: 셋 다 토하는 것을 말해요. emesis·vomiting은 차트와 의료진끼리의 말이고, 환자에게는 throw up이 자연스러워요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt had one episode of emesis after charcoal.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Tell me right away if you have any emesis.
+          ok: false
+          fix: Tell me right away if you feel like you might throw up.
+        - who: 동료에게
+          icon: monitor
+          en: She's nauseated after the charcoal — watch for vomiting.
+          ok: true
 - id: SCN-ER-00608
   profession: ""
   eventId: EVT-ER-00140
@@ -81358,7 +81422,7 @@
         - before today
         - '?'
       words:
-        - w-today
+        - w-thought
       goal: 2
     - en: It's okay to feel this way, and I'm glad you're here now.
       ko: 이런 기분이 드셔도 괜찮아요, 지금 여기 와주셔서 다행이에요.
@@ -81391,9 +81455,43 @@
         - be in danger
         - '?'
       words:
-        - w-home
         - w-danger
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-hurt
+        - w-judge
+        - w-danger
+      why: 자해 의도는 were you trying to hurt yourself?처럼 직접 물어요. 직접 묻는다고 위험이 커지지 않는다는 것이 자살 위험 선별의 기본 원칙이고, I won't judge you가 사실대로 말할 수 있게 해 줘요.
+      pairs:
+        - - were you trying to
+          - hurt yourself
+        - - I won't
+          - judge you
+        - - anyone at home who might be
+          - in danger
+      decoys:
+        - before today
+    - kind: swap
+      words:
+        - w-hurt
+      why: 의도를 물을 때는 돌려 말하지 않되 판단은 빼요. 탓하거나 동기를 짐작하는 말은 환자가 입을 닫게 해요.
+      who: 환자에게 · 자해 의도 확인
+      icon: me
+      before:
+        - 'Were you trying to '
+        - do something stupid
+        - '?'
+      options:
+        - hurt yourself
+        - do something stupid
+        - get attention
+      answer: hurt yourself
+      notes:
+        do something stupid: 환자를 탓하는 말로 들려 사실을 숨기게 한다.
+        get attention: 관심을 끌려 했다고 동기를 짐작하는 말이라 비난으로 들린다.
+        hurt yourself: 직접적이면서도 판단이 담기지 않은 말. 무엇을 묻는지 분명하다.
 - id: SCN-ER-00609
   profession: ""
   eventId: EVT-ER-00140
@@ -81454,7 +81552,7 @@
   theme: er-poisoning
   sentences:
     - en: Which products did you mix, and did you breathe in the fumes?
-      ko: 어떤 제품들을 섞으셨고, 그 연기를 들이마셨나요?
+      ko: 어떤 제품들을 섞으셨고, 그 가스를 들이마셨나요?
       chunks:
         - Which products
         - did you mix,
@@ -81528,6 +81626,43 @@
         - w-trouble
         - w-breathe
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-breathe
+        - w-fume
+        - w-call
+        - w-skin
+      why: 가스는 breathe in the fumes, 독극물센터는 Poison Control(미국은 1-800-222-1222로 어디서든 연결돼요), 피부에 묻은 것은 rinse your skin이라고 해요.
+      pairs:
+        - - breathe in
+          - the fumes
+        - - call
+          - Poison Control
+        - - rinse
+          - your skin
+      decoys:
+        - a fever
+    - kind: context
+      words:
+        - w-fume
+        - w-breathe
+        - w-mix
+      why: 셋 다 가스를 들이마셨다는 같은 말이에요. inhalation exposure는 차트와 전화 보고의 말이고, 환자에게는 무엇을 했는지 그대로 breathe in the fumes로 물어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Inhalation exposure after mixing bleach and ammonia.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Did you have any inhalation exposure?
+          ok: false
+          fix: Did you breathe in the fumes?
+        - who: 독극물센터 통화
+          icon: mic
+          en: Inhalation exposure, bleach and ammonia, about thirty minutes ago.
+          ok: true
 - id: SCN-ER-00610
   profession: ""
   eventId: EVT-ER-00140
@@ -81633,6 +81768,7 @@
       words:
         - w-bottle
         - w-find
+        - w-alone
       goal: 1
     - en: This happens to a lot of parents, and it's not your fault.
       ko: 많은 부모님들께 일어나는 일이고, 보호자분 잘못이 아니에요.
@@ -81655,9 +81791,41 @@
         - of her now
         - .
       words:
-        - w-take
         - w-care
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-find
+      why: 5분 전이면 just now 쪽이에요. 보호자의 시간 표현은 흐리기 쉬우니, 몇 시였는지 시계 기준으로 다시 확인해요.
+      cue: 'Parent: "I found her maybe five minutes ago, and we drove straight here."'
+      scale:
+        - a while ago
+        - recently
+        - just now
+      answerAt: 2
+      example: Mom found her just now with the bottle open.
+      exKo: 엄마가 방금 병이 열린 채로 아이를 발견했어요.
+    - kind: swap
+      words:
+        - w-fault
+        - w-happen
+      why: 응급 상황의 보호자에게는 먼저 자책을 덜어 주고, 약 보관 같은 예방 교육은 나중에 따로 해요.
+      who: 보호자에게 · 자책하는 부모
+      icon: me
+      before:
+        - 'This happens to a lot of parents, and '
+        - you should have locked it up
+        - .
+      options:
+        - it's not your fault
+        - you should have locked it up
+        - it could have been worse
+      answer: it's not your fault
+      notes:
+        it could have been worse: 위로하려는 말이어도 걱정을 가볍게 넘기는 것처럼 들린다.
+        it's not your fault: 자책을 덜어 주어 보호자가 침착하게 정보를 줄 수 있게 한다.
+        you should have locked it up: 지금은 비난으로 들린다. 약 보관 교육은 아이가 안정된 뒤에 한다.
 - id: SCN-ER-00611
   profession: ""
   eventId: EVT-ER-00140
@@ -81799,9 +81967,46 @@
         - .
       words:
         - w-explain
-        - w-know
         - w-happen
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-acetaminophen
+        - w-level
+        - w-protect
+        - w-liver
+        - w-show
+        - w-later
+      why: 타이레놀 과다는 처음엔 멀쩡해도 간 손상이 하루이틀 뒤에 드러날 수 있어요(show up later). 그래서 acetaminophen level을 복용 시각 기준으로 재고, NAC가 간을 지켜요(protects your liver).
+      pairs:
+        - - acetaminophen
+          - level
+        - - protects your
+          - liver
+        - - show up
+          - later
+      decoys:
+        - a dose
+    - kind: context
+      words:
+        - w-acetaminophen
+        - w-level
+      why: APAP는 acetaminophen의 약어로 차트와 의료진끼리 써요. 환자에게는 알아듣는 약 이름, 흔히 상표명 Tylenol로 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Reports APAP ingestion around 11 p.m.; asymptomatic.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We're sending an APAP level now.
+          ok: false
+          fix: We're checking the Tylenol level in your blood now.
+        - who: 약사에게
+          icon: pill
+          en: APAP level is back — can you verify the NAC dosing?
+          ok: true
 - id: SCN-ER-00612
   profession: ""
   eventId: EVT-ER-00140
@@ -81898,7 +82103,6 @@
         - '?'
       words:
         - w-take
-        - w-know
       goal: 1
     - en: Is he breathing on his own, or do you need to help him?
       ko: 스스로 숨을 쉬고 있나요, 아니면 도와드려야 하나요?
@@ -81910,7 +82114,6 @@
         - '?'
       words:
         - w-breathe
-        - w-need
         - w-help
       goal: 1
     - en: His breathing should look better within a few minutes.
@@ -81935,8 +82138,40 @@
         - .
       words:
         - w-naloxone
-        - w-need
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-wake
+      why: 세게 흔들어야 잠깐 눈을 뜨면 hard to wake예요. 오피오이드 과다에서는 진정이 깊어질수록 호흡이 떨어지니 호흡수를 함께 봐요.
+      cue: 'Family: "He opens his eyes when I shake him hard, then drifts off again."'
+      scale:
+        - drowsy
+        - hard to wake
+        - unresponsive
+      answerAt: 1
+      example: He's hard to wake and breathing about six times a minute.
+      exKo: 잘 깨지 않고 호흡은 분당 6회 정도예요.
+    - kind: context
+      words:
+        - w-slip
+        - w-naloxone
+        - w-watch
+      why: 날록손은 여러 오피오이드보다 작용 시간이 짧아 다시 처질 수 있어요(slip back). 의료진끼리는 re-sedation이라고 하지만, 가족에게는 다시 졸려질 수 있다고 풀어 말해요.
+      scenes:
+        - who: 동료 인계
+          icon: monitor
+          en: Naloxone can wear off before the opioid does — watch for re-sedation.
+          ok: true
+        - who: 가족에게
+          icon: me
+          en: He's at risk for re-sedation once the naloxone wears off.
+          ok: false
+          fix: The medicine can wear off before the drugs do, so he may get sleepy again — we'll watch him closely.
+        - who: 차트 기록
+          icon: board
+          en: Monitor for recurrent respiratory depression after naloxone.
+          ok: true
 - id: SCN-ER-00613
   profession: ""
   eventId: EVT-ER-00140
@@ -82076,6 +82311,41 @@
         - w-tell
         - w-notice
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-sedate
+        - w-deeply
+      why: 목소리엔 반응이 없고 흉골 자극에만 움직이면 deeply sedated예요(RASS -4). 자극에도 전혀 반응이 없어야 unresponsive(RASS -5)예요.
+      cue: 'Nurse: "No response to her name, but she groans and pulls away when I rub her sternum."'
+      scale:
+        - lightly sedated
+        - deeply sedated
+        - unresponsive
+      answerAt: 1
+      example: She's deeply sedated but still protecting her airway for now.
+      exKo: 깊이 진정돼 있지만 지금은 아직 스스로 기도를 유지하고 있어요.
+    - kind: swap
+      words:
+        - w-reversal
+        - w-drug
+        - w-cautious
+      why: 벤조 역전제(flumazenil)는 벤조를 오래 먹던 사람이나 경련을 일으키는 약을 함께 먹은 사람에게 경련을 부를 수 있어 조심해서 써요. 가족에게는 약 이름보다 무엇을 하는 약인지로 말해요.
+      who: 보호자에게 · 역전제 설명
+      icon: me
+      before:
+        - 'We''re cautious with '
+        - flumazenil
+        - ' because it can trigger seizures.'
+      options:
+        - the reversal drug
+        - flumazenil
+        - the antidote
+      answer: the reversal drug
+      notes:
+        flumazenil: 의료진끼리 쓰는 약 이름. 가족은 무슨 약인지 모른다.
+        the antidote: 모든 걸 해결하는 해독제처럼 들려, 왜 바로 안 쓰는지 오해를 부른다.
+        the reversal drug: 무엇을 하는 약인지 바로 알아듣는 말.
 - id: SCN-ER-00614
   profession: ""
   eventId: EVT-ER-00140
@@ -82192,7 +82462,6 @@
       words:
         - w-fast
         - w-breathe
-        - w-body
         - w-protect
       goal: 1
     - en: The bicarbonate helps your body clear the aspirin faster.
@@ -82205,7 +82474,6 @@
         - .
       words:
         - w-bicarbonate
-        - w-body
         - w-clear
         - w-aspirin
         - w-fast
@@ -82224,6 +82492,44 @@
         - w-blood
         - w-level
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-ring
+        - w-ear
+        - w-aspirin
+        - w-level
+        - w-fluid
+        - w-bicarbonate
+      why: 귀 울림(ringing in your ears)은 아스피린 중독의 초기 단서예요. aspirin level을 재고, fluids with bicarbonate로 소변을 알칼리화해 아스피린이 빨리 빠져나가게 해요.
+      pairs:
+        - - ringing in
+          - your ears
+        - - aspirin
+          - level
+        - - fluids with
+          - bicarbonate
+      decoys:
+        - clue
+    - kind: context
+      words:
+        - w-ring
+        - w-ear
+      why: 셋 다 귀가 울린다는 같은 말이에요. tinnitus는 의료진끼리의 말이고, 환자에게는 Are your ears ringing?으로 물어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt c/o tinnitus and tachypnea after aspirin ingestion.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Are you having any tinnitus?
+          ok: false
+          fix: Are your ears ringing?
+        - who: 독극물센터 통화
+          icon: mic
+          en: Salicylate ingestion with tinnitus, respiratory rate thirty-two.
+          ok: true
 - id: SCN-ER-00615
   profession: ""
   eventId: EVT-ER-00140
@@ -82363,6 +82669,42 @@
         - w-watch
         - w-monitor
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-protect
+        - w-heart
+        - w-fast
+      why: TCA 과다에서는 심장이 가장 위험해서 중탄산염이 heart를 지켜요. 리듬이 바뀌면 act fast, 환자에게는 모니터가 잘 잡히게 lie still을 부탁해요.
+      pairs:
+        - - protect your
+          - heart
+        - - act
+          - fast
+        - - lie
+          - still
+      decoys:
+        - the rhythm
+    - kind: swap
+      words:
+        - w-heart
+        - w-watch
+      why: 위험한 약이라도 환자에게는 무엇을 왜 지켜보는지 쉬운 말로, 겁을 더하지 않게 말해요.
+      who: 환자에게 · 모니터를 지켜보는 이유
+      icon: me
+      before:
+        - 'We''re watching your heart closely because '
+        - your QRS is widening
+        - .
+      options:
+        - this medicine can affect your heart rhythm
+        - your QRS is widening
+        - your heart could stop any minute
+      answer: this medicine can affect your heart rhythm
+      notes:
+        this medicine can affect your heart rhythm: 무엇을 왜 지켜보는지 겁주지 않고 사실대로 알린다.
+        your QRS is widening: 의료진끼리의 심전도 용어. 환자는 무슨 뜻인지 모른다.
+        your heart could stop any minute: 사실보다 무겁게 들려 공포를 키운다.
 - id: SCN-ER-00616
   profession: ""
   eventId: EVT-ER-00140
@@ -82510,6 +82852,39 @@
         - w-reversal
         - w-medicine
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-bleed
+      why: 조금 배어 나오고 누르면 멈추면 oozing 쪽이에요. 멈추지 않거나 양이 늘면 역전제(비타민 K 등)를 준비해요.
+      cue: 'Patient: "My gums bleed a little when I brush, but it stops if I press."'
+      scale:
+        - oozing
+        - bleeding
+        - hemorrhaging
+      answerAt: 0
+      example: Her gums are oozing a little, but it stops with pressure.
+      exKo: 잇몸에서 조금씩 배어 나오지만 누르면 멈춰요.
+    - kind: context
+      words:
+        - w-INR
+        - w-thin
+        - w-blood
+      why: 셋 다 INR이 치료 범위보다 높다는 같은 말이에요. supratherapeutic는 의료진의 말이라, 환자에게는 피가 필요 이상으로 묽어졌다고 말해요.
+      scenes:
+        - who: 의사에게
+          icon: stetho
+          en: INR is critically high at six point two.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your INR is supratherapeutic.
+          ok: false
+          fix: Your blood is thinner than it should be right now.
+        - who: 차트 기록
+          icon: board
+          en: INR 6.2, supratherapeutic; gingival bleeding noted.
+          ok: true
 - id: SCN-ER-00617
   profession: ""
   eventId: EVT-ER-00140
@@ -82594,9 +82969,7 @@
         - '?'
       words:
         - w-tell
-        - w-thing
         - w-take
-        - w-keep
         - w-safe
       goal: 1
     - en: A counselor will come see you, and someone will stay with you the whole time.
@@ -82610,12 +82983,9 @@
         - .
       words:
         - w-counselor
-        - w-come
-        - w-see
         - w-someone
         - w-stay
         - w-whole
-        - w-time
       goal: 2
     - en: I know this feels like too much right now.
       ko: 지금 너무 벅차게 느껴지신다는 거 알아요.
@@ -82626,7 +82996,6 @@
         - right now
         - .
       words:
-        - w-know
         - w-feel
       goal: 1
     - en: You're not alone, and we're going to help you through this.
@@ -82653,6 +83022,41 @@
         - w-someone
         - w-step
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-step
+        - w-counselor
+        - w-stay
+      why: 자살시도 환자는 보통 혼자 두지 않고 곁에서 지켜봐요. 그래서 I'm staying right here, every step of the way처럼 곁에 있겠다는 말을 분명히 하고, 상담사(counselor)가 온다고 알려요.
+      pairs:
+        - - every step
+          - of the way
+        - - a counselor will
+          - come see you
+        - - I'm staying
+          - right here
+      decoys:
+        - the pills
+    - kind: swap
+      words:
+        - w-take
+      why: 응급 처치에는 무엇을 얼마나 먹었는지가 먼저예요. 이유를 캐묻는 말은 추궁처럼 들려 입을 닫게 할 수 있어요.
+      who: 환자에게 · 복용 약물 확인
+      icon: me
+      before:
+        - 'Can you tell me '
+        - why you did this
+        - ' so we can keep you safe?'
+      options:
+        - each thing you took
+        - why you did this
+        - what you were thinking
+      answer: each thing you took
+      notes:
+        each thing you took: 지금 가장 급한 정보. 치료가 무엇을 먹었는지에 달려 있다.
+        what you were thinking: 마음을 캐묻는 말이라, 지금은 탓하는 것처럼 들릴 수 있다.
+        why you did this: 이유는 나중에 상담에서 다룬다. 지금 물으면 추궁처럼 들린다.
 - id: SCN-ER-00618
   profession: ""
   eventId: EVT-ER-00140
@@ -82743,7 +83147,7 @@
         - w-take
       goal: 2
     - en: Stay with me — I'll keep checking on you every few minutes.
-      ko: 곁에 계세요 — 몇 분마다 계속 확인할게요.
+      ko: 정신 놓지 마세요 — 몇 분마다 계속 확인할게요.
       chunks:
         - Stay with me
         - — I'll keep checking
@@ -82751,10 +83155,7 @@
         - every few minutes
         - .
       words:
-        - w-stay
-        - w-keep
         - w-check
-        - w-minute
       goal: 2
     - en: Mixing alcohol with sedatives can make you stop breathing without warning.
       ko: 술과 진정제를 함께 쓰면 경고 없이 숨이 멈출 수 있어요.
@@ -82780,7 +83181,6 @@
         - w-check
         - w-oxygen
         - w-alertness
-        - w-minute
       goal: 2
     - en: Try to stay awake and talk with me for now.
       ko: 지금은 깨어 있으면서 저와 이야기해 보세요.
@@ -82791,10 +83191,44 @@
         - for now
         - .
       words:
-        - w-stay
         - w-awake
         - w-talk
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-awake
+        - w-alertness
+      why: 대답은 하지만 말하다 조는 건 drowsy예요. 술과 진정제를 함께 먹으면 여기서 호흡이 떨어지는 단계로 빨리 넘어갈 수 있어 자주 다시 봐요.
+      cue: 'Nurse: "He answers my questions, but he keeps nodding off mid-sentence."'
+      scale:
+        - alert
+        - drowsy
+        - unresponsive
+      answerAt: 1
+      example: He's drowsy but still answering questions.
+      exKo: 졸려하지만 아직 질문에 대답해요.
+    - kind: context
+      words:
+        - w-slow
+        - w-breathe
+        - w-alcohol
+        - w-sedative
+      why: 셋 다 숨이 느려질 위험을 말해요. respiratory depression은 의료진끼리의 말이고, 환자에게는 숨이 느려질 수 있다고 쉽게 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Alcohol plus benzos — high risk for respiratory depression.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your respiratory drive may become depressed.
+          ok: false
+          fix: Alcohol and those pills together can slow your breathing, so we'll watch you closely.
+        - who: 차트 기록
+          icon: board
+          en: Alcohol and sedative co-ingestion; monitor RR and SpO2 closely.
+          ok: true
 - id: SCN-ER-00619
   profession: ""
   eventId: EVT-ER-00140
@@ -82868,7 +83302,6 @@
         - w-look
         - w-normal
         - w-carbon
-        - w-monoxide
         - w-special
         - w-test
       goal: 1
@@ -82881,7 +83314,6 @@
         - from your blood
         - .
       words:
-        - w-put
         - w-oxygen
         - w-clear
         - w-blood
@@ -82896,7 +83328,6 @@
         - '?'
       words:
         - w-else
-        - w-house
         - w-sick
       goal: 1
     - en: Headaches in the whole family can be a big clue for carbon monoxide.
@@ -82910,10 +83341,8 @@
       words:
         - w-headache
         - w-whole
-        - w-family
         - w-clue
         - w-carbon
-        - w-monoxide
       goal: 1
     - en: Your oxygen number can look fine even when carbon monoxide is high.
       ko: 일산화탄소가 높아도 산소 수치는 괜찮아 보일 수 있어요.
@@ -82927,7 +83356,6 @@
         - w-oxygen
         - w-look
         - w-carbon
-        - w-monoxide
         - w-high
       goal: 2
     - en: We'll keep you on oxygen until your levels are safe.
@@ -82939,11 +83367,46 @@
         - are safe
         - .
       words:
-        - w-keep
         - w-oxygen
         - w-level
         - w-safe
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-carbon
+        - w-oxygen
+        - w-sick
+      why: 일산화탄소는 carbon monoxide, 치료는 high-flow oxygen(고유량 산소)이에요. 한 집에서 여럿이 feeling sick이면(특히 두통) 일산화탄소를 의심해요.
+      pairs:
+        - - carbon
+          - monoxide
+        - - high-flow
+          - oxygen
+        - - feeling
+          - sick
+      decoys:
+        - headache
+    - kind: context
+      words:
+        - w-oxygen
+        - w-look
+        - w-normal
+      why: 셋 다 산소포화도가 정상처럼 보여도 믿을 수 없다는 같은 말이에요. 일반 측정기는 일산화탄소가 붙은 헤모글로빈을 구별하지 못해요. 의료진끼리는 COHb라고 하지만, 환자에게는 풀어서 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Her sat is ninety-nine, but that's unreliable with CO — send a carboxyhemoglobin.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your SpO2 is falsely reassuring because of carboxyhemoglobin.
+          ok: false
+          fix: A regular oxygen reading can look normal even with carbon monoxide, so we use a special test.
+        - who: 차트 기록
+          icon: board
+          en: SpO2 99% on room air; COHb pending.
+          ok: true
 - id: SCN-ER-00620
   profession: ""
   eventId: EVT-ER-00140
@@ -83029,7 +83492,6 @@
       words:
         - w-sign
         - w-tell
-        - w-body
         - w-react
         - w-talk
       goal: 2
@@ -83043,7 +83505,6 @@
         - .
       words:
         - w-tell
-        - w-stay
         - w-care
         - w-team
       goal: 1
@@ -83055,9 +83516,7 @@
         - that don't add up,
         - and that's okay
         - .
-      words:
-        - w-see
-        - w-thing
+      words: []
       goal: 1
     - en: You won't get in trouble here, no matter what you tell me.
       ko: 무슨 말씀을 하셔도 여기서 곤란해지지 않아요.
@@ -83069,7 +83528,6 @@
         - .
       words:
         - w-trouble
-        - w-matter
         - w-tell
       goal: 1
     - en: Your care team just wants to understand what happened to you.
@@ -83086,6 +83544,42 @@
         - w-understand
         - w-happen
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-react
+        - w-trouble
+        - w-team
+      why: 숨기는 환자에게는 your body reacted처럼 몸 이야기로 부드럽게 꺼내고, 처벌하려는 게 아니라는 뜻으로 I'm not here to get you in trouble을 말해요. 들은 이야기는 치료하는 your care team 안에서 나눠요.
+      pairs:
+        - - your body
+          - reacted
+        - - get you in
+          - trouble
+        - - your care
+          - team
+      decoys:
+        - add up
+    - kind: swap
+      words:
+        - w-understand
+        - w-happen
+      why: 숨기는 환자는 판단받을까 두려워해요. 무슨 일이 있었는지 묻는 열린 말이 사실을 듣기에 좋아요.
+      who: 환자에게 · 사용한 물질 묻기
+      icon: me
+      before:
+        - 'Your care team just wants to understand '
+        - what drugs you did
+        - .
+      options:
+        - what happened to you
+        - what drugs you did
+        - why you're lying
+      answer: what happened to you
+      notes:
+        what drugs you did: 이미 약을 했다고 단정하는 말이라 방어하게 만든다.
+        what happened to you: 판단 없이 사실을 묻는 열린 말. 환자가 말을 꺼내기 쉽다.
+        why you're lying: 거짓말한다고 몰아세우는 말. 대화가 끊긴다.
 - id: SCN-ER-00621
   profession: ""
   eventId: EVT-ER-00141
@@ -83168,7 +83662,6 @@
         - at the bedside now
         - .
       words:
-        - w-need
         - w-airway
         - w-support
         - w-naloxone
@@ -83187,7 +83680,6 @@
         - w-ingestion
         - w-GCS
         - w-protect
-        - w-take
         - w-report
       goal: 2
     - en: Airway first, then we treat the cause.
@@ -83223,11 +83715,42 @@
         - with the airway
         - '?'
       words:
-        - w-take
         - w-report
         - w-stay
         - w-airway
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-pinpoint
+        - w-pupil
+      why: 1 mm 정도로 작으면 pinpoint예요. 호흡 저하와 함께면 오피오이드 중독의 전형이고, 동공이 크게 열려 있으면(dilated) 다른 계열의 중독을 먼저 생각해요.
+      cue: 'Nurse: "Pupils are about one millimeter — I can barely see them."'
+      scale:
+        - pinpoint
+        - normal-sized
+        - dilated
+      answerAt: 0
+      example: Pupils are pinpoint, about one millimeter.
+      exKo: 동공이 점처럼 작아요, 약 1밀리미터예요.
+    - kind: context
+      words:
+        - w-respiration
+      why: 셋 다 호흡이 분당 8회로 얕다는 같은 말이에요. 의료진끼리는 respirations·RR과 숫자로 말하지만, 보호자에게는 무엇이 문제고 무엇을 하고 있는지로 말해요.
+      scenes:
+        - who: 동료 인계
+          icon: monitor
+          en: Respirations are eight and shallow — I'm bagging him.
+          ok: true
+        - who: 의사 콜
+          icon: stetho
+          en: RR eight, sats eighty-four — I need you at the bedside now.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: His respirations are eight and shallow.
+          ok: false
+          fix: He's breathing very slowly, so we're helping him breathe.
 - id: SCN-ER-00622
   profession: ""
   eventId: EVT-ER-00141
@@ -83302,7 +83825,7 @@
         - w-tear
         - w-point
         - w-organophosphate
-        - w-poison
+        - w-poisoning
       goal: 1
     - en: We're giving atropine to dry up his secretions and protect his breathing.
       ko: 분비물을 말리고 호흡을 보호하도록 아트로핀을 드릴게요.
@@ -83330,7 +83853,6 @@
         - from absorbing
         - .
       words:
-        - w-need
         - w-remove
         - w-clothes
         - w-wash
@@ -83361,7 +83883,6 @@
         - w-atropine
         - w-help
         - w-dry
-        - w-fluid
         - w-lung
       goal: 2
     - en: We'll keep giving atropine until his secretions dry up.
@@ -83373,12 +83894,48 @@
         - dry up
         - .
       words:
-        - w-keep
         - w-give
         - w-atropine
         - w-secretion
         - w-dry
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-organophosphate
+        - w-poisoning
+        - w-dry
+        - w-secretion
+      why: 유기인계 중독에서 아트로핀의 목표는 dry up secretions(기도 분비물이 마르는 것)이에요 — 동공 크기가 아니에요. 옷과 피부에 남은 농약은 의료진에게도 묻으니 wear gloves처럼 보호구를 먼저 갖춰요.
+      pairs:
+        - - organophosphate
+          - poisoning
+        - - dry up
+          - secretions
+        - - wear
+          - gloves
+      decoys:
+        - pupils
+    - kind: context
+      words:
+        - w-atropine
+        - w-dry
+        - w-secretion
+      why: 셋 다 분비물이 마를 때까지 아트로핀을 늘려 준다는 같은 말이에요. titrate·bronchorrhea는 의료진끼리의 말이라, 보호자에게는 무엇을 위해 주는지로 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: More atropine — he's still wet and crackly.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Atropine titrated to drying of bronchial secretions.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: We're titrating atropine to his bronchorrhea.
+          ok: false
+          fix: We're giving medicine to dry up the fluid in his lungs so he can breathe.
 - id: SCN-ER-00623
   profession: ""
   eventId: EVT-ER-00141
@@ -83464,7 +84021,6 @@
         - .
       words:
         - w-stop
-        - w-trigger
         - w-cool
       goal: 2
     - en: Which new medication or supplement did you start this week?
@@ -83479,7 +84035,6 @@
         - w-medication
         - w-supplement
         - w-start
-        - w-week
       goal: 1
     - en: Your muscles are stiff and your body temperature is very high.
       ko: 근육이 뻣뻣하고 체온이 아주 높아요.
@@ -83492,7 +84047,6 @@
       words:
         - w-muscle
         - w-stiff
-        - w-body
         - w-temperature
         - w-high
       goal: 1
@@ -83509,7 +84063,6 @@
         - w-cool
         - w-medication
         - w-calm
-        - w-body
       goal: 2
     - en: We'll stop every medication that could be the trigger.
       ko: 유발 원인이 될 수 있는 약물은 전부 중단할게요.
@@ -83522,8 +84075,40 @@
       words:
         - w-stop
         - w-medication
-        - w-trigger
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-fever
+        - w-temperature
+      why: 41도를 넘으면 hyperthermic이에요. 세로토닌 증후군의 고체온은 근육이 과하게 움직여 생기는 것이라, 해열제보다 냉각과 진정이 중요해요.
+      cue: 'Nurse: "His temp just came back at 41.2°C."'
+      scale:
+        - warm
+        - febrile
+        - hyperthermic
+      answerAt: 2
+      example: He's hyperthermic at 41.2 — let's start active cooling.
+      exKo: 41.2도로 고체온이에요 — 적극적으로 냉각을 시작해요.
+    - kind: context
+      words:
+        - w-interact
+        - w-medication
+      why: 셋 다 두 약이 겹쳐 세로토닌 증후군이 왔다는 같은 말이에요. serotonergic toxidrome은 의료진끼리의 말이라, 환자에게는 약끼리 부딪혔다고 쉽게 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Suspected serotonin syndrome; sertraline plus new tramadol.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: Looks serotonergic — clonus and hyperthermia, on sertraline and tramadol.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're presenting with a serotonergic toxidrome.
+          ok: false
+          fix: Your new pill and your usual medicine may be interacting — that's why your muscles are twitching.
 - id: SCN-ER-00624
   profession: ""
   eventId: EVT-ER-00141
@@ -83596,7 +84181,7 @@
         - w-drink
         - w-mean
         - w-methanol
-        - w-poison
+        - w-poisoning
       goal: 1
     - en: There's an antidote we're giving now, and you may need urgent dialysis.
       ko: 지금 드리고 있는 해독제가 있고, 긴급 투석이 필요할 수도 있어요.
@@ -83609,7 +84194,6 @@
       words:
         - w-antidote
         - w-give
-        - w-need
         - w-urgent
         - w-dialysis
       goal: 2
@@ -83638,7 +84222,6 @@
       words:
         - w-check
         - w-eye
-        - w-see
       goal: 1
     - en: The antidote works quickly, but dialysis may still be urgent.
       ko: 해독제가 빠르게 작용하지만, 투석이 여전히 긴급할 수 있어요.
@@ -83655,7 +84238,7 @@
         - w-urgent
       goal: 2
     - en: We're moving fast because your vision and kidneys are both at risk.
-      ko: 시야와 신장 둘 다 위험해서 빠르게 움직이고 있어요.
+      ko: 시력과 신장이 둘 다 위험해서 빠르게 움직이고 있어요.
       chunks:
         - We're moving fast
         - because your vision
@@ -83667,6 +84250,44 @@
         - w-vision
         - w-kidney
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-methanol
+        - w-poisoning
+        - w-urgent
+        - w-dialysis
+        - w-vision
+      why: 메탄올은 몸에서 독성 물질로 바뀌어 시신경을 상하게 해서 blurry vision이 단서가 돼요. 해독제와 함께 urgent dialysis가 필요할 수 있어요.
+      pairs:
+        - - methanol
+          - poisoning
+        - - urgent
+          - dialysis
+        - - blurry
+          - vision
+      decoys:
+        - kidney
+    - kind: context
+      words:
+        - w-dialysis
+        - w-urgent
+        - w-antidote
+      why: 셋 다 긴급 투석이 필요하다는 같은 말이에요. HD·nephrology는 의료진끼리의 말이라, 환자에게는 dialysis와 무엇을 하는지로 말해요.
+      scenes:
+        - who: 신장내과 콜
+          icon: stetho
+          en: Methanol ingestion with a high osmolar gap — we need emergent HD.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Fomepizole given; nephrology consulted for HD.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We're consulting nephrology for emergent HD.
+          ok: false
+          fix: There's an antidote we're giving now, and you may need urgent dialysis.
 - id: SCN-ER-00625
   profession: ""
   eventId: EVT-ER-00141
@@ -83741,7 +84362,7 @@
         - w-support
       goal: 1
     - en: Stay with me and tell me right away if it gets worse.
-      ko: 곁에 계시고, 더 나빠지면 바로 말씀해 주세요.
+      ko: 정신 놓지 마시고, 더 나빠지면 바로 말씀해 주세요.
       chunks:
         - Stay with me
         - and tell me
@@ -83749,7 +84370,6 @@
         - if it gets worse
         - .
       words:
-        - w-stay
         - w-tell
         - w-worse
       goal: 1
@@ -83767,9 +84387,7 @@
         - w-widen
         - w-QRS
         - w-bradycardia
-        - w-need
         - w-crash
-        - w-cart
         - w-physician
       goal: 2
     - en: I'm watching for any new widening or slowing in his rhythm.
@@ -83810,8 +84428,44 @@
       words:
         - w-team
         - w-ready
-        - w-need
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-crash
+        - w-widen
+        - w-QRS
+        - w-heart
+      why: 소생 장비는 crash cart, 심전도에서 QRS가 넓어지면 widening QRS라고 보고해요. 환자는 두근거림을 my heart is racing처럼 말해요.
+      pairs:
+        - - crash
+          - cart
+        - - widening
+          - QRS
+        - - heart
+          - racing
+      decoys:
+        - dose
+    - kind: swap
+      words:
+        - w-unstable
+        - w-rhythm
+      why: 위험한 상황도 환자에게는 사실대로 말하되, 무엇을 하고 있는지 함께 말해요.
+      who: 환자에게 · 리듬 설명
+      icon: me
+      before:
+        - 'Your rhythm is '
+        - about to stop
+        - ', so we''re preparing everything to support you.'
+      options:
+        - unstable
+        - not quite right
+        - about to stop
+      answer: unstable
+      notes:
+        about to stop: 가장 무서운 결과를 단정하는 말이라 공포를 키운다.
+        not quite right: 너무 흐려서 왜 모두가 준비하는지 설명이 안 된다.
+        unstable: 사실을 전하면서 곧바로 무엇을 하는지 함께 말해 신뢰를 준다.
 - id: SCN-ER-00626
   profession: ""
   eventId: EVT-ER-00141
@@ -83882,11 +84536,8 @@
       words:
         - w-ingestion
         - w-tricyclic
-        - w-ninety
-        - w-minute
         - w-ago
         - w-per
-        - w-family
       goal: 1
     - en: He was talking at pickup but became hypotensive and drowsy en route.
       ko: 인수 시점엔 말도 했는데, 이송 중 저혈압에 졸린 상태가 됐습니다.
@@ -83914,8 +84565,6 @@
         - .
       words:
         - w-pressure
-        - w-eighty
-        - w-forty
         - w-give
         - w-bicarb
         - w-bolus
@@ -83954,12 +84603,46 @@
         - report
         - '?'
       words:
-        - w-take
         - w-airway
         - w-pressure
-        - w-give
         - w-report
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-bicarb
+        - w-bolus
+        - w-route
+        - w-per
+      why: 인계에서는 bicarb bolus처럼 약을 짧게 부르고, 이송 중은 en route, 정보의 출처는 per the family로 밝혀요.
+      pairs:
+        - - bicarb
+          - bolus
+        - - en
+          - route
+        - - per the
+          - family
+      decoys:
+        - pickup
+    - kind: context
+      words:
+        - w-hypotensive
+        - w-pressure
+      why: 셋 다 이송 중 혈압이 떨어졌다는 같은 말이에요. hypotensive·en route는 인계와 차트의 말이라, 보호자에게는 쉬운 말과 지금 하는 조치로 말해요.
+      scenes:
+        - who: 구급대원 인계
+          icon: siren
+          en: Last pressure was eighty over forty.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: BP 80/40, hypotensive en route.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: He became hypotensive en route.
+          ok: false
+          fix: His blood pressure dropped on the way here, and we're treating it.
 - id: SCN-ER-00627
   profession: ""
   eventId: EVT-ER-00141
