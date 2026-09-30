@@ -1,5 +1,6 @@
-// STEP 1 단어 — lesson-four-steps-v44 H. One flashcard per word the situation's sentences
-// use; `헷갈려요` files the word into the review notes; the last card finishes the step.
+// STEP 1 단어 — 회상형 단어장 (lesson-four-steps-v44 §11, H'). The front shows the
+// meaning; the learner answers, checks, and the explanation opens under it. Words, then
+// the STEP 1 nuance cards; the last card records STEP 1 with the words missed.
 //
 // Outside src/app deliberately: expo-router bundles every file under the app root as a
 // route (routeHygiene.test.ts).
@@ -11,34 +12,46 @@ jest.mock('expo-speech', () => ({ speak: (text: string) => { mockSpoken.push(tex
 const mockSpoken: string[] = [];
 
 const mockCalls: string[] = [];
-let mockWordCount = 13;
+const v45 = (id: string, en: string, ko: string, chips: string[][]) => ({
+  id, en, ko, ipa: `/${en}/`, icon: 'pill', example: `Say ${en}.`, exKo: '예문', cue: `${ko} 단서`, tag: '분류',
+  distractorsEn: [`${en}x`, `${en}y`], distractorsKo: [`${ko}1`, `${ko}2`], chips, decoyChips: ['zz'],
+});
 function mockLesson() {
   return {
     situation: { id: 'SCN-ER-00002', title: '통증 사정' },
-    level: 'B1',
-    // Opted into from the hub: the server still says skip.
+    level: 'A2',
     steps: [
-      { kind: 'words', state: 'skip', count: mockWordCount }, { kind: 'sentences', state: 'now', count: 5 },
+      { kind: 'words', state: 'now', count: 3 }, { kind: 'sentences', state: 'lock', count: 5 },
       { kind: 'guided', state: 'lock', count: 3 }, { kind: 'free', state: 'lock', count: 3 },
     ],
-    words: Array.from({ length: mockWordCount }, (_, i) => ({
-      id: `w-${i}`, en: `word${i}`, ipa: `/w${i}/`, ko: `뜻${i}`, icon: 'pill', example: `Say word${i} now.`,
-    })),
+    // Positions 0·1·2 rotate pick → fill → listen.
+    words: [
+      v45('w-0', 'hypotensive', '저혈압의', [['hypo', 'tens', 'ive']]),
+      v45('w-1', 'en route', '이송 중에', [['en'], ['route']]),
+      v45('w-2', 'deteriorate', '악화되다', [['de', 'terio', 'rate']]),
+    ],
     sentences: [],
+    nuance: [
+      { kind: 'swap', words: ['w-0'] }, // STEP 2 — not in this deck
+      { kind: 'slider', words: ['w-2'], cue: 'bearable', scale: ['discomfort', 'pain', 'agony'], answerAt: 0, why: '견딜 만하면 discomfort' },
+      { kind: 'pair', words: ['w-1'], pairs: [['administer', 'medication'], ['titrate', 'the drip']], decoys: ['the patient'], why: '짝' },
+    ],
   };
 }
 jest.mock('@/api/client', () => ({
   api: {
     lesson: async () => mockLesson(),
     confusedWord: async (s: string, w: string) => { mockCalls.push(`confused ${s} ${w}`); return { created: true }; },
-    clearLessonStep: async (s: string, k: string) => { mockCalls.push(`clear ${s} ${k}`); return mockLesson(); },
+    clearLessonStep: async (s: string, k: string, missed?: string[]) => {
+      mockCalls.push(`clear ${s} ${k} ${JSON.stringify([...(missed ?? [])].sort())}`); return mockLesson();
+    },
   },
 }));
 jest.mock('expo-router', () => ({
   Stack: { Screen: () => null },
   useRouter: () => ({
     push: (p: unknown) => { mockCalls.push(`push ${JSON.stringify(p)}`); },
-    replace: () => {}, back: () => { mockCalls.push('back'); }, canGoBack: () => true,
+    replace: (p: unknown) => { mockCalls.push(`replace ${String(p)}`); }, back: () => { mockCalls.push('back'); }, canGoBack: () => true,
   }),
   useLocalSearchParams: () => ({ id: 'SCN-ER-00002' }),
 }));
@@ -54,15 +67,19 @@ function texts(root: ReactTestInstance): string[] {
     .findAll((n) => String(n.type) === 'Text', { deep: true })
     .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'));
 }
-const byTestID = (root: ReactTestInstance, id: string) => root.findAll((n) => n.props?.testID === id && typeof n.type !== 'string');
-const press = async (root: ReactTestInstance, id: string) => {
-  const box = root.findAll((n) => n.props?.testID === id)[0];
-  expect(box).toBeTruthy();
-  const hit = [box, ...box.findAll(() => true)].filter((n) => typeof n.props?.onPress === 'function');
-  expect(hit.length).toBeGreaterThan(0);
-  await act(async () => { await hit[0].props.onPress(); });
-};
-
+const byID = (root: ReactTestInstance, id: string) => root.findAll((n) => n.props?.testID === id && typeof n.type !== 'string');
+async function press(node: ReactTestInstance) {
+  const hit = [node, ...node.findAll(() => true)].find((n) => typeof n.props?.onPress === 'function');
+  expect(hit).toBeTruthy();
+  await act(async () => { await hit!.props.onPress(); });
+}
+const pressID = async (root: ReactTestInstance, id: string) => press(byID(root, id)[0]);
+/** The option whose label is `label` (options are shuffled, stably). */
+async function pick(root: ReactTestInstance, label: string) {
+  const opt = root.findAll((n) => typeof n.type !== 'string' && String(n.props?.testID ?? '').startsWith('recall-opt-') && texts(n).includes(label))[0];
+  expect(opt).toBeTruthy();
+  await press(opt);
+}
 async function mount() {
   mockCalls.length = 0;
   mockSpoken.length = 0;
@@ -72,67 +89,91 @@ async function mount() {
   return tree;
 }
 
-beforeEach(() => { mockWordCount = 13; });
-
-// 8 is a minimum, not the size of the row (spec §2-2).
-test('one progress chip per word — 13 words, 13 chips', async () => {
+test('the deck is the words, then the STEP 1 nuance cards — STEP 2 kinds stay out', async () => {
   const tree = await mount();
-  expect(byTestID(tree.root, 'lesson-word-chip')).toHaveLength(13);
-  expect(texts(tree.root)).toContain('1 / 13');
+  expect(texts(tree.root)).toContain('1 / 5');
+  expect(byID(tree.root, 'recall-segment')).toHaveLength(5);
 });
 
-test('헷갈려요 files the word into the review notes and moves on', async () => {
+test('a wrong pick opens the explanation with RETRY and counts the word as missed', async () => {
   const tree = await mount();
-  expect(texts(tree.root)).toContain('word0');
-  await press(tree.root, 'lesson-word-confused');
+  expect(texts(byID(tree.root, 'recall-type')[0]).join('')).toContain('영어 고르기');
+  expect(texts(tree.root)).toContain('저혈압의');
+  await pick(tree.root, 'hypotensivex');
+  await pressID(tree.root, 'recall-check');
+  expect(byID(tree.root, 'recall-stamp-retry')).toHaveLength(1);
+  expect(texts(byID(tree.root, 'recall-reveal')[0])).toContain('hypotensive');
+  // After a miss the green button says "now I know", not "I knew it".
+  expect(texts(byID(tree.root, 'recall-known')[0])).toContain('이제 알겠어요');
+});
+
+test('fill: fragments tapped in order build the word, spaced by the app', async () => {
+  const tree = await mount();
+  await pick(tree.root, 'hypotensive');
+  await pressID(tree.root, 'recall-check');
+  await pressID(tree.root, 'recall-known');
+  expect(texts(byID(tree.root, 'recall-type')[0]).join('')).toContain('조각 맞추기');
+  await pressID(tree.root, 'recall-chip-en');
+  await pressID(tree.root, 'recall-chip-route');
+  expect(texts(byID(tree.root, 'recall-built')[0])).toContain('en route');
+  await pressID(tree.root, 'recall-check');
+  expect(byID(tree.root, 'recall-stamp-good')).toHaveLength(1);
+});
+
+test('아직 헷갈려요 files the word into the review notes', async () => {
+  const tree = await mount();
+  await pick(tree.root, 'hypotensive');
+  await pressID(tree.root, 'recall-check');
+  await pressID(tree.root, 'recall-fuzzy');
   expect(mockCalls).toContain('confused SCN-ER-00002 w-0');
-  expect(texts(tree.root)).toContain('word1');
-  expect(texts(tree.root)).toContain('2 / 13');
 });
 
-test('알아요 moves on without filing anything', async () => {
+async function walkWords(tree: ReturnType<typeof create>) {
+  await pick(tree.root, 'hypotensivex'); // wrong → missed
+  await pressID(tree.root, 'recall-check');
+  await pressID(tree.root, 'recall-known');
+  await pressID(tree.root, 'recall-chip-en');
+  await pressID(tree.root, 'recall-chip-route');
+  await pressID(tree.root, 'recall-check');
+  await pressID(tree.root, 'recall-fuzzy'); // right but unsure → missed
+  await pressID(tree.root, 'recall-listen');
+  await pick(tree.root, '악화되다');
+  await pressID(tree.root, 'recall-check');
+  await pressID(tree.root, 'recall-known');
+}
+
+test('listen plays the word; the nuance cards follow the words', async () => {
   const tree = await mount();
-  await press(tree.root, 'lesson-word-known');
-  expect(mockCalls.filter((c) => c.startsWith('confused'))).toHaveLength(0);
-  expect(texts(tree.root)).toContain('word1');
+  await walkWords(tree);
+  expect(mockSpoken).toContain('deteriorate');
+  expect(texts(tree.root)).toContain('이제 뉘앙스를 느껴봐요 — 비슷한 말, 다른 온도');
+  expect(texts(byID(tree.root, 'recall-type')[0]).join('')).toContain('뉘앙스 저울');
 });
 
-test('the last card finishes the step and returns to the hub', async () => {
-  mockWordCount = 2;
+test('the last card records STEP 1 with the missed words and goes on to STEP 2', async () => {
   const tree = await mount();
-  await press(tree.root, 'lesson-word-known');
-  expect(mockCalls).not.toContain('clear SCN-ER-00002 words');
-  await press(tree.root, 'lesson-word-confused');
-  expect(mockCalls).toEqual(['confused SCN-ER-00002 w-1', 'clear SCN-ER-00002 words', 'back']);
-});
+  await walkWords(tree);
+  await pressID(tree.root, 'recall-scale-0');
+  await pressID(tree.root, 'recall-check');
+  expect(byID(tree.root, 'recall-stamp-good')).toHaveLength(1);
+  await pressID(tree.root, 'recall-known');
+  // pair: pick a left word, then its partner
+  const rightOf = (label: string) => tree.root.findAll((n) => typeof n.type !== 'string' && String(n.props?.testID ?? '').startsWith('recall-right-') && texts(n).includes(label))[0];
+  await pressID(tree.root, 'recall-left-0');
+  await press(rightOf('medication'));
+  await pressID(tree.root, 'recall-left-1');
+  await press(rightOf('the drip'));
+  await pressID(tree.root, 'recall-check');
+  expect(byID(tree.root, 'recall-stamp-good')).toHaveLength(1);
+  await pressID(tree.root, 'recall-known');
 
-test('listen reads the headword; repeat opens the pronunciation page on it', async () => {
-  const tree = await mount();
-  await press(tree.root, 'lesson-word-listen');
-  expect(mockSpoken).toEqual(['word0']);
-  await press(tree.root, 'lesson-word-repeat');
-  const push = mockCalls.find((c) => c.startsWith('push'))!;
-  expect(push).toContain('"referenceText":"word0"');
-  expect(push).toContain('"origin":"lesson"');
-});
-
-// Opted into from the hub: the header must not draw the step the learner is on as skipped.
-test('the step track shows this step as the current one even when the level skips it', async () => {
-  const tree = await mount();
-  expect(byTestID(tree.root, 'steptrack-hatch')).toHaveLength(0);
-  // …and the step the server had as next is not drawn current alongside it.
-  const labels = tree.root.findAll((n) => String(n.type) === 'Text' && String(n.props.testID ?? '').startsWith('steptrack-label-'));
-  const bold = labels.filter((l) => [l.props.style].flat(3).some((s: any) => s?.fontWeight === '700'));
-  expect(bold.map((l) => l.props.testID)).toEqual(['steptrack-label-words']);
-});
-
-// Pressing one answer must not dim the other: NbButton draws `disabled` at 45%, and a
-// request in flight used to disable both — the other button seemed to blink.
-test('answering never disables the answer buttons', async () => {
-  const tree = await mount();
-  await press(tree.root, 'lesson-word-confused');
-  for (const id of ['lesson-word-confused', 'lesson-word-known']) {
-    const box = tree.root.findAll((n) => n.props?.testID === id)[0];
-    expect(box.findAll((n) => n.props?.disabled === true)).toHaveLength(0);
-  }
+  expect(byID(tree.root, 'recall-done')).toHaveLength(1);
+  expect(texts(byID(tree.root, 'recall-right-count')[0])).toEqual(['4']);
+  expect(texts(byID(tree.root, 'recall-wrong-count')[0])).toEqual(['1']);
+  expect(texts(tree.root)).toContain('틀린 단어는 STEP 2 문장에 다시 나와요');
+  await pressID(tree.root, 'recall-to-step2');
+  expect(mockCalls.slice(-2)).toEqual([
+    'clear SCN-ER-00002 words ["w-0","w-1"]',
+    'replace /scenario/SCN-ER-00002/sentences',
+  ]);
 });
