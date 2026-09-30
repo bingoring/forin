@@ -285,6 +285,7 @@ export const de: Record<string, string> = {
   'guided.stepTag': 'STEP 3 · Geführt',
   'guided.hintMore': 'Mehr Hinweise',
   'guided.listen': 'Anhören',
+  'guided.inputLabel': 'Auf Englisch sagen oder schreiben',
   'journey.milestone.open': 'Bereit',
   'journey.milestone.closed': 'Noch nicht',
   // ── journey (Gruppennamen — Abteilung Kern/Vertiefung) ─────────────

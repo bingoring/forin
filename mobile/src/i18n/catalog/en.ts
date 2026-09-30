@@ -288,6 +288,7 @@ export const en: Record<string, string> = {
   'guided.stepTag': 'STEP 3 · Guided',
   'guided.hintMore': 'More hints',
   'guided.listen': 'Listen',
+  'guided.inputLabel': 'Say it or write it in English',
   'journey.milestone.open': 'Ready',
   'journey.milestone.closed': 'Not yet',
   // ── journey (bundle names — dept core/depth) ──────────────────────

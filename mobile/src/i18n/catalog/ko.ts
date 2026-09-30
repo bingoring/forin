@@ -303,6 +303,7 @@ export const ko: Record<string, string> = {
   'guided.stepTag': 'STEP 3 · 가이드',
   'guided.hintMore': '힌트 더',
   'guided.listen': '듣기',
+  'guided.inputLabel': '영어로 말하거나 적어보세요',
   'journey.milestone.open': '응시 가능',
   'journey.milestone.closed': '통과전',
   // ── journey (묶음 이름 — 부서 코어/심화) ────────────────────────────

@@ -1093,7 +1093,7 @@ export default function DialogueRoute() {
               // SPEAK FREELY, printed. The label is the one place this screen names the
               // mode, and a mode is a stamp rather than a note.
               <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft, marginBottom: 6 }}>
-                {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}
+                {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : target ? t('guided.inputLabel') : t('dialogue.speakFreely')}
               </Text>
             )}
             <NbPaper rot={0} style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>

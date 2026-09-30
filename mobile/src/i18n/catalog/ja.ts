@@ -285,6 +285,7 @@ export const ja: Record<string, string> = {
   'guided.stepTag': 'STEP 3 · ガイド',
   'guided.hintMore': 'ヒントをもっと',
   'guided.listen': '聞く',
+  'guided.inputLabel': '英語で話すか書いてみよう',
   'journey.milestone.open': '受験可能',
   'journey.milestone.closed': '合格前',
   // ── journey（束の名前 — 部署コア/深化）───────────────────────────
