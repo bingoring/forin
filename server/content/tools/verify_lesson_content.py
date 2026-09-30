@@ -1058,27 +1058,69 @@ V44_WORD_KEYS = ("id", "en", "ko", "ipa", "icon", "example")
 V44_SENTENCE_KEYS = ("en", "ko", "chunks", "words", "goal")
 
 
+def load_changes(raw: str) -> tuple[str, list[dict]]:
+    """changes-<theme>.yaml → (theme, 변경 목록). 결정 11."""
+    d = yaml.safe_load(raw) or {}
+    return d.get("theme", ""), d.get("changes") or []
+
+
+def _allowances(changes: list[dict]) -> tuple[dict, set, set, dict, list[str]]:
+    """변경 목록을 V16이 쓰는 허용 집합으로. 끝의 목록은 목록 자체의 결함(why 없음·모르는 kind)."""
+    word_fields: dict[str, set] = collections.defaultdict(set)
+    added, removed = set(), set()
+    sent_fields: dict[tuple, set] = collections.defaultdict(set)
+    bad: list[str] = []
+    for c in changes:
+        kind = c.get("kind")
+        if not str(c.get("why") or "").strip():
+            bad.append(f"change {c!r} has no why")
+        if kind == "word":
+            word_fields[c.get("id")].update(c.get("fields") or [])
+        elif kind == "word-add":
+            added.add(c.get("id"))
+        elif kind == "word-remove":
+            removed.add(c.get("id"))
+        elif kind == "sentence":
+            sent_fields[(c.get("situation"), c.get("index"))].update(c.get("fields") or [])
+        else:
+            bad.append(f"change has unknown kind {kind!r}")
+    return word_fields, added, removed, sent_fields, bad
+
+
 def check_backfill(dept: str, base_banks: dict[str, list[dict]], base_seeds: list[dict],
-                   banks: dict[str, list[dict]], seeds: list[dict]) -> list["Violation"]:
-    """V16 — 보강 패스가 v44 필드를 한 글자도 바꾸지 않았는가. 보강 전(base)과 후를 비교한다."""
+                   banks: dict[str, list[dict]], seeds: list[dict],
+                   changes: dict[str, list[dict]] | None = None) -> list["Violation"]:
+    """V16 — 보강 패스가 v44 필드를 바꾸지 않았는가. 보강 전(base)과 후를 비교한다.
+
+    `changes`(주제 → 변경 목록, 결정 11)에 적힌 변경만 허용한다. 목록 밖의 변경은 전부 오류다.
+    """
     out: list[Violation] = []
+    changes = changes or {}
     for theme, base_words in base_banks.items():
+        wf, added, removed, _, bad = _allowances(changes.get(theme, []))
+        for b in bad:
+            out.append(Violation(dept, theme, "-", "V16", b))
         now = {w.get("id"): w for w in banks.get(theme, [])}
-        base_ids = [w.get("id") for w in base_words]
-        if sorted(map(str, base_ids)) != sorted(map(str, now)):
-            out.append(Violation(dept, theme, "-", "V16", f"bank word ids changed: before {len(base_ids)}, after {len(now)}"))
+        base_ids = {w.get("id") for w in base_words}
+        for wid in sorted(map(str, set(now) - base_ids)):
+            if wid not in added:
+                out.append(Violation(dept, theme, "-", "V16", f"word {wid!r} added without a word-add change"))
+        for wid in sorted(map(str, base_ids - set(now))):
+            if wid not in removed:
+                out.append(Violation(dept, theme, "-", "V16", f"word {wid!r} removed without a word-remove change"))
         for bw in base_words:
             w = now.get(bw.get("id"))
             if w is None:
                 continue
             for k in V44_WORD_KEYS:
-                if bw.get(k) != w.get(k):
+                if bw.get(k) != w.get(k) and k not in wf.get(bw.get("id"), set()):
                     out.append(Violation(dept, theme, "-", "V16", f"word {bw.get('id')!r}: {k} changed {bw.get(k)!r} -> {w.get(k)!r}"))
     now_seeds = {(sd.get("theme"), sd.get("title")): sd for sd in seeds}
     for bs in base_seeds:
         if not bs.get("sentences"):
             continue
         key = (bs.get("theme"), bs.get("title"))
+        sf = _allowances(changes.get(key[0], []))[3]
         sd = now_seeds.get(key)
         if sd is None:
             out.append(Violation(dept, key[0], key[1], "V16", "situation disappeared"))
@@ -1089,7 +1131,7 @@ def check_backfill(dept: str, base_banks: dict[str, list[dict]], base_seeds: lis
             continue
         for i, (b, a) in enumerate(zip(before, after)):
             for k in V44_SENTENCE_KEYS:
-                if b.get(k) != a.get(k):
+                if b.get(k) != a.get(k) and k not in sf.get((key[1], i), set()):
                     out.append(Violation(dept, key[0], key[1], "V16", f"sentence[{i}] {k} changed"))
     return out
 
@@ -1875,8 +1917,28 @@ def run_selftest() -> int:
     touched = parse_topics(v45_seed(good_nuance))
     touched[0]["sentences"][0]["ko"] = "바뀐 번역"
     touched_bank = parse_lexicon_raw(v45_lex(lambda ws: ws[0].update(example="changed")))
+    ws_first_id = parse_lexicon_raw(_LEX_BASE)["t1"][0]["id"]
     v16_bad = any("sentence[0] ko" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, after_ok_banks, touched)) \
         and any("example changed" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, touched_bank, after_ok_seeds))
+    # 결정 11 — 변경 목록에 적힌 변경은 허용, 적히지 않은 것은 여전히 오류.
+    listed = {"t1": [{"kind": "sentence", "situation": "T", "index": 0, "fields": ["ko"], "why": "번역이 어색"},
+                     {"kind": "word", "id": ws_first_id, "fields": ["example"], "why": "예문을 고침"}]}
+    v16_listed_ok = not check_backfill("selftest", base_banks, base_seeds, touched_bank, touched, listed)
+    unlisted = {"t1": [{"kind": "sentence", "situation": "T", "index": 0, "fields": ["ko"], "why": "번역"}]}
+    v16_unlisted = any("example changed" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, touched_bank, touched, unlisted))
+    no_why = {"t1": [{"kind": "sentence", "situation": "T", "index": 0, "fields": ["ko"]}]}
+    v16_no_why = any("no why" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, after_ok_banks, touched, no_why))
+    added_bank = parse_lexicon_raw(v45_lex(lambda ws: ws.append({**ws[0], "id": "w-new"})))
+    v16_add = any("added without" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, added_bank, after_ok_seeds))
+    v16_add_ok = not check_backfill("selftest", base_banks, base_seeds, added_bank, after_ok_seeds,
+                                    {"t1": [{"kind": "word-add", "id": "w-new", "why": "새 단어"}]})
+    for name, hit in (("V16 listed changes are allowed (결정 11)", v16_listed_ok),
+                      ("V16 a change not on the list still fires", v16_unlisted),
+                      ("V16 a change without a why fires", v16_no_why),
+                      ("V16 an added word needs a word-add change", v16_add),
+                      ("V16 an added word listed as word-add passes", v16_add_ok)):
+        print(f"[{'PASS' if hit else 'FAIL'}] {name}")
+        ok = ok and hit
     for name, hit in (("V16 backfill that only adds fields — no violations expected", v16_ok),
                       ("V16 backfill that edits a v44 sentence or word — V16 fires", v16_bad)):
         print(f"[{'PASS' if hit else 'FAIL'}] {name}")
@@ -1907,6 +1969,7 @@ def main() -> None:
     ap.add_argument("--theme", help="주제(theme) key 하나로 좁힌다")
     ap.add_argument("--selftest", action="store_true", help="이 도구 자체를 어긋난 표본으로 검증한다")
     ap.add_argument("--baseline", help="git ref (예: HEAD). 보강 전 파일과 비교해 V16을 검사한다")
+    ap.add_argument("--changes", help="changes-<theme>.yaml 이 든 디렉터리 (결정 11). 여기 적힌 변경만 V16이 허용한다")
     args = ap.parse_args()
 
     if args.selftest:
@@ -1927,7 +1990,12 @@ def main() -> None:
             if args.theme:
                 base_banks = {k: v for k, v in base_banks.items() if k == args.theme}
                 base_seeds = [sd for sd in base_seeds if sd.get("theme") == args.theme]
-            violations += check_backfill(dept, base_banks, base_seeds, raw_banks, seeds)
+            chg: dict[str, list[dict]] = {}
+            if args.changes:
+                for f in sorted(pathlib.Path(args.changes).glob("changes-*.yaml")):
+                    t, lst = load_changes(f.read_text())
+                    chg.setdefault(t, []).extend(lst)
+            violations += check_backfill(dept, base_banks, base_seeds, raw_banks, seeds, chg)
         total_violations += len(violations)
         total_warnings += len(warnings)
 

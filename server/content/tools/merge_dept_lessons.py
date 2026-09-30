@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """주제별 저작 산출물을 부서 정본에 합친다.
 
-    python3 merge_dept_lessons.py <부서코드> <주제파일디렉터리>
+    python3 merge_dept_lessons.py <부서코드> <주제파일디렉터리> [--replace]
 
 두 곳에 쓴다.
   content/nurse/lexicon/<부서>.yaml   — 주제 1건당 은행 1건.
@@ -16,6 +16,11 @@
 **보강 패스(v45).** 이미 `sentences:`가 붙은 시드는 문장이 정본과 한 글자도 다르지 않아야
 하고(다르면 멈춘다 — verify 의 V16과 같은 조건), 그 뒤에 `nuance:`만 끼워 넣는다. 이미
 `nuance:`가 있으면 멈춘다(두 번 합치기).
+
+**`--replace`(결정 10·11).** 검토 후 수정본으로 **갈아 끼운다.** 들어온 주제의 시드에서 기존
+`sentences:`·`nuance:` 블록을 지우고 새로 넣는다. 문장이 바뀌었는지는 여기서 막지 않는다 —
+합친 뒤 `verify_lesson_content.py --baseline HEAD --changes <디렉터리>`가 변경 목록에 적힌
+것만 바뀌었는지 본다. 그 검사를 건너뛰고 커밋하지 말 것.
 """
 import glob, io, json, os, sys, yaml
 
@@ -52,7 +57,26 @@ def nuance_block(items: list) -> list[str]:
     return ["  " + l for l in dumped.rstrip("\n").split("\n")]
 
 
-def main(dept: str, srcdir: str) -> int:
+def strip_lesson_blocks(block: list[str]) -> list[str]:
+    """시드 한 건의 줄에서 `  sentences:`·`  nuance:` 블록을 뺀다. 블록은 키 줄부터, 들여쓰기가
+    2보다 깊은 줄과 같은 깊이의 목록 항목(`  - `)이 이어지는 동안이다."""
+    out, skipping = [], False
+    for line in block:
+        indent = len(line) - len(line.lstrip())
+        if line.rstrip() in ("  sentences:", "  nuance:"):
+            skipping = True
+            continue
+        if skipping:
+            if not line.strip() or indent > 2 or (indent == 2 and line.lstrip().startswith("- ")):
+                if not line.strip():
+                    out.append(line)  # 빈 줄은 남긴다 — 다음 시드와의 간격
+                continue
+            skipping = False
+        out.append(line)
+    return out
+
+
+def main(dept: str, srcdir: str, replace: bool = False) -> int:
     nurse = nurse_root()
     topics_path = os.path.join(nurse, "topics", f"{dept}.yaml")
     lex_dir = os.path.join(nurse, "lexicon")
@@ -96,6 +120,16 @@ def main(dept: str, srcdir: str) -> int:
 
     # ── 시드 ────────────────────────────────────────────────────
     lines = io.open(topics_path, encoding="utf-8").read().split("\n")
+    if replace:
+        # 들어온 주제의 시드에서만 기존 블록을 지운다. 나머지 시드는 한 줄도 건드리지 않는다.
+        starts0 = [i for i, l in enumerate(lines) if l.startswith("- theme:")]
+        rebuilt = lines[: starts0[0]] if starts0 else list(lines)
+        for n, i in enumerate(starts0):
+            end = starts0[n + 1] if n + 1 < len(starts0) else len(lines)
+            block = lines[i:end]
+            theme = block[0].split(":", 1)[1].strip()
+            rebuilt += strip_lesson_blocks(block) if theme in incoming else block
+        lines = rebuilt
     seeds = yaml.safe_load("\n".join(lines))
     starts = [i for i, l in enumerate(lines) if l.startswith("- theme:")]
     assert len(starts) == len(seeds), (len(starts), len(seeds))
@@ -156,6 +190,7 @@ def main(dept: str, srcdir: str) -> int:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    args = [a for a in sys.argv[1:] if a != "--replace"]
+    if len(args) != 2:
         sys.exit(__doc__)
-    sys.exit(main(sys.argv[1], sys.argv[2]))
+    sys.exit(main(args[0], args[1], replace="--replace" in sys.argv[1:]))

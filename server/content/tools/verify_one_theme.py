@@ -21,6 +21,7 @@ verify_lesson_content.py 를 부서 단위로 돌린다.
           - {kind: slider, words: [...], ...}
 
 정본(lexicon/<부서>.yaml)에 이 주제가 이미 있으면 보강 패스로 보고 V16도 검사한다.
+같은 폴더에 changes-<주제>.yaml 이 있으면 거기 적힌 v44 변경만 허용한다(결정 11).
 """
 import io, os, sys, yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -61,7 +62,14 @@ def main(dept: str, path: str) -> int:
     base_bank = v.load_lexicon_raw(dept).get(theme)
     if base_bank:
         base_seeds = [sd for sd in SEEDS if sd.get('theme') == theme]
-        viol += v.check_backfill(dept, {theme: base_bank}, base_seeds, {theme: doc['words']}, merged)
+        # 결정 11 — 같은 폴더의 changes-<주제>.yaml 에 적힌 v44 변경만 허용한다.
+        chg_path = os.path.join(os.path.dirname(os.path.abspath(path)), f'changes-{theme}.yaml')
+        changes = {}
+        if os.path.exists(chg_path):
+            t, lst = v.load_changes(io.open(chg_path, encoding='utf-8').read())
+            changes = {theme: lst}
+            print(f'  변경 목록 {len(lst)}건: {os.path.basename(chg_path)}')
+        viol += v.check_backfill(dept, {theme: base_bank}, base_seeds, {theme: doc['words']}, merged, changes)
 
     print(f'{theme}: 상황 {len(merged)}/{len(seeds_for_theme)} · 단어 {len(bank)}개')
     if missing:
