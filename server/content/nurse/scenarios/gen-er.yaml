@@ -3620,7 +3620,6 @@
         - of birth
         - '?'
       words:
-        - w-name
         - w-birth
       goal: 1
     - en: I'm going to draw a small tube of blood.
@@ -3681,6 +3680,61 @@
       words:
         - w-second
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-draw
+        - w-pinch
+        - w-wristband
+      why: 피는 draw(뽑다), 바늘 느낌은 a quick pinch(잠깐 따끔), 이름은 wristband에서 대조해요 — 채혈 전에 차례로 하는 세 마디예요.
+      pairs:
+        - - draw a small tube of
+          - blood
+        - - you'll feel a quick
+          - pinch
+        - - the name on your
+          - wristband
+      decoys:
+        - second
+    - kind: swap
+      words:
+        - w-draw
+        - w-blood
+      why: 같은 채혈이라도 환자에게는 draw some blood, 차트에는 venipuncture로 적어요.
+      who: 환자에게 · 채혈 안내
+      icon: me
+      before:
+        - 'I''m going to '
+        - perform a venipuncture
+        - ' now.'
+      options:
+        - draw some blood
+        - perform a venipuncture
+        - obtain a specimen
+      answer: draw some blood
+      notes:
+        draw some blood: 환자가 바로 알아듣는 표준 표현.
+        obtain a specimen: 기록 문체. 무엇을 뽑는지도 흐리다.
+        perform a venipuncture: 차트·의료진 용어. 환자에게는 낯설고 딱딱하다.
+    - kind: context
+      words:
+        - w-birth
+        - w-check
+      why: 환자 확인은 환자가 이름과 생년월일을 직접 말하게 하는 열린 질문이 원칙이에요. 간호사가 먼저 불러 주고 '맞죠?'라고 물으면 잘 못 들었거나 아프고 지친 환자가 그냥 '네'라고 해 버릴 수 있어요.
+      scenes:
+        - who: 환자에게
+          icon: me
+          en: Can you tell me your full name and date of birth?
+          ok: true
+        - who: 동료와 대조
+          icon: speech
+          en: Can you confirm the name and DOB on this wristband with me?
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're John Smith, born March 4th, 1960, right?
+          ok: false
+          fix: Can you state your full name and date of birth for me?
 - id: SCN-ER-00123
   profession: ""
   eventId: EVT-ER-00102
@@ -3769,7 +3823,7 @@
         - w-second
       goal: 1
     - en: Try to hold your arm nice and still for me.
-      ko: 저를 위해 팔을 가만히 고정해 주세요.
+      ko: 팔을 가만히 잘 고정해 주세요.
       chunks:
         - Try to hold
         - your arm nice
@@ -3778,7 +3832,6 @@
         - .
       words:
         - w-hold
-        - w-arm
         - w-still
       goal: 2
     - en: I know needles can feel scary, but I'll be quick.
@@ -3817,6 +3870,58 @@
         - w-great
         - w-done
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-pinch
+        - w-sharp
+      why: 거의 못 느꼈다면 a little pinch 쪽이에요. sharp pinch는 찌릿하게 분명한 따끔함이고, burning pain은 화끈하게 타는 통증이에요. 수액이 들어가는 동안 IV 자리가 계속 화끈거리면 침윤·정맥염이 아닌지 자리를 확인해요.
+      cue: 'Patient, right after the IV goes in: "Oh — that was nothing. I barely felt it."'
+      scale:
+        - a little pinch
+        - a sharp pinch
+        - a burning pain
+      answerAt: 0
+      example: You'll feel a little pinch, and then it's done.
+      exKo: 살짝 따끔하고 나면 끝나요.
+    - kind: swap
+      words:
+        - w-needle
+        - w-scary
+      why: 무서워하는 환자에게는 '무서워 마세요'보다 '무서울 수 있어요'라고 인정하는 말이 먼저예요.
+      who: 바늘을 무서워하는 환자에게
+      icon: me
+      before:
+        - ""
+        - Don't be scared
+        - ' — it''s just a small needle.'
+      options:
+        - I know needles can feel scary
+        - Don't be scared
+        - You're overreacting
+      answer: I know needles can feel scary
+      notes:
+        Don't be scared: 선의지만 감정을 부정하는 말로 들릴 수 있다.
+        I know needles can feel scary: 먼저 두려움을 인정한다 — 불안을 낮추는 기본 말하기.
+        You're overreacting: 환자를 탓하는 말. 믿음을 잃는다.
+    - kind: context
+      words:
+        - w-start
+      why: cannulate는 의료진 용어예요. 환자에게는 put in an IV, start an IV처럼 쉬운 말로 해요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: I'm going to start an IV in bay four.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: 20G PIV started, L forearm, flushes well.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: I'm going to cannulate your forearm now.
+          ok: false
+          fix: I'm going to put a small IV in your arm now.
 - id: SCN-ER-00124
   profession: ""
   eventId: EVT-ER-00102
@@ -3948,6 +4053,61 @@
         - w-cup
         - w-done
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-privacy
+        - w-step
+        - w-wipe
+      why: give you some privacy는 '자리를 비켜 드릴게요', step out은 '잠깐 나가다', wipe from front to back은 청결 채취의 닦는 방향이에요. 앞에서 뒤로는 여성 환자에게 하는 안내예요.
+      pairs:
+        - - give you some
+          - privacy
+        - - step
+          - out for a moment
+        - - wipe from
+          - front to back
+      decoys:
+        - urinate
+    - kind: swap
+      words:
+        - w-urinate
+        - w-sample
+      why: 같은 행위라도 환자에게는 urinate나 pee, 기록에는 void라고 써요.
+      who: 환자에게 · 검체 안내
+      icon: me
+      before:
+        - 'Please '
+        - void
+        - ' into this cup.'
+      options:
+        - urinate
+        - void
+        - micturate
+      answer: urinate
+      notes:
+        micturate: 교과서 용어. 병원에서 말로는 거의 안 쓴다.
+        urinate: 환자가 알아듣는 표준어. 편한 사이면 pee도 흔히 쓴다.
+        void: 간호 기록·의료진 말(voided 300 mL). 환자는 뜻을 모르기 쉽다.
+    - kind: context
+      words:
+        - w-sample
+        - w-urinate
+      why: specimen·midstream은 의료진 말이에요. 환자에게는 무엇을 어떤 순서로 하는지 풀어서 말해요.
+      scenes:
+        - who: 검사실에 전화
+          icon: speech
+          en: I'm sending down a clean-catch urine specimen.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Clean-catch UA collected and sent.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Please provide a clean-catch midstream specimen.
+          ok: false
+          fix: Start urinating, then catch the middle part in this cup.
 - id: SCN-ER-00125
   profession: ""
   eventId: EVT-ER-00102
@@ -4073,8 +4233,43 @@
         - .
       words:
         - w-result
-        - w-minute
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-stay
+        - w-talk
+        - w-listen
+      why: stay still은 '가만히 계세요', try not to talk는 '말을 삼가 주세요' — 움직이거나 말하면 근육 신호가 섞여 파형이 흔들려요. It just listens는 심전도가 전기를 보내지 않고 받기만 한다는 쉬운 비유예요.
+      pairs:
+        - - stay still for
+          - about ten seconds
+        - - try not to
+          - talk
+        - - it just
+          - listens
+      decoys:
+        - stickers
+    - kind: swap
+      words:
+        - w-sticker
+        - w-heart
+      why: 환자에게는 stickers, 의료진끼리는 electrodes·leads라고 불러요.
+      who: 환자에게 · 심전도 설명
+      icon: me
+      before:
+        - 'I''m placing these '
+        - electrodes
+        - ' to check your heart.'
+      options:
+        - stickers
+        - electrodes
+        - leads
+      answer: stickers
+      notes:
+        electrodes: 정확한 용어지만 환자에게는 낯설다 — 기록·동료에게.
+        leads: 의료진끼리는 'put the leads on'이라고도 하지만 환자는 알아듣기 어렵다.
+        stickers: 환자가 바로 그림이 그려지는 쉬운 말.
 - id: SCN-ER-00126
   profession: ""
   eventId: EVT-ER-00102
@@ -4157,7 +4352,6 @@
         - .
       words:
         - w-routine
-        - w-step
         - w-safe
       goal: 1
     - en: I'll let you know as soon as we have results.
@@ -4169,7 +4363,6 @@
         - have results
         - .
       words:
-        - w-know
         - w-result
       goal: 2
     - en: I understand waiting for answers is stressful.
@@ -4192,7 +4385,6 @@
         - we're done
         - .
       words:
-        - w-doctor
         - w-explain
         - w-done
       goal: 1
@@ -4208,6 +4400,61 @@
         - w-alone
         - w-together
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-stressful
+        - w-wait
+      why: '''나가 버리겠다''까지 나오면 불안을 넘어 지치고 화난 상태(fed up)예요. 강도를 제대로 읽어야 ''이해해요'' 한마디로 끝내지 않고, 지금 무엇을 기다리는지 구체적으로 알려 주는 쪽으로 대응해요.'
+      cue: 'Patient: "I''ve been waiting three hours and nobody tells me anything. I''m about to walk out."'
+      scale:
+        - a little anxious
+        - stressed
+        - fed up
+      answerAt: 2
+      example: I can tell you're fed up — let me find out where your results are.
+      exKo: 많이 지치신 거 알아요 — 결과가 어디까지 왔는지 알아볼게요.
+    - kind: context
+      words:
+        - w-test
+        - w-find
+        - w-cause
+        - w-pain
+      why: labs·workup·abd는 의료진끼리의 말이에요. 환자에게는 검사가 무엇을 위한 것인지를 쉬운 말로 해요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: I drew a CBC, BMP, and lipase for his abdominal pain.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Labs drawn for abd pain workup.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We're sending labs for your abd pain workup.
+          ok: false
+          fix: These tests help us find what's causing your pain.
+    - kind: swap
+      words:
+        - w-understand
+        - w-wait
+      why: 지친 환자에게는 진정하라는 지시보다 '이해해요'라는 인정이 먼저예요.
+      who: 기다림에 지친 환자에게
+      icon: me
+      before:
+        - ""
+        - Calm down
+        - . Waiting for answers is really stressful.
+      options:
+        - I understand
+        - Calm down
+        - Relax
+      answer: I understand
+      notes:
+        Calm down: 화난 사람에게 '진정하라'는 감정을 무시하는 말로 들려 오히려 격해지기 쉽다.
+        I understand: 먼저 감정을 인정한다.
+        Relax: 선의지만 같은 이유로 가볍게 들린다.
 - id: SCN-ER-00127
   profession: ""
   eventId: EVT-ER-00103
@@ -4339,6 +4586,59 @@
         - w-find
         - w-vein
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-frustrating
+      why: 짜증이 분명하지만 화를 터뜨린 것은 아니에요 — frustrating 정도예요. 이럴 때는 먼저 사과하고 대안(온찜질, 잘하는 동료)을 말해 주면 강도가 내려가요.
+      cue: 'Patient, after the third try: "Seriously? Again? This is getting ridiculous."'
+      scale:
+        - a little annoying
+        - frustrating
+        - infuriating
+      answerAt: 1
+      example: I know this is frustrating — let me get a colleague who's great with tough veins.
+      exKo: 답답하신 거 알아요 — 어려운 정맥을 잘 잡는 동료를 불러 올게요.
+    - kind: swap
+      words:
+        - w-colleague
+        - w-great
+      why: 사람을 바꿀 때는 내 부족함보다 동료의 강점을 말해요.
+      who: 환자에게 · 다른 사람에게 맡길 때
+      icon: me
+      before:
+        - 'If needed, I''ll ask '
+        - someone who actually knows what they're doing
+        - ' to try.'
+      options:
+        - a colleague who's great at this
+        - someone who actually knows what they're doing
+        - someone more experienced
+      answer: a colleague who's great at this
+      notes:
+        a colleague who's great at this: 동료의 강점을 말해 환자에게 기대를 준다.
+        someone more experienced: 틀린 말은 아니지만 '내가 서툴다'로 들려 불안을 키울 수 있다.
+        someone who actually knows what they're doing: 자기 비하에 가깝다. 앞선 시도를 불신하게 만든다.
+    - kind: context
+      words:
+        - w-vein
+        - w-warm
+        - w-pack
+      why: cannulate·compress는 기록 말투예요. 환자에게는 hard to see, warm pack처럼 쉽게 해요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: Her veins are tough — I'm warming the arm first.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Warm compress applied to L arm prior to PIV attempt.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your veins are difficult to cannulate, so I'm applying a warm compress.
+          ok: false
+          fix: Your veins are hard to see, so I'll use a warm pack to help.
 - id: SCN-ER-00128
   profession: ""
   eventId: EVT-ER-00103
@@ -4465,6 +4765,62 @@
       words:
         - w-brave
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-lap
+        - w-hold
+        - w-high_five
+        - w-count
+        - w-together
+      why: hold him on your lap은 '무릎에 앉혀 안아 주세요', a big high five는 끝난 뒤의 보상, count to three together는 함께 셋을 세어 바늘이 들어갈 순간을 예고하는 방법이에요. 억지로 눕혀 누르는 것보다 부모가 안아 주는 자세(comfort positioning)가 아이를 덜 겁먹게 해요.
+      pairs:
+        - - hold him on
+          - your lap
+        - - a big
+          - high five
+        - - count to three
+          - together
+      decoys:
+        - brave
+    - kind: swap
+      words:
+        - w-count
+        - w-together
+      why: 아이에게는 거짓 약속도, 겁주는 말도 아닌 정직하고 부드러운 표현을 써요.
+      who: 아이에게 · 채혈 직전
+      icon: baby
+      before:
+        - ""
+        - This is going to hurt
+        - ', and we''ll count to three together.'
+      options:
+        - You'll feel a little poke
+        - This is going to hurt
+        - It won't hurt at all
+      answer: You'll feel a little poke
+      notes:
+        It won't hurt at all: 거짓말이 되면 아이가 다음부터 어른 말을 믿지 않는다.
+        This is going to hurt: '''아플 거야''라는 예고가 두려움을 키운다.'
+        You'll feel a little poke: 정직하면서도 겁주지 않는 말 — 소아 간호·child life에서 흔히 권한다.
+    - kind: context
+      words:
+        - w-brave
+      why: tolerated … well은 기록 말투예요. 아이에게는 같은 뜻을 칭찬의 말로 해요.
+      scenes:
+        - who: 아이에게
+          icon: baby
+          en: That was it! You were so brave!
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Pt tolerated venipuncture well.
+          ok: true
+        - who: 아이에게
+          icon: baby
+          en: You tolerated the venipuncture well.
+          ok: false
+          fix: You did it! You were so brave.
 - id: SCN-ER-00129
   profession: ""
   eventId: EVT-ER-00103
@@ -4548,7 +4904,6 @@
         - w-kidney
         - w-problem
         - w-metformin
-        - w-take
       goal: 1
     - en: The dye may feel warm — that's normal.
       ko: 조영제가 따뜻하게 느껴질 수 있는데 정상이에요.
@@ -4572,7 +4927,6 @@
         - .
       words:
         - w-allergy
-        - w-tell
       goal: 1
     - en: This helps us keep your kidneys safe during the scan.
       ko: 이렇게 하면 검사 중에 신장을 안전하게 지킬 수 있어요.
@@ -4597,6 +4951,60 @@
         - w-pass
         - w-quickly
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-react
+        - w-allergy
+      why: 두드러기 몇 개로 그쳤다면 경증 반응(mild)이에요. 목이 붓거나 숨이 찼다면 중증(severe)이고요. 어느 쪽이든 의사와 영상의학과에 알려 사전투약이 필요한지 판단하게 해요.
+      cue: 'Patient: "Last CT, I got a few hives on my arms after the dye. Nothing else."'
+      scale:
+        - no reaction
+        - mild reaction
+        - severe reaction
+      answerAt: 1
+      example: She had a mild reaction to contrast last year — just hives.
+      exKo: 작년에 조영제에 경증 반응이 있었대요 — 두드러기만요.
+    - kind: swap
+      words:
+        - w-dye
+        - w-contrast
+      why: 환자에게는 dye, 의료진끼리는 contrast라고 해요.
+      who: 환자에게 · 조영제 안내
+      icon: me
+      before:
+        - 'The '
+        - iodinated contrast medium
+        - ' may feel warm — that''s normal.'
+      options:
+        - dye
+        - iodinated contrast medium
+        - radioactive tracer
+      answer: dye
+      notes:
+        dye: 환자에게 흔히 쓰는 쉬운 말.
+        iodinated contrast medium: 정확하지만 환자에게는 너무 어렵다 — 기록·영상의학과와 말할 때.
+        radioactive tracer: 핵의학 검사에 쓰는 것이라 CT 조영제와 다르다. 사실도 틀리고 환자를 괜히 겁준다.
+    - kind: context
+      words:
+        - w-kidney
+        - w-problem
+        - w-metformin
+      why: CKD·biguanide는 의료진 말이에요. 환자에게는 병과 약 이름을 쉬운 말로 풀어서 물어요.
+      scenes:
+        - who: 환자에게
+          icon: me
+          en: Do you have any kidney problems, or take metformin?
+          ok: true
+        - who: 영상의학과에 전화
+          icon: speech
+          en: She's on metformin — do we have a recent creatinine?
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Any history of CKD or biguanide use?
+          ok: false
+          fix: Do you have any kidney problems, or take a diabetes pill called metformin?
 - id: SCN-ER-00130
   profession: ""
   eventId: EVT-ER-00103
@@ -4731,6 +5139,64 @@
         - w-done
         - w-patience
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-clean
+        - w-site
+        - w-touch
+        - w-area
+        - w-patience
+      why: clean the site really well은 '부위를 꼼꼼히 소독하다', touch the area는 소독한 자리에 손대는 것, thanks for your patience는 오래 협조해 준 데 대한 감사예요. 혈액배양은 피부 세균이 섞이면 위양성이 나올 수 있어 소독한 뒤에는 다시 만지지 않아요.
+      pairs:
+        - - clean the site
+          - really well
+        - - try not to touch
+          - the area
+        - - thanks for
+          - your patience
+      decoys:
+        - still
+    - kind: swap
+      words:
+        - w-contamination
+        - w-false
+        - w-result
+      why: 같은 걱정이라도 환자에게는 '결과가 틀릴 수 있다'고 쉽게 말해요.
+      who: 환자에게 · 왜 이렇게 꼼꼼히 소독하나
+      icon: me
+      before:
+        - 'If germs from your skin get in, we could get a '
+        - false-positive culture
+        - .
+      options:
+        - wrong result
+        - false-positive culture
+        - contaminated specimen
+      answer: wrong result
+      notes:
+        contaminated specimen: 검사실·의료진 말. 환자에게는 딱딱하다.
+        false-positive culture: 정확한 임상어지만 환자에게는 어렵다 — 동료에게.
+        wrong result: 환자가 바로 이해하는 말.
+    - kind: context
+      words:
+        - w-contamination
+        - w-result
+      why: contaminant·skin flora는 의료진 말이에요. 환자에게는 '피부 세균이 섞였을 수 있다'고 풀고, 왜 다시 하는지도 함께 말해요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: That culture was probably a contaminant.
+          ok: true
+        - who: 의사에게
+          icon: speech
+          en: One of two bottles grew skin flora — likely contamination.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your blood culture grew a contaminant.
+          ok: false
+          fix: One of your blood tests may have picked up germs from your skin, so we'd like to redo it.
 - id: SCN-ER-00131
   profession: ""
   eventId: EVT-ER-00103
@@ -4809,7 +5275,6 @@
         - short of breath
         - .
       words:
-        - w-tell
         - w-feel
         - w-itchy
         - w-breath
@@ -4861,8 +5326,62 @@
         - .
       words:
         - w-check
-        - w-minute
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-itchy
+        - w-breath
+        - w-reaction
+      why: 목이 조이고 숨이 차면 가려움·두드러기를 넘어 아나필락시스 신호예요. 곧바로 주입을 멈추고 도움을 부르고 에피네프린을 준비해요.
+      cue: 'Ten minutes into the first dose: "My throat feels tight, and I''m getting really short of breath."'
+      scale:
+        - mild itching
+        - hives
+        - anaphylaxis
+      answerAt: 2
+      example: Stop the infusion — this looks like anaphylaxis.
+      exKo: 주입 멈춰요 — 아나필락시스 같아요.
+    - kind: swap
+      words:
+        - w-watch
+        - w-closely
+        - w-dose
+      why: 첫 투여 감시는 '가까이서 지켜볼게요'라고 쉽고 분명하게 말해요.
+      who: 환자에게 · 첫 투여
+      icon: me
+      before:
+        - 'I''ll '
+        - monitor you for adverse drug reactions
+        - ' during the first dose.'
+      options:
+        - be watching you closely
+        - monitor you for adverse drug reactions
+        - check on you sometime
+      answer: be watching you closely
+      notes:
+        be watching you closely: 쉬우면서 가까이서 지켜본다는 뜻이 분명하다.
+        check on you sometime: '''언젠가 한 번''으로 들려 첫 투여 감시의 뜻이 사라진다.'
+        monitor you for adverse drug reactions: 정확하지만 기록 말투라 환자에게는 딱딱하고 겁이 난다.
+    - kind: context
+      words:
+        - w-allergic
+        - w-antibiotic
+      why: PCN은 기록·의료진 약어예요. 환자에게는 약 이름을 풀어서, 어떤 반응이었는지까지 물어요.
+      scenes:
+        - who: 약사에게
+          icon: speech
+          en: She reports a penicillin allergy — rash only.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: 'Allergies: PCN (rash).'
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Any PCN allergy?
+          ok: false
+          fix: Have you ever had an allergic reaction to penicillin or any other antibiotic?
 - id: SCN-ER-00132
   profession: ""
   eventId: EVT-ER-00103
@@ -4932,8 +5451,6 @@
         - .
       words:
         - w-check
-        - w-name
-        - w-blood
         - w-type
       goal: 1
     - en: Tell me if you feel chills, itching, or back pain.
@@ -4945,7 +5462,6 @@
         - ', or back pain'
         - .
       words:
-        - w-tell
         - w-feel
         - w-chill
         - w-itch
@@ -4960,7 +5476,6 @@
         - very closely
         - .
       words:
-        - w-minute
         - w-watch
         - w-closely
       goal: 2
@@ -4983,8 +5498,6 @@
         - with me
         - .
       words:
-        - w-second
-        - w-nurse
         - w-verify
       goal: 1
     - en: If anything feels off, press your call button right away.
@@ -4999,6 +5512,41 @@
         - w-feel
         - w-call_button
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-type
+        - w-verify
+        - w-call_button
+      why: 수혈 전에는 이름과 blood type을 두 사람이 대조하고(두 번째 간호사가 verify), 이상하면 call button을 누르라고 알려 줘요.
+      pairs:
+        - - your name and
+          - blood type
+        - - a second nurse will
+          - verify
+        - - press your
+          - call button
+      decoys:
+        - chills
+    - kind: context
+      words:
+        - w-verify
+        - w-match
+      why: 환자에게는 번호와 기호 대신 '두 사람이 확인했고 정확히 맞다'는 결론을 말해요.
+      scenes:
+        - who: 동료와 이중확인
+          icon: speech
+          en: Unit number, ABO/Rh, and expiration all match — verified.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Blood product verified at bedside by two RNs.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your ABO/Rh and unit number are verified.
+          ok: false
+          fix: Two of us checked, and this blood matches you exactly.
 - id: SCN-ER-00133
   profession: ""
   eventId: EVT-ER-00103
@@ -5081,8 +5629,6 @@
         - .
       words:
         - w-swallow
-        - w-water
-        - w-help
       goal: 1
     - en: It feels strange, but it won't stop you breathing.
       ko: 느낌이 이상하겠지만 숨쉬는 데는 지장이 없어요.
@@ -5131,6 +5677,59 @@
       words:
         - w-swallow
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-strange
+        - w-uncomfortable
+      why: 아프지 않고 '이상하다'면 strange 쪽이에요. 관이 목 뒤를 지날 때 구역질이 날 수 있다고 미리 알려 주면 덜 놀라요.
+      cue: 'Patient: "It feels weird in the back of my throat, but it doesn''t really hurt."'
+      scale:
+        - strange
+        - uncomfortable
+        - painful
+      answerAt: 0
+      example: It'll feel strange, but it shouldn't hurt.
+      exKo: 느낌이 이상하겠지만 아프지는 않을 거예요.
+    - kind: swap
+      words:
+        - w-swallow
+        - w-sip
+      why: 비위관은 물을 조금씩 삼키는 타이밍에 맞춰 밀어 넣어요.
+      who: 환자에게 · 관이 목을 지날 때
+      icon: me
+      before:
+        - 'Now '
+        - gulp down the whole cup
+        - ' while I advance the tube.'
+      options:
+        - take small sips and swallow
+        - gulp down the whole cup
+        - hold your breath
+      answer: take small sips and swallow
+      notes:
+        gulp down the whole cup: 한꺼번에 들이켜면 사레들리기 쉽다.
+        hold your breath: 관을 넣을 때 필요한 것은 숨 참기가 아니라 삼키기다.
+        take small sips and swallow: 조금씩 삼키게 해야 관이 삼킴을 따라 식도로 넘어가기 쉽다.
+    - kind: context
+      words:
+        - w-tube
+        - w-stomach
+      why: radiographic confirmation·NGT는 의료진 말이에요. 환자에게는 왜 사진을 찍는지 쉽게 — X선이 관 위치를 확인하는 가장 확실한 방법이고, 관으로 영양·약을 넣기 전에는 X선 확인이 표준이에요.
+      scenes:
+        - who: 의사에게
+          icon: speech
+          en: The NG is in — can we get an X-ray to confirm placement?
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: NGT placed; placement confirmed by X-ray.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We need radiographic confirmation of NGT placement.
+          ok: false
+          fix: We'll take a quick X-ray to make sure the tube is in your stomach.
 - id: SCN-ER-00134
   profession: ""
   eventId: EVT-ER-00103
@@ -5258,10 +5857,61 @@
         - empty completely
         - .
       words:
-        - w-help
         - w-bladder
         - w-empty
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-pressure
+        - w-uncomfortable
+        - w-ease
+      why: 누르는 느낌 정도면 pressure 쪽이에요. 도뇨관은 보통 압박감이나 불편감이지 날카로운 통증은 아니라서, 심하게 아프다고 하면 멈추고 확인해요.
+      cue: 'Patient during insertion: "Ooh — that''s a weird pushing feeling, but I''m okay."'
+      scale:
+        - some pressure
+        - uncomfortable
+        - painful
+      answerAt: 0
+      example: You'll feel some pressure, and it eases after a moment.
+      exKo: 압박감이 좀 있다가 잠시 뒤 가라앉아요.
+    - kind: swap
+      words:
+        - w-cover
+      why: 환자에게는 covered, 의료진끼리는 draped라고 말해요.
+      who: 환자에게 · 사생활 배려
+      icon: me
+      before:
+        - 'I''ll keep you '
+        - draped
+        - ' as much as possible.'
+      options:
+        - covered
+        - draped
+        - exposed
+      answer: covered
+      notes:
+        covered: 쉬운 말로 사생활을 지켜 주겠다는 뜻.
+        draped: 뜻은 맞지만 의료진 용어(drape)라 환자에게는 딱딱하다.
+        exposed: 반대말 — 드러낸다는 뜻이라 환자를 불안하게 한다.
+    - kind: context
+      words:
+        - w-okay
+      why: consent·Foley insertion은 기록 말투예요. 환자에게는 무엇을 할지 쉬운 말로 묻고 허락을 받아요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: She gave verbal consent for the Foley.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Verbal consent obtained for Foley insertion.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Do you consent to Foley insertion?
+          ok: false
+          fix: Is it okay if I put the catheter in now?
 - id: SCN-ER-00135
   profession: ""
   eventId: EVT-ER-00103
@@ -5332,7 +5982,6 @@
       words:
         - w-label
         - w-tube
-        - w-name
         - w-bedside
       goal: 1
     - en: Can you confirm your date of birth once more?
@@ -5395,6 +6044,42 @@
         - w-label
         - w-lab
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-label
+        - w-bedside
+        - w-mix
+        - w-barcode
+      why: label at the bedside는 '환자 앞에서 붙인다', get mixed up은 '뒤바뀌다', its own barcode는 '튜브마다 고유한'이에요. 채혈병은 미리 붙여 두거나 간호사실에 가서 붙이지 않고, 환자 곁에서 확인한 직후 붙여야 다른 환자 것과 뒤바뀌지 않아요.
+      pairs:
+        - - label at
+          - the bedside
+        - - get mixed
+          - up
+        - - its own
+          - barcode
+      decoys:
+        - sending
+    - kind: context
+      words:
+        - w-label
+        - w-bedside
+      why: '''Per policy''나 3인칭 ''the patient''는 환자에게 규정문처럼 들려요. 환자에게는 ''지금 여기서, 뒤바뀌지 않게''라고 이유와 함께 말해요.'
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: Don't pre-label the tubes — label them at the bedside.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Specimens labeled at bedside in pt's presence.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Per policy, specimens are labeled in the patient's presence.
+          ok: false
+          fix: I'm labeling these right here with you so nothing gets mixed up.
 - id: SCN-ER-00136
   profession: ""
   eventId: EVT-ER-00103
@@ -5462,7 +6147,6 @@
         - this side
         - .
       words:
-        - w-head
         - w-turn
         - w-side
       goal: 1
@@ -5525,6 +6209,65 @@
         - w-scary
         - w-stay
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-turn
+        - w-side
+        - w-numb
+        - w-medicine
+        - w-drape
+        - w-sterile
+      why: head turned to this side는 목 중심정맥관 때 얼굴을 반대쪽으로 돌리는 자세, numbing medicine은 국소마취제, drapes keep everything sterile은 방포가 무균 상태를 지킨다는 말이에요.
+      pairs:
+        - - keep your head turned to
+          - this side
+        - - you'll feel some numbing
+          - medicine
+        - - the drapes keep everything
+          - sterile
+      decoys:
+        - airway
+    - kind: swap
+      words:
+        - w-drape
+        - w-sterile
+        - w-touch
+      why: 환자에게는 '방포를 만지지 마세요'처럼 구체적이고 부드럽게 말해요.
+      who: 환자에게 · 무균 방포 아래
+      icon: me
+      before:
+        - 'Please '
+        - don't contaminate the sterile field
+        - .
+      options:
+        - try not to touch the drapes
+        - don't contaminate the sterile field
+        - keep your hands off everything
+      answer: try not to touch the drapes
+      notes:
+        don't contaminate the sterile field: 동료에게는 정확하지만 환자는 어디가 무균인지 모른다.
+        keep your hands off everything: 명령조라 겁먹은 환자를 더 굳게 만든다.
+        try not to touch the drapes: 무엇을 하지 말지 구체적이고 부드럽다.
+    - kind: context
+      words:
+        - w-watch
+        - w-monitor
+      why: 유도철선이 심장 가까이 들어가면 부정맥(ectopy)이 생길 수 있어 모니터를 봐요. 환자에게는 그 위험을 전문어로 말하기보다 '계속 지켜보고 있다'고 안심시켜요.
+      scenes:
+        - who: 시술 의사에게
+          icon: speech
+          en: Heads up — I'm seeing ectopy on the monitor.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Continuous cardiac monitoring during CVC insertion.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: I'm watching for ectopy from the guidewire.
+          ok: false
+          fix: I'm watching your heart monitor the whole time.
 - id: SCN-ER-00137
   profession: ""
   eventId: EVT-ER-00103
@@ -5603,7 +6346,6 @@
         - feeling now
         - .
       words:
-        - w-tell
         - w-feel
       goal: 2
     - en: We're switching to fluids and calling the doctor.
@@ -5617,7 +6359,6 @@
         - w-switch
         - w-fluid
         - w-call
-        - w-doctor
       goal: 1
     - en: Your safety comes first, always.
       ko: 환자분의 안전이 언제나 최우선이에요.
@@ -5648,10 +6389,43 @@
         - in just
         - a minute
         - .
-      words:
-        - w-doctor
-        - w-minute
+      words: []
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-fluid
+        - w-switch
+      why: 수혈 반응이 의심되면 수혈을 멈추고, 새 수액줄로 생리식염수를 걸어 정맥로를 유지하고, 혈액백과 수액줄은 버리지 않고 혈액은행에 보내며, 반응 후 채혈을 해요. 세부 절차는 기관 프로토콜을 따라요.
+      pairs:
+        - - hang
+          - a new bag of saline
+        - - save the bag
+          - and tubing
+        - - draw
+          - post-transfusion labs
+      decoys:
+        - comes first
+    - kind: swap
+      words:
+        - w-blood
+        - w-stop
+      why: 반응이 의심될 때 환자에게는 확정되지 않은 진단명 대신 지금 보이는 사실과 조치를 말해요.
+      who: 환자에게 · 반응이 의심될 때
+      icon: me
+      before:
+        - ""
+        - You're having a hemolytic transfusion reaction
+        - ' — I''m stopping the blood right away.'
+      options:
+        - Your body may be reacting to the blood
+        - You're having a hemolytic transfusion reaction
+        - Something went wrong with your blood
+      answer: Your body may be reacting to the blood
+      notes:
+        Something went wrong with your blood: 누군가의 실수처럼 들리고 무엇이 문제인지 흐리다.
+        You're having a hemolytic transfusion reaction: 원인을 단정하는 전문어. 확정 전이라 사실보다 앞서고 환자를 겁준다.
+        Your body may be reacting to the blood: 사실만 차분히 — 아직 원인이 확정되지 않았다.
 - id: SCN-ER-00138
   profession: ""
   eventId: EVT-ER-00103
@@ -5770,9 +6544,7 @@
         - leaving your
         - side
         - .
-      words:
-        - w-leave
-        - w-side
+      words: []
       goal: 2
     - en: We're watching your oxygen and blood pressure closely.
       ko: 산소포화도와 혈압을 면밀히 지켜보고 있어요.
@@ -5787,6 +6559,63 @@
         - w-pressure
         - w-closely
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-throat
+        - w-tight
+      why: '''닫힌다, 숨을 못 쉰다''는 가장 강한 쪽이에요. 간질간질(scratchy)에서 조인다(tight), 막힌다(closing up)로 갈수록 기도 위험이 커져요. closing up이면 곧바로 에피네프린과 기도 대응이에요.'
+      cue: 'Patient: "My throat… it''s closing — I can''t get air."'
+      scale:
+        - scratchy
+        - tight
+        - closing up
+      answerAt: 2
+      example: She says her throat is closing up — give the epi now.
+      exKo: 목이 막힌대요 — 지금 에피 주세요.
+    - kind: swap
+      words:
+        - w-focus
+        - w-voice
+        - w-breathe
+        - w-slowly
+      why: 겁먹은 환자에게는 감정을 멈추라는 말보다 붙잡을 것 하나를 줘요.
+      who: 숨이 가빠 겁먹은 환자에게
+      icon: me
+      before:
+        - ""
+        - Stop panicking
+        - ' and try to breathe slowly.'
+      options:
+        - Focus on my voice
+        - Stop panicking
+        - Calm down
+      answer: Focus on my voice
+      notes:
+        Calm down: 지시처럼 들려 감정을 무시하는 말이 되기 쉽다.
+        Focus on my voice: 할 일 하나를 준다 — 겁먹은 환자가 따라오기 쉽다.
+        Stop panicking: 환자를 탓하는 말로 들린다.
+    - kind: context
+      words:
+        - w-epinephrine
+        - w-give
+        - w-open
+        - w-airway
+      why: 용량·경로·시각은 동료와 기록에 정확히 남겨요. 환자에게는 무엇을 왜 하는지 짧게 말해요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: Epi 0.5 IM given, lateral thigh, at 14:02.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Epinephrine 0.5 mg IM administered, L lateral thigh.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: I'm administering 0.5 milligrams of epinephrine IM.
+          ok: false
+          fix: I'm giving you a shot of epinephrine in your thigh — it'll help open your airway.
 - id: SCN-ER-00139
   profession: ""
   eventId: EVT-ER-00103
@@ -5876,7 +6705,7 @@
         - w-work
       goal: 2
     - en: Stay with me, we're getting fluids into you now.
-      ko: 정신 차리세요, 지금 수액을 넣고 있어요.
+      ko: 정신 놓지 마세요, 지금 수액을 넣고 있어요.
       chunks:
         - Stay with me
         - ', we''re getting'
@@ -5917,9 +6746,64 @@
         - ', help is on'
         - the way
         - .
-      words:
-        - w-help
+      words: []
       goal: 2
+  nuance:
+    - kind: reel
+      words:
+        - w-stay
+      word: stay
+      scenes:
+        - who: 환자에게 · 심전도 중
+          en: Please stay still for about ten seconds.
+          ko: 10초 정도만 가만히 계셔 주세요.
+          tone: 부탁
+        - who: 겁먹은 환자 곁에서
+          en: We're staying right here with you.
+          ko: 저희가 바로 여기 계속 있을게요.
+          tone: 안심
+        - who: 의식이 흐려지는 환자에게
+          en: Stay with me, we're getting fluids into you now.
+          ko: 정신 놓지 마세요, 지금 수액을 넣고 있어요.
+          tone: 급함
+        - who: 동료에게는…
+          en: He's getting drowsy — keep talking to him.
+          ko: 환자가 처지고 있어요 — 계속 말을 걸어 주세요.
+          tone: 지시
+          swap: true
+    - kind: slider
+      words:
+        - w-strong
+        - w-pressure
+      why: '''많이 민다''는 강한 압박(strong pressure)이에요. 깨어 있는 환자는 골내주사 삽입 때 센 압박감을 느끼고, 수액을 밀어 넣기 시작할 때 더 아플 수 있어 기관 프로토콜에 따라 리도카인을 먼저 주기도 해요.'
+      cue: 'Awake patient, as the IO needle goes in: "Whoa — that''s a lot of pushing!"'
+      scale:
+        - some pressure
+        - strong pressure
+        - sharp pain
+      answerAt: 1
+      example: You'll feel strong pressure — that means it's going in.
+      exKo: 강한 압박감이 들 텐데, 잘 들어가고 있다는 뜻이에요.
+    - kind: context
+      words:
+        - w-line
+        - w-bone
+        - w-leg
+      why: intraosseous·proximal tibia는 의료진 말이에요. 위급한 환자에게는 어디에, 왜 하는지만 짧게 말해요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: No IV access — let's go IO, right tibia.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: IO placed R proximal tibia; flushes without difficulty.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We're placing an intraosseous line in your proximal tibia.
+          ok: false
+          fix: We're putting a small line into the bone below your knee to give you medicine fast.
 - id: SCN-ER-00140
   profession: ""
   eventId: EVT-ER-00104
@@ -6003,7 +6887,6 @@
         - it aloud
         - .
       words:
-        - w-patient
         - w-route
         - w-read
         - w-aloud
@@ -6054,6 +6937,61 @@
       words:
         - w-safety
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-read
+        - w-aloud
+        - w-route
+      why: read it aloud는 라벨을 소리 내어 읽기, right patient, right route는 투약 원칙(rights)의 일부, independent double check는 두 번째 간호사가 앞사람의 계산을 보지 않고 따로 확인하는 것 — 고위험 약에서 ISMP가 권하는 방식이에요.
+      pairs:
+        - - read it
+          - aloud
+        - - right patient
+          - right route
+        - - independent
+          - double check
+      decoys:
+        - the order
+    - kind: swap
+      words:
+        - w-unit
+      why: 말로는 units라고 하는 것을 기록에서도 줄이지 않고 units라고 써요.
+      who: 투약 기록 · 인슐린
+      icon: pencil
+      before:
+        - 'Regular insulin 15 '
+        - U
+        - ' subcut, verified by two RNs.'
+      options:
+        - units
+        - U
+        - IU
+      answer: units
+      notes:
+        IU: 역시 금지 약어 — IV나 10으로 잘못 읽힐 수 있다.
+        U: 금지 약어 — 손글씨에서 0이나 4로 읽혀 열 배 과량 사고가 났다.
+        units: unit은 반드시 풀어 쓴다 — The Joint Commission 금지 약어 목록.
+    - kind: context
+      words:
+        - w-wait
+        - w-match
+        - w-order
+      why: 투약 오류를 발견하면 돌려 말하지 말고 분명히 멈춰 세워요. TeamSTEPPS의 CUS(concerned·uncomfortable·safety issue)처럼 안전 문제는 누구든 직접 말하도록 훈련해요.
+      scenes:
+        - who: 동료에게
+          icon: speech
+          en: Wait — that doesn't match the order.
+          ok: true
+        - who: 약국에 전화
+          icon: speech
+          en: The dose on the label doesn't match the order — can you verify?
+          ok: true
+        - who: 동료에게 · 투약 직전
+          icon: speech
+          en: I have a slight concern that this might not match the order, if that's okay?
+          ok: false
+          fix: Stop — this doesn't match the order.
 - id: SCN-ER-00141
   profession: ""
   eventId: EVT-ER-00104
@@ -6137,7 +7075,6 @@
         - .
       words:
         - w-squeeze
-        - w-hand
         - w-give
         - w-pain
         - w-medicine
@@ -6152,13 +7089,12 @@
         - .
       words:
         - w-tube
-        - w-help
         - w-lung
         - w-expand
         - w-breathe
       goal: 1
     - en: Stay with me, you're doing so well.
-      ko: 저와 함께 있어요, 정말 잘하고 계세요.
+      ko: 정신 놓지 마세요, 정말 잘하고 계세요.
       chunks:
         - Stay with me
         - ', you''re doing'
@@ -6186,9 +7122,61 @@
         - here
         - the whole time
         - .
-      words:
-        - w-here
+      words: []
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-pain
+        - w-squeeze
+      why: '''정말 아파지기 시작했다''면 불편감을 넘어 통증이에요. 흉관은 국소마취를 해도 흉막을 지날 때 아플 수 있어, 이 말은 진통제 추가가 필요한지 의사에게 알릴 신호예요.'
+      cue: 'Patient, gripping your hand: "Okay… that''s really starting to hurt."'
+      scale:
+        - discomfort
+        - pain
+        - agony
+      answerAt: 1
+      example: He's in real pain now — can we give him more pain medicine?
+      exKo: 지금 통증이 심해요 — 진통제를 더 드려도 될까요?
+    - kind: swap
+      words:
+        - w-stay
+        - w-well
+      why: Stay with me는 '곁에 있어 달라'가 아니라 '정신 놓지 말고 버텨요'라는 뜻이에요.
+      who: 아파하는 환자에게 · 흉관 중
+      icon: me
+      before:
+        - ""
+        - Don't pass out on me
+        - ', you''re doing so well.'
+      options:
+        - Stay with me
+        - Don't pass out on me
+        - Try to hold still
+      answer: Stay with me
+      notes:
+        Don't pass out on me: 기절할 수도 있다는 말로 들려 겁을 준다.
+        Stay with me: '''정신 놓지 말고 버텨요'' — 곁에서 붙잡아 주는 말.'
+        Try to hold still: 지시만 있고 곁에서 붙잡아 주는 느낌이 없다.
+    - kind: context
+      words:
+        - w-lung
+        - w-expand
+      why: pneumothorax·resolved·film은 의료진 말이에요. 환자에게는 폐가 다시 펴졌고 숨쉬기가 나아질 거라고 쉽게 말해요.
+      scenes:
+        - who: 의사에게
+          icon: speech
+          en: Post-tube film shows the right lung re-expanded.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: 'CXR: R lung re-expanded, chest tube in place.'
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your pneumothorax has resolved on the post-procedure film.
+          ok: false
+          fix: The X-ray shows your lung has filled back up, so your breathing should get easier.
 - id: SCN-ER-00142
   profession: ""
   eventId: EVT-ER-00104
@@ -6259,7 +7247,6 @@
       words:
         - w-hang
         - w-unit
-        - w-pack
       goal: 2
     - en: Do you want one-to-one-to-one ratio with plasma and platelets?
       ko: 혈장·혈소판과 1대1대1 비율로 갈까요?
@@ -6283,7 +7270,6 @@
         - the way
         - .
       words:
-        - w-blood
         - w-bank
         - w-cooler
       goal: 2
@@ -6297,7 +7283,6 @@
       words:
         - w-report
         - w-vital
-        - w-minute
       goal: 2
     - en: Let's confirm the ratio with the attending now.
       ko: 지금 담당의와 비율을 확인해봐요.
@@ -6318,9 +7303,44 @@
         - cooler arrives
         - .
       words:
-        - w-tell
         - w-arrive
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-hang
+        - w-unit
+        - w-ratio
+        - w-cooler
+      why: hang은 혈액백을 걸어 시작하는 것, one-to-one-to-one ratio는 혈장·혈소판·적혈구를 1:1:1로 주는 것, coolers on the way는 혈액은행에서 상자가 오고 있다는 말 — 대량수혈 중에 오가는 말이에요.
+      pairs:
+        - - hang the first
+          - unit
+        - - one-to-one-to-one
+          - ratio
+        - - two more coolers
+          - on the way
+      decoys:
+        - platelets
+    - kind: context
+      words:
+        - w-report
+        - w-vital
+      why: 위급한 소생 중 보고는 숫자부터 짧게 해요. 돌려 말하면 판단이 늦어져요.
+      scenes:
+        - who: 소생실 의사에게
+          icon: speech
+          en: BP 82 over 50, heart rate 128, after unit two.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: VS q5min during MTP; see flowsheet.
+          ok: true
+        - who: 소생실 의사에게
+          icon: speech
+          en: Um, I think the blood pressure might be kind of low-ish?
+          ok: false
+          fix: BP 82 over 50, heart rate 128.
 - id: SCN-ER-00143
   profession: ""
   eventId: EVT-ER-00104
