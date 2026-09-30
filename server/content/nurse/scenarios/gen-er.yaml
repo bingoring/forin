@@ -68358,9 +68358,7 @@
         - .
       words:
         - w-need
-        - w-know
         - w-bleed
-        - w-come
         - w-above
         - w-below
       goal: 2
@@ -68377,6 +68375,63 @@
         - w-color
         - w-vomit
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-coffee-grounds
+        - w-bring
+        - w-above
+        - w-below
+      why: coffee grounds는 커피 찌꺼기 모양 토물을 한 덩어리로 부르는 말, bring up은 '게워 내다'는 구동사, above or below는 출혈이 위에서 오는지 아래서 오는지 묻는 짝이에요.
+      pairs:
+        - - coffee
+          - grounds
+        - - bring
+          - up
+        - - above or
+          - below
+      decoys:
+        - tarry
+    - kind: swap
+      words:
+        - w-black
+        - w-tarry
+        - w-stool
+      why: 흑색변은 차트에는 melena로 쓰지만, 환자에게는 색과 모양(black, tarry)으로 물어야 정확한 대답이 나와요.
+      who: 환자에게 · 흑색변 문진
+      icon: me
+      before:
+        - 'Have you had any '
+        - melena
+        - '?'
+      options:
+        - black, tarry stools
+        - melena
+        - bad stools
+      answer: black, tarry stools
+      notes:
+        bad stools: 무엇이 이상한지 가리키지 못해 흑색변인지 설사인지 알 수 없다.
+        black, tarry stools: 환자가 눈으로 본 것을 그대로 떠올릴 수 있는 말.
+        melena: 흑색변을 가리키는 의료진의 말. 환자는 대개 모른다.
+    - kind: context
+      words:
+        - w-vomit
+        - w-coffee-grounds
+      why: emesis(구토물)는 의료진끼리 쓰는 말이에요. 환자에게는 throw up·vomit으로, 무엇처럼 보였는지 물어요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: He's had two episodes of coffee-ground emesis.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Coffee-ground emesis x2 prior to arrival.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Have you had any coffee-ground emesis?
+          ok: false
+          fix: Did you throw up anything that looked like coffee grounds?
 - id: SCN-ER-00544
   profession: ""
   eventId: EVT-ER-00135
@@ -68521,6 +68576,43 @@
         - w-closely
         - w-while
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-faint
+        - w-pass-out
+        - w-lightheaded
+      why: 정신을 잃었다가 바닥에서 깨어났다면 실제로 의식을 잃은 것(passed out)이에요. '쓰러질 뻔했다'(nearly passed out)와 가려서 물어보고 기록해요.
+      cue: 'Patient: "Everything went black, and I woke up on the bathroom floor."'
+      scale:
+        - lightheaded
+        - nearly passed out
+        - passed out
+      answerAt: 2
+      example: She passed out in the bathroom and woke up on the floor.
+      exKo: 화장실에서 의식을 잃었다가 바닥에서 깨어났어요.
+    - kind: swap
+      words:
+        - w-check
+        - w-pressure
+        - w-lie
+        - w-stand
+      why: orthostatics는 동료에게는 편한 줄임말이지만, 환자에게는 누웠다 일어서며 잰다고 풀어서 말해야 협조를 받을 수 있어요.
+      who: 환자에게 · 기립성 활력징후 설명
+      icon: me
+      before:
+        - 'I''m going to check your '
+        - orthostatics
+        - ' now.'
+      options:
+        - blood pressure lying down and standing up
+        - orthostatics
+        - postural hypotension
+      answer: blood pressure lying down and standing up
+      notes:
+        blood pressure lying down and standing up: 무엇을 어떻게 잴지 환자가 그대로 알아듣는 말.
+        orthostatics: 기립성 활력징후(orthostatic vital signs)를 줄인 의료진의 말.
+        postural hypotension: 재는 대상이 아니라 진단명이라 이 자리에 맞지 않는다.
 - id: SCN-ER-00545
   profession: ""
   eventId: EVT-ER-00135
@@ -68633,7 +68725,6 @@
         - w-take
         - w-medicine
         - w-every
-        - w-day
         - w-sometimes
       goal: 1
     - en: These medicines can raise your risk of bleeding.
@@ -68662,6 +68753,60 @@
         - w-stop
         - w-medicine
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-every
+        - w-sometimes
+        - w-regularly
+      why: 하루도 빠짐없이 먹으면 every day(regularly)예요. NSAID를 매일 먹는 사람은 궤양·출혈 위험이 커서, 복용 빈도를 구체적으로 물어요.
+      cue: 'Patient: "Two every morning and two every night — I never miss."'
+      scale:
+        - now and then
+        - sometimes
+        - every day
+      answerAt: 2
+      example: She takes ibuprofen every day for her back.
+      exKo: 허리 때문에 이부프로펜을 매일 드세요.
+    - kind: swap
+      words:
+        - w-thinner
+        - w-take
+      why: 와파린·아픽사반을 먹는 환자도 스스로는 blood thinner라고 불러요. 그 말로 물어야 빠짐없이 대답해요.
+      who: 환자에게 · 복용약 문진
+      icon: me
+      before:
+        - 'Which '
+        - anticoagulant
+        - ' do you take?'
+      options:
+        - blood thinner
+        - anticoagulant
+        - blood medicine
+      answer: blood thinner
+      notes:
+        anticoagulant: 정확하지만 의료진의 말. 모르는 환자가 많다.
+        blood medicine: 혈압약·철분제까지 떠올릴 수 있어 무엇을 묻는지 흐리다.
+        blood thinner: 미국 환자가 항응고제를 부르는 가장 흔한 말.
+    - kind: context
+      words:
+        - w-reliever
+        - w-ibuprofen
+      why: NSAID는 의료진의 약어라 환자는 자기가 먹는 약이 거기 드는 줄 모르기도 해요. 흔한 이름·상품명을 들어 물어요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: She's been taking ibuprofen 800 mg three times a day.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Reports daily NSAID use (ibuprofen 800 mg TID).
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Are you on any NSAIDs?
+          ok: false
+          fix: Do you take any pain relievers like ibuprofen, Advil, or Motrin?
 - id: SCN-ER-00546
   profession: ""
   eventId: EVT-ER-00135
@@ -68730,7 +68875,6 @@
         - '?'
       words:
         - w-many
-        - w-day
         - w-stool
         - w-look
         - w-black
@@ -68800,9 +68944,63 @@
         - w-check
         - w-blood
         - w-count
-        - w-look
         - w-anemia
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-short
+        - w-breath
+      why: 우편함까지 걷는 가벼운 활동에도 숨이 차서 멈춰야 하면 가벼운 활동 시 호흡곤란이에요. 가만히 있어도 숨이 차면 더 심한 빈혈·실혈을 생각하고 바로 보고해요.
+      cue: 'Patient: "I get winded just walking to the mailbox — I have to stop and rest."'
+      scale:
+        - winded with heavy exertion
+        - short of breath with light activity
+        - short of breath at rest
+      answerAt: 1
+      example: He gets short of breath with activity, but not at rest.
+      exKo: 움직이면 숨이 차지만 쉬고 있을 땐 괜찮아요.
+    - kind: swap
+      words:
+        - w-count
+        - w-blood
+        - w-anemia
+      why: 빈혈 검사는 환자에게 blood count로 말하면 충분해요. H&H는 동료와 차트의 말이에요.
+      who: 환자에게 · 검사 설명
+      icon: me
+      before:
+        - 'We''ll check your '
+        - H&H
+        - ' to look for anemia.'
+      options:
+        - blood count
+        - H&H
+        - hematocrit level
+      answer: blood count
+      notes:
+        H&H: 혈색소·적혈구용적률을 줄인 의료진끼리의 약어.
+        blood count: 환자가 흔히 듣고 아는 쉬운 말.
+        hematocrit level: 틀리진 않지만 환자에게는 낯선 검사 이름이다.
+    - kind: context
+      words:
+        - w-anemia
+        - w-weak
+        - w-tired
+      why: symptomatic anemia는 '증상이 있는 빈혈'이라는 의료진의 말이에요. 환자에게는 수치가 낮고 그래서 피곤·기운 없음이 온다고 풀어 말해요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: Her hemoglobin is 7.2, down from 11 last month.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Symptomatic anemia, Hgb 7.2.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You have symptomatic anemia.
+          ok: false
+          fix: Your blood count is low, and that can make you feel tired and weak.
 - id: SCN-ER-00547
   profession: ""
   eventId: EVT-ER-00135
@@ -68932,7 +69130,6 @@
       words:
         - w-needle
         - w-pinch
-        - w-last
         - w-second
       goal: 2
     - en: I'll stay right here with you the whole time.
@@ -68948,8 +69145,65 @@
         - w-right
         - w-here
         - w-whole
-        - w-time
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-needle
+        - w-pinch
+        - w-whole
+        - w-safely
+        - w-possible
+      why: 바늘이 들어갈 때 따끔함은 needle pinch, 처음부터 끝까지는 the whole time, '최대한 안전하게'는 as safely as possible로 붙어 다녀요.
+      pairs:
+        - - needle
+          - pinch
+        - - the whole
+          - time
+        - - as safely
+          - as possible
+      decoys:
+        - steadily
+    - kind: swap
+      words:
+        - w-large
+        - w-iv
+        - w-need
+      why: 굵은 정맥로가 왜 필요한지는 환자에게 large로 충분해요. large-bore·게이지는 동료에게 쓰는 말이에요.
+      who: 환자에게 · 정맥로 설명
+      icon: me
+      before:
+        - 'We need two '
+        - large-bore
+        - ' IVs in case you need blood quickly.'
+      options:
+        - large
+        - large-bore
+        - 18-gauge
+      answer: large
+      notes:
+        18-gauge: 게이지 숫자는 환자에게 뜻이 전해지지 않는다.
+        large: 환자가 바로 알아듣는 쉬운 말.
+        large-bore: 굵은 관이라는 의료진의 말. 틀리진 않지만 환자에게는 낯설다.
+    - kind: context
+      words:
+        - w-fluid
+        - w-iv
+      why: NS bolus는 의료진끼리의 말이에요. 환자에게는 수액을 넣는다는 것과 그 이유를 쉬운 말로 알려요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: Two 18-gauge IVs are in, and a liter of saline is running.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Two large-bore PIVs placed; NS 1 L bolus started.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: I'm hanging a one-liter NS bolus now.
+          ok: false
+          fix: I'm starting some IV fluids now to help your blood pressure.
 - id: SCN-ER-00548
   profession: ""
   eventId: EVT-ER-00135
@@ -69089,13 +69343,67 @@
         - with a small camera
         - .
       words:
-        - w-doctor
-        - w-look
         - w-inside
         - w-stomach
         - w-small
         - w-camera
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-drink
+        - w-heavily
+        - w-alcohol
+      why: 미국 CDC 기준으로 남성은 주 15잔 이상이면 heavy drinking이에요. 거의 매일 밤 맥주 여섯 캔이면 그 선을 훌쩍 넘어요. 음주량은 '며칠에 몇 잔'처럼 숫자로 물어요.
+      cue: 'Patient: "A six-pack most nights, more on the weekends."'
+      scale:
+        - socially
+        - regularly
+        - heavily
+      answerAt: 2
+      example: He has been drinking heavily for years.
+      exKo: 몇 년째 술을 많이 드셨어요.
+    - kind: swap
+      words:
+        - w-endoscopy
+        - w-camera
+        - w-stomach
+      why: EGD는 차트·동료의 말이고, 환자에게는 endoscopy에 '작은 카메라'를 붙여 설명해요.
+      who: 환자에게 · 내시경 설명
+      icon: me
+      before:
+        - 'The doctor will do an '
+        - EGD
+        - ' to look inside your stomach.'
+      options:
+        - endoscopy
+        - EGD
+        - upper GI
+      answer: endoscopy
+      notes:
+        EGD: 위내시경(식도·위·십이지장경)의 의료진 약어.
+        endoscopy: 환자에게 흔히 쓰는 말. 작은 카메라로 본다고 덧붙이면 된다.
+        upper GI: 바륨을 삼키고 찍는 X선 검사(upper GI series)의 이름이기도 해서 다른 검사로 들린다.
+    - kind: context
+      words:
+        - w-lower
+        - w-pressure
+        - w-vein
+      why: portal venous pressure(문맥압)는 의료진의 말이에요. 환자에게는 '혈관 속 압력을 낮춘다'로 충분해요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: Octreotide drip is started to lower portal pressure.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Octreotide infusion initiated for suspected variceal bleed.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: This infusion will decrease your portal venous pressure.
+          ok: false
+          fix: This medicine will help lower the pressure in your veins.
 - id: SCN-ER-00549
   profession: ""
   eventId: EVT-ER-00135
@@ -69243,6 +69551,61 @@
         - w-acid
         - w-stomach
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-suggest
+        - w-coffee-grounds
+        - w-appearance
+      why: 커피 찌꺼기 모양은 상부 출혈을 '시사'할 뿐이고, 확진은 내시경으로 해요. 아직 보지 않은 것을 confirms라고 말하지 않아요.
+      cue: 'Doctor: "It points to an upper source, but we won''t know for sure until we scope."'
+      scale:
+        - rules out
+        - suggests
+        - confirms
+      answerAt: 1
+      example: The coffee-ground appearance suggests bleeding in your stomach.
+      exKo: 커피 찌꺼기 모양은 위 출혈을 시사해요.
+    - kind: swap
+      words:
+        - w-acid
+        - w-reduce
+        - w-medicine
+      why: 판토프라졸 같은 PPI는 위산 분비를 줄이는 약이에요. 환자에게는 '위산을 줄이는 약'으로 말하고, 제산제(antacid)와 섞지 않아요.
+      who: 환자에게 · 약 설명
+      icon: me
+      before:
+        - 'We''ll start an IV '
+        - PPI
+        - ' and plan for an endoscopy.'
+      options:
+        - acid-reducing medicine
+        - PPI
+        - antacid
+      answer: acid-reducing medicine
+      notes:
+        PPI: 양성자펌프억제제의 의료진 약어.
+        acid-reducing medicine: 무슨 약인지 환자가 바로 아는 말.
+        antacid: 텀스처럼 이미 나온 위산을 중화하는 먹는 제산제라 다른 약이다.
+    - kind: context
+      words:
+        - w-heartburn
+        - w-eat
+      why: postprandial(식후)·epigastric(명치)은 차트의 말이에요. 환자에게는 heartburn, after eating으로 물어요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: He reports heartburn after meals for the past month.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Reports postprandial epigastric burning x1 month.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Do you have postprandial epigastric burning?
+          ok: false
+          fix: Do you get heartburn after eating?
 - id: SCN-ER-00550
   profession: ""
   eventId: EVT-ER-00135
@@ -69312,7 +69675,6 @@
         - '?'
       words:
         - w-many
-        - w-time
         - w-pass
         - w-blood
         - w-much
@@ -69357,7 +69719,6 @@
         - '?'
       words:
         - w-blood
-        - w-come
         - w-stool
         - w-itself
       goal: 1
@@ -69388,11 +69749,65 @@
       words:
         - w-colonoscopy
         - w-help
-        - w-doctor
         - w-find
         - w-bleed
-        - w-come
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-blood
+        - w-much
+        - w-pass
+      why: 변기 물 전체가 빨갛고 핏덩이까지 섞였다면 다량 출혈이에요. 휴지에 줄처럼 묻는 정도(a streak)와는 긴급도가 전혀 달라서, 양을 꼭 따로 물어요.
+      cue: 'Patient: "The whole toilet bowl turned red, and there were clots in it."'
+      scale:
+        - a streak
+        - a small amount
+        - a large amount
+      answerAt: 2
+      example: She passed a large amount of blood with clots.
+      exKo: 핏덩이가 섞인 피를 많이 보셨어요.
+    - kind: swap
+      words:
+        - w-colonoscopy
+        - w-find
+        - w-source
+      why: 하부 출혈의 원인을 찾는 검사는 환자에게 colonoscopy로 말해요. 흔한 선별검사라 이름을 아는 환자가 많아요.
+      who: 환자에게 · 검사 설명
+      icon: me
+      before:
+        - 'You''ll likely need a '
+        - lower endoscopy
+        - ' to find the source.'
+      options:
+        - colonoscopy
+        - lower endoscopy
+        - sigmoidoscopy
+      answer: colonoscopy
+      notes:
+        colonoscopy: 미국 환자 대부분이 들어 본 검사 이름.
+        lower endoscopy: 틀리진 않지만 의료진이 쓰는 넓은 말이다.
+        sigmoidoscopy: 대장의 끝부분(S상결장)까지만 보는 다른 검사다.
+    - kind: context
+      words:
+        - w-pass
+        - w-blood
+        - w-many
+      why: hematochezia(선혈변)는 의료진의 말이에요. 환자에게는 passed blood처럼 쉬운 말로, 몇 번이었는지 물어요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: She's had three episodes of large-volume hematochezia.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Hematochezia x3 since 0200.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: How many episodes of hematochezia have you had?
+          ok: false
+          fix: How many times have you passed blood?
 - id: SCN-ER-00551
   profession: ""
   eventId: EVT-ER-00135
@@ -69475,7 +69890,6 @@
         - w-much
         - w-warfarin
         - w-take
-        - w-day
       goal: 1
     - en: We'll give medicine to reverse the blood thinner and stop the bleeding.
       ko: 항응고제를 역전시키고 출혈을 멈추는 약을 드릴게요.
@@ -69503,7 +69917,6 @@
         - recently
         - '?'
       words:
-        - w-doctor
         - w-change
         - w-warfarin
         - w-dose
@@ -69540,6 +69953,43 @@
         - w-after
         - w-treatment
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-vitamin-k
+        - w-thinner
+        - w-reverse
+        - w-effect
+      why: 와파린을 되돌리는 약은 vitamin K, 환자가 항응고제를 부르는 말은 blood thinner, '효과를 되돌리다'는 reverse the effect로 붙어요.
+      pairs:
+        - - vitamin
+          - K
+        - - blood
+          - thinner
+        - - reverse
+          - the effect
+      decoys:
+        - sooner
+    - kind: swap
+      words:
+        - w-blood
+        - w-inr
+      why: INR이 목표보다 높으면 동료에게는 supratherapeutic이지만, 환자에게는 '목표보다 높다', '피가 너무 묽다'고 말해요.
+      who: 환자에게 · INR 결과 설명
+      icon: me
+      before:
+        - 'Your INR is '
+        - supratherapeutic
+        - ' right now.'
+      options:
+        - higher than it should be
+        - supratherapeutic
+        - therapeutic
+      answer: higher than it should be
+      notes:
+        higher than it should be: 와파린을 먹는 환자가 바로 알아듣는 말. '피가 너무 묽다'고 덧붙여도 된다.
+        supratherapeutic: INR이 치료 목표치를 넘었다는 의료진의 말.
+        therapeutic: 목표 범위 안이라는 뜻이라 사실과 반대다.
 - id: SCN-ER-00552
   profession: ""
   eventId: EVT-ER-00135
@@ -69630,7 +70080,6 @@
         - w-chill
         - w-itch
         - w-trouble
-        - w-breath
       goal: 2
     - en: We'll watch you closely during the transfusion.
       ko: 수혈하는 동안 자세히 지켜볼게요.
@@ -69688,6 +70137,61 @@
         - w-often
         - w-transfusion
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-itch
+        - w-reaction
+      why: 가려움·두드러기만 있고 숨이 편하면 경한(mild) 알레르기 반응이에요. 그래도 수혈은 바로 멈추고 알려요. 숨이 차거나 목이 조이면 심한(severe) 반응으로 봐요.
+      cue: 'Patient: "My arms are a little itchy, but I''m breathing fine."'
+      scale:
+        - mild
+        - moderate
+        - severe
+      answerAt: 0
+      example: She had a mild reaction with some itching.
+      exKo: 약간의 가려움을 동반한 경한 반응이 있었어요.
+    - kind: swap
+      words:
+        - w-chill
+        - w-feel
+        - w-tell
+      why: 수혈 반응의 신호는 환자가 알아듣고 스스로 알릴 수 있는 말(chills, itching)로 알려 줘요.
+      who: 환자에게 · 수혈 반응 교육
+      icon: me
+      before:
+        - 'Tell me right away if you feel any '
+        - rigors
+        - .
+      options:
+        - chills
+        - rigors
+        - pyrexia
+      answer: chills
+      notes:
+        chills: 환자가 바로 아는 쉬운 말.
+        pyrexia: '''발열''의 의학어라 환자가 모르고, 느낀다고 말할 증상도 아니다.'
+        rigors: 몸이 떨릴 만큼 심한 오한을 가리키는 의료진의 말.
+    - kind: context
+      words:
+        - w-reaction
+        - w-watch
+        - w-closely
+      why: TRALI·TACO는 수혈 관련 폐손상·순환 과부하를 줄인 의료진의 말이에요. 환자에게는 '심한 반응은 드물고 계속 지켜본다'로 말해요.
+      scenes:
+        - who: 동료 간호사에게
+          icon: speech
+          en: TRALI and TACO are rare, but let's watch her closely.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Transfusion risks, including reactions, discussed; pt consents.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your risk of TRALI or TACO is low.
+          ok: false
+          fix: Serious reactions are rare, and we'll watch you closely the whole time.
 - id: SCN-ER-00553
   profession: ""
   eventId: EVT-ER-00135
@@ -69757,7 +70261,6 @@
         - '?'
       words:
         - w-vomit
-        - w-come
         - w-before
         - w-notice
         - w-blood
@@ -69771,7 +70274,6 @@
         - '?'
       words:
         - w-many
-        - w-time
         - w-vomit
         - w-beforehand
       goal: 2
@@ -69811,7 +70313,6 @@
       words:
         - w-blood
         - w-first
-        - w-time
         - w-vomit
       goal: 1
     - en: How much alcohol do you usually drink in a week?
@@ -69825,10 +70326,45 @@
       words:
         - w-much
         - w-alcohol
-        - w-usual
         - w-drink
-        - w-week
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-many
+        - w-much
+        - w-alcohol
+      why: 셀 수 있는 times는 How many, 셀 수 없는 alcohol은 How much예요. 음주량은 in a week처럼 기간을 붙여 물어요.
+      pairs:
+        - - How many
+          - times
+        - - How much
+          - alcohol
+        - - in a
+          - week
+      decoys:
+        - usually
+    - kind: swap
+      words:
+        - w-vomit
+        - w-notice
+        - w-before
+      why: Mallory-Weiss는 반복 구토 끝에 피가 나오는 순서가 단서예요. 그 순서를 환자가 헷갈리지 않게 vomiting으로 물어요.
+      who: 환자에게 · 발생 순서 문진
+      icon: me
+      before:
+        - 'Did the '
+        - emesis
+        - ' come before you noticed the blood?'
+      options:
+        - vomiting
+        - emesis
+        - nausea
+      answer: vomiting
+      notes:
+        emesis: 구토·구토물을 가리키는 의료진의 말.
+        nausea: '''메스꺼움''이라 실제로 토한 것과는 다르다.'
+        vomiting: 환자가 바로 아는 쉬운 말.
 - id: SCN-ER-00554
   profession: ""
   eventId: EVT-ER-00135
@@ -69972,8 +70508,40 @@
         - w-get
         - w-up
         - w-every
-        - w-time
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-weak
+      why: 다리에 힘이 풀려 전혀 서지 못했다면 가장 심한 쪽이에요. 이런 환자는 혼자 일어나지 않도록 낙상 예방을 바로 걸어요.
+      cue: 'Patient: "My legs just gave out — I couldn''t stand at all."'
+      scale:
+        - a little weak
+        - weak
+        - too weak to stand
+      answerAt: 2
+      example: He was too weak to stand on his own.
+      exKo: 혼자서는 설 수 없을 만큼 기운이 없으셨어요.
+    - kind: context
+      words:
+        - w-fall
+        - w-call
+        - w-help
+      why: high fall risk는 의료진이 붙이는 분류예요. 환자에게는 왜 위험한지와 어떻게 하면 되는지(부르면 도와준다)를 말해요.
+      scenes:
+        - who: 동료 간호사에게
+          icon: speech
+          en: She's a high fall risk — bed alarm is on.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Fall precautions in place; bed low, rails up x2.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're a high fall risk, so don't get up.
+          ok: false
+          fix: You might feel dizzy when you stand, so please call us and we'll help you get up.
 - id: SCN-ER-00555
   profession: ""
   eventId: EVT-ER-00135
@@ -70034,7 +70602,7 @@
   theme: er-gi-bleed
   sentences:
     - en: I respect your decision and want to understand your wishes fully.
-      ko: 당신의 결정을 존중하고 바람을 완전히 이해하고 싶어요.
+      ko: 결정을 존중하고 바람을 완전히 이해하고 싶어요.
       chunks:
         - I respect
         - your decision
@@ -70050,7 +70618,7 @@
         - w-fully
       goal: 1
     - en: There are other treatments we can use to support you.
-      ko: 당신을 돕기 위해 쓸 수 있는 다른 치료법들이 있어요.
+      ko: 환자분을 돕기 위해 쓸 수 있는 다른 치료법들이 있어요.
       chunks:
         - There are
         - other treatments
@@ -70064,7 +70632,7 @@
         - w-support
       goal: 2
     - en: Let's document your preferences clearly with the team.
-      ko: 팀과 함께 당신의 선호를 명확하게 기록해 둘게요.
+      ko: 팀과 함께 환자분의 선호를 명확하게 기록해 둘게요.
       chunks:
         - Let's document
         - your preferences clearly
@@ -70077,7 +70645,7 @@
         - w-team
       goal: 1
     - en: Can you tell me more about your beliefs regarding blood transfusions?
-      ko: 수혈에 관한 당신의 신념을 더 말씀해 주시겠어요?
+      ko: 수혈에 관한 환자분의 신념을 더 말씀해 주시겠어요?
       chunks:
         - Can you tell me
         - more about
@@ -70108,7 +70676,7 @@
         - w-product
       goal: 2
     - en: The team will respect your wishes throughout your care.
-      ko: 치료 내내 팀이 당신의 바람을 존중할 거예요.
+      ko: 치료 내내 팀이 환자분의 바람을 존중할 거예요.
       chunks:
         - The team will respect
         - your wishes
@@ -70122,6 +70690,45 @@
         - w-throughout
         - w-care
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-respect
+        - w-decision
+        - w-product
+        - w-fully
+        - w-understand
+      why: 환자의 결정은 respect your decision, 적혈구·혈장·혈소판을 통틀어 blood products, '온전히 이해하다'는 fully understand로 붙어요.
+      pairs:
+        - - respect
+          - your decision
+        - - blood
+          - products
+        - - fully
+          - understand
+      decoys:
+        - loudly
+    - kind: swap
+      words:
+        - w-document
+        - w-preference
+        - w-clearly
+      why: 수혈 거부는 환자의 권리로 존중하는 결정이에요. 마주 보고는 wishes·preferences로 말해요.
+      who: 환자에게 · 결정 기록
+      icon: me
+      before:
+        - 'Let''s document your '
+        - noncompliance
+        - ' clearly with the team.'
+      options:
+        - preferences
+        - noncompliance
+        - refusal
+      answer: preferences
+      notes:
+        noncompliance: 치료 지시를 따르지 않는다는 뜻이라, 신념에 따른 결정에 붙이면 탓하는 말이 된다.
+        preferences: 환자의 뜻을 존중하며 적는다는 말.
+        refusal: 거부 서식에서는 쓰는 말이지만, 마주 앉아 말하면 거절만 강조한다.
 - id: SCN-ER-00556
   profession: ""
   eventId: EVT-ER-00136
@@ -70202,11 +70809,9 @@
         - last time
         - '?'
       words:
-        - w-know
         - w-find
         - w-treat
         - w-last
-        - w-time
       goal: 1
     - en: Has this type of bleeding happened more than once?
       ko: 이런 종류의 출혈이 한 번 넘게 있었나요?
@@ -70231,7 +70836,6 @@
         - '?'
       words:
         - w-many
-        - w-year
         - w-ago
         - w-last
         - w-procedure
@@ -70245,8 +70849,6 @@
         - back then
         - '?'
       words:
-        - w-doctor
-        - w-say
         - w-cause
         - w-then
       goal: 1
@@ -70266,6 +70868,60 @@
         - w-bleed
         - w-again
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-once
+        - w-happen
+        - w-bleed
+      why: 같은 출혈이 여러 번 되풀이되면 recurrent(재발성)예요. 재출혈 이력은 위험도와 치료 계획에 영향을 주니 횟수를 꼭 물어요.
+      cue: 'Patient: "This is the third time this year it''s happened."'
+      scale:
+        - the first time
+        - once before
+        - recurrent
+      answerAt: 2
+      example: She has a history of recurrent GI bleeding.
+      exKo: 위장관 출혈이 반복된 병력이 있어요.
+    - kind: swap
+      words:
+        - w-cause
+        - w-then
+      why: 지난번 출혈의 원인을 물을 때는 cause로 충분해요. etiology는 차트와 동료의 말이에요.
+      who: 환자에게 · 과거 시술 문진
+      icon: me
+      before:
+        - 'Did the doctors say anything about the '
+        - etiology
+        - ' back then?'
+      options:
+        - cause
+        - etiology
+        - pathology
+      answer: cause
+      notes:
+        cause: 환자가 바로 아는 쉬운 말.
+        etiology: '''원인''의 의학어. 환자는 대개 모른다.'
+        pathology: 조직 검사 결과(병리)를 가리켜 다른 것을 묻게 된다.
+    - kind: context
+      words:
+        - w-endoscopy
+        - w-history
+      why: s/p(status post, ~한 뒤)는 차트의 약어예요. 환자에게는 언제 무엇을 받았는지 풀어서 확인해요.
+      scenes:
+        - who: 인계
+          icon: speech
+          en: History of a bleeding ulcer, clipped on endoscopy in 2019.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Hx PUD with bleed s/p endoscopic clipping (2019).
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: So you're s/p endoscopic clipping in 2019?
+          ok: false
+          fix: So in 2019 you had an endoscopy where they clipped a bleeding ulcer?
 - id: SCN-ER-00557
   profession: ""
   eventId: EVT-ER-00136
@@ -70412,11 +71068,68 @@
         - .
       words:
         - w-heart
-        - w-doctor
         - w-stomach
         - w-decide
         - w-together
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-weigh
+        - w-too
+        - w-soon
+        - w-heart
+      why: 위험을 저울질하는 것은 weigh the risks, 너무 이르게는 too soon, 환자에게 심장내과 의사는 heart doctor로 붙어요.
+      pairs:
+        - - weigh
+          - the risks
+        - - too
+          - soon
+        - - heart
+          - doctor
+      decoys:
+        - loudly
+    - kind: swap
+      words:
+        - w-heart
+        - w-decide
+        - w-together
+      why: 한 문장 안에서 한쪽만 전문 용어면 어색해요. 환자에게는 heart doctor와 stomach doctor로 나란히 말해요.
+      who: 환자에게 · 협진 설명
+      icon: me
+      before:
+        - 'The '
+        - cardiac surgeon
+        - ' and the stomach doctor will decide together.'
+      options:
+        - heart doctor
+        - cardiac surgeon
+        - interventionalist
+      answer: heart doctor
+      notes:
+        cardiac surgeon: 심장을 수술하는 의사라 약을 두고 결정할 사람이 아니다.
+        heart doctor: 뒤의 stomach doctor와 짝이 맞는 쉬운 말.
+        interventionalist: 스텐트를 넣은 중재 심장내과 의사를 부르는 동료의 말. 환자는 모른다.
+    - kind: context
+      words:
+        - w-stent
+        - w-aspirin
+        - w-clopidogrel
+      why: DAPT(이중 항혈소판요법)·DES(약물방출 스텐트)는 의료진의 약어예요. 환자에게는 스텐트와 먹는 약 이름으로 확인해요.
+      scenes:
+        - who: 의사에게 보고
+          icon: stetho
+          en: He's three months out from a stent, on aspirin and clopidogrel.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: S/p DES 3 mo ago; on DAPT (ASA + clopidogrel).
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're on DAPT for your DES, right?
+          ok: false
+          fix: You had a stent put in about three months ago, and you take aspirin and clopidogrel for it, right?
 - id: SCN-ER-00558
   profession: ""
   eventId: EVT-ER-00136
@@ -70491,7 +71204,6 @@
         - w-pressure
         - w-drop
         - w-act
-        - w-now
       goal: 1
     - en: We're giving fluids and blood right away.
       ko: 수액과 혈액을 바로 드릴게요.
@@ -70534,7 +71246,6 @@
         - w-beat
         - w-fast
         - w-right
-        - w-now
       goal: 1
     - en: We need to act quickly to keep you safe.
       ko: 안전하게 지켜드리려면 빠르게 조치해야 해요.
@@ -70562,6 +71273,60 @@
         - w-blood
         - w-way
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-rate
+        - w-pressure
+        - w-drop
+      why: 빈맥이 있어도 혈압이 버티면 보상(compensated) 단계, 혈압까지 떨어지면 비보상(decompensated) 쇼크예요. 혈압 저하는 늦게 오는 신호라 빈맥부터 경계해요.
+      cue: 'Nurse: "Heart rate 128, BP 82/50, and she''s pale and clammy."'
+      scale:
+        - stable
+        - compensated
+        - decompensated
+      answerAt: 2
+      example: She's decompensating — her pressure is dropping.
+      exKo: 비보상 단계로 넘어가고 있어요. 혈압이 떨어지고 있어요.
+    - kind: swap
+      words:
+        - w-drop
+        - w-pressure
+      why: 쇼크를 알릴 때도 환자에게는 dropping처럼 쉬운 말에 '지금 조치 중'을 붙여요.
+      who: 환자에게 · 상태 알림
+      icon: me
+      before:
+        - 'Your heart rate is high and your pressure is '
+        - tanking
+        - .
+      options:
+        - dropping
+        - tanking
+        - hypotensive
+      answer: dropping
+      notes:
+        dropping: 사실을 분명히 말하면서 겁주지 않는 말.
+        hypotensive: 사람을 두고 쓰는 의학어라 pressure와 붙지 않고, 환자도 모른다.
+        tanking: 동료끼리 쓰는 속된 말. 환자에게는 공포를 준다.
+    - kind: context
+      words:
+        - w-blood
+        - w-way
+      why: MTP(대량수혈 프로토콜)는 팀과 혈액은행 사이의 말이에요. 환자에게는 '피가 더 오고 있다'로 충분해요.
+      scenes:
+        - who: 팀에게
+          icon: siren
+          en: Let's activate the massive transfusion protocol.
+          ok: true
+        - who: 혈액은행 전화
+          icon: speech
+          en: We need MTP activated for a GI bleed in bay 4.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We're activating MTP for you.
+          ok: false
+          fix: More blood is on the way for you.
 - id: SCN-ER-00559
   profession: ""
   eventId: EVT-ER-00136
@@ -70690,7 +71455,6 @@
         - w-suction
         - w-mouth
         - w-help
-        - w-breath
       goal: 1
     - en: This tube will press on the bleeding vessel to stop it.
       ko: 이 튜브가 출혈 혈관을 눌러서 멈추게 할 거예요.
@@ -70707,6 +71471,61 @@
         - w-vessel
         - w-stop
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-lot
+        - w-blood
+        - w-bring
+      why: 컵 단위로 멈추지 않고 토하면 대량(massive) 토혈이에요. 흡인 위험이 커서 기도 보호가 먼저예요.
+      cue: 'Nurse: "He''s bringing up bright red blood by the cupful, and it isn''t stopping."'
+      scale:
+        - streaks
+        - a moderate amount
+        - massive
+      answerAt: 2
+      example: He's having massive hematemesis — protect the airway.
+      exKo: 대량 토혈이에요. 기도를 보호하세요.
+    - kind: swap
+      words:
+        - w-special
+        - w-tube
+        - w-control
+      why: 풍선으로 정맥류를 누르는 관은 동료에게는 Blakemore, 환자에게는 '특수한 관'이라고 말해요.
+      who: 환자에게 · 시술 준비 설명
+      icon: me
+      before:
+        - 'We may need a '
+        - Blakemore
+        - ' tube to control the bleeding.'
+      options:
+        - special
+        - Blakemore
+        - feeding
+      answer: special
+      notes:
+        Blakemore: Sengstaken-Blakemore 튜브를 줄인 의료진의 말.
+        feeding: 영양을 넣는 관이라 전혀 다른 관이다.
+        special: 위급한 순간에 환자가 이해할 만큼만 알리는 말.
+    - kind: context
+      words:
+        - w-protect
+        - w-airway
+      why: intubate·airway protection은 팀의 말이에요. 환자에게는 '숨 쉬는 관을 넣어 기도를 지킨다'고 이유와 함께 말해요.
+      scenes:
+        - who: 팀에게
+          icon: siren
+          en: He can't protect his airway — let's intubate.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Intubated for airway protection in setting of massive hematemesis.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You can't protect your airway, so we're intubating you.
+          ok: false
+          fix: We're putting in a breathing tube to keep your airway safe while you're bleeding.
 - id: SCN-ER-00560
   profession: ""
   eventId: EVT-ER-00136
@@ -70804,11 +71623,9 @@
         - now
         - .
       words:
-        - w-give
         - w-team
         - w-update
         - w-lab
-        - w-now
       goal: 2
     - en: Are you still bleeding from the same spot?
       ko: 여전히 같은 부위에서 피가 나나요?
@@ -70834,10 +71651,8 @@
       words:
         - w-blood
         - w-clot
-        - w-way
         - w-should
         - w-right
-        - w-now
       goal: 1
     - en: The doctor needs to know your labs as soon as possible.
       ko: 의사 선생님이 최대한 빨리 검사 수치를 알아야 해요.
@@ -70848,13 +71663,50 @@
         - as soon as possible
         - .
       words:
-        - w-doctor
         - w-need
-        - w-know
         - w-lab
         - w-soon
         - w-possible
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-soon
+        - w-possible
+        - w-update
+        - w-clot
+        - w-disorder
+      why: '''되도록 빨리''는 as soon as possible, 형식을 갖춘 보고는 SBAR update, 피가 잘 안 굳는 병은 clotting disorder로 붙어요.'
+      pairs:
+        - - as soon as
+          - possible
+        - - SBAR
+          - update
+        - - clotting
+          - disorder
+      decoys:
+        - spot
+    - kind: swap
+      words:
+        - w-plasma
+        - w-platelet
+        - w-order
+      why: FFP는 동료와 혈액은행에 쓰는 약어예요. 환자에게는 plasma로 말해요.
+      who: 환자에게 · 수혈 설명
+      icon: me
+      before:
+        - 'We''re ordering platelets and '
+        - FFP
+        - ' to help you clot.'
+      options:
+        - plasma
+        - FFP
+        - clotting factors
+      answer: plasma
+      notes:
+        FFP: 신선동결혈장(fresh frozen plasma)의 의료진 약어.
+        clotting factors: 특정 응고인자를 농축한 다른 제제라 뜻이 달라진다.
+        plasma: 환자에게 쉬운 말.
 - id: SCN-ER-00561
   profession: ""
   eventId: EVT-ER-00136
@@ -70969,7 +71821,6 @@
         - w-fall
         - w-quickly
         - w-right
-        - w-now
       goal: 1
     - en: We're stopping the procedure to keep you safe.
       ko: 안전하게 지켜드리려고 시술을 멈출게요.
@@ -70994,12 +71845,44 @@
         - .
       words:
         - w-help
-        - w-come
         - w-into
-        - w-room
         - w-right
-        - w-now
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-pause
+        - w-stop
+        - w-procedure
+      why: 잠시 멈췄다가 다시 이어 가면 pause, 시술을 끝내고 접으면 stop이에요. 기록·인계할 때 둘을 가려 써요.
+      cue: 'Endoscopist: "Hold on — let''s wait until her pressure comes back up, then keep going."'
+      scale:
+        - slow down
+        - pause
+        - stop
+      answerAt: 1
+      example: We paused the procedure until her pressure came up.
+      exKo: 혈압이 오를 때까지 시술을 잠시 멈췄어요.
+    - kind: swap
+      words:
+        - w-oxygen
+        - w-level
+      why: 모니터 숫자는 동료에게 sats·SpO2로 말하고, 환자에게는 oxygen level로 말해요.
+      who: 환자에게 · 상태 알림
+      icon: me
+      before:
+        - 'Your '
+        - sats are
+        - ' falling quickly right now.'
+      options:
+        - oxygen level is
+        - sats are
+        - SpO2 is
+      answer: oxygen level is
+      notes:
+        SpO2 is: 모니터·차트의 표기라 환자에게는 뜻이 전해지지 않는다.
+        oxygen level is: 환자가 바로 알아듣는 쉬운 말.
+        sats are: 산소포화도(saturation)를 줄인 동료끼리의 말.
 - id: SCN-ER-00562
   profession: ""
   eventId: EVT-ER-00136
@@ -71129,7 +72012,6 @@
       words:
         - w-move
         - w-different
-        - w-room
         - w-procedure
       goal: 2
     - en: The next team will know your full history and current condition.
@@ -71143,12 +72025,70 @@
       words:
         - w-next
         - w-team
-        - w-know
         - w-full
         - w-history
         - w-current
         - w-condition
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-hand-off
+        - w-information
+        - w-full
+        - w-history
+        - w-small
+        - w-catheter
+      why: 다음 팀에 넘기는 것은 hand off your information, 빠짐없는 병력은 full history, 혈관 안으로 넣는 가는 관은 small catheter로 붙어요.
+      pairs:
+        - - hand off
+          - your information
+        - - full
+          - history
+        - - small
+          - catheter
+      decoys:
+        - condition
+    - kind: swap
+      words:
+        - w-send
+        - w-specialist
+      why: 색전술은 수술이 아니라 영상의학과 전문의가 관을 넣어 하는 시술이에요. 환자에게는 IR 대신 a specialist로 말해요.
+      who: 환자에게 · 이송 설명
+      icon: me
+      before:
+        - 'The bleeding hasn''t stopped, so we''re sending you to '
+        - IR
+        - .
+      options:
+        - a specialist
+        - IR
+        - surgery
+      answer: a specialist
+      notes:
+        IR: 중재영상의학과(interventional radiology)의 의료진 약어.
+        a specialist: 환자가 바로 알아듣는 말. 무엇을 하는지는 이어서 설명한다.
+        surgery: 수술이라는 다른 처치로 들려 불필요하게 겁을 준다.
+    - kind: context
+      words:
+        - w-block
+        - w-vessel
+        - w-catheter
+      why: embolization(색전술)·IR은 의료진의 말이에요. 환자에게는 가는 관으로 피 나는 혈관을 막는다고 풀어 말해요.
+      scenes:
+        - who: 인계
+          icon: speech
+          en: Ongoing lower GI bleed, CTA positive — going to IR for embolization.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Pt transferred to IR for mesenteric embolization.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're going to IR for embolization.
+          ok: false
+          fix: A specialist will block the bleeding vessel through a small tube.
 - id: SCN-ER-00563
   profession: ""
   eventId: EVT-ER-00136
@@ -71233,7 +72173,6 @@
         - w-vitalsigns
         - w-change
         - w-call
-        - w-doctor
       goal: 2
     - en: I'll report your situation, background, and vitals clearly.
       ko: 상황, 배경, 활력징후를 명확하게 보고할게요.
@@ -71283,12 +72222,68 @@
         - right away
         - .
       words:
-        - w-doctor
         - w-need
         - w-hear
         - w-change
         - w-right-away
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-right-away
+        - w-hear
+        - w-change
+      why: 한 시간 새 혈압이 크게 떨어지고 핏덩이가 나왔으면 재출혈을 의심해 바로 알려야 해요. 아침 회진이나 한 시간 뒤까지 미룰 일이 아니에요.
+      cue: 'Nurse to on-call: "BP dropped from 118 to 84 in the last hour, and she just passed a large clot."'
+      scale:
+        - at morning rounds
+        - within the hour
+        - right away
+      answerAt: 2
+      example: The doctor needs to hear about this change right away.
+      exKo: 의사가 이 변화를 바로 알아야 해요.
+    - kind: swap
+      words:
+        - w-vitals
+        - w-report
+      why: 환자에게 보고 내용을 알려 줄 때는 vitals처럼 익숙한 말을 써요.
+      who: 환자에게 · 보고 설명
+      icon: me
+      before:
+        - 'I''ll report your situation, background, and '
+        - hemodynamics
+        - ' clearly.'
+      options:
+        - vitals
+        - hemodynamics
+        - numbers
+      answer: vitals
+      notes:
+        hemodynamics: 혈역학이라는 의료진의 말. 환자에게는 낯설다.
+        numbers: 무엇의 숫자인지 흐려 보고 내용이 모호하게 들린다.
+        vitals: 환자도 흔히 듣는 말.
+    - kind: reel
+      words:
+        - w-change
+      word: change
+      scenes:
+        - who: 간호사 → 당직의
+          en: Her vitals have changed — BP is down to 84 systolic.
+          ko: 바이탈이 변했어요. 수축기 혈압이 84까지 떨어졌어요.
+          tone: 급함
+        - who: 차트 기록
+          en: Acute change in condition; on-call MD notified.
+          ko: 급성 상태 변화, 당직의에게 알림.
+          tone: 건조
+        - who: 야간 인계
+          en: Watch for any change in stool color overnight.
+          ko: 밤사이 대변 색이 변하는지 지켜봐 주세요.
+          tone: 경고
+        - who: 환자에게는…
+          en: Something has changed, so I'm getting the doctor to see you now.
+          ko: 상태가 좀 달라져서 지금 의사 선생님을 모셔 올게요.
+          tone: 안심
+          swap: true
 - id: SCN-ER-00564
   profession: ""
   eventId: EVT-ER-00136
