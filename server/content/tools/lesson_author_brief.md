@@ -95,6 +95,127 @@ situations:
 - `ipa`는 미국식 발음기호. `example`은 그 단어가 쓰인 짧은 한 문장.
 - **은행에 있으나 어느 문장에도 안 쓰인 단어는 두지 마세요.** 필요해서 만든 것만 남깁니다.
 
+## v45 — 단어마다 더하는 회상 재료
+
+STEP 1은 단어를 보여 주고 외우게 하지 않고, **뜻과 단서를 보여 주고 영어를 떠올리게** 합니다.
+문제는 세 가지가 번갈아 나오는데(조각 맞추기 · 영어 고르기 · 듣고 뜻 고르기), 한 단어가 여러
+상황에 나오므로 **어느 유형이 나올지는 앱이 정합니다.** 그래서 단어마다 **세 유형의 재료를 전부**
+씁니다.
+
+```yaml
+- id: w-hypotensive
+  en: hypotensive
+  ipa: /ˌhaɪpəˈtɛnsɪv/
+  ko: 저혈압의
+  icon: monitor
+  example: "Patient is hypotensive, BP 88 over 54."
+  exKo: "저혈압, 혈압 88/54."
+  cue: "혈압이 낮은 상태 — BP 88/54"
+  tag: 바이탈
+  distractorsEn: [hypertensive, hypoxic]
+  distractorsKo: [고혈압의, 저산소의]
+  chips: [[hypo, tens, ive]]
+  decoyChips: [hyper, ion]
+```
+
+- **`cue`** — 카드 앞면의 맥락 단서(한국어). 이 말을 **언제·누구에게** 쓰는지가 떠오르게 쓰세요.
+  **정답 영어를 쓰면 안 됩니다**(V13). `ko`를 되풀이하지도 마세요 — `ko`는 이미 카드에 있습니다.
+- **`exKo`** — `example`의 자연스러운 한국어 번역.
+- **`tag`** — 두세 글자짜리 분류(`바이탈` · `외상 인계` · `신경 사정`). 같은 주제 안에서 일관되게.
+- **`distractorsEn` 2개** — **정답과 헷갈릴 만한 영어.** 이것이 이 문제의 전부입니다.
+  - 좋음: `restrained driver` → `restless driver`, `retained driver` (철자·소리가 닮았다)
+  - 좋음: `hypotensive` → `hypertensive`, `hypoxic` (같은 접두사, 같은 분야)
+  - 나쁨: `hypotensive` → `wristband`, `family` (한눈에 틀린 것이 보인다)
+  - 같은 품사로 쓰세요. 같은 주제 은행의 다른 단어를 써도 됩니다 — 실제로 헷갈리는 말이 가장
+    좋은 오답입니다. 정답과 같거나 서로 같은 것은 V13이 잡습니다.
+- **`distractorsKo` 2개** — 소리를 듣고 뜻을 고르는 문제의 오답. 같은 분야의 그럴듯한 뜻으로
+  (`악화되다` → `안정되다`, `의식을 잃다`).
+- **`chips`** — 조각 맞추기의 정답. **낱말의 목록이고, 낱말은 조각의 목록**입니다. 낱말 안의 조각은
+  붙고 낱말 사이에만 한 칸이 들어갑니다. 이어서 `en`과 **글자 그대로** 같아야 합니다(V12).
+
+      [[hypo, tens, ive]]                    → hypotensive
+      [[en], [route]]                        → en route
+      [[mech, a, nism], [of], [in, ju, ry]]  → mechanism of injury
+
+  의미 있는 형태소에서 자르세요(`hypo`·`tens`·`ive`). 낱말 하나를 조각 2~4개로, 전체가 6개를
+  넘지 않게. 짧은 한 낱말(`GCS`·`pain`)은 `[[GCS]]`처럼 조각 하나여도 됩니다 — 그 단어는 앱이
+  조각 맞추기를 건너뜁니다. **대소문자와 하이픈도 `en` 그대로**입니다(`X-ray` → `[[X-, ray]]`).
+- **`decoyChips` 1개 이상** — 섞을 오답 조각. 정답 조각과 닮게(`hypo`에 `hyper`). 정답 조각과
+  같으면 V13이 잡습니다.
+
+## v45 — 상황마다 더하는 뉘앙스 문항
+
+같은 뜻이라도 **누구에게, 어떤 상황에서** 하느냐에 따라 말의 온도가 다릅니다. 상황마다 그 장면에
+맞는 뉘앙스 문항을 씁니다. 상황의 `sentences:` 옆에 `nuance:`를 둡니다.
+
+**최솟값(V14):** 상황마다 STEP 1 문항(`slider` 또는 `pair`) 1개 이상, STEP 2 문항(`context`·
+`swap`·`reel` 중) 1개 이상. 종류를 억지로 채우지 마세요 — 그 장면에 자연스러운 것을 고릅니다.
+`reel`은 0~1개.
+
+**모든 문항은 `words:`로 자기가 다루는 단어 id를 적습니다(V15).** 그 id는 **이 상황의 문장이
+쓰는 단어**여야 합니다. 앱이 "STEP 1에서 틀린 단어가 STEP 2에 다시 나오게" 할 때 이 연결을 씁니다.
+
+```yaml
+nuance:
+  - kind: slider                       # 강도 저울 — 유의어를 약함 → 강함으로
+    words: [w-pain]
+    cue: "Patient: \"It's… bearable, but it won't go away.\""
+    scale: [discomfort, pain, agony]   # 3개 이상, 약한 것부터
+    answerAt: 0                        # 단서에 맞는 자리(0부터)
+    why: "\"bearable\"이면 discomfort 쪽. 한국어로는 다 '아프다'지만 온도가 달라요."
+    example: "Some discomfort is expected after the procedure."
+    exKo: "시술 후 약간의 불편감은 정상이에요."
+  - kind: pair                         # 콜로케이션 — 무엇과 같이 쓰나
+    words: [w-administer]
+    pairs: [[administer, medication], [titrate, the drip], [en route, to the ER]]   # 2쌍 이상
+    decoys: [the patient]              # 1개 이상
+    why: "administer는 '투여하다'라 medication과, titrate는 용량을 '조절'하니 drip과."
+  - kind: reel                         # 문장 릴 — 한 단어가 여러 장면에서
+    words: [w-deteriorate]
+    word: deteriorate
+    scenes:                            # 4장 이상. 마지막을 "이 사람에게는 이렇게" 카드로(swap: true)
+      - {who: "구급대원 → 간호사", en: "She started to deteriorate en route.", ko: "이송 중 나빠지기 시작했어요.", tone: 급함}
+      - {who: "차트 기록", en: "Pt condition deteriorated despite fluids.", ko: "수액에도 상태 악화.", tone: 건조}
+      - {who: "야간 인계", en: "If he deteriorates overnight, call RRT.", ko: "밤새 악화되면 신속대응팀 호출.", tone: 경고}
+      - {who: "보호자에게는…", en: "He's getting worse, and we're acting on it.", ko: "상태가 나빠지고 있고, 조치 중이에요.", tone: 완곡, swap: true}
+  - kind: context                      # 같은 뜻 다른 장면 — 셋 중 어색한 하나
+    words: [w-deteriorate]
+    scenes:                            # 정확히 3장, ok: false 는 정확히 1장이고 거기에 fix
+      - {who: 차트 기록, icon: board, en: "Pt condition deteriorated overnight.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Your mother deteriorated last night.", ok: false, fix: "Your mother got worse last night, and we've started treatment."}
+      - {who: 야간 의사 콜, icon: monitor, en: "He is deteriorating — SpO2 down to 86.", ok: true}
+    why: "의료진끼리는 정확한 임상어가 좋지만, 가족에게는 차갑게 들려요."
+  - kind: swap                         # 한 단어 바꾸기
+    words: [w-died]
+    who: "보호자에게 · 임종 소식"
+    icon: me
+    before: ["Your mom ", "died", " last night."]   # 앞 · 바꿀 말 · 뒤 (스페이스까지 그대로)
+    options: [passed away, expired, is gone]
+    answer: passed away
+    notes: {passed away: "가족 앞에서 표준인 완곡 표현.", expired: "차트·행정 용어. 사람에게는 차갑다.", is gone: "너무 모호해 오해의 여지."}
+    why: "died는 사실이지만 직설이라 가족에겐 충격이 커요."
+```
+
+- **`why`와 `notes`는 사실이어야 합니다.** 미국 병원에서 실제로 그렇게 쓰이는지 확신이 없는 뉘앙스는
+  쓰지 마세요. 그럴듯하지만 틀린 해설은 틀린 오답보다 나쁩니다 — 학습자가 그대로 믿습니다.
+- `icon`은 위 단어 아이콘과 같은 목록에서.
+- `context`의 세 장면은 **같은 뜻**이어야 합니다. 뜻이 달라서 어색한 것이 아니라, 듣는 사람·자리에
+  맞지 않아서 어색한 것이어야 합니다.
+- 따옴표 없는 `off`·`on`·`no`·`yes`는 YAML이 불리언으로 읽습니다. 문자열이면 따옴표로 감싸세요.
+
+## 보강 모드 — 이미 v44 콘텐츠가 있는 주제 (ER · ICU · OR)
+
+입력으로 **이미 만들어진 주제 파일**(`theme · words · situations[].sentences`)을 받습니다. 할 일은
+**새 필드를 덧붙이는 것뿐**입니다.
+
+- 단어마다 위의 v45 필드 7개를 더합니다.
+- 상황마다 `nuance:`를 더합니다.
+- **기존 값은 한 글자도 바꾸지 마세요** — 단어의 `id · en · ko · ipa · icon · example`, 문장의
+  `en · ko · chunks · words · goal`. 이미 검사를 통과해 앱에 나가는 문장 12,516개입니다.
+  고칠 것이 보이면 고치지 말고 보고에 적으세요. 검사기가 정본과 비교해 바뀐 것을 잡습니다(V16).
+- 단어를 더하거나 빼지 마세요. 뉘앙스에 필요한 말(`agony`·`passed away`)은 `words`가 아니라
+  문항 안에 씁니다 — `nuance.words`는 이미 문장이 쓰는 단어 id만 가리킵니다.
+
 ## 파일은 나눠서 쓰세요
 
 상황이 20건을 넘으므로 **한 번에 다 쓰려 하면 출력 한도에 걸립니다.** 실제로 한 번 그렇게

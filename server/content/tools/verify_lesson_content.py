@@ -24,7 +24,26 @@ build-spec-index.md §2·§2-1·§2-2·§6, implementation-plan.md §B에 있다
     V8  청크가 실제로 문장을 쪼갠다 (조립 문제에 풀 것이 있도록)
     V9  청크가 구를 가로질러 자르지 않는다 (의미로 순서를 정할 수 있도록)
 
-V1~V6·V8·V9는 오류(비정상 종료 코드), V7은 경고(항상 종료 코드에 영향 없음)다.
+    V10 은행 안에 같은 id가 두 번 있다
+    V11 은행 항목의 값이 문자열이 아니다 (따옴표 없는 off·on·no·yes)
+
+v45 (build-spec-index.md §11 — Go 쪽 content/nuance.go 와 같은 규칙):
+
+    V12 v45 은행의 모든 단어에 exKo·cue·tag·distractorsEn 2·distractorsKo 2·decoyChips ≥1이 있고,
+        chips를 이음 규칙으로 이으면 en과 같다 (낱말 안의 조각은 붙이고 낱말 사이는 한 칸)
+    V13 오답이 정답과 같지 않고 오답끼리 다르다, 오답 조각이 정답 조각에 없다, cue에 정답 영어가 없다
+    V14 뉘앙스 kind가 허용 집합이고 모양이 맞다. v45 은행의 상황은 STEP 1(slider|pair) ≥1,
+        STEP 2(reel|context|swap) ≥1
+    V15 뉘앙스의 words가 비어 있지 않고, 전부 이 상황 문장이 쓰는 단어 id다
+    V16 (--baseline) 보강 패스가 v44 필드를 바꾸지 않았다 — 단어의 id·en·ko·ipa·icon·example,
+        문장의 en·ko·chunks·words·goal
+
+v45 필드가 하나도 없는 은행은 v44 콘텐츠로 보고 V12~V14의 최솟값을 묻지 않는다(보강 전의
+ER·ICU·OR). 한 단어라도 v45 필드가 있으면 그 은행 전체가 v45다.
+
+    python3 verify_lesson_content.py --dept er --baseline HEAD   # 보강 전(HEAD)과 비교해 V16
+
+V7은 경고(항상 종료 코드에 영향 없음), 나머지는 전부 오류(비정상 종료 코드)다.
 
 ## V9 — 왜 V8만으로도 부족한가
 
@@ -849,6 +868,166 @@ def assembles_to(chunks: list[str], en: str) -> bool:
 # 검사 본체
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# v45 — 회상 재료(단어)와 뉘앙스(상황). Go 쪽 content/nuance.go 와 규칙을 맞춘다.
+# ---------------------------------------------------------------------------
+
+V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chips", "decoyChips")
+NUANCE_STEP = {"slider": 1, "pair": 1, "reel": 2, "context": 2, "swap": 2}
+
+
+def join_chips(chips) -> str:
+    """낱말 안의 조각은 붙이고 낱말 사이는 한 칸 — Go `content.JoinChips`와 같다."""
+    return " ".join("".join(str(f) for f in word) for word in (chips or []))
+
+
+def _norm(s) -> str:
+    return " ".join(str(s).lower().split())
+
+
+def is_v45_word(w: dict) -> bool:
+    return any(w.get(k) for k in V45_WORD_FIELDS)
+
+
+def check_word_v45(w: dict) -> list[tuple[str, str]]:
+    """V12·V13. (규칙, 설명) 목록을 돌려준다."""
+    out: list[tuple[str, str]] = []
+    wid, en, ko = w.get("id"), str(w.get("en") or ""), str(w.get("ko") or "")
+    for k in ("exKo", "cue", "tag"):
+        if not str(w.get(k) or "").strip():
+            out.append(("V12", f"word {wid!r}: {k} is empty"))
+    for k in ("distractorsEn", "distractorsKo"):
+        n = len(w.get(k) or [])
+        if n != 2:
+            out.append(("V12", f"word {wid!r}: {k} has {n}, want 2"))
+    if not w.get("decoyChips"):
+        out.append(("V12", f"word {wid!r}: decoyChips is empty"))
+    chips = w.get("chips") or []
+    if not all(isinstance(x, list) for x in chips):
+        out.append(("V12", f"word {wid!r}: chips must be a list of words, each a list of fragments: {chips!r}"))
+    elif join_chips(chips) != en:
+        out.append(("V12", f"word {wid!r}: chips join to {join_chips(chips)!r}, want {en!r}"))
+
+    for k, answer in (("distractorsEn", en), ("distractorsKo", ko)):
+        seen = {_norm(answer)}
+        for o in w.get(k) or []:
+            n = _norm(o)
+            if n == _norm(answer):
+                out.append(("V13", f"word {wid!r}: {k} option {o!r} is the answer"))
+            elif n in seen:
+                out.append(("V13", f"word {wid!r}: {k} option {o!r} repeats"))
+            seen.add(n)
+    real = {_norm(f) for word in chips if isinstance(word, list) for f in word}
+    for d in w.get("decoyChips") or []:
+        if _norm(d) in real:
+            out.append(("V13", f"word {wid!r}: decoy chip {d!r} is one of the answer's own fragments"))
+    if en and en.lower() in str(w.get("cue") or "").lower():
+        out.append(("V13", f"word {wid!r}: cue gives the answer {en!r} away"))
+    return out
+
+
+def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str, str]]:
+    """V14·V15. `used`는 이 상황 문장이 쓰는 단어 id, `required`는 v45 은행의 상황인가."""
+    out: list[tuple[str, str]] = []
+    steps = collections.Counter()
+    for i, n in enumerate(items or []):
+        kind = n.get("kind")
+        if kind not in NUANCE_STEP:
+            out.append(("V14", f"nuance[{i}]: unknown kind {kind!r} (allowed: {sorted(NUANCE_STEP)})"))
+            continue
+        steps[NUANCE_STEP[kind]] += 1
+        words = n.get("words") or []
+        if not words:
+            out.append(("V15", f"nuance[{i}] ({kind}): names no words"))
+        for wid in words:
+            if wid not in used:
+                out.append(("V15", f"nuance[{i}] ({kind}): word {wid!r} is not used by this situation's sentences"))
+        if kind == "slider":
+            scale = n.get("scale") or []
+            at = n.get("answerAt")
+            if len(scale) < 3:
+                out.append(("V14", f"nuance[{i}] slider: scale has {len(scale)}, want >= 3"))
+            if not isinstance(at, int) or isinstance(at, bool) or not (0 <= at < len(scale)):
+                out.append(("V14", f"nuance[{i}] slider: answerAt={at!r} out of range"))
+        elif kind == "pair":
+            pairs = n.get("pairs") or []
+            if len(pairs) < 2:
+                out.append(("V14", f"nuance[{i}] pair: {len(pairs)} pair(s), want >= 2"))
+            for p in pairs:
+                if not isinstance(p, list) or len(p) != 2:
+                    out.append(("V14", f"nuance[{i}] pair: {p!r} is not [left, right]"))
+            if not n.get("decoys"):
+                out.append(("V14", f"nuance[{i}] pair: no decoys"))
+        elif kind == "reel":
+            if len(n.get("scenes") or []) < 4:
+                out.append(("V14", f"nuance[{i}] reel: {len(n.get('scenes') or [])} scene(s), want >= 4"))
+        elif kind == "context":
+            scenes = n.get("scenes") or []
+            if len(scenes) != 3:
+                out.append(("V14", f"nuance[{i}] context: {len(scenes)} scene(s), want 3"))
+            wrong = [sc for sc in scenes if sc.get("ok") is False]
+            if len(wrong) != 1:
+                out.append(("V14", f"nuance[{i}] context: {len(wrong)} scene(s) marked ok: false, want exactly 1"))
+            for sc in wrong:
+                if not str(sc.get("fix") or "").strip():
+                    out.append(("V14", f"nuance[{i}] context: the scene that does not fit has no fix"))
+        elif kind == "swap":
+            if len(n.get("before") or []) != 3:
+                out.append(("V14", f"nuance[{i}] swap: before has {len(n.get('before') or [])} part(s), want 3"))
+            options, notes = n.get("options") or [], n.get("notes") or {}
+            if n.get("answer") not in options:
+                out.append(("V14", f"nuance[{i}] swap: answer {n.get('answer')!r} is not an option"))
+            for o in options:
+                if not str(notes.get(o) or "").strip():
+                    out.append(("V14", f"nuance[{i}] swap: option {o!r} has no note"))
+    if required:
+        if steps[1] == 0:
+            out.append(("V14", "no STEP 1 nuance (slider|pair) — a v45 situation needs at least one"))
+        if steps[2] == 0:
+            out.append(("V14", "no STEP 2 nuance (reel|context|swap) — a v45 situation needs at least one"))
+    return out
+
+
+V44_WORD_KEYS = ("id", "en", "ko", "ipa", "icon", "example")
+V44_SENTENCE_KEYS = ("en", "ko", "chunks", "words", "goal")
+
+
+def check_backfill(dept: str, base_banks: dict[str, list[dict]], base_seeds: list[dict],
+                   banks: dict[str, list[dict]], seeds: list[dict]) -> list["Violation"]:
+    """V16 — 보강 패스가 v44 필드를 한 글자도 바꾸지 않았는가. 보강 전(base)과 후를 비교한다."""
+    out: list[Violation] = []
+    for theme, base_words in base_banks.items():
+        now = {w.get("id"): w for w in banks.get(theme, [])}
+        base_ids = [w.get("id") for w in base_words]
+        if sorted(map(str, base_ids)) != sorted(map(str, now)):
+            out.append(Violation(dept, theme, "-", "V16", f"bank word ids changed: before {len(base_ids)}, after {len(now)}"))
+        for bw in base_words:
+            w = now.get(bw.get("id"))
+            if w is None:
+                continue
+            for k in V44_WORD_KEYS:
+                if bw.get(k) != w.get(k):
+                    out.append(Violation(dept, theme, "-", "V16", f"word {bw.get('id')!r}: {k} changed {bw.get(k)!r} -> {w.get(k)!r}"))
+    now_seeds = {(sd.get("theme"), sd.get("title")): sd for sd in seeds}
+    for bs in base_seeds:
+        if not bs.get("sentences"):
+            continue
+        key = (bs.get("theme"), bs.get("title"))
+        sd = now_seeds.get(key)
+        if sd is None:
+            out.append(Violation(dept, key[0], key[1], "V16", "situation disappeared"))
+            continue
+        before, after = bs.get("sentences") or [], sd.get("sentences") or []
+        if len(before) != len(after):
+            out.append(Violation(dept, key[0], key[1], "V16", f"sentence count changed {len(before)} -> {len(after)}"))
+            continue
+        for i, (b, a) in enumerate(zip(before, after)):
+            for k in V44_SENTENCE_KEYS:
+                if b.get(k) != a.get(k):
+                    out.append(Violation(dept, key[0], key[1], "V16", f"sentence[{i}] {k} changed"))
+    return out
+
+
 @dataclass
 class Violation:
     dept: str
@@ -875,6 +1054,7 @@ def verify_dept(
     violations: list[Violation] = []
     used_words_by_theme: dict[str, set[str]] = collections.defaultdict(set)
     themes_seen: set[str] = set()
+    v45_themes: set[str] = set()
 
     # V10 — 은행 안의 id 중복. 서버(gencontent)가 적재할 때 오류로 막는 조건이라,
     # 여기서 통과시키면 파일을 합치는 순간에야 드러난다. raw_banks가 없으면(옛
@@ -899,6 +1079,13 @@ def verify_dept(
                         f"(YAML reads bare off/on/no/yes as booleans — quote it)",
                     ))
 
+        # V12·V13 — v45 은행이면 모든 단어에 회상 재료가 온전히 있어야 한다.
+        if any(is_v45_word(w) for w in words):
+            v45_themes.add(theme)
+            for w in words:
+                for rule, detail in check_word_v45(w):
+                    violations.append(Violation(dept, theme, "-", rule, detail))
+
     n_seeds = n_with_sentences = 0
 
     for seed in seeds:
@@ -909,6 +1096,9 @@ def verify_dept(
         themes_seen.add(theme)
         sentences = seed.get("sentences")
         if not sentences:
+            if seed.get("nuance"):
+                violations.append(Violation(dept, theme, seed.get("title", "?"), "V15",
+                                            "has nuance but no sentences to anchor it"))
             continue  # 아직 2차가 안 돌았다 — 이 시드는 검사 대상이 아니다 (부분 실행 정상)
         n_with_sentences += 1
 
@@ -1000,6 +1190,11 @@ def verify_dept(
                     f"only {len(collected_word_ids)} distinct bank words used (need >= {MIN_WORDS})",
                 )
             )
+
+        # V14·V15 — 뉘앙스. 이 상황 문장이 쓰는 단어 id를 기준으로 본다.
+        sentence_word_ids = {w for sent in sentences for w in (sent.get("words") or [])}
+        for rule, detail in check_nuance(seed.get("nuance") or [], sentence_word_ids, theme in v45_themes):
+            violations.append(Violation(dept, theme, title, rule, detail))
 
         # V4
         sentence_ens = {(s.get("en") or "").strip() for s in sentences}
@@ -1514,6 +1709,53 @@ def run_selftest() -> int:
     lex_bool = _LEX_BASE.rstrip("\n") + "\n    - {id: w-off, en: off, ipa: /x/, ko: 끔, icon: board, example: e}\n"
     cases.append(("V11 (bare off parsed as boolean)", lex_bool, _seed_with_sentences(_good_sentences()), "V11", False))
 
+    # ── v45 (V12~V15) — GOOD 대조군을 v45로 바꾼 은행과 뉘앙스 ──
+    def v45_lex(mutate=None) -> str:
+        banks = yaml.safe_load(_LEX_BASE)
+        for w in banks[0]["words"]:
+            en = w["en"]
+            w.update({
+                "exKo": "예문 번역", "cue": "맥락 단서", "tag": "분류",
+                "distractorsEn": [en + "x", en + "y"], "distractorsKo": [w["ko"] + "1", w["ko"] + "2"],
+                "chips": [[en[: len(en) // 2], en[len(en) // 2:]]], "decoyChips": ["zz"],
+            })
+        if mutate:
+            mutate(banks[0]["words"])
+        return yaml.safe_dump(banks, allow_unicode=True)
+
+    good_nuance = [
+        {"kind": "slider", "words": ["w-check"], "cue": "c", "scale": ["a", "b", "c"], "answerAt": 1, "why": "w"},
+        {"kind": "context", "words": ["w-name"], "why": "w", "scenes": [
+            {"who": "a", "en": "1", "ok": True}, {"who": "b", "en": "2", "ok": False, "fix": "f"}, {"who": "c", "en": "3", "ok": True}]},
+    ]
+
+    def v45_seed(nuance) -> str:
+        seeds = parse_topics(_seed_with_sentences(_good_sentences()))
+        if nuance is not None:
+            seeds[0]["nuance"] = nuance
+        return yaml.safe_dump(seeds, allow_unicode=True)
+
+    cases.append(("GOOD v45 (no violations expected)", v45_lex(), v45_seed(good_nuance), "", False))
+    cases.append(("V12 (cue missing)", v45_lex(lambda ws: ws[0].update(cue="")), v45_seed(good_nuance), "V12", False))
+    cases.append(("V12 (chips joined with a space do not make the word)",
+                  v45_lex(lambda ws: ws[0].update(chips=[["wrist"], ["band"]])), v45_seed(good_nuance), "V12", False))
+    cases.append(("V12 (half-backfilled bank — one word still v44)",
+                  v45_lex(lambda ws: [ws[1].pop(k) for k in V45_WORD_FIELDS]), v45_seed(good_nuance), "V12", False))
+    cases.append(("V13 (a distractor is the answer)",
+                  v45_lex(lambda ws: ws[0].update(distractorsEn=["Wristband", "armband"])), v45_seed(good_nuance), "V13", False))
+    cases.append(("V13 (a decoy chip is a real fragment)",
+                  v45_lex(lambda ws: ws[0].update(decoyChips=[ws[0]["chips"][0][0]])), v45_seed(good_nuance), "V13", False))
+    cases.append(("V13 (the cue gives the answer away)",
+                  v45_lex(lambda ws: ws[0].update(cue="wristband을 확인")), v45_seed(good_nuance), "V13", False))
+    cases.append(("V14 (a v45 situation with no nuance)", v45_lex(), v45_seed(None), "V14", False))
+    two_wrong = [dict(good_nuance[0]), {**good_nuance[1], "scenes": [
+        {"who": "a", "en": "1", "ok": False, "fix": "f"}, {"who": "b", "en": "2", "ok": False, "fix": "f"}, {"who": "c", "en": "3", "ok": True}]}]
+    cases.append(("V14 (context with two scenes that do not fit)", v45_lex(), v45_seed(two_wrong), "V14", False))
+    stray = [{**good_nuance[0], "words": ["w-nowhere"]}, good_nuance[1]]
+    cases.append(("V15 (nuance on a word the sentences do not use)", v45_lex(), v45_seed(stray), "V15", False))
+    # v44 은행에 뉘앙스가 없는 것은 정상이다 — 보강 전의 ER·ICU·OR.
+    cases.append(("v44 bank, no nuance (no violations expected)", _LEX_BASE, v45_seed(None), "", False))
+
     ok = True
     print("=== verify_lesson_content.py selftest ===")
     stem_bad = run_stem_selftest()
@@ -1537,6 +1779,19 @@ def run_selftest() -> int:
         if not hit:
             print("         violations:", [str(v) for v in violations])
             print("         warnings:  ", [str(v) for v in warnings])
+    # V16 — 보강 전후 비교. 새 필드만 더한 것은 통과, v44 필드를 바꾼 것은 걸린다.
+    base_banks, base_seeds = parse_lexicon_raw(_LEX_BASE), parse_topics(_seed_with_sentences(_good_sentences()))
+    after_ok_banks, after_ok_seeds = parse_lexicon_raw(v45_lex()), parse_topics(v45_seed(good_nuance))
+    v16_ok = not check_backfill("selftest", base_banks, base_seeds, after_ok_banks, after_ok_seeds)
+    touched = parse_topics(v45_seed(good_nuance))
+    touched[0]["sentences"][0]["ko"] = "바뀐 번역"
+    touched_bank = parse_lexicon_raw(v45_lex(lambda ws: ws[0].update(example="changed")))
+    v16_bad = any("sentence[0] ko" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, after_ok_banks, touched)) \
+        and any("example changed" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, touched_bank, after_ok_seeds))
+    for name, hit in (("V16 backfill that only adds fields — no violations expected", v16_ok),
+                      ("V16 backfill that edits a v44 sentence or word — V16 fires", v16_bad)):
+        print(f"[{'PASS' if hit else 'FAIL'}] {name}")
+        ok = ok and hit
     print()
     ok = ok and stem_bad == 0
     print("ALL PASS" if ok else "SOME FAILED")
@@ -1547,11 +1802,22 @@ def run_selftest() -> int:
 # CLI
 # ---------------------------------------------------------------------------
 
+def git_show(ref: str, path: pathlib.Path) -> str:
+    """`git show ref:path`. 그 ref에 파일이 없으면 빈 문자열(비교할 v44 내용이 없다)."""
+    import subprocess
+    root = pathlib.Path(subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=TOOLS_DIR,
+                                       capture_output=True, text=True, check=True).stdout.strip())
+    rel = path.resolve().relative_to(root)
+    r = subprocess.run(["git", "show", f"{ref}:{rel}"], cwd=root, capture_output=True, text=True)
+    return r.stdout if r.returncode == 0 else ""
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dept", help="예: er (생략하면 topics/*.yaml에 있는 모든 부서)")
     ap.add_argument("--theme", help="주제(theme) key 하나로 좁힌다")
     ap.add_argument("--selftest", action="store_true", help="이 도구 자체를 어긋난 표본으로 검증한다")
+    ap.add_argument("--baseline", help="git ref (예: HEAD). 보강 전 파일과 비교해 V16을 검사한다")
     args = ap.parse_args()
 
     if args.selftest:
@@ -1566,6 +1832,13 @@ def main() -> None:
         raw_banks = load_lexicon_raw(dept)
         seeds = load_topics(dept)
         violations, warnings, coverage = verify_dept(dept, lexicon, seeds, args.theme, raw_banks=raw_banks)
+        if args.baseline:
+            base_banks = parse_lexicon_raw(git_show(args.baseline, LEXICON_DIR / f"{dept}.yaml"))
+            base_seeds = parse_topics(git_show(args.baseline, TOPICS_DIR / f"{dept}.yaml"))
+            if args.theme:
+                base_banks = {k: v for k, v in base_banks.items() if k == args.theme}
+                base_seeds = [sd for sd in base_seeds if sd.get("theme") == args.theme]
+            violations += check_backfill(dept, base_banks, base_seeds, raw_banks, seeds)
         total_violations += len(violations)
         total_warnings += len(warnings)
 

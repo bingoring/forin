@@ -4,37 +4,83 @@
     python3 merge_dept_lessons.py <부서코드> <주제파일디렉터리>
 
 두 곳에 쓴다.
-  content/nurse/lexicon/<부서>.yaml   — 주제 1건당 은행 1건. 새로 쓴다.
-  content/nurse/topics/<부서>.yaml    — 시드마다 `sentences:` 를 끼워 넣는다.
+  content/nurse/lexicon/<부서>.yaml   — 주제 1건당 은행 1건.
+  content/nurse/topics/<부서>.yaml    — 시드마다 `sentences:`(와 v45 `nuance:`)를 끼워 넣는다.
 
 시드 파일은 **텍스트로** 손댄다. 통째로 다시 쓰면 섹션 주석과 손으로 맞춰 둔 배열이
 전부 사라지기 때문에, 기존 줄은 한 줄도 건드리지 않고 삽입만 한다.
+
+**주제 일부만 합쳐도 된다.** 디렉터리에 있는 주제만 바꾸고, 은행 파일의 나머지 주제와
+나머지 시드는 그대로 둔다(v45 파일럿이 주제 3개로 돈다).
+
+**보강 패스(v45).** 이미 `sentences:`가 붙은 시드는 문장이 정본과 한 글자도 다르지 않아야
+하고(다르면 멈춘다 — verify 의 V16과 같은 조건), 그 뒤에 `nuance:`만 끼워 넣는다. 이미
+`nuance:`가 있으면 멈춘다(두 번 합치기).
 """
-import glob, io, os, sys, yaml
+import glob, io, json, os, sys, yaml
 
 KEEP = ("en", "ipa", "ko", "icon", "example")
+# v45 (build-spec §11-2). 목록 값은 JSON 흐름 표기로 쓴다 — YAML 이 그대로 읽는다.
+KEEP_V45_TEXT = ("exKo", "cue", "tag")
+KEEP_V45_LIST = ("distractorsEn", "distractorsKo", "chips", "decoyChips")
+SENTENCE_KEYS = ("en", "ko", "chunks", "words", "goal")
 
 
 def qq(s: str) -> str:
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
+def nurse_root() -> str:
+    # NURSE_ROOT 는 도구를 실제 정본이 아닌 사본에 돌려 볼 때만 쓴다.
+    return os.environ.get("NURSE_ROOT") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "nurse")
+
+
+def write_bank(o: io.StringIO, b: dict) -> None:
+    o.write("- theme: %s\n  words:\n" % b["theme"])
+    for w in b["words"]:
+        o.write("    - id: %s\n" % w["id"])
+        for k in KEEP + KEEP_V45_TEXT:
+            if w.get(k):
+                o.write("      %s: %s\n" % (k, qq(str(w[k]))))
+        for k in KEEP_V45_LIST:
+            if w.get(k):
+                o.write("      %s: %s\n" % (k, json.dumps(w[k], ensure_ascii=False)))
+
+
+def nuance_block(items: list) -> list[str]:
+    dumped = yaml.safe_dump({"nuance": items}, allow_unicode=True, sort_keys=False, width=1000)
+    return ["  " + l for l in dumped.rstrip("\n").split("\n")]
+
+
 def main(dept: str, srcdir: str) -> int:
-    here = os.path.dirname(os.path.abspath(__file__))
-    nurse = os.path.join(here, "..", "nurse")
+    nurse = nurse_root()
     topics_path = os.path.join(nurse, "topics", f"{dept}.yaml")
     lex_dir = os.path.join(nurse, "lexicon")
+    lex_path = os.path.join(lex_dir, f"{dept}.yaml")
 
-    banks, per_seed = [], {}
+    incoming, per_seed = {}, {}
     for f in sorted(glob.glob(os.path.join(srcdir, "*.yaml"))):
         d = yaml.safe_load(io.open(f, encoding="utf-8"))
         if not isinstance(d, dict) or "theme" not in d:
             continue  # 저작 중 남은 찌꺼기 파일
-        banks.append(d)
+        incoming[d["theme"]] = d
         for s in d["situations"]:
-            per_seed[(d["theme"], s["title"])] = s["sentences"]
+            per_seed[(d["theme"], s["title"])] = s
 
-    # ── 은행 ────────────────────────────────────────────────────
+    # ── 은행 — 있던 주제는 **원문 텍스트 그대로** 옮기고, 들어온 주제만 새로 쓴다 ──
+    # 다시 쓰면 의미는 같아도 글자가 바뀐다(손으로 고친 `icon: board`에 따옴표가 붙는다).
+    # 건드리지 않은 주제가 diff 에 나오면, 보강이 무엇을 바꿨는지 읽을 수 없다.
+    existing_text = io.open(lex_path, encoding="utf-8").read() if os.path.exists(lex_path) else ""
+    ex_lines = existing_text.split("\n")
+    ex_starts = [i for i, l in enumerate(ex_lines) if l.startswith("- theme:")]
+    raw_blocks = {}  # theme -> 원문 줄 목록
+    for n, i in enumerate(ex_starts):
+        end = ex_starts[n + 1] if n + 1 < len(ex_starts) else len(ex_lines)
+        raw_blocks[ex_lines[i].split(":", 1)[1].strip()] = ex_lines[i:end]
+    existing = yaml.safe_load(existing_text) or []
+    banks = [incoming.get(b["theme"], b) for b in existing]
+    banks += [d for t, d in incoming.items() if t not in raw_blocks]
+
     os.makedirs(lex_dir, exist_ok=True)
     o = io.StringIO()
     o.write("# 커리큘럼 v3 / lesson-four-steps-v44 — %s 부서 단어 은행.\n" % dept.upper())
@@ -42,13 +88,11 @@ def main(dept: str, srcdir: str) -> int:
     o.write("# sentences 가 참조한 id 를 거슬러 올라가 만들어진다.\n")
     o.write("# %d themes · %d words.\n\n" % (len(banks), sum(len(b["words"]) for b in banks)))
     for b in banks:
-        o.write("- theme: %s\n  words:\n" % b["theme"])
-        for w in b["words"]:
-            o.write("    - id: %s\n" % w["id"])
-            for k in KEEP:
-                if w.get(k):
-                    o.write("      %s: %s\n" % (k, qq(str(w[k]))))
-    io.open(os.path.join(lex_dir, f"{dept}.yaml"), "w", encoding="utf-8").write(o.getvalue())
+        if b["theme"] in incoming or b["theme"] not in raw_blocks:
+            write_bank(o, b)
+        else:
+            block = raw_blocks[b["theme"]]
+            o.write("\n".join(block) + ("" if block[-1] == "" else "\n"))
 
     # ── 시드 ────────────────────────────────────────────────────
     lines = io.open(topics_path, encoding="utf-8").read().split("\n")
@@ -68,30 +112,46 @@ def main(dept: str, srcdir: str) -> int:
                 j -= 1
         return j + 1
 
-    edits, missing = [], []
+    edits, missing, n_backfill = [], [], 0
     for i, seed in enumerate(seeds):
-        if "sentences" in seed:
-            sys.exit("이미 sentences 가 붙어 있다: %s / %s" % (seed["theme"], seed["title"]))
-        sents = per_seed.get((seed["theme"], seed["title"]))
-        if sents is None:
+        if seed["theme"] not in incoming:
+            continue  # 이번에 합치지 않는 주제
+        sit = per_seed.get((seed["theme"], seed["title"]))
+        if sit is None:
             missing.append((seed["theme"], seed["title"]))
             continue
-        b = ["  sentences:"]
-        for s in sents:
-            b.append("    - en: %s" % qq(s["en"]))
-            b.append("      ko: %s" % qq(s["ko"]))
-            b.append("      chunks: [" + ", ".join(qq(c) for c in s["chunks"]) + "]")
-            b.append("      words: [" + ", ".join(s["words"]) + "]")
-            b.append("      goal: %d" % s["goal"])
-        edits.append((block_end(i), b))
+        b = []
+        if "sentences" in seed:
+            # 보강 패스 — 문장은 이미 정본에 있다. 한 글자라도 다르면 멈춘다.
+            before = [{k: s.get(k) for k in SENTENCE_KEYS} for s in seed["sentences"]]
+            after = [{k: s.get(k) for k in SENTENCE_KEYS} for s in sit["sentences"]]
+            if before != after:
+                sys.exit("보강 패스가 문장을 바꿨다: %s / %s" % (seed["theme"], seed["title"]))
+            if "nuance" in seed:
+                sys.exit("이미 nuance 가 붙어 있다: %s / %s" % (seed["theme"], seed["title"]))
+            n_backfill += 1
+        else:
+            b.append("  sentences:")
+            for s in sit["sentences"]:
+                b.append("    - en: %s" % qq(s["en"]))
+                b.append("      ko: %s" % qq(s["ko"]))
+                b.append("      chunks: [" + ", ".join(qq(c) for c in s["chunks"]) + "]")
+                b.append("      words: [" + ", ".join(s["words"]) + "]")
+                b.append("      goal: %d" % s["goal"])
+        if sit.get("nuance"):
+            b += nuance_block(sit["nuance"])
+        if b:
+            edits.append((block_end(i), b))
 
     if missing:
         sys.exit("짝을 찾지 못한 시드 %d건: %s" % (len(missing), missing[:5]))
 
+    io.open(lex_path, "w", encoding="utf-8").write(o.getvalue())
     for pos, b in reversed(edits):
         lines[pos:pos] = b
     io.open(topics_path, "w", encoding="utf-8").write("\n".join(lines))
-    print("%s: 은행 %d개 · 문장을 붙인 시드 %d건" % (dept, len(banks), len(edits)))
+    print("%s: 주제 %d개 합침(은행 전체 %d개) · 시드 %d건에 삽입, 그중 보강 %d건"
+          % (dept, len(incoming), len(banks), len(edits), n_backfill))
     return 0
 
 
