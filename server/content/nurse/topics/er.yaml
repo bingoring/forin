@@ -32630,7 +32630,7 @@
     - en: "Does it burn the whole time you're urinating, or just at the start?"
       ko: "소변보는 내내 화끈거리나요, 아니면 처음에만 그런가요?"
       chunks: ["Does it burn", "the whole time", "you're urinating", ", or just", "at the start", "?"]
-      words: [w-burn, w-whole, w-time, w-urinate, w-start]
+      words: [w-burn, w-whole, w-urinate, w-start]
       goal: 1
     - en: "Have you had any fever or pain in your lower belly?"
       ko: "열이나 아랫배 통증이 있었나요?"
@@ -32642,6 +32642,44 @@
       chunks: ["I need to", "check a urine sample", "before we", "go further", "."]
       words: [w-need, w-check, w-urine, w-sample]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-burn
+    - w-urination
+    - w-belly
+    - w-urine
+    - w-sample
+    pairs:
+    - - burning with
+      - urination
+    - - lower
+      - belly
+    - - urine
+      - sample
+    decoys:
+    - often
+    why: 배뇨통은 burning with urination, 아랫배는 lower belly, 소변 검체는 urine sample이라고 한 덩어리로 말해요.
+  - kind: swap
+    words:
+    - w-burn
+    - w-urinate
+    who: 환자에게 · 배뇨통 문진
+    icon: me
+    before:
+    - 'Have you had any '
+    - dysuria
+    - '?'
+    options:
+    - burning when you urinate
+    - dysuria
+    - micturition pain
+    answer: burning when you urinate
+    notes:
+      burning when you urinate: 환자가 느끼는 그대로의 말. 무엇을 묻는지 바로 알아듣는다.
+      dysuria: 차트·의료진끼리 쓰는 용어(배뇨통). 환자는 모르는 경우가 많다.
+      micturition pain: 교과서식 표현이라 실제 대화에서는 거의 쓰지 않는다.
+    why: 차트에는 dysuria라고 적어도, 환자에게는 burning when you urinate(또는 환자가 쓴 pee)처럼 느낌을 그대로 묻는 말이 잘 통해요.
 
 - theme: er-genitourinary
   title: 청결채뇨(clean catch) 설명
@@ -32679,18 +32717,57 @@
     - en: "Let me explain the steps before you begin."
       ko: "시작하기 전에 단계를 설명해 드릴게요."
       chunks: ["Let me explain", "the steps", "before you begin", "."]
-      words: [w-let, w-explain, w-step, w-begin]
+      words: [w-explain, w-step]
       goal: 1
     - en: "Do you have any questions about the collection?"
       ko: "채취에 대해 궁금한 점이 있으신가요?"
       chunks: ["Do you have", "any questions", "about the collection", "?"]
-      words: [w-question, w-collection]
+      words: [w-collection]
       goal: 2
     - en: "Once you're done, seal the cup and bring it to the front desk."
       ko: "끝나면 컵을 밀봉해서 데스크로 가져오세요."
       chunks: ["Once you're done", ", seal the cup", "and bring it", "to the front desk", "."]
       words: [w-done, w-seal, w-cup, w-bring, w-desk]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-desk
+    - w-middle
+    - w-part
+    - w-stream
+    - w-wipe
+    pairs:
+    - - front
+      - desk
+    - - middle part of
+      - the stream
+    - - wipe
+      - front to back
+    decoys:
+    - sample
+    why: 검체를 맡기는 곳은 front desk, 받는 것은 the middle part of the stream이에요. 여성에게는 요도 쪽 균이 묻지 않게 wipe front to back(앞에서 뒤로 닦기)을 함께 알려요.
+  - kind: context
+    words:
+    - w-catch
+    - w-middle
+    - w-stream
+    - w-cup
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Clean-catch midstream specimen collected, sent for UA.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: She's doing a clean catch — I went over midstream with her.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Please provide a clean-catch midstream specimen.
+      ok: false
+      fix: Start peeing into the toilet, then catch the middle part of the stream in the cup.
+    why: 모두 중간뇨를 받으라는 같은 말이에요. 환자는 midstream·specimen이 무슨 뜻인지 모를 수 있으니, 무엇을 어떤 순서로 하는지 쉬운 말로 풀어 말해요.
 
 - theme: er-genitourinary
   title: 요폐(소변 못 봄)
@@ -32713,7 +32790,7 @@
     - en: "When was the last time you were able to urinate?"
       ko: "마지막으로 소변을 볼 수 있었던 때가 언제였나요?"
       chunks: ["When was", "the last time", "you were able", "to urinate", "?"]
-      words: [w-last, w-time, w-able, w-urinate]
+      words: [w-last, w-able, w-urinate]
       goal: 1
     - en: "Does your lower belly feel full or tender?"
       ko: "아랫배가 가득 차거나 압통이 있나요?"
@@ -32738,8 +32815,44 @@
     - en: "The catheter will relieve the pressure right away."
       ko: "카테터가 즉시 압박감을 풀어줄 거예요."
       chunks: ["The catheter will", "relieve the pressure", "right away", "."]
-      words: [w-catheter, w-relieve, w-pressure, w-right, w-away]
+      words: [w-catheter, w-relieve, w-pressure, w-away]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-belly
+    - w-full
+    cue: 'Patient: "My lower belly is so tight it feels like it''s going to burst."'
+    scale:
+    - a bit full
+    - really full
+    - about to burst
+    answerAt: 2
+    why: 터질 것 같다고 하면 가장 센 쪽이에요. 요폐로 방광이 크게 늘어났을 수 있어 방광 스캔으로 양을 재고 도뇨를 준비해요.
+    example: He says his bladder feels like it's about to burst.
+    exKo: 방광이 터질 것 같다고 해요.
+  - kind: swap
+    words:
+    - w-place
+    - w-catheter
+    - w-drain
+    - w-bladder
+    who: 환자에게 · 도뇨 필요성 안내
+    icon: me
+    before:
+    - 'We may need to '
+    - insert a Foley
+    - ' to drain your bladder.'
+    options:
+    - place a small catheter
+    - insert a Foley
+    - straight cath you
+    answer: place a small catheter
+    notes:
+      place a small catheter: 무엇을 하는지 부드럽게 알려 주는 말. small이 겁을 덜어 준다.
+      insert a Foley: 의료진끼리의 말. Foley는 유치 도뇨관을 발명한 의사 이름으로 부르는 말이라 환자는 모를 수 있다.
+      straight cath you: 병동에서 쓰는 줄임말(일회 도뇨). 환자에게는 낯설고 거칠게 들린다.
+    why: 동료에게는 Foley·straight cath처럼 짧게 말해도 되지만, 환자에게는 무엇을 왜 하는지 쉬운 말로 알려요.
 
 - theme: er-genitourinary
   title: 육안적 혈뇨 주소
@@ -32789,6 +32902,42 @@
       chunks: ["We'll send", "your urine", "to the lab", "for more testing", "."]
       words: [w-send, w-urine, w-lab, w-more, w-test]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-blood
+    - w-red
+    cue: 'Patient: "It''s just a little pink when I wipe."'
+    scale:
+    - blood-tinged
+    - bloody
+    - frank blood with clots
+    answerAt: 0
+    why: 휴지에 살짝 분홍빛이면 blood-tinged 쪽이에요. frank blood는 눈으로 봐도 진한 피라는 임상어라, 차트에서 혈뇨의 정도를 나눌 때 써요.
+    example: Her urine is blood-tinged, with no clots.
+    exKo: 소변에 피가 약간 비치고, 혈전은 없어요.
+  - kind: swap
+    words:
+    - w-first
+    - w-notice
+    - w-red
+    - w-color
+    who: 환자에게 · 혈뇨 발현 문진
+    icon: me
+    before:
+    - 'When did you first notice the '
+    - gross hematuria
+    - '?'
+    options:
+    - red color
+    - hematuria
+    - gross hematuria
+    answer: red color
+    notes:
+      red color: 환자가 본 것을 그대로 가리키는 쉬운 말.
+      hematuria: 의료진 용어(혈뇨). 차트나 인계에서 쓴다.
+      gross hematuria: 의학에서 gross는 '눈에 보이는(육안적)'이지만, 환자는 '역겹다'는 뜻으로 알아듣기 쉽다.
+    why: 놀란 환자에게는 본 것을 그대로 묻는 말이 좋아요. gross hematuria는 차트에 쓰는 말이고, 환자 앞에서는 오해를 부를 수 있어요.
 
 - theme: er-genitourinary
   title: 도뇨관 삽입 절차 설명
@@ -32821,12 +32970,12 @@
     - en: "Tell me if you feel any discomfort and I'll go slowly."
       ko: "불편감이 있으면 말씀해 주세요, 천천히 할게요."
       chunks: ["Tell me", "if you feel", "any discomfort", "and I'll go slowly", "."]
-      words: [w-tell, w-feel, w-discomfort, w-go, w-slowly]
+      words: [w-tell, w-feel, w-discomfort, w-slowly]
       goal: 2
     - en: "This will only take a couple of minutes."
       ko: "이건 몇 분밖에 안 걸려요."
       chunks: ["This will only", "take", "a couple of minutes", "."]
-      words: [w-take, w-couple, w-minute]
+      words: [w-couple]
       goal: 1
     - en: "Try to relax and breathe normally for me."
       ko: "긴장을 풀고 평소대로 숨을 쉬어 보세요."
@@ -32836,8 +32985,41 @@
     - en: "You're doing great, almost done."
       ko: "아주 잘하고 계세요, 거의 끝났어요."
       chunks: ["You're doing", "great", ", almost done", "."]
-      words: [w-do, w-great, w-almost, w-done]
+      words: [w-great, w-almost, w-done]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-discomfort
+    - w-painful
+    cue: 'Patient, as the catheter goes in: "It feels weird, but it doesn''t really hurt."'
+    scale:
+    - discomfort
+    - pain
+    - sharp pain
+    answerAt: 0
+    why: 아프진 않은데 이상하다면 discomfort 쪽이에요. 시술 전 설명에서도 pain보다 discomfort·pressure를 써서, 사실대로 말하되 겁은 덜 주어요.
+    example: Most people feel some discomfort, but it passes quickly.
+    exKo: 대부분 약간 불편하지만 금방 지나가요.
+  - kind: context
+    words:
+    - w-sterile
+    - w-slowly
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: I'm placing a 16 French Foley, sterile technique.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 16 Fr Foley placed under sterile technique, tolerated well.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Inserting a 16 French Foley now, sterile technique.
+      ok: false
+      fix: I'm going to put the catheter in now. Everything is sterile, and I'll go slowly.
+    why: 모두 무균적으로 도뇨관을 넣는다는 같은 말이에요. 굵기(French)와 술기 이름은 의료진끼리의 정보이고, 긴장한 환자에게는 지금 무엇을 하는지와 안심시키는 말이 필요해요.
 
 - theme: er-genitourinary
   title: 신산통(요관결석)
@@ -32860,7 +33042,7 @@
     - en: "Does the pain come in waves or stay constant?"
       ko: "통증이 파도처럼 오나요, 아니면 계속되나요?"
       chunks: ["Does the pain", "come in", "waves", "or stay constant", "?"]
-      words: [w-pain, w-come, w-wave, w-stay, w-constant]
+      words: [w-pain, w-wave, w-stay, w-constant]
       goal: 1
     - en: "Does it travel from your side down toward your groin?"
       ko: "옆구리에서 서혜부 쪽으로 내려가며 방사되나요?"
@@ -32875,18 +33057,56 @@
     - en: "On a scale of one to ten, how bad is the pain right now?"
       ko: "1부터 10까지 중에, 지금 통증이 얼마나 심한가요?"
       chunks: ["On a scale", "of one to ten", ", how bad is the pain", "right now", "?"]
-      words: [w-pain, w-right, w-now]
+      words: [w-pain]
       goal: 1
     - en: "It might come and go, or stay constant the whole time."
       ko: "왔다 갔다 할 수도 있고, 계속 그대로일 수도 있어요."
       chunks: ["It might", "come and go", ", or stay constant", "the whole time", "."]
-      words: [w-come, w-go, w-stay, w-constant, w-whole, w-time]
+      words: [w-stay, w-constant, w-whole]
       goal: 1
     - en: "We'll get you comfortable while we wait for the scan."
       ko: "스캔을 기다리는 동안 편안하게 해드릴게요."
       chunks: ["We'll get you", "comfortable", "while we wait", "for the scan", "."]
-      words: [w-get, w-comfortable, w-wait, w-scan]
+      words: [w-comfortable, w-wait, w-scan]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-wave
+    - w-stay
+    - w-constant
+    - w-travel
+    - w-groin
+    pairs:
+    - - come in
+      - waves
+    - - stay
+      - constant
+    - - travel down toward
+      - your groin
+    decoys:
+    - the scan
+    why: 요관결석 통증은 파도처럼 몰려왔다 빠지고(come in waves), 옆구리에서 사타구니 쪽으로 뻗어 내려가요(travel down toward your groin). 계속 같은 세기면 stay constant예요.
+  - kind: swap
+    words:
+    - w-side
+    - w-travel
+    who: 환자에게 · 통증 방사 문진
+    icon: me
+    before:
+    - 'Does it travel from your '
+    - flank
+    - ' down toward your groin?'
+    options:
+    - side
+    - flank
+    - costovertebral angle
+    answer: side
+    notes:
+      side: 환자가 바로 알아듣는 쉬운 말. 손으로 옆구리를 짚으며 물으면 더 분명하다.
+      flank: 차트·의료진 용어(flank pain). 환자에 따라 모를 수 있다.
+      costovertebral angle: 신체 사정 부위의 해부학 이름(CVA). 대화에 쓰기엔 너무 전문적이다.
+    why: 차트에는 flank pain이라 적어도, 환자에게는 side처럼 쉬운 말로 물어요.
 
 - theme: er-genitourinary
   title: 급성 신우신염
@@ -32909,7 +33129,7 @@
     - en: "Does it hurt when I tap over your back here?"
       ko: "여기 등을 두드릴 때 아픈가요?"
       chunks: ["Does it hurt", "when I tap", "over your back", "here", "?"]
-      words: [w-hurt, w-tap, w-over, w-back, w-here]
+      words: [w-hurt, w-tap, w-back, w-here]
       goal: 1
     - en: "Have you had fever, chills, or nausea?"
       ko: "열, 오한, 또는 메스꺼움이 있었나요?"
@@ -32919,7 +33139,7 @@
     - en: "We'll get a urine culture before starting antibiotics."
       ko: "항생제 투여 전에 소변 배양검사를 할게요."
       chunks: ["We'll get", "a urine culture", "before starting antibiotics", "."]
-      words: [w-get, w-urine, w-culture, w-before, w-start, w-antibiotic]
+      words: [w-urine, w-culture, w-before, w-start, w-antibiotic]
       goal: 2
     - en: "This pain in your back and side is common with a kidney infection."
       ko: "등과 옆구리의 이런 통증은 신장 감염에서 흔해요."
@@ -32934,8 +33154,45 @@
     - en: "Let's get your temperature and check your blood pressure."
       ko: "체온을 재고 혈압을 확인할게요."
       chunks: ["Let's get", "your temperature", "and check", "your blood pressure", "."]
-      words: [w-let, w-get, w-temperature, w-check, w-blood, w-pressure]
+      words: [w-temperature, w-check, w-blood]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-tap
+    - w-back
+    - w-kidney
+    - w-infection
+    - w-temperature
+    pairs:
+    - - tap over
+      - your back
+    - - take
+      - your temperature
+    - - kidney
+      - infection
+    decoys:
+    - chills
+    why: CVA 압통은 등 아래쪽을 가볍게 두드려(tap over your back) 보고, 체온은 take your temperature라고 해요. 신우신염은 환자에게 kidney infection이라고 설명해요.
+  - kind: context
+    words:
+    - w-culture
+    - w-antibiotic
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: UA and urine culture sent prior to first antibiotic dose.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Culture's sent, so we're okay to hang the antibiotic.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: UC sent, OK to hang abx.
+      ok: false
+      fix: We've sent your urine to check for bacteria, so we can start your antibiotics now.
+    why: 모두 배양을 먼저 보냈으니 항생제를 시작한다는 같은 말이에요. 항생제가 먼저 들어가면 배양에서 균이 안 자랄 수 있어 순서를 지켜요. 환자에게는 약어 없이 왜 그 순서인지 풀어 말해요.
 
 - theme: er-genitourinary
   title: 남성 요폐(전립선)
@@ -32958,12 +33215,12 @@
     - en: "Have you had a weak stream or trouble starting for a while?"
       ko: "소변 줄기가 약하거나 시작하기 어려운 게 한동안 있었나요?"
       chunks: ["Have you had", "a weak stream", "or trouble starting", "for a while", "?"]
-      words: [w-weak, w-stream, w-trouble, w-start, w-while]
+      words: [w-weak, w-stream, w-trouble, w-start]
       goal: 1
     - en: "We'll do a quick bladder scan to see how full it is."
       ko: "얼마나 찼는지 보기 위해 방광스캔을 빠르게 할게요."
       chunks: ["We'll do", "a quick bladder scan", "to see", "how full it is", "."]
-      words: [w-do, w-quick, w-bladder, w-scan, w-see, w-full]
+      words: [w-quick, w-bladder, w-scan, w-full]
       goal: 2
     - en: "This will tell us how much urine is left inside."
       ko: "이걸로 안에 소변이 얼마나 남았는지 알 수 있어요."
@@ -32973,18 +33230,54 @@
     - en: "How long have you been having trouble starting your stream?"
       ko: "소변 줄기를 시작하기 어려운 게 얼마나 오래됐나요?"
       chunks: ["How long", "have you been having", "trouble starting", "your stream", "?"]
-      words: [w-long, w-have, w-trouble, w-start, w-stream]
+      words: [w-long, w-trouble, w-start, w-stream]
       goal: 1
     - en: "Do you feel like your bladder is completely empty after you go?"
       ko: "소변을 본 후에 방광이 완전히 비었다고 느끼시나요?"
       chunks: ["Do you feel", "like your bladder", "is completely empty", "after you go", "?"]
-      words: [w-do, w-feel, w-bladder, w-completely, w-empty, w-after, w-go]
+      words: [w-feel, w-bladder, w-completely, w-empty, w-after]
       goal: 1
     - en: "We'll pass a catheter now to relieve the pressure and drain your bladder."
       ko: "지금 카테터를 넣어서 압박감을 풀고 방광을 배출시킬게요."
       chunks: ["We'll pass", "a catheter now", "to relieve the pressure", "and drain", "your bladder", "."]
-      words: [w-pass, w-catheter, w-now, w-relieve, w-pressure, w-drain, w-bladder]
+      words: [w-catheter, w-relieve, w-pressure, w-drain, w-bladder]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-weak
+    - w-stream
+    cue: 'Patient: "It just dribbles out, a few drops at a time."'
+    scale:
+    - a little slow
+    - weak
+    - dribbling
+    answerAt: 2
+    why: 방울방울 떨어진다면 가장 약한 쪽, dribbling이에요. 전립선비대 환자가 흔히 말하는 증상이고, 줄기가 약해지다 아예 안 나오면 급성 요폐예요.
+    example: He says it's been dribbling for weeks, and now nothing comes out.
+    exKo: 몇 주째 방울방울 나오다가 이제는 아예 안 나온대요.
+  - kind: swap
+    words:
+    - w-quick
+    - w-bladder
+    - w-scan
+    - w-full
+    who: 환자에게 · 잔뇨 측정 안내
+    icon: me
+    before:
+    - 'We''ll do a quick '
+    - PVR
+    - ' to see how full it is.'
+    options:
+    - bladder scan
+    - PVR
+    - post-void residual measurement
+    answer: bladder scan
+    notes:
+      bladder scan: 무엇을 하는지 바로 알 수 있는 쉬운 말. 배에 젤을 바르고 초음파기를 대는 검사다.
+      PVR: 의료진끼리의 약어(배뇨 후 잔뇨량). 환자는 모른다.
+      post-void residual measurement: 맞는 말이지만 환자에게는 길고 딱딱하다. 차트에 어울린다.
+    why: 잔뇨량(PVR)은 휴대용 방광 초음파기로 재요. 환자에게는 bladder scan이라고 하면 무엇을 하는지 바로 알아요.
 
 - theme: er-genitourinary
   title: 고환염전 청소년
@@ -33012,7 +33305,7 @@
     - en: "Is the pain only on one side, or on both sides?"
       ko: "통증이 한쪽에만 있나요, 아니면 양쪽 다 있나요?"
       chunks: ["Is the pain", "only on", "one side", ", or on both sides", "?"]
-      words: [w-pain, w-only, w-one, w-side, w-both]
+      words: [w-pain, w-only, w-both]
       goal: 1
     - en: "Did you notice any swelling or redness?"
       ko: "붓거나 발적이 있는 걸 알아차리셨나요?"
@@ -33032,8 +33325,42 @@
     - en: "Acting fast can protect the testicle from damage."
       ko: "빠르게 대처하면 고환 손상을 막을 수 있어요."
       chunks: ["Acting fast", "can protect", "the testicle", "from damage", "."]
-      words: [w-act, w-fast, w-protect, w-testicle, w-damage]
+      words: [w-act, w-protect, w-testicle, w-damage]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-urgent
+    - w-ultrasound
+    cue: 'Charge nurse to radiology: 15-year-old, sudden severe testicular pain for 2 hours — how soon does he need the ultrasound?'
+    scale:
+    - routine
+    - urgent
+    - emergent
+    answerAt: 2
+    why: 고환염전은 증상이 생기고 몇 시간 안(흔히 6시간 안쪽)에 풀어야 고환을 살릴 가능성이 높아요. 미국 병원에서 emergent는 '지금 당장', urgent는 '서둘러서'에 가까워 검사 요청은 emergent(stat)로 해요. 환자·가족에게는 urgent·right away로 말해도 충분해요.
+    example: This is an emergent ultrasound — possible torsion.
+    exKo: 염전 가능성이 있어 즉시 해야 하는 초음파예요.
+  - kind: context
+    words:
+    - w-ultrasound
+    - w-specialist
+    - w-call
+    scenes:
+    - who: 비뇨의학과 콜
+      icon: monitor
+      en: 15-year-old, sudden left testicular pain two hours ago, concern for torsion.
+      ok: true
+    - who: 영상의학과에
+      icon: board
+      en: I need a stat scrotal Doppler — possible torsion.
+      ok: true
+    - who: 청소년 환자에게
+      icon: me
+      en: Concern for testicular torsion; stat scrotal Doppler ordered.
+      ok: false
+      fix: The blood flow to your testicle might be blocked, so we're getting an ultrasound right away and calling a specialist.
+    why: 모두 염전이 의심돼 바로 초음파를 한다는 같은 말이에요. 겁먹은 청소년에게는 torsion·Doppler 대신 무엇이 문제이고 무엇을 하는지 쉬운 말로 알려요.
 
 - theme: er-genitourinary
   title: 카테터 관련 요로감염
@@ -33056,7 +33383,7 @@
     - en: "How long has the catheter been in place?"
       ko: "카테터가 자리 잡은 지 얼마나 됐나요?"
       chunks: ["How long", "has the catheter", "been in place", "?"]
-      words: [w-long, w-catheter, w-place]
+      words: [w-long, w-catheter]
       goal: 1
     - en: "Has your urine become cloudy or foul-smelling?"
       ko: "소변이 뿌옇거나 악취가 나기 시작했나요?"
@@ -33081,8 +33408,43 @@
     - en: "A new catheter should feel more comfortable once it's in place."
       ko: "새 카테터가 자리 잡으면 더 편안하게 느껴질 거예요."
       chunks: ["A new catheter", "should feel", "more comfortable", "once it's in place", "."]
-      words: [w-new, w-catheter, w-feel, w-more, w-comfortable, w-place]
+      words: [w-new, w-catheter, w-feel, w-more, w-comfortable]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-foul-smelling
+    - w-urine
+    cue: 'Patient: "It smells really bad — I can smell it across the room."'
+    scale:
+    - a slight odor
+    - a strong odor
+    - foul-smelling
+    answerAt: 2
+    why: 방 건너에서도 날 만큼이면 가장 센 쪽, foul-smelling이에요. 다만 냄새만으로 요로감염을 판단하지는 않아서 열·통증 같은 증상과 함께 봐요.
+    example: Her urine is cloudy and foul-smelling.
+    exKo: 소변이 뿌옇고 악취가 나요.
+  - kind: context
+    words:
+    - w-sample
+    - w-port
+    - w-culture
+    - w-catheter
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Get the culture from the sampling port, not the bag.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Urine culture obtained aseptically from catheter sampling port.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Obtaining a urine culture aseptically from the sampling port.
+      ok: false
+      fix: I'll take a clean sample from this little port on the tube, not from the bag.
+    why: 모두 배양 검체를 채취 포트에서 받는다는 같은 말이에요. 백에 고인 소변은 오래돼 균이 자라 있어 쓰지 않아요. 환자에게는 약어·술기 이름 없이 무엇을 하는지 말해요.
 
 - theme: er-genitourinary
   title: 혈뇨+항응고제
@@ -33105,7 +33467,7 @@
     - en: "Which blood thinner are you taking, and when was your last dose?"
       ko: "어떤 혈액희석제를 드시고 계시고, 마지막 복용은 언제였나요?"
       chunks: ["Which blood thinner", "are you taking", ", and when was", "your last dose", "?"]
-      words: [w-blood, w-thinner, w-take, w-last, w-dose]
+      words: [w-thinner, w-take, w-last, w-dose]
       goal: 1
     - en: "Is there any pain along with the blood in your urine?"
       ko: "소변에 피와 함께 통증도 있나요?"
@@ -33120,18 +33482,57 @@
     - en: "How many pills do you take, and at what time each day?"
       ko: "약을 몇 알씩, 하루 중 몇 시에 드시나요?"
       chunks: ["How many pills", "do you take", ", and at what time", "each day", "?"]
-      words: [w-many, w-pill, w-do, w-take, w-time, w-day]
+      words: [w-many, w-pill, w-take]
       goal: 1
     - en: "We'll check your blood levels to see how thin your blood is right now."
       ko: "지금 혈액이 얼마나 묽은지 보기 위해 수치를 확인할게요."
       chunks: ["We'll check", "your blood levels", "to see", "how thin your blood is", "right now", "."]
-      words: [w-check, w-blood, w-level, w-see, w-thin, w-right, w-now]
+      words: [w-check, w-blood, w-level, w-thin]
       goal: 2
     - en: "We may need to hold your next dose until we know more."
       ko: "더 알게 될 때까지 다음 복용을 보류해야 할 수도 있어요."
       chunks: ["We may need to", "hold your next dose", "until we", "know more", "."]
-      words: [w-may, w-need, w-hold, w-next, w-dose, w-until, w-know, w-more]
+      words: [w-may, w-need, w-hold, w-next, w-dose, w-until, w-more]
       goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-thinner
+    - w-take
+    who: 환자에게 · 항응고제 복용력
+    icon: me
+    before:
+    - 'Which '
+    - DOAC
+    - ' are you taking, and when was your last dose?'
+    options:
+    - blood thinner
+    - anticoagulant
+    - DOAC
+    answer: blood thinner
+    notes:
+      blood thinner: 미국 환자들이 스스로 쓰는 말이라 바로 알아듣는다.
+      anticoagulant: 정확한 용어지만 환자는 모를 수 있다. 차트·의료진끼리 쓴다.
+      DOAC: 약물 계열의 약어(직접 경구 항응고제). 환자에게는 통하지 않는다.
+    why: 실제로 피를 묽게 하는 것은 아니지만 환자에게는 blood thinner가 가장 잘 통해요. 환자는 아스피린·클로피도그렐 같은 항혈소판제도 blood thinner라고 부르니, 약 이름을 꼭 확인해요.
+  - kind: pair
+    words:
+    - w-hold
+    - w-next
+    - w-dose
+    - w-recent
+    - w-injury
+    - w-thin
+    pairs:
+    - - hold
+      - your next dose
+    - - recent
+      - injury
+    - - how thin
+      - your blood is
+    decoys:
+    - along with
+    why: 출혈이 있으면 의사와 상의해 다음 복용을 보류하고(hold your next dose), 피가 얼마나 묽은지(how thin your blood is) 응고 검사로 봐요. 혈뇨의 다른 원인이 될 최근 외상(recent injury)도 물어요.
 
 - theme: er-genitourinary
   title: 투석 환자 응급
@@ -33159,28 +33560,61 @@
     - en: "Which arm has your access, so we avoid it for blood pressure?"
       ko: "혈관통로가 있는 팔은 어느 쪽이라 혈압 측정 시 피해야 하나요?"
       chunks: ["Which arm", "has your access", ", so we avoid it", "for blood pressure", "?"]
-      words: [w-arm, w-access, w-avoid, w-blood, w-pressure]
+      words: [w-access, w-avoid, w-blood]
       goal: 1
     - en: "Have you had trouble breathing or swelling in your legs?"
       ko: "호흡이 어렵거나 다리가 붓는 게 있었나요?"
       chunks: ["Have you had", "trouble breathing", "or swelling", "in your legs", "?"]
-      words: [w-trouble, w-breathe, w-swell, w-leg]
+      words: [w-trouble, w-breathe, w-swell]
       goal: 2
     - en: "How many days has it been since your last treatment?"
       ko: "마지막 치료 이후 며칠이 지났나요?"
       chunks: ["How many days", "has it been", "since your last", "treatment", "?"]
-      words: [w-many, w-day, w-since, w-last, w-treatment]
+      words: [w-many, w-since, w-last, w-treatment]
       goal: 1
     - en: "We'll avoid using that arm for IVs or blood draws."
       ko: "그 팔은 정맥주사나 채혈에 쓰지 않도록 할게요."
       chunks: ["We'll avoid", "using that arm", "for IVs", "or blood draws", "."]
-      words: [w-avoid, w-use, w-arm, w-iv, w-blood, w-draw]
+      words: [w-avoid, w-use, w-iv, w-blood, w-draw]
       goal: 1
     - en: "Your heart and lungs need extra fluid removed safely."
       ko: "심장과 폐를 위해 여분의 체액을 안전하게 제거해야 해요."
       chunks: ["Your heart", "and lungs", "need extra fluid", "removed safely", "."]
       words: [w-heart, w-lung, w-need, w-extra, w-fluid, w-remove, w-safely]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-trouble
+    - w-breathe
+    cue: 'Dialysis patient who missed a session: "I can''t even finish a sentence."'
+    scale:
+    - a little winded
+    - short of breath
+    - can't catch my breath
+    answerAt: 2
+    why: 한 문장을 끝까지 못 말하면 가장 심한 쪽이에요. 투석을 거른 환자는 체액이 넘쳐 폐부종이 올 수 있어 바로 의사에게 알려요.
+    example: He missed dialysis and can't catch his breath.
+    exKo: 투석을 걸렀고 숨을 제대로 못 쉬어요.
+  - kind: context
+    words:
+    - w-access
+    - w-avoid
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Left arm fistula — no BPs or sticks on that side.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: L arm AV fistula. No BP or venipuncture L arm.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: No BP or venipuncture on your AV fistula extremity.
+      ok: false
+      fix: We won't use your dialysis arm for blood pressure or needles.
+    why: 모두 투석 혈관통로가 있는 쪽을 가리키는 같은 말이에요. 그 팔로는 혈압·주사·채혈을 하지 않아 통로를 지켜요. 환자에게는 extremity·venipuncture 같은 말 대신 dialysis arm처럼 환자가 쓰는 말로 알려요.
 
 - theme: er-genitourinary
   title: 결석+구토 탈수
@@ -33203,7 +33637,7 @@
     - en: "How many times have you vomited today?"
       ko: "오늘 몇 번이나 토하셨나요?"
       chunks: ["How many times", "have you vomited", "today", "?"]
-      words: [w-many, w-time, w-vomit, w-today]
+      words: [w-many, w-vomit]
       goal: 1
     - en: "We'll give you fluids and medicine to settle your stomach."
       ko: "속을 가라앉히기 위해 수액과 약을 드릴게요."
@@ -33218,18 +33652,55 @@
     - en: "Are you able to keep any water down?"
       ko: "물을 좀 삼키고 유지할 수 있나요?"
       chunks: ["Are you able", "to keep", "any water down", "?"]
-      words: [w-able, w-keep, w-water, w-down]
+      words: [w-able, w-keep, w-water]
       goal: 1
     - en: "How many hours has it been since you last kept fluids down?"
       ko: "마지막으로 수분을 유지한 지 몇 시간이나 됐나요?"
       chunks: ["How many hours", "has it been", "since you last", "kept fluids down", "?"]
-      words: [w-many, w-hour, w-since, w-last, w-keep, w-fluid, w-down]
+      words: [w-many, w-since, w-last, w-keep, w-fluid]
       goal: 1
     - en: "Once we catch the stone, we'll send it to the lab for testing."
       ko: "결석을 잡으면 검사실로 보내 검사할게요."
       chunks: ["Once we catch", "the stone", ", we'll send it", "to the lab", "for testing", "."]
       words: [w-catch, w-stone, w-send, w-lab, w-test]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-stomach
+    - w-strain
+    - w-urine
+    - w-keep
+    - w-water
+    pairs:
+    - - an upset
+      - stomach
+    - - strain
+      - your urine
+    - - keep water
+      - down
+    decoys:
+    - the lab
+    why: 메스꺼운 속은 an upset stomach, 소변을 거름망에 거르는 것은 strain your urine, 마신 물을 토하지 않고 넘기는 것은 keep water down이에요.
+  - kind: swap
+    words:
+    - w-vomit
+    who: 환자에게 · 구토 문진
+    icon: me
+    before:
+    - 'How many times have you '
+    - had emesis
+    - ' today?'
+    options:
+    - vomited
+    - had emesis
+    - regurgitated
+    answer: vomited
+    notes:
+      vomited: 환자에게 무난한 말. 환자는 threw up이라고도 흔히 한다.
+      had emesis: 차트 용어. 환자에게는 딱딱하고 낯설다.
+      regurgitated: 힘들이지 않고 넘어오는 역류라 구토와 뜻이 다르다.
+    why: 차트에는 emesis라고 적어도, 환자에게는 vomit이나 throw up으로 물어요.
 
 - theme: er-genitourinary
   title: 임신 중 신우신염
@@ -33252,7 +33723,7 @@
     - en: "How many weeks pregnant are you?"
       ko: "임신 몇 주째이신가요?"
       chunks: ["How many", "weeks pregnant", "are you", "?"]
-      words: [w-many, w-week, w-pregnant]
+      words: [w-many, w-pregnant]
       goal: 1
     - en: "We'll choose antibiotics that are safe during pregnancy."
       ko: "임신 중에도 안전한 항생제를 고를게요."
@@ -33260,9 +33731,9 @@
       words: [w-choose, w-antibiotic, w-safe, w-during, w-pregnancy]
       goal: 2
     - en: "We'll also check on the baby's wellbeing."
-      ko: "아기의 안녕도 함께 확인할게요."
+      ko: "아기가 잘 있는지도 함께 확인할게요."
       chunks: ["We'll also check", "on the baby's", "wellbeing", "."]
-      words: [w-also, w-check, w-baby, w-wellbeing]
+      words: [w-also, w-check, w-wellbeing]
       goal: 2
     - en: "Have you had any bleeding or contractions?"
       ko: "출혈이나 수축이 있었나요?"
@@ -33270,15 +33741,54 @@
       words: [w-bleed, w-contraction]
       goal: 1
     - en: "We'll monitor your fever and the baby's heart rate closely."
-      ko: "열과 아기 심박수를 밀접하게 관찰할게요."
+      ko: "열과 아기 심박수를 면밀히 관찰할게요."
       chunks: ["We'll monitor", "your fever", "and the baby's", "heart rate closely", "."]
-      words: [w-monitor, w-fever, w-baby, w-heart, w-rate, w-closely]
+      words: [w-monitor, w-fever, w-heart, w-rate, w-closely]
       goal: 2
     - en: "Staying hydrated can help you feel better."
       ko: "수분을 충분히 섭취하면 몸이 나아지는 데 도움이 돼요."
       chunks: ["Staying hydrated", "can help", "you feel better", "."]
-      words: [w-stay, w-hydrated, w-help, w-feel, w-good]
+      words: [w-stay, w-hydrated, w-help, w-feel]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-heart
+    - w-rate
+    - w-safe
+    - w-during
+    - w-pregnancy
+    - w-stay
+    - w-hydrated
+    pairs:
+    - - heart
+      - rate
+    - - safe during
+      - pregnancy
+    - - stay
+      - hydrated
+    decoys:
+    - weeks pregnant
+    why: 태아 심박은 the baby's heart rate, 임신 중 써도 되는 약은 safe during pregnancy, 수분을 잘 챙기는 것은 stay hydrated예요.
+  - kind: context
+    words:
+    - w-wellbeing
+    - w-check
+    scenes:
+    - who: 산과 콜
+      icon: monitor
+      en: She's eighteen weeks with pyelo — we're checking fetal heart tones now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Fetal heart tones obtained by Doppler, 150s.
+      ok: true
+    - who: 임신부에게
+      icon: me
+      en: We'll be assessing fetal heart tones via Doppler.
+      ok: false
+      fix: We'll also listen to the baby's heartbeat to make sure the baby's okay.
+    why: 모두 태아 상태를 확인한다는 같은 말이에요. 불안한 임신부에게는 fetal·Doppler 대신 'the baby'와 무엇을 들어 보는지로 말해요.
 
 - theme: er-genitourinary
   title: 반복 결석 환자 교육
@@ -33301,7 +33811,7 @@
     - en: "Drinking plenty of water is one of the best ways to prevent stones."
       ko: "물을 충분히 마시는 것이 결석을 예방하는 최고의 방법 중 하나예요."
       chunks: ["Drinking plenty", "of water", "is one", "of the best ways", "to prevent stones", "."]
-      words: [w-drink, w-plenty, w-water, w-one, w-good, w-way, w-prevent, w-stone]
+      words: [w-drink, w-plenty, w-water, w-way, w-prevent, w-stone]
       goal: 1
     - en: "We can review foods that may raise your risk."
       ko: "위험을 높일 수 있는 음식들을 함께 검토해볼 수 있어요."
@@ -33316,18 +33826,56 @@
     - en: "Try to drink enough water every day, especially in hot weather."
       ko: "특히 더운 날씨에는 매일 물을 충분히 마시도록 하세요."
       chunks: ["Try to drink", "enough water", "every day", ", especially in hot weather", "."]
-      words: [w-try, w-drink, w-enough, w-water, w-every, w-day, w-especially, w-hot, w-weather]
+      words: [w-try, w-drink, w-enough, w-water, w-every, w-especially, w-hot, w-weather]
       goal: 1
     - en: "Cutting back on salt can also lower your risk."
       ko: "소금 섭취를 줄이는 것도 위험을 낮출 수 있어요."
       chunks: ["Cutting back", "on salt", "can also", "lower your risk", "."]
-      words: [w-cut, w-salt, w-also, w-low, w-risk]
+      words: [w-cut, w-salt, w-also, w-risk]
       goal: 1
     - en: "We'll give you a strainer to catch any future stones."
       ko: "앞으로 나올 결석을 잡기 위해 거름망을 드릴게요."
       chunks: ["We'll give you", "a strainer", "to catch", "any future stones", "."]
       words: [w-give, w-strainer, w-catch, w-future, w-stone]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-plenty
+    - w-water
+    - w-cut
+    - w-salt
+    - w-every
+    pairs:
+    - - plenty of
+      - water
+    - - cut back
+      - on salt
+    - - every
+      - day
+    decoys:
+    - the cause
+    why: 결석 예방의 기본은 물을 넉넉히(plenty of water), 매일(every day) 마시는 것이에요. 짠 음식을 먹으면 소변으로 나가는 칼슘이 늘어 결석이 잘 생겨서 cut back on salt도 함께 교육해요.
+  - kind: context
+    words:
+    - w-drink
+    - w-enough
+    - w-water
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: 'Discharge teaching: increase PO fluid intake, goal urine output over 2.5 L/day.'
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: I did her fluids teaching — lots of water, aiming for pale urine.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Increase PO fluid intake to achieve a urine output over 2.5 liters per day.
+      ok: false
+      fix: Try to drink enough water every day that your pee stays pale yellow.
+    why: 모두 물을 넉넉히 마시라는 같은 말이에요. 미국비뇨의학회(AUA)는 결석 재발을 막으려고 하루 소변량 2.5 L 이상을 목표로 권해요. 환자에게는 PO·소변량 수치보다 '소변이 연한 노란색이 될 만큼'처럼 스스로 확인할 수 있는 말이 잘 통해요.
 
 - theme: er-genitourinary
   title: 폐쇄성 요로감염 패혈증
@@ -33350,12 +33898,12 @@
     - en: "Your fever and low blood pressure make this an emergency."
       ko: "열과 낮은 혈압 때문에 이건 응급 상황이에요."
       chunks: ["Your fever", "and low blood pressure", "make this", "an emergency", "."]
-      words: [w-fever, w-low, w-blood, w-pressure, w-make, w-emergency]
+      words: [w-fever, w-low, w-blood, w-emergency]
       goal: 1
     - en: "We're starting fluids and antibiotics right away."
       ko: "지금 바로 수액과 항생제를 시작할게요."
       chunks: ["We're starting", "fluids and antibiotics", "right away", "."]
-      words: [w-start, w-fluid, w-antibiotic, w-right, w-away]
+      words: [w-start, w-fluid, w-antibiotic, w-away]
       goal: 2
     - en: "You may need an urgent procedure to relieve the blockage."
       ko: "폐쇄를 풀기 위해 긴급 시술이 필요할 수도 있어요."
@@ -33365,18 +33913,53 @@
     - en: "Your body is fighting a serious infection right now."
       ko: "지금 몸이 심각한 감염과 싸우고 있어요."
       chunks: ["Your body", "is fighting", "a serious infection", "right now", "."]
-      words: [w-body, w-fight, w-serious, w-infection, w-right, w-now]
+      words: [w-fight, w-serious, w-infection]
       goal: 1
     - en: "We're moving fast because sepsis can turn dangerous quickly."
       ko: "패혈증은 빠르게 위험해질 수 있어서 저희도 빠르게 움직이고 있어요."
       chunks: ["We're moving fast", "because sepsis", "can turn", "dangerous quickly", "."]
-      words: [w-move, w-fast, w-sepsis, w-turn, w-dangerous, w-quickly]
+      words: [w-move, w-sepsis, w-turn, w-dangerous, w-quickly]
       goal: 1
-    - en: "A specialist will drain the blockage as soon as possible."
-      ko: "전문의가 최대한 빨리 폐쇄를 배출시킬 거예요."
-      chunks: ["A specialist will", "drain the blockage", "as soon as", "possible", "."]
-      words: [w-specialist, w-drain, w-blockage, w-soon, w-possible]
+    - en: "A specialist will relieve the blockage as soon as possible."
+      ko: "전문의가 최대한 빨리 폐쇄를 풀어 줄 거예요."
+      chunks: ["A specialist", "will relieve", "the blockage", "as soon as possible", "."]
+      words: [w-specialist, w-relieve, w-blockage, w-soon, w-possible]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-serious
+    - w-infection
+    cue: Obstructing stone, temp 39.4 °C, BP 82/48 — how do you describe it to the team?
+    scale:
+    - minor
+    - serious
+    - life-threatening
+    answerAt: 2
+    why: 막힌 요로에 감염과 저혈압이 겹치면 패혈성 쇼크로 갈 수 있어 가장 센 말이 맞아요. 막힌 곳을 풀어 주지 않으면(스텐트·신루 같은 감압) 항생제만으로는 잘 낫지 않아 비뇨의학과 응급 처치가 필요해요.
+    example: This is a life-threatening infection behind a blocked kidney.
+    exKo: 막힌 신장 뒤에 생긴 생명을 위협하는 감염이에요.
+  - kind: swap
+    words:
+    - w-move
+    - w-quickly
+    - w-sepsis
+    who: 환자에게 · 패혈증 설명
+    icon: me
+    before:
+    - 'We''re moving quickly because '
+    - you're in septic shock
+    - .
+    options:
+    - this infection is serious
+    - you're in septic shock
+    - you could die any minute
+    answer: this infection is serious
+    notes:
+      this infection is serious: 사실을 숨기지 않으면서 환자가 알아들을 수 있는 말.
+      you're in septic shock: 정확한 진단명이지만 설명 없이 던지면 뜻을 모른 채 겁만 먹기 쉽다. 쓸 때는 '심각한 감염이 온몸에 영향을 주고 있다'는 풀이를 붙인다.
+      you could die any minute: 지금 상태보다 무겁게 들려 공포만 키운다.
+    why: 위중함은 솔직하게 알리되, 환자가 이해할 수 있는 말로 해요. sepsis 같은 진단명을 쓸 때는 뜻을 함께 풀어 줘요.
 
 - theme: er-genitourinary
   title: 고칼륨혈증 위기(무뇨)
@@ -33399,12 +33982,12 @@
     - en: "We're getting an ECG right away to check your heart."
       ko: "지금 바로 심전도를 찍어서 심장을 확인할게요."
       chunks: ["We're getting", "an ECG", "right away", "to check your heart", "."]
-      words: [w-get, w-ecg, w-right, w-away, w-check, w-heart]
+      words: [w-ecg, w-away, w-check, w-heart]
       goal: 2
     - en: "Your potassium may be dangerously high, so we're acting fast."
       ko: "칼륨 수치가 위험할 정도로 높을 수 있어서 빠르게 대처하고 있어요."
       chunks: ["Your potassium", "may be", "dangerously high", ", so we're acting fast", "."]
-      words: [w-potassium, w-may, w-dangerously, w-high, w-act, w-fast]
+      words: [w-potassium, w-may, w-dangerously, w-high, w-act]
       goal: 1
     - en: "You may need emergency dialysis."
       ko: "응급 투석이 필요할 수도 있어요."
@@ -33414,7 +33997,7 @@
     - en: "Have you been able to urinate at all today?"
       ko: "오늘 소변을 조금이라도 볼 수 있었나요?"
       chunks: ["Have you been", "able to urinate", "at all", "today", "?"]
-      words: [w-able, w-urinate, w-today]
+      words: [w-able, w-urinate]
       goal: 1
     - en: "High potassium can affect your heart rhythm."
       ko: "칼륨 수치가 높으면 심장 리듬에 영향을 줄 수 있어요."
@@ -33422,10 +34005,50 @@
       words: [w-high, w-potassium, w-affect, w-heart, w-rhythm]
       goal: 1
     - en: "We're watching your heart monitor closely for any changes."
-      ko: "심장 모니터를 변화가 있는지 밀접하게 지켜보고 있어요."
+      ko: "변화가 있는지 심장 모니터를 면밀히 지켜보고 있어요."
       chunks: ["We're watching", "your heart monitor", "closely", "for any changes", "."]
-      words: [w-watch, w-heart, w-monitor, w-closely, w-change]
+      words: [w-watch, w-heart, w-closely, w-change]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-heart
+    - w-rhythm
+    - w-emergency
+    - w-dialysis
+    - w-dangerously
+    - w-high
+    pairs:
+    - - heart
+      - rhythm
+    - - emergency
+      - dialysis
+    - - dangerously
+      - high
+    decoys:
+    - at all
+    why: 칼륨은 심장 리듬(heart rhythm)을 흔들고, 무뇨 환자는 몸 밖으로 뺄 길이 없어 응급 투석(emergency dialysis)이 필요할 수 있어요. 수치는 dangerously high라고 말해요.
+  - kind: context
+    words:
+    - w-potassium
+    - w-high
+    - w-affect
+    - w-heart
+    scenes:
+    - who: 당직의 콜
+      icon: monitor
+      en: K is 7.1 with peaked T waves — anuric dialysis patient.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: K 7.1. ECG with peaked T waves. MD notified.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your K is 7.1 with peaked T waves.
+      ok: false
+      fix: Your potassium is very high, and it's starting to affect your heart, so we're treating it right now.
+    why: 모두 칼륨이 높아 심전도에 변화가 생겼다는 같은 말이에요. 뾰족한 T파는 고칼륨혈증의 대표 변화예요. 환자에게는 K·T파 대신 무엇이 문제이고 어떻게 하는지를 말해요.
 
 - theme: er-genitourinary
   title: 신부전 폐부종
@@ -33458,23 +34081,57 @@
     - en: "Try to take slow breaths — we're right here."
       ko: "천천히 숨을 쉬어 보세요, 저희가 여기 있어요."
       chunks: ["Try to take", "slow breaths", "— we're", "right here", "."]
-      words: [w-try, w-take, w-slow, w-breathe, w-right, w-here]
+      words: [w-try, w-slow, w-here]
       goal: 1
     - en: "Sitting up straight can make it easier to breathe."
       ko: "똑바로 앉으면 숨쉬기가 더 쉬워질 수 있어요."
       chunks: ["Sitting up straight", "can make it", "easier", "to breathe", "."]
-      words: [w-sit, w-straight, w-make, w-easy, w-breathe]
+      words: [w-sit, w-straight, w-easy, w-breathe]
       goal: 1
     - en: "We're keeping you upright and giving extra oxygen to ease the strain on your heart."
       ko: "몸을 세운 채 여분의 산소를 드려서 심장의 부담을 덜어드릴게요."
       chunks: ["We're keeping you upright", "and giving extra oxygen", "to ease", "the strain on your heart", "."]
-      words: [w-keep, w-upright, w-give, w-extra, w-oxygen, w-ease, w-strain, w-heart]
+      words: [w-keep, w-upright, w-give, w-extra, w-oxygen, w-ease, w-heart]
       goal: 2
     - en: "The swelling in your legs should improve once the fluid comes off."
       ko: "체액이 빠지면 다리 부종도 나아질 거예요."
       chunks: ["The swelling", "in your legs", "should improve", "once the fluid comes off", "."]
-      words: [w-swell, w-leg, w-improve, w-fluid, w-come]
+      words: [w-swell, w-improve, w-fluid]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sit
+    - w-upright
+    cue: Patient gasping, crackles in both lungs — how do you position him?
+    scale:
+    - flat
+    - semi-upright
+    - fully upright
+    answerAt: 2
+    why: 폐부종 환자는 앉혀서 상체를 세우면(high Fowler's) 숨쉬기가 편해져요. 눕히면 폐로 가는 체액 부담이 커져 숨이 더 차요.
+    example: Let's get him fully upright and on oxygen.
+    exKo: 상체를 완전히 세우고 산소를 드려요.
+  - kind: swap
+    words:
+    - w-slow
+    - w-here
+    who: 환자에게 · 호흡곤란 중 안심
+    icon: me
+    before:
+    - 'Try to take slow breaths — '
+    - calm down
+    - .
+    options:
+    - we're right here
+    - calm down
+    - don't panic
+    answer: we're right here
+    notes:
+      we're right here: 곁에 있다는 말로 안심시킨다. 숨찬 환자가 가장 듣고 싶은 말.
+      calm down: 명령처럼 들려, 숨이 찬 환자에게는 무시당한 느낌을 주기 쉽다.
+      don't panic: 공포라는 말을 오히려 떠올리게 한다.
+    why: 숨이 찬 환자는 겁이 나서 더 빨리 쉬어요. 무엇을 하라는 말과 함께 곁에 있다는 말을 해 주세요.
 
 - theme: er-genitourinary
   title: 음경지속발기증
@@ -33497,12 +34154,12 @@
     - en: "How many hours has this been going on?"
       ko: "이게 몇 시간이나 지속되고 있나요?"
       chunks: ["How many hours", "has this been", "going on", "?"]
-      words: [w-many, w-hour, w-go]
+      words: [w-many]
       goal: 1
     - en: "This is time-sensitive, so we're contacting the specialist now."
       ko: "이건 시간이 중요해서 지금 전문의에게 연락하고 있어요."
       chunks: ["This is time-sensitive", ", so we're contacting", "the specialist", "now", "."]
-      words: [w-time, w-sensitive, w-contact, w-specialist, w-now]
+      words: [w-sensitive, w-contact, w-specialist]
       goal: 2
     - en: "We'll give you pain medicine while we prepare treatment."
       ko: "치료를 준비하는 동안 진통제를 드릴게요."
@@ -33517,13 +34174,47 @@
     - en: "The longer this goes on, the higher the risk to the tissue."
       ko: "이게 오래 지속될수록 조직에 대한 위험이 높아져요."
       chunks: ["The longer this goes on", ", the higher", "the risk", "to the tissue", "."]
-      words: [w-long, w-go, w-high, w-risk, w-tissue]
+      words: [w-long, w-high, w-risk, w-tissue]
       goal: 1
     - en: "We're calling the on-call urologist right away."
       ko: "지금 바로 당직 비뇨기과 전문의에게 연락하고 있어요."
       chunks: ["We're calling", "the on-call urologist", "right away", "."]
-      words: [w-call, w-urologist, w-right, w-away]
+      words: [w-call, w-urologist, w-away]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-call
+    - w-urologist
+    - w-away
+    cue: Painful erection for six hours — how soon should urology come?
+    scale:
+    - when they get a chance
+    - soon
+    - right away
+    answerAt: 2
+    why: 4시간이 넘은 아픈 지속발기는 피가 고여 조직이 상하는 허혈성일 수 있어 응급이에요. 늦을수록 영구적인 발기부전 위험이 커져 비뇨의학과를 바로 불러요.
+    example: He needs urology right away — it's been six hours.
+    exKo: 여섯 시간째라 비뇨의학과가 바로 와야 해요.
+  - kind: context
+    words:
+    - w-call
+    - w-urologist
+    scenes:
+    - who: 비뇨의학과 콜
+      icon: monitor
+      en: Painful priapism for six hours — can you come now?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Priapism, onset 6 h ago. Urology paged.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have priapism, onset six hours ago; urology has been paged.
+      ok: false
+      fix: This has gone on long enough to harm the tissue, so we've called the specialist to come right away.
+    why: 모두 지속발기 때문에 비뇨의학과를 불렀다는 같은 말이에요. 당황한 환자에게는 병명과 호출 절차보다 왜 서두르는지와 누가 오는지를 말해요.
 
 - theme: er-genitourinary
   title: 외상성 방광파열
@@ -33551,7 +34242,7 @@
     - en: "We're going to do a special X-ray of your bladder with contrast."
       ko: "조영제를 사용해서 방광의 특수 엑스레이를 찍을게요."
       chunks: ["We're going to do", "a special X-ray", "of your bladder", "with contrast", "."]
-      words: [w-go, w-do, w-special, w-x-ray, w-bladder, w-contrast]
+      words: [w-special, w-x-ray, w-bladder, w-contrast]
       goal: 2
     - en: "We're keeping the trauma team involved for your pelvis."
       ko: "골반 때문에 외상팀도 계속 함께 볼 거예요."
@@ -33571,8 +34262,50 @@
     - en: "The surgeon may need to repair the bladder in the operating room."
       ko: "외과의가 수술실에서 방광을 복구해야 할 수도 있어요."
       chunks: ["The surgeon", "may need to repair", "the bladder", "in the operating room", "."]
-      words: [w-surgeon, w-may, w-need, w-repair, w-bladder, w-operate, w-room]
+      words: [w-surgeon, w-may, w-need, w-repair, w-bladder, w-operate]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-keep
+    - w-trauma
+    - w-team
+    - w-involve
+    - w-repair
+    - w-bladder
+    - w-special
+    - w-x-ray
+    - w-contrast
+    pairs:
+    - - keep the trauma team
+      - involved
+    - - repair
+      - the bladder
+    - - a special X-ray
+      - with contrast
+    decoys:
+    - since the accident
+    why: 외상팀을 계속 함께 보게 하는 것은 keep the trauma team involved, 찢어진 방광을 수술로 고치는 것은 repair the bladder, 방광조영술은 환자에게 a special X-ray with contrast라고 설명해요.
+  - kind: context
+    words:
+    - w-tip
+    - w-tube
+    - w-blood
+    scenes:
+    - who: 외상팀에게
+      icon: monitor
+      en: Blood at the meatus — holding the Foley until we get a RUG.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Blood at urethral meatus. Foley deferred pending RUG.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: There's blood at your urethral meatus, so the Foley is deferred pending a RUG.
+      ok: false
+      fix: We saw a little blood at the tip, so we'll check with a special X-ray before we put in any tube.
+    why: 모두 요도 끝에 피가 있어 도뇨관을 미룬다는 같은 말이에요. 골반 외상에서 요도구에 피가 보이면 요도 손상일 수 있어, 역행성 요도조영(RUG)으로 확인하기 전에는 도뇨관을 넣지 않아요. 환자에게는 meatus·RUG 대신 쉬운 말로 이유를 알려요.
 
 - theme: er-genitourinary
   title: 신성 위기 급변 인계
@@ -33595,12 +34328,12 @@
     - en: "How much have you urinated over the last few hours?"
       ko: "지난 몇 시간 동안 소변을 얼마나 보셨나요?"
       chunks: ["How much", "have you urinated", "over the last", "few hours", "?"]
-      words: [w-much, w-have, w-urinate, w-over, w-last, w-few, w-hour]
+      words: [w-much, w-urinate, w-few]
       goal: 1
     - en: "Your labs have changed, so I'm updating the doctor."
       ko: "검사 수치가 바뀌어서 의사에게 알리고 있어요."
       chunks: ["Your labs", "have changed", ", so I'm updating", "the doctor", "."]
-      words: [w-lab, w-have, w-change, w-update, w-doctor]
+      words: [w-change, w-update]
       goal: 1
     - en: "I'll report your urine output and potassium trend clearly."
       ko: "소변 배출량과 칼륨 추이를 명확하게 보고할게요."
@@ -33610,18 +34343,52 @@
     - en: "Your potassium has been climbing for the past few hours."
       ko: "지난 몇 시간 동안 칼륨이 계속 오르고 있어요."
       chunks: ["Your potassium", "has been climbing", "for the past", "few hours", "."]
-      words: [w-potassium, w-climb, w-past, w-few, w-hour]
+      words: [w-potassium, w-climb, w-past, w-few]
       goal: 1
     - en: "I'm going to call the on-call doctor now with these numbers."
       ko: "지금 이 수치들을 가지고 당직 의사에게 연락할 거예요."
       chunks: ["I'm going to call", "the on-call doctor", "now", "with these numbers", "."]
-      words: [w-go, w-call, w-doctor, w-now, w-number]
+      words: [w-call]
       goal: 2
     - en: "I'll give a clear report of your urine output and vital signs."
       ko: "소변 배출량과 활력징후를 명확하게 보고할게요."
       chunks: ["I'll give", "a clear report", "of your urine output", "and vital signs", "."]
-      words: [w-give, w-clear, w-report, w-urine, w-output, w-vital, w-sign]
+      words: [w-give, w-clear, w-report, w-urine, w-output, w-vital]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-climb
+    - w-potassium
+    cue: 'Night-shift handoff: K 5.8, then 6.0, then 6.1 over six hours.'
+    scale:
+    - creeping up
+    - climbing
+    - skyrocketing
+    answerAt: 0
+    why: 조금씩 오르면 creeping up, 뚜렷이 오르면 climbing, 급하게 치솟으면 skyrocketing이에요. 인계에서는 추이의 속도를 한 단어로 전하되, 칼륨은 천천히 올라도 이미 높은 범위라면 바로 보고해요.
+    example: His potassium has been creeping up all night.
+    exKo: 밤새 칼륨이 조금씩 오르고 있어요.
+  - kind: context
+    words:
+    - w-output
+    - w-potassium
+    - w-call
+    scenes:
+    - who: 당직의 콜
+      icon: monitor
+      en: Urine output's been 10 an hour for three hours, and K went from 5.8 to 6.6 — can you come see him?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: UO 30 mL over 3 h. K 5.8 → 6.6. On-call MD notified.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your UO is 10 mL per hour and your K is 6.6.
+      ok: false
+      fix: You haven't made much urine, and your potassium is going up, so I'm calling the doctor now.
+    why: 모두 소변량이 줄고 칼륨이 올랐다는 같은 말이에요. 당직의에게는 숫자와 추이를 정확히, 환자에게는 UO·K 같은 약어 대신 무엇이 달라졌고 무엇을 하는지를 말해요.
 
 - theme: er-diabetic
   title: 혈당 측정·병력 문진
