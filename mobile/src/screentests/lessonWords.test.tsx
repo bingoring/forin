@@ -125,3 +125,14 @@ test('the step track shows this step as the current one even when the level skip
   const bold = labels.filter((l) => [l.props.style].flat(3).some((s: any) => s?.fontWeight === '700'));
   expect(bold.map((l) => l.props.testID)).toEqual(['steptrack-label-words']);
 });
+
+// Pressing one answer must not dim the other: NbButton draws `disabled` at 45%, and a
+// request in flight used to disable both — the other button seemed to blink.
+test('answering never disables the answer buttons', async () => {
+  const tree = await mount();
+  await press(tree.root, 'lesson-word-confused');
+  for (const id of ['lesson-word-confused', 'lesson-word-known']) {
+    const box = tree.root.findAll((n) => n.props?.testID === id)[0];
+    expect(box.findAll((n) => n.props?.disabled === true)).toHaveLength(0);
+  }
+});

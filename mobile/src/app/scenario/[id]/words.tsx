@@ -7,7 +7,7 @@
 //
 // The row holds as many chips as there are words — 8 is a minimum, not its size
 // (spec §2-2) — so it wraps rather than squeezing 38 chips into one line.
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
@@ -48,7 +48,9 @@ export default function LessonWordsRoute() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [lesson, setLesson] = useState<LessonDetail | null>(null);
   const [idx, setIdx] = useState(0);
-  const [busy, setBusy] = useState(false);
+  // A guard, not state: disabling the buttons while a request runs dimmed both of them
+  // (NbButton draws disabled at 45%), which read as the other button blinking out.
+  const finishing = useRef(false);
 
   useEffect(() => {
     let alive = true;
@@ -60,20 +62,17 @@ export default function LessonWordsRoute() {
   const word = words[idx];
 
   const answer = async (confused: boolean) => {
-    if (!word || busy) return;
-    setBusy(true);
-    try {
-      // Best-effort: a note that failed to file must not stop the learner mid-deck.
-      if (confused) await api.confusedWord(id, word.id).catch(() => {});
-      if (idx < words.length - 1) {
-        setIdx(idx + 1);
-        return;
-      }
-      await api.clearLessonStep(id, 'words').catch(() => {});
-      router.back();
-    } finally {
-      setBusy(false);
+    if (!word || finishing.current) return;
+    // Filed in the background: the next card must not wait on the review notes, and a
+    // note that failed to file must not stop the learner mid-deck.
+    if (confused) void api.confusedWord(id, word.id).catch(() => {});
+    if (idx < words.length - 1) {
+      setIdx(idx + 1);
+      return;
     }
+    finishing.current = true;
+    await api.clearLessonStep(id, 'words').catch(() => {});
+    router.back();
   };
 
   const repeat = () => {
@@ -161,10 +160,10 @@ export default function LessonWordsRoute() {
       {!!word && (
         <View style={{ position: 'absolute', left: 20, right: 20, bottom: 30, flexDirection: 'row', gap: 12 }}>
           <View testID="lesson-word-confused" style={{ flex: 1 }}>
-            <NbButton variant="paper" size="lg" full rot={-0.5} icon="bulb" onPress={() => answer(true)} disabled={busy}>{t('lesson.words.confused')}</NbButton>
+            <NbButton variant="paper" size="lg" full rot={-0.5} icon="bulb" onPress={() => answer(true)}>{t('lesson.words.confused')}</NbButton>
           </View>
           <View testID="lesson-word-known" style={{ flex: 1 }}>
-            <NbButton variant="ink" size="lg" full rot={0.5} icon="check" iconColor={nb.paper} onPress={() => answer(false)} disabled={busy}>{t('lesson.words.known')}</NbButton>
+            <NbButton variant="ink" size="lg" full rot={0.5} icon="check" iconColor={nb.paper} onPress={() => answer(false)}>{t('lesson.words.known')}</NbButton>
           </View>
         </View>
       )}
