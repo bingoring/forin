@@ -1,0 +1,283 @@
+theme: er-environmental
+changes:
+- kind: sentence
+  situation: 경증 저체온 초기
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 열사병
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다; w-dangerously 태그를 더했다
+- kind: sentence
+  situation: 열사병
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-name 태그를 뺐다
+- kind: sentence
+  situation: 열사병
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 동상 손발
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 노인 여름 탈수 혼돈
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-old 태그를 뺐다
+- kind: sentence
+  situation: 노인 여름 탈수 혼돈
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-old 태그를 뺐다
+- kind: sentence
+  situation: 익수 후 저체온
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-time·w-body 태그를 뺐다
+- kind: sentence
+  situation: 열경련 전해질
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-come 태그를 뺐다
+- kind: sentence
+  situation: 열경련 전해질
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 열경련 전해질
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 고산/환경 노출 언어장벽
+  index: 1
+  fields:
+  - words
+  why: shortness of breath는 증상명 하나 — w-shortness를 구 단위로 바꿔 w-breath 태그를 뺐다
+- kind: sentence
+  situation: 약물 유발 고체온 감별
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-name 태그를 뺐다
+- kind: sentence
+  situation: 열사병 다장기부전
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-problem 태그를 뺐다
+- kind: sentence
+  situation: 열사병 다장기부전
+  index: 2
+  fields:
+  - words
+  why: Heat stroke는 병명 하나 — w-stroke를 heat stroke로 바꿔 w-heat 태그를 뺐다
+- kind: sentence
+  situation: 중증 동상 구획증후군
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-bad 태그를 뺐다
+- kind: sentence
+  situation: 횡문근융해 신부전
+  index: 2
+  fields:
+  - words
+  why: called CK는 '이름이 ~인'이라 w-call(부르다)과 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 저체온 부정맥 급변
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-bad 태그를 뺐다
+- kind: sentence
+  situation: 환경 위기 이송 인계
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-come 태그를 뺐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-bad
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-problem
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-old
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-breath
+  why: shortness of breath를 w-shortness 한 단어로 묶어 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-call
+  why: an enzyme called CK의 called(이름이 ~인)는 ko '부르다'와 다른 뜻 — 태그를 빼 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-fluid
+  fields:
+  - ko
+  why: fluids to drink / keeping fluids down은 마시는 수분인데 ko가 '수액'뿐이었다
+- kind: word
+  id: w-confuse
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 세 문장 다 get confused / feeling confused(형용사)인데 헤드워드가 동사 confuse였다
+- kind: word
+  id: w-bring
+  fields:
+  - ko
+  why: 두 문장 다 bring it down / bring your temperature down(낮추다)인데 ko가 '가져오다'였다; ko 안에 정답 영어 bring이 들어 있어 (~ down)으로
+- kind: word
+  id: w-active
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 두 문장 다 actively인데 헤드워드가 형용사 active — 부사로. w-aggressive와 ko(적극적인)가 같던 것도 가른다
+- kind: word
+  id: w-slow
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 moving more slowly인데 헤드워드가 형용사 slow — 부사로
+- kind: word
+  id: w-careful
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 carefully인데 헤드워드가 형용사 careful — 부사로
+- kind: word
+  id: w-under
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 did he go under(물속에 잠겼나)인데 헤드워드가 under·아래로였다 — 구 단위로
+- kind: word
+  id: w-break
+  fields:
+  - ko
+  why: w-rest와 ko(휴식)가 같아 듣고 뜻 고르기에서 정답이 둘 — take breaks는 중간중간 쉬는 시간
+- kind: word
+  id: w-shortness
+  fields:
+  - en
+  - ipa
+  why: shortness of breath라는 한 증상명이 shortness와 breath로 나뉘어 태그됐다 — 구 단위로
+- kind: word
+  id: w-figure
+  fields:
+  - en
+  - ipa
+  why: 문장은 figure out(알아내다) — 구동사를 구 단위로
+- kind: word
+  id: w-aggressive
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 aggressively인데 헤드워드가 형용사 aggressive — 부사로. w-active와 ko가 같던 것도 가른다
+- kind: word
+  id: w-stroke
+  fields:
+  - en
+  - ipa
+  - ko
+  why: stroke에 '발작'은 틀린 뜻 — 유일한 문장이 Heat stroke라 구 단위로(열사병)
+- kind: word
+  id: w-lab
+  fields:
+  - ko
+  why: I need labs는 검사(결과)인데 ko가 '검사실'이었다
+- kind: word
+  id: w-route
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 en route(이송 중)인데 헤드워드가 route·이동 경로였다 — 구 단위로
+- kind: word-add
+  id: w-dangerously
+  why: 쉬운 w-body·w-name·w-hand를 빼면 열사병의 서로 다른 단어가 8개로 빠듯 — 문장 0에 이미 있는 말
+- kind: sentence
+  situation: 동상 손발
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 동상은 급속 재가온(37–39°C 수조)이 표준 — 'slowly'는 임상적으로 틀림, KP [0]과도 어긋남
+- kind: word
+  id: w-frostbite
+  fields:
+  - example
+  why: 예문이던 동상 손발 [3] 문장을 급속 재가온으로 고쳐 따라 바꿈
+- kind: sentence
+  situation: 중등도 저체온
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 움직임 둔화·기면은 저체온이 깊어지는 신호 — 재가온 중 '예상되는' 현상이라 말하면 임상적으로 틀림
+- kind: sentence
+  situation: 경증 열탈진 사정
+  index: 1
+  fields:
+  - ko
+  why: 마시는 것인데 '수액'(정맥 수액)으로 옮겼다
+- kind: sentence
+  situation: 심부저체온 심정지
+  index: 0
+  fields:
+  - ko
+  why: 이중 부정이 거꾸로 읽히던 ko를 바로잡음
+- kind: sentence
+  situation: 중등도 저체온
+  index: 1
+  fields:
+  - ko
+  why: w-active(능동적으로)와 번역 통일 — 능동 재가온이 임상 용어
+- kind: sentence
+  situation: 심부저체온 심정지
+  index: 1
+  fields:
+  - ko
+  why: w-active(능동적으로)와 번역 통일 — 능동 재가온이 임상 용어
